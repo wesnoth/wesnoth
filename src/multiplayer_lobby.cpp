@@ -34,6 +34,307 @@ std::string games_menu_heading()
 }
 
 namespace mp {
+gamebrowser::gamebrowser(CVideo& video) : scrollarea(video),
+	gold_icon_locator_("misc/gold.png"),
+	xp_icon_locator_("misc/units.png"),
+	vision_icon_locator_("misc/invisible.png"),
+	observer_icon_locator_("misc/eye.png"), header_height_(20),
+	item_height_(100), margin_(5), h_padding_(5),
+	v_padding_(5), selected_(0), visible_range_(std::pair<size_t,size_t>(0,0)),
+	double_clicked_(false), ignore_next_doubleclick_(false), last_was_doubleclick_(false)
+{
+}
+
+void gamebrowser::set_inner_location(const SDL_Rect& rect)
+{
+	set_full_size(games_.size());
+	set_shown_size(rect.h / item_height_);
+	bg_register(rect);
+	scroll(get_position());
+}
+
+void gamebrowser::scroll(int pos)
+{
+	if(pos >= 0 && pos < games_.size()) {
+		visible_range_.first = pos;
+		visible_range_.second = minimum<size_t>(pos + inner_location().h / item_height_, games_.size());
+		set_dirty();
+	}
+}
+
+SDL_Rect gamebrowser::get_item_rect(size_t index) const {
+	if(index < visible_range_.first || index > visible_range_.second) {
+		const SDL_Rect res = { 0, 0, 0, 0 };
+		return res;
+	}
+	const SDL_Rect& loc = inner_location();
+	const SDL_Rect res = { loc.x, loc.y + (index - visible_range_.first) * item_height_, loc.w, item_height_ };
+	return res;
+}
+
+void gamebrowser::draw()
+{
+	if(hidden())
+		return;
+	if(dirty()) {
+		bg_restore();
+		util::scoped_ptr<clip_rect_setter> clipper(NULL);
+		if(clip_rect())
+			clipper.assign(new clip_rect_setter(video().getSurface(), *clip_rect()));
+		draw_contents();
+		update_rect(location());
+		set_dirty(false);
+	}
+}
+
+void gamebrowser::draw_contents() const
+{
+	if(!games_.empty()) {
+		for(size_t i = visible_range_.first; i != visible_range_.second; ++i) {
+			draw_item(i);
+		}
+	} else {
+		const SDL_Rect rect = inner_location();
+		font::draw_text(&video(), rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, _("<no games open>"), rect.x + margin_, rect.y + margin_);
+	}
+}
+
+void gamebrowser::draw_item(size_t index) const {
+	const game_item& game = games_[index];
+	SDL_Rect item_rect = get_item_rect(index);
+	int xpos = item_rect.x + margin_;
+	int ypos = item_rect.y + margin_;
+
+	bg_restore(item_rect);
+	draw_solid_tinted_rectangle(item_rect.x, item_rect.y, item_rect.w, item_rect.h, 0, 0, 0, 0.2, video().getSurface());
+
+	// draw mini map
+	video().blit_surface(xpos, ypos, game.mini_map);
+
+	xpos += item_height_ + margin_;
+
+	const surface name_surf(font::get_rendered_text(font::make_text_ellipsis(game.name, font::SIZE_NORMAL, item_rect.w - xpos - margin_), font::SIZE_PLUS, game.vacant_slots > 0 ? font::GOOD_COLOUR : game.observers ? font::NORMAL_COLOUR : font::BAD_COLOUR));
+	video().blit_surface(xpos, ypos, name_surf);
+
+	ypos += v_padding_;
+
+	// draw map info
+	const surface map_info_surf(font::get_rendered_text(font::make_text_ellipsis(game.map_info, font::SIZE_NORMAL, item_rect.w - xpos - margin_), font::SIZE_PLUS, font::GOOD_COLOUR));
+	video().blit_surface(xpos, ypos, map_info_surf);
+
+
+	// draw gold icon
+	const surface gold_icon(image::get_image(gold_icon_locator_, image::UNSCALED));	
+	ypos = item_rect.y + item_rect.h  - margin_ - gold_icon->h;
+	
+	video().blit_surface(xpos, ypos, gold_icon);
+
+	xpos += gold_icon->w + h_padding_;
+
+	// draw gold text
+	const surface gold_text(font::get_rendered_text(game.gold, font::SIZE_NORMAL, font::NORMAL_COLOUR));
+	ypos -= abs(gold_icon->h - gold_text->h) / 2;
+	video().blit_surface(xpos, ypos, gold_text);
+
+	xpos += gold_text->w + 2 * h_padding_;
+
+	// draw xp icon
+	const surface xp_icon(image::get_image(xp_icon_locator_, image::UNSCALED));
+	ypos = item_rect.y + item_rect.h  - margin_ - xp_icon->h;
+	video().blit_surface(xpos, ypos, xp_icon);
+
+	xpos += xp_icon->w + h_padding_;
+
+	// draw xp text
+	const surface xp_text(font::get_rendered_text(game.xp, font::SIZE_NORMAL, font::NORMAL_COLOUR));
+	ypos -= abs(xp_icon->h - xp_text->h) / 2;
+	video().blit_surface(xpos, ypos, xp_text);
+
+	xpos += xp_text->w + 2 * h_padding_;
+
+	// draw vision icon
+	const surface vision_icon(image::get_image(vision_icon_locator_, image::UNSCALED));
+	video().blit_surface(xpos, ypos, vision_icon);
+
+	xpos += vision_icon->w + h_padding_;
+
+	const surface status_text(font::get_rendered_text(game.status, font::SIZE_NORMAL, game.vacant_slots > 0 ? font::GOOD_COLOUR : font::NORMAL_COLOUR));
+	const surface vision_text(font::get_rendered_text(font::make_text_ellipsis(game.vision, font::SIZE_NORMAL, maximum<int>((item_rect.x + item_rect.w - margin_ - status_text->w - 2 * h_padding_) - xpos, 0)),font::SIZE_NORMAL, font::NORMAL_COLOUR));
+	// draw vision text
+	video().blit_surface(xpos, ypos, vision_text);
+
+	// draw status text
+	xpos = item_rect.x + item_rect.w - margin_ - status_text->w;
+	video().blit_surface(xpos, ypos, status_text);
+	
+	if(selected_ == index)
+		draw_solid_tinted_rectangle(item_rect.x, item_rect.y, item_rect.w, item_rect.h, 153, 0, 0, 0.3, video().getSurface());
+}
+
+void gamebrowser::handle_event(const SDL_Event& event)
+{
+	scrollarea::handle_event(event);
+	if(event.type == SDL_KEYDOWN) {
+		if(focus() && !games_.empty()) {
+			switch(event.key.keysym.sym) {
+				case SDLK_UP:
+					if(selected_ > 0) {
+						--selected_;
+						adjust_position(selected_);
+						set_dirty();
+					}
+					break;
+				case SDLK_DOWN:
+					if(selected_ < games_.size() - 1) {
+						++selected_;
+						adjust_position(selected_);
+						set_dirty();
+					}
+					break;
+				case SDLK_PAGEUP:
+				{
+					const long items_on_screen = visible_range_.second - visible_range_.first;
+					selected_ = static_cast<size_t>(maximum<long>(static_cast<long>(selected_) - items_on_screen, 0));
+					adjust_position(selected_);
+					set_dirty();
+				}
+					break;
+				case SDLK_PAGEDOWN:
+				{
+					const size_t items_on_screen = visible_range_.second - visible_range_.first;
+					selected_ = minimum<size_t>(selected_ + items_on_screen, games_.size() - 1);
+					adjust_position(selected_);
+					set_dirty();
+				}
+					break;
+				case SDLK_HOME:
+					selected_ = 0;
+					adjust_position(selected_);
+					set_dirty();
+					break;
+				case SDLK_END:
+					selected_ = games_.size() - 1;
+					adjust_position(selected_);
+					set_dirty();
+					break;
+				default:
+					break;
+			}
+		}
+	} else if(event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT || event.type == DOUBLE_CLICK_EVENT) {
+		int x = 0;
+		int y = 0;
+		if(event.type == SDL_MOUSEBUTTONDOWN) {
+			x = event.button.x;
+			y = event.button.y;
+		} else {
+			x = (long)event.user.data1;
+			y = (long)event.user.data2;
+		}
+		const SDL_Rect& loc = inner_location();
+
+		if(!games_.empty() && point_in_rect(x, y, loc)) {
+			for(size_t i = visible_range_.first; i != visible_range_.second; ++i) {
+				const SDL_Rect& item_rect = get_item_rect(i);
+
+				if(point_in_rect(x, y, item_rect)) {
+					set_focus(true);
+					set_dirty();
+					selected_ = i;
+					break;
+				}
+			}
+			if(event.type == DOUBLE_CLICK_EVENT) {
+				if (ignore_next_doubleclick_) {
+					ignore_next_doubleclick_ = false;
+				} else if(selection_is_joinable() || selection_is_observable()) {
+					double_clicked_ = true;
+					last_was_doubleclick_ = true;
+				}
+			} else if (last_was_doubleclick_) {
+				// If we have a double click as the next event, it means
+				// this double click was generated from a click that
+				// already has helped in generating a double click.
+				SDL_Event ev;
+				SDL_PeepEvents(&ev, 1, SDL_PEEKEVENT,
+							   SDL_EVENTMASK(DOUBLE_CLICK_EVENT));
+				if (ev.type == DOUBLE_CLICK_EVENT) {
+					ignore_next_doubleclick_ = true;
+				}
+				last_was_doubleclick_ = false;
+			}
+		}
+	}
+}
+void gamebrowser::set_game_items(const config& cfg, const config& game_config)
+{
+	games_.clear();
+	config::child_list games = cfg.get_children("game");
+	config::child_iterator game;
+
+	for(game = games.begin(); game != games.end(); ++game) {
+		games_.push_back(game_item());
+
+		games_.back().map_data = (**game)["map_data"];
+		if(games_.back().map_data == "")
+			games_.back().map_data = read_map((**game)["map"]);
+
+		if(games_.back().map_data != "") {
+			try {
+				gamemap map(game_config, games_.back().map_data);
+				games_.back().mini_map = image::getMinimap(item_height_ - margin_, item_height_ - 2 * margin_, map, 0);
+			} catch(gamemap::incorrect_format_exception &e) {
+				std::cerr << "illegal map: " << e.msg_ << "\n";
+			}
+		}
+		games_.back().name = (**game)["name"];
+		const std::string& turn = (**game)["turn"];
+		const std::string& slots = (**game)["slots"];
+		games_.back().vacant_slots = lexical_cast_default<size_t>(slots, 0);
+		if(turn != "")
+			games_.back().status = _("Turn") + (" " + turn);
+		else if(slots != "")
+			games_.back().status = slots + " " + ngettext(_("Vacant Slot"), _("Vacant Slots"), games_.back().vacant_slots);
+
+		if((**game)["mp_use_map_settings"] == "yes") {
+			games_.back().gold = _("Use map settings");
+			games_.back().vision = _("Use map settings");
+			games_.back().use_map_settings = true;
+		} else {
+			games_.back().use_map_settings = false;
+			games_.back().gold = (**game)["mp_village_gold"];
+			if((**game)["mp_fog"] == "yes") {
+				games_.back().vision = _("Fog");
+				games_.back().fog = true;
+				if((**game)["mp_shroud"] == "yes") {
+					games_.back().vision += "/";
+					games_.back().vision += _("Shroud");
+					games_.back().shroud = true;
+				} else {
+					games_.back().shroud = false;
+				}
+			} else if((**game)["mp_shroud"] == "yes") {
+				games_.back().vision = _("Shroud");
+				games_.back().fog = false;
+				games_.back().shroud = true;
+			} else {
+				games_.back().vision = _("none");
+				games_.back().fog = false;
+				games_.back().shroud = false;
+			}
+		}
+		games_.back().xp = (**game)["experience_modifier"] + "%";
+		games_.back().observers = (**game)["observer"] != "no" ? true : false;
+	}
+	set_full_size(games_.size());
+	set_shown_size(inner_location().h / item_height_);
+	scroll(get_position());
+	if(selected_ >= games_.size())
+		selected_ = maximum<long>(static_cast<long>(games_.size()) - 1, 0);
+	if(selected_ >= 0)
+		adjust_position(selected_);
+	set_dirty();
+}
 
 lobby::lobby_sorter::lobby_sorter(const config& cfg) : cfg_(cfg)
 {
@@ -109,7 +410,7 @@ lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
 	create_game_(disp.video(), _("Create Game")),
 	quit_game_(disp.video(), _("Quit")),
 	sorter_(gamelist),
-	games_menu_(disp.video(), std::vector<std::string>(1,games_menu_heading()),false,-1,-1,&sorter_),
+	games_menu_(disp.video()),
 	current_game_(0)
 {
 	game_config::debug = false;
@@ -151,126 +452,31 @@ void lobby::gamelist_updated(bool silent)
 		// No gamelist yet. Do not update anything.
 		return;
 	}
-	config::child_list games = list->get_children("game");
-	config::child_iterator game;
-	game_observers_.clear();
-	game_vacant_slots_.clear();
-
-	for(game = games.begin(); game != games.end(); ++game) {
-
-		std::stringstream str;
-
-		std::string map_data = (**game)["map_data"];
-		if(map_data == "") {
-			map_data = read_map((**game)["map"]);
-		}
-
-		if(map_data != "") {
-			try {
-				std::string& image_id = minimaps_[map_data];
-
-				if(image_id.empty()) {
-					gamemap map(game_config(), map_data);
-					const surface mini(image::getMinimap(100,100,map,0));
-
-					//generate a unique id to show the map as
-					std::stringstream id;
-					id << "addr " << mini.get();
-					image_id = id.str();
-					image::register_image(image_id, mini);
-				}
-
-				str << "&" << image_id << COLUMN_SEPARATOR;
-
-			} catch(gamemap::incorrect_format_exception& e) {
-				std::cerr << "illegal map: " << e.msg_ << "\n";
-			}
-		} else {
-			str << "(" << _("Shroud") << ")" << COLUMN_SEPARATOR;
-		}
-
-		std::string name = (**game)["name"];
-		name.erase(std::remove_if(name.begin(),name.end(),font::is_format_char),name.end());
-
-		str << font::make_text_ellipsis(name, font::SIZE_NORMAL, xscale(300));
-
-		const std::string& turn = (**game)["turn"];
-		const std::string& slots = (**game)["slots"];
-		int nslots = lexical_cast_default<int>(slots, 0);
-
-		if(turn != "") {
-			str << COLUMN_SEPARATOR << _("Turn") << " " << turn;
-		} else if(slots != "") {
-			str << COLUMN_SEPARATOR << slots << " " <<
-				ngettext(_("Vacant Slot"), _("Vacant Slots"), nslots);
-		}
-		str << COLUMN_SEPARATOR << "  " << (**game)["mp_village_gold"] << " "
-			<< _("Gold") << "  " << (**game)["experience_modifier"] << "% " << _("XP");
-		if((**game)["mp_use_map_settings"] == "yes")
-			str << "  " << _("Use map settings");
-		else if((**game)["mp_fog"] == "yes")
-			str << "  " << _("Fog");
-
-		game_strings.push_back(str.str());
-
-		game_vacant_slots_.push_back(slots != "" && slots != "0");
-		game_observers_.push_back((**game)["observer"] != "no");
-	}
-
-	if(game_strings.empty()) {
-		game_strings.push_back(_("<no games open>"));
-	}
-
-	//set the items, retaining the menu positioning if possible
-	games_menu_.set_items(game_strings,true,true);
-
-	if(games_menu_.selection() >= 0 && games_menu_.selection() < int(game_vacant_slots_.size())) {
-		wassert(game_vacant_slots_.size() == game_observers_.size());
-
-		join_game_.hide(!game_vacant_slots_[games_menu_.selection()]);
-		observe_game_.hide(!game_observers_[games_menu_.selection()]);
-	} else {
-		join_game_.hide();
-		observe_game_.hide();
-	}
-
+	games_menu_.set_game_items(*list, game_config());
+	join_game_.hide(!games_menu_.selection_is_joinable());
+	observe_game_.hide(!games_menu_.selection_is_observable());
 }
 
 void lobby::process_event()
 {
-	games_menu_.process();
+	join_game_.hide(!games_menu_.selection_is_joinable());
+	observe_game_.hide(!games_menu_.selection_is_observable());
 
-	int selection = games_menu_.selection();
+	const bool observe = observe_game_.pressed() || (games_menu_.selected() >= 0 && games_menu_.selection_is_observable() && !games_menu_.selection_is_joinable());
+	const bool join = join_game_.pressed() || (games_menu_.selected() >= 0 && games_menu_.selection_is_joinable());
 
-	if(selection >= 0 && selection < int(game_vacant_slots_.size())) {
-		if(selection != current_game_)
-			current_game_ = selection;
-		join_game_.hide(!game_vacant_slots_[selection]);
-		observe_game_.hide(!game_observers_[selection]);
-	} else {
-		join_game_.hide();
-		observe_game_.hide();
-	}
-
-	const bool games_available = game_vacant_slots_.empty() == false;
-	wassert(!games_available || selection >= 0 && selection < int(game_vacant_slots_.size()));
-	const bool double_click = games_menu_.double_clicked();
-	const bool observe = observe_game_.pressed() || games_available && !game_vacant_slots_[selection] && double_click && game_observers_[selection];
-
-	if(games_available && (observe || ((join_game_.pressed() || double_click) && game_vacant_slots_[selection]))) {
-		const size_t index = size_t(games_menu_.selection());
+	if(join || observe) {
 		const config* game = gamelist().child("gamelist");
 		if (game != NULL) {
 			const config::const_child_itors i = game->child_range("game");
-			wassert(index < size_t(i.second - i.first));
-			const std::string& id = (**(i.first+index))["id"];
+			const std::string& id = (**(i.first + games_menu_.selected()))["id"];
 
 			config response;
 			config& join = response.add_child("join");
 			join["id"] = id;
 			network::send_data(response);
 
-			if (observe) {
+			if(observe) {
 				set_result(OBSERVE);
 			} else {
 				set_result(JOIN);

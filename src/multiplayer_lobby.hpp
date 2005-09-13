@@ -20,11 +20,62 @@
 #include "display.hpp"
 #include "multiplayer_ui.hpp"
 
-#include "widgets/menu.hpp"
+#include "widgets/scrollarea.hpp"
 
 // This module controls the multiplayer lobby. A section on the server which
 // allows players to chat, create games, and join games.
 namespace mp {
+class gamebrowser : public gui::scrollarea {
+public:
+	struct game_item {
+		surface mini_map;
+		std::string map_data;
+		std::string name;
+		std::string map_info;
+		std::string gold;
+		std::string xp;
+		std::string vision;
+		std::string status;
+		size_t vacant_slots;
+		bool fog;
+		bool shroud;
+		bool observers;
+		bool use_map_settings;
+	};
+	gamebrowser(CVideo& video);
+	void scroll(int pos);
+	void handle_event(const SDL_Event& event);
+	void set_inner_location(const SDL_Rect& rect);
+	void set_item_height(unsigned int height);
+	void set_game_items(const config& cfg, const config& game_config);
+	void draw();
+	void draw_contents() const;
+	void draw_item(size_t index) const;
+	SDL_Rect get_item_rect(size_t index) const;
+	bool empty() const { return games_.empty(); }
+	bool selection_is_joinable() const { return empty() ? false : games_[selected_].vacant_slots; }
+	bool selection_is_observable() const { return empty() ? false : games_[selected_].observers; }
+	int selected() { return double_clicked_ && !empty() ? static_cast<int>(selected_) : -1; }
+protected:
+private:
+	image::locator gold_icon_locator_;
+	image::locator xp_icon_locator_;
+	image::locator vision_icon_locator_;
+	image::locator observer_icon_locator_;
+
+	unsigned int item_height_;
+	int margin_;
+	int h_padding_;
+	int v_padding_;
+	int header_height_;
+	size_t selected_;
+	std::pair<size_t, size_t> visible_range_;
+	std::vector<game_item> games_;
+	std::vector<size_t> redraw_items_;
+	bool double_clicked_;
+	bool ignore_next_doubleclick_;
+	bool last_was_doubleclick_;
+};
 
 class lobby : public ui
 {
@@ -62,7 +113,7 @@ private:
 	gui::button quit_game_;
 
 	lobby_sorter sorter_;
-	gui::menu games_menu_;
+	gamebrowser games_menu_;
 	int current_game_;
 
 	std::map<std::string,std::string> minimaps_;
