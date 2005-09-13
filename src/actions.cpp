@@ -1686,7 +1686,7 @@ bool clear_shroud_unit(const gamemap& map,
 		  || teams[team].is_enemy(sighted->second.side()) == false)) {
 			if(seen_units == NULL || known_units == NULL) {
 				static const std::string sighted("sighted");
-				game_events::fire(sighted,*it,loc);
+				game_events::raise(sighted,*it,loc);
 			} else if(known_units->count(*it) == 0) {
 				seen_units->insert(*it);
 			}
@@ -1711,6 +1711,7 @@ void recalculate_fog(const gamemap& map, const gamestatus& status,
 			clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
 		}
 	}
+	game_events::pump();
 }
 
 bool clear_shroud(display& disp, const gamestatus& status,
@@ -1730,6 +1731,7 @@ bool clear_shroud(display& disp, const gamestatus& status,
 			result |= clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
 		}
 	}
+	game_events::pump();
 
 	recalculate_fog(map,status,gamedata,units,teams,team);
 
@@ -1910,7 +1912,9 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		}
 	}
 
-	const bool event_mutated = game_events::fire("moveto",steps.back());
+	bool event_mutated = false;
+	if (game_events::fire("moveto",steps.back()))
+		event_mutated = true;
 
 	if(undo_stack != NULL) {
 		if(event_mutated || should_clear_stack) {
@@ -2074,8 +2078,18 @@ void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& sta
 			//we have to swap out any unit that is already in the hex, so we can put our
 			//unit there, then we'll swap back at the end.
 			const temporary_unit_placer unit_placer(units,*step,un->affected_unit);
-
 			clear_shroud_unit(map,status,gamedata,units,*step,teams,team,NULL,NULL);
+
+			//FIXME
+			//there is potential for a bug, here. If the "sighted"
+			//events, raised by the clear_shroud_unit function,
+			//loops on all units, changing them all, the unit which
+			//was swapped by the temporary unit placer will not be
+			//affected. However, if we place the pump() out of the
+			//temporary_unit_placer scope, the "sighted" event will
+			//be raised with an invalid source unit, which is even
+			//worse.
+			game_events::pump(); 
 		}
 	}
 	if(disp != NULL) {
