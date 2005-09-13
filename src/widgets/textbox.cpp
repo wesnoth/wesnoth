@@ -346,6 +346,16 @@ void textbox::erase_selection()
 	selstart_ = selend_ = -1;
 }
 
+namespace {
+	const unsigned int copypaste_modifier = 
+#ifdef __APPLE__
+		KMOD_LMETA | KMOD_RMETA
+#else
+		KMOD_CTRL
+#endif
+		;
+}
+
 void textbox::handle_event(const SDL_Event& event)
 {
 	scrollarea::handle_event(event);
@@ -438,10 +448,10 @@ void textbox::handle_event(const SDL_Event& event)
 	if(c == SDLK_RIGHT && cursor_ < text_.size())
 		++cursor_;
 
-	if(c == SDLK_END || (c == SDLK_e && (modifiers & KMOD_CTRL)))
+	if(c == SDLK_END || (c == SDLK_e && (modifiers & copypaste_modifier)))
 		cursor_ = text_.size();
 
-	if(c == SDLK_HOME || (c == SDLK_a && (modifiers & KMOD_CTRL)))
+	if(c == SDLK_HOME || (c == SDLK_a && (modifiers & copypaste_modifier)))
 		cursor_ = 0;
 
 	if((old_cursor != cursor_) && (modifiers & KMOD_SHIFT)) {
@@ -460,7 +470,7 @@ void textbox::handle_event(const SDL_Event& event)
 		}
 	}
 
-	if(c == SDLK_u && (modifiers & KMOD_CTRL)) {
+	if(c == SDLK_u && (modifiers & copypaste_modifier)) {
 		changed = true;
 		cursor_ = 0;
 		text_.resize(0);
@@ -489,7 +499,7 @@ void textbox::handle_event(const SDL_Event& event)
 		if(character != 0)
 			LOG_STREAM(info, display) << "Char: " << character << ", c = " << c << "\n";
 
-		if(event.key.keysym.mod & KMOD_CTRL) {
+		if(event.key.keysym.mod & copypaste_modifier) {
 			switch(c) {
 			case SDLK_v:
 				{
