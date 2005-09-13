@@ -255,8 +255,8 @@ std::vector<std::string> get_text() {
 		"-   RokStar",
 
 		"_" N_("+Japanese Translation"),
-		"-   Naoki Iimura",
-		"-   Nobuhito Okada",
+		"-   いいむらなおき (amatubu) - Naoki Iimura",
+		"-   岡田信人 - Nobuhito Okada",
 		"-   Yuji Matsumoto",
 
 		"_" N_("+Latin Translation"),
