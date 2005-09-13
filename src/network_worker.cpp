@@ -162,11 +162,14 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 				if(retval > 0)
 					continue;
 			}
-#else
-				SDL_Delay(10);
-				timeout -= 10;
+#elif defined(__BEOS__)
+				// sleep for 100 milliseconds
+				snooze(100000);
+				timeout -= 100;
 				continue;
 			}
+#else
+		}
 #endif
 			return SOCKET_ERROR;
 		}
