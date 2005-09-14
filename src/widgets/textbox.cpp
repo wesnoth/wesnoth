@@ -448,10 +448,11 @@ void textbox::handle_event(const SDL_Event& event)
 	if(c == SDLK_RIGHT && cursor_ < text_.size())
 		++cursor_;
 
-	if(c == SDLK_END || (c == SDLK_e && (modifiers & copypaste_modifier)))
+	// ctrl-a, ctrl-e and ctrl-u are readline style shortcuts, even on Macs
+	if(c == SDLK_END || (c == SDLK_e && (modifiers & KMOD_CTRL)))
 		cursor_ = text_.size();
 
-	if(c == SDLK_HOME || (c == SDLK_a && (modifiers & copypaste_modifier)))
+	if(c == SDLK_HOME || (c == SDLK_a && (modifiers & KMOD_CTRL)))
 		cursor_ = 0;
 
 	if((old_cursor != cursor_) && (modifiers & KMOD_SHIFT)) {
@@ -470,7 +471,7 @@ void textbox::handle_event(const SDL_Event& event)
 		}
 	}
 
-	if(c == SDLK_u && (modifiers & copypaste_modifier)) {
+	if(c == SDLK_u && (modifiers & KMOD_CTRL)) { // clear line
 		changed = true;
 		cursor_ = 0;
 		text_.resize(0);
@@ -501,7 +502,7 @@ void textbox::handle_event(const SDL_Event& event)
 
 		if(event.key.keysym.mod & copypaste_modifier) {
 			switch(c) {
-			case SDLK_v:
+			case SDLK_v: // paste
 				{
 				changed = true;
 				if(is_selection())
@@ -526,7 +527,7 @@ void textbox::handle_event(const SDL_Event& event)
 
 				break;
 
-			case SDLK_c:
+			case SDLK_c: // copy
 				{
 				const size_t beg = minimum<size_t>(size_t(selstart_),size_t(selend_));
 				const size_t end = maximum<size_t>(size_t(selstart_),size_t(selend_));
