@@ -137,11 +137,14 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 		}
 	}
 
-	const std::string& chosen_unit = choice < options.size() ? options[choice] : u->second.type().id();
-	::advance_unit(info,units,loc,chosen_unit);
+	if(choice < options.size()) {
+		const std::string& chosen_unit = choice < options.size() ? options[choice] : u->second.type().id();
+		::advance_unit(info,units,loc,chosen_unit);
+	}
 
 	u = units.find(loc);
 	if(u != units.end() && choice >= options.size()) {
+		u->second.get_experience(-u->second.experience()); //reset xp to 0
 		u->second.add_modification("advance",*mod_options[choice - options.size()]);
 	}
 
