@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-09-07 12:12+0200\n"
+"POT-Creation-Date: 2005-09-14 23:24+0200\n"
 "PO-Revision-Date: 2005-09-07 21:32+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Max HP bonus +"
 msgstr "Máxima bonificación en pv +"
 
-#: data/amla.cfg:21
+#: data/amla.cfg:22
 msgid "Full Heal"
 msgstr "Curación completa"
 
@@ -3590,11 +3590,11 @@ msgid "Underground"
 msgstr "Bajo tierra"
 
 #: data/terrain.cfg:11 src/multiplayer_create.cpp:52
-#: src/multiplayer_lobby.cpp:189
+#: src/multiplayer_lobby.cpp:311 src/multiplayer_lobby.cpp:317
 msgid "Shroud"
 msgstr "Oculto"
 
-#: data/terrain.cfg:18 src/multiplayer_lobby.cpp:212
+#: data/terrain.cfg:18 src/multiplayer_lobby.cpp:307
 msgid "Fog"
 msgstr "Niebla"
 
@@ -3678,8 +3678,7 @@ msgstr "Fin de turno"
 msgid "HP"
 msgstr "pv"
 
-#: data/themes/default.cfg:176 src/multiplayer_lobby.cpp:208
-#: src/playturn.cpp:2068 src/playturn.cpp:2248
+#: data/themes/default.cfg:176 src/playturn.cpp:2068 src/playturn.cpp:2248
 msgid "XP"
 msgstr "PX"
 
@@ -4563,8 +4562,8 @@ msgstr "frío"
 #: data/units/Ancient_Lich.cfg:49 data/units/Blood_Bat.cfg:38
 #: data/units/Dark_Spirit.cfg:37 data/units/Demilich.cfg:37
 #: data/units/Dread_Lich.cfg:26 data/units/Lich.cfg:29
-#: data/units/Orcish_Shaman.cfg:42 data/units/Orcish_Shaman.cfg:102
-#: data/units/Orcish_Shaman.cfg:162 data/units/Skeletal_Dragon.cfg:34
+#: data/units/Orcish_Shaman.cfg:45 data/units/Orcish_Shaman.cfg:108
+#: data/units/Orcish_Shaman.cfg:171 data/units/Skeletal_Dragon.cfg:34
 #: data/units/Spectre.cfg:57 data/units/Vampire_Bat.cfg:24
 #: data/units/Vampire_Lady.cfg:27 data/units/Vampire_Lady.cfg:40
 #: data/units/Wraith.cfg:33
@@ -4684,8 +4683,8 @@ msgstr "aplastar"
 #: data/units/Merman_Entangler.cfg:31 data/units/Merman_Netcaster.cfg:30
 #: data/units/Mounted_Fighter.cfg:45 data/units/Mounted_Warrior.cfg:45
 #: data/units/Mudcrawler.cfg:45 data/units/Necromancer.cfg:22
-#: data/units/Noble_Youth.cfg:25 data/units/Orcish_Shaman.cfg:21
-#: data/units/Orcish_Shaman.cfg:81 data/units/Orcish_Shaman.cfg:141
+#: data/units/Noble_Youth.cfg:25 data/units/Orcish_Shaman.cfg:24
+#: data/units/Orcish_Shaman.cfg:87 data/units/Orcish_Shaman.cfg:150
 #: data/units/Outlaw.cfg:22 data/units/Outlaw.cfg:40 data/units/Outlaw.cfg:96
 #: data/units/Outlaw.cfg:114 data/units/Outlaw_Princess.cfg:54
 #: data/units/Outlaw_Princess.cfg:78 data/units/Outlaw_Queen.cfg:56
@@ -4753,8 +4752,8 @@ msgstr ""
 #: data/units/Mage.cfg:109 data/units/Mermaid_Diviner.cfg:31
 #: data/units/Mermaid_Enchantress.cfg:23 data/units/Mermaid_Initiate.cfg:25
 #: data/units/Mermaid_Priestess.cfg:26 data/units/Necromancer.cfg:21
-#: data/units/Orcish_Shaman.cfg:20 data/units/Orcish_Shaman.cfg:80
-#: data/units/Orcish_Shaman.cfg:140 data/units/Outlaw_Princess.cfg:53
+#: data/units/Orcish_Shaman.cfg:23 data/units/Orcish_Shaman.cfg:86
+#: data/units/Orcish_Shaman.cfg:149 data/units/Outlaw_Princess.cfg:53
 #: data/units/Outlaw_Queen.cfg:55 data/units/Red_Mage.cfg:27
 #: data/units/Red_Mage.cfg:124 data/units/Saurian_Icecaster.cfg:24
 #: data/units/Saurian_Soothsayer.cfg:24 data/units/Saurian_Tribalist.cfg:23
@@ -5134,8 +5133,8 @@ msgstr "arco"
 #: data/units/Naga.cfg:25 data/units/Noble_Commander.cfg:47
 #: data/units/Noble_Lord.cfg:47 data/units/Orcish_Archer.cfg:38
 #: data/units/Orcish_Crossbowman.cfg:40 data/units/Orcish_Leader.cfg:38
-#: data/units/Orcish_Ruler.cfg:39 data/units/Orcish_Shaman.cfg:38
-#: data/units/Orcish_Shaman.cfg:98 data/units/Orcish_Shaman.cfg:158
+#: data/units/Orcish_Ruler.cfg:39 data/units/Orcish_Shaman.cfg:41
+#: data/units/Orcish_Shaman.cfg:104 data/units/Orcish_Shaman.cfg:167
 #: data/units/Orcish_Slurbow.cfg:41 data/units/Orcish_Sovereign.cfg:44
 #: data/units/Orcish_Warlord.cfg:42 data/units/Paladin.cfg:48
 #: data/units/Peasant.cfg:22 data/units/Peasant.cfg:35
@@ -8306,7 +8305,7 @@ msgstr ""
 msgid "Orcish Shaman"
 msgstr "Chamán orco"
 
-#: data/units/Orcish_Shaman.cfg:17
+#: data/units/Orcish_Shaman.cfg:20
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -8323,16 +8322,16 @@ msgstr ""
 "chamanes son buenos magos y pueden maldecir a sus enemigos, drenándoles la "
 "vida."
 
-#: data/units/Orcish_Shaman.cfg:37 data/units/Orcish_Shaman.cfg:97
-#: data/units/Orcish_Shaman.cfg:157 data/units/Vampire_Lady.cfg:35
+#: data/units/Orcish_Shaman.cfg:40 data/units/Orcish_Shaman.cfg:103
+#: data/units/Orcish_Shaman.cfg:166 data/units/Vampire_Lady.cfg:35
 msgid "curse"
 msgstr "maldición"
 
-#: data/units/Orcish_Shaman.cfg:63
+#: data/units/Orcish_Shaman.cfg:66
 msgid "Novice Orcish Shaman"
 msgstr "Chamán orco novato"
 
-#: data/units/Orcish_Shaman.cfg:77
+#: data/units/Orcish_Shaman.cfg:83
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -8351,11 +8350,11 @@ msgstr ""
 "vida. Los chamanes novatos aún son jóvenes y vigorosos, pero su habilidad "
 "para usar la magia todavía necesita mejorar."
 
-#: data/units/Orcish_Shaman.cfg:123
+#: data/units/Orcish_Shaman.cfg:129
 msgid "Old Orcish Shaman"
 msgstr "Chamán orco anciano"
 
-#: data/units/Orcish_Shaman.cfg:137
+#: data/units/Orcish_Shaman.cfg:146
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -9664,115 +9663,115 @@ msgstr "+Traducción vasca"
 msgid "+Bulgarian Translation"
 msgstr "+Traducción búlgara"
 
-#: src/about.cpp:146
+#: src/about.cpp:147
 msgid "+Catalan Translation"
 msgstr "+Traducción catalana"
 
-#: src/about.cpp:155
+#: src/about.cpp:156
 msgid "+Chinese Translation"
 msgstr "+Traducción china"
 
-#: src/about.cpp:158
+#: src/about.cpp:159
 msgid "+Czech Translation"
 msgstr "+Traducción checa"
 
-#: src/about.cpp:170
+#: src/about.cpp:171
 msgid "+Danish Translation"
 msgstr "+Traducción danesa"
 
-#: src/about.cpp:177
+#: src/about.cpp:178
 msgid "+Dutch Translation"
 msgstr "+Traducción neerlandesa"
 
-#: src/about.cpp:185
+#: src/about.cpp:186
 msgid "+English (GB) Translation"
 msgstr "+Traducción británica"
 
-#: src/about.cpp:188
+#: src/about.cpp:189
 msgid "+Estonian Translation"
 msgstr "+Traducción estonia"
 
-#: src/about.cpp:191
+#: src/about.cpp:192
 msgid "+Finnish Translation"
 msgstr "+Traducción finesa"
 
-#: src/about.cpp:197
+#: src/about.cpp:198
 msgid "+French Translation"
 msgstr "+Traducción francesa"
 
-#: src/about.cpp:216
+#: src/about.cpp:217
 msgid "+German Translation"
 msgstr "+Traducción alemana"
 
-#: src/about.cpp:228
+#: src/about.cpp:229
 msgid "+Greek Translation"
 msgstr "+Traducción griega"
 
-#: src/about.cpp:234
+#: src/about.cpp:235
 msgid "+Hungarian Translation"
 msgstr "+Traducción húngara"
 
-#: src/about.cpp:247
+#: src/about.cpp:248
 msgid "+Italian Translation"
 msgstr "+Traducción italiana"
 
-#: src/about.cpp:256
+#: src/about.cpp:257
 msgid "+Japanese Translation"
 msgstr "+Traducción japonesa"
 
-#: src/about.cpp:261
+#: src/about.cpp:262
 msgid "+Latin Translation"
 msgstr "+Traducción al latín"
 
-#: src/about.cpp:264
+#: src/about.cpp:265
 msgid "+Norwegian Translation"
 msgstr "+Traducción noruega"
 
-#: src/about.cpp:270
+#: src/about.cpp:271
 msgid "+Polish Translation"
 msgstr "+Traducción polaca"
 
-#: src/about.cpp:280
+#: src/about.cpp:281
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Traducción al portugués de Brasil"
 
-#: src/about.cpp:289
+#: src/about.cpp:290
 msgid "+Russian Translation"
 msgstr "+Traducción rusa"
 
-#: src/about.cpp:295
+#: src/about.cpp:296
 msgid "+Serbian Translation"
 msgstr "+Traducción serbia"
 
-#: src/about.cpp:298
+#: src/about.cpp:299
 msgid "+Slovak Translation"
 msgstr "+Traducción eslovaca"
 
-#: src/about.cpp:301
+#: src/about.cpp:302
 msgid "+Slovenian Translation"
 msgstr "+Traducción eslovena"
 
-#: src/about.cpp:304
+#: src/about.cpp:305
 msgid "+Spanish Translation"
 msgstr "+Traducción española"
 
-#: src/about.cpp:312
+#: src/about.cpp:313
 msgid "+Swedish Translation"
 msgstr "+Traducción sueca"
 
-#: src/about.cpp:319
+#: src/about.cpp:320
 msgid "+Turkish Translation"
 msgstr "+Traducción turca"
 
-#: src/about.cpp:325
+#: src/about.cpp:326
 msgid "+Contributors"
 msgstr "+Colaboradores"
 
-#: src/about.cpp:328
+#: src/about.cpp:329
 msgid "+Bots"
 msgstr "+Robots"
 
-#: src/about.cpp:364 src/help.cpp:2662
+#: src/about.cpp:365 src/help.cpp:2662
 msgid "Close"
 msgstr "Cerrar"
 
@@ -9789,7 +9788,7 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "No hay zonas de castillo libres para reclutar unidades."
 
-#: src/actions.cpp:323
+#: src/actions.cpp:323 src/multiplayer_lobby.cpp:321
 msgid "none"
 msgstr "ninguna"
 
@@ -9851,31 +9850,31 @@ msgstr "envenenado"
 msgid "slowed"
 msgstr "ralentizado"
 
-#: src/actions.cpp:1938
+#: src/actions.cpp:1934
 msgid "Ambushed!"
 msgstr "¡Emboscada!"
 
-#: src/actions.cpp:1972
+#: src/actions.cpp:1968
 msgid "Friendly unit sighted"
 msgstr "¡Aliado avistado!"
 
-#: src/actions.cpp:1974
+#: src/actions.cpp:1970
 msgid "Enemy unit sighted!"
 msgstr "¡Enemigo avistado!"
 
-#: src/actions.cpp:1979
+#: src/actions.cpp:1975
 msgid "$friends Friendly units sighted"
 msgstr "$friends unidades aliadas avistadas"
 
-#: src/actions.cpp:1981
+#: src/actions.cpp:1977
 msgid "$enemies Enemy units sighted!"
 msgstr "¡$enemies unidades enemigas avistadas!"
 
-#: src/actions.cpp:1985
+#: src/actions.cpp:1981
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Unidades avistadas ($friends aliadas, $enemies enemigas)"
 
-#: src/actions.cpp:2000
+#: src/actions.cpp:1996
 msgid "(press $hotkey to continue)"
 msgstr "(pulse $hotkey para continuar)"
 
@@ -9935,7 +9934,7 @@ msgstr "Tutorial"
 msgid "replay"
 msgstr "repetición"
 
-#: src/dialogs.cpp:387 src/multiplayer_lobby.cpp:202 src/playturn.cpp:1633
+#: src/dialogs.cpp:387 src/multiplayer_lobby.cpp:295 src/playturn.cpp:1633
 msgid "Turn"
 msgstr ", turno"
 
@@ -10072,7 +10071,7 @@ msgstr ""
 "Aviso: El fichero que ha intentado cargar está corrompido. Cargando de todos "
 "modos.\n"
 
-#: src/game.cpp:651 src/multiplayer_connect.cpp:905
+#: src/game.cpp:651 src/multiplayer_connect.cpp:928
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -10080,7 +10079,7 @@ msgstr ""
 "Esta partida guardada es de otra versión del juego. ¿Quiere intentar "
 "cargarla igualmente?"
 
-#: src/game.cpp:659 src/game.cpp:662 src/multiplayer_connect.cpp:890
+#: src/game.cpp:659 src/game.cpp:662 src/multiplayer_connect.cpp:913
 msgid "The file you have tried to load is corrupt: '"
 msgstr "El fichero que ha intentado cargar está corrupto: '"
 
@@ -10237,7 +10236,7 @@ msgstr "Unirse al servidor oficial"
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Entrar al servidor multijugador oficial de Wesnoth"
 
-#: src/game.cpp:1132 src/multiplayer_lobby.cpp:108
+#: src/game.cpp:1132 src/multiplayer_lobby.cpp:407
 msgid "Join Game"
 msgstr "Unirse a la partida"
 
@@ -10590,7 +10589,7 @@ msgstr "No se permiten bandos no aleatorios en la era actual"
 msgid "Unable to find a leader type for faction $faction"
 msgstr "No se encontró un tipo de líder para la facción $faction"
 
-#: src/multiplayer_connect.cpp:486 src/multiplayer_lobby.cpp:105
+#: src/multiplayer_connect.cpp:486 src/multiplayer_lobby.cpp:404
 #: src/multiplayer_wait.cpp:146
 msgid "Game Lobby"
 msgstr "Sala de juego"
@@ -10611,8 +10610,7 @@ msgstr "Bando"
 msgid "Color"
 msgstr "Color"
 
-#: src/multiplayer_connect.cpp:503 src/multiplayer_lobby.cpp:208
-#: src/playturn.cpp:1789 src/playturn.cpp:1800
+#: src/multiplayer_connect.cpp:503 src/playturn.cpp:1789 src/playturn.cpp:1800
 msgid "Gold"
 msgstr "Oro"
 
@@ -10644,15 +10642,15 @@ msgstr "IA (computadora)"
 msgid "Empty"
 msgstr "Vacío"
 
-#: src/multiplayer_connect.cpp:897
+#: src/multiplayer_connect.cpp:920
 msgid "This is not a multiplayer save"
 msgstr "Ésta no es una partida guardada en modo multijugador."
 
-#: src/multiplayer_connect.cpp:938
+#: src/multiplayer_connect.cpp:961
 msgid "Cannot find era $era"
 msgstr "No se encuentra la era $era"
 
-#: src/multiplayer_connect.cpp:956
+#: src/multiplayer_connect.cpp:979
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -10660,11 +10658,11 @@ msgstr ""
 "Victoria\n"
 "@Derrota al/los líder/es enemigo/s"
 
-#: src/multiplayer_connect.cpp:992
+#: src/multiplayer_connect.cpp:1015
 msgid "Waiting for players to join..."
 msgstr "Esperando a que se conecten jugadores..."
 
-#: src/multiplayer_create.cpp:34 src/multiplayer_lobby.cpp:109
+#: src/multiplayer_create.cpp:34 src/multiplayer_lobby.cpp:408
 msgid "Create Game"
 msgstr "Crear partida"
 
@@ -10680,7 +10678,8 @@ msgstr "Era:"
 msgid "Map to play:"
 msgstr "Mapa para jugar:"
 
-#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:210
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:300
+#: src/multiplayer_lobby.cpp:301
 msgid "Use map settings"
 msgstr "Usar ajustes del mapa"
 
@@ -10794,25 +10793,25 @@ msgstr "Ajustes"
 msgid "Status"
 msgstr "Estado"
 
-#: src/multiplayer_lobby.cpp:107
-msgid "Observe Game"
-msgstr "Observar juego"
+#: src/multiplayer_lobby.cpp:98
+msgid "<no games open>"
+msgstr "<no hay juegos abiertos>"
 
-#: src/multiplayer_lobby.cpp:110
-msgid "Quit"
-msgstr "Salir"
-
-#: src/multiplayer_lobby.cpp:205
+#: src/multiplayer_lobby.cpp:297
 msgid "Vacant Slot"
 msgstr "Plaza libre"
 
-#: src/multiplayer_lobby.cpp:205
+#: src/multiplayer_lobby.cpp:297
 msgid "Vacant Slots"
 msgstr "Plazas libres"
 
-#: src/multiplayer_lobby.cpp:221
-msgid "<no games open>"
-msgstr "<no hay juegos abiertos>"
+#: src/multiplayer_lobby.cpp:406
+msgid "Observe Game"
+msgstr "Observar juego"
+
+#: src/multiplayer_lobby.cpp:409
+msgid "Quit"
+msgstr "Salir"
 
 #: src/multiplayer_ui.cpp:78
 msgid "Red"
