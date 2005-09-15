@@ -124,7 +124,9 @@ condition::WAIT_TIMEOUT_RESULT condition::wait_timeout(const mutex& m, unsigned 
 	switch(res) {
 		case 0: return WAIT_OK;
 		case SDL_MUTEX_TIMEDOUT: return WAIT_TIMEOUT;
-		default: return WAIT_ERROR;
+		default:
+			ERR_G << "SDL_CondWaitTimeout: " << SDL_GetError() << "\n";
+			return WAIT_ERROR;
 	}
 }
 
@@ -173,9 +175,11 @@ async_operation::RESULT async_operation::execute(waiter& wait)
 			if(res == condition::WAIT_OK || finishedVar_) {
 				completed = true;
 				break;
+#ifndef __BEOS__
 			} else if(res == condition::WAIT_ERROR) {
 				break;
 			}
+#endif
 		}
 
 		if(!completed) {
