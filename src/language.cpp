@@ -57,6 +57,7 @@ language_def known_languages[] = {
 	language_def("nl_NL", "Nederlands"),
 	language_def("ja_JP", "日本語 (Nihongo)"),
 	language_def("no_NO", "Norsk"),
+        language_def("oc_FR", "Occitan"),
 	language_def("pl_PL", "Polski"),
 	language_def("pt_BR", "Português do Brasil"),
 	language_def("ru_RU", "Русский (Russkij)"),
