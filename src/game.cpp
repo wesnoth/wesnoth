@@ -1016,6 +1016,9 @@ void game_controller::download_campaigns()
 		refresh_game_cfg();
 		use_caching_ = old_cache;
 		::init_textdomains(game_config_);
+		paths_manager_.set_paths(game_config_);
+
+		clear_binary_paths_cache();
 
 		gui::show_dialog(disp(),NULL,_("Campaign Installed"),_("The campaign has been installed."),gui::OK_ONLY);
 	} catch(config::error&) {

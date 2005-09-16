@@ -133,6 +133,7 @@ private:
 	std::vector<std::string> paths_;
 };
 
+void clear_binary_paths_cache();
 
 //function which, given a type of binary, e.g. 'images', 'sounds', etc,
 //will return a vector with all possible paths to that type of binary

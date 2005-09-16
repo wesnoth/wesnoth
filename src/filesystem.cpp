@@ -769,6 +769,11 @@ void binary_paths_manager::cleanup()
 	}
 }
 
+void clear_binary_paths_cache()
+{
+	binary_paths_cache.clear();
+}
+
 const std::vector<std::string>& get_binary_paths(const std::string& type)
 {
 	const paths_map::const_iterator itor = binary_paths_cache.find(type);
