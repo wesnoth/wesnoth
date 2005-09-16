@@ -175,8 +175,9 @@ async_operation::RESULT async_operation::execute(waiter& wait)
 			if(res == condition::WAIT_OK || finishedVar_) {
 				completed = true;
 				break;
+			}
 #ifndef __BEOS__
-			} else if(res == condition::WAIT_ERROR) {
+			else if(res == condition::WAIT_ERROR) {
 				break;
 			}
 #endif
