@@ -150,6 +150,7 @@ std::vector<std::string> get_text() {
 		"-   Daniel López (Azazelo)",
 		"-   Jonatan Alamà (tin)",
 		"-   Jordà Polo (ettin)",
+		"-   Jose Gordillo (kilder)",
 		"-   Mark Recasens",
 		"-   Pau Rul·lan Ferragut",
 
