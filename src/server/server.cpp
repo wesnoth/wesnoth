@@ -15,6 +15,7 @@
 
 #include "../config.hpp"
 #include "../game_config.hpp"
+#include "../log.hpp"
 #include "../network.hpp"
 #include "../util.hpp"
 #include "../wassert.hpp"
@@ -85,7 +86,7 @@ void truncate_message(t_string& str)
 class server
 {
 public:
-	server(int port, input_stream& input, const config& cfg);
+	server(int port, input_stream& input, const config& cfg, size_t nthreads);
 	void run();
 private:
 	void process_data(network::connection sock, config& data, config& gamelist);
@@ -136,7 +137,7 @@ private:
 	std::vector<std::string> bans_;
 };
 
-server::server(int port, input_stream& input, const config& cfg) : net_manager_(5), server_(port),
+server::server(int port, input_stream& input, const config& cfg, size_t nthreads) : net_manager_(nthreads), server_(port),
     not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input), cfg_(cfg)
 {
 	version_query_response_.add_child("version");
@@ -993,6 +994,7 @@ void server::delete_game(std::vector<game>::iterator i)
 int main(int argc, char** argv)
 {
 	int port = 15000;
+	size_t nthreads = 5;
 
 	network::set_default_send_size(4096);
 
@@ -1024,8 +1026,9 @@ int main(int argc, char** argv)
 			}
 		} else if((val == "--max_packet_size" || val == "-m") && arg+1 != argc) {
 			network::set_default_send_size(size_t(atoi(argv[++arg])));
-		}
-		else if((val == "--port" || val == "-p") && arg+1 != argc) {
+		} else if(val == "--verbose" || val == "-v") {
+			lg::set_log_domain_severity("all",2);
+		} else if((val == "--port" || val == "-p") && arg+1 != argc) {
 			port = atoi(argv[++arg]);
 		} else if(val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
@@ -1033,7 +1036,8 @@ int main(int argc, char** argv)
 				<< "  -d  --daemon               Runs wesnothd as a daemon\n"
 				<< "  -m, --max_packet_size n    Sets the maximal packet size to n\n"
 				<< "  -p, --port                 Binds the server to the specified port\n"
-				<< "  -v, --version              Returns the server version\n";
+				<< "  -v, --version              Returns the server version\n"
+				<< "  -t, --threads n            Uses n worker threads for network I/O (default: 5)\n";
 			return 0;
 		} else if(val == "--version" || val == "-v") {
 			std::cout << "Battle for Wesnoth server " << game_config::version
@@ -1055,6 +1059,11 @@ int main(int argc, char** argv)
 
 			setsid();
 #endif
+		} else if((val == "--threads" || val == "-t") && arg+1 != argc) {
+			nthreads = atoi(argv[++arg]);
+			if(nthreads > 30) {
+				nthreads = 30;
+			}
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << "\n";
 			return 0;
@@ -1066,7 +1075,7 @@ int main(int argc, char** argv)
 	input_stream input(fifo_path);
 
 	try {
-		server(port,input,configuration).run();
+		server(port,input,configuration,nthreads).run();
 	} catch(network::error& e) {
 		std::cerr << "caught network error while server was running. aborting.: " << e.message << "\n";
 		return -1;
