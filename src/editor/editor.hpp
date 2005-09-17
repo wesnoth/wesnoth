@@ -91,6 +91,9 @@ public:
 	/// Recalculate layout and redraw everything.
 	void redraw_everything();
 
+	// Change the language in_game
+	virtual void change_language();
+
 	// Methods inherited from command_executor. Used to perform
 	// operations on menu/hotkey commands.
 	virtual void toggle_grid();

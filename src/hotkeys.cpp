@@ -107,6 +107,8 @@ const struct {
 	{ hotkey::HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false },
 	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false },
 
+	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change language"), true },
+
 	{ hotkey::HOTKEY_NULL, NULL, NULL, true }
 };
 
@@ -643,6 +645,10 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		 case HOTKEY_EDIT_REFRESH:
 			if(executor)
 				executor->edit_refresh();
+			break;
+		 case HOTKEY_LANGUAGE:
+			if(executor)
+				executor->change_language();
 			break;
 		default:
 			std::cerr << "command_executor: unknown command number " << command << ", ignoring.\n";

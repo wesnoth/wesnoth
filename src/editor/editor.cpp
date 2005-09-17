@@ -21,6 +21,7 @@
 #include "../game_config.hpp"
 #include "../gettext.hpp"
 #include "../key.hpp"
+#include "../language.hpp"
 #include "../widgets/menu.hpp"
 #include "../pathfind.hpp"
 #include "../playlevel.hpp"
@@ -42,6 +43,7 @@
 #include <cctype>
 #include <iostream>
 #include <map>
+#include <vector>
 #include <string>
 #include <cmath>
 
@@ -155,7 +157,7 @@ void map_editor::load_tooltips()
 		std::string text = "";
 
 		const std::vector<std::string> &menu_items = (*it).items();
-	if (menu_items.size() == 1) {
+		if (menu_items.size() == 1) {
 			if(menu_items.back() == "editdraw")
 				text = _("Draw tiles");
 			else if(menu_items.back() == "editfloodfill")
@@ -355,6 +357,39 @@ void map_editor::right_click(const gamemap::location hex_clicked ) {
 			palette_.select_bg_terrain(terrain);
 		}
 	}
+}
+
+// Set the language...
+void map_editor::change_language() {
+	std::vector<language_def> langdefs = get_languages();
+
+	// this only works because get_languages() returns a fresh vector at each calls
+	// unless show_gui cleans the "*" flag
+	const std::vector<language_def>::iterator current = std::find(langdefs.begin(),langdefs.end(),get_language());
+	if(current != langdefs.end()) {
+		(*current).language = "*" + (*current).language;
+	}
+
+	// prepare a copy with just the labels for the list to be displayed
+	std::vector<std::string> langs;
+	langs.reserve(langdefs.size());
+	std::transform(langdefs.begin(),langdefs.end(),std::back_inserter(langs),languagedef_name);
+
+	const int res = gui::show_dialog(gui_,NULL,_("Language"),
+	                         _("Choose your preferred language:"),
+	                         gui::OK_CANCEL,&langs);
+	if(size_t(res) < langs.size()) {
+		::set_language(known_languages[res]);
+		preferences::set_language(known_languages[res].localename);
+
+		game_config_.reset_translation();
+
+		// Reload tooltips and menu items
+		load_tooltips();
+	}
+
+	font::load_font_config();
+	hotkey::load_descriptions();
 }
 
 
@@ -698,6 +733,7 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	case hotkey::HOTKEY_EDIT_SELECT_ALL:
 	case hotkey::HOTKEY_EDIT_DRAW:
 	case hotkey::HOTKEY_EDIT_REFRESH:
+	case hotkey::HOTKEY_LANGUAGE:
 		return true;
 	default:
 		return false;
