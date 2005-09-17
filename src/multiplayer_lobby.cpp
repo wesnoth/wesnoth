@@ -465,9 +465,14 @@ void lobby::process_event()
 
 	if(join || observe) {
 		const config* game = gamelist().child("gamelist");
-		if (game != NULL) {
+
+		const int selected = games_menu_.selection();
+		if(game != NULL && selected >= 0) {
 			const config::const_child_itors i = game->child_range("game");
-			const std::string& id = (**(i.first + games_menu_.selected()))["id"];
+			wassert(i.first + selected < i.second);
+
+			const config& game_cfg = **(i.first + selected);
+			const std::string& id = game_cfg["id"];
 
 			config response;
 			config& join = response.add_child("join");
