@@ -202,6 +202,7 @@ void team::team_info::write(config& cfg) const
 	for(std::vector<config>::const_iterator ai = ai_params.begin(); ai != ai_params.end(); ++ai) {
 		cfg.add_child("ai",*ai);
 	}
+	cfg["ai_algorithm"] = ai_algorithm;
 
 	cfg["gold"] = gold;
 	cfg["income"] = income;
@@ -233,7 +234,6 @@ void team::team_info::write(config& cfg) const
 	case EMPTY: cfg["controller"] = "null"; break;
 	default: wassert(false);
 	}
-
 	cfg["persistent"] = persistent ? "1" : "0";
 
 	sprintf(buf,"%d",villages_per_scout);
