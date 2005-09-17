@@ -470,6 +470,7 @@ std::istream *istream_file(std::string const &fname)
 		std::ifstream *s = new std::ifstream((game_config::path + "/" + fname).c_str(),std::ios_base::binary);
 		if (s->is_open())
 			return s;
+		LOG_FS << "could not open " << fname << " for reading.\n";
 		delete s;
 	}
 #endif
