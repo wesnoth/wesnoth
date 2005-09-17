@@ -460,8 +460,8 @@ void lobby::process_event()
 	join_game_.hide(!games_menu_.selection_is_joinable());
 	observe_game_.hide(!games_menu_.selection_is_observable());
 
-	const bool observe = observe_game_.pressed() || (games_menu_.selected() >= 0 && games_menu_.selection_is_observable() && !games_menu_.selection_is_joinable());
-	const bool join = join_game_.pressed() || (games_menu_.selected() >= 0 && games_menu_.selection_is_joinable());
+	const bool observe = (observe_game_.pressed() || (games_menu_.selected() && !games_menu_.selection_is_joinable())) && games_menu_.selection_is_observable();
+	const bool join = (join_game_.pressed() || games_menu_.selected()) && games_menu_.selection_is_joinable();
 
 	if(join || observe) {
 		const config* game = gamelist().child("gamelist");

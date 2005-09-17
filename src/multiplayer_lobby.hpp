@@ -55,7 +55,7 @@ public:
 	bool empty() const { return games_.empty(); }
 	bool selection_is_joinable() const { return empty() ? false : games_[selected_].vacant_slots; }
 	bool selection_is_observable() const { return empty() ? false : games_[selected_].observers; }
-	int selected() const { return double_clicked_ && !empty() ? static_cast<int>(selected_) : -1; }
+	bool selected() const { return double_clicked_ && !empty(); }
 	int selection() const { return selected_; }
 protected:
 private:
