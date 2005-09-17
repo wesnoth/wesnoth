@@ -13,6 +13,8 @@
 
 #include "global.hpp"
 
+#include <memory>
+
 #include "display.hpp"
 #include "gettext.hpp"
 #include "image.hpp"
@@ -20,6 +22,7 @@
 #include "map_create.hpp"
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
+#include "log.hpp"
 #include "preferences.hpp"
 #include "video.hpp"
 #include "serialization/string_utils.hpp"
@@ -300,11 +303,21 @@ void create::process_event()
 		regenerate_map_.hide(generator_ == NULL);
 
 		const std::string& map_data = parameters_.scenario_data["map_data"];
-		gamemap map(game_config(), map_data);
+
+		std::auto_ptr<gamemap> map(NULL);
+		try {
+			map.reset(new gamemap(game_config(), map_data));
+		} catch(gamemap::incorrect_format_exception& e) {
+			LOG_STREAM(err,general) << "map could not be loaded: " << e.msg_ << "\n";
+			tooltips::clear_tooltips(minimap_rect_);
+			tooltips::add_tooltip(minimap_rect_,e.msg_);
+		}
+
+		launch_game_.enable(map.get() != NULL);
 
 		//if there are less sides in the configuration than there are starting
 		//positions, then generate the additional sides
-		const int map_positions = map.num_valid_starting_positions();
+		const int map_positions = map.get() != NULL ? map->num_valid_starting_positions() : 0;
 
 		for(int pos =  parameters_.scenario_data.get_children("side").size(); pos < map_positions; ++pos) {
 			config& side = parameters_.scenario_data.add_child("side");
@@ -321,21 +334,28 @@ void create::process_event()
 					  parameters_.scenario_data.get_children("side").size()-1);
 		}
 
-		const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,map,0));
-		if(mini != NULL) {
-			SDL_Rect rect = minimap_rect_;
-			SDL_BlitSurface(mini, NULL, video().getSurface(), &rect);
-			update_rect(rect);
+		if(map.get() != NULL) {
+			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,*map,0));
+			if(mini != NULL) {
+				SDL_Rect rect = minimap_rect_;
+				SDL_BlitSurface(mini, NULL, video().getSurface(), &rect);
+				update_rect(rect);
+			}
 		}
+
 		const int nsides = parameters_.scenario_data.get_children("side").size();
 		std::stringstream players;
-		players << _("Players: ") << nsides;
+		if(map.get() != NULL) {
+			players << _("Players: ") << nsides;
+		} else {
+			players << _("Error");
+		}
 		num_players_label_.set_text(players.str());
 
 		if(use_map_settings_.checked()) {
 			try {
 				xp_modifier_slider_.set_value(lexical_cast<int>(parameters_.scenario_data["experience_modifier"]));
-			} catch(bad_lexical_cast bad_lexical) {
+			} catch(bad_lexical_cast&) {
 				xp_modifier_slider_.set_value(preferences::xp_modifier());
 			}
 		}
@@ -378,13 +398,19 @@ void create::hide_children(bool hide)
 		minimap_restorer_.assign(new surface_restorer(&video(), minimap_rect_));
 
 		const std::string& map_data = parameters_.scenario_data["map_data"];
-		gamemap map(game_config(), map_data);
-		const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,map,0));
-		if(mini != NULL) {
-			SDL_Rect rect = minimap_rect_;
-			SDL_BlitSurface(mini, NULL, video().getSurface(), &rect);
-			update_rect(rect);
+
+		try {
+			gamemap map(game_config(), map_data);
+			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,map,0));
+			if(mini != NULL) {
+				SDL_Rect rect = minimap_rect_;
+				SDL_BlitSurface(mini, NULL, video().getSurface(), &rect);
+				update_rect(rect);
+			}
+		} catch(gamemap::incorrect_format_exception& e) {
+			LOG_STREAM(err,general) << "map could not be loaded: " << e.msg_ << "\n";
 		}
+
 	}
 }
 
