@@ -29,35 +29,34 @@
 #include <vector>
 
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
-#include <windows.h>
-#define USE_SELECT 1
+#  include <windows.h>
+#  define USE_SELECT 1
 #else
-#include <sys/types.h>
-#include <sys/socket.h>
-#ifdef __BEOS__
-#include <socket.h>
-#else
-#include <fcntl.h>
-#endif
-#define SOCKET int
-#ifdef HAVE_POLL_H
-#define USE_POLL 1
-#include <poll.h>
-#elif defined(HAVE_SYS_POLL_H)
-#define USE_POLL 1
-#include <sys/poll.h>
-#endif
-
-#ifndef USE_POLL
-#define USE_SELECT 1
-#ifdef HAVE_SYS_SELECT_H
-#include <sys/select.h>
-#else
-#include <sys/time.h>
-#include <sys/types.h>
-#include <unistd.h>
-#endif
-#endif
+#  include <sys/types.h>
+#  include <sys/socket.h>
+#  ifdef __BEOS__
+#    include <socket.h>
+#  else
+#    include <fcntl.h>
+#  endif
+#  define SOCKET int
+#  ifdef HAVE_POLL_H
+#    define USE_POLL 1
+#    include <poll.h>
+#  elif defined(HAVE_SYS_POLL_H)
+#    define USE_POLL 1
+#    include <sys/poll.h>
+#  endif
+#  ifndef USE_POLL
+#    define USE_SELECT 1
+#    ifdef HAVE_SYS_SELECT_H
+#      include <sys/select.h>
+#    else
+#      include <sys/time.h>
+#      include <sys/types.h>
+#      include <unistd.h>
+#    endif
+#  endif
 #endif
 
 
@@ -128,7 +127,7 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 		const int res = SDLNet_TCP_Send(sock, &buf[upto], static_cast<int>(size - upto));
 
 		if(res <= 0) {
-#ifdef EAGAIN
+#if defined(EAGAIN) && !defined(__BEOS__)
 			if(errno == EAGAIN) {
 #elif defined(EWOULDBLOCK)
 			if(errno == EWOULDBLOCK) {
@@ -221,7 +220,7 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 
 		const int res = SDLNet_TCP_Recv(sock, beg, end - beg);
 		if(res <= 0) {
-#ifdef EAGAIN
+#if defined(EAGAIN) && !defined(__BEOS__)
 			if(errno == EAGAIN) {
 #elif defined(EWOULDBLOCK)
 			if(errno == EWOULDBLOCK) {
