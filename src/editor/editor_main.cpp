@@ -60,6 +60,7 @@ int main(int argc, char** argv)
 			<< "  -w, --windowed    Runs the game in windowed mode\n"
 			<< "  -v, --version     Prints the game's version number and exits\n"
 			<< "  --resolution      Set the resolution of the window\n"
+			<< "  --bpp             Set the bits per pixel\n"
 		    << "  --datadir         Select the data directory to use\n";
 			return 0;
 		} else if(val == "--version" || val == "-v") {
@@ -81,12 +82,19 @@ int main(int argc, char** argv)
 	std::string filename = "";
 	std::string mapdata;
 
+	int choosen_bpp = 0;
+
 	for(arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
 		if(val.empty()) {
 			continue;
 		}
-		if(val == "--resolution" || val == "-r") {
+		if(val == "--bpp" && arg + 1 != argc) {
+			++arg;
+			choosen_bpp = lexical_cast_default<int>(argv[arg]);
+		}
+			
+		else if(val == "--resolution" || val == "-r") {
 			if(arg+1 != argc) {
 				++arg;
 				const std::string val(argv[arg]);
@@ -156,47 +164,54 @@ int main(int argc, char** argv)
 	image::set_wm_icon();
 	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
 	std::pair<int,int> resolution = preferences::resolution();
-
+	
 	std::cerr << "checking mode possible...\n";
-	const int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+	const int default_bpp = 24;
+	int bpp = default_bpp;
 
-	std::cerr << bpp << "\n";
+	if(choosen_bpp == 0) {
+		bpp = video.modePossible(resolution.first,resolution.second,default_bpp,video_flags);
 
-	if(bpp == 0) {
-		//Video mode not supported, maybe from bad prefs.
-		std::cerr << "The video mode, " << resolution.first
-				  << "x" << resolution.second << "x16 "
-				  << "is not supported\nAttempting 1024x768x16...\n";
+		std::cerr << bpp << "\n";
 
-		//Attempt 1024x768.
-		resolution.first = 1024;
-		resolution.second = 768;
+		if(bpp == 0)  {
+			//Video mode not supported, maybe from bad prefs.
+			std::cerr << "The video mode, " << resolution.first
+				  << "x" << resolution.second << "x" << default_bpp <<
+				  "is not supported\nAttempting 1024x768x" << default_bpp << "...\n";
 
-		int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
-
-		if(bpp == 0) {
-				 //Attempt 1024x768.
+			//Attempt 1024x768.
 			resolution.first = 1024;
 			resolution.second = 768;
-			std::cerr << "1024x768x16 is not possible.\nAttempting 800x600x16...\n";
 
-			resolution.first = 800;
-			resolution.second = 600;
+			bpp = video.modePossible(resolution.first,resolution.second,default_bpp,video_flags);
 
-			bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+			if(bpp == 0) {
+				 //Attempt 1024x768.
+				resolution.first = 1024;
+				resolution.second = 768;
+				std::cerr << "1024x768x" << default_bpp << " is not possible.\nAttempting 800x600x" << default_bpp << "...\n";
+
+				resolution.first = 800;
+				resolution.second = 600;
+
+				bpp = video.modePossible(resolution.first,resolution.second,default_bpp,video_flags);
+			}
+
+			if(bpp == 0) {
+				//couldn't do 1024x768 or 800x600
+
+				std::cerr << "The required video mode, " << resolution.first
+					  << "x" << resolution.second << "x" << default_bpp <<
+					  "is not supported\n";
+
+				return 0;
+			}
 		}
-
-		if(bpp == 0) {
-			//couldn't do 1024x768 or 800x600
-
-			std::cerr << "The required video mode, " << resolution.first
-					  << "x" << resolution.second << "x16 "
-					  << "is not supported\n";
-
-			return 0;
-		}
+	} else {
+		bpp = choosen_bpp;
 	}
-
+	
 	std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "\n";
 	const int res = video.setMode(resolution.first,resolution.second,bpp,video_flags);
 	video.setBpp(bpp);
