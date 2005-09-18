@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: hu_wesnoth 1.0-cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-09-14 23:24+0200\n"
-"PO-Revision-Date: 2005-09-10 22:22+0200\n"
+"PO-Revision-Date: 2005-09-18 18:42+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -3514,9 +3514,9 @@ msgid ""
 "Game'."
 msgstr ""
 "Ha szeretnél Wesnothot játszani más játékosok ellen, válaszd ki a "
-"Többjátékos funkciót, majd kattints a 'Csatlakozás a hivatalos szerverhez' "
-"gombra. Ez automatikusan fellépteti a játékot a hivatalos szerverre, ahol "
-"bizonyíthatod játéktudásodat mások előtt."
+"Többjátékos funkciót, majd kattints a 'Csatlakozás a hivatalos "
+"kiszolgálóhoz' gombra. Ez automatikusan fellépteti a játékot a hivatalos "
+"kiszolgálóra, ahol bizonyíthatod játéktudásodat mások előtt."
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
@@ -5670,7 +5670,7 @@ msgid ""
 "those drakes which are gifted with flight. Soaring high in the air, they can "
 "see past most defensive cover and spit fire at their foes with impunity."
 msgstr ""
-"A légi tartományok urai. A Hurrikánperzsekények az elsők a repülés "
+"A légi tartományok urai. A hurrikánperzsekények az elsők a repülés "
 "képeszségével megáldott perzsekények közt. Magasan a felhők közt "
 "szárnyalnak, így a legtöbb védelmen átlátnak, és szabadon okádnak tüzet "
 "bármely ellenségükre."
@@ -5705,7 +5705,7 @@ msgid ""
 msgstr ""
 "Az égperzsekények valóban az ég királyai. Kihasználva lendületüket és a "
 "tűzokádást, mint fegyvert, ezek a perzsekények sokak pusztulását okozzák. "
-"Gyorsan lecsaphatnak a prédájukra, és általában messzire elszárnyalnak,még "
+"Gyorsan lecsaphatnak a prédájukra, és általában messzire elszárnyalnak, még "
 "mielőtt valaki meg tudná őket fékezni."
 
 #: data/units/Drake_Slasher.cfg:4
@@ -7956,8 +7956,7 @@ msgid ""
 "have a high chance of hitting an opponent."
 msgstr ""
 "A holtidéző olyan mágus, aki a sötétség ösvényeit követi. Az élőholtak "
-"erejéből merítve olyan varázslatokkal rendelkezik, amelyek megcsapolják "
-"ellenségei életerejét, s azt a sajátjához adják."
+"erejéből merít, amikor sötét mágiájával pusztít."
 
 #: data/units/Necrophage.cfg:3
 msgid "Necrophage"
@@ -10033,7 +10032,7 @@ msgstr "Csatlakozás a kiszolgálóhoz"
 #: src/game.cpp:848
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
-"Most kapcsolódni fogsz egy szerverhez, ahonnan hadjáratokat tölthetsz le."
+"Most kapcsolódni fogsz egy kiszolgálóhoz, ahonnan hadjáratokat tölthetsz le."
 
 #: src/game.cpp:849
 msgid "Server: "
@@ -10077,7 +10076,7 @@ msgstr "Hadjárat törlése: "
 
 #: src/game.cpp:962
 msgid "There are no campaigns available for download from this server."
-msgstr "Nincsenek elérhető hadjárat-letöltések ezen a szerveren."
+msgstr "Nincsenek elérhető hadjárat letöltések ezen a kiszolgálón."
 
 #: src/game.cpp:969
 msgid "Choose the campaign to download."
@@ -10135,11 +10134,11 @@ msgstr "Válasz"
 
 #: src/game.cpp:1129
 msgid "Join Official Server"
-msgstr "Csatlakozás a hivatalos szervehez"
+msgstr "Csatlakozás a hivatalos kiszolgálóhoz"
 
 #: src/game.cpp:1130
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "Bejelentkezés a Wesnoth hivatalos többjátékos szerverére"
+msgstr "Bejelentkezés a Wesnoth hivatalos többjátékos kiszolgálójára"
 
 #: src/game.cpp:1132 src/multiplayer_lobby.cpp:407
 msgid "Join Game"
@@ -10147,7 +10146,7 @@ msgstr "Csatlakozás játékhoz"
 
 #: src/game.cpp:1133
 msgid "Join a server or hosted game"
-msgstr "Csatlakozás egy szerverhez, vagy egy játékhoz"
+msgstr "Csatlakozás egy kiszolgálóhoz vagy egy játékhoz"
 
 #: src/game.cpp:1135
 msgid "Host Networked Game"
@@ -10155,7 +10154,7 @@ msgstr "Hálózati játék készítése"
 
 #: src/game.cpp:1136
 msgid "Host a game without using a server"
-msgstr "Játék készítése szerver használata nélkül"
+msgstr "Játék készítése a kiszolgáló megkerülésével"
 
 #: src/game.cpp:1138
 msgid "Hotseat Game"
@@ -10449,7 +10448,7 @@ msgstr ""
 
 #: src/multiplayer.cpp:154
 msgid "Server-side redirect loop"
-msgstr "Szerveroldali átirányító hurok"
+msgstr "Kiszolgálóoldali átirányító hurok"
 
 #: src/multiplayer.cpp:186
 msgid "You must log in to this server"
