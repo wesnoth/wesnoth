@@ -1106,11 +1106,11 @@ int village_owner(const gamemap::location& loc, const std::vector<team>& teams)
 	return -1;
 }
 
-void get_village(const gamemap::location& loc, std::vector<team>& teams,
+bool get_village(const gamemap::location& loc, std::vector<team>& teams,
                  size_t team_num, const unit_map& units)
 {
 	if(team_num < teams.size() && teams[team_num].owns_village(loc)) {
-		return;
+		return false;
 	}
 
 	const bool has_leader = find_leader(units,int(team_num+1)) != units.end();
@@ -1125,12 +1125,14 @@ void get_village(const gamemap::location& loc, std::vector<team>& teams,
 	}
 
 	if(team_num >= teams.size()) {
-		return;
+		return false;
 	}
 
 	if(has_leader) {
-		teams[team_num].get_village(loc);
+		return teams[team_num].get_village(loc);
 	}
+
+	return false;
 }
 
 unit_map::iterator find_leader(unit_map& units, int side)
@@ -1902,19 +1904,21 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		move_recorder->add_movement(steps.front(),steps.back());
 	}
 
+	bool event_mutated = false;
+
 	int orig_village_owner = -1;
 	if(map.is_village(steps.back())) {
 		orig_village_owner = village_owner(steps.back(),teams);
 
-		if (size_t(orig_village_owner) != team_num) {
+		if(size_t(orig_village_owner) != team_num) {
 			ui->second.set_movement(0);
-			get_village(steps.back(),teams,team_num,units);
+			event_mutated = get_village(steps.back(),teams,team_num,units);
 		}
 	}
 
-	bool event_mutated = false;
-	if (game_events::fire("moveto",steps.back()))
+	if(game_events::fire("moveto",steps.back())) {
 		event_mutated = true;
+	}
 
 	if(undo_stack != NULL) {
 		if(event_mutated || should_clear_stack) {

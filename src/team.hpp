@@ -107,7 +107,7 @@ public:
 
 	void write(config& cfg) const;
 
-	void get_village(const gamemap::location&);
+	bool get_village(const gamemap::location&);
 	void lose_village(const gamemap::location&);
 	void clear_villages();
 	const std::set<gamemap::location>& villages() const;

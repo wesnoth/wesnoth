@@ -316,10 +316,10 @@ void team::write(config& cfg) const
 	cfg["shroud_data"] = shroud_.write();
 }
 
-void team::get_village(const gamemap::location& loc)
+bool team::get_village(const gamemap::location& loc)
 {
 	villages_.insert(loc);
-	game_events::fire("capture",loc);
+	return game_events::fire("capture",loc);
 }
 
 void team::lose_village(const gamemap::location& loc)
