@@ -1036,10 +1036,10 @@ int main(int argc, char** argv)
 				<< "  -d  --daemon               Runs wesnothd as a daemon\n"
 				<< "  -m, --max_packet_size n    Sets the maximal packet size to n\n"
 				<< "  -p, --port                 Binds the server to the specified port\n"
-				<< "  -v, --version              Returns the server version\n"
+				<< "  -V, --version              Returns the server version\n"
 				<< "  -t, --threads n            Uses n worker threads for network I/O (default: 5)\n";
 			return 0;
-		} else if(val == "--version" || val == "-v") {
+		} else if(val == "--version" || val == "-V") {
 			std::cout << "Battle for Wesnoth server " << game_config::version
 				<< "\n";
 			return 0;
