@@ -124,9 +124,9 @@ void gamebrowser::draw_item(size_t index) const {
 
 
 	// draw gold icon
-	const surface gold_icon(image::get_image(gold_icon_locator_, image::UNSCALED));	
+	const surface gold_icon(image::get_image(gold_icon_locator_, image::UNSCALED));
 	ypos = item_rect.y + item_rect.h  - margin_ - gold_icon->h;
-	
+
 	video().blit_surface(xpos, ypos, gold_icon);
 
 	xpos += gold_icon->w + h_padding_;
@@ -166,7 +166,7 @@ void gamebrowser::draw_item(size_t index) const {
 	// draw status text
 	xpos = item_rect.x + item_rect.w - margin_ - status_text->w;
 	video().blit_surface(xpos, ypos, status_text);
-	
+
 	if(selected_ == index)
 		draw_solid_tinted_rectangle(item_rect.x, item_rect.y, item_rect.w, item_rect.h, 153, 0, 0, 0.3, video().getSurface());
 }
