@@ -3,8 +3,7 @@ CVS HEAD:
    * updated translations: Afrikaans, Bulgarian, Catalan, Finnish, German,
      Hungarian, Japanese, Portuguese (Brazil), Russian, Slovenian, Spanish,
      Turkish
-   * new manual: Hungarian
-   * updated manual: English, Swedish
+   * new manual: Hungarian, updated manual: English, Swedish
    * updated man pages: English, German, Swedish 
  * campaigns:
    * The Dark Hordes
@@ -35,6 +34,10 @@ CVS HEAD:
  * BeOS networking fixes
  * multiplayer lobby changes (including #8179)
  * fixed images in downloaded campaigns not being shown until restart (#11797)
+ * editor now supports changing language, with Alt-l (#11966)
+ * savegames now store ai_algorithm (#14558)
+ * server now supports --threads option to specify number of threads
+ * fixed spurious "timeout" when uploading campaigns
  * various bug fixes and code cleanups
 
 Version 0.9.7:
