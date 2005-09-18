@@ -1075,7 +1075,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	std::cerr << "uploading campaign...\n";
 	network::send_data(data,sock);
 
-	sock = network::receive_data(data,sock,5000);
+	sock = gui::network_data_dialog(disp(),_("Awaiting response from server"),data,sock);
 	if(!sock) {
 		gui::show_error_message(disp(), _("Connection timed out"));
 	} else if(data.child("error")) {
