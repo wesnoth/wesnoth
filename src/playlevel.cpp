@@ -478,6 +478,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		//pre-start events must be executed before any GUI operation,
 		//as those may cause the display to be refreshed.
 		if(!loading_game) {
+			update_locker lock_display(gui.video());
 			game_events::fire("prestart");
 		}
 
