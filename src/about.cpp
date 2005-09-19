@@ -51,7 +51,7 @@ std::vector<std::string> get_text() {
 		"-   J.R. Blain (Cowboy)",
 		"-   Kristoffer Erlandsson (erl)",
 		"-   Maksim Orlovich (SadEagle)",
-		"-   ott",
+		"-   András Salamon (ott)",
 		"-   Philippe Plantier (Ayin)",
 		"-   Yann Dirson",
 		"-   Zas",
@@ -134,7 +134,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Afrikaans Translation"),
 		"-   Nico Oliver",
-		"-   ott",
+		"-   András Salamon (ott)",
 
 		"_" N_("+Basque Translation"),
 		"-   Alfredo Beaumont (ziberpunk)",
@@ -186,7 +186,7 @@ std::vector<std::string> get_text() {
 		"-   Tobe Deprez",
 
 		"_" N_("+English (GB) Translation"),
-		"-   ott",
+		"-   András Salamon (ott)",
 
 		"_" N_("+Estonian Translation"),
 		"-   Mart Tõnso",
@@ -244,7 +244,7 @@ std::vector<std::string> get_text() {
 		"-   Khiraly",
 		"-   Kovács Dániel",
 		"-   krix",
-		"-   ott",
+		"-   Salamon András (ott)",
 		"-   Széll Tamás (TomJoad)",
 
 		"_" N_("+Italian Translation"),
