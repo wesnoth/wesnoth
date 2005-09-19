@@ -39,6 +39,8 @@ CVS HEAD:
  * server now supports --threads option to specify number of threads
  * fixed spurious "timeout" when uploading campaigns
  * capture events that trigger further events can no longer be undone (#13895)
+ * editor now supports --bpp to specify bit depth, default now 24 (#14551)
+ * broken scenarios can no longer make multiplayer unplayable (#14409)
  * various bug fixes and code cleanups
 
 Version 0.9.7:
