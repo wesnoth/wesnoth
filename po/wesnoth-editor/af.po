@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-09-14 23:25+0200\n"
+"POT-Creation-Date: 2005-09-18 23:00+0200\n"
 "PO-Revision-Date: 2005-08-31 11:39+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: afrikaans\n"
@@ -12,83 +12,91 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: Afrikaans\n"
 
-#: data/themes/editor.cfg:429
+#: data/themes/editor.cfg:445
 msgid "File"
 msgstr "Lêer"
 
-#: data/themes/editor.cfg:438
+#: data/themes/editor.cfg:454
 msgid "Edit"
 msgstr "Wysig"
 
-#: src/editor/editor.cpp:160
+#: src/editor/editor.cpp:162
 msgid "Draw tiles"
 msgstr "Teken blokkies"
 
-#: src/editor/editor.cpp:162
+#: src/editor/editor.cpp:164
 msgid "Fill"
 msgstr "Vul op"
 
-#: src/editor/editor.cpp:164
+#: src/editor/editor.cpp:166
 msgid "Set player's starting position"
 msgstr "Bepaal speler se beginposisie"
 
-#: src/editor/editor.cpp:166
+#: src/editor/editor.cpp:168
 msgid "Zoom in"
 msgstr "Vergroot"
 
-#: src/editor/editor.cpp:168
+#: src/editor/editor.cpp:170
 msgid "Zoom out"
 msgstr "Verklein"
 
-#: src/editor/editor.cpp:170
+#: src/editor/editor.cpp:172
 msgid "Undo"
 msgstr "Kanselleer aksie"
 
-#: src/editor/editor.cpp:172
+#: src/editor/editor.cpp:174
 msgid "Redo"
 msgstr "Doen weer"
 
-#: src/editor/editor.cpp:174
+#: src/editor/editor.cpp:176
 msgid "Zoom to default view"
 msgstr "Vergroot tot standaard beeldgrootte"
 
-#: src/editor/editor.cpp:176
+#: src/editor/editor.cpp:178
 msgid "Toggle grid"
 msgstr "Wissel rooster"
 
-#: src/editor/editor.cpp:178
+#: src/editor/editor.cpp:180
 msgid "Resize the map"
 msgstr "Verander Kaart Grootte"
 
-#: src/editor/editor.cpp:180
+#: src/editor/editor.cpp:182
 msgid "Flip map"
 msgstr "Keer kaart om"
 
-#: src/editor/editor.cpp:371
+#: src/editor/editor.cpp:378
+msgid "Language"
+msgstr "Taal"
+
+#: src/editor/editor.cpp:379
+msgid "Choose your preferred language:"
+msgstr "Dui jou taalvoorkeur aan:"
+
+#: src/editor/editor.cpp:406
 msgid "Save the Map As"
 msgstr "Stoor die Kaart As"
 
-#: src/editor/editor.cpp:382
+#: src/editor/editor.cpp:417
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kaart bestaan reeds. Wil jy dit vervang?"
 
-#: src/editor/editor.cpp:405
+#: src/editor/editor.cpp:440
 msgid "Player "
 msgstr "Speler"
 
-#: src/editor/editor.cpp:408
+#: src/editor/editor.cpp:443
 msgid "Which Player?"
 msgstr "Watter Speler?"
 
-#: src/editor/editor.cpp:409
+#: src/editor/editor.cpp:444
 msgid "Which player should start here?"
 msgstr "Watter speler moet hier begin?"
 
-#: src/editor/editor.cpp:461
+#: src/editor/editor.cpp:496
 msgid "Choose a Map to Load"
 msgstr "Kies 'n kaart om te laai"
 
-#: src/editor/editor.cpp:465
+#: src/editor/editor.cpp:500
 msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
@@ -96,43 +104,43 @@ msgstr ""
 "Waarskuwing: Onwettige karakters is in die kaartnaam gevind. Jy sal onder 'n "
 "ander naam moet stoor."
 
-#: src/editor/editor.cpp:483 src/editor/editor.cpp:562
+#: src/editor/editor.cpp:518 src/editor/editor.cpp:597
 msgid "The file does not contain a valid map."
 msgstr "Hierdie lêer bevat nie 'n geldige kaart nie."
 
-#: src/editor/editor.cpp:624
+#: src/editor/editor.cpp:659
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' bestaan nie of kan nie gelees word nie."
 
-#: src/editor/editor.cpp:636
+#: src/editor/editor.cpp:671
 msgid "Load failed: "
 msgstr "Oplaai het misluk: "
 
-#: src/editor/editor.cpp:834
+#: src/editor/editor.cpp:870
 msgid "You must have a hex selected on the board."
 msgstr "Jy moet een van die heksagonale spasies op die bord gemerk hê."
 
-#: src/editor/editor.cpp:1083
+#: src/editor/editor.cpp:1119
 msgid "Quit Editor"
 msgstr "Sluit Editor"
 
-#: src/editor/editor.cpp:1088
+#: src/editor/editor.cpp:1124
 msgid "Do you want to save the map before quitting?"
 msgstr "Wil jy die kaart stoor voor jy afsluit?"
 
-#: src/editor/editor.cpp:1120
+#: src/editor/editor.cpp:1156
 msgid "Map saved."
 msgstr "Kaart gestoor."
 
-#: src/editor/editor.cpp:1127
+#: src/editor/editor.cpp:1163
 msgid "Could not save the map: $msg"
 msgstr "Kon nie die kaart stoor nie: $msg"
 
-#: src/editor/editor.cpp:1142
+#: src/editor/editor.cpp:1178
 msgid "Error: Illegal character in filename."
 msgstr "Fout: Onwettige karakter in lêernaam."
 
-#: src/editor/editor.cpp:1198
+#: src/editor/editor.cpp:1234
 msgid "Player"
 msgstr "Speler"
 
@@ -224,7 +232,7 @@ msgstr "Y-As"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Kantel (dit kan die dimensie van die kaart verander)"
 
-#: src/editor/editor_main.cpp:235
+#: src/editor/editor_main.cpp:250
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Die stryd vir Wesnoth Kaart Redigeerder"
 
