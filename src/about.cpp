@@ -39,6 +39,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Developers"),
 		"-   Alfredo Beaumont (ziberpunk)",
+		"-   András Salamon (ott)",
 		"-   Bram Ridder (Morloth)",
 		"-   Cedric Duval",
 		"-   Cyril Bouthors (CyrilB)",
@@ -51,7 +52,6 @@ std::vector<std::string> get_text() {
 		"-   J.R. Blain (Cowboy)",
 		"-   Kristoffer Erlandsson (erl)",
 		"-   Maksim Orlovich (SadEagle)",
-		"-   András Salamon (ott)",
 		"-   Philippe Plantier (Ayin)",
 		"-   Yann Dirson",
 		"-   Zas",
