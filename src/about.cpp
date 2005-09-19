@@ -122,6 +122,7 @@ std::vector<std::string> get_text() {
 		"-   Bartek Waresiak (Dragonking)",
 		"-   Francesco Gigli (Jaramir)",
 		"-   Jordà Polo (ettin)",
+		"-   Richard S. (Noy)",
 		"-   Ruben Philipp Wickenhäuser (The Very Uhu)",
 
 		"_" N_("+Internationalization Managers"),
