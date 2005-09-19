@@ -36,6 +36,10 @@ print "Changing to ", dir, "\n"
 Dir.chdir(dir)
 print "Erasing The Dark Hordes campaign\n"
 system("rm -rf data/campaigns/The_Dark_Hordes.cfg data/scenarios/The_Dark_Hordes maps/The_Dark_Hordes/ images/portraits/The_Dark_Hordes po/wesnoth-tdh")
+system("sed -i -e 's/po\\/wesnoth-tdh\\/Makefile.in //g' configure")
+system("sed -i -e '/wesnoth-tdh/d' configure")
+system("sed -i -e '/wesnoth-tdh/d' configure.ac")
+system("sed -i -e 's/\\$(distdir)\\/po\\/wesnoth-tdh //g' Makefile.in")
 print "Changing to po\n"
 Dir.chdir("po")
 system("sed -i -e 's/wesnoth-tdh //g' Makefile.in Makefile.am")
