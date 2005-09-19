@@ -2,7 +2,6 @@
 
 core = ["wesnoth","wesnoth-lib","wesnoth-httt"]
 other = ["wesnoth-editor","wesnoth-ei","wesnoth-sotbe","wesnoth-trow"]
-campaigns_to_remove = ["tdh"]
 
 def complete?(lang, pack)
 	complete = true
@@ -35,8 +34,9 @@ Dir.glob("wesnoth*") { |file|
 
 print "Changing to ", dir, "\n"
 Dir.chdir(dir)
-print "Erasing The Dark Hordes campaign\n"
+print "Erasing unused stuff (The Dark Hordes campaign, unused fonts)\n"
 system("rm -rf data/campaigns/The_Dark_Hordes.cfg data/scenarios/The_Dark_Hordes data/maps/The_Dark_Hordes/ images/portraits/The_Dark_Hordes po/wesnoth-tdh")
+system("rm -rf fonts/FreeSans.ttf")
 system("sed -i -e 's/po\\/wesnoth-tdh\\/Makefile.in //g' configure")
 system("sed -i -e '/wesnoth-tdh/d' configure")
 system("sed -i -e '/wesnoth-tdh/d' configure.ac")
