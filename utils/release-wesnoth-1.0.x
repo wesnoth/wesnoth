@@ -95,6 +95,13 @@ other.each { |pack|
 	}
 }
 
+Dir.chdir("../src/")
+
+#Comment out language_def's from language.cpp
+toremove.each { |lang|
+	system("sed -i -e 's/language_def(\"#{lang}/\\/\\/&/' language.cpp")
+}
+
 Dir.chdir("../..")
 print "Compressing wesnoth\n"
 system("mv #{tarball} #{tarball}.old")
