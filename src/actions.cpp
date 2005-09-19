@@ -2093,7 +2093,7 @@ void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& sta
 			//temporary_unit_placer scope, the "sighted" event will
 			//be raised with an invalid source unit, which is even
 			//worse.
-			game_events::pump(); 
+			game_events::pump();
 		}
 	}
 	if(disp != NULL) {
