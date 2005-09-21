@@ -4,20 +4,20 @@ pkgdatadir=$(datadir)/@DATADIR@
 
 bin_SCRIPTS = utils/wmlxgettext
 
-findfilterflags=-name CVS -prune -o -name ".cvs*" -o -name ".\#*" -o -type d
+findfilterflags=-name .svn -prune -o -name ".\#*" -o -type d
 
 if LITE
 findmoredata=;find images $(findfilterflags) -o -path "images/campaigns/*/story*" -o -path "images/campaigns/*/sotbe*" -o -print
-findmoredatadirs=find images -type d \! \( -name CVS -prune -o -path "images/campaigns/*/story*" -o -path "images/campaigns/*/sotbe*" \) -print
+findmoredatadirs=find images -type d \! \( -name .svn -prune -o -path "images/campaigns/*/story*" -o -path "images/campaigns/*/sotbe*" \) -print
 else
 findmoredata=;find images music $(findfilterflags) -o -print
-findmoredatadirs=find images music -type d \! \( -name CVS -prune \) -print
+findmoredatadirs=find images music -type d \! \( -name .svn -prune \) -print
 endif
 
 finddata=(cd $(top_srcdir) && find data fonts sounds $(findfilterflags) -o -print \
 	 $(findmoredata) )
 finddatadirs=(cd $(top_srcdir) && find data fonts sounds -type d \! \( -name CVS -prune \) -print; $(findmoredatadirs) )
-findnoinst=(cd $(top_srcdir) && find utils -name CVS -prune -o -name ".cvs*" -o -name ".\#*" -o -type d -o -print && find MANUAL*)
+findnoinst=(cd $(top_srcdir) && find utils -name .svn -prune -o -name ".\#*" -o -type d -o -print && find MANUAL*)
 
 w_preparefileinstall = if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  case $$p in \
