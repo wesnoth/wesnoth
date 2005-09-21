@@ -378,9 +378,10 @@ void map_editor::change_language() {
 	const int res = gui::show_dialog(gui_,NULL,_("Language"),
 	                         _("Choose your preferred language:"),
 	                         gui::OK_CANCEL,&langs);
-	if(size_t(res) < langs.size()) {
-		::set_language(known_languages[res]);
-		preferences::set_language(known_languages[res].localename);
+	const std::vector<language_def>& languages = get_languages();
+	if(size_t(res) < languages.size()) {
+		::set_language(languages[res]);
+		preferences::set_language(languages[res].localename);
 
 		game_config_.reset_translation();
 

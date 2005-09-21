@@ -13,6 +13,8 @@
 #ifndef LANGUAGE_HPP_INCLUDED
 #define LANGUAGE_HPP_INCLUDED
 
+#include "tstring.hpp"
+
 #include <map>
 #include <string>
 #include <vector>
@@ -26,13 +28,13 @@ class config;
 struct language_def
 {
 	language_def() {}
-	language_def(const std::string& name, const std::string& lang) : localename(name), language(lang)
+	language_def(const std::string& name, const t_string& lang) : localename(name), language(lang)
 	{}
 	std::string localename;
-	std::string language;
-	bool operator== (const language_def&);
+	t_string language;
+	bool operator== (const language_def&) const;
 };
-extern language_def known_languages[];
+
 std::string languagedef_name (const language_def& def);
 bool languagedef_lessthan_p (const language_def& def1, const language_def& def2);
 
@@ -65,5 +67,7 @@ const language_def& get_locale();
 
 /** Initializes the list of textdomains from a configuration object */
 void init_textdomains(const config& cfg);
+
+bool load_language_list();
 
 #endif

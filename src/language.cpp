@@ -23,6 +23,7 @@
 #include "util.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
+#include "wassert.hpp"
 #include "wesconfig.h"
 
 #include <algorithm>
@@ -37,6 +38,9 @@ namespace {
 	string_map strings_;
 }
 
+std::vector<language_def> known_languages;
+
+#if 0
 language_def known_languages[] = {
 	language_def("", N_("System default language")),
 	language_def("af_ZA", "Afrikaans"),
@@ -73,6 +77,7 @@ language_def known_languages[] = {
 	// end of list marker, do not remove
 	language_def("", "")
 };
+#endif
 
 std::string languagedef_name (const language_def& def)
 {
@@ -84,7 +89,7 @@ bool languagedef_lessthan_p (const language_def& def1, const language_def& def2)
 	return (def1.language < def2.language);
 }
 
-bool language_def::operator== (const language_def& a)
+bool language_def::operator== (const language_def& a) const
 {
 	return ((language == a.language) /* && (localename == a.localename) */ );
 }
@@ -112,15 +117,30 @@ const t_string& symbol_table::operator[](const char* key) const
 	return (*this)[std::string(key)];
 }
 
-std::vector<language_def> get_languages()
+bool load_language_list()
 {
-	std::vector<language_def> res;
-
-	for(int i = 0; known_languages[i].language[0] != '\0'; i++) {
-		res.push_back(known_languages[i]);
+	config cfg;
+	try {
+		scoped_istream stream = preprocess_file("data/language.cfg");
+		read(cfg, *stream);
+	} catch(config::error &e) {
+		return false;
 	}
 
-	return res;
+	known_languages.clear();
+	known_languages.push_back(language_def("", t_string(N_("System default language"), "wesnoth")));
+
+	config::const_child_itors langs = cfg.child_range("locale");
+	for(;langs.first != langs.second; ++langs.first) {
+		known_languages.push_back(language_def((**langs.first)["locale"], (**langs.first)["name"]));
+	}
+
+	return true;
+}
+
+std::vector<language_def> get_languages()
+{
+	return known_languages;
 }
 
 static void wesnoth_setlocale(int category, std::string const &slocale)
@@ -194,7 +214,6 @@ bool set_language(const language_def& locale)
 
 	current_language = locale;
 	wesnoth_setlocale(LC_MESSAGES, locale.localename);
-	known_languages[0].language = gettext("System default language");
 
 	// fill string_table (should be moved somwhere else some day)
 	try {
@@ -216,6 +235,13 @@ bool set_language(const language_def& locale)
 	}
 	// end of string_table fill
 
+	// Reset translations for the name of current languages
+	for (std::vector<language_def>::iterator itor = known_languages.begin();
+			itor != known_languages.end(); ++itor) {
+
+		itor->language.reset_translation();
+	}
+
 	return true;
 }
 
@@ -224,13 +250,16 @@ const language_def& get_language() { return current_language; }
 const language_def& get_locale()
 {
 	//TODO: Add in support for querying the locale on Windows
+	
+	wassert(known_languages.size() != 0);
 
 	const std::string& prefs_locale = preferences::language();
 	if(prefs_locale.empty() == false) {
 		wesnoth_setlocale(LC_MESSAGES, prefs_locale);
-		for(int i = 0; known_languages[i].language[0] != '\0'; i++) {
-			if (prefs_locale == known_languages[i].localename)
-				return known_languages[i];
+		for(std::vector<language_def>::const_iterator i = known_languages.begin(); 
+				i != known_languages.end(); ++i) {
+			if (prefs_locale == i->localename)
+				return *i;
 		}
 		std::cerr << "locale not found in known array; defaulting to system locale\n";
 		return known_languages[0];

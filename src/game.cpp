@@ -385,16 +385,11 @@ bool game_controller::init_config()
 
 bool game_controller::init_language()
 {
-	const bool lang_res = ::set_language(get_locale());
-	if(!lang_res) {
-		std::cerr << "No translation for locale '" << get_locale().language
-		          << "', default to system locale\n";
+	if(!::load_language_list())
+		return false;
 
-		const bool lang_res = ::set_language(known_languages[0]);
-		if(!lang_res) {
-			std::cerr << "Language data not found\n";
-		}
-	}
+	if (!::set_language(get_locale()))
+		return false;
 
 	if(!no_gui_) {
 		SDL_WM_SetCaption(_("The Battle for Wesnoth"), NULL);
@@ -1205,26 +1200,24 @@ bool game_controller::play_multiplayer()
 
 bool game_controller::change_language()
 {
-	std::vector<language_def> langdefs = get_languages();
-
-	// this only works because get_languages() returns a fresh vector at each calls
-	// unless show_gui cleans the "*" flag
-	const std::vector<language_def>::iterator current = std::find(langdefs.begin(),langdefs.end(),get_language());
-	if(current != langdefs.end()) {
-		(*current).language = "*" + (*current).language;
-	}
-
-	// prepare a copy with just the labels for the list to be displayed
+	const std::vector<language_def>& languages = get_languages();
 	std::vector<std::string> langs;
-	langs.reserve(langdefs.size());
-	std::transform(langdefs.begin(),langdefs.end(),std::back_inserter(langs),languagedef_name);
+
+	for (std::vector<language_def>::const_iterator itor = languages.begin();
+			itor != languages.end(); ++itor) {
+		if (*itor == get_language()) {
+			langs.push_back("*" + itor->language);
+		} else {
+			langs.push_back(itor->language);
+		}
+	}
 
 	const int res = gui::show_dialog(disp(),NULL,_("Language"),
 	                         _("Choose your preferred language:"),
 	                         gui::OK_CANCEL,&langs);
 	if(size_t(res) < langs.size()) {
-		::set_language(known_languages[res]);
-		preferences::set_language(known_languages[res].localename);
+		::set_language(languages[res]);
+		preferences::set_language(languages[res].localename);
 
 		refresh_game_cfg(true);
 	}

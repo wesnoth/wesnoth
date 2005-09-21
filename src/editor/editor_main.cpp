@@ -235,12 +235,13 @@ int main(int argc, char** argv)
 	//Set the locale first, then read the configuration, or else WML
 	//strings are not correctly translated. Does this work on on the win32
 	//platform?
+	load_language_list();
 	const bool lang_res = ::set_language(get_locale());
 	if(!lang_res) {
 		std::cerr << "No translation for locale '" << get_locale().language
 		          << "', default to system locale\n";
 
-		const bool lang_res = ::set_language(known_languages[0]);
+		const bool lang_res = ::set_language(get_languages()[0]);
 		if(!lang_res) {
 			std::cerr << "Language data not found\n";
 		}
