@@ -16,7 +16,7 @@ endif
 
 finddata=(cd $(top_srcdir) && find data fonts sounds $(findfilterflags) -o -print \
 	 $(findmoredata) )
-finddatadirs=(cd $(top_srcdir) && find data fonts sounds -type d \! \( -name CVS -prune \) -print; $(findmoredatadirs) )
+finddatadirs=(cd $(top_srcdir) && find data fonts sounds -type d \! \( -name .svn -prune \) -print; $(findmoredatadirs) )
 findnoinst=(cd $(top_srcdir) && find utils -name .svn -prune -o -name ".\#*" -o -type d -o -print && find MANUAL*)
 
 w_preparefileinstall = if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
