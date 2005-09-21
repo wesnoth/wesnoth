@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
 
-.TH WESNOTHD 6 "Juni 2005" "wesnothd" "Kampen om Wesnoths n\[:a]tverksdaemon"
+.TH WESNOTHD 6 "2005" "wesnothd" "Kampen om Wesnoths n\[:a]tverksdaemon"
 
 .SH NAMN
 Kampen om Wesnoths n\[:a]tverksdaemon
@@ -48,8 +48,16 @@ knyter servern till den specificerade porten. Om ingen port anges s\[oa]
 anv\[:a]nds port 15000. 
 
 .TP
-.BR -v , \ --version
+.BR -t , \ --thread
+anger antalet tr\[oa]dar f\[:o]r n\[:a]tverkstrafik (standardv\[:a]rde: 5)
+
+.TP
+.BR -V , \ --version
 visar versionen.
+
+.TP
+.BR -v , \ --verbose
+ger mer utf\[:o]rlig information.
 
 .SH F\[:O]RFATTARE
 Skriven av David White <davidnwhite@comcast.net>.
