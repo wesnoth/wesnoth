@@ -2,58 +2,62 @@ DAS BATTLE FOR WESNOTH HANDBUCH
 
 Wenn Sie ein Neuling in Sachen Battle for Wesnoth sein sollten, könnte
 folgende Einführung (in Englisch) für Sie von Interesse sein:
-http://wesnoth.slack.it/?GettingStarted.
+http://www.wesnoth.org/wiki/GettingStarted.
 
 Steuerung
 
     * F1              Das Hilfsmenue von BfW
-    * Cursortasten:   Scrollen
-    * Linksklick:     Einheit wählen/bewegen
-    * Rechtsklick:    Hauptmenü, Aktion abbrechen
-    * Mittelklick:    Auf Cursorposition zentrieren
-    * Esc:            Spiel verlassen, Menü verlassen
-    * Strg-r:         Einheit ausbilden
-    * Strg-Shift-r:   Letzte Einheiten-Ausbildung wiederholen
-    * Alt-r:          Einheit einberufen
-    * u:              Letzten Zug rückgängig machen (nur deterministische Züge
+    * Cursortasten    Scrollen
+    * Linksklick      Einheit wählen/bewegen
+    * Rechtsklick     Hauptmenü, Aktion abbrechen
+    * Mittelklick     Auf Cursorposition zentrieren
+    * Esc             Spiel verlassen, Menü verlassen
+    * Strg-r          Einheit ausbilden
+    * Strg-Shift-r    Letzte Einheiten-Ausbildung wiederholen
+    * Alt-r           Einheit einberufen
+    * u               Letzten Zug rückgängig machen (nur deterministische Züge
                       können zurückgenommen werden)
-    * r:              Zug wiederherstellen
-    * m:              Eine Nachricht an die Mitspieler schreiben (Multiplayer)
-    * M:              Eine Nachricht an die Verbündeten schreiben (Multiplayer)
-    * alt-m:          Eine Nachricht an alle im Spiel schreiben (Multiplayer)
-    * n:              nächste Einheite mit verblieben BP auswählen
-    * N:              nächste Einheite mit verblieben BP auswählen (umgekehrte Reihenfolge)
-    * Space:          Zug der Einheit beenden und nächste Einheit auswählen, die
+    * r               Zug wiederherstellen
+    * m               Eine Nachricht an die Mitspieler schreiben (Multiplayer)
+    * M               Eine Nachricht an die Verbündeten schreiben (Multiplayer)
+    * Alt-m           Eine Nachricht an alle im Spiel schreiben (Multiplayer)
+    * n               nächste Einheite mit verblieben BP auswählen
+    * N               nächste Einheite mit verblieben BP auswählen (umgekehrte
+                      Reihenfolge)
+    * Space           Zug der Einheit beenden und nächste Einheit auswählen, die
                       noch bewegt werden kann
     * Alt-Space       Zug dieses Spielers beenden
-    * Strg-Space:     Position der Einheit halten. Einheit in diesem Zug nicht mehr durch "n"
-                      oder "N" auswählen
-    * Strg-v          Mögliche gegnerische Züge anzeigen (bei Beachtung gegenwärtiger ZOCs)
-    * Strg-b          Mögliche gegnerische Züge anzeigen (bei Nichtbeachtung jeglicher ZOCs)
+    * Strg-Space      Position der Einheit halten. Einheit in diesem Zug nicht
+                      mehr durch "n" oder "N" auswählen
+    * Strg-v          Mögliche gegnerische Züge anzeigen (bei Beachtung
+                      gegenwärtiger ZOCs)
+    * Strg-b          Mögliche gegnerische Züge anzeigen (bei Nichtbeachtung
+                      jeglicher ZOCs)
     * Strg-f          Zwischen Vollbild- und Fenstermodus wechseln
-    * Strg-a:         Beschleunigten Spiel-Modus ein/ausschalten
-    * Strg-s:         Spiel speichern
-    * Strg-o:         Spiel laden
+    * Strg-a          Beschleunigten Spiel-Modus ein/ausschalten
+    * Strg-s          Spiel speichern
+    * Strg-o          Spiel laden
 
-    * /:              Suchen
-    * t:              Unterbrochenen Zug fortsetzen
-    * z:              hineinzoomen
-    * x:              herauszoomen
-    * c:              Zoom auf Standardgröße
-    * Strg-n:         Einheit umbenennen
-    * 1-7:            Zeigen, wie weit die gewählte Einheit in entsprechend
+    * /               Suchen
+    * t               Unterbrochenen Zug fortsetzen
+    * z               hineinzoomen
+    * x               herauszoomen
+    * c               Zoom auf Standardgröße
+    * Strg-n          Einheit umbenennen
+    * 1 bis 7         Zeigen, wie weit die gewählte Einheit in entsprechend
                       vielen Zügen bewegt werden kann
-    * l:              Zum Anführer bewegen
-    * d:              Gewählte Einheit beschreiben
-    * Strg-d:         Verteidigungswerte der gewählten Einheit anzeigen
-    * Strg-g:         Gitternetz an-/abschalten
-    * alt-k:          Schleier der Finsternis ein-/ausschalten
-    * Strg-k:         Schleier der Finsternis aktualisieren
-    * alt-s:          Status-Tabelle anzeigen
-    * Strg-t:         Geländeeinfluss auf die gewählte Einheit anzeigen
-    * ::              Kommando-Modus, siehe http://wesnoth.slack.it/?CommandMode
+    * l               Zum Anführer bewegen
+    * d               Gewählte Einheit beschreiben
+    * Strg-d          Verteidigungswerte der gewählten Einheit anzeigen
+    * Strg-g          Gitternetz an-/abschalten
+    * Alt-k           Schleier der Finsternis ein-/ausschalten
+    * Strg-k          Schleier der Finsternis aktualisieren
+    * Alt-s           Status-Tabelle anzeigen
+    * Strg-t          Geländeeinfluss auf die gewählte Einheit anzeigen
+    * :               Kommando-Modus, siehe http://www.wesnoth.org/wiki/CommandMode
 
-Mac OS X Benutzer drücken statt der Strg-Taste die Cmd-Taste. Omd wird statt Alt benutzt.
+Mac OS X Benutzer drücken statt der Strg-Taste die Cmd-Taste. Omd wird statt Alt
+benutzt.
 
 
 Sphären
@@ -136,14 +140,18 @@ Charakteristika werden bei der Erschaffung der Einheiten zufällig vergeben. Im
 Regelfall erhält jede Einheit zwei Charakteristika. Folgende Charakteristika
 sind möglich:
 
-   Loyal:         Die Erhaltungskosten der Einheit sind niemals höher als 1.
+
    Stark:         Die Einheit verursacht mehr Schaden im Nahkampf und hat etwas
                   mehr Lebenspunkte.
-   Schnell:       Die Einheit hat einen zusätzlichen Bewegungspunkt, dafür etwas
-                  weniger Lebenspunkte.
-   Unverwüstlich: Die Einheit hat mehr Lebenspunkte.
-   Intelligent:   Die Einheit braucht weniger Erfahrungspunkte, um eine Stufe
-                  aufzusteigen.
+   Schnell:       Schnelle Einheiten erhalten einen Bewegungspunkt extra,
+                  verfügen dafür aber über 10% weniger LP.
+   Robust:        Robuste Einheiten erhalten einen Bonus von 7 LP.
+   Intelligent:   Intelligente Einheiten benötigen 20% weniger Erfahrung als
+                  andere, um eine Stufe aufzusteigen.
+   Loyal:         Die Erhaltungskosten der Einheit sind niemals höher als 1.
+   Treffsicher:   Treffsichere Einheiten richten einen Punkt mehr Schaden an,
+                  wenn sie mit dem Bogen angreifen.
+   Untot:         Untote Einheiten sind immun gegen Gift.
 
 
 Bewegung
@@ -191,14 +199,14 @@ Jede Einheit wird von den vorherrschenden Lichtverhältnissen unterschiedlich
 beeinflusst. Es gibt drei Lichtverhältniskategorien: redlich, neutral oder
 lichtscheu. Die folgende Tabelle illustriert die verschiedenen Tageszeiten:
 
- |  Zug  | Tageszeit |
- ---------------------
- |   1   | Morgen    |
- |   2   | Tag       |
- |   3   | Tag       |
- |   4   | Abend     |
- |   5   | Nacht     |
- |   6   | Nacht     |
+ |  Zug  | Tageszeit             |  redlich | lichtscheu |
+ ---------------------------------------------------------
+ |   1   | Morgengrauen          |   ----   |    ----    |
+ |   2   | Tag (Vormittag)       |   +25%   |    -25%    |
+ |   3   | Tag (Nachmittag)      |   +25%   |    -25%    |
+ |   4   | Abenddämmerung        |   ----   |    ----    |
+ |   5   | Nacht (Erste Wache)   |   -25%   |    +25%    |
+ |   6   | Nacht (Zweite Wache)  |   -25%   |    +25%    |
 
 Redliche Einheiten verursachen bei Tag 25% mehr, bei Nacht 25% weniger Schaden.
 Lichtscheue Einheiten verursachen 25% mehr Schaden bei Nacht, und 25% weniger
@@ -247,15 +255,18 @@ Mehrspieler
 Sie können ein eigene Mehrspielerpartie starten, in dem Sie Ihren PC als
 Spielserver benutzen oder sich mit dem Wesnoth-Spielserver verbinden und Ihr
 Spiel dort starten. Falls Sie Ihren PC benutzen benötigen Mitspieler die
-Möglichkeit sich mit Ihrem Port 15000 zu verbinden.
+Möglichkeit sich mit Ihrem Port 15000 zu verbinden. Wenn Sie sich hinter einer
+Firewall befinden, müssen Sie die Einstellungen so ändern, dass eingehende
+Verbindungen auf Port 15000 erlaubt sind und diese Daten zu dem Rechner, auf dem
+der Server läuft, weitergeleitet werden sollen.
 
 
 Öffentliche Server:
 
  server.wesnoth.org        für stabile Versionen des Spiels
- devsrv.wesnoth.org        für Testversionen
- devsrv.wesnoth.org:14999  für CVS-Versionen des Spiels
-
+ server.wesnoth.org:14999  für CVS-Versionen des Spiels
+ Weitere Server sind unter http://www.wesnoth.org/wiki/MultiplayerServers
+ aufgeführt
 
 Starten einer Mehrspielerpartie
 
@@ -272,9 +283,24 @@ beitreten.  Teilnehmende Spieler werden mit ihren Nicknames aufgeführt.
 
 Schritt 4: Klicken Sie »Ich bin bereit« an, um die Partie zu starten
 
-Andere Ressourcen:
-Die Ingame-Hilfe ist während des Spielens durch Drücken der Hilfe-Taste, oder entsprechende Auswahl im Menue erreichbar. 
-Die Homepage des Projekts findet sich unter www.wesnoth.org. Dort finden sich auch weiterführende Links zu diesem Spiel, unter anderem zu unserer Wiki http://wiki.wesnoth.org/ wo sich unteranderem Komplettlösungen für einzelne Kampagnen oder allgemeine Tips zur Spielstrategie finden lassen, ausserdem ein Baum alle in Wesnoth vorkommenden Einheiten aufschlüsselt.
-Des weiteren finden sie Informationen, wie sie an der Entwicklung von Battle for Wesnoth teilhaben können z.B. als Programmierer, Künstler oder Übersetzer.
-Und da wäre noch der IRC-Channel des Wesnoth Projekts auf irc.wesnoth.org im Channel #wesnoth.
+Kampagnenserver:
+Um weitere Kampagen herunterzuladen, wählen Sie »Kampagnen« und anschließend
+»Weitere Kampagnen...« aus. Es wird eine TCP-Verbindung zum Port 15002 des
+Kampagnenservers (campaigns.wesnoth.org) aufgebaut. Stellen Sie also sicher,
+dass Ihre Firewall dies zulässt. Die Kampagnen sind von Benutzern geschrieben
+worden, so dass nicht sichergestellt werden kann, dass sie auch immer mit der
+aktuellen Version von Wesnoth funktionieren. Fragen Sie bei Problemen im Forum
+nach.
 
+Andere Ressourcen:
+Die Ingame-Hilfe ist während des Spielens durch Drücken der Hilfe-Taste, oder
+entsprechende Auswahl im Menue erreichbar.
+Die Homepage des Projekts findet sich unter http://www.wesnoth.org/. Dort finden
+sich auch weiterführende Links zu diesem Spiel, unter anderem zu unserer Wiki
+http://www.wesnoth.org/wiki/ wo sich unteranderem Komplettlösungen für einzelne
+Kampagnen oder allgemeine Tips zur Spielstrategie finden lassen, ausserdem ein
+Baum, der alle in Wesnoth vorkommenden Einheiten aufschlüsselt.
+Des weiteren finden sie Informationen, wie sie an der Entwicklung von Battle
+for Wesnoth teilhaben können z.B. als Programmierer, Künstler oder Übersetzer.
+Und dann wären da noch der IRC-Kanal #wesnoth auf irc.wesnoth.org und das Forum,
+das unter http://forum.wesnoth.org/ zu finden ist.
