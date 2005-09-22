@@ -73,6 +73,18 @@ To lexical_cast_default(From a, To def=To())
 	}
 }
 
+template<>
+int lexical_cast<int, const std::string&>(const std::string& a);
+
+template<>
+int lexical_cast<int, const char*>(const char* a);
+
+template<>
+int lexical_cast_default<int, const std::string&>(const std::string& a, int def);
+
+template<>
+int lexical_cast_default<int, const char*>(const char* a, int def);
+
 template<typename From>
 std::string str_cast(From a)
 {

@@ -40,45 +40,6 @@ namespace {
 
 std::vector<language_def> known_languages;
 
-#if 0
-language_def known_languages[] = {
-	language_def("", N_("System default language")),
-	language_def("af_ZA", "Afrikaans"),
-	language_def("bg_BG", "Български (Bulgarski)"),
-	language_def("ca_ES", "Català"),
-	language_def("cs_CZ", "Čeština"),
-	language_def("da_DK", "Dansk"),
-	language_def("de_DE", "Deutsch"),
-	language_def("el_GR", "Ελληνικά (Ellinika)"),
-	language_def("et_EE", "Eesti"),
-	language_def("en_GB", "English [GB]"),
-	language_def("C",     "English [US]"),
-	language_def("es_ES", "Español"),
-	language_def("eu_ES", "Euskera"),
-	language_def("fr_FR", "Français"),
-	language_def("it_IT", "Italiano"),
-	language_def("la_IT", "Latina"),
-	language_def("hu_HU", "Magyar"),
-	language_def("nl_NL", "Nederlands"),
-	language_def("ja_JP", "日本語 (Nihongo)"),
-	language_def("no_NO", "Norsk"),
-        language_def("oc_FR", "Occitan"),
-	language_def("pl_PL", "Polski"),
-	language_def("pt_BR", "Português do Brasil"),
-	language_def("ru_RU", "Русский (Russkij)"),
-	language_def("sk_SK", "Slovenčina"),
-	language_def("sl_SI", "Slovenščina"),
-	language_def("sr_CS", "Srpski"),
-	language_def("tr_TR", "Türkçe"),
-	language_def("fi_FI", "Suomi"),
-	language_def("sv_SE", "Svenska"),
-	language_def("zh_CN", "中文 (Zhongwen)"),
-
-	// end of list marker, do not remove
-	language_def("", "")
-};
-#endif
-
 std::string languagedef_name (const language_def& def)
 {
 	return def.language;

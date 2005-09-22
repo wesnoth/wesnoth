@@ -100,6 +100,7 @@ wesnoth_SOURCES = \
 	unit.cpp \
 	unit_display.cpp \
 	unit_types.cpp \
+	util.cpp \
 	variable.cpp \
 	video.cpp \
 	wassert.cpp \
@@ -290,6 +291,7 @@ wesnoth_editor_SOURCES = \
 	unit.cpp \
 	unit_display.cpp \
 	unit_types.cpp \
+	util.cpp \
 	variable.cpp \
 	video.cpp \
 	serialization/binary_or_text.cpp \
@@ -375,6 +377,7 @@ wesnoth_editor_SOURCES = \
 	unit.hpp \
 	unit_display.hpp \
 	unit_types.hpp \
+	util.hpp \
 	variable.hpp \
 	video.hpp \
 	serialization/binary_or_text.hpp \
