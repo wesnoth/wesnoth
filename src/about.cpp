@@ -309,6 +309,7 @@ std::vector<std::string> get_text() {
 		"-   Flamma",
 		"-   Franciso Muñoz (fmunoz)",
 		"-   Gabriel Rodríguez (Chewie)",
+		"-   Iván Herrero (navitux)",
 		"-   Jose Gordillo (kilder)",
 		"-   Jose Manuel Gomez (joseg)",
 
