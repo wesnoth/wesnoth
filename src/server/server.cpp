@@ -96,7 +96,7 @@ private:
 	void process_data_from_player_in_lobby(network::connection sock, config& data, config& gamelist);
 	void process_data_from_player_in_game(network::connection sock, config& data, config& gamelist);
 
-	void process_command(const std::string& cmd);
+	std::string process_command(const std::string& cmd);
 
 	void delete_game(std::vector<game>::iterator i);
 
@@ -135,10 +135,13 @@ private:
 	bool is_ip_banned(const std::string& ip);
 	std::string ban_ip(const std::string& mask);
 	std::vector<std::string> bans_;
+
+	std::string admin_passwd_;
+	std::set<network::connection> admins_;
 };
 
 server::server(int port, input_stream& input, const config& cfg, size_t nthreads) : net_manager_(nthreads), server_(port),
-    not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input), cfg_(cfg)
+    not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input), cfg_(cfg), admin_passwd_(cfg["passwd"])
 {
 	version_query_response_.add_child("version");
 
@@ -222,14 +225,14 @@ void server::dump_stats()
 		"\tend_interval = " << last_stats_ << std::endl;
 }
 
-void server::process_command(const std::string& cmd)
+std::string server::process_command(const std::string& cmd)
 {
+	std::ostringstream out;
 	const std::string::const_iterator i = std::find(cmd.begin(),cmd.end(),' ');
 	const std::string command(cmd.begin(),i);
 	if(command == "msg") {
 		if(i == cmd.end()) {
-			std::cout << "you must type a message" << std::endl;
-			return;
+			return "you must type a message";
 		}
 
 		const std::string msg(i+1,cmd.end()); lobby_players_.send_data(construct_server_message(msg,lobby_players_));
@@ -237,72 +240,71 @@ void server::process_command(const std::string& cmd)
 			g->send_data(construct_server_message(msg,*g));
 		}
 
-		std::cout << "message '" << msg << "' relayed to players\n";
+		out << "message '" << msg << "' relayed to players\n";
 	} else if(command == "status") {
-		std::cout << "STATUS REPORT\n---\n";
+		out << "STATUS REPORT\n---\n";
 		for(player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
 			const network::connection_stats& stats = network::get_connection_stats(i->first);
 			const int time_connected = stats.time_connected/1000;
 			const int seconds = time_connected%60;
 			const int minutes = (time_connected/60)%60;
 			const int hours = time_connected/(60*60);
-			std::cout << "'" << i->second.name() << "' @ " << network::ip_address(i->first) << " connected for " << hours << ":" << minutes << ":" << seconds << " sent " << stats.bytes_sent << " bytes, received " << stats.bytes_received << " bytes\n";
+			out << "'" << i->second.name() << "' @ " << network::ip_address(i->first) << " connected for " << hours << ":" << minutes << ":" << seconds << " sent " << stats.bytes_sent << " bytes, received " << stats.bytes_received << " bytes\n";
 		}
 
-		std::cout << "---" << std::endl;
+		out << "---";
 	} else if(command == "metrics") {
-		std::cout << metrics_ << std::endl;
+		out << metrics_;
 	} else if(command == "ban") {
 
 		if(i == cmd.end()) {
-			std::cout << "BAN LIST\n---\n";
+			out << "BAN LIST\n---\n";
 			for(std::vector<std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
-				std::cout << *i << "\n";
+				out << *i << "\n";
 			}
-			std::cout << "---" << std::endl;
+			out << "---";
 		} else {
 			const std::string mask(i+1,cmd.end());
 			const std::string& diagnostic = ban_ip(mask);
 			if(diagnostic != "") {
-				std::cout << "Could not ban '" << mask << "': " << diagnostic << std::endl;
+				out << "Could not ban '" << mask << "': " << diagnostic;
 			} else {
-				std::cout << "Set ban on '" << mask << "'\n";
+				out << "Set ban on '" << mask << "'\n";
 			}
 		}
 	} else if(command == "unban") {
 		if(i == cmd.end()) {
-			std::cout << "You must enter a mask to unban" << std::endl;
-			return;
+			return "You must enter a mask to unban";
 		}
 
 		const std::string mask(i+1,cmd.end());
 
 		const std::vector<std::string>::iterator itor = std::remove(bans_.begin(),bans_.end(),mask);
 		if(itor == bans_.end()) {
-			std::cout << "there is no ban on '" << mask << "'" << std::endl;
+			out << "there is no ban on '" << mask << "'";
 		} else {
 			bans_.erase(itor,bans_.end());
-			std::cout << "ban removed on '" << mask << "'" << std::endl;
+			out << "ban removed on '" << mask << "'";
 		}
 
 	} else if(command == "kick") {
 		if(i == cmd.end()) {
-			std::cout << "you must enter a nick to kick\n";
-			return;
+			return "you must enter a nick to kick";
 		}
 
 		const std::string nick(i+1,cmd.end());
 
 		for(player_map::const_iterator j = players_.begin(); j != players_.end(); ++j) {
 			if(j->second.name() == nick) {
-				std::cout << "kicking nick '" << j->second.name() << "'\n";
 				throw network::error("",j->first);
 			}
 		}
 	} else {
-		std::cout << "command '" << command << "' is not recognized" << std::endl;
-		std::cout << "available commands are: msg <message>, status, metrics, ban [<nick>], unban <nick>, kick <nick>" << std::endl;
+		out << "command '" << command << "' is not recognized";
+		out << "available commands are: msg <message>, status, metrics, ban [<nick>], unban <nick>, kick <nick>";
 	}
+
+	return out.str();
 }
 
 void server::run()
@@ -323,7 +325,7 @@ void server::run()
 			//process admin commands
 			std::string admin_cmd;
 			if(input_.read_line(admin_cmd)) {
-				process_command(admin_cmd);
+				std::cout << process_command(admin_cmd) << std::endl;
 			}
 
 			//make sure we log stats every 5 minutes
@@ -546,6 +548,11 @@ void server::process_query(const network::connection sock, const config& query, 
 	if(query["type"] == "metrics") {
 		//a query for server data from a player
 		response << metrics_;
+	} else if(admin_passwd_.empty() == false && query["type"] == admin_passwd_) {
+		admins_.insert(sock);
+		response << "You are now recognized as an administrator";
+	} else if(admins_.count(sock) != 0) {
+		response << process_command(query["type"]);
 	} else {
 		response << "Error: unrecognized query";
 	}
