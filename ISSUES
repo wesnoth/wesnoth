@@ -1,17 +1,18 @@
-We have released 1.0 of Battle for Wesnoth because we think it is a
+We have released 1.0 of Battle for Wesnoth because we believe it is a
 solid game that is great fun to play.  In extensive testing the game has
 been well behaved for several hundred serious testers, and nearly half a
 million copies of various development versions have been downloaded over
 the two years of development.
 
 Unfortunately, some bugs do remain: here is a list of the main ones we
-are aware of.  See http://bugs.wesnoth.org/ for the list of open issues,
-and http://changelog.wesnoth.org/ for the status of development.
+are aware of.  See http://bugs.wesnoth.org/ for the list of issues, and
+http://changelog.wesnoth.org/ for the status of development.  Each bug
+report is associated with a number, and these numbers are listed below.
 
 
 SPECIFIC ISSUES
 
-9982, 10154, 14533: some hotkeys are broken on international keyboards
+3580, 3625, 4380: some hotkeys are broken on international keyboards
 
 The default hotkey for command mode is "shift-;" which is ":" on many
 keyboard layouts.  If you have a keyboard layout where ";" is only
@@ -21,92 +22,76 @@ preferences to another key.  You can also work around other keys like
 "/" not being available, but hotkeys 1-7 are currently hardcoded and
 therefore not accessible eg. for French keyboard layouts.
 
-14379: MP server messages are not translatable
+4355: MP server messages are not translatable
 
 The multiplayer server sends messages to game clients in English.  We
 currently have no way for these messages to be translated into your
 local language.
 
-10962: a unit does not level up in a replay if that is the last action
+3802: a unit does not level up in a replay if that is the last action
 
 Sometimes one of your units will kill the last enemy leader and not only
 win the scenario, but also receive enough experience points that it
 levels up.  Unfortunately, a replay of such a game will not show the
 unit advancing.
 
-11966: the Map Editor does not allow the language to be changed
-
-The Map Editor uses the language that the game was last played in.  If
-you want to use another language in the editor, change it in the game,
-and then start the editor.
-
-12169: chat only accepts ASCII characters
+3986: chat only accepts ASCII characters
 
 Although the game uses UTF-8 to represent international characters,
 there is no way to input such characters.  This is due to the SDL
 library that we use, which does not support UTF-8 input.
 
-12722: hitpoint update delay can be very long
+4070: hitpoint update delay can be very long
 
 If you play or replay a custom scenario where units can sustain large
 amounts of damage, the delay in showing the lost hitpoints may become
 very long.  A workaround is to use accelerated mode.
 
-13391: at night, it can be difficult to distinguish selected castle hexes
+4169: at night, it can be difficult to distinguish selected castle hexes
 
 On some systems, the shade of grey used for castle hexes at night are
 the same or very close to the colour used for highlighted castle hexes.
 It might therefore not be possible to tell which of the castle hexes are
 highlighted, and which are not.
 
-13598: help is not always available
+4196: help is not always available
 
 You need to be playing for help to be available.  Currently there is no
-way to call up the help system from the title screen.  Further, by
-design, only those parts of the game that you have come across when
-playing will be available in the help system.  If you have not seen an
-Ancient Lich, you will not see its description in help until you do.
+way to call up the help system from the title screen.
 
-13875: downloaded campaigns can't be deleted
+4253: downloaded campaigns can't be deleted
 
 There is no way in the game to delete campaigns that you have downloaded
 but don't want anymore.  You can remove them by removing the campaign
 files.  These are stored in different places depending on your operating
 system and installation type.
 
-13895: in Northern Outpost one can undo searching the villages
+4269: the game uses lots of memory
 
-In the Eastern Invasion Campaign, the Northern Outpost scenario requires
-you to search several villages.  It is possible to undo these moves and
-cheat.  We trust you will be responsible.
+The game uses lots of memory, since it keeps track of lots of data about
+the units in each scenario, and there are lots of images in the game.
+If the game uses too much memory, try saving, quitting and restarting
+the game and loading your saved game.  If you are a C++ programmer and
+find a confirmed memory leak, please notify the developers.
 
-13981: the game uses lots of memory
-
-There may be some memory leaks in the code.  However, we have not been
-able to find any.  The game does use lots of memory, since it keeps
-track of lots of data about the units in each scenario.  If the game
-uses too much memory, try saving, quitting and restarting the game and
-loading your saved game.  If you are a C++ programmer and find a
-confirmed memory leak, please notify the developers.
-
-13992: changing the language may not work properly
+4273: changing the language may not work properly
 
 On Windows and some of the Mac OS X builds, changing to another language
 may not properly update text that has already been shown, although text
 that has not yet been shown will be displayed in the new language.  The
 workaround is to restart the game.
 
-14099: some text dialogs are truncated
+4299: some text dialogs are truncated
 
 The text in some dialogs may be truncated to fit into a dialog box.
 This is especially noticeable with some of the translations.
 
-14287: campaign overview should show versions
+4337: campaign overview should show versions
 
 In the Campaign screen, the campaign versions are not shown.  Some
 campaigns have version numbers in their descriptions, but not all do.
 
-7544, 9893, 10272, 10703, 11170, 12132, 14083, 14225, 14306, 14307, 14520:
+3119, 3563, 3647, 3762, 3835, 3978, 4293, 4324, 4340, 4341, 4376:
 limitations with the keyboard or mouse
 
 In some situations hotkeys and menu items are not available when they
@@ -133,13 +118,17 @@ The game sometimes behaves differently to what some people expect.  The
 following are some of the most frequently queried issues: these are
 deliberate, and not considered bugs.
 
-11364: unit description of modified unit shows unmodified stats
+By design, only those parts of the game that you have come across when
+playing will be available in the help system.  If you have not seen an
+Ancient Lich, you will not see its description in help until you do.
+
+3869: unit description of modified unit shows unmodified stats
 
 In some scenarios, units can obtain items that change their statistics.
 The unit description will always show the statistics of the unmodified
 unit type, and will not include modifications for specific units.
 
-11829: units are slowed for different amounts of time
+3933: units are slowed for different amounts of time
 
 A unit can be slowed in combat.  A unit that is slowed when defending
 will stay slowed until its next turn is over.  This can mean it is
@@ -147,7 +136,7 @@ slowed for as long as it takes for one, two or several other sides to
 finish their turns.  However, units that are slowed when attacking
 another unit will only be slowed during that turn.  This is intentional.
 
-13313: subdirectories are not shown in save and load dialogs
+4150: subdirectories are not shown in save and load dialogs
 
 Saved games are stored in one directory or folder.
 
