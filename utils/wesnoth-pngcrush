@@ -1,0 +1,52 @@
+#!/usr/bin/ruby
+# Original script
+# Copyright (C) 2004 by Crossbow/Miyo <miyo@iki.fi>
+# Some features and Ruby-fication
+# Copyright (C) 2005 by Isaac Clerencia <isaac@warp.es>
+# Part of the Battle for Wesnoth Project http://www.wesnoth.org
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY.
+#
+# See the COPYING file for more details.
+
+require 'md5'
+
+def sha1sum(file)
+	MD5.new(open(file).read).hexdigest
+end
+
+checkOld = true
+
+totalSavedBytes = 0
+totalSavedFiles = 0
+
+files = (`find -iname "*.png"`).split("\n")
+
+files.each { | file| 
+	file = file[2,file.length]
+	puts "\n* processing #{file}\n"
+
+	old = "/home/isaac/devel/wesnoth/last/#{file}";
+	if checkOld and File.exists?(old) and sha1sum(file) == sha1sum(old)
+		puts "  * no change since last release\n";
+		next;
+	end
+	output = `nice -n 19 pngrewrite "#{file}" "#{file}.new"`;
+	File.exists?("#{file}.new") or next;
+	oldSize = File.size(file)
+	newSize = File.size("#{file}.new")
+	if newSize < oldSize
+		savedBytes = oldSize - newSize;
+		totalSavedBytes = totalSavedBytes + savedBytes
+		totalSavedFiles = totalSavedFiles.succ
+		output = `mv "#{file}.new" -v "#{file}"`
+		puts ", $output,\nsaved: #{savedBytes} bytes, total saved: #{totalSavedBytes/1024} KB"
+	else
+		File.unlink("#{file}.new");
+	end
+}
+
+puts "\ntotal saved: #{totalSavedBytes/1024} KB, #{totalSavedFiles} files\n";
