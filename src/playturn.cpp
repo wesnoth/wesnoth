@@ -41,6 +41,8 @@
 #include "serialization/string_utils.hpp"
 #include "widgets/menu.hpp"
 
+#include "wesconfig.h"
+
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
@@ -2186,7 +2188,7 @@ void turn_info::create_unit()
 	std::vector<std::string> options;
 	std::vector<unit> unit_choices;
 	for(game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.begin(); i != gameinfo_.unit_types.end(); ++i) {
-		options.push_back(i->first);
+		options.push_back(i->second.language_name());
 		unit_choices.push_back(unit(&i->second,1,false));
 		unit_choices.back().new_turn();
 	}
@@ -2199,7 +2201,7 @@ void turn_info::create_unit()
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
-		choice = gui::show_dialog(gui_,NULL,"","Create unit (debug):",
+		choice = gui::show_dialog(gui_,NULL,"",dsgettext(PACKAGE "-lib","Create Unit (Debug!)"),
 		                          gui::OK_CANCEL,&options,&preview_panes);
 	}
 
