@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-09-19 21:09+0200\n"
-"PO-Revision-Date: 2005-09-29 08:22+0200\n"
+"POT-Creation-Date: 2005-09-14 23:24+0200\n"
+"PO-Revision-Date: 2005-09-29 18:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
 "MIME-Version: 1.0\n"
@@ -129,8 +129,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"As jy nie die spel ken nie - is dit raadsaam om eers die <italic>text=Leer "
-"Hoe</italic> knoppie op die Hoof Menu te kliek. Dit sal jou neem na 'n "
+"As jy nie die spel ken nie - is dit raadsaam om eers die <italic>text='Leer "
+"Hoe'</italic> knoppie op die Hoof Menu te kliek. Dit sal jou neem na 'n "
 "interaktiewe verduideliking, wat jou die basiese stappe van Wesnoth sal "
 "leer. Na dit, is dit raadsaam om die Troonopvolger veldtog eerste te "
 "probeer: kliek <italic>text=Veldtog</italic> en dan "
@@ -799,7 +799,7 @@ msgstr ""
 
 #: data/help.cfg:201
 msgid "Healing"
-msgstr "Geneeskrag"
+msgstr "Gesondmaak-krag"
 
 #: data/help.cfg:202
 msgid ""
@@ -810,7 +810,7 @@ msgid ""
 "take place at the beginning of your turn, before you take action."
 msgstr ""
 "In gevegte sal jou eenhede onvermydelik skade opdoen. Wanneer 'n eenheid "
-"<ref>dst=experience_and_advancement text=bevorder word</ref>, sal dit geheel "
+"<ref>dst=experience_and_advancement text='bevorder word'</ref>, sal dit geheel "
 "en al genees word. Dit kan gebeur aan die einde van 'n geveg hetsy dit jou "
 "beurt is aldan nie. Wesnoth bied verskeie maniere vir jou eenhede om genees "
 "te word, almal waarvan aan die begin van jou beurt plaasvind voordat jy "
@@ -834,7 +834,7 @@ msgid ""
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
 "\n"
-"Dorpies: 'n Eenheid wat 'n beurt in 'n dorp begin sal met 8LP genees word."
+"Dorpies: 'n Eenheid wat 'n beurt in 'n dorp begin sal met 8LP herstel."
 
 #: data/help.cfg:206
 msgid ""
@@ -844,7 +844,7 @@ msgid ""
 msgstr ""
 "\n"
 "<ref>dst=ability_regenerates text=Herlewing</ref>: Sekere eenhede (soos die "
-"trolle) sal outomaties met 8LP genees met elke beurt."
+"trolle) sal outomaties met 8LP herstel met elke beurt."
 
 #: data/help.cfg:207
 msgid ""
@@ -856,9 +856,8 @@ msgid ""
 "per unit."
 msgstr ""
 "\n"
-"Genesende eenhede: Eenhede met die <ref>dst=ability_heals text=Geneeskrag</"
-"ref> vermoë kan soveel as 8LP skade per beurt genees, en ook Gifskade kan "
-"voorkom. Slegs eenhede wat langs en aan dieselfde kant veg as die Genesende "
+"Gesondmaak eenhede: Eenhede met die <ref>dst=ability_heals text='Gesondmaak-krag'</ref> vermoë kan soveel as 8LP skade per beurt genees, en ook Gifskade kan "
+"voorkom. Slegs eenhede wat langs en aan dieselfde kant veg as die Gesondmaak "
 "eenheid kan genees word en slegs met 4LP per eenheid."
 
 #: data/help.cfg:208
@@ -870,9 +869,8 @@ msgid ""
 "the same side as the healing unit, and only up to 8HP per unit."
 msgstr ""
 "\n"
-"Genesende eenhede: Eenhede met die <ref>dst=ability_cures text=Geneeskrag</"
-"ref> vermoë sal almal tot en met 18LP skade genees per beurt, en ook "
-"Verfigtiging genees. Slegs dié eenhede wat langs of aan dieselfde kant veg "
+"Genesende eenhede: Eenhede met die <ref>dst=ability_cures text=Geneeskrag</ref> vermoë sal almal tot en met 18LP skade genees per beurt, en ook "
+"Vergiftiging genees. Slegs dié eenhede wat langs of aan dieselfde kant veg "
 "as die genesende eenheid sal genees word en ook net tot op 'n maksimum van "
 "8LP per eenheid."
 
@@ -888,11 +886,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Rus kan met ander vorme van genesing gekombineer word maar dorpe, herlewing, "
-"genesing en herstel kan nie met mekaar gekombineer word nie. 'n Genesende- "
-"of herstel-eenheid wat se aandag verdeel is tussen baie gewondes sal minder "
-"doeltreffend wees met die genesing van individuele wonde. Ten laaste sal "
-"alle eenhede ten volle genees tussen scenarios."
+"Rus kan met ander vorme van genesing gekombineer word maar dorpe, regenerasie, "
+"genesing en gesondmaak kan nie met mekaar gekombineer word nie. 'n Genesende- "
+"of gesondmaak-eenheid wat se aandag verdeel is tussen baie gewondes sal minder "
+"doeltreffend wees met die gesondmaak van individuele wonde. Ten laaste sal "
+"alle eenhede ten volle herstel tussen scenarios."
 
 #: data/help.cfg:215
 msgid "Income and Upkeep"
@@ -1044,7 +1042,7 @@ msgstr ""
 "\n"
 "Ander karaktertrekke wat aan eenhede toegeken kan word is "
 "<ref>dst=traits_loyal text=Lojaal</ref>, <ref>dst=traits_undead "
-"text=Wandelende Dood</ref> en <ref>dst=traits_dextrous text=Behendig</ref>"
+"text='Wandelende Dood'</ref> en <ref>dst=traits_dextrous text=Behendig</ref>"
 
 #: data/help.cfg:256
 msgid "Intelligent"
@@ -1785,7 +1783,7 @@ msgstr "Ring van Herlewing"
 #: data/items.cfg:536
 msgid "This ring will heal the bearer a little each turn."
 msgstr ""
-"Hierdie ring sal die draer daarvan so 'n bietjie met elke beurt genees."
+"Hierdie ring sal die draer daarvan so 'n bietjie met elke beurt laat herstel."
 
 #: data/items.cfg:556
 msgid "Can't set abilities yet, sorry."
@@ -3530,7 +3528,7 @@ msgstr ""
 msgid "Underground"
 msgstr "Ondergronds"
 
-#: data/terrain.cfg:11 src/multiplayer_create.cpp:55
+#: data/terrain.cfg:11 src/multiplayer_create.cpp:52
 #: src/multiplayer_lobby.cpp:311 src/multiplayer_lobby.cpp:317
 msgid "Shroud"
 msgstr "Sluier"
@@ -5059,7 +5057,7 @@ msgstr "boog"
 #: data/units/Skeleton_Archer.cfg:42 data/units/Soul_Shooter.cfg:29
 #: data/units/Soul_Shooter.cfg:42 data/units/Spearman.cfg:62
 #: data/units/Spearman.cfg:113 data/units/Transport_Galleon.cfg:19
-#: data/units/Trapper.cfg:44 data/units/Triton.cfg:24
+#: data/units/Trapper.cfg:44 data/units/Triton.cfg:27
 #: data/units/Vampire_Lady.cfg:36 data/units/Wall_Guard.cfg:38
 #: data/units/Watch_Tower.cfg:20
 msgid "pierce"
@@ -5668,7 +5666,7 @@ msgid ""
 msgstr ""
 "Daar word gesê dat die oudste drake are het waarin vuur vloei eerder as "
 "bloed. Dat hulle vuur kan blaas maak dit geloofwaardig, maar vir een of "
-"ander rede het niemand nog probeer om een oop te sny om uit te vind nie. \n"
+"ander rede het niemand nog probeer om een oop te sny om uit te vind nie.\n"
 "\n"
 "Spesiale Nota's: Die leierskap van 'n Vlamhart stel goedgesinde eenhede "
 "langs hulle in staat om meer skade in 'n geveg aan te rig, dit geld egter "
@@ -6234,7 +6232,7 @@ msgstr ""
 "Wose is nie eintlik krygers van formaat nie, uit hulle groot krag is dit "
 "duidelik dat hulle tot geweld in staat is as iemand hulle kwaad maak.\n"
 "\n"
-"Spesiale Nota's: Wose hergenereer deur die natuurlike hulpbronne om hulle te "
+"Spesiale Nota's: Wose regenereer deur die natuurlike hulpbronne om hulle te "
 "gebruik, dus hoef hulle nie in dorpe te gaan skuil om voedsel en hulp te kry "
 "nie."
 
@@ -6681,9 +6679,9 @@ msgstr ""
 "Die geneeskrag van die elwe is ook merkwaardig, en 'n belangrike gedeelte "
 "van 'n geveg.\n"
 "\n"
-"Spesiale Nota's: 'n Toordoktor se verstrengel aanval veroorsaak dat die vyand "
-"een hou minder slaan gedurende 'n geveg. Toordokters is tot basiese "
-"geneesing in staat, maar kan net die effek van die gif vertraag, en nie "
+"Spesiale Nota's: 'n Toordoktor se verstrengel aanval veroorsaak dat die "
+"vyand een hou minder slaan gedurende 'n geveg. Toordokters is tot basiese "
+"genesing in staat, maar kan net die effek van die gif vertraag, en nie "
 "heeltemal genees nie."
 
 #: data/units/Elvish_Sharpshooter.cfg:3
@@ -7203,7 +7201,7 @@ msgstr "lans"
 
 #: data/units/Grand_Marshal.cfg:3
 msgid "Grand Marshal"
-msgstr "Opper Maarskalk"
+msgstr "Grootmaarskalk"
 
 #: data/units/Grand_Marshal.cfg:24
 msgid ""
@@ -7701,6 +7699,25 @@ msgid ""
 "Special Notes: the ranged attack of a mage is magical, and always has a high "
 "chance of hitting an opponent."
 msgstr ""
+"Mense het al dikwels gewonder oor hoe die wêreld waarin hulle leef werk. Vir "
+"sommiges is dit 'n obsessie, die hoofdoel van hulle lewens. Die Towenaars "
+"het baie jare aan studie afgestaan en het hulself onderskei deur die groot "
+"hoeveelheid kennis wat hulle versamel het. In 'n wêreld waar bitter min "
+"mense kan lees en skryf, het hierdie mense hulself ten volle oorgegee na die "
+"strewe vir kennis. Onder hulle tel die kinders van die adelstand en ook die "
+"wat wil ontsnap uit die sieldodende lewe van die handewerker.\n"
+"\n"
+"Dit is ironies dat die towenaars met hulle baie kennis en met hul beskeie "
+"monopolie daaroor, dat hulle as 'n gemeenskap maklik oor die samelewing sou "
+"kon heers as hulle ooit sou probeer. Hulle groot liefde is egter nie geld of "
+"mag nie en sal diegene wat toorkuns vir die doel bestudeer gewoonlik nie die "
+"moed van oortuiging hê wat dit verg om dit te bemeester nie.\n"
+"\n"
+"Towenaars is fisies swak en nie vertroud met oorlogvoering nie, maar het "
+"nietemin vaardighede wat hulle baie nuttig maak in 'n geveg.\n"
+"\n"
+"Spesiale Nota's: Die afstandaanval van 'n towenaar besit toorkrag en staan "
+"altyd 'n goeie kans om 'n teenstander te tref."
 
 #: data/units/Mage.cfg:47 data/units/Mage.cfg:130
 #: data/units/Silver_Mage.cfg:100 data/units/Silver_Mage.cfg:236
@@ -7737,6 +7754,20 @@ msgid ""
 "also have the power of Illumination, which increases the lighting level in "
 "the area adjacent to the mage."
 msgstr ""
+"Na jare se ervaring word die mees toegewyde wit towenaars met groot "
+"geestelike krag geseën. Deur hulle groot toewyding aan die pad van die lig, "
+"kan hulle daarop staat maak om die skadus van die nag te verjaag.\n"
+"\n"
+"Hierdie manne en vroue, met hulle streng gedragsreëls van eerbaarheid en "
+"vroomheid, werk onverpoosd om lewe en orde na die onrustige wêreld waarin "
+"hulle leef te bring.\n"
+"\n"
+"Spesiale Nota's: Die lig wat deur 'n towenaar gewerp word besit toorkrag en "
+"staan altyd 'n goeie kans om 'n teenstander te tref. Die lig doen berokken "
+"enorme skade aan die wandelende dooies en doen selfs 'n bietjie skade aan "
+"lewende weses. Towenaars van Lig het die vermoë om eenhede rondom hulle te "
+"genees en hulle van vergiftiging te verlos. Hulle het ook die krag van "
+"beligting wat die beligtingsvlakke in die gebied rondom hulle verhoog."
 
 #: data/units/Mage_of_Light.cfg:51 data/units/Mage_of_Light.cfg:128
 #: data/units/Mermaid_Diviner.cfg:48 data/units/Mermaid_Priestess.cfg:43
@@ -7894,6 +7925,16 @@ msgid ""
 "Special Notes: the blasts of water conjured by mermaids are magical in "
 "nature, and always have a high chance of hitting their opponents."
 msgstr ""
+"Jong Meerminne word dikwels ingewy tot die watertoorkuns wat so eie aan "
+"hulle mense is. Die wonderbaarlike vermoëns wat dit hulle gee kan deur geen "
+"ander ras nagemaak word nie en is 'n toonbeeld van die feetjie-aard van "
+"hierdie wesens.\n"
+"\n"
+"Ondanks hulle swakheid, is hulle gedugte teenstanders in gevegte omdat hulle "
+"die water om hulle kan gebruik om hulle vyande mee te kasty.\n"
+"\n"
+"Spesiale Notas: Die waterspuite wat deur die meerminne opgeroep word besit "
+"toorkrag en staan altyd 'n goeie kans om hulle teenstanders te tref."
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
@@ -7914,6 +7955,19 @@ msgid ""
 "damage to the undead, and even does some to living creatures. Priestesses "
 "are capable of healing units around them, and curing them of poison."
 msgstr ""
+"Meermanne huldig dieselfde oortuigings as die mensdom, tog om kulturele "
+"redes word die instandhouding hiervan aan die meerminne oorgelaat met hulle "
+"groter intellektuele neigings. Dit is hulle wat hulself toewy aan die ideale "
+"om vrede en lewe na die wêreld te bring en hulle wat die kuns bestudeer om "
+"siekte en beserings, kwale wat hulle met die mensdom deel, te bestry. Hulle "
+"toegewydheid en vroomheid gee hulle ook seker geestelike kragte wat hulle in "
+"staat stel om hulle mense teen die onnatuurlike te beskerm.\n"
+"\n"
+"Spesiale Nota's: Die lig wat deur die priesteresse gewerp word besit "
+"toorkrag en staan altyd 'n goeie kans om 'n teenstander te tref. Die lig "
+"berokken enorme skade aan die wandelende dooies en doen selfs 'n bietjie "
+"skade aan lewende wesens. Priesteresse het die vermoë om diegene rondom "
+"hulle te genees en hulle van vergiftiging te verlos."
 
 #: data/units/Mermaid_Siren.cfg:3
 msgid "Siren"
@@ -7934,6 +7988,19 @@ msgid ""
 "Special Notes: the attacks of a siren are magical in nature, and always have "
 "a high chance of hitting their opponents."
 msgstr ""
+"Die feetjie-aard van die meerminne is die sterkste by die Sirenes, wie se "
+"verbintenis met die naia so sterk is dat hulle dikwels misgis word vir "
+"niades. Al is dit ver van die waarheid verwyder is so 'n feit heel "
+"verstaanbaar aangesien die ware naides selde gesien word, selfs deur die "
+"meerminne. Hulle toorkrag word op soortgelyke wyse gemanifesteer; 'n sirene "
+"kan die water om haar na willekeur beheer, amper asof dit deel van haarself "
+"is.\n"
+"\n"
+"Die vele toepassings van hierdie kuns ontgaan die meeste landbewoners, wat "
+"eenvoudig net verwonderd is daaroor.\n"
+"\n"
+"Spesiale Nota's: die aanvalle van 'n sirene besit toorkrag en staan daarom "
+"altyd 'n goeie kans om hul teenstanders te tref."
 
 #: data/units/Mermaid_Siren.cfg:27
 msgid "naia touch"
@@ -7954,7 +8021,7 @@ msgstr ""
 #: data/units/Merman.cfg:23 data/units/Merman_Fighter.cfg:23
 #: data/units/Merman_Hoplite.cfg:37 data/units/Merman_Triton.cfg:24
 #: data/units/Merman_Triton.cfg:36 data/units/Merman_Warrior.cfg:23
-#: data/units/Naga.cfg:24 data/units/Sea_Hag.cfg:24 data/units/Triton.cfg:23
+#: data/units/Naga.cfg:24 data/units/Sea_Hag.cfg:24 data/units/Triton.cfg:26
 msgid "trident"
 msgstr "seevurk"
 
@@ -7973,6 +8040,15 @@ msgid ""
 "Special Notes: being caught in a net slows enemies down and reduces by one "
 "the strikes they can deliver in combat."
 msgstr ""
+"Die nette met gewigte aan wat deur die meermanne in oorlogvoering gebruik "
+"word is 'n moeilike wapen om goed te gebruik; diegene wat dit bemeester word "
+"deur hulle kamerade bewonder en waardeer. Die wapen help om die "
+"meerderwaardigheid van die meerman in sy element te bevestig en maak hulle "
+"ras 'n bedreiging vir enige vyand wat dit selfs net naby die water durf "
+"waag.\n"
+"\n"
+"Spesiale Nota's: As 'n vyand in 'n net vasgevang word, word hulle vertraag "
+"en word hulle houe wat hulle in 'n geveg kan slaan met een verminder."
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
@@ -7989,6 +8065,11 @@ msgid ""
 "steadfast line against the rages of battle. In times of desperation, they "
 "can even do so on land, though not nearly as well as a creature with legs."
 msgstr ""
+"Met skilde wat voor hulle uit-toring, vorm die Meerman Hopliette die erewag "
+"van die waterwêreld. Hulle kragtige lyf-pantser en streng disipline "
+"veroorsaak dat hul 'n standvastige linie kan behou gedurende 'n stryd. As "
+"dit regtig nodig is, kan hulle dit ook op land doen, maar nie so goed soos "
+"'n kreatuur met bene nie."
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
@@ -8041,6 +8122,16 @@ msgid ""
 "Special Notes: being caught in a net slows enemies down and reduces by one "
 "the strikes they can deliver in combat."
 msgstr ""
+"Visvang, soos die Meermanne dit doen, is grootliks 'n gejaag van visskole in "
+"wagtende nette in. Die nette self rig nie baie skade aan nie maar kan nogal "
+"effektief gebruik word teen troepe wat 'n rivier of 'n fjord probeer "
+"oorsteek. Kleiner nette, met gegigte aan, kan deur die lug gegooi word om 'n "
+"vyand vas te vang. Meermane gebruik hierdie wapens om troepe in die water "
+"vas te keer. Dit gee aan die meermanne 'n voordeel, want hulle is nie so "
+"beweeglik op land nie.\n"
+"\n"
+"Spesiale Nota's: Om in 'n net vasgevang te word veroorsaak dat die vyand "
+"vertraag word en hulle slaan dus een minder hou per rondte."
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
@@ -8066,7 +8157,7 @@ msgstr ""
 msgid "Merman Triton"
 msgstr "Meerman Triton"
 
-#: data/units/Merman_Triton.cfg:21 data/units/Triton.cfg:20
+#: data/units/Merman_Triton.cfg:21 data/units/Triton.cfg:23
 msgid ""
 "Tritons are masters of the sea. Skilled in use of the trident, Tritons "
 "easily defeat any enemy foolish enough to wander into their preferred "
@@ -8145,6 +8236,12 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss. They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
+"Die serpentyn naga is een van die min rasse met ratse beweeglikheid in die "
+"water en dit gee hulle maklike toegand tot die waterwêreld, wat gewoonlik "
+"buite die bereik van die land-lopers is. Nieteenstaande, is hulle nie "
+"kreature wat onder die water kan asem haal nie, en dit maak hulle versigtig "
+"om nie in 'n bodemlose watergat vasgevang te word nie. Hulle is klein en "
+"tingerig, maar baie rats, en kan dus hulle vyande goed ontwyk."
 
 #: data/units/Naga-Fighter.cfg:39
 msgid "Nagini Fighter"
@@ -8241,6 +8338,16 @@ msgid ""
 "Special Notes: The ranged attacks of a necromancer are magical, and always "
 "have a high chance of hitting an opponent."
 msgstr ""
+"Een van die grootse kringe van wat ons klassifiseer as 'swart toordery' is "
+"die kuns van nekromanse. Dit is die bekwaamheid om die dooies op te roep en "
+"vir hul 'n vals lewe te gee. Hierdie bekwaamheid, in al sy aspekte, was die "
+"eerste stap om die dood uit sy slagoffer te kul, maar daar was ernstige "
+"nagevolge. Hierdie kuns alleen is dalk wat die mensdom laat besluit het om "
+"'swart toordery' sterk af te keur en wat hulle laat vrees het vir 'n nuwe "
+"duistere arsenaal.\n"
+"\n"
+"Spesiale Nota's: Die afstand-toordery van 'n nekromanser is magies, en het "
+"'n hoë kans vir 'n trefhou teen die vyand."
 
 #: data/units/Necrophage.cfg:3
 msgid "Necrophage"
@@ -8257,6 +8364,14 @@ msgid ""
 "this poison will continually take damage until they can be cured in town or "
 "by a healer."
 msgstr ""
+"Aangevuur deur 'n onheilige honger vir dooie vlees, val die Nekromante hul "
+"vyande met ondierlike wreedheid aan. Wanner hulle versadig is, skud hulle "
+"eenvoudig enige skade af asof hulle nou net opgeroep was, net om alles weer "
+"van voor af te begin.\n"
+"\n"
+"Spesiale Nota's: Nekromante se kloue is met gif bedek, en alle slagoffers se "
+"lewenspunte sal daal as gevolg van die gif, todat hulle kan genees word deur "
+"'n dorpie of 'n geneeser."
 
 #: data/units/Nightgaunt.cfg:3
 msgid "Nightgaunt"
@@ -8275,6 +8390,16 @@ msgid ""
 "damage, and move quite slowly over open water. Nightgaunts are able to hide "
 "at night, leaving no trace of their presence."
 msgstr ""
+"Hoekom hierdie kreature maskers dra is onbekend, en niemand weet eintlik wat "
+"hulle wegsteek nie. Hierdie vrees-aanjaende gedaantes word baie min deur die "
+"lewendes gesien, en die wat hulle wel gesien het, het nooit genoeg tyd "
+"gehaad om hul vyand te bestudeer nie.\n"
+"\n"
+"Spesiale Nota's: Terwyl 'n bondgenoot van die Nag Gaunt die vyand se aandag "
+"aftrek, mag die nag gaunt agter die vyand se rug insluip en hom in die rug "
+"steek, wat dan dubbele skade veroorsaak. Nag Gaunts het ongewone weerstande "
+"vir skade, en beweeg nogal stadig oor water. Nag Gaunts kan wegkruip in die "
+"nag, en daar sal glad nie 'n spoor van hulle bestaan oorbly nie."
 
 #: data/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
@@ -8380,6 +8505,15 @@ msgid ""
 "victims of this poison will continually take damage until they can be cured "
 "in town or by a healer."
 msgstr ""
+"Alhoewel party dink gif is 'n lafaard se wapen, is gif 'n gunsteling wapen "
+"van die orke - veral die wat maar skraal gebou is. Orkse sluipmoordenaars "
+"smeer gif aan die lemme van hul gooimesse. Hulle is meestal maar tingerig, "
+"maar verbasend rats. Hulle is selde die een wat die finale hou slaan, maar "
+"hul taktiek is van groot hulp vir hulle groter en meer brutale stamgenoote.\n"
+"\n"
+"Spesiale Nota's: Orkse Sluipmoordenaars gebruik gif oo hulle gooimese en die "
+"slagoffers van hierdie gif sal aanhoudend lewenspunte verloor todat hulle "
+"deur 'n dorpie of 'n geneeser kan behandel word."
 
 #: data/units/Orcish_Assassin.cfg:38 data/units/Orcish_Slayer.cfg:44
 msgid "throwing knives"
@@ -8541,6 +8675,16 @@ msgid ""
 "victims of this poison will continually take damage until they can be cured "
 "in town or by a healer."
 msgstr ""
+"Die groter, en in meeste gevalle, meer behendige orkse sluipmoordenaars word "
+"'Slagters' genoem deur hul vyande. Hoekom hul so genoem word is nie baie "
+"duidelike nie, maar Slagers is rats en baie beweegbaar in 'n geveg. Die rede "
+"hiervoor is omdat hulle so te sê geen lyf-pantser dra nie. Hulle gekose "
+"wapen, gif, is 'n ongenaakbare instrument, en die gebruik hiervan is greeld "
+"die rede vir 'n orkse oorwinning.\n"
+"\n"
+"Spesiale Nota's: Orkse Slagters gebruik gif op hul gooimesse, en die "
+"slagoffers van die gif sal aanhoudend lewenspunte verloor todat hulle kan "
+"genees word deur 'n dorpie of geneeser."
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
@@ -8554,6 +8698,11 @@ msgid ""
 "than their Elven and Human counterparts, they still maintain an edge in "
 "melee strength and stamina."
 msgstr ""
+"Smetboogmanne het dit reggekry om hul kruisboë te verbeter deur 'n "
+"ontbrandings-meganisme en metaal-loop op te sit. As gevolg hiervan kan hulle "
+"lood-skerwe met redelike akkuraatheid en krag skiet. Alhoewel hulle swakker "
+"is met afstands-gevegte as die Mense en Elwe, maak hulle op daarvoor omdat "
+"hulle meer krag en stamina in 'n naby geveg het."
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
@@ -8616,6 +8765,13 @@ msgid ""
 "are somewhat ill at ease fighting during the day, preferring the cover of "
 "nightfall."
 msgstr ""
+"Na jare se diens sal die 'skurkie's' uitendelik bevorder word in die range "
+"van hulle dief-genote. As hulle eers hulself in gevegte bewys het word hulle "
+"meer gevaarlike take opgelê en kry 'n groter gedeelte van die buit. Alhoewel "
+"hulle opponente dink hulle keuse van wapens is koddig, weet die misdadigers "
+"hoe dodelik dit kan wees en dat daar baie ammunisie beskikbaar is. "
+"Misdadigers hou nie daarvan om helder oordag te veg nie, en is meer tuis in "
+"die skadu's van die nag."
 
 #: data/units/Outlaw.cfg:76
 msgid "female^Outlaw"
@@ -8673,6 +8829,12 @@ msgid ""
 "in combat, and their piety grants them other gifts. A Paladin is a bane to "
 "the unworldly, and has trained in ministering to the wounds of his comrades."
 msgstr ""
+"Ridders van die hoogste reinheid, het Paladyne hulself besweer aan klooster-"
+"geloftes, en sal al hulle kragte opoffer vir die doel van reg en "
+"geregtigheid. Alhoewel nie so skrikwekkend soos die Grood Ridder nie, is die "
+"Paladyn 'n sterk mag in 'n geveg en hulle geloof bied aan hulle ander "
+"vaardighede. 'n Paladyn is 'n vloek teen die ondegrondse gedrogte, en kan "
+"die wonde van sy kamerade in 'n mindere mate gesond maak."
 
 #: data/units/Paladin.cfg:27
 msgid ""
@@ -8850,6 +9012,13 @@ msgid ""
 "their past. Such questions aside, a Revenant is a powerful tool in combat: a "
 "fearless warrior that feels no pain, and which will fight to the bitter end."
 msgstr ""
+"Deur hulle 'n vals lewe te gee nadat hulle opgeroep is uit die dode, vind "
+"die kreature genaamd Revenante, hulself weer in die stryd. Hulle was "
+"duidelik groot krygers in hulle vorige lewe, alhoewel die geheue daarvan al "
+"lank al verby is. Selfs die towenaars wat hulle oproep kan net spekuleer oor "
+"hulle verlede. Nadat ons hierde vra ten syde stel, moet ons sê die Revenant "
+"is 'n kragtige wapen in 'n geveg, 'n onverskrokke kryger wat nie pyn voel "
+"nie, en wat tot die bitter einde sal veg."
 
 #: data/units/Rogue.cfg:3
 msgid "Rogue"
@@ -8872,7 +9041,7 @@ msgstr ""
 "Hierdie uitvaagsels het al baie onaangename oomblike gehad terwyl hulle vlug "
 "deur skares vanaf iemand wat hulle wil leed aandoen. Meesters van die "
 "mesgeveg, kan hulle ook messe gooi met betroubare akkuraatheid, en lang ure "
-"se rondsluip in die nag maak hulle ook gemaklin in 'n nag-geveg. \n"
+"se rondsluip in die nag maak hulle ook gemaklin in 'n nag-geveg.\n"
 "\n"
 "Spesiale Nota's: Terwyl 'n bondgenoot van die uitvaagsel die vyand se aandag "
 "aftrek, mag die uitvaagsel rugsteek, en dit berokken dubbele skade terwyl "
@@ -9115,9 +9284,9 @@ msgid ""
 msgstr ""
 "Toe lig in die wêreld kom, en vorm gee aan die onbekende, moes vrees onttrek "
 "na die donker. Van daardie dag af is die mensdom bang vir die donker, "
-"alhoewel niemand eintlik weet hoekom nie. \n"
+"alhoewel niemand eintlik weet hoekom nie.\n"
 "\n"
-"Daardie vraag word maklik deur die nekromanser beantwoord. \n"
+"Daardie vraag word maklik deur die nekromanser beantwoord.\n"
 "\n"
 "Spesiale Nota's: Terwyl 'n bondgenoot van die donker die vyand se aandag "
 "aftrek, kan die donker-skadu die opponent se rug aanval, en soedoende dubbel "
@@ -9181,6 +9350,32 @@ msgid ""
 "villages instantly, though the player must control both, and the destination "
 "village must be unoccupied."
 msgstr ""
+"Die vele paaie wat 'n towenaar kan wandel kan 'n groot verskil lei. Die "
+"silwer towenaar het hulself gegee aan die studie van die magte wat die "
+"wêreld vasbind, en het, tot 'n mate, dit reggekry om van die geheime van die "
+"wêreld te ontbloot meer as wat party mense hullle kan verbeel. Gesien as "
+"wysgere, of wandelende mistikusse, het die silwer toorwenaars hulle eie "
+"agenda's wat geheim bly selfs van hulle kollega's. Alhoewel hulle hulp "
+"verleen aan magistariums, wat hulle gebruik in die veld, is hulle maar "
+"ietwat afsydig.\n"
+"\n"
+"Hulle het hule eie range in hul silwer towerkuns, 'n kuns wat sekere geheime "
+"van ander towenaars weerhou. Een geheim is om blykbaar groot afstande af te "
+"lê, teen 'n spoed wat baie vinniger is as wat enige normale mens dit kan "
+"doen. Die lede van die silwer toorkuns weier botweg om hierdie geheim aan "
+"die towenaars van die ander ordes te verklap, en die towenaars wat self "
+"probeer uitvind het, het gou moed opgegee en nooit weer daarvan gepraat "
+"nie.\n"
+"\n"
+"Die Silwer Towenaars is baie keer meer fisies vaardig as ander towenaars, 'n "
+"vaardigheid wat handig te pas kom op die slagveld. Dit is nou te sê as mens "
+"hulle kan oortuig om hul towerkuns te gebruik.\n"
+"\n"
+"Spesiale Nota's: die afstands-aanval van die silwer towenaar is magies, en "
+"staan 'n goeie kans om 'n trefhou te wees. Silwer Towenaars is hoogs bestand "
+"teen magiese aanvalle. Hulle kan tussen dorpies teleporteer, hetsy die "
+"speler albei dorpies beheer en die dorpie waarna die towenaar teleporteer is "
+"vry. Daar mag dus niemand op die bestemmings-dorpie wees nie."
 
 #: data/units/Silver_Mage.cfg:139
 msgid "female^Silver Mage"
@@ -9328,7 +9523,7 @@ msgid ""
 msgstr ""
 "Partykeer genoem die 'hol manne' word geeste gebruik as die regter-arm van "
 "hul meester se kragte. Hierdie gedrogte boesem vrees in en hulle pas hul "
-"meester se werf op sonder om te slaap. \n"
+"meester se werf op sonder om te slaap.\n"
 "\n"
 "Die skepping van een van hierdie is nie maklik nie, en die regte gevaar is "
 "dat as jy een van hulle raakloop sal daar hoogs waarskynlik 'n baie meer "
@@ -9393,7 +9588,7 @@ msgstr ""
 "aangesien hulle bedrywighede nie altyd wettig was nie. Diewe het baie "
 "vaardighede, en is genoegsaak om vinnig te wees op hul voete en vaardig te "
 "wees met 'n mes. Hulle gebruik skroom nie om 'vuil taktiek' te gebruik in 'n "
-"geveg nie. \n"
+"geveg nie.\n"
 "\n"
 "Spesiale Nota's: Terwyl 'n eenheid wat 'n bondgenoot is van die dief, die "
 "vyand se aandag aftrek, kan die dief rugsteek vir dubbel die skade deur "
@@ -9898,131 +10093,131 @@ msgstr "+Verpakkers"
 msgid "+Miscellaneous"
 msgstr "+Algemeen"
 
-#: src/about.cpp:128
+#: src/about.cpp:127
 msgid "+Internationalization Managers"
 msgstr "+Internasionalisering Bestuurders"
 
-#: src/about.cpp:135
+#: src/about.cpp:134
 msgid "+Afrikaans Translation"
 msgstr "+Afrikaanse Vertaling"
 
-#: src/about.cpp:139
+#: src/about.cpp:138
 msgid "+Basque Translation"
 msgstr "+Baskiese Vertaling"
 
-#: src/about.cpp:144
+#: src/about.cpp:143
 msgid "+Bulgarian Translation"
 msgstr "+Bulgaarse Vertaling"
 
-#: src/about.cpp:148
+#: src/about.cpp:147
 msgid "+Catalan Translation"
 msgstr "+Katalaniese Vertaling"
 
-#: src/about.cpp:158
+#: src/about.cpp:156
 msgid "+Chinese Translation"
 msgstr "+Sjinese Vertaling"
 
-#: src/about.cpp:161
+#: src/about.cpp:159
 msgid "+Czech Translation"
 msgstr "+Tsjeggiese Vertaling"
 
-#: src/about.cpp:173
+#: src/about.cpp:171
 msgid "+Danish Translation"
 msgstr "+Deense Vertaling"
 
-#: src/about.cpp:180
+#: src/about.cpp:178
 msgid "+Dutch Translation"
 msgstr "+Nederlandse Vertaling"
 
-#: src/about.cpp:188
+#: src/about.cpp:186
 msgid "+English (GB) Translation"
 msgstr "+Engelse (Britse) Vertaling"
 
-#: src/about.cpp:191
+#: src/about.cpp:189
 msgid "+Estonian Translation"
 msgstr "+Estniese Vertaling"
 
-#: src/about.cpp:194
+#: src/about.cpp:192
 msgid "+Finnish Translation"
 msgstr "+Finse Vertaling"
 
-#: src/about.cpp:200
+#: src/about.cpp:198
 msgid "+French Translation"
 msgstr "+Franse Vertaling"
 
-#: src/about.cpp:219
+#: src/about.cpp:217
 msgid "+German Translation"
 msgstr "+Duitse Vertaling"
 
-#: src/about.cpp:231
+#: src/about.cpp:229
 msgid "+Greek Translation"
 msgstr "+Griekse Vertaling"
 
-#: src/about.cpp:237
+#: src/about.cpp:235
 msgid "+Hungarian Translation"
 msgstr "+Hongaarse Vertaling"
 
-#: src/about.cpp:250
+#: src/about.cpp:248
 msgid "+Italian Translation"
 msgstr "+Italiaanse Vertaling"
 
-#: src/about.cpp:259
+#: src/about.cpp:257
 msgid "+Japanese Translation"
 msgstr "+Japannese Vertaling"
 
-#: src/about.cpp:264
+#: src/about.cpp:262
 msgid "+Latin Translation"
 msgstr "+Latynse Vertaling"
 
-#: src/about.cpp:267
+#: src/about.cpp:265
 msgid "+Norwegian Translation"
 msgstr "+Noorweegse Vertaling"
 
-#: src/about.cpp:273
+#: src/about.cpp:271
 msgid "+Polish Translation"
 msgstr "+Poolse Vertaling"
 
-#: src/about.cpp:283
+#: src/about.cpp:281
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugese (Brasiliaanse) Vertaling"
 
-#: src/about.cpp:292
+#: src/about.cpp:290
 msgid "+Russian Translation"
 msgstr "+Russiese Vertaling"
 
-#: src/about.cpp:298
+#: src/about.cpp:296
 msgid "+Serbian Translation"
 msgstr "+Serwiese Vertaling"
 
-#: src/about.cpp:301
+#: src/about.cpp:299
 msgid "+Slovak Translation"
 msgstr "+Slowaakse Vertaling"
 
-#: src/about.cpp:304
+#: src/about.cpp:302
 msgid "+Slovenian Translation"
 msgstr "+Sloweense Vertaling"
 
-#: src/about.cpp:307
+#: src/about.cpp:305
 msgid "+Spanish Translation"
 msgstr "+Spaanse Vertaling"
 
-#: src/about.cpp:315
+#: src/about.cpp:313
 msgid "+Swedish Translation"
 msgstr "+Sweedse Vertaling"
 
-#: src/about.cpp:322
+#: src/about.cpp:320
 msgid "+Turkish Translation"
 msgstr "+Turkse Vertaling"
 
-#: src/about.cpp:328
+#: src/about.cpp:326
 msgid "+Contributors"
 msgstr "+Medewerkers"
 
-#: src/about.cpp:331
+#: src/about.cpp:329
 msgid "+Bots"
 msgstr "+Internet Robot"
 
-#: src/about.cpp:367 src/help.cpp:2662
+#: src/about.cpp:365 src/help.cpp:2662
 msgid "Close"
 msgstr "Sluit"
 
@@ -10042,12 +10237,12 @@ msgstr "Daar is geen leë kasteelblokke waarin jy 'n eenheid kan werf nie."
 msgid "none"
 msgstr "geen"
 
-#: src/actions.cpp:399 src/dialogs.cpp:763 src/help.cpp:1143
+#: src/actions.cpp:399 src/dialogs.cpp:760 src/help.cpp:1143
 #: src/reports.cpp:248
 msgid "melee"
 msgstr "hand-tot-hand geveg"
 
-#: src/actions.cpp:399 src/dialogs.cpp:763 src/help.cpp:1143
+#: src/actions.cpp:399 src/dialogs.cpp:760 src/help.cpp:1143
 #: src/reports.cpp:249
 msgid "ranged"
 msgstr "afstandgeveg"
@@ -10100,31 +10295,31 @@ msgstr "vergiftig"
 msgid "slowed"
 msgstr "vertraag"
 
-#: src/actions.cpp:1938
+#: src/actions.cpp:1934
 msgid "Ambushed!"
 msgstr "Lokval!"
 
-#: src/actions.cpp:1972
+#: src/actions.cpp:1968
 msgid "Friendly unit sighted"
 msgstr "Goedgesinde eenheid opgemerk"
 
-#: src/actions.cpp:1974
+#: src/actions.cpp:1970
 msgid "Enemy unit sighted!"
 msgstr "Vyandige eenheid opgemerk!"
 
-#: src/actions.cpp:1979
+#: src/actions.cpp:1975
 msgid "$friends Friendly units sighted"
 msgstr "$friends Goedgesinde eenhede opgemerk"
 
-#: src/actions.cpp:1981
+#: src/actions.cpp:1977
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies Vyandige eenhede opgemerk!"
 
-#: src/actions.cpp:1985
+#: src/actions.cpp:1981
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Eenhede opgemerk! ($friends vriende, $enemies vyande)"
 
-#: src/actions.cpp:2000
+#: src/actions.cpp:1996
 msgid "(press $hotkey to continue)"
 msgstr "(druk $hotkey om voort te gaan)"
 
@@ -10136,91 +10331,91 @@ msgstr "Bevorder Eenheid"
 msgid "What should our victorious unit become?"
 msgstr "Na wat moet die eenheid bevorder word?"
 
-#: src/dialogs.cpp:173
+#: src/dialogs.cpp:170
 msgid "No objectives available"
 msgstr "Geen doelwitte beskikbaar nie"
 
-#: src/dialogs.cpp:187
+#: src/dialogs.cpp:184
 msgid "Save Game"
 msgstr "Stoor Spel"
 
-#: src/dialogs.cpp:189
+#: src/dialogs.cpp:186
 msgid "Overwrite?"
 msgstr "Stoor bo-oor?"
 
-#: src/dialogs.cpp:190
+#: src/dialogs.cpp:187
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Lêer bestaan reeds. Wil jy daar bo-oor skryf?"
 
-#: src/dialogs.cpp:219 src/dialogs.cpp:502
+#: src/dialogs.cpp:216 src/dialogs.cpp:499
 msgid "Don't ask me again!"
 msgstr "Moenie my weer vra nie!"
 
-#: src/dialogs.cpp:221
+#: src/dialogs.cpp:218
 msgid "Do you really want to delete this game?"
 msgstr "Wil jy regtig hierdie spel uitvee?"
 
-#: src/dialogs.cpp:358
+#: src/dialogs.cpp:355
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:371
+#: src/dialogs.cpp:368
 msgid "#(Invalid)"
 msgstr "#(Ongeldig)"
 
-#: src/dialogs.cpp:376 src/game.cpp:759
+#: src/dialogs.cpp:373 src/game.cpp:759
 msgid "Campaign"
 msgstr "Veldtog"
 
-#: src/dialogs.cpp:378 src/game.cpp:1149
+#: src/dialogs.cpp:375 src/game.cpp:1146
 msgid "Multiplayer"
 msgstr "Veelspeler"
 
-#: src/dialogs.cpp:380
+#: src/dialogs.cpp:377
 msgid "Tutorial"
 msgstr "Leer Hoe"
 
-#: src/dialogs.cpp:388
+#: src/dialogs.cpp:385
 msgid "replay"
 msgstr "wys weer"
 
-#: src/dialogs.cpp:390 src/multiplayer_lobby.cpp:295 src/playturn.cpp:1633
+#: src/dialogs.cpp:387 src/multiplayer_lobby.cpp:295 src/playturn.cpp:1633
 msgid "Turn"
 msgstr "Beurt"
 
-#: src/dialogs.cpp:392
+#: src/dialogs.cpp:389
 msgid "Scenario Start"
 msgstr "Scenario Begin"
 
-#: src/dialogs.cpp:395
+#: src/dialogs.cpp:392
 msgid "Difficulty: "
 msgstr "Moeilikheidsgraad: "
 
-#: src/dialogs.cpp:397
+#: src/dialogs.cpp:394
 msgid "Version: "
 msgstr "Weergawe: "
 
-#: src/dialogs.cpp:421 src/dialogs.cpp:437
+#: src/dialogs.cpp:418 src/dialogs.cpp:434
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:427
+#: src/dialogs.cpp:424
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:430
+#: src/dialogs.cpp:427
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:433
+#: src/dialogs.cpp:430
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:457
+#: src/dialogs.cpp:454
 msgid "No Saved Games"
 msgstr "Geen Gestoorde Speletjies"
 
-#: src/dialogs.cpp:458
+#: src/dialogs.cpp:455
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
@@ -10228,15 +10423,15 @@ msgstr ""
 "Daar is geen gestoorde speletjies om te laai nie.\n"
 "(Speletjies word outomaties gestoor wanneer jy 'n scenario voltooi)"
 
-#: src/dialogs.cpp:477
+#: src/dialogs.cpp:474
 msgid "Delete Save"
 msgstr "Vee Gestoorde Lêer Uit"
 
-#: src/dialogs.cpp:492
+#: src/dialogs.cpp:489
 msgid "Import Saved Games"
 msgstr "Voer Gestoorde Speletjies In"
 
-#: src/dialogs.cpp:493
+#: src/dialogs.cpp:490
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
 "Wesnoth. Would you like to update these to the latest version? This may take "
@@ -10245,7 +10440,7 @@ msgstr ""
 "Jou bêreplek bevat lêers van 'n ouer weergawe van Battle for Wesnoth. Wil jy "
 "hulle na die nuutste weergawe opdateer? Dit mag 'n tydjie neem."
 
-#: src/dialogs.cpp:498
+#: src/dialogs.cpp:495
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
@@ -10255,44 +10450,44 @@ msgstr ""
 "Battle for Wesnoth geskep is nie. Wil jy hierdie lêers by die spel "
 "registreer?"
 
-#: src/dialogs.cpp:553
+#: src/dialogs.cpp:550
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:553 src/game.cpp:892 src/help.cpp:1119
+#: src/dialogs.cpp:550 src/game.cpp:892 src/help.cpp:1119
 #: src/multiplayer_lobby.cpp:29 src/playturn.cpp:2066 src/playturn.cpp:2246
 msgid "Name"
 msgstr "Naam"
 
-#: src/dialogs.cpp:579
+#: src/dialogs.cpp:576
 msgid "Show replay"
 msgstr "Wys weer"
 
-#: src/dialogs.cpp:582 src/multiplayer_create.cpp:78
+#: src/dialogs.cpp:579 src/multiplayer_create.cpp:75
 msgid "Load Game"
 msgstr "Laai Spel"
 
-#: src/dialogs.cpp:583
+#: src/dialogs.cpp:580
 msgid "Choose the game to load"
 msgstr "Kies die spel om te laai"
 
-#: src/dialogs.cpp:619 src/dialogs.cpp:631
+#: src/dialogs.cpp:616 src/dialogs.cpp:628
 msgid "Profile"
 msgstr "Profiel"
 
-#: src/dialogs.cpp:711 src/help.cpp:1037
+#: src/dialogs.cpp:708 src/help.cpp:1037
 msgid "level"
 msgstr "vlak"
 
-#: src/dialogs.cpp:732 src/help.cpp:1095
+#: src/dialogs.cpp:729 src/help.cpp:1095
 msgid "HP: "
 msgstr "LP: "
 
-#: src/dialogs.cpp:736 src/dialogs.cpp:744
+#: src/dialogs.cpp:733 src/dialogs.cpp:741
 msgid "XP: "
 msgstr "EP: "
 
-#: src/dialogs.cpp:749 src/help.cpp:1096
+#: src/dialogs.cpp:746 src/help.cpp:1096
 msgid "Moves: "
 msgstr "Skuiwe: "
 
@@ -10300,12 +10495,12 @@ msgstr "Skuiwe: "
 msgid "Screenshot"
 msgstr "Skermkopie"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
+#: src/filechooser.cpp:51 src/multiplayer_create.cpp:55
 msgid "OK"
 msgstr "Goed"
 
 #: src/filechooser.cpp:52 src/multiplayer_connect.cpp:507
-#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
+#: src/multiplayer_create.cpp:54 src/multiplayer_wait.cpp:148
 msgid "Cancel"
 msgstr "Kanselleer"
 
@@ -10384,7 +10579,7 @@ msgstr "Bediener: "
 msgid "Could not connect to host."
 msgstr "Kon nie aan gasheer koppel nie."
 
-#: src/game.cpp:870 src/game.cpp:1078
+#: src/game.cpp:870
 msgid "Awaiting response from server"
 msgstr "Wag vir antwoord van die bediener"
 
@@ -10438,133 +10633,133 @@ msgstr "Besig om veldtog af te laai..."
 msgid "Cannot rescan the filesystem"
 msgstr "Kan nie die lêerstelsel oorlees nie"
 
-#: src/game.cpp:1023
+#: src/game.cpp:1020
 msgid "Campaign Installed"
 msgstr "Veldtog geïnstalleer"
 
-#: src/game.cpp:1023
+#: src/game.cpp:1020
 msgid "The campaign has been installed."
 msgstr "Die veldtog is geïnstalleer"
 
-#: src/game.cpp:1025
+#: src/game.cpp:1022
 msgid "Network communication error."
 msgstr "Netwerk kommunikasie fout."
 
-#: src/game.cpp:1027
+#: src/game.cpp:1024
 msgid "Remote host disconnected."
 msgstr "Afgeleë bediener het ontkoppel."
 
-#: src/game.cpp:1029
+#: src/game.cpp:1026
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Daar was 'n probleem tydens die skep van die benodigde lêers om hierdie "
 "veldtog te installeer."
 
-#: src/game.cpp:1041 src/game.cpp:1080 src/game.cpp:1105
+#: src/game.cpp:1038 src/game.cpp:1077 src/game.cpp:1102
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:218
 msgid "Connection timed out"
 msgstr "Verbindingtyd het verstryk"
 
-#: src/game.cpp:1044 src/game.cpp:1082 src/game.cpp:1107
+#: src/game.cpp:1041 src/game.cpp:1079 src/game.cpp:1104
 msgid "The server responded with an error: \""
 msgstr "Die bediener het 'n foutboodskap gestuur: \""
 
-#: src/game.cpp:1048
+#: src/game.cpp:1045
 msgid "Terms"
 msgstr "Voorwaardes"
 
-#: src/game.cpp:1085 src/game.cpp:1110
+#: src/game.cpp:1082 src/game.cpp:1107
 msgid "Response"
 msgstr "Antwoord"
 
-#: src/game.cpp:1132
+#: src/game.cpp:1129
 msgid "Join Official Server"
 msgstr "Sluit by Amptelike Bediener aan"
 
-#: src/game.cpp:1133
+#: src/game.cpp:1130
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Teken in op die amptelike Wesnoth veelspeler bediener"
 
-#: src/game.cpp:1135 src/multiplayer_lobby.cpp:407
+#: src/game.cpp:1132 src/multiplayer_lobby.cpp:407
 msgid "Join Game"
 msgstr "Sluit aan by 'n spel"
 
-#: src/game.cpp:1136
+#: src/game.cpp:1133
 msgid "Join a server or hosted game"
 msgstr "Sluit aan by 'n bediener of bediener spel"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1135
 msgid "Host Networked Game"
 msgstr "Wees 'n bediener vir 'n Netwerk Spel"
 
-#: src/game.cpp:1139
+#: src/game.cpp:1136
 msgid "Host a game without using a server"
 msgstr "Bied 'n spel aan sonder om van 'n bediener gebruik te maak"
 
-#: src/game.cpp:1141
+#: src/game.cpp:1138
 msgid "Hotseat Game"
 msgstr "Hotseat Spel"
 
-#: src/game.cpp:1142
+#: src/game.cpp:1139
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Speel 'n veelspelerspel op dieselfde rekenaar"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1141
 msgid "Human vs AI"
 msgstr "Mens teen Rekenaar"
 
-#: src/game.cpp:1145
+#: src/game.cpp:1142
 msgid "Play a game against AI opponents"
 msgstr "Speel 'n spel teen Rekenaar teenstanders"
 
-#: src/game.cpp:1151 src/multiplayer.cpp:187
+#: src/game.cpp:1148 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Teken in: "
 
-#: src/game.cpp:1182 src/playcampaign.cpp:197
+#: src/game.cpp:1179 src/playcampaign.cpp:197
 msgid "The game could not be loaded: "
 msgstr "Die spel kon nie gelaai word nie: "
 
-#: src/game.cpp:1184 src/playcampaign.cpp:200
+#: src/game.cpp:1181 src/playcampaign.cpp:200
 msgid "Error while playing the game: "
 msgstr "Fout tydens speel van spel: "
 
-#: src/game.cpp:1196 src/playcampaign.cpp:203
+#: src/game.cpp:1193 src/playcampaign.cpp:203
 msgid "The game map could not be loaded: "
 msgstr "Die spelkaart kon nie gelaai word nie: "
 
-#: src/game.cpp:1222
+#: src/game.cpp:1219
 msgid "Language"
 msgstr "Taal"
 
-#: src/game.cpp:1223
+#: src/game.cpp:1220
 msgid "Choose your preferred language:"
 msgstr "Dui jou taalvoorkeur aan:"
 
-#: src/game.cpp:1352
+#: src/game.cpp:1349
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "Die volgende bykomende veldtogte kon nie gelaai word nie weens foute:"
 
-#: src/game.cpp:1357
+#: src/game.cpp:1354
 msgid "ERROR DETAILS:"
 msgstr "FOUT BESONDERHEDE:"
 
-#: src/game.cpp:1366
+#: src/game.cpp:1363
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
 "Waarskuwing: Foute het voorgekom tydens die laai van spelkonfigurasie lêers: "
 "'"
 
-#: src/game.cpp:1416
+#: src/game.cpp:1413
 msgid "Error loading game configuration files: '"
 msgstr "Fout met laai van konfigurasie lêers: '"
 
-#: src/game.cpp:1417
+#: src/game.cpp:1414
 msgid "' (The game will now exit)"
 msgstr "' (Die spel gaan nou sluit)"
 
-#: src/game.cpp:1507
+#: src/game.cpp:1504
 msgid "Battle for Wesnoth"
 msgstr "Stryd om Wesnoth"
 
@@ -10706,7 +10901,7 @@ msgstr "Oorslaan"
 msgid "The End"
 msgstr "Die Einde"
 
-#: src/language.cpp:41 src/language.cpp:196
+#: src/language.cpp:41 src/language.cpp:195
 msgid "System default language"
 msgstr "Standaard stelseltaal"
 
@@ -10914,128 +11109,124 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Wag vir spelers om aan te sluit"
 
-#: src/multiplayer_create.cpp:37 src/multiplayer_lobby.cpp:408
+#: src/multiplayer_create.cpp:34 src/multiplayer_lobby.cpp:408
 msgid "Create Game"
 msgstr "Skep Spel"
 
-#: src/multiplayer_create.cpp:49
+#: src/multiplayer_create.cpp:46
 msgid "Name of game:"
 msgstr "Naam van spel:"
 
-#: src/multiplayer_create.cpp:51
+#: src/multiplayer_create.cpp:48
 msgid "Era:"
 msgstr "Tydperk:"
 
-#: src/multiplayer_create.cpp:52
+#: src/multiplayer_create.cpp:49
 msgid "Map to play:"
 msgstr "Kaart om te speel:"
 
-#: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:300
+#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:300
 #: src/multiplayer_lobby.cpp:301
 msgid "Use map settings"
 msgstr "Gebruik kaart instellings"
 
-#: src/multiplayer_create.cpp:54
+#: src/multiplayer_create.cpp:51
 msgid "Fog Of War"
 msgstr "Oorlogs-mis"
 
-#: src/multiplayer_create.cpp:56
+#: src/multiplayer_create.cpp:53
 msgid "Observers"
 msgstr "Waarnemers"
 
-#: src/multiplayer_create.cpp:59
+#: src/multiplayer_create.cpp:56
 msgid "Regenerate"
 msgstr "Regenereer"
 
-#: src/multiplayer_create.cpp:60
+#: src/multiplayer_create.cpp:57
 msgid "Settings..."
 msgstr "Instellings..."
 
-#: src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:86
 msgid "The maximum turns the game will go for"
 msgstr "Die maksimum beurte wat die spel kan neem"
 
-#: src/multiplayer_create.cpp:94
+#: src/multiplayer_create.cpp:91
 msgid "The amount of income each village yields per turn"
 msgstr "Hoeveel inkomste 'n dorp elke beurt inbring"
 
-#: src/multiplayer_create.cpp:99
+#: src/multiplayer_create.cpp:96
 msgid "The amount of experience a unit needs to advance"
 msgstr "Hoeveel ervaring wat 'n eenheid nodig het om bevorder te word"
 
-#: src/multiplayer_create.cpp:102
+#: src/multiplayer_create.cpp:99
 msgid "Use scenario specific settings"
 msgstr "Maak gebruik van scenario spesifieke verstellings"
 
-#: src/multiplayer_create.cpp:105
+#: src/multiplayer_create.cpp:102
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Vyandige eenhede kan nie gesien word tensy hulle binne aanvals-afstand van "
 "jou eenhede is nie"
 
-#: src/multiplayer_create.cpp:108
+#: src/multiplayer_create.cpp:105
 msgid "The map is unknown until your units explore it"
 msgstr "Die kaart is onbekend totdat jou eenhede dit bespied"
 
-#: src/multiplayer_create.cpp:111
+#: src/multiplayer_create.cpp:108
 msgid "Allow users who are not playing to watch the game"
 msgstr "Laat spelers wat nie deelneem nie toe om die spel dop te hou"
 
-#: src/multiplayer_create.cpp:115
+#: src/multiplayer_create.cpp:112
 msgid "Share View"
 msgstr "Deel Aansig"
 
-#: src/multiplayer_create.cpp:116
+#: src/multiplayer_create.cpp:113
 msgid "Share Maps"
 msgstr "Deel Kaarte"
 
-#: src/multiplayer_create.cpp:117
+#: src/multiplayer_create.cpp:114
 msgid "Share None"
 msgstr "Deel Niks"
 
-#: src/multiplayer_create.cpp:128
+#: src/multiplayer_create.cpp:125
 msgid "No multiplayer sides."
 msgstr "Geen Veelspeler kante."
 
-#: src/multiplayer_create.cpp:130
+#: src/multiplayer_create.cpp:127
 msgid "No eras found"
 msgstr "Geen tydperke gevind"
 
-#: src/multiplayer_create.cpp:143
+#: src/multiplayer_create.cpp:140
 msgid "$login's game"
 msgstr "$login se spel"
 
-#: src/multiplayer_create.cpp:175
+#: src/multiplayer_create.cpp:172
 msgid "Invalid era selected"
 msgstr "Ongeldige tydperk gekies"
 
-#: src/multiplayer_create.cpp:207
+#: src/multiplayer_create.cpp:204
 msgid "You must enter a name."
 msgstr "Jy moet 'n naam invoer"
 
-#: src/multiplayer_create.cpp:216
+#: src/multiplayer_create.cpp:213
 msgid "Turns: "
 msgstr "Beurte: "
 
-#: src/multiplayer_create.cpp:218
+#: src/multiplayer_create.cpp:215
 msgid "Unlimited Turns"
 msgstr "Onbeperkte Beurte"
 
-#: src/multiplayer_create.cpp:225
+#: src/multiplayer_create.cpp:222
 msgid "Village Gold: "
 msgstr "Dorp Goud: "
 
-#: src/multiplayer_create.cpp:231
+#: src/multiplayer_create.cpp:228
 msgid "Experience Modifier: "
 msgstr "Ervaring Wysiger: "
 
-#: src/multiplayer_create.cpp:349
+#: src/multiplayer_create.cpp:332
 msgid "Players: "
 msgstr "Spelers: "
-
-#: src/multiplayer_create.cpp:351 src/playturn.cpp:1645 src/playturn.cpp:1659
-msgid "Error"
-msgstr "Fout"
 
 #: src/multiplayer_lobby.cpp:29
 msgid "Map"
@@ -11193,64 +11384,64 @@ msgstr "Wil jy jou spel stoor?"
 msgid "Unknown scenario: '"
 msgstr "Onbekende scenario: '"
 
-#: src/playlevel.cpp:608 src/playlevel.cpp:877
+#: src/playlevel.cpp:607 src/playlevel.cpp:876
 msgid "The file you have tried to load is corrupt"
 msgstr "Die lêer wat jy probeer laai het is beskadig"
 
-#: src/playlevel.cpp:761
+#: src/playlevel.cpp:760
 msgid "Game Over"
 msgstr "Spel is Oor"
 
-#: src/playlevel.cpp:762
+#: src/playlevel.cpp:761
 msgid "The game is over."
 msgstr "Die spel is klaar."
 
-#: src/playlevel.cpp:845
+#: src/playlevel.cpp:844
 msgid "Remaining gold: "
 msgstr "Oorblywende goud: "
 
-#: src/playlevel.cpp:848
+#: src/playlevel.cpp:847
 msgid "Early finish bonus: "
 msgstr "Bonus vir vroeg klaarspeel: "
 
-#: src/playlevel.cpp:850
+#: src/playlevel.cpp:849
 msgid "per turn"
 msgstr "per beurt"
 
-#: src/playlevel.cpp:851
+#: src/playlevel.cpp:850
 msgid "Turns finished early: "
 msgstr "Aantal beurte voor einde klaargemaak: "
 
-#: src/playlevel.cpp:853
+#: src/playlevel.cpp:852
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playlevel.cpp:855
+#: src/playlevel.cpp:854
 msgid "Gold: "
 msgstr "Goud: "
 
-#: src/playlevel.cpp:860
+#: src/playlevel.cpp:859
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% van die goud bly behoue in die volgende scenario"
 
-#: src/playlevel.cpp:861
+#: src/playlevel.cpp:860
 msgid "Retained Gold: "
 msgstr "Goud Behou: "
 
-#: src/playlevel.cpp:866
+#: src/playlevel.cpp:865
 msgid "Victory"
 msgstr "Oorwinning"
 
-#: src/playlevel.cpp:867
+#: src/playlevel.cpp:866
 msgid "You have emerged victorious!"
 msgstr "Jy het die oorwinning behaal!"
 
-#: src/playlevel.cpp:871
+#: src/playlevel.cpp:870
 msgid "Scenario Report"
 msgstr "Scenarioverslag"
 
-#: src/playlevel.cpp:892
+#: src/playlevel.cpp:891
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -11306,6 +11497,10 @@ msgstr "Kon nie die spel outo-stoor nie. Stoor die spel self, asseblief."
 #: src/playturn.cpp:1596
 msgid "Rename Unit"
 msgstr "Herdoop Eenheid"
+
+#: src/playturn.cpp:1645 src/playturn.cpp:1659
+msgid "Error"
+msgstr "Fout"
 
 #: src/playturn.cpp:1645
 msgid ""
