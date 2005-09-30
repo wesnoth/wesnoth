@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-09-14 23:24+0200\n"
-"PO-Revision-Date: 2005-09-29 18:58+0200\n"
+"PO-Revision-Date: 2005-09-30 16:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
 "MIME-Version: 1.0\n"
@@ -129,11 +129,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"As jy nie die spel ken nie - is dit raadsaam om eers die <italic>text='Leer "
-"Hoe'</italic> knoppie op die Hoof Menu te kliek. Dit sal jou neem na 'n "
-"interaktiewe verduideliking, wat jou die basiese stappe van Wesnoth sal "
-"leer. Na dit, is dit raadsaam om die Troonopvolger veldtog eerste te "
-"probeer: kliek <italic>text=Veldtog</italic> en dan "
+"As jy nie die spel ken nie - is dit raadsaam om eers die "
+"<italic>text=Onderrig</italic> knoppie op die Hoof Menu te kliek. Dit sal "
+"jou neem na 'n interaktiewe verduideliking, wat jou die basiese stappe van "
+"Wesnoth sal leer. Na dit, is dit raadsaam om die Troonopvolger veldtog "
+"eerste te probeer: kliek <italic>text=Veldtog</italic> en dan "
 "<italic>text='Troonopvolger'</italic>. Omdat Die Stryd om Wesnoth nogal 'n "
 "uitdaging kan wees, beveel ons aan dat jy die <italic>text=Maklik</italic> "
 "moeilikheidsgraad eerste probeer."
@@ -810,11 +810,11 @@ msgid ""
 "take place at the beginning of your turn, before you take action."
 msgstr ""
 "In gevegte sal jou eenhede onvermydelik skade opdoen. Wanneer 'n eenheid "
-"<ref>dst=experience_and_advancement text='bevorder word'</ref>, sal dit geheel "
-"en al genees word. Dit kan gebeur aan die einde van 'n geveg hetsy dit jou "
-"beurt is aldan nie. Wesnoth bied verskeie maniere vir jou eenhede om genees "
-"te word, almal waarvan aan die begin van jou beurt plaasvind voordat jy "
-"aksie neem."
+"<ref>dst=experience_and_advancement text='bevorder word'</ref>, sal dit "
+"geheel en al genees word. Dit kan gebeur aan die einde van 'n geveg hetsy "
+"dit jou beurt is aldan nie. Wesnoth bied verskeie maniere vir jou eenhede om "
+"genees te word, almal waarvan aan die begin van jou beurt plaasvind voordat "
+"jy aksie neem."
 
 #: data/help.cfg:204
 msgid ""
@@ -856,9 +856,10 @@ msgid ""
 "per unit."
 msgstr ""
 "\n"
-"Gesondmaak eenhede: Eenhede met die <ref>dst=ability_heals text='Gesondmaak-krag'</ref> vermoë kan soveel as 8LP skade per beurt genees, en ook Gifskade kan "
-"voorkom. Slegs eenhede wat langs en aan dieselfde kant veg as die Gesondmaak "
-"eenheid kan genees word en slegs met 4LP per eenheid."
+"Gesondmaak eenhede: Eenhede met die <ref>dst=ability_heals text='Gesondmaak-"
+"krag'</ref> vermoë kan soveel as 8LP skade per beurt genees, en ook Gifskade "
+"kan voorkom. Slegs eenhede wat langs en aan dieselfde kant veg as die "
+"Gesondmaak eenheid kan genees word en slegs met 4LP per eenheid."
 
 #: data/help.cfg:208
 msgid ""
@@ -869,7 +870,8 @@ msgid ""
 "the same side as the healing unit, and only up to 8HP per unit."
 msgstr ""
 "\n"
-"Genesende eenhede: Eenhede met die <ref>dst=ability_cures text=Geneeskrag</ref> vermoë sal almal tot en met 18LP skade genees per beurt, en ook "
+"Genesende eenhede: Eenhede met die <ref>dst=ability_cures text=Geneeskrag</"
+"ref> vermoë sal almal tot en met 18LP skade genees per beurt, en ook "
 "Vergiftiging genees. Slegs dié eenhede wat langs of aan dieselfde kant veg "
 "as die genesende eenheid sal genees word en ook net tot op 'n maksimum van "
 "8LP per eenheid."
@@ -886,11 +888,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Rus kan met ander vorme van genesing gekombineer word maar dorpe, regenerasie, "
-"genesing en gesondmaak kan nie met mekaar gekombineer word nie. 'n Genesende- "
-"of gesondmaak-eenheid wat se aandag verdeel is tussen baie gewondes sal minder "
-"doeltreffend wees met die gesondmaak van individuele wonde. Ten laaste sal "
-"alle eenhede ten volle herstel tussen scenarios."
+"Rus kan met ander vorme van genesing gekombineer word maar dorpe, "
+"regenerasie, genesing en gesondmaak kan nie met mekaar gekombineer word nie. "
+"'n Genesende- of gesondmaak-eenheid wat se aandag verdeel is tussen baie "
+"gewondes sal minder doeltreffend wees met die gesondmaak van individuele "
+"wonde. Ten laaste sal alle eenhede ten volle herstel tussen scenarios."
 
 #: data/help.cfg:215
 msgid "Income and Upkeep"
@@ -4702,7 +4704,7 @@ msgstr "Opper Towenares"
 
 #: data/units/Assassin.cfg:3
 msgid "Assassin"
-msgstr "Sluipmoordenaar"
+msgstr "Moordenaar"
 
 #: data/units/Assassin.cfg:21 data/units/Assassin.cfg:116
 msgid ""
@@ -4836,7 +4838,7 @@ msgstr "gif"
 
 #: data/units/Assassin.cfg:98
 msgid "female^Assassin"
-msgstr "Sluipmoordenaar"
+msgstr "Moordenaar"
 
 #: data/units/Bandit.cfg:3
 msgid "Bandit"
@@ -5106,7 +5108,7 @@ msgstr ""
 #: data/units/Orcish_Slurbow.cfg:40 data/units/Orcish_Slurbow.cfg:67
 #: data/units/Sergeant.cfg:41 data/units/Wall_Guard.cfg:37
 msgid "crossbow"
-msgstr "Kruisboog"
+msgstr "kruisboog"
 
 #: data/units/Cavalryman.cfg:3
 msgid "Cavalryman"
@@ -5302,7 +5304,7 @@ msgstr ""
 #: data/units/Dark_Adept.cfg:39 data/units/Dark_Adept.cfg:101
 #: data/units/Dark_Sorcerer.cfg:47 data/units/Necromancer.cfg:38
 msgid "chill wave"
-msgstr "Rillingsgolf"
+msgstr "rillingsgolf"
 
 #: data/units/Dark_Adept.cfg:66
 msgid "female^Dark Adept"
@@ -5589,11 +5591,10 @@ msgid ""
 "arrows."
 msgstr ""
 "'n Drake Kletter kan nie vlieg of vuur blaas nie, en die meeste aanvaar om "
-"afgeskuif te word na 'n hand-tot-hand gevegsrol vanweë hulle gebreke. - 'n "
-"poging om die beste te maak van wat andersins 'n las sal wees. Hulle mag "
-"dalk swakhede hê ten opsigte van daardie vaardighede maar diegene wat hulle "
-"afskryf vergeet hoe goed hulle behoort te wees om teen mede-drake te "
-"baklei.\n"
+"afgeskuif te word na 'n nabygevegsrol vanweë hulle gebreke - 'n poging om "
+"die beste te maak van wat andersins 'n las sal wees. Hulle mag dalk swakhede "
+"hê ten opsigte van daardie vaardighede maar diegene wat hulle afskryf "
+"vergeet hoe goed hulle behoort te wees om teen mede-drake te baklei.\n"
 "\n"
 "Hulle is om die waarheid te sê die bepalers van die Drake Hierargie en al is "
 "hulle wapenrusting nou grootliks van seremoniële waarde, is dit nogtans "
@@ -6862,7 +6863,7 @@ msgstr ""
 
 #: data/units/Footpad.cfg:3
 msgid "Footpad"
-msgstr "Skurk"
+msgstr "Skurkie"
 
 #: data/units/Footpad.cfg:17 data/units/Footpad.cfg:83
 msgid ""
@@ -6893,7 +6894,7 @@ msgstr "slinger"
 
 #: data/units/Footpad.cfg:69
 msgid "female^Footpad"
-msgstr "voetboef"
+msgstr "Skurkie"
 
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
@@ -8260,10 +8261,10 @@ msgid ""
 "allows them a deadly mobility."
 msgstr ""
 "Die mees ervare van die naga lem-meesters word ingelyf by die kasteel van "
-"Myrmidon en hulle is meesters can dubbel-lem kuns. Hulle val net so vinnig "
-"aan soos die slange - waarna hulle lyk, en val dan grasieus terug. Hulle is "
-"sterk vyande op enige oop terrein, en hulle vermoë om vinning te kan swem "
-"maak van hulle 'n gedugte en baie beweegbare mag."
+"Myrmidon en hulle is meesters van die dubbel-lem kuns. Hulle val net so "
+"vinnig aan soos die slange - waarna hulle lyk, en val dan grasieus terug. "
+"Hulle is sterk vyande op enige oop terrein, en hulle vermoë om vinning te "
+"kan swem maak van hulle 'n gedugte en baie beweegbare mag."
 
 #: data/units/Naga-Myrmidon.cfg:44
 msgid "Nagini Myrmidon"
@@ -8278,10 +8279,10 @@ msgid ""
 "allows them a deadly mobility."
 msgstr ""
 "Die mees ervare van die nagani lem-meesters word ingelyf by die kasteel van "
-"Myrmidon en hulle is meesters can dubbel-lem kuns. Hulle val net so vinnig "
-"aan soos die slange - waarna hulle lyk, en val dan grasieus terug. Hulle is "
-"sterk vyande op enige oop terrein, en hulle vermoë om vinning te kan swem "
-"maak van hulle 'n gedugte en baie beweegbare mag."
+"Myrmidon en hulle is meesters van die dubbel-lem kuns. Hulle val net so "
+"vinnig aan soos die slange - waarna hulle lyk, en val dan grasieus terug. "
+"Hulle is sterk vyande op enige oop terrein, en hulle vermoë om vinning te "
+"kan swem maak van hulle 'n gedugte en baie beweegbare mag."
 
 #: data/units/Naga-Warrior.cfg:3
 msgid "Naga Warrior"
@@ -8323,7 +8324,7 @@ msgstr ""
 
 #: data/units/Necromancer.cfg:3
 msgid "Necromancer"
-msgstr "Nekromant"
+msgstr "Nekromanser"
 
 #: data/units/Necromancer.cfg:18
 msgid ""
@@ -8403,7 +8404,7 @@ msgstr ""
 
 #: data/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
-msgstr "Edel Kommandeur"
+msgstr "Edele Kommandeur"
 
 #: data/units/Noble_Commander.cfg:24
 msgid ""
@@ -8421,7 +8422,7 @@ msgstr ""
 
 #: data/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
-msgstr "Eer"
+msgstr "Edele Vegter"
 
 #: data/units/Noble_Fighter.cfg:20
 msgid ""
@@ -8435,7 +8436,7 @@ msgstr ""
 
 #: data/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
-msgstr "Edel Heer"
+msgstr "Edele Heer"
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
@@ -8491,7 +8492,7 @@ msgstr ""
 
 #: data/units/Orcish_Assassin.cfg:3
 msgid "Orcish Assassin"
-msgstr "Orkse Sluipmoordenaar"
+msgstr "Orkse Moordenaar"
 
 #: data/units/Orcish_Assassin.cfg:18
 msgid ""
@@ -8511,7 +8512,7 @@ msgstr ""
 "maar verbasend rats. Hulle is selde die een wat die finale hou slaan, maar "
 "hul taktiek is van groot hulp vir hulle groter en meer brutale stamgenoote.\n"
 "\n"
-"Spesiale Nota's: Orkse Sluipmoordenaars gebruik gif oo hulle gooimese en die "
+"Spesiale Nota's: Orkse Moordenaars gebruik gif op hulle gooimese en die "
 "slagoffers van hierdie gif sal aanhoudend lewenspunte verloor todat hulle "
 "deur 'n dorpie of 'n geneeser kan behandel word."
 
@@ -8541,7 +8542,7 @@ msgstr "steekswaard"
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
-msgstr "Orkse Troep"
+msgstr "Orkse Knor"
 
 #: data/units/Orcish_Grunt.cfg:16
 msgid ""
@@ -8638,7 +8639,7 @@ msgstr ""
 
 #: data/units/Orcish_Shaman.cfg:129
 msgid "Old Orcish Shaman"
-msgstr "Oue Orkse Toordokter"
+msgstr "Oud Orkse Toordokter"
 
 #: data/units/Orcish_Shaman.cfg:146
 msgid ""
@@ -8661,7 +8662,7 @@ msgstr ""
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
-msgstr "Orkse Moordenaar"
+msgstr "Orkse Slagter"
 
 #: data/units/Orcish_Slayer.cfg:19
 msgid ""
@@ -8675,10 +8676,10 @@ msgid ""
 "victims of this poison will continually take damage until they can be cured "
 "in town or by a healer."
 msgstr ""
-"Die groter, en in meeste gevalle, meer behendige orkse sluipmoordenaars word "
+"Die groter, en in meeste gevalle, meer behendige orkse moordenaars word "
 "'Slagters' genoem deur hul vyande. Hoekom hul so genoem word is nie baie "
-"duidelike nie, maar Slagers is rats en baie beweegbaar in 'n geveg. Die rede "
-"hiervoor is omdat hulle so te sê geen lyf-pantser dra nie. Hulle gekose "
+"duidelike nie, maar Slagters is rats en baie beweegbaar in 'n geveg. Die "
+"rede hiervoor is omdat hulle so te sê geen lyf-pantser dra nie. Hulle gekose "
 "wapen, gif, is 'n ongenaakbare instrument, en die gebruik hiervan is greeld "
 "die rede vir 'n orkse oorwinning.\n"
 "\n"
@@ -8688,7 +8689,7 @@ msgstr ""
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
-msgstr "Orkse Meesterkryger"
+msgstr "Orkse Smetboog"
 
 #: data/units/Orcish_Slurbow.cfg:18
 msgid ""
@@ -8900,7 +8901,7 @@ msgstr ""
 "Lansdraers ook die meeste voetsoldate terughou.\n"
 "\n"
 "Spesiale Nota's: Die lengte van hulle wapens laat Lansdraers toe om altyd "
-"eerste toe te slaan in 'n hand-tot-hand geveg."
+"eerste toe te slaan in 'n nabygeveg."
 
 #: data/units/Pikeman.cfg:25
 msgid "pike"
@@ -10240,7 +10241,7 @@ msgstr "geen"
 #: src/actions.cpp:399 src/dialogs.cpp:760 src/help.cpp:1143
 #: src/reports.cpp:248
 msgid "melee"
-msgstr "hand-tot-hand geveg"
+msgstr "nabygeveg"
 
 #: src/actions.cpp:399 src/dialogs.cpp:760 src/help.cpp:1143
 #: src/reports.cpp:249
@@ -10373,7 +10374,7 @@ msgstr "Veelspeler"
 
 #: src/dialogs.cpp:377
 msgid "Tutorial"
-msgstr "Leer Hoe"
+msgstr "Onderrig"
 
 #: src/dialogs.cpp:385
 msgid "replay"
@@ -11725,7 +11726,7 @@ msgstr "het die spel verlaat. Wat wil jy doen?"
 #: src/reports.cpp:124
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
-"Hierdie eenheid is onsigbaar. Dit kan nòg gesien nòg aangeval word deur die "
+"Hierdie eenheid is onsigbaar. Dit kan nóg gesien nóg aangeval word deur die "
 "vyand nie."
 
 #: src/reports.cpp:124
@@ -11790,11 +11791,11 @@ msgstr "Chaotiese eenhede: "
 
 #: src/reports.cpp:325
 msgid "Owned village"
-msgstr "Dorpie wat aan jou behoort"
+msgstr "Jou dorpie"
 
 #: src/reports.cpp:327
 msgid "Enemy village"
-msgstr "Dorpie wat aan die vyand behoort"
+msgstr "Vyandelike dorpie"
 
 #: src/reports.cpp:329
 msgid "Allied village"
@@ -11862,7 +11863,7 @@ msgstr "$error by $pos"
 
 #: src/titlescreen.cpp:200
 msgid "TitleScreen button^Tutorial"
-msgstr "Leer Hoe"
+msgstr "Onderrig"
 
 #: src/titlescreen.cpp:201
 msgid "TitleScreen button^Campaign"
@@ -11894,7 +11895,7 @@ msgstr "Verlaat"
 
 #: src/titlescreen.cpp:208
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "Begin die leer hoe sodat jy die spel kan verstaan."
+msgstr "Begin met onderrig sodat jy die spel kan verstaan."
 
 #: src/titlescreen.cpp:209
 msgid "Start a new single player campaign"
@@ -11954,12 +11955,12 @@ msgstr "trefhoue"
 
 #: src/unit_types.cpp:952
 msgid "chaotic"
-msgstr "chaotiese"
+msgstr "chaoties"
 
 #: src/unit_types.cpp:952
 msgid "lawful"
-msgstr "wettige"
+msgstr "wettig"
 
 #: src/unit_types.cpp:952
 msgid "neutral"
-msgstr "neutrale"
+msgstr "neutraal"
