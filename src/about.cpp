@@ -134,7 +134,9 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Afrikaans Translation"),
 		"-   András Salamon (ott)",
-		"-   Nico Oliver",
+		"-   Erhard Eiselen",
+		"-   Nico Oliver (nicoza)",
+		"-   Renier Maritz",
 
 		"_" N_("+Basque Translation"),
 		"-   Alfredo Beaumont (ziberpunk)",
