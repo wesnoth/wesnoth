@@ -6,9 +6,9 @@
 
 AC_PREREQ([2.57])
 
-define([WESNOTH_VERSION],[1.0rc2])
+define([WESNOTH_VERSION],[1.0])
 
-define([DEFAULT_SERVER],[server.wesnoth.org:14998])
+define([DEFAULT_SERVER],[server.wesnoth.org])
 dnl define([DEFAULT_SERVER],[devsrv.wesnoth.org:14999])
 
 AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, [davidnwhite@verizon.net], [wesnoth])
