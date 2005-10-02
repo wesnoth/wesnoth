@@ -130,7 +130,7 @@ data-dist:
 
 ACLOCAL_AMFLAGS = -I m4
 
-EXTRA_DIST = config/config.rpath
+EXTRA_DIST = config/config.rpath ISSUES
 
 update-po:
 	@cd po && make $@ || exit $?
