@@ -69,6 +69,10 @@ default_map_generator::default_map_generator(const config* cfg)
 		const int nplayers = ::atoi((*cfg)["players"].c_str());
 		if(nplayers > 0)
 			nplayers_ = nplayers;
+
+		const int island_size = ::atoi((*cfg)["island_size"].c_str());
+		if(island_size > 0)
+			island_size_ = island_size;
 	}
 }
 
