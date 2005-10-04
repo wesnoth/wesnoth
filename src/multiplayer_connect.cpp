@@ -311,6 +311,7 @@ config connect::side::get_config() const
 			break;
 		case CNTR_EMPTY:
 			description = N_("(Empty slot)");
+			res["no_leader"] = "yes";
 			break;
 		default:
 			wassert(false);
