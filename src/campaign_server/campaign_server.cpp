@@ -118,7 +118,7 @@ void campaign_server::run()
 
 				} else if(data.child("request_terms") != NULL) {
 					network::send_data(construct_message("All campaigns uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."),sock);
-				} else if(const config* upload = data.child("upload")) {
+				} else if(config* upload = data.child("upload")) {
 					config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
 					if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
 						network::send_data(construct_error("The campaign already exists, and your passphrase was incorrect."),sock);
@@ -141,10 +141,19 @@ void campaign_server::run()
 						if((*campaign)["downloads"].empty()) {
 							(*campaign)["downloads"] = "0";
 						}
+						(*campaign)["timestamp"] = lexical_cast<std::string>(time(NULL));
 
-						const config* const data = upload->child("data");
+						config* data = upload->child("data");
 						if(data != NULL) {
 							std::string filename = (*campaign)["filename"];
+							(*data)["title"] = (*campaign)["title"];
+							(*data)["name"] = (*campaign)["name"];
+							(*data)["filename"] = (*campaign)["name"];
+							(*data)["author"] = (*campaign)["author"];
+							(*data)["description"] = (*campaign)["description"];
+							(*data)["version"] = (*campaign)["version"];
+							(*data)["timestamp"] = (*campaign)["timestamp"];
+							(*data)["icon"] = (*campaign)["icon"];
 							{
 								scoped_ostream campaign_file = ostream_file(filename);
 								write_compressed(*campaign_file, *data);
