@@ -94,6 +94,7 @@ void campaign_server::run()
 			while((sock = network::receive_data(data)) != network::null_connection) {
 				if(data.child("request_campaign_list") != NULL) {
 					config campaign_list = campaigns();
+					(campaign_list)["timestamp"] = lexical_cast<std::string>(time(NULL));
 					config::child_list cmps = campaign_list.get_children("campaign");
 					for(config::child_list::iterator i = cmps.begin(); i != cmps.end(); ++i) {
 						(**i)["passphrase"] = "";
@@ -148,7 +149,6 @@ void campaign_server::run()
 							std::string filename = (*campaign)["filename"];
 							(*data)["title"] = (*campaign)["title"];
 							(*data)["name"] = (*campaign)["name"];
-							(*data)["filename"] = (*campaign)["name"];
 							(*data)["author"] = (*campaign)["author"];
 							(*data)["description"] = (*campaign)["description"];
 							(*data)["version"] = (*campaign)["version"];
