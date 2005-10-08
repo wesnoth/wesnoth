@@ -264,7 +264,15 @@ std::string server::process_command(const std::string& cmd)
 			}
 			out << "---";
 		} else {
-			const std::string mask(i+1,cmd.end());
+			std::string mask(i+1,cmd.end());
+
+			for(player_map::const_iterator j = players_.begin(); j != players_.end(); ++j) {
+				if(j->second.name() == mask) {
+					mask = network::ip_address(j->first);
+					break;
+				}
+			}
+
 			const std::string& diagnostic = ban_ip(mask);
 			if(diagnostic != "") {
 				out << "Could not ban '" << mask << "': " << diagnostic;
@@ -1090,4 +1098,6 @@ int main(int argc, char** argv)
 
 	return 0;
 }
+
+
 
