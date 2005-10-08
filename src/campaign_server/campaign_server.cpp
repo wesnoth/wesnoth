@@ -92,10 +92,14 @@ void campaign_server::run()
 
 			config data;
 			while((sock = network::receive_data(data)) != network::null_connection) {
-				if(data.child("request_campaign_list") != NULL) {
-					config campaign_list = campaigns();
+				if(const config* req = data.child("request_campaign_list")) {
+					config campaign_list;
 					(campaign_list)["timestamp"] = lexical_cast<std::string>(time(NULL));
-					config::child_list cmps = campaign_list.get_children("campaign");
+					config::child_list cmps = campaigns().get_children("campaign");
+					for(config::child_list::iterator i = cmps.begin(); i != cmps.end(); ++i) {
+						campaign_list.add_child("campaign", (**i));
+					}
+					cmps = campaign_list.get_children("campaign");
 					for(config::child_list::iterator i = cmps.begin(); i != cmps.end(); ++i) {
 						(**i)["passphrase"] = "";
 					}
