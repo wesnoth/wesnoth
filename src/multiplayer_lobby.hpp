@@ -53,7 +53,7 @@ public:
 	void draw_item(size_t index) const;
 	SDL_Rect get_item_rect(size_t index) const;
 	bool empty() const { return games_.empty(); }
-	bool selection_is_joinable() const { return empty() ? false : games_[selected_].vacant_slots; }
+	bool selection_is_joinable() const { return empty() ? false : games_[selected_].vacant_slots > 0; }
 	bool selection_is_observable() const { return empty() ? false : games_[selected_].observers; }
 	bool selected() const { return double_clicked_ && !empty(); }
 	int selection() const { return selected_; }
