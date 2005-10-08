@@ -132,6 +132,8 @@ private:
 	std::map<std::string,config> redirected_versions_;
 	std::map<std::string,config> proxy_versions_;
 
+	bool ip_exceeds_connection_limit(const std::string& ip);
+
 	bool is_ip_banned(const std::string& ip);
 	std::string ban_ip(const std::string& mask);
 	std::vector<std::string> bans_;
@@ -174,6 +176,19 @@ server::server(int port, input_stream& input, const config& cfg, size_t nthreads
 	}
 
 	join_lobby_response_.add_child("join_lobby");
+}
+
+bool server::ip_exceeds_connection_limit(const std::string& ip)
+{
+	const size_t MaxConnections = 5;
+	size_t connections = 0;
+	for(player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
+		if(network::ip_address(i->first) == ip) {
+			++connections;
+		}
+	}
+
+	return connections > MaxConnections;
 }
 
 bool server::is_ip_banned(const std::string& ip)
@@ -255,7 +270,7 @@ std::string server::process_command(const std::string& cmd)
 		out << "---";
 	} else if(command == "metrics") {
 		out << metrics_;
-	} else if(command == "ban") {
+	} else if(command == "ban" || command == "kban") {
 
 		if(i == cmd.end()) {
 			out << "BAN LIST\n---\n";
@@ -268,7 +283,12 @@ std::string server::process_command(const std::string& cmd)
 
 			for(player_map::const_iterator j = players_.begin(); j != players_.end(); ++j) {
 				if(j->second.name() == mask) {
+					const std::string nick = mask;
 					mask = network::ip_address(j->first);
+					if(command == "kban") {
+						network::queue_disconnect(j->first);
+						out << "Kicked " << nick << ", ";
+					}
 					break;
 				}
 			}
@@ -304,9 +324,12 @@ std::string server::process_command(const std::string& cmd)
 
 		for(player_map::const_iterator j = players_.begin(); j != players_.end(); ++j) {
 			if(j->second.name() == nick) {
-				throw network::error("",j->first);
+				network::queue_disconnect(j->first);
+				return "kicked " + nick;
 			}
 		}
+
+		out << "could not find user '" << nick << "'\n";
 	} else {
 		out << "command '" << command << "' is not recognized";
 		out << "available commands are: msg <message>, status, metrics, ban [<nick>], unban <nick>, kick <nick>";
@@ -344,13 +367,20 @@ void server::run()
 			network::process_send_queue();
 
 			network::connection sock = network::accept_connection();
-			if(sock && is_ip_banned(network::ip_address(sock))) {
-				std::cerr << "rejected banned user '" << network::ip_address(sock) << "'\n";
-				network::send_data(construct_error("You are banned."),sock);
-				network::disconnect(sock);
-			} else if(sock) {
-				network::send_data(version_query_response_,sock);
-				not_logged_in_.add_player(sock);
+			if(sock) {
+				const std::string& ip = network::ip_address(sock);
+				if(is_ip_banned(ip)) {
+					std::cerr << "rejected banned user '" << ip << "'\n";
+					network::send_data(construct_error("You are banned."),sock);
+					network::disconnect(sock);
+				} else if(ip_exceeds_connection_limit(ip)) {
+					std::cerr << "rejected ip '" << ip << "' due to excessive connections\n";
+					network::send_data(construct_error("Too many connections from your host."),sock);
+					network::disconnect(sock);
+				} else {
+					network::send_data(version_query_response_,sock);
+					not_logged_in_.add_player(sock);
+				}
 			}
 
 			config data;
@@ -645,8 +675,17 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 	//of the sender, and forward it to all players in the lobby
 	config* const message = data.child("message");
 	if(message != NULL) {
-		const player_map::const_iterator p = players_.find(sock);
+		const player_map::iterator p = players_.find(sock);
 		wassert(p != players_.end());
+
+		if(p->second.silenced()) {
+			return;
+		} else if(p->second.is_message_flooding()) {
+			network::send_data(construct_server_message("Warning: you are sending too many messages too fast. Your message has not been relayed.",
+			                                            lobby_players_),p->first);
+			return;
+		}
+
 		(*message)["sender"] = p->second.name();
 
 		truncate_message((*message)["message"]);
@@ -1098,6 +1137,3 @@ int main(int argc, char** argv)
 
 	return 0;
 }
-
-
-

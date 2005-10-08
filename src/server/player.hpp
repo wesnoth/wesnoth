@@ -14,6 +14,8 @@
 #ifndef PLAYER_HPP_INCLUDED
 #define PLAYER_HPP_INCLUDED
 
+#include <ctime>
+
 #include "../config.hpp"
 
 #include <string>
@@ -29,9 +31,15 @@ public:
 
 	config* config_address();
 
+	bool silenced() const;
+	bool is_message_flooding();
+
 private:
 	std::string name_;
 	config& cfg_;
+
+	time_t flood_start_;
+	int messages_since_flood_start_;
 };
 
 #endif
