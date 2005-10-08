@@ -97,6 +97,7 @@ void campaign_server::run()
 					(campaign_list)["timestamp"] = lexical_cast<std::string>(time(NULL));
 					config::child_list cmps = campaigns().get_children("campaign");
 					for(config::child_list::iterator i = cmps.begin(); i != cmps.end(); ++i) {
+						if((const t_string)(*req)["name"] != "" && (*req)["name"] != (**i)["name"]) continue;
 						campaign_list.add_child("campaign", (**i));
 					}
 					cmps = campaign_list.get_children("campaign");
