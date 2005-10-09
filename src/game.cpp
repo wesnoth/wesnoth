@@ -1406,7 +1406,8 @@ void game_controller::refresh_game_cfg(bool reset_translations)
 
 			const config* const units = game_config_.child("units");
 			if(units != NULL) {
-				units_data_.set_config(*units);
+				const bool allow_advancefrom = defines_map_.find("MULTIPLAYER") == defines_map_.end();
+				units_data_.set_config(*units,allow_advancefrom);
 			}
 
 			old_defines_map_ = defines_map_;

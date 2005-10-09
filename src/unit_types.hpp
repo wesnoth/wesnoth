@@ -326,7 +326,7 @@ struct game_data
 {
 	game_data();
 	game_data(const config& cfg);
-	void set_config(const config& cfg);
+	void set_config(const config& cfg, bool allow_advancefrom=true);
 	void clear();
 
 	movement_type_map movement_types;

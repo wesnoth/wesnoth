@@ -1197,7 +1197,7 @@ game_data::game_data(const config& cfg)
 	set_config(cfg);
 }
 
-void game_data::set_config(const config& cfg)
+void game_data::set_config(const config& cfg, bool allow_advancefrom)
 {
 	static const std::vector<config*> dummy_traits;
 
@@ -1223,6 +1223,7 @@ void game_data::set_config(const config& cfg)
 		unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
 	}
 
+	if(allow_advancefrom) {
         // fix up advance_from references
         for(config::const_child_itors k = cfg.child_range("unit");
             k.first != k.second; ++k.first)
@@ -1242,7 +1243,7 @@ void game_data::set_config(const config& cfg)
 
                 from_unit->second.add_advancement(to_unit->second,xp);
         }
-
+	}
 }
 
 void game_data::clear()
