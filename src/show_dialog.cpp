@@ -844,6 +844,8 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 	const int left = disp.x()/2 - width/2;
 	const int top = disp.y()/2 - height/2;
 
+	const events::event_context dialog_events_context;
+
 	gui::button cancel_button(disp.video(),_("Cancel"));
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
@@ -919,6 +921,8 @@ network::connection network_connect_dialog(display& disp, const std::string& msg
 	const size_t height = 20;
 	const int left = disp.x()/2 - width/2;
 	const int top = disp.y()/2 - height/2;
+
+	const events::event_context dialog_events_context;
 
 	gui::button cancel_button(disp.video(),_("Cancel"));
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
