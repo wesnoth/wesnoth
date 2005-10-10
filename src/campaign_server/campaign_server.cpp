@@ -93,11 +93,37 @@ void campaign_server::run()
 			config data;
 			while((sock = network::receive_data(data)) != network::null_connection) {
 				if(const config* req = data.child("request_campaign_list")) {
+					time_t epoch = 0;
+					if((const t_string)(*req)["times_relative_to"] == "now") {
+						epoch = time(NULL);
+					}
+					int before_flag = 0;
+					time_t before = epoch;
+					if((const t_string)(*req)["before"] != "") {
+						try {
+							before = before + lexical_cast<time_t>((*req)["before"]);
+							before_flag = 1;
+						}
+						catch(bad_lexical_cast) {
+						}
+					}
+					int after_flag = 0;
+					time_t after = epoch;
+					if((const t_string)(*req)["after"] != "") {
+						try {
+							after = after + lexical_cast<time_t>((*req)["after"]);
+							after_flag = 1;
+						}
+						catch(bad_lexical_cast) {
+						}
+					}
 					config campaign_list;
 					(campaign_list)["timestamp"] = lexical_cast<std::string>(time(NULL));
 					config::child_list cmps = campaigns().get_children("campaign");
 					for(config::child_list::iterator i = cmps.begin(); i != cmps.end(); ++i) {
 						if((const t_string)(*req)["name"] != "" && (*req)["name"] != (**i)["name"]) continue;
+						if(before_flag && ((const t_string)(**i)["timestamp"] == "" || lexical_cast_default<time_t>((**i)["timestamp"],0) >= before)) continue;
+						if(after_flag && ((const t_string)(**i)["timestamp"] == "" || lexical_cast_default<time_t>((**i)["timestamp"],0) <= after)) continue;
 						campaign_list.add_child("campaign", (**i));
 					}
 					cmps = campaign_list.get_children("campaign");
