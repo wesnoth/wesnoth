@@ -93,9 +93,11 @@ void campaign_server::run()
 			config data;
 			while((sock = network::receive_data(data)) != network::null_connection) {
 				if(const config* req = data.child("request_campaign_list")) {
-					time_t epoch = 0;
-					if((const t_string)(*req)["times_relative_to"] == "now") {
-						epoch = time(NULL);
+					time_t epoch = time(NULL);
+					config campaign_list;
+					(campaign_list)["timestamp"] = lexical_cast<std::string>(epoch);
+					if((const t_string)(*req)["times_relative_to"] != "now") {
+						epoch = 0;
 					}
 					int before_flag = 0;
 					time_t before = epoch;
@@ -117,8 +119,6 @@ void campaign_server::run()
 						catch(bad_lexical_cast) {
 						}
 					}
-					config campaign_list;
-					(campaign_list)["timestamp"] = lexical_cast<std::string>(time(NULL));
 					config::child_list cmps = campaigns().get_children("campaign");
 					for(config::child_list::iterator i = cmps.begin(); i != cmps.end(); ++i) {
 						if((const t_string)(*req)["name"] != "" && (*req)["name"] != (**i)["name"]) continue;
