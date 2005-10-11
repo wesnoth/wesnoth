@@ -191,6 +191,19 @@ foreach my $campaign (@sorted) {
   push @row, a({href=>($campaign->{'attr'}->{'name'}).'.tgz'},
     escapeHTML($campaign->{'attr'}->{'title'}));
   push @row, escapeHTML($campaign->{'attr'}->{'version'});
+  my $trans = '';
+  my $first = 1;
+  my @lang = &wml::get_children($campaign,'translation');
+  foreach my $lang (sort @lang) {
+    if (!$first) {
+      $trans .= ' ';
+      $first = 0;
+    }
+    $trans .= $lang->{'attr'}->{'language'};
+  }
+  $trans =~ s/\001[^\003]*\003//g;
+  $trans =~ s/[\001-\037\177-\237]/ /g;
+  push @row, escapeHTML($trans);
   push @row, escapeHTML($campaign->{'attr'}->{'author'});
   if ($campaign->{'attr'}->{'timestamp'} =~ m/^\d+$/) {
     push @row, escapeHTML(gmctime($campaign->{'attr'}->{'timestamp'}) . ' GMT');
@@ -209,6 +222,7 @@ print table({frame=>'border',rules=>'all'},
   thead(Tr(th(['Icon',
     a({href=>$myurl . '?sort=' . $title_sort}, 'Title'),
     a({href=>$myurl . '?sort=' . $version_sort}, 'Version'),
+    'Translations',
     a({href=>$myurl . '?sort=' . $author_sort}, 'Author'),
     a({href=>$myurl . '?sort=' . $timestamp_sort}, 'Last Updated'),
     'Description',
