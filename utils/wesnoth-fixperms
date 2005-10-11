@@ -1,0 +1,26 @@
+#!/usr/bin/ruby
+
+files = (`find . -maxdepth 1 -name "MANUAL*" -perm -100`).split("\n")
+
+dirs = ["data","images","src"]
+
+dirs.each { | dir |
+	dirfiles = (`find #{dir} -perm -100 -a -type f`).split("\n")
+	files.concat(dirfiles)
+}
+
+removed = false
+
+files.each { |file|
+	if (`svn propget svn:executable #{file} 2>/dev/null` == "*\n")
+		print "Removing svn:executable property from #{file}\n"
+		system("svn propdel svn:executable #{file}")
+		removed = true
+	else
+		files.delete(file)
+	end
+}
+
+if removed
+	system("svn ci #{files.join(' ')}")
+end
