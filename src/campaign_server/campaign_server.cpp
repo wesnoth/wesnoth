@@ -73,6 +73,21 @@ campaign_server::campaign_server(const std::string& cfgfile)
 	}
 }
 
+void find_translations(const config& cfg, config& campaign)
+{
+        const config::child_list& dirs = cfg.get_children("dir");
+        for(config::child_list::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
+		if((const t_string)(**i)["name"] == "LC_MESSAGES") {
+			config* language = &campaign.add_child("translation");
+			(*language)["language"] = cfg["name"];
+		}
+		else {
+			find_translations(**i, campaign);
+		}
+        }
+}
+
+
 void campaign_server::run()
 {
 	for(int increment = 0; ; ++increment) {
@@ -185,6 +200,7 @@ void campaign_server::run()
 							(*data)["version"] = (*campaign)["version"];
 							(*data)["timestamp"] = (*campaign)["timestamp"];
 							(*data)["icon"] = (*campaign)["icon"];
+							find_translations(*data, *campaign);
 							{
 								scoped_ostream campaign_file = ostream_file(filename);
 								write_compressed(*campaign_file, *data);
