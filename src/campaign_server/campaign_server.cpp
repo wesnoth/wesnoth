@@ -139,6 +139,18 @@ void campaign_server::run()
 						if((const t_string)(*req)["name"] != "" && (*req)["name"] != (**i)["name"]) continue;
 						if(before_flag && ((const t_string)(**i)["timestamp"] == "" || lexical_cast_default<time_t>((**i)["timestamp"],0) >= before)) continue;
 						if(after_flag && ((const t_string)(**i)["timestamp"] == "" || lexical_cast_default<time_t>((**i)["timestamp"],0) <= after)) continue;
+						int found = 1;
+						if((const t_string)(*req)["language"] != "") {
+							found = 0;
+							config::child_list translation = (**i).get_children("translation");
+							for(config::child_list::iterator j = translation.begin(); j != translation.end(); ++j) {
+								if((*req)["language"] == (**j)["language"]) {
+									found = 1;
+									break;
+								}
+							}
+						}
+						if(found == 0) continue;
 						campaign_list.add_child("campaign", (**i));
 					}
 					cmps = campaign_list.get_children("campaign");
