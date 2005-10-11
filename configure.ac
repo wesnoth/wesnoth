@@ -192,6 +192,11 @@ AC_ARG_ENABLE([tools],
 	      [tools=$enableval],
 	      [tools=no])
 
+AC_ARG_WITH([fribidi],
+            AS_HELP_STRING([--with-fribidi], [enable Bidirectional language support]),
+	      [fribidi=$withval],
+	      [fribidi=no])
+
 AC_ARG_WITH([kde],
             AS_HELP_STRING([--with-kde], [enable installation of icon and KDE menu entry]),
 	      [kde=$withval],
@@ -281,6 +286,23 @@ please send a mail to the address that appears in ./configure --version
 indicating your platform, the version of configure script and the problem.])
 
 fi
+
+# fribidi-config
+
+AC_PATH_PROGS([FRIBIDI_CONFIG], [fribidi-config], [none])
+
+if test "x$FRIBIDI_CONFIG" = "xnone"; then
+    fribidifound=no
+    AC_MSG_WARN([*** FRIBIDI not found.])
+else
+    fribidifound=yes
+    FRIBIDI_CFLAGS=`$FRIBIDI_CONFIG --cflags`
+    FRIBIDI_LIBS=`$FRIBIDI_CONFIG --libs`
+fi
+
+AC_SUBST([FRIBIDI_CFLAGS])
+AC_SUBST([FRIBIDI_LIBS])
+AM_CONDITIONAL([FRIBIDI], [test x$fribidifound = xyes])
 
 # libpng-config
 

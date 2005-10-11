@@ -53,6 +53,13 @@
 #error Please use the SDL_ttf files in the sdl_ttf directory, and not the original SDL_ttf library.
 #endif
 
+#ifdef	HAVE_FRIBIDI
+#include <fribidi/fribidi.h>
+
+#else
+
+#endif
+
 namespace {
 
 // Signed int. Negative values mean "no subset".
@@ -362,8 +369,28 @@ private:
 	void hash();
 };
 
+#ifdef	HAVE_FRIBIDI
+static std::string bidi_cvt(std::string const &str)
+{
+	char		*c_str = const_cast<char *>(str.c_str());	// fribidi forgot const...
+	int		len = str.length();
+	FriBidiChar	bidi_logical[len + 2];
+	FriBidiChar	bidi_visual[len + 2];
+	char		utf8str[len + 1];
+	FriBidiCharType	base_dir = FRIBIDI_TYPE_ON;
+	int n;
+
+	n = fribidi_utf8_to_unicode (c_str, len, bidi_logical);
+	fribidi_log2vis(bidi_logical, n, &base_dir, bidi_visual, NULL, NULL, NULL);
+	fribidi_unicode_to_utf8 (bidi_visual, n, utf8str);
+	return std::string(utf8str);
+}
+#else
+#	define	bidi_cvt(x)	(x)
+#endif
+
 text_surface::text_surface(std::string const &str, int size, SDL_Color color, int style)
-  : font_size_(size), color_(color), style_(style), w_(-1), h_(-1), str_(str),
+  : font_size_(size), color_(color), style_(style), w_(-1), h_(-1), str_(bidi_cvt(str)),
   initialized_(false)
 {
 	hash();
@@ -379,7 +406,7 @@ void text_surface::set_text(std::string const &str)
 	initialized_ = false;
 	w_ = -1;
 	h_ = -1;
-	str_ = str;
+	str_ = bidi_cvt(str);
 	hash();
 }
 

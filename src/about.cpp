@@ -237,6 +237,9 @@ std::vector<std::string> get_text() {
                 "-   Spiros, Giorgis",
                 "-   Alexander Alexiou (Santi)",
 
+		"_" N_("+Hebrew Translation"),
+		"-   Oron Peled",
+
 		"_" N_("+Hungarian Translation"),
 		"-   adson",
 		"-   Beer (Eddi)",
