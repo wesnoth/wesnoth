@@ -196,8 +196,10 @@ foreach my $campaign (@sorted) {
   my @lang = &wml::get_children($campaign,'translation');
   foreach my $lang (sort @lang) {
     if (!$first) {
-      $trans .= ' ';
       $first = 0;
+    }
+    else {
+      $trans .= ' ';
     }
     $trans .= $lang->{'attr'}->{'language'};
   }
