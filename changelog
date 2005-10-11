@@ -1,43 +1,45 @@
 SVN trunk:
+ * campaigns:
+   * Eastern Invasion
+     * fix Undead fighting each other in Weldyn Besieged (#4386)
+     * fix Undead not recruiting after leader change in The Crossing (#4393)
+   * Heir to the Throne
+     * changed the map 'Snow Plains' to use snow terrain
+   * Son of the Black Eye
+     * cleaned up prestart events to stop units hopping around at map setup
+ * graphics
+   * portraits:
+     * new portraits: Li'sar, Drake_Burner, Drake_Fighter, Drake_Glider, 
+       Elvish_Shaman, Ghoul, Mermaid_Initiate, Merman_Fighter, Merman_Hunter, 
+       Naga-Fighter, Orcish_Assassin, Saurian_Skirmisher
+     * made all Drake, Merman, Naga and Saurian upgrades use the level one
+       portraits
+     * made the Necrophage and the Orcish_Slayer use the Lvl1 portraits of 
+       their line
+   * new Konrad level 1 image
+   * new death animations: Initiate, Mage, Pikeman, Red, Mage, White Mage
+   * removed depricated death animation: Drake_Fighter
  * language and i18n:
    * added support for right-to-left languages (patch #470)
+   * made the list of languages configurable via the locale WML
    * updated manual: English, German, Swedish
    * updated man pages: Swedish
    * new translations: Hebrew
    * updated translations: Afrikaans, British English, Italian, Polish,
      Portuguese (Brazil), Russian, Slovak, Spanish, Turkish
- * graphics
-     * portraits:
-       * new portraits: Li'sar, Drake_Burner, Drake_Fighter, Drake_Glider, 
-         Elvish_Shaman, Ghoul, Mermaid_Initiate, Merman_Fighter, Merman_Hunter, 
-         Naga-Fighter, Orcish_Assassin, Saurian_Skirmisher
-       * made all Drake, Merman, Naga and Saurian upgrades use the level one
-         portraits
-       * made the Necrophage and the Orcish_Slayer use the Lvl1 portraits of 
-         their line
-     * new Konrad level 1 image
-     * new death animations: Initiate, Mage, Pikeman, Red, Mage, White Mage
-     * removed depricated death animations: Drake_Fighter
- * changed the map 'Snow Plains' to use snow terrain
- * campaigns:
-   * Eastern Invasion
-     * fix Undead fighting each other in Weldyn Besieged (#4386)
-     * fix Undead not recruiting after leader change in The Crossing (#4393)
-   * Son of the Black Eye
-     * cleaned up prestart events to stop units hopping around at map setup
- * balancing changes:
+ * music and sound:
+   * new main menu music
+ * units and balancing changes:
    * decreased Dwarvish Fighter hammer attack damage from 9 to 8
    * decreased Merman Hunter experience needed to level from 38 to 35
    * Northerners can now recruit Rocklobber in Age of Heroes era
- * multiplayer scenarios
+   * removed obsolete units: Merman, Naga, Saurian, Saurian_Warrior, Sea_Hag,
+     Triton
+ * multiplayer and server
+   * server: add administration functions
+   * multiplayer game with "empty" as side no longer causes OOS (#4464)
    * revised multiplayer maps: Divide and Conquer, Sablestone Delta,
      Silverhead Crossing, Sullas Ruins, 1v1v1Hex, Charge
- * server: add administration functions
- * made the list of languages configurable via the locale WML
- * fix untranslated unit create dialog (#4424)
- * multiplayer game with "empty" as side no longer causes OOS (#4464)
- * random map generator now uses island_size (#4458)
- * various bug fixes and code cleanups
  * campaign server
    * Support new "timestamp" attribute
    * Save persistent attributes in the campaign data
@@ -48,9 +50,10 @@ SVN trunk:
    * campaign_list response now contains the time the request was processed
    * campaign_list response now contains information about translations
  * utils: added weblist.pl and webtgz.pl web interface programs
-   * I updated weblist.pl to display translation information
- * removed obsolete units: Merman, Naga, Saurian, Saurian_Warrior, Sea_Hag,
-   Triton
+   * updated weblist.pl to display translation information
+ * fix untranslated unit create dialog (#4424)
+ * random map generator now uses island_size (#4458)
+ * various bug fixes and code cleanups
 
 Version 1.0rc1:
  * language and i18n:
