@@ -1,17 +1,24 @@
 Version 1.0+svn:
- * language and i18n:
-   * updated translations: Afrikaans, Italian, Polish, Russian, Turkish 
- * multiplayer game with "empty" as side no longer causes OOS (#4464)
- * random map generator now uses island_size (#4458)
  * graphics
    * new death animations: Mage, Pikeman, Red_Mage, White_Mage
-   * removed depricated death animation of the Drake_Fighter
    * portraits:
      * new portraits: Drake_Burner, Drake_Fighter, Drake_Glider
      * made all Drake, Merman, Naga and Saurian upgrades use the level one
        portraits
      * made the Necrophage and the Orcish_Slayer use the Lvl1 portraits of 
-       their line                                                                                                     
+       their line
+   * removed depricated death animation of the Drake_Fighter
+ * language and i18n:
+   * updated translations: Afrikaans, Italian, Polish, Russian, Turkish
+ * multiplayer
+   * multiplayer game with "empty" as side no longer causes OOS (#4464)
+   * disabled 'advancefrom' in multiplayer
+ * music and sound:
+   * new main menu music
+ * units and balancing changes:
+   * removed Thug from Knalgan faction
+   * Northerners can now recruit Rocklobber in Age of Heroes era
+ * random map generator now uses island_size (#4458)
 
 Version 1.0:
  * language and i18n:
