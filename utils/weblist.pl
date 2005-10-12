@@ -13,15 +13,21 @@ my $style = 'http://www.wesnoth.org/mw/skins/glamdrol/main.css';
 my $socket = eval {&wml_net::connect($host,$port)};
 if ($@ ne '') {
   print header, start_html(-style=>{'src'=>$style},
-    -title=>'Error accessing the campaign server.'),
-    p(escapeHTML($@)), end_html;
+    -title=>'Error accessing the campaign server.');
+  print div({id=>'header'}, div({id=>'logo'}, a({href=>'http://www.wesnoth.org/'},
+    img({alt=>'Wesnoth logo',
+      src=>'http://wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg'}))));
+  print p(escapeHTML($@)), end_html;
   exit;
 }
 
 if (!defined($socket)) {
   print header, start_html(-style=>{'src'=>$style},
-    -title=>'Error connecting to the campaign server.'),
-    p('Error connecting to the campaign server.'), end_html;
+    -title=>'Error connecting to the campaign server.');
+  print div({id=>'header'}, div({id=>'logo'}, a({href=>'http://www.wesnoth.org/'},
+    img({alt=>'Wesnoth logo',
+      src=>'http://wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg'}))));
+  print p('Error connecting to the campaign server.'), end_html;
   exit;
 }
 
@@ -32,43 +38,62 @@ eval {
 };
 if ($@ ne '') {
   print header, start_html(-style=>{'src'=>$style},
-    -title=>'Error accessing the campaign server.'),
-    p(escapeHTML($@)), end_html;
+    -title=>'Error accessing the campaign server.');
+  print div({id=>'header'}, div({id=>'logo'}, a({href=>'http://www.wesnoth.org/'},
+    img({alt=>'Wesnoth logo',
+      src=>'http://wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg'}))));
+  print p(escapeHTML($@)), end_html;
   exit;
 }
 
 my $response = eval {&wml_net::read_packet($socket)};
 if ($@ ne '') {
   print header, start_html(-style=>{'src'=>$style},
-    -title=>'Error accessing the campaign server.'),
-    p(escapeHTML($@)), end_html;
+    -title=>'Error accessing the campaign server.');
+  print div({id=>'header'}, div({id=>'logo'}, a({href=>'http://www.wesnoth.org/'},
+    img({alt=>'Wesnoth logo',
+      src=>'http://wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg'}))));
+  print p(escapeHTML($@)), end_html;
   exit;
 }
 
 if (!defined($response)) {
   print header, start_html(-style=>{'src'=>$style},
-    -title=>'Error accessing the campaign server.'),
-    p('Error accessing the campaign server.'), end_html;
+    -title=>'Error accessing the campaign server.');
+  print div({id=>'header'}, div({id=>'logo'}, a({href=>'http://www.wesnoth.org/'},
+    img({alt=>'Wesnoth logo',
+      src=>'http://wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg'}))));
+  print p('Error accessing the campaign server.'), end_html;
   exit;
 }
 
 if (my $error = &wml::has_child($response, 'error')) {
   print header, start_html(-style=>{'src'=>$style},
-    -title=>'Error accessing the campaign server.'),
-    p($error->{'attr'}->{'message'}), end_html;
+    -title=>'Error accessing the campaign server.');
+  print div({id=>'header'}, div({id=>'logo'}, a({href=>'http://www.wesnoth.org/'},
+    img({alt=>'Wesnoth logo',
+      src=>'http://wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg'}))));
+  print p($error->{'attr'}->{'message'}), end_html;
   exit;
 }
 
 my $campaign_list = &wml::has_child($response, 'campaigns');
 if (!$campaign_list) {
   print header, start_html(-style=>{'src'=>$style},
-    -title=>'Error retrieving campaign list.'),
-    p('No', em('campaigns'), 'data returned.'), end_html;
+    -title=>'Error retrieving campaign list.');
+  print div({id=>'header'}, div({id=>'logo'}, a({href=>'http://www.wesnoth.org/'},
+    img({alt=>'Wesnoth logo',
+      src=>'http://wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg'}))));
+  print p('No', em('campaigns'), 'data returned.'), end_html;
   exit;
 }
 
 print header, start_html(-style=>{'src'=>$style},
   -title=>'Wesnoth campaigns available for download.');
+
+print div({id=>'header'}, div({id=>'logo'}, a({href=>'http://www.wesnoth.org/'},
+  img({alt=>'Wesnoth logo',
+    src=>'http://wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg'}))));
 
 my @campaigns = &wml::get_children($campaign_list,'campaign');
 
