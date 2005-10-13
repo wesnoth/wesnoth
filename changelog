@@ -59,6 +59,9 @@ SVN trunk:
    * updated weblist.pl and webtgz.pl to use standard wesnoth logo banner
    * updated webtgz.pl to request campaign info only for the campaign of interest
    * updated weblist.pl to display sizes in KB.
+   * because the heuristic for determining translations will sometimes give
+     duplicates, I changed the web page to remove duplicate languages
+   * I fixed a bug in how the language list was sorted on the web page
  * fix untranslated unit create dialog (#4424)
  * random map generator now uses island_size (#4458)
  * various bug fixes and code cleanups

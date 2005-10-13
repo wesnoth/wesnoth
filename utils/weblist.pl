@@ -218,15 +218,22 @@ foreach my $campaign (@sorted) {
   push @row, escapeHTML($campaign->{'attr'}->{'version'});
   my $trans = '';
   my $first = 1;
+  my $last = '';
   my @lang = &wml::get_children($campaign,'translation');
-  foreach my $lang (sort @lang) {
+  foreach my $lang (sort {$a->{'attr'}->{'language'} cmp
+    $b->{'attr'}->{'language'}} @lang) {
     if (!$first) {
       $first = 0;
+      $trans = $lang->{'attr'}->{'language'};
+      $last = $trans;
     }
     else {
       $trans .= ' ';
+      if ($last ne $lang->{'attr'}->{'language'}) {
+        $trans .= $lang->{'attr'}->{'language'};
+        $last = $lang->{'attr'}->{'language'};
+      }
     }
-    $trans .= $lang->{'attr'}->{'language'};
   }
   $trans =~ s/\001[^\003]*\003//g;
   $trans =~ s/[\001-\037\177-\237]/ /g;
