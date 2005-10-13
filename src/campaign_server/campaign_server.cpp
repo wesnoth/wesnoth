@@ -212,6 +212,7 @@ void campaign_server::run()
 							(*data)["version"] = (*campaign)["version"];
 							(*data)["timestamp"] = (*campaign)["timestamp"];
 							(*data)["icon"] = (*campaign)["icon"];
+							(*campaign).clear_children("translation");
 							find_translations(*data, *campaign);
 							{
 								scoped_ostream campaign_file = ostream_file(filename);
