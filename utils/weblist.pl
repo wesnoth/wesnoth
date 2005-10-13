@@ -239,7 +239,11 @@ foreach my $campaign (@sorted) {
     push @row, 'Unknown';
   }
   push @row, escapeHTML($campaign->{'attr'}->{'description'});
-  push @row, escapeHTML($campaign->{'attr'}->{'size'});
+  my $size = $campaign->{'attr'}->{'size'};
+  $size += 512;
+  $size -= $size % 1024;
+  $size /= 1024;
+  push @row, escapeHTML("$size KB");
   push @row, escapeHTML($campaign->{'attr'}->{'downloads'});
   push @rows, td(\@row);
 }
