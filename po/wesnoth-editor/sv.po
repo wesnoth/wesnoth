@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-01 15:26+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
@@ -149,92 +149,6 @@ msgstr "Fel: otillåtet tecken i filnamnet."
 msgid "Player"
 msgstr "Spelare"
 
-#: src/editor/editor_dialogs.cpp:47
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Dina ändringar av kartan kommer att gå förlorade. Vill du fortsätta?"
-
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Skapa ny karta"
-
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
-msgid "Width:"
-msgstr "Bredd:"
-
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
-msgid "Height:"
-msgstr "Höjd:"
-
-#: src/editor/editor_dialogs.cpp:93
-msgid "Generate New Map"
-msgstr "Generera ny karta"
-
-#: src/editor/editor_dialogs.cpp:94
-msgid "Generate Random Map"
-msgstr "Generera slumpkarta"
-
-#: src/editor/editor_dialogs.cpp:95
-msgid "Random Generator Settings"
-msgstr "Inställningar för slumpgenerator"
-
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: src/editor/editor_dialogs.cpp:181
-msgid "Map creation failed."
-msgstr "Kunde inte skapa karta."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
-msgid "Close Window"
-msgstr "Stäng fönster"
-
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
-msgid "Preferences"
-msgstr "Inställningar"
-
-#: src/editor/editor_dialogs.cpp:255
-msgid "Scroll Speed:"
-msgstr "Rullningsfart:"
-
-#: src/editor/editor_dialogs.cpp:282
-msgid "Toggle Full Screen"
-msgstr "Helskärm på/av"
-
-#: src/editor/editor_dialogs.cpp:289
-msgid "Show Grid"
-msgstr "Visa rutnät"
-
-#: src/editor/editor_dialogs.cpp:296
-msgid "Video Mode"
-msgstr "Videoläge"
-
-#: src/editor/editor_dialogs.cpp:299
-msgid "Hotkeys"
-msgstr "Snabbtangenter"
-
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
-msgid "Resize Map"
-msgstr "Ändra kartans storlek"
-
-#: src/editor/editor_dialogs.cpp:408
-msgid "OK"
-msgstr "OK"
-
-#: src/editor/editor_dialogs.cpp:491
-msgid "X-Axis"
-msgstr "X-axel"
-
-#: src/editor/editor_dialogs.cpp:492
-msgid "Y-Axis"
-msgstr "Y-axel"
-
-#: src/editor/editor_dialogs.cpp:493
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Flippa (detta kan ändra kartans dimensioner):"
-
 #: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Kampen om Wesnoths karteditor"
@@ -247,50 +161,6 @@ msgstr "FG"
 msgid "BG"
 msgstr "BG"
 
-#: src/mapgen_dialog.cpp:98
-msgid "Map Generator"
-msgstr "Kartgenerator"
-
-#: src/mapgen_dialog.cpp:103
-msgid "Players:"
-msgstr "Spelare:"
-
-#: src/mapgen_dialog.cpp:106
-msgid "Number of Hills:"
-msgstr "Antal kullar:"
-
-#: src/mapgen_dialog.cpp:107
-msgid "Max Hill Size:"
-msgstr "Max kullstorlek"
-
-#: src/mapgen_dialog.cpp:108
-msgid "Villages:"
-msgstr "Byar:"
-
-#: src/mapgen_dialog.cpp:109
-msgid "Landform:"
-msgstr "Landskapstyp:"
-
-#: src/mapgen_dialog.cpp:215
-msgid "Roads Between Castles"
-msgstr "Vägar mellan borgar"
-
-#: src/mapgen_dialog.cpp:272
-msgid "/1000 tiles"
-msgstr "/1000 rutor"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Coastal"
-msgstr "Kustnära"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Inland"
-msgstr "Inland"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Island"
-msgstr "Ö"
-
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
 msgstr "Radera fil"
@@ -298,3 +168,100 @@ msgstr "Radera fil"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr ""
+#~ "Dina ändringar av kartan kommer att gå förlorade. Vill du fortsätta?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Skapa ny karta"
+
+#~ msgid "Width:"
+#~ msgstr "Bredd:"
+
+#~ msgid "Height:"
+#~ msgstr "Höjd:"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Generera ny karta"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Generera slumpkarta"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Inställningar för slumpgenerator"
+
+#~ msgid "Cancel"
+#~ msgstr "Avbryt"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Kunde inte skapa karta."
+
+#~ msgid "Close Window"
+#~ msgstr "Stäng fönster"
+
+#~ msgid "Preferences"
+#~ msgstr "Inställningar"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Rullningsfart:"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Helskärm på/av"
+
+#~ msgid "Show Grid"
+#~ msgstr "Visa rutnät"
+
+#~ msgid "Video Mode"
+#~ msgstr "Videoläge"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Snabbtangenter"
+
+#~ msgid "Resize Map"
+#~ msgstr "Ändra kartans storlek"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "X-Axis"
+#~ msgstr "X-axel"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y-axel"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Flippa (detta kan ändra kartans dimensioner):"
+
+#~ msgid "Map Generator"
+#~ msgstr "Kartgenerator"
+
+#~ msgid "Players:"
+#~ msgstr "Spelare:"
+
+#~ msgid "Number of Hills:"
+#~ msgstr "Antal kullar:"
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "Max kullstorlek"
+
+#~ msgid "Villages:"
+#~ msgstr "Byar:"
+
+#~ msgid "Landform:"
+#~ msgstr "Landskapstyp:"
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "Vägar mellan borgar"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "/1000 rutor"
+
+#~ msgid "Coastal"
+#~ msgstr "Kustnära"
+
+#~ msgid "Inland"
+#~ msgstr "Inland"
+
+#~ msgid "Island"
+#~ msgstr "Ö"

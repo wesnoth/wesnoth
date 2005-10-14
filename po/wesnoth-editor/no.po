@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2004-09-06 17:55+0100\n"
 "Last-Translator: Erik <erikmesoy@yahoo.com>\n"
 "Language-Team: none\n"
@@ -148,94 +148,6 @@ msgstr ""
 msgid "Player"
 msgstr "Spiller"
 
-#: src/editor/editor_dialogs.cpp:47
-#, fuzzy
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Forandringene dine på kartet vil bli tapt.  Avslutt?"
-
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Lag nytt kart"
-
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
-msgid "Width:"
-msgstr "Bredde"
-
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
-msgid "Height:"
-msgstr "Høyde"
-
-#: src/editor/editor_dialogs.cpp:93
-msgid "Generate New Map"
-msgstr "Generer nytt kart"
-
-#: src/editor/editor_dialogs.cpp:94
-msgid "Generate Random Map"
-msgstr "Tilfeldig kart"
-
-#: src/editor/editor_dialogs.cpp:95
-msgid "Random Generator Settings"
-msgstr "Innstillinger for kartgenerator"
-
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: src/editor/editor_dialogs.cpp:181
-msgid "Map creation failed."
-msgstr "Kartlaging feilet."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
-msgid "Close Window"
-msgstr "Lukk vindu"
-
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
-msgid "Preferences"
-msgstr "Preferanser"
-
-#: src/editor/editor_dialogs.cpp:255
-msgid "Scroll Speed:"
-msgstr "Panoreringsfart:"
-
-#: src/editor/editor_dialogs.cpp:282
-#, fuzzy
-msgid "Toggle Full Screen"
-msgstr "Fullskjerm"
-
-#: src/editor/editor_dialogs.cpp:289
-msgid "Show Grid"
-msgstr "Vis rutenett"
-
-#: src/editor/editor_dialogs.cpp:296
-msgid "Video Mode"
-msgstr "Video-modus"
-
-#: src/editor/editor_dialogs.cpp:299
-msgid "Hotkeys"
-msgstr "Hurtigtaster"
-
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
-msgid "Resize Map"
-msgstr "Endre størrelse"
-
-#: src/editor/editor_dialogs.cpp:408
-msgid "OK"
-msgstr ""
-
-#: src/editor/editor_dialogs.cpp:491
-msgid "X-Axis"
-msgstr "X-Akse"
-
-#: src/editor/editor_dialogs.cpp:492
-msgid "Y-Axis"
-msgstr "Y-Akse"
-
-#: src/editor/editor_dialogs.cpp:493
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Speilvend (dette kan komme til å endre kartets dimensjoner):"
-
 #: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr ""
@@ -248,51 +160,6 @@ msgstr "FG"
 msgid "BG"
 msgstr "BG"
 
-#: src/mapgen_dialog.cpp:98
-msgid "Map Generator"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:103
-#, fuzzy
-msgid "Players:"
-msgstr "Spiller"
-
-#: src/mapgen_dialog.cpp:106
-msgid "Number of Hills:"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:107
-msgid "Max Hill Size:"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:108
-msgid "Villages:"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:109
-msgid "Landform:"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:215
-msgid "Roads Between Castles"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:272
-msgid "/1000 tiles"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:277
-msgid "Coastal"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:277
-msgid "Inland"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:277
-msgid "Island"
-msgstr ""
-
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
 msgstr "Slett fil"
@@ -300,6 +167,72 @@ msgstr "Slett fil"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "Filsletting slo feil."
+
+#, fuzzy
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Forandringene dine på kartet vil bli tapt.  Avslutt?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Lag nytt kart"
+
+#~ msgid "Width:"
+#~ msgstr "Bredde"
+
+#~ msgid "Height:"
+#~ msgstr "Høyde"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Generer nytt kart"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Tilfeldig kart"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Innstillinger for kartgenerator"
+
+#~ msgid "Cancel"
+#~ msgstr "Avbryt"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Kartlaging feilet."
+
+#~ msgid "Close Window"
+#~ msgstr "Lukk vindu"
+
+#~ msgid "Preferences"
+#~ msgstr "Preferanser"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Panoreringsfart:"
+
+#, fuzzy
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Fullskjerm"
+
+#~ msgid "Show Grid"
+#~ msgstr "Vis rutenett"
+
+#~ msgid "Video Mode"
+#~ msgstr "Video-modus"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Hurtigtaster"
+
+#~ msgid "Resize Map"
+#~ msgstr "Endre størrelse"
+
+#~ msgid "X-Axis"
+#~ msgstr "X-Akse"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y-Akse"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Speilvend (dette kan komme til å endre kartets dimensjoner):"
+
+#, fuzzy
+#~ msgid "Players:"
+#~ msgstr "Spiller"
 
 #~ msgid "Draw"
 #~ msgstr "Tegn"

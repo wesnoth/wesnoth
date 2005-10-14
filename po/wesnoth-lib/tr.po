@@ -13,13 +13,106 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-30 03:34+0200\n"
 "Last-Translator: ihsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team: Turkish <farsakoglu@web.de>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/editor/editor_dialogs.cpp:47
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr "Haritaya yaptığın değişiklikler kaybolacak. Devam?"
+
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+msgid "Create New Map"
+msgstr "Yeni bir harita yap"
+
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:104
+msgid "Width:"
+msgstr "Eni:"
+
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:105
+msgid "Height:"
+msgstr "Boyu:"
+
+#: src/editor/editor_dialogs.cpp:93
+msgid "Generate New Map"
+msgstr "Yeni bir harita oluştur"
+
+#: src/editor/editor_dialogs.cpp:94
+msgid "Generate Random Map"
+msgstr "Rastgele harita oluştur."
+
+#: src/editor/editor_dialogs.cpp:95
+msgid "Random Generator Settings"
+msgstr "Rastgele üreteci ayarları"
+
+#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
+#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
+#: src/show_dialog.cpp:927
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/editor/editor_dialogs.cpp:181
+msgid "Map creation failed."
+msgstr "Harita oluşturma başarısız oldu."
+
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/preferences.cpp:1335
+msgid "Close Window"
+msgstr "Pencereyi kapat"
+
+#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+msgid "Preferences"
+msgstr "Tercihler"
+
+#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+msgid "Scroll Speed:"
+msgstr "Kaydırma hızı:"
+
+#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/preferences.cpp:887
+msgid "Toggle Full Screen"
+msgstr "Tam ekran aç-kapa"
+
+#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+msgid "Show Grid"
+msgstr "Izgarayı göster"
+
+#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+msgid "Video Mode"
+msgstr "Video modu"
+
+#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+msgid "Hotkeys"
+msgstr "Klavye kısayolları"
+
+#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/hotkeys.cpp:94
+msgid "Resize Map"
+msgstr "Haritayı boyutlandır"
+
+#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
+#: src/show_dialog.cpp:429
+msgid "OK"
+msgstr "Tamam"
+
+#: src/editor/editor_dialogs.cpp:491
+msgid "X-Axis"
+msgstr "X-Ekseni"
+
+#: src/editor/editor_dialogs.cpp:492
+msgid "Y-Axis"
+msgstr "Y-Ekseni"
+
+#: src/editor/editor_dialogs.cpp:493
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr "Döndür (bu işlem haritanın boyutlarının değişmesine neden olabilir)"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -60,10 +153,6 @@ msgstr "Uzaklaş"
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "Varsayılan yakınlık"
-
-#: src/hotkeys.cpp:55 src/preferences.cpp:887
-msgid "Toggle Full Screen"
-msgstr "Tam ekran aç-kapa"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
@@ -128,10 +217,6 @@ msgstr "Birim oluştur (Debug!)"
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "Birim tarafını değiştir (Debug!)"
-
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
-msgid "Preferences"
-msgstr "Tercihler"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
@@ -213,10 +298,6 @@ msgstr "Yapıştır"
 msgid "Revert from Disk"
 msgstr "Diskten eski haline getir"
 
-#: src/hotkeys.cpp:94
-msgid "Resize Map"
-msgstr "Haritayı boyutlandır"
-
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "Haritayı yansıt"
@@ -281,6 +362,50 @@ msgstr "Gerçekten çıkmak istiyor musun?"
 msgid "Quit"
 msgstr "Çık"
 
+#: src/mapgen_dialog.cpp:98
+msgid "Map Generator"
+msgstr "Harita üreticisi"
+
+#: src/mapgen_dialog.cpp:103
+msgid "Players:"
+msgstr "Oyuncular:"
+
+#: src/mapgen_dialog.cpp:106
+msgid "Number of Hills:"
+msgstr "Tepe sayısı:"
+
+#: src/mapgen_dialog.cpp:107
+msgid "Max Hill Size:"
+msgstr "En fazla tepe boyutu:"
+
+#: src/mapgen_dialog.cpp:108
+msgid "Villages:"
+msgstr "Köyler:"
+
+#: src/mapgen_dialog.cpp:109
+msgid "Landform:"
+msgstr "Arazi şekli:"
+
+#: src/mapgen_dialog.cpp:215
+msgid "Roads Between Castles"
+msgstr "Kaleler arasında yollar"
+
+#: src/mapgen_dialog.cpp:272
+msgid "/1000 tiles"
+msgstr "/1000 tuğla"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Coastal"
+msgstr "Sahil"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Inland"
+msgstr "Kara"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Island"
+msgstr "Ada"
+
 #: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -302,10 +427,6 @@ msgstr "Artırılmış hız"
 #: src/preferences.cpp:889
 msgid "Skip AI Moves"
 msgstr "YZ hareketlerini atla"
-
-#: src/preferences.cpp:890
-msgid "Show Grid"
-msgstr "Izgarayı göster"
 
 #: src/preferences.cpp:891
 msgid "Show Floating Labels"
@@ -330,14 +451,6 @@ msgstr "Renkli imleçleri göster"
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "Nur efektlerini göster"
-
-#: src/preferences.cpp:897
-msgid "Video Mode"
-msgstr "Video modu"
-
-#: src/preferences.cpp:898
-msgid "Hotkeys"
-msgstr "Klavye kısayolları"
 
 #: src/preferences.cpp:899
 msgid "Adjust Gamma"
@@ -366,10 +479,6 @@ msgstr "SFX ses düzeyi:"
 #: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr "Gama:"
-
-#: src/preferences.cpp:905
-msgid "Scroll Speed:"
-msgstr "Kaydırma hızı:"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -484,10 +593,6 @@ msgstr "Alternatif video modları mevcut değil"
 msgid "Choose Resolution"
 msgstr "Çözünürlüğü seç"
 
-#: src/preferences.cpp:1335
-msgid "Close Window"
-msgstr "Pencereyi kapat"
-
 #: src/preferences.cpp:1340
 msgid "Hotkey Settings"
 msgstr "Klavye kısayolu ayarları"
@@ -520,10 +625,6 @@ msgstr "Bu kısayol zaten kullanımda"
 msgid "Error"
 msgstr "Hata"
 
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
-msgid "OK"
-msgstr "Tamam"
-
 #: src/show_dialog.cpp:422
 msgid "Yes"
 msgstr "Evet"
@@ -531,11 +632,6 @@ msgstr "Evet"
 #: src/show_dialog.cpp:423
 msgid "No"
 msgstr "Hayır"
-
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
-msgid "Cancel"
-msgstr "İptal"
 
 #: src/show_dialog.cpp:442
 msgid "Close"

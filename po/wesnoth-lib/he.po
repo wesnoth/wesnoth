@@ -9,13 +9,106 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-10-14 14:25+0200\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/editor/editor_dialogs.cpp:47
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr "שינויי המפה שביצעת יאבדו. להמשיך למרות זאת?"
+
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+msgid "Create New Map"
+msgstr "יצירת מפה חדשה"
+
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:104
+msgid "Width:"
+msgstr ":רוחב"
+
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:105
+msgid "Height:"
+msgstr ":גובה"
+
+#: src/editor/editor_dialogs.cpp:93
+msgid "Generate New Map"
+msgstr "יצירת מפה חדשה"
+
+#: src/editor/editor_dialogs.cpp:94
+msgid "Generate Random Map"
+msgstr "יצירת מפה אקראית"
+
+#: src/editor/editor_dialogs.cpp:95
+msgid "Random Generator Settings"
+msgstr "נתוני מחולל הגרלות"
+
+#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
+#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
+#: src/show_dialog.cpp:927
+msgid "Cancel"
+msgstr "בטל"
+
+#: src/editor/editor_dialogs.cpp:181
+msgid "Map creation failed."
+msgstr "יצירת מפה נכשלה."
+
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/preferences.cpp:1335
+msgid "Close Window"
+msgstr "סגור חלון"
+
+#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+msgid "Preferences"
+msgstr "העדפות"
+
+#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+msgid "Scroll Speed:"
+msgstr ":מהירות גלילה"
+
+#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/preferences.cpp:887
+msgid "Toggle Full Screen"
+msgstr "חלון/מסך מלא"
+
+#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+msgid "Show Grid"
+msgstr "הצג סריג"
+
+#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+msgid "Video Mode"
+msgstr "אופן תצוגה"
+
+#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+msgid "Hotkeys"
+msgstr "מקשי קיצור"
+
+#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/hotkeys.cpp:94
+msgid "Resize Map"
+msgstr "שנה גודל מפה"
+
+#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
+#: src/show_dialog.cpp:429
+msgid "OK"
+msgstr "אשר"
+
+#: src/editor/editor_dialogs.cpp:491
+msgid "X-Axis"
+msgstr "ציר X"
+
+#: src/editor/editor_dialogs.cpp:492
+msgid "Y-Axis"
+msgstr "ציר Y"
+
+#: src/editor/editor_dialogs.cpp:493
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr "הפיכה (עלול לשנות את מימדי המפה)"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -56,10 +149,6 @@ msgstr "הקטנה"
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "גודל רגיל"
-
-#: src/hotkeys.cpp:55 src/preferences.cpp:887
-msgid "Toggle Full Screen"
-msgstr "חלון/מסך מלא"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
@@ -124,10 +213,6 @@ msgstr "(Debug!) צור יחידה"
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "החלפת צדדים של יחידה (Debug!)"
-
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
-msgid "Preferences"
-msgstr "העדפות"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
@@ -209,10 +294,6 @@ msgstr "הדבק"
 msgid "Revert from Disk"
 msgstr "שחזר מהדיסק"
 
-#: src/hotkeys.cpp:94
-msgid "Resize Map"
-msgstr "שנה גודל מפה"
-
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "הפיכת מפה"
@@ -268,9 +349,8 @@ msgid "Enter user command"
 msgstr "הכנס פקודת משתמש"
 
 #: src/hotkeys.cpp:110
-#, fuzzy
 msgid "Change the language"
-msgstr "עדכון עוצמת המוסיקה"
+msgstr "החלף שפה"
 
 #: src/hotkeys.cpp:359 src/hotkeys.cpp:553
 msgid "Do you really want to quit?"
@@ -279,6 +359,50 @@ msgstr "האם ברצונך לצאת?"
 #: src/hotkeys.cpp:359 src/hotkeys.cpp:553
 msgid "Quit"
 msgstr "צא"
+
+#: src/mapgen_dialog.cpp:98
+msgid "Map Generator"
+msgstr "יצירת מפה"
+
+#: src/mapgen_dialog.cpp:103
+msgid "Players:"
+msgstr "שחקנים:"
+
+#: src/mapgen_dialog.cpp:106
+msgid "Number of Hills:"
+msgstr ":מספר הגבעות"
+
+#: src/mapgen_dialog.cpp:107
+msgid "Max Hill Size:"
+msgstr "גובה גבעה מירבי:"
+
+#: src/mapgen_dialog.cpp:108
+msgid "Villages:"
+msgstr "כפרים:"
+
+#: src/mapgen_dialog.cpp:109
+msgid "Landform:"
+msgstr "סוג קרקע:"
+
+#: src/mapgen_dialog.cpp:215
+msgid "Roads Between Castles"
+msgstr "דרכים בין המצודות"
+
+#: src/mapgen_dialog.cpp:272
+msgid "/1000 tiles"
+msgstr "/1000 מרצפות"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Coastal"
+msgstr "חופי"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Inland"
+msgstr "יבשתי"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Island"
+msgstr "אי"
 
 #: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
@@ -301,10 +425,6 @@ msgstr "מהירות מואצת"
 #: src/preferences.cpp:889
 msgid "Skip AI Moves"
 msgstr "דלג על הצגת מהלכי המחשב"
-
-#: src/preferences.cpp:890
-msgid "Show Grid"
-msgstr "הצג סריג"
 
 #: src/preferences.cpp:891
 msgid "Show Floating Labels"
@@ -329,14 +449,6 @@ msgstr "הצג סמנים ציבעוניים"
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "הצג אפקט הילה"
-
-#: src/preferences.cpp:897
-msgid "Video Mode"
-msgstr "אופן תצוגה"
-
-#: src/preferences.cpp:898
-msgid "Hotkeys"
-msgstr "מקשי קיצור"
 
 #: src/preferences.cpp:899
 msgid "Adjust Gamma"
@@ -365,10 +477,6 @@ msgstr ":עוצמת אפקטים מיוחדים"
 #: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr ":גאמה"
-
-#: src/preferences.cpp:905
-msgid "Scroll Speed:"
-msgstr ":מהירות גלילה"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -480,10 +588,6 @@ msgstr "אין מצבי תצוגה חלופיים זמינים"
 msgid "Choose Resolution"
 msgstr "בחירת רזולוציה"
 
-#: src/preferences.cpp:1335
-msgid "Close Window"
-msgstr "סגור חלון"
-
 #: src/preferences.cpp:1340
 msgid "Hotkey Settings"
 msgstr "מקשי קיצור"
@@ -516,10 +620,6 @@ msgstr "מקש קיצור זה נמצא כבר בשימוש."
 msgid "Error"
 msgstr "שגיאה"
 
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
-msgid "OK"
-msgstr "אשר"
-
 #: src/show_dialog.cpp:422
 msgid "Yes"
 msgstr "כן"
@@ -527,11 +627,6 @@ msgstr "כן"
 #: src/show_dialog.cpp:423
 msgid "No"
 msgstr "לא"
-
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
-msgid "Cancel"
-msgstr "בטל"
 
 #: src/show_dialog.cpp:442
 msgid "Close"

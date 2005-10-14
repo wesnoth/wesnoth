@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-18 12:09+0600\n"
 "Last-Translator: Azamat H. Hackimov <azazello1984@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -25,6 +25,99 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.9.1\n"
+
+#: src/editor/editor_dialogs.cpp:47
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr "Ваши изменения карты будут потеряны. Продолжить?"
+
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+msgid "Create New Map"
+msgstr "Создать новую карту"
+
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:104
+msgid "Width:"
+msgstr "Ширина:"
+
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:105
+msgid "Height:"
+msgstr "Высота:"
+
+#: src/editor/editor_dialogs.cpp:93
+msgid "Generate New Map"
+msgstr "Создать новую карту"
+
+#: src/editor/editor_dialogs.cpp:94
+msgid "Generate Random Map"
+msgstr "Создать случайную карту"
+
+#: src/editor/editor_dialogs.cpp:95
+msgid "Random Generator Settings"
+msgstr "Настройки случайного генератора"
+
+#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
+#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
+#: src/show_dialog.cpp:927
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/editor/editor_dialogs.cpp:181
+msgid "Map creation failed."
+msgstr "Ошибка создания карты."
+
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/preferences.cpp:1335
+msgid "Close Window"
+msgstr "Закрыть окно"
+
+#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+msgid "Preferences"
+msgstr "Настройки"
+
+#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+msgid "Scroll Speed:"
+msgstr "Скорость прокрутки:"
+
+#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/preferences.cpp:887
+msgid "Toggle Full Screen"
+msgstr "На весь экран"
+
+#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+msgid "Show Grid"
+msgstr "Показывать сетку"
+
+#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+msgid "Video Mode"
+msgstr "Видеорежимы"
+
+#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+msgid "Hotkeys"
+msgstr "Горячие клавиши"
+
+#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/hotkeys.cpp:94
+msgid "Resize Map"
+msgstr "Изменить размер карты"
+
+#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
+#: src/show_dialog.cpp:429
+msgid "OK"
+msgstr "OK"
+
+#: src/editor/editor_dialogs.cpp:491
+msgid "X-Axis"
+msgstr "Ось X"
+
+#: src/editor/editor_dialogs.cpp:492
+msgid "Y-Axis"
+msgstr "Ось Y"
+
+#: src/editor/editor_dialogs.cpp:493
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr "Перевернуть (это может изменить размеры карты):"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -65,10 +158,6 @@ msgstr "Уменьшить"
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "Увеличение по умолчанию"
-
-#: src/hotkeys.cpp:55 src/preferences.cpp:887
-msgid "Toggle Full Screen"
-msgstr "На весь экран"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
@@ -133,10 +222,6 @@ msgstr "Создать соединение (Отладка!)"
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "Сменить сторону соединения (Отладка!)"
-
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
-msgid "Preferences"
-msgstr "Настройки"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
@@ -218,10 +303,6 @@ msgstr "Вставить"
 msgid "Revert from Disk"
 msgstr "Вернуть с диска"
 
-#: src/hotkeys.cpp:94
-msgid "Resize Map"
-msgstr "Изменить размер карты"
-
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "Перевернуть карту"
@@ -286,6 +367,50 @@ msgstr "Вы действительно хотите выйти?"
 msgid "Quit"
 msgstr "Выйти"
 
+#: src/mapgen_dialog.cpp:98
+msgid "Map Generator"
+msgstr "Генератор карты"
+
+#: src/mapgen_dialog.cpp:103
+msgid "Players:"
+msgstr "Игроки:"
+
+#: src/mapgen_dialog.cpp:106
+msgid "Number of Hills:"
+msgstr "Количество холмов:"
+
+#: src/mapgen_dialog.cpp:107
+msgid "Max Hill Size:"
+msgstr "Максимальный размер холма:"
+
+#: src/mapgen_dialog.cpp:108
+msgid "Villages:"
+msgstr "Деревни:"
+
+#: src/mapgen_dialog.cpp:109
+msgid "Landform:"
+msgstr "Форма земли:"
+
+#: src/mapgen_dialog.cpp:215
+msgid "Roads Between Castles"
+msgstr "Дороги между замками"
+
+#: src/mapgen_dialog.cpp:272
+msgid "/1000 tiles"
+msgstr "/1000 квадратов"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Coastal"
+msgstr "Береговой"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Inland"
+msgstr "Внутренний"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Island"
+msgstr "Остров"
+
 #: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -307,10 +432,6 @@ msgstr "Ускоренные движения"
 #: src/preferences.cpp:889
 msgid "Skip AI Moves"
 msgstr "Пропускать ходы компьютера"
-
-#: src/preferences.cpp:890
-msgid "Show Grid"
-msgstr "Показывать сетку"
 
 #: src/preferences.cpp:891
 msgid "Show Floating Labels"
@@ -335,14 +456,6 @@ msgstr "Показывать улучшенные курсоры"
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "Показывать эффекты"
-
-#: src/preferences.cpp:897
-msgid "Video Mode"
-msgstr "Видеорежимы"
-
-#: src/preferences.cpp:898
-msgid "Hotkeys"
-msgstr "Горячие клавиши"
 
 #: src/preferences.cpp:899
 msgid "Adjust Gamma"
@@ -371,10 +484,6 @@ msgstr "Громкость звуков:"
 #: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr "Гамма:"
-
-#: src/preferences.cpp:905
-msgid "Scroll Speed:"
-msgstr "Скорость прокрутки:"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -488,10 +597,6 @@ msgstr "Нет доступных альтернативных видео реж
 msgid "Choose Resolution"
 msgstr "Выберите разрешение"
 
-#: src/preferences.cpp:1335
-msgid "Close Window"
-msgstr "Закрыть окно"
-
 #: src/preferences.cpp:1340
 msgid "Hotkey Settings"
 msgstr "Настройка горячих клавиш"
@@ -524,10 +629,6 @@ msgstr "Данная клавиша уже используется."
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
-msgid "OK"
-msgstr "OK"
-
 #: src/show_dialog.cpp:422
 msgid "Yes"
 msgstr "Да"
@@ -535,11 +636,6 @@ msgstr "Да"
 #: src/show_dialog.cpp:423
 msgid "No"
 msgstr "Нет"
-
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
-msgid "Cancel"
-msgstr "Отмена"
 
 #: src/show_dialog.cpp:442
 msgid "Close"

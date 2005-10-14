@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-09-05 11:26+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -145,92 +145,6 @@ msgstr "Chyba: Nepovolený znak v mene súboru."
 msgid "Player"
 msgstr "Hráč"
 
-#: src/editor/editor_dialogs.cpp:47
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Tvoje úpravy mapy sa stratia. Mám pokračovať?"
-
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Vytvor novú mapu"
-
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
-msgid "Width:"
-msgstr "Šírka:"
-
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
-msgid "Height:"
-msgstr "Výška:"
-
-#: src/editor/editor_dialogs.cpp:93
-msgid "Generate New Map"
-msgstr "Generuj novú mapu"
-
-#: src/editor/editor_dialogs.cpp:94
-msgid "Generate Random Map"
-msgstr "Generuj náhodnú mapu"
-
-#: src/editor/editor_dialogs.cpp:95
-msgid "Random Generator Settings"
-msgstr "Nastavenia náhodného generátora"
-
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-msgid "Cancel"
-msgstr "Storno"
-
-#: src/editor/editor_dialogs.cpp:181
-msgid "Map creation failed."
-msgstr "Nepodarilo sa vytvoriť mapu."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
-msgid "Close Window"
-msgstr "Zavri okno"
-
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
-msgid "Preferences"
-msgstr "Nastavenia"
-
-#: src/editor/editor_dialogs.cpp:255
-msgid "Scroll Speed:"
-msgstr "Rýchlosť rolovania:"
-
-#: src/editor/editor_dialogs.cpp:282
-msgid "Toggle Full Screen"
-msgstr "Celá obrazovka"
-
-#: src/editor/editor_dialogs.cpp:289
-msgid "Show Grid"
-msgstr "Ukáž mriežku"
-
-#: src/editor/editor_dialogs.cpp:296
-msgid "Video Mode"
-msgstr "Režim obrazovky"
-
-#: src/editor/editor_dialogs.cpp:299
-msgid "Hotkeys"
-msgstr "Klávesy"
-
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
-msgid "Resize Map"
-msgstr "Zmeň veľkosť mapy"
-
-#: src/editor/editor_dialogs.cpp:408
-msgid "OK"
-msgstr "OK"
-
-#: src/editor/editor_dialogs.cpp:491
-msgid "X-Axis"
-msgstr "Os X"
-
-#: src/editor/editor_dialogs.cpp:492
-msgid "Y-Axis"
-msgstr "Os Y"
-
-#: src/editor/editor_dialogs.cpp:493
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Prevráť (môžu sa zmeniť rozmery mapy):"
-
 #: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Editor máp hry Bitka o Wesnoth"
@@ -243,50 +157,6 @@ msgstr "Vec"
 msgid "BG"
 msgstr "Terén"
 
-#: src/mapgen_dialog.cpp:98
-msgid "Map Generator"
-msgstr "Generátor máp"
-
-#: src/mapgen_dialog.cpp:103
-msgid "Players:"
-msgstr "Hráči:"
-
-#: src/mapgen_dialog.cpp:106
-msgid "Number of Hills:"
-msgstr "Počet kopcov:"
-
-#: src/mapgen_dialog.cpp:107
-msgid "Max Hill Size:"
-msgstr "Max veľkosť kopca:"
-
-#: src/mapgen_dialog.cpp:108
-msgid "Villages:"
-msgstr "Dediny:"
-
-#: src/mapgen_dialog.cpp:109
-msgid "Landform:"
-msgstr "Tvar zeme:"
-
-#: src/mapgen_dialog.cpp:215
-msgid "Roads Between Castles"
-msgstr "Cesty medzi hradmi"
-
-#: src/mapgen_dialog.cpp:272
-msgid "/1000 tiles"
-msgstr "/1000 polí"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Coastal"
-msgstr "Pobrežie"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Inland"
-msgstr "Vnútrozemie"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Island"
-msgstr "Ostrov"
-
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
 msgstr "Vymaž súbor"
@@ -294,3 +164,99 @@ msgstr "Vymaž súbor"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "Nepodarilo sa vymazať súbor."
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Tvoje úpravy mapy sa stratia. Mám pokračovať?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Vytvor novú mapu"
+
+#~ msgid "Width:"
+#~ msgstr "Šírka:"
+
+#~ msgid "Height:"
+#~ msgstr "Výška:"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Generuj novú mapu"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Generuj náhodnú mapu"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Nastavenia náhodného generátora"
+
+#~ msgid "Cancel"
+#~ msgstr "Storno"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Nepodarilo sa vytvoriť mapu."
+
+#~ msgid "Close Window"
+#~ msgstr "Zavri okno"
+
+#~ msgid "Preferences"
+#~ msgstr "Nastavenia"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Rýchlosť rolovania:"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Celá obrazovka"
+
+#~ msgid "Show Grid"
+#~ msgstr "Ukáž mriežku"
+
+#~ msgid "Video Mode"
+#~ msgstr "Režim obrazovky"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Klávesy"
+
+#~ msgid "Resize Map"
+#~ msgstr "Zmeň veľkosť mapy"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "X-Axis"
+#~ msgstr "Os X"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Os Y"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Prevráť (môžu sa zmeniť rozmery mapy):"
+
+#~ msgid "Map Generator"
+#~ msgstr "Generátor máp"
+
+#~ msgid "Players:"
+#~ msgstr "Hráči:"
+
+#~ msgid "Number of Hills:"
+#~ msgstr "Počet kopcov:"
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "Max veľkosť kopca:"
+
+#~ msgid "Villages:"
+#~ msgstr "Dediny:"
+
+#~ msgid "Landform:"
+#~ msgstr "Tvar zeme:"
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "Cesty medzi hradmi"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "/1000 polí"
+
+#~ msgid "Coastal"
+#~ msgstr "Pobrežie"
+
+#~ msgid "Inland"
+#~ msgstr "Vnútrozemie"
+
+#~ msgid "Island"
+#~ msgstr "Ostrov"

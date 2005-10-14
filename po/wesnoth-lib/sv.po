@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-01 15:21+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
@@ -16,6 +16,99 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.10.1\n"
+
+#: src/editor/editor_dialogs.cpp:47
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr "Dina ändringar av kartan kommer att gå förlorade. Vill du fortsätta?"
+
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+msgid "Create New Map"
+msgstr "Skapa ny karta"
+
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:104
+msgid "Width:"
+msgstr "Bredd:"
+
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:105
+msgid "Height:"
+msgstr "Höjd:"
+
+#: src/editor/editor_dialogs.cpp:93
+msgid "Generate New Map"
+msgstr "Generera ny karta"
+
+#: src/editor/editor_dialogs.cpp:94
+msgid "Generate Random Map"
+msgstr "Generera slumpkarta"
+
+#: src/editor/editor_dialogs.cpp:95
+msgid "Random Generator Settings"
+msgstr "Inställningar för slumpgenerator"
+
+#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
+#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
+#: src/show_dialog.cpp:927
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/editor/editor_dialogs.cpp:181
+msgid "Map creation failed."
+msgstr "Kunde inte skapa karta."
+
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/preferences.cpp:1335
+msgid "Close Window"
+msgstr "Stäng fönster"
+
+#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+msgid "Scroll Speed:"
+msgstr "Rullningsfart:"
+
+#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/preferences.cpp:887
+msgid "Toggle Full Screen"
+msgstr "Helskärm på/av"
+
+#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+msgid "Show Grid"
+msgstr "Visa rutnät"
+
+#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+msgid "Video Mode"
+msgstr "Videoläge"
+
+#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+msgid "Hotkeys"
+msgstr "Snabbtangenter"
+
+#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/hotkeys.cpp:94
+msgid "Resize Map"
+msgstr "Ändra kartans storlek"
+
+#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
+#: src/show_dialog.cpp:429
+msgid "OK"
+msgstr "OK"
+
+#: src/editor/editor_dialogs.cpp:491
+msgid "X-Axis"
+msgstr "X-axel"
+
+#: src/editor/editor_dialogs.cpp:492
+msgid "Y-Axis"
+msgstr "Y-axel"
+
+#: src/editor/editor_dialogs.cpp:493
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr "Flippa (detta kan ändra kartans dimensioner):"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -56,10 +149,6 @@ msgstr "Zooma ut"
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "Standardzoom"
-
-#: src/hotkeys.cpp:55 src/preferences.cpp:887
-msgid "Toggle Full Screen"
-msgstr "Helskärm på/av"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
@@ -124,10 +213,6 @@ msgstr "Skapa trupp (debuggning!)"
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "Byt truppens lojalitet (debuggning!)"
-
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
-msgid "Preferences"
-msgstr "Inställningar"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
@@ -209,10 +294,6 @@ msgstr "Klistra in"
 msgid "Revert from Disk"
 msgstr "Återställ från disk"
 
-#: src/hotkeys.cpp:94
-msgid "Resize Map"
-msgstr "Ändra kartans storlek"
-
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "Flippa kartan"
@@ -277,6 +358,50 @@ msgstr "Vill du verkligen sluta?"
 msgid "Quit"
 msgstr "Avsluta"
 
+#: src/mapgen_dialog.cpp:98
+msgid "Map Generator"
+msgstr "Kartgenerator"
+
+#: src/mapgen_dialog.cpp:103
+msgid "Players:"
+msgstr "Spelare:"
+
+#: src/mapgen_dialog.cpp:106
+msgid "Number of Hills:"
+msgstr "Antal kullar:"
+
+#: src/mapgen_dialog.cpp:107
+msgid "Max Hill Size:"
+msgstr "Max kullstorlek:"
+
+#: src/mapgen_dialog.cpp:108
+msgid "Villages:"
+msgstr "Byar:"
+
+#: src/mapgen_dialog.cpp:109
+msgid "Landform:"
+msgstr "Landskapstyp:"
+
+#: src/mapgen_dialog.cpp:215
+msgid "Roads Between Castles"
+msgstr "Vägar mellan borgar"
+
+#: src/mapgen_dialog.cpp:272
+msgid "/1000 tiles"
+msgstr "/1000 rutor"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Coastal"
+msgstr "Kustnära"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Inland"
+msgstr "Inland"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Island"
+msgstr "Ö"
+
 #: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -298,10 +423,6 @@ msgstr "Accelererad"
 #: src/preferences.cpp:889
 msgid "Skip AI Moves"
 msgstr "Visa ej datorns steg"
-
-#: src/preferences.cpp:890
-msgid "Show Grid"
-msgstr "Visa rutnät"
 
 #: src/preferences.cpp:891
 msgid "Show Floating Labels"
@@ -326,14 +447,6 @@ msgstr "Visa pekare i färg"
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "Visa halo-effekter"
-
-#: src/preferences.cpp:897
-msgid "Video Mode"
-msgstr "Videoläge"
-
-#: src/preferences.cpp:898
-msgid "Hotkeys"
-msgstr "Snabbtangenter"
 
 #: src/preferences.cpp:899
 msgid "Adjust Gamma"
@@ -362,10 +475,6 @@ msgstr "Ljudeffektsvolym:"
 #: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr "Ljusstyrka:"
-
-#: src/preferences.cpp:905
-msgid "Scroll Speed:"
-msgstr "Rullningsfart:"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -482,10 +591,6 @@ msgstr "Det finns inga alternativa videolägen tillgängliga"
 msgid "Choose Resolution"
 msgstr "Välj upplösning"
 
-#: src/preferences.cpp:1335
-msgid "Close Window"
-msgstr "Stäng fönster"
-
 #: src/preferences.cpp:1340
 msgid "Hotkey Settings"
 msgstr "Snabbtangentsinställningar"
@@ -518,10 +623,6 @@ msgstr "Den tangenten används redan till något annat."
 msgid "Error"
 msgstr "Fel"
 
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
-msgid "OK"
-msgstr "OK"
-
 #: src/show_dialog.cpp:422
 msgid "Yes"
 msgstr "Ja"
@@ -529,11 +630,6 @@ msgstr "Ja"
 #: src/show_dialog.cpp:423
 msgid "No"
 msgstr "Nej"
-
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
-msgid "Cancel"
-msgstr "Avbryt"
 
 #: src/show_dialog.cpp:442
 msgid "Close"

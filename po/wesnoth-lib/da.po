@@ -8,13 +8,109 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-14 20:06+0100\n"
 "Last-Translator: Bjarke Sørensen <bs@wasd.dk>\n"
 "Language-Team: Danish <wesnoth-da@lillesvin.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/editor/editor_dialogs.cpp:47
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+#, fuzzy
+msgid "Create New Map"
+msgstr "Nyt kort"
+
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:104
+msgid "Width:"
+msgstr "Bredde:"
+
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:105
+msgid "Height:"
+msgstr "Højde:"
+
+#: src/editor/editor_dialogs.cpp:93
+#, fuzzy
+msgid "Generate New Map"
+msgstr "Nyt kort"
+
+#: src/editor/editor_dialogs.cpp:94
+msgid "Generate Random Map"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:95
+msgid "Random Generator Settings"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
+#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
+#: src/show_dialog.cpp:927
+msgid "Cancel"
+msgstr "Annullér"
+
+#: src/editor/editor_dialogs.cpp:181
+msgid "Map creation failed."
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/preferences.cpp:1335
+msgid "Close Window"
+msgstr "Luk vindue"
+
+#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+msgid "Preferences"
+msgstr "Indstillinger"
+
+# Igen. Kan man det både hori or verti?
+#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+msgid "Scroll Speed:"
+msgstr "Panoreringshastighed:"
+
+#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/preferences.cpp:887
+msgid "Toggle Full Screen"
+msgstr "Skift til/fra fuldskærm"
+
+#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+msgid "Show Grid"
+msgstr "Vis net"
+
+#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+msgid "Video Mode"
+msgstr "Videomode"
+
+#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+msgid "Hotkeys"
+msgstr "Tastaturgenveje"
+
+#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/hotkeys.cpp:94
+msgid "Resize Map"
+msgstr "Skift størrelse på kort"
+
+#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
+#: src/show_dialog.cpp:429
+msgid "OK"
+msgstr "OK"
+
+#: src/editor/editor_dialogs.cpp:491
+msgid "X-Axis"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:492
+msgid "Y-Axis"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:493
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr ""
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -55,10 +151,6 @@ msgstr "Zoom ud"
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "Standard zoom"
-
-#: src/hotkeys.cpp:55 src/preferences.cpp:887
-msgid "Toggle Full Screen"
-msgstr "Skift til/fra fuldskærm"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
@@ -123,10 +215,6 @@ msgstr "Opret enhed (Debug!)"
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "Skift enheds side (Debug!)"
-
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
-msgid "Preferences"
-msgstr "Indstillinger"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
@@ -209,10 +297,6 @@ msgstr "Indsæt"
 msgid "Revert from Disk"
 msgstr "Genindlæs fra disk"
 
-#: src/hotkeys.cpp:94
-msgid "Resize Map"
-msgstr "Skift størrelse på kort"
-
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "Vend kort"
@@ -277,6 +361,50 @@ msgstr "Er du sikker på at du vil afslutte?"
 msgid "Quit"
 msgstr "Afslut"
 
+#: src/mapgen_dialog.cpp:98
+msgid "Map Generator"
+msgstr "Kortgenerator"
+
+#: src/mapgen_dialog.cpp:103
+msgid "Players:"
+msgstr "Spillere:"
+
+#: src/mapgen_dialog.cpp:106
+msgid "Number of Hills:"
+msgstr "Antal bakker:"
+
+#: src/mapgen_dialog.cpp:107
+msgid "Max Hill Size:"
+msgstr "Max. størrelse på bakker:"
+
+#: src/mapgen_dialog.cpp:108
+msgid "Villages:"
+msgstr "Landsbyer:"
+
+#: src/mapgen_dialog.cpp:109
+msgid "Landform:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:215
+msgid "Roads Between Castles"
+msgstr "Veje mellem borge"
+
+#: src/mapgen_dialog.cpp:272
+msgid "/1000 tiles"
+msgstr "/1000 felter"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Coastal"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:277
+msgid "Inland"
+msgstr "Indland"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Island"
+msgstr "Ø"
+
 #: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -301,10 +429,6 @@ msgstr "Accelereret hastighed"
 msgid "Skip AI Moves"
 msgstr "Vis ikke computerens ryk"
 
-#: src/preferences.cpp:890
-msgid "Show Grid"
-msgstr "Vis net"
-
 #: src/preferences.cpp:891
 msgid "Show Floating Labels"
 msgstr "Vis flydende mærkater"
@@ -328,14 +452,6 @@ msgstr "Vis farvet markør"
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "Vis glorieeffekt"
-
-#: src/preferences.cpp:897
-msgid "Video Mode"
-msgstr "Videomode"
-
-#: src/preferences.cpp:898
-msgid "Hotkeys"
-msgstr "Tastaturgenveje"
 
 #: src/preferences.cpp:899
 msgid "Adjust Gamma"
@@ -364,11 +480,6 @@ msgstr "Lydeffekter styrke:"
 #: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr "Gamma:"
-
-# Igen. Kan man det både hori or verti?
-#: src/preferences.cpp:905
-msgid "Scroll Speed:"
-msgstr "Panoreringshastighed:"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -484,10 +595,6 @@ msgstr "Der er ingen alternative videomodes tilgængelige"
 msgid "Choose Resolution"
 msgstr "Vælg opløsning"
 
-#: src/preferences.cpp:1335
-msgid "Close Window"
-msgstr "Luk vindue"
-
 #: src/preferences.cpp:1340
 msgid "Hotkey Settings"
 msgstr "Genvejsindstillinger"
@@ -520,10 +627,6 @@ msgstr "Denne genvejstaste er allerede i brug."
 msgid "Error"
 msgstr "Fejl"
 
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
-msgid "OK"
-msgstr "OK"
-
 #: src/show_dialog.cpp:422
 msgid "Yes"
 msgstr "Ja"
@@ -531,11 +634,6 @@ msgstr "Ja"
 #: src/show_dialog.cpp:423
 msgid "No"
 msgstr "Nej"
-
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
-msgid "Cancel"
-msgstr "Annullér"
 
 #: src/show_dialog.cpp:442
 msgid "Close"

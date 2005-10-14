@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-09-03 04:49+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -18,6 +18,99 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: KBabel 1.9\n"
+
+#: src/editor/editor_dialogs.cpp:47
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr "マップの修正は失われてしまいます。 続けますか？"
+
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+msgid "Create New Map"
+msgstr "新しいマップの作成"
+
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:104
+msgid "Width:"
+msgstr "幅:"
+
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:105
+msgid "Height:"
+msgstr "高さ:"
+
+#: src/editor/editor_dialogs.cpp:93
+msgid "Generate New Map"
+msgstr "新しいマップの生成"
+
+#: src/editor/editor_dialogs.cpp:94
+msgid "Generate Random Map"
+msgstr "ランダムマップの生成"
+
+#: src/editor/editor_dialogs.cpp:95
+msgid "Random Generator Settings"
+msgstr "ランダムマップ生成の設定"
+
+#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
+#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
+#: src/show_dialog.cpp:927
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: src/editor/editor_dialogs.cpp:181
+msgid "Map creation failed."
+msgstr "マップの作成に失敗しました。"
+
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/preferences.cpp:1335
+msgid "Close Window"
+msgstr "ウィンドウを閉じる"
+
+#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+msgid "Preferences"
+msgstr "設定"
+
+#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+msgid "Scroll Speed:"
+msgstr "スクロール速度："
+
+#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/preferences.cpp:887
+msgid "Toggle Full Screen"
+msgstr "フルスクリーン切り換え"
+
+#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+msgid "Show Grid"
+msgstr "グリッド表示"
+
+#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+msgid "Video Mode"
+msgstr "画面モード"
+
+#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+msgid "Hotkeys"
+msgstr "ホットキー"
+
+#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/hotkeys.cpp:94
+msgid "Resize Map"
+msgstr "マップのサイズ変更"
+
+#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
+#: src/show_dialog.cpp:429
+msgid "OK"
+msgstr "OK"
+
+#: src/editor/editor_dialogs.cpp:491
+msgid "X-Axis"
+msgstr "X軸"
+
+#: src/editor/editor_dialogs.cpp:492
+msgid "Y-Axis"
+msgstr "Y軸"
+
+#: src/editor/editor_dialogs.cpp:493
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr "反転する方向（マップの全体サイズが変わるかもしれません）"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -58,10 +151,6 @@ msgstr "ズームアウト"
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "デフォルトズーム"
-
-#: src/hotkeys.cpp:55 src/preferences.cpp:887
-msgid "Toggle Full Screen"
-msgstr "フルスクリーン切り換え"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
@@ -126,10 +215,6 @@ msgstr "ユニット作成（デバッグ用）"
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "ユニット陣営変更（デバッグ用）"
-
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
-msgid "Preferences"
-msgstr "設定"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
@@ -211,10 +296,6 @@ msgstr "貼り付け"
 msgid "Revert from Disk"
 msgstr "保存ディスクから復帰"
 
-#: src/hotkeys.cpp:94
-msgid "Resize Map"
-msgstr "マップのサイズ変更"
-
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "マップを裏返す"
@@ -279,6 +360,50 @@ msgstr "本当に終了しますか？"
 msgid "Quit"
 msgstr "終了"
 
+#: src/mapgen_dialog.cpp:98
+msgid "Map Generator"
+msgstr "マップ生成"
+
+#: src/mapgen_dialog.cpp:103
+msgid "Players:"
+msgstr "プレイヤー数:"
+
+#: src/mapgen_dialog.cpp:106
+msgid "Number of Hills:"
+msgstr "丘の数:"
+
+#: src/mapgen_dialog.cpp:107
+msgid "Max Hill Size:"
+msgstr "最大の丘の大きさ:"
+
+#: src/mapgen_dialog.cpp:108
+msgid "Villages:"
+msgstr "村:"
+
+#: src/mapgen_dialog.cpp:109
+msgid "Landform:"
+msgstr "地形:"
+
+#: src/mapgen_dialog.cpp:215
+msgid "Roads Between Castles"
+msgstr "城間の道"
+
+#: src/mapgen_dialog.cpp:272
+msgid "/1000 tiles"
+msgstr "/1000 タイル"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Coastal"
+msgstr "沿岸"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Inland"
+msgstr "内陸"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Island"
+msgstr "島"
+
 #: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -300,10 +425,6 @@ msgstr "高速化"
 #: src/preferences.cpp:889
 msgid "Skip AI Moves"
 msgstr "AI移動スキップ"
-
-#: src/preferences.cpp:890
-msgid "Show Grid"
-msgstr "グリッド表示"
 
 #: src/preferences.cpp:891
 msgid "Show Floating Labels"
@@ -328,14 +449,6 @@ msgstr "カラーカーソル"
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "特殊効果表示"
-
-#: src/preferences.cpp:897
-msgid "Video Mode"
-msgstr "画面モード"
-
-#: src/preferences.cpp:898
-msgid "Hotkeys"
-msgstr "ホットキー"
 
 #: src/preferences.cpp:899
 msgid "Adjust Gamma"
@@ -364,10 +477,6 @@ msgstr "効果音ボリューム："
 #: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr "ガンマ値："
-
-#: src/preferences.cpp:905
-msgid "Scroll Speed:"
-msgstr "スクロール速度："
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -479,10 +588,6 @@ msgstr "変更可能な画面モードはありません"
 msgid "Choose Resolution"
 msgstr "解像度を選択して下さい"
 
-#: src/preferences.cpp:1335
-msgid "Close Window"
-msgstr "ウィンドウを閉じる"
-
 #: src/preferences.cpp:1340
 msgid "Hotkey Settings"
 msgstr "ホットキーの設定"
@@ -515,10 +620,6 @@ msgstr "このホットキーは既に使用されています。"
 msgid "Error"
 msgstr "エラー"
 
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
-msgid "OK"
-msgstr "OK"
-
 #: src/show_dialog.cpp:422
 msgid "Yes"
 msgstr "はい"
@@ -526,11 +627,6 @@ msgstr "はい"
 #: src/show_dialog.cpp:423
 msgid "No"
 msgstr "いいえ"
-
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
-msgid "Cancel"
-msgstr "キャンセル"
 
 #: src/show_dialog.cpp:442
 msgid "Close"

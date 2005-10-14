@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-03 22:09+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team: none\n"
@@ -147,92 +147,6 @@ msgstr "Błąd: niewłaściwy znak w nazwie pliku."
 msgid "Player"
 msgstr "Gracz"
 
-#: src/editor/editor_dialogs.cpp:47
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Twoje modyfikacje mapy zostaną utracone. Kontynuować?"
-
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Stwórz nową mapę"
-
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
-msgid "Width:"
-msgstr "Szerokość:"
-
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
-msgid "Height:"
-msgstr "Wysokość:"
-
-#: src/editor/editor_dialogs.cpp:93
-msgid "Generate New Map"
-msgstr "Wygeneruj nową mapę"
-
-#: src/editor/editor_dialogs.cpp:94
-msgid "Generate Random Map"
-msgstr "Wygeneruj losową mapę"
-
-#: src/editor/editor_dialogs.cpp:95
-msgid "Random Generator Settings"
-msgstr "Ustawienia generatora losowego"
-
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-msgid "Cancel"
-msgstr "Anuluj"
-
-#: src/editor/editor_dialogs.cpp:181
-msgid "Map creation failed."
-msgstr "Tworzenie mapy nie powiodło się."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
-msgid "Close Window"
-msgstr "Zamknij okno"
-
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
-msgid "Preferences"
-msgstr "Preferencje"
-
-#: src/editor/editor_dialogs.cpp:255
-msgid "Scroll Speed:"
-msgstr "Szybkość przesuwania:"
-
-#: src/editor/editor_dialogs.cpp:282
-msgid "Toggle Full Screen"
-msgstr "Przełącz pełny ekran"
-
-#: src/editor/editor_dialogs.cpp:289
-msgid "Show Grid"
-msgstr "Pokaż siatkę"
-
-#: src/editor/editor_dialogs.cpp:296
-msgid "Video Mode"
-msgstr "Tryb video"
-
-#: src/editor/editor_dialogs.cpp:299
-msgid "Hotkeys"
-msgstr "Skróty klawiszowe"
-
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
-msgid "Resize Map"
-msgstr "Zmień rozmiar mapy"
-
-#: src/editor/editor_dialogs.cpp:408
-msgid "OK"
-msgstr "OK"
-
-#: src/editor/editor_dialogs.cpp:491
-msgid "X-Axis"
-msgstr "Oś X"
-
-#: src/editor/editor_dialogs.cpp:492
-msgid "Y-Axis"
-msgstr "Oś Y"
-
-#: src/editor/editor_dialogs.cpp:493
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Obróć (wymiary mapy mogą zostać zmienione)"
-
 #: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Edytor map Bitwy o Wesnoth"
@@ -245,50 +159,6 @@ msgstr "FG"
 msgid "BG"
 msgstr "BG"
 
-#: src/mapgen_dialog.cpp:98
-msgid "Map Generator"
-msgstr "Generator map"
-
-#: src/mapgen_dialog.cpp:103
-msgid "Players:"
-msgstr "Gracze:"
-
-#: src/mapgen_dialog.cpp:106
-msgid "Number of Hills:"
-msgstr "Liczba wzgórz:"
-
-#: src/mapgen_dialog.cpp:107
-msgid "Max Hill Size:"
-msgstr "Maksymalny rozmiar wzgórza:"
-
-#: src/mapgen_dialog.cpp:108
-msgid "Villages:"
-msgstr "Wioski:"
-
-#: src/mapgen_dialog.cpp:109
-msgid "Landform:"
-msgstr "Forma lądu:"
-
-#: src/mapgen_dialog.cpp:215
-msgid "Roads Between Castles"
-msgstr "Drogi między zamkami"
-
-#: src/mapgen_dialog.cpp:272
-msgid "/1000 tiles"
-msgstr "/1000 pól"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Coastal"
-msgstr "Przybrzeżny"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Inland"
-msgstr "Śródlądzie"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Island"
-msgstr "Wyspa"
-
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
 msgstr "Skasuj plik"
@@ -296,6 +166,102 @@ msgstr "Skasuj plik"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "Kasowanie pliku nie powiodło się."
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Twoje modyfikacje mapy zostaną utracone. Kontynuować?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Stwórz nową mapę"
+
+#~ msgid "Width:"
+#~ msgstr "Szerokość:"
+
+#~ msgid "Height:"
+#~ msgstr "Wysokość:"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Wygeneruj nową mapę"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Wygeneruj losową mapę"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Ustawienia generatora losowego"
+
+#~ msgid "Cancel"
+#~ msgstr "Anuluj"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Tworzenie mapy nie powiodło się."
+
+#~ msgid "Close Window"
+#~ msgstr "Zamknij okno"
+
+#~ msgid "Preferences"
+#~ msgstr "Preferencje"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Szybkość przesuwania:"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Przełącz pełny ekran"
+
+#~ msgid "Show Grid"
+#~ msgstr "Pokaż siatkę"
+
+#~ msgid "Video Mode"
+#~ msgstr "Tryb video"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Skróty klawiszowe"
+
+#~ msgid "Resize Map"
+#~ msgstr "Zmień rozmiar mapy"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "X-Axis"
+#~ msgstr "Oś X"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Oś Y"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Obróć (wymiary mapy mogą zostać zmienione)"
+
+#~ msgid "Map Generator"
+#~ msgstr "Generator map"
+
+#~ msgid "Players:"
+#~ msgstr "Gracze:"
+
+#~ msgid "Number of Hills:"
+#~ msgstr "Liczba wzgórz:"
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "Maksymalny rozmiar wzgórza:"
+
+#~ msgid "Villages:"
+#~ msgstr "Wioski:"
+
+#~ msgid "Landform:"
+#~ msgstr "Forma lądu:"
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "Drogi między zamkami"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "/1000 pól"
+
+#~ msgid "Coastal"
+#~ msgstr "Przybrzeżny"
+
+#~ msgid "Inland"
+#~ msgstr "Śródlądzie"
+
+#~ msgid "Island"
+#~ msgstr "Wyspa"
 
 #~ msgid "Draw"
 #~ msgstr "Rysuj"

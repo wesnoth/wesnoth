@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-31 02:07+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -17,6 +17,99 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/editor/editor_dialogs.cpp:47
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr "A pályán eszközölt változások elvesznek. Folytatod?"
+
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+msgid "Create New Map"
+msgstr "Új pálya készítése"
+
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:104
+msgid "Width:"
+msgstr "Szélesség:"
+
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:105
+msgid "Height:"
+msgstr "Magasság:"
+
+#: src/editor/editor_dialogs.cpp:93
+msgid "Generate New Map"
+msgstr "Új pálya generálása"
+
+#: src/editor/editor_dialogs.cpp:94
+msgid "Generate Random Map"
+msgstr "Véletlenszerű pálya generálása"
+
+#: src/editor/editor_dialogs.cpp:95
+msgid "Random Generator Settings"
+msgstr "Véletlenszerű generálás beállításai"
+
+#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
+#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
+#: src/show_dialog.cpp:927
+msgid "Cancel"
+msgstr "Mégse"
+
+#: src/editor/editor_dialogs.cpp:181
+msgid "Map creation failed."
+msgstr "A pályakészítés sikertelen"
+
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/preferences.cpp:1335
+msgid "Close Window"
+msgstr "Ablak bezárása"
+
+#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+msgid "Scroll Speed:"
+msgstr "Görgetés sebessége:"
+
+#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/preferences.cpp:887
+msgid "Toggle Full Screen"
+msgstr "Teljes képernyős mód beállítása"
+
+#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+msgid "Show Grid"
+msgstr "Rács megjelenítése"
+
+#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+msgid "Video Mode"
+msgstr "Videó mód"
+
+#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+msgid "Hotkeys"
+msgstr "Gyorsbillentyűk"
+
+#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/hotkeys.cpp:94
+msgid "Resize Map"
+msgstr "Pálya átméretezése"
+
+#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
+#: src/show_dialog.cpp:429
+msgid "OK"
+msgstr "Oké"
+
+#: src/editor/editor_dialogs.cpp:491
+msgid "X-Axis"
+msgstr "X-tengely"
+
+#: src/editor/editor_dialogs.cpp:492
+msgid "Y-Axis"
+msgstr "Y-tengely"
+
+#: src/editor/editor_dialogs.cpp:493
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr "Tükrözés (ez megváltoztathatja a pálya méreteit):"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -57,10 +150,6 @@ msgstr "Eltávolítás"
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "Alap ráközelítés"
-
-#: src/hotkeys.cpp:55 src/preferences.cpp:887
-msgid "Toggle Full Screen"
-msgstr "Teljes képernyős mód beállítása"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
@@ -125,10 +214,6 @@ msgstr "Egység létrehozása (hibajavítás!)"
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "Egység átállítása (hibajavítás!)"
-
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
-msgid "Preferences"
-msgstr "Beállítások"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
@@ -210,10 +295,6 @@ msgstr "Beillesztés"
 msgid "Revert from Disk"
 msgstr "Visszatérés"
 
-#: src/hotkeys.cpp:94
-msgid "Resize Map"
-msgstr "Pálya átméretezése"
-
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "Pálya tükrözése"
@@ -278,6 +359,50 @@ msgstr "Biztos ki akarsz lépni?"
 msgid "Quit"
 msgstr "Kilépés"
 
+#: src/mapgen_dialog.cpp:98
+msgid "Map Generator"
+msgstr "Pályarajzoló"
+
+#: src/mapgen_dialog.cpp:103
+msgid "Players:"
+msgstr "Játékosok:"
+
+#: src/mapgen_dialog.cpp:106
+msgid "Number of Hills:"
+msgstr "Dombok száma:"
+
+#: src/mapgen_dialog.cpp:107
+msgid "Max Hill Size:"
+msgstr "Dombok maximális magassága:"
+
+#: src/mapgen_dialog.cpp:108
+msgid "Villages:"
+msgstr "Falvak:"
+
+#: src/mapgen_dialog.cpp:109
+msgid "Landform:"
+msgstr "Területforma:"
+
+#: src/mapgen_dialog.cpp:215
+msgid "Roads Between Castles"
+msgstr "Várak összekötése utakkal"
+
+#: src/mapgen_dialog.cpp:272
+msgid "/1000 tiles"
+msgstr "/1000 terület"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Coastal"
+msgstr "Tengerpart"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Inland"
+msgstr "Szárazföld"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Island"
+msgstr "Sziget"
+
 #: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -300,10 +425,6 @@ msgstr "Megnövelt sebesség"
 #: src/preferences.cpp:889
 msgid "Skip AI Moves"
 msgstr "MI lépések átugrása"
-
-#: src/preferences.cpp:890
-msgid "Show Grid"
-msgstr "Rács megjelenítése"
 
 #: src/preferences.cpp:891
 msgid "Show Floating Labels"
@@ -328,14 +449,6 @@ msgstr "Színes kurzor megjelenítése"
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "Haloing effektusok mutatása"
-
-#: src/preferences.cpp:897
-msgid "Video Mode"
-msgstr "Videó mód"
-
-#: src/preferences.cpp:898
-msgid "Hotkeys"
-msgstr "Gyorsbillentyűk"
 
 #: src/preferences.cpp:899
 msgid "Adjust Gamma"
@@ -364,10 +477,6 @@ msgstr "Hanghatások ereje"
 #: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr "Gamma:"
-
-#: src/preferences.cpp:905
-msgid "Scroll Speed:"
-msgstr "Görgetés sebessége:"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -483,10 +592,6 @@ msgstr "Nincsennek más megjelenítési módok"
 msgid "Choose Resolution"
 msgstr "Felbontás kiválasztása"
 
-#: src/preferences.cpp:1335
-msgid "Close Window"
-msgstr "Ablak bezárása"
-
 #: src/preferences.cpp:1340
 msgid "Hotkey Settings"
 msgstr "Gyorsbillentyűk beállításai"
@@ -519,10 +624,6 @@ msgstr "Ez a gyorsbillentyű már használatban van."
 msgid "Error"
 msgstr "Hiba"
 
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
-msgid "OK"
-msgstr "Oké"
-
 #: src/show_dialog.cpp:422
 msgid "Yes"
 msgstr "Igen"
@@ -530,11 +631,6 @@ msgstr "Igen"
 #: src/show_dialog.cpp:423
 msgid "No"
 msgstr "Nem"
-
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
-msgid "Cancel"
-msgstr "Mégse"
 
 #: src/show_dialog.cpp:442
 msgid "Close"

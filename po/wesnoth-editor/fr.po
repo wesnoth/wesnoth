@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-05-25 18:56+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: Language fr\n"
@@ -149,92 +149,6 @@ msgstr "Erreur : caractère illégal dans le nom du fichier."
 msgid "Player"
 msgstr "Joueur"
 
-#: src/editor/editor_dialogs.cpp:47
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Vos modifications à la carte seront perdues. Continuer ?"
-
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Créer une nouvelle carte"
-
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
-msgid "Width:"
-msgstr "Largeur :"
-
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
-msgid "Height:"
-msgstr "Hauteur :"
-
-#: src/editor/editor_dialogs.cpp:93
-msgid "Generate New Map"
-msgstr "Générer une nouvelle carte"
-
-#: src/editor/editor_dialogs.cpp:94
-msgid "Generate Random Map"
-msgstr "Générer une carte aléatoire"
-
-#: src/editor/editor_dialogs.cpp:95
-msgid "Random Generator Settings"
-msgstr "Paramètres du générateur aléatoire"
-
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-msgid "Cancel"
-msgstr "Annuler"
-
-#: src/editor/editor_dialogs.cpp:181
-msgid "Map creation failed."
-msgstr "La création de la carte a échoué."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
-msgid "Close Window"
-msgstr "Fermer la fenêtre"
-
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
-msgid "Preferences"
-msgstr "Préférences"
-
-#: src/editor/editor_dialogs.cpp:255
-msgid "Scroll Speed:"
-msgstr "Vitesse de défilement :"
-
-#: src/editor/editor_dialogs.cpp:282
-msgid "Toggle Full Screen"
-msgstr "Plein écran"
-
-#: src/editor/editor_dialogs.cpp:289
-msgid "Show Grid"
-msgstr "Afficher la Grille"
-
-#: src/editor/editor_dialogs.cpp:296
-msgid "Video Mode"
-msgstr "Mode vidéo"
-
-#: src/editor/editor_dialogs.cpp:299
-msgid "Hotkeys"
-msgstr "Raccourcis clavier"
-
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
-msgid "Resize Map"
-msgstr "Redimensionner la carte"
-
-#: src/editor/editor_dialogs.cpp:408
-msgid "OK"
-msgstr "Ok"
-
-#: src/editor/editor_dialogs.cpp:491
-msgid "X-Axis"
-msgstr "Axe X"
-
-#: src/editor/editor_dialogs.cpp:492
-msgid "Y-Axis"
-msgstr "Axe Y"
-
-#: src/editor/editor_dialogs.cpp:493
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Retourner (cela peut modifier les dimensions de la carte) :"
-
 #: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Éditeur de cartes de la bataille pour Wesnoth"
@@ -247,50 +161,6 @@ msgstr "PP"
 msgid "BG"
 msgstr "AP"
 
-#: src/mapgen_dialog.cpp:98
-msgid "Map Generator"
-msgstr "Générateur de cartes"
-
-#: src/mapgen_dialog.cpp:103
-msgid "Players:"
-msgstr "Joueurs :"
-
-#: src/mapgen_dialog.cpp:106
-msgid "Number of Hills:"
-msgstr "Nombre de collines :"
-
-#: src/mapgen_dialog.cpp:107
-msgid "Max Hill Size:"
-msgstr "Taille maximale des colines :"
-
-#: src/mapgen_dialog.cpp:108
-msgid "Villages:"
-msgstr "Villages :"
-
-#: src/mapgen_dialog.cpp:109
-msgid "Landform:"
-msgstr "Formes du terrain :"
-
-#: src/mapgen_dialog.cpp:215
-msgid "Roads Between Castles"
-msgstr "Routes entre les châteaux"
-
-#: src/mapgen_dialog.cpp:272
-msgid "/1000 tiles"
-msgstr "/1000 briques"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Coastal"
-msgstr "Côtier"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Inland"
-msgstr "Continental"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Island"
-msgstr "Insulaire"
-
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
 msgstr "Supprimer le fichier"
@@ -298,6 +168,102 @@ msgstr "Supprimer le fichier"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "La suppression du fichier a échoué."
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Vos modifications à la carte seront perdues. Continuer ?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Créer une nouvelle carte"
+
+#~ msgid "Width:"
+#~ msgstr "Largeur :"
+
+#~ msgid "Height:"
+#~ msgstr "Hauteur :"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Générer une nouvelle carte"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Générer une carte aléatoire"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Paramètres du générateur aléatoire"
+
+#~ msgid "Cancel"
+#~ msgstr "Annuler"
+
+#~ msgid "Map creation failed."
+#~ msgstr "La création de la carte a échoué."
+
+#~ msgid "Close Window"
+#~ msgstr "Fermer la fenêtre"
+
+#~ msgid "Preferences"
+#~ msgstr "Préférences"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Vitesse de défilement :"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Plein écran"
+
+#~ msgid "Show Grid"
+#~ msgstr "Afficher la Grille"
+
+#~ msgid "Video Mode"
+#~ msgstr "Mode vidéo"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Raccourcis clavier"
+
+#~ msgid "Resize Map"
+#~ msgstr "Redimensionner la carte"
+
+#~ msgid "OK"
+#~ msgstr "Ok"
+
+#~ msgid "X-Axis"
+#~ msgstr "Axe X"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Axe Y"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Retourner (cela peut modifier les dimensions de la carte) :"
+
+#~ msgid "Map Generator"
+#~ msgstr "Générateur de cartes"
+
+#~ msgid "Players:"
+#~ msgstr "Joueurs :"
+
+#~ msgid "Number of Hills:"
+#~ msgstr "Nombre de collines :"
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "Taille maximale des colines :"
+
+#~ msgid "Villages:"
+#~ msgstr "Villages :"
+
+#~ msgid "Landform:"
+#~ msgstr "Formes du terrain :"
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "Routes entre les châteaux"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "/1000 briques"
+
+#~ msgid "Coastal"
+#~ msgstr "Côtier"
+
+#~ msgid "Inland"
+#~ msgstr "Continental"
+
+#~ msgid "Island"
+#~ msgstr "Insulaire"
 
 #~ msgid "Draw"
 #~ msgstr "Tracer"

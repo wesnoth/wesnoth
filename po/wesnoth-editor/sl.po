@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ed-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2004-10-18 18:33+0200\n"
 "Last-Translator: lynx \n"
 "Language-Team:  sl\n"
@@ -152,92 +152,6 @@ msgstr "Napaka: nedovoljen znak v imenu datoteke."
 msgid "Player"
 msgstr "Igralec"
 
-#: src/editor/editor_dialogs.cpp:47
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Vaše spremembe bodo izgubljene. Nadaljujem?"
-
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Ustvari novo karto"
-
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
-msgid "Width:"
-msgstr "Širina:"
-
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
-msgid "Height:"
-msgstr "Višina:"
-
-#: src/editor/editor_dialogs.cpp:93
-msgid "Generate New Map"
-msgstr "Generiraj novo karto"
-
-#: src/editor/editor_dialogs.cpp:94
-msgid "Generate Random Map"
-msgstr "Ustvari naključno karto"
-
-#: src/editor/editor_dialogs.cpp:95
-msgid "Random Generator Settings"
-msgstr "Nastavitve generatorja naključnih kart"
-
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-msgid "Cancel"
-msgstr "Prekliči"
-
-#: src/editor/editor_dialogs.cpp:181
-msgid "Map creation failed."
-msgstr "Stvaritev karte ni uspela."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
-msgid "Close Window"
-msgstr "Zapri okno"
-
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
-msgid "Preferences"
-msgstr "Nastavitve"
-
-#: src/editor/editor_dialogs.cpp:255
-msgid "Scroll Speed:"
-msgstr "Hitrost drsenja:"
-
-#: src/editor/editor_dialogs.cpp:282
-msgid "Toggle Full Screen"
-msgstr "Celozaslonski način"
-
-#: src/editor/editor_dialogs.cpp:289
-msgid "Show Grid"
-msgstr "Prikaži mrežo"
-
-#: src/editor/editor_dialogs.cpp:296
-msgid "Video Mode"
-msgstr "Video-način"
-
-#: src/editor/editor_dialogs.cpp:299
-msgid "Hotkeys"
-msgstr "Hitre tipke"
-
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
-msgid "Resize Map"
-msgstr "Spremeni velikost karte"
-
-#: src/editor/editor_dialogs.cpp:408
-msgid "OK"
-msgstr "V redu"
-
-#: src/editor/editor_dialogs.cpp:491
-msgid "X-Axis"
-msgstr "X os"
-
-#: src/editor/editor_dialogs.cpp:492
-msgid "Y-Axis"
-msgstr "Y os"
-
-#: src/editor/editor_dialogs.cpp:493
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Obrni okoli (to lahko spremeni kartine dimenzije):"
-
 #: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Urejevalnik kart za Battle for Wesnoth"
@@ -250,50 +164,6 @@ msgstr "FG"
 msgid "BG"
 msgstr "BG"
 
-#: src/mapgen_dialog.cpp:98
-msgid "Map Generator"
-msgstr "Generator kart"
-
-#: src/mapgen_dialog.cpp:103
-msgid "Players:"
-msgstr "Igralci:"
-
-#: src/mapgen_dialog.cpp:106
-msgid "Number of Hills:"
-msgstr "Število gričev:"
-
-#: src/mapgen_dialog.cpp:107
-msgid "Max Hill Size:"
-msgstr "Največja velikost griča:"
-
-#: src/mapgen_dialog.cpp:108
-msgid "Villages:"
-msgstr "Vasi:"
-
-#: src/mapgen_dialog.cpp:109
-msgid "Landform:"
-msgstr "Oblika terena:"
-
-#: src/mapgen_dialog.cpp:215
-msgid "Roads Between Castles"
-msgstr "Ceste med gradovi"
-
-#: src/mapgen_dialog.cpp:272
-msgid "/1000 tiles"
-msgstr "/1000 plošč"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Coastal"
-msgstr "Obala"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Inland"
-msgstr "Celina"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Island"
-msgstr "Otok"
-
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
 msgstr "Zbriši datoteko"
@@ -301,3 +171,99 @@ msgstr "Zbriši datoteko"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "Izbris datoteke ni uspel."
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Vaše spremembe bodo izgubljene. Nadaljujem?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Ustvari novo karto"
+
+#~ msgid "Width:"
+#~ msgstr "Širina:"
+
+#~ msgid "Height:"
+#~ msgstr "Višina:"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Generiraj novo karto"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Ustvari naključno karto"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Nastavitve generatorja naključnih kart"
+
+#~ msgid "Cancel"
+#~ msgstr "Prekliči"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Stvaritev karte ni uspela."
+
+#~ msgid "Close Window"
+#~ msgstr "Zapri okno"
+
+#~ msgid "Preferences"
+#~ msgstr "Nastavitve"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Hitrost drsenja:"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Celozaslonski način"
+
+#~ msgid "Show Grid"
+#~ msgstr "Prikaži mrežo"
+
+#~ msgid "Video Mode"
+#~ msgstr "Video-način"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Hitre tipke"
+
+#~ msgid "Resize Map"
+#~ msgstr "Spremeni velikost karte"
+
+#~ msgid "OK"
+#~ msgstr "V redu"
+
+#~ msgid "X-Axis"
+#~ msgstr "X os"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y os"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Obrni okoli (to lahko spremeni kartine dimenzije):"
+
+#~ msgid "Map Generator"
+#~ msgstr "Generator kart"
+
+#~ msgid "Players:"
+#~ msgstr "Igralci:"
+
+#~ msgid "Number of Hills:"
+#~ msgstr "Število gričev:"
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "Največja velikost griča:"
+
+#~ msgid "Villages:"
+#~ msgstr "Vasi:"
+
+#~ msgid "Landform:"
+#~ msgstr "Oblika terena:"
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "Ceste med gradovi"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "/1000 plošč"
+
+#~ msgid "Coastal"
+#~ msgstr "Obala"
+
+#~ msgid "Inland"
+#~ msgstr "Celina"
+
+#~ msgid "Island"
+#~ msgstr "Otok"

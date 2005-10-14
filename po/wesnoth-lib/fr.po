@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-12 17:45+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: Language fr\n"
@@ -16,6 +16,99 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/editor/editor_dialogs.cpp:47
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr "Vos modifications à la carte seront perdues. Continuer ?"
+
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+msgid "Create New Map"
+msgstr "Créer une nouvelle carte"
+
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:104
+msgid "Width:"
+msgstr "Largeur :"
+
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:105
+msgid "Height:"
+msgstr "Hauteur :"
+
+#: src/editor/editor_dialogs.cpp:93
+msgid "Generate New Map"
+msgstr "Générer une nouvelle carte"
+
+#: src/editor/editor_dialogs.cpp:94
+msgid "Generate Random Map"
+msgstr "Générer une carte aléatoire"
+
+#: src/editor/editor_dialogs.cpp:95
+msgid "Random Generator Settings"
+msgstr "Paramètres du générateur aléatoire"
+
+#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
+#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
+#: src/show_dialog.cpp:927
+msgid "Cancel"
+msgstr "Annuler"
+
+#: src/editor/editor_dialogs.cpp:181
+msgid "Map creation failed."
+msgstr "La création de la carte a échoué."
+
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/preferences.cpp:1335
+msgid "Close Window"
+msgstr "Fermer la fenêtre"
+
+#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+msgid "Preferences"
+msgstr "Préférences"
+
+#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+msgid "Scroll Speed:"
+msgstr "Vitesse de défilement :"
+
+#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/preferences.cpp:887
+msgid "Toggle Full Screen"
+msgstr "Plein écran"
+
+#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+msgid "Show Grid"
+msgstr "Afficher la Grille"
+
+#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+msgid "Video Mode"
+msgstr "Mode vidéo"
+
+#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+msgid "Hotkeys"
+msgstr "Raccourcis clavier"
+
+#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/hotkeys.cpp:94
+msgid "Resize Map"
+msgstr "Redimensionner la carte"
+
+#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
+#: src/show_dialog.cpp:429
+msgid "OK"
+msgstr "Ok"
+
+#: src/editor/editor_dialogs.cpp:491
+msgid "X-Axis"
+msgstr "Axe X"
+
+#: src/editor/editor_dialogs.cpp:492
+msgid "Y-Axis"
+msgstr "Axe Y"
+
+#: src/editor/editor_dialogs.cpp:493
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr "Retourner (cela peut modifier les dimensions de la carte) :"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -56,10 +149,6 @@ msgstr "Zoom arrière"
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "Zoom par défaut"
-
-#: src/hotkeys.cpp:55 src/preferences.cpp:887
-msgid "Toggle Full Screen"
-msgstr "Plein écran"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
@@ -124,10 +213,6 @@ msgstr "Créer une unité (débug!)"
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "Changer le camp de l'unité (débug!)"
-
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
-msgid "Preferences"
-msgstr "Préférences"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
@@ -209,10 +294,6 @@ msgstr "Coller"
 msgid "Revert from Disk"
 msgstr "Revenir à la version sur disque"
 
-#: src/hotkeys.cpp:94
-msgid "Resize Map"
-msgstr "Redimensionner la carte"
-
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "Inverser la carte"
@@ -277,6 +358,56 @@ msgstr "Voulez-vous réellement quitter ?"
 msgid "Quit"
 msgstr "Quitter"
 
+#: src/mapgen_dialog.cpp:98
+msgid "Map Generator"
+msgstr "Générateur de carte"
+
+#: src/mapgen_dialog.cpp:103
+msgid "Players:"
+msgstr "Joueurs :"
+
+# césure pour interface
+#: src/mapgen_dialog.cpp:106
+msgid "Number of Hills:"
+msgstr ""
+"Nombre de\n"
+"collines :"
+
+# césure pour interface
+#: src/mapgen_dialog.cpp:107
+msgid "Max Hill Size:"
+msgstr ""
+"Taille maximum\n"
+"d'une colline :"
+
+#: src/mapgen_dialog.cpp:108
+msgid "Villages:"
+msgstr "Villages :"
+
+#: src/mapgen_dialog.cpp:109
+msgid "Landform:"
+msgstr "Type de carte :"
+
+#: src/mapgen_dialog.cpp:215
+msgid "Roads Between Castles"
+msgstr "Routes entre les châteaux"
+
+#: src/mapgen_dialog.cpp:272
+msgid "/1000 tiles"
+msgstr "/1000 cases"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Coastal"
+msgstr "Côtier"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Inland"
+msgstr "Continental"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Island"
+msgstr "Insulaire"
+
 #: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -299,10 +430,6 @@ msgstr "Turbo"
 #: src/preferences.cpp:889
 msgid "Skip AI Moves"
 msgstr "Sauter les déplacements de l'IA"
-
-#: src/preferences.cpp:890
-msgid "Show Grid"
-msgstr "Afficher la Grille"
 
 #: src/preferences.cpp:891
 msgid "Show Floating Labels"
@@ -327,14 +454,6 @@ msgstr "Utiliser les curseurs colorés"
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "Afficher les effets de halo"
-
-#: src/preferences.cpp:897
-msgid "Video Mode"
-msgstr "Mode vidéo"
-
-#: src/preferences.cpp:898
-msgid "Hotkeys"
-msgstr "Raccourcis clavier"
 
 #: src/preferences.cpp:899
 msgid "Adjust Gamma"
@@ -363,10 +482,6 @@ msgstr "Volume des effets sonores :"
 #: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr "Gamma "
-
-#: src/preferences.cpp:905
-msgid "Scroll Speed:"
-msgstr "Vitesse de défilement :"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -479,10 +594,6 @@ msgstr "Il n'y a pas d'autres modes vidéo disponibles"
 msgid "Choose Resolution"
 msgstr "Choisissez une résolution"
 
-#: src/preferences.cpp:1335
-msgid "Close Window"
-msgstr "Fermer la fenêtre"
-
 #: src/preferences.cpp:1340
 msgid "Hotkey Settings"
 msgstr "Configuration des raccourcis clavier"
@@ -515,10 +626,6 @@ msgstr "Cette touche est déjà utilisée."
 msgid "Error"
 msgstr "Erreur"
 
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
-msgid "OK"
-msgstr "Ok"
-
 #: src/show_dialog.cpp:422
 msgid "Yes"
 msgstr "Oui"
@@ -526,11 +633,6 @@ msgstr "Oui"
 #: src/show_dialog.cpp:423
 msgid "No"
 msgstr "Non"
-
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
-msgid "Cancel"
-msgstr "Annuler"
 
 #: src/show_dialog.cpp:442
 msgid "Close"

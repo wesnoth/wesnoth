@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-07 19:47+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
@@ -12,6 +12,99 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: English\n"
 "X-Poedit-Country: UNITED KINGDOM\n"
+
+#: src/editor/editor_dialogs.cpp:47
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr "Your modifications to the map will be lost. Continue?"
+
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+msgid "Create New Map"
+msgstr "Create New Map"
+
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:104
+msgid "Width:"
+msgstr "Width:"
+
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:105
+msgid "Height:"
+msgstr "Height:"
+
+#: src/editor/editor_dialogs.cpp:93
+msgid "Generate New Map"
+msgstr "Generate New Map"
+
+#: src/editor/editor_dialogs.cpp:94
+msgid "Generate Random Map"
+msgstr "Generate Random Map"
+
+#: src/editor/editor_dialogs.cpp:95
+msgid "Random Generator Settings"
+msgstr "Random Generator Settings"
+
+#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
+#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
+#: src/show_dialog.cpp:927
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/editor/editor_dialogs.cpp:181
+msgid "Map creation failed."
+msgstr "Map creation failed."
+
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/preferences.cpp:1335
+msgid "Close Window"
+msgstr "Close Window"
+
+#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+msgid "Preferences"
+msgstr "Preferences"
+
+#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+msgid "Scroll Speed:"
+msgstr "Scroll Speed:"
+
+#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/preferences.cpp:887
+msgid "Toggle Full Screen"
+msgstr "Toggle Full Screen"
+
+#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+msgid "Show Grid"
+msgstr "Show Grid"
+
+#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+msgid "Video Mode"
+msgstr "Video Mode"
+
+#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+msgid "Hotkeys"
+msgstr "Hotkeys"
+
+#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/hotkeys.cpp:94
+msgid "Resize Map"
+msgstr "Resize Map"
+
+#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
+#: src/show_dialog.cpp:429
+msgid "OK"
+msgstr "OK"
+
+#: src/editor/editor_dialogs.cpp:491
+msgid "X-Axis"
+msgstr "X-Axis"
+
+#: src/editor/editor_dialogs.cpp:492
+msgid "Y-Axis"
+msgstr "Y-Axis"
+
+#: src/editor/editor_dialogs.cpp:493
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr "Flip around (this may change the dimensions of the map):"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -52,10 +145,6 @@ msgstr "Zoom Out"
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "Default Zoom:"
-
-#: src/hotkeys.cpp:55 src/preferences.cpp:887
-msgid "Toggle Full Screen"
-msgstr "Toggle Full Screen"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
@@ -120,10 +209,6 @@ msgstr "Create Unit (Debug!)"
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "Change Unit Side (Debug!)"
-
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
-msgid "Preferences"
-msgstr "Preferences"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
@@ -205,10 +290,6 @@ msgstr "Paste"
 msgid "Revert from Disk"
 msgstr "Revert from Disk"
 
-#: src/hotkeys.cpp:94
-msgid "Resize Map"
-msgstr "Resize Map"
-
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "Flip Map"
@@ -273,6 +354,50 @@ msgstr "Do you really want to quit?"
 msgid "Quit"
 msgstr "Quit"
 
+#: src/mapgen_dialog.cpp:98
+msgid "Map Generator"
+msgstr "Map Generator"
+
+#: src/mapgen_dialog.cpp:103
+msgid "Players:"
+msgstr "Players:"
+
+#: src/mapgen_dialog.cpp:106
+msgid "Number of Hills:"
+msgstr "Number of Hills:"
+
+#: src/mapgen_dialog.cpp:107
+msgid "Max Hill Size:"
+msgstr "Max Hill Size:"
+
+#: src/mapgen_dialog.cpp:108
+msgid "Villages:"
+msgstr "Villages:"
+
+#: src/mapgen_dialog.cpp:109
+msgid "Landform:"
+msgstr "Landform:"
+
+#: src/mapgen_dialog.cpp:215
+msgid "Roads Between Castles"
+msgstr "Roads Between Castles"
+
+#: src/mapgen_dialog.cpp:272
+msgid "/1000 tiles"
+msgstr "/1000 tiles"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Coastal"
+msgstr "Coastal"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Inland"
+msgstr "Inland"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Island"
+msgstr "Island"
+
 #: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -294,10 +419,6 @@ msgstr "Accelerated Speed"
 #: src/preferences.cpp:889
 msgid "Skip AI Moves"
 msgstr "Skip AI Moves"
-
-#: src/preferences.cpp:890
-msgid "Show Grid"
-msgstr "Show Grid"
 
 #: src/preferences.cpp:891
 msgid "Show Floating Labels"
@@ -322,14 +443,6 @@ msgstr "Show Colour Cursors"
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "Show Haloing Effects"
-
-#: src/preferences.cpp:897
-msgid "Video Mode"
-msgstr "Video Mode"
-
-#: src/preferences.cpp:898
-msgid "Hotkeys"
-msgstr "Hotkeys"
 
 #: src/preferences.cpp:899
 msgid "Adjust Gamma"
@@ -358,10 +471,6 @@ msgstr "SFX Volume:"
 #: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr "Gamma:"
-
-#: src/preferences.cpp:905
-msgid "Scroll Speed:"
-msgstr "Scroll Speed:"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -475,10 +584,6 @@ msgstr "There are no alternative video modes available"
 msgid "Choose Resolution"
 msgstr "Choose Resolution"
 
-#: src/preferences.cpp:1335
-msgid "Close Window"
-msgstr "Close Window"
-
 #: src/preferences.cpp:1340
 msgid "Hotkey Settings"
 msgstr "Hotkey Settings"
@@ -511,10 +616,6 @@ msgstr "This Hotkey is already in use."
 msgid "Error"
 msgstr "Error"
 
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
-msgid "OK"
-msgstr "OK"
-
 #: src/show_dialog.cpp:422
 msgid "Yes"
 msgstr "Yes"
@@ -522,11 +623,6 @@ msgstr "Yes"
 #: src/show_dialog.cpp:423
 msgid "No"
 msgstr "No"
-
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
-msgid "Cancel"
-msgstr "Cancel"
 
 #: src/show_dialog.cpp:442
 msgid "Close"

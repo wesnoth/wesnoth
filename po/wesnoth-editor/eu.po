@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-10 17:05+0200\n"
 "Last-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\n"
 "Language-Team: Basque\n"
@@ -148,92 +148,6 @@ msgstr "Errorea: Karaketere ilgeala fitxategi izenean."
 msgid "Player"
 msgstr "Jokalaria"
 
-#: src/editor/editor_dialogs.cpp:47
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Mapan egin dituzun aldaketak galdu egingo dira. Jarraitu?"
-
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Mapa berria egin"
-
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
-msgid "Width:"
-msgstr "Zabalera:"
-
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
-msgid "Height:"
-msgstr "Altuera:"
-
-#: src/editor/editor_dialogs.cpp:93
-msgid "Generate New Map"
-msgstr "Mapa berria sortu"
-
-#: src/editor/editor_dialogs.cpp:94
-msgid "Generate Random Map"
-msgstr "Ausazko mapa sortu"
-
-#: src/editor/editor_dialogs.cpp:95
-msgid "Random Generator Settings"
-msgstr "Ausazko sortzailearen ezarpenak"
-
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-msgid "Cancel"
-msgstr "Utzi"
-
-#: src/editor/editor_dialogs.cpp:181
-msgid "Map creation failed."
-msgstr "Maparen sorrera hutsegin du."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
-msgid "Close Window"
-msgstr "Itxi leihoa"
-
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
-msgid "Preferences"
-msgstr "Hobespenak"
-
-#: src/editor/editor_dialogs.cpp:255
-msgid "Scroll Speed:"
-msgstr "Korritze abiadura:"
-
-#: src/editor/editor_dialogs.cpp:282
-msgid "Toggle Full Screen"
-msgstr "Pantaila osora aldatu"
-
-#: src/editor/editor_dialogs.cpp:289
-msgid "Show Grid"
-msgstr "Erakutsi sareta"
-
-#: src/editor/editor_dialogs.cpp:296
-msgid "Video Mode"
-msgstr "Bideo modua"
-
-#: src/editor/editor_dialogs.cpp:299
-msgid "Hotkeys"
-msgstr "Lasterbideak"
-
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
-msgid "Resize Map"
-msgstr "Maparen tamaina aldatu"
-
-#: src/editor/editor_dialogs.cpp:408
-msgid "OK"
-msgstr "Ados"
-
-#: src/editor/editor_dialogs.cpp:491
-msgid "X-Axis"
-msgstr "X ardatza"
-
-#: src/editor/editor_dialogs.cpp:492
-msgid "Y-Axis"
-msgstr "Y ardatza"
-
-#: src/editor/editor_dialogs.cpp:493
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Irauli (honek maparen tamaina alda dezake):"
-
 #: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Battle of Wesnoth-en mapa editorea"
@@ -246,50 +160,6 @@ msgstr "Aurrean"
 msgid "BG"
 msgstr "Atzean"
 
-#: src/mapgen_dialog.cpp:98
-msgid "Map Generator"
-msgstr "Mapa sortzailea"
-
-#: src/mapgen_dialog.cpp:103
-msgid "Players:"
-msgstr "Jokalariak:"
-
-#: src/mapgen_dialog.cpp:106
-msgid "Number of Hills:"
-msgstr "Mendiska kopurua"
-
-#: src/mapgen_dialog.cpp:107
-msgid "Max Hill Size:"
-msgstr "Mendiskaren gehiengo tamainua:"
-
-#: src/mapgen_dialog.cpp:108
-msgid "Villages:"
-msgstr "Herrixkak:"
-
-#: src/mapgen_dialog.cpp:109
-msgid "Landform:"
-msgstr "Terreno mota:"
-
-#: src/mapgen_dialog.cpp:215
-msgid "Roads Between Castles"
-msgstr "Gazteluen arteko errepideak"
-
-#: src/mapgen_dialog.cpp:272
-msgid "/1000 tiles"
-msgstr "/1000 mosaiko"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Coastal"
-msgstr "Kosta"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Inland"
-msgstr "Barrukaldea"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Island"
-msgstr "Irla"
-
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
 msgstr "Fitxategia Ezabatu"
@@ -297,6 +167,102 @@ msgstr "Fitxategia Ezabatu"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "Hutsegitea fitxategia gordetzean."
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Mapan egin dituzun aldaketak galdu egingo dira. Jarraitu?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Mapa berria egin"
+
+#~ msgid "Width:"
+#~ msgstr "Zabalera:"
+
+#~ msgid "Height:"
+#~ msgstr "Altuera:"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Mapa berria sortu"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Ausazko mapa sortu"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Ausazko sortzailearen ezarpenak"
+
+#~ msgid "Cancel"
+#~ msgstr "Utzi"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Maparen sorrera hutsegin du."
+
+#~ msgid "Close Window"
+#~ msgstr "Itxi leihoa"
+
+#~ msgid "Preferences"
+#~ msgstr "Hobespenak"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Korritze abiadura:"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Pantaila osora aldatu"
+
+#~ msgid "Show Grid"
+#~ msgstr "Erakutsi sareta"
+
+#~ msgid "Video Mode"
+#~ msgstr "Bideo modua"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Lasterbideak"
+
+#~ msgid "Resize Map"
+#~ msgstr "Maparen tamaina aldatu"
+
+#~ msgid "OK"
+#~ msgstr "Ados"
+
+#~ msgid "X-Axis"
+#~ msgstr "X ardatza"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y ardatza"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Irauli (honek maparen tamaina alda dezake):"
+
+#~ msgid "Map Generator"
+#~ msgstr "Mapa sortzailea"
+
+#~ msgid "Players:"
+#~ msgstr "Jokalariak:"
+
+#~ msgid "Number of Hills:"
+#~ msgstr "Mendiska kopurua"
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "Mendiskaren gehiengo tamainua:"
+
+#~ msgid "Villages:"
+#~ msgstr "Herrixkak:"
+
+#~ msgid "Landform:"
+#~ msgstr "Terreno mota:"
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "Gazteluen arteko errepideak"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "/1000 mosaiko"
+
+#~ msgid "Coastal"
+#~ msgstr "Kosta"
+
+#~ msgid "Inland"
+#~ msgstr "Barrukaldea"
+
+#~ msgid "Island"
+#~ msgstr "Irla"
 
 #~ msgid "Draw"
 #~ msgstr "Marraztu"

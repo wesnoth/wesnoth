@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-12 20:31+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -144,92 +144,6 @@ msgstr "Hiba: A fájlnév érvénytelen karaktert tartalmaz."
 msgid "Player"
 msgstr "Játékos"
 
-#: src/editor/editor_dialogs.cpp:47
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "A pályán eszközölt változások elvesznek. Folytatod?"
-
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Új pálya készítése"
-
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
-msgid "Width:"
-msgstr "Szélesség:"
-
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
-msgid "Height:"
-msgstr "Magasság:"
-
-#: src/editor/editor_dialogs.cpp:93
-msgid "Generate New Map"
-msgstr "Új pálya generálása"
-
-#: src/editor/editor_dialogs.cpp:94
-msgid "Generate Random Map"
-msgstr "Véletlenszerű pálya generálása"
-
-#: src/editor/editor_dialogs.cpp:95
-msgid "Random Generator Settings"
-msgstr "Véletlenszerű generálás beállításai"
-
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-msgid "Cancel"
-msgstr "Mégse"
-
-#: src/editor/editor_dialogs.cpp:181
-msgid "Map creation failed."
-msgstr "A pályakészítés sikertelen"
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
-msgid "Close Window"
-msgstr "Ablak bezárása"
-
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
-msgid "Preferences"
-msgstr "Beállítások"
-
-#: src/editor/editor_dialogs.cpp:255
-msgid "Scroll Speed:"
-msgstr "Görgetési sebesség:"
-
-#: src/editor/editor_dialogs.cpp:282
-msgid "Toggle Full Screen"
-msgstr "Teljes képernyős mód beállítása"
-
-#: src/editor/editor_dialogs.cpp:289
-msgid "Show Grid"
-msgstr "Rács mutatása"
-
-#: src/editor/editor_dialogs.cpp:296
-msgid "Video Mode"
-msgstr "Videó mód"
-
-#: src/editor/editor_dialogs.cpp:299
-msgid "Hotkeys"
-msgstr "Gyorsbillentyűk"
-
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
-msgid "Resize Map"
-msgstr "Pálya átméretezése"
-
-#: src/editor/editor_dialogs.cpp:408
-msgid "OK"
-msgstr "Oké"
-
-#: src/editor/editor_dialogs.cpp:491
-msgid "X-Axis"
-msgstr "X-tengely"
-
-#: src/editor/editor_dialogs.cpp:492
-msgid "Y-Axis"
-msgstr "Y-tengely"
-
-#: src/editor/editor_dialogs.cpp:493
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Tükrözés (ez megváltoztathatja a pálya méreteit):"
-
 #: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Harc Wesnoth-ért Pályaszerkesztő"
@@ -242,50 +156,6 @@ msgstr "Bal gomb"
 msgid "BG"
 msgstr "Jobb gomb"
 
-#: src/mapgen_dialog.cpp:98
-msgid "Map Generator"
-msgstr "Pályarajzoló"
-
-#: src/mapgen_dialog.cpp:103
-msgid "Players:"
-msgstr "Játékos:"
-
-#: src/mapgen_dialog.cpp:106
-msgid "Number of Hills:"
-msgstr "Dombok száma"
-
-#: src/mapgen_dialog.cpp:107
-msgid "Max Hill Size:"
-msgstr "Dombok maximális mérete:"
-
-#: src/mapgen_dialog.cpp:108
-msgid "Villages:"
-msgstr "Falvak:"
-
-#: src/mapgen_dialog.cpp:109
-msgid "Landform:"
-msgstr "Területforma"
-
-#: src/mapgen_dialog.cpp:215
-msgid "Roads Between Castles"
-msgstr "Várak összekötése utakkal"
-
-#: src/mapgen_dialog.cpp:272
-msgid "/1000 tiles"
-msgstr "/1000 terület"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Coastal"
-msgstr "Tengerpart"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Inland"
-msgstr "Szárazföld"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Island"
-msgstr "Sziget"
-
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
 msgstr "Fájl törlése"
@@ -293,6 +163,102 @@ msgstr "Fájl törlése"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "A fájl törlése sikertelen"
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "A pályán eszközölt változások elvesznek. Folytatod?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Új pálya készítése"
+
+#~ msgid "Width:"
+#~ msgstr "Szélesség:"
+
+#~ msgid "Height:"
+#~ msgstr "Magasság:"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Új pálya generálása"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Véletlenszerű pálya generálása"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Véletlenszerű generálás beállításai"
+
+#~ msgid "Cancel"
+#~ msgstr "Mégse"
+
+#~ msgid "Map creation failed."
+#~ msgstr "A pályakészítés sikertelen"
+
+#~ msgid "Close Window"
+#~ msgstr "Ablak bezárása"
+
+#~ msgid "Preferences"
+#~ msgstr "Beállítások"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Görgetési sebesség:"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Teljes képernyős mód beállítása"
+
+#~ msgid "Show Grid"
+#~ msgstr "Rács mutatása"
+
+#~ msgid "Video Mode"
+#~ msgstr "Videó mód"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Gyorsbillentyűk"
+
+#~ msgid "Resize Map"
+#~ msgstr "Pálya átméretezése"
+
+#~ msgid "OK"
+#~ msgstr "Oké"
+
+#~ msgid "X-Axis"
+#~ msgstr "X-tengely"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y-tengely"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Tükrözés (ez megváltoztathatja a pálya méreteit):"
+
+#~ msgid "Map Generator"
+#~ msgstr "Pályarajzoló"
+
+#~ msgid "Players:"
+#~ msgstr "Játékos:"
+
+#~ msgid "Number of Hills:"
+#~ msgstr "Dombok száma"
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "Dombok maximális mérete:"
+
+#~ msgid "Villages:"
+#~ msgstr "Falvak:"
+
+#~ msgid "Landform:"
+#~ msgstr "Területforma"
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "Várak összekötése utakkal"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "/1000 terület"
+
+#~ msgid "Coastal"
+#~ msgstr "Tengerpart"
+
+#~ msgid "Inland"
+#~ msgstr "Szárazföld"
+
+#~ msgid "Island"
+#~ msgstr "Sziget"
 
 #~ msgid "Draw"
 #~ msgstr "Rajzol"

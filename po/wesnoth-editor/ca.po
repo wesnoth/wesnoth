@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-10 21:44+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
@@ -148,92 +148,6 @@ msgstr "Error: caràcters invàlids al nom del fitxer."
 msgid "Player"
 msgstr "Jugador"
 
-#: src/editor/editor_dialogs.cpp:47
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Les vostres modificacions del mapa es perdran. Voleu continuar?"
-
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Nou mapa"
-
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
-msgid "Width:"
-msgstr "Amplada:"
-
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
-msgid "Height:"
-msgstr "Alçada:"
-
-#: src/editor/editor_dialogs.cpp:93
-msgid "Generate New Map"
-msgstr "Genera nou mapa"
-
-#: src/editor/editor_dialogs.cpp:94
-msgid "Generate Random Map"
-msgstr "Genera mapa aleatori"
-
-#: src/editor/editor_dialogs.cpp:95
-msgid "Random Generator Settings"
-msgstr "Paràmetres del generador aleatori"
-
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-msgid "Cancel"
-msgstr "Cancel·la"
-
-#: src/editor/editor_dialogs.cpp:181
-msgid "Map creation failed."
-msgstr "La creació del mapa ha fallat."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
-msgid "Close Window"
-msgstr "Tanca finestra"
-
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
-msgid "Preferences"
-msgstr "Preferències"
-
-#: src/editor/editor_dialogs.cpp:255
-msgid "Scroll Speed:"
-msgstr "Velocitat de desplaçament:"
-
-#: src/editor/editor_dialogs.cpp:282
-msgid "Toggle Full Screen"
-msgstr "Mostra pantalla completa"
-
-#: src/editor/editor_dialogs.cpp:289
-msgid "Show Grid"
-msgstr "Mostra graella"
-
-#: src/editor/editor_dialogs.cpp:296
-msgid "Video Mode"
-msgstr "Mode de vídeo"
-
-#: src/editor/editor_dialogs.cpp:299
-msgid "Hotkeys"
-msgstr "Dreceres de teclat"
-
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
-msgid "Resize Map"
-msgstr "Redimensiona el mapa"
-
-#: src/editor/editor_dialogs.cpp:408
-msgid "OK"
-msgstr "D'acord"
-
-#: src/editor/editor_dialogs.cpp:491
-msgid "X-Axis"
-msgstr "Eix X"
-
-#: src/editor/editor_dialogs.cpp:492
-msgid "Y-Axis"
-msgstr "Eix Y"
-
-#: src/editor/editor_dialogs.cpp:493
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Inverteix (pot canviar les dimensions del mapa):"
-
 #: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Editor de mapes de Batalla per Wesnoth"
@@ -246,50 +160,6 @@ msgstr "PP"
 msgid "BG"
 msgstr "SP"
 
-#: src/mapgen_dialog.cpp:98
-msgid "Map Generator"
-msgstr "Generador de mapes"
-
-#: src/mapgen_dialog.cpp:103
-msgid "Players:"
-msgstr "Jugadors:"
-
-#: src/mapgen_dialog.cpp:106
-msgid "Number of Hills:"
-msgstr "Nombre de colls:"
-
-#: src/mapgen_dialog.cpp:107
-msgid "Max Hill Size:"
-msgstr "Mida màxima dels colls:"
-
-#: src/mapgen_dialog.cpp:108
-msgid "Villages:"
-msgstr "Llogarets:"
-
-#: src/mapgen_dialog.cpp:109
-msgid "Landform:"
-msgstr "Perfil:"
-
-#: src/mapgen_dialog.cpp:215
-msgid "Roads Between Castles"
-msgstr "Camí entre castells"
-
-#: src/mapgen_dialog.cpp:272
-msgid "/1000 tiles"
-msgstr "cada 1000 hexàgons"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Coastal"
-msgstr "Costaner"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Inland"
-msgstr "Interior"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Island"
-msgstr "Illa"
-
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
 msgstr "Suprimeix fitxer"
@@ -297,3 +167,99 @@ msgstr "Suprimeix fitxer"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "No ha estat possible esborrar el fitxer."
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Les vostres modificacions del mapa es perdran. Voleu continuar?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Nou mapa"
+
+#~ msgid "Width:"
+#~ msgstr "Amplada:"
+
+#~ msgid "Height:"
+#~ msgstr "Alçada:"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Genera nou mapa"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Genera mapa aleatori"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Paràmetres del generador aleatori"
+
+#~ msgid "Cancel"
+#~ msgstr "Cancel·la"
+
+#~ msgid "Map creation failed."
+#~ msgstr "La creació del mapa ha fallat."
+
+#~ msgid "Close Window"
+#~ msgstr "Tanca finestra"
+
+#~ msgid "Preferences"
+#~ msgstr "Preferències"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Velocitat de desplaçament:"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Mostra pantalla completa"
+
+#~ msgid "Show Grid"
+#~ msgstr "Mostra graella"
+
+#~ msgid "Video Mode"
+#~ msgstr "Mode de vídeo"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Dreceres de teclat"
+
+#~ msgid "Resize Map"
+#~ msgstr "Redimensiona el mapa"
+
+#~ msgid "OK"
+#~ msgstr "D'acord"
+
+#~ msgid "X-Axis"
+#~ msgstr "Eix X"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Eix Y"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Inverteix (pot canviar les dimensions del mapa):"
+
+#~ msgid "Map Generator"
+#~ msgstr "Generador de mapes"
+
+#~ msgid "Players:"
+#~ msgstr "Jugadors:"
+
+#~ msgid "Number of Hills:"
+#~ msgstr "Nombre de colls:"
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "Mida màxima dels colls:"
+
+#~ msgid "Villages:"
+#~ msgstr "Llogarets:"
+
+#~ msgid "Landform:"
+#~ msgstr "Perfil:"
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "Camí entre castells"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "cada 1000 hexàgons"
+
+#~ msgid "Coastal"
+#~ msgstr "Costaner"
+
+#~ msgid "Inland"
+#~ msgstr "Interior"
+
+#~ msgid "Island"
+#~ msgstr "Illa"

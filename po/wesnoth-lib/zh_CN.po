@@ -7,13 +7,108 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-10-11 20:53-0000\n"
 "Last-Translator: firen <qinhy@163.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/editor/editor_dialogs.cpp:47
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+#, fuzzy
+msgid "Create New Map"
+msgstr "新地图"
+
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:104
+msgid "Width:"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:105
+msgid "Height:"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:93
+#, fuzzy
+msgid "Generate New Map"
+msgstr "新地图"
+
+#: src/editor/editor_dialogs.cpp:94
+msgid "Generate Random Map"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:95
+msgid "Random Generator Settings"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
+#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
+#: src/show_dialog.cpp:927
+msgid "Cancel"
+msgstr "取消"
+
+#: src/editor/editor_dialogs.cpp:181
+msgid "Map creation failed."
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/preferences.cpp:1335
+msgid "Close Window"
+msgstr "关闭窗口"
+
+#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+msgid "Preferences"
+msgstr "选项"
+
+#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+msgid "Scroll Speed:"
+msgstr "卷屏速度"
+
+#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/preferences.cpp:887
+msgid "Toggle Full Screen"
+msgstr "开/关全屏"
+
+#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+msgid "Show Grid"
+msgstr "显示网格"
+
+#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+msgid "Video Mode"
+msgstr "视频模式"
+
+#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+msgid "Hotkeys"
+msgstr "快捷键"
+
+#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/hotkeys.cpp:94
+msgid "Resize Map"
+msgstr "改变地图大小"
+
+#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
+#: src/show_dialog.cpp:429
+msgid "OK"
+msgstr "成功"
+
+#: src/editor/editor_dialogs.cpp:491
+msgid "X-Axis"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:492
+msgid "Y-Axis"
+msgstr ""
+
+#: src/editor/editor_dialogs.cpp:493
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr ""
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -54,10 +149,6 @@ msgstr "缩小"
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "缺省大小"
-
-#: src/hotkeys.cpp:55 src/preferences.cpp:887
-msgid "Toggle Full Screen"
-msgstr "开/关全屏"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
@@ -122,10 +213,6 @@ msgstr "创建单位(Debug!)"
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "改变单位阵营(Debug!)"
-
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
-msgid "Preferences"
-msgstr "选项"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
@@ -208,10 +295,6 @@ msgstr "粘贴"
 msgid "Revert from Disk"
 msgstr "重新读取文件"
 
-#: src/hotkeys.cpp:94
-msgid "Resize Map"
-msgstr "改变地图大小"
-
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "翻转地图"
@@ -276,6 +359,51 @@ msgstr "您要退出吗？"
 msgid "Quit"
 msgstr "退出"
 
+#: src/mapgen_dialog.cpp:98
+msgid "Map Generator"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:103
+#, fuzzy
+msgid "Players:"
+msgstr "玩家"
+
+#: src/mapgen_dialog.cpp:106
+msgid "Number of Hills:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:107
+msgid "Max Hill Size:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:108
+msgid "Villages:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:109
+msgid "Landform:"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:215
+msgid "Roads Between Castles"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:272
+msgid "/1000 tiles"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:277
+msgid "Coastal"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:277
+msgid "Inland"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:277
+msgid "Island"
+msgstr ""
+
 #: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -296,10 +424,6 @@ msgstr "加速"
 #: src/preferences.cpp:889
 msgid "Skip AI Moves"
 msgstr "略过电脑的移动"
-
-#: src/preferences.cpp:890
-msgid "Show Grid"
-msgstr "显示网格"
 
 #: src/preferences.cpp:891
 msgid "Show Floating Labels"
@@ -324,14 +448,6 @@ msgstr "显示彩色光标"
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "现实光晕效果"
-
-#: src/preferences.cpp:897
-msgid "Video Mode"
-msgstr "视频模式"
-
-#: src/preferences.cpp:898
-msgid "Hotkeys"
-msgstr "快捷键"
 
 #: src/preferences.cpp:899
 msgid "Adjust Gamma"
@@ -360,10 +476,6 @@ msgstr "音效音量"
 #: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr "亮度："
-
-#: src/preferences.cpp:905
-msgid "Scroll Speed:"
-msgstr "卷屏速度"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -475,10 +587,6 @@ msgstr "没有可用的其他显示模式"
 msgid "Choose Resolution"
 msgstr "切换分辨率"
 
-#: src/preferences.cpp:1335
-msgid "Close Window"
-msgstr "关闭窗口"
-
 #: src/preferences.cpp:1340
 msgid "Hotkey Settings"
 msgstr "快捷键设定"
@@ -511,10 +619,6 @@ msgstr "此快捷键已经被使用"
 msgid "Error"
 msgstr "错误"
 
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
-msgid "OK"
-msgstr "成功"
-
 #: src/show_dialog.cpp:422
 msgid "Yes"
 msgstr "是"
@@ -522,11 +626,6 @@ msgstr "是"
 #: src/show_dialog.cpp:423
 msgid "No"
 msgstr "否"
-
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
-msgid "Cancel"
-msgstr "取消"
 
 #: src/show_dialog.cpp:442
 msgid "Close"

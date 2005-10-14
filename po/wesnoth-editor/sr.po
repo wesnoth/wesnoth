@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-06-05 14:49-0600\n"
 "Last-Translator: Srecko Toroman <sreckotoroman@gmail.com>\n"
 "Language-Team: none\n"
@@ -152,92 +152,6 @@ msgstr ""
 msgid "Player"
 msgstr "Играч"
 
-#: src/editor/editor_dialogs.cpp:47
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Ваше промене на мапи ће бити изгубљене. Наставити?"
-
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Направи Нову Мапу"
-
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
-msgid "Width:"
-msgstr "Ширина:"
-
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
-msgid "Height:"
-msgstr "Висина:"
-
-#: src/editor/editor_dialogs.cpp:93
-msgid "Generate New Map"
-msgstr "Генериши Нову Мапу"
-
-#: src/editor/editor_dialogs.cpp:94
-msgid "Generate Random Map"
-msgstr "Генериши Случајну Мапу"
-
-#: src/editor/editor_dialogs.cpp:95
-msgid "Random Generator Settings"
-msgstr "Поставке Генератора Случајних Мапа"
-
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-msgid "Cancel"
-msgstr "Обустави"
-
-#: src/editor/editor_dialogs.cpp:181
-msgid "Map creation failed."
-msgstr "Прављење мапе није успело."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
-msgid "Close Window"
-msgstr "Затвори Прозор"
-
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
-msgid "Preferences"
-msgstr "Поставке"
-
-#: src/editor/editor_dialogs.cpp:255
-msgid "Scroll Speed:"
-msgstr "Брзина Превлачења:"
-
-#: src/editor/editor_dialogs.cpp:282
-msgid "Toggle Full Screen"
-msgstr "Приказ преко целог Екрана"
-
-#: src/editor/editor_dialogs.cpp:289
-msgid "Show Grid"
-msgstr "Прикажи Мрежу"
-
-#: src/editor/editor_dialogs.cpp:296
-msgid "Video Mode"
-msgstr "Видео Мод"
-
-#: src/editor/editor_dialogs.cpp:299
-msgid "Hotkeys"
-msgstr "Пречице"
-
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
-msgid "Resize Map"
-msgstr "Промени Величину Мапе"
-
-#: src/editor/editor_dialogs.cpp:408
-msgid "OK"
-msgstr "Уреду"
-
-#: src/editor/editor_dialogs.cpp:491
-msgid "X-Axis"
-msgstr "X-Оса"
-
-#: src/editor/editor_dialogs.cpp:492
-msgid "Y-Axis"
-msgstr "Y-Оса"
-
-#: src/editor/editor_dialogs.cpp:493
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Окрени около (ово може да промени димензије мапе):"
-
 #: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr ""
@@ -250,51 +164,6 @@ msgstr "Лице"
 msgid "BG"
 msgstr "Позадина"
 
-#: src/mapgen_dialog.cpp:98
-msgid "Map Generator"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:103
-#, fuzzy
-msgid "Players:"
-msgstr "Играч"
-
-#: src/mapgen_dialog.cpp:106
-msgid "Number of Hills:"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:107
-msgid "Max Hill Size:"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:108
-msgid "Villages:"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:109
-msgid "Landform:"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:215
-msgid "Roads Between Castles"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:272
-msgid "/1000 tiles"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:277
-msgid "Coastal"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:277
-msgid "Inland"
-msgstr ""
-
-#: src/mapgen_dialog.cpp:277
-msgid "Island"
-msgstr ""
-
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
 msgstr "Избриши Фајл"
@@ -302,6 +171,73 @@ msgstr "Избриши Фајл"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "Брисање фајла није успело."
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Ваше промене на мапи ће бити изгубљене. Наставити?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Направи Нову Мапу"
+
+#~ msgid "Width:"
+#~ msgstr "Ширина:"
+
+#~ msgid "Height:"
+#~ msgstr "Висина:"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Генериши Нову Мапу"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Генериши Случајну Мапу"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Поставке Генератора Случајних Мапа"
+
+#~ msgid "Cancel"
+#~ msgstr "Обустави"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Прављење мапе није успело."
+
+#~ msgid "Close Window"
+#~ msgstr "Затвори Прозор"
+
+#~ msgid "Preferences"
+#~ msgstr "Поставке"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Брзина Превлачења:"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Приказ преко целог Екрана"
+
+#~ msgid "Show Grid"
+#~ msgstr "Прикажи Мрежу"
+
+#~ msgid "Video Mode"
+#~ msgstr "Видео Мод"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Пречице"
+
+#~ msgid "Resize Map"
+#~ msgstr "Промени Величину Мапе"
+
+#~ msgid "OK"
+#~ msgstr "Уреду"
+
+#~ msgid "X-Axis"
+#~ msgstr "X-Оса"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y-Оса"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Окрени около (ово може да промени димензије мапе):"
+
+#, fuzzy
+#~ msgid "Players:"
+#~ msgstr "Играч"
 
 #~ msgid "Draw"
 #~ msgstr "Цртај"

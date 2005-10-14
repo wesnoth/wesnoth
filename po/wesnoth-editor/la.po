@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.0.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-25 20:53+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -149,92 +149,6 @@ msgstr "Mendum: Littera illicita in nomini pligae."
 msgid "Player"
 msgstr "Lusor"
 
-#: src/editor/editor_dialogs.cpp:47
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Mutationes tuae ad chartam perdentur. Visne pergere?"
-
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Novam Chartam Creare"
-
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
-msgid "Width:"
-msgstr "Amplitudo:"
-
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
-msgid "Height:"
-msgstr "Altitudo:"
-
-#: src/editor/editor_dialogs.cpp:93
-msgid "Generate New Map"
-msgstr "Chartam Novam Generare"
-
-#: src/editor/editor_dialogs.cpp:94
-msgid "Generate Random Map"
-msgstr "Chartam Fortuitam Generare"
-
-#: src/editor/editor_dialogs.cpp:95
-msgid "Random Generator Settings"
-msgstr "Impostationes Generatoris Fortuiti"
-
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-msgid "Cancel"
-msgstr "Abrogare"
-
-#: src/editor/editor_dialogs.cpp:181
-msgid "Map creation failed."
-msgstr "Creatio chartae fefellit."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
-msgid "Close Window"
-msgstr "Fenestram Claudere"
-
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
-msgid "Preferences"
-msgstr "Impostationes"
-
-#: src/editor/editor_dialogs.cpp:255
-msgid "Scroll Speed:"
-msgstr "Velocitas Gyri:"
-
-#: src/editor/editor_dialogs.cpp:282
-msgid "Toggle Full Screen"
-msgstr "Scrinium Totum/In Fenestra"
-
-#: src/editor/editor_dialogs.cpp:289
-msgid "Show Grid"
-msgstr "Rete Monstrare"
-
-#: src/editor/editor_dialogs.cpp:296
-msgid "Video Mode"
-msgstr "Modus Visivus"
-
-#: src/editor/editor_dialogs.cpp:299
-msgid "Hotkeys"
-msgstr "Claves Notarum"
-
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
-msgid "Resize Map"
-msgstr "Magnitudinem Chartae Mutare"
-
-#: src/editor/editor_dialogs.cpp:408
-msgid "OK"
-msgstr "Bene"
-
-#: src/editor/editor_dialogs.cpp:491
-msgid "X-Axis"
-msgstr "Axis X"
-
-#: src/editor/editor_dialogs.cpp:492
-msgid "Y-Axis"
-msgstr "Axis Y"
-
-#: src/editor/editor_dialogs.cpp:493
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Volvi (hoc dimensiones chartae mutare potest)"
-
 #: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Recensor Chartarum Proelii pro Occidiseptentrione"
@@ -247,50 +161,6 @@ msgstr "Eminentia"
 msgid "BG"
 msgstr "Recessus"
 
-#: src/mapgen_dialog.cpp:98
-msgid "Map Generator"
-msgstr "Generator Chartarum"
-
-#: src/mapgen_dialog.cpp:103
-msgid "Players:"
-msgstr "Lusores:"
-
-#: src/mapgen_dialog.cpp:106
-msgid "Number of Hills:"
-msgstr "Numerus Collum:"
-
-#: src/mapgen_dialog.cpp:107
-msgid "Max Hill Size:"
-msgstr "Magnitudo Maxima Collum:"
-
-#: src/mapgen_dialog.cpp:108
-msgid "Villages:"
-msgstr "Pagi:"
-
-#: src/mapgen_dialog.cpp:109
-msgid "Landform:"
-msgstr "Forma terrae:"
-
-#: src/mapgen_dialog.cpp:215
-msgid "Roads Between Castles"
-msgstr "Viae inter Castella"
-
-#: src/mapgen_dialog.cpp:272
-msgid "/1000 tiles"
-msgstr "pro M hexagones"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Coastal"
-msgstr "Maritima"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Inland"
-msgstr "Mediterranea"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Island"
-msgstr "Insula"
-
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
 msgstr "Pligam Delere"
@@ -298,6 +168,102 @@ msgstr "Pligam Delere"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "Deletio pligae fallitur."
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Mutationes tuae ad chartam perdentur. Visne pergere?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Novam Chartam Creare"
+
+#~ msgid "Width:"
+#~ msgstr "Amplitudo:"
+
+#~ msgid "Height:"
+#~ msgstr "Altitudo:"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Chartam Novam Generare"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Chartam Fortuitam Generare"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Impostationes Generatoris Fortuiti"
+
+#~ msgid "Cancel"
+#~ msgstr "Abrogare"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Creatio chartae fefellit."
+
+#~ msgid "Close Window"
+#~ msgstr "Fenestram Claudere"
+
+#~ msgid "Preferences"
+#~ msgstr "Impostationes"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Velocitas Gyri:"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Scrinium Totum/In Fenestra"
+
+#~ msgid "Show Grid"
+#~ msgstr "Rete Monstrare"
+
+#~ msgid "Video Mode"
+#~ msgstr "Modus Visivus"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Claves Notarum"
+
+#~ msgid "Resize Map"
+#~ msgstr "Magnitudinem Chartae Mutare"
+
+#~ msgid "OK"
+#~ msgstr "Bene"
+
+#~ msgid "X-Axis"
+#~ msgstr "Axis X"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Axis Y"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Volvi (hoc dimensiones chartae mutare potest)"
+
+#~ msgid "Map Generator"
+#~ msgstr "Generator Chartarum"
+
+#~ msgid "Players:"
+#~ msgstr "Lusores:"
+
+#~ msgid "Number of Hills:"
+#~ msgstr "Numerus Collum:"
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "Magnitudo Maxima Collum:"
+
+#~ msgid "Villages:"
+#~ msgstr "Pagi:"
+
+#~ msgid "Landform:"
+#~ msgstr "Forma terrae:"
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "Viae inter Castella"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "pro M hexagones"
+
+#~ msgid "Coastal"
+#~ msgstr "Maritima"
+
+#~ msgid "Inland"
+#~ msgstr "Mediterranea"
+
+#~ msgid "Island"
+#~ msgstr "Insula"
 
 #~ msgid "Draw"
 #~ msgstr "Pingere"

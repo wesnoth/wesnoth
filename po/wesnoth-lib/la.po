@@ -9,13 +9,106 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.0.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-25 20:54+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/editor/editor_dialogs.cpp:47
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr "Mutationes tuae ad chartam perdentur. Visne pergere?"
+
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+msgid "Create New Map"
+msgstr "Novam Chartam Creare"
+
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:104
+msgid "Width:"
+msgstr "Amplitudo: "
+
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:105
+msgid "Height:"
+msgstr "Altitudo: "
+
+#: src/editor/editor_dialogs.cpp:93
+msgid "Generate New Map"
+msgstr "Chartam Novam Generare"
+
+#: src/editor/editor_dialogs.cpp:94
+msgid "Generate Random Map"
+msgstr "Chartam Fortuitam Generare"
+
+#: src/editor/editor_dialogs.cpp:95
+msgid "Random Generator Settings"
+msgstr "Impostationes Generatoris Fortuiti"
+
+#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
+#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
+#: src/show_dialog.cpp:927
+msgid "Cancel"
+msgstr "Abrogare"
+
+#: src/editor/editor_dialogs.cpp:181
+msgid "Map creation failed."
+msgstr "Creatio chartae fefellit."
+
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/preferences.cpp:1335
+msgid "Close Window"
+msgstr "Fenestram Claudere"
+
+#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+msgid "Preferences"
+msgstr "Anteposita"
+
+#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+msgid "Scroll Speed:"
+msgstr "Velocitas Gyri:"
+
+#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/preferences.cpp:887
+msgid "Toggle Full Screen"
+msgstr "Scrinium Totum vel in Fenestra Permutare"
+
+#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+msgid "Show Grid"
+msgstr "Rete Monstare"
+
+#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+msgid "Video Mode"
+msgstr "Modus Visivus"
+
+#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+msgid "Hotkeys"
+msgstr "Claves Notarum"
+
+#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/hotkeys.cpp:94
+msgid "Resize Map"
+msgstr "Magnitudinem Chartae Mutare"
+
+#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
+#: src/show_dialog.cpp:429
+msgid "OK"
+msgstr "Sane"
+
+#: src/editor/editor_dialogs.cpp:491
+msgid "X-Axis"
+msgstr "Axis X"
+
+#: src/editor/editor_dialogs.cpp:492
+msgid "Y-Axis"
+msgstr "Axis Y"
+
+#: src/editor/editor_dialogs.cpp:493
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr "Volvi (hoc dimensiones chartae mutare potest)"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -56,10 +149,6 @@ msgstr "Minuere"
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "Conspectus Solitus"
-
-#: src/hotkeys.cpp:55 src/preferences.cpp:887
-msgid "Toggle Full Screen"
-msgstr "Scrinium Totum vel in Fenestra Permutare"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
@@ -124,10 +213,6 @@ msgstr "Unitatem Creare (Emendare!)"
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "Partem Unitatis Mutare (Emendare!)"
-
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
-msgid "Preferences"
-msgstr "Anteposita"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
@@ -209,10 +294,6 @@ msgstr "Glutinare"
 msgid "Revert from Disk"
 msgstr "Ad Versionem in Disco Redire"
 
-#: src/hotkeys.cpp:94
-msgid "Resize Map"
-msgstr "Magnitudinem Chartae Mutare"
-
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "Chartam in Speculo Reddere"
@@ -277,6 +358,50 @@ msgstr "Visne vere relinquere?"
 msgid "Quit"
 msgstr "Relinquere"
 
+#: src/mapgen_dialog.cpp:98
+msgid "Map Generator"
+msgstr "Generator Chartarum"
+
+#: src/mapgen_dialog.cpp:103
+msgid "Players:"
+msgstr "Lusores:"
+
+#: src/mapgen_dialog.cpp:106
+msgid "Number of Hills:"
+msgstr "Numerus Collum:"
+
+#: src/mapgen_dialog.cpp:107
+msgid "Max Hill Size:"
+msgstr "Magnitudo Maxima Collum:"
+
+#: src/mapgen_dialog.cpp:108
+msgid "Villages:"
+msgstr "Pagi: "
+
+#: src/mapgen_dialog.cpp:109
+msgid "Landform:"
+msgstr "Forma terrae: "
+
+#: src/mapgen_dialog.cpp:215
+msgid "Roads Between Castles"
+msgstr "Viae Inter Castella"
+
+#: src/mapgen_dialog.cpp:272
+msgid "/1000 tiles"
+msgstr "pro M tegulis"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Coastal"
+msgstr "Maritima"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Inland"
+msgstr "Mediterraneua"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Island"
+msgstr "Insula"
+
 #: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -299,10 +424,6 @@ msgstr "Celerius"
 #: src/preferences.cpp:889
 msgid "Skip AI Moves"
 msgstr "Tractus IA Praetermittere"
-
-#: src/preferences.cpp:890
-msgid "Show Grid"
-msgstr "Rete Monstare"
 
 #: src/preferences.cpp:891
 msgid "Show Floating Labels"
@@ -327,14 +448,6 @@ msgstr "Indicia Colorata Monstrare"
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "Iactationes Aureolae Monstrare"
-
-#: src/preferences.cpp:897
-msgid "Video Mode"
-msgstr "Modus Visivus"
-
-#: src/preferences.cpp:898
-msgid "Hotkeys"
-msgstr "Claves Notarum"
 
 #: src/preferences.cpp:899
 msgid "Adjust Gamma"
@@ -363,10 +476,6 @@ msgstr "Magnitudo Sonitus:"
 #: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr "Gamma:"
-
-#: src/preferences.cpp:905
-msgid "Scroll Speed:"
-msgstr "Velocitas Gyri:"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -482,10 +591,6 @@ msgstr "Carent alteris modis visivis"
 msgid "Choose Resolution"
 msgstr "Resolutionem Eligere"
 
-#: src/preferences.cpp:1335
-msgid "Close Window"
-msgstr "Fenestram Claudere"
-
 #: src/preferences.cpp:1340
 msgid "Hotkey Settings"
 msgstr "Impostationes Clavium Notarum"
@@ -518,10 +623,6 @@ msgstr "Haec Clavis Notarum iam usum habet."
 msgid "Error"
 msgstr "Mendum"
 
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
-msgid "OK"
-msgstr "Sane"
-
 #: src/show_dialog.cpp:422
 msgid "Yes"
 msgstr "Ita"
@@ -529,11 +630,6 @@ msgstr "Ita"
 #: src/show_dialog.cpp:423
 msgid "No"
 msgstr "Non"
-
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
-msgid "Cancel"
-msgstr "Abrogare"
 
 #: src/show_dialog.cpp:442
 msgid "Close"

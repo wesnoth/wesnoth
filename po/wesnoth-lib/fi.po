@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-09-07 13:46+0200\n"
 "Last-Translator: Matias Parmala <matias.parmala@pp.inet.fi>\n"
 "Language-Team: none\n"
@@ -15,6 +15,99 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/editor/editor_dialogs.cpp:47
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr "Karttaan tekemäsi muutokset menetetään. Jatketaanko?"
+
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+msgid "Create New Map"
+msgstr "Luo uusi kartta"
+
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
+#: src/mapgen_dialog.cpp:104
+msgid "Width:"
+msgstr "Leveys:"
+
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:105
+msgid "Height:"
+msgstr "Korkeus:"
+
+#: src/editor/editor_dialogs.cpp:93
+msgid "Generate New Map"
+msgstr "Luo uusi kartta"
+
+#: src/editor/editor_dialogs.cpp:94
+msgid "Generate Random Map"
+msgstr "Luo satunnainen kartta"
+
+#: src/editor/editor_dialogs.cpp:95
+msgid "Random Generator Settings"
+msgstr "Satunnaisgeneraattorin asetukset"
+
+#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
+#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
+#: src/show_dialog.cpp:927
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: src/editor/editor_dialogs.cpp:181
+msgid "Map creation failed."
+msgstr "Kartan luonti epäonnistui."
+
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/preferences.cpp:1335
+msgid "Close Window"
+msgstr "Sulje ikkuna"
+
+#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+msgid "Preferences"
+msgstr "Asetukset"
+
+#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+msgid "Scroll Speed:"
+msgstr "Vieritysnopeus:"
+
+#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/preferences.cpp:887
+msgid "Toggle Full Screen"
+msgstr "Koko ruutu / ikkunoitu"
+
+#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+msgid "Show Grid"
+msgstr "Näytä ruudukko"
+
+#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+msgid "Video Mode"
+msgstr "Näyttötarkkuus"
+
+#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+msgid "Hotkeys"
+msgstr "Pikanäppäimet"
+
+#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/hotkeys.cpp:94
+msgid "Resize Map"
+msgstr "Muuta kartan kokoa"
+
+#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
+#: src/show_dialog.cpp:429
+msgid "OK"
+msgstr "OK"
+
+#: src/editor/editor_dialogs.cpp:491
+msgid "X-Axis"
+msgstr "X-akseli"
+
+#: src/editor/editor_dialogs.cpp:492
+msgid "Y-Axis"
+msgstr "Y-akseli"
+
+#: src/editor/editor_dialogs.cpp:493
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr "Käännä (saattaa muuttaa kartan kokoa):"
 
 #: src/hotkeys.cpp:45
 msgid "Next unit"
@@ -55,10 +148,6 @@ msgstr "Zoomaa ulos"
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
 msgstr "Vakio-zoom"
-
-#: src/hotkeys.cpp:55 src/preferences.cpp:887
-msgid "Toggle Full Screen"
-msgstr "Koko ruutu / ikkunoitu"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
@@ -123,10 +212,6 @@ msgstr "Luo yksikkö (Debug!)"
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
 msgstr "Muuta yksikön puolta (Debug!)"
-
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
-msgid "Preferences"
-msgstr "Asetukset"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
@@ -208,10 +293,6 @@ msgstr "Liitä"
 msgid "Revert from Disk"
 msgstr "Palauta levyltä"
 
-#: src/hotkeys.cpp:94
-msgid "Resize Map"
-msgstr "Muuta kartan kokoa"
-
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
 msgstr "Käännä kartta"
@@ -276,6 +357,50 @@ msgstr "Haluatko todellakin lopettaa?"
 msgid "Quit"
 msgstr "Lopeta"
 
+#: src/mapgen_dialog.cpp:98
+msgid "Map Generator"
+msgstr "Kartan luonti"
+
+#: src/mapgen_dialog.cpp:103
+msgid "Players:"
+msgstr "Pelaajia:"
+
+#: src/mapgen_dialog.cpp:106
+msgid "Number of Hills:"
+msgstr "Kukkuloiden määrä:"
+
+#: src/mapgen_dialog.cpp:107
+msgid "Max Hill Size:"
+msgstr "Kukkulan enimmäiskoko:"
+
+#: src/mapgen_dialog.cpp:108
+msgid "Villages:"
+msgstr "Kyliä:"
+
+#: src/mapgen_dialog.cpp:109
+msgid "Landform:"
+msgstr "Maan muoto:"
+
+#: src/mapgen_dialog.cpp:215
+msgid "Roads Between Castles"
+msgstr "Tiet linnojen välillä"
+
+#: src/mapgen_dialog.cpp:272
+msgid "/1000 tiles"
+msgstr "/1000 heksaa"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Coastal"
+msgstr "rannikko"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Inland"
+msgstr "sisämaa"
+
+#: src/mapgen_dialog.cpp:277
+msgid "Island"
+msgstr "saari"
+
 #: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -298,10 +423,6 @@ msgstr "Kiihdytetty nopeus"
 #: src/preferences.cpp:889
 msgid "Skip AI Moves"
 msgstr "Ohita tietokoneen liikkeet"
-
-#: src/preferences.cpp:890
-msgid "Show Grid"
-msgstr "Näytä ruudukko"
 
 #: src/preferences.cpp:891
 msgid "Show Floating Labels"
@@ -326,14 +447,6 @@ msgstr "Käytä värillisiä kursoreita"
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
 msgstr "Näytä valokehä-efektit"
-
-#: src/preferences.cpp:897
-msgid "Video Mode"
-msgstr "Näyttötarkkuus"
-
-#: src/preferences.cpp:898
-msgid "Hotkeys"
-msgstr "Pikanäppäimet"
 
 #: src/preferences.cpp:899
 msgid "Adjust Gamma"
@@ -362,10 +475,6 @@ msgstr "Äänet:"
 #: src/preferences.cpp:905
 msgid "Gamma:"
 msgstr "Kirkkaus:"
-
-#: src/preferences.cpp:905
-msgid "Scroll Speed:"
-msgstr "Vieritysnopeus:"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -477,10 +586,6 @@ msgstr "Vaihtoehtoisia näyttötarkkuuksia ei ole käytettävissä."
 msgid "Choose Resolution"
 msgstr "Valitse näyttötarkkuus"
 
-#: src/preferences.cpp:1335
-msgid "Close Window"
-msgstr "Sulje ikkuna"
-
 #: src/preferences.cpp:1340
 msgid "Hotkey Settings"
 msgstr "Pikanäppäinten asetukset"
@@ -513,10 +618,6 @@ msgstr "Tämä pikanäppäin on jo käytössä."
 msgid "Error"
 msgstr "Virhe"
 
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
-msgid "OK"
-msgstr "OK"
-
 #: src/show_dialog.cpp:422
 msgid "Yes"
 msgstr "Kyllä"
@@ -524,11 +625,6 @@ msgstr "Kyllä"
 #: src/show_dialog.cpp:423
 msgid "No"
 msgstr "Ei"
-
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
-msgid "Cancel"
-msgstr "Peruuta"
 
 #: src/show_dialog.cpp:442
 msgid "Close"

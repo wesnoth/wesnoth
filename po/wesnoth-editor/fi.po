@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:08+0200\n"
+"POT-Creation-Date: 2005-10-15 01:18+0200\n"
 "PO-Revision-Date: 2005-08-30 20:41+0200\n"
 "Last-Translator: kko <->\n"
 "Language-Team: none\n"
@@ -149,92 +149,6 @@ msgstr "Virhe: virheellinen merkki tiedoston nimessä."
 msgid "Player"
 msgstr "Pelaaja"
 
-#: src/editor/editor_dialogs.cpp:47
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Karttaan tekemäsi muutokset menetetään. Jatketaanko?"
-
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
-msgid "Create New Map"
-msgstr "Luo uusi kartta"
-
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
-msgid "Width:"
-msgstr "Leveys:"
-
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
-msgid "Height:"
-msgstr "Korkeus:"
-
-#: src/editor/editor_dialogs.cpp:93
-msgid "Generate New Map"
-msgstr "Luo uusi kartta"
-
-#: src/editor/editor_dialogs.cpp:94
-msgid "Generate Random Map"
-msgstr "Luo satunnainen kartta"
-
-#: src/editor/editor_dialogs.cpp:95
-msgid "Random Generator Settings"
-msgstr "Satunnaisgeneraattorin asetukset"
-
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-msgid "Cancel"
-msgstr "Peruuta"
-
-#: src/editor/editor_dialogs.cpp:181
-msgid "Map creation failed."
-msgstr "Kartan luonti epäonnistui."
-
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
-msgid "Close Window"
-msgstr "Sulje ikkuna"
-
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
-msgid "Preferences"
-msgstr "Asetukset"
-
-#: src/editor/editor_dialogs.cpp:255
-msgid "Scroll Speed:"
-msgstr "Vieritysnopeus:"
-
-#: src/editor/editor_dialogs.cpp:282
-msgid "Toggle Full Screen"
-msgstr "Koko ruutu / ikkunnoitu"
-
-#: src/editor/editor_dialogs.cpp:289
-msgid "Show Grid"
-msgstr "Näytä ruudukko"
-
-#: src/editor/editor_dialogs.cpp:296
-msgid "Video Mode"
-msgstr "Näyttötarkkuus"
-
-#: src/editor/editor_dialogs.cpp:299
-msgid "Hotkeys"
-msgstr "Pikanäppäimet"
-
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
-msgid "Resize Map"
-msgstr "Muuta kartan kokoa"
-
-#: src/editor/editor_dialogs.cpp:408
-msgid "OK"
-msgstr "OK"
-
-#: src/editor/editor_dialogs.cpp:491
-msgid "X-Axis"
-msgstr "X-akseli"
-
-#: src/editor/editor_dialogs.cpp:492
-msgid "Y-Axis"
-msgstr "Y-akseli"
-
-#: src/editor/editor_dialogs.cpp:493
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr "Käännä (saattaa muuttaa kartan kokoa):"
-
 #: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Taistelu Wesnothista - karttaeditori"
@@ -247,50 +161,6 @@ msgstr "Etuala (vasen näppäin)"
 msgid "BG"
 msgstr "Taka-ala (oikea näppäin)"
 
-#: src/mapgen_dialog.cpp:98
-msgid "Map Generator"
-msgstr "Karttageneraattori"
-
-#: src/mapgen_dialog.cpp:103
-msgid "Players:"
-msgstr "Pelaajia:"
-
-#: src/mapgen_dialog.cpp:106
-msgid "Number of Hills:"
-msgstr "Kukkuloiden lukumäärä:"
-
-#: src/mapgen_dialog.cpp:107
-msgid "Max Hill Size:"
-msgstr "Kukkuloiden enimmäiskoko:"
-
-#: src/mapgen_dialog.cpp:108
-msgid "Villages:"
-msgstr "Kyliä:"
-
-#: src/mapgen_dialog.cpp:109
-msgid "Landform:"
-msgstr "Maan muoto:"
-
-#: src/mapgen_dialog.cpp:215
-msgid "Roads Between Castles"
-msgstr "Tiet linnojen välillä"
-
-#: src/mapgen_dialog.cpp:272
-msgid "/1000 tiles"
-msgstr "/1000 ruutua"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Coastal"
-msgstr "rannikko"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Inland"
-msgstr "sisämaa"
-
-#: src/mapgen_dialog.cpp:277
-msgid "Island"
-msgstr "saari"
-
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
 msgstr "Poista tiedosto"
@@ -298,3 +168,99 @@ msgstr "Poista tiedosto"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "Tiedoston poistaminen epäonnistui."
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Karttaan tekemäsi muutokset menetetään. Jatketaanko?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Luo uusi kartta"
+
+#~ msgid "Width:"
+#~ msgstr "Leveys:"
+
+#~ msgid "Height:"
+#~ msgstr "Korkeus:"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Luo uusi kartta"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Luo satunnainen kartta"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Satunnaisgeneraattorin asetukset"
+
+#~ msgid "Cancel"
+#~ msgstr "Peruuta"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Kartan luonti epäonnistui."
+
+#~ msgid "Close Window"
+#~ msgstr "Sulje ikkuna"
+
+#~ msgid "Preferences"
+#~ msgstr "Asetukset"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Vieritysnopeus:"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Koko ruutu / ikkunnoitu"
+
+#~ msgid "Show Grid"
+#~ msgstr "Näytä ruudukko"
+
+#~ msgid "Video Mode"
+#~ msgstr "Näyttötarkkuus"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Pikanäppäimet"
+
+#~ msgid "Resize Map"
+#~ msgstr "Muuta kartan kokoa"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "X-Axis"
+#~ msgstr "X-akseli"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y-akseli"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Käännä (saattaa muuttaa kartan kokoa):"
+
+#~ msgid "Map Generator"
+#~ msgstr "Karttageneraattori"
+
+#~ msgid "Players:"
+#~ msgstr "Pelaajia:"
+
+#~ msgid "Number of Hills:"
+#~ msgstr "Kukkuloiden lukumäärä:"
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "Kukkuloiden enimmäiskoko:"
+
+#~ msgid "Villages:"
+#~ msgstr "Kyliä:"
+
+#~ msgid "Landform:"
+#~ msgstr "Maan muoto:"
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "Tiet linnojen välillä"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "/1000 ruutua"
+
+#~ msgid "Coastal"
+#~ msgstr "rannikko"
+
+#~ msgid "Inland"
+#~ msgstr "sisämaa"
+
+#~ msgid "Island"
+#~ msgstr "saari"
