@@ -159,6 +159,7 @@ foreach my $campaign (@campaigns) {
     last;
   }
 }
+undef @campaigns;
 if (!defined($version)) {
   unlink("version/$name.ver");
   unlink("tgz/$name.tgz");
@@ -277,6 +278,8 @@ name=\"$name\"
   rename "tgz/$name.$$", "tgz/$name.tgz";
   rename "version/$name.$$", "version/$name.ver";
   rename "timestamp/$name.$$", "timestamp/$name.ver";
+  undef $archive;
+  undef $response;
 }
 
 if (!open(TGZ, "<tgz/$name.tgz")) {
