@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.0.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-09-14 23:24+0200\n"
+"POT-Creation-Date: 2005-10-15 01:07+0200\n"
 "PO-Revision-Date: 2005-09-29 19:20+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -44,11 +44,11 @@ msgstr "Prooemium"
 msgid "Gameplay"
 msgstr "Lusus"
 
-#: data/help.cfg:21 src/playturn.cpp:2249
+#: data/help.cfg:21 src/playturn.cpp:2251
 msgid "Traits"
 msgstr "Lineamenta"
 
-#: data/help.cfg:29 src/playturn.cpp:1791
+#: data/help.cfg:29 src/playturn.cpp:1793
 msgid "Units"
 msgstr "Unitates"
 
@@ -1864,7 +1864,7 @@ msgstr "Orci"
 msgid "Dwarves"
 msgstr "Nani"
 
-#: data/multiplayer.cfg:197 data/units/Saurian.cfg:5
+#: data/multiplayer.cfg:197
 msgid "Saurian"
 msgstr "Lacerta"
 
@@ -3413,7 +3413,7 @@ msgstr ""
 msgid "Underground"
 msgstr "Sub terra"
 
-#: data/terrain.cfg:11 src/multiplayer_create.cpp:52
+#: data/terrain.cfg:11 src/multiplayer_create.cpp:55
 #: src/multiplayer_lobby.cpp:311 src/multiplayer_lobby.cpp:317
 msgid "Shroud"
 msgstr "Integumentum"
@@ -3498,11 +3498,11 @@ msgstr "Facinores"
 msgid "End Turn"
 msgstr "Tractum finire"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2247 src/unit.cpp:1091
+#: data/themes/default.cfg:167 src/playturn.cpp:2249 src/unit.cpp:1091
 msgid "HP"
 msgstr "PS"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2068 src/playturn.cpp:2248
+#: data/themes/default.cfg:176 src/playturn.cpp:2070 src/playturn.cpp:2250
 msgid "XP"
 msgstr "PE"
 
@@ -3952,9 +3952,9 @@ msgstr ""
 "salutis accipiet in tractu in quo venenum tollitur."
 
 #: data/translations/english.cfg:33 data/units/Elvish_Druid.cfg:19
-#: data/units/Elvish_Shyde.cfg:21 data/units/Mermaid_Priestess.cfg:10
+#: data/units/Elvish_Shyde.cfg:21 data/units/Mermaid_Priestess.cfg:11
 #: data/units/Saurian_Soothsayer.cfg:22 data/units/White_Mage.cfg:13
-#: data/units/White_Mage.cfg:88
+#: data/units/White_Mage.cfg:110
 msgid "cures"
 msgstr "sanat"
 
@@ -3978,7 +3978,7 @@ msgstr ""
 "Unitas venenata non a veneno a medetore sanari potest, et curam pagi aut "
 "unitatis quae sanat petere debet."
 
-#: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:11
+#: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:12
 #: data/units/Paladin.cfg:24 data/units/Saurian_Icecaster.cfg:21
 #: data/units/Saurian_Tribalist.cfg:21
 msgid "heals"
@@ -4026,7 +4026,7 @@ msgstr ""
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
 #: data/units/Commander.cfg:98 data/units/Death_Knight.cfg:17
-#: data/units/Drake_Flameheart.cfg:15 data/units/Drake_Flare.cfg:10
+#: data/units/Drake_Flameheart.cfg:16 data/units/Drake_Flare.cfg:11
 #: data/units/Elvish_Captain.cfg:11 data/units/Elvish_Marshal.cfg:12
 #: data/units/Fire_Dragon.cfg:7 data/units/General.cfg:24
 #: data/units/Grand_Marshal.cfg:20 data/units/Lieutenant.cfg:19
@@ -4099,9 +4099,8 @@ msgstr ""
 #: data/units/Assassin.cfg:113 data/units/Duelist.cfg:16
 #: data/units/Fencer.cfg:17 data/units/Master_at_Arms.cfg:17
 #: data/units/Outlaw_Princess.cfg:20 data/units/Rogue.cfg:17
-#: data/units/Rogue.cfg:79 data/units/Saurian.cfg:22
-#: data/units/Saurian_Ambusher.cfg:20 data/units/Saurian_Flanker.cfg:22
-#: data/units/Saurian_Skirmisher.cfg:20 data/units/Saurian_Warrior.cfg:23
+#: data/units/Rogue.cfg:79 data/units/Saurian_Ambusher.cfg:21
+#: data/units/Saurian_Flanker.cfg:23 data/units/Saurian_Skirmisher.cfg:20
 msgid "skirmisher"
 msgstr "excursor"
 
@@ -4115,7 +4114,7 @@ msgstr ""
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
-#: data/units/Merman_Hoplite.cfg:26
+#: data/units/Merman_Hoplite.cfg:27
 msgid "steadfast"
 msgstr "constans"
 
@@ -4341,7 +4340,7 @@ msgstr "tactus"
 #: data/units/Elvish_Enchantress.cfg:118 data/units/Elvish_High_Lord.cfg:44
 #: data/units/Elvish_Lord.cfg:39 data/units/Elvish_Sorceress.cfg:118
 #: data/units/Elvish_Sylph.cfg:85 data/units/Ghost.cfg:24
-#: data/units/Ghost.cfg:36 data/units/Initiate.cfg:21 data/units/Lich.cfg:25
+#: data/units/Ghost.cfg:36 data/units/Initiate.cfg:38 data/units/Lich.cfg:25
 #: data/units/Lich.cfg:38 data/units/Necromancer.cfg:39
 #: data/units/Saurian_Icecaster.cfg:43 data/units/Saurian_Soothsayer.cfg:42
 #: data/units/Saurian_Tribalist.cfg:41 data/units/Spectre.cfg:70
@@ -4362,7 +4361,7 @@ msgstr "exhaurire"
 
 #: data/units/Ancient_Lich.cfg:57 data/units/Deathmaster.cfg:53
 #: data/units/Demilich.cfg:45 data/units/Dread_Lich.cfg:34
-#: data/units/Initiate.cfg:20 data/units/Lich.cfg:37
+#: data/units/Initiate.cfg:37 data/units/Lich.cfg:37
 msgid "magic"
 msgstr "magica"
 
@@ -4379,19 +4378,18 @@ msgstr "magica"
 #: data/units/Elvish_Sorceress.cfg:122 data/units/Elvish_Sylph.cfg:27
 #: data/units/Elvish_Sylph.cfg:86 data/units/Fighter.cfg:86
 #: data/units/Fireball.cfg:22 data/units/Great_Mage.cfg:52
-#: data/units/Great_Mage.cfg:150 data/units/Initiate.cfg:22
-#: data/units/Lich.cfg:39 data/units/Lord.cfg:119 data/units/Mage.cfg:50
-#: data/units/Mage.cfg:133 data/units/Mage_of_Light.cfg:54
-#: data/units/Mage_of_Light.cfg:131 data/units/Mermaid_Diviner.cfg:51
-#: data/units/Mermaid_Enchantress.cfg:44 data/units/Mermaid_Initiate.cfg:46
-#: data/units/Mermaid_Priestess.cfg:46 data/units/Mermaid_Siren.cfg:30
-#: data/units/Mermaid_Siren.cfg:73 data/units/Necromancer.cfg:40
-#: data/units/Princess.cfg:80 data/units/Red_Mage.cfg:51
-#: data/units/Red_Mage.cfg:148 data/units/Saurian_Icecaster.cfg:44
+#: data/units/Great_Mage.cfg:150 data/units/Initiate.cfg:39
+#: data/units/Lich.cfg:39 data/units/Lord.cfg:119 data/units/Mage.cfg:72
+#: data/units/Mage.cfg:177 data/units/Mage_of_Light.cfg:54
+#: data/units/Mage_of_Light.cfg:131 data/units/Mermaid_Diviner.cfg:52
+#: data/units/Mermaid_Enchantress.cfg:45 data/units/Mermaid_Initiate.cfg:47
+#: data/units/Mermaid_Priestess.cfg:47 data/units/Mermaid_Siren.cfg:31
+#: data/units/Mermaid_Siren.cfg:74 data/units/Necromancer.cfg:40
+#: data/units/Princess.cfg:80 data/units/Red_Mage.cfg:73
+#: data/units/Red_Mage.cfg:192 data/units/Saurian_Icecaster.cfg:44
 #: data/units/Saurian_Soothsayer.cfg:43 data/units/Saurian_Tribalist.cfg:42
-#: data/units/Sea_Hag.cfg:35 data/units/Silver_Mage.cfg:103
-#: data/units/Silver_Mage.cfg:239 data/units/White_Mage.cfg:52
-#: data/units/White_Mage.cfg:127
+#: data/units/Silver_Mage.cfg:103 data/units/Silver_Mage.cfg:239
+#: data/units/White_Mage.cfg:74 data/units/White_Mage.cfg:171
 msgid "magical"
 msgstr "magicalis"
 
@@ -4440,15 +4438,15 @@ msgstr "obterere"
 #: data/units/Cave_Spider.cfg:48 data/units/Cuttle_Fish.cfg:34
 #: data/units/Dark_Queen.cfg:37 data/units/Dark_Sorcerer.cfg:25
 #: data/units/Deathmaster.cfg:33 data/units/Drake_Enforcer.cfg:44
-#: data/units/Drake_Gladiator.cfg:62 data/units/Drake_Glider.cfg:24
-#: data/units/Drake_Hurricane.cfg:28 data/units/Drake_Sky.cfg:29
+#: data/units/Drake_Gladiator.cfg:62 data/units/Drake_Glider.cfg:25
+#: data/units/Drake_Hurricane.cfg:29 data/units/Drake_Sky.cfg:30
 #: data/units/Dwarvish_Dragonguard.cfg:22 data/units/Dwarvish_Fighter.cfg:40
 #: data/units/Dwarvish_Lord.cfg:46 data/units/Dwarvish_Runemaster.cfg:22
 #: data/units/Dwarvish_Steelclad.cfg:46 data/units/Elder_Mage.cfg:25
 #: data/units/Elder_Wose.cfg:25 data/units/Elvish_Druid.cfg:28
 #: data/units/Elvish_Druid.cfg:46 data/units/Elvish_Enchantress.cfg:26
 #: data/units/Elvish_Enchantress.cfg:66 data/units/Elvish_Lady.cfg:22
-#: data/units/Elvish_Shaman.cfg:29 data/units/Elvish_Shaman.cfg:47
+#: data/units/Elvish_Shaman.cfg:30 data/units/Elvish_Shaman.cfg:48
 #: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Shyde.cfg:55
 #: data/units/Elvish_Sorceress.cfg:26 data/units/Elvish_Sorceress.cfg:66
 #: data/units/Elvish_Sylph.cfg:26 data/units/Elvish_Sylph.cfg:53
@@ -4460,13 +4458,13 @@ msgstr "obterere"
 #: data/units/Great_Mage.cfg:29 data/units/Great_Mage.cfg:127
 #: data/units/Great_Troll.cfg:25 data/units/Heavy_Infantryman.cfg:20
 #: data/units/Horse_Lord.cfg:45 data/units/Iron_Mauler.cfg:23
-#: data/units/Mage.cfg:27 data/units/Mage.cfg:110
+#: data/units/Mage.cfg:49 data/units/Mage.cfg:154
 #: data/units/Mage_of_Light.cfg:36 data/units/Mage_of_Light.cfg:113
-#: data/units/Mermaid_Diviner.cfg:32 data/units/Mermaid_Enchantress.cfg:24
-#: data/units/Mermaid_Enchantress.cfg:42 data/units/Mermaid_Initiate.cfg:26
-#: data/units/Mermaid_Initiate.cfg:44 data/units/Mermaid_Priestess.cfg:27
-#: data/units/Mermaid_Siren.cfg:28 data/units/Mermaid_Siren.cfg:71
-#: data/units/Merman_Entangler.cfg:31 data/units/Merman_Netcaster.cfg:30
+#: data/units/Mermaid_Diviner.cfg:33 data/units/Mermaid_Enchantress.cfg:25
+#: data/units/Mermaid_Enchantress.cfg:43 data/units/Mermaid_Initiate.cfg:27
+#: data/units/Mermaid_Initiate.cfg:45 data/units/Mermaid_Priestess.cfg:28
+#: data/units/Mermaid_Siren.cfg:29 data/units/Mermaid_Siren.cfg:72
+#: data/units/Merman_Entangler.cfg:32 data/units/Merman_Netcaster.cfg:31
 #: data/units/Mounted_Fighter.cfg:45 data/units/Mounted_Warrior.cfg:45
 #: data/units/Mudcrawler.cfg:45 data/units/Necromancer.cfg:22
 #: data/units/Noble_Youth.cfg:25 data/units/Orcish_Shaman.cfg:24
@@ -4474,19 +4472,18 @@ msgstr "obterere"
 #: data/units/Outlaw.cfg:22 data/units/Outlaw.cfg:40 data/units/Outlaw.cfg:96
 #: data/units/Outlaw.cfg:114 data/units/Outlaw_Princess.cfg:54
 #: data/units/Outlaw_Princess.cfg:78 data/units/Outlaw_Queen.cfg:56
-#: data/units/Outlaw_Queen.cfg:79 data/units/Red_Mage.cfg:28
-#: data/units/Red_Mage.cfg:125 data/units/Saurian_Icecaster.cfg:25
+#: data/units/Outlaw_Queen.cfg:79 data/units/Red_Mage.cfg:50
+#: data/units/Red_Mage.cfg:169 data/units/Saurian_Icecaster.cfg:25
 #: data/units/Saurian_Soothsayer.cfg:25 data/units/Saurian_Tribalist.cfg:24
-#: data/units/Sea_Hag.cfg:33 data/units/Shock_Trooper.cfg:20
-#: data/units/Silver_Mage.cfg:85 data/units/Silver_Mage.cfg:221
-#: data/units/Skeleton_Archer.cfg:25 data/units/Soulless.cfg:40
-#: data/units/Tentacle.cfg:23 data/units/Thug.cfg:21 data/units/Troll.cfg:24
-#: data/units/Troll_Hero.cfg:24 data/units/Troll_Rocklobber.cfg:25
-#: data/units/Troll_Rocklobber.cfg:43 data/units/Troll_Warrior.cfg:25
-#: data/units/Troll_Whelp.cfg:24 data/units/Walking_Corpse.cfg:41
-#: data/units/Warrior_King.cfg:27 data/units/White_Mage.cfg:34
-#: data/units/White_Mage.cfg:109 data/units/Wose.cfg:25 data/units/Yeti.cfg:35
-#: data/units/Youth.cfg:22
+#: data/units/Shock_Trooper.cfg:20 data/units/Silver_Mage.cfg:85
+#: data/units/Silver_Mage.cfg:221 data/units/Skeleton_Archer.cfg:25
+#: data/units/Soulless.cfg:40 data/units/Tentacle.cfg:23
+#: data/units/Thug.cfg:21 data/units/Troll.cfg:24 data/units/Troll_Hero.cfg:24
+#: data/units/Troll_Rocklobber.cfg:25 data/units/Troll_Rocklobber.cfg:43
+#: data/units/Troll_Warrior.cfg:25 data/units/Troll_Whelp.cfg:24
+#: data/units/Walking_Corpse.cfg:41 data/units/Warrior_King.cfg:27
+#: data/units/White_Mage.cfg:56 data/units/White_Mage.cfg:153
+#: data/units/Wose.cfg:25 data/units/Yeti.cfg:35 data/units/Youth.cfg:22
 msgid "impact"
 msgstr "incussus"
 
@@ -4529,44 +4526,44 @@ msgstr ""
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:152
 #: data/units/Dark_Sorcerer.cfg:24 data/units/Deathmaster.cfg:32
 #: data/units/Elder_Mage.cfg:24 data/units/Elvish_Druid.cfg:27
-#: data/units/Elvish_Enchantress.cfg:25 data/units/Elvish_Shaman.cfg:28
+#: data/units/Elvish_Enchantress.cfg:25 data/units/Elvish_Shaman.cfg:29
 #: data/units/Elvish_Sorceress.cfg:25 data/units/Great_Mage.cfg:28
-#: data/units/Great_Mage.cfg:126 data/units/Mage.cfg:26
-#: data/units/Mage.cfg:109 data/units/Mermaid_Diviner.cfg:31
-#: data/units/Mermaid_Enchantress.cfg:23 data/units/Mermaid_Initiate.cfg:25
-#: data/units/Mermaid_Priestess.cfg:26 data/units/Necromancer.cfg:21
+#: data/units/Great_Mage.cfg:126 data/units/Mage.cfg:48
+#: data/units/Mage.cfg:153 data/units/Mermaid_Diviner.cfg:32
+#: data/units/Mermaid_Enchantress.cfg:24 data/units/Mermaid_Initiate.cfg:26
+#: data/units/Mermaid_Priestess.cfg:27 data/units/Necromancer.cfg:21
 #: data/units/Orcish_Shaman.cfg:23 data/units/Orcish_Shaman.cfg:86
 #: data/units/Orcish_Shaman.cfg:149 data/units/Outlaw_Princess.cfg:53
-#: data/units/Outlaw_Queen.cfg:55 data/units/Red_Mage.cfg:27
-#: data/units/Red_Mage.cfg:124 data/units/Saurian_Icecaster.cfg:24
+#: data/units/Outlaw_Queen.cfg:55 data/units/Red_Mage.cfg:49
+#: data/units/Red_Mage.cfg:168 data/units/Saurian_Icecaster.cfg:24
 #: data/units/Saurian_Soothsayer.cfg:24 data/units/Saurian_Tribalist.cfg:23
 #: data/units/Silver_Mage.cfg:84 data/units/Silver_Mage.cfg:220
-#: data/units/White_Mage.cfg:33 data/units/White_Mage.cfg:108
+#: data/units/White_Mage.cfg:55 data/units/White_Mage.cfg:152
 msgid "staff"
 msgstr "virga"
 
 #: data/units/Arch_Mage.cfg:61 data/units/Arch_Mage.cfg:173
 #: data/units/Great_Mage.cfg:49 data/units/Great_Mage.cfg:147
-#: data/units/Red_Mage.cfg:48 data/units/Red_Mage.cfg:145
+#: data/units/Red_Mage.cfg:70 data/units/Red_Mage.cfg:189
 msgid "fireball"
 msgstr "globus ignis"
 
 #: data/units/Arch_Mage.cfg:62 data/units/Arch_Mage.cfg:174
 #: data/units/Battle_Princess.cfg:92 data/units/Commander.cfg:133
-#: data/units/Drake_Blademaster.cfg:48 data/units/Drake_Burner.cfg:55
-#: data/units/Drake_Fighter.cfg:58 data/units/Drake_Fire.cfg:56
-#: data/units/Drake_Flameheart.cfg:57 data/units/Drake_Flare.cfg:46
-#: data/units/Drake_Glider.cfg:48 data/units/Drake_Hurricane.cfg:52
-#: data/units/Drake_Inferno.cfg:45 data/units/Drake_Sky.cfg:53
-#: data/units/Drake_Warrior.cfg:47 data/units/Dwarvish_Runemaster.cfg:43
+#: data/units/Drake_Blademaster.cfg:49 data/units/Drake_Burner.cfg:56
+#: data/units/Drake_Fighter.cfg:59 data/units/Drake_Fire.cfg:57
+#: data/units/Drake_Flameheart.cfg:58 data/units/Drake_Flare.cfg:47
+#: data/units/Drake_Glider.cfg:49 data/units/Drake_Hurricane.cfg:53
+#: data/units/Drake_Inferno.cfg:46 data/units/Drake_Sky.cfg:54
+#: data/units/Drake_Warrior.cfg:48 data/units/Dwarvish_Runemaster.cfg:43
 #: data/units/Elder_Mage.cfg:41 data/units/Fighter.cfg:84
 #: data/units/Fire_Dragon.cfg:61 data/units/Fireball.cfg:19
 #: data/units/Fireball.cfg:20 data/units/Goblin_Pillager.cfg:25
 #: data/units/Great_Mage.cfg:50 data/units/Great_Mage.cfg:148
-#: data/units/Lord.cfg:117 data/units/Mage.cfg:48 data/units/Mage.cfg:131
+#: data/units/Lord.cfg:117 data/units/Mage.cfg:70 data/units/Mage.cfg:175
 #: data/units/Orcish_Archer.cfg:68 data/units/Orcish_Crossbowman.cfg:67
 #: data/units/Orcish_Slurbow.cfg:68 data/units/Princess.cfg:78
-#: data/units/Red_Mage.cfg:49 data/units/Red_Mage.cfg:146
+#: data/units/Red_Mage.cfg:71 data/units/Red_Mage.cfg:190
 #: data/units/Silver_Mage.cfg:101 data/units/Silver_Mage.cfg:237
 msgid "fire"
 msgstr "ignis"
@@ -4607,7 +4604,7 @@ msgstr ""
 #: data/units/Assassin.cfg:37 data/units/Assassin.cfg:119
 #: data/units/Dwarvish_Thunderer.cfg:38
 #: data/units/Dwarvish_Thunderguard.cfg:22 data/units/Orcish_Archer.cfg:21
-#: data/units/Orcish_Assassin.cfg:21 data/units/Orcish_Slayer.cfg:22
+#: data/units/Orcish_Assassin.cfg:22 data/units/Orcish_Slayer.cfg:23
 #: data/units/Poacher.cfg:25 data/units/Rogue.cfg:23 data/units/Rogue.cfg:85
 #: data/units/Thief.cfg:86 data/units/Thief.cfg:189 data/units/Trapper.cfg:26
 msgid "dagger"
@@ -4623,13 +4620,13 @@ msgstr "sica"
 #: data/units/Dark_Spirit.cfg:33 data/units/Death_Knight.cfg:35
 #: data/units/Deathblade.cfg:41 data/units/Direwolf_Rider.cfg:27
 #: data/units/Direwolf_Rider.cfg:39 data/units/Dragoon.cfg:46
-#: data/units/Drake_Blademaster.cfg:24 data/units/Drake_Burner.cfg:35
+#: data/units/Drake_Blademaster.cfg:25 data/units/Drake_Burner.cfg:36
 #: data/units/Drake_Clasher.cfg:36 data/units/Drake_Enforcer.cfg:26
-#: data/units/Drake_Fighter.cfg:34 data/units/Drake_Fire.cfg:37
-#: data/units/Drake_Flameheart.cfg:27 data/units/Drake_Flare.cfg:26
-#: data/units/Drake_Gladiator.cfg:25 data/units/Drake_Inferno.cfg:26
+#: data/units/Drake_Fighter.cfg:35 data/units/Drake_Fire.cfg:38
+#: data/units/Drake_Flameheart.cfg:28 data/units/Drake_Flare.cfg:27
+#: data/units/Drake_Gladiator.cfg:25 data/units/Drake_Inferno.cfg:27
 #: data/units/Drake_Slasher.cfg:26 data/units/Drake_Warden.cfg:27
-#: data/units/Drake_Warrior.cfg:23 data/units/Draug.cfg:38
+#: data/units/Drake_Warrior.cfg:24 data/units/Draug.cfg:38
 #: data/units/Duelist.cfg:68 data/units/Dwarvish_Berserker.cfg:29
 #: data/units/Dwarvish_Fighter.cfg:23 data/units/Dwarvish_Lord.cfg:29
 #: data/units/Dwarvish_Lord.cfg:62 data/units/Dwarvish_Steelclad.cfg:29
@@ -4648,7 +4645,7 @@ msgstr "sica"
 #: data/units/Elvish_Sharpshooter.cfg:169 data/units/Fencer.cfg:79
 #: data/units/Fighter.cfg:21 data/units/Fighter.cfg:62
 #: data/units/Fire_Dragon.cfg:24 data/units/General.cfg:32
-#: data/units/Ghoul.cfg:31 data/units/Goblin_Knight.cfg:24
+#: data/units/Ghoul.cfg:32 data/units/Goblin_Knight.cfg:24
 #: data/units/Grand_Knight.cfg:27 data/units/Grand_Marshal.cfg:28
 #: data/units/Gryphon.cfg:23 data/units/Gryphon_Master.cfg:24
 #: data/units/Gryphon_Rider.cfg:23 data/units/Halbardier.cfg:71
@@ -4656,18 +4653,18 @@ msgstr "sica"
 #: data/units/Lieutenant.cfg:27 data/units/Longbowman.cfg:23
 #: data/units/Lord.cfg:24 data/units/Lord.cfg:100
 #: data/units/Master_Bowman.cfg:23 data/units/Master_at_Arms.cfg:39
-#: data/units/Merman_Triton.cfg:37 data/units/Mounted_Fighter.cfg:23
-#: data/units/Mounted_Warrior.cfg:23 data/units/Naga-Fighter.cfg:22
-#: data/units/Naga-Fighter.cfg:57 data/units/Naga-Myrmidon.cfg:27
-#: data/units/Naga-Myrmidon.cfg:67 data/units/Naga-Warrior.cfg:26
-#: data/units/Naga-Warrior.cfg:65 data/units/Necrophage.cfg:31
+#: data/units/Merman_Triton.cfg:38 data/units/Mounted_Fighter.cfg:23
+#: data/units/Mounted_Warrior.cfg:23 data/units/Naga-Fighter.cfg:23
+#: data/units/Naga-Fighter.cfg:59 data/units/Naga-Myrmidon.cfg:28
+#: data/units/Naga-Myrmidon.cfg:69 data/units/Naga-Warrior.cfg:27
+#: data/units/Naga-Warrior.cfg:67 data/units/Necrophage.cfg:32
 #: data/units/Nightgaunt.cfg:51 data/units/Noble_Commander.cfg:29
 #: data/units/Noble_Fighter.cfg:24 data/units/Noble_Lord.cfg:29
 #: data/units/Ogre.cfg:21 data/units/Orcish_Archer.cfg:22
-#: data/units/Orcish_Assassin.cfg:22 data/units/Orcish_Assassin.cfg:39
+#: data/units/Orcish_Assassin.cfg:23 data/units/Orcish_Assassin.cfg:40
 #: data/units/Orcish_Crossbowman.cfg:21 data/units/Orcish_Grunt.cfg:20
 #: data/units/Orcish_Leader.cfg:22 data/units/Orcish_Ruler.cfg:22
-#: data/units/Orcish_Slayer.cfg:23 data/units/Orcish_Slayer.cfg:45
+#: data/units/Orcish_Slayer.cfg:24 data/units/Orcish_Slayer.cfg:46
 #: data/units/Orcish_Slurbow.cfg:22 data/units/Orcish_Sovereign.cfg:23
 #: data/units/Orcish_Warlord.cfg:21 data/units/Orcish_Warrior.cfg:20
 #: data/units/Poacher.cfg:26 data/units/Princess.cfg:24
@@ -4700,9 +4697,9 @@ msgstr "culter"
 
 #: data/units/Assassin.cfg:71 data/units/Assassin.cfg:153
 #: data/units/Cave_Spider.cfg:38 data/units/Cuttle_Fish.cfg:74
-#: data/units/Direwolf_Rider.cfg:43 data/units/Ghoul.cfg:35
-#: data/units/Giant_Scorpion.cfg:23 data/units/Necrophage.cfg:35
-#: data/units/Orcish_Assassin.cfg:44 data/units/Orcish_Slayer.cfg:50
+#: data/units/Direwolf_Rider.cfg:43 data/units/Ghoul.cfg:36
+#: data/units/Giant_Scorpion.cfg:23 data/units/Necrophage.cfg:36
+#: data/units/Orcish_Assassin.cfg:45 data/units/Orcish_Slayer.cfg:51
 msgid "poison"
 msgstr "venenum"
 
@@ -4760,10 +4757,10 @@ msgstr ""
 #: data/units/Bowman.cfg:33 data/units/Cavalier.cfg:41
 #: data/units/Cavalryman.cfg:43 data/units/Commander.cfg:35
 #: data/units/Commander.cfg:110 data/units/Deathblade.cfg:40
-#: data/units/Dragoon.cfg:45 data/units/Drake_Blademaster.cfg:23
+#: data/units/Dragoon.cfg:45 data/units/Drake_Blademaster.cfg:24
 #: data/units/Drake_Clasher.cfg:35 data/units/Drake_Enforcer.cfg:25
-#: data/units/Drake_Flameheart.cfg:26 data/units/Drake_Flare.cfg:25
-#: data/units/Drake_Gladiator.cfg:24 data/units/Drake_Warrior.cfg:22
+#: data/units/Drake_Flameheart.cfg:27 data/units/Drake_Flare.cfg:26
+#: data/units/Drake_Gladiator.cfg:24 data/units/Drake_Warrior.cfg:23
 #: data/units/Elvish_Archer.cfg:45 data/units/Elvish_Archer.cfg:147
 #: data/units/Elvish_Avenger.cfg:51 data/units/Elvish_Avenger.cfg:167
 #: data/units/Elvish_Captain.cfg:26 data/units/Elvish_Champion.cfg:23
@@ -4781,10 +4778,10 @@ msgstr ""
 #: data/units/Lieutenant.cfg:26 data/units/Longbowman.cfg:22
 #: data/units/Lord.cfg:23 data/units/Lord.cfg:99
 #: data/units/Master_Bowman.cfg:22 data/units/Mounted_Fighter.cfg:22
-#: data/units/Mounted_Warrior.cfg:22 data/units/Naga-Fighter.cfg:21
-#: data/units/Naga-Fighter.cfg:56 data/units/Naga-Myrmidon.cfg:26
-#: data/units/Naga-Myrmidon.cfg:66 data/units/Naga-Warrior.cfg:25
-#: data/units/Naga-Warrior.cfg:64 data/units/Noble_Commander.cfg:28
+#: data/units/Mounted_Warrior.cfg:22 data/units/Naga-Fighter.cfg:22
+#: data/units/Naga-Fighter.cfg:58 data/units/Naga-Myrmidon.cfg:27
+#: data/units/Naga-Myrmidon.cfg:68 data/units/Naga-Warrior.cfg:26
+#: data/units/Naga-Warrior.cfg:66 data/units/Noble_Commander.cfg:28
 #: data/units/Noble_Fighter.cfg:23 data/units/Noble_Lord.cfg:28
 #: data/units/Orcish_Grunt.cfg:19 data/units/Orcish_Leader.cfg:21
 #: data/units/Orcish_Ruler.cfg:21 data/units/Orcish_Sovereign.cfg:22
@@ -4898,14 +4895,13 @@ msgstr "arcus"
 #: data/units/Knight.cfg:41 data/units/Lancer.cfg:26
 #: data/units/Lieutenant.cfg:44 data/units/Longbowman.cfg:40
 #: data/units/Lord.cfg:41 data/units/Master_Bowman.cfg:39
-#: data/units/Master_at_Arms.cfg:55 data/units/Merman.cfg:24
-#: data/units/Merman_Entangler.cfg:23 data/units/Merman_Fighter.cfg:24
-#: data/units/Merman_Hoplite.cfg:38 data/units/Merman_Hunter.cfg:21
-#: data/units/Merman_Hunter.cfg:61 data/units/Merman_Javelineer.cfg:22
-#: data/units/Merman_Javelineer.cfg:62 data/units/Merman_Netcaster.cfg:22
-#: data/units/Merman_Spearman.cfg:21 data/units/Merman_Spearman.cfg:61
-#: data/units/Merman_Triton.cfg:25 data/units/Merman_Warrior.cfg:24
-#: data/units/Naga.cfg:25 data/units/Noble_Commander.cfg:47
+#: data/units/Master_at_Arms.cfg:55 data/units/Merman_Entangler.cfg:24
+#: data/units/Merman_Fighter.cfg:25 data/units/Merman_Hoplite.cfg:39
+#: data/units/Merman_Hunter.cfg:22 data/units/Merman_Hunter.cfg:62
+#: data/units/Merman_Javelineer.cfg:23 data/units/Merman_Javelineer.cfg:63
+#: data/units/Merman_Netcaster.cfg:23 data/units/Merman_Spearman.cfg:22
+#: data/units/Merman_Spearman.cfg:62 data/units/Merman_Triton.cfg:26
+#: data/units/Merman_Warrior.cfg:25 data/units/Noble_Commander.cfg:47
 #: data/units/Noble_Lord.cfg:47 data/units/Orcish_Archer.cfg:38
 #: data/units/Orcish_Crossbowman.cfg:40 data/units/Orcish_Leader.cfg:38
 #: data/units/Orcish_Ruler.cfg:39 data/units/Orcish_Shaman.cfg:41
@@ -4913,18 +4909,15 @@ msgstr "arcus"
 #: data/units/Orcish_Slurbow.cfg:41 data/units/Orcish_Sovereign.cfg:44
 #: data/units/Orcish_Warlord.cfg:42 data/units/Paladin.cfg:48
 #: data/units/Peasant.cfg:22 data/units/Peasant.cfg:35
-#: data/units/Pikeman.cfg:26 data/units/Pirate_Galleon.cfg:19
-#: data/units/Poacher.cfg:43 data/units/Saurian.cfg:26
-#: data/units/Saurian.cfg:44 data/units/Saurian_Ambusher.cfg:24
-#: data/units/Saurian_Ambusher.cfg:42 data/units/Saurian_Flanker.cfg:26
-#: data/units/Saurian_Flanker.cfg:44 data/units/Saurian_Skirmisher.cfg:24
-#: data/units/Saurian_Skirmisher.cfg:42 data/units/Saurian_Warrior.cfg:27
-#: data/units/Saurian_Warrior.cfg:45 data/units/Sea_Hag.cfg:25
-#: data/units/Sea_Serpent.cfg:21 data/units/Sergeant.cfg:42
-#: data/units/Skeleton_Archer.cfg:42 data/units/Soul_Shooter.cfg:29
-#: data/units/Soul_Shooter.cfg:42 data/units/Spearman.cfg:62
-#: data/units/Spearman.cfg:113 data/units/Transport_Galleon.cfg:19
-#: data/units/Trapper.cfg:44 data/units/Triton.cfg:27
+#: data/units/Pikeman.cfg:53 data/units/Pirate_Galleon.cfg:19
+#: data/units/Poacher.cfg:43 data/units/Saurian_Ambusher.cfg:25
+#: data/units/Saurian_Ambusher.cfg:43 data/units/Saurian_Flanker.cfg:27
+#: data/units/Saurian_Flanker.cfg:45 data/units/Saurian_Skirmisher.cfg:24
+#: data/units/Saurian_Skirmisher.cfg:42 data/units/Sea_Serpent.cfg:21
+#: data/units/Sergeant.cfg:42 data/units/Skeleton_Archer.cfg:42
+#: data/units/Soul_Shooter.cfg:29 data/units/Soul_Shooter.cfg:42
+#: data/units/Spearman.cfg:62 data/units/Spearman.cfg:113
+#: data/units/Transport_Galleon.cfg:19 data/units/Trapper.cfg:44
 #: data/units/Vampire_Lady.cfg:36 data/units/Wall_Guard.cfg:38
 #: data/units/Watch_Tower.cfg:20
 msgid "pierce"
@@ -5015,10 +5008,10 @@ msgid "web"
 msgstr "araneum"
 
 #: data/units/Cave_Spider.cfg:63 data/units/Elvish_Druid.cfg:47
-#: data/units/Elvish_Enchantress.cfg:67 data/units/Elvish_Shaman.cfg:48
+#: data/units/Elvish_Enchantress.cfg:67 data/units/Elvish_Shaman.cfg:49
 #: data/units/Elvish_Shyde.cfg:56 data/units/Elvish_Sorceress.cfg:67
 #: data/units/Elvish_Sylph.cfg:54 data/units/Goblin_Pillager.cfg:42
-#: data/units/Merman_Entangler.cfg:33 data/units/Merman_Netcaster.cfg:32
+#: data/units/Merman_Entangler.cfg:34 data/units/Merman_Netcaster.cfg:33
 msgid "slow"
 msgstr "lentifacere"
 
@@ -5044,16 +5037,14 @@ msgstr ""
 #: data/units/Goblin_Impaler.cfg:23 data/units/Goblin_Impaler.cfg:42
 #: data/units/Goblin_Spearman.cfg:22 data/units/Goblin_Spearman.cfg:35
 #: data/units/Horseman.cfg:24 data/units/Javelineer.cfg:23
-#: data/units/Javelineer.cfg:51 data/units/Merman_Entangler.cfg:22
-#: data/units/Merman_Hunter.cfg:20 data/units/Merman_Hunter.cfg:60
-#: data/units/Merman_Javelineer.cfg:21 data/units/Merman_Javelineer.cfg:61
-#: data/units/Merman_Netcaster.cfg:21 data/units/Merman_Spearman.cfg:20
-#: data/units/Merman_Spearman.cfg:60 data/units/Saurian.cfg:24
-#: data/units/Saurian.cfg:42 data/units/Saurian_Ambusher.cfg:22
-#: data/units/Saurian_Ambusher.cfg:40 data/units/Saurian_Flanker.cfg:24
-#: data/units/Saurian_Flanker.cfg:42 data/units/Saurian_Skirmisher.cfg:22
-#: data/units/Saurian_Skirmisher.cfg:40 data/units/Saurian_Warrior.cfg:25
-#: data/units/Saurian_Warrior.cfg:43 data/units/Spearman.cfg:61
+#: data/units/Javelineer.cfg:51 data/units/Merman_Entangler.cfg:23
+#: data/units/Merman_Hunter.cfg:21 data/units/Merman_Hunter.cfg:61
+#: data/units/Merman_Javelineer.cfg:22 data/units/Merman_Javelineer.cfg:62
+#: data/units/Merman_Netcaster.cfg:22 data/units/Merman_Spearman.cfg:21
+#: data/units/Merman_Spearman.cfg:61 data/units/Saurian_Ambusher.cfg:23
+#: data/units/Saurian_Ambusher.cfg:41 data/units/Saurian_Flanker.cfg:25
+#: data/units/Saurian_Flanker.cfg:43 data/units/Saurian_Skirmisher.cfg:22
+#: data/units/Saurian_Skirmisher.cfg:40 data/units/Spearman.cfg:61
 #: data/units/Spearman.cfg:112
 msgid "spear"
 msgstr "hasta"
@@ -5357,11 +5348,11 @@ msgstr ""
 "Nota Praecipua: qui unguibus lupi diri laceratur venenabitur; victimae huius "
 "veneni adsidue damnabuntur usque sanantur in pago vel a sanatore."
 
-#: data/units/Direwolf_Rider.cfg:38 data/units/Drake_Burner.cfg:34
-#: data/units/Drake_Fire.cfg:36 data/units/Drake_Inferno.cfg:25
-#: data/units/Ghoul.cfg:30 data/units/Gryphon.cfg:22
+#: data/units/Direwolf_Rider.cfg:38 data/units/Drake_Burner.cfg:35
+#: data/units/Drake_Fire.cfg:37 data/units/Drake_Inferno.cfg:26
+#: data/units/Ghoul.cfg:31 data/units/Gryphon.cfg:22
 #: data/units/Gryphon_Master.cfg:23 data/units/Gryphon_Rider.cfg:22
-#: data/units/Necrophage.cfg:30 data/units/Nightgaunt.cfg:50
+#: data/units/Necrophage.cfg:31 data/units/Nightgaunt.cfg:50
 #: data/units/Shadow.cfg:24 data/units/Skeletal_Dragon.cfg:50
 #: data/units/Sleeping_Gryphon.cfg:19
 msgid "claws"
@@ -5388,7 +5379,7 @@ msgstr ""
 msgid "Drake Blademaster"
 msgstr "Dominus Laminarum Draculorum"
 
-#: data/units/Drake_Blademaster.cfg:20
+#: data/units/Drake_Blademaster.cfg:21
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of this is the black and white warpaint they display in battle."
@@ -5396,12 +5387,12 @@ msgstr ""
 "Draculi qui dominantur usi gladii in ordinem praecipuam iurantur. Signum "
 "huius est pigmentum belli nigrum et album quod monstrant in certamine."
 
-#: data/units/Drake_Blademaster.cfg:46 data/units/Drake_Burner.cfg:53
-#: data/units/Drake_Fighter.cfg:56 data/units/Drake_Fire.cfg:54
-#: data/units/Drake_Flameheart.cfg:55 data/units/Drake_Flare.cfg:44
-#: data/units/Drake_Glider.cfg:46 data/units/Drake_Hurricane.cfg:50
-#: data/units/Drake_Inferno.cfg:43 data/units/Drake_Sky.cfg:51
-#: data/units/Drake_Warrior.cfg:45 data/units/Fire_Dragon.cfg:59
+#: data/units/Drake_Blademaster.cfg:47 data/units/Drake_Burner.cfg:54
+#: data/units/Drake_Fighter.cfg:57 data/units/Drake_Fire.cfg:55
+#: data/units/Drake_Flameheart.cfg:56 data/units/Drake_Flare.cfg:45
+#: data/units/Drake_Glider.cfg:47 data/units/Drake_Hurricane.cfg:51
+#: data/units/Drake_Inferno.cfg:44 data/units/Drake_Sky.cfg:52
+#: data/units/Drake_Warrior.cfg:46 data/units/Fire_Dragon.cfg:59
 msgid "fire breath"
 msgstr "halitus ignis"
 
@@ -5409,7 +5400,7 @@ msgstr "halitus ignis"
 msgid "Drake Burner"
 msgstr "Incenditor Draculorum"
 
-#: data/units/Drake_Burner.cfg:18
+#: data/units/Drake_Burner.cfg:19
 msgid ""
 "Drake Burners are the few and the proud, who have inherited most truly the "
 "strengths of their remote ancestors, especially the ability to breathe fire. "
@@ -5470,7 +5461,7 @@ msgstr ""
 msgid "Drake Fighter"
 msgstr "Pugnator Draculorum"
 
-#: data/units/Drake_Fighter.cfg:18
+#: data/units/Drake_Fighter.cfg:19
 msgid ""
 "Drake Fighters wield curved scimitars with deadly skill, and possess the "
 "fire breathing skills of their ancestors. The most skilled Fighters go on to "
@@ -5479,7 +5470,7 @@ msgstr ""
 "Pugnatores Draculorum acinaces flexos magna peritia gerunt et facultates "
 "spirandi ignem maiorum. Pugnatores periti fient Bellatores Draculorum."
 
-#: data/units/Drake_Fighter.cfg:33
+#: data/units/Drake_Fighter.cfg:34
 msgid "scimitar"
 msgstr "acinaces"
 
@@ -5487,7 +5478,7 @@ msgstr "acinaces"
 msgid "Fire Drake"
 msgstr "Draculus Ignis"
 
-#: data/units/Drake_Fire.cfg:18
+#: data/units/Drake_Fire.cfg:19
 msgid ""
 "The great fire drakes are masters of their internal fire. Clad in shining "
 "armor, they belch columns of flame at any who oppose them, a testament to "
@@ -5501,7 +5492,7 @@ msgstr ""
 msgid "Drake Flameheart"
 msgstr "Cor Flammae Draculorum"
 
-#: data/units/Drake_Flameheart.cfg:23
+#: data/units/Drake_Flameheart.cfg:24
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves, have veins which course with fire rather than blood. "
@@ -5524,7 +5515,7 @@ msgstr ""
 msgid "Drake Flare"
 msgstr "Flamma Draculorum"
 
-#: data/units/Drake_Flare.cfg:22
+#: data/units/Drake_Flare.cfg:23
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
@@ -5564,7 +5555,7 @@ msgstr ""
 msgid "Drake Glider"
 msgstr "Labens Draculorum"
 
-#: data/units/Drake_Glider.cfg:20
+#: data/units/Drake_Glider.cfg:21
 msgid ""
 "Drake Gliders wear as little armor as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
@@ -5579,8 +5570,8 @@ msgstr ""
 "uti possunt Labentes, ad adversarios adfligendos in obsequium. Labentes "
 "optimi in ordine Draculorum Caeli qui altissimi volant accepti possunt."
 
-#: data/units/Drake_Glider.cfg:23 data/units/Drake_Hurricane.cfg:27
-#: data/units/Drake_Sky.cfg:28
+#: data/units/Drake_Glider.cfg:24 data/units/Drake_Hurricane.cfg:28
+#: data/units/Drake_Sky.cfg:29
 msgid "slam"
 msgstr "adfligere"
 
@@ -5588,7 +5579,7 @@ msgstr "adfligere"
 msgid "Hurricane Drake"
 msgstr "Draculus Procellae"
 
-#: data/units/Drake_Hurricane.cfg:19
+#: data/units/Drake_Hurricane.cfg:20
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite amongst "
 "those drakes which are gifted with flight. Soaring high in the air, they can "
@@ -5602,7 +5593,7 @@ msgstr ""
 msgid "Inferno Drake"
 msgstr "Infernus Draculorum"
 
-#: data/units/Drake_Inferno.cfg:19
+#: data/units/Drake_Inferno.cfg:20
 msgid ""
 "The flying configurations known as Drake Infernos are the masters of the "
 "fire they breathe, and rival their predecessors the Dragons in their ability "
@@ -5620,7 +5611,7 @@ msgstr ""
 msgid "Sky Drake"
 msgstr "Draculus Caeli"
 
-#: data/units/Drake_Sky.cfg:20
+#: data/units/Drake_Sky.cfg:21
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
@@ -5657,7 +5648,7 @@ msgstr "bipennis"
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:47
 #: data/units/Goblin_Impaler.cfg:29 data/units/Halbardier.cfg:34
 #: data/units/Halbardier.cfg:75 data/units/Javelineer.cfg:28
-#: data/units/Pikeman.cfg:30 data/units/Spearman.cfg:67
+#: data/units/Pikeman.cfg:57 data/units/Spearman.cfg:67
 msgid "firststrike"
 msgstr "ictus primus"
 
@@ -5681,7 +5672,7 @@ msgstr ""
 msgid "Drake Warrior"
 msgstr "Pugnator Draculorum"
 
-#: data/units/Drake_Warrior.cfg:19
+#: data/units/Drake_Warrior.cfg:20
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors. The great strength of their kind allows them to "
@@ -6212,7 +6203,7 @@ msgstr ""
 "venti gelidi ex plano aetheriali et radicibus magice vivefactis pulsantes; "
 "radicibus hostes in loco adligant."
 
-#: data/units/Elvish_Enchantress.cfg:65 data/units/Elvish_Shaman.cfg:46
+#: data/units/Elvish_Enchantress.cfg:65 data/units/Elvish_Shaman.cfg:47
 #: data/units/Elvish_Sorceress.cfg:65
 msgid "entangle"
 msgstr "impedire"
@@ -6467,7 +6458,7 @@ msgstr ""
 msgid "female^Elvish Shaman"
 msgstr "Flamen Dryadalis"
 
-#: data/units/Elvish_Shaman.cfg:24
+#: data/units/Elvish_Shaman.cfg:25
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -6785,7 +6776,7 @@ msgstr ""
 msgid "Ghoul"
 msgstr "Pallidus"
 
-#: data/units/Ghoul.cfg:20
+#: data/units/Ghoul.cfg:21
 msgid ""
 "Only those who have delved into the circles of necromancy know what must be "
 "done to turn a person into a ghoul, and it is a secret they are not telling. "
@@ -6927,8 +6918,8 @@ msgstr ""
 msgid "torch"
 msgstr "fax"
 
-#: data/units/Goblin_Pillager.cfg:40 data/units/Merman_Entangler.cfg:30
-#: data/units/Merman_Netcaster.cfg:29
+#: data/units/Goblin_Pillager.cfg:40 data/units/Merman_Entangler.cfg:31
+#: data/units/Merman_Netcaster.cfg:30
 msgid "net"
 msgstr "rete"
 
@@ -7448,7 +7439,7 @@ msgstr ""
 msgid "Mage"
 msgstr "Magus"
 
-#: data/units/Mage.cfg:23 data/units/Mage.cfg:106
+#: data/units/Mage.cfg:23 data/units/Mage.cfg:128
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -7490,12 +7481,12 @@ msgstr ""
 "Nota Praecipua: magi oppugnationes a procul magicales sunt et semper "
 "probabilitatem bonam habent feriendi."
 
-#: data/units/Mage.cfg:47 data/units/Mage.cfg:130
+#: data/units/Mage.cfg:69 data/units/Mage.cfg:174
 #: data/units/Silver_Mage.cfg:100 data/units/Silver_Mage.cfg:236
 msgid "missile"
 msgstr "telum magicum"
 
-#: data/units/Mage.cfg:86
+#: data/units/Mage.cfg:108
 msgid "female^Mage"
 msgstr "Striga"
 
@@ -7504,7 +7495,7 @@ msgid "Mage of Light"
 msgstr "Magus Luminis"
 
 #: data/units/Mage_of_Light.cfg:14 data/units/Mage_of_Light.cfg:91
-#: data/units/Mermaid_Diviner.cfg:11
+#: data/units/Mermaid_Diviner.cfg:12
 msgid "illuminates,cures"
 msgstr "illustrat,sanat"
 
@@ -7539,15 +7530,15 @@ msgstr ""
 "quae potestatem lucis in areis vicinis auget."
 
 #: data/units/Mage_of_Light.cfg:51 data/units/Mage_of_Light.cfg:128
-#: data/units/Mermaid_Diviner.cfg:48 data/units/Mermaid_Priestess.cfg:43
-#: data/units/White_Mage.cfg:49 data/units/White_Mage.cfg:124
+#: data/units/Mermaid_Diviner.cfg:49 data/units/Mermaid_Priestess.cfg:44
+#: data/units/White_Mage.cfg:71 data/units/White_Mage.cfg:168
 msgid "lightbeam"
 msgstr "radius lucis"
 
 #: data/units/Mage_of_Light.cfg:52 data/units/Mage_of_Light.cfg:129
-#: data/units/Mermaid_Diviner.cfg:49 data/units/Mermaid_Priestess.cfg:44
-#: data/units/Paladin.cfg:32 data/units/White_Mage.cfg:50
-#: data/units/White_Mage.cfg:125
+#: data/units/Mermaid_Diviner.cfg:50 data/units/Mermaid_Priestess.cfg:45
+#: data/units/Paladin.cfg:32 data/units/White_Mage.cfg:72
+#: data/units/White_Mage.cfg:169
 msgid "holy"
 msgstr "sanctus"
 
@@ -7616,7 +7607,7 @@ msgstr ""
 msgid "female^Mermaid Diviner"
 msgstr "Augur Nereia"
 
-#: data/units/Mermaid_Diviner.cfg:28
+#: data/units/Mermaid_Diviner.cfg:29
 msgid ""
 "Mermaid Priestesses meet their calling with a fervor that leaves their human "
 "counterparts somewhat taken aback. This may have its roots in a legend they "
@@ -7647,7 +7638,7 @@ msgstr ""
 msgid "female^Mermaid Enchantress"
 msgstr "Incantatrix Nereia"
 
-#: data/units/Mermaid_Enchantress.cfg:20
+#: data/units/Mermaid_Enchantress.cfg:21
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different. Those who master this ability are held in "
@@ -7669,8 +7660,8 @@ msgstr ""
 "Nota Praecipua: nereiae aspergines aquae magicales sunt et semper "
 "probabilitatem bonam habent feriendi."
 
-#: data/units/Mermaid_Enchantress.cfg:40 data/units/Mermaid_Initiate.cfg:42
-#: data/units/Mermaid_Siren.cfg:69 data/units/Sea_Hag.cfg:31
+#: data/units/Mermaid_Enchantress.cfg:41 data/units/Mermaid_Initiate.cfg:43
+#: data/units/Mermaid_Siren.cfg:70
 msgid "water spray"
 msgstr "aspergo aquae"
 
@@ -7678,7 +7669,7 @@ msgstr "aspergo aquae"
 msgid "female^Mermaid Initiate"
 msgstr "Initiata Nereia"
 
-#: data/units/Mermaid_Initiate.cfg:22
+#: data/units/Mermaid_Initiate.cfg:23
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -7704,7 +7695,7 @@ msgstr ""
 msgid "female^Mermaid Priestess"
 msgstr "Sacerdos Nereia"
 
-#: data/units/Mermaid_Priestess.cfg:23
+#: data/units/Mermaid_Priestess.cfg:24
 msgid ""
 "Mermen share the creed that much of humanity follows, though for cultural "
 "reasons, the upholding of this is left to the mermaids, who are more "
@@ -7734,7 +7725,7 @@ msgstr ""
 msgid "Siren"
 msgstr "Siren"
 
-#: data/units/Mermaid_Siren.cfg:23
+#: data/units/Mermaid_Siren.cfg:24
 msgid ""
 "The faerie nature of the mermaids is strongest in the Sirens, whose "
 "connection to naia often causes them to be mistaken for naiads themselves. "
@@ -7761,34 +7752,15 @@ msgstr ""
 "Nota Praecipua: sirenis oppugnationes magicales sunt et semper "
 "probabilitatem bonam habent feriendi."
 
-#: data/units/Mermaid_Siren.cfg:27
+#: data/units/Mermaid_Siren.cfg:28
 msgid "naia touch"
 msgstr "tactus naiadis"
-
-#: data/units/Merman.cfg:6
-msgid "Merman"
-msgstr "Nereius"
-
-#: data/units/Merman.cfg:20 data/units/Merman_Fighter.cfg:20
-msgid ""
-"Skilled creatures of the sea, Mermen are powerful and quick in any watery "
-"environment, but struggle greatly to move on land."
-msgstr ""
-"Creaturae peritae maris, Nereii potentes et rapidi sunt in vicinia ulla "
-"aquosa, sed valde nituntur ut se in terra moveant."
-
-#: data/units/Merman.cfg:23 data/units/Merman_Fighter.cfg:23
-#: data/units/Merman_Hoplite.cfg:37 data/units/Merman_Triton.cfg:24
-#: data/units/Merman_Triton.cfg:36 data/units/Merman_Warrior.cfg:23
-#: data/units/Naga.cfg:24 data/units/Sea_Hag.cfg:24 data/units/Triton.cfg:26
-msgid "trident"
-msgstr "tridens"
 
 #: data/units/Merman_Entangler.cfg:3
 msgid "Merman Entangler"
 msgstr "Impeditor Nereius"
 
-#: data/units/Merman_Entangler.cfg:19
+#: data/units/Merman_Entangler.cfg:20
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
 "well; those who master it are valued and revered by their comrades. This "
@@ -7811,11 +7783,25 @@ msgstr ""
 msgid "Merman Fighter"
 msgstr "Pugnator Nereius"
 
+#: data/units/Merman_Fighter.cfg:21
+msgid ""
+"Skilled creatures of the sea, Mermen are powerful and quick in any watery "
+"environment, but struggle greatly to move on land."
+msgstr ""
+"Creaturae peritae maris, Nereii potentes et rapidi sunt in vicinia ulla "
+"aquosa, sed valde nituntur ut se in terra moveant."
+
+#: data/units/Merman_Fighter.cfg:24 data/units/Merman_Hoplite.cfg:38
+#: data/units/Merman_Triton.cfg:25 data/units/Merman_Triton.cfg:37
+#: data/units/Merman_Warrior.cfg:24
+msgid "trident"
+msgstr "tridens"
+
 #: data/units/Merman_Hoplite.cfg:3
 msgid "Merman Hoplite"
 msgstr "Hoplomachus Nereius"
 
-#: data/units/Merman_Hoplite.cfg:34
+#: data/units/Merman_Hoplite.cfg:35
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -7831,7 +7817,7 @@ msgstr ""
 msgid "Merman Hunter"
 msgstr "Venator Nereius"
 
-#: data/units/Merman_Hunter.cfg:17
+#: data/units/Merman_Hunter.cfg:18
 msgid ""
 "The skills employed by mermen in spear-fishing are easily translated into "
 "warfare, especially against those who are not at home in the water. In times "
@@ -7847,7 +7833,7 @@ msgstr ""
 msgid "Merman Javelineer"
 msgstr "Pilatus Nereius"
 
-#: data/units/Merman_Javelineer.cfg:18
+#: data/units/Merman_Javelineer.cfg:19
 msgid ""
 "Those mermen who master the art of javelinry can become nearly as effective "
 "as an archer - though the heft of their weapons impedes their range, the "
@@ -7863,7 +7849,7 @@ msgstr ""
 msgid "Merman Netcaster"
 msgstr "Retiarius Nereius"
 
-#: data/units/Merman_Netcaster.cfg:18
+#: data/units/Merman_Netcaster.cfg:19
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets. These are not very damaging in themselves, but they "
@@ -7892,7 +7878,7 @@ msgstr ""
 msgid "Merman Spearman"
 msgstr "Hastatus Nereius"
 
-#: data/units/Merman_Spearman.cfg:17
+#: data/units/Merman_Spearman.cfg:18
 msgid ""
 "Archery is little favored by the mermen, for whom javelinry serves the same "
 "function. Though thrown javelins are of little use under the water, they are "
@@ -7911,7 +7897,7 @@ msgstr ""
 msgid "Merman Triton"
 msgstr "Triton Nereius"
 
-#: data/units/Merman_Triton.cfg:21 data/units/Triton.cfg:23
+#: data/units/Merman_Triton.cfg:22
 msgid ""
 "Tritons are masters of the sea. Skilled in use of the trident, Tritons "
 "easily defeat any enemy foolish enough to wander into their preferred "
@@ -7925,7 +7911,7 @@ msgstr ""
 msgid "Merman Warrior"
 msgstr "Bellator Nereius"
 
-#: data/units/Merman_Warrior.cfg:20
+#: data/units/Merman_Warrior.cfg:21
 msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."
@@ -7979,7 +7965,7 @@ msgstr ""
 msgid "Naga Fighter"
 msgstr "Pugnator Nagarum"
 
-#: data/units/Naga-Fighter.cfg:18 data/units/Naga-Fighter.cfg:53
+#: data/units/Naga-Fighter.cfg:19 data/units/Naga-Fighter.cfg:55
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
 "mobility in water, giving them a whole world forbidden to land dwellers. "
@@ -7993,7 +7979,7 @@ msgstr ""
 "efficit ut trepidatio habeant ante gurgem. Parvae sunt et aliquantum "
 "fragiles formae, sed saepe multo perniciores quam adversarii."
 
-#: data/units/Naga-Fighter.cfg:39
+#: data/units/Naga-Fighter.cfg:40
 msgid "Nagini Fighter"
 msgstr "Pugnatrix Nagarum"
 
@@ -8001,7 +7987,7 @@ msgstr "Pugnatrix Nagarum"
 msgid "Naga Myrmidon"
 msgstr "Dimachaerus Nagarum"
 
-#: data/units/Naga-Myrmidon.cfg:23
+#: data/units/Naga-Myrmidon.cfg:24
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
 "the Myrmidon, masters of their twin-bladed art. They strike as fast as the "
@@ -8015,11 +8001,11 @@ msgstr ""
 "gratia. Non solum inimici potentes in agris apertis sunt, sed facultas eorum "
 "natandi eis mobilitatem funestam permittit."
 
-#: data/units/Naga-Myrmidon.cfg:44
+#: data/units/Naga-Myrmidon.cfg:45
 msgid "Nagini Myrmidon"
 msgstr "Dimachaera Nagarum"
 
-#: data/units/Naga-Myrmidon.cfg:63
+#: data/units/Naga-Myrmidon.cfg:65
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -8037,7 +8023,7 @@ msgstr ""
 msgid "Naga Warrior"
 msgstr "Bellator Nagarum"
 
-#: data/units/Naga-Warrior.cfg:22 data/units/Naga-Warrior.cfg:61
+#: data/units/Naga-Warrior.cfg:23 data/units/Naga-Warrior.cfg:63
 msgid ""
 "Many of the young warriors of the naga aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -8053,21 +8039,9 @@ msgstr ""
 "vetent. Hoc eos potentes facit in terra, sed frictio aquae valde impedit "
 "facultatem ad hoc facendum."
 
-#: data/units/Naga-Warrior.cfg:43
+#: data/units/Naga-Warrior.cfg:44
 msgid "Nagini Warrior"
 msgstr "Bellatrix Nagarum"
-
-#: data/units/Naga.cfg:6
-msgid "female^Naga"
-msgstr "Naga"
-
-#: data/units/Naga.cfg:21
-msgid ""
-"Like the Mermen, Nagas are inhabitants of the seas. Smaller and more nimble "
-"than their counterparts, they share a distaste for dry land."
-msgstr ""
-"Sicut Nereii, Nagae maria inhabitant. Minores et perniciores paribus, "
-"partiuntur fastidium terrae aridae."
 
 #: data/units/Necromancer.cfg:3
 msgid "Necromancer"
@@ -8100,7 +8074,7 @@ msgstr ""
 msgid "Necrophage"
 msgstr "Necrophagus"
 
-#: data/units/Necrophage.cfg:20
+#: data/units/Necrophage.cfg:21
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -8235,7 +8209,7 @@ msgstr ""
 msgid "Orcish Assassin"
 msgstr "Sicarius Orcarum"
 
-#: data/units/Orcish_Assassin.cfg:18
+#: data/units/Orcish_Assassin.cfg:19
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs "
 "- especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -8256,7 +8230,7 @@ msgstr ""
 "Nota Praecipua: Sicarii Orcorum veneno in cultris iactis utuntur, quorum "
 "victimae adsidue damnantur usque curantur in pago vel a sanatore."
 
-#: data/units/Orcish_Assassin.cfg:38 data/units/Orcish_Slayer.cfg:44
+#: data/units/Orcish_Assassin.cfg:39 data/units/Orcish_Slayer.cfg:45
 msgid "throwing knives"
 msgstr "cultri iacti"
 
@@ -8399,7 +8373,7 @@ msgstr ""
 msgid "Orcish Slayer"
 msgstr "Interfector Orcorum"
 
-#: data/units/Orcish_Slayer.cfg:19
+#: data/units/Orcish_Slayer.cfg:20
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -8625,7 +8599,7 @@ msgstr ""
 "Nota Praecipua: longitudo teli permittit ut dolatus primum oppugnet in "
 "certamine, etsi defensor est."
 
-#: data/units/Pikeman.cfg:25
+#: data/units/Pikeman.cfg:52
 msgid "pike"
 msgstr "hasta longa"
 
@@ -8685,7 +8659,7 @@ msgstr "Filia Reginae"
 msgid "Red Mage"
 msgstr "Magus Ruber"
 
-#: data/units/Red_Mage.cfg:24 data/units/Red_Mage.cfg:121
+#: data/units/Red_Mage.cfg:24 data/units/Red_Mage.cfg:143
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the blue robes of an apprentice, and given the red robes of a master. The "
@@ -8717,7 +8691,7 @@ msgstr ""
 "Nota Praecipua: magi rubri globi ignis magicales sunt et semper "
 "probabilitatem bonam habent feriendi."
 
-#: data/units/Red_Mage.cfg:100
+#: data/units/Red_Mage.cfg:122
 msgid "female^Red Mage"
 msgstr "Striga Rubra"
 
@@ -8793,23 +8767,11 @@ msgstr ""
 "significatio. Fiducia et peritia in concursu bona optima sunt eorum, ob quas "
 "bene cognoscuntur."
 
-#: data/units/Saurian.cfg:20
-msgid ""
-"Saurians are skilled in the use of the spear. Despite their lethargic cold "
-"blooded heritage, and their relative frailty, they are highly valued as "
-"scouts as the can navigate through rough terrain and around opponents. The "
-"best Saurians go on to become Saurian Warriors."
-msgstr ""
-"Lacertae peritae sunt hasta. Quamquam hereditas earum veternosa et sanguinis "
-"frigidi est et fragiles sunt ex comparatione, magnae aestimantur "
-"exploratores, quia per agros asperos navigare possunt et circum adversarios. "
-"Lacertae optimae fiunt Bellatores Lacertarum."
-
 #: data/units/Saurian_Ambusher.cfg:4
 msgid "Saurian Ambusher"
 msgstr "Insidiator Lacertarum"
 
-#: data/units/Saurian_Ambusher.cfg:18
+#: data/units/Saurian_Ambusher.cfg:19
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8827,7 +8789,7 @@ msgstr ""
 msgid "Saurian Flanker"
 msgstr "Circumeuns Lacertarum"
 
-#: data/units/Saurian_Flanker.cfg:20
+#: data/units/Saurian_Flanker.cfg:21
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8862,7 +8824,7 @@ msgstr ""
 msgid "frost blast"
 msgstr "flatus gelus"
 
-#: data/units/Saurian_Skirmisher.cfg:4
+#: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
 msgstr "Excursor Lacertarum"
 
@@ -8907,36 +8869,6 @@ msgstr ""
 "ex comparatione, Tribuarii Lacertarum magni aestimantur sanatores quia "
 "auxilium sociis praebere possunt neglegentes agros et adversarios. Praeter "
 "facultates sanandi scientes sunt magicae frigidae."
-
-#: data/units/Saurian_Warrior.cfg:5
-msgid "Saurian Warrior"
-msgstr "Bellator Lacertarum"
-
-#: data/units/Saurian_Warrior.cfg:21
-msgid ""
-"Saurian Warriors are highly skilled in the use of the spear. Despite their "
-"lethargic cold blooded heritage, and their relative frailty, they are highly "
-"valued as scouts as they can navigate through rough terrain and around "
-"opponents. Saurian Warriors possess the strength to take full advantage of "
-"this fact."
-msgstr ""
-"Bellatores Lacertarum valde periti sunt hasta. Quamquam hereditas earum "
-"veternosa et sanguinis frigidi est et fragiles sunt ex comparatione, magni "
-"aestimantur exploratores, quia per agros asperos navigare possunt et circum "
-"adversarios. Bellatores Lacertarum potestatem necessarium habent ut hoc "
-"plene utantur."
-
-#: data/units/Sea_Hag.cfg:6
-msgid "female^Sea Hag"
-msgstr "Anus Maris"
-
-#: data/units/Sea_Hag.cfg:21
-msgid ""
-"Sea Hags are older and more experienced Nagas who have learned to control "
-"the water magic."
-msgstr ""
-"Anus Maris seniores et expertiores Nagae sunt qui didiscerunt imperium "
-"magicae aquosae."
 
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
@@ -9128,7 +9060,7 @@ msgstr ""
 "mortem, et praesentia eorum ispa saepe absterret eos qui dominum eorum "
 "provocare volunt."
 
-#: data/units/Skeleton.cfg:61 data/units/Skeleton_Archer.cfg:3
+#: data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
 msgstr "Sagittarius Osseus"
 
@@ -9342,10 +9274,6 @@ msgstr ""
 "Inlaqueatores solent laborare ad cibum latronibus et proscriptis "
 "providendum. Experientia venandi fit ut pretiosiores sunt noctu et in silvis "
 "paludinibusque."
-
-#: data/units/Triton.cfg:6
-msgid "Triton"
-msgstr "Triton"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
@@ -9567,7 +9495,7 @@ msgstr ""
 msgid "White Mage"
 msgstr "Magus Albus"
 
-#: data/units/White_Mage.cfg:30 data/units/White_Mage.cfg:105
+#: data/units/White_Mage.cfg:30 data/units/White_Mage.cfg:127
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -9600,7 +9528,7 @@ msgstr ""
 "immortuos et quoque in vivos aliquantulum. Magi albi possunt unitates "
 "vicinas sanare et a veneno curare."
 
-#: data/units/White_Mage.cfg:81
+#: data/units/White_Mage.cfg:103
 msgid "female^White Mage"
 msgstr "Striga Alba"
 
@@ -9748,159 +9676,164 @@ msgstr "-   Inventor artium ingenuarum"
 msgid "+Developers"
 msgstr "+Implementores"
 
-#: src/about.cpp:59
+#: src/about.cpp:60
 msgid "+General Purpose Administrators"
 msgstr "+Administratores Communes"
 
-#: src/about.cpp:63
+#: src/about.cpp:64
 msgid "+Artwork and graphics designers"
 msgstr "+Inventores artium ingenuarum"
 
-#: src/about.cpp:91
+#: src/about.cpp:92
 msgid "+Music"
 msgstr "+Musica"
 
-#: src/about.cpp:97
+#: src/about.cpp:98
 msgid "+Scenario Designers"
 msgstr "+Inventores Missionum"
 
-#: src/about.cpp:106
+#: src/about.cpp:107
 msgid "+Multiplayer Maps"
 msgstr "+Chartae Plurum Lusorum"
 
-#: src/about.cpp:111
+#: src/about.cpp:112
 msgid "+Packagers"
 msgstr "+Factores Fasciculorum"
 
-#: src/about.cpp:121
+#: src/about.cpp:122
 msgid "+Miscellaneous"
 msgstr "+Varii"
 
-#: src/about.cpp:127
+#: src/about.cpp:129
 msgid "+Internationalization Managers"
 msgstr "+Moderatores Redditorum"
 
-#: src/about.cpp:134
+#: src/about.cpp:136
 msgid "+Afrikaans Translation"
 msgstr "+Reditio africana australis"
 
-#: src/about.cpp:138
+#: src/about.cpp:142
 msgid "+Basque Translation"
 msgstr "+Reditio basca"
 
-#: src/about.cpp:143
+#: src/about.cpp:147
 msgid "+Bulgarian Translation"
 msgstr "+Reditio bulgara"
 
-#: src/about.cpp:147
+#: src/about.cpp:151
 msgid "+Catalan Translation"
 msgstr "+Reditio cataluniensis"
 
-#: src/about.cpp:156
+#: src/about.cpp:161
 msgid "+Chinese Translation"
 msgstr "+Reditio serica"
 
-#: src/about.cpp:159
+#: src/about.cpp:164
 msgid "+Czech Translation"
 msgstr "+Reditio ceca"
 
-#: src/about.cpp:171
+#: src/about.cpp:176
 msgid "+Danish Translation"
 msgstr "+Reditio danica"
 
-#: src/about.cpp:178
+#: src/about.cpp:183
 msgid "+Dutch Translation"
 msgstr "+Reditio batava"
 
-#: src/about.cpp:186
+#: src/about.cpp:191
 msgid "+English (GB) Translation"
 msgstr "+Reditio anglica (brittanica)"
 
-#: src/about.cpp:189
+#: src/about.cpp:194
 msgid "+Estonian Translation"
 msgstr "+Reditio estonica"
 
-#: src/about.cpp:192
+#: src/about.cpp:197
 msgid "+Finnish Translation"
 msgstr "+Reditio finnica"
 
-#: src/about.cpp:198
+#: src/about.cpp:203
 msgid "+French Translation"
 msgstr "+Reditio gallica"
 
-#: src/about.cpp:217
+#: src/about.cpp:222
 msgid "+German Translation"
 msgstr "+Reditio germanica"
 
-#: src/about.cpp:229
+#: src/about.cpp:234
 msgid "+Greek Translation"
 msgstr "+Reditio graeca"
 
-#: src/about.cpp:235
+#: src/about.cpp:240
+#, fuzzy
+msgid "+Hebrew Translation"
+msgstr "+Reditio graeca"
+
+#: src/about.cpp:243
 msgid "+Hungarian Translation"
 msgstr "+Reditio magiarensis"
 
-#: src/about.cpp:248
+#: src/about.cpp:256
 msgid "+Italian Translation"
 msgstr "+Reditio italica"
 
-#: src/about.cpp:257
+#: src/about.cpp:265
 msgid "+Japanese Translation"
 msgstr "+Reditio iaponica"
 
-#: src/about.cpp:262
+#: src/about.cpp:270
 msgid "+Latin Translation"
 msgstr "+Reditio Latina"
 
-#: src/about.cpp:265
+#: src/about.cpp:273
 msgid "+Norwegian Translation"
 msgstr "+Reditio norvegiana"
 
-#: src/about.cpp:271
+#: src/about.cpp:279
 msgid "+Polish Translation"
 msgstr "+Reditio polonica"
 
-#: src/about.cpp:281
+#: src/about.cpp:289
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Reditio lusitana (brasiliana)"
 
-#: src/about.cpp:290
+#: src/about.cpp:298
 msgid "+Russian Translation"
 msgstr "+Reditio russica"
 
-#: src/about.cpp:296
+#: src/about.cpp:304
 msgid "+Serbian Translation"
 msgstr "+Reditio serba"
 
-#: src/about.cpp:299
+#: src/about.cpp:307
 msgid "+Slovak Translation"
 msgstr "+Reditio slovaca"
 
-#: src/about.cpp:302
+#: src/about.cpp:310
 msgid "+Slovenian Translation"
 msgstr "+Reditio slovena"
 
-#: src/about.cpp:305
+#: src/about.cpp:313
 msgid "+Spanish Translation"
 msgstr "+Reditio hispanica"
 
-#: src/about.cpp:313
+#: src/about.cpp:322
 msgid "+Swedish Translation"
 msgstr "+Reditio Suecica"
 
-#: src/about.cpp:320
+#: src/about.cpp:329
 msgid "+Turkish Translation"
 msgstr "+Reditio turca"
 
-#: src/about.cpp:326
+#: src/about.cpp:335
 msgid "+Contributors"
 msgstr "+Qui confert"
 
-#: src/about.cpp:329
+#: src/about.cpp:338
 msgid "+Bots"
 msgstr "+Automata"
 
-#: src/about.cpp:365 src/help.cpp:2662
+#: src/about.cpp:374 src/help.cpp:2662
 msgid "Close"
 msgstr "Claudere"
 
@@ -9921,12 +9854,12 @@ msgstr ""
 msgid "none"
 msgstr "nulla"
 
-#: src/actions.cpp:399 src/dialogs.cpp:760 src/help.cpp:1143
+#: src/actions.cpp:399 src/dialogs.cpp:763 src/help.cpp:1143
 #: src/reports.cpp:248
 msgid "melee"
 msgstr "concursus"
 
-#: src/actions.cpp:399 src/dialogs.cpp:760 src/help.cpp:1143
+#: src/actions.cpp:399 src/dialogs.cpp:763 src/help.cpp:1143
 #: src/reports.cpp:249
 msgid "ranged"
 msgstr "e procul"
@@ -9979,31 +9912,31 @@ msgstr "venenatus"
 msgid "slowed"
 msgstr "lentifactus"
 
-#: src/actions.cpp:1934
+#: src/actions.cpp:1938
 msgid "Ambushed!"
 msgstr "Insidiae!"
 
-#: src/actions.cpp:1968
+#: src/actions.cpp:1972
 msgid "Friendly unit sighted"
 msgstr "Untitas socia vista"
 
-#: src/actions.cpp:1970
+#: src/actions.cpp:1974
 msgid "Enemy unit sighted!"
 msgstr "Unitas inimica vista!"
 
-#: src/actions.cpp:1975
+#: src/actions.cpp:1979
 msgid "$friends Friendly units sighted"
 msgstr "$friends Unitates Sociae vistae"
 
-#: src/actions.cpp:1977
+#: src/actions.cpp:1981
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies Unitates inimicae vistae!"
 
-#: src/actions.cpp:1981
+#: src/actions.cpp:1985
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Unitates vistae! ($friends sociae, $enemies inimicae)"
 
-#: src/actions.cpp:1996
+#: src/actions.cpp:2000
 msgid "(press $hotkey to continue)"
 msgstr "($hotkey premere ad pergendum)"
 
@@ -10015,91 +9948,91 @@ msgstr "Unitatem promovere"
 msgid "What should our victorious unit become?"
 msgstr "Quid unitas victoriosa fiet?"
 
-#: src/dialogs.cpp:170
+#: src/dialogs.cpp:173
 msgid "No objectives available"
 msgstr "Nullum propositum ad manum"
 
-#: src/dialogs.cpp:184
+#: src/dialogs.cpp:187
 msgid "Save Game"
 msgstr "Lusum Servare"
 
-#: src/dialogs.cpp:186
+#: src/dialogs.cpp:189
 msgid "Overwrite?"
 msgstr "Superscriberene?"
 
-#: src/dialogs.cpp:187
+#: src/dialogs.cpp:190
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Iam est nomen hoc. Visne id superscribere?"
 
-#: src/dialogs.cpp:216 src/dialogs.cpp:499
+#: src/dialogs.cpp:219 src/dialogs.cpp:502
 msgid "Don't ask me again!"
 msgstr "Noli me rursus rogitare!"
 
-#: src/dialogs.cpp:218
+#: src/dialogs.cpp:221
 msgid "Do you really want to delete this game?"
 msgstr "Visne vere hunc lusum delere?"
 
-#: src/dialogs.cpp:355
+#: src/dialogs.cpp:358
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a·%b·%d·%H:%M·%Y"
 
-#: src/dialogs.cpp:368
+#: src/dialogs.cpp:371
 msgid "#(Invalid)"
 msgstr "#(Inritus)"
 
-#: src/dialogs.cpp:373 src/game.cpp:759
+#: src/dialogs.cpp:376 src/game.cpp:754
 msgid "Campaign"
 msgstr "Stipendium"
 
-#: src/dialogs.cpp:375 src/game.cpp:1146
+#: src/dialogs.cpp:378 src/game.cpp:1144
 msgid "Multiplayer"
 msgstr "Cum lusoribus pluribus"
 
-#: src/dialogs.cpp:377
+#: src/dialogs.cpp:380
 msgid "Tutorial"
 msgstr "Schola"
 
-#: src/dialogs.cpp:385
+#: src/dialogs.cpp:388
 msgid "replay"
 msgstr "remonstrare"
 
-#: src/dialogs.cpp:387 src/multiplayer_lobby.cpp:295 src/playturn.cpp:1633
+#: src/dialogs.cpp:390 src/multiplayer_lobby.cpp:295 src/playturn.cpp:1635
 msgid "Turn"
 msgstr "Tractus"
 
-#: src/dialogs.cpp:389
+#: src/dialogs.cpp:392
 msgid "Scenario Start"
 msgstr "Initium Missionis"
 
-#: src/dialogs.cpp:392
+#: src/dialogs.cpp:395
 msgid "Difficulty: "
 msgstr "Difficultas: "
 
-#: src/dialogs.cpp:394
+#: src/dialogs.cpp:397
 msgid "Version: "
 msgstr "Versio: "
 
-#: src/dialogs.cpp:418 src/dialogs.cpp:434
+#: src/dialogs.cpp:421 src/dialogs.cpp:437
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:424
+#: src/dialogs.cpp:427
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:427
+#: src/dialogs.cpp:430
 msgid "%A, %H:%M"
 msgstr "%A,·%H:%M"
 
-#: src/dialogs.cpp:430
+#: src/dialogs.cpp:433
 msgid "%b %d"
 msgstr "%b·%d"
 
-#: src/dialogs.cpp:454
+#: src/dialogs.cpp:457
 msgid "No Saved Games"
 msgstr "Nulli Lusus Servati"
 
-#: src/dialogs.cpp:455
+#: src/dialogs.cpp:458
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
@@ -10107,15 +10040,15 @@ msgstr ""
 "Non sunt lusus servati qui restitui possunt.\n"
 "(Lusus automatice servantur sum missionem absolvis)"
 
-#: src/dialogs.cpp:474
+#: src/dialogs.cpp:477
 msgid "Delete Save"
 msgstr "Servatum Delere"
 
-#: src/dialogs.cpp:489
+#: src/dialogs.cpp:492
 msgid "Import Saved Games"
 msgstr "Lusus Servatos Importare"
 
-#: src/dialogs.cpp:490
+#: src/dialogs.cpp:493
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
 "Wesnoth. Would you like to update these to the latest version? This may take "
@@ -10125,7 +10058,7 @@ msgstr ""
 "Occidiseptentrionecontinet. Visne has versioni ultimae refacere? Potest "
 "consumere tempum nonnullum."
 
-#: src/dialogs.cpp:495
+#: src/dialogs.cpp:498
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
@@ -10135,44 +10068,44 @@ msgstr ""
 "Occidiseptentrione generatae non videntur. Visne has pligas in lusu "
 "registrare?"
 
-#: src/dialogs.cpp:550
+#: src/dialogs.cpp:553
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:550 src/game.cpp:892 src/help.cpp:1119
-#: src/multiplayer_lobby.cpp:29 src/playturn.cpp:2066 src/playturn.cpp:2246
+#: src/dialogs.cpp:553 src/game.cpp:887 src/help.cpp:1119
+#: src/multiplayer_lobby.cpp:29 src/playturn.cpp:2068 src/playturn.cpp:2248
 msgid "Name"
 msgstr "Nomen"
 
-#: src/dialogs.cpp:576
+#: src/dialogs.cpp:579
 msgid "Show replay"
 msgstr "Remonstare"
 
-#: src/dialogs.cpp:579 src/multiplayer_create.cpp:75
+#: src/dialogs.cpp:582 src/multiplayer_create.cpp:78
 msgid "Load Game"
 msgstr "Lusum Restituere"
 
-#: src/dialogs.cpp:580
+#: src/dialogs.cpp:583
 msgid "Choose the game to load"
 msgstr "Elige lusum qui restituitur"
 
-#: src/dialogs.cpp:616 src/dialogs.cpp:628
+#: src/dialogs.cpp:619 src/dialogs.cpp:631
 msgid "Profile"
 msgstr "Lineamenta"
 
-#: src/dialogs.cpp:708 src/help.cpp:1037
+#: src/dialogs.cpp:711 src/help.cpp:1037
 msgid "level"
 msgstr "e gradu"
 
-#: src/dialogs.cpp:729 src/help.cpp:1095
+#: src/dialogs.cpp:732 src/help.cpp:1095
 msgid "HP: "
 msgstr "PS: "
 
-#: src/dialogs.cpp:733 src/dialogs.cpp:741
+#: src/dialogs.cpp:736 src/dialogs.cpp:744
 msgid "XP: "
 msgstr "PE: "
 
-#: src/dialogs.cpp:746 src/help.cpp:1096
+#: src/dialogs.cpp:749 src/help.cpp:1096
 msgid "Moves: "
 msgstr "Puncta motus: "
 
@@ -10180,262 +10113,262 @@ msgstr "Puncta motus: "
 msgid "Screenshot"
 msgstr "Imago Scrinii"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:55
+#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
 msgid "OK"
 msgstr "Bene"
 
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:507
-#: src/multiplayer_create.cpp:54 src/multiplayer_wait.cpp:148
+#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:508
+#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
 msgid "Cancel"
 msgstr "Abrogare"
 
-#: src/game.cpp:400
+#: src/game.cpp:395
 msgid "The Battle for Wesnoth"
 msgstr "Proelium pro Occidiseptentrione"
 
-#: src/game.cpp:629
+#: src/game.cpp:624
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Monitum: Pliga quam restituere conaris corrupta est. Tamen restituens.\n"
 
-#: src/game.cpp:651 src/multiplayer_connect.cpp:928
+#: src/game.cpp:646 src/multiplayer_connect.cpp:929
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Servatus est ex versione alia lusus. Visne eum restituere conari?"
 
-#: src/game.cpp:659 src/game.cpp:662 src/multiplayer_connect.cpp:913
+#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:914
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Pliga quae restituere conaris corrupta est: '"
 
-#: src/game.cpp:665
+#: src/game.cpp:660
 msgid "File I/O Error while reading the game"
 msgstr "Mendum I/E pligarum dum lusus legitur"
 
-#: src/game.cpp:749
+#: src/game.cpp:744
 msgid "Get More Campaigns..."
 msgstr "Stipendia Plura Cape..."
 
-#: src/game.cpp:750
+#: src/game.cpp:745
 msgid "Download more campaigns from a server on Internet."
 msgstr "Plura stipendia ex moderatro in Interrete trahere."
 
-#: src/game.cpp:760
+#: src/game.cpp:755
 msgid "Choose the campaign you want to play:"
 msgstr "Stipendium elige quod ludere vis:"
 
-#: src/game.cpp:788
+#: src/game.cpp:783
 msgid "Difficulty"
 msgstr "Difficultas"
 
-#: src/game.cpp:789
+#: src/game.cpp:784
 msgid "Select difficulty level:"
 msgstr "Gradum difficultatis elige:"
 
-#: src/game.cpp:814
+#: src/game.cpp:809
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:817
+#: src/game.cpp:812
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:820
+#: src/game.cpp:815
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:847
+#: src/game.cpp:842
 msgid "Connect to Server"
 msgstr "Ad Moderatrum Coniungere"
 
-#: src/game.cpp:848
+#: src/game.cpp:843
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr "Iam ad moderatrum stipendiorum coniungeris ut stipendia trahas."
 
-#: src/game.cpp:849
+#: src/game.cpp:844
 msgid "Server: "
 msgstr "Moderatrum: "
 
-#: src/game.cpp:862
+#: src/game.cpp:857
 msgid "Could not connect to host."
 msgstr "Non poteram cum hospite coniungere."
 
-#: src/game.cpp:870
+#: src/game.cpp:865 src/game.cpp:1073
 msgid "Awaiting response from server"
 msgstr "Responsum a moderatro exspecto"
 
-#: src/game.cpp:883
+#: src/game.cpp:878
 msgid "Error communicating with the server."
 msgstr "Mendum in communicatione cum moderatro."
 
-#: src/game.cpp:892 src/titlescreen.cpp:183
+#: src/game.cpp:887 src/titlescreen.cpp:183
 msgid "Version"
 msgstr "Versio"
 
-#: src/game.cpp:893
+#: src/game.cpp:888
 msgid "Author"
 msgstr "Scriptor"
 
-#: src/game.cpp:893
+#: src/game.cpp:888
 msgid "Downloads"
 msgstr "Quoties tractum"
 
-#: src/game.cpp:893
+#: src/game.cpp:888
 msgid "Size"
 msgstr "Magnitudo"
 
-#: src/game.cpp:954
+#: src/game.cpp:949
 msgid "Publish campaign: "
 msgstr "Stipendium edere: "
 
-#: src/game.cpp:958
+#: src/game.cpp:953
 msgid "Delete campaign: "
 msgstr "Stipendium delere: "
 
-#: src/game.cpp:962
+#: src/game.cpp:957
 msgid "There are no campaigns available for download from this server."
 msgstr "Non sunt stipendia ad manum quae tractari possunt ex hoc moderatruo."
 
-#: src/game.cpp:969
+#: src/game.cpp:964
 msgid "Choose the campaign to download."
 msgstr "Stipendium eligere quod trahendum est."
 
-#: src/game.cpp:969
+#: src/game.cpp:964
 msgid "Get Campaign"
 msgstr "Stipendium Accipere"
 
-#: src/game.cpp:989
+#: src/game.cpp:984
 msgid "Downloading campaign..."
 msgstr "Stipendium trahitur..."
 
-#: src/game.cpp:1008
+#: src/game.cpp:1003
 msgid "Cannot rescan the filesystem"
 msgstr "Non potest systema pligarum rursus scannere"
 
-#: src/game.cpp:1020
+#: src/game.cpp:1018
 msgid "Campaign Installed"
 msgstr "Stipendium Inauguratur"
 
-#: src/game.cpp:1020
+#: src/game.cpp:1018
 msgid "The campaign has been installed."
 msgstr "Stipendium inauguratum est."
 
-#: src/game.cpp:1022
+#: src/game.cpp:1020
 msgid "Network communication error."
 msgstr "Menda communicationis retis."
 
-#: src/game.cpp:1024
+#: src/game.cpp:1022
 msgid "Remote host disconnected."
 msgstr "Hospes remotus disiungitur."
 
-#: src/game.cpp:1026
+#: src/game.cpp:1024
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Quaestio erat in creando pligas necessarias inaugurationi huius stipendii."
 
-#: src/game.cpp:1038 src/game.cpp:1077 src/game.cpp:1102
+#: src/game.cpp:1036 src/game.cpp:1075 src/game.cpp:1100
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:218
 msgid "Connection timed out"
 msgstr "Tempus coniunctionis exit"
 
-#: src/game.cpp:1041 src/game.cpp:1079 src/game.cpp:1104
+#: src/game.cpp:1039 src/game.cpp:1077 src/game.cpp:1102
 msgid "The server responded with an error: \""
 msgstr "Moderatrum respondet cum mendo: \""
 
-#: src/game.cpp:1045
+#: src/game.cpp:1043
 msgid "Terms"
 msgstr "Condicio"
 
-#: src/game.cpp:1082 src/game.cpp:1107
+#: src/game.cpp:1080 src/game.cpp:1105
 msgid "Response"
 msgstr "Responsum"
 
-#: src/game.cpp:1129
+#: src/game.cpp:1127
 msgid "Join Official Server"
 msgstr "Ad Moderatrum Officiale Coniungere"
 
-#: src/game.cpp:1130
+#: src/game.cpp:1128
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "In moderatrum officiale Wesnoth lusorum plurum inire"
 
-#: src/game.cpp:1132 src/multiplayer_lobby.cpp:407
+#: src/game.cpp:1130 src/multiplayer_lobby.cpp:407
 msgid "Join Game"
 msgstr "Ad Lusum Coniungere"
 
-#: src/game.cpp:1133
+#: src/game.cpp:1131
 msgid "Join a server or hosted game"
 msgstr "Ad lusum in hospite moderatrove coniungere"
 
-#: src/game.cpp:1135
+#: src/game.cpp:1133
 msgid "Host Networked Game"
 msgstr "Lusus in Rete Hospes Esse"
 
-#: src/game.cpp:1136
+#: src/game.cpp:1134
 msgid "Host a game without using a server"
 msgstr "Lusus hospes esse sine moderatro"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1136
 msgid "Hotseat Game"
 msgstr "Lusus Sedis Calidi"
 
-#: src/game.cpp:1139
+#: src/game.cpp:1137
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Lusum lusorum plurem ludere compartentes eadem machinam."
 
-#: src/game.cpp:1141
+#: src/game.cpp:1139
 msgid "Human vs AI"
 msgstr "Homo contra IA"
 
-#: src/game.cpp:1142
+#: src/game.cpp:1140
 msgid "Play a game against AI opponents"
 msgstr "Lusum contra adversarios IA ludere"
 
-#: src/game.cpp:1148 src/multiplayer.cpp:187
+#: src/game.cpp:1146 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Inire: "
 
-#: src/game.cpp:1179 src/playcampaign.cpp:197
+#: src/game.cpp:1177 src/playcampaign.cpp:197
 msgid "The game could not be loaded: "
 msgstr "Lusus non restitui potest: "
 
-#: src/game.cpp:1181 src/playcampaign.cpp:200
+#: src/game.cpp:1179 src/playcampaign.cpp:200
 msgid "Error while playing the game: "
 msgstr "Mendum in lusione: "
 
-#: src/game.cpp:1193 src/playcampaign.cpp:203
+#: src/game.cpp:1191 src/playcampaign.cpp:203
 msgid "The game map could not be loaded: "
 msgstr "Charta lusus restitui non potest: "
 
-#: src/game.cpp:1219
+#: src/game.cpp:1215
 msgid "Language"
 msgstr "Lingua"
 
-#: src/game.cpp:1220
+#: src/game.cpp:1216
 msgid "Choose your preferred language:"
 msgstr "Linguam antepositam elige: "
 
-#: src/game.cpp:1349
+#: src/game.cpp:1345
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "Haec stipendia errores continent et restitui non possunt: "
 
-#: src/game.cpp:1354
+#: src/game.cpp:1350
 msgid "ERROR DETAILS:"
 msgstr "SINGULA ERRORIS:"
 
-#: src/game.cpp:1363
+#: src/game.cpp:1359
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Monitum: Menda in restituendo pligas configuationis lusus: '"
 
-#: src/game.cpp:1413
+#: src/game.cpp:1409
 msgid "Error loading game configuration files: '"
 msgstr "Mendum in restituendo pligas configuationis: '"
 
-#: src/game.cpp:1414
+#: src/game.cpp:1410
 msgid "' (The game will now exit)"
 msgstr "' (Lusus iam exibit)"
 
-#: src/game.cpp:1504
+#: src/game.cpp:1500
 msgid "Battle for Wesnoth"
 msgstr "Proelium pro Occidiseptentrione"
 
@@ -10471,7 +10404,7 @@ msgstr "PE Necessaria: "
 msgid "attacks"
 msgstr "oppugnationes"
 
-#: src/help.cpp:1120 src/playturn.cpp:2065 src/playturn.cpp:2245
+#: src/help.cpp:1120 src/playturn.cpp:2067 src/playturn.cpp:2247
 msgid "Type"
 msgstr "Genus"
 
@@ -10574,7 +10507,7 @@ msgstr "Praeterire"
 msgid "The End"
 msgstr "Finis"
 
-#: src/language.cpp:41 src/language.cpp:195
+#: src/language.cpp:92
 msgid "System default language"
 msgstr "Lingua solita computatri"
 
@@ -10582,59 +10515,59 @@ msgstr "Lingua solita computatri"
 msgid "?"
 msgstr "?"
 
-#: src/mapgen_dialog.cpp:91
+#: src/mapgen_dialog.cpp:95
 msgid "Close Window"
 msgstr "Fenestram Claudere"
 
-#: src/mapgen_dialog.cpp:94
+#: src/mapgen_dialog.cpp:98
 msgid "Map Generator"
 msgstr "Generator Chartarum"
 
-#: src/mapgen_dialog.cpp:99
+#: src/mapgen_dialog.cpp:103
 msgid "Players:"
 msgstr "Lusores:"
 
-#: src/mapgen_dialog.cpp:100
+#: src/mapgen_dialog.cpp:104
 msgid "Width:"
 msgstr "Amplitudo: "
 
-#: src/mapgen_dialog.cpp:101
+#: src/mapgen_dialog.cpp:105
 msgid "Height:"
 msgstr "Altitudo: "
 
-#: src/mapgen_dialog.cpp:102
+#: src/mapgen_dialog.cpp:106
 msgid "Number of Hills:"
 msgstr "Numerus Collum:"
 
-#: src/mapgen_dialog.cpp:103
+#: src/mapgen_dialog.cpp:107
 msgid "Max Hill Size:"
 msgstr "Magnitudo Maxima Collum:"
 
-#: src/mapgen_dialog.cpp:104
+#: src/mapgen_dialog.cpp:108
 msgid "Villages:"
 msgstr "Pagi: "
 
-#: src/mapgen_dialog.cpp:105
+#: src/mapgen_dialog.cpp:109
 msgid "Landform:"
 msgstr "Forma terrae: "
 
-#: src/mapgen_dialog.cpp:211
+#: src/mapgen_dialog.cpp:215
 msgid "Roads Between Castles"
 msgstr "Viae Inter Castella"
 
-#: src/mapgen_dialog.cpp:268
+#: src/mapgen_dialog.cpp:272
 msgid "/1000 tiles"
 msgstr "pro M tegulis"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Coastal"
 msgstr "Maritima"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Inland"
 msgstr "Mediterraneua"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Island"
 msgstr "Insula"
 
@@ -10700,76 +10633,76 @@ msgstr "Lusor computatri"
 msgid "(Empty slot)"
 msgstr "(Rima vacua)"
 
-#: src/multiplayer_connect.cpp:462
+#: src/multiplayer_connect.cpp:463
 msgid "No non-random sides in the current era"
 msgstr "In saeculo hoc non sunt partes infortuitae"
 
-#: src/multiplayer_connect.cpp:478
+#: src/multiplayer_connect.cpp:479
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Non possum ducem factioni $faction invenire"
 
-#: src/multiplayer_connect.cpp:486 src/multiplayer_lobby.cpp:404
+#: src/multiplayer_connect.cpp:487 src/multiplayer_lobby.cpp:404
 #: src/multiplayer_wait.cpp:146
 msgid "Game Lobby"
 msgstr "Atrium Lusus"
 
-#: src/multiplayer_connect.cpp:492 src/multiplayer_connect.cpp:501
+#: src/multiplayer_connect.cpp:493 src/multiplayer_connect.cpp:502
 msgid "Team"
 msgstr "Pars"
 
-#: src/multiplayer_connect.cpp:499
+#: src/multiplayer_connect.cpp:500
 msgid "Player/Type"
 msgstr "Lusor/Genus"
 
-#: src/multiplayer_connect.cpp:500
+#: src/multiplayer_connect.cpp:501
 msgid "Faction"
 msgstr "Factio"
 
-#: src/multiplayer_connect.cpp:502
+#: src/multiplayer_connect.cpp:503
 msgid "Color"
 msgstr "Color"
 
-#: src/multiplayer_connect.cpp:503 src/playturn.cpp:1789 src/playturn.cpp:1800
+#: src/multiplayer_connect.cpp:504 src/playturn.cpp:1791 src/playturn.cpp:1802
 msgid "Gold"
 msgstr "Aurum"
 
-#: src/multiplayer_connect.cpp:505
+#: src/multiplayer_connect.cpp:506
 msgid "Computer vs Computer"
 msgstr "Computatrum contra Computatrum"
 
-#: src/multiplayer_connect.cpp:506
+#: src/multiplayer_connect.cpp:507
 msgid "I'm Ready"
 msgstr "Paratus Sum"
 
-#: src/multiplayer_connect.cpp:524
+#: src/multiplayer_connect.cpp:525
 msgid "The scenario is invalid because it has no sides."
 msgstr "Missio invalida est quia non habet partes."
 
-#: src/multiplayer_connect.cpp:825
+#: src/multiplayer_connect.cpp:826
 msgid "Network Player"
 msgstr "Lusor ex Reti"
 
-#: src/multiplayer_connect.cpp:826
+#: src/multiplayer_connect.cpp:827
 msgid "Local Player"
 msgstr "Lusor Localis"
 
-#: src/multiplayer_connect.cpp:827
+#: src/multiplayer_connect.cpp:828
 msgid "Computer Player"
 msgstr "Lusor Computatri"
 
-#: src/multiplayer_connect.cpp:828
+#: src/multiplayer_connect.cpp:829
 msgid "Empty"
 msgstr "Vacuus"
 
-#: src/multiplayer_connect.cpp:920
+#: src/multiplayer_connect.cpp:921
 msgid "This is not a multiplayer save"
 msgstr "Hoc salvatum non est plurum lusorum"
 
-#: src/multiplayer_connect.cpp:961
+#: src/multiplayer_connect.cpp:962
 msgid "Cannot find era $era"
 msgstr "Saeculum $era non inventum"
 
-#: src/multiplayer_connect.cpp:979
+#: src/multiplayer_connect.cpp:980
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -10777,127 +10710,131 @@ msgstr ""
 "Victoria\n"
 "@Ducem ducesve hostium vincere"
 
-#: src/multiplayer_connect.cpp:1015
+#: src/multiplayer_connect.cpp:1016
 msgid "Waiting for players to join..."
 msgstr "Exspecto ut lusores coniugerint..."
 
-#: src/multiplayer_create.cpp:34 src/multiplayer_lobby.cpp:408
+#: src/multiplayer_create.cpp:37 src/multiplayer_lobby.cpp:408
 msgid "Create Game"
 msgstr "Lusum Creare"
 
-#: src/multiplayer_create.cpp:46
+#: src/multiplayer_create.cpp:49
 msgid "Name of game:"
 msgstr "Nomen lusus:"
 
-#: src/multiplayer_create.cpp:48
+#: src/multiplayer_create.cpp:51
 msgid "Era:"
 msgstr "Aetas:"
 
-#: src/multiplayer_create.cpp:49
+#: src/multiplayer_create.cpp:52
 msgid "Map to play:"
 msgstr "Charta ludenda:"
 
-#: src/multiplayer_create.cpp:50 src/multiplayer_lobby.cpp:300
+#: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:300
 #: src/multiplayer_lobby.cpp:301
 msgid "Use map settings"
 msgstr "Impostationibus chartae uti"
 
-#: src/multiplayer_create.cpp:51
+#: src/multiplayer_create.cpp:54
 msgid "Fog Of War"
 msgstr "Caligo Belli"
 
-#: src/multiplayer_create.cpp:53
+#: src/multiplayer_create.cpp:56
 msgid "Observers"
 msgstr "Spectatores"
 
-#: src/multiplayer_create.cpp:56
+#: src/multiplayer_create.cpp:59
 msgid "Regenerate"
 msgstr "Regenera"
 
-#: src/multiplayer_create.cpp:57
+#: src/multiplayer_create.cpp:60
 msgid "Settings..."
 msgstr "Impostationes..."
 
-#: src/multiplayer_create.cpp:86
+#: src/multiplayer_create.cpp:89
 msgid "The maximum turns the game will go for"
 msgstr "Tractus maximi ludus"
 
-#: src/multiplayer_create.cpp:91
+#: src/multiplayer_create.cpp:94
 msgid "The amount of income each village yields per turn"
 msgstr "Merces qui quisque pagus quoque tractu dat"
 
-#: src/multiplayer_create.cpp:96
+#: src/multiplayer_create.cpp:99
 msgid "The amount of experience a unit needs to advance"
 msgstr "Experientia necessaria ut unitas promoveatur"
 
-#: src/multiplayer_create.cpp:99
+#: src/multiplayer_create.cpp:102
 msgid "Use scenario specific settings"
 msgstr "Impostationibus missionis uti"
 
-#: src/multiplayer_create.cpp:102
+#: src/multiplayer_create.cpp:105
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Unitates inimicos videri non possunt nisi in iacto unitatum tuorum sunt"
 
-#: src/multiplayer_create.cpp:105
+#: src/multiplayer_create.cpp:108
 msgid "The map is unknown until your units explore it"
 msgstr "Charta incognita est donec exploratur"
 
-#: src/multiplayer_create.cpp:108
+#: src/multiplayer_create.cpp:111
 msgid "Allow users who are not playing to watch the game"
 msgstr "Utentes qui non ludent permittere lusum adspectare"
 
-#: src/multiplayer_create.cpp:112
+#: src/multiplayer_create.cpp:115
 msgid "Share View"
 msgstr "Vistum compartire"
 
-#: src/multiplayer_create.cpp:113
+#: src/multiplayer_create.cpp:116
 msgid "Share Maps"
 msgstr "Chartas Compartire"
 
-#: src/multiplayer_create.cpp:114
+#: src/multiplayer_create.cpp:117
 msgid "Share None"
 msgstr "Nullum Compartire"
 
-#: src/multiplayer_create.cpp:125
+#: src/multiplayer_create.cpp:128
 msgid "No multiplayer sides."
 msgstr "Sine partibus"
 
-#: src/multiplayer_create.cpp:127
+#: src/multiplayer_create.cpp:130
 msgid "No eras found"
 msgstr "Nulla saecula inventa"
 
-#: src/multiplayer_create.cpp:140
+#: src/multiplayer_create.cpp:143
 msgid "$login's game"
 msgstr "Lusus $login|ensis"
 
-#: src/multiplayer_create.cpp:172
+#: src/multiplayer_create.cpp:175
 msgid "Invalid era selected"
 msgstr "Saeculum invalidum electum"
 
-#: src/multiplayer_create.cpp:204
+#: src/multiplayer_create.cpp:207
 msgid "You must enter a name."
 msgstr "Nomen dare opus est."
 
-#: src/multiplayer_create.cpp:213
+#: src/multiplayer_create.cpp:216
 msgid "Turns: "
 msgstr "Tractus: "
 
-#: src/multiplayer_create.cpp:215
+#: src/multiplayer_create.cpp:218
 msgid "Unlimited Turns"
 msgstr "Tractus Infiniti"
 
-#: src/multiplayer_create.cpp:222
+#: src/multiplayer_create.cpp:225
 msgid "Village Gold: "
 msgstr "Aurum Pagi: "
 
-#: src/multiplayer_create.cpp:228
+#: src/multiplayer_create.cpp:231
 msgid "Experience Modifier: "
 msgstr "Immutatio Experientiae: "
 
-#: src/multiplayer_create.cpp:332
+#: src/multiplayer_create.cpp:349
 msgid "Players: "
 msgstr "Lusores: "
+
+#: src/multiplayer_create.cpp:351 src/playturn.cpp:1647 src/playturn.cpp:1661
+msgid "Error"
+msgstr "Mendum"
 
 #: src/multiplayer_lobby.cpp:29
 msgid "Map"
@@ -10999,7 +10936,7 @@ msgstr "("
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:384 src/playturn.cpp:1892
+#: src/multiplayer_wait.cpp:384 src/playturn.cpp:1894
 msgid "unit^Gold"
 msgstr "Nummis Auri"
 
@@ -11035,11 +10972,11 @@ msgstr " remonstratum"
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Visne versionem remonstrabilem missionis huius servare?"
 
-#: src/playcampaign.cpp:168 src/playcampaign.cpp:286 src/playturn.cpp:1642
+#: src/playcampaign.cpp:168 src/playcampaign.cpp:286 src/playturn.cpp:1644
 msgid "Name:"
 msgstr "Nomen:"
 
-#: src/playcampaign.cpp:176 src/playcampaign.cpp:294 src/playturn.cpp:1659
+#: src/playcampaign.cpp:176 src/playcampaign.cpp:294 src/playturn.cpp:1661
 msgid "The game could not be saved"
 msgstr "Lusus non servari potest"
 
@@ -11055,124 +10992,120 @@ msgstr "Visne lusum servare?"
 msgid "Unknown scenario: '"
 msgstr "Missio incognita: '"
 
-#: src/playlevel.cpp:607 src/playlevel.cpp:876
+#: src/playlevel.cpp:608 src/playlevel.cpp:877
 msgid "The file you have tried to load is corrupt"
 msgstr "Pliga quam restituere conaris corrupta est"
 
-#: src/playlevel.cpp:760
+#: src/playlevel.cpp:761
 msgid "Game Over"
 msgstr "Lusus Finitus"
 
-#: src/playlevel.cpp:761
+#: src/playlevel.cpp:762
 msgid "The game is over."
 msgstr "Lusus consummatus est."
 
-#: src/playlevel.cpp:844
+#: src/playlevel.cpp:845
 msgid "Remaining gold: "
 msgstr "Aurum relinquum: "
 
-#: src/playlevel.cpp:847
+#: src/playlevel.cpp:848
 msgid "Early finish bonus: "
 msgstr "Bonum quod mature finisti: "
 
-#: src/playlevel.cpp:849
+#: src/playlevel.cpp:850
 msgid "per turn"
 msgstr "pro tractu"
 
-#: src/playlevel.cpp:850
+#: src/playlevel.cpp:851
 msgid "Turns finished early: "
 msgstr "Tractus quibus mature finisti: "
 
-#: src/playlevel.cpp:852
+#: src/playlevel.cpp:853
 msgid "Bonus: "
 msgstr "Bonum: "
 
-#: src/playlevel.cpp:854
+#: src/playlevel.cpp:855
 msgid "Gold: "
 msgstr "Aurum: "
 
-#: src/playlevel.cpp:859
+#: src/playlevel.cpp:860
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "LXXX pro cento auri retinentur pro scaenario insequenti"
 
-#: src/playlevel.cpp:860
+#: src/playlevel.cpp:861
 msgid "Retained Gold: "
 msgstr "Aurum Retentum: "
 
-#: src/playlevel.cpp:865
+#: src/playlevel.cpp:866
 msgid "Victory"
 msgstr "Victoria"
 
-#: src/playlevel.cpp:866
+#: src/playlevel.cpp:867
 msgid "You have emerged victorious!"
 msgstr "Vicisti!"
 
-#: src/playlevel.cpp:870
+#: src/playlevel.cpp:871
 msgid "Scenario Report"
 msgstr "Renuntiatio Missionis"
 
-#: src/playlevel.cpp:891
+#: src/playlevel.cpp:892
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "Disiunctio retis accedit et lusus non pergit. Visne lusum servare?"
 
-#: src/playturn.cpp:87
+#: src/playturn.cpp:89
 msgid "It is now your turn"
 msgstr "Imperium nunc habes"
 
-#: src/playturn.cpp:569
+#: src/playturn.cpp:571
 msgid "Attacker"
 msgstr "Oppugnans"
 
-#: src/playturn.cpp:571
+#: src/playturn.cpp:573
 msgid "Defender"
 msgstr "Defensor"
 
-#: src/playturn.cpp:591 src/playturn.cpp:657
+#: src/playturn.cpp:593 src/playturn.cpp:659
 msgid "Damage Calculations"
 msgstr "Rationes Damni"
 
-#: src/playturn.cpp:636 src/reports.cpp:226
+#: src/playturn.cpp:638 src/reports.cpp:226
 msgid "vs"
 msgstr "contra"
 
-#: src/playturn.cpp:669
+#: src/playturn.cpp:671
 msgid "Attack Enemy"
 msgstr "Hostem Oppugnare"
 
-#: src/playturn.cpp:670
+#: src/playturn.cpp:672
 msgid "Choose weapon:"
 msgstr "Telum eligere: "
 
-#: src/playturn.cpp:1325
+#: src/playturn.cpp:1327
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Tractum nondum coepisti. Visne vere tractum finire?"
 
-#: src/playturn.cpp:1333 src/playturn.cpp:1338
+#: src/playturn.cpp:1335 src/playturn.cpp:1340
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Nonnullis unitatibus puncta motus relicta sunt. Visne vere tractum finire?"
 
-#: src/playturn.cpp:1353
+#: src/playturn.cpp:1355
 msgid "Auto-Save"
 msgstr "Servatum-Automatarium"
 
-#: src/playturn.cpp:1355
+#: src/playturn.cpp:1357
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Non poteram lusum automatice servare. Amabo, serva eum manu."
 
-#: src/playturn.cpp:1596
+#: src/playturn.cpp:1598
 msgid "Rename Unit"
 msgstr "Unitatem Renominare"
 
-#: src/playturn.cpp:1645 src/playturn.cpp:1659
-msgid "Error"
-msgstr "Mendum"
-
-#: src/playturn.cpp:1645
+#: src/playturn.cpp:1647
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -11180,47 +11113,47 @@ msgstr ""
 "Nomina servatorum punta duplicia, virgulas aut virgulas reversas non "
 "continere possunt. Amabo, elige nomen alium."
 
-#: src/playturn.cpp:1656
+#: src/playturn.cpp:1658
 msgid "Saved"
 msgstr "Servatus"
 
-#: src/playturn.cpp:1656
+#: src/playturn.cpp:1658
 msgid "The game has been saved"
 msgstr "Lusus servatus est"
 
-#: src/playturn.cpp:1788
+#: src/playturn.cpp:1790
 msgid "Leader"
 msgstr "Dux"
 
-#: src/playturn.cpp:1790
+#: src/playturn.cpp:1792
 msgid "Villages"
 msgstr "Pagi"
 
-#: src/playturn.cpp:1792
+#: src/playturn.cpp:1794
 msgid "Upkeep"
 msgstr "Impensa"
 
-#: src/playturn.cpp:1793
+#: src/playturn.cpp:1795
 msgid "Income"
 msgstr "Merces"
 
-#: src/playturn.cpp:1898
+#: src/playturn.cpp:1900
 msgid "You have no units available to recruit."
 msgstr "Non habes unitates quas conscribere potes"
 
-#: src/playturn.cpp:1910
+#: src/playturn.cpp:1912
 msgid "Recruit"
 msgstr "Conscribere"
 
-#: src/playturn.cpp:1911 src/playturn.cpp:2107
+#: src/playturn.cpp:1913 src/playturn.cpp:2109
 msgid "Select unit:"
 msgstr "Unitatem elegere: "
 
-#: src/playturn.cpp:1945
+#: src/playturn.cpp:1947
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Non habes satis auri ut unitatem illam conscribas"
 
-#: src/playturn.cpp:2003
+#: src/playturn.cpp:2005
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -11228,7 +11161,7 @@ msgstr ""
 "Domine mi, haec unitas experta est, tenens gradum superiorem! Visne vere "
 "$noun dimittere?"
 
-#: src/playturn.cpp:2005
+#: src/playturn.cpp:2007
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -11236,19 +11169,19 @@ msgstr ""
 "Domine mi, haec unitas mox gradum superiorem attinget! Visne vere $noun "
 "dimittere?"
 
-#: src/playturn.cpp:2010
+#: src/playturn.cpp:2012
 msgid "her"
 msgstr "eam"
 
-#: src/playturn.cpp:2010
+#: src/playturn.cpp:2012
 msgid "him"
 msgstr "eum"
 
-#: src/playturn.cpp:2051
+#: src/playturn.cpp:2053
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Separatus es a militibus tuis et eos non revocare potes"
 
-#: src/playturn.cpp:2053
+#: src/playturn.cpp:2055
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -11256,115 +11189,119 @@ msgstr ""
 "Non sunt milites revocandi\n"
 "(Opus est veteranos habere qui supersunt ex missione praeterito)"
 
-#: src/playturn.cpp:2059
+#: src/playturn.cpp:2061
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Opus est saltem $cost nummos auri ut unitatem revoces."
 
-#: src/playturn.cpp:2067
+#: src/playturn.cpp:2069
 msgid "Level"
 msgstr "E gradu"
 
-#: src/playturn.cpp:2094
+#: src/playturn.cpp:2096
 msgid "Dismiss Unit"
 msgstr "Unitatem Dimittere"
 
-#: src/playturn.cpp:2106
+#: src/playturn.cpp:2108
 msgid "Recall"
 msgstr "Revocare"
 
-#: src/playturn.cpp:2155
+#: src/playturn.cpp:2157
 msgid "Message:"
 msgstr "Nuntius: "
 
-#: src/playturn.cpp:2155
+#: src/playturn.cpp:2157
 msgid "Send to allies only"
 msgstr "Mittere tantum sociis"
 
-#: src/playturn.cpp:2250 src/unit.cpp:1128
+#: src/playturn.cpp:2204
+msgid "Create Unit (Debug!)"
+msgstr ""
+
+#: src/playturn.cpp:2252 src/unit.cpp:1128
 msgid "Moves"
 msgstr "Puncta motus"
 
-#: src/playturn.cpp:2251
+#: src/playturn.cpp:2253
 msgid "Location"
 msgstr "Locus"
 
-#: src/playturn.cpp:2297
+#: src/playturn.cpp:2299
 msgid "Unit List"
 msgstr "Index Unitatum"
 
-#: src/playturn.cpp:2333 src/playturn.cpp:2395
+#: src/playturn.cpp:2335 src/playturn.cpp:2397
 msgid "Recruits"
 msgstr "Tirones"
 
-#: src/playturn.cpp:2339 src/playturn.cpp:2399
+#: src/playturn.cpp:2341 src/playturn.cpp:2401
 msgid "Recalls"
 msgstr "Revocationes"
 
-#: src/playturn.cpp:2345 src/playturn.cpp:2403
+#: src/playturn.cpp:2347 src/playturn.cpp:2405
 msgid "Advancements"
 msgstr "Promotiones Gradu"
 
-#: src/playturn.cpp:2351 src/playturn.cpp:2407
+#: src/playturn.cpp:2353 src/playturn.cpp:2409
 msgid "Losses"
 msgstr "Amissa"
 
-#: src/playturn.cpp:2357 src/playturn.cpp:2411
+#: src/playturn.cpp:2359 src/playturn.cpp:2413
 msgid "Kills"
 msgstr "Interfecta"
 
-#: src/playturn.cpp:2363
+#: src/playturn.cpp:2365
 msgid "Damage Inflicted"
 msgstr "Damnum Infictum"
 
-#: src/playturn.cpp:2369
+#: src/playturn.cpp:2371
 msgid "Damage Taken"
 msgstr "Damnum Passum"
 
-#: src/playturn.cpp:2375
+#: src/playturn.cpp:2377
 msgid "Damage Inflicted (EV)"
 msgstr "Damnum Inflictum (Exsp)"
 
-#: src/playturn.cpp:2382
+#: src/playturn.cpp:2384
 msgid "Damage Taken (EV)"
 msgstr "Damnum Passum (Exsp)"
 
-#: src/playturn.cpp:2388
+#: src/playturn.cpp:2390
 msgid "Statistics"
 msgstr "Census"
 
-#: src/playturn.cpp:2425
+#: src/playturn.cpp:2427
 msgid "Search"
 msgstr "Investigatio"
 
-#: src/playturn.cpp:2435
+#: src/playturn.cpp:2437
 msgid "prompt^Command:"
 msgstr "Imperium:"
 
-#: src/playturn.cpp:2446
+#: src/playturn.cpp:2448
 msgid "Chat Log"
 msgstr "Acta Colloquii"
 
-#: src/playturn.cpp:2511
+#: src/playturn.cpp:2513
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Titulus aut unitas qui litteras '$search' continet non invenitur."
 
-#: src/playturn.cpp:2542
+#: src/playturn.cpp:2544
 msgid "Saved Theme Preference: "
 msgstr "Impostatio Adumbrationis Servata: "
 
-#: src/playturn.cpp:2548
+#: src/playturn.cpp:2550
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Adumbratio nova valet ab luso proximo novo aut restituto."
 
-#: src/playturn.cpp:2649
+#: src/playturn.cpp:2651
 msgid "Place Label"
 msgstr "Titulus Loci"
 
-#: src/playturn.cpp:2650
+#: src/playturn.cpp:2652
 msgid "Label:"
 msgstr "Titulus: "
 
-#: src/playturn.cpp:2782
+#: src/playturn.cpp:2784
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -11372,23 +11309,23 @@ msgstr ""
 "Ludi non synchonizantur et exire debebunt. Visne acta mendorum lusus tui "
 "servare?"
 
-#: src/playturn.cpp:2835
+#: src/playturn.cpp:2837
 msgid "Replace with AI"
 msgstr "Substituere cum IA"
 
-#: src/playturn.cpp:2836
+#: src/playturn.cpp:2838
 msgid "Replace with local player"
 msgstr "Substituere cum lusore locali"
 
-#: src/playturn.cpp:2837
+#: src/playturn.cpp:2839
 msgid "Abort game"
 msgstr "Lusum finire"
 
-#: src/playturn.cpp:2840
+#: src/playturn.cpp:2842
 msgid "Replace with "
 msgstr "Substituere cum "
 
-#: src/playturn.cpp:2844
+#: src/playturn.cpp:2846
 msgid "has left the game. What do you want to do?"
 msgstr "lusum reliquit. Quid facere vis?"
 
@@ -11632,6 +11569,59 @@ msgstr "lucis"
 #: src/unit_types.cpp:952
 msgid "neutral"
 msgstr "crepusculi"
+
+#~ msgid "Merman"
+#~ msgstr "Nereius"
+
+#~ msgid "female^Naga"
+#~ msgstr "Naga"
+
+#~ msgid ""
+#~ "Like the Mermen, Nagas are inhabitants of the seas. Smaller and more "
+#~ "nimble than their counterparts, they share a distaste for dry land."
+#~ msgstr ""
+#~ "Sicut Nereii, Nagae maria inhabitant. Minores et perniciores paribus, "
+#~ "partiuntur fastidium terrae aridae."
+
+#~ msgid ""
+#~ "Saurians are skilled in the use of the spear. Despite their lethargic "
+#~ "cold blooded heritage, and their relative frailty, they are highly valued "
+#~ "as scouts as the can navigate through rough terrain and around opponents. "
+#~ "The best Saurians go on to become Saurian Warriors."
+#~ msgstr ""
+#~ "Lacertae peritae sunt hasta. Quamquam hereditas earum veternosa et "
+#~ "sanguinis frigidi est et fragiles sunt ex comparatione, magnae "
+#~ "aestimantur exploratores, quia per agros asperos navigare possunt et "
+#~ "circum adversarios. Lacertae optimae fiunt Bellatores Lacertarum."
+
+#~ msgid "Saurian Warrior"
+#~ msgstr "Bellator Lacertarum"
+
+#~ msgid ""
+#~ "Saurian Warriors are highly skilled in the use of the spear. Despite "
+#~ "their lethargic cold blooded heritage, and their relative frailty, they "
+#~ "are highly valued as scouts as they can navigate through rough terrain "
+#~ "and around opponents. Saurian Warriors possess the strength to take full "
+#~ "advantage of this fact."
+#~ msgstr ""
+#~ "Bellatores Lacertarum valde periti sunt hasta. Quamquam hereditas earum "
+#~ "veternosa et sanguinis frigidi est et fragiles sunt ex comparatione, "
+#~ "magni aestimantur exploratores, quia per agros asperos navigare possunt "
+#~ "et circum adversarios. Bellatores Lacertarum potestatem necessarium "
+#~ "habent ut hoc plene utantur."
+
+#~ msgid "female^Sea Hag"
+#~ msgstr "Anus Maris"
+
+#~ msgid ""
+#~ "Sea Hags are older and more experienced Nagas who have learned to control "
+#~ "the water magic."
+#~ msgstr ""
+#~ "Anus Maris seniores et expertiores Nagae sunt qui didiscerunt imperium "
+#~ "magicae aquosae."
+
+#~ msgid "Triton"
+#~ msgstr "Triton"
 
 #~ msgid "healthy"
 #~ msgstr "sanus"

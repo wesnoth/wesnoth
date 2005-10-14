@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-09-18 23:00+0200\n"
+"POT-Creation-Date: 2005-10-15 01:08+0200\n"
 "PO-Revision-Date: 2005-08-15 12:34+0100\n"
 "Last-Translator: Americo Iacovizzi <darkamex@gmail.com>\n"
 "Language-Team: IT\n"
@@ -75,31 +75,31 @@ msgstr "Lingua"
 msgid "Choose your preferred language:"
 msgstr "Scegli la lingua che preferisci:"
 
-#: src/editor/editor.cpp:406
+#: src/editor/editor.cpp:407
 msgid "Save the Map As"
 msgstr "Salva la Mappa con nome"
 
-#: src/editor/editor.cpp:417
+#: src/editor/editor.cpp:418
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Una mappa con questo nome esiste già. Vuoi sovrascriverla?"
 
-#: src/editor/editor.cpp:440
+#: src/editor/editor.cpp:441
 msgid "Player "
 msgstr "Giocatore"
 
-#: src/editor/editor.cpp:443
+#: src/editor/editor.cpp:444
 msgid "Which Player?"
 msgstr "Quale giocatore?"
 
-#: src/editor/editor.cpp:444
+#: src/editor/editor.cpp:445
 msgid "Which player should start here?"
 msgstr "Quale giocatore inizia da qui?"
 
-#: src/editor/editor.cpp:496
+#: src/editor/editor.cpp:497
 msgid "Choose a Map to Load"
 msgstr "Scegli una Mappa da Caricare"
 
-#: src/editor/editor.cpp:500
+#: src/editor/editor.cpp:501
 msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
@@ -107,43 +107,43 @@ msgstr ""
 "Attenzione: Sono stati utilizzati dei caratteri nel mnome della mappa. Si "
 "consiglia di cambiare il nome della mappa  "
 
-#: src/editor/editor.cpp:518 src/editor/editor.cpp:597
+#: src/editor/editor.cpp:519 src/editor/editor.cpp:598
 msgid "The file does not contain a valid map."
 msgstr "Il file non contiene una mappa valida"
 
-#: src/editor/editor.cpp:659
+#: src/editor/editor.cpp:660
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' non esiste o non può essere letto come file."
 
-#: src/editor/editor.cpp:671
+#: src/editor/editor.cpp:672
 msgid "Load failed: "
 msgstr "Caricamento Fallito:"
 
-#: src/editor/editor.cpp:870
+#: src/editor/editor.cpp:871
 msgid "You must have a hex selected on the board."
 msgstr "Devi selezionare un esagono nella mappa."
 
-#: src/editor/editor.cpp:1119
+#: src/editor/editor.cpp:1120
 msgid "Quit Editor"
 msgstr "Esci dall'Editor"
 
-#: src/editor/editor.cpp:1124
+#: src/editor/editor.cpp:1125
 msgid "Do you want to save the map before quitting?"
 msgstr "Vuoi salvare la mappa prima di uscire?"
 
-#: src/editor/editor.cpp:1156
+#: src/editor/editor.cpp:1157
 msgid "Map saved."
 msgstr "Mappa salvata."
 
-#: src/editor/editor.cpp:1163
+#: src/editor/editor.cpp:1164
 msgid "Could not save the map: $msg"
 msgstr "Impossibile salvare la mappa: $msg"
 
-#: src/editor/editor.cpp:1178
+#: src/editor/editor.cpp:1179
 msgid "Error: Illegal character in filename."
 msgstr "Errore: Carattere illegale nel nome del file"
 
-#: src/editor/editor.cpp:1234
+#: src/editor/editor.cpp:1235
 msgid "Player"
 msgstr "Giocatore"
 
@@ -156,12 +156,12 @@ msgid "Create New Map"
 msgstr "Crea una Nuova Mappa"
 
 #: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:100
+#: src/mapgen_dialog.cpp:104
 msgid "Width:"
 msgstr "Larghezza:"
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:101
+#: src/mapgen_dialog.cpp:105
 msgid "Height:"
 msgstr "Altezza:"
 
@@ -185,7 +185,7 @@ msgstr "Annulla"
 msgid "Map creation failed."
 msgstr "Il processo di creazione della mappa è fallito."
 
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:91
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
 msgid "Close Window"
 msgstr "Chiudi Finestra"
 
@@ -233,7 +233,7 @@ msgstr "Asse Y"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Ruota (può cambiare le dimensioni della mappa):"
 
-#: src/editor/editor_main.cpp:250
+#: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Editor per le mappe di Battle for Wesnoth"
 
@@ -245,47 +245,47 @@ msgstr "Primo Piano"
 msgid "BG"
 msgstr "Sfondo"
 
-#: src/mapgen_dialog.cpp:94
+#: src/mapgen_dialog.cpp:98
 msgid "Map Generator"
 msgstr "Generatore di Mappa"
 
-#: src/mapgen_dialog.cpp:99
+#: src/mapgen_dialog.cpp:103
 msgid "Players:"
 msgstr "Giocatori:"
 
-#: src/mapgen_dialog.cpp:102
+#: src/mapgen_dialog.cpp:106
 msgid "Number of Hills:"
 msgstr "Numero di Colline"
 
-#: src/mapgen_dialog.cpp:103
+#: src/mapgen_dialog.cpp:107
 msgid "Max Hill Size:"
 msgstr "Dimensione Massima delle colline:"
 
-#: src/mapgen_dialog.cpp:104
+#: src/mapgen_dialog.cpp:108
 msgid "Villages:"
 msgstr "Villaggi:"
 
-#: src/mapgen_dialog.cpp:105
+#: src/mapgen_dialog.cpp:109
 msgid "Landform:"
 msgstr "Terreno:"
 
-#: src/mapgen_dialog.cpp:211
+#: src/mapgen_dialog.cpp:215
 msgid "Roads Between Castles"
 msgstr "Strade tra i Castelli"
 
-#: src/mapgen_dialog.cpp:268
+#: src/mapgen_dialog.cpp:272
 msgid "/1000 tiles"
 msgstr "/1000 caselle"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Coastal"
 msgstr "Costa"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Inland"
 msgstr "Entroterra"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Island"
 msgstr "Isola"
 

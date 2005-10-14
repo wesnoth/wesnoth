@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-09-18 23:00+0200\n"
+"POT-Creation-Date: 2005-10-15 01:08+0200\n"
 "PO-Revision-Date: 2005-08-12 20:31+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -72,31 +72,31 @@ msgstr "Nyelv"
 msgid "Choose your preferred language:"
 msgstr "Leginkább megfelelő nyelv kiválasztása:"
 
-#: src/editor/editor.cpp:406
+#: src/editor/editor.cpp:407
 msgid "Save the Map As"
 msgstr "Mentés másként"
 
-#: src/editor/editor.cpp:417
+#: src/editor/editor.cpp:418
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "A pálya már létezik. Felül akarod írni?"
 
-#: src/editor/editor.cpp:440
+#: src/editor/editor.cpp:441
 msgid "Player "
 msgstr "Játékos "
 
-#: src/editor/editor.cpp:443
+#: src/editor/editor.cpp:444
 msgid "Which Player?"
 msgstr "Melyik játékos?"
 
-#: src/editor/editor.cpp:444
+#: src/editor/editor.cpp:445
 msgid "Which player should start here?"
 msgstr "Melyik játékos kezdjen itt?"
 
-#: src/editor/editor.cpp:496
+#: src/editor/editor.cpp:497
 msgid "Choose a Map to Load"
 msgstr "Válaszd ki a betöltendő pályát"
 
-#: src/editor/editor.cpp:500
+#: src/editor/editor.cpp:501
 msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
@@ -104,43 +104,43 @@ msgstr ""
 "Hiba: A pálya neve nem felhasználható karaktereket tartalmaz. Más nevet kell "
 "választanod."
 
-#: src/editor/editor.cpp:518 src/editor/editor.cpp:597
+#: src/editor/editor.cpp:519 src/editor/editor.cpp:598
 msgid "The file does not contain a valid map."
 msgstr "A fájl nem tartalmaz érvényes pályát"
 
-#: src/editor/editor.cpp:659
+#: src/editor/editor.cpp:660
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' nem létezik, vagy nem olvasható."
 
-#: src/editor/editor.cpp:671
+#: src/editor/editor.cpp:672
 msgid "Load failed: "
 msgstr "Betöltés sikertelen:"
 
-#: src/editor/editor.cpp:870
+#: src/editor/editor.cpp:871
 msgid "You must have a hex selected on the board."
 msgstr "Ki kell jelölnöd egy hatszöget a táblán"
 
-#: src/editor/editor.cpp:1119
+#: src/editor/editor.cpp:1120
 msgid "Quit Editor"
 msgstr "Kilépés a szerkesztőből"
 
-#: src/editor/editor.cpp:1124
+#: src/editor/editor.cpp:1125
 msgid "Do you want to save the map before quitting?"
 msgstr "El akarod menteni a pályát kilépés előtt?"
 
-#: src/editor/editor.cpp:1156
+#: src/editor/editor.cpp:1157
 msgid "Map saved."
 msgstr "Pálya elmentve."
 
-#: src/editor/editor.cpp:1163
+#: src/editor/editor.cpp:1164
 msgid "Could not save the map: $msg"
 msgstr "A pályát nem lehet elmenteni: $msg"
 
-#: src/editor/editor.cpp:1178
+#: src/editor/editor.cpp:1179
 msgid "Error: Illegal character in filename."
 msgstr "Hiba: A fájlnév érvénytelen karaktert tartalmaz."
 
-#: src/editor/editor.cpp:1234
+#: src/editor/editor.cpp:1235
 msgid "Player"
 msgstr "Játékos"
 
@@ -153,12 +153,12 @@ msgid "Create New Map"
 msgstr "Új pálya készítése"
 
 #: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:100
+#: src/mapgen_dialog.cpp:104
 msgid "Width:"
 msgstr "Szélesség:"
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:101
+#: src/mapgen_dialog.cpp:105
 msgid "Height:"
 msgstr "Magasság:"
 
@@ -182,7 +182,7 @@ msgstr "Mégse"
 msgid "Map creation failed."
 msgstr "A pályakészítés sikertelen"
 
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:91
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
 msgid "Close Window"
 msgstr "Ablak bezárása"
 
@@ -230,7 +230,7 @@ msgstr "Y-tengely"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Tükrözés (ez megváltoztathatja a pálya méreteit):"
 
-#: src/editor/editor_main.cpp:250
+#: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Harc Wesnoth-ért Pályaszerkesztő"
 
@@ -242,47 +242,47 @@ msgstr "Bal gomb"
 msgid "BG"
 msgstr "Jobb gomb"
 
-#: src/mapgen_dialog.cpp:94
+#: src/mapgen_dialog.cpp:98
 msgid "Map Generator"
 msgstr "Pályarajzoló"
 
-#: src/mapgen_dialog.cpp:99
+#: src/mapgen_dialog.cpp:103
 msgid "Players:"
 msgstr "Játékos:"
 
-#: src/mapgen_dialog.cpp:102
+#: src/mapgen_dialog.cpp:106
 msgid "Number of Hills:"
 msgstr "Dombok száma"
 
-#: src/mapgen_dialog.cpp:103
+#: src/mapgen_dialog.cpp:107
 msgid "Max Hill Size:"
 msgstr "Dombok maximális mérete:"
 
-#: src/mapgen_dialog.cpp:104
+#: src/mapgen_dialog.cpp:108
 msgid "Villages:"
 msgstr "Falvak:"
 
-#: src/mapgen_dialog.cpp:105
+#: src/mapgen_dialog.cpp:109
 msgid "Landform:"
 msgstr "Területforma"
 
-#: src/mapgen_dialog.cpp:211
+#: src/mapgen_dialog.cpp:215
 msgid "Roads Between Castles"
 msgstr "Várak összekötése utakkal"
 
-#: src/mapgen_dialog.cpp:268
+#: src/mapgen_dialog.cpp:272
 msgid "/1000 tiles"
 msgstr "/1000 terület"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Coastal"
 msgstr "Tengerpart"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Inland"
 msgstr "Szárazföld"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Island"
 msgstr "Sziget"
 

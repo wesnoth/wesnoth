@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-09-18 23:00+0200\n"
+"POT-Creation-Date: 2005-10-15 01:08+0200\n"
 "PO-Revision-Date: 2005-08-30 20:41+0200\n"
 "Last-Translator: kko <->\n"
 "Language-Team: none\n"
@@ -76,31 +76,31 @@ msgstr "Kieli"
 msgid "Choose your preferred language:"
 msgstr "Valitse haluamasi kieli:"
 
-#: src/editor/editor.cpp:406
+#: src/editor/editor.cpp:407
 msgid "Save the Map As"
 msgstr "Tallenna kartta nimellä"
 
-#: src/editor/editor.cpp:417
+#: src/editor/editor.cpp:418
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kartta on jo olemassa. Haluatko kirjoittaa sen päälle?"
 
-#: src/editor/editor.cpp:440
+#: src/editor/editor.cpp:441
 msgid "Player "
 msgstr "Pelaaja "
 
-#: src/editor/editor.cpp:443
+#: src/editor/editor.cpp:444
 msgid "Which Player?"
 msgstr "Pelaajan numero?"
 
-#: src/editor/editor.cpp:444
+#: src/editor/editor.cpp:445
 msgid "Which player should start here?"
 msgstr "Mikä joukkue aloittaa tästä?"
 
-#: src/editor/editor.cpp:496
+#: src/editor/editor.cpp:497
 msgid "Choose a Map to Load"
 msgstr "Valitse ladattava kartta"
 
-#: src/editor/editor.cpp:500
+#: src/editor/editor.cpp:501
 msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
@@ -108,44 +108,44 @@ msgstr ""
 "Varoitus: kartan nimi sisältää virheellisiä merkkejä. Sinun on tallennettava "
 "kartta toisella nimellä."
 
-#: src/editor/editor.cpp:518 src/editor/editor.cpp:597
+#: src/editor/editor.cpp:519 src/editor/editor.cpp:598
 msgid "The file does not contain a valid map."
 msgstr "Tiedosto ei sisällä kelvollista karttaa."
 
-#: src/editor/editor.cpp:659
+#: src/editor/editor.cpp:660
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr ""
 "Karttaa '$filename' ei ole olemassa, tai sitä ei voitu lukea tiedostona."
 
-#: src/editor/editor.cpp:671
+#: src/editor/editor.cpp:672
 msgid "Load failed: "
 msgstr "Lataus epäonnistui: "
 
-#: src/editor/editor.cpp:870
+#: src/editor/editor.cpp:871
 msgid "You must have a hex selected on the board."
 msgstr "Sinulla täytyy olla jokin ruutu valittuna kartalta."
 
-#: src/editor/editor.cpp:1119
+#: src/editor/editor.cpp:1120
 msgid "Quit Editor"
 msgstr "Lopeta"
 
-#: src/editor/editor.cpp:1124
+#: src/editor/editor.cpp:1125
 msgid "Do you want to save the map before quitting?"
 msgstr "Haluatko tallentaa kartan ennenkuin lopetat?"
 
-#: src/editor/editor.cpp:1156
+#: src/editor/editor.cpp:1157
 msgid "Map saved."
 msgstr "Kartta tallennettiin."
 
-#: src/editor/editor.cpp:1163
+#: src/editor/editor.cpp:1164
 msgid "Could not save the map: $msg"
 msgstr "Karttaa ei voitu tallentaa: $msg"
 
-#: src/editor/editor.cpp:1178
+#: src/editor/editor.cpp:1179
 msgid "Error: Illegal character in filename."
 msgstr "Virhe: virheellinen merkki tiedoston nimessä."
 
-#: src/editor/editor.cpp:1234
+#: src/editor/editor.cpp:1235
 msgid "Player"
 msgstr "Pelaaja"
 
@@ -158,12 +158,12 @@ msgid "Create New Map"
 msgstr "Luo uusi kartta"
 
 #: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:100
+#: src/mapgen_dialog.cpp:104
 msgid "Width:"
 msgstr "Leveys:"
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:101
+#: src/mapgen_dialog.cpp:105
 msgid "Height:"
 msgstr "Korkeus:"
 
@@ -187,7 +187,7 @@ msgstr "Peruuta"
 msgid "Map creation failed."
 msgstr "Kartan luonti epäonnistui."
 
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:91
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
 msgid "Close Window"
 msgstr "Sulje ikkuna"
 
@@ -235,7 +235,7 @@ msgstr "Y-akseli"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Käännä (saattaa muuttaa kartan kokoa):"
 
-#: src/editor/editor_main.cpp:250
+#: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Taistelu Wesnothista - karttaeditori"
 
@@ -247,47 +247,47 @@ msgstr "Etuala (vasen näppäin)"
 msgid "BG"
 msgstr "Taka-ala (oikea näppäin)"
 
-#: src/mapgen_dialog.cpp:94
+#: src/mapgen_dialog.cpp:98
 msgid "Map Generator"
 msgstr "Karttageneraattori"
 
-#: src/mapgen_dialog.cpp:99
+#: src/mapgen_dialog.cpp:103
 msgid "Players:"
 msgstr "Pelaajia:"
 
-#: src/mapgen_dialog.cpp:102
+#: src/mapgen_dialog.cpp:106
 msgid "Number of Hills:"
 msgstr "Kukkuloiden lukumäärä:"
 
-#: src/mapgen_dialog.cpp:103
+#: src/mapgen_dialog.cpp:107
 msgid "Max Hill Size:"
 msgstr "Kukkuloiden enimmäiskoko:"
 
-#: src/mapgen_dialog.cpp:104
+#: src/mapgen_dialog.cpp:108
 msgid "Villages:"
 msgstr "Kyliä:"
 
-#: src/mapgen_dialog.cpp:105
+#: src/mapgen_dialog.cpp:109
 msgid "Landform:"
 msgstr "Maan muoto:"
 
-#: src/mapgen_dialog.cpp:211
+#: src/mapgen_dialog.cpp:215
 msgid "Roads Between Castles"
 msgstr "Tiet linnojen välillä"
 
-#: src/mapgen_dialog.cpp:268
+#: src/mapgen_dialog.cpp:272
 msgid "/1000 tiles"
 msgstr "/1000 ruutua"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Coastal"
 msgstr "rannikko"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Inland"
 msgstr "sisämaa"
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Island"
 msgstr "saari"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-09-18 23:00+0200\n"
+"POT-Creation-Date: 2005-10-15 01:08+0200\n"
 "PO-Revision-Date: 2005-05-07 12:50+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: none\n"
@@ -79,74 +79,74 @@ msgstr "Keel"
 msgid "Choose your preferred language:"
 msgstr "Vali endale sobiv keel:"
 
-#: src/editor/editor.cpp:406
+#: src/editor/editor.cpp:407
 msgid "Save the Map As"
 msgstr "Salvesta kaart kui"
 
-#: src/editor/editor.cpp:417
+#: src/editor/editor.cpp:418
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kaart on juba olemas. Kas sa tahad selle üle kirjutada?"
 
-#: src/editor/editor.cpp:440
+#: src/editor/editor.cpp:441
 #, fuzzy
 msgid "Player "
 msgstr "Mängija"
 
-#: src/editor/editor.cpp:443
+#: src/editor/editor.cpp:444
 msgid "Which Player?"
 msgstr "Milline mängija?"
 
-#: src/editor/editor.cpp:444
+#: src/editor/editor.cpp:445
 msgid "Which player should start here?"
 msgstr "Milline mängija siit alustama peaks?"
 
-#: src/editor/editor.cpp:496
+#: src/editor/editor.cpp:497
 msgid "Choose a Map to Load"
 msgstr "Vali milline kaart laadida"
 
-#: src/editor/editor.cpp:500
+#: src/editor/editor.cpp:501
 msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr ""
 
-#: src/editor/editor.cpp:518 src/editor/editor.cpp:597
+#: src/editor/editor.cpp:519 src/editor/editor.cpp:598
 msgid "The file does not contain a valid map."
 msgstr "Fail ei sisalda korralikku kaarti."
 
-#: src/editor/editor.cpp:659
+#: src/editor/editor.cpp:660
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' ei ole olemas või seda ei õnnestu failina lugeda."
 
-#: src/editor/editor.cpp:671
+#: src/editor/editor.cpp:672
 msgid "Load failed: "
 msgstr "Laadimine ebaõnnestus:"
 
-#: src/editor/editor.cpp:870
+#: src/editor/editor.cpp:871
 msgid "You must have a hex selected on the board."
 msgstr "Sul peab olema kaardil mõni väli valitud."
 
-#: src/editor/editor.cpp:1119
+#: src/editor/editor.cpp:1120
 msgid "Quit Editor"
 msgstr "Välju redaktorist"
 
-#: src/editor/editor.cpp:1124
+#: src/editor/editor.cpp:1125
 msgid "Do you want to save the map before quitting?"
 msgstr "Kas sa tahad kaardi enne väljumist salvestada?"
 
-#: src/editor/editor.cpp:1156
+#: src/editor/editor.cpp:1157
 msgid "Map saved."
 msgstr "Kaart salvestatud"
 
-#: src/editor/editor.cpp:1163
+#: src/editor/editor.cpp:1164
 msgid "Could not save the map: $msg"
 msgstr "Ei saa kaarti salvestada: $msg"
 
-#: src/editor/editor.cpp:1178
+#: src/editor/editor.cpp:1179
 msgid "Error: Illegal character in filename."
 msgstr ""
 
-#: src/editor/editor.cpp:1234
+#: src/editor/editor.cpp:1235
 msgid "Player"
 msgstr "Mängija"
 
@@ -159,12 +159,12 @@ msgid "Create New Map"
 msgstr "Loo uus kaart:"
 
 #: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:100
+#: src/mapgen_dialog.cpp:104
 msgid "Width:"
 msgstr "Laius"
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:101
+#: src/mapgen_dialog.cpp:105
 msgid "Height:"
 msgstr "Kõrgus"
 
@@ -188,7 +188,7 @@ msgstr "Tühista"
 msgid "Map creation failed."
 msgstr "Kaardi loomine ebaõnnestus."
 
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:91
+#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
 msgid "Close Window"
 msgstr "Sulge aken"
 
@@ -236,7 +236,7 @@ msgstr "Y-telg"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Keera ümber (see võib kaardi mõõtmeid muuta):"
 
-#: src/editor/editor_main.cpp:250
+#: src/editor/editor_main.cpp:251
 msgid "Battle for Wesnoth Map Editor"
 msgstr ""
 
@@ -248,48 +248,48 @@ msgstr "FG"
 msgid "BG"
 msgstr "BG"
 
-#: src/mapgen_dialog.cpp:94
+#: src/mapgen_dialog.cpp:98
 msgid "Map Generator"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:99
+#: src/mapgen_dialog.cpp:103
 #, fuzzy
 msgid "Players:"
 msgstr "Mängija"
 
-#: src/mapgen_dialog.cpp:102
+#: src/mapgen_dialog.cpp:106
 msgid "Number of Hills:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:103
+#: src/mapgen_dialog.cpp:107
 msgid "Max Hill Size:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:104
+#: src/mapgen_dialog.cpp:108
 msgid "Villages:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:105
+#: src/mapgen_dialog.cpp:109
 msgid "Landform:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:211
+#: src/mapgen_dialog.cpp:215
 msgid "Roads Between Castles"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:268
+#: src/mapgen_dialog.cpp:272
 msgid "/1000 tiles"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Coastal"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Inland"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:273
+#: src/mapgen_dialog.cpp:277
 msgid "Island"
 msgstr ""
 
