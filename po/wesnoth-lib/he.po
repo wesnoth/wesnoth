@@ -1,4 +1,4 @@
-# ----wesnoth-lib.po (wesnoth 0.9.4)
+# ----wesnoth-lib.po
 # Hebrew translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the wesnoth package.
@@ -7,10 +7,10 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth 0.9.4\n"
+"Project-Id-Version: wesnoth-lib 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-09-19 01:39+0200\n"
-"PO-Revision-Date: 2005-07-27 20:02+0300\n"
+"PO-Revision-Date: 2005-10-14 14:25+0200\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -39,11 +39,11 @@ msgstr "מנהיג"
 
 #: src/hotkeys.cpp:50
 msgid "Undo"
-msgstr "בטל"
+msgstr "ביטול פעולה"
 
 #: src/hotkeys.cpp:51
 msgid "Redo"
-msgstr "בצע מחדש"
+msgstr "שחזור פעולה"
 
 #: src/hotkeys.cpp:52
 msgid "Zoom In"
@@ -95,7 +95,7 @@ msgstr "גיוס חוזר"
 
 #: src/hotkeys.cpp:64
 msgid "Recall"
-msgstr ""
+msgstr "החזר"
 
 #: src/hotkeys.cpp:65
 msgid "End Turn"
@@ -103,7 +103,7 @@ msgstr "סוף תור"
 
 #: src/hotkeys.cpp:66
 msgid "Toggle Grid"
-msgstr ""
+msgstr "הצגת/כיבוי סריג"
 
 #: src/hotkeys.cpp:67
 msgid "Status Table"
@@ -119,11 +119,11 @@ msgstr "דבר"
 
 #: src/hotkeys.cpp:70
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "(Debug!) צור יחידה"
 
 #: src/hotkeys.cpp:71
 msgid "Change Unit Side (Debug!)"
-msgstr ""
+msgstr "החלפת צדדים של יחידה (Debug!)"
 
 #: src/hotkeys.cpp:72 src/preferences.cpp:1232
 msgid "Preferences"
@@ -183,7 +183,7 @@ msgstr "שמור בשם"
 
 #: src/hotkeys.cpp:87
 msgid "Set Player's keep"
-msgstr ""
+msgstr "קביעת המצודה של השחקן"
 
 #: src/hotkeys.cpp:88
 msgid "Flood Fill"
@@ -215,7 +215,7 @@ msgstr "שנה גודל מפה"
 
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
-msgstr ""
+msgstr "הפיכת מפה"
 
 #: src/hotkeys.cpp:96
 msgid "Select All"
@@ -227,15 +227,17 @@ msgstr "צייר קרקע"
 
 #: src/hotkeys.cpp:98
 msgid "Refresh Image Cache"
-msgstr ""
+msgstr "רענן מטמון דמויות"
 
 #: src/hotkeys.cpp:100
+#, fuzzy
 msgid "Delay Shroud Updates"
-msgstr ""
+msgstr "השהיית עדכון תכריכים"
 
 #: src/hotkeys.cpp:101
+#, fuzzy
 msgid "Update Shroud Now"
-msgstr ""
+msgstr "עדכון תכריכים מיידי"
 
 #: src/hotkeys.cpp:102
 msgid "Continue Move"
@@ -266,8 +268,9 @@ msgid "Enter user command"
 msgstr "הכנס פקודת משתמש"
 
 #: src/hotkeys.cpp:110
+#, fuzzy
 msgid "Change the language"
-msgstr "החלף שפה"
+msgstr "עדכון עוצמת המוסיקה"
 
 #: src/hotkeys.cpp:359 src/hotkeys.cpp:553
 msgid "Do you really want to quit?"
@@ -283,6 +286,9 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
+"מצב התצוגה אינו ניתן לשינוי. מנהל החלונות שלך חייב להיות במצב של 16 ביטים "
+"לנקודת מסך על מנת להריץ את המשחק באופן חלונאי. התצוגה שלך חייבת לתמוך במצב "
+"של 1024x768x16 כדי להריץ את המשחק על מסך מלא."
 
 #: src/preferences.cpp:379
 msgid "player"
@@ -322,7 +328,7 @@ msgstr "הצג סמנים ציבעוניים"
 
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
-msgstr ""
+msgstr "הצג אפקט הילה"
 
 #: src/preferences.cpp:897
 msgid "Video Mode"
@@ -342,11 +348,11 @@ msgstr "הפוך כיוון תנועת השמש"
 
 #: src/preferences.cpp:901
 msgid "Sound effects"
-msgstr ""
+msgstr "אפקטים של צליל"
 
 #: src/preferences.cpp:902
 msgid "Music"
-msgstr ""
+msgstr "מוסיקה"
 
 #: src/preferences.cpp:904
 msgid "Music Volume:"
@@ -366,7 +372,7 @@ msgstr ":מהירות גלילה"
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
-msgstr ""
+msgstr "אפקטים של צליל - מופעל/לא מופעל"
 
 #: src/preferences.cpp:922
 msgid "Change the sound effects volume"
@@ -374,7 +380,7 @@ msgstr "עדכון עוצמת האפקטים הקוליים"
 
 #: src/preferences.cpp:925
 msgid "Music on/off"
-msgstr ""
+msgstr "מוסיקה - מופעל/לא מופעל"
 
 #: src/preferences.cpp:929
 msgid "Change the music volume"
@@ -398,7 +404,7 @@ msgstr "גורם ליחידות לנוע ולהלחם מהר יותר"
 
 #: src/preferences.cpp:952
 msgid "Do not animate AI units moving"
-msgstr ""
+msgstr "ללא הנפשת תנועת יחידות של המחשב"
 
 #: src/preferences.cpp:955
 msgid "Overlay a grid onto the map"
@@ -406,7 +412,7 @@ msgstr "הצגת סריג על גבי המפה"
 
 #: src/preferences.cpp:958
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr ""
+msgstr "כאשר יחידה נפגעת, הצג מעליה מלל לתיאור הנזק שנגרם"
 
 #: src/preferences.cpp:960
 msgid "Change the resolution the game runs at"
@@ -414,7 +420,7 @@ msgstr "שינוי רזולוצית המשחק"
 
 #: src/preferences.cpp:963
 msgid "Display a dialog at the beginning of your turn"
-msgstr ""
+msgstr "הצג תיבת דו-שיח בתחילת תורך"
 
 #: src/preferences.cpp:966
 msgid "Play a bell sound at the beginning of your turn"
@@ -424,7 +430,7 @@ msgstr "השמע צליל כשמגיע תורי"
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
-msgstr ""
+msgstr "הצג מעגל צבעוני סביב הבסיס של כל יחידה כך שיציג את הצד המופעל"
 
 #: src/preferences.cpp:972
 msgid "Choose whether the sun moves left-to-right or right-to-left"
@@ -436,7 +442,7 @@ msgstr "השתמש בסמני עכבר צבעוניים (עלול להיות א�
 
 #: src/preferences.cpp:978
 msgid "Use graphical special effects (may be slower)"
-msgstr ""
+msgstr "השתמש באפקטים גרפיים מיוחדים -- עלול להיות איטי"
 
 #: src/preferences.cpp:980
 msgid "View and configure keyboard shortcuts"
@@ -468,7 +474,7 @@ msgstr "מתקדם"
 
 #: src/preferences.cpp:1278
 msgid "There are no alternative video modes available"
-msgstr ""
+msgstr "אין מצבי תצוגה חלופיים זמינים"
 
 #: src/preferences.cpp:1307
 msgid "Choose Resolution"
@@ -537,7 +543,7 @@ msgstr "מקבל נתונים..."
 
 #: src/show_dialog.cpp:870
 msgid "KB"
-msgstr ""
+msgstr "קילו-בייט"
 
 #~ msgid "Set Player Start Position"
 #~ msgstr "קביעת מיקום התחלתי של שחקן"

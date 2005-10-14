@@ -1,4 +1,4 @@
-# ----wesnoth.po (wesnoth 0.9.4)
+# ----wesnoth.po
 # Hebrew translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the wesnoth package.
@@ -7,10 +7,10 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth 0.9.4\n"
+"Project-Id-Version: wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-09-14 23:24+0200\n"
-"PO-Revision-Date: 2005-07-27 20:31+0300\n"
+"PO-Revision-Date: 2005-10-14 15:55+0200\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -66,9 +66,8 @@ msgid "Terrains"
 msgstr "קרקעות"
 
 #: data/help.cfg:54 data/help.cfg:60 data/help.cfg:246
-#, fuzzy
 msgid "Overview"
-msgstr "דרוס?"
+msgstr "סקירה כללית"
 
 #: data/help.cfg:55
 msgid ""
@@ -122,9 +121,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:79
-#, fuzzy
 msgid "About the Game"
-msgstr "צא מהמשחק"
+msgstr "אודות מהמשחק"
 
 #: data/help.cfg:80
 msgid ""
@@ -212,9 +210,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:103
-#, fuzzy
 msgid "Orbs"
-msgstr "אורקים"
+msgstr ""
 
 #: data/help.cfg:104
 msgid ""
@@ -682,13 +679,12 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:234
-#, fuzzy
 msgid "Contributors"
-msgstr "+תורמים"
+msgstr "תורמים"
 
 #: data/help.cfg:240
 msgid "License"
-msgstr ""
+msgstr "רישיון"
 
 #: data/help.cfg:247
 msgid ""
@@ -737,7 +733,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:264
-#, fuzzy
 msgid "Quick"
 msgstr "מהיר"
 
@@ -758,7 +753,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:272
-#, fuzzy
 msgid "Resilient"
 msgstr "עמיד"
 
@@ -778,7 +772,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:280
-#, fuzzy
 msgid "Strong"
 msgstr "חזק"
 
@@ -799,7 +792,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:288
-#, fuzzy
 msgid "Loyal"
 msgstr "נאמן"
 
@@ -1040,9 +1032,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:430 data/terrain.cfg:109
-#, fuzzy
 msgid "Desert"
-msgstr "תבוסה"
+msgstr "מדבר"
 
 #: data/help.cfg:433
 msgid ""
@@ -1156,7 +1147,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:497 data/terrain.cfg:349
-#, fuzzy
 msgid "Cave Wall"
 msgstr "קיר מערה"
 
@@ -1420,7 +1410,6 @@ msgid "A duel map for super fast play. Recommended setting of 2g per village."
 msgstr ""
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
-#, fuzzy
 msgid "2p - Charge"
 msgstr "2p - הסתער"
 
@@ -2675,7 +2664,6 @@ msgid "Encampment"
 msgstr ""
 
 #: data/terrain.cfg:393
-#, fuzzy
 msgid "Dwarven Castle"
 msgstr "טירת גמדים"
 
@@ -2733,7 +2721,7 @@ msgstr "הוצאות אחזקה"
 
 #: data/themes/default.cfg:222
 msgid "income"
-msgstr "הכנסה"
+msgstr "הכנסות"
 
 #: data/themes/default.cfg:358
 msgid "statuspanel^level"
@@ -3716,7 +3704,6 @@ msgid "mace"
 msgstr ""
 
 #: data/units/Battle_Princess.cfg:3 data/units/Battle_Princess.cfg:55
-#, fuzzy
 msgid "female^Battle Princess"
 msgstr "נסיכה"
 
@@ -4008,7 +3995,6 @@ msgstr ""
 #: data/units/Horseman.cfg:26 data/units/Knight.cfg:42
 #: data/units/Lancer.cfg:27 data/units/Paladin.cfg:49 src/actions.cpp:481
 #: src/actions.cpp:596
-#, fuzzy
 msgid "charge"
 msgstr "הסתער"
 
@@ -4091,9 +4077,8 @@ msgid "chill wave"
 msgstr "גל קור"
 
 #: data/units/Dark_Adept.cfg:66
-#, fuzzy
 msgid "female^Dark Adept"
-msgstr "מךכה אפלה"
+msgstr ""
 
 #: data/units/Dark_Queen.cfg:3
 msgid "female^Dark Queen"
@@ -4463,9 +4448,8 @@ msgstr ""
 #: data/units/Drake_Slasher.cfg:25 data/units/Drake_Slasher.cfg:43
 #: data/units/Drake_Warden.cfg:26 data/units/Drake_Warden.cfg:44
 #: data/units/Halbardier.cfg:28 data/units/Halbardier.cfg:69
-#, fuzzy
 msgid "halberd"
-msgstr "פטיש"
+msgstr "חנית קדומה"
 
 #: data/units/Drake_Slasher.cfg:46 data/units/Drake_Warden.cfg:47
 #: data/units/Goblin_Impaler.cfg:29 data/units/Halbardier.cfg:34
@@ -6028,8 +6012,9 @@ msgid "naia touch"
 msgstr ""
 
 #: data/units/Merman.cfg:6
+#, fuzzy
 msgid "Merman"
-msgstr ""
+msgstr "כידונאי"
 
 #: data/units/Merman.cfg:20 data/units/Merman_Fighter.cfg:20
 msgid ""
@@ -6250,8 +6235,9 @@ msgid "Nagini Warrior"
 msgstr ""
 
 #: data/units/Naga.cfg:6
+#, fuzzy
 msgid "female^Naga"
-msgstr ""
+msgstr "קוסמת"
 
 #: data/units/Naga.cfg:21
 msgid ""
@@ -6900,8 +6886,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Sea_Hag.cfg:6
+#, fuzzy
 msgid "female^Sea Hag"
-msgstr ""
+msgstr "קוסמת דגולה"
 
 #: data/units/Sea_Hag.cfg:21
 msgid ""
@@ -7203,8 +7190,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Triton.cfg:6
+#, fuzzy
 msgid "Triton"
-msgstr ""
+msgstr "מאפיינים"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
@@ -7904,11 +7892,11 @@ msgstr "בחר משחק לטעינה"
 
 #: src/dialogs.cpp:616 src/dialogs.cpp:628
 msgid "Profile"
-msgstr ""
+msgstr "פרופיל"
 
 #: src/dialogs.cpp:708 src/help.cpp:1037
 msgid "level"
-msgstr ""
+msgstr "רמה"
 
 #: src/dialogs.cpp:729 src/help.cpp:1095
 msgid "HP: "
@@ -7920,7 +7908,7 @@ msgstr ""
 
 #: src/dialogs.cpp:746 src/help.cpp:1096
 msgid "Moves: "
-msgstr ""
+msgstr "מהלכים: "
 
 #: src/display.cpp:465
 msgid "Screenshot"
@@ -7937,21 +7925,21 @@ msgstr "בטל"
 
 #: src/game.cpp:400
 msgid "The Battle for Wesnoth"
-msgstr ""
+msgstr "הקרב על ווסנות'"
 
 #: src/game.cpp:629
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr ""
+msgstr "אזהרה: הקובץ, אותו ניסית לטעון, פגום. טוען בכל זאת.\n"
 
 #: src/game.cpp:651 src/multiplayer_connect.cpp:928
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
-msgstr ""
+msgstr "שמירה זו שייכת לגרסה שונה של המשחק. האם ברצונך לטעון אותה?"
 
 #: src/game.cpp:659 src/game.cpp:662 src/multiplayer_connect.cpp:913
 msgid "The file you have tried to load is corrupt: '"
-msgstr ""
+msgstr "הקובץ, אותו ניסית לטעון, פגום: '"
 
 #: src/game.cpp:665
 msgid "File I/O Error while reading the game"
@@ -7983,11 +7971,11 @@ msgstr ""
 
 #: src/game.cpp:817
 msgid "KB"
-msgstr ""
+msgstr "קילו-בייט"
 
 #: src/game.cpp:820
 msgid "MB"
-msgstr ""
+msgstr "מגה-בייט"
 
 #: src/game.cpp:847
 msgid "Connect to Server"
@@ -7995,7 +7983,7 @@ msgstr "התחבר לשרת"
 
 #: src/game.cpp:848
 msgid "You will now connect to a campaign server to download campaigns."
-msgstr ""
+msgstr "עתה מתחבר לשרת משחקים לצורך הורדת קרבות."
 
 #: src/game.cpp:849
 msgid "Server: "
@@ -8003,11 +7991,11 @@ msgstr " :שרת"
 
 #: src/game.cpp:862
 msgid "Could not connect to host."
-msgstr ""
+msgstr "כישלון בחיבור למחשב מארח."
 
 #: src/game.cpp:870
 msgid "Awaiting response from server"
-msgstr ""
+msgstr "ממתין לתגובה מהשרת"
 
 #: src/game.cpp:883
 msgid "Error communicating with the server."
@@ -8023,19 +8011,19 @@ msgstr "מחבר"
 
 #: src/game.cpp:893
 msgid "Downloads"
-msgstr ""
+msgstr "הורדות"
 
 #: src/game.cpp:893
 msgid "Size"
-msgstr ""
+msgstr "גודל"
 
 #: src/game.cpp:954
 msgid "Publish campaign: "
-msgstr ""
+msgstr "פרסום קרב: "
 
 #: src/game.cpp:958
 msgid "Delete campaign: "
-msgstr ""
+msgstr "מחיקת קרב: "
 
 #: src/game.cpp:962
 msgid "There are no campaigns available for download from this server."
@@ -8043,7 +8031,7 @@ msgstr "אין משחקים להורדה משרת זה."
 
 #: src/game.cpp:969
 msgid "Choose the campaign to download."
-msgstr ""
+msgstr "בחירת קרב להורדה."
 
 #: src/game.cpp:969
 msgid "Get Campaign"
@@ -8051,11 +8039,11 @@ msgstr "הורד משחק"
 
 #: src/game.cpp:989
 msgid "Downloading campaign..."
-msgstr ""
+msgstr "מוריד קרב..."
 
 #: src/game.cpp:1008
 msgid "Cannot rescan the filesystem"
-msgstr ""
+msgstr "כישלון בסריקת מערכת הקבצים"
 
 #: src/game.cpp:1020
 msgid "Campaign Installed"
@@ -8063,20 +8051,20 @@ msgstr "משחק הותקן"
 
 #: src/game.cpp:1020
 msgid "The campaign has been installed."
-msgstr ""
+msgstr "מסע הקרב הותקן."
 
 #: src/game.cpp:1022
 msgid "Network communication error."
-msgstr ""
+msgstr "תקלת תקשורת."
 
 #: src/game.cpp:1024
 msgid "Remote host disconnected."
-msgstr ""
+msgstr "השרת התנתק."
 
 #: src/game.cpp:1026
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
-msgstr ""
+msgstr "הייתה בעיה ביצירת הקבצים הדרושים להתקנת מסע הקרב."
 
 #: src/game.cpp:1038 src/game.cpp:1077 src/game.cpp:1102
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:218
@@ -8085,7 +8073,7 @@ msgstr ""
 
 #: src/game.cpp:1041 src/game.cpp:1079 src/game.cpp:1104
 msgid "The server responded with an error: \""
-msgstr ""
+msgstr "השרת הגיב בהודעת שגיאה: \""
 
 #: src/game.cpp:1045
 msgid "Terms"
@@ -8093,7 +8081,7 @@ msgstr ""
 
 #: src/game.cpp:1082 src/game.cpp:1107
 msgid "Response"
-msgstr ""
+msgstr "תגובה"
 
 #: src/game.cpp:1129
 msgid "Join Official Server"
@@ -8101,7 +8089,7 @@ msgstr "הצטרף לשרת הרשמי"
 
 #: src/game.cpp:1130
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "התחברות לשרת משחקי הרשת הרשמי של ווסנות'"
 
 #: src/game.cpp:1132 src/multiplayer_lobby.cpp:407
 msgid "Join Game"
@@ -8161,15 +8149,15 @@ msgstr "בחר את השפה המועדפת עליך:"
 
 #: src/game.cpp:1349
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
-msgstr ""
+msgstr "במסעות הקרב הבאים נמצאו שגיאות שמנעו את טעינתם: "
 
 #: src/game.cpp:1354
 msgid "ERROR DETAILS:"
-msgstr ""
+msgstr "פרטי השגיאה:"
 
 #: src/game.cpp:1363
 msgid "Warning: Errors occurred while loading game configuration files: '"
-msgstr ""
+msgstr "אזהרה: שגיאות הופיעו בעת טעינת קבצי התצורה של המשחק: '"
 
 #: src/game.cpp:1413
 msgid "Error loading game configuration files: '"
@@ -8177,7 +8165,7 @@ msgstr " :שגיאה בטעינת קבצי תצורה"
 
 #: src/game.cpp:1414
 msgid "' (The game will now exit)"
-msgstr ""
+msgstr "' (המשחק יסתיים עתה)"
 
 #: src/game.cpp:1504
 msgid "Battle for Wesnoth"
@@ -8193,7 +8181,7 @@ msgstr "תבוסה:"
 
 #: src/gamestatus.cpp:476
 msgid "Could not write to file"
-msgstr ""
+msgstr "כתיבה לקובץ נכשלה"
 
 #: src/help.cpp:1057
 msgid "Advances to: "
@@ -8213,7 +8201,7 @@ msgstr ""
 
 #: src/help.cpp:1112 src/reports.cpp:251
 msgid "attacks"
-msgstr ""
+msgstr "תקיפות"
 
 #: src/help.cpp:1120 src/playturn.cpp:2065 src/playturn.cpp:2245
 msgid "Type"
@@ -8349,57 +8337,57 @@ msgstr ":מספר הגבעות"
 
 #: src/mapgen_dialog.cpp:103
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "גובה גבעה מירבי:"
 
 #: src/mapgen_dialog.cpp:104
 msgid "Villages:"
-msgstr ""
+msgstr "כפרים:"
 
 #: src/mapgen_dialog.cpp:105
 msgid "Landform:"
-msgstr ""
+msgstr "סוג קרקע:"
 
 #: src/mapgen_dialog.cpp:211
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "דרכים בין המצודות"
 
 #: src/mapgen_dialog.cpp:268
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 מרצפות"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Coastal"
-msgstr ""
+msgstr "חופי"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Inland"
-msgstr ""
+msgstr "יבשתי"
 
 #: src/mapgen_dialog.cpp:273
 msgid "Island"
-msgstr ""
+msgstr "אי"
 
 #: src/multiplayer.cpp:92
 msgid "Connect to Host"
-msgstr ""
+msgstr "התחברות למחשב מארח"
 
 #: src/multiplayer.cpp:94
 msgid "Choose host to connect to: "
-msgstr ""
+msgstr "בחירת מחשב להתחברות: "
 
 #: src/multiplayer.cpp:123 src/multiplayer.cpp:160
 msgid "Connecting to Server..."
-msgstr ""
+msgstr "מתחבר לשרת..."
 
 #: src/multiplayer.cpp:133
 msgid "Connecting to remote host..."
-msgstr ""
+msgstr "מתחבר למחשב מרוחק..."
 
 #: src/multiplayer.cpp:142
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
-msgstr ""
+msgstr "שרת זה דורש גרסה '$version1' בעוד שלך יש גרסה '$version2'"
 
 #: src/multiplayer.cpp:154
 msgid "Server-side redirect loop"
@@ -8426,7 +8414,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:298
 msgid "(Vacant slot)"
-msgstr ""
+msgstr "(מקום פנוי)"
 
 #: src/multiplayer_connect.cpp:304
 msgid "Anonymous local player"
@@ -8437,9 +8425,8 @@ msgid "Computer player"
 msgstr "שחקן ממוחשב"
 
 #: src/multiplayer_connect.cpp:313
-#, fuzzy
 msgid "(Empty slot)"
-msgstr "ריק"
+msgstr ")מקום פנוי("
 
 #: src/multiplayer_connect.cpp:462
 msgid "No non-random sides in the current era"
@@ -8617,7 +8604,7 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:204
 msgid "You must enter a name."
-msgstr ""
+msgstr "חובה להקליד שם."
 
 #: src/multiplayer_create.cpp:213
 msgid "Turns: "
@@ -8625,7 +8612,7 @@ msgstr "תורות: "
 
 #: src/multiplayer_create.cpp:215
 msgid "Unlimited Turns"
-msgstr ""
+msgstr "מספר סיבובים בלתי מוגבל"
 
 #: src/multiplayer_create.cpp:222
 msgid "Village Gold: "
@@ -8644,9 +8631,8 @@ msgid "Map"
 msgstr "מפה"
 
 #: src/multiplayer_lobby.cpp:30
-#, fuzzy
 msgid "Settings"
-msgstr "אפשרויות..."
+msgstr "אפשרויות"
 
 #: src/multiplayer_lobby.cpp:30
 msgid "Status"
@@ -8654,7 +8640,7 @@ msgstr "מצב"
 
 #: src/multiplayer_lobby.cpp:98
 msgid "<no games open>"
-msgstr ""
+msgstr "<אין משחקים פתוחים>"
 
 #: src/multiplayer_lobby.cpp:297
 msgid "Vacant Slot"
@@ -8710,7 +8696,7 @@ msgstr "חום"
 
 #: src/multiplayer_ui.cpp:96
 msgid "Invalid colour"
-msgstr ""
+msgstr "צבע לא חוקי"
 
 #: src/multiplayer_wait.cpp:114
 msgid "Leader: "
@@ -8750,11 +8736,11 @@ msgstr ""
 
 #: src/network.cpp:124
 msgid "Client disconnected"
-msgstr ""
+msgstr "לקוח התנתק"
 
 #: src/network.cpp:479
 msgid "Could not add socket to socket set"
-msgstr ""
+msgstr "הוספת נקודת חיבור (socket) לנקודות הקיימות נכשלה"
 
 #: src/network.cpp:490
 msgid "Could not send initial handshake"
@@ -8769,9 +8755,8 @@ msgid "You have been defeated!"
 msgstr "הובסת!"
 
 #: src/playcampaign.cpp:159
-#, fuzzy
 msgid " replay"
-msgstr "מהתחלה"
+msgstr " מהתחלה"
 
 #: src/playcampaign.cpp:167
 msgid "Do you want to save a replay of this scenario?"
@@ -8799,7 +8784,7 @@ msgstr ""
 
 #: src/playlevel.cpp:607 src/playlevel.cpp:876
 msgid "The file you have tried to load is corrupt"
-msgstr ""
+msgstr "הקובץ, אותו ניסית לטעון, פגום"
 
 #: src/playlevel.cpp:760
 msgid "Game Over"
@@ -8852,7 +8837,7 @@ msgstr ""
 
 #: src/playlevel.cpp:870
 msgid "Scenario Report"
-msgstr ""
+msgstr "דו\"ח תרחישים"
 
 #: src/playlevel.cpp:891
 msgid ""
@@ -8862,7 +8847,7 @@ msgstr ""
 
 #: src/playturn.cpp:87
 msgid "It is now your turn"
-msgstr ""
+msgstr "עתה תורך"
 
 #: src/playturn.cpp:569
 msgid "Attacker"
@@ -8874,7 +8859,7 @@ msgstr "מגן"
 
 #: src/playturn.cpp:591 src/playturn.cpp:657
 msgid "Damage Calculations"
-msgstr ""
+msgstr "חישובי נזק"
 
 #: src/playturn.cpp:636 src/reports.cpp:226
 msgid "vs"
@@ -8882,7 +8867,7 @@ msgstr "לעומת"
 
 #: src/playturn.cpp:669
 msgid "Attack Enemy"
-msgstr ""
+msgstr "יש לתקוף את האויב"
 
 #: src/playturn.cpp:670
 msgid "Choose weapon:"
@@ -8891,11 +8876,11 @@ msgstr "בחירת נשק:"
 #: src/playturn.cpp:1325
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
-msgstr ""
+msgstr "עדיין לא התחלת את תורך. האם באמת ברצונך לסיימו?"
 
 #: src/playturn.cpp:1333 src/playturn.cpp:1338
 msgid "Some units have movement left. Do you really want to end your turn?"
-msgstr ""
+msgstr "לחלק מהיחידות נותרו מהלכים. האם באמת ברצונך לסיים את תורך?"
 
 #: src/playturn.cpp:1353
 msgid "Auto-Save"
@@ -8903,7 +8888,7 @@ msgstr "שמירה אוטומטית"
 
 #: src/playturn.cpp:1355
 msgid "Could not auto save the game. Please save the game manually."
-msgstr ""
+msgstr "שמירת משחק אוטומטית נכשלה. יש לבצע שמירה ידנית."
 
 #: src/playturn.cpp:1596
 msgid "Rename Unit"
@@ -8917,7 +8902,7 @@ msgstr "שגיאה"
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
-msgstr ""
+msgstr "אסור שהשם יכיל נקודותיים, לוכסנים או לוכסנים הפוכים. יש לבחור שם אחר."
 
 #: src/playturn.cpp:1656
 msgid "Saved"
@@ -8945,7 +8930,7 @@ msgstr "הכנסה"
 
 #: src/playturn.cpp:1898
 msgid "You have no units available to recruit."
-msgstr ""
+msgstr "אין לך יחידות זמינות לגיוס."
 
 #: src/playturn.cpp:1910
 msgid "Recruit"
@@ -9003,7 +8988,7 @@ msgstr ""
 
 #: src/playturn.cpp:2106
 msgid "Recall"
-msgstr ""
+msgstr "החזר"
 
 #: src/playturn.cpp:2155
 msgid "Message:"
@@ -9031,7 +9016,7 @@ msgstr "מגוייסים"
 
 #: src/playturn.cpp:2339 src/playturn.cpp:2399
 msgid "Recalls"
-msgstr ""
+msgstr "החזרות"
 
 #: src/playturn.cpp:2345 src/playturn.cpp:2403
 msgid "Advancements"
@@ -9121,11 +9106,12 @@ msgstr "החלף עם "
 
 #: src/playturn.cpp:2844
 msgid "has left the game. What do you want to do?"
-msgstr ""
+msgstr "נטש את המשחק. מה ברצונך לעשות?"
 
 #: src/reports.cpp:124
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
+"זוהי יחידה בלתי נראית. היא אינה יכולה להיראות או להיתקף על ידי יחידות אויב."
 
 #: src/reports.cpp:124
 msgid "invisible: "
@@ -9136,10 +9122,11 @@ msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
 msgstr ""
+"יחידה זו הואטה. בקרב, היא נעה במחצית המהירות ומקבלת פחות נקודות תקיפה מהרגיל."
 
 #: src/reports.cpp:129
 msgid "slowed: "
-msgstr ""
+msgstr "מואט: "
 
 #: src/reports.cpp:134
 msgid ""
@@ -9153,7 +9140,7 @@ msgstr ""
 
 #: src/reports.cpp:134
 msgid "poisoned: "
-msgstr ""
+msgstr "מורעל: "
 
 #: src/reports.cpp:141
 msgid "This unit has been turned to stone. It may not move or attack."
@@ -9161,15 +9148,15 @@ msgstr ""
 
 #: src/reports.cpp:141
 msgid "stone: "
-msgstr ""
+msgstr "אבן: "
 
 #: src/reports.cpp:250 src/unit_types.cpp:321
 msgid "damage"
-msgstr ""
+msgstr "נזק"
 
 #: src/reports.cpp:268
 msgid "Lawful units: "
-msgstr ""
+msgstr "יחידות נאמנות: "
 
 #: src/reports.cpp:270
 msgid "Neutral units: "
@@ -9355,6 +9342,9 @@ msgstr ""
 msgid "neutral"
 msgstr "ניטרלי"
 
+#~ msgid "+Hebrew Translation"
+#~ msgstr "+תרגום לעברית"
+
 #, fuzzy
 #~ msgid "Tundra"
 #~ msgstr "תור"
@@ -9368,6 +9358,3 @@ msgstr "ניטרלי"
 #, fuzzy
 #~ msgid "tough"
 #~ msgstr "נוער"
-
-#~ msgid "+Hebrew Translation"
-#~ msgstr "+תרגום לעברית"
