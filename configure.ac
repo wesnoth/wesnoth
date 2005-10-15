@@ -825,6 +825,7 @@ AC_CONFIG_FILES([Makefile
 		 po/wesnoth/Makefile.in
 		 po/wesnoth-editor/Makefile.in
 		 po/wesnoth-lib/Makefile.in
+		 po/wesnoth-tutorial/Makefile.in
 		 po/wesnoth-httt/Makefile.in
 		 po/wesnoth-tdh/Makefile.in
 		 po/wesnoth-sotbe/Makefile.in
