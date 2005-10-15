@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:18+0200\n"
+"POT-Creation-Date: 2005-10-15 13:51+0200\n"
 "PO-Revision-Date: 2005-08-18 12:09+0600\n"
 "Last-Translator: Azamat H. Hackimov <azazello1984@mail.ru>\n"
 "Language-Team: Russian\n"
@@ -26,96 +26,96 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.9.1\n"
 
-#: src/editor/editor_dialogs.cpp:47
+#: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Ваши изменения карты будут потеряны. Продолжить?"
 
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:197
 msgid "Create New Map"
 msgstr "Создать новую карту"
 
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
+#: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
+#: src/mapgen_dialog.cpp:106
 msgid "Width:"
 msgstr "Ширина:"
 
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
+#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:393
+#: src/mapgen_dialog.cpp:107
 msgid "Height:"
 msgstr "Высота:"
 
-#: src/editor/editor_dialogs.cpp:93
+#: src/editor/editor_dialogs.cpp:95
 msgid "Generate New Map"
 msgstr "Создать новую карту"
 
-#: src/editor/editor_dialogs.cpp:94
+#: src/editor/editor_dialogs.cpp:96
 msgid "Generate Random Map"
 msgstr "Создать случайную карту"
 
-#: src/editor/editor_dialogs.cpp:95
+#: src/editor/editor_dialogs.cpp:97
 msgid "Random Generator Settings"
 msgstr "Настройки случайного генератора"
 
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
+#: src/editor/editor_dialogs.cpp:98 src/editor/editor_dialogs.cpp:409
+#: src/filechooser.cpp:54 src/show_dialog.cpp:430 src/show_dialog.cpp:436
+#: src/show_dialog.cpp:849 src/show_dialog.cpp:927
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/editor/editor_dialogs.cpp:181
+#: src/editor/editor_dialogs.cpp:183
 msgid "Map creation failed."
 msgstr "Ошибка создания карты."
 
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/editor/editor_dialogs.cpp:249 src/mapgen_dialog.cpp:97
 #: src/preferences.cpp:1335
 msgid "Close Window"
 msgstr "Закрыть окно"
 
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/editor/editor_dialogs.cpp:255 src/editor/editor_dialogs.cpp:322
 #: src/hotkeys.cpp:72 src/preferences.cpp:1232
 msgid "Preferences"
 msgstr "Настройки"
 
-#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+#: src/editor/editor_dialogs.cpp:257 src/preferences.cpp:905
 msgid "Scroll Speed:"
 msgstr "Скорость прокрутки:"
 
-#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/editor/editor_dialogs.cpp:284 src/hotkeys.cpp:55
 #: src/preferences.cpp:887
 msgid "Toggle Full Screen"
 msgstr "На весь экран"
 
-#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+#: src/editor/editor_dialogs.cpp:291 src/preferences.cpp:890
 msgid "Show Grid"
 msgstr "Показывать сетку"
 
-#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+#: src/editor/editor_dialogs.cpp:298 src/preferences.cpp:897
 msgid "Video Mode"
 msgstr "Видеорежимы"
 
-#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+#: src/editor/editor_dialogs.cpp:301 src/preferences.cpp:898
 msgid "Hotkeys"
 msgstr "Горячие клавиши"
 
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/editor/editor_dialogs.cpp:390 src/editor/editor_dialogs.cpp:450
 #: src/hotkeys.cpp:94
 msgid "Resize Map"
 msgstr "Изменить размер карты"
 
-#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
-#: src/show_dialog.cpp:429
+#: src/editor/editor_dialogs.cpp:410 src/filechooser.cpp:53
+#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
 msgid "OK"
 msgstr "OK"
 
-#: src/editor/editor_dialogs.cpp:491
+#: src/editor/editor_dialogs.cpp:493
 msgid "X-Axis"
 msgstr "Ось X"
 
-#: src/editor/editor_dialogs.cpp:492
+#: src/editor/editor_dialogs.cpp:494
 msgid "Y-Axis"
 msgstr "Ось Y"
 
-#: src/editor/editor_dialogs.cpp:493
+#: src/editor/editor_dialogs.cpp:495
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Перевернуть (это может изменить размеры карты):"
 
@@ -367,47 +367,47 @@ msgstr "Вы действительно хотите выйти?"
 msgid "Quit"
 msgstr "Выйти"
 
-#: src/mapgen_dialog.cpp:98
+#: src/mapgen_dialog.cpp:100
 msgid "Map Generator"
 msgstr "Генератор карты"
 
-#: src/mapgen_dialog.cpp:103
+#: src/mapgen_dialog.cpp:105
 msgid "Players:"
 msgstr "Игроки:"
 
-#: src/mapgen_dialog.cpp:106
+#: src/mapgen_dialog.cpp:108
 msgid "Number of Hills:"
 msgstr "Количество холмов:"
 
-#: src/mapgen_dialog.cpp:107
+#: src/mapgen_dialog.cpp:109
 msgid "Max Hill Size:"
 msgstr "Максимальный размер холма:"
 
-#: src/mapgen_dialog.cpp:108
+#: src/mapgen_dialog.cpp:110
 msgid "Villages:"
 msgstr "Деревни:"
 
-#: src/mapgen_dialog.cpp:109
+#: src/mapgen_dialog.cpp:111
 msgid "Landform:"
 msgstr "Форма земли:"
 
-#: src/mapgen_dialog.cpp:215
+#: src/mapgen_dialog.cpp:217
 msgid "Roads Between Castles"
 msgstr "Дороги между замками"
 
-#: src/mapgen_dialog.cpp:272
+#: src/mapgen_dialog.cpp:274
 msgid "/1000 tiles"
 msgstr "/1000 квадратов"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Coastal"
 msgstr "Береговой"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Inland"
 msgstr "Внутренний"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Island"
 msgstr "Остров"
 
@@ -648,3 +648,11 @@ msgstr "Получаем информацию..."
 #: src/show_dialog.cpp:872
 msgid "KB"
 msgstr "КБайт"
+
+#: src/widgets/file_chooser.cpp:37
+msgid "Delete File"
+msgstr "Удалить файл"
+
+#: src/widgets/file_chooser.cpp:169
+msgid "Deletion of the file failed."
+msgstr "Ошибка удаления файла."

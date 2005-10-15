@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 02:15+0200\n"
+"POT-Creation-Date: 2005-10-15 13:50+0200\n"
 "PO-Revision-Date: 2005-09-29 19:21+0200\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -8945,15 +8945,6 @@ msgstr "Kroky:"
 msgid "Screenshot"
 msgstr "Záber obrazovky"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
-msgid "OK"
-msgstr "OK"
-
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:508
-#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
-msgid "Cancel"
-msgstr "Storno"
-
 #: src/game.cpp:395
 msgid "The Battle for Wesnoth"
 msgstr "Bitka o Wesnoth"
@@ -9448,6 +9439,11 @@ msgstr "Počítač proti počítaču "
 msgid "I'm Ready"
 msgstr "Som pripravený"
 
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
+#: src/multiplayer_wait.cpp:148
+msgid "Cancel"
+msgstr "Storno"
+
 #: src/multiplayer_connect.cpp:525
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scéna neplatí, pretože nemá definované strany."
@@ -9516,6 +9512,10 @@ msgstr "Hmla"
 #: src/multiplayer_create.cpp:56
 msgid "Observers"
 msgstr "Diváci"
+
+#: src/multiplayer_create.cpp:58
+msgid "OK"
+msgstr "OK"
 
 #: src/multiplayer_create.cpp:59
 msgid "Regenerate"

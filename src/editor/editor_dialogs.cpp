@@ -12,6 +12,8 @@
 
 #include "SDL.h"
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "../display.hpp"
 #include "../show_dialog.hpp"
 #include "../config.hpp"

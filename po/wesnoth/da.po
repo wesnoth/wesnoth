@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 02:15+0200\n"
+"POT-Creation-Date: 2005-10-15 13:50+0200\n"
 "PO-Revision-Date: 2005-08-17 17:58+0200\n"
 "Last-Translator: Anders K. Madsen <madsen@lillesvin.linux.dk>\n"
 "Language-Team: Danish <wesnoth-da@lillesvin.net>\n"
@@ -7372,15 +7372,6 @@ msgstr ""
 msgid "Screenshot"
 msgstr "Skærmbillede"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
-msgid "OK"
-msgstr "OK"
-
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:508
-#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
-msgid "Cancel"
-msgstr "Anullér"
-
 #: src/game.cpp:395
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
@@ -7883,6 +7874,11 @@ msgstr "Computer mod Computer"
 msgid "I'm Ready"
 msgstr "Jeg er klar"
 
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
+#: src/multiplayer_wait.cpp:148
+msgid "Cancel"
+msgstr "Anullér"
+
 #: src/multiplayer_connect.cpp:525
 msgid "The scenario is invalid because it has no sides."
 msgstr "Dette scenarie er ugyldigt, det har ingen sider."
@@ -7953,6 +7949,10 @@ msgstr "Krigståge"
 #: src/multiplayer_create.cpp:56
 msgid "Observers"
 msgstr "Iagtagere"
+
+#: src/multiplayer_create.cpp:58
+msgid "OK"
+msgstr "OK"
 
 #: src/multiplayer_create.cpp:59
 msgid "Regenerate"

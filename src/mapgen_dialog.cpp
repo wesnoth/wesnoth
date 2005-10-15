@@ -13,6 +13,8 @@
 
 #include "global.hpp"
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "mapgen_dialog.hpp"
 
 #include "display.hpp"

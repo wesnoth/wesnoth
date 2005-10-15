@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 02:15+0200\n"
+"POT-Creation-Date: 2005-10-15 13:50+0200\n"
 "PO-Revision-Date: 2004-12-20 19:16+0200\n"
 "Last-Translator: Anton (Atilla) Tsigularov <theatilla@gmail.com>\n"
 "Language-Team: none\n"
@@ -7265,15 +7265,6 @@ msgstr ""
 msgid "Screenshot"
 msgstr ""
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
-msgid "OK"
-msgstr ""
-
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:508
-#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
-msgid "Cancel"
-msgstr "Отказ"
-
 #: src/game.cpp:395
 msgid "The Battle for Wesnoth"
 msgstr ""
@@ -7778,6 +7769,11 @@ msgstr "Компютър срещу компютър"
 msgid "I'm Ready"
 msgstr "Аз съм готов"
 
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
+#: src/multiplayer_wait.cpp:148
+msgid "Cancel"
+msgstr "Отказ"
+
 #: src/multiplayer_connect.cpp:525
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
@@ -7850,6 +7846,10 @@ msgstr ""
 #: src/multiplayer_create.cpp:56
 msgid "Observers"
 msgstr "Наблюдаващи"
+
+#: src/multiplayer_create.cpp:58
+msgid "OK"
+msgstr ""
 
 #: src/multiplayer_create.cpp:59
 msgid "Regenerate"

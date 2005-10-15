@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:18+0200\n"
+"POT-Creation-Date: 2005-10-15 13:51+0200\n"
 "PO-Revision-Date: 2005-05-07 12:59+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: none\n"
@@ -16,96 +16,96 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/editor/editor_dialogs.cpp:47
+#: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Kaardile tehtud muudatused lähevad kaduma. Jätkad?"
 
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:197
 msgid "Create New Map"
 msgstr "Loo uus kaart:"
 
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
+#: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
+#: src/mapgen_dialog.cpp:106
 msgid "Width:"
 msgstr "Laius:"
 
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
+#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:393
+#: src/mapgen_dialog.cpp:107
 msgid "Height:"
 msgstr "Kõrgus:"
 
-#: src/editor/editor_dialogs.cpp:93
+#: src/editor/editor_dialogs.cpp:95
 msgid "Generate New Map"
 msgstr "Genereeri uus kaart:"
 
-#: src/editor/editor_dialogs.cpp:94
+#: src/editor/editor_dialogs.cpp:96
 msgid "Generate Random Map"
 msgstr "Genereeri juhuslik kaart"
 
-#: src/editor/editor_dialogs.cpp:95
+#: src/editor/editor_dialogs.cpp:97
 msgid "Random Generator Settings"
 msgstr "Juhugeneraatori seaded:"
 
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
+#: src/editor/editor_dialogs.cpp:98 src/editor/editor_dialogs.cpp:409
+#: src/filechooser.cpp:54 src/show_dialog.cpp:430 src/show_dialog.cpp:436
+#: src/show_dialog.cpp:849 src/show_dialog.cpp:927
 msgid "Cancel"
 msgstr "Tühista"
 
-#: src/editor/editor_dialogs.cpp:181
+#: src/editor/editor_dialogs.cpp:183
 msgid "Map creation failed."
 msgstr "Kaardi loomine ebaõnnestus."
 
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/editor/editor_dialogs.cpp:249 src/mapgen_dialog.cpp:97
 #: src/preferences.cpp:1335
 msgid "Close Window"
 msgstr "Sulge aken"
 
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/editor/editor_dialogs.cpp:255 src/editor/editor_dialogs.cpp:322
 #: src/hotkeys.cpp:72 src/preferences.cpp:1232
 msgid "Preferences"
 msgstr "Eelistused"
 
-#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+#: src/editor/editor_dialogs.cpp:257 src/preferences.cpp:905
 msgid "Scroll Speed:"
 msgstr "Kerimiskiirus:"
 
-#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/editor/editor_dialogs.cpp:284 src/hotkeys.cpp:55
 #: src/preferences.cpp:887
 msgid "Toggle Full Screen"
 msgstr "Täisekraan"
 
-#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+#: src/editor/editor_dialogs.cpp:291 src/preferences.cpp:890
 msgid "Show Grid"
 msgstr "Näita võret"
 
-#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+#: src/editor/editor_dialogs.cpp:298 src/preferences.cpp:897
 msgid "Video Mode"
 msgstr "Video režiim"
 
-#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+#: src/editor/editor_dialogs.cpp:301 src/preferences.cpp:898
 msgid "Hotkeys"
 msgstr "Kiirvalikud"
 
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/editor/editor_dialogs.cpp:390 src/editor/editor_dialogs.cpp:450
 #: src/hotkeys.cpp:94
 msgid "Resize Map"
 msgstr "Muuda kaardi mõõtmeid"
 
-#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
-#: src/show_dialog.cpp:429
+#: src/editor/editor_dialogs.cpp:410 src/filechooser.cpp:53
+#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
 msgid "OK"
 msgstr "OK"
 
-#: src/editor/editor_dialogs.cpp:491
+#: src/editor/editor_dialogs.cpp:493
 msgid "X-Axis"
 msgstr "X-telg"
 
-#: src/editor/editor_dialogs.cpp:492
+#: src/editor/editor_dialogs.cpp:494
 msgid "Y-Axis"
 msgstr "Y-telg"
 
-#: src/editor/editor_dialogs.cpp:493
+#: src/editor/editor_dialogs.cpp:495
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Keera ümber (see võib kaardi mõõtmeid muuta):"
 
@@ -357,47 +357,47 @@ msgstr "Kas sa tahad tõesti lõpetada?"
 msgid "Quit"
 msgstr "Lõpeta"
 
-#: src/mapgen_dialog.cpp:98
+#: src/mapgen_dialog.cpp:100
 msgid "Map Generator"
 msgstr "Kaardigeneraator"
 
-#: src/mapgen_dialog.cpp:103
+#: src/mapgen_dialog.cpp:105
 msgid "Players:"
 msgstr "Mängijad:"
 
-#: src/mapgen_dialog.cpp:106
+#: src/mapgen_dialog.cpp:108
 msgid "Number of Hills:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:107
+#: src/mapgen_dialog.cpp:109
 msgid "Max Hill Size:"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:108
+#: src/mapgen_dialog.cpp:110
 msgid "Villages:"
 msgstr "Külad:"
 
-#: src/mapgen_dialog.cpp:109
+#: src/mapgen_dialog.cpp:111
 msgid "Landform:"
 msgstr "Maastiku kuju:"
 
-#: src/mapgen_dialog.cpp:215
+#: src/mapgen_dialog.cpp:217
 msgid "Roads Between Castles"
 msgstr "Lossidevahelised teed"
 
-#: src/mapgen_dialog.cpp:272
+#: src/mapgen_dialog.cpp:274
 msgid "/1000 tiles"
 msgstr "/1000 maatükki"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Coastal"
 msgstr "Rannikuala"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Inland"
 msgstr "Sisemaa"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Island"
 msgstr "Saar"
 
@@ -639,6 +639,14 @@ msgstr ""
 #: src/show_dialog.cpp:872
 msgid "KB"
 msgstr "KB"
+
+#: src/widgets/file_chooser.cpp:37
+msgid "Delete File"
+msgstr "Kustuta fail"
+
+#: src/widgets/file_chooser.cpp:169
+msgid "Deletion of the file failed."
+msgstr "Faili kustutamine ebaõnnestus."
 
 #~ msgid "Set Player Start Position"
 #~ msgstr "Määra mängija lähtepositsioon"

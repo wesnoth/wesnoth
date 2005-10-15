@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:18+0200\n"
+"POT-Creation-Date: 2005-10-15 13:51+0200\n"
 "PO-Revision-Date: 2005-08-11 19:47+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -15,96 +15,96 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/editor/editor_dialogs.cpp:47
+#: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Tvoje úpravy mapy sa stratia. Mám pokračovať?"
 
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:197
 msgid "Create New Map"
 msgstr "Vytvor novú mapu"
 
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
+#: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
+#: src/mapgen_dialog.cpp:106
 msgid "Width:"
 msgstr "Šírka:"
 
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
+#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:393
+#: src/mapgen_dialog.cpp:107
 msgid "Height:"
 msgstr "Výška:"
 
-#: src/editor/editor_dialogs.cpp:93
+#: src/editor/editor_dialogs.cpp:95
 msgid "Generate New Map"
 msgstr "Generuj novú mapu"
 
-#: src/editor/editor_dialogs.cpp:94
+#: src/editor/editor_dialogs.cpp:96
 msgid "Generate Random Map"
 msgstr "Generuj náhodnú mapu"
 
-#: src/editor/editor_dialogs.cpp:95
+#: src/editor/editor_dialogs.cpp:97
 msgid "Random Generator Settings"
 msgstr "Nastavenia náhodného generátora"
 
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
+#: src/editor/editor_dialogs.cpp:98 src/editor/editor_dialogs.cpp:409
+#: src/filechooser.cpp:54 src/show_dialog.cpp:430 src/show_dialog.cpp:436
+#: src/show_dialog.cpp:849 src/show_dialog.cpp:927
 msgid "Cancel"
 msgstr "Storno"
 
-#: src/editor/editor_dialogs.cpp:181
+#: src/editor/editor_dialogs.cpp:183
 msgid "Map creation failed."
 msgstr "Nepodarilo sa vytvoriť mapu."
 
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/editor/editor_dialogs.cpp:249 src/mapgen_dialog.cpp:97
 #: src/preferences.cpp:1335
 msgid "Close Window"
 msgstr "Zavri okno"
 
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/editor/editor_dialogs.cpp:255 src/editor/editor_dialogs.cpp:322
 #: src/hotkeys.cpp:72 src/preferences.cpp:1232
 msgid "Preferences"
 msgstr "Nastavenia"
 
-#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+#: src/editor/editor_dialogs.cpp:257 src/preferences.cpp:905
 msgid "Scroll Speed:"
 msgstr "Rýchlosť rolovania:"
 
-#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/editor/editor_dialogs.cpp:284 src/hotkeys.cpp:55
 #: src/preferences.cpp:887
 msgid "Toggle Full Screen"
 msgstr "Celá obrazovka (zapni/vypni)"
 
-#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+#: src/editor/editor_dialogs.cpp:291 src/preferences.cpp:890
 msgid "Show Grid"
 msgstr "Ukáž mriežku"
 
-#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+#: src/editor/editor_dialogs.cpp:298 src/preferences.cpp:897
 msgid "Video Mode"
 msgstr "Režim obrazovky"
 
-#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+#: src/editor/editor_dialogs.cpp:301 src/preferences.cpp:898
 msgid "Hotkeys"
 msgstr "Klávesy"
 
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/editor/editor_dialogs.cpp:390 src/editor/editor_dialogs.cpp:450
 #: src/hotkeys.cpp:94
 msgid "Resize Map"
 msgstr "Zmeň veľkosť mapy"
 
-#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
-#: src/show_dialog.cpp:429
+#: src/editor/editor_dialogs.cpp:410 src/filechooser.cpp:53
+#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
 msgid "OK"
 msgstr "OK"
 
-#: src/editor/editor_dialogs.cpp:491
+#: src/editor/editor_dialogs.cpp:493
 msgid "X-Axis"
 msgstr "Os X"
 
-#: src/editor/editor_dialogs.cpp:492
+#: src/editor/editor_dialogs.cpp:494
 msgid "Y-Axis"
 msgstr "Os Y"
 
-#: src/editor/editor_dialogs.cpp:493
+#: src/editor/editor_dialogs.cpp:495
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Prevráť (môžu sa zmeniť rozmery mapy):"
 
@@ -356,47 +356,47 @@ msgstr "Chceš naozaj vypnúť?"
 msgid "Quit"
 msgstr "Vypni"
 
-#: src/mapgen_dialog.cpp:98
+#: src/mapgen_dialog.cpp:100
 msgid "Map Generator"
 msgstr "Generátor mapy"
 
-#: src/mapgen_dialog.cpp:103
+#: src/mapgen_dialog.cpp:105
 msgid "Players:"
 msgstr "Hráči:"
 
-#: src/mapgen_dialog.cpp:106
+#: src/mapgen_dialog.cpp:108
 msgid "Number of Hills:"
 msgstr "Počet kopcov:"
 
-#: src/mapgen_dialog.cpp:107
+#: src/mapgen_dialog.cpp:109
 msgid "Max Hill Size:"
 msgstr "Max veľkosť kopca:"
 
-#: src/mapgen_dialog.cpp:108
+#: src/mapgen_dialog.cpp:110
 msgid "Villages:"
 msgstr "Dediny:"
 
-#: src/mapgen_dialog.cpp:109
+#: src/mapgen_dialog.cpp:111
 msgid "Landform:"
 msgstr "Druh zeme:"
 
-#: src/mapgen_dialog.cpp:215
+#: src/mapgen_dialog.cpp:217
 msgid "Roads Between Castles"
 msgstr "Spoj hrady cestami"
 
-#: src/mapgen_dialog.cpp:272
+#: src/mapgen_dialog.cpp:274
 msgid "/1000 tiles"
 msgstr "/1000 polí"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Coastal"
 msgstr "Pobrežie"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Inland"
 msgstr "Vnútrozemie"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Island"
 msgstr "Ostrov"
 
@@ -637,3 +637,11 @@ msgstr "Prijímam údaje..."
 #: src/show_dialog.cpp:872
 msgid "KB"
 msgstr "KB"
+
+#: src/widgets/file_chooser.cpp:37
+msgid "Delete File"
+msgstr "Vymaž súbor"
+
+#: src/widgets/file_chooser.cpp:169
+msgid "Deletion of the file failed."
+msgstr "Nepodarilo sa vymazať súbor."

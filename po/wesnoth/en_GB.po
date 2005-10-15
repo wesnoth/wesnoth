@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 02:15+0200\n"
+"POT-Creation-Date: 2005-10-15 13:50+0200\n"
 "PO-Revision-Date: 2005-09-27 11:12+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
@@ -9195,15 +9195,6 @@ msgstr "Moves: "
 msgid "Screenshot"
 msgstr "Screenshot"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
-msgid "OK"
-msgstr "OK"
-
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:508
-#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
-msgid "Cancel"
-msgstr "Cancel"
-
 #: src/game.cpp:395
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
@@ -9703,6 +9694,11 @@ msgstr "Computer vs Computer"
 msgid "I'm Ready"
 msgstr "I'm Ready"
 
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
+#: src/multiplayer_wait.cpp:148
+msgid "Cancel"
+msgstr "Cancel"
+
 #: src/multiplayer_connect.cpp:525
 msgid "The scenario is invalid because it has no sides."
 msgstr "The scenario is invalid because it has no sides."
@@ -9771,6 +9767,10 @@ msgstr "Fog Of War"
 #: src/multiplayer_create.cpp:56
 msgid "Observers"
 msgstr "Observers"
+
+#: src/multiplayer_create.cpp:58
+msgid "OK"
+msgstr "OK"
 
 #: src/multiplayer_create.cpp:59
 msgid "Regenerate"

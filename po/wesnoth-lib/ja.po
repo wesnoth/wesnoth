@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:18+0200\n"
+"POT-Creation-Date: 2005-10-15 13:51+0200\n"
 "PO-Revision-Date: 2005-09-03 04:49+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -19,96 +19,96 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: KBabel 1.9\n"
 
-#: src/editor/editor_dialogs.cpp:47
+#: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "マップの修正は失われてしまいます。 続けますか？"
 
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:197
 msgid "Create New Map"
 msgstr "新しいマップの作成"
 
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
+#: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
+#: src/mapgen_dialog.cpp:106
 msgid "Width:"
 msgstr "幅:"
 
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
+#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:393
+#: src/mapgen_dialog.cpp:107
 msgid "Height:"
 msgstr "高さ:"
 
-#: src/editor/editor_dialogs.cpp:93
+#: src/editor/editor_dialogs.cpp:95
 msgid "Generate New Map"
 msgstr "新しいマップの生成"
 
-#: src/editor/editor_dialogs.cpp:94
+#: src/editor/editor_dialogs.cpp:96
 msgid "Generate Random Map"
 msgstr "ランダムマップの生成"
 
-#: src/editor/editor_dialogs.cpp:95
+#: src/editor/editor_dialogs.cpp:97
 msgid "Random Generator Settings"
 msgstr "ランダムマップ生成の設定"
 
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
+#: src/editor/editor_dialogs.cpp:98 src/editor/editor_dialogs.cpp:409
+#: src/filechooser.cpp:54 src/show_dialog.cpp:430 src/show_dialog.cpp:436
+#: src/show_dialog.cpp:849 src/show_dialog.cpp:927
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: src/editor/editor_dialogs.cpp:181
+#: src/editor/editor_dialogs.cpp:183
 msgid "Map creation failed."
 msgstr "マップの作成に失敗しました。"
 
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/editor/editor_dialogs.cpp:249 src/mapgen_dialog.cpp:97
 #: src/preferences.cpp:1335
 msgid "Close Window"
 msgstr "ウィンドウを閉じる"
 
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/editor/editor_dialogs.cpp:255 src/editor/editor_dialogs.cpp:322
 #: src/hotkeys.cpp:72 src/preferences.cpp:1232
 msgid "Preferences"
 msgstr "設定"
 
-#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+#: src/editor/editor_dialogs.cpp:257 src/preferences.cpp:905
 msgid "Scroll Speed:"
 msgstr "スクロール速度："
 
-#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/editor/editor_dialogs.cpp:284 src/hotkeys.cpp:55
 #: src/preferences.cpp:887
 msgid "Toggle Full Screen"
 msgstr "フルスクリーン切り換え"
 
-#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+#: src/editor/editor_dialogs.cpp:291 src/preferences.cpp:890
 msgid "Show Grid"
 msgstr "グリッド表示"
 
-#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+#: src/editor/editor_dialogs.cpp:298 src/preferences.cpp:897
 msgid "Video Mode"
 msgstr "画面モード"
 
-#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+#: src/editor/editor_dialogs.cpp:301 src/preferences.cpp:898
 msgid "Hotkeys"
 msgstr "ホットキー"
 
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/editor/editor_dialogs.cpp:390 src/editor/editor_dialogs.cpp:450
 #: src/hotkeys.cpp:94
 msgid "Resize Map"
 msgstr "マップのサイズ変更"
 
-#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
-#: src/show_dialog.cpp:429
+#: src/editor/editor_dialogs.cpp:410 src/filechooser.cpp:53
+#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
 msgid "OK"
 msgstr "OK"
 
-#: src/editor/editor_dialogs.cpp:491
+#: src/editor/editor_dialogs.cpp:493
 msgid "X-Axis"
 msgstr "X軸"
 
-#: src/editor/editor_dialogs.cpp:492
+#: src/editor/editor_dialogs.cpp:494
 msgid "Y-Axis"
 msgstr "Y軸"
 
-#: src/editor/editor_dialogs.cpp:493
+#: src/editor/editor_dialogs.cpp:495
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "反転する方向（マップの全体サイズが変わるかもしれません）"
 
@@ -360,47 +360,47 @@ msgstr "本当に終了しますか？"
 msgid "Quit"
 msgstr "終了"
 
-#: src/mapgen_dialog.cpp:98
+#: src/mapgen_dialog.cpp:100
 msgid "Map Generator"
 msgstr "マップ生成"
 
-#: src/mapgen_dialog.cpp:103
+#: src/mapgen_dialog.cpp:105
 msgid "Players:"
 msgstr "プレイヤー数:"
 
-#: src/mapgen_dialog.cpp:106
+#: src/mapgen_dialog.cpp:108
 msgid "Number of Hills:"
 msgstr "丘の数:"
 
-#: src/mapgen_dialog.cpp:107
+#: src/mapgen_dialog.cpp:109
 msgid "Max Hill Size:"
 msgstr "最大の丘の大きさ:"
 
-#: src/mapgen_dialog.cpp:108
+#: src/mapgen_dialog.cpp:110
 msgid "Villages:"
 msgstr "村:"
 
-#: src/mapgen_dialog.cpp:109
+#: src/mapgen_dialog.cpp:111
 msgid "Landform:"
 msgstr "地形:"
 
-#: src/mapgen_dialog.cpp:215
+#: src/mapgen_dialog.cpp:217
 msgid "Roads Between Castles"
 msgstr "城間の道"
 
-#: src/mapgen_dialog.cpp:272
+#: src/mapgen_dialog.cpp:274
 msgid "/1000 tiles"
 msgstr "/1000 タイル"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Coastal"
 msgstr "沿岸"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Inland"
 msgstr "内陸"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Island"
 msgstr "島"
 
@@ -640,8 +640,16 @@ msgstr "データ受信中..."
 msgid "KB"
 msgstr "KB"
 
-#~ msgid "Set Player Start Position"
-#~ msgstr "プレイヤーの 開始位置を設定"
+#: src/widgets/file_chooser.cpp:37
+msgid "Delete File"
+msgstr "ファイル削除"
+
+#: src/widgets/file_chooser.cpp:169
+msgid "Deletion of the file failed."
+msgstr "ファイルを削除できませんでした。"
 
 #~ msgid "Downloading..."
 #~ msgstr "ダウンロード中..."
+
+#~ msgid "Set Player Start Position"
+#~ msgstr "プレイヤーの 開始位置を設定"

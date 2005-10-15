@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 02:15+0200\n"
+"POT-Creation-Date: 2005-10-15 13:50+0200\n"
 "PO-Revision-Date: 2005-09-17 00:07+0300\n"
 "Last-Translator: \n"
 "Language-Team:  <el@li.org>\n"
@@ -8262,15 +8262,6 @@ msgstr "Κινήσεις: "
 msgid "Screenshot"
 msgstr ""
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
-msgid "OK"
-msgstr "Εντάξει "
-
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:508
-#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
-msgid "Cancel"
-msgstr "Ακύρωση"
-
 #: src/game.cpp:395
 msgid "The Battle for Wesnoth"
 msgstr "Η Μάχη για το Wesnoth"
@@ -8777,6 +8768,11 @@ msgstr ""
 msgid "I'm Ready"
 msgstr ""
 
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
+#: src/multiplayer_wait.cpp:148
+msgid "Cancel"
+msgstr "Ακύρωση"
+
 #: src/multiplayer_connect.cpp:525
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
@@ -8843,6 +8839,10 @@ msgstr "Ομίχλη του Πολέμου"
 #: src/multiplayer_create.cpp:56
 msgid "Observers"
 msgstr "Παρατηρητές"
+
+#: src/multiplayer_create.cpp:58
+msgid "OK"
+msgstr "Εντάξει "
 
 #: src/multiplayer_create.cpp:59
 msgid "Regenerate"

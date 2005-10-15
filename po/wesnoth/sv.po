@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 02:15+0200\n"
+"POT-Creation-Date: 2005-10-15 13:50+0200\n"
 "PO-Revision-Date: 2005-08-28 23:22+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
@@ -9146,15 +9146,6 @@ msgstr "Förflyttning: "
 msgid "Screenshot"
 msgstr "Skärmdump"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
-msgid "OK"
-msgstr "OK"
-
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:508
-#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
-msgid "Cancel"
-msgstr "Avbryt"
-
 #: src/game.cpp:395
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
@@ -9658,6 +9649,11 @@ msgstr "Dator mot dator"
 msgid "I'm Ready"
 msgstr "Klar!"
 
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
+#: src/multiplayer_wait.cpp:148
+msgid "Cancel"
+msgstr "Avbryt"
+
 #: src/multiplayer_connect.cpp:525
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scenariot är ogiltigt då det saknar sidor."
@@ -9726,6 +9722,10 @@ msgstr "Stridsdimma"
 #: src/multiplayer_create.cpp:56
 msgid "Observers"
 msgstr "Åskådare"
+
+#: src/multiplayer_create.cpp:58
+msgid "OK"
+msgstr "OK"
 
 #: src/multiplayer_create.cpp:59
 msgid "Regenerate"

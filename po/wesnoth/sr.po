@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 02:15+0200\n"
+"POT-Creation-Date: 2005-10-15 13:50+0200\n"
 "PO-Revision-Date: 2005-08-07 22:54+0200\n"
 "Last-Translator: Srecko Toroman <sreckotoroman@gmail.com>\n"
 "Language-Team: Serbian <freecraft@gmail.com>\n"
@@ -7055,15 +7055,6 @@ msgstr "Кретање:"
 msgid "Screenshot"
 msgstr "Слика екрана"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
-msgid "OK"
-msgstr "Уреду"
-
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:508
-#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
-msgid "Cancel"
-msgstr "Одустани"
-
 #: src/game.cpp:395
 msgid "The Battle for Wesnoth"
 msgstr "Борба За Веснот"
@@ -7560,6 +7551,11 @@ msgstr "Рачунар - Рачунар"
 msgid "I'm Ready"
 msgstr "Ја Сам Спреман"
 
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
+#: src/multiplayer_wait.cpp:148
+msgid "Cancel"
+msgstr "Одустани"
+
 #: src/multiplayer_connect.cpp:525
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
@@ -7628,6 +7624,10 @@ msgstr "Ратна Магла"
 #: src/multiplayer_create.cpp:56
 msgid "Observers"
 msgstr "Посматрачи"
+
+#: src/multiplayer_create.cpp:58
+msgid "OK"
+msgstr "Уреду"
 
 #: src/multiplayer_create.cpp:59
 msgid "Regenerate"

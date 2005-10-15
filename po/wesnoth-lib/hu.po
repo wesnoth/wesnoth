@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 01:18+0200\n"
+"POT-Creation-Date: 2005-10-15 13:51+0200\n"
 "PO-Revision-Date: 2005-08-31 02:07+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -18,96 +18,96 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/editor/editor_dialogs.cpp:47
+#: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "A pályán eszközölt változások elvesznek. Folytatod?"
 
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:197
 msgid "Create New Map"
 msgstr "Új pálya készítése"
 
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
-#: src/mapgen_dialog.cpp:104
+#: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
+#: src/mapgen_dialog.cpp:106
 msgid "Width:"
 msgstr "Szélesség:"
 
-#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
-#: src/mapgen_dialog.cpp:105
+#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:393
+#: src/mapgen_dialog.cpp:107
 msgid "Height:"
 msgstr "Magasság:"
 
-#: src/editor/editor_dialogs.cpp:93
+#: src/editor/editor_dialogs.cpp:95
 msgid "Generate New Map"
 msgstr "Új pálya generálása"
 
-#: src/editor/editor_dialogs.cpp:94
+#: src/editor/editor_dialogs.cpp:96
 msgid "Generate Random Map"
 msgstr "Véletlenszerű pálya generálása"
 
-#: src/editor/editor_dialogs.cpp:95
+#: src/editor/editor_dialogs.cpp:97
 msgid "Random Generator Settings"
 msgstr "Véletlenszerű generálás beállításai"
 
-#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
-#: src/show_dialog.cpp:430 src/show_dialog.cpp:436 src/show_dialog.cpp:849
-#: src/show_dialog.cpp:927
+#: src/editor/editor_dialogs.cpp:98 src/editor/editor_dialogs.cpp:409
+#: src/filechooser.cpp:54 src/show_dialog.cpp:430 src/show_dialog.cpp:436
+#: src/show_dialog.cpp:849 src/show_dialog.cpp:927
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/editor/editor_dialogs.cpp:181
+#: src/editor/editor_dialogs.cpp:183
 msgid "Map creation failed."
 msgstr "A pályakészítés sikertelen"
 
-#: src/editor/editor_dialogs.cpp:247 src/mapgen_dialog.cpp:95
+#: src/editor/editor_dialogs.cpp:249 src/mapgen_dialog.cpp:97
 #: src/preferences.cpp:1335
 msgid "Close Window"
 msgstr "Ablak bezárása"
 
-#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
+#: src/editor/editor_dialogs.cpp:255 src/editor/editor_dialogs.cpp:322
 #: src/hotkeys.cpp:72 src/preferences.cpp:1232
 msgid "Preferences"
 msgstr "Beállítások"
 
-#: src/editor/editor_dialogs.cpp:255 src/preferences.cpp:905
+#: src/editor/editor_dialogs.cpp:257 src/preferences.cpp:905
 msgid "Scroll Speed:"
 msgstr "Görgetés sebessége:"
 
-#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:55
+#: src/editor/editor_dialogs.cpp:284 src/hotkeys.cpp:55
 #: src/preferences.cpp:887
 msgid "Toggle Full Screen"
 msgstr "Teljes képernyős mód beállítása"
 
-#: src/editor/editor_dialogs.cpp:289 src/preferences.cpp:890
+#: src/editor/editor_dialogs.cpp:291 src/preferences.cpp:890
 msgid "Show Grid"
 msgstr "Rács megjelenítése"
 
-#: src/editor/editor_dialogs.cpp:296 src/preferences.cpp:897
+#: src/editor/editor_dialogs.cpp:298 src/preferences.cpp:897
 msgid "Video Mode"
 msgstr "Videó mód"
 
-#: src/editor/editor_dialogs.cpp:299 src/preferences.cpp:898
+#: src/editor/editor_dialogs.cpp:301 src/preferences.cpp:898
 msgid "Hotkeys"
 msgstr "Gyorsbillentyűk"
 
-#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#: src/editor/editor_dialogs.cpp:390 src/editor/editor_dialogs.cpp:450
 #: src/hotkeys.cpp:94
 msgid "Resize Map"
 msgstr "Pálya átméretezése"
 
-#: src/editor/editor_dialogs.cpp:408 src/show_dialog.cpp:416
-#: src/show_dialog.cpp:429
+#: src/editor/editor_dialogs.cpp:410 src/filechooser.cpp:53
+#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
 msgid "OK"
 msgstr "Oké"
 
-#: src/editor/editor_dialogs.cpp:491
+#: src/editor/editor_dialogs.cpp:493
 msgid "X-Axis"
 msgstr "X-tengely"
 
-#: src/editor/editor_dialogs.cpp:492
+#: src/editor/editor_dialogs.cpp:494
 msgid "Y-Axis"
 msgstr "Y-tengely"
 
-#: src/editor/editor_dialogs.cpp:493
+#: src/editor/editor_dialogs.cpp:495
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Tükrözés (ez megváltoztathatja a pálya méreteit):"
 
@@ -359,47 +359,47 @@ msgstr "Biztos ki akarsz lépni?"
 msgid "Quit"
 msgstr "Kilépés"
 
-#: src/mapgen_dialog.cpp:98
+#: src/mapgen_dialog.cpp:100
 msgid "Map Generator"
 msgstr "Pályarajzoló"
 
-#: src/mapgen_dialog.cpp:103
+#: src/mapgen_dialog.cpp:105
 msgid "Players:"
 msgstr "Játékosok:"
 
-#: src/mapgen_dialog.cpp:106
+#: src/mapgen_dialog.cpp:108
 msgid "Number of Hills:"
 msgstr "Dombok száma:"
 
-#: src/mapgen_dialog.cpp:107
+#: src/mapgen_dialog.cpp:109
 msgid "Max Hill Size:"
 msgstr "Dombok maximális magassága:"
 
-#: src/mapgen_dialog.cpp:108
+#: src/mapgen_dialog.cpp:110
 msgid "Villages:"
 msgstr "Falvak:"
 
-#: src/mapgen_dialog.cpp:109
+#: src/mapgen_dialog.cpp:111
 msgid "Landform:"
 msgstr "Területforma:"
 
-#: src/mapgen_dialog.cpp:215
+#: src/mapgen_dialog.cpp:217
 msgid "Roads Between Castles"
 msgstr "Várak összekötése utakkal"
 
-#: src/mapgen_dialog.cpp:272
+#: src/mapgen_dialog.cpp:274
 msgid "/1000 tiles"
 msgstr "/1000 terület"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Coastal"
 msgstr "Tengerpart"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Inland"
 msgstr "Szárazföld"
 
-#: src/mapgen_dialog.cpp:277
+#: src/mapgen_dialog.cpp:279
 msgid "Island"
 msgstr "Sziget"
 
@@ -644,8 +644,16 @@ msgstr "Adatok fogadása..."
 msgid "KB"
 msgstr "KB"
 
-#~ msgid "Set Player Start Position"
-#~ msgstr "Játékos kezdőhely megadása"
+#: src/widgets/file_chooser.cpp:37
+msgid "Delete File"
+msgstr "Fájl törlése"
+
+#: src/widgets/file_chooser.cpp:169
+msgid "Deletion of the file failed."
+msgstr "A fájl törlése sikertelen"
 
 #~ msgid "Downloading..."
 #~ msgstr "Letöltés..."
+
+#~ msgid "Set Player Start Position"
+#~ msgstr "Játékos kezdőhely megadása"

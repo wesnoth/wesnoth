@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 02:15+0200\n"
+"POT-Creation-Date: 2005-10-15 13:50+0200\n"
 "PO-Revision-Date: 2005-08-07 22:54+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <sl@li.org>\n"
@@ -7674,15 +7674,6 @@ msgstr "Premiki: "
 msgid "Screenshot"
 msgstr "Posnetek zaslona"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
-msgid "OK"
-msgstr "OK"
-
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:508
-#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
-msgid "Cancel"
-msgstr "Prekliči"
-
 #: src/game.cpp:395
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
@@ -8182,6 +8173,11 @@ msgstr "Računalnik proti računalniku"
 msgid "I'm Ready"
 msgstr "Pripravljen sem"
 
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
+#: src/multiplayer_wait.cpp:148
+msgid "Cancel"
+msgstr "Prekliči"
+
 #: src/multiplayer_connect.cpp:525
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scenarij je neveljaven, ker nima nobenih strani."
@@ -8250,6 +8246,10 @@ msgstr "Megla"
 #: src/multiplayer_create.cpp:56
 msgid "Observers"
 msgstr "Opazovalci"
+
+#: src/multiplayer_create.cpp:58
+msgid "OK"
+msgstr "OK"
 
 #: src/multiplayer_create.cpp:59
 msgid "Regenerate"

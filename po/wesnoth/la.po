@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.0.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 02:15+0200\n"
+"POT-Creation-Date: 2005-10-15 13:50+0200\n"
 "PO-Revision-Date: 2005-09-29 19:20+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -9041,15 +9041,6 @@ msgstr "Puncta motus: "
 msgid "Screenshot"
 msgstr "Imago Scrinii"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
-msgid "OK"
-msgstr "Bene"
-
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:508
-#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
-msgid "Cancel"
-msgstr "Abrogare"
-
 #: src/game.cpp:395
 msgid "The Battle for Wesnoth"
 msgstr "Proelium pro Occidiseptentrione"
@@ -9546,6 +9537,11 @@ msgstr "Computatrum contra Computatrum"
 msgid "I'm Ready"
 msgstr "Paratus Sum"
 
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
+#: src/multiplayer_wait.cpp:148
+msgid "Cancel"
+msgstr "Abrogare"
+
 #: src/multiplayer_connect.cpp:525
 msgid "The scenario is invalid because it has no sides."
 msgstr "Missio invalida est quia non habet partes."
@@ -9614,6 +9610,10 @@ msgstr "Caligo Belli"
 #: src/multiplayer_create.cpp:56
 msgid "Observers"
 msgstr "Spectatores"
+
+#: src/multiplayer_create.cpp:58
+msgid "OK"
+msgstr "Bene"
 
 #: src/multiplayer_create.cpp:59
 msgid "Regenerate"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 02:15+0200\n"
+"POT-Creation-Date: 2005-10-15 13:50+0200\n"
 "PO-Revision-Date: 2005-09-03 19:00+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
@@ -9324,15 +9324,6 @@ msgstr "Moviments: "
 msgid "Screenshot"
 msgstr "captura"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
-msgid "OK"
-msgstr "D'acord"
-
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:508
-#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
-msgid "Cancel"
-msgstr "Cancel·la"
-
 #: src/game.cpp:395
 msgid "The Battle for Wesnoth"
 msgstr "La Batalla per Wesnoth"
@@ -9836,6 +9827,11 @@ msgstr "Ordinador contra Ordinador"
 msgid "I'm Ready"
 msgstr "Estic preparat"
 
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
+#: src/multiplayer_wait.cpp:148
+msgid "Cancel"
+msgstr "Cancel·la"
+
 #: src/multiplayer_connect.cpp:525
 msgid "The scenario is invalid because it has no sides."
 msgstr "L'escenari no és vàlid: no hi ha bàndols disponibles."
@@ -9904,6 +9900,10 @@ msgstr "Boira de guerra"
 #: src/multiplayer_create.cpp:56
 msgid "Observers"
 msgstr "Observadors"
+
+#: src/multiplayer_create.cpp:58
+msgid "OK"
+msgstr "D'acord"
 
 #: src/multiplayer_create.cpp:59
 msgid "Regenerate"

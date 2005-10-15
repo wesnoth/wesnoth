@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 02:15+0200\n"
+"POT-Creation-Date: 2005-10-15 13:50+0200\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -7153,15 +7153,6 @@ msgstr "Mugimenduak:"
 msgid "Screenshot"
 msgstr "Pantaila argazkia"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
-msgid "OK"
-msgstr "ADOS"
-
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:508
-#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
-msgid "Cancel"
-msgstr "Utzi"
-
 #: src/game.cpp:395
 msgid "The Battle for Wesnoth"
 msgstr "Wesnoth-eko guda"
@@ -7662,6 +7653,11 @@ msgstr "Ordenagailua vs Ordenagailua"
 msgid "I'm Ready"
 msgstr "Prest Nago"
 
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
+#: src/multiplayer_wait.cpp:148
+msgid "Cancel"
+msgstr "Utzi"
+
 #: src/multiplayer_connect.cpp:525
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
@@ -7730,6 +7726,10 @@ msgstr "Guda lainoa"
 #: src/multiplayer_create.cpp:56
 msgid "Observers"
 msgstr "Ikusleak"
+
+#: src/multiplayer_create.cpp:58
+msgid "OK"
+msgstr "ADOS"
 
 #: src/multiplayer_create.cpp:59
 msgid "Regenerate"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.0-cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 02:15+0200\n"
+"POT-Creation-Date: 2005-10-15 13:50+0200\n"
 "PO-Revision-Date: 2005-09-18 18:42+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -8771,15 +8771,6 @@ msgstr "Lépés: "
 msgid "Screenshot"
 msgstr "Képernyőkép"
 
-#: src/filechooser.cpp:51 src/multiplayer_create.cpp:58
-msgid "OK"
-msgstr "Oké"
-
-#: src/filechooser.cpp:52 src/multiplayer_connect.cpp:508
-#: src/multiplayer_create.cpp:57 src/multiplayer_wait.cpp:148
-msgid "Cancel"
-msgstr "Mégse"
-
 #: src/game.cpp:395
 msgid "The Battle for Wesnoth"
 msgstr "Harc Wesnoth-ért"
@@ -9281,6 +9272,11 @@ msgstr "Számítógép kontra számítógép"
 msgid "I'm Ready"
 msgstr "Indulhat!"
 
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
+#: src/multiplayer_wait.cpp:148
+msgid "Cancel"
+msgstr "Mégse"
+
 #: src/multiplayer_connect.cpp:525
 msgid "The scenario is invalid because it has no sides."
 msgstr "Ez a pálya alkalmatlan, mert nincsenek csapatok benne."
@@ -9349,6 +9345,10 @@ msgstr "Köd"
 #: src/multiplayer_create.cpp:56
 msgid "Observers"
 msgstr "Megfigyelők"
+
+#: src/multiplayer_create.cpp:58
+msgid "OK"
+msgstr "Oké"
 
 #: src/multiplayer_create.cpp:59
 msgid "Regenerate"
