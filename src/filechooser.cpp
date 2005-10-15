@@ -13,8 +13,6 @@
 
 #include "global.hpp"
 
-#define GETTEXT_DOMAIN "wesnoth-lib"
-
 #include "display.hpp"
 #include "gettext.hpp"
 #include "show_dialog.hpp"
