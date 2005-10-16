@@ -27,5 +27,6 @@ void archive_campaign(const std::string& campaign_name, class config& cfg);
 void unarchive_campaign(const class config& cfg);
 
 bool campaign_name_legal(const std::string& name);
+bool check_names_legal(const config& dir);
 
 #endif

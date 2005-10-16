@@ -177,7 +177,7 @@ namespace {
 
 bool campaign_name_legal(const std::string& name)
 {
-	if(name == "" || strlen(name.c_str()) == 0 ||
+	if(name == "" || strlen(name.c_str()) == 0 || name == "." ||
 	   std::find(name.begin(),name.end(),'/') != name.end() ||
 	   std::find(name.begin(),name.end(),'\\') != name.end() ||
 	   std::find(name.begin(),name.end(),':') != name.end() ||
@@ -186,4 +186,18 @@ bool campaign_name_legal(const std::string& name)
 	} else {
 		return true;
 	}
+}
+
+bool check_names_legal(const config& dir)
+{
+        const config::child_list& files = dir.get_children("file");
+        for(config::child_list::const_iterator i = files.begin(); i != files.end(); ++i) {
+                if (!campaign_name_legal((**i)["name"])) return false;
+        }
+        const config::child_list& dirs = dir.get_children("dir");
+        for(config::child_list::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
+                if (!campaign_name_legal((**i)["name"])) return false;
+                if (!check_names_legal(**i)) return false;
+        }
+        return true;
 }

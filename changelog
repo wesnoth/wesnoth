@@ -11,6 +11,10 @@ Version 1.0+svn:
  * language and i18n:
    * updated translations: Afrikaans, Chinese, Italian, Polish, Russian, Slovenian,
      Turkish
+ * Campaign server
+   * Changed campaign_name_legal to bar name of '.'
+   * Back ported check_names_legal to be combined with an upcoming change
+     that will close a vulnerability to bogus data from the campaign server.
  * multiplayer
    * multiplayer game with "empty" as side no longer causes OOS (#4464)
    * disabled 'advancefrom' in multiplayer
