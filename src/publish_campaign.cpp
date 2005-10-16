@@ -177,7 +177,7 @@ namespace {
 
 bool campaign_name_legal(const std::string& name)
 {
-	if(name == "" || strlen(name.c_str()) == 0 ||
+	if(name == "" || strlen(name.c_str()) == 0 || name == "." ||
 	   std::find(name.begin(),name.end(),'/') != name.end() ||
 	   std::find(name.begin(),name.end(),'\\') != name.end() ||
 	   std::find(name.begin(),name.end(),':') != name.end() ||

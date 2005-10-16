@@ -61,6 +61,10 @@ SVN trunk:
    * campaign_list response now contains information about translations
    * problem with duplicate translations being saved with each upload has been
      fixed.
+   * I added a check for a name of "." to the list of invalid campaign names.
+     We should think about a list of valid characters rather than invalid ones.
+     Something like ^[A-Za-z0-9_]+$ instead of trying to list potentially bad
+     names.
  * utils: added weblist.pl and webtgz.pl web interface programs
    * updated weblist.pl to display translation information
    * updated weblist.pl and webtgz.pl to use standard wesnoth logo banner
