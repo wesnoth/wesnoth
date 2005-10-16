@@ -336,6 +336,7 @@ std::string server::process_command(const std::string& cmd)
 		if(i == cmd.end()) {
 			if(motd_ != "") {
 				out << "message of the day: " << motd_;
+				return out.str();
 			} else {
 				return "no message of the day set";
 			}
