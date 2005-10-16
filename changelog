@@ -65,6 +65,8 @@ SVN trunk:
      We should think about a list of valid characters rather than invalid ones.
      Something like ^[A-Za-z0-9_]+$ instead of trying to list potentially bad
      names.
+   * Moved check_names_legal from campaign_server to publish_campaign in
+     preperation for using it to check downloaded campaigns.
  * utils: added weblist.pl and webtgz.pl web interface programs
    * updated weblist.pl to display translation information
    * updated weblist.pl and webtgz.pl to use standard wesnoth logo banner
