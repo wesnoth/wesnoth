@@ -15,6 +15,9 @@ Version 1.0+svn:
    * Changed campaign_name_legal to bar name of '.'
    * Back ported check_names_legal to be combined with an upcoming change
      that will close a vulnerability to bogus data from the campaign server.
+   * Before doing anything destructive to install a new campaign, all of the
+     file and directory names are checked to make sure they are safe and if not
+     the campaign is not installed.
  * multiplayer
    * multiplayer game with "empty" as side no longer causes OOS (#4464)
    * disabled 'advancefrom' in multiplayer
