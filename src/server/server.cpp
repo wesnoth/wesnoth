@@ -585,7 +585,7 @@ void server::process_login(const network::connection sock, const config& data, c
 	network::send_data(initial_response_,sock);
 
 	if(motd_ != "") {
-		network::send_data(construct_server_message(motd_),sock);
+		network::send_data(construct_server_message(motd_,lobby_players_),sock);
 	}
 
 	//send other players in the lobby the update that the player has joined
