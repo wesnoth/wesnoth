@@ -991,6 +991,11 @@ void game_controller::download_campaigns()
 			return;
 		}
 
+		if(!check_names_legal(cfg)) {
+			gui::show_error_message(disp(), "The campaign has an invalid file or directory name and can not be installed.");
+			return;
+		}
+
 		//remove any existing versions of the just downloaded campaign
 		//assuming it consists of a dir and a cfg file
 		remove_campaign(campaigns[index]);

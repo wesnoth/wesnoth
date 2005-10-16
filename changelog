@@ -49,7 +49,7 @@ SVN trunk:
    * Support new "timestamp" attribute
    * Save persistent attributes in the campaign data
      * The campaign name cannot be stored in "name" as that is treated as a
-       directory name, so use campaign_name instead.
+       directory name, so use campaign_name instead. (Fixes bug #4525.)
      * The campaign server now checks of file and directory names on upload
        the same as the campaign name to prevent custom clients from entering
        malicious names.
@@ -67,6 +67,9 @@ SVN trunk:
      names.
    * Moved check_names_legal from campaign_server to publish_campaign in
      preperation for using it to check downloaded campaigns.
+   * The download client has been changed to check the safety of names before
+     trying to install a downloaded campaign. If any unsafe names are found
+     the install is aborted before any old version of the campaign is removed.
  * utils: added weblist.pl and webtgz.pl web interface programs
    * updated weblist.pl to display translation information
    * updated weblist.pl and webtgz.pl to use standard wesnoth logo banner
