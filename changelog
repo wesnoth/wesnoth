@@ -49,6 +49,9 @@ SVN trunk:
    * Save persistent attributes in the campaign data
      * The campaign name cannot be stored in "name" as that is treated as a
        directory name, so use campaign_name instead.
+     * The campaign server now checks of file and directory names on upload
+       the same as the campaign name to prevent custom clients from entering
+       malicious names.
    * Support filtering on campaign_list requests
      * filter by name
      * filter by last update time (before or after)

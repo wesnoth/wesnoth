@@ -87,6 +87,19 @@ void find_translations(const config& cfg, config& campaign)
         }
 }
 
+bool check_names_legal(const config& dir)
+{
+        const config::child_list& files = dir.get_children("file");
+        for(config::child_list::const_iterator i = files.begin(); i != files.end(); ++i) {
+		if (!campaign_name_legal((**i)["name"])) return false;
+        }
+        const config::child_list& dirs = dir.get_children("dir");
+        for(config::child_list::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
+		if (!campaign_name_legal((**i)["name"])) return false;
+		if (!check_names_legal(**i)) return false;
+        }
+	return true;
+}
 
 void campaign_server::run()
 {
@@ -178,11 +191,16 @@ void campaign_server::run()
 				} else if(data.child("request_terms") != NULL) {
 					network::send_data(construct_message("All campaigns uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."),sock);
 				} else if(config* upload = data.child("upload")) {
+					config* data = upload->child("data");
 					config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
-					if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
+					if(data == NULL) {
+						network::send_data(construct_error("No campaign data was supplied."),sock);
+					} else if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
 						network::send_data(construct_error("The campaign already exists, and your passphrase was incorrect."),sock);
 					} else if(campaign_name_legal((*upload)["name"]) == false) {
 						network::send_data(construct_error("The name of the campaign is invalid"),sock);
+					} else if(check_names_legal(*data) == false) {
+						network::send_data(construct_error("The campaign contains an illegal file or directory name."),sock);
 					} else {
 						if(campaign == NULL) {
 							campaign = &campaigns().add_child("campaign");
@@ -202,26 +220,23 @@ void campaign_server::run()
 						}
 						(*campaign)["timestamp"] = lexical_cast<std::string>(time(NULL));
 
-						config* data = upload->child("data");
-						if(data != NULL) {
-							std::string filename = (*campaign)["filename"];
-							(*data)["title"] = (*campaign)["title"];
-							(*data)["name"] = "";
-							(*data)["campaign_name"] = (*campaign)["name"];
-							(*data)["author"] = (*campaign)["author"];
-							(*data)["description"] = (*campaign)["description"];
-							(*data)["version"] = (*campaign)["version"];
-							(*data)["timestamp"] = (*campaign)["timestamp"];
-							(*data)["icon"] = (*campaign)["icon"];
-							(*campaign).clear_children("translation");
-							find_translations(*data, *campaign);
-							{
-								scoped_ostream campaign_file = ostream_file(filename);
-								write_compressed(*campaign_file, *data);
-							}
-							(*campaign)["size"] = lexical_cast<std::string>(
-								file_size(filename));
+						std::string filename = (*campaign)["filename"];
+						(*data)["title"] = (*campaign)["title"];
+						(*data)["name"] = "";
+						(*data)["campaign_name"] = (*campaign)["name"];
+						(*data)["author"] = (*campaign)["author"];
+						(*data)["description"] = (*campaign)["description"];
+						(*data)["version"] = (*campaign)["version"];
+						(*data)["timestamp"] = (*campaign)["timestamp"];
+						(*data)["icon"] = (*campaign)["icon"];
+						(*campaign).clear_children("translation");
+						find_translations(*data, *campaign);
+						{
+							scoped_ostream campaign_file = ostream_file(filename);
+							write_compressed(*campaign_file, *data);
 						}
+						(*campaign)["size"] = lexical_cast<std::string>(
+							file_size(filename));
 
 						scoped_ostream cfgfile = ostream_file(file_);
 						write(*cfgfile, cfg_);
