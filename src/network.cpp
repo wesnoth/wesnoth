@@ -500,20 +500,25 @@ connection accept_connection()
 	return 0;
 }
 
-void disconnect(connection s)
+bool disconnect(connection s)
 {
 	if(s == 0) {
 		while(sockets.empty() == false) {
 			wassert(sockets.back() != 0);
-			disconnect(sockets.back());
+			while(disconnect(sockets.back()) == false) {
+				SDL_Delay(10);
+			}
 		}
 
-		return;
+		return true;
 	}
 
 	const connection_map::iterator info = connections.find(s);
 	if(info != connections.end()) {
-		network_worker_pool::close_socket(info->second.sock);
+		const bool res = network_worker_pool::close_socket(info->second.sock);
+		if(res == false) {
+			return false;
+		}
 	}
 
 	schemas.erase(s);
@@ -540,6 +545,8 @@ void disconnect(connection s)
 			LOG_NW << "valid socket: " << (int)*sockets.begin() << "\n";
 		}
 	}
+
+	return true;
 }
 
 void queue_disconnect(network::connection sock)

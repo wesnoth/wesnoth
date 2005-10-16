@@ -90,7 +90,7 @@ receive_list pending_receives;
 typedef std::deque<buffer> received_queue;
 received_queue received_data_queue;
 
-enum SOCKET_STATE { SOCKET_READY, SOCKET_LOCKED, SOCKET_ERROR, SOCKET_INTERRUPT };
+enum SOCKET_STATE { SOCKET_READY, SOCKET_LOCKED, SOCKET_ERRORED, SOCKET_INTERRUPT };
 typedef std::map<TCPsocket,SOCKET_STATE> socket_state_map;
 typedef std::map<TCPsocket, std::pair<network::statistics,network::statistics> > socket_stats_map;
 
@@ -122,18 +122,17 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 			// check if the socket is still locked
 			const threading::lock lock(*global_mutex);
 			if(sockets_locked[sock] != SOCKET_LOCKED)
-				return SOCKET_ERROR;
+				return SOCKET_ERRORED;
 		}
 		const int res = SDLNet_TCP_Send(sock, &buf[upto], static_cast<int>(size - upto));
 
 		if(res <= 0) {
-#if defined(EAGAIN) && !defined(__BEOS__)
-			if(errno == EAGAIN) {
+#if defined(EAGAIN) && !defined(__BEOS__) && !defined(_WIN32)
+			if(errno == EAGAIN)
 #elif defined(EWOULDBLOCK)
-			if(errno == EWOULDBLOCK) {
-#else
-			{
+			if(errno == EWOULDBLOCK)
 #endif
+			{
 
 #ifdef USE_POLL
 				struct pollfd fd = { ((_TCPsocket*)sock)->channel, POLLOUT };
@@ -144,7 +143,6 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 
 				if(poll_res > 0)
 					continue;
-			}
 #elif defined(USE_SELECT) && !defined(__BEOS__)
 				fd_set writefds;
 				FD_ZERO(&writefds);
@@ -160,17 +158,15 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 
 				if(retval > 0)
 					continue;
-			}
 #elif defined(__BEOS__)
 				// sleep for 100 milliseconds
 				SDL_Delay(100);
 				timeout -= 100;
 				continue;
-			}
-#else
-		}
 #endif
-			return SOCKET_ERROR;
+			}
+
+			return SOCKET_ERRORED;
 		}
 #ifdef __BEOS__
 		timeout = 15000;
@@ -190,13 +186,13 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 	int len = SDLNet_TCP_Recv(sock,num_buf,4);
 
 	if(len != 4) {
-		return SOCKET_ERROR;
+		return SOCKET_ERRORED;
 	}
 
 	len = SDLNet_Read32(num_buf);
 
 	if(len < 1 || len > 100000000) {
-		return SOCKET_ERROR;
+		return SOCKET_ERRORED;
 	}
 
 	buf.resize(len);
@@ -214,19 +210,19 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 			// check if it is still locked
 			const threading::lock lock(*global_mutex);
 			if(sockets_locked[sock] != SOCKET_LOCKED) {
-				return SOCKET_ERROR;
+				return SOCKET_ERRORED;
 			}
 		}
 
 		const int res = SDLNet_TCP_Recv(sock, beg, end - beg);
 		if(res <= 0) {
-#if defined(EAGAIN) && !defined(__BEOS__)
-			if(errno == EAGAIN) {
+#if defined(EAGAIN) && !defined(__BEOS__) && !defined(_WIN32)
+			if(errno == EAGAIN)
 #elif defined(EWOULDBLOCK)
-			if(errno == EWOULDBLOCK) {
-#else
-			{
+			if(errno == EWOULDBLOCK)
 #endif
+			{
+
 #ifdef USE_POLL
 				struct pollfd fd = { ((_TCPsocket*)sock)->channel, POLLIN };
 				int poll_res;
@@ -236,7 +232,6 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 
 				if(poll_res > 0)
 					continue;
-			}
 #elif defined(USE_SELECT)
 				fd_set readfds;
 				FD_ZERO(&readfds);
@@ -252,11 +247,10 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 
 				if(retval > 0)
 					continue;
-			}
-#else
-			}
 #endif
-			return SOCKET_ERROR;
+			}
+
+			return SOCKET_ERRORED;
 		}
 
 		beg += res;
@@ -344,7 +338,7 @@ int process_queue(void* data)
 			socket_state_map::iterator lock_it = sockets_locked.find(sock);
 			wassert(lock_it != sockets_locked.end());
 			lock_it->second = result;
-			if(result == SOCKET_ERROR) {
+			if(result == SOCKET_ERRORED) {
 				++socket_errors;
 			}
 
@@ -483,34 +477,25 @@ void remove_buffers(TCPsocket sock)
 
 }
 
-void close_socket(TCPsocket sock)
+bool close_socket(TCPsocket sock)
 {
-	for(bool first_time = true; ; first_time = false) {
-		if(!first_time) {
-			SDL_Delay(10);
-		}
+	const threading::lock lock(*global_mutex);
 
-		const threading::lock lock(*global_mutex);
+	pending_receives.erase(std::remove(pending_receives.begin(),pending_receives.end(),sock),pending_receives.end());
 
-		if(first_time) {
-			pending_receives.erase(std::remove(pending_receives.begin(),pending_receives.end(),sock),pending_receives.end());
-		}
+	const socket_state_map::iterator lock_it = sockets_locked.find(sock);
+	if(lock_it == sockets_locked.end()) {
+		remove_buffers(sock);
+		return true;
+	}
 
-		const socket_state_map::iterator lock_it = sockets_locked.find(sock);
-		if(lock_it == sockets_locked.end()) {
-			remove_buffers(sock);
-			break;
-		}
-
-		if(lock_it->second != SOCKET_LOCKED) {
-			if(lock_it->second != SOCKET_INTERRUPT) {
-				sockets_locked.erase(lock_it);
-				remove_buffers(sock);
-				break;
-			}
-		} else {
-			lock_it->second = SOCKET_INTERRUPT;
-		}
+	if(lock_it->second != SOCKET_LOCKED && lock_it->second != SOCKET_INTERRUPT) {
+		sockets_locked.erase(lock_it);
+		remove_buffers(sock);
+		return true;
+	} else {
+		lock_it->second = SOCKET_INTERRUPT;
+		return false;
 	}
 }
 
@@ -519,7 +504,7 @@ TCPsocket detect_error()
 	const threading::lock lock(*global_mutex);
 	if(socket_errors > 0) {
 		for(socket_state_map::iterator i = sockets_locked.begin(); i != sockets_locked.end(); ++i) {
-			if(i->second == SOCKET_ERROR) {
+			if(i->second == SOCKET_ERRORED) {
 				--socket_errors;
 				const TCPsocket sock = i->first;
 				sockets_locked.erase(i);
@@ -529,6 +514,8 @@ TCPsocket detect_error()
 			}
 		}
 	}
+
+	socket_errors = 0;
 
 	return 0;
 }
@@ -540,4 +527,5 @@ std::pair<network::statistics,network::statistics> get_current_transfer_stats(TC
 }
 
 }
+
 

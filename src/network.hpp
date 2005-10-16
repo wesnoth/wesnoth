@@ -86,8 +86,12 @@ connection connect(const std::string& host, int port, threading::waiter& waiter)
 connection accept_connection();
 
 //function to disconnect from a certain host, or close all
-//connections if connection_num is 0
-void disconnect(connection connection_num=0);
+//connections if connection_num is 0.
+//returns true if the connection was disconnected.
+//returns false on failure to disconnect, since the socket is
+//in the middle of sending/receiving data. The socket will be closed when
+//it has finished its send/receive
+bool disconnect(connection connection_num=0);
 
 //function to queue a disconnection. Next time receive_data is
 //called, it will generate an error on the given connection.

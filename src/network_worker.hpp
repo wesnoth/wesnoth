@@ -46,7 +46,7 @@ TCPsocket get_received_data(TCPsocket sock, std::vector<char>& buf);
 
 void queue_data(TCPsocket sock, std::vector<char>& buf);
 bool socket_locked(TCPsocket sock);
-void close_socket(TCPsocket sock);
+bool close_socket(TCPsocket sock);
 TCPsocket detect_error();
 
 std::pair<network::statistics,network::statistics> get_current_transfer_stats(TCPsocket sock);
