@@ -206,7 +206,8 @@ void campaign_server::run()
 						if(data != NULL) {
 							std::string filename = (*campaign)["filename"];
 							(*data)["title"] = (*campaign)["title"];
-							(*data)["name"] = (*campaign)["name"];
+							(*data)["name"] = "";
+							(*data)["campaign_name"] = (*campaign)["name"];
 							(*data)["author"] = (*campaign)["author"];
 							(*data)["description"] = (*campaign)["description"];
 							(*data)["version"] = (*campaign)["version"];

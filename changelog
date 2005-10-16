@@ -47,6 +47,8 @@ SVN trunk:
  * campaign server
    * Support new "timestamp" attribute
    * Save persistent attributes in the campaign data
+     * The campaign name cannot be stored in "name" as that is treated as a
+       directory name, so use campaign_name instead.
    * Support filtering on campaign_list requests
      * filter by name
      * filter by last update time (before or after)
