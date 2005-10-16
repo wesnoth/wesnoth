@@ -140,10 +140,12 @@ private:
 
 	std::string admin_passwd_;
 	std::set<network::connection> admins_;
+
+	std::string motd_;
 };
 
 server::server(int port, input_stream& input, const config& cfg, size_t nthreads) : net_manager_(nthreads), server_(port),
-    not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input), cfg_(cfg), admin_passwd_(cfg["passwd"])
+    not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input), cfg_(cfg), admin_passwd_(cfg["passwd"]), motd_(cfg["motd"])
 {
 	version_query_response_.add_child("version");
 
@@ -330,6 +332,19 @@ std::string server::process_command(const std::string& cmd)
 		}
 
 		out << "could not find user '" << nick << "'\n";
+	} else if(command == "motd") {
+		if(i == cmd.end()) {
+			if(motd_ != "") {
+				out << "message of the day: " << motd_;
+			} else {
+				return "no message of the day set";
+			}
+		}
+
+		const std::string motd(i+1,cmd.end());
+		motd_ = motd;
+		out << "message of the day set: " << motd_;
+		
 	} else {
 		out << "command '" << command << "' is not recognized";
 		out << "available commands are: msg <message>, status, metrics, ban [<nick>], unban <nick>, kick <nick>";
@@ -568,6 +583,10 @@ void server::process_login(const network::connection sock, const config& data, c
 
 	//send the new player the entire list of games and players
 	network::send_data(initial_response_,sock);
+
+	if(motd_ != "") {
+		network::send_data(construct_server_message(motd_),sock);
+	}
 
 	//send other players in the lobby the update that the player has joined
 	lobby_players_.send_data(sync_initial_response(),sock);
