@@ -289,15 +289,15 @@ to the project.
 Before you can join the development team, your work needs to be
 reviewed by a current developer. It works like this:
 you first get the
-<a href="http://savannah.nongnu.org/cvs/?group=wesnoth">latest source code</a>
+<a href="http://gna.org/svn/?group=wesnoth">latest source code</a>
 and then submit your modified source code as
 <a href="http://www.kegel.com/academy/opensource.html">patches</a> to
-<a href="http://savannah.nongnu.org/patch/?group=wesnoth">Savannah</a>.
+<a href="http://gna.org/patch/?group=wesnoth">Gna!</a>.
 Eventually, you may be given
-<a href="http://www.suse.de/en/private/support/online_help/howto/cvs/">CVS access</a>.
+<a href="http://svnbook.org">SVN access</a>.
 
 One way to contribute is to find an unassigned bug in the
-<a href="http://savannah.nongnu.org/bugs/?group=wesnoth">bug repository</a>
+<a href="http://gna.org/bugs/?group=wesnoth">bug repository</a>
 and fix the bug.
 If you wish to work on something else, you should probably
 explain on the
