@@ -332,7 +332,17 @@ sub archive_dir
     else {
       $filename = "$path/" . $file->{'attr'}->{'name'};
     }
-    $archive->add_data($filename, $file->{'attr'}->{'contents'},
+    my @contents = split(//, $file->{'attr'}->{'contents'});
+    my $contents = '';
+    while(@contents) {
+      my $char = shift @contents;
+      if (1 == ord $char) {
+        $char = chr(ord(shift @contents) - 1);
+      }
+      $contents .= $char;
+    }
+
+    $archive->add_data($filename, $contents,
       {'uname'=>'root', 'gname'=>'root', 'uid'=>0, 'gid'=>0, 'mode'=>0644});
   }
 }

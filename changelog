@@ -80,6 +80,8 @@ SVN trunk:
    * I fixed a bug in how the language list was sorted on the web page
    * Updated webtgz.pl to do a couple of undefines before starting the copy of
      the cached campaign, to give perl a chance to release some memory.
+   * Fixed a bug in webtgz.pl where it wasn't handling escaped data in
+     downloaded files.
  * fix untranslated unit create dialog (#4424)
  * random map generator now uses island_size (#4458)
  * various bug fixes and code cleanups
