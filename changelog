@@ -82,6 +82,13 @@ SVN trunk:
      the cached campaign, to give perl a chance to release some memory.
    * Fixed a bug in webtgz.pl where it wasn't handling escaped data in
      downloaded files.
+   * Updated wml.pm and wml_net.pm to gain some efficiency. wml.pm was changed
+     not to use split, but instead use substr to convert a string to an array.
+     This saved about half the memory usage when using large strings. Arrays
+     are still a pretty bad way to store strings when space is a concern.
+     wml_net.pm was changed to insert into a preallocated string instead of
+     appending in order to avoid lots of reallocations. In theory this should
+     save memory and time, but I didn't benchmark it.
  * fix untranslated unit create dialog (#4424)
  * random map generator now uses island_size (#4458)
  * documentation switch doxygen templates from CVS to SVN and from Savannah to Gna!

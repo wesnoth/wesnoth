@@ -42,15 +42,17 @@ sub read_packet
 
 	my $len = unpack('N',$buf);
 
-	my $res = '';
-	while($len != length $res) {
+	my $res = "\0" * $len;
+	my $count = 0;
+	while($len > $count) {
 		$buf = '';
-		my $bytes = $len - length $res;
+		my $bytes = $len - $count;
 		read $sock, $buf, $bytes or die "Error reading socket: $!";
-		$res .= $buf;
+		substr($res, $count, length $buf) = $buf;
+		$count += length $buf;
 	}
 
-	$res = substr($res,0,length($res)-1);
+	$res = substr($res,0,$len-1);
 
 	return &wml::read_binary($wml_net::incoming_schemas{$sock},$res);
 }

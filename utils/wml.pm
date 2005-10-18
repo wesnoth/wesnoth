@@ -9,7 +9,7 @@ $wml::max_schema_item_length = 20;
 
 sub read_literal_word
 {
-	my $word = "";
+	my $word = '';
 	my ($chars) = @_;
 	while(@$chars) {
 		my $char = shift @$chars;
@@ -63,7 +63,11 @@ sub read_binary
 	my @stack = ($doc);
 	my $cur = $doc;
 
-	my @chars = split //, $input;
+	my $len = length $input;
+	my @chars;
+	for (my $i = 0; $i < $len; $i++) {
+		push @chars, substr($input, $i, 1);
+	}
 
 	while(@chars) {
 		my $char = shift @chars;
