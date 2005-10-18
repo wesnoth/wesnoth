@@ -54,7 +54,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype219ST_D.lib /nologo /subsystem:windows /machine:I386 /out:"wesnoth.exe"
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype219ST_D.lib Ws2_32.lib /nologo /subsystem:windows /machine:I386 /out:"wesnoth.exe"
 
 !ELSEIF  "$(CFG)" == "wesnoth - Win32 Debug"
 
@@ -80,7 +80,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype219ST_D.lib /nologo /subsystem:windows /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype219ST_D.lib Ws2_32.lib /nologo /subsystem:windows /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept
 
 !ENDIF 
 
@@ -102,10 +102,6 @@ SOURCE=.\src\actions.cpp
 # Begin Source File
 
 SOURCE=.\src\ai.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\ai2.cpp
 # End Source File
 # Begin Source File
 
@@ -277,6 +273,10 @@ SOURCE=.\src\widgets\menu.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\morph.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\mouse.cpp
 # End Source File
 # Begin Source File
@@ -369,10 +369,6 @@ SOURCE=.\src\reports.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editor\scenario_editor.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\widgets\scrollarea.cpp
 # End Source File
 # Begin Source File
@@ -458,6 +454,10 @@ SOURCE=.\src\unit_display.cpp
 # Begin Source File
 
 SOURCE=.\src\unit_types.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\util.cpp
 # End Source File
 # Begin Source File
 
@@ -654,6 +654,10 @@ SOURCE=.\src\mapgen_dialog.hpp
 # Begin Source File
 
 SOURCE=.\src\widgets\menu.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\morph.hpp
 # End Source File
 # Begin Source File
 
