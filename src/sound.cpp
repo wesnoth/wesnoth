@@ -61,7 +61,7 @@ bool init_sound() {
 	if(!mix_ok) {
 		if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY,MIX_DEFAULT_FORMAT,2,buf_size) == -1) {
 			mix_ok = false;
-			ERR_AUDIO << "Could not initialize audio: " << SDL_GetError() << "\n";
+			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError() << "\n";
 			return false;
 		}
 
@@ -73,7 +73,6 @@ bool init_sound() {
 		LOG_AUDIO << "Audio initialized.\n";
 
 		play_music(current_music);
-		return true;
 	}
 	return true;
 }
@@ -147,7 +146,7 @@ void play_music(std::string file)
 			Mix_Music* const music = Mix_LoadMUS(filename.c_str());
 			if(music == NULL) {
 				ERR_AUDIO << "Could not load music file '" << filename << "': "
-					<< SDL_GetError() << "\n";
+					<< Mix_GetError() << "\n";
 				return;
 			}
 
@@ -160,7 +159,7 @@ void play_music(std::string file)
 
 		const int res = Mix_FadeInMusic(itor->second,-1,500);
 		if(res < 0) {
-			ERR_AUDIO << "Could not play music: " << SDL_GetError() << " " << file <<" \n";
+			ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << file <<" \n";
 		}
 	}
 }
@@ -188,7 +187,7 @@ void play_sound(const std::string& file)
 
 			if (cache == NULL) {
 				ERR_AUDIO << "Could not load sound file '" << filename << "': "
-					<< SDL_GetError() << "\n";
+					<< Mix_GetError() << "\n";
 				return;
 			}
 		}
@@ -196,7 +195,7 @@ void play_sound(const std::string& file)
 		//play on the first available channel
 		const int res = Mix_PlayChannel(-1, cache, 0);
 		if(res < 0) {
-			ERR_AUDIO << "error playing sound effect: " << SDL_GetError() << "\n";
+			ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
 		}
 	}
 }
