@@ -151,6 +151,7 @@ ui::ui(display& disp, const std::string& title, const config& cfg, chat& c, conf
 	gui::widget(disp.video()),
 	disp_(disp),
 	initialized_(false),
+	gamelist_initialized_(false),
 
 	hotkey_handler_(&disp),
 	disp_manager_(&disp),
@@ -320,11 +321,15 @@ void ui::process_network_data(const config& data, const network::connection sock
 		}
 
 		if(data.child("gamelist")) {
+			if(!gamelist_initialized_)
+				gamelist_initialized_ = true;
 			gamelist_ = data;
 			gamelist_updated(false);
 		} else if(data.child("gamelist_diff")) {
-			gamelist_.apply_diff(*data.child("gamelist_diff"));
-			gamelist_updated(false);
+			if(gamelist_initialized_) {
+				gamelist_.apply_diff(*data.child("gamelist_diff"));
+				gamelist_updated(false);
+			}
 		}
 	}
 }
