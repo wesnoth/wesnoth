@@ -154,6 +154,7 @@ private:
 	/** Set to true when the widgets are intialized. Allows delayed
 	 * initialization on first positioning. */
 	bool initialized_;
+	bool gamelist_initialized_;
 
 	// Ensures standard hotkeys are coorectly handled
 	const hotkey::basic_handler hotkey_handler_;
