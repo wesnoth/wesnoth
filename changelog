@@ -91,6 +91,7 @@ SVN trunk:
      wml_net.pm was changed to insert into a preallocated string instead of
      appending in order to avoid lots of reallocations. In theory this should
      save memory and time, but I didn't benchmark it.
+ * utils: added prkill script, to calculate probabilities to kill in a skirmish
  * fix untranslated unit create dialog (#4424)
  * random map generator now uses island_size (#4458)
  * documentation switch doxygen templates from CVS to SVN and from Savannah to Gna!

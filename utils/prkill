@@ -1,0 +1,331 @@
+#!/usr/bin/perl
+
+=head1 NAME
+
+prkill - calculate probability-to-kill in a Wesnoth skirmish
+
+=head1 EXAMPLES
+
+attacker: 24hp, 5-4; defender: 30hp, 6-3
+    prkill -p 0.4 -P 0.5 -n 4 -N 3 -d 5 -D 6 -h 24 -H 30
+
+attacker: 24hp, 5-4; defender: 30hp, 6-3 (3 drain); with berserk
+    prkill -p 0.4 -P 0.5 -n 4 -N 3 -d 5 -D 6 -h 24 -H 30 -x -R
+
+=head1 DESCRIPTION
+
+prkill calculates the probability that either unit in a Battle for
+Wesnoth skirmish kills the other.  This script expects some arguments
+specifying the characteristics of the units and their attacks.  Note
+that damage for each attack should be specified as the value after any
+damage resistances have been applied.
+
+More precisely, given the parameters of the skirmish, prkill computes
+and optionally prints the joint conditional probability function
+    Pr[hp_A_final = x, hp_B_final = y | hp_A_init = h, hp_B_init = H]
+for supplied initial values h and H.  In verbose mode, it also shows the
+probability function after each swing, not just after the last one.
+Usually the values Pr[hp_A_final < 0] and Pr[hp_B_final < 0] are of most
+interest: these correspond to the probability of A or B being killed,
+respectively.
+
+A skirmish consists of units trading swings until one of the units is
+dead, or each unit has used up all its attacks in a round.  If berserk
+does not apply to this skirmish then the skirmish stops at the end of
+the first round.  If berserk does apply to this skirmish, then the
+skirmish continues beyond the end of the first round, and can last up to
+30 rounds.  Each swing either connects with the probability given, and
+does full damage, or misses.  The first swing in a round is made by the
+attacker (unit A), unless the defender (unit B) has firststrike on its
+attack and unit A does not, in which case unit B gets the first swing.
+(The net effect of firststrike is as if the attacker and defender were
+interchanged.)
+
+The output of prkill is the probability that A kills B, that B kills A,
+and that both survive the skirmish.  In addition, if there is a
+reasonable probability that both survive, then the joint conditional
+probability function is printed.  The function is displayed using a two
+dimensional grid, where the horizontal axis represents the hitpoints of
+unit A, the vertical axis the hitpoints of unit B, and the values of the
+probability function are displayed for each pair of hitpoints.  Blanks
+are used for zero values, '*' represents a 100% value, and integer
+values are scaled by 10,000 (so 1864 represents 18.64%).  In verbose
+mode, the probability function is printed at the end of each swing.
+
+The output of prkill is somewhat more general than is provided by the
+game.  In-game calculations were coded based on a prior version of
+prkill, and cannot deal with drain.
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<--help>
+
+Display an overview of the commandline options.
+
+=item B<-p>
+
+Probability of attacker hitting, in range 0 to 1.
+
+=item B<-P>
+
+Probability of defender hitting, in range 0 to 1.
+
+=item B<-n>
+
+Number of swings attacker has per round.
+
+=item B<-N>
+
+Number of swings defender has per round.
+
+=item B<-d>
+
+Damage per successful swing by attacker.  This is after any resistance
+values have been applied to the raw damage value.
+
+=item B<-D>
+
+Damage per successful swing by defender.  This is after any resistance
+values have been applied to the raw damage value.
+
+=item B<-h>
+
+Hitpoints of attacker.
+
+=item B<-H>
+
+Hitpoints of defender.
+
+=item B<-r>
+
+Specify this if the attacker has drain.  Default: no.
+
+=item B<-R>
+
+Specify this if the defender has drain.  Default: no.
+
+=item B<-x>
+
+Specify this if the skirmish involves a berserk attack.  Such an attack
+is to the death, or more precisely, up to 30 rounds of attacks.
+Default: no.
+
+=item B<-y>
+
+Specify this if the defender has firststrike and the attacker does not.
+(If both attacker and defender have firststrike on their attacks then
+firststrike does not apply.)  Default: no.
+
+=item B<-v>
+
+Specify this for verbose mode, where probabilities and cumulatives for
+each swing are shown.  Default: no.
+
+=back
+
+=head1 BUGS
+
+prkill currently does not deal with skirmishes where one of the units
+has the slow ability on its attack.
+
+=head1 AUTHOR
+
+ott <ott@gaon.net>
+
+=head1 COPYRIGHT
+
+Copyright (C) 2005 by ott.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+=head1 SEE ALSO
+
+L<wesnoth>, F<http://www.wesnoth.org/>
+
+=cut
+
+use strict;
+($main::VERSION) = ('$Revision: 1.10 $' =~ /[^\d\.]*([\d\.]*)/);
+
+use Getopt::Std;
+$Getopt::Std::STANDARD_HELP_VERSION = 1;
+
+my $DEBUG = 0;
+
+sub HELP_MESSAGE {
+    print <<EOI;
+calculate probability of either unit killing the other in a Wesnoth skirmish
+ -p probability of attacker hitting, in range 0 to 1
+ -P probability of defender hitting, in range 0 to 1
+ -n number of swings attacker has
+ -N number of swings defender has
+ -d damage per successful swing by attacker
+ -D damage per successful swing by defender
+ -h hitpoints of attacker
+ -H hitpoints of defender
+ -r attacker has drain? [no]
+ -R defender has drain? [no]
+ -x berserk? (berserker attack, up to 30 rounds) [no]
+ -y defender has firststrike and attacker does not? [no]
+ -v verbose mode? (show probabilities and cumulatives for each swing) [no]
+EOI
+    return 1;
+}
+
+use vars qw(
+    $opt_n $opt_d $opt_p $opt_h $opt_r
+    $opt_N $opt_D $opt_P $opt_H $opt_R
+    $opt_x $opt_y $opt_v
+);
+exit 1 unless (getopts('d:D:h:H:n:N:p:P:rRxyv'));
+
+my $VERBOSE = $opt_v;
+my $maxrounds = ($opt_x ? 30 : 1);
+my $firststrike_active = $opt_y;
+
+my ($hpa,$dmga,$pa,$swa) = ($opt_h,$opt_d,$opt_p,$opt_n);
+my ($hpb,$dmgb,$pb,$swb) = ($opt_H,$opt_D,$opt_P,$opt_N);
+my $dra = $opt_r ? int ($dmga / 2) : 0;
+my $drb = $opt_R ? int ($dmgb / 2) : 0;
+
+sub max { my ($a,$b) = @_; return ( ($a > $b) ? $a : $b ) }
+sub min { my ($a,$b) = @_; return ( ($a < $b) ? $a : $b ) }
+
+sub plurals { my $n = shift; return ($n==1) ? "" : "s" }
+
+sub a_swings { # is this A's swing?
+    my $k = shift;
+    $k = ($k - 1) % ($swa + $swb) + 1;
+    # now 1 <= $k <= $swa+$swb
+    if ($k <= 2*min($swa,$swb)) { # use parity
+	return $firststrike_active - ($k % 2);
+    } else { # 2*min($swa,$swb) < $k <= $swa+$swb so $swa != $swb
+	return $swa > $swb;
+    }
+}
+
+my $th = 0.9999995;
+my @P;
+my $adf; # intersect y-axis first: A dies first
+my $bdf; # intersect x-axis first: B dies first
+my $hpt = $hpa + $hpb;
+my $kf = $hpb + $hpt;
+my $lf = $hpa + $hpt;
+my $k = $hpb;
+$k += int($hpa/2) if $drb; # B drains so provide space
+my $l = $hpa;
+$l += int($hpb/2) if $dra; # A drains so provide space
+# size of matrix needed is max($k,$l)^2
+
+sub print_state {
+    my $s = shift;
+    print "swing $s:\n";
+    my $pbs = 0;
+    if ($adf + $bdf < $th) {
+	foreach my $jj ( 0..($k-1) ) {
+	    my $j = $k - $jj;
+	    my $t = $j;
+	    printf "%2d | ", $j;
+	    foreach my $i ( 1..$l ) {
+		++$t; # invariant: $t == $i + $j
+		last if ($t > $hpt) or ($j + $t > $kf) or ($i + $t > $lf);
+		#printf "%.4f ", $P[$i][$j];
+		my $pij = $P[$i][$j];
+		if ($pij == 1) {
+		    print ' 'x3 . '* ';
+		} elsif ($pij > 0.0) {
+		    printf "%4d ", int(10000*$P[$i][$j]);
+		} else {
+		    print ' 'x5;
+		}
+		$pbs += $P[$i][$j];
+	    }
+	    print "\n";
+	}
+	print "   |";
+	foreach my $i ( 1..$l ) { printf " %4d", $i }
+	print "\n";
+    }
+
+    print "A: ${hpa}hp, ${dmga}-${swa}";
+    print " ($dra drain)" if $dra;
+    print ", B: ${hpb}hp, ${dmgb}-${swb}";
+    print " ($drb drain)" if $drb;
+    print " firststrike" if $firststrike_active;
+    print " berserk" if $opt_x;
+    print "\n";
+
+    printf "Pr[A kills B] =    %8.4f%%\n", $bdf*100;
+    printf "Pr[B kills A] =    %8.4f%%\n", $adf*100;
+    printf "Pr[both survive] = %8.4f%%\n", $pbs*100;
+    $DEBUG and print "total: ", $bdf + $adf + $pbs, "\n";
+    print "\n";
+}
+
+$adf = 0;
+$bdf = 0;
+undef @P;
+$P[$hpa][$hpb] = 1;
+print_state(0) if $VERBOSE;
+my $swt = $maxrounds * ($swa+$swb);
+#my $start = time;
+#foreach my $count ( 1..100 ) {
+foreach my $s ( 1..$swt ) {
+    my $a = a_swings($s); # if true, it is A's turn, otherwise it is B's turn
+    my $akz = 0; # kill zone of A, where B can be killed with one swing
+    my $bkz = 0; # kill zone of B, where A can be killed with one swing
+    my $ht = $hpt;
+    my $kft = $kf;
+    my $lft = $lf;
+    foreach my $t ( 1..$hpt ) {
+	--$ht; # invariant: $ht == $hpt - $t
+	--$kft; # invariant: $kft == $kf - $t;
+	--$lft; # invariant: $kft == $lf - $t;
+	my $ca = ($dmga - $dra <= $ht);
+	my $cb = ($dmgb - $drb <= $ht);
+	my $j = $t;
+	foreach my $i ( 1..($t-1) ) {
+	    --$j;
+	    # invariant: $t == $i + $j
+	    next if $j > $kft;
+	    next if $i > $lft;
+	    my $pij = $P[$i][$j];
+	    $akz += $pij if $j <= $dmga;
+	    $bkz += $pij if $i <= $dmgb;
+	    if ($a) {
+		my $pij_mod = (1 - $pa) * $pij;
+		if ($ca && $i > $dra) {
+		    $P[$i][$j] = $pij_mod + $pa * $P[$i - $dra][$j + $dmga];
+		} else {
+		    $P[$i][$j] = $pij_mod;
+		}
+	    } else {
+		my $pij_mod = (1 - $pb) * $pij;
+		if ($cb && $j > $drb) {
+		    $P[$i][$j] = $pij_mod + $pb * $P[$i + $dmgb][$j - $drb];
+		} else {
+		    $P[$i][$j] = $pij_mod;
+		}
+	    }
+	}
+    }
+    if ($a) { $bdf += $akz * $pa } else { $adf += $bkz * $pb }
+    print_state($s) if $VERBOSE;
+    if ($adf + $bdf >= $th) { $swt = $s; last }
+}
+#}
+
+print_state($swt) unless $VERBOSE;
+#print 'time: ', time - $start, "s\n";
+
+exit;
