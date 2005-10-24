@@ -1216,10 +1216,10 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 
 	std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
 	char const sep = COLUMN_SEPARATOR;
-	items.push_back(pre + "general.png" + sep + _("Prefs section^General"));
-	items.push_back(pre + "display.png" + sep + _("Prefs section^Display"));
-	items.push_back(pre + "music.png" + sep + _("Prefs section^Sound"));
-	items.push_back(pre + "advanced.png" + sep + _("Advanced section^Advanced"));
+	items.push_back(pre + "general.png" + sep + sgettext("Prefs section^General"));
+	items.push_back(pre + "display.png" + sep + sgettext("Prefs section^Display"));
+	items.push_back(pre + "music.png" + sep + sgettext("Prefs section^Sound"));
+	items.push_back(pre + "advanced.png" + sep + sgettext("Advanced section^Advanced"));
 
 	for(;;) {
 		try {
