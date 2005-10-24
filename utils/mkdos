@@ -1,0 +1,66 @@
+#!/usr/bin/perl
+
+# mkdos
+# make DOS-style versions of text files shipped with release
+# the list below needs to be updated when new text files are added!
+# run it in the main distribution directory
+# generates a list of the files it has created on stdout
+
+# this is a helper script for the Battle for Wesnoth project
+# see http://www.wesnoth.org/
+# this script is distributed on the same terms as Battle for Wesnoth itself
+
+# format of each line: original-name dosified-name
+%files = qw(
+COPYING COPYING.txt
+INSTALL INSTALL.txt
+ISSUES ISSUES.txt
+MANUAL MANUAL.txt
+MANUAL.brazilian MANUAL-pt_BR.txt
+MANUAL.catalan MANUAL-ca.txt
+MANUAL.czech MANUAL-cs.txt
+MANUAL.danish MANUAL-da.txt
+MANUAL.french MANUAL-fr.txt
+MANUAL.german MANUAL-de.txt
+MANUAL.hungarian MANUAL-hu.txt
+MANUAL.italian MANUAL-it.txt
+MANUAL.norwegian MANUAL-no.txt
+MANUAL.polish MANUAL-pl.txt
+MANUAL.russian MANUAL-ru.txt
+MANUAL.spanish MANUAL-es.txt
+MANUAL.swedish MANUAL-sv.txt
+MANUAL.turkish MANUAL-tr.txt
+README README.txt
+changelog changelog.txt
+);
+
+READFILE:
+foreach $f ( keys %files ) {
+    unless (open(IN, "$f")) {
+	warn "cannot read $f, skipping";
+	next READFILE
+    }
+    unless (open(OUT, ">".$files{$f})) {
+	warn "cannot create $files{$f}, skipping";
+	next READFILE
+    }
+    push @written, $files{$f};
+    while (<IN>) {
+	if (/   / or /^[- |]/) {
+	    s/\n$/\r\n/;
+	} elsif (/^$/) {
+	    s/^\n$/\r\n\r\n/;
+	} else {
+	    s/\n$/ /;
+	}
+	#s/^\s*$//;
+	#s/^$/\r\n\r\n/;
+	print OUT;
+    }
+    print OUT "\r\n";
+    close IN;
+    close OUT;
+}
+if (@written) {
+    print join("\n", @written), "\n";
+}

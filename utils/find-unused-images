@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# attempt to identify images that are not used
+# this is a helper script for the Battle for Wesnoth project
+# see http://www.wesnoth.org/
+# this script is distributed on the same terms as Battle for Wesnoth itself
+
+# note that many images (eg. for terrains) are actually referenced,
+# but the image filename is constructed programmatically so it's not
+# easy to auto-detect these
+
+TM=tmp-all.$$
+TMU=tmp-used.$$
+find images -name '*.png' -print | sort -u | sed -e 's/^images\///' > $TM
+
+fgrep -r .png data | sed -e 's/.* \([^ ]*\.png\)/\1/' -e 's/.*=\([^ ]*\.png\)/\1/' -e 's/(\([^)]*\))/\1/' -e 's/\"\(.*\)\"/\1/' -e 's/\.png .*/.png/' -e 's/\.png\".*/.png/' -e 's/\"//' -e 's/[ 	]*//g' -e 's/:[0-9]*//g' -e 's/,$//' -e 's/,/ /g' | perl -p -e 's/ /\n/g' | sort -u > $TMU
+
+diff -u0 $TMU $TM | grep -v '^@@'
+
+rm -f $TM $TMU
