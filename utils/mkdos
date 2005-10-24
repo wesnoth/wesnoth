@@ -3,6 +3,8 @@
 # mkdos
 # make DOS-style versions of text files shipped with release
 # the list below needs to be updated when new text files are added!
+# run it in the main distribution directory
+# generates a list of the files it has created on stdout
 
 # this is a helper script for the Battle for Wesnoth project
 # see http://www.wesnoth.org/
@@ -12,6 +14,7 @@
 %files = qw(
 COPYING COPYING.txt
 INSTALL INSTALL.txt
+ISSUES ISSUES.txt
 MANUAL MANUAL.txt
 MANUAL.brazilian MANUAL-pt_BR.txt
 MANUAL.catalan MANUAL-ca.txt
@@ -41,6 +44,7 @@ foreach $f ( keys %files ) {
 	warn "cannot create $files{$f}, skipping";
 	next READFILE
     }
+    push @written, $files{$f};
     while (<IN>) {
 	if (/   / or /^[- |]/) {
 	    s/\n$/\r\n/;
@@ -53,6 +57,10 @@ foreach $f ( keys %files ) {
 	#s/^$/\r\n\r\n/;
 	print OUT;
     }
+    print OUT "\r\n";
     close IN;
     close OUT;
+}
+if (@written) {
+    print join("\n", @written), "\n";
 }
