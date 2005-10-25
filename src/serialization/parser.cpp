@@ -340,7 +340,7 @@ static std::string escaped_string(const std::string& value) {
 	return std::string(res.begin(), res.end());
 }
 
-static void write_internal(config const &cfg, std::ostream &out, std::string textdomain, size_t tab = 0)
+static void write_internal(config const &cfg, std::ostream &out, std::string& textdomain, size_t tab = 0)
 {
 	if (tab > max_recursion_levels)
 		return;
@@ -409,5 +409,6 @@ static void write_internal(config const &cfg, std::ostream &out, std::string tex
 
 void write(std::ostream &out, config const &cfg)
 {
-	write_internal(cfg, out, PACKAGE);
+	std::string textdomain = PACKAGE;
+	write_internal(cfg, out, textdomain);
 }

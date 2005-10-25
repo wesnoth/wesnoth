@@ -1,5 +1,8 @@
 Version 1.0.1+svn:
  * new utilities: prkill, find-unused-images, mkdos
+ * fixed text savegames (as opposed to binary savegames) having wrong
+ textdomain information, making the messages be displayed in English when
+ loading levels (#4454).
 
 Version 1.0.1:
  * graphics
