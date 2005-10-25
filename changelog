@@ -98,6 +98,9 @@ SVN trunk:
  * fix untranslated unit create dialog (#4424)
  * random map generator now uses island_size (#4458)
  * documentation switch doxygen templates from CVS to SVN and from Savannah to Gna!
+ * fixed text savegames (as opposed to binary savegames) having wrong
+ textdomain information, making the messages be displayed in English when
+ loading levels (#4454).
  * various bug fixes and code cleanups
 
 Version 1.0rc1:
