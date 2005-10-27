@@ -222,6 +222,13 @@ AC_ARG_ENABLE([dummy-locales],
               [dummylocales=$enableval],
               [dummylocales=no])
 
+AC_ARG_WITH([preferences-dir],
+              AS_HELP_STRING([--with-preferences-dir], [use a non-default preferences directory (.wesnoth on unix)]),
+              [prefsdir=$withval
+               AC_SUBST([prefsdir])])
+AM_CONDITIONAL([PREFSDIR], [test x$prefsdir != x])
+
+
 AC_ARG_ENABLE([internal-data],
 		AS_HELP_STRING([--enable-internal-data],
 			[put data inside application: Mac OS X only]),

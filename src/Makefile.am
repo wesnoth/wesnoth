@@ -566,6 +566,9 @@ if GCC
     CXXFLAGS += -fno-omit-frame-pointer
     CFLAGS += -fno-omit-frame-pointer
 endif
+if PREFSDIR
+    CXXFLAGS += -DPREFERENCES_DIR=\"$(prefsdir)\"
+endif
 
 CXXLD = $(LDPREFIX) $(CXX)
 
