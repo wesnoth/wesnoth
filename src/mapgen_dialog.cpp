@@ -19,9 +19,9 @@
 
 #include "display.hpp"
 #include "events.hpp"
-#include "font.hpp"
 #include "gettext.hpp"
 #include "mapgen.hpp"
+#include "marked-up_text.hpp"
 #include "show_dialog.hpp"
 #include "util.hpp"
 #include "video.hpp"

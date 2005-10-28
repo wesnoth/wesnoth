@@ -12,9 +12,9 @@
 */
 
 #include "global.hpp"
-#include "multiplayer_lobby.hpp"
 #include "filesystem.hpp"
-#include "font.hpp"
+#include "marked-up_text.hpp"
+#include "multiplayer_lobby.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "game_config.hpp"

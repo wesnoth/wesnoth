@@ -17,6 +17,7 @@
 #include "../font.hpp"
 #include "../image.hpp"
 #include "../log.hpp"
+#include "../marked-up_text.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
 #include "../wml_separators.hpp"

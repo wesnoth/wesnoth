@@ -14,11 +14,11 @@
 #include "global.hpp"
 
 #include "actions.hpp"
-#include "font.hpp"
 #include "game_config.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
+#include "marked-up_text.hpp"
 #include "reports.hpp"
 #include "wassert.hpp"
 #include "preferences.hpp"

@@ -29,6 +29,7 @@
 #include "log.hpp"
 #include "mapgen.hpp"
 #include "map_create.hpp"
+#include "marked-up_text.hpp"
 #include "network.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"

@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "font.hpp"
+#include "marked-up_text.hpp"
 #include "sdl_utils.hpp"
 #include "tooltips.hpp"
 #include "video.hpp"

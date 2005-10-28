@@ -17,6 +17,7 @@
 
 #include "../font.hpp"
 #include "../image.hpp"
+#include "../marked-up_text.hpp"
 #include "../sdl_utils.hpp"
 #include "../util.hpp"
 #include "../video.hpp"

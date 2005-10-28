@@ -16,6 +16,7 @@
 #include "display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "marked-up_text.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_wait.hpp"
 #include "preferences.hpp"

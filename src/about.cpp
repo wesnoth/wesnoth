@@ -18,6 +18,7 @@
 #include "gettext.hpp"
 #include "image.hpp"
 #include "key.hpp"
+#include "marked-up_text.hpp"
 #include "display.hpp"
 #include "sdl_utils.hpp"
 #include "video.hpp"

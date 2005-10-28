@@ -66,6 +66,7 @@ wesnoth_SOURCES = \
 	map_label.cpp \
 	mapgen.cpp \
 	mapgen_dialog.cpp \
+	marked-up_text.cpp \
 	mouse.cpp \
 	multiplayer.cpp \
 	multiplayer_ui.cpp \
@@ -162,6 +163,7 @@ wesnoth_SOURCES = \
 	map_label.hpp \
 	mapgen.hpp \
 	mapgen_dialog.hpp \
+	marked-up_text.hpp \
 	mouse.hpp \
 	multiplayer.hpp \
 	multiplayer_ui.hpp \
@@ -267,6 +269,7 @@ wesnoth_editor_SOURCES = \
 	map.cpp \
 	mapgen.cpp \
 	mapgen_dialog.cpp \
+	marked-up_text.cpp \
 	mouse.cpp \
 	network.cpp \
 	network_worker.cpp \
@@ -352,6 +355,7 @@ wesnoth_editor_SOURCES = \
 	map.hpp \
 	mapgen.hpp \
 	mapgen_dialog.hpp \
+	marked-up_text.hpp \
 	mouse.hpp \
 	network.hpp \
 	network_worker.hpp \

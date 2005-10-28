@@ -27,6 +27,7 @@
 #include "image.hpp"
 #include "language.hpp"
 #include "log.hpp"
+#include "marked-up_text.hpp"
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
 #include "sound.hpp"

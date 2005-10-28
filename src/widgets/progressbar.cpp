@@ -16,6 +16,7 @@
 #include "progressbar.hpp"
 
 #include "../font.hpp"
+#include "../marked-up_text.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
 
