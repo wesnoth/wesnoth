@@ -16,10 +16,9 @@
 #include "global.hpp"
 
 #include "config.hpp"
-#include "font.hpp"
 #include "filesystem.hpp"
+#include "font.hpp"
 #include "game_config.hpp"
-#include "gettext.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
 #include "tooltips.hpp"
