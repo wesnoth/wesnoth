@@ -22,6 +22,7 @@
 #include "../image.hpp"
 #include "../language.hpp"
 #include "../map.hpp"
+#include "../minimap.hpp"
 #include "../preferences.hpp"
 #include "../random.hpp"
 #include "../team.hpp"

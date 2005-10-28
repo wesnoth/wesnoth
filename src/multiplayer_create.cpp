@@ -20,6 +20,7 @@
 #include "image.hpp"
 #include "show_dialog.hpp"
 #include "map_create.hpp"
+#include "minimap.hpp"
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"

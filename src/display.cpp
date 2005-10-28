@@ -28,6 +28,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
+#include "minimap.hpp"
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
 #include "sound.hpp"

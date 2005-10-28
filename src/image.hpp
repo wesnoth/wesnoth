@@ -21,8 +21,6 @@
 #include <string>
 #include <vector>
 
-class team;
-
 ///this module manages the cache of images. With an image name, you can get
 ///the surface corresponding to that image.
 //
@@ -126,6 +124,8 @@ namespace image {
 
 	typedef std::vector<cache_item<surface> > image_cache;
 	typedef std::vector<cache_item<locator> > locator_cache;
+	typedef std::map<gamemap::TERRAIN, surface> mini_terrain_cache_map;
+	extern mini_terrain_cache_map mini_terrain_cache;
 
 	void flush_cache();
 
@@ -154,6 +154,8 @@ namespace image {
 	///function which sets a certain image as a 'mask' for all scaled images.
 	///the 'mask' is blitted onto all scaled images.
 	void set_image_mask(const std::string& image_name);
+
+	extern SDL_PixelFormat* pixel_format;
 
 	///sets the pixel format used by the images. Is called every time the
 	///video mode changes. Invalidates all images.
@@ -195,10 +197,6 @@ namespace image {
 
 	//returns true if the given image actually exists, without loading it.
 	bool exists(const locator& i_locator);
-
-	///function to create the minimap for a given map
-	///the surface returned must be freed by the user
-	surface getMinimap(int w, int h, const gamemap& map_, const team* tm=NULL);
 }
 
 #endif

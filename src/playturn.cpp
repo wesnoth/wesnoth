@@ -24,6 +24,7 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "map_label.hpp"
+#include "minimap.hpp"
 #include "marked-up_text.hpp"
 #include "mouse.hpp"
 #include "network.hpp"

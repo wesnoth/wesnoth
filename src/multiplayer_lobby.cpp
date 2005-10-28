@@ -14,6 +14,7 @@
 #include "global.hpp"
 #include "filesystem.hpp"
 #include "marked-up_text.hpp"
+#include "minimap.hpp"
 #include "multiplayer_lobby.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"

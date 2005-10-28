@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
+#include "minimap.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
