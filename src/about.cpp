@@ -83,6 +83,7 @@ std::vector<std::string> get_text() {
 		"-   J.W.C. McNabb (Darth Fool)",
 		"-   Michael Gil de Muro (grp21)",
 		"-   Neorice",
+		"-   Pekka Aikio",
 		"-   Peter Geinitz (Shadow)",
 		"-   Richard Kettering (Jetryl)",
 		"-   Slainte",
@@ -330,6 +331,7 @@ std::vector<std::string> get_text() {
 		"-   Enes Akın (yekialem)",
 		"-   İhsan Akın",
 		"-   Kosif",
+		"-   Pınar Yanardağ (moonquelle)",
 		"-   Selim Farsakoğlu",
 
 		"_" N_("+Contributors"),
