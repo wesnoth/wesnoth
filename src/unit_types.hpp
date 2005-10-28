@@ -17,7 +17,6 @@
 #include "config.hpp"
 #include "map.hpp"
 #include "race.hpp"
-#include "team.hpp"
 #include "util.hpp"
 
 #include <string>
