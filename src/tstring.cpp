@@ -20,7 +20,6 @@
 
 #include "tstring.hpp"
 #include "gettext.hpp"
-#include "filesystem.hpp"
 #include "log.hpp"
 
 #define LOG_CF lg::info(lg::config)
