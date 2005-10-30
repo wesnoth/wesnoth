@@ -30,7 +30,7 @@
 #include "network.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
-#include "preferences.hpp"
+#include "preferences_display.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"

@@ -24,7 +24,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "preferences.hpp"
+#include "preferences_display.hpp"
 #include "sdl_utils.hpp"
 #include "show_dialog.hpp"
 #include "titlescreen.hpp"

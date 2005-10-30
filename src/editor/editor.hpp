@@ -20,7 +20,7 @@
 #include "../events.hpp"
 #include "../font.hpp"
 #include "../hotkeys.hpp"
-#include "../preferences.hpp"
+#include "../preferences_display.hpp"
 #include "../theme.hpp"
 #include "../tooltips.hpp"
 

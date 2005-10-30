@@ -40,7 +40,7 @@
 #include "network.hpp"
 #include "pathfind.hpp"
 #include "playcampaign.hpp"
-#include "preferences.hpp"
+#include "preferences_display.hpp"
 #include "publish_campaign.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"

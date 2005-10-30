@@ -21,7 +21,7 @@
 #include "hotkeys.hpp"
 #include "gettext.hpp"
 #include "playlevel.hpp"
-#include "preferences.hpp"
+#include "preferences_display.hpp"
 #include "show_dialog.hpp"
 #include "util.hpp"
 #include "video.hpp"

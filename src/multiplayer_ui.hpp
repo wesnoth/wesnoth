@@ -16,7 +16,7 @@
 #include "config.hpp"
 #include "hotkeys.hpp"
 #include "network.hpp"
-#include "preferences.hpp"
+#include "preferences_display.hpp"
 #include "widgets/label.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"

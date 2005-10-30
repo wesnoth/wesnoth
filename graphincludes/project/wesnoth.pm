@@ -83,7 +83,6 @@ sub defaultcolors {
 sub ignored_deps {
   return {
 	  'src/video.cpp' => {'src/font.hpp' => 'split out floating labels from video' },
-	  'src/language.cpp' => {'src/preferences.hpp' => 'split out graph. stuff from preferences'},
 	 };
 }
 

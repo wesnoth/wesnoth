@@ -17,7 +17,7 @@
 #include "cursor.hpp"
 #include "events.hpp"
 #include "mouse.hpp"
-#include "preferences.hpp"
+#include "preferences_display.hpp"
 #include "video.hpp"
 #include "wassert.hpp"
 

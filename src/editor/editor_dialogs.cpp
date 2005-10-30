@@ -27,9 +27,9 @@
 #include "../marked-up_text.hpp"
 #include "../show_dialog.hpp"
 #include "../util.hpp"
-#include "../widgets/slider.hpp"
-#include "../preferences.hpp"
+#include "../preferences_display.hpp"
 #include "../video.hpp"
+#include "../widgets/slider.hpp"
 
 #include "editor_dialogs.hpp"
 

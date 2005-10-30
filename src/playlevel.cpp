@@ -33,7 +33,7 @@
 #include "network.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
-#include "preferences.hpp"
+#include "preferences_display.hpp"
 #include "random.hpp"
 #include "replay.hpp"
 #include "scoped_resource.hpp"

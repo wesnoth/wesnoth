@@ -83,6 +83,7 @@ wesnoth_SOURCES = \
 	playlevel.cpp \
 	playturn.cpp \
 	preferences.cpp \
+	preferences_display.cpp \
 	publish_campaign.cpp \
 	race.cpp \
 	random.cpp \
@@ -181,6 +182,7 @@ wesnoth_SOURCES = \
 	playlevel.hpp \
 	playturn.hpp \
 	preferences.hpp \
+	preferences_display.hpp \
 	publish_campaign.hpp \
 	race.hpp \
 	random.hpp \
@@ -280,6 +282,7 @@ wesnoth_editor_SOURCES = \
 	pathfind.cpp \
 	playturn.cpp \
 	preferences.cpp \
+	preferences_display.cpp \
 	race.cpp \
 	random.cpp \
 	replay.cpp \
@@ -368,6 +371,7 @@ wesnoth_editor_SOURCES = \
 	playlevel.hpp \
 	playturn.hpp \
 	preferences.hpp \
+	preferences_display.hpp \
 	race.hpp \
 	random.hpp \
 	replay.hpp \

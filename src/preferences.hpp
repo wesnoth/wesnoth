@@ -37,20 +37,18 @@ namespace preferences {
 		~manager();
 	};
 
-	struct display_manager
-	{
-		display_manager(display* disp);
-		~display_manager();
-	};
+	// low-level, should be seen only by preferences_display ?
+	void set(std::string key, std::string value);
+	std::string get(const std::string key);
 
 	bool fullscreen();
-	void set_fullscreen(bool ison);
+	void _set_fullscreen(bool ison);
 
 	std::pair<int,int> resolution();
-	void set_resolution(const std::pair<int,int>& res);
+	void _set_resolution(const std::pair<int,int>& res);
 
 	bool turbo();
-	void set_turbo(bool ison);
+	void _set_turbo(bool ison);
 
 	const std::string& language();
 	void set_language(const std::string& s);
@@ -73,13 +71,13 @@ namespace preferences {
 	bool is_muted();
 
 	bool adjust_gamma();
-	void set_adjust_gamma(bool val);
+	void _set_adjust_gamma(bool val);
 
 	int gamma();
-	void set_gamma(int gamma);
+	void _set_gamma(int gamma);
 
 	bool grid();
-	void set_grid(bool ison);
+	void _set_grid(bool ison);
 
 	const std::string& official_network_host();
 
@@ -182,16 +180,16 @@ namespace preferences {
 	void set_theme(const std::string& theme);
 	const std::string& theme();
 
-	void show_preferences_dialog(display& disp, const config& game_cfg);
-	bool show_video_mode_dialog(display& disp);
-	// If prefs is non-null, save the hotkeys in that config instead of
-	// the default.
-	void show_hotkeys_dialog (display & disp, config *prefs=NULL);
+	bool compare_resolutions(const std::pair<int,int>& lhs, const std::pair<int,int>& rhs);
 
 	// Ask for end turn confirmation
 	bool yellow_confirm();
 	bool green_confirm();
 	bool confirm_no_moves();
+
+	// proxies for preferences_dialog
+	void load_hotkeys();
+	void save_hotkeys();
 }
 
 #endif
