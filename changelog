@@ -114,6 +114,8 @@ SVN trunk:
  * added a --with-preferences-dir configure option to allow using a dir
    different than .wesnoth.  Should allow to use svn and 1.0 on the
    same machine without triggering spurious cache rebuilds ans such things.
+ * Fix bug where duplicate key values were being concatenated rather than
+   being replaced by the last value.
 
 Version 1.0rc1:
  * language and i18n:

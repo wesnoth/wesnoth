@@ -215,6 +215,10 @@ void parser::parse_variable()
 	if(variables.back().empty())
 		error(_("Empty variable name"));
 
+	for(std::vector<std::string>::iterator curvar = variables.begin(); curvar != variables.end(); ++curvar) {
+		cfg[*curvar] = "";
+	}
+
 	std::vector<std::string>::const_iterator curvar = variables.begin();
 
 	bool ignore_next_newlines = false;
@@ -226,6 +230,7 @@ void parser::parse_variable()
 		case ',':
 			if ((curvar+1) != variables.end()) {
 				curvar++;
+				cfg[*curvar] = "";
 				continue;
 			} else {
 				cfg[*curvar] += ",";
