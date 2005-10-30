@@ -6,6 +6,8 @@ Version 1.0.1+svn:
  * backport fix for Create Unit menu not being translated (#4424)
  * language and i18n:
    * updated translations: Afrikaans, Slovak
+ * Fix bug where duplicate key values were being concatenated rather than
+   being replaced by the last value.
 
 Version 1.0.1:
  * graphics
