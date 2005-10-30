@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "minimap.hpp"

@@ -11,9 +11,11 @@
    See the COPYING file for more details.
 */
 #include "font.hpp"
+#include "global.hpp"
 #include "marked-up_text.hpp"
 #include "team.hpp"
 #include "video.hpp"
+#include "wassert.hpp"
 
 namespace font {
 
@@ -254,7 +256,7 @@ inline bool break_after(wchar_t ch)
 
 std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height, int max_lines)
 {
-	assert(max_width > 0);
+	wassert(max_width > 0);
 
 	utils::utf8_iterator ch(unwrapped_text);
 	std::string current_word;

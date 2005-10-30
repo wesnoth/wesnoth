@@ -13,7 +13,7 @@
 #ifndef MARKED_UP_TEXT_HPP_INCLUDED
 #define MARKED_UP_TEXT_HPP_INCLUDED
 
-struct CVideo;
+class CVideo;
 
 #include <SDL_video.h>
 #include <string>
