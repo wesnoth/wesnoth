@@ -42,6 +42,93 @@ bool python_ai::init_ = false;
 
 typedef struct {
 	PyObject_HEAD
+	const unit_type* unit_type_;
+} wesnoth_unittype;
+
+static PyObject* unittype_get_name(wesnoth_unittype* unit, void* closure)
+{
+	return Py_BuildValue("s",( const char* )unit->unit_type_->language_name().c_str());
+}
+
+#define ut_get( x ) \
+	static PyObject* unittype_get_##x(wesnoth_unittype* unit, void* closure) \
+	{	\
+	return Py_BuildValue("i",unit->unit_type_->x());	\
+	}
+
+ut_get( max_unit_healing )
+ut_get( heals )
+ut_get( regenerates )
+ut_get( is_leader )
+ut_get( illuminates )
+ut_get( is_skirmisher )
+ut_get( teleports )
+ut_get( nightvision )
+ut_get( steadfast )
+ut_get( not_living )
+ut_get( can_advance )
+ut_get( has_zoc )
+
+#define ut_gs( x ) \
+	{ #x,       (getter)unittype_get_##x,     NULL, NULL, NULL },
+
+static PyGetSetDef unittype_getseters[] = {
+	ut_gs( name )
+	ut_gs( max_unit_healing )
+	ut_gs( heals )
+	ut_gs( regenerates )
+	ut_gs( is_leader )
+	ut_gs( illuminates )
+	ut_gs( is_skirmisher )
+	ut_gs( teleports )
+	ut_gs( nightvision )
+	ut_gs( steadfast )
+	ut_gs( not_living )
+	ut_gs( can_advance )
+	ut_gs( has_zoc )
+	{ NULL, NULL, NULL, NULL, NULL }
+};
+
+static PyMethodDef unittype_methods[] = {
+	{ NULL, NULL }
+};
+
+static PyTypeObject wesnoth_unittype_type = {
+	PyObject_HEAD_INIT(NULL)
+	0,                         /* ob_size*/
+	"wesnoth.unittype",        /* tp_name*/
+	sizeof(wesnoth_unittype),  /* tp_basicsize*/
+	0,                         /* tp_itemsize*/
+	0,                         /* tp_dealloc*/
+	0,                         /* tp_print*/
+	0,                         /* tp_getattr*/
+	0,                         /* tp_setattr*/
+	0,                         /* tp_compare*/
+	0,                         /* tp_repr*/
+	0, //UniConvert,             /* tp_as_number*/
+	0,                         /* tp_as_sequence*/
+	0,                         /* tp_as_mapping*/
+	0,                         /* tp_hash */
+	0,                         /* tp_call*/
+	0,                         /* tp_str*/
+	0,   /* tp_getattro*/
+	0,   /* tp_setattro*/
+	0,                         /* tp_as_buffer*/
+	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
+	"Wesnoth unit types",       /* tp_doc */
+	0,                         /* tp_traverse */
+	0,                         /* tp_clear */
+	0,                         /* tp_richcompare */
+	0,                         /* tp_weaklistoffset */
+	0,                         /* tp_iter */
+	0,                         /* tp_iternext */
+	unittype_methods,             /* tp_methods */
+	0,                         /* tp_members */
+	unittype_getseters,          /* tp_getset */
+};
+
+typedef struct {
+	PyObject_HEAD
 	const unit* unit_;
 } wesnoth_unit;
 
@@ -55,8 +142,19 @@ static PyGetSetDef unit_getseters[] = {
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
+static PyObject* wrapper_unit_type( wesnoth_unit* unit, PyObject* args )
+{
+	if ( !PyArg_ParseTuple( args, "" ) )
+		return NULL;
+	wesnoth_unittype* type = (wesnoth_unittype*)PyObject_NEW(wesnoth_unittype, &wesnoth_unittype_type);
+	if (type)
+		type->unit_type_ = &unit->unit_->type();
+	return (PyObject*)type;
+}
+
 static PyMethodDef unit_methods[] = {
-	{ NULL, NULL }
+	{ "type",		(PyCFunction)wrapper_unit_type,       METH_VARARGS},
+	{ NULL, NULL, NULL }
 };
 
 static PyTypeObject wesnoth_unit_type = {
@@ -219,8 +317,6 @@ static PyTypeObject wesnoth_gamemap_type = {
 	gamemap_getseters,          /* tp_getset */
 };
 
-
-
 PyObject* python_ai::wrapper_log_message(PyObject* self, PyObject* args)
 {
 	const char* msg;
@@ -288,6 +384,11 @@ static PyMethodDef wesnoth_python_methods[] = {
 	{NULL, NULL}
 };
 
+#define Py_Register( x, n ) \
+	PyType_Ready(&x); \
+	Py_INCREF(&x); \
+	PyModule_AddObject(module, n, (PyObject*)&x);
+
 python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
 {
 	running_instance = this;
@@ -296,15 +397,10 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
 		PyObject* module;
 		Py_Initialize( );
 		module = Py_InitModule("wesnoth", wesnoth_python_methods);
-		PyType_Ready(&wesnoth_unit_type);
-		Py_INCREF(&wesnoth_unit_type);
-		PyType_Ready(&wesnoth_location_type);
-		Py_INCREF(&wesnoth_location_type);
-		PyType_Ready(&wesnoth_gamemap_type);
-		Py_INCREF(&wesnoth_gamemap_type);
-		PyModule_AddObject(module, "unit", (PyObject*)&wesnoth_unit_type);
-		PyModule_AddObject(module, "location", (PyObject*)&wesnoth_location_type);
-		PyModule_AddObject(module, "gamemap", (PyObject*)&wesnoth_gamemap_type);
+		Py_Register(wesnoth_unit_type, "unit");
+		Py_Register(wesnoth_location_type, "location");
+		Py_Register(wesnoth_gamemap_type, "gamemap");
+		Py_Register(wesnoth_unittype_type, "unittype");
 		init_ = true;
 	}
 }
