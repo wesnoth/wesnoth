@@ -25,7 +25,6 @@ public:
 
 protected:
 	static bool init_;
-	std::vector<gamemap::location*> wrapped_location_;
 };
 
 

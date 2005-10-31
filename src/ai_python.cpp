@@ -80,7 +80,7 @@ static PyTypeObject wesnoth_unit_type = {
 	0,   /* tp_getattro*/
 	0,   /* tp_setattro*/
 	0,                         /* tp_as_buffer*/
-	Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,        /* tp_flags*/
+	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
 	"Wesnoth units",       /* tp_doc */
 	0,                         /* tp_traverse */
 	0,                         /* tp_clear */
@@ -95,8 +95,15 @@ static PyTypeObject wesnoth_unit_type = {
 
 typedef struct {
 	PyObject_HEAD
-	const gamemap::location* location_;
+	gamemap::location* location_;
 } wesnoth_location;
+
+static void wesnoth_location_dealloc(wesnoth_location* self)
+{
+	delete self->location_;
+	self->location_ = NULL;
+    self->ob_type->tp_free((PyObject*)self);
+}
 
 static PyObject* location_get_x(wesnoth_location* location, void* closure)
 {
@@ -123,7 +130,7 @@ static PyTypeObject wesnoth_location_type = {
 	"wesnoth.location",        /* tp_name*/
 	sizeof(wesnoth_location),  /* tp_basicsize*/
 	0,                         /* tp_itemsize*/
-	0,                         /* tp_dealloc*/
+	(destructor)wesnoth_location_dealloc,                         /* tp_dealloc*/
 	0,                         /* tp_print*/
 	0,                         /* tp_getattr*/
 	0,                         /* tp_setattr*/
@@ -138,7 +145,7 @@ static PyTypeObject wesnoth_location_type = {
 	0,   /* tp_getattro*/
 	0,   /* tp_setattro*/
 	0,                         /* tp_as_buffer*/
-	Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,        /* tp_flags*/
+	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
 	"Wesnoth location",       /* tp_doc */
 	0,                         /* tp_traverse */
 	0,                         /* tp_clear */
@@ -199,7 +206,7 @@ static PyTypeObject wesnoth_gamemap_type = {
 	0,   /* tp_getattro*/
 	0,							/* tp_setattro*/
 	0,                         /* tp_as_buffer*/
-	Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,        /* tp_flags*/
+	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
 	"Wesnoth map information",       /* tp_doc */
 	0,                         /* tp_traverse */
 	0,                         /* tp_clear */
@@ -210,14 +217,6 @@ static PyTypeObject wesnoth_gamemap_type = {
 	gamemap_methods,             /* tp_methods */
 	0,                         /* tp_members */
 	gamemap_getseters,          /* tp_getset */
-/*	0,                         /* tp_base *
-    0,                         /* tp_dict *
-    0,                         /* tp_descr_get *
-    0,                         /* tp_descr_set *
-    0,                         /* tp_dictoffset *
-    (initproc)wesnoth_unit_init,                         /* tp_init *
-    0,                         /* tp_alloc *
-    0,      /* tp_new */
 };
 
 
@@ -227,7 +226,7 @@ PyObject* python_ai::wrapper_log_message(PyObject* self, PyObject* args)
 	const char* msg;
     if ( !PyArg_ParseTuple( args, "s", &msg ) )
         return NULL;
-	running_instance->diagnostic(msg);
+	running_instance->log_message(msg);
 	Py_INCREF(Py_None);
 	return Py_None;
 }
@@ -250,7 +249,7 @@ PyObject* python_ai::wrapper_get_units(PyObject* self, PyObject* args)
 
 	for(unit_map::const_iterator i = running_instance->get_info().units.begin(); i != running_instance->get_info().units.end(); ++i) {
 		key = (wesnoth_location*)PyObject_NEW(wesnoth_location, &wesnoth_location_type);
-		key->location_ = &i->first;
+		key->location_ = new gamemap::location(i->first.x, i->first.y);
 		unit = (wesnoth_unit*)PyObject_NEW(wesnoth_unit, &wesnoth_unit_type);
 		unit->unit_ = &i->second;
 		ret = PyDict_SetItem(dict,(PyObject*)key,(PyObject*)unit);
@@ -270,7 +269,6 @@ PyObject* python_ai::wrapper_get_location(PyObject* self, PyObject* args)
 	location* wrap = new gamemap::location();
 	wrap->x = x;
 	wrap->y = y;
-	running_instance->wrapped_location_.push_back(wrap);
 	wesnoth_location* loc = (wesnoth_location*)PyObject_NEW(wesnoth_location, &wesnoth_location_type);
 	loc->location_ = wrap;
 	return (PyObject*)loc;
@@ -316,11 +314,6 @@ python_ai::~python_ai()
 /*	Py_DECREF(&Wesnoth_UnitType);
 	Py_DECREF(&wesnoth_location_type);
 	Py_Finalize();*/
-	for ( int i = wrapped_location_.size( ) - 1; i >= 0; i-- )
-	{
-		delete wrapped_location_[ i ];
-		wrapped_location_.pop_back( );
-	}
 	running_instance = NULL;
 	}
 
