@@ -34,6 +34,7 @@ SVN trunk:
      Italian, Polish, Portuguese (Brazil), Russian, Slovak, Slovenian, Spanish,
      Swedish, Turkish
    * tutorial now has its own textdomain
+   * fixed Undead used as both trait and race name (#4295)
  * music and sound:
    * new main menu music
  * units and balancing changes:
@@ -112,12 +113,12 @@ SVN trunk:
  loading levels (#4454).
  * fixed incorrect savefile name after continue_no_save (#4439)
  * fixed Delfador talking to himself in Valley of Statues (#4440)
- * various bug fixes and code cleanups
  * added a --with-preferences-dir configure option to allow using a dir
    different than .wesnoth.  Should allow to use svn and 1.0 on the
    same machine without triggering spurious cache rebuilds ans such things.
  * Fix bug where duplicate key values were being concatenated rather than
    being replaced by the last value.
+ * various bug fixes and code cleanups
 
 Version 1.0rc1:
  * language and i18n:
