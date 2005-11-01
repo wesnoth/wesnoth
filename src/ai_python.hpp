@@ -19,6 +19,7 @@ public:
 	static PyObject* wrapper_log_message(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_location(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_map(PyObject* self, PyObject* args);
+	static PyObject* wrapper_get_teams(PyObject* self, PyObject* args);
 
 	static PyObject* python_ai::wesnoth_getmap_is_village( wesnoth_gamemap* map, PyObject* args );
 	static PyObject* python_ai::wesnoth_getmap_is_keep( wesnoth_gamemap* map, PyObject* args );

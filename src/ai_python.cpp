@@ -45,16 +45,16 @@ typedef struct {
 	const unit_type* unit_type_;
 } wesnoth_unittype;
 
-static PyObject* unittype_get_name(wesnoth_unittype* unit, void* closure)
+static PyObject* wrapper_unittype_get_name(wesnoth_unittype* unit, void* closure)
 {
 	return Py_BuildValue("s",( const char* )unit->unit_type_->language_name().c_str());
 }
 
 #define ut_get( x ) \
-	static PyObject* unittype_get_##x(wesnoth_unittype* unit, void* closure) \
-	{	\
-	return Py_BuildValue("i",unit->unit_type_->x());	\
-	}
+static PyObject* wrapper_unittype_get_##x( wesnoth_unittype* type, void* closure ) \
+{	\
+	return Py_BuildValue("i",type->unit_type_->x());	\
+}
 
 ut_get( max_unit_healing )
 ut_get( heals )
@@ -70,7 +70,7 @@ ut_get( can_advance )
 ut_get( has_zoc )
 
 #define ut_gs( x ) \
-	{ #x,       (getter)unittype_get_##x,     NULL, NULL, NULL },
+	{ #x,       (getter)wrapper_unittype_get_##x,     NULL, NULL, NULL },
 
 static PyGetSetDef unittype_getseters[] = {
 	ut_gs( name )
@@ -90,7 +90,7 @@ static PyGetSetDef unittype_getseters[] = {
 };
 
 static PyMethodDef unittype_methods[] = {
-	{ NULL, NULL }
+	{ NULL, NULL, NULL }
 };
 
 static PyTypeObject wesnoth_unittype_type = {
@@ -317,6 +317,60 @@ static PyTypeObject wesnoth_gamemap_type = {
 	gamemap_getseters,          /* tp_getset */
 };
 
+typedef struct {
+	PyObject_HEAD
+	const team* team_;
+} wesnoth_team;
+
+static PyObject* wrapper_team_name(wesnoth_team* team, void* closure)
+{
+	return Py_BuildValue("s", team->team_->team_name().c_str());
+}
+
+static PyMethodDef team_methods[] = {
+    { NULL, NULL, NULL }
+};
+
+static PyGetSetDef team_getseters[] = {
+	{ "name",         (getter)wrapper_team_name,       NULL, NULL, NULL},
+	{ NULL, NULL, NULL, NULL, NULL }
+};
+
+static PyTypeObject wesnoth_team_type = {
+	PyObject_HEAD_INIT(NULL)
+	0,                         /* ob_size*/
+	"wesnoth.team",        /* tp_name*/
+	sizeof(wesnoth_team),  /* tp_basicsize*/
+	0,                         /* tp_itemsize*/
+	0,                         /* tp_dealloc*/
+	0,                         /* tp_print*/
+	0,                         /* tp_getattr*/
+	0,                         /* tp_setattr*/
+	0,                         /* tp_compare*/
+	0,                         /* tp_repr*/
+	0, //UniConvert,             /* tp_as_number*/
+	0,                         /* tp_as_sequence*/
+	0,                         /* tp_as_mapping*/
+	0,                         /* tp_hash */
+	0,                         /* tp_call*/
+	0,                         /* tp_str*/
+	0,   /* tp_getattro*/
+	0,   /* tp_setattro*/
+	0,                         /* tp_as_buffer*/
+	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
+	"Wesnoth team",       /* tp_doc */
+	0,                         /* tp_traverse */
+	0,                         /* tp_clear */
+	0,                         /* tp_richcompare */
+	0,                         /* tp_weaklistoffset */
+	0,                         /* tp_iter */
+	0,                         /* tp_iternext */
+	team_methods,             /* tp_methods */
+	0,                         /* tp_members */
+	team_getseters,          /* tp_getset */
+};
+
+
 PyObject* python_ai::wrapper_log_message(PyObject* self, PyObject* args)
 {
 	const char* msg;
@@ -359,7 +413,7 @@ PyObject* python_ai::wrapper_get_units(PyObject* self, PyObject* args)
 PyObject* python_ai::wrapper_get_location(PyObject* self, PyObject* args)
 {
 	int x, y;
-    if ( !PyArg_ParseTuple( args, "(ii)", &x, &y ) )
+    if ( !PyArg_ParseTuple( args, "ii", &x, &y ) )
         return NULL;
 
 	location* wrap = new gamemap::location();
@@ -372,8 +426,28 @@ PyObject* python_ai::wrapper_get_location(PyObject* self, PyObject* args)
 
 PyObject* python_ai::wrapper_get_map(PyObject* self, PyObject* args)
 {
+    if ( !PyArg_ParseTuple( args, "" ) )
+        return NULL;
 	wesnoth_gamemap* loc = (wesnoth_gamemap*)PyObject_NEW(wesnoth_gamemap, &wesnoth_gamemap_type);
 	return (PyObject*)loc;
+}
+
+PyObject* python_ai::wrapper_get_teams(PyObject* self, PyObject* args)
+{
+    if ( !PyArg_ParseTuple( args, "" ) )
+        return NULL;
+
+	PyObject* list = PyList_New(running_instance->get_info().teams.size());
+	wesnoth_team* the_team;
+
+	for (int team = 0; team < running_instance->get_info().teams.size(); team++)
+	{
+		the_team = (wesnoth_team*)PyObject_NEW(wesnoth_team, &wesnoth_team_type);
+		the_team->team_ = &running_instance->get_info().teams[team];
+		PyList_SetItem(list,team,(PyObject*)the_team);
+	}
+
+	return list;
 }
 
 static PyMethodDef wesnoth_python_methods[] = {
@@ -381,6 +455,7 @@ static PyMethodDef wesnoth_python_methods[] = {
 	{"get_units",		python_ai::wrapper_get_units,		METH_VARARGS},
 	{"get_location",	python_ai::wrapper_get_location,			METH_VARARGS},
 	{"get_map",			python_ai::wrapper_get_map,			METH_VARARGS},
+	{"get_teams",		python_ai::wrapper_get_teams,		METH_VARARGS},
 	{NULL, NULL}
 };
 
@@ -401,6 +476,7 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
 		Py_Register(wesnoth_location_type, "location");
 		Py_Register(wesnoth_gamemap_type, "gamemap");
 		Py_Register(wesnoth_unittype_type, "unittype");
+		Py_Register(wesnoth_team_type, "team");
 		init_ = true;
 	}
 }
