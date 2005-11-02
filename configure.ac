@@ -286,7 +286,7 @@ AM_CONDITIONAL([X11], [test "$have_libx11" = 'yes'])
 AC_PATH_PROGS([SDL_CONFIG], [sdl-config sdl11-config], [none])
 
 if test "x$SDL_CONFIG" = "xnone"; then
-	
+
 	AC_MSG_ERROR([*** SDL not found! Get SDL from www.libsdl.org.
 If you already installed it, check it's in the path. If problem remains,
 please send a mail to the address that appears in ./configure --version
@@ -344,7 +344,7 @@ AC_ARG_ENABLE([sdltest],
 
 min_sdl_version=1.2.7
 AC_MSG_CHECKING(for SDL - version >= $min_sdl_version)
-    
+
 SDL_CFLAGS=`$SDL_CONFIG --cflags`
 SDL_LIBS=`$SDL_CONFIG --libs`
 sdl_major_version=`$SDL_CONFIG --version | \
@@ -362,7 +362,7 @@ if test "x$enable_sdltest" = "xyes" ; then
 
     # Now check if the installed SDL is sufficiently new. (Also sanity
     # checks the results of sdl-config to some extent
-      
+
     rm -f conf.sdltest
     AC_RUN_IFELSE([AC_LANG_SOURCE([
 #include <stdio.h>
@@ -374,7 +374,7 @@ char*
 my_strdup (char *str)
 {
   char *new_str;
-  
+
   if (str)
     {
       new_str = (char *)malloc ((strlen (str) + 1) * sizeof(char));
@@ -382,7 +382,7 @@ my_strdup (char *str)
     }
   else
     new_str = NULL;
-  
+
   return new_str;
 }
 
@@ -466,22 +466,6 @@ AM_CONDITIONAL([GNOME1], [test x$gnome = xyes && test x$gnome1found = xyes && te
 AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome2 = xyes])
 
 #######################################################################
-# Checks for types.                                                   #
-#######################################################################
-
-# No need to check anymore    
-#AC_LANG([C++])
-#AC_MSG_CHECKING([if char is signed])
-
-#AC_COMPILE_IFELSE(
-#	[[static int test_array [1 - 2 * !(((char) -1) < 0)];]],
-#	[AC_MSG_RESULT(yes)],
-#	[AC_MSG_RESULT(no)] 
-#	[AC_MSG_ERROR([*** char is unsigned. Wesnoth cannot work with unsigned 
-#chars. Try with another compiler (specify it using CXX environment variable.)
-#If you use GCC, you can force signed chars with CXXFLAGS=-fsigned-char])])
-
-#######################################################################
 # Checks for libraries.                                               #
 #######################################################################
 
@@ -537,7 +521,7 @@ else SDL_MIXER_LIBS=-lSDL_mixer
 fi],
 	     [AC_MSG_ERROR([*** SDL_mixer lib not found! Get SDL_mixer from
 http://www.libsdl.org/projects/SDL_mixer/index.html])])
-	     
+
 AC_CHECK_LIB([SDL_net],
 	     [SDLNet_Init],
 	     [if test -n "$LDPREFIX" -a -r `$SDL_CONFIG --prefix`/lib/libSDL_net.la
@@ -547,22 +531,12 @@ fi],
 	     [AC_MSG_ERROR([*** SDL_net lib not found! Get SDL_net from
 http://www.libsdl.org/projects/SDL_net/index.html])])
 
-#AC_CHECK_LIB([SDL_ttf],
-#	     [TTF_OpenFont],
-#	     [if test -n "$LDPREFIX" -a -r /usr/lib/libSDL_ttf.la
-#then SDL_TTF_LIBS=/usr/lib/libSDL_ttf.la
-#else SDL_TTF_LIBS=-lSDL_ttf
-#fi],
-#	     [AC_MSG_ERROR([*** SDL_ttf lib not found! Get SDL_ttf from
-#http://www.libsdl.org/projects/SDL_ttf/index.html])])
-
 LIBS=$OLD_LIBS
 
 AC_SUBST([SDL_LIBS])
 AC_SUBST([SDL_IMAGE_LIBS])
 AC_SUBST([SDL_MIXER_LIBS])
 AC_SUBST([SDL_NET_LIBS])
-#AC_SUBST([SDL_TTF_LIBS])
 
 # Checking for the freetype library. This was copied from the
 # config script of SDL_ttf, modified for CPPFLAGS
@@ -649,21 +623,16 @@ AC_CHECK_HEADER([SDL_image.h],
 		[],
 		[AC_MSG_ERROR([*** SDL_image include files not found!
 You should install development package.])])
-		
+
 AC_CHECK_HEADER([SDL_mixer.h],
 		[],
 		[AC_MSG_ERROR([*** SDL_mixer include files not found!
 You should install development package.])])
-		
+
 AC_CHECK_HEADER([SDL_net.h],
 		[],
 		[AC_MSG_ERROR([*** SDL_net include files not found!
 You should install development package.])])
-		
-#AC_CHECK_HEADER([SDL_ttf.h],
-#		[],
-#		[AC_MSG_ERROR([*** SDL_ttf include files not found!
-#You should install development package.])])
 
 CPPFLAGS=$OLD_CPPFLAGS
 CXXFLAGS=$OLD_CXXFLAGS
