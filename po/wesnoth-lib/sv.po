@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 13:51+0200\n"
+"POT-Creation-Date: 2005-11-04 22:09+0100\n"
 "PO-Revision-Date: 2005-08-01 15:21+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
@@ -17,96 +17,96 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.10.1\n"
 
-#: src/editor/editor_dialogs.cpp:49
+#: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Dina ändringar av kartan kommer att gå förlorade. Vill du fortsätta?"
 
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:197
+#: src/editor/editor_dialogs.cpp:75 src/editor/editor_dialogs.cpp:196
 msgid "Create New Map"
 msgstr "Skapa ny karta"
 
-#: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
 #: src/mapgen_dialog.cpp:106
 msgid "Width:"
 msgstr "Bredd:"
 
-#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:393
+#: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
 #: src/mapgen_dialog.cpp:107
 msgid "Height:"
 msgstr "Höjd:"
 
-#: src/editor/editor_dialogs.cpp:95
+#: src/editor/editor_dialogs.cpp:94
 msgid "Generate New Map"
 msgstr "Generera ny karta"
 
-#: src/editor/editor_dialogs.cpp:96
+#: src/editor/editor_dialogs.cpp:95
 msgid "Generate Random Map"
 msgstr "Generera slumpkarta"
 
-#: src/editor/editor_dialogs.cpp:97
+#: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr "Inställningar för slumpgenerator"
 
-#: src/editor/editor_dialogs.cpp:98 src/editor/editor_dialogs.cpp:409
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
 #: src/filechooser.cpp:54 src/show_dialog.cpp:430 src/show_dialog.cpp:436
 #: src/show_dialog.cpp:849 src/show_dialog.cpp:927
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/editor/editor_dialogs.cpp:183
+#: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
 msgstr "Kunde inte skapa karta."
 
-#: src/editor/editor_dialogs.cpp:249 src/mapgen_dialog.cpp:97
-#: src/preferences.cpp:1335
+#: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
+#: src/preferences_display.cpp:641
 msgid "Close Window"
 msgstr "Stäng fönster"
 
-#: src/editor/editor_dialogs.cpp:255 src/editor/editor_dialogs.cpp:322
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+#: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
+#: src/hotkeys.cpp:72 src/preferences_display.cpp:543
 msgid "Preferences"
 msgstr "Inställningar"
 
-#: src/editor/editor_dialogs.cpp:257 src/preferences.cpp:905
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:215
 msgid "Scroll Speed:"
 msgstr "Rullningsfart:"
 
-#: src/editor/editor_dialogs.cpp:284 src/hotkeys.cpp:55
-#: src/preferences.cpp:887
+#: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:55
+#: src/preferences_display.cpp:197
 msgid "Toggle Full Screen"
 msgstr "Helskärm på/av"
 
-#: src/editor/editor_dialogs.cpp:291 src/preferences.cpp:890
+#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:200
 msgid "Show Grid"
 msgstr "Visa rutnät"
 
-#: src/editor/editor_dialogs.cpp:298 src/preferences.cpp:897
+#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:207
 msgid "Video Mode"
 msgstr "Videoläge"
 
-#: src/editor/editor_dialogs.cpp:301 src/preferences.cpp:898
+#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:208
 msgid "Hotkeys"
 msgstr "Snabbtangenter"
 
-#: src/editor/editor_dialogs.cpp:390 src/editor/editor_dialogs.cpp:450
+#: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
 #: src/hotkeys.cpp:94
 msgid "Resize Map"
 msgstr "Ändra kartans storlek"
 
-#: src/editor/editor_dialogs.cpp:410 src/filechooser.cpp:53
+#: src/editor/editor_dialogs.cpp:409 src/filechooser.cpp:53
 #: src/show_dialog.cpp:416 src/show_dialog.cpp:429
 msgid "OK"
 msgstr "OK"
 
-#: src/editor/editor_dialogs.cpp:493
+#: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
 msgstr "X-axel"
 
-#: src/editor/editor_dialogs.cpp:494
+#: src/editor/editor_dialogs.cpp:493
 msgid "Y-Axis"
 msgstr "Y-axel"
 
-#: src/editor/editor_dialogs.cpp:495
+#: src/editor/editor_dialogs.cpp:494
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Flippa (detta kan ändra kartans dimensioner):"
 
@@ -402,7 +402,11 @@ msgstr "Inland"
 msgid "Island"
 msgstr "Ö"
 
-#: src/preferences.cpp:158 src/preferences.cpp:209
+#: src/preferences.cpp:286
+msgid "player"
+msgstr "spelare"
+
+#: src/preferences_display.cpp:67 src/preferences_display.cpp:99
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -412,129 +416,125 @@ msgstr ""
 "bitar per pixel för att kunna köra spelet i ett fönster. Din skärm måste "
 "stödja 1024x768x16 för att köra spelet i helskärm."
 
-#: src/preferences.cpp:379
-msgid "player"
-msgstr "spelare"
-
-#: src/preferences.cpp:888
+#: src/preferences_display.cpp:198
 msgid "Accelerated Speed"
 msgstr "Accelererad"
 
-#: src/preferences.cpp:889
+#: src/preferences_display.cpp:199
 msgid "Skip AI Moves"
 msgstr "Visa ej datorns steg"
 
-#: src/preferences.cpp:891
+#: src/preferences_display.cpp:201
 msgid "Show Floating Labels"
 msgstr "Visa svävande etiketter"
 
-#: src/preferences.cpp:892
+#: src/preferences_display.cpp:202
 msgid "Turn Dialog"
 msgstr "Dragdialogruta"
 
-#: src/preferences.cpp:893
+#: src/preferences_display.cpp:203
 msgid "Turn Bell"
 msgstr "Dragringklocka"
 
-#: src/preferences.cpp:894
+#: src/preferences_display.cpp:204
 msgid "Show Team Colors"
 msgstr "Visa lagfärger"
 
-#: src/preferences.cpp:895
+#: src/preferences_display.cpp:205
 msgid "Show Color Cursors"
 msgstr "Visa pekare i färg"
 
-#: src/preferences.cpp:896
+#: src/preferences_display.cpp:206
 msgid "Show Haloing Effects"
 msgstr "Visa halo-effekter"
 
-#: src/preferences.cpp:899
+#: src/preferences_display.cpp:209
 msgid "Adjust Gamma"
 msgstr "Ställ in ljusstyrka"
 
-#: src/preferences.cpp:900
+#: src/preferences_display.cpp:210
 msgid "Reverse Time Graphics"
 msgstr "Flippa tidsgrafiken"
 
-#: src/preferences.cpp:901
+#: src/preferences_display.cpp:211
 msgid "Sound effects"
 msgstr "Ljudeffekter"
 
-#: src/preferences.cpp:902
+#: src/preferences_display.cpp:212
 msgid "Music"
 msgstr "Musik"
 
-#: src/preferences.cpp:904
+#: src/preferences_display.cpp:214
 msgid "Music Volume:"
 msgstr "Musikvolym:"
 
-#: src/preferences.cpp:904
+#: src/preferences_display.cpp:214
 msgid "SFX Volume:"
 msgstr "Ljudeffektsvolym:"
 
-#: src/preferences.cpp:905
+#: src/preferences_display.cpp:215
 msgid "Gamma:"
 msgstr "Ljusstyrka:"
 
-#: src/preferences.cpp:918
+#: src/preferences_display.cpp:228
 msgid "Sound effects on/off"
 msgstr "Ljudeffekter på/av"
 
-#: src/preferences.cpp:922
+#: src/preferences_display.cpp:232
 msgid "Change the sound effects volume"
 msgstr "Ändra volymen på ljudeffekterna"
 
-#: src/preferences.cpp:925
+#: src/preferences_display.cpp:235
 msgid "Music on/off"
 msgstr "Musik på/av"
 
-#: src/preferences.cpp:929
+#: src/preferences_display.cpp:239
 msgid "Change the music volume"
 msgstr "Ändra musikvolym"
 
-#: src/preferences.cpp:935
+#: src/preferences_display.cpp:245
 msgid "Change the speed of scrolling around the map"
 msgstr "Ändra rullningshastigheten på kartan"
 
-#: src/preferences.cpp:938 src/preferences.cpp:943
+#: src/preferences_display.cpp:248 src/preferences_display.cpp:253
 msgid "Change the brightness of the display"
 msgstr "Ändra bildskärmens ljusstyrka"
 
-#: src/preferences.cpp:946
+#: src/preferences_display.cpp:256
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Välj om spelet skall visas i helskärm eller i ett fönster"
 
-#: src/preferences.cpp:949
+#: src/preferences_display.cpp:259
 msgid "Make units move and fight faster"
 msgstr "Gör att trupper förflyttar sig och slåss snabbare"
 
-#: src/preferences.cpp:952
+#: src/preferences_display.cpp:262
 msgid "Do not animate AI units moving"
 msgstr "Animera ej de förflyttningar som datorns trupper gör"
 
-#: src/preferences.cpp:955
+#: src/preferences_display.cpp:265
 msgid "Overlay a grid onto the map"
 msgstr "Lägg ett rutnät över kartan"
 
-#: src/preferences.cpp:958
+#: src/preferences_display.cpp:268
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Visa text över en trupp när den blir träffad för att visa hur mycket skada "
 "som vållats"
 
-#: src/preferences.cpp:960
+#: src/preferences_display.cpp:270
 msgid "Change the resolution the game runs at"
 msgstr "Ändra bildskärmens upplösning som spelet använder"
 
-#: src/preferences.cpp:963
+#: src/preferences_display.cpp:273
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Visa en dialogruta när ditt drag börjar"
 
-#: src/preferences.cpp:966
+#: src/preferences_display.cpp:276
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Ring en klocka när ditt drag börjar"
 
-#: src/preferences.cpp:969
+#: src/preferences_display.cpp:279
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -542,80 +542,80 @@ msgstr ""
 "Visa en färgcirkel runt varje trupps bas, för att visa vilken sida den "
 "tillhör"
 
-#: src/preferences.cpp:972
+#: src/preferences_display.cpp:282
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Välj om solen rör sig från vänster till höger eller från höger till vänster"
 
-#: src/preferences.cpp:975
+#: src/preferences_display.cpp:285
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Använd muspekare i färg (kan göra spelet långsammare)"
 
-#: src/preferences.cpp:978
+#: src/preferences_display.cpp:288
 msgid "Use graphical special effects (may be slower)"
 msgstr "Använd grafiska specialeffekter (kan göra spelet långsammare)"
 
-#: src/preferences.cpp:980
+#: src/preferences_display.cpp:290
 msgid "View and configure keyboard shortcuts"
 msgstr "Se och konfigurera snabbtangenter"
 
-#: src/preferences.cpp:1158
+#: src/preferences_display.cpp:469
 msgid "yes"
 msgstr "ja"
 
-#: src/preferences.cpp:1160
+#: src/preferences_display.cpp:471
 msgid "no"
 msgstr "nej"
 
-#: src/preferences.cpp:1219
+#: src/preferences_display.cpp:530
 msgid "Prefs section^General"
 msgstr "Allmänt"
 
-#: src/preferences.cpp:1220
+#: src/preferences_display.cpp:531
 msgid "Prefs section^Display"
 msgstr "Skärm"
 
-#: src/preferences.cpp:1221
+#: src/preferences_display.cpp:532
 msgid "Prefs section^Sound"
 msgstr "Ljud"
 
-#: src/preferences.cpp:1222
+#: src/preferences_display.cpp:533
 msgid "Advanced section^Advanced"
 msgstr "Avancerat"
 
-#: src/preferences.cpp:1278
+#: src/preferences_display.cpp:584
 msgid "There are no alternative video modes available"
 msgstr "Det finns inga alternativa videolägen tillgängliga"
 
-#: src/preferences.cpp:1307
+#: src/preferences_display.cpp:613
 msgid "Choose Resolution"
 msgstr "Välj upplösning"
 
-#: src/preferences.cpp:1340
+#: src/preferences_display.cpp:646
 msgid "Hotkey Settings"
 msgstr "Snabbtangentsinställningar"
 
-#: src/preferences.cpp:1344 src/preferences.cpp:1397
+#: src/preferences_display.cpp:650 src/preferences_display.cpp:703
 msgid "Press desired HotKey"
 msgstr "Tryck på önskad snabbtangent"
 
-#: src/preferences.cpp:1362
+#: src/preferences_display.cpp:668
 msgid "Action"
 msgstr "Handling"
 
-#: src/preferences.cpp:1362
+#: src/preferences_display.cpp:668
 msgid "Binding"
 msgstr "Koppling"
 
-#: src/preferences.cpp:1374
+#: src/preferences_display.cpp:680
 msgid "Change Hotkey"
 msgstr "Ställ in snabbtangenter"
 
-#: src/preferences.cpp:1377
+#: src/preferences_display.cpp:683
 msgid "Save Hotkeys"
 msgstr "Spara snabbtangenter"
 
-#: src/preferences.cpp:1423
+#: src/preferences_display.cpp:729
 msgid "This HotKey is already in use."
 msgstr "Den tangenten används redan till något annat."
 

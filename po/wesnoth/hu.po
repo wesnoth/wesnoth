@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.0-cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 14:14+0200\n"
+"POT-Creation-Date: 2005-11-04 22:07+0100\n"
 "PO-Revision-Date: 2005-09-18 18:42+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -45,11 +45,11 @@ msgstr "Bevezetés"
 msgid "Gameplay"
 msgstr "Játékmenet"
 
-#: data/help.cfg:21 src/playturn.cpp:2251
+#: data/help.cfg:21 src/playturn.cpp:2253
 msgid "Traits"
 msgstr "Jellemvonások"
 
-#: data/help.cfg:29 src/playturn.cpp:1793
+#: data/help.cfg:29 src/playturn.cpp:1795
 msgid "Units"
 msgstr "Egységek"
 
@@ -1194,9 +1194,9 @@ msgstr ""
 "megszerezni, ezért felelőtlen dolog elbocsátani, vagy a biztos halálba "
 "küldeni őket."
 
-#: data/help.cfg:296 data/multiplayer.cfg:69 data/multiplayer.cfg:158
-#: data/multiplayer.cfg:260 data/translations/english.cfg:129
-msgid "Undead"
+#: data/help.cfg:296
+#, fuzzy
+msgid "trait^Undead"
 msgstr "Élőholt"
 
 #: data/help.cfg:297
@@ -1282,7 +1282,7 @@ msgstr ""
 "illeti, az országutak megegyeznek a <ref>dst=terrain_grassland "
 "text=mezőséggel</ref>."
 
-#: data/help.cfg:330 data/terrain.cfg:325
+#: data/help.cfg:330 data/terrain.cfg:334
 msgid "Forest"
 msgstr "Erdőség"
 
@@ -1316,7 +1316,7 @@ msgstr ""
 "nem több mint 40%. Másrészről a tündék 60-70%-os védekezést élveznek, még "
 "lóháton is. A törpök általában csak 30%-ot kapnak."
 
-#: data/help.cfg:340 data/terrain.cfg:286
+#: data/help.cfg:340 data/terrain.cfg:295
 msgid "Hills"
 msgstr "Dombság"
 
@@ -1342,7 +1342,7 @@ msgstr ""
 "Az erdőségekben a legtöbb egységnek 50% körüli a védekezése, de a lovas "
 "egységeknek nem több mint 40%. A törpök 60% védekezést kapnak dombságon."
 
-#: data/help.cfg:350 data/terrain.cfg:310
+#: data/help.cfg:350 data/terrain.cfg:319
 msgid "Mountains"
 msgstr "Hegyvidék"
 
@@ -1438,7 +1438,7 @@ msgstr ""
 "A mélyvizekben a nagáknak és a sellőknek is 50% a védekezése, és teljesen "
 "kihasználhatják lépési pontjaikat."
 
-#: data/help.cfg:390 data/terrain.cfg:257
+#: data/help.cfg:390 data/terrain.cfg:266
 msgid "Snow"
 msgstr "Hó"
 
@@ -1456,7 +1456,7 @@ msgstr ""
 "\n"
 "A hóban a legtöbb egységnek 20 és 40% közti a védekezése."
 
-#: data/help.cfg:400 data/terrain.cfg:265
+#: data/help.cfg:400 data/terrain.cfg:274
 msgid "Ice"
 msgstr "Jég"
 
@@ -1471,7 +1471,7 @@ msgstr ""
 "hogy az úszni képes egységek, még ha a víz alatt is élnek, a jég alatt nem "
 "tudnak úszni."
 
-#: data/help.cfg:408 data/terrain.cfg:374 data/terrain.cfg:485
+#: data/help.cfg:408 data/terrain.cfg:383 data/terrain.cfg:494
 msgid "Castle"
 msgstr "Várkastély"
 
@@ -1528,7 +1528,7 @@ msgstr ""
 "partoktól, de a játékmenet szempontjából azonosak. Lásd a "
 "<ref>dst=terrain_sand·text=Homokot</ref>."
 
-#: data/help.cfg:438 data/terrain.cfg:357
+#: data/help.cfg:438 data/terrain.cfg:366
 msgid "Cave"
 msgstr "Barlang"
 
@@ -1568,9 +1568,9 @@ msgstr ""
 "<ref>dst=terrain_grassland·text=Mezőséggel</ref>."
 
 #: data/help.cfg:455 data/terrain.cfg:43 data/terrain.cfg:64
-#: data/terrain.cfg:159 data/terrain.cfg:168 data/terrain.cfg:179
-#: data/terrain.cfg:190 data/terrain.cfg:203 data/terrain.cfg:364
-#: src/reports.cpp:323
+#: data/terrain.cfg:159 data/terrain.cfg:168 data/terrain.cfg:177
+#: data/terrain.cfg:188 data/terrain.cfg:199 data/terrain.cfg:212
+#: data/terrain.cfg:373 src/reports.cpp:323
 msgid "Village"
 msgstr "Falu"
 
@@ -1596,7 +1596,7 @@ msgstr ""
 "A falvakban a legtöbb egységnek 50 és 60% közti a védekezése, míg a lovasok "
 "csak 40%-ot kapnak."
 
-#: data/help.cfg:467 data/terrain.cfg:423
+#: data/help.cfg:467 data/terrain.cfg:432
 msgid "Canyon"
 msgstr "Kanyon"
 
@@ -1612,7 +1612,7 @@ msgstr ""
 "tarthat. Ami a játékmenetet illeti, csak a repülni tudó egységek képesek "
 "átkelni ezen a terepen."
 
-#: data/help.cfg:474 data/terrain.cfg:472
+#: data/help.cfg:474 data/terrain.cfg:481
 msgid "Lava"
 msgstr "Láva"
 
@@ -1626,7 +1626,7 @@ msgstr ""
 "Ezen a terepen csak azok az egységek jutnak át, amelyek képesek megfelelő "
 "magasságban átrepülni fölötte."
 
-#: data/help.cfg:481 data/terrain.cfg:462
+#: data/help.cfg:481 data/terrain.cfg:471
 msgid "River Ford"
 msgstr "Gázló"
 
@@ -1677,7 +1677,7 @@ msgstr ""
 "figyelembe kell venni, hogy a hidat jelképező hatszöget nem foglalhatja el "
 "egy úszó és egy szárazföldi egység is egyszerre."
 
-#: data/help.cfg:497 data/terrain.cfg:349
+#: data/help.cfg:497 data/terrain.cfg:358
 msgid "Cave Wall"
 msgstr "Barlangfal"
 
@@ -1887,6 +1887,10 @@ msgstr "Lázadók"
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
 msgid "Northerners"
 msgstr "Északiak"
+
+#: data/multiplayer.cfg:69 data/multiplayer.cfg:158 data/multiplayer.cfg:260
+msgid "Undead"
+msgstr "Élőholt"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
 msgid "Knalgan Alliance"
@@ -2400,12 +2404,12 @@ msgstr ""
 msgid "Underground"
 msgstr "Föld alatt"
 
-#: data/terrain.cfg:11 src/multiplayer_create.cpp:55
-#: src/multiplayer_lobby.cpp:311 src/multiplayer_lobby.cpp:317
+#: data/terrain.cfg:11 src/multiplayer_create.cpp:56
+#: src/multiplayer_lobby.cpp:312 src/multiplayer_lobby.cpp:318
 msgid "Shroud"
 msgstr "Eltakarás"
 
-#: data/terrain.cfg:18 src/multiplayer_lobby.cpp:307
+#: data/terrain.cfg:18 src/multiplayer_lobby.cpp:308
 msgid "Fog"
 msgstr "Köd"
 
@@ -2413,63 +2417,63 @@ msgstr "Köd"
 msgid "Dirt"
 msgstr "Sár"
 
-#: data/terrain.cfg:213 data/terrain.cfg:224
+#: data/terrain.cfg:222 data/terrain.cfg:233
 msgid "Desert Village"
 msgstr "Sivatagi falu"
 
-#: data/terrain.cfg:235
+#: data/terrain.cfg:244
 msgid "Tropical Forest Village"
 msgstr "Trópusi őserdei falu"
 
-#: data/terrain.cfg:246
+#: data/terrain.cfg:255
 msgid "Oasis"
 msgstr "Oázis"
 
-#: data/terrain.cfg:275
+#: data/terrain.cfg:284
 msgid "Snow Village"
 msgstr "Hófödte falu"
 
-#: data/terrain.cfg:293
+#: data/terrain.cfg:302
 msgid "Desert Hills"
 msgstr "Sivatagi dombság"
 
-#: data/terrain.cfg:301
+#: data/terrain.cfg:310
 msgid "Snow Hills"
 msgstr "Hófödte dombság"
 
-#: data/terrain.cfg:317
+#: data/terrain.cfg:326
 msgid "Desert Mountains"
 msgstr "Sivatagi hegyvidék"
 
-#: data/terrain.cfg:332
+#: data/terrain.cfg:341
 msgid "Tropical Forest"
 msgstr "Trópusi falu"
 
-#: data/terrain.cfg:341
+#: data/terrain.cfg:350
 msgid "Snow Forest"
 msgstr "Hófödte erdő"
 
-#: data/terrain.cfg:383
+#: data/terrain.cfg:392
 msgid "Encampment"
 msgstr "Táborhely"
 
-#: data/terrain.cfg:393
+#: data/terrain.cfg:402
 msgid "Dwarven Castle"
 msgstr "Törp vár"
 
-#: data/terrain.cfg:403
+#: data/terrain.cfg:412
 msgid "Keep"
 msgstr "Vártorony"
 
-#: data/terrain.cfg:430
+#: data/terrain.cfg:439
 msgid "Ruin"
 msgstr "Rom"
 
-#: data/terrain.cfg:440
+#: data/terrain.cfg:449
 msgid "Sunken Ruin"
 msgstr "Elsüllyedt rom"
 
-#: data/terrain.cfg:451
+#: data/terrain.cfg:460
 msgid "Swamp Ruin"
 msgstr "Lápos rom"
 
@@ -2485,11 +2489,11 @@ msgstr "Parancsok"
 msgid "End Turn"
 msgstr "Kör vége"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2249 src/unit.cpp:1091
+#: data/themes/default.cfg:167 src/playturn.cpp:2251 src/unit.cpp:1091
 msgid "HP"
 msgstr "ÉP"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2070 src/playturn.cpp:2250
+#: data/themes/default.cfg:176 src/playturn.cpp:2072 src/playturn.cpp:2252
 msgid "XP"
 msgstr "TP"
 
@@ -3091,15 +3095,17 @@ msgstr ""
 #: data/units/Assassin.cfg:113 data/units/Duelist.cfg:16
 #: data/units/Fencer.cfg:17 data/units/Master_at_Arms.cfg:17
 #: data/units/Outlaw_Princess.cfg:20 data/units/Rogue.cfg:17
-#: data/units/Rogue.cfg:79 data/units/Saurian_Ambusher.cfg:21
+#: data/units/Rogue.cfg:79 data/units/Saurian_Ambusher.cfg:20
 #: data/units/Saurian_Flanker.cfg:23 data/units/Saurian_Skirmisher.cfg:20
 msgid "skirmisher"
 msgstr "portyázó"
 
 #: data/translations/english.cfg:81
+#, fuzzy
 msgid ""
 "Steadfast:\n"
-"This unit's resistance is doubled, up to a maximum of 50%, when defending."
+"This unit's resistances are doubled, up to a maximum of 50%, when defending. "
+"Vulnerabilities are not affected."
 msgstr ""
 "Rendíthetetlen:\n"
 "Ennek az egységnek kétszeresek az ellenállásai, de mindig legfeljebb 50%, "
@@ -3237,6 +3243,11 @@ msgstr ""
 "Ez a támadás a célpont egységet kővé dermeszti. A kővé vált egységek nem "
 "mozoghatnak és nem harcolhatnak."
 
+#: data/translations/english.cfg:129
+#, fuzzy
+msgid "race^Undead"
+msgstr "Élőholt"
+
 #: data/translations/english.cfg:132
 msgid "$name's Bridge,$name's Crossing"
 msgstr "$name hídja,$name gázlója"
@@ -3327,7 +3338,7 @@ msgstr "érintés"
 #: data/units/Elvish_Enchantress.cfg:118 data/units/Elvish_High_Lord.cfg:44
 #: data/units/Elvish_Lord.cfg:39 data/units/Elvish_Sorceress.cfg:118
 #: data/units/Elvish_Sylph.cfg:85 data/units/Ghost.cfg:24
-#: data/units/Ghost.cfg:36 data/units/Initiate.cfg:38 data/units/Lich.cfg:25
+#: data/units/Ghost.cfg:37 data/units/Initiate.cfg:38 data/units/Lich.cfg:25
 #: data/units/Lich.cfg:38 data/units/Necromancer.cfg:39
 #: data/units/Saurian_Icecaster.cfg:43 data/units/Saurian_Soothsayer.cfg:42
 #: data/units/Saurian_Tribalist.cfg:41 data/units/Spectre.cfg:70
@@ -3337,7 +3348,7 @@ msgstr "hideg"
 
 #: data/units/Ancient_Lich.cfg:49 data/units/Blood_Bat.cfg:38
 #: data/units/Dark_Spirit.cfg:37 data/units/Demilich.cfg:37
-#: data/units/Dread_Lich.cfg:26 data/units/Lich.cfg:29
+#: data/units/Dread_Lich.cfg:26 data/units/Ghost.cfg:28 data/units/Lich.cfg:29
 #: data/units/Orcish_Shaman.cfg:45 data/units/Orcish_Shaman.cfg:108
 #: data/units/Orcish_Shaman.cfg:171 data/units/Skeletal_Dragon.cfg:34
 #: data/units/Spectre.cfg:57 data/units/Vampire_Bat.cfg:24
@@ -3890,8 +3901,8 @@ msgstr "íj"
 #: data/units/Orcish_Warlord.cfg:42 data/units/Paladin.cfg:48
 #: data/units/Peasant.cfg:22 data/units/Peasant.cfg:35
 #: data/units/Pikeman.cfg:53 data/units/Pirate_Galleon.cfg:19
-#: data/units/Poacher.cfg:43 data/units/Saurian_Ambusher.cfg:25
-#: data/units/Saurian_Ambusher.cfg:43 data/units/Saurian_Flanker.cfg:27
+#: data/units/Poacher.cfg:43 data/units/Saurian_Ambusher.cfg:24
+#: data/units/Saurian_Ambusher.cfg:42 data/units/Saurian_Flanker.cfg:27
 #: data/units/Saurian_Flanker.cfg:45 data/units/Saurian_Skirmisher.cfg:24
 #: data/units/Saurian_Skirmisher.cfg:42 data/units/Sea_Serpent.cfg:21
 #: data/units/Sergeant.cfg:42 data/units/Skeleton_Archer.cfg:42
@@ -4018,8 +4029,8 @@ msgstr ""
 #: data/units/Merman_Hunter.cfg:21 data/units/Merman_Hunter.cfg:61
 #: data/units/Merman_Javelineer.cfg:22 data/units/Merman_Javelineer.cfg:62
 #: data/units/Merman_Netcaster.cfg:22 data/units/Merman_Spearman.cfg:21
-#: data/units/Merman_Spearman.cfg:61 data/units/Saurian_Ambusher.cfg:23
-#: data/units/Saurian_Ambusher.cfg:41 data/units/Saurian_Flanker.cfg:25
+#: data/units/Merman_Spearman.cfg:61 data/units/Saurian_Ambusher.cfg:22
+#: data/units/Saurian_Ambusher.cfg:40 data/units/Saurian_Flanker.cfg:25
 #: data/units/Saurian_Flanker.cfg:43 data/units/Saurian_Skirmisher.cfg:22
 #: data/units/Saurian_Skirmisher.cfg:40 data/units/Spearman.cfg:61
 #: data/units/Spearman.cfg:112
@@ -4201,7 +4212,7 @@ msgstr ""
 msgid "baneblade"
 msgstr "mérgezett pengéjű kard"
 
-#: data/units/Dark_Spirit.cfg:49 data/units/Ghost.cfg:35
+#: data/units/Dark_Spirit.cfg:49 data/units/Ghost.cfg:36
 #: data/units/Spectre.cfg:69 data/units/Wraith.cfg:45
 msgid "wail"
 msgstr "sikoly"
@@ -7491,11 +7502,11 @@ msgstr ""
 "legerősebb katonái közül. A hűség vezérli őket minden válságos helyzetben, "
 "és eddig minden feladatukat sikerrel teljesítették."
 
-#: data/units/Saurian_Ambusher.cfg:4
+#: data/units/Saurian_Ambusher.cfg:3
 msgid "Saurian Ambusher"
 msgstr "Gyík rajtaütő"
 
-#: data/units/Saurian_Ambusher.cfg:19
+#: data/units/Saurian_Ambusher.cfg:18
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8319,180 +8330,180 @@ msgstr ""
 "Ma még szinte csak fiú, rajongásával a korona felé igazi vágya, hogy úr "
 "lehessen - hogy az emberi harcosok legjobbjaihoz csatlakozhasson."
 
-#: src/about.cpp:33
+#: src/about.cpp:34
 msgid "+Core Developers"
 msgstr "+Belső Fejlesztők"
 
-#: src/about.cpp:34
+#: src/about.cpp:35
 msgid "-   Main Developer"
 msgstr "-   Fő Fejlesztő"
 
-#: src/about.cpp:37
+#: src/about.cpp:38
 msgid "-   Artwork and graphics designer"
 msgstr "-   Művészeti és grafikai tervező"
 
-#: src/about.cpp:40
+#: src/about.cpp:41
 msgid "+Developers"
 msgstr "+Fejlesztők"
 
-#: src/about.cpp:60
+#: src/about.cpp:61
 msgid "+General Purpose Administrators"
 msgstr "+Általános Ügyintézők"
 
-#: src/about.cpp:64
+#: src/about.cpp:65
 msgid "+Artwork and graphics designers"
 msgstr "+Művészi és grafikai tervezők"
 
-#: src/about.cpp:92
+#: src/about.cpp:94
 msgid "+Music"
 msgstr "+Zene"
 
-#: src/about.cpp:98
+#: src/about.cpp:100
 msgid "+Scenario Designers"
 msgstr "+Történetírók"
 
-#: src/about.cpp:107
+#: src/about.cpp:109
 msgid "+Multiplayer Maps"
 msgstr "+Többjátékos Pályák"
 
-#: src/about.cpp:112
+#: src/about.cpp:114
 msgid "+Packagers"
 msgstr "+Csomagkészítők"
 
-#: src/about.cpp:122
+#: src/about.cpp:124
 msgid "+Miscellaneous"
 msgstr "+Egyéb"
 
-#: src/about.cpp:129
+#: src/about.cpp:131
 msgid "+Internationalization Managers"
 msgstr "+Honosítási Vezetők"
 
-#: src/about.cpp:136
+#: src/about.cpp:138
 msgid "+Afrikaans Translation"
 msgstr "+Dél-Afrikai Holland Fordítás"
 
-#: src/about.cpp:142
+#: src/about.cpp:144
 msgid "+Basque Translation"
 msgstr "+Baszk Fordítás"
 
-#: src/about.cpp:147
+#: src/about.cpp:149
 msgid "+Bulgarian Translation"
 msgstr "+Bolgár Fordítás"
 
-#: src/about.cpp:151
+#: src/about.cpp:153
 msgid "+Catalan Translation"
 msgstr "+Katalán Fordítás"
 
-#: src/about.cpp:161
+#: src/about.cpp:163
 msgid "+Chinese Translation"
 msgstr "+Kínai Fordítás"
 
-#: src/about.cpp:164
+#: src/about.cpp:166
 msgid "+Czech Translation"
 msgstr "+Cseh Fordítás"
 
-#: src/about.cpp:176
+#: src/about.cpp:178
 msgid "+Danish Translation"
 msgstr "+Dán Fordítás"
 
-#: src/about.cpp:183
+#: src/about.cpp:185
 msgid "+Dutch Translation"
 msgstr "+Holland Fordítás"
 
-#: src/about.cpp:191
+#: src/about.cpp:193
 msgid "+English (GB) Translation"
 msgstr "+Angol (NB) Fordítás"
 
-#: src/about.cpp:194
+#: src/about.cpp:196
 msgid "+Estonian Translation"
 msgstr "+Észt Fordítás"
 
-#: src/about.cpp:197
+#: src/about.cpp:199
 msgid "+Finnish Translation"
 msgstr "+Finn Fordítás"
 
-#: src/about.cpp:203
+#: src/about.cpp:205
 msgid "+French Translation"
 msgstr "+Francia Fordítás"
 
-#: src/about.cpp:222
+#: src/about.cpp:224
 msgid "+German Translation"
 msgstr "+Német Fordítás"
 
-#: src/about.cpp:234
+#: src/about.cpp:236
 msgid "+Greek Translation"
 msgstr "+Görög Fordítás"
 
-#: src/about.cpp:240
+#: src/about.cpp:242
 #, fuzzy
 msgid "+Hebrew Translation"
 msgstr "+Görög Fordítás"
 
-#: src/about.cpp:243
+#: src/about.cpp:245
 msgid "+Hungarian Translation"
 msgstr "+Magyar Fordítás"
 
-#: src/about.cpp:256
+#: src/about.cpp:258
 msgid "+Italian Translation"
 msgstr "+Olasz Fordítás"
 
-#: src/about.cpp:265
+#: src/about.cpp:267
 msgid "+Japanese Translation"
 msgstr "+Japán Fordítás"
 
-#: src/about.cpp:270
+#: src/about.cpp:272
 msgid "+Latin Translation"
 msgstr "+Latin Fordítás"
 
-#: src/about.cpp:273
+#: src/about.cpp:275
 msgid "+Norwegian Translation"
 msgstr "+Norvég Fordítás"
 
-#: src/about.cpp:279
+#: src/about.cpp:281
 msgid "+Polish Translation"
 msgstr "+Lengyel Fordítás"
 
-#: src/about.cpp:289
+#: src/about.cpp:291
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugál (brazil) Fordítás"
 
-#: src/about.cpp:298
+#: src/about.cpp:300
 msgid "+Russian Translation"
 msgstr "+Orosz Fordítás"
 
-#: src/about.cpp:304
+#: src/about.cpp:306
 msgid "+Serbian Translation"
 msgstr "+Szerb Fordítás"
 
-#: src/about.cpp:307
+#: src/about.cpp:309
 msgid "+Slovak Translation"
 msgstr "+Szlovák Fordítás"
 
-#: src/about.cpp:310
+#: src/about.cpp:312
 msgid "+Slovenian Translation"
 msgstr "+Szlovén Fordítás"
 
-#: src/about.cpp:313
+#: src/about.cpp:315
 msgid "+Spanish Translation"
 msgstr "+Spanyol Fordítás"
 
-#: src/about.cpp:322
+#: src/about.cpp:324
 msgid "+Swedish Translation"
 msgstr "+Svéd Fordítás"
 
-#: src/about.cpp:329
+#: src/about.cpp:331
 msgid "+Turkish Translation"
 msgstr "+Török Fordítás"
 
-#: src/about.cpp:335
+#: src/about.cpp:338
 msgid "+Contributors"
 msgstr "+Hozzájárulók"
 
-#: src/about.cpp:338
+#: src/about.cpp:341
 msgid "+Bots"
 msgstr "+Botok"
 
-#: src/about.cpp:374 src/help.cpp:2662
+#: src/about.cpp:377 src/help.cpp:2662
 msgid "Close"
 msgstr "Bezár"
 
@@ -8509,16 +8520,16 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nincs több üres hely a várban, ahova az új egységeket toborozhatnánk."
 
-#: src/actions.cpp:323 src/multiplayer_lobby.cpp:321
+#: src/actions.cpp:323 src/multiplayer_lobby.cpp:322
 msgid "none"
 msgstr "semelyik"
 
-#: src/actions.cpp:399 src/dialogs.cpp:763 src/help.cpp:1143
+#: src/actions.cpp:399 src/dialogs.cpp:764 src/help.cpp:1143
 #: src/reports.cpp:248
 msgid "melee"
 msgstr "közelharc"
 
-#: src/actions.cpp:399 src/dialogs.cpp:763 src/help.cpp:1143
+#: src/actions.cpp:399 src/dialogs.cpp:764 src/help.cpp:1143
 #: src/reports.cpp:249
 msgid "ranged"
 msgstr "távolsági harc"
@@ -8599,99 +8610,99 @@ msgstr "Egységek a láthatáron! ($friends szövetséges, $enemies ellenséges)
 msgid "(press $hotkey to continue)"
 msgstr "(a folytatáshoz nyomd le ezt: $hotkey)"
 
-#: src/dialogs.cpp:100
+#: src/dialogs.cpp:101
 msgid "Advance Unit"
 msgstr "Egység fejlődése"
 
-#: src/dialogs.cpp:101
+#: src/dialogs.cpp:102
 msgid "What should our victorious unit become?"
 msgstr "Mivé váljon ez a győzedelmes egység?"
 
-#: src/dialogs.cpp:173
+#: src/dialogs.cpp:174
 msgid "No objectives available"
 msgstr "Nincs elérhető cél"
 
-#: src/dialogs.cpp:187
+#: src/dialogs.cpp:188
 msgid "Save Game"
 msgstr "Állás mentése"
 
-#: src/dialogs.cpp:189
+#: src/dialogs.cpp:190
 msgid "Overwrite?"
 msgstr "Felülírjam?"
 
-#: src/dialogs.cpp:190
+#: src/dialogs.cpp:191
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Már van ilyen mentés. Felülírjam?"
 
-#: src/dialogs.cpp:219 src/dialogs.cpp:502
+#: src/dialogs.cpp:220 src/dialogs.cpp:503
 msgid "Don't ask me again!"
 msgstr "Ne kérdezze többször!"
 
-#: src/dialogs.cpp:221
+#: src/dialogs.cpp:222
 msgid "Do you really want to delete this game?"
 msgstr "Biztos törölni akarod ezt az állást?"
 
-#: src/dialogs.cpp:358
+#: src/dialogs.cpp:359
 msgid "%a %b %d %H:%M %Y"
 msgstr "%Y %M:%a %b %d %H"
 
-#: src/dialogs.cpp:371
+#: src/dialogs.cpp:372
 msgid "#(Invalid)"
 msgstr "#(Érvénytelen)"
 
-#: src/dialogs.cpp:376 src/game.cpp:754
+#: src/dialogs.cpp:377 src/game.cpp:754
 msgid "Campaign"
 msgstr "Hadjárat"
 
-#: src/dialogs.cpp:378 src/game.cpp:1144
+#: src/dialogs.cpp:379 src/game.cpp:1149
 msgid "Multiplayer"
 msgstr "Többjátékos"
 
-#: src/dialogs.cpp:380
+#: src/dialogs.cpp:381
 msgid "Tutorial"
 msgstr "Gyakorlás"
 
-#: src/dialogs.cpp:388
+#: src/dialogs.cpp:389
 msgid "replay"
 msgstr "visszajátszás"
 
-#: src/dialogs.cpp:390 src/multiplayer_lobby.cpp:295 src/playturn.cpp:1635
+#: src/dialogs.cpp:391 src/multiplayer_lobby.cpp:296 src/playturn.cpp:1637
 msgid "Turn"
 msgstr "Kör"
 
-#: src/dialogs.cpp:392
+#: src/dialogs.cpp:393
 msgid "Scenario Start"
 msgstr "Pálya Indítás"
 
-#: src/dialogs.cpp:395
+#: src/dialogs.cpp:396
 msgid "Difficulty: "
 msgstr "Nehézség: "
 
-#: src/dialogs.cpp:397
+#: src/dialogs.cpp:398
 msgid "Version: "
 msgstr "Verzió: "
 
-#: src/dialogs.cpp:421 src/dialogs.cpp:437
+#: src/dialogs.cpp:422 src/dialogs.cpp:438
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:427
+#: src/dialogs.cpp:428
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:430
+#: src/dialogs.cpp:431
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:433
+#: src/dialogs.cpp:434
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:457
+#: src/dialogs.cpp:458
 msgid "No Saved Games"
 msgstr "Nincsenek elmentett játékok"
 
-#: src/dialogs.cpp:458
+#: src/dialogs.cpp:459
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
@@ -8699,15 +8710,15 @@ msgstr ""
 "Nincsenek betölthető mentések.\n"
 "(A játék külön kérés nélkül mentést készít a pályák befejezése után)"
 
-#: src/dialogs.cpp:477
+#: src/dialogs.cpp:478
 msgid "Delete Save"
 msgstr "Mentés törlése"
 
-#: src/dialogs.cpp:492
+#: src/dialogs.cpp:493
 msgid "Import Saved Games"
 msgstr "Mentések behozatala"
 
-#: src/dialogs.cpp:493
+#: src/dialogs.cpp:494
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
 "Wesnoth. Would you like to update these to the latest version? This may take "
@@ -8717,7 +8728,7 @@ msgstr ""
 "tartozó mentések találhatóak. Szeretnéd frissíteni ezeket a jelenlegi "
 "verzióra? Ez egy kis időbe tellik."
 
-#: src/dialogs.cpp:498
+#: src/dialogs.cpp:499
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
@@ -8726,48 +8737,48 @@ msgstr ""
 "A mentések könyvtárban nem a Harc Wesnoth-ért játék ezen verziójához tartozó "
 "mentések találhatóak. Szeretnéd hogy felhasználjuk ezeket?"
 
-#: src/dialogs.cpp:553
+#: src/dialogs.cpp:554
 msgid "Date"
 msgstr "Dátum"
 
-#: src/dialogs.cpp:553 src/game.cpp:887 src/help.cpp:1119
-#: src/multiplayer_lobby.cpp:29 src/playturn.cpp:2068 src/playturn.cpp:2248
+#: src/dialogs.cpp:554 src/game.cpp:887 src/help.cpp:1119
+#: src/multiplayer_lobby.cpp:30 src/playturn.cpp:2070 src/playturn.cpp:2250
 msgid "Name"
 msgstr "Név"
 
-#: src/dialogs.cpp:579
+#: src/dialogs.cpp:580
 msgid "Show replay"
 msgstr "Visszajátszás mutatása"
 
-#: src/dialogs.cpp:582 src/multiplayer_create.cpp:78
+#: src/dialogs.cpp:583 src/multiplayer_create.cpp:79
 msgid "Load Game"
 msgstr "Betölt"
 
-#: src/dialogs.cpp:583
+#: src/dialogs.cpp:584
 msgid "Choose the game to load"
 msgstr "Válaszd ki a betöltendő játékot"
 
-#: src/dialogs.cpp:619 src/dialogs.cpp:631
+#: src/dialogs.cpp:620 src/dialogs.cpp:632
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:711 src/help.cpp:1037
+#: src/dialogs.cpp:712 src/help.cpp:1037
 msgid "level"
 msgstr "szint"
 
-#: src/dialogs.cpp:732 src/help.cpp:1095
+#: src/dialogs.cpp:733 src/help.cpp:1095
 msgid "HP: "
 msgstr "ÉP: "
 
-#: src/dialogs.cpp:736 src/dialogs.cpp:744
+#: src/dialogs.cpp:737 src/dialogs.cpp:745
 msgid "XP: "
 msgstr "TP: "
 
-#: src/dialogs.cpp:749 src/help.cpp:1096
+#: src/dialogs.cpp:750 src/help.cpp:1096
 msgid "Moves: "
 msgstr "Lépés: "
 
-#: src/display.cpp:465
+#: src/display.cpp:467
 msgid "Screenshot"
 msgstr "Képernyőkép"
 
@@ -8844,7 +8855,7 @@ msgstr "Kiszolgáló: "
 msgid "Could not connect to host."
 msgstr "Nem sikerült kapcsolódni a kiszolgálóhoz."
 
-#: src/game.cpp:865 src/game.cpp:1073
+#: src/game.cpp:865 src/game.cpp:1078
 msgid "Awaiting response from server"
 msgstr "Várakozás a kiszolgáló válaszára"
 
@@ -8892,135 +8903,135 @@ msgstr "Hadjárat beszerzése"
 msgid "Downloading campaign..."
 msgstr "Hadjárat letöltése..."
 
-#: src/game.cpp:1003
+#: src/game.cpp:1008
 msgid "Cannot rescan the filesystem"
 msgstr "Nem tudtam feltérképezni a fájlrendszert"
 
-#: src/game.cpp:1018
+#: src/game.cpp:1023
 msgid "Campaign Installed"
 msgstr "Hadjárat telepítve"
 
-#: src/game.cpp:1018
+#: src/game.cpp:1023
 msgid "The campaign has been installed."
 msgstr "A hadjárat feltelepült."
 
-#: src/game.cpp:1020
+#: src/game.cpp:1025
 msgid "Network communication error."
 msgstr "Hálózati kommunikációs probléma."
 
-#: src/game.cpp:1022
+#: src/game.cpp:1027
 msgid "Remote host disconnected."
 msgstr "A távoli kiszolgáló lekapcsolódott"
 
-#: src/game.cpp:1024
+#: src/game.cpp:1029
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Gond volt a hadjárathoz szükséges fájlok létrehozásával."
 
-#: src/game.cpp:1036 src/game.cpp:1075 src/game.cpp:1100
+#: src/game.cpp:1041 src/game.cpp:1080 src/game.cpp:1105
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:218
 msgid "Connection timed out"
 msgstr "A kapcsolat túllépte az időt"
 
-#: src/game.cpp:1039 src/game.cpp:1077 src/game.cpp:1102
+#: src/game.cpp:1044 src/game.cpp:1082 src/game.cpp:1107
 msgid "The server responded with an error: \""
 msgstr "A kiszolgáló a következő hibajelzéssel válaszolt: \""
 
-#: src/game.cpp:1043
+#: src/game.cpp:1048
 msgid "Terms"
 msgstr "Feltételek"
 
-#: src/game.cpp:1080 src/game.cpp:1105
+#: src/game.cpp:1085 src/game.cpp:1110
 msgid "Response"
 msgstr "Válasz"
 
-#: src/game.cpp:1127
+#: src/game.cpp:1132
 msgid "Join Official Server"
 msgstr "Csatlakozás a hivatalos kiszolgálóhoz"
 
-#: src/game.cpp:1128
+#: src/game.cpp:1133
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Bejelentkezés a Wesnoth hivatalos többjátékos kiszolgálójára"
 
-#: src/game.cpp:1130 src/multiplayer_lobby.cpp:407
+#: src/game.cpp:1135 src/multiplayer_lobby.cpp:408
 msgid "Join Game"
 msgstr "Csatlakozás játékhoz"
 
-#: src/game.cpp:1131
+#: src/game.cpp:1136
 msgid "Join a server or hosted game"
 msgstr "Csatlakozás egy kiszolgálóhoz vagy egy játékhoz"
 
-#: src/game.cpp:1133
+#: src/game.cpp:1138
 msgid "Host Networked Game"
 msgstr "Hálózati játék készítése"
 
-#: src/game.cpp:1134
+#: src/game.cpp:1139
 msgid "Host a game without using a server"
 msgstr "Játék készítése a kiszolgáló megkerülésével"
 
-#: src/game.cpp:1136
+#: src/game.cpp:1141
 msgid "Hotseat Game"
 msgstr "Hotseat játék"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1142
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Többjátékos játék játszása ugyanazon számítógép megosztásával"
 
-#: src/game.cpp:1139
+#: src/game.cpp:1144
 msgid "Human vs AI"
 msgstr "Játékos kontra MI"
 
-#: src/game.cpp:1140
+#: src/game.cpp:1145
 msgid "Play a game against AI opponents"
 msgstr "Játék indítása a Mestersége Intelligencia ellen"
 
-#: src/game.cpp:1146 src/multiplayer.cpp:187
+#: src/game.cpp:1151 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Bejelentkezés: "
 
-#: src/game.cpp:1177 src/playcampaign.cpp:197
+#: src/game.cpp:1182 src/playcampaign.cpp:197
 msgid "The game could not be loaded: "
 msgstr "A játékot nem sikerült betölteni: "
 
-#: src/game.cpp:1179 src/playcampaign.cpp:200
+#: src/game.cpp:1184 src/playcampaign.cpp:200
 msgid "Error while playing the game: "
 msgstr "Hiba a játék közben: "
 
-#: src/game.cpp:1191 src/playcampaign.cpp:203
+#: src/game.cpp:1196 src/playcampaign.cpp:203
 msgid "The game map could not be loaded: "
 msgstr "A pályát nem sikerült betölteni: "
 
-#: src/game.cpp:1215
+#: src/game.cpp:1220
 msgid "Language"
 msgstr "Nyelv"
 
-#: src/game.cpp:1216
+#: src/game.cpp:1221
 msgid "Choose your preferred language:"
 msgstr "Leginkább megfelelő nyelv kiválasztása:"
 
-#: src/game.cpp:1345
+#: src/game.cpp:1350
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr ""
 "A következő beszerzett hadjárat(ok) hibákat tartalmaznak, így sikertelen "
 "volt a betöltés:"
 
-#: src/game.cpp:1350
+#: src/game.cpp:1355
 msgid "ERROR DETAILS:"
 msgstr "HIBA RÉSZLETEK:"
 
-#: src/game.cpp:1359
+#: src/game.cpp:1364
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Figyelem: Hiba a konfigurációs fájlok betöltésekor: '"
 
-#: src/game.cpp:1409
+#: src/game.cpp:1414
 msgid "Error loading game configuration files: '"
 msgstr "Hiba a konfigurációs fájlok betöltésekor: '"
 
-#: src/game.cpp:1410
+#: src/game.cpp:1415
 msgid "' (The game will now exit)"
 msgstr "' (A játék most ki fog lépni)"
 
-#: src/game.cpp:1500
+#: src/game.cpp:1505
 msgid "Battle for Wesnoth"
 msgstr "Harc Wesnoth-ért"
 
@@ -9056,7 +9067,7 @@ msgstr "TP követelmény: "
 msgid "attacks"
 msgstr "támadás"
 
-#: src/help.cpp:1120 src/playturn.cpp:2067 src/playturn.cpp:2247
+#: src/help.cpp:1120 src/playturn.cpp:2069 src/playturn.cpp:2249
 msgid "Type"
 msgstr "Típus"
 
@@ -9148,15 +9159,15 @@ msgstr "Harc Wesnoth-ért Súgó"
 msgid "Parse error when parsing help text: "
 msgstr "Elemzési hiba a súgó szövegének elemzésekor: "
 
-#: src/intro.cpp:94
+#: src/intro.cpp:95
 msgid "Next"
 msgstr "Következő"
 
-#: src/intro.cpp:95
+#: src/intro.cpp:96
 msgid "Skip"
 msgstr "Kihagyás"
 
-#: src/intro.cpp:314
+#: src/intro.cpp:315
 msgid "The End"
 msgstr "Vége"
 
@@ -9201,17 +9212,17 @@ msgid "You must log in to this server"
 msgstr "Be kell jelentkezned erre a kiszolgálóra"
 
 #: src/multiplayer.cpp:350 src/multiplayer.cpp:365
-#: src/multiplayer_wait.cpp:181
+#: src/multiplayer_wait.cpp:182
 msgid "No multiplayer sides available in this game"
 msgstr "Nincs szabad oldal ebben a játékban"
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:366
-#: src/multiplayer_wait.cpp:210
+#: src/multiplayer_wait.cpp:211
 msgid "Era not available"
 msgstr "A korszak nem elérhető"
 
 #: src/multiplayer.cpp:352 src/multiplayer.cpp:367
-#: src/multiplayer_wait.cpp:215
+#: src/multiplayer_wait.cpp:216
 msgid "No multiplayer sides found"
 msgstr "Nincs többjátékos oldal"
 
@@ -9239,8 +9250,8 @@ msgstr "Ebben a korszakban nincsenek meghatározott csapatok"
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Nem találtam fővezért a $faction néphez"
 
-#: src/multiplayer_connect.cpp:487 src/multiplayer_lobby.cpp:404
-#: src/multiplayer_wait.cpp:146
+#: src/multiplayer_connect.cpp:487 src/multiplayer_lobby.cpp:405
+#: src/multiplayer_wait.cpp:147
 msgid "Game Lobby"
 msgstr "Játékcsarnok"
 
@@ -9260,7 +9271,7 @@ msgstr "Faj"
 msgid "Color"
 msgstr "Szín"
 
-#: src/multiplayer_connect.cpp:504 src/playturn.cpp:1791 src/playturn.cpp:1802
+#: src/multiplayer_connect.cpp:504 src/playturn.cpp:1793 src/playturn.cpp:1804
 msgid "Gold"
 msgstr "Arany"
 
@@ -9272,8 +9283,8 @@ msgstr "Számítógép kontra számítógép"
 msgid "I'm Ready"
 msgstr "Indulhat!"
 
-#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
-#: src/multiplayer_wait.cpp:148
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:58
+#: src/multiplayer_wait.cpp:149
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -9317,160 +9328,160 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Hálózati játékosok kapcsolódására várakozás..."
 
-#: src/multiplayer_create.cpp:37 src/multiplayer_lobby.cpp:408
+#: src/multiplayer_create.cpp:38 src/multiplayer_lobby.cpp:409
 msgid "Create Game"
 msgstr "Játék készítése"
 
-#: src/multiplayer_create.cpp:49
+#: src/multiplayer_create.cpp:50
 msgid "Name of game:"
 msgstr "Játék neve:"
 
-#: src/multiplayer_create.cpp:51
+#: src/multiplayer_create.cpp:52
 msgid "Era:"
 msgstr "Korszak:"
 
-#: src/multiplayer_create.cpp:52
+#: src/multiplayer_create.cpp:53
 msgid "Map to play:"
 msgstr "Pálya a játékhoz:"
 
-#: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:300
-#: src/multiplayer_lobby.cpp:301
+#: src/multiplayer_create.cpp:54 src/multiplayer_lobby.cpp:301
+#: src/multiplayer_lobby.cpp:302
 msgid "Use map settings"
 msgstr "Pálya beállításainak használata"
 
-#: src/multiplayer_create.cpp:54
+#: src/multiplayer_create.cpp:55
 msgid "Fog Of War"
 msgstr "Köd"
 
-#: src/multiplayer_create.cpp:56
+#: src/multiplayer_create.cpp:57
 msgid "Observers"
 msgstr "Megfigyelők"
 
-#: src/multiplayer_create.cpp:58
+#: src/multiplayer_create.cpp:59
 msgid "OK"
 msgstr "Oké"
 
-#: src/multiplayer_create.cpp:59
+#: src/multiplayer_create.cpp:60
 msgid "Regenerate"
 msgstr "Újrarajzolás"
 
-#: src/multiplayer_create.cpp:60
+#: src/multiplayer_create.cpp:61
 msgid "Settings..."
 msgstr "Beállítások..."
 
-#: src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:90
 msgid "The maximum turns the game will go for"
 msgstr "A legtovább ennyi körig tarthat a játék"
 
-#: src/multiplayer_create.cpp:94
+#: src/multiplayer_create.cpp:95
 msgid "The amount of income each village yields per turn"
 msgstr "A bevétel mértéke, amit egy falu körönként biztosít"
 
-#: src/multiplayer_create.cpp:99
+#: src/multiplayer_create.cpp:100
 msgid "The amount of experience a unit needs to advance"
 msgstr "A tapasztalati követelmény mértéke, egy egység szintlépéséhez"
 
-#: src/multiplayer_create.cpp:102
+#: src/multiplayer_create.cpp:103
 msgid "Use scenario specific settings"
 msgstr "Pályára jellemző beállítások használata"
 
-#: src/multiplayer_create.cpp:105
+#: src/multiplayer_create.cpp:106
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "Az ellenség nem látható, amíg az egységeid látókörébe nem kerül"
 
-#: src/multiplayer_create.cpp:108
+#: src/multiplayer_create.cpp:109
 msgid "The map is unknown until your units explore it"
 msgstr "A pálya ismeretlen, amíg az egységeid fel nem fedezik"
 
-#: src/multiplayer_create.cpp:111
+#: src/multiplayer_create.cpp:112
 msgid "Allow users who are not playing to watch the game"
 msgstr "A játék megtekintésének engedélyezése a játékban nem résztvevőknek"
 
-#: src/multiplayer_create.cpp:115
+#: src/multiplayer_create.cpp:116
 msgid "Share View"
 msgstr "Látottak megosztása"
 
-#: src/multiplayer_create.cpp:116
+#: src/multiplayer_create.cpp:117
 msgid "Share Maps"
 msgstr "Pálya megosztása"
 
-#: src/multiplayer_create.cpp:117
+#: src/multiplayer_create.cpp:118
 msgid "Share None"
 msgstr "Nincs megosztás"
 
-#: src/multiplayer_create.cpp:128
+#: src/multiplayer_create.cpp:129
 msgid "No multiplayer sides."
 msgstr "Nincs többjátékos oldal."
 
-#: src/multiplayer_create.cpp:130
+#: src/multiplayer_create.cpp:131
 msgid "No eras found"
 msgstr "Nem találtam korszakot"
 
-#: src/multiplayer_create.cpp:143
+#: src/multiplayer_create.cpp:144
 msgid "$login's game"
 msgstr "$login játéka"
 
-#: src/multiplayer_create.cpp:175
+#: src/multiplayer_create.cpp:176
 msgid "Invalid era selected"
 msgstr "A kiválasztott korszak érvénytelen"
 
-#: src/multiplayer_create.cpp:207
+#: src/multiplayer_create.cpp:208
 msgid "You must enter a name."
 msgstr "Meg kell adnod egy nevet."
 
-#: src/multiplayer_create.cpp:216
+#: src/multiplayer_create.cpp:217
 msgid "Turns: "
 msgstr "Kör: "
 
-#: src/multiplayer_create.cpp:218
+#: src/multiplayer_create.cpp:219
 msgid "Unlimited Turns"
 msgstr "Korlátlan kör"
 
-#: src/multiplayer_create.cpp:225
+#: src/multiplayer_create.cpp:226
 msgid "Village Gold: "
 msgstr "Falu arany: "
 
-#: src/multiplayer_create.cpp:231
+#: src/multiplayer_create.cpp:232
 msgid "Experience Modifier: "
 msgstr "Szintlépés-alakító: "
 
-#: src/multiplayer_create.cpp:349
+#: src/multiplayer_create.cpp:350
 msgid "Players: "
 msgstr "Játékosok: "
 
-#: src/multiplayer_create.cpp:351 src/playturn.cpp:1647 src/playturn.cpp:1661
+#: src/multiplayer_create.cpp:352 src/playturn.cpp:1649 src/playturn.cpp:1663
 msgid "Error"
 msgstr "Hiba"
 
-#: src/multiplayer_lobby.cpp:29
+#: src/multiplayer_lobby.cpp:30
 msgid "Map"
 msgstr "Térkép"
 
-#: src/multiplayer_lobby.cpp:30
+#: src/multiplayer_lobby.cpp:31
 msgid "Settings"
 msgstr "Beállítások"
 
-#: src/multiplayer_lobby.cpp:30
+#: src/multiplayer_lobby.cpp:31
 msgid "Status"
 msgstr "Állapot"
 
-#: src/multiplayer_lobby.cpp:98
+#: src/multiplayer_lobby.cpp:99
 msgid "<no games open>"
 msgstr "<nincs nyitott játék>"
 
-#: src/multiplayer_lobby.cpp:297
+#: src/multiplayer_lobby.cpp:298
 msgid "Vacant Slot"
 msgstr "Üres hely"
 
-#: src/multiplayer_lobby.cpp:297
+#: src/multiplayer_lobby.cpp:298
 msgid "Vacant Slots"
 msgstr "Üres hely"
 
-#: src/multiplayer_lobby.cpp:406
+#: src/multiplayer_lobby.cpp:407
 msgid "Observe Game"
 msgstr "Játék megfigyelése"
 
-#: src/multiplayer_lobby.cpp:409
+#: src/multiplayer_lobby.cpp:410
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -9514,35 +9525,35 @@ msgstr "Barna"
 msgid "Invalid colour"
 msgstr "Érvénytelen szín"
 
-#: src/multiplayer_wait.cpp:114
+#: src/multiplayer_wait.cpp:115
 msgid "Leader: "
 msgstr "Vezér: "
 
-#: src/multiplayer_wait.cpp:116
+#: src/multiplayer_wait.cpp:117
 msgid "Recruits: "
 msgstr "Toborozhat: "
 
-#: src/multiplayer_wait.cpp:149
+#: src/multiplayer_wait.cpp:150
 msgid "Waiting for game to start..."
 msgstr "Várakozás a játék megkezdésére..."
 
-#: src/multiplayer_wait.cpp:168
+#: src/multiplayer_wait.cpp:169
 msgid "Getting game data..."
 msgstr "Játék paramétereinek letöltése..."
 
-#: src/multiplayer_wait.cpp:231
+#: src/multiplayer_wait.cpp:232
 msgid "Choose your side:"
 msgstr "Válassz oldalt:"
 
-#: src/multiplayer_wait.cpp:383 src/unit.cpp:1196
+#: src/multiplayer_wait.cpp:384 src/unit.cpp:1196
 msgid "("
 msgstr "("
 
-#: src/multiplayer_wait.cpp:383 src/unit.cpp:1203
+#: src/multiplayer_wait.cpp:384 src/unit.cpp:1203
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:384 src/playturn.cpp:1894
+#: src/multiplayer_wait.cpp:385 src/playturn.cpp:1896
 msgid "unit^Gold"
 msgstr "Arany"
 
@@ -9578,11 +9589,11 @@ msgstr " visszajátszás"
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Szeretnéd a pálya visszajátszását elmenteni?"
 
-#: src/playcampaign.cpp:168 src/playcampaign.cpp:286 src/playturn.cpp:1644
+#: src/playcampaign.cpp:168 src/playcampaign.cpp:289 src/playturn.cpp:1646
 msgid "Name:"
 msgstr "Név:"
 
-#: src/playcampaign.cpp:176 src/playcampaign.cpp:294 src/playturn.cpp:1661
+#: src/playcampaign.cpp:176 src/playcampaign.cpp:297 src/playturn.cpp:1663
 msgid "The game could not be saved"
 msgstr "A játék nem menthető el"
 
@@ -9590,128 +9601,128 @@ msgstr "A játék nem menthető el"
 msgid "Downloading next level..."
 msgstr "Következő szint letöltése..."
 
-#: src/playcampaign.cpp:285
+#: src/playcampaign.cpp:288
 msgid "Do you want to save your game?"
 msgstr "Szeretnéd elmenteni a játékot?"
 
-#: src/playcampaign.cpp:311
+#: src/playcampaign.cpp:313
 msgid "Unknown scenario: '"
 msgstr "Ismeretlen pálya: '"
 
-#: src/playlevel.cpp:608 src/playlevel.cpp:877
+#: src/playlevel.cpp:609 src/playlevel.cpp:878
 msgid "The file you have tried to load is corrupt"
 msgstr "A fájl amit be próbáltál tölteni hibás"
 
-#: src/playlevel.cpp:761
+#: src/playlevel.cpp:762
 msgid "Game Over"
 msgstr "Játék vége"
 
-#: src/playlevel.cpp:762
+#: src/playlevel.cpp:763
 msgid "The game is over."
 msgstr "A játék véget ért."
 
-#: src/playlevel.cpp:845
+#: src/playlevel.cpp:846
 msgid "Remaining gold: "
 msgstr "Megmaradt arany: "
 
-#: src/playlevel.cpp:848
+#: src/playlevel.cpp:849
 msgid "Early finish bonus: "
 msgstr "Korai befejezés bónusz: "
 
-#: src/playlevel.cpp:850
+#: src/playlevel.cpp:851
 msgid "per turn"
 msgstr "körönként"
 
-#: src/playlevel.cpp:851
+#: src/playlevel.cpp:852
 msgid "Turns finished early: "
 msgstr "Kihasználatlan körök: "
 
-#: src/playlevel.cpp:853
+#: src/playlevel.cpp:854
 msgid "Bonus: "
 msgstr "Bónusz: "
 
-#: src/playlevel.cpp:855
+#: src/playlevel.cpp:856
 msgid "Gold: "
 msgstr "Arany: "
 
-#: src/playlevel.cpp:860
+#: src/playlevel.cpp:861
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "Az arany 80%-át megőrizzük a következő pályára"
 
-#: src/playlevel.cpp:861
+#: src/playlevel.cpp:862
 msgid "Retained Gold: "
 msgstr "Megőrzött arany: "
 
-#: src/playlevel.cpp:866
+#: src/playlevel.cpp:867
 msgid "Victory"
 msgstr "Győzelem"
 
-#: src/playlevel.cpp:867
+#: src/playlevel.cpp:868
 msgid "You have emerged victorious!"
 msgstr "Győztél!"
 
-#: src/playlevel.cpp:871
+#: src/playlevel.cpp:872
 msgid "Scenario Report"
 msgstr "Pályavégi jelentés"
 
-#: src/playlevel.cpp:892
+#: src/playlevel.cpp:893
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "A hálózat megszakadt, így a játék nem folytatható. Elmented az állást?"
 
-#: src/playturn.cpp:89
+#: src/playturn.cpp:91
 msgid "It is now your turn"
 msgstr "A te köröd következik"
 
-#: src/playturn.cpp:571
+#: src/playturn.cpp:573
 msgid "Attacker"
 msgstr "Támadó"
 
-#: src/playturn.cpp:573
+#: src/playturn.cpp:575
 msgid "Defender"
 msgstr "Védekező"
 
-#: src/playturn.cpp:593 src/playturn.cpp:659
+#: src/playturn.cpp:595 src/playturn.cpp:661
 msgid "Damage Calculations"
 msgstr "Sebzés előszámítások"
 
-#: src/playturn.cpp:638 src/reports.cpp:226
+#: src/playturn.cpp:640 src/reports.cpp:226
 msgid "vs"
 msgstr "kontra"
 
-#: src/playturn.cpp:671
+#: src/playturn.cpp:673
 msgid "Attack Enemy"
 msgstr "Ellenség megtámadása"
 
-#: src/playturn.cpp:672
+#: src/playturn.cpp:674
 msgid "Choose weapon:"
 msgstr "Válassz fegyvert:"
 
-#: src/playturn.cpp:1327
+#: src/playturn.cpp:1329
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Még nem tettél semmit ebben a körben. Mégis befejezed a köröd?"
 
-#: src/playturn.cpp:1335 src/playturn.cpp:1340
+#: src/playturn.cpp:1337 src/playturn.cpp:1342
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Néhány egység még léphetne. Mégis befejezed a köröd?"
 
-#: src/playturn.cpp:1355
+#: src/playturn.cpp:1357
 msgid "Auto-Save"
 msgstr "Automatikus mentés"
 
-#: src/playturn.cpp:1357
+#: src/playturn.cpp:1359
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Nem sikerült automatikusan elmenteni az állást. Kérlek mentsél sajátkezűleg."
 
-#: src/playturn.cpp:1598
+#: src/playturn.cpp:1600
 msgid "Rename Unit"
 msgstr "Egység átnevezése"
 
-#: src/playturn.cpp:1647
+#: src/playturn.cpp:1649
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -9719,47 +9730,47 @@ msgstr ""
 "A mentések nevében nem szerepelhetnek kettőspontok vagy perjelek. Válassz "
 "másik nevet."
 
-#: src/playturn.cpp:1658
+#: src/playturn.cpp:1660
 msgid "Saved"
 msgstr "Elmentve"
 
-#: src/playturn.cpp:1658
+#: src/playturn.cpp:1660
 msgid "The game has been saved"
 msgstr "Az állás el lett mentve"
 
-#: src/playturn.cpp:1790
+#: src/playturn.cpp:1792
 msgid "Leader"
 msgstr "Vezér"
 
-#: src/playturn.cpp:1792
+#: src/playturn.cpp:1794
 msgid "Villages"
 msgstr "Falvak"
 
-#: src/playturn.cpp:1794
+#: src/playturn.cpp:1796
 msgid "Upkeep"
 msgstr "Fenntartás"
 
-#: src/playturn.cpp:1795
+#: src/playturn.cpp:1797
 msgid "Income"
 msgstr "Bevétel"
 
-#: src/playturn.cpp:1900
+#: src/playturn.cpp:1902
 msgid "You have no units available to recruit."
 msgstr "Nincs toborozható egységed."
 
-#: src/playturn.cpp:1912
+#: src/playturn.cpp:1914
 msgid "Recruit"
 msgstr "Toborzás"
 
-#: src/playturn.cpp:1913 src/playturn.cpp:2109
+#: src/playturn.cpp:1915 src/playturn.cpp:2111
 msgid "Select unit:"
 msgstr "Válassz egységet:"
 
-#: src/playturn.cpp:1947
+#: src/playturn.cpp:1949
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Nincs elég aranyad, hogy toborozd ezt az egységet"
 
-#: src/playturn.cpp:2005
+#: src/playturn.cpp:2007
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -9767,7 +9778,7 @@ msgstr ""
 "Uram, ez az egység, $noun, nagyon tapasztalt, már szintet is lépett! Biztos "
 "el akarod bocsátani?"
 
-#: src/playturn.cpp:2007
+#: src/playturn.cpp:2009
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -9775,19 +9786,19 @@ msgstr ""
 "Uram, ez az egység, $noun, közel van a szintlépéshez! Biztos el akarod "
 "bocsátani?"
 
-#: src/playturn.cpp:2012
+#: src/playturn.cpp:2014
 msgid "her"
 msgstr "őt"
 
-#: src/playturn.cpp:2012
+#: src/playturn.cpp:2014
 msgid "him"
 msgstr "őt"
 
-#: src/playturn.cpp:2053
+#: src/playturn.cpp:2055
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "El vagy vágva a katonáidtól és nem hívhatod őket vissza."
 
-#: src/playturn.cpp:2055
+#: src/playturn.cpp:2057
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -9795,119 +9806,119 @@ msgstr ""
 "Nincsenek visszahívható csapatok\n"
 "(Egy előző pálya veterán túlélőjére lenne szükség)"
 
-#: src/playturn.cpp:2061
+#: src/playturn.cpp:2063
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Legalább $cost arannyal kell rendelkezned ahhoz, hogy toborozhass."
 
-#: src/playturn.cpp:2069
+#: src/playturn.cpp:2071
 msgid "Level"
 msgstr "Szint"
 
-#: src/playturn.cpp:2096
+#: src/playturn.cpp:2098
 msgid "Dismiss Unit"
 msgstr "Egység elbocsátása"
 
-#: src/playturn.cpp:2108
+#: src/playturn.cpp:2110
 msgid "Recall"
 msgstr "Visszahívás"
 
-#: src/playturn.cpp:2157
+#: src/playturn.cpp:2159
 msgid "Message:"
 msgstr "Üzenet: "
 
-#: src/playturn.cpp:2157
+#: src/playturn.cpp:2159
 msgid "Send to allies only"
 msgstr "Küldés csak a szövetségeseknek"
 
-#: src/playturn.cpp:2252 src/unit.cpp:1128
+#: src/playturn.cpp:2254 src/unit.cpp:1128
 msgid "Moves"
 msgstr "lép"
 
-#: src/playturn.cpp:2253
+#: src/playturn.cpp:2255
 msgid "Location"
 msgstr "Hely"
 
-#: src/playturn.cpp:2299
+#: src/playturn.cpp:2301
 msgid "Unit List"
 msgstr "Egységek listája"
 
-#: src/playturn.cpp:2335 src/playturn.cpp:2397
+#: src/playturn.cpp:2337 src/playturn.cpp:2399
 msgid "Recruits"
 msgstr "Toboroz"
 
-#: src/playturn.cpp:2341 src/playturn.cpp:2401
+#: src/playturn.cpp:2343 src/playturn.cpp:2403
 msgid "Recalls"
 msgstr "Visszahív"
 
-#: src/playturn.cpp:2347 src/playturn.cpp:2405
+#: src/playturn.cpp:2349 src/playturn.cpp:2407
 msgid "Advancements"
 msgstr "Szintfejlődések"
 
-#: src/playturn.cpp:2353 src/playturn.cpp:2409
+#: src/playturn.cpp:2355 src/playturn.cpp:2411
 msgid "Losses"
 msgstr "Veszít"
 
-#: src/playturn.cpp:2359 src/playturn.cpp:2413
+#: src/playturn.cpp:2361 src/playturn.cpp:2415
 msgid "Kills"
 msgstr "Öl"
 
-#: src/playturn.cpp:2365
+#: src/playturn.cpp:2367
 msgid "Damage Inflicted"
 msgstr "Okozott sebzés"
 
-#: src/playturn.cpp:2371
+#: src/playturn.cpp:2373
 msgid "Damage Taken"
 msgstr "Elszenvedett sebzés"
 
-#: src/playturn.cpp:2377
+#: src/playturn.cpp:2379
 msgid "Damage Inflicted (EV)"
 msgstr "Okozott sebzés (EV)"
 
-#: src/playturn.cpp:2384
+#: src/playturn.cpp:2386
 msgid "Damage Taken (EV)"
 msgstr "Elszenvedett sebzés (EV)"
 
-#: src/playturn.cpp:2390
+#: src/playturn.cpp:2392
 msgid "Statistics"
 msgstr "Statisztika"
 
-#: src/playturn.cpp:2427
+#: src/playturn.cpp:2429
 msgid "Search"
 msgstr "Keresés"
 
-#: src/playturn.cpp:2437
+#: src/playturn.cpp:2439
 msgid "prompt^Command:"
 msgstr "Parancs:"
 
-#: src/playturn.cpp:2448
+#: src/playturn.cpp:2450
 msgid "Chat Log"
 msgstr "Csevejnapló"
 
-#: src/playturn.cpp:2513
+#: src/playturn.cpp:2515
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Nem találtam olyan címkét vagy egységet ami megfelelt volna a következőnek: "
 "'$search'."
 
-#: src/playturn.cpp:2544
+#: src/playturn.cpp:2546
 msgid "Saved Theme Preference: "
 msgstr "Elmentett téma beállításai: "
 
-#: src/playturn.cpp:2550
+#: src/playturn.cpp:2552
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Az új téma a következő megkezdett vagy folytatott játékban fog használatba "
 "lépni."
 
-#: src/playturn.cpp:2651
+#: src/playturn.cpp:2653
 msgid "Place Label"
 msgstr "Címke elhelyezése"
 
-#: src/playturn.cpp:2652
+#: src/playturn.cpp:2654
 msgid "Label:"
 msgstr "Címke:"
 
-#: src/playturn.cpp:2784
+#: src/playturn.cpp:2786
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -9915,23 +9926,23 @@ msgstr ""
 "A játékok elvesztették az összhangot, ezért ki kell lépni. Szeretnéd "
 "elmenteni a hibanaplót?"
 
-#: src/playturn.cpp:2837
+#: src/playturn.cpp:2839
 msgid "Replace with AI"
 msgstr "Állítsunk be egy MI-t"
 
-#: src/playturn.cpp:2838
+#: src/playturn.cpp:2840
 msgid "Replace with local player"
 msgstr "Állítsunk be egy helyi játékost"
 
-#: src/playturn.cpp:2839
+#: src/playturn.cpp:2841
 msgid "Abort game"
 msgstr "Fejezzük be a játékot"
 
-#: src/playturn.cpp:2842
+#: src/playturn.cpp:2844
 msgid "Replace with "
 msgstr "Állítsuk be őt:"
 
-#: src/playturn.cpp:2846
+#: src/playturn.cpp:2848
 msgid "has left the game. What do you want to do?"
 msgstr "kilépett a játékból. Mit tegyünk most?"
 
@@ -10063,15 +10074,15 @@ msgstr "Üres nevű változó"
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Nem várt karakterek a változó neve után (, vagy = kéne)"
 
-#: src/serialization/parser.cpp:238 src/serialization/parser.cpp:262
+#: src/serialization/parser.cpp:243 src/serialization/parser.cpp:267
 msgid "Unterminated quoted string"
 msgstr "Befejezetlen meghívott string"
 
-#: src/serialization/parser.cpp:285
+#: src/serialization/parser.cpp:290
 msgid " included from "
 msgstr ", ami innen származik:"
 
-#: src/serialization/parser.cpp:306
+#: src/serialization/parser.cpp:311
 msgid "$error at $pos"
 msgstr "$error $pos helyen"
 

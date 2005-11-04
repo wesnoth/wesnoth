@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 14:14+0200\n"
+"POT-Creation-Date: 2005-11-04 22:07+0100\n"
 "PO-Revision-Date: 2005-08-07 22:54+0200\n"
 "Last-Translator: Srecko Toroman <sreckotoroman@gmail.com>\n"
 "Language-Team: Serbian <freecraft@gmail.com>\n"
@@ -47,11 +47,11 @@ msgstr "Представљање"
 msgid "Gameplay"
 msgstr "Играње игре"
 
-#: data/help.cfg:21 src/playturn.cpp:2251
+#: data/help.cfg:21 src/playturn.cpp:2253
 msgid "Traits"
 msgstr "Особине"
 
-#: data/help.cfg:29 src/playturn.cpp:1793
+#: data/help.cfg:29 src/playturn.cpp:1795
 msgid "Units"
 msgstr "Јединице"
 
@@ -841,9 +841,9 @@ msgid ""
 "such units or to send them to a foolish death."
 msgstr ""
 
-#: data/help.cfg:296 data/multiplayer.cfg:69 data/multiplayer.cfg:158
-#: data/multiplayer.cfg:260 data/translations/english.cfg:129
-msgid "Undead"
+#: data/help.cfg:296
+#, fuzzy
+msgid "trait^Undead"
 msgstr "Немртви"
 
 #: data/help.cfg:297
@@ -905,7 +905,7 @@ msgid ""
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
 
-#: data/help.cfg:330 data/terrain.cfg:325
+#: data/help.cfg:330 data/terrain.cfg:334
 msgid "Forest"
 msgstr "Шума"
 
@@ -926,7 +926,7 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
 
-#: data/help.cfg:340 data/terrain.cfg:286
+#: data/help.cfg:340 data/terrain.cfg:295
 msgid "Hills"
 msgstr "Брда"
 
@@ -943,7 +943,7 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
 
-#: data/help.cfg:350 data/terrain.cfg:310
+#: data/help.cfg:350 data/terrain.cfg:319
 msgid "Mountains"
 msgstr "Планине"
 
@@ -1006,7 +1006,7 @@ msgid ""
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
 
-#: data/help.cfg:390 data/terrain.cfg:257
+#: data/help.cfg:390 data/terrain.cfg:266
 msgid "Snow"
 msgstr "Снијег"
 
@@ -1019,7 +1019,7 @@ msgid ""
 "Most units have 20 to 40% defense in snow."
 msgstr ""
 
-#: data/help.cfg:400 data/terrain.cfg:265
+#: data/help.cfg:400 data/terrain.cfg:274
 msgid "Ice"
 msgstr "Лед"
 
@@ -1030,7 +1030,7 @@ msgid ""
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
 
-#: data/help.cfg:408 data/terrain.cfg:374 data/terrain.cfg:485
+#: data/help.cfg:408 data/terrain.cfg:383 data/terrain.cfg:494
 msgid "Castle"
 msgstr "Замак"
 
@@ -1071,7 +1071,7 @@ msgid ""
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
 
-#: data/help.cfg:438 data/terrain.cfg:357
+#: data/help.cfg:438 data/terrain.cfg:366
 msgid "Cave"
 msgstr "Пећина"
 
@@ -1099,9 +1099,9 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:455 data/terrain.cfg:43 data/terrain.cfg:64
-#: data/terrain.cfg:159 data/terrain.cfg:168 data/terrain.cfg:179
-#: data/terrain.cfg:190 data/terrain.cfg:203 data/terrain.cfg:364
-#: src/reports.cpp:323
+#: data/terrain.cfg:159 data/terrain.cfg:168 data/terrain.cfg:177
+#: data/terrain.cfg:188 data/terrain.cfg:199 data/terrain.cfg:212
+#: data/terrain.cfg:373 src/reports.cpp:323
 msgid "Village"
 msgstr "Село"
 
@@ -1118,7 +1118,7 @@ msgid ""
 "40%."
 msgstr ""
 
-#: data/help.cfg:467 data/terrain.cfg:423
+#: data/help.cfg:467 data/terrain.cfg:432
 msgid "Canyon"
 msgstr "Кањон"
 
@@ -1130,7 +1130,7 @@ msgid ""
 "terrain."
 msgstr ""
 
-#: data/help.cfg:474 data/terrain.cfg:472
+#: data/help.cfg:474 data/terrain.cfg:481
 msgid "Lava"
 msgstr "Лава"
 
@@ -1141,7 +1141,7 @@ msgid ""
 "distance above it."
 msgstr ""
 
-#: data/help.cfg:481 data/terrain.cfg:462
+#: data/help.cfg:481 data/terrain.cfg:471
 msgid "River Ford"
 msgstr "Поток"
 
@@ -1175,7 +1175,7 @@ msgid ""
 "capable of occupying a bridge hex at the same time."
 msgstr ""
 
-#: data/help.cfg:497 data/terrain.cfg:349
+#: data/help.cfg:497 data/terrain.cfg:358
 #, fuzzy
 msgid "Cave Wall"
 msgstr "Пећински Зид"
@@ -1375,6 +1375,10 @@ msgstr "Побуњеници"
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
 msgid "Northerners"
 msgstr "Сјеверњаци"
+
+#: data/multiplayer.cfg:69 data/multiplayer.cfg:158 data/multiplayer.cfg:260
+msgid "Undead"
+msgstr "Немртви"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
 msgid "Knalgan Alliance"
@@ -1806,12 +1810,12 @@ msgstr ""
 msgid "Underground"
 msgstr "Подземље"
 
-#: data/terrain.cfg:11 src/multiplayer_create.cpp:55
-#: src/multiplayer_lobby.cpp:311 src/multiplayer_lobby.cpp:317
+#: data/terrain.cfg:11 src/multiplayer_create.cpp:56
+#: src/multiplayer_lobby.cpp:312 src/multiplayer_lobby.cpp:318
 msgid "Shroud"
 msgstr "Сјенка"
 
-#: data/terrain.cfg:18 src/multiplayer_lobby.cpp:307
+#: data/terrain.cfg:18 src/multiplayer_lobby.cpp:308
 msgid "Fog"
 msgstr "Магла"
 
@@ -1819,64 +1823,64 @@ msgstr "Магла"
 msgid "Dirt"
 msgstr "Блато"
 
-#: data/terrain.cfg:213 data/terrain.cfg:224
+#: data/terrain.cfg:222 data/terrain.cfg:233
 msgid "Desert Village"
 msgstr "Пустињско Село"
 
-#: data/terrain.cfg:235
+#: data/terrain.cfg:244
 msgid "Tropical Forest Village"
 msgstr "Тропско Село"
 
-#: data/terrain.cfg:246
+#: data/terrain.cfg:255
 msgid "Oasis"
 msgstr "Оаза"
 
-#: data/terrain.cfg:275
+#: data/terrain.cfg:284
 msgid "Snow Village"
 msgstr "Село у Снијегу"
 
-#: data/terrain.cfg:293
+#: data/terrain.cfg:302
 msgid "Desert Hills"
 msgstr "Пустињска Брда"
 
-#: data/terrain.cfg:301
+#: data/terrain.cfg:310
 msgid "Snow Hills"
 msgstr "Снијежна Брда"
 
-#: data/terrain.cfg:317
+#: data/terrain.cfg:326
 msgid "Desert Mountains"
 msgstr "Пустињске Планине"
 
-#: data/terrain.cfg:332
+#: data/terrain.cfg:341
 msgid "Tropical Forest"
 msgstr "Тропска Шума"
 
-#: data/terrain.cfg:341
+#: data/terrain.cfg:350
 msgid "Snow Forest"
 msgstr "Снијежна Шума"
 
-#: data/terrain.cfg:383
+#: data/terrain.cfg:392
 msgid "Encampment"
 msgstr "Утврђење"
 
-#: data/terrain.cfg:393
+#: data/terrain.cfg:402
 #, fuzzy
 msgid "Dwarven Castle"
 msgstr "Замак Патуљака"
 
-#: data/terrain.cfg:403
+#: data/terrain.cfg:412
 msgid "Keep"
 msgstr "Торањ"
 
-#: data/terrain.cfg:430
+#: data/terrain.cfg:439
 msgid "Ruin"
 msgstr "Рушевине"
 
-#: data/terrain.cfg:440
+#: data/terrain.cfg:449
 msgid "Sunken Ruin"
 msgstr "Поплављене Рушевине"
 
-#: data/terrain.cfg:451
+#: data/terrain.cfg:460
 msgid "Swamp Ruin"
 msgstr "Рушевине у Мочвари"
 
@@ -1892,11 +1896,11 @@ msgstr "Акције"
 msgid "End Turn"
 msgstr "Крај Потеза"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2249 src/unit.cpp:1091
+#: data/themes/default.cfg:167 src/playturn.cpp:2251 src/unit.cpp:1091
 msgid "HP"
 msgstr "КРВ"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2070 src/playturn.cpp:2250
+#: data/themes/default.cfg:176 src/playturn.cpp:2072 src/playturn.cpp:2252
 msgid "XP"
 msgstr "ИСК"
 
@@ -2353,7 +2357,7 @@ msgstr ""
 #: data/units/Assassin.cfg:113 data/units/Duelist.cfg:16
 #: data/units/Fencer.cfg:17 data/units/Master_at_Arms.cfg:17
 #: data/units/Outlaw_Princess.cfg:20 data/units/Rogue.cfg:17
-#: data/units/Rogue.cfg:79 data/units/Saurian_Ambusher.cfg:21
+#: data/units/Rogue.cfg:79 data/units/Saurian_Ambusher.cfg:20
 #: data/units/Saurian_Flanker.cfg:23 data/units/Saurian_Skirmisher.cfg:20
 msgid "skirmisher"
 msgstr "убица"
@@ -2361,7 +2365,8 @@ msgstr "убица"
 #: data/translations/english.cfg:81
 msgid ""
 "Steadfast:\n"
-"This unit's resistance is doubled, up to a maximum of 50%, when defending."
+"This unit's resistances are doubled, up to a maximum of 50%, when defending. "
+"Vulnerabilities are not affected."
 msgstr ""
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
@@ -2458,6 +2463,11 @@ msgid ""
 "may not move or attack."
 msgstr ""
 
+#: data/translations/english.cfg:129
+#, fuzzy
+msgid "race^Undead"
+msgstr "Немртви"
+
 #: data/translations/english.cfg:132
 msgid "$name's Bridge,$name's Crossing"
 msgstr ""
@@ -2541,7 +2551,7 @@ msgstr "додир"
 #: data/units/Elvish_Enchantress.cfg:118 data/units/Elvish_High_Lord.cfg:44
 #: data/units/Elvish_Lord.cfg:39 data/units/Elvish_Sorceress.cfg:118
 #: data/units/Elvish_Sylph.cfg:85 data/units/Ghost.cfg:24
-#: data/units/Ghost.cfg:36 data/units/Initiate.cfg:38 data/units/Lich.cfg:25
+#: data/units/Ghost.cfg:37 data/units/Initiate.cfg:38 data/units/Lich.cfg:25
 #: data/units/Lich.cfg:38 data/units/Necromancer.cfg:39
 #: data/units/Saurian_Icecaster.cfg:43 data/units/Saurian_Soothsayer.cfg:42
 #: data/units/Saurian_Tribalist.cfg:41 data/units/Spectre.cfg:70
@@ -2551,7 +2561,7 @@ msgstr "хладно"
 
 #: data/units/Ancient_Lich.cfg:49 data/units/Blood_Bat.cfg:38
 #: data/units/Dark_Spirit.cfg:37 data/units/Demilich.cfg:37
-#: data/units/Dread_Lich.cfg:26 data/units/Lich.cfg:29
+#: data/units/Dread_Lich.cfg:26 data/units/Ghost.cfg:28 data/units/Lich.cfg:29
 #: data/units/Orcish_Shaman.cfg:45 data/units/Orcish_Shaman.cfg:108
 #: data/units/Orcish_Shaman.cfg:171 data/units/Skeletal_Dragon.cfg:34
 #: data/units/Spectre.cfg:57 data/units/Vampire_Bat.cfg:24
@@ -3062,8 +3072,8 @@ msgstr "лук"
 #: data/units/Orcish_Warlord.cfg:42 data/units/Paladin.cfg:48
 #: data/units/Peasant.cfg:22 data/units/Peasant.cfg:35
 #: data/units/Pikeman.cfg:53 data/units/Pirate_Galleon.cfg:19
-#: data/units/Poacher.cfg:43 data/units/Saurian_Ambusher.cfg:25
-#: data/units/Saurian_Ambusher.cfg:43 data/units/Saurian_Flanker.cfg:27
+#: data/units/Poacher.cfg:43 data/units/Saurian_Ambusher.cfg:24
+#: data/units/Saurian_Ambusher.cfg:42 data/units/Saurian_Flanker.cfg:27
 #: data/units/Saurian_Flanker.cfg:45 data/units/Saurian_Skirmisher.cfg:24
 #: data/units/Saurian_Skirmisher.cfg:42 data/units/Sea_Serpent.cfg:21
 #: data/units/Sergeant.cfg:42 data/units/Skeleton_Archer.cfg:42
@@ -3172,8 +3182,8 @@ msgstr ""
 #: data/units/Merman_Hunter.cfg:21 data/units/Merman_Hunter.cfg:61
 #: data/units/Merman_Javelineer.cfg:22 data/units/Merman_Javelineer.cfg:62
 #: data/units/Merman_Netcaster.cfg:22 data/units/Merman_Spearman.cfg:21
-#: data/units/Merman_Spearman.cfg:61 data/units/Saurian_Ambusher.cfg:23
-#: data/units/Saurian_Ambusher.cfg:41 data/units/Saurian_Flanker.cfg:25
+#: data/units/Merman_Spearman.cfg:61 data/units/Saurian_Ambusher.cfg:22
+#: data/units/Saurian_Ambusher.cfg:40 data/units/Saurian_Flanker.cfg:25
 #: data/units/Saurian_Flanker.cfg:43 data/units/Saurian_Skirmisher.cfg:22
 #: data/units/Saurian_Skirmisher.cfg:40 data/units/Spearman.cfg:61
 #: data/units/Spearman.cfg:112
@@ -3328,7 +3338,7 @@ msgstr ""
 msgid "baneblade"
 msgstr ""
 
-#: data/units/Dark_Spirit.cfg:49 data/units/Ghost.cfg:35
+#: data/units/Dark_Spirit.cfg:49 data/units/Ghost.cfg:36
 #: data/units/Spectre.cfg:69 data/units/Wraith.cfg:45
 msgid "wail"
 msgstr ""
@@ -5959,11 +5969,11 @@ msgid ""
 "they are well-renowned."
 msgstr ""
 
-#: data/units/Saurian_Ambusher.cfg:4
+#: data/units/Saurian_Ambusher.cfg:3
 msgid "Saurian Ambusher"
 msgstr ""
 
-#: data/units/Saurian_Ambusher.cfg:19
+#: data/units/Saurian_Ambusher.cfg:18
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -6611,179 +6621,179 @@ msgid ""
 "Lord -- to join the elite of human fighters."
 msgstr ""
 
-#: src/about.cpp:33
+#: src/about.cpp:34
 msgid "+Core Developers"
 msgstr ""
 
-#: src/about.cpp:34
+#: src/about.cpp:35
 msgid "-   Main Developer"
 msgstr ""
 
-#: src/about.cpp:37
+#: src/about.cpp:38
 msgid "-   Artwork and graphics designer"
 msgstr ""
 
-#: src/about.cpp:40
+#: src/about.cpp:41
 msgid "+Developers"
 msgstr ""
 
-#: src/about.cpp:60
+#: src/about.cpp:61
 msgid "+General Purpose Administrators"
 msgstr ""
 
-#: src/about.cpp:64
+#: src/about.cpp:65
 msgid "+Artwork and graphics designers"
 msgstr ""
 
-#: src/about.cpp:92
+#: src/about.cpp:94
 msgid "+Music"
 msgstr ""
 
-#: src/about.cpp:98
+#: src/about.cpp:100
 msgid "+Scenario Designers"
 msgstr ""
 
-#: src/about.cpp:107
+#: src/about.cpp:109
 msgid "+Multiplayer Maps"
 msgstr ""
 
-#: src/about.cpp:112
+#: src/about.cpp:114
 msgid "+Packagers"
 msgstr ""
 
-#: src/about.cpp:122
+#: src/about.cpp:124
 msgid "+Miscellaneous"
 msgstr ""
 
-#: src/about.cpp:129
+#: src/about.cpp:131
 msgid "+Internationalization Managers"
 msgstr ""
 
-#: src/about.cpp:136
+#: src/about.cpp:138
 msgid "+Afrikaans Translation"
 msgstr ""
 
-#: src/about.cpp:142
+#: src/about.cpp:144
 msgid "+Basque Translation"
 msgstr ""
 
-#: src/about.cpp:147
+#: src/about.cpp:149
 msgid "+Bulgarian Translation"
 msgstr ""
 
-#: src/about.cpp:151
+#: src/about.cpp:153
 msgid "+Catalan Translation"
 msgstr ""
 
-#: src/about.cpp:161
+#: src/about.cpp:163
 msgid "+Chinese Translation"
 msgstr ""
 
-#: src/about.cpp:164
+#: src/about.cpp:166
 msgid "+Czech Translation"
 msgstr ""
 
-#: src/about.cpp:176
+#: src/about.cpp:178
 msgid "+Danish Translation"
 msgstr ""
 
-#: src/about.cpp:183
+#: src/about.cpp:185
 msgid "+Dutch Translation"
 msgstr ""
 
-#: src/about.cpp:191
+#: src/about.cpp:193
 msgid "+English (GB) Translation"
 msgstr ""
 
-#: src/about.cpp:194
+#: src/about.cpp:196
 msgid "+Estonian Translation"
 msgstr ""
 
-#: src/about.cpp:197
+#: src/about.cpp:199
 msgid "+Finnish Translation"
 msgstr ""
 
-#: src/about.cpp:203
+#: src/about.cpp:205
 msgid "+French Translation"
 msgstr ""
 
-#: src/about.cpp:222
+#: src/about.cpp:224
 msgid "+German Translation"
 msgstr ""
 
-#: src/about.cpp:234
+#: src/about.cpp:236
 msgid "+Greek Translation"
 msgstr ""
 
-#: src/about.cpp:240
+#: src/about.cpp:242
 msgid "+Hebrew Translation"
 msgstr ""
 
-#: src/about.cpp:243
+#: src/about.cpp:245
 msgid "+Hungarian Translation"
 msgstr ""
 
-#: src/about.cpp:256
+#: src/about.cpp:258
 msgid "+Italian Translation"
 msgstr ""
 
-#: src/about.cpp:265
+#: src/about.cpp:267
 msgid "+Japanese Translation"
 msgstr ""
 
-#: src/about.cpp:270
+#: src/about.cpp:272
 msgid "+Latin Translation"
 msgstr ""
 
-#: src/about.cpp:273
+#: src/about.cpp:275
 msgid "+Norwegian Translation"
 msgstr ""
 
-#: src/about.cpp:279
+#: src/about.cpp:281
 msgid "+Polish Translation"
 msgstr ""
 
-#: src/about.cpp:289
+#: src/about.cpp:291
 msgid "+Portuguese (Brazil) Translation"
 msgstr ""
 
-#: src/about.cpp:298
+#: src/about.cpp:300
 msgid "+Russian Translation"
 msgstr ""
 
-#: src/about.cpp:304
+#: src/about.cpp:306
 msgid "+Serbian Translation"
 msgstr ""
 
-#: src/about.cpp:307
+#: src/about.cpp:309
 msgid "+Slovak Translation"
 msgstr ""
 
-#: src/about.cpp:310
+#: src/about.cpp:312
 msgid "+Slovenian Translation"
 msgstr ""
 
-#: src/about.cpp:313
+#: src/about.cpp:315
 msgid "+Spanish Translation"
 msgstr ""
 
-#: src/about.cpp:322
+#: src/about.cpp:324
 msgid "+Swedish Translation"
 msgstr ""
 
-#: src/about.cpp:329
+#: src/about.cpp:331
 msgid "+Turkish Translation"
 msgstr ""
 
-#: src/about.cpp:335
+#: src/about.cpp:338
 msgid "+Contributors"
 msgstr ""
 
-#: src/about.cpp:338
+#: src/about.cpp:341
 msgid "+Bots"
 msgstr ""
 
-#: src/about.cpp:374 src/help.cpp:2662
+#: src/about.cpp:377 src/help.cpp:2662
 msgid "Close"
 msgstr "Затвори"
 
@@ -6799,16 +6809,16 @@ msgstr "Морате имати вођу у замку да би регруто�
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Нема слободних места у замку за регрутацију јединица!"
 
-#: src/actions.cpp:323 src/multiplayer_lobby.cpp:321
+#: src/actions.cpp:323 src/multiplayer_lobby.cpp:322
 msgid "none"
 msgstr "ниједан"
 
-#: src/actions.cpp:399 src/dialogs.cpp:763 src/help.cpp:1143
+#: src/actions.cpp:399 src/dialogs.cpp:764 src/help.cpp:1143
 #: src/reports.cpp:248
 msgid "melee"
 msgstr ""
 
-#: src/actions.cpp:399 src/dialogs.cpp:763 src/help.cpp:1143
+#: src/actions.cpp:399 src/dialogs.cpp:764 src/help.cpp:1143
 #: src/reports.cpp:249
 msgid "ranged"
 msgstr ""
@@ -6890,168 +6900,168 @@ msgstr "Јединица на видику! ($friends пријатељска, $e
 msgid "(press $hotkey to continue)"
 msgstr "(притисните $hotkey за даље)"
 
-#: src/dialogs.cpp:100
+#: src/dialogs.cpp:101
 msgid "Advance Unit"
 msgstr "Унапреди Јединицу"
 
-#: src/dialogs.cpp:101
+#: src/dialogs.cpp:102
 msgid "What should our victorious unit become?"
 msgstr "Шта желите да наша храбра јединица постане?"
 
-#: src/dialogs.cpp:173
+#: src/dialogs.cpp:174
 msgid "No objectives available"
 msgstr "Нема задатака"
 
-#: src/dialogs.cpp:187
+#: src/dialogs.cpp:188
 msgid "Save Game"
 msgstr "Сачувај Игру"
 
-#: src/dialogs.cpp:189
+#: src/dialogs.cpp:190
 msgid "Overwrite?"
 msgstr "Препиши?"
 
-#: src/dialogs.cpp:190
+#: src/dialogs.cpp:191
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Игра већ постоји. Желите ли да препишем преко ње?"
 
-#: src/dialogs.cpp:219 src/dialogs.cpp:502
+#: src/dialogs.cpp:220 src/dialogs.cpp:503
 msgid "Don't ask me again!"
 msgstr "Не питај ме више!"
 
-#: src/dialogs.cpp:221
+#: src/dialogs.cpp:222
 msgid "Do you really want to delete this game?"
 msgstr "Заиста желите да обришете ову сачувану игру?"
 
-#: src/dialogs.cpp:358
+#: src/dialogs.cpp:359
 msgid "%a %b %d %H:%M %Y"
 msgstr ""
 
-#: src/dialogs.cpp:371
+#: src/dialogs.cpp:372
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:376 src/game.cpp:754
+#: src/dialogs.cpp:377 src/game.cpp:754
 msgid "Campaign"
 msgstr "Кампања"
 
-#: src/dialogs.cpp:378 src/game.cpp:1144
+#: src/dialogs.cpp:379 src/game.cpp:1149
 msgid "Multiplayer"
 msgstr "Удружено играње"
 
-#: src/dialogs.cpp:380
+#: src/dialogs.cpp:381
 msgid "Tutorial"
 msgstr "Школа"
 
-#: src/dialogs.cpp:388
+#: src/dialogs.cpp:389
 msgid "replay"
 msgstr "снимак"
 
-#: src/dialogs.cpp:390 src/multiplayer_lobby.cpp:295 src/playturn.cpp:1635
+#: src/dialogs.cpp:391 src/multiplayer_lobby.cpp:296 src/playturn.cpp:1637
 msgid "Turn"
 msgstr "Потез"
 
-#: src/dialogs.cpp:392
+#: src/dialogs.cpp:393
 msgid "Scenario Start"
 msgstr "Почетак Сценарија:"
 
-#: src/dialogs.cpp:395
+#: src/dialogs.cpp:396
 msgid "Difficulty: "
 msgstr "Тежина :"
 
-#: src/dialogs.cpp:397
+#: src/dialogs.cpp:398
 msgid "Version: "
 msgstr "Верзија :"
 
-#: src/dialogs.cpp:421 src/dialogs.cpp:437
+#: src/dialogs.cpp:422 src/dialogs.cpp:438
 msgid "%b %d %y"
 msgstr ""
 
-#: src/dialogs.cpp:427
+#: src/dialogs.cpp:428
 msgid "%H:%M"
 msgstr ""
 
-#: src/dialogs.cpp:430
+#: src/dialogs.cpp:431
 msgid "%A, %H:%M"
 msgstr ""
 
-#: src/dialogs.cpp:433
+#: src/dialogs.cpp:434
 msgid "%b %d"
 msgstr ""
 
-#: src/dialogs.cpp:457
+#: src/dialogs.cpp:458
 msgid "No Saved Games"
 msgstr "Нема Снимљених Игара"
 
-#: src/dialogs.cpp:458
+#: src/dialogs.cpp:459
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 
-#: src/dialogs.cpp:477
+#: src/dialogs.cpp:478
 msgid "Delete Save"
 msgstr "Обриши Снимак"
 
-#: src/dialogs.cpp:492
+#: src/dialogs.cpp:493
 msgid "Import Saved Games"
 msgstr ""
 
-#: src/dialogs.cpp:493
+#: src/dialogs.cpp:494
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
 "Wesnoth. Would you like to update these to the latest version? This may take "
 "some time."
 msgstr ""
 
-#: src/dialogs.cpp:498
+#: src/dialogs.cpp:499
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
 "these files with the game?"
 msgstr ""
 
-#: src/dialogs.cpp:553
+#: src/dialogs.cpp:554
 msgid "Date"
 msgstr ""
 
-#: src/dialogs.cpp:553 src/game.cpp:887 src/help.cpp:1119
-#: src/multiplayer_lobby.cpp:29 src/playturn.cpp:2068 src/playturn.cpp:2248
+#: src/dialogs.cpp:554 src/game.cpp:887 src/help.cpp:1119
+#: src/multiplayer_lobby.cpp:30 src/playturn.cpp:2070 src/playturn.cpp:2250
 msgid "Name"
 msgstr "Име"
 
-#: src/dialogs.cpp:579
+#: src/dialogs.cpp:580
 msgid "Show replay"
 msgstr "Прикажи ток игре"
 
-#: src/dialogs.cpp:582 src/multiplayer_create.cpp:78
+#: src/dialogs.cpp:583 src/multiplayer_create.cpp:79
 msgid "Load Game"
 msgstr "Учитај Игру"
 
-#: src/dialogs.cpp:583
+#: src/dialogs.cpp:584
 msgid "Choose the game to load"
 msgstr ""
 
-#: src/dialogs.cpp:619 src/dialogs.cpp:631
+#: src/dialogs.cpp:620 src/dialogs.cpp:632
 msgid "Profile"
 msgstr "Профил"
 
-#: src/dialogs.cpp:711 src/help.cpp:1037
+#: src/dialogs.cpp:712 src/help.cpp:1037
 msgid "level"
 msgstr "ниво"
 
-#: src/dialogs.cpp:732 src/help.cpp:1095
+#: src/dialogs.cpp:733 src/help.cpp:1095
 msgid "HP: "
 msgstr "ЕНГ:"
 
-#: src/dialogs.cpp:736 src/dialogs.cpp:744
+#: src/dialogs.cpp:737 src/dialogs.cpp:745
 msgid "XP: "
 msgstr "ИСК:"
 
-#: src/dialogs.cpp:749 src/help.cpp:1096
+#: src/dialogs.cpp:750 src/help.cpp:1096
 msgid "Moves: "
 msgstr "Кретање:"
 
-#: src/display.cpp:465
+#: src/display.cpp:467
 msgid "Screenshot"
 msgstr "Слика екрана"
 
@@ -7125,7 +7135,7 @@ msgstr "Сервер:"
 msgid "Could not connect to host."
 msgstr "Нисам се повезао са Сервером."
 
-#: src/game.cpp:865 src/game.cpp:1073
+#: src/game.cpp:865 src/game.cpp:1078
 msgid "Awaiting response from server"
 msgstr "Чекам Серверов одговор."
 
@@ -7173,136 +7183,136 @@ msgstr "Узми кампању"
 msgid "Downloading campaign..."
 msgstr "Преузимам кампању ..."
 
-#: src/game.cpp:1003
+#: src/game.cpp:1008
 msgid "Cannot rescan the filesystem"
 msgstr ""
 
-#: src/game.cpp:1018
+#: src/game.cpp:1023
 msgid "Campaign Installed"
 msgstr "Кампања је Преузета"
 
-#: src/game.cpp:1018
+#: src/game.cpp:1023
 msgid "The campaign has been installed."
 msgstr "Кампања је инсталирана."
 
-#: src/game.cpp:1020
+#: src/game.cpp:1025
 msgid "Network communication error."
 msgstr "Грешка у мрежној комуникацији."
 
-#: src/game.cpp:1022
+#: src/game.cpp:1027
 msgid "Remote host disconnected."
 msgstr "Удаљени домаћин је прекинуо везу."
 
-#: src/game.cpp:1024
+#: src/game.cpp:1029
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 
-#: src/game.cpp:1036 src/game.cpp:1075 src/game.cpp:1100
+#: src/game.cpp:1041 src/game.cpp:1080 src/game.cpp:1105
 #: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:218
 msgid "Connection timed out"
 msgstr "Конекција је истекла."
 
-#: src/game.cpp:1039 src/game.cpp:1077 src/game.cpp:1102
+#: src/game.cpp:1044 src/game.cpp:1082 src/game.cpp:1107
 msgid "The server responded with an error: \""
 msgstr "Сервер је одговорио са грешком: \""
 
-#: src/game.cpp:1043
+#: src/game.cpp:1048
 msgid "Terms"
 msgstr "Услови"
 
-#: src/game.cpp:1080 src/game.cpp:1105
+#: src/game.cpp:1085 src/game.cpp:1110
 msgid "Response"
 msgstr "Одговор"
 
-#: src/game.cpp:1127
+#: src/game.cpp:1132
 msgid "Join Official Server"
 msgstr "Придружи се Званичном Серверу"
 
-#: src/game.cpp:1128
+#: src/game.cpp:1133
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Укључи се у званични Веснот сервер за удружено играње."
 
-#: src/game.cpp:1130 src/multiplayer_lobby.cpp:407
+#: src/game.cpp:1135 src/multiplayer_lobby.cpp:408
 msgid "Join Game"
 msgstr "Придружи се Игри"
 
-#: src/game.cpp:1131
+#: src/game.cpp:1136
 msgid "Join a server or hosted game"
 msgstr "Придружи се серверу или домаћину"
 
-#: src/game.cpp:1133
+#: src/game.cpp:1138
 msgid "Host Networked Game"
 msgstr "Буди домаћин мрежној игри"
 
-#: src/game.cpp:1134
+#: src/game.cpp:1139
 msgid "Host a game without using a server"
 msgstr "Буди домаћин игри без кориштења Сервера"
 
-#: src/game.cpp:1136
+#: src/game.cpp:1141
 msgid "Hotseat Game"
 msgstr "Игра \"вруће столице\""
 
-#: src/game.cpp:1137
+#: src/game.cpp:1142
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Играј игру за више играча користећи један рачунар"
 
-#: src/game.cpp:1139
+#: src/game.cpp:1144
 msgid "Human vs AI"
 msgstr "Играч против Рачунара"
 
-#: src/game.cpp:1140
+#: src/game.cpp:1145
 msgid "Play a game against AI opponents"
 msgstr "Играј игру против вјештачких противника"
 
-#: src/game.cpp:1146 src/multiplayer.cpp:187
+#: src/game.cpp:1151 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Идентификација:"
 
-#: src/game.cpp:1177 src/playcampaign.cpp:197
+#: src/game.cpp:1182 src/playcampaign.cpp:197
 msgid "The game could not be loaded: "
 msgstr "Игру није могуће учитати:"
 
-#: src/game.cpp:1179 src/playcampaign.cpp:200
+#: src/game.cpp:1184 src/playcampaign.cpp:200
 msgid "Error while playing the game: "
 msgstr "Грешка приликом играња игре:"
 
-#: src/game.cpp:1191 src/playcampaign.cpp:203
+#: src/game.cpp:1196 src/playcampaign.cpp:203
 msgid "The game map could not be loaded: "
 msgstr "Мапу игре није могуће учитати:"
 
-#: src/game.cpp:1215
+#: src/game.cpp:1220
 msgid "Language"
 msgstr "Језик"
 
-#: src/game.cpp:1216
+#: src/game.cpp:1221
 msgid "Choose your preferred language:"
 msgstr "Изабери жељени језик:"
 
-#: src/game.cpp:1345
+#: src/game.cpp:1350
 #, fuzzy
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "Мапу игре није могуће учитати:"
 
-#: src/game.cpp:1350
+#: src/game.cpp:1355
 msgid "ERROR DETAILS:"
 msgstr ""
 
-#: src/game.cpp:1359
+#: src/game.cpp:1364
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
 "Упозорење: Грешке су пронађене приликом учитавања игриних конфигурационих "
 "фајлова."
 
-#: src/game.cpp:1409
+#: src/game.cpp:1414
 msgid "Error loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1410
+#: src/game.cpp:1415
 msgid "' (The game will now exit)"
 msgstr "' (Игра ће сад изаћи)"
 
-#: src/game.cpp:1500
+#: src/game.cpp:1505
 msgid "Battle for Wesnoth"
 msgstr "Борба За Веснот"
 
@@ -7339,7 +7349,7 @@ msgstr "Потребно ИСК:"
 msgid "attacks"
 msgstr "напада"
 
-#: src/help.cpp:1120 src/playturn.cpp:2067 src/playturn.cpp:2247
+#: src/help.cpp:1120 src/playturn.cpp:2069 src/playturn.cpp:2249
 msgid "Type"
 msgstr "Тип"
 
@@ -7428,15 +7438,15 @@ msgstr "Борба За Веснот - помоћ"
 msgid "Parse error when parsing help text: "
 msgstr "Грешка приликом играња игре:"
 
-#: src/intro.cpp:94
+#: src/intro.cpp:95
 msgid "Next"
 msgstr "Даље"
 
-#: src/intro.cpp:95
+#: src/intro.cpp:96
 msgid "Skip"
 msgstr "Прескочи"
 
-#: src/intro.cpp:314
+#: src/intro.cpp:315
 msgid "The End"
 msgstr "Крај"
 
@@ -7480,17 +7490,17 @@ msgid "You must log in to this server"
 msgstr "Морате се пријавити на овај сервер"
 
 #: src/multiplayer.cpp:350 src/multiplayer.cpp:365
-#: src/multiplayer_wait.cpp:181
+#: src/multiplayer_wait.cpp:182
 msgid "No multiplayer sides available in this game"
 msgstr "Ова игра није за више играча"
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:366
-#: src/multiplayer_wait.cpp:210
+#: src/multiplayer_wait.cpp:211
 msgid "Era not available"
 msgstr "Ера није доступна"
 
 #: src/multiplayer.cpp:352 src/multiplayer.cpp:367
-#: src/multiplayer_wait.cpp:215
+#: src/multiplayer_wait.cpp:216
 msgid "No multiplayer sides found"
 msgstr "Нема могућности за више играча"
 
@@ -7518,8 +7528,8 @@ msgstr ""
 msgid "Unable to find a leader type for faction $faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:487 src/multiplayer_lobby.cpp:404
-#: src/multiplayer_wait.cpp:146
+#: src/multiplayer_connect.cpp:487 src/multiplayer_lobby.cpp:405
+#: src/multiplayer_wait.cpp:147
 msgid "Game Lobby"
 msgstr "Лоби игре"
 
@@ -7539,7 +7549,7 @@ msgstr "Страна"
 msgid "Color"
 msgstr "Боја"
 
-#: src/multiplayer_connect.cpp:504 src/playturn.cpp:1791 src/playturn.cpp:1802
+#: src/multiplayer_connect.cpp:504 src/playturn.cpp:1793 src/playturn.cpp:1804
 msgid "Gold"
 msgstr "Злато"
 
@@ -7551,8 +7561,8 @@ msgstr "Рачунар - Рачунар"
 msgid "I'm Ready"
 msgstr "Ја Сам Спреман"
 
-#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:57
-#: src/multiplayer_wait.cpp:148
+#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:58
+#: src/multiplayer_wait.cpp:149
 msgid "Cancel"
 msgstr "Одустани"
 
@@ -7596,164 +7606,164 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Чекам играче да се придруже..."
 
-#: src/multiplayer_create.cpp:37 src/multiplayer_lobby.cpp:408
+#: src/multiplayer_create.cpp:38 src/multiplayer_lobby.cpp:409
 msgid "Create Game"
 msgstr "Направи Игру"
 
-#: src/multiplayer_create.cpp:49
+#: src/multiplayer_create.cpp:50
 msgid "Name of game:"
 msgstr "Име игре:"
 
-#: src/multiplayer_create.cpp:51
+#: src/multiplayer_create.cpp:52
 msgid "Era:"
 msgstr "Ера:"
 
-#: src/multiplayer_create.cpp:52
+#: src/multiplayer_create.cpp:53
 msgid "Map to play:"
 msgstr "Мапа за игру:"
 
-#: src/multiplayer_create.cpp:53 src/multiplayer_lobby.cpp:300
-#: src/multiplayer_lobby.cpp:301
+#: src/multiplayer_create.cpp:54 src/multiplayer_lobby.cpp:301
+#: src/multiplayer_lobby.cpp:302
 msgid "Use map settings"
 msgstr ""
 
-#: src/multiplayer_create.cpp:54
+#: src/multiplayer_create.cpp:55
 msgid "Fog Of War"
 msgstr "Ратна Магла"
 
-#: src/multiplayer_create.cpp:56
+#: src/multiplayer_create.cpp:57
 msgid "Observers"
 msgstr "Посматрачи"
 
-#: src/multiplayer_create.cpp:58
+#: src/multiplayer_create.cpp:59
 msgid "OK"
 msgstr "Уреду"
 
-#: src/multiplayer_create.cpp:59
+#: src/multiplayer_create.cpp:60
 msgid "Regenerate"
 msgstr "Регенерише"
 
-#: src/multiplayer_create.cpp:60
+#: src/multiplayer_create.cpp:61
 msgid "Settings..."
 msgstr "Поставке..."
 
-#: src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:90
 msgid "The maximum turns the game will go for"
 msgstr "Максималан број потеза игре "
 
-#: src/multiplayer_create.cpp:94
+#: src/multiplayer_create.cpp:95
 msgid "The amount of income each village yields per turn"
 msgstr "Количина злата којег свако село произведе сваки потез"
 
-#: src/multiplayer_create.cpp:99
+#: src/multiplayer_create.cpp:100
 msgid "The amount of experience a unit needs to advance"
 msgstr "Количина искуства које је потребна да би јединица напредовала"
 
-#: src/multiplayer_create.cpp:102
+#: src/multiplayer_create.cpp:103
 msgid "Use scenario specific settings"
 msgstr ""
 
-#: src/multiplayer_create.cpp:105
+#: src/multiplayer_create.cpp:106
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Непријатељске јединице није могуће видети осим ако су у видокругу ваших "
 "јединица"
 
-#: src/multiplayer_create.cpp:108
+#: src/multiplayer_create.cpp:109
 msgid "The map is unknown until your units explore it"
 msgstr "Мапа је непозната док је ваше јединице не истраже"
 
-#: src/multiplayer_create.cpp:111
+#: src/multiplayer_create.cpp:112
 msgid "Allow users who are not playing to watch the game"
 msgstr "Дозволи корисницима који не играју да посматрају игру"
 
-#: src/multiplayer_create.cpp:115
+#: src/multiplayer_create.cpp:116
 msgid "Share View"
 msgstr "Дели Поглед"
 
-#: src/multiplayer_create.cpp:116
+#: src/multiplayer_create.cpp:117
 msgid "Share Maps"
 msgstr "Дели Мапе"
 
-#: src/multiplayer_create.cpp:117
+#: src/multiplayer_create.cpp:118
 msgid "Share None"
 msgstr "Дели Ништа"
 
-#: src/multiplayer_create.cpp:128
+#: src/multiplayer_create.cpp:129
 msgid "No multiplayer sides."
 msgstr "Нема страна за више играча."
 
-#: src/multiplayer_create.cpp:130
+#: src/multiplayer_create.cpp:131
 msgid "No eras found"
 msgstr ""
 
-#: src/multiplayer_create.cpp:143
+#: src/multiplayer_create.cpp:144
 msgid "$login's game"
 msgstr "$login-ова игра"
 
-#: src/multiplayer_create.cpp:175
+#: src/multiplayer_create.cpp:176
 msgid "Invalid era selected"
 msgstr ""
 
-#: src/multiplayer_create.cpp:207
+#: src/multiplayer_create.cpp:208
 msgid "You must enter a name."
 msgstr "Морате унети име."
 
-#: src/multiplayer_create.cpp:216
+#: src/multiplayer_create.cpp:217
 msgid "Turns: "
 msgstr "Потеза:"
 
-#: src/multiplayer_create.cpp:218
+#: src/multiplayer_create.cpp:219
 msgid "Unlimited Turns"
 msgstr "Бесконачно Потеза"
 
-#: src/multiplayer_create.cpp:225
+#: src/multiplayer_create.cpp:226
 msgid "Village Gold: "
 msgstr "Злата по Селу:"
 
-#: src/multiplayer_create.cpp:231
+#: src/multiplayer_create.cpp:232
 msgid "Experience Modifier: "
 msgstr "Коефициент Искуства:"
 
-#: src/multiplayer_create.cpp:349
+#: src/multiplayer_create.cpp:350
 msgid "Players: "
 msgstr "Играчи:"
 
-#: src/multiplayer_create.cpp:351 src/playturn.cpp:1647 src/playturn.cpp:1661
+#: src/multiplayer_create.cpp:352 src/playturn.cpp:1649 src/playturn.cpp:1663
 msgid "Error"
 msgstr "Грешка"
 
-#: src/multiplayer_lobby.cpp:29
+#: src/multiplayer_lobby.cpp:30
 msgid "Map"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:30
+#: src/multiplayer_lobby.cpp:31
 #, fuzzy
 msgid "Settings"
 msgstr "Поставке..."
 
-#: src/multiplayer_lobby.cpp:30
+#: src/multiplayer_lobby.cpp:31
 #, fuzzy
 msgid "Status"
 msgstr "Статистике"
 
-#: src/multiplayer_lobby.cpp:98
+#: src/multiplayer_lobby.cpp:99
 msgid "<no games open>"
 msgstr "<нема отворених игара>"
 
-#: src/multiplayer_lobby.cpp:297
+#: src/multiplayer_lobby.cpp:298
 msgid "Vacant Slot"
 msgstr "Слободно Место"
 
-#: src/multiplayer_lobby.cpp:297
+#: src/multiplayer_lobby.cpp:298
 msgid "Vacant Slots"
 msgstr "Слободна Места"
 
-#: src/multiplayer_lobby.cpp:406
+#: src/multiplayer_lobby.cpp:407
 msgid "Observe Game"
 msgstr "Посматрај Игру"
 
-#: src/multiplayer_lobby.cpp:409
+#: src/multiplayer_lobby.cpp:410
 msgid "Quit"
 msgstr "Изађи"
 
@@ -7797,35 +7807,35 @@ msgstr "Смеђе"
 msgid "Invalid colour"
 msgstr "Неправилна боја"
 
-#: src/multiplayer_wait.cpp:114
+#: src/multiplayer_wait.cpp:115
 msgid "Leader: "
 msgstr "Вођа:"
 
-#: src/multiplayer_wait.cpp:116
+#: src/multiplayer_wait.cpp:117
 msgid "Recruits: "
 msgstr "Регрути:"
 
-#: src/multiplayer_wait.cpp:149
+#: src/multiplayer_wait.cpp:150
 msgid "Waiting for game to start..."
 msgstr "Чекам да игра почне ..."
 
-#: src/multiplayer_wait.cpp:168
+#: src/multiplayer_wait.cpp:169
 msgid "Getting game data..."
 msgstr "Преузимам податке о игри ..."
 
-#: src/multiplayer_wait.cpp:231
+#: src/multiplayer_wait.cpp:232
 msgid "Choose your side:"
 msgstr "Изаберите вашу страну:"
 
-#: src/multiplayer_wait.cpp:383 src/unit.cpp:1196
+#: src/multiplayer_wait.cpp:384 src/unit.cpp:1196
 msgid "("
 msgstr "("
 
-#: src/multiplayer_wait.cpp:383 src/unit.cpp:1203
+#: src/multiplayer_wait.cpp:384 src/unit.cpp:1203
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:384 src/playturn.cpp:1894
+#: src/multiplayer_wait.cpp:385 src/playturn.cpp:1896
 msgid "unit^Gold"
 msgstr "Злато"
 
@@ -7864,11 +7874,11 @@ msgstr "снимак"
 msgid "Do you want to save a replay of this scenario?"
 msgstr ""
 
-#: src/playcampaign.cpp:168 src/playcampaign.cpp:286 src/playturn.cpp:1644
+#: src/playcampaign.cpp:168 src/playcampaign.cpp:289 src/playturn.cpp:1646
 msgid "Name:"
 msgstr "Име:"
 
-#: src/playcampaign.cpp:176 src/playcampaign.cpp:294 src/playturn.cpp:1661
+#: src/playcampaign.cpp:176 src/playcampaign.cpp:297 src/playturn.cpp:1663
 msgid "The game could not be saved"
 msgstr "Игру није могуће сачувати"
 
@@ -7877,73 +7887,73 @@ msgstr "Игру није могуће сачувати"
 msgid "Downloading next level..."
 msgstr "Преузимам кампању ..."
 
-#: src/playcampaign.cpp:285
+#: src/playcampaign.cpp:288
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "Заиста желите да обришете ову сачувану игру?"
 
-#: src/playcampaign.cpp:311
+#: src/playcampaign.cpp:313
 msgid "Unknown scenario: '"
 msgstr ""
 
-#: src/playlevel.cpp:608 src/playlevel.cpp:877
+#: src/playlevel.cpp:609 src/playlevel.cpp:878
 msgid "The file you have tried to load is corrupt"
 msgstr "Фајл који сте покушали да отворите је корумпиран"
 
-#: src/playlevel.cpp:761
+#: src/playlevel.cpp:762
 msgid "Game Over"
 msgstr "Крај Игре"
 
-#: src/playlevel.cpp:762
+#: src/playlevel.cpp:763
 msgid "The game is over."
 msgstr "Крај игре."
 
-#: src/playlevel.cpp:845
+#: src/playlevel.cpp:846
 msgid "Remaining gold: "
 msgstr "Преостало злато:"
 
-#: src/playlevel.cpp:848
+#: src/playlevel.cpp:849
 msgid "Early finish bonus: "
 msgstr ""
 
-#: src/playlevel.cpp:850
+#: src/playlevel.cpp:851
 msgid "per turn"
 msgstr "по потезу"
 
-#: src/playlevel.cpp:851
+#: src/playlevel.cpp:852
 msgid "Turns finished early: "
 msgstr ""
 
-#: src/playlevel.cpp:853
+#: src/playlevel.cpp:854
 msgid "Bonus: "
 msgstr "Бонус:"
 
-#: src/playlevel.cpp:855
+#: src/playlevel.cpp:856
 msgid "Gold: "
 msgstr "Злато:"
 
-#: src/playlevel.cpp:860
+#: src/playlevel.cpp:861
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% вашег злата је пренесено у следећи сценарио"
 
-#: src/playlevel.cpp:861
+#: src/playlevel.cpp:862
 msgid "Retained Gold: "
 msgstr "Сачувано Злато:"
 
-#: src/playlevel.cpp:866
+#: src/playlevel.cpp:867
 msgid "Victory"
 msgstr "Победа"
 
-#: src/playlevel.cpp:867
+#: src/playlevel.cpp:868
 msgid "You have emerged victorious!"
 msgstr "Победили сте!"
 
-#: src/playlevel.cpp:871
+#: src/playlevel.cpp:872
 msgid "Scenario Report"
 msgstr "Извештај Сценарија"
 
-#: src/playlevel.cpp:892
+#: src/playlevel.cpp:893
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7951,59 +7961,59 @@ msgstr ""
 "Мрежна веза је прекинута и игра се не може наставити. Желите ли да сачувате "
 "игру?"
 
-#: src/playturn.cpp:89
+#: src/playturn.cpp:91
 msgid "It is now your turn"
 msgstr "Ви сте на реду"
 
-#: src/playturn.cpp:571
+#: src/playturn.cpp:573
 msgid "Attacker"
 msgstr "Нападач"
 
-#: src/playturn.cpp:573
+#: src/playturn.cpp:575
 msgid "Defender"
 msgstr "Бранилац"
 
-#: src/playturn.cpp:593 src/playturn.cpp:659
+#: src/playturn.cpp:595 src/playturn.cpp:661
 msgid "Damage Calculations"
 msgstr "Рачунање Штете"
 
-#: src/playturn.cpp:638 src/reports.cpp:226
+#: src/playturn.cpp:640 src/reports.cpp:226
 msgid "vs"
 msgstr "против"
 
-#: src/playturn.cpp:671
+#: src/playturn.cpp:673
 msgid "Attack Enemy"
 msgstr "Нападни Противника"
 
-#: src/playturn.cpp:672
+#: src/playturn.cpp:674
 msgid "Choose weapon:"
 msgstr "Изабери Оружије:"
 
-#: src/playturn.cpp:1327
+#: src/playturn.cpp:1329
 #, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Нисте ни почели свој потез! Заиста бећ желите да га завршите?"
 
-#: src/playturn.cpp:1335 src/playturn.cpp:1340
+#: src/playturn.cpp:1337 src/playturn.cpp:1342
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Неке јединице имају преосталог кретања. Сигурно желите да завршите потез?"
 
-#: src/playturn.cpp:1355
+#: src/playturn.cpp:1357
 msgid "Auto-Save"
 msgstr "Аутоматско-Сачувавање"
 
-#: src/playturn.cpp:1357
+#: src/playturn.cpp:1359
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Не могу да извришим ауто спашавање игре. Молим Вас да ручно сачувате игру."
 
-#: src/playturn.cpp:1598
+#: src/playturn.cpp:1600
 msgid "Rename Unit"
 msgstr "Промени Име"
 
-#: src/playturn.cpp:1647
+#: src/playturn.cpp:1649
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -8011,47 +8021,47 @@ msgstr ""
 "Имена снимљених игара не смеју садржавати колоне или косе црте. Молим Вас да "
 "изаберете другачије име."
 
-#: src/playturn.cpp:1658
+#: src/playturn.cpp:1660
 msgid "Saved"
 msgstr "Сачувано"
 
-#: src/playturn.cpp:1658
+#: src/playturn.cpp:1660
 msgid "The game has been saved"
 msgstr "Игра је сачувана"
 
-#: src/playturn.cpp:1790
+#: src/playturn.cpp:1792
 msgid "Leader"
 msgstr "Вођа"
 
-#: src/playturn.cpp:1792
+#: src/playturn.cpp:1794
 msgid "Villages"
 msgstr "Села"
 
-#: src/playturn.cpp:1794
+#: src/playturn.cpp:1796
 msgid "Upkeep"
 msgstr "Трошкови"
 
-#: src/playturn.cpp:1795
+#: src/playturn.cpp:1797
 msgid "Income"
 msgstr "Приход"
 
-#: src/playturn.cpp:1900
+#: src/playturn.cpp:1902
 msgid "You have no units available to recruit."
 msgstr "Нема јединица за регрутацију."
 
-#: src/playturn.cpp:1912
+#: src/playturn.cpp:1914
 msgid "Recruit"
 msgstr "Регрутуј"
 
-#: src/playturn.cpp:1913 src/playturn.cpp:2109
+#: src/playturn.cpp:1915 src/playturn.cpp:2111
 msgid "Select unit:"
 msgstr "Изаберите јединицу:"
 
-#: src/playturn.cpp:1947
+#: src/playturn.cpp:1949
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Немате довољно злата да регрутујете ту јединицу"
 
-#: src/playturn.cpp:2005
+#: src/playturn.cpp:2007
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -8059,25 +8069,25 @@ msgstr ""
 "Ова јединица има искуства, са вишим нивоом! Сигурни сте да желите да "
 "отпустите $noun?"
 
-#: src/playturn.cpp:2007
+#: src/playturn.cpp:2009
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr "Ова јединица ускоро може напредовати! Желите ли да отпустите $noun ?"
 
-#: src/playturn.cpp:2012
+#: src/playturn.cpp:2014
 msgid "her"
 msgstr "њој"
 
-#: src/playturn.cpp:2012
+#: src/playturn.cpp:2014
 msgid "him"
 msgstr "њему"
 
-#: src/playturn.cpp:2053
+#: src/playturn.cpp:2055
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Отсечени сте од ваших војника и не можете их призвати"
 
-#: src/playturn.cpp:2055
+#: src/playturn.cpp:2057
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -8085,138 +8095,138 @@ msgstr ""
 "Нема ветерана расположивих за призивање.\n"
 "(Морате имати преживеле јединице из претходног сценарија)"
 
-#: src/playturn.cpp:2061
+#: src/playturn.cpp:2063
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Морате имати барем $cost злата да бисте призвали ветеране"
 
-#: src/playturn.cpp:2069
+#: src/playturn.cpp:2071
 #, fuzzy
 msgid "Level"
 msgstr "ниво"
 
-#: src/playturn.cpp:2096
+#: src/playturn.cpp:2098
 msgid "Dismiss Unit"
 msgstr "Отпусти Јединицу"
 
-#: src/playturn.cpp:2108
+#: src/playturn.cpp:2110
 msgid "Recall"
 msgstr "Призови"
 
-#: src/playturn.cpp:2157
+#: src/playturn.cpp:2159
 msgid "Message:"
 msgstr "Порука:"
 
-#: src/playturn.cpp:2157
+#: src/playturn.cpp:2159
 msgid "Send to allies only"
 msgstr "Пошаљи само пријатељима"
 
-#: src/playturn.cpp:2252 src/unit.cpp:1128
+#: src/playturn.cpp:2254 src/unit.cpp:1128
 msgid "Moves"
 msgstr "Кретања"
 
-#: src/playturn.cpp:2253
+#: src/playturn.cpp:2255
 msgid "Location"
 msgstr "Локација"
 
-#: src/playturn.cpp:2299
+#: src/playturn.cpp:2301
 msgid "Unit List"
 msgstr "Листа Јединица"
 
-#: src/playturn.cpp:2335 src/playturn.cpp:2397
+#: src/playturn.cpp:2337 src/playturn.cpp:2399
 msgid "Recruits"
 msgstr "Регрутује"
 
-#: src/playturn.cpp:2341 src/playturn.cpp:2401
+#: src/playturn.cpp:2343 src/playturn.cpp:2403
 msgid "Recalls"
 msgstr "Призива"
 
-#: src/playturn.cpp:2347 src/playturn.cpp:2405
+#: src/playturn.cpp:2349 src/playturn.cpp:2407
 msgid "Advancements"
 msgstr "Напредује"
 
-#: src/playturn.cpp:2353 src/playturn.cpp:2409
+#: src/playturn.cpp:2355 src/playturn.cpp:2411
 msgid "Losses"
 msgstr "Губи"
 
-#: src/playturn.cpp:2359 src/playturn.cpp:2413
+#: src/playturn.cpp:2361 src/playturn.cpp:2415
 msgid "Kills"
 msgstr "Убија"
 
-#: src/playturn.cpp:2365
+#: src/playturn.cpp:2367
 msgid "Damage Inflicted"
 msgstr "Нанета Штета"
 
-#: src/playturn.cpp:2371
+#: src/playturn.cpp:2373
 msgid "Damage Taken"
 msgstr "Примљена Штета"
 
-#: src/playturn.cpp:2377
+#: src/playturn.cpp:2379
 msgid "Damage Inflicted (EV)"
 msgstr "Нанета Штета (ЕВ)"
 
-#: src/playturn.cpp:2384
+#: src/playturn.cpp:2386
 msgid "Damage Taken (EV)"
 msgstr "Примљена Штета (ЕВ)"
 
-#: src/playturn.cpp:2390
+#: src/playturn.cpp:2392
 msgid "Statistics"
 msgstr "Статистике"
 
-#: src/playturn.cpp:2427
+#: src/playturn.cpp:2429
 msgid "Search"
 msgstr "Тражи"
 
-#: src/playturn.cpp:2437
+#: src/playturn.cpp:2439
 msgid "prompt^Command:"
 msgstr "Команда"
 
-#: src/playturn.cpp:2448
+#: src/playturn.cpp:2450
 msgid "Chat Log"
 msgstr "Биљежница Разговора"
 
-#: src/playturn.cpp:2513
+#: src/playturn.cpp:2515
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/playturn.cpp:2544
+#: src/playturn.cpp:2546
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/playturn.cpp:2550
+#: src/playturn.cpp:2552
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/playturn.cpp:2651
+#: src/playturn.cpp:2653
 msgid "Place Label"
 msgstr "Постави Натпис"
 
-#: src/playturn.cpp:2652
+#: src/playturn.cpp:2654
 msgid "Label:"
 msgstr "Натпис:"
 
-#: src/playturn.cpp:2784
+#: src/playturn.cpp:2786
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
 
-#: src/playturn.cpp:2837
+#: src/playturn.cpp:2839
 msgid "Replace with AI"
 msgstr "Замени са вештачком интелигенцијом"
 
-#: src/playturn.cpp:2838
+#: src/playturn.cpp:2840
 msgid "Replace with local player"
 msgstr "Замени са локалним играчем"
 
-#: src/playturn.cpp:2839
+#: src/playturn.cpp:2841
 msgid "Abort game"
 msgstr "Прекини игру"
 
-#: src/playturn.cpp:2842
+#: src/playturn.cpp:2844
 msgid "Replace with "
 msgstr "Замени са"
 
-#: src/playturn.cpp:2846
+#: src/playturn.cpp:2848
 msgid "has left the game. What do you want to do?"
 msgstr "је напустио игру. Шта желите да учините?"
 
@@ -8337,15 +8347,15 @@ msgstr "Празно име варијабле"
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
 
-#: src/serialization/parser.cpp:238 src/serialization/parser.cpp:262
+#: src/serialization/parser.cpp:243 src/serialization/parser.cpp:267
 msgid "Unterminated quoted string"
 msgstr "Незавршен текст под наводницима"
 
-#: src/serialization/parser.cpp:285
+#: src/serialization/parser.cpp:290
 msgid " included from "
 msgstr " укључено са"
 
-#: src/serialization/parser.cpp:306
+#: src/serialization/parser.cpp:311
 msgid "$error at $pos"
 msgstr "$error код $pos"
 

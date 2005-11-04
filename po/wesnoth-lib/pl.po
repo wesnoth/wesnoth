@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 13:51+0200\n"
+"POT-Creation-Date: 2005-11-04 22:09+0100\n"
 "PO-Revision-Date: 2005-08-03 22:10+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team: none\n"
@@ -17,96 +17,96 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: src/editor/editor_dialogs.cpp:49
+#: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Twoje modyfikacje mapy zostaną utracone. Kontynuować?"
 
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:197
+#: src/editor/editor_dialogs.cpp:75 src/editor/editor_dialogs.cpp:196
 msgid "Create New Map"
 msgstr "Stwórz nową mapę"
 
-#: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
 #: src/mapgen_dialog.cpp:106
 msgid "Width:"
 msgstr "Szerokość:"
 
-#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:393
+#: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
 #: src/mapgen_dialog.cpp:107
 msgid "Height:"
 msgstr "Wysokość:"
 
-#: src/editor/editor_dialogs.cpp:95
+#: src/editor/editor_dialogs.cpp:94
 msgid "Generate New Map"
 msgstr "Wygeneruj nową mapę"
 
-#: src/editor/editor_dialogs.cpp:96
+#: src/editor/editor_dialogs.cpp:95
 msgid "Generate Random Map"
 msgstr "Wygeneruj losową mapę"
 
-#: src/editor/editor_dialogs.cpp:97
+#: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr "Ustawienia generatora losowego"
 
-#: src/editor/editor_dialogs.cpp:98 src/editor/editor_dialogs.cpp:409
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
 #: src/filechooser.cpp:54 src/show_dialog.cpp:430 src/show_dialog.cpp:436
 #: src/show_dialog.cpp:849 src/show_dialog.cpp:927
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/editor/editor_dialogs.cpp:183
+#: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
 msgstr "Tworzenie mapy nie powiodło się."
 
-#: src/editor/editor_dialogs.cpp:249 src/mapgen_dialog.cpp:97
-#: src/preferences.cpp:1335
+#: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
+#: src/preferences_display.cpp:641
 msgid "Close Window"
 msgstr "Zamknij okno"
 
-#: src/editor/editor_dialogs.cpp:255 src/editor/editor_dialogs.cpp:322
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+#: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
+#: src/hotkeys.cpp:72 src/preferences_display.cpp:543
 msgid "Preferences"
 msgstr "Ustawienia"
 
-#: src/editor/editor_dialogs.cpp:257 src/preferences.cpp:905
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:215
 msgid "Scroll Speed:"
 msgstr "Szybkość przewijania:"
 
-#: src/editor/editor_dialogs.cpp:284 src/hotkeys.cpp:55
-#: src/preferences.cpp:887
+#: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:55
+#: src/preferences_display.cpp:197
 msgid "Toggle Full Screen"
 msgstr "Przełącz pełny ekran"
 
-#: src/editor/editor_dialogs.cpp:291 src/preferences.cpp:890
+#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:200
 msgid "Show Grid"
 msgstr "Pokaż siatkę"
 
-#: src/editor/editor_dialogs.cpp:298 src/preferences.cpp:897
+#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:207
 msgid "Video Mode"
 msgstr "Tryb graficzny"
 
-#: src/editor/editor_dialogs.cpp:301 src/preferences.cpp:898
+#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:208
 msgid "Hotkeys"
 msgstr "Skróty klawiszowe"
 
-#: src/editor/editor_dialogs.cpp:390 src/editor/editor_dialogs.cpp:450
+#: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
 #: src/hotkeys.cpp:94
 msgid "Resize Map"
 msgstr "Zmień rozmiar mapy"
 
-#: src/editor/editor_dialogs.cpp:410 src/filechooser.cpp:53
+#: src/editor/editor_dialogs.cpp:409 src/filechooser.cpp:53
 #: src/show_dialog.cpp:416 src/show_dialog.cpp:429
 msgid "OK"
 msgstr "OK"
 
-#: src/editor/editor_dialogs.cpp:493
+#: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
 msgstr "Oś X"
 
-#: src/editor/editor_dialogs.cpp:494
+#: src/editor/editor_dialogs.cpp:493
 msgid "Y-Axis"
 msgstr "Oś Y"
 
-#: src/editor/editor_dialogs.cpp:495
+#: src/editor/editor_dialogs.cpp:494
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Obróć (wymiary mapy mogą zostać zmienione)"
 
@@ -402,7 +402,11 @@ msgstr "Śródziemny"
 msgid "Island"
 msgstr "Wyspa"
 
-#: src/preferences.cpp:158 src/preferences.cpp:209
+#: src/preferences.cpp:286
+msgid "player"
+msgstr "gracz"
+
+#: src/preferences_display.cpp:67 src/preferences_display.cpp:99
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -412,208 +416,204 @@ msgstr ""
 "szesnastobitowego koloru, aby uruchomić grę w trybie okienkowym. Do gry w "
 "trybie pełnoekranowym potrzebujesz co najmniej trybu 1024x768x16."
 
-#: src/preferences.cpp:379
-msgid "player"
-msgstr "gracz"
-
-#: src/preferences.cpp:888
+#: src/preferences_display.cpp:198
 msgid "Accelerated Speed"
 msgstr "Przyspieszone ruchy"
 
-#: src/preferences.cpp:889
+#: src/preferences_display.cpp:199
 msgid "Skip AI Moves"
 msgstr "Pomiń ruchy komputera"
 
-#: src/preferences.cpp:891
+#: src/preferences_display.cpp:201
 msgid "Show Floating Labels"
 msgstr "Pokaż unoszące się etykiety"
 
-#: src/preferences.cpp:892
+#: src/preferences_display.cpp:202
 msgid "Turn Dialog"
 msgstr "Komunikat rozpoczęcia tury"
 
-#: src/preferences.cpp:893
+#: src/preferences_display.cpp:203
 msgid "Turn Bell"
 msgstr "Dźwięk rozpoczęcia tury"
 
-#: src/preferences.cpp:894
+#: src/preferences_display.cpp:204
 msgid "Show Team Colors"
 msgstr "Pokaż kolory drużyn"
 
-#: src/preferences.cpp:895
+#: src/preferences_display.cpp:205
 msgid "Show Color Cursors"
 msgstr "Użyj kolorowych kursorów"
 
-#: src/preferences.cpp:896
+#: src/preferences_display.cpp:206
 msgid "Show Haloing Effects"
 msgstr "Pokaż efekty halo"
 
-#: src/preferences.cpp:899
+#: src/preferences_display.cpp:209
 msgid "Adjust Gamma"
 msgstr "Ustaw współczynnik gamma"
 
-#: src/preferences.cpp:900
+#: src/preferences_display.cpp:210
 msgid "Reverse Time Graphics"
 msgstr "Odwróć wskaźnik czasu"
 
-#: src/preferences.cpp:901
+#: src/preferences_display.cpp:211
 msgid "Sound effects"
 msgstr "Efekty dźwiękowe"
 
-#: src/preferences.cpp:902
+#: src/preferences_display.cpp:212
 msgid "Music"
 msgstr "Muzyka"
 
-#: src/preferences.cpp:904
+#: src/preferences_display.cpp:214
 msgid "Music Volume:"
 msgstr "Głośność muzyki:"
 
-#: src/preferences.cpp:904
+#: src/preferences_display.cpp:214
 msgid "SFX Volume:"
 msgstr "Głośność efektów:"
 
-#: src/preferences.cpp:905
+#: src/preferences_display.cpp:215
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences.cpp:918
+#: src/preferences_display.cpp:228
 msgid "Sound effects on/off"
 msgstr "Efekty dźwiękowe włącz./wyłącz."
 
-#: src/preferences.cpp:922
+#: src/preferences_display.cpp:232
 msgid "Change the sound effects volume"
 msgstr "Zmień głośność efektów"
 
-#: src/preferences.cpp:925
+#: src/preferences_display.cpp:235
 msgid "Music on/off"
 msgstr "Muzyka włącz./wyłącz."
 
-#: src/preferences.cpp:929
+#: src/preferences_display.cpp:239
 msgid "Change the music volume"
 msgstr "Zmień głośność muzyki"
 
-#: src/preferences.cpp:935
+#: src/preferences_display.cpp:245
 msgid "Change the speed of scrolling around the map"
 msgstr "Zmień szybkość przewijania mapy"
 
-#: src/preferences.cpp:938 src/preferences.cpp:943
+#: src/preferences_display.cpp:248 src/preferences_display.cpp:253
 msgid "Change the brightness of the display"
 msgstr "Zmień jasność obrazu"
 
-#: src/preferences.cpp:946
+#: src/preferences_display.cpp:256
 msgid "Choose whether the game should run full screen or in a window"
 msgstr ""
 "Wybierz, czy gra powinna działać w trybie okienkowym, czy pełnoekranowym."
 
-#: src/preferences.cpp:949
+#: src/preferences_display.cpp:259
 msgid "Make units move and fight faster"
 msgstr "Spraw, by jednostki poruszały się i walczyły szybciej"
 
-#: src/preferences.cpp:952
+#: src/preferences_display.cpp:262
 msgid "Do not animate AI units moving"
 msgstr "Nie animuj ruchu jednostek komputera"
 
-#: src/preferences.cpp:955
+#: src/preferences_display.cpp:265
 msgid "Overlay a grid onto the map"
 msgstr "Rysuj siatkę na polu gry"
 
-#: src/preferences.cpp:958
+#: src/preferences_display.cpp:268
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Pokaż odniesione obrażenia nad trafionymi jednostkami"
 
-#: src/preferences.cpp:960
+#: src/preferences_display.cpp:270
 msgid "Change the resolution the game runs at"
 msgstr "Zmień rozdzielczość obrazu."
 
-#: src/preferences.cpp:963
+#: src/preferences_display.cpp:273
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Wyświetla okienko informujące o rozpoczęciu twojej tury"
 
-#: src/preferences.cpp:966
+#: src/preferences_display.cpp:276
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Odtwarza dźwięk na początku twojej tury"
 
-#: src/preferences.cpp:969
+#: src/preferences_display.cpp:279
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "Rysuje kolorowe okręgi wskazujące stronę jednostek"
 
-#: src/preferences.cpp:972
+#: src/preferences_display.cpp:282
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Wybierz czy słońce ma przesuwać się od lewej do prawej, czy od prawej do "
 "lewej"
 
-#: src/preferences.cpp:975
+#: src/preferences_display.cpp:285
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Włącza kolorowe kursory myszy (może spowolnić grę)"
 
-#: src/preferences.cpp:978
+#: src/preferences_display.cpp:288
 msgid "Use graphical special effects (may be slower)"
 msgstr "Włącza specjale efekty graficzne (może spowolnić grę)"
 
-#: src/preferences.cpp:980
+#: src/preferences_display.cpp:290
 msgid "View and configure keyboard shortcuts"
 msgstr "Pozwala obejrzeć i zmienić skróty klawiszowe."
 
-#: src/preferences.cpp:1158
+#: src/preferences_display.cpp:469
 msgid "yes"
 msgstr "tak"
 
-#: src/preferences.cpp:1160
+#: src/preferences_display.cpp:471
 msgid "no"
 msgstr "nie"
 
-#: src/preferences.cpp:1219
+#: src/preferences_display.cpp:530
 msgid "Prefs section^General"
 msgstr "Ogólne"
 
-#: src/preferences.cpp:1220
+#: src/preferences_display.cpp:531
 msgid "Prefs section^Display"
 msgstr "Ekran"
 
-#: src/preferences.cpp:1221
+#: src/preferences_display.cpp:532
 msgid "Prefs section^Sound"
 msgstr "Dźwięk"
 
-#: src/preferences.cpp:1222
+#: src/preferences_display.cpp:533
 msgid "Advanced section^Advanced"
 msgstr "Zaawansowane"
 
-#: src/preferences.cpp:1278
+#: src/preferences_display.cpp:584
 msgid "There are no alternative video modes available"
 msgstr "Inne tryby graficzne nie są dostępne"
 
-#: src/preferences.cpp:1307
+#: src/preferences_display.cpp:613
 msgid "Choose Resolution"
 msgstr "Wybierz rozdzielczość"
 
-#: src/preferences.cpp:1340
+#: src/preferences_display.cpp:646
 msgid "Hotkey Settings"
 msgstr "Skróty"
 
-#: src/preferences.cpp:1344 src/preferences.cpp:1397
+#: src/preferences_display.cpp:650 src/preferences_display.cpp:703
 msgid "Press desired HotKey"
 msgstr "Wciśnij wybrany skrót"
 
-#: src/preferences.cpp:1362
+#: src/preferences_display.cpp:668
 msgid "Action"
 msgstr "Akcja"
 
-#: src/preferences.cpp:1362
+#: src/preferences_display.cpp:668
 msgid "Binding"
 msgstr "Przypisanie"
 
-#: src/preferences.cpp:1374
+#: src/preferences_display.cpp:680
 msgid "Change Hotkey"
 msgstr "Zmień skrót"
 
-#: src/preferences.cpp:1377
+#: src/preferences_display.cpp:683
 msgid "Save Hotkeys"
 msgstr "Zapisz skróty"
 
-#: src/preferences.cpp:1423
+#: src/preferences_display.cpp:729
 msgid "This HotKey is already in use."
 msgstr "Ten skrót jest już używany."
 

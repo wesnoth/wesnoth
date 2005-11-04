@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-10-15 13:51+0200\n"
+"POT-Creation-Date: 2005-11-04 22:09+0100\n"
 "PO-Revision-Date: 2005-08-10 21:53+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
@@ -16,96 +16,96 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/editor/editor_dialogs.cpp:49
+#: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Les vostres modificacions del mapa es perdran. Voleu continuar?"
 
-#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:197
+#: src/editor/editor_dialogs.cpp:75 src/editor/editor_dialogs.cpp:196
 msgid "Create New Map"
 msgstr "Nou mapa"
 
-#: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
 #: src/mapgen_dialog.cpp:106
 msgid "Width:"
 msgstr "Amplada:"
 
-#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:393
+#: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
 #: src/mapgen_dialog.cpp:107
 msgid "Height:"
 msgstr "Alçada:"
 
-#: src/editor/editor_dialogs.cpp:95
+#: src/editor/editor_dialogs.cpp:94
 msgid "Generate New Map"
 msgstr "Genera nou mapa"
 
-#: src/editor/editor_dialogs.cpp:96
+#: src/editor/editor_dialogs.cpp:95
 msgid "Generate Random Map"
 msgstr "Genera mapa aleatori"
 
-#: src/editor/editor_dialogs.cpp:97
+#: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
 msgstr "Paràmetres del generador aleatori"
 
-#: src/editor/editor_dialogs.cpp:98 src/editor/editor_dialogs.cpp:409
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
 #: src/filechooser.cpp:54 src/show_dialog.cpp:430 src/show_dialog.cpp:436
 #: src/show_dialog.cpp:849 src/show_dialog.cpp:927
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: src/editor/editor_dialogs.cpp:183
+#: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
 msgstr "La creació del mapa ha fallat."
 
-#: src/editor/editor_dialogs.cpp:249 src/mapgen_dialog.cpp:97
-#: src/preferences.cpp:1335
+#: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
+#: src/preferences_display.cpp:641
 msgid "Close Window"
 msgstr "Tanca"
 
-#: src/editor/editor_dialogs.cpp:255 src/editor/editor_dialogs.cpp:322
-#: src/hotkeys.cpp:72 src/preferences.cpp:1232
+#: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
+#: src/hotkeys.cpp:72 src/preferences_display.cpp:543
 msgid "Preferences"
 msgstr "Preferències"
 
-#: src/editor/editor_dialogs.cpp:257 src/preferences.cpp:905
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:215
 msgid "Scroll Speed:"
 msgstr "Velocitat de desplaçament"
 
-#: src/editor/editor_dialogs.cpp:284 src/hotkeys.cpp:55
-#: src/preferences.cpp:887
+#: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:55
+#: src/preferences_display.cpp:197
 msgid "Toggle Full Screen"
 msgstr "Mostra la pantalla completa"
 
-#: src/editor/editor_dialogs.cpp:291 src/preferences.cpp:890
+#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:200
 msgid "Show Grid"
 msgstr "Mostra la graella"
 
-#: src/editor/editor_dialogs.cpp:298 src/preferences.cpp:897
+#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:207
 msgid "Video Mode"
 msgstr "Mode de vídeo"
 
-#: src/editor/editor_dialogs.cpp:301 src/preferences.cpp:898
+#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:208
 msgid "Hotkeys"
 msgstr "Dreceres de teclat"
 
-#: src/editor/editor_dialogs.cpp:390 src/editor/editor_dialogs.cpp:450
+#: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
 #: src/hotkeys.cpp:94
 msgid "Resize Map"
 msgstr "Redimensiona el mapa"
 
-#: src/editor/editor_dialogs.cpp:410 src/filechooser.cpp:53
+#: src/editor/editor_dialogs.cpp:409 src/filechooser.cpp:53
 #: src/show_dialog.cpp:416 src/show_dialog.cpp:429
 msgid "OK"
 msgstr "D'acord"
 
-#: src/editor/editor_dialogs.cpp:493
+#: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
 msgstr "Eix X"
 
-#: src/editor/editor_dialogs.cpp:494
+#: src/editor/editor_dialogs.cpp:493
 msgid "Y-Axis"
 msgstr "Eix Y"
 
-#: src/editor/editor_dialogs.cpp:495
+#: src/editor/editor_dialogs.cpp:494
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Inverteix (pot canviar les dimensions del mapa):"
 
@@ -401,7 +401,11 @@ msgstr "Interior"
 msgid "Island"
 msgstr "Illa"
 
-#: src/preferences.cpp:158 src/preferences.cpp:209
+#: src/preferences.cpp:286
+msgid "player"
+msgstr "jugador"
+
+#: src/preferences_display.cpp:67 src/preferences_display.cpp:99
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -411,205 +415,201 @@ msgstr ""
 "suportar una resolució de 1024x768x16 per tal de poder jugar a pantalla "
 "completa."
 
-#: src/preferences.cpp:379
-msgid "player"
-msgstr "jugador"
-
-#: src/preferences.cpp:888
+#: src/preferences_display.cpp:198
 msgid "Accelerated Speed"
 msgstr "Velocitat accelerada"
 
-#: src/preferences.cpp:889
+#: src/preferences_display.cpp:199
 msgid "Skip AI Moves"
 msgstr "Omet el moviment de la IA"
 
-#: src/preferences.cpp:891
+#: src/preferences_display.cpp:201
 msgid "Show Floating Labels"
 msgstr "Mostra les etiquetes"
 
-#: src/preferences.cpp:892
+#: src/preferences_display.cpp:202
 msgid "Turn Dialog"
 msgstr "Activa els diàlegs"
 
-#: src/preferences.cpp:893
+#: src/preferences_display.cpp:203
 msgid "Turn Bell"
 msgstr "Activa el timbre"
 
-#: src/preferences.cpp:894
+#: src/preferences_display.cpp:204
 msgid "Show Team Colors"
 msgstr "Mostra els colors de bàndol"
 
-#: src/preferences.cpp:895
+#: src/preferences_display.cpp:205
 msgid "Show Color Cursors"
 msgstr "Mostra el cursor de colors"
 
-#: src/preferences.cpp:896
+#: src/preferences_display.cpp:206
 msgid "Show Haloing Effects"
 msgstr "Mostra els efectes"
 
-#: src/preferences.cpp:899
+#: src/preferences_display.cpp:209
 msgid "Adjust Gamma"
 msgstr "Ajust de brillantor"
 
-#: src/preferences.cpp:900
+#: src/preferences_display.cpp:210
 msgid "Reverse Time Graphics"
 msgstr "Inverteix els gràfics del temps"
 
-#: src/preferences.cpp:901
+#: src/preferences_display.cpp:211
 msgid "Sound effects"
 msgstr "Activa els efectes de so"
 
-#: src/preferences.cpp:902
+#: src/preferences_display.cpp:212
 msgid "Music"
 msgstr "Activa la musica"
 
-#: src/preferences.cpp:904
+#: src/preferences_display.cpp:214
 msgid "Music Volume:"
 msgstr "Volum de la musica:"
 
-#: src/preferences.cpp:904
+#: src/preferences_display.cpp:214
 msgid "SFX Volume:"
 msgstr "Volum dels efectes de so:"
 
-#: src/preferences.cpp:905
+#: src/preferences_display.cpp:215
 msgid "Gamma:"
 msgstr "Brillantor:"
 
-#: src/preferences.cpp:918
+#: src/preferences_display.cpp:228
 msgid "Sound effects on/off"
 msgstr "Engega o apaga els efectes de so"
 
-#: src/preferences.cpp:922
+#: src/preferences_display.cpp:232
 msgid "Change the sound effects volume"
 msgstr "Canvia el volum dels efectes de so"
 
-#: src/preferences.cpp:925
+#: src/preferences_display.cpp:235
 msgid "Music on/off"
 msgstr "Engega o apaga la musica"
 
-#: src/preferences.cpp:929
+#: src/preferences_display.cpp:239
 msgid "Change the music volume"
 msgstr "Canvia el volum de la música"
 
-#: src/preferences.cpp:935
+#: src/preferences_display.cpp:245
 msgid "Change the speed of scrolling around the map"
 msgstr "Canvia la velocitat de desplaçament al voltant del mapa"
 
-#: src/preferences.cpp:938 src/preferences.cpp:943
+#: src/preferences_display.cpp:248 src/preferences_display.cpp:253
 msgid "Change the brightness of the display"
 msgstr "Canvia la brillantor de la pantalla"
 
-#: src/preferences.cpp:946
+#: src/preferences_display.cpp:256
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Mostra el joc en pantalla completa o en finestra"
 
-#: src/preferences.cpp:949
+#: src/preferences_display.cpp:259
 msgid "Make units move and fight faster"
 msgstr "Les unitats es mouen i lliuten més ràpid"
 
-#: src/preferences.cpp:952
+#: src/preferences_display.cpp:262
 msgid "Do not animate AI units moving"
 msgstr "Omet les animacions de la IA"
 
-#: src/preferences.cpp:955
+#: src/preferences_display.cpp:265
 msgid "Overlay a grid onto the map"
 msgstr "Mostra una graella sobre el mapa"
 
-#: src/preferences.cpp:958
+#: src/preferences_display.cpp:268
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Mostra el mal infligit a les unitats"
 
-#: src/preferences.cpp:960
+#: src/preferences_display.cpp:270
 msgid "Change the resolution the game runs at"
 msgstr "Canvia la resolució del joc"
 
-#: src/preferences.cpp:963
+#: src/preferences_display.cpp:273
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Mostra un diàleg al començament del torn"
 
-#: src/preferences.cpp:966
+#: src/preferences_display.cpp:276
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Un timbre sona al començament del torn"
 
-#: src/preferences.cpp:969
+#: src/preferences_display.cpp:279
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "Mostra un cercle de diferent color segons el bàndol de la unitat"
 
-#: src/preferences.cpp:972
+#: src/preferences_display.cpp:282
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Tria si el sol es mou de esquerra a dreta o de dreta a esquerra"
 
-#: src/preferences.cpp:975
+#: src/preferences_display.cpp:285
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Utilitza cursor de colors (pot ser més lent)"
 
-#: src/preferences.cpp:978
+#: src/preferences_display.cpp:288
 msgid "Use graphical special effects (may be slower)"
 msgstr "Activa efectes gràfics especials (pot ser lent)"
 
-#: src/preferences.cpp:980
+#: src/preferences_display.cpp:290
 msgid "View and configure keyboard shortcuts"
 msgstr "Configura les dreceres del teclat"
 
-#: src/preferences.cpp:1158
+#: src/preferences_display.cpp:469
 msgid "yes"
 msgstr "Sí"
 
-#: src/preferences.cpp:1160
+#: src/preferences_display.cpp:471
 msgid "no"
 msgstr "No"
 
-#: src/preferences.cpp:1219
+#: src/preferences_display.cpp:530
 msgid "Prefs section^General"
 msgstr "General"
 
-#: src/preferences.cpp:1220
+#: src/preferences_display.cpp:531
 msgid "Prefs section^Display"
 msgstr "Visualització"
 
-#: src/preferences.cpp:1221
+#: src/preferences_display.cpp:532
 msgid "Prefs section^Sound"
 msgstr "So"
 
-#: src/preferences.cpp:1222
+#: src/preferences_display.cpp:533
 msgid "Advanced section^Advanced"
 msgstr "Avançat"
 
-#: src/preferences.cpp:1278
+#: src/preferences_display.cpp:584
 msgid "There are no alternative video modes available"
 msgstr "No hi ha modes de vídeo alternatius disponibles"
 
-#: src/preferences.cpp:1307
+#: src/preferences_display.cpp:613
 msgid "Choose Resolution"
 msgstr "Tria la resolució"
 
-#: src/preferences.cpp:1340
+#: src/preferences_display.cpp:646
 msgid "Hotkey Settings"
 msgstr "Dreceres de teclat"
 
-#: src/preferences.cpp:1344 src/preferences.cpp:1397
+#: src/preferences_display.cpp:650 src/preferences_display.cpp:703
 msgid "Press desired HotKey"
 msgstr "Prem la tecla dessitjada"
 
-#: src/preferences.cpp:1362
+#: src/preferences_display.cpp:668
 msgid "Action"
 msgstr "Acció"
 
-#: src/preferences.cpp:1362
+#: src/preferences_display.cpp:668
 msgid "Binding"
 msgstr "Drecera"
 
-#: src/preferences.cpp:1374
+#: src/preferences_display.cpp:680
 msgid "Change Hotkey"
 msgstr "Canvia la tecla"
 
-#: src/preferences.cpp:1377
+#: src/preferences_display.cpp:683
 msgid "Save Hotkeys"
 msgstr "Desa les dreceres"
 
-#: src/preferences.cpp:1423
+#: src/preferences_display.cpp:729
 msgid "This HotKey is already in use."
 msgstr "Aquesta tecla ja està en ús."
 
