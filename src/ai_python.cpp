@@ -16,13 +16,13 @@
 - display, which I don't think has to be exposed to Python. This is used by C++ AIs mostly for
   debugging purposes. We might want to allow Python scripts to write messages to the display for
   debugging purposes also, but they would only need very limited access.
-- gamemap, defined in map.hpp, which contains the definition of the map. Definitely needs to be
+p gamemap, defined in map.hpp, which contains the definition of the map. Definitely needs to be
  exposed to Python.
 - game_data, defined in unit_types.hpp, which contains definitions of the available unit types,
  attacks, races, and so forth. Needs to be exposed to Python.
 * unit_map, a map<gamemap::location,unit>. gamemap::location is defined in map.hpp and unit is
  defined in unit.hpp. This contains all the units currently in the game. Will need to be exposed.
-- vector<team>, a listing of the teams (i.e. sides) in the game. Defined in team.hpp. Will
+* vector<team>, a listing of the teams (i.e. sides) in the game. Defined in team.hpp. Will
  need to be exposed.
 - gamestatus, the current turn and time of day, etc. Defined in gamestatus.hpp. Will need to
  be exposed.
@@ -93,6 +93,11 @@ static PyMethodDef unittype_methods[] = {
 	{ NULL, NULL, NULL }
 };
 
+static int unittype_internal_compare(wesnoth_unittype* left, wesnoth_unittype* right)
+{
+	return (int)left->unit_type_ - (int)right->unit_type_;
+}
+
 static PyTypeObject wesnoth_unittype_type = {
 	PyObject_HEAD_INIT(NULL)
 	0,                         /* ob_size*/
@@ -103,9 +108,9 @@ static PyTypeObject wesnoth_unittype_type = {
 	0,                         /* tp_print*/
 	0,                         /* tp_getattr*/
 	0,                         /* tp_setattr*/
-	0,                         /* tp_compare*/
+	(cmpfunc)unittype_internal_compare,                         /* tp_compare*/
 	0,                         /* tp_repr*/
-	0, //UniConvert,             /* tp_as_number*/
+	0,              /* tp_as_number*/
 	0,                         /* tp_as_sequence*/
 	0,                         /* tp_as_mapping*/
 	0,                         /* tp_hash */
@@ -137,8 +142,14 @@ static PyObject* unit_get_name(wesnoth_unit* unit, void* closure)
 	return Py_BuildValue("s",( const char* )unit->unit_->name().c_str());
 }
 
+static PyObject* unit_is_enemy(wesnoth_unit* unit, void* closure)
+{
+	return Py_BuildValue("i",running_instance->current_team().is_enemy(unit->unit_->side()) ? 1 : 0);
+}
+
 static PyGetSetDef unit_getseters[] = {
 	{ "name",       (getter)unit_get_name,     NULL, NULL, NULL },
+	{ "is_enemy",       (getter)unit_is_enemy,     NULL, NULL, NULL },
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
@@ -157,6 +168,11 @@ static PyMethodDef unit_methods[] = {
 	{ NULL, NULL, NULL }
 };
 
+static int unit_internal_compare(wesnoth_unit* left, wesnoth_unit* right)
+{
+	return (int)left->unit_ - (int)right->unit_;
+}
+
 static PyTypeObject wesnoth_unit_type = {
 	PyObject_HEAD_INIT(NULL)
 	0,                         /* ob_size*/
@@ -167,7 +183,7 @@ static PyTypeObject wesnoth_unit_type = {
 	0,                         /* tp_print*/
 	0,                         /* tp_getattr*/
 	0,                         /* tp_setattr*/
-	0,                         /* tp_compare*/
+	(cmpfunc)unit_internal_compare,                         /* tp_compare*/
 	0,                         /* tp_repr*/
 	0, //UniConvert,             /* tp_as_number*/
 	0,                         /* tp_as_sequence*/
@@ -212,6 +228,13 @@ static PyObject* location_get_y(wesnoth_location* location, void* closure)
 	return Py_BuildValue("i", location->location_->y);
 }
 
+static int location_internal_compare(wesnoth_location* left, wesnoth_location* right)
+{
+	if (*left->location_ == *right->location_)
+		return 0;
+	return (int)left->location_ - (int)right->location_;
+}
+
 static PyGetSetDef location_getseters[] = {
 	{ "x",       (getter)location_get_x,     NULL, NULL, NULL },
 	{ "y",       (getter)location_get_y,     NULL, NULL, NULL },
@@ -232,7 +255,7 @@ static PyTypeObject wesnoth_location_type = {
 	0,                         /* tp_print*/
 	0,                         /* tp_getattr*/
 	0,                         /* tp_setattr*/
-	0,                         /* tp_compare*/
+	(cmpfunc)location_internal_compare,                         /* tp_compare*/
 	0,                         /* tp_repr*/
 	0, //UniConvert,             /* tp_as_number*/
 	0,                         /* tp_as_sequence*/
@@ -327,6 +350,11 @@ static PyObject* wrapper_team_name(wesnoth_team* team, void* closure)
 	return Py_BuildValue("s", team->team_->team_name().c_str());
 }
 
+static int wrapper_team_internal_compare(wesnoth_team* left, wesnoth_team* right)
+{
+	return (int)left->team_ - (int)right->team_;
+}
+
 static PyMethodDef team_methods[] = {
     { NULL, NULL, NULL }
 };
@@ -346,7 +374,7 @@ static PyTypeObject wesnoth_team_type = {
 	0,                         /* tp_print*/
 	0,                         /* tp_getattr*/
 	0,                         /* tp_setattr*/
-	0,                         /* tp_compare*/
+	(cmpfunc)wrapper_team_internal_compare,                         /* tp_compare*/
 	0,                         /* tp_repr*/
 	0, //UniConvert,             /* tp_as_number*/
 	0,                         /* tp_as_sequence*/
@@ -450,12 +478,21 @@ PyObject* python_ai::wrapper_get_teams(PyObject* self, PyObject* args)
 	return list;
 }
 
+PyObject* python_ai::wrapper_get_current_team(PyObject* self, PyObject* args)
+{
+	wesnoth_team* the_team;
+	the_team = (wesnoth_team*)PyObject_NEW(wesnoth_team, &wesnoth_team_type);
+	the_team->team_ = &running_instance->current_team();
+	return (PyObject*)the_team;
+}
+
 static PyMethodDef wesnoth_python_methods[] = {
 	{"log_message",		python_ai::wrapper_log_message,		METH_VARARGS},
 	{"get_units",		python_ai::wrapper_get_units,		METH_VARARGS},
 	{"get_location",	python_ai::wrapper_get_location,			METH_VARARGS},
 	{"get_map",			python_ai::wrapper_get_map,			METH_VARARGS},
 	{"get_teams",		python_ai::wrapper_get_teams,		METH_VARARGS},
+	{"get_current_team",		python_ai::wrapper_get_current_team,		METH_VARARGS},
 	{NULL, NULL}
 };
 
