@@ -21,12 +21,17 @@ public:
 	static PyObject* wrapper_get_map(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_teams(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_current_team(PyObject* self, PyObject* args);
+	static PyObject* wrapper_get_src_dst(PyObject* self, PyObject* args);
+	static PyObject* wrapper_get_dst_src(PyObject* self, PyObject* args);
 
 	static PyObject* python_ai::wesnoth_getmap_is_village( wesnoth_gamemap* map, PyObject* args );
 	static PyObject* python_ai::wesnoth_getmap_is_keep( wesnoth_gamemap* map, PyObject* args );
 
 protected:
 	static bool init_;
+	ai_interface::move_map src_dst_;
+	ai_interface::move_map dst_src_;
+	std::map<location,paths> possible_moves_;
 };
 
 

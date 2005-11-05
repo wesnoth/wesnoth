@@ -398,6 +398,34 @@ static PyTypeObject wesnoth_team_type = {
 	team_getseters,          /* tp_getset */
 };
 
+static PyObject* wrap_location(const gamemap::location& loc)
+{
+	wesnoth_location* location;
+	location = (wesnoth_location*)PyObject_NEW(wesnoth_location, &wesnoth_location_type);
+	location->location_ = new gamemap::location(loc.x, loc.y);
+	return (PyObject*)location;
+}
+
+static PyObject* wrap_move_map(const ai_interface::move_map& wrap)
+{
+	PyObject* dict = PyDict_New();
+	PyObject* list;
+	PyObject* loc;
+	ai_interface::move_map::const_iterator pos;
+	for (pos = wrap.begin(); pos != wrap.end(); pos++)
+	{
+		loc = wrap_location(pos->first);
+		list = PyDict_GetItem(dict,loc);
+		if (!list)
+		{
+			list = PyList_New(0);
+			PyDict_SetItem(dict,loc,list);
+			Py_DECREF(list);
+		}
+		PyList_Append(list,wrap_location(pos->second));
+	}
+	return dict;
+}
 
 PyObject* python_ai::wrapper_log_message(PyObject* self, PyObject* args)
 {
@@ -421,13 +449,12 @@ PyObject* python_ai::wrapper_get_units(PyObject* self, PyObject* args)
 		return Py_None;
 	}
 
-	wesnoth_location* key;
+	PyObject* key;
 	wesnoth_unit* unit;
 	int ret;
 
 	for(unit_map::const_iterator i = running_instance->get_info().units.begin(); i != running_instance->get_info().units.end(); ++i) {
-		key = (wesnoth_location*)PyObject_NEW(wesnoth_location, &wesnoth_location_type);
-		key->location_ = new gamemap::location(i->first.x, i->first.y);
+		key = wrap_location(i->first);
 		unit = (wesnoth_unit*)PyObject_NEW(wesnoth_unit, &wesnoth_unit_type);
 		unit->unit_ = &i->second;
 		ret = PyDict_SetItem(dict,(PyObject*)key,(PyObject*)unit);
@@ -444,12 +471,7 @@ PyObject* python_ai::wrapper_get_location(PyObject* self, PyObject* args)
     if ( !PyArg_ParseTuple( args, "ii", &x, &y ) )
         return NULL;
 
-	location* wrap = new gamemap::location();
-	wrap->x = x;
-	wrap->y = y;
-	wesnoth_location* loc = (wesnoth_location*)PyObject_NEW(wesnoth_location, &wesnoth_location_type);
-	loc->location_ = wrap;
-	return (PyObject*)loc;
+	return wrap_location(gamemap::location(x,y));
 }
 
 PyObject* python_ai::wrapper_get_map(PyObject* self, PyObject* args)
@@ -486,6 +508,16 @@ PyObject* python_ai::wrapper_get_current_team(PyObject* self, PyObject* args)
 	return (PyObject*)the_team;
 }
 
+PyObject* python_ai::wrapper_get_src_dst(PyObject* self, PyObject* args)
+{
+	return wrap_move_map(running_instance->src_dst_);
+}
+
+PyObject* python_ai::wrapper_get_dst_src(PyObject* self, PyObject* args)
+{
+	return wrap_move_map(running_instance->dst_src_);
+}
+
 static PyMethodDef wesnoth_python_methods[] = {
 	{"log_message",		python_ai::wrapper_log_message,		METH_VARARGS},
 	{"get_units",		python_ai::wrapper_get_units,		METH_VARARGS},
@@ -493,6 +525,8 @@ static PyMethodDef wesnoth_python_methods[] = {
 	{"get_map",			python_ai::wrapper_get_map,			METH_VARARGS},
 	{"get_teams",		python_ai::wrapper_get_teams,		METH_VARARGS},
 	{"get_current_team",		python_ai::wrapper_get_current_team,		METH_VARARGS},
+	{"get_src_dst",		python_ai::wrapper_get_src_dst, METH_VARARGS},
+	{"get_dst_src",		python_ai::wrapper_get_src_dst, METH_VARARGS},
 	{NULL, NULL}
 };
 
@@ -516,6 +550,7 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
 		Py_Register(wesnoth_team_type, "team");
 		init_ = true;
 	}
+	calculate_possible_moves(possible_moves_,src_dst_,dst_src_,false);
 }
 
 python_ai::~python_ai()
