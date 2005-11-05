@@ -315,7 +315,7 @@ std::vector<std::string> get_text() {
 		"_" N_("+Spanish Translation"),
 		"-   David Martínez Moreno",
 		"-   Flamma",
-		"-   Franciso Muñoz (fmunoz)",
+		"-   Francisco Muñoz (fmunoz)",
 		"-   Gabriel Rodríguez (Chewie)",
 		"-   Iván Herrero (navitux)",
 		"-   Jose Gordillo (kilder)",
