@@ -64,6 +64,10 @@ SVN trunk:
      Hornshark Island
    * updated multiplayer maps cfg files: Clash, Hexcake, Smallolof
    * fixed gamelist diff bug
+   * renamed "Across The River" config file to improve display order.
+   * renamed "Across The River" map to "Across the River".
+   * Made "Load Game ..." the first map option, instead of the last one to
+     improve visibility of this option.
  * campaign server
    * Support new "timestamp" attribute
    * Save persistent attributes in the campaign data
@@ -122,6 +126,11 @@ SVN trunk:
    same machine without triggering spurious cache rebuilds ans such things.
  * Fix bug where duplicate key values were being concatenated rather than
    being replaced by the last value.
+ * Changed backstab to work when the opposite unit is any enemy of the
+   defender that isn't incapacitated.
+ * builtin help documentation changes
+   * Updated description of backstab to match the new functionallity.
+   * Updated description of Beserk to mention the 30 round limit.
  * various bug fixes and code cleanups
 
 Version 1.0rc1:

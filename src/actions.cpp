@@ -307,6 +307,7 @@ double pr_kills_during(const int hpa, const int dmga, const double pa,
 }
 
 battle_stats evaluate_battle_stats(const gamemap& map,
+                                   std::vector<team>& teams,
                                    const gamemap::location& attacker,
                                    const gamemap::location& defender,
                                    int attack_with,
@@ -354,21 +355,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	static const std::string backstab_string("backstab");
 	if (res.attacker_special == backstab_string) {
-		gamemap::location adj[6];
-		get_adjacent_tiles(defender, adj);
-		int i;
-		for(i = 0; i != 6; ++i) {
-			if(adj[i] == attacker)
-				break;
-		}
-
-		if(i != 6) {
-			const std::map<gamemap::location,unit>::const_iterator u =
-			                    units.find(adj[(i+3)%6]);
-			if(u != units.end() && u->second.side() == a->second.side()) {
-				backstab = true;
-			}
-		}
+		backstab = backstab_check(attacker, defender, units, teams);
 	}
 
 	static const std::string plague_string("plague");
@@ -724,8 +711,9 @@ void attack(display& gui, const gamemap& map,
 	static const std::string night_invisible("nightstalk");
 	a->second.remove_flag(night_invisible);
 
-	battle_stats stats = evaluate_battle_stats(map, attacker, defender,
-	                                           attack_with, units, state);
+	battle_stats stats = evaluate_battle_stats(map, teams, attacker,
+                                                   defender, attack_with,
+                                                   units, state);
 
 	statistics::attack_context attack_stats(a->second,d->second,stats);
 
@@ -2106,4 +2094,33 @@ void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& sta
 	} else {
 		recalculate_fog(map,status,gamedata,units,teams,team);
 	}
+}
+
+bool backstab_check(const gamemap::location& attacker_loc,
+	const gamemap::location& defender_loc,
+	std::map<gamemap::location,unit>& units, std::vector<team>& teams)
+{
+	const std::map<gamemap::location,unit>::const_iterator defender =
+		units.find(defender_loc);
+	if(defender == units.end()) return false; // No defender
+	
+	gamemap::location adj[6];
+	get_adjacent_tiles(defender_loc, adj);
+	int i;
+	for(i = 0; i != 6; ++i) {
+		if(adj[i] == attacker_loc)
+			break;
+	}
+	if(i >= 6) return false;  // Attack not from adjacent location
+
+	const std::map<gamemap::location,unit>::const_iterator opp =
+		units.find(adj[(i+3)%6]);
+	if(opp == units.end()) return false; // No opposite unit
+	if(opp->second.incapacitated()) return false;
+	if(size_t(defender->second.side()-1) >= teams.size() ||
+		size_t(opp->second.side()-1) >= teams.size())
+		return true; // If sides aren't valid teams, then they are enemies
+        if(teams[defender->second.side()-1].is_enemy(opp->second.side()))
+                return true; // Defender and opposite are enemies
+	return false; // Defender and opposite are friends
 }

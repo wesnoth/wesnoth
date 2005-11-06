@@ -86,6 +86,7 @@ struct battle_stats_strings
 //battle_stats will be populated, and the function will run
 //substantially faster.
 battle_stats evaluate_battle_stats(const gamemap& map,
+                                   std::vector<team>& teams,
                                    const gamemap::location& attacker,
                                    const gamemap::location& defender,
                                    int attack_with,
@@ -222,5 +223,15 @@ namespace victory_conditions {
 	void set_victory_when_enemies_defeated(bool on);
 	bool victory_when_enemies_defeated();
 }
+
+//Function to check if an attack will satisfy the requirements for backstab
+//given the location from which the attack will occur, the defending unit
+//location, the list of units on the map and the list of teams.
+//The defender and opposite units should be in place already. The
+//attacking unit doesn't need to be, but if it isn't, an external check should
+//be made to make sure the opposite unit isn't also the attacker.
+bool backstab_check(const gamemap::location& attacker_loc,
+	const gamemap::location& defender_loc,
+	std::map<gamemap::location,unit>& units, std::vector<team>& teams);
 
 #endif

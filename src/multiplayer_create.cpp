@@ -67,16 +67,21 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	generator_(NULL)
 {
 	//build the list of scenarios to play
+
+	//add the 'load game' option
+	map_options_.push_back(_("Load Game") + std::string("..."));
+
+	//user maps
 	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
 
-	map_options_ = user_maps_;
+	for(int i = 0; i < user_maps_.size(); i++)
+		map_options_.push_back(user_maps_[i]);
 
+	//standard maps
 	const config::child_list& levels = cfg.get_children("multiplayer");
 	for(config::child_list::const_iterator j = levels.begin(); j != levels.end(); ++j){
 		map_options_.push_back((**j)["name"]);
 	}
-	//add the 'load game' option
-	map_options_.push_back(_("Load Game") + std::string("..."));
 
 	//create the scenarios menu
 	maps_menu_.set_items(map_options_);
@@ -242,17 +247,17 @@ void create::process_event()
 
 		const size_t select = size_t(maps_menu_.selection());
 
-		if(select < user_maps_.size()) {
+		if(select > 0 && select <= user_maps_.size()) {
 			parameters_.saved_game = false;
 			const config* const generic_multiplayer = game_config().child("generic_multiplayer");
 			if(generic_multiplayer != NULL) {
 				parameters_.scenario_data = *generic_multiplayer;
-				parameters_.scenario_data["map_data"] = read_map(user_maps_[select]);
+				parameters_.scenario_data["map_data"] = read_map(user_maps_[select-1]);
 			}
 
-		} else if(select != maps_menu_.nitems()-1) {
+		} else if(select > user_maps_.size() && select <= maps_menu_.nitems()-1) {
 			parameters_.saved_game = false;
-			const size_t index = select - user_maps_.size();
+			const size_t index = select - user_maps_.size() - 1;
 			const config::child_list& levels = game_config().get_children("multiplayer");
 
 			if(index < levels.size()) {

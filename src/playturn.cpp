@@ -617,7 +617,7 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 	for(size_t a = 0; a != attacks.size(); ++a) {
 
 		battle_stats_strings sts;
-		battle_stats st = evaluate_battle_stats(map_, attacker_loc, defender_loc,
+		battle_stats st = evaluate_battle_stats(map_, teams_, attacker_loc, defender_loc,
 		                                        a, units_, status_, 0, &sts);
 		stats.push_back(sts);
 

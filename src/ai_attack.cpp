@@ -136,7 +136,10 @@ void ai::do_attack_analysis(
 				//actually take backstab into account (too complicated), this could actually
 				//make our analysis look *worse* instead of better.
 				//so we only check for 'concrete' backstab opportunities.
-				if(itor != units_.end() && itor->second.side() == unit_itor->second.side()) {
+				//That would also break backstab_check, since it
+				//assumes the defender is in place.
+				if(itor != units_.end() && 
+					backstab_check(tiles[j], loc, units_, teams_)) {
 					if(backstab) {
 						backstab_bonus = 2;
 					}
@@ -282,7 +285,7 @@ int ai::choose_weapon(const location& att, const location& def,
 	int a_hitpoints = itor->second.hitpoints();
 
 	for(size_t a = 0; a != attacks.size(); ++a) {
-		const battle_stats stats = evaluate_battle_stats(map_, att, def, a, units_,
+		const battle_stats stats = evaluate_battle_stats(map_, teams_, att, def, a, units_,
 		                                                 state_, terrain);
 
 		//TODO: improve this rating formula!
