@@ -282,9 +282,15 @@ static PyObject* unit_is_enemy(wesnoth_unit* unit, void* closure)
 	return Py_BuildValue("i",running_instance->current_team().is_enemy(unit->unit_->side()) == true ? 1 : 0);
 }
 
+static PyObject* unit_can_recruit(wesnoth_unit* unit, void* closure)
+{
+	return Py_BuildValue("i",unit->unit_->can_recruit() == true ? 1 : 0);
+}
+
 static PyGetSetDef unit_getseters[] = {
 	{ "name",       (getter)unit_get_name,     NULL, NULL, NULL },
 	{ "is_enemy",       (getter)unit_is_enemy,     NULL, NULL, NULL },
+	{ "can_recruit",       (getter)unit_can_recruit,     NULL, NULL, NULL },
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
@@ -464,9 +470,18 @@ static PyObject* wrapper_getmap_is_keep( wesnoth_gamemap* map, PyObject* args )
 	return Py_BuildValue("i", map->map_->is_keep(*location->location_) ? 1 : 0);
 }
 
+static PyObject* wrapper_getmap_is_castle( wesnoth_gamemap* map, PyObject* args )
+{
+	wesnoth_location* location;
+	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &location ) )
+		return NULL;
+	return Py_BuildValue("i", map->map_->is_castle(*location->location_) ? 1 : 0);
+}
+
 static PyMethodDef gamemap_methods[] = {
 	{ "is_village",         (PyCFunction)wrapper_getmap_is_village,       METH_VARARGS},
 	{ "is_keep",         (PyCFunction)wrapper_getmap_is_keep,       METH_VARARGS},
+	{ "is_castle",         (PyCFunction)wrapper_getmap_is_castle,       METH_VARARGS},
 	{ NULL, NULL, 0 }
 };
 
@@ -509,6 +524,16 @@ static PyObject* wrapper_team_name(wesnoth_team* team, void* closure)
 	return Py_BuildValue("s", team->team_->team_name().c_str());
 }
 
+static PyObject* wrapper_team_income(wesnoth_team* team, void* closure)
+{
+	return Py_BuildValue("i", team->team_->income());
+}
+
+static PyObject* wrapper_team_gold(wesnoth_team* team, void* closure)
+{
+	return Py_BuildValue("i", team->team_->gold());
+}
+
 static int wrapper_team_internal_compare(wesnoth_team* left, wesnoth_team* right)
 {
 	return (int)left->team_ - (int)right->team_;
@@ -547,6 +572,8 @@ static PyMethodDef team_methods[] = {
 
 static PyGetSetDef team_getseters[] = {
 	{ "name",         (getter)wrapper_team_name,       NULL, NULL, NULL},
+	{ "gold",         (getter)wrapper_team_gold,       NULL, NULL, NULL},
+	{ "income",         (getter)wrapper_team_income,       NULL, NULL, NULL},
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
@@ -712,7 +739,9 @@ PyObject* python_ai::wrapper_move_unit(PyObject* self, PyObject* args)
 	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_location_type, &from, &wesnoth_location_type, &to ) )
 		return NULL;
 
-	return wrap_location(running_instance->move_unit_partial(*from->location_,*to->location_,running_instance->possible_moves_));
+	PyObject* loc = wrap_location(running_instance->move_unit_partial(*from->location_,*to->location_,running_instance->possible_moves_));
+	running_instance->calculate_possible_moves(running_instance->possible_moves_,running_instance->src_dst_,running_instance->dst_src_,false);
+	return loc;
 }
 
 PyObject* python_ai::wrapper_attack_unit(PyObject* self, PyObject* args)
@@ -724,6 +753,7 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* self, PyObject* args)
 		return NULL;
 
 	running_instance->attack_enemy(*from->location_,*to->location_,weapon);
+	running_instance->calculate_possible_moves(running_instance->possible_moves_,running_instance->src_dst_,running_instance->dst_src_,false);
 
 	Py_INCREF(Py_None);
 	return Py_None;
@@ -743,18 +773,28 @@ PyObject* python_ai::wrapper_get_adjacent_tiles(PyObject* self, PyObject* args)
 	return list;
 }
 
+PyObject* python_ai::wrapper_recruit_unit(PyObject* self, PyObject* args)
+{
+	wesnoth_location* where;
+	const char* name;
+	if ( !PyArg_ParseTuple( args, "sO!", &name, &wesnoth_location_type, &where ) )
+		return NULL;
+	return Py_BuildValue("i", running_instance->recruit(name,*where->location_) == true ? 1 : 0);
+}
+
 static PyMethodDef wesnoth_python_methods[] = {
-	{"log_message",		python_ai::wrapper_log_message,		METH_VARARGS},
-	{"get_units",		python_ai::wrapper_get_units,		METH_VARARGS},
-	{"get_location",	python_ai::wrapper_get_location,			METH_VARARGS},
-	{"get_map",			python_ai::wrapper_get_map,			METH_VARARGS},
-	{"get_teams",		python_ai::wrapper_get_teams,		METH_VARARGS},
-	{"get_current_team",		python_ai::wrapper_get_current_team,		METH_VARARGS},
-	{"get_src_dst",		python_ai::wrapper_get_src_dst, METH_VARARGS},
-	{"get_dst_src",		python_ai::wrapper_get_dst_src, METH_VARARGS},
-	{"move_unit",		python_ai::wrapper_move_unit, METH_VARARGS},
-	{"attack_unit",		python_ai::wrapper_attack_unit, METH_VARARGS},
-	{"get_adjacent_tiles",		python_ai::wrapper_get_adjacent_tiles, METH_VARARGS},
+	{ "log_message",		python_ai::wrapper_log_message,		METH_VARARGS},
+	{ "get_units",		python_ai::wrapper_get_units,		METH_VARARGS},
+	{ "get_location",	python_ai::wrapper_get_location,			METH_VARARGS},
+	{ "get_map",			python_ai::wrapper_get_map,			METH_VARARGS},
+	{ "get_teams",		python_ai::wrapper_get_teams,		METH_VARARGS},
+	{ "get_current_team",		python_ai::wrapper_get_current_team,		METH_VARARGS},
+	{ "get_src_dst",		python_ai::wrapper_get_src_dst, METH_VARARGS},
+	{ "get_dst_src",		python_ai::wrapper_get_dst_src, METH_VARARGS},
+	{ "move_unit",		python_ai::wrapper_move_unit, METH_VARARGS},
+	{ "attack_unit",		python_ai::wrapper_attack_unit, METH_VARARGS},
+	{ "get_adjacent_tiles",		python_ai::wrapper_get_adjacent_tiles, METH_VARARGS},
+	{ "recruit_unit",	python_ai::wrapper_recruit_unit, METH_VARARGS},
 	{NULL, NULL}
 };
 
