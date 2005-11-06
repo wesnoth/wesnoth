@@ -4,10 +4,6 @@
 #include "ai_interface.hpp"
 #include <Python.h>
 
-typedef struct {
-	PyObject_HEAD
-} wesnoth_gamemap;
-
 class python_ai : public ai_interface
 {
 public:
@@ -24,9 +20,6 @@ public:
 	static PyObject* wrapper_get_src_dst(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_dst_src(PyObject* self, PyObject* args);
 	static PyObject* wrapper_move_unit(PyObject* self, PyObject* args);
-
-	static PyObject* python_ai::wesnoth_getmap_is_keep( wesnoth_gamemap* map, PyObject* args );
-	static PyObject* python_ai::wesnoth_getmap_is_village( wesnoth_gamemap* map, PyObject* args );
 
 protected:
 	static bool init_;

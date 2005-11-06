@@ -285,29 +285,45 @@ static PyTypeObject wesnoth_location_type = {
 };
 
 
+typedef struct {
+	PyObject_HEAD
+	const gamemap* map_;
+} wesnoth_gamemap;
+
+static PyObject* gamemap_get_x(wesnoth_gamemap* map, void* closure)
+{
+	return Py_BuildValue("i", map->map_->x());
+}
+static PyObject* gamemap_get_y(wesnoth_gamemap* map, void* closure)
+{
+	return Py_BuildValue("i", map->map_->y());
+}
+
 static PyGetSetDef gamemap_getseters[] = {
+	{ "x",       (getter)gamemap_get_x,     NULL, NULL, NULL },
+	{ "y",       (getter)gamemap_get_y,     NULL, NULL, NULL },
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
-PyObject* python_ai::wesnoth_getmap_is_village( wesnoth_gamemap* map, PyObject* args )
+static PyObject* wrapper_getmap_is_village( wesnoth_gamemap* map, PyObject* args )
 {
 	wesnoth_location* location;
 	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &location ) )
 		return NULL;
-	return Py_BuildValue("i", running_instance->get_info().map.is_village(*location->location_) ? 1 : 0);
+	return Py_BuildValue("i", map->map_->is_village(*location->location_) ? 1 : 0);
 }
 
-PyObject* python_ai::wesnoth_getmap_is_keep( wesnoth_gamemap* map, PyObject* args )
+static PyObject* wrapper_getmap_is_keep( wesnoth_gamemap* map, PyObject* args )
 {
 	wesnoth_location* location;
 	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &location ) )
 		return NULL;
-	return Py_BuildValue("i", running_instance->get_info().map.is_keep(*location->location_) ? 1 : 0);
+	return Py_BuildValue("i", map->map_->is_keep(*location->location_) ? 1 : 0);
 }
 
 static PyMethodDef gamemap_methods[] = {
-	{ "is_village",         (PyCFunction)python_ai::wesnoth_getmap_is_village,       METH_VARARGS},
-	{ "is_keep",         (PyCFunction)python_ai::wesnoth_getmap_is_keep,       METH_VARARGS},
+	{ "is_village",         (PyCFunction)wrapper_getmap_is_village,       METH_VARARGS},
+	{ "is_keep",         (PyCFunction)wrapper_getmap_is_keep,       METH_VARARGS},
 	{ NULL, NULL, 0 }
 };
 
@@ -492,8 +508,9 @@ PyObject* python_ai::wrapper_get_map(PyObject* self, PyObject* args)
 {
     if ( !PyArg_ParseTuple( args, "" ) )
         return NULL;
-	wesnoth_gamemap* loc = (wesnoth_gamemap*)PyObject_NEW(wesnoth_gamemap, &wesnoth_gamemap_type);
-	return (PyObject*)loc;
+	wesnoth_gamemap* map = (wesnoth_gamemap*)PyObject_NEW(wesnoth_gamemap, &wesnoth_gamemap_type);
+	map->map_ = &running_instance->get_info().map;
+	return (PyObject*)map;
 }
 
 PyObject* python_ai::wrapper_get_teams(PyObject* self, PyObject* args)
