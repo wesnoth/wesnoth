@@ -232,7 +232,12 @@ static int location_internal_compare(wesnoth_location* left, wesnoth_location* r
 {
 	if (*left->location_ == *right->location_)
 		return 0;
-	return (int)left->location_ - (int)right->location_;
+	return *left->location_ < *right->location_ ? -1 : 1;
+}
+
+static long location_internal_hash(wesnoth_location* obj)
+{
+	return obj->location_->x * 1000 + obj->location_->y;
 }
 
 static PyGetSetDef location_getseters[] = {
@@ -260,7 +265,7 @@ static PyTypeObject wesnoth_location_type = {
 	0, //UniConvert,             /* tp_as_number*/
 	0,                         /* tp_as_sequence*/
 	0,                         /* tp_as_mapping*/
-	0,                         /* tp_hash */
+	(hashfunc)location_internal_hash,                         /* tp_hash */
 	0,                         /* tp_call*/
 	0,                         /* tp_str*/
 	0,   /* tp_getattro*/
@@ -355,7 +360,16 @@ static int wrapper_team_internal_compare(wesnoth_team* left, wesnoth_team* right
 	return (int)left->team_ - (int)right->team_;
 }
 
+static PyObject* wrapper_team_owns_village( wesnoth_team* team, PyObject* args )
+{
+	wesnoth_location* location;
+	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &location ) )
+		return NULL;
+	return Py_BuildValue("i", team->team_->owns_village(*location->location_) ? 1 : 0);
+}
+
 static PyMethodDef team_methods[] = {
+	{ "owns_village",         (PyCFunction)wrapper_team_owns_village,       METH_VARARGS},
     { NULL, NULL, NULL }
 };
 
@@ -518,6 +532,16 @@ PyObject* python_ai::wrapper_get_dst_src(PyObject* self, PyObject* args)
 	return wrap_move_map(running_instance->dst_src_);
 }
 
+PyObject* python_ai::wrapper_move_unit(PyObject* self, PyObject* args)
+{
+	wesnoth_location* from;
+	wesnoth_location* to;
+	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_location_type, &from, &wesnoth_location_type, &to ) )
+		return NULL;
+
+	return wrap_location(running_instance->move_unit_partial(*from->location_,*to->location_,running_instance->possible_moves_));
+}
+
 static PyMethodDef wesnoth_python_methods[] = {
 	{"log_message",		python_ai::wrapper_log_message,		METH_VARARGS},
 	{"get_units",		python_ai::wrapper_get_units,		METH_VARARGS},
@@ -526,7 +550,8 @@ static PyMethodDef wesnoth_python_methods[] = {
 	{"get_teams",		python_ai::wrapper_get_teams,		METH_VARARGS},
 	{"get_current_team",		python_ai::wrapper_get_current_team,		METH_VARARGS},
 	{"get_src_dst",		python_ai::wrapper_get_src_dst, METH_VARARGS},
-	{"get_dst_src",		python_ai::wrapper_get_src_dst, METH_VARARGS},
+	{"get_dst_src",		python_ai::wrapper_get_dst_src, METH_VARARGS},
+	{"move_unit",		python_ai::wrapper_move_unit, METH_VARARGS},
 	{NULL, NULL}
 };
 
