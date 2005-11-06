@@ -66,6 +66,10 @@ ut_get( steadfast )
 ut_get( not_living )
 ut_get( can_advance )
 ut_get( has_zoc )
+ut_get( level )
+ut_get( movement )
+ut_get( cost )
+ut_get( alignment )
 
 #define ut_gs( x ) \
 	{ #x,       (getter)wrapper_unittype_get_##x,     NULL, NULL, NULL },
@@ -84,6 +88,10 @@ static PyGetSetDef unittype_getseters[] = {
 	ut_gs( not_living )
 	ut_gs( can_advance )
 	ut_gs( has_zoc )
+	ut_gs( level )
+	ut_gs( movement )
+	ut_gs( cost )
+	ut_gs( alignment )
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
