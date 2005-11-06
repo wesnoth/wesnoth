@@ -1,4 +1,4 @@
-Version 1.0.1+svn:
+Version 1.0.2:
  * new utilities: prkill, find-unused-images, mkdos
  * fixed text savegames (as opposed to binary savegames) having wrong
  textdomain information, making the messages be displayed in English when
@@ -16,12 +16,12 @@ Version 1.0.1+svn:
    * updated translations: Afrikaans, German, Japanese, Polish, 
      Portuguese (Brazil), Slovak
    * some language glitches fixed (#4344 #4357)
- * Fix bug where duplicate key values were being concatenated rather than
-   being replaced by the last value.
  * multiplayer
    * revised multiplayer maps: Blitz, Clash, Charge, CastleHoppingIsle, 
      Hamlets, Hornshark Island
    * fixed gamelist diff bug
+ * Fix bug where duplicate key values were being concatenated rather than
+   being replaced by the last value.
  * Backport recall fix to allow access to recall list when short on gold.
 
 Version 1.0.1:
