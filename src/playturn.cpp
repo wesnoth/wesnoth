@@ -2203,7 +2203,10 @@ void turn_info::create_unit()
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
-		choice = gui::show_dialog(gui_,NULL,"",dsgettext(PACKAGE "-lib","Create Unit (Debug!)"),
+		// FIXME: this relies on the string being in -lib
+		// already from its appearance in hotkeys.cpp, since
+		// xgettext will ignore dsgettext2 (another hack)
+		choice = gui::show_dialog(gui_,NULL,"",dsgettext2(PACKAGE "-lib","Create Unit (Debug!)"),
 		                          gui::OK_CANCEL,&options,&preview_panes);
 	}
 

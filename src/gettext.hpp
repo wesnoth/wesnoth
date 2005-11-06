@@ -21,6 +21,10 @@
 const char* egettext(const char*);
 const char* sgettext(const char*);
 const char* dsgettext(const char * domainname, const char *msgid);
+/* FIXME: workaround, dsgettext2 is dsgettext but not processed by xgettext */
+/* better is the approach in trunk of refactoring code to not use */
+/* multiple text domains in one file */
+#define dsgettext2 dsgettext
 
 #ifdef GETTEXT_DOMAIN
 # define _(String) dgettext(GETTEXT_DOMAIN,String)
