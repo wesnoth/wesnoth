@@ -20,6 +20,7 @@ public:
 	static PyObject* wrapper_get_src_dst(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_dst_src(PyObject* self, PyObject* args);
 	static PyObject* wrapper_move_unit(PyObject* self, PyObject* args);
+	static PyObject* wrapper_attack_unit(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_adjacent_tiles(PyObject* self, PyObject* args);
 
 protected:

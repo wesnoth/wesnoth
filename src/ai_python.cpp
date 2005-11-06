@@ -248,7 +248,7 @@ static PyObject* unit_get_name(wesnoth_unit* unit, void* closure)
 
 static PyObject* unit_is_enemy(wesnoth_unit* unit, void* closure)
 {
-	return Py_BuildValue("i",running_instance->current_team().is_enemy(unit->unit_->side()) ? 1 : 0);
+	return Py_BuildValue("i",running_instance->current_team().is_enemy(unit->unit_->side()) == true ? 1 : 0);
 }
 
 static PyGetSetDef unit_getseters[] = {
@@ -674,6 +674,20 @@ PyObject* python_ai::wrapper_move_unit(PyObject* self, PyObject* args)
 	return wrap_location(running_instance->move_unit_partial(*from->location_,*to->location_,running_instance->possible_moves_));
 }
 
+PyObject* python_ai::wrapper_attack_unit(PyObject* self, PyObject* args)
+{
+	wesnoth_location* from;
+	wesnoth_location* to;
+	int weapon;
+	if ( !PyArg_ParseTuple( args, "O!O!i", &wesnoth_location_type, &from, &wesnoth_location_type, &to, &weapon ) )
+		return NULL;
+
+	running_instance->attack_enemy(*from->location_,*to->location_,weapon);
+
+	Py_INCREF(Py_None);
+	return Py_None;
+}
+
 PyObject* python_ai::wrapper_get_adjacent_tiles(PyObject* self, PyObject* args)
 {
 	wesnoth_location* where;
@@ -698,6 +712,7 @@ static PyMethodDef wesnoth_python_methods[] = {
 	{"get_src_dst",		python_ai::wrapper_get_src_dst, METH_VARARGS},
 	{"get_dst_src",		python_ai::wrapper_get_dst_src, METH_VARARGS},
 	{"move_unit",		python_ai::wrapper_move_unit, METH_VARARGS},
+	{"attack_unit",		python_ai::wrapper_attack_unit, METH_VARARGS},
 	{"get_adjacent_tiles",		python_ai::wrapper_get_adjacent_tiles, METH_VARARGS},
 	{NULL, NULL}
 };
