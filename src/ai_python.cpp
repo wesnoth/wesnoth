@@ -134,6 +134,110 @@ static PyTypeObject wesnoth_unittype_type = {
 
 typedef struct {
 	PyObject_HEAD
+	const attack_type* attack_type_;
+} wesnoth_attacktype;
+
+static PyObject* attacktype_get_name(wesnoth_attacktype* type, void* closure)
+{
+	return Py_BuildValue("s",type->attack_type_->name().c_str());
+}
+
+static PyObject* attacktype_get_damage(wesnoth_attacktype* type, void* closure)
+{
+	return Py_BuildValue("i",type->attack_type_->damage());
+}
+
+static PyObject* attacktype_get_num_attacks(wesnoth_attacktype* type, void* closure)
+{
+	return Py_BuildValue("i",type->attack_type_->num_attacks());
+}
+
+static PyObject* attacktype_get_attack_weight(wesnoth_attacktype* type, void* closure)
+{
+	return Py_BuildValue("d",type->attack_type_->attack_weight());
+}
+
+static PyObject* attacktype_get_defense_weight(wesnoth_attacktype* type, void* closure)
+{
+	return Py_BuildValue("d",type->attack_type_->defense_weight());
+}
+
+static PyObject* attacktype_get_backstab(wesnoth_attacktype* type, void* closure)
+{
+	return Py_BuildValue("i",type->attack_type_->backstab());
+}
+
+static PyObject* attacktype_get_slow(wesnoth_attacktype* type, void* closure)
+{
+	return Py_BuildValue("i",type->attack_type_->slow());
+}
+
+static PyObject* attacktype_get_range(wesnoth_attacktype* type, void* closure)
+{
+	return Py_BuildValue("i",type->attack_type_->range());
+}
+
+static PyGetSetDef attacktype_getseters[] = {
+	{ "name",			(getter)attacktype_get_name,	NULL, NULL, NULL },
+	{ "damage",       (getter)attacktype_get_damage,     NULL, NULL, NULL },
+	{ "num_attacks",       (getter)attacktype_get_num_attacks,     NULL, NULL, NULL },
+	{ "attack_weight",       (getter)attacktype_get_attack_weight,     NULL, NULL, NULL },
+	{ "defense_weight",       (getter)attacktype_get_defense_weight,     NULL, NULL, NULL },
+	{ "backstab",       (getter)attacktype_get_backstab,     NULL, NULL, NULL },
+	{ "slow",       (getter)attacktype_get_slow,     NULL, NULL, NULL },
+	{ "range",       (getter)attacktype_get_range,     NULL, NULL, NULL },
+	{ NULL, NULL, NULL, NULL, NULL }
+};
+
+static PyMethodDef attacktype_methods[] = {
+	{ NULL, NULL, NULL }
+};
+
+static PyTypeObject wesnoth_attacktype_type = {
+	PyObject_HEAD_INIT(NULL)
+	0,                         /* ob_size*/
+	"wesnoth.attacktype",        /* tp_name*/
+	sizeof(wesnoth_attacktype),  /* tp_basicsize*/
+	0,                         /* tp_itemsize*/
+	0,                         /* tp_dealloc*/
+	0,                         /* tp_print*/
+	0,                         /* tp_getattr*/
+	0,                         /* tp_setattr*/
+	0,                         /* tp_compare*/
+	0,                         /* tp_repr*/
+	0, //UniConvert,             /* tp_as_number*/
+	0,                         /* tp_as_sequence*/
+	0,                         /* tp_as_mapping*/
+	0,                         /* tp_hash */
+	0,                         /* tp_call*/
+	0,                         /* tp_str*/
+	0,   /* tp_getattro*/
+	0,   /* tp_setattro*/
+	0,                         /* tp_as_buffer*/
+	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
+	"Wesnoth attack type",       /* tp_doc */
+	0,                         /* tp_traverse */
+	0,                         /* tp_clear */
+	0,                         /* tp_richcompare */
+	0,                         /* tp_weaklistoffset */
+	0,                         /* tp_iter */
+	0,                         /* tp_iternext */
+	attacktype_methods,             /* tp_methods */
+	0,                         /* tp_members */
+	attacktype_getseters,          /* tp_getset */
+};
+
+static PyObject* wrap_attacktype(const attack_type& type)
+{
+	wesnoth_attacktype* attack;
+	attack = (wesnoth_attacktype*)PyObject_NEW(wesnoth_attacktype, &wesnoth_attacktype_type);
+	attack->attack_type_ = &type;
+	return (PyObject*)attack;
+}
+
+
+typedef struct {
+	PyObject_HEAD
 	const unit* unit_;
 } wesnoth_unit;
 
@@ -163,8 +267,19 @@ static PyObject* wrapper_unit_type( wesnoth_unit* unit, PyObject* args )
 	return (PyObject*)type;
 }
 
+static PyObject* wrapper_unit_attacks( wesnoth_unit* unit, PyObject* args )
+{
+	if ( !PyArg_ParseTuple( args, "" ) )
+		return NULL;
+	PyObject* list = PyList_New(unit->unit_->attacks().size());
+	for ( int attack = 0; attack < unit->unit_->attacks().size(); attack++)
+		PyList_SetItem(list,attack,wrap_attacktype(unit->unit_->attacks()[attack]));
+	return (PyObject*)list;
+}
+
 static PyMethodDef unit_methods[] = {
 	{ "type",		(PyCFunction)wrapper_unit_type,       METH_VARARGS},
+	{ "attacks",	(PyCFunction)wrapper_unit_attacks,		METH_VARARGS},
 	{ NULL, NULL, NULL }
 };
 
@@ -605,6 +720,7 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
 		Py_Register(wesnoth_gamemap_type, "gamemap");
 		Py_Register(wesnoth_unittype_type, "unittype");
 		Py_Register(wesnoth_team_type, "team");
+		Py_Register(wesnoth_attacktype_type, "attacktype");
 		init_ = true;
 	}
 	calculate_possible_moves(possible_moves_,src_dst_,dst_src_,false);
