@@ -1,24 +1,24 @@
 # Microsoft Developer Studio Project File - Name="wesnoth" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
-# ** DO NOT EDIT **
+# ** NICHT BEARBEITEN **
 
 # TARGTYPE "Win32 (x86) Application" 0x0101
 
 CFG=wesnoth - Win32 Debug
-!MESSAGE This is not a valid makefile. To build this project using NMAKE,
-!MESSAGE use the Export Makefile command and run
+!MESSAGE Dies ist kein gültiges Makefile. Zum Erstellen dieses Projekts mit NMAKE
+!MESSAGE verwenden Sie den Befehl "Makefile exportieren" und führen Sie den Befehl
 !MESSAGE 
 !MESSAGE NMAKE /f "wesnoth.mak".
 !MESSAGE 
-!MESSAGE You can specify a configuration when running NMAKE
-!MESSAGE by defining the macro CFG on the command line. For example:
+!MESSAGE Sie können beim Ausführen von NMAKE eine Konfiguration angeben
+!MESSAGE durch Definieren des Makros CFG in der Befehlszeile. Zum Beispiel:
 !MESSAGE 
 !MESSAGE NMAKE /f "wesnoth.mak" CFG="wesnoth - Win32 Debug"
 !MESSAGE 
-!MESSAGE Possible choices for configuration are:
+!MESSAGE Für die Konfiguration stehen zur Auswahl:
 !MESSAGE 
-!MESSAGE "wesnoth - Win32 Release" (based on "Win32 (x86) Application")
-!MESSAGE "wesnoth - Win32 Debug" (based on "Win32 (x86) Application")
+!MESSAGE "wesnoth - Win32 Release" (basierend auf  "Win32 (x86) Application")
+!MESSAGE "wesnoth - Win32 Debug" (basierend auf  "Win32 (x86) Application")
 !MESSAGE 
 
 # Begin Project
@@ -126,6 +126,10 @@ SOURCE=.\src\serialization\binary_or_text.cpp
 # Begin Source File
 
 SOURCE=.\src\serialization\binary_wml.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=".\src\boilerplate-header.cpp"
 # End Source File
 # Begin Source File
 
@@ -269,11 +273,15 @@ SOURCE=.\src\mapgen_dialog.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=".\src\marked-up_text.cpp"
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\widgets\menu.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\morph.cpp
+SOURCE=.\src\minimap.cpp
 # End Source File
 # Begin Source File
 
@@ -338,6 +346,10 @@ SOURCE=.\src\playturn.cpp
 # Begin Source File
 
 SOURCE=.\src\preferences.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\preferences_display.cpp
 # End Source File
 # Begin Source File
 
@@ -481,6 +493,10 @@ SOURCE=.\src\widgets\widget.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
+SOURCE=.\src\about.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\actions.hpp
 # End Source File
 # Begin Source File
@@ -585,6 +601,10 @@ SOURCE=.\src\game_config.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\game_errors.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\game_events.hpp
 # End Source File
 # Begin Source File
@@ -641,6 +661,10 @@ SOURCE=.\src\map.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\map_create.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\map_label.hpp
 # End Source File
 # Begin Source File
@@ -653,11 +677,15 @@ SOURCE=.\src\mapgen_dialog.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=".\src\marked-up_text.hpp"
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\widgets\menu.hpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\morph.hpp
+SOURCE=.\src\minimap.hpp
 # End Source File
 # Begin Source File
 
@@ -713,6 +741,10 @@ SOURCE=.\src\pathutils.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\playcampaign.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\playlevel.hpp
 # End Source File
 # Begin Source File
@@ -725,11 +757,19 @@ SOURCE=.\src\preferences.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\preferences_display.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\serialization\preprocessor.hpp
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\widgets\progressbar.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\publish_campaign.hpp
 # End Source File
 # Begin Source File
 
@@ -845,11 +885,27 @@ SOURCE=.\src\util.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\variable.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\video.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\wassert.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\wesconfig.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\widgets\widget.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\wml_separators.hpp
 # End Source File
 # End Group
 # Begin Group "Resource Files"

@@ -10,8 +10,9 @@
 
    See the COPYING file for more details.
 */
-#include "font.hpp"
 #include "global.hpp"
+
+#include "font.hpp"
 #include "marked-up_text.hpp"
 #include "team.hpp"
 #include "video.hpp"
