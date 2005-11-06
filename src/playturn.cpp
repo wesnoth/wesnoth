@@ -2054,12 +2054,6 @@ void turn_info::recall()
 	} else if(recall_list.empty()) {
 		gui::show_dialog(gui_,NULL,"",_("There are no troops available to recall\n\
 (You must have veteran survivors from a previous scenario)"));
-	} else if(current_team.gold() < game_config::recall_cost) {
-		std::stringstream msg;
-		utils::string_map i18n_symbols;
-		i18n_symbols["cost"] = lexical_cast<std::string>(game_config::recall_cost);
-		msg << vgettext("You must have at least $cost gold pieces to recall a unit", i18n_symbols);
-		gui::show_dialog(gui_,NULL,"",msg.str());
 	} else {
 		std::vector<std::string> options;
 
@@ -2113,25 +2107,33 @@ void turn_info::recall()
 		}
 
 		if(res >= 0) {
-			unit& un = recall_list[res];
-			gamemap::location loc = last_hex_;
-			recorder.add_recall(res,loc);
-			const std::string err = recruit_unit(map_,team_num_,units_,un,loc,&gui_);
-			if(!err.empty()) {
-				recorder.undo();
-				gui::show_dialog(gui_,NULL,"",err,gui::OK_ONLY);
+			if(current_team.gold() < game_config::recall_cost) {
+				std::stringstream msg;
+				utils::string_map i18n_symbols;
+				i18n_symbols["cost"] = lexical_cast<std::string>(game_config::recall_cost);
+				msg << vgettext("You must have at least $cost gold pieces to recall a unit", i18n_symbols);
+				gui::show_dialog(gui_,NULL,"",msg.str());
 			} else {
-				statistics::recall_unit(un);
-				current_team.spend_gold(game_config::recall_cost);
+				unit& un = recall_list[res];
+				gamemap::location loc = last_hex_;
+				recorder.add_recall(res,loc);
+				const std::string err = recruit_unit(map_,team_num_,units_,un,loc,&gui_);
+				if(!err.empty()) {
+					recorder.undo();
+					gui::show_dialog(gui_,NULL,"",err,gui::OK_ONLY);
+				} else {
+					statistics::recall_unit(un);
+					current_team.spend_gold(game_config::recall_cost);
 
-				undo_stack_.push_back(undo_action(un,loc,res));
-				redo_stack_.clear();
+					undo_stack_.push_back(undo_action(un,loc,res));
+					redo_stack_.clear();
 
-				clear_shroud();
-
-				recall_list.erase(recall_list.begin()+res);
-				gui_.invalidate_game_status();
-				gui_.invalidate_all();
+					clear_shroud();
+	
+					recall_list.erase(recall_list.begin()+res);
+					gui_.invalidate_game_status();
+					gui_.invalidate_all();
+				}
 			}
 		}
 	}
