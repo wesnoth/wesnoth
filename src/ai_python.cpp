@@ -504,11 +504,6 @@ static PyTypeObject wesnoth_gamemap_type = {
 	gamemap_getseters,          /* tp_getset */
 };
 
-typedef struct {
-	PyObject_HEAD
-	const team* team_;
-} wesnoth_team;
-
 static PyObject* wrapper_team_name(wesnoth_team* team, void* closure)
 {
 	return Py_BuildValue("s", team->team_->team_name().c_str());
@@ -527,8 +522,26 @@ static PyObject* wrapper_team_owns_village( wesnoth_team* team, PyObject* args )
 	return Py_BuildValue("i", team->team_->owns_village(*location->location_) ? 1 : 0);
 }
 
+PyObject* python_ai::wrapper_team_recruits( wesnoth_team* team, PyObject* args )
+{
+	if ( !PyArg_ParseTuple( args, "" ) )
+		return NULL;
+
+	PyObject* list = PyList_New(running_instance->current_team().recruits().size());
+	int r;
+	int idx = 0;
+	for (std::set<std::string>::const_iterator recruit = running_instance->current_team().recruits().begin(); recruit != running_instance->current_team().recruits().end(); ++recruit)
+	{
+		std::map<std::string,unit_type>::const_iterator t = running_instance->get_info().gameinfo.unit_types.find(*recruit);
+		wassert(t != running_instance->get_info().gameinfo.unit_types.end());
+		r = PyList_SetItem(list,idx++,wrap_unittype(t->second));
+	}
+	return list;
+}
+
 static PyMethodDef team_methods[] = {
 	{ "owns_village",         (PyCFunction)wrapper_team_owns_village,       METH_VARARGS},
+	{ "recruits",         (PyCFunction)python_ai::wrapper_team_recruits,       METH_VARARGS},
     { NULL, NULL, NULL }
 };
 

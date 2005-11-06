@@ -9,6 +9,11 @@ typedef struct {
 	const unit_type* unit_type_;
 } wesnoth_unittype;
 
+typedef struct {
+	PyObject_HEAD
+	const team* team_;
+} wesnoth_team;
+
 class python_ai : public ai_interface
 {
 public:
@@ -29,6 +34,8 @@ public:
 	static PyObject* wrapper_get_adjacent_tiles(PyObject* self, PyObject* args);
 
 	static PyObject* unittype_advances_to( wesnoth_unittype* type, PyObject* args );
+	static PyObject* wrapper_team_recruits( wesnoth_team* team, PyObject* args );
+
 protected:
 	static bool init_;
 	ai_interface::move_map src_dst_;
