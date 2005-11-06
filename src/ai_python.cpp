@@ -13,7 +13,7 @@
 
 /*
  TODO (from the forum):
-- display, which I don't think has to be exposed to Python. This is used by C++ AIs mostly for
+* display, which I don't think has to be exposed to Python. This is used by C++ AIs mostly for
   debugging purposes. We might want to allow Python scripts to write messages to the display for
   debugging purposes also, but they would only need very limited access.
 p gamemap, defined in map.hpp, which contains the definition of the map. Definitely needs to be
@@ -559,6 +559,20 @@ PyObject* python_ai::wrapper_move_unit(PyObject* self, PyObject* args)
 	return wrap_location(running_instance->move_unit_partial(*from->location_,*to->location_,running_instance->possible_moves_));
 }
 
+PyObject* python_ai::wrapper_get_adjacent_tiles(PyObject* self, PyObject* args)
+{
+	wesnoth_location* where;
+	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &where ) )
+		return NULL;
+
+	PyObject* list = PyList_New(6);
+	gamemap::location loc[6];
+	get_adjacent_tiles(*where->location_,loc);
+	for ( int tile = 0; tile < 6; tile++ )
+		PyList_SetItem(list,tile,wrap_location(loc[tile]));
+	return list;
+}
+
 static PyMethodDef wesnoth_python_methods[] = {
 	{"log_message",		python_ai::wrapper_log_message,		METH_VARARGS},
 	{"get_units",		python_ai::wrapper_get_units,		METH_VARARGS},
@@ -569,6 +583,7 @@ static PyMethodDef wesnoth_python_methods[] = {
 	{"get_src_dst",		python_ai::wrapper_get_src_dst, METH_VARARGS},
 	{"get_dst_src",		python_ai::wrapper_get_dst_src, METH_VARARGS},
 	{"move_unit",		python_ai::wrapper_move_unit, METH_VARARGS},
+	{"get_adjacent_tiles",		python_ai::wrapper_get_adjacent_tiles, METH_VARARGS},
 	{NULL, NULL}
 };
 
