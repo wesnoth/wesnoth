@@ -999,6 +999,57 @@ bool unit::can_advance() const
 	return type().can_advance() || get_modification_advances().empty() == false;
 }
 
+std::map<std::string,std::string> unit::advancement_icons() const
+{
+  std::map<std::string,std::string> temp;
+  std::string image;
+  if(can_advance()){
+    if(type().can_advance()){
+      std::stringstream tooltip;
+      image=game_config::level_image;
+      std::vector<std::string> adv=type().advances_to();
+      for(std::vector<std::string>::const_iterator i=adv.begin();i!=adv.end();i++){         
+	if((*i).size()){
+	  tooltip<<(*i).c_str()<<"\n";
+	}
+      }
+      temp[image]=tooltip.str();
+    }
+    const config::child_list mods=get_modification_advances();
+    for(config::child_list::const_iterator i = mods.begin(); i != mods.end(); ++i) { 
+      image=(**i)["image"];
+      if(image.size()){
+	std::stringstream tooltip;
+	tooltip<<temp[image];
+	std::string tt=(**i)["description"];
+	if(tt.size()){
+	  tooltip<<tt<<"\n";
+	}
+	temp[image]=tooltip.str();
+      }
+    }   
+  }
+  return(temp);
+}
+
+std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
+{
+  std::vector<std::pair<std::string,std::string> > temp;
+  std::pair<std::string,std::string> icon; //<image,tooltip>
+
+  const config::child_list& advances = type().modification_advancements();
+  for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
+    icon.first=(**i)["image"];
+    icon.second=(**i)["description"];
+    
+    for(int j=0;j<(modification_count("advance",(**i)["id"]));j++) {
+      
+      temp.push_back(icon);
+    }
+  }
+  return(temp);
+}
+
 config::child_list unit::get_modification_advances() const
 {
 	config::child_list res;

@@ -151,6 +151,10 @@ public:
 	bool is_flying() const;
 
 	bool can_advance() const;
+       
+        std::map<std::string,std::string> advancement_icons() const;
+        std::vector<std::pair<std::string,std::string> > amla_icons() const;
+
 	config::child_list get_modification_advances() const;
 
 	size_t modification_count(const std::string& type, const std::string& id) const;

@@ -29,13 +29,15 @@
 #include <sstream>
 
 namespace {
-	const std::string report_names[] = { "unit_description", "unit_type", "unit_level",
-		"unit_traits","unit_status","unit_alignment","unit_abilities","unit_hp","unit_xp",
-		"unit_moves","unit_weapons","unit_image","unit_profile","time_of_day",
+	const std::string report_names[] = { "unit_description", "unit_type", 
+		"unit_level","unit_amla","unit_traits","unit_status",
+		"unit_alignment","unit_abilities","unit_hp","unit_xp",
+		"unit_advancement_options","unit_moves","unit_weapons",
+		"unit_image","unit_profile","time_of_day",
 		"turn","gold","villages","num_units","upkeep", "expenses",
-		 "income", "terrain", "position", "side_playing", "observers",
-		 "report_clock",
-		 "selected_terrain","edit_left_button_function"};
+		"income", "terrain", "position", "side_playing", "observers",
+                "report_clock","selected_terrain","edit_left_button_function"
+	};
 	std::map<reports::TYPE, std::string> report_contents;
 }
 
@@ -112,6 +114,14 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	case UNIT_LEVEL:
 		str << u->second.type().level();
 		break;
+	case UNIT_AMLA: {
+	  report res;
+	  const std::vector<std::pair<std::string,std::string> > & amla_icons=u->second.amla_icons();
+	  for(std::vector<std::pair<std::string,std::string> >::const_iterator i=amla_icons.begin();i!=amla_icons.end();i++){
+	    res.add_image(i->first,i->second);
+	  }
+	  return(res);
+	}
 	case UNIT_TRAITS:
 		return report(u->second.traits_description(),"",u->second.modification_description("trait"));
 	case UNIT_STATUS: {
@@ -171,7 +181,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			str << font::GOOD_TEXT;
 
 		str << u->second.hitpoints()
-		    << "/" << u->second.max_hitpoints() << "\n";
+		    << "/" << u->second.max_hitpoints();
 
 		break;
 	case UNIT_XP:
@@ -187,6 +197,15 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		}
 
 		break;
+	case UNIT_ADVANCEMENT_OPTIONS: {
+	  report res;
+	  const std::map<std::string,std::string>& adv_icons=u->second.advancement_icons();
+	  for(std::map<std::string,std::string>::const_iterator i=adv_icons.begin();i!=adv_icons.end();i++){
+	    res.add_image(i->first,i->second);
+	  }
+	  return(res);
+
+	}
 	case UNIT_MOVES:
 		str << u->second.movement_left() << "/" << u->second.total_movement();
 		break;
@@ -322,31 +341,28 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			if(owner == 0 || current_team.fogged(mouseover.x,mouseover.y)) {
 				str << _("Village");
 			} else if(owner == current_side) {
-				str << _("Owned village");
+			  	str << _("Owned village");
 			} else if(current_team.is_enemy(owner)) {
-				str << _("Enemy village");
+			  	str << _("Enemy village");
 			} else {
-				str << _("Allied village");
+			  	str << _("Allied village");
 			}
-
 			str << " ";
 		} else {
-			str << map.get_terrain_info(terrain).name();
+		        str << map.get_terrain_info(terrain).name();
 		}
 
 		if(underlying.size() != 1 || underlying[0] != terrain) {
-			str << " (";
+		  	str << "(";
 
 			for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
-				str << map.get_terrain_info(*i).name();
+			str << map.get_terrain_info(*i).name();
 				if(i+1 != underlying.end()) {
-					str << ",";
+				  	str << ",";
 				}
 			}
-
 			str << ")";
 		}
-
 		break;
 	}
 	case POSITION: {
@@ -425,7 +441,6 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			return report();
 		}
 	}
-
 	default:
 		wassert(false);
 		break;

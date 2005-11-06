@@ -66,6 +66,9 @@ namespace game_config
 
 	std::string download_campaign_image;
 
+	std::string level_image;
+	std::string ellipsis_image;
+
 	namespace sounds {
 		const std::string turn_bell = "bell.wav",
 		                  receive_message = "receive.wav",
@@ -140,5 +143,7 @@ namespace game_config
 		observer_image = v["observer_image"];
 
 		download_campaign_image = v["download_campaign_image"];
+		level_image = v["level_image"];
+		ellipsis_image = v["ellipsis_image"];
 	}
 }

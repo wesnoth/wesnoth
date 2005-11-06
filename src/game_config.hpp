@@ -42,7 +42,7 @@ namespace game_config
 					   enemy_energy_image,ally_energy_image,flag_image,
 					   dot_image,cross_image,
 					   missile_n_image,missile_ne_image,terrain_mask_image,observer_image,download_campaign_image,
-					   checked_menu_image,unchecked_menu_image;
+					   checked_menu_image,unchecked_menu_image,level_image,ellipsis_image;
 
 	extern std::vector<std::string> foot_left_nw,foot_left_n,foot_right_nw,foot_right_n;
 

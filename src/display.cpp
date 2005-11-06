@@ -948,8 +948,13 @@ void display::draw_report(reports::TYPE report_num)
 
 			// Loop through and display each report element
 			size_t tallest = 0;
+			int image_count = 0;
+			bool used_ellipsis=false;
+			std::stringstream ellipsis_tooltip;
+			SDL_Rect ellipsis_area =rect;
 			for(reports::report::iterator i = report.begin(); i != report.end(); ++i) {
-				if(i->text.empty() == false) {
+				if(i->text.empty() == false){
+				  if(used_ellipsis == false) {
 					// Draw a text element
 					area = font::draw_text(&screen_,rect,item->font_size(),font::NORMAL_COLOUR,i->text,x,y);
 					if(area.h > tallest) tallest = area.h;
@@ -960,7 +965,9 @@ void display::draw_report(reports::TYPE report_num)
 					} else {
 						x += area.w;
 					}
-				} else if(i->image.empty() == false) {
+				  }
+				} else if(i->image.empty() == false){
+				  if(used_ellipsis == false) {
 					// Draw an image element
 					surface img(image::get_image(i->image,image::UNSCALED));
 
@@ -973,21 +980,41 @@ void display::draw_report(reports::TYPE report_num)
 						continue;
 					}
 
+					if(rect.w + rect.x - x < img->w && image_count){
+					  //we have more than one image, and this one doesn't fit.
+					  img=surface(image::get_image(game_config::ellipsis_image,image::UNSCALED));					  
+					  used_ellipsis=true;
+					}
+
 					area.x = x;
 					area.y = y;
 					area.w = minimum<int>(rect.w + rect.x - x, img->w);
 					area.h = minimum<int>(rect.h + rect.y - y, img->h);
 					draw_image_for_report(img, area);
 
+					image_count++;
 					if(area.h > tallest) tallest = area.h;
-					x += area.w;
+					
+					if(! used_ellipsis){
+					  x += area.w;
+					}else{
+					  ellipsis_area=area;
+					}
+				  }
 				} else {
 					// No text or image, skip this element
 					continue;
 				}
 				if(i->tooltip.empty() == false) {
+				  if(! used_ellipsis){
 					tooltips::add_tooltip(area,i->tooltip);
+				  }else{ //collect all tooltips for the ellipsis
+				    ellipsis_tooltip<<i->tooltip<<"\n";
+				  }
 				}
+			}
+			if(used_ellipsis){
+			  tooltips::add_tooltip(ellipsis_area,ellipsis_tooltip.str());
 			}
 		}
 	} else {
