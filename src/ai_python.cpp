@@ -36,14 +36,12 @@ Additionally, useful utility functions such as those found in pathutils.hpp shou
 
 #include "ai.hpp"
 #include "ai_python.hpp"
+#include "wassert.hpp"
 
 static python_ai* running_instance;
 bool python_ai::init_ = false;
 
-typedef struct {
-	PyObject_HEAD
-	const unit_type* unit_type_;
-} wesnoth_unittype;
+static PyObject* wrap_unittype(const unit_type& type);
 
 static PyObject* wrapper_unittype_get_name(wesnoth_unittype* unit, void* closure)
 {
@@ -89,7 +87,24 @@ static PyGetSetDef unittype_getseters[] = {
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
+PyObject* python_ai::unittype_advances_to( wesnoth_unittype* type, PyObject* args )
+{
+	if ( !PyArg_ParseTuple( args, "" ) )
+		return NULL;
+
+	PyObject* list = PyList_New(type->unit_type_->advances_to().size());
+	int r;
+	for (int advance = 0; advance < type->unit_type_->advances_to().size(); advance++)
+	{
+		std::map<std::string,unit_type>::const_iterator t = running_instance->get_info().gameinfo.unit_types.find(type->unit_type_->advances_to()[advance]);
+		wassert(t != running_instance->get_info().gameinfo.unit_types.end());
+		r = PyList_SetItem(list,advance,wrap_unittype(t->second));
+	}
+	return list;
+}
+
 static PyMethodDef unittype_methods[] = {
+	{ "advances_to", (PyCFunction)python_ai::unittype_advances_to, METH_VARARGS},
 	{ NULL, NULL, NULL }
 };
 
@@ -131,6 +146,14 @@ static PyTypeObject wesnoth_unittype_type = {
 	0,                         /* tp_members */
 	unittype_getseters,          /* tp_getset */
 };
+
+static PyObject* wrap_unittype(const unit_type& type)
+{
+	wesnoth_unittype* wrap = (wesnoth_unittype*)PyObject_NEW(wesnoth_unittype, &wesnoth_unittype_type);
+	if (wrap)
+		wrap->unit_type_ = &type;
+	return (PyObject*)wrap;
+}
 
 typedef struct {
 	PyObject_HEAD
@@ -261,10 +284,7 @@ static PyObject* wrapper_unit_type( wesnoth_unit* unit, PyObject* args )
 {
 	if ( !PyArg_ParseTuple( args, "" ) )
 		return NULL;
-	wesnoth_unittype* type = (wesnoth_unittype*)PyObject_NEW(wesnoth_unittype, &wesnoth_unittype_type);
-	if (type)
-		type->unit_type_ = &unit->unit_->type();
-	return (PyObject*)type;
+	return wrap_unittype(unit->unit_->type());
 }
 
 static PyObject* wrapper_unit_attacks( wesnoth_unit* unit, PyObject* args )

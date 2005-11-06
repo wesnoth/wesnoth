@@ -4,6 +4,11 @@
 #include "ai_interface.hpp"
 #include <Python.h>
 
+typedef struct {
+	PyObject_HEAD
+	const unit_type* unit_type_;
+} wesnoth_unittype;
+
 class python_ai : public ai_interface
 {
 public:
@@ -23,6 +28,7 @@ public:
 	static PyObject* wrapper_attack_unit(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_adjacent_tiles(PyObject* self, PyObject* args);
 
+	static PyObject* unittype_advances_to( wesnoth_unittype* type, PyObject* args );
 protected:
 	static bool init_;
 	ai_interface::move_map src_dst_;
