@@ -1183,6 +1183,10 @@ bool will_heal(const gamemap::location& loc, int side, const std::vector<team>& 
 	for(int n = 0; n != 6; ++n) {
 		const unit_map::const_iterator u = units.find(adjacent[n]);
 		if(u != units.end() && (u->second.hitpoints() < u->second.max_hitpoints() || u->second.poisoned())) {
+			//ignore stoned units
+			if(!u->second.healable())
+				continue;
+
 			const int unit_side = u->second.side();
 
 			//the healer won't heal an ally if there is a wounded unit on the same
@@ -1215,6 +1219,9 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 	int amount_healed;
 	for(i = units.begin(); i != units.end(); ++i) {
 		amount_healed = 0;
+
+		if (!i->second.healable())
+			continue;
 
 		//the unit heals if it's on this side, and it's on a village or
 		//it has regeneration, and it is wounded
@@ -1265,7 +1272,8 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				if(adj != units.end() &&
 				   adj->second.hitpoints() < adj->second.max_hitpoints() &&
 				   adj->second.side() == side &&
-				   healed_units[adj->first] < max_healing[adj->first]) {
+				   healed_units[adj->first] < max_healing[adj->first] &&
+				   adj->second.healable()) {
 					++nhealed;
 					gets_healed[j] = true;
 				} else {
@@ -1297,7 +1305,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 	//are no longer poisoned
 	for(i = units.begin(); i != units.end(); ++i) {
 
-		if(i->second.side() == side && i->second.poisoned()) {
+		if(i->second.side() == side && i->second.poisoned() && i->second.healable()) {
 			const int damage = minimum<int>(game_config::cure_amount,
 			                                i->second.hitpoints()-1);
 
@@ -1308,7 +1316,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 	}
 
 	for(i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() == side) {
+		if(i->second.side() == side && i->second.healable()) {
 			if(i->second.hitpoints() < i->second.max_hitpoints() ||
 					i->second.poisoned()){
 				if(i->second.is_resting()) {

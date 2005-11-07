@@ -487,6 +487,11 @@ bool unit::incapacitated() const
 	return stone();
 }
 
+bool unit::healable() const
+{
+	return !incapacitated();
+}
+
 bool unit::has_moved() const
 {
 	return this->movement_left() != this->total_movement();

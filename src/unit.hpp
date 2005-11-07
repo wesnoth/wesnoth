@@ -90,6 +90,8 @@ public:
 	bool stone() const;
 
 	bool incapacitated() const;
+	bool healable() const;
+
 	bool has_moved() const;
 	bool has_goto() const;
 
