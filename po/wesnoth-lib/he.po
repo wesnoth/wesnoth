@@ -3,19 +3,21 @@
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the wesnoth package.
 # Oron Peled <oron@actcom.co.il>, 2005.
-# 
-# 
+# Ely Levy <nakeee@gmail.com>, 2005.
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-11-04 22:09+0100\n"
-"PO-Revision-Date: 2005-10-14 14:25+0200\n"
-"Last-Translator: Oron Peled <oron@actcom.co.il>\n"
+"POT-Creation-Date: 2005-10-15 13:51+0200\n"
+"PO-Revision-Date: 2005-11-06 02:04+0200\n"
+"Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -28,12 +30,12 @@ msgstr "יצירת מפה חדשה"
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
 #: src/mapgen_dialog.cpp:106
 msgid "Width:"
-msgstr ":רוחב"
+msgstr "רוחב:"
 
 #: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
 #: src/mapgen_dialog.cpp:107
 msgid "Height:"
-msgstr ":גובה"
+msgstr "גובה:"
 
 #: src/editor/editor_dialogs.cpp:94
 msgid "Generate New Map"
@@ -45,7 +47,7 @@ msgstr "יצירת מפה אקראית"
 
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
-msgstr "נתוני מחולל הגרלות"
+msgstr "אפשרויות מחולל הגרלות"
 
 #: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
 #: src/filechooser.cpp:54 src/show_dialog.cpp:430 src/show_dialog.cpp:436
@@ -69,12 +71,12 @@ msgstr "העדפות"
 
 #: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:215
 msgid "Scroll Speed:"
-msgstr ":מהירות גלילה"
+msgstr "מהירות גלילה:"
 
 #: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:55
 #: src/preferences_display.cpp:197
 msgid "Toggle Full Screen"
-msgstr "חלון/מסך מלא"
+msgstr "החלף מצב מסך מלא"
 
 #: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:200
 msgid "Show Grid"
@@ -164,7 +166,7 @@ msgstr "תיאור היחידה"
 
 #: src/hotkeys.cpp:59
 msgid "Rename Unit"
-msgstr "החלף שם יחידה"
+msgstr "שנה שם יחידה"
 
 #: src/hotkeys.cpp:60
 msgid "Save Game"
@@ -180,7 +182,7 @@ msgstr "גייס"
 
 #: src/hotkeys.cpp:63
 msgid "Repeat Recruit"
-msgstr "גיוס חוזר"
+msgstr "חזור על הגיוס"
 
 #: src/hotkeys.cpp:64
 msgid "Recall"
@@ -311,14 +313,12 @@ msgid "Refresh Image Cache"
 msgstr "רענן מטמון דמויות"
 
 #: src/hotkeys.cpp:100
-#, fuzzy
 msgid "Delay Shroud Updates"
-msgstr "השהיית עדכון תכריכים"
+msgstr "השהיית עדכון מסתורין"
 
 #: src/hotkeys.cpp:101
-#, fuzzy
 msgid "Update Shroud Now"
-msgstr "עדכון תכריכים מיידי"
+msgstr "עדכון מסתורין מיידי"
 
 #: src/hotkeys.cpp:102
 msgid "Continue Move"
@@ -370,7 +370,7 @@ msgstr "שחקנים:"
 
 #: src/mapgen_dialog.cpp:108
 msgid "Number of Hills:"
-msgstr ":מספר הגבעות"
+msgstr "מספר הגבעות:"
 
 #: src/mapgen_dialog.cpp:109
 msgid "Max Hill Size:"
@@ -386,7 +386,7 @@ msgstr "סוג קרקע:"
 
 #: src/mapgen_dialog.cpp:217
 msgid "Roads Between Castles"
-msgstr "דרכים בין המצודות"
+msgstr "דרכים בין הטירות"
 
 #: src/mapgen_dialog.cpp:274
 msgid "/1000 tiles"
@@ -440,7 +440,7 @@ msgstr "צלצול תור"
 
 #: src/preferences_display.cpp:204
 msgid "Show Team Colors"
-msgstr "הצג צבעי הצוותים"
+msgstr "הצג צבעי צוותים"
 
 #: src/preferences_display.cpp:205
 msgid "Show Color Cursors"
@@ -468,15 +468,15 @@ msgstr "מוסיקה"
 
 #: src/preferences_display.cpp:214
 msgid "Music Volume:"
-msgstr ":עוצמת מוסיקה"
+msgstr "עוצמת מוסיקה:"
 
 #: src/preferences_display.cpp:214
 msgid "SFX Volume:"
-msgstr ":עוצמת אפקטים מיוחדים"
+msgstr "עוצמת אפקטים מיוחדים:"
 
 #: src/preferences_display.cpp:215
 msgid "Gamma:"
-msgstr ":גאמה"
+msgstr "גאמה:"
 
 #: src/preferences_display.cpp:228
 msgid "Sound effects on/off"
@@ -550,7 +550,7 @@ msgstr "השתמש בסמני עכבר צבעוניים (עלול להיות א�
 
 #: src/preferences_display.cpp:288
 msgid "Use graphical special effects (may be slower)"
-msgstr "השתמש באפקטים גרפיים מיוחדים -- עלול להיות איטי"
+msgstr "השתמש באפקטים גרפיים מיוחדים (עלול להיות איטי)"
 
 #: src/preferences_display.cpp:290
 msgid "View and configure keyboard shortcuts"
@@ -642,7 +642,7 @@ msgstr "קילו-בייט"
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
-msgstr "מחיקת קובץ"
+msgstr "מחק קובץ"
 
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
