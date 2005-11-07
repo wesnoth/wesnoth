@@ -87,6 +87,7 @@ std::vector<std::string> get_text() {
 		"-   Pekka Aikio",
 		"-   Peter Geinitz (Shadow)",
 		"-   Richard Kettering (Jetryl)",
+		"-   Robert Bolin (Zebulon)",
 		"-   Slainte",
 		"-   Stephen Stone (Disto)",
 		"-   Svetac",
