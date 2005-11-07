@@ -45,6 +45,16 @@ std::string languagedef_name (const language_def& def)
 	return def.language;
 }
 
+bool languagedef_rtl (const language_def& def)
+{
+	return def.rtl;
+}
+
+bool current_language_rtl()
+{
+	return get_language().rtl;
+}
+
 bool languagedef_lessthan_p (const language_def& def1, const language_def& def2)
 {
 	return (def1.language < def2.language);
@@ -89,11 +99,13 @@ bool load_language_list()
 	}
 
 	known_languages.clear();
-	known_languages.push_back(language_def("", t_string(N_("System default language"), "wesnoth")));
+	known_languages.push_back(
+		language_def("", t_string(N_("System default language"), "wesnoth"), "ltr"));
 
 	config::const_child_itors langs = cfg.child_range("locale");
 	for(;langs.first != langs.second; ++langs.first) {
-		known_languages.push_back(language_def((**langs.first)["locale"], (**langs.first)["name"]));
+		known_languages.push_back(
+			language_def((**langs.first)["locale"], (**langs.first)["name"], (**langs.first)["dir"]));
 	}
 
 	return true;

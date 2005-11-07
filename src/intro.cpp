@@ -29,6 +29,7 @@
 #include "video.hpp"
 #include "widgets/button.hpp"
 #include "game_events.hpp"
+#include "language.hpp"
 
 #include <cstdlib>
 #include <sstream>
@@ -91,6 +92,7 @@ bool show_intro_part(display &disp, const config& part,
 	}
 
 	CKey key;
+	bool		lang_rtl = current_language_rtl();
 
 	gui::button next_button(video,_("Next") + std::string(">>>"));
 	gui::button skip_button(video,_("Skip"));
@@ -240,6 +242,8 @@ bool show_intro_part(display &disp, const config& part,
 		update_rect(textx, texty, total_size.w, total_size.h);
 	}
 
+	if(lang_rtl)
+		textx += max_width;
 	int xpos = textx, ypos = texty;
 
 	//the maximum position that text can reach before wrapping
@@ -257,6 +261,8 @@ bool show_intro_part(display &disp, const config& part,
 			// FIXME: this is broken: it does not take kerning into account.
 			std::string tmp;
 			tmp.append(itor.substr().first, itor.substr().second);
+			if(lang_rtl)
+				xpos -= font::line_width(tmp, font::SIZE_PLUS);
 			const SDL_Rect rect = font::draw_text(&video,
 					screen_area(),font::SIZE_PLUS,
 					font::NORMAL_COLOUR,tmp,xpos,ypos,
@@ -264,7 +270,8 @@ bool show_intro_part(display &disp, const config& part,
 
 			if(rect.h > height)
 				height = rect.h;
-			xpos += rect.w;
+			if(!lang_rtl)
+				xpos += rect.w;
 			update_rect(rect);
 
 			++itor;

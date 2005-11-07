@@ -28,14 +28,17 @@ class config;
 struct language_def
 {
 	language_def() {}
-	language_def(const std::string& name, const t_string& lang) : localename(name), language(lang)
+	language_def(const std::string& name, const t_string& lang, const std::string& dir) :
+		localename(name), language(lang), rtl(dir == "rtl")
 	{}
 	std::string localename;
 	t_string language;
+	bool rtl;		// A right to left language? (e.g: Hebrew)
 	bool operator== (const language_def&) const;
 };
 
 std::string languagedef_name (const language_def& def);
+bool languagedef_rtl (const language_def& def);
 bool languagedef_lessthan_p (const language_def& def1, const language_def& def2);
 
 struct symbol_table
@@ -61,6 +64,7 @@ bool set_language(const language_def& locale);
 
 //function which returns the name of the language currently used
 const language_def& get_language();
+bool current_language_rtl();
 
 //function which attempts to query and return the locale on the system
 const language_def& get_locale();

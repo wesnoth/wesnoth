@@ -242,6 +242,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Hebrew Translation"),
 		"-   Oron Peled",
+		"-   Ely Levy",
 
 		"_" N_("+Hungarian Translation"),
 		"-   adson",
