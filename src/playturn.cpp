@@ -1171,43 +1171,7 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 	if(items.empty())
 		return;
 
-	//if just one item is passed in, that means we should execute that item
-	if(items.size() == 1 && items_arg.size() == 1) {
-		hotkey::execute_command(gui_,hotkey::get_hotkey(items.front()).get_id(),this);
-		return;
-	}
-
-	bool has_image = false;
-	std::vector<std::string> menu;
-	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		const hotkey::hotkey_item hk = hotkey::get_hotkey(*i);
-
-		std::stringstream str;
-		//see if this menu item has an associated image
-		std::string img(get_menu_image(hk.get_id()));
-		if(img.empty() == false) {
-			has_image = true;
-			str << IMAGE_PREFIX << img << COLUMN_SEPARATOR;
-		}
-
-		str << hk.get_description() << COLUMN_SEPARATOR << hk.get_name();
-
-		menu.push_back(str.str());
-	}
-	//If any of the menu items have an image, create an image column
-	if(has_image)
-		for(std::vector<std::string>::iterator i = menu.begin(); i != menu.end(); ++i)
-			if(*(i->begin()) != IMAGE_PREFIX)
-				i->insert(i->begin(), COLUMN_SEPARATOR);
-
-	static const std::string style = "menu2";
-	const int res = gui::show_dialog(gui_,NULL,"","",
-			gui::MESSAGE,&menu,NULL,"",NULL,-1,NULL,NULL,xloc,yloc,&style);
-	if (size_t(res) >= items.size())
-		return;
-
-	const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();
-	hotkey::execute_command(gui_,cmd,this);
+	command_executor::show_menu(items_arg, xloc, yloc, context_menu, gui_);
 }
 
 bool turn_info::unit_in_cycle(unit_map::const_iterator it) const

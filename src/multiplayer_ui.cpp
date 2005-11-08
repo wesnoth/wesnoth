@@ -52,7 +52,7 @@ void level_to_gamestate(config& level, game_state& state)
 		LOG_NW << "setting replay\n";
 		recorder = replay(replay_data_store);
 		if(!recorder.empty()) {
-			recorder.set_skip(-1);
+			recorder.set_skip(false);
 		}
 
 		level.clear_children("replay");

@@ -123,12 +123,14 @@ public:
 
 		const std::string& title() const;
 
+		const std::string& type() const;
+
 		const std::string& image() const;
 
 		const std::vector<std::string>& items() const;
 	private:
 		bool context_;
-		std::string title_, image_;
+		std::string title_, image_, type_;
 		std::vector<std::string> items_;
 	};
 

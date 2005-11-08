@@ -109,6 +109,7 @@ public:
 
 	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void play_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
+	void play_replay();
 
 private:
 	game_controller(const game_controller&);
@@ -662,7 +663,7 @@ bool game_controller::load_game()
 	}
 	recorder = replay(state_.replay_data);
 	recorder.start_replay();
-	recorder.set_skip(0);
+	recorder.set_skip(false);
 
 	std::cerr << "has snapshot: " << (state_.snapshot.child("side") ? "yes" : "no") << "\n";
 
@@ -674,7 +675,7 @@ bool game_controller::load_game()
 			std::cerr << "replaying (start of scenario)\n";
 		} else {
 			std::cerr << "skipping...\n";
-			recorder.set_skip(-1);
+			recorder.set_skip(false);
 		}
 	} else {
 		// We have a snapshot. But does the user want to see a replay?
@@ -1468,6 +1469,21 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 
 } //end anon namespace
 
+void game_controller::play_replay()
+{
+	const binary_paths_manager bin_paths_manager(game_config_);
+
+	try {
+		::play_replay(disp(),state_,game_config_,units_data_,video_);
+
+	} catch(game::load_game_exception& e) {
+
+		//this will make it so next time through the title screen loop, this game is loaded
+		loaded_game_ = e.game;
+		loaded_game_show_replay_ = true;
+	}
+}
+
 int play_game(int argc, char** argv)
 {
 	const int start_ticks = SDL_GetTicks();
@@ -1715,7 +1731,12 @@ int play_game(int argc, char** argv)
 			continue;
 		}
 
-		game.play_game(should_reload);
+		if (recorder.at_end()){
+			game.play_game(should_reload);
+		}
+		else{
+			game.play_replay();
+		}
 		ntip = -1; // Change tip when a game is played
 	}
 

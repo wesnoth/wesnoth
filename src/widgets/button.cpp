@@ -14,10 +14,9 @@
 #include "../global.hpp"
 
 #include "button.hpp"
-#include "../font.hpp"
+#include "font.hpp"
 #include "../image.hpp"
 #include "../log.hpp"
-#include "../marked-up_text.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
 #include "../wml_separators.hpp"
@@ -68,7 +67,9 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	base_height_ = button_image->h;
 	base_width_ = button_image->w;
 
-	set_label(label);
+	if (type_ != TYPE_IMAGE){
+		set_label(label);
+	}
 
 	if(type == TYPE_PRESS) {
 		image_.assign(scale_surface(button_image,location().w,location().h));
@@ -81,21 +82,35 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 		if (type == TYPE_CHECK)
 			pressedActiveImage_.assign(scale_surface(pressed_active_image, button_image->w, button_image->h));
 	}
+
+	if (type_ == TYPE_IMAGE){
+		calculate_size();
+	}
 }
 
 void button::calculate_size()
 {
+	if (type_ == TYPE_IMAGE){
+		SDL_Rect loc_image = location();
+		loc_image.h = image_->h;
+		loc_image.w = image_->w;
+		set_location(loc_image);
+		return;
+	}
 	SDL_Rect const &loc = location();
 	bool change_size = loc.h == 0 || loc.w == 0;
 
 	if (!change_size) {
-		unsigned w = loc.w - (type_ == TYPE_PRESS ? horizontal_padding :
-		                                            checkbox_horizontal_padding + base_width_);
-		label_ = font::make_text_ellipsis(label_, font_size, w);
+		unsigned w = loc.w - (type_ == TYPE_PRESS ? horizontal_padding : checkbox_horizontal_padding + base_width_);
+		if (type_ != TYPE_IMAGE){
+			label_ = font::make_text_ellipsis(label_, font_size, w);
+		}
 	}
 
-	textRect_ = font::draw_text(NULL, screen_area(), font_size,
-	                            font::BUTTON_COLOUR, label_, 0, 0);
+	if (type_ != TYPE_IMAGE){
+		textRect_ = font::draw_text(NULL, screen_area(), font_size,
+		                            font::BUTTON_COLOUR, label_, 0, 0);
+	}
 
 	if (!change_size)
 		return;
@@ -191,7 +206,9 @@ void button::draw_contents()
 	}
 
 	video().blit_surface(loc.x, loc.y, image);
-	font::draw_text(&video(), clipArea, font_size, button_colour, label_, textx, texty);
+	if (type_ != TYPE_IMAGE){
+		font::draw_text(&video(), clipArea, font_size, button_colour, label_, textx, texty);
+	}
 
 	update_rect(loc);
 }
@@ -235,15 +252,22 @@ void button::mouse_motion(SDL_MouseMotionEvent const &event)
 		// the cursor is not over the widget
 		if (state_ == PRESSED_ACTIVE)
 			state_ = PRESSED;
-		else if (type_ != TYPE_CHECK || state_ != PRESSED)
+		else if (type_ != TYPE_CHECK && type_ != TYPE_IMAGE || state_ != PRESSED)
 			state_ = NORMAL;
 	}
 }
 
 void button::mouse_down(SDL_MouseButtonEvent const &event)
 {
-	if (hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT && type_ != TYPE_CHECK)
-		state_ = PRESSED;
+	if (hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT && type_ != TYPE_CHECK){
+		if (type_ != TYPE_IMAGE){
+			state_ = PRESSED;
+		}
+		else{
+			if (state_ == PRESSED) { state_ = ACTIVE; }
+			else { state_ = PRESSED; }
+		}
+	}
 }
 
 void button::mouse_up(SDL_MouseButtonEvent const &event)
@@ -264,6 +288,9 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 		break;
 	case TYPE_TURBO:
 		state_ = ACTIVE;
+		break;
+	case TYPE_IMAGE:
+		pressed_ = true;
 		break;
 	}
 }

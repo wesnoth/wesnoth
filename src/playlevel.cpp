@@ -49,7 +49,7 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-namespace {
+namespace play{
 	int placing_score(const config& side, const gamemap& map, const gamemap::location& pos)
 	{
 		int positions = 0, liked = 0;
@@ -108,17 +108,6 @@ namespace {
 				LOG_NG << "placing side " << i->side << " at " << i->pos << '\n';
 			}
 		}
-	}
-
-	bool is_observer(const std::vector<team>& teams)
-	{
-		for(std::vector<team>::const_iterator i = teams.begin(); i != teams.end(); ++i) {
-			if(i->is_human() || i->is_persistent()) {
-				return false;
-			}
-		}
-
-		return true;
 	}
 }
 
@@ -198,7 +187,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 
 	std::vector<team> teams;
 
-	const teams_manager team_manager(teams);
+	teams_manager team_manager(teams);
 
 	int first_human_team = -1;
 
@@ -206,7 +195,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 
 	if(lvl["modify_placing"] == "true") {
 		LOG_NG << "modifying placing...\n";
-		place_sides_in_preferred_locations(map,unit_cfg);
+		play::place_sides_in_preferred_locations(map,unit_cfg);
 	}
 
 	LOG_NG << "initializing teams..." << unit_cfg.size() << "\n";;
@@ -215,187 +204,19 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 	std::set<std::string> seen_save_ids;
 
 	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
-		std::string save_id = (**ui)["save_id"];
-
-		if(save_id.empty()) {
-			save_id=(**ui)["description"];
-		}
-
-		//make sure the 'save_id' is unique
-		while(seen_save_ids.count(save_id)) {
-			save_id += "_";
-		}
-
+		std::string save_id = get_unique_saveid(**ui, seen_save_ids);
 		seen_save_ids.insert(save_id);
-
-		player_info *player = NULL;
-
-		if((**ui)["controller"] == "human" ||
-		   (**ui)["controller"] == "network" ||
-		   (**ui)["persistent"] == "1") {
-			player = state_of_game.get_player(save_id);
-
-			if(player == NULL && !save_id.empty()) {
-				player = &state_of_game.players[save_id];
-			}
+		if (first_human_team == -1){
+			first_human_team = get_first_human_team(ui, unit_cfg);
 		}
-
-		LOG_NG << "initializing team...\n";
-
-		const std::string& controller = (**ui)["controller"];
-		if (controller == preferences::client_type() && (**ui)["description"] == preferences::login()) {
-			first_human_team = ui - unit_cfg.begin();
-		} else if(first_human_team == -1 && ((**ui)["controller"] == "human" || (**ui)["persistent"] == "1")) {
-			first_human_team = ui - unit_cfg.begin();
-		}
-
-		std::string gold = (**ui)["gold"];
-		if(gold.empty())
-			gold = "100";
-
-		LOG_NG << "found gold: '" << gold << "'\n";
-
-		int ngold = lexical_cast_default<int>(gold);
-		if(player != NULL && player->gold >= ngold) {
-			ngold = player->gold;
-		}
-
-		LOG_NG << "set gold to '" << ngold << "'\n";
-
-		teams.push_back(team(**ui,ngold));
-
-		//update/fix the recall list for this side, by setting the
-		//"side" of each unit in it to be the "side" of the player.
-		int side = lexical_cast_default<int>((**ui)["side"], 1);
-		if(player != NULL) {
-			for(std::vector<unit>::iterator it = player->available_units.begin(); it != player->available_units.end(); ++it) {
-				it->set_side(side);
-			}
-		}
-
-		//if this team has no objectives, set its objectives to the
-		//level-global "objectives"
-		if(teams.back().objectives().empty())
-			teams.back().set_objectives((*level)["objectives"]);
-
-		//if this side tag describes the leader of the side
-		if((**ui)["no_leader"] != "yes" && (**ui)["controller"] != "null") {
-			unit new_unit(gameinfo, **ui);
-
-			//search the recall list for leader units, and if there is
-			//one, use it in place of the config-described unit
-			if(player != NULL) {
-				for(std::vector<unit>::iterator it = player->available_units.begin(); it != player->available_units.end(); ++it) {
-					if(it->can_recruit()) {
-						new_unit = *it;
-						player->available_units.erase(it);
-						break;
-					}
-				}
-			}
-
-			//see if the side specifies its location. Otherwise start it at the map-given
-			//starting position
-			const std::string& has_loc = (**ui)["x"];
-			gamemap::location start_pos(**ui);
-
-			if(has_loc.empty()) {
-				start_pos = map.starting_position(side);
-				LOG_NG << "initializing side '" << (**ui)["side"] << "' at "
-				       << start_pos << '\n';
-			}
-
-			if(map.empty()) {
-				throw game::load_game_failed("Map not found");
-			}
-
-			if(!start_pos.valid() && new_unit.side() == 1) {
-				throw game::load_game_failed("No starting position for side 1");
-			}
-
-			if(start_pos.valid()) {
-				new_unit.new_turn();
-				units.insert(std::pair<gamemap::location,unit>(
-							map.starting_position(new_unit.side()), new_unit));
-			}
-		}
-
-		//if the game state specifies units that can be recruited for the player
-		//then add them
-		if(player != NULL && player->can_recruit.empty() == false) {
-			std::copy(player->can_recruit.begin(),player->can_recruit.end(),
-					std::inserter(teams.back().recruits(),teams.back().recruits().end()));
-		}
-
-		if(player != NULL) {
-			player->can_recruit = teams.back().recruits();
-		}
-
-		//if there are additional starting units on this side
-		const config::child_list& starting_units = (*ui)->get_children("unit");
-		for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
-			unit new_unit(gameinfo,**su);
-
-			new_unit.set_side(side);
-
-			const std::string& x = (**su)["x"];
-			const std::string& y = (**su)["y"];
-
-			const gamemap::location loc(**su);
-			if(x.empty() || y.empty() || !map.on_board(loc)) {
-				if(player) {
-					player->available_units.push_back(new_unit);
-				}
-			} else {
-				units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
-				LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
-			}
-		}
-
+		get_player_info(**ui, state_of_game, save_id, teams, lvl, gameinfo, map, units);
 	}
 
-	// Add all recruitable units as encountered so that information
-	// about them are displayed to the user in the help system.
-	for (std::vector<team>::const_iterator help_team_it = teams.begin();
-		 help_team_it != teams.end(); help_team_it++) {
-		LOG_NG << "Adding help units for team '" << help_team_it->name() << "'\n";
-		const std::set<std::string> &recruitable = help_team_it->recruits();
-		std::set<std::string> &enc_units = preferences::encountered_units();
-		LOG_NG << "Adding recruitable units: \n";
-		for (std::set<std::string>::const_iterator it = recruitable.begin();
-			 it != recruitable.end(); it++) {
-			LOG_NG << *it << std::endl;
-		}
-		LOG_NG << "Added all recruitable units\n";
-		std::copy(recruitable.begin(), recruitable.end(),
-				  std::inserter(enc_units, enc_units.begin()));
-	}
+	preferences::encounter_recruitable_units(teams);
+	preferences::encounter_start_units(units);
+	preferences::encounter_recallable_units(state_of_game);
+	preferences::encounter_map_terrain(map);
 
-	// Add all units that exist at the start to the encountered units so
-	// that information about them are displayed to the user in the help
-	// system.
-	for (unit_map::const_iterator help_unit_it = units.begin();
-		 help_unit_it != units.end(); help_unit_it++) {
-		const std::string name = help_unit_it->second.type().id();
-		preferences::encountered_units().insert(name);
-	}
-
-	// Add all units that are recallable as encountred units.
-	for(std::map<std::string, player_info>::iterator pi = state_of_game.players.begin(); pi!=state_of_game.players.end(); ++pi) {
-		for(std::vector<unit>::iterator help_recall_it = pi->second.available_units.begin(); help_recall_it != pi->second.available_units.end(); help_recall_it++) {
-			preferences::encountered_units().insert(help_recall_it->type().id());
-		}
-	}
-
-	// Add all terrains on the map as encountered terrains.
-	for (int map_x = 0; map_x < map.x(); map_x++) {
-		for (int map_y = 0; map_y < map.y(); map_y++) {
-			const gamemap::TERRAIN t = map.get_terrain(gamemap::location(map_x, map_y));
-			std::string s;
-			s += t;
-			preferences::encountered_terrains().insert(s);
-		}
-	}
 	LOG_NG << "initialized teams... " << (SDL_GetTicks() - ticks) << "\n";
 
 	const config* theme_cfg = NULL;
@@ -430,7 +251,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 	game_events::manager events_manager(*level,gui,map,units,teams,
 	                                    state_of_game,status,gameinfo);
 
-	if(recorder.skipping() == false) {
+	if(!recorder.is_skipping()) {
 		for(std::vector<config*>::const_iterator story_i = story.begin(); story_i != story.end(); ++story_i) {
 
 			show_intro(gui,**story_i, *level);
@@ -514,8 +335,8 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 			if(first_time) {
 				const hotkey::basic_handler key_events_handler(&gui);
 
-				LOG_NG << "first_time..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
-				update_locker lock_display(gui.video(),recorder.skipping());
+				LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
+				update_locker lock_display(gui.video(),recorder.is_skipping());
 				events::raise_draw_event();
 				gui.draw();
 				for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
@@ -546,7 +367,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 					continue;
 				}
 
-				if(is_observer(teams)) {
+				if(team_manager.is_observer()) {
 					gui.set_team(size_t(player_number-1));
 				}
 
@@ -591,13 +412,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 
 				clear_shroud(gui,status,map,gameinfo,units,teams,player_number-1);
 
-				//scroll the map to the leader
-				const unit_map::iterator leader = find_leader(units,player_number);
-
-				if(leader != units.end() && !recorder.skipping()) {
-					const hotkey::basic_handler key_events_handler(&gui);
-					gui.scroll_to_tile(leader->first.x,leader->first.y);
-				}
+				gui.scroll_to_leader(units, player_number);
 
 				if(replaying) {
 					const hotkey::basic_handler key_events_handler(&gui);
@@ -738,8 +553,8 @@ redo_turn:
 			event_stream << status.turn();
 
 			{
-				LOG_NG << "turn event..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
-				update_locker lock_display(gui.video(),recorder.skipping());
+				LOG_NG << "turn event..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
+				update_locker lock_display(gui.video(),recorder.is_skipping());
 				const std::string turn_num = event_stream.str();
 				state_of_game.set_variable("turn_number",turn_num);
 				game_events::fire("turn " + turn_num);
@@ -748,7 +563,7 @@ redo_turn:
 		} //end for loop
 
 	} catch(end_level_exception& end_level) {
-		bool obs = is_observer(teams);
+		bool obs = team_manager.is_observer();
 		if (end_level.result == DEFEAT || end_level.result == VICTORY) {
 			// if we're a player, and the result is victory/defeat, then send a message to notify
 			// the server of the reason for the game ending

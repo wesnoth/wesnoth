@@ -107,6 +107,9 @@ public:
 	void scroll_to_tiles(int x1, int y1, int x2, int y2,
 	                     SCROLL_TYPE scroll_type=SCROLL, bool check_fogged=true);
 
+	//scrolls to the leader of a certain side. This will normally be the playing team.
+	void scroll_to_leader(unit_map& units, int side);
+
 	//invalidates entire screen, including all tiles and sidebar.
 	void redraw_everything();
 
@@ -197,6 +200,8 @@ private:
 	                       fixed_t alpha=ftofxp(1.0), Uint32 blend_to=0);
 
 	void draw_halo_on_tile(int x, int y);
+
+	gui::button::TYPE string_to_button_type(std::string type);
 
 	// void draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 

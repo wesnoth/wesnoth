@@ -15,6 +15,10 @@
 
 class config;
 class display;
+class team;
+struct game_state;
+
+#include "unit.hpp"
 
 #include <string>
 #include <utility>
@@ -190,6 +194,18 @@ namespace preferences {
 	// proxies for preferences_dialog
 	void load_hotkeys();
 	void save_hotkeys();
+
+	// Add all recruitable units as encountered so that information
+	// about them are displayed to the user in the help system.
+	void encounter_recruitable_units(std::vector<team>& teams);
+	// Add all units that exist at the start to the encountered units so
+	// that information about them are displayed to the user in the help
+	// system.
+	void encounter_start_units(unit_map& units);
+	// Add all units that are recallable as encountred units.
+	void encounter_recallable_units(game_state& gamestate);
+	// Add all terrains on the map as encountered terrains.
+	void encounter_map_terrain(gamemap& map);
 }
 
 #endif

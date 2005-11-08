@@ -13,9 +13,11 @@
 #ifndef CONFIG_HPP_INCLUDED
 #define CONFIG_HPP_INCLUDED
 
+#include <set>
 #include <map>
 #include <string>
 #include <vector>
+#include "map.hpp"
 #include "tstring.hpp"
 
 //This module defines the interface to Wesnoth Markup Language (WML).
@@ -27,6 +29,10 @@
 //throughout the game.
 
 class t_string;
+class unit;
+struct game_data;
+struct game_state;
+class team;
 
 typedef std::map<std::string,t_string> string_map;
 
@@ -143,5 +149,10 @@ private:
 
 bool operator==(const config& a, const config& b);
 bool operator!=(const config& a, const config& b);
+
+std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids);
+int get_first_human_team(const config::child_list::const_iterator& cfg, const config::child_list& unit_cfg);
+void get_player_info(const config& cfg, game_state& gamestate, std::string save_id, std::vector<team>& teams, const config& level, const game_data& gameinfo, gamemap& map, std::map<gamemap::location,unit>& units);
+const config* get_theme(const config& game_config, std::string theme_name);
 
 #endif

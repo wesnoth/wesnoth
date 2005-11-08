@@ -26,6 +26,7 @@
 #include "util.hpp"
 #include "video.hpp"
 #include "wesconfig.h"
+#include "wml_separators.hpp"
 #include "SDL.h"
 
 #include <algorithm>
@@ -77,6 +78,13 @@ const struct {
 	{ hotkey::HOTKEY_LABEL_TERRAIN, "labelterrain", N_("Set Label"), false },
 	{ hotkey::HOTKEY_SHOW_ENEMY_MOVES, "showenemymoves", N_("Show Enemy Moves"), false },
 	{ hotkey::HOTKEY_BEST_ENEMY_MOVES, "bestenemymoves", N_("Best Possible Enemy Moves"), false },
+	{ hotkey::HOTKEY_PLAY_REPLAY, "playreplay", N_("Play"), false },
+	{ hotkey::HOTKEY_RESET_REPLAY, "resetreplay", N_("Reset"), false },
+	{ hotkey::HOTKEY_STOP_REPLAY, "stopreplay", N_("Stop"), false },
+	{ hotkey::HOTKEY_REPLAY_NEXT_TURN, "replaynextturn", N_("Next Turn"), false },
+	{ hotkey::HOTKEY_REPLAY_NEXT_SIDE, "replaynextside", N_("Next Side"), false },
+	{ hotkey::HOTKEY_REPLAY_SHROUD, "replayswitchshroud", N_("Shroud"), false },
+	{ hotkey::HOTKEY_REPLAY_FOG, "replayswitchfog", N_("Fog"), false },
 
 	{ hotkey::HOTKEY_EDIT_SET_TERRAIN, "editsetterrain", N_("Set Terrain"),true },
 	{ hotkey::HOTKEY_EDIT_QUIT, "editquit", N_("Quit Editor"),true },
@@ -650,9 +658,60 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			if(executor)
 				executor->change_language();
 			break;
+		 case HOTKEY_PLAY_REPLAY:
+			 if (executor)
+				 executor->play_replay();
+			 break;
+		 case HOTKEY_RESET_REPLAY:
+			 if (executor)
+				 executor->reset_replay();
+			 break;
+		 case HOTKEY_STOP_REPLAY:
+			 if (executor)
+				executor->stop_replay();
+			 break;
+		 case HOTKEY_REPLAY_NEXT_TURN:
+			 if (executor)
+				 executor->replay_next_turn();
+			 break;
+		 case HOTKEY_REPLAY_NEXT_SIDE:
+			 if (executor)
+				 executor->replay_next_side();
+			 break;
+		 case HOTKEY_REPLAY_SHROUD:
+			 if (executor)
+				 executor->replay_switch_shroud();
+			 break;
+		 case HOTKEY_REPLAY_FOG:
+			 if (executor)
+				 executor->replay_switch_fog();
+			 break;
 		default:
 			std::cerr << "command_executor: unknown command number " << command << ", ignoring.\n";
 			break;
+	}
+}
+
+void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui)
+{
+	std::vector<std::string> items = items_arg;
+	if (can_execute_command(hotkey::get_hotkey(items.front()).get_id())){
+		//if just one item is passed in, that means we should execute that item
+		if(items.size() == 1 && items_arg.size() == 1) {
+			hotkey::execute_command(gui,hotkey::get_hotkey(items.front()).get_id(),this);
+			return;
+		}
+
+		std::vector<std::string> menu = get_menu_images(items);
+
+		static const std::string style = "menu2";
+		const int res = gui::show_dialog(gui,NULL,"","",
+				gui::MESSAGE,&menu,NULL,"",NULL,-1,NULL,NULL,xloc,yloc,&style);
+		if (size_t(res) >= items.size())
+			return;
+
+		const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();
+		hotkey::execute_command(gui,cmd,this);
 	}
 }
 
@@ -662,6 +721,33 @@ std::string command_executor::get_menu_image(hotkey::HOTKEY_COMMAND command) con
 		case ACTION_OFF: return game_config::unchecked_menu_image;
 		default: return get_action_image(command);
 	}
+}
+
+std::vector<std::string> command_executor::get_menu_images(const std::vector<std::string>& items){
+	std::vector<std::string> result;
+	bool has_image = false;
+
+	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
+		const hotkey::hotkey_item hk = hotkey::get_hotkey(*i);
+
+		std::stringstream str;
+		//see if this menu item has an associated image
+		std::string img(get_menu_image(hk.get_id()));
+		if(img.empty() == false) {
+			has_image = true;
+			str << IMAGE_PREFIX << img << COLUMN_SEPARATOR;
+		}
+
+		str << hk.get_description() << COLUMN_SEPARATOR << hk.get_name();
+
+		result.push_back(str.str());
+	}
+	//If any of the menu items have an image, create an image column
+	if(has_image)
+		for(std::vector<std::string>::iterator i = result.begin(); i != result.end(); ++i)
+			if(*(i->begin()) != IMAGE_PREFIX)
+				i->insert(i->begin(), COLUMN_SEPARATOR);
+	return result;
 }
 
 }

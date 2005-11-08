@@ -16,6 +16,7 @@
 #include "actions.hpp"
 #include "ai_interface.hpp"
 #include "dialogs.hpp"
+#include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "log.hpp"
@@ -184,20 +185,14 @@ const game_state& replay::get_save_info() const
 	return saveInfo_;
 }
 
-void replay::set_skip(int turns_to_skip)
+void replay::set_skip(bool skip)
 {
-	skip_ = turns_to_skip;
+	skip_ = skip;
 }
 
-void replay::next_skip()
+bool replay::is_skipping() const
 {
-	if(skip_ > 0)
-		--skip_;
-}
-
-bool replay::skipping() const
-{
-	return at_end() == false && skip_ != 0;
+	return at_end() == false && skip_;
 }
 
 void replay::save_game(const std::string& label, const config& snapshot,
@@ -542,12 +537,14 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 	replay& replayer = (obj != NULL) ? *obj : recorder;
 
-	clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1);
-	disp.recalculate_minimap();
+	if (!replayer.is_skipping()){
+		clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1);
+		disp.recalculate_minimap();
+	}
 
 	const set_random_generator generator_setter(&replayer);
 
-	update_locker lock_update(disp.video(),replayer.skipping());
+	update_locker lock_update(disp.video(),replayer.is_skipping());
 
 	//a list of units that have promoted from the last attack
 	std::deque<gamemap::location> advancing_units;
@@ -591,7 +588,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 		//if there is nothing more in the records
 		if(cfg == NULL) {
-			replayer.set_skip(0);
+			replayer.set_skip(false);
 			return false;
 		}
 
@@ -602,19 +599,23 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const std::string& team_name = (*child)["team_name"];
 			if(team_name == "" || teams[disp.viewing_team()].team_name() == team_name) {
 				if(preferences::message_bell()) {
-					if(!replayer.skipping())
+					if(!replayer.is_skipping())
 						sound::play_sound(game_config::sounds::receive_message);
 				}
 
 				const int side = lexical_cast_default<int>((*child)["side"].c_str(),1);
-				disp.add_chat_message((*child)["description"],side,(*child)["message"],
-				                      team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
+				if (!replayer.is_skipping()){
+					disp.add_chat_message((*child)["description"],side,(*child)["message"],
+										  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
+				}
 			}
 		} else if((child = cfg->child("label")) != NULL) {
 			const gamemap::location loc(*child);
 			const std::string& text = (*child)["text"];
 
-			disp.labels().set_label(loc,text);
+			if (!replayer.is_skipping()){
+				disp.labels().set_label(loc,text);
+			}
 		}
 
 		else if((child = cfg->child("rename")) != NULL) {
@@ -633,8 +634,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 		//if there is an end turn directive
 		else if(cfg->child("end_turn") != NULL) {
-			replayer.next_skip();
-
 			child = cfg->child("verify");
 			if(child != NULL) {
 				verify_units(*child);
@@ -686,8 +685,14 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			current_team.spend_gold(u_type->second.cost());
 			LOG_NW << "-> " << (current_team.gold()) << "\n";
-			fix_shroud = true;
-		}
+			fix_shroud = !replayer.is_skipping() && true;
+			FILE* fUnit;
+			fUnit = fopen( "debug.txt", "a+" );
+			std::string strDescription = new_unit.description();
+			fprintf(fUnit, "Recruit: %i, %s: %i, %i\n", state.turn(), strDescription.c_str(), new_unit.experience(), new_unit.max_experience());
+			fprintf(fUnit, "\n");
+			fclose(fUnit);
+}
 
 		else if((child = cfg->child("recall")) != NULL) {
 			player_info* player = state_of_game.get_player(current_team.save_id());
@@ -712,7 +717,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				ERR_NW << "illegal recall\n";
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
-			fix_shroud = true;
+			fix_shroud = !replayer.is_skipping() && true;
 		}
 
 		else if((child = cfg->child("disband")) != NULL) {
@@ -782,7 +787,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			rt->second.steps.push_back(dst);
 
-			if(!replayer.skipping() && unit_display::unit_visible_on_path(disp,map,rt->second.steps,current_unit,state.get_time_of_day(),units,teams)) {
+			if(!replayer.is_skipping() && unit_display::unit_visible_on_path(disp,map,rt->second.steps,current_unit,state.get_time_of_day(),units,teams)) {
 				disp.set_paths(&paths_list);
 
 				disp.scroll_to_tiles(src.x,src.y,dst.x,dst.y);
@@ -790,8 +795,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			units.erase(u);
 
-			if(!replayer.skipping()) {
+			if(!replayer.is_skipping()) {
 				unit_display::move_unit(disp,map,rt->second.steps,current_unit,state.get_time_of_day(),units,teams);
+			}
+			else{
+				//unit location needs to be updated
+				current_unit.set_goto(*(rt->second.steps.end() - 1));
 			}
 
 			current_unit.set_movement(rt->second.move_left);
@@ -804,7 +813,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				}
 			}
 
-			if(!replayer.skipping()) {
+			if(!replayer.is_skipping()) {
 				disp.draw_tile(dst.x,dst.y);
 				disp.update_display();
 			}
@@ -815,11 +824,19 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				game_events::fire("sighted",dst);
 			}
 
-			fix_shroud = true;
+			fix_shroud = !replayer.is_skipping() && true;
+			FILE* fUnit;
+			fUnit = fopen( "debug.txt", "a+" );
+			if (u != units.end()){
+				std::string strDescription = u->second.description();
+				int iMaxExperience = u->second.max_experience();
+				fprintf(fUnit, "Move: %i, %s: von %i,%i nach %i,%i\n", state.turn(), strDescription.c_str(), src.x, src.y, dst.x, dst.y);
+			}
+			fprintf(fUnit, "\n");
+			fclose(fUnit);
 		}
 
 		else if((child = cfg->child("attack")) != NULL) {
-
 			const config* const destination = child->child("destination");
 			const config* const source = child->child("source");
 
@@ -877,7 +894,24 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			if(advancing_units.empty()) {
 				check_victory(units,teams);
 			}
-			fix_shroud = true;
+			fix_shroud = !replayer.is_skipping() && true;
+
+			FILE* fUnit;
+			fUnit = fopen( "debug.txt", "a+" );
+			if (u != units.end()){
+				std::string strDescription = u->second.description();
+				int iExperience = u->second.experience();
+				int iMaxExperience = u->second.max_experience();
+				fprintf(fUnit, "Attacker: %i, %s, %i, %i\n", state.turn(), strDescription.c_str(), iExperience, iMaxExperience);
+			}
+			if (tgt != units.end()){
+				std::string strDescription = tgt->second.description();
+				int iExperience = tgt->second.experience();
+				int iMaxExperience = tgt->second.max_experience();
+				fprintf(fUnit, "Defender: %i, %s, %i, %i\n", state.turn(), strDescription.c_str(), iExperience, iMaxExperience);
+			}
+			fprintf(fUnit, "\n");
+			fclose(fUnit);
 		} else {
 			ERR_NW << "unrecognized action\n";
 			if (!game_config::ignore_replay_errors) throw replay::error();
@@ -885,7 +919,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 		//Check if we should refresh the shroud, and redraw the minimap/map tiles.
 		//This is needed for shared vision to work properly.
-		if(fix_shroud && clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1)) {
+		if(fix_shroud && clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1) && !recorder.is_skipping()) {
 			disp.recalculate_minimap();
 			disp.invalidate_all();
 		}

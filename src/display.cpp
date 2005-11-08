@@ -25,6 +25,7 @@
 #include "halo.hpp"
 #include "hotkeys.hpp"
 #include "image.hpp"
+#include "widgets/image_button.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -33,6 +34,7 @@
 #include "sdl_utils.hpp"
 #include "sound.hpp"
 #include "team.hpp"
+#include "theme.hpp"
 #include "tooltips.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
@@ -538,6 +540,15 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 		scroll_to_tile(x1,y1,scroll_type,check_fogged);
 	} else {
 		scroll_to_tile((x1+x2)/2,(y1+y2)/2,scroll_type,check_fogged);
+	}
+}
+
+void display::scroll_to_leader(unit_map& units, int side){
+	const unit_map::iterator leader = find_leader(units,side);
+
+	if(leader != units_.end()) {
+		const hotkey::basic_handler key_events_handler(this);
+		scroll_to_tile(leader->first.x,leader->first.y);
 	}
 }
 
@@ -2167,7 +2178,7 @@ void display::create_buttons()
 
 	const std::vector<theme::menu>& buttons = theme_.menus();
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
-		gui::button b(screen_,i->title(),gui::button::TYPE_PRESS,i->image());
+		gui::button b(screen_,i->title(),string_to_button_type(i->type()),i->image());
 		const SDL_Rect& loc = i->location(screen_area());
 		b.set_location(loc.x,loc.y);
 
@@ -2177,6 +2188,13 @@ void display::create_buttons()
 
 		buttons_.push_back(b);
 	}
+}
+
+gui::button::TYPE display::string_to_button_type(std::string type){
+	gui::button::TYPE res = gui::button::TYPE_PRESS;
+	if (type == "checkbox") { res = gui::button::TYPE_CHECK; }
+	else if (type == "image") { res = gui::button::TYPE_IMAGE; }
+	return res;
 }
 
 void display::add_observer(const std::string& name)

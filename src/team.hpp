@@ -183,6 +183,8 @@ public:
 	void place_shroud(int x, int y) { shroud_.place(x+1,y+1); }
 	bool clear_fog(int x, int y) { return fog_.clear(x+1,y+1); }
 	void refog() { fog_.reset(); }
+	void set_shroud(bool shroud) { shroud_.set_enabled(shroud); }
+	void set_fog(bool fog) { fog_.set_enabled(fog); }
 
 	bool knows_about_team(size_t index) const;
 	bool copy_ally_shroud();
@@ -199,6 +201,8 @@ public:
 	//function which, when given a 1-based side will return the colour used by that side.
 	static const SDL_Color& get_side_colour(int side);
 	static int get_side_colour_index(int side);
+
+	void log_recruitable();
 
 private:
 	//Make these public if you need them, but look at knows_about_team(...) first.
@@ -232,6 +236,9 @@ private:
 struct teams_manager {
 	teams_manager(std::vector<team>& teams);
 	~teams_manager();
+
+	std::vector<team> clone(std::vector<team>& team_list);
+	bool is_observer();
 };
 
 bool is_observer();

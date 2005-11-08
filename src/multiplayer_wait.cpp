@@ -20,6 +20,7 @@
 #include "multiplayer.hpp"
 #include "multiplayer_wait.hpp"
 #include "preferences.hpp"
+#include "replay.hpp"
 #include "statistics.hpp"
 #include "util.hpp"
 #include "video.hpp"
@@ -248,6 +249,10 @@ void wait::join_game(bool observe)
 		response["leader"] = leader_choice;
 
 		network::send_data(response);
+	}
+	else{
+		//const int res = gui::show_dialog(disp(),NULL,_("Skip replay"),_("Do you want to skip the replay?"),gui::YES_NO);
+		//recorder.set_skip(res == 0);
 	}
 
 	generate_menu();

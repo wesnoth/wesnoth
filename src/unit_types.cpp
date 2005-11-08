@@ -897,7 +897,9 @@ namespace {
 
 unit_type::experience_accelerator::experience_accelerator(int modifier) : old_value_(experience_modifier)
 {
-	experience_modifier = (experience_modifier*modifier)/100;
+	if (experience_modifier == 100){
+		experience_modifier = (experience_modifier*modifier)/100;
+	}
 }
 
 unit_type::experience_accelerator::~experience_accelerator()

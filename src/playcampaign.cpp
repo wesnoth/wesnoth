@@ -21,6 +21,7 @@
 #include "config.hpp"
 #include "gamestatus.hpp"
 #include "replay.hpp"
+#include "replay_controller.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
 #include "dialogs.hpp"
@@ -47,6 +48,92 @@ struct player_controller
 
 typedef std::map<std::string, player_controller> controller_map;
 
+}
+
+void play_replay(display& disp, game_state& state, const config& game_config,
+		const game_data& units_data, CVideo& video,
+		io_type_t io_type)
+{
+	std::string type = state.campaign_type;
+	if(type.empty())
+		type = "scenario";
+
+	config const* scenario = NULL;
+
+	//'starting_pos' will contain the position we start the game from.
+	config starting_pos;
+
+	recorder.set_save_info(state);
+
+	//see if we load the scenario from the scenario data -- if there is
+	//no snapshot data available from a save, or if the user has selected
+	//to view the replay from scratch
+	if(state.snapshot.child("side") == NULL || !recorder.at_end()) {
+		//if the starting state is specified, then use that,
+		//otherwise get the scenario data and start from there.
+		if(state.starting_pos.empty() == false) {
+			LOG_G << "loading starting position...\n";
+			starting_pos = state.starting_pos;
+			scenario = &starting_pos;
+		} else {
+			LOG_G << "loading scenario: '" << state.scenario << "'\n";
+			scenario = game_config.find_child(type,"id",state.scenario);
+			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
+		}
+	} else {
+		LOG_G << "loading snapshot...\n";
+		//load from a save-snapshot.
+		starting_pos = state.snapshot;
+		scenario = &starting_pos;
+		state = read_game(units_data, &state.snapshot);
+	}
+
+	controller_map controllers;
+
+	while(scenario != NULL) {
+		//If we are a multiplayer client, tweak the controllers
+		const config::child_list& story = scenario->get_children("story");
+		const std::string current_scenario = state.scenario;
+
+		bool save_game_after_scenario = true;
+
+		try {
+			// preserve old label eg. replay
+			if (state.label.empty())
+				state.label = (*scenario)["name"];
+
+			LEVEL_RESULT res = play_replay_level(units_data,game_config,scenario,video,state,story);
+
+			state.snapshot = config();
+			recorder.clear();
+			state.replay_data.clear();
+
+		} catch(game::load_game_failed& e) {
+			gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
+		} catch(game::game_error& e) {
+			gui::show_error_message(disp, _("Error while playing the game: ") + e.message);
+		} catch(gamemap::incorrect_format_exception& e) {
+			gui::show_error_message(disp, std::string(_("The game map could not be loaded: ")) + e.msg_);
+		}
+
+		//if the scenario hasn't been set in-level, set it now.
+		if(state.scenario == current_scenario)
+			state.scenario = (*scenario)["next_scenario"];
+
+		scenario = game_config.find_child(type,"id",state.scenario);
+
+		//update the replay start
+		if(scenario != NULL) {
+			//FIXME: this should only be done if the scenario was not tweaked.
+			state.starting_pos = *scenario;
+		}
+
+		recorder.set_save_info(state);
+	}
+
+	if (!state.scenario.empty() && state.scenario != "null") {
+		gui::show_error_message(disp, _("Unknown scenario: '") + state.scenario + '\'');
+	}
 }
 
 LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_config,

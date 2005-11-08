@@ -43,6 +43,25 @@ teams_manager::~teams_manager()
 	teams = NULL;
 }
 
+std::vector<team> teams_manager::clone(std::vector<team>& team_list){
+	std::vector<team> result;
+	for (std::vector<team>::iterator t = team_list.begin(); t != team_list.end(); t++){
+		result.push_back(*t);
+	}
+	return result;
+}
+
+bool teams_manager::is_observer()
+{
+	for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {
+		if(i->is_human() || i->is_persistent()) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
 team::target::target(const config& cfg)
               : criteria(cfg), value(atof(cfg["value"].c_str()))
 {
@@ -878,3 +897,11 @@ int team::get_side_colour_index(int side)
 	return side;
 }
 
+void team::log_recruitable(){
+	LOG_NG << "Adding recruitable units: \n";
+	for (std::set<std::string>::const_iterator it = info_.can_recruit.begin();
+		 it != info_.can_recruit.end(); it++) {
+		LOG_NG << *it << std::endl;
+	}
+	LOG_NG << "Added all recruitable units\n";
+}

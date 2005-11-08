@@ -42,6 +42,8 @@ enum HOTKEY_COMMAND {
 	HOTKEY_DELAY_SHROUD, HOTKEY_UPDATE_SHROUD, HOTKEY_CONTINUE_MOVE,
 	HOTKEY_SEARCH, HOTKEY_SPEAK_ALLY, HOTKEY_SPEAK_ALL, HOTKEY_HELP,
 	HOTKEY_CHAT_LOG, HOTKEY_LANGUAGE,
+	HOTKEY_PLAY_REPLAY, HOTKEY_RESET_REPLAY, HOTKEY_STOP_REPLAY, HOTKEY_REPLAY_NEXT_TURN,
+	HOTKEY_REPLAY_NEXT_SIDE, HOTKEY_REPLAY_SHROUD, HOTKEY_REPLAY_FOG,
 
 	//editing specific commands
 	HOTKEY_EDIT_SET_TERRAIN,
@@ -163,6 +165,13 @@ public:
 	virtual void show_chat_log() {}
 	virtual void user_command() {}
 	virtual void change_language() {}
+	virtual void play_replay() {}
+	virtual void reset_replay() {}
+	virtual void stop_replay() {}
+	virtual void replay_next_turn() {}
+	virtual void replay_next_side() {}
+	virtual void replay_switch_shroud() {}
+	virtual void replay_switch_fog() {}
 
 	// Map editor stuff.
 	virtual void edit_set_terrain() {}
@@ -190,6 +199,10 @@ public:
 	virtual ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const { return ACTION_STATELESS; }
 	//Returns the appropriate menu image. Checkable items will get a checked/unchecked image.
 	std::string get_menu_image(hotkey::HOTKEY_COMMAND command) const;
+	//Returns a vector of images for a given menu
+	std::vector<std::string> get_menu_images(const std::vector<std::string>& items_arg);
+
+	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 
 	virtual bool can_execute_command(HOTKEY_COMMAND command) const = 0;
 };

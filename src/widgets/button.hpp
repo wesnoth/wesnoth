@@ -30,7 +30,7 @@ class button : public widget
 public:
 	struct error {};
 
-	enum TYPE { TYPE_PRESS, TYPE_CHECK, TYPE_TURBO };
+	enum TYPE { TYPE_PRESS, TYPE_CHECK, TYPE_TURBO, TYPE_IMAGE };
 
 	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
 

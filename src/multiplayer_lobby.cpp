@@ -16,6 +16,7 @@
 #include "marked-up_text.hpp"
 #include "minimap.hpp"
 #include "multiplayer_lobby.hpp"
+#include "replay.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "game_config.hpp"
@@ -495,6 +496,7 @@ void lobby::process_event()
 	}
 
 	if(quit_game_.pressed()) {
+		recorder.set_skip(false);
 		set_result(QUIT);
 		return;
 	}

@@ -42,4 +42,8 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& terrain_config,
 		game_state& state_of_game,
 		const std::vector<config*>& story);
 
+namespace play{
+	void place_sides_in_preferred_locations(gamemap& map, const config::child_list& sides);
+}
+
 #endif

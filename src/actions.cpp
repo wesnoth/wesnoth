@@ -1078,10 +1078,12 @@ void attack(display& gui, const gamemap& map,
 		d->second.get_experience(defenderxp);
 	}
 
-	gui.invalidate_unit();
-	gui.invalidate(attacker);
-	gui.invalidate(defender);
-	gui.draw(true,true);
+	if (!recorder.is_skipping()){
+		gui.invalidate_unit();
+		gui.invalidate(attacker);
+		gui.invalidate(defender);
+		gui.draw(true,true);
+	}
 }
 
 int village_owner(const gamemap::location& loc, const std::vector<team>& teams)
@@ -1342,7 +1344,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 
 		unit& u = units.find(loc)->second;
 
-		const bool show_healing = !disp.turbo() && !recorder.skipping() &&
+		const bool show_healing = !disp.turbo() && !recorder.is_skipping() &&
 		                          !disp.fogged(loc.x,loc.y) &&
 								  (!u.invisible(map.underlying_terrain(map[h->first.x][h->first.y]),
 								                status.get_time_of_day().lawful_bonus,h->first,units,teams) ||

@@ -38,9 +38,8 @@ public:
 	void set_save_info(const game_state& save);
 	const game_state& get_save_info() const;
 
-	void set_skip(int turns_to_skip);
-	void next_skip();
-	bool skipping() const;
+	void set_skip(bool skip);
+	bool is_skipping() const;
 
 	void save_game(const std::string& label, const config& snapshot,
 	               const config& starting_pos, bool include_replay = true);
@@ -119,7 +118,7 @@ private:
 
 	game_state saveInfo_;
 
-	int skip_;
+	bool skip_;
 };
 
 replay& get_replay_source();

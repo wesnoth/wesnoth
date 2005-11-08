@@ -18,6 +18,7 @@
 #include "config.hpp"
 #include "cursor.hpp"
 #include "filesystem.hpp"
+#include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "hotkeys.hpp"
 #include "log.hpp"
@@ -775,6 +776,42 @@ void load_hotkeys() {
 }
 void save_hotkeys() {
 	hotkey::save_hotkeys(prefs);
+}
+
+void encounter_recruitable_units(std::vector<team>& teams){
+	for (std::vector<team>::iterator help_team_it = teams.begin();
+		help_team_it != teams.end(); help_team_it++) {
+		help_team_it->log_recruitable();
+		std::copy(help_team_it->recruits().begin(), help_team_it->recruits().end(),
+				  std::inserter(encountered_units_set, encountered_units_set.begin()));
+	}
+}
+
+void encounter_start_units(unit_map& units){
+	for (unit_map::const_iterator help_unit_it = units.begin();
+		 help_unit_it != units.end(); help_unit_it++) {
+		const std::string name = help_unit_it->second.type().id();
+		encountered_units_set.insert(name);
+	}
+}
+
+void encounter_recallable_units(game_state& gamestate){
+	for(std::map<std::string, player_info>::iterator pi = gamestate.players.begin(); pi!=gamestate.players.end(); ++pi) {
+		for(std::vector<unit>::iterator help_recall_it = pi->second.available_units.begin(); help_recall_it != pi->second.available_units.end(); help_recall_it++) {
+			encountered_units_set.insert(help_recall_it->type().id());
+		}
+	}
+}
+ 
+void encounter_map_terrain(gamemap& map){
+	for (int map_x = 0; map_x < map.x(); map_x++) {
+		for (int map_y = 0; map_y < map.y(); map_y++) {
+			const gamemap::TERRAIN t = map.get_terrain(gamemap::location(map_x, map_y));
+			std::string s;
+			s += t;
+			preferences::encountered_terrains().insert(s);
+		}
+	}
 }
 
 }
