@@ -9,9 +9,10 @@ SVN trunk:
    * Son of the Black Eye
      * cleaned up prestart events to stop units hopping around at map setup
  * user_interface
-     * added icons and tool-tips for advancement options and AMLA indicators into dfool theme
+     * added advancement and AMLA indicator icons, tooltips to dfool theme
  * graphics
-   * changed the the strom tridents attack icon from fireball to lightingbolt
+   * new title screen and logo
+   * changed the storm trident attack icon from fireball to lightingbolt
    * portraits:
      * new portraits: Li'sar, Drake_Burner, Drake_Fighter, Drake_Glider, 
        Elvish_Shaman, Ghoul, Mermaid_Initiate, Merman_Fighter, Merman_Hunter, 
@@ -86,7 +87,7 @@ SVN trunk:
    * campaign_list response now contains information about translations
    * problem with duplicate translations being saved with each upload has been
      fixed.
-   * I added a check for a name of "." to the list of invalid campaign names.
+   * added a check for a name of "." to the list of invalid campaign names.
      We should think about a list of valid characters rather than invalid ones.
      Something like ^[A-Za-z0-9_]+$ instead of trying to list potentially bad
      names.
@@ -98,15 +99,15 @@ SVN trunk:
  * utils: added weblist.pl and webtgz.pl web interface programs
    * updated weblist.pl to display translation information
    * updated weblist.pl and webtgz.pl to use standard wesnoth logo banner
-   * updated webtgz.pl to request campaign info only for the campaign of interest
+   * updated webtgz.pl to request campaign info only for campaign of interest
    * updated weblist.pl to display sizes in KB.
    * because the heuristic for determining translations will sometimes give
      duplicates, I changed the web page to remove duplicate languages
-   * I fixed a bug in how the language list was sorted on the web page
+   * fixed a bug in how the language list was sorted on the web page
    * Updated webtgz.pl to do a couple of undefines before starting the copy of
-     the cached campaign, to give perl a chance to release some memory.
-   * Fixed a bug in webtgz.pl where it wasn't handling escaped data in
-     downloaded files.
+     the cached campaign, to give perl a chance to release some memory
+   * fixed a bug in webtgz.pl where it wasn't handling escaped data in
+     downloaded files
    * Updated wml.pm and wml_net.pm to gain some efficiency. wml.pm was changed
      not to use split, but instead use substr to convert a string to an array.
      This saved about half the memory usage when using large strings. Arrays
@@ -117,26 +118,25 @@ SVN trunk:
  * utils: added prkill script, to calculate probabilities to kill in a skirmish
  * fix untranslated unit create dialog (#4424)
  * random map generator now uses island_size (#4458)
- * documentation switch doxygen templates from CVS to SVN and from Savannah to Gna!
+ * documentation switch doxygen templates from CVS to SVN, Savannah to Gna!
  * fixed text savegames (as opposed to binary savegames) having wrong
- textdomain information, making the messages be displayed in English when
- loading levels (#4454).
+   textdomain information, making the messages be displayed in English when
+   loading levels (#4454)
  * fixed incorrect savefile name after continue_no_save (#4439)
  * fixed Delfador talking to himself in Valley of Statues (#4440)
  * added a --with-preferences-dir configure option to allow using a dir
    different than .wesnoth.  Should allow to use svn and 1.0 on the
    same machine without triggering spurious cache rebuilds ans such things.
- * Fix bug where duplicate key values were being concatenated rather than
-   being replaced by the last value.
- * Changed backstab to work when the opposite unit is any enemy of the
-   defender that isn't incapacitated.
+ * fix bug where duplicate key values were being concatenated rather than
+   being replaced by the last value
+ * changed backstab to work when the opposite unit is any enemy of the
+   defender that isn't incapacitated
  * builtin help documentation changes
-   * Updated description of backstab to match the new functionallity.
-   * Updated description of Beserk to mention the 30 round limit.
-   * Updated description of movement.
-   * Added brief description of the Shroud and the Fog of War.
- * Changed recall to allow you to see your recall list even if you have too
-   little gold to recall any units.
+   * updated description of backstab to match the new functionality
+   * updated description of Berserk to mention the 30 round limit
+   * updated description of movement
+   * added brief description of Shroud and Fog of War
+ * changed recall to show recall list even when gold < 20
  * prevented stoned units from being healed
  * various bug fixes and code cleanups
 
