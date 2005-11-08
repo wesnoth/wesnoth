@@ -290,6 +290,9 @@ std::vector<std::string> get_text() {
 		"-   Paweł Stradomski",
 		"-   Paweł Tomak",
 
+                "_" N_("+Portuguese Translation"),
+                "-   Luis Passos",
+
 		"_" N_("+Portuguese (Brazil) Translation"),
 		"-   Ambra Viviani Loos",
 		"-   Celso Goya",
