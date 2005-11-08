@@ -3,15 +3,17 @@
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
-#
+# Széll Tamás <tomi@digiflex.hu>, 2005.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: hu_wesnoth 1.0-cvs\n"
+"Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-11-04 22:07+0100\n"
-"PO-Revision-Date: 2005-09-18 18:42+0200\n"
-"Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
-"Language-Team: Hungarian <hu@li.org>\n"
+"PO-Revision-Date: 2005-11-08 19:12+0200\n"
+"Last-Translator:  <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1195,7 +1197,6 @@ msgstr ""
 "küldeni őket."
 
 #: data/help.cfg:296
-#, fuzzy
 msgid "trait^Undead"
 msgstr "Élőholt"
 
@@ -3101,7 +3102,6 @@ msgid "skirmisher"
 msgstr "portyázó"
 
 #: data/translations/english.cfg:81
-#, fuzzy
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
@@ -3109,7 +3109,7 @@ msgid ""
 msgstr ""
 "Rendíthetetlen:\n"
 "Ennek az egységnek kétszeresek az ellenállásai, de mindig legfeljebb 50%, "
-"védekezéskor."
+"védekezéskor. Ez nem váltotat a sebezhetőségen."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
@@ -3244,9 +3244,8 @@ msgstr ""
 "mozoghatnak és nem harcolhatnak."
 
 #: data/translations/english.cfg:129
-#, fuzzy
 msgid "race^Undead"
-msgstr "Élőholt"
+msgstr "Élőholtak"
 
 #: data/translations/english.cfg:132
 msgid "$name's Bridge,$name's Crossing"
@@ -8435,9 +8434,8 @@ msgid "+Greek Translation"
 msgstr "+Görög Fordítás"
 
 #: src/about.cpp:242
-#, fuzzy
 msgid "+Hebrew Translation"
-msgstr "+Görög Fordítás"
+msgstr "+Héber Fordítás"
 
 #: src/about.cpp:245
 msgid "+Hungarian Translation"
