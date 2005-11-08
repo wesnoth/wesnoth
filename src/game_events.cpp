@@ -790,6 +790,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		//get a list of the types this unit can be
 		std::vector<std::string> types = utils::split(cfg["type"]);
+		if (types.size() == 0) types.push_back("");
 
                 std::vector<std::string> sides = utils::split(cfg["side"]);
 
@@ -799,7 +800,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		for(ti = types.begin(); ti != types.end(); ++ti) {
 			config item = cfg.get_config();
 			item["type"] = *ti;
-                        item["side"] = cfg["side"];
 			item["role"] = "";
 			vconfig filter(&item);
 
