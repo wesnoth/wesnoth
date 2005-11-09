@@ -137,8 +137,8 @@ update-po:
 
 # latest graph-includes.pl can be found currently at http://ydirson.free.fr/soft/wesnoth/graphs/
 wesnoth-deps.dot:
-	(cd $(top_srcdir) && graph-includes -verbose --class wesnoth --group 1-1 \
+	PERL5LIB=$(top_srcdir) graph-includes -verbose --class wesnoth --group 1-1 \
 	  -sysI /usr/include/c++/4.0 -sysI /usr/include -sysI /usr/include/SDL \
-	  --prefixstrip src/ -I src  src) > $@
+	  --prefixstrip $(top_srcdir)/src/ -I $(top_srcdir)/src  $(top_srcdir)/src > $@
 %.ps: %.dot
 	dot -Tps $< > $@
