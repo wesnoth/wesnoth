@@ -15,6 +15,7 @@
 
 #include "button.hpp"
 #include "font.hpp"
+#include "../marked-up_text.hpp"
 #include "../image.hpp"
 #include "../log.hpp"
 #include "../util.hpp"
