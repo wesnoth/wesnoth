@@ -69,6 +69,7 @@ wesnoth_SOURCES = \
 	marked-up_text.cpp \
 	minimap.cpp \
 	mouse.cpp \
+	mouse_events.cpp \
 	multiplayer.cpp \
 	multiplayer_ui.cpp \
 	multiplayer_wait.cpp \
@@ -88,6 +89,7 @@ wesnoth_SOURCES = \
 	race.cpp \
 	random.cpp \
 	replay.cpp \
+	replay_controller.cpp \
 	reports.cpp \
 	sdl_utils.cpp \
 	show_dialog.cpp \
@@ -117,6 +119,7 @@ wesnoth_SOURCES = \
 	widgets/combo.cpp \
 	widgets/label.cpp \
 	widgets/menu.cpp \
+	widgets/image_button.cpp \
 	widgets/progressbar.cpp \
 	widgets/scrollarea.cpp \
 	widgets/scrollbar.cpp \
@@ -168,6 +171,7 @@ wesnoth_SOURCES = \
 	marked-up_text.hpp \
 	minimap.hpp \
 	mouse.hpp \
+	mouse_events.hpp \
 	multiplayer.hpp \
 	multiplayer_ui.hpp \
 	multiplayer_wait.hpp \
@@ -187,6 +191,7 @@ wesnoth_SOURCES = \
 	race.hpp \
 	random.hpp \
 	replay.hpp \
+	replay_controller.hpp \
 	reports.hpp \
 	scoped_resource.hpp \
 	sdl_utils.hpp \
@@ -214,6 +219,7 @@ wesnoth_SOURCES = \
 	serialization/preprocessor.hpp \
 	serialization/string_utils.hpp \
 	serialization/tokenizer.hpp \
+	widgets/image_button.hpp \
 	widgets/button.hpp \
 	widgets/combo.hpp \
 	widgets/label.hpp \
