@@ -148,7 +148,7 @@ namespace preferences {
 	bool ask_delete_saves();
 
 	bool use_colour_cursors();
-	void set_colour_cursors(bool value);
+	void _set_colour_cursors(bool value);
 
 	bool show_floating_labels();
 	void set_show_floating_labels(bool value);

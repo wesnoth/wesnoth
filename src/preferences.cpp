@@ -16,7 +16,6 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "config.hpp"
-#include "cursor.hpp"
 #include "filesystem.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
@@ -64,7 +63,6 @@ manager::manager()
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
 
-	set_colour_cursors(prefs["colour_cursors"] == "yes");
 	set_show_haloes(prefs["show_haloes"] != "no");
 
 	std::vector<std::string> v;
@@ -636,12 +634,10 @@ bool use_colour_cursors()
 	return colour_cursors;
 }
 
-void set_colour_cursors(bool value)
+void _set_colour_cursors(bool value)
 {
 	prefs["colour_cursors"] = value ? "yes" : "no";
 	colour_cursors = value;
-
-	cursor::use_colour(value);
 }
 
 bool show_floating_labels()

@@ -29,6 +29,7 @@ namespace preferences {
 	void set_adjust_gamma(bool val);
 	void set_gamma(int gamma);
 	void set_grid(bool ison);
+	void set_colour_cursors(bool value);
 
 	void show_preferences_dialog(display& disp, const config& game_cfg);
 	bool show_video_mode_dialog(display& disp);

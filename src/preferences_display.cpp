@@ -14,6 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "cursor.hpp"
 #include "display.hpp"
 #include "gettext.hpp"
 #include "hotkeys.hpp"
@@ -41,6 +42,7 @@ display_manager::display_manager(display* d)
 	set_turbo(turbo());
 	set_fullscreen(fullscreen());
 	set_gamma(gamma());
+	set_colour_cursors(preferences::get("colour_cursors") == "yes");
 }
 
 display_manager::~display_manager()
@@ -144,6 +146,13 @@ void set_grid(bool ison)
 	if(disp != NULL) {
 		disp->set_grid(ison);
 	}
+}
+
+void set_colour_cursors(bool value)
+{
+	_set_colour_cursors(value);
+
+	cursor::use_colour(value);
 }
 
 namespace {

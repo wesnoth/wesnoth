@@ -16,7 +16,7 @@
 #include "cursor.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
-#include "preferences.hpp"
+#include "preferences_display.hpp"
 #include "scoped_resource.hpp"
 #include "sdl_utils.hpp"
 #include "video.hpp"
