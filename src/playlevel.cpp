@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "ai_interface.hpp"
+#include "config_adapter.hpp"
 #include "cursor.hpp"
 #include "dialogs.hpp"
 #include "events.hpp"

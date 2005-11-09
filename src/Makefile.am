@@ -41,6 +41,7 @@ wesnoth_SOURCES = \
 	checksum.cpp \
 	clipboard.cpp \
 	config.cpp \
+	config_adapter.cpp \
 	cursor.cpp \
 	dialogs.cpp \
 	display.cpp \
@@ -143,6 +144,7 @@ wesnoth_SOURCES = \
 	clipboard.hpp \
 	cursor.hpp \
 	config.hpp \
+	config_adapter.hpp \
 	dialogs.hpp \
 	display.hpp \
 	events.hpp \

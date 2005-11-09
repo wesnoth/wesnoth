@@ -161,6 +161,10 @@ SOURCE=.\src\config.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\config_adapter.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\cursor.cpp
 # End Source File
 # Begin Source File
@@ -578,6 +582,10 @@ SOURCE=.\src\widgets\combo.hpp
 # Begin Source File
 
 SOURCE=.\src\config.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\config_adapter.hpp
 # End Source File
 # Begin Source File
 
