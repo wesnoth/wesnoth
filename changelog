@@ -47,6 +47,12 @@ SVN trunk:
    * fixed misleading description of Steadfast (#4315)
  * music and sound:
    * new main menu music
+ * redesigned the slow ability
+   * slow does not remove an attack anymore
+   * slow still temporarly doubles movement cost
+   * slowed units do not emit ZoC
+   * hiting with slowing attacks changes the order of attacks to allow attacker to strike again
+   * slowed units lose initiative on fight
  * units and balancing changes:
    * decreased Dwarvish Fighter hammer attack damage from 9 to 8
    * decreased Merman Hunter experience needed to level from 38 to 35
