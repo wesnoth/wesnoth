@@ -369,7 +369,6 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 
 		int defenderxp = 0;
 
-		bool defender_slowed = false;
 
 		int defhp = target_hp;
 		for(size_t i = 0; i != movements.size() && defhp; ++i) {
@@ -378,13 +377,6 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 
 			int attacks = stat.nattacks;
 			int defends = stat.ndefends;
-
-			if(defender_slowed && defends > 1) {
-				--defends;
-
-				//give an extra bonus based on slowing here
-				avg_damage_taken -= stat.damage_defender_takes;
-			}
 
 			unit_map::const_iterator att = units.find(movements[i].first);
 			double cost = att->second.type().cost();
@@ -419,9 +411,6 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 							atthp = hitpoints[i];
 						}
 
-						if(stat.attacker_slows && !defender_slowed && defend_it->second.has_flag("slowed") == false) {
-							defender_slowed = true;
-						}
 					}
 
 					--attacks;

@@ -629,13 +629,6 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		res.amount_attacker_drains = res.damage_defender_takes/2;
 	}
 
-	static const std::string slowed_string("slowed");
-	if(a->second.has_flag(slowed_string) && res.nattacks > 1)
-		--res.nattacks;
-
-	if(d->second.has_flag(slowed_string) && res.ndefends > 1)
-		--res.ndefends;
-
 	// FIXME: doesn't take into account berserk+slow or drain
 	if (strings && res.amount_attacker_drains == 0 &&
 		res.amount_defender_drains == 0 &&
@@ -720,13 +713,15 @@ void attack(display& gui, const gamemap& map,
 	int orig_attacks = stats.nattacks;
 	int orig_defends = stats.ndefends;
 	int to_the_death = stats.to_the_death ? 30 : 0;
+	bool slow_affects_attacker = a->second.has_flag("slowed");
+	bool slow_affects_defender = d->second.has_flag("slowed");
 
 	static const std::string poison_string("poison");
 
 	while(stats.nattacks > 0 || stats.ndefends > 0) {
 		LOG_NG << "start of attack loop...\n";
 
-		if(stats.nattacks > 0 && stats.defender_strikes_first == false) {
+		if(stats.nattacks > 0 && stats.defender_strikes_first == false && slow_affects_attacker == false) {
 			add_random_separator();
 			const int ran_num = get_random();
 			bool hits = (ran_num%100) < stats.chance_to_hit_defender;
@@ -871,13 +866,10 @@ void attack(display& gui, const gamemap& map,
 					d->second.set_flag("poisoned");
 				}
 
-				if(stats.attacker_slows && d->second.has_flag("slowed") == false) {
+				if(stats.attacker_slows) {
+					slow_affects_defender = true;
 					gui.float_label(d->first,_("slowed"),255,0,0);
 					d->second.set_flag("slowed");
-					if (orig_defends > 1) {
-						if (stats.ndefends > 0) --stats.ndefends;
-						--orig_defends;
-					}
 				}
 
 				//if the defender is turned to stone, the fight stops immediately
@@ -893,11 +885,15 @@ void attack(display& gui, const gamemap& map,
 
 			--stats.nattacks;
 		}
+		// slow and initiative are cumulative
+		if(!stats.defender_strikes_first) {
+			slow_affects_attacker = false;
+		}
 
 		//if the defender got to strike first, they use it up here.
 		stats.defender_strikes_first = false;
 
-		if(stats.ndefends > 0) {
+		if(stats.ndefends > 0 && slow_affects_defender == false) {
 			LOG_NG << "doing defender attack...\n";
 			add_random_separator();
 
@@ -1037,13 +1033,10 @@ void attack(display& gui, const gamemap& map,
 					a->second.set_flag("poisoned");
 				}
 
-				if(stats.defender_slows && a->second.has_flag("slowed") == false) {
+				if(stats.defender_slows) {
+					slow_affects_attacker = true;
 					gui.float_label(a->first,_("slowed"),255,0,0);
 					a->second.set_flag("slowed");
-					if (orig_attacks > 1) {
-						if (stats.nattacks > 0) --stats.nattacks;
-						--orig_attacks;
-					}
 				}
 
 
@@ -1060,6 +1053,7 @@ void attack(display& gui, const gamemap& map,
 
 			--stats.ndefends;
 		}
+		slow_affects_defender = false;
 
 		// continue the fight to death; if one of the units got stoned,
 		// either nattacks or ndefends is -1
