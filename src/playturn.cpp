@@ -1171,7 +1171,7 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 	if(items.empty())
 		return;
 
-	command_executor::show_menu(items_arg, xloc, yloc, context_menu, gui_);
+	command_executor::show_menu(items, xloc, yloc, context_menu, gui_);
 }
 
 bool turn_info::unit_in_cycle(unit_map::const_iterator it) const
