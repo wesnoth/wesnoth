@@ -428,7 +428,7 @@ void replay_controller::play_side(int team_index){
 
 	game_events::pump();
 
-	check_victory(units_,teams_);
+	//check_victory(units_,teams_);
 
 	player_number_++;
 

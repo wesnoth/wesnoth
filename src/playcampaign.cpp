@@ -90,49 +90,28 @@ void play_replay(display& disp, game_state& state, const config& game_config,
 
 	controller_map controllers;
 
-	while(scenario != NULL) {
-		//If we are a multiplayer client, tweak the controllers
-		const config::child_list& story = scenario->get_children("story");
-		const std::string current_scenario = state.scenario;
+	const config::child_list& story = scenario->get_children("story");
+	const std::string current_scenario = state.scenario;
 
-		bool save_game_after_scenario = true;
+	bool save_game_after_scenario = true;
 
-		try {
-			// preserve old label eg. replay
-			if (state.label.empty())
-				state.label = (*scenario)["name"];
+	try {
+		// preserve old label eg. replay
+		if (state.label.empty())
+			state.label = (*scenario)["name"];
 
-			LEVEL_RESULT res = play_replay_level(units_data,game_config,scenario,video,state,story);
+		LEVEL_RESULT res = play_replay_level(units_data,game_config,scenario,video,state,story);
 
-			state.snapshot = config();
-			recorder.clear();
-			state.replay_data.clear();
+		state.snapshot = config();
+		recorder.clear();
+		state.replay_data.clear();
 
-		} catch(game::load_game_failed& e) {
-			gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
-		} catch(game::game_error& e) {
-			gui::show_error_message(disp, _("Error while playing the game: ") + e.message);
-		} catch(gamemap::incorrect_format_exception& e) {
-			gui::show_error_message(disp, std::string(_("The game map could not be loaded: ")) + e.msg_);
-		}
-
-		//if the scenario hasn't been set in-level, set it now.
-		if(state.scenario == current_scenario)
-			state.scenario = (*scenario)["next_scenario"];
-
-		scenario = game_config.find_child(type,"id",state.scenario);
-
-		//update the replay start
-		if(scenario != NULL) {
-			//FIXME: this should only be done if the scenario was not tweaked.
-			state.starting_pos = *scenario;
-		}
-
-		recorder.set_save_info(state);
-	}
-
-	if (!state.scenario.empty() && state.scenario != "null") {
-		gui::show_error_message(disp, _("Unknown scenario: '") + state.scenario + '\'');
+	} catch(game::load_game_failed& e) {
+		gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
+	} catch(game::game_error& e) {
+		gui::show_error_message(disp, _("Error while playing the game: ") + e.message);
+	} catch(gamemap::incorrect_format_exception& e) {
+		gui::show_error_message(disp, std::string(_("The game map could not be loaded: ")) + e.msg_);
 	}
 }
 
