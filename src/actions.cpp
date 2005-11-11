@@ -249,14 +249,6 @@ gamemap::location under_leadership(const std::map<gamemap::location,unit>& units
 	return best_loc;
 }
 
-static int compute_damage(int base_damage, int bonus, int divisor)
-{
-	// we want to round (base_damage * bonus / divisor) to the closest integer
-	// but up or down towards base_damage
-	int rounding = divisor / 2 - (bonus < divisor ? 0 : 1);
-	return maximum<int>(1, (base_damage * bonus + rounding) / divisor);
-}
-
 double pr_atleast(int m, double p, int n, int d)
 {
 	// calculate Pr[A does damage in [m,...)], where
@@ -481,7 +473,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 		bonus *= resistance_modifier;
 		divisor *= 100;
-		const int final_damage = compute_damage(base_damage, bonus, divisor);
+		const int final_damage = round_damage(base_damage, bonus, divisor);
 		res.damage_attacker_takes = final_damage;
 
 		if (strings) {
@@ -611,7 +603,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	bonus *= resistance_modifier;
 	divisor *= 100;
-	const int final_damage = compute_damage(base_damage, bonus, divisor);
+	const int final_damage = round_damage(base_damage, bonus, divisor);
 	res.damage_defender_takes = final_damage;
 
 	if (strings) {

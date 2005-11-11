@@ -54,6 +54,7 @@ std::vector< std::string > quoted_split(std::string const &val, char c= ',',
                                         int flags = REMOVE_EMPTY | STRIP_SPACES, char quote = '\\');
 std::pair< int, int > parse_range(std::string const &str);
 bool notspace(char c);
+int apply_modifier( const int number, const std::string &amount, const int minimum = 0 );
 std::string &escape(std::string &str, const std::string& special_chars);
 std::string &escape(std::string &str);
 std::string &unescape(std::string &str);

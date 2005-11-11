@@ -1147,12 +1147,7 @@ void unit::add_modification(const std::string& type,
 					" " + t_string(N_("HP"), "wesnoth");
 
 				//a percentage on the end means increase by that many percent
-				if(increase_total[increase_total.size()-1] == '%') {
-					const std::string inc(increase_total.begin(),increase_total.end()-1);
-					maxHitpoints_ += div100(maxHitpoints_ * atoi(inc.c_str()));
-				} else {
-					maxHitpoints_ += atoi(increase_total.c_str());
-				}
+				maxHitpoints_ = utils::apply_modifier(maxHitpoints_, increase_total);
 			}
 
 			if(maxHitpoints_ < 1)
@@ -1183,15 +1178,7 @@ void unit::add_modification(const std::string& type,
 				description += (increase[0] != '-' ? "+" : "") + increase +
 					" " + t_string(N_("Moves"), "wesnoth");
 
-				if(increase[increase.size()-1] == '%') {
-					const std::string inc(increase.begin(),increase.end()-1);
-					maxMovement_ += div100(maxMovement_ * atoi(inc.c_str()));
-				} else {
-					maxMovement_ += atoi(increase.c_str());
-				}
-
-				if(maxMovement_ < 1)
-					maxMovement_ = 1;
+				maxMovement_ = utils::apply_modifier(maxMovement_, increase, 1);
 			}
 
 			if(set_to.empty() == false) {
@@ -1208,12 +1195,7 @@ void unit::add_modification(const std::string& type,
 					increase + " " +
 					t_string(N_("XP to advance"), "wesnoth");
 
-				if(increase[increase.size()-1] == '%') {
-					const std::string inc(increase.begin(),increase.end()-1);
-					maxExperience_ += div100(maxExperience_ * atoi(inc.c_str()));
-				} else {
-					maxExperience_ += atoi(increase.c_str());
-				}
+				maxExperience_ = utils::apply_modifier(maxExperience_, increase);
 			}
 
 			if(maxExperience_ < 1) {

@@ -303,19 +303,7 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 	}
 
 	if(increase_damage.empty() == false) {
-		int increase = 0;
-
-		if(increase_damage[increase_damage.size()-1] == '%') {
-			const std::string inc(increase_damage.begin(),increase_damage.end()-1);
-			increase = div100(damage_ * atoi(inc.c_str()));
-		} else {
-			increase = atoi(increase_damage.c_str());
-		}
-
-		damage_ += increase;
-		if(damage_ < 1) {
-			damage_ = 1;
-		}
+		damage_ = utils::apply_modifier(damage_, increase_damage, 1);
 
 		if(description != NULL) {
 			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage << " " << _("damage");
@@ -323,19 +311,7 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 	}
 
 	if(increase_attacks.empty() == false) {
-		int increase = 0;
-
-		if(increase_attacks[increase_attacks.size()-1] == '%') {
-			const std::string inc(increase_attacks.begin(),increase_attacks.end()-1);
-			increase = div100(num_attacks_ * atoi(inc.c_str()));
-		} else {
-			increase = atoi(increase_attacks.c_str());
-		}
-
-		num_attacks_ += increase;
-		if(num_attacks_ < 1) {
-			num_attacks_ = 1;
-		}
+		num_attacks_ = utils::apply_modifier(num_attacks_, increase_attacks, 1);
 
 		if(description != NULL) {
 			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks << " " << _("strikes");

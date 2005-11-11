@@ -40,9 +40,16 @@ inline bool is_odd(T num) {
 template<typename T>
 inline bool is_even(T num) { return !is_odd(num); }
 
-// guarantees portable results for division by 100
-inline int div100(int num) {
-  return num < 0 ? -((-num) / 100) : num / 100;
+// guarantees portable results for division by 100; round towards 0
+inline int div100rounded(int num) {
+	return (num < 0) ? -(((-num) + 49) / 100) : (num + 49) / 100;
+}
+
+// round (base_damage * bonus / divisor) to the closest integer
+// but up or down towards base_damage
+static int round_damage(int base_damage, int bonus, int divisor) {
+	const int rounding = divisor / 2 - (bonus < divisor ? 0 : 1);
+	return maximum<int>(1, (base_damage * bonus + rounding) / divisor);
 }
 
 struct bad_lexical_cast {};
