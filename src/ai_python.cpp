@@ -311,9 +311,23 @@ static PyObject* wrapper_unit_attacks( wesnoth_unit* unit, PyObject* args )
 	return (PyObject*)list;
 }
 
+static PyObject* wrapper_unit_movement_cost( wesnoth_unit* unit, PyObject* args );
+static PyObject* wrapper_unit_defense_modifier( wesnoth_unit* unit, PyObject* args );
+
+static PyObject* wrapper_unit_damage_against( wesnoth_unit* unit, PyObject* args )
+{
+	wesnoth_attacktype* attack;
+	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_attacktype_type, &attack ) )
+		return NULL;
+	return Py_BuildValue("i",unit->unit_->damage_against(*attack->attack_type_));
+}
+
 static PyMethodDef unit_methods[] = {
 	{ "type",		(PyCFunction)wrapper_unit_type,       METH_VARARGS},
 	{ "attacks",	(PyCFunction)wrapper_unit_attacks,		METH_VARARGS},
+	{ "movement_cost",	(PyCFunction)wrapper_unit_movement_cost,		METH_VARARGS},
+	{ "defense_modifier",	(PyCFunction)wrapper_unit_defense_modifier,		METH_VARARGS},
+	{ "damage_against",	(PyCFunction)wrapper_unit_damage_against,		METH_VARARGS},
 	{ NULL, NULL, NULL }
 };
 
@@ -610,6 +624,25 @@ static PyTypeObject wesnoth_team_type = {
 	0,                         /* tp_members */
 	team_getseters,          /* tp_getset */
 };
+
+static PyObject* wrapper_unit_movement_cost( wesnoth_unit* unit, PyObject* args )
+{
+	wesnoth_gamemap* map;
+	wesnoth_location* loc;
+	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_gamemap_type, &map, &wesnoth_location_type, &loc ) )
+		return NULL;
+	return Py_BuildValue("i",unit->unit_->movement_cost(*map->map_,map->map_->get_terrain(*loc->location_)));
+}
+
+static PyObject* wrapper_unit_defense_modifier( wesnoth_unit* unit, PyObject* args )
+{
+	wesnoth_gamemap* map;
+	wesnoth_location* loc;
+	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_gamemap_type, &map, &wesnoth_location_type, &loc ) )
+		return NULL;
+	return Py_BuildValue("i",unit->unit_->defense_modifier(*map->map_,map->map_->get_terrain(*loc->location_)));
+}
+
 
 static PyObject* wrap_location(const gamemap::location& loc)
 {
