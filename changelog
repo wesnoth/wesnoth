@@ -150,6 +150,27 @@ SVN trunk:
    * added brief description of Shroud and Fog of War
  * changed recall to show recall list even when gold < 20
  * prevented stoned units from being healed
+ * Fix bug with leader starting position.
+ * Tigten up checks on leaders and units placed on the map at the start of
+   a scenario.
+ * Campaigns
+   * Fix bug in HTTP FoA where a serpent leader was defined off board instead
+     of using the no_leader attribute.
+   * Fix bug in TDH UP where units are placed off map and in walls.
+   * Fix bug in EI NO where no_leader should have been used instead of a leader
+     without a starting position.
+   * Fix bug in EI OT where no_leader should have been used instead of a leader
+     without a starting position.
+   * Fix bug in EI Captured where no_leader should have been used instead of a
+     leader without a starting position.
+   * Fix bug in EI TD. Sides 3 and 4 had leaders on the recall list. These
+     units have speaking roles, but shouldn't be on the map, so they were
+     changed to be regular units.
+   * Fix bug in SotBE DoD where no_leader should have been used instead of a
+     leader without a starting position.
+   * Fix bug in SotBE CoA where the mermen side should have their leader
+     created in an event rather than defined in the side setup.
+   * Add a backup save_id to use if both save_id and description are empty.
  * various bug fixes and code cleanups
 
 Version 1.0rc1:

@@ -15,6 +15,10 @@ std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_sav
 		save_id=cfg["description"];
 	}
 
+	if(save_id.empty()) {
+		save_id="Unknown";
+	}
+
 	//make sure the 'save_id' is unique
 	while(seen_save_ids.count(save_id)) {
 		save_id += "_";
@@ -85,28 +89,29 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 
 		//see if the side specifies its location. Otherwise start it at the map-given
 		//starting position
-		const std::string& has_loc = cfg["x"];
 		gamemap::location start_pos(cfg);
-
-		if(has_loc.empty()) {
-			start_pos = map.starting_position(side);
-			LOG_NG << "initializing side '" << cfg["side"] << "' at "
-				   << start_pos << '\n';
-		}
 
 		if(map.empty()) {
 			throw game::load_game_failed("Map not found");
 		}
-
-		if(!start_pos.valid() && new_unit.side() == 1) {
-			throw game::load_game_failed("No starting position for side 1");
+		if(cfg["x"].empty() && cfg["y"].empty()) {
+			start_pos = map.starting_position(side);
 		}
 
-		if(start_pos.valid()) {
-			new_unit.new_turn();
-			units.insert(std::pair<gamemap::location,unit>(
-						map.starting_position(new_unit.side()), new_unit));
+		if(!start_pos.valid() || !map.on_board(start_pos)) {
+			throw game::load_game_failed(
+				"Invalid starting position (" +
+				lexical_cast<std::string>(start_pos.x+1) +
+				"," + lexical_cast<std::string>(start_pos.y+1) +
+				") for the leader of side " +
+				lexical_cast<std::string>(side) + ".");
 		}
+
+		new_unit.new_turn();
+		units.insert(std::pair<gamemap::location,unit>(
+				map.starting_position(new_unit.side()), new_unit));
+		LOG_NG << "initializing side '" << cfg["side"] << "' at "
+			<< start_pos << '\n';
 	}
 
 	//if the game state specifies units that can be recruited for the player
@@ -131,10 +136,23 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 		const std::string& y = (**su)["y"];
 
 		const gamemap::location loc(**su);
-		if(x.empty() || y.empty() || !map.on_board(loc)) {
+		if(x.empty() && y.empty()) {
 			if(player) {
 				player->available_units.push_back(new_unit);
+				LOG_NG << "inserting unit on recall list for side " << new_unit.side() << "\n";
+			} else {
+				throw game::load_game_failed(
+					"Attempt to create a unit on the recall list for side " +
+					lexical_cast<std::string>(side) +
+					", which does not have a recall list.");
 			}
+		} else if(!loc.valid() || !map.on_board(loc)) {
+			throw game::load_game_failed(
+				"Invalid starting position (" +
+				lexical_cast<std::string>(loc.x+1) +
+				"," + lexical_cast<std::string>(loc.y+1) +
+				") for a unit on side " +
+				lexical_cast<std::string>(side) + ".");
 		} else {
 			units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
 			LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
