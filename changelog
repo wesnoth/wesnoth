@@ -1,38 +1,46 @@
-SVN trunk:
+SVN trunk (1.1.x):
  * campaigns:
    * Eastern Invasion
      * fix Undead fighting each other in Weldyn Besieged (#4386)
      * fix Undead not recruiting after leader change in The Crossing (#4393)
+     * Northern Outpost leader without starting position replaced with no_leader
+     * Ogre Training leader without starting position replaced with no_leader
+     * Captured leader without starting position replaced with no_leader
+     * side 3 and 4 leaders in The Duel now regular units: should not be on map
    * Heir to the Throne
      * changed the map 'Snow Plains' to use snow terrain
+     * fixed Delfador talking to himself in Valley of Statues (#4440)
      * fixed Home of the North Elves inaccurate victory condition (#4644)
+     * Ford of Abez off map serpent leader replaced with no_leader attribute
    * Son of the Black Eye
      * cleaned up prestart events to stop units hopping around at map setup
- * user_interface
+     * Desert of Death leader without starting position replaced with no_leader
+     * Clash of Armies mermen leader now created in event, not in side setup
+   * The Dark Hordes
+     * Underground Pool no longer has units off map and in walls
+ * user interface
+     * fix untranslated unit create dialog (#4424)
+     * changed recall to show recall list even when gold < 20
      * added advancement and AMLA indicator icons, tooltips to dfool theme
-     * new replay functionality
+     * allow pausing during replay
+     * SECURITY: check safety of campaign download names: if any unsafe
+       names are found, install is aborted before old version is removed
  * graphics
    * new title screen and logo
    * changed the storm trident attack icon from fireball to lightingbolt
    * new attack icon for the fireball
    * portraits:
-     * new portraits: Li'sar, Drake_Burner, Drake_Fighter, Drake_Glider, 
-       Elvish_Shaman, Ghoul, Mermaid_Initiate, Merman_Fighter, Merman_Hunter, 
-       Naga-Fighter, Orcish_Assassin, Saurian_Skirmisher
-     * made all Drake, Merman, Naga and Saurian upgrades use the level one
-       portraits
-     * made the Necrophage and the Orcish_Slayer use the Lvl1 portraits of 
-       their line
-   * new Konrad level 1 image
-   * new Deep Tentacle images
-   * new death animations: Initiate, Mage, Pikeman, Red, Mage, White Mage, Deep Tentacle
-   * removed depricated death animation: Drake_Fighter
-   * New swamp tiles
-   * New cave wall tiles
-   * New snow villages (human & elven)
-   * New underground village
-   * New paved road
-   * New variable width canyon graphics.
+     * new portraits: Li'sar, Drake Burner, Drake Fighter, Drake Glider, 
+       Elvish Shaman, Ghoul, Mermaid Initiate, Merman Fighter, Merman Hunter, 
+       Naga Fighter, Orcish Assassin, Saurian Skirmisher
+     * all Drake, Merman, Naga and Saurian upgrades now use level one portraits
+     * Necrophage and Orcish Slayer upgrades now use level one portraits
+   * new images: Konrad level 1, Tentacle of the Deep
+   * new death animations: Initiate, Mage, Pikeman, Red Mage, White Mage,
+     Tentacle of the Deep
+   * removed deprecated death animation: Drake Fighter
+   * new tiles: swamp, cave wall, paved road, variable width canyon
+   * new villages: snow (human & elven), underground
  * language and i18n:
    * added support for right-to-left languages (patch #470)
    * made the list of languages configurable via the locale WML
@@ -44,22 +52,31 @@ SVN trunk:
      Slovenian, Spanish, Swedish, Turkish
    * tutorial now has its own textdomain
    * fixed Undead used as both trait and race name (#4295)
+   * fixed textdomains in text savegames (non-binary) displaying all messages
+     in English when loading saved games (#4454)
    * fixed misleading description of Steadfast (#4315)
+   * help changes
+     * updated description of backstab to match the new functionality
+     * updated description of Berserk to mention the 30 round limit
+     * updated description of movement
+     * added brief description of Shroud and Fog of War
    * updated in game help and tip of the day to reflect latest slow changes
  * music and sound:
    * new main menu music
- * redesigned the slow ability
+ * gameplay changes:
+   * backstab now works if opposite unit is non-incapacitated enemy of defender
+   * prevented stoned units from being healed
    * slow does not remove an attack anymore
-   * slow still temporarly doubles movement cost
+   * slow still temporarily doubles movement cost
    * slowed units do not emit ZoC
-   * hiting with slowing attacks changes the order of attacks to allow attacker to strike again
+   * hitting with slow changes attack order to allow attacker to strike again
    * slowed units lose initiative on fight
  * units and balancing changes:
    * decreased Dwarvish Fighter hammer attack damage from 9 to 8
    * decreased Merman Hunter experience needed to level from 38 to 35
    * Northerners can now recruit Rocklobber in Age of Heroes era
    * removed Thug from Knalgan faction
-   * removed obsolete units: Merman, Naga, Saurian, Saurian_Warrior, Sea_Hag,
+   * removed obsolete units: Merman, Naga, Saurian, Saurian Warrior, Sea Hag,
      Triton
    * added drain on the melee attack of the Ghost
    * increased the HP of the Skeleton fighter tree by 4
@@ -75,102 +92,40 @@ SVN trunk:
    * multiplayer game with "empty" as side no longer causes OOS (#4464)
    * revised multiplayer maps: Divide and Conquer, Sablestone Delta,
      Silverhead Crossing, Sullas Ruins, 1v1v1Hex, Charge, Blitz, Clash, 
-     Hamlets, Meteor Lake, Den of Onis, Smallolof, CastleHoppingIsle,
+     Hamlets, Meteor Lake, Den of Onis, Smallolof, Castle Hopping Isle,
      Hornshark Island
    * updated multiplayer maps cfg files: Clash, Hexcake, Smallolof
    * fixed gamelist diff bug
-   * renamed "Across The River" config file to improve display order.
-   * renamed "Across The River" map to "Across the River".
-   * Made "Load Game ..." the first map option, instead of the last one to
-     improve visibility of this option.
+   * renamed "Across The River" config file to improve display order
+   * renamed "Across The River" map to "Across the River"
+   * made "Load Game ..." first map option (was last), for better visibility
  * campaign server
-   * Support new "timestamp" attribute
-   * Save persistent attributes in the campaign data
-     * The campaign name cannot be stored in "name" as that is treated as a
-       directory name, so use campaign_name instead. (Fixes bug #4525.)
-     * The campaign server now checks of file and directory names on upload
-       the same as the campaign name to prevent custom clients from entering
-       malicious names.
-   * Support filtering on campaign_list requests
-     * filter by name
-     * filter by last update time (before or after)
-     * filter by language of translation
+   * support new "timestamp" attribute
+   * save persistent attributes in the campaign data
+     * "name" is treated as directory name, so use campaign_name (#4525)
+     * SECURITY: ensure file and directory names on upload match campaign name
+   * support filtering on campaign_list requests: name, last update time
+     (before or after), language of translation
    * campaign_list response now contains the time the request was processed
    * campaign_list response now contains information about translations
-   * problem with duplicate translations being saved with each upload has been
-     fixed.
-   * added a check for a name of "." to the list of invalid campaign names.
-     We should think about a list of valid characters rather than invalid ones.
-     Something like ^[A-Za-z0-9_]+$ instead of trying to list potentially bad
-     names.
-   * Moved check_names_legal from campaign_server to publish_campaign in
-     preperation for using it to check downloaded campaigns.
-   * The download client has been changed to check the safety of names before
-     trying to install a downloaded campaign. If any unsafe names are found
-     the install is aborted before any old version of the campaign is removed.
- * utils: added weblist.pl and webtgz.pl web interface programs
-   * updated weblist.pl to display translation information
-   * updated weblist.pl and webtgz.pl to use standard wesnoth logo banner
-   * updated webtgz.pl to request campaign info only for campaign of interest
-   * updated weblist.pl to display sizes in KB.
-   * because the heuristic for determining translations will sometimes give
-     duplicates, I changed the web page to remove duplicate languages
-   * fixed a bug in how the language list was sorted on the web page
-   * Updated webtgz.pl to do a couple of undefines before starting the copy of
-     the cached campaign, to give perl a chance to release some memory
-   * fixed a bug in webtgz.pl where it wasn't handling escaped data in
-     downloaded files
-   * Updated wml.pm and wml_net.pm to gain some efficiency. wml.pm was changed
-     not to use split, but instead use substr to convert a string to an array.
-     This saved about half the memory usage when using large strings. Arrays
-     are still a pretty bad way to store strings when space is a concern.
-     wml_net.pm was changed to insert into a preallocated string instead of
-     appending in order to avoid lots of reallocations. In theory this should
-     save memory and time, but I didn't benchmark it.
- * utils: added prkill script, to calculate probabilities to kill in a skirmish
- * fix untranslated unit create dialog (#4424)
- * random map generator now uses island_size (#4458)
- * documentation switch doxygen templates from CVS to SVN, Savannah to Gna!
- * fixed text savegames (as opposed to binary savegames) having wrong
-   textdomain information, making the messages be displayed in English when
-   loading levels (#4454)
- * fixed incorrect savefile name after continue_no_save (#4439)
- * fixed Delfador talking to himself in Valley of Statues (#4440)
- * added a --with-preferences-dir configure option to allow using a dir
-   different than .wesnoth.  Should allow to use svn and 1.0 on the
-   same machine without triggering spurious cache rebuilds ans such things.
- * fix bug where duplicate key values were being concatenated rather than
-   being replaced by the last value
- * changed backstab to work when the opposite unit is any enemy of the
-   defender that isn't incapacitated
- * builtin help documentation changes
-   * updated description of backstab to match the new functionality
-   * updated description of Berserk to mention the 30 round limit
-   * updated description of movement
-   * added brief description of Shroud and Fog of War
- * changed recall to show recall list even when gold < 20
- * prevented stoned units from being healed
- * Fix bug with leader starting position.
- * Tigten up checks on leaders and units placed on the map at the start of
-   a scenario.
- * Campaigns
-   * Fix bug in HTTP FoA where a serpent leader was defined off board instead
-     of using the no_leader attribute.
-   * Fix bug in TDH UP where units are placed off map and in walls.
-   * Fix bug in EI NO where no_leader should have been used instead of a leader
-     without a starting position.
-   * Fix bug in EI OT where no_leader should have been used instead of a leader
-     without a starting position.
-   * Fix bug in EI Captured where no_leader should have been used instead of a
-     leader without a starting position.
-   * Fix bug in EI TD. Sides 3 and 4 had leaders on the recall list. These
-     units have speaking roles, but shouldn't be on the map, so they were
-     changed to be regular units.
-   * Fix bug in SotBE DoD where no_leader should have been used instead of a
-     leader without a starting position.
-   * Fix bug in SotBE CoA where the mermen side should have their leader
-     created in an event rather than defined in the side setup.
-   * Add a backup save_id to use if both save_id and description are empty.
+   * fixed problem with duplicate translations being saved with each upload
+ * utils
+   * added weblist.pl and webtgz.pl web interface programs
+   * changed wml.pm to use substr instead of split to convert string to array:
+     saves about half memory usage for large strings
+   * changed wml_net.pm to insert into preallocated string instead of
+     appending: should save memory and time, but not benchmarked
+   * added prkill script, to calculate probabilities to kill in a skirmish
+ * WML improvements:
+   * random map generator now uses island_size (#4458)
+   * fixed incorrect savefile name after continue_no_save (#4439)
+   * fix bad leader starting position causing crash
+   * tighten up checks on leaders and units placed on map at start of scenario
+   * add a backup save_id to use if both save_id and description are empty
+   * fix duplicate key values being concatenated: just replace with last value
+ * documentation: switch doxygen templates from CVS to SVN, Savannah to Gna!
+ * added a --with-preferences-dir configure option to allow using a directory
+   other than .wesnoth, for coexistence of multiple versions on same machine
  * various bug fixes and code cleanups
 
 Version 1.0rc1:
