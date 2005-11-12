@@ -664,13 +664,17 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	std::vector<unsigned char> flag_red_,flag_green_,flag_blue_;
 	std::vector<std::string> flag_string_ = utils::split(cfg["flag_red"]);
+	{
         for(std::vector<std::string>::iterator c=flag_string_.begin();c!=flag_string_.end();c++){
           flag_red_.push_back(atoi(c->c_str()));
         }
+	}
         flag_string_ = utils::split(cfg["flag_green"]);
-        for(std::vector<std::string>::iterator c=flag_string_.begin();c!=flag_string_.end();c++){
-          flag_green_.push_back(atoi(c->c_str()));
-        }
+		{
+			for(std::vector<std::string>::iterator c=flag_string_.begin();c!=flag_string_.end();c++){
+			  flag_green_.push_back(atoi(c->c_str()));
+			}
+		}
         flag_string_ = utils::split(cfg["flag_blue"]);
         for(std::vector<std::string>::iterator c=flag_string_.begin();c!=flag_string_.end();c++){
           flag_blue_.push_back(atoi(c->c_str()));
@@ -691,31 +695,35 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
         }//size of green=red=blue
 
 	//construct rgb values;
-	for(int i=0;i!=flag_red_.size();i++){
-	  //stolen from display.cpp, but don't want to include header 
-	  //for such a simple function
-	  flag_rgb_.push_back(Uint32 (0xFF000000 | (flag_red_[i] << 16) | (flag_green_[i] << 8) | flag_blue_[i]) );
+	{
+		for(int i = 0; i != flag_red_.size(); i++){
+		  //stolen from display.cpp, but don't want to include header 
+		  //for such a simple function
+		  flag_rgb_.push_back(Uint32 (0xFF000000 | (flag_red_[i] << 16) | (flag_green_[i] << 8) | flag_blue_[i]) );
+		}
 	}
 	flag_string_ = utils::split(cfg["flag_rgb"]);
-        for(std::vector<std::string>::iterator c=flag_string_.begin();c!=flag_string_.end();c++){
-	  int r,g,b;
-	  r=(atoi(c->c_str()));
-	  c++;
-	  if(c!=flag_string_.end()){
-	  g=(atoi(c->c_str()));
-	  }else{
-	    LOG_STREAM(err, config) <<"Missing Green in flag_rgb:"<<id();
-	    g=0;
-	  }
-	  c++;
-	  if(c!=flag_string_.end()){
-	  b=(atoi(c->c_str()));
-	  }else{
-	    LOG_STREAM(err, config) <<"Missing Blue in flag_rgb:"<<id();
-	    b=0;
-	  }
-	  flag_rgb_.push_back(Uint32 (0xFF000000 | (r << 16) | (g << 8) | b) );
-        }
+	{
+		for(std::vector<std::string>::iterator c=flag_string_.begin();c!=flag_string_.end();c++){
+		  int r,g,b;
+		  r=(atoi(c->c_str()));
+		  c++;
+		  if(c!=flag_string_.end()){
+		  g=(atoi(c->c_str()));
+		  }else{
+			LOG_STREAM(err, config) <<"Missing Green in flag_rgb:"<<id();
+			g=0;
+		  }
+		  c++;
+		  if(c!=flag_string_.end()){
+		  b=(atoi(c->c_str()));
+		  }else{
+			LOG_STREAM(err, config) <<"Missing Blue in flag_rgb:"<<id();
+			b=0;
+		  }
+		  flag_rgb_.push_back(Uint32 (0xFF000000 | (r << 16) | (g << 8) | b) );
+		}
+	}
 }
 
 unit_type::~unit_type()

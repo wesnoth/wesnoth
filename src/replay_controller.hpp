@@ -52,6 +52,7 @@ public:
 	void replay_next_side();
 	void replay_switch_fog();
 	void replay_switch_shroud();
+	void replay_skip_animation();
 
 	std::vector<team> teams_, teams_start_;
 private:

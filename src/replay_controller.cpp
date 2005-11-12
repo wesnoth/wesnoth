@@ -153,6 +153,10 @@ void replay_controller::replay_switch_shroud(){
 	update_gui();
 }
 
+void replay_controller::replay_skip_animation(){
+	recorder.set_skip(!recorder.is_skipping());
+}
+
 void replay_controller::initialize(CVideo& video, const std::vector<config*>& story){
 	//if the recorder has no event, adds an "game start" event to the
 	//recorder, whose only goal is to initialize the RNG
@@ -262,6 +266,7 @@ void replay_controller::initialize(CVideo& video, const std::vector<config*>& st
 		gui_->add_overlay(gamemap::location(**overlay),(**overlay)["image"], (**overlay)["halo"]);
 	}
 
+	game_events::fire("prestart");
 	gui_->begin_game();
 	gui_->adjust_colours(0,0,0);
 
@@ -542,6 +547,7 @@ bool replay_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) cons
 	case hotkey::HOTKEY_REPLAY_NEXT_SIDE:
 	case hotkey::HOTKEY_REPLAY_FOG:
 	case hotkey::HOTKEY_REPLAY_SHROUD:
+	case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
 		return true;
 
 	default:

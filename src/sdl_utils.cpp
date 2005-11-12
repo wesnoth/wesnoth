@@ -346,6 +346,7 @@ surface recolor_image(surface surf, Uint32 new_rgb, std::vector<Uint32> old_rgb)
 				   (Uint16) new_green +
 				   (Uint16) new_blue) / 3);
 	
+	{
         for(std::vector<Uint32>::const_iterator temp_rgb = old_rgb.begin();
 		temp_rgb!=old_rgb.end();temp_rgb++)
           {
@@ -371,7 +372,9 @@ surface recolor_image(surface surf, Uint32 new_rgb, std::vector<Uint32> old_rgb)
 		  old_avg = old_grey;
 		}
 	  } 
+	}
 
+	{
         for(std::vector<Uint32>::const_iterator temp_rgb = old_rgb.begin();
 		temp_rgb!=old_rgb.end();temp_rgb++)
           {
@@ -415,6 +418,7 @@ surface recolor_image(surface surf, Uint32 new_rgb, std::vector<Uint32> old_rgb)
                         ++beg;
                 }
         }
+	}
                                                                                 
         return create_optimized_surface(nsurf);
 }

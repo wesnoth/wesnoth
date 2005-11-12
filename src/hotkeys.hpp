@@ -43,7 +43,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_SEARCH, HOTKEY_SPEAK_ALLY, HOTKEY_SPEAK_ALL, HOTKEY_HELP,
 	HOTKEY_CHAT_LOG, HOTKEY_LANGUAGE,
 	HOTKEY_PLAY_REPLAY, HOTKEY_RESET_REPLAY, HOTKEY_STOP_REPLAY, HOTKEY_REPLAY_NEXT_TURN,
-	HOTKEY_REPLAY_NEXT_SIDE, HOTKEY_REPLAY_SHROUD, HOTKEY_REPLAY_FOG,
+	HOTKEY_REPLAY_NEXT_SIDE, HOTKEY_REPLAY_SHROUD, HOTKEY_REPLAY_FOG, HOTKEY_REPLAY_SKIP_ANIMATION,
 
 	//editing specific commands
 	HOTKEY_EDIT_SET_TERRAIN,
@@ -172,6 +172,7 @@ public:
 	virtual void replay_next_side() {}
 	virtual void replay_switch_shroud() {}
 	virtual void replay_switch_fog() {}
+	virtual void replay_skip_animation() {}
 
 	// Map editor stuff.
 	virtual void edit_set_terrain() {}

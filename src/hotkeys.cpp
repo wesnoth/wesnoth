@@ -85,6 +85,7 @@ const struct {
 	{ hotkey::HOTKEY_REPLAY_NEXT_SIDE, "replaynextside", N_("Next Side"), false },
 	{ hotkey::HOTKEY_REPLAY_SHROUD, "replayswitchshroud", N_("Shroud"), false },
 	{ hotkey::HOTKEY_REPLAY_FOG, "replayswitchfog", N_("Fog"), false },
+	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip animation"), false },
 
 	{ hotkey::HOTKEY_EDIT_SET_TERRAIN, "editsetterrain", N_("Set Terrain"),true },
 	{ hotkey::HOTKEY_EDIT_QUIT, "editquit", N_("Quit Editor"),true },
@@ -685,6 +686,10 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		 case HOTKEY_REPLAY_FOG:
 			 if (executor)
 				 executor->replay_switch_fog();
+			 break;
+		 case HOTKEY_REPLAY_SKIP_ANIMATION:
+			 if (executor)
+				 executor->replay_skip_animation();
 			 break;
 		default:
 			std::cerr << "command_executor: unknown command number " << command << ", ignoring.\n";

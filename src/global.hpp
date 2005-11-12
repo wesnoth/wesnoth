@@ -14,7 +14,16 @@
 #ifndef DISABLE_4786_HPP_INCLUDED
 #define DISABLE_4786_HPP_INCLUDED
 
+//for windows compilers
+#ifdef __MSVCRT__
+	#undef snprintf
+	#define snprintf _snprintf
+#endif
+
 #ifdef _MSC_VER
+
+#undef snprintf
+#define snprintf _snprintf
 
 //disable the warning to let us know about 'this' being used in
 //initializer list, since it's a common thing to want to do
