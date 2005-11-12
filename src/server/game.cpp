@@ -95,7 +95,7 @@ namespace {
 std::string describe_turns(int turn, const std::string& num_turns)
 {
 	char buf[50];
-	sprintf(buf,"%d/",int(turn));
+	snprintf(buf,sizeof(buf),"%d/",int(turn));
 
 	if(num_turns == "-1") {
 		return buf + std::string("-");
@@ -341,7 +341,7 @@ bool game::describe_slots()
 
 	const int val = int(available_slots());
 	char buf[50];
-	sprintf(buf,"%d",val);
+	snprintf(buf,sizeof(buf),"%d",val);
 
 	if(buf != (*description())["slots"]) {
 		description()->values["slots"] = buf;
