@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-11-12 21:17+0100\n"
-"PO-Revision-Date: 2005-10-04 00:00+0200\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2005-11-12 22:11+0100\n"
+"Last-Translator: Americo_iacovizzi <darkamex@gmail.com>\n"
 "Language-Team:  <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1232,7 +1232,6 @@ msgstr ""
 "missione. Questa caratteristica non viene mai data alle unità reclutate."
 
 #: data/help.cfg:302
-#, fuzzy
 msgid "trait^Undead"
 msgstr "Non-morto"
 
@@ -1298,14 +1297,15 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
-"La Prateria rappresenta le pianure aperte e può essere coltivata, utilizzata "
-"per il pascolo, o selvaggia. Essendo all'aperto, la Prateria è un terreno su "
-"cui ci si può spostare molto facilmente, ma risulta molto difficile "
-"difendersi su di essa. Generalmente l'unità che si muove meglio nelle "
-"praterie è la cavalleria, o quelle unità realmente agili che hanno dei "
-"vantaggi negli spazi aperti.\n"
+"La Prateria caratterizza le pianure più estese e può essere coltivata, "
+"utilizzata per il pascolo o selvaggia. Essendo all'aperto, la Prateria è un "
+"terreno su cui ci si può spostare molto facilmente, ma risulta molto "
+"difficile difendersi su di essa. Generalmente le unità che si muovono meglio "
+"sulle praterie sono la cavalleria e quelle unità agili che sono "
+"avvantaggiate dagli spazi aperti.\n"
 "\n"
-"La maggior parte delle unità hanno dal 30% al 40% di difesa nella prateria. "
+"La maggior parte delle unità hanno una percentuale di difesa che va dal 30% "
+"al 40% sulla prateria. "
 
 #: data/help.cfg:328 data/terrain.cfg:118 data/terrain.cfg:126
 msgid "Road"
@@ -1317,9 +1317,9 @@ msgid ""
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
-"Le strade sono dei percorsi battuti di terra, formate dal passaggio di molti "
-"viaggiatori su di esse. Per quanto riguarda il gioco, le Strade sono "
-"identiche alla <ref>dst=terrain_grassland text=Prateria</ref>."
+"Le strade sono dei percorsi battuti di terra che sono stati formati dal "
+"passaggio di molti viaggiatori su di essi. Nel gioco esse hanno le stesse "
+"caratteristiche della <ref>dst=terrain_grassland text=Prateria</ref>."
 
 #: data/help.cfg:336 data/terrain.cfg:334
 msgid "Forest"
@@ -1341,15 +1341,16 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
-"Le foreste rappresentano le zone boschive con un significante sottobosco, "
-"abbastanza rigoglioso da rendere il passaggio difficile. Anche se le foreste "
-"rallentano quasi tutte le creature, in queste zone si ha una maggiore difesa "
-"rispetto alle zone aperte. La Cavalleria comunque ha molti problemi a "
-"muoversi attraverso la foresta. Gli Elfi sono l'eccezione alla regola. Non "
-"solo riescono a muoversi con agilità attraverso le foreste, ma hanno un "
-"bonus significativo nella difesa. I Nani sono un altra eccezione; anche se "
-"riescono a muoversi nelle foreste senza diminuire troppo l'andatura, la loro "
-"scarsa conoscenza del terreno li rende molto vulnerabili agli attacchi.\n"
+"Le foreste rappresentano le zone boschive con una notevole quantità di "
+"sottobosco, abbastanza rigoglioso da rendere il passaggio difficile. Anche "
+"se le foreste rallentano quasi tutte le creature, in queste zone si ha una "
+"maggiore difesa rispetto alle zone aperte. La Cavalleria comunque ha molti "
+"problemi a muoversi attraverso la foresta. Gli Elfi sono l'eccezione alla "
+"regola. Non solo riescono a muoversi con agilità attraverso le foreste, ma "
+"hanno un bonus significativo nella difesa. I Nani sono un altra eccezione; "
+"anche se riescono a muoversi nelle foreste senza diminuire troppo "
+"l'andatura, la loro scarsa conoscenza del terreno li rende molto vulnerabili "
+"agli attacchi.\n"
 "\n"
 "Gran parte delle unità hanno il 50% di difesa nelle foreste, ma la "
 "cavalleria ha il 40%. Gli Elfi, d'altro canto, godono del 60-70% di difesa, "
@@ -2535,7 +2536,7 @@ msgstr "Rovine"
 
 #: data/terrain.cfg:449
 msgid "Sunken Ruin"
-msgstr "Le Rovine di Sunken"
+msgstr "Rovine Sommerse"
 
 #: data/terrain.cfg:460
 msgid "Swamp Ruin"
@@ -3202,15 +3203,14 @@ msgid "skirmisher"
 msgstr "Incursore"
 
 #: data/translations/english.cfg:81
-#, fuzzy
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
 "Risoluta:\n"
-"La resistenza di questa unità è aumentata sino ad un massimo del 50% quando "
-"si difende"
+"La resistenza di questa unità è aumentata sino ad un massimo del 50% in "
+"difesa. Le vulnerabilità non vengono modificate"
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
@@ -3342,7 +3342,6 @@ msgstr ""
 "pietra non possono muoversi o attaccare."
 
 #: data/translations/english.cfg:129
-#, fuzzy
 msgid "race^Undead"
 msgstr "Non-morto"
 
@@ -5711,7 +5710,7 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:123
 msgid "female^Elvish Sharpshooter"
-msgstr "Tirattrice Elfica Legendaria"
+msgstr "Tiratrice Elfica Legendaria"
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
@@ -8447,8 +8446,8 @@ msgstr ""
 "I più forti arcieri non-morto sono coloro che erano arcieri nella loro vita "
 "precedente. Adesso vagano sul campo di battaglia guidati da un fievole "
 "ricordo delle loro passate abilità, senza sapere chi sono, qual è il loro "
-"obiettivo e chi sono i loro nemici. Sono guidati solo dal desiderio di "
-"mostrare la sofferenza delle loro esistenze vuote e prive di senso."
+"obiettivo e chi sono i loro nemici. Sono guidati solo dal desiderio di far "
+"conoscere la sofferenza delle loro esistenze vuote e prive di senso."
 
 #: data/units/Soulless.cfg:5
 msgid "Soulless"
@@ -9141,9 +9140,8 @@ msgid "+Greek Translation"
 msgstr "+Traduzione in Greco"
 
 #: src/about.cpp:243
-#, fuzzy
 msgid "+Hebrew Translation"
-msgstr "+Traduzione in Greco"
+msgstr "+Traduzione in Ebraico"
 
 #: src/about.cpp:247
 msgid "+Hungarian Translation"
