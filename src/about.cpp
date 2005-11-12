@@ -41,6 +41,7 @@ std::vector<std::string> get_text() {
 		"-   Alfredo Beaumont (ziberpunk)",
 		"-   András Salamon (ott)",
 		"-   Bram Ridder (Morloth)",
+		"-   Bruno Wolff III",
 		"-   Cedric Duval",
 		"-   Cyril Bouthors (CyrilB)",
 		"-   Guillaume Melquiond (silene)",
