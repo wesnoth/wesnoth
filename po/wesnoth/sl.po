@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-11-04 22:07+0100\n"
+"POT-Creation-Date: 2005-11-12 21:17+0100\n"
 "PO-Revision-Date: 2005-08-07 22:54+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <sl@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Max HP bonus +"
 msgstr "Največji HP bonus +"
 
-#: data/amla.cfg:22
+#: data/amla.cfg:23
 msgid "Full Heal"
 msgstr "Popolna ozdravitev"
 
@@ -46,11 +46,11 @@ msgstr "Uvod"
 msgid "Gameplay"
 msgstr "Igra"
 
-#: data/help.cfg:21 src/playturn.cpp:2253
+#: data/help.cfg:21 src/playturn.cpp:2219
 msgid "Traits"
 msgstr "Značilnosti"
 
-#: data/help.cfg:29 src/playturn.cpp:1795
+#: data/help.cfg:29 src/playturn.cpp:1759
 msgid "Units"
 msgstr "Enote"
 
@@ -66,7 +66,7 @@ msgstr "Posebnosti orožij"
 msgid "Terrains"
 msgstr "Vrste terena"
 
-#: data/help.cfg:54 data/help.cfg:60 data/help.cfg:246
+#: data/help.cfg:54 data/help.cfg:60 data/help.cfg:252
 msgid "Overview"
 msgstr "Pregled"
 
@@ -356,6 +356,7 @@ msgid "Movement"
 msgstr "Premikanje"
 
 #: data/help.cfg:126
+#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -364,7 +365,11 @@ msgid ""
 "the defense rating the unit would have if you moved it to that hex. Mousing "
 "over a dull hex will also show the number of turns required to reach it, and "
 "clicking will cause the unit to move towards it by the fastest route over "
-"this and subsequent turns."
+"this and subsequent turns. If you don't use up all of a unit's movement when "
+"you first move a unit, you may move it again. This is useful when having two "
+"units switch places. Attacking with a unit will use up its movement. Ending "
+"a move in a village you don't already own will also use up a unit's "
+"movement, but will still allow it to attack."
 msgstr ""
 "Premikanje v Battle for Wesnoth je preprosto: samo kliknite na enoto, ki jo "
 "želite premakniti in potem še na ploščo kamor hočete da gre. Ko je enota "
@@ -434,10 +439,27 @@ msgstr ""
 "karti ne bi bilo vaših enot, ki jim ovirajo pot."
 
 #: data/help.cfg:137
+msgid "Shroud and Fog of War"
+msgstr ""
+
+#: data/help.cfg:138
+msgid ""
+"When playing some scenarios parts of the map will be hidden from you. There "
+"are two mechanisms that can be used separately or together. The Shroud will "
+"hide both the terrain and any units at a location. However once it is "
+"cleared, you can always see that location. The Fog of War only hides units "
+"and village ownership (other than by you or your allies) from you. The Fog "
+"of War is cleared temporarily when you have units nearby, but returns when "
+"they leave. Both the Shroud and the Fog of War are cleared by units. Each "
+"unit will clear of the locations within one turn's move (ignoring ZOC and "
+"enemy units) and locations adjacent to those locations."
+msgstr ""
+
+#: data/help.cfg:143
 msgid "Combat"
 msgstr "Boj"
 
-#: data/help.cfg:138
+#: data/help.cfg:144
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -459,7 +481,7 @@ msgstr ""
 "orožja kot so meč, sekira ali čekani, in na daljavo, kjer so ponavadi "
 "vpleteni lok, kopje in ognjena krogla."
 
-#: data/help.cfg:140
+#: data/help.cfg:146
 msgid ""
 "\n"
 "\n"
@@ -469,7 +491,7 @@ msgstr ""
 "\n"
 "<header>text='Vrstni red in števlo napadov'</header>"
 
-#: data/help.cfg:142
+#: data/help.cfg:148
 msgid ""
 "\n"
 "\n"
@@ -490,7 +512,7 @@ msgstr ""
 "zamahne (vsak zadetek naredi 5 škode), medtem ko Orkovski grobijan z 9-2 "
 "dobi samo 2 zamaha (vsak po 9 škode)."
 
-#: data/help.cfg:144
+#: data/help.cfg:150
 msgid ""
 "\n"
 "\n"
@@ -500,7 +522,7 @@ msgstr ""
 "\n"
 "<header>text='Verjetnost zadetka'</header>"
 
-#: data/help.cfg:146
+#: data/help.cfg:152
 msgid ""
 "\n"
 "\n"
@@ -522,7 +544,7 @@ msgstr ""
 "Obratno, vilinčeva možnost da zadane napadalca nazaj, je odvisna od terena "
 "na katerem ta stoji."
 
-#: data/help.cfg:148
+#: data/help.cfg:154
 msgid ""
 "\n"
 "\n"
@@ -539,7 +561,7 @@ msgstr ""
 "neglede na teren. Podobno imajo ostrostrelci, kadar napadajo, vedno vsaj 60% "
 "možnost da zadanejo, neglede na teren."
 
-#: data/help.cfg:150
+#: data/help.cfg:156
 msgid ""
 "\n"
 "\n"
@@ -549,7 +571,7 @@ msgstr ""
 "\n"
 "<header>text=Škoda</header>"
 
-#: data/help.cfg:152
+#: data/help.cfg:158
 msgid ""
 "\n"
 "\n"
@@ -570,7 +592,7 @@ msgstr ""
 "videli kako okoliščine vplivajo na osnovno škodo, v bojnem meniju izberite "
 "<italic>text='Izračun škode'</italic>."
 
-#: data/help.cfg:154
+#: data/help.cfg:160
 msgid ""
 "\n"
 "\n"
@@ -586,11 +608,11 @@ msgstr ""
 "<ref>dst=weaponspecial_charge text=Naskok</ref>, ki podvoji povzročeno škodo "
 "napadalca in branilca, kadar napadalec naskakuje."
 
-#: data/help.cfg:159
+#: data/help.cfg:165
 msgid "Damage Types and Resistance"
 msgstr "Vrste škode in odpornosti"
 
-#: data/help.cfg:160
+#: data/help.cfg:166
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -604,7 +626,7 @@ msgstr ""
 "imajo lahko odpornosti, ki spremenijo končno količino škode, ki jo prejmejo "
 "od določenega tipa škode."
 
-#: data/help.cfg:162
+#: data/help.cfg:168
 msgid ""
 "\n"
 "\n"
@@ -621,7 +643,7 @@ msgstr ""
 "lahko tudi slabosti; če ima enota -100% odpornost na določen tip škode, je "
 "bo utrpela 100% več, če bo zadeta s tistim tipom."
 
-#: data/help.cfg:164
+#: data/help.cfg:170
 msgid ""
 "\n"
 "\n"
@@ -634,7 +656,7 @@ msgstr ""
 "Za primer, Okostnjaki so zelo odporni na ostro in koničasto škodo, a so "
 "ranljivi za topo in ognjeno ter izjemno ranljivi za sveto škodo."
 
-#: data/help.cfg:166
+#: data/help.cfg:172
 msgid ""
 "\n"
 "\n"
@@ -647,11 +669,11 @@ msgstr ""
 "Če bo udarec zadel, bo vedno naredil vsaj eno točko škode. To velja tudi če "
 "ima branitelj 100% odpornost na zadan tip škode."
 
-#: data/help.cfg:171
+#: data/help.cfg:177
 msgid "Time of Day"
 msgstr "Čas dneva"
 
-#: data/help.cfg:175
+#: data/help.cfg:181
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night\n"
@@ -663,7 +685,7 @@ msgstr ""
 "Kaotične enote dobijo ponoči bonus +25% k zadani škodi in -25% podnevi.\n"
 "Nevtralne enote delujejo neodvisno od časa dneva."
 
-#: data/help.cfg:178
+#: data/help.cfg:184
 msgid ""
 "\n"
 "\n"
@@ -677,34 +699,34 @@ msgstr ""
 "običajnem dnevno-nočnem ciklu štejeta jutro in popoldne za dan, Prva in "
 "Druga Straža pa za noč:\n"
 
-#: data/help.cfg:178 data/schedules.cfg:5
+#: data/help.cfg:184 data/schedules.cfg:5
 msgid "Dawn"
 msgstr "Zora"
 
-#: data/help.cfg:179 data/schedules.cfg:13 data/schedules.cfg:25
+#: data/help.cfg:185 data/schedules.cfg:13 data/schedules.cfg:25
 #: data/schedules.cfg:32
 msgid "Morning"
 msgstr "Jutro"
 
-#: data/help.cfg:180 data/schedules.cfg:42 data/schedules.cfg:49
+#: data/help.cfg:186 data/schedules.cfg:42 data/schedules.cfg:49
 #: data/schedules.cfg:67
 msgid "Afternoon"
 msgstr "Popoldne"
 
-#: data/help.cfg:181 data/schedules.cfg:59 data/schedules.cfg:89
+#: data/help.cfg:187 data/schedules.cfg:59 data/schedules.cfg:89
 #: data/schedules.cfg:111
 msgid "Dusk"
 msgstr "Mrak"
 
-#: data/help.cfg:182 data/schedules.cfg:79
+#: data/help.cfg:188 data/schedules.cfg:79
 msgid "First Watch"
 msgstr "Prva Straža"
 
-#: data/help.cfg:183 data/schedules.cfg:101
+#: data/help.cfg:189 data/schedules.cfg:101
 msgid "Second Watch"
 msgstr "Druga Straža"
 
-#: data/help.cfg:185
+#: data/help.cfg:191
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -712,11 +734,11 @@ msgstr ""
 "Ne pozabite, de se nekateri scenariji odvijajo v podzemlju, kjer je večna "
 "tema!"
 
-#: data/help.cfg:190
+#: data/help.cfg:196
 msgid "Experience and Advancement"
 msgstr "Izkušnje in napredovanja"
 
-#: data/help.cfg:191
+#: data/help.cfg:197
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -728,7 +750,7 @@ msgstr ""
 "dobi dosti več izkušenj - 4 za enoto na stopnji 0, 8 za enoto na stopnji 1, "
 "16 za enoto na stopnji 2, 24 za enoto na stopnji 3 ..."
 
-#: data/help.cfg:193
+#: data/help.cfg:199
 msgid ""
 "\n"
 "\n"
@@ -744,7 +766,7 @@ msgstr ""
 "napredujejo na naslednjo stopnjo in se hkrati še docela pozdravijo. V "
 "nekaterih primerih boste imeli možnost izbire v kaj naj enota napreduje."
 
-#: data/help.cfg:196
+#: data/help.cfg:202
 msgid ""
 "\n"
 "\n"
@@ -769,11 +791,11 @@ msgstr ""
 "tri dodatne HP za vsakih novih 100 XP. Vedite pa, da se bo večini enot le "
 "povečal maximum zdravja, le redke se bodo tudi pozdravile (recimo nekrofag)."
 
-#: data/help.cfg:201
+#: data/help.cfg:207
 msgid "Healing"
 msgstr "Zdravljenje"
 
-#: data/help.cfg:202
+#: data/help.cfg:208
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -787,7 +809,7 @@ msgstr ""
 "poteza je. Wesnoth omogoča več drugih načinov zdravljenja vaših enot, od "
 "katerih se vsi zgodijo na začetku vaše poteze, preden karkoli ukrenete."
 
-#: data/help.cfg:204
+#: data/help.cfg:210
 msgid ""
 "\n"
 "\n"
@@ -799,7 +821,7 @@ msgstr ""
 "Počivanje: Enota, ki se niti ne premakne niti ne napade, se bo v naslednji "
 "potezi pozdravila za 2HP."
 
-#: data/help.cfg:205
+#: data/help.cfg:211
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -807,7 +829,7 @@ msgstr ""
 "\n"
 "Vasi: Enota, ki začne svojo potezo v vasi, se bo pozdravila za 8HP."
 
-#: data/help.cfg:206
+#: data/help.cfg:212
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
@@ -817,7 +839,7 @@ msgstr ""
 "<ref>dst=ability_regenerates text=Regeneracija</ref>: Določene enote (na "
 "primer troli) se bodo vsako potezo samodejno pozdravile za 8HP."
 
-#: data/help.cfg:207
+#: data/help.cfg:213
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -832,7 +854,7 @@ msgstr ""
 "bližini (6 plošč) za 4HP (skupaj največ 8HP), ali preprečila, da jim škodi "
 "strup."
 
-#: data/help.cfg:208
+#: data/help.cfg:214
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -846,7 +868,7 @@ msgstr ""
 "vsako potezo pozdravila vse prijateljske enote v svoji neposredni bližini (6 "
 "plošč) za 8HP (skupaj največ 18HP), ali pa jih ozdravila strupa."
 
-#: data/help.cfg:210
+#: data/help.cfg:216
 msgid ""
 "\n"
 "\n"
@@ -863,11 +885,11 @@ msgstr ""
 "enot bo manj uspešna pri zdravljenju posameznih ran. Poleg tega se vse enote "
 "med scenariji popolnoma pozdravijo."
 
-#: data/help.cfg:215
+#: data/help.cfg:221
 msgid "Income and Upkeep"
 msgstr "Prihodki in plače"
 
-#: data/help.cfg:216
+#: data/help.cfg:222
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -878,7 +900,7 @@ msgstr ""
 "tudi na količino zlata, še posebej v kampanjah, kjer se zlato prenaša med "
 "scenariji. Glede tega sta pomembni dve stvari; prihodki in plače."
 
-#: data/help.cfg:218
+#: data/help.cfg:224
 msgid ""
 "\n"
 "\n"
@@ -894,7 +916,7 @@ msgstr ""
 "deset vasi, bi ponavadi dobili dvanajst kosov zlata. Od teh prihodkov so "
 "odštete plače, kar je opisano v nadaljevanju."
 
-#: data/help.cfg:220
+#: data/help.cfg:226
 msgid ""
 "\n"
 "\n"
@@ -914,7 +936,7 @@ msgstr ""
 "imate dvanajst prvo-stopenjskih enot in deset vasi, boste morali plačati dva "
 "kosa zlata za plače, na potezo."
 
-#: data/help.cfg:222
+#: data/help.cfg:228
 msgid ""
 "\n"
 "\n"
@@ -927,7 +949,7 @@ msgstr ""
 "Stroški plač so odbiti od vaših prihodkov, tako da bi končni prihodki v "
 "primeru dvanajstih stopenj in desetih vasi bili 10 kosov zlata na potezo."
 
-#: data/help.cfg:223
+#: data/help.cfg:229
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -942,11 +964,11 @@ msgstr ""
 "drugem scenariju Prestolonaslednika) skoraj nikoli ne bodo zahtevale plače - "
 "ponavadi bodo imele značilnost zvest."
 
-#: data/help.cfg:228
+#: data/help.cfg:234
 msgid "Wrap Up"
 msgstr "Zaključek"
 
-#: data/help.cfg:229
+#: data/help.cfg:235
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -960,15 +982,15 @@ msgstr ""
 "Vedite pa, da že dovolj veste za igranje kampanje Prestolonaslednik. "
 "Zabavajte se in vso srečo!"
 
-#: data/help.cfg:234
+#: data/help.cfg:240
 msgid "Contributors"
 msgstr "Avtorji"
 
-#: data/help.cfg:240
+#: data/help.cfg:246
 msgid "License"
 msgstr "Licenca"
 
-#: data/help.cfg:247
+#: data/help.cfg:253
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -979,7 +1001,7 @@ msgstr ""
 "Značilnosti rahlo spremenijo enotine lastnosti. Ponavadi jih pridobijo "
 "naključno, ob nastanku."
 
-#: data/help.cfg:249
+#: data/help.cfg:255
 msgid ""
 "\n"
 "\n"
@@ -995,7 +1017,7 @@ msgstr ""
 "text=hiter</ref>, <ref>dst=traits_resilient text=odporen</ref> in "
 "<ref>dst=traits_strong text=močan</ref>."
 
-#: data/help.cfg:251
+#: data/help.cfg:257
 msgid ""
 "\n"
 "\n"
@@ -1009,17 +1031,17 @@ msgstr ""
 "<ref>dst=traits_undead text=nemrtev</ref> in <ref>dst=traits_dextrous "
 "text=spreten</ref>."
 
-#: data/help.cfg:256
+#: data/help.cfg:262
 msgid "Intelligent"
 msgstr "Pameten"
 
-#: data/help.cfg:257
+#: data/help.cfg:263
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Pametne enote potrebujejo 20% manj izkušenj za napredovanje na naslednji "
 "izkustveni nivo."
 
-#: data/help.cfg:259
+#: data/help.cfg:265
 msgid ""
 "\n"
 "\n"
@@ -1037,17 +1059,17 @@ msgstr ""
 "najvišjem nivoju) ni tako pomembno kot navadno napredovanje. Če imate dosti "
 "dokončno razvitih enot, prikličite tako z boljšimi značilnostmi."
 
-#: data/help.cfg:264
+#: data/help.cfg:270
 msgid "Quick"
 msgstr "Hiter"
 
-#: data/help.cfg:265
+#: data/help.cfg:271
 msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
 msgstr ""
 "Hitre enote imajo na voljo 1 dodatno premikalno točko, ampak imajo zato 10% "
 "manj HP."
 
-#: data/help.cfg:267
+#: data/help.cfg:273
 msgid ""
 "\n"
 "\n"
@@ -1066,15 +1088,15 @@ msgstr ""
 "smemo pozabiti, da te enote niso tako vzdržljive kot ostale in zato niso "
 "tako dobre za držanje položajev."
 
-#: data/help.cfg:272
+#: data/help.cfg:278
 msgid "Resilient"
 msgstr "Odporen"
 
-#: data/help.cfg:273
+#: data/help.cfg:279
 msgid "Resilient units have 7 more HP than usual."
 msgstr "Odporne enote imajo 7 HP več kot ponavadi."
 
-#: data/help.cfg:275
+#: data/help.cfg:281
 msgid ""
 "\n"
 "\n"
@@ -1091,11 +1113,11 @@ msgstr ""
 "obrambe ali visokih odpornosti. Enote s to značilnostjo so zelo primerne za "
 "držanje pomembnih položajev."
 
-#: data/help.cfg:280
+#: data/help.cfg:286
 msgid "Strong"
 msgstr "Močan"
 
-#: data/help.cfg:281
+#: data/help.cfg:287
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 2 more HP."
@@ -1103,7 +1125,7 @@ msgstr ""
 "Močne enote naredijo v boju na blizu z vsakim udarcem 1 točko škode več in "
 "imajo 2 HP več."
 
-#: data/help.cfg:283
+#: data/help.cfg:289
 msgid ""
 "\n"
 "\n"
@@ -1119,11 +1141,11 @@ msgstr ""
 "zelo koristne, ko ta majhen bonus k škodi spremeni navadni udarec v "
 "smrtonosnega."
 
-#: data/help.cfg:288
+#: data/help.cfg:294
 msgid "Loyal"
 msgstr "Zvest"
 
-#: data/help.cfg:289
+#: data/help.cfg:295
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1132,7 +1154,7 @@ msgstr ""
 "Zveste enote ne potrebujejo plače, za razliko od večine, ki jo zahtevajo ob "
 "koncu vsake poteze v višini njihovega nivoja."
 
-#: data/help.cfg:291
+#: data/help.cfg:297
 msgid ""
 "\n"
 "\n"
@@ -1150,16 +1172,16 @@ msgstr ""
 "ko zmankuje denarja. Te značilnosti se ne da pridobiti, zato enot z njo "
 "rajši ne odpravite in jih poskušajte ohraniti pri življenju."
 
-#: data/help.cfg:296
+#: data/help.cfg:302
 #, fuzzy
 msgid "trait^Undead"
 msgstr "Nemrtvi"
 
-#: data/help.cfg:297
+#: data/help.cfg:303
 msgid "Undead units are immune to poison."
 msgstr "Nemrtve enote so imune na strup."
 
-#: data/help.cfg:299
+#: data/help.cfg:305
 msgid ""
 "\n"
 "\n"
@@ -1174,15 +1196,15 @@ msgstr ""
 "oživela trupla, na njih strup nima nobenega učinka. To jih lahko naredi "
 "neprecenljive v boju s sovražniki, ki uporabljajo zastrupljena orožja."
 
-#: data/help.cfg:304
+#: data/help.cfg:310
 msgid "Dextrous"
 msgstr "Spreten"
 
-#: data/help.cfg:305
+#: data/help.cfg:311
 msgid "Dextrous units do 1 more damage for every successful strike with a bow."
 msgstr "Spretne enote naredijo z vsakim zadetkom na daleč 1 točko škode več."
 
-#: data/help.cfg:307
+#: data/help.cfg:313
 msgid ""
 "\n"
 "\n"
@@ -1198,11 +1220,11 @@ msgstr ""
 "že po naravi nadarjeni in prekašajo druge. Ti Vilini z vsakim strelom "
 "napravijo dodatno točko škode."
 
-#: data/help.cfg:312 data/terrain.cfg:144
+#: data/help.cfg:318 data/terrain.cfg:144
 msgid "Grassland"
 msgstr "Stepa"
 
-#: data/help.cfg:317
+#: data/help.cfg:323
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1217,11 +1239,11 @@ msgstr ""
 "v njej najbolje odrežejo konjeniki ali pa zelo spretne enote, ki znajo "
 "izkoristit odprtost terena v svoj prid."
 
-#: data/help.cfg:322 data/terrain.cfg:118 data/terrain.cfg:126
+#: data/help.cfg:328 data/terrain.cfg:118 data/terrain.cfg:126
 msgid "Road"
 msgstr "Cesta"
 
-#: data/help.cfg:325
+#: data/help.cfg:331
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1231,11 +1253,11 @@ msgstr ""
 "se tiče igranja, so ceste identične <ref>dst=terrain_grassland text=stepam</"
 "ref>."
 
-#: data/help.cfg:330 data/terrain.cfg:334
+#: data/help.cfg:336 data/terrain.cfg:334
 msgid "Forest"
 msgstr "Gozd"
 
-#: data/help.cfg:335
+#: data/help.cfg:341
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1263,11 +1285,11 @@ msgstr ""
 "nasprotju, imajo 60% do 70% obrambo, celo njihovi konjeniki. Škratje imajo "
 "ponavadi v gozdu le 30% obrambo."
 
-#: data/help.cfg:340 data/terrain.cfg:295
+#: data/help.cfg:346 data/terrain.cfg:295
 msgid "Hills"
 msgstr "Griči"
 
-#: data/help.cfg:345
+#: data/help.cfg:351
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1288,11 +1310,11 @@ msgstr ""
 "Večina enot ima 50% obrambo v gričih, medtem ko je konjenica omejena na 40%. "
 "Škratje pa imajo v gričih 60% obrambo."
 
-#: data/help.cfg:350 data/terrain.cfg:319
+#: data/help.cfg:356 data/terrain.cfg:319
 msgid "Mountains"
 msgstr "Gore"
 
-#: data/help.cfg:355
+#: data/help.cfg:361
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1312,12 +1334,12 @@ msgstr ""
 "\n"
 "Večina enot ima 60% obrambo v gorah, Škratje pa 70%."
 
-#: data/help.cfg:360 data/terrain.cfg:55
+#: data/help.cfg:366 data/terrain.cfg:55
 msgid "Swamp"
 msgstr "Močvirje"
 
 # mermen
-#: data/help.cfg:365
+#: data/help.cfg:371
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1337,12 +1359,12 @@ msgstr ""
 "Večina enot ima le 30% obrambo v močvirjih. Povodni možje, Nage, in Saurijci "
 "pa ponavadi 60%."
 
-#: data/help.cfg:370 data/terrain.cfg:34
+#: data/help.cfg:376 data/terrain.cfg:34
 msgid "Shallow Water"
 msgstr "Plitva voda"
 
 # mermen
-#: data/help.cfg:375
+#: data/help.cfg:381
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1363,12 +1385,12 @@ msgstr ""
 "Večina enot se mora v plitvih vodah zadovoljiti z 20% do 30% obrambo, medtem "
 "ko imajo Nage in povodni možje 60%."
 
-#: data/help.cfg:380 data/terrain.cfg:25
+#: data/help.cfg:386 data/terrain.cfg:25
 msgid "Deep Water"
 msgstr "Globoka voda"
 
 # mermen
-#: data/help.cfg:385
+#: data/help.cfg:391
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1383,11 +1405,11 @@ msgstr ""
 "Povodni možje in Nage imajo oboji 50% obrambo v globoki vodi, brez omejitve "
 "gibanja."
 
-#: data/help.cfg:390 data/terrain.cfg:266
+#: data/help.cfg:396 data/terrain.cfg:266
 msgid "Snow"
 msgstr "Sneg"
 
-#: data/help.cfg:395
+#: data/help.cfg:401
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1400,11 +1422,11 @@ msgstr ""
 "\n"
 "Večina enot ima od 20% do 40% obrambo v snegu."
 
-#: data/help.cfg:400 data/terrain.cfg:274
+#: data/help.cfg:406 data/terrain.cfg:274
 msgid "Ice"
 msgstr "Led"
 
-#: data/help.cfg:403
+#: data/help.cfg:409
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
@@ -1414,11 +1436,11 @@ msgstr ""
 "<ref>dst=terrain_tundra text=snegu</ref>. Upoštevajte pa, da plavajoče "
 "enote, tudi tiste ki lahko dihajo pod vodo, ne morejo plavati pod ledom."
 
-#: data/help.cfg:408 data/terrain.cfg:383 data/terrain.cfg:494
+#: data/help.cfg:414 data/terrain.cfg:383 data/terrain.cfg:494
 msgid "Castle"
 msgstr "Grad"
 
-#: data/help.cfg:413
+#: data/help.cfg:419
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -1436,11 +1458,11 @@ msgstr ""
 "\n"
 "Večina enot ima 60% obrambo v gradovih."
 
-#: data/help.cfg:420 data/terrain.cfg:100
+#: data/help.cfg:426 data/terrain.cfg:100
 msgid "Sand"
 msgstr "Pesek"
 
-#: data/help.cfg:425
+#: data/help.cfg:431
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1454,11 +1476,11 @@ msgstr ""
 "\n"
 "Večina enot ima od 20% do 40% obrambo na pesku."
 
-#: data/help.cfg:430 data/terrain.cfg:109
+#: data/help.cfg:436 data/terrain.cfg:109
 msgid "Desert"
 msgstr "Puščava"
 
-#: data/help.cfg:433
+#: data/help.cfg:439
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -1467,11 +1489,11 @@ msgstr ""
 "Puščave imajo rahlo drugačno zgradbo kot plaže in majhne zaplate peska, a v "
 "smislu igranja so enake. Poglejte si <ref>dst=terrain_sand text=Pesek</ref>."
 
-#: data/help.cfg:438 data/terrain.cfg:366
+#: data/help.cfg:444 data/terrain.cfg:366
 msgid "Cave"
 msgstr "Jama"
 
-#: data/help.cfg:443
+#: data/help.cfg:449
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -1490,11 +1512,11 @@ msgstr ""
 "\n"
 "Večina enot ima od 20% do 40% obrambo v jamah, Škratje pa 50%."
 
-#: data/help.cfg:448 data/terrain.cfg:151
+#: data/help.cfg:454 data/terrain.cfg:151
 msgid "Savanna"
 msgstr "Savana"
 
-#: data/help.cfg:450
+#: data/help.cfg:456
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -1503,14 +1525,14 @@ msgstr ""
 "Savane so ravnice z visoko travo, razširjene po bolj toplih predelih sveta. "
 "V smislu igranja so identične <ref>dst=terrain_grassland text=stepam</ref>."
 
-#: data/help.cfg:455 data/terrain.cfg:43 data/terrain.cfg:64
+#: data/help.cfg:461 data/terrain.cfg:43 data/terrain.cfg:64
 #: data/terrain.cfg:159 data/terrain.cfg:168 data/terrain.cfg:177
 #: data/terrain.cfg:188 data/terrain.cfg:199 data/terrain.cfg:212
-#: data/terrain.cfg:373 src/reports.cpp:323
+#: data/terrain.cfg:373 src/reports.cpp:342
 msgid "Village"
 msgstr "Vas"
 
-#: data/help.cfg:460
+#: data/help.cfg:466
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -1530,11 +1552,11 @@ msgstr ""
 "\n"
 "Večina enot ima 50% ali 60% obrambo v vaseh, konjenica pa le 40%."
 
-#: data/help.cfg:467 data/terrain.cfg:432
+#: data/help.cfg:473
 msgid "Canyon"
 msgstr "Kanjon"
 
-#: data/help.cfg:469
+#: data/help.cfg:475
 msgid ""
 "A canyon is a gorge in the ground, leading to depths unknown. Canyons are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -1545,11 +1567,11 @@ msgstr ""
 "svojih strmih stenah, za prečkanje katerih bi potrebovali več dni. Kar se "
 "tiče igre, kanjon lahko prečkajo samo leteče enote."
 
-#: data/help.cfg:474 data/terrain.cfg:481
+#: data/help.cfg:480 data/terrain.cfg:481
 msgid "Lava"
 msgstr "Lava"
 
-#: data/help.cfg:476
+#: data/help.cfg:482
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -1558,11 +1580,11 @@ msgstr ""
 "Nevarnosti pri prečkanju lave so očitne. Preko gredo lahko samo enote, ki so "
 "sposobne leteti dovolj visoko nad ognjenim tokom."
 
-#: data/help.cfg:481 data/terrain.cfg:471
+#: data/help.cfg:487 data/terrain.cfg:471
 msgid "River Ford"
 msgstr "Plitvina"
 
-#: data/help.cfg:483
+#: data/help.cfg:489
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -1576,12 +1598,12 @@ msgstr ""
 "plitvina smatrana kot stepa ali pa kot plitva voda, odvisno kateri teren "
 "ponuja enoti najboljšo obrambo in gibljivost."
 
-#: data/help.cfg:488 data/terrain.cfg:75 data/terrain.cfg:83
+#: data/help.cfg:494 data/terrain.cfg:75 data/terrain.cfg:83
 #: data/terrain.cfg:91
 msgid "Bridge"
 msgstr "Most"
 
-#: data/help.cfg:492
+#: data/help.cfg:498
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -1605,11 +1627,11 @@ msgstr ""
 "voda, odvisno kateri teren ponuja enoti najboljšo obrambo in gibljivost. "
 "Vedite pa, da plavajoča in kopenska enota ne moreta biti hkrati na mostu."
 
-#: data/help.cfg:497 data/terrain.cfg:358
+#: data/help.cfg:503 data/terrain.cfg:358
 msgid "Cave Wall"
 msgstr "Jamska stena"
 
-#: data/help.cfg:499
+#: data/help.cfg:505
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -1873,6 +1895,18 @@ msgid ""
 msgstr ""
 "Lahko prideš, če želiš, ampak voditelj se zanima samo za pogovor z Baldras-"
 "om."
+
+#: data/scenarios/multiplayer/2p_Across_the_River.cfg:3
+#, fuzzy
+msgid "2p - Across the River"
+msgstr "2p - Čez Reko"
+
+#: data/scenarios/multiplayer/2p_Across_the_River.cfg:5
+msgid ""
+"This map is a convenient way to do some testing with two factions, as it is "
+"pretty well balanced towards both sides.\n"
+"You can use it AI vs AI to see how well a faction fares against another."
+msgstr ""
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:7
 msgid "2p - Blitz"
@@ -2238,27 +2272,18 @@ msgid ""
 "can regenerate them until you get a good one."
 msgstr ""
 
-#: data/scenarios/multiplayer/scenarios.cfg:3
-msgid "2p - Across The River"
-msgstr "2p - Čez Reko"
-
-#: data/scenarios/multiplayer/scenarios.cfg:5
-msgid ""
-"This map is a convenient way to do some testing with two factions, as it is "
-"pretty well balanced towards both sides.\n"
-"You can use it AI vs AI to see how well a faction fares against another."
-msgstr ""
-
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
 msgstr "Podzemlje"
 
-#: data/terrain.cfg:11 src/multiplayer_create.cpp:56
-#: src/multiplayer_lobby.cpp:312 src/multiplayer_lobby.cpp:318
+#: data/terrain.cfg:11 data/themes/default.cfg:502
+#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:313
+#: src/multiplayer_lobby.cpp:319
 msgid "Shroud"
 msgstr "Koprena"
 
-#: data/terrain.cfg:18 src/multiplayer_lobby.cpp:308
+#: data/terrain.cfg:18 data/themes/default.cfg:511
+#: src/multiplayer_lobby.cpp:309
 msgid "Fog"
 msgstr "Megla"
 
@@ -2314,6 +2339,10 @@ msgstr "Škratji grad"
 msgid "Keep"
 msgstr "Trdnjava"
 
+#: data/terrain.cfg:432
+msgid "Chasm"
+msgstr ""
+
 #: data/terrain.cfg:439
 msgid "Ruin"
 msgstr "Razvalina"
@@ -2338,11 +2367,11 @@ msgstr "Dejanja"
 msgid "End Turn"
 msgstr "Končaj potezo"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2251 src/unit.cpp:1091
+#: data/themes/default.cfg:167 src/playturn.cpp:2217 src/unit.cpp:1147
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2072 src/playturn.cpp:2252
+#: data/themes/default.cfg:176 src/playturn.cpp:2030 src/playturn.cpp:2218
 msgid "XP"
 msgstr "XP"
 
@@ -2374,11 +2403,40 @@ msgstr "stopnja"
 msgid "statuspanel^movement"
 msgstr "premiki"
 
-#: data/themes/default.cfg:520
+#: data/themes/default.cfg:443
+#, fuzzy
+msgid "Replay"
+msgstr "vnovično predvajanje"
+
+#: data/themes/default.cfg:453
+#, fuzzy
+msgid "Play"
+msgstr "Igralci: "
+
+#: data/themes/default.cfg:463
+msgid "Stop"
+msgstr ""
+
+#: data/themes/default.cfg:473
+#, fuzzy
+msgid "Reset"
+msgstr "Puščava"
+
+#: data/themes/default.cfg:483
+#, fuzzy
+msgid "Next Turn"
+msgstr "Poteza"
+
+#: data/themes/default.cfg:493
+#, fuzzy
+msgid "Next Side"
+msgstr "Naslednji"
+
+#: data/themes/default.cfg:606
 msgid "Act."
 msgstr "Akc."
 
-#: data/themes/default.cfg:553
+#: data/themes/default.cfg:639
 msgid "short end-turn^End"
 msgstr "Konec"
 
@@ -2629,10 +2687,11 @@ msgstr ""
 "Uporabljajte zdravilce - zmagali vam bodo bitke brez da bi sami koga napadli."
 
 #: data/tips.cfg:29
+#, fuzzy
 msgid ""
-"The 'slow' attack ability makes enemy units move slower, but it also gives "
-"them one less attack than they would normally have. It is thus very "
-"effective against units that have a few powerful attacks."
+"The 'slow' attack ability makes enemy units move slower, but it also removes "
+"their zone of control, allowing your wounded units to escape or helping you "
+"reach fleeing ennemy units."
 msgstr ""
 "Napad, ki 'upočasni' sovražnika, ga ne le upočasni, ampak jim tudi vzame en "
 "napad. To je še posebej učinkovito proti enotam, ki imajo malo zelo močnih "
@@ -2863,7 +2922,7 @@ msgstr ""
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:20
-#: data/units/Warrior_King.cfg:21 src/actions.cpp:471 src/actions.cpp:587
+#: data/units/Warrior_King.cfg:21 src/actions.cpp:450 src/actions.cpp:566
 msgid "leadership"
 msgstr "vodenje"
 
@@ -2913,10 +2972,12 @@ msgid "regenerates"
 msgstr "regeneracija"
 
 #: data/translations/english.cfg:76
+#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
-"Zones of Control."
+"Zones of Control. (Exception: if you stop in an enemy ZOC your remaining "
+"movement will be set to 0 even if you are a skirmisher.)"
 msgstr ""
 "Izogibalec:\n"
 "Ta enota se je sposobna hitro premikati mimo sovražnih enot in ignorira "
@@ -2965,18 +3026,18 @@ msgstr "teleportiranje"
 #: data/translations/english.cfg:93
 msgid ""
 "Backstab:\n"
-"This attack deals double damage if a friendly unit is on the opposite side "
-"of the target. (This doesn't work with allied units.)"
+"This attack deals double damage when the attacking unit is adjacent to the "
+"target and there is a unit on the directly opposite side of the target that "
+"is not allied with the target and that is not incapacitated (e.g. turned to "
+"stone)."
 msgstr ""
-"Vbod v hrbet:\n"
-"Ta napad naredi dvojno škodo, če je na tarčini nasprotni strani prijateljska "
-"enota. (To ne dela z zavezniki.)"
 
 #: data/translations/english.cfg:96
+#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain."
+"until one of the combatants is slain (or 30 rounds of attacks have occurred)."
 msgstr ""
 "Berserk:\n"
 "Ob napadu ali pri obrambi se bo boj nadaljeval, dokler eden od udeležencev "
@@ -2993,10 +3054,11 @@ msgstr ""
 "prejme dvojno škodo."
 
 #: data/translations/english.cfg:102
+#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
-"amount of damage it deals."
+"amount of damage it deals (rounded down)."
 msgstr ""
 "Črpa:\n"
 "Ta enota črpa energijo živim nasprotnikom in se pri tem pozdravi za polovico "
@@ -3051,13 +3113,11 @@ msgstr ""
 #: data/translations/english.cfg:120
 msgid ""
 "Slow:\n"
-"This attack slows the target. Slowed units move at half normal speed and "
-"receive one less attack than normal in combat until the end of their "
-"controllers' turn."
+"This attack slows the target. Slow reorders the attacks allowing the "
+"attacker to strike one more time until the defender can fight. Slowed units "
+"move at half normal speed, do not emit a zone of control, and always lose "
+"initiative in fights."
 msgstr ""
-"Upočasni:\n"
-"Ta napad upočasni tarčo. Upočasnjene enote se premikajo se pri polovični "
-"hitrosti in imajo en napad manj. Traja do konca poteze prvotnega napadalca."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -3284,7 +3344,7 @@ msgstr "top"
 #: data/units/Saurian_Soothsayer.cfg:25 data/units/Saurian_Tribalist.cfg:24
 #: data/units/Shock_Trooper.cfg:20 data/units/Silver_Mage.cfg:85
 #: data/units/Silver_Mage.cfg:221 data/units/Skeleton_Archer.cfg:25
-#: data/units/Soulless.cfg:40 data/units/Tentacle.cfg:23
+#: data/units/Soulless.cfg:40 data/units/Tentacle.cfg:56
 #: data/units/Thug.cfg:21 data/units/Troll.cfg:24 data/units/Troll_Hero.cfg:24
 #: data/units/Troll_Rocklobber.cfg:25 data/units/Troll_Rocklobber.cfg:43
 #: data/units/Troll_Warrior.cfg:25 data/units/Troll_Whelp.cfg:24
@@ -3470,7 +3530,7 @@ msgstr "oster"
 #: data/units/Assassin.cfg:42 data/units/Assassin.cfg:124
 #: data/units/Nightgaunt.cfg:55 data/units/Rogue.cfg:28
 #: data/units/Rogue.cfg:90 data/units/Shadow.cfg:29 data/units/Thief.cfg:91
-#: data/units/Thief.cfg:194 src/actions.cpp:605
+#: data/units/Thief.cfg:194 src/actions.cpp:584
 msgid "backstab"
 msgstr "vbod v hrbet"
 
@@ -3797,8 +3857,8 @@ msgstr "kopje"
 
 #: data/units/Chocobone.cfg:36 data/units/Grand_Knight.cfg:44
 #: data/units/Horseman.cfg:26 data/units/Knight.cfg:42
-#: data/units/Lancer.cfg:27 data/units/Paladin.cfg:49 src/actions.cpp:481
-#: src/actions.cpp:596
+#: data/units/Lancer.cfg:27 data/units/Paladin.cfg:49 src/actions.cpp:460
+#: src/actions.cpp:575
 msgid "charge"
 msgstr "naskok"
 
@@ -3817,7 +3877,7 @@ msgstr ""
 msgid "gaze"
 msgstr "bolščanje"
 
-#: data/units/Cockatrice.cfg:38 src/actions.cpp:898 src/actions.cpp:1065
+#: data/units/Cockatrice.cfg:38 src/actions.cpp:870 src/actions.cpp:1038
 msgid "stone"
 msgstr "okamèni"
 
@@ -3846,7 +3906,7 @@ msgid ""
 "remain ashore."
 msgstr ""
 
-#: data/units/Cuttle_Fish.cfg:33 data/units/Tentacle.cfg:21
+#: data/units/Cuttle_Fish.cfg:33 data/units/Tentacle.cfg:54
 msgid "tentacle"
 msgstr "lovka"
 
@@ -7256,156 +7316,161 @@ msgstr "+Punčke za vse"
 msgid "+Artwork and graphics designers"
 msgstr "+Grafični oblikovalci"
 
-#: src/about.cpp:94
+#: src/about.cpp:95
 msgid "+Music"
 msgstr "+Glasba"
 
-#: src/about.cpp:100
+#: src/about.cpp:101
 msgid "+Scenario Designers"
 msgstr "+Oblikovalci scenarijev"
 
-#: src/about.cpp:109
+#: src/about.cpp:110
 msgid "+Multiplayer Maps"
 msgstr "+Večigralske karte"
 
-#: src/about.cpp:114
+#: src/about.cpp:115
 msgid "+Packagers"
 msgstr "+Paketarji"
 
-#: src/about.cpp:124
+#: src/about.cpp:125
 msgid "+Miscellaneous"
 msgstr "+Razno"
 
-#: src/about.cpp:131
+#: src/about.cpp:132
 msgid "+Internationalization Managers"
 msgstr "+Upravitelji internacionalizacije"
 
-#: src/about.cpp:138
+#: src/about.cpp:139
 msgid "+Afrikaans Translation"
 msgstr "+Afrikaanski prevod"
 
-#: src/about.cpp:144
+#: src/about.cpp:145
 msgid "+Basque Translation"
 msgstr "+Baskovski prevod"
 
-#: src/about.cpp:149
+#: src/about.cpp:150
 msgid "+Bulgarian Translation"
 msgstr "+Bolgarski prevod"
 
-#: src/about.cpp:153
+#: src/about.cpp:154
 msgid "+Catalan Translation"
 msgstr "+Katalonski prevod"
 
-#: src/about.cpp:163
+#: src/about.cpp:164
 msgid "+Chinese Translation"
 msgstr "+Kitajski prevod"
 
-#: src/about.cpp:166
+#: src/about.cpp:167
 msgid "+Czech Translation"
 msgstr "+Češki prevod"
 
-#: src/about.cpp:178
+#: src/about.cpp:179
 msgid "+Danish Translation"
 msgstr "+Danski prevod"
 
-#: src/about.cpp:185
+#: src/about.cpp:186
 msgid "+Dutch Translation"
 msgstr "+Nizozemski prevod"
 
-#: src/about.cpp:193
+#: src/about.cpp:194
 msgid "+English (GB) Translation"
 msgstr "+Angleški (GB) prevod"
 
-#: src/about.cpp:196
+#: src/about.cpp:197
 msgid "+Estonian Translation"
 msgstr "+Estonski prevod"
 
-#: src/about.cpp:199
+#: src/about.cpp:200
 msgid "+Finnish Translation"
 msgstr "+Finski prevod"
 
-#: src/about.cpp:205
+#: src/about.cpp:206
 msgid "+French Translation"
 msgstr "+Francoski prevod"
 
-#: src/about.cpp:224
+#: src/about.cpp:225
 msgid "+German Translation"
 msgstr "+Nemški prevod"
 
-#: src/about.cpp:236
+#: src/about.cpp:237
 msgid "+Greek Translation"
 msgstr "+Grški prevod"
 
-#: src/about.cpp:242
+#: src/about.cpp:243
 #, fuzzy
 msgid "+Hebrew Translation"
 msgstr "+Grški prevod"
 
-#: src/about.cpp:245
+#: src/about.cpp:247
 msgid "+Hungarian Translation"
 msgstr "+Madžarski prevod"
 
-#: src/about.cpp:258
+#: src/about.cpp:260
 msgid "+Italian Translation"
 msgstr "+Italjanski prevod"
 
-#: src/about.cpp:267
+#: src/about.cpp:269
 msgid "+Japanese Translation"
 msgstr "+Japonski prevod"
 
-#: src/about.cpp:272
+#: src/about.cpp:274
 msgid "+Latin Translation"
 msgstr "+Latinski prevod"
 
-#: src/about.cpp:275
+#: src/about.cpp:277
 msgid "+Norwegian Translation"
 msgstr "+Norveški prevod"
 
-#: src/about.cpp:281
+#: src/about.cpp:283
 msgid "+Polish Translation"
 msgstr "+Poljski prevod"
 
-#: src/about.cpp:291
+#: src/about.cpp:293
+#, fuzzy
+msgid "+Portuguese Translation"
+msgstr "+Portugalski prevod"
+
+#: src/about.cpp:296
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugalski prevod"
 
-#: src/about.cpp:300
+#: src/about.cpp:305
 msgid "+Russian Translation"
 msgstr "+Ruski prevod"
 
-#: src/about.cpp:306
+#: src/about.cpp:311
 msgid "+Serbian Translation"
 msgstr "+Srbski prevod"
 
-#: src/about.cpp:309
+#: src/about.cpp:314
 msgid "+Slovak Translation"
 msgstr "+Slovaški prevod"
 
-#: src/about.cpp:312
+#: src/about.cpp:317
 msgid "+Slovenian Translation"
 msgstr "+Slovenski prevod"
 
-#: src/about.cpp:315
+#: src/about.cpp:320
 msgid "+Spanish Translation"
 msgstr "+Španski prevod"
 
-#: src/about.cpp:324
+#: src/about.cpp:329
 msgid "+Swedish Translation"
 msgstr "+Švedski prevod"
 
-#: src/about.cpp:331
+#: src/about.cpp:336
 msgid "+Turkish Translation"
 msgstr "+Turški prevod"
 
-#: src/about.cpp:338
+#: src/about.cpp:343
 msgid "+Contributors"
 msgstr "+Sodelavci"
 
-#: src/about.cpp:341
+#: src/about.cpp:346
 msgid "+Bots"
 msgstr "+IRC roboti"
 
-#: src/about.cpp:377 src/help.cpp:2662
+#: src/about.cpp:382 src/help.cpp:2662
 msgid "Close"
 msgstr "Zapri"
 
@@ -7422,93 +7487,93 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Na voljo ni nič prostih gradov, kjer bi lahko novačili."
 
-#: src/actions.cpp:323 src/multiplayer_lobby.cpp:322
+#: src/actions.cpp:316 src/multiplayer_lobby.cpp:323
 msgid "none"
 msgstr "brez"
 
-#: src/actions.cpp:399 src/dialogs.cpp:764 src/help.cpp:1143
-#: src/reports.cpp:248
+#: src/actions.cpp:378 src/dialogs.cpp:764 src/help.cpp:1143
+#: src/reports.cpp:267
 msgid "melee"
 msgstr "na blizu"
 
-#: src/actions.cpp:399 src/dialogs.cpp:764 src/help.cpp:1143
-#: src/reports.cpp:249
+#: src/actions.cpp:378 src/dialogs.cpp:764 src/help.cpp:1143
+#: src/reports.cpp:268
 msgid "ranged"
 msgstr "na daleč"
 
-#: src/actions.cpp:451 src/actions.cpp:566
+#: src/actions.cpp:430 src/actions.cpp:545
 msgid "base damage"
 msgstr "osnovna škoda"
 
-#: src/actions.cpp:481 src/actions.cpp:596 src/actions.cpp:605
+#: src/actions.cpp:460 src/actions.cpp:575 src/actions.cpp:584
 msgid "Doubled"
 msgstr "Podvojena"
 
-#: src/actions.cpp:489
+#: src/actions.cpp:468
 msgid "attacker resistance vs"
 msgstr "napadalčeva odpornost proti"
 
-#: src/actions.cpp:489
+#: src/actions.cpp:468
 msgid "attacker vulnerability vs"
 msgstr "napadalčeva šibkost proti"
 
-#: src/actions.cpp:503 src/actions.cpp:633
+#: src/actions.cpp:482 src/actions.cpp:612
 msgid "total damage"
 msgstr "skupna škoda"
 
-#: src/actions.cpp:613
+#: src/actions.cpp:592
 msgid "defender resistance vs"
 msgstr "braniteljeva odpornost proti"
 
-#: src/actions.cpp:613
+#: src/actions.cpp:592
 msgid "defender vulnerability vs"
 msgstr "braniteljeva šibkost proti"
 
-#: src/actions.cpp:616
+#: src/actions.cpp:595
 msgid " (+steadfast)"
 msgstr "(+neomajen)"
 
-#: src/actions.cpp:676
+#: src/actions.cpp:648
 msgid "(both should survive)"
 msgstr "(oba bosta preživela)"
 
-#: src/actions.cpp:678
+#: src/actions.cpp:650
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% P[ubije/je ubit/oba preživita]"
 
-#: src/actions.cpp:882 src/actions.cpp:1048
+#: src/actions.cpp:857 src/actions.cpp:1024
 msgid "poisoned"
 msgstr "zastrupljen"
 
-#: src/actions.cpp:887 src/actions.cpp:1053
+#: src/actions.cpp:863 src/actions.cpp:1030
 msgid "slowed"
 msgstr "upočasnjen"
 
-#: src/actions.cpp:1938
+#: src/actions.cpp:1922
 msgid "Ambushed!"
 msgstr "Zaseda!"
 
-#: src/actions.cpp:1972
+#: src/actions.cpp:1956
 msgid "Friendly unit sighted"
 msgstr "Zavezniške enote opažene!"
 
-#: src/actions.cpp:1974
+#: src/actions.cpp:1958
 msgid "Enemy unit sighted!"
 msgstr "Sovražne enote opažene!"
 
-#: src/actions.cpp:1979
+#: src/actions.cpp:1963
 msgid "$friends Friendly units sighted"
 msgstr "Opaženih $friends zavezniških enot!"
 
-#: src/actions.cpp:1981
+#: src/actions.cpp:1965
 msgid "$enemies Enemy units sighted!"
 msgstr "Opaženih $enemies sovražnih enot!"
 
-#: src/actions.cpp:1985
+#: src/actions.cpp:1969
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Enote opažene! ($friends zavezniških, $enemies sovražnih)"
 
-#: src/actions.cpp:2000
+#: src/actions.cpp:1984
 msgid "(press $hotkey to continue)"
 msgstr "(za nadaljevanje pritisnite $hotkey)"
 
@@ -7552,11 +7617,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Neveljaven)"
 
-#: src/dialogs.cpp:377 src/game.cpp:754
+#: src/dialogs.cpp:377 src/game.cpp:755
 msgid "Campaign"
 msgstr "Kampanja"
 
-#: src/dialogs.cpp:379 src/game.cpp:1149
+#: src/dialogs.cpp:379 src/game.cpp:1150
 msgid "Multiplayer"
 msgstr "Večigralnost"
 
@@ -7568,7 +7633,7 @@ msgstr "Vodič"
 msgid "replay"
 msgstr "vnovično predvajanje"
 
-#: src/dialogs.cpp:391 src/multiplayer_lobby.cpp:296 src/playturn.cpp:1637
+#: src/dialogs.cpp:391 src/multiplayer_lobby.cpp:297 src/playturn.cpp:1601
 msgid "Turn"
 msgstr "Poteza"
 
@@ -7644,8 +7709,8 @@ msgstr ""
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:554 src/game.cpp:887 src/help.cpp:1119
-#: src/multiplayer_lobby.cpp:30 src/playturn.cpp:2070 src/playturn.cpp:2250
+#: src/dialogs.cpp:554 src/game.cpp:888 src/help.cpp:1119
+#: src/multiplayer_lobby.cpp:31 src/playturn.cpp:2028 src/playturn.cpp:2216
 msgid "Name"
 msgstr "Ime"
 
@@ -7653,7 +7718,7 @@ msgstr "Ime"
 msgid "Show replay"
 msgstr "Pokaži posnetek igre"
 
-#: src/dialogs.cpp:583 src/multiplayer_create.cpp:79
+#: src/dialogs.cpp:583 src/multiplayer_create.cpp:72
 msgid "Load Game"
 msgstr "Naloži igro"
 
@@ -7681,20 +7746,20 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr "Premiki: "
 
-#: src/display.cpp:467
+#: src/display.cpp:469
 msgid "Screenshot"
 msgstr "Posnetek zaslona"
 
-#: src/game.cpp:395
+#: src/game.cpp:396
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:624
+#: src/game.cpp:625
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Datoteka, ki ste jo poskušali naložiti, je pokvarjena. Vseeno bo naložena.\n"
 
-#: src/game.cpp:646 src/multiplayer_connect.cpp:929
+#: src/game.cpp:647 src/multiplayer_connect.cpp:929
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7702,239 +7767,239 @@ msgstr ""
 "Ta shranjen položaj je iz druge različice igre. Ali ga želite poskusiti "
 "naložiti?"
 
-#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:914
+#: src/game.cpp:655 src/game.cpp:658 src/multiplayer_connect.cpp:914
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Datoteka, ki ste jo poskusili naložiti, je pokvarjena: '"
 
-#: src/game.cpp:660
+#: src/game.cpp:661
 msgid "File I/O Error while reading the game"
 msgstr "I/O Napaka pri branju igre"
 
-#: src/game.cpp:744
+#: src/game.cpp:745
 msgid "Get More Campaigns..."
 msgstr "Dobi več kampanj..."
 
-#: src/game.cpp:745
+#: src/game.cpp:746
 msgid "Download more campaigns from a server on Internet."
 msgstr "Prenesi več kampanj s kampanjskega strežnika."
 
-#: src/game.cpp:755
+#: src/game.cpp:756
 msgid "Choose the campaign you want to play:"
 msgstr "Izberite kampanjo, ki jo želite igrati:"
 
-#: src/game.cpp:783
+#: src/game.cpp:784
 msgid "Difficulty"
 msgstr "Težavnost"
 
-#: src/game.cpp:784
+#: src/game.cpp:785
 msgid "Select difficulty level:"
 msgstr "Izberite težavnost:"
 
-#: src/game.cpp:809
+#: src/game.cpp:810
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:812
+#: src/game.cpp:813
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:815
+#: src/game.cpp:816
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:842
+#: src/game.cpp:843
 msgid "Connect to Server"
 msgstr "Poveži se s strežnikom"
 
-#: src/game.cpp:843
+#: src/game.cpp:844
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 "Zdaj se boste povezali s kampanjskim strežnikom, da lahko prenesete kakšno "
 "kampanjo."
 
-#: src/game.cpp:844
+#: src/game.cpp:845
 msgid "Server: "
 msgstr "Strežnik: "
 
-#: src/game.cpp:857
+#: src/game.cpp:858
 msgid "Could not connect to host."
 msgstr "Ni se možno povezati z gostiteljem."
 
-#: src/game.cpp:865 src/game.cpp:1078
+#: src/game.cpp:866 src/game.cpp:1079
 msgid "Awaiting response from server"
 msgstr "Čakanje na odziv strežnika"
 
-#: src/game.cpp:878
+#: src/game.cpp:879
 msgid "Error communicating with the server."
 msgstr "Napaka pri komunikaciji s strežnikom."
 
-#: src/game.cpp:887 src/titlescreen.cpp:183
+#: src/game.cpp:888 src/titlescreen.cpp:183
 msgid "Version"
 msgstr "Različica"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Author"
 msgstr "Avtor"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Downloads"
 msgstr "Prenosov"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Size"
 msgstr "Velikost"
 
-#: src/game.cpp:949
+#: src/game.cpp:950
 msgid "Publish campaign: "
 msgstr "Objavi kampanjo: "
 
-#: src/game.cpp:953
+#: src/game.cpp:954
 msgid "Delete campaign: "
 msgstr "Izbriši kampanjo: "
 
-#: src/game.cpp:957
+#: src/game.cpp:958
 msgid "There are no campaigns available for download from this server."
 msgstr "Na tem strežniku ni na voljo nobene kampanje za prenos."
 
-#: src/game.cpp:964
+#: src/game.cpp:965
 msgid "Choose the campaign to download."
 msgstr "Izberite kampanjo za prenos"
 
-#: src/game.cpp:964
+#: src/game.cpp:965
 msgid "Get Campaign"
 msgstr "Dobi kampanje"
 
-#: src/game.cpp:984
+#: src/game.cpp:985
 msgid "Downloading campaign..."
 msgstr "Prenašam kampanjo..."
 
-#: src/game.cpp:1008
+#: src/game.cpp:1009
 msgid "Cannot rescan the filesystem"
 msgstr "Ni mogoče ponovno pregledati datotečnega sistema"
 
-#: src/game.cpp:1023
+#: src/game.cpp:1024
 msgid "Campaign Installed"
 msgstr "Kampanja nameščena"
 
-#: src/game.cpp:1023
+#: src/game.cpp:1024
 msgid "The campaign has been installed."
 msgstr "Kampanja je bila nameščena."
 
-#: src/game.cpp:1025
+#: src/game.cpp:1026
 msgid "Network communication error."
 msgstr "Napaka v mrežni komunikaciji."
 
-#: src/game.cpp:1027
+#: src/game.cpp:1028
 msgid "Remote host disconnected."
 msgstr "Oddaljeni gostitelj je prekinil povezavo."
 
-#: src/game.cpp:1029
+#: src/game.cpp:1030
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Namestitev kampanje ni uspela; nekaj datotek ni bilo mogoče ustvariti."
 
-#: src/game.cpp:1041 src/game.cpp:1080 src/game.cpp:1105
-#: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:218
+#: src/game.cpp:1042 src/game.cpp:1081 src/game.cpp:1106
+#: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:284
 msgid "Connection timed out"
 msgstr "Povezava je potekla"
 
-#: src/game.cpp:1044 src/game.cpp:1082 src/game.cpp:1107
+#: src/game.cpp:1045 src/game.cpp:1083 src/game.cpp:1108
 msgid "The server responded with an error: \""
 msgstr "Strežnik se je odzval z napako: \""
 
-#: src/game.cpp:1048
+#: src/game.cpp:1049
 msgid "Terms"
 msgstr "Pogoji"
 
-#: src/game.cpp:1085 src/game.cpp:1110
+#: src/game.cpp:1086 src/game.cpp:1111
 msgid "Response"
 msgstr "Odziv"
 
-#: src/game.cpp:1132
+#: src/game.cpp:1133
 msgid "Join Official Server"
 msgstr "Poveži se z uradnim strežnikom"
 
-#: src/game.cpp:1133
+#: src/game.cpp:1134
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Poveži se z uradnim večigralskim strežnikom za Wesnoth"
 
-#: src/game.cpp:1135 src/multiplayer_lobby.cpp:408
+#: src/game.cpp:1136 src/multiplayer_lobby.cpp:409
 msgid "Join Game"
 msgstr "Pridruži se igri"
 
-#: src/game.cpp:1136
+#: src/game.cpp:1137
 msgid "Join a server or hosted game"
 msgstr "Pridruži se strežniku ali gostovani igri"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1139
 msgid "Host Networked Game"
 msgstr "Gostuj mrežno igro"
 
-#: src/game.cpp:1139
+#: src/game.cpp:1140
 msgid "Host a game without using a server"
 msgstr "Gostuj igro brez uporabe strežnika"
 
-#: src/game.cpp:1141
+#: src/game.cpp:1142
 msgid "Hotseat Game"
 msgstr "»Vroči stol« igra"
 
-#: src/game.cpp:1142
+#: src/game.cpp:1143
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Večigralska igra na istem računalniku"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1145
 msgid "Human vs AI"
 msgstr "Človek proti UI"
 
-#: src/game.cpp:1145
+#: src/game.cpp:1146
 msgid "Play a game against AI opponents"
 msgstr "Igra proti UI"
 
-#: src/game.cpp:1151 src/multiplayer.cpp:187
+#: src/game.cpp:1152 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Prijava: "
 
-#: src/game.cpp:1182 src/playcampaign.cpp:197
+#: src/game.cpp:1183 src/playcampaign.cpp:110 src/playcampaign.cpp:263
 msgid "The game could not be loaded: "
 msgstr "Igre ni bilo možno naložiti: "
 
-#: src/game.cpp:1184 src/playcampaign.cpp:200
+#: src/game.cpp:1185 src/playcampaign.cpp:112 src/playcampaign.cpp:266
 msgid "Error while playing the game: "
 msgstr "Napaka med igranjem: "
 
-#: src/game.cpp:1196 src/playcampaign.cpp:203
+#: src/game.cpp:1197 src/playcampaign.cpp:114 src/playcampaign.cpp:269
 msgid "The game map could not be loaded: "
 msgstr "Karte ni bilo možno naložiti: "
 
-#: src/game.cpp:1220
+#: src/game.cpp:1221
 msgid "Language"
 msgstr "Jezik"
 
-#: src/game.cpp:1221
+#: src/game.cpp:1222
 msgid "Choose your preferred language:"
 msgstr "Izberite jezik"
 
-#: src/game.cpp:1350
+#: src/game.cpp:1351
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "Sledeče dodatne kampanje zaradi napak ni bilo možno naložiti: "
 
-#: src/game.cpp:1355
+#: src/game.cpp:1356
 msgid "ERROR DETAILS:"
 msgstr "PODROBNA NAPAKA:"
 
-#: src/game.cpp:1364
+#: src/game.cpp:1365
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Opozorilo: Prišlo je do napake pri nalaganju nastavtivenih datotek: '"
 
-#: src/game.cpp:1414
+#: src/game.cpp:1415
 msgid "Error loading game configuration files: '"
 msgstr "Napaka pri nalaganju nastavitvenih datotek: '"
 
-#: src/game.cpp:1415
+#: src/game.cpp:1416
 msgid "' (The game will now exit)"
 msgstr "' (Igra se bo zaključila)"
 
-#: src/game.cpp:1505
+#: src/game.cpp:1521
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
@@ -7966,11 +8031,11 @@ msgstr "Poravnava: "
 msgid "Required XP: "
 msgstr "Potrebni XP: "
 
-#: src/help.cpp:1112 src/reports.cpp:251
+#: src/help.cpp:1112 src/reports.cpp:270
 msgid "attacks"
 msgstr "napadi"
 
-#: src/help.cpp:1120 src/playturn.cpp:2069 src/playturn.cpp:2249
+#: src/help.cpp:1120 src/playturn.cpp:2027 src/playturn.cpp:2215
 msgid "Type"
 msgstr "Vrsta"
 
@@ -8060,19 +8125,19 @@ msgstr "Pomoč za The Battle for Wesnoth "
 msgid "Parse error when parsing help text: "
 msgstr "Napaka med razčlenjevanjem pomoči: "
 
-#: src/intro.cpp:95
+#: src/intro.cpp:97
 msgid "Next"
 msgstr "Naslednji"
 
-#: src/intro.cpp:96
+#: src/intro.cpp:98
 msgid "Skip"
 msgstr "Preskoči"
 
-#: src/intro.cpp:315
+#: src/intro.cpp:322
 msgid "The End"
 msgstr "Konec"
 
-#: src/language.cpp:92
+#: src/language.cpp:103
 msgid "System default language"
 msgstr "Privzeti sistemski jezik"
 
@@ -8113,17 +8178,17 @@ msgid "You must log in to this server"
 msgstr "Prijaviti se morate na ta strežnik"
 
 #: src/multiplayer.cpp:350 src/multiplayer.cpp:365
-#: src/multiplayer_wait.cpp:182
+#: src/multiplayer_wait.cpp:183
 msgid "No multiplayer sides available in this game"
 msgstr "Na voljo ni več nobene strani"
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:366
-#: src/multiplayer_wait.cpp:211
+#: src/multiplayer_wait.cpp:212
 msgid "Era not available"
 msgstr "Era ni na voljo"
 
 #: src/multiplayer.cpp:352 src/multiplayer.cpp:367
-#: src/multiplayer_wait.cpp:216
+#: src/multiplayer_wait.cpp:217
 msgid "No multiplayer sides found"
 msgstr "Najdenih ni bilo nič strani"
 
@@ -8151,8 +8216,8 @@ msgstr "Brez nenakjljučnih strani v trenutni eri"
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Ni bilo mogoče najti voditeljske enote za $faction"
 
-#: src/multiplayer_connect.cpp:487 src/multiplayer_lobby.cpp:405
-#: src/multiplayer_wait.cpp:147
+#: src/multiplayer_connect.cpp:487 src/multiplayer_lobby.cpp:406
+#: src/multiplayer_wait.cpp:148
 msgid "Game Lobby"
 msgstr "Čakalnica"
 
@@ -8172,7 +8237,7 @@ msgstr "Stran"
 msgid "Color"
 msgstr "Barva"
 
-#: src/multiplayer_connect.cpp:504 src/playturn.cpp:1793 src/playturn.cpp:1804
+#: src/multiplayer_connect.cpp:504 src/playturn.cpp:1757 src/playturn.cpp:1768
 msgid "Gold"
 msgstr "Zlato"
 
@@ -8185,7 +8250,7 @@ msgid "I'm Ready"
 msgstr "Pripravljen sem"
 
 #: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:58
-#: src/multiplayer_wait.cpp:149
+#: src/multiplayer_wait.cpp:150
 msgid "Cancel"
 msgstr "Prekliči"
 
@@ -8229,7 +8294,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Čakanje na igralce..."
 
-#: src/multiplayer_create.cpp:38 src/multiplayer_lobby.cpp:409
+#: src/multiplayer_create.cpp:38 src/multiplayer_lobby.cpp:410
 msgid "Create Game"
 msgstr "Ustvari igro"
 
@@ -8245,8 +8310,8 @@ msgstr "Era:"
 msgid "Map to play:"
 msgstr "Karta:"
 
-#: src/multiplayer_create.cpp:54 src/multiplayer_lobby.cpp:301
-#: src/multiplayer_lobby.cpp:302
+#: src/multiplayer_create.cpp:54 src/multiplayer_lobby.cpp:302
+#: src/multiplayer_lobby.cpp:303
 msgid "Use map settings"
 msgstr "Uporabi nastavitve scenarija"
 
@@ -8270,119 +8335,119 @@ msgstr "Ponovno ustvari"
 msgid "Settings..."
 msgstr "Nastavitve..."
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:95
 msgid "The maximum turns the game will go for"
 msgstr "Maksimalno trajanje igre"
 
-#: src/multiplayer_create.cpp:95
+#: src/multiplayer_create.cpp:100
 msgid "The amount of income each village yields per turn"
 msgstr "Višina prihodkov vsake vasi (na potezo)"
 
-#: src/multiplayer_create.cpp:100
+#: src/multiplayer_create.cpp:105
 msgid "The amount of experience a unit needs to advance"
 msgstr "Količina izkušenj potrebnih za napredovanje"
 
-#: src/multiplayer_create.cpp:103
+#: src/multiplayer_create.cpp:108
 msgid "Use scenario specific settings"
 msgstr "Uporabi scenarijeve nastavitve"
 
-#: src/multiplayer_create.cpp:106
+#: src/multiplayer_create.cpp:111
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "Sovražne enote so nevidne, razen če so v dosegu vaših enot"
 
-#: src/multiplayer_create.cpp:109
+#: src/multiplayer_create.cpp:114
 msgid "The map is unknown until your units explore it"
 msgstr "Karta je skrita dokler je vaše enote ne raziščejo"
 
-#: src/multiplayer_create.cpp:112
+#: src/multiplayer_create.cpp:117
 msgid "Allow users who are not playing to watch the game"
 msgstr "Dovoli uporabnikom, ki ne igrajo, da opazujejo igro"
 
-#: src/multiplayer_create.cpp:116
+#: src/multiplayer_create.cpp:121
 msgid "Share View"
 msgstr "Dèli pogled z zavezniki"
 
-#: src/multiplayer_create.cpp:117
+#: src/multiplayer_create.cpp:122
 msgid "Share Maps"
 msgstr "Dèli karto z zavezniki"
 
-#: src/multiplayer_create.cpp:118
+#: src/multiplayer_create.cpp:123
 msgid "Share None"
 msgstr "Ničesar ne dèli"
 
-#: src/multiplayer_create.cpp:129
+#: src/multiplayer_create.cpp:134
 msgid "No multiplayer sides."
 msgstr "Ni večigralskih strani."
 
-#: src/multiplayer_create.cpp:131
+#: src/multiplayer_create.cpp:136
 msgid "No eras found"
 msgstr "Najdene ni bilo nobene ere"
 
-#: src/multiplayer_create.cpp:144
+#: src/multiplayer_create.cpp:149
 msgid "$login's game"
 msgstr "Gostitelj: $login"
 
-#: src/multiplayer_create.cpp:176
+#: src/multiplayer_create.cpp:181
 msgid "Invalid era selected"
 msgstr "Izbrana je bila neveljavna era"
 
-#: src/multiplayer_create.cpp:208
+#: src/multiplayer_create.cpp:213
 msgid "You must enter a name."
 msgstr "Vnesti morate ime."
 
-#: src/multiplayer_create.cpp:217
+#: src/multiplayer_create.cpp:222
 msgid "Turns: "
 msgstr "Potez: "
 
-#: src/multiplayer_create.cpp:219
+#: src/multiplayer_create.cpp:224
 msgid "Unlimited Turns"
 msgstr "Časovno neomejena igra"
 
-#: src/multiplayer_create.cpp:226
+#: src/multiplayer_create.cpp:231
 msgid "Village Gold: "
 msgstr "Prihodki vasi: "
 
-#: src/multiplayer_create.cpp:232
+#: src/multiplayer_create.cpp:237
 msgid "Experience Modifier: "
 msgstr "Izkustveni prikrojevalec: "
 
-#: src/multiplayer_create.cpp:350
+#: src/multiplayer_create.cpp:355
 msgid "Players: "
 msgstr "Igralci: "
 
-#: src/multiplayer_create.cpp:352 src/playturn.cpp:1649 src/playturn.cpp:1663
+#: src/multiplayer_create.cpp:357 src/playturn.cpp:1613 src/playturn.cpp:1627
 msgid "Error"
 msgstr "Napaka"
 
-#: src/multiplayer_lobby.cpp:30
+#: src/multiplayer_lobby.cpp:31
 msgid "Map"
 msgstr "Karta"
 
-#: src/multiplayer_lobby.cpp:31
+#: src/multiplayer_lobby.cpp:32
 msgid "Settings"
 msgstr "Nastavitve"
 
-#: src/multiplayer_lobby.cpp:31
+#: src/multiplayer_lobby.cpp:32
 msgid "Status"
 msgstr "Stanje"
 
-#: src/multiplayer_lobby.cpp:99
+#: src/multiplayer_lobby.cpp:100
 msgid "<no games open>"
 msgstr "<nobena igra ne poteka>"
 
-#: src/multiplayer_lobby.cpp:298
+#: src/multiplayer_lobby.cpp:299
 msgid "Vacant Slot"
 msgstr "Prazno mesto"
 
-#: src/multiplayer_lobby.cpp:298
+#: src/multiplayer_lobby.cpp:299
 msgid "Vacant Slots"
 msgstr "Praznih mest"
 
-#: src/multiplayer_lobby.cpp:407
+#: src/multiplayer_lobby.cpp:408
 msgid "Observe Game"
 msgstr "Opazuj igro"
 
-#: src/multiplayer_lobby.cpp:410
+#: src/multiplayer_lobby.cpp:411
 msgid "Quit"
 msgstr "Izhod"
 
@@ -8426,35 +8491,35 @@ msgstr "Rjava"
 msgid "Invalid colour"
 msgstr "Neveljavna barva"
 
-#: src/multiplayer_wait.cpp:115
+#: src/multiplayer_wait.cpp:116
 msgid "Leader: "
 msgstr "Vodja: "
 
-#: src/multiplayer_wait.cpp:117
+#: src/multiplayer_wait.cpp:118
 msgid "Recruits: "
 msgstr "Novaki: "
 
-#: src/multiplayer_wait.cpp:150
+#: src/multiplayer_wait.cpp:151
 msgid "Waiting for game to start..."
 msgstr "Čakanje na začetek igre..."
 
-#: src/multiplayer_wait.cpp:169
+#: src/multiplayer_wait.cpp:170
 msgid "Getting game data..."
 msgstr "Pridobivanje podatkov o igri..."
 
-#: src/multiplayer_wait.cpp:232
+#: src/multiplayer_wait.cpp:233
 msgid "Choose your side:"
 msgstr "Izberite stran:"
 
-#: src/multiplayer_wait.cpp:384 src/unit.cpp:1196
+#: src/multiplayer_wait.cpp:389 src/unit.cpp:1234
 msgid "("
 msgstr "("
 
-#: src/multiplayer_wait.cpp:384 src/unit.cpp:1203
+#: src/multiplayer_wait.cpp:389 src/unit.cpp:1241
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:385 src/playturn.cpp:1896
+#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1860
 msgid "unit^Gold"
 msgstr "Zlata"
 
@@ -8476,100 +8541,100 @@ msgstr "Ni bilo mogoče dodati vtičnice"
 msgid "Could not send initial handshake"
 msgstr "Ni bilo mogoče začeti rokovanja"
 
-#: src/playcampaign.cpp:145
+#: src/playcampaign.cpp:211
 msgid "Defeat"
 msgstr "Poraz"
 
-#: src/playcampaign.cpp:146
+#: src/playcampaign.cpp:212
 msgid "You have been defeated!"
 msgstr "Bili ste poraženi!"
 
-#: src/playcampaign.cpp:159
+#: src/playcampaign.cpp:225
 msgid " replay"
 msgstr "vnovično predvajanje"
 
-#: src/playcampaign.cpp:167
+#: src/playcampaign.cpp:233
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Ali želite shraniti posnetek igranja scenarija?"
 
-#: src/playcampaign.cpp:168 src/playcampaign.cpp:289 src/playturn.cpp:1646
+#: src/playcampaign.cpp:234 src/playcampaign.cpp:355 src/playturn.cpp:1610
 msgid "Name:"
 msgstr "Ime:"
 
-#: src/playcampaign.cpp:176 src/playcampaign.cpp:297 src/playturn.cpp:1663
+#: src/playcampaign.cpp:242 src/playcampaign.cpp:363 src/playturn.cpp:1627
 msgid "The game could not be saved"
 msgstr "Igre ni bilo možno shraniti"
 
-#: src/playcampaign.cpp:216
+#: src/playcampaign.cpp:282
 msgid "Downloading next level..."
 msgstr "Prenašam naslednjo stopnjo..."
 
-#: src/playcampaign.cpp:288
+#: src/playcampaign.cpp:354
 msgid "Do you want to save your game?"
 msgstr "Ali želite shraniti igro?"
 
-#: src/playcampaign.cpp:313
+#: src/playcampaign.cpp:379
 msgid "Unknown scenario: '"
 msgstr "Neznan scenarij: '"
 
-#: src/playlevel.cpp:609 src/playlevel.cpp:878
+#: src/playlevel.cpp:425 src/playlevel.cpp:694
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka, ki ste jo poskušali naložiti, je pokvarjena"
 
-#: src/playlevel.cpp:762
+#: src/playlevel.cpp:578
 msgid "Game Over"
 msgstr "Konec igre"
 
-#: src/playlevel.cpp:763
+#: src/playlevel.cpp:579
 msgid "The game is over."
 msgstr "Igra je končana"
 
-#: src/playlevel.cpp:846
+#: src/playlevel.cpp:662
 msgid "Remaining gold: "
 msgstr "Preostalo zlato: "
 
-#: src/playlevel.cpp:849
+#: src/playlevel.cpp:665
 msgid "Early finish bonus: "
 msgstr "Bonus za zgodnji konec: "
 
-#: src/playlevel.cpp:851
+#: src/playlevel.cpp:667
 msgid "per turn"
 msgstr "na potezo"
 
-#: src/playlevel.cpp:852
+#: src/playlevel.cpp:668
 msgid "Turns finished early: "
 msgstr "Preostalih potez: "
 
-#: src/playlevel.cpp:854
+#: src/playlevel.cpp:670
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playlevel.cpp:856
+#: src/playlevel.cpp:672
 msgid "Gold: "
 msgstr "Zlato: "
 
-#: src/playlevel.cpp:861
+#: src/playlevel.cpp:677
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% zlata se bo ohranilo za naslednji scenarij"
 
-#: src/playlevel.cpp:862
+#: src/playlevel.cpp:678
 msgid "Retained Gold: "
 msgstr "Ohranjeno zlato: "
 
-#: src/playlevel.cpp:867
+#: src/playlevel.cpp:683
 msgid "Victory"
 msgstr "Zmaga"
 
-#: src/playlevel.cpp:868
+#: src/playlevel.cpp:684
 msgid "You have emerged victorious!"
 msgstr "Zmagali ste!"
 
-#: src/playlevel.cpp:872
+#: src/playlevel.cpp:688
 msgid "Scenario Report"
 msgstr "Scenarijsko poročilo"
 
-#: src/playlevel.cpp:893
+#: src/playlevel.cpp:709
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8593,7 +8658,7 @@ msgstr "Branitelj"
 msgid "Damage Calculations"
 msgstr "Izračun škode"
 
-#: src/playturn.cpp:640 src/reports.cpp:226
+#: src/playturn.cpp:640 src/reports.cpp:245
 msgid "vs"
 msgstr "proti"
 
@@ -8605,28 +8670,28 @@ msgstr "Napadi"
 msgid "Choose weapon:"
 msgstr "Izberite orožje:"
 
-#: src/playturn.cpp:1329
+#: src/playturn.cpp:1293
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Niste še začeli svoje poteze. Ali jo res želite končati?"
 
-#: src/playturn.cpp:1337 src/playturn.cpp:1342
+#: src/playturn.cpp:1301 src/playturn.cpp:1306
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Nekatere enote se še lahko premaknejo. Ali res želite končati potezo?"
 
-#: src/playturn.cpp:1357
+#: src/playturn.cpp:1321
 msgid "Auto-Save"
 msgstr "Samodejno shranjen položaj"
 
-#: src/playturn.cpp:1359
+#: src/playturn.cpp:1323
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Ni bilo mogoče samodejno shraniti igre. Shranite jo ročno."
 
-#: src/playturn.cpp:1600
+#: src/playturn.cpp:1564
 msgid "Rename Unit"
 msgstr "Preimenuj enoto"
 
-#: src/playturn.cpp:1649
+#: src/playturn.cpp:1613
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -8634,47 +8699,47 @@ msgstr ""
 "Imena shranjenih položajev ne smejo vsebovati dvopičij, vezajev ali "
 "poševnic. Prosim izberite drugačno ime."
 
-#: src/playturn.cpp:1660
+#: src/playturn.cpp:1624
 msgid "Saved"
 msgstr "Shranjeno"
 
-#: src/playturn.cpp:1660
+#: src/playturn.cpp:1624
 msgid "The game has been saved"
 msgstr "Igra je bila shranjena"
 
-#: src/playturn.cpp:1792
+#: src/playturn.cpp:1756
 msgid "Leader"
 msgstr "Vodja"
 
-#: src/playturn.cpp:1794
+#: src/playturn.cpp:1758
 msgid "Villages"
 msgstr "Vasi"
 
-#: src/playturn.cpp:1796
+#: src/playturn.cpp:1760
 msgid "Upkeep"
 msgstr "Plače"
 
-#: src/playturn.cpp:1797
+#: src/playturn.cpp:1761
 msgid "Income"
 msgstr "Prihodki"
 
-#: src/playturn.cpp:1902
+#: src/playturn.cpp:1866
 msgid "You have no units available to recruit."
 msgstr "Nikogar ne morete novačiti."
 
-#: src/playturn.cpp:1914
+#: src/playturn.cpp:1878
 msgid "Recruit"
 msgstr "Novači"
 
-#: src/playturn.cpp:1915 src/playturn.cpp:2111
+#: src/playturn.cpp:1879 src/playturn.cpp:2069
 msgid "Select unit:"
 msgstr "Izberite enoto:"
 
-#: src/playturn.cpp:1949
+#: src/playturn.cpp:1913
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Za novačenje te enote nimate dovolj zlata"
 
-#: src/playturn.cpp:2007
+#: src/playturn.cpp:1971
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -8682,7 +8747,7 @@ msgstr ""
 "Moj gospod, ta enota je izkušena, na višji izkustveni stopnji! Ali res "
 "hočete odpraviti $noun?"
 
-#: src/playturn.cpp:2009
+#: src/playturn.cpp:1973
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -8690,19 +8755,19 @@ msgstr ""
 "Moj gospod, ta enota je blizu višji izkustveni stopnji! Ali res hočete "
 "odpraviti $noun?"
 
-#: src/playturn.cpp:2014
+#: src/playturn.cpp:1978
 msgid "her"
 msgstr "njo"
 
-#: src/playturn.cpp:2014
+#: src/playturn.cpp:1978
 msgid "him"
 msgstr "njega"
 
-#: src/playturn.cpp:2055
+#: src/playturn.cpp:2019
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Od svojih enot ste ločeni in jih ne morete priklicati"
 
-#: src/playturn.cpp:2057
+#: src/playturn.cpp:2021
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -8710,115 +8775,115 @@ msgstr ""
 "Nobenih enot ne morete priklicati\n"
 " (imeti morate preživele veterane iz prejšnjih scenarijev)"
 
-#: src/playturn.cpp:2063
-msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr "Za priklic enote potrebujete vsaj $cost zlata"
-
-#: src/playturn.cpp:2071
+#: src/playturn.cpp:2029
 msgid "Level"
 msgstr "Stopnja"
 
-#: src/playturn.cpp:2098
+#: src/playturn.cpp:2056
 msgid "Dismiss Unit"
 msgstr "Odpravi enoto"
 
-#: src/playturn.cpp:2110
+#: src/playturn.cpp:2068
 msgid "Recall"
 msgstr "Prikliči"
 
-#: src/playturn.cpp:2159
+#: src/playturn.cpp:2080
+msgid "You must have at least $cost gold pieces to recall a unit"
+msgstr "Za priklic enote potrebujete vsaj $cost zlata"
+
+#: src/playturn.cpp:2125
 msgid "Message:"
 msgstr "Sporočilo:"
 
-#: src/playturn.cpp:2159
+#: src/playturn.cpp:2125
 msgid "Send to allies only"
 msgstr "Pošlji samo zaveznikom"
 
-#: src/playturn.cpp:2254 src/unit.cpp:1128
+#: src/playturn.cpp:2220 src/unit.cpp:1179
 msgid "Moves"
 msgstr "Premiki"
 
-#: src/playturn.cpp:2255
+#: src/playturn.cpp:2221
 msgid "Location"
 msgstr "Lega"
 
-#: src/playturn.cpp:2301
+#: src/playturn.cpp:2267
 msgid "Unit List"
 msgstr "Seznam enot"
 
-#: src/playturn.cpp:2337 src/playturn.cpp:2399
+#: src/playturn.cpp:2303 src/playturn.cpp:2365
 msgid "Recruits"
 msgstr "Novaki"
 
-#: src/playturn.cpp:2343 src/playturn.cpp:2403
+#: src/playturn.cpp:2309 src/playturn.cpp:2369
 msgid "Recalls"
 msgstr "Priklicane enote"
 
-#: src/playturn.cpp:2349 src/playturn.cpp:2407
+#: src/playturn.cpp:2315 src/playturn.cpp:2373
 msgid "Advancements"
 msgstr "Napredovanja"
 
-#: src/playturn.cpp:2355 src/playturn.cpp:2411
+#: src/playturn.cpp:2321 src/playturn.cpp:2377
 msgid "Losses"
 msgstr "Izgube"
 
-#: src/playturn.cpp:2361 src/playturn.cpp:2415
+#: src/playturn.cpp:2327 src/playturn.cpp:2381
 msgid "Kills"
 msgstr "Sovražnikove izgube"
 
-#: src/playturn.cpp:2367
+#: src/playturn.cpp:2333
 msgid "Damage Inflicted"
 msgstr "Storjena škoda"
 
-#: src/playturn.cpp:2373
+#: src/playturn.cpp:2339
 msgid "Damage Taken"
 msgstr "Utrpela škoda"
 
-#: src/playturn.cpp:2379
+#: src/playturn.cpp:2345
 msgid "Damage Inflicted (EV)"
 msgstr "Storjena škoda (pričakovana)"
 
-#: src/playturn.cpp:2386
+#: src/playturn.cpp:2352
 msgid "Damage Taken (EV)"
 msgstr "Utrpela škoda (pričakovana)"
 
-#: src/playturn.cpp:2392
+#: src/playturn.cpp:2358
 msgid "Statistics"
 msgstr "Statistika"
 
-#: src/playturn.cpp:2429
+#: src/playturn.cpp:2395
 msgid "Search"
 msgstr "Iskanje"
 
-#: src/playturn.cpp:2439
+#: src/playturn.cpp:2405
 msgid "prompt^Command:"
 msgstr "Ukaz:"
 
-#: src/playturn.cpp:2450
+#: src/playturn.cpp:2416
 msgid "Chat Log"
 msgstr "Dnevnik pogovorov"
 
-#: src/playturn.cpp:2515
+#: src/playturn.cpp:2481
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Nisem našel oznake ali enote z '$search' v imenu."
 
-#: src/playturn.cpp:2546
+#: src/playturn.cpp:2512
 msgid "Saved Theme Preference: "
 msgstr "Shranjena izbira teme: "
 
-#: src/playturn.cpp:2552
+#: src/playturn.cpp:2518
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nova tema se bo poznala na naslednji začeti ali naloženi igri."
 
-#: src/playturn.cpp:2653
+#: src/playturn.cpp:2619
 msgid "Place Label"
 msgstr "Postavi oznako"
 
-#: src/playturn.cpp:2654
+#: src/playturn.cpp:2620
 msgid "Label:"
 msgstr "Oznaka:"
 
-#: src/playturn.cpp:2786
+#: src/playturn.cpp:2752
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -8826,47 +8891,48 @@ msgstr ""
 "Igre niso več sinhronizirane in se bodo morale končati. Ali naj shranim "
 "dnevnik napak iz igre?"
 
-#: src/playturn.cpp:2839
+#: src/playturn.cpp:2805
 msgid "Replace with AI"
 msgstr "Zamenjaj z UI"
 
-#: src/playturn.cpp:2840
+#: src/playturn.cpp:2806
 msgid "Replace with local player"
 msgstr "Zamenjaj z lokalnim igralcem"
 
-#: src/playturn.cpp:2841
+#: src/playturn.cpp:2807
 msgid "Abort game"
 msgstr "Prekini igro"
 
-#: src/playturn.cpp:2844
+#: src/playturn.cpp:2810
 msgid "Replace with "
 msgstr "Zamenjaj z "
 
-#: src/playturn.cpp:2848
+#: src/playturn.cpp:2814
 msgid "has left the game. What do you want to do?"
 msgstr "je zapustil igro. Kaj boste storili?"
 
-#: src/reports.cpp:124
+#: src/reports.cpp:134
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "Ta enota je nevidna. Sovražniki je ne morejo niti videti niti napasti."
 
-#: src/reports.cpp:124
+#: src/reports.cpp:134
 msgid "invisible: "
 msgstr "nevidna: "
 
-#: src/reports.cpp:129
+#: src/reports.cpp:139
+#, fuzzy
 msgid ""
-"This unit has been slowed. It moves at half normal speed and receives one "
-"less attack than normal in combat."
+"This unit has been slowed. It emits no zone of control, moves at half speed "
+"and ennemies will be able to strike earlier once during a fight"
 msgstr ""
 "Ta enota je upočasnjena. Premika se pri polovični hitrosti in ima en napad "
 "manj."
 
-#: src/reports.cpp:129
+#: src/reports.cpp:139
 msgid "slowed: "
 msgstr "upočasnjena: "
 
-#: src/reports.cpp:134
+#: src/reports.cpp:144
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -8881,47 +8947,47 @@ msgstr ""
 "\n"
 "Sam strup enote ne more ubiti - ne more je poškodovati pod 1 HP."
 
-#: src/reports.cpp:134
+#: src/reports.cpp:144
 msgid "poisoned: "
 msgstr "zastrupljena: "
 
-#: src/reports.cpp:141
+#: src/reports.cpp:151
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Ta enota je okamenela. Ne more se ne premikati ne napadati."
 
-#: src/reports.cpp:141
+#: src/reports.cpp:151
 msgid "stone: "
 msgstr "okamenela: "
 
-#: src/reports.cpp:250 src/unit_types.cpp:321
+#: src/reports.cpp:269 src/unit_types.cpp:309
 msgid "damage"
 msgstr "škoda"
 
-#: src/reports.cpp:268
+#: src/reports.cpp:287
 msgid "Lawful units: "
 msgstr "Zakonite enote: "
 
-#: src/reports.cpp:270
+#: src/reports.cpp:289
 msgid "Neutral units: "
 msgstr "Nevtralne enote: "
 
-#: src/reports.cpp:271
+#: src/reports.cpp:290
 msgid "Chaotic units: "
 msgstr "Kaotične enote: "
 
-#: src/reports.cpp:325
+#: src/reports.cpp:344
 msgid "Owned village"
 msgstr "Naša vas"
 
-#: src/reports.cpp:327
+#: src/reports.cpp:346
 msgid "Enemy village"
 msgstr "Sovražna vas"
 
-#: src/reports.cpp:329
+#: src/reports.cpp:348
 msgid "Allied village"
 msgstr "Zavezniška vas"
 
-#: src/reports.cpp:389
+#: src/reports.cpp:405
 msgid "Observers:"
 msgstr "Opazovalci:"
 
@@ -8971,15 +9037,15 @@ msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
 "Nepričakovani znaki za imenom spremenljivke (pričakovana sta ',' ali '=')"
 
-#: src/serialization/parser.cpp:243 src/serialization/parser.cpp:267
+#: src/serialization/parser.cpp:245 src/serialization/parser.cpp:269
 msgid "Unterminated quoted string"
 msgstr "Nezaključen niz z navedkom"
 
-#: src/serialization/parser.cpp:290
+#: src/serialization/parser.cpp:292
 msgid " included from "
 msgstr " vsebovana iz "
 
-#: src/serialization/parser.cpp:311
+#: src/serialization/parser.cpp:313
 msgid "$error at $pos"
 msgstr "$error pri $pos"
 
@@ -9059,33 +9125,53 @@ msgstr "Več"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Knjiga modrosti Wesnotha"
 
-#: src/unit.cpp:1074 src/unit.cpp:1201
+#: src/unit.cpp:1130 src/unit.cpp:1239
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:1153
+#: src/unit.cpp:1196
 msgid "XP to advance"
 msgstr "XP do napredovanja"
 
-#: src/unit.cpp:1192
+#: src/unit.cpp:1230
 msgid ": "
 msgstr ": "
 
-#: src/unit_types.cpp:341
+#: src/unit_types.cpp:317
 msgid "strikes"
 msgstr "udarci"
 
-#: src/unit_types.cpp:952
+#: src/unit_types.cpp:930
 msgid "chaotic"
 msgstr "kaotičen"
 
-#: src/unit_types.cpp:952
+#: src/unit_types.cpp:930
 msgid "lawful"
 msgstr "zakonit"
 
-#: src/unit_types.cpp:952
+#: src/unit_types.cpp:930
 msgid "neutral"
 msgstr "nevtralen"
+
+#~ msgid ""
+#~ "Backstab:\n"
+#~ "This attack deals double damage if a friendly unit is on the opposite "
+#~ "side of the target. (This doesn't work with allied units.)"
+#~ msgstr ""
+#~ "Vbod v hrbet:\n"
+#~ "Ta napad naredi dvojno škodo, če je na tarčini nasprotni strani "
+#~ "prijateljska enota. (To ne dela z zavezniki.)"
+
+#~ msgid ""
+#~ "Slow:\n"
+#~ "This attack slows the target. Slowed units move at half normal speed and "
+#~ "receive one less attack than normal in combat until the end of their "
+#~ "controllers' turn."
+#~ msgstr ""
+#~ "Upočasni:\n"
+#~ "Ta napad upočasni tarčo. Upočasnjene enote se premikajo se pri polovični "
+#~ "hitrosti in imajo en napad manj. Traja do konca poteze prvotnega "
+#~ "napadalca."
 
 #~ msgid "Basic Training"
 #~ msgstr "Osnovna vadba"
@@ -9417,9 +9503,6 @@ msgstr "nevtralen"
 
 #~ msgid "Map Generator"
 #~ msgstr "Generator kart"
-
-#~ msgid "Players:"
-#~ msgstr "Igralci: "
 
 #~ msgid "Width:"
 #~ msgstr "Širina: "

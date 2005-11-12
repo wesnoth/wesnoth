@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-11-04 22:09+0100\n"
+"POT-Creation-Date: 2005-11-12 21:22+0100\n"
 "PO-Revision-Date: 2005-08-10 16:44+0200\n"
 "Last-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\n"
 "Language-Team: Basque\n"
@@ -58,38 +58,38 @@ msgid "Map creation failed."
 msgstr "Maparen sorrera hutsegin du."
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
-#: src/preferences_display.cpp:641
+#: src/preferences_display.cpp:650
 msgid "Close Window"
 msgstr "Itxi leihoa"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:72 src/preferences_display.cpp:543
+#: src/hotkeys.cpp:73 src/preferences_display.cpp:552
 msgid "Preferences"
 msgstr "Hobespenak"
 
-#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:215
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:224
 msgid "Scroll Speed:"
 msgstr "Korritze abiadura:"
 
-#: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:55
-#: src/preferences_display.cpp:197
+#: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:56
+#: src/preferences_display.cpp:206
 msgid "Toggle Full Screen"
 msgstr "Pantaila osoa ezarri/kendu"
 
-#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:200
+#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:209
 msgid "Show Grid"
 msgstr "Erakutsi sareta"
 
-#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:207
+#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:216
 msgid "Video Mode"
 msgstr "Bideo modua"
 
-#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:208
+#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:217
 msgid "Hotkeys"
 msgstr "Lasterbideak"
 
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:102
 msgid "Resize Map"
 msgstr "Maparen neurria aldatu"
 
@@ -110,251 +110,282 @@ msgstr "Y ardatza"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Irauli (honek maparen tamaina alda dezake):"
 
-#: src/hotkeys.cpp:45
+#: src/hotkeys.cpp:46
 msgid "Next unit"
 msgstr "Hurrengo unitatea"
 
-#: src/hotkeys.cpp:46
+#: src/hotkeys.cpp:47
 msgid "Previous unit"
 msgstr "Aurreko unitatea"
 
-#: src/hotkeys.cpp:47
+#: src/hotkeys.cpp:48
 msgid "Hold Position"
 msgstr "Kokapena mantendu"
 
-#: src/hotkeys.cpp:48
+#: src/hotkeys.cpp:49
 msgid "End Unit Turn"
 msgstr "Bukatu unitatearen txanda"
 
-#: src/hotkeys.cpp:49
+#: src/hotkeys.cpp:50
 msgid "Leader"
 msgstr "Burua"
 
-#: src/hotkeys.cpp:50
+#: src/hotkeys.cpp:51
 msgid "Undo"
 msgstr "Desegin"
 
-#: src/hotkeys.cpp:51
+#: src/hotkeys.cpp:52
 msgid "Redo"
 msgstr "Berregin"
 
-#: src/hotkeys.cpp:52
+#: src/hotkeys.cpp:53
 msgid "Zoom In"
 msgstr "Handiagotu"
 
-#: src/hotkeys.cpp:53
+#: src/hotkeys.cpp:54
 msgid "Zoom Out"
 msgstr "Txikiagotu"
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Default Zoom"
 msgstr "Lehenetsitako zooma"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Screenshot"
 msgstr "Pantaila argazkia"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:58
 msgid "Accelerated"
 msgstr "Azeleratua"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Unit Description"
 msgstr "Unitatearen deskribapena"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Rename Unit"
 msgstr "Unitatea berrizendatu"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Save Game"
 msgstr "Jokua gorde"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Load Game"
 msgstr "Jokua kargatu"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "Recruit"
 msgstr "Bildu"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Repeat Recruit"
 msgstr "Berriz bildu"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Recall"
 msgstr "Deitu"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66
 msgid "End Turn"
 msgstr "Bukatu txanda"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 msgid "Toggle Grid"
 msgstr "Sareta txandakatu"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Status Table"
 msgstr "Egoera taula"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Mute"
 msgstr "Mutu"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Speak"
 msgstr "Hitzegin"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Create Unit (Debug!)"
 msgstr "Unitatea sortu (Arazteko!)"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Change Unit Side (Debug!)"
 msgstr "Aldatu unitatearen taldea (Arazteko!)"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Scenario Objectives"
 msgstr "Guda-guneko helburuak"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Unit List"
 msgstr "Unitate zerrenda"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Statistics"
 msgstr "Estatistikak"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Quit Game"
 msgstr "Jokutik irten"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "Set Label"
 msgstr "Etiketa ezarri"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Show Enemy Moves"
 msgstr "Erakutsi arerioen mugimenduak"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Best Possible Enemy Moves"
 msgstr "Arerioen mugimendu posible onenak"
 
 #: src/hotkeys.cpp:81
+#, fuzzy
+msgid "Play"
+msgstr "Jokalariak:"
+
+#: src/hotkeys.cpp:82
+msgid "Reset"
+msgstr ""
+
+#: src/hotkeys.cpp:83
+msgid "Stop"
+msgstr ""
+
+#: src/hotkeys.cpp:84
+#, fuzzy
+msgid "Next Turn"
+msgstr "Hurrengo unitatea"
+
+#: src/hotkeys.cpp:85
+#, fuzzy
+msgid "Next Side"
+msgstr "Hurrengo unitatea"
+
+#: src/hotkeys.cpp:86
+msgid "Shroud"
+msgstr ""
+
+#: src/hotkeys.cpp:87
+msgid "Fog"
+msgstr ""
+
+#: src/hotkeys.cpp:89
 msgid "Set Terrain"
 msgstr "Lur mota ezarri"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:90
 msgid "Quit Editor"
 msgstr "Editoretik irten"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:91
 msgid "New Map"
 msgstr "Mapa berria"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:92
 msgid "Load Map"
 msgstr "Mapa kargatu"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:93
 msgid "Save Map"
 msgstr "Mapa gorde"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:94
 msgid "Save As"
 msgstr "Honela gorde"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:95
 msgid "Set Player's keep"
 msgstr "Ezarri jokalariaren etxea"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:96
 msgid "Flood Fill"
 msgstr "Dena bete"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:97
 msgid "Fill Selection"
 msgstr "Aukeraketa bete"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:98
 msgid "Cut"
 msgstr "Moztu"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:99
 msgid "Copy"
 msgstr "Kopiatu"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:100
 msgid "Paste"
 msgstr "Itsatsi"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:101
 msgid "Revert from Disk"
 msgstr "Diskatik berreskuratu"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:103
 msgid "Flip Map"
 msgstr "Mapa irauli"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:104
 msgid "Select All"
 msgstr "Dena hautatu"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:105
 msgid "Draw Terrain"
 msgstr "Lur mota marraztu"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:106
 msgid "Refresh Image Cache"
 msgstr "Irudien katxea freskatu"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:108
 msgid "Delay Shroud Updates"
 msgstr "Ezkutapenaren eguneraketak atzeratu"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:109
 msgid "Update Shroud Now"
 msgstr "Ezkutapena orain eguneratu"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:110
 msgid "Continue Move"
 msgstr "Mugimendua jarraitu"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:111
 msgid "Find Label or Unit"
 msgstr "Etiketa edo unitatea bilatu"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:112
 msgid "Speak to Ally"
 msgstr "Lagunei hitzegin"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:113
 msgid "Speak to All"
 msgstr "Deneri hitzegin"
 
-#: src/hotkeys.cpp:106 src/show_dialog.cpp:577
+#: src/hotkeys.cpp:114 src/show_dialog.cpp:577
 msgid "Help"
 msgstr "Laguntza"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:115
 msgid "View Chat Log"
 msgstr "Berriketaren historikoa ikusi"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:116
 msgid "Enter user command"
 msgstr "Erabiltzaile komandua sartu"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:118
 msgid "Change the language"
 msgstr "Hizkuntza aldatu"
 
-#: src/hotkeys.cpp:359 src/hotkeys.cpp:553
+#: src/hotkeys.cpp:367 src/hotkeys.cpp:561
 msgid "Do you really want to quit?"
 msgstr "Benetan irten nahi duzu?"
 
-#: src/hotkeys.cpp:359 src/hotkeys.cpp:553
+#: src/hotkeys.cpp:367 src/hotkeys.cpp:561
 msgid "Quit"
 msgstr "Irten"
 
@@ -402,11 +433,11 @@ msgstr "Barnealdea"
 msgid "Island"
 msgstr "Irla"
 
-#: src/preferences.cpp:286
+#: src/preferences.cpp:285
 msgid "player"
 msgstr "jokalaria"
 
-#: src/preferences_display.cpp:67 src/preferences_display.cpp:99
+#: src/preferences_display.cpp:69 src/preferences_display.cpp:101
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -416,125 +447,125 @@ msgstr ""
 "bakoitzeko sakonera izan behar du leiho moduan abiarazteko. Zure pantailak "
 "1024x768x16-ko bereizmena onartu behar du pantaila osoan abiarazteko."
 
-#: src/preferences_display.cpp:198
+#: src/preferences_display.cpp:207
 msgid "Accelerated Speed"
 msgstr "Abiadura azeleratua"
 
-#: src/preferences_display.cpp:199
+#: src/preferences_display.cpp:208
 msgid "Skip AI Moves"
 msgstr "AA mugimenduak saltatu"
 
-#: src/preferences_display.cpp:201
+#: src/preferences_display.cpp:210
 msgid "Show Floating Labels"
 msgstr "Eraktutsi etiketa flotagarriak"
 
-#: src/preferences_display.cpp:202
+#: src/preferences_display.cpp:211
 msgid "Turn Dialog"
 msgstr "Elkarrizketak"
 
-#: src/preferences_display.cpp:203
+#: src/preferences_display.cpp:212
 msgid "Turn Bell"
 msgstr "Kanpaia"
 
-#: src/preferences_display.cpp:204
+#: src/preferences_display.cpp:213
 msgid "Show Team Colors"
 msgstr "Erakutsi taldeen koloreak"
 
-#: src/preferences_display.cpp:205
+#: src/preferences_display.cpp:214
 msgid "Show Color Cursors"
 msgstr "Erakutsi koloreko kurtsorea"
 
-#: src/preferences_display.cpp:206
+#: src/preferences_display.cpp:215
 msgid "Show Haloing Effects"
 msgstr "Erakutsi halo-efektuak"
 
-#: src/preferences_display.cpp:209
+#: src/preferences_display.cpp:218
 msgid "Adjust Gamma"
 msgstr "Gamma doitu"
 
-#: src/preferences_display.cpp:210
+#: src/preferences_display.cpp:219
 msgid "Reverse Time Graphics"
 msgstr "Alderantzizko denbora grafikoak"
 
-#: src/preferences_display.cpp:211
+#: src/preferences_display.cpp:220
 msgid "Sound effects"
 msgstr "Soinu-efektuak"
 
-#: src/preferences_display.cpp:212
+#: src/preferences_display.cpp:221
 msgid "Music"
 msgstr "Musika"
 
-#: src/preferences_display.cpp:214
+#: src/preferences_display.cpp:223
 msgid "Music Volume:"
 msgstr "Musika bolumena:"
 
-#: src/preferences_display.cpp:214
+#: src/preferences_display.cpp:223
 msgid "SFX Volume:"
 msgstr "Soinu efektuen bolumena:"
 
-#: src/preferences_display.cpp:215
+#: src/preferences_display.cpp:224
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences_display.cpp:228
+#: src/preferences_display.cpp:237
 msgid "Sound effects on/off"
 msgstr "Soinu efektuak on/off"
 
-#: src/preferences_display.cpp:232
+#: src/preferences_display.cpp:241
 msgid "Change the sound effects volume"
 msgstr "Aldatu soinu efektuen bolumena"
 
-#: src/preferences_display.cpp:235
+#: src/preferences_display.cpp:244
 msgid "Music on/off"
 msgstr "Musika on/off"
 
-#: src/preferences_display.cpp:239
+#: src/preferences_display.cpp:248
 msgid "Change the music volume"
 msgstr "Aldatu musikaren bolumena"
 
-#: src/preferences_display.cpp:245
+#: src/preferences_display.cpp:254
 msgid "Change the speed of scrolling around the map"
 msgstr "Aldatu mapatik mugitzearen abiadura"
 
-#: src/preferences_display.cpp:248 src/preferences_display.cpp:253
+#: src/preferences_display.cpp:257 src/preferences_display.cpp:262
 msgid "Change the brightness of the display"
 msgstr "Aldatu pantailaren distira"
 
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:265
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Aukeratu jokuak pantaila osoan zein leiho moduan ibili behar duen"
 
-#: src/preferences_display.cpp:259
+#: src/preferences_display.cpp:268
 msgid "Make units move and fight faster"
 msgstr "Egin unitateak azkarrago mugitu eta borrokatzea"
 
-#: src/preferences_display.cpp:262
+#: src/preferences_display.cpp:271
 msgid "Do not animate AI units moving"
 msgstr "Ez animatu AA unitateak mugitzerakoan"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:274
 msgid "Overlay a grid onto the map"
 msgstr "Saretxo bat gainjarri mapan"
 
-#: src/preferences_display.cpp:268
+#: src/preferences_display.cpp:277
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Erakutsi testua unitate baten gainean jotzen dutenean, jakiteko zenbat kalte "
 "jaso duen"
 
-#: src/preferences_display.cpp:270
+#: src/preferences_display.cpp:279
 msgid "Change the resolution the game runs at"
 msgstr "Aldatu jokuak erabiltzen duen bereizmena"
 
-#: src/preferences_display.cpp:273
+#: src/preferences_display.cpp:282
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Erakutsi testu bat zure txandaren hasieran"
 
-#: src/preferences_display.cpp:276
+#: src/preferences_display.cpp:285
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Kanpaia jo zure txandaren hasieran"
 
-#: src/preferences_display.cpp:279
+#: src/preferences_display.cpp:288
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -542,81 +573,81 @@ msgstr ""
 "Erakutsi koloredun zirkulu bat unitate bakoitzeko oinarrian bere taldea "
 "erakusteko"
 
-#: src/preferences_display.cpp:282
+#: src/preferences_display.cpp:291
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Aukeratu eguzkia ezkerritatik eskumatara ala eskmutatik ezkerretara mugitzen "
 "den"
 
-#: src/preferences_display.cpp:285
+#: src/preferences_display.cpp:294
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Erabili koloredun sagu kurtsoreak (jokua geldotu dezake)"
 
-#: src/preferences_display.cpp:288
+#: src/preferences_display.cpp:297
 msgid "Use graphical special effects (may be slower)"
 msgstr "Erabili efektu grafiko bereziak (jokua geldotu dezake)"
 
-#: src/preferences_display.cpp:290
+#: src/preferences_display.cpp:299
 msgid "View and configure keyboard shortcuts"
 msgstr "Ikusi eta egokitu teklatuaren lasterbideak"
 
-#: src/preferences_display.cpp:469
+#: src/preferences_display.cpp:478
 msgid "yes"
 msgstr "bai"
 
-#: src/preferences_display.cpp:471
+#: src/preferences_display.cpp:480
 msgid "no"
 msgstr "ez"
 
-#: src/preferences_display.cpp:530
+#: src/preferences_display.cpp:539
 msgid "Prefs section^General"
 msgstr "Orokorra"
 
-#: src/preferences_display.cpp:531
+#: src/preferences_display.cpp:540
 msgid "Prefs section^Display"
 msgstr "Pantaila"
 
-#: src/preferences_display.cpp:532
+#: src/preferences_display.cpp:541
 msgid "Prefs section^Sound"
 msgstr "Soinua"
 
-#: src/preferences_display.cpp:533
+#: src/preferences_display.cpp:542
 msgid "Advanced section^Advanced"
 msgstr "Sail aurreratua^Aurreratua"
 
-#: src/preferences_display.cpp:584
+#: src/preferences_display.cpp:593
 msgid "There are no alternative video modes available"
 msgstr "Ez dago beste bideo modu erabilgarririk"
 
-#: src/preferences_display.cpp:613
+#: src/preferences_display.cpp:622
 msgid "Choose Resolution"
 msgstr "Aukeratu bereizmena"
 
-#: src/preferences_display.cpp:646
+#: src/preferences_display.cpp:655
 msgid "Hotkey Settings"
 msgstr "Lasterbideen ezarpenak"
 
-#: src/preferences_display.cpp:650 src/preferences_display.cpp:703
+#: src/preferences_display.cpp:659 src/preferences_display.cpp:712
 msgid "Press desired HotKey"
 msgstr "Hautatutako lasterbidea sakatu"
 
-#: src/preferences_display.cpp:668
+#: src/preferences_display.cpp:677
 msgid "Action"
 msgstr "Ekintza"
 
-#: src/preferences_display.cpp:668
+#: src/preferences_display.cpp:677
 msgid "Binding"
 msgstr "Tekla"
 
-#: src/preferences_display.cpp:680
+#: src/preferences_display.cpp:689
 msgid "Change Hotkey"
 msgstr "Aldatu lasterbidea"
 
-#: src/preferences_display.cpp:683
+#: src/preferences_display.cpp:692
 msgid "Save Hotkeys"
 msgstr "Gorde lasterbideak"
 
-#: src/preferences_display.cpp:729
+#: src/preferences_display.cpp:738
 msgid "This HotKey is already in use."
 msgstr "Lasterbide hau aurretik erabiltzen ari da."
 

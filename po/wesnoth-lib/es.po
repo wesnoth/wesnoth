@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-11-04 22:09+0100\n"
+"POT-Creation-Date: 2005-11-12 21:22+0100\n"
 "PO-Revision-Date: 2005-08-23 21:45+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
@@ -58,38 +58,38 @@ msgid "Map creation failed."
 msgstr "Ha fallado la creación del mapa."
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
-#: src/preferences_display.cpp:641
+#: src/preferences_display.cpp:650
 msgid "Close Window"
 msgstr "Cerrar ventana"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:72 src/preferences_display.cpp:543
+#: src/hotkeys.cpp:73 src/preferences_display.cpp:552
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:215
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:224
 msgid "Scroll Speed:"
 msgstr "Velocidad de desplazamiento:"
 
-#: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:55
-#: src/preferences_display.cpp:197
+#: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:56
+#: src/preferences_display.cpp:206
 msgid "Toggle Full Screen"
 msgstr "Poner/quitar pantalla completa"
 
-#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:200
+#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:209
 msgid "Show Grid"
 msgstr "Mostrar rejilla"
 
-#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:207
+#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:216
 msgid "Video Mode"
 msgstr "Modo de vídeo"
 
-#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:208
+#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:217
 msgid "Hotkeys"
 msgstr "Accesos rápidos"
 
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:102
 msgid "Resize Map"
 msgstr "Cambiar el tamaño del mapa"
 
@@ -110,251 +110,282 @@ msgstr "Eje Y"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Voltear (puede que cambien las dimensiones del mapa):"
 
-#: src/hotkeys.cpp:45
+#: src/hotkeys.cpp:46
 msgid "Next unit"
 msgstr "Siguiente unidad"
 
-#: src/hotkeys.cpp:46
+#: src/hotkeys.cpp:47
 msgid "Previous unit"
 msgstr "Unidad anterior"
 
-#: src/hotkeys.cpp:47
+#: src/hotkeys.cpp:48
 msgid "Hold Position"
 msgstr "Mantener posición"
 
-#: src/hotkeys.cpp:48
+#: src/hotkeys.cpp:49
 msgid "End Unit Turn"
 msgstr "Finalizar turno de unidad"
 
-#: src/hotkeys.cpp:49
+#: src/hotkeys.cpp:50
 msgid "Leader"
 msgstr "Líder"
 
-#: src/hotkeys.cpp:50
+#: src/hotkeys.cpp:51
 msgid "Undo"
 msgstr "Deshacer"
 
-#: src/hotkeys.cpp:51
+#: src/hotkeys.cpp:52
 msgid "Redo"
 msgstr "Rehacer"
 
-#: src/hotkeys.cpp:52
+#: src/hotkeys.cpp:53
 msgid "Zoom In"
 msgstr "Acercar"
 
-#: src/hotkeys.cpp:53
+#: src/hotkeys.cpp:54
 msgid "Zoom Out"
 msgstr "Alejar"
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Default Zoom"
 msgstr "Escala predeterminada"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Screenshot"
 msgstr "Tomar instantánea"
 
-#: src/hotkeys.cpp:57
+#: src/hotkeys.cpp:58
 msgid "Accelerated"
 msgstr "Acelerado"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Unit Description"
 msgstr "Descripción de unidad"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Rename Unit"
 msgstr "Renombrar unidad"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Save Game"
 msgstr "Guardar partida"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Load Game"
 msgstr "Cargar partida"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "Recruit"
 msgstr "Reclutar"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Repeat Recruit"
 msgstr "Repetir reclutamiento"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Recall"
 msgstr "Reincorporar"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66
 msgid "End Turn"
 msgstr "Fin de turno"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 msgid "Toggle Grid"
 msgstr "Activar/desactivar rejilla"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "Status Table"
 msgstr "Tabla de estado"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Mute"
 msgstr "Silenciar"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Speak"
 msgstr "Hablar"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Create Unit (Debug!)"
 msgstr "Crear unidad (¡depuración!)"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Change Unit Side (Debug!)"
 msgstr "Cambiar bando de la unidad (¡depuración!)"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Scenario Objectives"
 msgstr "Objetivos del escenario"
 
-#: src/hotkeys.cpp:74
+#: src/hotkeys.cpp:75
 msgid "Unit List"
 msgstr "Lista de unidades"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Quit Game"
 msgstr "Salir"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "Set Label"
 msgstr "Colocar etiqueta"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Show Enemy Moves"
 msgstr "Mostrar movimientos del enemigo"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Best Possible Enemy Moves"
 msgstr "Mejores movimientos del enemigo"
 
 #: src/hotkeys.cpp:81
+#, fuzzy
+msgid "Play"
+msgstr "Jugadores:"
+
+#: src/hotkeys.cpp:82
+msgid "Reset"
+msgstr ""
+
+#: src/hotkeys.cpp:83
+msgid "Stop"
+msgstr ""
+
+#: src/hotkeys.cpp:84
+#, fuzzy
+msgid "Next Turn"
+msgstr "Siguiente unidad"
+
+#: src/hotkeys.cpp:85
+#, fuzzy
+msgid "Next Side"
+msgstr "Siguiente unidad"
+
+#: src/hotkeys.cpp:86
+msgid "Shroud"
+msgstr ""
+
+#: src/hotkeys.cpp:87
+msgid "Fog"
+msgstr ""
+
+#: src/hotkeys.cpp:89
 msgid "Set Terrain"
 msgstr "Colocar terreno"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:90
 msgid "Quit Editor"
 msgstr "Salir del editor"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:91
 msgid "New Map"
 msgstr "Nuevo mapa"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:92
 msgid "Load Map"
 msgstr "Cargar mapa"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:93
 msgid "Save Map"
 msgstr "Guardar mapa"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:94
 msgid "Save As"
 msgstr "Guardar como"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:95
 msgid "Set Player's keep"
 msgstr "Colocar torreón de jugador"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:96
 msgid "Flood Fill"
 msgstr "Inundar"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:97
 msgid "Fill Selection"
 msgstr "Rellenar selección"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:98
 msgid "Cut"
 msgstr "Cortar"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:99
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:100
 msgid "Paste"
 msgstr "Pegar"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:101
 msgid "Revert from Disk"
 msgstr "Cargar de nuevo desde disco"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:103
 msgid "Flip Map"
 msgstr "Voltear mapa"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:104
 msgid "Select All"
 msgstr "Seleccionar todo"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:105
 msgid "Draw Terrain"
 msgstr "Dibujar terreno"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:106
 msgid "Refresh Image Cache"
 msgstr "Refrescar caché de imagen"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:108
 msgid "Delay Shroud Updates"
 msgstr "Retardar refresco de zonas oscuras"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:109
 msgid "Update Shroud Now"
 msgstr "Actualizar zonas oscuras"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:110
 msgid "Continue Move"
 msgstr "Continuar moviendo"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:111
 msgid "Find Label or Unit"
 msgstr "Buscar etiqueta o unidad"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:112
 msgid "Speak to Ally"
 msgstr "Hablar con aliados"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:113
 msgid "Speak to All"
 msgstr "Hablar con todos"
 
-#: src/hotkeys.cpp:106 src/show_dialog.cpp:577
+#: src/hotkeys.cpp:114 src/show_dialog.cpp:577
 msgid "Help"
 msgstr "Ayuda"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:115
 msgid "View Chat Log"
 msgstr "Ver el registro de conversaciones"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:116
 msgid "Enter user command"
 msgstr "Introduzca una orden"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:118
 msgid "Change the language"
 msgstr "Cambia el idioma"
 
-#: src/hotkeys.cpp:359 src/hotkeys.cpp:553
+#: src/hotkeys.cpp:367 src/hotkeys.cpp:561
 msgid "Do you really want to quit?"
 msgstr "¿Está seguro de que quiere salir?"
 
-#: src/hotkeys.cpp:359 src/hotkeys.cpp:553
+#: src/hotkeys.cpp:367 src/hotkeys.cpp:561
 msgid "Quit"
 msgstr "Salir"
 
@@ -402,11 +433,11 @@ msgstr "Interior"
 msgid "Island"
 msgstr "Isla"
 
-#: src/preferences.cpp:286
+#: src/preferences.cpp:285
 msgid "player"
 msgstr "jugador"
 
-#: src/preferences_display.cpp:67 src/preferences_display.cpp:99
+#: src/preferences_display.cpp:69 src/preferences_display.cpp:101
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -416,125 +447,125 @@ msgstr ""
 "para poder funcionar en modo ventana. Su pantalla debe soportar una "
 "resolución de 1024x768x16 para jugar a pantalla completa."
 
-#: src/preferences_display.cpp:198
+#: src/preferences_display.cpp:207
 msgid "Accelerated Speed"
 msgstr "Velocidad acelerada"
 
-#: src/preferences_display.cpp:199
+#: src/preferences_display.cpp:208
 msgid "Skip AI Moves"
 msgstr "Omitir los movimientos de la IA"
 
-#: src/preferences_display.cpp:201
+#: src/preferences_display.cpp:210
 msgid "Show Floating Labels"
 msgstr "Mostrar etiquetas flotantes"
 
-#: src/preferences_display.cpp:202
+#: src/preferences_display.cpp:211
 msgid "Turn Dialog"
 msgstr "Diálogo"
 
-#: src/preferences_display.cpp:203
+#: src/preferences_display.cpp:212
 msgid "Turn Bell"
 msgstr "Campana"
 
-#: src/preferences_display.cpp:204
+#: src/preferences_display.cpp:213
 msgid "Show Team Colors"
 msgstr "Mostrar colores de equipo"
 
-#: src/preferences_display.cpp:205
+#: src/preferences_display.cpp:214
 msgid "Show Color Cursors"
 msgstr "Mostrar cursores coloreados"
 
-#: src/preferences_display.cpp:206
+#: src/preferences_display.cpp:215
 msgid "Show Haloing Effects"
 msgstr "Mostrar halos"
 
-#: src/preferences_display.cpp:209
+#: src/preferences_display.cpp:218
 msgid "Adjust Gamma"
 msgstr "Ajustar el brillo («gamma»)"
 
-#: src/preferences_display.cpp:210
+#: src/preferences_display.cpp:219
 msgid "Reverse Time Graphics"
 msgstr "Invertir gráficos temporales"
 
-#: src/preferences_display.cpp:211
+#: src/preferences_display.cpp:220
 msgid "Sound effects"
 msgstr "Efectos de sonido"
 
-#: src/preferences_display.cpp:212
+#: src/preferences_display.cpp:221
 msgid "Music"
 msgstr "Música"
 
-#: src/preferences_display.cpp:214
+#: src/preferences_display.cpp:223
 msgid "Music Volume:"
 msgstr "Volumen de música:"
 
-#: src/preferences_display.cpp:214
+#: src/preferences_display.cpp:223
 msgid "SFX Volume:"
 msgstr "Volumen de efectos:"
 
-#: src/preferences_display.cpp:215
+#: src/preferences_display.cpp:224
 msgid "Gamma:"
 msgstr "Brillo («gamma»):"
 
-#: src/preferences_display.cpp:228
+#: src/preferences_display.cpp:237
 msgid "Sound effects on/off"
 msgstr "Activar/desactivar efectos de sonido"
 
-#: src/preferences_display.cpp:232
+#: src/preferences_display.cpp:241
 msgid "Change the sound effects volume"
 msgstr "Cambia el volumen de los sonidos"
 
-#: src/preferences_display.cpp:235
+#: src/preferences_display.cpp:244
 msgid "Music on/off"
 msgstr "Activar/desactivar música"
 
-#: src/preferences_display.cpp:239
+#: src/preferences_display.cpp:248
 msgid "Change the music volume"
 msgstr "Cambia el volumen de la música"
 
-#: src/preferences_display.cpp:245
+#: src/preferences_display.cpp:254
 msgid "Change the speed of scrolling around the map"
 msgstr "Cambia la velocidad de desplazamiento del mapa"
 
-#: src/preferences_display.cpp:248 src/preferences_display.cpp:253
+#: src/preferences_display.cpp:257 src/preferences_display.cpp:262
 msgid "Change the brightness of the display"
 msgstr "Cambia el brillo"
 
-#: src/preferences_display.cpp:256
+#: src/preferences_display.cpp:265
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Elija si el programa funciona a pantalla completa o en modo ventana"
 
-#: src/preferences_display.cpp:259
+#: src/preferences_display.cpp:268
 msgid "Make units move and fight faster"
 msgstr "Las unidades se mueven y luchan más deprisa"
 
-#: src/preferences_display.cpp:262
+#: src/preferences_display.cpp:271
 msgid "Do not animate AI units moving"
 msgstr "No animar el movimiento de las unidades controladas por la IA"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:274
 msgid "Overlay a grid onto the map"
 msgstr "Dibuja una rejilla por encima del mapa"
 
-#: src/preferences_display.cpp:268
+#: src/preferences_display.cpp:277
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Muestra un texto encima de la unidad cuando sufre daño para indicar cuánto "
 "ha recibido"
 
-#: src/preferences_display.cpp:270
+#: src/preferences_display.cpp:279
 msgid "Change the resolution the game runs at"
 msgstr "Cambia la resolución en la que funciona el juego"
 
-#: src/preferences_display.cpp:273
+#: src/preferences_display.cpp:282
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Anuncia con un aviso el inicio de su turno"
 
-#: src/preferences_display.cpp:276
+#: src/preferences_display.cpp:285
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Hace sonar una campana al inicio de su turno"
 
-#: src/preferences_display.cpp:279
+#: src/preferences_display.cpp:288
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -542,80 +573,80 @@ msgstr ""
 "Distingue a las unidades de cada bando dibujando un círculo de un "
 "determinado color en su base"
 
-#: src/preferences_display.cpp:282
+#: src/preferences_display.cpp:291
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Escoja si quiere que el sol se mueva de izquierda a derecha o viceversa"
 
-#: src/preferences_display.cpp:285
+#: src/preferences_display.cpp:294
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Usa punteros coloreados (podría ser más lento)"
 
-#: src/preferences_display.cpp:288
+#: src/preferences_display.cpp:297
 msgid "Use graphical special effects (may be slower)"
 msgstr "Usa efectos especiales (podría ser más lento)"
 
-#: src/preferences_display.cpp:290
+#: src/preferences_display.cpp:299
 msgid "View and configure keyboard shortcuts"
 msgstr "Configura los accesos rápidos de teclado"
 
-#: src/preferences_display.cpp:469
+#: src/preferences_display.cpp:478
 msgid "yes"
 msgstr "sí"
 
-#: src/preferences_display.cpp:471
+#: src/preferences_display.cpp:480
 msgid "no"
 msgstr "no"
 
-#: src/preferences_display.cpp:530
+#: src/preferences_display.cpp:539
 msgid "Prefs section^General"
 msgstr "General"
 
-#: src/preferences_display.cpp:531
+#: src/preferences_display.cpp:540
 msgid "Prefs section^Display"
 msgstr "Vídeo"
 
-#: src/preferences_display.cpp:532
+#: src/preferences_display.cpp:541
 msgid "Prefs section^Sound"
 msgstr "Sonido"
 
-#: src/preferences_display.cpp:533
+#: src/preferences_display.cpp:542
 msgid "Advanced section^Advanced"
 msgstr "Avanzada"
 
-#: src/preferences_display.cpp:584
+#: src/preferences_display.cpp:593
 msgid "There are no alternative video modes available"
 msgstr "No tiene modos de vídeo alternativos disponibles."
 
-#: src/preferences_display.cpp:613
+#: src/preferences_display.cpp:622
 msgid "Choose Resolution"
 msgstr "Seleccione resolución"
 
-#: src/preferences_display.cpp:646
+#: src/preferences_display.cpp:655
 msgid "Hotkey Settings"
 msgstr "Configuración de accesos rápidos"
 
-#: src/preferences_display.cpp:650 src/preferences_display.cpp:703
+#: src/preferences_display.cpp:659 src/preferences_display.cpp:712
 msgid "Press desired HotKey"
 msgstr "Presione la tecla deseada"
 
-#: src/preferences_display.cpp:668
+#: src/preferences_display.cpp:677
 msgid "Action"
 msgstr "Acción"
 
-#: src/preferences_display.cpp:668
+#: src/preferences_display.cpp:677
 msgid "Binding"
 msgstr "Tecla"
 
-#: src/preferences_display.cpp:680
+#: src/preferences_display.cpp:689
 msgid "Change Hotkey"
 msgstr "Cambiar acceso rápido"
 
-#: src/preferences_display.cpp:683
+#: src/preferences_display.cpp:692
 msgid "Save Hotkeys"
 msgstr "Guardar accesos rápidos"
 
-#: src/preferences_display.cpp:729
+#: src/preferences_display.cpp:738
 msgid "This HotKey is already in use."
 msgstr "Esa combinación ya se está usando."
 

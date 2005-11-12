@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-11-04 22:07+0100\n"
+"POT-Creation-Date: 2005-11-12 21:17+0100\n"
 "PO-Revision-Date: 2005-08-09 22:01+0200\n"
 "Last-Translator: Maarten Albrecht <maartenalbrecht@gmail.com>\n"
 "Language-Team: Dutch <onne@grammex.com>\n"
@@ -18,7 +18,7 @@ msgstr ""
 msgid "Max HP bonus +"
 msgstr "Max HP bonus +"
 
-#: data/amla.cfg:22
+#: data/amla.cfg:23
 msgid "Full Heal"
 msgstr "Volledige Genezing"
 
@@ -42,11 +42,11 @@ msgstr "Inleiding"
 msgid "Gameplay"
 msgstr "Gameplay"
 
-#: data/help.cfg:21 src/playturn.cpp:2253
+#: data/help.cfg:21 src/playturn.cpp:2219
 msgid "Traits"
 msgstr "Karaktertrekken"
 
-#: data/help.cfg:29 src/playturn.cpp:1795
+#: data/help.cfg:29 src/playturn.cpp:1759
 msgid "Units"
 msgstr "Eenheden"
 
@@ -62,7 +62,7 @@ msgstr "Wapenbijzonderheden"
 msgid "Terrains"
 msgstr "Terreinen"
 
-#: data/help.cfg:54 data/help.cfg:60 data/help.cfg:246
+#: data/help.cfg:54 data/help.cfg:60 data/help.cfg:252
 msgid "Overview"
 msgstr "Overzicht"
 
@@ -360,6 +360,7 @@ msgid "Movement"
 msgstr "Zetten"
 
 #: data/help.cfg:126
+#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -368,7 +369,11 @@ msgid ""
 "the defense rating the unit would have if you moved it to that hex. Mousing "
 "over a dull hex will also show the number of turns required to reach it, and "
 "clicking will cause the unit to move towards it by the fastest route over "
-"this and subsequent turns."
+"this and subsequent turns. If you don't use up all of a unit's movement when "
+"you first move a unit, you may move it again. This is useful when having two "
+"units switch places. Attacking with a unit will use up its movement. Ending "
+"a move in a village you don't already own will also use up a unit's "
+"movement, but will still allow it to attack."
 msgstr ""
 "Het verplaatsen van troepen in Strijd om Wesnoth is eenvoudig. Klik op de "
 "eenheid die je wilt verplaatsen en dan op het vakje waar je hem heen wilt "
@@ -443,10 +448,27 @@ msgstr ""
 "als jouw eenheden niet in de weg zouden staan."
 
 #: data/help.cfg:137
+msgid "Shroud and Fog of War"
+msgstr ""
+
+#: data/help.cfg:138
+msgid ""
+"When playing some scenarios parts of the map will be hidden from you. There "
+"are two mechanisms that can be used separately or together. The Shroud will "
+"hide both the terrain and any units at a location. However once it is "
+"cleared, you can always see that location. The Fog of War only hides units "
+"and village ownership (other than by you or your allies) from you. The Fog "
+"of War is cleared temporarily when you have units nearby, but returns when "
+"they leave. Both the Shroud and the Fog of War are cleared by units. Each "
+"unit will clear of the locations within one turn's move (ignoring ZOC and "
+"enemy units) and locations adjacent to those locations."
+msgstr ""
+
+#: data/help.cfg:143
 msgid "Combat"
 msgstr "Vechten"
 
-#: data/help.cfg:138
+#: data/help.cfg:144
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -468,7 +490,7 @@ msgstr ""
 "zwaarden, bijlen en klauwen, en wapens die van afstand gebruikt worden, "
 "zoals bogen, speren en vuurballen."
 
-#: data/help.cfg:140
+#: data/help.cfg:146
 msgid ""
 "\n"
 "\n"
@@ -478,7 +500,7 @@ msgstr ""
 "\n"
 "<header>text='Volgorde en aantal aanvallen'</header>"
 
-#: data/help.cfg:142
+#: data/help.cfg:148
 msgid ""
 "\n"
 "\n"
@@ -501,7 +523,7 @@ msgstr ""
 "een Orkgrunt met 9-2 maar twee aanvallen krijgt die elk 9 punten schade "
 "toebrengen."
 
-#: data/help.cfg:144
+#: data/help.cfg:150
 msgid ""
 "\n"
 "\n"
@@ -511,7 +533,7 @@ msgstr ""
 "\n"
 "<header>text='Raakkans'</header>"
 
-#: data/help.cfg:146
+#: data/help.cfg:152
 msgid ""
 "\n"
 "\n"
@@ -534,7 +556,7 @@ msgstr ""
 "hangt de kans dat de Elfenkrijger zijn aanvaller raakt, af van het "
 "terreinsoort waarin de aanvaller zich bevindt."
 
-#: data/help.cfg:148
+#: data/help.cfg:154
 msgid ""
 "\n"
 "\n"
@@ -551,7 +573,7 @@ msgstr ""
 "<ref>dst=weaponspecial_marksman text=Precisieschutters</ref>, die een "
 "raakkans van ten minste 60% hebben."
 
-#: data/help.cfg:150
+#: data/help.cfg:156
 msgid ""
 "\n"
 "\n"
@@ -561,7 +583,7 @@ msgstr ""
 "\n"
 "<header>text=Schade</header>"
 
-#: data/help.cfg:152
+#: data/help.cfg:158
 msgid ""
 "\n"
 "\n"
@@ -584,7 +606,7 @@ msgstr ""
 "kun je <italic>text='Schadeberekeningen'</italic> selecteren in het "
 "aanvalselectievenster."
 
-#: data/help.cfg:154
+#: data/help.cfg:160
 msgid ""
 "\n"
 "\n"
@@ -601,11 +623,11 @@ msgstr ""
 "verdubbelt zowel voor de aanvaller als de verdediger, wanneer de eenheid met "
 "deze vaardigheid aanvalt."
 
-#: data/help.cfg:159
+#: data/help.cfg:165
 msgid "Damage Types and Resistance"
 msgstr "Aanvalstypes en Weerstand"
 
-#: data/help.cfg:160
+#: data/help.cfg:166
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -619,7 +641,7 @@ msgstr ""
 "verschillende mate weerstand hebben tegen deze aanvalstypen waardoor de "
 "hoeveelheid daadwerkelijk toegebrachte schade verandert."
 
-#: data/help.cfg:162
+#: data/help.cfg:168
 msgid ""
 "\n"
 "\n"
@@ -637,7 +659,7 @@ msgstr ""
 "Een weerstand van -100% betekent dat de toegebrachte schade van dat type "
 "verdubbeld wordt."
 
-#: data/help.cfg:164
+#: data/help.cfg:170
 msgid ""
 "\n"
 "\n"
@@ -651,7 +673,7 @@ msgstr ""
 "puntige aanvallen, maar zijn kwetsbaar voor stompe en vuurschade, en zeer "
 "kwetsbaar voor heilige aanvallen."
 
-#: data/help.cfg:166
+#: data/help.cfg:172
 msgid ""
 "\n"
 "\n"
@@ -664,11 +686,11 @@ msgstr ""
 "Als een aanval succesvol is brengt hij altijd ten minste 1 punt schade toe, "
 "zelfs als de verdediger 100% weerstand heeft tegen het aanvalstype."
 
-#: data/help.cfg:171
+#: data/help.cfg:177
 msgid "Time of Day"
 msgstr "Tijd van de Dag"
 
-#: data/help.cfg:175
+#: data/help.cfg:181
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night\n"
@@ -683,7 +705,7 @@ msgstr ""
 "minder.\n"
 "Neutrale eenheden worden niet beïnvloed door dag en nacht."
 
-#: data/help.cfg:178
+#: data/help.cfg:184
 msgid ""
 "\n"
 "\n"
@@ -697,34 +719,34 @@ msgstr ""
 "gebruikelijk dag/nacht-cyclus gelden Voormiddag en Namiddag als dag en "
 "Eerste en Tweede wacht als nacht:\n"
 
-#: data/help.cfg:178 data/schedules.cfg:5
+#: data/help.cfg:184 data/schedules.cfg:5
 msgid "Dawn"
 msgstr "Ochtend"
 
-#: data/help.cfg:179 data/schedules.cfg:13 data/schedules.cfg:25
+#: data/help.cfg:185 data/schedules.cfg:13 data/schedules.cfg:25
 #: data/schedules.cfg:32
 msgid "Morning"
 msgstr "Voormiddag"
 
-#: data/help.cfg:180 data/schedules.cfg:42 data/schedules.cfg:49
+#: data/help.cfg:186 data/schedules.cfg:42 data/schedules.cfg:49
 #: data/schedules.cfg:67
 msgid "Afternoon"
 msgstr "Namiddag"
 
-#: data/help.cfg:181 data/schedules.cfg:59 data/schedules.cfg:89
+#: data/help.cfg:187 data/schedules.cfg:59 data/schedules.cfg:89
 #: data/schedules.cfg:111
 msgid "Dusk"
 msgstr "Avond"
 
-#: data/help.cfg:182 data/schedules.cfg:79
+#: data/help.cfg:188 data/schedules.cfg:79
 msgid "First Watch"
 msgstr "Eerste Wacht"
 
-#: data/help.cfg:183 data/schedules.cfg:101
+#: data/help.cfg:189 data/schedules.cfg:101
 msgid "Second Watch"
 msgstr "Tweede Wacht"
 
-#: data/help.cfg:185
+#: data/help.cfg:191
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -732,11 +754,11 @@ msgstr ""
 "Pas op, sommige scenario's vinden ondergronds plaats waar het altijd nacht "
 "is!"
 
-#: data/help.cfg:190
+#: data/help.cfg:196
 msgid "Experience and Advancement"
 msgstr "Ervaring en Promotie"
 
-#: data/help.cfg:191
+#: data/help.cfg:197
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -749,7 +771,7 @@ msgstr ""
 "tegenstander met rang 0, 8 voor een met rang 1, 16 voor een met rang 2, 24 "
 "voor een met rang 3, etc."
 
-#: data/help.cfg:193
+#: data/help.cfg:199
 msgid ""
 "\n"
 "\n"
@@ -766,7 +788,7 @@ msgstr ""
 "waarbij hij volledig geneest van eventuele verwondingen. In sommige gevallen "
 "mag je kiezen tot wat de eenheid promoveert."
 
-#: data/help.cfg:196
+#: data/help.cfg:202
 msgid ""
 "\n"
 "\n"
@@ -792,11 +814,11 @@ msgstr ""
 "Slechts een aantal eenheden zal met NMRP ook genezen (de necrofaag "
 "bijvoorbeeld)."
 
-#: data/help.cfg:201
+#: data/help.cfg:207
 msgid "Healing"
 msgstr "Genezing"
 
-#: data/help.cfg:202
+#: data/help.cfg:208
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -811,7 +833,7 @@ msgstr ""
 "nog andere manieren om verwondingen te genezen die allemaal aan het begin "
 "van je beurt, dus voordat je iets doet, hun werking hebben."
 
-#: data/help.cfg:204
+#: data/help.cfg:210
 msgid ""
 "\n"
 "\n"
@@ -823,7 +845,7 @@ msgstr ""
 "Rust: Een eenheid die niet beweegt, niet aanvalt en niet aangevallen wordt "
 "zal 2HP genezen in de volgende beurt."
 
-#: data/help.cfg:205
+#: data/help.cfg:211
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -831,7 +853,7 @@ msgstr ""
 "\n"
 "Dorpen: Een eenheid die een beurt begint in een dorp geneest 8HP."
 
-#: data/help.cfg:206
+#: data/help.cfg:212
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
@@ -842,7 +864,7 @@ msgstr ""
 "Regenereert-eigenschap (trollen bijvoorbeeld) geneest aan het begin van elke "
 "beurt 8HP."
 
-#: data/help.cfg:207
+#: data/help.cfg:213
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -857,7 +879,7 @@ msgstr ""
 "ook de effecten van vergiftiging tegengaan. Alleen omringende bevriende "
 "eenheden worden genezen, maximaal 4HP per eenheid."
 
-#: data/help.cfg:208
+#: data/help.cfg:214
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -871,7 +893,7 @@ msgstr ""
 "ref>, genezen alle bevriende aangrenzende eenheden voor 8HP elk, met een "
 "maximum van 18HP, en kunnen een vergiftigde eenheid genezen."
 
-#: data/help.cfg:210
+#: data/help.cfg:216
 msgid ""
 "\n"
 "\n"
@@ -887,11 +909,11 @@ msgstr ""
 "2HP van uitrusten die bovenop een andere vorm van genezing kunnen komen. "
 "Tussen twee scenario's in genezen eenheden volledig."
 
-#: data/help.cfg:215
+#: data/help.cfg:221
 msgid "Income and Upkeep"
 msgstr "Inkomen en Onderhoudskosten"
 
-#: data/help.cfg:216
+#: data/help.cfg:222
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -903,7 +925,7 @@ msgstr ""
 "kunt nemen naar een volgend scenario. Er zijn twee kanten aan het verhaal: "
 "Inkomen en Onderhoud."
 
-#: data/help.cfg:218
+#: data/help.cfg:224
 msgid ""
 "\n"
 "\n"
@@ -919,7 +941,7 @@ msgstr ""
 "goudstukken per beurt krijgen. Daar worden echter de onderhoudskosten nog "
 "van afgetrokken, zoals hieronder wordt uitgelegd."
 
-#: data/help.cfg:220
+#: data/help.cfg:226
 msgid ""
 "\n"
 "\n"
@@ -938,7 +960,7 @@ msgstr ""
 "Bijvoorbeeld: Je hebt twaalf eenheden met rang 1 en tien dorpjes. Je moet "
 "dan twee goudstukken per beurt betalen aan onderhoud."
 
-#: data/help.cfg:222
+#: data/help.cfg:228
 msgid ""
 "\n"
 "\n"
@@ -951,7 +973,7 @@ msgstr ""
 "De onderhoudskosten worden afgetrokken van je inkomen, zodat je in het "
 "voorbeeld een inkomen zou hebben van 8 goudstukken per beurt."
 
-#: data/help.cfg:223
+#: data/help.cfg:229
 msgid ""
 "\n"
 "There is one important exception to Upkeep: units with the Loyal trait never "
@@ -966,11 +988,11 @@ msgstr ""
 "Konrad en Delfador), of die zich tijdens een scenario bij je voegen (zoals "
 "de Ruiter in het tweede scenario van De Kroonprins) zijn meestal loyaal."
 
-#: data/help.cfg:228
+#: data/help.cfg:234
 msgid "Wrap Up"
 msgstr "Slot"
 
-#: data/help.cfg:229
+#: data/help.cfg:235
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -984,15 +1006,15 @@ msgstr ""
 "maar in principe weet je nu genoeg om De Kroonprins te spelen. Succes en "
 "veel plezier!"
 
-#: data/help.cfg:234
+#: data/help.cfg:240
 msgid "Contributors"
 msgstr "Mensen die hebben bijgedragen"
 
-#: data/help.cfg:240
+#: data/help.cfg:246
 msgid "License"
 msgstr "Licentie"
 
-#: data/help.cfg:247
+#: data/help.cfg:253
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1005,7 +1027,7 @@ msgstr ""
 "lichtelijk. In principe worden ze willekeurig toegewezen aan een "
 "gerekruteerde eenheid."
 
-#: data/help.cfg:249
+#: data/help.cfg:255
 msgid ""
 "\n"
 "\n"
@@ -1021,7 +1043,7 @@ msgstr ""
 "text=Snel</ref>, <ref>dst=traits_resilient text=Robuust</ref>, and "
 "<ref>dst=traits_strong text=Sterk</ref>."
 
-#: data/help.cfg:251
+#: data/help.cfg:257
 msgid ""
 "\n"
 "\n"
@@ -1035,17 +1057,17 @@ msgstr ""
 "<ref>dst=traits_undead text=Ondood</ref>, and·<ref>dst=traits_dextrous "
 "text=Behendig</ref>."
 
-#: data/help.cfg:256
+#: data/help.cfg:262
 msgid "Intelligent"
 msgstr "Intelligent"
 
-#: data/help.cfg:257
+#: data/help.cfg:263
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Intelligente eenheden hebben 20% minder ervaring nodig dan gebruikelijk om "
 "te promoveren."
 
-#: data/help.cfg:259
+#: data/help.cfg:265
 msgid ""
 "\n"
 "\n"
@@ -1063,17 +1085,17 @@ msgstr ""
 "rang hebt dan zul je vermoedelijk eenheden oproepen met nuttiger \"lange "
 "termijn\" trekken."
 
-#: data/help.cfg:264
+#: data/help.cfg:270
 msgid "Quick"
 msgstr "Snel"
 
-#: data/help.cfg:265
+#: data/help.cfg:271
 msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
 msgstr ""
 "Snelle eenheden kunnen een extra zet per beurt doen, maar hebben 10% minder "
 "hitpoints."
 
-#: data/help.cfg:267
+#: data/help.cfg:273
 msgid ""
 "\n"
 "\n"
@@ -1092,15 +1114,15 @@ msgstr ""
 "strijdkrachten inzet. Onthoud ook dat deze eenheden niet zo stevig gebouwd "
 "zijn en dus minder goed in staat zijn posities te behouden."
 
-#: data/help.cfg:272
+#: data/help.cfg:278
 msgid "Resilient"
 msgstr "Robuust"
 
-#: data/help.cfg:273
+#: data/help.cfg:279
 msgid "Resilient units have 7 more HP than usual."
 msgstr "Robuuste eenheden hebben 7HP meer dan normaal."
 
-#: data/help.cfg:275
+#: data/help.cfg:281
 msgid ""
 "\n"
 "\n"
@@ -1118,11 +1140,11 @@ msgstr ""
 "hitpoints, goede verdediging en hoge weerstanden. Robuuste eenheden zijn "
 "goed te gebruiken om posities te behouden."
 
-#: data/help.cfg:280
+#: data/help.cfg:286
 msgid "Strong"
 msgstr "Sterk"
 
-#: data/help.cfg:281
+#: data/help.cfg:287
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 2 more HP."
@@ -1130,7 +1152,7 @@ msgstr ""
 "Sterke eenheden brengen 1 punt meer schade toe bij elke rake klap van "
 "dichtbij en hebben 2HP meer."
 
-#: data/help.cfg:283
+#: data/help.cfg:289
 msgid ""
 "\n"
 "\n"
@@ -1146,11 +1168,11 @@ msgstr ""
 "Elfenkrijger. Sterke eenheden kunnen erg nuttig zijn wanneer een extra "
 "puntje schade genoeg is om de fatale klap uit te delen."
 
-#: data/help.cfg:288
+#: data/help.cfg:294
 msgid "Loyal"
 msgstr "Loyaal"
 
-#: data/help.cfg:289
+#: data/help.cfg:295
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1160,7 +1182,7 @@ msgstr ""
 "het eind van elke beurt een hoeveelheid goudstukken gelijk aan hun rang. Zo "
 "niet voor loyale eenheden."
 
-#: data/help.cfg:291
+#: data/help.cfg:297
 msgid ""
 "\n"
 "\n"
@@ -1181,16 +1203,16 @@ msgstr ""
 "eenheden dus het kan onverstandig zijn zulke eenheden te ontslaan of per "
 "ongeluk te laten omkomen."
 
-#: data/help.cfg:296
+#: data/help.cfg:302
 #, fuzzy
 msgid "trait^Undead"
 msgstr "Levende Doden"
 
-#: data/help.cfg:297
+#: data/help.cfg:303
 msgid "Undead units are immune to poison."
 msgstr "Ondode eenheden zijn immuun voor vergif."
 
-#: data/help.cfg:299
+#: data/help.cfg:305
 msgid ""
 "\n"
 "\n"
@@ -1206,15 +1228,15 @@ msgstr ""
 "te vechten, heeft vergif tegen hen geen effect. Dat kan hen waardevol maken "
 "in het gevecht tegen vijanden die vergif gebruiken bij hun aanvallen."
 
-#: data/help.cfg:304
+#: data/help.cfg:310
 msgid "Dextrous"
 msgstr "Behendig"
 
-#: data/help.cfg:305
+#: data/help.cfg:311
 msgid "Dextrous units do 1 more damage for every successful strike with a bow."
 msgstr "Behendige eenheden brengen 1 punt meer schade toe met elke rake pijl."
 
-#: data/help.cfg:307
+#: data/help.cfg:313
 msgid ""
 "\n"
 "\n"
@@ -1230,11 +1252,11 @@ msgstr ""
 "zijn begiftigd met een talent dat dat van hun broeders overtreft. Deze Elfen "
 "brengen met elke pijl een extra punt schade toe."
 
-#: data/help.cfg:312 data/terrain.cfg:144
+#: data/help.cfg:318 data/terrain.cfg:144
 msgid "Grassland"
 msgstr "Grasland"
 
-#: data/help.cfg:317
+#: data/help.cfg:323
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1253,11 +1275,11 @@ msgstr ""
 "De meeste eenheden hebben een verdedigingspercentage van 30% tot 40% op "
 "grasland."
 
-#: data/help.cfg:322 data/terrain.cfg:118 data/terrain.cfg:126
+#: data/help.cfg:328 data/terrain.cfg:118 data/terrain.cfg:126
 msgid "Road"
 msgstr "Weg"
 
-#: data/help.cfg:325
+#: data/help.cfg:331
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1267,11 +1289,11 @@ msgstr ""
 "reizigers. Wat betreft de spelregels zijn wegen gelijk aan "
 "<ref>dst=terrain_grassland text=Grasland</ref>."
 
-#: data/help.cfg:330 data/terrain.cfg:334
+#: data/help.cfg:336 data/terrain.cfg:334
 msgid "Forest"
 msgstr "Bos"
 
-#: data/help.cfg:335
+#: data/help.cfg:341
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1302,11 +1324,11 @@ msgstr ""
 "niet meer dan 40%. Elfen, inclusief hun bereden eenheden, hebben 60% tot 70% "
 "verdediging, terwijl dwergen niet meer dan 30% krijgen."
 
-#: data/help.cfg:340 data/terrain.cfg:295
+#: data/help.cfg:346 data/terrain.cfg:295
 msgid "Hills"
 msgstr "Heuvels"
 
-#: data/help.cfg:345
+#: data/help.cfg:351
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1328,11 +1350,11 @@ msgstr ""
 "De meeste eenheden hebben 50% verdediging in de heuvels, maar cavalerie "
 "heeft 40% en Dwergen 60%."
 
-#: data/help.cfg:350 data/terrain.cfg:319
+#: data/help.cfg:356 data/terrain.cfg:319
 msgid "Mountains"
 msgstr "Bergen"
 
-#: data/help.cfg:355
+#: data/help.cfg:361
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1354,11 +1376,11 @@ msgstr ""
 "De meeste eenheden hebben een verdediging van 60% in de bergen, dwergen "
 "zelfs 70%."
 
-#: data/help.cfg:360 data/terrain.cfg:55
+#: data/help.cfg:366 data/terrain.cfg:55
 msgid "Swamp"
 msgstr "Moeras"
 
-#: data/help.cfg:365
+#: data/help.cfg:371
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1378,11 +1400,11 @@ msgstr ""
 "De meeste eenheden moeten het doen met 30% verdediging in het moeras. "
 "Meermannen, Naga's en Saurianen krijgen meestal 60%."
 
-#: data/help.cfg:370 data/terrain.cfg:34
+#: data/help.cfg:376 data/terrain.cfg:34
 msgid "Shallow Water"
 msgstr "Ondiep Water"
 
-#: data/help.cfg:375
+#: data/help.cfg:381
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1404,11 +1426,11 @@ msgstr ""
 "De meeste eenheden moeten het doen met 20% tot 30% verdediging in ondiep "
 "water. Meermannen en Naga's krijgen daarentegen 60%."
 
-#: data/help.cfg:380 data/terrain.cfg:25
+#: data/help.cfg:386 data/terrain.cfg:25
 msgid "Deep Water"
 msgstr "Diep Water"
 
-#: data/help.cfg:385
+#: data/help.cfg:391
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1424,11 +1446,11 @@ msgstr ""
 "Meermannen en Naga's krijgen beide een verdediging van 50% in diep water en "
 "worden er niet door vertraagd."
 
-#: data/help.cfg:390 data/terrain.cfg:266
+#: data/help.cfg:396 data/terrain.cfg:266
 msgid "Snow"
 msgstr "Sneeuw"
 
-#: data/help.cfg:395
+#: data/help.cfg:401
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1441,11 +1463,11 @@ msgstr ""
 "\n"
 "De meeste eenheden krijgen 20% tot 40% verdediging in de Toendra."
 
-#: data/help.cfg:400 data/terrain.cfg:274
+#: data/help.cfg:406 data/terrain.cfg:274
 msgid "Ice"
 msgstr "IJs"
 
-#: data/help.cfg:403
+#: data/help.cfg:409
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
@@ -1456,11 +1478,11 @@ msgstr ""
 "zelfs degenen die onderwater kunnen ademen, niet onder het ijs kunnen "
 "zwemmen."
 
-#: data/help.cfg:408 data/terrain.cfg:383 data/terrain.cfg:494
+#: data/help.cfg:414 data/terrain.cfg:383 data/terrain.cfg:494
 msgid "Castle"
 msgstr "Kasteel"
 
-#: data/help.cfg:413
+#: data/help.cfg:419
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -1479,11 +1501,11 @@ msgstr ""
 "\n"
 "De meeste eenheden hebben ongeveer 60% verdediging in een kasteel."
 
-#: data/help.cfg:420 data/terrain.cfg:100
+#: data/help.cfg:426 data/terrain.cfg:100
 msgid "Sand"
 msgstr "Zand"
 
-#: data/help.cfg:425
+#: data/help.cfg:431
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1497,11 +1519,11 @@ msgstr ""
 "\n"
 "De meeste eenheden krijgen 20% tot 40% verdediging in het zand."
 
-#: data/help.cfg:430 data/terrain.cfg:109
+#: data/help.cfg:436 data/terrain.cfg:109
 msgid "Desert"
 msgstr "Woestijn"
 
-#: data/help.cfg:433
+#: data/help.cfg:439
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -1511,11 +1533,11 @@ msgstr ""
 "stranden, maar qua spelregels gelden ze toch als <ref>dst=terrain_sand "
 "text=Zand</ref>."
 
-#: data/help.cfg:438 data/terrain.cfg:366
+#: data/help.cfg:444 data/terrain.cfg:366
 msgid "Cave"
 msgstr "Grot"
 
-#: data/help.cfg:443
+#: data/help.cfg:449
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -1534,11 +1556,11 @@ msgstr ""
 "\n"
 "De meeste eenheden krijgen 20% tot 40% verdediging in grotten, dwergen 50%."
 
-#: data/help.cfg:448 data/terrain.cfg:151
+#: data/help.cfg:454 data/terrain.cfg:151
 msgid "Savanna"
 msgstr "Savanne"
 
-#: data/help.cfg:450
+#: data/help.cfg:456
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -1548,14 +1570,14 @@ msgstr ""
 "de wereld. Qua spelregels is het gelijk aan <ref>dst=terrain_grassland "
 "text=Grasland</ref>."
 
-#: data/help.cfg:455 data/terrain.cfg:43 data/terrain.cfg:64
+#: data/help.cfg:461 data/terrain.cfg:43 data/terrain.cfg:64
 #: data/terrain.cfg:159 data/terrain.cfg:168 data/terrain.cfg:177
 #: data/terrain.cfg:188 data/terrain.cfg:199 data/terrain.cfg:212
-#: data/terrain.cfg:373 src/reports.cpp:323
+#: data/terrain.cfg:373 src/reports.cpp:342
 msgid "Village"
 msgstr "Dorp"
 
-#: data/help.cfg:460
+#: data/help.cfg:466
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -1577,11 +1599,11 @@ msgstr ""
 "De meeste eenheden hebben 50% tot 60% verdediging in een dorp, cavalerie "
 "slechts 40%."
 
-#: data/help.cfg:467 data/terrain.cfg:432
+#: data/help.cfg:473
 msgid "Canyon"
 msgstr "Canyon"
 
-#: data/help.cfg:469
+#: data/help.cfg:475
 msgid ""
 "A canyon is a gorge in the ground, leading to depths unknown. Canyons are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -1591,11 +1613,11 @@ msgstr ""
 "Een canyon is een kloof in de grond, die naar onbekende diepten leidt. "
 "Alleen vliegende eenheden kunnen over een canyon heen."
 
-#: data/help.cfg:474 data/terrain.cfg:481
+#: data/help.cfg:480 data/terrain.cfg:481
 msgid "Lava"
 msgstr "Lava"
 
-#: data/help.cfg:476
+#: data/help.cfg:482
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -1604,11 +1626,11 @@ msgstr ""
 "Het gevaar van het lopen over lava ligt voor de hand. Dit soort terrein kan "
 "alleen betreden worden door eenheden die er hoog boven kunnen vliegen."
 
-#: data/help.cfg:481 data/terrain.cfg:471
+#: data/help.cfg:487 data/terrain.cfg:471
 msgid "River Ford"
 msgstr "Rivierwade"
 
-#: data/help.cfg:483
+#: data/help.cfg:489
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -1622,12 +1644,12 @@ msgstr ""
 "bewegingsvrijheid. Qua spelregels wordt een oversteekplaats gezien als land "
 "of als water, wat maar het beste uitkomt."
 
-#: data/help.cfg:488 data/terrain.cfg:75 data/terrain.cfg:83
+#: data/help.cfg:494 data/terrain.cfg:75 data/terrain.cfg:83
 #: data/terrain.cfg:91
 msgid "Bridge"
 msgstr "Brug"
 
-#: data/help.cfg:492
+#: data/help.cfg:498
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -1650,11 +1672,11 @@ msgstr ""
 "twee werelden - qua spelregels wordt een brug als land of als ondiep water "
 "gezien, wat het beste uitkomt."
 
-#: data/help.cfg:497 data/terrain.cfg:358
+#: data/help.cfg:503 data/terrain.cfg:358
 msgid "Cave Wall"
 msgstr "Grotwand"
 
-#: data/help.cfg:499
+#: data/help.cfg:505
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -1923,6 +1945,22 @@ msgid ""
 "Baldras."
 msgstr ""
 "Je mag komen als je wilt, maar de leider wil alleen met Baldras spreken."
+
+#: data/scenarios/multiplayer/2p_Across_the_River.cfg:3
+#, fuzzy
+msgid "2p - Across the River"
+msgstr "2p - Over de Rivier"
+
+#: data/scenarios/multiplayer/2p_Across_the_River.cfg:5
+msgid ""
+"This map is a convenient way to do some testing with two factions, as it is "
+"pretty well balanced towards both sides.\n"
+"You can use it AI vs AI to see how well a faction fares against another."
+msgstr ""
+"Deze kaart is erg geschikt om twee legers uit te proberen, omdat hij "
+"redelijk goed gebalanceerd is.\n"
+"Je kunt twee AI spelers laten spelen om te zien hoe sterk twee rassen ten "
+"opzichte van elkaar zijn."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:7
 msgid "2p - Blitz"
@@ -2363,31 +2401,18 @@ msgstr ""
 "sneeuw. NB: willekeurige kaarten zijn vaak ongebalanceerd, maar als je de "
 "tijd neemt kun je ze net zolang genereren tot je een goede hebt."
 
-#: data/scenarios/multiplayer/scenarios.cfg:3
-msgid "2p - Across The River"
-msgstr "2p - Over de Rivier"
-
-#: data/scenarios/multiplayer/scenarios.cfg:5
-msgid ""
-"This map is a convenient way to do some testing with two factions, as it is "
-"pretty well balanced towards both sides.\n"
-"You can use it AI vs AI to see how well a faction fares against another."
-msgstr ""
-"Deze kaart is erg geschikt om twee legers uit te proberen, omdat hij "
-"redelijk goed gebalanceerd is.\n"
-"Je kunt twee AI spelers laten spelen om te zien hoe sterk twee rassen ten "
-"opzichte van elkaar zijn."
-
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
 msgstr "Ondergronds"
 
-#: data/terrain.cfg:11 src/multiplayer_create.cpp:56
-#: src/multiplayer_lobby.cpp:312 src/multiplayer_lobby.cpp:318
+#: data/terrain.cfg:11 data/themes/default.cfg:502
+#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:313
+#: src/multiplayer_lobby.cpp:319
 msgid "Shroud"
 msgstr "Sluier"
 
-#: data/terrain.cfg:18 src/multiplayer_lobby.cpp:308
+#: data/terrain.cfg:18 data/themes/default.cfg:511
+#: src/multiplayer_lobby.cpp:309
 msgid "Fog"
 msgstr "Mist"
 
@@ -2443,6 +2468,10 @@ msgstr "Dwergenkasteel"
 msgid "Keep"
 msgstr "Donjon"
 
+#: data/terrain.cfg:432
+msgid "Chasm"
+msgstr ""
+
 #: data/terrain.cfg:439
 msgid "Ruin"
 msgstr "Ruïne"
@@ -2467,11 +2496,11 @@ msgstr "Acties"
 msgid "End Turn"
 msgstr "Einde Beurt"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2251 src/unit.cpp:1091
+#: data/themes/default.cfg:167 src/playturn.cpp:2217 src/unit.cpp:1147
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2072 src/playturn.cpp:2252
+#: data/themes/default.cfg:176 src/playturn.cpp:2030 src/playturn.cpp:2218
 msgid "XP"
 msgstr "XP"
 
@@ -2503,11 +2532,40 @@ msgstr "rang"
 msgid "statuspanel^movement"
 msgstr "zetten"
 
-#: data/themes/default.cfg:520
+#: data/themes/default.cfg:443
+#, fuzzy
+msgid "Replay"
+msgstr "herspeel"
+
+#: data/themes/default.cfg:453
+#, fuzzy
+msgid "Play"
+msgstr "Spelers:"
+
+#: data/themes/default.cfg:463
+msgid "Stop"
+msgstr ""
+
+#: data/themes/default.cfg:473
+#, fuzzy
+msgid "Reset"
+msgstr "Woestijn"
+
+#: data/themes/default.cfg:483
+#, fuzzy
+msgid "Next Turn"
+msgstr "Beurt"
+
+#: data/themes/default.cfg:493
+#, fuzzy
+msgid "Next Side"
+msgstr "Volgende"
+
+#: data/themes/default.cfg:606
 msgid "Act."
 msgstr "Act."
 
-#: data/themes/default.cfg:553
+#: data/themes/default.cfg:639
 msgid "short end-turn^End"
 msgstr "Einde Beurt"
 
@@ -2766,10 +2824,11 @@ msgstr ""
 "gevechten zonder te vechten!"
 
 #: data/tips.cfg:29
+#, fuzzy
 msgid ""
-"The 'slow' attack ability makes enemy units move slower, but it also gives "
-"them one less attack than they would normally have. It is thus very "
-"effective against units that have a few powerful attacks."
+"The 'slow' attack ability makes enemy units move slower, but it also removes "
+"their zone of control, allowing your wounded units to escape or helping you "
+"reach fleeing ennemy units."
 msgstr ""
 "De 'vertraagt'-aanval doet een vijand trager bewegen en ontneemt de vijand "
 "één aanval. Tegen eenheden met weinig aanvallen is het zeer effectief."
@@ -2998,7 +3057,7 @@ msgstr ""
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:20
-#: data/units/Warrior_King.cfg:21 src/actions.cpp:471 src/actions.cpp:587
+#: data/units/Warrior_King.cfg:21 src/actions.cpp:450 src/actions.cpp:566
 msgid "leadership"
 msgstr "leiderschap"
 
@@ -3049,10 +3108,12 @@ msgid "regenerates"
 msgstr "regenereert"
 
 #: data/translations/english.cfg:76
+#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
-"Zones of Control."
+"Zones of Control. (Exception: if you stop in an enemy ZOC your remaining "
+"movement will be set to 0 even if you are a skirmisher.)"
 msgstr ""
 "Warzaaier:\n"
 "Deze eenheid is bedreven in het tussen de gelederen slippen van de vijand en "
@@ -3102,19 +3163,18 @@ msgstr "teleportatie"
 #: data/translations/english.cfg:93
 msgid ""
 "Backstab:\n"
-"This attack deals double damage if a friendly unit is on the opposite side "
-"of the target. (This doesn't work with allied units.)"
+"This attack deals double damage when the attacking unit is adjacent to the "
+"target and there is a unit on the directly opposite side of the target that "
+"is not allied with the target and that is not incapacitated (e.g. turned to "
+"stone)."
 msgstr ""
-"Ruggesteek:\n"
-"Deze aanval verdubbelt de schade indien een bevriende eenheid zich aan de "
-"tegenovergestelde kant van het doelwit bevindt. (Dit werkt niet met eenheden "
-"die tot je alliantie behoren)"
 
 #: data/translations/english.cfg:96
+#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain."
+"until one of the combatants is slain (or 30 rounds of attacks have occurred)."
 msgstr ""
 "Roes:\n"
 "Zowel bij offensief als bij defensief gebruik gaat het gevecht door totdat "
@@ -3131,10 +3191,11 @@ msgstr ""
 "als voor de verdediger."
 
 #: data/translations/english.cfg:102
+#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
-"amount of damage it deals."
+"amount of damage it deals (rounded down)."
 msgstr ""
 "Zuig:\n"
 "Deze eenheid zuigt energie uit de levende eenheden en heelt zichzelf met de "
@@ -3190,13 +3251,11 @@ msgstr ""
 #: data/translations/english.cfg:120
 msgid ""
 "Slow:\n"
-"This attack slows the target. Slowed units move at half normal speed and "
-"receive one less attack than normal in combat until the end of their "
-"controllers' turn."
+"This attack slows the target. Slow reorders the attacks allowing the "
+"attacker to strike one more time until the defender can fight. Slowed units "
+"move at half normal speed, do not emit a zone of control, and always lose "
+"initiative in fights."
 msgstr ""
-"Vertraag:\n"
-"Deze aanval vertraagt de vijand. Vertraagde eenheden bewegen aan halve "
-"snelheid en hebben een aanval minder dan normaal in een gevecht."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -3444,7 +3503,7 @@ msgstr "verpletter"
 #: data/units/Saurian_Soothsayer.cfg:25 data/units/Saurian_Tribalist.cfg:24
 #: data/units/Shock_Trooper.cfg:20 data/units/Silver_Mage.cfg:85
 #: data/units/Silver_Mage.cfg:221 data/units/Skeleton_Archer.cfg:25
-#: data/units/Soulless.cfg:40 data/units/Tentacle.cfg:23
+#: data/units/Soulless.cfg:40 data/units/Tentacle.cfg:56
 #: data/units/Thug.cfg:21 data/units/Troll.cfg:24 data/units/Troll_Hero.cfg:24
 #: data/units/Troll_Rocklobber.cfg:25 data/units/Troll_Rocklobber.cfg:43
 #: data/units/Troll_Warrior.cfg:25 data/units/Troll_Whelp.cfg:24
@@ -3655,7 +3714,7 @@ msgstr "scherp"
 #: data/units/Assassin.cfg:42 data/units/Assassin.cfg:124
 #: data/units/Nightgaunt.cfg:55 data/units/Rogue.cfg:28
 #: data/units/Rogue.cfg:90 data/units/Shadow.cfg:29 data/units/Thief.cfg:91
-#: data/units/Thief.cfg:194 src/actions.cpp:605
+#: data/units/Thief.cfg:194 src/actions.cpp:584
 msgid "backstab"
 msgstr "ruggesteek"
 
@@ -4023,8 +4082,8 @@ msgstr "speer"
 
 #: data/units/Chocobone.cfg:36 data/units/Grand_Knight.cfg:44
 #: data/units/Horseman.cfg:26 data/units/Knight.cfg:42
-#: data/units/Lancer.cfg:27 data/units/Paladin.cfg:49 src/actions.cpp:481
-#: src/actions.cpp:596
+#: data/units/Lancer.cfg:27 data/units/Paladin.cfg:49 src/actions.cpp:460
+#: src/actions.cpp:575
 msgid "charge"
 msgstr "stormloop"
 
@@ -4044,7 +4103,7 @@ msgstr ""
 msgid "gaze"
 msgstr "staar"
 
-#: data/units/Cockatrice.cfg:38 src/actions.cpp:898 src/actions.cpp:1065
+#: data/units/Cockatrice.cfg:38 src/actions.cpp:870 src/actions.cpp:1038
 msgid "stone"
 msgstr "versteen"
 
@@ -4082,7 +4141,7 @@ msgstr ""
 "aftstand. De beste manier om een ontmoeting met deze monsters te overleven "
 "is aan wal te blijven."
 
-#: data/units/Cuttle_Fish.cfg:33 data/units/Tentacle.cfg:21
+#: data/units/Cuttle_Fish.cfg:33 data/units/Tentacle.cfg:54
 msgid "tentacle"
 msgstr "tentakel"
 
@@ -8489,156 +8548,161 @@ msgstr "+Algemene Administratie"
 msgid "+Artwork and graphics designers"
 msgstr "+ Grafische Ontwerpers"
 
-#: src/about.cpp:94
+#: src/about.cpp:95
 msgid "+Music"
 msgstr "+Muziek"
 
-#: src/about.cpp:100
+#: src/about.cpp:101
 msgid "+Scenario Designers"
 msgstr "+Scenario-ontwerpers"
 
-#: src/about.cpp:109
+#: src/about.cpp:110
 msgid "+Multiplayer Maps"
 msgstr "+Multiplayerkaarten"
 
-#: src/about.cpp:114
+#: src/about.cpp:115
 msgid "+Packagers"
 msgstr "+Bundelaars"
 
-#: src/about.cpp:124
+#: src/about.cpp:125
 msgid "+Miscellaneous"
 msgstr "+Allerlei"
 
-#: src/about.cpp:131
+#: src/about.cpp:132
 msgid "+Internationalization Managers"
 msgstr "+Internationaliseringsmanagers"
 
-#: src/about.cpp:138
+#: src/about.cpp:139
 msgid "+Afrikaans Translation"
 msgstr "+Afrikaanse Vertaling"
 
-#: src/about.cpp:144
+#: src/about.cpp:145
 msgid "+Basque Translation"
 msgstr "+Baskische Vertaling"
 
-#: src/about.cpp:149
+#: src/about.cpp:150
 msgid "+Bulgarian Translation"
 msgstr "+Bulgaarse Vertaling"
 
-#: src/about.cpp:153
+#: src/about.cpp:154
 msgid "+Catalan Translation"
 msgstr "Catalaanse Vertaling"
 
-#: src/about.cpp:163
+#: src/about.cpp:164
 msgid "+Chinese Translation"
 msgstr "+Chinese Vertaling"
 
-#: src/about.cpp:166
+#: src/about.cpp:167
 msgid "+Czech Translation"
 msgstr "+Tsjechische Vertaling"
 
-#: src/about.cpp:178
+#: src/about.cpp:179
 msgid "+Danish Translation"
 msgstr "+Deense Vertaling"
 
-#: src/about.cpp:185
+#: src/about.cpp:186
 msgid "+Dutch Translation"
 msgstr "+Nederlandse Vertaling"
 
-#: src/about.cpp:193
+#: src/about.cpp:194
 msgid "+English (GB) Translation"
 msgstr "+Engelse (GB) Vertaling"
 
-#: src/about.cpp:196
+#: src/about.cpp:197
 msgid "+Estonian Translation"
 msgstr "+Estse Vertaling"
 
-#: src/about.cpp:199
+#: src/about.cpp:200
 msgid "+Finnish Translation"
 msgstr "+Finse Vertaling"
 
-#: src/about.cpp:205
+#: src/about.cpp:206
 msgid "+French Translation"
 msgstr "+Franse Vertaling"
 
-#: src/about.cpp:224
+#: src/about.cpp:225
 msgid "+German Translation"
 msgstr "+Duitse Vertaling"
 
-#: src/about.cpp:236
+#: src/about.cpp:237
 msgid "+Greek Translation"
 msgstr "+Griekse Vertaling"
 
-#: src/about.cpp:242
+#: src/about.cpp:243
 #, fuzzy
 msgid "+Hebrew Translation"
 msgstr "+Griekse Vertaling"
 
-#: src/about.cpp:245
+#: src/about.cpp:247
 msgid "+Hungarian Translation"
 msgstr "+Hongaarse Vertaling"
 
-#: src/about.cpp:258
+#: src/about.cpp:260
 msgid "+Italian Translation"
 msgstr "+Italiaanse Vertaling"
 
-#: src/about.cpp:267
+#: src/about.cpp:269
 msgid "+Japanese Translation"
 msgstr "+Japanse Vertaling"
 
-#: src/about.cpp:272
+#: src/about.cpp:274
 msgid "+Latin Translation"
 msgstr "+Latijnse Vertaling"
 
-#: src/about.cpp:275
+#: src/about.cpp:277
 msgid "+Norwegian Translation"
 msgstr "+Noorse Vertaling"
 
-#: src/about.cpp:281
+#: src/about.cpp:283
 msgid "+Polish Translation"
 msgstr "+Poolse Vertaling"
 
-#: src/about.cpp:291
+#: src/about.cpp:293
+#, fuzzy
+msgid "+Portuguese Translation"
+msgstr "+Portugese (Brazilië) Vertaling"
+
+#: src/about.cpp:296
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugese (Brazilië) Vertaling"
 
-#: src/about.cpp:300
+#: src/about.cpp:305
 msgid "+Russian Translation"
 msgstr "+Russische Vertaling"
 
-#: src/about.cpp:306
+#: src/about.cpp:311
 msgid "+Serbian Translation"
 msgstr "+Servische Vertaling"
 
-#: src/about.cpp:309
+#: src/about.cpp:314
 msgid "+Slovak Translation"
 msgstr "+Slovaakse Vertaling"
 
-#: src/about.cpp:312
+#: src/about.cpp:317
 msgid "+Slovenian Translation"
 msgstr "+Sloveense Vertaling"
 
-#: src/about.cpp:315
+#: src/about.cpp:320
 msgid "+Spanish Translation"
 msgstr "+Spaanse Vertaling"
 
-#: src/about.cpp:324
+#: src/about.cpp:329
 msgid "+Swedish Translation"
 msgstr "+Zweedse Vertaling"
 
-#: src/about.cpp:331
+#: src/about.cpp:336
 msgid "+Turkish Translation"
 msgstr "+Turkse Vertaling"
 
-#: src/about.cpp:338
+#: src/about.cpp:343
 msgid "+Contributors"
 msgstr "+Bijdragers"
 
-#: src/about.cpp:341
+#: src/about.cpp:346
 msgid "+Bots"
 msgstr "+Bots"
 
-#: src/about.cpp:377 src/help.cpp:2662
+#: src/about.cpp:382 src/help.cpp:2662
 msgid "Close"
 msgstr "Sluiten"
 
@@ -8655,93 +8719,93 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Er zijn geen lege velden waarop een eenheid kan worden gerekruteerd."
 
-#: src/actions.cpp:323 src/multiplayer_lobby.cpp:322
+#: src/actions.cpp:316 src/multiplayer_lobby.cpp:323
 msgid "none"
 msgstr "geen"
 
-#: src/actions.cpp:399 src/dialogs.cpp:764 src/help.cpp:1143
-#: src/reports.cpp:248
+#: src/actions.cpp:378 src/dialogs.cpp:764 src/help.cpp:1143
+#: src/reports.cpp:267
 msgid "melee"
 msgstr "dichtbij"
 
-#: src/actions.cpp:399 src/dialogs.cpp:764 src/help.cpp:1143
-#: src/reports.cpp:249
+#: src/actions.cpp:378 src/dialogs.cpp:764 src/help.cpp:1143
+#: src/reports.cpp:268
 msgid "ranged"
 msgstr "afstand"
 
-#: src/actions.cpp:451 src/actions.cpp:566
+#: src/actions.cpp:430 src/actions.cpp:545
 msgid "base damage"
 msgstr "basisschade"
 
-#: src/actions.cpp:481 src/actions.cpp:596 src/actions.cpp:605
+#: src/actions.cpp:460 src/actions.cpp:575 src/actions.cpp:584
 msgid "Doubled"
 msgstr "Verdubbeld"
 
-#: src/actions.cpp:489
+#: src/actions.cpp:468
 msgid "attacker resistance vs"
 msgstr "resistentie van de aanvaller vs"
 
-#: src/actions.cpp:489
+#: src/actions.cpp:468
 msgid "attacker vulnerability vs"
 msgstr "kwetsbaarheid van de aanvaller vs"
 
-#: src/actions.cpp:503 src/actions.cpp:633
+#: src/actions.cpp:482 src/actions.cpp:612
 msgid "total damage"
 msgstr "totale schade"
 
-#: src/actions.cpp:613
+#: src/actions.cpp:592
 msgid "defender resistance vs"
 msgstr "resistentie van de verdediger vs"
 
-#: src/actions.cpp:613
+#: src/actions.cpp:592
 msgid "defender vulnerability vs"
 msgstr "kwetsbaarheid van de verdediger vs"
 
-#: src/actions.cpp:616
+#: src/actions.cpp:595
 msgid " (+steadfast)"
 msgstr " (+standvastig)"
 
-#: src/actions.cpp:676
+#: src/actions.cpp:648
 msgid "(both should survive)"
 msgstr "(beiden moeten overleven)"
 
-#: src/actions.cpp:678
+#: src/actions.cpp:650
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% Pr[slachtoffers/gedood door/beiden overleven]"
 
-#: src/actions.cpp:882 src/actions.cpp:1048
+#: src/actions.cpp:857 src/actions.cpp:1024
 msgid "poisoned"
 msgstr "vergiftigd"
 
-#: src/actions.cpp:887 src/actions.cpp:1053
+#: src/actions.cpp:863 src/actions.cpp:1030
 msgid "slowed"
 msgstr "vertraagd"
 
-#: src/actions.cpp:1938
+#: src/actions.cpp:1922
 msgid "Ambushed!"
 msgstr "Hinderlaag!"
 
-#: src/actions.cpp:1972
+#: src/actions.cpp:1956
 msgid "Friendly unit sighted"
 msgstr "Bevriende eenheid in zicht!"
 
-#: src/actions.cpp:1974
+#: src/actions.cpp:1958
 msgid "Enemy unit sighted!"
 msgstr "Vijandige eenheid in zicht!"
 
-#: src/actions.cpp:1979
+#: src/actions.cpp:1963
 msgid "$friends Friendly units sighted"
 msgstr "$friends Bevriende troepen gesignaleerd"
 
-#: src/actions.cpp:1981
+#: src/actions.cpp:1965
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies Vijandige troepen gesignaleerd!"
 
-#: src/actions.cpp:1985
+#: src/actions.cpp:1969
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Troepen gesignaleerd! (($friends bevriende, $enemies vijandige)"
 
-#: src/actions.cpp:2000
+#: src/actions.cpp:1984
 msgid "(press $hotkey to continue)"
 msgstr "(druk $hotkey om door te gaan)"
 
@@ -8785,11 +8849,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(ongeldig)"
 
-#: src/dialogs.cpp:377 src/game.cpp:754
+#: src/dialogs.cpp:377 src/game.cpp:755
 msgid "Campaign"
 msgstr "Veldtocht"
 
-#: src/dialogs.cpp:379 src/game.cpp:1149
+#: src/dialogs.cpp:379 src/game.cpp:1150
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
@@ -8801,7 +8865,7 @@ msgstr "Oefenen"
 msgid "replay"
 msgstr "herspeel"
 
-#: src/dialogs.cpp:391 src/multiplayer_lobby.cpp:296 src/playturn.cpp:1637
+#: src/dialogs.cpp:391 src/multiplayer_lobby.cpp:297 src/playturn.cpp:1601
 msgid "Turn"
 msgstr "Beurt"
 
@@ -8875,8 +8939,8 @@ msgstr ""
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:554 src/game.cpp:887 src/help.cpp:1119
-#: src/multiplayer_lobby.cpp:30 src/playturn.cpp:2070 src/playturn.cpp:2250
+#: src/dialogs.cpp:554 src/game.cpp:888 src/help.cpp:1119
+#: src/multiplayer_lobby.cpp:31 src/playturn.cpp:2028 src/playturn.cpp:2216
 msgid "Name"
 msgstr "Naam"
 
@@ -8884,7 +8948,7 @@ msgstr "Naam"
 msgid "Show replay"
 msgstr "Toon Opgenomen"
 
-#: src/dialogs.cpp:583 src/multiplayer_create.cpp:79
+#: src/dialogs.cpp:583 src/multiplayer_create.cpp:72
 msgid "Load Game"
 msgstr "Spel Laden"
 
@@ -8912,21 +8976,21 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr "Zetten: "
 
-#: src/display.cpp:467
+#: src/display.cpp:469
 msgid "Screenshot"
 msgstr "Schermafdruk"
 
-#: src/game.cpp:395
+#: src/game.cpp:396
 msgid "The Battle for Wesnoth"
 msgstr "Strijd om Wesnoth"
 
-#: src/game.cpp:624
+#: src/game.cpp:625
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Waarschuwing: Het bestand dat je hebt proberen laden is corrupt. Het wordt "
 "toch geladen.\n"
 
-#: src/game.cpp:646 src/multiplayer_connect.cpp:929
+#: src/game.cpp:647 src/multiplayer_connect.cpp:929
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -8934,241 +8998,241 @@ msgstr ""
 "Dit opgeslagen spel is van een andere versie van Strijd om Wesnoth. Wil je "
 "proberen het te laden?"
 
-#: src/game.cpp:654 src/game.cpp:657 src/multiplayer_connect.cpp:914
+#: src/game.cpp:655 src/game.cpp:658 src/multiplayer_connect.cpp:914
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Het bestand dat je hebt proberen laden is corrupt: '"
 
-#: src/game.cpp:660
+#: src/game.cpp:661
 msgid "File I/O Error while reading the game"
 msgstr "Bestand I/O fout."
 
-#: src/game.cpp:744
+#: src/game.cpp:745
 msgid "Get More Campaigns..."
 msgstr "Meer Veldtochten..."
 
-#: src/game.cpp:745
+#: src/game.cpp:746
 msgid "Download more campaigns from a server on Internet."
 msgstr "Download meer veldtochen van een server op het internet."
 
-#: src/game.cpp:755
+#: src/game.cpp:756
 msgid "Choose the campaign you want to play:"
 msgstr "Kies de veldtocht die je wilt spelen:"
 
-#: src/game.cpp:783
+#: src/game.cpp:784
 msgid "Difficulty"
 msgstr "Moeilijkheidsgraad"
 
-#: src/game.cpp:784
+#: src/game.cpp:785
 msgid "Select difficulty level:"
 msgstr "Kies een moeilijkheidsgraad:"
 
-#: src/game.cpp:809
+#: src/game.cpp:810
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:812
+#: src/game.cpp:813
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:815
+#: src/game.cpp:816
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:842
+#: src/game.cpp:843
 msgid "Connect to Server"
 msgstr "Met Server Verbinden"
 
-#: src/game.cpp:843
+#: src/game.cpp:844
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 "Je zult nu met een veldtocht-server verbinden om veldtochten te downloaden."
 
-#: src/game.cpp:844
+#: src/game.cpp:845
 msgid "Server: "
 msgstr "Server:"
 
-#: src/game.cpp:857
+#: src/game.cpp:858
 msgid "Could not connect to host."
 msgstr "Kon geen verbinding maken met 'host'"
 
-#: src/game.cpp:865 src/game.cpp:1078
+#: src/game.cpp:866 src/game.cpp:1079
 msgid "Awaiting response from server"
 msgstr "Wachten op antwoord van server."
 
-#: src/game.cpp:878
+#: src/game.cpp:879
 msgid "Error communicating with the server."
 msgstr "Fout bij communiceren met server."
 
-#: src/game.cpp:887 src/titlescreen.cpp:183
+#: src/game.cpp:888 src/titlescreen.cpp:183
 msgid "Version"
 msgstr "Versie"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Author"
 msgstr "Auteur"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Downloads"
 msgstr "Downloads"
 
-#: src/game.cpp:888
+#: src/game.cpp:889
 msgid "Size"
 msgstr "Grootte"
 
-#: src/game.cpp:949
+#: src/game.cpp:950
 msgid "Publish campaign: "
 msgstr "Veldtocht publiceren:"
 
-#: src/game.cpp:953
+#: src/game.cpp:954
 msgid "Delete campaign: "
 msgstr "Veldtocht verwijderen:"
 
-#: src/game.cpp:957
+#: src/game.cpp:958
 msgid "There are no campaigns available for download from this server."
 msgstr "Er zijn geen veldtochten beschikbaar om te downloaden van deze server."
 
-#: src/game.cpp:964
+#: src/game.cpp:965
 msgid "Choose the campaign to download."
 msgstr "Kies een veldtocht om te downloaden."
 
-#: src/game.cpp:964
+#: src/game.cpp:965
 msgid "Get Campaign"
 msgstr "Veldtocht Downloaden"
 
-#: src/game.cpp:984
+#: src/game.cpp:985
 msgid "Downloading campaign..."
 msgstr "Veldtocht aan het downloaden..."
 
-#: src/game.cpp:1008
+#: src/game.cpp:1009
 msgid "Cannot rescan the filesystem"
 msgstr "Kan het bestandsysteem niet opnieuw scannen"
 
-#: src/game.cpp:1023
+#: src/game.cpp:1024
 msgid "Campaign Installed"
 msgstr "Veldtocht geïnstalleerd."
 
-#: src/game.cpp:1023
+#: src/game.cpp:1024
 msgid "The campaign has been installed."
 msgstr "De veldtocht werd geïnstalleerd."
 
-#: src/game.cpp:1025
+#: src/game.cpp:1026
 msgid "Network communication error."
 msgstr "Netwerk communicatie fout."
 
-#: src/game.cpp:1027
+#: src/game.cpp:1028
 msgid "Remote host disconnected."
 msgstr "'Remote host' brak verbinding af."
 
-#: src/game.cpp:1029
+#: src/game.cpp:1030
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Er was een probleem om de bestanden te genereren die nodig zijn voor deze "
 "veldtocht."
 
-#: src/game.cpp:1041 src/game.cpp:1080 src/game.cpp:1105
-#: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:218
+#: src/game.cpp:1042 src/game.cpp:1081 src/game.cpp:1106
+#: src/multiplayer.cpp:203 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:284
 msgid "Connection timed out"
 msgstr "Connectie timed out"
 
-#: src/game.cpp:1044 src/game.cpp:1082 src/game.cpp:1107
+#: src/game.cpp:1045 src/game.cpp:1083 src/game.cpp:1108
 msgid "The server responded with an error: \""
 msgstr "De server antwoordde met een fout: \""
 
-#: src/game.cpp:1048
+#: src/game.cpp:1049
 msgid "Terms"
 msgstr "Afspraken"
 
-#: src/game.cpp:1085 src/game.cpp:1110
+#: src/game.cpp:1086 src/game.cpp:1111
 msgid "Response"
 msgstr "Antwoord"
 
-#: src/game.cpp:1132
+#: src/game.cpp:1133
 msgid "Join Official Server"
 msgstr "Inloggen op de Officiële Server"
 
-#: src/game.cpp:1133
+#: src/game.cpp:1134
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Log in op de officiële Wesnoth multiplayerserver"
 
-#: src/game.cpp:1135 src/multiplayer_lobby.cpp:408
+#: src/game.cpp:1136 src/multiplayer_lobby.cpp:409
 msgid "Join Game"
 msgstr "Meespelen met Netwerkspel"
 
-#: src/game.cpp:1136
+#: src/game.cpp:1137
 msgid "Join a server or hosted game"
 msgstr "Log in op Server of Host een Spel"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1139
 msgid "Host Networked Game"
 msgstr "Netwerkspel Maken"
 
-#: src/game.cpp:1139
+#: src/game.cpp:1140
 msgid "Host a game without using a server"
 msgstr "Host een spel zonder een server te gebruiken"
 
-#: src/game.cpp:1141
+#: src/game.cpp:1142
 msgid "Hotseat Game"
 msgstr "Hotseat-Spel"
 
-#: src/game.cpp:1142
+#: src/game.cpp:1143
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Speel een multiplayer-spel op één computer."
 
-#: src/game.cpp:1144
+#: src/game.cpp:1145
 msgid "Human vs AI"
 msgstr "Mens vs AI"
 
-#: src/game.cpp:1145
+#: src/game.cpp:1146
 msgid "Play a game against AI opponents"
 msgstr "Speel een spel tegen de computer."
 
-#: src/game.cpp:1151 src/multiplayer.cpp:187
+#: src/game.cpp:1152 src/multiplayer.cpp:187
 msgid "Login: "
 msgstr "Login: "
 
-#: src/game.cpp:1182 src/playcampaign.cpp:197
+#: src/game.cpp:1183 src/playcampaign.cpp:110 src/playcampaign.cpp:263
 msgid "The game could not be loaded: "
 msgstr "Het spel kon niet worden geladen: "
 
-#: src/game.cpp:1184 src/playcampaign.cpp:200
+#: src/game.cpp:1185 src/playcampaign.cpp:112 src/playcampaign.cpp:266
 msgid "Error while playing the game: "
 msgstr "Fout tijdens spelen van het spel: "
 
-#: src/game.cpp:1196 src/playcampaign.cpp:203
+#: src/game.cpp:1197 src/playcampaign.cpp:114 src/playcampaign.cpp:269
 msgid "The game map could not be loaded: "
 msgstr "De kaart kon niet worden geladen: "
 
-#: src/game.cpp:1220
+#: src/game.cpp:1221
 msgid "Language"
 msgstr "Taal"
 
-#: src/game.cpp:1221
+#: src/game.cpp:1222
 msgid "Choose your preferred language:"
 msgstr "Kies de taal:"
 
-#: src/game.cpp:1350
+#: src/game.cpp:1351
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr ""
 "De volgende add-on veldtochten bevatten fouten en konden niet worden geladen:"
 
-#: src/game.cpp:1355
+#: src/game.cpp:1356
 msgid "ERROR DETAILS:"
 msgstr "DETAILS VAN DE FOUT:"
 
-#: src/game.cpp:1364
+#: src/game.cpp:1365
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Waarschuwing: Fout bij het inlezen van de configuratiebestanden: '"
 
-#: src/game.cpp:1414
+#: src/game.cpp:1415
 msgid "Error loading game configuration files: '"
 msgstr "Fout bij het inlezen van de configuratiebestanden: '"
 
-#: src/game.cpp:1415
+#: src/game.cpp:1416
 msgid "' (The game will now exit)"
 msgstr "' (Het spel wordt nu gesloten)"
 
-#: src/game.cpp:1505
+#: src/game.cpp:1521
 msgid "Battle for Wesnoth"
 msgstr "Strijd om Wesnoth"
 
@@ -9200,11 +9264,11 @@ msgstr "Alliantie: "
 msgid "Required XP: "
 msgstr "Benodigde XP: "
 
-#: src/help.cpp:1112 src/reports.cpp:251
+#: src/help.cpp:1112 src/reports.cpp:270
 msgid "attacks"
 msgstr "aanvallen"
 
-#: src/help.cpp:1120 src/playturn.cpp:2069 src/playturn.cpp:2249
+#: src/help.cpp:1120 src/playturn.cpp:2027 src/playturn.cpp:2215
 msgid "Type"
 msgstr "Type"
 
@@ -9297,19 +9361,19 @@ msgstr "Strijd om Wesnoth Help"
 msgid "Parse error when parsing help text: "
 msgstr "Fout bij het verwerken van de helptekst:"
 
-#: src/intro.cpp:95
+#: src/intro.cpp:97
 msgid "Next"
 msgstr "Volgende"
 
-#: src/intro.cpp:96
+#: src/intro.cpp:98
 msgid "Skip"
 msgstr "Overslaan"
 
-#: src/intro.cpp:315
+#: src/intro.cpp:322
 msgid "The End"
 msgstr "Einde"
 
-#: src/language.cpp:92
+#: src/language.cpp:103
 msgid "System default language"
 msgstr "Standaardtaal Systeem"
 
@@ -9348,17 +9412,17 @@ msgid "You must log in to this server"
 msgstr "Je moet op deze server inloggen"
 
 #: src/multiplayer.cpp:350 src/multiplayer.cpp:365
-#: src/multiplayer_wait.cpp:182
+#: src/multiplayer_wait.cpp:183
 msgid "No multiplayer sides available in this game"
 msgstr "Er zijn geen beschikbare kanten in dit spel."
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:366
-#: src/multiplayer_wait.cpp:211
+#: src/multiplayer_wait.cpp:212
 msgid "Era not available"
 msgstr "Tijdperk niet beschikbaar."
 
 #: src/multiplayer.cpp:352 src/multiplayer.cpp:367
-#: src/multiplayer_wait.cpp:216
+#: src/multiplayer_wait.cpp:217
 msgid "No multiplayer sides found"
 msgstr "Er werden geen multiplayer kanten gevonden"
 
@@ -9386,8 +9450,8 @@ msgstr "Er zijn geen niet-willekeurige partijen in het huidige tijdperk"
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Geen leider gevonden voor de factie $faction"
 
-#: src/multiplayer_connect.cpp:487 src/multiplayer_lobby.cpp:405
-#: src/multiplayer_wait.cpp:147
+#: src/multiplayer_connect.cpp:487 src/multiplayer_lobby.cpp:406
+#: src/multiplayer_wait.cpp:148
 msgid "Game Lobby"
 msgstr "Lobby"
 
@@ -9407,7 +9471,7 @@ msgstr "Factie"
 msgid "Color"
 msgstr "Kleur"
 
-#: src/multiplayer_connect.cpp:504 src/playturn.cpp:1793 src/playturn.cpp:1804
+#: src/multiplayer_connect.cpp:504 src/playturn.cpp:1757 src/playturn.cpp:1768
 msgid "Gold"
 msgstr "Goud"
 
@@ -9420,7 +9484,7 @@ msgid "I'm Ready"
 msgstr "Klaar!"
 
 #: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:58
-#: src/multiplayer_wait.cpp:149
+#: src/multiplayer_wait.cpp:150
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -9464,7 +9528,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Aan het wachten op netwerkspelers..."
 
-#: src/multiplayer_create.cpp:38 src/multiplayer_lobby.cpp:409
+#: src/multiplayer_create.cpp:38 src/multiplayer_lobby.cpp:410
 msgid "Create Game"
 msgstr "Spel Maken"
 
@@ -9480,8 +9544,8 @@ msgstr "Tijdperk:"
 msgid "Map to play:"
 msgstr "Kaarten:"
 
-#: src/multiplayer_create.cpp:54 src/multiplayer_lobby.cpp:301
-#: src/multiplayer_lobby.cpp:302
+#: src/multiplayer_create.cpp:54 src/multiplayer_lobby.cpp:302
+#: src/multiplayer_lobby.cpp:303
 msgid "Use map settings"
 msgstr "Configuratie van de kaart gebruiken"
 
@@ -9505,121 +9569,121 @@ msgstr "Genereren"
 msgid "Settings..."
 msgstr "Instellingen..."
 
-#: src/multiplayer_create.cpp:90
+#: src/multiplayer_create.cpp:95
 msgid "The maximum turns the game will go for"
 msgstr "Het maximale aantal beurten in het spel"
 
-#: src/multiplayer_create.cpp:95
+#: src/multiplayer_create.cpp:100
 msgid "The amount of income each village yields per turn"
 msgstr "Het aantal goud dat een dorp levert per beurt"
 
-#: src/multiplayer_create.cpp:100
+#: src/multiplayer_create.cpp:105
 msgid "The amount of experience a unit needs to advance"
 msgstr "Benodigde ervaring voordat een eenheid promoveert"
 
-#: src/multiplayer_create.cpp:103
+#: src/multiplayer_create.cpp:108
 msgid "Use scenario specific settings"
 msgstr "Gebruik de standaardinstellingen van het scenario"
 
-#: src/multiplayer_create.cpp:106
+#: src/multiplayer_create.cpp:111
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Vijandige eenheden kunnen niet worden gezien tenzij ze binnen het bereik "
 "zijn van je eenheden."
 
-#: src/multiplayer_create.cpp:109
+#: src/multiplayer_create.cpp:114
 msgid "The map is unknown until your units explore it"
 msgstr "De kaart wordt pas zichtbaar als je eenheden hem verkennen."
 
-#: src/multiplayer_create.cpp:112
+#: src/multiplayer_create.cpp:117
 msgid "Allow users who are not playing to watch the game"
 msgstr "Sta spelers die het spel niet spelen toe om het spel te bekijken."
 
-#: src/multiplayer_create.cpp:116
+#: src/multiplayer_create.cpp:121
 msgid "Share View"
 msgstr "Zicht Delen"
 
-#: src/multiplayer_create.cpp:117
+#: src/multiplayer_create.cpp:122
 msgid "Share Maps"
 msgstr "Kaarten Delen"
 
-#: src/multiplayer_create.cpp:118
+#: src/multiplayer_create.cpp:123
 msgid "Share None"
 msgstr "Niets Delen"
 
-#: src/multiplayer_create.cpp:129
+#: src/multiplayer_create.cpp:134
 msgid "No multiplayer sides."
 msgstr "Geen multiplayerkanten."
 
-#: src/multiplayer_create.cpp:131
+#: src/multiplayer_create.cpp:136
 msgid "No eras found"
 msgstr "Geen tijdperken gevonden"
 
-#: src/multiplayer_create.cpp:144
+#: src/multiplayer_create.cpp:149
 msgid "$login's game"
 msgstr "$login|s spel"
 
-#: src/multiplayer_create.cpp:176
+#: src/multiplayer_create.cpp:181
 msgid "Invalid era selected"
 msgstr "Ongeldig tijdperk geselecteerd"
 
-#: src/multiplayer_create.cpp:208
+#: src/multiplayer_create.cpp:213
 msgid "You must enter a name."
 msgstr "Je moet een naam opgeven."
 
-#: src/multiplayer_create.cpp:217
+#: src/multiplayer_create.cpp:222
 msgid "Turns: "
 msgstr "Aantal Beurten: "
 
-#: src/multiplayer_create.cpp:219
+#: src/multiplayer_create.cpp:224
 msgid "Unlimited Turns"
 msgstr "Onbeperkt Aantal Beurten"
 
-#: src/multiplayer_create.cpp:226
+#: src/multiplayer_create.cpp:231
 msgid "Village Gold: "
 msgstr "Goud per Dorp: "
 
-#: src/multiplayer_create.cpp:232
+#: src/multiplayer_create.cpp:237
 msgid "Experience Modifier: "
 msgstr "Benodigde Ervaring: "
 
-#: src/multiplayer_create.cpp:350
+#: src/multiplayer_create.cpp:355
 msgid "Players: "
 msgstr "Spelers: "
 
-#: src/multiplayer_create.cpp:352 src/playturn.cpp:1649 src/playturn.cpp:1663
+#: src/multiplayer_create.cpp:357 src/playturn.cpp:1613 src/playturn.cpp:1627
 msgid "Error"
 msgstr "Error"
 
-#: src/multiplayer_lobby.cpp:30
+#: src/multiplayer_lobby.cpp:31
 msgid "Map"
 msgstr "Kaart"
 
-#: src/multiplayer_lobby.cpp:31
+#: src/multiplayer_lobby.cpp:32
 msgid "Settings"
 msgstr "Instellingen"
 
-#: src/multiplayer_lobby.cpp:31
+#: src/multiplayer_lobby.cpp:32
 msgid "Status"
 msgstr "Status"
 
-#: src/multiplayer_lobby.cpp:99
+#: src/multiplayer_lobby.cpp:100
 msgid "<no games open>"
 msgstr "<er zijn geen spellen>"
 
-#: src/multiplayer_lobby.cpp:298
+#: src/multiplayer_lobby.cpp:299
 msgid "Vacant Slot"
 msgstr "Vrije Plaats"
 
-#: src/multiplayer_lobby.cpp:298
+#: src/multiplayer_lobby.cpp:299
 msgid "Vacant Slots"
 msgstr "Vrije Plaatsen"
 
-#: src/multiplayer_lobby.cpp:407
+#: src/multiplayer_lobby.cpp:408
 msgid "Observe Game"
 msgstr "Observeer Spel"
 
-#: src/multiplayer_lobby.cpp:410
+#: src/multiplayer_lobby.cpp:411
 msgid "Quit"
 msgstr "Afsluiten"
 
@@ -9663,35 +9727,35 @@ msgstr "Bruin"
 msgid "Invalid colour"
 msgstr "Ongeldige Kleur"
 
-#: src/multiplayer_wait.cpp:115
+#: src/multiplayer_wait.cpp:116
 msgid "Leader: "
 msgstr "Leider:"
 
-#: src/multiplayer_wait.cpp:117
+#: src/multiplayer_wait.cpp:118
 msgid "Recruits: "
 msgstr "Rekruten:"
 
-#: src/multiplayer_wait.cpp:150
+#: src/multiplayer_wait.cpp:151
 msgid "Waiting for game to start..."
 msgstr "Aan het wachten op de start van het spel..."
 
-#: src/multiplayer_wait.cpp:169
+#: src/multiplayer_wait.cpp:170
 msgid "Getting game data..."
 msgstr "Bezig met ophalen data..."
 
-#: src/multiplayer_wait.cpp:232
+#: src/multiplayer_wait.cpp:233
 msgid "Choose your side:"
 msgstr "Kies je kant:"
 
-#: src/multiplayer_wait.cpp:384 src/unit.cpp:1196
+#: src/multiplayer_wait.cpp:389 src/unit.cpp:1234
 msgid "("
 msgstr "("
 
-#: src/multiplayer_wait.cpp:384 src/unit.cpp:1203
+#: src/multiplayer_wait.cpp:389 src/unit.cpp:1241
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:385 src/playturn.cpp:1896
+#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1860
 msgid "unit^Gold"
 msgstr "Goud"
 
@@ -9711,100 +9775,100 @@ msgstr "Kon socket niet aan socketset toevoegen"
 msgid "Could not send initial handshake"
 msgstr "Kon initiele handdruk niet verzenden"
 
-#: src/playcampaign.cpp:145
+#: src/playcampaign.cpp:211
 msgid "Defeat"
 msgstr "Nederlaag"
 
-#: src/playcampaign.cpp:146
+#: src/playcampaign.cpp:212
 msgid "You have been defeated!"
 msgstr "Je bent verslagen."
 
-#: src/playcampaign.cpp:159
+#: src/playcampaign.cpp:225
 msgid " replay"
 msgstr " herhaling"
 
-#: src/playcampaign.cpp:167
+#: src/playcampaign.cpp:233
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Wil je een herhaling van dit scenario opslaan?"
 
-#: src/playcampaign.cpp:168 src/playcampaign.cpp:289 src/playturn.cpp:1646
+#: src/playcampaign.cpp:234 src/playcampaign.cpp:355 src/playturn.cpp:1610
 msgid "Name:"
 msgstr "Naam:"
 
-#: src/playcampaign.cpp:176 src/playcampaign.cpp:297 src/playturn.cpp:1663
+#: src/playcampaign.cpp:242 src/playcampaign.cpp:363 src/playturn.cpp:1627
 msgid "The game could not be saved"
 msgstr "Het spel kon niet worden opgeslagen"
 
-#: src/playcampaign.cpp:216
+#: src/playcampaign.cpp:282
 msgid "Downloading next level..."
 msgstr "Downloaden volgend niveau"
 
-#: src/playcampaign.cpp:288
+#: src/playcampaign.cpp:354
 msgid "Do you want to save your game?"
 msgstr "Wil je je spel opslaan?"
 
-#: src/playcampaign.cpp:313
+#: src/playcampaign.cpp:379
 msgid "Unknown scenario: '"
 msgstr "Scenario niet gevonden: '"
 
-#: src/playlevel.cpp:609 src/playlevel.cpp:878
+#: src/playlevel.cpp:425 src/playlevel.cpp:694
 msgid "The file you have tried to load is corrupt"
 msgstr "Het bestand dat je hebt proberen laden is corrupt"
 
-#: src/playlevel.cpp:762
+#: src/playlevel.cpp:578
 msgid "Game Over"
 msgstr "Game Over"
 
-#: src/playlevel.cpp:763
+#: src/playlevel.cpp:579
 msgid "The game is over."
 msgstr "Het spel is over."
 
-#: src/playlevel.cpp:846
+#: src/playlevel.cpp:662
 msgid "Remaining gold: "
 msgstr "Resterend goud: "
 
-#: src/playlevel.cpp:849
+#: src/playlevel.cpp:665
 msgid "Early finish bonus: "
 msgstr "Bonus per beurt: "
 
-#: src/playlevel.cpp:851
+#: src/playlevel.cpp:667
 msgid "per turn"
 msgstr "goudstukken"
 
-#: src/playlevel.cpp:852
+#: src/playlevel.cpp:668
 msgid "Turns finished early: "
 msgstr "Resterend aantal beurten: "
 
-#: src/playlevel.cpp:854
+#: src/playlevel.cpp:670
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playlevel.cpp:856
+#: src/playlevel.cpp:672
 msgid "Gold: "
 msgstr "Goud: "
 
-#: src/playlevel.cpp:861
+#: src/playlevel.cpp:677
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% van het goud wordt behouden voor het volgende scenario"
 
-#: src/playlevel.cpp:862
+#: src/playlevel.cpp:678
 msgid "Retained Gold: "
 msgstr "Behouden Goud: "
 
-#: src/playlevel.cpp:867
+#: src/playlevel.cpp:683
 msgid "Victory"
 msgstr "Overwinning"
 
-#: src/playlevel.cpp:868
+#: src/playlevel.cpp:684
 msgid "You have emerged victorious!"
 msgstr "Je hebt de overwinning behaald!"
 
-#: src/playlevel.cpp:872
+#: src/playlevel.cpp:688
 msgid "Scenario Report"
 msgstr "Scenario Rapport"
 
-#: src/playlevel.cpp:893
+#: src/playlevel.cpp:709
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -9828,7 +9892,7 @@ msgstr "Verdediger"
 msgid "Damage Calculations"
 msgstr "Schadeberekeningen"
 
-#: src/playturn.cpp:640 src/reports.cpp:226
+#: src/playturn.cpp:640 src/reports.cpp:245
 msgid "vs"
 msgstr "vs"
 
@@ -9840,32 +9904,32 @@ msgstr "Vijand Aanvallen"
 msgid "Choose weapon:"
 msgstr "Kies wapen: "
 
-#: src/playturn.cpp:1329
+#: src/playturn.cpp:1293
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Je hebt deze beurt nog niets gedaan. Weet je zeker dat je de beurt wilt "
 "beëindigen?"
 
-#: src/playturn.cpp:1337 src/playturn.cpp:1342
+#: src/playturn.cpp:1301 src/playturn.cpp:1306
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Sommige eenheden kunnen nog bewegen. Wil je echt je beurt beëindigen?"
 
-#: src/playturn.cpp:1357
+#: src/playturn.cpp:1321
 msgid "Auto-Save"
 msgstr "Auto-Save"
 
-#: src/playturn.cpp:1359
+#: src/playturn.cpp:1323
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Kon het spel niet automatisch opslaan. Gelieve het spel handmatig op te "
 "slaan."
 
-#: src/playturn.cpp:1600
+#: src/playturn.cpp:1564
 msgid "Rename Unit"
 msgstr "Eenheid Hernoemen"
 
-#: src/playturn.cpp:1649
+#: src/playturn.cpp:1613
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -9873,47 +9937,47 @@ msgstr ""
 "Opslagnamen mogen geen dubbele punten of schuine strepen bevatten. Kies een "
 "andere naam."
 
-#: src/playturn.cpp:1660
+#: src/playturn.cpp:1624
 msgid "Saved"
 msgstr "Opgeslagen"
 
-#: src/playturn.cpp:1660
+#: src/playturn.cpp:1624
 msgid "The game has been saved"
 msgstr "Het spel is opgeslagen"
 
-#: src/playturn.cpp:1792
+#: src/playturn.cpp:1756
 msgid "Leader"
 msgstr "Leider"
 
-#: src/playturn.cpp:1794
+#: src/playturn.cpp:1758
 msgid "Villages"
 msgstr "Dorpen"
 
-#: src/playturn.cpp:1796
+#: src/playturn.cpp:1760
 msgid "Upkeep"
 msgstr "Onderhoud"
 
-#: src/playturn.cpp:1797
+#: src/playturn.cpp:1761
 msgid "Income"
 msgstr "Inkomen"
 
-#: src/playturn.cpp:1902
+#: src/playturn.cpp:1866
 msgid "You have no units available to recruit."
 msgstr "Er zijn geen eenheden beschikbaar om te rekruteren."
 
-#: src/playturn.cpp:1914
+#: src/playturn.cpp:1878
 msgid "Recruit"
 msgstr "Rekruteren"
 
-#: src/playturn.cpp:1915 src/playturn.cpp:2111
+#: src/playturn.cpp:1879 src/playturn.cpp:2069
 msgid "Select unit:"
 msgstr "Selecteer eenheid:"
 
-#: src/playturn.cpp:1949
+#: src/playturn.cpp:1913
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Je hebt niet genoeg goud om die eenheid te rekruteren"
 
-#: src/playturn.cpp:2007
+#: src/playturn.cpp:1971
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -9921,25 +9985,25 @@ msgstr ""
 "Heer, deze eenheid is ervaren en is al gepromoveerd! Wilt u $noun echt "
 "ontslaan?"
 
-#: src/playturn.cpp:2009
+#: src/playturn.cpp:1973
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr "Heer, deze eenheid is bijna gepromoveerd! Wilt u $noun echt ontslaan?"
 
-#: src/playturn.cpp:2014
+#: src/playturn.cpp:1978
 msgid "her"
 msgstr "haar"
 
-#: src/playturn.cpp:2014
+#: src/playturn.cpp:1978
 msgid "him"
 msgstr "hem"
 
-#: src/playturn.cpp:2055
+#: src/playturn.cpp:2019
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Je bent van je troepen gescheiden en dus kun je hen niet oproepen."
 
-#: src/playturn.cpp:2057
+#: src/playturn.cpp:2021
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -9947,115 +10011,115 @@ msgstr ""
 "Er zijn geen troepen beschikbaar om op te roepen\n"
 "(Je moet overlevende veteranen uit vorige scenario's hebben)"
 
-#: src/playturn.cpp:2063
-msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr "Je moet tenminste $cost goudstukken hebben om een eenheid op te roepen"
-
-#: src/playturn.cpp:2071
+#: src/playturn.cpp:2029
 msgid "Level"
 msgstr "Rang"
 
-#: src/playturn.cpp:2098
+#: src/playturn.cpp:2056
 msgid "Dismiss Unit"
 msgstr "Eenheid Ontslaan"
 
-#: src/playturn.cpp:2110
+#: src/playturn.cpp:2068
 msgid "Recall"
 msgstr "Oproepen"
 
-#: src/playturn.cpp:2159
+#: src/playturn.cpp:2080
+msgid "You must have at least $cost gold pieces to recall a unit"
+msgstr "Je moet tenminste $cost goudstukken hebben om een eenheid op te roepen"
+
+#: src/playturn.cpp:2125
 msgid "Message:"
 msgstr "Bericht:"
 
-#: src/playturn.cpp:2159
+#: src/playturn.cpp:2125
 msgid "Send to allies only"
 msgstr "Stuur alleen naar bondgenoten"
 
-#: src/playturn.cpp:2254 src/unit.cpp:1128
+#: src/playturn.cpp:2220 src/unit.cpp:1179
 msgid "Moves"
 msgstr "Zetten"
 
-#: src/playturn.cpp:2255
+#: src/playturn.cpp:2221
 msgid "Location"
 msgstr "Locatie"
 
-#: src/playturn.cpp:2301
+#: src/playturn.cpp:2267
 msgid "Unit List"
 msgstr "Troepenlijst"
 
-#: src/playturn.cpp:2337 src/playturn.cpp:2399
+#: src/playturn.cpp:2303 src/playturn.cpp:2365
 msgid "Recruits"
 msgstr "Rekruteringen"
 
-#: src/playturn.cpp:2343 src/playturn.cpp:2403
+#: src/playturn.cpp:2309 src/playturn.cpp:2369
 msgid "Recalls"
 msgstr "Oproepingen"
 
-#: src/playturn.cpp:2349 src/playturn.cpp:2407
+#: src/playturn.cpp:2315 src/playturn.cpp:2373
 msgid "Advancements"
 msgstr "Promoties"
 
-#: src/playturn.cpp:2355 src/playturn.cpp:2411
+#: src/playturn.cpp:2321 src/playturn.cpp:2377
 msgid "Losses"
 msgstr "Verliezen"
 
-#: src/playturn.cpp:2361 src/playturn.cpp:2415
+#: src/playturn.cpp:2327 src/playturn.cpp:2381
 msgid "Kills"
 msgstr "Slachtoffers"
 
-#: src/playturn.cpp:2367
+#: src/playturn.cpp:2333
 msgid "Damage Inflicted"
 msgstr "Toegebrachte Schade"
 
-#: src/playturn.cpp:2373
+#: src/playturn.cpp:2339
 msgid "Damage Taken"
 msgstr "Ontvangen Schade"
 
-#: src/playturn.cpp:2379
+#: src/playturn.cpp:2345
 msgid "Damage Inflicted (EV)"
 msgstr "Toegebrachte Schade (EV)"
 
-#: src/playturn.cpp:2386
+#: src/playturn.cpp:2352
 msgid "Damage Taken (EV)"
 msgstr "Ontvangen Schade (EV)"
 
-#: src/playturn.cpp:2392
+#: src/playturn.cpp:2358
 msgid "Statistics"
 msgstr "Statistieken"
 
-#: src/playturn.cpp:2429
+#: src/playturn.cpp:2395
 msgid "Search"
 msgstr "Zoeken"
 
-#: src/playturn.cpp:2439
+#: src/playturn.cpp:2405
 msgid "prompt^Command:"
 msgstr "Commando:"
 
-#: src/playturn.cpp:2450
+#: src/playturn.cpp:2416
 msgid "Chat Log"
 msgstr "Chat Log"
 
-#: src/playturn.cpp:2515
+#: src/playturn.cpp:2481
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kon geen label of eenheid vinden met '$search'."
 
-#: src/playturn.cpp:2546
+#: src/playturn.cpp:2512
 msgid "Saved Theme Preference: "
 msgstr "Instellingen Opgeslagen Thema"
 
-#: src/playturn.cpp:2552
+#: src/playturn.cpp:2518
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Het nieuwe thema wordt in gebruik genomen in het volgende spel"
 
-#: src/playturn.cpp:2653
+#: src/playturn.cpp:2619
 msgid "Place Label"
 msgstr "Label Plaatsen"
 
-#: src/playturn.cpp:2654
+#: src/playturn.cpp:2620
 msgid "Label:"
 msgstr "Label:"
 
-#: src/playturn.cpp:2786
+#: src/playturn.cpp:2752
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -10063,49 +10127,50 @@ msgstr ""
 "De spellen verlopen niet meer synchroon en zullen moeten afsluiten. Wil je "
 "een error log opslaan van dit spel?"
 
-#: src/playturn.cpp:2839
+#: src/playturn.cpp:2805
 msgid "Replace with AI"
 msgstr "Vervang door AI"
 
-#: src/playturn.cpp:2840
+#: src/playturn.cpp:2806
 msgid "Replace with local player"
 msgstr "Vervang door lokale speler"
 
-#: src/playturn.cpp:2841
+#: src/playturn.cpp:2807
 msgid "Abort game"
 msgstr "Spel afbreken"
 
-#: src/playturn.cpp:2844
+#: src/playturn.cpp:2810
 msgid "Replace with "
 msgstr "Vervang door"
 
-#: src/playturn.cpp:2848
+#: src/playturn.cpp:2814
 msgid "has left the game. What do you want to do?"
 msgstr "heeft het spel verlaten. Wat wil je doen?"
 
-#: src/reports.cpp:124
+#: src/reports.cpp:134
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Deze eenheid is onzichtbaar en kan niet worden gezien of aangevallen door "
 "vijandelijke eenheden."
 
-#: src/reports.cpp:124
+#: src/reports.cpp:134
 msgid "invisible: "
 msgstr "onzichtbaar: "
 
-#: src/reports.cpp:129
+#: src/reports.cpp:139
+#, fuzzy
 msgid ""
-"This unit has been slowed. It moves at half normal speed and receives one "
-"less attack than normal in combat."
+"This unit has been slowed. It emits no zone of control, moves at half speed "
+"and ennemies will be able to strike earlier once during a fight"
 msgstr ""
 "Deze eenheid is vertraagd. Hij beweegt op halve snelheid en heeft één aanval "
 "minder dan normaal."
 
-#: src/reports.cpp:129
+#: src/reports.cpp:139
 msgid "slowed: "
 msgstr "vertraagd: "
 
-#: src/reports.cpp:134
+#: src/reports.cpp:144
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -10118,47 +10183,47 @@ msgstr ""
 "genezing vindt in een dorp of bij een bevriende eenheid met de 'geneest' "
 "vaardigheid."
 
-#: src/reports.cpp:134
+#: src/reports.cpp:144
 msgid "poisoned: "
 msgstr "vergiftigd: "
 
-#: src/reports.cpp:141
+#: src/reports.cpp:151
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Deze eenheid is in steen veranderd. Hij kan bewegen noch aanvallen."
 
-#: src/reports.cpp:141
+#: src/reports.cpp:151
 msgid "stone: "
 msgstr "steen: "
 
-#: src/reports.cpp:250 src/unit_types.cpp:321
+#: src/reports.cpp:269 src/unit_types.cpp:309
 msgid "damage"
 msgstr "schade"
 
-#: src/reports.cpp:268
+#: src/reports.cpp:287
 msgid "Lawful units: "
 msgstr "Rechtvaardige eenheden: "
 
-#: src/reports.cpp:270
+#: src/reports.cpp:289
 msgid "Neutral units: "
 msgstr "Neutrale eenheden: "
 
-#: src/reports.cpp:271
+#: src/reports.cpp:290
 msgid "Chaotic units: "
 msgstr "Chaotische eenheden: "
 
-#: src/reports.cpp:325
+#: src/reports.cpp:344
 msgid "Owned village"
 msgstr "Eigen Dorp"
 
-#: src/reports.cpp:327
+#: src/reports.cpp:346
 msgid "Enemy village"
 msgstr "Vijandelijk Dorp"
 
-#: src/reports.cpp:329
+#: src/reports.cpp:348
 msgid "Allied village"
 msgstr "Geallieerd Dorp"
 
-#: src/reports.cpp:389
+#: src/reports.cpp:405
 msgid "Observers:"
 msgstr "Toeschouwers:"
 
@@ -10206,15 +10271,15 @@ msgstr "Lege variabelenaam"
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Onverwachte karakters na variabel naam (verwacht , of = )"
 
-#: src/serialization/parser.cpp:243 src/serialization/parser.cpp:267
+#: src/serialization/parser.cpp:245 src/serialization/parser.cpp:269
 msgid "Unterminated quoted string"
 msgstr "Niet gesloten string"
 
-#: src/serialization/parser.cpp:290
+#: src/serialization/parser.cpp:292
 msgid " included from "
 msgstr " geïncludeerd vanuit"
 
-#: src/serialization/parser.cpp:311
+#: src/serialization/parser.cpp:313
 msgid "$error at $pos"
 msgstr "$error bij $pos"
 
@@ -10292,33 +10357,53 @@ msgstr "Meer"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- De Geschriften van Wesnoth"
 
-#: src/unit.cpp:1074 src/unit.cpp:1201
+#: src/unit.cpp:1130 src/unit.cpp:1239
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:1153
+#: src/unit.cpp:1196
 msgid "XP to advance"
 msgstr "XP om te promoveren"
 
-#: src/unit.cpp:1192
+#: src/unit.cpp:1230
 msgid ": "
 msgstr ": "
 
-#: src/unit_types.cpp:341
+#: src/unit_types.cpp:317
 msgid "strikes"
 msgstr "aanvallen"
 
-#: src/unit_types.cpp:952
+#: src/unit_types.cpp:930
 msgid "chaotic"
 msgstr "chaotisch"
 
-#: src/unit_types.cpp:952
+#: src/unit_types.cpp:930
 msgid "lawful"
 msgstr "rechtvaardig"
 
-#: src/unit_types.cpp:952
+#: src/unit_types.cpp:930
 msgid "neutral"
 msgstr "neutraal"
+
+#~ msgid ""
+#~ "Backstab:\n"
+#~ "This attack deals double damage if a friendly unit is on the opposite "
+#~ "side of the target. (This doesn't work with allied units.)"
+#~ msgstr ""
+#~ "Ruggesteek:\n"
+#~ "Deze aanval verdubbelt de schade indien een bevriende eenheid zich aan de "
+#~ "tegenovergestelde kant van het doelwit bevindt. (Dit werkt niet met "
+#~ "eenheden die tot je alliantie behoren)"
+
+#~ msgid ""
+#~ "Slow:\n"
+#~ "This attack slows the target. Slowed units move at half normal speed and "
+#~ "receive one less attack than normal in combat until the end of their "
+#~ "controllers' turn."
+#~ msgstr ""
+#~ "Vertraag:\n"
+#~ "Deze aanval vertraagt de vijand. Vertraagde eenheden bewegen aan halve "
+#~ "snelheid en hebben een aanval minder dan normaal in een gevecht."
 
 #~ msgid "Basic Training"
 #~ msgstr "Basistraining"
@@ -11317,9 +11402,6 @@ msgstr "neutraal"
 
 #~ msgid "Map Generator"
 #~ msgstr "Mapgenerator"
-
-#~ msgid "Players:"
-#~ msgstr "Spelers:"
 
 #~ msgid "Width:"
 #~ msgstr "Breedte:"
