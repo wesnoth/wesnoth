@@ -50,6 +50,9 @@ Version 1.0.2:
    * Add a backup save_id to use if both save_id and description are empty.
  * Break up deeply nested [random] tags that prevent binary saves from
    working.
+ * Replace all calls to sprintf with snprintf to prevent buffer overflow
+   attacks from other players in multiplayer games or from downloaded
+   campaigns.
 
 Version 1.0.1:
  * graphics

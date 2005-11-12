@@ -126,9 +126,9 @@ gamemap::location::location(const config& cfg) : x(-1), y(-1)
 void gamemap::location::write(config& cfg) const
 {
 	char buf[50];
-	sprintf(buf,"%d",x+1);
+	snprintf(buf,sizeof(buf),"%d",x+1);
 	cfg["x"] = buf;
-	sprintf(buf,"%d",y+1);
+	snprintf(buf,sizeof(buf),"%d",y+1);
 	cfg["y"] = buf;
 }
 

@@ -825,12 +825,12 @@ void unit::write(config& cfg) const
 	}
 
 	char buf[50];
-	sprintf(buf,"%d",goto_.x+1);
+	snprintf(buf,sizeof(buf),"%d",goto_.x+1);
 	cfg["goto_x"] = buf;
-	sprintf(buf,"%d",goto_.y+1);
+	snprintf(buf,sizeof(buf),"%d",goto_.y+1);
 	cfg["goto_y"] = buf;
 
-	sprintf(buf,"%d",moves_);
+	snprintf(buf,sizeof(buf),"%d",moves_);
 	cfg["moves"] = buf;
 
 	cfg["resting"] = resting_ ? "yes" : "no";

@@ -553,7 +553,7 @@ bool game_controller::play_multiplayer_mode()
 		}
 
 		char buf[20];
-		sprintf(buf,"%d",side_num);
+		snprintf(buf,sizeof(buf),"%d",side_num);
 		(*itors.first)->values["side"] = buf;
 
 		(*itors.first)->values["canrecruit"] = "1";
