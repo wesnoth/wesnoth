@@ -55,6 +55,7 @@ public:
 	void choose_option(int index);
 	void add_label(const std::string& text, const gamemap::location& loc);
 	void add_rename(const std::string& name, const gamemap::location& loc);
+	void add_break();
 	void end_turn();
 
 	void speak(const config& cfg);

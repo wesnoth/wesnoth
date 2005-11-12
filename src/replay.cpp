@@ -339,6 +339,12 @@ void replay::add_rename(const std::string& name, const gamemap::location& loc)
 	cmd->add_child("rename", val);
 }
 
+void replay::add_break()
+{
+	config* const cmd = add_command();
+	cmd->add_child("break");
+}
+
 void replay::end_turn()
 {
 	config* const cmd = add_command();

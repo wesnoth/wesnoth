@@ -48,6 +48,8 @@ Version 1.0.2:
    * Fix bug in SotBE CoA where the mermen side should have their leader
      created in an event rather than defined in the side setup.
    * Add a backup save_id to use if both save_id and description are empty.
+ * Break up deeply nested [random] tags that prevent binary saves from
+   working.
 
 Version 1.0.1:
  * graphics

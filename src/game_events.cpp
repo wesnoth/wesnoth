@@ -964,6 +964,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//if we should spawn a new unit on the map somewhere
 	else if(cmd == "unit") {
+		recorder.add_break();
 		unit new_unit(*game_data_ptr, cfg.get_parsed_config());
 		preferences::encountered_units().insert(new_unit.type().id());
 		gamemap::location loc = cfg_to_loc(cfg);
