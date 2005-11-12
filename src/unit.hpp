@@ -18,6 +18,7 @@
 #include "race.hpp"
 #include "team.hpp"
 #include "unit_types.hpp"
+#include "image.hpp"
 
 #include <set>
 #include <string>
@@ -55,6 +56,7 @@ public:
 	bool unrenamable() const; /** < Set to true for some scenario-specific units which should not be renamed */
 	bool advances() const;
 	int side() const;
+        Uint32 team_rgb() const;
 	unit_race::GENDER gender() const;
 	void set_side(int new_side);
 	fixed_t alpha() const;
@@ -128,6 +130,7 @@ public:
 	//gets the unit image that should currently be displayed
 	//(could be in the middle of an attack etc)
 	const std::string& image() const;
+	const image::locator image_loc() const;
 
 	void set_standing();
 	void set_defending(bool hits, attack_type::RANGE range, int start_frame, int acceleration);

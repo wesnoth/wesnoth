@@ -199,7 +199,8 @@ public:
 	static int nteams();
 
 	//function which, when given a 1-based side will return the colour used by that side.
-	static const SDL_Color& get_side_colour(int side);
+	static const Uint32 get_side_rgb(int side);
+        static const SDL_Color get_side_colour(int side);
 	static int get_side_colour_index(int side);
 
 	void log_recruitable();
@@ -243,7 +244,7 @@ struct teams_manager {
 
 bool is_observer();
 
-//function which will validate a side. Throws game::game_error
+//function which will validate a side. Trows game::game_error
 //if the side is invalid
 void validate_side(int side); //throw game::game_error
 

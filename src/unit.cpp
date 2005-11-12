@@ -217,6 +217,11 @@ int unit::side() const
 	return side_;
 }
 
+Uint32 unit::team_rgb() const
+{
+  return(team::get_side_rgb(side()));
+}
+
 unit_race::GENDER unit::gender() const
 {
 	return gender_;
@@ -907,6 +912,15 @@ const std::string& unit::image() const
 
 		default: return type_->image();
 	}
+}
+
+const image::locator unit::image_loc() const
+{
+  if(type().flag_rgb().size()){
+    return(image::locator(image(),team_rgb(),type().flag_rgb()));
+  }else{
+    return(image::locator(image()));
+  }
 }
 
 const unit_animation* unit::get_animation() const

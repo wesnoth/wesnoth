@@ -676,7 +676,7 @@ void unit_preview_pane::draw_contents()
 	SDL_Rect clip_area = area;
 	const clip_rect_setter clipper(screen,clip_area);
 
-	surface unit_image(image::get_image(u.type().image(),image::UNSCALED));
+	surface unit_image(image::get_image(u.image_loc(),image::UNSCALED));
 	if(left_side() == false && unit_image != NULL) {
 		unit_image.assign(image::reverse_image(unit_image));
 	}

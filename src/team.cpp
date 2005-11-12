@@ -859,21 +859,20 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 	return cleared;
 }
 
-const SDL_Color& team::get_side_colour(int side)
-{
-	size_t index = size_t(get_side_colour_index(side) - 1);
+const Uint32 team::get_side_rgb(int side){
+  	size_t index = size_t(get_side_colour_index(side) - 1);
 
-	static const SDL_Color sides[] = { {0xFF,0x00,0x00,0},
-	                                   {0x00,0x00,0xFF,0},
-	                                   {0x00,0xFF,0x00,0},
-	                                   {0xFF,0xFF,0x00,0},
-	                                   {0xFF,0x00,0xFF,0},
-	                                   {0xFF,0x7F,0x00,0},
-	                                   {0x89,0x89,0x89,0},
-	                                   {0xFF,0xFF,0xFF,0},
-	                                   {0x94,0x50,0x27,0},
-	                                   {0x02,0xF5,0xE1,0},
-	                                   {0xFF,0x00,0xFF,0} };
+	static const Uint32 sides[] = { 0x00FF0000,
+	                                0x000000FF,
+	                                0x0000FF00,
+	                                0x00FFFF00,
+	                                0x00FF00FF,
+	                                0x00FF7F00,
+	                                0x00898989,
+	                                0x00FFFFFF,
+	                                0x00945027,
+	                                0x0002F5E1,
+	                                0x00FF00FF };
 
 	static const size_t nsides = sizeof(sides)/sizeof(*sides);
 
@@ -881,7 +880,17 @@ const SDL_Color& team::get_side_colour(int side)
 		return sides[index];
 	} else {
 		return sides[0];
-	}
+	}  
+}
+
+const SDL_Color team::get_side_colour(int side)
+{
+	Uint32 rgb=get_side_rgb(side);
+	SDL_Color color={ (0x00FF0000 & rgb)>>16, 
+				       (0x0000FF00 & rgb)>>8,
+				       (0x000000FF & rgb),
+	                               0} ;
+	return color;
 }
 
 int team::get_side_colour_index(int side)

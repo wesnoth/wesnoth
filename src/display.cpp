@@ -921,7 +921,6 @@ void display::draw_report(reports::TYPE report_num)
 			SDL_BlitSurface(surf,NULL,screen_.getSurface(),&rect);
 			update_rect(rect);
 		}
-
 		//if the rectangle has just changed, assign the surface to it
 		if(new_rect != rect || surf == NULL) {
 			surf.assign(NULL);
@@ -945,6 +944,7 @@ void display::draw_report(reports::TYPE report_num)
 		SDL_Rect area = rect;
 
 		int x = rect.x, y = rect.y;
+
 		if(!report.empty()) {
 			// Add prefix, postfix elements. Make sure that they get the same tooltip as the guys
 			// around them.
@@ -963,6 +963,7 @@ void display::draw_report(reports::TYPE report_num)
 			bool used_ellipsis=false;
 			std::stringstream ellipsis_tooltip;
 			SDL_Rect ellipsis_area =rect;
+
 			for(reports::report::iterator i = report.begin(); i != report.end(); ++i) {
 				if(i->text.empty() == false){
 				  if(used_ellipsis == false) {
@@ -977,7 +978,7 @@ void display::draw_report(reports::TYPE report_num)
 						x += area.w;
 					}
 				  }
-				} else if(i->image.empty() == false){
+				} else if(i->image.get_filename().empty() == false){
 				  if(used_ellipsis == false) {
 					// Draw an image element
 					surface img(image::get_image(i->image,image::UNSCALED));
@@ -987,7 +988,7 @@ void display::draw_report(reports::TYPE report_num)
 					}
 
 					if(img == NULL) {
-						ERR_DP << "could not find image for report: '" << i->image << "'\n";
+						ERR_DP << "could not find image for report: '" << i->image.get_filename() << "'\n";
 						continue;
 					}
 
@@ -1057,7 +1058,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 			continue;
 
 		const int side = u->second.side();
-		const SDL_Color& col = team::get_side_colour(side);
+		const SDL_Color col = team::get_side_colour(side);
 		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		SDL_Rect rect = { x + (u->first.x * w) / map_w,
 		                  y + (u->first.y * h + (is_odd(u->first.x) ? h / 2 : 0)) / map_h,
@@ -1144,7 +1145,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 
 	if(loc != hiddenUnit_ || !hideEnergy_) {
 		if(unit_image == NULL) {
-			unit_image.assign(image::get_image(it->second.image(),it->second.stone() ? image::GREYED : image::SCALED));
+			unit_image.assign(image::get_image(u.image_loc(),it->second.stone() ? image::GREYED : image::SCALED));
 		}
 
 		if(unit_image == NULL) {
@@ -1260,11 +1261,17 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 
 		if(preferences::show_side_colours()) {
 			const char* const selected = selectedHex_ == loc ? "selected-" : "";
+			std::vector<Uint32> temp_rgb;
+			//ellipse not pure red=255!
+			for(int i=0;i<256;i++){
+			  temp_rgb.push_back((Uint32)(i<<16));
+			}
+			//selected ellipse not pure red at all!
 			char buf[50];
-			snprintf(buf,sizeof(buf),"misc/%sellipse-%d-top.png",selected,team::get_side_colour_index(it->second.side()));
-			ellipse_back.assign(image::get_image(buf));
-			snprintf(buf,sizeof(buf),"misc/%sellipse-%d-bottom.png",selected,team::get_side_colour_index(it->second.side()));
-			ellipse_front.assign(image::get_image(buf));
+			snprintf(buf,sizeof(buf),"misc/%sellipse-1-top.png",selected);
+			ellipse_back.assign(image::get_image(image::locator(buf,it->second.team_rgb(),temp_rgb)));
+			snprintf(buf,sizeof(buf),"misc/%sellipse-1-bottom.png",selected);
+			ellipse_front.assign(image::get_image(image::locator(buf,it->second.team_rgb(),temp_rgb)));
 		}
 
 		draw_unit(xpos,ypos - height_adjust,unit_image,false,
@@ -1273,7 +1280,11 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 
 	const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : ftofxp(1.0);
 	if(energy_file != NULL) {
-		draw_bar(*energy_file,xpos,ypos,(u.max_hitpoints()*2)/3,unit_energy,energy_colour,bar_alpha);
+	  if(u.max_hitpoints()!= u.hitpoints()){
+	    draw_bar(*energy_file,xpos,ypos,(u.max_hitpoints()*2)/3,unit_energy,energy_colour,bar_alpha);
+	  }else{
+	    draw_bar(*energy_file,xpos,ypos,0,unit_energy,energy_colour,bar_alpha);
+	  }
 	}
 
 	if(u.experience() > 0 && u.can_advance()) {

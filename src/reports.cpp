@@ -110,7 +110,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	case UNIT_DESCRIPTION:
 		return report(u->second.description());
 	case UNIT_TYPE:
-		return report(u->second.type().language_name(),"",u->second.unit_description());
+	        return report(u->second.type().language_name(),"",u->second.unit_description());
 	case UNIT_LEVEL:
 		str << u->second.type().level();
 		break;
@@ -276,7 +276,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		return res;
 	}
 	case UNIT_IMAGE:
-		return report("",u->second.type().image(),"");
+	        return report("",u->second.image_loc(),"");
 	case UNIT_PROFILE:
 		return report("",u->second.type().image_profile(),"");
 	case TIME_OF_DAY: {

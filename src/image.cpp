@@ -139,8 +139,20 @@ locator::locator(const std::string &filename) :
 	init_index();
 }
 
-locator::locator(const std::string &filename, const gamemap::location &loc) :
-	val_(filename, loc)
+locator::locator(const char *filename, Uint32 new_rgb, std::vector<Uint32> swap_rgb) :
+	val_(filename, new_rgb, swap_rgb)
+{
+	init_index();
+}
+
+locator::locator(const std::string &filename, Uint32 new_rgb, std::vector<Uint32> swap_rgb) :
+	val_(filename, new_rgb, swap_rgb)
+{
+	init_index();
+}
+
+locator::locator(const std::string &filename, const gamemap::location &loc, Uint32 new_rgb, std::vector<Uint32> swap_rgb) :
+	val_(filename, loc, new_rgb, swap_rgb)
 {
 	init_index();
 }
@@ -154,7 +166,8 @@ locator& locator::operator=(const locator &a)
 }
 
 locator::value::value(const locator::value& a) :
-	type_(a.type_), filename_(a.filename_), loc_(a.loc_)
+  type_(a.type_), filename_(a.filename_), loc_(a.loc_), 
+  new_color(a.new_color), swap_colors(a.swap_colors)
 {
 }
 
@@ -163,17 +176,28 @@ locator::value::value() :
 {}
 
 locator::value::value(const char *filename) :
-	type_(FILE), filename_(filename)
+  type_(FILE), filename_(filename)
+{
+}
+
+
+locator::value::value(const char *filename, Uint32 new_rgb, std::vector<Uint32> swap_rgb) :
+  type_(SUB_FILE), filename_(filename), new_color(new_rgb), swap_colors(swap_rgb)
 {
 }
 
 locator::value::value(const std::string& filename) :
-	type_(FILE), filename_(filename)
+  type_(FILE), filename_(filename)
 {
 }
 
-locator::value::value(const std::string& filename, const gamemap::location& loc) :
-	type_(SUB_FILE), filename_(filename), loc_(loc)
+locator::value::value(const std::string& filename, Uint32 new_rgb, std::vector<Uint32> swap_rgb) :
+  type_(SUB_FILE), filename_(filename), new_color(new_rgb), swap_colors(swap_rgb)
+{
+}
+
+locator::value::value(const std::string& filename, const gamemap::location& loc, Uint32 new_rgb, std::vector<Uint32> swap_rgb) :
+  type_(SUB_FILE), filename_(filename), loc_(loc), new_color(new_rgb), swap_colors(swap_rgb)
 {
 }
 
@@ -184,7 +208,7 @@ bool locator::value::operator==(const value& a) const
 	} else if(type_ == FILE) {
 		return filename_ == a.filename_;
 	} else if(type_ == SUB_FILE) {
-		return filename_ == a.filename_ && loc_ == a.loc_;
+	  return filename_ == a.filename_ && loc_ == a.loc_ && new_color==a.new_color; //note not checking swap_colors purposely
 	} else {
 		return false;
 	}
@@ -199,8 +223,9 @@ bool locator::value::operator<(const value& a) const
 	} else if(type_ == SUB_FILE) {
 		if(filename_ != a.filename_)
 			return filename_ < a.filename_;
-
-		return loc_ < a.loc_;
+		if(loc_ != a.loc_)
+		        return loc_ < a.loc_;
+		return new_color < a.new_color;
 	} else {
 		return false;
 	}
@@ -240,15 +265,20 @@ surface locator::load_image_sub_file() const
 	if(mask == NULL)
 		return surface(NULL);
 
-	SDL_Rect srcrect = {
-		((tile_size*3) / 4) * val_.loc_.x,
-		tile_size * val_.loc_.y + (tile_size/2) * (val_.loc_.x % 2),
-		tile_size, tile_size
-	};
+	surface surf=mother_surface;
+	if(val_.loc_.x>-1 && val_.loc_.y>-1){
+	  SDL_Rect srcrect = {
+	    ((tile_size*3) / 4) * val_.loc_.x,
+	    tile_size * val_.loc_.y + (tile_size/2) * (val_.loc_.x % 2),
+	    tile_size, tile_size
+	  };
 
-	surface tmp(cut_surface(mother_surface, srcrect));
-	surface surf(mask_surface(tmp, mask));
-
+	  surface tmp(cut_surface(mother_surface, srcrect));
+	  surf=mask_surface(tmp, mask);
+	}	
+	if(val_.swap_colors.size()){
+	  surf=recolor_image(surf,get_new_color(),get_swap_colors());
+	}
 	return surf;
 }
 
@@ -610,7 +640,7 @@ locator get_alternative(const image::locator &i_locator, const std::string &alt)
 		res = locator(alternative);
 		break;
 	case locator::SUB_FILE:
-		res = locator(alternative, i_locator.get_loc());
+		res = locator(alternative, i_locator.get_loc(), i_locator.get_new_color(), i_locator.get_swap_colors());
 		break;
 	default:
 		wassert(false);

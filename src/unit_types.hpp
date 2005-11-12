@@ -198,6 +198,9 @@ public:
 	const std::string& unit_description() const;
 	const std::string& get_hit_sound() const;
 	const std::string& die_sound() const;
+
+        const std::vector<Uint32>& flag_rgb() const;
+
 	int hitpoints() const;
 	std::vector<attack_type> attacks() const;
 	const unit_movement_type& movement_type() const;
@@ -319,6 +322,8 @@ private:
 	};
 
 	std::vector<death_animation> death_animations_;
+
+        std::vector<Uint32> flag_rgb_;
 };
 
 struct game_data

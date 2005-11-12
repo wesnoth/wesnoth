@@ -48,7 +48,7 @@ namespace reports {
 		// Invariant: either text or image should be empty
 		// It would be okay to create a class for this, but it's a pretty simple
 		// invariant so I left it like the original report class.
-		std::string image;
+	        image::locator image;
 		std::string text;
 
 		std::string tooltip;
@@ -56,6 +56,11 @@ namespace reports {
 		element() {}
 		explicit element(const std::string& text) : text(text) {}
 		element(const std::string& text, const std::string& image, const std::string& tooltip) :
+			image(image), text(text), tooltip(tooltip) {}
+
+		element(const std::string& text, const image::locator& image, const std::string& tooltip) :
+			image(image), text(text), tooltip(tooltip) {}
+		element(const std::string& text, const char* image, const std::string& tooltip) :
 			image(image), text(text), tooltip(tooltip) {}
 
 		bool operator==(const element& o) const {
@@ -67,6 +72,12 @@ namespace reports {
 		report() {}
 		explicit report(const std::string& text) { this->push_back(element(text)); }
 		report(const std::string& text, const std::string& image, const std::string& tooltip) {
+			this->push_back(element(text, image, tooltip));
+		}
+		report(const std::string& text, const char* image, const std::string& tooltip) {
+			this->push_back(element(text, image, tooltip));
+		}
+		report(const std::string& text, const image::locator& image, const std::string& tooltip) {
 			this->push_back(element(text, image, tooltip));
 		}
 

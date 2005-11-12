@@ -524,7 +524,8 @@ unit_type::unit_type(const unit_type& o)
       alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
-      teleport_animations_(o.teleport_animations_), death_animations_(o.death_animations_)
+      teleport_animations_(o.teleport_animations_), 
+      death_animations_(o.death_animations_), flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
@@ -660,6 +661,61 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
 		death_animations_.push_back(death_animation(**death));
 	}
+
+	std::vector<unsigned char> flag_red_,flag_green_,flag_blue_;
+	std::vector<std::string> flag_string_ = utils::split(cfg["flag_red"]);
+        for(std::vector<std::string>::iterator c=flag_string_.begin();c!=flag_string_.end();c++){
+          flag_red_.push_back(atoi(c->c_str()));
+        }
+        flag_string_ = utils::split(cfg["flag_green"]);
+        for(std::vector<std::string>::iterator c=flag_string_.begin();c!=flag_string_.end();c++){
+          flag_green_.push_back(atoi(c->c_str()));
+        }
+        flag_string_ = utils::split(cfg["flag_blue"]);
+        for(std::vector<std::string>::iterator c=flag_string_.begin();c!=flag_string_.end();c++){
+          flag_blue_.push_back(atoi(c->c_str()));
+        }
+
+        //fill in empty rgb values with 0
+        while(flag_red_.size()>flag_green_.size()){
+          flag_green_.push_back(0);
+        }//size of green now >=red
+        while(flag_green_.size()>flag_blue_.size()){
+          flag_blue_.push_back(0);
+        }//size of blue now >= green >= red
+        while(flag_blue_.size()>flag_green_.size()){
+          flag_green_.push_back(0);
+        }//size of green now = blue >= red
+        while(flag_green_.size()>flag_red_.size()){
+          flag_red_.push_back(0);
+        }//size of green=red=blue
+
+	//construct rgb values;
+	for(int i=0;i!=flag_red_.size();i++){
+	  //stolen from display.cpp, but don't want to include header 
+	  //for such a simple function
+	  flag_rgb_.push_back(Uint32 (0xFF000000 | (flag_red_[i] << 16) | (flag_green_[i] << 8) | flag_blue_[i]) );
+	}
+	flag_string_ = utils::split(cfg["flag_rgb"]);
+        for(std::vector<std::string>::iterator c=flag_string_.begin();c!=flag_string_.end();c++){
+	  int r,g,b;
+	  r=(atoi(c->c_str()));
+	  c++;
+	  if(c!=flag_string_.end()){
+	  g=(atoi(c->c_str()));
+	  }else{
+	    LOG_STREAM(err, config) <<"Missing Green in flag_rgb:"<<id();
+	    g=0;
+	  }
+	  c++;
+	  if(c!=flag_string_.end()){
+	  b=(atoi(c->c_str()));
+	  }else{
+	    LOG_STREAM(err, config) <<"Missing Blue in flag_rgb:"<<id();
+	    b=0;
+	  }
+	  flag_rgb_.push_back(Uint32 (0xFF000000 | (r << 16) | (g << 8) | b) );
+        }
 }
 
 unit_type::~unit_type()
@@ -1166,6 +1222,12 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 		v->second->add_advancement(to_unit,xp);
 	}
 }
+
+const std::vector<Uint32>& unit_type::flag_rgb() const
+{
+        return flag_rgb_;
+}
+
 
 game_data::game_data()
 {}

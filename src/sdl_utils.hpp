@@ -21,6 +21,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
+#include <vector>
 
 //older versions of SDL don't define the
 //mouse wheel macros, so define them ourselves
@@ -104,6 +105,8 @@ surface scale_surface(surface const &surf, int w, int h);
 surface scale_surface_blended(surface const &surf, int w, int h);
 surface adjust_surface_colour(surface const &surf, int r, int g, int b);
 surface greyscale_image(surface const &surf);
+surface recolor_image(surface surf, Uint32 new_rgb, std::vector<Uint32> old_rgb);
+
 surface brighten_image(surface const &surf, fixed_t amount);
 surface get_surface_portion(surface const &surf, SDL_Rect &rect);
 surface adjust_surface_alpha(surface const &surf, fixed_t amount);

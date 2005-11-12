@@ -111,10 +111,14 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		adjust_map_position(disp, xsrc, ysrc, disp.hex_size(), disp.hex_size());
 		while(animation_time < 0) {
 			const std::string* unit_image = &teleport_animation.get_current_frame(unit_animation::UNIT_FRAME).image;
+			image::locator unit_loc;
 			if (unit_image->empty()) {
-				unit_image = &u.type().image();
+			  unit_loc = u.image_loc();
+			}else{
+			  unit_loc = image::locator(*unit_image,u.team_rgb(),u.type().flag_rgb());
 			}
-			surface image(image::get_image(*unit_image));
+			
+			surface image(image::get_image(unit_loc));
 			if (!face_left) {
 				image.assign(image::reverse_image(image));
 			}
@@ -133,7 +137,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	for(int i = 0; i < nsteps; ++i) {
 		events::pump();
 
-		surface image(image::get_image(u.type().image_moving()));
+		surface image(image::get_image( image::locator(u.type().image_moving(),u.team_rgb(),u.type().flag_rgb()) ));
 		if(!face_left) {
 			image.assign(image::reverse_image(image));
 		}
@@ -206,10 +210,15 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		adjust_map_position(disp, xdst, ydst, disp.hex_size(), disp.hex_size());
 		while(animation_time < end_at) {
 			const std::string* unit_image = &teleport_animation.get_current_frame(unit_animation::UNIT_FRAME).image;
+
+			image::locator unit_loc;
 			if (unit_image->empty()) {
-				unit_image = &u.type().image();
+			  unit_loc = u.image_loc();
+			}else{
+			  unit_loc = image::locator(*unit_image,u.team_rgb(),u.type().flag_rgb());
 			}
-			surface image(image::get_image(*unit_image));
+
+			surface image(image::get_image(unit_loc));
 			if (!face_left) {
 				image.assign(image::reverse_image(image));
 			}
@@ -305,7 +314,7 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u, const 
 
 			const unit_animation::frame& frame = anim.get_current_frame();
 
-			const surface surf(image::get_image(frame.image));
+			const surface surf(image::get_image(image::locator(frame.image,u.team_rgb(), u.type().flag_rgb())));
 			if(surf.get() != NULL) {
 				unit_image = surf;
 			}
@@ -469,7 +478,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		}
 
 		if(!hide) {
-			const surface image((unit_image == NULL) ? surface(NULL) : image::get_image(*unit_image));
+
+			const surface image((unit_image == NULL) ? surface(NULL) : image::get_image(image::locator(*unit_image,att->second.team_rgb(),att->second.type().flag_rgb())));
 			disp.draw_tile(a.x,a.y,image);
 		}
 
@@ -540,7 +550,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 					missile_image = &default_diag_missile;
 			}
 
-			surface img(image::get_image(*missile_image));
+			surface img(image::get_image(image::locator(*missile_image)));
 
 			if(hflip) {
 				img.assign(image::reverse_image(img));
@@ -803,7 +813,10 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		const unit_animation::frame& unit_frame = attack_anim.get_current_frame(unit_animation::UNIT_FRAME);
 		int new_halo_x = unit_frame.halo_x;
 		int new_halo_y = unit_frame.halo_y;
-		const std::string& unit_image = unit_frame.image.empty() ? attacker.image() : unit_frame.image;
+
+		const std::string& unit_image_name = unit_frame.image.empty() ? attacker.image() : unit_frame.image;
+
+		image::locator unit_image(unit_image_name,attacker.team_rgb(),attacker.type().flag_rgb());
 
 		if(!attacker.facing_left()) {
 			xoffset *= -1;
