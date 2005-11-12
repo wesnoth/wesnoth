@@ -487,7 +487,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const size_t team_index = side_num-1;
 		if(team_index < teams->size()) {
 			char value[50];
-			sprintf(value,"%d",(*teams)[team_index].gold());
+			snprintf(value,sizeof(value),"%d",(*teams)[team_index].gold());
 			wassert(state_of_game != NULL);
 			state_of_game->set_variable(var_name,value);
 		}
@@ -676,7 +676,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			int value = int(atof(var.c_str()));
 			value += atoi(add.c_str());
 			char buf[50];
-			sprintf(buf,"%d",value);
+			snprintf(buf,sizeof(buf),"%d",value);
 			var = buf;
 		}
 
@@ -685,7 +685,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			int value = int(atof(var.c_str()));
 			value = int(double(value) * atof(multiply.c_str()));
 			char buf[50];
-			sprintf(buf,"%d",value);
+			snprintf(buf,sizeof(buf),"%d",value);
 			var = buf;
 		}
 
@@ -1727,16 +1727,16 @@ bool pump()
 		//set the variables for the event
 		if(i.first != i.second && state_of_game != NULL) {
 			char buf[50];
-			sprintf(buf,"%d",ev.loc1.x+1);
+			snprintf(buf,sizeof(buf),"%d",ev.loc1.x+1);
 			state_of_game->variables["x1"] = buf;
 
-			sprintf(buf,"%d",ev.loc1.y+1);
+			snprintf(buf,sizeof(buf),"%d",ev.loc1.y+1);
 			state_of_game->variables["y1"] = buf;
 
-			sprintf(buf,"%d",ev.loc2.x+1);
+			snprintf(buf,sizeof(buf),"%d",ev.loc2.x+1);
 			state_of_game->variables["x2"] = buf;
 
-			sprintf(buf,"%d",ev.loc2.y+1);
+			snprintf(buf,sizeof(buf),"%d",ev.loc2.y+1);
 			state_of_game->variables["y2"] = buf;
 		}
 

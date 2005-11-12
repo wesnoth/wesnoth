@@ -234,7 +234,7 @@ void team::team_info::write(config& cfg) const
 	cfg["objectives_changed"] = objectives_changed ? "yes" : "no";
 
 	char buf[50];
-	sprintf(buf,"%d",income_per_village);
+	snprintf(buf,sizeof(buf),"%d",income_per_village);
 	cfg["village_gold"] = buf;
 
 	std::stringstream enemies_str;
@@ -255,13 +255,13 @@ void team::team_info::write(config& cfg) const
 	}
 	cfg["persistent"] = persistent ? "1" : "0";
 
-	sprintf(buf,"%d",villages_per_scout);
+	snprintf(buf,sizeof(buf),"%d",villages_per_scout);
 	cfg["villages_per_scout"] = buf;
 
-	sprintf(buf,"%f",leader_value);
+	snprintf(buf,sizeof(buf),"%f",leader_value);
 	cfg["leader_value"] = buf;
 
-	sprintf(buf,"%f",village_value);
+	snprintf(buf,sizeof(buf),"%f",village_value);
 	cfg["village_value"] = buf;
 
 	for(std::vector<target>::const_iterator tg = targets.begin(); tg != targets.end(); ++tg) {
@@ -324,7 +324,7 @@ void team::write(config& cfg) const
 	cfg["fog"] = uses_fog() ? "yes" : "no";
 
 	char buf[50];
-	sprintf(buf,"%d",gold_);
+	snprintf(buf,sizeof(buf),"%d",gold_);
 	cfg["gold"] = buf;
 
 	//write village locations

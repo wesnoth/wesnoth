@@ -60,16 +60,16 @@ time_of_day::time_of_day(const config& cfg)
 void time_of_day::write(config& cfg) const
 {
 	char buf[50];
-	sprintf(buf,"%d",lawful_bonus);
+	snprintf(buf,sizeof(buf),"%d",lawful_bonus);
 	cfg["lawful_bonus"] = buf;
 
-	sprintf(buf,"%d",red);
+	snprintf(buf,sizeof(buf),"%d",red);
 	cfg["red"] = buf;
 
-	sprintf(buf,"%d",green);
+	snprintf(buf,sizeof(buf),"%d",green);
 	cfg["green"] = buf;
 
-	sprintf(buf,"%d",blue);
+	snprintf(buf,sizeof(buf),"%d",blue);
 	cfg["blue"] = buf;
 
 	cfg["image"] = image;
@@ -323,7 +323,7 @@ game_state read_game(const game_data& data, const config* cfg)
 void write_player(const player_info& player, config& cfg)
 {
 	char buf[50];
-	sprintf(buf,"%d",player.gold);
+	snprintf(buf,sizeof(buf),"%d",player.gold);
 
 	cfg["gold"] = buf;
 

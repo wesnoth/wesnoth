@@ -229,7 +229,7 @@ void replay::add_recruit(int value, const gamemap::location& loc)
 	config val;
 
 	char buf[100];
-	sprintf(buf,"%d",value);
+	snprintf(buf,sizeof(buf),"%d",value);
 	val["value"] = buf;
 
 	loc.write(val);
@@ -244,7 +244,7 @@ void replay::add_recall(int value, const gamemap::location& loc)
 	config val;
 
 	char buf[100];
-	sprintf(buf,"%d",value);
+	snprintf(buf,sizeof(buf),"%d",value);
 	val["value"] = buf;
 
 	loc.write(val);
@@ -259,7 +259,7 @@ void replay::add_disband(int value)
 	config val;
 
 	char buf[100];
-	sprintf(buf,"%d",value);
+	snprintf(buf,sizeof(buf),"%d",value);
 	val["value"] = buf;
 
 	cmd->add_child("disband",val);
@@ -274,7 +274,7 @@ void replay::add_attack(const gamemap::location& a, const gamemap::location& b, 
 {
 	add_pos("attack",a,b);
 	char buf[100];
-	sprintf(buf,"%d",weapon);
+	snprintf(buf,sizeof(buf),"%d",weapon);
 	current_->child("attack")->values["weapon"] = buf;
 }
 
@@ -299,7 +299,7 @@ void replay::add_value(const std::string& type, int value)
 	config val;
 
 	char buf[100];
-	sprintf(buf,"%d",value);
+	snprintf(buf,sizeof(buf),"%d",value);
 	val["value"] = buf;
 
 	cmd->add_child(type,val);

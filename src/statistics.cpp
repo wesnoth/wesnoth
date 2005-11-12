@@ -84,7 +84,7 @@ config write_str_int_map(const stats::str_int_map& m)
 	config res;
 	for(stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
 		char buf[50];
-		sprintf(buf,"%d",i->second);
+		snprintf(buf,sizeof(buf),"%d",i->second);
 		res[i->first] = buf;
 	}
 
@@ -109,7 +109,7 @@ config write_battle_result_map(const stats::battle_result_map& m)
 		new_cfg = write_str_int_map(i->second);
 
 		char buf[50];
-		sprintf(buf,"%d",i->first);
+		snprintf(buf,sizeof(buf),"%d",i->first);
 		new_cfg["_num"] = buf;
 	}
 
@@ -188,22 +188,22 @@ config stats::write() const
 	res.add_child("defends",write_battle_result_map(defends));
 
 	char buf[50];
-	sprintf(buf,"%d",recruit_cost);
+	snprintf(buf,sizeof(buf),"%d",recruit_cost);
 	res["recruit_cost"] = buf;
 
-	sprintf(buf,"%d",recall_cost);
+	snprintf(buf,sizeof(buf),"%d",recall_cost);
 	res["recall_cost"] = buf;
 
-	sprintf(buf,"%d",damage_inflicted);
+	snprintf(buf,sizeof(buf),"%d",damage_inflicted);
 	res["damage_inflicted"] = buf;
 
-	sprintf(buf,"%d",damage_taken);
+	snprintf(buf,sizeof(buf),"%d",damage_taken);
 	res["damage_taken"] = buf;
 
-	sprintf(buf,"%d",expected_damage_inflicted);
+	snprintf(buf,sizeof(buf),"%d",expected_damage_inflicted);
 	res["expected_damage_inflicted"] = buf;
 
-	sprintf(buf,"%d",expected_damage_taken);
+	snprintf(buf,sizeof(buf),"%d",expected_damage_taken);
 	res["expected_damage_taken"] = buf;
 
 	return res;
