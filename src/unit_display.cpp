@@ -389,7 +389,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 	const bool hits = damage > 0;
 	const int begin_at = attack_anim.get_first_frame_time(unit_animation::UNIT_FRAME);
-	const int end_at   = maximum((damage+1)*time_resolution+missile_impact,
+	// more damage shown for longer, but 1s at most for this factor
+	const int end_at   = maximum(minimum<int>((damage+1)*time_resolution+missile_impact,1000),
 				       maximum(attack_anim.get_last_frame_time(),real_last_missile));
 
 	const double xsrc = disp.get_location_x(a);
@@ -715,7 +716,8 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	}
 
 	const int begin_at = minimum<int>(-200,attack_anim.get_first_frame_time());
-	const int end_at = maximum<int>((damage+1)*time_resolution,
+	// more damage shown for longer, but 1s at most for this factor
+	const int end_at = maximum<int>(minimum<int>((damage+1)*time_resolution,1000),
 	                                       maximum<int>(200,attack_anim.get_last_frame_time()));
 
 	const double xsrc = disp.get_location_x(a);

@@ -25,6 +25,7 @@ SVN trunk (1.1.x):
      * allow pausing during replay
      * SECURITY: check safety of campaign download names: if any unsafe
        names are found, install is aborted before old version is removed
+     * hitpoint update delays are now capped at 1 second (#4070)
  * graphics
    * new title screen and logo
    * changed the storm trident attack icon from fireball to lightingbolt
