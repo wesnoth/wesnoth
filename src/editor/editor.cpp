@@ -1329,213 +1329,102 @@ bool map_editor::is_left_button_func_menu(const theme::menu &menu) const {
 	}
 	return false;
 }
-/*
-void map_editor::handle_key_up(const SDL_KeyboardEvent&)
-{
 
-}
-
-void map_editor::handle_key_down(const SDL_KeyboardEvent&)
-{
-
-}
-
-void map_editor::handle_mouse_event(const SDL_MouseButtonEvent&)
-{
-
-}
-
-void map_editor::handle_mouse_motion(const SDL_MouseMotionEvent&)
-{
-
-}
-*/
 void map_editor::main_loop() {
 	unsigned int last_brush_size = brush_.selected_brush_size();
-	
-	const int scroll_speed = preferences::scroll_speed();
-	bool l_button_down = 0;
-	bool r_button_down = 0;
-	bool m_button_down = 0;
-	int mousex, mousey;
-
-	gamemap::location cur_hex = gui_.hex_clicked_on(mousex, mousey);
-	
-	
 	while (abort_ == DONT_ABORT) {
-		
-		//const int scroll_speed = preferences::scroll_speed();
-		//const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-		//const bool l_button_down = mouse_flags & SDL_BUTTON_LMASK;
-		//const bool r_button_down = mouse_flags & SDL_BUTTON_RMASK;
-		//const bool m_button_down = mouse_flags & SDL_BUTTON_MMASK;
+		int mousex, mousey;
+		const int scroll_speed = preferences::scroll_speed();
+		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+		const bool l_button_down = mouse_flags & SDL_BUTTON_LMASK;
+		const bool r_button_down = mouse_flags & SDL_BUTTON_RMASK;
+		const bool m_button_down = mouse_flags & SDL_BUTTON_MMASK;
 
-		// Wait for an event to happen
-		SDL_Event event;
-		if(SDL_WaitEvent(&event))
-		{
-			// Check which event was thrown
-			switch(event.type)
-			{
-				case SDL_MOUSEMOTION:
-				{
-					mousex = event.motion.x;
-					mousey = event.motion.y;
-
-					// Check which hex is pressed
-					const gamemap::location cur_hex = gui_.hex_clicked_on(mousex,mousey);
-					if (cur_hex != selected_hex_ || last_brush_size != brush_.selected_brush_size()
-						|| highlighted_locs_cleared_) {
-						// The mouse have moved or the brush size has changed,
-						// adjust the hexes the mouse is over.
-						highlighted_locs_cleared_ = false;
-						update_mouse_over_hexes(cur_hex);
-						last_brush_size = brush_.selected_brush_size();
-					}
-
-					// Scroll the editor
-					if(mousey == 0) {
-						gui_.scroll(0,-scroll_speed);
-					}
-					else if(mousey == gui_.y()-1) {
-						gui_.scroll(0,scroll_speed);
-					}
-					if(mousex == 0) {
-						gui_.scroll(-scroll_speed,0);
-					}
-					else if(mousex == gui_.x()-1) {
-						gui_.scroll(scroll_speed,0);
-					}
-
-					break;
-				}
-
-				case SDL_MOUSEBUTTONDOWN: case SDL_MOUSEBUTTONUP:
-				{
-					// Check which button is up / down
-		                	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-				        l_button_down = mouse_flags & SDL_BUTTON_LMASK;
-					r_button_down = mouse_flags & SDL_BUTTON_RMASK;
-					m_button_down = mouse_flags & SDL_BUTTON_MMASK;
-
-					// Check if the menu is pressed (should be handled with events
-					const theme::menu* const m = gui_.menu_pressed();
-					if (m != NULL) {
-						const SDL_Rect& menu_loc = m->location(gui_.screen_area());
-						const int x = menu_loc.x + 1;
-						const int y = menu_loc.y + menu_loc.h + 1;
-						show_menu(m->items(), x, y, false);
-					}
-
-					// Handle mouse buttons
-					if (l_button_down) {
-						left_button_down(mousex, mousey);
-					}
-					else {
-						if (l_button_held_func_ == MOVE_SELECTION) {
-							// When it is detected that the mouse is no longer down
-							// and we are in the progress of moving a selection,
-							// perform the movement.
-							perform_selection_move();
-						}
-					}
-					if (r_button_down) {
-						right_button_down(mousex, mousey);
-					}
-					if (m_button_down) {
-						middle_button_down(mousex, mousey);
-					}
-
-					// When the map has changed, wait until the left mouse button is
-					// not held down and then update the minimap and the starting
-					// position labels.
-					if (map_dirty_) {
-						if (!l_button_down && !r_button_down) {
-							map_dirty_ = false;
-							gui_.rebuild_all();
-							gui_.invalidate_all();
-							recalculate_starting_pos_labels();
-							gui_.recalculate_minimap();
-						}
-					}
-
-					break;
-				}
-				case SDL_KEYDOWN:
-				{
-					switch(event.key.keysym.sym)
-					{
-						case SDLK_UP: {
-							gui_.scroll(0, -scroll_speed);
-							break;
-						}
-						case SDLK_DOWN: {
-							gui_.scroll(0, scroll_speed);
-							break;
-						}
-						case SDLK_LEFT: {
-							gui_.scroll(-scroll_speed, 0);
-							break;
-						}
-						case SDLK_RIGHT: {
-							gui_.scroll(scroll_speed, 0);
-							break;
-						}
-					}
-
-				}
-			}
-		
-
-			//const theme::menu* const m = gui_.menu_pressed();
-			//if (m != NULL) {
-			//	const SDL_Rect& menu_loc = m->location(gui_.screen_area());
-			//	const int x = menu_loc.x + 1;
-			//	const int y = menu_loc.y + menu_loc.h + 1;
-			//	show_menu(m->items(), x, y, false);
-			//}
-
-			/*if(key_[SDLK_UP] || mousey == 0) {
-				gui_.scroll(0,-scroll_speed);
-			}
-			if(key_[SDLK_DOWN] || mousey == gui_.y()-1) {
-				gui_.scroll(0,scroll_speed);
-			}
-			if(key_[SDLK_LEFT] || mousex == 0) {
-				gui_.scroll(-scroll_speed,0);
-			}
-			if(key_[SDLK_RIGHT] || mousex == gui_.x()-1) {
-				gui_.scroll(scroll_speed,0);
-			}*/
-
-
-
-			gui_.draw(false);
-			events::raise_draw_event();
-
-
-			if (l_button_palette_dirty_) {
-				update_l_button_palette();
-				l_button_palette_dirty_ = false;
-			}
-			gui_.update_display();
-			//SDL_Delay(sdl_delay);
-			events::pump();
-			if (everything_dirty_) {
-				redraw_everything();
-				everything_dirty_ = false;
-			}
-			if (abort_ == ABORT_NORMALLY) {
-				if (!confirm_exit_and_save()) {
-					set_abort(DONT_ABORT);
-				}
-			}
-			mouse_moved_ = false;
+		const gamemap::location cur_hex = gui_.hex_clicked_on(mousex,mousey);
+		if (cur_hex != selected_hex_) {
+			mouse_moved_ = true;
 		}
+		if (mouse_moved_ || last_brush_size != brush_.selected_brush_size()
+			|| highlighted_locs_cleared_) {
+			// The mouse have moved or the brush size has changed,
+			// adjust the hexes the mouse is over.
+			highlighted_locs_cleared_ = false;
+			update_mouse_over_hexes(cur_hex);
+			last_brush_size = brush_.selected_brush_size();
+		}
+		const theme::menu* const m = gui_.menu_pressed();
+		if (m != NULL) {
+			const SDL_Rect& menu_loc = m->location(gui_.screen_area());
+			const int x = menu_loc.x + 1;
+			const int y = menu_loc.y + menu_loc.h + 1;
+			show_menu(m->items(), x, y, false);
+		}
+
+		if(key_[SDLK_UP] || mousey == 0) {
+			gui_.scroll(0,-scroll_speed);
+		}
+		if(key_[SDLK_DOWN] || mousey == gui_.y()-1) {
+			gui_.scroll(0,scroll_speed);
+		}
+		if(key_[SDLK_LEFT] || mousex == 0) {
+			gui_.scroll(-scroll_speed,0);
+		}
+		if(key_[SDLK_RIGHT] || mousex == gui_.x()-1) {
+			gui_.scroll(scroll_speed,0);
+		}
+
+		if (l_button_down) {
+			left_button_down(mousex, mousey);
+		}
+		else {
+			if (l_button_held_func_ == MOVE_SELECTION) {
+				// When it is detected that the mouse is no longer down
+				// and we are in the progress of moving a selection,
+				// perform the movement.
+				perform_selection_move();
+			}
+		}
+		if (r_button_down) {
+			right_button_down(mousex, mousey);
+		}
+		if (m_button_down) {
+			middle_button_down(mousex, mousey);
+		}
+
+		gui_.draw(false);
+		events::raise_draw_event();
+
+		// When the map has changed, wait until the left mouse button is
+		// not held down and then update the minimap and the starting
+		// position labels.
+		if (map_dirty_) {
+			if (!l_button_down && !r_button_down) {
+				map_dirty_ = false;
+				gui_.rebuild_all();
+				gui_.invalidate_all();
+				recalculate_starting_pos_labels();
+				gui_.recalculate_minimap();
+			}
+		}
+		if (l_button_palette_dirty_) {
+			update_l_button_palette();
+			l_button_palette_dirty_ = false;
+		}
+		gui_.update_display();
+		SDL_Delay(sdl_delay);
+		events::pump();
+		if (everything_dirty_) {
+			redraw_everything();
+			everything_dirty_ = false;
+		}
+		if (abort_ == ABORT_NORMALLY) {
+			if (!confirm_exit_and_save()) {
+				set_abort(DONT_ABORT);
+			}
+		}
+		mouse_moved_ = false;
 	}
 }
-
-
 }
 
 

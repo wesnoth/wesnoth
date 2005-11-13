@@ -12,6 +12,8 @@
 #ifndef EDITOR_H_INCLUDED
 #define EDITOR_H_INCLUDED
 
+#include "SDL.h"
+
 #include "editor_palettes.hpp"
 #include "editor_layout.hpp"
 #include "editor_undo.hpp"
@@ -23,6 +25,8 @@
 #include "../preferences_display.hpp"
 #include "../theme.hpp"
 #include "../tooltips.hpp"
+//#include "gui/key_listener.hpp"
+//#include "gui/mouse_listener.hpp"
 
 #include <map>
 #include <queue>
