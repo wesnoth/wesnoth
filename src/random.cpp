@@ -32,9 +32,9 @@ int rng::get_random()
 
 	const config::child_list random(random_->get_children("random"));
 	if (random_child_ >= random.size()) {
-		random_child_ = random.size();
 		int res = rand() & 0x7FFFFFFF;
 		(random_->add_child("random"))["value"] = lexical_cast<std::string>(res);
+		random_child_ = random.size();
 		return res;
 	} else {
 		return lexical_cast_default<int>((*random[random_child_++])["value"], 0);
@@ -46,7 +46,7 @@ const config* rng::get_random_results()
 	wassert(random_ != NULL);
 
 	const config::child_list random(random_->get_children("random"));
-	if (random_child_ < 0 ||random_child_ > random.size()) return NULL;
+	if (random_child_ <= 0 ||random_child_ > random.size()) return NULL;
 	return random[random_child_-1]->child("results");
 }
 
@@ -55,7 +55,7 @@ void rng::set_random_results(const config& cfg)
 	wassert(random_ != NULL);
 
 	const config::child_list random(random_->get_children("random"));
-	if (random_child_ < 0 || random_child_ > random.size()) return;
+	if (random_child_ <= 0 || random_child_ > random.size()) return;
 	random[random_child_-1]->clear_children("results");
 	random[random_child_-1]->add_child("results",cfg);
 }

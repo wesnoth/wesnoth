@@ -29,7 +29,6 @@ public:
 	const config* get_random_results();
 	void set_random_results(const config& cfg);
 
-	void add_random_separator();
 protected:
 	config* random();
 	void set_random(config*);
