@@ -32,7 +32,7 @@ public:
 	void add_random_separator();
 protected:
 	config* random();
-	config* set_random(config*);
+	void set_random(config*);
 
 private:
 	config* random_;

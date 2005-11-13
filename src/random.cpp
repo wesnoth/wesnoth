@@ -46,8 +46,8 @@ const config* rng::get_random_results()
 	wassert(random_ != NULL);
 
 	const config::child_list random(random_->get_children("random"));
-	if (random_child_ >= random.size()) return NULL;
-	return random[random_child_]->child("results");
+	if (random_child_ < 0 ||random_child_ > random.size()) return NULL;
+	return random[random_child_-1]->child("results");
 }
 
 void rng::set_random_results(const config& cfg)
@@ -55,9 +55,9 @@ void rng::set_random_results(const config& cfg)
 	wassert(random_ != NULL);
 
 	const config::child_list random(random_->get_children("random"));
-	if (random_child_ >= random.size()) return;
-	random[random_child_]->clear_children("results");
-	random[random_child_]->add_child("results",cfg);
+	if (random_child_ < 0 || random_child_ > random.size()) return;
+	random[random_child_-1]->clear_children("results");
+	random[random_child_-1]->add_child("results",cfg);
 }
 
 config* rng::random()
@@ -65,11 +65,11 @@ config* rng::random()
 	return random_;
 }
 
-config* rng::set_random(config* random)
+void rng::set_random(config* random)
 {
-	config* old = random_;
 	random_ = random;
-	return old;
+	random_child_ = 0;
+	return;
 }
 
 namespace {
