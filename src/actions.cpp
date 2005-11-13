@@ -714,7 +714,6 @@ void attack(display& gui, const gamemap& map,
 		LOG_NG << "start of attack loop...\n";
 
 		if(stats.nattacks > 0 && stats.defender_strikes_first == false && slow_affects_attacker == false) {
-			add_random_separator();
 			const int ran_num = get_random();
 			bool hits = (ran_num%100) < stats.chance_to_hit_defender;
 
@@ -887,7 +886,6 @@ void attack(display& gui, const gamemap& map,
 
 		if(stats.ndefends > 0 && slow_affects_defender == false) {
 			LOG_NG << "doing defender attack...\n";
-			add_random_separator();
 
 			const int ran_num = get_random();
 			bool hits = (ran_num%100) < stats.chance_to_hit_attacker;

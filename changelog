@@ -127,6 +127,8 @@ SVN trunk (1.1.x):
  * documentation: switch doxygen templates from CVS to SVN, Savannah to Gna!
  * added a --with-preferences-dir configure option to allow using a directory
    other than .wesnoth, for coexistence of multiple versions on same machine
+ * changed get_random to not nest [random] tags to avoid problems with deeply
+   nested tags and compressed save files.
  * various bug fixes and code cleanups
 
 Version 1.0rc1:

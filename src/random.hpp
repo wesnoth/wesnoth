@@ -19,11 +19,6 @@ class config;
 int get_random();
 const config* get_random_results();
 void set_random_results(const config& cfg);
-/** Ensures that the next "random results" operations will not happen on the
- * current random context, eventually adding a dummy random context if
- * necessary.
- */
-void add_random_separator();
 
 class rng
 {
@@ -41,8 +36,7 @@ protected:
 
 private:
 	config* random_;
-	bool separator_, started_;
-	std::string remaining_values_;
+	size_t random_child_;
 };
 
 struct set_random_generator {

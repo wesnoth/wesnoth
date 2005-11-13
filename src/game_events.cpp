@@ -241,10 +241,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	log_scope2(engine, "handle_event_command");
 	LOG_NG << "handling command: '" << cmd << "'\n";
 
-	//Ensures the context for the synchronization [result] of this event is
-	//not the same one as the previous event's.
-	add_random_separator();
-
 	bool rval = true;
 	//sub commands that need to be handled in a guaranteed ordering
 	if(cmd == "command") {
