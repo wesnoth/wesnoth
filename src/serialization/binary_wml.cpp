@@ -53,7 +53,7 @@ static const unsigned int
 	compress_first_word = 4, compress_end_words = 256;
 static const size_t compress_max_words = compress_end_words - compress_first_word;
 static const size_t max_schema_item_length = 20;
-static const int max_recursion_levels = 100;
+static const int max_recursion_levels = 1000;
 
 static void compress_output_literal_word(std::ostream &out, std::string const &word)
 {

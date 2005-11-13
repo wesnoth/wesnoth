@@ -36,7 +36,7 @@
 #define WRN_CF LOG_STREAM(warn, config)
 #define LOG_CF LOG_STREAM(info, config)
 
-static const size_t max_recursion_levels = 100;
+static const size_t max_recursion_levels = 1000;
 
 namespace {
 
