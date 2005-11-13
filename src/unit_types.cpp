@@ -524,7 +524,7 @@ unit_type::unit_type(const unit_type& o)
       alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
-      teleport_animations_(o.teleport_animations_), 
+      teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_), 
       death_animations_(o.death_animations_), flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
@@ -655,6 +655,10 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	const config::child_list& teleports = cfg_.get_children("teleport_anim");
 	for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
 		teleport_animations_.push_back(unit_animation(**t));
+	}
+	const config::child_list& extra_anims = cfg_.get_children("extra_anim");
+	for(config::child_list::const_iterator t = extra_anims.begin(); t != extra_anims.end(); ++t) {
+		extra_animations_.insert(std::pair<std::string,unit_animation>((**t)["flag"],unit_animation(**t)));
 	}
 
 	const config::child_list& deaths = cfg_.get_children("death");
@@ -1167,6 +1171,17 @@ const unit_animation* unit_type::teleport_animation( ) const
 {
 	if (teleport_animations_.empty()) return NULL;
 	return &teleport_animations_[rand() % teleport_animations_.size()];
+}
+
+const unit_animation* unit_type::extra_animation(std::string flag ) const
+{
+	if (extra_animations_.count(flag) == 0) return NULL;
+	std::multimap<std::string,unit_animation>::const_iterator index = extra_animations_.lower_bound(flag);
+	int i = (rand()% extra_animations_.count(flag));
+	for(int j = 0 ; j < i ; j++) {
+		index++; // damn iterators
+	}
+	return &index->second;
 }
 
 const unit_animation* unit_type::die_animation(const attack_type* attack) const

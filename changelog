@@ -126,6 +126,8 @@ SVN trunk (1.1.x):
    * tighten up checks on leaders and units placed on map at start of scenario
    * add a backup save_id to use if both save_id and description are empty
    * fix duplicate key values being concatenated: just replace with last value
+   * units can now have a [extra_anim] tag, and a [animate_unit] event to
+     trigger it
  * documentation: switch doxygen templates from CVS to SVN, Savannah to Gna!
  * added a --with-preferences-dir configure option to allow using a directory
    other than .wesnoth, for coexistence of multiple versions on same machine

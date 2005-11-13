@@ -258,6 +258,7 @@ public:
 
 	const unit_animation* defend_animation(bool hits, attack_type::RANGE range) const;
 	const unit_animation* teleport_animation() const;
+	const unit_animation* extra_animation(std::string flag) const;
 	const unit_animation* die_animation(const attack_type* attack) const;
 
 private:
@@ -311,6 +312,8 @@ private:
 	std::vector<defensive_animation> defensive_animations_;
 
 	std::vector<unit_animation> teleport_animations_;
+
+	std::multimap<std::string,unit_animation> extra_animations_;
 
 	struct death_animation
 	{

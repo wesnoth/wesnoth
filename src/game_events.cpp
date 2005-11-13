@@ -1445,6 +1445,57 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		screen->draw(true,true);
 	}
 
+	else if(cmd == "animate_unit") {
+
+		unit_map::iterator u = units->find(event_info.loc1);
+
+		//search for a valid unit filter, and if we have one, look for the matching unit
+		const vconfig filter = cfg.child("filter");
+		if(!filter.null()) {
+			for(u = units->begin(); u != units->end(); ++u){
+				if(game_events::unit_matches_filter(u, filter))
+					break;
+			}
+		}
+
+		//we have found a unit that matches the filter
+		if(u != units->end() && ! screen->fogged(u->first.x,u->first.y)) {
+			screen->highlight_hex(u->first);
+			screen->scroll_to_tile(u->first.x,u->first.y);
+			LOG_NG << "entre dans le code\n";
+
+			surface unit_image(NULL);
+			const unit_animation* const anim_ptr = u->second.type().extra_animation(cfg["flag"]);
+			if(anim_ptr != NULL) {
+				LOG_NG << "pointeur ok\n";
+				unit_animation anim(*anim_ptr);
+
+				anim.start_animation(anim.get_first_frame_time(),unit_animation::UNIT_FRAME,screen->turbo() ? 5:1);
+				anim.update_current_frames();
+
+				while(!anim.animation_finished()) {
+
+					const unit_animation::frame& frame = anim.get_current_frame();
+
+					const surface surf(image::get_image(frame.image));
+					if(surf.get() != NULL) {
+						unit_image = surf;
+					}
+					screen->draw_tile(u->first.x,u->first.y,unit_image);
+					screen->update_display();
+
+					SDL_Delay(10);
+
+					anim.update_current_frames();
+				}
+				unit_image = image::get_image(u->second.image());
+				screen->draw_tile(u->first.x,u->first.y,unit_image);
+				screen->update_display();
+			}
+		}
+	}
+
+	
 	LOG_NG << "done handling command...\n";
 
 	return rval;
