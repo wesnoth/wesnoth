@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-11-12 21:17+0100\n"
-"PO-Revision-Date: 2005-11-05 08:18+0200\n"
+"PO-Revision-Date: 2005-11-13 17:19+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -355,7 +355,6 @@ msgid "Movement"
 msgstr "Movement"
 
 #: data/help.cfg:126
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -377,7 +376,11 @@ msgstr ""
 "the defence rating the unit would have if you moved it to that hex. Mousing "
 "over a dull hex will also show the number of turns required to reach it, and "
 "clicking will cause the unit to move towards it by the fastest route over "
-"this and subsequent turns."
+"this and subsequent turns. If you don't use up all of a unit's movement when "
+"you first move a unit, you may move it again. This is useful when having two "
+"units switch places. Attacking with a unit will use up its movement. Ending "
+"a move in a village you don't already own will also use up a unit's "
+"movement, but will still allow it to attack."
 
 #: data/help.cfg:128
 msgid ""
@@ -441,7 +444,7 @@ msgstr ""
 
 #: data/help.cfg:137
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "Shroud and Fog of War"
 
 #: data/help.cfg:138
 msgid ""
@@ -455,6 +458,15 @@ msgid ""
 "unit will clear of the locations within one turn's move (ignoring ZOC and "
 "enemy units) and locations adjacent to those locations."
 msgstr ""
+"In some scenarios, parts of the map will be hidden from you. There "
+"are two mechanisms that can be used separately or together. The Shroud "
+"hides both the terrain and any units at a location. However, once it is "
+"cleared, you can always see that location. The Fog of War only hides units "
+"and ownership of villages (other than by you or your allies). The Fog "
+"of War is cleared temporarily when you have units nearby, but returns when "
+"they leave. Both the Shroud and the Fog of War are cleared by units. Each "
+"unit clears locations within one turn's move (ignoring ZOC and "
+"enemy units) and locations adjacent to those locations."
 
 #: data/help.cfg:143
 msgid "Combat"
@@ -1932,9 +1944,8 @@ msgstr ""
 "Baldras."
 
 #: data/scenarios/multiplayer/2p_Across_the_River.cfg:3
-#, fuzzy
 msgid "2p - Across the River"
-msgstr "2p - Across The River"
+msgstr "2p - Across the River"
 
 #: data/scenarios/multiplayer/2p_Across_the_River.cfg:5
 msgid ""
@@ -2444,7 +2455,7 @@ msgstr "Keep"
 
 #: data/terrain.cfg:432
 msgid "Chasm"
-msgstr ""
+msgstr "Chasm"
 
 #: data/terrain.cfg:439
 msgid "Ruin"
@@ -2507,33 +2518,28 @@ msgid "statuspanel^movement"
 msgstr "movement"
 
 #: data/themes/default.cfg:443
-#, fuzzy
 msgid "Replay"
-msgstr "replay"
+msgstr "Replay"
 
 #: data/themes/default.cfg:453
-#, fuzzy
 msgid "Play"
-msgstr "Players:"
+msgstr "Play"
 
 #: data/themes/default.cfg:463
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: data/themes/default.cfg:473
-#, fuzzy
 msgid "Reset"
-msgstr "Desert"
+msgstr "Reset"
 
 #: data/themes/default.cfg:483
-#, fuzzy
 msgid "Next Turn"
-msgstr "Turn"
+msgstr "Next Turn"
 
 #: data/themes/default.cfg:493
-#, fuzzy
 msgid "Next Side"
-msgstr "Next"
+msgstr "Next Side"
 
 #: data/themes/default.cfg:606
 msgid "Act."
@@ -2796,15 +2802,14 @@ msgstr ""
 "needing to attack anything themselves."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also removes "
 "their zone of control, allowing your wounded units to escape or helping you "
 "reach fleeing ennemy units."
 msgstr ""
-"The 'slow' attack ability makes enemy units move slower, but it also gives "
-"them one less attack than they would normally have. It is thus very "
-"effective against units that have a few powerful attacks."
+"The 'slow' attack ability makes enemy units move slower, but it also removes "
+"their zone of control, allowing your wounded units to escape or helping you "
+"reach fleeing enemy units."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -3087,7 +3092,6 @@ msgid "regenerates"
 msgstr "regenerates"
 
 #: data/translations/english.cfg:76
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
@@ -3096,7 +3100,8 @@ msgid ""
 msgstr ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
-"Zones of Control."
+"Zones of Control. (Exception: if you stop in an enemy ZOC your remaining "
+"movement will be set to 0 even if you are a skirmisher.)"
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:18
 #: data/units/Assassin.cfg:113 data/units/Duelist.cfg:16
@@ -3146,9 +3151,11 @@ msgid ""
 "is not allied with the target and that is not incapacitated (e.g. turned to "
 "stone)."
 msgstr ""
+"Backstab:\n"
+"This attack deals double damage if there is a unit on the opposite side of"
+"the target that is neither an enemy nor incapacitated (eg. turned to stone)."
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -3156,7 +3163,7 @@ msgid ""
 msgstr ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain."
+"until one of the combatants is slain (or 30 rounds of attacks have occurred)."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -3169,7 +3176,6 @@ msgstr ""
 "take double damage from the target's counterattack."
 
 #: data/translations/english.cfg:102
-#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -3177,7 +3183,7 @@ msgid ""
 msgstr ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
-"amount of damage it deals."
+"amount of damage it deals (rounded down)."
 
 #: data/translations/english.cfg:105
 msgid ""
@@ -3233,6 +3239,11 @@ msgid ""
 "move at half normal speed, do not emit a zone of control, and always lose "
 "initiative in fights."
 msgstr ""
+"Slow:\n"
+"This attack slows the target. Slow reorders the attacks allowing the "
+"attacker to strike one more time until the defender can fight. Slowed units "
+"move at half normal speed, do not emit a zone of control, and always lose "
+"initiative in fights."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -8944,9 +8955,8 @@ msgid "+Polish Translation"
 msgstr "+Polish Translation"
 
 #: src/about.cpp:293
-#, fuzzy
 msgid "+Portuguese Translation"
-msgstr "+Portuguese (Brazil) Translation"
+msgstr "+Portuguese Translation"
 
 #: src/about.cpp:296
 msgid "+Portuguese (Brazil) Translation"
@@ -10436,13 +10446,12 @@ msgid "invisible: "
 msgstr "invisible: "
 
 #: src/reports.cpp:139
-#, fuzzy
 msgid ""
 "This unit has been slowed. It emits no zone of control, moves at half speed "
 "and ennemies will be able to strike earlier once during a fight"
 msgstr ""
-"This unit has been slowed. It moves at half normal speed and receives one "
-"less attack than normal in combat."
+"This unit has been slowed. It emits no zone of control, moves at half speed "
+"and enemies will be able to strike earlier once during a fight."
 
 #: src/reports.cpp:139
 msgid "slowed: "
