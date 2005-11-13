@@ -686,12 +686,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			current_team.spend_gold(u_type->second.cost());
 			LOG_NW << "-> " << (current_team.gold()) << "\n";
 			fix_shroud = !replayer.is_skipping() && true;
-			FILE* fUnit;
-			fUnit = fopen( "debug.txt", "a+" );
-			std::string strDescription = new_unit.description();
-			fprintf(fUnit, "Recruit: %i, %s: %i, %i\n", state.turn(), strDescription.c_str(), new_unit.experience(), new_unit.max_experience());
-			fprintf(fUnit, "\n");
-			fclose(fUnit);
 }
 
 		else if((child = cfg->child("recall")) != NULL) {
@@ -825,15 +819,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 
 			fix_shroud = !replayer.is_skipping() && true;
-			FILE* fUnit;
-			fUnit = fopen( "debug.txt", "a+" );
-			if (u != units.end()){
-				std::string strDescription = u->second.description();
-				int iMaxExperience = u->second.max_experience();
-				fprintf(fUnit, "Move: %i, %s: von %i,%i nach %i,%i\n", state.turn(), strDescription.c_str(), src.x, src.y, dst.x, dst.y);
-			}
-			fprintf(fUnit, "\n");
-			fclose(fUnit);
 		}
 
 		else if((child = cfg->child("attack")) != NULL) {
@@ -895,23 +880,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				check_victory(units,teams);
 			}
 			fix_shroud = !replayer.is_skipping() && true;
-
-			FILE* fUnit;
-			fUnit = fopen( "debug.txt", "a+" );
-			if (u != units.end()){
-				std::string strDescription = u->second.description();
-				int iExperience = u->second.experience();
-				int iMaxExperience = u->second.max_experience();
-				fprintf(fUnit, "Attacker: %i, %s, %i, %i\n", state.turn(), strDescription.c_str(), iExperience, iMaxExperience);
-			}
-			if (tgt != units.end()){
-				std::string strDescription = tgt->second.description();
-				int iExperience = tgt->second.experience();
-				int iMaxExperience = tgt->second.max_experience();
-				fprintf(fUnit, "Defender: %i, %s, %i, %i\n", state.turn(), strDescription.c_str(), iExperience, iMaxExperience);
-			}
-			fprintf(fUnit, "\n");
-			fclose(fUnit);
 		} else {
 			ERR_NW << "unrecognized action\n";
 			if (!game_config::ignore_replay_errors) throw replay::error();
