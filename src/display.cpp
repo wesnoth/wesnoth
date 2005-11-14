@@ -99,10 +99,6 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 
 	image::set_zoom(zoom_);
 
-	gameStatusRect_.w = 0;
-	unitDescriptionRect_.w = 0;
-	unitProfileRect_.w = 0;
-
 	//inits the flag list
 	flags_.reserve(teams_.size());
 	for(size_t i = 0; i != teams_.size(); ++i) {
