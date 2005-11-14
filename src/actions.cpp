@@ -1492,7 +1492,8 @@ void advance_unit(const game_data& info,
 	}
 
 	const unit& new_unit = get_advanced_unit(info,units,loc,advance_to);
-
+	game_events::fire("advance",loc);
+	LOG_NG << "firing advance event\n";
 	statistics::advance_unit(new_unit);
 
 	preferences::encountered_units().insert(new_unit.type().id());
@@ -1500,6 +1501,8 @@ void advance_unit(const game_data& info,
 
 	units.erase(loc);
 	units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
+	game_events::fire("post_advance",loc);
+	LOG_NG << "firing post_advance event\n";
 }
 
 void check_victory(std::map<gamemap::location,unit>& units,

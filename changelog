@@ -128,6 +128,8 @@ SVN trunk (1.1.x):
    * fix duplicate key values being concatenated: just replace with last value
    * units can now have a [extra_anim] tag, and a [animate_unit] event to
      trigger it
+   * new advance and post_advance events that triggers before and after a unit
+     advancement -- patch by Noyga
  * documentation: switch doxygen templates from CVS to SVN, Savannah to Gna!
  * added a --with-preferences-dir configure option to allow using a directory
    other than .wesnoth, for coexistence of multiple versions on same machine
