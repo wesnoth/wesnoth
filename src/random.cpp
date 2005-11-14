@@ -32,9 +32,9 @@ int rng::get_random()
 
 	const config::child_list random(random_->get_children("random"));
 	if (random_child_ >= random.size()) {
+		random_child_ = random.size() + 1;
 		int res = rand() & 0x7FFFFFFF;
 		(random_->add_child("random"))["value"] = lexical_cast<std::string>(res);
-		random_child_ = random.size();
 		return res;
 	} else {
 		return lexical_cast_default<int>((*random[random_child_++])["value"], 0);
