@@ -359,7 +359,9 @@ void map_editor::right_click(const gamemap::location hex_clicked ) {
 	}
 }
 
-// Set the language...
+/**
+ * Change the language (effectively reload the editor).
+ */
 void map_editor::change_language() {
 	std::vector<language_def> langdefs = get_languages();
 
@@ -389,8 +391,18 @@ void map_editor::change_language() {
 		load_tooltips();
 	}
 
+	// Update the frame title
+	SDL_WM_SetCaption(_("Battle for Wesnoth Map Editor"), NULL);
+
 	font::load_font_config();
 	hotkey::load_descriptions();
+
+	// To reload the terrain names, we need to reload the configuration file
+	gamemap new_map(game_config_, map_.write());
+	map_ = new_map;
+
+	// Update the selected terrain strings 
+	palette_.update_selected_terrains();
 }
 
 

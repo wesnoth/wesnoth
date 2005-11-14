@@ -53,6 +53,9 @@ public:
 	void select_fg_terrain(gamemap::TERRAIN);
 	void select_bg_terrain(gamemap::TERRAIN);
 
+	// Update the selected terrains strings
+	void update_selected_terrains(void);
+
 	// Draw the palette. If force is true everything will be redrawn
 	// even though it is not invalidated.
 	void draw(bool force=false);
