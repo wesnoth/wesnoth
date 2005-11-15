@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
+#include "../global.hpp"
 
 #include "config.hpp"
 #include "filesystem.hpp"

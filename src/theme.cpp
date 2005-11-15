@@ -204,12 +204,16 @@ namespace {
 		}
 		// add all the resolutions
 		const config::child_list& res_list = top_cfg.get_children("resolution");
-		for(config::child_list::const_iterator i = res_list.begin(); i != res_list.end(); ++i) {
-			dst_cfg.add_child("resolution", (**i));
+		{
+			for(config::child_list::const_iterator i = res_list.begin(); i != res_list.end(); ++i) {
+				dst_cfg.add_child("resolution", (**i));
+			}
 		}
 		// add all the resolved resolutions
-		for(std::vector<config>::const_iterator i = res_cfgs_.begin(); i != res_cfgs_.end(); ++i) {
-			dst_cfg.add_child("resolution", (*i));
+		{
+			for(std::vector<config>::const_iterator i = res_cfgs_.begin(); i != res_cfgs_.end(); ++i) {
+				dst_cfg.add_child("resolution", (*i));
+			}
 		}
 		return;
 	}

@@ -341,8 +341,14 @@ void replay::add_rename(const std::string& name, const gamemap::location& loc)
 
 void replay::add_break()
 {
+	//Save current position
+	int current_pos = pos_;
+	//Insert break command
+	pos_ = ncommands()+1;
 	config* const cmd = add_command();
 	cmd->add_child("break");
+	//Set back to previous position to make replays work
+	pos_ = current_pos;
 }
 
 void replay::end_turn()
@@ -602,6 +608,9 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		}
 
 		else if(cfg->child("start") != NULL) {
+			//do nothing
+
+		} else if(cfg->child("break") != NULL) {
 			//do nothing
 
 		} else if((child = cfg->child("speak")) != NULL) {

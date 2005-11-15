@@ -306,7 +306,7 @@ void create::process_event()
 
 		std::auto_ptr<gamemap> map(NULL);
 		try {
-			map.reset(new gamemap(game_config(), map_data));
+			map = std::auto_ptr<gamemap>(new gamemap(game_config(), map_data));
 		} catch(gamemap::incorrect_format_exception& e) {
 			LOG_STREAM(err,general) << "map could not be loaded: " << e.msg_ << "\n";
 			tooltips::clear_tooltips(minimap_rect_);
