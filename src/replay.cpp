@@ -595,6 +595,9 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		else if(cfg->child("start") != NULL) {
 			//do nothing
 
+		} else if(cfg->child("break") != NULL) {
+			//do nothing
+
 		} else if((child = cfg->child("speak")) != NULL) {
 			const std::string& team_name = (*child)["team_name"];
 			if(team_name == "" || teams[disp.viewing_team()].team_name() == team_name) {
