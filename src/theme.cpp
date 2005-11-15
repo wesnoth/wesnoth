@@ -50,6 +50,7 @@ namespace {
 		return ref + atoi(expr.c_str());
 	}
 
+	// if x2 or y2 are not specified, use x1 and y1 values
 	_rect read_rect(const config& cfg) {
 		_rect rect = { 0, 0, 0, 0 };
 		const std::vector<std::string> items = utils::split(cfg["rect"].c_str());
@@ -61,9 +62,13 @@ namespace {
 
 		if(items.size() >= 3)
 			rect.x2 = atoi(items[2].c_str());
+		else
+			rect.x2 = rect.x1;
 
 		if(items.size() >= 4)
 			rect.y2 = atoi(items[3].c_str());
+		else
+			rect.y2 = rect.y1;
 
 		return rect;
 	}
@@ -73,8 +78,8 @@ namespace {
 		const _rect rect = read_rect(cfg);
 		sdlrect.x = rect.x1;
 		sdlrect.y = rect.y1;
-		sdlrect.w = rect.x2 - rect.x1;
-		sdlrect.h = rect.y2 - rect.y1;
+		sdlrect.w = (rect.x2 > rect.x1) ? (rect.x2 - rect.x1) : 0;
+		sdlrect.h = (rect.y2 > rect.y1) ? (rect.y2 - rect.y1) : 0;
 
 		return sdlrect;
 	}
