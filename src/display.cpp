@@ -1275,12 +1275,9 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 	}
 
 	const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : ftofxp(1.0);
+	
 	if(energy_file != NULL) {
-	  if(u.max_hitpoints()!= u.hitpoints()){
 	    draw_bar(*energy_file,xpos,ypos,(u.max_hitpoints()*2)/3,unit_energy,energy_colour,bar_alpha);
-	  }else{
-	    draw_bar(*energy_file,xpos,ypos,0,unit_energy,energy_colour,bar_alpha);
-	  }
 	}
 
 	if(u.experience() > 0 && u.can_advance()) {
