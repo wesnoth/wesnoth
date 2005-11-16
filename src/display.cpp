@@ -2289,6 +2289,7 @@ void display::clear_chat_messages()
 void display::prune_chat_messages(bool remove_all)
 {
 	const unsigned int message_ttl = remove_all ? 0 : 1200000;
+	int ticks = SDL_GetTicks();
 	if(chat_messages_.empty() == false && (chat_messages_.front().created_at+message_ttl < SDL_GetTicks() || chat_messages_.size() > max_chat_messages)) {
 		const int movement = font::get_floating_label_rect(chat_messages_.front().handle).h;
 

@@ -45,8 +45,7 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 	try{
 		const int ticks = SDL_GetTicks();
 		const int num_turns = atoi((*level)["turns"].c_str());
-		replay_controller replaycontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config);
-		replaycontroller.initialize(video, story);
+		replay_controller replaycontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video, story);
 
 		//replay event-loop
 		for (;;){
@@ -60,7 +59,8 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 }
 
 replay_controller::replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
-						   const int ticks, const int num_turns, const config& game_config) : 
+						   const int ticks, const int num_turns, const config& game_config,
+						   CVideo& video, const std::vector<config*>& story) : 
 	level_(level), gameinfo_(gameinfo), gamestate_(state_of_game), gamestate_start_(state_of_game), ticks_(ticks), 
 	status_(level, num_turns), status_start_(level, num_turns), map_(game_config, level["map_data"]),
 	game_config_(game_config), team_manager_(teams_), xp_modifier_(atoi(level["experience_modifier"].c_str())),
@@ -75,89 +75,15 @@ replay_controller::replay_controller(const config& level, const game_data& gamei
 	if(first_player_ < 0 || first_player_ >= int(teams_.size())) {
 		first_player_ = 0;
 	}
+	init(video, story);
 }
 
-std::vector<team>& replay_controller::get_teams(){
-	return teams_;
+replay_controller::~replay_controller(){
+	delete gui_;
+	delete labels_manager_;
 }
 
-unit_map replay_controller::get_units(){
-	return units_;
-}
-
-display& replay_controller::get_gui(){
-	return *gui_;
-}
-
-gamemap& replay_controller::get_map(){
-	return map_;
-}
-
-const gamestatus& replay_controller::get_status(){
-	return status_;
-}
-
-const int replay_controller::get_player_number(){
-	return player_number_;
-}
-
-const bool replay_controller::is_loading_game(){
-	return loading_game_;
-}
-
-void replay_controller::reset_replay(){
-	is_playing_ = false;
-	current_turn_ = 1;
-	recorder.start_replay();
-	units_ = *(new unit_map(units_start_));
-	status_ = *(new gamestatus(status_start_));
-	gamestate_ = *(new game_state(gamestate_start_));
-	teams_ = team_manager_.clone(teams_start_);
-	(*gui_).invalidate_all();
-	(*gui_).draw();
-}
-
-void replay_controller::stop_replay(){
-	is_playing_ = false;
-}
-
-void replay_controller::replay_next_turn(){
-	is_playing_ = true;
-	play_turn();
-	is_playing_ = false;
-}
-
-void replay_controller::replay_next_side(){
-	is_playing_ = true;
-	play_side(player_number_ - 1);
-	if (player_number_ > teams_.size()){
-		player_number_ = 1;
-		current_turn_++;
-	}
-	is_playing_ = false;
-}
-
-void replay_controller::replay_switch_fog(){
-	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		t->set_fog(!t->uses_fog());
-	}
-	update_teams();
-	update_gui();
-}
-
-void replay_controller::replay_switch_shroud(){
-	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		t->set_shroud(!t->uses_shroud());
-	}
-	update_teams();
-	update_gui();
-}
-
-void replay_controller::replay_skip_animation(){
-	recorder.set_skip(!recorder.is_skipping());
-}
-
-void replay_controller::initialize(CVideo& video, const std::vector<config*>& story){
+void replay_controller::init(CVideo& video, const std::vector<config*>& story){
 	//if the recorder has no event, adds an "game start" event to the
 	//recorder, whose only goal is to initialize the RNG
 	if(recorder.empty()) {
@@ -174,7 +100,9 @@ void replay_controller::initialize(CVideo& video, const std::vector<config*>& st
 	const cursor::setter cursor_setter(cursor::NORMAL);
 
 	const int ticks = SDL_GetTicks();
-	LOG_NG << "in play_replay_level()...\n";
+	LOG_NG << "in replay_controller::init()...\n";
+
+	init_managers();
 
 	const statistics::scenario_context statistics_context(level_["name"]);
 
@@ -296,6 +224,90 @@ void replay_controller::initialize(CVideo& video, const std::vector<config*>& st
 
 	units_start_ = units_;
 	teams_start_ = team_manager_.clone(teams_);
+}
+
+void replay_controller::init_managers(){
+	labels_manager_ = new font::floating_label_context();
+}
+
+std::vector<team>& replay_controller::get_teams(){
+	return teams_;
+}
+
+unit_map replay_controller::get_units(){
+	return units_;
+}
+
+display& replay_controller::get_gui(){
+	return *gui_;
+}
+
+gamemap& replay_controller::get_map(){
+	return map_;
+}
+
+const gamestatus& replay_controller::get_status(){
+	return status_;
+}
+
+const int replay_controller::get_player_number(){
+	return player_number_;
+}
+
+const bool replay_controller::is_loading_game(){
+	return loading_game_;
+}
+
+void replay_controller::reset_replay(){
+	is_playing_ = false;
+	current_turn_ = 1;
+	recorder.start_replay();
+	units_ = *(new unit_map(units_start_));
+	status_ = *(new gamestatus(status_start_));
+	gamestate_ = *(new game_state(gamestate_start_));
+	teams_ = team_manager_.clone(teams_start_);
+	(*gui_).invalidate_all();
+	(*gui_).draw();
+}
+
+void replay_controller::stop_replay(){
+	is_playing_ = false;
+}
+
+void replay_controller::replay_next_turn(){
+	is_playing_ = true;
+	play_turn();
+	is_playing_ = false;
+}
+
+void replay_controller::replay_next_side(){
+	is_playing_ = true;
+	play_side(player_number_ - 1);
+	if (player_number_ > teams_.size()){
+		player_number_ = 1;
+		current_turn_++;
+	}
+	is_playing_ = false;
+}
+
+void replay_controller::replay_switch_fog(){
+	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
+		t->set_fog(!t->uses_fog());
+	}
+	update_teams();
+	update_gui();
+}
+
+void replay_controller::replay_switch_shroud(){
+	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
+		t->set_shroud(!t->uses_shroud());
+	}
+	update_teams();
+	update_gui();
+}
+
+void replay_controller::replay_skip_animation(){
+	recorder.set_skip(!recorder.is_skipping());
 }
 
 void replay_controller::play_replay(){

@@ -28,7 +28,9 @@ class replay_controller : public hotkey::command_executor, public events::handle
 {
 public:
 	replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
-		const int ticks, const int num_turns, const config& game_config);
+		const int ticks, const int num_turns, const config& game_config, CVideo& video, 
+		const std::vector<config*>& story);
+	~replay_controller();
 
 	void handle_event(const SDL_Event& event);
 	void replay_slice();
@@ -42,8 +44,6 @@ public:
 	const int get_player_number();
 	const bool is_loading_game();
 
-	void initialize(CVideo& video, const std::vector<config*>& story);
-
 	//event handlers
 	void play_replay();
 	void reset_replay();
@@ -56,6 +56,8 @@ public:
 
 	std::vector<team> teams_, teams_start_;
 private:
+	void init(CVideo& video, const std::vector<config*>& story);
+	void init_managers();
 	void play_turn();
 	void play_side(int team_index);
 	void update_teams();
