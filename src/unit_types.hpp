@@ -86,6 +86,7 @@ public:
 	RANGE range() const;
 	int damage() const;
 	int num_attacks() const;
+        int num_swarm_attacks(int hp, int maxhp) const;
 	double attack_weight() const;
 	double defense_weight() const;
 

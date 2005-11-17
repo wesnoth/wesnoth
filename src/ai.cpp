@@ -1408,8 +1408,7 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 	const std::vector<attack_type>& attacks = b.attacks();
 	for(std::vector<attack_type>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
 		const int resistance = a.movement_type().resistance_against(*i);
-		const int weight = i->damage()*i->num_attacks();
-
+		const int weight = i->damage() * i->num_attacks();
 		sum += defense*resistance*weight;
 		weight_sum += weight;
 	}

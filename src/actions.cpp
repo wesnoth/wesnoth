@@ -365,6 +365,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	static const std::string slow_string("slow");
 	res.attacker_slows = res.attacker_special == slow_string;
 
+	res.nattacks = attack.num_swarm_attacks(a->second.hitpoints(), a->second.max_hitpoints());
+
 	if (strings) {
 		strings->attack_name = attack.name();
 		strings->attack_type = egettext(attack.type().c_str());
@@ -378,7 +380,6 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		strings->range = gettext(attack.range() == attack_type::SHORT_RANGE ? N_("melee") : N_("ranged"));
 	}
 
-	res.nattacks = attack.num_attacks();
 	double best_defend_rating = 0.0;
 	int defend_with = -1;
 	res.ndefends = 0;
@@ -386,8 +387,9 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		if(defender_attacks[defend_option].range() == attack.range()) {
 			const double rating = a->second.damage_against(defender_attacks[defend_option])
 			                      *defender_attacks[defend_option].damage()
-			                      *defender_attacks[defend_option].num_attacks()
-				                  *defender_attacks[defend_option].defense_weight();
+			  * defender_attacks[defend_option].num_swarm_attacks(
+d->second.hitpoints(), d->second.max_hitpoints())
+			  *defender_attacks[defend_option].defense_weight();
 			if(defend_with == -1 || rating > best_defend_rating) {
 				best_defend_rating = rating;
 				defend_with = defend_option;
@@ -485,7 +487,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			strings->defend_calculations.push_back(str.str());
 		}
 
-		res.ndefends = defend.num_attacks();
+		res.ndefends = defend.num_swarm_attacks(d->second.hitpoints(), d->second.max_hitpoints());
 
 		if (strings) {
 			strings->defend_name = defend.name();
@@ -704,6 +706,7 @@ void attack(display& gui, const gamemap& map,
 
 	int orig_attacks = stats.nattacks;
 	int orig_defends = stats.ndefends;
+	
 	int to_the_death = stats.to_the_death ? 30 : 0;
 	bool slow_affects_attacker = a->second.has_flag("slowed");
 	bool slow_affects_defender = d->second.has_flag("slowed");

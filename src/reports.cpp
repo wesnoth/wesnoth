@@ -256,18 +256,26 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			res.add_text(str,tooltip);
 
+			static const std::string swarm_string("swarm");
 			if (!at_it->special().empty()) {
-				str << gettext(at_it->special().c_str()) << "\n";
+			  if(at_it->special() == swarm_string){
+			    str << gettext(at_it->special().c_str())<<"("<< at_it->num_attacks() <<")" << "\n";
+			  }else{
+			    str << gettext(at_it->special().c_str()) << "\n";
+			  }
 				tooltip << string_table["weapon_special_" + at_it->special() + "_description"];
 				res.add_text(str,tooltip);
 			}
 
-			str << at_it->damage() << "-" << at_it->num_attacks() << " -- "
+			str << at_it->damage() << "-" ;
+			str << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
+			str << " -- "
 		        << (at_it->range() == attack_type::SHORT_RANGE ?
 		            _("melee") :
 					_("ranged"));
-			tooltip << at_it->damage() << " " << _("damage") << ", "
-					<< at_it->num_attacks() << " " << _("attacks");
+			tooltip << at_it->damage() << " " << _("damage") << ", ";
+			tooltip << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
+			tooltip << " " << _("attacks");
 
 			str << "\n";
 			res.add_text(str,tooltip);

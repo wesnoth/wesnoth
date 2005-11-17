@@ -218,6 +218,15 @@ int attack_type::num_attacks() const
 	return num_attacks_;
 }
 
+int attack_type::num_swarm_attacks(int hp, int maxhp) const
+{
+  if(special() == "swarm"){
+    return (num_attacks_ - (num_attacks_ * (maxhp-hp) / maxhp));
+  }else{
+    return (num_attacks_);
+  }
+}
+
 double attack_type::attack_weight() const
 {
 	return attack_weight_;

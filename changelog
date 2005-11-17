@@ -27,6 +27,7 @@ SVN trunk (1.1.x):
        names are found, install is aborted before old version is removed
      * hitpoint update delays are now capped at 1 second (#4070)
  * graphics
+   * units can now have colors redefined to match team colors
    * new title screen and logo
    * changed the storm trident attack icon from fireball to lightingbolt
    * new attack icon for the fireball
@@ -120,6 +121,7 @@ SVN trunk (1.1.x):
      appending: should save memory and time, but not benchmarked
    * added prkill script, to calculate probabilities to kill in a skirmish
  * WML improvements:
+   * added swarm attack special
    * random map generator now uses island_size (#4458)
    * fixed incorrect savefile name after continue_no_save (#4439)
    * fix bad leader starting position causing crash
