@@ -214,7 +214,6 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 	std::set<std::string> seen_save_ids;
 
 	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
-		recorder.add_break();
 		std::string save_id = (**ui)["save_id"];
 
 		if(save_id.empty()) {
@@ -340,7 +339,6 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		//if there are additional starting units on this side
 		const config::child_list& starting_units = (*ui)->get_children("unit");
 		for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
-			recorder.add_break();
 			unit new_unit(gameinfo,**su);
 
 			new_unit.set_side(side);
