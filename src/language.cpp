@@ -123,9 +123,11 @@ static void wesnoth_setlocale(int category, std::string const &slocale)
 	// use that value, so someone with es would get the game in Spanish
 	// instead of en_US the first time round
 	// LANGUAGE overrides other settings, so for now just get rid of it
-	// does Windows have unsetenv? if so, can make this unconditional
+	// FIXME: add configure check for unsetenv
 #ifndef _WIN32
+#ifndef SOLARIS
 	unsetenv ("LANGUAGE"); // void so no return value to check
+#endif
 #endif
 
 #ifdef __BEOS__
