@@ -529,13 +529,27 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 	const int xpos2 = get_location_x(loc2);;
 	const int ypos2 = get_location_y(loc2);;
 
-	const int diffx = abs(xpos1 - xpos2);
-	const int diffy = abs(ypos1 - ypos2);
+	const int minx = minimum<int>(xpos1,xpos2);
+	const int maxx = maximum<int>(xpos1,xpos2);
+	const int miny = minimum<int>(ypos1,ypos2);
+	const int maxy = maximum<int>(ypos1,ypos2);
+	const int diffx = maxx - minx;
+	const int diffy = maxy - miny;
 
-	if(diffx > map_area().w/hex_width() || diffy > map_area().h/zoom_) {
+	// if rectangle formed by corners (x1,y1) and (x2,y2) is larger
+	// than map area then just scroll to (x1,y1)
+	if(diffx > map_area().w || diffy > map_area().h) {
 		scroll_to_tile(x1,y1,scroll_type,check_fogged);
 	} else {
-		scroll_to_tile((x1+x2)/2,(y1+y2)/2,scroll_type,check_fogged);
+		// only scroll if rectangle is outside map area
+		// assume most paths are within rectangle, sometimes
+		// with rugged terrain this is not true -- but use common
+		// cases to determine behaviour instead of exceptions
+		if (minx < map_area().x || maxx > map_area().x + map_area().w
+		 || miny < map_area().y || maxy > map_area().y + map_area().h) {
+			// scroll to middle point of rectangle
+			scroll_to_tile((x1+x2)/2,(y1+y2)/2,scroll_type,check_fogged);
+		} // else don't scroll, map area is already OK
 	}
 }
 
