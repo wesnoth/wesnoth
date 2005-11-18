@@ -103,6 +103,7 @@ public:
 		int colour;
 	};
 
+        static std::map<int, Uint32> team_rgb_;
 	team(const config& cfg, int gold=100);
 
 	void write(config& cfg) const;

@@ -101,6 +101,31 @@ team::team_info::team_info(const config& cfg)
 	if(colour == -1)
 		colour = lexical_cast_default<int>(cfg["side"],-1);
 
+	int side = atoi(cfg["side"].c_str());
+	std::vector<std::string> rgb_vec = utils::split(cfg["team_rgb"]);
+	if(3 <= rgb_vec.size()){
+	  std::vector<std::string>::iterator c=rgb_vec.begin();
+	  int r,g,b;
+	  r = (atoi(c->c_str()));
+	  c++;
+	  if(c != rgb_vec.end()){
+	    g = (atoi(c->c_str()));
+	  }else{
+	    LOG_NG <<"Missing Green in team_rgb:"<<cfg["side"];
+	    g=0;
+	  }
+	  c++;
+	  if(c != rgb_vec.end()){
+	    b=(atoi(c->c_str()));
+	  }else{
+	    LOG_NG <<"Missing Blue in team_rgb:"<<cfg["side"];
+	    b=0;
+	  }
+	  team_rgb_[side] = ((r<<16 & 0x00FF0000) + (g<<8 & 0x0000FF00) + (b & 0x000000FF));
+	}else{
+	  team_rgb_.erase(side);
+	}
+	
 	flag = cfg["flag"];
 
 	description = cfg["description"];
@@ -859,7 +884,13 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 	return cleared;
 }
 
+std::map<int, Uint32> team::team_rgb_;
+
 const Uint32 team::get_side_rgb(int side){
+  std::map<int, Uint32>::iterator p=team_rgb_.find(side);
+  if(p != team_rgb_.end()){
+    return(p->second);
+  }
   	size_t index = size_t(get_side_colour_index(side) - 1);
 
 	static const Uint32 sides[] = { 0x00FF0000,
