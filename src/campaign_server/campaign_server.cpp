@@ -242,6 +242,7 @@ void campaign_server::run()
 
 					//erase the campaign
 					write_file((*campaign)["filename"],"");
+					remove((*campaign)["filename"].c_str());
 
 					const config::child_list& campaigns_list = campaigns().get_children("campaign");
 					const size_t index = std::find(campaigns_list.begin(),campaigns_list.end(),campaign) - campaigns_list.begin();
@@ -249,6 +250,20 @@ void campaign_server::run()
 					scoped_ostream cfgfile = ostream_file(file_);
 					write(*cfgfile, cfg_);
 					network::send_data(construct_message("Campaign erased."),sock);
+				} else if(const config* cpass = data.child("change_passphrase")) {
+					config* campaign = campaigns().find_child("campaign","name",(*cpass)["name"]);
+					if(campaign == NULL) {
+						network::send_data(construct_error("No campaign with that name exists."),sock);
+					} else if((*campaign)["passphrase"] != (*cpass)["passphrase"]) {
+						network::send_data(construct_error("Your old passphrase was incorrect."),sock);
+					} else if((const t_string)(*cpass)["new_passphrase"] == "") {
+						network::send_data(construct_error("No new passphrase was supplied."),sock);
+					} else {
+						(*campaign)["passphrase"] = (*cpass)["new_passphrase"];
+						scoped_ostream cfgfile = ostream_file(file_);
+						write(*cfgfile, cfg_);
+						network::send_data(construct_message("Passphrase changed."),sock);
+					}
 				}
 			}
 		} catch(network::error& e) {
