@@ -37,22 +37,26 @@ namespace
 void adjust_map_position(display& disp, int x, int y, int w, int h)
 {
 	const int side_threshold = 80;
-	int border;
 	SDL_Rect area = disp.map_area();
 
-	border = area.x + side_threshold;
-	if (x < border) disp.scroll(x - border, 0);
+	const int borderx = area.x + side_threshold;
+	const int bordery = area.y + side_threshold;
+	const int borderw = area.x + area.w - side_threshold;
+	const int borderh = area.y + area.h - side_threshold;
+	int scrollx = 0;
+	int scrolly = 0;
 
-	border = area.y + side_threshold;
-	if (y < border) disp.scroll(0, y - border);
-
-	x += w;
-	border = area.x + area.w - side_threshold;
-	if (x > border) disp.scroll(x - border, 0);
-
-	y += h;
-	border = area.y + area.h - side_threshold;
-	if (y > border) disp.scroll(0, y - border);
+	// it is possible that x < borderx and x + w > borderw and
+	// similarly for y, but still scroll only once
+	if (x < borderx)
+		scrollx = x - borderx;
+	if (y < bordery)
+		scrolly = y - bordery;
+	if (x + w > borderw)
+		scrollx = x + w - borderw;
+	if (y + h > borderh)
+		scrolly = y + h - borderh;
+	disp.scroll(scrollx, scrolly);
 }
 
 void move_unit_between(display& disp, const gamemap& map, const gamemap::location& a, const gamemap::location& b, const unit& u)
@@ -108,14 +112,15 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		const int begin_at = teleport_animation.get_first_frame_time(unit_animation::UNIT_FRAME);
 		teleport_animation.start_animation(begin_at, unit_animation::UNIT_FRAME, acceleration);
 		animation_time = teleport_animation.get_animation_time();
-		adjust_map_position(disp, xsrc, ysrc, disp.hex_size(), disp.hex_size());
+		adjust_map_position(disp, xsrc, ysrc, disp.hex_width(), disp.hex_size());
+		disp.draw(); // stop teleport glitches by forcing redraw
 		while(animation_time < 0) {
 			const std::string* unit_image = &teleport_animation.get_current_frame(unit_animation::UNIT_FRAME).image;
 			image::locator unit_loc;
 			if (unit_image->empty()) {
-			  unit_loc = u.image_loc();
-			}else{
-			  unit_loc = image::locator(*unit_image,u.team_rgb(),u.type().flag_rgb());
+				unit_loc = u.image_loc();
+			} else {
+				unit_loc = image::locator(*unit_image,u.team_rgb(),u.type().flag_rgb());
 			}
 			
 			surface image(image::get_image(unit_loc));
@@ -207,7 +212,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		const int end_at = teleport_animation.get_last_frame_time();
 		teleport_animation.start_animation(0, unit_animation::UNIT_FRAME, acceleration);
 		animation_time = teleport_animation.get_animation_time();
-		adjust_map_position(disp, xdst, ydst, disp.hex_size(), disp.hex_size());
+		adjust_map_position(disp, xdst, ydst, disp.hex_width(), disp.hex_size());
 		while(animation_time < end_at) {
 			const std::string* unit_image = &teleport_animation.get_current_frame(unit_animation::UNIT_FRAME).image;
 
@@ -664,7 +669,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		//we try to scroll the map if the unit is at the edge.
 		//keep track of the old position, and if the map moves at all,
 		//then recenter it on the unit
-		adjust_map_position(disp, xloc, yloc, disp.hex_size(), disp.hex_size());
+		adjust_map_position(disp, xloc, yloc, disp.hex_width(), disp.hex_size());
 
 		if(xloc != disp.get_location_x(a) || yloc != disp.get_location_y(a)) {
 			disp.scroll_to_tile(a.x,a.y,display::WARP);
