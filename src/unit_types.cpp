@@ -950,9 +950,7 @@ namespace {
 
 unit_type::experience_accelerator::experience_accelerator(int modifier) : old_value_(experience_modifier)
 {
-	if (experience_modifier == 100){
-		experience_modifier = (experience_modifier*modifier)/100;
-	}
+	experience_modifier = modifier;
 }
 
 unit_type::experience_accelerator::~experience_accelerator()
@@ -962,7 +960,9 @@ unit_type::experience_accelerator::~experience_accelerator()
 
 int unit_type::experience_needed() const
 {
-       return (experience_needed_ * experience_modifier) /100;
+	int exp = (experience_needed_ * experience_modifier + 50) /100;
+	if(exp < 1) exp = 1;
+	return exp;
 }
 
 std::vector<std::string> unit_type::advances_to() const

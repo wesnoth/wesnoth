@@ -157,6 +157,9 @@ SVN trunk (1.1.x):
    other than .wesnoth, for coexistence of multiple versions on same machine
  * changed get_random to not nest [random] tags to avoid problems with deeply
    nested tags and compressed save files.
+ * I tweaked how experience_modifier works. If for some reason it gets set
+   twice, now the later value takes precedence. When the to max experience
+   is calculated it is now rounded and has a lower limit of 1.
  * various bug fixes and code cleanups
 
 Version 1.0rc1:
