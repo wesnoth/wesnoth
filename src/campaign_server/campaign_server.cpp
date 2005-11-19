@@ -249,7 +249,7 @@ void campaign_server::run()
 					campaigns().remove_child("campaign",index);
 					scoped_ostream cfgfile = ostream_file(file_);
 					write(*cfgfile, cfg_);
-					network::send_data(construct_message("Campaign erased."),sock);
+					network::send_data(construct_message("Campaign deleted."),sock);
 				} else if(const config* cpass = data.child("change_passphrase")) {
 					config* campaign = campaigns().find_child("campaign","name",(*cpass)["name"]);
 					if(campaign == NULL) {
