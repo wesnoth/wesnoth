@@ -119,6 +119,8 @@ SVN trunk (1.1.x):
    * campaign_list response now contains information about translations
    * fixed problem with duplicate translations being saved with each upload
    * added a passphrass change function
+   * when campaigns are deleted now, the campaign file is not deleted instead
+     just being reduced to zero size.
  * utils
    * added weblist.pl and webtgz.pl web interface programs
    * changed wml.pm to use substr instead of split to convert string to array:
