@@ -350,7 +350,7 @@ static std::string escaped_string(const std::string& value) {
 static void write_internal(config const &cfg, std::ostream &out, std::string& textdomain, size_t tab = 0)
 {
 	if (tab > max_recursion_levels)
-		return;
+		throw config::error("Too many recursion levels in config write");
 
 	for(string_map::const_iterator i = cfg.values.begin(), i_end = cfg.values.end(); i != i_end; ++i) {
 		if (!i->second.empty()) {
