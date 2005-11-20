@@ -8,22 +8,22 @@ SVN trunk (1.1.x):
      * Captured leader without starting position replaced with no_leader
      * side 3 and 4 leaders in The Duel now regular units: should not be on map
    * Heir to the Throne
-     * 'Isle of Anduin': reduced difficulty, added mage tips, move_unit_fake fix
-     * 'Blackwater Port': added tips about loyal units, move_unit_fake fix
-     * 'Bay of Pearls': merman have traits, you get a hunter and initiate, added
-       river ford to help 5 MP units cross the river, you can recruit hunter and
-       initiate after winning the scenario
-     * 'Isle of the Damned': replaced some forest with road, you can recall mermen,
-       Moremirmu explains if he will join you or not, hard difficulty has fog
-     * 'Muff Malal's Peninsula': Muff has less gold but more income - allowing a true
-       XP milking experience on easy, he recruits blood bats on hard, your choice of
-       fight vs run is better explained to you
-     * 'Crossroads': added story dialog
-     * 'Princess of Wesnoth': clarified victory conditions
-     * changed the map 'Snow Plains' to use snow terrain
      * fixed Delfador talking to himself in Valley of Statues (#4440)
      * fixed Home of the North Elves inaccurate victory condition (#4644)
      * Ford of Abez off map serpent leader replaced with no_leader attribute
+     * 'Isle of Anduin': reduced difficulty, added mage tips, move_unit_fake fix
+     * 'Blackwater Port': added tips about loyal units, move_unit_fake fix
+     * 'Bay of Pearls': mermen have traits, you get a hunter and initiate, added
+       river ford to help 5 MP units cross the river, you can recruit hunter and
+       initiate after winning the scenario
+     * 'Isle of the Damned': replaced some forest with road, can recall mermen,
+       Moremirmu explains if he will join you or not, hard difficulty has fog
+     * 'Muff Malal's Peninsula': Muff has less gold but more income for
+       XP milking on easy, he recruits blood bats on hard, your choice of
+       fight vs run is better explained
+     * 'Crossroads': added story dialog
+     * 'Princess of Wesnoth': clarified victory conditions
+     * changed the map 'Snow Plains' to use snow terrain
    * Son of the Black Eye
      * cleaned up prestart events to stop units hopping around at map setup
      * Desert of Death leader without starting position replaced with no_leader
@@ -31,16 +31,17 @@ SVN trunk (1.1.x):
    * The Dark Hordes
      * Underground Pool no longer has units off map and in walls
  * user interface
-     * theme chooser window added to preference graphics dialog.
-     * fix untranslated unit create dialog (#4424)
-     * changed recall to show recall list even when gold < 20
-     * added advancement and AMLA indicator icons, tooltips to dfool theme
-     * allow pausing during replay
-     * SECURITY: check safety of campaign download names: if any unsafe
-       names are found, install is aborted before old version is removed
-     * hitpoint update delays are now capped at 1 second (#4070)
-     * reduce unnecessary scrolling in replays (#3152)
-     * stop teleport glitches due to insufficient screen updates (#4234)
+   * fix untranslated unit create dialog (#4424)
+   * changed recall to show recall list even when gold < 20
+   * added advancement and AMLA indicator icons, tooltips to dfool theme
+   * allow pausing during replay
+   * SECURITY: check safety of campaign download names: if any unsafe
+     names are found, install is aborted before old version is removed
+   * hitpoint update delays are now capped at 1 second (#4070)
+   * reduce unnecessary scrolling in replays (#3152)
+   * stop teleport glitches due to insufficient screen updates (#4234)
+   * theme chooser window added to preference graphics dialog
+   * fix broken colour wait cursor on Mac OS X (#4729)
  * graphics
    * units can now have colors redefined to match team colors
    * team color can be defined in the side tag with "team_rgb=r,g,b"
@@ -110,11 +111,10 @@ SVN trunk (1.1.x):
  * multiplayer and server
    * server: add administration functions
    * multiplayer game with "empty" as side no longer causes OOS (#4464)
-   * revised multiplayer maps: Divide and Conquer, Sablestone Delta,
-     Silverhead Crossing, Sullas Ruins, 1v1v1Hex, Charge, Blitz, Clash, 
-     Hamlets, Meteor Lake, Den of Onis, Smallolof, Castle Hopping Isle,
-     Hornshark Island
-   * updated multiplayer maps cfg files: Clash, Hexcake, Smallolof
+   * revised multiplayer maps: Divide and Conquer, Sablestone Delta, 1v1v1Hex,
+     Silverhead Crossing, Sullas Ruins, Charge, Blitz, Clash, Hamlets,
+     Meteor Lake, Den of Onis, Smallolof, Castle Hopping Isle, Hornshark Island
+   * updated multiplayer map cfg files: Clash, Hexcake, Smallolof
    * fixed gamelist diff bug
    * renamed "Across The River" config file to improve display order
    * renamed "Across The River" map to "Across the River"
@@ -130,8 +130,7 @@ SVN trunk (1.1.x):
    * campaign_list response now contains information about translations
    * fixed problem with duplicate translations being saved with each upload
    * added a passphrass change function
-   * when campaigns are deleted now, the campaign file is not deleted instead
-     just being reduced to zero size.
+   * deleting campaigns, campaign file is reduced to zero size, not deleted
  * utils
    * added weblist.pl and webtgz.pl web interface programs
    * changed wml.pm to use substr instead of split to convert string to array:
@@ -140,9 +139,8 @@ SVN trunk (1.1.x):
      appending: should save memory and time, but not benchmarked
    * added prkill script, to calculate probabilities to kill in a skirmish
    * added campaign_passphrase.pl for changing passphrases
-   * added campaign_delete.pl for deleing campaigns
+   * added campaign_delete.pl for deleting campaigns
  * WML improvements:
-   * added swarm attack special
    * random map generator now uses island_size (#4458)
    * fixed incorrect savefile name after continue_no_save (#4439)
    * fix bad leader starting position causing crash
@@ -151,16 +149,16 @@ SVN trunk (1.1.x):
    * fix duplicate key values being concatenated: just replace with last value
    * units can now have a [extra_anim] tag, and a [animate_unit] event to
      trigger it
+   * added swarm attack special
    * new advance and post_advance events that triggers before and after a unit
      advancement -- patch by Noyga
+   * changed get_random to not nest [random] tags to avoid problems with deeply
+     nested tags and compressed save files.
+   * experience_modifier: if it gets set twice, now the later value takes
+     precedence; to max experience is now rounded with lower limit of 1
  * documentation: switch doxygen templates from CVS to SVN, Savannah to Gna!
  * added a --with-preferences-dir configure option to allow using a directory
    other than .wesnoth, for coexistence of multiple versions on same machine
- * changed get_random to not nest [random] tags to avoid problems with deeply
-   nested tags and compressed save files.
- * I tweaked how experience_modifier works. If for some reason it gets set
-   twice, now the later value takes precedence. When the to max experience
-   is calculated it is now rounded and has a lower limit of 1.
  * various bug fixes and code cleanups
 
 Version 1.0rc1:
