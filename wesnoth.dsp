@@ -289,6 +289,10 @@ SOURCE=.\src\widgets\menu.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\menu_events.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\minimap.cpp
 # End Source File
 # Begin Source File
@@ -706,6 +710,10 @@ SOURCE=".\src\marked-up_text.hpp"
 # Begin Source File
 
 SOURCE=.\src\widgets\menu.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\menu_events.hpp
 # End Source File
 # Begin Source File
 

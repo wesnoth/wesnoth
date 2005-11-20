@@ -15,11 +15,16 @@
 
 #include "display.hpp"
 #include "font.hpp"
+#include "game_events.hpp"
 #include "gamestatus.hpp"
 #include "halo.hpp"
+#include "help.hpp"
 #include "hotkeys.hpp"
+#include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "playlevel.hpp"
+#include "preferences_display.hpp"
+#include "tooltips.hpp"
 #include "wml_separators.hpp"
 
 #include <vector>
@@ -45,6 +50,15 @@ public:
 	const bool is_loading_game();
 
 	//event handlers
+	void objectives();
+	void show_statistics();
+	void unit_list();
+	void status_table();
+	void save_game();
+	void load_game();
+	void preferences();
+	void show_chat_log();
+	void show_help();
 	void play_replay();
 	void reset_replay();
 	void stop_replay();
@@ -63,18 +77,26 @@ private:
 	void update_teams();
 	void update_gui();
 
+	//managers
+	const verification_manager verify_manager_;
+	teams_manager team_manager_;
+	halo::manager* halo_manager_;
+	font::floating_label_context labels_manager_;
+	preferences::display_manager* prefs_disp_manager_;
+	tooltips::manager* tooltips_manager_;
+	game_events::manager* events_manager_;
+	help::help_manager help_manager_;
+
 	const config& level_;
 	const config& game_config_;
 	const game_data& gameinfo_;
 	game_state& gamestate_, gamestate_start_;
 	display* gui_;
-	teams_manager team_manager_;
-	halo::manager* halo_manager_;
-	font::floating_label_context* labels_manager_;	//object that will make sure that labels are removed at the end of the scenario
 	gamestatus status_, status_start_;
 	gamemap map_;
 	unit_map units_, units_start_;
 	events::mouse_handler mouse_handler_;
+	events::menu_handler menu_handler_;
 
 	const int ticks_;
 	int player_number_;

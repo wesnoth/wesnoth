@@ -68,6 +68,7 @@ wesnoth_SOURCES = \
 	mapgen.cpp \
 	mapgen_dialog.cpp \
 	marked-up_text.cpp \
+	menu_events.cpp \
 	minimap.cpp \
 	mouse.cpp \
 	mouse_events.cpp \
@@ -171,6 +172,7 @@ wesnoth_SOURCES = \
 	mapgen.hpp \
 	mapgen_dialog.hpp \
 	marked-up_text.hpp \
+	menu_events.hpp \
 	minimap.hpp \
 	mouse.hpp \
 	mouse_events.hpp \

@@ -1480,7 +1480,7 @@ void game_controller::play_replay()
 
 		//this will make it so next time through the title screen loop, this game is loaded
 		loaded_game_ = e.game;
-		loaded_game_show_replay_ = true;
+		loaded_game_show_replay_ = e.show_replay;
 	}
 }
 

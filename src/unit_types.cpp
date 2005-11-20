@@ -666,8 +666,10 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		teleport_animations_.push_back(unit_animation(**t));
 	}
 	const config::child_list& extra_anims = cfg_.get_children("extra_anim");
-	for(config::child_list::const_iterator t = extra_anims.begin(); t != extra_anims.end(); ++t) {
-		extra_animations_.insert(std::pair<std::string,unit_animation>((**t)["flag"],unit_animation(**t)));
+	{
+		for(config::child_list::const_iterator t = extra_anims.begin(); t != extra_anims.end(); ++t) {
+			extra_animations_.insert(std::pair<std::string,unit_animation>((**t)["flag"],unit_animation(**t)));
+		}
 	}
 
 	const config::child_list& deaths = cfg_.get_children("death");
