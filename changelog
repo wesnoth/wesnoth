@@ -11,19 +11,19 @@ SVN trunk (1.1.x):
      * fixed Delfador talking to himself in Valley of Statues (#4440)
      * fixed Home of the North Elves inaccurate victory condition (#4644)
      * Ford of Abez off map serpent leader replaced with no_leader attribute
-     * 'Isle of Anduin': reduced difficulty, added mage tips, move_unit_fake fix
-     * 'Blackwater Port': added tips about loyal units, move_unit_fake fix
-     * 'Bay of Pearls': mermen have traits, you get a hunter and initiate, added
+     * Isle of Anduin: reduced difficulty, added mage tips, move_unit_fake fix
+     * Blackwater Port: added tips about loyal units, move_unit_fake fix
+     * Bay of Pearls: mermen have traits, you get a hunter and initiate, added
        river ford to help 5 MP units cross the river, you can recruit hunter and
        initiate after winning the scenario
-     * 'Isle of the Damned': replaced some forest with road, can recall mermen,
+     * Isle of the Damned: replaced some forest with road, can recall mermen,
        Moremirmu explains if he will join you or not, hard difficulty has fog
-     * 'Muff Malal's Peninsula': Muff has less gold but more income for
+     * Muff Malal's Peninsula: Muff has less gold but more income for
        XP milking on easy, he recruits blood bats on hard, your choice of
        fight vs run is better explained
-     * 'Crossroads': added story dialog
-     * 'Princess of Wesnoth': clarified victory conditions
-     * changed the map 'Snow Plains' to use snow terrain
+     * Crossroads: added story dialog
+     * Princess of Wesnoth: clarified victory conditions
+     * changed Snow Plains map to use snow terrain
    * Son of the Black Eye
      * cleaned up prestart events to stop units hopping around at map setup
      * Desert of Death leader without starting position replaced with no_leader
@@ -130,7 +130,7 @@ SVN trunk (1.1.x):
    * campaign_list response now contains information about translations
    * fixed problem with duplicate translations being saved with each upload
    * added a passphrass change function
-   * deleting campaigns, campaign file is reduced to zero size, not deleted
+   * deleting campaigns, campaign file is now deleted, not reduced to zero size
  * utils
    * added weblist.pl and webtgz.pl web interface programs
    * changed wml.pm to use substr instead of split to convert string to array:
