@@ -27,9 +27,13 @@
 #include "widgets/label.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/slider.hpp"
+#include "theme.hpp"
+
+#include <vector>
+#include <string>
 
 namespace preferences {
-
+  
 display* disp = NULL;
 
 display_manager::display_manager(display* d)
@@ -185,7 +189,7 @@ private:
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
 	            show_grid_button_, show_floating_labels_button_, turn_dialog_button_,
 	            turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
-	            show_haloing_button_, video_mode_button_, hotkeys_button_, gamma_button_,
+	            show_haloing_button_, video_mode_button_, theme_button_, hotkeys_button_, gamma_button_,
 				flip_time_button_, advanced_button_, sound_button_, music_button_;
 	gui::label music_label_, sound_label_, scroll_label_, gamma_label_;
 	unsigned slider_label_width_;
@@ -214,6 +218,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_colour_cursors_button_(disp.video(), _("Show Color Cursors"), gui::button::TYPE_CHECK),
 	  show_haloing_button_(disp.video(), _("Show Haloing Effects"), gui::button::TYPE_CHECK),
 	  video_mode_button_(disp.video(), _("Video Mode")),
+	  theme_button_(disp.video(), _("Theme")),
 	  hotkeys_button_(disp.video(), _("Hotkeys")),
 	  gamma_button_(disp.video(), _("Adjust Gamma"), gui::button::TYPE_CHECK),
 	  flip_time_button_(disp.video(), _("Reverse Time Graphics"), gui::button::TYPE_CHECK),
@@ -277,6 +282,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_floating_labels_button_.set_help_string(_("Show text above a unit when it is hit to display damage inflicted"));
 
 	video_mode_button_.set_help_string(_("Change the resolution the game runs at"));
+	theme_button_.set_help_string(_("Change the theme the game runs with"));
 
 	turn_dialog_button_.set_check(turn_dialog());
 	turn_dialog_button_.set_help_string(_("Display a dialog at the beginning of your turn"));
@@ -340,6 +346,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; show_haloing_button_.set_location(rect.x, ypos);
 	ypos += item_interline; fullscreen_button_.set_location(rect.x, ypos);
 	ypos += item_interline; video_mode_button_.set_location(rect.x, ypos);
+	theme_button_.set_location(rect.x+video_mode_button_.width()+10, ypos);
 
 	// Sound tab
 	slider_label_width_ = maximum<unsigned>(music_label_.width(), sound_label_.width());
@@ -385,6 +392,8 @@ void preferences_dialog::process_event()
 		set_show_floating_labels(show_floating_labels_button_.checked());
 	if (video_mode_button_.pressed())
 		throw video_mode_change_exception(video_mode_change_exception::CHANGE_RESOLUTION);
+	if (theme_button_.pressed())
+	        show_theme_dialog(disp_);
 	if (fullscreen_button_.pressed())
 		throw video_mode_change_exception(fullscreen_button_.checked()
 		                                  ? video_mode_change_exception::MAKE_FULLSCREEN
@@ -513,6 +522,7 @@ void preferences_dialog::set_selection(int index)
 	show_haloing_button_.hide(hide_display);
 	fullscreen_button_.hide(hide_display);
 	video_mode_button_.hide(hide_display);
+	theme_button_.hide(hide_display);
 	flip_time_button_.hide(hide_display);
 
 	const bool hide_sound = tab_ != SOUND_TAB;
@@ -763,4 +773,24 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	}
 }
 
+bool show_theme_dialog(display& disp)
+{
+  int action = 0;
+  std::vector<std::string> options = disp.get_theme().get_known_themes();  
+  std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
+  action = gui::show_dialog(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
+  if(action >-1){
+    preferences::set_theme(options[action]);
+    //it would be preferable for the new theme to take effect
+    //immediately, however, this will have to do for now.
+    gui::show_dialog(disp,NULL,"",_("New theme will take effect on next new or loaded game."),gui::MESSAGE);
+    return(1);
+  }
+  return(0);  
 }
+
+}
+
+
+  
+

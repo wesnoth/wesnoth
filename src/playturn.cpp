@@ -676,8 +676,8 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 				NULL,&buttons);
 	}
 
-	cursor::set(cursor::NORMAL);
-
+	cursor::set(cursor::NORMAL)
+;
 	if(size_t(res) < attacks.size()) {
 
 		attacker->second.set_goto(gamemap::location());
@@ -2507,17 +2507,7 @@ void turn_info::do_command(const std::string& str)
 			teams_[index].make_human();
 		}
 	} else if (cmd == "theme") {
-	        int action = 0;
-		std::vector<std::string> options=theme::get_known_themes();
-		std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
-		action = gui::show_dialog(gui_,NULL,"",current_theme,gui::OK_CANCEL,&options);
-		if(action >-1){
-		  preferences::set_theme(options[action]);
-		//it would be preferable for the new theme to take effect
-		//immediately, however, this will have to do for now.
-		  gui::show_dialog(gui_,NULL,"",_("New theme will take effect on next new or loaded game."),gui::MESSAGE);
-		}
-
+	  preferences::show_theme_dialog(gui_);
 	} else if(cmd == "ban" || cmd == "kick") {
 		config cfg;
 		config& ban = cfg.add_child(cmd);
