@@ -89,7 +89,7 @@ SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL };
 
 //this array must have members corresponding to cursor::CURSOR_TYPE enum members
 #ifdef __APPLE__
-const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait-16x16.png", "move.png", "attack.png", "select.png" };
+const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait-alt.png", "move.png", "attack.png", "select.png" };
 #else
 const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png" };
 #endif
