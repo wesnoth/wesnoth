@@ -98,6 +98,53 @@ void ai::do_attack_analysis(
 			continue;
 		}
 
+               //check if the friendly unit is surrounded, a unit is surrounded if
+               //it is flanked by enemy units and at least one other enemy unit is
+               //nearby or if the unit is totaly surrounded by enemies with max. one
+               //tile to escape.
+               bool is_surrounded = false;
+               bool is_flanked = false;
+               int enemy_units_around = 0;
+               int accessible_tiles = 0;
+               gamemap::location adj[6];
+               get_adjacent_tiles(current_unit, adj);
+
+               size_t tile;
+               for(tile = 0; tile != 3; ++tile) {
+
+                       const unit_map::const_iterator tmp_unit = units_.find(adj[tile]);
+                       bool possible_flanked = false;
+
+                       if(map_.on_board(adj[tile]))
+                       {
+                               accessible_tiles++;
+                               if(tmp_unit != units_.end() && team_num_ != tmp_unit->second.side())
+                               {
+                                       enemy_units_around++;
+                                       possible_flanked = true;
+                               }
+                       }
+
+                       const unit_map::const_iterator tmp_opposite_unit = units_.find(adj[tile + 3]);
+                        if(map_.on_board(adj[tile + 3]))
+                       {
+                               accessible_tiles++;
+                               if(tmp_opposite_unit != units_.end() && team_num_ != tmp_opposite_unit->second.side())
+                               {
+                                       enemy_units_around++;
+                                       if(possible_flanked)
+                                       {
+                                               is_flanked = true;
+                                       }
+                               }
+                       }
+               }
+
+               if(is_flanked && enemy_units_around > 2 || enemy_units_around >= accessible_tiles - 1)
+                       is_surrounded = true;
+
+
+
 		double best_vulnerability = 0.0, best_support = 0.0;
 		int best_rating = 0;
 		int cur_position = -1;
@@ -184,6 +231,8 @@ void ai::do_attack_analysis(
 			cur_analysis.vulnerability += best_vulnerability;
 
 			cur_analysis.support += best_support;
+
+			cur_analysis.is_surrounded = is_surrounded;
 
 			cur_analysis.analyze(map_, units_, 50, *this, dstsrc, srcdst, enemy_dstsrc, enemy_srcdst);
 
@@ -571,11 +620,20 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 	//prefer to attack already damaged targets
 	value += ((target_starting_damage/3 + avg_damage_inflicted) - (1.0-aggression)*avg_damage_taken)/10.0;
 
-	//sanity check: if we're putting ourselves at major risk, and have no chance to kill, and we're not
-	//aiding our allies who are also attacking, then don't do it
-	if(vulnerability > 50.0 && vulnerability > support*2.0 && chance_to_kill < 0.02 && aggression < 0.75 && !ai_obj.attack_close(target)) {
-		return -1.0;
-	}
+       //if the unit is surrounded and there is no support or if the unit is surrounded and the average damage
+       //is 0, the unit skips its sanity check and tries to break free as good as possible
+       if(!is_surrounded || (support != 0 && avg_damage_taken != 0))
+       {
+               //sanity check: if we're putting ourselves at major risk, and have no chance to kill, and we're not
+               //aiding our allies who are also attacking, then don't do it
+               if(vulnerability > 50.0 && vulnerability > support*2.0 && chance_to_kill < 0.02 && aggression < 0.75 && !ai_obj.attack_close(target)) {
+                       return -1.0;
+               }
+
+               if(!leader_threat && vulnerability*terrain_quality > 0.0) {
+                       value *= support/(vulnerability*terrain_quality);
+               }
+        }
 
 	if(!leader_threat && vulnerability*terrain_quality > 0.0) {
 		value *= support/(vulnerability*terrain_quality);

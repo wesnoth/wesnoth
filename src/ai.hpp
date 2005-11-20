@@ -155,6 +155,9 @@ protected:
 
 		//is true if this attack sequence makes use of the leader
 		bool uses_leader;
+
+		//is true if the units involved in this attack sequence are surrounded.
+		bool is_surrounded;
 	};
 
 	virtual void do_attack_analysis(
