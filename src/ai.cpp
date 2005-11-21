@@ -195,7 +195,7 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 	else if(name == "idle_ai")
 		return new idle_ai(info);
 	else if(name == "dfool_ai")
-		return new dfool_ai(info);
+		return new dfool::dfool_ai(info);
 	//else if(name == "advanced_ai")
 	//	return new advanced_ai(info);
 	else if(name == "ai2")
