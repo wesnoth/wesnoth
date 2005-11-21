@@ -271,35 +271,37 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			}
 		}
 
-		//if this isn't the last scenario, then save the game
-		if(scenario != NULL && save_game_after_scenario) {
+		if(scenario != NULL) {
+			// update the label
 			state.label = (*scenario)["name"];
-			state.starting_pos = config();
 
-			bool retry = true;
+			//if this isn't the last scenario, then save the game
+			if(save_game_after_scenario) {
+				state.starting_pos = config();
 
-			while(retry) {
-				retry = false;
+				bool retry = true;
 
-				const int should_save = dialogs::get_save_name(disp,
+				while(retry) {
+					retry = false;
+
+					const int should_save = dialogs::get_save_name(disp,
 						_("Do you want to save your game?"),
 						_("Name:"),
 						&state.label);
 
 
-				if(should_save == 0) {
-					try {
-						save_game(state);
-					} catch(game::save_game_failed&) {
-						gui::show_error_message(disp, _("The game could not be saved"));
-						retry = true;
+					if(should_save == 0) {
+						try {
+							save_game(state);
+						} catch(game::save_game_failed&) {
+							gui::show_error_message(disp, _("The game could not be saved"));
+							retry = true;
+						}
 					}
 				}
 			}
-		}
 
-		//update the replay start
-		if(scenario != NULL) {
+			//update the replay start
 			//FIXME: this should only be done if the scenario was not tweaked.
 			state.starting_pos = *scenario;
 		}
