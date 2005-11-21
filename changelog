@@ -96,6 +96,8 @@ SVN trunk (1.1.x):
    * hitting with slow changes attack order to allow attacker to strike again
    * slowed units lose initiative on fight
    * unit modifications now round toward original value instead of truncating
+   * changed resilient trait bonus from +7hp to +10%+3hp
+   * decreased strong trait hitpoints bonus from 2 to 1 
  * units and balancing changes:
    * decreased Dwarvish Fighter hammer attack damage from 9 to 8
    * decreased Merman Hunter experience needed to level from 38 to 35
@@ -112,6 +114,9 @@ SVN trunk (1.1.x):
    * increased the HP of the Vampire Bat from 14 to 17
    * decreased the cost of the Blood Bat from 24 to 21
    * increased the HP of the Blood Bat from 24 to 27
+   * increased Orcish Archer fire damage from 5-2 to 6-2
+   * increased Orcish Crossbowman fire damage from 8-2 to 9-2
+   * increased Orcish Slurbow fire damage from 12-2 to 14-2
  * multiplayer and server
    * server: add administration functions
    * multiplayer game with "empty" as side no longer causes OOS (#4464)
