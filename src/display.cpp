@@ -225,6 +225,12 @@ SDL_Rect display::screen_area() const
 	return res;
 }
 
+bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
+{
+	return (x < area.x || x >= area.x + area.w ||
+		y < area.y || y >= area.y + area.h);
+}
+
 void display::select_hex(gamemap::location hex)
 {
 	if(team_valid() && teams_[currentTeam_].fogged(hex.x,hex.y)) {
@@ -501,6 +507,8 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 
 	const int xpos = get_location_x(loc);
 	const int ypos = get_location_y(loc);
+	if ((scroll_type == ONSCREEN) && !outside_area(map_area(),xpos,ypos))
+		return;
 
 	const int speed = preferences::scroll_speed()*2;
 
@@ -554,15 +562,15 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 	if(diffx > map_area().w || diffy > map_area().h) {
 		scroll_to_tile(x1,y1,scroll_type,check_fogged);
 	} else {
-		// only scroll if rectangle is outside map area
+		// only scroll if rectangle is not completely inside map area
 		// assume most paths are within rectangle, sometimes
 		// with rugged terrain this is not true -- but use common
 		// cases to determine behaviour instead of exceptions
-		if (minx < map_area().x || maxx > map_area().x + map_area().w
-		 || miny < map_area().y || maxy > map_area().y + map_area().h) {
+		if (outside_area(map_area(),minx,miny) ||
+		    outside_area(map_area(),maxx,maxy)) {
 			// scroll to middle point of rectangle
 			scroll_to_tile((x1+x2)/2,(y1+y2)/2,scroll_type,check_fogged);
-		} // else don't scroll, map area is already OK
+		} // else don't scroll, rectangle is already on screen
 	}
 }
 
@@ -571,7 +579,7 @@ void display::scroll_to_leader(unit_map& units, int side){
 
 	if(leader != units_.end()) {
 		const hotkey::basic_handler key_events_handler(this);
-		scroll_to_tile(leader->first.x,leader->first.y);
+		scroll_to_tile(leader->first.x,leader->first.y,ONSCREEN);
 	}
 }
 

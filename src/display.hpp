@@ -96,9 +96,11 @@ public:
 	//(i.e. not entirely from tip to tip -- use hex_size() to get the distance from tip to tip)
 	int hex_width() const;
 
-	enum SCROLL_TYPE { SCROLL, WARP };
+	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN };
 
 	//function which will scroll such that location x,y is on-screen.
+	// WARP jumps to x,y; SCROLL uses scroll speed;
+	// ONSCREEN only scrolls if x,y is offscreen
 	void scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type=SCROLL, bool check_fogged=true);
 
 	//function which will scroll such that location x1,y1 is on-screen.
@@ -132,6 +134,9 @@ public:
 	const SDL_Rect& unit_image_area() const;
 
 	SDL_Rect screen_area() const;
+
+	//check if pixel x,y is outside specified area
+	bool display::outside_area(const SDL_Rect& area, const int x, const int y) const;
 
 	//function to display a location as selected. If a unit is in the location,
 	//and there is no unit in the currently highlighted hex, the unit will be
