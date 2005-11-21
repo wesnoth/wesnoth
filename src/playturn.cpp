@@ -801,6 +801,12 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		return;
 	}
 
+	// clicked on unit image? then move highlight to unit
+	if (gui_.unit_image_on(event.x,event.y)) {
+		// FIXME: actually do something here
+		return;
+	}
+
 	gamemap::location::DIRECTION nearest_hex, second_nearest_hex;
 	gamemap::location hex = gui_.hex_clicked_on(event.x,event.y,&nearest_hex,&second_nearest_hex);
 
@@ -817,7 +823,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			route = enemy_paths_ ? current_paths_.routes.end() :
 	                               current_paths_.routes.find(hex);
 
-	unit_map::iterator enemy = find_unit(hex);
+	const unit_map::iterator enemy = find_unit(hex);
 
 	const gamemap::location src = selected_hex_;
 	paths orig_paths = current_paths_;
@@ -828,7 +834,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		if(attack_from.valid()) {
 			if(move_unit_along_current_route(false)) { //move the unit without updating shroud
 				u = find_unit(attack_from);
-				enemy = find_unit(hex);
+				// enemy = find_unit(hex);
 				if(u != units_.end() && u->second.side() == team_num_ &&
 				   enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.stone()) {
 					if(attack_enemy(u,enemy) == false) {

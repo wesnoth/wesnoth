@@ -214,6 +214,11 @@ const SDL_Rect& display::minimap_area() const
 	return theme_.mini_map_location(screen_area());
 }
 
+const SDL_Rect& display::unit_image_area() const
+{
+	return theme_.unit_image_location(screen_area());
+}
+
 SDL_Rect display::screen_area() const
 {
 	const SDL_Rect res = {0,0,x(),y()};
@@ -398,6 +403,14 @@ gamemap::location display::minimap_location_on(int x, int y)
 	const double ydiv = double(rect.h) / double(map_.y());
 
 	return gamemap::location(int((x - rect.x)/xdiv),int((y-rect.y)/ydiv));
+}
+
+bool display::unit_image_on(int x, int y)
+{
+	const SDL_Rect rect = unit_image_area();
+
+	return (x >= rect.x && y >= rect.y &&
+		x < rect.x + rect.w && y < rect.y + rect.h);
 }
 
 void display::scroll(int xmove, int ymove)

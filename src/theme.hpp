@@ -147,6 +147,7 @@ public:
 
 	const SDL_Rect& main_map_location(const SDL_Rect& screen) const;
 	const SDL_Rect& mini_map_location(const SDL_Rect& screen) const;
+	const SDL_Rect& unit_image_location(const SDL_Rect& screen) const;
 
         static void set_known_themes(const config* cfg);
         static std::vector<std::string> get_known_themes();
@@ -163,7 +164,7 @@ private:
 
 	std::map<std::string,status_item> status_;
 
-	object main_map_, mini_map_;
+	object main_map_, mini_map_, unit_image_;
 };
 
 #endif

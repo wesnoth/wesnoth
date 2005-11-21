@@ -506,6 +506,12 @@ bool theme::set_resolution(const SDL_Rect& screen)
 				status_.insert(std::pair<std::string,status_item>(i->first,status_item(**j)));
 			}
 		}
+		const config* const unit_image_cfg = status_cfg->child("unit_image");
+		if (unit_image_cfg != NULL) {
+			unit_image_ = object(*unit_image_cfg);
+		} else {
+			unit_image_ = object();
+		}
 	}
 
 	const config::child_list& panel_list = cfg.get_children("panel");
@@ -570,6 +576,11 @@ const SDL_Rect& theme::main_map_location(const SDL_Rect& screen) const
 const SDL_Rect& theme::mini_map_location(const SDL_Rect& screen) const
 {
 	return mini_map_.location(screen);
+}
+
+const SDL_Rect& theme::unit_image_location(const SDL_Rect& screen) const
+{
+	return unit_image_.location(screen);
 }
 
 std::map<std::string, config> theme::known_themes;
