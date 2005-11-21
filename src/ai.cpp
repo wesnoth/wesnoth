@@ -16,7 +16,7 @@
 #include "actions.hpp"
 #include "ai.hpp"
 #include "ai2.hpp"
-#include "ai_dfool.hpp"
+//#include "ai_dfool.hpp"
 //#include "advanced_ai.hpp"
 #include "dialogs.hpp"
 #include "game_config.hpp"
@@ -194,8 +194,8 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 		return new sample_ai(info);
 	else if(name == "idle_ai")
 		return new idle_ai(info);
-	else if(name == "dfool_ai")
-		return new dfool::dfool_ai(info);
+//	else if(name == "dfool_ai")
+//		return new dfool::dfool_ai(info);
 	//else if(name == "advanced_ai")
 	//	return new advanced_ai(info);
 	else if(name == "ai2")

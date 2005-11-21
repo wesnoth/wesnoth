@@ -32,7 +32,6 @@ wesnoth_SOURCES = \
 	about.cpp \
 	actions.cpp \
 	ai.cpp \
-	ai_dfool.cpp \
 	ai_attack.cpp \
 	ai_move.cpp \
 	animated.cpp \
@@ -135,7 +134,6 @@ wesnoth_SOURCES = \
 	about.hpp \
 	actions.hpp \
 	ai.hpp \
-	ai_dfool.hpp \
 	ai2.hpp \
 	ai_interface.hpp \
 	animated.hpp \
