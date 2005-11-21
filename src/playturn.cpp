@@ -803,7 +803,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 	// clicked on unit image? then move highlight to unit
 	if (gui_.unit_image_on(event.x,event.y)) {
-		// FIXME: actually do something here
+		gui_.scroll_to_tile(selected_hex_.x,selected_hex_.y,display::WARP);
+		gui_.highlight_hex(selected_hex_);
 		return;
 	}
 
