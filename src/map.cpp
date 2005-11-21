@@ -90,6 +90,11 @@ bool gamemap::is_keep(const gamemap::location& loc) const
 	return on_board(loc) && is_keep(get_terrain(loc));
 }
 
+bool gamemap::filter_location(const gamemap::location &loc,const config &con) const
+{ //need to fill this in
+  return on_board(loc);
+}
+
 gamemap::location::DIRECTION gamemap::location::parse_direction(const std::string& str)
 {
 	if(str == "n") {

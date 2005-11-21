@@ -112,6 +112,13 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 		generate_traits();
 	}
 
+	//units should have a unique underlying_description.  This is needed
+	//to keep track of which unit the AI has seen when playing in FOG
+	if(!underlying_description_.size()){
+	  char temp[80];
+	  sprintf(temp,"%s_%d",type_->id().c_str(),get_random()%UNIT_ID_MAX);
+	  underlying_description_=temp;
+	}
 }
 
 //constructor for advancing a unit from a lower level
@@ -697,6 +704,13 @@ void unit::read(const game_data& data, const config& cfg)
 	underlying_description_ = cfg["description"];
 	if(description_.empty()) {
 		description_ = underlying_description_;
+	}
+	//units should have a unique underlying_description.  This is needed
+	//to keep track of which unit the AI has seen when playing in FOG
+	if(!underlying_description_.size()){
+	  char temp[80];
+	  sprintf(temp,"%s_%d",type_->id().c_str(),get_random()%UNIT_ID_MAX);
+	  underlying_description_=temp;
 	}
 
 	custom_unit_description_ = cfg["unit_description"];

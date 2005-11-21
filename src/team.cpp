@@ -84,6 +84,12 @@ team::team_info::team_info(const config& cfg)
 		}
 	}
 
+	const config::child_list& ai_mems = cfg.get_children("ai_memory");
+	for(config::child_list::const_iterator aimem = ai_mems.begin(); aimem != ai_mems.end(); ++aimem) {
+	  ai_memory_.append(**aimem);
+	}
+
+
 	gold = cfg["gold"];
 	income = cfg["income"];
 	name = cfg["name"];
@@ -246,6 +252,7 @@ void team::team_info::write(config& cfg) const
 	for(std::vector<config>::const_iterator ai = ai_params.begin(); ai != ai_params.end(); ++ai) {
 		cfg.add_child("ai",*ai);
 	}
+	if(!ai_memory_.empty()) cfg.add_child("ai_memory",ai_memory_);
 	cfg["ai_algorithm"] = ai_algorithm;
 
 	cfg["gold"] = gold;
@@ -604,6 +611,19 @@ const std::string& team::ai_algorithm() const
 const config& team::ai_parameters() const
 {
 	return aiparams_;
+}
+
+const config& team::ai_memory() const
+{
+       return info_.ai_memory_;
+}
+
+void team::set_ai_memory(const config& ai_mem){
+  //would perhaps be more efficient to allow writing to the memory directly,
+  //but this method comparmentalizes the functionality and protects against
+  //accidentally overwriting the memory
+  info_.ai_memory_=ai_mem;
+  return;
 }
 
 void team::make_network()

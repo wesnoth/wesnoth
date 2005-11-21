@@ -90,6 +90,7 @@ public:
 		std::string ai_algorithm;
 
 		std::vector<config> ai_params;
+	        config ai_memory_;
 
 		int villages_per_scout;
 		double leader_value, village_value;
@@ -164,6 +165,8 @@ public:
 
 	const std::string& ai_algorithm() const;
 	const config& ai_parameters() const;
+        const config& ai_memory() const;
+        void set_ai_memory(const config& ai_mem);
 
 	double leader_value() const;
 	double village_value() const;

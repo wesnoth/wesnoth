@@ -103,6 +103,9 @@ public:
 	bool is_castle(const location& loc) const;
 	bool is_keep(const location& loc) const;
 
+        //function to filter whether a location matches a set of criteria
+        bool filter_location(const location &loc,const config &con) const;
+
 	//loads a map, with the given terrain configuration.
 	//data should be a series of lines, with each character representing
 	//one hex on the map. Starting locations are represented by numbers,
