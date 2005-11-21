@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-11-12 21:22+0100\n"
+"POT-Creation-Date: 2005-11-21 21:35+0100\n"
 "PO-Revision-Date: 2005-09-07 13:46+0200\n"
 "Last-Translator: Matias Parmala <matias.parmala@pp.inet.fi>\n"
 "Language-Team: none\n"
@@ -57,38 +57,38 @@ msgid "Map creation failed."
 msgstr "Kartan luonti epäonnistui."
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
-#: src/preferences_display.cpp:650
+#: src/preferences_display.cpp:660
 msgid "Close Window"
 msgstr "Sulje ikkuna"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:73 src/preferences_display.cpp:552
+#: src/hotkeys.cpp:73 src/preferences_display.cpp:562
 msgid "Preferences"
 msgstr "Asetukset"
 
-#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:224
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:229
 msgid "Scroll Speed:"
 msgstr "Vieritysnopeus:"
 
 #: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:56
-#: src/preferences_display.cpp:206
+#: src/preferences_display.cpp:210
 msgid "Toggle Full Screen"
 msgstr "Koko ruutu / ikkunoitu"
 
-#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:209
+#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:213
 msgid "Show Grid"
 msgstr "Näytä ruudukko"
 
-#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:216
+#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:220
 msgid "Video Mode"
 msgstr "Näyttötarkkuus"
 
-#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:217
+#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:222
 msgid "Hotkeys"
 msgstr "Pikanäppäimet"
 
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Resize Map"
 msgstr "Muuta kartan kokoa"
 
@@ -272,119 +272,123 @@ msgstr ""
 msgid "Fog"
 msgstr ""
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:88
+msgid "Skip animation"
+msgstr ""
+
+#: src/hotkeys.cpp:90
 msgid "Set Terrain"
 msgstr "Valitse maasto"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Quit Editor"
 msgstr "Sulje editori"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "New Map"
 msgstr "Uusi kartta"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Load Map"
 msgstr "Avaa kartta"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Save Map"
 msgstr "Tallenna kartta"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Save As"
 msgstr "Tallenna nimellä"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Set Player's keep"
 msgstr "Valitse pelaajan linnoitus"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Flood Fill"
 msgstr "Täyttö"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Fill Selection"
 msgstr "Täytä valinta"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Cut"
 msgstr "Leikkaa"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Copy"
 msgstr "Kopioi"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Paste"
 msgstr "Liitä"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Revert from Disk"
 msgstr "Palauta levyltä"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Flip Map"
 msgstr "Käännä kartta"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Select All"
 msgstr "Valitse kaikki"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Draw Terrain"
 msgstr "Piirrä maasto"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Refresh Image Cache"
 msgstr "Päivitä kuvavarasto"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Delay Shroud Updates"
 msgstr "Viivytä peitteen päivitystä"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Update Shroud Now"
 msgstr "Päivitä peite nyt"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Continue Move"
 msgstr "Jatka liikettä"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Find Label or Unit"
 msgstr "Etsi karttamerkintä tai yksikkö"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Speak to Ally"
 msgstr "Puhu liittolaisille"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Speak to All"
 msgstr "Puhu kaikille"
 
-#: src/hotkeys.cpp:114 src/show_dialog.cpp:577
+#: src/hotkeys.cpp:115 src/show_dialog.cpp:577
 msgid "Help"
 msgstr "Apua"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "View Chat Log"
 msgstr "Katso keskusteluhistoria"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Enter user command"
 msgstr "Syötä käyttäjän komento"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Change the language"
 msgstr "Vaihda käytettävää kieltä."
 
-#: src/hotkeys.cpp:367 src/hotkeys.cpp:561
+#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
 msgid "Do you really want to quit?"
 msgstr "Haluatko todellakin lopettaa?"
 
-#: src/hotkeys.cpp:367 src/hotkeys.cpp:561
+#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
 msgid "Quit"
 msgstr "Lopeta"
 
@@ -436,7 +440,7 @@ msgstr "saari"
 msgid "player"
 msgstr "pelaaja"
 
-#: src/preferences_display.cpp:69 src/preferences_display.cpp:101
+#: src/preferences_display.cpp:73 src/preferences_display.cpp:105
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -447,203 +451,220 @@ msgstr ""
 "Näyttösi täytyy tukea 1024x768x16 -moodia, jotta peli voidaan ajaa koko "
 "ruudun kokoisena."
 
-#: src/preferences_display.cpp:207
+#: src/preferences_display.cpp:211
 msgid "Accelerated Speed"
 msgstr "Kiihdytetty nopeus"
 
-#: src/preferences_display.cpp:208
+#: src/preferences_display.cpp:212
 msgid "Skip AI Moves"
 msgstr "Ohita tietokoneen liikkeet"
 
-#: src/preferences_display.cpp:210
+#: src/preferences_display.cpp:214
 msgid "Show Floating Labels"
 msgstr "Näytä leijuvat merkit"
 
-#: src/preferences_display.cpp:211
+#: src/preferences_display.cpp:215
 msgid "Turn Dialog"
 msgstr "Näytä vuoron ilmoitus"
 
-#: src/preferences_display.cpp:212
+#: src/preferences_display.cpp:216
 msgid "Turn Bell"
 msgstr "Soita vuoron äänimerkki"
 
-#: src/preferences_display.cpp:213
+#: src/preferences_display.cpp:217
 msgid "Show Team Colors"
 msgstr "Näytä joukkueen värit"
 
-#: src/preferences_display.cpp:214
+#: src/preferences_display.cpp:218
 msgid "Show Color Cursors"
 msgstr "Käytä värillisiä kursoreita"
 
-#: src/preferences_display.cpp:215
+#: src/preferences_display.cpp:219
 msgid "Show Haloing Effects"
 msgstr "Näytä valokehä-efektit"
 
-#: src/preferences_display.cpp:218
+#: src/preferences_display.cpp:221
+msgid "Theme"
+msgstr ""
+
+#: src/preferences_display.cpp:223
 msgid "Adjust Gamma"
 msgstr "Säädä kirkkautta"
 
-#: src/preferences_display.cpp:219
+#: src/preferences_display.cpp:224
 msgid "Reverse Time Graphics"
 msgstr "Käännetyt vuorokaudenajan kuvat"
 
-#: src/preferences_display.cpp:220
+#: src/preferences_display.cpp:225
 msgid "Sound effects"
 msgstr "Äänet"
 
-#: src/preferences_display.cpp:221
+#: src/preferences_display.cpp:226
 msgid "Music"
 msgstr "Musiikki"
 
-#: src/preferences_display.cpp:223
+#: src/preferences_display.cpp:228
 msgid "Music Volume:"
 msgstr "Musiikki:"
 
-#: src/preferences_display.cpp:223
+#: src/preferences_display.cpp:228
 msgid "SFX Volume:"
 msgstr "Äänet:"
 
-#: src/preferences_display.cpp:224
+#: src/preferences_display.cpp:229
 msgid "Gamma:"
 msgstr "Kirkkaus:"
 
-#: src/preferences_display.cpp:237
+#: src/preferences_display.cpp:242
 msgid "Sound effects on/off"
 msgstr "Ääniefektit päällä/pois"
 
-#: src/preferences_display.cpp:241
+#: src/preferences_display.cpp:246
 msgid "Change the sound effects volume"
 msgstr "Muuta ääniefektien voimakkuutta."
 
-#: src/preferences_display.cpp:244
+#: src/preferences_display.cpp:249
 msgid "Music on/off"
 msgstr "Musiikki päällä/pois"
 
-#: src/preferences_display.cpp:248
+#: src/preferences_display.cpp:253
 msgid "Change the music volume"
 msgstr "Muuta musiikin voimakkuutta."
 
-#: src/preferences_display.cpp:254
+#: src/preferences_display.cpp:259
 msgid "Change the speed of scrolling around the map"
 msgstr "Muuta kartan vieritysnopeutta."
 
-#: src/preferences_display.cpp:257 src/preferences_display.cpp:262
+#: src/preferences_display.cpp:262 src/preferences_display.cpp:267
 msgid "Change the brightness of the display"
 msgstr "Vaihda näytön kirkkausasetuksia."
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:270
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Valitse, onko peli koko ruudun kokoinen vai ikkunoitu."
 
-#: src/preferences_display.cpp:268
+#: src/preferences_display.cpp:273
 msgid "Make units move and fight faster"
 msgstr "Valitse, jos haluat, että yksiköt liikkuvat ja taistelevat nopeammin."
 
-#: src/preferences_display.cpp:271
+#: src/preferences_display.cpp:276
 msgid "Do not animate AI units moving"
 msgstr "Älä animoi tietokoneen yksikköjen liikkeitä."
 
-#: src/preferences_display.cpp:274
+#: src/preferences_display.cpp:279
 msgid "Overlay a grid onto the map"
 msgstr "Näytä ruudukko kartalla."
 
-#: src/preferences_display.cpp:277
+#: src/preferences_display.cpp:282
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Näytä yksikön yläpuolella sen saama vahinko."
 
-#: src/preferences_display.cpp:279
+#: src/preferences_display.cpp:284
 msgid "Change the resolution the game runs at"
 msgstr "Vaihda näyttötarkkuutta."
 
-#: src/preferences_display.cpp:282
+#: src/preferences_display.cpp:285
+#, fuzzy
+msgid "Change the theme the game runs with"
+msgstr "Vaihda näyttötarkkuutta."
+
+#: src/preferences_display.cpp:288
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Näytä ilmoitus vuorosi alussa."
 
-#: src/preferences_display.cpp:285
+#: src/preferences_display.cpp:291
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Soita äänimerkki vuorosi alussa."
 
-#: src/preferences_display.cpp:288
+#: src/preferences_display.cpp:294
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "Näytä yksikön alla värillinen kehä, joka osoittaa yksikön joukkueen."
 
-#: src/preferences_display.cpp:291
+#: src/preferences_display.cpp:297
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Valitse, liikkuuko aurinko vasemmalta oikealle, vai päinvastoin."
 
-#: src/preferences_display.cpp:294
+#: src/preferences_display.cpp:300
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Värilliset hiiren kursorit (mahdollisesti hitaampi)."
 
-#: src/preferences_display.cpp:297
+#: src/preferences_display.cpp:303
 msgid "Use graphical special effects (may be slower)"
 msgstr "Käytä graafisia erikoistehosteita (mahdollisesti hitaampi)."
 
-#: src/preferences_display.cpp:299
+#: src/preferences_display.cpp:305
 msgid "View and configure keyboard shortcuts"
 msgstr "Katso ja muokkaa pikanäppäimiä."
 
-#: src/preferences_display.cpp:478
+#: src/preferences_display.cpp:487
 msgid "yes"
 msgstr "kyllä"
 
-#: src/preferences_display.cpp:480
+#: src/preferences_display.cpp:489
 msgid "no"
 msgstr "ei"
 
-#: src/preferences_display.cpp:539
+#: src/preferences_display.cpp:549
 msgid "Prefs section^General"
 msgstr "Yleiset"
 
-#: src/preferences_display.cpp:540
+#: src/preferences_display.cpp:550
 msgid "Prefs section^Display"
 msgstr "Näyttö"
 
-#: src/preferences_display.cpp:541
+#: src/preferences_display.cpp:551
 msgid "Prefs section^Sound"
 msgstr "Äänet"
 
-#: src/preferences_display.cpp:542
+#: src/preferences_display.cpp:552
 msgid "Advanced section^Advanced"
 msgstr "Edistyneet asetukset"
 
-#: src/preferences_display.cpp:593
+#: src/preferences_display.cpp:603
 msgid "There are no alternative video modes available"
 msgstr "Vaihtoehtoisia näyttötarkkuuksia ei ole käytettävissä."
 
-#: src/preferences_display.cpp:622
+#: src/preferences_display.cpp:632
 msgid "Choose Resolution"
 msgstr "Valitse näyttötarkkuus"
 
-#: src/preferences_display.cpp:655
+#: src/preferences_display.cpp:665
 msgid "Hotkey Settings"
 msgstr "Pikanäppäinten asetukset"
 
-#: src/preferences_display.cpp:659 src/preferences_display.cpp:712
+#: src/preferences_display.cpp:669 src/preferences_display.cpp:722
 msgid "Press desired HotKey"
 msgstr "Valitse uusi pikanäppäin"
 
-#: src/preferences_display.cpp:677
+#: src/preferences_display.cpp:687
 msgid "Action"
 msgstr "Toiminto"
 
-#: src/preferences_display.cpp:677
+#: src/preferences_display.cpp:687
 msgid "Binding"
 msgstr "Valinta"
 
-#: src/preferences_display.cpp:689
+#: src/preferences_display.cpp:699
 msgid "Change Hotkey"
 msgstr "Vaihda"
 
-#: src/preferences_display.cpp:692
+#: src/preferences_display.cpp:702
 msgid "Save Hotkeys"
 msgstr "Tallenna"
 
-#: src/preferences_display.cpp:738
+#: src/preferences_display.cpp:748
 msgid "This HotKey is already in use."
 msgstr "Tämä pikanäppäin on jo käytössä."
+
+#: src/preferences_display.cpp:780
+msgid "Saved Theme Preference: "
+msgstr ""
+
+#: src/preferences_display.cpp:786
+msgid "New theme will take effect on next new or loaded game."
+msgstr ""
 
 #: src/show_dialog.cpp:314
 msgid "Error"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-11-12 21:22+0100\n"
+"POT-Creation-Date: 2005-11-21 21:35+0100\n"
 "PO-Revision-Date: 2005-08-14 20:06+0100\n"
 "Last-Translator: Bjarke Sørensen <bs@wasd.dk>\n"
 "Language-Team: Danish <wesnoth-da@lillesvin.net>\n"
@@ -59,39 +59,39 @@ msgid "Map creation failed."
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
-#: src/preferences_display.cpp:650
+#: src/preferences_display.cpp:660
 msgid "Close Window"
 msgstr "Luk vindue"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:73 src/preferences_display.cpp:552
+#: src/hotkeys.cpp:73 src/preferences_display.cpp:562
 msgid "Preferences"
 msgstr "Indstillinger"
 
 # Igen. Kan man det både hori or verti?
-#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:224
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:229
 msgid "Scroll Speed:"
 msgstr "Panoreringshastighed:"
 
 #: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:56
-#: src/preferences_display.cpp:206
+#: src/preferences_display.cpp:210
 msgid "Toggle Full Screen"
 msgstr "Skift til/fra fuldskærm"
 
-#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:209
+#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:213
 msgid "Show Grid"
 msgstr "Vis net"
 
-#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:216
+#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:220
 msgid "Video Mode"
 msgstr "Videomode"
 
-#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:217
+#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:222
 msgid "Hotkeys"
 msgstr "Tastaturgenveje"
 
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Resize Map"
 msgstr "Skift størrelse på kort"
 
@@ -275,120 +275,124 @@ msgstr ""
 msgid "Fog"
 msgstr ""
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:88
+msgid "Skip animation"
+msgstr ""
+
+#: src/hotkeys.cpp:90
 msgid "Set Terrain"
 msgstr "Indstil terræn"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Quit Editor"
 msgstr "Afslut redigeringsprogram"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "New Map"
 msgstr "Nyt kort"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Load Map"
 msgstr "Indlæs kort"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Save Map"
 msgstr "Gem kort"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Save As"
 msgstr "Gem som"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Set Player's keep"
 msgstr "Vælg spillers tårn"
 
 # Man skal nok have en sammenhæng for at lure den der... :-)
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Flood Fill"
 msgstr "Udfyldz"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Fill Selection"
 msgstr "Udfyld det markerede"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Cut"
 msgstr "Klip"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Paste"
 msgstr "Indsæt"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Revert from Disk"
 msgstr "Genindlæs fra disk"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Flip Map"
 msgstr "Vend kort"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Select All"
 msgstr "Vælg alt"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Draw Terrain"
 msgstr "Tegn terræn"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Refresh Image Cache"
 msgstr "Opfrisk billed-cache"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Delay Shroud Updates"
 msgstr "Udskyd sløringsopdateringer"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Update Shroud Now"
 msgstr "Opdater sløring"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Continue Move"
 msgstr "Fortsæt bevægelse"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Find Label or Unit"
 msgstr "Find mærkat eller enhed"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Speak to Ally"
 msgstr "Tal til allierede"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Speak to All"
 msgstr "Tal til alle"
 
-#: src/hotkeys.cpp:114 src/show_dialog.cpp:577
+#: src/hotkeys.cpp:115 src/show_dialog.cpp:577
 msgid "Help"
 msgstr "Hjælp"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "View Chat Log"
 msgstr "Vis chat-log"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Enter user command"
 msgstr "Indtast brugerkomando"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Change the language"
 msgstr "Skift sprog"
 
-#: src/hotkeys.cpp:367 src/hotkeys.cpp:561
+#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
 msgid "Do you really want to quit?"
 msgstr "Er du sikker på at du vil afslutte?"
 
-#: src/hotkeys.cpp:367 src/hotkeys.cpp:561
+#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
 msgid "Quit"
 msgstr "Afslut"
 
@@ -440,7 +444,7 @@ msgstr "Ø"
 msgid "player"
 msgstr "spiller"
 
-#: src/preferences_display.cpp:69 src/preferences_display.cpp:101
+#: src/preferences_display.cpp:73 src/preferences_display.cpp:105
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -452,207 +456,224 @@ msgstr ""
 
 # Skal ændres efter 1.0
 # Der er kun en slags acceleration.
-#: src/preferences_display.cpp:207
+#: src/preferences_display.cpp:211
 msgid "Accelerated Speed"
 msgstr "Accelereret hastighed"
 
-#: src/preferences_display.cpp:208
+#: src/preferences_display.cpp:212
 msgid "Skip AI Moves"
 msgstr "Vis ikke computerens ryk"
 
-#: src/preferences_display.cpp:210
+#: src/preferences_display.cpp:214
 msgid "Show Floating Labels"
 msgstr "Vis flydende mærkater"
 
-#: src/preferences_display.cpp:211
+#: src/preferences_display.cpp:215
 msgid "Turn Dialog"
 msgstr "Tur-dialog"
 
-#: src/preferences_display.cpp:212
+#: src/preferences_display.cpp:216
 msgid "Turn Bell"
 msgstr "Tur-klokke"
 
-#: src/preferences_display.cpp:213
+#: src/preferences_display.cpp:217
 msgid "Show Team Colors"
 msgstr "Vis hold-farver"
 
-#: src/preferences_display.cpp:214
+#: src/preferences_display.cpp:218
 msgid "Show Color Cursors"
 msgstr "Vis farvet markør"
 
-#: src/preferences_display.cpp:215
+#: src/preferences_display.cpp:219
 msgid "Show Haloing Effects"
 msgstr "Vis glorieeffekt"
 
-#: src/preferences_display.cpp:218
+#: src/preferences_display.cpp:221
+msgid "Theme"
+msgstr ""
+
+#: src/preferences_display.cpp:223
 msgid "Adjust Gamma"
 msgstr "Justér Gamma"
 
-#: src/preferences_display.cpp:219
+#: src/preferences_display.cpp:224
 msgid "Reverse Time Graphics"
 msgstr "Omvendt tidsgrafik"
 
-#: src/preferences_display.cpp:220
+#: src/preferences_display.cpp:225
 msgid "Sound effects"
 msgstr "Lydeffekter"
 
-#: src/preferences_display.cpp:221
+#: src/preferences_display.cpp:226
 msgid "Music"
 msgstr "Musik"
 
-#: src/preferences_display.cpp:223
+#: src/preferences_display.cpp:228
 msgid "Music Volume:"
 msgstr "Musikstyrke:"
 
-#: src/preferences_display.cpp:223
+#: src/preferences_display.cpp:228
 msgid "SFX Volume:"
 msgstr "Lydeffekter styrke:"
 
-#: src/preferences_display.cpp:224
+#: src/preferences_display.cpp:229
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences_display.cpp:237
+#: src/preferences_display.cpp:242
 msgid "Sound effects on/off"
 msgstr "Lydeffekter til/fra"
 
-#: src/preferences_display.cpp:241
+#: src/preferences_display.cpp:246
 msgid "Change the sound effects volume"
 msgstr "Skift lydeffekters styrke"
 
-#: src/preferences_display.cpp:244
+#: src/preferences_display.cpp:249
 msgid "Music on/off"
 msgstr "Musik til/fra"
 
-#: src/preferences_display.cpp:248
+#: src/preferences_display.cpp:253
 msgid "Change the music volume"
 msgstr "Indstil lydstyrke"
 
 # Kan panorering være både horisontalt og vertikalt?
-#: src/preferences_display.cpp:254
+#: src/preferences_display.cpp:259
 msgid "Change the speed of scrolling around the map"
 msgstr "Skift hastighed for panorering på kortet"
 
-#: src/preferences_display.cpp:257 src/preferences_display.cpp:262
+#: src/preferences_display.cpp:262 src/preferences_display.cpp:267
 msgid "Change the brightness of the display"
 msgstr "Skift skærmens lysstyrke"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:270
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Vælg om spillet skal afvikles i fuld skærm eller i et vindue"
 
-#: src/preferences_display.cpp:268
+#: src/preferences_display.cpp:273
 msgid "Make units move and fight faster"
 msgstr "Få enheder til at bevæge sig, og kæmpe hurtigere"
 
-#: src/preferences_display.cpp:271
+#: src/preferences_display.cpp:276
 msgid "Do not animate AI units moving"
 msgstr "Animér ikke computer enheders bevægelse"
 
-#: src/preferences_display.cpp:274
+#: src/preferences_display.cpp:279
 msgid "Overlay a grid onto the map"
 msgstr "Vis et net over kortet"
 
-#: src/preferences_display.cpp:277
+#: src/preferences_display.cpp:282
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Vis en tekst over en enhed for at angive hvor meget skade den har taget"
 
-#: src/preferences_display.cpp:279
+#: src/preferences_display.cpp:284
 msgid "Change the resolution the game runs at"
 msgstr "Skift opløsningen spillet afvikles i"
 
-#: src/preferences_display.cpp:282
+#: src/preferences_display.cpp:285
+#, fuzzy
+msgid "Change the theme the game runs with"
+msgstr "Skift opløsningen spillet afvikles i"
+
+#: src/preferences_display.cpp:288
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Vis en dialog i starten af din tur"
 
-#: src/preferences_display.cpp:285
+#: src/preferences_display.cpp:291
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Ring en klokke i starten af din tur"
 
-#: src/preferences_display.cpp:288
+#: src/preferences_display.cpp:294
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
 "Vis en farvet cirkel omkring hver enhed for at angive hvilken side den er på"
 
-#: src/preferences_display.cpp:291
+#: src/preferences_display.cpp:297
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Vælg om solen bevæger sig fra højre mod venstre eller fra venstre mod højre"
 
-#: src/preferences_display.cpp:294
+#: src/preferences_display.cpp:300
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Brug farvede musemarkører (kan være langsommere)"
 
-#: src/preferences_display.cpp:297
+#: src/preferences_display.cpp:303
 msgid "Use graphical special effects (may be slower)"
 msgstr "Brug grafiske specialeffekter (kan være langsommere)"
 
-#: src/preferences_display.cpp:299
+#: src/preferences_display.cpp:305
 msgid "View and configure keyboard shortcuts"
 msgstr "Vis og indstil tastaturgenveje"
 
-#: src/preferences_display.cpp:478
+#: src/preferences_display.cpp:487
 msgid "yes"
 msgstr "ja"
 
-#: src/preferences_display.cpp:480
+#: src/preferences_display.cpp:489
 msgid "no"
 msgstr "nej"
 
-#: src/preferences_display.cpp:539
+#: src/preferences_display.cpp:549
 msgid "Prefs section^General"
 msgstr "Generelt"
 
-#: src/preferences_display.cpp:540
+#: src/preferences_display.cpp:550
 msgid "Prefs section^Display"
 msgstr "Skærm"
 
-#: src/preferences_display.cpp:541
+#: src/preferences_display.cpp:551
 msgid "Prefs section^Sound"
 msgstr "Lyd"
 
-#: src/preferences_display.cpp:542
+#: src/preferences_display.cpp:552
 msgid "Advanced section^Advanced"
 msgstr "Avanceret"
 
-#: src/preferences_display.cpp:593
+#: src/preferences_display.cpp:603
 msgid "There are no alternative video modes available"
 msgstr "Der er ingen alternative videomodes tilgængelige"
 
-#: src/preferences_display.cpp:622
+#: src/preferences_display.cpp:632
 msgid "Choose Resolution"
 msgstr "Vælg opløsning"
 
-#: src/preferences_display.cpp:655
+#: src/preferences_display.cpp:665
 msgid "Hotkey Settings"
 msgstr "Genvejsindstillinger"
 
-#: src/preferences_display.cpp:659 src/preferences_display.cpp:712
+#: src/preferences_display.cpp:669 src/preferences_display.cpp:722
 msgid "Press desired HotKey"
 msgstr "Tryk ønskede genvejstaste"
 
-#: src/preferences_display.cpp:677
+#: src/preferences_display.cpp:687
 msgid "Action"
 msgstr "Operation"
 
-#: src/preferences_display.cpp:677
+#: src/preferences_display.cpp:687
 msgid "Binding"
 msgstr "Binding"
 
-#: src/preferences_display.cpp:689
+#: src/preferences_display.cpp:699
 msgid "Change Hotkey"
 msgstr "Skift genvejstaster"
 
-#: src/preferences_display.cpp:692
+#: src/preferences_display.cpp:702
 msgid "Save Hotkeys"
 msgstr "Gem genvejstaster"
 
-#: src/preferences_display.cpp:738
+#: src/preferences_display.cpp:748
 msgid "This HotKey is already in use."
 msgstr "Denne genvejstaste er allerede i brug."
+
+#: src/preferences_display.cpp:780
+msgid "Saved Theme Preference: "
+msgstr ""
+
+#: src/preferences_display.cpp:786
+msgid "New theme will take effect on next new or loaded game."
+msgstr ""
 
 #: src/show_dialog.cpp:314
 msgid "Error"

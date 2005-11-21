@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-11-04 22:09+0100\n"
+"POT-Creation-Date: 2005-11-21 21:35+0100\n"
 "PO-Revision-Date: 2005-08-03 22:09+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team: none\n"
@@ -23,6 +23,10 @@ msgstr "Plik"
 #: data/themes/editor.cfg:454
 msgid "Edit"
 msgstr "Edycja"
+
+#: data/themes/editor.cfg:461
+msgid "Settings"
+msgstr ""
 
 #: src/editor/editor.cpp:162
 msgid "Draw tiles"
@@ -68,94 +72,94 @@ msgstr "Zmień rozmiar mapy"
 msgid "Flip map"
 msgstr "Odwróć mapę"
 
-#: src/editor/editor.cpp:378
+#: src/editor/editor.cpp:380
 msgid "Language"
 msgstr "Język"
 
-#: src/editor/editor.cpp:379
+#: src/editor/editor.cpp:381
 msgid "Choose your preferred language:"
 msgstr "Wybierz twój preferowany język:"
 
-#: src/editor/editor.cpp:407
+#: src/editor/editor.cpp:395 src/editor/editor_main.cpp:252
+msgid "Battle for Wesnoth Map Editor"
+msgstr "Edytor map Bitwy o Wesnoth"
+
+#: src/editor/editor.cpp:419
 msgid "Save the Map As"
 msgstr "Zapisz Mapę Jako"
 
-#: src/editor/editor.cpp:418
+#: src/editor/editor.cpp:430
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Mapa już istnieje. Czy chcesz ją nadpisać?"
 
-#: src/editor/editor.cpp:441
+#: src/editor/editor.cpp:453
 msgid "Player "
 msgstr "Gracz"
 
-#: src/editor/editor.cpp:444
+#: src/editor/editor.cpp:456
 msgid "Which Player?"
 msgstr "Który Gracz?"
 
-#: src/editor/editor.cpp:445
+#: src/editor/editor.cpp:457
 msgid "Which player should start here?"
 msgstr "Który gracz powinien tutaj zaczynać?"
 
-#: src/editor/editor.cpp:497
+#: src/editor/editor.cpp:509
 msgid "Choose a Map to Load"
 msgstr "Wybierz mapę do załadowania"
 
-#: src/editor/editor.cpp:501
+#: src/editor/editor.cpp:513
 msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr ""
 "Ostrzeżenie: niewłaściwe znaki w nazwie mapy. Musisz zapisać pod inną nazwą."
 
-#: src/editor/editor.cpp:519 src/editor/editor.cpp:598
+#: src/editor/editor.cpp:531 src/editor/editor.cpp:610
 msgid "The file does not contain a valid map."
 msgstr "Plik nie zawiera prawidłowej mapy."
 
-#: src/editor/editor.cpp:660
+#: src/editor/editor.cpp:672
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' nie istnieje lub nie może być odczytany jako plik."
 
-#: src/editor/editor.cpp:672
+#: src/editor/editor.cpp:684
 msgid "Load failed: "
 msgstr "Ładowanie nie powiodło się:"
 
-#: src/editor/editor.cpp:871
+#: src/editor/editor.cpp:883
 msgid "You must have a hex selected on the board."
 msgstr "Musisz mieć zaznaczone pole na planszy."
 
-#: src/editor/editor.cpp:1120
+#: src/editor/editor.cpp:1132
 msgid "Quit Editor"
 msgstr "Opuścić Edytor?"
 
-#: src/editor/editor.cpp:1125
+#: src/editor/editor.cpp:1137
 msgid "Do you want to save the map before quitting?"
 msgstr "Czy chcesz zapisać mapę przed wyjściem?"
 
-#: src/editor/editor.cpp:1157
+#: src/editor/editor.cpp:1169
 msgid "Map saved."
 msgstr "Mapa zapisana."
 
-#: src/editor/editor.cpp:1164
+#: src/editor/editor.cpp:1176
 msgid "Could not save the map: $msg"
 msgstr "Zapisanie mapy nie powiodło się: $msg"
 
-#: src/editor/editor.cpp:1179
+#: src/editor/editor.cpp:1191
 msgid "Error: Illegal character in filename."
 msgstr "Błąd: niewłaściwy znak w nazwie pliku."
 
-#: src/editor/editor.cpp:1235
+#: src/editor/editor.cpp:1247
 msgid "Player"
 msgstr "Gracz"
 
-#: src/editor/editor_main.cpp:252
-msgid "Battle for Wesnoth Map Editor"
-msgstr "Edytor map Bitwy o Wesnoth"
-
-#: src/editor/editor_palettes.cpp:311
+#: src/editor/editor_palettes.cpp:319
 msgid "FG"
 msgstr "FG"
 
-#: src/editor/editor_palettes.cpp:313
+#: src/editor/editor_palettes.cpp:321
 msgid "BG"
 msgstr "BG"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-11-04 22:09+0100\n"
+"POT-Creation-Date: 2005-11-21 21:35+0100\n"
 "PO-Revision-Date: 2005-10-14 14:24+0200\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
@@ -24,6 +24,10 @@ msgstr "קובץ"
 #: data/themes/editor.cfg:454
 msgid "Edit"
 msgstr "עריכה"
+
+#: data/themes/editor.cfg:461
+msgid "Settings"
+msgstr ""
 
 #: src/editor/editor.cpp:162
 msgid "Draw tiles"
@@ -69,93 +73,93 @@ msgstr "שינוי גודל מפה"
 msgid "Flip map"
 msgstr "הפיכת מפה"
 
-#: src/editor/editor.cpp:378
+#: src/editor/editor.cpp:380
 msgid "Language"
 msgstr "שפה"
 
-#: src/editor/editor.cpp:379
+#: src/editor/editor.cpp:381
 msgid "Choose your preferred language:"
 msgstr "בחירת שפה מועדפת:"
 
-#: src/editor/editor.cpp:407
+#: src/editor/editor.cpp:395 src/editor/editor_main.cpp:252
+msgid "Battle for Wesnoth Map Editor"
+msgstr "עורך מפות עבור הקרב על ווסנות'"
+
+#: src/editor/editor.cpp:419
 msgid "Save the Map As"
 msgstr "שמירת מפה בשם"
 
-#: src/editor/editor.cpp:418
+#: src/editor/editor.cpp:430
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "המפה כבר קיימת. האם לדרוס אותה?"
 
-#: src/editor/editor.cpp:441
+#: src/editor/editor.cpp:453
 msgid "Player "
 msgstr "שחקן "
 
-#: src/editor/editor.cpp:444
+#: src/editor/editor.cpp:456
 msgid "Which Player?"
 msgstr "איזה שחקן?"
 
-#: src/editor/editor.cpp:445
+#: src/editor/editor.cpp:457
 msgid "Which player should start here?"
 msgstr "איזה שחקן צריך להתחיל כאן?"
 
-#: src/editor/editor.cpp:497
+#: src/editor/editor.cpp:509
 msgid "Choose a Map to Load"
 msgstr "בחירת מפה לטעינה"
 
-#: src/editor/editor.cpp:501
+#: src/editor/editor.cpp:513
 msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
 msgstr "אזהרה: שם מפה מכיל תווים בלתי חוקיים. יש לשמור בשם אחר."
 
-#: src/editor/editor.cpp:519 src/editor/editor.cpp:598
+#: src/editor/editor.cpp:531 src/editor/editor.cpp:610
 msgid "The file does not contain a valid map."
 msgstr "קובץ זה אינו מכיל מפה חוקית."
 
-#: src/editor/editor.cpp:660
+#: src/editor/editor.cpp:672
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' אינו קיים או אינו יכול להקרא"
 
-#: src/editor/editor.cpp:672
+#: src/editor/editor.cpp:684
 msgid "Load failed: "
 msgstr "טעינה נכשלה: "
 
-#: src/editor/editor.cpp:871
+#: src/editor/editor.cpp:883
 msgid "You must have a hex selected on the board."
 msgstr "יש לבחור מרצפת על הלוח."
 
-#: src/editor/editor.cpp:1120
+#: src/editor/editor.cpp:1132
 msgid "Quit Editor"
 msgstr "צא מתוכנית העריכה"
 
-#: src/editor/editor.cpp:1125
+#: src/editor/editor.cpp:1137
 msgid "Do you want to save the map before quitting?"
 msgstr "האם ברצונך לשמור את המפה לפני יציאה?"
 
-#: src/editor/editor.cpp:1157
+#: src/editor/editor.cpp:1169
 msgid "Map saved."
 msgstr "מפה נשמרה."
 
-#: src/editor/editor.cpp:1164
+#: src/editor/editor.cpp:1176
 msgid "Could not save the map: $msg"
 msgstr "לא ניתן לשמור את המפה: $msg"
 
-#: src/editor/editor.cpp:1179
+#: src/editor/editor.cpp:1191
 msgid "Error: Illegal character in filename."
 msgstr "שגיאה: תו בלתי חוקי לשם קובץ."
 
-#: src/editor/editor.cpp:1235
+#: src/editor/editor.cpp:1247
 msgid "Player"
 msgstr "שחקן"
 
-#: src/editor/editor_main.cpp:252
-msgid "Battle for Wesnoth Map Editor"
-msgstr "עורך מפות עבור הקרב על ווסנות'"
-
-#: src/editor/editor_palettes.cpp:311
+#: src/editor/editor_palettes.cpp:319
 msgid "FG"
 msgstr "חזית"
 
-#: src/editor/editor_palettes.cpp:313
+#: src/editor/editor_palettes.cpp:321
 msgid "BG"
 msgstr "רקע"
 

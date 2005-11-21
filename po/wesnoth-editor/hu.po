@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-11-04 22:09+0100\n"
+"POT-Creation-Date: 2005-11-21 21:35+0100\n"
 "PO-Revision-Date: 2005-08-12 20:31+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -19,6 +19,10 @@ msgstr "Fájl"
 #: data/themes/editor.cfg:454
 msgid "Edit"
 msgstr "Szerkeszt"
+
+#: data/themes/editor.cfg:461
+msgid "Settings"
+msgstr ""
 
 #: src/editor/editor.cpp:162
 msgid "Draw tiles"
@@ -64,39 +68,43 @@ msgstr "Pálya átméretezése"
 msgid "Flip map"
 msgstr "Pálya tükrözése"
 
-#: src/editor/editor.cpp:378
+#: src/editor/editor.cpp:380
 msgid "Language"
 msgstr "Nyelv"
 
-#: src/editor/editor.cpp:379
+#: src/editor/editor.cpp:381
 msgid "Choose your preferred language:"
 msgstr "Leginkább megfelelő nyelv kiválasztása:"
 
-#: src/editor/editor.cpp:407
+#: src/editor/editor.cpp:395 src/editor/editor_main.cpp:252
+msgid "Battle for Wesnoth Map Editor"
+msgstr "Harc Wesnoth-ért Pályaszerkesztő"
+
+#: src/editor/editor.cpp:419
 msgid "Save the Map As"
 msgstr "Mentés másként"
 
-#: src/editor/editor.cpp:418
+#: src/editor/editor.cpp:430
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "A pálya már létezik. Felül akarod írni?"
 
-#: src/editor/editor.cpp:441
+#: src/editor/editor.cpp:453
 msgid "Player "
 msgstr "Játékos "
 
-#: src/editor/editor.cpp:444
+#: src/editor/editor.cpp:456
 msgid "Which Player?"
 msgstr "Melyik játékos?"
 
-#: src/editor/editor.cpp:445
+#: src/editor/editor.cpp:457
 msgid "Which player should start here?"
 msgstr "Melyik játékos kezdjen itt?"
 
-#: src/editor/editor.cpp:497
+#: src/editor/editor.cpp:509
 msgid "Choose a Map to Load"
 msgstr "Válaszd ki a betöltendő pályát"
 
-#: src/editor/editor.cpp:501
+#: src/editor/editor.cpp:513
 msgid ""
 "Warning: Illegal characters found in the map name. You've to save under a "
 "different name."
@@ -104,55 +112,51 @@ msgstr ""
 "Hiba: A pálya neve nem felhasználható karaktereket tartalmaz. Más nevet kell "
 "választanod."
 
-#: src/editor/editor.cpp:519 src/editor/editor.cpp:598
+#: src/editor/editor.cpp:531 src/editor/editor.cpp:610
 msgid "The file does not contain a valid map."
 msgstr "A fájl nem tartalmaz érvényes pályát"
 
-#: src/editor/editor.cpp:660
+#: src/editor/editor.cpp:672
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' nem létezik, vagy nem olvasható."
 
-#: src/editor/editor.cpp:672
+#: src/editor/editor.cpp:684
 msgid "Load failed: "
 msgstr "Betöltés sikertelen:"
 
-#: src/editor/editor.cpp:871
+#: src/editor/editor.cpp:883
 msgid "You must have a hex selected on the board."
 msgstr "Ki kell jelölnöd egy hatszöget a táblán"
 
-#: src/editor/editor.cpp:1120
+#: src/editor/editor.cpp:1132
 msgid "Quit Editor"
 msgstr "Kilépés a szerkesztőből"
 
-#: src/editor/editor.cpp:1125
+#: src/editor/editor.cpp:1137
 msgid "Do you want to save the map before quitting?"
 msgstr "El akarod menteni a pályát kilépés előtt?"
 
-#: src/editor/editor.cpp:1157
+#: src/editor/editor.cpp:1169
 msgid "Map saved."
 msgstr "Pálya elmentve."
 
-#: src/editor/editor.cpp:1164
+#: src/editor/editor.cpp:1176
 msgid "Could not save the map: $msg"
 msgstr "A pályát nem lehet elmenteni: $msg"
 
-#: src/editor/editor.cpp:1179
+#: src/editor/editor.cpp:1191
 msgid "Error: Illegal character in filename."
 msgstr "Hiba: A fájlnév érvénytelen karaktert tartalmaz."
 
-#: src/editor/editor.cpp:1235
+#: src/editor/editor.cpp:1247
 msgid "Player"
 msgstr "Játékos"
 
-#: src/editor/editor_main.cpp:252
-msgid "Battle for Wesnoth Map Editor"
-msgstr "Harc Wesnoth-ért Pályaszerkesztő"
-
-#: src/editor/editor_palettes.cpp:311
+#: src/editor/editor_palettes.cpp:319
 msgid "FG"
 msgstr "Bal gomb"
 
-#: src/editor/editor_palettes.cpp:313
+#: src/editor/editor_palettes.cpp:321
 msgid "BG"
 msgstr "Jobb gomb"
 
