@@ -108,7 +108,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 
 	switch(type) {
 	case UNIT_DESCRIPTION:
-		return report(u->second.description());
+		return report(u->second.description(),"",u->second.description());
 	case UNIT_TYPE:
 	        return report(u->second.type().language_name(),"",u->second.unit_description());
 	case UNIT_LEVEL:
@@ -256,6 +256,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			res.add_text(str,tooltip);
 
+			str << "  ";
 			static const std::string swarm_string("swarm");
 			if (!at_it->special().empty()) {
 			  if(at_it->special() == swarm_string){
@@ -267,6 +268,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 				res.add_text(str,tooltip);
 			}
 
+			str << "  ";
 			str << at_it->damage() << "-" ;
 			str << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
 			str << " -- "
