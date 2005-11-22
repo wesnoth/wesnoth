@@ -1455,7 +1455,9 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 
 	try {
 		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config_,units_data_,video_);
-		if(result == VICTORY) {
+		// don't show The End for multiplayer scenario
+		// change this if MP campaigns are implemented
+		if(result == VICTORY && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {
 			the_end(disp());
 			about::show_about(disp());
 		}
