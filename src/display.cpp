@@ -80,7 +80,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	screen_(video), xpos_(0), ypos_(0),
 	zoom_(DefaultZoom), map_(map), units_(units),
 	minimap_(NULL), redrawMinimap_(false),
-	pathsList_(NULL), status_(status),
+	pathsList_(NULL), enemy_reach_(NULL), status_(status),
 	teams_(t), lastDraw_(0), drawSkips_(0),
 	invalidateAll_(true), invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
@@ -1456,6 +1456,9 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 					         pathsList_->routes.end()) {
 		image_type = image::GREYED;
 	}
+	if(enemy_reach_ != NULL && enemy_reach_->find(loc) == enemy_reach_->end()) {
+		image_type = image::GREYED;
+	}
 
 	unit_map::iterator un = find_visible_unit(units_, loc, map_,
 		status_.get_time_of_day().lawful_bonus,teams_,teams_[currentTeam_]);
@@ -1505,6 +1508,8 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 		SDL_BlitSurface(surface,NULL,dst,&dstrect);
 	}
 
+	if (enemy_reach_ != NULL)
+		draw_enemies_reach(loc,xpos,ypos);
 	draw_footstep(loc,xpos,ypos);
 	draw_unit_on_tile(x,y,unit_image,alpha,blend_to);
 
@@ -1559,6 +1564,40 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 	}
 
 	update_rect(xpos,ypos,zoom_,zoom_);
+}
+
+void display::draw_enemies_reach(const gamemap::location& loc, int xloc, int yloc)
+{
+	const reach_map::const_iterator reach_it = enemy_reach_->find(loc);
+
+	// not reachable, leave greyed out.
+	if (reach_it == enemy_reach_->end())
+		return;
+
+	// only one can reach, leave highlighted.
+	if (reach_it->second == 1)
+		return;
+
+	// multiple can reach: print number
+	std::stringstream text;
+	text << reach_it->second;
+	const std::string &str = text.str();
+	const SDL_Rect& rect = map_area();
+
+	const SDL_Rect& text_area = font::text_area(str,font::SIZE_LARGE);
+	const int x = xloc + zoom_/2 - text_area.w/2;
+	const int y = yloc + zoom_/2 - text_area.h/2;
+
+	//draw the text with a black outline
+	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y-1);
+	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y);
+	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y+1);
+	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x,y-1);
+	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y-1);
+	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y);
+	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y+1);
+	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x,y+1);
+	font::draw_text(&screen_,rect,font::SIZE_LARGE,font::YELLOW_COLOUR,str,x,y);
 }
 
 void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
@@ -1859,6 +1898,14 @@ surface display::get_minimap(int w, int h)
 void display::set_paths(const paths* paths_list)
 {
 	pathsList_ = paths_list;
+	enemy_reach_ = NULL;
+	invalidate_all();
+}
+
+void display::set_reach_map(const reach_map *reach_map)
+{
+	pathsList_ = NULL;
+	enemy_reach_ = reach_map;
 	invalidate_all();
 }
 

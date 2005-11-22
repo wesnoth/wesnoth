@@ -174,6 +174,11 @@ public:
 	//paths_list must remain valid until it is set again
 	void set_paths(const paths* paths_list);
 
+	//variation of set_paths which shows how many units can reach each tile.
+	//Setting the reach_map clears the paths_list, and vice-versa.
+	typedef std::map<gamemap::location,unsigned int> reach_map;
+	void set_reach_map(const reach_map *reach_map);
+  
 	//sets the route along which footsteps are drawn to show movement of a
 	//unit. If NULL, no route is displayed.
 	//route does not have to remain valid after being set
@@ -215,6 +220,7 @@ private:
 
 	// void draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
+	void draw_enemies_reach(const gamemap::location& loc, int xloc, int yloc);
 
 public:
 	//function to draw a footstep for the given location, on screen at
@@ -503,6 +509,8 @@ private:
 
 	typedef std::map<gamemap::location,int> halo_map;
 	halo_map haloes_;
+
+	const reach_map *enemy_reach_;
 
 	//for debug mode
 	static std::map<gamemap::location,fixed_t> debugHighlights_;

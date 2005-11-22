@@ -2637,10 +2637,10 @@ bool turn_info::enemies_visible() const
 	return false;
 }
 
-// Highlights squares that an enemy could move to on their turn
+// Highlights squares that an enemy could move to on their turn, showing how many can reach each square.
 void turn_info::show_enemy_moves(bool ignore_units)
 {
-	all_paths_ = paths();
+	reach_map_ = display::reach_map();
 
 	// Compute enemy movement positions
 	for(unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
@@ -2654,14 +2654,12 @@ void turn_info::show_enemy_moves(bool ignore_units)
 									  u->first,teams_,is_skirmisher,teleports);
 
 			for (paths::routes_map::const_iterator route = path.routes.begin(); route != path.routes.end(); ++route) {
-				// map<...>::operator[](const key_type& key) inserts key into
-				// the map with a default instance of value_type
-				all_paths_.routes[route->first];
+				reach_map_[route->first]++;
 			}
 		}
 	}
 
-	gui_.set_paths(&all_paths_);
+	gui_.set_reach_map(&reach_map_);
 }
 
 void turn_info::toggle_shroud_updates() {

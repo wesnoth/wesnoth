@@ -227,6 +227,7 @@ private:
 	gamemap::location next_unit_;
 	paths current_paths_, all_paths_;
 	paths::route current_route_;
+	display::reach_map reach_map_;
 	bool enemy_paths_;
 	gamemap::location last_hex_;
 	gamemap::location::DIRECTION last_nearest_, last_second_nearest_;
