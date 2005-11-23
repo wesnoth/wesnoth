@@ -191,7 +191,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		if(u->second.can_advance() == false) {
 			str << u->second.experience() << "/-";
 		} else {
-		  int x = (int)(180 + ((255-180)*((float)u->second.experience())/u->second.max_experience()));
+		  int x = (int)(128 + ((255-128)*((float)u->second.experience())/u->second.max_experience()));
 		  str << "<" << x << "," << x << "," << x <<">";
 		  str << u->second.experience() << "/" << u->second.max_experience();
 		}
@@ -209,9 +209,9 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case UNIT_MOVES: {
 	  int x = 180;
 	  if(u->second.stone()){
-	    x = 140;
+	    x = 128;
 	  }else{
-	    x = (int)(180 + (255-180)*((float)u->second.movement_left()/u->second.total_movement()));
+	    x = (int)(128 + (255-128)*((float)u->second.movement_left()/u->second.total_movement()));
 	  }
 	  str << "<" << x << "," << x << "," << x <<">";
 	  str << u->second.movement_left() << "/" << u->second.total_movement();
@@ -231,7 +231,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
 			const std::string& lang_type = gettext(at_it->type().c_str());
-			str.str("");
+			str.str("<245,230,193>");
 			str << at_it->name() << " (" << lang_type << ")\n";
 
 			tooltip << at_it->name() << " (" << lang_type << ")\n";
@@ -264,7 +264,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			res.add_text(str,tooltip);
 
-			str << "<165,165,165>  ";
+			str << "<166,146,117>  ";
 			str << at_it->damage() << "-" ;
 			str << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
 			str << " -- "
@@ -278,7 +278,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			str << "\n";
 			res.add_text(str,tooltip);
 
-			str << "<165,165,165>  ";
+			str << "<166,146,117>  ";
 			static const std::string swarm_string("swarm");
 			if (!at_it->special().empty()) {
 			  if(at_it->special() == swarm_string){
