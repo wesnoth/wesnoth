@@ -34,6 +34,7 @@ namespace {
 	const int YDim = 768;
 
 	const size_t DefaultFontSize = font::SIZE_NORMAL;
+        const Uint32 DefaultFontRGB = 0x00C8C8C8;
 
 	typedef struct { size_t x1,y1,x2,y2; } _rect;
 	_rect ref_rect = { 0, 0, 0, 0 };
@@ -351,10 +352,35 @@ theme::label::label()
 
 theme::label::label(const config& cfg)
       : object(cfg), text_(cfg["prefix"].str() + cfg["text"].str() + cfg["postfix"].str()),
-	    icon_(cfg["icon"]), font_(atoi(cfg["font_size"].c_str()))
+	icon_(cfg["icon"]), font_(atoi(cfg["font_size"].c_str()))
 {
 	if(font_ == 0)
 		font_ = DefaultFontSize;
+
+	font_rgb_ = DefaultFontRGB;
+	font_rgb_set_ = false;
+	if(cfg["font_rgb"].size()){
+	std::vector<std::string> rgb_vec = utils::split(cfg["font_rgb"]);
+	  if(3 <= rgb_vec.size()){
+	    std::vector<std::string>::iterator c=rgb_vec.begin();
+	    int r,g,b;
+	    r = (atoi(c->c_str()));
+	    c++;
+	    if(c != rgb_vec.end()){
+	      g = (atoi(c->c_str()));
+	    }else{
+	      g=0;
+	    }
+	    c++;
+	    if(c != rgb_vec.end()){
+	      b=(atoi(c->c_str()));
+	    }else{
+	      b=0;
+	    }
+	    font_rgb_ = (((r<<16) & 0x00FF0000) + ((g<<8) & 0x0000FF00) + ((b) & 0x000000FF));
+	    font_rgb_set_=true;
+	  }
+	}
 }
 
 const std::string& theme::label::text() const
@@ -377,6 +403,16 @@ size_t theme::label::font_size() const
 	return font_;
 }
 
+Uint32 theme::label::font_rgb() const
+{
+	return font_rgb_;
+}
+
+bool theme::label::font_rgb_set() const
+{
+	return font_rgb_set_;
+}
+
 theme::status_item::status_item(const config& cfg)
         : object(cfg),
 		  prefix_(cfg["prefix"].str() + cfg["prefix_literal"].str()),
@@ -389,6 +425,31 @@ theme::status_item::status_item(const config& cfg)
 	const config* const label_child = cfg.child("label");
 	if(label_child != NULL) {
 		label_ = label(*label_child);
+	}
+
+	font_rgb_ = DefaultFontRGB;
+	font_rgb_set_ = false;
+	if(cfg["font_rgb"].size()){
+	  std::vector<std::string> rgb_vec = utils::split(cfg["font_rgb"]);
+	  if(3 <= rgb_vec.size()){
+	    std::vector<std::string>::iterator c=rgb_vec.begin();
+	    int r,g,b;
+	    r = (atoi(c->c_str()));
+	    c++;
+	    if(c != rgb_vec.end()){
+	      g = (atoi(c->c_str()));
+	    }else{
+	      g=0;
+	    }
+	    c++;
+	    if(c != rgb_vec.end()){
+	      b=(atoi(c->c_str()));
+	    }else{
+	      b=0;
+	    }
+	    font_rgb_ = (((r<<16) & 0x00FF0000) + ((g<<8) & 0x0000FF00) + ((b) & 0x000000FF));
+	    font_rgb_set_=true;
+	  }
 	}
 }
 
@@ -410,6 +471,16 @@ const theme::label* theme::status_item::get_label() const
 size_t theme::status_item::font_size() const
 {
 	return font_;
+}
+
+Uint32 theme::status_item::font_rgb() const
+{
+	return font_rgb_;
+}
+
+bool theme::status_item::font_rgb_set() const
+{
+	return font_rgb_set_;
 }
 
 theme::panel::panel(const config& cfg) : object(cfg), image_(cfg["image"])

@@ -696,7 +696,23 @@ void draw_label(CVideo& video, surface target, const theme::label& label)
 {
 	//log_scope("draw label");
 
-	const std::string& text = label.text();
+        std::stringstream temp;
+	Uint32 RGB=label.font_rgb();
+        int red = (RGB & 0x00FF0000)>>16;
+        int green = (RGB & 0x0000FF00)>>8;
+        int blue = (RGB & 0x000000FF);
+
+        std::string c_start="<";
+        std::string c_sep=",";
+        std::string c_end=">";
+        std::stringstream color;
+        color<< c_start << red << c_sep << green << c_sep << blue << c_end;
+        std::string text = label.text();
+
+        if(label.font_rgb_set()){
+          color<<text;
+          text = color.str();
+        }
 	const std::string& icon = label.icon();
 	SDL_Rect& loc = label.location(screen_area());
 
@@ -979,27 +995,44 @@ void display::draw_report(reports::TYPE report_num)
 		if(!report.empty()) {
 			// Add prefix, postfix elements. Make sure that they get the same tooltip as the guys
 			// around them.
-			std::string str = item->prefix();
+			std::stringstream temp;
+			Uint32 RGB = item->font_rgb();
+			int red = (RGB & 0x00FF0000)>>16;
+			int green = (RGB & 0x0000FF00)>>8;
+			int blue = (RGB & 0x000000FF);
+ 
+			std::string c_start="<";
+			std::string c_sep=",";
+			std::string c_end=">";
+			std::stringstream color;
+			color<< c_start << red << c_sep << green << c_sep << blue << c_end;
+			std::string str;
+
+			str = item->prefix();
 			if(str.empty() == false) {
-				report.insert(report.begin(), reports::element(str,"",report.begin()->tooltip));
+			  report.insert(report.begin(), reports::element(str,"",report.begin()->tooltip));
 			}
 			str = item->postfix();
 			if(str.empty() == false) {
-				report.push_back(reports::element(str,"",report.end()->tooltip));
+			  report.push_back(reports::element(str,"",report.end()->tooltip));
 			}
-
 			// Loop through and display each report element
 			size_t tallest = 0;
 			int image_count = 0;
 			bool used_ellipsis=false;
 			std::stringstream ellipsis_tooltip;
 			SDL_Rect ellipsis_area =rect;
-
 			for(reports::report::iterator i = report.begin(); i != report.end(); ++i) {
+			  temp.str("");
 				if(i->text.empty() == false){
 				  if(used_ellipsis == false) {
 					// Draw a text element
-					area = font::draw_text(&screen_,rect,item->font_size(),font::NORMAL_COLOUR,i->text,x,y);
+				        if(item->font_rgb_set()){
+					  temp <<color.str();
+					}
+					temp << i->text;
+					str = temp.str();
+					area = font::draw_text(&screen_,rect,item->font_size(),font::NORMAL_COLOUR,str,x,y);
 					if(area.h > tallest) tallest = area.h;
 					if(i->text[i->text.size() - 1] == '\n') {
 						x = rect.x;

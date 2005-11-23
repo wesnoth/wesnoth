@@ -21,7 +21,8 @@
 namespace font {
 
 const char LARGE_TEXT='*', SMALL_TEXT='`', GOOD_TEXT='@', BAD_TEXT='#',
-           NORMAL_TEXT='{', BLACK_TEXT='}', BOLD_TEXT='~', IMAGE='&', NULL_MARKUP='^';
+           NORMAL_TEXT='{', BLACK_TEXT='}', BOLD_TEXT='~', IMAGE='&', 
+           COLOR_TEXT='<', NULL_MARKUP='^';
 
 namespace {
 
@@ -80,10 +81,48 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 				}
 			}
 			break;
+		case COLOR_TEXT:
+		  {
+		    //very primitive parsing for rgb value
+		    //should look like <213,14,151> 
+		    //but no checking on commas or end '>', 
+		    //could be any non-# char
+		    ++i1;
+		    Uint8 red=0, green=0, blue=0, temp=0;
+		    int count=0;
+		    while(i1 != i2 && *i1 >= '0' && *i1<='9'){
+		      temp*=10;
+		      temp += lexical_cast<int, char>(*i1);
+		      ++i1;
+		    }
+		    red=temp;
+		    temp=0;
+		    if(i1 != i2){
+		      ++i1;
+		      while(i1 != i2 && *i1 >= '0' && *i1<='9'){
+			temp*=10;
+			temp += lexical_cast<int, char>(*i1);
+			++i1;
+		      }
+		      green=temp;
+		      temp=0;
+		    }
+		    if(i1 != i2){
+		      ++i1;
+		      while(i1 != i2 && *i1 >= '0' && *i1<='9'){
+			temp*=10;
+			temp += lexical_cast<int, char>(*i1);
+			++i1;
+		      }
+		    }
+		    blue=temp;
+		    *colour = (SDL_Color){red,green,blue,0};
+		    break;
+		  }
 		default:
-			return i1;
+		  return i1;
 		}
-
+		
 		++i1;
 	}
 

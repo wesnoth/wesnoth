@@ -70,10 +70,13 @@ public:
 		bool empty() const;
 
 		size_t font_size() const;
-
+		Uint32 font_rgb() const;
+	        bool font_rgb_set() const;
 	private:
 		std::string text_, icon_;
 		size_t font_;
+	        bool font_rgb_set_;
+		Uint32 font_rgb_;
 	};
 
 	class status_item : private object
@@ -91,11 +94,15 @@ public:
 		const label* get_label() const;
 
 		size_t font_size() const;
+                Uint32 font_rgb() const;
+	        bool font_rgb_set() const;
 
 	private:
 		std::string prefix_, postfix_;
 		label label_;
 		size_t font_;
+	        bool font_rgb_set_;
+		Uint32 font_rgb_;
 	};
 
 	class panel : private object

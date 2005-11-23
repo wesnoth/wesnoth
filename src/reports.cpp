@@ -176,9 +176,12 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	}
 	case UNIT_HP:
 		if(u->second.hitpoints() <= u->second.max_hitpoints()/3)
-			str << font::BAD_TEXT;
+		  str << "<200,0,0>";
 		else if(u->second.hitpoints() > 2*(u->second.max_hitpoints()/3))
-			str << font::GOOD_TEXT;
+		  str << "<0,200,0>";
+		else
+		  str << "<200,200,0>";
+				  
 
 		str << u->second.hitpoints()
 		    << "/" << u->second.max_hitpoints();
@@ -188,12 +191,9 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		if(u->second.can_advance() == false) {
 			str << u->second.experience() << "/-";
 		} else {
-			//if killing a unit of the same level as us lets us advance, display in 'good' colour
-			if(u->second.max_experience() - u->second.experience() <= game_config::kill_experience*u->second.type().level()) {
-				str << font::GOOD_TEXT;
-			}
-
-			str << u->second.experience() << "/" << u->second.max_experience();
+		  int x = (int)(180 + ((255-180)*((float)u->second.experience())/u->second.max_experience()));
+		  str << "<" << x << "," << x << "," << x <<">";
+		  str << u->second.experience() << "/" << u->second.max_experience();
 		}
 
 		break;
@@ -206,9 +206,17 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	  return(res);
 
 	}
-	case UNIT_MOVES:
-		str << u->second.movement_left() << "/" << u->second.total_movement();
+	case UNIT_MOVES: {
+	  int x = 180;
+	  if(u->second.stone()){
+	    x = 140;
+	  }else{
+	    x = (int)(180 + (255-180)*((float)u->second.movement_left()/u->second.total_movement()));
+	  }
+	  str << "<" << x << "," << x << "," << x <<">";
+	  str << u->second.movement_left() << "/" << u->second.total_movement();
 		break;
+	}
 	case UNIT_WEAPONS: {
 		report res;
 		std::stringstream tooltip;
@@ -223,7 +231,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
 			const std::string& lang_type = gettext(at_it->type().c_str());
-
+			str.str("");
 			str << at_it->name() << " (" << lang_type << ")\n";
 
 			tooltip << at_it->name() << " (" << lang_type << ")\n";
@@ -256,19 +264,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			res.add_text(str,tooltip);
 
-			str << "  ";
-			static const std::string swarm_string("swarm");
-			if (!at_it->special().empty()) {
-			  if(at_it->special() == swarm_string){
-			    str << gettext(at_it->special().c_str())<<"("<< at_it->num_attacks() <<")" << "\n";
-			  }else{
-			    str << gettext(at_it->special().c_str()) << "\n";
-			  }
-				tooltip << string_table["weapon_special_" + at_it->special() + "_description"];
-				res.add_text(str,tooltip);
-			}
-
-			str << "  ";
+			str << "<165,165,165>  ";
 			str << at_it->damage() << "-" ;
 			str << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
 			str << " -- "
@@ -281,6 +277,20 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			str << "\n";
 			res.add_text(str,tooltip);
+
+			str << "<165,165,165>  ";
+			static const std::string swarm_string("swarm");
+			if (!at_it->special().empty()) {
+			  if(at_it->special() == swarm_string){
+			    str << gettext(at_it->special().c_str())<<"("<<at_it->num_swarm_attacks(u->second.hitpoints(),u->second.max_hitpoints())<<"/"<< at_it->num_attacks() <<")" << "\n";
+			  }else{
+			    str << gettext(at_it->special().c_str()) << "\n";
+			  }
+				tooltip << string_table["weapon_special_" + at_it->special() + "_description"];
+				res.add_text(str,tooltip);
+			}
+
+
 		}
 
 		return res;
