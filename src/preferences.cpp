@@ -238,6 +238,20 @@ void _set_grid(bool ison)
 	prefs["grid"] = (ison ? "true" : "false");
 }
 
+bool lobby_joins()
+{
+	return prefs["lobby_joins"] != "no";
+}
+
+
+void _set_lobby_joins(bool show)
+{
+	if(show)
+		prefs["lobby_joins"] = "yes";
+	else
+		prefs["lobby_joins"] = "no";
+}
+
 const std::string& official_network_host()
 {
 	static const std::string host = WESNOTH_DEFAULT_SERVER;

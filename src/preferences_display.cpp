@@ -152,6 +152,11 @@ void set_grid(bool ison)
 	}
 }
 
+void set_lobby_joins(bool ison)
+{
+	_set_lobby_joins(ison);
+}
+
 void set_colour_cursors(bool value)
 {
 	_set_colour_cursors(value);
@@ -187,7 +192,7 @@ private:
 
 	gui::slider music_slider_, sound_slider_, scroll_slider_, gamma_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
-	            show_grid_button_, show_floating_labels_button_, turn_dialog_button_,
+	            show_grid_button_, show_lobby_joins_button_, show_floating_labels_button_, turn_dialog_button_,
 	            turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
 	            show_haloing_button_, video_mode_button_, theme_button_, hotkeys_button_, gamma_button_,
 				flip_time_button_, advanced_button_, sound_button_, music_button_;
@@ -211,6 +216,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
+	  show_lobby_joins_button_(disp.video(), _("Show lobby joins"), gui::button::TYPE_CHECK),
 	  show_floating_labels_button_(disp.video(), _("Show Floating Labels"), gui::button::TYPE_CHECK),
 	  turn_dialog_button_(disp.video(), _("Turn Dialog"), gui::button::TYPE_CHECK),
 	  turn_bell_button_(disp.video(), _("Turn Bell"), gui::button::TYPE_CHECK),
@@ -234,7 +240,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 #if USE_TINY_GUI
 	set_measurements(260, 220);		  // FIXME: should compute this, but using what data ?
 #else
-	set_measurements(400, 400);
+	set_measurements(400, 430);
 #endif
 
 
@@ -278,6 +284,9 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_grid_button_.set_check(grid());
 	show_grid_button_.set_help_string(_("Overlay a grid onto the map"));
 
+	show_lobby_joins_button_.set_check(lobby_joins());
+	show_lobby_joins_button_.set_help_string(_("Show messages about players joining the multiplayer lobby"));
+	
 	show_floating_labels_button_.set_check(show_floating_labels());
 	show_floating_labels_button_.set_help_string(_("Show text above a unit when it is hit to display damage inflicted"));
 
@@ -330,6 +339,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; turn_bell_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_team_colours_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_grid_button_.set_location(rect.x, ypos);
+	ypos += item_interline;	show_lobby_joins_button_.set_location(rect.x, ypos);
 	ypos += item_interline; hotkeys_button_.set_location(rect.x, ypos);
 
 	// Display tab
@@ -388,6 +398,8 @@ void preferences_dialog::process_event()
 		set_show_ai_moves(!show_ai_moves_button_.checked());
 	if (show_grid_button_.pressed())
 		set_grid(show_grid_button_.checked());
+	if (show_lobby_joins_button_.pressed())
+		set_lobby_joins(show_lobby_joins_button_.checked());
 	if (show_floating_labels_button_.pressed())
 		set_show_floating_labels(show_floating_labels_button_.checked());
 	if (video_mode_button_.pressed())
@@ -512,6 +524,7 @@ void preferences_dialog::set_selection(int index)
 	hotkeys_button_.hide(hide_general);
 	show_team_colours_button_.hide(hide_general);
 	show_grid_button_.hide(hide_general);
+	show_lobby_joins_button_.hide(hide_general);
 
 	const bool hide_display = tab_ != DISPLAY_TAB, hide_gamma = hide_display || !adjust_gamma();
 	gamma_label_.hide(hide_gamma);

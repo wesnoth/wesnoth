@@ -83,6 +83,9 @@ namespace preferences {
 	bool grid();
 	void _set_grid(bool ison);
 
+	bool lobby_joins();
+	void _set_lobby_joins(bool show);
+
 	const std::string& official_network_host();
 
 	const std::string& network_host();
