@@ -126,6 +126,7 @@ surface create_optimized_surface(surface const &surf)
 	return result;
 }
 
+// don't pass this function 0 scaling arguments
 surface scale_surface(surface const &surf, int w, int h)
 {
 	if(surf == NULL)
@@ -134,6 +135,8 @@ surface scale_surface(surface const &surf, int w, int h)
 	if(w == surf->w && h == surf->h) {
 		return surf;
 	}
+	wassert(w != 0);
+	wassert(h != 0);
 
 	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
 	surface src(make_neutral_surface(surf));
