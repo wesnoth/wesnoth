@@ -136,7 +136,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		}
 		if(u->second.has_flag("slowed")) {
 			unit_status << "misc/slowed.png";
-			tooltip << _("slowed: ") << _("This unit has been slowed. It emits no zone of control, moves at half speed and ennemies will be able to strike earlier once during a fight");
+			tooltip << _("slowed: ") << _("This unit has been slowed. It emits no zone of control, moves at half speed and enemies will be able to strike earlier once during a fight");
 			res.add_image(unit_status,tooltip);
 		}
 		if(u->second.has_flag("poisoned")) {
