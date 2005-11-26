@@ -48,6 +48,7 @@ AC_CANONICAL_TARGET
 AM_INIT_AUTOMAKE([foreign 1.5])
 AM_MAINTAINER_MODE
 AM_GNU_GETTEXT([external])
+AC_PROG_RANLIB
 
 #######################################################################
 # Configuration options                                               #

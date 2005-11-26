@@ -22,7 +22,13 @@ if EDITOR
 bin_PROGRAMS += wesnoth_editor
 endif
 
+noinst_LIBRARIES = libwesnoth-core.a
+
 pkgdatadir=$(datadir)/@DATADIR@
+
+THELIBS = -L. -lwesnoth-core $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
+	$(SDL_TTF_LIBS) $(SDL_LIBS) $(LIBZIPIOS) $(FREETYPE_LIBS) $(LIBINTL) \
+	@FRIBIDI_LIBS@
 
 #############################################################################
 #    Wesnoth                                                                #
@@ -41,19 +47,15 @@ wesnoth_SOURCES = \
 	cavegen.cpp \
 	checksum.cpp \
 	clipboard.cpp \
-	config.cpp \
 	config_adapter.cpp \
 	cursor.cpp \
 	dialogs.cpp \
 	display.cpp \
 	events.cpp \
-	filesystem.cpp \
 	font.cpp \
 	game.cpp \
-	game_config.cpp \
 	game_events.cpp \
 	gamestatus.cpp \
-	gettext.cpp \
 	halo.cpp \
 	help.cpp \
 	hotkeys.cpp \
@@ -62,8 +64,6 @@ wesnoth_SOURCES = \
 	key.cpp \
 	language.cpp \
 	leader_list.cpp \
-	log.cpp \
-	map.cpp \
 	map_create.cpp \
 	map_label.cpp \
 	mapgen.cpp \
@@ -82,15 +82,12 @@ wesnoth_SOURCES = \
 	network.cpp \
 	network_worker.cpp \
 	pathfind.cpp \
-	pathutils.cpp \
 	playcampaign.cpp \
 	playlevel.cpp \
 	playturn.cpp \
 	preferences.cpp \
 	preferences_display.cpp \
 	publish_campaign.cpp \
-	race.cpp \
-	random.cpp \
 	replay.cpp \
 	replay_controller.cpp \
 	reports.cpp \
@@ -99,25 +96,16 @@ wesnoth_SOURCES = \
 	sound.cpp \
 	statistics.cpp \
 	team.cpp \
-	terrain.cpp \
 	theme.cpp \
-	thread.cpp \
 	titlescreen.cpp \
 	tooltips.cpp \
-	tstring.cpp \
 	unit.cpp \
 	unit_display.cpp \
 	unit_types.cpp \
-	util.cpp \
 	variable.cpp \
 	video.cpp \
-	wassert.cpp \
 	serialization/binary_or_text.cpp \
-	serialization/binary_wml.cpp \
 	serialization/parser.cpp \
-	serialization/preprocessor.cpp \
-	serialization/string_utils.cpp \
-	serialization/tokenizer.cpp \
 	widgets/button.cpp \
 	widgets/combo.cpp \
 	widgets/label.cpp \
@@ -130,8 +118,9 @@ wesnoth_SOURCES = \
 	widgets/slider.cpp \
 	widgets/textbox.cpp \
 	widgets/widget.cpp \
-	zipios++/xcoll.cpp \
 	sdl_ttf/SDL_ttf.c
+
+wesnoth_LDADD = $(THELIBS)
 
 #############################################################################
 #    Editor                                                                 #
@@ -153,28 +142,22 @@ wesnoth_editor_SOURCES = \
 	cavegen.cpp \
 	checksum.cpp \
 	clipboard.cpp \
-	config.cpp \
 	cursor.cpp \
 	dialogs.cpp \
 	display.cpp \
 	events.cpp \
 	filechooser.cpp \
-	filesystem.cpp \
 	font.cpp \
-	game_config.cpp \
 	game_events.cpp \
 	gamestatus.cpp \
-	gettext.cpp \
 	halo.cpp \
 	help.cpp \
 	hotkeys.cpp \
 	image.cpp \
 	key.cpp \
 	language.cpp \
-	log.cpp \
 	map_create.cpp \
 	map_label.cpp \
-	map.cpp \
 	mapgen.cpp \
 	mapgen_dialog.cpp \
 	marked-up_text.cpp \
@@ -182,13 +165,10 @@ wesnoth_editor_SOURCES = \
 	mouse.cpp \
 	network.cpp \
 	network_worker.cpp \
-	pathutils.cpp \
 	pathfind.cpp \
 	playturn.cpp \
 	preferences.cpp \
 	preferences_display.cpp \
-	race.cpp \
-	random.cpp \
 	replay.cpp \
 	reports.cpp \
 	sdl_utils.cpp \
@@ -196,23 +176,15 @@ wesnoth_editor_SOURCES = \
 	sound.cpp \
 	statistics.cpp \
 	team.cpp \
-	terrain.cpp \
-	thread.cpp \
 	theme.cpp \
 	tooltips.cpp \
-	tstring.cpp \
 	unit.cpp \
 	unit_display.cpp \
 	unit_types.cpp \
-	util.cpp \
 	variable.cpp \
 	video.cpp \
 	serialization/binary_or_text.cpp \
-	serialization/binary_wml.cpp \
 	serialization/parser.cpp \
-	serialization/preprocessor.cpp \
-	serialization/string_utils.cpp \
-	serialization/tokenizer.cpp \
 	widgets/button.cpp \
 	widgets/file_chooser.cpp \
 	widgets/label.cpp \
@@ -223,8 +195,9 @@ wesnoth_editor_SOURCES = \
 	widgets/scrollbar.cpp \
 	widgets/slider.cpp \
 	widgets/widget.cpp \
-	zipios++/xcoll.cpp \
 	sdl_ttf/SDL_ttf.c
+
+wesnoth_editor_LDADD = $(THELIBS)
 
 #############################################################################
 #    Wesnothd Server                                                        #
@@ -237,22 +210,11 @@ wesnothd_SOURCES = \
 	server/player.cpp \
 	server/proxy.cpp \
 	server/server.cpp \
-	config.cpp \
-	filesystem.cpp \
-	game_config.cpp \
-	gettext.cpp \
-	log.cpp \
 	network.cpp \
 	network_worker.cpp \
-	thread.cpp \
-	tstring.cpp \
-	serialization/binary_wml.cpp \
-	serialization/parser.cpp \
-	serialization/string_utils.cpp \
-	serialization/tokenizer.cpp \
-	zipios++/xcoll.cpp
+	serialization/parser.cpp
 
-wesnothd_LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
+wesnothd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
 
 #############################################################################
 #    Campaign Server                                                        #
@@ -260,23 +222,12 @@ wesnothd_LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
 
 campaignd_SOURCES = \
 	campaign_server/campaign_server.cpp \
-	config.cpp \
-	filesystem.cpp \
-	game_config.cpp \
-	gettext.cpp \
-	log.cpp \
 	network.cpp \
 	network_worker.cpp \
 	publish_campaign.cpp \
-	thread.cpp \
-	tstring.cpp \
-	serialization/binary_wml.cpp \
-	serialization/parser.cpp \
-	serialization/string_utils.cpp \
-	serialization/tokenizer.cpp \
-	zipios++/xcoll.cpp
+	serialization/parser.cpp
 
-campaignd_LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
+campaignd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
 
 #############################################################################
 #    Castle building helpers                                                #
@@ -288,34 +239,19 @@ exploder_SOURCES = \
 	tools/exploder_cutter.cpp \
 	tools/exploder_composer.cpp \
 	tools/dummy_video.cpp \
-	config.cpp \
-	filesystem.cpp \
-	game_config.cpp \
 	sdl_utils.cpp \
-	log.cpp \
-	tstring.cpp \
-	serialization/parser.cpp \
-	serialization/preprocessor.cpp \
-	serialization/string_utils.cpp \
-	serialization/tokenizer.cpp \
-	zipios++/xcoll.cpp
+	serialization/parser.cpp
 
 cutter_SOURCES = \
 	tools/cutter.cpp \
 	tools/exploder_utils.cpp \
 	tools/exploder_cutter.cpp \
 	tools/dummy_video.cpp \
-	config.cpp \
-	filesystem.cpp \
-	game_config.cpp \
 	sdl_utils.cpp \
-	log.cpp \
-	tstring.cpp \
-	serialization/parser.cpp \
-	serialization/preprocessor.cpp \
-	serialization/string_utils.cpp \
-	serialization/tokenizer.cpp \
-	zipios++/xcoll.cpp
+	serialization/parser.cpp
+
+exploder_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL) $(PNG_LIBS)
+cutter_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL) $(PNG_LIBS)
 
 #############################################################################
 #    Headers
@@ -447,8 +383,30 @@ noinst_HEADERS = \
 	sdl_ttf/SDL_ttf.h \
 	wesconfig.h
 
-exploder_LDADD = @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL) $(PNG_LIBS)
-cutter_LDADD = @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL) $(PNG_LIBS)
+#############################################################################
+#    Headers
+#############################################################################
+
+libwesnoth_core_a_SOURCES = \
+	config.cpp \
+	filesystem.cpp \
+	game_config.cpp \
+	gettext.cpp \
+	log.cpp \
+	map.cpp \
+	pathutils.cpp \
+	race.cpp \
+	random.cpp \
+	terrain.cpp \
+	thread.cpp \
+	tstring.cpp \
+	util.cpp \
+	wassert.cpp \
+	serialization/binary_wml.cpp \
+	serialization/preprocessor.cpp \
+	serialization/string_utils.cpp \
+	serialization/tokenizer.cpp \
+	zipios++/xcoll.cpp
 
 AM_CXXFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) -DFIFODIR=\"$(fifodir)\"
@@ -475,13 +433,6 @@ endif
 
 CXXLD = $(LDPREFIX) $(CXX)
 
-
-THELIBS = $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
-	$(SDL_TTF_LIBS) $(SDL_LIBS) $(LIBZIPIOS) $(FREETYPE_LIBS) $(LIBINTL) \
-	@FRIBIDI_LIBS@
-
-wesnoth_LDADD = $(THELIBS)
-wesnoth_editor_LDADD = $(THELIBS)
 
 if STATIC
 LDFLAGS += -all-static
