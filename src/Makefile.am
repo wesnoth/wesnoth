@@ -131,115 +131,7 @@ wesnoth_SOURCES = \
 	widgets/textbox.cpp \
 	widgets/widget.cpp \
 	zipios++/xcoll.cpp \
-	sdl_ttf/SDL_ttf.c \
-	about.hpp \
-	actions.hpp \
-	ai.hpp \
-	ai_dfool.hpp \
-	ai2.hpp \
-	ai_interface.hpp \
-	animated.hpp \
-	array.hpp \
-	astarnode.hpp \
-	builder.hpp \
-	cavegen.hpp \
-	checksum.hpp \
-	clipboard.hpp \
-	cursor.hpp \
-	config.hpp \
-	config_adapter.hpp \
-	dialogs.hpp \
-	display.hpp \
-	events.hpp \
-	filesystem.hpp \
-	font.hpp \
-	game_config.hpp \
-	game_errors.hpp \
-	game_events.hpp \
-	gamestatus.hpp \
-	gettext.hpp \
-	global.hpp \
-	halo.hpp \
-	help.hpp \
-	hotkeys.hpp \
-	image.hpp \
-	intro.hpp \
-	key.hpp \
-	language.hpp \
-	leader_list.hpp \
-	log.hpp \
-	map.hpp \
-	map_create.hpp \
-	map_label.hpp \
-	mapgen.hpp \
-	mapgen_dialog.hpp \
-	marked-up_text.hpp \
-	menu_events.hpp \
-	minimap.hpp \
-	mouse.hpp \
-	mouse_events.hpp \
-	multiplayer.hpp \
-	multiplayer_ui.hpp \
-	multiplayer_wait.hpp \
-	multiplayer_connect.hpp \
-	multiplayer_create.hpp \
-	multiplayer_lobby.hpp \
-	network.hpp \
-	network_worker.hpp \
-	pathfind.hpp \
-	pathutils.hpp \
-	playcampaign.hpp \
-	playlevel.hpp \
-	playturn.hpp \
-	preferences.hpp \
-	preferences_display.hpp \
-	publish_campaign.hpp \
-	race.hpp \
-	random.hpp \
-	replay.hpp \
-	replay_controller.hpp \
-	reports.hpp \
-	scoped_resource.hpp \
-	sdl_utils.hpp \
-	show_dialog.hpp \
-	sound.hpp \
-	statistics.hpp \
-	team.hpp \
-	terrain.hpp \
-	theme.hpp \
-	thread.hpp \
-	titlescreen.hpp \
-	tooltips.hpp \
-	tstring.hpp \
-	unit.hpp \
-	unit_display.hpp \
-	unit_types.hpp \
-	util.hpp \
-	variable.hpp \
-	video.hpp \
-	wassert.hpp \
-	wml_separators.hpp \
-	serialization/binary_or_text.hpp \
-	serialization/binary_wml.hpp \
-	serialization/parser.hpp \
-	serialization/preprocessor.hpp \
-	serialization/string_utils.hpp \
-	serialization/tokenizer.hpp \
-	widgets/image_button.hpp \
-	widgets/button.hpp \
-	widgets/combo.hpp \
-	widgets/label.hpp \
-	widgets/menu.hpp \
-	widgets/progressbar.hpp \
-	widgets/scrollarea.hpp \
-	widgets/scrollbar.hpp \
-	widgets/scrollpane.hpp \
-	widgets/slider.hpp \
-	widgets/textbox.hpp \
-	widgets/widget.hpp \
-	zipios++/xcoll.hpp \
-	sdl_ttf/SDL_ttf.h \
-	wesconfig.h
+	sdl_ttf/SDL_ttf.c
 
 #############################################################################
 #    Editor                                                                 #
@@ -332,97 +224,7 @@ wesnoth_editor_SOURCES = \
 	widgets/slider.cpp \
 	widgets/widget.cpp \
 	zipios++/xcoll.cpp \
-	sdl_ttf/SDL_ttf.c \
-	editor/editor.hpp \
-	editor/editor_layout.hpp \
-	editor/map_manip.hpp \
-	editor/editor_palettes.hpp \
-	editor/editor_dialogs.hpp \
-	editor/editor_undo.hpp \
-	about.hpp \
-	actions.hpp \
-	ai.hpp \
-	animated.hpp \
-	array.hpp \
-	astarnode.hpp \
-	builder.hpp \
-	cavegen.hpp \
-	checksum.hpp \
-	clipboard.hpp \
-	config.hpp \
-	cursor.hpp \
-	dialogs.hpp \
-	display.hpp \
-	events.hpp \
-	filesystem.hpp \
-	font.hpp \
-	game_config.hpp \
-	game_events.hpp \
-	gamestatus.hpp \
-	gettext.hpp \
-	halo.hpp \
-	help.hpp \
-	hotkeys.hpp \
-	image.hpp \
-	intro.hpp \
-	key.hpp \
-	language.hpp \
-	log.hpp \
-	map_create.hpp \
-	map_label.hpp \
-	map.hpp \
-	mapgen.hpp \
-	mapgen_dialog.hpp \
-	marked-up_text.hpp \
-	minimap.hpp \
-	mouse.hpp \
-	network.hpp \
-	network_worker.hpp \
-	pathfind.hpp \
-	pathutils.hpp \
-	playlevel.hpp \
-	playturn.hpp \
-	preferences.hpp \
-	preferences_display.hpp \
-	race.hpp \
-	random.hpp \
-	replay.hpp \
-	reports.hpp \
-	sdl_utils.hpp \
-	show_dialog.hpp \
-	sound.hpp \
-	statistics.hpp \
-	team.hpp \
-	terrain.hpp \
-	theme.hpp \
-	thread.hpp \
-	tooltips.hpp \
-	tstring.hpp \
-	unit.hpp \
-	unit_display.hpp \
-	unit_types.hpp \
-	util.hpp \
-	variable.hpp \
-	video.hpp \
-	serialization/binary_or_text.hpp \
-	serialization/binary_wml.hpp \
-	serialization/parser.hpp \
-	serialization/preprocessor.hpp \
-	serialization/string_utils.hpp \
-	serialization/tokenizer.hpp \
-	widgets/button.hpp \
-	widgets/file_chooser.hpp \
-	widgets/label.hpp \
-	widgets/menu.hpp \
-	widgets/progressbar.hpp \
-	widgets/textbox.hpp \
-	widgets/scrollarea.hpp \
-	widgets/scrollbar.hpp \
-	widgets/slider.hpp \
-	widgets/widget.hpp \
-	zipios++/xcoll.hpp \
-	sdl_ttf/SDL_ttf.h \
-	wesconfig.h
+	sdl_ttf/SDL_ttf.c
 
 #############################################################################
 #    Wesnothd Server                                                        #
@@ -448,24 +250,7 @@ wesnothd_SOURCES = \
 	serialization/parser.cpp \
 	serialization/string_utils.cpp \
 	serialization/tokenizer.cpp \
-	zipios++/xcoll.cpp \
-	server/game.hpp \
-	server/input_stream.hpp \
-	server/metrics.hpp \
-	server/player.hpp \
-	server/proxy.hpp \
-	config.hpp \
-	filesystem.hpp \
-	game_config.hpp \
-	gettext.hpp \
-	log.hpp \
-	network.hpp \
-	network_worker.hpp \
-	thread.hpp \
-	tstring.hpp \
-	serialization/binary_wml.hpp \
-	serialization/string_utils.hpp \
-	zipios++/xcoll.hpp
+	zipios++/xcoll.cpp
 
 wesnothd_LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
 
@@ -489,23 +274,7 @@ campaignd_SOURCES = \
 	serialization/parser.cpp \
 	serialization/string_utils.cpp \
 	serialization/tokenizer.cpp \
-	zipios++/xcoll.cpp \
-	config.hpp \
-	filesystem.hpp \
-	game_config.hpp \
-	gettext.hpp \
-	log.hpp \
-	network.hpp \
-	network_worker.hpp \
-	publish_campaign.hpp \
-	serialization/binary_wml.hpp \
-	serialization/parser.hpp \
-	serialization/preprocessor.hpp \
-	serialization/string_utils.hpp \
-	serialization/tokenizer.hpp \
-	thread.hpp \
-	tstring.hpp \
-	zipios++/xcoll.hpp
+	zipios++/xcoll.cpp
 
 campaignd_LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
 
@@ -529,17 +298,7 @@ exploder_SOURCES = \
 	serialization/preprocessor.cpp \
 	serialization/string_utils.cpp \
 	serialization/tokenizer.cpp \
-	zipios++/xcoll.cpp \
-	tools/exploder_composer.hpp \
-	tools/exploder_cutter.hpp \
-	tools/exploder_utils.hpp \
-	serialization/parser.hpp \
-	serialization/preprocessor.hpp \
-	serialization/string_utils.hpp \
-	serialization/tokenizer.hpp \
-	zipios++/xcoll.hpp \
-	tstring.hpp \
-	gettext.cpp
+	zipios++/xcoll.cpp
 
 cutter_SOURCES = \
 	tools/cutter.cpp \
@@ -556,17 +315,137 @@ cutter_SOURCES = \
 	serialization/preprocessor.cpp \
 	serialization/string_utils.cpp \
 	serialization/tokenizer.cpp \
-	zipios++/xcoll.cpp \
+	zipios++/xcoll.cpp
+
+#############################################################################
+#    Headers
+#############################################################################
+
+noinst_HEADERS = \
 	tools/exploder_composer.hpp \
-	tools/exploder_cutter.hpp \
 	tools/exploder_utils.hpp \
+	tools/exploder_cutter.hpp \
+	serialization/tokenizer.hpp \
 	serialization/parser.hpp \
+	serialization/binary_or_text.hpp \
+	serialization/binary_wml.hpp \
 	serialization/preprocessor.hpp \
 	serialization/string_utils.hpp \
-	serialization/tokenizer.hpp \
+	widgets/progressbar.hpp \
+	widgets/textbox.hpp \
+	widgets/combo.hpp \
+	widgets/file_chooser.hpp \
+	widgets/scrollpane.hpp \
+	widgets/menu.hpp \
+	widgets/button.hpp \
+	widgets/label.hpp \
+	widgets/slider.hpp \
+	widgets/scrollbar.hpp \
+	widgets/widget.hpp \
+	widgets/scrollarea.hpp \
+	widgets/image_button.hpp \
 	zipios++/xcoll.hpp \
+	server/player.hpp \
+	server/game.hpp \
+	server/input_stream.hpp \
+	server/proxy.hpp \
+	server/metrics.hpp \
+	editor/scenario_editor.hpp \
+	editor/editor_undo.hpp \
+	editor/map_manip.hpp \
+	editor/editor_layout.hpp \
+	editor/editor.hpp \
+	editor/editor_palettes.hpp \
+	editor/editor_dialogs.hpp \
+	statistics.hpp \
+	network.hpp \
+	ai2.hpp \
+	cursor.hpp \
+	tooltips.hpp \
+	halo.hpp \
+	variable.hpp \
+	hotkeys.hpp \
+	mouse.hpp \
+	unit_display.hpp \
+	theme.hpp \
+	pathutils.hpp \
+	mapgen.hpp \
+	cavegen.hpp \
+	race.hpp \
+	multiplayer_connect.hpp \
+	array.hpp \
+	wassert.hpp \
+	dialogs.hpp \
+	map.hpp \
+	global.hpp \
+	checksum.hpp \
+	video.hpp \
+	ai_interface.hpp \
+	multiplayer_wait.hpp \
+	gettext.hpp \
+	builder.hpp \
+	publish_campaign.hpp \
+	playlevel.hpp \
+	game_config.hpp \
+	terrain.hpp \
+	config.hpp \
+	network_worker.hpp \
+	util.hpp \
+	language.hpp \
+	multiplayer_lobby.hpp \
+	scoped_resource.hpp \
+	sound.hpp \
+	pathfind.hpp \
+	reports.hpp \
+	map_label.hpp \
+	random.hpp \
+	filesystem.hpp \
+	help.hpp \
+	ai.hpp \
+	replay.hpp \
+	wml_separators.hpp \
+	show_dialog.hpp \
+	map_create.hpp \
+	actions.hpp \
+	sdl_utils.hpp \
+	game_errors.hpp \
+	font.hpp \
+	astarnode.hpp \
+	multiplayer_ui.hpp \
+	titlescreen.hpp \
+	image.hpp \
+	team.hpp \
+	game_events.hpp \
+	clipboard.hpp \
+	events.hpp \
+	playcampaign.hpp \
+	multiplayer.hpp \
+	thread.hpp \
+	gamestatus.hpp \
+	playturn.hpp \
+	log.hpp \
+	key.hpp \
 	tstring.hpp \
-	gettext.cpp
+	multiplayer_create.hpp \
+	intro.hpp \
+	preferences.hpp \
+	unit_types.hpp \
+	display.hpp \
+	leader_list.hpp \
+	about.hpp \
+	unit.hpp \
+	animated.hpp \
+	mapgen_dialog.hpp \
+	marked-up_text.hpp \
+	ai_dfool.hpp \
+	minimap.hpp \
+	mouse_events.hpp \
+	menu_events.hpp \
+	preferences_display.hpp \
+	replay_controller.hpp \
+	config_adapter.hpp \
+	sdl_ttf/SDL_ttf.h \
+	wesconfig.h
 
 exploder_LDADD = @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL) $(PNG_LIBS)
 cutter_LDADD = @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL) $(PNG_LIBS)
