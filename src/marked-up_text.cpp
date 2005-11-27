@@ -116,7 +116,8 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 		      }
 		    }
 		    blue=temp;
-		    *colour = (SDL_Color){red,green,blue,0};
+		    SDL_Color temp_color = {red,green,blue,0};
+			(*colour) = temp_color;
 		    break;
 		  }
 		default:

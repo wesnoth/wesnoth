@@ -792,7 +792,7 @@ bool show_theme_dialog(display& disp)
   std::vector<std::string> options = disp.get_theme().get_known_themes();  
   std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
   action = gui::show_dialog(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
-  if(action >-1){
+  if(action == 0){
     preferences::set_theme(options[action]);
     //it would be preferable for the new theme to take effect
     //immediately, however, this will have to do for now.

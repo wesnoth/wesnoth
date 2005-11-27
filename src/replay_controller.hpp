@@ -73,7 +73,7 @@ private:
 	void init(CVideo& video, const std::vector<config*>& story);
 	void init_managers();
 	void play_turn();
-	void play_side(int team_index);
+	void play_side(const int team_index);
 	void update_teams();
 	void update_gui();
 

@@ -388,7 +388,7 @@ void replay_controller::play_turn(){
 	current_turn_++;
 }
 
-void replay_controller::play_side(int team_index){
+void replay_controller::play_side(const int team_index){
 	if (recorder.at_end()){
 		return;
 	}
@@ -402,89 +402,87 @@ void replay_controller::play_side(int team_index){
 	const unit_type::experience_accelerator xp_mod(xp_modifier_ > 0 ? xp_modifier_ : 100);
 
 	//if a side is dead, don't do their turn
-	if(current_team.is_empty() || team_units(units_,player_number_) == 0) {
-		return;
-	}
+	if(!current_team.is_empty() && team_units(units_,player_number_) > 0) {
+		if(team_manager_.is_observer()) {
+			(*gui_).set_team(size_t(player_number_-1));
+		}
 
-	if(team_manager_.is_observer()) {
-		(*gui_).set_team(size_t(player_number_-1));
-	}
+		std::stringstream player_number_str;
+		player_number_str << player_number_;
+		gamestate_.set_variable("side_number",player_number_str.str());
 
-	std::stringstream player_number_str;
-	player_number_str << player_number_;
-	gamestate_.set_variable("side_number",player_number_str.str());
+		//fire side turn event only if real side change occurs not counting changes from void to a side
+		if (team_index != first_player_ || current_turn_ > 1) {
+			game_events::fire("side turn");
+		}
 
-	//fire side turn event only if real side change occurs not counting changes from void to a side
-	if (team_index != first_player_ || current_turn_ > 1) {
-		game_events::fire("side turn");
-	}
+		//we want to work out if units for this player should get healed, and the
+		//player should get income now. healing/income happen if it's not the first
+		//turn of processing, or if we are loading a game, and this is not the
+		//player it started with.
+		const bool turn_refresh = current_turn_ > 1 || loading_game_ && team_index != first_player_;
 
-	//we want to work out if units for this player should get healed, and the
-	//player should get income now. healing/income happen if it's not the first
-	//turn of processing, or if we are loading a game, and this is not the
-	//player it started with.
-	const bool turn_refresh = current_turn_ > 1 || loading_game_ && team_index != first_player_;
+		if(turn_refresh) {
+			for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
+				if(i->second.side() == player_number_) {
+					i->second.new_turn();
+				}
+			}
 
-	if(turn_refresh) {
-		for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
-			if(i->second.side() == player_number_) {
-				i->second.new_turn();
+			current_team.new_turn();
+
+			//if the expense is less than the number of villages owned,
+			//then we don't have to pay anything at all
+			const int expense = team_upkeep(units_,player_number_) -
+								current_team.villages().size();
+			if(expense > 0) {
+				current_team.spend_gold(expense);
+			}
+
+			calculate_healing((*gui_),status_,map_,units_,player_number_,teams_);
+		}
+
+		current_team.set_time_of_day(int(status_.turn()),status_.get_time_of_day());
+
+		gui_->set_playing_team(size_t(player_number_-1));
+
+		if (!recorder.is_skipping()){
+			clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,player_number_-1);
+		}
+
+		const hotkey::basic_handler key_events_handler(gui_);
+		LOG_NG << "doing replay " << player_number_ << "\n";
+		bool replaying;
+		try {
+			replaying = do_replay(*gui_,map_,gameinfo_,units_,teams_,
+								  player_number_,status_,gamestate_);
+		} catch(replay::error&) {
+			gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_ONLY);
+
+			replaying = false;
+		}
+		LOG_NG << "result of replay: " << (replaying?"true":"false") << "\n";
+
+		for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
+			if(uit->second.side() == player_number_){
+				uit->second.end_turn();
+			}
+			else{
+				//this is necessary for replays in order to show possible movements
+				uit->second.new_turn();
 			}
 		}
 
-		current_team.new_turn();
-
-		//if the expense is less than the number of villages owned,
-		//then we don't have to pay anything at all
-		const int expense = team_upkeep(units_,player_number_) -
-							current_team.villages().size();
-		if(expense > 0) {
-			current_team.spend_gold(expense);
+		//This implements "delayed map sharing." It's meant as an alternative to shared vision.
+		if(current_team.copy_ally_shroud()) {
+			gui_->recalculate_minimap();
+			gui_->invalidate_all();
 		}
 
-		calculate_healing((*gui_),status_,map_,units_,player_number_,teams_);
+		game_events::pump();
+
+		//check_victory(units_,teams_);
 	}
-
-	current_team.set_time_of_day(int(status_.turn()),status_.get_time_of_day());
-
-	gui_->set_playing_team(size_t(player_number_-1));
-
-	if (!recorder.is_skipping()){
-		clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,player_number_-1);
-	}
-
-	const hotkey::basic_handler key_events_handler(gui_);
-	LOG_NG << "doing replay " << player_number_ << "\n";
-	bool replaying;
-	try {
-		replaying = do_replay(*gui_,map_,gameinfo_,units_,teams_,
-							  player_number_,status_,gamestate_);
-	} catch(replay::error&) {
-		gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_ONLY);
-
-		replaying = false;
-	}
-	LOG_NG << "result of replay: " << (replaying?"true":"false") << "\n";
-
-	for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
-		if(uit->second.side() == player_number_){
-			uit->second.end_turn();
-		}
-		else{
-			//this is necessary for replays in order to show possible movements
-			uit->second.new_turn();
-		}
-	}
-
-	//This implements "delayed map sharing." It's meant as an alternative to shared vision.
-	if(current_team.copy_ally_shroud()) {
-		gui_->recalculate_minimap();
-		gui_->invalidate_all();
-	}
-
-	game_events::pump();
-
-	//check_victory(units_,teams_);
 
 	player_number_++;
 
@@ -553,14 +551,11 @@ void replay_controller::replay_slice()
 		gui_->scroll(preferences::scroll_speed(),0);
 
 	gui_->draw();
-	//FixMe
-	//integrate changed objectives
-	/*
-	if(!browse_ && current_team().objectives_changed()) {
-		dialogs::show_objectives(gui_, level_, current_team().objectives());
-		current_team().reset_objectives_changed();
+
+	if(!mouse_handler_.browse() && teams_[player_number_].objectives_changed()) {
+		dialogs::show_objectives(*gui_, level_, teams_[player_number_].objectives());
+		teams_[player_number_].reset_objectives_changed();
 	}
-	*/
 }
 
 bool replay_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const

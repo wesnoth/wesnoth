@@ -665,7 +665,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				throw replay::error();
 			}
 
-			unit new_unit(&(u_type->second),team_num,true);
+			bool old_replay = false;
+			float version = atof(state_of_game.version.substr(0, 3).c_str());
+			if (version < 1.1){
+				old_replay = true;
+			}
+			unit new_unit(&(u_type->second),team_num,true, old_replay);
 			const std::string& res = recruit_unit(map,team_num,units,new_unit,loc);
 			if(!res.empty()) {
 				ERR_NW << "cannot recruit unit: " << res << "\n";

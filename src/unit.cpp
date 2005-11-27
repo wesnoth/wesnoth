@@ -37,6 +37,9 @@
 
 #define LOG_UT LOG_STREAM(info, engine)
 
+
+const int unit::UNIT_ID_MAX=1000000;
+
 namespace {
 	const std::string ModificationTypes[] = { "object", "trait", "advance" };
 	const size_t NumModificationTypes = sizeof(ModificationTypes)/

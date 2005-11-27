@@ -17,7 +17,7 @@ bool command_active()
 #endif
 }
 
-mouse_handler::mouse_handler(display* gui, std::vector<team>& teams, unit_map& units, gamemap& map, 
+mouse_handler::mouse_handler(display* gui, std::vector<team>& teams, const unit_map& units, gamemap& map, 
 							 gamestatus& status, const game_data& gameinfo):
 gui_(gui), teams_(teams), units_(units), map_(map), status_(status), gameinfo_(gameinfo)
 {
@@ -27,6 +27,10 @@ gui_(gui), teams_(teams), units_(units), map_(map), status_(status), gameinfo_(g
 	enemy_paths_ = false;
 	browse_ = false;
 	path_turns_ = 0;
+}
+
+bool mouse_handler::browse(){
+	return browse_;
 }
 
 void mouse_handler::mouse_motion(const SDL_MouseMotionEvent& event, const int player_number)
@@ -156,7 +160,7 @@ void mouse_handler::mouse_motion(int x, int y)
 	last_second_nearest_ = second_nearest_hex;
 }
 
-unit_map::iterator mouse_handler::find_unit(const gamemap::location& hex)
+unit_map::const_iterator mouse_handler::find_unit(const gamemap::location& hex)
 {
 	if ((*gui_).fogged(hex.x,hex.y)) {
 		return units_.end();
@@ -215,7 +219,7 @@ gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::locati
 	return res;
 }
 
-unit_map& mouse_handler::visible_units()
+const unit_map& mouse_handler::visible_units()
 {
 	if(viewing_team().uses_shroud() == false && viewing_team().uses_fog() == false) {
 		LOG_STREAM(info, engine) << "all units are visible...\n";
@@ -334,12 +338,12 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event)
 	gamemap::location::DIRECTION nearest_hex, second_nearest_hex;
 	gamemap::location hex = gui_->hex_clicked_on(event.x,event.y,&nearest_hex,&second_nearest_hex);
 
-	unit_map::iterator u = find_unit(selected_hex_);
+	unit_map::const_iterator u = find_unit(selected_hex_);
 
 	//if the unit is selected and then itself clicked on,
 	//any goto command is cancelled
 	if(u != units_.end() && !browse_ && selected_hex_ == hex && u->second.side() == team_num_) {
-		u->second.set_goto(gamemap::location());
+		((unit) u->second).set_goto(gamemap::location());
 	}
 
 	//if we can move to that tile
@@ -347,7 +351,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event)
 			route = enemy_paths_ ? current_paths_.routes.end() :
 	                               current_paths_.routes.find(hex);
 
-	unit_map::iterator enemy = find_unit(hex);
+	unit_map::const_iterator enemy = find_unit(hex);
 
 	const gamemap::location src = selected_hex_;
 	paths orig_paths = current_paths_;
@@ -361,7 +365,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event)
 		current_route_.steps.clear();
 		gui_->set_route(NULL);
 
-		const unit_map::iterator it = find_unit(hex);
+		unit_map::const_iterator it = find_unit(hex);
 
 		if(it != units_.end() && it->second.side() == team_num_ && !gui_->fogged(it->first.x,it->first.y)) {
 			const bool ignore_zocs = it->second.type().is_skirmisher();
