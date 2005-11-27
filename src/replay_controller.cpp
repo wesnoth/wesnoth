@@ -491,7 +491,6 @@ void replay_controller::play_side(int team_index){
 	if (player_number_ > teams_.size()) { 
 		status_.next_turn(); 
 	}
-	game_events::fire("side turn");
 	update_teams();
 	update_gui();
 }
