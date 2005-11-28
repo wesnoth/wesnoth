@@ -854,15 +854,20 @@ const std::string& unit_type::image_defensive(attack_type::RANGE range) const
 
 		const std::string& val = cfg_[str];
 
-		if(!val.empty())
+		if(!val.empty()) {
+			LOG_STREAM(err, config) << "unit " << id() << " uses an "<< str <<" tag, which is deprecated\n";
 			return val;
+		}
 	}
 
 	const std::string& val = cfg_["image_defensive"];
 	if(val.empty())
 		return cfg_["image"];
-	else
+	else {
+
+		LOG_STREAM(err, config) << "unit " << id() << " uses an image_defensive tag, which is deprecated\n";
 		return val;
+	}
 }
 
 const std::string& unit_type::image_leading() const

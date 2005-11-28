@@ -176,6 +176,9 @@ SVN trunk (1.1.x):
      nested tags and compressed save files.
    * experience_modifier: if it gets set twice, now the later value takes
      precedence; to max experience is now rounded with lower limit of 1
+   * defensive_image, defensive_image_short and defensive_image_range are now 
+     deprecated, please use defensive animations ( new macros are provided to
+     help, they still work but will print a warning)
  * documentation: switch doxygen templates from CVS to SVN, Savannah to Gna!
  * added a --with-preferences-dir configure option to allow using a directory
    other than .wesnoth, for coexistence of multiple versions on same machine
