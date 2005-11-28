@@ -231,11 +231,28 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
 			const std::string& lang_type = gettext(at_it->type().c_str());
-			str.str("<245,230,193>");
-			str << at_it->name() << " (" << lang_type << ")\n";
+			str.str("");
+			str << "<245,230,193>";
+			str << at_it->damage() << "-" ;
+			str << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
+			str << " " << at_it->name();			
+			tooltip << at_it->name() << "\n";
+			tooltip << at_it->damage() << " " << _("damage") << ", ";
+			tooltip << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
+			tooltip << " " << _("attacks");
 
-			tooltip << at_it->name() << " (" << lang_type << ")\n";
+			str<<"\n";
+			res.add_text(str,tooltip);
+			
+			str << "<166,146,117>  ";
+			std::string range = (at_it->range() == attack_type::SHORT_RANGE ?
+		            _("melee") :
+					_("ranged"));
+			str << range << "--" << lang_type << "\n";
+			str<<"\n";
 
+			tooltip << _("weapon range: ") << range <<"\n";
+			tooltip << _("damage type: ") << lang_type << "\n";
 			//find all the unit types on the map, and show this weapon's bonus against all the different units
 			std::set<std::string> seen_units;
 			std::map<int,std::vector<std::string> > resistances;
@@ -258,24 +275,9 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 					tooltip << *i;
 				}
-
 				tooltip << "\n";
 			}
 
-			res.add_text(str,tooltip);
-
-			str << "<166,146,117>  ";
-			str << at_it->damage() << "-" ;
-			str << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
-			str << " -- "
-		        << (at_it->range() == attack_type::SHORT_RANGE ?
-		            _("melee") :
-					_("ranged"));
-			tooltip << at_it->damage() << " " << _("damage") << ", ";
-			tooltip << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
-			tooltip << " " << _("attacks");
-
-			str << "\n";
 			res.add_text(str,tooltip);
 
 			str << "<166,146,117>  ";
@@ -284,9 +286,10 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			  if(at_it->special() == swarm_string){
 			    str << gettext(at_it->special().c_str())<<"("<<at_it->num_swarm_attacks(u->second.hitpoints(),u->second.max_hitpoints())<<"/"<< at_it->num_attacks() <<")" << "\n";
 			  }else{
-			    str << gettext(at_it->special().c_str()) << "\n";
+			    str << gettext(at_it->special().c_str());
 			  }
 				tooltip << string_table["weapon_special_" + at_it->special() + "_description"];
+				str<<"\n";
 				res.add_text(str,tooltip);
 			}
 
