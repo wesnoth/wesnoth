@@ -33,6 +33,8 @@ SVN trunk (1.1.x):
      * Clash of Armies mermen leader now created in event, not in side setup
      * fix glitches (part of #4385)
      * fix saurian deaths not triggering loss in Saving Inarix (#4803)
+     * general tidying of scenario files
+     * fix shamans losing experience (#4792)
    * The Dark Hordes
      * Underground Pool no longer has units off map and in walls
  * user interface
@@ -179,6 +181,7 @@ SVN trunk (1.1.x):
    * defensive_image, defensive_image_short and defensive_image_range are now 
      deprecated, please use defensive animations ( new macros are provided to
      help, they still work but will print a warning)
+   * [store_unit] now leaves variable untouched if filter does not match
  * documentation: switch doxygen templates from CVS to SVN, Savannah to Gna!
  * added a --with-preferences-dir configure option to allow using a directory
    other than .wesnoth, for coexistence of multiple versions on same machine
