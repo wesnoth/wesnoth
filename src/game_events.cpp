@@ -1275,7 +1275,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string& variable = cfg["variable"];
 
 		config& vars = state_of_game->variables;
-		vars.clear_children(variable);
 
 		const bool kill_units = cfg["kill"] == "yes";
 
@@ -1285,6 +1284,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				continue;
 			}
 
+			vars.clear_children(variable);
 			config& data = vars.add_child(variable);
 			i->first.write(data);
 			i->second.write(data);
