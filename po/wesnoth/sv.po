@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-11-21 21:34+0100\n"
-"PO-Revision-Date: 2005-11-07 19:43+0100\n"
+"PO-Revision-Date: 2005-11-28 14:28+0100\n"
 "Last-Translator: Stefan Bergström (tephlon)\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -365,7 +365,6 @@ msgid "Movement"
 msgstr "Förflyttning"
 
 #: data/help.cfg:126
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -387,7 +386,11 @@ msgstr ""
 "ruta, så visas det försvar som truppen får om den ställs på den rutan. Om "
 "muspekaren hålls över en skuggad ruta, så visas dessutom antalet drag som "
 "krävs för att nå den. Om en skuggad ruta väljs så kommer truppen att flyttas "
-"dit den snabbaste vägen under kommande drag."
+"dit den snabbaste vägen under kommande drag. Om truppen inte använder hela "
+"sin förflyttning första gången den förflyttas under ett drag, så kan den "
+"flyttas igen i samma drag. En trupp förlorar återstående förflyttning om den "
+"anfaller. Om en trupp ställs i en by man inte redan kontrollerar så förloras "
+"återstående förflyttning, men man kan fortfarande anfalla."
 
 #: data/help.cfg:128
 msgid ""
@@ -452,7 +455,7 @@ msgstr ""
 
 #: data/help.cfg:137
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "Slöja och stridsdimma"
 
 #: data/help.cfg:138
 msgid ""
@@ -466,6 +469,15 @@ msgid ""
 "unit will clear of the locations within one turn's move (ignoring ZOC and "
 "enemy units) and locations adjacent to those locations."
 msgstr ""
+"I vissa scenarier är delar av kartan dolda. Två olika mekanismer ligger "
+"bakom detta, som kan användas separat eller tillsammans. Slöjan döljer både "
+"terräng och trupper, men när den lyfts så kan man alltid se området. "
+"Stridsdimman däremot döljer trupper och vem byarna lyder under, såvida de "
+"inte är egna eller allierade. Stridsdimman försvinner tillfälligt när man "
+"har trupper i närheten, men återvänder när man ger sig av från platsen. Både "
+"slöja och stridsdimma lyfts av trupper. Alla trupper lyfter slöjan eller "
+"stridsdimman på det område som truppen kan nå på ett drag, oavsett "
+"kontrollzoner och fiender."
 
 #: data/help.cfg:143
 msgid "Combat"
@@ -1946,7 +1958,6 @@ msgid ""
 msgstr "Om du vill så kan du komma, men ledaren vill bara tala med Baldras."
 
 #: data/scenarios/multiplayer/2p_Across_the_River.cfg:3
-#, fuzzy
 msgid "2p - Across the River"
 msgstr "2s - Över floden"
 
@@ -2439,7 +2450,7 @@ msgstr "Snötäckt skog"
 
 #: data/terrain.cfg:368
 msgid "Chasm"
-msgstr ""
+msgstr "Klyfta"
 
 #: data/terrain.cfg:419
 msgid "Encampment"
@@ -2774,16 +2785,15 @@ msgstr ""
 "dina slag för dig utan att själva attackera."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also removes "
 "their zone of control, allowing your wounded units to escape or helping you "
 "reach fleeing enemy units."
 msgstr ""
-"Förmågan att 'sakta ner' en motståndare gör att en träffad fiende rör sig "
-"långsammare, och minskar också en fiendes antal attacker med ett. Det är "
-"därför en mycket effektiv metod mot fiender som har ett litet antal mycket "
-"kraftfulla attacker."
+"Fiender som träffats av en attack med egenskapen att 'sakta ner' rör sig "
+"långsammare. Dessutom försvinner truppens kontrollzon, vilket gör det "
+"möjligt att jaga ikapp flyende fiendetrupper eller låta sårade trupper fly "
+"undan en trängd situation."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -3064,7 +3074,6 @@ msgid "regenerates"
 msgstr "regenererar"
 
 #: data/translations/english.cfg:76
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
@@ -3073,7 +3082,8 @@ msgid ""
 msgstr ""
 "Stigfinnare:\n"
 "Denna trupp finner vägar förbi fienden, och hindras därmed inte av fiendens "
-"kontrollzoner."
+"kontrollzoner. (Undantag: om en stigfinnande trupp placeras i en fiendes "
+"kontrollzon så förlorar den sin återstående förflyttning.)"
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:18
 #: data/units/Assassin.cfg:113 data/units/Duelist.cfg:16
@@ -3116,26 +3126,25 @@ msgid "teleport"
 msgstr "teleportera"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is a friendly unit on the opposite "
 "side of the target, and that unit is not incapacitated (eg. turned to stone)."
 msgstr ""
 "Rygghugg:\n"
-"Denna typ av attack orsakar dubbel skada om en annan egen trupp befinner sig "
-"på motsatt sida av målet. (Fungerar inte tillsammans med allierade trupper.)"
+"Denna typ av attack orsakar dubbel skada om en annan egen eller allierad "
+"trupp befinner sig på motsatt sida av målet, och den truppen inte är "
+"oskadliggjord (t ex förstenad)."
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 "Bärsärkagång:\n"
-"Striden fortsätter tills en av parterna ligger död på marken, vare sig det "
-"gäller anfall eller försvar."
+"Vare sig det gäller anfall eller försvar fortsätter striden tills en av "
+"parterna ligger död på marken eller tills striden pågått i 30 utfall."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -3148,7 +3157,6 @@ msgstr ""
 "truppen mottar också dubbel skada från målets motattack."
 
 #: data/translations/english.cfg:102
-#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -3156,7 +3164,8 @@ msgid ""
 msgstr ""
 "Suga livskraft:\n"
 "Denna typ av attack suger livskraften ur levande trupper, och förbättrar den "
-"anfallande truppens hälsa med hälften av den skada den orsakar."
+"anfallande truppens hälsa med hälften av den skada den orsakar (avrundat "
+"nedåt)."
 
 #: data/translations/english.cfg:105
 msgid ""
@@ -3212,6 +3221,11 @@ msgid ""
 "move at half normal speed, do not emit a zone of control, and always lose "
 "initiative in fights."
 msgstr ""
+"Sakta ner:\n"
+"Denna attack saktar ner målet. Detta ändrar attackordningen och tillåter den "
+"anfallande truppen att göra ett utfall extra innan försvararen kan slå "
+"tillbaka. Nersaktade trupper rör sig med halva sin normala hastighet, har "
+"ingen kontrollzon, och förlorar alltid initiativet i strider."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -8862,9 +8876,8 @@ msgid "+Polish Translation"
 msgstr "+Polsk översättning"
 
 #: src/about.cpp:293
-#, fuzzy
 msgid "+Portuguese Translation"
-msgstr "+Brasiliansk-portugisisk översättning"
+msgstr "+Portugisisk översättning"
 
 #: src/about.cpp:296
 msgid "+Portuguese (Brazil) Translation"
@@ -9940,7 +9953,7 @@ msgstr "Ledare: "
 
 #: src/multiplayer_wait.cpp:118
 msgid "Recruits: "
-msgstr "Rekryterade: "
+msgstr "Rekryterbara: "
 
 #: src/multiplayer_wait.cpp:151
 msgid "Waiting for game to start..."
@@ -10273,7 +10286,7 @@ msgstr "Förluster"
 
 #: src/playturn.cpp:2334 src/playturn.cpp:2388
 msgid "Kills"
-msgstr "Dödsfall"
+msgstr "Dödade fiender"
 
 #: src/playturn.cpp:2340
 msgid "Damage Inflicted"
@@ -10358,13 +10371,12 @@ msgid "invisible: "
 msgstr "osynlig: "
 
 #: src/reports.cpp:139
-#, fuzzy
 msgid ""
 "This unit has been slowed. It emits no zone of control, moves at half speed "
 "and ennemies will be able to strike earlier once during a fight"
 msgstr ""
-"Den här truppen har blivit nedsaktad. Den förflyttar sig med halva sin "
-"nominella hastighet och kan attackera en gång mindre än normalt"
+"Den här truppen har blivit nedsaktad. Den har ingen kontrollzon, förflyttar "
+"sig med halva sin nominella hastighet, och förlorar initiativet i strid."
 
 #: src/reports.cpp:139
 msgid "slowed: "
@@ -10590,40 +10602,3 @@ msgstr "redbar"
 #: src/unit_types.cpp:1009
 msgid "neutral"
 msgstr "neutral"
-
-#, fuzzy
-#~ msgid "Replay"
-#~ msgstr "repris"
-
-#, fuzzy
-#~ msgid "Play"
-#~ msgstr "Spelare: "
-
-#, fuzzy
-#~ msgid "Reset"
-#~ msgstr "Öken"
-
-#, fuzzy
-#~ msgid "Next Turn"
-#~ msgstr "Drag"
-
-#, fuzzy
-#~ msgid "Next Side"
-#~ msgstr "Nästa"
-
-#~ msgid "Saved Theme Preference: "
-#~ msgstr "Sparat temaval: "
-
-#~ msgid "New theme will take effect on next new or loaded game."
-#~ msgstr "Det nya temat blir aktivt när nästa spel startas."
-
-#~ msgid ""
-#~ "Slow:\n"
-#~ "This attack slows the target. Slowed units move at half normal speed and "
-#~ "receive one less attack than normal in combat until the end of their "
-#~ "controllers' turn."
-#~ msgstr ""
-#~ "Sakta ner:\n"
-#~ "Denna typ av attack får målet att saktas ner. Trupper som är nersaktade "
-#~ "rör sig med halva sin normala hastighet, och har i strid ett slag mindre "
-#~ "fram tills dess att truppen som kastade besvärjelsen avslutat sitt drag."
