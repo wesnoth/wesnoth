@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-11-21 21:35+0100\n"
-"PO-Revision-Date: 2005-08-31 02:07+0200\n"
+"PO-Revision-Date: 2005-11-22 22:57+0100\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
@@ -244,39 +244,36 @@ msgid "Best Possible Enemy Moves"
 msgstr "Legjobb lehetséges ellenséges lépések"
 
 #: src/hotkeys.cpp:81
-#, fuzzy
 msgid "Play"
-msgstr "Játékosok:"
+msgstr "Indítás"
 
 #: src/hotkeys.cpp:82
 msgid "Reset"
-msgstr ""
+msgstr "Újraindítás"
 
 #: src/hotkeys.cpp:83
 msgid "Stop"
-msgstr ""
+msgstr "Megállítás"
 
 #: src/hotkeys.cpp:84
-#, fuzzy
 msgid "Next Turn"
-msgstr "Következő egység"
+msgstr "Következő kör"
 
 #: src/hotkeys.cpp:85
-#, fuzzy
 msgid "Next Side"
-msgstr "Következő egység"
+msgstr "Következő játékos"
 
 #: src/hotkeys.cpp:86
 msgid "Shroud"
-msgstr ""
+msgstr "Eltakarás"
 
 #: src/hotkeys.cpp:87
 msgid "Fog"
-msgstr ""
+msgstr "Köd"
 
 #: src/hotkeys.cpp:88
 msgid "Skip animation"
-msgstr ""
+msgstr "Animációk átugrása"
 
 #: src/hotkeys.cpp:90
 msgid "Set Terrain"
@@ -487,7 +484,7 @@ msgstr "Haloing effektusok mutatása"
 
 #: src/preferences_display.cpp:221
 msgid "Theme"
-msgstr ""
+msgstr "Téma"
 
 #: src/preferences_display.cpp:223
 msgid "Adjust Gamma"
@@ -568,9 +565,8 @@ msgid "Change the resolution the game runs at"
 msgstr "A játék felbontásának megváltoztatása"
 
 #: src/preferences_display.cpp:285
-#, fuzzy
 msgid "Change the theme the game runs with"
-msgstr "A játék felbontásának megváltoztatása"
+msgstr "A játék által használt téma megváltoztatása"
 
 #: src/preferences_display.cpp:288
 msgid "Display a dialog at the beginning of your turn"
@@ -666,11 +662,13 @@ msgstr "Ez a gyorsbillentyű már használatban van."
 
 #: src/preferences_display.cpp:780
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Elmentett téma beállításai: "
 
 #: src/preferences_display.cpp:786
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
+"Az új téma beállításai a következő új vagy betöltött játék indításakor "
+"fognak életbe lépni."
 
 #: src/show_dialog.cpp:314
 msgid "Error"

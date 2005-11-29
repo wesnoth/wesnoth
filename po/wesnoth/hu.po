@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-11-21 21:34+0100\n"
-"PO-Revision-Date: 2005-11-08 19:12+0200\n"
+"PO-Revision-Date: 2005-11-27 21:12+0100\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -459,7 +459,7 @@ msgstr ""
 
 #: data/help.cfg:137
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "Eltakarás és köd a csatatéren"
 
 #: data/help.cfg:138
 msgid ""
@@ -473,6 +473,18 @@ msgid ""
 "unit will clear of the locations within one turn's move (ignoring ZOC and "
 "enemy units) and locations adjacent to those locations."
 msgstr ""
+"Néhány pályán a térkép egyes részei nem leszek felfedve előtted. Ez kétféle "
+"módon történhet meg, amelyek együtt és külön-külön is működhetnek. Az "
+"eltakarás mind a terepet, mind a rajta álló egységeket elrejti az adott "
+"helyen. Azonban elég egyszer felfedezni, utánna láthatod ami ott történik. A "
+"köd ezzel szemben csak az egységeket és a falvak birtoklóinak kilétét rejtik "
+"el (kivéve ha ez az egyik szövetségesed vagy te magad vagy). A köd "
+"feloszlik, ha egyik egységed a helyszínre ér, ám újra ráborul a tájra, ha az "
+"egységeid továbbállnak. Mind az eltakarás, mind a köd által erejtett részek "
+"az egységek segítségével tárhatóak fel. Az adott egység a tőle egy környi "
+"távolságra lévő területekre és azokon túl egy hatszögnyire lát rá (figyelmen "
+"kívül hagyva a valódi odalépésben akadályt jelentő ellenséges egységeket és "
+"azok ellenőzött területét)."
 
 #: data/help.cfg:143
 msgid "Combat"
@@ -1970,7 +1982,6 @@ msgid ""
 msgstr "Jöhetsz, ha úgy kívánod, de a vezér csak Baldras-szal kíván beszélni."
 
 #: data/scenarios/multiplayer/2p_Across_the_River.cfg:3
-#, fuzzy
 msgid "2p - Across the River"
 msgstr "2j - Átkelés a folyón"
 
@@ -2479,7 +2490,7 @@ msgstr "Hófödte erdő"
 
 #: data/terrain.cfg:368
 msgid "Chasm"
-msgstr ""
+msgstr "Szakadék"
 
 #: data/terrain.cfg:419
 msgid "Encampment"
@@ -3261,6 +3272,12 @@ msgid ""
 "move at half normal speed, do not emit a zone of control, and always lose "
 "initiative in fights."
 msgstr ""
+"Lelassítás:\n"
+"Ez a támadás lelassítja a célpontot. A lassítás átrendezi a küzdelem "
+"menetét, mivel a támadónak újabb ütést enged meg, ameddig a védekező tovább "
+"tud harcolni. A lelassított egyégek feleolyan gyorsan lépnek, elvesztik az "
+"ellenőrzött területük fölötti irányítást és minden esetben elvesztik a "
+"küzdelemben az első ütés lehetőségét."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -8491,9 +8508,8 @@ msgid "+Polish Translation"
 msgstr "+Lengyel Fordítás"
 
 #: src/about.cpp:293
-#, fuzzy
 msgid "+Portuguese Translation"
-msgstr "+Portugál (brazil) Fordítás"
+msgstr "+Portugál Fordítás"
 
 #: src/about.cpp:296
 msgid "+Portuguese (Brazil) Translation"
