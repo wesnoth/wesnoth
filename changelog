@@ -18,9 +18,9 @@ SVN trunk (1.1.x):
        initiate after winning the scenario
      * Isle of the Damned: replaced some forest with road, can recall mermen,
        Moremirmu explains if he will join you or not, hard difficulty has fog
-     * Muff Malal's Peninsula: Muff has less gold but more income for
-       XP milking on easy, he recruits blood bats on hard, your choice of
-       fight vs run is better explained
+     * Muff Malal's Peninsula: Muff has less gold but more income for XP
+       milking on easy, recruits blood bats on hard, choice of fight vs run
+       is better explained
      * Crossroads: added story dialog
      * Princess of Wesnoth: clarified victory conditions
      * changed Snow Plains map to use snow terrain
@@ -37,7 +37,7 @@ SVN trunk (1.1.x):
      * fix shamans losing experience (#4792)
    * The Dark Hordes
      * Underground Pool no longer has units off map and in walls
- * user interface
+ * user interface:
    * added font colors to theme
    * reorganized side-bar information
    * fix untranslated unit create dialog (#4424)
@@ -54,17 +54,17 @@ SVN trunk (1.1.x):
    * clicking on unit portrait in status pane now centers on unit (#3388)
    * show numbers of each enemy which can reach tiles in "Show Enemy Moves"
    * don't show "The End" after viewing a won multiplayer replay (#4166)
-   * new option to toggle server messages when observing games (patch by grzywacs)
- * graphics
+   * new option to toggle server messages when observing games
+ * graphics:
    * units can now have colors redefined to match team colors
    * team color can be defined in the side tag with "team_rgb=r,g,b"
    * new title screen and logo
    * changed the storm trident attack icon from fireball to lightingbolt
    * new attack icon for the fireball
    * portraits:
-     * new portraits: Li'sar, Drake Burner, Drake Fighter, Drake Glider, 
-       Elvish Shaman, Ghoul, Mermaid Initiate, Merman Fighter, Merman Hunter, 
-       Naga Fighter, Orcish Assassin, Saurian Skirmisher
+     * new Li'sar, Drake Burner, Drake Fighter, Drake Glider, Elvish Shaman,
+       Ghoul, Mermaid Initiate, Merman Fighter, Merman Hunter, Naga Fighter,
+       Orcish Assassin, Saurian Skirmisher
      * all Drake, Merman, Naga and Saurian upgrades now use level one portraits
      * Necrophage and Orcish Slayer upgrades now use level one portraits
    * new images: Konrad level 1, Tentacle of the Deep
@@ -116,8 +116,7 @@ SVN trunk (1.1.x):
    * decreased Merman Hunter experience needed to level from 38 to 35
    * Northerners can now recruit Rocklobber in Age of Heroes era
    * removed Thug from Knalgan faction
-   * removed obsolete units: Merman, Naga, Saurian, Saurian Warrior, Sea Hag,
-     Triton
+   * removed obsolete Merman, Naga, Saurian, Saurian Warrior, Sea Hag, Triton
    * added drain on the melee attack of the Ghost
    * increased the HP of the Skeleton fighter tree by 4
    * increased the HP of the Ghoul line by 5
@@ -169,17 +168,15 @@ SVN trunk (1.1.x):
    * tighten up checks on leaders and units placed on map at start of scenario
    * add a backup save_id to use if both save_id and description are empty
    * fix duplicate key values being concatenated: just replace with last value
-   * units can now have a [extra_anim] tag, and a [animate_unit] event to
-     trigger it
+   * units can now have [extra_anim] tag, and [animate_unit] event to trigger it
    * added swarm attack special
-   * new advance and post_advance events that triggers before and after a unit
-     advancement -- patch by Noyga
+   * new advance and post_advance events, trigger before/after unit advancement
    * changed get_random to not nest [random] tags to avoid problems with deeply
-     nested tags and compressed save files.
+     nested tags and compressed save files
    * experience_modifier: if it gets set twice, now the later value takes
      precedence; to max experience is now rounded with lower limit of 1
    * defensive_image, defensive_image_short and defensive_image_range are now 
-     deprecated, please use defensive animations ( new macros are provided to
+     deprecated, please use defensive animations (new macros are provided to
      help, they still work but will print a warning)
    * [store_unit] now leaves variable untouched if filter does not match
  * documentation: switch doxygen templates from CVS to SVN, Savannah to Gna!
