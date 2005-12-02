@@ -85,7 +85,7 @@ ut_get( cost )
 ut_get( alignment )
 
 #define ut_gs( x ) \
-	{ #x,       (getter)wrapper_unittype_get_##x,     NULL, NULL, NULL },
+	{ #x,	(getter)wrapper_unittype_get_##x,	NULL,	NULL,	NULL },
 
 static PyGetSetDef unittype_getseters[] = {
 	ut_gs( name )
@@ -125,7 +125,7 @@ PyObject* python_ai::unittype_advances_to( wesnoth_unittype* type, PyObject* arg
 }
 
 static PyMethodDef unittype_methods[] = {
-	{ "advances_to", (PyCFunction)python_ai::unittype_advances_to, METH_VARARGS},
+	{ "advances_to",	(PyCFunction)python_ai::unittype_advances_to,	METH_VARARGS},
 	{ NULL, NULL, NULL }
 };
 
@@ -136,36 +136,36 @@ static int unittype_internal_compare(wesnoth_unittype* left, wesnoth_unittype* r
 
 static PyTypeObject wesnoth_unittype_type = {
 	PyObject_HEAD_INIT(NULL)
-	0,                         /* ob_size*/
-	"wesnoth.unittype",        /* tp_name*/
-	sizeof(wesnoth_unittype),  /* tp_basicsize*/
-	0,                         /* tp_itemsize*/
-	0,                         /* tp_dealloc*/
-	0,                         /* tp_print*/
-	0,                         /* tp_getattr*/
-	0,                         /* tp_setattr*/
-	(cmpfunc)unittype_internal_compare,                         /* tp_compare*/
-	0,                         /* tp_repr*/
-	0,              /* tp_as_number*/
-	0,                         /* tp_as_sequence*/
-	0,                         /* tp_as_mapping*/
-	0,                         /* tp_hash */
-	0,                         /* tp_call*/
-	0,                         /* tp_str*/
-	0,   /* tp_getattro*/
-	0,   /* tp_setattro*/
-	0,                         /* tp_as_buffer*/
-	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
-	"Wesnoth unit types",       /* tp_doc */
-	0,                         /* tp_traverse */
-	0,                         /* tp_clear */
-	0,                         /* tp_richcompare */
-	0,                         /* tp_weaklistoffset */
-	0,                         /* tp_iter */
-	0,                         /* tp_iternext */
-	unittype_methods,             /* tp_methods */
-	0,                         /* tp_members */
-	unittype_getseters,          /* tp_getset */
+	0,										/* ob_size*/
+	"wesnoth.unittype",						/* tp_name*/
+	sizeof(wesnoth_unittype),				/* tp_basicsize*/
+	0,										/* tp_itemsize*/
+	0,										/* tp_dealloc*/
+	0,										/* tp_print*/
+	0,										/* tp_getattr*/
+	0,										/* tp_setattr*/
+	(cmpfunc)unittype_internal_compare,		/* tp_compare*/
+	0,										/* tp_repr*/
+	0,										/* tp_as_number*/
+	0,										/* tp_as_sequence*/
+	0,										/* tp_as_mapping*/
+	0,										/* tp_hash */
+	0,										/* tp_call*/
+	0,										/* tp_str*/
+	0,										/* tp_getattro*/
+	0,										/* tp_setattro*/
+	0,										/* tp_as_buffer*/
+	Py_TPFLAGS_DEFAULT,						/* tp_flags*/
+	"Wesnoth unit types",					/* tp_doc */
+	0,										/* tp_traverse */
+	0,										/* tp_clear */
+	0,										/* tp_richcompare */
+	0,										/* tp_weaklistoffset */
+	0,										/* tp_iter */
+	0,										/* tp_iternext */
+	unittype_methods,						/* tp_methods */
+	0,										/* tp_members */
+	unittype_getseters,						/* tp_getset */
 };
 
 static PyObject* wrap_unittype(const unit_type& type)
@@ -222,14 +222,14 @@ static PyObject* attacktype_get_range(wesnoth_attacktype* type, void* closure)
 }
 
 static PyGetSetDef attacktype_getseters[] = {
-	{ "name",			(getter)attacktype_get_name,	NULL, NULL, NULL },
-	{ "damage",       (getter)attacktype_get_damage,     NULL, NULL, NULL },
-	{ "num_attacks",       (getter)attacktype_get_num_attacks,     NULL, NULL, NULL },
-	{ "attack_weight",       (getter)attacktype_get_attack_weight,     NULL, NULL, NULL },
-	{ "defense_weight",       (getter)attacktype_get_defense_weight,     NULL, NULL, NULL },
-	{ "backstab",       (getter)attacktype_get_backstab,     NULL, NULL, NULL },
-	{ "slow",       (getter)attacktype_get_slow,     NULL, NULL, NULL },
-	{ "range",       (getter)attacktype_get_range,     NULL, NULL, NULL },
+	{ "name",			(getter)attacktype_get_name,			NULL,	NULL,	NULL },
+	{ "damage",			(getter)attacktype_get_damage,			NULL,	NULL,	NULL },
+	{ "num_attacks",    (getter)attacktype_get_num_attacks,		NULL,	NULL,	NULL },
+	{ "attack_weight",  (getter)attacktype_get_attack_weight,	NULL,	NULL,	NULL },
+	{ "defense_weight",	(getter)attacktype_get_defense_weight,	NULL,	NULL,	NULL },
+	{ "backstab",		(getter)attacktype_get_backstab,		NULL,	NULL,	NULL },
+	{ "slow",			(getter)attacktype_get_slow,			NULL,	NULL,	NULL },
+	{ "range",			(getter)attacktype_get_range,			NULL,	NULL,	NULL },
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
@@ -329,11 +329,11 @@ static PyObject* unit_query_valid(wesnoth_unit* unit, void* closure)
 }
 
 static PyGetSetDef unit_getseters[] = {
-	{ "name",       (getter)unit_get_name,     NULL, NULL, NULL },
-	{ "is_enemy",       (getter)unit_is_enemy,     NULL, NULL, NULL },
-	{ "can_recruit",       (getter)unit_can_recruit,     NULL, NULL, NULL },
-	{ "is_valid",			(getter)unit_query_valid,	NULL,	NULL,	NULL },
-	{ NULL, NULL, NULL, NULL, NULL }
+	{ "name",			(getter)unit_get_name,		NULL,	NULL,	NULL },
+	{ "is_enemy",		(getter)unit_is_enemy,		NULL,	NULL,	NULL },
+	{ "can_recruit",	(getter)unit_can_recruit,	NULL,	NULL,	NULL },
+	{ "is_valid",		(getter)unit_query_valid,	NULL,	NULL,	NULL },
+	{ NULL,				NULL,						NULL,	NULL,	NULL }
 };
 
 static PyObject* wrapper_unit_type( wesnoth_unit* unit, PyObject* args )
@@ -371,12 +371,12 @@ static PyObject* wrapper_unit_damage_against( wesnoth_unit* unit, PyObject* args
 }
 
 static PyMethodDef unit_methods[] = {
-	{ "type",		(PyCFunction)wrapper_unit_type,       METH_VARARGS},
-	{ "attacks",	(PyCFunction)wrapper_unit_attacks,		METH_VARARGS},
-	{ "movement_cost",	(PyCFunction)wrapper_unit_movement_cost,		METH_VARARGS},
-	{ "defense_modifier",	(PyCFunction)wrapper_unit_defense_modifier,		METH_VARARGS},
-	{ "damage_against",	(PyCFunction)wrapper_unit_damage_against,		METH_VARARGS},
-	{ NULL, NULL, NULL }
+	{ "type",				(PyCFunction)wrapper_unit_type,				METH_VARARGS},
+	{ "attacks",			(PyCFunction)wrapper_unit_attacks,			METH_VARARGS},
+	{ "movement_cost",		(PyCFunction)wrapper_unit_movement_cost,	METH_VARARGS},
+	{ "defense_modifier",	(PyCFunction)wrapper_unit_defense_modifier,	METH_VARARGS},
+	{ "damage_against",		(PyCFunction)wrapper_unit_damage_against,	METH_VARARGS},
+	{ NULL,					NULL,										NULL }
 };
 
 static int unit_internal_compare(wesnoth_unit* left, wesnoth_unit* right)
@@ -457,8 +457,12 @@ static PyGetSetDef location_getseters[] = {
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
+static PyObject* wrapper_location_adjacent_to( wesnoth_location* left, PyObject* args );
+static PyObject* wrapper_location_distance_to( wesnoth_location* left, PyObject* args );
 static PyMethodDef location_methods[] = {
-    { NULL, NULL }
+	{ "adjacent_to",         (PyCFunction)wrapper_location_adjacent_to,       METH_VARARGS},
+	{ "distance_to",         (PyCFunction)wrapper_location_distance_to,       METH_VARARGS},
+    { NULL, NULL, NULL }
 };
 
 static PyTypeObject wesnoth_location_type = {
@@ -495,6 +499,23 @@ static PyTypeObject wesnoth_location_type = {
 	location_getseters,          /* tp_getset */
 };
 
+static PyObject* wrapper_location_adjacent_to( wesnoth_location* left, PyObject* args )
+{
+	wesnoth_location* right;
+	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &right ) )
+		return NULL;
+	return Py_BuildValue("i", tiles_adjacent(*left->location_,*right->location_) ? 1 : 0);
+}
+
+static PyObject* wrapper_location_distance_to( wesnoth_location* left, PyObject* args )
+{
+	wesnoth_location* right;
+	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &right ) )
+		return NULL;
+	return Py_BuildValue("i", distance_between(*left->location_,*right->location_));
+}
+
+
 
 typedef struct {
 	PyObject_HEAD
@@ -511,9 +532,9 @@ static PyObject* gamemap_get_y(wesnoth_gamemap* map, void* closure)
 }
 
 static PyGetSetDef gamemap_getseters[] = {
-	{ "x",       (getter)gamemap_get_x,     NULL, NULL, NULL },
-	{ "y",       (getter)gamemap_get_y,     NULL, NULL, NULL },
-	{ NULL, NULL, NULL, NULL, NULL }
+	{ "x",	(getter)gamemap_get_x,	NULL,	NULL,	NULL },
+	{ "y",	(getter)gamemap_get_y,	NULL,	NULL,	NULL },
+	{ NULL,	NULL,					NULL,	NULL,	NULL },
 };
 
 static PyObject* wrapper_getmap_is_village( wesnoth_gamemap* map, PyObject* args )
@@ -541,9 +562,9 @@ static PyObject* wrapper_getmap_is_castle( wesnoth_gamemap* map, PyObject* args 
 }
 
 static PyMethodDef gamemap_methods[] = {
-	{ "is_village",         (PyCFunction)wrapper_getmap_is_village,       METH_VARARGS},
-	{ "is_keep",         (PyCFunction)wrapper_getmap_is_keep,       METH_VARARGS},
-	{ "is_castle",         (PyCFunction)wrapper_getmap_is_castle,       METH_VARARGS},
+	{ "is_village",	(PyCFunction)wrapper_getmap_is_village,	METH_VARARGS},
+	{ "is_keep",	(PyCFunction)wrapper_getmap_is_keep,	METH_VARARGS},
+	{ "is_castle",	(PyCFunction)wrapper_getmap_is_castle,	METH_VARARGS},
 	{ NULL, NULL, 0 }
 };
 
@@ -633,9 +654,9 @@ static PyMethodDef team_methods[] = {
 };
 
 static PyGetSetDef team_getseters[] = {
-	{ "name",         (getter)wrapper_team_name,       NULL, NULL, NULL},
-	{ "gold",         (getter)wrapper_team_gold,       NULL, NULL, NULL},
-	{ "income",         (getter)wrapper_team_income,       NULL, NULL, NULL},
+	{ "name",	(getter)wrapper_team_name,		NULL,	NULL,	NULL },
+	{ "gold",	(getter)wrapper_team_gold,		NULL,	NULL,	NULL },
+	{ "income",	(getter)wrapper_team_income,	NULL,	NULL,	NULL },
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
@@ -864,19 +885,19 @@ PyObject* python_ai::wrapper_recruit_unit(PyObject* self, PyObject* args)
 }
 
 static PyMethodDef wesnoth_python_methods[] = {
-	{ "log_message",		python_ai::wrapper_log_message,		METH_VARARGS},
-	{ "get_units",		python_ai::wrapper_get_units,		METH_VARARGS},
-	{ "get_location",	python_ai::wrapper_get_location,			METH_VARARGS},
-	{ "get_map",			python_ai::wrapper_get_map,			METH_VARARGS},
-	{ "get_teams",		python_ai::wrapper_get_teams,		METH_VARARGS},
-	{ "get_current_team",		python_ai::wrapper_get_current_team,		METH_VARARGS},
-	{ "get_src_dst",		python_ai::wrapper_get_src_dst, METH_VARARGS},
-	{ "get_dst_src",		python_ai::wrapper_get_dst_src, METH_VARARGS},
-	{ "move_unit",		python_ai::wrapper_move_unit, METH_VARARGS},
-	{ "attack_unit",		python_ai::wrapper_attack_unit, METH_VARARGS},
-	{ "get_adjacent_tiles",		python_ai::wrapper_get_adjacent_tiles, METH_VARARGS},
-	{ "recruit_unit",	python_ai::wrapper_recruit_unit, METH_VARARGS},
-	{NULL, NULL}
+	{ "log_message",		python_ai::wrapper_log_message,			METH_VARARGS},
+	{ "get_units",			python_ai::wrapper_get_units,			METH_VARARGS},
+	{ "get_location",		python_ai::wrapper_get_location,		METH_VARARGS},
+	{ "get_map",			python_ai::wrapper_get_map,				METH_VARARGS},
+	{ "get_teams",			python_ai::wrapper_get_teams,			METH_VARARGS},
+	{ "get_current_team",	python_ai::wrapper_get_current_team,	METH_VARARGS},
+	{ "get_src_dst",		python_ai::wrapper_get_src_dst,			METH_VARARGS},
+	{ "get_dst_src",		python_ai::wrapper_get_dst_src,			METH_VARARGS},
+	{ "move_unit",			python_ai::wrapper_move_unit,			METH_VARARGS},
+	{ "attack_unit",		python_ai::wrapper_attack_unit,			METH_VARARGS},
+	{ "get_adjacent_tiles",	python_ai::wrapper_get_adjacent_tiles,	METH_VARARGS},
+	{ "recruit_unit",		python_ai::wrapper_recruit_unit,		METH_VARARGS},
+	{ NULL,					NULL,									NULL }
 };
 
 #define Py_Register( x, n ) \
