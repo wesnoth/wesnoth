@@ -323,10 +323,16 @@ static PyObject* unit_can_recruit(wesnoth_unit* unit, void* closure)
 	return Py_BuildValue("i",unit->unit_->can_recruit() == true ? 1 : 0);
 }
 
+static PyObject* unit_query_valid(wesnoth_unit* unit, void* closure)
+{
+	return Py_BuildValue("i",running_instance->is_unit_valid(unit->unit_) == true ? 1 : 0);
+}
+
 static PyGetSetDef unit_getseters[] = {
 	{ "name",       (getter)unit_get_name,     NULL, NULL, NULL },
 	{ "is_enemy",       (getter)unit_is_enemy,     NULL, NULL, NULL },
 	{ "can_recruit",       (getter)unit_can_recruit,     NULL, NULL, NULL },
+	{ "is_valid",			(getter)unit_query_valid,	NULL,	NULL,	NULL },
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
