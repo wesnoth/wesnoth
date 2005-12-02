@@ -790,14 +790,18 @@ bool show_theme_dialog(display& disp)
 {
   int action = 0;
   std::vector<std::string> options = disp.get_theme().get_known_themes();  
-  std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
-  action = gui::show_dialog(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
-  if(action == 0){
-    preferences::set_theme(options[action]);
-    //it would be preferable for the new theme to take effect
-    //immediately, however, this will have to do for now.
-    gui::show_dialog(disp,NULL,"",_("New theme will take effect on next new or loaded game."),gui::MESSAGE);
-    return(1);
+  if(options.size()){
+    std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
+    action = gui::show_dialog(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
+    if(action == 0){
+      preferences::set_theme(options[action]);
+      //it would be preferable for the new theme to take effect
+      //immediately, however, this will have to do for now.
+      gui::show_dialog(disp,NULL,"",_("New theme will take effect on next new or loaded game."),gui::MESSAGE);
+      return(1);
+    }
+  }else{
+      gui::show_dialog(disp,NULL,"",_("No known themes.  Try changing from within an existing game."),gui::MESSAGE);
   }
   return(0);  
 }
