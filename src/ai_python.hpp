@@ -37,8 +37,12 @@ public:
 	static PyObject* unittype_advances_to( wesnoth_unittype* type, PyObject* args );
 	static PyObject* wrapper_team_recruits( wesnoth_team* team, PyObject* args );
 
+	static void set_error(const char *fmt, ...);
+
+	static bool is_unit_valid(const unit* unit, bool do_set_error = true);
 protected:
 	static bool init_;
+	static PyObject* python_error_;
 	ai_interface::move_map src_dst_;
 	ai_interface::move_map dst_src_;
 	std::map<location,paths> possible_moves_;

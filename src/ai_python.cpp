@@ -40,6 +40,19 @@ Additionally, useful utility functions such as those found in pathutils.hpp shou
 
 static python_ai* running_instance;
 bool python_ai::init_ = false;
+PyObject* python_ai::python_error_ = NULL;
+
+void python_ai::set_error(const char *fmt, ...)
+{
+	char buf[1024];
+	va_list arg;
+
+	va_start(arg, fmt);
+	vsnprintf(buf, sizeof(buf), fmt, arg);
+	va_end(arg);
+
+	PyErr_SetString(PyExc_ValueError, buf);
+}
 
 static PyObject* wrap_unittype(const unit_type& type);
 
@@ -272,18 +285,41 @@ typedef struct {
 	const unit* unit_;
 } wesnoth_unit;
 
+bool python_ai::is_unit_valid(const unit* unit, bool do_set_error)
+{
+	if (!unit)
+	{
+		if (do_set_error)
+			set_error("Undefined unit.");
+		return false;
+	}
+	for(unit_map::const_iterator i = running_instance->get_info().units.begin(); i != running_instance->get_info().units.end(); ++i) {
+		if (unit == &i->second)
+			return true;
+	}
+	if (do_set_error)
+		set_error("Unit was destroyed.");
+	return false;
+}
+
 static PyObject* unit_get_name(wesnoth_unit* unit, void* closure)
 {
+	if (!running_instance->is_unit_valid(unit->unit_))
+		return NULL;
 	return Py_BuildValue("s",( const char* )unit->unit_->name().c_str());
 }
 
 static PyObject* unit_is_enemy(wesnoth_unit* unit, void* closure)
 {
+	if (!running_instance->is_unit_valid(unit->unit_))
+		return NULL;
 	return Py_BuildValue("i",running_instance->current_team().is_enemy(unit->unit_->side()) == true ? 1 : 0);
 }
 
 static PyObject* unit_can_recruit(wesnoth_unit* unit, void* closure)
 {
+	if (!running_instance->is_unit_valid(unit->unit_))
+		return NULL;
 	return Py_BuildValue("i",unit->unit_->can_recruit() == true ? 1 : 0);
 }
 
@@ -298,12 +334,16 @@ static PyObject* wrapper_unit_type( wesnoth_unit* unit, PyObject* args )
 {
 	if ( !PyArg_ParseTuple( args, "" ) )
 		return NULL;
+	if (!running_instance->is_unit_valid(unit->unit_))
+		return NULL;
 	return wrap_unittype(unit->unit_->type());
 }
 
 static PyObject* wrapper_unit_attacks( wesnoth_unit* unit, PyObject* args )
 {
 	if ( !PyArg_ParseTuple( args, "" ) )
+		return NULL;
+	if (!running_instance->is_unit_valid(unit->unit_))
 		return NULL;
 	PyObject* list = PyList_New(unit->unit_->attacks().size());
 	for ( int attack = 0; attack < unit->unit_->attacks().size(); attack++)
@@ -318,6 +358,8 @@ static PyObject* wrapper_unit_damage_against( wesnoth_unit* unit, PyObject* args
 {
 	wesnoth_attacktype* attack;
 	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_attacktype_type, &attack ) )
+		return NULL;
+	if (!running_instance->is_unit_valid(unit->unit_))
 		return NULL;
 	return Py_BuildValue("i",unit->unit_->damage_against(*attack->attack_type_));
 }
@@ -850,6 +892,8 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
 		Py_Register(wesnoth_unittype_type, "unittype");
 		Py_Register(wesnoth_team_type, "team");
 		Py_Register(wesnoth_attacktype_type, "attacktype");
+		python_error_ = PyErr_NewException("wesnoth.error",NULL,NULL);
+		PyDict_SetItemString(PyModule_GetDict(module),"error",python_error_);
 		init_ = true;
 	}
 	calculate_possible_moves(possible_moves_,src_dst_,dst_src_,false);
@@ -876,8 +920,9 @@ void python_ai::play_turn()
 		"\tWesnoth.LogMessage('%s'%(u.Name))\n");
 		"Wesnoth.LogMessage('test1')\n");
 	PyObject* error = PyErr_Occurred();*/
-	PyObject* file = PyFile_FromString("c:\\w.py","rt");
+	char* script = "c:\\w.py";
+	PyObject* file = PyFile_FromString(script,"rt");
 	//FILE* f = fopen("c:\\w.py","rt");
-	PyRun_SimpleFile(PyFile_AsFile(file),"c:\\w.py");
+	PyRun_SimpleFile(PyFile_AsFile(file),script);
 	Py_DECREF(file);
 }
