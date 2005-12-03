@@ -124,10 +124,9 @@ void gamebrowser::draw_item(size_t index) const {
 	const surface map_info_surf(font::get_rendered_text(font::make_text_ellipsis(game.map_info, font::SIZE_PLUS, (item_rect.x + item_rect.w) - xpos - margin_), font::SIZE_PLUS, font::GOOD_COLOUR));
 	video().blit_surface(xpos, ypos, map_info_surf);
 
-
 	// draw dimensions text
 	const surface dimensions_text(font::get_rendered_text(game.dimensions, font::SIZE_NORMAL, font::NORMAL_COLOUR));
-	ypos = item_rect.y + item_rect.h  - margin_ - dimensions_text->h;;
+	ypos = item_rect.y + item_rect.h  - margin_ - dimensions_text->h;
 	video().blit_surface(xpos, ypos, dimensions_text);
 
 	xpos += dimensions_text->w + 2 * h_padding_;
@@ -298,7 +297,10 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			} catch(gamemap::incorrect_format_exception &e) {
 				std::cerr << "illegal map: " << e.msg_ << "\n";
 			}
+		} else {
+			games_.back().dimensions="??x??";
 		}
+		// now dimensions is non-empty
 		games_.back().name = (**game)["name"];
 		const std::string& turn = (**game)["turn"];
 		const std::string& slots = (**game)["slots"];
