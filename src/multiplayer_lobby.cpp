@@ -125,6 +125,13 @@ void gamebrowser::draw_item(size_t index) const {
 	video().blit_surface(xpos, ypos, map_info_surf);
 
 
+	// draw dimensions text
+	const surface dimensions_text(font::get_rendered_text(game.dimensions, font::SIZE_NORMAL, font::NORMAL_COLOUR));
+	ypos = item_rect.y + item_rect.h  - margin_ - dimensions_text->h;;
+	video().blit_surface(xpos, ypos, dimensions_text);
+
+	xpos += dimensions_text->w + 2 * h_padding_;
+	
 	// draw gold icon
 	const surface gold_icon(image::get_image(gold_icon_locator_, image::UNSCALED));
 	ypos = item_rect.y + item_rect.h  - margin_ - gold_icon->h;
@@ -285,6 +292,9 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			try {
 				gamemap map(game_config, games_.back().map_data);
 				games_.back().mini_map = image::getMinimap(item_height_ - margin_, item_height_ - 2 * margin_, map, 0);
+				char dimensions[10];
+				snprintf(dimensions,sizeof(dimensions),"%dx%d", map.x(), map.y());
+				games_.back().dimensions=dimensions;
 			} catch(gamemap::incorrect_format_exception &e) {
 				std::cerr << "illegal map: " << e.msg_ << "\n";
 			}
