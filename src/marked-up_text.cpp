@@ -21,7 +21,7 @@
 namespace font {
 
 const char LARGE_TEXT='*', SMALL_TEXT='`', GOOD_TEXT='@', BAD_TEXT='#',
-           NORMAL_TEXT='{', BLACK_TEXT='}', BOLD_TEXT='~', IMAGE='&', 
+           NORMAL_TEXT='{', BLACK_TEXT='}', BOLD_TEXT='~', IMAGE='&',
            COLOR_TEXT='<', NULL_MARKUP='^';
 
 namespace {
@@ -84,8 +84,8 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 		case COLOR_TEXT:
 		  {
 		    //very primitive parsing for rgb value
-		    //should look like <213,14,151> 
-		    //but no checking on commas or end '>', 
+		    //should look like <213,14,151>
+		    //but no checking on commas or end '>',
 		    //could be any non-# char
 		    ++i1;
 		    Uint8 red=0, green=0, blue=0, temp=0;
@@ -123,7 +123,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 		default:
 		  return i1;
 		}
-		
+
 		++i1;
 	}
 

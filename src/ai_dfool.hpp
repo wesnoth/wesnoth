@@ -17,7 +17,7 @@ namespace dfool {
     std::map<std::string, std::string>unit_assignment;
   };
 
-  //an ai that keeps track of what it has "seen" and does not target units 
+  //an ai that keeps track of what it has "seen" and does not target units
   //that it has not "seen" or recruit based on unseen units.
   class dfool_ai : public ai_interface {
   public:
@@ -36,14 +36,14 @@ namespace dfool {
       //     sprintf(buf,"%d,%s",count,ai_mem["test"].c_str());
       //     ai_mem["test"]=buf;
       //     current_team().set_ai_memory(ai_mem);
-      
-      
+
+
       config side_filter;
       char buf[80];
       sprintf(buf,"%d",team_num);
       side_filter["side"]=buf;
       unit_map my_units=filter_units(info_.units,side_filter);
-      
+
       //make sure previously assigned units still exist
       config::child_list order_assignments;
       assignment_list.clear();
@@ -57,14 +57,14 @@ namespace dfool {
 	  LOG_STREAM(info, ai)<<"\t\tchecking for existing assignments\n";
 	  bool found=false;
 	  for(unit_map::const_iterator i = my_units.begin(); i != my_units.end(); ++i) {
-	    
+
 	    LOG_STREAM(info, ai)<<"\t\tcomparing "<<i->second.underlying_description() <<" to "<<(**a)["unit_id"]  << " \n";
-	    
+
 	    if(i->second.underlying_description()==(**a)["unit_id"]){
 	      found=true;
 	      break;
 	    }
-	  } 
+	  }
 	  if(found){
 	    LOG_STREAM(info, ai)<<"\tfound an existing assignments\n";
 	    order_assignments.push_back(*a);
@@ -73,8 +73,8 @@ namespace dfool {
 	  }
 	}
       }
-      
-      
+
+
       const unit_map& v_units=visible_units(info_.units);
       LOG_STREAM(info, ai)<<"dfool sees:"<<std::endl;
       for(unit_map::const_iterator ui = v_units.begin(); ui != v_units.end(); ++ui) {
@@ -90,12 +90,12 @@ namespace dfool {
 	bool pers=(id.size()>0);
 	LOG_STREAM(info, ai)<<"dfool order("<<(pers?id:"")<<"): "<<num<<(num==1?" unit":" units")<<" with priority "<<prior<<std::endl;
 	const config::child_list& filter = (**o).get_children("filter");
-	
+
 	const config::child_list& clear_assign = (**o).get_children("clear_assignment");
 	unit_map matching_units;
 	unit_map assigned_units;
 	int count=num;
-	
+
 	assigned_units.clear();
 	//find units assigned to this order;
 	for(config::child_list::const_iterator at = order_assignments.begin(); at != order_assignments.end(); ++at) {
@@ -116,7 +116,7 @@ namespace dfool {
 	    }
 	  }
 	}
-	
+
 	matching_units.clear();
 	//find units that match any filter. If no filters then accept all units.
 	if(filter.size()){
@@ -139,22 +139,22 @@ namespace dfool {
 		matching_units.insert(*i);
 		LOG_STREAM(info, ai)<<"\t\tmatching: "<<i->second.underlying_description()<<" to order: "<<id<<std::endl;
 	      }
-	    } 
+	    }
 	  }
 	}else{
 	  matching_units=my_units;
 	}
-	
+
 	//should add sorting functionality here in future
 	//bring assigned units up to maximum number
 	for(unit_map::const_iterator mu = matching_units.begin(); mu != matching_units.end() && order_assignments.size()<num; ++mu) {
 	  assigned_units.insert(*mu);
 	  LOG_STREAM(info, ai)<<"\tassigned unit:\t"<<mu->second.underlying_description()<<"\n";
 	}
-	
+
 	if(order_assignments.size()){
 	  LOG_STREAM(info, ai)<<"\t "<<assigned_units.size()<<(assigned_units.size()==1?" unit assigned":" units assigned")<<std::endl;
-	  
+
 	  const config::child_list& commands = (**o).get_children("command");
 	  for(config::child_list::const_iterator com = commands.begin(); com != commands.end(); ++com) {
 	    std::string type=(**com)["type"];
@@ -164,7 +164,7 @@ namespace dfool {
 	    }
 	  }
 	}
-	
+
 	//save assignments into memory
 	if(id.size()){
 	  for(unit_map::const_iterator au = assigned_units.begin(); au != assigned_units.end(); ++au) {
@@ -185,7 +185,7 @@ namespace dfool {
     unit_map visible_units_;
     unit_map my_units_;
     config assignment_list;
-    
+
     bool clear_assignment(const location& loc, const config::child_list& clear,const gamemap& map)
     {
       for(config::child_list::const_iterator cl=clear.begin();cl<clear.end();cl++)
@@ -200,7 +200,7 @@ namespace dfool {
 	}
       return(false);
     }
-    
+
     const unit_map& visible_units(const unit_map& units_)
     {
       visible_units_.clear();
@@ -214,23 +214,23 @@ namespace dfool {
 	  }
 	}
       }
-      
+
       LOG_STREAM(info, ai) << "number of visible units: " << visible_units_.size() << "\n";
       //still need to deal with invisible units not in fog.
       return visible_units_;
     }
-    
+
     unit_map filter_units(const unit_map& units_,const config& filter)
     {
       unit_map filtered_units_;
       for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 	if(i->second.matches_filter(filter)) {
 	  filtered_units_.insert(*i);
-	} 
-      }   
+	}
+      }
       return filtered_units_;
     }
-    
+
     void moveto(config::child_list::const_iterator o, unit_map matching_units){
       location target(atoi((**o)["target_x"].c_str())-1,atoi((**o)["target_y"].c_str())-1);
       LOG_STREAM(info, ai)<<"\tmoving to:("<<target.x<<","<<target.y<<")"<<std::endl;
@@ -239,10 +239,10 @@ namespace dfool {
 	  std::map<location,paths> possible_moves;
 	  move_map srcdst, dstsrc;
 	  calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
-	  
+
 	  int closest_distance = -1;
 	  std::pair<location,location> closest_move;
-	  
+
 	  //this undoubtedly could be done more cleanly
 	  for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
 	    //must restrict move_map to only unit that is moving.

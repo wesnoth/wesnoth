@@ -2102,7 +2102,7 @@ void turn_info::recall()
 					redo_stack_.clear();
 
 					clear_shroud();
-	
+
 					recall_list.erase(recall_list.begin()+res);
 					gui_.invalidate_game_status();
 					gui_.invalidate_all();

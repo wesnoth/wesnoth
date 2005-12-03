@@ -1000,7 +1000,7 @@ void display::draw_report(reports::TYPE report_num)
 			int red = (RGB & 0x00FF0000)>>16;
 			int green = (RGB & 0x0000FF00)>>8;
 			int blue = (RGB & 0x000000FF);
- 
+
 			std::string c_start="<";
 			std::string c_sep=",";
 			std::string c_end=">";
@@ -1058,7 +1058,7 @@ void display::draw_report(reports::TYPE report_num)
 
 					if(rect.w + rect.x - x < img->w && image_count){
 					  //we have more than one image, and this one doesn't fit.
-					  img=surface(image::get_image(game_config::ellipsis_image,image::UNSCALED));					  
+					  img=surface(image::get_image(game_config::ellipsis_image,image::UNSCALED));
 					  used_ellipsis=true;
 					}
 
@@ -1070,7 +1070,7 @@ void display::draw_report(reports::TYPE report_num)
 
 					image_count++;
 					if(area.h > tallest) tallest = area.h;
-					
+
 					if(! used_ellipsis){
 					  x += area.w;
 					}else{
@@ -1343,7 +1343,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 	}
 
 	const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (loc == mouseoverHex_ ? ftofxp(1.0): ftofxp(0.6));
-	
+
 	if(energy_file != NULL) {
 	    draw_bar(*energy_file,xpos,ypos,(u.max_hitpoints()*2)/3,unit_energy,energy_colour,bar_alpha);
 	}

@@ -225,13 +225,13 @@ const language_def& get_language() { return current_language; }
 const language_def& get_locale()
 {
 	//TODO: Add in support for querying the locale on Windows
-	
+
 	wassert(known_languages.size() != 0);
 
 	const std::string& prefs_locale = preferences::language();
 	if(prefs_locale.empty() == false) {
 		wesnoth_setlocale(LC_MESSAGES, prefs_locale);
-		for(std::vector<language_def>::const_iterator i = known_languages.begin(); 
+		for(std::vector<language_def>::const_iterator i = known_languages.begin();
 				i != known_languages.end(); ++i) {
 			if (prefs_locale == i->localename)
 				return *i;

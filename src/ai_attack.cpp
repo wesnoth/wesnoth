@@ -185,7 +185,7 @@ void ai::do_attack_analysis(
 				//so we only check for 'concrete' backstab opportunities.
 				//That would also break backstab_check, since it
 				//assumes the defender is in place.
-				if(itor != units_.end() && 
+				if(itor != units_.end() &&
 					backstab_check(tiles[j], loc, units_, teams_)) {
 					if(backstab) {
 						backstab_bonus = 2;

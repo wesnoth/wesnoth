@@ -33,7 +33,7 @@
 #include <string>
 
 namespace preferences {
-  
+
 display* disp = NULL;
 
 display_manager::display_manager(display* d)
@@ -286,7 +286,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 
 	show_lobby_joins_button_.set_check(lobby_joins());
 	show_lobby_joins_button_.set_help_string(_("Show messages about players joining the multiplayer lobby"));
-	
+
 	show_floating_labels_button_.set_check(show_floating_labels());
 	show_floating_labels_button_.set_help_string(_("Show text above a unit when it is hit to display damage inflicted"));
 
@@ -789,7 +789,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 bool show_theme_dialog(display& disp)
 {
   int action = 0;
-  std::vector<std::string> options = disp.get_theme().get_known_themes();  
+  std::vector<std::string> options = disp.get_theme().get_known_themes();
   if(options.size()){
     std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
     action = gui::show_dialog(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
@@ -803,11 +803,11 @@ bool show_theme_dialog(display& disp)
   }else{
       gui::show_dialog(disp,NULL,"",_("No known themes.  Try changing from within an existing game."),gui::MESSAGE);
   }
-  return(0);  
+  return(0);
 }
 
 }
 
 
-  
+
 

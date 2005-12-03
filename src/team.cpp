@@ -131,7 +131,7 @@ team::team_info::team_info(const config& cfg)
 	}else{
 	  team_rgb_.erase(side);
 	}
-	
+
 	flag = cfg["flag"];
 
 	description = cfg["description"];
@@ -911,7 +911,7 @@ const Uint32 team::get_side_rgb(int side){
   if(p != team_rgb_.end()){
     return(p->second);
   }
-  	size_t index = size_t(get_side_colour_index(side) - 1);
+	size_t index = size_t(get_side_colour_index(side) - 1);
 
 	static const Uint32 sides[] = { 0x00FF0000,
 	                                0x000000FF,
@@ -931,13 +931,13 @@ const Uint32 team::get_side_rgb(int side){
 		return sides[index];
 	} else {
 		return sides[0];
-	}  
+	}
 }
 
 const SDL_Color team::get_side_colour(int side)
 {
 	Uint32 rgb=get_side_rgb(side);
-	SDL_Color color={ (0x00FF0000 & rgb)>>16, 
+	SDL_Color color={ (0x00FF0000 & rgb)>>16,
 				       (0x0000FF00 & rgb)>>8,
 				       (0x000000FF & rgb),
 	                               0} ;

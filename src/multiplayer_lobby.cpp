@@ -130,7 +130,7 @@ void gamebrowser::draw_item(size_t index) const {
 	video().blit_surface(xpos, ypos, dimensions_text);
 
 	xpos += dimensions_text->w + 2 * h_padding_;
-	
+
 	// draw gold icon
 	const surface gold_icon(image::get_image(gold_icon_locator_, image::UNSCALED));
 	ypos = item_rect.y + item_rect.h  - margin_ - gold_icon->h;

@@ -29,7 +29,7 @@
 #include <sstream>
 
 namespace {
-	const std::string report_names[] = { "unit_description", "unit_type", 
+	const std::string report_names[] = { "unit_description", "unit_type",
 		"unit_level","unit_amla","unit_traits","unit_status",
 		"unit_alignment","unit_abilities","unit_hp","unit_xp",
 		"unit_advancement_options","unit_moves","unit_weapons",
@@ -181,7 +181,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		  str << "<0,200,0>";
 		else
 		  str << "<200,200,0>";
-				  
+
 
 		str << u->second.hitpoints()
 		    << "/" << u->second.max_hitpoints();
@@ -235,7 +235,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			str << "<245,230,193>";
 			str << at_it->damage() << "-" ;
 			str << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
-			str << " " << at_it->name();			
+			str << " " << at_it->name();
 			tooltip << at_it->name() << "\n";
 			tooltip << at_it->damage() << " " << _("damage") << ", ";
 			tooltip << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
@@ -243,7 +243,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			str<<"\n";
 			res.add_text(str,tooltip);
-			
+
 			str << "<166,146,117>  ";
 			std::string range = (at_it->range() == attack_type::SHORT_RANGE ?
 		            _("melee") :
@@ -364,11 +364,11 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			if(owner == 0 || current_team.fogged(mouseover.x,mouseover.y)) {
 				str << _("Village");
 			} else if(owner == current_side) {
-			  	str << _("Owned village");
+				str << _("Owned village");
 			} else if(current_team.is_enemy(owner)) {
-			  	str << _("Enemy village");
+				str << _("Enemy village");
 			} else {
-			  	str << _("Allied village");
+				str << _("Allied village");
 			}
 			str << " ";
 		} else {
@@ -376,12 +376,12 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		}
 
 		if(underlying.size() != 1 || underlying[0] != terrain) {
-		  	str << "(";
+			str << "(";
 
 			for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
 			str << map.get_terrain_info(*i).name();
 				if(i+1 != underlying.end()) {
-				  	str << ",";
+					str << ",";
 				}
 			}
 			str << ")";

@@ -1027,7 +1027,7 @@ std::map<std::string,std::string> unit::advancement_icons() const
       std::stringstream tooltip;
       image=game_config::level_image;
       std::vector<std::string> adv=type().advances_to();
-      for(std::vector<std::string>::const_iterator i=adv.begin();i!=adv.end();i++){         
+      for(std::vector<std::string>::const_iterator i=adv.begin();i!=adv.end();i++){
 	if((*i).size()){
 	  tooltip<<(*i).c_str()<<"\n";
 	}
@@ -1035,7 +1035,7 @@ std::map<std::string,std::string> unit::advancement_icons() const
       temp[image]=tooltip.str();
     }
     const config::child_list mods=get_modification_advances();
-    for(config::child_list::const_iterator i = mods.begin(); i != mods.end(); ++i) { 
+    for(config::child_list::const_iterator i = mods.begin(); i != mods.end(); ++i) {
       image=(**i)["image"];
       if(image.size()){
 	std::stringstream tooltip;
@@ -1046,7 +1046,7 @@ std::map<std::string,std::string> unit::advancement_icons() const
 	}
 	temp[image]=tooltip.str();
       }
-    }   
+    }
   }
   return(temp);
 }
@@ -1060,9 +1060,9 @@ std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
   for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
     icon.first=(**i)["image"];
     icon.second=(**i)["description"];
-    
+
     for(int j=0;j<(modification_count("advance",(**i)["id"]));j++) {
-      
+
       temp.push_back(icon);
     }
   }

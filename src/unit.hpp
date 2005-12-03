@@ -157,7 +157,7 @@ public:
 	bool is_flying() const;
 
 	bool can_advance() const;
-       
+
         std::map<std::string,std::string> advancement_icons() const;
         std::vector<std::pair<std::string,std::string> > amla_icons() const;
 

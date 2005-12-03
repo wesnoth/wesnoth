@@ -9,14 +9,14 @@ namespace dfool {
       bool found=false;
       std::string unit_id=(**a)["unit_id"];
       for(unit_map::const_iterator i = my_units.begin(); i != my_units.end(); ++i) {
-	
+
 	LOG_STREAM(info, ai)<<"\t\tcomparing "<<i->second.underlying_description() <<" to "<<(**a)["unit_id"]  << " \n";
-	
+
 	if(i->second.underlying_description()==unit_id){
 	  found=true;
 	  break;
 	}
-      } 
+      }
       if(found){
 	LOG_STREAM(info, ai)<<"\tfound an existing assignments\n";
 	unit_assignment[unit_id]=(**a)["order"];

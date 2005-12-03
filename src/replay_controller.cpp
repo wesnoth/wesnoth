@@ -60,8 +60,8 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 
 replay_controller::replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 						   const int ticks, const int num_turns, const config& game_config,
-						   CVideo& video, const std::vector<config*>& story) : 
-	level_(level), gameinfo_(gameinfo), gamestate_(state_of_game), gamestate_start_(state_of_game), ticks_(ticks), 
+						   CVideo& video, const std::vector<config*>& story) :
+	level_(level), gameinfo_(gameinfo), gamestate_(state_of_game), gamestate_start_(state_of_game), ticks_(ticks),
 	status_(level, num_turns), status_start_(level, num_turns), map_(game_config, level["map_data"]),
 	game_config_(game_config), team_manager_(teams_), verify_manager_(units_), help_manager_(&game_config, &gameinfo, &map_),
 	labels_manager_(), xp_modifier_(atoi(level["experience_modifier"].c_str())),
@@ -486,8 +486,8 @@ void replay_controller::play_side(const int team_index){
 
 	player_number_++;
 
-	if (player_number_ > teams_.size()) { 
-		status_.next_turn(); 
+	if (player_number_ > teams_.size()) {
+		status_.next_turn();
 	}
 	update_teams();
 	update_gui();

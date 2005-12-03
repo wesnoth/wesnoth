@@ -65,15 +65,15 @@ namespace image {
 			type type_;
 			std::string filename_;
 			gamemap::location loc_;
-	 	        Uint32 new_color;
-	        	std::vector<Uint32> swap_colors;
+		        Uint32 new_color;
+		std::vector<Uint32> swap_colors;
 		};
 
 		// Constructing locators is somewhat slow, accessing image
 		// through locators is fast. The idea is that calling functions
 		// should store locators, and not strings to construct locators
 		// (the second will work, of course, but will be slower)
-  	        locator();
+	        locator();
 		locator(const locator &a);
 		locator(const char *filename);
 		locator(const char *filename, Uint32 new_rgb, std::vector<Uint32> swap_rgb);

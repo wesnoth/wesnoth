@@ -17,7 +17,7 @@ bool command_active()
 #endif
 }
 
-mouse_handler::mouse_handler(display* gui, std::vector<team>& teams, const unit_map& units, gamemap& map, 
+mouse_handler::mouse_handler(display* gui, std::vector<team>& teams, const unit_map& units, gamemap& map,
 							 gamestatus& status, const game_data& gameinfo):
 gui_(gui), teams_(teams), units_(units), map_(map), status_(status), gameinfo_(gameinfo)
 {
@@ -140,7 +140,7 @@ void mouse_handler::mouse_motion(int x, int y)
 
 		unit_map::const_iterator un = find_unit(new_hex);
 
-		if(un != units_.end() && /* un->second.side() != player_number && */ 
+		if(un != units_.end() && /* un->second.side() != player_number && */
 		   current_paths_.routes.empty() && !(*gui_).fogged(un->first.x,un->first.y)) {
 			//Quick-Hack because of problems with passing a constant Reference
 			unit un2 = un->second;

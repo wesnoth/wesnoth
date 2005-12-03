@@ -327,14 +327,14 @@ surface recolor_image(surface surf, Uint32 new_rgb, std::vector<Uint32> old_rgb)
   // parallel input vectors chosen to prevent need to include SDL structures
   // elsewhere in code or create new rgb structure.  It might be better to
   // just pass a vector of SDL colors instead...
- 
+
   Uint16 new_red  =(new_rgb & 0x00FF0000)>>16;
   Uint16 new_green=(new_rgb & 0x0000FF00)>>8;
   Uint16 new_blue =(new_rgb & 0x000000FF);
 
         if(surf == NULL)
                 return NULL;
- 
+
         surface nsurf(make_neutral_surface(surf));
         if(nsurf == NULL) {
                 std::cerr << "failed to make neutral surface\n";
@@ -348,7 +348,7 @@ surface recolor_image(surface surf, Uint32 new_rgb, std::vector<Uint32> old_rgb)
 	const Uint16 new_avg = (Uint16)(((Uint16) new_red +
 				   (Uint16) new_green +
 				   (Uint16) new_blue) / 3);
-	
+
 	{
         for(std::vector<Uint32>::const_iterator temp_rgb = old_rgb.begin();
 		temp_rgb!=old_rgb.end();temp_rgb++)
@@ -362,7 +362,7 @@ surface recolor_image(surface surf, Uint32 new_rgb, std::vector<Uint32> old_rgb)
                 //conversion. ok, this is no big deal :)
                 //the correct formula being:
                 //gray=0.299red+0.587green+0.114blue
-	    
+
                 //get grey level of old color
 	    //		const Uint16 old_grey = (Uint16)((77*(Uint16) old_r +
 	    //		                                  150*(Uint16)old_g +
@@ -374,7 +374,7 @@ surface recolor_image(surface surf, Uint32 new_rgb, std::vector<Uint32> old_rgb)
 		if (old_grey>old_avg){
 		  old_avg = old_grey;
 		}
-	  } 
+	  }
 	}
 
 	{
@@ -384,12 +384,12 @@ surface recolor_image(surface surf, Uint32 new_rgb, std::vector<Uint32> old_rgb)
             int old_r=((*temp_rgb) & 0X00FF0000)>>16;
             int old_g=((*temp_rgb) & 0X0000FF00)>>8;
             int old_b=((*temp_rgb) & 0X000000FF);
-                 
+
 	    //	    std::cout<<"recolor:"<<old_r<<","<<old_g<<","<<old_b<<"\n";
                 surface_lock lock(nsurf);
                 Uint32* beg = lock.pixels();
                 Uint32* end = beg + nsurf->w*surf->h;
-                 
+
 		//const Uint16 old_grey = (Uint16)((77*(Uint16) old_r +
 		//                                  150*(Uint16)old_g +
 		//                                  29*(Uint16)old_b) / 256);
@@ -399,7 +399,7 @@ surface recolor_image(surface surf, Uint32 new_rgb, std::vector<Uint32> old_rgb)
 		                                  (Uint16)old_b) / 3);
                //calculate new color
                 Uint8 new_r, new_g, new_b;
- 
+
 		//		std::cout<<"recolor new vs old:"<<new_avg <<","<< old_avg<<"\n";
 		//		std::cout<<"recolor new:"<<new_red<<"\n";
                 if(0 != new_avg){
@@ -411,7 +411,7 @@ surface recolor_image(surface surf, Uint32 new_rgb, std::vector<Uint32> old_rgb)
                   new_g=old_avg;
                   new_b=old_avg;
                 }
-                                                                                
+
                 while(beg != end) {
                         Uint8 red, green, blue, alpha;
                         SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
@@ -422,7 +422,7 @@ surface recolor_image(surface surf, Uint32 new_rgb, std::vector<Uint32> old_rgb)
                 }
         }
 	}
-                                                                                
+
         return create_optimized_surface(nsurf);
 }
 

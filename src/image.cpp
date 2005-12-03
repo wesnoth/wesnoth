@@ -166,7 +166,7 @@ locator& locator::operator=(const locator &a)
 }
 
 locator::value::value(const locator::value& a) :
-  type_(a.type_), filename_(a.filename_), loc_(a.loc_), 
+  type_(a.type_), filename_(a.filename_), loc_(a.loc_),
   new_color(a.new_color), swap_colors(a.swap_colors)
 {
 }
@@ -275,7 +275,7 @@ surface locator::load_image_sub_file() const
 
 	  surface tmp(cut_surface(mother_surface, srcrect));
 	  surf=mask_surface(tmp, mask);
-	}	
+	}
 	if(val_.swap_colors.size()){
 	  surf=recolor_image(surf,get_new_color(),get_swap_colors());
 	}

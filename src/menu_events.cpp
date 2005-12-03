@@ -284,8 +284,8 @@ namespace events{
 						 NULL,"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter);
 	}
 
-	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type, 
-		const game_state& gamestate, const gamestatus& status, display& gui, const config& level, 
+	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,
+		const game_state& gamestate, const gamestatus& status, display& gui, const config& level,
 		std::vector<team>& teams, const unit_map& units, const gamemap& map)
 	{
 		std::stringstream stream;
@@ -324,8 +324,8 @@ namespace events{
 		}
 	}
 
-	void menu_handler::write_game_snapshot(config& start, const config& level, display& gui, 
-		std::vector<team>& teams, const unit_map& units, const gamestatus& status, 
+	void menu_handler::write_game_snapshot(config& start, const config& level, display& gui,
+		std::vector<team>& teams, const unit_map& units, const gamestatus& status,
 		const game_state& gamestate, const gamemap& map) const
 	{
 		start.values = level.values;

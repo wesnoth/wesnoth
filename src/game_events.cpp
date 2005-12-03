@@ -1495,7 +1495,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	
+
 	LOG_NG << "done handling command...\n";
 
 	return rval;

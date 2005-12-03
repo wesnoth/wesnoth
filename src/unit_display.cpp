@@ -122,7 +122,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			} else {
 				unit_loc = image::locator(*unit_image,u.team_rgb(),u.type().flag_rgb());
 			}
-			
+
 			surface image(image::get_image(unit_loc));
 			if (!face_left) {
 				image.assign(image::reverse_image(image));
@@ -395,7 +395,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	const bool hits = damage > 0;
 	const int begin_at = attack_anim.get_first_frame_time(unit_animation::UNIT_FRAME);
 	// more damage shown for longer, but 1s at most for this factor
-	const int end_at = maximum<int>(minimum<int>((damage+1)*time_resolution+missile_impact, 1000), 
+	const int end_at = maximum<int>(minimum<int>((damage+1)*time_resolution+missile_impact, 1000),
 		maximum(attack_anim.get_last_frame_time(),real_last_missile));
 
 	const double xsrc = disp.get_location_x(a);

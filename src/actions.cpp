@@ -706,7 +706,7 @@ void attack(display& gui, const gamemap& map,
 
 	int orig_attacks = stats.nattacks;
 	int orig_defends = stats.ndefends;
-	
+
 	int to_the_death = stats.to_the_death ? 30 : 0;
 	bool slow_affects_attacker = a->second.has_flag("slowed");
 	bool slow_affects_defender = d->second.has_flag("slowed");
@@ -2103,7 +2103,7 @@ bool backstab_check(const gamemap::location& attacker_loc,
 	const std::map<gamemap::location,unit>::const_iterator defender =
 		units.find(defender_loc);
 	if(defender == units.end()) return false; // No defender
-	
+
 	gamemap::location adj[6];
 	get_adjacent_tiles(defender_loc, adj);
 	int i;

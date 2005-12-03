@@ -23,7 +23,7 @@ public:
 private:
 	team& viewing_team() { return teams_[(*gui_).viewing_team()]; }
 	team& current_team() { return teams_[team_num_-1]; }
-	
+
 	void mouse_motion(int x, int y);
 	bool is_left_click(const SDL_MouseButtonEvent& event);
 	bool is_middle_click(const SDL_MouseButtonEvent& event);

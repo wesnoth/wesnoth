@@ -33,7 +33,7 @@ class replay_controller : public hotkey::command_executor, public events::handle
 {
 public:
 	replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
-		const int ticks, const int num_turns, const config& game_config, CVideo& video, 
+		const int ticks, const int num_turns, const config& game_config, CVideo& video,
 		const std::vector<config*>& story);
 	~replay_controller();
 

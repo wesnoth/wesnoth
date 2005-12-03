@@ -178,7 +178,7 @@ public:
 	//Setting the reach_map clears the paths_list, and vice-versa.
 	typedef std::map<gamemap::location,unsigned int> reach_map;
 	void set_reach_map(const reach_map *reach_map);
-  
+
 	//sets the route along which footsteps are drawn to show movement of a
 	//unit. If NULL, no route is displayed.
 	//route does not have to remain valid after being set

@@ -533,7 +533,7 @@ unit_type::unit_type(const unit_type& o)
       alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
-      teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_), 
+      teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
       death_animations_(o.death_animations_), flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
@@ -712,7 +712,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	//construct rgb values;
 	{
 		for(int i = 0; i != flag_red_.size(); i++){
-		  //stolen from display.cpp, but don't want to include header 
+		  //stolen from display.cpp, but don't want to include header
 		  //for such a simple function
 		  flag_rgb_.push_back(Uint32 (0xFF000000 | (flag_red_[i] << 16) | (flag_green_[i] << 8) | flag_blue_[i]) );
 		}
