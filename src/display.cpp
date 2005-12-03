@@ -1342,7 +1342,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		          highlight_ratio,blend_with,blend_ratio,submerge,ellipse_back,ellipse_front);
 	}
 
-	const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : ftofxp(1.0);
+	const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (loc == mouseoverHex_ ? ftofxp(1.0): ftofxp(0.6));
 	
 	if(energy_file != NULL) {
 	    draw_bar(*energy_file,xpos,ypos,(u.max_hitpoints()*2)/3,unit_energy,energy_colour,bar_alpha);
@@ -1414,7 +1414,8 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	if(unfilled < height && alpha >= ftofxp(0.3)) {
 		SDL_Rect filled_area = {xpos+bar_loc.x,ypos+bar_loc.y+unfilled,bar_loc.w,height-unfilled};
 		const Uint32 colour = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
-		SDL_FillRect(video().getSurface(),&filled_area,colour);
+		const Uint8 r_alpha = minimum<unsigned>(unsigned(fxpmult(alpha,255)),255);
+		fill_rect_alpha(filled_area,colour,r_alpha,video().getSurface());
 	}
 }
 
