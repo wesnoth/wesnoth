@@ -194,9 +194,9 @@ AC_ARG_ENABLE([tools],
 	      [tools=no])
 
 AC_ARG_WITH([fribidi],
-            AS_HELP_STRING([--with-fribidi], [enable Bidirectional language support]),
+            AS_HELP_STRING([--without-fribidi], [disable Bidirectional language support]),
 	      [fribidi=$withval],
-	      [fribidi=no])
+	      [fribidi=yes])
 
 AC_ARG_WITH([kde],
             AS_HELP_STRING([--with-kde], [enable installation of icon and KDE menu entry]),
@@ -310,7 +310,7 @@ fi
 
 AC_SUBST([FRIBIDI_CFLAGS])
 AC_SUBST([FRIBIDI_LIBS])
-AM_CONDITIONAL([FRIBIDI], [test x$fribidifound = xyes])
+AM_CONDITIONAL([FRIBIDI], [test "x$fribidifound" = xyes -a "x$fribidi" = xyes ])
 
 # libpng-config
 

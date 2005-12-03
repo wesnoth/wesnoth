@@ -27,8 +27,7 @@ noinst_LIBRARIES = libwesnoth-core.a
 pkgdatadir=$(datadir)/@DATADIR@
 
 THELIBS = -L. -lwesnoth-core $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
-	$(SDL_TTF_LIBS) $(SDL_LIBS) $(LIBZIPIOS) $(FREETYPE_LIBS) $(LIBINTL) \
-	@FRIBIDI_LIBS@
+	$(SDL_TTF_LIBS) $(SDL_LIBS) $(LIBZIPIOS) $(FREETYPE_LIBS) $(LIBINTL)
 
 #############################################################################
 #    Wesnoth                                                                #
@@ -417,6 +416,7 @@ AM_CFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DW
 if FRIBIDI
     AM_CXXFLAGS += -DHAVE_FRIBIDI @FRIBIDI_CFLAGS@
     AM_CFLAGS += -DHAVE_FRIBIDI @FRIBIDI_CFLAGS@
+    THELIBS += @FRIBIDI_LIBS@
 endif
 
 if X11
