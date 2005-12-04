@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-04 20:19+0100\n"
-"PO-Revision-Date: 2005-12-04 22:40+0200\n"
+"PO-Revision-Date: 2005-12-04 23:19+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -131,7 +131,6 @@ msgstr ""
 "be quite challenging, you may wish to start on <italic>text=Easy</italic>."
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -448,7 +447,6 @@ msgid "Shroud and Fog of War"
 msgstr "Shroud and Fog of War"
 
 #: data/help.cfg:138
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -467,8 +465,8 @@ msgstr ""
 "of villages (other than by you or your allies). The Fog of War is cleared "
 "temporarily when you have units nearby, but returns when they leave. Both "
 "the Shroud and the Fog of War are cleared by units. Each unit clears "
-"locations within one turn's move (ignoring ZOC and enemy units) and "
-"locations adjacent to those locations."
+"locations adjacent to those within one turn's move (ignoring zones of "
+"control and enemy units)."
 
 #: data/help.cfg:143
 msgid "Combat"
@@ -695,7 +693,6 @@ msgid "Time of Day"
 msgstr "Time of Day"
 
 #: data/help.cfg:181
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -789,7 +786,6 @@ msgstr ""
 "some cases, you will be given a choice of advancement options."
 
 #: data/help.cfg:201
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -880,7 +876,6 @@ msgstr ""
 "per unit."
 
 #: data/help.cfg:213
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -3123,7 +3118,6 @@ msgid "teleport"
 msgstr "teleport"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -3131,8 +3125,9 @@ msgid ""
 "to stone)."
 msgstr ""
 "Backstab:\n"
-"This attack deals double damage if there is a friendly unit on the opposite "
-"side of the target, and that unit is not incapacitated (eg. turned to stone)."
+"This attack deals double damage if there is an enemy of the targe on the "
+"opposite side of the target, and that unit is not incapacitated (eg. turned "
+"to stone)."
 
 #: data/translations/english.cfg:96
 msgid ""
@@ -3822,7 +3817,6 @@ msgid "Bone Shooter"
 msgstr "Bone Shooter"
 
 #: data/units/Bone_Shooter.cfg:21
-#, fuzzy
 msgid ""
 "Of a necromancer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -5387,7 +5381,6 @@ msgid "Elvish Marshal"
 msgstr "Elvish Marshal"
 
 #: data/units/Elvish_Marshal.cfg:39
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -5472,7 +5465,6 @@ msgid "Elvish Rider"
 msgstr "Elvish Rider"
 
 #: data/units/Elvish_Rider.cfg:38
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal to any man. Though this certainly leaves people in "
@@ -5602,7 +5594,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Elvish Sorceress"
 
 #: data/units/Elvish_Sorceress.cfg:35
-#, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
@@ -5759,7 +5750,6 @@ msgid "Galleon"
 msgstr "Galleon"
 
 #: data/units/Galleon.cfg:17
-#, fuzzy
 msgid ""
 "Even people happily living in their homes eventually need some kind of "
 "transport through the seas, even if only to go fishing or to trade goods. "
@@ -6663,7 +6653,6 @@ msgid "Master at Arms"
 msgstr "Master at Arms"
 
 #: data/units/Master_at_Arms.cfg:22
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -7023,7 +7012,6 @@ msgid "Mounted Fighter"
 msgstr "Mounted Fighter"
 
 #: data/units/Mounted_Fighter.cfg:24
-#, fuzzy
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -7318,7 +7306,6 @@ msgid "Orcish Assassin"
 msgstr "Orcish Assassin"
 
 #: data/units/Orcish_Assassin.cfg:25
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -7330,7 +7317,7 @@ msgid ""
 "victims of this poison will continually take damage until they can be cured "
 "in town or by a healer."
 msgstr ""
-"Though some consider it cowardly to use, poison is a weapon favored by orcs: "
+"Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
 "knives, are typically a bit frail, although surprisingly nimble. Though "
 "rarely the ones who deal the killing blow, their tactics are a considerable "
@@ -7488,7 +7475,6 @@ msgid "Orcish Slayer"
 msgstr "Orcish Slayer"
 
 #: data/units/Orcish_Slayer.cfg:26
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -8099,7 +8085,6 @@ msgid "Silver Mage"
 msgstr "Silver Mage"
 
 #: data/units/Silver_Mage.cfg:28
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -9353,7 +9338,6 @@ msgid "Get More Campaigns..."
 msgstr "Get More Campaigns..."
 
 #: src/game.cpp:746
-#, fuzzy
 msgid "Download more campaigns from an Internet server."
 msgstr "Download more campaigns from an Internet server."
 
@@ -9661,7 +9645,6 @@ msgid "The terrain with the best modifier is chosen automatically."
 msgstr "The terrain with the best modifier is chosen automatically."
 
 #: src/help.cpp:1317
-#, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
@@ -9670,7 +9653,6 @@ msgstr ""
 "a location with this terrain."
 
 #: src/help.cpp:1319
-#, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -9913,7 +9895,6 @@ msgid "Settings..."
 msgstr "Settings..."
 
 #: src/multiplayer_create.cpp:95
-#, fuzzy
 msgid "The maximum number of turns the game can last"
 msgstr "The maximum number of turns the game can last"
 
@@ -10211,7 +10192,6 @@ msgid "Scenario Report"
 msgstr "Scenario Report"
 
 #: src/playlevel.cpp:709
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -10490,7 +10470,6 @@ msgid "invisible: "
 msgstr "invisible: "
 
 #: src/reports.cpp:139
-#, fuzzy
 msgid ""
 "This unit has been slowed. It emits no zone of control, moves at half speed "
 "and enemies will be able to strike earlier once during a fight."
