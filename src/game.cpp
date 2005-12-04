@@ -743,7 +743,7 @@ bool game_controller::new_campaign()
 	}
 
 	campaign_names.push_back(std::string(1, COLUMN_SEPARATOR) + _("Get More Campaigns..."));
-	campaign_desc.push_back(std::pair<std::string,std::string>(_("Download more campaigns from a server on Internet."),game_config::download_campaign_image));
+	campaign_desc.push_back(std::pair<std::string,std::string>(_("Download more campaigns from an Internet server."),game_config::download_campaign_image));
 
 	int res = 0;
 
