@@ -37,6 +37,7 @@ Additionally, useful utility functions such as those found in pathutils.hpp shou
 #include "ai.hpp"
 #include "ai_python.hpp"
 #include "wassert.hpp"
+#include "gamestatus.hpp"
 
 static python_ai* running_instance;
 bool python_ai::init_ = false;
@@ -721,6 +722,78 @@ static PyObject* wrap_location(const gamemap::location& loc)
 	return (PyObject*)location;
 }
 
+typedef struct {
+	PyObject_HEAD
+	const gamestatus* status_;
+} wesnoth_gamestatus;
+
+static PyMethodDef gamestatus_methods[] = {
+	{ NULL,		NULL,	NULL }
+};
+
+static PyObject* wrapper_gamestatus_turn(wesnoth_gamestatus* status, void* closure)
+{
+	return Py_BuildValue("i", status->status_->turn());
+}
+
+static PyObject* wrapper_gamestatus_number_of_turns(wesnoth_gamestatus* status, void* closure)
+{
+	return Py_BuildValue("i", status->status_->number_of_turns());
+}
+
+static PyObject* wrapper_gamestatus_lawful_bonus(wesnoth_gamestatus* status, void* closure)
+{
+	return Py_BuildValue("i", status->status_->get_time_of_day().lawful_bonus);
+}
+
+static PyObject* wrapper_gamestatus_previous_lawful_bonus(wesnoth_gamestatus* status, void* closure)
+{
+	return Py_BuildValue("i", status->status_->get_previous_time_of_day().lawful_bonus);
+}
+
+static PyGetSetDef gamestatus_getseters[] = {
+	{ "turn",					(getter)wrapper_gamestatus_turn,					NULL,	NULL,	NULL },
+	{ "number_of_turns",		(getter)wrapper_gamestatus_number_of_turns,			NULL,	NULL,	NULL },
+	{ "lawful_bonus",			(getter)wrapper_gamestatus_lawful_bonus,			NULL,	NULL,	NULL },
+	{ "previous_lawful_bonus",	(getter)wrapper_gamestatus_previous_lawful_bonus,	NULL,	NULL,	NULL },
+	{ NULL, NULL, NULL, NULL, NULL }
+};
+
+static PyTypeObject wesnoth_gamestatus_type = {
+	PyObject_HEAD_INIT(NULL)
+	0,                         /* ob_size*/
+	"wesnoth.team",        /* tp_name*/
+	sizeof(wesnoth_gamestatus),  /* tp_basicsize*/
+	0,                         /* tp_itemsize*/
+	0,                         /* tp_dealloc*/
+	0,                         /* tp_print*/
+	0,                         /* tp_getattr*/
+	0,                         /* tp_setattr*/
+	0,                         /* tp_compare*/
+	0,                         /* tp_repr*/
+	0, //UniConvert,             /* tp_as_number*/
+	0,                         /* tp_as_sequence*/
+	0,                         /* tp_as_mapping*/
+	0,                         /* tp_hash */
+	0,                         /* tp_call*/
+	0,                         /* tp_str*/
+	0,   /* tp_getattro*/
+	0,   /* tp_setattro*/
+	0,                         /* tp_as_buffer*/
+	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
+	"Wesnoth game status",       /* tp_doc */
+	0,                         /* tp_traverse */
+	0,                         /* tp_clear */
+	0,                         /* tp_richcompare */
+	0,                         /* tp_weaklistoffset */
+	0,                         /* tp_iter */
+	0,                         /* tp_iternext */
+	gamestatus_methods,             /* tp_methods */
+	0,                         /* tp_members */
+	gamestatus_getseters,          /* tp_getset */
+};
+
+
 static PyObject* wrap_move_map(const ai_interface::move_map& wrap)
 {
 	PyObject* dict = PyDict_New();
@@ -884,6 +957,16 @@ PyObject* python_ai::wrapper_recruit_unit(PyObject* self, PyObject* args)
 	return Py_BuildValue("i", running_instance->recruit(name,*where->location_) == true ? 1 : 0);
 }
 
+PyObject* python_ai::wrapper_get_gamestatus(PyObject* self, PyObject* args)
+{
+	if ( !PyArg_ParseTuple( args, "" ) )
+		return NULL;
+	wesnoth_gamestatus* status;
+	status = (wesnoth_gamestatus*)PyObject_NEW(wesnoth_gamestatus, &wesnoth_gamestatus_type);
+	status->status_ = &running_instance->get_info().state;
+	return (PyObject*)status;
+}
+
 static PyMethodDef wesnoth_python_methods[] = {
 	{ "log_message",		python_ai::wrapper_log_message,			METH_VARARGS},
 	{ "get_units",			python_ai::wrapper_get_units,			METH_VARARGS},
@@ -897,8 +980,10 @@ static PyMethodDef wesnoth_python_methods[] = {
 	{ "attack_unit",		python_ai::wrapper_attack_unit,			METH_VARARGS},
 	{ "get_adjacent_tiles",	python_ai::wrapper_get_adjacent_tiles,	METH_VARARGS},
 	{ "recruit_unit",		python_ai::wrapper_recruit_unit,		METH_VARARGS},
+	{ "get_gamestatus",		python_ai::wrapper_get_gamestatus,		METH_VARARGS},
 	{ NULL,					NULL,									NULL }
 };
+
 
 #define Py_Register( x, n ) \
 	PyType_Ready(&x); \
@@ -910,15 +995,15 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
 	running_instance = this;
 	if ( !init_ )
 	{
-		PyObject* module;
 		Py_Initialize( );
-		module = Py_InitModule("wesnoth", wesnoth_python_methods);
+		PyObject* module = Py_InitModule("wesnoth", wesnoth_python_methods);
 		Py_Register(wesnoth_unit_type, "unit");
 		Py_Register(wesnoth_location_type, "location");
 		Py_Register(wesnoth_gamemap_type, "gamemap");
 		Py_Register(wesnoth_unittype_type, "unittype");
 		Py_Register(wesnoth_team_type, "team");
 		Py_Register(wesnoth_attacktype_type, "attacktype");
+		Py_Register(wesnoth_gamestatus_type, "gamestatus");
 		python_error_ = PyErr_NewException("wesnoth.error",NULL,NULL);
 		PyDict_SetItemString(PyModule_GetDict(module),"error",python_error_);
 		init_ = true;

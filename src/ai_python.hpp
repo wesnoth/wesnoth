@@ -33,6 +33,7 @@ public:
 	static PyObject* wrapper_attack_unit(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_adjacent_tiles(PyObject* self, PyObject* args);
 	static PyObject* wrapper_recruit_unit(PyObject* self, PyObject* args);
+	static PyObject* wrapper_get_gamestatus(PyObject* self, PyObject* args);
 
 	static PyObject* unittype_advances_to( wesnoth_unittype* type, PyObject* args );
 	static PyObject* wrapper_team_recruits( wesnoth_team* team, PyObject* args );
