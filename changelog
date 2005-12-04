@@ -13,17 +13,15 @@ SVN trunk (1.1.x):
      * Ford of Abez off map serpent leader replaced with no_leader attribute
      * Isle of Anduin: reduced difficulty, added mage tips, move_unit_fake fix
      * Blackwater Port: added tips about loyal units, move_unit_fake fix
-     * Bay of Pearls: mermen have traits, you get a hunter and initiate, added
-       river ford to help 5 MP units cross the river, you can recruit hunter and
-       initiate after winning the scenario
+     * Bay of Pearls: traits for mermen, you get a hunter and initiate, added
+       ford to help units cross, hunter and initiate available after winning
      * Isle of the Damned: replaced some forest with road, can recall mermen,
        Moremirmu explains if he will join you or not, hard difficulty has fog
-     * Muff Malal's Peninsula: Muff has less gold but more income for XP
-       milking on easy, recruits blood bats on hard, choice of fight vs run
-       is better explained
+     * Muff Malal's Peninsula: less gold/more income for Muff for XP milking on
+       easy, blood bats on hard, choice of fight vs run is better explained
      * Crossroads: added story dialog
      * Princess of Wesnoth: clarified victory conditions
-     * Dwarven Doors: true exit now random, bandit easter egg now tells which exit is real
+     * Dwarven Doors: true exit now random, bandit easter egg now reveals exit
      * changed Snow Plains map to use snow terrain
    * The Rise of Wesnoth
      * Adjusted loss event in Clearwater port to coincide with time over
@@ -56,8 +54,7 @@ SVN trunk (1.1.x):
    * show numbers of each enemy which can reach tiles in "Show Enemy Moves"
    * don't show "The End" after viewing a won multiplayer replay (#4166)
    * new option to toggle server messages when observing games
-   * semi transparent HP/XP bar when the unit is not selected (patch #485 by
-   Noyga)
+   * semi transparent HP/XP bar when unit is not selected (patch #485)
  * graphics:
    * units can now have colors redefined to match team colors
    * team color can be defined in the side tag with "team_rgb=r,g,b"
@@ -81,8 +78,7 @@ SVN trunk (1.1.x):
  * language and i18n:
    * added support for right-to-left languages (patch #470)
    * made the list of languages configurable via the locale WML
-   * new manual: Chinese
-   * updated manual: English, German, Swedish
+   * new manual: Chinese; updated manual: English, German, Swedish
    * updated man pages: Swedish
    * new translations: Hebrew, Portugese
    * updated translations: Afrikaans, British English, Chinese, Czech, French,
@@ -90,8 +86,7 @@ SVN trunk (1.1.x):
      Slovak, Slovenian, Spanish, Swedish, Turkish
    * tutorial now has its own textdomain
    * fixed Undead used as both trait and race name (#4295)
-   * fixed textdomains in text savegames (non-binary) displaying all messages
-     in English when loading saved games (#4454)
+   * fixed loading non-binary savegame displaying messages in English (#4454)
    * fixed misleading description of Steadfast (#4315)
    * help changes
      * updated description of backstab to match the new functionality
@@ -105,10 +100,10 @@ SVN trunk (1.1.x):
    * backstab now works if opposite unit is non-incapacitated enemy of defender
    * prevented stoned units from being healed
    * slow does not remove an attack anymore
-   * slow still temporarily doubles movement cost
-   * slowed units do not emit ZoC
    * hitting with slow changes attack order to allow attacker to strike again
    * slowed units lose initiative on fight
+   * slow still temporarily doubles movement cost
+   * slowed units do not emit zone of control (ZOC)
    * unit modifications now round toward original value instead of truncating
    * changed resilient trait bonus from +7hp to +10%+3hp
    * decreased strong trait hitpoints bonus from 2 to 1 
@@ -144,7 +139,7 @@ SVN trunk (1.1.x):
    * renamed "Across The River" config file to improve display order
    * renamed "Across The River" map to "Across the River"
    * made "Load Game ..." first map option (was last), for better visibility
-   * added map size to MP lobby (patch #484 by Noyga)
+   * added map size to MP lobby (patch #484)
  * campaign server
    * support new "timestamp" attribute
    * save persistent attributes in the campaign data
@@ -155,14 +150,12 @@ SVN trunk (1.1.x):
    * campaign_list response now contains the time the request was processed
    * campaign_list response now contains information about translations
    * fixed problem with duplicate translations being saved with each upload
-   * added a passphrass change function
+   * added a passphrase change function
    * deleting campaigns, campaign file is now deleted, not reduced to zero size
  * utils
    * added weblist.pl and webtgz.pl web interface programs
-   * changed wml.pm to use substr instead of split to convert string to array:
-     saves about half memory usage for large strings
-   * changed wml_net.pm to insert into preallocated string instead of
-     appending: should save memory and time, but not benchmarked
+   * wml.pm uses substr instead of split: reduces memory usage for large strings
+   * wml_net.pm inserts instead of appending: should be more efficient
    * added prkill script, to calculate probabilities to kill in a skirmish
    * added campaign_passphrase.pl for changing passphrases
    * added campaign_delete.pl for deleting campaigns
@@ -176,17 +169,15 @@ SVN trunk (1.1.x):
    * units can now have [extra_anim] tag, and [animate_unit] event to trigger it
    * added swarm attack special
    * new advance and post_advance events, trigger before/after unit advancement
-   * changed get_random to not nest [random] tags to avoid problems with deeply
-     nested tags and compressed save files
-   * experience_modifier: if it gets set twice, now the later value takes
-     precedence; to max experience is now rounded with lower limit of 1
-   * defensive_image, defensive_image_short and defensive_image_range are now 
-     deprecated, please use defensive animations (new macros are provided to
-     help, they still work but will print a warning)
+   * get_random avoids nested [random] tags: keep to limit in compressed saves
+   * experience_modifier: only last value kept; to max experience now rounded
+     with lower limit of 1
+   * defensive_image* deprecated, use defensive animations instead (still work
+     but issue warnings, new macros are provided)
    * [store_unit] now leaves variable untouched if filter does not match
  * documentation: switch doxygen templates from CVS to SVN, Savannah to Gna!
- * added a --with-preferences-dir configure option to allow using a directory
-   other than .wesnoth, for coexistence of multiple versions on same machine
+ * --with-preferences-dir configure option for coexistence of multiple versions
+ * now defaults to --with-fribidi if fribidi found during configure
  * various bug fixes and code cleanups
 
 Version 1.0rc1:
