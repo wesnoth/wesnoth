@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-04 20:19+0100\n"
-"PO-Revision-Date: 2005-12-04 17:14+0200\n"
+"PO-Revision-Date: 2005-12-04 22:40+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -1860,7 +1860,6 @@ msgstr ""
 "possibly dare to take this!"
 
 #: data/items.cfg:816
-#, fuzzy
 msgid "Zap"
 msgstr "Zap"
 
@@ -2560,7 +2559,6 @@ msgstr ""
 "types."
 
 #: data/tips.cfg:4
-#, fuzzy
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -2585,7 +2583,6 @@ msgstr ""
 "the 'cure' ability."
 
 #: data/tips.cfg:6
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -2862,7 +2859,6 @@ msgid "Hard"
 msgstr "Hard"
 
 #: data/translations/english.cfg:9
-#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -2883,7 +2879,6 @@ msgstr ""
 "both conditions."
 
 #: data/translations/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -2918,7 +2913,6 @@ msgid "ambush"
 msgstr "ambush"
 
 #: data/translations/english.cfg:31
-#, fuzzy
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -2936,7 +2930,7 @@ msgstr ""
 "than is normally possible on the battlefield.\n"
 "\n"
 "This unit will care for all adjacent friendly units that are injured at the "
-"beginning of the turn.\n"
+"beginning of each turn.\n"
 "A unit cared for by a curer may heal up to 8 HP per turn.\n"
 "A curer may heal a total of 18 HP per turn, for all units it cares for.\n"
 "A curer can cure a unit of poison, although that unit will receive no "
@@ -2950,7 +2944,6 @@ msgid "cures"
 msgstr "cures"
 
 #: data/translations/english.cfg:40
-#, fuzzy
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -3078,7 +3071,6 @@ msgid "regenerates"
 msgstr "regenerates"
 
 #: data/translations/english.cfg:76
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -3087,8 +3079,8 @@ msgid ""
 msgstr ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
-"Zones of Control. (Exception: if you stop in an enemy ZOC your remaining "
-"movement will be set to 0 even if you are a skirmisher.)"
+"Zones of Control. (Exception: if you stop in an enemy zone of control, your "
+"remaining movement will be set to 0 even if you are a skirmisher.)"
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:24
 #: data/units/Assassin.cfg:125 data/units/Duelist.cfg:22
@@ -4162,9 +4154,8 @@ msgstr ""
 "high chance of hitting an opponent."
 
 #: data/units/Dark_Adept.cfg:33 data/units/Dark_Adept.cfg:124
-#, fuzzy
 msgid "shadow wave"
-msgstr "shove"
+msgstr "shadow wave"
 
 #: data/units/Dark_Adept.cfg:95
 msgid "female^Dark Adept"
@@ -4949,7 +4940,6 @@ msgid "Dwarvish Stalwart"
 msgstr "Dwarvish Stalwart"
 
 #: data/units/Dwarvish_Stalwart.cfg:30
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -5248,7 +5238,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Elvish Enchantress"
 
 #: data/units/Elvish_Enchantress.cfg:35
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
@@ -6262,13 +6251,12 @@ msgid "Horse Lord"
 msgstr "Horse Lord"
 
 #: data/units/Horse_Lord.cfg:24
-#, fuzzy
 msgid ""
 "The greatest of the the men of the plains, Horse Lords are heads of their "
 "houses and are respected by all, friend or foe. Their sword can kill most "
 "ordinary enemies, and their morning star crushes those who are left."
 msgstr ""
-"The greatest of the the men of the plains, Horse Lords are heads of their "
+"The greatest of the men of the plains, Horse Lords are heads of their "
 "houses and are respected by all, friend or foe. Their sword can kill most "
 "ordinary enemies, and their morning star crushes those who are left."
 
@@ -10548,12 +10536,11 @@ msgstr "damage"
 
 #: src/reports.cpp:254
 msgid "weapon range: "
-msgstr ""
+msgstr "weapon range: "
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "damage type: "
-msgstr "damage"
+msgstr "damage type: "
 
 #: src/reports.cpp:310
 msgid "Lawful units: "
