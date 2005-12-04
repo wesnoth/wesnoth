@@ -129,6 +129,7 @@ void scrollbar::set_full_size(unsigned h)
 	if (h == full_height_)
 		return;
 	full_height_ = h;
+	downarrow_.enable(grip_position_ < full_height_ - grip_height_);
 	set_shown_size(grip_height_);
 	set_position(grip_position_);
 	set_dirty(true);
