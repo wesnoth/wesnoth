@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-11-21 21:35+0100\n"
+"POT-Creation-Date: 2005-12-04 20:34+0100\n"
 "PO-Revision-Date: 2005-08-10 16:44+0200\n"
 "Last-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\n"
 "Language-Team: Basque\n"
@@ -58,33 +58,33 @@ msgid "Map creation failed."
 msgstr "Maparen sorrera hutsegin du."
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
-#: src/preferences_display.cpp:660
+#: src/preferences_display.cpp:673
 msgid "Close Window"
 msgstr "Itxi leihoa"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:73 src/preferences_display.cpp:562
+#: src/hotkeys.cpp:73 src/preferences_display.cpp:575
 msgid "Preferences"
 msgstr "Hobespenak"
 
-#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:229
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:235
 msgid "Scroll Speed:"
 msgstr "Korritze abiadura:"
 
 #: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:56
-#: src/preferences_display.cpp:210
+#: src/preferences_display.cpp:215
 msgid "Toggle Full Screen"
 msgstr "Pantaila osoa ezarri/kendu"
 
-#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:213
+#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:218
 msgid "Show Grid"
 msgstr "Erakutsi sareta"
 
-#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:220
+#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:226
 msgid "Video Mode"
 msgstr "Bideo modua"
 
-#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:222
+#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:228
 msgid "Hotkeys"
 msgstr "Lasterbideak"
 
@@ -437,7 +437,7 @@ msgstr "Barnealdea"
 msgid "Island"
 msgstr "Irla"
 
-#: src/preferences.cpp:285
+#: src/preferences.cpp:299
 msgid "player"
 msgstr "jokalaria"
 
@@ -451,134 +451,142 @@ msgstr ""
 "bakoitzeko sakonera izan behar du leiho moduan abiarazteko. Zure pantailak "
 "1024x768x16-ko bereizmena onartu behar du pantaila osoan abiarazteko."
 
-#: src/preferences_display.cpp:211
+#: src/preferences_display.cpp:216
 msgid "Accelerated Speed"
 msgstr "Abiadura azeleratua"
 
-#: src/preferences_display.cpp:212
+#: src/preferences_display.cpp:217
 msgid "Skip AI Moves"
 msgstr "AA mugimenduak saltatu"
 
-#: src/preferences_display.cpp:214
+#: src/preferences_display.cpp:219
+msgid "Show lobby joins"
+msgstr ""
+
+#: src/preferences_display.cpp:220
 msgid "Show Floating Labels"
 msgstr "Eraktutsi etiketa flotagarriak"
 
-#: src/preferences_display.cpp:215
+#: src/preferences_display.cpp:221
 msgid "Turn Dialog"
 msgstr "Elkarrizketak"
 
-#: src/preferences_display.cpp:216
+#: src/preferences_display.cpp:222
 msgid "Turn Bell"
 msgstr "Kanpaia"
 
-#: src/preferences_display.cpp:217
+#: src/preferences_display.cpp:223
 msgid "Show Team Colors"
 msgstr "Erakutsi taldeen koloreak"
 
-#: src/preferences_display.cpp:218
+#: src/preferences_display.cpp:224
 msgid "Show Color Cursors"
 msgstr "Erakutsi koloreko kurtsorea"
 
-#: src/preferences_display.cpp:219
+#: src/preferences_display.cpp:225
 msgid "Show Haloing Effects"
 msgstr "Erakutsi halo-efektuak"
 
-#: src/preferences_display.cpp:221
+#: src/preferences_display.cpp:227
 msgid "Theme"
 msgstr ""
 
-#: src/preferences_display.cpp:223
+#: src/preferences_display.cpp:229
 msgid "Adjust Gamma"
 msgstr "Gamma doitu"
 
-#: src/preferences_display.cpp:224
+#: src/preferences_display.cpp:230
 msgid "Reverse Time Graphics"
 msgstr "Alderantzizko denbora grafikoak"
 
-#: src/preferences_display.cpp:225
+#: src/preferences_display.cpp:231
 msgid "Sound effects"
 msgstr "Soinu-efektuak"
 
-#: src/preferences_display.cpp:226
+#: src/preferences_display.cpp:232
 msgid "Music"
 msgstr "Musika"
 
-#: src/preferences_display.cpp:228
+#: src/preferences_display.cpp:234
 msgid "Music Volume:"
 msgstr "Musika bolumena:"
 
-#: src/preferences_display.cpp:228
+#: src/preferences_display.cpp:234
 msgid "SFX Volume:"
 msgstr "Soinu efektuen bolumena:"
 
-#: src/preferences_display.cpp:229
+#: src/preferences_display.cpp:235
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences_display.cpp:242
+#: src/preferences_display.cpp:248
 msgid "Sound effects on/off"
 msgstr "Soinu efektuak on/off"
 
-#: src/preferences_display.cpp:246
+#: src/preferences_display.cpp:252
 msgid "Change the sound effects volume"
 msgstr "Aldatu soinu efektuen bolumena"
 
-#: src/preferences_display.cpp:249
+#: src/preferences_display.cpp:255
 msgid "Music on/off"
 msgstr "Musika on/off"
 
-#: src/preferences_display.cpp:253
+#: src/preferences_display.cpp:259
 msgid "Change the music volume"
 msgstr "Aldatu musikaren bolumena"
 
-#: src/preferences_display.cpp:259
+#: src/preferences_display.cpp:265
 msgid "Change the speed of scrolling around the map"
 msgstr "Aldatu mapatik mugitzearen abiadura"
 
-#: src/preferences_display.cpp:262 src/preferences_display.cpp:267
+#: src/preferences_display.cpp:268 src/preferences_display.cpp:273
 msgid "Change the brightness of the display"
 msgstr "Aldatu pantailaren distira"
 
-#: src/preferences_display.cpp:270
+#: src/preferences_display.cpp:276
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Aukeratu jokuak pantaila osoan zein leiho moduan ibili behar duen"
 
-#: src/preferences_display.cpp:273
+#: src/preferences_display.cpp:279
 msgid "Make units move and fight faster"
 msgstr "Egin unitateak azkarrago mugitu eta borrokatzea"
 
-#: src/preferences_display.cpp:276
+#: src/preferences_display.cpp:282
 msgid "Do not animate AI units moving"
 msgstr "Ez animatu AA unitateak mugitzerakoan"
 
-#: src/preferences_display.cpp:279
+#: src/preferences_display.cpp:285
 msgid "Overlay a grid onto the map"
 msgstr "Saretxo bat gainjarri mapan"
 
-#: src/preferences_display.cpp:282
+#: src/preferences_display.cpp:288
+msgid "Show messages about players joining the multiplayer lobby"
+msgstr ""
+
+#: src/preferences_display.cpp:291
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Erakutsi testua unitate baten gainean jotzen dutenean, jakiteko zenbat kalte "
 "jaso duen"
 
-#: src/preferences_display.cpp:284
+#: src/preferences_display.cpp:293
 msgid "Change the resolution the game runs at"
 msgstr "Aldatu jokuak erabiltzen duen bereizmena"
 
-#: src/preferences_display.cpp:285
+#: src/preferences_display.cpp:294
 #, fuzzy
 msgid "Change the theme the game runs with"
 msgstr "Aldatu jokuak erabiltzen duen bereizmena"
 
-#: src/preferences_display.cpp:288
+#: src/preferences_display.cpp:297
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Erakutsi testu bat zure txandaren hasieran"
 
-#: src/preferences_display.cpp:291
+#: src/preferences_display.cpp:300
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Kanpaia jo zure txandaren hasieran"
 
-#: src/preferences_display.cpp:294
+#: src/preferences_display.cpp:303
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -586,90 +594,96 @@ msgstr ""
 "Erakutsi koloredun zirkulu bat unitate bakoitzeko oinarrian bere taldea "
 "erakusteko"
 
-#: src/preferences_display.cpp:297
+#: src/preferences_display.cpp:306
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Aukeratu eguzkia ezkerritatik eskumatara ala eskmutatik ezkerretara mugitzen "
 "den"
 
-#: src/preferences_display.cpp:300
+#: src/preferences_display.cpp:309
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Erabili koloredun sagu kurtsoreak (jokua geldotu dezake)"
 
-#: src/preferences_display.cpp:303
+#: src/preferences_display.cpp:312
 msgid "Use graphical special effects (may be slower)"
 msgstr "Erabili efektu grafiko bereziak (jokua geldotu dezake)"
 
-#: src/preferences_display.cpp:305
+#: src/preferences_display.cpp:314
 msgid "View and configure keyboard shortcuts"
 msgstr "Ikusi eta egokitu teklatuaren lasterbideak"
 
-#: src/preferences_display.cpp:487
+#: src/preferences_display.cpp:499
 msgid "yes"
 msgstr "bai"
 
-#: src/preferences_display.cpp:489
+#: src/preferences_display.cpp:501
 msgid "no"
 msgstr "ez"
 
-#: src/preferences_display.cpp:549
+#: src/preferences_display.cpp:562
 msgid "Prefs section^General"
 msgstr "Orokorra"
 
-#: src/preferences_display.cpp:550
+#: src/preferences_display.cpp:563
 msgid "Prefs section^Display"
 msgstr "Pantaila"
 
-#: src/preferences_display.cpp:551
+#: src/preferences_display.cpp:564
 msgid "Prefs section^Sound"
 msgstr "Soinua"
 
-#: src/preferences_display.cpp:552
+#: src/preferences_display.cpp:565
 msgid "Advanced section^Advanced"
 msgstr "Sail aurreratua^Aurreratua"
 
-#: src/preferences_display.cpp:603
+#: src/preferences_display.cpp:616
 msgid "There are no alternative video modes available"
 msgstr "Ez dago beste bideo modu erabilgarririk"
 
-#: src/preferences_display.cpp:632
+#: src/preferences_display.cpp:645
 msgid "Choose Resolution"
 msgstr "Aukeratu bereizmena"
 
-#: src/preferences_display.cpp:665
+#: src/preferences_display.cpp:678
 msgid "Hotkey Settings"
 msgstr "Lasterbideen ezarpenak"
 
-#: src/preferences_display.cpp:669 src/preferences_display.cpp:722
-msgid "Press desired HotKey"
+#: src/preferences_display.cpp:682 src/preferences_display.cpp:735
+#, fuzzy
+msgid "Press desired Hotkey"
 msgstr "Hautatutako lasterbidea sakatu"
 
-#: src/preferences_display.cpp:687
+#: src/preferences_display.cpp:700
 msgid "Action"
 msgstr "Ekintza"
 
-#: src/preferences_display.cpp:687
+#: src/preferences_display.cpp:700
 msgid "Binding"
 msgstr "Tekla"
 
-#: src/preferences_display.cpp:699
+#: src/preferences_display.cpp:712
 msgid "Change Hotkey"
 msgstr "Aldatu lasterbidea"
 
-#: src/preferences_display.cpp:702
+#: src/preferences_display.cpp:715
 msgid "Save Hotkeys"
 msgstr "Gorde lasterbideak"
 
-#: src/preferences_display.cpp:748
-msgid "This HotKey is already in use."
+#: src/preferences_display.cpp:761
+#, fuzzy
+msgid "This Hotkey is already in use."
 msgstr "Lasterbide hau aurretik erabiltzen ari da."
 
-#: src/preferences_display.cpp:780
+#: src/preferences_display.cpp:794
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/preferences_display.cpp:786
+#: src/preferences_display.cpp:800
 msgid "New theme will take effect on next new or loaded game."
+msgstr ""
+
+#: src/preferences_display.cpp:804
+msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 
 #: src/show_dialog.cpp:314
