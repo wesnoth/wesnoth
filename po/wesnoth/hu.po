@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-11-21 21:34+0100\n"
-"PO-Revision-Date: 2005-11-27 21:12+0100\n"
+"PO-Revision-Date: 2005-12-04 12:07+0100\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -371,7 +371,6 @@ msgid "Movement"
 msgstr "Lépés"
 
 #: data/help.cfg:126
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -386,13 +385,18 @@ msgid ""
 "a move in a village you don't already own will also use up a unit's "
 "movement, but will still allow it to attack."
 msgstr ""
-"A lépés a Wesnoth-ban egyszerű: Csak kattints az egységre, amellyel "
-"cselekedni szeretnél, majd arra a hatszögre, ahova mozgatni akarod. A "
-"kiválasztásnál minden hatszög világítani fog, ahova az egység eljuthat, míg "
-"a többi sötéten fog maradni. Ha a sötét hatszögek fölé viszed az egeret, "
-"akkor a program mutatni fogja a körök számát, ami alatt elérheted az "
+"A lépés a Wesnoth-ban egyszerű: Csak kattints az egységre, amellyel mozogni "
+"szeretnél, majd arra a hatszögre, ahova mozgatni akarod. A kiválasztáskor "
+"minden hatszög világítani fog, ahova az egység eljuthat, míg a többi sötéten "
+"fog maradni. Ha a sötét hatszögek fölé viszed az egeret, akkor az egérmutató "
+"mellett látni fogod a körök számát, ami alatt az adott mezőt elérheted az "
 "egységgel, majd oda kattintva az egység a legrövidebb úton elindul arra (és "
-"a későbbi körökben is folytatólagosan)."
+"a későbbi körökben is folytatólagosan mozog). Ha a lépés folyamán nem "
+"használod el az egység összes lépési pontját, akkor még újra léphetsz vele "
+"abban a körben. Ez hasznos amikor két egységgel helyet akarsz cserélni. "
+"Támadás után az egység már nem léphet tovább. Ha egy korábban nem általad "
+"birtokolt faluba lépsz, akkor az adott egység ugyancsak nem léphet tovább "
+"abban a körben, viszont még megtámadhatja a körülötte állókat."
 
 #: data/help.cfg:128
 msgid ""
@@ -2830,16 +2834,14 @@ msgstr ""
 "anélkül hogy bárkit is maguk kellene megtámadniuk."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also removes "
 "their zone of control, allowing your wounded units to escape or helping you "
 "reach fleeing enemy units."
 msgstr ""
-"A 'lassító' támadás képessége lelassítja az ellenséget, sőt eggyel kevesebb "
-"támadási lehetőséget hagy mint egyébként lenne az egységnek. Így ez a "
-"képesség nagyon hatásos azon egységek ellen akiknek néhány erős támadási "
-"lehetőségük van."
+"A 'lassító' támadás képessége lelassítja az ellenséget és elveszi tőle az "
+"ellenőrzött területét, így megsebesült vagy áttörni kívánó egységeidet nem "
+"tudja megállítani."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -3122,7 +3124,6 @@ msgid "regenerates"
 msgstr "regenerálódás"
 
 #: data/translations/english.cfg:76
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
@@ -3131,7 +3132,9 @@ msgid ""
 msgstr ""
 "Portyázó:\n"
 "Ez az egység képzetten és gyorsan tör az ellenséges vonalak mögé, az "
-"ellenség ellenőrizte terület határáról tudomást sem véve."
+"ellenség ellenőrizte terület határáról tudomást sem véve. (Kivéve ha egy "
+"egység ellenőrzött területén áll meg, mert ekkor ő is elveszti lépési "
+"pontjait.)"
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:18
 #: data/units/Assassin.cfg:113 data/units/Duelist.cfg:16
@@ -3174,18 +3177,17 @@ msgid "teleport"
 msgstr "teleportáció"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is a friendly unit on the opposite "
 "side of the target, and that unit is not incapacitated (eg. turned to stone)."
 msgstr ""
 "Orvtámadás:\n"
-"Ez a támadás kétszeres sebzéssel jár, ha a célpont átellenes oldalán is a "
-"saját csapatának egyik egysége áll."
+"Ez a támadás kétszeres sebzéssel jár, ha a célpont átellenes oldalán is "
+"saját vagy szövetséges egység áll. (Kivéve ha ez az egység nem harcképes, "
+"például kővé vált.)"
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -3193,7 +3195,8 @@ msgid ""
 msgstr ""
 "Dühöngés:\n"
 "Ezzel a támadással, legyen bár támadólag vagy védekezőleg használva, az "
-"összecsapás addig tart, amíg az egyik fél el nem esik."
+"összecsapás addig tart, amíg az egyik fél el nem esik, de legfeljebb 30 "
+"ütéscseréig."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -3206,15 +3209,14 @@ msgstr ""
 "célponttól kapott sebzés is a kétszeresére nő."
 
 #: data/translations/english.cfg:102
-#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
 "Megcsapolás:\n"
-"Ez az egység életerőt szív el egy élő célpontból, az okozott sebzés felével "
-"saját magát gyógyítva."
+"Ez az egység életerőt szív el az élő célpontjaiból az okozott sebzés felével "
+"saját magát gyógyítva (lefelé kerekítve)."
 
 #: data/translations/english.cfg:105
 msgid ""
@@ -9995,13 +9997,13 @@ msgid "invisible: "
 msgstr "láthatatlan: "
 
 #: src/reports.cpp:139
-#, fuzzy
 msgid ""
 "This unit has been slowed. It emits no zone of control, moves at half speed "
 "and ennemies will be able to strike earlier once during a fight"
 msgstr ""
-"Ezt az egységet lelassították. Már csak fele olyan gyorsan mozoghat és "
-"eggyel kevesebbszer támadhat mint egyébként tenné."
+"Ezt az egységet lelassították. Már csak fele olyan gyorsan mozoghat, nem "
+"rendelkezik az ellenőrzött területe fölött, és mindig ellenségei mérhetik rá "
+"az első ütést."
 
 #: src/reports.cpp:139
 msgid "slowed: "
