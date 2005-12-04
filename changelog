@@ -175,6 +175,8 @@ SVN trunk (1.1.x):
      with lower limit of 1
    * defensive_image* deprecated, use defensive animations instead (still work
      but issue warnings, new macros are provided)
+   * using [frames] directly in an [attack] tag is deprecated. pleas enclose
+   attack animations in [animation] tags
    * [store_unit] now leaves variable untouched if filter does not match
  * documentation: switch doxygen templates from CVS to SVN, Savannah to Gna!
  * --with-preferences-dir configure option for coexistence of multiple versions
