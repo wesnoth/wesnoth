@@ -1314,9 +1314,9 @@ struct terrain_topic_generator: topic_generator
 			ss << "\n\n";
 		}
 		if (type.is_keep())
-			ss << _("This terrain acts as keep, i.e., you can recruit units when a leader is in a location with this terrain.") << "\n\n";
+			ss << _("This terrain acts as a keep, i.e., you can recruit units when a leader is in a location with this terrain.") << "\n\n";
 		if (type.is_castle())
-			ss << _("This terrain acts as castle, i.e., you can recruit units onto a location with this terrain.") << "\n\n";
+			ss << _("This terrain acts as a castle, i.e., you can recruit units onto a location with this terrain.") << "\n\n";
 		if (type.gives_healing())
 			ss << _("This terrain gives healing.") << "\n\n";
 		return ss.str();

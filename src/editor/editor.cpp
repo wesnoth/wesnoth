@@ -497,7 +497,7 @@ void map_editor::edit_load_map() {
 	if (res == 0) {
 		// Check if the mapname contains any illegal characters
 		if(!verify_filename(fn, false))	{
-			gui::show_dialog(gui_, NULL, "", _("Warning: Illegal characters found in the map name. You've to save under a different name."), gui::OK_ONLY);
+			gui::show_dialog(gui_, NULL, "", _("Warning: Illegal characters found in the map name. Please save under a different name."), gui::OK_ONLY);
 		}
 
 		std::string new_map;

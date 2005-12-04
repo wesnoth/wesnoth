@@ -908,7 +908,7 @@ redo_turn:
 				game_config,*level,key,gui,
 				map,teams,player_number,units,turn_info::BROWSE_NETWORKED,textbox_info,replay_sender);
 
-		turn_data.save_game(_("A network disconnection has occured, and the game cannot continue. Do you want to save the game?"),gui::YES_NO);
+		turn_data.save_game(_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"),gui::YES_NO);
 		if(disconnect) {
 			throw network::error();
 		} else {

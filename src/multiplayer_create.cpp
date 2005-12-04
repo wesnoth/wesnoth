@@ -86,7 +86,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	turns_slider_.set_min(20);
 	turns_slider_.set_max(100);
 	turns_slider_.set_value(preferences::turns());
-	turns_slider_.set_help_string(_("The maximum turns the game will go for"));
+	turns_slider_.set_help_string(_("The maximum number of turns the game can last"));
 
 	village_gold_slider_.set_min(1);
 	village_gold_slider_.set_max(5);

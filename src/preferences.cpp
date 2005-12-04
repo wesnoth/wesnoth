@@ -1341,7 +1341,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 	SDL_Rect clip_rect = { 0, 0, disp.x (), disp.y () };
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_PLUS,
-					     font::NORMAL_COLOUR,_("Press desired HotKey"),
+					     font::NORMAL_COLOUR,_("Press desired Hotkey"),
 					     0, 0);
 
 	std::vector<std::string> menu_items;
@@ -1394,7 +1394,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 									text_size.w+40,
 									text_size.h+12,disp.video());
 			font::draw_text (&disp.video(), clip_rect, font::SIZE_LARGE,font::NORMAL_COLOUR,
-				 _("Press desired HotKey"),centerx-text_size.w/2-10,
+				 _("Press desired Hotkey"),centerx-text_size.w/2-10,
 				 centery-text_size.h/2-3);
 			disp.update_display();
 			SDL_Event event;
@@ -1420,7 +1420,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
 
 			if(oldhk.get_id() != newhk.get_id() && !oldhk.null()) {
-				gui::show_dialog(disp,NULL,"",_("This HotKey is already in use."),gui::MESSAGE);
+				gui::show_dialog(disp,NULL,"",_("This Hotkey is already in use."),gui::MESSAGE);
 			} else {
 				newhk.set_key(key, (mod & KMOD_SHIFT) != 0,
 						(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
