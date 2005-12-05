@@ -15,6 +15,7 @@
 
 #include "menu.hpp"
 
+#include "../language.hpp"
 #include "../font.hpp"
 #include "../image.hpp"
 #include "../marked-up_text.hpp"
@@ -747,15 +748,23 @@ void menu::draw_row(const std::vector<std::string>& row, const SDL_Rect& rect, R
 	SDL_Rect const &loc = inner_location();
 
 	const std::vector<int>& widths = column_widths();
+	bool lang_rtl = current_language_rtl();
+	int dir = (lang_rtl) ? -1 : 1;
+	SDL_Rect column = loc;
 
 	int xpos = rect.x;
+	if(lang_rtl)
+		xpos += rect.w;
 	for(size_t i = 0; i != row.size(); ++i) {
 
+		if(lang_rtl)
+			xpos -= widths[i];
 		if(type == HEADING_ROW && highlight_heading_ == int(i)) {
 			draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.3,video().getSurface());
 		}
 
 		const int last_x = xpos;
+		column.w = widths[i];
 		std::string str = row[i];
 		std::vector<std::string> img_text_items = utils::split(str, IMG_TEXT_SEPARATOR);
 		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
@@ -769,15 +778,20 @@ void menu::draw_row(const std::vector<std::string>& row, const SDL_Rect& rect, R
 				if(img != NULL && (xpos - rect.x) + img->w < max_width
 				   && rect.y + img->h < area.h) {
 					const size_t y = rect.y + (rect.h - img->h)/2;
-					video().blit_surface(xpos,y,img);
-					xpos += img->w + 5;
+					const size_t w = img->w + 5;
+					const size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
+					video().blit_surface(x,y,img);
+					if(!lang_rtl)
+						xpos += w;
+					column.w -= w;
 				}
 			} else {
+				column.x = xpos;
 				const std::string to_show = max_width_ > -1 ?
 					font::make_text_ellipsis(str, menu_font_size, loc.w - (xpos - rect.x)) : str;
 				const SDL_Rect& text_size = font::text_area(str,menu_font_size);
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
-				font::draw_text(&video(),area,menu_font_size,font::NORMAL_COLOUR,to_show,xpos,y);
+				font::draw_text(&video(),column,menu_font_size,font::NORMAL_COLOUR,to_show,xpos,y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
 					const surface sort_img = image::get_image(sortreversed_ ? "misc/sort-arrow.png" :
@@ -789,10 +803,13 @@ void menu::draw_row(const std::vector<std::string>& row, const SDL_Rect& rect, R
 					}
 				}
 
-				xpos += text_size.w + 5;
+				xpos += dir * (text_size.w + 5);
 			}
 		}
-		xpos = last_x + widths[i];
+		if(lang_rtl)
+			xpos = last_x;
+		else
+			xpos = last_x + widths[i];
 	}
 }
 
