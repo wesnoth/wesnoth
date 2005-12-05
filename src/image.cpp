@@ -39,7 +39,7 @@ locator_finder_t locator_finder;
 
 // Definition of all image maps
 image::image_cache images_,scaled_images_,unmasked_images_,greyed_images_;
-image::image_cache brightened_images_,semi_brightened_images_;
+image::image_cache brightened_images_,semi_brightened_images_,darkened_images_;
 
 image::locator_cache alternative_images_;
 
@@ -87,6 +87,7 @@ void flush_cache()
 	reset_cache(scaled_images_);
 	reset_cache(unmasked_images_);
 	reset_cache(greyed_images_);
+	reset_cache(darkened_images_);
 	reset_cache(brightened_images_);
 	reset_cache(semi_brightened_images_);
 	reset_cache(alternative_images_);
@@ -108,6 +109,7 @@ void locator::init_index()
 		scaled_images_.push_back(cache_item<surface>());
 		unmasked_images_.push_back(cache_item<surface>());
 		greyed_images_.push_back(cache_item<surface>());
+		darkened_images_.push_back(cache_item<surface>());
 		brightened_images_.push_back(cache_item<surface>());
 		semi_brightened_images_.push_back(cache_item<surface>());
 
@@ -400,6 +402,7 @@ void set_colour_adjustment(int r, int g, int b)
 		blue_adjust = b;
 		reset_cache(scaled_images_);
 		reset_cache(greyed_images_);
+		reset_cache(darkened_images_);
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
 		reset_cache(alternative_images_);
@@ -430,6 +433,7 @@ void set_image_mask(const std::string& image)
 		image_mask = image;
 		reset_cache(scaled_images_);
 		reset_cache(greyed_images_);
+		reset_cache(darkened_images_);
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
 		reset_cache(alternative_images_);
@@ -444,6 +448,7 @@ void set_zoom(int amount)
 		zoom = amount;
 		reset_cache(scaled_images_);
 		reset_cache(greyed_images_);
+		reset_cache(darkened_images_);
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
 		reset_cache(unmasked_images_);
@@ -499,6 +504,13 @@ surface get_greyed(const locator i_locator, COLOUR_ADJUSTMENT adj)
 	return surface(greyscale_image(image));
 }
 
+surface get_darkened(const locator i_locator, COLOUR_ADJUSTMENT adj)
+{
+	surface image(get_image(i_locator, SCALED, adj));
+
+	return surface(darken_image(image));
+}
+
 surface get_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
 {
 	surface image(get_image(i_locator, SCALED, adj));
@@ -531,6 +543,9 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 		break;
 	case GREYED:
 		imap = &greyed_images_;
+		break;
+	case DARKENED:
+		imap = &darkened_images_;
 		break;
 	case BRIGHTENED:
 		imap = &brightened_images_;
@@ -567,6 +582,9 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 			break;
 		case GREYED:
 			res = get_greyed(i_locator, adj);
+			break;
+		case DARKENED:
+			res = get_darkened(i_locator, adj);
 			break;
 		case BRIGHTENED:
 			res = get_brightened(i_locator, adj);

@@ -1485,15 +1485,21 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 		mask = tod_at.image_mask;
 	}
 
-	//find if this tile should be greyed
-	if(pathsList_ != NULL && pathsList_->routes.find(gamemap::location(x,y)) ==
-					         pathsList_->routes.end()) {
-		image_type = image::GREYED;
+	//find if this tile should be darkened or bightened (on a path)
+	if(pathsList_ != NULL) {
+		if (pathsList_->routes.find(gamemap::location(x,y)) == pathsList_->routes.end()) {
+			image_type = image::DARKENED;
+		} else {
+			image_type = image::SEMI_BRIGHTENED;
+		}
 	}
-	if(enemy_reach_ != NULL && enemy_reach_->find(loc) == enemy_reach_->end()) {
-		image_type = image::GREYED;
+	if(enemy_reach_ != NULL) {
+		if (enemy_reach_->find(loc) == enemy_reach_->end()) {
+			image_type = image::DARKENED;
+		} else {
+			image_type = image::SEMI_BRIGHTENED;
+		}
 	}
-
 	unit_map::iterator un = find_visible_unit(units_, loc, map_,
 		status_.get_time_of_day().lawful_bonus,teams_,teams_[currentTeam_]);
 

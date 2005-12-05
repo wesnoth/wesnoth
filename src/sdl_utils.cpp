@@ -321,6 +321,49 @@ surface greyscale_image(surface const &surf)
 	return create_optimized_surface(nsurf);
 }
 
+surface darken_image(surface const &surf)
+{
+	if(surf == NULL)
+		return NULL;
+
+	surface nsurf(make_neutral_surface(surf));
+	if(nsurf == NULL) {
+		std::cerr << "failed to make neutral surface\n";
+		return NULL;
+	}
+
+	{
+		surface_lock lock(nsurf);
+		Uint32* beg = lock.pixels();
+		Uint32* end = beg + nsurf->w*surf->h;
+
+		while(beg != end) {
+			Uint8 red, green, blue, alpha;
+			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
+
+			//const Uint8 avg = (red+green+blue)/3;
+
+			//use the correct formula for RGB to grayscale
+			//conversion. ok, this is no big deal :)
+			//the correct formula being:
+			//gray=0.299red+0.587green+0.114blue
+			const Uint8 avg = (Uint8)((77*(Uint16)red +
+						   150*(Uint16)green +
+						   29*(Uint16)blue) / 256);
+			const Uint8 r=(Uint8)(avg*.77);
+			const Uint8 g=(Uint8)(avg*.67);
+			const Uint8 b=(Uint8)(avg*.72);
+
+
+			*beg = SDL_MapRGBA(nsurf->format,r,g,b,alpha);
+
+			++beg;
+		}
+	}
+
+	return create_optimized_surface(nsurf);
+}
+
 surface recolor_image(surface surf, Uint32 new_rgb, std::vector<Uint32> old_rgb)
 {
   // function to replace vectors of colors with new color (at equal greyscale)
