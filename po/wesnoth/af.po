@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-04 20:19+0100\n"
-"PO-Revision-Date: 2005-12-04 17:18+0200\n"
+"PO-Revision-Date: 2005-12-05 10:24+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
 "MIME-Version: 1.0\n"
@@ -139,7 +139,6 @@ msgstr ""
 "moeilikheidsgraad eerste probeer."
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -697,7 +696,6 @@ msgid "Time of Day"
 msgstr "Tyd van die Dag"
 
 #: data/help.cfg:181
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -706,8 +704,8 @@ msgid ""
 msgstr ""
 "Die tyd in die dag beïnvloed die skade wat sekere eenhede kan toedien as "
 "volg:\n"
-" Wettige eenhede kry +25% skade in daglig en -25% skade in die nag\n"
-" Chaotiese eenhede kry +25% skade in die nag en -25% skade in die dag\n"
+" Wettige eenhede kry +25% skade in daglig en -25% skade in die nag.\n"
+" Chaotiese eenhede kry +25% skade in die nag en -25% skade in die dag.\n"
 " Neutrale eenhede word nie deur die tyd van die dag beïnvloed nie."
 
 #: data/help.cfg:184
@@ -795,7 +793,6 @@ msgstr ""
 "bevordering."
 
 #: data/help.cfg:201
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -814,7 +811,7 @@ msgstr ""
 "Terwyl die meeste eenhede drie vlakke het, is dit nie so vir almal nie. Soms "
 "het eenhede (soos die <ref>dst=unit_Mage text=Towenaar</ref>) vier vlakke. "
 "Wanneer 'n eenheid sy maksimum vlak bereik het, mag dit 'n Na Maksimum Vlak "
-"Bevordering (NMVB) tot sy beskikking hê.\n"
+"Bevordering (NMVB) tot sy beskikking hê. "
 "Die NMVB sal die eenheid verander elke keer as die eenheid die "
 "ervaringsdoelwit bereik, maar die eenheid sal op dieselfde vlak bly. Die "
 "tipiese NMVB effek is om die eenheid se maksimum aantal LP's met 3 te "
@@ -887,7 +884,6 @@ msgstr ""
 "Gesondmaak eenheid kan genees word en slegs met 4LP per eenheid."
 
 #: data/help.cfg:213
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -1888,9 +1884,8 @@ msgstr ""
 "Dit is die Vlam Septer. Net 'n ware troonopvolger sou waag om dit te neem!"
 
 #: data/items.cfg:816
-#, fuzzy
 msgid "Zap"
-msgstr "Zap~"
+msgstr "Zap"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -2135,10 +2130,11 @@ msgid ""
 msgstr ""
 "\n"
 "Oorwinning:\n"
-"@Move enige bal na jou teenstanders se eindsone meer kere as wat hulle, "
-"hulle s'n na joune kan stoot.Nederlaag:\n"
-"#Opponent beweeg die balle na jou eindsone meer kere as wat jy joune na "
-"hulle s'n kan beweeg."
+"@Stoot enige bal na jou teenstander se eindsone meer kere as wat hulle, "
+"hulle s'n na joune kan stoot.\n"
+"Nederlaag:\n"
+"#Opponent stoot die balle na jou eindsone meer kere as wat jy joune na "
+"hulle s'n kan stoot."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:199
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:476
@@ -2596,7 +2592,6 @@ msgstr ""
 "soorte aanvalle bied."
 
 #: data/tips.cfg:4
-#, fuzzy
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -2621,7 +2616,6 @@ msgstr ""
 "beweeg, of om hulle langs 'n eenheid te plaas wat kan genees."
 
 #: data/tips.cfg:6
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -2905,15 +2899,13 @@ msgid "Hard"
 msgstr "Moeilik"
 
 #: data/translations/english.cfg:9
-#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
-"Eenhede met 'n wettige ingesteldheid veg beter in die dag en swakker in die "
-"nag.\n"
+"Eenhede met 'n wettige ingesteldheid veg beter bedags en swakker snags.\n"
 "\n"
 "Dag: +25% Skade\n"
 "Nag: -25% Skade"
@@ -2927,14 +2919,13 @@ msgstr ""
 "onder beide toestande."
 
 #: data/translations/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
 "Day: -25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
-"Chaotiese eenhede veg beter snags en swakker bedags\n"
+"Chaotiese eenhede veg beter snags en swakker bedags.\n"
 "\n"
 "Dag: -25% Skade\n"
 "Nag: +25% Skade"
@@ -2962,7 +2953,6 @@ msgid "ambush"
 msgstr "lokval"
 
 #: data/translations/english.cfg:31
-#, fuzzy
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -2981,12 +2971,12 @@ msgstr ""
 "\n"
 "Hierdie eenheid sal vir alle aangrensende goedgesinde, beseerde eenhede aan "
 "die begin van elke beurt sorg.\n"
-"'n eenheid wat deur 'n geneser versorg word mag tot soveel as 8 LP per beurt "
+"'n Eenheid wat deur 'n geneser versorg word mag tot soveel as 8 LP per beurt "
 "genees word.\n"
-"'n geneeser mag vir 'n totaal van 18 LP per beurt genees, vir al die eenhede "
+"'n Geneser mag vir 'n totaal van 18 LP per beurt genees, vir al die eenhede "
 "wat dit versorg.\n"
-"'n geneeser kan 'n eenheid van gif genees, maar die eenheid sal geen "
-"addisionele gesondmaak kry totat dit totaal van die gif genees is nie."
+"'n Geneser kan 'n eenheid van gif genees, maar die eenheid sal geen "
+"addisionele gesondmaak kry totdat dit totaal van die gif genees is nie."
 
 #: data/translations/english.cfg:33 data/units/Elvish_Druid.cfg:25
 #: data/units/Elvish_Shyde.cfg:27 data/units/Mermaid_Priestess.cfg:17
@@ -2996,7 +2986,6 @@ msgid "cures"
 msgstr "genees"
 
 #: data/translations/english.cfg:40
-#, fuzzy
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -3013,6 +3002,8 @@ msgstr ""
 "\n"
 "'n Eenheid wat deur 'n gesondmaker versorg word, kan soveel as 4 LP per "
 "beurt gesondmaak.\n"
+"'n Gesondmaker mag vir 'n totaal van 8 LP per beurt genees, vir al die "
+"eenhede wat dit versorg.\n"
 "'n Vergiftigde eenheid kan nie deur 'n gesondmaker van sy vergiftiging "
 "genees word nie en moet die sorg van 'n dorp of 'n eenheid wat kan genees "
 "opsoek."
@@ -3289,7 +3280,6 @@ msgstr ""
 "het mag nie beweeg of aanval nie."
 
 #: data/translations/english.cfg:129
-#, fuzzy
 msgid "race^Undead"
 msgstr "Wandelende dooies"
 
@@ -3883,7 +3873,6 @@ msgid "Bone Shooter"
 msgstr "Been Skieter"
 
 #: data/units/Bone_Shooter.cfg:21
-#, fuzzy
 msgid ""
 "Of a necromancer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -5009,7 +4998,6 @@ msgid "Dwarvish Stalwart"
 msgstr "Dwergse Staatmaker"
 
 #: data/units/Dwarvish_Stalwart.cfg:30
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -5100,8 +5088,8 @@ msgid ""
 "or they themselves perish, no matter how many wounds they receive."
 msgstr ""
 "Dwerge is 'n antieke ras van baie kragtige vegters. Ulfserkers is die mees "
-"veglustigste in 'n stryd. Hulle hou nie op todat die vyand dood is nie, of "
-"todat hulself dood is nie, maak nie saak hoeveel wonde hulle opdoen nie."
+"veglustigste in 'n stryd. Hulle hou nie op totdat die vyand dood is nie, of "
+"totdat hulself dood is nie, maak nie saak hoeveel wonde hulle opdoen nie."
 
 #: data/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
@@ -5212,7 +5200,7 @@ msgstr ""
 "verduideliking dalk nie so on-akkuraaat nie.\n"
 "\n"
 "Spesiale Nota's: Die wrekers se spesiale vaardigheid as bosbewooners maak "
-"hulle onsigbaar vir 'n vyand todat die vyand reg langs hulle is, of as die "
+"hulle onsigbaar vir 'n vyand totdat die vyand reg langs hulle is, of as die "
 "wrekers aanval."
 
 #: data/units/Elvish_Avenger.cfg:134
@@ -5285,7 +5273,7 @@ msgstr ""
 "enkele bevel, en sal uitswiep na enigiemand wat die vrede bedreig.\n"
 "\n"
 "Die Elwe toon goot eerbied vir hul bostoordokters want hulle is uitmuntende "
-"geneesers.\n"
+"genesers.\n"
 "\n"
 "Spesiale Nota's: Die Bostoordokter se verstrengel aanval vertraag hul vyande "
 "en veroorsaak dat hulle een keer minder slaan gedurende 'n geveg. "
@@ -5304,7 +5292,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Elfse Verleier"
 
 #: data/units/Elvish_Enchantress.cfg:35
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
@@ -5455,7 +5442,6 @@ msgid "Elvish Marshal"
 msgstr "Elfse Maarskalk"
 
 #: data/units/Elvish_Marshal.cfg:39
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -5539,7 +5525,6 @@ msgid "Elvish Rider"
 msgstr "Elfse Ruiter"
 
 #: data/units/Elvish_Rider.cfg:38
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal to any man. Though this certainly leaves people in "
@@ -5668,7 +5653,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Elfse Towenares"
 
 #: data/units/Elvish_Sorceress.cfg:35
-#, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
@@ -5826,7 +5810,6 @@ msgid "Galleon"
 msgstr "Seilskip"
 
 #: data/units/Galleon.cfg:17
-#, fuzzy
 msgid ""
 "Even people happily living in their homes eventually need some kind of "
 "transport through the seas, even if only to go fishing or to trade goods. "
@@ -6330,7 +6313,7 @@ msgid ""
 msgstr ""
 "Die beste van die manne van die pleine, die Perde Here, is aan die hoof van "
 "die ordes en word respekteer deur almal, vriend of vyand. Hulle swaarde kan "
-"meeste va die gewone vyande verslaan en hul OggendSter knuppels vermorsel "
+"meeste van die gewone vyande verslaan en hul OggendSter knuppels vermorsel "
 "die wat oorbly."
 
 #: data/units/Horse_Lord.cfg:50 data/units/Mounted_Fighter.cfg:50
@@ -6743,7 +6726,6 @@ msgid "Master at Arms"
 msgstr "Wapenmeester"
 
 #: data/units/Master_at_Arms.cfg:22
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -7109,7 +7091,6 @@ msgid "Mounted Fighter"
 msgstr "Berede Vegter"
 
 #: data/units/Mounted_Fighter.cfg:24
-#, fuzzy
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -7117,7 +7098,7 @@ msgid ""
 "armies of the Clans."
 msgstr ""
 "Die delstand van die manne van die pleine word opgelei in ruitery saam met "
-"die rest van die ruiters om hulle magtige krygers te maak. Behalwe die "
+"die ander ruiters om hulle magtige krygers te maak. Behalwe die "
 "opleiding, word hulle ook opgelei in leierskap, en hoe om hulle kamerade aan "
 "te voer. Hulle word dan gewoonlik die magtige kapteine van die lëers van die "
 "stamme. "
@@ -7282,8 +7263,8 @@ msgstr ""
 "van voor af te begin.\n"
 "\n"
 "Spesiale Nota's: Nekromante se kloue is met gif bedek, en alle slagoffers se "
-"lewenspunte sal daal as gevolg van die gif, todat hulle kan genees word deur "
-"'n dorpie of 'n geneeser."
+"lewenspunte sal daal as gevolg van die gif, totdat hulle kan genees word deur "
+"'n dorpie of 'n geneser."
 
 #: data/units/Nightgaunt.cfg:3
 msgid "Nightgaunt"
@@ -7406,7 +7387,6 @@ msgid "Orcish Assassin"
 msgstr "Orkse Moordenaar"
 
 #: data/units/Orcish_Assassin.cfg:25
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -7419,14 +7399,14 @@ msgid ""
 "in town or by a healer."
 msgstr ""
 "Alhoewel party dink gif is 'n lafaard se wapen, is gif 'n gunsteling wapen "
-"van die orke - veral die wat maar skraal gebou is. Orkse sluipmoordenaars "
+"van die orke, veral die wat maar skraal gebou is. Orkse sluipmoordenaars "
 "smeer gif aan die lemme van hul gooimesse. Hulle is meestal maar tingerig, "
 "maar verbasend rats. Hulle is selde die een wat die finale hou slaan, maar "
 "hul taktiek is van groot hulp vir hulle groter en meer brutale stamgenoote.\n"
 "\n"
 "Spesiale Nota's: Orkse Moordenaars gebruik gif op hulle gooimese en die "
-"slagoffers van hierdie gif sal aanhoudend lewenspunte verloor todat hulle "
-"deur 'n dorpie of 'n geneeser kan behandel word."
+"slagoffers van hierdie gif sal aanhoudend lewenspunte verloor totdat hulle "
+"deur 'n dorpie of 'n geneser kan behandel word."
 
 #: data/units/Orcish_Assassin.cfg:45 data/units/Orcish_Slayer.cfg:51
 msgid "throwing knives"
@@ -7577,7 +7557,6 @@ msgid "Orcish Slayer"
 msgstr "Orkse Slagter"
 
 #: data/units/Orcish_Slayer.cfg:26
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -7591,14 +7570,14 @@ msgid ""
 msgstr ""
 "Die groter, en in meeste gevalle, meer behendige orkse moordenaars word "
 "'Slagters' genoem deur hul vyande. Hoekom hul so genoem word is nie baie "
-"duidelike nie, maar Slagters is rats en baie beweegbaar in 'n geveg. Die "
-"rede hiervoor is omdat hulle so te sê geen lyf-pantser dra nie. Hulle gekose "
-"wapen, gif, is 'n ongenaakbare instrument, en die gebruik hiervan is greeld "
-"die rede vir 'n orkse oorwinning.\n"
+"duidelik nie, maar Slagters is rats en baie beweegbaar in 'n geveg. Die "
+"rede hiervoor is omdat hulle geen lyf-pantser dra nie. Hulle gekose "
+"wapen, gif, is 'n ongenaakbare instrument, en die gebruik hiervan is gereeld "
+"die ware rede vir 'n orkse oorwinning.\n"
 "\n"
 "Spesiale Nota's: Orkse Slagters gebruik gif op hul gooimesse, en die "
-"slagoffers van die gif sal aanhoudend lewenspunte verloor todat hulle kan "
-"genees word deur 'n dorpie of geneeser."
+"slagoffers van die gif sal aanhoudend lewenspunte verloor totdat hulle kan "
+"genees word deur 'n dorpie of geneser."
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
@@ -8074,7 +8053,7 @@ msgid ""
 "aid to their friends regardless of terrain or opposition. In addition to "
 "curing their allies they possess knowledge of cold magic."
 msgstr ""
-"Sauriaanse Waarsëers word hoog aangeskryf as geneesers want hulle kan hulle "
+"Sauriaanse Waarsëers word hoog aangeskryf as genesers want hulle kan hulle "
 "vriende help in rowwe terrein of met enige vyand naby. Behalwe hulle "
 "geneeskrag besit hulle ook kennis van die koue toorkrag."
 
@@ -8090,7 +8069,7 @@ msgid ""
 "they possess knowledge of cold magic."
 msgstr ""
 "Nieteenstaande hulle koud-bloedige herkoms en relatiewe tingerigheid, word "
-"Sauriaanse Toordokters word hoog aangeskryf as geneesers want hulle kan "
+"Sauriaanse Toordokters word hoog aangeskryf as genesers want hulle kan "
 "hulle vriende help in rowwe terrein of met enige vyand naby. Behalwe hulle "
 "geneeskrag besit hulle ook kennis van die koue toorkrag"
 
@@ -8194,7 +8173,6 @@ msgid "Silver Mage"
 msgstr "Silwer Towenaar"
 
 #: data/units/Silver_Mage.cfg:28
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -8239,7 +8217,7 @@ msgstr ""
 "probeer uitvind het, het gou moed opgegee en nooit weer daarvan gepraat "
 "nie.\n"
 "\n"
-"Die Silwer Towenaars is baie keer meer fisies vaardig as ander towenaars, 'n "
+"Silwer Towenaars is baie keer meer fisies vaardig as ander towenaars, 'n "
 "vaardigheid wat handig te pas kom op die slagveld. Dit is nou te sê as mens "
 "hulle kan oortuig om hul towerkuns te gebruik.\n"
 "\n"
@@ -8511,7 +8489,7 @@ msgid ""
 msgstr ""
 "So lank terug as wat enigeen kan onthou, het die lede van verskeie 'gildes' "
 "van rot-vangers wat in die groter stede opgeskiet het, hul hare gebleik met "
-"kalk todat dit 'n ligte blou geword het. Dit was 'n brawe ding om te doen "
+"kalk totdat dit 'n ligte blou geword het. Dit was 'n brawe ding om te doen "
 "aangesien hulle bedrywighede nie altyd wettig was nie. Diewe het baie "
 "vaardighede, en is genoegsaak om vinnig te wees op hul voete en vaardig te "
 "wees met 'n mes. Hulle gebruik skroom nie om 'vuil taktiek' te gebruik in 'n "
@@ -9105,9 +9083,8 @@ msgid "+Polish Translation"
 msgstr "+Poolse Vertaling"
 
 #: src/about.cpp:293
-#, fuzzy
 msgid "+Portuguese Translation"
-msgstr "+Portugese (Brasiliaanse) Vertaling"
+msgstr "+Portugese Vertaling"
 
 #: src/about.cpp:296
 msgid "+Portuguese (Brazil) Translation"
@@ -9458,7 +9435,6 @@ msgid "Get More Campaigns..."
 msgstr "Kry Meer Veldtogte..."
 
 #: src/game.cpp:746
-#, fuzzy
 msgid "Download more campaigns from an Internet server."
 msgstr "Laai meer veldtogte af vanaf 'n bediener op die Internet."
 
@@ -9774,7 +9750,6 @@ msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Die terrein met die beste versteller word outomaties gekies."
 
 #: src/help.cpp:1317
-#, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
@@ -9783,7 +9758,6 @@ msgstr ""
 "op 'n plek is met hierdie terrein."
 
 #: src/help.cpp:1319
-#, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -10026,7 +10000,6 @@ msgid "Settings..."
 msgstr "Instellings..."
 
 #: src/multiplayer_create.cpp:95
-#, fuzzy
 msgid "The maximum number of turns the game can last"
 msgstr "Die maksimum beurte wat die spel kan neem"
 
@@ -10326,7 +10299,6 @@ msgid "Scenario Report"
 msgstr "Scenarioverslag"
 
 #: src/playlevel.cpp:709
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -10627,7 +10599,7 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Hierdie eenheid is vergiftig. Dit sal 8 LP verloor met elke beurt todat dit "
+"Hierdie eenheid is vergiftig. Dit sal 8 LP verloor met elke beurt totdat dit "
 "'n geneesmiddel kry teen die gif in 'n dorp of van 'n vriendelike eenheid "
 "met die geneesmiddel vermoë.\n"
 "\n"
@@ -10655,9 +10627,8 @@ msgid "weapon range: "
 msgstr ""
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "damage type: "
-msgstr "skade"
+msgstr "skade soort: "
 
 #: src/reports.cpp:310
 msgid "Lawful units: "
