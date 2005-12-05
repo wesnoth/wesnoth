@@ -345,6 +345,9 @@ public:
 	void measure() const;
 	size_t width() const;
 	size_t height() const;
+#ifdef	HAVE_FRIBIDI
+	bool is_rtl() const { return is_rtl_; }	// Right-To-Left alignment
+#endif
 	std::vector<surface> const & get_surfaces() const;
 
 	bool operator==(text_surface const &t) const {
@@ -362,14 +365,18 @@ private:
 	mutable bool initialized_;
 	mutable std::vector<text_chunk> chunks_;
 	mutable std::vector<surface> surfs_;
+#ifdef	HAVE_FRIBIDI
+	bool is_rtl_;
+	void bidi_cvt();
+#endif
 	void hash();
 };
 
 #ifdef	HAVE_FRIBIDI
-static std::string bidi_cvt(std::string const &str)
+void text_surface::bidi_cvt()
 {
-	char		*c_str = const_cast<char *>(str.c_str());	// fribidi forgot const...
-	int		len = str.length();
+	char		*c_str = const_cast<char *>(str_.c_str());	// fribidi forgot const...
+	int		len = str_.length();
 	FriBidiChar	bidi_logical[len + 2];
 	FriBidiChar	bidi_visual[len + 2];
 	char		utf8str[len + 1];
@@ -379,16 +386,18 @@ static std::string bidi_cvt(std::string const &str)
 	n = fribidi_utf8_to_unicode (c_str, len, bidi_logical);
 	fribidi_log2vis(bidi_logical, n, &base_dir, bidi_visual, NULL, NULL, NULL);
 	fribidi_unicode_to_utf8 (bidi_visual, n, utf8str);
-	return std::string(utf8str);
+	is_rtl_ = base_dir == FRIBIDI_TYPE_RTL;
+	str_ = std::string(utf8str);
 }
-#else
-#	define	bidi_cvt(x)	(x)
 #endif
 
 text_surface::text_surface(std::string const &str, int size, SDL_Color color, int style)
-  : font_size_(size), color_(color), style_(style), w_(-1), h_(-1), str_(bidi_cvt(str)),
+  : font_size_(size), color_(color), style_(style), w_(-1), h_(-1), str_(str),
   initialized_(false)
 {
+#ifdef	HAVE_FRIBIDI
+	bidi_cvt();
+#endif
 	hash();
 }
 
@@ -402,7 +411,10 @@ void text_surface::set_text(std::string const &str)
 	initialized_ = false;
 	w_ = -1;
 	h_ = -1;
-	str_ = bidi_cvt(str);
+	str_ = str;
+#ifdef	HAVE_FRIBIDI
+	bidi_cvt();
+#endif
 	hash();
 }
 
@@ -673,9 +685,17 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 	}
 
 	SDL_Rect dest;
-	if(x!=-1)
+	if(x!=-1) {
 		dest.x = x;
-	else
+#ifdef	HAVE_FRIBIDI
+		// Oron -- Conditional, until all draw_text_line calls have fixed area parameter
+		if(getenv("WANT_RTL")) {
+			bool is_rtl = text_cache::find(text_surface(text, size, colour, style)).is_rtl();
+			if(is_rtl)
+				dest.x = area.x + area.w - surface->w - (x - area.x);
+		}
+#endif
+	} else
 		dest.x = (area.w/2)-(surface->w/2);
 	if(y!=-1)
 		dest.y = y;

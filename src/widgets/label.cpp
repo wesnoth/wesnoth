@@ -67,7 +67,7 @@ const SDL_Color& label::get_colour() const
 
 void label::draw_contents()
 {
-	font::draw_text(&video(), screen_area(), size_, colour_, text_, location().x, location().y);
+	font::draw_text(&video(), location(), size_, colour_, text_, location().x, location().y);
 }
 
 void label::update_label_size()

@@ -189,15 +189,17 @@ void button::draw_contents()
 		break;
 	}
 
-	SDL_Rect const &clipArea = screen_area();
 	SDL_Rect const &loc = location();
+	SDL_Rect clipArea = loc;
 	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
 	int textx;
 
 	if (type_ != TYPE_CHECK)
 		textx = loc.x + image->w / 2 - textRect_.w / 2 + offset;
-	else
+	else {
+		clipArea.w += image_w + checkbox_horizontal_padding;
 		textx = loc.x + image_w + checkbox_horizontal_padding / 2;
+	}
 
 	SDL_Color button_colour = font::BUTTON_COLOUR;
 
@@ -208,6 +210,10 @@ void button::draw_contents()
 
 	video().blit_surface(loc.x, loc.y, image);
 	if (type_ != TYPE_IMAGE){
+		clipArea.x += offset;
+		clipArea.y += offset;
+		clipArea.w -= 2*offset;
+		clipArea.h -= 2*offset;
 		font::draw_text(&video(), clipArea, font_size, button_colour, label_, textx, texty);
 	}
 

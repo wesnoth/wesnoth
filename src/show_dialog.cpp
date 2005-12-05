@@ -633,9 +633,12 @@ int show_dialog(display& disp, surface image,
 		menu_.set_location(menu_xpos,menu_ypos);
 	}
 
+	text_size.x = xloc + left_padding;
+	text_size.y = yloc + top_padding + caption_size.h;
 	if(image != NULL) {
 		const int x = xloc + left_padding;
 		const int y = yloc + top_padding;
+		text_size.x += image_width + image_h_padding;
 
 		screen.blit_surface(x,y,image);
 
@@ -645,7 +648,7 @@ int show_dialog(display& disp, surface image,
 		                yloc+top_padding);
 	}
 
-	font::draw_text(&screen, clipRect, message_font_size,
+	font::draw_text(&screen, text_size, message_font_size,
 	                font::NORMAL_COLOUR, message,
 	                xloc+image_width+left_padding+image_h_padding,
 	                yloc+top_padding+caption_size.h);
