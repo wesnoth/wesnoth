@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-05 10:42+0100\n"
-"PO-Revision-Date: 2005-12-05 20:09+0100\n"
-"Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
+"PO-Revision-Date: 2005-12-06 20:41+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic  AT   gmx D OT  net>\n"
 "Language-Team: Language fr <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1023,10 +1023,10 @@ msgid ""
 msgstr ""
 "\n"
 "Il y a une exception importante à l'entretien : les unités avec le trait "
-"loyal ne génèrent jamais d'entretien. Les unités avec lesquelles vous "
+"fidèle ne génèrent jamais d'entretien. Les unités avec lesquelles vous "
 "débutez le scénario (comme Konrad ou Delfador), ou les unités qui vous "
 "rejoignent au cours d'un scénario (tel l'écuyer dans le second niveau de "
-"L'héritier du trône) auront généralement le trait loyal."
+"L'héritier du trône) auront généralement le trait fidèle."
 
 #: data/help.cfg:233
 msgid "Wrap Up"
@@ -1095,7 +1095,7 @@ msgstr ""
 "\n"
 "\n"
 "D'autres traits qui peuvent être attribués aux unités sont "
-"<ref>dst=traits_loyal text=Loyal</ref>, <ref>dst=traits_undead text=Mort-"
+"<ref>dst=traits_loyal text=Fidèle</ref>, <ref>dst=traits_undead text=Mort-"
 "vivant</ref>, et <ref>dst=traits_dextrous text=Habile</ref>."
 
 #: data/help.cfg:261
@@ -1215,7 +1215,7 @@ msgstr ""
 
 #: data/help.cfg:293
 msgid "Loyal"
-msgstr "Loyal"
+msgstr "Fidèle"
 
 #: data/help.cfg:294
 msgid ""
@@ -1223,9 +1223,9 @@ msgid ""
 "of every turn, which is equal to their level. Loyal units do not incur this "
 "cost."
 msgstr ""
-"Les unités loyales n'ont pas de coût d'entretien. La plupart des unités ont "
+"Les unités fidèles n'ont pas de coût d'entretien. La plupart des unités ont "
 "un coût d'entretien à la fin de chaque tour, égal à leur niveau. Les unités "
-"loyales ne sont pas concernées."
+"fidèles ne sont pas concernées."
 
 #: data/help.cfg:296
 msgid ""
@@ -1241,13 +1241,13 @@ msgstr ""
 "\n"
 "\n"
 "Durant une campagne, certaines unités peuvent décider de rejoindre le joueur "
-"de leur propre initiative. Ces unités obtiennent alors le trait de caractère "
-"'Loyal'. Bien qu'elles puissent avoir un coût de rappel à chaque scénario, "
-"elles n'ont pas de coût d'entretien. Cela peut les rendre plus "
-"qu'indispensables pendant une longue campagne, lorsque l'or se fait rare. Ce "
-"trait de caractère n'est jamais donné à une unité recrutée, il est donc "
-"fortement déconseillé de renvoyer de telles unités ou de les laisser se "
-"faire tuer bêtement."
+"de leur propre initiative. Ces unités obtiennent alors le trait 'fidèle'. "
+"Bien qu'elles puissent avoir un coût de rappel à chaque scénario, elles "
+"n'ont pas de coût d'entretien. Cela peut les rendre plus qu'indispensables "
+"pendant une longue campagne, lorsque l'or se fait rare. Ce trait de "
+"caractère n'est jamais donné à une unité recrutée, il est donc fortement "
+"déconseillé de renvoyer de telles unités ou de les laisser se faire tuer "
+"bêtement."
 
 #: data/help.cfg:301
 msgid "trait^Undead"
@@ -2634,8 +2634,8 @@ msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
 msgstr ""
-"Les unités justes se battent mieux le jour et les unités chaotiques mieux la "
-"nuit. Les unités neutres ne sont pas affectées par la période du jour."
+"Les unités loyales se battent mieux le jour et les unités chaotiques mieux "
+"la nuit. Les unités neutres ne sont pas affectées par la période du jour."
 
 #: data/tips.cfg:2
 msgid ""
@@ -2925,7 +2925,7 @@ msgstr ""
 
 #: data/traits.cfg:6 data/translations/english.cfg:61
 msgid "loyal"
-msgstr "loyal"
+msgstr "fidèle"
 
 # XXX pas sur de la signification
 # Jean : cela semble ça.
@@ -3099,8 +3099,8 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 "Illumination :\n"
-"Cette unité illumine les cases environnantes, rendant les unités justes plus "
-"fortes, et les unités chaotiques plus faibles.\n"
+"Cette unité illumine les cases environnantes, rendant les unités loyales "
+"plus fortes, et les unités chaotiques plus faibles.\n"
 "\n"
 "Toutes les unités adjacentes à cette unité combattront la nuit comme si "
 "c'était le crépuscule et comme s'il faisait jour au moment du crépuscule."
@@ -3151,7 +3151,7 @@ msgid ""
 "Loyal:\n"
 "Never more than 1 upkeep."
 msgstr ""
-"Loyal :\n"
+"Fidèle :\n"
 "Jamais plus de 1 d'entretien"
 
 #: data/translations/english.cfg:66
@@ -10888,7 +10888,7 @@ msgstr "dégâts"
 
 #: src/reports.cpp:254
 msgid "weapon range: "
-msgstr ""
+msgstr "Portée de l'arme :"
 
 #: src/reports.cpp:255
 msgid "damage type: "
@@ -10896,7 +10896,7 @@ msgstr "type de dégâts :"
 
 #: src/reports.cpp:310
 msgid "Lawful units: "
-msgstr "Unités justes : "
+msgstr "Unités loyales : "
 
 #: src/reports.cpp:312
 msgid "Neutral units: "
@@ -11075,10 +11075,9 @@ msgstr "attaques"
 msgid "chaotic"
 msgstr "chaotique"
 
-# lawful -> juste ; loyal -> loyal
 #: src/unit_types.cpp:1015
 msgid "lawful"
-msgstr "juste"
+msgstr "loyal"
 
 #: src/unit_types.cpp:1015
 msgid "neutral"

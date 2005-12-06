@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-04 20:35+0100\n"
-"PO-Revision-Date: 2005-10-15 01:54+0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2005-12-06 20:22+0100\n"
+"Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -119,7 +119,6 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Terminez votre tour et attendez que Merle vous attaque."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:195
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it receives experience from the combat. Once a unit gains enough experience, "
@@ -300,7 +299,6 @@ msgid "En garde!"
 msgstr "En garde !"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:107
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics from the "
 "statistics shown before you recruited them. This is because they have been "
@@ -308,7 +306,7 @@ msgid ""
 msgstr ""
 "Vous pouvez remarquer que vos unités ont des statistiques légèrement "
 "différentes par rapport à celles affichées avant que vous ne les recrutiez. "
-"Ceci arrive parce que des caractéristiques leur ont étés affectées."
+"Ceci arrive parce que des caractéristiques leur ont été affectées."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
 msgid ""
@@ -437,7 +435,6 @@ msgid "What's a leader?"
 msgstr "Qu'est-ce qu'un chef ?"
 
 #: data/scenarios/tutorial/utils.cfg:68
-#, fuzzy
 msgid ""
 "A leader is a unit that can recruit. This means that when the leader is on a "
 "keep, units can be recruited on the surrounding castle tiles. Leaders are "
@@ -491,7 +488,6 @@ msgid "How do I end my turn?"
 msgstr "Comment terminer mon tour ?"
 
 #: data/scenarios/tutorial/utils.cfg:74
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 "right-click and select End Turn, or select the End Turn button in the lower "
@@ -527,7 +523,6 @@ msgid "How far can my Elvish Fighter move?"
 msgstr "Jusqu'où mon guerrier elfe peut-il se déplacer ?"
 
 #: data/scenarios/tutorial/utils.cfg:79
-#, fuzzy
 msgid ""
 "Your Elvish Fighter begins with a certain number of move points each turn; "
 "this is called its speed. When your Elvish Fighter moves along a path, each "
@@ -550,10 +545,9 @@ msgstr ""
 "Cliquer sur une case éloignée va mettre l'unité en route vers cette case, la "
 "déplaçant automatiquement le plus possible chaque tour vers la case cible. "
 "Si vous mettez une unité en route par inadvertance, cliquez deux fois dessus "
-"pour retirer la route."
+"pour annuler son mouvement."
 
 #: data/scenarios/tutorial/utils.cfg:80
-#, fuzzy
 msgid ""
 "A unit's zone of control is the location consisting of all hexes the unit is "
 "adjacent to. Units cannot move through opponent's zones of control; they can "
@@ -572,7 +566,6 @@ msgid "What's the zone of control?"
 msgstr "Qu'est-ce que la zone de contrôle ?"
 
 #: data/scenarios/tutorial/utils.cfg:81
-#, fuzzy
 msgid ""
 "Units you control have a green, yellow, or red energy circle above their "
 "health bar, the green vertical bar next to them. Units with full movement "
@@ -600,7 +593,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Est-ce que Merle peut riposter à mon attaque ?"
 
 #: data/scenarios/tutorial/utils.cfg:85
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -654,7 +646,6 @@ msgid "How can you tell how powerful a unit's attacks are?"
 msgstr "Comment connaître la puissance des attaques d'une unité ?"
 
 #: data/scenarios/tutorial/utils.cfg:87
-#, fuzzy
 msgid "Will my fighter hit every time when it attacks?"
 msgstr "Est-ce que mon guerrier touchera à chaque fois qu'il attaquera ?"
 
@@ -714,7 +705,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Que se passe-t-il lorsqu'une unité rejoint un village ?"
 
 #: data/scenarios/tutorial/utils.cfg:96
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, it flags the village for its side. "
 "This action takes all the unit's remaining movement. Villages flagged for a "
@@ -739,7 +729,6 @@ msgid "How do I heal when there aren't any villages nearby?"
 msgstr "Comment se soigner lorsqu'il n'y a pas de villages à proximité ?"
 
 #: data/scenarios/tutorial/utils.cfg:97
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, it heals 2 HP from resting. However, if an enemy attacks "
@@ -754,7 +743,7 @@ msgstr ""
 "repos. Par ailleurs, il y a des unités qui soignent les unités qui les "
 "entourent. La chaman elfe est une telle unité ; les unités à côté d'une "
 "chaman elfe regagnent 4 PV par tour. En dernier lieu, lorsque vous gagnez un "
-"niveau toutes vos unités sont soignées en totalité."
+"scénario toutes vos unités sont soignées en totalité."
 
 #: data/scenarios/tutorial/utils.cfg:101
 msgid "How do I know how to complete a scenario? Will you always tell me?"
@@ -763,7 +752,6 @@ msgstr ""
 "toujours ?"
 
 #: data/scenarios/tutorial/utils.cfg:101
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -777,11 +765,10 @@ msgstr ""
 "apparaissent après le dialogue d'ouverture. Ils peuvent être vus à nouveau "
 "en cliquant sur « Objectifs » dans le menu. Les objectifs du scénario sont "
 "une liste de conditions de victoire et de conditions de défaites, et si "
-"l'une ou l'autre est remplie, le niveau est fini. Espérons que ce soit une "
+"l'une ou l'autre est remplie, le scénario est fini. Espérons que ce soit une "
 "condition de victoire qui fut remplie."
 
 #: data/scenarios/tutorial/utils.cfg:102
-#, fuzzy
 msgid ""
 "When you win a scenario, all your units survive and are revived to full "
 "health, and you do not have to pay them for the remaining turns. Also, if "
@@ -837,7 +824,6 @@ msgid "What do traits do?"
 msgstr "Quelle influence ont les caractéristiques ?"
 
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "The function of traits is to add variety by making units of the same type "
 "different from each other. This is done by randomly assigning each unit "
@@ -853,7 +839,6 @@ msgstr ""
 "caractéristique elle-même."
 
 #: data/scenarios/tutorial/utils.cfg:112
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -862,7 +847,7 @@ msgid ""
 "different traits when they are recruited. Also, some races and units may "
 "have traits that are unique to them."
 msgstr ""
-"Il y a cinq caractéristiques différentes, qui présentent des effets allant "
+"Il y a quatre caractéristiques différentes, qui présentent des effets allant "
 "de l'augmentation du nombre de points de vie à la diminution du nombre de "
 "points d'expérience nécessaire pour progresser. Cependant toutes les "
 "caractéristiques sont conçues pour améliorer la puissance d'une unité ; il "
@@ -921,7 +906,6 @@ msgid "How do I get gold?"
 msgstr "Comment est-ce que je gagne de l'or ?"
 
 #: data/scenarios/tutorial/utils.cfg:121
-#, fuzzy
 msgid ""
 "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
 "of day: day, twilight, and night. During the day, units of the alignment "
@@ -930,9 +914,9 @@ msgid ""
 "their normal damage. Neutral units such as elves are unaffected by day and "
 "night."
 msgstr ""
-"Il existe 3 alignements : juste, neutre et chaotique. Il y a aussi 3 "
+"Il existe 3 alignements : loyal, neutre et chaotique. Il y a aussi 3 "
 "périodes dans la journée : le jour, le crépuscule et la nuit. Durant la "
-"journée, les unités d'alignement juste, comme les humains, font 25 % de "
+"journée, les unités d'alignement loyal, comme les humains, font 25 % de "
 "dégâts en plus, alors que les unités chaotiques, tels les morts-vivants, "
 "font 25 % en moins. De nuit, c'est l'inverse. Au crépuscule, toutes les "
 "unités font leurs dégâts normaux. Les unités neutres, tels les elfes, ne "
@@ -943,7 +927,6 @@ msgid "What are the different alignments and times of day?"
 msgstr "Quels sont les différents alignements et les périodes de la journée ?"
 
 #: data/scenarios/tutorial/utils.cfg:122
-#, fuzzy
 msgid ""
 "The times of day usually progress in a sequence: dawn- identical to "
 "twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
@@ -966,7 +949,6 @@ msgid "How do I know what time of day it is?"
 msgstr "Comment savoir quelle est la période de la journée actuelle ?"
 
 #: data/scenarios/tutorial/utils.cfg:126
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castles. However, the properties of most terrains are more "
@@ -992,7 +974,6 @@ msgid "What are the different properties that terrains have?"
 msgstr "Quelles sont les différentes propriétés des terrains ?"
 
 #: data/scenarios/tutorial/utils.cfg:127
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -1131,7 +1112,6 @@ msgid "What kind of objects am I likely to encounter?"
 msgstr "Quels types d'objets puis-je rencontrer ?"
 
 #: data/scenarios/tutorial/utils.cfg:143
-#, fuzzy
 msgid ""
 "The objects you encounter are put in by the scenario designer, so they vary "
 "from campaign to campaign. In Heir to the Throne, most objects give the unit "
@@ -1144,7 +1124,6 @@ msgstr ""
 "Cependant il n'y a généralement pas tant d'objets dans une campagne."
 
 #: data/scenarios/tutorial/utils.cfg:144
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However, "
 "a few objects, such as holy water, last only until the end of the scenario."
