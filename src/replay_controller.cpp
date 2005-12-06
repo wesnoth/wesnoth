@@ -142,6 +142,8 @@ void replay_controller::init(CVideo& video, const std::vector<config*>& story){
 	LOG_NG << "initializing display... " << (SDL_GetTicks() - ticks) << "\n";
 	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
 	gui_ = new display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_);
+	const config* replay_theme_cfg = theme_cfg->child("resolution")->child("replay");
+	gui_->get_theme().modify(replay_theme_cfg);
 	mouse_handler_.set_gui(gui_);
 	theme::set_known_themes(&game_config_);
 	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks) << "\n";
@@ -288,6 +290,7 @@ void replay_controller::show_help(){
 void replay_controller::reset_replay(){
 	is_playing_ = false;
 	current_turn_ = 1;
+	player_number_ = 1;
 	recorder.start_replay();
 	units_ = *(new unit_map(units_start_));
 	status_ = *(new gamestatus(status_start_));

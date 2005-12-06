@@ -22,6 +22,8 @@ class config;
 
 #include "SDL.h"
 
+typedef struct { size_t x1,y1,x2,y2; } _rect;
+
 class theme
 {
 
@@ -33,6 +35,12 @@ class theme
 
 		SDL_Rect& location(const SDL_Rect& screen) const;
 		const SDL_Rect& get_location(void) const;
+		const std::string& get_id() const;
+
+		//this supports relocating of theme elements ingame.
+		//It is needed for [change] tags in theme WML.
+		void modify_location(const _rect rect);
+		void modify_location(std::string rect_str, SDL_Rect rect_ref);
 
 		//all on-screen objects have 'anchoring' in the x and y dimensions
 		//'fixed' means that they have fixed co-ordinates and don't move
@@ -51,12 +59,14 @@ class theme
 
 		ANCHORING xanchor_, yanchor_;
 
+		std::string id_;
+
 		static ANCHORING read_anchor(const std::string& str);
 	};
 
 public:
 
-	class label : private object
+	class label : public object
 	{
 	public:
 		label();
@@ -79,7 +89,7 @@ public:
 		Uint32 font_rgb_;
 	};
 
-	class status_item : private object
+	class status_item : public object
 	{
 	public:
 
@@ -105,7 +115,7 @@ public:
 		Uint32 font_rgb_;
 	};
 
-	class panel : private object
+	class panel : public object
 	{
 	public:
 		explicit panel(const config& cfg);
@@ -118,7 +128,7 @@ public:
 		std::string image_;
 	};
 
-	class menu : private object
+	class menu : public object
 	{
 	public:
 		menu();
@@ -143,6 +153,7 @@ public:
 
 	explicit theme(const config& cfg, const SDL_Rect& screen);
 	bool set_resolution(const SDL_Rect& screen);
+	void modify(const config* cfg);
 
 	const std::vector<panel>& panels() const;
 	const std::vector<label>& labels() const;
@@ -156,10 +167,15 @@ public:
 	const SDL_Rect& mini_map_location(const SDL_Rect& screen) const;
 	const SDL_Rect& unit_image_location(const SDL_Rect& screen) const;
 
-        static void set_known_themes(const config* cfg);
-        static std::vector<std::string> get_known_themes();
+    static void set_known_themes(const config* cfg);
+    static std::vector<std::string> get_known_themes();
 
 private:
+	theme::object& find_element(std::string id);
+	theme::object& add_object(const config& cfg);
+	void remove_object(std::string id);
+	void set_object_location(theme::object& element, std::string rect_str, std::string ref_id);
+
 	static std::map<std::string, config> known_themes;
         std::string cur_theme;
         config cfg_;

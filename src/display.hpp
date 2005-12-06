@@ -324,7 +324,7 @@ public:
 	size_t viewing_team() const;
 	size_t playing_team() const;
 
-	const theme& get_theme() const;
+	theme& get_theme();
 
 	const theme::menu* menu_pressed();
 

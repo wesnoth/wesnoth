@@ -36,7 +36,6 @@ namespace {
 	const size_t DefaultFontSize = font::SIZE_NORMAL;
         const Uint32 DefaultFontRGB = 0x00C8C8C8;
 
-	typedef struct { size_t x1,y1,x2,y2; } _rect;
 	_rect ref_rect = { 0, 0, 0, 0 };
 
 	size_t compute(std::string expr, size_t ref1, size_t ref2=0 ) {
@@ -264,7 +263,8 @@ theme::object::object() : loc_(empty_rect), relative_loc_(empty_rect),
 {}
 
 theme::object::object(const config& cfg)
-                   : loc_(read_sdl_rect(cfg)), relative_loc_(empty_rect),
+                   : id_(cfg["id"]), 
+					 loc_(read_sdl_rect(cfg)), relative_loc_(empty_rect),
 				     last_screen_(empty_rect),
                      xanchor_(read_anchor(cfg["xanchor"])),
 					 yanchor_(read_anchor(cfg["yanchor"]))
@@ -332,6 +332,10 @@ const SDL_Rect& theme::object::get_location(void) const
 	return loc_;
 }
 
+const std::string& theme::object::get_id() const{
+	return id_;
+}
+
 theme::object::ANCHORING theme::object::read_anchor(const std::string& str)
 {
 	static const std::string top_anchor = "top", left_anchor = "left",
@@ -345,6 +349,31 @@ theme::object::ANCHORING theme::object::read_anchor(const std::string& str)
 		return PROPORTIONAL;
 	else
 		return FIXED;
+}
+
+void theme::object::modify_location(const _rect rect){
+	loc_.x = rect.x1;
+	loc_.y = rect.y1;
+	loc_.w = rect.x2 - rect.x1;
+	loc_.h = rect.y2 - rect.y1;
+}
+
+void theme::object::modify_location(std::string rect_str, SDL_Rect ref_rect){
+	_rect rect = { 0, 0, 0, 0 };
+	const std::vector<std::string> items = utils::split(rect_str.c_str());
+	if(items.size() >= 1) {
+		rect.x1 = compute(items[0], ref_rect.x, ref_rect.x + ref_rect.w);
+	}
+	if(items.size() >= 2) {
+		rect.y1 = compute(items[1], ref_rect.y, ref_rect.y + ref_rect.h);
+	}
+	if(items.size() >= 3) {
+		rect.x2 = compute(items[2], ref_rect.x + ref_rect.w, rect.x1);
+	}
+	if(items.size() >= 4) {
+		rect.y2 = compute(items[3], ref_rect.y + ref_rect.h, rect.y1);
+	}
+	modify_location(rect);
 }
 
 theme::label::label()
@@ -555,19 +584,24 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	menus_.clear();
 
 	const config& cfg = **current;
+	add_object(cfg);
+
+	return result;
+}
+
+theme::object& theme::add_object(const config& cfg){
+	theme::object& result = *(new theme::object());
 
 	const config* const main_map_cfg = cfg.child("main_map");
 	if(main_map_cfg != NULL) {
 		main_map_ = object(*main_map_cfg);
-	} else {
-		main_map_ = object();
+		result = main_map_;
 	}
 
 	const config* const mini_map_cfg = cfg.child("mini_map");
 	if(mini_map_cfg != NULL) {
 		mini_map_ = object(*mini_map_cfg);
-	} else {
-		mini_map_ = object();
+		result = mini_map_;
 	}
 
 	const config* const status_cfg = cfg.child("status");
@@ -583,31 +617,123 @@ bool theme::set_resolution(const SDL_Rect& screen)
 		} else {
 			unit_image_ = object();
 		}
+		result = unit_image_;
 	}
 
 	const config::child_list& panel_list = cfg.get_children("panel");
 	for(config::child_list::const_iterator p = panel_list.begin(); p != panel_list.end(); ++p) {
-		panels_.push_back(panel(**p));
+		panel new_panel(**p);
+		set_object_location(new_panel, (**p)["rect"], (**p)["ref"]);
+		panels_.push_back(new_panel);
+		result = new_panel;
 	}
 
 	const config::child_list& label_list = cfg.get_children("label");
 	for(config::child_list::const_iterator lb = label_list.begin(); lb != label_list.end(); ++lb) {
-		labels_.push_back(label(**lb));
+		label new_label(**lb);
+		set_object_location(new_label, (**lb)["rect"], (**lb)["ref"]);
+		labels_.push_back(new_label);
+		result = new_label;
 	}
 
 	const config::child_list& menu_list = cfg.get_children("menu");
 	for(config::child_list::const_iterator m = menu_list.begin(); m != menu_list.end(); ++m) {
-		const menu new_menu(**m);
+		menu new_menu(**m);
 		LOG_DP << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
 		if(new_menu.is_context())
 			context_ = new_menu;
-		else
+		else{
+			set_object_location(new_menu, (**m)["rect"], (**m)["ref"]);
 			menus_.push_back(new_menu);
+		}
 
 		LOG_DP << "done adding menu...\n";
+		result = new_menu;
 	}
-
+	
 	return result;
+}
+
+void theme::remove_object(std::string id){
+	for(std::vector<theme::panel>::iterator p = panels_.begin(); p != panels_.end(); ++p) {
+		if (p->get_id() == id){
+			panels_.erase(p);
+			return;
+		}
+	}
+	for(std::vector<theme::label>::iterator l = labels_.begin(); l != labels_.end(); ++l) {
+		if (l->get_id() == id){
+			labels_.erase(l);
+			return;
+		}
+	}
+	for(std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m) {
+		if (m->get_id() == id){
+			menus_.erase(m);
+			return;
+		}
+	}
+}
+
+void theme::set_object_location(theme::object& element, std::string rect_str, std::string ref_id){
+	theme::object& ref_element = *(new object());
+	if (ref_id.empty()) { 
+		ref_id = element.get_id();
+		ref_element = element; 
+	}
+	else {
+		ref_element = find_element(ref_id);
+	}
+	if (ref_element.get_id() == ref_id){
+		SDL_Rect ref_rect = ref_element.get_location();
+		element.modify_location(rect_str, ref_rect);
+	}
+}
+
+void theme::modify(const config* cfg){
+	{
+		//changes to existing theme objects
+		const config::child_list& c = cfg->get_children("change");
+		for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {
+			std::string id = (**j)["id"];
+			std::string ref_id = (**j)["ref"];
+			theme::object& element = find_element(id);
+			if (element.get_id() == id){
+				set_object_location(element, (**j)["rect"], ref_id);
+			}
+		}
+	}
+	//adding new theme objects
+	{
+		const config::child_list& c = cfg->get_children("add");
+		for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {
+			add_object(**j);
+		}
+	}
+	//removing existent theme objects
+	{
+		const config::child_list& c = cfg->get_children("remove");
+		for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {
+			remove_object((**j)["id"]);
+		}
+	}
+}
+
+theme::object& theme::find_element(std::string id){
+	theme::object* res = new theme::object();
+	for (std::vector<theme::panel>::iterator p = panels_.begin(); p != panels_.end(); ++p){
+		if (p->get_id() == id) { res = p; }
+	}
+	for (std::vector<theme::label>::iterator l = labels_.begin(); l != labels_.end(); ++l){
+		if (l->get_id() == id) { res = l; }
+	}
+	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m){
+		if (m->get_id() == id) { res = m; }
+	}
+	if (id == "main-map") { res = &main_map_; }
+	if (id == "mini-map") { res = &mini_map_; }
+	if (id == "unit-image") { res = &unit_image_; }
+	return *res;
 }
 
 const std::vector<theme::panel>& theme::panels() const

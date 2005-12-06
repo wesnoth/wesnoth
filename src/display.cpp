@@ -2257,7 +2257,7 @@ size_t display::playing_team() const
 	return activeTeam_;
 }
 
-const theme& display::get_theme() const
+theme& display::get_theme()
 {
 	return theme_;
 }
