@@ -45,12 +45,14 @@ sub filelabel {
 
   # 3: big groups
 
-  if ($file =~ m!^(array|astarnode|config|filesystem|game_config|game_errors|gettext|global|language|log|map|pathfind|pathutils|race|random|serialization|scoped_resource|terrain|thread|tstring|unit|unit_types|util|variable|wassert|wml_separators|(.*/xcoll))$!) {
+  if ($file =~ m!^(array|astarnode|config|filesystem|game_config|game_errors|gettext|global|language|log|map|mapgen|pathfind|pathutils|preferences|race|random|serialization|scoped_resource|terrain|thread|tstring|unit|unit_types|util|variable|wassert|wml_separators|(.*/xcoll))$!) {
     $file='core';
-  } elsif ($file =~ m!^(clipboard|cursor|font|image|sdl_utils|tooltips|video)$!) {
+  } elsif ($file =~ m!^(animated|clipboard|cursor|font|halo|image|sdl_utils|tooltips|video)$!) {
     $file='graphics';
-  } elsif ($file =~ m!^(about|builder|display|events|preferences|show_dialog|sound|theme|widgets)$!) {
+  } elsif ($file =~ m!^(builder|display|events|key|theme|widgets)$!) {
     $file='uicore';
+  } elsif ($file =~ m!^(about|hotkeys|preferences_display|show_dialog)$!) {
+    $file='ui';
   } elsif ($file =~ m!^(ai|game|help|multiplayer|titlescreen)$!) {
     $file='gameclient';
   } elsif ($file =~ m!^(campaign_server|editor|server|tools)/.*!) {
@@ -72,10 +74,12 @@ sub defaultcolors {
 		core          => 'steelblue3',
 		graphics      => 'peachpuff',
 		uicore        => 'lavenderblush',
+		ui            => 'pink',
 
 		gameclient    => 'yellow',
 		editor        => 'cyan',
-		server        => 'pink',
+		server        => 'magenta',
+		tools         => 'lightgrey',
 	       };
   return @colors;
 }
