@@ -722,13 +722,13 @@ void theme::modify(const config* cfg){
 theme::object& theme::find_element(std::string id){
 	theme::object* res = new theme::object();
 	for (std::vector<theme::panel>::iterator p = panels_.begin(); p != panels_.end(); ++p){
-		if (p->get_id() == id) { res = p; }
+		if (p->get_id() == id) { res = (theme::object*) p; }
 	}
 	for (std::vector<theme::label>::iterator l = labels_.begin(); l != labels_.end(); ++l){
-		if (l->get_id() == id) { res = l; }
+		if (l->get_id() == id) { res = (theme::object*) l; }
 	}
 	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m){
-		if (m->get_id() == id) { res = m; }
+		if (m->get_id() == id) { res = (theme::object*) m; }
 	}
 	if (id == "main-map") { res = &main_map_; }
 	if (id == "mini-map") { res = &mini_map_; }
