@@ -29,6 +29,8 @@ public:
 	static PyObject* wrapper_get_current_team(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_src_dst(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_dst_src(PyObject* self, PyObject* args);
+	static PyObject* wrapper_get_enemy_src_dst(PyObject* self, PyObject* args);
+	static PyObject* wrapper_get_enemy_dst_src(PyObject* self, PyObject* args);
 	static PyObject* wrapper_move_unit(PyObject* self, PyObject* args);
 	static PyObject* wrapper_attack_unit(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_adjacent_tiles(PyObject* self, PyObject* args);
@@ -47,6 +49,9 @@ protected:
 	ai_interface::move_map src_dst_;
 	ai_interface::move_map dst_src_;
 	std::map<location,paths> possible_moves_;
+	ai_interface::move_map enemy_src_dst_;
+	ai_interface::move_map enemy_dst_src_;
+	std::map<location,paths> enemy_possible_moves_;
 };
 
 

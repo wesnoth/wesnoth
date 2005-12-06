@@ -907,6 +907,16 @@ PyObject* python_ai::wrapper_get_dst_src(PyObject* self, PyObject* args)
 	return wrap_move_map(running_instance->dst_src_);
 }
 
+PyObject* python_ai::wrapper_get_enemy_src_dst(PyObject* self, PyObject* args)
+{
+	return wrap_move_map(running_instance->enemy_src_dst_);
+}
+
+PyObject* python_ai::wrapper_get_enemy_dst_src(PyObject* self, PyObject* args)
+{
+	return wrap_move_map(running_instance->enemy_dst_src_);
+}
+
 PyObject* python_ai::wrapper_move_unit(PyObject* self, PyObject* args)
 {
 	wesnoth_location* from;
@@ -916,6 +926,7 @@ PyObject* python_ai::wrapper_move_unit(PyObject* self, PyObject* args)
 
 	PyObject* loc = wrap_location(running_instance->move_unit_partial(*from->location_,*to->location_,running_instance->possible_moves_));
 	running_instance->calculate_possible_moves(running_instance->possible_moves_,running_instance->src_dst_,running_instance->dst_src_,false);
+	running_instance->calculate_possible_moves(running_instance->enemy_possible_moves_,running_instance->enemy_src_dst_,running_instance->enemy_dst_src_,true);
 	return loc;
 }
 
@@ -929,6 +940,7 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* self, PyObject* args)
 
 	running_instance->attack_enemy(*from->location_,*to->location_,weapon);
 	running_instance->calculate_possible_moves(running_instance->possible_moves_,running_instance->src_dst_,running_instance->dst_src_,false);
+	running_instance->calculate_possible_moves(running_instance->enemy_possible_moves_,running_instance->enemy_src_dst_,running_instance->enemy_dst_src_,true);
 
 	Py_INCREF(Py_None);
 	return Py_None;
