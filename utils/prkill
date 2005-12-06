@@ -192,7 +192,7 @@ L<wesnoth>, F<http://www.wesnoth.org/>
 =cut
 
 use strict;
-($main::VERSION) = ('$Revision: 1.11 $' =~ /[^\d\.]*([\d\.]*)/);
+($main::VERSION) = ('$Revision: 1.12 $' =~ /[^\d\.]*([\d\.]*)/);
 
 use Getopt::Std;
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
@@ -236,6 +236,8 @@ my ($hpa,$dmga,$pa,$swa) = ($opt_h,$opt_d,$opt_p,$opt_n);
 my ($hpb,$dmgb,$pb,$swb) = ($opt_H,$opt_D,$opt_P,$opt_N);
 my $hpma = $opt_m ? $opt_m : $opt_h;
 my $hpmb = $opt_M ? $opt_M : $opt_H;
+$dmga = 1 if $dmga < 1;
+$dmgb = 1 if $dmgb < 1;
 my $dra = $opt_r ? int ($dmga / 2) : 0;
 my $drb = $opt_R ? int ($dmgb / 2) : 0;
 
@@ -257,6 +259,9 @@ sub a_swings { # is this A's swing?
 
 my $th = 0.9999995;
 my @P;
+# chunkiness of possible hitpoint values if no drain
+my $hpa_modb = ($dra ? -1 : $hpa % $dmgb); # note: dmgb != 0
+my $hpb_moda = ($drb ? -1 : $hpb % $dmga); # note: dmga != 0
 my $adf; # intersect y-axis first: A dies first
 my $bdf; # intersect x-axis first: B dies first
 my $hpt = $hpa + $hpb; # total initial hitpoints
@@ -299,9 +304,11 @@ sub print_state {
     foreach my $jj ( 0..$k ) {
 	my $j = $k - $jj;
 	my $t = $j - 1;
+	next if $drb == 0 and $j % $dmga != $hpb_moda;
 	printf "%2d | ", $j;
 	foreach my $i ( 0..$l ) {
 	    ++$t; # invariant: $t == $i + $j
+	    next if $dra == 0 and $i % $dmgb != $hpa_modb;
 	    last if ($t > $hpt)
 		or ($i > 0 and $j + $t > $kf)
 		or ($j > 0 and $i + $t > $lf);
@@ -318,7 +325,9 @@ sub print_state {
 	print "\n";
     }
     print "   |";
-    foreach my $i ( 0..$l ) { printf " %4d", $i }
+    foreach my $i ( 0..$l ) {
+	printf " %4d", $i unless $dra == 0 and $i % $dmgb != $hpa_modb;
+    }
     print "\n";
 
     if ($bdf) {
@@ -381,9 +390,12 @@ foreach my $s ( 1..$swt ) {
 	foreach my $i ( 1..($t-1) ) {
 	    --$j;
 	    # invariant: $t == $i + $j
-	    # skip computing if this point is unreachable
+	    # skip computing if this point is unreachable: outside region
 	    next if $j > $kft;
 	    next if $i > $lft;
+	    # skip if unreachable: chunkiness of hitpoints
+	    next if ($dra == 0 and $i % $dmgb != $hpa_modb)
+		or ($drb == 0 and $j % $dmga != $hpb_moda);
 	    my $pij = $P[$i][$j];
 	    if ($a) {
 		# check if this point is in 1-swing kill zone of A
