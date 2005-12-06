@@ -1643,13 +1643,14 @@ void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_ty
 
 	const int res = dialog_type == gui::NULL_DIALOG ? 0 : dialogs::get_save_name(gui_,message,_("Name:"),&label,dialog_type);
 
-	if(std::count_if(label.begin(),label.end(),is_illegal_file_char)) {
-		gui::show_dialog(gui_,NULL,_("Error"),_("Save names may not contain colons, slashes, or backslashes. Please choose a different name."),gui::OK_ONLY);
-		save_game(message,dialog_type);
-		return;
-	}
-
 	if(res == 0) {
+
+		if(std::count_if(label.begin(),label.end(),is_illegal_file_char)) {
+			gui::show_dialog(gui_,NULL,_("Error"),_("Save names may not contain colons, slashes, or backslashes. Please choose a different name."),gui::OK_ONLY);
+			save_game(message,dialog_type);
+			return;
+		}
+
 		config snapshot;
 		write_game_snapshot(snapshot);
 		try {
