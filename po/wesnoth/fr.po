@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-05 10:42+0100\n"
-"PO-Revision-Date: 2005-11-26 18:18+0100\n"
+"PO-Revision-Date: 2005-12-05 20:09+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: Language fr <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -141,7 +141,6 @@ msgstr ""
 "ardu, vous pourriez commencer en mode <italic>text=Facile</italic>."
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -150,9 +149,9 @@ msgid ""
 msgstr ""
 "Pendant le jeu, gardez à l'esprit que si vous glissez le curseur sur les "
 "différents éléments du jeu, comme les informations affichées dans le panneau "
-"d'état sur la droite, une brève description apparaîtra expliquant l'élément. "
-"Cela est particulièrement utile lorsque vous rencontrez une nouvelle "
-"<ref>dst=abilities text=capacité</ref> pour la première fois."
+"d'état sur la droite, une brève description apparaîtra expliquant chaque "
+"élément. Cela est particulièrement utile lorsque vous rencontrez une "
+"nouvelle <ref>dst=abilities text=capacité</ref> pour la première fois."
 
 #: data/help.cfg:79
 msgid "About the Game"
@@ -473,7 +472,6 @@ msgid "Shroud and Fog of War"
 msgstr "Voile et brouillard de guerre"
 
 #: data/help.cfg:138
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -485,17 +483,17 @@ msgid ""
 "locations adjacent to those within one turn's move (ignoring zones of "
 "control and enemy units)."
 msgstr ""
-"Pendant le jeu, certaines parties de la carte du scénario vous seront "
-"cachées. Il y a deux effets qui peuvent être utilisés ensemble ou "
-"séparemment. Le voile vous cachera à la fois le terrain et les unités "
-"ennemies. Cependant dès qu'une zone est découverte, vous pouvez toujours la "
-"voir. Le brouillard de guerre cache seulement les unités et le possesseur "
-"d'un village (autre que vous ou vos alliés). Le brouillard de guerre "
-"disparaît temporairement lorsque vous avez une unité dans les parages, mais "
-"réapparaît dès que celle-ci s'en va. Le voile et le brouillard de guerre "
-"sont toutes deux mises à jour par les unités. Chaque unité va mettre à jour "
-"une zone pendant un déplacement (ignorant les zones de contrôle ainsi que "
-"les unités ennemies) ainsi que les zones adjacentes."
+"Dans certains scénarios, certaines parties de la carte vous seront cachées. "
+"Il y a deux effets qui peuvent être utilisés ensemble ou séparemment. Le "
+"voile cache à la fois le terrain et les unités ennemies. Cependant dès "
+"qu'une zone est découverte, vous pouvez toujours la voir. Le brouillard de "
+"guerre cache seulement les unités et le possesseur d'un village (autre que "
+"vous ou vos alliés). Le brouillard de guerre disparaît temporairement "
+"lorsque vous avez des unités dans les parages, mais réapparaît dès que "
+"celles-ci s'en vont. Le voile et le brouillard de guerre sont toutes deux "
+"mises à jour par les unités. Chaque unité va mettre à jour les zones "
+"adjacentes pendant un déplacement (ignorant les zones de contrôle ainsi que "
+"les unités ennemies)"
 
 #: data/help.cfg:143
 msgid "Combat"
@@ -727,7 +725,6 @@ msgid "Time of Day"
 msgstr "Moment de la journée"
 
 #: data/help.cfg:181
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -826,7 +823,6 @@ msgstr ""
 # FIXME: 
 # blurgk: After Maximum Level Advancement -> amélioration post-niveau maximum ?
 #: data/help.cfg:201
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -845,8 +841,8 @@ msgstr ""
 "Bien que la plupart des unités aient trois niveaux, ce n'est pas le cas pour "
 "toutes. Certaines unités (comme les <ref>dst=unit_Mage text=Mages</ref>) "
 "peuvent en avoir quatre. Une fois qu'une unité a atteint son niveau maximum, "
-"elle peut avoir une amélioration post-niveau maximum (APNM).\n"
-"L'APNM modifiera l'unité à chaque fois que l'unité atteindra le palier "
+"elle peut avoir une amélioration post-niveau maximum (APNM). L'APNM "
+"modifiera l'unité à chaque fois que l'unité atteindra le palier "
 "d'expérience, mais l'unité restera au même niveau. Généralement, l'effet de "
 "l'APNM pour l'unité est d'augmenter le nombre de PV maximum de 3 points tous "
 "les 100 points d'XP gagnés. Notez que seul un petit nombre d'unités, comme "
@@ -919,7 +915,6 @@ msgstr ""
 "adjacentes à l'unité soignante et jusqu'à 4 PV par unité."
 
 #: data/help.cfg:213
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -928,7 +923,7 @@ msgid ""
 "the same side as the healing unit, and only up to 8HP per unit."
 msgstr ""
 "\n"
-"Pouvoir de guérison : Les unités avec la capacité de <ref>dst=ability_cures "
+"Unités guérisseuses : Les unités avec la capacité de <ref>dst=ability_cures "
 "text=Guérison</ref> soigneront jusqu'à 18 PV de dégâts par tour, et "
 "guériront de l'empoisonnement. Seules seront soignées ou guéries les unités "
 "alliées adjacentes à l'unité guérisseuse, et jusqu'à 8 PV par unité."
@@ -1938,9 +1933,8 @@ msgstr ""
 "le prendre !"
 
 #: data/items.cfg:816
-#, fuzzy
 msgid "Zap"
-msgstr "Zap~"
+msgstr "Zap"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -2666,15 +2660,14 @@ msgstr ""
 "différents types d'attaques."
 
 #: data/tips.cfg:4
-#, fuzzy
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
 "selected unit in the currently selected terrain is displayed in the top "
 "right corner of the screen."
 msgstr ""
-"Le terrain sur lequel se trouvent vos unités détermine la probabilité qu'ont "
-"vos adversaires de vous toucher au cours du combat. Le taux de défense d'une "
+"Le terrain qu'occupent vos unités détermine la probabilité qu'ont vos "
+"adversaires de vous toucher au cours du combat. Le taux de défense d'une "
 "unité sélectionnée sur le terrain sélectionné est affiché en haut à droite "
 "de l'écran."
 
@@ -2691,7 +2684,6 @@ msgstr ""
 "plaçant dans un village ou à côté d'une unité ayant la compétence « soin »."
 
 #: data/tips.cfg:6
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -2982,7 +2974,6 @@ msgid "Hard"
 msgstr "Difficile"
 
 #: data/translations/english.cfg:9
-#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -3003,7 +2994,6 @@ msgstr ""
 "battent aussi bien de jour que de nuit."
 
 #: data/translations/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -3039,7 +3029,6 @@ msgid "ambush"
 msgstr "embuscade"
 
 #: data/translations/english.cfg:31
-#, fuzzy
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -3058,7 +3047,7 @@ msgstr ""
 "bataille.\n"
 "\n"
 "Cette unité soignera toutes les unités alliées blessées sur les cases "
-"adjacentes en début de tour.\n"
+"adjacentes en début de chaque tour.\n"
 "Une unité ainsi soignée pourra retrouver jusqu'à 8 points de vie par tour.\n"
 "Un soigneur pourra traiter jusqu'à 18 points de vie par tour, pour "
 "l'ensemble des unités soignées.\n"
@@ -3074,7 +3063,6 @@ msgid "cures"
 msgstr "soin"
 
 #: data/translations/english.cfg:40
-#, fuzzy
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -3086,7 +3074,8 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "Guérison :\n"
-"Permet à cette unité de guérir les unités adjacentes en début de tour.\n"
+"Permet à cette unité de guérir les unités adjacentes au début de chaque "
+"tour.\n"
 "\n"
 "Une unité ainsi soignée pourra retrouver jusqu'à 4 points de vie par tour.\n"
 "Un soigneur pourra traiter jusqu'à 8 points de vie par tour, pour l'ensemble "
@@ -3204,7 +3193,6 @@ msgid "regenerates"
 msgstr "régénération"
 
 #: data/translations/english.cfg:76
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -3214,7 +3202,7 @@ msgstr ""
 "Tirailleur :\n"
 "Cette unité est très habile pour aller rapidement derrière les lignes "
 "ennemies et ignore les zones de contrôle ennemies. (Exception : si vous vous "
-"arrêtez dans une zone de contrôme ennemie, les compteur de vos déplacements "
+"arrêtez dans une zone de contrôle ennemie, le compteur de vos déplacements "
 "possibles sera remis à zéro même si vous êtes un tirailleur)"
 
 # FIXME: Skirmisher = tirailleur??
@@ -3259,7 +3247,6 @@ msgid "teleport"
 msgstr "téléportation"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -4002,7 +3989,6 @@ msgid "Bone Shooter"
 msgstr "Décocheur d'os"
 
 #: data/units/Bone_Shooter.cfg:21
-#, fuzzy
 msgid ""
 "Of a necromancer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -4343,9 +4329,8 @@ msgstr ""
 "toujours une grande chance de toucher un adversaire."
 
 #: data/units/Dark_Adept.cfg:33 data/units/Dark_Adept.cfg:126
-#, fuzzy
 msgid "shadow wave"
-msgstr "bousculade"
+msgstr "onde obscure"
 
 #: data/units/Dark_Adept.cfg:97
 msgid "female^Dark Adept"
@@ -5153,7 +5138,6 @@ msgstr "Nain indéfectible"
 
 # XXX "des restes" ? Pas convaincu.
 #: data/units/Dwarvish_Stalwart.cfg:30
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -5459,7 +5443,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Enchanteresse elfe"
 
 #: data/units/Elvish_Enchantress.cfg:35
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
@@ -5613,7 +5596,6 @@ msgid "Elvish Marshal"
 msgstr "Maréchal elfe"
 
 #: data/units/Elvish_Marshal.cfg:39
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -5698,7 +5680,6 @@ msgid "Elvish Rider"
 msgstr "Cavalier elfe"
 
 #: data/units/Elvish_Rider.cfg:38
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal to any man. Though this certainly leaves people in "
@@ -5830,7 +5811,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Sorcière elfe"
 
 #: data/units/Elvish_Sorceress.cfg:35
-#, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
@@ -5841,8 +5821,8 @@ msgstr ""
 "Abandonnant l'étude de la guérison en faveur d'une utilisation plus "
 "agressive de la magie, les sorcières elfes sont devenues très efficaces au "
 "combat à distance. Leur attaque enchevêtrante est largement plus efficace "
-"qu'avant, et elles peuvent invoquer des rafales glacées de vent éthéré afin "
-"de frapper ceux qui s'opposent à elles."
+"que celle des Shaman elfes, et elles peuvent invoquer des rafales glacées de "
+"vent éthéré afin de frapper ceux qui s'opposent à elles."
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
@@ -5990,7 +5970,6 @@ msgid "Galleon"
 msgstr "Galion"
 
 #: data/units/Galleon.cfg:17
-#, fuzzy
 msgid ""
 "Even people happily living in their homes eventually need some kind of "
 "transport through the seas, even if only to go fishing or to trade goods. "
@@ -6496,14 +6475,13 @@ msgid "Horse Lord"
 msgstr "Seigneur à cheval"
 
 #: data/units/Horse_Lord.cfg:24
-#, fuzzy
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
 "enemies, and their morning star crushes those who are left."
 msgstr ""
-"Parmi les meilleurs des hommes des plaines, ces chevaliers à cheval sont à "
-"là tête de leurs clans, et respectés de tous, amis comme ennemis. Leur épée "
+"Parmi les meilleurs des hommes des plaines, les Seigneurs à cheval sont à là "
+"tête de leurs clans, et respectés de tous, amis comme ennemis. Leur épée "
 "peut tuer la plupart des ennemis ordinaires, et leur morgenstern écrase ceux "
 "qui restent."
 
@@ -6920,7 +6898,6 @@ msgid "Master at Arms"
 msgstr "Maître d'armes"
 
 #: data/units/Master_at_Arms.cfg:22
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -6943,7 +6920,7 @@ msgstr ""
 "ces messieurs ont les manières des vrais aristocrates et sont remarqués par "
 "bien des jeunes filles de haute naissance.\n"
 "\n"
-"Ils peuvent souvent s'offrir le luxe de choisir leurs contrats, et sont "
+"Ils s'offrent habituellement le luxe de choisir leurs contrats, et sont "
 "libres de battre la campagne si l'envie leur prenait. Plus souvent, ils "
 "choisiront de devenir capitaines des gardes d'un château ou d'enseigner dans "
 "une académie militaire, des postes où leur nature flamboyante est bien "
@@ -7292,7 +7269,6 @@ msgid "Mounted Fighter"
 msgstr "Combattant monté"
 
 #: data/units/Mounted_Fighter.cfg:24
-#, fuzzy
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -7595,7 +7571,6 @@ msgid "Orcish Assassin"
 msgstr "Assassin orc"
 
 #: data/units/Orcish_Assassin.cfg:25
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -7608,7 +7583,7 @@ msgid ""
 "in town or by a healer."
 msgstr ""
 "Bien que certains considèrent lâche l'utilisation du poison, c'est une arme "
-"qui a la faveur des orcs - particulièrement des moins solides d'entre eux. "
+"qui a la faveur des orcs, particulièrement des moins solides d'entre eux. "
 "Les assassins orcs, qui l'utilisent sur les couteaux qu'ils lancent, sont "
 "plutôt fragiles, mais étonnamment agiles. Ceux qu'ils visent meurent "
 "rarement, mais leurs tactiques sont d'une grande aide à leurs semblables "
@@ -7771,7 +7746,6 @@ msgid "Orcish Slayer"
 msgstr "Massacreur orc"
 
 #: data/units/Orcish_Slayer.cfg:26
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -7787,8 +7761,9 @@ msgstr ""
 "'Massacreurs' par leurs ennemis, bien que la distinction ne soit pas très "
 "claire. Les massacreurs sont rapides sur leurs pieds, et assez agiles en "
 "combat, bien qu'ils soient forcés de renoncer à toute armure pour cela. Leur "
-"choix d'arme, le poison, est un outil vicieux, et son utilisation sur le "
-"champ de bataille est souvent la réelle cause de la suprématie de orcs.\n"
+"arme de prédilection, le poison, est un outil vicieux, et son utilisation "
+"sur le champ de bataille est souvent la réelle cause de la suprématie de "
+"orcs.\n"
 "\n"
 "Remarque : les Tueurs Orcs utilisent le poison sur leurs couteaux de lancer, "
 "et les victimes de ce poison subiront continuellement des dégâts jusqu'à ce "
@@ -8405,7 +8380,6 @@ msgid "Silver Mage"
 msgstr "Mage d'argent"
 
 #: data/units/Silver_Mage.cfg:28
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -9701,9 +9675,9 @@ msgid "Get More Campaigns..."
 msgstr "Récupérer d'autres campagnes..."
 
 #: src/game.cpp:746
-#, fuzzy
 msgid "Download more campaigns from an Internet server."
-msgstr "Télécharger des campagnes supplémentaires sur Internet."
+msgstr ""
+"Télécharger des campagnes supplémentaires à partir d'un serveur internet."
 
 # retour à la ligne nécessaire
 #: src/game.cpp:756
@@ -10024,22 +9998,20 @@ msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Le terrain avec le meilleur modificateur est choisi automatiquement."
 
 #: src/help.cpp:1317
-#, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
 msgstr ""
 "Ce terrain se comporte comme un donjon, c'est-à-dire que vous pouvez "
-"recruter des unités quand un chef est dessus."
+"recruter des unités quand un chef y est placé."
 
 #: src/help.cpp:1319
-#, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
-"Ce terrain se comporte comme un château, c'est-à-dire que vous pouvez "
-"recruter des unités sur cette case."
+"Ce terrain se comporte comme un château, c'est-à-dire que les unités "
+"recrutées peuvent apparaître sur ce terrain."
 
 #: src/help.cpp:1321
 msgid "This terrain gives healing."
@@ -10277,9 +10249,8 @@ msgid "Settings..."
 msgstr "Paramètres..."
 
 #: src/multiplayer_create.cpp:95
-#, fuzzy
 msgid "The maximum number of turns the game can last"
-msgstr "Nombre maximal de tours pour la partie"
+msgstr "Nombre maximal de tours que la partie peut durer"
 
 #: src/multiplayer_create.cpp:100
 msgid "The amount of income each village yields per turn"
@@ -10583,7 +10554,6 @@ msgid "Scenario Report"
 msgstr "Résultats du scénario"
 
 #: src/playlevel.cpp:709
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -10870,7 +10840,6 @@ msgid "invisible: "
 msgstr "invisible : "
 
 #: src/reports.cpp:139
-#, fuzzy
 msgid ""
 "This unit has been slowed. It emits no zone of control, moves at half speed "
 "and enemies will be able to strike earlier once during a fight."
@@ -10922,9 +10891,8 @@ msgid "weapon range: "
 msgstr ""
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "damage type: "
-msgstr "dégâts"
+msgstr "type de dégâts :"
 
 #: src/reports.cpp:310
 msgid "Lawful units: "
