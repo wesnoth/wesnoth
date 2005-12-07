@@ -16,8 +16,10 @@
 
 //for windows compilers
 #ifdef __MSVCRT__
+#ifndef __GNUC__
 	#undef snprintf
 	#define snprintf _snprintf
+#endif
 #endif
 
 #ifdef _MSC_VER
