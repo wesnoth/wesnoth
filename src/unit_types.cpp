@@ -151,7 +151,7 @@ attack_type::attack_type(const config& cfg)
 
 	if(animation_.empty()) {
 		animation_.push_back(unit_animation(cfg));
-		LOG_STREAM(err, config) << "the animation for " << id() << "is directly in the attack, pleas use [animation]\n" ;
+		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "is directly in the attack, please use [animation]\n" ;
 	}
 
 	id_ = cfg["name"];
