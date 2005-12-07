@@ -149,9 +149,11 @@ attack_type::attack_type(const config& cfg)
 		}
 	}
 
+	if(cfg.child("frame") || cfg.child("missile_frame") || cfg.child("sound")) {
+		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << " is directly in the attack, please use [animation]\n" ;
+	}
 	if(animation_.empty()) {
 		animation_.push_back(unit_animation(cfg));
-		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "is directly in the attack, please use [animation]\n" ;
 	}
 
 	id_ = cfg["name"];
