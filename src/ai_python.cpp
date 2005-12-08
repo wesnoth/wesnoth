@@ -1001,20 +1001,20 @@ PyObject* python_ai::wrapper_unit_find_path( wesnoth_unit* unit, PyObject* args 
 }
 
 static PyMethodDef wesnoth_python_methods[] = {
-	{ "log_message",		python_ai::wrapper_log_message,			METH_VARARGS},
-	{ "get_units",			python_ai::wrapper_get_units,			METH_VARARGS},
-	{ "get_location",		python_ai::wrapper_get_location,		METH_VARARGS},
-	{ "get_map",			python_ai::wrapper_get_map,				METH_VARARGS},
-	{ "get_teams",			python_ai::wrapper_get_teams,			METH_VARARGS},
-	{ "get_current_team",	python_ai::wrapper_get_current_team,	METH_VARARGS},
-	{ "get_src_dst",		python_ai::wrapper_get_src_dst,			METH_VARARGS},
-	{ "get_dst_src",		python_ai::wrapper_get_dst_src,			METH_VARARGS},
-	{ "move_unit",			python_ai::wrapper_move_unit,			METH_VARARGS},
-	{ "attack_unit",		python_ai::wrapper_attack_unit,			METH_VARARGS},
-	{ "get_adjacent_tiles",	python_ai::wrapper_get_adjacent_tiles,	METH_VARARGS},
-	{ "recruit_unit",		python_ai::wrapper_recruit_unit,		METH_VARARGS},
-	{ "get_gamestatus",		python_ai::wrapper_get_gamestatus,		METH_VARARGS},
-	{ NULL,					NULL,									NULL }
+	{ "log_message",				python_ai::wrapper_log_message,			METH_VARARGS},
+	{ "get_units",					python_ai::wrapper_get_units,			METH_VARARGS},
+	{ "get_location",				python_ai::wrapper_get_location,		METH_VARARGS},
+	{ "get_map",					python_ai::wrapper_get_map,				METH_VARARGS},
+	{ "get_teams",					python_ai::wrapper_get_teams,			METH_VARARGS},
+	{ "get_current_team",			python_ai::wrapper_get_current_team,	METH_VARARGS},
+	{ "get_destinations_by_unit",	python_ai::wrapper_get_src_dst,			METH_VARARGS},
+	{ "get_units_by_destination",	python_ai::wrapper_get_dst_src,			METH_VARARGS},
+	{ "move_unit",					python_ai::wrapper_move_unit,			METH_VARARGS},
+	{ "attack_unit",				python_ai::wrapper_attack_unit,			METH_VARARGS},
+	{ "get_adjacent_tiles",			python_ai::wrapper_get_adjacent_tiles,	METH_VARARGS},
+	{ "recruit_unit",				python_ai::wrapper_recruit_unit,		METH_VARARGS},
+	{ "get_gamestatus",				python_ai::wrapper_get_gamestatus,		METH_VARARGS},
+	{ NULL,							NULL,									NULL }
 };
 
 
