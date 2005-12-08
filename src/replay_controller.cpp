@@ -143,7 +143,8 @@ void replay_controller::init(CVideo& video, const std::vector<config*>& story){
 	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
 	gui_ = new display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_);
 	const config* replay_theme_cfg = theme_cfg->child("resolution")->child("replay");
-	gui_->get_theme().modify(replay_theme_cfg);
+	if (NULL != replay_theme_cfg)
+	    gui_->get_theme().modify(replay_theme_cfg);
 	mouse_handler_.set_gui(gui_);
 	theme::set_known_themes(&game_config_);
 	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks) << "\n";
