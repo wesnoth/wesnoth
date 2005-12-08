@@ -281,11 +281,6 @@ static PyObject* wrap_attacktype(const attack_type& type)
 }
 
 
-typedef struct {
-	PyObject_HEAD
-	const unit* unit_;
-} wesnoth_unit;
-
 bool python_ai::is_unit_valid(const unit* unit, bool do_set_error)
 {
 	if (!unit)
@@ -377,6 +372,7 @@ static PyMethodDef unit_methods[] = {
 	{ "movement_cost",		(PyCFunction)wrapper_unit_movement_cost,	METH_VARARGS},
 	{ "defense_modifier",	(PyCFunction)wrapper_unit_defense_modifier,	METH_VARARGS},
 	{ "damage_against",		(PyCFunction)wrapper_unit_damage_against,	METH_VARARGS},
+	{ "find_path",			(PyCFunction)python_ai::wrapper_unit_find_path,		METH_VARARGS},
 	{ NULL,					NULL,										NULL }
 };
 
@@ -977,6 +973,31 @@ PyObject* python_ai::wrapper_get_gamestatus(PyObject* self, PyObject* args)
 	status = (wesnoth_gamestatus*)PyObject_NEW(wesnoth_gamestatus, &wesnoth_gamestatus_type);
 	status->status_ = &running_instance->get_info().state;
 	return (PyObject*)status;
+}
+
+PyObject* python_ai::wrapper_unit_find_path( wesnoth_unit* unit, PyObject* args )
+{
+	wesnoth_location* from;
+	wesnoth_location* to;
+	double percent = 100.0;
+	if ( !PyArg_ParseTuple( args, "O!O!|d", &wesnoth_location_type, &from, &wesnoth_location_type, &to, &percent ) )
+		return NULL;
+	if (!running_instance->is_unit_valid(unit->unit_))
+		return NULL;
+
+	const shortest_path_calculator calc(*unit->unit_,
+		running_instance->current_team(),
+		running_instance->get_info().units,
+		running_instance->get_info().teams,
+		running_instance->get_info().map,
+		running_instance->get_info().state);
+	const paths::route& route = a_star_search(*from->location_, *to->location_, percent, &calc, running_instance->get_info().map.x(), running_instance->get_info().map.y());
+
+	PyObject* steps = PyList_New(route.steps.size());
+	for (int step = 0; step < route.steps.size(); step++)
+		PyList_SetItem(steps,step,wrap_location(route.steps[step]));
+
+	return steps;
 }
 
 static PyMethodDef wesnoth_python_methods[] = {
