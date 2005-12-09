@@ -16,20 +16,22 @@ sub filelabel {
   my ($file,$level) = @_;
   $level = $graphincludes::params::minshow unless defined $level;
 
-  # 0: file
+  ## 0: file
 
   $file =~ s/^$self->{PFXSTRIP}// if defined $self->{PFXSTRIP};
 
   return $file if $level == 0;
 
-  # 1: compilation unit
+
+  ## 1: "module", aka. "compilation unit"
 
   $file =~ s/\.[^.]*$//;
   $file='ai' if $file =~ m/^ai_(move|attack)$/;
 
   return $file if $level == 1;
 
-  # 2: small groups
+
+  ## 2: small groups
 
   if ($file =~ m!^(variable|server/variable)\.! ) {
     $file='variable';
@@ -43,22 +45,42 @@ sub filelabel {
 
   return $file if $level == 2;
 
-  # 3: big groups
 
+  ## 3: subsystems
+
+  # core: low-level stuff, non-graphical plumbing
   if ($file =~ m!^(array|astarnode|config|filesystem|game_config|game_errors|gettext|global|language|log|map|mapgen|pathfind|pathutils|preferences|race|random|serialization|scoped_resource|terrain|thread|tstring|unit|unit_types|util|variable|wassert|wml_separators|(.*/xcoll))$!) {
     $file='core';
-  } elsif ($file =~ m!^(animated|clipboard|cursor|font|halo|image|sdl_utils|tooltips|video)$!) {
+  }
+
+  # graphics: low-level graphical stuff, not part of the gameplay
+  elsif ($file =~ m!^(animated|clipboard|cursor|font|halo|image|sdl_utils|tooltips|video)$!) {
     $file='graphics';
-  } elsif ($file =~ m!^(builder|display|events|key|theme|widgets)$!) {
+  }
+
+  # uicore: building blocks for the GUI, not gameplay-related
+  elsif ($file =~ m!^(builder|display|events|key|theme|widgets)$!) {
     $file='uicore';
-  } elsif ($file =~ m!^(about|hotkeys|preferences_display|show_dialog)$!) {
+  }
+
+  # ui: game-related GUI elements (eg. usable in editor)
+  elsif ($file =~ m!^(about|hotkeys|preferences_display|show_dialog)$!) {
     $file='ui';
-  } elsif ($file =~ m!^(ai|game|help|multiplayer|titlescreen)$!) {
+  }
+
+  # gameclient: modules specific to the gameclient (ie. not for server
+  # or editor)
+  elsif ($file =~ m!^(ai|game|help|multiplayer|titlescreen)$!) {
     $file='gameclient';
-  } elsif ($file =~ m!^(campaign_server|editor|server|tools)/.*!) {
+  }
+
+  # those subsystems living in their own directory
+  elsif ($file =~ m!^(campaign_server|editor|server|tools)/.*!) {
     $file=$1;
   }
 
+
+  # poor homeless modules
   return $file;
 }
 
