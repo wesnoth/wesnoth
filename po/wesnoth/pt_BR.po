@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-05 10:42+0100\n"
-"PO-Revision-Date: 2005-11-25 14:17-0200\n"
+"PO-Revision-Date: 2005-12-09 09:50+0900\n"
 "Last-Translator: Nils Kneuper <crazy - ivanovic AT gmx DOT de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -140,7 +140,6 @@ msgstr ""
 "<italic>text=Fácil</italic>."
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -373,7 +372,6 @@ msgid "Movement"
 msgstr "Movimento"
 
 #: data/help.cfg:126
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -396,7 +394,12 @@ msgstr ""
 "defesa que a unidade terá se ela se mover para ele. Passar o mouse sobre um "
 "hexágono escuro irá mostrar o número de turnos necessários para chegar nele, "
 "e clicando nele fará com que a unidade se mova em direção a ele através da "
-"melhor rota possível nesse e nos turnos seguintes."
+"melhor rota possível nesse e nos turnos seguintes. Se você não utilizar todo "
+"o movimento de uma unidade quando movê-la, voce pode continuar movendo-a "
+"nesse turno. Isso é útil quando precisar que duas unidades troquem de lugar. "
+"Atacar com uma unidade gasta todo o seu movimento. Mover para uma vila que "
+"você ainda não controle também usa todo o movimento, mas ainda permite que a "
+"unidade ataque."
 
 #: data/help.cfg:128
 msgid ""
@@ -463,9 +466,10 @@ msgstr ""
 
 #: data/help.cfg:137
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "Escuridão e Névoa de Combate"
 
 #: data/help.cfg:138
+#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -477,6 +481,17 @@ msgid ""
 "locations adjacent to those within one turn's move (ignoring zones of "
 "control and enemy units)."
 msgstr ""
+"Em certos cenários, partes do mapa estarão escondidas de você. Há dois "
+"mecanismos para isso, que podem ocorrer separadamente ou em conjunto. A "
+"'Escuridão' esconde tanto o terreno quanto quaisquer unidades sobre esse "
+"terreno. Porém, uma vez que ela seja removida de um local, você sempre "
+"podera ver aquele local. A 'Névoa de Guerra' apenas esconde as unidades e o "
+"indicador de posse das cidades (exceto as suas e de seus aliados). A névoa "
+"de guerra é removida temporariamente quando você tem unidades próximas, mas "
+"retorna uma vez que estas se afastem. Tanto a  escuridão quanto a névoa de "
+"guerra são removidas pela presença de unidades. Cada unidade irá limpar os "
+"locais seu raio de ação de um turno (ignorando zona de controle e unidades "
+"inimigas), e os locais adjacentes a esses."
 
 #: data/help.cfg:143
 msgid "Combat"
@@ -704,7 +719,6 @@ msgid "Time of Day"
 msgstr "Hora do Dia"
 
 #: data/help.cfg:181
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -800,7 +814,6 @@ msgstr ""
 "alguns casos, você poderá escolher como a unidade avançará."
 
 #: data/help.cfg:201
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -892,7 +905,6 @@ msgstr ""
 "à unidade tratando receberão tratamento, e num máximo de 4 HP por unidade."
 
 #: data/help.cfg:213
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -902,7 +914,7 @@ msgid ""
 msgstr ""
 "\n"
 "Unidades curandeiras: Unidades com a habilidade <ref>dst=ability_cures "
-"text=curar</ref> curarão até 18 pontos de energia por túrno, além de curar "
+"text=curar</ref> curarão até 18 pontos de energia por turno, além de curar "
 "venenos. Apenas aquelas unidades do mesmo time que estiverem adjacentes à "
 "unidade curandeira poderão receber esse benefício, e num máximo de 8 HP por "
 "unidade."
@@ -1871,9 +1883,8 @@ msgstr ""
 "de tocá-lo!"
 
 #: data/items.cfg:816
-#, fuzzy
 msgid "Zap"
-msgstr "Zap~"
+msgstr "Zap"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -2574,7 +2585,6 @@ msgstr ""
 "tem contra diferentes tipos de ataques."
 
 #: data/tips.cfg:4
-#, fuzzy
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -2598,7 +2608,6 @@ msgstr ""
 "próximas a uma unidade com a habilidade de 'cura'."
 
 #: data/tips.cfg:6
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -2881,7 +2890,6 @@ msgid "Hard"
 msgstr "Difícil"
 
 #: data/translations/english.cfg:9
-#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -2902,7 +2910,6 @@ msgstr ""
 "em ambas as situações."
 
 #: data/translations/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -2938,7 +2945,6 @@ msgid "ambush"
 msgstr "emboscada"
 
 #: data/translations/english.cfg:31
-#, fuzzy
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -2971,7 +2977,6 @@ msgid "cures"
 msgstr "cura"
 
 #: data/translations/english.cfg:40
-#, fuzzy
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -3099,7 +3104,6 @@ msgid "regenerates"
 msgstr "regenera"
 
 #: data/translations/english.cfg:76
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -3108,7 +3112,8 @@ msgid ""
 msgstr ""
 "Combatente:\n"
 "Esta unidade é capaz de passar pelos inimigos rapidamente, e ignora todas as "
-"Zonas de Controle inimigas "
+"Zonas de Controle inimigas. (Excessão: se você PARAR em uma zona de controle "
+"inimiga, seu movimento restante será zerado, mesmo que seja um combatente.) "
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:24
 #: data/units/Assassin.cfg:127 data/units/Duelist.cfg:22
@@ -3163,7 +3168,6 @@ msgstr ""
 "oposto do alvo. (Não funciona contra unidades aliadas.)"
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -3171,7 +3175,8 @@ msgid ""
 msgstr ""
 "Fúria:\n"
 "Sempre que usada ofensivamente ou defensivamente, este ataque mantém o "
-"combate até que um dos combatentes morra."
+"combate até que um dos combatentes morra, ou 30 rodadas de combate tenham se "
+"passado."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -3184,7 +3189,6 @@ msgstr ""
 "unidade tome o dobro de dano do contra ataque do alvo."
 
 #: data/translations/english.cfg:102
-#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -3192,7 +3196,8 @@ msgid ""
 msgstr ""
 "Drenar:\n"
 "Esta unidade drena a energia de unidades vivas, recuperando um número de "
-"pontos de vida igual a metade do dano que ela causar."
+"pontos de vida igual a metade do dano que ela causar (arredondado para "
+"baixo)."
 
 #: data/translations/english.cfg:105
 msgid ""
@@ -3848,7 +3853,6 @@ msgid "Bone Shooter"
 msgstr "Atirador de Ossos"
 
 #: data/units/Bone_Shooter.cfg:21
-#, fuzzy
 msgid ""
 "Of a necromancer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -4977,7 +4981,6 @@ msgid "Dwarvish Stalwart"
 msgstr "Veterano Anão"
 
 #: data/units/Dwarvish_Stalwart.cfg:30
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -5203,6 +5206,16 @@ msgid ""
 "to deal more damage in combat, though this only applies to units of lower "
 "level."
 msgstr ""
+"Elfos, ao contrário de muitas outras raças, facilmente reconhecem e seguem "
+"qualquer um dentre seus pares que demonstre experiência em combate. Isso é "
+"bem diferente dos humanos, para quem liderança normalmente se mistura com "
+"coerção e intimidação. Essa combinação de aceitação da sabedoria de seus "
+"líderes, e da tendência de escolher líderes pelo seu mérito, é uma das "
+"forças invisíveis dos elfos.\n"
+"\n"
+"Nota especial: a liderança de um capitão permite a unidades aliadas próximas "
+"a ele causarem mais dano em combate, embora isso se aplique apenas a "
+"unidades de nível mais baixo que o do capitão."
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
@@ -5264,13 +5277,12 @@ msgid "female^Elvish Enchantress"
 msgstr "Feiticeira Elfa"
 
 #: data/units/Elvish_Enchantress.cfg:35
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
 "magically animating roots with which they bind their enemies in place."
 msgstr ""
-"As feiticeiras élficas são mestres da magia ofensiva, atacando seus inimigos "
+"As feiticeiras élfas são mestras da magia ofensiva, atacando seus inimigos "
 "tanto com raios de vento gelado invocado do plano etéreo, quanto com raízes "
 "animadas por mágica, com as quais elas prendem seus oponentes ao chão."
 
@@ -5415,7 +5427,6 @@ msgid "Elvish Marshal"
 msgstr "Marechal Elfo"
 
 #: data/units/Elvish_Marshal.cfg:39
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -5499,7 +5510,6 @@ msgid "Elvish Rider"
 msgstr "Elfo Montado"
 
 #: data/units/Elvish_Rider.cfg:38
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal to any man. Though this certainly leaves people in "
@@ -5632,7 +5642,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Bruxa élfica"
 
 #: data/units/Elvish_Sorceress.cfg:35
-#, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
@@ -5787,7 +5796,6 @@ msgid "Galleon"
 msgstr "Galeão"
 
 #: data/units/Galleon.cfg:17
-#, fuzzy
 msgid ""
 "Even people happily living in their homes eventually need some kind of "
 "transport through the seas, even if only to go fishing or to trade goods. "
@@ -6281,7 +6289,6 @@ msgid "Horse Lord"
 msgstr "Lorde Cavaleiro"
 
 #: data/units/Horse_Lord.cfg:24
-#, fuzzy
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
@@ -6702,7 +6709,6 @@ msgid "Master at Arms"
 msgstr "Mestre de Armas"
 
 #: data/units/Master_at_Arms.cfg:22
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -7362,7 +7368,6 @@ msgid "Orcish Assassin"
 msgstr "Assassino Orc"
 
 #: data/units/Orcish_Assassin.cfg:25
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -7534,7 +7539,6 @@ msgid "Orcish Slayer"
 msgstr "Matador Orc"
 
 #: data/units/Orcish_Slayer.cfg:26
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -8151,7 +8155,6 @@ msgid "Silver Mage"
 msgstr "Mago prateado"
 
 #: data/units/Silver_Mage.cfg:28
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -9030,6 +9033,7 @@ msgid "+Greek Translation"
 msgstr "+Tradução para o Grego"
 
 #: src/about.cpp:243
+#, fuzzy
 msgid "+Hebrew Translation"
 msgstr "+Tradução para o Grego"
 
@@ -9413,7 +9417,6 @@ msgid "Get More Campaigns..."
 msgstr "Pegar outras campanhas..."
 
 #: src/game.cpp:746
-#, fuzzy
 msgid "Download more campaigns from an Internet server."
 msgstr "Faz o download de mais campanhas de um servidor na internet."
 
@@ -9722,16 +9725,14 @@ msgid "The terrain with the best modifier is chosen automatically."
 msgstr "O terreno com o melhor modificador é escolhido automaticamente"
 
 #: src/help.cpp:1317
-#, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
 msgstr ""
-"Este terreno funciona como um forte, ou seja, um lado pode recrutar unidades "
-"quando seu líder estiver neste terreno"
+"Este terreno funciona como um forte, ou seja, você pode recrutar unidades "
+"quando seu líder estiver neste terreno."
 
 #: src/help.cpp:1319
-#, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -9973,7 +9974,6 @@ msgid "Settings..."
 msgstr "Configurações..."
 
 #: src/multiplayer_create.cpp:95
-#, fuzzy
 msgid "The maximum number of turns the game can last"
 msgstr "Número máximo de turnos do jogo"
 
@@ -10273,7 +10273,6 @@ msgid "Scenario Report"
 msgstr "Relato do Cenário"
 
 #: src/playlevel.cpp:709
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -10798,23 +10797,6 @@ msgstr "ordeiro"
 msgid "neutral"
 msgstr "neutro"
 
-#~ msgid ""
-#~ "Slow:\n"
-#~ "This attack slows the target. Slowed units move at half normal speed and "
-#~ "receive one less attack than normal in combat until the end of their "
-#~ "controllers' turn."
-#~ msgstr ""
-#~ "Lentidão:\n"
-#~ "Este ataque deixa o alvo lento. Unidades lentas movem-se na medade da "
-#~ "velocidade normal, e fazem um golpe a menos que o normal em combate até o "
-#~ "próximo turno."
-
-#~ msgid "Saved Theme Preference: "
-#~ msgstr "Gravou preferência de tema: "
-
-#~ msgid "New theme will take effect on next new or loaded game."
-#~ msgstr "O novo tema comecará a funcionar no próximo jogo novo ou carregado."
-
 #~ msgid "Basic Training"
 #~ msgstr "Treinamento Básico"
 
@@ -10904,7 +10886,7 @@ msgstr "neutro"
 
 #~ msgid ""
 #~ "Your fighter has survived Merle's attack. Whenever a unit survives a "
-#~ "battle, it gets experience from the combat. Once a unit gains enough "
+#~ "battle, it receives experience from the combat. Once a unit gains enough "
 #~ "experience, it advances to the next level, and becomes more powerful."
 #~ msgstr ""
 #~ "Seu guerreiro sobreviveu ao ataque de Merle. Sempre que uma unidade "
@@ -11038,7 +11020,7 @@ msgstr "neutro"
 #~ msgstr "Em guarda!"
 
 #~ msgid ""
-#~ "You may notice that your units have slightly different statistics than "
+#~ "You may notice that your units have slightly different statistics from "
 #~ "the statistics shown before you recruited them. This is because they have "
 #~ "been assigned traits."
 #~ msgstr ""
@@ -11145,12 +11127,12 @@ msgstr "neutro"
 
 #~ msgid ""
 #~ "A leader is a unit that can recruit. This means that when the leader is "
-#~ "on a keep, he can recruit units on the surrounding castle tiles. Leaders "
-#~ "are usually powerful units that each side only controls one of. Also, "
-#~ "your leader is usually the first unit that your side controls, and starts "
-#~ "on a keep. You can select your leader quickly by pressing 'l'. If your "
-#~ "leader dies, you lose the game. You can win most scenarios by defeating "
-#~ "all enemy leaders."
+#~ "on a keep, units can be recruited on the surrounding castle tiles. "
+#~ "Leaders are usually powerful units that each side only controls one of. "
+#~ "Also, your leader is usually the first unit that your side controls, and "
+#~ "starts on a keep. You can select your leader quickly by pressing 'l'. If "
+#~ "your leader dies, you lose the game. You can win most scenarios by "
+#~ "defeating all enemy leaders."
 #~ msgstr ""
 #~ "Um líder é uma unidade que pode recrutar. Isso significa que quando o "
 #~ "líder está em um forte, ele pode recrutar unidades nas regiões de castelo "
@@ -11159,7 +11141,7 @@ msgstr "neutro"
 #~ "unidade que o seu time controla, e começa em um forte. Você pode "
 #~ "selecionar o seu líder rapidamente apertando 'l'. Se seu líder morrer, "
 #~ "você perde o jogo. A maioria dos cenários pode ser vencida derrotando "
-#~ "todos os líderes."
+#~ "todos os líderes inimigos."
 
 #~ msgid "What's a leader?"
 #~ msgstr "O que é um líder?"
@@ -11197,10 +11179,10 @@ msgstr "neutro"
 #~ msgid ""
 #~ "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 #~ "right-click and select End Turn, or select the End Turn button in the "
-#~ "lower-right hand corner."
+#~ "lower right hand corner."
 #~ msgstr ""
-#~ "Uma maneira de terminar o seu turno é apertar 'Alt-E'. Outra maneira é "
-#~ "clicar com o botão da direita e escolher Terminar o Turno, ou apertar o "
+#~ "Uma maneira de terminar o seu turno é apertar 'Alt-espaço'. Outra maneira "
+#~ "é clicar com o botão da direita e escolher Terminar o Turno, ou apertar o "
 #~ "botão 'Fim de Turno' no canto inferior direito."
 
 #~ msgid "What happens when I end my turn?"
@@ -11228,16 +11210,15 @@ msgstr "neutro"
 
 #~ msgid ""
 #~ "Your Elvish Fighter begins with a certain number of move points each "
-#~ "turn; this is called his speed. When your Elvish Fighter moves along a "
-#~ "path, each hex he goes through costs him move points; this includes his "
-#~ "destination. When you select your Elvish Fighter, all hexes he can't move "
+#~ "turn; this is called its speed. When your Elvish Fighter moves along a "
+#~ "path, each hex it passes through costs it move points; this includes the "
+#~ "destination. When you select your Elvish Fighter, all hexes it can't move "
 #~ "onto within one turn will be shaded. If the destination is far enough "
-#~ "away that he needs more than one turn to reach it, a number will appear "
-#~ "showing how many turns it will take him. Clicking on a far-away space "
-#~ "will set the unit on a course for that space, which means it "
-#~ "automatically moves as far as it can towards that space every turn. If "
-#~ "you accidentally set a unit on a course, select it twice to remove the "
-#~ "course."
+#~ "away that more than one turn is needed to reach it, a number will appear "
+#~ "showing how many turns it will take. Clicking on a far-away space will "
+#~ "set the unit on a course for that space, which means it automatically "
+#~ "moves as far as it can towards that space every turn. If you accidentally "
+#~ "set a unit on a course, select it twice to remove the course."
 #~ msgstr ""
 #~ "Seu guerreiro Elfo começa com um certo número de pontos de movimento a "
 #~ "casa turno; a isso chamamos de velocidade. Quando seu elfo se move por "
@@ -11255,7 +11236,7 @@ msgstr "neutro"
 #~ msgid ""
 #~ "A unit's zone of control is the location consisting of all hexes the unit "
 #~ "is adjacent to. Units cannot move through opponent's zones of control; "
-#~ "they can only move into it. When they do this, they lose all of their "
+#~ "they can only move into it. When they do this, they lose all their "
 #~ "remaining movement. Zones of control can be used to block enemies from "
 #~ "reaching your weak and wounded units."
 #~ msgstr ""
@@ -11279,7 +11260,7 @@ msgstr "neutro"
 #~ "Units controlled by the enemy do not have an energy circle. Allied units "
 #~ "you do not control, like me, have a blue energy circle. Also, the option "
 #~ "'Show Team Colors', in Preferences, causes the color of a unit's "
-#~ "controller is displayed as a disc below the unit."
+#~ "controller to be displayed as a disc below the unit."
 #~ msgstr ""
 #~ "Unidades sob o seu comando têm um círculo de energia verde, amarelo ou "
 #~ "vermelho logo em cima da barra de vida (verde) delas. Unidades que ainda "
@@ -11304,7 +11285,7 @@ msgstr "neutro"
 #~ "can only be countered by a melee attack. Most units have more powerful "
 #~ "melee attacks than ranged attacks. Units with strong ranged attacks are "
 #~ "useful in retaliation against melee oriented units. Some melee units "
-#~ "without ranged attacks won't be able to retaliate at all. However ranged "
+#~ "without ranged attacks won't be able to retaliate at all. However, ranged "
 #~ "units cannot shoot across multiple hexes; this is one of the distinctive "
 #~ "features of Wesnoth."
 #~ msgstr ""
@@ -11354,7 +11335,7 @@ msgstr "neutro"
 #~ "no menu de opções de ataque depois dos números de dano e golpes para o "
 #~ "ataque."
 
-#~ msgid "Will my fighter hit every time when he attacks?"
+#~ msgid "Will my fighter hit every time when it attacks?"
 #~ msgstr "Meu guerreiro vai sempre acertar quando ele atacar?"
 
 #~ msgid "What's experience?"
@@ -11396,14 +11377,14 @@ msgstr "neutro"
 #~ msgstr "O que acontece quando uma unidade se move para uma vila?"
 
 #~ msgid ""
-#~ "Whenever a unit moves onto a village, he flags the village for his side. "
-#~ "This action takes all of the unit's remaining movement. Villages flagged "
-#~ "for a side give the side several benefits, including giving the side an "
-#~ "extra gold coin every turn, and reducing the total upkeep cost of that "
-#~ "side's units by one. The total number of villages you control is also "
-#~ "displayed on the status bar after the picture of a house. In addition to "
-#~ "the economic benefit of villages, villages can be used in battle. "
-#~ "Villages heal the units on them 8 HP per turn."
+#~ "Whenever a unit moves onto a village, it flags the village for its side. "
+#~ "This action takes all the unit's remaining movement. Villages flagged for "
+#~ "a side give the side several benefits, including giving the side an extra "
+#~ "gold coin every turn, and reducing the total upkeep cost of that side's "
+#~ "units by one. The total number of villages you control is also displayed "
+#~ "on the status bar after the picture of a house. In addition to the "
+#~ "economic benefit of villages, villages can be used in battle. Villages "
+#~ "heal the units on them 8 HP per turn."
 #~ msgstr ""
 #~ "Sempre que uma unidade se move para uma vila, ele marca a vila para o seu "
 #~ "time. Essa ação termina todo o movimento da unidade. Vilas marcadas para "
@@ -11418,11 +11399,11 @@ msgstr "neutro"
 
 #~ msgid ""
 #~ "There are ways to heal even without villages. If a unit does not move or "
-#~ "attack for 1 turn, he heals 2 HP from resting. However if an enemy "
-#~ "attacks him he cannot receive rest-heal. Also, there are some units which "
-#~ "heal the units surrounding them. The Elvish Shaman is one such unit; "
-#~ "units next to an Elvish Shaman are healed 4 HP per turn. Finally, "
-#~ "whenever you beat a scenario all of your units are fully healed."
+#~ "attack for 1 turn, it heals 2 HP from resting. However, if an enemy "
+#~ "attacks it, the unit cannot receive rest-heal. Also, there are some units "
+#~ "which heal the units surrounding them. The Elvish Shaman is one such "
+#~ "unit; units next to an Elvish Shaman are healed 4 HP per turn. Finally, "
+#~ "whenever you win a scenario all your units are healed fully."
 #~ msgstr ""
 #~ "Existem outros modos de curar além das vilas. Se uma unidade não se mover "
 #~ "ou atacar por 1 turno, ela cura 2 HP por descanso. Porém, se for atacada "
@@ -11439,8 +11420,8 @@ msgstr "neutro"
 #~ msgid ""
 #~ "Sometimes it is not clear how to win a scenario just by listening to the "
 #~ "dialog. In this case you need to look at the scenario objectives, which "
-#~ "appear after the opening dialog. It can also be accessed by clicking "
-#~ "'Objectives' on the menu. The scenario objectives are a list of victory "
+#~ "appear after the opening dialog. The objectives can also be accessed by "
+#~ "clicking 'Objectives' on the menu. The scenario objectives list victory "
 #~ "conditions and defeat conditions, and when any of the conditions are met, "
 #~ "the scenario is over. Hopefully, it was a victory condition that was met."
 #~ msgstr ""
@@ -11456,11 +11437,11 @@ msgstr "neutro"
 #~ msgstr "O que acontece quando eu venço um cenário?"
 
 #~ msgid ""
-#~ "When you win a scenario, all of your units survive and are revived to "
-#~ "full health, and you do not have to pay them for the remaining turns. "
-#~ "Also, if your army remains in the area after you win, all villages "
-#~ "surrender to you immediately after you win. However between scenarios, "
-#~ "20% of your gold is lost."
+#~ "When you win a scenario, all your units survive and are revived to full "
+#~ "health, and you do not have to pay them for the remaining turns. Also, if "
+#~ "your army remains in the area after you win, all villages surrender to "
+#~ "you immediately after you win. However, between scenarios 20% of your "
+#~ "gold is lost."
 #~ msgstr ""
 #~ "Quando você vence um cenário, todas as suas unidades sobrevivem e são "
 #~ "curadas completamente, e você não tem que pagar por elas pelos turnos que "
@@ -11499,10 +11480,10 @@ msgstr "neutro"
 #~ "exemplo, em um cenário de floresta, convoque elfos."
 
 #~ msgid ""
-#~ "The function of traits is add variety by making units of the same type "
+#~ "The function of traits is to add variety by making units of the same type "
 #~ "different from each other. This is done by randomly assigning each unit "
-#~ "traits when they are recruited. The traits that a unit has are displayed "
-#~ "on the Status Table, and the function of a specific trait can be found by "
+#~ "traits when they are recruited. A unit's traits are displayed in the "
+#~ "Status Table, and the function of a specific trait can be found by "
 #~ "putting your cursor over that trait."
 #~ msgstr ""
 #~ "A função das características é adicionar variedade, fazendo com que "
@@ -11518,10 +11499,10 @@ msgstr "neutro"
 #~ msgid ""
 #~ "There are four distinct traits, which have effects ranging from "
 #~ "increasing a unit's hit points to decreasing the amount of XP required to "
-#~ "advance. However all traits are designed to improve unit's power; there "
-#~ "are no 'negative' traits. Most units have an equal chance to get any two "
-#~ "different traits when they are recruited. Also, some races and units may "
-#~ "have traits that are unique to them."
+#~ "advance. However, all traits are designed to improve a unit's power; "
+#~ "there are no 'negative' traits. Most units have an equal chance to obtain "
+#~ "any two different traits when they are recruited. Also, some races and "
+#~ "units may have traits that are unique to them."
 #~ msgstr ""
 #~ "Existem 4 tipos diferentes de características, que têm efeitos que vão de "
 #~ "aumentar os pontos de vida de uma unidade, até diminuir a quantidade de "
@@ -11577,11 +11558,11 @@ msgstr "neutro"
 
 #~ msgid ""
 #~ "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 "
-#~ "times of day: day, twilight, and night. During day, units of the "
+#~ "times of day: day, twilight, and night. During the day, units of the "
 #~ "alignment Lawful, such as humans, do 25% more damage, while Chaotic units "
-#~ "such as undead do 25% less. At night it is reversed. During twilight, all "
-#~ "units do their normal damage. Neutral units such as elves are unaffected "
-#~ "by day and night."
+#~ "such as undead do 25% less. At night this is reversed. During twilight, "
+#~ "all units do their normal damage. Neutral units such as elves are "
+#~ "unaffected by day and night."
 #~ msgstr ""
 #~ "Existem 3 alinhamentos: Ordeiro, Neutro e Caótico. Existem também 3 "
 #~ "períodos do dia: dia, poente/nascente, e noite. Durante o dia, unidades "
@@ -11601,7 +11582,7 @@ msgstr "neutro"
 #~ "The times of day usually progress in a sequence: dawn- identical to "
 #~ "twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
 #~ "second-watch- night, then repeat. This is represented by the sun and moon "
-#~ "which each rise in the east and set in the west. However some scenarios "
+#~ "which each rise in the east and set in the west. However, some scenarios "
 #~ "have a different sequence, such as underground where it is perpetually "
 #~ "night. You can find out the current time of day by looking at the Status "
 #~ "Table."
@@ -11615,14 +11596,14 @@ msgstr "neutro"
 
 #~ msgid ""
 #~ "Two terrains have properties which have already been described; namely "
-#~ "villages and castle. However the properties of most terrains are more "
+#~ "villages and castles. However, the properties of most terrains are more "
 #~ "subtle, and have to do with the advantages and disadvantages different "
 #~ "units have when they move onto them. The first property of a terrain is "
 #~ "the number of move points it takes each unit to move through the hex. The "
 #~ "second property is the defense that the terrain gives units standing on "
 #~ "it. This is a percentage which determines the unit's chance to be hit on "
-#~ "that terrain. For example; many elves have 70% defense in woods, and are "
-#~ "therefore hit 30% of the time."
+#~ "that terrain. For example, many elves have 70% defense in forest, and are "
+#~ "therefore hit on average 30% of the time."
 #~ msgstr ""
 #~ "Já descrevemos as propriedas de dois terrenos: castelos e vila. Porém, as "
 #~ "características dos outros terrenos são mais sutis, e têm a ver com as "
@@ -11644,7 +11625,7 @@ msgstr "neutro"
 #~ "To find out the properties of a terrain with respect to a specific unit, "
 #~ "right-click on the unit, select Unit Description, then look at Terrain "
 #~ "Modifiers. To find out which terrain is on a particular hex, move your "
-#~ "cursor over that hex and look in the upper-right hand corner of the "
+#~ "cursor over that hex and look in the upper right hand corner of the "
 #~ "screen. This will display, in order, the name of the terrain, then the "
 #~ "coordinates of the hex, then the selected unit's defense, then the number "
 #~ "of move points it will cost the selected unit to move through that hex."
@@ -11760,7 +11741,7 @@ msgstr "neutro"
 #~ msgid ""
 #~ "The objects you encounter are put in by the scenario designer, so they "
 #~ "vary from campaign to campaign. In Heir to the Throne, most objects give "
-#~ "the unit who picks them up a new weapon. However there are usually not "
+#~ "the unit who picks them up a new weapon. However, there are usually not "
 #~ "that many objects in a campaign."
 #~ msgstr ""
 #~ "Os objetos que você encontra são colocados pelo criador do cenário, então "
@@ -11776,8 +11757,8 @@ msgstr "neutro"
 
 #~ msgid ""
 #~ "Most objects are permanent changes to the unit that receives them. "
-#~ "However a few objects, such as holy water, last only until the end of the "
-#~ "scenario."
+#~ "However, a few objects, such as holy water, last only until the end of "
+#~ "the scenario."
 #~ msgstr ""
 #~ "A maior parte dos objetos operam mudanças permanentes na unidade que os "
 #~ "recebem. Alguns objetos, como água benta, duram apenas até o fim do "
@@ -11809,6 +11790,17 @@ msgstr "neutro"
 #~ "Server Oficial'. Isso vai conectá-lo com o servidor oficial de wesnoth, "
 #~ "onde você pode entrar em um jogo escolhendo ele, então escolhendo 'Entrar "
 #~ "em um Jogo'."
+
+#~ msgid ""
+#~ "Slow:\n"
+#~ "This attack slows the target. Slowed units move at half normal speed and "
+#~ "receive one less attack than normal in combat until the end of their "
+#~ "controllers' turn."
+#~ msgstr ""
+#~ "Lentidão:\n"
+#~ "Este ataque deixa o alvo lento. Unidades lentas movem-se na medade da "
+#~ "velocidade normal, e fazem um golpe a menos que o normal em combate até o "
+#~ "próximo turno."
 
 #~ msgid "Merman"
 #~ msgstr "Sereio"
@@ -11904,3 +11896,9 @@ msgstr "neutro"
 
 #~ msgid "Island"
 #~ msgstr "Ilha"
+
+#~ msgid "Saved Theme Preference: "
+#~ msgstr "Gravou preferência de tema: "
+
+#~ msgid "New theme will take effect on next new or loaded game."
+#~ msgstr "O novo tema comecará a funcionar no próximo jogo novo ou carregado."
