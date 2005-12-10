@@ -35,7 +35,7 @@ sub filelabel {
 
   if ($file =~ m!^(variable|server/variable)\.! ) {
     $file='variable';
-  } elsif ($file =~ m!^(multiplayer|ai).*!) {
+  } elsif ($file =~ m!^(ai|multiplayer|replay).*!) {
     $file=$1;
   } elsif ($file =~ m!^(mapgen|mapgen_dialog|cavegen|map_create)\..*!) {
     $file='mapcreator';
@@ -49,7 +49,7 @@ sub filelabel {
   ## 3: subsystems
 
   # core: low-level stuff, non-graphical plumbing
-  if ($file =~ m!^(array|astarnode|config|filesystem|game_config|game_errors|gettext|global|language|log|map|mapgen|pathfind|pathutils|preferences|race|random|serialization|scoped_resource|terrain|thread|tstring|unit|unit_types|util|variable|wassert|wml_separators|(.*/xcoll))$!) {
+  if ($file =~ m!^(array|astarnode|cavegen|config|filesystem|game_config|game_errors|gettext|global|language|log|map|mapgen|pathfind|pathutils|preferences|race|random|serialization|scoped_resource|terrain|thread|tstring|unit|unit_types|util|variable|wassert|wml_separators|(.*/xcoll))$!) {
     $file='core';
   }
 
@@ -64,13 +64,13 @@ sub filelabel {
   }
 
   # ui: game-related GUI elements (eg. usable in editor)
-  elsif ($file =~ m!^(about|hotkeys|preferences_display|show_dialog)$!) {
+  elsif ($file =~ m!^(about|hotkeys|leader_list|mapgen_dialog|marked-up_text|menu_events|preferences_display|replay|show_dialog)$!) {
     $file='ui';
   }
 
   # gameclient: modules specific to the gameclient (ie. not for server
   # or editor)
-  elsif ($file =~ m!^(ai|game|help|multiplayer|titlescreen)$!) {
+  elsif ($file =~ m!^(ai|game|help|intro|mouse_events|multiplayer|playcampaign|playlevel|playturn|titlescreen)$!) {
     $file='gameclient';
   }
 
@@ -91,6 +91,7 @@ sub defaultcolors {
 		mapcreator    => 'gold',
 		widgets       => 'linen',
 		multiplayer   => 'palegreen',
+		replay        => 'purple',
 	       };
   $colors[3] = {
 		core          => 'steelblue3',
