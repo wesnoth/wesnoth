@@ -1227,6 +1227,11 @@ void turn_info::cycle_units()
 		gui_.highlight_hex(selected_hex_);
 		current_route_.steps.clear();
 		gui_.set_route(NULL);
+		last_hex_=gamemap::location(-1,-1);
+		int mousex, mousey;
+		SDL_GetMouseState(&mousex,&mousey);
+		mouse_motion(mousex,mousey);
+
 		show_attack_options(it);
 	} else {
 		next_unit_ = gamemap::location();
