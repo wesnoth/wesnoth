@@ -37,7 +37,7 @@ namespace game_config
 
 	extern std::string path;
 
-	extern std::string game_icon, game_title, game_logo, title_music, map_image, rightside_image, rightside_image_bot,
+	extern std::string game_icon, game_title, game_logo, title_music, map_image, rightside_image, rightside_image_bot, anonymous_music,
 		               moved_energy_image, unmoved_energy_image, partmoved_energy_image,
 					   enemy_energy_image,ally_energy_image,flag_image,
 					   dot_image,cross_image,

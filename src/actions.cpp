@@ -1764,6 +1764,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
 			if(team.fogged(u->first.x,u->first.y) == false) {
 				known_units.insert(u->first);
+				team.see(u->second.side()-1);
 			}
 		}
 	}
@@ -1949,6 +1950,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				}
 
 				LOG_NG << "processed...\n";
+				teams[team_num].see(u->second.side()-1);
 			}
 
 			char* msg_id;

@@ -35,7 +35,7 @@ namespace game_config
 	const std::string version = VERSION;
 	bool debug = false, editor = false, ignore_replay_errors = false;
 
-	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music;
+	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music, anonymous_music;
 	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0,
 	    title_tip_x = 0, title_tip_y = 0, title_tip_width = 0, title_tip_padding = 0;
 
@@ -105,6 +105,7 @@ namespace game_config
 		game_title = v["title"];
 		game_logo = v["logo"];
 		title_music = v["title_music"];
+		anonymous_music = v["anonymous_music"];
 
 		title_logo_x = atoi(v["logo_x"].c_str());
 		title_logo_y = atoi(v["logo_y"].c_str());

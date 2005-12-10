@@ -144,6 +144,21 @@ public:
 		}
 	}
 
+	bool has_seen(int index) const {
+		if(!uses_shroud() && !uses_fog()) return true;
+		if(index < seen_.size()) {
+			return seen_[index];
+		} else {
+			return false;
+		}
+	}
+	void see(int index) {
+		if(index >= seen_.size()) {
+			seen_.resize(index+1);
+		}
+		seen_[index] = true;
+	}
+
 	double aggression() const;
 	double caution() const;
 
@@ -234,6 +249,8 @@ private:
 	bool calculate_enemies(size_t index) const;
 	bool calculate_is_enemy(size_t index) const;
 	mutable std::vector<bool> enemies_;
+
+	mutable std::vector<bool> seen_;
 
 	mutable std::vector<const shroud_map*> ally_shroud_, ally_fog_;
 };

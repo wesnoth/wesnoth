@@ -429,9 +429,13 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 					LOG_NG << "result of replay: " << (replaying?"true":"false") << "\n";
 				}
 
-				if(!replaying && team_it->music().empty() == false) {
+				if(!replaying && team_it->music().empty() == false && 
+						(teams[gui.viewing_team()].knows_about_team(player_number-1) || teams[gui.viewing_team()].has_seen(player_number-1))) {
 					LOG_NG << "playing music: '" << team_it->music() << "'\n";
 					sound::play_music(team_it->music());
+				} else {
+					LOG_NG << "playing music: '" << game_config::anonymous_music<< "'\n";
+					sound::play_music(game_config::anonymous_music);
 				}
 
 //goto this label if the type of a team (human/ai/networked) has changed mid-turn
