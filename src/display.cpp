@@ -2215,6 +2215,23 @@ void display::set_grid(bool grid)
 	grid_ = grid;
 }
 
+// timestring() returns the current date as a string.
+// Uses preferences::clock_format() for formatting.
+char *timestring ( void )
+{
+    #define TIME_SIZE 10 
+
+    time_t now = time ( NULL );
+    struct tm *lt = localtime( &now );
+
+    char *tstring; 
+    tstring = new char[TIME_SIZE];
+    size_t s = strftime(tstring,TIME_SIZE,preferences::clock_format().c_str(),lt);
+    return tstring;
+    #undef TIME_SIZE
+}
+
+
 void display::debug_highlight(const gamemap::location& loc, fixed_t amount)
 {
 	wassert(game_config::debug);
@@ -2334,7 +2351,6 @@ void display::remove_observer(const std::string& name)
 }
 
 namespace {
-	const unsigned int max_chat_messages = 6;
 	const int chat_message_border = 5;
 	const int chat_message_x = 10;
 	const int chat_message_y = 10;
@@ -2392,9 +2408,15 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 		}
 	}
 
+	// prepend message with timestamp
+	std::stringstream message_complete;
+	if (preferences::chat_timestamp()) {
+		message_complete << timestring() << " ";
+	}
+	message_complete << str.str();
 
 	const SDL_Rect rect = map_area();
-	const int speaker_handle = font::add_floating_label(str.str(),font::SIZE_SMALL,speaker_colour,
+	const int speaker_handle = font::add_floating_label(message_complete.str(),font::SIZE_SMALL,speaker_colour,
 		rect.x+chat_message_x,rect.y+ypos,
 		0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
 
@@ -2415,6 +2437,7 @@ void display::clear_chat_messages()
 void display::prune_chat_messages(bool remove_all)
 {
 	const unsigned int message_ttl = remove_all ? 0 : 1200000;
+	const unsigned int max_chat_messages = preferences::chat_lines();
 	int ticks = SDL_GetTicks();
 	if(chat_messages_.empty() == false && (chat_messages_.front().created_at+message_ttl < SDL_GetTicks() || chat_messages_.size() > max_chat_messages)) {
 		const int movement = font::get_floating_label_rect(chat_messages_.front().handle).h;

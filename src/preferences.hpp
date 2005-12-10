@@ -171,6 +171,13 @@ namespace preferences {
 	bool flip_time();
 	void set_flip_time(bool value);
 
+	// Multiplayer functions
+	bool chat_timestamp();
+	void set_chat_timestamp(bool value);
+
+	int chat_lines();
+	void set_chat_lines(int lines);
+
 	bool compress_saves();
 
 	std::set<std::string> &encountered_units();
