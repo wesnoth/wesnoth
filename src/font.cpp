@@ -377,9 +377,9 @@ void text_surface::bidi_cvt()
 {
 	char		*c_str = const_cast<char *>(str_.c_str());	// fribidi forgot const...
 	int		len = str_.length();
-	FriBidiChar	bidi_logical[len + 2];
-	FriBidiChar	bidi_visual[len + 2];
-	char		utf8str[len + 1];
+	FriBidiChar	*bidi_logical = new FriBidiChar[len + 2];
+	FriBidiChar	*bidi_visual = new FriBidiChar[len + 2];
+	char		*utf8str = new char[len + 1];
 	FriBidiCharType	base_dir = FRIBIDI_TYPE_ON;
 	int n;
 
@@ -388,6 +388,9 @@ void text_surface::bidi_cvt()
 	fribidi_unicode_to_utf8 (bidi_visual, n, utf8str);
 	is_rtl_ = base_dir == FRIBIDI_TYPE_RTL;
 	str_ = std::string(utf8str);
+	delete[] bidi_logical;
+	delete[] bidi_visual;
+	delete[] utf8str;
 }
 #endif
 
