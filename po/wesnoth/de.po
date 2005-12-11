@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-06 17:01+0100\n"
-"PO-Revision-Date: 2005-09-10 19:10+0100\n"
-"Last-Translator: Nils Kneuper <crazy - ivanovic AT gmx DOT de>\n"
+"PO-Revision-Date: 2005-12-11 18:22+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -139,7 +139,6 @@ msgstr ""
 "Schwierigkeitsgrad <italic>text=leicht</italic> zu wählen."
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -375,7 +374,6 @@ msgid "Movement"
 msgstr "Bewegungskosten"
 
 #: data/help.cfg:126
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -463,7 +461,7 @@ msgstr ""
 
 #: data/help.cfg:137
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "Nebel des Krieges und Schleier der Finsternis"
 
 #: data/help.cfg:138
 msgid ""
@@ -477,6 +475,14 @@ msgid ""
 "unit will clear of the locations within one turn's move (ignoring ZOC and "
 "enemy units) and locations adjacent to those locations."
 msgstr ""
+"In einigen Szenarios mag es vorkommen, dass ein Teil der Karte für Euch "
+"unbekannt ist. Es gibt zwei Mechanismen die entweder einzeln oder zusammen "
+"auftreten können. Liegt der Schleier der Finsternis über dem Land, werden "
+"Gelände und Einheiten vor Eurem Blick verborgen sein. Sobald Ihr den "
+"Schleier gelüftet habt, ist der Blick frei auf die erkundete Region. Der "
+"Nebel des Krieges verbirgt nur Einheiten und die Zugehörigkeit von Dörfern "
+"(nur bei Dörfern von Feinden) vor Eurem Blick. Wenn Eure Einheiten ein vom "
+"Nebel verhangenes Gebiet betreten, klärt dieser temporär auf."
 
 #: data/help.cfg:143
 msgid "Combat"
@@ -710,7 +716,6 @@ msgid "Time of Day"
 msgstr "Tageszeit"
 
 #: data/help.cfg:181
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -809,7 +814,6 @@ msgstr ""
 "Einheiten könnt Ihr aus mehreren Aufstiegsmöglichkeiten auswählen."
 
 #: data/help.cfg:201
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -905,7 +909,6 @@ msgstr ""
 "kann eine Einheit höchstens 8 Lebenspunkte zurück gewinnen."
 
 #: data/help.cfg:213
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -1240,9 +1243,8 @@ msgstr ""
 "unsinnigerweise in den sicheren Tod zu schicken."
 
 #: data/help.cfg:301
-#, fuzzy
 msgid "trait^Undead"
-msgstr "Untote"
+msgstr "Untot"
 
 #: data/help.cfg:302
 msgid "Undead units are immune to poison."
@@ -1929,9 +1931,8 @@ msgstr ""
 "Wesnoth kann dieses Zepter führen."
 
 #: data/items.cfg:816
-#, fuzzy
 msgid "Zap"
-msgstr "~Zap"
+msgstr "Zap"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -2612,7 +2613,6 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Beendet Euren Zug und wartet auf den Angriff Merles."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it receives experience from the combat. Once a unit gains enough experience, "
@@ -2788,7 +2788,6 @@ msgid "En garde!"
 msgstr "En garde!"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:106
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics from the "
 "statistics shown before you recruited them. This is because they have been "
@@ -2914,7 +2913,6 @@ msgstr ""
 "mit »Strg-Shift-R« eine weitere Einheit des letzten Einheitentyps ausbilden."
 
 #: data/scenarios/tutorial/utils.cfg:67
-#, fuzzy
 msgid ""
 "A leader is a unit that can recruit. This means that when the leader is on a "
 "keep, units can be recruited on the surrounding castle tiles. Leaders are "
@@ -2972,7 +2970,6 @@ msgid "How do I end my turn?"
 msgstr "Wie beende ich meinen Zug?"
 
 #: data/scenarios/tutorial/utils.cfg:73
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 "right-click and select End Turn, or select the End Turn button in the lower "
@@ -3008,7 +3005,6 @@ msgid "How far can my Elvish Fighter move?"
 msgstr "Wie weit kann sich mein Elfenkrieger bewegen?"
 
 #: data/scenarios/tutorial/utils.cfg:78
-#, fuzzy
 msgid ""
 "Your Elvish Fighter begins with a certain number of move points each turn; "
 "this is called its speed. When your Elvish Fighter moves along a path, each "
@@ -3034,7 +3030,6 @@ msgstr ""
 "Kurs wieder zu löschen."
 
 #: data/scenarios/tutorial/utils.cfg:79
-#, fuzzy
 msgid ""
 "A unit's zone of control is the location consisting of all hexes the unit is "
 "adjacent to. Units cannot move through opponent's zones of control; they can "
@@ -3057,7 +3052,6 @@ msgid "How do I tell who is allied and who is an enemy?"
 msgstr "Woher weiß ich, wer ein Verbündeter und wer ein Feind ist?"
 
 #: data/scenarios/tutorial/utils.cfg:80
-#, fuzzy
 msgid ""
 "Units you control have a green, yellow, or red energy circle above their "
 "health bar, the green vertical bar next to them. Units with full movement "
@@ -3083,7 +3077,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Kann Merle zurückschlagen, wenn ich angreife?"
 
 #: data/scenarios/tutorial/utils.cfg:84
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -3145,7 +3138,6 @@ msgstr ""
 "Angriffsmenü erscheint sie nach den Schadens- und Schlaganzahl-Werten."
 
 #: data/scenarios/tutorial/utils.cfg:86
-#, fuzzy
 msgid "Will my fighter hit every time when it attacks?"
 msgstr "Trifft mein Kämpfer bei jedem Schlag, wenn er angreift?"
 
@@ -3191,7 +3183,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Was passiert, wenn eine Einheit auf ein Dorf zieht?"
 
 #: data/scenarios/tutorial/utils.cfg:95
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, it flags the village for its side. "
 "This action takes all the unit's remaining movement. Villages flagged for a "
@@ -3221,7 +3212,6 @@ msgstr ""
 "sind?"
 
 #: data/scenarios/tutorial/utils.cfg:96
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, it heals 2 HP from resting. However, if an enemy attacks "
@@ -3245,7 +3235,6 @@ msgstr ""
 "immer mitteilen?"
 
 #: data/scenarios/tutorial/utils.cfg:100
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -3267,7 +3256,6 @@ msgid "What happens when I win a scenario?"
 msgstr "Was geschieht, wenn ich ein Szenario gewinne?"
 
 #: data/scenarios/tutorial/utils.cfg:101
-#, fuzzy
 msgid ""
 "When you win a scenario, all your units survive and are revived to full "
 "health, and you do not have to pay them for the remaining turns. Also, if "
@@ -3318,7 +3306,6 @@ msgstr ""
 "sie soweit möglich einzuberufen, anstatt sie neu auszubilden."
 
 #: data/scenarios/tutorial/utils.cfg:110
-#, fuzzy
 msgid ""
 "The function of traits is to add variety by making units of the same type "
 "different from each other. This is done by randomly assigning each unit "
@@ -3338,7 +3325,6 @@ msgid "What do traits do?"
 msgstr "Was bewirken Charakteristika?"
 
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -3405,7 +3391,6 @@ msgstr ""
 "pro Zug."
 
 #: data/scenarios/tutorial/utils.cfg:120
-#, fuzzy
 msgid ""
 "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
 "of day: day, twilight, and night. During the day, units of the alignment "
@@ -3430,7 +3415,6 @@ msgid "How do I know what time of day it is?"
 msgstr "Wie erkenne ich, welche Tageszeit wir gerade haben?"
 
 #: data/scenarios/tutorial/utils.cfg:121
-#, fuzzy
 msgid ""
 "The times of day usually progress in a sequence: dawn- identical to "
 "twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
@@ -3449,7 +3433,6 @@ msgstr ""
 "angezeigt."
 
 #: data/scenarios/tutorial/utils.cfg:125
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castles. However, the properties of most terrains are more "
@@ -3480,7 +3463,6 @@ msgid "How do I find out the properties of a specific terrain?"
 msgstr "Wie kann ich die Eigenschaften eines bestimmten Geländes herausfinden?"
 
 #: data/scenarios/tutorial/utils.cfg:126
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -3612,7 +3594,6 @@ msgstr ""
 "neben einer Einheit mit dieser Besonderheit steht."
 
 #: data/scenarios/tutorial/utils.cfg:142
-#, fuzzy
 msgid ""
 "The objects you encounter are put in by the scenario designer, so they vary "
 "from campaign to campaign. In Heir to the Throne, most objects give the unit "
@@ -3633,7 +3614,6 @@ msgid "How long do these objects last?"
 msgstr "Wie lange wirken diese Objekte?"
 
 #: data/scenarios/tutorial/utils.cfg:143
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However, "
 "a few objects, such as holy water, last only until the end of the scenario."
@@ -3840,7 +3820,6 @@ msgstr ""
 "ist."
 
 #: data/tips.cfg:4
-#, fuzzy
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -3865,7 +3844,6 @@ msgstr ""
 "führt oder Ihr sie neben eine Einheit mit der Fähigkeit »Kurieren« platziert."
 
 #: data/tips.cfg:6
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -4160,7 +4138,6 @@ msgid "Hard"
 msgstr "Schwierig"
 
 #: data/translations/english.cfg:9
-#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -4181,7 +4158,6 @@ msgstr ""
 "Die Kampfkraft neutraler Einheiten ist unabhängig von den Lichtverhältnissen."
 
 #: data/translations/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -4218,7 +4194,6 @@ msgid "ambush"
 msgstr "Hinterhalt"
 
 #: data/translations/english.cfg:31
-#, fuzzy
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -4252,7 +4227,6 @@ msgid "cures"
 msgstr "Kurieren"
 
 #: data/translations/english.cfg:40
-#, fuzzy
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -4380,7 +4354,6 @@ msgid "regenerates"
 msgstr "Regeneration"
 
 #: data/translations/english.cfg:76
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -4389,7 +4362,9 @@ msgid ""
 msgstr ""
 "Plänkler:\n"
 "Diese Fertigkeit ermöglicht es einer Einheit, durch feindliche Linien zu "
-"brechen, da sie sämtliche feindlichen Kontrollzonen ignorieren kann."
+"brechen, da sie sämtliche feindlichen Kontrollzonen ignorieren kann. "
+"(Ausnahme: Wenn die Einheit in einer gegnerischen Kontrollzone stoppt, "
+"verliert sie trotz allem all ihre restlichen BPs.)"
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:18
 #: data/units/Assassin.cfg:113 data/units/Duelist.cfg:16
@@ -4402,7 +4377,6 @@ msgid "skirmisher"
 msgstr "Plänkler"
 
 #: data/translations/english.cfg:81
-#, fuzzy
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
@@ -4446,7 +4420,6 @@ msgstr ""
 "abgelenkt wird. Alliierte Einheiten zählen hierbei nicht."
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -4455,7 +4428,8 @@ msgstr ""
 "Berserkertum:\n"
 "Diese Einheit ist es gewohnt, bis zum Tod zu kämpfen. Wenn sie in die "
 "Offensive geht und einen Gegner angreift oder sich verteidigt, ruht sie "
-"erst, bis der Tod die Entscheidung gefällt hat."
+"erst, bis der Tod die Entscheidung gefällt hat oder 30 Angriffsrunden "
+"verstrichen sind."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -4469,7 +4443,6 @@ msgstr ""
 "ergeht es ihm bei einem Gegentreffer genauso."
 
 #: data/translations/english.cfg:102
-#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -4477,7 +4450,8 @@ msgid ""
 msgstr ""
 "Lebensentzug:\n"
 "Durch die Macht der Schwarzen Magie wird bei Berührung des Opfers die Hälfte "
-"des Schadens auf den Berührenden übertragen, der dadurch geheilt wird."
+"des Schadens (abgerundet) auf den Berührenden übertragen, der dadurch "
+"geheilt wird."
 
 #: data/translations/english.cfg:105
 msgid ""
@@ -4554,7 +4528,6 @@ msgstr ""
 "sich weder bewegen noch einen Angriff ausführen."
 
 #: data/translations/english.cfg:129
-#, fuzzy
 msgid "race^Undead"
 msgstr "Untote"
 
@@ -5176,7 +5149,6 @@ msgid "Bone Shooter"
 msgstr "Knochenbogenschütze"
 
 #: data/units/Bone_Shooter.cfg:15
-#, fuzzy
 msgid ""
 "Of a necromancer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -6390,7 +6362,6 @@ msgid "Dwarvish Stalwart"
 msgstr "Zwergen Wache"
 
 #: data/units/Dwarvish_Stalwart.cfg:24
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -6711,7 +6682,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Elfenmystikerin"
 
 #: data/units/Elvish_Enchantress.cfg:21
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
@@ -6880,7 +6850,6 @@ msgid "Elvish Marshal"
 msgstr "Elfenmarschall"
 
 #: data/units/Elvish_Marshal.cfg:25
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -6970,7 +6939,6 @@ msgid "Elvish Rider"
 msgstr "Elfenkundschafter"
 
 #: data/units/Elvish_Rider.cfg:31
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal to any man. Though this certainly leaves people in "
@@ -7109,7 +7077,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Elfenzauberin"
 
 #: data/units/Elvish_Sorceress.cfg:21
-#, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
@@ -7277,7 +7244,6 @@ msgid "Galleon"
 msgstr "Galleone"
 
 #: data/units/Galleon.cfg:17
-#, fuzzy
 msgid ""
 "Even people happily living in their homes eventually need some kind of "
 "transport through the seas, even if only to go fishing or to trade goods. "
@@ -7804,7 +7770,6 @@ msgid "Horse Lord"
 msgstr "Berittener Fürst"
 
 #: data/units/Horse_Lord.cfg:18
-#, fuzzy
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
@@ -8260,7 +8225,6 @@ msgid "Master at Arms"
 msgstr "Fechtmeister"
 
 #: data/units/Master_at_Arms.cfg:22
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -8975,7 +8939,6 @@ msgid "Orcish Assassin"
 msgstr "Orkmeuchler"
 
 #: data/units/Orcish_Assassin.cfg:19
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -9179,7 +9142,6 @@ msgid "Orcish Slayer"
 msgstr "Orkschlächter"
 
 #: data/units/Orcish_Slayer.cfg:20
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -9933,7 +9895,6 @@ msgid "Silver Mage"
 msgstr "Silberner Magier"
 
 #: data/units/Silver_Mage.cfg:29
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -11261,9 +11222,8 @@ msgid "Get More Campaigns..."
 msgstr "Weitere Kampagnen..."
 
 #: src/game.cpp:750
-#, fuzzy
 msgid "Download more campaigns from an Internet server."
-msgstr "Wählt weitere Kampagnen von den Kampagnenservern aus."
+msgstr "Ladet weitere Kampagnen von den Kampagnenservern herunter."
 
 #: src/game.cpp:760
 msgid "Choose the campaign you want to play:"
@@ -11574,7 +11534,6 @@ msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Das Gelände mit den besten Modifikatoren wird automatisch ausgewählt."
 
 #: src/help.cpp:1317
-#, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
@@ -11584,7 +11543,6 @@ msgstr ""
 "benachbarten Burgfeldern Einheiten ausgebildet werden."
 
 #: src/help.cpp:1319
-#, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -11877,7 +11835,6 @@ msgid "Settings..."
 msgstr "Einstellungen..."
 
 #: src/multiplayer_create.cpp:89
-#, fuzzy
 msgid "The maximum number of turns the game can last"
 msgstr "Legt die maximale Rundenzahl einer Partie fest"
 
@@ -12179,7 +12136,6 @@ msgid "Scenario Report"
 msgstr "Szenariostatistik"
 
 #: src/playlevel.cpp:911
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
