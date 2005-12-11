@@ -689,7 +689,7 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 		dest.x = x;
 #ifdef	HAVE_FRIBIDI
 		// Oron -- Conditional, until all draw_text_line calls have fixed area parameter
-		if(getenv("WANT_RTL")) {
+		if(getenv("NO_RTL") == NULL) {
 			bool is_rtl = text_cache::find(text_surface(text, size, colour, style)).is_rtl();
 			if(is_rtl)
 				dest.x = area.x + area.w - surface->w - (x - area.x);
