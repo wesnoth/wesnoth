@@ -48,8 +48,10 @@ std::vector<std::string> get_text() {
 		"-   Guillaume Melquiond (silene)",
 		"-   Isaac Clerencia",
 		"-   Jan Zvánovec (jaz)",
+		"-   Jérémy Rosen (Boucman)",
 		"-   John B. Messerly",
 		"-   Jon Daniel (forcemstr)",
+		"-   Jörg Hinrichs (Yogi Bear/YogiHH)",
 		"-   Justin Zaun (jzaun)",
 		"-   J.R. Blain (Cowboy)",
 		"-   Kristoffer Erlandsson (erl)",
@@ -107,6 +109,11 @@ std::vector<std::string> get_text() {
 		"-   Joseph Simmons (Turin)",
 		"-   Justin Zaun (jzaun)",
 
+		"_" N_("+Multiplayer Developers"),
+		"-   Bartek Waresiak (Dragonking)",
+		"-   Richard S. (Noy)",
+		"-   Soliton",
+
 		"_" N_("+Multiplayer Maps"),
 		"-   Mike Quinones (Doc Paterson)",
 		"-   Peter Groen (pg)",
@@ -123,10 +130,8 @@ std::vector<std::string> get_text() {
 		"-   Mark Michelsen (skovbaer)",
 
 		"_" N_("+Miscellaneous"),
-		"-   Bartek Waresiak (Dragonking)",
 		"-   Francesco Gigli (Jaramir)",
 		"-   Jordà Polo (ettin)",
-		"-   Richard S. (Noy)",
 		"-   Ruben Philipp Wickenhäuser (The Very Uhu)",
 
 		"_" N_("+Internationalization Managers"),
@@ -281,6 +286,7 @@ std::vector<std::string> get_text() {
 		"-   Susanne Mesoy (Rarlgland)",
 
 		"_" N_("+Polish Translation"),
+		"-   Arkadiusz Danilecki (szopen)",
 		"-   Artur R. Czechowski",
 		"-   Bartek Waresiak (Dragonking)",
 		"-   BOrsuk",
