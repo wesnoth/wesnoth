@@ -537,7 +537,8 @@ unit_type::unit_type(const unit_type& o)
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
-      death_animations_(o.death_animations_), flag_rgb_(o.flag_rgb_)
+      death_animations_(o.death_animations_), movement_animations_(o.movement_animations_),
+      flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
@@ -679,6 +680,10 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
 		death_animations_.push_back(death_animation(**death));
 	}
+	const config::child_list& movement_anims = cfg_.get_children("movement_animation");
+	for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
+		movement_animations_.push_back(movement_animation(**movement_anim));
+	}
 
 	flag_rgb_ = utils::string2rgb(cfg["flag_rgb"]);
 }
@@ -764,6 +769,7 @@ const std::string& unit_type::image_moving() const
 {
 	const std::string& res = cfg_["image_moving"];
 	if(res.empty()) {
+		LOG_STREAM(err, config) << "unit " << id() << " uses an image_moving tag, which is deprecated\n";
 		return image();
 	} else {
 		return res;
@@ -1102,6 +1108,29 @@ bool unit_type::death_animation::matches(const attack_type* attack) const
 	return true;
 }
 
+unit_type::movement_animation::movement_animation(const config& cfg)
+: terrain_types(utils::split(cfg["terrain_type"])),animation(cfg)
+{
+	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
+	for(std::vector<std::string>::const_iterator i = my_directions.begin(); i != my_directions.end(); ++i) {
+		const gamemap::location::DIRECTION d = gamemap::location::parse_direction(*i);
+		directions.push_back(d);
+	}
+}
+
+bool unit_type::movement_animation::matches(const std::string &terrain,gamemap::location::DIRECTION dir) const
+{
+	if(terrain_types.empty() == false && std::find(terrain_types.begin(),terrain_types.end(),terrain) == terrain_types.end()) {
+		return false;
+	}
+
+	if(directions.empty() == false && std::find(directions.begin(),directions.end(),dir) == directions.end()) {
+		return false;
+	}
+
+	return true;
+}
+
 const unit_animation* unit_type::defend_animation(bool hits, attack_type::RANGE range) const
 {
 	//select one of the matching animations at random
@@ -1156,6 +1185,36 @@ const unit_animation* unit_type::die_animation(const attack_type* attack) const
 	std::vector<const unit_animation*> options;
 	for(std::vector<death_animation>::const_iterator i = death_animations_.begin(); i != death_animations_.end(); ++i) {
 		if(i->matches(attack)) {
+			if(res != NULL) {
+				options.push_back(res);
+			}
+
+			res = &i->animation;
+		}
+	}
+
+	if(options.empty()) {
+		return res;
+	} else {
+		options.push_back(res);
+		return options[rand()%options.size()];
+	}
+}
+
+const unit_animation* unit_type::move_animation(const std::string terrain,gamemap::location::DIRECTION dir) const
+{
+	if(movement_animations_.empty()) {
+		return NULL;
+	}
+
+	if(terrain.empty()) {
+		return &movement_animations_[rand()%movement_animations_.size()].animation;
+	}
+
+	const unit_animation* res = NULL;
+	std::vector<const unit_animation*> options;
+	for(std::vector<movement_animation>::const_iterator i = movement_animations_.begin(); i != movement_animations_.end(); ++i) {
+		if(i->matches(terrain,dir)) {
 			if(res != NULL) {
 				options.push_back(res);
 			}

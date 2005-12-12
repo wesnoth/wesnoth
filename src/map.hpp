@@ -86,6 +86,7 @@ public:
 		location &operator-=(const location &a);
 
 		location get_direction(DIRECTION d) const;
+		DIRECTION get_relative_dir(location loc) const;
 
 		static location null_location;
 	};

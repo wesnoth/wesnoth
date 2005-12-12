@@ -202,6 +202,8 @@ SVN trunk (1.1.x):
    * using [frames] directly in an [attack] tag is deprecated. pleas enclose
    attack animations in [animation] tags
    * [store_unit] now leaves variable untouched if filter does not match
+   * units can now have [movement_animation] tags, these are filtered on both
+   terrain and direction
  * documentation: switch doxygen templates from CVS to SVN, Savannah to Gna!
  * --with-preferences-dir configure option for coexistence of multiple versions
  * now defaults to --with-fribidi if fribidi found during configure

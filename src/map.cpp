@@ -194,6 +194,23 @@ gamemap::location gamemap::location::get_direction(
 	}
 }
 
+gamemap::location::DIRECTION gamemap::location::get_relative_dir(gamemap::location loc) const {
+	location diff = loc -*this;
+	if(diff == location(0,0)) return NDIRECTIONS;
+	if( diff.y < 0 && diff.x >= 0 && abs(diff.x) >= abs(diff.y)) return NORTH_EAST;
+	if( diff.y < 0 && diff.x < 0 && abs(diff.x) >= abs(diff.y)) return NORTH_WEST;
+	if( diff.y < 0 && abs(diff.x) < abs(diff.y)) return NORTH;
+
+	if( diff.y >= 0 && diff.x >= 0 && abs(diff.x) >= abs(diff.y)) return SOUTH_EAST;
+	if( diff.y >= 0 && diff.x < 0 && abs(diff.x) >= abs(diff.y)) return SOUTH_WEST;
+	if( diff.y >= 0 && abs(diff.x) < abs(diff.y)) return SOUTH;
+	
+	//impossible
+	wassert(false);
+	return NDIRECTIONS;
+
+
+}
 gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
 {
 	LOG_G << "loading map: '" << data << "'\n";

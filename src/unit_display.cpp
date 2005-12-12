@@ -139,67 +139,137 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		}
 	}
 
-	for(int i = 0; i < nsteps; ++i) {
-		events::pump();
+	const unit_animation* movement_anim = u.type().move_animation(map.underlying_terrain(src_terrain),a.get_relative_dir(b));
+	if(movement_anim) {
+		const int nsteps_anim = u.movement_cost(map,terrain) * ((movement_anim->get_last_frame_time(unit_animation::UNIT_FRAME) - movement_anim->get_first_frame_time(unit_animation::UNIT_FRAME))/10);
+		int anim_step = 0;
+		const double xstep_anim = double(xdst - xsrc) / nsteps_anim;
+		const double ystep_anim = double(ydst - ysrc) / nsteps_anim;
+		for(int i = 0 ; i <  u.movement_cost(map,terrain) ; i++ ) {
+			unit_animation movement_animation(*movement_anim);
+			movement_animation.start_animation(movement_animation.get_first_frame_time(unit_animation::UNIT_FRAME),
+					unit_animation::UNIT_FRAME, acceleration);
+			while(!movement_animation.animation_finished()) {
+				anim_step++;
+				const std::string* unit_image = &movement_animation.get_current_frame(unit_animation::UNIT_FRAME).image;
+				image::locator unit_loc;
+				if (unit_image->empty()) {
+					unit_loc = u.image_loc();
+				} else {
+					unit_loc = image::locator(*unit_image,u.team_rgb_range(),u.type().flag_rgb());
+				}
 
-		surface image(image::get_image( image::locator(u.type().image_moving(),u.team_rgb_range(),u.type().flag_rgb()) ));
-		if(!face_left) {
-			image.assign(image::reverse_image(image));
-		}
+				surface image(image::get_image(unit_loc));
+				if (!face_left) {
+					image.assign(image::reverse_image(image));
+				}
+				xsrc = disp.get_location_x(a);
+				ysrc = disp.get_location_y(a);
+				int xloc = xsrc + int(xstep_anim * anim_step);
+				int yloc = ysrc + int(ystep_anim * anim_step);
 
-		if(image == NULL) {
-			LOG_STREAM(err, display) << "failed to get image " << u.type().image_moving() << "\n";
-			return;
-		}
+				//we try to scroll the map if the unit is at the edge.
+				//keep track of the old position, and if the map moves at all,
+				//then recenter it on the unit
+				adjust_map_position(disp, xloc, yloc, image->w, image->h);
 
-		xsrc = disp.get_location_x(a);
-		ysrc = disp.get_location_y(a);
-		int xloc = xsrc + int(xstep * i);
-		int yloc = ysrc + int(ystep * i);
+				if(xsrc != disp.get_location_x(a) || ysrc != disp.get_location_y(a)) {
+					disp.scroll_to_tile(b.x,b.y,display::WARP);
+					xsrc = disp.get_location_x(a);
+					ysrc = disp.get_location_y(a);
+					xloc = xsrc + int(xstep_anim * anim_step);
+					yloc = ysrc + int(ystep_anim * anim_step);
+				}
 
-		//we try to scroll the map if the unit is at the edge.
-		//keep track of the old position, and if the map moves at all,
-		//then recenter it on the unit
-		adjust_map_position(disp, xloc, yloc, image->w, image->h);
+				//invalidate the source tile and all adjacent tiles,
+				//since the unit can partially overlap adjacent tiles
+				disp.draw_tile(a.x, a.y);
+				for(int tile = 0; tile != 6; ++tile)
+					disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
 
-		if(xsrc != disp.get_location_x(a) || ysrc != disp.get_location_y(a)) {
-			disp.scroll_to_tile(b.x,b.y,display::WARP);
-			xsrc = disp.get_location_x(a);
-			ysrc = disp.get_location_y(a);
-			xloc = xsrc + int(xstep * i);
-			yloc = ysrc + int(ystep * i);
-		}
+				if (!teleport_unit) {
+					const int height_adjust = src_height_adjust + (dst_height_adjust - src_height_adjust) * anim_step / nsteps_anim;
+					const double submerge = src_submerge + (dst_submerge - src_submerge) * anim_step / nsteps_anim;
+					const int xpos = xloc;
+					const int ypos = yloc - height_adjust;
+					disp.draw_unit(xpos, ypos, image, false, ftofxp(1.0), 0, 0.0, submerge);
 
-		//invalidate the source tile and all adjacent tiles,
-		//since the unit can partially overlap adjacent tiles
-		disp.draw_tile(a.x, a.y);
-		for(int tile = 0; tile != 6; ++tile)
-			disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
+					if (halo_effect != 0) {
+						int d = disp.hex_size() / 2;
+						halo::set_location(halo_effect, xpos + d, ypos + d);
+					}
+				}
 
-		if (!teleport_unit) {
-			const int height_adjust = src_height_adjust + (dst_height_adjust - src_height_adjust) * i / nsteps;
-			const double submerge = src_submerge + (dst_submerge - src_submerge) * i / nsteps;
-			const int xpos = xloc;
-			const int ypos = yloc - height_adjust;
-			disp.draw_unit(xpos, ypos, image, false, ftofxp(1.0), 0, 0.0, submerge);
-
-			if (halo_effect != 0) {
-				int d = disp.hex_size() / 2;
-				halo::set_location(halo_effect, xpos + d, ypos + d);
+				SDL_Delay(10);
+				disp.update_display();
+				events::pump();
+				movement_animation.update_current_frames();
 			}
 		}
 
-		const int new_ticks = SDL_GetTicks();
-		const int wait_time = time_between_frames - (new_ticks - ticks);
-		SDL_Delay(maximum<int>(wait_time,1));
+	} else { // use movement image instead of normal animations
+		for(int i = 0; i < nsteps; ++i) {
+			events::pump();
 
-		ticks = SDL_GetTicks();
+			surface image(image::get_image( image::locator(u.type().image_moving(),u.team_rgb_range(),u.type().flag_rgb()) ));
+			if(!face_left) {
+				image.assign(image::reverse_image(image));
+			}
 
-		if(wait_time >= 0 || skips == 4 || (i+1.0) >= nsteps) {
-			skips = 0;
-			disp.update_display();
-		} else {
-			++skips;
+			if(image == NULL) {
+				LOG_STREAM(err, display) << "failed to get image " << u.type().image_moving() << "\n";
+				return;
+			}
+
+			xsrc = disp.get_location_x(a);
+			ysrc = disp.get_location_y(a);
+			int xloc = xsrc + int(xstep * i);
+			int yloc = ysrc + int(ystep * i);
+
+			//we try to scroll the map if the unit is at the edge.
+			//keep track of the old position, and if the map moves at all,
+			//then recenter it on the unit
+			adjust_map_position(disp, xloc, yloc, image->w, image->h);
+
+			if(xsrc != disp.get_location_x(a) || ysrc != disp.get_location_y(a)) {
+				disp.scroll_to_tile(b.x,b.y,display::WARP);
+				xsrc = disp.get_location_x(a);
+				ysrc = disp.get_location_y(a);
+				xloc = xsrc + int(xstep * i);
+				yloc = ysrc + int(ystep * i);
+			}
+
+			//invalidate the source tile and all adjacent tiles,
+			//since the unit can partially overlap adjacent tiles
+			disp.draw_tile(a.x, a.y);
+			for(int tile = 0; tile != 6; ++tile)
+				disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
+
+			if (!teleport_unit) {
+				const int height_adjust = src_height_adjust + (dst_height_adjust - src_height_adjust) * i / nsteps;
+				const double submerge = src_submerge + (dst_submerge - src_submerge) * i / nsteps;
+				const int xpos = xloc;
+				const int ypos = yloc - height_adjust;
+				disp.draw_unit(xpos, ypos, image, false, ftofxp(1.0), 0, 0.0, submerge);
+
+				if (halo_effect != 0) {
+					int d = disp.hex_size() / 2;
+					halo::set_location(halo_effect, xpos + d, ypos + d);
+				}
+			}
+
+			const int new_ticks = SDL_GetTicks();
+			const int wait_time = time_between_frames - (new_ticks - ticks);
+			SDL_Delay(maximum<int>(wait_time,1));
+
+			ticks = SDL_GetTicks();
+
+			if(wait_time >= 0 || skips == 4 || (i+1.0) >= nsteps) {
+				skips = 0;
+				disp.update_display();
+			} else {
+				++skips;
+			}
 		}
 	}
 

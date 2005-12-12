@@ -261,6 +261,7 @@ public:
 	const unit_animation* teleport_animation() const;
 	const unit_animation* extra_animation(std::string flag) const;
 	const unit_animation* die_animation(const attack_type* attack) const;
+	const unit_animation* move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 
 private:
 	void operator=(const unit_type& o);
@@ -326,6 +327,18 @@ private:
 	};
 
 	std::vector<death_animation> death_animations_;
+
+	struct movement_animation
+	{
+		explicit movement_animation(const config& cfg);
+		bool matches(const std::string &terrain,gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
+
+		std::vector<std::string> terrain_types;
+		std::vector<gamemap::location::DIRECTION> directions;
+		unit_animation animation;
+	};
+
+	std::vector<movement_animation> movement_animations_;
 
         std::vector<Uint32> flag_rgb_;
 };

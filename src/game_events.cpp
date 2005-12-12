@@ -1462,12 +1462,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(u != units->end() && ! screen->fogged(u->first.x,u->first.y)) {
 			screen->highlight_hex(u->first);
 			screen->scroll_to_tile(u->first.x,u->first.y);
-			LOG_NG << "entre dans le code\n";
 
 			surface unit_image(NULL);
 			const unit_animation* const anim_ptr = u->second.type().extra_animation(cfg["flag"]);
 			if(anim_ptr != NULL) {
-				LOG_NG << "pointeur ok\n";
 				unit_animation anim(*anim_ptr);
 
 				anim.start_animation(anim.get_first_frame_time(),unit_animation::UNIT_FRAME,screen->turbo() ? 5:1);
