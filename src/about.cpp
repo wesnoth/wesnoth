@@ -274,6 +274,7 @@ std::vector<std::string> get_text() {
 		"-   Susanne Mesoy (Rarlgland)",
 
 		"_" N_("+Polish Translation"),
+		"-   Arkadiusz Danilecki (szopen)",
 		"-   Artur R. Czechowski",
 		"-   Bartek Waresiak (Dragonking)",
 		"-   BOrsuk",
