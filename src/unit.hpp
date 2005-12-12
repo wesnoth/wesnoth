@@ -58,6 +58,7 @@ public:
 	bool advances() const;
 	int side() const;
         Uint32 team_rgb() const;
+        std::vector<Uint32> team_rgb_range() const;
 	unit_race::GENDER gender() const;
 	void set_side(int new_side);
 	fixed_t alpha() const;

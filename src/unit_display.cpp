@@ -120,7 +120,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			if (unit_image->empty()) {
 				unit_loc = u.image_loc();
 			} else {
-				unit_loc = image::locator(*unit_image,u.team_rgb(),u.type().flag_rgb());
+				unit_loc = image::locator(*unit_image,u.team_rgb_range(),u.type().flag_rgb());
 			}
 
 			surface image(image::get_image(unit_loc));
@@ -142,7 +142,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	for(int i = 0; i < nsteps; ++i) {
 		events::pump();
 
-		surface image(image::get_image( image::locator(u.type().image_moving(),u.team_rgb(),u.type().flag_rgb()) ));
+		surface image(image::get_image( image::locator(u.type().image_moving(),u.team_rgb_range(),u.type().flag_rgb()) ));
 		if(!face_left) {
 			image.assign(image::reverse_image(image));
 		}
@@ -220,7 +220,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			if (unit_image->empty()) {
 			  unit_loc = u.image_loc();
 			}else{
-			  unit_loc = image::locator(*unit_image,u.team_rgb(),u.type().flag_rgb());
+			  unit_loc = image::locator(*unit_image,u.team_rgb_range(),u.type().flag_rgb());
 			}
 
 			surface image(image::get_image(unit_loc));
@@ -319,7 +319,7 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u, const 
 
 			const unit_animation::frame& frame = anim.get_current_frame();
 
-			const surface surf(image::get_image(image::locator(frame.image,u.team_rgb(), u.type().flag_rgb())));
+			const surface surf(image::get_image(image::locator(frame.image,u.team_rgb_range(), u.type().flag_rgb())));
 			if(surf.get() != NULL) {
 				unit_image = surf;
 			}
@@ -485,7 +485,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 		if(!hide) {
 
-			const surface image((unit_image == NULL) ? surface(NULL) : image::get_image(image::locator(*unit_image,att->second.team_rgb(),att->second.type().flag_rgb())));
+			const surface image((unit_image == NULL) ? surface(NULL) : image::get_image(image::locator(*unit_image,att->second.team_rgb_range(),att->second.type().flag_rgb())));
 			disp.draw_tile(a.x,a.y,image);
 		}
 
@@ -823,7 +823,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 		const std::string& unit_image_name = unit_frame.image.empty() ? attacker.image() : unit_frame.image;
 
-		image::locator unit_image(unit_image_name,attacker.team_rgb(),attacker.type().flag_rgb());
+		image::locator unit_image(unit_image_name,attacker.team_rgb_range(),attacker.type().flag_rgb());
 
 		if(!attacker.facing_left()) {
 			xoffset *= -1;

@@ -69,6 +69,8 @@ namespace game_config
 	std::string level_image;
 	std::string ellipsis_image;
 
+        std::map<int, std::vector<Uint32> > team_rgb;
+
 	namespace sounds {
 		const std::string turn_bell = "bell.wav",
 		                  receive_message = "receive.wav",
@@ -146,5 +148,14 @@ namespace game_config
 		download_campaign_image = v["download_campaign_image"];
 		level_image = v["level_image"];
 		ellipsis_image = v["ellipsis_image"];
+		
+		const config::child_list& team_colors = v.get_children("team_color");
+		for(config::child_list::const_iterator teamC = team_colors.begin(); teamC != team_colors.end(); ++teamC) {
+		    if(!(**teamC)["side"].empty() && !(**teamC)["team_rgb"].empty()){
+		    int side = atoi((**teamC)["side"].c_str());
+		    std::vector<Uint32> temp = utils::string2rgb((**teamC)["team_rgb"]);
+		    team_rgb[side]=temp;
+		  }
+		}
 	}
 }

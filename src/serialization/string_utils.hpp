@@ -114,6 +114,9 @@ utf8_string uppercase(const utf8_string&);
 /** Returns a lowercased version of the string */
 utf8_string lowercase(const utf8_string&);
 
+//convert comma seperated string into rgb values
+std::vector<Uint32> string2rgb(std::string s);
+
 }
 
 // handy wrapper around interpolate_variables_into_string and gettext

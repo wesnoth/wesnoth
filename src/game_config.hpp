@@ -17,6 +17,9 @@ class config;
 
 #include <string>
 #include <vector>
+#include <map>
+
+#include "SDL.h"
 
 //basic game configuration information is here.
 namespace game_config
@@ -48,11 +51,12 @@ namespace game_config
 
 	extern int title_logo_x, title_logo_y, title_buttons_x, title_buttons_y, title_buttons_padding, title_tip_x, title_tip_y, title_tip_width, title_tip_padding;
 
+        extern std::map<int, std::vector<Uint32> > team_rgb;
 	namespace sounds {
 		extern const std::string turn_bell, receive_message, user_arrive, user_leave;
 	}
 
-	void load_config(const config* cfg);
+        void load_config(const config* cfg);
 }
 
 #endif

@@ -108,28 +108,30 @@ team::team_info::team_info(const config& cfg)
 		colour = lexical_cast_default<int>(cfg["side"],-1);
 
 	int side = atoi(cfg["side"].c_str());
-	std::vector<std::string> rgb_vec = utils::split(cfg["team_rgb"]);
-	if(3 <= rgb_vec.size()){
-	  std::vector<std::string>::iterator c=rgb_vec.begin();
-	  int r,g,b;
-	  r = (atoi(c->c_str()));
-	  c++;
-	  if(c != rgb_vec.end()){
-	    g = (atoi(c->c_str()));
-	  }else{
-	    LOG_NG <<"Missing Green in team_rgb:"<<cfg["side"];
-	    g=0;
-	  }
-	  c++;
-	  if(c != rgb_vec.end()){
-	    b=(atoi(c->c_str()));
-	  }else{
-	    LOG_NG <<"Missing Blue in team_rgb:"<<cfg["side"];
-	    b=0;
-	  }
-	  team_rgb_[side] = ((r<<16 & 0x00FF0000) + (g<<8 & 0x0000FF00) + (b & 0x000000FF));
-	}else{
+
+	std::vector<Uint32> temp_rgb = utils::string2rgb(cfg["team_rgb"]);
+	std::vector<Uint32> global_rgb = game_config::team_rgb[side];
+
+	if(temp_rgb.size()){
+	  team_rgb_[side] = temp_rgb[0];
+	}else if(global_rgb.size()){
+	  team_rgb_[side] = global_rgb[0];
+	} else {
 	  team_rgb_.erase(side);
+	}
+	if(temp_rgb.size() > 1){
+	  team_rgb_max_[side] = temp_rgb[1];
+	}else if(global_rgb.size() > 1){
+	  team_rgb_max_[side] = global_rgb[1];
+	}else{
+	  team_rgb_max_.erase(side);
+	}
+	if(temp_rgb.size() > 2){
+	  team_rgb_min_[side] = temp_rgb[2];
+	}else if(global_rgb.size() > 2){
+	  team_rgb_min_[side] = global_rgb[2];
+	}else{
+	  team_rgb_min_.erase(side);
 	}
 
 	flag = cfg["flag"];
@@ -905,6 +907,8 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 }
 
 std::map<int, Uint32> team::team_rgb_;
+std::map<int, Uint32> team::team_rgb_max_;
+std::map<int, Uint32> team::team_rgb_min_;
 
 const Uint32 team::get_side_rgb(int side){
   std::map<int, Uint32>::iterator p=team_rgb_.find(side);
@@ -932,6 +936,22 @@ const Uint32 team::get_side_rgb(int side){
 	} else {
 		return sides[0];
 	}
+}
+
+const Uint32 team::get_side_rgb_max(int side){
+  std::map<int, Uint32>::iterator p=team_rgb_max_.find(side);
+  if(p != team_rgb_max_.end()){
+    return(p->second);
+  }
+  return((Uint32)0x00FFFFFF);
+}
+
+const Uint32 team::get_side_rgb_min(int side){
+  std::map<int, Uint32>::iterator p=team_rgb_min_.find(side);
+  if(p != team_rgb_min_.end()){
+    return(p->second);
+  }
+  return((Uint32)0x00000000);
 }
 
 const SDL_Color team::get_side_colour(int side)

@@ -222,6 +222,15 @@ Uint32 unit::team_rgb() const
   return(team::get_side_rgb(side()));
 }
 
+std::vector<Uint32> unit::team_rgb_range() const
+{
+  std::vector<Uint32> temp;
+  temp.push_back(team::get_side_rgb(side()));
+  temp.push_back(team::get_side_rgb_max(side()));
+  temp.push_back(team::get_side_rgb_min(side()));
+  return(temp);
+}
+
 unit_race::GENDER unit::gender() const
 {
 	return gender_;
@@ -917,7 +926,7 @@ const std::string& unit::image() const
 const image::locator unit::image_loc() const
 {
   if(type().flag_rgb().size()){
-    return(image::locator(image(),team_rgb(),type().flag_rgb()));
+    return(image::locator(image(),team_rgb_range(),type().flag_rgb()));
   }else{
     return(image::locator(image()));
   }

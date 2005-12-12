@@ -105,6 +105,7 @@ wesnoth_SOURCES = \
 	video.cpp \
 	serialization/binary_or_text.cpp \
 	serialization/parser.cpp \
+	serialization/string_utils.cpp \
 	widgets/button.cpp \
 	widgets/combo.cpp \
 	widgets/label.cpp \

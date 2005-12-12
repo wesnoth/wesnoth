@@ -54,10 +54,10 @@ namespace image {
 			value();
 			value(const value &a);
 			value(const char *filename);
-			value(const char *filename, Uint32 new_rgb, std::vector<Uint32> swap_rgb);
+			value(const char *filename, std::vector<Uint32> new_rgb, std::vector<Uint32> swap_rgb);
 			value(const std::string& filename);
-		        value(const std::string& filename, Uint32 new_rgb, std::vector<Uint32> swap_rgb);;
-			value(const std::string& filename, const gamemap::location& loc, Uint32 new_rgb, std::vector<Uint32> swap_rgb);
+		        value(const std::string& filename, std::vector<Uint32> new_rgb, std::vector<Uint32> swap_rgb);;
+			value(const std::string& filename, const gamemap::location& loc, std::vector<Uint32> new_rgb, std::vector<Uint32> swap_rgb);
 
 			bool operator==(const value& a) const;
 			bool operator<(const value& a) const;
@@ -65,7 +65,7 @@ namespace image {
 			type type_;
 			std::string filename_;
 			gamemap::location loc_;
-		        Uint32 new_color;
+		        std::vector<Uint32> new_color;
 		std::vector<Uint32> swap_colors;
 		};
 
@@ -76,10 +76,10 @@ namespace image {
 	        locator();
 		locator(const locator &a);
 		locator(const char *filename);
-		locator(const char *filename, Uint32 new_rgb, std::vector<Uint32> swap_rgb);
+		locator(const char *filename, std::vector<Uint32> new_rgb, std::vector<Uint32> swap_rgb);
 		locator(const std::string& filename);
-		locator(const std::string& filename, Uint32 new_rgb, std::vector<Uint32> swap_rgb);
-		locator(const std::string& filename, const gamemap::location& loc, Uint32 new_rgb=0, std::vector<Uint32> swap_rgb= std::vector<Uint32>());
+		locator(const std::string& filename, std::vector<Uint32> new_rgb, std::vector<Uint32> swap_rgb);
+		locator(const std::string& filename, const gamemap::location& loc, std::vector<Uint32> new_rgb = std::vector<Uint32>(), std::vector<Uint32> swap_rgb = std::vector<Uint32>());
 
 		locator& operator=(const locator &a);
 		bool operator==(const locator &a) const { return index_ == a.index_; }
@@ -88,7 +88,7 @@ namespace image {
 
 		const std::string &get_filename() const { return val_.filename_; }
 		const gamemap::location& get_loc() const { return val_.loc_ ; }
-		const Uint32& get_new_color() const { return val_.new_color ; }
+		const std::vector<Uint32>& get_new_color() const { return val_.new_color ; }
 		const std::vector<Uint32>& get_swap_colors() const { return val_.swap_colors ; }
 		const type get_type() const { return val_.type_; };
 		// const int get_index() const { return index_; };

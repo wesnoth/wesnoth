@@ -1333,9 +1333,9 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 			//selected ellipse not pure red at all!
 			char buf[50];
 			snprintf(buf,sizeof(buf),"misc/%sellipse-1-top.png",selected);
-			ellipse_back.assign(image::get_image(image::locator(buf,it->second.team_rgb(),temp_rgb)));
+			ellipse_back.assign(image::get_image(image::locator(buf,it->second.team_rgb_range(),temp_rgb)));
 			snprintf(buf,sizeof(buf),"misc/%sellipse-1-bottom.png",selected);
-			ellipse_front.assign(image::get_image(image::locator(buf,it->second.team_rgb(),temp_rgb)));
+			ellipse_front.assign(image::get_image(image::locator(buf,it->second.team_rgb_range(),temp_rgb)));
 		}
 
 		draw_unit(xpos,ypos - height_adjust,unit_image,false,
