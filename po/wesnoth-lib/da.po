@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-12-05 10:44+0100\n"
+"POT-Creation-Date: 2005-12-13 21:00+0100\n"
 "PO-Revision-Date: 2005-08-14 20:06+0100\n"
 "Last-Translator: Bjarke Sørensen <bs@wasd.dk>\n"
 "Language-Team: Danish <wesnoth-da@lillesvin.net>\n"
@@ -59,17 +59,17 @@ msgid "Map creation failed."
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
-#: src/preferences_display.cpp:673
+#: src/preferences_display.cpp:707
 msgid "Close Window"
 msgstr "Luk vindue"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:73 src/preferences_display.cpp:575
+#: src/hotkeys.cpp:73 src/preferences_display.cpp:609
 msgid "Preferences"
 msgstr "Indstillinger"
 
 # Igen. Kan man det både hori or verti?
-#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:235
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:236
 msgid "Scroll Speed:"
 msgstr "Panoreringshastighed:"
 
@@ -505,187 +505,208 @@ msgid "Reverse Time Graphics"
 msgstr "Omvendt tidsgrafik"
 
 #: src/preferences_display.cpp:231
+msgid "Chat Timestamping"
+msgstr ""
+
+#: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "Lydeffekter"
 
-#: src/preferences_display.cpp:232
+#: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "Musik"
 
-#: src/preferences_display.cpp:234
+#: src/preferences_display.cpp:235
 msgid "Music Volume:"
 msgstr "Musikstyrke:"
 
-#: src/preferences_display.cpp:234
+#: src/preferences_display.cpp:235
 msgid "SFX Volume:"
 msgstr "Lydeffekter styrke:"
 
-#: src/preferences_display.cpp:235
+#: src/preferences_display.cpp:236
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences_display.cpp:248
+#: src/preferences_display.cpp:249
 msgid "Sound effects on/off"
 msgstr "Lydeffekter til/fra"
 
-#: src/preferences_display.cpp:252
+#: src/preferences_display.cpp:253
 msgid "Change the sound effects volume"
 msgstr "Skift lydeffekters styrke"
 
-#: src/preferences_display.cpp:255
+#: src/preferences_display.cpp:256
 msgid "Music on/off"
 msgstr "Musik til/fra"
 
-#: src/preferences_display.cpp:259
+#: src/preferences_display.cpp:260
 msgid "Change the music volume"
 msgstr "Indstil lydstyrke"
 
 # Kan panorering være både horisontalt og vertikalt?
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:266
 msgid "Change the speed of scrolling around the map"
 msgstr "Skift hastighed for panorering på kortet"
 
-#: src/preferences_display.cpp:268 src/preferences_display.cpp:273
+#: src/preferences_display.cpp:271 src/preferences_display.cpp:273
+msgid "Set the amount of chat lines shown"
+msgstr ""
+
+#: src/preferences_display.cpp:276
+msgid "Add a timestamp to chat messages"
+msgstr ""
+
+#: src/preferences_display.cpp:279 src/preferences_display.cpp:284
 msgid "Change the brightness of the display"
 msgstr "Skift skærmens lysstyrke"
 
-#: src/preferences_display.cpp:276
+#: src/preferences_display.cpp:287
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Vælg om spillet skal afvikles i fuld skærm eller i et vindue"
 
-#: src/preferences_display.cpp:279
+#: src/preferences_display.cpp:290
 msgid "Make units move and fight faster"
 msgstr "Få enheder til at bevæge sig, og kæmpe hurtigere"
 
-#: src/preferences_display.cpp:282
+#: src/preferences_display.cpp:293
 msgid "Do not animate AI units moving"
 msgstr "Animér ikke computer enheders bevægelse"
 
-#: src/preferences_display.cpp:285
+#: src/preferences_display.cpp:296
 msgid "Overlay a grid onto the map"
 msgstr "Vis et net over kortet"
 
-#: src/preferences_display.cpp:288
+#: src/preferences_display.cpp:299
 msgid "Show messages about players joining the multiplayer lobby"
 msgstr ""
 
-#: src/preferences_display.cpp:291
+#: src/preferences_display.cpp:302
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Vis en tekst over en enhed for at angive hvor meget skade den har taget"
 
-#: src/preferences_display.cpp:293
+#: src/preferences_display.cpp:304
 msgid "Change the resolution the game runs at"
 msgstr "Skift opløsningen spillet afvikles i"
 
-#: src/preferences_display.cpp:294
+#: src/preferences_display.cpp:305
 #, fuzzy
 msgid "Change the theme the game runs with"
 msgstr "Skift opløsningen spillet afvikles i"
 
-#: src/preferences_display.cpp:297
+#: src/preferences_display.cpp:308
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Vis en dialog i starten af din tur"
 
-#: src/preferences_display.cpp:300
+#: src/preferences_display.cpp:311
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Ring en klokke i starten af din tur"
 
-#: src/preferences_display.cpp:303
+#: src/preferences_display.cpp:314
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
 "Vis en farvet cirkel omkring hver enhed for at angive hvilken side den er på"
 
-#: src/preferences_display.cpp:306
+#: src/preferences_display.cpp:317
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Vælg om solen bevæger sig fra højre mod venstre eller fra venstre mod højre"
 
-#: src/preferences_display.cpp:309
+#: src/preferences_display.cpp:320
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Brug farvede musemarkører (kan være langsommere)"
 
-#: src/preferences_display.cpp:312
+#: src/preferences_display.cpp:323
 msgid "Use graphical special effects (may be slower)"
 msgstr "Brug grafiske specialeffekter (kan være langsommere)"
 
-#: src/preferences_display.cpp:314
+#: src/preferences_display.cpp:325
 msgid "View and configure keyboard shortcuts"
 msgstr "Vis og indstil tastaturgenveje"
 
-#: src/preferences_display.cpp:499
+#: src/preferences_display.cpp:475
+msgid "Chat Lines: "
+msgstr ""
+
+#: src/preferences_display.cpp:527
 msgid "yes"
 msgstr "ja"
 
-#: src/preferences_display.cpp:501
+#: src/preferences_display.cpp:529
 msgid "no"
 msgstr "nej"
 
-#: src/preferences_display.cpp:562
+#: src/preferences_display.cpp:595
 msgid "Prefs section^General"
 msgstr "Generelt"
 
-#: src/preferences_display.cpp:563
+#: src/preferences_display.cpp:596
 msgid "Prefs section^Display"
 msgstr "Skærm"
 
-#: src/preferences_display.cpp:564
+#: src/preferences_display.cpp:597
 msgid "Prefs section^Sound"
 msgstr "Lyd"
 
-#: src/preferences_display.cpp:565
+#: src/preferences_display.cpp:598
+#, fuzzy
+msgid "Prefs section^Multiplayer"
+msgstr "Skærm"
+
+#: src/preferences_display.cpp:599
 msgid "Advanced section^Advanced"
 msgstr "Avanceret"
 
-#: src/preferences_display.cpp:616
+#: src/preferences_display.cpp:650
 msgid "There are no alternative video modes available"
 msgstr "Der er ingen alternative videomodes tilgængelige"
 
-#: src/preferences_display.cpp:645
+#: src/preferences_display.cpp:679
 msgid "Choose Resolution"
 msgstr "Vælg opløsning"
 
-#: src/preferences_display.cpp:678
+#: src/preferences_display.cpp:712
 msgid "Hotkey Settings"
 msgstr "Genvejsindstillinger"
 
-#: src/preferences_display.cpp:682 src/preferences_display.cpp:735
+#: src/preferences_display.cpp:716 src/preferences_display.cpp:769
 #, fuzzy
 msgid "Press desired Hotkey"
 msgstr "Tryk ønskede genvejstaste"
 
-#: src/preferences_display.cpp:700
+#: src/preferences_display.cpp:734
 msgid "Action"
 msgstr "Operation"
 
-#: src/preferences_display.cpp:700
+#: src/preferences_display.cpp:734
 msgid "Binding"
 msgstr "Binding"
 
-#: src/preferences_display.cpp:712
+#: src/preferences_display.cpp:746
 msgid "Change Hotkey"
 msgstr "Skift genvejstaster"
 
-#: src/preferences_display.cpp:715
+#: src/preferences_display.cpp:749
 msgid "Save Hotkeys"
 msgstr "Gem genvejstaster"
 
-#: src/preferences_display.cpp:761
+#: src/preferences_display.cpp:795
 #, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "Denne genvejstaste er allerede i brug."
 
-#: src/preferences_display.cpp:794
+#: src/preferences_display.cpp:828
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/preferences_display.cpp:800
+#: src/preferences_display.cpp:834
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/preferences_display.cpp:804
+#: src/preferences_display.cpp:838
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-12-05 10:44+0100\n"
+"POT-Creation-Date: 2005-12-13 21:00+0100\n"
 "PO-Revision-Date: 2005-12-04 22:19+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
@@ -54,16 +54,16 @@ msgid "Map creation failed."
 msgstr "Map creation failed."
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
-#: src/preferences_display.cpp:673
+#: src/preferences_display.cpp:707
 msgid "Close Window"
 msgstr "Close Window"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:73 src/preferences_display.cpp:575
+#: src/hotkeys.cpp:73 src/preferences_display.cpp:609
 msgid "Preferences"
 msgstr "Preferences"
 
-#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:235
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:236
 msgid "Scroll Speed:"
 msgstr "Scroll Speed:"
 
@@ -493,90 +493,102 @@ msgid "Reverse Time Graphics"
 msgstr "Reverse Time Graphics"
 
 #: src/preferences_display.cpp:231
+msgid "Chat Timestamping"
+msgstr ""
+
+#: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "Sound effects"
 
-#: src/preferences_display.cpp:232
+#: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "Music"
 
-#: src/preferences_display.cpp:234
+#: src/preferences_display.cpp:235
 msgid "Music Volume:"
 msgstr "Music Volume:"
 
-#: src/preferences_display.cpp:234
+#: src/preferences_display.cpp:235
 msgid "SFX Volume:"
 msgstr "SFX Volume:"
 
-#: src/preferences_display.cpp:235
+#: src/preferences_display.cpp:236
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences_display.cpp:248
+#: src/preferences_display.cpp:249
 msgid "Sound effects on/off"
 msgstr "Sound effects on/off"
 
-#: src/preferences_display.cpp:252
+#: src/preferences_display.cpp:253
 msgid "Change the sound effects volume"
 msgstr "Change the sound effects volume"
 
-#: src/preferences_display.cpp:255
+#: src/preferences_display.cpp:256
 msgid "Music on/off"
 msgstr "Music on/off"
 
-#: src/preferences_display.cpp:259
+#: src/preferences_display.cpp:260
 msgid "Change the music volume"
 msgstr "Change the music volume"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:266
 msgid "Change the speed of scrolling around the map"
 msgstr "Change the speed of scrolling around the map"
 
-#: src/preferences_display.cpp:268 src/preferences_display.cpp:273
+#: src/preferences_display.cpp:271 src/preferences_display.cpp:273
+msgid "Set the amount of chat lines shown"
+msgstr ""
+
+#: src/preferences_display.cpp:276
+msgid "Add a timestamp to chat messages"
+msgstr ""
+
+#: src/preferences_display.cpp:279 src/preferences_display.cpp:284
 msgid "Change the brightness of the display"
 msgstr "Change the brightness of the display"
 
-#: src/preferences_display.cpp:276
+#: src/preferences_display.cpp:287
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Choose whether the game should run full screen or in a window"
 
-#: src/preferences_display.cpp:279
+#: src/preferences_display.cpp:290
 msgid "Make units move and fight faster"
 msgstr "Make units move and fight faster"
 
-#: src/preferences_display.cpp:282
+#: src/preferences_display.cpp:293
 msgid "Do not animate AI units moving"
 msgstr "Do not animate AI units moving"
 
-#: src/preferences_display.cpp:285
+#: src/preferences_display.cpp:296
 msgid "Overlay a grid onto the map"
 msgstr "Overlay a grid onto the map"
 
-#: src/preferences_display.cpp:288
+#: src/preferences_display.cpp:299
 msgid "Show messages about players joining the multiplayer lobby"
 msgstr "Show messages about players joining the multiplayer lobby"
 
-#: src/preferences_display.cpp:291
+#: src/preferences_display.cpp:302
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Show text above a unit when it is hit to display damage inflicted"
 
-#: src/preferences_display.cpp:293
+#: src/preferences_display.cpp:304
 msgid "Change the resolution the game runs at"
 msgstr "Change the resolution the game runs at"
 
-#: src/preferences_display.cpp:294
+#: src/preferences_display.cpp:305
 msgid "Change the theme the game runs with"
 msgstr "Change the theme the game runs with"
 
-#: src/preferences_display.cpp:297
+#: src/preferences_display.cpp:308
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Display a dialogue at the beginning of your turn"
 
-#: src/preferences_display.cpp:300
+#: src/preferences_display.cpp:311
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Play a bell sound at the beginning of your turn"
 
-#: src/preferences_display.cpp:303
+#: src/preferences_display.cpp:314
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -584,91 +596,100 @@ msgstr ""
 "Show a coloured circle around the base of each unit to show which side it is "
 "on"
 
-#: src/preferences_display.cpp:306
+#: src/preferences_display.cpp:317
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Choose whether the sun moves left-to-right or right-to-left"
 
-#: src/preferences_display.cpp:309
+#: src/preferences_display.cpp:320
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Use coloured mouse cursors (may be slower)"
 
-#: src/preferences_display.cpp:312
+#: src/preferences_display.cpp:323
 msgid "Use graphical special effects (may be slower)"
 msgstr "Use graphical special effects (may be slower)"
 
-#: src/preferences_display.cpp:314
+#: src/preferences_display.cpp:325
 msgid "View and configure keyboard shortcuts"
 msgstr "View and configure keyboard shortcuts"
 
-#: src/preferences_display.cpp:499
+#: src/preferences_display.cpp:475
+msgid "Chat Lines: "
+msgstr ""
+
+#: src/preferences_display.cpp:527
 msgid "yes"
 msgstr "yes"
 
-#: src/preferences_display.cpp:501
+#: src/preferences_display.cpp:529
 msgid "no"
 msgstr "no"
 
-#: src/preferences_display.cpp:562
+#: src/preferences_display.cpp:595
 msgid "Prefs section^General"
 msgstr "General"
 
-#: src/preferences_display.cpp:563
+#: src/preferences_display.cpp:596
 msgid "Prefs section^Display"
 msgstr "Display"
 
-#: src/preferences_display.cpp:564
+#: src/preferences_display.cpp:597
 msgid "Prefs section^Sound"
 msgstr "Sound"
 
-#: src/preferences_display.cpp:565
+#: src/preferences_display.cpp:598
+#, fuzzy
+msgid "Prefs section^Multiplayer"
+msgstr "Display"
+
+#: src/preferences_display.cpp:599
 msgid "Advanced section^Advanced"
 msgstr "Advanced"
 
-#: src/preferences_display.cpp:616
+#: src/preferences_display.cpp:650
 msgid "There are no alternative video modes available"
 msgstr "There are no alternative video modes available"
 
-#: src/preferences_display.cpp:645
+#: src/preferences_display.cpp:679
 msgid "Choose Resolution"
 msgstr "Choose Resolution"
 
-#: src/preferences_display.cpp:678
+#: src/preferences_display.cpp:712
 msgid "Hotkey Settings"
 msgstr "Hotkey Settings"
 
-#: src/preferences_display.cpp:682 src/preferences_display.cpp:735
+#: src/preferences_display.cpp:716 src/preferences_display.cpp:769
 msgid "Press desired Hotkey"
 msgstr "Press desired Hotkey"
 
-#: src/preferences_display.cpp:700
+#: src/preferences_display.cpp:734
 msgid "Action"
 msgstr "Action"
 
-#: src/preferences_display.cpp:700
+#: src/preferences_display.cpp:734
 msgid "Binding"
 msgstr "Binding"
 
-#: src/preferences_display.cpp:712
+#: src/preferences_display.cpp:746
 msgid "Change Hotkey"
 msgstr "Change Hotkey"
 
-#: src/preferences_display.cpp:715
+#: src/preferences_display.cpp:749
 msgid "Save Hotkeys"
 msgstr "Save Hotkeys"
 
-#: src/preferences_display.cpp:761
+#: src/preferences_display.cpp:795
 msgid "This Hotkey is already in use."
 msgstr "This Hotkey is already in use."
 
-#: src/preferences_display.cpp:794
+#: src/preferences_display.cpp:828
 msgid "Saved Theme Preference: "
 msgstr "Saved Theme Preference: "
 
-#: src/preferences_display.cpp:800
+#: src/preferences_display.cpp:834
 msgid "New theme will take effect on next new or loaded game."
 msgstr "New theme will take effect on next new or loaded game."
 
-#: src/preferences_display.cpp:804
+#: src/preferences_display.cpp:838
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "No known themes.  Try changing from within an existing game."
 
