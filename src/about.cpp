@@ -108,6 +108,7 @@ std::vector<std::string> get_text() {
 		"-   James Spencer (Shade)",
 		"-   Joseph Simmons (Turin)",
 		"-   Justin Zaun (jzaun)",
+		"_   Scott Klempner",
 
 		"_" N_("+Multiplayer Developers"),
 		"-   Bartek Waresiak (Dragonking)",
