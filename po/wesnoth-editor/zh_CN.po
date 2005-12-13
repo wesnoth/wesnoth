@@ -1,150 +1,151 @@
-# #-#-#-#-#  wesnoth-editor.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
-# Chinese translations for Battle for Wesnoth package.
+# ----wesnoth-editor.cpp1.po (Battle for Wesnoth 1.1+cvs)  ----Chinese translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
-#
+# Automatically generated <>, 2005.
+# Huang huan <unicon221@gmail.com>, 2005.(unicon)
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
+"Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-06 17:30+0100\n"
-"PO-Revision-Date: 2005-03-20 17:07+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2005-12-08 01:27+0800\n"
+"Last-Translator: Huang huan <unicon221@gmail.com>\n"
+"Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/themes/editor.cfg:445
 msgid "File"
-msgstr ""
+msgstr "文件"
 
 #: data/themes/editor.cfg:454
 msgid "Edit"
-msgstr ""
+msgstr "编辑"
 
 #: src/editor/editor.cpp:162
 msgid "Draw tiles"
-msgstr ""
+msgstr "描绘地形"
 
 #: src/editor/editor.cpp:164
 msgid "Fill"
-msgstr ""
+msgstr "填充"
 
 #: src/editor/editor.cpp:166
 msgid "Set player's starting position"
-msgstr ""
+msgstr "设置玩家启始点"
 
 #: src/editor/editor.cpp:168
 msgid "Zoom in"
-msgstr ""
+msgstr "放大"
 
 #: src/editor/editor.cpp:170
 msgid "Zoom out"
-msgstr ""
+msgstr "缩小"
 
 #: src/editor/editor.cpp:172
 msgid "Undo"
-msgstr ""
+msgstr "撤销"
 
 #: src/editor/editor.cpp:174
 msgid "Redo"
-msgstr ""
+msgstr "重做"
 
 #: src/editor/editor.cpp:176
 msgid "Zoom to default view"
-msgstr ""
+msgstr "恢复默认视角"
 
 #: src/editor/editor.cpp:178
 msgid "Toggle grid"
-msgstr ""
+msgstr "切换格子"
 
 #: src/editor/editor.cpp:180
 msgid "Resize the map"
-msgstr ""
+msgstr "调整地图大小"
 
 #: src/editor/editor.cpp:182
 msgid "Flip map"
-msgstr ""
+msgstr "翻转地图"
 
 #: src/editor/editor.cpp:378
 msgid "Language"
-msgstr ""
+msgstr "语言"
 
 #: src/editor/editor.cpp:379
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "选择你最爱的语言"
 
 #: src/editor/editor.cpp:406
 msgid "Save the Map As"
-msgstr ""
+msgstr "另存地图为"
 
 #: src/editor/editor.cpp:417
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "地图已存在。你想覆盖吗？"
 
 #: src/editor/editor.cpp:440
 msgid "Player "
-msgstr ""
+msgstr "玩家"
 
 #: src/editor/editor.cpp:443
 msgid "Which Player?"
-msgstr ""
+msgstr "哪个玩家？"
 
 #: src/editor/editor.cpp:444
 msgid "Which player should start here?"
-msgstr ""
+msgstr "哪个玩家在这里开始？"
 
 #: src/editor/editor.cpp:496
 msgid "Choose a Map to Load"
-msgstr ""
+msgstr "选择地图载入"
 
 #: src/editor/editor.cpp:500
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
-msgstr ""
+msgstr "警告：地图名中有非法字符。请以另外的名字保存。"
 
 #: src/editor/editor.cpp:518 src/editor/editor.cpp:597
 msgid "The file does not contain a valid map."
-msgstr ""
+msgstr "当前文件不包含有效地图。"
 
 #: src/editor/editor.cpp:659
 msgid "'$filename' does not exist or can not be read as a file."
-msgstr ""
+msgstr "‘$filename’ 不存在或不能以文件形式被读取。"
 
 #: src/editor/editor.cpp:671
 msgid "Load failed: "
-msgstr ""
+msgstr "载入失败： "
 
 #: src/editor/editor.cpp:870
 msgid "You must have a hex selected on the board."
-msgstr ""
+msgstr "在这你得有一个选中的格子。"
 
 #: src/editor/editor.cpp:1119
 msgid "Quit Editor"
-msgstr ""
+msgstr "退出编辑器"
 
 #: src/editor/editor.cpp:1124
 msgid "Do you want to save the map before quitting?"
-msgstr ""
+msgstr "你想在退出游戏之前保存地图吗？"
 
 #: src/editor/editor.cpp:1156
 msgid "Map saved."
-msgstr ""
+msgstr "地图已保存。"
 
 #: src/editor/editor.cpp:1163
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "不能保存地图： $msg"
 
 #: src/editor/editor.cpp:1178
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "错误：文件名中有非法字符。"
 
 #: src/editor/editor.cpp:1234
 msgid "Player"
-msgstr ""
+msgstr "玩家"
 
 #: src/editor/editor_dialogs.cpp:47
 msgid "Your modifications to the map will be lost. Continue?"
@@ -213,8 +214,9 @@ msgid "Hotkeys"
 msgstr ""
 
 #: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
+#, fuzzy
 msgid "Resize Map"
-msgstr ""
+msgstr "调整地图大小"
 
 #: src/editor/editor_dialogs.cpp:408
 msgid "OK"
@@ -234,23 +236,24 @@ msgstr ""
 
 #: src/editor/editor_main.cpp:250
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "韦诺之战地图编辑器"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
-msgstr ""
+msgstr "前置地形"
 
 #: src/editor/editor_palettes.cpp:313
 msgid "BG"
-msgstr ""
+msgstr "后置地形"
 
 #: src/mapgen_dialog.cpp:98
 msgid "Map Generator"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:103
+#, fuzzy
 msgid "Players:"
-msgstr ""
+msgstr "玩家"
 
 #: src/mapgen_dialog.cpp:106
 msgid "Number of Hills:"
@@ -295,3 +298,6 @@ msgstr ""
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr ""
+
+#~ msgid "Settings"
+#~ msgstr "设置"

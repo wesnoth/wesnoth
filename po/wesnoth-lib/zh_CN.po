@@ -2,15 +2,16 @@
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
-#
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-06 17:30+0100\n"
-"PO-Revision-Date: 2005-10-11 20:53-0000\n"
+"PO-Revision-Date: 2005-12-12 02:09+0800\n"
 "Last-Translator: firen <qinhy@163.com>\n"
-"Language-Team: none\n"
+"Language-Team: none <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,7 +34,7 @@ msgstr "结束单位的回合"
 
 #: src/hotkeys.cpp:49
 msgid "Leader"
-msgstr "首领"
+msgstr "领袖"
 
 #: src/hotkeys.cpp:50
 msgid "Undo"
@@ -53,11 +54,11 @@ msgstr "缩小"
 
 #: src/hotkeys.cpp:54
 msgid "Default Zoom"
-msgstr "缺省大小"
+msgstr "默认大小"
 
 #: src/hotkeys.cpp:55 src/preferences.cpp:887
 msgid "Toggle Full Screen"
-msgstr "开/关全屏"
+msgstr "切换全屏"
 
 #: src/hotkeys.cpp:56
 msgid "Screenshot"
@@ -69,7 +70,7 @@ msgstr "加速"
 
 #: src/hotkeys.cpp:58
 msgid "Unit Description"
-msgstr "部队说明"
+msgstr "单位说明"
 
 #: src/hotkeys.cpp:59
 msgid "Rename Unit"
@@ -129,7 +130,7 @@ msgstr "选项"
 
 #: src/hotkeys.cpp:73
 msgid "Scenario Objectives"
-msgstr "任务说明"
+msgstr "剧本目标"
 
 #: src/hotkeys.cpp:74
 msgid "Unit List"
@@ -161,7 +162,7 @@ msgstr "设定地形"
 
 #: src/hotkeys.cpp:82
 msgid "Quit Editor"
-msgstr "退度编辑器"
+msgstr "退出编辑器"
 
 #: src/hotkeys.cpp:83
 msgid "New Map"
@@ -181,7 +182,7 @@ msgstr "另存为"
 
 #: src/hotkeys.cpp:87
 msgid "Set Player's keep"
-msgstr "设定玩家的城堡"
+msgstr "设定玩家的要塞"
 
 #: src/hotkeys.cpp:88
 msgid "Flood Fill"
@@ -210,7 +211,7 @@ msgstr "重新读取文件"
 
 #: src/hotkeys.cpp:94
 msgid "Resize Map"
-msgstr "改变地图大小"
+msgstr "调整地图大小"
 
 #: src/hotkeys.cpp:95
 msgid "Flip Map"
@@ -323,7 +324,7 @@ msgstr "显示彩色光标"
 
 #: src/preferences.cpp:896
 msgid "Show Haloing Effects"
-msgstr "现实光晕效果"
+msgstr "显示光晕效果"
 
 #: src/preferences.cpp:897
 msgid "Video Mode"
@@ -351,11 +352,11 @@ msgstr "音乐"
 
 #: src/preferences.cpp:904
 msgid "Music Volume:"
-msgstr "音乐音量"
+msgstr "音乐音量："
 
 #: src/preferences.cpp:904
 msgid "SFX Volume:"
-msgstr "音效音量"
+msgstr "SFX音效音量："
 
 #: src/preferences.cpp:905
 msgid "Gamma:"
@@ -363,7 +364,7 @@ msgstr "亮度："
 
 #: src/preferences.cpp:905
 msgid "Scroll Speed:"
-msgstr "卷屏速度"
+msgstr "卷屏速度："
 
 #: src/preferences.cpp:918
 msgid "Sound effects on/off"
@@ -395,7 +396,7 @@ msgstr "选择游戏是以窗口运行还是以全屏模式运行"
 
 #: src/preferences.cpp:949
 msgid "Make units move and fight faster"
-msgstr "是单位移动和攻击速度加快"
+msgstr "使单位移动和攻击速度加快"
 
 #: src/preferences.cpp:952
 msgid "Do not animate AI units moving"
@@ -490,7 +491,7 @@ msgstr "请按下要设定的快捷键"
 
 #: src/preferences.cpp:1362
 msgid "Action"
-msgstr "行为"
+msgstr "动作"
 
 #: src/preferences.cpp:1362
 msgid "Binding"
@@ -515,7 +516,7 @@ msgstr "错误"
 
 #: src/show_dialog.cpp:416 src/show_dialog.cpp:429
 msgid "OK"
-msgstr "成功"
+msgstr "确定"
 
 #: src/show_dialog.cpp:422
 msgid "Yes"
@@ -540,4 +541,121 @@ msgstr "接收数据中..."
 
 #: src/show_dialog.cpp:872
 msgid "KB"
-msgstr "KB"
+msgstr ""
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "你对地图所作的修改会失去，继续吗？"
+
+#~ msgid "Create New Map"
+#~ msgstr "创建新地图"
+
+#~ msgid "Width:"
+#~ msgstr "宽："
+
+#~ msgid "Height:"
+#~ msgstr "高："
+
+#~ msgid "Generate New Map"
+#~ msgstr "生成新地图"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "生成随机地图"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "随机生成设置"
+
+#~ msgid "Map creation failed."
+#~ msgstr "地图创建失败。"
+
+#~ msgid "X-Axis"
+#~ msgstr "X－轴"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y－轴"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "翻转周围 (这将改变地图的大小)："
+
+#~ msgid "Play"
+#~ msgstr "玩"
+
+#~ msgid "Reset"
+#~ msgstr "重置"
+
+#~ msgid "Stop"
+#~ msgstr "停止"
+
+#~ msgid "Next Turn"
+#~ msgstr "下一回合"
+
+#~ msgid "Next Side"
+#~ msgstr "下一阵营"
+
+#~ msgid "Shroud"
+#~ msgstr "覆盖物"
+
+#~ msgid "Fog"
+#~ msgstr "迷雾"
+
+#~ msgid "Skip animation"
+#~ msgstr "跳过动画"
+
+#~ msgid "Map Generator"
+#~ msgstr "地图生成器"
+
+#~ msgid "Players:"
+#~ msgstr "玩家："
+
+#~ msgid "Number of Hills:"
+#~ msgstr "丘陵数量："
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "丘陵最大大小："
+
+#~ msgid "Villages:"
+#~ msgstr "村庄："
+
+#~ msgid "Landform:"
+#~ msgstr "陆地形式："
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "城堡间的路"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "/1000瓦"
+
+#~ msgid "Coastal"
+#~ msgstr "海岸"
+
+#~ msgid "Inland"
+#~ msgstr "内陆"
+
+#~ msgid "Island"
+#~ msgstr "岛屿"
+
+#~ msgid "Show lobby joins"
+#~ msgstr "显示大厅加入"
+
+#~ msgid "Theme"
+#~ msgstr "主题"
+
+#~ msgid "Show messages about players joining the multiplayer lobby"
+#~ msgstr "显示玩家加入多人游戏大厅的信息"
+
+#~ msgid "Change the theme the game runs with"
+#~ msgstr "调整游戏运行时的主题"
+
+#~ msgid "Saved Theme Preference: "
+#~ msgstr "保存主题设置： "
+
+#~ msgid "New theme will take effect on next new or loaded game."
+#~ msgstr "新主题在下一个新或载入的游戏时生效。"
+
+#~ msgid "No known themes.  Try changing from within an existing game."
+#~ msgstr "没有以知主题。  试着用已有的主题内来代替。"
+
+#~ msgid "Delete File"
+#~ msgstr "删除文件"
+
+#~ msgid "Deletion of the file failed."
+#~ msgstr "删除文件失败。"
