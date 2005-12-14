@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-13 20:57+0100\n"
-"PO-Revision-Date: 2005-12-12 22:03+0100\n"
+"PO-Revision-Date: 2005-12-14 01:10+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -461,7 +461,6 @@ msgid "Shroud and Fog of War"
 msgstr "Całun i Mgła Wojny"
 
 #: data/help.cfg:138
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -475,15 +474,13 @@ msgid ""
 msgstr ""
 "Podczas rozgrywania niektórych scenariuszy części mapy będą przed tobą "
 "ukryte. Istnieją dwa mechanizmy, które mogą być użyte niezależnie od siebie. "
-"W miejscu zakrytym Całunem zarówno jednostki jak i teren stają się "
-"niewidoczne. Jednakże, gdy już zostanie odkryty, zawsze będziesz widział "
+"W miejscu zakrytym Całunem zarówno jednostki, jak i teren, stają się "
+"niewidoczne. Jednakże, gdy zostanie  on odkryty, zawsze będziesz widział "
 "wszystko, co się tam dzieje. Mgła Wojny ukrywa przed tobą wyłącznie "
-"jednostki oraz posiadaczy wiosek (innych niż twoi sojusznicy). Mgła Wojny "
-"znika tymczasowo, gdy posiadasz w pobliżu jakieś jednostki, ale powraca, gdy "
-"się oddalą. Zarówno Całun jak i Mgła Wojny usuwane są przez jednostki. Każda "
-"jednostka odkrywa miejsca w zasięgu swojego ruchu (z pominięciem stref "
-"kontroli i jednostek przeciwnika) oraz lokacje bezpośrednio do nich "
-"przylegające."
+"jednostki oraz posiadaczy wiosek (innych niż twoi sojusznicy). Zarówno Całun "
+"jak i Mgła Wojny usuwane są przez jednostki. Każda jednostka odkrywa miejsca "
+"przyległe do pól, które znajdują się w zasięgu swojego ruchu (z pominięciem "
+"stref kontroli i jednostek przeciwnika)."
 
 #: data/help.cfg:143
 msgid "Combat"
@@ -1977,7 +1974,6 @@ msgstr ""
 "wyłącznie rozmową Baldrasem."
 
 #: data/scenarios/multiplayer/2p_Across_the_River.cfg:3
-#, fuzzy
 msgid "2p - Across the River"
 msgstr "2g - Przez rzekę"
 
@@ -2486,7 +2482,7 @@ msgstr "Las w śniegu"
 
 #: data/terrain.cfg:398
 msgid "Chasm"
-msgstr ""
+msgstr "Otchłań"
 
 #: data/terrain.cfg:424
 msgid "Encampment"
@@ -2561,38 +2557,32 @@ msgid "statuspanel^movement"
 msgstr "ruch"
 
 #: data/themes/default.cfg:451
-#, fuzzy
 msgid "Replay"
-msgstr "powtórka"
+msgstr "Powtórka"
 
 #: data/themes/default.cfg:464
-#, fuzzy
 msgid "Play"
-msgstr "Gracze:"
+msgstr "Graj"
 
 #: data/themes/default.cfg:477
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: data/themes/default.cfg:490
-#, fuzzy
 msgid "Reset"
-msgstr "Pustynia"
+msgstr "Reset"
 
 #: data/themes/default.cfg:503
-#, fuzzy
 msgid "Next Turn"
-msgstr "Tura"
+msgstr "Następna tura"
 
 #: data/themes/default.cfg:516
-#, fuzzy
 msgid "Next Side"
-msgstr "Dalej"
+msgstr "Następna strona"
 
 #: data/themes/default.cfg:552
-#, fuzzy
 msgid "Skip animation"
-msgstr "+Tłumaczenie słowackie"
+msgstr "Pomiń animację"
 
 #: data/themes/default.cfg:651
 msgid "Act."
@@ -2853,15 +2843,14 @@ msgstr ""
 "pomogą ci odnieść zwycięstwo."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also removes "
 "their zone of control, allowing your wounded units to escape or helping you "
 "reach fleeing enemy units."
 msgstr ""
 "Zdolność \"spowalniania\" zaatakowanych jednostek sprawia, że ruszają się "
-"wolniej oraz tracą jeden ze swoich ataków. Jest to szczególnie korzystne, "
-"gdy mają tylko kilka potężnych ataków."
+"wolniej oraz usuwa ich strefę kontroli, pozwalając twoim  rannym jednostkom "
+"wycofać się albo pomagając w dogonieniu uciekających wrogów."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -3197,7 +3186,6 @@ msgid "teleport"
 msgstr "teleportacja"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -3205,8 +3193,9 @@ msgid ""
 "to stone)."
 msgstr ""
 "Cios w plecy:\n"
-"Ten atak powoduje podwójne obrażenia, jeśli po drugiej stronie celu znajduje "
-"się przyjazna jednostka. (Nie działa to z jednostkami sojuszników.)"
+"Ten atak zadaje podwójne obrażenia, jeśli po drugiej stronie celu znajduje "
+"się wroga mu jednostka, która jest w pełni sprawna (np. nie jest zamieniona "
+"w kamień)."
 
 #: data/translations/english.cfg:96
 msgid ""
@@ -3292,6 +3281,11 @@ msgid ""
 "move at half normal speed, do not emit a zone of control, and always lose "
 "initiative in fights."
 msgstr ""
+"Spowolnienie:\n"
+"Ten atak spowalnia cel. Spowolnienie zmienia kolejność ataków, pozwalając "
+"atakującemu zaatakować zanim obrońca zacznie walczyć. Spowolnione jednostki "
+"poruszają się z połową swojej normalnej szybkości, nie roztaczają strefy "
+"kontroli i zawsze tracą inicjatywę w walce."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -4183,9 +4177,8 @@ msgid "tentacle"
 msgstr "macka"
 
 #: data/units/Cuttle_Fish.cfg:42
-#, fuzzy
 msgid "swarm"
-msgstr "uderzenie"
+msgstr "rój"
 
 #: data/units/Cuttle_Fish.cfg:76
 msgid "ink"
@@ -4226,9 +4219,8 @@ msgstr ""
 "szansę na trafienie przeciwnika."
 
 #: data/units/Dark_Adept.cfg:33 data/units/Dark_Adept.cfg:126
-#, fuzzy
 msgid "shadow wave"
-msgstr "pchnięcie"
+msgstr "fala cienia"
 
 #: data/units/Dark_Adept.cfg:97
 msgid "female^Dark Adept"
@@ -6065,12 +6057,10 @@ msgid "net"
 msgstr "sieć"
 
 #: data/units/Goblin_Rouser.cfg:3
-#, fuzzy
 msgid "Goblin Rouser"
-msgstr "Gobliński plądrownik"
+msgstr "Gobliński buntownik"
 
 #: data/units/Goblin_Rouser.cfg:27
-#, fuzzy
 msgid ""
 "Standard Bearers are an oddity amongst Goblins. Firstly they have survived a "
 "war, but perhaps more significantly, they were remembered to have survived "
@@ -6081,11 +6071,11 @@ msgid ""
 "to it to deal more damage in combat, though this only applies to units of "
 "lower level."
 msgstr ""
-"Ranga Wielkiego Marszałka jest jedną z najbardziej cenionych w armiach "
-"ludzkości, a ci którzy noszą ten tytuł przeszli wiele prób, dowodząc swoich "
-"umiejętności taktycznych oraz sprawności w walce.\n"
-"\n"
-"Uwagi specjalne: zdolność dowodzenia wielkiego marszałka pozwala "
+"Chorąży to rzadki widok w armiach goblinów. Po pierwsze, udało im się "
+"przetrwać wojnę, ale co ważniejsze, inne gobliny zapamiętały, że udało im "
+"się tego dokonać. Prowadzony przez niego rozszalały motłoch zdaje się jednak "
+"efektywnie hartować młodych wojowników.\n"
+"Uwagi specjalne: zdolność dowodzenia goblińskiego buntownika pozwala "
 "sąsiadującym przyjacielskim jednostkom niższego poziomu zadawać w walce "
 "większe obrażenia."
 
@@ -7127,7 +7117,6 @@ msgid "Mounted Fighter"
 msgstr "Konny wojownik"
 
 #: data/units/Mounted_Fighter.cfg:30
-#, fuzzy
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -7136,7 +7125,7 @@ msgid ""
 msgstr ""
 "Szlachetni mężowie równin przechodzą trening z innymi jeźdźcami, by pewnego "
 "dnia stać się wielkimi wojownikami. Uczeni są także sztuki dowodzenia, "
-"dzięki czemu mogą zostać kapitanami w armiach klanów."
+"dzięki czemu mogą zostać jednymi z najlepszych kapitanów w armiach klanów."
 
 #: data/units/Mounted_Warrior.cfg:3
 msgid "Mounted Warrior"
@@ -9007,9 +8996,8 @@ msgid "+Scenario Designers"
 msgstr "+Projektanci kampanii"
 
 #: src/about.cpp:113
-#, fuzzy
 msgid "+Multiplayer Developers"
-msgstr "+Mapy do gry wieloosobowej"
+msgstr "+Gra wieloosobowa"
 
 #: src/about.cpp:118
 msgid "+Multiplayer Maps"
@@ -9084,9 +9072,8 @@ msgid "+Greek Translation"
 msgstr "+Tłumaczenie greckie"
 
 #: src/about.cpp:249
-#, fuzzy
 msgid "+Hebrew Translation"
-msgstr "+Tłumaczenie greckie"
+msgstr "+Tłumaczenie hebrajskie"
 
 #: src/about.cpp:253
 msgid "+Hungarian Translation"
@@ -9113,9 +9100,8 @@ msgid "+Polish Translation"
 msgstr "+Tłumaczenie polskie"
 
 #: src/about.cpp:300
-#, fuzzy
 msgid "+Portuguese Translation"
-msgstr "+Tłumaczenie portugalskie(brazyliskie)"
+msgstr "+Tłumaczenie portugalskie"
 
 #: src/about.cpp:303
 msgid "+Portuguese (Brazil) Translation"
@@ -10599,13 +10585,13 @@ msgid "invisible: "
 msgstr "niewidzialna: "
 
 #: src/reports.cpp:139
-#, fuzzy
 msgid ""
 "This unit has been slowed. It emits no zone of control, moves at half speed "
 "and enemies will be able to strike earlier once during a fight."
 msgstr ""
-"Ta jednostka została spowolniona. Porusza się z połową normalnej prędkości i "
-"może wykonać o jeden atak mniej na turę."
+"Ta jednostka została spowolniona. Nie roztacza strefy kontroli, porusza się "
+"z połową normalnej prędkości, a wrogowie będą mogli zadać jej w walce "
+"pierwszy cios."
 
 #: src/reports.cpp:139
 msgid "slowed: "
@@ -10645,12 +10631,11 @@ msgstr "obrażenia"
 
 #: src/reports.cpp:254
 msgid "weapon range: "
-msgstr ""
+msgstr "zasięg broni:"
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "damage type: "
-msgstr "obrażenia"
+msgstr "typ obrażeń:"
 
 #: src/reports.cpp:310
 msgid "Lawful units: "

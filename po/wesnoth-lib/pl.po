@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-13 21:00+0100\n"
-"PO-Revision-Date: 2005-12-12 20:16+0100\n"
+"PO-Revision-Date: 2005-12-13 22:30+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -243,39 +243,36 @@ msgid "Best Possible Enemy Moves"
 msgstr "Najlepsze możliwe ruchy wroga"
 
 #: src/hotkeys.cpp:81
-#, fuzzy
 msgid "Play"
-msgstr "Gracze:"
+msgstr "Graj"
 
 #: src/hotkeys.cpp:82
 msgid "Reset"
-msgstr ""
+msgstr "Reset"
 
 #: src/hotkeys.cpp:83
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: src/hotkeys.cpp:84
-#, fuzzy
 msgid "Next Turn"
-msgstr "Następna jednostka"
+msgstr "Następna tura"
 
 #: src/hotkeys.cpp:85
-#, fuzzy
 msgid "Next Side"
-msgstr "Następna jednostka"
+msgstr "Następna strona"
 
 #: src/hotkeys.cpp:86
 msgid "Shroud"
-msgstr ""
+msgstr "Całun"
 
 #: src/hotkeys.cpp:87
 msgid "Fog"
-msgstr ""
+msgstr "Mgła"
 
 #: src/hotkeys.cpp:88
 msgid "Skip animation"
-msgstr ""
+msgstr "Pomiń animacje"
 
 #: src/hotkeys.cpp:90
 msgid "Set Terrain"
@@ -461,7 +458,7 @@ msgstr "Pomiń ruchy komputera"
 
 #: src/preferences_display.cpp:219
 msgid "Show lobby joins"
-msgstr ""
+msgstr "Pokazuj wejścia do lobby"
 
 #: src/preferences_display.cpp:220
 msgid "Show Floating Labels"
@@ -489,7 +486,7 @@ msgstr "Pokaż efekty halo"
 
 #: src/preferences_display.cpp:227
 msgid "Theme"
-msgstr ""
+msgstr "Skórka"
 
 #: src/preferences_display.cpp:229
 msgid "Adjust Gamma"
@@ -501,7 +498,7 @@ msgstr "Odwróć wskaźnik czasu"
 
 #: src/preferences_display.cpp:231
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "Znaczniki czasowe wiadomości"
 
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
@@ -545,11 +542,11 @@ msgstr "Zmień szybkość przewijania mapy"
 
 #: src/preferences_display.cpp:271 src/preferences_display.cpp:273
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "Ustawia liczbę pokazywanych linii chatu"
 
 #: src/preferences_display.cpp:276
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Dodaj czas do wiadomości"
 
 #: src/preferences_display.cpp:279 src/preferences_display.cpp:284
 msgid "Change the brightness of the display"
@@ -574,7 +571,7 @@ msgstr "Rysuj siatkę na polu gry"
 
 #: src/preferences_display.cpp:299
 msgid "Show messages about players joining the multiplayer lobby"
-msgstr ""
+msgstr "Wyświetlaj wiadomości o graczach dołączających do lobby"
 
 #: src/preferences_display.cpp:302
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -585,9 +582,8 @@ msgid "Change the resolution the game runs at"
 msgstr "Zmień rozdzielczość obrazu."
 
 #: src/preferences_display.cpp:305
-#, fuzzy
 msgid "Change the theme the game runs with"
-msgstr "Zmień rozdzielczość obrazu."
+msgstr "Zmień skórkę z jaką działa gra"
 
 #: src/preferences_display.cpp:308
 msgid "Display a dialog at the beginning of your turn"
@@ -623,7 +619,7 @@ msgstr "Pozwala obejrzeć i zmienić skróty klawiszowe."
 
 #: src/preferences_display.cpp:475
 msgid "Chat Lines: "
-msgstr ""
+msgstr "Linie wiadomości:"
 
 #: src/preferences_display.cpp:527
 msgid "yes"
@@ -646,9 +642,8 @@ msgid "Prefs section^Sound"
 msgstr "Dźwięk"
 
 #: src/preferences_display.cpp:598
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "Ekran"
+msgstr "Prefs section^Gra wieloosobowa"
 
 #: src/preferences_display.cpp:599
 msgid "Advanced section^Advanced"
@@ -692,15 +687,16 @@ msgstr "Ten skrót jest już używany."
 
 #: src/preferences_display.cpp:828
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Zapisz"
 
 #: src/preferences_display.cpp:834
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
+"Nowa skórka zostanie zastosowana po rozpoczęciu nowej lub załadowaniu gry."
 
 #: src/preferences_display.cpp:838
 msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
+msgstr "Brak znanych skórek. Spróbuj zmienić ją w trakcie gry."
 
 #: src/show_dialog.cpp:314
 msgid "Error"
