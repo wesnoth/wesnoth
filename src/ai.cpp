@@ -468,10 +468,6 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 
 			if(show_move && unit_display::unit_visible_on_path(info_.disp,info_.map,steps,u_it->second,info_.state.get_time_of_day(),info_.units,info_.teams)) {
 
-				if(!info_.disp.fogged(from.x,from.y)) {
-					info_.disp.set_paths(&current_paths);
-				}
-
 				info_.disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
 
 				info_.disp.hide_unit(u_it->first,true);
