@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-13 20:57+0100\n"
-"PO-Revision-Date: 2005-12-05 10:24+0200\n"
+"PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
 "MIME-Version: 1.0\n"
@@ -2556,38 +2556,32 @@ msgid "statuspanel^movement"
 msgstr "beweging"
 
 #: data/themes/default.cfg:451
-#, fuzzy
 msgid "Replay"
-msgstr "wys weer"
+msgstr "Wys weer"
 
 #: data/themes/default.cfg:464
-#, fuzzy
 msgid "Play"
-msgstr "Spelers:"
+msgstr "Speel"
 
 #: data/themes/default.cfg:477
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: data/themes/default.cfg:490
-#, fuzzy
 msgid "Reset"
-msgstr "Woestyn"
+msgstr "Terugstel"
 
 #: data/themes/default.cfg:503
-#, fuzzy
 msgid "Next Turn"
-msgstr "Beurt"
+msgstr "Volgende Beurt"
 
 #: data/themes/default.cfg:516
-#, fuzzy
 msgid "Next Side"
-msgstr "Volgende"
+msgstr "Volgende Kant"
 
 #: data/themes/default.cfg:552
-#, fuzzy
 msgid "Skip animation"
-msgstr "+Slowaakse Vertaling"
+msgstr ""
 
 #: data/themes/default.cfg:651
 msgid "Act."
@@ -3217,7 +3211,6 @@ msgstr ""
 "ander kant van die teiken is. (Dit werk nie vir bongenote nie.)"
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -3225,7 +3218,8 @@ msgid ""
 msgstr ""
 "Waansin:\n"
 "Hetsy dit aanvallend of verdedigend gebruik word, sal hierdie aanval "
-"voortduur totdat een van die vegters sneuwel."
+"voortduur totdat een van die vegters sneuwel, of 30 rondtes van aanvalle is "
+"verby."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -3238,7 +3232,6 @@ msgstr ""
 "hierdie eenheid dubbele skade ly vanaf die teiken se teenaanval."
 
 #: data/translations/english.cfg:102
-#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -3246,7 +3239,8 @@ msgid ""
 msgstr ""
 "Dreineer:\n"
 "Hierdie eenheid dreineer lewende eenhede se gesondheid en genees homself met "
-"'n hoeveelheid gelykstaande aan die helfte van die skade wat dit toedien."
+"'n hoeveelheid gelykstaande aan die helfte van die skade wat dit toedien, "
+"afgerond."
 
 #: data/translations/english.cfg:105
 msgid ""
@@ -4204,7 +4198,6 @@ msgid "tentacle"
 msgstr "tentakel"
 
 #: data/units/Cuttle_Fish.cfg:42
-#, fuzzy
 msgid "swarm"
 msgstr "slaan toe"
 
@@ -4247,9 +4240,8 @@ msgstr ""
 "hoë kans om te tref."
 
 #: data/units/Dark_Adept.cfg:33 data/units/Dark_Adept.cfg:126
-#, fuzzy
 msgid "shadow wave"
-msgstr "stoot"
+msgstr ""
 
 #: data/units/Dark_Adept.cfg:97
 msgid "female^Dark Adept"
@@ -6095,7 +6087,6 @@ msgid "Goblin Rouser"
 msgstr "Kabouter Spiesvegter"
 
 #: data/units/Goblin_Rouser.cfg:27
-#, fuzzy
 msgid ""
 "Standard Bearers are an oddity amongst Goblins. Firstly they have survived a "
 "war, but perhaps more significantly, they were remembered to have survived "
@@ -6106,13 +6097,6 @@ msgid ""
 "to it to deal more damage in combat, though this only applies to units of "
 "lower level."
 msgstr ""
-"Die rang van Grootmaarskalk word hoog aangeprys in die leërs van die "
-"mensdom, en diegene wat die titel dra moes vele strawwe toetse deurstaan om "
-"hulle taktiese vermoëns en aansienlike durf te bewys in gevegte.\n"
-"\n"
-"Spesiale Nota's: Die leierskap van 'n Grootmaarskalk stel goedgesinde "
-"eenhede daarlangs in staat om meer skade in gevegte te berokken, dit geld "
-"egter net vir eenhede op 'n laer vlak."
 
 #: data/units/Goblin_Spearman.cfg:3
 msgid "Goblin Spearman"
@@ -6370,6 +6354,7 @@ msgstr ""
 msgid "Horse Lord"
 msgstr "Perdemeester"
 
+# morning star is a staff with ball attached to one end with a chain
 #: data/units/Horse_Lord.cfg:30
 #, fuzzy
 msgid ""
@@ -9048,9 +9033,8 @@ msgid "+Scenario Designers"
 msgstr "+Scenario Ontwerpers"
 
 #: src/about.cpp:113
-#, fuzzy
 msgid "+Multiplayer Developers"
-msgstr "+Veelspeler Kaarte"
+msgstr "+Veelspeler Ontwikkelaars"
 
 #: src/about.cpp:118
 msgid "+Multiplayer Maps"
