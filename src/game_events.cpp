@@ -1221,7 +1221,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		while(un != units->end()) {
 			if(game_events::unit_matches_filter(un,cfg)) {
 				if(cfg["animate"] == "yes") {
-					screen->scroll_to_tile(un->first.x,un->first.y,display::WARP);
+					screen->scroll_to_tile(un->first.x,un->first.y);
 					unit_display::unit_die(*screen,un->first,un->second);
 				}
 

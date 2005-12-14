@@ -92,8 +92,9 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	tod_hex_mask1(NULL), tod_hex_mask2(NULL), diagnostic_label_(0),
 	fps_handle_(0)
 {
-	if(non_interactive())
+	if(non_interactive()) {
 		screen_.lock_updates(true);
+	}
 
 	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
 
@@ -227,8 +228,10 @@ SDL_Rect display::screen_area() const
 
 bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
 {
-	return (x < area.x || x >= area.x + area.w ||
-		y < area.y || y >= area.y + area.h);
+	const int x_thresh = hex_width();
+	const int y_thresh = hex_size();
+	return (x < area.x + x_thresh || x >= area.x + area.w - x_thresh ||
+		y < area.y + y_thresh || y >= area.y + area.h - y_thresh);
 }
 
 void display::select_hex(gamemap::location hex)
@@ -252,8 +255,9 @@ void display::highlight_hex(gamemap::location hex)
 	invalidate(mouseoverHex_);
 	invalidate_game_status();
 
-	if(has_unit)
+	if(has_unit) {
 		invalidate_unit();
+	}
 }
 
 gamemap::location display::hex_clicked_on(int xclick, int yclick, gamemap::location::DIRECTION* nearest_hex, gamemap::location::DIRECTION* second_nearest_hex)
@@ -318,45 +322,58 @@ gamemap::location display::pixel_position_to_hex(int x, int y, gamemap::location
 			if(x_offset > y_offset/2) {
 				*nearest_hex = gamemap::location::SOUTH_EAST;
 				if(second_nearest_hex != NULL) {
-					if(x_offset/2 > y_offset)    *second_nearest_hex = gamemap::location::NORTH_EAST;
-					else                         *second_nearest_hex = gamemap::location::SOUTH;
+					if(x_offset/2 > y_offset) {
+						*second_nearest_hex = gamemap::location::NORTH_EAST;
+					} else {
+						*second_nearest_hex = gamemap::location::SOUTH;
+					}
 				}
-			}
-			else if(-x_offset > y_offset/2) {
+			} else if(-x_offset > y_offset/2) {
 				*nearest_hex = gamemap::location::SOUTH_WEST;
 				if(second_nearest_hex != NULL) {
-					if(-x_offset/2 > y_offset)   *second_nearest_hex = gamemap::location::NORTH_WEST;
-					else                         *second_nearest_hex = gamemap::location::SOUTH;
+					if(-x_offset/2 > y_offset) {
+						*second_nearest_hex = gamemap::location::NORTH_WEST;
+					} else {
+						*second_nearest_hex = gamemap::location::SOUTH;
+					}
 				}
-			}
-			else {
+			} else {
 				*nearest_hex = gamemap::location::SOUTH;
 				if(second_nearest_hex != NULL) {
-					if(x_offset > 0)             *second_nearest_hex = gamemap::location::SOUTH_EAST;
-					else                         *second_nearest_hex = gamemap::location::SOUTH_WEST;
+					if(x_offset > 0) {
+						*second_nearest_hex = gamemap::location::SOUTH_EAST;
+					} else {
+						*second_nearest_hex = gamemap::location::SOUTH_WEST;
+					}
 				}
 			}
-		}
-		else {
+		} else { // y_offset <= 0
 			if(x_offset > -y_offset/2) {
 				*nearest_hex = gamemap::location::NORTH_EAST;
 				if(second_nearest_hex != NULL) {
-					if(x_offset/2 > -y_offset)   *second_nearest_hex = gamemap::location::SOUTH_EAST;
-					else                         *second_nearest_hex = gamemap::location::NORTH;
+					if(x_offset/2 > -y_offset) {
+						*second_nearest_hex = gamemap::location::SOUTH_EAST;
+					} else {
+						*second_nearest_hex = gamemap::location::NORTH;
+					}
 				}
-			}
-			else if(-x_offset > -y_offset/2) {
+			} else if(-x_offset > -y_offset/2) {
 				*nearest_hex = gamemap::location::NORTH_WEST;
 				if(second_nearest_hex != NULL) {
-					if(-x_offset/2 > -y_offset)  *second_nearest_hex = gamemap::location::SOUTH_WEST;
-					else                         *second_nearest_hex = gamemap::location::NORTH;
+					if(-x_offset/2 > -y_offset) {
+						*second_nearest_hex = gamemap::location::SOUTH_WEST;
+					} else {
+						*second_nearest_hex = gamemap::location::NORTH;
+					}
 				}
-			}
-			else {
+			} else {
 				*nearest_hex = gamemap::location::NORTH;
 				if(second_nearest_hex != NULL) {
-					if(x_offset > 0)             *second_nearest_hex = gamemap::location::NORTH_EAST;
-					else                         *second_nearest_hex = gamemap::location::NORTH_WEST;
+					if(x_offset > 0) {
+						*second_nearest_hex = gamemap::location::NORTH_EAST;
+					} else {
+						*second_nearest_hex = gamemap::location::NORTH_WEST;
+					}
 				}
 			}
 		}
@@ -386,14 +403,18 @@ void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::locati
 	bottomright.x  = (xpos_ + rect.w) / tile_width;
 	bottomright.y  = ((ypos_ + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_;
 
-	if(topleft.x > -1)
+	if(topleft.x > -1) {
 		topleft.x--;
-	if(topleft.y > -1)
+	}
+	if(topleft.y > -1) {
 		topleft.y--;
-	if(bottomright.x < map_.x())
+	}
+	if(bottomright.x < map_.x()) {
 		bottomright.x++;
-	if(bottomright.y < map_.y())
+	}
+	if(bottomright.y < map_.y()) {
 		bottomright.y++;
+	}
 }
 
 gamemap::location display::minimap_location_on(int x, int y)
@@ -460,7 +481,7 @@ double display::zoom(int amount)
 		map_labels_.recalculate_labels();
 		invalidate_all();
 
-		// Forces a redraw after zooming. This prevents some graphic glitches from occuring.
+		// Forces a redraw after zooming. This prevents some graphic glitches from occurring.
 		draw();
 	}
 
@@ -497,13 +518,15 @@ void display::screenshot()
 
 void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_fogged)
 {
-	if(screen_.update_locked() || (check_fogged && fogged(x,y)))
+	if(screen_.update_locked() || (check_fogged && fogged(x,y))) {
 		return;
+	}
 
 	const gamemap::location loc(x,y);
 
-	if(map_.on_board(loc) == false)
+	if(map_.on_board(loc) == false) {
 		return;
+	}
 
 	const int xpos = get_location_x(loc);
 	const int ypos = get_location_y(loc);
@@ -521,8 +544,9 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 
 	int num_moves = (abs(xmove) > abs(ymove) ? abs(xmove):abs(ymove))/speed;
 
-	if(scroll_type == WARP || turbo())
+	if(scroll_type == WARP || turbo()) {
 		num_moves = 1;
+	}
 
 	for(int i = 0; i != num_moves; ++i) {
 		events::pump();
@@ -574,7 +598,8 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 	}
 }
 
-void display::scroll_to_leader(unit_map& units, int side){
+void display::scroll_to_leader(unit_map& units, int side)
+{
 	const unit_map::iterator leader = find_leader(units,side);
 
 	if(leader != units_.end()) {
@@ -602,20 +627,25 @@ void display::bounds_check_position()
 	const int xend = tile_width*map_.x() + tile_width/3;
 	const int yend = zoom_*map_.y() + zoom_/2;
 
-	if(xpos_ + map_area().w > xend)
-		xpos_ -= xpos_ + map_area().w - xend;
+	if(xpos_ > xend - map_area().w) {
+		xpos_ = xend - map_area().w;
+	}
 
-	if(ypos_ + map_area().h > yend)
-		ypos_ -= ypos_ + map_area().h - yend;
+	if(ypos_ > yend - map_area().h) {
+		ypos_ = yend - map_area().h;
+	}
 
-	if(xpos_ < 0)
+	if(xpos_ < 0) {
 		xpos_ = 0;
+	}
 
-	if(ypos_ < 0)
+	if(ypos_ < 0) {
 		ypos_ = 0;
+	}
 
-	if(zoom_ != orig_zoom)
+	if(zoom_ != orig_zoom) {
 		image::set_zoom(zoom_);
+	}
 }
 
 void display::redraw_everything()
@@ -649,8 +679,9 @@ void display::redraw_everything()
 
 void display::flip()
 {
-	if(video().faked())
+	if(video().faked()) {
 		return;
+	}
 
 	const surface frameBuffer = get_video_surface();
 
@@ -709,9 +740,9 @@ void draw_label(CVideo& video, surface target, const theme::label& label)
         color<< c_start << red << c_sep << green << c_sep << blue << c_end;
         std::string text = label.text();
 
-        if(label.font_rgb_set()){
-          color<<text;
-          text = color.str();
+        if(label.font_rgb_set()) {
+		color<<text;
+		text = color.str();
         }
 	const std::string& icon = label.icon();
 	SDL_Rect& loc = label.location(screen_area());
@@ -778,8 +809,9 @@ void display::draw(bool update,bool force)
 		redrawMinimap_ = true;
 		changed = true;
 	} else if(!map_.empty()) {
-		if(!invalidated_.empty())
+		if(!invalidated_.empty()) {
 			changed = true;
+		}
 
 		for(std::set<gamemap::location>::const_iterator it =
 		    invalidated_.begin(); it != invalidated_.end(); ++it) {
@@ -828,8 +860,9 @@ void display::draw(bool update,bool force)
 
 void display::update_display()
 {
-	if(screen_.update_locked())
+	if(screen_.update_locked()) {
 		return;
+	}
 
 	if(preferences::show_fps()) {
 		static int last_sample = SDL_GetTicks();
@@ -863,8 +896,9 @@ void display::draw_sidebar()
 {
         draw_report(reports::REPORT_CLOCK);
 
-	if(teams_.empty())
+	if(teams_.empty()) {
 		return;
+	}
 
 	if(invalidateUnit_) {
 		//we display the unit the mouse is over if it is over a unit
@@ -882,9 +916,11 @@ void display::draw_sidebar()
 					teams_,teams_[viewing_team()]);
 		}
 
-		if(i != units_.end() && !fogged(i->first.x,i->first.y))
-			for(size_t r = reports::UNIT_REPORTS_BEGIN; r != reports::UNIT_REPORTS_END; ++r)
+		if(i != units_.end() && !fogged(i->first.x,i->first.y)) {
+			for(size_t r = reports::UNIT_REPORTS_BEGIN; r != reports::UNIT_REPORTS_END; ++r) {
 				draw_report(reports::TYPE(r));
+			}
+		}
 
 		invalidateUnit_ = false;
 	}
@@ -897,8 +933,9 @@ void display::draw_sidebar()
 
 void display::draw_game_status()
 {
-	if(teams_.empty())
+	if(teams_.empty()) {
 		return;
+	}
 
 	for(size_t r = reports::STATUS_REPORTS_BEGIN; r != reports::STATUS_REPORTS_END; ++r) {
 		draw_report(reports::TYPE(r));
@@ -940,8 +977,9 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 
 void display::draw_report(reports::TYPE report_num)
 {
-	if(!team_valid())
+	if(!team_valid()) {
 		return;
+	}
 
 	const theme::status_item* const item = theme_.get_status_item(reports::report_name(report_num));
 	if(item != NULL) {
@@ -1024,16 +1062,18 @@ void display::draw_report(reports::TYPE report_num)
 			SDL_Rect ellipsis_area =rect;
 			for(reports::report::iterator i = report.begin(); i != report.end(); ++i) {
 			  temp.str("");
-				if(i->text.empty() == false){
+				if(i->text.empty() == false) {
 				  if(used_ellipsis == false) {
 					// Draw a text element
-				        if(item->font_rgb_set()){
-					  temp <<color.str();
+				        if(item->font_rgb_set()) {
+						temp <<color.str();
 					}
 					temp << i->text;
 					str = temp.str();
 					area = font::draw_text(&screen_,rect,item->font_size(),font::NORMAL_COLOUR,str,x,y);
-					if(area.h > tallest) tallest = area.h;
+					if(area.h > tallest) {
+						tallest = area.h;
+					}
 					if(i->text[i->text.size() - 1] == '\n') {
 						x = rect.x;
 						y += tallest;
@@ -1042,7 +1082,7 @@ void display::draw_report(reports::TYPE report_num)
 						x += area.w;
 					}
 				  }
-				} else if(i->image.get_filename().empty() == false){
+				} else if(i->image.get_filename().empty() == false) {
 				  if(used_ellipsis == false) {
 					// Draw an image element
 					surface img(image::get_image(i->image,image::UNSCALED));
@@ -1056,7 +1096,7 @@ void display::draw_report(reports::TYPE report_num)
 						continue;
 					}
 
-					if(rect.w + rect.x - x < img->w && image_count){
+					if(rect.w + rect.x - x < img->w && image_count) {
 					  //we have more than one image, and this one doesn't fit.
 					  img=surface(image::get_image(game_config::ellipsis_image,image::UNSCALED));
 					  used_ellipsis=true;
@@ -1069,12 +1109,14 @@ void display::draw_report(reports::TYPE report_num)
 					draw_image_for_report(img, area);
 
 					image_count++;
-					if(area.h > tallest) tallest = area.h;
+					if(area.h > tallest) {
+						tallest = area.h;
+					}
 
-					if(! used_ellipsis){
-					  x += area.w;
-					}else{
-					  ellipsis_area=area;
+					if(! used_ellipsis) {
+						x += area.w;
+					} else {
+						ellipsis_area = area;
 					}
 				  }
 				} else {
@@ -1082,15 +1124,15 @@ void display::draw_report(reports::TYPE report_num)
 					continue;
 				}
 				if(i->tooltip.empty() == false) {
-				  if(! used_ellipsis){
-					tooltips::add_tooltip(area,i->tooltip);
-				  }else{ //collect all tooltips for the ellipsis
-				    ellipsis_tooltip<<i->tooltip<<"\n";
-				  }
+					if(! used_ellipsis) {
+						tooltips::add_tooltip(area,i->tooltip);
+					} else { //collect all tooltips for the ellipsis
+						ellipsis_tooltip<<i->tooltip<<"\n";
+					}
 				}
 			}
-			if(used_ellipsis){
-			  tooltips::add_tooltip(ellipsis_area,ellipsis_tooltip.str());
+			if(used_ellipsis) {
+				tooltips::add_tooltip(ellipsis_area,ellipsis_tooltip.str());
 			}
 		}
 	} else {
@@ -1101,8 +1143,9 @@ void display::draw_report(reports::TYPE report_num)
 void display::draw_minimap(int x, int y, int w, int h)
 {
 	const surface surf(get_minimap(w,h));
-	if(surf == NULL)
+	if(surf == NULL) {
 		return;
+	}
 
 	SDL_Rect minimap_location = {x,y,w,h};
 
@@ -1118,8 +1161,9 @@ void display::draw_minimap(int x, int y, int w, int h)
 				(teams_[currentTeam_].is_enemy(u->second.side()) &&
 				u->second.invisible(map_.underlying_terrain(map_[u->first.x][u->first.y]),
 				status_.get_time_of_day().lawful_bonus,u->first,
-				units_,teams_)))
+				units_,teams_))) {
 			continue;
+		}
 
 		const int side = u->second.side();
 		const SDL_Color col = team::get_side_colour(side);
@@ -1172,8 +1216,9 @@ void display::draw_halo_on_tile(int x, int y)
 void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		fixed_t highlight_ratio, Uint32 blend_with)
 {
-	if(screen_.update_locked())
+	if(screen_.update_locked()) {
 		return;
+	}
 
 	const gamemap::location loc(x,y);
 	int xpos = get_location_x(loc);
@@ -1242,8 +1287,9 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 			return;
 		}
 
-		if(highlight_ratio == ftofxp(1.0))
+		if(highlight_ratio == ftofxp(1.0)) {
 			highlight_ratio = it->second.alpha();
+		}
 
 		if(u.invisible(map_.underlying_terrain(map_[x][y]),
 					status_.get_time_of_day().lawful_bonus,loc,
@@ -1361,8 +1407,9 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 	if (u.can_recruit()) {
 		surface crown(image::get_image("misc/leader-crown.png",image::SCALED,image::NO_ADJUST_COLOUR));
 		if(!crown.null()) {
-			if(bar_alpha != ftofxp(1.0))
+			if(bar_alpha != ftofxp(1.0)) {
 				crown = adjust_surface_alpha(crown, bar_alpha);
+			}
 
 			SDL_Rect r = {0, 0, crown->w, crown->h};
 			video().blit_surface(xpos,ypos,crown,&r);
@@ -1448,8 +1495,9 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 
 void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 blend_to)
 {
-	if(screen_.update_locked())
+	if(screen_.update_locked()) {
 		return;
+	}
 
 	draw_halo_on_tile(x,y);
 
@@ -1599,8 +1647,9 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 
 	if(game_config::debug && debugHighlights_.count(gamemap::location(x,y))) {
 		const surface cross(image::get_image(game_config::cross_image));
-		if(cross != NULL)
+		if(cross != NULL) {
 			draw_unit(xpos,ypos,cross,false,debugHighlights_[loc],0);
+		}
 	}
 
 	update_rect(xpos,ypos,zoom_,zoom_);
@@ -1645,8 +1694,9 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	std::vector<gamemap::location>::const_iterator i =
 	         std::find(route_.steps.begin(),route_.steps.end(),loc);
 
-	if(i == route_.steps.begin() || i == route_.steps.end())
+	if(i == route_.steps.begin() || i == route_.steps.end()) {
 		return;
+	}
 
 	const bool left_foot = is_even(i - route_.steps.begin());
 
@@ -1654,8 +1704,9 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	//to go next.
 	//if we're on the last step, then we want them facing according to where
 	//they came from, so we move i back by one
-	if(i+1 == route_.steps.end() && i != route_.steps.begin())
+	if(i+1 == route_.steps.end() && i != route_.steps.begin()) {
 		--i;
+	}
 
 	gamemap::location::DIRECTION direction = gamemap::location::NORTH;
 
@@ -1797,12 +1848,13 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 	static const int terrain_types[] = { gamemap::FOGGED, gamemap::VOID_TERRAIN, 0 };
 
 	for(int i = 0; i != 6; ++i) {
-		if(shrouded(adjacent[i].x,adjacent[i].y))
+		if(shrouded(adjacent[i].x,adjacent[i].y)) {
 			tiles[i] = gamemap::VOID_TERRAIN;
-		else if(!fogged(loc.x,loc.y) && fogged(adjacent[i].x,adjacent[i].y))
+		} else if(!fogged(loc.x,loc.y) && fogged(adjacent[i].x,adjacent[i].y)) {
 			tiles[i] = gamemap::FOGGED;
-		else
+		} else {
 			tiles[i] = 0;
+		}
 	}
 
 
@@ -1810,8 +1862,9 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 		//find somewhere that doesn't have overlap to use as a starting point
 		int start;
 		for(start = 0; start != 6; ++start) {
-			if(tiles[start] != *terrain)
+			if(tiles[start] != *terrain) {
 				break;
+			}
 		}
 
 		if(start == 6) {
@@ -1835,8 +1888,9 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 					if(!image::exists(stream.str() + ".png")) {
 						//if we don't have any surface at all,
 						//then move onto the next overlapped area
-						if(name.empty())
+						if(name.empty()) {
 							i = (i+1)%6;
+						}
 						break;
 					} else {
 						name = stream.str();
@@ -1907,8 +1961,9 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 surface display::get_flag(gamemap::TERRAIN terrain, int x, int y)
 {
 	const bool village = map_.is_village(terrain);
-	if(!village)
+	if(!village) {
 		return surface(NULL);
+	}
 
 	const gamemap::location loc(x,y);
 
@@ -1961,10 +2016,11 @@ void display::set_route(const paths::route* route)
 {
 	invalidate_route();
 
-	if(route != NULL)
+	if(route != NULL) {
 		route_ = *route;
-	else
+	} else {
 		route_.steps.clear();
+	}
 
 	invalidate_route();
 }
@@ -1972,8 +2028,9 @@ void display::set_route(const paths::route* route)
 void display::remove_footstep(const gamemap::location& loc)
 {
 	const std::vector<gamemap::location>::iterator it = std::find(route_.steps.begin(),route_.steps.end(),loc);
-	if(it != route_.steps.end())
+	if(it != route_.steps.end()) {
 		route_.steps.erase(it);
+	}
 }
 
 void display::float_label(const gamemap::location& loc, const std::string& text,
@@ -2071,8 +2128,9 @@ const SDL_Rect& display::calculate_energy_bar(surface surf)
 		const int count = std::count_if(itor,i2,is_energy_colour());
 
 		if(itor != i2) {
-			if(first_row == -1)
+			if(first_row == -1) {
 				first_row = y;
+			}
 
 			first_col = itor - i1;
 			last_col = first_col + count;
@@ -2113,15 +2171,17 @@ void display::invalidate_animations()
 
 	for(size_t i = 0; i < flags_.size(); ++i) {
 		flags_[i].update_current_frame();
-		if(flags_[i].frame_changed())
+		if(flags_[i].frame_changed()) {
 			animate_flags = true;
+		}
 	}
 
 	for(int x = topleft.x; x <= bottomright.x; ++x) {
 		for(int y = topleft.y; y <= bottomright.y; ++y) {
 			gamemap::location loc(x,y);
-			if(builder_.update_animation(loc) || (map_.is_village(loc) && animate_flags))
+			if(builder_.update_animation(loc) || (map_.is_village(loc) && animate_flags)) {
 				invalidated_.insert(loc);
+			}
 		}
 	}
 }
@@ -2199,8 +2259,9 @@ void display::set_advancing_unit(const gamemap::location& loc, double amount)
 bool display::turbo() const
 {
 	bool res = turbo_;
-	if(keys_[SDLK_LSHIFT] || keys_[SDLK_RSHIFT])
+	if(keys_[SDLK_LSHIFT] || keys_[SDLK_RSHIFT]) {
 		res = !res;
+	}
 
 	return res;
 }
@@ -2245,18 +2306,20 @@ void display::clear_debug_highlights()
 
 bool display::shrouded(int x, int y) const
 {
-	if(team_valid())
+	if(team_valid()) {
 		return teams_[currentTeam_].shrouded(x,y);
-	else
+	} else {
 		return false;
+	}
 }
 
 bool display::fogged(int x, int y) const
 {
-	if(team_valid())
+	if(team_valid()) {
 		return teams_[currentTeam_].fogged(x,y);
-	else
+	} else {
 		return false;
+	}
 }
 
 bool display::team_valid() const
@@ -2363,8 +2426,9 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	bool action;
 	std::string msg;
 
-	if(speaker == "server" && !preferences::lobby_joins() && message.find("has logged into the lobby") != -1)
+	if(speaker == "server" && !preferences::lobby_joins() && message.find("has logged into the lobby") != -1) {
 		return;
+	}
 
 	if(message.find("/me ") == 0) {
 		msg.assign(message,4,message.size());

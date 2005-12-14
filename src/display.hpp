@@ -101,7 +101,7 @@ public:
 	//function which will scroll such that location x,y is on-screen.
 	// WARP jumps to x,y; SCROLL uses scroll speed;
 	// ONSCREEN only scrolls if x,y is offscreen
-	void scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type=SCROLL, bool check_fogged=true);
+	void scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
 
 	//function which will scroll such that location x1,y1 is on-screen.
 	//it will also try to make it such that x2,y2 is on-screen but this
