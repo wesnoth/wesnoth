@@ -19,7 +19,8 @@ class config;
 #include <vector>
 #include <map>
 
-#include "SDL.h"
+// from "SDL_types.h"
+typedef unsigned int    Uint32;
 
 //basic game configuration information is here.
 namespace game_config
