@@ -282,13 +282,22 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			str << "<166,146,117>  ";
 			static const std::string swarm_string("swarm");
-			if (!at_it->special().empty()) {
-			  if(at_it->special() == swarm_string){
-			    str << gettext(at_it->special().c_str())<<"("<<at_it->num_swarm_attacks(u->second.hitpoints(),u->second.max_hitpoints())<<"/"<< at_it->num_attacks() <<")" << "\n";
+			const std::string special = at_it->special();
+			if (!special.empty()) {
+			  if(special == swarm_string){
+			    str << gettext(special.c_str())<<"("<<at_it->num_swarm_attacks(u->second.hitpoints(),u->second.max_hitpoints())<<"/"<< at_it->num_attacks() <<")" << "\n";
+			    tooltip << string_table["weapon_special_" + special + "_description"];
 			  }else{
-			    str << gettext(at_it->special().c_str());
+			    //check if we use special(argument)
+			    const std::string::size_type parindex = special.find('(',0);
+			    if (parindex != std::string::npos) {
+			    	// If there is an argument, we use weapon_special_specialname_arg_description instead
+				tooltip << string_table["weapon_special_" + special.substr(0,parindex) + "_arg_description"];
+			    } else {
+				tooltip << string_table["weapon_special_" + special + "_description"];
+			    }
+			    str << gettext(special.c_str());
 			  }
-				tooltip << string_table["weapon_special_" + at_it->special() + "_description"];
 				str<<"\n";
 				res.add_text(str,tooltip);
 			}
