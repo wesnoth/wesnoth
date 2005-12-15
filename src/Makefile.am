@@ -390,9 +390,14 @@ noinst_HEADERS = \
 #    Headers
 #############################################################################
 
+#color_range.cpp should be removed, but game_config depends on it.
+#game_config has very few things that are needed elsewhere, it should be
+#removed.  Requires moving path and version at least to other files.
+
 libwesnoth_core_a_SOURCES = \
 	config.cpp \
 	filesystem.cpp \
+	color_range.cpp \
 	game_config.cpp \
 	gettext.cpp \
 	log.cpp \
