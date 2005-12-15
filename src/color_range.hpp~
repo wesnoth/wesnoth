@@ -1,0 +1,16 @@
+
+class color_range
+{
+public:
+  color_range(Uint32 mid = 0x00808080 , Uint32 max = 0x00FFFFFF, Uint32 min = 0x00000000)mid_(mid),max_(max),min_(min){};
+  Uint32 mid(){return mid_};
+  Uint32 max(){return max_};
+  Uint32 min(){return min_};
+  bool operator<(color_range& b){
+    if(mid_ != b.mid()) return(mid_ < b.mid());
+    if(max_ != b.max()) return(max_ < b.max());
+    return(min_ < b.min());
+  }
+private:
+  Uint32 mid_ , max_ , min_;
+};
