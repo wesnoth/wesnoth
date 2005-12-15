@@ -15,12 +15,11 @@
 
 class config;
 
+#include "color_range.hpp"
+
 #include <string>
 #include <vector>
 #include <map>
-
-// from "SDL_types.h"
-typedef unsigned int    Uint32;
 
 //basic game configuration information is here.
 namespace game_config
@@ -52,7 +51,7 @@ namespace game_config
 
 	extern int title_logo_x, title_logo_y, title_buttons_x, title_buttons_y, title_buttons_padding, title_tip_x, title_tip_y, title_tip_width, title_tip_padding;
 
-        extern std::map<int, std::vector<Uint32> > team_rgb;
+        extern std::map<int, color_range> team_rgb_range;
 	namespace sounds {
 		extern const std::string turn_bell, receive_message, user_arrive, user_leave;
 	}

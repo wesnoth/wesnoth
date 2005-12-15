@@ -20,6 +20,7 @@
 #include "util.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
+#include "color_range.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -685,7 +686,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		movement_animations_.push_back(movement_animation(**movement_anim));
 	}
 
-	flag_rgb_ = utils::string2rgb(cfg["flag_rgb"]);
+	flag_rgb_ = string2rgb(cfg["flag_rgb"]);
 }
 
 unit_type::~unit_type()

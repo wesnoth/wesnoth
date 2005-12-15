@@ -46,6 +46,7 @@ wesnoth_SOURCES = \
 	cavegen.cpp \
 	checksum.cpp \
 	clipboard.cpp \
+	color_range.cpp \
 	config_adapter.cpp \
 	cursor.cpp \
 	dialogs.cpp \
@@ -142,6 +143,7 @@ wesnoth_editor_SOURCES = \
 	cavegen.cpp \
 	checksum.cpp \
 	clipboard.cpp \
+	color_range.cpp \
 	cursor.cpp \
 	dialogs.cpp \
 	display.cpp \
@@ -353,6 +355,7 @@ noinst_HEADERS = \
 	team.hpp \
 	game_events.hpp \
 	clipboard.hpp \
+	color_range.hpp \
 	events.hpp \
 	playcampaign.hpp \
 	multiplayer.hpp \

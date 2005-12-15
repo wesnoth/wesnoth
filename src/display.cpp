@@ -1373,7 +1373,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 			const char* const selected = selectedHex_ == loc ? "selected-" : "";
 			std::vector<Uint32> temp_rgb;
 			//ellipse not pure red=255!
-			for(int i=0;i<256;i++){
+			for(int i=255;i>100;i--){
 			  temp_rgb.push_back((Uint32)(i<<16));
 			}
 			//selected ellipse not pure red at all!

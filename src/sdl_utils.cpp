@@ -365,7 +365,7 @@ surface darken_image(surface const &surf)
 	return create_optimized_surface(nsurf);
 }
 
-surface recolor_image(surface surf, const std::vector<Uint32>& new_rgb, const std::vector<Uint32>& old_rgb)
+surface recolor_image(surface surf, const color_range& new_rgb, const std::vector<Uint32>& old_rgb)
 {
   // function to replace vectors of colors with new color-range
   // parallel input vectors chosen to prevent need to include SDL structures
@@ -373,15 +373,15 @@ surface recolor_image(surface surf, const std::vector<Uint32>& new_rgb, const st
   // just pass a vector of SDL colors instead...
 
   if(old_rgb.size()){
-    Uint16 new_red  = (new_rgb[0] & 0x00FF0000)>>16;
-    Uint16 new_green= (new_rgb[0] & 0x0000FF00)>>8;
-    Uint16 new_blue = (new_rgb[0] & 0x000000FF);
-    Uint16 max_red  = (new_rgb[1] & 0x00FF0000)>>16;
-    Uint16 max_green= (new_rgb[1] & 0x0000FF00)>>8 ;
-    Uint16 max_blue = (new_rgb[1] & 0x000000FF)    ; 
-    Uint16 min_red  = (new_rgb[2] & 0x00FF0000)>>16;
-    Uint16 min_green= (new_rgb[2] & 0x0000FF00)>>8 ; 
-    Uint16 min_blue = (new_rgb[2] & 0x000000FF)    ;
+    Uint16 new_red  = (new_rgb.mid() & 0x00FF0000)>>16;
+    Uint16 new_green= (new_rgb.mid() & 0x0000FF00)>>8;
+    Uint16 new_blue = (new_rgb.mid() & 0x000000FF);
+    Uint16 max_red  = (new_rgb.max() & 0x00FF0000)>>16;
+    Uint16 max_green= (new_rgb.max() & 0x0000FF00)>>8 ;
+    Uint16 max_blue = (new_rgb.max() & 0x000000FF)    ; 
+    Uint16 min_red  = (new_rgb.min() & 0x00FF0000)>>16;
+    Uint16 min_green= (new_rgb.min() & 0x0000FF00)>>8 ; 
+    Uint16 min_blue = (new_rgb.min() & 0x000000FF)    ;
     
     if(surf == NULL)
       return NULL;

@@ -141,19 +141,19 @@ locator::locator(const std::string &filename) :
 	init_index();
 }
 
-locator::locator(const char *filename, std::vector<Uint32> new_rgb, std::vector<Uint32> swap_rgb) :
+locator::locator(const char *filename, color_range new_rgb, std::vector<Uint32> swap_rgb) :
 	val_(filename, new_rgb, swap_rgb)
 {
 	init_index();
 }
 
-locator::locator(const std::string &filename, std::vector<Uint32> new_rgb, std::vector<Uint32> swap_rgb) :
+locator::locator(const std::string &filename, color_range new_rgb, std::vector<Uint32> swap_rgb) :
 	val_(filename, new_rgb, swap_rgb)
 {
 	init_index();
 }
 
-locator::locator(const std::string &filename, const gamemap::location &loc, std::vector<Uint32> new_rgb, std::vector<Uint32> swap_rgb) :
+locator::locator(const std::string &filename, const gamemap::location &loc, color_range new_rgb, std::vector<Uint32> swap_rgb) :
 	val_(filename, loc, new_rgb, swap_rgb)
 {
 	init_index();
@@ -183,7 +183,7 @@ locator::value::value(const char *filename) :
 }
 
 
-locator::value::value(const char *filename, std::vector<Uint32> new_rgb, std::vector<Uint32> swap_rgb) :
+locator::value::value(const char *filename, color_range new_rgb, std::vector<Uint32> swap_rgb) :
   type_(SUB_FILE), filename_(filename), new_color(new_rgb), swap_colors(swap_rgb)
 {
 }
@@ -193,12 +193,12 @@ locator::value::value(const std::string& filename) :
 {
 }
 
-locator::value::value(const std::string& filename, std::vector<Uint32> new_rgb, std::vector<Uint32> swap_rgb) :
+locator::value::value(const std::string& filename, color_range new_rgb, std::vector<Uint32> swap_rgb) :
   type_(SUB_FILE), filename_(filename), new_color(new_rgb), swap_colors(swap_rgb)
 {
 }
 
-locator::value::value(const std::string& filename, const gamemap::location& loc, std::vector<Uint32> new_rgb, std::vector<Uint32> swap_rgb) :
+locator::value::value(const std::string& filename, const gamemap::location& loc, color_range new_rgb, std::vector<Uint32> swap_rgb) :
   type_(SUB_FILE), filename_(filename), loc_(loc), new_color(new_rgb), swap_colors(swap_rgb)
 {
 }
@@ -210,7 +210,7 @@ bool locator::value::operator==(const value& a) const
 	} else if(type_ == FILE) {
 		return filename_ == a.filename_;
 	} else if(type_ == SUB_FILE) {
-	  return filename_ == a.filename_ && loc_ == a.loc_ && new_color==a.new_color; //note not checking swap_colors purposely
+	  return filename_ == a.filename_ && loc_ == a.loc_ && new_color == a.new_color; //note not checking swap_colors purposely
 	} else {
 		return false;
 	}
@@ -227,15 +227,7 @@ bool locator::value::operator<(const value& a) const
 			return filename_ < a.filename_;
 		if(loc_ != a.loc_)
 		        return loc_ < a.loc_;
-		if(new_color.size() == a.new_color.size()){
-		  for(size_t i=0; i!=new_color.size(); i++){
-		    if( new_color[i] < a.new_color[i] ){
-		      return true;
-		    }
-		  }
-		} else {
-		  return(new_color.size() < a.new_color.size());
-		}
+		return(new_color < a.new_color);
 	} else {
 		return false;
 	}

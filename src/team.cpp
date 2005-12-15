@@ -108,30 +108,14 @@ team::team_info::team_info(const config& cfg)
 		colour = lexical_cast_default<int>(cfg["side"],-1);
 
 	int side = atoi(cfg["side"].c_str());
-
-	std::vector<Uint32> temp_rgb = utils::string2rgb(cfg["team_rgb"]);
-	std::vector<Uint32> global_rgb = game_config::team_rgb[side];
+	
+	std::vector<Uint32> temp_rgb = string2rgb(cfg["team_rgb"]);
+	std::map<int, color_range>::iterator global_rgb = game_config::team_rgb_range.find(side);
 
 	if(temp_rgb.size()){
-	  team_rgb_[side] = temp_rgb[0];
-	}else if(global_rgb.size()){
-	  team_rgb_[side] = global_rgb[0];
-	} else {
-	  team_rgb_.erase(side);
-	}
-	if(temp_rgb.size() > 1){
-	  team_rgb_max_[side] = temp_rgb[1];
-	}else if(global_rgb.size() > 1){
-	  team_rgb_max_[side] = global_rgb[1];
-	}else{
-	  team_rgb_max_.erase(side);
-	}
-	if(temp_rgb.size() > 2){
-	  team_rgb_min_[side] = temp_rgb[2];
-	}else if(global_rgb.size() > 2){
-	  team_rgb_min_[side] = global_rgb[2];
-	}else{
-	  team_rgb_min_.erase(side);
+	  team_color_range_[side] = color_range(temp_rgb);
+	}else if(global_rgb != game_config::team_rgb_range.end()){
+	  team_color_range_[side] = global_rgb->second;
 	}
 
 	flag = cfg["flag"];
@@ -906,53 +890,50 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 	return cleared;
 }
 
-std::map<int, Uint32> team::team_rgb_;
-std::map<int, Uint32> team::team_rgb_max_;
-std::map<int, Uint32> team::team_rgb_min_;
+std::map<int, color_range> team::team_color_range_;
 
 const Uint32 team::get_side_rgb(int side){
-  std::map<int, Uint32>::iterator p=team_rgb_.find(side);
-  if(p != team_rgb_.end()){
-    return(p->second);
+  size_t index = size_t(get_side_colour_index(side));
+  std::map<int, color_range>::iterator p=team_color_range_.find(index);
+  if(p != team_color_range_.end()){
+    return(p->second.mid());
+  }else{
+    p=team_color_range_.find(side);
+    if(p != team_color_range_.end()){
+      return(p->second.mid());
+    }
   }
-	size_t index = size_t(get_side_colour_index(side) - 1);
-
-	static const Uint32 sides[] = { 0x00FF0000,
-	                                0x000000FF,
-	                                0x0000FF00,
-	                                0x00FFFF00,
-	                                0x00FF00FF,
-	                                0x00FF7F00,
-	                                0x00898989,
-	                                0x00FFFFFF,
-	                                0x00945027,
-	                                0x0002F5E1,
-	                                0x00FF00FF };
-
-	static const size_t nsides = sizeof(sides)/sizeof(*sides);
-
-	if(index < nsides) {
-		return sides[index];
-	} else {
-		return sides[0];
-	}
+  return 0x00FF0000;
 }
 
 const Uint32 team::get_side_rgb_max(int side){
-  std::map<int, Uint32>::iterator p=team_rgb_max_.find(side);
-  if(p != team_rgb_max_.end()){
-    return(p->second);
+  size_t index = size_t(get_side_colour_index(side));
+  std::map<int, color_range>::iterator p=team_color_range_.find(index);
+  if(p != team_color_range_.end()){
+    return(p->second.max());
+  }else{
+    p=team_color_range_.find(side);
+    if(p != team_color_range_.end()){
+      return(p->second.max());
+    }
   }
-  return((Uint32)0x00FFFFFF);
+  return 0x00FFFFFF;
 }
 
 const Uint32 team::get_side_rgb_min(int side){
-  std::map<int, Uint32>::iterator p=team_rgb_min_.find(side);
-  if(p != team_rgb_min_.end()){
-    return(p->second);
+  size_t index = size_t(get_side_colour_index(side));
+  std::map<int, color_range>::iterator p=team_color_range_.find(index);
+  if(p != team_color_range_.end()){
+    return(p->second.min());
+  }else{
+    p=team_color_range_.find(side);
+    if(p != team_color_range_.end()){
+      return(p->second.min());
+    }
   }
-  return((Uint32)0x00000000);
+  return 0x00000000;
 }
+
 
 const SDL_Color team::get_side_colour(int side)
 {

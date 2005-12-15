@@ -15,6 +15,7 @@
 
 #include "scoped_resource.hpp"
 #include "util.hpp"
+#include "color_range.hpp"
 
 #include "SDL.h"
 
@@ -106,7 +107,7 @@ surface scale_surface_blended(surface const &surf, int w, int h);
 surface adjust_surface_colour(surface const &surf, int r, int g, int b);
 surface greyscale_image(surface const &surf);
 surface darken_image(surface const &surf);
-surface recolor_image(surface surf, const std::vector<Uint32>& new_rgb, const std::vector<Uint32>& old_rgb);
+surface recolor_image(surface surf, const color_range& new_rgb, const std::vector<Uint32>& old_rgb);
 
 surface brighten_image(surface const &surf, fixed_t amount);
 surface get_surface_portion(surface const &surf, SDL_Rect &rect);
@@ -228,5 +229,4 @@ void draw_rectangle(int x, int y, int w, int h, Uint32 colour, surface tg);
 void draw_solid_tinted_rectangle(int x, int y, int w, int h,
                                  int r, int g, int b,
 				 double alpha, surface target);
-
 #endif

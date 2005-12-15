@@ -14,6 +14,7 @@
 #define TEAM_H_INCLUDED
 
 #include "config.hpp"
+#include "color_range.hpp"
 #include "map.hpp"
 
 struct time_of_day;
@@ -104,9 +105,7 @@ public:
 		int colour;
 	};
 
-        static std::map<int, Uint32> team_rgb_;
-        static std::map<int, Uint32> team_rgb_max_;
-        static std::map<int, Uint32> team_rgb_min_;
+        static std::map<int, color_range> team_color_range_;
 	team(const config& cfg, int gold=100);
 
 	void write(config& cfg) const;
@@ -220,6 +219,7 @@ public:
 	static int nteams();
 
 	//function which, when given a 1-based side will return the colour used by that side.
+	static const color_range get_side_color_range(int side);
 	static const Uint32 get_side_rgb(int side);
 	static const Uint32 get_side_rgb_max(int side);
 	static const Uint32 get_side_rgb_min(int side);
