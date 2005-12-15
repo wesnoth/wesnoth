@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-12-13 20:57+0100\n"
+"POT-Creation-Date: 2005-12-15 11:18+0100\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -1427,7 +1427,7 @@ msgstr ""
 #: data/help.cfg:460 data/terrain.cfg:150 data/terrain.cfg:162
 #: data/terrain.cfg:172 data/terrain.cfg:181 data/terrain.cfg:236
 #: data/terrain.cfg:247 data/terrain.cfg:260 data/terrain.cfg:281
-#: data/terrain.cfg:290 src/reports.cpp:365
+#: data/terrain.cfg:290 src/reports.cpp:374
 msgid "Village"
 msgstr "村庄"
 
@@ -1739,15 +1739,15 @@ msgstr "龙战士"
 msgid "Classic"
 msgstr "经典的"
 
-#: data/multiplayer.cfg:119 data/translations/english.cfg:127
+#: data/multiplayer.cfg:119 data/translations/english.cfg:130
 msgid "Humans"
 msgstr "人类"
 
-#: data/multiplayer.cfg:132 data/translations/english.cfg:126
+#: data/multiplayer.cfg:132 data/translations/english.cfg:129
 msgid "Elves"
 msgstr "精灵"
 
-#: data/multiplayer.cfg:145 data/translations/english.cfg:128
+#: data/multiplayer.cfg:145 data/translations/english.cfg:131
 msgid "Orcs"
 msgstr "兽人"
 
@@ -2350,11 +2350,11 @@ msgstr "下一步"
 msgid "Skip animation"
 msgstr "+斯洛伐克语"
 
-#: data/themes/default.cfg:651
+#: data/themes/default.cfg:650
 msgid "Act."
 msgstr "行动。"
 
-#: data/themes/default.cfg:684
+#: data/themes/default.cfg:683
 msgid "short end-turn^End"
 msgstr "快速结束"
 
@@ -2966,6 +2966,18 @@ msgstr ""
 "村庄中的单位不起作用)。"
 
 #: data/translations/english.cfg:117
+#, fuzzy
+msgid ""
+"Plague:\n"
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"of the specified type on the same side as the unit with the Plague attack. "
+"(This doesn't work on Undead or units in villages.)"
+msgstr ""
+"瘟疫：\n"
+"当一个单位被瘟疫攻击击毙，这个单位会成为进行瘟疫攻击单位的同盟。(这对不死或在"
+"村庄中的单位不起作用)。"
+
+#: data/translations/english.cfg:120
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -2974,7 +2986,7 @@ msgstr ""
 "中毒：\n"
 "本攻击是目标中毒，中毒单位每回合失去8hp，直到他们被治愈或生命降到1hp。"
 
-#: data/translations/english.cfg:120
+#: data/translations/english.cfg:123
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow reorders the attacks allowing the "
@@ -2987,7 +2999,7 @@ msgstr ""
 "击。减速的单位移动会降低一半，别指望会有可控制区域，并经常在战斗中失去主动"
 "权。"
 
-#: data/translations/english.cfg:123
+#: data/translations/english.cfg:126
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -2996,59 +3008,59 @@ msgstr ""
 "金钟罩：\n"
 "这会让单位变得和石头一样硬。使用金钟罩后就不能移动或攻击。"
 
-#: data/translations/english.cfg:129
+#: data/translations/english.cfg:132
 msgid "race^Undead"
 msgstr "不死族"
 
-#: data/translations/english.cfg:132
+#: data/translations/english.cfg:135
 msgid "$name's Bridge,$name's Crossing"
 msgstr "$name 桥，,$name 渡口"
 
-#: data/translations/english.cfg:133
+#: data/translations/english.cfg:136
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name's 大道，$name's 通道， $name 小路"
 
-#: data/translations/english.cfg:134
+#: data/translations/english.cfg:137
 msgid "$name River,River $name"
 msgstr "$name 河流,河流 $name"
 
-#: data/translations/english.cfg:135
+#: data/translations/english.cfg:138
 msgid "$name Forest,$name's Forest"
 msgstr "$name 森林,$name's 森林"
 
-#: data/translations/english.cfg:136
+#: data/translations/english.cfg:139
 msgid "$name Lake"
 msgstr "$name 湖"
 
-#: data/translations/english.cfg:137
+#: data/translations/english.cfg:140
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|埋藏,$name|ham,$name|吨"
 
-#: data/translations/english.cfg:138
+#: data/translations/english.cfg:141
 msgid "$name|harbor,$name|port"
 msgstr "$name|避乱所,$name|港口"
 
-#: data/translations/english.cfg:139
+#: data/translations/english.cfg:142
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|ham,$name|浅滩,$name|岔口,$river|浅滩,$river|岔口"
 
-#: data/translations/english.cfg:140
+#: data/translations/english.cfg:143
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "$river|桥,$river|桥,$river|桥,$name|过火,$name|桥"
 
-#: data/translations/english.cfg:141
+#: data/translations/english.cfg:144
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|ham,$name|吨,$name|田地"
 
-#: data/translations/english.cfg:142
+#: data/translations/english.cfg:145
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|ham,$name|吨,$name|木头,$name 森林"
 
-#: data/translations/english.cfg:143
+#: data/translations/english.cfg:146
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|ham,$name|埋藏,$name|吨,$name|丘陵,$name|冠"
 
-#: data/translations/english.cfg:144
+#: data/translations/english.cfg:147
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
@@ -8512,7 +8524,7 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr "移动： "
 
-#: src/display.cpp:484
+#: src/display.cpp:505
 msgid "Screenshot"
 msgstr "截屏"
 
@@ -9711,31 +9723,31 @@ msgstr ""
 msgid "damage type: "
 msgstr "伤害"
 
-#: src/reports.cpp:310
+#: src/reports.cpp:319
 msgid "Lawful units: "
 msgstr "善良单位： "
 
-#: src/reports.cpp:312
+#: src/reports.cpp:321
 msgid "Neutral units: "
 msgstr "中立单位： "
 
-#: src/reports.cpp:313
+#: src/reports.cpp:322
 msgid "Chaotic units: "
 msgstr "混乱单位： "
 
-#: src/reports.cpp:367
+#: src/reports.cpp:376
 msgid "Owned village"
 msgstr "拥有的村庄"
 
-#: src/reports.cpp:369
+#: src/reports.cpp:378
 msgid "Enemy village"
 msgstr "敌人的村庄"
 
-#: src/reports.cpp:371
+#: src/reports.cpp:380
 msgid "Allied village"
 msgstr "盟友的村庄"
 
-#: src/reports.cpp:428
+#: src/reports.cpp:437
 msgid "Observers:"
 msgstr "观察员："
 

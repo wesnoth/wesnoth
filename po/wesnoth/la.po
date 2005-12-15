@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.0.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-12-13 20:57+0100\n"
+"POT-Creation-Date: 2005-12-15 11:18+0100\n"
 "PO-Revision-Date: 2005-09-29 19:20+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -1552,7 +1552,7 @@ msgstr ""
 #: data/help.cfg:460 data/terrain.cfg:150 data/terrain.cfg:162
 #: data/terrain.cfg:172 data/terrain.cfg:181 data/terrain.cfg:236
 #: data/terrain.cfg:247 data/terrain.cfg:260 data/terrain.cfg:281
-#: data/terrain.cfg:290 src/reports.cpp:365
+#: data/terrain.cfg:290 src/reports.cpp:374
 msgid "Village"
 msgstr "Pagus"
 
@@ -1879,15 +1879,15 @@ msgstr "Draculi"
 msgid "Classic"
 msgstr "Classice"
 
-#: data/multiplayer.cfg:119 data/translations/english.cfg:127
+#: data/multiplayer.cfg:119 data/translations/english.cfg:130
 msgid "Humans"
 msgstr "Homines"
 
-#: data/multiplayer.cfg:132 data/translations/english.cfg:126
+#: data/multiplayer.cfg:132 data/translations/english.cfg:129
 msgid "Elves"
 msgstr "Dryades"
 
-#: data/multiplayer.cfg:145 data/translations/english.cfg:128
+#: data/multiplayer.cfg:145 data/translations/english.cfg:131
 msgid "Orcs"
 msgstr "Orci"
 
@@ -2534,11 +2534,11 @@ msgstr "Insequens"
 msgid "Skip animation"
 msgstr "+Reditio slovaca"
 
-#: data/themes/default.cfg:651
+#: data/themes/default.cfg:650
 msgid "Act."
 msgstr "Act."
 
-#: data/themes/default.cfg:684
+#: data/themes/default.cfg:683
 msgid "short end-turn^End"
 msgstr "Finire"
 
@@ -3226,6 +3226,19 @@ msgstr ""
 "substituitur."
 
 #: data/translations/english.cfg:117
+#, fuzzy
+msgid ""
+"Plague:\n"
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"of the specified type on the same side as the unit with the Plague attack. "
+"(This doesn't work on Undead or units in villages.)"
+msgstr ""
+"Pestilentia:\n"
+"Cum unitas ab oppugnatione Pestilentiae interficitur, illa unitas ab unitate "
+"consimili et ex eadem parte unitatis cum oppugnatione Pestilentiae "
+"substituitur."
+
+#: data/translations/english.cfg:120
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -3235,7 +3248,7 @@ msgstr ""
 "Haec oppugnatio scopum veneno necat. Unitates venenatae VIII PS quoque "
 "tractu amittunt donec sanantur aut ad I PS rediguntur."
 
-#: data/translations/english.cfg:120
+#: data/translations/english.cfg:123
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow reorders the attacks allowing the "
@@ -3244,7 +3257,7 @@ msgid ""
 "initiative in fights."
 msgstr ""
 
-#: data/translations/english.cfg:123
+#: data/translations/english.cfg:126
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -3254,67 +3267,67 @@ msgstr ""
 "Haec oppugnatio petrificavit scopum. Unitates quae in saxum mutantur neque "
 "movere neque oppugnare possunt."
 
-#: data/translations/english.cfg:129
+#: data/translations/english.cfg:132
 #, fuzzy
 msgid "race^Undead"
 msgstr "Inmortuum"
 
-#: data/translations/english.cfg:132
+#: data/translations/english.cfg:135
 msgid "$name's Bridge,$name's Crossing"
 msgstr "Porta $name|ensis,Transitus $name|ensis"
 
-#: data/translations/english.cfg:133
+#: data/translations/english.cfg:136
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "Via $name|ensis,Saltus $name|ensis,Semita $name|ensis"
 
-#: data/translations/english.cfg:134
+#: data/translations/english.cfg:137
 msgid "$name River,River $name"
 msgstr "$name Flumen,Fluvius $name|ensis"
 
-#: data/translations/english.cfg:135
+#: data/translations/english.cfg:138
 msgid "$name Forest,$name's Forest"
 msgstr "$name Silva,Silva $name|ensis"
 
-#: data/translations/english.cfg:136
+#: data/translations/english.cfg:139
 msgid "$name Lake"
 msgstr "Lacus $name"
 
-#: data/translations/english.cfg:137
+#: data/translations/english.cfg:140
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|ulum,$name|opolis,$name|tia"
 
-#: data/translations/english.cfg:138
+#: data/translations/english.cfg:141
 msgid "$name|harbor,$name|port"
 msgstr "Portus $name|ensis,Portus $name|ensis"
 
-#: data/translations/english.cfg:139
+#: data/translations/english.cfg:142
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 "Pagus $name|ensis,Vadum $name|ensis,Transitus $name|ensis,Vadum $river|i,"
 "Transitus $river|i"
 
-#: data/translations/english.cfg:140
+#: data/translations/english.cfg:143
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 "Porta $river|i,Pons $river|i,Pons $river|ensis,Pagus $name|ensis,Pons $name|"
 "ensis"
 
-#: data/translations/english.cfg:141
+#: data/translations/english.cfg:144
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "Pagus $name|ensis,Oppidum $name|ense,Campus $name|ensis"
 
-#: data/translations/english.cfg:142
+#: data/translations/english.cfg:145
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
 "Pagus $name|ensis,Oppidum $name|ense,Silva $name|ensis,Nemus $name|ensis"
 
-#: data/translations/english.cfg:143
+#: data/translations/english.cfg:146
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 "Pagus $name|ensis,Pagus $name|ensis,Oppidum $name|ense,Collis $name|ensis,"
 "Apex $name|ensis"
 
-#: data/translations/english.cfg:144
+#: data/translations/english.cfg:147
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
@@ -9233,7 +9246,7 @@ msgstr "PE: "
 msgid "Moves: "
 msgstr "Puncta motus: "
 
-#: src/display.cpp:484
+#: src/display.cpp:505
 msgid "Screenshot"
 msgstr "Imago Scrinii"
 
@@ -10451,31 +10464,31 @@ msgstr ""
 msgid "damage type: "
 msgstr "damnum"
 
-#: src/reports.cpp:310
+#: src/reports.cpp:319
 msgid "Lawful units: "
 msgstr "Filii lucis: "
 
-#: src/reports.cpp:312
+#: src/reports.cpp:321
 msgid "Neutral units: "
 msgstr "Filii crepusculi: "
 
-#: src/reports.cpp:313
+#: src/reports.cpp:322
 msgid "Chaotic units: "
 msgstr "Filii tenebrarum: "
 
-#: src/reports.cpp:367
+#: src/reports.cpp:376
 msgid "Owned village"
 msgstr "Pagus proprius"
 
-#: src/reports.cpp:369
+#: src/reports.cpp:378
 msgid "Enemy village"
 msgstr "Pagus inimicus"
 
-#: src/reports.cpp:371
+#: src/reports.cpp:380
 msgid "Allied village"
 msgstr "Pagus socius"
 
-#: src/reports.cpp:428
+#: src/reports.cpp:437
 msgid "Observers:"
 msgstr "Spectatores: "
 

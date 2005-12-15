@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-12-13 20:57+0100\n"
+"POT-Creation-Date: 2005-12-15 11:18+0100\n"
 "PO-Revision-Date: 2005-08-17 17:58+0200\n"
 "Last-Translator: Anders K. Madsen <madsen@lillesvin.linux.dk>\n"
 "Language-Team: Danish <wesnoth-da@lillesvin.net>\n"
@@ -1312,7 +1312,7 @@ msgstr ""
 #: data/help.cfg:460 data/terrain.cfg:150 data/terrain.cfg:162
 #: data/terrain.cfg:172 data/terrain.cfg:181 data/terrain.cfg:236
 #: data/terrain.cfg:247 data/terrain.cfg:260 data/terrain.cfg:281
-#: data/terrain.cfg:290 src/reports.cpp:365
+#: data/terrain.cfg:290 src/reports.cpp:374
 msgid "Village"
 msgstr "Landsy"
 
@@ -1610,15 +1610,15 @@ msgstr ""
 msgid "Classic"
 msgstr "Klassisk"
 
-#: data/multiplayer.cfg:119 data/translations/english.cfg:127
+#: data/multiplayer.cfg:119 data/translations/english.cfg:130
 msgid "Humans"
 msgstr "Mennesker"
 
-#: data/multiplayer.cfg:132 data/translations/english.cfg:126
+#: data/multiplayer.cfg:132 data/translations/english.cfg:129
 msgid "Elves"
 msgstr "Elvere"
 
-#: data/multiplayer.cfg:145 data/translations/english.cfg:128
+#: data/multiplayer.cfg:145 data/translations/english.cfg:131
 msgid "Orcs"
 msgstr "Orker"
 
@@ -2199,11 +2199,11 @@ msgstr "Næste"
 msgid "Skip animation"
 msgstr "+Slovakisk Oversættelse"
 
-#: data/themes/default.cfg:651
+#: data/themes/default.cfg:650
 msgid "Act."
 msgstr "Handl."
 
-#: data/themes/default.cfg:684
+#: data/themes/default.cfg:683
 msgid "short end-turn^End"
 msgstr "Afslut"
 
@@ -2762,6 +2762,14 @@ msgstr ""
 
 #: data/translations/english.cfg:117
 msgid ""
+"Plague:\n"
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"of the specified type on the same side as the unit with the Plague attack. "
+"(This doesn't work on Undead or units in villages.)"
+msgstr ""
+
+#: data/translations/english.cfg:120
+msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
@@ -2770,7 +2778,7 @@ msgstr ""
 "Dette angreb forgifter målet. Forgiftede enheder taber 8 HP pr. tur indtil "
 "de bliver kureret eller når ned på 1 HP."
 
-#: data/translations/english.cfg:120
+#: data/translations/english.cfg:123
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow reorders the attacks allowing the "
@@ -2779,7 +2787,7 @@ msgid ""
 "initiative in fights."
 msgstr ""
 
-#: data/translations/english.cfg:123
+#: data/translations/english.cfg:126
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -2789,16 +2797,16 @@ msgstr ""
 "Dette angreb gør målet til sten. Enheder der er gjort til sten kan ikke "
 "bevæge sig eller angribe."
 
-#: data/translations/english.cfg:129
+#: data/translations/english.cfg:132
 #, fuzzy
 msgid "race^Undead"
 msgstr "Udød"
 
-#: data/translations/english.cfg:132
+#: data/translations/english.cfg:135
 msgid "$name's Bridge,$name's Crossing"
 msgstr "$name|s Bro,$name|sbro"
 
-#: data/translations/english.cfg:133
+#: data/translations/english.cfg:136
 #, fuzzy
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name|s Vej,$name|s Pas,$name|stien"
@@ -2809,52 +2817,52 @@ msgstr "$name|s Vej,$name|s Pas,$name|stien"
 # "Jakobs Flod" eller "Jakobsfloden"
 # Eller: "Elense River"/"River Elense"
 # Men ja, den er lidt tricky.
-#: data/translations/english.cfg:134
+#: data/translations/english.cfg:137
 #, fuzzy
 msgid "$name River,River $name"
 msgstr "$name Flod,$name|s flod"
 
 # Den er jo umulig med dansk ejefald.
 # Det burde den også være på engelsk.
-#: data/translations/english.cfg:135
+#: data/translations/english.cfg:138
 #, fuzzy
 msgid "$name Forest,$name's Forest"
 msgstr "$name|skoven,$name|s skov"
 
-#: data/translations/english.cfg:136
+#: data/translations/english.cfg:139
 msgid "$name Lake"
 msgstr ""
 
-#: data/translations/english.cfg:137
+#: data/translations/english.cfg:140
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|borg,$name|bjerg,$name|løse,$name|strup"
 
-#: data/translations/english.cfg:138
+#: data/translations/english.cfg:141
 #, fuzzy
 msgid "$name|harbor,$name|port"
 msgstr "$name|havn"
 
-#: data/translations/english.cfg:139
+#: data/translations/english.cfg:142
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 
-#: data/translations/english.cfg:140
+#: data/translations/english.cfg:143
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 
-#: data/translations/english.cfg:141
+#: data/translations/english.cfg:144
 msgid "$name|ham,$name|ton,$name|field"
 msgstr ""
 
-#: data/translations/english.cfg:142
+#: data/translations/english.cfg:145
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
 
-#: data/translations/english.cfg:143
+#: data/translations/english.cfg:146
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 
-#: data/translations/english.cfg:144
+#: data/translations/english.cfg:147
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
@@ -7519,7 +7527,7 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr ""
 
-#: src/display.cpp:484
+#: src/display.cpp:505
 msgid "Screenshot"
 msgstr "Skærmbillede"
 
@@ -8746,31 +8754,31 @@ msgstr ""
 msgid "damage type: "
 msgstr "skade"
 
-#: src/reports.cpp:310
+#: src/reports.cpp:319
 msgid "Lawful units: "
 msgstr "hæderlige enheder: "
 
-#: src/reports.cpp:312
+#: src/reports.cpp:321
 msgid "Neutral units: "
 msgstr "Neutrale enheder: "
 
-#: src/reports.cpp:313
+#: src/reports.cpp:322
 msgid "Chaotic units: "
 msgstr "Lyssky enheder: "
 
-#: src/reports.cpp:367
+#: src/reports.cpp:376
 msgid "Owned village"
 msgstr "Egen landssby"
 
-#: src/reports.cpp:369
+#: src/reports.cpp:378
 msgid "Enemy village"
 msgstr "Fjendtlig landsby"
 
-#: src/reports.cpp:371
+#: src/reports.cpp:380
 msgid "Allied village"
 msgstr "Allieret landsby"
 
-#: src/reports.cpp:428
+#: src/reports.cpp:437
 msgid "Observers:"
 msgstr "Observatører:"
 

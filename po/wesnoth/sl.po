@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-12-13 20:57+0100\n"
+"POT-Creation-Date: 2005-12-15 11:18+0100\n"
 "PO-Revision-Date: 2005-08-07 22:54+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <sl@li.org>\n"
@@ -1532,7 +1532,7 @@ msgstr ""
 #: data/help.cfg:460 data/terrain.cfg:150 data/terrain.cfg:162
 #: data/terrain.cfg:172 data/terrain.cfg:181 data/terrain.cfg:236
 #: data/terrain.cfg:247 data/terrain.cfg:260 data/terrain.cfg:281
-#: data/terrain.cfg:290 src/reports.cpp:365
+#: data/terrain.cfg:290 src/reports.cpp:374
 msgid "Village"
 msgstr "Vas"
 
@@ -1857,15 +1857,15 @@ msgstr ""
 msgid "Classic"
 msgstr "Klasična"
 
-#: data/multiplayer.cfg:119 data/translations/english.cfg:127
+#: data/multiplayer.cfg:119 data/translations/english.cfg:130
 msgid "Humans"
 msgstr "Ljudje"
 
-#: data/multiplayer.cfg:132 data/translations/english.cfg:126
+#: data/multiplayer.cfg:132 data/translations/english.cfg:129
 msgid "Elves"
 msgstr "Vilini"
 
-#: data/multiplayer.cfg:145 data/translations/english.cfg:128
+#: data/multiplayer.cfg:145 data/translations/english.cfg:131
 msgid "Orcs"
 msgstr "Orki"
 
@@ -2442,11 +2442,11 @@ msgstr "Naslednji"
 msgid "Skip animation"
 msgstr "+Slovaški prevod"
 
-#: data/themes/default.cfg:651
+#: data/themes/default.cfg:650
 msgid "Act."
 msgstr "Akc."
 
-#: data/themes/default.cfg:684
+#: data/themes/default.cfg:683
 msgid "short end-turn^End"
 msgstr "Konec"
 
@@ -3120,6 +3120,19 @@ msgstr ""
 "v vaseh.)"
 
 #: data/translations/english.cfg:117
+#, fuzzy
+msgid ""
+"Plague:\n"
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"of the specified type on the same side as the unit with the Plague attack. "
+"(This doesn't work on Undead or units in villages.)"
+msgstr ""
+"Kuga:\n"
+"Ko je enota ubita s kužnim napadom, vstane od mrtvih kot enaka enota in na "
+"isti strani, kot enota, ki jo je ubila. (To ne deluje na nemrtvih in enotah "
+"v vaseh.)"
+
+#: data/translations/english.cfg:120
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -3129,7 +3142,7 @@ msgstr ""
 "Ta napad zastrupi tarčo. Zastrupljene enote vsako potezo izgubijo 8 HP, "
 "razen če so vmes ozdravljene ali poškodovane do 1 HP."
 
-#: data/translations/english.cfg:120
+#: data/translations/english.cfg:123
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow reorders the attacks allowing the "
@@ -3138,7 +3151,7 @@ msgid ""
 "initiative in fights."
 msgstr ""
 
-#: data/translations/english.cfg:123
+#: data/translations/english.cfg:126
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -3148,60 +3161,60 @@ msgstr ""
 "Ta napad spremeni tarčo v kamen. Okamenele enote se ne morejo premikati in "
 "napadati."
 
-#: data/translations/english.cfg:129
+#: data/translations/english.cfg:132
 #, fuzzy
 msgid "race^Undead"
 msgstr "Nemrtvi"
 
-#: data/translations/english.cfg:132
+#: data/translations/english.cfg:135
 msgid "$name's Bridge,$name's Crossing"
 msgstr "most $name,križišče pri $name"
 
-#: data/translations/english.cfg:133
+#: data/translations/english.cfg:136
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr ""
 
-#: data/translations/english.cfg:134
+#: data/translations/english.cfg:137
 msgid "$name River,River $name"
 msgstr "reka $name, reka $name"
 
-#: data/translations/english.cfg:135
+#: data/translations/english.cfg:138
 msgid "$name Forest,$name's Forest"
 msgstr ""
 
-#: data/translations/english.cfg:136
+#: data/translations/english.cfg:139
 msgid "$name Lake"
 msgstr "Jezero $name"
 
-#: data/translations/english.cfg:137
+#: data/translations/english.cfg:140
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr ""
 
-#: data/translations/english.cfg:138
+#: data/translations/english.cfg:141
 msgid "$name|harbor,$name|port"
 msgstr ""
 
-#: data/translations/english.cfg:139
+#: data/translations/english.cfg:142
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 
-#: data/translations/english.cfg:140
+#: data/translations/english.cfg:143
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 
-#: data/translations/english.cfg:141
+#: data/translations/english.cfg:144
 msgid "$name|ham,$name|ton,$name|field"
 msgstr ""
 
-#: data/translations/english.cfg:142
+#: data/translations/english.cfg:145
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
 
-#: data/translations/english.cfg:143
+#: data/translations/english.cfg:146
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 
-#: data/translations/english.cfg:144
+#: data/translations/english.cfg:147
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
@@ -7826,7 +7839,7 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr "Premiki: "
 
-#: src/display.cpp:484
+#: src/display.cpp:505
 msgid "Screenshot"
 msgstr "Posnetek zaslona"
 
@@ -9049,31 +9062,31 @@ msgstr ""
 msgid "damage type: "
 msgstr "škoda"
 
-#: src/reports.cpp:310
+#: src/reports.cpp:319
 msgid "Lawful units: "
 msgstr "Zakonite enote: "
 
-#: src/reports.cpp:312
+#: src/reports.cpp:321
 msgid "Neutral units: "
 msgstr "Nevtralne enote: "
 
-#: src/reports.cpp:313
+#: src/reports.cpp:322
 msgid "Chaotic units: "
 msgstr "Kaotične enote: "
 
-#: src/reports.cpp:367
+#: src/reports.cpp:376
 msgid "Owned village"
 msgstr "Naša vas"
 
-#: src/reports.cpp:369
+#: src/reports.cpp:378
 msgid "Enemy village"
 msgstr "Sovražna vas"
 
-#: src/reports.cpp:371
+#: src/reports.cpp:380
 msgid "Allied village"
 msgstr "Zavezniška vas"
 
-#: src/reports.cpp:428
+#: src/reports.cpp:437
 msgid "Observers:"
 msgstr "Opazovalci:"
 

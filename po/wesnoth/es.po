@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-12-13 20:57+0100\n"
+"POT-Creation-Date: 2005-12-15 11:18+0100\n"
 "PO-Revision-Date: 2005-09-15 19:05+0200\n"
 "Last-Translator: Iván Herrero Bartolomé <navitux@gmail.com>\n"
 "Language-Team:  <es@li.org>\n"
@@ -1634,7 +1634,7 @@ msgstr ""
 #: data/help.cfg:460 data/terrain.cfg:150 data/terrain.cfg:162
 #: data/terrain.cfg:172 data/terrain.cfg:181 data/terrain.cfg:236
 #: data/terrain.cfg:247 data/terrain.cfg:260 data/terrain.cfg:281
-#: data/terrain.cfg:290 src/reports.cpp:365
+#: data/terrain.cfg:290 src/reports.cpp:374
 msgid "Village"
 msgstr "Aldea"
 
@@ -1971,15 +1971,15 @@ msgstr "Dracos"
 msgid "Classic"
 msgstr "Clásico"
 
-#: data/multiplayer.cfg:119 data/translations/english.cfg:127
+#: data/multiplayer.cfg:119 data/translations/english.cfg:130
 msgid "Humans"
 msgstr "Humanos"
 
-#: data/multiplayer.cfg:132 data/translations/english.cfg:126
+#: data/multiplayer.cfg:132 data/translations/english.cfg:129
 msgid "Elves"
 msgstr "Elfos"
 
-#: data/multiplayer.cfg:145 data/translations/english.cfg:128
+#: data/multiplayer.cfg:145 data/translations/english.cfg:131
 msgid "Orcs"
 msgstr "Orcos"
 
@@ -2638,11 +2638,11 @@ msgstr "Siguiente"
 msgid "Skip animation"
 msgstr "+Traducción eslovaca"
 
-#: data/themes/default.cfg:651
+#: data/themes/default.cfg:650
 msgid "Act."
 msgstr "Acc."
 
-#: data/themes/default.cfg:684
+#: data/themes/default.cfg:683
 msgid "short end-turn^End"
 msgstr "Fin"
 
@@ -3371,6 +3371,19 @@ msgstr ""
 "(No funciona con unidades no muertas o que se encuentren en aldeas)."
 
 #: data/translations/english.cfg:117
+#, fuzzy
+msgid ""
+"Plague:\n"
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"of the specified type on the same side as the unit with the Plague attack. "
+"(This doesn't work on Undead or units in villages.)"
+msgstr ""
+"Plaga:\n"
+"Cuando una unidad muere por un ataque de plaga, ésta será reemplazada por "
+"una unidad idéntica a ella pero del mismo bando que la unidad que la mató. "
+"(No funciona con unidades no muertas o que se encuentren en aldeas)."
+
+#: data/translations/english.cfg:120
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -3380,7 +3393,7 @@ msgstr ""
 "Este ataque envenena al objetivo. Las unidades envenenadas pierden 8 pv "
 "hasta que se las cure o sólo les quede 1 pv."
 
-#: data/translations/english.cfg:120
+#: data/translations/english.cfg:123
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow reorders the attacks allowing the "
@@ -3389,7 +3402,7 @@ msgid ""
 "initiative in fights."
 msgstr ""
 
-#: data/translations/english.cfg:123
+#: data/translations/english.cfg:126
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -3399,60 +3412,60 @@ msgstr ""
 "Este ataque convierte al objetivo en una estatua...literalmente. Alguien "
 "afectado por la petrificación no podrá moverse ni atacar."
 
-#: data/translations/english.cfg:129
+#: data/translations/english.cfg:132
 #, fuzzy
 msgid "race^Undead"
 msgstr "No muertos"
 
-#: data/translations/english.cfg:132
+#: data/translations/english.cfg:135
 msgid "$name's Bridge,$name's Crossing"
 msgstr "Puente de $name,Cruce de $name"
 
-#: data/translations/english.cfg:133
+#: data/translations/english.cfg:136
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "Paso alto de $name,Paso de $name,Ruta de $name"
 
-#: data/translations/english.cfg:134
+#: data/translations/english.cfg:137
 msgid "$name River,River $name"
 msgstr "Río $name, Río $name"
 
-#: data/translations/english.cfg:135
+#: data/translations/english.cfg:138
 msgid "$name Forest,$name's Forest"
 msgstr "Bosque $name, El bosque de $name"
 
-#: data/translations/english.cfg:136
+#: data/translations/english.cfg:139
 msgid "$name Lake"
 msgstr "Lago $name"
 
-#: data/translations/english.cfg:137
+#: data/translations/english.cfg:140
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|bury,$name|ham,$name|ton"
 
-#: data/translations/english.cfg:138
+#: data/translations/english.cfg:141
 msgid "$name|harbor,$name|port"
 msgstr "$name|harbor,$name|puerto"
 
-#: data/translations/english.cfg:139
+#: data/translations/english.cfg:142
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 
-#: data/translations/english.cfg:140
+#: data/translations/english.cfg:143
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 
-#: data/translations/english.cfg:141
+#: data/translations/english.cfg:144
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|ham,$name|ton,$name|field"
 
-#: data/translations/english.cfg:142
+#: data/translations/english.cfg:145
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|ham,$name|ton,$name|wood,Bosque $name"
 
-#: data/translations/english.cfg:143
+#: data/translations/english.cfg:146
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 
-#: data/translations/english.cfg:144
+#: data/translations/english.cfg:147
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
@@ -9658,7 +9671,7 @@ msgstr "PX: "
 msgid "Moves: "
 msgstr "Movimiento: "
 
-#: src/display.cpp:484
+#: src/display.cpp:505
 msgid "Screenshot"
 msgstr "Instantánea"
 
@@ -10896,31 +10909,31 @@ msgstr ""
 msgid "damage type: "
 msgstr "daño"
 
-#: src/reports.cpp:310
+#: src/reports.cpp:319
 msgid "Lawful units: "
 msgstr "Unidades legales: "
 
-#: src/reports.cpp:312
+#: src/reports.cpp:321
 msgid "Neutral units: "
 msgstr "Unidades neutrales: "
 
-#: src/reports.cpp:313
+#: src/reports.cpp:322
 msgid "Chaotic units: "
 msgstr "Unidades caóticas: "
 
-#: src/reports.cpp:367
+#: src/reports.cpp:376
 msgid "Owned village"
 msgstr "Aldea propia"
 
-#: src/reports.cpp:369
+#: src/reports.cpp:378
 msgid "Enemy village"
 msgstr "Aldea enemiga"
 
-#: src/reports.cpp:371
+#: src/reports.cpp:380
 msgid "Allied village"
 msgstr "Aldea aliada"
 
-#: src/reports.cpp:428
+#: src/reports.cpp:437
 msgid "Observers:"
 msgstr "Observadores:"
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-12-13 20:57+0100\n"
+"POT-Creation-Date: 2005-12-15 11:18+0100\n"
 "PO-Revision-Date: 2005-09-03 19:00+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
@@ -1595,7 +1595,7 @@ msgstr ""
 #: data/help.cfg:460 data/terrain.cfg:150 data/terrain.cfg:162
 #: data/terrain.cfg:172 data/terrain.cfg:181 data/terrain.cfg:236
 #: data/terrain.cfg:247 data/terrain.cfg:260 data/terrain.cfg:281
-#: data/terrain.cfg:290 src/reports.cpp:365
+#: data/terrain.cfg:290 src/reports.cpp:374
 msgid "Village"
 msgstr "Llogaret"
 
@@ -1928,15 +1928,15 @@ msgstr "Dracs"
 msgid "Classic"
 msgstr "Clàssica"
 
-#: data/multiplayer.cfg:119 data/translations/english.cfg:127
+#: data/multiplayer.cfg:119 data/translations/english.cfg:130
 msgid "Humans"
 msgstr "Humans"
 
-#: data/multiplayer.cfg:132 data/translations/english.cfg:126
+#: data/multiplayer.cfg:132 data/translations/english.cfg:129
 msgid "Elves"
 msgstr "Elfs"
 
-#: data/multiplayer.cfg:145 data/translations/english.cfg:128
+#: data/multiplayer.cfg:145 data/translations/english.cfg:131
 msgid "Orcs"
 msgstr "Orcs"
 
@@ -2587,11 +2587,11 @@ msgstr "Següent"
 msgid "Skip animation"
 msgstr "+Traducció a l'eslovac"
 
-#: data/themes/default.cfg:651
+#: data/themes/default.cfg:650
 msgid "Act."
 msgstr "Acc."
 
-#: data/themes/default.cfg:684
+#: data/themes/default.cfg:683
 msgid "short end-turn^End"
 msgstr "Fi"
 
@@ -3272,6 +3272,19 @@ msgstr ""
 "estan a llogarets o que siguin no mortes)."
 
 #: data/translations/english.cfg:117
+#, fuzzy
+msgid ""
+"Plague:\n"
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"of the specified type on the same side as the unit with the Plague attack. "
+"(This doesn't work on Undead or units in villages.)"
+msgstr ""
+"Plaga:\n"
+"Quan una unitat mor per un atac de plaga, aquesta és reemplaçada per una "
+"d'idèntica i del mateix bàndol que l'atacant (no funciona amb unitats que "
+"estan a llogarets o que siguin no mortes)."
+
+#: data/translations/english.cfg:120
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -3281,7 +3294,7 @@ msgstr ""
 "Aquest atac enverina el seu blanc. Les unitats enverinades perden 8 punts de "
 "vida cada torn fins que son curades o bé arriben a un punt de vida."
 
-#: data/translations/english.cfg:120
+#: data/translations/english.cfg:123
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow reorders the attacks allowing the "
@@ -3290,7 +3303,7 @@ msgid ""
 "initiative in fights."
 msgstr ""
 
-#: data/translations/english.cfg:123
+#: data/translations/english.cfg:126
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -3300,61 +3313,61 @@ msgstr ""
 "Aquest atac pot convertir els enemics en pedra. Les unitats petrificades no "
 "es poden moure ni atacar."
 
-#: data/translations/english.cfg:129
+#: data/translations/english.cfg:132
 #, fuzzy
 msgid "race^Undead"
 msgstr "No morts"
 
-#: data/translations/english.cfg:132
+#: data/translations/english.cfg:135
 msgid "$name's Bridge,$name's Crossing"
 msgstr "El pont de $name, L'encreuament de $name"
 
-#: data/translations/english.cfg:133
+#: data/translations/english.cfg:136
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "El camí de $name, El pas de $name, Ruta de $name"
 
-#: data/translations/english.cfg:134
+#: data/translations/english.cfg:137
 msgid "$name River,River $name"
 msgstr "Riu $name, El riu $name"
 
-#: data/translations/english.cfg:135
+#: data/translations/english.cfg:138
 msgid "$name Forest,$name's Forest"
 msgstr "Bosc $name, El bosc de $name"
 
-#: data/translations/english.cfg:136
+#: data/translations/english.cfg:139
 msgid "$name Lake"
 msgstr "Llac $name"
 
-#: data/translations/english.cfg:137
+#: data/translations/english.cfg:140
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|ona,$name|er,Sant $name"
 
-#: data/translations/english.cfg:138
+#: data/translations/english.cfg:141
 msgid "$name|harbor,$name|port"
 msgstr "Port $name, El port de $name"
 
-#: data/translations/english.cfg:139
+#: data/translations/english.cfg:142
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|a,El gual de $name,El creuament de $name,$river|ós,$river"
 
-#: data/translations/english.cfg:140
+#: data/translations/english.cfg:143
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 "Pont de $river,El pont de $river,Pont de $river,Roda de $name,Pont $name"
 
-#: data/translations/english.cfg:141
+#: data/translations/english.cfg:144
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|bini,$name|bó,Camp de $name"
 
-#: data/translations/english.cfg:142
+#: data/translations/english.cfg:145
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|a,$name de munt,$name,El bosc de $name"
 
-#: data/translations/english.cfg:143
+#: data/translations/english.cfg:146
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "Mont $name,$name de dalt,$name,Coll de $name,Turó de $name"
 
-#: data/translations/english.cfg:144
+#: data/translations/english.cfg:147
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr "Can $name,El $name,Sant $name,$name,$name,$name,$name"
@@ -9524,7 +9537,7 @@ msgstr "XP: "
 msgid "Moves: "
 msgstr "Moviments: "
 
-#: src/display.cpp:484
+#: src/display.cpp:505
 msgid "Screenshot"
 msgstr "captura"
 
@@ -10757,31 +10770,31 @@ msgstr ""
 msgid "damage type: "
 msgstr "mal"
 
-#: src/reports.cpp:310
+#: src/reports.cpp:319
 msgid "Lawful units: "
 msgstr "Unitats legals: "
 
-#: src/reports.cpp:312
+#: src/reports.cpp:321
 msgid "Neutral units: "
 msgstr "Unitats neutrals: "
 
-#: src/reports.cpp:313
+#: src/reports.cpp:322
 msgid "Chaotic units: "
 msgstr "Unitats caòtiques: "
 
-#: src/reports.cpp:367
+#: src/reports.cpp:376
 msgid "Owned village"
 msgstr "Llogaret propi"
 
-#: src/reports.cpp:369
+#: src/reports.cpp:378
 msgid "Enemy village"
 msgstr "Llogaret enemic"
 
-#: src/reports.cpp:371
+#: src/reports.cpp:380
 msgid "Allied village"
 msgstr "Llogaret aliat"
 
-#: src/reports.cpp:428
+#: src/reports.cpp:437
 msgid "Observers:"
 msgstr "Observadors:"
 
