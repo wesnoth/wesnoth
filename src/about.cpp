@@ -181,6 +181,9 @@ std::vector<std::string> get_text() {
 		"-   Sofronius",
 		"-   VÃ­t KomÃ¡rek",
 		"-   VÃ­t KrÄÃ¡l",
+                "-   Oto Buchta (tapik)",
+                "-   Ane¸ka Bubení?ková (Bubu)",
+                "-   Vladimír Slávik",
 
 		"_" N_("+Danish Translation"),
 		"-   Anders K. Madsen (madsen)",
