@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-15 11:18+0100\n"
-"PO-Revision-Date: 2005-12-09 12:54+0100\n"
+"PO-Revision-Date: 2005-12-16 12:12+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -2641,38 +2641,32 @@ msgid "statuspanel^movement"
 msgstr "BP"
 
 #: data/themes/default.cfg:451
-#, fuzzy
 msgid "Replay"
-msgstr "Wiederholung anzeigen"
+msgstr "Wiederholung"
 
 #: data/themes/default.cfg:464
-#, fuzzy
 msgid "Play"
-msgstr "Spieler:"
+msgstr "Abspielen"
 
 #: data/themes/default.cfg:477
 msgid "Stop"
-msgstr ""
+msgstr "Stopp"
 
 #: data/themes/default.cfg:490
-#, fuzzy
 msgid "Reset"
-msgstr "Wüste"
+msgstr "Zurücksetzen"
 
 #: data/themes/default.cfg:503
-#, fuzzy
 msgid "Next Turn"
-msgstr "Runde"
+msgstr "Nächste Runde"
 
 #: data/themes/default.cfg:516
-#, fuzzy
 msgid "Next Side"
-msgstr "Weiter"
+msgstr "Nächste Fraktion"
 
 #: data/themes/default.cfg:552
-#, fuzzy
 msgid "Skip animation"
-msgstr "+Slovakische Übersetzung"
+msgstr "Animationen überspringen"
 
 #: data/themes/default.cfg:650
 msgid "Act."
@@ -3303,7 +3297,6 @@ msgid "teleport"
 msgstr "Teleportation"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -3392,7 +3385,6 @@ msgstr ""
 "oder Einheiten in Dörfern."
 
 #: data/translations/english.cfg:117
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -3402,8 +3394,8 @@ msgstr ""
 "Untote Plage:\n"
 "Wird ein Gegner durch eine Einheit mit der Fähigkeit »untote Plage« "
 "vernichtet, so wird er durch eine eigene Einheit ersetzt, die jener mit der "
-"Fähigkeit »untote Plage« identisch ist. Dies funktioniert nicht gegen Untote "
-"oder Einheiten in Dörfern."
+"Fähigkeit »untote Plage« identisch ist. (Dies funktioniert nicht gegen "
+"Untote oder Einheiten in Dörfern.)"
 
 #: data/translations/english.cfg:120
 msgid ""
@@ -4383,9 +4375,8 @@ msgid "tentacle"
 msgstr "Tentakel"
 
 #: data/units/Cuttle_Fish.cfg:42
-#, fuzzy
 msgid "swarm"
-msgstr "Sturzflug"
+msgstr "Schwarm"
 
 #: data/units/Cuttle_Fish.cfg:76
 msgid "ink"
@@ -6415,12 +6406,10 @@ msgid "net"
 msgstr "Netz"
 
 #: data/units/Goblin_Rouser.cfg:3
-#, fuzzy
 msgid "Goblin Rouser"
-msgstr "Kobold Pfähler"
+msgstr "Kobold Standartenträger"
 
 #: data/units/Goblin_Rouser.cfg:27
-#, fuzzy
 msgid ""
 "Standard Bearers are an oddity amongst Goblins. Firstly they have survived a "
 "war, but perhaps more significantly, they were remembered to have survived "
@@ -6431,16 +6420,17 @@ msgid ""
 "to it to deal more damage in combat, though this only applies to units of "
 "lower level."
 msgstr ""
-"Einer der am meisten geachtetsten Ränge in der Armee der Menschen ist der "
-"eines Feldmarschalls. Diejenigen, die diesen Titel tragen dürfen, haben "
-"viele Feuerproben bestanden. Sie haben sowohl beträchtlichen Mut im Kampf "
-"Mann gegen Mann bewiesen, als auch ihr exzellentes taktisches Geschick. Ihre "
-"Präsenz auf dem Schlachtfeld ist eine große Hilfe für alle die, die unter "
-"ihrem Kommando kämpfen.\n"
+"Standartenträger sind eine Seltenheit unter den Kobolden. Wichtiger, als das "
+"sie eine Schlacht überlebten, ist, dass sie sich unter ihresgleichen einen "
+"Namen gemacht haben. So scharen sich häufig die jüngeren Kobolde in der "
+"Schlacht um eben diese Kobolde, die die ganze Meute mit Kriegsliedern "
+"anstacheln, ihr bestes in der Schlacht zu geben. Selbst nicht viel stärker, "
+"als ihre jüngeren Brüder, sollte man die Wirkung eines Standartenträger in "
+"den Reihen der Kobolde nicht unterschätzen.\n"
 "\n"
-"Anmerkung: Die Führungsqualitäten des Feldmarschalls gewähren allen "
-"benachbarten eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie "
-"eine niedrigere Stufe besitzen."
+"Anmerkung: Die Führungsqualitäten des Kobold Standartenträgers gewähren "
+"allen benachbarten eigenen Einheiten einen Schadensbonus, jedoch nur, wenn "
+"sie eine niedrigere Stufe besitzen."
 
 #: data/units/Goblin_Spearman.cfg:3
 msgid "Goblin Spearman"
@@ -9643,9 +9633,8 @@ msgid "+Scenario Designers"
 msgstr "+Szenarien"
 
 #: src/about.cpp:113
-#, fuzzy
 msgid "+Multiplayer Developers"
-msgstr "+Mehrspielerkarten"
+msgstr "+Mehrspielerentwicklung"
 
 #: src/about.cpp:118
 msgid "+Multiplayer Maps"
