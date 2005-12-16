@@ -895,6 +895,7 @@ void display::update_display()
 void display::draw_sidebar()
 {
         draw_report(reports::REPORT_CLOCK);
+	draw_report(reports::REPORT_COUNTDOWN);
 
 	if(teams_.empty()) {
 		return;

@@ -103,6 +103,8 @@ team::team_info::team_info(const config& cfg)
 		save_id = cfg["description"];
 	}
 
+	countdown_time = cfg["countdown_time"];
+
 	colour = lexical_cast_default<int>(cfg["colour"],-1);
 	if(colour == -1)
 		colour = lexical_cast_default<int>(cfg["side"],-1);
@@ -250,6 +252,7 @@ void team::team_info::write(config& cfg) const
 	cfg["description"] = description;
 	cfg["objectives"] = objectives;
 	cfg["objectives_changed"] = objectives_changed ? "yes" : "no";
+	cfg["countdown_time"]= countdown_time;
 
 	char buf[50];
 	snprintf(buf,sizeof(buf),"%d",income_per_village);
@@ -333,6 +336,8 @@ team::team(const config& cfg, int gold) : gold_(gold), auto_shroud_updates_(true
 	for(config::child_list::const_iterator v = villages.begin(); v != villages.end(); ++v) {
 		villages_.insert(gamemap::location(**v));
 	}
+
+	countdown_time_=lexical_cast_default<int>(cfg["countdown_time"],0);
 }
 
 void team::write(config& cfg) const
@@ -351,6 +356,8 @@ void team::write(config& cfg) const
 	}
 
 	cfg["shroud_data"] = shroud_.write();
+	
+	cfg["countdown_time"] = lexical_cast_default<std::string>(countdown_time_);
 }
 
 bool team::get_village(const gamemap::location& loc)
@@ -441,6 +448,15 @@ void team::spend_gold(int amount)
 void team::set_income(int amount)
 {
 	info_.income = lexical_cast<std::string>(amount);
+}
+
+int team::countdown_time() const
+{
+	return countdown_time_;
+}
+void team::set_countdown_time(int amount)
+{
+	countdown_time_=amount;	
 }
 
 const std::set<std::string>& team::recruits() const

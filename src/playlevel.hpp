@@ -46,4 +46,5 @@ namespace play{
 	void place_sides_in_preferred_locations(gamemap& map, const config::child_list& sides);
 }
 
+
 #endif

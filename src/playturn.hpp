@@ -113,6 +113,9 @@ public:
 	//data will be forwarded to all peers other than 'from', unless 'from' is null, in
 	//which case data will not be forwarded
 	PROCESS_DATA_RESULT process_network_data(const config& cfg,network::connection from,std::deque<config>& backlog);
+	
+	
+
 
 private:
 	//convenience functions
@@ -267,5 +270,6 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
                std::map<gamemap::location,unit>& units,
                turn_info::floating_textbox& textbox,
                replay_network_sender& network_sender);
+
 
 #endif

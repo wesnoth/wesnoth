@@ -43,6 +43,11 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	maps_menu_(disp.video(), std::vector<std::string>()),
 	turns_slider_(disp.video()),
 	turns_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
+	countdown_game_(disp.video(), _("Enable time limit"), gui::button::TYPE_CHECK),
+	countdown_init_time_slider_(disp.video()),
+	countdown_init_time_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
+	countdown_turn_bonus_slider_(disp.video()),
+	countdown_turn_bonus_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	village_gold_slider_(disp.video()),
 	village_gold_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	xp_modifier_slider_(disp.video()),
@@ -94,6 +99,21 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	turns_slider_.set_value(preferences::turns());
 	turns_slider_.set_help_string(_("The maximum number of turns the game can last"));
 
+	countdown_game_.set_check(preferences::countdown());
+	countdown_game_.set_help_string(_("Enables ingame user time limits"));
+	
+	countdown_init_time_slider_.set_min(0);
+	countdown_init_time_slider_.set_max(7200);
+	countdown_init_time_slider_.set_increment(30);
+	countdown_init_time_slider_.set_value(preferences::countdown_init_time());
+	countdown_init_time_slider_.set_help_string(_("Initial time available for user at the begining of the match"));
+
+	countdown_turn_bonus_slider_.set_min(0);
+	countdown_turn_bonus_slider_.set_max(1000);
+	countdown_turn_bonus_slider_.set_increment(10);
+	countdown_turn_bonus_slider_.set_value(preferences::countdown_turn_bonus());
+	countdown_turn_bonus_slider_.set_help_string(_("Time added to user's clock at the end of each turn"));	
+	
 	village_gold_slider_.set_min(1);
 	village_gold_slider_.set_max(5);
 	village_gold_slider_.set_value(preferences::village_gold());
@@ -161,6 +181,9 @@ create::~create()
 	preferences::set_fog(parameters_.fog_game);
 	preferences::set_shroud(parameters_.shroud_game);
 	preferences::set_turns(parameters_.num_turns);
+	preferences::set_countdown(parameters_.mp_countdown);
+	preferences::set_countdown_init_time(parameters_.mp_countdown_init_time);
+	preferences::set_countdown_turn_bonus(parameters_.mp_countdown_turn_bonus); 
 	preferences::set_village_gold(parameters_.village_gold);
 	preferences::set_xp_modifier(parameters_.xp_modifier);
 	preferences::set_era(era_combo_.selected()); // FIXME: may be broken if new eras are added
@@ -174,6 +197,11 @@ create::parameters& create::get_parameters()
 	const int turns = turns_slider_.value() < turns_slider_.max_value() ?
 		turns_slider_.value() : -1;
 
+	const int mp_countdown_init_time_val = countdown_init_time_slider_.value() < countdown_init_time_slider_.max_value() ?
+		countdown_init_time_slider_.value() : -1;
+	const int mp_countdown_turn_bonus_val = countdown_turn_bonus_slider_.value() < countdown_turn_bonus_slider_.max_value() ?
+		countdown_turn_bonus_slider_.value() : -1;
+
 	// Updates the values in the "parameters_" member to match the values
 	// selected by the user with the widgets:
 	parameters_.name = name_entry_.text();
@@ -182,6 +210,9 @@ create::parameters& create::get_parameters()
 	}
 	parameters_.era = (*era_list[era_combo_.selected()])["id"];
 	parameters_.num_turns = turns;
+	parameters_.mp_countdown_init_time = mp_countdown_init_time_val;
+	parameters_.mp_countdown_turn_bonus = mp_countdown_turn_bonus_val; 
+	parameters_.mp_countdown = countdown_game_.checked();
 	parameters_.village_gold = village_gold_slider_.value();
 	parameters_.xp_modifier = xp_modifier_slider_.value();
 	parameters_.use_map_settings = use_map_settings_.checked();
@@ -224,7 +255,22 @@ void create::process_event()
 		buf << _("Unlimited Turns");
 	}
 	turns_label_.set_text(buf.str());
-
+	
+	countdown_init_time_label_.hide(!countdown_game_.checked());
+	countdown_init_time_slider_.hide(!countdown_game_.checked());
+	countdown_turn_bonus_label_.hide(!countdown_game_.checked());
+	countdown_turn_bonus_slider_.hide(!countdown_game_.checked());
+	
+	const int mp_countdown_init_time_val = countdown_init_time_slider_.value();
+	buf.str("");
+	buf <<  _("Initial Time: ") << mp_countdown_init_time_val << " seconds";
+	countdown_init_time_label_.set_text(buf.str());
+	
+	const int mp_countdown_turn_bonus_val = countdown_turn_bonus_slider_.value();
+	buf.str("");
+	buf <<  _("Turn time bonus: ") << mp_countdown_turn_bonus_val << " seconds";
+	countdown_turn_bonus_label_.set_text(buf.str());
+	
 	//Villages can produce between 1 and 10 gold a turn
 	const int village_gold = village_gold_slider_.value();
 	buf.str("");
@@ -375,6 +421,13 @@ void create::hide_children(bool hide)
 	maps_menu_.hide(hide);
 	turns_slider_.hide(hide);
 	turns_label_.hide(hide);
+	
+	countdown_init_time_slider_.hide(hide);
+	countdown_init_time_label_.hide(hide);
+	countdown_turn_bonus_slider_.hide(hide);
+	countdown_turn_bonus_label_.hide(hide);
+	countdown_game_.hide(hide);
+	
 	village_gold_slider_.hide(hide);
 	village_gold_label_.hide(hide);
 	xp_modifier_slider_.hide(hide);
@@ -483,6 +536,7 @@ void create::layout_children(const SDL_Rect& rect)
 	turns_slider_.set_location(xpos, ypos);
 	ypos += turns_slider_.height() + border_size;
 
+	
 	village_gold_label_.set_location(xpos, ypos);
 	ypos += village_gold_label_.height() + border_size;
 	village_gold_slider_.set_width(ca.w - xpos);
@@ -495,6 +549,18 @@ void create::layout_children(const SDL_Rect& rect)
 	xp_modifier_slider_.set_location(xpos, ypos);
 	ypos += xp_modifier_slider_.height() + border_size;
 
+	countdown_game_.set_location(xpos, ypos);
+	ypos += countdown_game_.height() + border_size;
+
+	countdown_init_time_label_.set_location(xpos, ypos);
+	countdown_turn_bonus_label_.set_location(xpos + (ca.w - xpos)/2 + 5 , ypos);
+	ypos += countdown_init_time_label_.height() + border_size;
+	countdown_init_time_slider_.set_width(((ca.w - xpos)/2)-5);
+	countdown_turn_bonus_slider_.set_width(((ca.w - xpos)/2)-5);
+	countdown_init_time_slider_.set_location(xpos, ypos);
+	countdown_turn_bonus_slider_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
+	ypos += countdown_init_time_slider_.height() + border_size;
+	
 
 	use_map_settings_.set_location(xpos, ypos);
 	ypos += use_map_settings_.height() + border_size;

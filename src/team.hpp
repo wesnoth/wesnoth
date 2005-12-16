@@ -73,7 +73,8 @@ public:
 		std::vector<int> enemies;
 		std::string team_name;
 		std::string save_id;
-
+		std::string countdown_time;
+		
 		std::string flag;
 
 		std::string description;
@@ -123,6 +124,8 @@ public:
 	void get_shared_maps();
 	void spend_gold(int amount);
 	void set_income(int amount);
+	int countdown_time() const;
+	void set_countdown_time(int amount);
 
 	const std::set<std::string>& recruits() const;
 	std::set<std::string>& recruits();
@@ -245,6 +248,8 @@ private:
 
 	team_info info_;
 
+	int countdown_time_;
+	
 	config aiparams_;
 
 	//cached values for ai parameters

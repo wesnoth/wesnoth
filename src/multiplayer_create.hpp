@@ -35,6 +35,9 @@ public:
 			num_turns = 0;
 			village_gold = 0;
 			xp_modifier = 0;
+			mp_countdown=false;
+			mp_countdown_init_time=0;
+			mp_countdown_turn_bonus=0;
 			use_map_settings = fog_game = shroud_game = allow_observers = share_view = share_maps = false;
 
 			scenario_data.clear();
@@ -48,6 +51,9 @@ public:
 		int num_turns;
 		int village_gold;
 		int xp_modifier;
+		int mp_countdown_init_time;
+		int mp_countdown_turn_bonus;
+		bool mp_countdown;
 		bool use_map_settings;
 		bool fog_game;
 		bool shroud_game;
@@ -84,6 +90,11 @@ private:
 	gui::menu maps_menu_;
 	gui::slider turns_slider_;
 	gui::label turns_label_;
+	gui::button countdown_game_;
+	gui::slider countdown_init_time_slider_;
+	gui::label countdown_init_time_label_;
+	gui::slider countdown_turn_bonus_slider_;
+	gui::label countdown_turn_bonus_label_;
 	gui::slider village_gold_slider_;
 	gui::label village_gold_label_;
 	gui::slider xp_modifier_slider_;

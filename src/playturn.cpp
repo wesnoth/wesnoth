@@ -80,7 +80,6 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 	gui.invalidate_all();
 	gui.draw();
 	gui.update_display();
-
 	const paths_wiper wiper(gui);
 
 	if(preferences::turn_bell()) {
@@ -114,9 +113,16 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 		unit_map::const_iterator ui = units.find(*g);
 		turn_data.move_unit_to_loc(ui,ui->second.get_goto(),false);
 	}
+	
+	
+
+	int cur_ticks = SDL_GetTicks();
+	int beep_warning_time = 10000; //Starts beeping each second when time is less than this (millisec)
 
 	turn_data.start_interactive_turn();
-
+	
+	
+	
 	while(!turn_data.turn_over()) {
 
 		try {
@@ -133,11 +139,35 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 			turn_data.send_data();
 			throw e;
 		}
+		
 
+	if (teams[team_num -1].countdown_time() > 0 &&  ( level["mp_countdown"] == "yes" ) ){
+		SDL_Delay(1);
+		const int ticks = SDL_GetTicks();
+		teams[team_num -1].set_countdown_time(teams[team_num -1].countdown_time()-maximum<int>(1,(ticks - cur_ticks)));
+		cur_ticks = ticks;
+		if ( teams[team_num -1].countdown_time() <= beep_warning_time){
+			beep_warning_time=beep_warning_time - 1000;
+			sound::play_sound("bell.wav");
+		}
+		if ( teams[team_num -1].countdown_time() <= 0){
+			teams[team_num -1].set_countdown_time(teams[team_num -1].countdown_time() + 1000 * lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0));
+			recorder.add_countdown_update(teams[team_num -1].countdown_time(),team_num);
+			recorder.end_turn();
+			turn_data.send_data();
+			throw end_turn_exception();
+		} 
+		
+	}
+	
 		// gui.invalidate_animations();
 		gui.draw();
 
 		turn_data.send_data();
+	}
+	if ( level["mp_countdown"] == "yes" ){
+		teams[team_num -1].set_countdown_time(teams[team_num -1].countdown_time() + 1000 * lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0));
+		recorder.add_countdown_update(teams[team_num -1].countdown_time(),team_num);		
 	}
 
 	//send one more time to make sure network is up-to-date.

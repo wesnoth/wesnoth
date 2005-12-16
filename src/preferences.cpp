@@ -493,6 +493,60 @@ void set_turns(int value)
 	prefs["mp_turns"] = stream.str();
 }
 
+bool countdown()
+{
+	return prefs["mp_countdown"] == "yes";
+}
+
+void set_countdown(bool value)
+{
+	prefs["mp_countdown"] = value ? "yes" : "no";
+}
+
+
+int countdown_init_time()
+{
+	static const int default_value = 120;
+	int value = 0;
+	const string_map::const_iterator i = prefs.values.find("mp_countdown_init_time");
+	if(i != prefs.values.end() && i->second.empty() == false) {
+		value = atoi(i->second.c_str());
+	}
+
+	if(value < 0 || value > 7200) {
+		value = default_value;
+	}
+
+	return value;
+}
+
+void set_countdown_init_time(int value)
+{
+	prefs["mp_countdown_init_time"] = lexical_cast<std::string>(value);
+}
+
+int countdown_turn_bonus()
+{
+	static const int default_value = 60;
+	int value = 0;
+	const string_map::const_iterator i = prefs.values.find("mp_countdown_turn_bonus");
+	if(i != prefs.values.end() && i->second.empty() == false) {
+		value = atoi(i->second.c_str());
+	}
+
+	if(value < 0 || value > 1000) {
+		value = default_value;
+	}
+
+	return value;
+}
+
+void set_countdown_turn_bonus(int value)
+{
+	prefs["mp_countdown_turn_bonus"] =lexical_cast<std::string>(value);
+}
+
+
 int village_gold()
 {
 	static const int default_value = 2;

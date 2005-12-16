@@ -36,7 +36,8 @@ namespace {
 		"unit_image","unit_profile","time_of_day",
 		"turn","gold","villages","num_units","upkeep", "expenses",
 		"income", "terrain", "position", "side_playing", "observers",
-                "report_clock","selected_terrain","edit_left_button_function"
+		"report_countdown", "report_clock",
+		"selected_terrain","edit_left_button_function"
 	};
 	std::map<reports::TYPE, std::string> report_contents;
 }
@@ -462,6 +463,27 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			return report();
 		}
 	}
+	case REPORT_COUNTDOWN: {
+		int min;
+		int sec;
+		if (current_team.countdown_time() > 0){
+			sec = current_team.countdown_time() / 1000;
+
+			if(sec < 60)
+		  		str << "<200,0,0>";
+			else if(sec < 120)
+		  		str << "<200,200,0>";
+			
+			min = sec / 60;
+			str << min << ":";
+			sec = sec % 60;
+			if (sec < 10) {
+				str << "0";
+			}
+			str << sec;
+		}
+		break;
+		}
 	case REPORT_CLOCK: {
 		time_t t = time(NULL);
 		struct tm *lt=localtime(&t);

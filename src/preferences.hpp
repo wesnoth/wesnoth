@@ -129,6 +129,13 @@ namespace preferences {
 	int turns();
 	void set_turns(int value);
 
+	bool countdown();
+	void set_countdown(bool value);
+	int countdown_init_time();
+	void set_countdown_init_time(int value);
+	int countdown_turn_bonus();
+	void set_countdown_turn_bonus(int value);
+
 	int village_gold();
 	void set_village_gold(int value);
 

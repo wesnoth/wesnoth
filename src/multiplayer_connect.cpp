@@ -344,7 +344,20 @@ config connect::side::get_config() const
 		if(!parent_->params_.use_map_settings || res["shroud"].empty() || (res["shroud"] != "yes" && res["shroud"] != "no")) {
 			res["shroud"] = parent_->params_.shroud_game ? "yes" : "no";
 		}
+		
+		
+		if(!parent_->params_.use_map_settings || res["mp_countdown"].empty() || (res["mp_countdown"] != "yes" && res["mp_countdown"] != "no")) {
+			res["mp_countdown"] = parent_->params_.mp_countdown ? "yes" : "no";;
+		}
+		
+		if(!parent_->params_.use_map_settings || res["mp_countdown_init_time"].empty()) {
+			res["mp_countdown_init_time"] = lexical_cast<std::string>(parent_->params_.mp_countdown_init_time);
+		}
+		if(!parent_->params_.use_map_settings || res["mp_countdown_turn_bonus"].empty()) {
+			res["mp_countdown_turn_bonus"] = lexical_cast<std::string>(parent_->params_.mp_countdown_turn_bonus);
+		}
 
+		
 		res["share_maps"] = parent_->params_.share_maps ? "yes" : "no";
 		res["share_view"] =  parent_->params_.share_view ? "yes" : "no";
 		if(!parent_->params_.use_map_settings || res["village_gold"].empty())
@@ -951,7 +964,12 @@ void connect::load_game()
 	} else {
 		level_ = params_.scenario_data;
 		level_["turns"] = lexical_cast_default<std::string>(params_.num_turns, "20");
-
+		level_["mp_countdown"] = params_.mp_countdown ? "yes" : "no";
+		level_["mp_countdown_init_time"] = lexical_cast_default<std::string>(params_.mp_countdown_init_time, "600");
+		level_["mp_countdown_turn_bonus"] = lexical_cast_default<std::string>(params_.mp_countdown_turn_bonus, "100");
+		
+		
+		
 		const std::string& era = params_.era;
 
 		// Initialize the list of sides available for the current era.

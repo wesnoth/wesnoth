@@ -265,6 +265,18 @@ void replay::add_disband(int value)
 	cmd->add_child("disband",val);
 }
 
+void replay::add_countdown_update(int value, int team)
+{
+	config* const cmd = add_command();
+	config val;
+
+	val["value"] = lexical_cast_default<std::string>(value);
+	val["team"] = lexical_cast_default<std::string>(team);
+	
+	cmd->add_child("countdown_update",val);
+}
+
+
 void replay::add_movement(const gamemap::location& a,const gamemap::location& b)
 {
 	add_pos("move",a,b);
@@ -737,7 +749,18 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
 		}
-
+		else if((child = cfg->child("countdown_update")) != NULL) {
+			const std::string& num = (*child)["value"];
+			const int val = lexical_cast_default<int>(num);
+			const std::string& tnum = (*child)["team"];
+			const int tval = lexical_cast_default<int>(tnum,-1);
+			if ( (tval<0)  || (tval > teams.size()) ) {
+				ERR_NW << "Illegal countdown update \n" << "Received update for :" << tval << " Current user :" << team_num << "\n" << " Updated value :" << val;
+				if (!game_config::ignore_replay_errors) throw replay::error();
+			} else {
+			teams[tval-1].set_countdown_time(val);
+			}
+		}
 		else if((child = cfg->child("move")) != NULL) {
 
 			const config* const destination = child->child("destination");
