@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-15 11:18+0100\n"
-"PO-Revision-Date: 2005-11-28 14:28+0100\n"
+"PO-Revision-Date: 2005-12-16 20:52+0100\n"
 "Last-Translator: Stefan Bergström (tephlon)\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -134,7 +134,6 @@ msgstr ""
 "börja med en <italic>text=Lätt</italic> kampanj."
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -384,14 +383,15 @@ msgstr ""
 "enkelt på truppen du vill flytta, och därefter på rutan du vill flytta "
 "truppen till. När truppen är vald så visas de rutor som den kan flytta till "
 "under samma drag genom att lysas upp. Om muspekaren hålls över sådan upplyst "
-"ruta, så visas det försvar som truppen får om den ställs på den rutan. Om "
-"muspekaren hålls över en skuggad ruta, så visas dessutom antalet drag som "
-"krävs för att nå den. Om en skuggad ruta väljs så kommer truppen att flyttas "
-"dit den snabbaste vägen under kommande drag. Om truppen inte använder hela "
-"sin förflyttning första gången den förflyttas under ett drag, så kan den "
-"flyttas igen i samma drag. En trupp förlorar återstående förflyttning om den "
-"anfaller. Om en trupp ställs i en by man inte redan kontrollerar så förloras "
-"återstående förflyttning, men man kan fortfarande anfalla."
+"ruta, visas det försvar som truppen får om den ställs på den rutan. Om "
+"muspekaren hålls över en skuggad ruta, visas dessutom antalet drag som krävs "
+"för att nå den. Om en skuggad ruta väljs så kommer truppen att flyttas dit "
+"den snabbaste vägen under kommande drag. Om truppen inte använder hela sin "
+"förflyttning första gången den förflyttas under ett drag, så kan den flyttas "
+"igen i samma drag. Detta är användbart om man vill byta plats på två "
+"trupper. En trupp förlorar återstående förflyttning om den anfaller. Om en "
+"trupp ställs i en by man inte redan kontrollerar så förloras återstående "
+"förflyttning, men man kan fortfarande anfalla."
 
 #: data/help.cfg:128
 msgid ""
@@ -459,7 +459,6 @@ msgid "Shroud and Fog of War"
 msgstr "Slöja och stridsdimma"
 
 #: data/help.cfg:138
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -709,7 +708,6 @@ msgid "Time of Day"
 msgstr "Dygnets gång"
 
 #: data/help.cfg:181
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -806,7 +804,6 @@ msgstr ""
 "nästa roll."
 
 #: data/help.cfg:201
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -825,15 +822,13 @@ msgstr ""
 "De flesta trupper har tre erfarenhetsnivåer, dock inte alla. Vissa trupper "
 "(såsom <ref>dst=unit_Mage text=magiker</ref>) kan ha fyra. Trupper som nått "
 "sin högsta nivå stannar dock vanligtvis inte i utvecklingen, utan kan växa i "
-"styrka ytterligare, om än genom en annan mindre dramatisk process.\n"
-"\n"
-"Den process som tar vid när en trupp nått sin högsta nivå kallas tekniskt "
-"för AMLA, vilket står för After Max Level Advancement. Denna process kommer "
-"att förändra truppen varje gång en viss erfarenhetspoäng är nådd, men "
-"truppens erfarenhetsnivå ökar dock inte. Den vanligaste AMLA-effekten är att "
-"truppens aktuella hälsopoäng ökar med 3 HP för varje 100 EP. Endast ett "
-"litet fåtal truppslag, såsom nekrofagen, återfår full styrka när detta "
-"inträffar."
+"styrka ytterligare genom en process som tekniskt kallas för AMLA, vilket "
+"står för After Max Level Advancement. Denna process kommer att förändra "
+"truppen varje gång en viss erfarenhetspoäng är nådd, men truppens "
+"erfarenhetsnivå ökar dock inte. Den vanligaste AMLA-effekten är att truppens "
+"aktuella hälsopoäng ökar med 3 HP för varje 100 EP. Endast ett litet fåtal "
+"truppslag, såsom nekrofagen, återfår full styrka när detta inträffar. De "
+"flesta trupper får bara en höjd maximal HP."
 
 #: data/help.cfg:206
 msgid "Healing"
@@ -903,7 +898,6 @@ msgstr ""
 "4 HP per drag av en vårdande trupp."
 
 #: data/help.cfg:213
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -913,10 +907,9 @@ msgid ""
 msgstr ""
 "\n"
 "- Helande trupper: Trupper med förmågan att <ref>dst=ability_cures "
-"text=hela</ref> återskänker upp till sammanlagt 18 HP per drag till "
-"allierade trupper som står i de intilliggande rutorna. Om en trupp är "
-"förgiftad så botas förgiftningen innan helandet börjar. En trupp kan återfå "
-"maximalt 8 HP per drag av en helande trupp."
+"text=hela</ref> återskänker upp till sammanlagt 18 HP per drag, samt botar "
+"förgiftning. Endast allierade trupper som står i de intilliggande rutorna "
+"helas, och högst 8 HP kan återfås per drag."
 
 #: data/help.cfg:215
 msgid ""
@@ -1234,7 +1227,7 @@ msgstr ""
 
 #: data/help.cfg:301
 msgid "trait^Undead"
-msgstr "trait^Vandöda"
+msgstr "trait^Vandöd"
 
 #: data/help.cfg:302
 msgid "Undead units are immune to poison."
@@ -1876,9 +1869,8 @@ msgid ""
 msgstr "Detta är Eldspiran. Endast en sann tronarvinge kan våga ta den!"
 
 #: data/items.cfg:816
-#, fuzzy
 msgid "Zap"
-msgstr "Zap~"
+msgstr "Zap"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -2533,38 +2525,32 @@ msgid "statuspanel^movement"
 msgstr "förflyttning"
 
 #: data/themes/default.cfg:451
-#, fuzzy
 msgid "Replay"
-msgstr "repris"
+msgstr "Repris"
 
 #: data/themes/default.cfg:464
-#, fuzzy
 msgid "Play"
-msgstr "Spelare: "
+msgstr "Spela upp"
 
 #: data/themes/default.cfg:477
 msgid "Stop"
-msgstr ""
+msgstr "Stopp"
 
 #: data/themes/default.cfg:490
-#, fuzzy
 msgid "Reset"
-msgstr "Öken"
+msgstr "Återställ"
 
 #: data/themes/default.cfg:503
-#, fuzzy
 msgid "Next Turn"
-msgstr "Drag"
+msgstr "Nästa drag"
 
 #: data/themes/default.cfg:516
-#, fuzzy
 msgid "Next Side"
-msgstr "Nästa"
+msgstr "Nästa sida"
 
 #: data/themes/default.cfg:552
-#, fuzzy
 msgid "Skip animation"
-msgstr "+Slovakisk översättning"
+msgstr "Hoppa över animering"
 
 #: data/themes/default.cfg:650
 msgid "Act."
@@ -2605,7 +2591,6 @@ msgstr ""
 "mot de olika vapenslagen."
 
 #: data/tips.cfg:4
-#, fuzzy
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -2614,7 +2599,7 @@ msgid ""
 msgstr ""
 "Hur stor chans en fiendetrupp har att träffa dina trupper beror på vilken "
 "typ av terräng din trupp står på. Vilken försvarsprocent den valda truppen "
-"har på sin terräng visas längst upp till höger på skärmen."
+"har på sin terräng visas längst upp till höger."
 
 #: data/tips.cfg:5
 msgid ""
@@ -2629,7 +2614,6 @@ msgstr ""
 "som har förmågan att 'hela'."
 
 #: data/tips.cfg:6
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -2907,7 +2891,6 @@ msgid "Hard"
 msgstr "Svårt"
 
 #: data/translations/english.cfg:9
-#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -2926,7 +2909,6 @@ msgid ""
 msgstr "Neutrala trupper påverkas inte av dygnets växlingar."
 
 #: data/translations/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -2962,7 +2944,6 @@ msgid "ambush"
 msgstr "bakhåll"
 
 #: data/translations/english.cfg:31
-#, fuzzy
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -2980,12 +2961,12 @@ msgstr ""
 "återställa trupper snabbare än vad som vanligtvis är möjligt på ett "
 "slagfält.\n"
 "\n"
-"En helare tar hand om alla trupper som står på närliggande rutor i början av "
-"varje drag.\n"
-"Varje trupp kommer att återfå upp till 8 HP per drag.\n"
+"En trupp som kan hela tar hand om alla allierade trupper som står på "
+"närliggande rutor i början av varje drag.\n"
+"Varje trupp kan att återfå upp till 8 HP per drag.\n"
 "En helare kan sammanlagt återställa högst 18 HP per drag.\n"
-"En trupp som kan hela kan också häva en förgiftning, till priset av att den "
-"förgiftade truppen inte återfår några HP under samma drag."
+"En trupp som kan hela kan också häva en förgiftning, men då återfår inte den "
+"förgiftade truppen några HP under samma drag."
 
 #: data/translations/english.cfg:33 data/units/Elvish_Druid.cfg:25
 #: data/units/Elvish_Shyde.cfg:27 data/units/Mermaid_Priestess.cfg:17
@@ -2995,7 +2976,6 @@ msgid "cures"
 msgstr "helar"
 
 #: data/translations/english.cfg:40
-#, fuzzy
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -3007,12 +2987,12 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "Vårdar:\n"
-"Truppen vårdar närliggande trupper i början av varje drag.\n"
+"Truppen vårdar närliggande allierade trupper i början av varje drag.\n"
 "\n"
 "Truppen återställer upp till 4 HP per drag.\n"
 "Truppen kan sammanlagt återställa högst 8 HP per drag.\n"
-"En förgiftad trupp kan inte återställas helt av vård, utan måste söka "
-"tillflykt till en by eller bli få hjälp av en trupp som kan hela."
+"En förgiftad trupp kan inte återställas helt av en vårdande trupp, utan "
+"måste söka tillflykt till en by eller få hjälp av en trupp som kan hela."
 
 #: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:18
 #: data/units/Paladin.cfg:36 data/units/Saurian_Icecaster.cfg:27
@@ -3122,7 +3102,6 @@ msgid "regenerates"
 msgstr "regenererar"
 
 #: data/translations/english.cfg:76
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -3175,7 +3154,6 @@ msgid "teleport"
 msgstr "teleportera"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -3255,7 +3233,6 @@ msgstr ""
 "eller trupper i byar.)"
 
 #: data/translations/english.cfg:117
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -3263,8 +3240,8 @@ msgid ""
 "(This doesn't work on Undead or units in villages.)"
 msgstr ""
 "Pest:\n"
-"När en trupp dödas av pestsmitta, ersätts truppen av en likadan, men som "
-"tillhör sidan som pestsmittade truppen. (Detta fungerar inte mot vandöda "
+"När en trupp dödas av pestsmitta ersätts truppen av angivet truppslag "
+"tillhörande sidan som pestsmittade truppen. (Detta fungerar inte mot vandöda "
 "eller trupper i byar.)"
 
 #: data/translations/english.cfg:120
@@ -3303,7 +3280,7 @@ msgstr ""
 
 #: data/translations/english.cfg:132
 msgid "race^Undead"
-msgstr "race^Vandöda"
+msgstr "Vandöda"
 
 #: data/translations/english.cfg:135
 msgid "$name's Bridge,$name's Crossing"
@@ -8942,9 +8919,8 @@ msgid "+Scenario Designers"
 msgstr "+Scenarioförfattare"
 
 #: src/about.cpp:113
-#, fuzzy
 msgid "+Multiplayer Developers"
-msgstr "+Gruppspelskartor"
+msgstr "+Gruppspelsutvecklare"
 
 #: src/about.cpp:118
 msgid "+Multiplayer Maps"
@@ -9401,9 +9377,8 @@ msgid "Get More Campaigns..."
 msgstr "Hämta fler kampanjer..."
 
 #: src/game.cpp:746
-#, fuzzy
 msgid "Download more campaigns from an Internet server."
-msgstr "Ladda ner fler kampanjer från en server över internet."
+msgstr "Ladda ner fler kampanjer från en Internetserver."
 
 #: src/game.cpp:756
 msgid "Choose the campaign you want to play:"
@@ -9713,22 +9688,20 @@ msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Den för truppen mest fördelaktiga terrängen används automatiskt"
 
 #: src/help.cpp:1317
-#, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
 msgstr ""
-"Den här terrängen fungerar som ett kärntorn. Du kan alltså rekrytera trupper "
-"när din ledare befinner på den här sortens terräng"
+"Den här terrängen fungerar som ett kärntorn, vilket innebär att trupper kan "
+"rekryteras när en ledare befinner sig här."
 
 #: src/help.cpp:1319
-#, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
-"Den här terrängen fungerar som en borg. Rekryterade trupper kan alltså "
-"placeras på den här sortens terräng"
+"Den här terrängen fungerar som en borg, vilket innebär att trupper kan "
+"rekryteras och placeras här."
 
 #: src/help.cpp:1321
 msgid "This terrain gives healing."
@@ -9965,9 +9938,8 @@ msgid "Settings..."
 msgstr "Inställningar..."
 
 #: src/multiplayer_create.cpp:95
-#, fuzzy
 msgid "The maximum number of turns the game can last"
-msgstr "Maximalt antal speldrag"
+msgstr "Maximalt antal drag som spelet fortgår"
 
 #: src/multiplayer_create.cpp:100
 msgid "The amount of income each village yields per turn"
@@ -10264,12 +10236,11 @@ msgid "Scenario Report"
 msgstr "Scenariorapport"
 
 #: src/playlevel.cpp:713
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Nätverket har kopplats ner och spelet kan inte fortsätta. Vill du spara "
+"Anslutningen har kopplats ner och spelet kan inte fortsätta. Vill du spara "
 "spelet?"
 
 #: src/playturn.cpp:91
@@ -10547,7 +10518,6 @@ msgid "invisible: "
 msgstr "osynlig: "
 
 #: src/reports.cpp:139
-#, fuzzy
 msgid ""
 "This unit has been slowed. It emits no zone of control, moves at half speed "
 "and enemies will be able to strike earlier once during a fight."
@@ -10594,12 +10564,11 @@ msgstr "skada"
 
 #: src/reports.cpp:254
 msgid "weapon range: "
-msgstr ""
+msgstr "vapenräckvidd: "
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "damage type: "
-msgstr "skada"
+msgstr "skadetyp: "
 
 #: src/reports.cpp:319
 msgid "Lawful units: "
