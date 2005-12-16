@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-06 17:01+0100\n"
-"PO-Revision-Date: 2005-11-26 20:55+0100\n"
+"PO-Revision-Date: 2005-12-16 20:33+0100\n"
 "Last-Translator: Stefan Bergström (tephlon)\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -134,7 +134,6 @@ msgstr ""
 "börja med en <italic>text=Lätt</italic> kampanj."
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -366,7 +365,6 @@ msgid "Movement"
 msgstr "Förflyttning"
 
 #: data/help.cfg:126
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -385,10 +383,15 @@ msgstr ""
 "enkelt på truppen du vill flytta, och därefter på rutan du vill flytta "
 "truppen till. När truppen är vald så visas de rutor som den kan flytta till "
 "under samma drag genom att lysas upp. Om muspekaren hålls över sådan upplyst "
-"ruta, så visas det försvar som truppen får om den ställs på den rutan. Om "
-"muspekaren hålls över en skuggad ruta, så visas dessutom antalet drag som "
-"krävs för att nå den. Om en skuggad ruta väljs så kommer truppen att flyttas "
-"dit den snabbaste vägen under kommande drag."
+"ruta, visas det försvar som truppen får om den ställs på den rutan. Om "
+"muspekaren hålls över en skuggad ruta, visas dessutom antalet drag som krävs "
+"för att nå den. Om en skuggad ruta väljs så kommer truppen att flyttas dit "
+"den snabbaste vägen under kommande drag. Om truppen inte använder hela sin "
+"förflyttning första gången den förflyttas under ett drag, så kan den flyttas "
+"igen i samma drag. Detta är användbart om man vill byta plats på två "
+"trupper. En trupp förlorar återstående förflyttning om den anfaller. Om en "
+"trupp ställs i en by man inte redan kontrollerar så förloras återstående "
+"förflyttning, men man kan fortfarande anfalla."
 
 #: data/help.cfg:128
 msgid ""
@@ -453,7 +456,7 @@ msgstr ""
 
 #: data/help.cfg:137
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "Slöja och stridsdimma"
 
 #: data/help.cfg:138
 msgid ""
@@ -467,6 +470,15 @@ msgid ""
 "unit will clear of the locations within one turn's move (ignoring ZOC and "
 "enemy units) and locations adjacent to those locations."
 msgstr ""
+"I vissa scenarier är delar av kartan dolda. Två olika mekanismer ligger "
+"bakom detta, som kan användas separat eller tillsammans. Slöjan döljer både "
+"terräng och trupper, men när den lyfts så kan man alltid se området. "
+"Stridsdimman däremot döljer trupper och vem byarna lyder under, såvida de "
+"inte är egna eller allierade. Stridsdimman försvinner tillfälligt när man "
+"har trupper i närheten, men återvänder när man ger sig av från platsen. Både "
+"slöja och stridsdimma lyfts av trupper. Alla trupper lyfter slöjan eller "
+"stridsdimman på det område som truppen kan nå på ett drag, oavsett "
+"kontrollzoner och fiender."
 
 #: data/help.cfg:143
 msgid "Combat"
@@ -696,7 +708,6 @@ msgid "Time of Day"
 msgstr "Dygnets gång"
 
 #: data/help.cfg:181
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -793,7 +804,6 @@ msgstr ""
 "nästa roll."
 
 #: data/help.cfg:201
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -812,15 +822,13 @@ msgstr ""
 "De flesta trupper har tre erfarenhetsnivåer, dock inte alla. Vissa trupper "
 "(såsom <ref>dst=unit_Mage text=magiker</ref>) kan ha fyra. Trupper som nått "
 "sin högsta nivå stannar dock vanligtvis inte i utvecklingen, utan kan växa i "
-"styrka ytterligare, om än genom en annan mindre dramatisk process.\n"
-"\n"
-"Den process som tar vid när en trupp nått sin högsta nivå kallas tekniskt "
-"för AMLA, vilket står för After Max Level Advancement. Denna process kommer "
-"att förändra truppen varje gång en viss erfarenhetspoäng är nådd, men "
-"truppens erfarenhetsnivå ökar dock inte. Den vanligaste AMLA-effekten är att "
-"truppens aktuella hälsopoäng ökar med 3 HP för varje 100 EP. Endast ett "
-"litet fåtal truppslag, såsom nekrofagen, återfår full styrka när detta "
-"inträffar."
+"styrka ytterligare genom en process som tekniskt kallas för AMLA, vilket "
+"står för After Max Level Advancement. Denna process kommer att förändra "
+"truppen varje gång en viss erfarenhetspoäng är nådd, men truppens "
+"erfarenhetsnivå ökar dock inte. Den vanligaste AMLA-effekten är att truppens "
+"aktuella hälsopoäng ökar med 3 HP för varje 100 EP. Endast ett litet fåtal "
+"truppslag, såsom nekrofagen, återfår full styrka när detta inträffar. De "
+"flesta trupper får bara en höjd maximal HP."
 
 #: data/help.cfg:206
 msgid "Healing"
@@ -890,7 +898,6 @@ msgstr ""
 "4 HP per drag av en vårdande trupp."
 
 #: data/help.cfg:213
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -900,10 +907,9 @@ msgid ""
 msgstr ""
 "\n"
 "- Helande trupper: Trupper med förmågan att <ref>dst=ability_cures "
-"text=hela</ref> återskänker upp till sammanlagt 18 HP per drag till "
-"allierade trupper som står i de intilliggande rutorna. Om en trupp är "
-"förgiftad så botas förgiftningen innan helandet börjar. En trupp kan återfå "
-"maximalt 8 HP per drag av en helande trupp."
+"text=hela</ref> återskänker upp till sammanlagt 18 HP per drag, samt botar "
+"förgiftning. Endast allierade trupper som står i de intilliggande rutorna "
+"helas, och högst 8 HP kan återfås per drag."
 
 #: data/help.cfg:215
 msgid ""
@@ -1220,9 +1226,8 @@ msgstr ""
 "att avskeda eller skicka dina lojala trupper i döden i onödan."
 
 #: data/help.cfg:301
-#, fuzzy
 msgid "trait^Undead"
-msgstr "Vandöda"
+msgstr "Vandöd"
 
 #: data/help.cfg:302
 msgid "Undead units are immune to poison."
@@ -1864,9 +1869,8 @@ msgid ""
 msgstr "Detta är Eldspiran. Endast en sann tronarvinge kan våga ta den!"
 
 #: data/items.cfg:816
-#, fuzzy
 msgid "Zap"
-msgstr "Zap~"
+msgstr "Zap"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -2499,7 +2503,6 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Avsluta ditt drag och vänta på att Merle anfaller dig."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it receives experience from the combat. Once a unit gains enough experience, "
@@ -2670,7 +2673,6 @@ msgid "En garde!"
 msgstr "En garde!"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:106
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics from the "
 "statistics shown before you recruited them. This is because they have been "
@@ -2792,7 +2794,6 @@ msgstr ""
 "använda 'Ctrl-Shift-R' för att upprepa den senaste rekryteringen. "
 
 #: data/scenarios/tutorial/utils.cfg:67
-#, fuzzy
 msgid ""
 "A leader is a unit that can recruit. This means that when the leader is on a "
 "keep, units can be recruited on the surrounding castle tiles. Leaders are "
@@ -2802,14 +2803,14 @@ msgid ""
 "dies, you lose the game. You can win most scenarios by defeating all enemy "
 "leaders."
 msgstr ""
-"En ledare är en trupp som kan rekrytera. Rekrytering kan bara ske när "
-"ledaren står i ett kärntorn, och de rekryterade trupperna kommer att "
-"placeras på de omgivande borgrutorna. Det finns bara en ledare per sida, och "
-"de är vanligtvis kraftfulla trupper. Ledaren startar oftast i ett kärntorn "
-"och är den första truppen som din sida kontrollerar. För att snabbt välja "
-"ledaren och fokusera spelplanen på denne, kan du trycka 'l'. Om ledaren dör, "
-"har du förlorat spelet. Du vinner de flesta scenarier genom att besegra alla "
-"fiendeledare. "
+"En ledare är en trupp som kan rekrytera. Detta betyder att när ledaren står "
+"i ett kärntorn, så kan trupper rekryteras och placeras på de omgivande "
+"borgrutorna. Det finns bara en ledare per sida, och de är vanligtvis "
+"kraftfulla trupper. Ledaren startar i ett kärntorn och är vanligtvis den "
+"första truppen som din sida kontrollerar. För att snabbt välja ledaren och "
+"fokusera spelplanen på denna, kan du trycka 'l'. Om ledaren dör, har du "
+"förlorat spelet. Du vinner de flesta scenarier genom att besegra alla "
+"fiendeledare."
 
 #: data/scenarios/tutorial/utils.cfg:67
 msgid "What's a leader?"
@@ -2849,7 +2850,6 @@ msgid "How do I end my turn?"
 msgstr "Hur avslutar jag mitt drag?"
 
 #: data/scenarios/tutorial/utils.cfg:73
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 "right-click and select End Turn, or select the End Turn button in the lower "
@@ -2884,7 +2884,6 @@ msgid "How far can my Elvish Fighter move?"
 msgstr "Hur långt kan min alvkrigare flytta?"
 
 #: data/scenarios/tutorial/utils.cfg:78
-#, fuzzy
 msgid ""
 "Your Elvish Fighter begins with a certain number of move points each turn; "
 "this is called its speed. When your Elvish Fighter moves along a path, each "
@@ -2897,18 +2896,18 @@ msgid ""
 "space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
-"Din alvkrigare har ett antal förflyttningspoäng varje drag; detta kallas "
-"hans hastighet. När din alvkrigare förflyttar sig en viss väg, kostar det "
-"poäng för varje ruta han passerar, inklusive destinationen. När du väljer "
-"din krigare skuggas de rutor som han inte kan flytta till inom ett drag. Om "
-"destinationen är så långt bort att han behöver flera drag för att nå dit, "
+"Din alvkrigare har ett antal förflyttningspoäng varje drag; detta kallas för "
+"hastighet. När din alvkrigare förflyttar sig en viss väg, kostar det "
+"förflyttningspoäng för varje ruta som passeras, inklusive destinationen. När "
+"du väljer din krigare skuggas de rutor som inte kan nås inom ett drag. Om "
+"destinationen är så långt bort att det krävs flera drag för att nå dit, "
 "visas en siffra som anger hur många drag som krävs för att nå fram. Om du "
-"väljer en destination långt bort, kommer truppen att välja en så snabb väg "
-"som möjligt för att ta sig dit. Om du råkar skicka en trupp långt bort av "
-"misstag så avbryter du förflyttningen genom att välja truppen igen."
+"väljer en destination långt bort, kommer truppen att automatiskt förflytta "
+"sig till destinationen en så snabb väg som möjligt varje drag. Om du råkar "
+"skicka en trupp långt bort av misstag så avbryter du förflyttningen genom "
+"att välja truppen igen."
 
 #: data/scenarios/tutorial/utils.cfg:79
-#, fuzzy
 msgid ""
 "A unit's zone of control is the location consisting of all hexes the unit is "
 "adjacent to. Units cannot move through opponent's zones of control; they can "
@@ -2917,11 +2916,10 @@ msgid ""
 "weak and wounded units."
 msgstr ""
 "En trupps kontrollzon utgörs av de 6 rutorna närmast truppen. Trupper kan "
-"inte passera genom en motståndares kontrollzoner, utan när en trupp hamnar "
-"på en ruta som kontrolleras av en motståndartrupp kommer dess förflyttning "
-"att avbrytas, och all återstående förflyttning går förlorad. Kontrollzoner "
-"kan användas för att hindra fiender från att nå dina svaga och sårade "
-"trupper."
+"inte passera genom en motståndares kontrollzoner, utan måste stanna när de "
+"hamnar inom dem. När detta sker går all återstående förflyttning förlorad. "
+"Kontrollzoner kan användas för att hindra fiender från att nå dina svaga och "
+"sårade trupper."
 
 #: data/scenarios/tutorial/utils.cfg:79
 msgid "What's the zone of control?"
@@ -2932,7 +2930,6 @@ msgid "How do I tell who is allied and who is an enemy?"
 msgstr "Hur avgör jag vem som är allierad och vem som är en fiende?"
 
 #: data/scenarios/tutorial/utils.cfg:80
-#, fuzzy
 msgid ""
 "Units you control have a green, yellow, or red energy circle above their "
 "health bar, the green vertical bar next to them. Units with full movement "
@@ -2955,7 +2952,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Kan Merle slå tillbaka?"
 
 #: data/scenarios/tutorial/utils.cfg:84
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -2972,18 +2968,18 @@ msgid ""
 msgstr ""
 "När en trupp attackeras kommer den att slå tillbaka med ett av sina egna "
 "vapen. Detta betyder att varje gång den anfallande truppen har gjort ett "
-"slag, så slår motståndaren tillbaka en gång. Detta fortsätter tills en sida "
-"har använt alla sina slag, varefter den andra truppen fortsätter anfalla "
-"tills också dennas slag är slut. En trupp kan bara slå tillbaka med ett "
-"vapen med samma räckvidd som den anfallande truppen använder. Detta betyder "
-"att om en trupp attackerar en annan med ett distansvapen, så måste den andra "
-"truppen svara med ett distansvapen; om attacken skett med ett närstridsvapen "
-"måste den andra truppen svara med ett närstridsvapen. De flesta trupper har "
-"starkare attacker i närstrid än på distans. Trupper med distansvapen är "
-"oftast bra att använda mot motståndare som är specialiserade på närstrid. Då "
-"vissa trupper inte har ens har något distansvapen kommer de inte att kunna "
-"gå till motattack. Trupper med distansvapen kan inte skjuta över flera "
-"rutor; detta är en av Wesnoths utmärkande egenskaper."
+"utfall, så slår motståndaren tillbaka en gång. Detta fortsätter tills ena "
+"truppen har använt alla sina utfall, varefter den andra truppen fortsätter "
+"anfalla tills också dennas utfall är slut. En trupp kan bara slå tillbaka "
+"med ett vapen med samma räckvidd som den anfallande truppen använder. Detta "
+"betyder att om en trupp attackerar en annan med ett distansvapen, så måste "
+"den andra truppen svara med ett distansvapen och om attacken skett med ett "
+"närstridsvapen måste den andra truppen svara med ett närstridsvapen. De "
+"flesta trupper har starkare attacker i närstrid än på distans. Trupper med "
+"distansvapen är ofta bra att använda mot motståndare som är inriktade på "
+"närstrid. Då vissa trupper inte har ens har något distansvapen kommer de "
+"inte att kunna gå till motattack. Trupper med distansvapen kan inte skjuta "
+"över flera rutor; detta är en av Wesnoths utmärkande egenskaper."
 
 #: data/scenarios/tutorial/utils.cfg:85
 msgid ""
@@ -3021,7 +3017,6 @@ msgstr ""
 "attacker. "
 
 #: data/scenarios/tutorial/utils.cfg:86
-#, fuzzy
 msgid "Will my fighter hit every time when it attacks?"
 msgstr "Kommer min krigare att träffa varje gång han anfaller?"
 
@@ -3068,7 +3063,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Vad händer när en trupp kommer in i en by?"
 
 #: data/scenarios/tutorial/utils.cfg:95
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, it flags the village for its side. "
 "This action takes all the unit's remaining movement. Villages flagged for a "
@@ -3081,17 +3075,17 @@ msgid ""
 msgstr ""
 "När en trupp hamnar i en by ställs byn under den sidans kontroll. Detta "
 "kostar truppens återstående förflyttning. Byar ger den kontrollerande sidan "
-"fördelar, såsom mer inkomst och att sänka underhållskostnaden per drag med "
-"ett. Antalet byar du kontrollerar visas på statuspanelen bredvid bilden med "
-"ett hus. Utöver de ekonomiska fördelarna av byarna, kan de också användas i "
-"strid. Byar läker trupperna i dem med 8 HP per drag."
+"fördelar, såsom att ge ett guldstycke mer i inkomst per drag och att sänka "
+"underhållskostnaden per drag med ett. Antalet byar du kontrollerar visas på "
+"statuspanelen bredvid bilden med ett hus. Utöver de ekonomiska fördelarna av "
+"byarna kan de också användas i strid. Byar läker trupperna i dem med 8 HP "
+"per drag."
 
 #: data/scenarios/tutorial/utils.cfg:96
 msgid "How do I heal when there aren't any villages nearby?"
 msgstr "Hur kan man läka trupper när det inte finns några byar i närheten?"
 
 #: data/scenarios/tutorial/utils.cfg:96
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, it heals 2 HP from resting. However, if an enemy attacks "
@@ -3102,18 +3096,17 @@ msgid ""
 msgstr ""
 "Trupper kan läka även utan byar. Om en trupp inte förflyttar sig eller "
 "anfaller under ett drag, så återfår den 2 HP genom att vila. Om en fiende "
-"attackerar truppen får den inte sin vila och kan då inte heller läka under "
-"det draget. Det finns också vissa trupper som kan läka trupperna som omger "
-"dem. Alvschamanen är en sådan trupp, och trupper som står alldeles bredvid "
-"en alvschaman får tillbaka 4 HP per drag. Slutligen, när du vinner ett "
-"scenario återfår dina trupper alla sina krafter. "
+"anfaller truppen får den inte sin vila och kan då inte heller läka under det "
+"draget. Det finns också vissa trupper som kan läka trupperna som omger dem. "
+"Alvschamanen är en sådan trupp, och trupper som står alldeles bredvid en "
+"alvschaman får tillbaka 4 HP per drag. Slutligen, när du vinner ett scenario "
+"återfår dina trupper alla sina krafter."
 
 #: data/scenarios/tutorial/utils.cfg:100
 msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr "Hur vet jag hur jag vinner ett scenario? Berättar du det alltid?"
 
 #: data/scenarios/tutorial/utils.cfg:100
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -3124,9 +3117,9 @@ msgid ""
 msgstr ""
 "Ibland framgår det inte hur man vinner ett scenario enbart genom dialogen. I "
 "de fallen får du titta på scenariomålen, som visas efter inledningsdialogen. "
-"Du kan även se scenariots mål på huvudmenyn, under 'Scenariomål'. "
+"Du har även tillgång till scenariots mål i huvudmenyn, under 'Scenariomål'. "
 "Scenariomålen är en lista med villkor för vinst och nederlag, och om något "
-"av dessa villkor är uppfyllda, så är scenariot slut. Förhoppningsvis var det "
+"av dessa villkor är uppfyllda så är scenariot slut. Förhoppningsvis var det "
 "ett vinstvillkor som uppfylldes."
 
 #: data/scenarios/tutorial/utils.cfg:101
@@ -3134,7 +3127,6 @@ msgid "What happens when I win a scenario?"
 msgstr "Vad händer när jag vinner ett scenario?"
 
 #: data/scenarios/tutorial/utils.cfg:101
-#, fuzzy
 msgid ""
 "When you win a scenario, all your units survive and are revived to full "
 "health, and you do not have to pay them for the remaining turns. Also, if "
@@ -3181,7 +3173,6 @@ msgstr ""
 "återkalla alver."
 
 #: data/scenarios/tutorial/utils.cfg:110
-#, fuzzy
 msgid ""
 "The function of traits is to add variety by making units of the same type "
 "different from each other. This is done by randomly assigning each unit "
@@ -3190,15 +3181,15 @@ msgid ""
 "cursor over that trait."
 msgstr ""
 "Syftet med karaktärsdrag är att göra trupper av samma slag lite mer olika. "
-"En trupps karaktärsdrag väljs på måfå då den rekryteras, och visas sen i "
-"statustabellen. Hur ett karaktärsdrag fungerar visas om du pekar på det."
+"En trupps karaktärsdrag väljs slumpmässigt då den rekryteras. En trupps "
+"karaktärsdrag visas i statustabellen, och hur de fungerar visas om du pekar "
+"på dem."
 
 #: data/scenarios/tutorial/utils.cfg:110
 msgid "What do traits do?"
 msgstr "Vad gör karaktärsdrag?"
 
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -3209,10 +3200,10 @@ msgid ""
 msgstr ""
 "Det finns fyra olika karaktärsdrag som t ex gör att en trupps HP ökar eller "
 "att antalet EP som krävs för befordran minskar. Alla karaktärsdrag är till "
-"för att göra trupperna mer kraftfulla; det finns inga negativa sådana. De "
-"flesta truppslag har lika stor sannolikhet för att få ett visst "
-"karaktärsdrag då de rekryteras. Vissa raser har dessutom karaktärsdrag som "
-"är unika för dem."
+"för att göra trupperna mer kraftfulla; det finns inga 'negativa' sådana. De "
+"flesta truppslag har samma sannolikhet att tilldelas endera av "
+"karaktärsdragen. Vissa raser och truppslag kan ha karaktärsdrag som är unika "
+"för dem."
 
 #: data/scenarios/tutorial/utils.cfg:111
 msgid "What kind of traits can my units get?"
@@ -3263,7 +3254,6 @@ msgstr ""
 "Varje by ger dig ett guld per drag."
 
 #: data/scenarios/tutorial/utils.cfg:120
-#, fuzzy
 msgid ""
 "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
 "of day: day, twilight, and night. During the day, units of the alignment "
@@ -3275,9 +3265,9 @@ msgstr ""
 "Det finns tre sinnelag: redbar, neutral och ljusskygg. Dygnet är också "
 "uppdelat i tre huvuddelar: dag, gryning/skymning, och natt. Under dagtid "
 "vållar redbara truppers attacker 25% mer skada, medan ljusskygga trupper "
-"vållar 25% mindre skada. Under nattetid är det tvärtom. Under gryning och "
-"skymning vållar alla trupper sin nominella skada. Neutrala trupper såsom "
-"alver är opåverkade av tiden på dygnet."
+"vållar 25% mindre skada. Nattetid är det tvärtom. Under gryning och skymning "
+"vållar alla trupper sin nominella skada. Neutrala trupper såsom alver är "
+"opåverkade av tiden på dygnet."
 
 #: data/scenarios/tutorial/utils.cfg:120
 msgid "What are the different alignments and times of day?"
@@ -3288,7 +3278,6 @@ msgid "How do I know what time of day it is?"
 msgstr "Hur vet jag vilken tid på dygnet det är?"
 
 #: data/scenarios/tutorial/utils.cfg:121
-#, fuzzy
 msgid ""
 "The times of day usually progress in a sequence: dawn- identical to "
 "twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
@@ -3298,16 +3287,14 @@ msgid ""
 "night. You can find out the current time of day by looking at the Status "
 "Table."
 msgstr ""
-"Dygnet framskrider i följden gryning, förmiddag, eftermiddag, skymning, "
-"första vakten, andra vakten, varefter det börjar om från början. Dagen "
-"utgörs av för- och eftermiddag och natten av första och andra vakten. Detta "
-"visas av solen och månen som går upp i öster och går ner i väster. Vissa "
-"scenarier kan vara annorlunda, som t ex om ett scenario utspelar sig i "
-"underjorden eller i grottor, där det råder evig natt. Tiden på dygnet visas "
-"i statustabellen. "
+"Dygnet framskrider vanligtvis i följden gryning, förmiddag, eftermiddag, "
+"skymning, första vakten, andra vakten, varefter det börjar om från början. "
+"Dagen utgörs av för- och eftermiddag och natten av första och andra vakten. "
+"Detta visas av solen och månen som går upp i öster och går ner i väster. "
+"Vissa scenarier kan vara annorlunda, som t ex om ett scenario utspelar sig i "
+"under jord, där det råder evig natt. Tiden på dygnet visas i statustabellen."
 
 #: data/scenarios/tutorial/utils.cfg:125
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castles. However, the properties of most terrains are more "
@@ -3323,10 +3310,9 @@ msgstr ""
 "har två andra viktiga egenskaper, som påverkar de olika truppslagen på olika "
 "sätt. Den första egenskapen är hur mycket det kostar för en trupp att "
 "förflytta sig över en ruta med en viss terräng. Den andra egenskapen är det "
-"försvar som olika sorters terräng ger olika truppslag. Varje terräng ger en "
-"trupp en viss sannolikhet att träffas av en viss attack. Till exempel har "
-"många alver 70% försvar i skog, vilket innebär att de träffas av attacker i "
-"30% av fallen."
+"försvar som terrängen ger. Varje terräng ger en trupp en viss sannolikhet "
+"att träffas av en viss attack. Till exempel har många alver 70% försvar i "
+"skog, vilket innebär att de träffas av attacker i 30% av fallen i genomsnitt."
 
 #: data/scenarios/tutorial/utils.cfg:125
 msgid "What are the different properties that terrains have?"
@@ -3337,7 +3323,6 @@ msgid "How do I find out the properties of a specific terrain?"
 msgstr "Hur ser jag vilka egenskaper en viss sorts terräng har?"
 
 #: data/scenarios/tutorial/utils.cfg:126
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -3348,7 +3333,7 @@ msgid ""
 "it will cost the selected unit to move through that hex."
 msgstr ""
 "För att se vilka egenskaper en viss terräng har med avseende på ett visst "
-"truppslag högerklickar du på truppen och väljer Truppbeskrivning, och tittar "
+"truppslag högerklickar du på truppen, väljer Truppbeskrivning, och tittar "
 "under rubriken Terrängavdrag. För att se vilken sorts terräng en viss ruta "
 "består av, håller du muspekaren över den och tittar i det övre högra hörnet "
 "av bilden. Där visas, i tur och ordning, terrängens namn, rutans "
@@ -3465,7 +3450,6 @@ msgstr ""
 "till den, och sedan attackerar du med den senare."
 
 #: data/scenarios/tutorial/utils.cfg:142
-#, fuzzy
 msgid ""
 "The objects you encounter are put in by the scenario designer, so they vary "
 "from campaign to campaign. In Heir to the Throne, most objects give the unit "
@@ -3486,13 +3470,13 @@ msgid "How long do these objects last?"
 msgstr "Hur länge räcker de här sakerna?"
 
 #: data/scenarios/tutorial/utils.cfg:143
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However, "
 "a few objects, such as holy water, last only until the end of the scenario."
 msgstr ""
-"De flesta saker ger upphittaren permanenta fördelar. Dock finns det vissa "
-"saker som bara kan användas under ett enskilt scenario, såsom vigvatten."
+"De flesta saker ger upphittaren permanenta förändringar. Dock finns det "
+"vissa saker som bara kan användas under ett enskilt scenario, såsom "
+"vigvatten."
 
 #: data/scenarios/tutorial/utils.cfg:147
 msgid "How do I play a campaign?"
@@ -3688,7 +3672,6 @@ msgstr ""
 "mot de olika vapenslagen."
 
 #: data/tips.cfg:4
-#, fuzzy
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -3697,7 +3680,7 @@ msgid ""
 msgstr ""
 "Hur stor chans en fiendetrupp har att träffa dina trupper beror på vilken "
 "typ av terräng din trupp står på. Vilken försvarsprocent den valda truppen "
-"har på sin terräng visas längst upp till höger på skärmen."
+"har på sin terräng visas längst upp till höger."
 
 #: data/tips.cfg:5
 msgid ""
@@ -3712,7 +3695,6 @@ msgstr ""
 "som har förmågan att 'hela'."
 
 #: data/tips.cfg:6
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -3990,7 +3972,6 @@ msgid "Hard"
 msgstr "Svårt"
 
 #: data/translations/english.cfg:9
-#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -4009,7 +3990,6 @@ msgid ""
 msgstr "Neutrala trupper påverkas inte av dygnets växlingar."
 
 #: data/translations/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -4045,7 +4025,6 @@ msgid "ambush"
 msgstr "bakhåll"
 
 #: data/translations/english.cfg:31
-#, fuzzy
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -4063,12 +4042,12 @@ msgstr ""
 "återställa trupper snabbare än vad som vanligtvis är möjligt på ett "
 "slagfält.\n"
 "\n"
-"En helare tar hand om alla trupper som står på närliggande rutor i början av "
-"varje drag.\n"
-"Varje trupp kommer att återfå upp till 8 HP per drag.\n"
+"En trupp som kan hela tar hand om alla allierade trupper som står på "
+"närliggande rutor i början av varje drag.\n"
+"Varje trupp kan att återfå upp till 8 HP per drag.\n"
 "En helare kan sammanlagt återställa högst 18 HP per drag.\n"
-"En trupp som kan hela kan också häva en förgiftning, till priset av att den "
-"förgiftade truppen inte återfår några HP under samma drag."
+"En trupp som kan hela kan också häva en förgiftning, men då återfår inte den "
+"förgiftade truppen några HP under samma drag."
 
 #: data/translations/english.cfg:33 data/units/Elvish_Druid.cfg:19
 #: data/units/Elvish_Shyde.cfg:21 data/units/Mermaid_Priestess.cfg:11
@@ -4078,7 +4057,6 @@ msgid "cures"
 msgstr "helar"
 
 #: data/translations/english.cfg:40
-#, fuzzy
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -4090,12 +4068,12 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "Vårdar:\n"
-"Truppen vårdar närliggande trupper i början av varje drag.\n"
+"Truppen vårdar närliggande allierade trupper i början av varje drag.\n"
 "\n"
 "Truppen återställer upp till 4 HP per drag.\n"
 "Truppen kan sammanlagt återställa högst 8 HP per drag.\n"
-"En förgiftad trupp kan inte återställas helt av vård, utan måste söka "
-"tillflykt till en by eller bli få hjälp av en trupp som kan hela."
+"En förgiftad trupp kan inte återställas helt av en vårdande trupp, utan "
+"måste söka tillflykt till en by eller få hjälp av en trupp som kan hela."
 
 #: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:12
 #: data/units/Paladin.cfg:24 data/units/Saurian_Icecaster.cfg:21
@@ -4205,7 +4183,6 @@ msgid "regenerates"
 msgstr "regenererar"
 
 #: data/translations/english.cfg:76
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -4214,7 +4191,8 @@ msgid ""
 msgstr ""
 "Stigfinnare:\n"
 "Denna trupp finner vägar förbi fienden, och hindras därmed inte av fiendens "
-"kontrollzoner."
+"kontrollzoner. (Undantag: om en stigfinnande trupp placeras i en fiendes "
+"kontrollzon så förlorar den sin återstående förflyttning.)"
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:18
 #: data/units/Assassin.cfg:113 data/units/Duelist.cfg:16
@@ -4227,7 +4205,6 @@ msgid "skirmisher"
 msgstr "stigfinnare"
 
 #: data/translations/english.cfg:81
-#, fuzzy
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
@@ -4235,7 +4212,7 @@ msgid ""
 msgstr ""
 "Ståndaktig:\n"
 "Denna trupp fördubblar sitt försvar, till ett maximum av 50%, när den "
-"försvarar sig."
+"försvarar sig. Sårbarheter påverkar inte."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:16
 #: data/units/Dwarvish_Sentinel.cfg:18 data/units/Dwarvish_Stalwart.cfg:18
@@ -4269,15 +4246,14 @@ msgstr ""
 "på motsatt sida av målet. (Fungerar inte tillsammans med allierade trupper.)"
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 "Bärsärkagång:\n"
-"Striden fortsätter tills en av parterna ligger död på marken, vare sig det "
-"gäller anfall eller försvar."
+"Vare sig det gäller anfall eller försvar fortsätter striden tills en av "
+"parterna ligger död på marken eller tills striden pågått i 30 utfall."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -4290,7 +4266,6 @@ msgstr ""
 "truppen mottar också dubbel skada från målets motattack."
 
 #: data/translations/english.cfg:102
-#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -4298,7 +4273,8 @@ msgid ""
 msgstr ""
 "Suga livskraft:\n"
 "Denna typ av attack suger livskraften ur levande trupper, och förbättrar den "
-"anfallande truppens hälsa med hälften av den skada den orsakar."
+"anfallande truppens hälsa med hälften av den skada den orsakar (avrundat "
+"nedåt)."
 
 #: data/translations/english.cfg:105
 msgid ""
@@ -4369,7 +4345,6 @@ msgstr ""
 "attackera."
 
 #: data/translations/english.cfg:129
-#, fuzzy
 msgid "race^Undead"
 msgstr "Vandöda"
 
@@ -10500,9 +10475,8 @@ msgid "Get More Campaigns..."
 msgstr "Hämta fler kampanjer..."
 
 #: src/game.cpp:750
-#, fuzzy
 msgid "Download more campaigns from an Internet server."
-msgstr "Ladda ner fler kampanjer från en server över internet."
+msgstr "Ladda ner fler kampanjer från en Internetserver."
 
 #: src/game.cpp:760
 msgid "Choose the campaign you want to play:"
@@ -10812,22 +10786,20 @@ msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Den för truppen mest fördelaktiga terrängen används automatiskt"
 
 #: src/help.cpp:1317
-#, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
 msgstr ""
-"Den här terrängen fungerar som ett kärntorn. Du kan alltså rekrytera trupper "
-"när din ledare befinner på den här sortens terräng"
+"Den här terrängen fungerar som ett kärntorn, vilket innebär att trupper kan "
+"rekryteras när en ledare befinner sig här."
 
 #: src/help.cpp:1319
-#, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
-"Den här terrängen fungerar som en borg. Rekryterade trupper kan alltså "
-"placeras på den här sortens terräng"
+"Den här terrängen fungerar som en borg, vilket innebär att trupper kan "
+"rekryteras och placeras här."
 
 #: src/help.cpp:1321
 msgid "This terrain gives healing."
@@ -11111,9 +11083,8 @@ msgid "Settings..."
 msgstr "Inställningar..."
 
 #: src/multiplayer_create.cpp:89
-#, fuzzy
 msgid "The maximum number of turns the game can last"
-msgstr "Maximalt antal speldrag"
+msgstr "Maximalt antal drag som spelet fortgår"
 
 #: src/multiplayer_create.cpp:94
 msgid "The amount of income each village yields per turn"
@@ -11410,12 +11381,11 @@ msgid "Scenario Report"
 msgstr "Scenariorapport"
 
 #: src/playlevel.cpp:911
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Nätverket har kopplats ner och spelet kan inte fortsätta. Vill du spara "
+"Anslutningen har kopplats ner och spelet kan inte fortsätta. Vill du spara "
 "spelet?"
 
 #: src/playturn.cpp:89
