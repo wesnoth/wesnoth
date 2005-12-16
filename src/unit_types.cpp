@@ -681,7 +681,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
 		death_animations_.push_back(death_animation(**death));
 	}
-	const config::child_list& movement_anims = cfg_.get_children("movement_animation");
+	const config::child_list& movement_anims = cfg_.get_children("movement_anim");
 	for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
 		movement_animations_.push_back(movement_animation(**movement_anim));
 	}
