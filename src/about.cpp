@@ -162,7 +162,7 @@ std::vector<std::string> get_text() {
 		"-   林俊杰 - Lim Choon Kiat",
 
 		"_" N_("+Czech Translation"),
-                "-   Ane�ka Buben�?kov� (Bubu)",
+		"-   Anežka Bubení?ková (Bubu)",
 		"-   David Nečas (Yeti)",
 		"-   Lukáš Faltýnek",
 		"-   Martin Šín",
@@ -174,7 +174,7 @@ std::vector<std::string> get_text() {
 		"-   Sofronius",
 		"-   Vít Komárek",
 		"-   Vít Krčál",
-                "-   Vladim�r Sl�vik",
+		"-   Vladimír Slávik",
 
 		"_" N_("+Danish Translation"),
 		"-   Anders K. Madsen (madsen)",
