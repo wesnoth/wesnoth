@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-12-15 11:18+0100\n"
+"POT-Creation-Date: 2005-12-17 14:36+0100\n"
 "PO-Revision-Date: 2005-09-03 19:00+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
@@ -46,11 +46,11 @@ msgstr "Introducció"
 msgid "Gameplay"
 msgstr "Joc"
 
-#: data/help.cfg:21 src/playturn.cpp:2232
+#: data/help.cfg:21 src/playturn.cpp:2289
 msgid "Traits"
 msgstr "Trets"
 
-#: data/help.cfg:29 src/playturn.cpp:1772
+#: data/help.cfg:29 src/playturn.cpp:1829
 msgid "Units"
 msgstr "Unitats"
 
@@ -1595,7 +1595,7 @@ msgstr ""
 #: data/help.cfg:460 data/terrain.cfg:150 data/terrain.cfg:162
 #: data/terrain.cfg:172 data/terrain.cfg:181 data/terrain.cfg:236
 #: data/terrain.cfg:247 data/terrain.cfg:260 data/terrain.cfg:281
-#: data/terrain.cfg:290 src/reports.cpp:374
+#: data/terrain.cfg:290 src/reports.cpp:383
 msgid "Village"
 msgstr "Llogaret"
 
@@ -2426,13 +2426,13 @@ msgstr ""
 msgid "Underground"
 msgstr "Sota terra"
 
-#: data/terrain.cfg:11 data/themes/default.cfg:528
-#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:325
+#: data/terrain.cfg:11 data/themes/default.cfg:535
+#: src/multiplayer_create.cpp:61 src/multiplayer_lobby.cpp:325
 #: src/multiplayer_lobby.cpp:331
 msgid "Shroud"
 msgstr "Ocult"
 
-#: data/terrain.cfg:18 data/themes/default.cfg:540
+#: data/terrain.cfg:18 data/themes/default.cfg:547
 #: src/multiplayer_lobby.cpp:321
 msgid "Fog"
 msgstr "Boira"
@@ -2505,93 +2505,93 @@ msgstr "Ruïnes submergides"
 msgid "Swamp Ruin"
 msgstr "Ruïnes pantanoses"
 
-#: data/themes/default.cfg:78
+#: data/themes/default.cfg:80
 msgid "Menu"
 msgstr "Menú"
 
-#: data/themes/default.cfg:89
+#: data/themes/default.cfg:91
 msgid "Actions"
 msgstr "Accions"
 
-#: data/themes/default.cfg:111
+#: data/themes/default.cfg:113
 msgid "End Turn"
 msgstr "Fi del torn"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2230 src/unit.cpp:1170
+#: data/themes/default.cfg:171 src/playturn.cpp:2287 src/unit.cpp:1170
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2043 src/playturn.cpp:2231
+#: data/themes/default.cfg:180 src/playturn.cpp:2100 src/playturn.cpp:2288
 msgid "XP"
 msgstr "XP"
 
-#: data/themes/default.cfg:186
+#: data/themes/default.cfg:190
 msgid "gold"
 msgstr "Or"
 
-#: data/themes/default.cfg:195
+#: data/themes/default.cfg:199
 msgid "villages"
 msgstr "Llogarets"
 
-#: data/themes/default.cfg:204
+#: data/themes/default.cfg:208
 msgid "units"
 msgstr "Unitats"
 
-#: data/themes/default.cfg:213
+#: data/themes/default.cfg:217
 msgid "upkeep"
 msgstr "Manteniment"
 
-#: data/themes/default.cfg:222
+#: data/themes/default.cfg:226
 msgid "income"
 msgstr "Guanys"
 
-#: data/themes/default.cfg:358
+#: data/themes/default.cfg:365
 msgid "statuspanel^level"
 msgstr "nivell"
 
-#: data/themes/default.cfg:389
+#: data/themes/default.cfg:396
 msgid "statuspanel^movement"
 msgstr "moviments"
 
-#: data/themes/default.cfg:451
+#: data/themes/default.cfg:458
 #, fuzzy
 msgid "Replay"
 msgstr "repetició"
 
-#: data/themes/default.cfg:464
+#: data/themes/default.cfg:471
 #, fuzzy
 msgid "Play"
 msgstr "Jugadors:"
 
-#: data/themes/default.cfg:477
+#: data/themes/default.cfg:484
 msgid "Stop"
 msgstr ""
 
-#: data/themes/default.cfg:490
+#: data/themes/default.cfg:497
 #, fuzzy
 msgid "Reset"
 msgstr "Desert"
 
-#: data/themes/default.cfg:503
+#: data/themes/default.cfg:510
 #, fuzzy
 msgid "Next Turn"
 msgstr "Torn"
 
-#: data/themes/default.cfg:516
+#: data/themes/default.cfg:523
 #, fuzzy
 msgid "Next Side"
 msgstr "Següent"
 
-#: data/themes/default.cfg:552
+#: data/themes/default.cfg:559
 #, fuzzy
 msgid "Skip animation"
 msgstr "+Traducció a l'eslovac"
 
-#: data/themes/default.cfg:650
+#: data/themes/default.cfg:663
 msgid "Act."
 msgstr "Acc."
 
-#: data/themes/default.cfg:683
+#: data/themes/default.cfg:696
 msgid "short end-turn^End"
 msgstr "Fi"
 
@@ -2854,9 +2854,8 @@ msgstr ""
 #: data/tips.cfg:29
 #, fuzzy
 msgid ""
-"The 'slow' attack ability makes enemy units move slower, but it also removes "
-"their zone of control, allowing your wounded units to escape or helping you "
-"reach fleeing enemy units."
+"The 'slow' attack ability makes enemy units move slower, but it also halves "
+"the damage they do on all attack."
 msgstr ""
 "L'especialitat 'alenteix' fa que les unitats enemigues siguin més lentes, "
 "però també les deixa amb un atac menys. Per tant, és molt efectiva contra "
@@ -4160,7 +4159,7 @@ msgstr ""
 msgid "gaze"
 msgstr "mirada"
 
-#: data/units/Cockatrice.cfg:44 src/actions.cpp:872 src/actions.cpp:1039
+#: data/units/Cockatrice.cfg:44 src/actions.cpp:885 src/actions.cpp:1063
 msgid "stone"
 msgstr "pedra"
 
@@ -9155,113 +9154,113 @@ msgstr "+Traducció al xinès"
 msgid "+Czech Translation"
 msgstr "+Traducció al txec"
 
-#: src/about.cpp:185
+#: src/about.cpp:188
 msgid "+Danish Translation"
 msgstr "+Traducció al danès"
 
-#: src/about.cpp:192
+#: src/about.cpp:195
 msgid "+Dutch Translation"
 msgstr "+Traducció a l'holandès"
 
-#: src/about.cpp:200
+#: src/about.cpp:203
 msgid "+English (GB) Translation"
 msgstr "+Traducció a l'anglès (Gran Bretanya)"
 
-#: src/about.cpp:203
+#: src/about.cpp:206
 msgid "+Estonian Translation"
 msgstr "+Traducció a l'estonià"
 
-#: src/about.cpp:206
+#: src/about.cpp:209
 msgid "+Finnish Translation"
 msgstr "+Traducció al finès"
 
-#: src/about.cpp:212
+#: src/about.cpp:215
 msgid "+French Translation"
 msgstr "+Traducció al francès"
 
-#: src/about.cpp:231
+#: src/about.cpp:234
 msgid "+German Translation"
 msgstr "+Traducció a l'alemany"
 
-#: src/about.cpp:243
+#: src/about.cpp:246
 msgid "+Greek Translation"
 msgstr "+Traducció al grec"
 
-#: src/about.cpp:249
+#: src/about.cpp:252
 #, fuzzy
 msgid "+Hebrew Translation"
 msgstr "+Traducció al grec"
 
-#: src/about.cpp:253
+#: src/about.cpp:256
 msgid "+Hungarian Translation"
 msgstr "+Traducció a l'hongarès"
 
-#: src/about.cpp:266
+#: src/about.cpp:269
 msgid "+Italian Translation"
 msgstr "+Traducció a l'italià"
 
-#: src/about.cpp:275
+#: src/about.cpp:278
 msgid "+Japanese Translation"
 msgstr "+Traducció al japonès"
 
-#: src/about.cpp:280
+#: src/about.cpp:283
 msgid "+Latin Translation"
 msgstr "+Traducció al llatí"
 
-#: src/about.cpp:283
+#: src/about.cpp:286
 msgid "+Norwegian Translation"
 msgstr "+Traducció al noruec"
 
-#: src/about.cpp:289
+#: src/about.cpp:292
 msgid "+Polish Translation"
 msgstr "+Traducció al polonès"
 
-#: src/about.cpp:300
+#: src/about.cpp:303
 #, fuzzy
 msgid "+Portuguese Translation"
 msgstr "+Traducció portuguès (brasil)"
 
-#: src/about.cpp:303
+#: src/about.cpp:306
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Traducció portuguès (brasil)"
 
-#: src/about.cpp:312
+#: src/about.cpp:315
 msgid "+Russian Translation"
 msgstr "+Traducció al rus"
 
-#: src/about.cpp:318
+#: src/about.cpp:321
 msgid "+Serbian Translation"
 msgstr "+Traducció al serbi"
 
-#: src/about.cpp:321
+#: src/about.cpp:324
 msgid "+Slovak Translation"
 msgstr "+Traducció a l'eslovac"
 
-#: src/about.cpp:324
+#: src/about.cpp:327
 msgid "+Slovenian Translation"
 msgstr "+Traducció a l'eslovè"
 
-#: src/about.cpp:327
+#: src/about.cpp:330
 msgid "+Spanish Translation"
 msgstr "+Traducció al castellà"
 
-#: src/about.cpp:336
+#: src/about.cpp:339
 msgid "+Swedish Translation"
 msgstr "+Traducció al suec"
 
-#: src/about.cpp:343
+#: src/about.cpp:346
 msgid "+Turkish Translation"
 msgstr "+Traducció al turc"
 
-#: src/about.cpp:350
+#: src/about.cpp:353
 msgid "+Contributors"
 msgstr "+Col·laboradors"
 
-#: src/about.cpp:353
+#: src/about.cpp:356
 msgid "+Bots"
 msgstr "+Robots"
 
-#: src/about.cpp:389 src/help.cpp:2662
+#: src/about.cpp:392 src/help.cpp:2662
 msgid "Close"
 msgstr "Tanca"
 
@@ -9283,12 +9282,12 @@ msgid "none"
 msgstr "cap"
 
 #: src/actions.cpp:380 src/dialogs.cpp:764 src/help.cpp:1143
-#: src/reports.cpp:249
+#: src/reports.cpp:258
 msgid "melee"
 msgstr "melé"
 
 #: src/actions.cpp:380 src/dialogs.cpp:764 src/help.cpp:1143
-#: src/reports.cpp:250
+#: src/reports.cpp:259
 msgid "ranged"
 msgstr "distància"
 
@@ -9332,39 +9331,39 @@ msgstr "(Tots dos haurien de sobreviure.)"
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% Probabilitat[matar/morir/tots dos sobrevisquin]"
 
-#: src/actions.cpp:859 src/actions.cpp:1025
+#: src/actions.cpp:873 src/actions.cpp:1050
 msgid "poisoned"
 msgstr "enverinat"
 
-#: src/actions.cpp:865 src/actions.cpp:1031
+#: src/actions.cpp:878 src/actions.cpp:1055
 msgid "slowed"
 msgstr "alentit "
 
-#: src/actions.cpp:1927
+#: src/actions.cpp:1950
 msgid "Ambushed!"
 msgstr "Emboscada!"
 
-#: src/actions.cpp:1962
+#: src/actions.cpp:1985
 msgid "Friendly unit sighted"
 msgstr "Heu vist una unitat amiga."
 
-#: src/actions.cpp:1964
+#: src/actions.cpp:1987
 msgid "Enemy unit sighted!"
 msgstr "Enemic a la vista!"
 
-#: src/actions.cpp:1969
+#: src/actions.cpp:1992
 msgid "$friends Friendly units sighted"
 msgstr "$friends unitats amigues vistes."
 
-#: src/actions.cpp:1971
+#: src/actions.cpp:1994
 msgid "$enemies Enemy units sighted!"
 msgstr "$friends unitats enemigues vistes."
 
-#: src/actions.cpp:1975
+#: src/actions.cpp:1998
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Unitats a la vista! ($friends amigues, $enemies enemigues)."
 
-#: src/actions.cpp:1990
+#: src/actions.cpp:2013
 msgid "(press $hotkey to continue)"
 msgstr "(premeu $hotkey per continuar)"
 
@@ -9424,7 +9423,7 @@ msgstr "Tutorial"
 msgid "replay"
 msgstr "repetició"
 
-#: src/dialogs.cpp:391 src/multiplayer_lobby.cpp:309 src/playturn.cpp:1613
+#: src/dialogs.cpp:391 src/multiplayer_lobby.cpp:309 src/playturn.cpp:1670
 msgid "Turn"
 msgstr "Torn"
 
@@ -9501,7 +9500,7 @@ msgid "Date"
 msgstr "Data"
 
 #: src/dialogs.cpp:554 src/game.cpp:888 src/help.cpp:1119
-#: src/multiplayer_lobby.cpp:31 src/playturn.cpp:2041 src/playturn.cpp:2229
+#: src/multiplayer_lobby.cpp:31 src/playturn.cpp:2098 src/playturn.cpp:2286
 msgid "Name"
 msgstr "Nom"
 
@@ -9509,7 +9508,7 @@ msgstr "Nom"
 msgid "Show replay"
 msgstr "Mostra la repetició"
 
-#: src/dialogs.cpp:583 src/multiplayer_create.cpp:72
+#: src/dialogs.cpp:583 src/multiplayer_create.cpp:77
 msgid "Load Game"
 msgstr "Carrega una partida"
 
@@ -9551,7 +9550,7 @@ msgstr ""
 "Avís: el fitxer que heu intentat carregar està corromput. S'intentarà "
 "carregar de totes maneres.\n"
 
-#: src/game.cpp:647 src/multiplayer_connect.cpp:929
+#: src/game.cpp:647 src/multiplayer_connect.cpp:942
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -9559,7 +9558,7 @@ msgstr ""
 "Aquesta partida és d'una versió diferent del joc. Voleu intentar carregar-la "
 "igualment?"
 
-#: src/game.cpp:655 src/game.cpp:658 src/multiplayer_connect.cpp:914
+#: src/game.cpp:655 src/game.cpp:658 src/multiplayer_connect.cpp:927
 msgid "The file you have tried to load is corrupt: '"
 msgstr "El fitxer que heu intentat carregar està corromput: '"
 
@@ -9826,11 +9825,11 @@ msgstr "Alineació: "
 msgid "Required XP: "
 msgstr "Experiència requerida: "
 
-#: src/help.cpp:1112 src/reports.cpp:242
+#: src/help.cpp:1112 src/reports.cpp:251
 msgid "attacks"
 msgstr "atacs"
 
-#: src/help.cpp:1120 src/playturn.cpp:2040 src/playturn.cpp:2228
+#: src/help.cpp:1120 src/playturn.cpp:2097 src/playturn.cpp:2285
 msgid "Type"
 msgstr "Tipus"
 
@@ -10006,81 +10005,81 @@ msgstr "Ordinador"
 msgid "(Empty slot)"
 msgstr "(Plaça buida)"
 
-#: src/multiplayer_connect.cpp:463
+#: src/multiplayer_connect.cpp:476
 msgid "No non-random sides in the current era"
 msgstr "Només hi ha bàndols aleatoris en aquesta era"
 
-#: src/multiplayer_connect.cpp:479
+#: src/multiplayer_connect.cpp:492
 msgid "Unable to find a leader type for faction $faction"
 msgstr "No ha estat possible trobar un líder de la facció $faction"
 
-#: src/multiplayer_connect.cpp:487 src/multiplayer_lobby.cpp:418
+#: src/multiplayer_connect.cpp:500 src/multiplayer_lobby.cpp:418
 #: src/multiplayer_wait.cpp:148
 msgid "Game Lobby"
 msgstr "Sala de joc"
 
-#: src/multiplayer_connect.cpp:493 src/multiplayer_connect.cpp:502
+#: src/multiplayer_connect.cpp:506 src/multiplayer_connect.cpp:515
 msgid "Team"
 msgstr "Equip"
 
-#: src/multiplayer_connect.cpp:500
+#: src/multiplayer_connect.cpp:513
 msgid "Player/Type"
 msgstr "Jugador/Tipus"
 
-#: src/multiplayer_connect.cpp:501
+#: src/multiplayer_connect.cpp:514
 msgid "Faction"
 msgstr "Facció"
 
-#: src/multiplayer_connect.cpp:503
+#: src/multiplayer_connect.cpp:516
 msgid "Color"
 msgstr "Color"
 
-#: src/multiplayer_connect.cpp:504 src/playturn.cpp:1770 src/playturn.cpp:1781
+#: src/multiplayer_connect.cpp:517 src/playturn.cpp:1827 src/playturn.cpp:1838
 msgid "Gold"
 msgstr "Or"
 
-#: src/multiplayer_connect.cpp:506
+#: src/multiplayer_connect.cpp:519
 msgid "Computer vs Computer"
 msgstr "Ordinador contra Ordinador"
 
-#: src/multiplayer_connect.cpp:507
+#: src/multiplayer_connect.cpp:520
 msgid "I'm Ready"
 msgstr "Estic preparat"
 
-#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:58
+#: src/multiplayer_connect.cpp:521 src/multiplayer_create.cpp:63
 #: src/multiplayer_wait.cpp:150
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: src/multiplayer_connect.cpp:525
+#: src/multiplayer_connect.cpp:538
 msgid "The scenario is invalid because it has no sides."
 msgstr "L'escenari no és vàlid: no hi ha bàndols disponibles."
 
-#: src/multiplayer_connect.cpp:826
+#: src/multiplayer_connect.cpp:839
 msgid "Network Player"
 msgstr "Jugador xarxa"
 
-#: src/multiplayer_connect.cpp:827
+#: src/multiplayer_connect.cpp:840
 msgid "Local Player"
 msgstr "Jugador local"
 
-#: src/multiplayer_connect.cpp:828
+#: src/multiplayer_connect.cpp:841
 msgid "Computer Player"
 msgstr "Ordinador"
 
-#: src/multiplayer_connect.cpp:829
+#: src/multiplayer_connect.cpp:842
 msgid "Empty"
 msgstr "Buit"
 
-#: src/multiplayer_connect.cpp:921
+#: src/multiplayer_connect.cpp:934
 msgid "This is not a multiplayer save"
 msgstr "Aquest fitxer no correspon a una partida multijugador."
 
-#: src/multiplayer_connect.cpp:962
+#: src/multiplayer_connect.cpp:980
 msgid "Cannot find era $era"
 msgstr "No ha estat possible trobar $era."
 
-#: src/multiplayer_connect.cpp:980
+#: src/multiplayer_connect.cpp:998
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -10088,7 +10087,7 @@ msgstr ""
 "Victòria\n"
 "@Derrota els líders enemics"
 
-#: src/multiplayer_connect.cpp:1016
+#: src/multiplayer_connect.cpp:1034
 msgid "Waiting for players to join..."
 msgstr "Esperant que s'uneixin jugadors..."
 
@@ -10096,125 +10095,154 @@ msgstr "Esperant que s'uneixin jugadors..."
 msgid "Create Game"
 msgstr "Crea partida"
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:46
+msgid "Time limit"
+msgstr ""
+
+#: src/multiplayer_create.cpp:55
 msgid "Name of game:"
 msgstr "Nom de la partida:"
 
-#: src/multiplayer_create.cpp:52
+#: src/multiplayer_create.cpp:57
 msgid "Era:"
 msgstr "Era:"
 
-#: src/multiplayer_create.cpp:53
+#: src/multiplayer_create.cpp:58
 msgid "Map to play:"
 msgstr "Mapa a jugar:"
 
-#: src/multiplayer_create.cpp:54 src/multiplayer_lobby.cpp:314
+#: src/multiplayer_create.cpp:59 src/multiplayer_lobby.cpp:314
 #: src/multiplayer_lobby.cpp:315
 msgid "Use map settings"
 msgstr "Paràmetres per defecte"
 
-#: src/multiplayer_create.cpp:55
+#: src/multiplayer_create.cpp:60
 msgid "Fog Of War"
 msgstr "Boira de guerra"
 
-#: src/multiplayer_create.cpp:57
+#: src/multiplayer_create.cpp:62
 msgid "Observers"
 msgstr "Observadors"
 
-#: src/multiplayer_create.cpp:59
+#: src/multiplayer_create.cpp:64
 msgid "OK"
 msgstr "D'acord"
 
-#: src/multiplayer_create.cpp:60
+#: src/multiplayer_create.cpp:65
 msgid "Regenerate"
 msgstr "Regenera"
 
-#: src/multiplayer_create.cpp:61
+#: src/multiplayer_create.cpp:66
 msgid "Settings..."
 msgstr "Paràmetres..."
 
-#: src/multiplayer_create.cpp:95
+#: src/multiplayer_create.cpp:100
 #, fuzzy
 msgid "The maximum number of turns the game can last"
 msgstr "El nombre màxim de torns que durarà la partida"
 
-#: src/multiplayer_create.cpp:100
+#: src/multiplayer_create.cpp:103
+msgid "Enables user time limit"
+msgstr ""
+
+#: src/multiplayer_create.cpp:109
+#, fuzzy
+msgid "Initial time available for user at the begining of the match"
+msgstr ""
+"Les unitats que descansen als llogarets recuperen 8 punts de vida al "
+"començament del seu torn."
+
+#: src/multiplayer_create.cpp:115
+msgid "Time added to user's clock at the end of each turn"
+msgstr ""
+
+#: src/multiplayer_create.cpp:120
 msgid "The amount of income each village yields per turn"
 msgstr "La quantitat d'ingressos que proporciona cada llogaret per torn"
 
-#: src/multiplayer_create.cpp:105
+#: src/multiplayer_create.cpp:125
 msgid "The amount of experience a unit needs to advance"
 msgstr "La quantitat d'experiència que necessita una unitat per avançar"
 
-#: src/multiplayer_create.cpp:108
+#: src/multiplayer_create.cpp:128
 msgid "Use scenario specific settings"
 msgstr "Utilitza els paràmetres específics de l'escenari"
 
-#: src/multiplayer_create.cpp:111
+#: src/multiplayer_create.cpp:131
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "Les unitats enemigues no es poden veure si no estan a l'abast"
 
-#: src/multiplayer_create.cpp:114
+#: src/multiplayer_create.cpp:134
 msgid "The map is unknown until your units explore it"
 msgstr "El mapa és desconegut fins que s'explora"
 
-#: src/multiplayer_create.cpp:117
+#: src/multiplayer_create.cpp:137
 msgid "Allow users who are not playing to watch the game"
 msgstr "Permet que altres usuaris observin la partida"
 
-#: src/multiplayer_create.cpp:121
+#: src/multiplayer_create.cpp:141
 msgid "Share View"
 msgstr "Compartir visió"
 
-#: src/multiplayer_create.cpp:122
+#: src/multiplayer_create.cpp:142
 msgid "Share Maps"
 msgstr "Compartir mapes"
 
-#: src/multiplayer_create.cpp:123
+#: src/multiplayer_create.cpp:143
 msgid "Share None"
 msgstr "No compartir"
 
-#: src/multiplayer_create.cpp:134
+#: src/multiplayer_create.cpp:154
 msgid "No multiplayer sides."
 msgstr "No hi ha bàndols."
 
-#: src/multiplayer_create.cpp:136
+#: src/multiplayer_create.cpp:156
 msgid "No eras found"
 msgstr "No s'han trobat eres"
 
-#: src/multiplayer_create.cpp:149
+#: src/multiplayer_create.cpp:169
 msgid "$login's game"
 msgstr "Partida d'en/na $login"
 
-#: src/multiplayer_create.cpp:181
+#: src/multiplayer_create.cpp:209
 msgid "Invalid era selected"
 msgstr "L'era seleccionada no és vàlida"
 
-#: src/multiplayer_create.cpp:213
+#: src/multiplayer_create.cpp:244
 msgid "You must enter a name."
 msgstr "Heu d'introduir un nom."
 
-#: src/multiplayer_create.cpp:222
+#: src/multiplayer_create.cpp:253
 msgid "Turns: "
 msgstr "Torns: "
 
-#: src/multiplayer_create.cpp:224
+#: src/multiplayer_create.cpp:255
 msgid "Unlimited Turns"
 msgstr "Torns il·limitats"
 
-#: src/multiplayer_create.cpp:231
+#: src/multiplayer_create.cpp:266
+#, fuzzy
+msgid "Initial Time: "
+msgstr "Iniciat"
+
+#: src/multiplayer_create.cpp:271
+#, fuzzy
+msgid "Turn time: "
+msgstr "Torns: "
+
+#: src/multiplayer_create.cpp:277
 msgid "Village Gold: "
 msgstr "Or per llogaret: "
 
-#: src/multiplayer_create.cpp:237
+#: src/multiplayer_create.cpp:283
 msgid "Experience Modifier: "
 msgstr "Modificador d'experiència: "
 
-#: src/multiplayer_create.cpp:355
+#: src/multiplayer_create.cpp:401
 msgid "Players: "
 msgstr "Jugadors: "
 
-#: src/multiplayer_create.cpp:357 src/playturn.cpp:1627 src/playturn.cpp:1640
+#: src/multiplayer_create.cpp:403 src/playturn.cpp:1684 src/playturn.cpp:1697
 msgid "Error"
 msgstr "Error"
 
@@ -10318,7 +10346,7 @@ msgstr "("
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1873
+#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1930
 msgid "unit^Gold"
 msgstr "Or"
 
@@ -10354,11 +10382,11 @@ msgstr " repetició"
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Voleu desar la repetició d'aquest escenari?"
 
-#: src/playcampaign.cpp:234 src/playcampaign.cpp:355 src/playturn.cpp:1622
+#: src/playcampaign.cpp:234 src/playcampaign.cpp:355 src/playturn.cpp:1679
 msgid "Name:"
 msgstr "Nom:"
 
-#: src/playcampaign.cpp:242 src/playcampaign.cpp:363 src/playturn.cpp:1640
+#: src/playcampaign.cpp:242 src/playcampaign.cpp:363 src/playturn.cpp:1697
 msgid "The game could not be saved"
 msgstr "No s'ha pogut desar la partida."
 
@@ -10374,64 +10402,64 @@ msgstr "Voleu desar la partida?"
 msgid "Unknown scenario: '"
 msgstr "Escenari desconegut: '"
 
-#: src/playlevel.cpp:425 src/playlevel.cpp:698
+#: src/playlevel.cpp:441 src/playlevel.cpp:715
 msgid "The file you have tried to load is corrupt"
 msgstr "El fitxer que heu intentat carregar està corromput."
 
-#: src/playlevel.cpp:582
+#: src/playlevel.cpp:599
 msgid "Game Over"
 msgstr "Partida perduda"
 
-#: src/playlevel.cpp:583
+#: src/playlevel.cpp:600
 msgid "The game is over."
 msgstr "La partida ha acabat."
 
-#: src/playlevel.cpp:666
+#: src/playlevel.cpp:683
 msgid "Remaining gold: "
 msgstr "Or restant: "
 
-#: src/playlevel.cpp:669
+#: src/playlevel.cpp:686
 msgid "Early finish bonus: "
 msgstr "Bonificació per rapidesa: "
 
-#: src/playlevel.cpp:671
+#: src/playlevel.cpp:688
 msgid "per turn"
 msgstr "per torn"
 
-#: src/playlevel.cpp:672
+#: src/playlevel.cpp:689
 msgid "Turns finished early: "
 msgstr "Torns acabats aviat: "
 
-#: src/playlevel.cpp:674
+#: src/playlevel.cpp:691
 msgid "Bonus: "
 msgstr "Bonificació: "
 
-#: src/playlevel.cpp:676
+#: src/playlevel.cpp:693
 msgid "Gold: "
 msgstr "Or: "
 
-#: src/playlevel.cpp:681
+#: src/playlevel.cpp:698
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "El 80% de l'or es manté pel proper escenari."
 
-#: src/playlevel.cpp:682
+#: src/playlevel.cpp:699
 msgid "Retained Gold: "
 msgstr "Or conservat: "
 
-#: src/playlevel.cpp:687
+#: src/playlevel.cpp:704
 msgid "Victory"
 msgstr "Victòria"
 
-#: src/playlevel.cpp:688
+#: src/playlevel.cpp:705
 msgid "You have emerged victorious!"
 msgstr "Heu estat el vencedor!"
 
-#: src/playlevel.cpp:692
+#: src/playlevel.cpp:709
 msgid "Scenario Report"
 msgstr "Informe de l'escenari"
 
-#: src/playlevel.cpp:713
+#: src/playlevel.cpp:730
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -10440,116 +10468,116 @@ msgstr ""
 "S'ha produït una desconnexió de la xarxa i la partida no pot continuar. "
 "Voleu desar la partida?"
 
-#: src/playturn.cpp:91
+#: src/playturn.cpp:90
 msgid "It is now your turn"
 msgstr "És el teu torn."
 
-#: src/playturn.cpp:573
+#: src/playturn.cpp:618
 msgid "Attacker"
 msgstr "Atacant"
 
-#: src/playturn.cpp:575
+#: src/playturn.cpp:620
 msgid "Defender"
 msgstr "Defensor"
 
-#: src/playturn.cpp:595 src/playturn.cpp:661
+#: src/playturn.cpp:640 src/playturn.cpp:718
 msgid "Damage Calculations"
 msgstr "Càlcul de mal"
 
-#: src/playturn.cpp:640 src/reports.cpp:270
+#: src/playturn.cpp:697 src/reports.cpp:279
 msgid "vs"
 msgstr "contra"
 
-#: src/playturn.cpp:673
+#: src/playturn.cpp:730
 msgid "Attack Enemy"
 msgstr "Atac enemic"
 
-#: src/playturn.cpp:674
+#: src/playturn.cpp:731
 msgid "Choose weapon:"
 msgstr "Trieu l'arma:"
 
-#: src/playturn.cpp:1305
+#: src/playturn.cpp:1362
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "No heu començat a moure les unitats. Segur que voleu finalitzar el vostre "
 "torn?"
 
-#: src/playturn.cpp:1313 src/playturn.cpp:1318
+#: src/playturn.cpp:1370 src/playturn.cpp:1375
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Algunes unitats encara es poden moure. Segur que voleu finalitzar el vostre "
 "torn?"
 
-#: src/playturn.cpp:1333
+#: src/playturn.cpp:1390
 msgid "Auto-Save"
 msgstr "Partida desada automàticament"
 
-#: src/playturn.cpp:1335
+#: src/playturn.cpp:1392
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "No ha estat possible desar la partida automàticament. Si us plau, deseu-la "
 "manualment."
 
-#: src/playturn.cpp:1576
+#: src/playturn.cpp:1633
 msgid "Rename Unit"
 msgstr "Renomena unitat"
 
-#: src/playturn.cpp:1627
+#: src/playturn.cpp:1684
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
 "Els noms no poden contindre comes ni barres. Si us plau, trieu un altre nom."
 
-#: src/playturn.cpp:1637
+#: src/playturn.cpp:1694
 msgid "Saved"
 msgstr "Partida desada"
 
-#: src/playturn.cpp:1637
+#: src/playturn.cpp:1694
 msgid "The game has been saved"
 msgstr "La partida ha estat desada."
 
-#: src/playturn.cpp:1769
+#: src/playturn.cpp:1826
 msgid "Leader"
 msgstr "Líder"
 
-#: src/playturn.cpp:1771
+#: src/playturn.cpp:1828
 msgid "Villages"
 msgstr "Llogarets"
 
-#: src/playturn.cpp:1773
+#: src/playturn.cpp:1830
 msgid "Upkeep"
 msgstr "Manteniment"
 
-#: src/playturn.cpp:1774
+#: src/playturn.cpp:1831
 msgid "Income"
 msgstr "Beneficis"
 
-#: src/playturn.cpp:1879
+#: src/playturn.cpp:1936
 msgid "You have no units available to recruit."
 msgstr "No teniu unitats disponibles per reclutar."
 
-#: src/playturn.cpp:1891
+#: src/playturn.cpp:1948
 msgid "Recruit"
 msgstr "Recluta"
 
-#: src/playturn.cpp:1892 src/playturn.cpp:2082
+#: src/playturn.cpp:1949 src/playturn.cpp:2139
 msgid "Select unit:"
 msgstr "Seleccioneu una unitat:"
 
-#: src/playturn.cpp:1926
+#: src/playturn.cpp:1983
 msgid "You don't have enough gold to recruit that unit"
 msgstr "No teniu prou diners per reclutar aquesta unitat."
 
-#: src/playturn.cpp:1984
+#: src/playturn.cpp:2041
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
 "Senyor, aquesta unitat és experimentada. Segur que voleu acomiadar a $noun?"
 
-#: src/playturn.cpp:1986
+#: src/playturn.cpp:2043
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -10557,19 +10585,19 @@ msgstr ""
 "Senyor, aquesta unitat està a punt de pujar de nivell. Segur que voleu "
 "acomiadar a $noun?"
 
-#: src/playturn.cpp:1991
+#: src/playturn.cpp:2048
 msgid "her"
 msgstr "ella"
 
-#: src/playturn.cpp:1991
+#: src/playturn.cpp:2048
 msgid "him"
 msgstr "ell"
 
-#: src/playturn.cpp:2032
+#: src/playturn.cpp:2089
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Esteu lluny dels vostres soldats i no podeu reincorporar-los."
 
-#: src/playturn.cpp:2034
+#: src/playturn.cpp:2091
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -10577,107 +10605,107 @@ msgstr ""
 "No hi ha tropes disponibles per a reincorporar.\n"
 "(Heu de tenir supervivents veterans d'escenaris anteriors.)"
 
-#: src/playturn.cpp:2042
+#: src/playturn.cpp:2099
 msgid "Level"
 msgstr "Nivell"
 
-#: src/playturn.cpp:2069
+#: src/playturn.cpp:2126
 msgid "Dismiss Unit"
 msgstr "Acomiada unitat"
 
-#: src/playturn.cpp:2081
+#: src/playturn.cpp:2138
 msgid "Recall"
 msgstr "Reincorpora"
 
-#: src/playturn.cpp:2093
+#: src/playturn.cpp:2150
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Necessiteu al menys $cost monedes d'or per reincorporar una unitat."
 
-#: src/playturn.cpp:2138
+#: src/playturn.cpp:2195
 msgid "Message:"
 msgstr "Missatge:"
 
-#: src/playturn.cpp:2138
+#: src/playturn.cpp:2195
 msgid "Send to allies only"
 msgstr "Envia només als aliats"
 
-#: src/playturn.cpp:2233 src/unit.cpp:1202
+#: src/playturn.cpp:2290 src/unit.cpp:1202
 msgid "Moves"
 msgstr "Moviments"
 
-#: src/playturn.cpp:2234
+#: src/playturn.cpp:2291
 msgid "Location"
 msgstr "Posició"
 
-#: src/playturn.cpp:2280
+#: src/playturn.cpp:2337
 msgid "Unit List"
 msgstr "Llista d'unitats"
 
-#: src/playturn.cpp:2316 src/playturn.cpp:2378
+#: src/playturn.cpp:2373 src/playturn.cpp:2435
 msgid "Recruits"
 msgstr "Reclutaments"
 
-#: src/playturn.cpp:2322 src/playturn.cpp:2382
+#: src/playturn.cpp:2379 src/playturn.cpp:2439
 msgid "Recalls"
 msgstr "Reincorporacions"
 
-#: src/playturn.cpp:2328 src/playturn.cpp:2386
+#: src/playturn.cpp:2385 src/playturn.cpp:2443
 msgid "Advancements"
 msgstr "Avançaments"
 
-#: src/playturn.cpp:2334 src/playturn.cpp:2390
+#: src/playturn.cpp:2391 src/playturn.cpp:2447
 msgid "Losses"
 msgstr "Pèrdues"
 
-#: src/playturn.cpp:2340 src/playturn.cpp:2394
+#: src/playturn.cpp:2397 src/playturn.cpp:2451
 msgid "Kills"
 msgstr "Morts"
 
-#: src/playturn.cpp:2346
+#: src/playturn.cpp:2403
 msgid "Damage Inflicted"
 msgstr "Mal infligit"
 
-#: src/playturn.cpp:2352
+#: src/playturn.cpp:2409
 msgid "Damage Taken"
 msgstr "Mal rebut"
 
-#: src/playturn.cpp:2358
+#: src/playturn.cpp:2415
 msgid "Damage Inflicted (EV)"
 msgstr "Mal infligit (esperat)"
 
-#: src/playturn.cpp:2365
+#: src/playturn.cpp:2422
 msgid "Damage Taken (EV)"
 msgstr "Mal rebut (esperat)"
 
-#: src/playturn.cpp:2371
+#: src/playturn.cpp:2428
 msgid "Statistics"
 msgstr "Estadístiques"
 
-#: src/playturn.cpp:2408
+#: src/playturn.cpp:2465
 msgid "Search"
 msgstr "Cerca"
 
-#: src/playturn.cpp:2418
+#: src/playturn.cpp:2475
 msgid "prompt^Command:"
 msgstr "Comanda:"
 
-#: src/playturn.cpp:2429
+#: src/playturn.cpp:2486
 msgid "Chat Log"
 msgstr "Registre del xat"
 
-#: src/playturn.cpp:2494
+#: src/playturn.cpp:2551
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "No s'ha trobat cap etiqueta o unitat amb el nom '$search'."
 
-#: src/playturn.cpp:2622
+#: src/playturn.cpp:2679
 msgid "Place Label"
 msgstr "Posa etiqueta"
 
-#: src/playturn.cpp:2623
+#: src/playturn.cpp:2680
 msgid "Label:"
 msgstr "Etiqueta:"
 
-#: src/playturn.cpp:2753
+#: src/playturn.cpp:2810
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -10685,50 +10713,49 @@ msgstr ""
 "La partida no està sincronitzada i haurà de finalitzar. Voleu desar un "
 "registre de l'error de la partida?"
 
-#: src/playturn.cpp:2806
+#: src/playturn.cpp:2863
 msgid "Replace with AI"
 msgstr "Reemplaça amb IA"
 
-#: src/playturn.cpp:2807
+#: src/playturn.cpp:2864
 msgid "Replace with local player"
 msgstr "Reemplaça amb jugador local"
 
-#: src/playturn.cpp:2808
+#: src/playturn.cpp:2865
 msgid "Abort game"
 msgstr "Acaba la partida"
 
-#: src/playturn.cpp:2811
+#: src/playturn.cpp:2868
 msgid "Replace with "
 msgstr "Reemplaça amb "
 
-#: src/playturn.cpp:2815
+#: src/playturn.cpp:2872
 msgid "has left the game. What do you want to do?"
 msgstr "ha deixat la partida. Què voleu fer?"
 
-#: src/reports.cpp:134
+#: src/reports.cpp:135
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Aquesta unitat és invisible. No pot ser vista ni atacada per unitats "
 "enemigues."
 
-#: src/reports.cpp:134
+#: src/reports.cpp:135
 msgid "invisible: "
 msgstr "invisible: "
 
-#: src/reports.cpp:139
+#: src/reports.cpp:140
 #, fuzzy
 msgid ""
-"This unit has been slowed. It emits no zone of control, moves at half speed "
-"and enemies will be able to strike earlier once during a fight."
+"This unit has been slowed. It will only deal half its normal damage when "
+"attacking."
 msgstr ""
-"Aquesta unitat ha esta alentida. Es mou a la meitat de la seva velocitat "
-"habitual i pot fer un atac menys del normal en combat."
+"Aquesta unitat ha estat convertida en pedra. No es pot moure ni atacar."
 
-#: src/reports.cpp:139
+#: src/reports.cpp:140
 msgid "slowed: "
 msgstr "alentit: "
 
-#: src/reports.cpp:144
+#: src/reports.cpp:145
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -10744,57 +10771,57 @@ msgstr ""
 "Les unitats no poden morir només a causa del verí, que només reuirà els "
 "punts de vida fins a 1."
 
-#: src/reports.cpp:144
+#: src/reports.cpp:145
 msgid "poisoned: "
 msgstr "enverinat: "
 
-#: src/reports.cpp:151
+#: src/reports.cpp:152
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr ""
 "Aquesta unitat ha estat convertida en pedra. No es pot moure ni atacar."
 
-#: src/reports.cpp:151
+#: src/reports.cpp:152
 msgid "stone: "
 msgstr "pedra: "
 
-#: src/reports.cpp:240 src/unit_types.cpp:321
+#: src/reports.cpp:246 src/reports.cpp:248 src/unit_types.cpp:322
 msgid "damage"
 msgstr "mal"
 
-#: src/reports.cpp:254
+#: src/reports.cpp:263
 msgid "weapon range: "
 msgstr ""
 
-#: src/reports.cpp:255
+#: src/reports.cpp:264
 #, fuzzy
 msgid "damage type: "
 msgstr "mal"
 
-#: src/reports.cpp:319
+#: src/reports.cpp:328
 msgid "Lawful units: "
 msgstr "Unitats legals: "
 
-#: src/reports.cpp:321
+#: src/reports.cpp:330
 msgid "Neutral units: "
 msgstr "Unitats neutrals: "
 
-#: src/reports.cpp:322
+#: src/reports.cpp:331
 msgid "Chaotic units: "
 msgstr "Unitats caòtiques: "
 
-#: src/reports.cpp:376
+#: src/reports.cpp:385
 msgid "Owned village"
 msgstr "Llogaret propi"
 
-#: src/reports.cpp:378
+#: src/reports.cpp:387
 msgid "Enemy village"
 msgstr "Llogaret enemic"
 
-#: src/reports.cpp:380
+#: src/reports.cpp:389
 msgid "Allied village"
 msgstr "Llogaret aliat"
 
-#: src/reports.cpp:437
+#: src/reports.cpp:446
 msgid "Observers:"
 msgstr "Observadors:"
 
@@ -10942,21 +10969,29 @@ msgstr "punt d'experiència per avançar"
 msgid ": "
 msgstr ": "
 
-#: src/unit_types.cpp:329
+#: src/unit_types.cpp:330
 msgid "strikes"
 msgstr "cops"
 
-#: src/unit_types.cpp:962
+#: src/unit_types.cpp:966
 msgid "chaotic"
 msgstr "caòtica"
 
-#: src/unit_types.cpp:962
+#: src/unit_types.cpp:966
 msgid "lawful"
 msgstr "legal"
 
-#: src/unit_types.cpp:962
+#: src/unit_types.cpp:966
 msgid "neutral"
 msgstr "neutral"
+
+#, fuzzy
+#~ msgid ""
+#~ "This unit has been slowed. It emits no zone of control, moves at half "
+#~ "speed and enemies will be able to strike earlier once during a fight."
+#~ msgstr ""
+#~ "Aquesta unitat ha esta alentida. Es mou a la meitat de la seva velocitat "
+#~ "habitual i pot fer un atac menys del normal en combat."
 
 #~ msgid "Saved Theme Preference: "
 #~ msgstr "Tria el tema: "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.0.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-12-15 11:18+0100\n"
+"POT-Creation-Date: 2005-12-17 14:36+0100\n"
 "PO-Revision-Date: 2005-09-29 19:20+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -44,11 +44,11 @@ msgstr "Prooemium"
 msgid "Gameplay"
 msgstr "Lusus"
 
-#: data/help.cfg:21 src/playturn.cpp:2232
+#: data/help.cfg:21 src/playturn.cpp:2289
 msgid "Traits"
 msgstr "Lineamenta"
 
-#: data/help.cfg:29 src/playturn.cpp:1772
+#: data/help.cfg:29 src/playturn.cpp:1829
 msgid "Units"
 msgstr "Unitates"
 
@@ -1552,7 +1552,7 @@ msgstr ""
 #: data/help.cfg:460 data/terrain.cfg:150 data/terrain.cfg:162
 #: data/terrain.cfg:172 data/terrain.cfg:181 data/terrain.cfg:236
 #: data/terrain.cfg:247 data/terrain.cfg:260 data/terrain.cfg:281
-#: data/terrain.cfg:290 src/reports.cpp:374
+#: data/terrain.cfg:290 src/reports.cpp:383
 msgid "Village"
 msgstr "Pagus"
 
@@ -2373,13 +2373,13 @@ msgstr ""
 msgid "Underground"
 msgstr "Sub terra"
 
-#: data/terrain.cfg:11 data/themes/default.cfg:528
-#: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:325
+#: data/terrain.cfg:11 data/themes/default.cfg:535
+#: src/multiplayer_create.cpp:61 src/multiplayer_lobby.cpp:325
 #: src/multiplayer_lobby.cpp:331
 msgid "Shroud"
 msgstr "Integumentum"
 
-#: data/terrain.cfg:18 data/themes/default.cfg:540
+#: data/terrain.cfg:18 data/themes/default.cfg:547
 #: src/multiplayer_lobby.cpp:321
 msgid "Fog"
 msgstr "Caligo"
@@ -2452,93 +2452,93 @@ msgstr "Ruina Demersa"
 msgid "Swamp Ruin"
 msgstr "Ruina Paludinis"
 
-#: data/themes/default.cfg:78
+#: data/themes/default.cfg:80
 msgid "Menu"
 msgstr "Tabula"
 
-#: data/themes/default.cfg:89
+#: data/themes/default.cfg:91
 msgid "Actions"
 msgstr "Facinores"
 
-#: data/themes/default.cfg:111
+#: data/themes/default.cfg:113
 msgid "End Turn"
 msgstr "Tractum finire"
 
-#: data/themes/default.cfg:167 src/playturn.cpp:2230 src/unit.cpp:1170
+#: data/themes/default.cfg:171 src/playturn.cpp:2287 src/unit.cpp:1170
 msgid "HP"
 msgstr "PS"
 
-#: data/themes/default.cfg:176 src/playturn.cpp:2043 src/playturn.cpp:2231
+#: data/themes/default.cfg:180 src/playturn.cpp:2100 src/playturn.cpp:2288
 msgid "XP"
 msgstr "PE"
 
-#: data/themes/default.cfg:186
+#: data/themes/default.cfg:190
 msgid "gold"
 msgstr "aurum"
 
-#: data/themes/default.cfg:195
+#: data/themes/default.cfg:199
 msgid "villages"
 msgstr "pagi"
 
-#: data/themes/default.cfg:204
+#: data/themes/default.cfg:208
 msgid "units"
 msgstr "unitates"
 
-#: data/themes/default.cfg:213
+#: data/themes/default.cfg:217
 msgid "upkeep"
 msgstr "impensa"
 
-#: data/themes/default.cfg:222
+#: data/themes/default.cfg:226
 msgid "income"
 msgstr "merces"
 
-#: data/themes/default.cfg:358
+#: data/themes/default.cfg:365
 msgid "statuspanel^level"
 msgstr "e gradu"
 
-#: data/themes/default.cfg:389
+#: data/themes/default.cfg:396
 msgid "statuspanel^movement"
 msgstr "motus"
 
-#: data/themes/default.cfg:451
+#: data/themes/default.cfg:458
 #, fuzzy
 msgid "Replay"
 msgstr "remonstrare"
 
-#: data/themes/default.cfg:464
+#: data/themes/default.cfg:471
 #, fuzzy
 msgid "Play"
 msgstr "Lusores"
 
-#: data/themes/default.cfg:477
+#: data/themes/default.cfg:484
 msgid "Stop"
 msgstr ""
 
-#: data/themes/default.cfg:490
+#: data/themes/default.cfg:497
 #, fuzzy
 msgid "Reset"
 msgstr "Desertum"
 
-#: data/themes/default.cfg:503
+#: data/themes/default.cfg:510
 #, fuzzy
 msgid "Next Turn"
 msgstr "Tractus"
 
-#: data/themes/default.cfg:516
+#: data/themes/default.cfg:523
 #, fuzzy
 msgid "Next Side"
 msgstr "Insequens"
 
-#: data/themes/default.cfg:552
+#: data/themes/default.cfg:559
 #, fuzzy
 msgid "Skip animation"
 msgstr "+Reditio slovaca"
 
-#: data/themes/default.cfg:650
+#: data/themes/default.cfg:663
 msgid "Act."
 msgstr "Act."
 
-#: data/themes/default.cfg:683
+#: data/themes/default.cfg:696
 msgid "short end-turn^End"
 msgstr "Finire"
 
@@ -2799,9 +2799,8 @@ msgstr ""
 #: data/tips.cfg:29
 #, fuzzy
 msgid ""
-"The 'slow' attack ability makes enemy units move slower, but it also removes "
-"their zone of control, allowing your wounded units to escape or helping you "
-"reach fleeing enemy units."
+"The 'slow' attack ability makes enemy units move slower, but it also halves "
+"the damage they do on all attack."
 msgstr ""
 "Facultas oppugnationis 'lentifacere' efficit ut unitates inimicae lentius "
 "movuntur atque unam oppugnationem tollit, quae aliter recipiant. Ergo valde "
@@ -4105,7 +4104,7 @@ msgstr ""
 msgid "gaze"
 msgstr "aspicere"
 
-#: data/units/Cockatrice.cfg:44 src/actions.cpp:872 src/actions.cpp:1039
+#: data/units/Cockatrice.cfg:44 src/actions.cpp:885 src/actions.cpp:1063
 msgid "stone"
 msgstr "petrificare"
 
@@ -8864,113 +8863,113 @@ msgstr "+Reditio serica"
 msgid "+Czech Translation"
 msgstr "+Reditio ceca"
 
-#: src/about.cpp:185
+#: src/about.cpp:188
 msgid "+Danish Translation"
 msgstr "+Reditio danica"
 
-#: src/about.cpp:192
+#: src/about.cpp:195
 msgid "+Dutch Translation"
 msgstr "+Reditio batava"
 
-#: src/about.cpp:200
+#: src/about.cpp:203
 msgid "+English (GB) Translation"
 msgstr "+Reditio anglica (brittanica)"
 
-#: src/about.cpp:203
+#: src/about.cpp:206
 msgid "+Estonian Translation"
 msgstr "+Reditio estonica"
 
-#: src/about.cpp:206
+#: src/about.cpp:209
 msgid "+Finnish Translation"
 msgstr "+Reditio finnica"
 
-#: src/about.cpp:212
+#: src/about.cpp:215
 msgid "+French Translation"
 msgstr "+Reditio gallica"
 
-#: src/about.cpp:231
+#: src/about.cpp:234
 msgid "+German Translation"
 msgstr "+Reditio germanica"
 
-#: src/about.cpp:243
+#: src/about.cpp:246
 msgid "+Greek Translation"
 msgstr "+Reditio graeca"
 
-#: src/about.cpp:249
+#: src/about.cpp:252
 #, fuzzy
 msgid "+Hebrew Translation"
 msgstr "+Reditio graeca"
 
-#: src/about.cpp:253
+#: src/about.cpp:256
 msgid "+Hungarian Translation"
 msgstr "+Reditio magiarensis"
 
-#: src/about.cpp:266
+#: src/about.cpp:269
 msgid "+Italian Translation"
 msgstr "+Reditio italica"
 
-#: src/about.cpp:275
+#: src/about.cpp:278
 msgid "+Japanese Translation"
 msgstr "+Reditio iaponica"
 
-#: src/about.cpp:280
+#: src/about.cpp:283
 msgid "+Latin Translation"
 msgstr "+Reditio Latina"
 
-#: src/about.cpp:283
+#: src/about.cpp:286
 msgid "+Norwegian Translation"
 msgstr "+Reditio norvegiana"
 
-#: src/about.cpp:289
+#: src/about.cpp:292
 msgid "+Polish Translation"
 msgstr "+Reditio polonica"
 
-#: src/about.cpp:300
+#: src/about.cpp:303
 #, fuzzy
 msgid "+Portuguese Translation"
 msgstr "+Reditio lusitana (brasiliana)"
 
-#: src/about.cpp:303
+#: src/about.cpp:306
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Reditio lusitana (brasiliana)"
 
-#: src/about.cpp:312
+#: src/about.cpp:315
 msgid "+Russian Translation"
 msgstr "+Reditio russica"
 
-#: src/about.cpp:318
+#: src/about.cpp:321
 msgid "+Serbian Translation"
 msgstr "+Reditio serba"
 
-#: src/about.cpp:321
+#: src/about.cpp:324
 msgid "+Slovak Translation"
 msgstr "+Reditio slovaca"
 
-#: src/about.cpp:324
+#: src/about.cpp:327
 msgid "+Slovenian Translation"
 msgstr "+Reditio slovena"
 
-#: src/about.cpp:327
+#: src/about.cpp:330
 msgid "+Spanish Translation"
 msgstr "+Reditio hispanica"
 
-#: src/about.cpp:336
+#: src/about.cpp:339
 msgid "+Swedish Translation"
 msgstr "+Reditio Suecica"
 
-#: src/about.cpp:343
+#: src/about.cpp:346
 msgid "+Turkish Translation"
 msgstr "+Reditio turca"
 
-#: src/about.cpp:350
+#: src/about.cpp:353
 msgid "+Contributors"
 msgstr "+Qui confert"
 
-#: src/about.cpp:353
+#: src/about.cpp:356
 msgid "+Bots"
 msgstr "+Automata"
 
-#: src/about.cpp:389 src/help.cpp:2662
+#: src/about.cpp:392 src/help.cpp:2662
 msgid "Close"
 msgstr "Claudere"
 
@@ -8992,12 +8991,12 @@ msgid "none"
 msgstr "nulla"
 
 #: src/actions.cpp:380 src/dialogs.cpp:764 src/help.cpp:1143
-#: src/reports.cpp:249
+#: src/reports.cpp:258
 msgid "melee"
 msgstr "concursus"
 
 #: src/actions.cpp:380 src/dialogs.cpp:764 src/help.cpp:1143
-#: src/reports.cpp:250
+#: src/reports.cpp:259
 msgid "ranged"
 msgstr "e procul"
 
@@ -9041,39 +9040,39 @@ msgstr "(ambo debent superesse)"
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% Pr[necati/necati a/ambo supersunt]"
 
-#: src/actions.cpp:859 src/actions.cpp:1025
+#: src/actions.cpp:873 src/actions.cpp:1050
 msgid "poisoned"
 msgstr "venenatus"
 
-#: src/actions.cpp:865 src/actions.cpp:1031
+#: src/actions.cpp:878 src/actions.cpp:1055
 msgid "slowed"
 msgstr "lentifactus"
 
-#: src/actions.cpp:1927
+#: src/actions.cpp:1950
 msgid "Ambushed!"
 msgstr "Insidiae!"
 
-#: src/actions.cpp:1962
+#: src/actions.cpp:1985
 msgid "Friendly unit sighted"
 msgstr "Untitas socia vista"
 
-#: src/actions.cpp:1964
+#: src/actions.cpp:1987
 msgid "Enemy unit sighted!"
 msgstr "Unitas inimica vista!"
 
-#: src/actions.cpp:1969
+#: src/actions.cpp:1992
 msgid "$friends Friendly units sighted"
 msgstr "$friends Unitates Sociae vistae"
 
-#: src/actions.cpp:1971
+#: src/actions.cpp:1994
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies Unitates inimicae vistae!"
 
-#: src/actions.cpp:1975
+#: src/actions.cpp:1998
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Unitates vistae! ($friends sociae, $enemies inimicae)"
 
-#: src/actions.cpp:1990
+#: src/actions.cpp:2013
 msgid "(press $hotkey to continue)"
 msgstr "($hotkey premere ad pergendum)"
 
@@ -9133,7 +9132,7 @@ msgstr "Schola"
 msgid "replay"
 msgstr "remonstrare"
 
-#: src/dialogs.cpp:391 src/multiplayer_lobby.cpp:309 src/playturn.cpp:1613
+#: src/dialogs.cpp:391 src/multiplayer_lobby.cpp:309 src/playturn.cpp:1670
 msgid "Turn"
 msgstr "Tractus"
 
@@ -9210,7 +9209,7 @@ msgid "Date"
 msgstr "Datum"
 
 #: src/dialogs.cpp:554 src/game.cpp:888 src/help.cpp:1119
-#: src/multiplayer_lobby.cpp:31 src/playturn.cpp:2041 src/playturn.cpp:2229
+#: src/multiplayer_lobby.cpp:31 src/playturn.cpp:2098 src/playturn.cpp:2286
 msgid "Name"
 msgstr "Nomen"
 
@@ -9218,7 +9217,7 @@ msgstr "Nomen"
 msgid "Show replay"
 msgstr "Remonstare"
 
-#: src/dialogs.cpp:583 src/multiplayer_create.cpp:72
+#: src/dialogs.cpp:583 src/multiplayer_create.cpp:77
 msgid "Load Game"
 msgstr "Lusum Restituere"
 
@@ -9259,13 +9258,13 @@ msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Monitum: Pliga quam restituere conaris corrupta est. Tamen restituens.\n"
 
-#: src/game.cpp:647 src/multiplayer_connect.cpp:929
+#: src/game.cpp:647 src/multiplayer_connect.cpp:942
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Servatus est ex versione alia lusus. Visne eum restituere conari?"
 
-#: src/game.cpp:655 src/game.cpp:658 src/multiplayer_connect.cpp:914
+#: src/game.cpp:655 src/game.cpp:658 src/multiplayer_connect.cpp:927
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Pliga quae restituere conaris corrupta est: '"
 
@@ -9529,11 +9528,11 @@ msgstr "Gratia diei et noctis: "
 msgid "Required XP: "
 msgstr "PE Necessaria: "
 
-#: src/help.cpp:1112 src/reports.cpp:242
+#: src/help.cpp:1112 src/reports.cpp:251
 msgid "attacks"
 msgstr "oppugnationes"
 
-#: src/help.cpp:1120 src/playturn.cpp:2040 src/playturn.cpp:2228
+#: src/help.cpp:1120 src/playturn.cpp:2097 src/playturn.cpp:2285
 msgid "Type"
 msgstr "Genus"
 
@@ -9708,81 +9707,81 @@ msgstr "Lusor computatri"
 msgid "(Empty slot)"
 msgstr "(Rima vacua)"
 
-#: src/multiplayer_connect.cpp:463
+#: src/multiplayer_connect.cpp:476
 msgid "No non-random sides in the current era"
 msgstr "In saeculo hoc non sunt partes infortuitae"
 
-#: src/multiplayer_connect.cpp:479
+#: src/multiplayer_connect.cpp:492
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Non possum ducem factioni $faction invenire"
 
-#: src/multiplayer_connect.cpp:487 src/multiplayer_lobby.cpp:418
+#: src/multiplayer_connect.cpp:500 src/multiplayer_lobby.cpp:418
 #: src/multiplayer_wait.cpp:148
 msgid "Game Lobby"
 msgstr "Atrium Lusus"
 
-#: src/multiplayer_connect.cpp:493 src/multiplayer_connect.cpp:502
+#: src/multiplayer_connect.cpp:506 src/multiplayer_connect.cpp:515
 msgid "Team"
 msgstr "Pars"
 
-#: src/multiplayer_connect.cpp:500
+#: src/multiplayer_connect.cpp:513
 msgid "Player/Type"
 msgstr "Lusor/Genus"
 
-#: src/multiplayer_connect.cpp:501
+#: src/multiplayer_connect.cpp:514
 msgid "Faction"
 msgstr "Factio"
 
-#: src/multiplayer_connect.cpp:503
+#: src/multiplayer_connect.cpp:516
 msgid "Color"
 msgstr "Color"
 
-#: src/multiplayer_connect.cpp:504 src/playturn.cpp:1770 src/playturn.cpp:1781
+#: src/multiplayer_connect.cpp:517 src/playturn.cpp:1827 src/playturn.cpp:1838
 msgid "Gold"
 msgstr "Aurum"
 
-#: src/multiplayer_connect.cpp:506
+#: src/multiplayer_connect.cpp:519
 msgid "Computer vs Computer"
 msgstr "Computatrum contra Computatrum"
 
-#: src/multiplayer_connect.cpp:507
+#: src/multiplayer_connect.cpp:520
 msgid "I'm Ready"
 msgstr "Paratus Sum"
 
-#: src/multiplayer_connect.cpp:508 src/multiplayer_create.cpp:58
+#: src/multiplayer_connect.cpp:521 src/multiplayer_create.cpp:63
 #: src/multiplayer_wait.cpp:150
 msgid "Cancel"
 msgstr "Abrogare"
 
-#: src/multiplayer_connect.cpp:525
+#: src/multiplayer_connect.cpp:538
 msgid "The scenario is invalid because it has no sides."
 msgstr "Missio invalida est quia non habet partes."
 
-#: src/multiplayer_connect.cpp:826
+#: src/multiplayer_connect.cpp:839
 msgid "Network Player"
 msgstr "Lusor ex Reti"
 
-#: src/multiplayer_connect.cpp:827
+#: src/multiplayer_connect.cpp:840
 msgid "Local Player"
 msgstr "Lusor Localis"
 
-#: src/multiplayer_connect.cpp:828
+#: src/multiplayer_connect.cpp:841
 msgid "Computer Player"
 msgstr "Lusor Computatri"
 
-#: src/multiplayer_connect.cpp:829
+#: src/multiplayer_connect.cpp:842
 msgid "Empty"
 msgstr "Vacuus"
 
-#: src/multiplayer_connect.cpp:921
+#: src/multiplayer_connect.cpp:934
 msgid "This is not a multiplayer save"
 msgstr "Hoc salvatum non est plurum lusorum"
 
-#: src/multiplayer_connect.cpp:962
+#: src/multiplayer_connect.cpp:980
 msgid "Cannot find era $era"
 msgstr "Saeculum $era non inventum"
 
-#: src/multiplayer_connect.cpp:980
+#: src/multiplayer_connect.cpp:998
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -9790,7 +9789,7 @@ msgstr ""
 "Victoria\n"
 "@Ducem ducesve hostium vincere"
 
-#: src/multiplayer_connect.cpp:1016
+#: src/multiplayer_connect.cpp:1034
 msgid "Waiting for players to join..."
 msgstr "Exspecto ut lusores coniugerint..."
 
@@ -9798,126 +9797,155 @@ msgstr "Exspecto ut lusores coniugerint..."
 msgid "Create Game"
 msgstr "Lusum Creare"
 
-#: src/multiplayer_create.cpp:50
+#: src/multiplayer_create.cpp:46
+msgid "Time limit"
+msgstr ""
+
+#: src/multiplayer_create.cpp:55
 msgid "Name of game:"
 msgstr "Nomen lusus:"
 
-#: src/multiplayer_create.cpp:52
+#: src/multiplayer_create.cpp:57
 msgid "Era:"
 msgstr "Aetas:"
 
-#: src/multiplayer_create.cpp:53
+#: src/multiplayer_create.cpp:58
 msgid "Map to play:"
 msgstr "Charta ludenda:"
 
-#: src/multiplayer_create.cpp:54 src/multiplayer_lobby.cpp:314
+#: src/multiplayer_create.cpp:59 src/multiplayer_lobby.cpp:314
 #: src/multiplayer_lobby.cpp:315
 msgid "Use map settings"
 msgstr "Impostationibus chartae uti"
 
-#: src/multiplayer_create.cpp:55
+#: src/multiplayer_create.cpp:60
 msgid "Fog Of War"
 msgstr "Caligo Belli"
 
-#: src/multiplayer_create.cpp:57
+#: src/multiplayer_create.cpp:62
 msgid "Observers"
 msgstr "Spectatores"
 
-#: src/multiplayer_create.cpp:59
+#: src/multiplayer_create.cpp:64
 msgid "OK"
 msgstr "Bene"
 
-#: src/multiplayer_create.cpp:60
+#: src/multiplayer_create.cpp:65
 msgid "Regenerate"
 msgstr "Regenera"
 
-#: src/multiplayer_create.cpp:61
+#: src/multiplayer_create.cpp:66
 msgid "Settings..."
 msgstr "Impostationes..."
 
-#: src/multiplayer_create.cpp:95
+#: src/multiplayer_create.cpp:100
 #, fuzzy
 msgid "The maximum number of turns the game can last"
 msgstr "Tractus maximi ludus"
 
-#: src/multiplayer_create.cpp:100
+#: src/multiplayer_create.cpp:103
+msgid "Enables user time limit"
+msgstr ""
+
+#: src/multiplayer_create.cpp:109
+#, fuzzy
+msgid "Initial time available for user at the begining of the match"
+msgstr ""
+"Unitates qui in pagis sunt VIII punctis salutis in initio tractus sui "
+"sanantur."
+
+#: src/multiplayer_create.cpp:115
+msgid "Time added to user's clock at the end of each turn"
+msgstr ""
+
+#: src/multiplayer_create.cpp:120
 msgid "The amount of income each village yields per turn"
 msgstr "Merces qui quisque pagus quoque tractu dat"
 
-#: src/multiplayer_create.cpp:105
+#: src/multiplayer_create.cpp:125
 msgid "The amount of experience a unit needs to advance"
 msgstr "Experientia necessaria ut unitas promoveatur"
 
-#: src/multiplayer_create.cpp:108
+#: src/multiplayer_create.cpp:128
 msgid "Use scenario specific settings"
 msgstr "Impostationibus missionis uti"
 
-#: src/multiplayer_create.cpp:111
+#: src/multiplayer_create.cpp:131
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Unitates inimicos videri non possunt nisi in iacto unitatum tuorum sunt"
 
-#: src/multiplayer_create.cpp:114
+#: src/multiplayer_create.cpp:134
 msgid "The map is unknown until your units explore it"
 msgstr "Charta incognita est donec exploratur"
 
-#: src/multiplayer_create.cpp:117
+#: src/multiplayer_create.cpp:137
 msgid "Allow users who are not playing to watch the game"
 msgstr "Utentes qui non ludent permittere lusum adspectare"
 
-#: src/multiplayer_create.cpp:121
+#: src/multiplayer_create.cpp:141
 msgid "Share View"
 msgstr "Vistum compartire"
 
-#: src/multiplayer_create.cpp:122
+#: src/multiplayer_create.cpp:142
 msgid "Share Maps"
 msgstr "Chartas Compartire"
 
-#: src/multiplayer_create.cpp:123
+#: src/multiplayer_create.cpp:143
 msgid "Share None"
 msgstr "Nullum Compartire"
 
-#: src/multiplayer_create.cpp:134
+#: src/multiplayer_create.cpp:154
 msgid "No multiplayer sides."
 msgstr "Sine partibus"
 
-#: src/multiplayer_create.cpp:136
+#: src/multiplayer_create.cpp:156
 msgid "No eras found"
 msgstr "Nulla saecula inventa"
 
-#: src/multiplayer_create.cpp:149
+#: src/multiplayer_create.cpp:169
 msgid "$login's game"
 msgstr "Lusus $login|ensis"
 
-#: src/multiplayer_create.cpp:181
+#: src/multiplayer_create.cpp:209
 msgid "Invalid era selected"
 msgstr "Saeculum invalidum electum"
 
-#: src/multiplayer_create.cpp:213
+#: src/multiplayer_create.cpp:244
 msgid "You must enter a name."
 msgstr "Nomen dare opus est."
 
-#: src/multiplayer_create.cpp:222
+#: src/multiplayer_create.cpp:253
 msgid "Turns: "
 msgstr "Tractus: "
 
-#: src/multiplayer_create.cpp:224
+#: src/multiplayer_create.cpp:255
 msgid "Unlimited Turns"
 msgstr "Tractus Infiniti"
 
-#: src/multiplayer_create.cpp:231
+#: src/multiplayer_create.cpp:266
+#, fuzzy
+msgid "Initial Time: "
+msgstr "Initiatus"
+
+#: src/multiplayer_create.cpp:271
+#, fuzzy
+msgid "Turn time: "
+msgstr "Tractus: "
+
+#: src/multiplayer_create.cpp:277
 msgid "Village Gold: "
 msgstr "Aurum Pagi: "
 
-#: src/multiplayer_create.cpp:237
+#: src/multiplayer_create.cpp:283
 msgid "Experience Modifier: "
 msgstr "Immutatio Experientiae: "
 
-#: src/multiplayer_create.cpp:355
+#: src/multiplayer_create.cpp:401
 msgid "Players: "
 msgstr "Lusores: "
 
-#: src/multiplayer_create.cpp:357 src/playturn.cpp:1627 src/playturn.cpp:1640
+#: src/multiplayer_create.cpp:403 src/playturn.cpp:1684 src/playturn.cpp:1697
 msgid "Error"
 msgstr "Mendum"
 
@@ -10021,7 +10049,7 @@ msgstr "("
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1873
+#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1930
 msgid "unit^Gold"
 msgstr "Nummis Auri"
 
@@ -10057,11 +10085,11 @@ msgstr " remonstratum"
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Visne versionem remonstrabilem missionis huius servare?"
 
-#: src/playcampaign.cpp:234 src/playcampaign.cpp:355 src/playturn.cpp:1622
+#: src/playcampaign.cpp:234 src/playcampaign.cpp:355 src/playturn.cpp:1679
 msgid "Name:"
 msgstr "Nomen:"
 
-#: src/playcampaign.cpp:242 src/playcampaign.cpp:363 src/playturn.cpp:1640
+#: src/playcampaign.cpp:242 src/playcampaign.cpp:363 src/playturn.cpp:1697
 msgid "The game could not be saved"
 msgstr "Lusus non servari potest"
 
@@ -10077,121 +10105,121 @@ msgstr "Visne lusum servare?"
 msgid "Unknown scenario: '"
 msgstr "Missio incognita: '"
 
-#: src/playlevel.cpp:425 src/playlevel.cpp:698
+#: src/playlevel.cpp:441 src/playlevel.cpp:715
 msgid "The file you have tried to load is corrupt"
 msgstr "Pliga quam restituere conaris corrupta est"
 
-#: src/playlevel.cpp:582
+#: src/playlevel.cpp:599
 msgid "Game Over"
 msgstr "Lusus Finitus"
 
-#: src/playlevel.cpp:583
+#: src/playlevel.cpp:600
 msgid "The game is over."
 msgstr "Lusus consummatus est."
 
-#: src/playlevel.cpp:666
+#: src/playlevel.cpp:683
 msgid "Remaining gold: "
 msgstr "Aurum relinquum: "
 
-#: src/playlevel.cpp:669
+#: src/playlevel.cpp:686
 msgid "Early finish bonus: "
 msgstr "Bonum quod mature finisti: "
 
-#: src/playlevel.cpp:671
+#: src/playlevel.cpp:688
 msgid "per turn"
 msgstr "pro tractu"
 
-#: src/playlevel.cpp:672
+#: src/playlevel.cpp:689
 msgid "Turns finished early: "
 msgstr "Tractus quibus mature finisti: "
 
-#: src/playlevel.cpp:674
+#: src/playlevel.cpp:691
 msgid "Bonus: "
 msgstr "Bonum: "
 
-#: src/playlevel.cpp:676
+#: src/playlevel.cpp:693
 msgid "Gold: "
 msgstr "Aurum: "
 
-#: src/playlevel.cpp:681
+#: src/playlevel.cpp:698
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "LXXX pro cento auri retinentur pro scaenario insequenti"
 
-#: src/playlevel.cpp:682
+#: src/playlevel.cpp:699
 msgid "Retained Gold: "
 msgstr "Aurum Retentum: "
 
-#: src/playlevel.cpp:687
+#: src/playlevel.cpp:704
 msgid "Victory"
 msgstr "Victoria"
 
-#: src/playlevel.cpp:688
+#: src/playlevel.cpp:705
 msgid "You have emerged victorious!"
 msgstr "Vicisti!"
 
-#: src/playlevel.cpp:692
+#: src/playlevel.cpp:709
 msgid "Scenario Report"
 msgstr "Renuntiatio Missionis"
 
-#: src/playlevel.cpp:713
+#: src/playlevel.cpp:730
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "Disiunctio retis accedit et lusus non pergit. Visne lusum servare?"
 
-#: src/playturn.cpp:91
+#: src/playturn.cpp:90
 msgid "It is now your turn"
 msgstr "Imperium nunc habes"
 
-#: src/playturn.cpp:573
+#: src/playturn.cpp:618
 msgid "Attacker"
 msgstr "Oppugnans"
 
-#: src/playturn.cpp:575
+#: src/playturn.cpp:620
 msgid "Defender"
 msgstr "Defensor"
 
-#: src/playturn.cpp:595 src/playturn.cpp:661
+#: src/playturn.cpp:640 src/playturn.cpp:718
 msgid "Damage Calculations"
 msgstr "Rationes Damni"
 
-#: src/playturn.cpp:640 src/reports.cpp:270
+#: src/playturn.cpp:697 src/reports.cpp:279
 msgid "vs"
 msgstr "contra"
 
-#: src/playturn.cpp:673
+#: src/playturn.cpp:730
 msgid "Attack Enemy"
 msgstr "Hostem Oppugnare"
 
-#: src/playturn.cpp:674
+#: src/playturn.cpp:731
 msgid "Choose weapon:"
 msgstr "Telum eligere: "
 
-#: src/playturn.cpp:1305
+#: src/playturn.cpp:1362
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Tractum nondum coepisti. Visne vere tractum finire?"
 
-#: src/playturn.cpp:1313 src/playturn.cpp:1318
+#: src/playturn.cpp:1370 src/playturn.cpp:1375
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Nonnullis unitatibus puncta motus relicta sunt. Visne vere tractum finire?"
 
-#: src/playturn.cpp:1333
+#: src/playturn.cpp:1390
 msgid "Auto-Save"
 msgstr "Servatum-Automatarium"
 
-#: src/playturn.cpp:1335
+#: src/playturn.cpp:1392
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Non poteram lusum automatice servare. Amabo, serva eum manu."
 
-#: src/playturn.cpp:1576
+#: src/playturn.cpp:1633
 msgid "Rename Unit"
 msgstr "Unitatem Renominare"
 
-#: src/playturn.cpp:1627
+#: src/playturn.cpp:1684
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -10199,47 +10227,47 @@ msgstr ""
 "Nomina servatorum punta duplicia, virgulas aut virgulas reversas non "
 "continere possunt. Amabo, elige nomen alium."
 
-#: src/playturn.cpp:1637
+#: src/playturn.cpp:1694
 msgid "Saved"
 msgstr "Servatus"
 
-#: src/playturn.cpp:1637
+#: src/playturn.cpp:1694
 msgid "The game has been saved"
 msgstr "Lusus servatus est"
 
-#: src/playturn.cpp:1769
+#: src/playturn.cpp:1826
 msgid "Leader"
 msgstr "Dux"
 
-#: src/playturn.cpp:1771
+#: src/playturn.cpp:1828
 msgid "Villages"
 msgstr "Pagi"
 
-#: src/playturn.cpp:1773
+#: src/playturn.cpp:1830
 msgid "Upkeep"
 msgstr "Impensa"
 
-#: src/playturn.cpp:1774
+#: src/playturn.cpp:1831
 msgid "Income"
 msgstr "Merces"
 
-#: src/playturn.cpp:1879
+#: src/playturn.cpp:1936
 msgid "You have no units available to recruit."
 msgstr "Non habes unitates quas conscribere potes"
 
-#: src/playturn.cpp:1891
+#: src/playturn.cpp:1948
 msgid "Recruit"
 msgstr "Conscribere"
 
-#: src/playturn.cpp:1892 src/playturn.cpp:2082
+#: src/playturn.cpp:1949 src/playturn.cpp:2139
 msgid "Select unit:"
 msgstr "Unitatem elegere: "
 
-#: src/playturn.cpp:1926
+#: src/playturn.cpp:1983
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Non habes satis auri ut unitatem illam conscribas"
 
-#: src/playturn.cpp:1984
+#: src/playturn.cpp:2041
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -10247,7 +10275,7 @@ msgstr ""
 "Domine mi, haec unitas experta est, tenens gradum superiorem! Visne vere "
 "$noun dimittere?"
 
-#: src/playturn.cpp:1986
+#: src/playturn.cpp:2043
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -10255,19 +10283,19 @@ msgstr ""
 "Domine mi, haec unitas mox gradum superiorem attinget! Visne vere $noun "
 "dimittere?"
 
-#: src/playturn.cpp:1991
+#: src/playturn.cpp:2048
 msgid "her"
 msgstr "eam"
 
-#: src/playturn.cpp:1991
+#: src/playturn.cpp:2048
 msgid "him"
 msgstr "eum"
 
-#: src/playturn.cpp:2032
+#: src/playturn.cpp:2089
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Separatus es a militibus tuis et eos non revocare potes"
 
-#: src/playturn.cpp:2034
+#: src/playturn.cpp:2091
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -10275,107 +10303,107 @@ msgstr ""
 "Non sunt milites revocandi\n"
 "(Opus est veteranos habere qui supersunt ex missione praeterito)"
 
-#: src/playturn.cpp:2042
+#: src/playturn.cpp:2099
 msgid "Level"
 msgstr "E gradu"
 
-#: src/playturn.cpp:2069
+#: src/playturn.cpp:2126
 msgid "Dismiss Unit"
 msgstr "Unitatem Dimittere"
 
-#: src/playturn.cpp:2081
+#: src/playturn.cpp:2138
 msgid "Recall"
 msgstr "Revocare"
 
-#: src/playturn.cpp:2093
+#: src/playturn.cpp:2150
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Opus est saltem $cost nummos auri ut unitatem revoces."
 
-#: src/playturn.cpp:2138
+#: src/playturn.cpp:2195
 msgid "Message:"
 msgstr "Nuntius: "
 
-#: src/playturn.cpp:2138
+#: src/playturn.cpp:2195
 msgid "Send to allies only"
 msgstr "Mittere tantum sociis"
 
-#: src/playturn.cpp:2233 src/unit.cpp:1202
+#: src/playturn.cpp:2290 src/unit.cpp:1202
 msgid "Moves"
 msgstr "Puncta motus"
 
-#: src/playturn.cpp:2234
+#: src/playturn.cpp:2291
 msgid "Location"
 msgstr "Locus"
 
-#: src/playturn.cpp:2280
+#: src/playturn.cpp:2337
 msgid "Unit List"
 msgstr "Index Unitatum"
 
-#: src/playturn.cpp:2316 src/playturn.cpp:2378
+#: src/playturn.cpp:2373 src/playturn.cpp:2435
 msgid "Recruits"
 msgstr "Tirones"
 
-#: src/playturn.cpp:2322 src/playturn.cpp:2382
+#: src/playturn.cpp:2379 src/playturn.cpp:2439
 msgid "Recalls"
 msgstr "Revocationes"
 
-#: src/playturn.cpp:2328 src/playturn.cpp:2386
+#: src/playturn.cpp:2385 src/playturn.cpp:2443
 msgid "Advancements"
 msgstr "Promotiones Gradu"
 
-#: src/playturn.cpp:2334 src/playturn.cpp:2390
+#: src/playturn.cpp:2391 src/playturn.cpp:2447
 msgid "Losses"
 msgstr "Amissa"
 
-#: src/playturn.cpp:2340 src/playturn.cpp:2394
+#: src/playturn.cpp:2397 src/playturn.cpp:2451
 msgid "Kills"
 msgstr "Interfecta"
 
-#: src/playturn.cpp:2346
+#: src/playturn.cpp:2403
 msgid "Damage Inflicted"
 msgstr "Damnum Infictum"
 
-#: src/playturn.cpp:2352
+#: src/playturn.cpp:2409
 msgid "Damage Taken"
 msgstr "Damnum Passum"
 
-#: src/playturn.cpp:2358
+#: src/playturn.cpp:2415
 msgid "Damage Inflicted (EV)"
 msgstr "Damnum Inflictum (Exsp)"
 
-#: src/playturn.cpp:2365
+#: src/playturn.cpp:2422
 msgid "Damage Taken (EV)"
 msgstr "Damnum Passum (Exsp)"
 
-#: src/playturn.cpp:2371
+#: src/playturn.cpp:2428
 msgid "Statistics"
 msgstr "Census"
 
-#: src/playturn.cpp:2408
+#: src/playturn.cpp:2465
 msgid "Search"
 msgstr "Investigatio"
 
-#: src/playturn.cpp:2418
+#: src/playturn.cpp:2475
 msgid "prompt^Command:"
 msgstr "Imperium:"
 
-#: src/playturn.cpp:2429
+#: src/playturn.cpp:2486
 msgid "Chat Log"
 msgstr "Acta Colloquii"
 
-#: src/playturn.cpp:2494
+#: src/playturn.cpp:2551
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Titulus aut unitas qui litteras '$search' continet non invenitur."
 
-#: src/playturn.cpp:2622
+#: src/playturn.cpp:2679
 msgid "Place Label"
 msgstr "Titulus Loci"
 
-#: src/playturn.cpp:2623
+#: src/playturn.cpp:2680
 msgid "Label:"
 msgstr "Titulus: "
 
-#: src/playturn.cpp:2753
+#: src/playturn.cpp:2810
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -10383,49 +10411,47 @@ msgstr ""
 "Ludi non synchonizantur et exire debebunt. Visne acta mendorum lusus tui "
 "servare?"
 
-#: src/playturn.cpp:2806
+#: src/playturn.cpp:2863
 msgid "Replace with AI"
 msgstr "Substituere cum IA"
 
-#: src/playturn.cpp:2807
+#: src/playturn.cpp:2864
 msgid "Replace with local player"
 msgstr "Substituere cum lusore locali"
 
-#: src/playturn.cpp:2808
+#: src/playturn.cpp:2865
 msgid "Abort game"
 msgstr "Lusum finire"
 
-#: src/playturn.cpp:2811
+#: src/playturn.cpp:2868
 msgid "Replace with "
 msgstr "Substituere cum "
 
-#: src/playturn.cpp:2815
+#: src/playturn.cpp:2872
 msgid "has left the game. What do you want to do?"
 msgstr "lusum reliquit. Quid facere vis?"
 
-#: src/reports.cpp:134
+#: src/reports.cpp:135
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Haec unitas invisibilis est. Non videri aut oppugnari potest a hostibus."
 
-#: src/reports.cpp:134
+#: src/reports.cpp:135
 msgid "invisible: "
 msgstr "invisibilis: "
 
-#: src/reports.cpp:139
+#: src/reports.cpp:140
 #, fuzzy
 msgid ""
-"This unit has been slowed. It emits no zone of control, moves at half speed "
-"and enemies will be able to strike earlier once during a fight."
-msgstr ""
-"Haec unitas lenta facta est. Movet cum celeritate dimidia et amisit unam "
-"oppugnationem in proelio."
+"This unit has been slowed. It will only deal half its normal damage when "
+"attacking."
+msgstr "Unitas haec petrificatus est. Non potest movere aut oppugnare."
 
-#: src/reports.cpp:139
+#: src/reports.cpp:140
 msgid "slowed: "
 msgstr "lentifactus: "
 
-#: src/reports.cpp:144
+#: src/reports.cpp:145
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -10439,56 +10465,56 @@ msgstr ""
 "\n"
 "Unitates non a veneno solo interficiuntur. Venenum PS non minuitur infra I."
 
-#: src/reports.cpp:144
+#: src/reports.cpp:145
 msgid "poisoned: "
 msgstr "venenatus: "
 
-#: src/reports.cpp:151
+#: src/reports.cpp:152
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Unitas haec petrificatus est. Non potest movere aut oppugnare."
 
-#: src/reports.cpp:151
+#: src/reports.cpp:152
 msgid "stone: "
 msgstr "petrificatus: "
 
-#: src/reports.cpp:240 src/unit_types.cpp:321
+#: src/reports.cpp:246 src/reports.cpp:248 src/unit_types.cpp:322
 msgid "damage"
 msgstr "damnum"
 
-#: src/reports.cpp:254
+#: src/reports.cpp:263
 msgid "weapon range: "
 msgstr ""
 
-#: src/reports.cpp:255
+#: src/reports.cpp:264
 #, fuzzy
 msgid "damage type: "
 msgstr "damnum"
 
-#: src/reports.cpp:319
+#: src/reports.cpp:328
 msgid "Lawful units: "
 msgstr "Filii lucis: "
 
-#: src/reports.cpp:321
+#: src/reports.cpp:330
 msgid "Neutral units: "
 msgstr "Filii crepusculi: "
 
-#: src/reports.cpp:322
+#: src/reports.cpp:331
 msgid "Chaotic units: "
 msgstr "Filii tenebrarum: "
 
-#: src/reports.cpp:376
+#: src/reports.cpp:385
 msgid "Owned village"
 msgstr "Pagus proprius"
 
-#: src/reports.cpp:378
+#: src/reports.cpp:387
 msgid "Enemy village"
 msgstr "Pagus inimicus"
 
-#: src/reports.cpp:380
+#: src/reports.cpp:389
 msgid "Allied village"
 msgstr "Pagus socius"
 
-#: src/reports.cpp:437
+#: src/reports.cpp:446
 msgid "Observers:"
 msgstr "Spectatores: "
 
@@ -10638,21 +10664,29 @@ msgstr "PE ad promotionem"
 msgid ": "
 msgstr ": "
 
-#: src/unit_types.cpp:329
+#: src/unit_types.cpp:330
 msgid "strikes"
 msgstr "ictus"
 
-#: src/unit_types.cpp:962
+#: src/unit_types.cpp:966
 msgid "chaotic"
 msgstr "tenebrarum"
 
-#: src/unit_types.cpp:962
+#: src/unit_types.cpp:966
 msgid "lawful"
 msgstr "lucis"
 
-#: src/unit_types.cpp:962
+#: src/unit_types.cpp:966
 msgid "neutral"
 msgstr "crepusculi"
+
+#, fuzzy
+#~ msgid ""
+#~ "This unit has been slowed. It emits no zone of control, moves at half "
+#~ "speed and enemies will be able to strike earlier once during a fight."
+#~ msgstr ""
+#~ "Haec unitas lenta facta est. Movet cum celeritate dimidia et amisit unam "
+#~ "oppugnationem in proelio."
 
 #~ msgid "Saved Theme Preference: "
 #~ msgstr "Impostatio Adumbrationis Servata: "
