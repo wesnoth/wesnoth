@@ -1539,14 +1539,14 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 		if (pathsList_->routes.find(gamemap::location(x,y)) == pathsList_->routes.end()) {
 			image_type = image::DARKENED;
 		} else {
-			image_type = image::SEMI_BRIGHTENED;
+			image_type = image::UNMASKED;
 		}
 	}
 	if(enemy_reach_ != NULL) {
 		if (enemy_reach_->find(loc) == enemy_reach_->end()) {
 			image_type = image::DARKENED;
 		} else {
-			image_type = image::SEMI_BRIGHTENED;
+			image_type = image::UNMASKED;
 		}
 	}
 	unit_map::iterator un = find_visible_unit(units_, loc, map_,
