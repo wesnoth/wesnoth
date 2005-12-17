@@ -16,21 +16,23 @@
 * display, which I don't think has to be exposed to Python. This is used by C++ AIs mostly for
   debugging purposes. We might want to allow Python scripts to write messages to the display for
   debugging purposes also, but they would only need very limited access.
-p gamemap, defined in map.hpp, which contains the definition of the map. Definitely needs to be
+* gamemap, defined in map.hpp, which contains the definition of the map. Definitely needs to be
  exposed to Python.
-- game_data, defined in unit_types.hpp, which contains definitions of the available unit types,
+* game_data, defined in unit_types.hpp, which contains definitions of the available unit types,
  attacks, races, and so forth. Needs to be exposed to Python.
 * unit_map, a map<gamemap::location,unit>. gamemap::location is defined in map.hpp and unit is
  defined in unit.hpp. This contains all the units currently in the game. Will need to be exposed.
 * vector<team>, a listing of the teams (i.e. sides) in the game. Defined in team.hpp. Will
  need to be exposed.
-- gamestatus, the current turn and time of day, etc. Defined in gamestatus.hpp. Will need to
+* gamestatus, the current turn and time of day, etc. Defined in gamestatus.hpp. Will need to
  be exposed.
 - turn_info, does not need to be exposed.
 
 Additionally, useful utility functions such as those found in pathutils.hpp should be exposed. 
 
 */
+
+#ifdef HAVE_PYTHON
 
 #include "global.hpp"
 
@@ -1054,20 +1056,10 @@ python_ai::~python_ai()
 
 void python_ai::play_turn()
 {
-	//PyRun_SimpleString("import Wesnoth\nWesnoth.LogMessage('test')");
-/*	int result = PyRun_SimpleString("import Wesnoth\n"
-		"units = Wesnoth.GetUnits()\n"
-		"Wesnoth.LogMessage('%s units'%len(units))\n"
-		"for i in [1..len(units)]:\n"
-		"\tu = units.get(i)\n");/*
-		"\tWesnoth.LogMessage('%s'%(u.Name))\n");
-/*		"for u in units:\n"
-		"\tWesnoth.LogMessage('%s'%(u.Name))\n");
-		"Wesnoth.LogMessage('test1')\n");
-	PyObject* error = PyErr_Occurred();*/
-	char* script = "c:\\w.py";
-	PyObject* file = PyFile_FromString(script,"rt");
-	//FILE* f = fopen("c:\\w.py","rt");
-	PyRun_SimpleFile(PyFile_AsFile(file),script);
+	std::string script = current_team().ai_parameters()["python_script"];
+	PyObject* file = PyFile_FromString((char*)script.c_str(),"rt");
+	PyRun_SimpleFile(PyFile_AsFile(file),(char*)script.c_str());
 	Py_DECREF(file);
 }
+
+#endif // HAVE_PYTHON
