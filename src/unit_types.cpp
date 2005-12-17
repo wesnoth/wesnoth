@@ -687,6 +687,16 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 
 	flag_rgb_ = string2rgb(cfg["flag_rgb"]);
+	// deprecation messages, only seen when unit is parsed for the first time
+	if(!cfg["image_moving"].empty()) {
+		LOG_STREAM(err, config) << "unit " << id() << " uses an image_moving tag, which is deprecated\n";
+	}
+	if(!cfg["image_defensive_short"].empty()) {
+		LOG_STREAM(err, config) << "unit " << id() << " uses an image_defensive_short tag, which is deprecated\n";
+	}
+	if(!cfg["image_defensive_long"].empty()) {
+		LOG_STREAM(err, config) << "unit " << id() << " uses an image_defensive_long tag, which is deprecated\n";
+	}
 }
 
 unit_type::~unit_type()
@@ -770,7 +780,6 @@ const std::string& unit_type::image_moving() const
 {
 	const std::string& res = cfg_["image_moving"];
 	if(res.empty()) {
-		LOG_STREAM(err, config) << "unit " << id() << " uses an image_moving tag, which is deprecated\n";
 		return image();
 	} else {
 		return res;
@@ -803,20 +812,11 @@ const std::string& unit_type::image_defensive(attack_type::RANGE range) const
 
 		const std::string& val = cfg_[str];
 
-		if(!val.empty()) {
-			LOG_STREAM(err, config) << "unit " << id() << " uses an "<< str <<" tag, which is deprecated\n";
-			return val;
-		}
 	}
 
 	const std::string& val = cfg_["image_defensive"];
 	if(val.empty())
 		return cfg_["image"];
-	else {
-
-		LOG_STREAM(err, config) << "unit " << id() << " uses an image_defensive tag, which is deprecated\n";
-		return val;
-	}
 }
 
 const std::string& unit_type::image_leading() const
