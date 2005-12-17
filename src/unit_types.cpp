@@ -817,6 +817,9 @@ const std::string& unit_type::image_defensive(attack_type::RANGE range) const
 	const std::string& val = cfg_["image_defensive"];
 	if(val.empty())
 		return cfg_["image"];
+	else {
+		return val;
+	}
 }
 
 const std::string& unit_type::image_leading() const
