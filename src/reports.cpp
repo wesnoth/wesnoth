@@ -137,7 +137,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		}
 		if(u->second.has_flag("slowed")) {
 			unit_status << "misc/slowed.png";
-			tooltip << _("slowed: ") << _("This unit has been slowed. It emits no zone of control, moves at half speed and enemies will be able to strike earlier once during a fight.");
+			tooltip << _("slowed: ") << _("This unit has been slowed. It will only deal half its normal damage when attacking.");
 			res.add_image(unit_status,tooltip);
 		}
 		if(u->second.has_flag("poisoned")) {
@@ -234,11 +234,19 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			const std::string& lang_type = gettext(at_it->type().c_str());
 			str.str("");
 			str << "<245,230,193>";
-			str << at_it->damage() << "-" ;
+			if(u->second.has_flag("slowed")) {
+				str << round_damage(at_it->damage(),1,2) << "-" ;
+			} else {
+				str << at_it->damage() << "-" ;
+			}
 			str << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
 			str << " " << at_it->name();
 			tooltip << at_it->name() << "\n";
-			tooltip << at_it->damage() << " " << _("damage") << ", ";
+			if(u->second.has_flag("slowed")) {
+				tooltip << round_damage(at_it->damage(),1,2) << " " << _("damage") << ", ";
+			} else {
+				tooltip << at_it->damage() << " " << _("damage") << ", ";
+			}
 			tooltip << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
 			tooltip << " " << _("attacks");
 

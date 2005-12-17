@@ -116,10 +116,8 @@ SVN trunk (1.1.x):
    * backstab now works if opposite unit is non-incapacitated enemy of defender
    * prevented stoned units from being healed
    * slow does not remove an attack anymore
-   * hitting with slow changes attack order to allow attacker to strike again
-   * slowed units lose initiative on fight
    * slow still temporarily doubles movement cost
-   * slowed units do not emit zone of control (ZOC)
+   * slowed units see the damage they deal halved immediately
    * unit modifications now round toward original value instead of truncating
    * changed resilient trait bonus from +7hp to +10%+3hp
    * decreased strong trait hitpoints bonus from 2 to 1

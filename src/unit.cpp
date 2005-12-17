@@ -518,7 +518,7 @@ bool unit::has_goto() const
 
 bool unit::emits_zoc() const
 {
-	return type().has_zoc() && stone() == false && !has_flag("slowed");
+	return type().has_zoc() && stone() == false;
 }
 
 bool unit::matches_filter(const config& cfg) const

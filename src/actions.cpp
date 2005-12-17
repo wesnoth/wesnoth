@@ -708,18 +708,26 @@ void attack(display& gui, const gamemap& map,
 	int orig_defends = stats.ndefends;
 
 	int to_the_death = stats.to_the_death ? 30 : 0;
-	bool slow_affects_attacker = a->second.has_flag("slowed");
-	bool slow_affects_defender = d->second.has_flag("slowed");
 
 	static const std::string poison_string("poison");
 
 	while(stats.nattacks > 0 || stats.ndefends > 0) {
 		LOG_NG << "start of attack loop...\n";
 
-		if(stats.nattacks > 0 && stats.defender_strikes_first == false && slow_affects_attacker == false) {
+		if(stats.nattacks > 0 && stats.defender_strikes_first == false) {
 			const int ran_num = get_random();
 			bool hits = (ran_num%100) < stats.chance_to_hit_defender;
 
+			int damage_defender_takes;
+			if(hits) {
+				if(a->second.has_flag("slowed")) {
+					damage_defender_takes = round_damage(stats.damage_defender_takes,1,2);
+				} else {
+					damage_defender_takes = stats.damage_defender_takes;
+				}
+			} else {
+				damage_defender_takes = 0;
+			}
 			//make sure that if we're serializing a game here,
 			//we got the same results as the game did originally
 			const config* ran_results = get_random_results();
@@ -746,18 +754,18 @@ void attack(display& gui, const gamemap& map,
 						<< " (over-riding game calculations with data source results)\n";
 					hits = results_hits;
 				}
-				if(results_damage != stats.damage_defender_takes) {
+				if(results_damage != damage_defender_takes) {
 					ERR_NW << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": the data source says the hit did " << results_damage
 						<< " damage, while in-game calculations show the hit doing "
-						<< stats.damage_defender_takes
+						<< damage_defender_takes
 						<< " damage (over-riding game calculations with data source results)\n";
-					stats.damage_defender_takes = results_damage;
+					damage_defender_takes = results_damage;
 				}
 			}
 
 			bool dies = unit_display::unit_attack(gui,units,map,attacker,defender,
-				            hits ? stats.damage_defender_takes : 0,
+				            damage_defender_takes,
 							a->second.attacks()[attack_with]);
 
 			LOG_NG << "done attacking\n";
@@ -771,7 +779,7 @@ void attack(display& gui, const gamemap& map,
 				cfg["hits"] = (hits ? "yes" : "no");
 				cfg["dies"] = (dies ? "yes" : "no");
 
-				cfg["damage"] = lexical_cast<std::string>(stats.damage_defender_takes);
+				cfg["damage"] = lexical_cast<std::string>(damage_defender_takes);
 				cfg["chance"] = lexical_cast<std::string>(stats.chance_to_hit_defender);
 
 				set_random_results(cfg);
@@ -790,10 +798,16 @@ void attack(display& gui, const gamemap& map,
 
 			if(dies || hits) {
 				if(stats.amount_attacker_drains > 0) {
+					int amount_drained;
+					if(a->second.has_flag("slowed")) {
+						amount_drained = round_damage(stats.amount_attacker_drains,1,2);
+					} else {
+						amount_drained = stats.amount_attacker_drains;
+					}
 					char buf[50];
-					snprintf(buf,sizeof(buf),"%d",stats.amount_attacker_drains);
+					snprintf(buf,sizeof(buf),"%d",amount_drained);
 					gui.float_label(a->first,buf,0,255,0);
-					a->second.heal(stats.amount_attacker_drains);
+					a->second.heal(amount_drained);
 				}
 			}
 
@@ -860,8 +874,7 @@ void attack(display& gui, const gamemap& map,
 					d->second.set_flag("poisoned");
 				}
 
-				if(stats.attacker_slows) {
-					slow_affects_defender = true;
+				if(stats.attacker_slows && d->second.has_flag("slowed") == false) {
 					gui.float_label(d->first,_("slowed"),255,0,0);
 					d->second.set_flag("slowed");
 				}
@@ -879,20 +892,26 @@ void attack(display& gui, const gamemap& map,
 
 			--stats.nattacks;
 		}
-		// slow and initiative are cumulative
-		if(!stats.defender_strikes_first) {
-			slow_affects_attacker = false;
-		}
 
 		//if the defender got to strike first, they use it up here.
 		stats.defender_strikes_first = false;
 
-		if(stats.ndefends > 0 && slow_affects_defender == false) {
+		if(stats.ndefends > 0 ) {
 			LOG_NG << "doing defender attack...\n";
 
 			const int ran_num = get_random();
 			bool hits = (ran_num%100) < stats.chance_to_hit_attacker;
 
+			int damage_attacker_takes;
+			if(hits) {
+				if(d->second.has_flag("slowed")) {
+					damage_attacker_takes = round_damage(stats.damage_attacker_takes,1,2);
+				} else {
+					damage_attacker_takes = stats.damage_attacker_takes;
+				}
+			} else {
+				damage_attacker_takes = 0;
+			}
 			//make sure that if we're serializing a game here,
 			//we got the same results as the game did originally
 			const config* ran_results = get_random_results();
@@ -919,18 +938,18 @@ void attack(display& gui, const gamemap& map,
 						<< " (over-riding game calculations with data source results)\n";
 					hits = results_hits;
 				}
-				if(results_damage != stats.damage_attacker_takes) {
+				if(results_damage != damage_attacker_takes) {
 					ERR_NW << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": the data source says the hit did " << results_damage
 						<< " damage, while in-game calculations show the hit doing "
-						<< stats.damage_attacker_takes
+						<< damage_attacker_takes
 						<< " damage (over-riding game calculations with data source results)\n";
-					stats.damage_attacker_takes = results_damage;
+					damage_attacker_takes = results_damage;
 				}
 			}
 
 			bool dies = unit_display::unit_attack(gui,units,map,defender,attacker,
-			               hits ? stats.damage_attacker_takes : 0,
+			               damage_attacker_takes,
 						   d->second.attacks()[stats.defend_with]);
 
 			attack_stats.defend_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
@@ -940,7 +959,7 @@ void attack(display& gui, const gamemap& map,
 				config cfg;
 				cfg["hits"] = (hits ? "yes" : "no");
 				cfg["dies"] = (dies ? "yes" : "no");
-				cfg["damage"] = lexical_cast<std::string>(stats.damage_attacker_takes);
+				cfg["damage"] = lexical_cast<std::string>(damage_attacker_takes);
 				cfg["chance"] = lexical_cast<std::string>(stats.chance_to_hit_attacker);
 
 				set_random_results(cfg);
@@ -959,10 +978,16 @@ void attack(display& gui, const gamemap& map,
 
 			if(hits || dies){
 				if(stats.amount_defender_drains > 0) {
+					int amount_drained;
+					if(d->second.has_flag("slowed")) {
+						amount_drained = round_damage(stats.amount_defender_drains,1,2);
+					} else {
+						amount_drained = stats.amount_defender_drains;
+					}
 					char buf[50];
-					snprintf(buf,sizeof(buf),"%d",stats.amount_defender_drains);
+					snprintf(buf,sizeof(buf),"%d",amount_drained);
 					gui.float_label(d->first,buf,0,255,0);
-					d->second.heal(stats.amount_defender_drains);
+					d->second.heal(amount_drained);
 				}
 			}
 
@@ -1026,8 +1051,7 @@ void attack(display& gui, const gamemap& map,
 					a->second.set_flag("poisoned");
 				}
 
-				if(stats.defender_slows) {
-					slow_affects_attacker = true;
+				if(stats.defender_slows && a->second.has_flag("slowed") == false) {
 					gui.float_label(a->first,_("slowed"),255,0,0);
 					a->second.set_flag("slowed");
 				}
@@ -1046,7 +1070,6 @@ void attack(display& gui, const gamemap& map,
 
 			--stats.ndefends;
 		}
-		slow_affects_defender = false;
 
 		// continue the fight to death; if one of the units got stoned,
 		// either nattacks or ndefends is -1
