@@ -43,7 +43,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	maps_menu_(disp.video(), std::vector<std::string>()),
 	turns_slider_(disp.video()),
 	turns_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
-	countdown_game_(disp.video(), _("Enable time limit"), gui::button::TYPE_CHECK),
+	countdown_game_(disp.video(), _("Time limit"), gui::button::TYPE_CHECK),
 	countdown_init_time_slider_(disp.video()),
 	countdown_init_time_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	countdown_turn_bonus_slider_(disp.video()),
@@ -100,7 +100,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	turns_slider_.set_help_string(_("The maximum number of turns the game can last"));
 
 	countdown_game_.set_check(preferences::countdown());
-	countdown_game_.set_help_string(_("Enables ingame user time limits"));
+	countdown_game_.set_help_string(_("Enables user time limit"));
 	
 	countdown_init_time_slider_.set_min(0);
 	countdown_init_time_slider_.set_max(7200);
@@ -108,7 +108,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	countdown_init_time_slider_.set_value(preferences::countdown_init_time());
 	countdown_init_time_slider_.set_help_string(_("Initial time available for user at the begining of the match"));
 
-	countdown_turn_bonus_slider_.set_min(0);
+	countdown_turn_bonus_slider_.set_min(10);
 	countdown_turn_bonus_slider_.set_max(1000);
 	countdown_turn_bonus_slider_.set_increment(10);
 	countdown_turn_bonus_slider_.set_value(preferences::countdown_turn_bonus());
@@ -263,12 +263,12 @@ void create::process_event()
 	
 	const int mp_countdown_init_time_val = countdown_init_time_slider_.value();
 	buf.str("");
-	buf <<  _("Initial Time: ") << mp_countdown_init_time_val << " seconds";
+	buf <<  _("Initial Time: ") << mp_countdown_init_time_val;
 	countdown_init_time_label_.set_text(buf.str());
 	
 	const int mp_countdown_turn_bonus_val = countdown_turn_bonus_slider_.value();
 	buf.str("");
-	buf <<  _("Turn time bonus: ") << mp_countdown_turn_bonus_val << " seconds";
+	buf <<  _("Turn time: ") << mp_countdown_turn_bonus_val;
 	countdown_turn_bonus_label_.set_text(buf.str());
 	
 	//Villages can produce between 1 and 10 gold a turn
@@ -549,8 +549,8 @@ void create::layout_children(const SDL_Rect& rect)
 	xp_modifier_slider_.set_location(xpos, ypos);
 	ypos += xp_modifier_slider_.height() + border_size;
 
-	countdown_game_.set_location(xpos, ypos);
-	ypos += countdown_game_.height() + border_size;
+	use_map_settings_.set_location(xpos, ypos);
+	ypos += use_map_settings_.height() + border_size;	
 
 	countdown_init_time_label_.set_location(xpos, ypos);
 	countdown_turn_bonus_label_.set_location(xpos + (ca.w - xpos)/2 + 5 , ypos);
@@ -561,17 +561,16 @@ void create::layout_children(const SDL_Rect& rect)
 	countdown_turn_bonus_slider_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
 	ypos += countdown_init_time_slider_.height() + border_size;
 	
+	countdown_game_.set_location(xpos, ypos);
+//	ypos += countdown_game_.height() + border_size;	
 
-	use_map_settings_.set_location(xpos, ypos);
-	ypos += use_map_settings_.height() + border_size;
-
-	fog_game_.set_location(xpos, ypos);
+	fog_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
 	ypos += fog_game_.height() + border_size;
 
 	shroud_game_.set_location(xpos, ypos);
-	ypos += shroud_game_.height() + border_size;
+//	ypos += shroud_game_.height() + border_size;
 
-	observers_game_.set_location(xpos, ypos);
+	observers_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
 	ypos += observers_game_.height() + border_size;
 
 	vision_combo_.set_location(xpos, ypos);

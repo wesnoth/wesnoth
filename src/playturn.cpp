@@ -144,18 +144,33 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 	if (teams[team_num -1].countdown_time() > 0 &&  ( level["mp_countdown"] == "yes" ) ){
 		SDL_Delay(1);
 		const int ticks = SDL_GetTicks();
-		teams[team_num -1].set_countdown_time(teams[team_num -1].countdown_time()-maximum<int>(1,(ticks - cur_ticks)));
-		cur_ticks = ticks;
-		if ( teams[team_num -1].countdown_time() <= beep_warning_time){
-			beep_warning_time=beep_warning_time - 1000;
-			sound::play_sound("bell.wav");
-		}
-		if ( teams[team_num -1].countdown_time() <= 0){
-			teams[team_num -1].set_countdown_time(teams[team_num -1].countdown_time() + 1000 * lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0));
-			recorder.add_countdown_update(teams[team_num -1].countdown_time(),team_num);
-			recorder.end_turn();
-			turn_data.send_data();
-			throw end_turn_exception();
+		int new_time = teams[team_num -1].countdown_time()-maximum<int>(1,(ticks - cur_ticks));
+		if (new_time > 0 ){
+			teams[team_num -1].set_countdown_time(teams[team_num -1].countdown_time()-maximum<int>(1,(ticks - cur_ticks)));
+			cur_ticks = ticks;
+			if ( teams[team_num -1].countdown_time() <= beep_warning_time){
+				beep_warning_time=beep_warning_time - 1000;
+				sound::play_sound("bell.wav");
+			}
+		} else {
+			// Clock time ended
+			// If no turn bonus -> defeat
+			if ( lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0) == 0){
+				// Not possible to end level in MP with throw end_level_exception(DEFEAT);
+				// because remote players only notice network disconnection
+				// Current solution end remaining turns automatically
+				teams[team_num -1].set_countdown_time(10);
+				recorder.add_countdown_update(teams[team_num -1].countdown_time(),team_num);
+				recorder.end_turn();
+				turn_data.send_data();
+				throw end_turn_exception();
+			} else {
+				teams[team_num -1].set_countdown_time(1000 * lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0));
+				recorder.add_countdown_update(teams[team_num -1].countdown_time(),team_num);
+				recorder.end_turn();
+				turn_data.send_data();
+				throw end_turn_exception();
+			}
 		} 
 		
 	}
@@ -167,7 +182,7 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 	}
 	if ( level["mp_countdown"] == "yes" ){
 		teams[team_num -1].set_countdown_time(teams[team_num -1].countdown_time() + 1000 * lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0));
-		recorder.add_countdown_update(teams[team_num -1].countdown_time(),team_num);		
+		recorder.add_countdown_update(teams[team_num -1].countdown_time(),team_num);	
 	}
 
 	//send one more time to make sure network is up-to-date.
