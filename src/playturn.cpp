@@ -677,13 +677,25 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 		//that the attacks line up nicely.
 		std::string special_pad = (sts.attack_special.empty() && sts.defend_special.empty()) ? "" : " ";
 
+		int damage_defender_takes;
+		if(attacker->second.has_flag("slowed")) {
+			damage_defender_takes = round_damage(st.damage_defender_takes,1,2);
+		} else {
+			damage_defender_takes = st.damage_defender_takes;
+		}
+		int damage_attacker_takes;
+		if(defender->second.has_flag("slowed")) {
+			damage_attacker_takes = round_damage(st.damage_attacker_takes,1,2);
+		} else {
+			damage_attacker_takes = st.damage_attacker_takes;
+		}
 		std::stringstream att;
 		att << IMAGE_PREFIX << sts.attack_icon << COLUMN_SEPARATOR
-		    << font::BOLD_TEXT << sts.attack_name << "\n" << st.damage_defender_takes << "-"
+		    << font::BOLD_TEXT << sts.attack_name << "\n" << damage_defender_takes << "-"
 		    << st.nattacks << " " << sts.range << " (" << st.chance_to_hit_defender << "%)\n"
 		    << sts.attack_special << special_pad
 		    << COLUMN_SEPARATOR << _("vs") << COLUMN_SEPARATOR
-		    << font::BOLD_TEXT << sts.defend_name << "\n" << st.damage_attacker_takes << "-"
+		    << font::BOLD_TEXT << sts.defend_name << "\n" << damage_attacker_takes << "-"
 		    << st.ndefends << " " << sts.range << " (" << st.chance_to_hit_attacker << "%)\n"
 		    << sts.defend_special << special_pad << COLUMN_SEPARATOR
 		    << IMAGE_PREFIX << sts.defend_icon;
