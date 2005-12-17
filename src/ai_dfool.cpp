@@ -1,3 +1,4 @@
+#include "global.hpp"
 #include "ai_dfool.hpp"
 
 namespace dfool {

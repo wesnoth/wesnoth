@@ -346,7 +346,8 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 				update_locker lock_display(gui.video(),recorder.is_skipping());
 				events::raise_draw_event();
 				gui.draw();
-				for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
+				std::vector<team>::iterator t;
+				for(t = teams.begin(); t != teams.end(); ++t) {
 					clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
 				}
 				
@@ -357,7 +358,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 				}
 
 				// Initialize countdown clock. 
-				for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
+				for(t = teams.begin(); t != teams.end(); ++t) {
 					std::string countd_enabled = lvl["mp_countdown"].c_str();
 					if ( countd_enabled == "yes" && !loading_game ){
 					 	t->set_countdown_time(1000 * lexical_cast_default<int>(lvl["mp_countdown_init_time"],0));
