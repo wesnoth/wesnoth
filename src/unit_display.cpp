@@ -171,6 +171,13 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 				//keep track of the old position, and if the map moves at all,
 				//then recenter it on the unit
 				adjust_map_position(disp, xloc, yloc, image->w, image->h);
+				if(xsrc != disp.get_location_x(a) || ysrc != disp.get_location_y(a)) {
+					disp.scroll_to_tile(b.x,b.y,display::WARP);
+					xsrc = disp.get_location_x(a);
+					ysrc = disp.get_location_y(a);
+					xloc = xsrc + int(double(xdst-xsrc)*(double(anim_time)/total_anim_time));
+					yloc = ysrc + int(double(ydst-ysrc)*(double(anim_time)/total_anim_time));
+				}
 
 
 				//invalidate the source tile and all adjacent tiles,
