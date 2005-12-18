@@ -3,22 +3,22 @@
 # Hebrew translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the wesnoth package.
+#
+#
 # Oron Peled <oron@actcom.co.il>, 2005.
 # Ely Levy <nakeee@gmail.com>, 2005.
-#
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-13 21:00+0100\n"
-"PO-Revision-Date: 2005-11-09 00:28+0200\n"
+"PO-Revision-Date: 2005-12-19 00:12+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: KBabel 1.11\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/editor/editor_dialogs.cpp:48
@@ -247,39 +247,36 @@ msgid "Best Possible Enemy Moves"
 msgstr "מהלכי האויב המיטביים"
 
 #: src/hotkeys.cpp:81
-#, fuzzy
 msgid "Play"
-msgstr "שחקנים:"
+msgstr "הרץ"
 
 #: src/hotkeys.cpp:82
 msgid "Reset"
-msgstr ""
+msgstr "התחל מחדש"
 
 #: src/hotkeys.cpp:83
 msgid "Stop"
-msgstr ""
+msgstr "עצור"
 
 #: src/hotkeys.cpp:84
-#, fuzzy
 msgid "Next Turn"
-msgstr "היחידה הבאה"
+msgstr "התור הבא"
 
 #: src/hotkeys.cpp:85
-#, fuzzy
 msgid "Next Side"
-msgstr "היחידה הבאה"
+msgstr "הצד הבא"
 
 #: src/hotkeys.cpp:86
 msgid "Shroud"
-msgstr ""
+msgstr "הסתרה"
 
 #: src/hotkeys.cpp:87
 msgid "Fog"
-msgstr ""
+msgstr "ערפל"
 
 #: src/hotkeys.cpp:88
 msgid "Skip animation"
-msgstr ""
+msgstr "דלג על האנימציה"
 
 #: src/hotkeys.cpp:90
 msgid "Set Terrain"
@@ -367,7 +364,7 @@ msgstr "חיפוש תגית או יחידה"
 
 #: src/hotkeys.cpp:113
 msgid "Speak to Ally"
-msgstr "דבר לידיד"
+msgstr "דבר לבן ברית"
 
 #: src/hotkeys.cpp:114
 msgid "Speak to All"
@@ -465,7 +462,7 @@ msgstr "דלג על הצגת מהלכי המחשב"
 
 #: src/preferences_display.cpp:219
 msgid "Show lobby joins"
-msgstr ""
+msgstr "הראה הצטרפות ללובי"
 
 #: src/preferences_display.cpp:220
 msgid "Show Floating Labels"
@@ -493,7 +490,7 @@ msgstr "הצג אפקט הילה"
 
 #: src/preferences_display.cpp:227
 msgid "Theme"
-msgstr ""
+msgstr "ערכת נושא"
 
 #: src/preferences_display.cpp:229
 msgid "Adjust Gamma"
@@ -505,7 +502,7 @@ msgstr "הפוך כיוון תנועת השמש"
 
 #: src/preferences_display.cpp:231
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "חתימת זמן בשיחה"
 
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
@@ -549,11 +546,11 @@ msgstr "עדכון מהירות גלילת המפה"
 
 #: src/preferences_display.cpp:271 src/preferences_display.cpp:273
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "קבע את מספר שורות השיחה שיראו"
 
 #: src/preferences_display.cpp:276
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "הוסף חותמת זמן להודעות שיחה"
 
 #: src/preferences_display.cpp:279 src/preferences_display.cpp:284
 msgid "Change the brightness of the display"
@@ -577,7 +574,7 @@ msgstr "הצגת סריג על גבי המפה"
 
 #: src/preferences_display.cpp:299
 msgid "Show messages about players joining the multiplayer lobby"
-msgstr ""
+msgstr "הראה הודעות על שחקנים שמצטרפים ללובי של משחקים מרובי שחקנים"
 
 #: src/preferences_display.cpp:302
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -588,9 +585,8 @@ msgid "Change the resolution the game runs at"
 msgstr "שינוי רזולוצית המשחק"
 
 #: src/preferences_display.cpp:305
-#, fuzzy
 msgid "Change the theme the game runs with"
-msgstr "שינוי רזולוצית המשחק"
+msgstr "שנה ערכת הנושא איתה רץ המשחק"
 
 #: src/preferences_display.cpp:308
 msgid "Display a dialog at the beginning of your turn"
@@ -624,7 +620,7 @@ msgstr "תצוגת ועדכון מקשי קיצור"
 
 #: src/preferences_display.cpp:475
 msgid "Chat Lines: "
-msgstr ""
+msgstr "שורות שיחה: "
 
 #: src/preferences_display.cpp:527
 msgid "yes"
@@ -647,9 +643,8 @@ msgid "Prefs section^Sound"
 msgstr "צליל"
 
 #: src/preferences_display.cpp:598
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "תצוגה"
+msgstr "משחק רב-משתתפים"
 
 #: src/preferences_display.cpp:599
 msgid "Advanced section^Advanced"
@@ -668,7 +663,6 @@ msgid "Hotkey Settings"
 msgstr "מקשי קיצור"
 
 #: src/preferences_display.cpp:716 src/preferences_display.cpp:769
-#, fuzzy
 msgid "Press desired Hotkey"
 msgstr "הקש על מקש הקיצור הרצוי"
 
@@ -689,21 +683,20 @@ msgid "Save Hotkeys"
 msgstr "שמירת מקשי קיצור"
 
 #: src/preferences_display.cpp:795
-#, fuzzy
 msgid "This Hotkey is already in use."
-msgstr "מקש קיצור זה נמצא כבר בשימוש."
+msgstr "מקש קיצור זה כבר נמצא בשימוש."
 
 #: src/preferences_display.cpp:828
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "העדפות השמורות של ערכת הנושא : "
 
 #: src/preferences_display.cpp:834
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "השינוי לערכת הנושא החדשה יתרחש במשחק חדש הבא או אחרי טעינת המשחק הבאה."
 
 #: src/preferences_display.cpp:838
 msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
+msgstr "אין ערכות נושא ידועות. נסה לשנות מתוך משחק קיים."
 
 #: src/show_dialog.cpp:314
 msgid "Error"
