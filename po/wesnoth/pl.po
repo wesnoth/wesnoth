@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-17 14:36+0100\n"
-"PO-Revision-Date: 2005-12-15 16:49+0100\n"
+"PO-Revision-Date: 2005-12-18 16:59+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1222,7 +1222,7 @@ msgstr ""
 
 #: data/help.cfg:301
 msgid "trait^Undead"
-msgstr "trait^Nieumarła"
+msgstr "Nieumarła"
 
 #: data/help.cfg:302
 msgid "Undead units are immune to poison."
@@ -2843,14 +2843,12 @@ msgstr ""
 "pomogą ci odnieść zwycięstwo."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attack."
 msgstr ""
 "Zdolność \"spowalniania\" zaatakowanych jednostek sprawia, że ruszają się "
-"wolniej oraz usuwa ich strefę kontroli, pozwalając twoim  rannym jednostkom "
-"wycofać się albo pomagając w dogonieniu uciekających wrogów."
+"wolniej oraz zadają podczas ataku tylko połowę obrażeń."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -3311,7 +3309,7 @@ msgstr ""
 
 #: data/translations/english.cfg:132
 msgid "race^Undead"
-msgstr "rasa^Nieumarli"
+msgstr "Nieumarli"
 
 #: data/translations/english.cfg:135
 msgid "$name's Bridge,$name's Crossing"
@@ -9986,7 +9984,7 @@ msgstr "Stwórz grę"
 
 #: src/multiplayer_create.cpp:46
 msgid "Time limit"
-msgstr ""
+msgstr "Limit czasu"
 
 #: src/multiplayer_create.cpp:55
 msgid "Name of game:"
@@ -10031,18 +10029,15 @@ msgstr "Maksymalna liczba tur, przez które gra będzie trwała"
 
 #: src/multiplayer_create.cpp:103
 msgid "Enables user time limit"
-msgstr ""
+msgstr "Ustawia limitowanie czasu gracza"
 
 #: src/multiplayer_create.cpp:109
-#, fuzzy
 msgid "Initial time available for user at the begining of the match"
-msgstr ""
-"Jednostki stacjonujące w wioskach odzyskują 8 punktów życia na początku "
-"swojej tury."
+msgstr "Początkowy czas dostępny graczowi rozpoczynającemu grę."
 
 #: src/multiplayer_create.cpp:115
 msgid "Time added to user's clock at the end of each turn"
-msgstr ""
+msgstr "Czas dodawany do zegara gracza po każdej turze."
 
 #: src/multiplayer_create.cpp:120
 msgid "The amount of income each village yields per turn"
@@ -10110,14 +10105,12 @@ msgid "Unlimited Turns"
 msgstr "Brak ograniczenia tur"
 
 #: src/multiplayer_create.cpp:266
-#, fuzzy
 msgid "Initial Time: "
-msgstr "Nowicjusz"
+msgstr "Czas początkowy: "
 
 #: src/multiplayer_create.cpp:271
-#, fuzzy
 msgid "Turn time: "
-msgstr "Tury: "
+msgstr "Czas tury: "
 
 #: src/multiplayer_create.cpp:277
 msgid "Village Gold: "
@@ -10626,12 +10619,12 @@ msgid "invisible: "
 msgstr "niewidzialna: "
 
 #: src/reports.cpp:140
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
 msgstr ""
-"Ta jednostka została obrócona w kamień. Nie może się poruszać ani atakować."
+"Ta jednostka została spowolniona. Podczas ataku będzie zadawała tylko połowę "
+"normalnych obrażeń."
 
 #: src/reports.cpp:140
 msgid "slowed: "
