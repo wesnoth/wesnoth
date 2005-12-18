@@ -171,7 +171,6 @@ void gamebrowser::draw_item(size_t index) const {
 
 		// draw time text
 		const surface time_text(font::get_rendered_text(game.time_limit, font::SIZE_NORMAL, font::NORMAL_COLOUR));
-		printf("bli %s:%s\n",game.time_limit.c_str(),game.xp.c_str());
 		ypos -= abs(time_icon->h - time_text->h) / 2;
 		video().blit_surface(xpos, ypos, time_text);
 
