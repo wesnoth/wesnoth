@@ -141,17 +141,16 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 	const unit_animation* movement_anim = u.type().move_animation(map.underlying_terrain(src_terrain),a.get_relative_dir(b));
 	if(movement_anim) {
-		const int nsteps_anim = u.movement_cost(map,terrain) * ((movement_anim->get_last_frame_time(unit_animation::UNIT_FRAME) - movement_anim->get_first_frame_time(unit_animation::UNIT_FRAME))/10);
-		int anim_step = 0;
-		const double xstep_anim = double(xdst - xsrc) / nsteps_anim;
-		const double ystep_anim = double(ydst - ysrc) / nsteps_anim;
+		const int total_anim_time = (movement_anim->get_last_frame_time(unit_animation::UNIT_FRAME) - movement_anim->get_first_frame_time(unit_animation::UNIT_FRAME)) * u.movement_cost(map,terrain);
+		//const double xstep_anim = double(xdst - xsrc) / nsteps_anim;
+		//const double ystep_anim = double(ydst - ysrc) / nsteps_anim;
 		for(int i = 0 ; i <  u.movement_cost(map,terrain) ; i++ ) {
 			unit_animation movement_animation(*movement_anim);
 			movement_animation.start_animation(movement_animation.get_first_frame_time(unit_animation::UNIT_FRAME),
 					unit_animation::UNIT_FRAME, acceleration);
 			while(!movement_animation.animation_finished()) {
-				anim_step++;
 				const std::string* unit_image = &movement_animation.get_current_frame(unit_animation::UNIT_FRAME).image;
+				const int anim_time = i* (total_anim_time/u.movement_cost(map,terrain))+movement_animation.get_animation_time() - movement_animation.get_first_frame_time(unit_animation::UNIT_FRAME);
 				image::locator unit_loc;
 				if (unit_image->empty()) {
 					unit_loc = u.image_loc();
@@ -165,21 +164,14 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 				}
 				xsrc = disp.get_location_x(a);
 				ysrc = disp.get_location_y(a);
-				int xloc = xsrc + int(xstep_anim * anim_step);
-				int yloc = ysrc + int(ystep_anim * anim_step);
+				int xloc = xsrc + int(double(xdst-xsrc)*(double(anim_time)/total_anim_time));
+				int yloc = ysrc + int(double(ydst-ysrc)*(double(anim_time)/total_anim_time));
 
 				//we try to scroll the map if the unit is at the edge.
 				//keep track of the old position, and if the map moves at all,
 				//then recenter it on the unit
 				adjust_map_position(disp, xloc, yloc, image->w, image->h);
 
-				if(xsrc != disp.get_location_x(a) || ysrc != disp.get_location_y(a)) {
-					disp.scroll_to_tile(b.x,b.y,display::WARP);
-					xsrc = disp.get_location_x(a);
-					ysrc = disp.get_location_y(a);
-					xloc = xsrc + int(xstep_anim * anim_step);
-					yloc = ysrc + int(ystep_anim * anim_step);
-				}
 
 				//invalidate the source tile and all adjacent tiles,
 				//since the unit can partially overlap adjacent tiles
@@ -188,8 +180,8 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 					disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
 
 				if (!teleport_unit) {
-					const int height_adjust = src_height_adjust + (dst_height_adjust - src_height_adjust) * anim_step / nsteps_anim;
-					const double submerge = src_submerge + (dst_submerge - src_submerge) * anim_step / nsteps_anim;
+					const int height_adjust = src_height_adjust + int(double(dst_height_adjust - src_height_adjust) * (double(anim_time) / total_anim_time));
+					const double submerge = src_submerge + int(double(dst_submerge - src_submerge) * (double(anim_time) / total_anim_time));
 					const int xpos = xloc;
 					const int ypos = yloc - height_adjust;
 					disp.draw_unit(xpos, ypos, image, false, ftofxp(1.0), 0, 0.0, submerge);
@@ -200,7 +192,6 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 					}
 				}
 
-				SDL_Delay(10);
 				disp.update_display();
 				events::pump();
 				movement_animation.update_current_frames();
