@@ -37,6 +37,7 @@ public:
 		std::string vision;
 		std::string status;
 		std::string dimensions;
+		std::string time_limit;
 		size_t vacant_slots;
 		bool fog;
 		bool shroud;
@@ -63,6 +64,7 @@ private:
 	image::locator gold_icon_locator_;
 	image::locator xp_icon_locator_;
 	image::locator vision_icon_locator_;
+	image::locator time_limit_icon_locator_;
 	image::locator observer_icon_locator_;
 
 	unsigned int item_height_;

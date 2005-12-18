@@ -39,6 +39,7 @@ namespace mp {
 gamebrowser::gamebrowser(CVideo& video) : scrollarea(video),
 	gold_icon_locator_("misc/gold.png"),
 	xp_icon_locator_("misc/units.png"),
+	time_limit_icon_locator_("misc/sand-clock.png"),
 	vision_icon_locator_("misc/invisible.png"),
 	observer_icon_locator_("misc/eye.png"), header_height_(20),
 	item_height_(100), margin_(5), h_padding_(5),
@@ -159,6 +160,23 @@ void gamebrowser::draw_item(size_t index) const {
 	video().blit_surface(xpos, ypos, xp_text);
 
 	xpos += xp_text->w + 2 * h_padding_;
+
+	if(!game.time_limit.empty()) {
+		// draw time icon
+		const surface time_icon(image::get_image(time_limit_icon_locator_, image::UNSCALED));
+		ypos = item_rect.y + item_rect.h  - margin_ - time_icon->h;
+		video().blit_surface(xpos, ypos, time_icon);
+
+		xpos += time_icon->w + h_padding_;
+
+		// draw time text
+		const surface time_text(font::get_rendered_text(game.time_limit, font::SIZE_NORMAL, font::NORMAL_COLOUR));
+		printf("bli %s:%s\n",game.time_limit.c_str(),game.xp.c_str());
+		ypos -= abs(time_icon->h - time_text->h) / 2;
+		video().blit_surface(xpos, ypos, time_text);
+
+		xpos += time_text->w + 2 * h_padding_;
+	}
 
 	// draw vision icon
 	const surface vision_icon(image::get_image(vision_icon_locator_, image::UNSCALED));
@@ -337,6 +355,12 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				games_.back().shroud = false;
 			}
 		}
+		if((**game)["mp_countdown"] == "yes" ) {
+			games_.back().time_limit = (**game)["mp_countdown_init_time"] + " / +" + (**game)["mp_countdown_turn_bonus"];
+		} else {
+			games_.back().time_limit = "";
+		}
+				
 		games_.back().xp = (**game)["experience_modifier"] + "%";
 		games_.back().observers = (**game)["observer"] != "no" ? true : false;
 	}
