@@ -129,6 +129,8 @@ surface create_optimized_surface(surface const &surf)
 // don't pass this function 0 scaling arguments
 surface scale_surface(surface const &surf, int w, int h)
 {
+ 	assert(SDL_ALPHA_TRANSPARENT==0);
+ 
 	if(surf == NULL)
 		return NULL;
 
@@ -163,7 +165,110 @@ surface scale_surface(surface const &surf, int w, int h)
 				const int xsrcint = fxptoi(xsrc);
 				const int ysrcint = fxptoi(ysrc);
 
-				dst_pixels[ydst*dst->w + xdst] = src_pixels[ysrcint*src->w + xsrcint];
+				Uint32* const src_word = src_pixels + ysrcint*src->w + xsrcint;
+				Uint32* const dst_word = dst_pixels +    ydst*dst->w + xdst;
+				const int dx = (xsrcint + 1 < src->w) ? 1 : 0;
+				const int dy = (ysrcint + 1 < src->h) ? src->w : 0;
+
+				Uint8 r,g,b,a;
+				Uint32 rr,gg,bb,aa;
+				Uint16 avg_r, avg_g, avg_b, avg_a;
+				Uint32 pix[4], bilin[4];
+
+				// This next part is the fixed point
+				// equivalent of "take everything to
+				// the right of the decimal point."
+				// These fundamental weights decide
+				// the contributions from various
+				// input pixels. The labels assume
+				// that the upper left corner of the
+				// screen ("northeast") is 0,0 but the
+				// code should still be consistant if
+				// the graphics origin is actually
+				// somewhere else.
+
+				const fixed_t e = 0x000000FF & xsrc;
+				const fixed_t s = 0x000000FF & ysrc;
+				const fixed_t n = 0xFF - s;
+				const fixed_t w = 0xFF - e;
+
+				pix[0] = *src_word;              // northwest
+			        pix[1] = *(src_word + dx);       // northeast
+				pix[2] = *(src_word + dy);       // southwest
+				pix[3] = *(src_word + dx + dy);  // southeast
+				
+				bilin[0] = n*w;
+				bilin[1] = n*e;
+				bilin[2] = s*w;
+				bilin[3] = s*e;
+
+				// Scope out the neighboorhood, see
+				// what the pixel values are like.
+
+				int count = 0;
+				avg_r = avg_g = avg_b = avg_a = 0;
+				for (int loc=0; loc<4; loc++) {
+				  SDL_GetRGBA(pix[loc],src->format,&r,&g,&b,&a);
+				  if (a != 0) {
+				    avg_r += r;
+				    avg_g += g;
+				    avg_b += b;
+				    avg_a += a;
+				    count++;
+				  }
+				}
+				if (count>0) {
+				  avg_r /= count;
+				  avg_b /= count;
+				  avg_g /= count;
+				  avg_a /= count;
+				}
+
+				// Perform modified bilinear
+				// interpolation. Don't trust any
+				// color information from an RGBA
+				// sample when the alpha channel is
+				// set to fully transparent.
+				//
+				// Some of the input images are hex
+				// tiles, created using a hexagon
+				// shaped alpha channel that is either
+				// set to full-on or full-off. If
+				// intermediate alpha values are
+				// introduced along a hex edge, it
+				// produces a gametime artifact.
+				// Moving the mouse around will leave
+				// behind "hexagon halos" from the
+				// temporary highlighting. In other
+				// words the Wesnoth rendering engine
+				// freaks out.
+				//
+				// The alpha thresholding step
+				// attempts to accomodates this
+				// limitation. There is a small loss
+				// of quality. For example, skeleton
+				// bowstrings are not as good as they
+				// could be.
+
+				rr = gg = bb = aa = 0;
+				for (int loc=0; loc<4; loc++) {
+				  SDL_GetRGBA(pix[loc],src->format,&r,&g,&b,&a);
+				  if (a == 0) {
+				    r = avg_r;
+				    g = avg_g;
+				    b = avg_b;
+				  }
+				  rr += r * bilin[loc];
+				  gg += g * bilin[loc];
+				  bb += b * bilin[loc];
+				  aa += a * bilin[loc];
+				}
+				r = rr >> 16;
+				g = gg >> 16;
+				b = bb >> 16;
+				a = aa >> 16;
+				a = (a < avg_a/2) ? 0 : avg_a;
+				*dst_word = SDL_MapRGBA(dst->format,r,g,b,a);
 			}
 		}
 	}

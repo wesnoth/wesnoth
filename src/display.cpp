@@ -1428,15 +1428,32 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 
 void display::draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
 {
+
 	filled = minimum<double>(maximum<double>(filled,0.0),1.0);
 
 	surface surf(image::get_image(image,image::SCALED,image::NO_ADJUST_COLOUR));
-	surface unmoved_surf(image::get_image("misc/bar-energy-unmoved.png",image::SCALED,image::NO_ADJUST_COLOUR));
+	surface unmoved_surf(image::get_image("misc/bar-energy-unmoved.png",image::UNSCALED,image::NO_ADJUST_COLOUR));
 	if(surf == NULL || unmoved_surf == NULL) {
 		return;
 	}
 
-	const SDL_Rect& bar_loc = calculate_energy_bar(unmoved_surf);
+	// calculate_energy_bar returns incorrect results if the surface colors
+	// have changed (for example, due to bilinear interpolaion)
+	const SDL_Rect& unscaled_bar_loc = calculate_energy_bar(unmoved_surf);
+
+	SDL_Rect bar_loc;
+	if (surf->w == unmoved_surf->w && surf->h == unmoved_surf->h)
+	  bar_loc = unscaled_bar_loc;
+	else {
+	  const fixed_t xratio = fxpdiv(surf->w,unmoved_surf->w);
+	  const fixed_t yratio = fxpdiv(surf->h,unmoved_surf->h);
+	  const SDL_Rect scaled_bar_loc = {fxptoi(unscaled_bar_loc. x * xratio),
+					   fxptoi(unscaled_bar_loc. y * yratio + 127),
+					   fxptoi(unscaled_bar_loc. w * yratio + 255),
+					   fxptoi(unscaled_bar_loc. h * yratio + 255)};
+	  bar_loc = scaled_bar_loc;
+	}
+
 	if(height > bar_loc.h) {
 		height = bar_loc.h;
 	}
