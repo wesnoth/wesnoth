@@ -41,6 +41,7 @@ std::vector<std::string> get_text() {
 		"_" N_("+Developers"),
 		"-   Alfredo Beaumont (ziberpunk)",
 		"-   András Salamon (ott)",
+		"-   Benoît Timbert (Noyga)",
 		"-   Bram Ridder (Morloth)",
 		"-   Bruno Wolff III",
 		"-   Cedric Duval",
