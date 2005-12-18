@@ -52,6 +52,7 @@ namespace game_config
 	extern int title_logo_x, title_logo_y, title_buttons_x, title_buttons_y, title_buttons_padding, title_tip_x, title_tip_y, title_tip_width, title_tip_padding;
 
         extern std::map<int, color_range> team_rgb_range;
+        extern std::map<int, std::string > team_rgb_name;
 	namespace sounds {
 		extern const std::string turn_bell, receive_message, user_arrive, user_leave;
 	}

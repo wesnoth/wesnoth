@@ -919,6 +919,17 @@ const Uint32 team::get_side_rgb(int side){
       return(p->second.mid());
     }
   }
+
+  p=game_config::team_rgb_range.find(side);
+  if(p != game_config::team_rgb_range.end()){
+    return(p->second.mid());
+  }else{
+    p=game_config::team_rgb_range.find(side);
+    if(p != game_config::team_rgb_range.end()){
+      return(p->second.mid());
+    }
+  }
+
   return 0x00FF0000;
 }
 
@@ -933,6 +944,17 @@ const Uint32 team::get_side_rgb_max(int side){
       return(p->second.max());
     }
   }
+
+  p=game_config::team_rgb_range.find(side);
+  if(p != game_config::team_rgb_range.end()){
+    return(p->second.max());
+  }else{
+    p=game_config::team_rgb_range.find(side);
+    if(p != game_config::team_rgb_range.end()){
+      return(p->second.max());
+    }
+  }
+
   return 0x00FFFFFF;
 }
 
@@ -947,6 +969,17 @@ const Uint32 team::get_side_rgb_min(int side){
       return(p->second.min());
     }
   }
+
+  p=game_config::team_rgb_range.find(side);
+  if(p != game_config::team_rgb_range.end()){
+    return(p->second.min());
+  }else{
+    p=game_config::team_rgb_range.find(side);
+    if(p != game_config::team_rgb_range.end()){
+      return(p->second.min());
+    }
+  }
+
   return 0x00000000;
 }
 

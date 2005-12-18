@@ -70,6 +70,7 @@ namespace game_config
 	std::string ellipsis_image;
 
         std::map<int, color_range > team_rgb_range;
+        std::map<int, std::string > team_rgb_name;
 
 	namespace sounds {
 		const std::string turn_bell = "bell.wav",
@@ -155,6 +156,7 @@ namespace game_config
 		    int side = atoi((**teamC)["side"].c_str());
 		    std::vector<Uint32> temp = string2rgb((**teamC)["team_rgb"]);
 		    team_rgb_range[side] = color_range(temp);
+		    team_rgb_name[side] = (**teamC)["name"];
 		  }
 		}
 	}

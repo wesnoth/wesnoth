@@ -72,28 +72,11 @@ std::string get_colour_string(int id)
 {
 	std::string prefix("\033[3 m");
 	prefix[3] = lexical_cast<char, int>(id + 1);
-
-	switch(id) {
-	case 0:
-		return prefix + _("Red");
-	case 1:
-		return prefix + _("Blue");
-	case 2:
-		return prefix + _("Green");
-	case 3:
-		return prefix + _("Yellow");
-	case 4:
-		return prefix + _("Purple");
-	case 5:
-		return prefix + _("Orange");
-	case 6:
-		return prefix + _("Grey");
-	case 7:
-		return prefix + _("White");
-	case 8:
-		return prefix + _("Brown");
-	default:
-		return _("Invalid colour");
+	std::map<int, std::string>::iterator name = game_config::team_rgb_name.find(id+1);
+	if(name != game_config::team_rgb_name.end()){
+	  return prefix + _(name->second.c_str());
+	}else{
+	  return prefix + _("Invalid Color");
 	}
 }
 
