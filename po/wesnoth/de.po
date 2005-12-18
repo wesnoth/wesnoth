@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-17 14:36+0100\n"
-"PO-Revision-Date: 2005-12-16 12:12+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2005-12-18 14:56+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic  AT   gmx D OT  net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2948,15 +2948,12 @@ msgstr ""
 "Kampf zu Euren Gunsten wenden, ohne selbst anzugreifen."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attack."
 msgstr ""
-"Der »Verlangsamungs«-Angriff verringert die Anzahl gegnerischer BP und senkt "
-"außerdem die Anzahl der gegnerischen Angriffe um 1. Zudem besitzt die "
-"verlangsamte Einheit keine Kontrollzone mehr, so dass Ihr Eure verwundeten "
-"Einheiten zurückziehen oder fliehenden Einheiten nachsetzen könnt."
+"Der »Verlangsamungs«-Angriff verringert die Anzahl gegnerischer BP und "
+"halbiert außerdem dem angerichteten Schaden bei jeder gegnerischen Attacke."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -10619,7 +10616,7 @@ msgstr "Partie eröffnen"
 
 #: src/multiplayer_create.cpp:46
 msgid "Time limit"
-msgstr ""
+msgstr "Zeitbegrenzung"
 
 #: src/multiplayer_create.cpp:55
 msgid "Name of game:"
@@ -10665,18 +10662,15 @@ msgstr "Legt die maximale Rundenzahl einer Partie fest"
 
 #: src/multiplayer_create.cpp:103
 msgid "Enables user time limit"
-msgstr ""
+msgstr "Aktiviert eine Zeitbegrenzung"
 
 #: src/multiplayer_create.cpp:109
-#, fuzzy
 msgid "Initial time available for user at the begining of the match"
-msgstr ""
-"Einheiten, die in einem Dorf stationiert sind, heilen zu Beginn der nächsten "
-"Runde um 8 Lebenspunkte. "
+msgstr "Startzeit, die dem Spieler bei Beginn der Partie zur Verfügung steht"
 
 #: src/multiplayer_create.cpp:115
 msgid "Time added to user's clock at the end of each turn"
-msgstr ""
+msgstr "Bonuszeit die am Ende der Runde dem Nutzer hinzugerechnet wird"
 
 #: src/multiplayer_create.cpp:120
 msgid "The amount of income each village yields per turn"
@@ -10747,14 +10741,12 @@ msgid "Unlimited Turns"
 msgstr "Unbegrenzt"
 
 #: src/multiplayer_create.cpp:266
-#, fuzzy
 msgid "Initial Time: "
-msgstr "Eingeweihter"
+msgstr "Startzeit"
 
 #: src/multiplayer_create.cpp:271
-#, fuzzy
 msgid "Turn time: "
-msgstr "Runden:"
+msgstr "Rundenzeit"
 
 #: src/multiplayer_create.cpp:277
 msgid "Village Gold: "
@@ -11275,13 +11267,12 @@ msgid "invisible: "
 msgstr "unsichtbar:"
 
 #: src/reports.cpp:140
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
 msgstr ""
-"Diese Einheit wurde zu Stein verwandelt. Sie kann sich weder bewegen noch "
-"angreifen."
+"Diese Einheit wurde verlangsamt. Sie wird nur noch die Hälfte ihres normalen "
+"Schadens anrichten."
 
 #: src/reports.cpp:140
 msgid "slowed: "
