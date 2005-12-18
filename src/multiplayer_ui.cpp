@@ -144,7 +144,11 @@ void chat::update_textbox(gui::textbox& textbox)
 
 std::string chat::format_message(const msg& message)
 {
-	return "<" + message.user + ">" + message.message + "\n";
+	if(message.message.substr(0,3) == "/me") {
+		return "<" + message.user + " " + message.message.substr(3) + ">\n";
+	} else {
+		return "<" + message.user + ">" + message.message + "\n";
+	}
 }
 
 ui::ui(display& disp, const std::string& title, const config& cfg, chat& c, config& gamelist) :
