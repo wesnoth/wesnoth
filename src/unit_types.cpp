@@ -122,6 +122,24 @@ const unit_animation::frame& unit_animation::get_current_frame(FRAME_TYPE type) 
 	}
 }
 
+const unit_animation::frame& unit_animation::get_first_frame(FRAME_TYPE type) const
+{
+	if(type == UNIT_FRAME) {
+		return unit_frames_.get_first_frame();
+	} else {
+		return missile_frames_.get_first_frame();
+	}
+}
+
+const unit_animation::frame& unit_animation::get_last_frame(FRAME_TYPE type) const
+{
+	if(type == UNIT_FRAME) {
+		return unit_frames_.get_last_frame();
+	} else {
+		return missile_frames_.get_last_frame();
+	}
+}
+
 int unit_animation::get_animation_time() const
 {
 	return unit_frames_.get_animation_time();

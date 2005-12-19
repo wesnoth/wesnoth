@@ -67,6 +67,8 @@ public:
 	int get_animation_time() const;
 	int get_frame_time() const;
 	const T& get_current_frame() const;
+	const T& get_first_frame() const;
+	const T& get_last_frame() const;
 
 private:
 	struct frame

@@ -51,6 +51,8 @@ public:
 	void update_current_frames();
 	bool animation_finished() const;
 	const frame& get_current_frame(FRAME_TYPE type=UNIT_FRAME) const;
+	const frame& get_first_frame(FRAME_TYPE type=UNIT_FRAME) const;
+	const frame& get_last_frame(FRAME_TYPE type=UNIT_FRAME) const;
 	int get_animation_time() const;
 	int get_first_frame_time(FRAME_TYPE type=UNIT_FRAME) const;
 	int get_last_frame_time(FRAME_TYPE type=UNIT_FRAME) const;

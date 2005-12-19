@@ -237,6 +237,28 @@ const T& animated<T,T_void_value>::get_current_frame() const
 }
 
 template<typename T,  typename T_void_value>
+const T& animated<T,T_void_value>::get_first_frame() const
+{
+	typename std::vector<frame>::const_iterator frame_;
+	for(frame_ = frames_.begin() ; frame_ != frames_.end(); frame_++ ) {
+		if(frame_->has_value)
+			return frame_->value;
+	}
+	return void_value_;
+}
+
+template<typename T,  typename T_void_value>
+const T& animated<T,T_void_value>::get_last_frame() const
+{
+	typename std::vector<frame>::const_reverse_iterator frame_;
+	for(frame_ = frames_.rbegin() ; frame_ != frames_.rend(); frame_++ ) {
+		if(frame_->has_value)
+			return frame_->value;
+	}
+	return void_value_;
+}
+
+template<typename T,  typename T_void_value>
 int animated<T,T_void_value>::get_first_frame_time() const
 {
 	if (starting_frame_time_ != INT_MAX && starting_frame_time_ != INT_MIN)

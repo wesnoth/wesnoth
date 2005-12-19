@@ -142,7 +142,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	const unit_animation* movement_anim = u.type().move_animation(map.underlying_terrain(src_terrain),a.get_relative_dir(b));
 	if(movement_anim) {
 		const int total_anim_time = (movement_anim->get_last_frame_time(unit_animation::UNIT_FRAME) - movement_anim->get_first_frame_time(unit_animation::UNIT_FRAME)) * u.movement_cost(map,terrain);
-		image::locator unit_loc = u.image_loc(); // will always contain the last used frame
+		image::locator unit_loc = image::locator(movement_anim->get_first_frame().image,u.team_rgb_range(),u.type().flag_rgb());
 		for(int i = 0 ; i <  u.movement_cost(map,terrain) ; i++ ) {
 			unit_animation movement_animation(*movement_anim);
 			movement_animation.start_animation(movement_animation.get_first_frame_time(unit_animation::UNIT_FRAME),
