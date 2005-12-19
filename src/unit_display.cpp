@@ -142,8 +142,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	const unit_animation* movement_anim = u.type().move_animation(map.underlying_terrain(src_terrain),a.get_relative_dir(b));
 	if(movement_anim) {
 		const int total_anim_time = (movement_anim->get_last_frame_time(unit_animation::UNIT_FRAME) - movement_anim->get_first_frame_time(unit_animation::UNIT_FRAME)) * u.movement_cost(map,terrain);
-		//const double xstep_anim = double(xdst - xsrc) / nsteps_anim;
-		//const double ystep_anim = double(ydst - ysrc) / nsteps_anim;
+		image::locator unit_loc = u.image_loc(); // will always contain the last used frame
 		for(int i = 0 ; i <  u.movement_cost(map,terrain) ; i++ ) {
 			unit_animation movement_animation(*movement_anim);
 			movement_animation.start_animation(movement_animation.get_first_frame_time(unit_animation::UNIT_FRAME),
@@ -151,11 +150,10 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			while(!movement_animation.animation_finished()) {
 				const std::string* unit_image = &movement_animation.get_current_frame(unit_animation::UNIT_FRAME).image;
 				const int anim_time = i* (total_anim_time/u.movement_cost(map,terrain))+movement_animation.get_animation_time() - movement_animation.get_first_frame_time(unit_animation::UNIT_FRAME);
-				image::locator unit_loc;
-				if (unit_image->empty()) {
-					unit_loc = u.image_loc();
-				} else {
+				if (!unit_image->empty()) {
 					unit_loc = image::locator(*unit_image,u.team_rgb_range(),u.type().flag_rgb());
+				} else {
+					// re use last image
 				}
 
 				surface image(image::get_image(unit_loc));
