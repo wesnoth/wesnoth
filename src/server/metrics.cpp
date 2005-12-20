@@ -19,7 +19,7 @@
 #include <iostream>
 
 metrics::metrics() : most_consecutive_requests_(0),
-                     current_requests_(0), nrequests_(0), num_players_(0),
+                     current_requests_(0), nrequests_(0),
                      nrequests_waited_(0), started_at_(time(NULL))
 {}
 
@@ -68,7 +68,7 @@ std::ostream& operator<<(std::ostream& out, metrics& met)
 			out << i->first << ": " << i->second << "\n";
 		}
 	}
-	out << "number of current players: " << met.num_players() << "\n";
+
 	out << "----\n";
 	return out;
 }

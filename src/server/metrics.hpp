@@ -26,14 +26,12 @@ public:
 
 	void service_request();
 	void no_requests();
-  void set_player_number(int n){num_players_ = n;}
-  int num_players(){return(num_players_);}
+
 	void game_terminated(const std::string& reason);
 
 	friend std::ostream& operator<<(std::ostream& out, metrics& met);
 
 private:
-        int num_players_;
 	int most_consecutive_requests_;
 	int current_requests_;
 	int nrequests_;

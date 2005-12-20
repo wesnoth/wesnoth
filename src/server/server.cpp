@@ -88,7 +88,6 @@ class server
 public:
 	server(int port, input_stream& input, const config& cfg, size_t nthreads);
 	void run();
-  int number_of_players(){return(players_.size());}
 private:
 	void process_data(network::connection sock, config& data, config& gamelist);
 
@@ -272,7 +271,6 @@ std::string server::process_command(const std::string& cmd)
 
 		out << "---";
 	} else if(command == "metrics") {
-	  metrics_.set_player_number(number_of_players());
 		out << metrics_;
 	} else if(command == "ban" || command == "kban") {
 
