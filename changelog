@@ -1,39 +1,47 @@
-SVN trunk (1.1.x):
+SVN trunk (1.1-svn):
+ * campaign server
+   * support new "timestamp" attribute
+   * save persistent attributes in the campaign data
+     * "name" is treated as directory name, so use campaign_name (#4525)
+     * SECURITY: ensure file and directory names on upload match campaign name
+   * support filtering on campaign_list requests: name, last update time
+     (before or after), language of translation
+   * campaign_list response now contains the time the request was processed
+   * campaign_list response now contains information about translations
+   * fixed problem with duplicate translations being saved with each upload
+   * added a passphrase change function
+   * deleting campaigns, campaign file is now deleted, not reduced to zero size
  * campaigns:
    * Eastern Invasion
      * fix Undead fighting each other in Weldyn Besieged (#4386)
      * fix Undead not recruiting after leader change in The Crossing (#4393)
-     * Northern Outpost leader without starting position replaced with no_leader
-     * Ogre Training leader without starting position replaced with no_leader
-     * Captured leader without starting position replaced with no_leader
-     * side 3 and 4 leaders in The Duel now regular units: should not be on map
    * Heir to the Throne
      * fixed Delfador talking to himself in Valley of Statues (#4440)
      * fixed Home of the North Elves inaccurate victory condition (#4644)
-     * Ford of Abez off map serpent leader replaced with no_leader attribute
      * Isle of Anduin: reduced difficulty, added mage tips, move_unit_fake fix
      * Blackwater Port: added tips about loyal units, move_unit_fake fix
      * Bay of Pearls: traits for mermen, you get a hunter and initiate, added
        ford to help units cross, hunter and initiate available after winning
      * Isle of the Damned: replaced some forest with road, can recall mermen,
        Moremirmu explains if he will join you or not, hard difficulty has fog
-     * Muff Malal's Peninsula: less gold/more income for Muff for XP milking on
-       easy, blood bats on hard, choice of fight vs run is better explained
+     * Muff Malal's Peninsula: less gold/more income for Muff for XP milking
+       on easy, blood bats on hard, choice of fight vs run is better explained
      * Crossroads: added story dialog
      * Princess of Wesnoth: clarified victory conditions
      * Dwarven Doors: true exit now random, bandit easter egg now reveals exit
-     * Plunging into the Darkness: set no_leader=yes for enemy side
      * changed Snow Plains map to use snow terrain
-     * Lost General: side 2 ally allows you to recruit guardsmen (for dwarf balancing)
-     * Choice Must be Made: used swamp village instead of cave villages, story, music
+     * Lost General: side 2 ally allows you to recruit guardsmen (for dwarf
+       balancing)
+     * Choice Must be Made: used swamp village instead of cave villages, story,
+       music
      * Snow plains: music key added
      * Swamp of Dread: used swamp village instead of cave village, music
-     * Home of the North Elves: rebalanced to make you RUN! rather than fight; dialog
+     * Home of the North Elves: rebalanced to make you RUN! rather than fight;
+       dialog
      * Elven Council: added dialog
      * Test of the Clans: simplified victory conditions, dialog
    * The Rise of Wesnoth
      * Adjusted loss event in Clearwater port to coincide with time over
-     * Updated portraits for Haldric and Aethyr
    * Son of the Black Eye
      * cleaned up prestart events to stop units hopping around at map setup
      * Desert of Death leader without starting position replaced with no_leader
@@ -44,12 +52,128 @@ SVN trunk (1.1.x):
      * fix shamans losing experience (#4792)
    * The Dark Hordes
      * Underground Pool no longer has units off map and in walls
+ * gameplay changes:
+   * backstab now works if opposite unit is non-incapacitated enemy of defender
+   * prevented stoned units from being healed
+   * slow does not remove an attack anymore
+   * slowed units see the damage they deal halved immediately
+   * unit modifications now round toward original value instead of truncating
+   * changed resilient trait bonus from +7hp to +10%+3hp
+   * decreased strong trait hitpoints bonus from 2 to 1
+   * added a fisher's clock to MP games to limit turn duration
+ * graphics:
+   * team color:
+     * units can now have colors redefined to match team colors:
+     * team color can be defined in the side tag with "team_rgb=r,g,b"
+     * team color enabled for: Knight, Grand Knight
+   * new title screen and logo
+   * changed the storm trident attack icon from fireball to lightingbolt
+   * new attack icon for the fireball
+   * portraits:
+     * new Li'sar, Drake Burner, Drake Fighter, Drake Glider, Elvish Shaman,
+       Ghoul, Mermaid Initiate, Merman Fighter, Merman Hunter, Naga Fighter,
+       Orcish Assassin, Saurian Skirmisher
+     * all Drake, Merman, Naga and Saurian upgrades now use level one portraits
+     * Necrophage and Orcish Slayer upgrades now use level one portraits
+     * Updated portraits for Haldric and Aethyr in TRoW
+   * new unit images: Konrad level 1, Tentacle of the Deep
+   * new death animations: Initiate, Mage, Pikeman, Red Mage, White Mage,
+     Tentacle of the Deep
+   * new tiles: swamp, cave wall, paved road, variable-width canyon (#8817)
+     snow village (human & elven), underground village, mountains, hills, snow
+     hills
+   * bilinear interpolation of images (better interpolation at high zoom
+     level)
+   * new movement animation: elvish fighter
+ * language and i18n:
+   * added support for right-to-left languages (patch #470)
+   * made the list of languages configurable via the locale WML
+   * new manual: Chinese; updated manual: English, German, Swedish
+   * updated man pages: Swedish
+   * new translations: Hebrew, Esperanto, Portugese
+   * updated translations: Afrikaans, British English, Chinese, Czech, French,
+     German, Hungarian, Italian, Japanese, Polish, Portuguese (Brazil), Russian,
+     Slovak, Slovenian, Spanish, Swedish, Turkish
+   * fixed Undead used as both trait and race name (#4295)
+   * fixed loading non-binary savegame displaying messages in English (#4454)
+   * help changes
+     * added brief description of Shroud and Fog of War
+   * documentation: switch doxygen templates from CVS to SVN, Savannah to Gna!
+ * multiplayer server
+   * server: add administration functions
+   * multiplayer game with "empty" as side no longer causes OOS (#4464)
+   * revised multiplayer maps: Divide and Conquer, Sablestone Delta, 1v1v1Hex,
+     Silverhead Crossing, Sullas Ruins, Charge, Blitz, Clash, Hamlets,
+     Meteor Lake, Den of Onis, Smallolof, Castle Hopping Isle, Hornshark Island
+   * updated multiplayer map cfg files: Clash, Hexcake, Smallolof
+   * fixed gamelist diff bug
+   * made "Load Game ..." first map option (was last), for better visibility
+   * added map size to MP lobby (patch #484)
+   * new multiplayer preference tab in the preference window (patch #444)
+     * add an option to timestamp chat in MP games (patch #444)
+     * add an option to choose the number of chat lines displayed (patch #444)
+ * music and sound:
+   * new main menu music
+ * units
+   * new unit: added the Goblin Rouser
+   * removed obsolete units: Merman, Naga, Saurian, Saurian Warrior, Sea Hag,
+     Triton
+   * units and balancing changes:
+     * changed Cuttlefish tentacle attack to swarm.  changed HP from 52 to 67
+     * changed Halbardier pierce attack from 9-4 to 14-3
+     * changed Halbardier blade attack from 11-4 to 19-2
+     * blade attack of Halbardier does not longer have firststrike
+     * changed the movetype of the General and Grand Marshal back to smallfoot
+     * changed the resistances to physical damage for the General to 10% and
+       for the Grand Marshal to 20%
+     * decreased Merman line resistance to cold from 60% to 20%
+     * decreased Merman Hunter experience needed to level from 38 to 35
+     * increased the HP of the Elvish Hero from 48 to 51
+     * decreased Elvish Rider meele attack from 6-4 to 6-3
+     * decreased Elvish Rider ranged attack from 7-3 to 9-2
+     * decreased Elvish Outrider meele attack from 8-4 to 6-4
+     * decreased Elvish Outrider meele attack from 7-4 to 8-3
+     * decreased the cold resistances of Woses from 20% to 10%
+     * decreased Drakefly snow defense from 30% to 20%
+     * decreased the cold resistances of dwarves from 20% to 10%
+     * decreased the blade resistances of dwarves from 30% to 20%
+     * decreased Dwarvish Stellclad blade resistance from 40% to 30%
+     * decreased Dwarvish Fighter hammer attack damage from 9 to 8
+     * made the Dwarvish Guardsman line have 2 traits again
+     * decreaesd the HP of the Thunderer from 37 to 34
+     * decreased the Gryphon Riders movement from 9 to 8
+     * removed Thug from Knalgan faction
+     * added drain on the melee attack of the Ghost
+     * decreased the Ghosts melee attack from 4-3 to 3-3
+     * increased the Ghosts HP from 17 to 19
+     * decreased Ghost line shallow water movement cost from 3 to 2
+     * decreased Ghost line deep water movement cost from 4 to 2
+     * increased the HP of the Skeleton Fighter tree by 4
+     * changed the Deathblades resistances to those of the other Skeletons
+     * decreased Skeleton line shallow water movement cost from 3 to 2
+     * decreased Skeleton line deep water movement cost from 4 to 3
+     * decreased the tundra defense of Undeads (undeadfoot) from 40% to 30%
+     * increased the HP of the Ghoul line by 5
+     * decreased the attack damage of the Ghoul line by 1
+     * increased the fire resistance of the Ghoul line from 0% to 10%
+     * Ghoul line can no longer move into deep water
+     * increased the HP of the Vampire Bat from 14 to 17
+     * decreased the cost of the Blood Bat from 24 to 21
+     * increased the HP of the Blood Bat from 24 to 27
+     * increased Orcish Archer fire damage from 5-2 to 6-2
+     * increased Orcish Crossbowman fire damage from 8-2 to 9-2
+     * increased Orcish Slurbow fire damage from 12-2 to 14-2
+     * decreased the tundra defense of Nagas from 30% to 20% 
+     * decreased the XP requirement for the Goblin Spearman from 22 to 18
+     * added the Goblin Rouser as an advancement to the Goblin Spearman
+     * Northerners can now recruit Rocklobber in Age of Heroes era
+     * made Fireball, Gate, Galeons & Watch Tower unpoisonable and unplaguable
  * user interface:
    * added font colors to theme
    * reorganized side-bar information
    * fix untranslated unit create dialog (#4424)
    * changed recall to show recall list even when gold < 20
-   * added advancement and AMLA indicator icons, tooltips to dfool theme
+   * added advancement and AMLA indicator icons and tooltips to dfool theme
    * allow pausing during replay
    * SECURITY: check safety of campaign download names: if any unsafe
      names are found, install is aborted before old version is removed
@@ -64,149 +188,13 @@ SVN trunk (1.1.x):
    * new option to toggle server messages when observing games
    * semi transparent HP/XP bar when unit is not selected (patch #485)
    * play an "anonymous" music durin ennemy turns to avoid the music giving
-   hints in MP games
+     hints in MP games
    * enable down arrow on scrollbar when resizing (#4809, patch #487)
    * better movement highlighting (patch #488)
    * stop save dialog complaining about bad name when pressing cancel (#4835)
    * pressing 'n' wont take you out of path selection mode (#4833, patch #490)
    * fix broken tooltip in the status bar for plague(argument)
    * added the "/me" command to MP lobby
- * graphics:
-   * units can now have colors redefined to match team colors:
-   * team color can be defined in the side tag with "team_rgb=r,g,b"
-   * team color enabled for:
-       Knight, Grand Knight
-   * new title screen and logo
-   * changed the storm trident attack icon from fireball to lightingbolt
-   * new attack icon for the fireball
-   * portraits:
-     * new Li'sar, Drake Burner, Drake Fighter, Drake Glider, Elvish Shaman,
-       Ghoul, Mermaid Initiate, Merman Fighter, Merman Hunter, Naga Fighter,
-       Orcish Assassin, Saurian Skirmisher
-     * all Drake, Merman, Naga and Saurian upgrades now use level one portraits
-     * Necrophage and Orcish Slayer upgrades now use level one portraits
-   * new images: Konrad level 1, Tentacle of the Deep
-   * new death animations: Initiate, Mage, Pikeman, Red Mage, White Mage,
-     Tentacle of the Deep
-   * removed deprecated death animation: Drake Fighter
-   * new tiles: swamp, cave wall, paved road, variable-width canyon (#8817)
-   * new villages: snow (human & elven), underground
-   * updated snow hills and hills
-   * new mountains
-   * bilinear interpolation of images (better interpolation at high zoom
-   * added movement animation for elvish fighter
-   level)
- * language and i18n:
-   * added support for right-to-left languages (patch #470)
-   * made the list of languages configurable via the locale WML
-   * new manual: Chinese; updated manual: English, German, Swedish
-   * updated man pages: Swedish
-   * new translations: Hebrew, Esperanto, Portugese
-   * updated translations: Afrikaans, British English, Chinese, Czech, French,
-     German, Hungarian, Italian, Japanese, Polish, Portuguese (Brazil), Russian,
-     Slovak, Slovenian, Spanish, Swedish, Turkish
-   * tutorial now has its own textdomain
-   * fixed Undead used as both trait and race name (#4295)
-   * fixed loading non-binary savegame displaying messages in English (#4454)
-   * fixed misleading description of Steadfast (#4315)
-   * help changes
-     * updated description of backstab to match the new functionality
-     * updated description of Berserk to mention the 30 round limit
-     * updated description of movement
-     * added brief description of Shroud and Fog of War
-   * updated in game help and tip of the day to reflect latest slow changes
- * music and sound:
-   * new main menu music
- * gameplay changes:
-   * backstab now works if opposite unit is non-incapacitated enemy of defender
-   * prevented stoned units from being healed
-   * slow does not remove an attack anymore
-   * slow still temporarily doubles movement cost
-   * slowed units see the damage they deal halved immediately
-   * unit modifications now round toward original value instead of truncating
-   * changed resilient trait bonus from +7hp to +10%+3hp
-   * decreased strong trait hitpoints bonus from 2 to 1
-   * added a fisher's clock to MP games to limit turn duration
- * new unit: added the Goblin Rouser
- * units and balancing changes:
-   * changed Cuttlefish tentacle attack to swarm.  changed HP from 52 to 67
-   * changed Halbardier pierce attack from 9-4 to 14-3
-   * changed Halbardier blade attack from 11-4 to 19-2
-   * blade attack of Halbardier does not longer have firststrike
-   * changed the movetype of the General and Grand Marshal back to smallfoot
-   * changed the resistances to physical damage for the General to 10% and for the Grand Marshal to 20%
-   * decreased Merman line resistance to cold from 60% to 20%
-   * decreased Merman Hunter experience needed to level from 38 to 35
-   * increased the HP of the Elvish Hero from 48 to 51
-   * decreased Elvish Rider meele attack from 6-4 to 6-3
-   * decreased Elvish Rider ranged attack from 7-3 to 9-2
-   * decreased Elvish Outrider meele attack from 8-4 to 6-4
-   * decreased Elvish Outrider meele attack from 7-4 to 8-3
-   * decreased the cold resistances of Woses from 20% to 10%
-   * decreased Drakefly snow defense from 30% to 20%
-   * decreased the cold resistances of dwarves from 20% to 10%
-   * decreased the blade resistances of dwarves from 30% to 20%
-   * decreased Dwarvish Stellclad blade resistance from 40% to 30%
-   * decreased Dwarvish Fighter hammer attack damage from 9 to 8
-   * made the Dwarvish Guardsman line have 2 traits again
-   * decreaesd the HP of the Thunderer from 37 to 34
-   * decreased the Gryphon Riders movement from 9 to 8
-   * removed Thug from Knalgan faction
-   * added drain on the melee attack of the Ghost
-   * decreased the Ghosts melee attack from 4-3 to 3-3
-   * increased the Ghosts HP from 17 to 19
-   * decreased Ghost line shallow water movement cost from 3 to 2
-   * decreased Ghost line deep water movement cost from 4 to 2
-   * increased the HP of the Skeleton Fighter tree by 4
-   * changed the Deathblades resistances to those of the other Skeletons
-   * decreased Skeleton line shallow water movement cost from 3 to 2
-   * decreased Skeleton line deep water movement cost from 4 to 3
-   * decreased the tundra defense of Undeads (undeadfoot) from 40% to 30%
-   * increased the HP of the Ghoul line by 5
-   * decreased the attack damage of the Ghoul line by 1
-   * increased the fire resistance of the Ghoul line from 0% to 10%
-   * Ghoul line can no longer move into deep water
-   * increased the HP of the Vampire Bat from 14 to 17
-   * decreased the cost of the Blood Bat from 24 to 21
-   * increased the HP of the Blood Bat from 24 to 27
-   * increased Orcish Archer fire damage from 5-2 to 6-2
-   * increased Orcish Crossbowman fire damage from 8-2 to 9-2
-   * increased Orcish Slurbow fire damage from 12-2 to 14-2
-   * decreased the tundra defense of Nagas from 30% to 20% 
-   * decreased the XP requirement for the Goblin Spearman from 22 to 18
-   * added the Goblin Rouser as an advancement to the Goblin Spearman
-   * Northerners can now recruit Rocklobber in Age of Heroes era
-   * made Fireball, Gate, Galeons & Watch Tower unpoisonable and unplaguable
-   * removed obsolete Merman, Naga, Saurian, Saurian Warrior, Sea Hag, Triton
-* multiplayer and server
-   * server: add administration functions
-   * multiplayer game with "empty" as side no longer causes OOS (#4464)
-   * revised multiplayer maps: Divide and Conquer, Sablestone Delta, 1v1v1Hex,
-     Silverhead Crossing, Sullas Ruins, Charge, Blitz, Clash, Hamlets,
-     Meteor Lake, Den of Onis, Smallolof, Castle Hopping Isle, Hornshark Island
-   * updated multiplayer map cfg files: Clash, Hexcake, Smallolof
-   * fixed gamelist diff bug
-   * renamed "Across The River" config file to improve display order
-   * renamed "Across The River" map to "Across the River"
-   * made "Load Game ..." first map option (was last), for better visibility
-   * added map size to MP lobby (patch #484)
-   * new multiplayer preference tab in the preference window (patch 444 by
-   majestyk)
-   * add an option to timestamp chat in MP games (patch 444 by majestyk)
-   * add an option to choose the number of chat lines displayed (patch 444 by
-   majestyk)
- * campaign server
-   * support new "timestamp" attribute
-   * save persistent attributes in the campaign data
-     * "name" is treated as directory name, so use campaign_name (#4525)
-     * SECURITY: ensure file and directory names on upload match campaign name
-   * support filtering on campaign_list requests: name, last update time
-     (before or after), language of translation
-   * campaign_list response now contains the time the request was processed
-   * campaign_list response now contains information about translations
-   * fixed problem with duplicate translations being saved with each upload
-   * added a passphrase change function
-   * deleting campaigns, campaign file is now deleted, not reduced to zero size
  * utils
    * added weblist.pl and webtgz.pl web interface programs
    * wml.pm uses substr instead of split: reduces memory usage for large strings
@@ -230,16 +218,15 @@ SVN trunk (1.1.x):
    * defensive_image* deprecated, use defensive animations instead (still work
      but issue warnings, new macros are provided)
    * using [frames] directly in an [attack] tag is deprecated. pleas enclose
-   attack animations in [animation] tags
+     attack animations in [animation] tags
    * [store_unit] now leaves variable untouched if filter does not match
    * units can now have [movement_animation] tags, these are filtered on both
-   terrain and direction
- * documentation: switch doxygen templates from CVS to SVN, Savannah to Gna!
- * --with-preferences-dir configure option for coexistence of multiple versions
- * now defaults to --with-fribidi if fribidi found during configure
- * various bug fixes and code cleanups
- * experimental Python API for AI. See http://www.wesnoth.org/wiki/ReferencePythonAPI
-   for more information.
+     terrain and direction
+ * various other changes:
+   * --with-preferences-dir configure option for coexistence of multiple versions
+   * experimental Python API for AI. See http://www.wesnoth.org/wiki/ReferencePythonAPI
+     for more information.
+   * various bug fixes and code cleanups
 
 Version 1.0rc1:
  * language and i18n:
