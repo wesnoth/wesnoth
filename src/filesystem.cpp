@@ -140,6 +140,12 @@ namespace {
 #define DIR_INVALID(d) (d == NULL)
 #endif
 
+#ifdef __APPLE__
+#include <CoreFoundation/CoreFoundation.h>
+#include <CoreFoundation/CFString.h>
+#include <CoreFoundation/CFBase.h>
+#endif
+
 void get_files_in_dir(const std::string& directory,
                       std::vector<std::string>* files,
                       std::vector<std::string>* dirs,
@@ -202,8 +208,22 @@ void get_files_in_dir(const std::string& directory,
 		while((entry = readdir(dir)) != NULL) {
 			if(entry->d_name[0] == '.')
 				continue;
-
-			const std::string name((directory + "/") + entry->d_name);
+#ifdef __APPLE__
+		  /* HFS Mac OS X decompose filenames using combining unicode
+		  characters. Try to get the precomposed form.
+		  */
+		  char filename[MAXNAMLEN+1];
+		  CFStringRef cstr = CFStringCreateWithCString(NULL, entry->d_name,
+							       kCFStringEncodingUTF8);
+		  CFMutableStringRef mut_str = CFStringCreateMutableCopy(NULL, 0, cstr);
+		  CFStringNormalize(mut_str, kCFStringNormalizationFormC);
+		  CFStringGetCString(mut_str,filename,sizeof(filename)-1,kCFStringEncodingUTF8);
+		  CFRelease(cstr);
+		  CFRelease(mut_str);
+#else
+		  char *filename = entry->d_name;
+#endif
+			const std::string name((directory + "/") + filename);
 
 			struct stat st;
 			if (::stat(name.c_str(), &st) != -1) {
@@ -212,14 +232,14 @@ void get_files_in_dir(const std::string& directory,
 						if (mode == ENTIRE_FILE_PATH)
 							files->push_back(name);
 						else
-							files->push_back(entry->d_name);
+							files->push_back(filename);
 					}
 				} else if (S_ISDIR(st.st_mode)) {
 					if (dirs != NULL) {
 						if (mode == ENTIRE_FILE_PATH)
 							dirs->push_back(name);
 						else
-							dirs->push_back(entry->d_name);
+							dirs->push_back(filename);
 					}
 				}
 			}
