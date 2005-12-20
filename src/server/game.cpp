@@ -325,7 +325,7 @@ size_t game::available_slots() const
 	size_t available_slots = 0;
 	const config::child_list& sides = level_.get_children("side");
 	for(config::child_list::const_iterator i = sides.begin(); i != sides.end(); ++i) {
-		std::cerr << "side controller: '" << (**i)["controller"] << "'\n";
+		//std::cerr << "side controller: '" << (**i)["controller"] << "'\n";
 		if((**i)["controller"] == "network" && (**i)["description"].empty()) {
 			++available_slots;
 		}

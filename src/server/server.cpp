@@ -623,7 +623,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 	const config* const create_game = data.child("create_game");
 	if(create_game != NULL) {
 
-		std::cerr << "creating game...\n";
+		//std::cerr << "creating game...\n";
 
 		//create the new game, remove the player from the
 		//lobby and put him/her in the game they have created
