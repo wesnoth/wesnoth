@@ -609,6 +609,11 @@ void server::process_query(const network::connection sock, const config& query, 
 	} else if(admin_passwd_.empty() == false && query["type"] == admin_passwd_) {
 		admins_.insert(sock);
 		response << "You are now recognized as an administrator";
+		std::cerr << "New Admin recognized:\n";
+		std::cerr << "\tIP: "<< network::ip_address(sock);
+		std::map<network::connection, player>::iterator temp = players_.find(sock);
+		std::cerr << "\tnick: "<< temp->second.name();
+		std::cerr << std::endl;
 	} else if(admins_.count(sock) != 0) {
 		response << process_command(query["type"]);
 	} else {
