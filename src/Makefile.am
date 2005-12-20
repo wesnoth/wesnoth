@@ -122,6 +122,7 @@ wesnoth_SOURCES = \
 	sdl_ttf/SDL_ttf.c
 
 wesnoth_LDADD = $(THELIBS)
+wesnoth_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
 #    Editor                                                                 #
@@ -200,6 +201,7 @@ wesnoth_editor_SOURCES = \
 	sdl_ttf/SDL_ttf.c
 
 wesnoth_editor_LDADD = $(THELIBS)
+wesnoth_editor_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
 #    Wesnothd Server                                                        #
@@ -217,6 +219,7 @@ wesnothd_SOURCES = \
 	serialization/parser.cpp
 
 wesnothd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
+wesnothd_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
 #    Campaign Server                                                        #
@@ -230,6 +233,7 @@ campaignd_SOURCES = \
 	serialization/parser.cpp
 
 campaignd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
+campaignd_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
 #    Castle building helpers                                                #
@@ -253,7 +257,9 @@ cutter_SOURCES = \
 	serialization/parser.cpp
 
 exploder_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL) $(PNG_LIBS)
+exploder_DEPENDENCIES=libwesnoth-core.a
 cutter_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL) $(PNG_LIBS)
+cutter_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
 #    Headers
