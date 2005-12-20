@@ -98,7 +98,7 @@ void gamebrowser::draw_contents() const
 		}
 	} else {
 		const SDL_Rect rect = inner_location();
-		font::draw_text(&video(), rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, _("<no games open>"), rect.x + margin_, rect.y + margin_);
+		font::draw_text(&video(), rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, _("--no games open--"), rect.x + margin_, rect.y + margin_);
 	}
 }
 
