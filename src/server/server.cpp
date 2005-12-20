@@ -628,6 +628,7 @@ void server::process_query(const network::connection sock, const config& query, 
 	  std::map<network::connection, player>::iterator temp = players_.find(sock);
 	  std::cerr << "\tnick: "<< temp->second.name()<<"\n";
 	  std::cerr << std::endl;
+	  response << "Error: unrecognized query";
 	} else {
 		response << "Error: unrecognized query";
 	}
