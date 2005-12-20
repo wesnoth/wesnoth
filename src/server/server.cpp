@@ -610,12 +610,24 @@ void server::process_query(const network::connection sock, const config& query, 
 		admins_.insert(sock);
 		response << "You are now recognized as an administrator";
 		std::cerr << "New Admin recognized:\n";
-		std::cerr << "\tIP: "<< network::ip_address(sock);
+		std::cerr << "\tIP: "<< network::ip_address(sock)<<"\n";
 		std::map<network::connection, player>::iterator temp = players_.find(sock);
-		std::cerr << "\tnick: "<< temp->second.name();
+		std::cerr << "\tnick: "<< temp->second.name()<<"\n";
 		std::cerr << std::endl;
+	} else if(admin_passwd_.empty() == false) {
+	  std::cerr << "FAILED Admin attempt:\n";
+	  std::cerr << "\tIP: "<< network::ip_address(sock)<<"\n";
+	  std::map<network::connection, player>::iterator temp = players_.find(sock);
+	  std::cerr << "\tnick: "<< temp->second.name()<<"\n";
+	  std::cerr << std::endl;
 	} else if(admins_.count(sock) != 0) {
 		response << process_command(query["type"]);
+		std::cerr << "Admin Command:\n";
+		std::cerr << "\ttype:" << query["type"]<<"\n";
+		std::cerr << "\tIP: "<< network::ip_address(sock)<<"\n";
+		std::map<network::connection, player>::iterator temp = players_.find(sock);
+		std::cerr << "\tnick: "<< temp->second.name()<<"\n";
+		std::cerr << std::endl;
 	} else {
 		response << "Error: unrecognized query";
 	}
