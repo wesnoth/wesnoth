@@ -1,15 +1,18 @@
+# translation of tutorial-cs.po to Czech
+# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
+"Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-04 20:35+0100\n"
-"PO-Revision-Date: 2005-10-15 01:54+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2005-12-20 15:21+0100\n"
+"Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
+"Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: KBabel 1.10\n"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:5
 msgid "Basic Training"
@@ -118,7 +121,6 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Ukonči své kolo, a počkej, až Merla zaútočí na tebe."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:195
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it receives experience from the combat. Once a unit gains enough experience, "
@@ -295,7 +297,6 @@ msgid "En garde!"
 msgstr "Do střehu!"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:107
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics from the "
 "statistics shown before you recruited them. This is because they have been "
@@ -423,7 +424,6 @@ msgid "What's a leader?"
 msgstr "Co je to vůdce?"
 
 #: data/scenarios/tutorial/utils.cfg:68
-#, fuzzy
 msgid ""
 "A leader is a unit that can recruit. This means that when the leader is on a "
 "keep, units can be recruited on the surrounding castle tiles. Leaders are "
@@ -473,13 +473,12 @@ msgid "How do I end my turn?"
 msgstr "Jak ukončím kolo?"
 
 #: data/scenarios/tutorial/utils.cfg:74
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 "right-click and select End Turn, or select the End Turn button in the lower "
 "right hand corner."
 msgstr ""
-"Jeden ze způsobů, jak ukončit kolo, je stisknout 'Alt-E'. Také můžeš "
+"Jeden ze způsobů, jak ukončit kolo, je stisknout 'Alt-Mezera'. Také můžeš "
 "kliknout pravým tlačítkem myši a zvolit „Ukonči kolo“ nebo kliknout na "
 "tlačítko 'Ukonči kolo' v pravém dolním rohu."
 
@@ -508,7 +507,6 @@ msgid "How far can my Elvish Fighter move?"
 msgstr "Jak daleko můj elfí bojovník dojde?"
 
 #: data/scenarios/tutorial/utils.cfg:79
-#, fuzzy
 msgid ""
 "Your Elvish Fighter begins with a certain number of move points each turn; "
 "this is called its speed. When your Elvish Fighter moves along a path, each "
@@ -532,7 +530,6 @@ msgstr ""
 "čímž ho zrušíš."
 
 #: data/scenarios/tutorial/utils.cfg:80
-#, fuzzy
 msgid ""
 "A unit's zone of control is the location consisting of all hexes the unit is "
 "adjacent to. Units cannot move through opponent's zones of control; they can "
@@ -551,7 +548,6 @@ msgid "What's the zone of control?"
 msgstr "Co je to oblast kontroly?"
 
 #: data/scenarios/tutorial/utils.cfg:81
-#, fuzzy
 msgid ""
 "Units you control have a green, yellow, or red energy circle above their "
 "health bar, the green vertical bar next to them. Units with full movement "
@@ -578,7 +574,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Může mi Merla oplatit můj útok?"
 
 #: data/scenarios/tutorial/utils.cfg:85
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -629,7 +624,6 @@ msgid "How can you tell how powerful a unit's attacks are?"
 msgstr "Jak poznám, jak silné jsou útoky nějaké jednotky?"
 
 #: data/scenarios/tutorial/utils.cfg:87
-#, fuzzy
 msgid "Will my fighter hit every time when it attacks?"
 msgstr "Zasáhne můj bojovník pokaždé, když zaútočí?"
 
@@ -685,7 +679,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Co se stane, když se jednotka přesune do vesnice?"
 
 #: data/scenarios/tutorial/utils.cfg:96
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, it flags the village for its side. "
 "This action takes all the unit's remaining movement. Villages flagged for a "
@@ -709,7 +702,6 @@ msgid "How do I heal when there aren't any villages nearby?"
 msgstr "Jak se mám léčit, když poblíž nejsou žádné vesnice?"
 
 #: data/scenarios/tutorial/utils.cfg:97
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, it heals 2 HP from resting. However, if an enemy attacks "
@@ -731,7 +723,6 @@ msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr "Jak zjistím, jak dokončit nějaký scénář? Povíš mi to pokaždé?"
 
 #: data/scenarios/tutorial/utils.cfg:101
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -748,7 +739,6 @@ msgstr ""
 "byla splněna."
 
 #: data/scenarios/tutorial/utils.cfg:102
-#, fuzzy
 msgid ""
 "When you win a scenario, all your units survive and are revived to full "
 "health, and you do not have to pay them for the remaining turns. Also, if "
@@ -801,7 +791,6 @@ msgid "What do traits do?"
 msgstr "K čemu jsou vlastnosti?"
 
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "The function of traits is to add variety by making units of the same type "
 "different from each other. This is done by randomly assigning each unit "
@@ -815,7 +804,6 @@ msgstr ""
 "a jejich funkci můžeš zjistit, když podržíš kurzor nad danou vlastností."
 
 #: data/scenarios/tutorial/utils.cfg:112
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -877,7 +865,6 @@ msgid "How do I get gold?"
 msgstr "Jak získám zlato?"
 
 #: data/scenarios/tutorial/utils.cfg:121
-#, fuzzy
 msgid ""
 "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
 "of day: day, twilight, and night. During the day, units of the alignment "
@@ -898,7 +885,6 @@ msgid "What are the different alignments and times of day?"
 msgstr "Jaké jsou denní doby a jak jim mohou být jednotky přizpůsobeny?"
 
 #: data/scenarios/tutorial/utils.cfg:122
-#, fuzzy
 msgid ""
 "The times of day usually progress in a sequence: dawn- identical to "
 "twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
@@ -920,7 +906,6 @@ msgid "How do I know what time of day it is?"
 msgstr "Jak zjistím, jaká je právě denní doba?"
 
 #: data/scenarios/tutorial/utils.cfg:126
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castles. However, the properties of most terrains are more "
@@ -945,7 +930,6 @@ msgid "What are the different properties that terrains have?"
 msgstr "Co jsou to ty vlastnosti terénů?"
 
 #: data/scenarios/tutorial/utils.cfg:127
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -1075,7 +1059,6 @@ msgid "What kind of objects am I likely to encounter?"
 msgstr "Na jaké druhy předmětů mohu narazit?"
 
 #: data/scenarios/tutorial/utils.cfg:143
-#, fuzzy
 msgid ""
 "The objects you encounter are put in by the scenario designer, so they vary "
 "from campaign to campaign. In Heir to the Throne, most objects give the unit "
@@ -1087,7 +1070,6 @@ msgstr ""
 "jejich nositeli novou zbraň. V tažení, ale zase tak mnoho předmětů nebývá."
 
 #: data/scenarios/tutorial/utils.cfg:144
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However, "
 "a few objects, such as holy water, last only until the end of the scenario."
