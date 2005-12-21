@@ -245,7 +245,6 @@ public:
 	bool illuminates() const;
 	bool is_skirmisher() const;
 	bool teleports() const;
-	bool nightvision() const;
 	bool steadfast() const;
 	bool not_living() const;
 	bool can_advance() const;
@@ -291,7 +290,6 @@ private:
 	bool illuminates_;
 	bool skirmish_;
 	bool teleport_;
-	bool nightvision_;
 	bool steadfast_;
         std::vector<std::string> advances_to_;
         int experience_needed_;
