@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-17 14:36+0100\n"
-"PO-Revision-Date: 2005-12-16 20:52+0100\n"
+"PO-Revision-Date: 2005-12-20 22:55+0100\n"
 "Last-Translator: Stefan Bergström (tephlon)\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -2813,15 +2813,12 @@ msgstr ""
 "dina slag för dig utan att själva attackera."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attack."
 msgstr ""
 "Fiender som träffats av en attack med egenskapen att 'sakta ner' rör sig "
-"långsammare. Dessutom försvinner truppens kontrollzon, vilket gör det "
-"möjligt att jaga ikapp flyende fiendetrupper eller låta sårade trupper fly "
-"undan en trängd situation."
+"långsammare, och skadan de åsamkar halveras."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -3869,7 +3866,6 @@ msgid "Bone Shooter"
 msgstr "Benskjutare"
 
 #: data/units/Bone_Shooter.cfg:21
-#, fuzzy
 msgid ""
 "Of a necromancer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -4161,9 +4157,8 @@ msgid "tentacle"
 msgstr "tentakel"
 
 #: data/units/Cuttle_Fish.cfg:42
-#, fuzzy
 msgid "swarm"
-msgstr "nedslag"
+msgstr "omringa"
 
 #: data/units/Cuttle_Fish.cfg:76
 msgid "ink"
@@ -4202,9 +4197,8 @@ msgstr ""
 "sitt mål. "
 
 #: data/units/Dark_Adept.cfg:33 data/units/Dark_Adept.cfg:126
-#, fuzzy
 msgid "shadow wave"
-msgstr "knuff"
+msgstr "skuggstöt"
 
 #: data/units/Dark_Adept.cfg:97
 msgid "female^Dark Adept"
@@ -4978,15 +4972,15 @@ msgid "Dwarvish Stalwart"
 msgstr "Pansarnäve"
 
 #: data/units/Dwarvish_Stalwart.cfg:29
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
 "resilience and strength."
 msgstr ""
-"Pansarnävarna har efter år av strider dragit nytta av sina fienders nederlag "
-"och skapat nya sköldar och starka rustningar. Även om de är långsamma, är de "
-"fruktade för sin uthållighet och styrka."
+"Under år av strider har pansarnävarna inhämtat både inspiration och "
+"råmaterial av sina besegrade fiender och kunnat skapa nya och starkare "
+"sköldar och rustningar. Även om de är långsamma, är de fruktade för sin "
+"uthållighet och styrka."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -5274,7 +5268,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Huldra"
 
 #: data/units/Elvish_Enchantress.cfg:35
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
@@ -5424,7 +5417,6 @@ msgid "Elvish Marshal"
 msgstr "Alvöverste"
 
 #: data/units/Elvish_Marshal.cfg:39
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -5439,10 +5431,10 @@ msgid ""
 msgstr ""
 "Alvernas livslängd och naturliga intelligens medför en mycket stor fallenhet "
 "för militära spörsmål, trots att de i allmänhet tar avstånd från sådana "
-"saker. Alver minns skeenden mycket klarare än människor, och kan ofta nästan "
+"ting. Alver minns skeenden mycket klarare än människor, och kan ofta nästan "
 "instinktivt gissa sig till vad andra måste lära sig genom hård träning. Vid "
 "de sällsynta tillfällen när en alv bestämmer sig för att det är dags att gå "
-"ut i krig, blir den resulterande strategi en mästares.\n"
+"ut i krig, blir den resulterande strategin en mästares.\n"
 "\n"
 "Anmärkning: under en överstes ledarskap åsamkar allierade intillstående "
 "trupper av lägre rang sina motståndare mer skada."
@@ -5508,7 +5500,6 @@ msgid "Elvish Rider"
 msgstr "Alvryttare"
 
 #: data/units/Elvish_Rider.cfg:44
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal to any man. Though this certainly leaves people in "
@@ -5637,7 +5628,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Alvbesvärjerska"
 
 #: data/units/Elvish_Sorceress.cfg:35
-#, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
@@ -5647,8 +5637,8 @@ msgid ""
 msgstr ""
 "Alvernas besvärjerskor avviker från den helande vägen till förmån för magins "
 "mer aggressiva former, och strider bra på distans. Deras insnärjningsattack "
-"är märkbart effektivare än förut, och de kan frammana isande vindstötar ur "
-"andevärlden som slår ner på deras fiender."
+"är märkbart effektivare än schamanens, och de kan mana fram isande "
+"vindstötar ur andevärlden att slå ner på deras fiender."
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
@@ -5791,17 +5781,16 @@ msgid "Galleon"
 msgstr "Galjon"
 
 #: data/units/Galleon.cfg:17
-#, fuzzy
 msgid ""
 "Even people happily living in their homes eventually need some kind of "
 "transport through the seas, even if only to go fishing or to trade goods. "
 "The galleon is perfect for this purpose: it's fast and resilient, but not "
 "prepared to fight, and is able to adapt to many different tasks."
 msgstr ""
-"Även folk som lever tryggt i sina hem behöver ibland någon färdas på havet, "
-"även om det bara handlar om att fiska eller utbyta handel. Galjonen är "
-"perfekt för detta ändamål: den är snabb och tålig och kan anpassas till "
-"många olika uppgifter, dock sällan för strid."
+"Även folk som lever tryggt i sina hem behöver ibland färdas på havet, även "
+"om det bara handlar om att fiska eller utbyta handel. Galjonen är perfekt "
+"för detta ändamål: den är snabb och tålig och kan anpassas till många olika "
+"uppgifter, dock sällan för strid."
 
 #: data/units/Galleon.cfg:19
 msgid "dummy"
@@ -6021,12 +6010,10 @@ msgid "net"
 msgstr "nät"
 
 #: data/units/Goblin_Rouser.cfg:3
-#, fuzzy
 msgid "Goblin Rouser"
-msgstr "Spetsarvätte"
+msgstr "Standarvätte"
 
 #: data/units/Goblin_Rouser.cfg:27
-#, fuzzy
 msgid ""
 "Standard Bearers are an oddity amongst Goblins. Firstly they have survived a "
 "war, but perhaps more significantly, they were remembered to have survived "
@@ -6037,13 +6024,11 @@ msgid ""
 "to it to deal more damage in combat, though this only applies to units of "
 "lower level."
 msgstr ""
-"Överstemarskalken är en av de högst aktade i människornas arméer, och de som "
-"bär denna titel har genomgått många prövningar i strid, och bevisat sin "
-"personliga styrka både i strid man mot man och i taktiska bedömningar. Deras "
-"närvaro på slagfältet är till stor hjälp för de som tjänar under dem.\n"
-"\n"
-"Anmärkning: under en överstemarskalks ledarskap åsamkar allierade "
-"intillstående trupper av lägre rang sina motståndare mer skada."
+"Standarbärarna är en ovanlighet bland vättar. De har inte bara överlevt ett "
+"krig, att de faktiskt gjort det har också spritt sig bland vättarna, och av "
+"någon anledning verkar detta gjuta mod i de mindre erfarna.\n"
+"Anmärkning: under en standarvättes ledarskap åsamkar allierade intillstående "
+"trupper av lägre rang sina motståndare mer skada."
 
 #: data/units/Goblin_Spearman.cfg:3
 msgid "Goblin Spearman"
@@ -6299,15 +6284,14 @@ msgid "Horse Lord"
 msgstr "Hästfurste"
 
 #: data/units/Horse_Lord.cfg:30
-#, fuzzy
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
 "enemies, and their morning star crushes those who are left."
 msgstr ""
-"Hästfurstarna är de främsta av slätternas män. De leder sina klaner och "
-"respekteras av alla, vän såväl som fiende. Deras svärd kan döda de flesta "
-"fiender, och de som återstår krossas av deras morgonstjärnor."
+"Hästfurstarna är människornas främsta på slätterna. De är sina klaners "
+"överhuvuden och respekteras av alla, vän såväl som fiende. Deras svärd kan "
+"döda de flesta fiender, och de som återstår krossas av deras morgonstjärnor."
 
 #: data/units/Horse_Lord.cfg:58 data/units/Mounted_Fighter.cfg:58
 #: data/units/Mounted_Warrior.cfg:58
@@ -6710,7 +6694,6 @@ msgid "Master at Arms"
 msgstr "Väbel"
 
 #: data/units/Master_at_Arms.cfg:22
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -6733,7 +6716,7 @@ msgstr ""
 "liv, för sig som födda aristokrater, och åtnjuter mången högtstående dams "
 "gunst.\n"
 "\n"
-"De har lyxen att ofta kunna välja när och på vilka villkor de träder i "
+"De har ofta lyxen att kunna välja när och på vilka villkor de träder i "
 "någons tjänst, och är fria att ströva omkring bäst de gitter. Ofta återfinns "
 "de som kaptener för något slotts vaktstyrka eller som mästare i militära "
 "akademier, ställningar där deras överdådiga natur inte bara accepteras, utan "
@@ -7063,7 +7046,6 @@ msgid "Mounted Fighter"
 msgstr "Ryttarkämpe"
 
 #: data/units/Mounted_Fighter.cfg:30
-#, fuzzy
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -7071,8 +7053,8 @@ msgid ""
 "armies of the Clans."
 msgstr ""
 "Ädlingarna bland slätternas män tränas tillsammans med de andra ryttarna för "
-"att bli skickliga krigare. Dock tränas de också i att leda sina kamrater, "
-"och det är de som blir kaptener bland Klanernas arméer."
+"att bli skickliga krigare. De tränas dock även i att leda sina kamrater, och "
+"det är de som blir kaptener bland Klanernas arméer."
 
 #: data/units/Mounted_Warrior.cfg:3
 msgid "Mounted Warrior"
@@ -7351,7 +7333,6 @@ msgid "Orcish Assassin"
 msgstr "Lönnmördarorch"
 
 #: data/units/Orcish_Assassin.cfg:25
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -7363,14 +7344,14 @@ msgid ""
 "victims of this poison will continually take damage until they can be cured "
 "in town or by a healer."
 msgstr ""
-"Trots att gift anses som ett vapen för ynkryggar, så används detta gärna av "
-"orcherna, särskilt av de som har liten kroppsstyrka. Orchernas lönnmördare "
-"som ofta är lite svagare, om än smidiga, använder gift till sina kastknivar. "
-"Även om det sällan är de som utdelar nådastöten, så är deras taktik till "
-"stor nytta för deras större och brutalare släktingar.\n"
+"Trots att gift anses vara ett vapen för ynkryggar, så används detta gärna av "
+"orcherna, särskilt av de som har liten kroppsstyrka. Orchernas lönnmördare, "
+"somanvänder gift till sina kastknivar, är ofta lite svagare, men "
+"överraskande smidiga.Även om det sällan är de som utdelar nådastöten, så är "
+"deras taktik till stor nytta för deras större och brutalare släktingar.\n"
 "\n"
 "Anmärkning: orchernas lönnmördare använder förgiftade kastknivar, och deras "
-"offer dessa försvagas gradvis tills de kan botas i en by eller av en helare."
+"offer försvagas gradvis tills de kan botas i en by eller av en helare."
 
 #: data/units/Orcish_Assassin.cfg:47 data/units/Orcish_Slayer.cfg:53
 msgid "throwing knives"
@@ -7518,7 +7499,6 @@ msgid "Orcish Slayer"
 msgstr "Slaktarorch"
 
 #: data/units/Orcish_Slayer.cfg:26
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -7532,8 +7512,8 @@ msgid ""
 msgstr ""
 "De större och ofta skickligare lönnmördarna bland orcherna kallas 'slaktare' "
 "av deras fiender, en beskrivning som kanske gör dem rättvisa om än inte "
-"träffar helt rätt. Slaktarna har skurit ner på rustningen, vilket gör dem "
-"snabba i förflyttning och strid. Deras huvudsakliga vapen är gift, ett grymt "
+"träffar helt rätt. Slaktarna har offrat sin rustning till gagn för snabbhet "
+"i förflyttning och strid. Deras huvudsakliga vapen är gift, ett grymt "
 "verktyg i deras händer, och dess flitiga användning i strid är ofta den "
 "verkliga orsaken till orchernas segrar.\n"
 "\n"
@@ -8126,7 +8106,6 @@ msgid "Silver Mage"
 msgstr "Silvermagiker"
 
 #: data/units/Silver_Mage.cfg:28
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -9902,7 +9881,7 @@ msgstr "Skapa nytt spel"
 
 #: src/multiplayer_create.cpp:46
 msgid "Time limit"
-msgstr ""
+msgstr "Tidsgräns"
 
 #: src/multiplayer_create.cpp:55
 msgid "Name of game:"
@@ -9910,11 +9889,11 @@ msgstr "Spelets namn: "
 
 #: src/multiplayer_create.cpp:57
 msgid "Era:"
-msgstr "Era: "
+msgstr "Era:"
 
 #: src/multiplayer_create.cpp:58
 msgid "Map to play:"
-msgstr "Karta att spela: "
+msgstr "Karta att spela:"
 
 #: src/multiplayer_create.cpp:59 src/multiplayer_lobby.cpp:314
 #: src/multiplayer_lobby.cpp:315
@@ -9947,16 +9926,15 @@ msgstr "Maximalt antal drag som spelet fortgår"
 
 #: src/multiplayer_create.cpp:103
 msgid "Enables user time limit"
-msgstr ""
+msgstr "Aktivera tidsgräns för spelare"
 
 #: src/multiplayer_create.cpp:109
-#, fuzzy
 msgid "Initial time available for user at the begining of the match"
-msgstr "Trupper som befinner sig i byar återfår 8 HP i början på sitt drag."
+msgstr "Tillgänglig tid för varje spelare vid början av spelet"
 
 #: src/multiplayer_create.cpp:115
 msgid "Time added to user's clock at the end of each turn"
-msgstr ""
+msgstr "Tid som läggs till spelarens klocka vid slutet av varje drag"
 
 #: src/multiplayer_create.cpp:120
 msgid "The amount of income each village yields per turn"
@@ -10024,14 +10002,12 @@ msgid "Unlimited Turns"
 msgstr "Obegränsat antal drag"
 
 #: src/multiplayer_create.cpp:266
-#, fuzzy
 msgid "Initial Time: "
-msgstr "Dödens invigde"
+msgstr "Starttid: "
 
 #: src/multiplayer_create.cpp:271
-#, fuzzy
 msgid "Turn time: "
-msgstr "Drag: "
+msgstr "Dragtid: "
 
 #: src/multiplayer_create.cpp:277
 msgid "Village Gold: "
@@ -10545,12 +10521,12 @@ msgid "invisible: "
 msgstr "osynlig: "
 
 #: src/reports.cpp:140
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
 msgstr ""
-"Denna trupp har förstenats. Den kan inte förflytta sig eller attackera."
+"Denna trupp är nersaktad. Vid anfall kan den bara vålla halva nominella "
+"skadan."
 
 #: src/reports.cpp:140
 msgid "slowed: "
@@ -10784,11 +10760,3 @@ msgstr "redbar"
 #: src/unit_types.cpp:966
 msgid "neutral"
 msgstr "neutral"
-
-#~ msgid ""
-#~ "This unit has been slowed. It emits no zone of control, moves at half "
-#~ "speed and enemies will be able to strike earlier once during a fight."
-#~ msgstr ""
-#~ "Den här truppen har blivit nedsaktad. Den har ingen kontrollzon, "
-#~ "förflyttar sig med halva sin nominella hastighet, och förlorar "
-#~ "initiativet i strid."
