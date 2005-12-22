@@ -911,24 +911,12 @@ std::map<int, color_range> team::team_color_range_;
 const color_range team::get_side_color_range(int side){
   size_t index = size_t(get_side_colour_index(side));
   std::map<int, color_range>::iterator p=team_color_range_.find(index);
+  std::map<int, color_range>::iterator gp=game_config::team_rgb_range.find(index);
 
   if(p != team_color_range_.end()){
     return(p->second);
-  }else{
-    p=team_color_range_.find(side);
-    if(p != team_color_range_.end()){
-      return(p->second);
-    }
-  }
-
-  p=game_config::team_rgb_range.find(side);
-  if(p != game_config::team_rgb_range.end()){
-    return(p->second);
-  }else{
-    p=game_config::team_rgb_range.find(side);
-    if(p != game_config::team_rgb_range.end()){
-      return(p->second);
-    }
+  }else if(gp != game_config::team_rgb_range.end()){
+    return(gp->second);
   }
 
   return(color_range(0x00FF0000,0x00FFFFFF,0x00000000));
