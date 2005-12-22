@@ -47,11 +47,12 @@ namespace game_config
 	std::string rightside_image = "misc/rightside.png";
 	std::string rightside_image_bot = "misc/rightside-bottom.png";
 
-	std::string moved_energy_image = "misc/bar-energy-moved.png";
-	std::string unmoved_energy_image = "misc/bar-energy-unmoved.png";
-	std::string partmoved_energy_image = "misc/bar-energy-partmoved.png";
-	std::string enemy_energy_image = "misc/bar-energy-enemy.png";
-	std::string ally_energy_image = "misc/bar-energy-ally.png";
+	std::string energy_image = "misc/bar-energy.png";
+	std::string moved_ball_image = "misc/ball-moved.png";
+	std::string unmoved_ball_image = "misc/ball-unmoved.png";
+	std::string partmoved_ball_image = "misc/ball-partmoved.png";
+	std::string enemy_ball_image = "misc/ball-enemy.png";
+	std::string ally_ball_image = "misc/ball-ally.png";
 	std::string flag_image = "terrain/flag-team%d-1.png:150,terrain/flag-team%d-2.png:150";
   std::vector<Uint32> flag_rgb;
 
@@ -125,11 +126,12 @@ namespace game_config
 		rightside_image = v["sidebar_image"];
 		rightside_image_bot = v["sidebar_image_bottom"];
 
-		moved_energy_image = v["moved_energy_image"];
-		unmoved_energy_image = v["unmoved_energy_image"];
-		partmoved_energy_image = v["partmoved_energy_image"];
-		enemy_energy_image = v["enemy_energy_image"];
-		ally_energy_image = v["ally_energy_image"];
+		energy_image = v["energy_image"];
+		moved_ball_image = v["moved_ball_image"];
+		unmoved_ball_image = v["unmoved_ball_image"];
+		partmoved_ball_image = v["partmoved_ball_image"];
+		enemy_ball_image = v["enemy_ball_image"];
+		ally_ball_image = v["ally_ball_image"];
 		flag_image = v["flag_image"];
 		flag_rgb = string2rgb(v["flag_rgb"]);
 		if( !flag_rgb.size()){

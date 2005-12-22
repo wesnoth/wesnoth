@@ -81,6 +81,9 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
                        const gamestatus& status, const std::set<std::string>& observers)
 {
 	unit_map::const_iterator u = units.end();
+	SDL_Color HPC;
+	SDL_Color XPC;
+	  
 
 	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END) || type == POSITION) {
 
@@ -175,29 +178,18 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		return res;
 	}
-	case UNIT_HP:
-		if(u->second.hitpoints() <= u->second.max_hitpoints()/3)
-		  str << "<200,0,0>";
-		else if(u->second.hitpoints() > 2*(u->second.max_hitpoints()/3))
-		  str << "<0,200,0>";
-		else
-		  str << "<200,200,0>";
-
-
-		str << u->second.hitpoints()
-		    << "/" << u->second.max_hitpoints();
-
-		break;
-	case UNIT_XP:
-		if(u->second.can_advance() == false) {
-			str << u->second.experience() << "/-";
-		} else {
-		  int x = (int)(128 + ((255-128)*((float)u->second.experience())/u->second.max_experience()));
-		  str << "<" << x << "," << x << "," << x <<">";
-		  str << u->second.experience() << "/" << u->second.max_experience();
-		}
-
-		break;
+	case UNIT_HP: {
+	  HPC=u->second.hp_color();
+	  str << "<" << (int) HPC.r << "," << (int) HPC.g << "," << (int) HPC.b << ">" 
+	      << u->second.hitpoints() << "/" << u->second.max_hitpoints();
+	  break;
+	}
+	case UNIT_XP: {
+	  XPC=u->second.xp_color();
+	  str << "<" << (int) XPC.r << "," << (int) XPC.g << "," << (int) XPC.b << ">" 
+	      << u->second.experience() << "/" << u->second.max_experience();
+	  break;
+	}
 	case UNIT_ADVANCEMENT_OPTIONS: {
 	  report res;
 	  const std::map<std::string,std::string>& adv_icons=u->second.advancement_icons();

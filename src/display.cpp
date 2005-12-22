@@ -1269,13 +1269,14 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 
 	double unit_energy = 0.0;
 
-	SDL_Color energy_colour = {0,0,0,0};
 
 	surface unit_image(unit_image_override);
 
-	const std::string* energy_file = NULL;
+	const std::string* movement_file = NULL;
+	const std::string* energy_file = &game_config::energy_image;
 
 	const unit& u = it->second;
+	SDL_Color energy_colour = u.hp_color();
 
 	if(loc != hiddenUnit_ || !hideEnergy_) {
 		if(unit_image == NULL) {
@@ -1292,20 +1293,25 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		if(size_t(u.side()) != currentTeam_+1) {
 			if(team_valid() &&
 			   teams_[currentTeam_].is_enemy(it->second.side())) {
-				energy_file = &game_config::enemy_energy_image;
+				movement_file = &game_config::enemy_ball_image;
 			} else {
-				energy_file = &game_config::ally_energy_image;
+				movement_file = &game_config::ally_ball_image;
 			}
 		} else {
 			if(activeTeam_ == currentTeam_ && unit_move == unit_total_move && !it->second.user_end_turn()) {
-				energy_file = &game_config::unmoved_energy_image;
+				movement_file = &game_config::unmoved_ball_image;
 			} else if(activeTeam_ == currentTeam_ && unit_can_move(loc,units_,map_,teams_) && !it->second.user_end_turn()) {
-				energy_file = &game_config::partmoved_energy_image;
+				movement_file = &game_config::partmoved_ball_image;
 			} else {
-				energy_file = &game_config::moved_energy_image;
+				movement_file = &game_config::moved_ball_image;
 			}
 		}
 
+		wassert(movement_file != NULL);
+		if(movement_file == NULL) {
+			ERR_DP << "movement file is NULL\n";
+			return;
+		}
 		wassert(energy_file != NULL);
 		if(energy_file == NULL) {
 			ERR_DP << "energy file is NULL\n";
@@ -1330,20 +1336,6 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 
 		if(u.max_hitpoints() > 0) {
 			unit_energy = double(u.hitpoints())/double(u.max_hitpoints());
-		}
-
-		if(unit_energy < 0.33) {
-			energy_colour.r = 200;
-			energy_colour.g = 0;
-			energy_colour.b = 0;
-		} else if(unit_energy < 0.66) {
-			energy_colour.r = 200;
-			energy_colour.g = 200;
-			energy_colour.b = 0;
-		} else {
-			energy_colour.r = 0;
-			energy_colour.g = 200;
-			energy_colour.b = 0;
 		}
 
 		if(u.facing_left() == false) {
@@ -1415,18 +1407,16 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 
 	const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (loc == mouseoverHex_ ? ftofxp(1.0): ftofxp(0.6));
 
-	if(energy_file != NULL) {
-	    draw_bar(*energy_file,xpos,ypos,(u.max_hitpoints()*2)/3,unit_energy,energy_colour,bar_alpha);
-	}
+	draw_bar(*movement_file,xpos,ypos,0,0,energy_colour,bar_alpha);
+
+	draw_bar(*energy_file,xpos-5,ypos,(u.max_hitpoints()*2)/3,unit_energy,energy_colour,bar_alpha);
 
 	if(u.experience() > 0 && u.can_advance()) {
 		const double filled = double(u.experience())/double(u.max_experience());
 		const int level = maximum<int>(u.type().level(),1);
-		const SDL_Color normal_colour = {2,153,255,0}, near_advance_colour = {255,255,255,0};
-		const bool near_advance = u.max_experience() - u.experience() <= game_config::kill_experience*level;
-		const SDL_Color colour = near_advance ? near_advance_colour : normal_colour;
 
-		draw_bar("misc/bar-energy-enemy.png",xpos+5,ypos,u.max_experience()/(level*2),filled,colour,bar_alpha);
+		SDL_Color colour=u.xp_color();
+		draw_bar(*energy_file,xpos,ypos,u.max_experience()/(level*2),filled,colour,bar_alpha);
 	}
 
 	if (u.can_recruit()) {

@@ -51,7 +51,9 @@ public:
 
 	int hitpoints() const;
 	int max_hitpoints() const;
+  SDL_Colour hp_color() const;
 	int experience() const;
+  SDL_Colour xp_color() const;
 	int max_experience() const;
 	bool get_experience(int xp);
 	bool unrenamable() const; /** < Set to true for some scenario-specific units which should not be renamed */

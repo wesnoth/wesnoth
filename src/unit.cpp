@@ -402,9 +402,81 @@ int unit::max_hitpoints() const
 	return maxHitpoints_;
 }
 
+SDL_Colour unit::hp_color() const{
+  double unit_energy = 0.0;
+  SDL_Color energy_colour = {0,0,0,0};
+
+  if(max_hitpoints() > 0) {
+    unit_energy = double(hitpoints())/double(max_hitpoints());
+  }
+  
+  if(1.0 == unit_energy){
+    energy_colour.r = 33;
+    energy_colour.g = 225;
+    energy_colour.b = 0;
+  } else if(unit_energy > 1.0) {
+    energy_colour.r = 100;
+    energy_colour.g = 255;
+    energy_colour.b = 100;
+  } else if(unit_energy >= 0.75) {
+    energy_colour.r = 170;
+    energy_colour.g = 255;
+    energy_colour.b = 0;
+  } else if(unit_energy >= 0.5) {
+    energy_colour.r = 255;
+    energy_colour.g = 155;
+    energy_colour.b = 0;
+  } else if(unit_energy >= 0.25) {
+    energy_colour.r = 255;
+    energy_colour.g = 175;
+    energy_colour.b = 0;
+  } else {
+    energy_colour.r = 255;
+    energy_colour.g = 0;
+    energy_colour.b = 0;
+  }
+  return energy_colour;
+}
+
 int unit::experience() const
 {
 	return experience_;
+}
+
+SDL_Colour unit::xp_color() const{
+  const SDL_Color near_advance_colour = {255,255,255,0};
+  const SDL_Color mid_advance_colour = {150,255,255,0};
+  const SDL_Color far_advance_colour = {0,205,205,0};
+  const SDL_Color normal_colour = {0,160,225,0};
+  const SDL_Color near_amla_colour = {225,0,255,0};
+  const SDL_Color mid_amla_colour = {169,30,255,0};
+  const SDL_Color far_amla_colour = {139,0,237,0};
+  const SDL_Color amla_colour = {100,0,150,0};
+  const bool near_advance = max_experience() - experience() <= game_config::kill_experience;
+  const bool mid_advance = max_experience() - experience() <= game_config::kill_experience*2;
+  const bool far_advance = max_experience() - experience() <= game_config::kill_experience*3;
+
+  SDL_Color colour=normal_colour;
+  if(type().advances_to().size()){
+    if(near_advance){
+      colour=near_advance_colour;
+    } else if(mid_advance){
+      colour=mid_advance_colour;
+    } else if(far_advance){
+      colour=far_advance_colour;
+    }
+  } else if (get_modification_advances().size()){
+    if(near_advance){
+      colour=near_amla_colour;
+    } else if(mid_advance){
+      colour=mid_amla_colour;
+    } else if(far_advance){
+      colour=far_amla_colour;
+    } else {
+      colour=amla_colour;
+    }
+  }
+  return(colour);
 }
 
 int unit::max_experience() const

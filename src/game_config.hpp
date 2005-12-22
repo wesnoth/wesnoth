@@ -41,11 +41,12 @@ namespace game_config
 	extern std::string path;
 
 	extern std::string game_icon, game_title, game_logo, title_music, map_image, rightside_image, rightside_image_bot, anonymous_music,
-		               moved_energy_image, unmoved_energy_image, partmoved_energy_image,
-					   enemy_energy_image,ally_energy_image,flag_image,
-					   dot_image,cross_image,
-					   missile_n_image,missile_ne_image,terrain_mask_image,observer_image,download_campaign_image,
-					   checked_menu_image,unchecked_menu_image,level_image,ellipsis_image;
+	  moved_ball_image, unmoved_ball_image, partmoved_ball_image, 
+	  enemy_ball_image, ally_ball_image, energy_image, 
+	  flag_image, dot_image, cross_image, 
+	  missile_n_image, missile_ne_image, 
+	  terrain_mask_image, observer_image, download_campaign_image,
+	  checked_menu_image, unchecked_menu_image, level_image,ellipsis_image;
 
   extern std::vector<Uint32> flag_rgb;
 
