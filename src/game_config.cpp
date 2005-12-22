@@ -134,7 +134,7 @@ namespace game_config
 		flag_rgb = string2rgb(v["flag_rgb"]);
 		if( !flag_rgb.size()){
 		  //set green as old_flag_color
-		  for(int i=0;i!=256;i++){
+		  for(int i=255;i!=0;i--){
 		    flag_rgb.push_back((Uint32)(i<<8));
 		  }
 		}
