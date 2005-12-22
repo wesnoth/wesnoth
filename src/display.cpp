@@ -104,20 +104,46 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	flags_.reserve(teams_.size());
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		std::string flag;
+		color_range new_rgb;
+		std::vector<Uint32> old_rgb;
+
 		if(teams_[i].flag().empty()) {
 			flag = game_config::flag_image;
-			std::string::size_type pos;
-			while((pos = flag.find("%d")) != std::string::npos) {
-				std::ostringstream s;
-				s << teams_[i].map_colour_to();
-				flag.replace(pos, 2, s.str());
-			}
+			old_rgb = game_config::flag_rgb;
+			new_rgb = team::get_side_color_range(i+1);
 		} else {
 			flag = teams_[i].flag();
 		}
 
 		LOG_STREAM(info, display) << "Adding flag for team " << i << " from animation " << flag << "\n";
-		flags_.push_back(animated<image::locator>(flag));
+
+		//must recolor flag image
+		animated<image::locator> temp_anim;
+		
+		std::vector<std::string> items = utils::split(flag);
+		int current_time = 0;
+		std::vector<std::string>::const_iterator itor = items.begin();
+		for(; itor != items.end(); ++itor) {
+		  const std::vector<std::string>& items = utils::split(*itor, ':');
+		  std::string str;
+		  int time;
+
+		  if(items.size() > 1) {
+			str = items.front();
+			time = atoi(items.back().c_str());
+		  } else {
+		    str = *itor;
+		    time = 100;
+		  }
+
+		  std::cout<<" current time:"<<current_time<<std::endl;
+		  std::cout<<" frame:"<<str<<std::endl;
+		  image::locator flag_image(str, new_rgb, old_rgb);
+		  temp_anim.add_frame(current_time, flag_image);
+		  current_time += time;
+		}
+		temp_anim.add_frame(current_time);
+		flags_.push_back(temp_anim);
 		flags_.back().start_animation(0, animated<image::locator>::INFINITE_CYCLES);
 	}
 

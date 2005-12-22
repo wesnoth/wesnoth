@@ -53,6 +53,7 @@ namespace game_config
 	std::string enemy_energy_image = "misc/bar-energy-enemy.png";
 	std::string ally_energy_image = "misc/bar-energy-ally.png";
 	std::string flag_image = "terrain/flag-team%d-1.png:150,terrain/flag-team%d-2.png:150";
+  std::vector<Uint32> flag_rgb;
 
 	std::string dot_image = "misc/dot.png";
 	std::string cross_image = "misc/cross.png";
@@ -130,6 +131,13 @@ namespace game_config
 		enemy_energy_image = v["enemy_energy_image"];
 		ally_energy_image = v["ally_energy_image"];
 		flag_image = v["flag_image"];
+		flag_rgb = string2rgb(v["flag_rgb"]);
+		if( !flag_rgb.size()){
+		  //set green as old_flag_color
+		  for(int i=0;i!=256;i++){
+		    flag_rgb.push_back((Uint32)(i<<8));
+		  }
+		}
 
 		cross_image = v["cross_image"];
 		dot_image = v["dot_image"];

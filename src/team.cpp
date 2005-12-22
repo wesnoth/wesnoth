@@ -908,81 +908,43 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 
 std::map<int, color_range> team::team_color_range_;
 
-const Uint32 team::get_side_rgb(int side){
+const color_range team::get_side_color_range(int side){
   size_t index = size_t(get_side_colour_index(side));
   std::map<int, color_range>::iterator p=team_color_range_.find(index);
+
   if(p != team_color_range_.end()){
-    return(p->second.mid());
+    return(p->second);
   }else{
     p=team_color_range_.find(side);
     if(p != team_color_range_.end()){
-      return(p->second.mid());
+      return(p->second);
     }
   }
 
   p=game_config::team_rgb_range.find(side);
   if(p != game_config::team_rgb_range.end()){
-    return(p->second.mid());
+    return(p->second);
   }else{
     p=game_config::team_rgb_range.find(side);
     if(p != game_config::team_rgb_range.end()){
-      return(p->second.mid());
+      return(p->second);
     }
   }
 
-  return 0x00FF0000;
+  return(color_range(0x00FF0000,0x00FFFFFF,0x00000000));
+}
+
+const Uint32 team::get_side_rgb(int side){
+  return(get_side_color_range(side).mid());
 }
 
 const Uint32 team::get_side_rgb_max(int side){
-  size_t index = size_t(get_side_colour_index(side));
-  std::map<int, color_range>::iterator p=team_color_range_.find(index);
-  if(p != team_color_range_.end()){
-    return(p->second.max());
-  }else{
-    p=team_color_range_.find(side);
-    if(p != team_color_range_.end()){
-      return(p->second.max());
-    }
-  }
-
-  p=game_config::team_rgb_range.find(side);
-  if(p != game_config::team_rgb_range.end()){
-    return(p->second.max());
-  }else{
-    p=game_config::team_rgb_range.find(side);
-    if(p != game_config::team_rgb_range.end()){
-      return(p->second.max());
-    }
-  }
-
-  return 0x00FFFFFF;
+  return(get_side_color_range(side).max());
 }
 
 const Uint32 team::get_side_rgb_min(int side){
-  size_t index = size_t(get_side_colour_index(side));
-  std::map<int, color_range>::iterator p=team_color_range_.find(index);
-  if(p != team_color_range_.end()){
-    return(p->second.min());
-  }else{
-    p=team_color_range_.find(side);
-    if(p != team_color_range_.end()){
-      return(p->second.min());
-    }
-  }
-
-  p=game_config::team_rgb_range.find(side);
-  if(p != game_config::team_rgb_range.end()){
-    return(p->second.min());
-  }else{
-    p=game_config::team_rgb_range.find(side);
-    if(p != game_config::team_rgb_range.end()){
-      return(p->second.min());
-    }
-  }
-
-  return 0x00000000;
+  return(get_side_color_range(side).min());
 }
-
 
 const SDL_Color team::get_side_colour(int side)
 {
