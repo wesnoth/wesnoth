@@ -136,8 +136,6 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 		    time = 100;
 		  }
 
-		  std::cout<<" current time:"<<current_time<<std::endl;
-		  std::cout<<" frame:"<<str<<std::endl;
 		  image::locator flag_image(str, new_rgb, old_rgb);
 		  temp_anim.add_frame(current_time, flag_image);
 		  current_time += time;
