@@ -2458,10 +2458,6 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	bool action;
 	std::string msg;
 
-	if(speaker == "server" && !preferences::lobby_joins() && message.find("has logged into the lobby") != -1) {
-		return;
-	}
-
 	if(message.find("/me ") == 0) {
 		msg.assign(message,4,message.size());
 		action = true;

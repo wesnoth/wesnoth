@@ -241,7 +241,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 #if USE_TINY_GUI
 	set_measurements(260, 220);		  // FIXME: should compute this, but using what data ?
 #else
-	set_measurements(400, 430);
+	set_measurements(400, 400);
 #endif
 
 
@@ -350,7 +350,6 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; turn_bell_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_team_colours_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_grid_button_.set_location(rect.x, ypos);
-	ypos += item_interline;	show_lobby_joins_button_.set_location(rect.x, ypos);
 	ypos += item_interline; hotkeys_button_.set_location(rect.x, ypos);
 
 	// Display tab
@@ -396,6 +395,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
                                      rect.w - slider_label_width_ - border, 0 };
         chat_lines_slider_.set_location(chat_lines_rect);
         ypos += item_interline; chat_timestamp_button_.set_location(rect.x, ypos);
+	ypos += item_interline;	show_lobby_joins_button_.set_location(rect.x, ypos);
 
 	//Advanced tab
 	ypos = rect.y;
@@ -552,7 +552,6 @@ void preferences_dialog::set_selection(int index)
 	hotkeys_button_.hide(hide_general);
 	show_team_colours_button_.hide(hide_general);
 	show_grid_button_.hide(hide_general);
-	show_lobby_joins_button_.hide(hide_general);
 
 	const bool hide_display = tab_ != DISPLAY_TAB, hide_gamma = hide_display || !adjust_gamma();
 	gamma_label_.hide(hide_gamma);
@@ -578,6 +577,7 @@ void preferences_dialog::set_selection(int index)
         chat_lines_label_.hide(hide_multiplayer);
         chat_lines_slider_.hide(hide_multiplayer);
         chat_timestamp_button_.hide(hide_multiplayer);
+	show_lobby_joins_button_.hide(hide_multiplayer);
 
 	const bool hide_advanced = tab_ != ADVANCED_TAB;
 	advanced_.hide(hide_advanced);
