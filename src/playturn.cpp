@@ -2107,7 +2107,7 @@ void turn_info::recall()
 		for(std::vector<unit>::const_iterator u = recall_list.begin(); u != recall_list.end(); ++u) {
 			std::stringstream option;
 			const std::string& description = u->description().empty() ? "-" : u->description();
-			option << IMAGE_PREFIX << u->type().image() << COLUMN_SEPARATOR
+			option << IMAGE_PREFIX << u->image() << COLUMN_SEPARATOR
 			       << u->type().language_name() << COLUMN_SEPARATOR
 			       << description << COLUMN_SEPARATOR
 			       << u->type().level() << COLUMN_SEPARATOR
