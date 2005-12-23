@@ -610,8 +610,10 @@ redo_turn:
 			} catch(end_level_exception&) {
 			}
 
-			if (!obs)
+			if (!obs) {
+				sound::play_music(game_config::defeat_music, true);
 				return DEFEAT;
+			}
 			else
 				return QUIT;
 		} else if (end_level.result == VICTORY || end_level.result == LEVEL_CONTINUE ||
@@ -700,9 +702,11 @@ redo_turn:
 				}
 			}
 
-			if (!obs)
+			if (!obs) {
+				sound::play_music(game_config::victory_music, true);
 				gui::show_dialog(gui, NULL, _("Victory"),
 				                 _("You have emerged victorious!"), gui::OK_ONLY);
+			}
 
 			if (state_of_game.players.size() > 0 && has_next_scenario ||
 					state_of_game.campaign_type == "test")

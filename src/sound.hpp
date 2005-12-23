@@ -28,7 +28,7 @@ void close_sound();
 void stop_music();
 void stop_sound();
 
-void play_music(std::string file);
+void play_music(std::string file, bool once = false);
 void play_sound(const std::string& file);
 
 void set_music_volume(int vol);

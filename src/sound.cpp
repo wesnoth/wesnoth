@@ -122,7 +122,7 @@ void stop_sound() {
 	}
 }
 
-void play_music(std::string file)
+void play_music(std::string file, bool once)
 {
 	if(Mix_PlayingMusic() && current_music == file)
 		return;
@@ -157,7 +157,7 @@ void play_music(std::string file)
 			Mix_FadeOutMusic(500);
 		}
 
-		const int res = Mix_FadeInMusic(itor->second,-1,500);
+		const int res = Mix_FadeInMusic(itor->second, once ? 1 : -1,500);
 		if(res < 0) {
 			ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << file <<" \n";
 		}
