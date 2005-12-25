@@ -204,6 +204,10 @@ std::vector<std::string> get_text() {
 		"_" N_("+English (GB) Translation"),
 		"-   András Salamon (ott)",
 
+		"_" N_("+Esperanto Translation"),
+		"-  Aleksej Korgenkov",
+                "-  Asto",
+
 		"_" N_("+Estonian Translation"),
 		"-   Mart Tõnso",
 
