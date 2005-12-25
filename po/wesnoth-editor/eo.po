@@ -1,29 +1,25 @@
-# #-#-#-#-#  wesnoth-editor.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
-# Esperanto translations for Battle for Wesnoth package.
-# Copyright (C) 2005 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
+"Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-04 20:34+0100\n"
-"PO-Revision-Date: 2005-12-04 20:34+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2005-10-25 20:34+0200\n"
+"Last-Translator: Aleksej <grimpanto@mail.ru>\n"
+"Language-Team: eo-EO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: Esperanto\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: data/themes/editor.cfg:445
 msgid "File"
-msgstr ""
+msgstr "Dosiero"
 
 #: data/themes/editor.cfg:454
 msgid "Edit"
-msgstr ""
+msgstr "Redakti"
 
 #: data/themes/editor.cfg:461
 msgid "Settings"
@@ -31,47 +27,47 @@ msgstr ""
 
 #: src/editor/editor.cpp:162
 msgid "Draw tiles"
-msgstr ""
+msgstr "Pentri ĉelojn"
 
 #: src/editor/editor.cpp:164
 msgid "Fill"
-msgstr ""
+msgstr "Plenigi"
 
 #: src/editor/editor.cpp:166
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Marki starta pozicio de ludanto"
 
 #: src/editor/editor.cpp:168
 msgid "Zoom in"
-msgstr ""
+msgstr "Zomi"
 
 #: src/editor/editor.cpp:170
 msgid "Zoom out"
-msgstr ""
+msgstr "Malzomi"
 
 #: src/editor/editor.cpp:172
 msgid "Undo"
-msgstr ""
+msgstr "Malfari"
 
 #: src/editor/editor.cpp:174
 msgid "Redo"
-msgstr ""
+msgstr "Refari"
 
 #: src/editor/editor.cpp:176
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Defaŭlta zomo"
 
 #: src/editor/editor.cpp:178
 msgid "Toggle grid"
-msgstr ""
+msgstr "Ŝalti kradeton"
 
 #: src/editor/editor.cpp:180
 msgid "Resize the map"
-msgstr ""
+msgstr "Ŝanĝi grandecon de la mapo"
 
 #: src/editor/editor.cpp:182
 msgid "Flip map"
-msgstr ""
+msgstr "Renversi mapon"
 
 #: src/editor/editor.cpp:380
 msgid "Language"
@@ -83,82 +79,187 @@ msgstr ""
 
 #: src/editor/editor.cpp:395 src/editor/editor_main.cpp:252
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Batalo por Ŭesnot: Redaktilo de mapoj."
 
 #: src/editor/editor.cpp:419
 msgid "Save the Map As"
-msgstr ""
+msgstr "Savi la Mapon Kiel..."
 
 #: src/editor/editor.cpp:430
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "La mapo jam ekzistas. Ĉu vi volas anstaŭigi ĝin?"
 
 #: src/editor/editor.cpp:453
 msgid "Player "
-msgstr ""
+msgstr "Ludanto "
 
 #: src/editor/editor.cpp:456
 msgid "Which Player?"
-msgstr ""
+msgstr "Kiu Ludanto?"
 
 #: src/editor/editor.cpp:457
 msgid "Which player should start here?"
-msgstr ""
+msgstr "Kiu ludanto komencos ĉi tie?"
 
 #: src/editor/editor.cpp:509
 msgid "Choose a Map to Load"
-msgstr ""
+msgstr "Elektu Mapon por Ŝarĝado"
 
 #: src/editor/editor.cpp:513
+#, fuzzy
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
 msgstr ""
+"Averto: Nelegala simbolo en nomo de la mapo. Vi devas savi mapon kun alia "
+"nomo."
 
 #: src/editor/editor.cpp:531 src/editor/editor.cpp:610
 msgid "The file does not contain a valid map."
-msgstr ""
+msgstr "La dosiero ne enhavas mapon."
 
 #: src/editor/editor.cpp:672
 msgid "'$filename' does not exist or can not be read as a file."
-msgstr ""
+msgstr "'$filename' ne ekzistas aŭ estas nelegebla."
 
 #: src/editor/editor.cpp:684
 msgid "Load failed: "
-msgstr ""
+msgstr "Ŝarĝado rompis:"
 
 #: src/editor/editor.cpp:883
 msgid "You must have a hex selected on the board."
-msgstr ""
+msgstr "Vi devas havi elektitan ĉelon sur la tabulo."
 
 #: src/editor/editor.cpp:1132
 msgid "Quit Editor"
-msgstr ""
+msgstr "Eliri"
 
 #: src/editor/editor.cpp:1137
 msgid "Do you want to save the map before quitting?"
-msgstr ""
+msgstr "Ĉu vi volas savi la mapon antaŭ eliro?"
 
 #: src/editor/editor.cpp:1169
 msgid "Map saved."
-msgstr ""
+msgstr "Mapo estas savita."
 
 #: src/editor/editor.cpp:1176
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Vi ne povas savi mapon: $msg"
 
 #: src/editor/editor.cpp:1191
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Eraro: Nelegala simbolo en nomo de dosiero."
 
 #: src/editor/editor.cpp:1247
 msgid "Player"
-msgstr ""
+msgstr "Ludanto"
 
 #: src/editor/editor_palettes.cpp:319
 msgid "FG"
-msgstr ""
+msgstr "Antaŭa"
 
 #: src/editor/editor_palettes.cpp:321
 msgid "BG"
-msgstr ""
+msgstr "Malantaŭa"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "/1000 ĉeloj"
+
+#~ msgid "Cancel"
+#~ msgstr "Rifuzi"
+
+#~ msgid "Close Window"
+#~ msgstr "Fermi Fenestron"
+
+#~ msgid "Coastal"
+#~ msgstr "Bordregiono"
+
+#~ msgid "Create New Map"
+#~ msgstr "Krei Novan Mapon"
+
+#~ msgid "Delete File"
+#~ msgstr "Forigi Dosieron"
+
+#~ msgid "Deletion of the file failed."
+#~ msgstr "Forigo de la dosiero rompiĝis."
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Renversi mapon (tio povas ŝanĝi dimension de la mapo):"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Generi Novan Mapon"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Generi Hazardan Mapon"
+
+#~ msgid "Height:"
+#~ msgstr "Alteco:"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Tujaj Klavaĵoj"
+
+#~ msgid "Inland"
+#~ msgstr "Interno"
+
+#~ msgid "Island"
+#~ msgstr "Insulo"
+
+#~ msgid "Landform:"
+#~ msgstr "Landformo"
+
+#~ msgid "Map Generator"
+#~ msgstr "Generatoro de Mapoj"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Kreado de mapo malsukcesis."
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "Maksimuma Monteta Grandeco:"
+
+#~ msgid "Number of Hills:"
+#~ msgstr "Nombro da Montetoj:"
+
+#~ msgid "OK"
+#~ msgstr "Bone"
+
+#~ msgid "Players:"
+#~ msgstr "Ludantoj:"
+
+#~ msgid "Preferences"
+#~ msgstr "Preferencoj"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Agordoj de Aleatora Generatoro"
+
+#~ msgid "Resize Map"
+#~ msgstr "Ŝanĝi grandecon de Mapo"
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "Vojoj inter kasteloj"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Rapideco de Rulumado:"
+
+#~ msgid "Show Grid"
+#~ msgstr "Montri Krado"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Tuta Ekrano"
+
+#~ msgid "Video Mode"
+#~ msgstr "Ekranreĝimo"
+
+#~ msgid "Villages:"
+#~ msgstr "Vilaĝoj:"
+
+#~ msgid "Width:"
+#~ msgstr "Vasteco:"
+
+#~ msgid "X-Axis"
+#~ msgstr "X-Akso"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y-Akso"
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Viaj ŝanĝoj de la mapo forpasos. "
