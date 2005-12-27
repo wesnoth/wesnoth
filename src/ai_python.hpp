@@ -1,8 +1,6 @@
 #ifndef AI_PYTHON_HPP_INCLUDED
 #define AI_PYTHON_HPP_INCLUDED
 
-#ifdef HAVE_PYTHON
-
 #include "ai_interface.hpp"
 #include <Python.h>
 
@@ -61,7 +59,5 @@ protected:
 	ai_interface::move_map enemy_dst_src_;
 	std::map<location,paths> enemy_possible_moves_;
 };
-
-#endif // HAVE_PYTHON
 
 #endif
