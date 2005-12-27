@@ -207,7 +207,8 @@ surface scale_surface(surface const &surf, int w, int h)
 
 				int count = 0;
 				avg_r = avg_g = avg_b = avg_a = 0;
-				for (int loc=0; loc<4; loc++) {
+				int loc;
+				for (loc=0; loc<4; loc++) {
 				  SDL_GetRGBA(pix[loc],src->format,&r,&g,&b,&a);
 				  if (a != 0) {
 				    avg_r += r;
@@ -251,7 +252,7 @@ surface scale_surface(surface const &surf, int w, int h)
 				// could be.
 
 				rr = gg = bb = aa = 0;
-				for (int loc=0; loc<4; loc++) {
+				for (loc=0; loc<4; loc++) {
 				  SDL_GetRGBA(pix[loc],src->format,&r,&g,&b,&a);
 				  if (a == 0) {
 				    r = avg_r;
