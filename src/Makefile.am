@@ -27,7 +27,7 @@ noinst_LIBRARIES = libwesnoth-core.a
 pkgdatadir=$(datadir)/@DATADIR@
 
 THELIBS = -L. -lwesnoth-core $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
-	$(SDL_TTF_LIBS) $(SDL_LIBS) $(LIBZIPIOS) $(FREETYPE_LIBS) $(LIBINTL)
+	$(SDL_TTF_LIBS) $(SDL_LIBS) $(PYTHON_LIBS) $(LIBZIPIOS) $(FREETYPE_LIBS) $(LIBINTL)
 
 #############################################################################
 #    Wesnoth                                                                #
@@ -40,6 +40,7 @@ wesnoth_SOURCES = \
 	ai_dfool.cpp \
 	ai_attack.cpp \
 	ai_move.cpp \
+	ai_python.cpp \
 	animated.cpp \
 	astarnode.cpp \
 	builder.cpp \
@@ -304,6 +305,7 @@ noinst_HEADERS = \
 	statistics.hpp \
 	network.hpp \
 	ai2.hpp \
+	ai_python.hpp \
 	cursor.hpp \
 	tooltips.hpp \
 	halo.hpp \
@@ -422,10 +424,10 @@ libwesnoth_core_a_SOURCES = \
 	serialization/tokenizer.cpp \
 	zipios++/xcoll.cpp
 
-AM_CXXFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
+AM_CXXFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ @PYTHON_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) -DFIFODIR=\"$(fifodir)\"
 
-AM_CFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
+AM_CFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ @PYTHON_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR)
 
 if FRIBIDI

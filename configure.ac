@@ -349,23 +349,26 @@ You should install Python development package.])])
 CPPFLAGS="$OLD_CPPFLAGS"
 CXXFLAGS="$OLD_CXXFLAGS"
 
+AC_SUBST([PYTHON_CFLAGS])
+
 found=no
-for pylibpath in '' $PYTHON_PREFIX/lib $PYTHON_PREFIX/lib/python$PYTHON_VERSION/config; do
+for pylibpath in '/usr/lib' $PYTHON_PREFIX/lib $PYTHON_PREFIX/lib/python$PYTHON_VERSION/config; do
 	eval `echo unset ac_cv_lib_python$PYTHON_VERSION'_'Py_Finalize | tr '.' '_'`
 
 	save_LIBS=$LIBS
-	if test "x$pylibpath" != "x"; then
-		LIBS="$LIBS -L$pylibpath"
-	fi
+	LIBS="$LIBS -L$pylibpath"
 	AC_CHECK_LIB(python$PYTHON_VERSION, Py_Finalize, PYTHON_LIBS="-L$pylibpath -lpython$PYTHON_VERSION $PYTHON_DEPS"; found=yes,,$PYTHON_DEPS)
 	LIBS=$save_LIBS
 	if test "x$found" = "xyes"; then
 		break
 	fi
 done
+
 if test "x$found" != "xyes"; then
 	AC_ERROR(Python development libraries required)
 fi
+
+AC_SUBST([PYTHON_LIBS])
 
 # libpng-config
 
