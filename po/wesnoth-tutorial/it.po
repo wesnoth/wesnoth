@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-04 20:35+0100\n"
-"PO-Revision-Date: 2005-10-15 01:54+0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2005-12-27 22:16+0100\n"
+"Last-Translator: Americo_iacovizzi <darkamex@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -121,16 +121,15 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Termina il turno e aspetta che Merle ti attacchi."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:195
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it receives experience from the combat. Once a unit gains enough experience, "
 "it advances to the next level, and becomes more powerful."
 msgstr ""
 "Il tuo combattente è sopravvissuto all'attacco di Merle. Ogni volta che "
-"un'unità sopravvive ad una battaglia, acquisisce dei Punti Esperienza dal "
+"un'unità sopravvive ad una battaglia, acquisisce dei punti esperienza dal "
 "combattimento. Una volta raggiunti i punti esperienza necessari, l'unità "
-"avanza al livello successivo e diventa più forte."
+"avanza al livello successivo e diventa più potente."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:204
 #: data/scenarios/tutorial/Basic_Training.cfg:207
@@ -303,13 +302,12 @@ msgid "En garde!"
 msgstr "In guardia!"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:107
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics from the "
 "statistics shown before you recruited them. This is because they have been "
 "assigned traits."
 msgstr ""
-"Puoi notare che le tue unità hanno differenti caratteristiche diverse "
+"Puoi notare che le tue unità hanno caratteristiche notvolmente diverse "
 "rispetto a quelle mostrate prima che le reclutassi. Questo accade perché gli "
 "sono state assegnate differenti qualità."
 
@@ -434,7 +432,6 @@ msgid "What's a leader?"
 msgstr "Cos'è un Condottiero?"
 
 #: data/scenarios/tutorial/utils.cfg:68
-#, fuzzy
 msgid ""
 "A leader is a unit that can recruit. This means that when the leader is on a "
 "keep, units can be recruited on the surrounding castle tiles. Leaders are "
@@ -446,10 +443,10 @@ msgid ""
 msgstr ""
 "Un condottiero è un'unità che può reclutare. Questo significa che quando il "
 "condottiero si trova in una fortezza, può reclutare le unità nelle caselle "
-"interne al castello. I Condottieri son generalmente le unità più potenti che "
-"che ogni fazione può controllare. Il Condottiero è generalmente la prima "
-"unità che la tua fazione controlla, parte nella fortezza del castello. Puoi "
-"selezionare il Condottiero premendo il tasto 'I'. Se il tuo Condottiero "
+"interne al castello. I Condottieri sono generalmente le unità più potenti "
+"che che ogni fazione può controllare. Il Condottiero è generalmente la prima "
+"unità che controllerai e, di solito, inizia nella fortezza di un castello. "
+"Puoi selezionare il Condottiero premendo il tasto 'I'. Se il tuo Condottiero "
 "muore, perdi la partita. La maggior parte degli scenari si vincono "
 "sconfiggendo tutti i Condottieri avversari."
 
@@ -488,7 +485,6 @@ msgid "How do I end my turn?"
 msgstr "Come faccio a terminare il mio turno?"
 
 #: data/scenarios/tutorial/utils.cfg:74
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 "right-click and select End Turn, or select the End Turn button in the lower "
@@ -525,7 +521,6 @@ msgid "How far can my Elvish Fighter move?"
 msgstr "Che distanza può coprire il mio Combattente Elfico?"
 
 #: data/scenarios/tutorial/utils.cfg:79
-#, fuzzy
 msgid ""
 "Your Elvish Fighter begins with a certain number of move points each turn; "
 "this is called its speed. When your Elvish Fighter moves along a path, each "
@@ -538,20 +533,19 @@ msgid ""
 "space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
-"Il tuo Combattente Elfico inizia con un certo numero di punti movimento per "
-"ogni turno; Questa viene definita velocità. Quando il Combattente Elfico si "
+"Il tuo combattente elfico inizia con un certo numero di punti movimento per "
+"ogni turno; Questa viene definita velocità. Quando il combattente elfico si "
 "muove, gli viene scalato un certo numero di punti movimento per ogni esagono "
 "che attraversa finché non ginge a destinazione. Quando selezioni il tuo "
-"Combattente Elfico tutti gli esagoni dove non può muoversi entro il turno "
+"combattente elfico tutti gli esagoni dove non può muoversi entro il turno "
 "corrente saranno oscurati. Se la destinazione è così lontana da necessitare "
-"più turni per essere raggiunta, apparirà quindi un numero riportante i turni "
-"necessari al raggiungimento. Premendo su un punto lontano si impone "
-"all'unità di muoversi automaticamente verso quel punto nei turni successivi. "
-"Se si selezione accidentalmente un percorso, selezionarlo una seconda volta "
-"per rimuoverlo."
+"più turni per essere raggiunta apparirà un numero riportante i turni "
+"necessari al raggiungimento del punto. Premendo su un punto lontano si "
+"impone all'unità di muoversi automaticamente verso quel punto nei turni "
+"successivi. Se si selezione accidentalmente un percorso, selezionarlo una "
+"seconda volta per rimuoverlo."
 
 #: data/scenarios/tutorial/utils.cfg:80
-#, fuzzy
 msgid ""
 "A unit's zone of control is the location consisting of all hexes the unit is "
 "adjacent to. Units cannot move through opponent's zones of control; they can "
@@ -559,19 +553,18 @@ msgid ""
 "movement. Zones of control can be used to block enemies from reaching your "
 "weak and wounded units."
 msgstr ""
-"La zona di controllo di un unità comprende tutti gli esagoni adiacenti "
+"La zona di controllo di un'unità comprende tutti gli esagoni adiacenti "
 "all'unità stessa. Le unità non possono muoversi attraverso le zone di "
-"controllo nemiche; possono solo muoversi dentro di esse. Quando lo fanno "
-"perdono tutti i punti movimento rimanenti. Le zone di controllo possono "
-"essere utilizzare per fare in modo che le unità nemiche non possano "
-"raggiungere le proprie unità più deboli o ferite. "
+"controllo nemiche; possono solo muoversi su di esse. Quando lo fanno perdono "
+"tutti i punti movimento rimanenti. Le zone di controllo possono essere "
+"utilizzare per fare in modo che le unità nemiche non possano raggiungere le "
+"proprie unità più deboli o ferite. "
 
 #: data/scenarios/tutorial/utils.cfg:80
 msgid "What's the zone of control?"
 msgstr "Cos'è la zona di controllo?"
 
 #: data/scenarios/tutorial/utils.cfg:81
-#, fuzzy
 msgid ""
 "Units you control have a green, yellow, or red energy circle above their "
 "health bar, the green vertical bar next to them. Units with full movement "
@@ -582,11 +575,11 @@ msgid ""
 "displayed as a disc below the unit."
 msgstr ""
 "Le unità che controlli hanno una sfera di energia verde, gialla o rossa "
-"sopra la barra verticale vicino ad esse. Le unità con tutti i movimenti "
+"sopra la barra verticale della salute. Le unità con tutti i movimenti "
 "disponibili la avranno verde; quelle con pochi movimenti rimasti la avranno "
-"gialla, mentre quelle unità che non potranno più muoversi la avranno rossa. "
-"Le unità controllate dal nemico non avranno questa sfera. Alternativamente "
-"l'opzione 'Mostra colori squadre', nelle Preferenze, mostra il colore della "
+"gialla, mentre in quelle unità che non potranno più muoversi sarà rossa. Le "
+"unità controllate dal nemico non avranno questa sfera. Diversamente "
+"l'opzione 'Mostra colori squadre', nelle preferenze, mostra il colore della "
 "fazione come un disco colorato sotto l'unità."
 
 #: data/scenarios/tutorial/utils.cfg:81
@@ -598,7 +591,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Merle può rispondere al mio attacco?"
 
 #: data/scenarios/tutorial/utils.cfg:85
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -613,11 +605,11 @@ msgid ""
 "to retaliate at all. However, ranged units cannot shoot across multiple "
 "hexes; this is one of the distinctive features of Wesnoth."
 msgstr ""
-"Quando un unità è attaccata, può contrattaccare con una delle sue armi. "
-"Questo vuol dire che ad ogni attacco subito dall'attaccante, il difensore "
-"risponderà con un altro attacco. Questo alternarsi continuerà finché una "
-"delle due terminerà gli attacchi a disposizione, in questo caso, l'altra "
-"unità continuerà ad attaccare finché non terminerà anch'essa gli attacchi a "
+"Quando un'unità viene attaccata, può contrattaccare con una delle sue armi. "
+"Questo vuol dire che ad ogni attacco subito, il difensore risponderà con "
+"un'altro attacco. Questo alternarsi continuerà finché una delle due "
+"terminerà gli attacchi a disposizione, in questo caso, l'altra unità "
+"continuerà ad attaccare finché non terminerà anch'essa gli attacchi a "
 "disposizione. Tuttavia un'unità può contrattaccare solo con un arma di "
 "uguale raggio di quella usata per l'attacco. Questo vuol dire che un attacco "
 "a distanza può essere contrastato solo con un altro attacco a distanza, così "
@@ -626,7 +618,7 @@ msgstr ""
 "potenti di quelli a distanza. Le unità con un attacco a distanza più potente "
 "sono utili nelle rappresaglie contro le unità orientate agli attacchi di "
 "mischia. Alcune di queste unità non possiedono armi a lungo raggio, quindi "
-"non sono in grado di rispondere agli attacchi. Si rammenta che le unità "
+"non sono in grado di rispondere agli attacchi. Si ricorda che le unità "
 "dotate di attacco a lungo raggio non possono attaccare attraverso più "
 "esagoni, questa è una delle caratteristiche che distinguono Wesnoth dagli "
 "altri giochi di strategia."
@@ -658,7 +650,6 @@ msgid "How can you tell how powerful a unit's attacks are?"
 msgstr "Come si può capire quanto sono potenti gli attacchi di un unità?"
 
 #: data/scenarios/tutorial/utils.cfg:87
-#, fuzzy
 msgid "Will my fighter hit every time when it attacks?"
 msgstr "Il mio combattente colpirà ogni volta che attacca?"
 
@@ -718,7 +709,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Cosa succede quando un unità si muove su un villaggio?"
 
 #: data/scenarios/tutorial/utils.cfg:96
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, it flags the village for its side. "
 "This action takes all the unit's remaining movement. Villages flagged for a "
@@ -732,19 +722,18 @@ msgstr ""
 "Ogni volta che un'unità entra in un villaggio innalza una bandiera che lo "
 "identifica come appartanente al suo esercito. Questa azione comporta la fine "
 "immediata di tutti i punti movimento dell'unità. I villaggi posseduti da un "
-"esercito offrono vari benefici, forniscono pezzi d'oro extra ogni turno e "
+"esercito offrono vari benefici, forniscono monete d'oro extra ogni turno e "
 "riducono i costi totali di mantenimento dell'esercito. Il numero di villaggi "
 "posseduti è mostrato nella barra di stato in alto accanto all'immagine di "
 "una casa. Oltre ai benefici economici forniti dai villaggi essi possono "
 "essere utilizzati in battaglia. I villaggi curano le unità che vi si trovano "
-"di 8 PS per turno."
+"di 8 PF per turno."
 
 #: data/scenarios/tutorial/utils.cfg:97
 msgid "How do I heal when there aren't any villages nearby?"
 msgstr "Come mi posso curare se non ci sono dei villaggi nelle vicinanze?"
 
 #: data/scenarios/tutorial/utils.cfg:97
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, it heals 2 HP from resting. However, if an enemy attacks "
@@ -757,8 +746,8 @@ msgstr ""
 "un'unità non si muove o attacca per 1 turno, si cura di 2 PF per riposo. "
 "Comunque se viene attacata da un nemico non riceve alcuna cura da riposo. Ci "
 "sono anche alcune unità che guariscono quelle che gli sono vicine. La "
-"Sciamana Elfica è una di queste; Le unità che le sono vicine vengono curate "
-"per 4 PF per turno. In fine, quando riesci a vincere uno scenario l'energia "
+"sciamana elfica è una di queste; Le unità che le sono vicine vengono curate "
+"per 4 PF per turno. Infine, quando riesci a vincere uno scenario l'energia "
 "di tutte le tue unità viene ripristinata."
 
 #: data/scenarios/tutorial/utils.cfg:101
@@ -767,7 +756,6 @@ msgstr ""
 "Come faccio a sapere come completare uno scenario? Mi verrà sempre detto?"
 
 #: data/scenarios/tutorial/utils.cfg:101
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -776,16 +764,15 @@ msgid ""
 "conditions and defeat conditions, and when any of the conditions are met, "
 "the scenario is over. Hopefully, it was a victory condition that was met."
 msgstr ""
-"Alcune volte non è chiaro come vincere uno scenario semplicemente seguendo i "
-"dialoghi. In questo caso è sufficiente guardare gli obbiettivi dello "
-"scenario , che appaiono dopo il dialogo di apertura. Si può anche trovare "
-"facendo clic su 'Obiettivi' nel menù. Gli obbiettivi dello scenario sono un "
+"Alcune volte non viene chiarito come vincere uno scenario dallo svolgimento "
+"dei dialoghi. In questo caso è sufficente guardare gli obbiettivi dello "
+"scenario, che appaiono dopo il dialogo iniziale. Si può anche rivederlo "
+"facendo clic su 'Obiettivi' nel menù. Gli obiettivi dello scenario sono un "
 "elenco delle condizioni di vittoria e di sconfitta e quando una delle due "
 "viene raggiunta, finisce il livello. Ovviamente solo vincendo si può andare "
 "avanti."
 
 #: data/scenarios/tutorial/utils.cfg:102
-#, fuzzy
 msgid ""
 "When you win a scenario, all your units survive and are revived to full "
 "health, and you do not have to pay them for the remaining turns. Also, if "
@@ -794,10 +781,10 @@ msgid ""
 "lost."
 msgstr ""
 "Quando vinci uno scenario, tutte le tue unità sopravvivono e sono ricaricate "
-"al massimo dell'energia, e non devi le devi pagare per i turni successivi. "
+"al massimo dell'energia e non devi le devi pagare per i turni successivi. "
 "Oltretutto, se la tua armata rimane nell'area dopo la tua vittoria, tutti i "
-"villagi arrendono immediatamente a te. Comunque  tra uno scenario e l'altro "
-"viene perso il 20% dell'oro guadagnato."
+"villaggi si arrendono immediatamente. Comunque sia,  tra uno scenario e "
+"l'altro viene perso il 20% dell'oro guadagnato."
 
 #: data/scenarios/tutorial/utils.cfg:102
 msgid "What happens when I win a scenario?"
@@ -843,7 +830,6 @@ msgid "What do traits do?"
 msgstr "Che cosa fanno le qualità?"
 
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "The function of traits is to add variety by making units of the same type "
 "different from each other. This is done by randomly assigning each unit "
@@ -851,15 +837,14 @@ msgid ""
 "Table, and the function of a specific trait can be found by putting your "
 "cursor over that trait."
 msgstr ""
-"LA funzione delle qualità è quella di aggiungere una certa varietà facendo "
-"le unità dello stesso tipo deverse le une dalle altre. Questo viene fatto "
+"La funzione delle qualità è quella di aggiungere una certa varietà facendo "
+"le unità dello stesso tipo diverse le une dalle altre. Questo viene fatto "
 "casualmente assegnando tali caratteristiche al momento del reclutamento. Le "
-"caratteristiche di un'unità sono mostrati sulla barra di stato e la funzione "
-"di quella caratteristica può essere trovata ponendo il cursore sopra qulla "
+"qualità di un'unità sono mostrati sulla barra di stato e la funzione di "
+"quella qualità può essere visualizzata ponendo il cursore sopra quella "
 "caratteristica. "
 
 #: data/scenarios/tutorial/utils.cfg:112
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -872,8 +857,8 @@ msgstr ""
 "del danno per colpo alla diminuzione dei PE necessari per avanzare. Comunque "
 "tutte le caratteristiche sono studiate per migliorare la potenza dell'unità; "
 "non vi sono caratteristiche 'negative'. La maggior parte delle unità può "
-"prendere quqlunque caratteristica quando viene reclutata. Anche se, alcune "
-"razze possono avere delle Caratteristiche proprie ed uniche."
+"prendere qualunque qualità quando viene reclutata. Anche se, alcune razze "
+"possono avere delle qualità proprie ed uniche."
 
 #: data/scenarios/tutorial/utils.cfg:112
 msgid "What kind of traits can my units get?"
@@ -928,7 +913,6 @@ msgid "How do I get gold?"
 msgstr "Come posso raccogliere l'oro?"
 
 #: data/scenarios/tutorial/utils.cfg:121
-#, fuzzy
 msgid ""
 "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
 "of day: day, twilight, and night. During the day, units of the alignment "
@@ -939,18 +923,17 @@ msgid ""
 msgstr ""
 "Ci sono 3 allineamenti: Legale, Neutrale, e Caotico. Ci sono anche 3 periodi "
 "del giorno: giorno, crepuscolo e notte. Durante il giorno, le unità di "
-"allineamento Legale, come gli Uomini, causano il 25% di danno in più, mentre "
-"le unità Caotiche come i non morti causano il 25% di danno in meno. Durante "
-"la notte si invertono. Durante il crepuscolo, tutte le unità causano "
-"normalmente il danno. Le creature Neutrali come gli elfi non vengono "
-"influenzate dal giorno o dalla notte. "
+"allineamento Legale, come gli umani, causano il 25% di danno in più, mentre "
+"le unità Caotiche, come i non morti, causano il 25% di danno in meno. "
+"Durante la notte le percentuali si invertono. Durante il crepuscolo, tutte "
+"le unità causano normalmente il danno. Le creature Neutrali come gli elfi "
+"non vengono influenzate dal ciclo del giorno e della notte. "
 
 #: data/scenarios/tutorial/utils.cfg:121
 msgid "What are the different alignments and times of day?"
 msgstr "Quali sono i diversi allineamenti e i periodi del giorno?"
 
 #: data/scenarios/tutorial/utils.cfg:122
-#, fuzzy
 msgid ""
 "The times of day usually progress in a sequence: dawn- identical to "
 "twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
@@ -965,7 +948,7 @@ msgstr ""
 "penombra, sera - notte, notte fonda - notte, e poi si ripete. Il periodo "
 "viene rappresentato dal sole e dalla luna i quali sorgono da est e si "
 "muovono verso ovest. Alcuni scenari tuttavia hanno una sequenza differente, "
-"ad esempio, gli scenari sotterranei sono sempre ambientati di notti. Puoi "
+"ad esempio, gli scenari sotterranei sono sempre ambientati di notte. Puoi "
 "controllare il periodo corrente guardando il menù a destra."
 
 #: data/scenarios/tutorial/utils.cfg:122
@@ -973,7 +956,6 @@ msgid "How do I know what time of day it is?"
 msgstr "Come posso sapere in che fase del giono mi trovo?"
 
 #: data/scenarios/tutorial/utils.cfg:126
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castles. However, the properties of most terrains are more "
@@ -992,14 +974,14 @@ msgstr ""
 "l'unità che vi si trova. La seconda proprietà è la capacità difensiva "
 "dell'unità che si trova sul terreno. Questa è una percentuale che determina "
 "la probabilità che l'unità ha di essere colpita. Ad esempio: molti elfi "
-"hanno il 70% di difesa nei boschi e possono essere colpiti pari al 30%."
+"hanno il 70% di difesa nei boschi e la loro possibilità di essere colpiti "
+"pari al 30%."
 
 #: data/scenarios/tutorial/utils.cfg:126
 msgid "What are the different properties that terrains have?"
 msgstr "Quali sono le varie proprietà che ha un terreno?"
 
 #: data/scenarios/tutorial/utils.cfg:127
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -1010,13 +992,13 @@ msgid ""
 "it will cost the selected unit to move through that hex."
 msgstr ""
 "Per sapere le proprietà di un terreno nei confronti di una specifica unità "
-"bisogna cliccare con il destro sull'unità, selezionare Descrizione "
-"dell'Unità, e guardare i Modificatori di Terreno. Per sapere che terreno c'è "
-"su un determinato esagono, muovere il cursore sopra all'esagono e guardare "
-"sull'angolo superiore destro dello schermo. Qusto mostrerà il nome del "
-"terreno, le coordinate dell'esagono, la difesa dell'unità selezionata, ed il "
-"numero di punti movimento che utilizza l'unità scelta per muoversi "
-"attraverso quell'esagono."
+"bisogna fare clic con il pulsante destro sull'unità, selezionare "
+"'Descrizione dell'unità', e visualizzare i Modificatori di Terreno. Per "
+"sapere che tipo di terreno c'è su un determinato esagono, muovere il cursore "
+"sopra all'esagono e guardare sull'angolo superiore destro dello schermo. "
+"Questo mostrerà il nome del terreno, le coordinate dell'esagono, la difesa "
+"dell'unità selezionata ed il numero di punti movimento che utilizza l'unità "
+"scelta per muoversi attraverso quell'esagono."
 
 #: data/scenarios/tutorial/utils.cfg:127
 msgid "How do I find out the properties of a specific terrain?"
@@ -1137,27 +1119,25 @@ msgid "What kind of objects am I likely to encounter?"
 msgstr "Che tipo di oggetti incontrerò con piacere?"
 
 #: data/scenarios/tutorial/utils.cfg:143
-#, fuzzy
 msgid ""
 "The objects you encounter are put in by the scenario designer, so they vary "
 "from campaign to campaign. In Heir to the Throne, most objects give the unit "
 "who picks them up a new weapon. However, there are usually not that many "
 "objects in a campaign."
 msgstr ""
-"Gli oggetti che incontri vengono messi dal disegnatore dello scenario , e "
+"Gli oggetti che incontri vengono messi dal disegnatore dello scenario, e "
 "quindi variano da campagna a campagna. Nell'Erede al trono, la maggior parte "
 "degli oggetti danno all'unità una nuova arma. Comunque generalmente non ci "
-"sono così tanti oggetti nelle Campagne."
+"sono così tanti oggetti nelle campagne."
 
 #: data/scenarios/tutorial/utils.cfg:144
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However, "
 "a few objects, such as holy water, last only until the end of the scenario."
 msgstr ""
-"Gran parte degli oggetti cambiano definitivamente l'unità che li riceve. "
-"Invece alcuni di essi, come l'Acqua Santa, durano sino alla fine dello "
-"scenario."
+"Gran parte degli oggetti che troverai cambiano definitivamente l'unità che "
+"li trova. Mentre, solo pochi di essi, come l'Acqua Santa, durano solo fino "
+"alla fine dello scenario."
 
 #: data/scenarios/tutorial/utils.cfg:144
 msgid "How long do these objects last?"

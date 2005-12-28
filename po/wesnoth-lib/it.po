@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-13 21:00+0100\n"
-"PO-Revision-Date: 2005-11-12 19:24+0100\n"
+"PO-Revision-Date: 2005-12-27 21:28+0100\n"
 "Last-Translator: Americo_iacovizzi <darkamex@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -242,39 +242,36 @@ msgid "Best Possible Enemy Moves"
 msgstr "Probabile Migliore Mossa Nemica"
 
 #: src/hotkeys.cpp:81
-#, fuzzy
 msgid "Play"
-msgstr "Giocatori:"
+msgstr "Gioca"
 
 #: src/hotkeys.cpp:82
 msgid "Reset"
-msgstr ""
+msgstr "Resetta"
 
 #: src/hotkeys.cpp:83
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: src/hotkeys.cpp:84
-#, fuzzy
 msgid "Next Turn"
-msgstr "Unità successiva"
+msgstr "Turno successivo"
 
 #: src/hotkeys.cpp:85
-#, fuzzy
 msgid "Next Side"
-msgstr "Unità successiva"
+msgstr "Schieramento successivo"
 
 #: src/hotkeys.cpp:86
 msgid "Shroud"
-msgstr ""
+msgstr "Sudario"
 
 #: src/hotkeys.cpp:87
 msgid "Fog"
-msgstr ""
+msgstr "Nebbia"
 
 #: src/hotkeys.cpp:88
 msgid "Skip animation"
-msgstr ""
+msgstr "Salta le animazioni"
 
 #: src/hotkeys.cpp:90
 msgid "Set Terrain"
@@ -461,7 +458,7 @@ msgstr "Salta mosse AI"
 
 #: src/preferences_display.cpp:219
 msgid "Show lobby joins"
-msgstr ""
+msgstr "Mostra i collegamenti alla lobby"
 
 #: src/preferences_display.cpp:220
 msgid "Show Floating Labels"
@@ -489,7 +486,7 @@ msgstr "Mostra gli Effetti di Haloing"
 
 #: src/preferences_display.cpp:227
 msgid "Theme"
-msgstr ""
+msgstr "Thema"
 
 #: src/preferences_display.cpp:229
 msgid "Adjust Gamma"
@@ -576,6 +573,8 @@ msgstr "Disegna una griglia sulla mappa"
 #: src/preferences_display.cpp:299
 msgid "Show messages about players joining the multiplayer lobby"
 msgstr ""
+"Mostra i messaggi sui giocatori che si collegano alla lobby dei giocatori in "
+"rete."
 
 #: src/preferences_display.cpp:302
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -587,9 +586,8 @@ msgid "Change the resolution the game runs at"
 msgstr "Cambia la risoluzione grafica del gioco"
 
 #: src/preferences_display.cpp:305
-#, fuzzy
 msgid "Change the theme the game runs with"
-msgstr "Cambia la risoluzione grafica del gioco"
+msgstr "Cambia il thema del gioco"
 
 #: src/preferences_display.cpp:308
 msgid "Display a dialog at the beginning of your turn"
@@ -670,7 +668,6 @@ msgid "Hotkey Settings"
 msgstr "Impostazioni delle Scorciatoie"
 
 #: src/preferences_display.cpp:716 src/preferences_display.cpp:769
-#, fuzzy
 msgid "Press desired Hotkey"
 msgstr "Premi il tasto di Scorciatoia desiderato"
 
@@ -691,21 +688,20 @@ msgid "Save Hotkeys"
 msgstr "Salva le Scorciatoie"
 
 #: src/preferences_display.cpp:795
-#, fuzzy
 msgid "This Hotkey is already in use."
-msgstr "Questo tasto di Scorciatoia è già in uso."
+msgstr "Questa tasto di Scorciatoia è già in uso."
 
 #: src/preferences_display.cpp:828
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Preferenze sul tema salvate:"
 
 #: src/preferences_display.cpp:834
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "Il nuovo tema avrà effetto sul gioco che inizierai o che caricherai."
 
 #: src/preferences_display.cpp:838
 msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
+msgstr "Nessun tema conosciuto. Prova a cambiarlo in un gioco conosciuto."
 
 #: src/show_dialog.cpp:314
 msgid "Error"
