@@ -1055,5 +1055,7 @@ void python_ai::play_turn()
 	std::string script = current_team().ai_parameters()["python_script"];
 	PyObject* file = PyFile_FromString((char*)script.c_str(),"rt");
 	PyRun_SimpleFile(PyFile_AsFile(file),(char*)script.c_str());
+	if (PyErr_Occurred())
+		PyErr_Print();
 	Py_DECREF(file);
 }

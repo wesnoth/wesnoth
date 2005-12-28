@@ -204,11 +204,7 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 	else if(name == "ai2")
 		return new ai2(info);
 	else if(name == "python_ai")
-#ifdef HAVE_PYTHON
 		return new python_ai(info);
-#else
-		return new ai2(info);
-#endif
 	else if(name != "")
 		LOG_STREAM(err, ai) << "AI not found: '" << name << "'\n";
 
