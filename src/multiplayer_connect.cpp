@@ -674,13 +674,28 @@ void connect::process_network_data(const config& data, const network::connection
 
 		// Checks if the connecting user has a valid and unique name.
 		const std::string name = data["name"];
-		if (name.empty() || find_player(name) != users_.end()) {
+		if(name.empty()) {
 			config response;
 			response.values["failed"] = "yes";
 			network::send_data(response,sock);
 			return;
 		}
 
+		connected_user_list::iterator player = find_player(name);
+		if(player != users_.end()) {
+			if(find_player_side(name) != -1) {
+				config response;
+				response.values["failed"] = "yes";
+				network::send_data(response,sock);
+				return;
+			} else {
+				users_.erase(player);
+				config observer_quit;
+				observer_quit.add_child("observer_quit").values["name"] = name;
+				network::send_data(observer_quit);
+				update_user_combos();
+			}
+		}
 
 		// Assigns this user to a side
 		if(side_taken >= 0 && side_taken < int(sides_.size())) {
@@ -728,6 +743,31 @@ void connect::process_network_data(const config& data, const network::connection
 			config response;
 			response.values["failed"] = "yes";
 			network::send_data(response, sock);
+		}
+	}
+
+	if(data.child("observer") != NULL) {
+		const t_string& observer_name = data.child("observer")->get_attribute("name");
+		if(!observer_name.empty()) {
+			connected_user_list::iterator player = find_player(observer_name);
+			if(player == users_.end()) {
+				users_.push_back(connected_user(observer_name, CNTR_NETWORK, sock));
+				update_user_combos();
+				update_playerlist_state();
+				update_and_send_diff();
+			}
+		}
+	}
+	if(data.child("observer_quit") != NULL) {
+		const t_string& observer_name = data.child("observer_quit")->get_attribute("name");
+		if(!observer_name.empty()) {
+			connected_user_list::iterator player = find_player(observer_name);
+			if(player != users_.end() && find_player_side(observer_name) == -1) {
+				users_.erase(player);
+				update_user_combos();
+				update_playerlist_state();
+				update_and_send_diff();
+			}
 		}
 	}
 }

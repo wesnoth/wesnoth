@@ -464,6 +464,13 @@ void game::add_player(network::connection player)
 	players_.push_back(player);
 
 	send_user_list();
+	player_map::const_iterator info = player_info_->find(player);
+	if(info != player_info_->end()) {
+		config observer_join;
+		observer_join.add_child("observer").values["name"] = info->second.name();
+		//send observer join to everyone except player
+		send_data(observer_join, player);
+	}
 
 	//send the player the history of the game to-date
 	network::queue_data(history_,player);
