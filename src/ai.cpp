@@ -17,9 +17,7 @@
 #include "ai.hpp"
 #include "ai2.hpp"
 #include "ai_dfool.hpp"
-#ifdef HAVE_PYTHON
 #include "ai_python.hpp"
-#endif
 //#include "advanced_ai.hpp"
 #include "dialogs.hpp"
 #include "game_config.hpp"
