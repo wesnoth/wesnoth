@@ -116,27 +116,19 @@ void gamebrowser::draw_item(size_t index) const {
 
 	xpos += item_height_ + margin_;
 
+	// draw game name
 	const surface name_surf(font::get_rendered_text(font::make_text_ellipsis(game.name, font::SIZE_PLUS, (item_rect.x + item_rect.w) - xpos - margin_), font::SIZE_PLUS, game.vacant_slots > 0 ? font::GOOD_COLOUR : game.observers ? font::NORMAL_COLOUR : font::BAD_COLOUR));
 	video().blit_surface(xpos, ypos, name_surf);
-
-	ypos += v_padding_;
-
-	// draw map info
-	const surface map_info_surf(font::get_rendered_text(font::make_text_ellipsis(game.map_info, font::SIZE_PLUS, (item_rect.x + item_rect.w) - xpos - margin_), font::SIZE_PLUS, font::GOOD_COLOUR));
-	video().blit_surface(xpos, ypos, map_info_surf);
-
-	// draw dimensions text
-	const surface dimensions_text(font::get_rendered_text(game.dimensions, font::SIZE_NORMAL, font::NORMAL_COLOUR));
-	ypos = item_rect.y + item_rect.h  - margin_ - dimensions_text->h;
-	video().blit_surface(xpos, ypos, dimensions_text);
-
-	xpos += dimensions_text->w + 2 * h_padding_;
 
 	// draw gold icon
 	const surface gold_icon(image::get_image(gold_icon_locator_, image::UNSCALED));
 	ypos = item_rect.y + item_rect.h  - margin_ - gold_icon->h;
 
 	video().blit_surface(xpos, ypos, gold_icon);
+
+	// draw map info
+	const surface map_info_surf(font::get_rendered_text(font::make_text_ellipsis(game.map_info, font::SIZE_NORMAL, (item_rect.x + item_rect.w) - xpos - margin_), font::SIZE_NORMAL, font::NORMAL_COLOUR));
+	video().blit_surface(xpos, ypos - map_info_surf->h - 4 * v_padding_, map_info_surf);
 
 	xpos += gold_icon->w + h_padding_;
 
@@ -299,7 +291,11 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 
 	for(game = games.begin(); game != games.end(); ++game) {
 		games_.push_back(game_item());
-
+		if((**game)["mp_era"] != "") {
+			const config* const era_cfg = game_config.find_child("era", "id", (**game)["mp_era"]);
+			games_.back().map_info = era_cfg != NULL ? era_cfg->get_attribute("name") : _("Unkown era");
+			
+		}
 		games_.back().map_data = (**game)["map_data"];
 		if(games_.back().map_data == "")
 			games_.back().map_data = read_map((**game)["map"]);
@@ -308,16 +304,20 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			try {
 				gamemap map(game_config, games_.back().map_data);
 				games_.back().mini_map = image::getMinimap(item_height_ - margin_, item_height_ - 2 * margin_, map, 0);
-				char dimensions[10];
-				snprintf(dimensions,sizeof(dimensions),"%dx%d", map.x(), map.y());
-				games_.back().dimensions=dimensions;
+				games_.back().map_info += " - " + lexical_cast_default<std::string, int>(map.x(), "??") + std::string("x") + lexical_cast_default<std::string, int>(map.y(), "??");
 			} catch(gamemap::incorrect_format_exception &e) {
 				std::cerr << "illegal map: " << e.msg_ << "\n";
 			}
 		} else {
-			games_.back().dimensions="??x??";
+			games_.back().map_info += " - ??x??";
 		}
-		// now dimensions is non-empty
+		if((**game)["mp_scenario"] != "") {
+			games_.back().map_info += " ";
+			const config* level_cfg = game_config.find_child("generic_multiplayer", "id", (**game)["mp_scenario"]);
+			if(level_cfg == NULL)
+				level_cfg = game_config.find_child("multiplayer", "id", (**game)["mp_scenario"]);
+			games_.back().map_info += level_cfg != NULL ? level_cfg->get_attribute("name") : _("Unknown scenario");
+		}
 		games_.back().name = (**game)["name"];
 		const std::string& turn = (**game)["turn"];
 		const std::string& slots = (**game)["slots"];

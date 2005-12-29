@@ -36,7 +36,6 @@ public:
 		std::string xp;
 		std::string vision;
 		std::string status;
-		std::string dimensions;
 		std::string time_limit;
 		size_t vacant_slots;
 		bool fog;
