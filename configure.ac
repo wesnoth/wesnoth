@@ -65,6 +65,11 @@ AC_ARG_ENABLE([static],
 	      [static=$enableval],
 	      [static=no])
 
+AC_ARG_ENABLE([python],
+              AS_HELP_STRING([--enable-python], [enable Python support]),
+	      [python=$enableval],
+	      [python=no])
+
 AC_ARG_ENABLE([lite],
               AS_HELP_STRING([--enable-lite], [enable lite version of wesnoth (without music or large images)]),
 	      [lite=$enableval],
@@ -313,62 +318,65 @@ AC_SUBST([FRIBIDI_LIBS])
 AM_CONDITIONAL([FRIBIDI], [test "x$fribidifound" = xyes -a "x$fribidi" = xyes ])
 
 # python
-if test "x$PYTHON" = "x"; then
-	AC_PATH_PROG(PYTHON, python, none)
-fi
-
-if test "x$PYTHON" = "xnone"; then
-        AC_ERROR(python interpreter required)
-fi
-
-AC_MSG_CHECKING(Python version and location)
-PYTHON_PREFIX=`$PYTHON -c "import sys; print sys.prefix"`
-PYTHON_VERSION_MAJOR=[`$PYTHON -c "import sys; print '%d' % (sys.version_info[0]);"`]
-PYTHON_VERSION_MINOR=[`$PYTHON -c "import sys; print '%d' % (sys.version_info[1]);"`]
-PYTHON_VERSION="${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}"
-AC_MSG_RESULT([$PYTHON, $PYTHON_VERSION, $PYTHON_PREFIX])
-
-AC_MSG_CHECKING(whether Python is at least 2.3)
-if test $PYTHON_VERSION_MAJOR -lt 2 -o $PYTHON_VERSION_MAJOR -eq 2 -a $PYTHON_VERSION_MINOR -lt 3; then
-        AC_MSG_RESULT(no)
-        AC_ERROR(Wesnoth requires at least Python 2.3)
-fi
-AC_MSG_RESULT(yes)
-
-PYTHON_CFLAGS="-I$PYTHON_PREFIX/include/python$PYTHON_VERSION"
-
-OLD_CPPFLAGS="$CPPFLAGS"
-OLD_CXXFLAGS="$CXXFLAGS"
-CPPFLAGS="$CPPFLAGS $PYTHON_CFLAGS"
-CXXFLAGS="$CXXFLAGS $PYTHON_CFLAGS"
-
-AC_CHECK_HEADER([Python.h],
-		[],
-		[AC_MSG_ERROR([*** Python include files not found!
-You should install Python development package.])])
-CPPFLAGS="$OLD_CPPFLAGS"
-CXXFLAGS="$OLD_CXXFLAGS"
-
-AC_SUBST([PYTHON_CFLAGS])
-
-found=no
-for pylibpath in '/usr/lib' $PYTHON_PREFIX/lib $PYTHON_PREFIX/lib/python$PYTHON_VERSION/config; do
-	eval `echo unset ac_cv_lib_python$PYTHON_VERSION'_'Py_Finalize | tr '.' '_'`
-
-	save_LIBS=$LIBS
-	LIBS="$LIBS -L$pylibpath"
-	AC_CHECK_LIB(python$PYTHON_VERSION, Py_Finalize, PYTHON_LIBS="-L$pylibpath -lpython$PYTHON_VERSION $PYTHON_DEPS"; found=yes,,$PYTHON_DEPS)
-	LIBS=$save_LIBS
-	if test "x$found" = "xyes"; then
-		break
+if test "x$python" = "xyes"; then
+	if test "x$PYTHON" = "x"; then
+		AC_PATH_PROG(PYTHON, python, none)
 	fi
-done
 
-if test "x$found" != "xyes"; then
-	AC_ERROR(Python development libraries required)
+	if test "x$PYTHON" = "xnone"; then
+		AC_ERROR(Python interpreter required)
+	fi
+
+	AC_MSG_CHECKING(Python version and location)
+	PYTHON_PREFIX=`$PYTHON -c "import sys; print sys.prefix"`
+	PYTHON_VERSION_MAJOR=[`$PYTHON -c "import sys; print '%d' % (sys.version_info[0]);"`]
+	PYTHON_VERSION_MINOR=[`$PYTHON -c "import sys; print '%d' % (sys.version_info[1]);"`]
+	PYTHON_VERSION="${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}"
+	AC_MSG_RESULT([$PYTHON, $PYTHON_VERSION, $PYTHON_PREFIX])
+
+	AC_MSG_CHECKING(whether Python is at least 2.3)
+	if test $PYTHON_VERSION_MAJOR -lt 2 -o $PYTHON_VERSION_MAJOR -eq 2 -a $PYTHON_VERSION_MINOR -lt 3; then
+		AC_MSG_RESULT(no)
+		AC_ERROR(Wesnoth requires at least Python 2.3)
+	fi
+	AC_MSG_RESULT(yes)
+
+	PYTHON_CFLAGS="-DHAVE_PYTHON -I$PYTHON_PREFIX/include/python$PYTHON_VERSION"
+
+	OLD_CPPFLAGS="$CPPFLAGS"
+	OLD_CXXFLAGS="$CXXFLAGS"
+	CPPFLAGS="$CPPFLAGS $PYTHON_CFLAGS"
+	CXXFLAGS="$CXXFLAGS $PYTHON_CFLAGS"
+
+	AC_CHECK_HEADER([Python.h],
+			[],
+			[AC_MSG_ERROR([*** Python include files not found!
+	You should install Python development package.])])
+	CPPFLAGS="$OLD_CPPFLAGS"
+	CXXFLAGS="$OLD_CXXFLAGS"
+
+	AC_SUBST([PYTHON_CFLAGS])
+
+	found=no
+	for pylibpath in '/usr/lib' $PYTHON_PREFIX/lib $PYTHON_PREFIX/lib/python$PYTHON_VERSION/config; do
+		eval `echo unset ac_cv_lib_python$PYTHON_VERSION'_'Py_Finalize | tr '.' '_'`
+
+		save_LIBS=$LIBS
+		LIBS="$LIBS -L$pylibpath"
+		AC_CHECK_LIB(python$PYTHON_VERSION, Py_Finalize, PYTHON_LIBS="-L$pylibpath -lpython$PYTHON_VERSION $PYTHON_DEPS"; found=yes,,$PYTHON_DEPS)
+		LIBS=$save_LIBS
+		if test "x$found" = "xyes"; then
+			break
+		fi
+	done
+
+	if test "x$found" != "xyes"; then
+		AC_ERROR(Python development libraries required)
+	fi
+
+	AC_SUBST([PYTHON_LIBS])
 fi
-
-AC_SUBST([PYTHON_LIBS])
+AM_CONDITIONAL([PYTHON], [test "x$python" = "xyes"])
 
 # libpng-config
 
