@@ -32,6 +32,8 @@ Additionally, useful utility functions such as those found in pathutils.hpp shou
 
 */
 
+#ifdef HAVE_PYTHON
+
 #include "global.hpp"
 
 #include "ai.hpp"
@@ -1059,3 +1061,5 @@ void python_ai::play_turn()
 		PyErr_Print();
 	Py_DECREF(file);
 }
+
+#endif // HAVE_PYTHON
