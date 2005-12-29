@@ -618,7 +618,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 						sound::play_sound(game_config::sounds::receive_message);
 					}
 
-					const int side = lexical_cast_default<int>((*child)["side"].c_str(),1);
+					const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
 					disp.add_chat_message((*child)["description"],side,(*child)["message"],
 										  team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
 				}
