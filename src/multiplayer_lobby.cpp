@@ -295,6 +295,8 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			const config* const era_cfg = game_config.find_child("era", "id", (**game)["mp_era"]);
 			games_.back().map_info = era_cfg != NULL ? era_cfg->get_attribute("name") : _("Unkown era");
 			
+		} else {
+			games_.back().map_info = _("Unknown era");
 		}
 		games_.back().map_data = (**game)["map_data"];
 		if(games_.back().map_data == "")
@@ -311,12 +313,14 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		} else {
 			games_.back().map_info += " - ??x??";
 		}
+		games_.back().map_info += " ";
 		if((**game)["mp_scenario"] != "") {
-			games_.back().map_info += " ";
 			const config* level_cfg = game_config.find_child("generic_multiplayer", "id", (**game)["mp_scenario"]);
 			if(level_cfg == NULL)
 				level_cfg = game_config.find_child("multiplayer", "id", (**game)["mp_scenario"]);
 			games_.back().map_info += level_cfg != NULL ? level_cfg->get_attribute("name") : _("Unknown scenario");
+		} else {
+			games_.back().map_info += _("Unknown scenario");
 		}
 		games_.back().name = (**game)["name"];
 		const std::string& turn = (**game)["turn"];
