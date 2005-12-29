@@ -125,7 +125,7 @@ PyObject* python_ai::unittype_advances_to( wesnoth_unittype* type, PyObject* arg
 
 static PyMethodDef unittype_methods[] = {
 	{ "advances_to",	(PyCFunction)python_ai::unittype_advances_to,	METH_VARARGS},
-	{ NULL, NULL, NULL }
+	{ NULL, NULL, 0 }
 };
 
 static int unittype_internal_compare(wesnoth_unittype* left, wesnoth_unittype* right)
@@ -233,7 +233,7 @@ static PyGetSetDef attacktype_getseters[] = {
 };
 
 static PyMethodDef attacktype_methods[] = {
-	{ NULL, NULL, NULL }
+	{ NULL, NULL, 0 }
 };
 
 static PyTypeObject wesnoth_attacktype_type = {
@@ -371,7 +371,7 @@ static PyMethodDef unit_methods[] = {
 	{ "defense_modifier",	(PyCFunction)wrapper_unit_defense_modifier,	METH_VARARGS},
 	{ "damage_against",		(PyCFunction)wrapper_unit_damage_against,	METH_VARARGS},
 	{ "find_path",			(PyCFunction)python_ai::wrapper_unit_find_path,		METH_VARARGS},
-	{ NULL,					NULL,										NULL }
+	{ NULL,					NULL,										0 }
 };
 
 static int unit_internal_compare(wesnoth_unit* left, wesnoth_unit* right)
@@ -457,7 +457,7 @@ static PyObject* wrapper_location_distance_to( wesnoth_location* left, PyObject*
 static PyMethodDef location_methods[] = {
 	{ "adjacent_to",         (PyCFunction)wrapper_location_adjacent_to,       METH_VARARGS},
 	{ "distance_to",         (PyCFunction)wrapper_location_distance_to,       METH_VARARGS},
-    { NULL, NULL, NULL }
+    { NULL, NULL, 0 }
 };
 
 static PyTypeObject wesnoth_location_type = {
@@ -645,7 +645,7 @@ PyObject* python_ai::wrapper_team_recruits( wesnoth_team* team, PyObject* args )
 static PyMethodDef team_methods[] = {
 	{ "owns_village",         (PyCFunction)wrapper_team_owns_village,       METH_VARARGS},
 	{ "recruits",         (PyCFunction)python_ai::wrapper_team_recruits,       METH_VARARGS},
-    { NULL, NULL, NULL }
+    { NULL, NULL, 0 }
 };
 
 static PyGetSetDef team_getseters[] = {
@@ -722,7 +722,7 @@ typedef struct {
 } wesnoth_gamestatus;
 
 static PyMethodDef gamestatus_methods[] = {
-	{ NULL,		NULL,	NULL }
+	{ NULL,		NULL,	0 }
 };
 
 static PyObject* wrapper_gamestatus_turn(wesnoth_gamestatus* status, void* closure)
@@ -1012,7 +1012,7 @@ static PyMethodDef wesnoth_python_methods[] = {
 	{ "get_adjacent_tiles",			python_ai::wrapper_get_adjacent_tiles,	METH_VARARGS},
 	{ "recruit_unit",				python_ai::wrapper_recruit_unit,		METH_VARARGS},
 	{ "get_gamestatus",				python_ai::wrapper_get_gamestatus,		METH_VARARGS},
-	{ NULL,							NULL,									NULL }
+	{ NULL,							NULL,									0 }
 };
 
 
