@@ -48,7 +48,7 @@ public:
 	void add_recruit(int unit_index, const gamemap::location& loc);
 	void add_recall(int unit_index, const gamemap::location& loc);
 	void add_disband(int unit_index);
-	void replay::add_countdown_update(int value,int team);
+	void add_countdown_update(int value,int team);
 	void add_movement(const gamemap::location& a, const gamemap::location& b);
 	void add_attack(const gamemap::location& a, const gamemap::location& b,
 	                int weapon);

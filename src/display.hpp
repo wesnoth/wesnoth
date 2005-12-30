@@ -136,7 +136,7 @@ public:
 	SDL_Rect screen_area() const;
 
 	//check if pixel x,y is outside specified area
-	bool display::outside_area(const SDL_Rect& area, const int x, const int y) const;
+	bool outside_area(const SDL_Rect& area, const int x, const int y) const;
 
 	//function to display a location as selected. If a unit is in the location,
 	//and there is no unit in the currently highlighted hex, the unit will be
