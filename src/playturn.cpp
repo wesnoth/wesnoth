@@ -1798,7 +1798,7 @@ void turn_info::write_game_snapshot(config& start) const
 		start.add_child("terrain_graphics", **tg);
 	}
 
-	write_game(state_of_game_,start,WRITE_SNAPSHOT_ONLY);
+	write_game(state_of_game_,start /*,WRITE_SNAPSHOT_ONLY*/);
 
 	// Clobber gold values to make sure the snapshot uses the values
 	// in [side] instead.
@@ -1813,6 +1813,7 @@ void turn_info::write_game_snapshot(config& start) const
 
 	gui_.labels().write(start);
 }
+
 
 void turn_info::toggle_grid()
 {
@@ -2592,7 +2593,7 @@ void turn_info::do_command(const std::string& str)
 			int side_num;
 			try {
 				side_num = lexical_cast<int, std::string>(side);
-			} catch(bad_lexical_cast& bad_lexical) {
+			} catch(bad_lexical_cast&) {
 				return;
 			}
 			if(side_num > 0 && side_num <= teams_.size()) {

@@ -70,7 +70,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MD /W3 /Gm /GX /ZI /Od /I "f:/projets/gpl/wesnoth/wesnoth-trunk/src" /I "f:/projets/include/sdl" /I "f:/projets/include" /I "f:/projets/gpl/wesnoth/wesnoth-trunk/src/sdl_ttf" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /MD /W3 /Gm /GX /ZI /Od /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVE_FRIBIDI" /FR /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
@@ -80,7 +80,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype.lib Ws2_32.lib fribidi.lib /nologo /subsystem:windows /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept /libpath:"f:\projets\lib"
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype.lib Ws2_32.lib fribidi.lib /nologo /subsystem:windows /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept
 
 !ENDIF 
 
@@ -357,6 +357,10 @@ SOURCE=.\src\pathutils.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\play_controller.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\playcampaign.cpp
 # End Source File
 # Begin Source File
@@ -454,6 +458,10 @@ SOURCE=.\src\team.cpp
 # Begin Source File
 
 SOURCE=.\src\terrain.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\test_log.cpp
 # End Source File
 # Begin Source File
 
@@ -586,6 +594,10 @@ SOURCE=.\src\checksum.hpp
 # Begin Source File
 
 SOURCE=.\src\clipboard.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\color_range.hpp
 # End Source File
 # Begin Source File
 
@@ -782,6 +794,10 @@ SOURCE=.\src\pathfind.hpp
 # Begin Source File
 
 SOURCE=.\src\pathutils.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\play_controller.hpp
 # End Source File
 # Begin Source File
 

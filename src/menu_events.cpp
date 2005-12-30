@@ -367,7 +367,7 @@ namespace events{
 			start.add_child("terrain_graphics", **tg);
 		}
 
-		write_game(gamestate,start,WRITE_SNAPSHOT_ONLY);
+		write_game(gamestate,start /*,WRITE_SNAPSHOT_ONLY*/);
 
 		// Clobber gold values to make sure the snapshot uses the values
 		// in [side] instead.

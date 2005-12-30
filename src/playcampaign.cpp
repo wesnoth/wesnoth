@@ -20,6 +20,9 @@
 #include "playlevel.hpp"
 #include "config.hpp"
 #include "gamestatus.hpp"
+//30.12.2005 YogiHH
+//please keep in for the moment, supports me in merging gameplay and replay functionality
+//#include "play_controller.hpp"
 #include "replay.hpp"
 #include "replay_controller.hpp"
 #include "log.hpp"
@@ -198,6 +201,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				state.label = (*scenario)["name"];
 
 			LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story);
+			//LEVEL_RESULT res = play_scenario(units_data,game_config,scenario,video,state,story);
 
 			state.snapshot = config();
 			if (res == DEFEAT) {
@@ -327,7 +331,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				// Adds player information, and other state
 				// information, to the configuration object
 				wassert(cfg.child("next_scenario") != NULL);
-				write_game(state, *cfg.child("next_scenario"), WRITE_SNAPSHOT_ONLY);
+				write_game(state, *cfg.child("next_scenario")/*, WRITE_SNAPSHOT_ONLY*/);
 				network::send_data(cfg);
 
 			} else if(io_type == IO_SERVER && scenario == NULL) {

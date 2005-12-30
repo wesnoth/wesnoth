@@ -346,7 +346,7 @@ void write_player(const player_info& player, config& cfg)
 	cfg["can_recruit"] = can_recruit_str;
 }
 
-void write_game(const game_state& game, config& cfg, WRITE_GAME_MODE mode)
+void write_game(const game_state& game, config& cfg/*, WRITE_GAME_MODE mode*/)
 {
 	log_scope("write_game");
 	cfg["label"] = game.label;
@@ -370,7 +370,7 @@ void write_game(const game_state& game, config& cfg, WRITE_GAME_MODE mode)
 		cfg.add_child("player", new_cfg);
 	}
 
-	if(mode == WRITE_FULL_GAME) {
+//	if(mode == WRITE_FULL_GAME) {
 		if(game.replay_data.child("replay") == NULL) {
 			cfg.add_child("replay",game.replay_data);
 		}
@@ -379,7 +379,7 @@ void write_game(const game_state& game, config& cfg, WRITE_GAME_MODE mode)
 		cfg.add_child("replay_start",game.starting_pos);
 		cfg.add_child("statistics",statistics::write_stats());
 	}
-}
+//}
 
 //a structure for comparing to save_info objects based on their modified time.
 //if the times are equal, will order based on the name
