@@ -1,10 +1,11 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-04 20:35+0100\n"
-"PO-Revision-Date: 2005-10-15 01:54+0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2005-12-23 18:12+0100\n"
+"Last-Translator: Automatically generated <>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -120,7 +121,6 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Fejezd be a köröd, és várd meg, hogy Merle megtámadjon."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:195
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it receives experience from the combat. Once a unit gains enough experience, "
@@ -298,7 +298,6 @@ msgid "En garde!"
 msgstr "Fegyverbe!"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:107
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics from the "
 "statistics shown before you recruited them. This is because they have been "
@@ -433,7 +432,6 @@ msgid "What's a leader?"
 msgstr "Mi az a fővezér?"
 
 #: data/scenarios/tutorial/utils.cfg:68
-#, fuzzy
 msgid ""
 "A leader is a unit that can recruit. This means that when the leader is on a "
 "keep, units can be recruited on the surrounding castle tiles. Leaders are "
@@ -446,10 +444,10 @@ msgstr ""
 "A fővezér egy olyan egység amely tud toborozni. Ez azt jelenti, hogy amikor "
 "egy várkastélyban tartózkodik, a környező várrészekbe egységeket vehet fel. "
 "A fővezérek általában erős egységek, amelyekből minden csapatban csak egy "
-"van. Továbbá gyakran a fővezér az első egységed, és a várkastélyban kezd. "
-"'Az 'l' billentyűvel gyorsan kijelölheted a. Ha ő meghal, a játékot is "
-"elvesztetted. A legtöbb pályát az ellenséges fővezérek legyőzésével "
-"nyerheted meg."
+"van. Továbbá a legtöbb esetben a fővezér az első egységed, és a "
+"várkastélyban kezd. 'Az 'l' billentyűvel gyorsan kijelölheted. Ha ő meghal, "
+"a játékot is elvesztetted. A legtöbb pályát az ellenséges fővezérek "
+"legyőzésével nyerheted meg."
 
 #: data/scenarios/tutorial/utils.cfg:69
 msgid ""
@@ -485,7 +483,6 @@ msgid "How do I end my turn?"
 msgstr "Hogyan fejezzem be a köröm?"
 
 #: data/scenarios/tutorial/utils.cfg:74
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 "right-click and select End Turn, or select the End Turn button in the lower "
@@ -520,7 +517,6 @@ msgid "How far can my Elvish Fighter move?"
 msgstr "Milyen messzire tud a tünde harcosom lépni?"
 
 #: data/scenarios/tutorial/utils.cfg:79
-#, fuzzy
 msgid ""
 "Your Elvish Fighter begins with a certain number of move points each turn; "
 "this is called its speed. When your Elvish Fighter moves along a path, each "
@@ -542,10 +538,10 @@ msgstr ""
 "szükséges körök számát mutatja. Ha egy távoli helyre kattintasz, az egység "
 "el fog indulni abba az irányba, ami azt jelenti, hogy minden körben ameddig "
 "csak tud tovább fog haladni a végcél irányában. Ha véletlenül indítasz el "
-"egy egységet, jelöld ki kétszer, hogy ne lépjen a későbbiekben tovább."
+"így egy egységet, akkor jelöld ki kétszer, hogy ne lépjen majd tovább a "
+"későbbiekben."
 
 #: data/scenarios/tutorial/utils.cfg:80
-#, fuzzy
 msgid ""
 "A unit's zone of control is the location consisting of all hexes the unit is "
 "adjacent to. Units cannot move through opponent's zones of control; they can "
@@ -564,7 +560,6 @@ msgid "What's the zone of control?"
 msgstr "Mi az az ellenőrzött terület?"
 
 #: data/scenarios/tutorial/utils.cfg:81
-#, fuzzy
 msgid ""
 "Units you control have a green, yellow, or red energy circle above their "
 "health bar, the green vertical bar next to them. Units with full movement "
@@ -577,11 +572,11 @@ msgstr ""
 "A te egységeidnek zöld, sárga, vagy vörös energiagömbje van az "
 "életerőcsíkjuk fölött (függőleges, zöld sáv az egységek mellett). A teljes "
 "lépési pontú egységeknek zöld, a néhány pontúaknak sárga, a lépni nem "
-"tudóknak vörös. Az ellenséges egységeknek nincs energiagömbje. A szövetséges "
-"egységeknek, amelyeket nem te irányítasz, mint például nekem, kék "
-"energiakörünk van. Ezen kívül a 'Csapatszínek mutatása' a beállítások közt, "
-"egy színes karikát mutat minden egység alatt, ami alapján megmondhatod "
-"melyik csapathoz tartoznak."
+"tudóknak vörös. Az ellenséges egységeknek nincs energiagömbjük. A "
+"szövetséges egységeknek, amelyeket nem te irányítasz, mint például nekem, "
+"kék energiagömbünk van. Ezen kívül a 'Csapatszínek mutatása' opció a "
+"beállítások közt egy színes karikát jelenít meg minden egység alatt, ami "
+"alapján megmondhatod melyik csapathoz tartoznak."
 
 #: data/scenarios/tutorial/utils.cfg:81
 msgid "How do I tell who is allied and who is an enemy?"
@@ -592,7 +587,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Visszatámadhat Merle a támadásom után?"
 
 #: data/scenarios/tutorial/utils.cfg:85
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -647,7 +641,6 @@ msgid "How can you tell how powerful a unit's attacks are?"
 msgstr "Hogyan lehet megállapítani, hog milyen erős egy egység támadása?"
 
 #: data/scenarios/tutorial/utils.cfg:87
-#, fuzzy
 msgid "Will my fighter hit every time when it attacks?"
 msgstr "A harcosom minden alkalommal üt, amikor támad?"
 
@@ -706,7 +699,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Mi történik, ha egy egység egy faluba ér?"
 
 #: data/scenarios/tutorial/utils.cfg:96
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, it flags the village for its side. "
 "This action takes all the unit's remaining movement. Villages flagged for a "
@@ -731,7 +723,6 @@ msgid "How do I heal when there aren't any villages nearby?"
 msgstr "Hogyan tudok gyógyítani, ha egy falu sincs a közelben?"
 
 #: data/scenarios/tutorial/utils.cfg:97
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, it heals 2 HP from resting. However, if an enemy attacks "
@@ -754,7 +745,6 @@ msgstr ""
 "Honnan tudhatom meg, hogy hogyan kell megcsinálnom pályát? Mindig elmondják?"
 
 #: data/scenarios/tutorial/utils.cfg:101
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -771,7 +761,6 @@ msgstr ""
 "vége. Remélhetőleg egy győzelmi feltétel fog teljesülni."
 
 #: data/scenarios/tutorial/utils.cfg:102
-#, fuzzy
 msgid ""
 "When you win a scenario, all your units survive and are revived to full "
 "health, and you do not have to pay them for the remaining turns. Also, if "
@@ -782,7 +771,7 @@ msgstr ""
 "Ha befejezel egy pályát, minden egységed túléli és teljes életerőre "
 "töltődik, és a hátralevő körökben nem kell fizetned őket. Tehát, ha a "
 "sereged abban a körzetben marad, ahol nyertél, minden falu megadja magát "
-"neked, miután nyertél. Viszont két küldetés között vagyonod 20%-a elvész."
+"neked, miután nyertél. Viszont két küldetés között a vagyonod 20%-a elvész."
 
 #: data/scenarios/tutorial/utils.cfg:102
 msgid "What happens when I win a scenario?"
@@ -826,7 +815,6 @@ msgid "What do traits do?"
 msgstr "Mit csinálnak a jellemvonások?"
 
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "The function of traits is to add variety by making units of the same type "
 "different from each other. This is done by randomly assigning each unit "
@@ -836,12 +824,11 @@ msgid ""
 msgstr ""
 "A jellemvonásoknak az a feladatuk, hogy az azonos fajtába tartozó egységeket "
 "különbözővé tegyék egymástól. Ez véletlenszerűen kiválasztott két "
-"jellemvonással történik, toborzáskor. A jellemvonások, amikkel az egység "
-"rendelkezik az állapotpanelről leolvashatóak, ahol különlegességeiket az "
-"egérmutatót föléjük húzva tudhatod meg."
+"jellemvonással történik, toborzáskor. A jellemvonások, amelyekkel az egység "
+"rendelkezik, az állapotpanelről leolvashatóak, ahol különlegességeiket is "
+"megtudhatod, ha az egérmutatót föléjük húzod."
 
 #: data/scenarios/tutorial/utils.cfg:112
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -905,7 +892,6 @@ msgid "How do I get gold?"
 msgstr "Hogyan szerezhetek aranyat?"
 
 #: data/scenarios/tutorial/utils.cfg:121
-#, fuzzy
 msgid ""
 "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
 "of day: day, twilight, and night. During the day, units of the alignment "
@@ -926,7 +912,6 @@ msgid "What are the different alignments and times of day?"
 msgstr "Mik a különböző beállítottságok, és a napszakok?"
 
 #: data/scenarios/tutorial/utils.cfg:122
-#, fuzzy
 msgid ""
 "The times of day usually progress in a sequence: dawn- identical to "
 "twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
@@ -941,14 +926,13 @@ msgstr ""
 "szürkülethez, majd két napszak az éjjelhez, aztán ez ismétlődik. Ez a nap és "
 "a hold járásából adódik, amelyek keleten kelnek és nyugaton nyugszanak. "
 "Néhány küldetésben ez nem így van, például a föld alatt mindig éjszaka van. "
-"Az adott napszakot az állapotpanelen találod. "
+"Az adott napszakot az állapotpanelről olvashatod le. "
 
 #: data/scenarios/tutorial/utils.cfg:122
 msgid "How do I know what time of day it is?"
 msgstr "Honnan tudhatom meg, hogy milyen napszak van?"
 
 #: data/scenarios/tutorial/utils.cfg:126
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castles. However, the properties of most terrains are more "
@@ -961,20 +945,19 @@ msgid ""
 "average 30% of the time."
 msgstr ""
 "Két olyan terep van, amelyet már elmagyaráztam. Nevezetesen a falvakat és a "
-"várt. A legtöbb terepfajta tulajdonságai sokkal szövevényesebbek ennél, és "
+"várat. A legtöbb terepfajta tulajdonságai sokkal szövevényesebbek ennél, és "
 "előnyökkel, valamint hátrányokkal járnak, attól függően, milyen egység halad "
 "át rajtuk. Az első dolog az, hogy hány lépési-pontba kerül az egységnek, "
 "hogy áthaladjon a hatszögön. A második dolog, hogy mekkora védettséget nyújt "
 "az egységnek, ami rajta áll. Ez egy százalékos érték, ami csökkenti az "
-"egység eltalálásának esélyét. Például sok tündének 70%-os védelme van "
-"erdőben, tehát ott 30% eséllyel találhatóak el."
+"egység eltalálásának esélyét. Például sok tündének 70%-os védelme van az "
+"erdőkben, tehát ott 30% eséllyel találhatóak el."
 
 #: data/scenarios/tutorial/utils.cfg:126
 msgid "What are the different properties that terrains have?"
 msgstr "Mik a különböző tulajdonságok, amikkel a terepek rendelkezhetnek?"
 
 #: data/scenarios/tutorial/utils.cfg:127
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -986,11 +969,11 @@ msgid ""
 msgstr ""
 "Hogy megtudd, milyen hatások érvényesülnek az adott terepen egy bizonyos "
 "egységre, kattints jobb gombbal az egységre, válaszd ki az egység leírását, "
-"és menj a Terep-alakítókra. Hogy megtudd, melyik területtípushoz tartozik a "
-"hatszög, amiről információkat szeretnél szerezni, vidd föléje az "
-"egérmutatót, és nézd meg a képernyő jobb-felső sarkát. Itt láthatod a "
-"terület nevét, a koordinátákat, majd a kiválasztott egység védelmét, aztán a "
-"lépési-pontot, amibe kerül az egységnek, ha át akar rajta haladni."
+"és menj a Terep-alakítókra. Úgy tudhatod meg, hogy melyik területtípushoz "
+"tartozik az a hatszög, amiről információkat szeretnél szerezni, hogy föléje "
+"viszed az egérmutatót, és megnézed a képernyő jobb-felső sarkát. Itt "
+"láthatod a terület nevét, a koordinátákat, a kiválasztott egység védelmét, "
+"majd a lépési-pontot, amibe az egységnek kerül, ha át akar rajta haladni."
 
 #: data/scenarios/tutorial/utils.cfg:127
 msgid "How do I find out the properties of a specific terrain?"
@@ -1109,7 +1092,6 @@ msgid "What kind of objects am I likely to encounter?"
 msgstr "Milyen tárgyakkal találkozhatok?"
 
 #: data/scenarios/tutorial/utils.cfg:143
-#, fuzzy
 msgid ""
 "The objects you encounter are put in by the scenario designer, so they vary "
 "from campaign to campaign. In Heir to the Throne, most objects give the unit "
@@ -1117,11 +1099,10 @@ msgid ""
 "objects in a campaign."
 msgstr ""
 "A tárgyakat, amikkel találkozhatsz, a pálya készítője helyezi el. A "
-"trónörökös hadjáratban a legtöbb tárgy, egy-egy új fegyvert takar. Általában "
-"kevés tárgyat lehet találni a pályákon."
+"trónörökös hadjáratban a legtöbb tárgy, egy-egy új fegyvert takar. Azonban "
+"általában kevés tárgyat lehet találni a pályákon."
 
 #: data/scenarios/tutorial/utils.cfg:144
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However, "
 "a few objects, such as holy water, last only until the end of the scenario."

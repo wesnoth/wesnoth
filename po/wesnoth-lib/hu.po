@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-13 21:00+0100\n"
-"PO-Revision-Date: 2005-11-22 22:57+0100\n"
+"PO-Revision-Date: 2005-12-23 16:08+0100\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
@@ -133,11 +133,11 @@ msgstr "Vezér"
 
 #: src/hotkeys.cpp:51
 msgid "Undo"
-msgstr "Visszalépés"
+msgstr "Visszavonás"
 
 #: src/hotkeys.cpp:52
 msgid "Redo"
-msgstr "Újralépés"
+msgstr "Megismétlés"
 
 #: src/hotkeys.cpp:53
 msgid "Zoom In"
@@ -460,7 +460,7 @@ msgstr "MI lépések átugrása"
 
 #: src/preferences_display.cpp:219
 msgid "Show lobby joins"
-msgstr ""
+msgstr "Értesítés a játékcsarnokba lépőkről"
 
 #: src/preferences_display.cpp:220
 msgid "Show Floating Labels"
@@ -500,7 +500,7 @@ msgstr "Napszakmegjelenítés megfordítása"
 
 #: src/preferences_display.cpp:231
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "Csevegés sorainak időbélyegzése"
 
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
@@ -544,11 +544,11 @@ msgstr "A térképen való görgetés sebességének megváltoztatása"
 
 #: src/preferences_display.cpp:271 src/preferences_display.cpp:273
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "Add meg a csevegés sorainak mennyiégét"
 
 #: src/preferences_display.cpp:276
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Kerüljön a csevegés sorainak elé a küldés pontos ideje"
 
 #: src/preferences_display.cpp:279 src/preferences_display.cpp:284
 msgid "Change the brightness of the display"
@@ -572,7 +572,7 @@ msgstr "Fektessen egy rácsot a térképre"
 
 #: src/preferences_display.cpp:299
 msgid "Show messages about players joining the multiplayer lobby"
-msgstr ""
+msgstr "Tájékoztató üzenet mutatása a többjátékos csarnokba lépő játékosokról"
 
 #: src/preferences_display.cpp:302
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -622,7 +622,7 @@ msgstr "A gyorsbillentyűk megtekintése és beállítása"
 
 #: src/preferences_display.cpp:475
 msgid "Chat Lines: "
-msgstr ""
+msgstr "Csevegés sorai: "
 
 #: src/preferences_display.cpp:527
 msgid "yes"
@@ -645,9 +645,8 @@ msgid "Prefs section^Sound"
 msgstr "Hang"
 
 #: src/preferences_display.cpp:598
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "Képernyő"
+msgstr "Többjátékos"
 
 #: src/preferences_display.cpp:599
 msgid "Advanced section^Advanced"
@@ -666,9 +665,8 @@ msgid "Hotkey Settings"
 msgstr "Gyorsbillentyűk beállításai"
 
 #: src/preferences_display.cpp:716 src/preferences_display.cpp:769
-#, fuzzy
 msgid "Press desired Hotkey"
-msgstr "Nyomd meg a kívánt gyorsbillentyűt"
+msgstr "Nyomd le a kívánt gyorsbillentyűt"
 
 #: src/preferences_display.cpp:734
 msgid "Action"
@@ -687,7 +685,6 @@ msgid "Save Hotkeys"
 msgstr "Gyorsbillentyűk mentése"
 
 #: src/preferences_display.cpp:795
-#, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "Ez a gyorsbillentyű már használatban van."
 
@@ -704,6 +701,7 @@ msgstr ""
 #: src/preferences_display.cpp:838
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
+"Nincsenek ismert témák. Próbáld meg egy létező játékból megváltoztatni!"
 
 #: src/show_dialog.cpp:314
 msgid "Error"

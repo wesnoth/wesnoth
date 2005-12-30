@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-17 14:36+0100\n"
-"PO-Revision-Date: 2005-12-04 12:07+0100\n"
+"PO-Revision-Date: 2005-12-23 15:52+0100\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -140,7 +140,6 @@ msgstr ""
 "italic> fokozaton kezdened."
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -148,7 +147,7 @@ msgid ""
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
 "Játék közben ne felejtsd el, hogy a jobb oldali panel legtöbb része fölé "
-"húzva az egeret, egy rövid leírás jelenik meg az adott pontról. Ez "
+"húzva az egeret egy rövid leírás jelenik meg az adott pontról. Ez "
 "kifejezetten hasznos az új <ref>dst=abilities text=képességek</ref> "
 "megismerésében."
 
@@ -467,7 +466,6 @@ msgid "Shroud and Fog of War"
 msgstr "Eltakarás és köd a csatatéren"
 
 #: data/help.cfg:138
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -482,15 +480,15 @@ msgstr ""
 "Néhány pályán a térkép egyes részei nem leszek felfedve előtted. Ez kétféle "
 "módon történhet meg, amelyek együtt és külön-külön is működhetnek. Az "
 "eltakarás mind a terepet, mind a rajta álló egységeket elrejti az adott "
-"helyen. Azonban elég egyszer felfedezni, utánna láthatod ami ott történik. A "
-"köd ezzel szemben csak az egységeket és a falvak birtoklóinak kilétét rejtik "
-"el (kivéve ha ez az egyik szövetségesed vagy te magad vagy). A köd "
-"feloszlik, ha egyik egységed a helyszínre ér, ám újra ráborul a tájra, ha az "
-"egységeid továbbállnak. Mind az eltakarás, mind a köd által erejtett részek "
-"az egységek segítségével tárhatóak fel. Az adott egység a tőle egy környi "
-"távolságra lévő területekre és azokon túl egy hatszögnyire lát rá (figyelmen "
-"kívül hagyva a valódi odalépésben akadályt jelentő ellenséges egységeket és "
-"azok ellenőzött területét)."
+"helyen. Azonban elég egyszer felfedezni, utánna láthatod mindazt, ami ott "
+"történik. A köd ezzel szemben csak az egységeket és a falvak birtoklóinak "
+"kilétét rejti el (kivéve ha az utóbbi az egyik szövetségesed vagy te magad "
+"vagy). A köd feloszlik, ha egyik egységed a helyszínre ér, ám újra ráborul a "
+"tájra, ha az egységeid továbbállnak. Mind az eltakarás, mind a köd által "
+"erejtett részek az egységek segítségével tárhatóak fel. Az adott egység a "
+"tőle egy környi távolságra lévő területekre és azokon túl egy hatszögnyire "
+"lát rá (figyelmen kívül hagyva a valódi odalépésben akadályt jelentő "
+"ellenséges egységeket és azok ellenőzött területét)."
 
 #: data/help.cfg:143
 msgid "Combat"
@@ -718,14 +716,13 @@ msgid "Time of Day"
 msgstr "Napszak"
 
 #: data/help.cfg:181
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
 " Chaotic units get +25% damage at night, and -25% in daytime.\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
-"A napszakok bizonyos egységek sebzését befolyásolják a következők szerint:\n"
+"A napszakok befolyásolják bizonyos egységek sebzését a következők szerint:\n"
 " Az igazságos egységek +25% sebzést kapnak nappal és -25% sebzést éjszaka.\n"
 " A törvénytelen egységek +25% sebzést kapnak éjjel és -25%-ot nappal.\n"
 " A semleges egységekre nem hatnak a különböző napszakok."
@@ -814,7 +811,6 @@ msgstr ""
 "fejlődjön az egység."
 
 #: data/help.cfg:201
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -833,13 +829,12 @@ msgstr ""
 "Míg a legtöbb egységnek három szintje van, nem mindegyiknek. Esetenként az "
 "egységeknek lehet négy szintje is (mint például a "
 "<ref>dst=unit_Mage·text=mágusoknak</ref>). Miután egy egység elérte a "
-"legfelső szintjét, képes lehet a Legfelső Szint Utáni Szintugrásra "
-"(LSzUSz). \n"
-"Az LSzUSz módosítja az egységet, akárhányszor az eléri a szintugrási "
+"legfelső szintjét, képes lesz a Legfelső Szint Utáni Szintlépésre (LSzUSz). "
+"Az LSzUSz módosítja az egységet, akárhányszor az eléri a szintlépési "
 "szintet, de az egység megmarad az adott szinten. Az LSzUSz tipikus hatása az "
-"egység számára, hogy minden száz TP után megnöveli hárommal az ÉP-jét. "
-"Eltérés a szokványos szintlépéstől még, hogy az egységeknek csak kis hányada "
-"(például a hullazabálók) gyógyulnak fel az LSzUSz során. A legtöbb egységnél "
+"egység számára, hogy minden száz TP után megnöveli hárommal az maximális ÉP-"
+"jét. Eltérés a szokványos szintlépéstől, hogy az egységeknek csak kis része "
+"(például a hullazabálók) gyógyul fel az LSzUSz során. A legtöbb egységnél "
 "csak a maximálisan elérhető ÉP növekszik meg."
 
 #: data/help.cfg:206
@@ -907,7 +902,6 @@ msgstr ""
 "osztható szét), vagy akadályozni fogják a mérgek sebzését."
 
 #: data/help.cfg:213
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -916,11 +910,10 @@ msgid ""
 "the same side as the healing unit, and only up to 8HP per unit."
 msgstr ""
 "\n"
-"\n"
 "Gyógyító egységek: A <ref>dst=ability_cures text=Gyógyítás</ref> "
 "képességével rendelkező egységek minden, a közvetlen közelükben tartózkodó "
-"baráti egységet gyógyítani fognak 8 ÉP-vel körönként (maximum összesen 18 ÉP "
-"osztható szét) vagy akadályozni fogják a mérgek sebzését."
+"baráti egységet gyógyítani fognak 8 ÉP-vel körönként (legeljebb összesen 18 "
+"ÉP osztható szét) vagy meg fogják akadályozni a mérgek sebzését."
 
 #: data/help.cfg:215
 msgid ""
@@ -1906,7 +1899,7 @@ msgstr ""
 #: data/items.cfg:816
 #, fuzzy
 msgid "Zap"
-msgstr "Abrakadabra!~"
+msgstr "Zap"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -2577,38 +2570,32 @@ msgid "statuspanel^movement"
 msgstr "lépések"
 
 #: data/themes/default.cfg:458
-#, fuzzy
 msgid "Replay"
-msgstr "visszajátszás"
+msgstr "Visszajátszás"
 
 #: data/themes/default.cfg:471
-#, fuzzy
 msgid "Play"
-msgstr "Játékosok:"
+msgstr "Lejátszás"
 
 #: data/themes/default.cfg:484
 msgid "Stop"
-msgstr ""
+msgstr "Leállít"
 
 #: data/themes/default.cfg:497
-#, fuzzy
 msgid "Reset"
-msgstr "Sivatag"
+msgstr "Újrakezd"
 
 #: data/themes/default.cfg:510
-#, fuzzy
 msgid "Next Turn"
-msgstr "Kör"
+msgstr "Következő kör"
 
 #: data/themes/default.cfg:523
-#, fuzzy
 msgid "Next Side"
-msgstr "Következő"
+msgstr "Következő oldal"
 
 #: data/themes/default.cfg:559
-#, fuzzy
 msgid "Skip animation"
-msgstr "+Szlovák Fordítás"
+msgstr "Megjelenítés átugrása"
 
 #: data/themes/default.cfg:663
 msgid "Act."
@@ -2649,7 +2636,6 @@ msgstr ""
 "mennyire tud ellenállni a bizonyos fajta támadásokkal szemben."
 
 #: data/tips.cfg:4
-#, fuzzy
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -2674,7 +2660,6 @@ msgstr ""
 "egy faluba vagy egy 'gyógyító' képességű egységed mellé állítod."
 
 #: data/tips.cfg:6
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -2878,14 +2863,12 @@ msgstr ""
 "anélkül hogy bárkit is maguk kellene megtámadniuk."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attack."
 msgstr ""
-"A 'lassító' támadás képessége lelassítja az ellenséget és elveszi tőle az "
-"ellenőrzött területét, így megsebesült vagy áttörni kívánó egységeidet nem "
-"tudja megállítani."
+"A 'lassító' támadás képessége lelassítja az ellenséget és megfelezi az "
+"általa kifejthető sebzést is."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -2956,17 +2939,16 @@ msgid "Hard"
 msgstr "Nehéz"
 
 #: data/translations/english.cfg:9
-#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
-"Az igazságos egységek jobban harcolnak nappal, de gyengébben éjjel: \n"
+"Az igazságos egységek jobban harcolnak nappal, de gyengébben éjjel.\n"
 "\n"
-"nappal 25%-kal magasabb, \n"
-"éjjel 25%-kal alacsonyabb a sebzésük."
+"Nappal 25%-kal magasabb, \n"
+"Éjjel 25%-kal alacsonyabb a sebzésük."
 
 #: data/translations/english.cfg:10
 msgid ""
@@ -2977,17 +2959,16 @@ msgstr ""
 "ugyanolyan harci kedvvel vívják a csatákat."
 
 #: data/translations/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
 "Day: -25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
-"A törvénytelen egységek éjjel jobban harcolnak, nappal viszont gyengébben: \n"
+"A törvénytelen egységek éjjel jobban harcolnak, nappal viszont gyengébben.\n"
 "\n"
-"nappal 25%-kal alacsonyabb, \n"
-"éjjel 25%-kal magasabb a sebzésük."
+"Nappal 25%-kal alacsonyabb, \n"
+"Éjjel 25%-kal magasabb a sebzésük."
 
 #: data/translations/english.cfg:21
 msgid ""
@@ -3011,7 +2992,6 @@ msgid "ambush"
 msgstr "rajtaütés"
 
 #: data/translations/english.cfg:31
-#, fuzzy
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -3024,14 +3004,14 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Gyógyítás: \n"
+"Gyógyítás:\n"
 "Az egység gyógynövényeket és varázserőt használ, hogy gyorsabban gyógyítsa a "
-"csapatokat a csatamezőn, mint az másként lehetséges. \n"
+"csapatokat a csatamezőn, mint az másként lehetséges.\n"
 "\n"
 "A kör kezdetén segít valamennyi szomszédos szövetséges egységen. \n"
-"A gyógyító által kezelt egység legfeljebb 8 életerő-pontot gyógyulhat "
-"körönként. \n"
-"Egy gyógyító egy körben legfeljebb 18 életerő-pontot gyógyíthat összesen a "
+"A gyógyító által kezelt egység legfeljebb 8 életerőpontot gyógyulhat "
+"körönként.\n"
+"Egy gyógyító egy körben legfeljebb 18 életerőpontot gyógyíthat összesen a "
 "kezelt egységeken.\n"
 "A gyógyító a mérgezést is képes elmulasztani, de a mérgezett egység a "
 "mérgezés meggyógyításának körében egyéb kezelésben nem részesülhet."
@@ -3044,7 +3024,6 @@ msgid "cures"
 msgstr "gyógyítás"
 
 #: data/translations/english.cfg:40
-#, fuzzy
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -3055,13 +3034,13 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Csillapítás: \n"
+"Csillapítás:\n"
 "Az egység képes a szomszédos szövetséges egységeket gyógyítani a kör "
-"kezdetén. \n"
+"kezdetén.\n"
 "\n"
-"A csillapító által kezelt egység legfeljebb 4 életerő-pontot gyógyulhat "
-"körönként, \n"
-"egy gyógyító egy körben legfeljebb 8 életerő-pontot gyógyíthat. \n"
+"A csillapító által kezelt egység legfeljebb 4 életerőpontot gyógyulhat "
+"körönként,\n"
+"egy gyógyító egy körben legfeljebb 8 életerőpontot gyógyíthat. \n"
 "Mérgezett egységet nem képes kigyógyítani a mérgezésből, annak egy falu vagy "
 "egy gyógyításra képes egység lehet a segítségére."
 
@@ -3172,7 +3151,6 @@ msgid "regenerates"
 msgstr "regenerálódás"
 
 #: data/translations/english.cfg:76
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -3226,7 +3204,6 @@ msgid "teleport"
 msgstr "teleportáció"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -3234,8 +3211,8 @@ msgid ""
 "to stone)."
 msgstr ""
 "Orvtámadás:\n"
-"Ez a támadás kétszeres sebzéssel jár, ha a célpont átellenes oldalán is "
-"saját vagy szövetséges egység áll. (Kivéve ha ez az egység nem harcképes, "
+"Ez a támadás kétszeres sebzéssel jár, ha a célpont átellenes oldalán is egy "
+"számára ellenséges egység áll. (Kivéve ha ez az egység nem harcképes, "
 "például kővé vált.)"
 
 #: data/translations/english.cfg:96
@@ -3307,7 +3284,6 @@ msgstr ""
 "vonatkozik az élőholtakra és a falvakban tartózkodókra.)"
 
 #: data/translations/english.cfg:117
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -3930,7 +3906,6 @@ msgid "Bone Shooter"
 msgstr "Csontvadász"
 
 #: data/units/Bone_Shooter.cfg:21
-#, fuzzy
 msgid ""
 "Of a necromancer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -3939,10 +3914,11 @@ msgid ""
 "Dubbed simply 'Bone-Shooters' by their unfortunate enemies, these "
 "abominations are a terror to all who live."
 msgstr ""
-"Igazán hitvány teremtmények, amelyek valóban aljas fegyverzettel "
-"rendelkeznek. Tegezeik az áldozataik csontjaiból készült nyílvesszőkkel "
-"vannak tele, ezért egyszerűen 'csontvadásznak' hívják őket szerencsétlen "
-"ellenségeik. Félelemben tartanak mindenkit, aki csak él."
+"A holtidézők teremtményei között egyesek jobban ragaszkodnak hamis "
+"életükhöz, mint mások. Igazán hitvány teremtmények, amelyek valóban aljas "
+"fegyverzettel rendelkeznek. Tegezeik az áldozataik csontjaiból készült "
+"nyílvesszőkkel vannak tele, ezért egyszerűen 'csontvadásznak' hívják őket "
+"szerencsétlen ellenségeik. Aki csak él, mindenkit félelemben tartanak."
 
 #: data/units/Bone_Shooter.cfg:42 data/units/Soul_Shooter.cfg:41
 msgid "stab"
@@ -4217,9 +4193,8 @@ msgid "tentacle"
 msgstr "polipkar"
 
 #: data/units/Cuttle_Fish.cfg:42
-#, fuzzy
 msgid "swarm"
-msgstr "becsapódás"
+msgstr "kirajzás"
 
 #: data/units/Cuttle_Fish.cfg:76
 msgid "ink"
@@ -4251,9 +4226,8 @@ msgstr ""
 "hogyan védhetnék meg magukat a csata közben."
 
 #: data/units/Dark_Adept.cfg:33 data/units/Dark_Adept.cfg:126
-#, fuzzy
 msgid "shadow wave"
-msgstr "kővéváltoztatás"
+msgstr "árnyhullám"
 
 #: data/units/Dark_Adept.cfg:97
 msgid "female^Dark Adept"
@@ -4993,15 +4967,14 @@ msgid "Dwarvish Stalwart"
 msgstr "Rettenthetetlen törp"
 
 #: data/units/Dwarvish_Stalwart.cfg:29
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
 "resilience and strength."
 msgstr ""
 "A rettethetetlenek sok év háborúskodás után új pajzsokat és erős vértezetet "
-"alkottak maguknak saját és ellenfeleik vértjeiből. Lassúak ugyan, de "
-"félelmetesek is, kitartásuk és erejük miatt."
+"alkottak maguknak ellenfeleik vértjeiből. Lassúak ugyan, de félelmetesek is "
+"kitartásuk és erejük miatt."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -5246,7 +5219,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Tünde varázslónő"
 
 #: data/units/Elvish_Enchantress.cfg:35
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
@@ -5904,9 +5876,8 @@ msgid "net"
 msgstr "hálóvetés"
 
 #: data/units/Goblin_Rouser.cfg:3
-#, fuzzy
 msgid "Goblin Rouser"
-msgstr "Kobold nyársaló"
+msgstr "Kobold felbújtó"
 
 #: data/units/Goblin_Rouser.cfg:27
 #, fuzzy
@@ -8532,7 +8503,7 @@ msgstr "-   Fő Fejlesztő"
 
 #: src/about.cpp:38
 msgid "-   Artwork and graphics designer"
-msgstr "-   Művészeti és grafikai tervező"
+msgstr "-   Művészeti és Grafikai Tervező"
 
 #: src/about.cpp:41
 msgid "+Developers"
@@ -8544,7 +8515,7 @@ msgstr "+Általános Ügyintézők"
 
 #: src/about.cpp:67
 msgid "+Artwork and graphics designers"
-msgstr "+Művészi és grafikai tervezők"
+msgstr "+Művészi és Grafikai Tervezők"
 
 #: src/about.cpp:97
 msgid "+Music"
@@ -8555,9 +8526,8 @@ msgid "+Scenario Designers"
 msgstr "+Történetírók"
 
 #: src/about.cpp:113
-#, fuzzy
 msgid "+Multiplayer Developers"
-msgstr "+Többjátékos Pályák"
+msgstr "+Többjátékos Játék Fejlesztői"
 
 #: src/about.cpp:118
 msgid "+Multiplayer Maps"
@@ -9011,9 +8981,8 @@ msgid "Get More Campaigns..."
 msgstr "Szerezz be további hadjáratokat..."
 
 #: src/game.cpp:746
-#, fuzzy
 msgid "Download more campaigns from an Internet server."
-msgstr "További hadjáratok letöltése az internetről"
+msgstr "További hadjáratok letöltése az internetről."
 
 #: src/game.cpp:756
 msgid "Choose the campaign you want to play:"
@@ -9321,7 +9290,6 @@ msgid "The terrain with the best modifier is chosen automatically."
 msgstr "A megjobb módosító tulajdonságú terep lesz önműködően kiválasztva."
 
 #: src/help.cpp:1317
-#, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
@@ -9330,7 +9298,6 @@ msgstr ""
 "vezetőd egy ilyen helyen áll."
 
 #: src/help.cpp:1319
-#, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -9537,7 +9504,7 @@ msgstr "Játék készítése"
 
 #: src/multiplayer_create.cpp:46
 msgid "Time limit"
-msgstr ""
+msgstr "Időhatár"
 
 #: src/multiplayer_create.cpp:55
 msgid "Name of game:"
@@ -9577,24 +9544,22 @@ msgid "Settings..."
 msgstr "Beállítások..."
 
 #: src/multiplayer_create.cpp:100
-#, fuzzy
 msgid "The maximum number of turns the game can last"
 msgstr "A legtovább ennyi körig tarthat a játék"
 
 #: src/multiplayer_create.cpp:103
 msgid "Enables user time limit"
-msgstr ""
+msgstr "Játékos egy körre kapott idejének lekorlátozása"
 
 #: src/multiplayer_create.cpp:109
-#, fuzzy
 msgid "Initial time available for user at the begining of the match"
 msgstr ""
-"A falvakban elhelyezett egységek minden kör elején 8 életerőpontot (ÉP) "
-"gyógyulnak."
+"A mérkőzés kezdetén a játékos számára rendelkezésre álló idő, hogy megkezdje "
+"a játékot"
 
 #: src/multiplayer_create.cpp:115
 msgid "Time added to user's clock at the end of each turn"
-msgstr ""
+msgstr "A játékos körének befejezésekor kapott idő"
 
 #: src/multiplayer_create.cpp:120
 msgid "The amount of income each village yields per turn"
@@ -9661,14 +9626,12 @@ msgid "Unlimited Turns"
 msgstr "Korlátlan kör"
 
 #: src/multiplayer_create.cpp:266
-#, fuzzy
 msgid "Initial Time: "
-msgstr "Beavatott"
+msgstr "Kezdés ideje:"
 
 #: src/multiplayer_create.cpp:271
-#, fuzzy
 msgid "Turn time: "
-msgstr "Kör: "
+msgstr "Kör ideje: "
 
 #: src/multiplayer_create.cpp:277
 msgid "Village Gold: "
@@ -9900,7 +9863,6 @@ msgid "Scenario Report"
 msgstr "Pályavégi jelentés"
 
 #: src/playlevel.cpp:730
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -10181,11 +10143,12 @@ msgid "invisible: "
 msgstr "láthatatlan: "
 
 #: src/reports.cpp:140
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
-msgstr "Ezt az egységet kővé változtatták. Sem nem léphet, sem nem harcolhat."
+msgstr ""
+"Ezt az egységet lelassították. Támadáskor csak a szokásos sebzés felét fogja "
+"okozni."
 
 #: src/reports.cpp:140
 msgid "slowed: "
@@ -10225,12 +10188,11 @@ msgstr "sebzés"
 
 #: src/reports.cpp:263
 msgid "weapon range: "
-msgstr ""
+msgstr "fegyver hatósugara: "
 
 #: src/reports.cpp:264
-#, fuzzy
 msgid "damage type: "
-msgstr "sebzés"
+msgstr "sebzés: "
 
 #: src/reports.cpp:328
 msgid "Lawful units: "
