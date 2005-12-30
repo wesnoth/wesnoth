@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-17 14:36+0100\n"
-"PO-Revision-Date: 2005-12-04 23:19+0200\n"
+"PO-Revision-Date: 2005-12-30 13:23+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -2518,38 +2518,32 @@ msgid "statuspanel^movement"
 msgstr "movement"
 
 #: data/themes/default.cfg:458
-#, fuzzy
 msgid "Replay"
-msgstr "replay"
+msgstr "Replay"
 
 #: data/themes/default.cfg:471
-#, fuzzy
 msgid "Play"
-msgstr "Players: "
+msgstr "Play"
 
 #: data/themes/default.cfg:484
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: data/themes/default.cfg:497
-#, fuzzy
 msgid "Reset"
-msgstr "Desert"
+msgstr "Reset"
 
 #: data/themes/default.cfg:510
-#, fuzzy
 msgid "Next Turn"
-msgstr "Turn"
+msgstr "Next Turn"
 
 #: data/themes/default.cfg:523
-#, fuzzy
 msgid "Next Side"
-msgstr "Next"
+msgstr "Next Side"
 
 #: data/themes/default.cfg:559
-#, fuzzy
 msgid "Skip animation"
-msgstr "+Slovak Translation"
+msgstr "Skip animation"
 
 #: data/themes/default.cfg:663
 msgid "Act."
@@ -2812,14 +2806,12 @@ msgstr ""
 "needing to attack anything themselves."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attack."
 msgstr ""
-"The 'slow' attack ability makes enemy units move slower, but it also removes "
-"their zone of control, allowing your wounded units to escape or helping you "
-"reach fleeing enemy units."
+"The 'slow' attack ability makes enemy units move slower, but it also halves "
+"the damage they do on all attacks."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -3154,7 +3146,6 @@ msgid "teleport"
 msgstr "teleport"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -3162,8 +3153,8 @@ msgid ""
 "to stone)."
 msgstr ""
 "Backstab:\n"
-"This attack deals double damage if there is an enemy of the targe on the "
-"opposite side of the target, and that unit is not incapacitated (eg. turned "
+"This attack deals double damage if there is an enemy of the target on the "
+"opposite side of the target, and that unit is not incapacitated (e.g. turned "
 "to stone)."
 
 #: data/translations/english.cfg:96
@@ -3233,7 +3224,6 @@ msgstr ""
 "doesn't work on Undead or units in villages.)"
 
 #: data/translations/english.cfg:117
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -3242,8 +3232,8 @@ msgid ""
 msgstr ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"identical to and on the same side as the unit with the Plague attack. (This "
-"doesn't work on Undead or units in villages.)"
+"of the specified type on the same side as the unit with the Plague attack. "
+"(This doesn't work on Undead or units in villages.)"
 
 #: data/translations/english.cfg:120
 msgid ""
@@ -4160,9 +4150,8 @@ msgid "tentacle"
 msgstr "tentacle"
 
 #: data/units/Cuttle_Fish.cfg:42
-#, fuzzy
 msgid "swarm"
-msgstr "slam"
+msgstr "swarm"
 
 #: data/units/Cuttle_Fish.cfg:76
 msgid "ink"
@@ -6041,12 +6030,10 @@ msgid "net"
 msgstr "net"
 
 #: data/units/Goblin_Rouser.cfg:3
-#, fuzzy
 msgid "Goblin Rouser"
-msgstr "Goblin Impaler"
+msgstr "Goblin Rouser"
 
 #: data/units/Goblin_Rouser.cfg:27
-#, fuzzy
 msgid ""
 "Standard Bearers are an oddity amongst Goblins. Firstly they have survived a "
 "war, but perhaps more significantly, they were remembered to have survived "
@@ -6057,12 +6044,12 @@ msgid ""
 "to it to deal more damage in combat, though this only applies to units of "
 "lower level."
 msgstr ""
-"The rank of Grand Marshal is one of the most esteemed in the armies of "
-"humanity, and those who bear its title have surpassed many trials by fire, "
-"proving their tactical facility and their considerable mettle at personal "
-"combat.\n"
+"Standard Bearers are an oddity amongst Goblins. First, they have survived a "
+"war, but more significantly, they were remembered to have survived "
+"one by other Goblins. His oft maddened rabble on the battlefield nonetheless "
+"seems to effectively steel the younger at arms.\n"
 "\n"
-"Special Notes: the leadership of a Grand Marshal enables friendly units next "
+"Special Notes: the leadership of a Goblin Rouser enables friendly units next "
 "to it to deal more damage in combat, though this only applies to units of "
 "lower level."
 
@@ -6322,7 +6309,6 @@ msgid "Horse Lord"
 msgstr "Horse Lord"
 
 #: data/units/Horse_Lord.cfg:30
-#, fuzzy
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
@@ -8969,9 +8955,8 @@ msgid "+Scenario Designers"
 msgstr "+Scenario Designers"
 
 #: src/about.cpp:113
-#, fuzzy
 msgid "+Multiplayer Developers"
-msgstr "+Multiplayer Maps"
+msgstr "+Multiplayer Developers"
 
 #: src/about.cpp:118
 msgid "+Multiplayer Maps"
@@ -9946,7 +9931,7 @@ msgstr "Create Game"
 
 #: src/multiplayer_create.cpp:46
 msgid "Time limit"
-msgstr ""
+msgstr "Time limit"
 
 #: src/multiplayer_create.cpp:55
 msgid "Name of game:"
@@ -9991,17 +9976,15 @@ msgstr "The maximum number of turns the game can last"
 
 #: src/multiplayer_create.cpp:103
 msgid "Enables user time limit"
-msgstr ""
+msgstr "Enables user time limit"
 
 #: src/multiplayer_create.cpp:109
-#, fuzzy
 msgid "Initial time available for user at the begining of the match"
-msgstr ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgstr "Initial time available for player at start of game"
 
 #: src/multiplayer_create.cpp:115
 msgid "Time added to user's clock at the end of each turn"
-msgstr ""
+msgstr "Time added to user's clock at the end of each turn"
 
 #: src/multiplayer_create.cpp:120
 msgid "The amount of income each village yields per turn"
@@ -10068,14 +10051,12 @@ msgid "Unlimited Turns"
 msgstr "Unlimited Turns"
 
 #: src/multiplayer_create.cpp:266
-#, fuzzy
 msgid "Initial Time: "
-msgstr "Initiate"
+msgstr "Initial Time: "
 
 #: src/multiplayer_create.cpp:271
-#, fuzzy
 msgid "Turn time: "
-msgstr "Turns: "
+msgstr "Turn time: "
 
 #: src/multiplayer_create.cpp:277
 msgid "Village Gold: "
@@ -10585,11 +10566,12 @@ msgid "invisible: "
 msgstr "invisible: "
 
 #: src/reports.cpp:140
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
-msgstr "This unit has been turned to stone. It may not move or attack."
+msgstr ""
+"This unit has been slowed. It will only deal half its normal damage when "
+"attacking."
 
 #: src/reports.cpp:140
 msgid "slowed: "
