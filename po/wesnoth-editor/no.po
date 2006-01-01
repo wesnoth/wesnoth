@@ -2,15 +2,17 @@
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
-#
+# Erik <erikmesoy@yahoo.com>, 2006.
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-06 17:30+0100\n"
-"PO-Revision-Date: 2004-09-06 17:55+0100\n"
-"Last-Translator: Erik <erikmesoy@yahoo.com>\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2006-01-01 20:13+0100\n"
+"Last-Translator: Hogne <haskjold@gmail.com>\n"
+"Language-Team: none <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,53 +23,51 @@ msgstr "Fil"
 
 #: data/themes/editor.cfg:454
 msgid "Edit"
-msgstr "Endre"
+msgstr "Rediger"
 
 #: src/editor/editor.cpp:162
 msgid "Draw tiles"
-msgstr ""
+msgstr "Tegn ruter"
 
 #: src/editor/editor.cpp:164
-#, fuzzy
 msgid "Fill"
-msgstr "Fil"
+msgstr "Fyll"
 
 #: src/editor/editor.cpp:166
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Sett startposisjon til spiller"
 
 #: src/editor/editor.cpp:168
 msgid "Zoom in"
-msgstr ""
+msgstr "Zoom in"
 
 #: src/editor/editor.cpp:170
 msgid "Zoom out"
-msgstr ""
+msgstr "Zoom ut"
 
 #: src/editor/editor.cpp:172
 msgid "Undo"
-msgstr ""
+msgstr "Angre"
 
 #: src/editor/editor.cpp:174
 msgid "Redo"
-msgstr ""
+msgstr "Gjenta"
 
 #: src/editor/editor.cpp:176
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Zoom til standardstørrelse"
 
 #: src/editor/editor.cpp:178
 msgid "Toggle grid"
-msgstr ""
+msgstr "Slå av/på rutenett"
 
 #: src/editor/editor.cpp:180
-#, fuzzy
 msgid "Resize the map"
-msgstr "Endre størrelse"
+msgstr "Endre kartstørrelse"
 
 #: src/editor/editor.cpp:182
 msgid "Flip map"
-msgstr ""
+msgstr "Vend kart"
 
 #: src/editor/editor.cpp:378
 msgid "Language"
@@ -75,20 +75,19 @@ msgstr "Språk"
 
 #: src/editor/editor.cpp:379
 msgid "Choose your preferred language:"
-msgstr "Velg språket du foretrekker:"
+msgstr "Velg foretrukket språk:"
 
 #: src/editor/editor.cpp:406
 msgid "Save the Map As"
-msgstr ""
+msgstr "Lagre kart som"
 
 #: src/editor/editor.cpp:417
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Lagret kart eksisterer allerede. Vil du overskrive det?"
 
 #: src/editor/editor.cpp:440
-#, fuzzy
 msgid "Player "
-msgstr "Spiller"
+msgstr "Spiller "
 
 #: src/editor/editor.cpp:443
 msgid "Which Player?"
@@ -106,7 +105,7 @@ msgstr "Velg kart for innlasting"
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
-msgstr ""
+msgstr "Advarsel: ulovlige tegn i kartnavn. Vennligst lagre med et annet navn."
 
 #: src/editor/editor.cpp:518 src/editor/editor.cpp:597
 msgid "The file does not contain a valid map."
@@ -126,11 +125,11 @@ msgstr "Du må ha valgt en rute på brettet."
 
 #: src/editor/editor.cpp:1119
 msgid "Quit Editor"
-msgstr "Lukk kartbehandler"
+msgstr "Avslutt kartbehandler"
 
 #: src/editor/editor.cpp:1124
 msgid "Do you want to save the map before quitting?"
-msgstr "Vil du lagre dette kartet før du lukker?"
+msgstr "Vil du lagre dette kartet før du avslutter?"
 
 #: src/editor/editor.cpp:1156
 msgid "Map saved."
@@ -138,11 +137,11 @@ msgstr "Kart lagret."
 
 #: src/editor/editor.cpp:1163
 msgid "Could not save the map: $msg"
-msgstr "Klarte ikke å lagre katet: $msg"
+msgstr "Klarte ikke å lagre kartet: $msg"
 
 #: src/editor/editor.cpp:1178
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Feil: ulovlig tegn i filnavn."
 
 #: src/editor/editor.cpp:1234
 msgid "Player"
@@ -238,7 +237,7 @@ msgstr "Speilvend (dette kan komme til å endre kartets dimensjoner):"
 
 #: src/editor/editor_main.cpp:250
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Battle for Wesnoth kartbehandler"
 
 #: src/editor/editor_palettes.cpp:311
 msgid "FG"
@@ -300,6 +299,9 @@ msgstr "Slett fil"
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
 msgstr "Filsletting slo feil."
+
+#~ msgid "Settings"
+#~ msgstr "Brukervalg"
 
 #~ msgid "Draw"
 #~ msgstr "Tegn"
