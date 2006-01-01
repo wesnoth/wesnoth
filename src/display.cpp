@@ -774,7 +774,7 @@ void draw_label(CVideo& video, surface target, const theme::label& label)
 	if(icon.empty() == false) {
 		surface surf(image::get_image(icon,image::UNSCALED));
 		if(!surf.null()) {
-			if(surf->w != loc.w || surf->h != loc.h) {
+			if(surf->w > loc.w || surf->h > loc.h) {
 				surf.assign(scale_surface(surf,loc.w,loc.h));
 			}
 
