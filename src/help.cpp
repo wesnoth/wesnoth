@@ -1139,8 +1139,7 @@ public:
 				attack_ss << attack_it->damage() << '-' << attack_it->num_attacks();
 				push_tab_pair(row, attack_ss.str());
 				attack_ss.str(clear_stringstream);
-				push_tab_pair(row, (*attack_it).range() == attack_type::SHORT_RANGE ?
-							  _("melee") : _("ranged"));
+				push_tab_pair(row, _((*attack_it).range().c_str()));
 				// Show this attack's special, if it has any. Cross
 				// reference it to the section describing the
 				// special.

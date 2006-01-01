@@ -377,7 +377,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		if(res.attacker_special == backstab_string && !backstab)
 			strings->attack_special = "";
 
-		strings->range = gettext(attack.range() == attack_type::SHORT_RANGE ? N_("melee") : N_("ranged"));
+		strings->range = gettext(N_(attack.range().c_str()));
 	}
 
 	double best_defend_rating = 0.0;

@@ -137,7 +137,7 @@ public:
 	const image::locator image_loc() const;
 
 	void set_standing();
-	void set_defending(bool hits, attack_type::RANGE range, int start_frame, int acceleration);
+	void set_defending(bool hits, std::string range, int start_frame, int acceleration);
 	void update_defending_frame();
 	void set_attacking(bool newval, const attack_type* type=NULL, int ms=0);
 
@@ -188,8 +188,9 @@ private:
 	const unit_type* type_;
 
 	enum STATE { STATE_NORMAL, STATE_ATTACKING,
-	             STATE_DEFENDING_LONG, STATE_DEFENDING_SHORT, STATE_LEADING, STATE_HEALING};
+	             STATE_DEFENDING,  STATE_LEADING, STATE_HEALING};
 	STATE state_;
+	std::string sub_state_;
 	const attack_type* attackType_;
 	int attackingMilliseconds_;
 	bool getsHit_;

@@ -66,6 +66,7 @@ void sort_units(std::vector< unit > &units)
 //constructor for reading a unit
 unit::unit(const game_data& data, const config& cfg) :
 	state_(STATE_NORMAL),
+	sub_state_(""),
 	moves_(0), user_end_turn_(false), facingLeft_(true),
 	resting_(false), hold_position_(false), recruit_(false),
 	guardian_(false), upkeep_(UPKEEP_FREE)
@@ -87,6 +88,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
                gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
 	       type_(&t->get_gender_unit_type(gender_)), state_(STATE_NORMAL),
+	       sub_state_(""),
 	       hitpoints_(type_->hitpoints()),
 	       maxHitpoints_(type_->hitpoints()),
 	       backupMaxHitpoints_(type_->hitpoints()), experience_(0),
@@ -119,6 +121,7 @@ unit::unit(const unit_type* t, const unit& u) :
 	gender_(u.gender_), variation_(u.variation_),
 	type_(&t->get_gender_unit_type(u.gender_).get_variation(u.variation_)),
 	state_(STATE_NORMAL),
+	sub_state_(""),
 	hitpoints_(u.hitpoints()),
 	maxHitpoints_(type_->hitpoints()),
 	backupMaxHitpoints_(type_->hitpoints()),
@@ -964,8 +967,7 @@ const std::string& unit::image() const
 {
 	switch(state_) {
 		case STATE_NORMAL: return type_->image();
-		case STATE_DEFENDING_LONG:
-		case STATE_DEFENDING_SHORT: {
+		case STATE_DEFENDING: {
 			if(get_animation()) {
 				const std::string& res = anim_.get_current_frame().image;
 				if(res != "") {
@@ -973,7 +975,7 @@ const std::string& unit::image() const
 				}
 			}
 
-			const attack_type::RANGE range = (state_ == STATE_DEFENDING_LONG) ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE;
+			const attack_type::RANGE range = (sub_state_ == "ranged") ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE;
 			return type_->image_defensive(range);
 		}
 		case STATE_ATTACKING: {
@@ -982,7 +984,7 @@ const std::string& unit::image() const
 
 			const std::string& img = attackType_->animation().get_current_frame().image;
 			if (img.empty())
-				return type_->image_fighting(attackType_->range());
+				return type_->image_fighting(attackType_->range_type());
 			else
 				return img;
 		}
@@ -1007,10 +1009,8 @@ const image::locator unit::image_loc() const
 const unit_animation* unit::get_animation() const
 {
 	switch(state_) {
-	case STATE_DEFENDING_LONG:
-	case STATE_DEFENDING_SHORT: {
-			const attack_type::RANGE range = (state_ == STATE_DEFENDING_LONG) ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE;
-			const unit_animation* const anim = type_->defend_animation(getsHit_,range);
+	case STATE_DEFENDING: {
+			const unit_animation* const anim = type_->defend_animation(getsHit_,sub_state_);
 			return anim;
 	}
 	default:
@@ -1023,9 +1023,10 @@ void unit::set_standing()
 	state_ = STATE_NORMAL;
 }
 
-void unit::set_defending(bool hits, attack_type::RANGE range, int start_frame, int acceleration)
+void unit::set_defending(bool hits, std::string range, int start_frame, int acceleration)
 {
-	state_ = range == attack_type::LONG_RANGE ? STATE_DEFENDING_LONG : STATE_DEFENDING_SHORT;
+	sub_state_ = range ;
+	state_ =  STATE_DEFENDING;
 	getsHit_ = hits;
 
 	const unit_animation* const anim = get_animation();

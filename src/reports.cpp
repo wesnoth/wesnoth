@@ -246,9 +246,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			res.add_text(str,tooltip);
 
 			str << "<166,146,117>  ";
-			std::string range = (at_it->range() == attack_type::SHORT_RANGE ?
-		            _("melee") :
-					_("ranged"));
+			std::string range = _(at_it->range().c_str());
 			str << range << "--" << lang_type << "\n";
 			str<<"\n";
 

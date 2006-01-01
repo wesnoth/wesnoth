@@ -187,8 +187,14 @@ attack_type::attack_type(const config& cfg)
 	icon_ = cfg["icon"];
 	if(icon_.empty())
 		icon_ = "attacks/" + id_ + ".png";
-
-	range_ = cfg["range"] == "long" ? LONG_RANGE : SHORT_RANGE;
+	
+#warning "range type should disapear soon"
+	if(cfg["range"] == "long" || cfg["range"] == "ranged") {
+		range_type_ = LONG_RANGE;
+	} else {
+		range_type_ = SHORT_RANGE;
+	}
+	range_ = cfg["range"];
 	damage_ = atol(cfg["damage"].c_str());
 	num_attacks_ = atol(cfg["number"].c_str());
 
@@ -225,7 +231,12 @@ const std::string& attack_type::icon() const
 	return icon_;
 }
 
-attack_type::RANGE attack_type::range() const
+attack_type::RANGE attack_type::range_type() const
+{
+	return range_type_;
+}
+
+const std::string& attack_type::range() const
 {
 	return range_;
 }
@@ -288,12 +299,8 @@ bool attack_type::matches_filter(const config& cfg) const
 	const std::string& filter_type = cfg["type"];
 	const std::string& filter_special = cfg["special"];
 
-	if(filter_range.empty() == false) {
-		if(filter_range == "short" && range() == LONG_RANGE ||
-		   filter_range == "long" && range() == SHORT_RANGE) {
-			return false;
-		}
-	}
+	if(filter_range.empty() == false && filter_range != range()) 
+			return true;
 
 	if(filter_name.empty() == false && filter_name != name())
 		return false;
@@ -1080,26 +1087,24 @@ const std::string& unit_type::race() const
 	return race_->name();
 }
 
-unit_type::defensive_animation::defensive_animation(const config& cfg) : hits(HIT_OR_MISS), range(SHORT_OR_LONG), animation(cfg)
+unit_type::defensive_animation::defensive_animation(const config& cfg) : hits(HIT_OR_MISS), animation(cfg), range(utils::split(cfg["range"]))
 {
 	const std::string& hits_str = cfg["hits"];
 	if(hits_str.empty() == false) {
 		hits = (hits_str == "yes") ? HIT : MISS;
 	}
-
-	const std::string& range_str = cfg["range"];
-	if(range_str.empty() == false) {
-		range = (range_str == "short") ? SHORT : LONG;
-	}
 }
 
-bool unit_type::defensive_animation::matches(bool h, attack_type::RANGE r) const
+bool unit_type::defensive_animation::matches(bool h, std::string r) const
 {
-	if(hits == HIT && h == false || hits == MISS && h == true || range == SHORT && r == attack_type::LONG_RANGE || range == LONG && r == attack_type::SHORT_RANGE) {
+	if(hits == HIT && h == false || hits == MISS && h == true ) {
 		return false;
-	} else {
-		return true;
 	}
+	if(range.empty()== false && (std::find(range.begin(),range.end(),r) == range.end())) {
+		return false;
+	}
+
+	return true;
 }
 
 unit_type::death_animation::death_animation(const config& cfg)
@@ -1147,7 +1152,7 @@ bool unit_type::movement_animation::matches(const std::string &terrain,gamemap::
 	return true;
 }
 
-const unit_animation* unit_type::defend_animation(bool hits, attack_type::RANGE range) const
+const unit_animation* unit_type::defend_animation(bool hits, std::string range) const
 {
 	//select one of the matching animations at random
 	const unit_animation* res = NULL;

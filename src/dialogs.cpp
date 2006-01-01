@@ -761,7 +761,7 @@ void unit_preview_pane::draw_contents()
 				details << gettext(at_it->special().c_str());
 			details << "\n"
 			        << at_it->damage() << "-" << at_it->num_attacks() << " -- "
-			        << (at_it->range() == attack_type::SHORT_RANGE ? _("melee") : _("ranged"));
+			        << _(at_it->range().c_str());
 		}
 	}
 

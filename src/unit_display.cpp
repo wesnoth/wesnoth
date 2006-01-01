@@ -493,8 +493,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 	attack_anim.update_current_frames();
 	int animation_time = attack_anim.get_animation_time();
-
-	def->second.set_defending(hits, attack_type::LONG_RANGE, animation_time, acceleration);
+	def->second.set_defending(hits, attack.range(), animation_time, acceleration);
 
 	while(animation_time < end_at && !hide) {
 
@@ -760,7 +759,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		def->second.set_facing_left(true);
 	}
 
-	if(attack.range() == attack_type::LONG_RANGE) {
+	if(attack.range_type() == attack_type::LONG_RANGE) {
 		return unit_attack_ranged(disp, units, a, b, damage, attack);
 	}
 
@@ -827,7 +826,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 	int animation_time = attack_anim.get_animation_time();
 
-	def->second.set_defending(hits, attack_type::SHORT_RANGE, animation_time, acceleration);
+	def->second.set_defending(hits, attack.range(), animation_time, acceleration);
 
 	while(animation_time < end_at && !hide) {
 

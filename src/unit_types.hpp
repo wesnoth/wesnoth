@@ -86,7 +86,8 @@ public:
 	const std::string& type() const;
 	const std::string& special() const;
 	const std::string& icon() const;
-	RANGE range() const;
+	RANGE range_type() const;
+	const std::string& range() const;
 	int damage() const;
 	int num_attacks() const;
         int num_swarm_attacks(int hp, int maxhp) const;
@@ -111,7 +112,8 @@ private:
 	std::string type_;
 	std::string special_;
 	std::string icon_;
-	RANGE range_;
+	RANGE range_type_;
+	std::string range_;
 	int hexes_;
 	int damage_;
 	int num_attacks_;
@@ -259,7 +261,7 @@ public:
 
 	const std::string& race() const;
 
-	const unit_animation* defend_animation(bool hits, attack_type::RANGE range) const;
+	const unit_animation* defend_animation(bool hits, std::string range) const;
 	const unit_animation* teleport_animation() const;
 	const unit_animation* extra_animation(std::string flag) const;
 	const unit_animation* die_animation(const attack_type* attack) const;
@@ -305,10 +307,10 @@ private:
 	struct defensive_animation
 	{
 		explicit defensive_animation(const config& cfg);
-		bool matches(bool hits, attack_type::RANGE range) const;
+		bool matches(bool hits, std::string range) const;
 
 		enum { HIT, MISS, HIT_OR_MISS } hits;
-		enum { SHORT, LONG, SHORT_OR_LONG } range;
+		std::vector<std::string> range;
 		unit_animation animation;
 	};
 
