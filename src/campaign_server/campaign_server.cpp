@@ -62,7 +62,7 @@ int campaign_server::load_config()
 {
 	scoped_istream stream = istream_file(file_);
 	read(cfg_, *stream);
-	return lexical_cast_default<int>(cfg_["port"], 15002);
+	return lexical_cast_default<int>(cfg_["port"], 15003);
 }
 
 campaign_server::campaign_server(const std::string& cfgfile)

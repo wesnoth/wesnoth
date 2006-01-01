@@ -853,7 +853,7 @@ void game_controller::download_campaigns()
 
 	try {
 		const network::manager net_manager;
-		const network::connection sock = network::connect(items.front(),lexical_cast_default<int>(items.back(),15002));
+		const network::connection sock = network::connect(items.front(),lexical_cast_default<int>(items.back(),15003));
 		if(!sock) {
 			gui::show_error_message(disp(), _("Could not connect to host."));
 			return;
