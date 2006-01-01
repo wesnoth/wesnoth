@@ -6,13 +6,13 @@
 #
 #
 # Oron Peled <oron@actcom.co.il>, 2005.
-# Ely Levy <nakeee@gmail.com>, 2005.
+# Ely Levy <nakeee@gmail.com>, 2005, 2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-17 14:36+0100\n"
-"PO-Revision-Date: 2005-12-18 13:18+0200\n"
+"PO-Revision-Date: 2006-01-02 00:29+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -1218,6 +1218,12 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"אדמת מרעה מייצגת מישורים פתוחים, אם מעובדים, שמורים לאדמות מרעה או גדלים "
+"פרא. בהיותה איזור פתוח, אפשר לחצות אדמת מרעה בקלות אולם קשה להגן על עצמך "
+"בהיותך עליה. בדרך כלל, היחידות ש באופן המיטבי על אדמת מרעה הן יחידות פרשים, "
+"או יחידות מאד מהירות שמנצלות את השטח הפתוח.\n"
+"\n"
+"לרוב היחידות יש הגנה של 30 עד 40% על אדמת מרעה."
 
 #: data/help.cfg:327 data/terrain.cfg:107 data/terrain.cfg:115
 msgid "Road"
@@ -1229,6 +1235,8 @@ msgid ""
 "As far as gameplay is concerned, Roads are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
+"דרכים הן שבלי עפר כבושים, שנוצרו על ידי הנוסעים הרבים שעברו עליהם. ככל שזה "
+"נוגע למשחקיות, דרכים זהות ל<ref>dst=terrain_grassland text='אדמת מרעה'</ref>."
 
 #: data/help.cfg:335 data/terrain.cfg:359
 msgid "Forest"
@@ -1250,6 +1258,17 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"יערות מסמנים כל שטח מיוער עם סבך משמעותי מספיק כדי להפריע למעבר. למרות שהם "
+"מאיטים כמעט את כולם, יערות מציעים הגנה טובה יותר לרוב היחידות מאשר מישור "
+"פתוח. לפרשים, לעומת זו, יש כל כך הרבה בעיות לנווט בהם שכל יתרון מתנועה חשאית "
+"נעלם. אלפים הם יוצאי דופן לחוק הכללי הזה ליערות. לא רק שהם שומרים על תנועה "
+"מלאה ביערות, הם גם מקבלים בונוס הגנה משמעותי. גם גמדים הם יוצאי דופן לחוק "
+"זה; למרות שהם יכולים לחתוך את דרכם דרך היער בלי בלי להפסיד הרבה מהירות, חוסר "
+"ההכרות המוחלטת שלהם עם השטח גורמת לכך שהם לא מקבלים שום בונוס להגנה.\n"
+"\n"
+"לרוב היחידות יש 50% הגנה ביערות, אבל פרשים מוגבלים ל - 40%. אלפים, מצד שני, "
+"נהנים מ - 60 עד 70% הגנה, אפילו ליחידותם הרכובות. גמדים באון כללי מקבלים רק "
+"30% הגנה ביערות."
 
 #: data/help.cfg:345 data/terrain.cfg:320
 msgid "Hills"
@@ -1267,6 +1286,13 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"גבעות מייצגות כל סוג שטח הררי באופן היגיוני, שיש בו מספיק מקומות גבוהים "
+"ונמוכים להענקת טיפה מיסתור. לרוב היחידות קשה לנווט בגבעות. גמדים, טרולים "
+"ואורקים מכירים את סוג השטח מספיק כדי לעבור אותו בלי שהם יואטו. לפרשים יש "
+"מספיק בעיות לנווט בשטח כך שכל עזרה בהגנה מהסתתרות מתבטלת.\n"
+"\n"
+"ךרוב היחידות יש 50% הגנה בגבעות, אולם פרשים מוגבלים ל 40% הגנה. גמדים נהנים "
+"מ 60% הגנה בגבעות."
 
 #: data/help.cfg:355 data/terrain.cfg:344
 msgid "Mountains"
@@ -1343,6 +1369,10 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in snow."
 msgstr ""
+"שלג מייצג כל אזור קפוא שטוח, או באופן קבוע (כמו טונדרה), או באופן זמני (כמו "
+"אדמת מרעה מכוסת שלג). רוב היחידות מואטות על ידי שלג, ומתקשות להגן על עצמן.\n"
+"\n"
+"לרוב היחידות יש 20 עד 40% הגנה בשלג."
 
 #: data/help.cfg:405 data/terrain.cfg:310
 msgid "Ice"
@@ -1354,6 +1384,9 @@ msgid ""
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
+"קרח מייצג כל גוף של מים קפואים, למטרת משחקיות, הוא זהה "
+"ל<ref>dst=terrain_tundra text=שלג</ref>. שים לב שיחידות שוחות, אפילו אילו "
+"שיכולות לנשום מתחת למים, לא יכולת לשחות מתחת לקרח."
 
 #: data/help.cfg:413 data/terrain.cfg:415 data/terrain.cfg:502
 msgid "Castle"
@@ -1370,6 +1403,12 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"טירות הן כל סוג של בוצורים קבועים. כמעט כל היחידות מקבלות בונוס הגנה גדול "
+"במיוחד כאשר הן מוצבות בטירות, וכל היחידות מקבלות תנועה מלאה בטירה. הצבת "
+"יחידות בטירה מייצגת את יכולת ההגנה שלה. בלי יחידה בכל משושה קיר, אוייב יכול "
+"פשוט להתגנב לתוך הטירה בלי להעצר, וקבל אותם בונוסי הגנה כמו כל מי שבפנים.\n"
+"\n"
+"רוב היחידות מקבלות 60% הגנה בטירה."
 
 #: data/help.cfg:425 data/terrain.cfg:89
 msgid "Sand"
@@ -1383,6 +1422,11 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
+"חוסר היציבות של חול מקשה על רוב היחידות לחצות אותו, ומשאיר אותם פתוחים לגמרי "
+"להתקפה. לעומת זו, הרגלים הרחבות והגוף הנחשי של הגזעים הלטאיים הופך את הניווט "
+"בחול להרבה יותר קל.\n"
+"\n"
+"לרוב היחידות יש בין 20 ל 40% הגנה בחול."
 
 #: data/help.cfg:435 data/terrain.cfg:98
 msgid "Desert"
@@ -1421,6 +1465,9 @@ msgid ""
 "world. For gameplay purposes, they are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
+"ערבות הן מישורים של עשב גבוה, שנמצאות באזורי האקלים החמים יותר בעולם. ככל "
+"שזה נוגע למשחקיות, הן זהות ל<ref>dst=terrain_grassland text='אדמת מרעה'</"
+"ref>."
 
 #: data/help.cfg:460 data/terrain.cfg:150 data/terrain.cfg:162
 #: data/terrain.cfg:172 data/terrain.cfg:181 data/terrain.cfg:236
@@ -1441,6 +1488,12 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"עפרים מייצגים כל קבוצת בניינים, של בני אדם או אחרים. כמעט כל היחידות, אפילו "
+"פרשים, יכולות לנווט בכפרים בקלות. ורוב היחידות מקבלות בונוס הגנה כאשר הן "
+"מוצבות בכפר.כפרים נותנים ליחידות את המשאבים להתנקות ולטפל בפצעיהן, מה שנותן "
+"ךלכ יחידה שמוצבת בכפר להתרפא ב8 נקודות פגיעה כל תור, או להתרפא מרעל.\n"
+"\n"
+"לרוב היחידות יש 50 עד 60% הגנה בכפרים, לעומת זו פרשים מקבלים רק 40%."
 
 #: data/help.cfg:472
 msgid "Canyon"
@@ -1453,6 +1506,9 @@ msgid ""
 "is concerned, only units capable of flying over canyons can cross this "
 "terrain."
 msgstr ""
+"קניון הוא בגע באדמה, שמגיע לעומקים לא ידועים. קניונים מזוהים לפי הקירות "
+"הגבוהים שיקחו ימים לחצייה. ככל שזה נוגע למשחקיות, רק יחידות עפות יכולות "
+"לחצות את סוג השטח הזה."
 
 #: data/help.cfg:479 data/terrain.cfg:405
 msgid "Lava"
@@ -1464,6 +1520,8 @@ msgid ""
 "terrain can only be crossed by those units capable of flying a considerable "
 "distance above it."
 msgstr ""
+"הסכנות שטמונות בלנסות ללכת על לבה מובנות מאליו. סוג שטח זה יכול להחצות על "
+"ידי היחידות שמסוגלות לעוף מספיק גבוה מעליו."
 
 #: data/help.cfg:486 data/terrain.cfg:52
 msgid "River Ford"
@@ -1478,6 +1536,10 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"באזורים בהם הנהר מאד רדוד, המעבר מעליו הוא פשוט ליחידות מבוססות אדמה. יותר "
+"מזה, לכל יצור שמותאם לשחיה יש תנועה מלאה גם בחלקים אילו של הנהר. כלכ שזה "
+"נוגע למשחקיות, מתייחסים לשפך נהר כמו אדמת מרעה או מים רדודים, כאשר נבחר האחד "
+"שנותן את בונוסי ההגנה והתנועה הגבוהים ביותר ליחידה."
 
 #: data/help.cfg:493 data/terrain.cfg:62 data/terrain.cfg:70
 #: data/terrain.cfg:78
@@ -1607,7 +1669,7 @@ msgstr "הטבעת הזאת מרפאה את הנושא אותה מעט בכל ת
 
 #: data/items.cfg:556
 msgid "Can't set abilities yet, sorry."
-msgstr ""
+msgstr "לא יכול לקבוע יכולות עדיין, מצטער."
 
 #: data/items.cfg:577
 msgid "Ring of Slowness"
@@ -1639,7 +1701,7 @@ msgstr "קילשון זה יתן לאיש הים לירות ברקים חשמל�
 
 #: data/items.cfg:657
 msgid "Only the mermen can use this item!"
-msgstr ""
+msgstr "רק איש-ים יכול להשתמש בחפץ זה!"
 
 #: data/items.cfg:669
 msgid "storm trident"
@@ -1894,17 +1956,17 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:199
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:476
 msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr ""
+msgstr "האדום מבקיע! הניקוד הנוכחי הוא $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:247
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:524
 msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr ""
+msgstr "הכחול מבקיע! הניקוד הנוכחי הוא $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:337
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:614
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr ""
+msgstr "האם להעביר את הכדור ל$passto. הדפס ($xloc,$yloc)?"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:339
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:616
@@ -1972,7 +2034,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:3
 msgid "4p - Blue Water Province"
-msgstr ""
+msgstr " מושבת המים הכחולים - 4ש"
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:4
 msgid ""
@@ -2029,7 +2091,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:9
 msgid "Take control of this huge river delta."
-msgstr ""
+msgstr "השתלט על דלתת הנהר הענקית הזו."
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
 msgid "4p - The Valley of Death"
@@ -2270,7 +2332,7 @@ msgstr "הקלטת משחק"
 
 #: data/themes/default.cfg:471
 msgid "Play"
-msgstr "נגן"
+msgstr "הצג"
 
 #: data/themes/default.cfg:484
 msgid "Stop"
@@ -2365,7 +2427,10 @@ msgid ""
 "moves into an enemy's Zone of Control, it may not move any further that "
 "turn. Level 0 units are too frail to control a zone; and skirmisher units "
 "are skilled enough to ignore these zones."
-msgstr " "
+msgstr ""
+" ליחידות יש איזור שליטה בכל אחד מהמשושים לידן. אם יחידה נעה לתוך איזור שליטה "
+"של האוייב, היא לא יכולה לזוז יוצר במהלך אותו תור. יחידות ברמה 0 חלשות מידי "
+"מכדי לשלוט על אזור; ויחידות מסתננות מיומנות מספיק בכדי להתעלם מאזורים אלו."
 
 #: data/tips.cfg:8
 msgid ""
@@ -2374,6 +2439,9 @@ msgid ""
 "chance to hit both when attacking and defending, and marksman attacks have "
 "at least 60% chance to hit when attacking."
 msgstr ""
+"הסיכוי לפגוע ביחידה תלוי בדרך כלל בכמה טוב יכולה היחידה להגן על עצמה בסוג "
+"השטח עליו היא עומדת, אולם להתקפות קסומות יד 70% לפגוע גם בהתקפה וגם בהגנה, "
+"ולהתקפות צלפים יש לפחות 60% לפגוע בזמן התקפה."
 
 #: data/tips.cfg:9
 msgid ""
@@ -2394,6 +2462,8 @@ msgid ""
 "terrain, while most mounted units don't get any defensive advantage in "
 "villages and castles."
 msgstr ""
+"רוב יחידות הרגלים מגינות טוב יותר בתוך כפרים וטירות מרוב סוגי השטח האחרים, "
+"בעוד שלרוב היחידות הרוכבות אין יתרון הגנתי בכפרים או טירות."
 
 #: data/tips.cfg:12
 msgid ""
@@ -2401,6 +2471,8 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
+"יחידות שמבוססות על סוסים, עמידות באופן כללי נגד התקפות עם נשקי להב או מכה, "
+"אבל פגיעות להתקפות עם נשק חודר, כולל קשתות וחניתות."
 
 #: data/tips.cfg:13
 msgid ""
@@ -2408,6 +2480,8 @@ msgid ""
 "experience. Units killing an enemy will gain 8 experience for every level of "
 "the unit they kill."
 msgstr ""
+"הנחתת מכת המוות על יחידת אוייב היא הדרך הטובה ביותר לקבלת ניסיון. יחידות "
+"שהורגות אוייב יקבלו 8 נקודות ניסיון לכל רמה של היחידה שהן הרגו."
 
 #: data/tips.cfg:14
 msgid ""
@@ -2422,12 +2496,16 @@ msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
+"סבלנות היא לעיתים קרובות המפתח. במקום להתקיב בתנאים רעים, או עם יחידות "
+"מועטות, חכה לתנאים טובים יותר ואז התקף."
 
 #: data/tips.cfg:16
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
+"אם אתה מותקף ממספר כיוונים , זה יכול להיות טוב לשלוב יחידות עליהם ניתן לוותר "
+"למספר כיוונים כדי לעקב את יחדות האוייב."
 
 #: data/tips.cfg:17
 msgid ""
@@ -2441,6 +2519,9 @@ msgid ""
 "finish early. You will always earn more gold this way than through capturing "
 "villages and waiting for turns to run out."
 msgstr ""
+"ברוב המערכות תקבל זהב כבונוס על סיום מוקדם, בתלות במספר הכפרים במפה, ומספר "
+"התורות שסיימת מוקדם. אתה תמיד תקבל יותר זהב בדרך זו מאשר על ידי כבישת כפרים "
+"והמתנה עד סיום התורות."
 
 #: data/tips.cfg:19
 msgid ""
@@ -2449,6 +2530,9 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
+"המהיג יכול לגייס או להחזיר יחידות מתוך כל מצודה שבתוך טירה, לא רק המצודה "
+"ממנה הוא מתחיל. אתה יכול לכבוש מצודה מידי האוייב ולגייס משם. בנוסף, חלק "
+"מבעלי בריתך יהיו מוכנים לפנות לך מקום במצודה שלך כדי שתוכל לגייס משם."
 
 #: data/tips.cfg:20
 msgid ""
@@ -2471,6 +2555,8 @@ msgid ""
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
+"המנע באופן כללי מלזוז אל יד כפרים בלי יחידות עליהם. יחידת אוייב יכולה לנוע "
+"אל תוך הכפר ולהתקיף אותך, בעוד היא נהנת מההגנה והריפוי של הכפר."
 
 #: data/tips.cfg:23
 msgid ""
@@ -2480,7 +2566,7 @@ msgstr "החזקת הסמן מעל יכולת או מאפיין תראה את ת
 
 #: data/tips.cfg:24
 msgid "Use lines of units to screen injured units to let them recover."
-msgstr ""
+msgstr "השתמש בקווים של יחידות להגנה על יחידות פגועות כדי לתת להן זמן להתרפות."
 
 #: data/tips.cfg:25
 msgid "Read the hotkeys list in the preferences menu."
@@ -2491,24 +2577,32 @@ msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
+"אם אתה מזיז יחידה, אבל לא מתקיף או מגלה מידע נוסף, אתה יכול לבטל את המהלך על "
+"ידי לחיצה על 'u'."
 
 #: data/tips.cfg:27
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
+"אתה יכול להראות לאיזה מרחק יכולות יחידות האוייב לנוע על ידי הזזת הסמן "
+"למעליהן."
 
 #: data/tips.cfg:28
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
+"השתמש במרפאים כדי לתמוך בהתקפות שלך, הם ינצחו עבורך קרבות בלי שהם יצטרכו "
+"להתקוף אף אחד בעצמם."
 
 #: data/tips.cfg:29
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attack."
 msgstr ""
+"יכולת ההתקפה 'האטה'  תגרום ליחדות האוייב לנוע לאט יותר, אבל היא גם מורידה "
+"בחצי את הנזק שגורמות ההתקפות שלהן."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -2884,7 +2978,7 @@ msgstr ""
 
 #: data/translations/english.cfg:137
 msgid "$name River,River $name"
-msgstr ""
+msgstr "$name נהר,נהר $name"
 
 #: data/translations/english.cfg:138
 msgid "$name Forest,$name's Forest"
@@ -3168,7 +3262,7 @@ msgstr "ארכי קוסמת"
 
 #: data/units/Assassin.cfg:3
 msgid "Assassin"
-msgstr ""
+msgstr "מתנקש"
 
 #: data/units/Assassin.cfg:27 data/units/Assassin.cfg:130
 msgid ""
@@ -3623,7 +3717,7 @@ msgstr "איבון"
 
 #: data/units/Commander.cfg:3 data/units/Commander.cfg:108
 msgid "Commander"
-msgstr "קומנדור"
+msgstr "סרן"
 
 #: data/units/Commander.cfg:34 data/units/Commander.cfg:139
 msgid ""
@@ -3660,7 +3754,7 @@ msgstr "דיו"
 
 #: data/units/Dark_Adept.cfg:4
 msgid "Dark Adept"
-msgstr "אשף אפל"
+msgstr "אשף אופל"
 
 #: data/units/Dark_Adept.cfg:30 data/units/Dark_Adept.cfg:123
 msgid ""
@@ -3685,11 +3779,11 @@ msgstr "גל צללים"
 
 #: data/units/Dark_Adept.cfg:97
 msgid "female^Dark Adept"
-msgstr "אשפית אפלה"
+msgstr "אשפית אופל"
 
 #: data/units/Dark_Queen.cfg:3
 msgid "female^Dark Queen"
-msgstr "נקבה^מלכה אפלה"
+msgstr "מלכת אופל"
 
 #: data/units/Dark_Queen.cfg:18
 msgid ""
@@ -3728,7 +3822,7 @@ msgstr ""
 
 #: data/units/Dark_Sorcerer.cfg:36 data/units/Soulless.cfg:56
 msgid "plague(Walking Corpse)"
-msgstr ""
+msgstr "מגפה(גופות הולכות)"
 
 #: data/units/Dark_Sorcerer.cfg:56 data/units/Necromancer.cfg:47
 msgid "chill wave"
@@ -3856,7 +3950,7 @@ msgstr ""
 
 #: data/units/Drake_Blademaster.cfg:4
 msgid "Drake Blademaster"
-msgstr ""
+msgstr "אשף חרב דרקודמי"
 
 #: data/units/Drake_Blademaster.cfg:33
 msgid ""
@@ -3875,7 +3969,7 @@ msgstr "נשיפת אש"
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
-msgstr ""
+msgstr "מבעיר דרקודמי"
 
 #: data/units/Drake_Burner.cfg:31
 msgid ""
@@ -3887,7 +3981,7 @@ msgstr ""
 
 #: data/units/Drake_Clasher.cfg:3
 msgid "Drake Clasher"
-msgstr ""
+msgstr "מתקל דרקודמי"
 
 #: data/units/Drake_Clasher.cfg:26
 msgid ""
@@ -3909,7 +4003,7 @@ msgstr ""
 
 #: data/units/Drake_Enforcer.cfg:3
 msgid "Drake Enforcer"
-msgstr ""
+msgstr "אוכף דרקודמי"
 
 #: data/units/Drake_Enforcer.cfg:19
 msgid ""
@@ -3920,7 +4014,7 @@ msgstr ""
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
-msgstr "לוחם אנשי דרקון"
+msgstr "לוחם דרקודמי"
 
 #: data/units/Drake_Fighter.cfg:31
 msgid ""
@@ -3935,7 +4029,7 @@ msgstr ""
 
 #: data/units/Drake_Fire.cfg:3
 msgid "Fire Drake"
-msgstr ""
+msgstr "דרקודם אש"
 
 #: data/units/Drake_Fire.cfg:31
 msgid ""
@@ -3946,7 +4040,7 @@ msgstr ""
 
 #: data/units/Drake_Flameheart.cfg:3
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "לב-להבה דרקודמי"
 
 #: data/units/Drake_Flameheart.cfg:36
 msgid ""
@@ -3962,7 +4056,7 @@ msgstr ""
 
 #: data/units/Drake_Flare.cfg:3
 msgid "Drake Flare"
-msgstr ""
+msgstr "בוהק דרקודמי"
 
 #: data/units/Drake_Flare.cfg:35
 msgid ""
@@ -3977,7 +4071,7 @@ msgstr ""
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
-msgstr ""
+msgstr "גלדיטור דרקודמי"
 
 #: data/units/Drake_Gladiator.cfg:24
 msgid ""
@@ -3991,7 +4085,7 @@ msgstr ""
 
 #: data/units/Drake_Glider.cfg:3
 msgid "Drake Glider"
-msgstr ""
+msgstr "דרקודמם דואה"
 
 #: data/units/Drake_Glider.cfg:33
 msgid ""
@@ -4006,11 +4100,11 @@ msgstr ""
 #: data/units/Drake_Glider.cfg:78 data/units/Drake_Hurricane.cfg:82
 #: data/units/Drake_Sky.cfg:83
 msgid "slam"
-msgstr ""
+msgstr "הטחה"
 
 #: data/units/Drake_Hurricane.cfg:3
 msgid "Hurricane Drake"
-msgstr ""
+msgstr "הוריקן דרקודמי"
 
 #: data/units/Drake_Hurricane.cfg:32
 msgid ""
@@ -4021,7 +4115,7 @@ msgstr ""
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
-msgstr ""
+msgstr "דרקודם תופת"
 
 #: data/units/Drake_Inferno.cfg:32
 msgid ""
@@ -4034,7 +4128,7 @@ msgstr ""
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
-msgstr ""
+msgstr "דרקודם שחקים"
 
 #: data/units/Drake_Sky.cfg:33
 msgid ""
@@ -4045,7 +4139,7 @@ msgstr ""
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
-msgstr ""
+msgstr "חותך דרקודמי"
 
 #: data/units/Drake_Slasher.cfg:25
 msgid ""
@@ -4060,18 +4154,18 @@ msgstr ""
 #: data/units/Drake_Warden.cfg:32 data/units/Drake_Warden.cfg:52
 #: data/units/Halbardier.cfg:34 data/units/Halbardier.cfg:75
 msgid "halberd"
-msgstr "חנית קדומה"
+msgstr "דקר"
 
 #: data/units/Drake_Slasher.cfg:54 data/units/Drake_Warden.cfg:55
 #: data/units/Goblin_Impaler.cfg:35 data/units/Halbardier.cfg:40
 #: data/units/Javelineer.cfg:34 data/units/Pikeman.cfg:63
 #: data/units/Spearman.cfg:66
 msgid "firststrike"
-msgstr ""
+msgstr "תקיפה ראשונה"
 
 #: data/units/Drake_Warden.cfg:4
 msgid "Drake Warden"
-msgstr ""
+msgstr "מגן  דרקודמי"
 
 #: data/units/Drake_Warden.cfg:26
 msgid ""
@@ -4083,7 +4177,7 @@ msgstr ""
 
 #: data/units/Drake_Warrior.cfg:4
 msgid "Drake Warrior"
-msgstr ""
+msgstr "חייל דרקודמי"
 
 #: data/units/Drake_Warrior.cfg:32
 msgid ""
@@ -4094,7 +4188,7 @@ msgstr ""
 
 #: data/units/Draug.cfg:3
 msgid "Draug"
-msgstr ""
+msgstr "דראוג"
 
 #: data/units/Draug.cfg:23
 msgid ""
@@ -4113,7 +4207,7 @@ msgstr "גרזן"
 
 #: data/units/Dread_Lich.cfg:3
 msgid "Dread Lich"
-msgstr ""
+msgstr "ליץ מבעית"
 
 #: data/units/Dread_Lich.cfg:24
 msgid ""
@@ -4127,7 +4221,7 @@ msgstr ""
 
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
-msgstr ""
+msgstr "לוחם דו-קרב"
 
 #: data/units/Duelist.cfg:27
 msgid ""
@@ -4151,7 +4245,7 @@ msgstr ""
 #: data/units/Duelist.cfg:73 data/units/Fencer.cfg:77
 #: data/units/Master_at_Arms.cfg:38
 msgid "rapier"
-msgstr ""
+msgstr "סיף"
 
 #: data/units/Dwarvish_Berserker.cfg:3
 msgid "Dwarvish Berserker"
@@ -4394,7 +4488,7 @@ msgstr ""
 
 #: data/units/Elvish_Archer.cfg:123
 msgid "female^Elvish Archer"
-msgstr ""
+msgstr "קשתית אלפית"
 
 #: data/units/Elvish_Avenger.cfg:3
 msgid "Elvish Avenger"
@@ -4455,7 +4549,7 @@ msgstr ""
 
 #: data/units/Elvish_Druid.cfg:3
 msgid "female^Elvish Druid"
-msgstr ""
+msgstr "דרואידית אלפית"
 
 #: data/units/Elvish_Druid.cfg:30
 msgid ""
@@ -4499,11 +4593,11 @@ msgstr ""
 #: data/units/Elvish_Lord.cfg:54 data/units/Elvish_Sorceress.cfg:135
 #: data/units/Elvish_Sylph.cfg:94
 msgid "faerie fire"
-msgstr ""
+msgstr "אש פיות"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
-msgstr ""
+msgstr "לוחם אלפי"
 
 #: data/units/Elvish_Fighter.cfg:34
 msgid ""
@@ -4515,7 +4609,7 @@ msgstr ""
 
 #: data/units/Elvish_Hero.cfg:3
 msgid "Elvish Hero"
-msgstr ""
+msgstr "גיבור אלפי"
 
 #: data/units/Elvish_Hero.cfg:34
 msgid ""
@@ -4526,7 +4620,7 @@ msgstr ""
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
-msgstr ""
+msgstr "לורד רם מעלה אלפי"
 
 #: data/units/Elvish_High_Lord.cfg:33
 msgid ""
@@ -4538,7 +4632,7 @@ msgstr ""
 
 #: data/units/Elvish_Lady.cfg:4
 msgid "female^Elvish Lady"
-msgstr ""
+msgstr "גבירה אלפית"
 
 #: data/units/Elvish_Lady.cfg:19
 msgid ""
@@ -4554,7 +4648,7 @@ msgstr "דחיפה"
 
 #: data/units/Elvish_Lord.cfg:3
 msgid "Elvish Lord"
-msgstr ""
+msgstr "לורד אלפי"
 
 #: data/units/Elvish_Lord.cfg:33
 msgid ""
@@ -4599,7 +4693,7 @@ msgstr ""
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
-msgstr ""
+msgstr "מרשל אלפי"
 
 #: data/units/Elvish_Marshal.cfg:39
 msgid ""
@@ -4634,7 +4728,7 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:2
 msgid "Elvish Ranger"
-msgstr ""
+msgstr "סייר אלפי"
 
 #: data/units/Elvish_Ranger.cfg:38 data/units/Elvish_Ranger.cfg:172
 msgid ""
@@ -4651,11 +4745,11 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:136
 msgid "female^Elvish Ranger"
-msgstr ""
+msgstr "סיירת אלפית"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
-msgstr ""
+msgstr "רוכב אלפי"
 
 #: data/units/Elvish_Rider.cfg:44
 msgid ""
@@ -4670,7 +4764,7 @@ msgstr ""
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
-msgstr ""
+msgstr "גשש אלפי"
 
 #: data/units/Elvish_Scout.cfg:42
 msgid ""
@@ -4683,7 +4777,7 @@ msgstr ""
 
 #: data/units/Elvish_Shaman.cfg:3
 msgid "female^Elvish Shaman"
-msgstr ""
+msgstr "שאמנית אלפית"
 
 #: data/units/Elvish_Shaman.cfg:31
 msgid ""
@@ -5096,7 +5190,7 @@ msgstr ""
 #: data/units/Grand_Knight.cfg:57 data/units/Knight.cfg:55
 #: data/units/Lancer.cfg:39 data/units/Paladin.cfg:61
 msgid "lance"
-msgstr ""
+msgstr "רומח"
 
 #: data/units/Grand_Marshal.cfg:3
 msgid "Grand Marshal"
@@ -5158,7 +5252,7 @@ msgstr ""
 
 #: data/units/Gryphon.cfg:3
 msgid "Gryphon"
-msgstr ""
+msgstr "גרפין"
 
 #: data/units/Gryphon.cfg:16
 msgid ""
@@ -5180,7 +5274,7 @@ msgstr ""
 
 #: data/units/Gryphon_Rider.cfg:3
 msgid "Gryphon Rider"
-msgstr ""
+msgstr "רוכב גריפין"
 
 #: data/units/Gryphon_Rider.cfg:16
 msgid ""
@@ -5191,7 +5285,7 @@ msgstr ""
 
 #: data/units/Halbardier.cfg:3
 msgid "Halberdier"
-msgstr ""
+msgstr "איש דקר"
 
 #: data/units/Halbardier.cfg:31
 msgid ""
@@ -5230,7 +5324,7 @@ msgstr ""
 
 #: data/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
-msgstr ""
+msgstr "שליט הסוס"
 
 #: data/units/Horse_Lord.cfg:30
 msgid ""
@@ -5246,7 +5340,7 @@ msgstr "כוכב בוקר"
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
-msgstr ""
+msgstr "רוכב סוס"
 
 #: data/units/Horseman.cfg:32
 msgid ""
@@ -5337,7 +5431,7 @@ msgstr ""
 
 #: data/units/Lancer.cfg:3
 msgid "Lancer"
-msgstr ""
+msgstr "רמח"
 
 #: data/units/Lancer.cfg:34
 msgid ""
@@ -5359,7 +5453,7 @@ msgstr ""
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
-msgstr ""
+msgstr "ליץ'"
 
 #: data/units/Lich.cfg:27
 msgid ""
@@ -5394,7 +5488,7 @@ msgstr ""
 
 #: data/units/Longbowman.cfg:3
 msgid "Longbowman"
-msgstr ""
+msgstr "איש קשת-ארוכה"
 
 #: data/units/Longbowman.cfg:33
 msgid ""
@@ -5448,7 +5542,7 @@ msgstr ""
 #: data/units/Mage.cfg:77 data/units/Mage.cfg:192
 #: data/units/Silver_Mage.cfg:108 data/units/Silver_Mage.cfg:254
 msgid "missile"
-msgstr ""
+msgstr "קליע"
 
 #: data/units/Mage.cfg:118
 msgid "female^Mage"
@@ -5456,7 +5550,7 @@ msgstr "קוסמת"
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
-msgstr "קוסם האור"
+msgstr "קוסם אור"
 
 #: data/units/Mage_of_Light.cfg:20 data/units/Mage_of_Light.cfg:107
 #: data/units/Mermaid_Diviner.cfg:18
@@ -5797,7 +5891,7 @@ msgstr ""
 
 #: data/units/Naga-Fighter.cfg:3
 msgid "Naga Fighter"
-msgstr ""
+msgstr "לוחם נאגה"
 
 #: data/units/Naga-Fighter.cfg:25 data/units/Naga-Fighter.cfg:69
 msgid ""
@@ -5810,7 +5904,7 @@ msgstr ""
 
 #: data/units/Naga-Fighter.cfg:48
 msgid "Nagini Fighter"
-msgstr ""
+msgstr "לוחמת נאגה"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
@@ -5840,7 +5934,7 @@ msgstr ""
 
 #: data/units/Naga-Warrior.cfg:3
 msgid "Naga Warrior"
-msgstr ""
+msgstr "חייל נאגה"
 
 #: data/units/Naga-Warrior.cfg:29 data/units/Naga-Warrior.cfg:77
 msgid ""
@@ -5854,7 +5948,7 @@ msgstr ""
 
 #: data/units/Naga-Warrior.cfg:52
 msgid "Nagini Warrior"
-msgstr ""
+msgstr "חיילת נאגה"
 
 #: data/units/Necromancer.cfg:3
 msgid "Necromancer"
@@ -5938,13 +6032,15 @@ msgstr "לורד אציל"
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
-msgstr ""
+msgstr "צעיר אציל"
 
 #: data/units/Noble_Youth.cfg:26
 msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
 "become a Lord -- to join the elite of humanity."
 msgstr ""
+"היום הוא איש צעיר, על ידי מסירותו לכתר הוא מבקש להפוך ללורד - להצטרף לאליטה "
+"של האנושות."
 
 #: data/units/Noble_Youth.cfg:29 data/units/Youth.cfg:26
 msgid "training sword"
@@ -5964,7 +6060,7 @@ msgstr ""
 
 #: data/units/Ogre.cfg:26 data/units/Young_Ogre.cfg:47
 msgid "cleaver"
-msgstr ""
+msgstr "קופיץ"
 
 #: data/units/Orcish_Archer.cfg:3
 msgid "Orcish Archer"
@@ -5997,11 +6093,11 @@ msgstr ""
 
 #: data/units/Orcish_Assassin.cfg:47 data/units/Orcish_Slayer.cfg:53
 msgid "throwing knives"
-msgstr ""
+msgstr "סכני הטלה"
 
 #: data/units/Orcish_Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
-msgstr ""
+msgstr "נושא קשת-מצולבת אורקי"
 
 #: data/units/Orcish_Crossbowman.cfg:23
 msgid ""
@@ -6017,7 +6113,7 @@ msgstr "חרב קצרה"
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
-msgstr ""
+msgstr "לוחם פשוט אורקי"
 
 #: data/units/Orcish_Grunt.cfg:22
 msgid ""
@@ -6028,7 +6124,7 @@ msgstr ""
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
-msgstr "מנהיג אורקים"
+msgstr "מנהיג אורקי"
 
 #: data/units/Orcish_Leader.cfg:24
 msgid ""
@@ -6041,7 +6137,7 @@ msgstr ""
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
-msgstr ""
+msgstr "ראש שבט אורקי"
 
 #: data/units/Orcish_Ruler.cfg:24
 msgid ""
@@ -6054,7 +6150,7 @@ msgstr ""
 
 #: data/units/Orcish_Shaman.cfg:3
 msgid "Orcish Shaman"
-msgstr ""
+msgstr "שאמן אורקי"
 
 #: data/units/Orcish_Shaman.cfg:26
 msgid ""
@@ -6073,7 +6169,7 @@ msgstr "קללה"
 
 #: data/units/Orcish_Shaman.cfg:76
 msgid "Novice Orcish Shaman"
-msgstr ""
+msgstr "שאמן אורקי מתחיל"
 
 #: data/units/Orcish_Shaman.cfg:99
 msgid ""
@@ -6088,7 +6184,7 @@ msgstr ""
 
 #: data/units/Orcish_Shaman.cfg:149
 msgid "Old Orcish Shaman"
-msgstr ""
+msgstr "שאמן אורקי זקן"
 
 #: data/units/Orcish_Shaman.cfg:172
 msgid ""
@@ -6120,7 +6216,7 @@ msgstr ""
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
-msgstr ""
+msgstr "קשת-קנה אורקי"
 
 #: data/units/Orcish_Slurbow.cfg:24
 msgid ""
@@ -6217,7 +6313,7 @@ msgstr ""
 
 #: data/units/Paladin.cfg:3
 msgid "Paladin"
-msgstr ""
+msgstr "פלאדין"
 
 #: data/units/Paladin.cfg:37
 msgid ""
@@ -6344,7 +6440,7 @@ msgstr ""
 
 #: data/units/Red_Mage.cfg:132
 msgid "female^Red Mage"
-msgstr "נקבה^ קוסמת אדומה"
+msgstr "קוסמת אדומה"
 
 #: data/units/Revenant.cfg:3
 msgid "Revenant"
@@ -6657,7 +6753,7 @@ msgstr "גריפון ישן"
 
 #: data/units/Sleeping_Gryphon.cfg:16
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
-msgstr "שששש! הגריפון ישן! כדי שלא תעיר אותו!"
+msgstr "שששש! הגריפון ישן! עדיף שלא תעיר אותו!"
 
 #: data/units/Soul_Shooter.cfg:3
 msgid "Soul Shooter"
@@ -7048,7 +7144,7 @@ msgstr ""
 
 #: data/units/Yeti.cfg:3
 msgid "Yeti"
-msgstr "איש שלג"
+msgstr "יאטי"
 
 #: data/units/Yeti.cfg:37
 msgid ""
@@ -7056,6 +7152,8 @@ msgid ""
 "snow-covered mountains. Few profess to have seen one, and their existence is "
 "doubted by many."
 msgstr ""
+"מעט מאד ידוע על היאטים, יצורים דומים לקוף אדם שלפי השמועות  גרים בהרים "
+"מרוחקים מכוסי שלג. מעט אנשים טוענים שראו אחד, ורבים מטלים ספק בקיומם."
 
 #: data/units/Young_Ogre.cfg:3
 msgid "Young Ogre"
@@ -7067,6 +7165,8 @@ msgid ""
 "trained. They cannot manage weapons skillfully, but that is of little "
 "concern given their strength."
 msgstr ""
+"כאשר עדיין קטנים, אוגרים לפעמים נישבים ונלקחים לצבא לאימון. הם לא יכולים "
+"לטפל בנשק במיומנות, אבל זה לא מדאיג בהתחשב בכח שלהם."
 
 #: data/units/Youth.cfg:3
 msgid "Youth"
