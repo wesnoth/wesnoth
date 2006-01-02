@@ -1,23 +1,24 @@
 SVN trunk (1.1+svn):
- * WML improvements
-   * game is not limited to melee and ranged attacks anymore, retaliation will
-   use any attack of the same range. Official name for current ranges are
-   "melee" and "ranged"
-   * starting_villages macro updated for added village types
- * user interface
-   * centered BFW title logo on main screen for 1024x768 (still off-center for 800x600)
-   * prevent icons in themes from being scaled up (only scaling downis
-   allowed)
- * units
-   * gave names to mermaids
- * Miscellaneous
-   * changed default port for campaign server to 15003 to separate 1.1 and 1.0
- * language and i18n:
-   * updated translations: Hebrew, Norwegian
  * campaigns
    * reordered ranks to reflect relevance to game world
    * The Rise of Wesnoth
      * text cleanup in intro
+ * campaign server
+   * changed default port for campaign server to 15003 to separate 1.1 and 1.0
+ * language and i18n:
+   * updated translations: Hebrew, Norwegian
+ * units
+   * gave names to mermaids
+ * user interface
+   * centered BFW title logo on main screen for 1024x768 (still off-center for
+     800x600)
+   * prevent icons in themes from being scaled up (only scaling downis
+     allowed)
+ * WML improvements
+   * game is not limited to melee and ranged attacks anymore, retaliation will
+     use any attack of the same range. Official name for current ranges are
+     "melee" and "ranged"
+   * starting_villages macro updated for added village types
 
 Version 1.1:
  * campaign server
