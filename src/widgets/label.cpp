@@ -11,11 +11,11 @@
    See the COPYING file for more details.
 */
 
-#include "../global.hpp"
+#include "global.hpp"
 
-#include "label.hpp"
-#include "../marked-up_text.hpp"
-#include "../video.hpp"
+#include "widgets/label.hpp"
+#include "marked-up_text.hpp"
+#include "video.hpp"
 
 namespace gui {
 

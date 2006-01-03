@@ -11,17 +11,17 @@
    See the COPYING file for more details.
 */
 
-#include "../global.hpp"
+#include "global.hpp"
 
-#include "textbox.hpp"
-#include "../clipboard.hpp"
-#include "../font.hpp"
-#include "../language.hpp"
-#include "../log.hpp"
-#include "../sdl_utils.hpp"
-#include "../serialization/string_utils.hpp"
-#include "../util.hpp"
-#include "../video.hpp"
+#include "widgets/textbox.hpp"
+#include "clipboard.hpp"
+#include "font.hpp"
+#include "language.hpp"
+#include "log.hpp"
+#include "sdl_utils.hpp"
+#include "serialization/string_utils.hpp"
+#include "util.hpp"
+#include "video.hpp"
 
 #include "SDL.h"
 

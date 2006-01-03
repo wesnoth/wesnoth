@@ -1,6 +1,8 @@
 #ifndef AI_DFOOL_HPP_INCLUDED
 #define AI_DFOOL_HPP_INCLUDED
 
+#include "global.hpp"
+
 #include "ai_interface.hpp"
 #include "map.hpp"
 #include <vector>

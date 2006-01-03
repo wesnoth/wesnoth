@@ -12,6 +12,8 @@
 #ifndef EDITOR_H_INCLUDED
 #define EDITOR_H_INCLUDED
 
+#include "global.hpp"
+
 #include "SDL.h"
 
 #include "editor_palettes.hpp"

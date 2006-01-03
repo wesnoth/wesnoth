@@ -11,14 +11,14 @@
    See the COPYING file for more details.
 */
 
-#include "../global.hpp"
+#include "global.hpp"
 
-#include "progressbar.hpp"
+#include "widgets/progressbar.hpp"
 
-#include "../font.hpp"
-#include "../marked-up_text.hpp"
-#include "../util.hpp"
-#include "../video.hpp"
+#include "font.hpp"
+#include "marked-up_text.hpp"
+#include "util.hpp"
+#include "video.hpp"
 
 namespace gui {
 

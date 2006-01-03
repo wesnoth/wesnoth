@@ -13,6 +13,8 @@
 #ifndef CONFIG_HPP_INCLUDED
 #define CONFIG_HPP_INCLUDED
 
+#include "global.hpp"
+
 #include <map>
 #include <string>
 #include <vector>

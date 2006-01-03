@@ -11,33 +11,21 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
-#include "actions.hpp"
 #include "ai.hpp"
 #include "ai2.hpp"
 #include "ai_dfool.hpp"
 #ifdef HAVE_PYTHON
 #include "ai_python.hpp"
 #endif
-//#include "advanced_ai.hpp"
 #include "dialogs.hpp"
 #include "game_config.hpp"
 #include "game_events.hpp"
-#include "log.hpp"
-#include "network.hpp"
-#include "pathfind.hpp"
-#include "playlevel.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "statistics.hpp"
-#include "unit.hpp"
 #include "unit_display.hpp"
-#include "util.hpp"
 #include "wassert.hpp"
-
-#include <iostream>
 
 #define LOG_AI LOG_STREAM(info, ai)
 #define WRN_AI LOG_STREAM(warn, ai)

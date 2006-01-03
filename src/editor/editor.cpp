@@ -1184,7 +1184,7 @@ bool map_editor::verify_filename(const std::string& filename, bool show_error) c
 {
 	static const std::string allowed_characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_/\\.";
 	static const std::string prefix = "\\/";
-	std::size_t start_pos = filename.find_last_of(prefix);
+	size_t start_pos = filename.find_last_of(prefix);
 
 	if(filename.find_first_not_of(allowed_characters, start_pos) != std::string::npos) {
 		if(show_error) {

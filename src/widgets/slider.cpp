@@ -11,11 +11,11 @@
    See the COPYING file for more details.
 */
 
-#include "../global.hpp"
+#include "global.hpp"
 
-#include "slider.hpp"
-#include "../image.hpp"
-#include "../video.hpp"
+#include "widgets/slider.hpp"
+#include "image.hpp"
+#include "video.hpp"
 
 #include <algorithm>
 #include <iostream>

@@ -11,9 +11,9 @@
    See the COPYING file for more details.
 */
 
-#include "../global.hpp"
+#include "global.hpp"
 
-#include "scrollarea.hpp"
+#include "widgets/scrollarea.hpp"
 
 #include <algorithm>
 #include <iostream>

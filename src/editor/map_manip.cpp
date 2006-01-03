@@ -10,12 +10,12 @@
   See the COPYING file for more details.
 */
 
+#include "map_manip.hpp"
+
 #include "../map.hpp"
 #include "../config.hpp"
 #include "../util.hpp"
 #include "serialization/string_utils.hpp"
-
-#include "map_manip.hpp"
 
 #include <vector>
 #include <map>

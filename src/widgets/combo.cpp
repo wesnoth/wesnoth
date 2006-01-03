@@ -11,13 +11,12 @@
    See the COPYING file for more details.
 */
 
-#include "../global.hpp"
+#include "global.hpp"
 
-#include "combo.hpp"
-#include "button.hpp"
-#include "../display.hpp"
-#include "../show_dialog.hpp"
-#include "../video.hpp"
+#include "widgets/combo.hpp"
+#include "display.hpp"
+#include "show_dialog.hpp"
+#include "video.hpp"
 
 namespace gui {
 

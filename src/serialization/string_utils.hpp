@@ -20,8 +20,8 @@
 #include <vector>
 
 #include "SDL_types.h"
-#include "tstring.hpp"
-#include "util.hpp"
+#include "../tstring.hpp"
+#include "../util.hpp"
 
 class variable_set
 {

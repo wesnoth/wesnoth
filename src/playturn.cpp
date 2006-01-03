@@ -27,7 +27,6 @@
 #include "minimap.hpp"
 #include "marked-up_text.hpp"
 #include "mouse.hpp"
-#include "network.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
 #include "preferences_display.hpp"

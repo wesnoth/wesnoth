@@ -13,6 +13,8 @@
 #ifndef EDITOR_PALETTES_H_INCLUDED
 #define EDITOR_PALETTES_H_INCLUDED
 
+#include "global.hpp"
+
 #include "SDL.h"
 
 #include "../sdl_utils.hpp"

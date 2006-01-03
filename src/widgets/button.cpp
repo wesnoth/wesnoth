@@ -11,16 +11,16 @@
    See the COPYING file for more details.
 */
 
-#include "../global.hpp"
+#include "global.hpp"
 
-#include "button.hpp"
+#include "widgets/button.hpp"
 #include "font.hpp"
-#include "../marked-up_text.hpp"
-#include "../image.hpp"
-#include "../log.hpp"
-#include "../util.hpp"
-#include "../video.hpp"
-#include "../wml_separators.hpp"
+#include "marked-up_text.hpp"
+#include "image.hpp"
+#include "log.hpp"
+#include "util.hpp"
+#include "video.hpp"
+#include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
 
 namespace gui {

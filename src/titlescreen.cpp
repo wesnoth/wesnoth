@@ -33,7 +33,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 
-#include "SDL_ttf.h"
+#include "sdl_ttf/SDL_ttf.h"
 
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_DP LOG_STREAM(err, display)

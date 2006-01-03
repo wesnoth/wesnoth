@@ -11,10 +11,10 @@
    See the COPYING file for more details.
 */
 
-#include "../global.hpp"
+#include "global.hpp"
 
-#include "widget.hpp"
-#include "../video.hpp"
+#include "widgets/widget.hpp"
+#include "video.hpp"
 
 namespace {
 	const SDL_Rect EmptyRect = {-1234,-1234,0,0};

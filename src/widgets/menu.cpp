@@ -11,18 +11,18 @@
    See the COPYING file for more details.
 */
 
-#include "../global.hpp"
+#include "global.hpp"
 
-#include "menu.hpp"
+#include "widgets/menu.hpp"
 
-#include "../language.hpp"
-#include "../font.hpp"
-#include "../image.hpp"
-#include "../marked-up_text.hpp"
-#include "../sdl_utils.hpp"
-#include "../util.hpp"
-#include "../video.hpp"
-#include "../wml_separators.hpp"
+#include "language.hpp"
+#include "font.hpp"
+#include "image.hpp"
+#include "marked-up_text.hpp"
+#include "sdl_utils.hpp"
+#include "util.hpp"
+#include "video.hpp"
+#include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <algorithm>

@@ -3,35 +3,23 @@
 #include "ai_interface.hpp"
 #include "config_adapter.hpp"
 #include "cursor.hpp"
-//#include "dialogs.hpp"
-//#include "events.hpp"
 #include "filesystem.hpp"
-//#include "game_errors.hpp"
-//#include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "game_events.hpp"
 #include "halo.hpp"
 #include "help.hpp"
-//#include "hotkeys.hpp"
 #include "intro.hpp"
 #include "log.hpp"
-//#include "mapgen.hpp"
 #include "map_create.hpp"
-//#include "network.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
 #include "preferences_display.hpp"
-//#include "random.hpp"
 #include "replay.hpp"
 #include "replay_controller.hpp"
-//#include "scoped_resource.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "tooltips.hpp"
-//#include "unit_display.hpp"
-//#include "util.hpp"
-//#include "video.hpp"
 
 #include <iostream>
 #include <iterator>
@@ -356,7 +344,8 @@ void replay_controller::play_replay(){
 		} //end for loop
 		is_playing_ = false;
 	}
-	catch(end_level_exception&){
+	catch(end_level_exception& e){
+		if (e.result == QUIT) { throw e; }
 	}
 }
 

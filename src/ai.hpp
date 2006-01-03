@@ -13,6 +13,8 @@
 #ifndef AI_HPP_INCLUDED
 #define AI_HPP_INCLUDED
 
+#include "global.hpp"
+
 #include "actions.hpp"
 #include "ai_interface.hpp"
 

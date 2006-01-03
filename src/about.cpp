@@ -11,20 +11,13 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-#include "events.hpp"
+#include "about.hpp"
+#include "display.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
-#include "image.hpp"
-#include "key.hpp"
 #include "marked-up_text.hpp"
-#include "display.hpp"
-#include "sdl_utils.hpp"
 #include "video.hpp"
-#include "widgets/button.hpp"
-
-#include <sstream>
 
 namespace about
 {

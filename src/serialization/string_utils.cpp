@@ -19,10 +19,10 @@
 #include <sstream>
 #include "SDL_types.h"
 
-#include "../gettext.hpp"
-#include "../util.hpp"
-#include "../log.hpp"
-#include "string_utils.hpp"
+#include "gettext.hpp"
+#include "util.hpp"
+#include "log.hpp"
+#include "serialization/string_utils.hpp"
 
 #define ERR_GENERAL LOG_STREAM(err, general)
 

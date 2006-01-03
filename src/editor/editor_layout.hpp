@@ -10,10 +10,12 @@
   See the COPYING file for more details.
 */
 
-#include "../display.hpp"
-
 #ifndef EDITOR_LAYOUT_H_INCLUDED
 #define EDITOR_LAYOUT_H_INCLUDED
+
+#include "global.hpp"
+
+#include "display.hpp"
 
 namespace map_editor {
 

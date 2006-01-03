@@ -10,19 +10,19 @@
    See the COPYING file for more details.
 */
 
-#include "../global.hpp"
+#include "global.hpp"
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "../display.hpp"
-#include "../events.hpp"
-#include "../filesystem.hpp"
-#include "../gettext.hpp"
-#include "../key.hpp"
-#include "../marked-up_text.hpp"
-#include "../show_dialog.hpp"
-#include "../wml_separators.hpp"
-#include "file_chooser.hpp"
+#include "display.hpp"
+#include "events.hpp"
+#include "filesystem.hpp"
+#include "gettext.hpp"
+#include "key.hpp"
+#include "marked-up_text.hpp"
+#include "show_dialog.hpp"
+#include "wml_separators.hpp"
+#include "widgets/file_chooser.hpp"
 
 #include <sstream>
 #include <cstdio>

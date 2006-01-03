@@ -40,7 +40,7 @@
 #include "widgets/textbox.hpp"
 #include "wassert.hpp"
 
-#include "SDL_ttf.h"
+#include "sdl_ttf/SDL_ttf.h"
 
 #include <iostream>
 #include <numeric>

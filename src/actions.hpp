@@ -18,14 +18,12 @@ class display;
 class gamestatus;
 class replay;
 
+#include "global.hpp"
+
 #include "map.hpp"
 #include "unit.hpp"
-#include "unit_types.hpp"
 
 #include <deque>
-#include <map>
-#include <string>
-#include <vector>
 
 //this file defines various functions which implement different in-game
 //events and commands.

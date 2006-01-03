@@ -20,7 +20,6 @@
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "log.hpp"
-#include "network.hpp"
 #include "pathfind.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"

@@ -14,6 +14,8 @@
 #ifndef ABOUT_H_INCLUDED
 #define ABOUT_H_INCLUDED
 
+#include "global.hpp"
+
 class display;
 
 #include <vector>

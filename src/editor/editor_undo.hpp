@@ -16,7 +16,9 @@
 #ifndef EDITOR_UNDO_H_INCLUDED
 #define EDITOR_UNDO_H_INCLUDED
 
-#include "../map.hpp"
+#include "global.hpp"
+
+#include "map.hpp"
 
 #include <queue>
 #include <vector>

@@ -10,9 +10,8 @@
   See the COPYING file for more details.
 */
 
-#include "../util.hpp"
-
 #include "editor_layout.hpp"
+#include "util.hpp"
 
 
 namespace {

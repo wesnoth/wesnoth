@@ -188,7 +188,6 @@ attack_type::attack_type(const config& cfg)
 	if(icon_.empty())
 		icon_ = "attacks/" + id_ + ".png";
 	
-#warning "range type should disapear soon"
 	if(cfg["range"] == "long" || cfg["range"] == "ranged") {
 		range_type_ = LONG_RANGE;
 	} else {

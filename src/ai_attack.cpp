@@ -13,19 +13,10 @@
 
 #include "global.hpp"
 
-#include "actions.hpp"
 #include "ai.hpp"
 #include "game_config.hpp"
 #include "gamestatus.hpp"
-#include "log.hpp"
-#include "pathfind.hpp"
-#include "util.hpp"
 #include "wassert.hpp"
-
-#include <algorithm>
-#include <cstdlib>
-#include <iostream>
-#include <set>
 
 #define LOG_AI LOG_STREAM(info, ai)
 

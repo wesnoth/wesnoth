@@ -11,42 +11,24 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "actions.hpp"
 #include "checksum.hpp"
-#include "display.hpp"
-#include "events.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
-#include "halo.hpp"
-#include "hotkeys.hpp"
-#include "key.hpp"
-#include "log.hpp"
-#include "map.hpp"
 #include "pathfind.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
+#include "random.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
-#include "statistics.hpp"
 #include "unit_display.hpp"
-#include "util.hpp"
-#include "video.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
-#include "serialization/string_utils.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
-#include "widgets/menu.hpp"
-
-#include <cmath>
-#include <set>
-#include <string>
-#include <sstream>
 
 #define LOG_NG LOG_STREAM(info, engine)
 #define ERR_NW LOG_STREAM(err, network)

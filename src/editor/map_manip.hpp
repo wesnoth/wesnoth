@@ -13,6 +13,8 @@
 #ifndef MAP_MANIP_H_INCLUDED
 #define MAP_MANIP_H_INCLUDED
 
+#include "global.hpp"
+
 #include "../map.hpp"
 
 #include <vector>

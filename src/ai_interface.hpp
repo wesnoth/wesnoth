@@ -16,7 +16,6 @@
 class display;
 class gamemap;
 #include "pathfind.hpp"
-#include "unit.hpp"
 
 class ai_interface {
 public:
