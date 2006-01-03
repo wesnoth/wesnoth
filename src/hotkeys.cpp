@@ -43,8 +43,8 @@ const struct {
 	const char* description;
 	bool hidden;
 } hotkey_list_[] = {
-	{ hotkey::HOTKEY_CYCLE_UNITS, "cycle", N_("Next unit"), false },
-	{ hotkey::HOTKEY_CYCLE_BACK_UNITS, "cycleback", N_("Previous unit"), false },
+	{ hotkey::HOTKEY_CYCLE_UNITS, "cycle", N_("Next Unit"), false },
+	{ hotkey::HOTKEY_CYCLE_BACK_UNITS, "cycleback", N_("Previous Unit"), false },
 	{ hotkey::HOTKEY_UNIT_HOLD_POSITION, "holdposition", N_("Hold Position"), false},
 	{ hotkey::HOTKEY_END_UNIT_TURN, "endunitturn", N_("End Unit Turn"), false },
 	{ hotkey::HOTKEY_LEADER, "leader", N_("Leader"), false },
