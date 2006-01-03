@@ -30,6 +30,7 @@
 #include "video.hpp"
 #include "statistics.hpp"
 #include "serialization/string_utils.hpp"
+#include "upload_log.hpp"
 
 #define LOG_NW LOG_STREAM(info, network)
 
@@ -236,6 +237,7 @@ void enter_wait_mode(display& disp, const config& game_config, game_data& data, 
 	mp::ui::result res;
 	game_state state;
 	network_game_manager m;
+	upload_log nolog(false);
 
 	gamelist.clear();
 	statistics::fresh_stats();
@@ -257,7 +259,7 @@ void enter_wait_mode(display& disp, const config& game_config, game_data& data, 
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, data, disp.video(), IO_CLIENT);
+		play_game(disp, state, game_config, data, disp.video(), nolog, IO_CLIENT);
 		recorder.clear();
 
 		break;
@@ -278,6 +280,7 @@ void enter_connect_mode(display& disp, const config& game_config, game_data& dat
 			network::server_manager::TRY_CREATE_SERVER :
 			network::server_manager::NO_SERVER);
 	network_game_manager m;
+	upload_log nolog(false);
 
 	gamelist.clear();
 	statistics::fresh_stats();
@@ -298,7 +301,7 @@ void enter_connect_mode(display& disp, const config& game_config, game_data& dat
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, data, disp.video(), IO_SERVER);
+		play_game(disp, state, game_config, data, disp.video(), nolog, IO_SERVER);
 		recorder.clear();
 
 		break;

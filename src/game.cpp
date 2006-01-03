@@ -40,6 +40,7 @@
 #include "thread.hpp"
 #include "titlescreen.hpp"
 #include "util.hpp"
+#include "upload_log.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "serialization/binary_or_text.hpp"
@@ -90,6 +91,7 @@ public:
 	bool change_language();
 
 	void show_preferences();
+	void show_upload_begging();
 
 	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void play_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
@@ -123,6 +125,7 @@ private:
 	const image::manager image_manager_;
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;
+	const upload_log::manager upload_log_manager_;
 	binary_paths_manager paths_manager_;
 
 	bool test_mode_, multiplayer_mode_, no_gui_;
@@ -401,7 +404,8 @@ bool game_controller::play_test()
 	state_.scenario = "test";
 
 	try {
-		::play_game(disp(),state_,game_config_,units_data_,video_);
+		upload_log nolog(false);
+		::play_game(disp(),state_,game_config_,units_data_,video_,nolog);
 	} catch(game::load_game_exception& e) {
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
@@ -560,8 +564,9 @@ bool game_controller::play_multiplayer_mode()
 	}
 
 	try {
+		upload_log nolog(false);
 		state_.snapshot = level;
-		::play_game(disp(),state_,game_config_,units_data_,video_);
+		::play_game(disp(),state_,game_config_,units_data_,video_,nolog);
 		//play_level(units_data_,game_config_,&level,video_,state_,story);
 	} catch(game::error& e) {
 		std::cerr << "caught error: '" << e.message << "'\n";
@@ -1226,6 +1231,13 @@ void game_controller::show_preferences()
 	disp().redraw_everything();
 }
 
+void game_controller::show_upload_begging()
+{
+	upload_log_dialog::show_beg_dialog(disp());
+
+	disp().redraw_everything();
+}
+
 //this function reads the game configuration, searching for valid cached copies first
 void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache)
 {
@@ -1438,7 +1450,12 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 	const binary_paths_manager bin_paths_manager(game_config_);
 
 	try {
-		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config_,units_data_,video_);
+		// Only record log for single-player games & tutorial.
+		upload_log log(state_.campaign_type.empty()
+					   || state_.campaign_type == "scenario"
+					   || state_.campaign_type == "tutorial");
+
+		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config_,units_data_,video_, log);
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if(result == VICTORY && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {
@@ -1714,6 +1731,9 @@ int play_game(int argc, char** argv)
 			continue;
 		} else if(res == gui::SHOW_ABOUT) {
 			about::show_about(game.disp());
+			continue;
+		} else if(res == gui::BEG_FOR_UPLOAD) {
+			game.show_upload_begging();
 			continue;
 		}
 

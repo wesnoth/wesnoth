@@ -33,6 +33,8 @@
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "tooltips.hpp"
+#include "upload_log.hpp"
+#include "game_errors.hpp"
 
 #include <iostream>
 #include <iterator>
@@ -107,7 +109,8 @@ namespace play{
 LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		config const* level, CVideo& video,
 		game_state& state_of_game,
-		const std::vector<config*>& story)
+		const std::vector<config*>& story,
+		upload_log &log)
 {
 	//if the recorder has no event, adds an "game start" event to the
 	//recorder, whose only goal is to initialize the RNG
@@ -292,6 +295,14 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		//if a team is specified whose turn it is, it means we're loading a game
 		//instead of starting a fresh one
 		const bool loading_game = lvl["playing_team"].empty() == false;
+
+		// log before prestart events: they do weird things.
+		if (first_human_team != -1) {
+			log.start(state_of_game, teams[first_human_team],
+					  first_human_team+1, units,
+					  loading_game ? state_of_game.get_variable("turn_number") : "",
+					  num_turns);
+		}
 
 		//pre-start events must be executed before any GUI operation,
 		//as those may cause the display to be refreshed.
@@ -573,6 +584,10 @@ redo_turn:
 			}
 		} //end for loop
 
+	} catch(game::load_game_exception& e) {
+		// Loading a new game is effectively a quit.
+		log.quit(status.turn());
+		throw;
 	} catch(end_level_exception& end_level) {
 		bool obs = team_manager.is_observer();
 		if (end_level.result == DEFEAT || end_level.result == VICTORY) {
@@ -592,8 +607,10 @@ redo_turn:
 		}
 
 		if(end_level.result == QUIT) {
+			log.quit(status.turn());
 			return end_level.result;
 		} else if(end_level.result == DEFEAT) {
+			log.defeat(status.turn());
 			try {
 				game_events::fire("defeat");
 			} catch(end_level_exception&) {
@@ -610,6 +627,10 @@ redo_turn:
 			try {
 				game_events::fire("victory");
 			} catch(end_level_exception&) {
+			}
+
+			if (end_level.result == VICTORY && first_human_team != -1) {
+				log.victory(status.turn(), teams[first_human_team].gold());
 			}
 
 			if(state_of_game.scenario == (*level)["id"]) {

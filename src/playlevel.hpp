@@ -16,6 +16,7 @@
 class config;
 class CVideo;
 struct game_state;
+class upload_log;
 
 #include "game_config.hpp"
 #include "unit_types.hpp"
@@ -40,7 +41,8 @@ struct end_turn_exception {
 LEVEL_RESULT play_level(const game_data& gameinfo, const config& terrain_config,
 		config const* level, CVideo& video,
 		game_state& state_of_game,
-		const std::vector<config*>& story);
+		const std::vector<config*>& story,
+		upload_log &log);
 
 namespace play{
 	void place_sides_in_preferred_locations(gamemap& map, const config::child_list& sides);

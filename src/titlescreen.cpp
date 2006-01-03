@@ -203,14 +203,16 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 					       N_("TitleScreen button^Load"),
 					       N_("TitleScreen button^Language"),
 					       N_("TitleScreen button^Preferences"),
+						   N_("TitleScreen button^Help Wesnoth"),
 					       N_("About"),
-					       N_("TitleScreen button^Quit") };
+						   N_("TitleScreen button^Quit") };
 	static const char* help_button_labels[] = { N_("Start a tutorial to familiarize yourself with the game"),
 						    N_("Start a new single player campaign"),
 						    N_("Play multiplayer (hotseat, LAN, or Internet), or a single scenario against the AI"),
 						    N_("Load a single player saved game"),
 						    N_("Change the language"),
 						    N_("Configure the game's settings"),
+							N_("Help Wesnoth by sending us information"),
 						    N_("View the credits"),
 						    N_("Quit the game") };
 
@@ -222,7 +224,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 #ifdef USE_TINY_GUI
 	const int menu_yincr = 15;
 #else
-	const int menu_yincr = 40;
+	const int menu_yincr = 35;
 #endif
 	const int padding = game_config::title_buttons_padding;
 

@@ -353,6 +353,7 @@ std::vector<std::string> get_text() {
 		"-   Frédéric Wagner",
 		"-   Jeff Breidenbach (jab)",
 		"-   Dominique Bolin (Xan)",
+		"-   Rusty Russell (rusty)",
 
 		"_" N_("+Bots"),
 		"-   wesbot",

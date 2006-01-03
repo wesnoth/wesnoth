@@ -103,6 +103,7 @@ wesnoth_SOURCES = \
 	unit.cpp \
 	unit_display.cpp \
 	unit_types.cpp \
+	upload_log.cpp \
 	variable.cpp \
 	video.cpp \
 	serialization/binary_or_text.cpp \

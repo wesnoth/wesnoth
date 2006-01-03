@@ -51,6 +51,7 @@ std::string get_saves_dir();
 std::string get_cache_dir();
 std::string get_intl_dir();
 std::string get_screenshot_dir();
+std::string get_upload_dir();
 std::string get_user_data_dir();
 
 std::string get_cwd();
@@ -77,6 +78,9 @@ bool file_exists(const std::string& name);
 
 //function to get the creation time of a file
 time_t file_create_time(const std::string& fname);
+
+//return the next ordered full filename within this directory
+std::string next_filename(const std::string &dirname);
 
 struct file_tree_checksum
 {

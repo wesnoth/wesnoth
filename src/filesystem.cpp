@@ -54,6 +54,8 @@ BPath be_path;
 #include <algorithm>
 #include <fstream>
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 #include <set>
 
 #include "wesconfig.h"
@@ -68,7 +70,6 @@ BPath be_path;
 #define ERR_FS LOG_STREAM(err, filesystem)
 
 #ifdef USE_ZIPIOS
-#include <sstream>
 #include <zipios++/collcoll.h>
 #include <zipios++/dircoll.h>
 #include <zipios++/zipfile.h>
@@ -300,6 +301,12 @@ std::string get_intl_dir()
 std::string get_screenshot_dir()
 {
 	const std::string dir_path = get_user_data_dir() + "/screenshots";
+	return get_dir(dir_path);
+}
+
+std::string get_upload_dir()
+{
+	const std::string dir_path = get_user_data_dir() + "/upload";
 	return get_dir(dir_path);
 }
 
@@ -615,6 +622,32 @@ time_t file_create_time(const std::string& fname)
 		return 0;
 
 	return buf.st_mtime;
+}
+
+//return the next ordered full filename within this directory
+std::string next_filename(const std::string &dirname)
+{
+	std::vector<std::string> files;
+	std::stringstream fname;
+	unsigned int num = 1;
+
+	// These are sorted, so we can simply add one to last one.
+	get_files_in_dir(dirname, &files);
+
+	// Make sure we skip over any files we didn't create ourselves.
+	std::vector<std::string>::reverse_iterator i;
+	for (i = files.rbegin(); i != files.rend(); ++i) {
+		if (i->length() == 8) {
+			try {
+				num = lexical_cast<int>(*i)+1;
+				break;
+			} catch (bad_lexical_cast &c) {
+			}
+		}
+	}
+
+	fname << std::setw(8) << std::setfill('0') << num;
+	return dirname + "/" + fname.str();
 }
 
 file_tree_checksum::file_tree_checksum()

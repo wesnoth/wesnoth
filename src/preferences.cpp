@@ -769,6 +769,29 @@ void set_show_fps(bool value)
 	fps = value;
 }
 
+bool upload_log()
+{
+	return prefs["upload_log"] == "yes";
+}
+
+void set_upload_log(bool value)
+{
+	prefs["upload_log"] = value ? "yes" : "no";
+}
+
+const std::string &upload_id()
+{
+	// We create a unique id for each person, *when asked for* to increase
+	// randomness.
+	if (prefs["upload_id"] == "") {
+		srand(time(NULL));
+		prefs["upload_id"]
+			= lexical_cast<std::string>(rand())
+			+ lexical_cast<std::string>(SDL_GetTicks());
+	}
+	return prefs["upload_id"];
+}
+
 bool compress_saves()
 {
 	return prefs["compress_saves"] != "no";
