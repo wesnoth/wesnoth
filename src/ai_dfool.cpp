@@ -24,6 +24,6 @@ namespace dfool {
 	//need to remove units no longer on map.
       }
     }
-  };
+  }
 
 }//end namespace dfool

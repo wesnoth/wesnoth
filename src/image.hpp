@@ -56,7 +56,7 @@ namespace image {
 			value(const char *filename);
 			value(const char *filename, color_range new_rgb, std::vector<Uint32> swap_rgb);
 			value(const std::string& filename);
-		        value(const std::string& filename, color_range new_rgb, std::vector<Uint32> swap_rgb);;
+		        value(const std::string& filename, color_range new_rgb, std::vector<Uint32> swap_rgb);
 			value(const std::string& filename, const gamemap::location& loc, color_range new_rgb, std::vector<Uint32> swap_rgb);
 
 			bool operator==(const value& a) const;

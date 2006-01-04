@@ -64,6 +64,6 @@ namespace upload_log_dialog
 {
 	// Please please please upload stats?
 	void show_beg_dialog(display& disp);
-};
+}
 
 #endif // UPLOAD_LOG_H_INCLUDED
