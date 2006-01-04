@@ -446,6 +446,15 @@ d->second.hitpoints(), d->second.max_hitpoints())
 			}
 		}
 
+		if (d->second.slowed()) {
+			divisor *= 2;
+			if (strings) {
+				std::stringstream str;
+				str << _("slowed") << EMPTY_COLUMN << _("Halved");
+				strings->defend_calculations.push_back(str.str());
+			}
+		}
+
 		if (strings && resistance_modifier != 100) {
 			const int resist = resistance_modifier - 100;
 			std::stringstream str_resist;
@@ -585,6 +594,16 @@ d->second.hitpoints(), d->second.max_hitpoints())
 
 	}
 
+	if (a->second.slowed()) {
+		divisor *= 2;
+
+		if (strings) {
+			std::stringstream str;
+			str << _("slowed") << EMPTY_COLUMN << _("Halved");
+			strings->attack_calculations.push_back(str.str());
+		}
+	}
+
 	bonus *= resistance_modifier;
 	divisor *= 100;
 	const int final_damage = round_damage(base_damage, bonus, divisor);
@@ -702,11 +721,7 @@ void attack(display& gui, const gamemap& map,
 
 			int damage_defender_takes;
 			if(hits) {
-				if(a->second.has_flag("slowed")) {
-					damage_defender_takes = round_damage(stats.damage_defender_takes,1,2);
-				} else {
-					damage_defender_takes = stats.damage_defender_takes;
-				}
+				damage_defender_takes = stats.damage_defender_takes;
 			} else {
 				damage_defender_takes = 0;
 			}
@@ -781,11 +796,7 @@ void attack(display& gui, const gamemap& map,
 			if(dies || hits) {
 				if(stats.amount_attacker_drains > 0) {
 					int amount_drained;
-					if(a->second.has_flag("slowed")) {
-						amount_drained = round_damage(stats.amount_attacker_drains,1,2);
-					} else {
-						amount_drained = stats.amount_attacker_drains;
-					}
+					amount_drained = stats.amount_attacker_drains;
 					char buf[50];
 					snprintf(buf,sizeof(buf),"%d",amount_drained);
 					gui.float_label(a->first,buf,0,255,0);
@@ -856,9 +867,10 @@ void attack(display& gui, const gamemap& map,
 					d->second.set_flag("poisoned");
 				}
 
-				if(stats.attacker_slows && d->second.has_flag("slowed") == false) {
+				if(stats.attacker_slows && d->second.slowed() == false) {
 					gui.float_label(d->first,_("slowed"),255,0,0);
 					d->second.set_flag("slowed");
+					stats.damage_attacker_takes = round_damage(stats.damage_attacker_takes,1,2);
 				}
 
 				//if the defender is turned to stone, the fight stops immediately
@@ -886,11 +898,7 @@ void attack(display& gui, const gamemap& map,
 
 			int damage_attacker_takes;
 			if(hits) {
-				if(d->second.has_flag("slowed")) {
-					damage_attacker_takes = round_damage(stats.damage_attacker_takes,1,2);
-				} else {
-					damage_attacker_takes = stats.damage_attacker_takes;
-				}
+				damage_attacker_takes = stats.damage_attacker_takes;
 			} else {
 				damage_attacker_takes = 0;
 			}
@@ -961,11 +969,7 @@ void attack(display& gui, const gamemap& map,
 			if(hits || dies){
 				if(stats.amount_defender_drains > 0) {
 					int amount_drained;
-					if(d->second.has_flag("slowed")) {
-						amount_drained = round_damage(stats.amount_defender_drains,1,2);
-					} else {
-						amount_drained = stats.amount_defender_drains;
-					}
+					amount_drained = stats.amount_defender_drains;
 					char buf[50];
 					snprintf(buf,sizeof(buf),"%d",amount_drained);
 					gui.float_label(d->first,buf,0,255,0);
@@ -1033,9 +1037,10 @@ void attack(display& gui, const gamemap& map,
 					a->second.set_flag("poisoned");
 				}
 
-				if(stats.defender_slows && a->second.has_flag("slowed") == false) {
+				if(stats.defender_slows && a->second.slowed() == false) {
 					gui.float_label(a->first,_("slowed"),255,0,0);
 					a->second.set_flag("slowed");
+					stats.damage_defender_takes = round_damage(stats.damage_defender_takes,1,2);
 				}
 
 

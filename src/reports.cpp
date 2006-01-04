@@ -226,7 +226,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			const std::string& lang_type = gettext(at_it->type().c_str());
 			str.str("");
 			str << "<245,230,193>";
-			if(u->second.has_flag("slowed")) {
+			if(u->second.slowed()) {
 				str << round_damage(at_it->damage(),1,2) << "-" ;
 			} else {
 				str << at_it->damage() << "-" ;
@@ -234,7 +234,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			str << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
 			str << " " << at_it->name();
 			tooltip << at_it->name() << "\n";
-			if(u->second.has_flag("slowed")) {
+			if(u->second.slowed()) {
 				tooltip << round_damage(at_it->damage(),1,2) << " " << _("damage") << ", ";
 			} else {
 				tooltip << at_it->damage() << " " << _("damage") << ", ";

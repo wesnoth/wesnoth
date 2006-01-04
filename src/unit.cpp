@@ -565,6 +565,12 @@ bool unit::poisoned() const
 	return has_flag(poisoned_str);
 }
 
+bool unit::slowed() const
+{
+	static const std::string slowed_str("slowed");
+	return has_flag(slowed_str);
+}
+
 bool unit::stone() const
 {
 	static const std::string stone_str("stone");
@@ -945,8 +951,7 @@ int unit::movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const
 {
 	const int res = type_->movement_type().movement_cost(map,terrain);
 
-	static const std::string slowed_string("slowed");
-	if(has_flag(slowed_string)) {
+	if(slowed()) {
 		return res*2;
 	}
 

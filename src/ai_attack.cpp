@@ -409,11 +409,11 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 
 		int defenderxp = 0;
 
-		bool defender_slowed= defend_it->second.has_flag("slowed");
+		bool defender_slowed= defend_it->second.slowed();
 
 		int defhp = target_hp;
 		for(size_t i = 0; i != movements.size() && defhp; ++i) {
-			const battle_stats& stat = stats[i];
+			battle_stats& stat = stats[i];
 			int atthp = hitpoints[i];
 
 			int attacks = stat.nattacks;
@@ -427,7 +427,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 			}
 
 			const bool on_village = map.is_village(movements[i].second);
-			bool attacker_slowed= att->second.has_flag("slowed");
+			bool attacker_slowed= att->second.slowed();
 
 			//up to double the value of a unit based on experience
 			cost += (double(att->second.experience())/
@@ -442,13 +442,8 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 				if(attacks && !defender_strikes_first) {
 					const int roll = rand()%100;
 					if(roll < stat.chance_to_hit_defender) {
-						if(attacker_slowed) {
-							defhp -= round_damage(stat.damage_defender_takes,1,2);
-							atthp += round_damage(stat.amount_attacker_drains,1,2);
-						} else {
-							defhp -= stat.damage_defender_takes;
-							atthp += stat.amount_attacker_drains;
-						}
+						defhp -= stat.damage_defender_takes;
+						atthp += stat.amount_attacker_drains;
 						if(defhp <= 0) {
 							defhp = 0;
 							break;
@@ -458,8 +453,10 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 							atthp = hitpoints[i];
 						}
 
-						if(stat.attacker_slows  ) { 	 
+						if(stat.attacker_slows  && !defender_slowed) { 	 
 							defender_slowed = true; 	 
+							stat.damage_defender_takes = round_damage(stat.damage_defender_takes,1,2);
+							stat.amount_attacker_drains = round_damage(stat.amount_attacker_drains,1,2);
 						}
 
 					}
@@ -472,13 +469,8 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 				if(defends) {
 					const int roll = rand()%100;
 					if(roll < stat.chance_to_hit_attacker) {
-						if(attacker_slowed) {
-							atthp -= round_damage(stat.damage_attacker_takes,1,2);
-							defhp += round_damage(stat.amount_defender_drains,1,2);
-						} else {
-							atthp -= stat.damage_attacker_takes;
-							defhp += stat.amount_defender_drains;
-						}
+						atthp -= stat.damage_attacker_takes;
+						defhp += stat.amount_defender_drains;
 						if(atthp <= 0) {
 							atthp = 0;
 
@@ -492,8 +484,10 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 						if(defhp > target_max_hp) {
 							defhp = target_max_hp;
 						}
-						if(stat.defender_slows) { 	 
+						if(stat.defender_slows && !attacker_slowed) { 	 
 							attacker_slowed = true; 	 
+							stat.damage_attacker_takes = round_damage(stat.damage_attacker_takes,1,2);
+							stat.amount_defender_drains = round_damage(stat.amount_defender_drains,1,2);
 						}
 					}
 

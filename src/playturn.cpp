@@ -677,17 +677,9 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 		std::string special_pad = (sts.attack_special.empty() && sts.defend_special.empty()) ? "" : " ";
 
 		int damage_defender_takes;
-		if(attacker->second.has_flag("slowed")) {
-			damage_defender_takes = round_damage(st.damage_defender_takes,1,2);
-		} else {
-			damage_defender_takes = st.damage_defender_takes;
-		}
+		damage_defender_takes = st.damage_defender_takes;
 		int damage_attacker_takes;
-		if(defender->second.has_flag("slowed")) {
-			damage_attacker_takes = round_damage(st.damage_attacker_takes,1,2);
-		} else {
-			damage_attacker_takes = st.damage_attacker_takes;
-		}
+		damage_attacker_takes = st.damage_attacker_takes;
 		std::stringstream att;
 		att << IMAGE_PREFIX << sts.attack_icon << COLUMN_SEPARATOR
 		    << font::BOLD_TEXT << sts.attack_name << "\n" << damage_defender_takes << "-"
