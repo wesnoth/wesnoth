@@ -277,7 +277,9 @@ void upload_log_dialog::show_beg_dialog(display& disp)
 	std::string msg = std::string(_("Wesnoth relies on volunteers like yourself for feedback, especially beginners and new players.  Wesnoth keeps summaries of your games: you can help us improve game play by giving permission to send these summaries (anonymously) to wesnoth.org.\n"))
 		+ _("You can see the summaries to be sent in ")
 		+ get_upload_dir() + "\n"
-		+ _("You can view the results at http://stats.wesnoth.org.\n");
+		+ _("You can view the results at ")
+		+ "http://stats.wesnoth.org/?" + preferences::upload_id() + "\n";
+ 
 
 	gui::show_dialog(disp, NULL,
 					 _("Help us make Wesnoth better for you!"),
