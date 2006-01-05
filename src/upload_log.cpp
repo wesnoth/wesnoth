@@ -76,7 +76,7 @@ static int upload_logs(void *_ti)
 			for (i = files.begin(); i!=files.end() && *i!=ti->lastfile; i++) {
 				std::string contents;
 				int resplen;
-				char response[strlen("HTTP/1.1 2")];
+				char response[10]; //This needs to be strlen("HTTP/1.1 2");
 
 				contents = read_file(*i);
 

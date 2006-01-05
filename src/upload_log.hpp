@@ -53,6 +53,7 @@ private:
 	bool game_finished(config *game);
 
 	static struct thread_info thread_;
+	friend struct manager;
 
 	config config_;
 	config *game_;
