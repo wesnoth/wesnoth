@@ -647,24 +647,33 @@ fi
 
 AC_SUBST([FREETYPE_LIBS])
 
+AC_ARG_WITH([zipios],
+	AS_HELP_STRING([--without-zipios], [Do not use zipios++ even if installed]),
+	[checkzipios="$withval"],
+	[checkzipios="yes"])
+
 AC_LANG(C++)
-AC_MSG_CHECKING([for libzipios++])
-OLD_LIBS="$LIBS"
-LIBS="-lzipios -lz"
 LIBZIPIOS=
-AC_LINK_IFELSE([AC_LANG_SOURCE([
-#include <zipios++/dircoll.h>
-int main(int argc, char **argv)
-{
-	zipios::DirectoryCollection z("src");
-}
-	])],
-	[AC_MSG_RESULT(yes)
-	LIBZIPIOS="-lzipios -lz"
-	AC_DEFINE([USE_ZIPIOS],[1],[Make use of the zipios++ library to read data in zip files])],
-	[AC_MSG_RESULT(no)
-	AC_MSG_WARN([*** libzipios++ not found - support for ZIP files is disabled])])
-LIBS="$OLD_LIBS"
+if test $checkzipios = yes; then
+	AC_MSG_CHECKING([for libzipios++])
+	OLD_LIBS="$LIBS"
+	LIBS="-lzipios -lz"
+	AC_LINK_IFELSE([AC_LANG_SOURCE([
+	#include <zipios++/dircoll.h>
+	int main(int argc, char **argv)
+	{
+		zipios::DirectoryCollection z("src");
+	}
+		])],
+		[AC_MSG_RESULT(yes)
+		LIBZIPIOS="-lzipios -lz"
+		AC_DEFINE([USE_ZIPIOS],[1],[Make use of the zipios++ library to read data in zip files])],
+		[AC_MSG_RESULT(no)
+		AC_MSG_WARN([*** libzipios++ not found - support for ZIP files is disabled])])
+	LIBS="$OLD_LIBS"
+else
+	AC_MSG_NOTICE([skipping check for libzipios++])
+fi
 AC_SUBST([LIBZIPIOS])
 
 #######################################################################
