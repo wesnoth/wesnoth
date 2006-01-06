@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-01-06 08:38+0100\n"
-"PO-Revision-Date: 2005-12-18 14:56+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT   gmx D OT  net>\n"
+"PO-Revision-Date: 2006-01-06 15:26+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/amla.cfg:8
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr ", Max EP +25%"
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +"
@@ -825,7 +825,6 @@ msgstr ""
 "Einheiten könnt Ihr aus mehreren Aufstiegsmöglichkeiten auswählen."
 
 #: data/help.cfg:203
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -848,16 +847,19 @@ msgstr ""
 "\n"
 "Die meisten Einheiten verfügen über drei Stufen, doch bei nicht allen ist "
 "dies der Fall. Einige besondere Einheiten (wie die <ref>dst=unit_Mage "
-"text=Magier</ref>) können vier haben. Sobald eine Einheit ihr maximallevel "
+"text=Magier</ref>) können vier haben. Sobald eine Einheit ihr höchste Stufe "
 "erreicht hat, kann sie anstelle eines Stufenanstiegs mit einem anderen Bonus "
 "belohnt werden. Der englische Begriff dafür ist AMLA.\n"
 "Den AMLA Bonus erhält die Einheit jedes mal, wenn sie die dafür benötigte "
 "Erfahrung gesammelt hat, jedoch bleibt sie auf der selben Stufe. Der normale "
-"AMLA Effekt für Einheit ist die Erhöhung der maximalen Lebenspunkte um 3 für "
-"alle 100 Erfahrungspunkte die sie sammelt. Allerdings werden nur wenige "
-"Einheiten durch AMLA geheilt. Ein Beispiel hierfür ist der Leichenfresser, "
-"der aufgrund von AMLA geheilt wird. Die meisten Einheiten erhalten dagegen "
-"nur zusätzliche LP."
+"AMLA Effekt für Einheiten ist die Erhöhung der maximalen Lebenspunkte um 3 "
+"für alle 100 EP (80 EP für intelligente Einheiten) die gesammelt werden. Pro "
+"AMLA wird die Anzahl der benötigten EP größer, so dass Ihr besser Eure "
+"schwächeren Einheiten fördern solltet.\n"
+"\n"
+"Allerdings werden nur wenige Einheiten durch AMLA geheilt. Ein Beispiel "
+"hierfür ist der Leichenfresser, der aufgrund von AMLA geheilt wird. Die "
+"meisten Einheiten erhalten dagegen nur zusätzliche LP."
 
 #: data/help.cfg:208
 msgid "Healing"
@@ -2068,7 +2070,7 @@ msgstr "2S - Sturmangriff"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
-msgstr ""
+msgstr "2S - Das Schlachtfeld von Cysaun"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
@@ -2076,6 +2078,10 @@ msgid ""
 "favor epic, large-scale duel matches. Recommended settings of 150 G; 1G per "
 "village."
 msgstr ""
+"Es gibt viel zu erforschen auf diesem weiten Schlachtfeld, das für Spieler "
+"gedacht ist, die epische, große Duellkarten mögen.\n"
+"\n"
+"Empfohlene Einstellung: 150 Goldstücke zu Beginn; 1 Einheit Gold pro Dorf."
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
@@ -2387,17 +2393,15 @@ msgstr ""
 "Empfohlene Einstellung: 1 Einheit Gold pro Dorf."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
-#, fuzzy
 msgid "4p - Morituri"
-msgstr "3S - Die Totgeweihten"
+msgstr "4S - Die Totgeweihten"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
 "settings of 2G per village."
 msgstr ""
-"Drei Spieler treten auf dieser durch Wasser getrennten Karte gegeneinander "
+"Vier Spieler treten auf dieser durch Wasser getrennten Karte gegeneinander "
 "an.\n"
 "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
 
@@ -2453,7 +2457,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
-msgstr ""
+msgstr "6S - "
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
 msgid ""
@@ -2462,6 +2466,10 @@ msgid ""
 "through the mountains, trees and rivers. Recommended settings of 1G per "
 "village."
 msgstr ""
+"Und wieder sind die Schreie der Sterbenden über diesem Kriegsschauplatz zu "
+"vernehmen, wo tausende von Geistern der hier gestorbenen Krieger unsichtbar "
+"durch die Berge, Bäume und Flüsse schweben.\n"
+"Empfohlene Einstellung: 1 Einheit Gold pro Dorf."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
@@ -2575,7 +2583,7 @@ msgstr "Grün"
 
 #: data/team_colors.cfg:22
 msgid "Cyan"
-msgstr ""
+msgstr "Zyan"
 
 #: data/team_colors.cfg:28
 msgid "Purple"
@@ -2629,9 +2637,8 @@ msgid "Snow Village"
 msgstr "Verschneites Dorf"
 
 #: data/terrain.cfg:297
-#, fuzzy
 msgid "Dwarven Village"
-msgstr "Wüstensiedlung"
+msgstr "Zwergisches Dorf"
 
 #: data/terrain.cfg:334
 msgid "Desert Hills"
@@ -2845,7 +2852,6 @@ msgstr ""
 "nötige Ausbildung, um kontrollierte Bereiche zu durchgehen."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -2866,7 +2872,6 @@ msgstr ""
 "Runde um 8 Lebenspunkte. "
 
 #: data/tips.cfg:10
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
@@ -2933,7 +2938,6 @@ msgstr ""
 "den gegnerischen Angriff zu verzögern. "
 
 #: data/tips.cfg:17
-#, fuzzy
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
@@ -2941,7 +2945,6 @@ msgstr ""
 "darin der Schlüssel zum Sieg. "
 
 #: data/tips.cfg:18
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -2969,7 +2972,6 @@ msgstr ""
 "könnt."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
@@ -3042,13 +3044,12 @@ msgstr ""
 "Kampf zu Euren Gunsten wenden, ohne selbst anzugreifen."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attacks."
 msgstr ""
 "Der »Verlangsamungs«-Angriff verringert die Anzahl gegnerischer BP und "
-"halbiert außerdem dem angerichteten Schaden bei jeder gegnerischen Attacke."
+"halbiert außerdem den angerichteten Schaden bei jeder gegnerischen Attacke."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -3078,6 +3079,11 @@ msgid ""
 "progressively harder for each AMLA the unit receives, however. Thus, it is "
 "often more useful to try to advance your lower level units."
 msgstr ""
+"Nachdem eine Einheit ihr höchste Stufe erreicht hat, kann sie anstelle eines "
+"Stufenanstiegs eines Stufenanstiegs mit einem anderen Bonus belohnt werden. "
+"Normalerweise werden die LP um 3 erhöht. Mit der Anzahl der erhaltenen Boni "
+"wird es immer schwieriger, diese wieder zu erhalten. Deshalb ist es "
+"sinnvoller, wenn Ihr Eure schwächeren Einheiten fördert."
 
 #: data/tips.cfg:34
 msgid ""
@@ -3085,6 +3091,10 @@ msgid ""
 "the Help Wesnoth button.  This information is vital so we can adjust "
 "campaign difficulty."
 msgstr ""
+"Ihr könnt dem Wesnoth Projekt anonyme Statistken Eures Fortschritts zukommen "
+"lassen, indem Ihr den »Wesnoth helfen« Knopf benutzt. Diese Informationen "
+"werden dazu verwendet werden, um den Schwierigkeitsgrad der Kampagnen "
+"anzupassen."
 
 #: data/traits.cfg:6 data/translations/english.cfg:61
 msgid "loyal"
@@ -6762,7 +6772,6 @@ msgid "Goblin Rouser"
 msgstr "Kobold Standartenträger"
 
 #: data/units/Goblin_Rouser.cfg:26
-#, fuzzy
 msgid ""
 "Standard bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -10042,9 +10051,8 @@ msgid "+English (GB) Translation"
 msgstr "+Englische (GB) Übersetzung"
 
 #: src/about.cpp:201
-#, fuzzy
 msgid "+Esperanto Translation"
-msgstr "+Deutsche Übersetzung"
+msgstr "+Esperanto Übersetzung"
 
 #: src/about.cpp:205
 msgid "+Estonian Translation"
@@ -10169,9 +10177,8 @@ msgid "Doubled"
 msgstr "Verdoppelt"
 
 #: src/actions.cpp:453 src/actions.cpp:602
-#, fuzzy
 msgid "Halved"
-msgstr "Gespeichert"
+msgstr "Halbiert"
 
 #: src/actions.cpp:453 src/actions.cpp:602 src/actions.cpp:871
 #: src/actions.cpp:1041
@@ -11134,24 +11141,20 @@ msgid "Status"
 msgstr "Status"
 
 #: src/multiplayer_lobby.cpp:101
-#, fuzzy
 msgid "--no games open--"
-msgstr "<keine offenen Partien>"
+msgstr "--keine offenen Partien--"
 
 #: src/multiplayer_lobby.cpp:296
-#, fuzzy
 msgid "Unkown era"
-msgstr "Unbekanntes Szenario: '"
+msgstr "Unbekannte Ära"
 
 #: src/multiplayer_lobby.cpp:299
-#, fuzzy
 msgid "Unknown era"
-msgstr "Unbekanntes Szenario: '"
+msgstr "Unbekannte Ära"
 
 #: src/multiplayer_lobby.cpp:321 src/multiplayer_lobby.cpp:323
-#, fuzzy
 msgid "Unknown scenario"
-msgstr "Unbekanntes Szenario: '"
+msgstr "Unbekanntes Szenario"
 
 #: src/multiplayer_lobby.cpp:332
 msgid "Vacant Slot"
@@ -11170,7 +11173,6 @@ msgid "Quit"
 msgstr "Beenden"
 
 #: src/multiplayer_ui.cpp:79
-#, fuzzy
 msgid "Invalid Color"
 msgstr "Ungültige Farbe"
 
@@ -11770,9 +11772,8 @@ msgid "TitleScreen button^Preferences"
 msgstr "Einstellungen"
 
 #: src/titlescreen.cpp:206
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Laden"
+msgstr "Wesnoth helfen"
 
 #: src/titlescreen.cpp:207
 msgid "About"
@@ -11812,7 +11813,7 @@ msgstr "Globale Einstellungen des Spiels verändern"
 
 #: src/titlescreen.cpp:215
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "Helft Wesnoth, indem Ihr uns Informationen zukommen lasst"
 
 #: src/titlescreen.cpp:216
 msgid "View the credits"
