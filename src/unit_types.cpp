@@ -299,7 +299,7 @@ bool attack_type::matches_filter(const config& cfg) const
 	const std::string& filter_special = cfg["special"];
 
 	if(filter_range.empty() == false && filter_range != range()) 
-			return true;
+			return false;
 
 	if(filter_name.empty() == false && filter_name != name())
 		return false;
