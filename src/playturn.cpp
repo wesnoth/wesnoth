@@ -490,31 +490,45 @@ bool is_right_click(const SDL_MouseButtonEvent& event)
 class simple_attack_rating
 {
 public:
-	simple_attack_rating() : attacker_weapon_rating_(0), defender_weapon_rating_(0) {}
-
-	simple_attack_rating(const battle_stats& stats) :
-		attacker_weapon_rating_(stats.chance_to_hit_defender *
-				stats.damage_defender_takes * stats.nattacks),
-		defender_weapon_rating_(stats.chance_to_hit_attacker *
-				stats.damage_attacker_takes * stats.ndefends) {}
+	simple_attack_rating() {}
+	simple_attack_rating(const battle_stats& stats) : stats_(stats) {}
 
 	bool operator<(const simple_attack_rating& a) const
 	{
+		//if our weapon can kill the enemy in one blow, the enemy does not
+		//drain back and our weapon has more blows, prefer our weapon
+		if(stats_.damage_defender_takes >= stats_.defender_hp &&
+		   stats_.amount_defender_drains == 0 && 
+		   stats_.nattacks > a.stats_.nattacks)
+		   	{
+			return false;
+			}
+		
+		int this_avg_damage_dealt = stats_.chance_to_hit_defender *
+				stats_.damage_defender_takes * stats_.nattacks;
+		int this_avg_damage_taken = stats_.chance_to_hit_attacker *
+				stats_.damage_attacker_takes * stats_.ndefends;
+		
+		int other_avg_damage_dealt = a.stats_.chance_to_hit_defender *
+				a.stats_.damage_defender_takes * a.stats_.nattacks;
+		int other_avg_damage_taken = a.stats_.chance_to_hit_attacker *
+				a.stats_.damage_attacker_takes * a.stats_.ndefends;
+		
 		//if our weapon does less damage, it's worse
-		if(attacker_weapon_rating_ < a.attacker_weapon_rating_)
+		if(this_avg_damage_dealt < other_avg_damage_dealt)
 			return true;
 
 		//if both weapons are the same but
 		//ours makes the enemy retaliate for more damage, it's worse
-		else if(attacker_weapon_rating_ == a.attacker_weapon_rating_ &&
-		   defender_weapon_rating_ > a.defender_weapon_rating_)
+		else if(this_avg_damage_dealt == other_avg_damage_dealt &&
+			this_avg_damage_taken > other_avg_damage_taken)
 			return true;
 
 		//otherwise, ours is at least as good a default weapon
 		return false;
 	}
 private:
-	int attacker_weapon_rating_, defender_weapon_rating_;
+	battle_stats stats_;
 };
 
 } //end anonymous namespace

@@ -48,6 +48,7 @@ std::string recruit_unit(const gamemap& map, int team, unit_map& units,
 //battle that could take place.
 struct battle_stats
 {
+	int attacker_hp, defender_hp;
 	int chance_to_hit_attacker, chance_to_hit_defender;
 	int damage_attacker_takes, damage_defender_takes;
 	int amount_attacker_drains, amount_defender_drains;

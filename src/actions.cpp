@@ -307,6 +307,9 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	                 attacker_terrain_override : map[attacker.x][attacker.y];
 	const gamemap::TERRAIN defender_terrain = map[defender.x][defender.y];
 
+	res.attacker_hp = a->second.hitpoints();
+	res.defender_hp = d->second.hitpoints();
+	
 	res.chance_to_hit_attacker = a->second.defense_modifier(map,attacker_terrain);
 	res.chance_to_hit_defender = d->second.defense_modifier(map,defender_terrain);
 
@@ -631,8 +634,8 @@ d->second.hitpoints(), d->second.max_hitpoints())
 			(res.attacker_slows || res.defender_slows)))
 	{
 		const int maxrounds = (res.to_the_death ? 30 : 1);
-		const int hpa = a->second.hitpoints();
-		const int hpb = d->second.hitpoints();
+		const int hpa = res.attacker_hp;
+		const int hpb = res.defender_hp;
 		const int dmga = res.damage_defender_takes;
 		const int dmgb = res.damage_attacker_takes;
 		const double pa = res.chance_to_hit_defender/100.0;
