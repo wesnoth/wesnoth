@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-12-04 20:35+0100\n"
-"PO-Revision-Date: 2005-10-15 01:54+0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2006-01-05 15:49+0300\n"
+"Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -122,7 +122,6 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Завершите свой ход и подождите пока Мирли атакует Вас."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:195
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it receives experience from the combat. Once a unit gains enough experience, "
@@ -302,14 +301,13 @@ msgid "En garde!"
 msgstr "Защищайся!"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:107
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics from the "
 "statistics shown before you recruited them. This is because they have been "
 "assigned traits."
 msgstr ""
-"Вы можете заметить, что Ваши соединения могут иметь данные, отличающиеся от "
-"тех, что были при вербовке. Это воздействие особенностей."
+"Вы можете заметить, что Ваши соединения могут иметь характеристики, "
+"отличающиеся от тех, что были при вербовке. Это воздействие особенностей."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
 msgid ""
@@ -434,7 +432,6 @@ msgid "What's a leader?"
 msgstr "Кто такой лидер?"
 
 #: data/scenarios/tutorial/utils.cfg:68
-#, fuzzy
 msgid ""
 "A leader is a unit that can recruit. This means that when the leader is on a "
 "keep, units can be recruited on the surrounding castle tiles. Leaders are "
@@ -447,9 +444,9 @@ msgstr ""
 "Лидер - это соединение, которое может призывать и вербовать. Это значит, что "
 "когда лидер находится в замке, он может вербовать новые соединения на "
 "свободные квадраты замка. Лидеры обычно мощнее всех остальных соединений. К "
-"тому же Ваш лидер является единственным управляемым Вами соединением после "
-"начала игры. Вы можете быстро выбрать Вашего лидера, нажав 'I'. Если Ваш "
-"лидер погибает, Вы проигрываете игру. Вы можете выиграть большинство "
+"тому, же Ваш лидер является единственным управляемым Вами соединением после "
+"начала игры в замке. Вы можете быстро выбрать Вашего лидера, нажав 'I'. Если "
+"Ваш лидер погибает, Вы проигрываете игру. Вы можете выиграть большинство "
 "сценариев убив всех лидеров противника."
 
 #: data/scenarios/tutorial/utils.cfg:69
@@ -487,7 +484,6 @@ msgid "How do I end my turn?"
 msgstr "Как мне закончить свой ход?"
 
 #: data/scenarios/tutorial/utils.cfg:74
-#, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
 "right-click and select End Turn, or select the End Turn button in the lower "
@@ -522,7 +518,6 @@ msgid "How far can my Elvish Fighter move?"
 msgstr "Как далеко может двигаться мой Эльф боец?"
 
 #: data/scenarios/tutorial/utils.cfg:79
-#, fuzzy
 msgid ""
 "Your Elvish Fighter begins with a certain number of move points each turn; "
 "this is called its speed. When your Elvish Fighter moves along a path, each "
@@ -539,14 +534,13 @@ msgstr ""
 "это количество называется скоростью. Когда Ваш Эльф Боец передвигается, "
 "каждый квадрат отнимает у него очки передвижения. Когда Вы выбираете Эльфа "
 "Бойца, все квадраты, до которых он не может добраться за этот ход, затенены. "
-"Если пункт назначения дальше, чем можно добраться за один ход, то на нем "
+"Если пункт назначения дальше, чем можно добраться за один ход, то на нём "
 "отображается, сколько ходов понадобится, чтобы добраться туда. Нажатие мышью "
 "на дальнем квадрате устанавливает курс соединения до этого квадрата, по "
 "которому оно будет автоматически передвигаться каждый ход. Если Вы хотите "
-"изменить курс соединения, выберите его, чтобы отменить текущий курс."
+"изменить курс соединения, выберите его дважды, чтобы отменить текущий курс."
 
 #: data/scenarios/tutorial/utils.cfg:80
-#, fuzzy
 msgid ""
 "A unit's zone of control is the location consisting of all hexes the unit is "
 "adjacent to. Units cannot move through opponent's zones of control; they can "
@@ -565,7 +559,6 @@ msgid "What's the zone of control?"
 msgstr "Что такое зона контроля?"
 
 #: data/scenarios/tutorial/utils.cfg:81
-#, fuzzy
 msgid ""
 "Units you control have a green, yellow, or red energy circle above their "
 "health bar, the green vertical bar next to them. Units with full movement "
@@ -579,8 +572,8 @@ msgstr ""
 "своей полоской здоровья, зелёным вертикальным прямоугольником. Ещё не "
 "ходившие соединения имеют зелёный круг, передвигавшиеся - жёлтый, не имеющие "
 "очков передвижения - красный. Соединения под контролем противника не имеют "
-"круга. Союзные соединения, не контролируемые Вами, имеют синий круг.Также, "
-"при включенной опции 'Показывать командные цвета' в Настройках цвет хозяина "
+"круга. Союзные соединения, не контролируемые Вами, имеют синий круг. Также, "
+"при включенной опции 'Показывать командные цвета' в Настройках, цвет хозяина "
 "соединения будет отображаться в виде диска под соединением."
 
 #: data/scenarios/tutorial/utils.cfg:81
@@ -592,7 +585,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Может ли Мирли ответить на мою атаку?"
 
 #: data/scenarios/tutorial/utils.cfg:85
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -607,7 +599,7 @@ msgid ""
 "to retaliate at all. However, ranged units cannot shoot across multiple "
 "hexes; this is one of the distinctive features of Wesnoth."
 msgstr ""
-"Когда соединение атаковано, оно отвечает одним из своих вооружений. Это "
+"Всякий раз соединение атаковано, оно отвечает одним из своих вооружений. Это "
 "значит, что после каждого удара атакующего обороняющийся отвечает ударом.Так "
 "продолжается до тех пор, пока одна из сторон не исчерпает количество своих "
 "ударов. В этом случае другое соединение продолжает атаковать, пока и у него "
@@ -645,9 +637,8 @@ msgid "How can you tell how powerful a unit's attacks are?"
 msgstr "Скажите\\, какая атака соединения сильнее?"
 
 #: data/scenarios/tutorial/utils.cfg:87
-#, fuzzy
 msgid "Will my fighter hit every time when it attacks?"
-msgstr "Почему мой боец получает повреждения\\, когда она атакует?"
+msgstr "Почему мой боец получает повреждения каждый раз, когда он атакует?"
 
 #: data/scenarios/tutorial/utils.cfg:87
 msgid ""
@@ -702,7 +693,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Что происходит когда соединение входит в деревню?"
 
 #: data/scenarios/tutorial/utils.cfg:96
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, it flags the village for its side. "
 "This action takes all the unit's remaining movement. Villages flagged for a "
@@ -715,7 +705,7 @@ msgid ""
 msgstr ""
 "Как только соединение войдёт в деревню, её флаг поменяется на флаг "
 "соединения. Это действие потребует всех очков движения соединения. Деревни "
-"под определённым флагом оказывают помощь владельцу флага,выплачивая одну "
+"под определённым флагом оказывают помощь владельцу флага, выплачивая одну "
 "золотую монету за каждый ход и снижая содержание соединений на единицу. "
 "Общее число контролируемых деревень отображено в статусной строке после "
 "изображения дома. Кроме экономической поддержки, деревни могут "
@@ -727,7 +717,6 @@ msgid "How do I heal when there aren't any villages nearby?"
 msgstr "Как я могу восстановить здоровье без деревень?"
 
 #: data/scenarios/tutorial/utils.cfg:97
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, it heals 2 HP from resting. However, if an enemy attacks "
@@ -752,7 +741,6 @@ msgstr ""
 "расскажите?"
 
 #: data/scenarios/tutorial/utils.cfg:101
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -769,7 +757,6 @@ msgstr ""
 "закончится. Надеюсь, это будет одно из условий победы."
 
 #: data/scenarios/tutorial/utils.cfg:102
-#, fuzzy
 msgid ""
 "When you win a scenario, all your units survive and are revived to full "
 "health, and you do not have to pay them for the remaining turns. Also, if "
@@ -777,9 +764,9 @@ msgid ""
 "immediately after you win. However, between scenarios 20% of your gold is "
 "lost."
 msgstr ""
-"Когда Вы победите в сценарии, все ваши выжившие соединения восстановятся, и "
-"Вам не нужно будет платить за них на оставшихся ходах. Если Ваша армия "
-"останется на карте после Ваше победы, все деревни сдадутся Вам "
+"Когда Вы победите в сценарии, все ваши выжившие соединения восстановятся "
+"полностью, и Вам не нужно будет платить за них на оставшихся ходах. Если "
+"Ваша армия останется на карте после Вашей победы, все деревни сдадутся Вам "
 "непосредственно перед тем, как Вы победите. Также между сценариями 20% "
 "Вашего золота теряется."
 
@@ -824,7 +811,6 @@ msgid "What do traits do?"
 msgstr "Что дают особенности?"
 
 #: data/scenarios/tutorial/utils.cfg:111
-#, fuzzy
 msgid ""
 "The function of traits is to add variety by making units of the same type "
 "different from each other. This is done by randomly assigning each unit "
@@ -832,14 +818,13 @@ msgid ""
 "Table, and the function of a specific trait can be found by putting your "
 "cursor over that trait."
 msgstr ""
-"Назначение особенностей - внести неопределённость при создании соединений, "
-"чтобы сделать непохожим каждого из них. Они случайно приписываются каждому "
-"соединению, когда оно будет завербовано. Особенности соединения отображены в "
-"статусной таблице, и назначение отдельной особенности может быть получено "
-"при наведении курсора на неё."
+"Назначение особенностей - внести разнообразие при создании соединений одного "
+"типа, чтобы сделать непохожим каждого из них. Они случайно приписываются "
+"каждому соединению, когда оно будет завербовано. Особенности соединения "
+"отображены в статусной таблице, и назначение отдельной особенности может "
+"быть получено при наведении курсора на неё."
 
 #: data/scenarios/tutorial/utils.cfg:112
-#, fuzzy
 msgid ""
 "There are four distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -852,7 +837,8 @@ msgstr ""
 "количества здоровья до количество опыта, необходимого для повышения. Также "
 "все особенности направлены на изменение силы соединения; это не 'негативные' "
 "особенности. Все соединения имеют равные шансы получить две разные "
-"особенности, когда будут завербованы."
+"особенности, когда будут завербованы. Также, некоторые расы и соединения "
+"могут иметь уникальные особенности, присущие только им."
 
 #: data/scenarios/tutorial/utils.cfg:112
 msgid "What kind of traits can my units get?"
@@ -902,7 +888,6 @@ msgid "How do I get gold?"
 msgstr "Где мне доставать золото?"
 
 #: data/scenarios/tutorial/utils.cfg:121
-#, fuzzy
 msgid ""
 "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
 "of day: day, twilight, and night. During the day, units of the alignment "
@@ -912,17 +897,17 @@ msgid ""
 "night."
 msgstr ""
 "Есть три направленности: Порядочный, Нейтральный и Хаотичный. Есть также три "
-"времени суток: день, сумерки и ночь. Днём порядочные соединения, как люди, "
-"наносят на 25% больше повреждений. Ночью всё наоборот. В сумерки все "
-"соединения наносят нормальный урон. Нейтральные соединения, как Эльфы, не "
-"подвержены влиянию времени суток."
+"времени суток: день, сумерки и ночь. В течение дня порядочные соединения, "
+"такие как люди, наносят на 25% больше повреждений, тогда как Хаотичные "
+"соединения, такие как мертвецы на 25% меньше. Ночью всё наоборот. В сумерки "
+"все соединения наносят нормальный урон. Нейтральные соединения, как Эльфы, "
+"не подвержены влиянию времени суток."
 
 #: data/scenarios/tutorial/utils.cfg:121
 msgid "What are the different alignments and times of day?"
 msgstr "Что за разные направленности и время суток?"
 
 #: data/scenarios/tutorial/utils.cfg:122
-#, fuzzy
 msgid ""
 "The times of day usually progress in a sequence: dawn- identical to "
 "twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
@@ -934,17 +919,17 @@ msgid ""
 msgstr ""
 "Время суток сменяется в следующей последовательности: рассвет - это сумерки, "
 "утро - это день, вечер - день, закат - сумерки, первая половина ночи - ночь, "
-"вторая половина ночи - ночь, и опять сначала. Это отображается сменой солнца "
-"и луны, восходящих на востоке и заходящих на западе. Некоторые сценарии "
-"имеют другую смену дня и ночи, как например в подземелье, где всегда ночь. "
-"Вы можете узнать, какое сейчас время суток, посмотрев в статусной таблице."
+"вторая половина ночи - ночь, и опять повторяется сначала. Это отображается "
+"сменой солнца и луны, восходящих на востоке и заходящих на западе. Некоторые "
+"сценарии имеют другую смену дня и ночи, как например в подземелье, где "
+"всегда ночь. Вы можете узнать, какое сейчас время суток, посмотрев в "
+"статусной таблице."
 
 #: data/scenarios/tutorial/utils.cfg:122
 msgid "How do I know what time of day it is?"
 msgstr "Как мне узнать текущее время суток?"
 
 #: data/scenarios/tutorial/utils.cfg:126
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castles. However, the properties of most terrains are more "
@@ -957,20 +942,19 @@ msgid ""
 "average 30% of the time."
 msgstr ""
 "Две местности уже определены - это деревни и замок. Тем не менее особенности "
-"большинства земель более различимы и дают выгодное или невыгодное положение "
+"большинства земель более различны и дают выгодное или невыгодное положение "
 "различным соединениям, находящимся на них. Первая особенность местности - "
-"количество очков движения, требуемое для входа в квадрат. Вторая особенность "
-"- защищённость, которая даётся соединению, стоящему на этой местности. Это "
-"процент, определяющий шанс соединения получить повреждение на этой "
-"местности. Например, многие эльфы имеют 70% защищённость в траве, "
-"следовательно, они имеют шанс в 30% получить повреждение."
+"количество очков движения, требуемое для прохождения через этот квадрат. "
+"Вторая особенность - защищённость, которая даётся соединению, стоящему на "
+"этой местности. Это процент, определяющий шанс соединения получить "
+"повреждение на этой местности. Например, многие эльфы имеют 70% защищённость "
+"в лесу, следовательно, они имеют шанс в 30% получить повреждение."
 
 #: data/scenarios/tutorial/utils.cfg:126
 msgid "What are the different properties that terrains have?"
 msgstr "Что за отличительные особенности имеют земли?"
 
 #: data/scenarios/tutorial/utils.cfg:127
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -981,12 +965,12 @@ msgid ""
 "it will cost the selected unit to move through that hex."
 msgstr ""
 "Чтобы определить свойства местности для отдельного соединения, нажмите "
-"правой кнопкой мыши на соединении, выберите Описание Соединения, затем "
-"выберите Тип Местности. Чтобы определить, какая земля в квадрате, наведите "
-"курсор на этот курсор и посмотрите в верхний правый угол экрана. Там "
-"отображены, по порядку, тип местности, координаты квадрата, защищённость "
-"выбранного соединения и количество очков движения, необходимых для "
-"выбранного соединения для того, чтобы дойти до этого квадрата."
+"правой кнопкой мыши на соединении, выберите Описание соединения, затем "
+"выберите Тип местности. Чтобы определить, какая земля в квадрате, наведите "
+"курсор на этот квадрат и посмотрите в верхний правый угол экрана. Там "
+"отображены, по порядку, тип местности, координаты квадрата, затем "
+"защищённость выбранного соединения и количество очков движения, необходимых "
+"для выбранного соединения для того, чтобы пройти через этот квадрат."
 
 #: data/scenarios/tutorial/utils.cfg:127
 msgid "How do I find out the properties of a specific terrain?"
@@ -1103,27 +1087,25 @@ msgid "What kind of objects am I likely to encounter?"
 msgstr "Что за предметы\\, которые я нашёл?"
 
 #: data/scenarios/tutorial/utils.cfg:143
-#, fuzzy
 msgid ""
 "The objects you encounter are put in by the scenario designer, so they vary "
 "from campaign to campaign. In Heir to the Throne, most objects give the unit "
 "who picks them up a new weapon. However, there are usually not that many "
 "objects in a campaign."
 msgstr ""
-"Предметы, найденные Вами, были выброшены Дизайнером сценария (кто это "
-"такой?), и их число может меняться от кампании к кампании. В 'Наследнике "
-"Трона' все предметы дают соединению использовать новое оружие. Их не так "
-"много в кампании."
+"Предметы, найденные Вами, были поставлены дизайнером сценария, и их число "
+"может меняться от кампании к кампании. В Наследнике Трона все предметы дают "
+"соединению использовать новое оружие. Обычно, предметов в каждой кампании "
+"немного."
 
 #: data/scenarios/tutorial/utils.cfg:144
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However, "
 "a few objects, such as holy water, last only until the end of the scenario."
 msgstr ""
 "Большинство предметов постоянно изменяются у соединений, которые получают "
-"их. Но некоторые предметы, такие как Святая Вода, используются только до "
-"конца текущего уровня."
+"их. Но некоторые предметы, такие как святая вода, используются только до "
+"конца текущего сценария."
 
 #: data/scenarios/tutorial/utils.cfg:144
 msgid "How long do these objects last?"

@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-01-06 08:55+0100\n"
-"PO-Revision-Date: 2005-08-18 12:09+0600\n"
-"Last-Translator: Azamat H. Hackimov <azazello1984@mail.ru>\n"
+"PO-Revision-Date: 2006-01-05 14:50+0300\n"
+"Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -254,39 +254,36 @@ msgid "Best Possible Enemy Moves"
 msgstr "Вероятные ходы противника"
 
 #: src/hotkeys.cpp:81
-#, fuzzy
 msgid "Play"
-msgstr "Игроки:"
+msgstr "Играть"
 
 #: src/hotkeys.cpp:82
 msgid "Reset"
-msgstr ""
+msgstr "Сбросить"
 
 #: src/hotkeys.cpp:83
 msgid "Stop"
-msgstr ""
+msgstr "Стоп"
 
 #: src/hotkeys.cpp:84
-#, fuzzy
 msgid "Next Turn"
-msgstr "Следующее соединение"
+msgstr "Следующий ход"
 
 #: src/hotkeys.cpp:85
-#, fuzzy
 msgid "Next Side"
-msgstr "Следующее соединение"
+msgstr "Следующая сторона"
 
 #: src/hotkeys.cpp:86
 msgid "Shroud"
-msgstr ""
+msgstr "Пелена"
 
 #: src/hotkeys.cpp:87
 msgid "Fog"
-msgstr ""
+msgstr "Туман"
 
 #: src/hotkeys.cpp:88
 msgid "Skip animation"
-msgstr ""
+msgstr "Пропустить анимацию"
 
 #: src/hotkeys.cpp:90
 msgid "Set Terrain"
@@ -472,7 +469,7 @@ msgstr "Пропускать ходы компьютера"
 
 #: src/preferences_display.cpp:219
 msgid "Show lobby joins"
-msgstr ""
+msgstr "Показывать подключения"
 
 #: src/preferences_display.cpp:220
 msgid "Show Floating Labels"
@@ -500,7 +497,7 @@ msgstr "Показывать эффекты"
 
 #: src/preferences_display.cpp:227
 msgid "Theme"
-msgstr ""
+msgstr "Тема"
 
 #: src/preferences_display.cpp:229
 msgid "Adjust Gamma"
@@ -512,7 +509,7 @@ msgstr "Обратить отображение времени"
 
 #: src/preferences_display.cpp:231
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "Отметка времени в чате"
 
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
@@ -556,11 +553,11 @@ msgstr "Изменить скорость прокрутки карты"
 
 #: src/preferences_display.cpp:271 src/preferences_display.cpp:273
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "Установите количество показываемых линий в чате"
 
 #: src/preferences_display.cpp:276
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Добавьте отметку времени сообщениями в чате"
 
 #: src/preferences_display.cpp:279 src/preferences_display.cpp:284
 msgid "Change the brightness of the display"
@@ -585,6 +582,7 @@ msgstr "Показывать сетку на карте"
 #: src/preferences_display.cpp:299
 msgid "Show messages about players joining the multiplayer lobby"
 msgstr ""
+"Показывать сообщения о игроках, подключившихся к многопользовательской игре"
 
 #: src/preferences_display.cpp:302
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -595,9 +593,8 @@ msgid "Change the resolution the game runs at"
 msgstr "Изменить разрешение игры, запущенной в"
 
 #: src/preferences_display.cpp:305
-#, fuzzy
 msgid "Change the theme the game runs with"
-msgstr "Изменить разрешение игры, запущенной в"
+msgstr "Изменить тему игры, запущенной с"
 
 #: src/preferences_display.cpp:308
 msgid "Display a dialog at the beginning of your turn"
@@ -633,7 +630,7 @@ msgstr "Просмотр и настройка горячих клавиш"
 
 #: src/preferences_display.cpp:475
 msgid "Chat Lines: "
-msgstr ""
+msgstr "Линии чата:"
 
 #: src/preferences_display.cpp:527
 msgid "yes"
@@ -656,9 +653,8 @@ msgid "Prefs section^Sound"
 msgstr "Звук"
 
 #: src/preferences_display.cpp:598
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "Графика"
+msgstr "Многопользовательская игра"
 
 #: src/preferences_display.cpp:599
 msgid "Advanced section^Advanced"
@@ -677,7 +673,6 @@ msgid "Hotkey Settings"
 msgstr "Настройка горячих клавиш"
 
 #: src/preferences_display.cpp:716 src/preferences_display.cpp:769
-#, fuzzy
 msgid "Press desired Hotkey"
 msgstr "Нажмите желаемую горячую клавишу"
 
@@ -698,21 +693,21 @@ msgid "Save Hotkeys"
 msgstr "Сохранить"
 
 #: src/preferences_display.cpp:795
-#, fuzzy
 msgid "This Hotkey is already in use."
-msgstr "Данная клавиша уже используется."
+msgstr "Данная горячая клавиша уже используется."
 
 #: src/preferences_display.cpp:828
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Сохранённые настройки темы:"
 
 #: src/preferences_display.cpp:834
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
+"Новая тема будет задействована при следующей новой или загруженной игре."
 
 #: src/preferences_display.cpp:838
 msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
+msgstr "Неизвестная тема. Попробуйте поменять в существующей игре."
 
 #: src/show_dialog.cpp:314
 msgid "Error"

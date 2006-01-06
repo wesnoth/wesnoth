@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-01-06 08:38+0100\n"
-"PO-Revision-Date: 2005-10-03 13:41+0300\n"
+"PO-Revision-Date: 2006-01-03 20:27+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -146,17 +146,15 @@ msgstr ""
 "Вы можете выбрать уровень сложности <italic>text=Легко</italic>."
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
 "will be shown explaining each item. This is especially useful when you "
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
-"Играя, помните, что если Вы наведёте на любой объект указателем, то в меню "
-"справа, в описании появится информация об этом объекте. Это особенно "
-"полезно, пока Вы изучаете новые <ref>dst=abilities text=особенности</ref> в "
-"первый раз."
+"Играя, помните, что если Вы наведёте на любой объект указателем мыши, то в "
+"окне появится краткое описание этого объекта. Это особенно полезно, пока Вы "
+"изучаете новые <ref>dst=abilities text=особенности</ref> в первый раз."
 
 #: data/help.cfg:79
 msgid "About the Game"
@@ -378,7 +376,6 @@ msgid "Movement"
 msgstr "Ходы"
 
 #: data/help.cfg:126
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -393,15 +390,18 @@ msgid ""
 "a move in a village you don't already own will also use up a unit's "
 "movement, but will still allow it to attack."
 msgstr ""
-"Делать ходы в Весноте просто - кликните по соединению, которое хотите "
+"Делать ходы в Весноте просто - кликните по отряду, который хотите "
 "передвинуть, затем кликните на квадрат, куда хотите его передвинуть.Все "
-"квадраты, до которых выделенное соединение сможет добраться за этот ход, "
-"будут подсвечены. При наведении на подсвеченный квадрат показывает рейтинг "
-"защиты, которую будет иметь соединение, если оно будет передвинуто на данный "
-"квадрат. При наведении мыши на затенённый квадрат указатель будет отображать "
-"количество ходов, за которое соединение дойдёт до него. Кликнув по квадрату, "
-"Вы отправите соединение по кратчайшему пути до пункта назначения за "
-"отведённое количество ходов."
+"квадраты, до которых выделенный отряд сможет добраться за этот ход, будут "
+"подсвечены. При наведении на подсвеченный квадрат показывается рейтинг "
+"защиты, которую будет иметь отряд, если он будет передвинут на данный "
+"квадрат. При наведении мыши на затенённый квадрат, указатель будет "
+"отображать количество ходов, за которое отряд дойдёт до него. Кликнув по "
+"квадрату, Вы отправите отряд по кратчайшему пути до пункта назначения за "
+"отведённое количество ходов. Если Вы не использовали все ходы передвижения "
+"при первом движении, Вы можете передвинуть отряд ещё раз. Атака отрядом "
+"использует все ходы передвижения отряда. Заканчивая движение на деревне, Вы "
+"заканчиваете все ходы передвижения отряда, но Вы всё ещё можете атаковать."
 
 #: data/help.cfg:128
 msgid ""
@@ -465,7 +465,7 @@ msgstr ""
 
 #: data/help.cfg:137
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "Пелена и туман войны"
 
 #: data/help.cfg:138
 msgid ""
@@ -479,6 +479,15 @@ msgid ""
 "locations adjacent to those within one turn's move (ignoring zones of "
 "control and enemy units)."
 msgstr ""
+"В некоторых сценариях, части карты скрыты от Вас. Есть два механизма, "
+"которые могут использоваться по отдельности или вместе. Пелена скрывает "
+"скрывает и территорию и отряды. Тем не менее, после того как она очищена, Вы "
+"всегда можете видеть данное место. Туман войны скрывает только отряды и "
+"владельцев деревень (за исключением Ваших и союзников). Туман войны исчезает "
+"временно, когда Ваши отряды находятся неподалёку, но туман опять "
+"возвращается когда Вы покидаете данную территорию. И пелена и туман войны "
+"очищаются отрядами. Каждый отряд очищает местность на шаг вперёд своего хода "
+"(игнорируя зоны контроля отрядов противника)."
 
 #: data/help.cfg:143
 msgid "Combat"
@@ -703,7 +712,6 @@ msgid "Time of Day"
 msgstr "Время суток"
 
 #: data/help.cfg:181
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -711,8 +719,8 @@ msgid ""
 " Neutral units are unaffected by the time of day."
 msgstr ""
 "Время суток влияет на урон, наносимый некоторыми соединениями:\n"
-" Преданные соединения наносят +25% урона днём и -25% ночью\n"
-" Хаотичные соединения наносят +25% урона ночью и -25% днём\n"
+" Преданные соединения наносят +25% урона днём и -25% ночью.\n"
+" Хаотичные соединения наносят +25% урона ночью и -25% днём.\n"
 " Нейтральные соединения неподвластны времени суток."
 
 #: data/help.cfg:184
@@ -820,14 +828,14 @@ msgstr ""
 "Большинство соединений имеют три уровня развития, но не все. Некоторые "
 "соединения (такие как <ref>dst=unit_Mage text=Маги</ref>) могут иметь четыре "
 "уровня. Достигнув своего максимального уровня, соединение может приобретать "
-"Улучшения Постмаксимального Уровня (УПМУ), доступные ему.\n"
-"УПМУ будет модифицировать соединение каждый раз, когда соединение набирает "
-"граничное число очков опыта, но соединение будет оставаться того же уровня. "
-"Типичное действие УПМУ на соединение заключается в повышении максимального "
-"количества очков жизни на 3 для каждой полученной сотни очков опыта. "
-"Запомните, что только небольшое количество соединений, например Трупоед, "
-"будет лечиться при воздействии УПМУ эффекта. Большинство соединений просто "
-"получает бонус к максимальному количеству очков жизни."
+"Улучшения Постмаксимального Уровня (УПМУ), доступные ему. УПМУ будет "
+"модифицировать соединение каждый раз, когда соединение набирает граничное "
+"число очков опыта, но соединение будет оставаться того же уровня. Типичное "
+"действие УПМУ на соединение заключается в повышении максимального количества "
+"очков жизни на 3 для каждой полученной сотни очков опыта. Запомните, что "
+"только небольшое количество соединений, например Трупоед, будет лечиться при "
+"воздействии УПМУ эффекта. Большинство соединений просто получает бонус к "
+"максимальному количеству очков жизни."
 
 #: data/help.cfg:208
 msgid "Healing"
@@ -895,7 +903,6 @@ msgstr ""
 "с лечащим соединением и сражаются на той же стороне."
 
 #: data/help.cfg:215
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -905,11 +912,10 @@ msgid ""
 msgstr ""
 "\n"
 "Лечащие соединения: Соединения с умением <ref>dst=ability_cures "
-"text=Лечение</ref> будут восстанавливать всем ближайшим дружественным "
-"соединениям 18 единиц здоровья за каждый ход, также исцеляя действие яда.  "
-"максимум 18 единиц лечения, либо сохранять их от отравления Ядом. Только "
-"дружественные и смежные соединения будут исцеляться, но только до 8 единиц "
-"здоровья каждому соединению."
+"text=Лечение</ref> будут восстанавливать всем до 18 единиц здоровья за "
+"каждый ход, также исцеляя действие яда.Только дружественные и смежные "
+"соединения будут исцеляться, но только до 8 единиц здоровья каждому "
+"соединению."
 
 #: data/help.cfg:217
 msgid ""
@@ -1228,9 +1234,8 @@ msgstr ""
 "соединения, либо посылать их на глупую смерть."
 
 #: data/help.cfg:303
-#, fuzzy
 msgid "trait^Undead"
-msgstr "Мертвецы"
+msgstr "Мертвец"
 
 #: data/help.cfg:304
 msgid "Undead units are immune to poison."
@@ -1891,9 +1896,8 @@ msgid ""
 msgstr "Это Скипетр Огня. Только истинный владелец трона может взять его!"
 
 #: data/items.cfg:816
-#, fuzzy
 msgid "Zap"
-msgstr "Zap~"
+msgstr "Стук"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -1980,7 +1984,6 @@ msgstr ""
 "Ты можешь проходить, если хочешь, но лидер будет говорить только с Балдрасом."
 
 #: data/scenarios/multiplayer/2p_Across_the_River.cfg:3
-#, fuzzy
 msgid "2p - Across the River"
 msgstr "2и - Пересекая реку"
 
@@ -2562,7 +2565,7 @@ msgstr "Снежный лес"
 
 #: data/terrain.cfg:405
 msgid "Chasm"
-msgstr ""
+msgstr "Бездна"
 
 #: data/terrain.cfg:431
 msgid "Encampment"
@@ -2637,38 +2640,32 @@ msgid "statuspanel^movement"
 msgstr "ходов"
 
 #: data/themes/default.cfg:458
-#, fuzzy
 msgid "Replay"
-msgstr "повтор"
+msgstr "Повтор"
 
 #: data/themes/default.cfg:471
-#, fuzzy
 msgid "Play"
-msgstr "Игроки:"
+msgstr "Играть"
 
 #: data/themes/default.cfg:484
 msgid "Stop"
-msgstr ""
+msgstr "Стоп"
 
 #: data/themes/default.cfg:497
-#, fuzzy
 msgid "Reset"
-msgstr "Пустыня"
+msgstr "Сбросить"
 
 #: data/themes/default.cfg:510
-#, fuzzy
 msgid "Next Turn"
-msgstr "Шаг"
+msgstr "Следующий ход"
 
 #: data/themes/default.cfg:523
-#, fuzzy
 msgid "Next Side"
-msgstr "Далее"
+msgstr "Следующая сторона"
 
 #: data/themes/default.cfg:559
-#, fuzzy
 msgid "Skip animation"
-msgstr "+Словакский перевод"
+msgstr "Пропустить анимацию"
 
 #: data/themes/default.cfg:663
 msgid "Act."
@@ -2711,7 +2708,6 @@ msgstr ""
 "против различных типов атак."
 
 #: data/tips.cfg:4
-#, fuzzy
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -2719,8 +2715,8 @@ msgid ""
 "right corner of the screen."
 msgstr ""
 "Особенности Вашего соединения определяют шанс Вашего противника на поражение "
-"в бою. Рейтинг сопротивления выбранного соединения на конкретной местности "
-"можно видеть в правом верхнем углу экрана."
+"в бою. Рейтинг сопротивления выбранного соединения на конкретной выбранной "
+"местности можно видеть в правом верхнем углу экрана."
 
 #: data/tips.cfg:5
 msgid ""
@@ -2735,15 +2731,14 @@ msgstr ""
 "соединения, у которого есть способность к исцелению."
 
 #: data/tips.cfg:6
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
-"Вы можете использоваться соединения с прошлого сценария, для этого "
-"существует команда 'Призвать' в меню Действия. Призывая соединения, Вы "
-"создаёте более мощную и опытную армию. "
+"Вы можете использовать отряды с прошлого сценария, для этого существует "
+"команда 'Призвать' в меню Действия. Призывая одни и теже отряды много раз, "
+"Вы создаёте более мощную и опытную армию. "
 
 #: data/tips.cfg:7
 msgid ""
@@ -2954,9 +2949,8 @@ msgid ""
 "the damage they do on all attacks."
 msgstr ""
 "Способность 'замедление' делает передвижения соединения противника "
-"медленней, но, кроме того, уменьшает ему на одну единицу атаку, в сравнении "
-"с нормальным состоянием. Таким образом, атака 'замедление' эффективна против "
-"соединений с мощной атакой."
+"медленней, но, кроме того, уменьшает ему на половину атаку, в сравнении с "
+"нормальным состоянием."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -3040,7 +3034,6 @@ msgid "Hard"
 msgstr "Тяжёлая"
 
 #: data/translations/english.cfg:9
-#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -3060,14 +3053,13 @@ msgstr ""
 "Нейтральные соединения сражаются как днём, так и ночью с одинаковой силой."
 
 #: data/translations/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
 "Day: -25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
-"Хаотичные соединения лучше сражаются ночью, а днём хуже.\n"
+"Хаотичные соединения лучше сражаются ночью, а в течение дня хуже.\n"
 "\n"
 "День: -25% ущерба\n"
 "Ночь: +25% ущерба"
@@ -3095,7 +3087,6 @@ msgid "ambush"
 msgstr "скрытный"
 
 #: data/translations/english.cfg:31
-#, fuzzy
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -3110,12 +3101,12 @@ msgid ""
 msgstr ""
 "Лекарь:\n"
 "Это соединие сочетает силу целебных трав с восстанавливающей магией для "
-"быстрейшего восстановления раненых соединений на поле брани.\n"
+"быстрейшего восстановления раненых соединений на поле боя.\n"
 "\n"
 "Это соединение лечит всех соединений, находившихся рядом в начале хода.\n"
 "Излечиваемое соединение может восстановить до 8 ЗД за ход.\n"
-"Лекарь может всего восстанавливать 18 ЗД за ход для всех соединений, "
-"окружающих его.\n"
+"Лекарь может всего восстанавливать 18 ЗД за ход для всех соединений, которые "
+"излечиваются.\n"
 "Лекарь может лечить соединение от яда. Несмотря на то, что соединение не "
 "получает дополнительного восстановления за ход, оно излечивается от яда."
 
@@ -3127,7 +3118,6 @@ msgid "cures"
 msgstr "лечение"
 
 #: data/translations/english.cfg:40
-#, fuzzy
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -3139,9 +3129,12 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "Целитель:\n"
-"Позволяет соединению исцелять соседние соединения в начале хода.\n"
+"Позволяет соединению исцелять соседние дружественные соединения в начале "
+"каждого хода.\n"
 "\n"
 "Исцеляемое соединение получает от целителя до 4 ЗД за ход.\n"
+"Целитель может восстанавливать всего до 8 единиц здоровья за ход для всех "
+"исцеляемых соединений.\n"
 "Отравленное соединение не может вылечиться от яда с помощь целителя и должно "
 "найти деревню для лечения или соединение, умеющее лечить."
 
@@ -3253,7 +3246,6 @@ msgid "regenerates"
 msgstr "возрождающийся"
 
 #: data/translations/english.cfg:76
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -3261,8 +3253,10 @@ msgid ""
 "remaining movement will be set to 0 even if you are a skirmisher.)"
 msgstr ""
 "Застрельщик:\n"
-"Это соединение обучено быстро двигаться вокруг врагов, игнорируя все "
-"вражеские зоны контроля."
+"Это соединение обучено быстро двигаться через врагов, игнорируя все "
+"вражеские зоны контроля. (Исключение: если Вы останавливаетесь в зоне "
+"контроля противника, Ваши ходы движения устанавливаются в 0, т.е. больше Вы "
+"передвигаться не можете, даже если Вы застрельщик.)"
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:24
 #: data/units/Assassin.cfg:127 data/units/Duelist.cfg:22
@@ -3274,7 +3268,6 @@ msgid "skirmisher"
 msgstr "застрельщик"
 
 #: data/translations/english.cfg:81
-#, fuzzy
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
@@ -3306,7 +3299,6 @@ msgid "teleport"
 msgstr "телепорт"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -3314,12 +3306,10 @@ msgid ""
 "to stone)."
 msgstr ""
 "Исподтишка:\n"
-"Эта атака наносит двойной урон, если дружественное соединений находится с "
-"противоположной стороны от цели. (Это не работает с дружественными "
-"соединениями.)"
+"Эта атака наносит двойной урон, если враг находится напротив и беспомощно "
+"(например превращено в камень)."
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -3327,7 +3317,7 @@ msgid ""
 msgstr ""
 "Берсерк:\n"
 "Используется в наступлении или обороне, эта атака продолжает битву, пока "
-"один из бойцов не погибнет."
+"один из бойцов не погибнет или пока не пройдут 30 раундов атаки."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -3340,7 +3330,6 @@ msgstr ""
 "урон при ответном ударе цели."
 
 #: data/translations/english.cfg:102
-#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -3348,7 +3337,7 @@ msgid ""
 msgstr ""
 "Осушающий:\n"
 "Это соединение высасывает здоровье из живых соединений, получая для себя "
-"половину нанесённого количества ущерба."
+"половину нанесённого количества ущерба (округляется вниз)."
 
 #: data/translations/english.cfg:105
 msgid ""
@@ -3389,7 +3378,6 @@ msgstr ""
 "соединения, находящиеся в деревнях)"
 
 #: data/translations/english.cfg:117
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -3420,6 +3408,12 @@ msgid ""
 "move at half normal speed, do not emit a zone of control, and always lose "
 "initiative in fights."
 msgstr ""
+"Замедление:\n"
+"Данная атака замедляет цель. Замедление преобразует атаку и позволяет "
+"атакующему наносить на один удар больше до того как противник сможет "
+"сражаться. Замедленные отряды передвигаются наполовину медленней от "
+"нормальной скорости, не выделяют зону контроля и всегда теряют инициативу в "
+"боях."
 
 #: data/translations/english.cfg:126
 msgid ""
@@ -3432,7 +3426,6 @@ msgstr ""
 "камень, не могут перемещаться и атаковать."
 
 #: data/translations/english.cfg:132
-#, fuzzy
 msgid "race^Undead"
 msgstr "Мертвецы"
 
@@ -4266,7 +4259,6 @@ msgid "Bone Shooter"
 msgstr "Метатель Костей"
 
 #: data/units/Bone_Shooter.cfg:21
-#, fuzzy
 msgid ""
 "Of a necromancer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -4275,7 +4267,8 @@ msgid ""
 "Dubbed simply 'Bone-Shooters' by their unfortunate enemies, these "
 "abominations are a terror to all who live."
 msgstr ""
-"Эти мастера стали более искусными, экипируясь действительно пустячным "
+"Создания колдунов, обладают гораздо большей силой, нежели дана им при жизни. "
+"Эти мастера стали более искусными, экипируясь действительно отвратительным "
 "арсеналом. Их стрелы вместе с наконечниками и оперением сделаны не из "
 "дерева, а из костей своих жертв. Называемые своими неудачливыми противниками "
 "просто 'Метателями Костей', эти отвратительные существа сеют страх среди "
@@ -4559,9 +4552,8 @@ msgid "tentacle"
 msgstr "щупальце"
 
 #: data/units/Cuttle_Fish.cfg:42
-#, fuzzy
 msgid "swarm"
-msgstr "хлопанье"
+msgstr "рой"
 
 #: data/units/Cuttle_Fish.cfg:76
 msgid "ink"
@@ -4599,9 +4591,8 @@ msgstr ""
 "шанс нанести повреждения противнику."
 
 #: data/units/Dark_Adept.cfg:34 data/units/Dark_Adept.cfg:128
-#, fuzzy
 msgid "shadow wave"
-msgstr "толчок"
+msgstr "волна тени"
 
 #: data/units/Dark_Adept.cfg:98
 msgid "female^Dark Adept"
@@ -5363,7 +5354,6 @@ msgid "Dwarvish Stalwart"
 msgstr "Гном Решительный"
 
 #: data/units/Dwarvish_Stalwart.cfg:29
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -5655,7 +5645,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Эльфийка Колдунья"
 
 #: data/units/Elvish_Enchantress.cfg:35
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
@@ -5805,7 +5794,6 @@ msgid "Elvish Marshal"
 msgstr "Эльф Маршал"
 
 #: data/units/Elvish_Marshal.cfg:39
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -5821,7 +5809,9 @@ msgstr ""
 "Долгожительство и естественный интеллект эльфов, они не очень приспособлены "
 "к военным делам, у них вызывает отвращение. Эльфы помнят намного больше "
 "вещей чем человечество и обычно интуитивно умеют уже то, что другим доступно "
-"только после долгих тренировок.\n"
+"только после долгих тренировок. Несомненно, это редкий случай когда эльфы "
+"использует свой разум в войне, стратегия, вот результат работы настоящего "
+"мастера.\n"
 "\n"
 "Примечание: Под руководством Маршала, дружественные соединения наносят "
 "больше урона в боях, но это действительно только для соединений низших чинов."
@@ -5886,7 +5876,6 @@ msgid "Elvish Rider"
 msgstr "Эльф Всадник"
 
 #: data/units/Elvish_Rider.cfg:44
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal to any man. Though this certainly leaves people in "
@@ -6015,7 +6004,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Эльфийка Волшебница"
 
 #: data/units/Elvish_Sorceress.cfg:35
-#, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
@@ -6169,7 +6157,6 @@ msgid "Galleon"
 msgstr "Галеон"
 
 #: data/units/Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Even people happily living in their homes eventually need some kind of "
 "transport through the seas, even if only to go fishing or to trade goods. "
@@ -6179,7 +6166,7 @@ msgstr ""
 "Даже люди, счастливо живущие в своих домах, в конце концов нуждаются в "
 "морском транспорте, даже если только они плывут рыбачить или торговать "
 "товарами. Галеон великолепно подходит для этих целей: они быстры и крепки, "
-"хотя не готовы к бою, и и могут применяться в различных ситуациях."
+"хотя они и не готовы к бою, но могут применяться в различных ситуациях."
 
 #: data/units/Galleon.cfg:20
 msgid "dummy"
@@ -6394,9 +6381,8 @@ msgid "net"
 msgstr "сеть"
 
 #: data/units/Goblin_Rouser.cfg:3
-#, fuzzy
 msgid "Goblin Rouser"
-msgstr "Гоблин Закалыватель"
+msgstr "Пробуждённый гоблин"
 
 #: data/units/Goblin_Rouser.cfg:26
 #, fuzzy
@@ -6410,9 +6396,9 @@ msgid ""
 "to it to deal more damage in combat, though this only applies to units of "
 "lower level."
 msgstr ""
-"Звание Великий Маршал является одним из самых уважаемых в армии "
-"человечества, он хорошо обращается с огнём, доказывая всем, что он обладает "
-"боевой выучкой и выдержкой в индивидуальном бою.\n"
+"Самые странные среди гоблинов. Сначала они пережили войну, но что более "
+"важно, они единственные выжившие из гоблинов. Их часто бесит толпа на поле "
+"боя, но тем не менее они довольно эффективны.\n"
 "\n"
 "Примечание: Лидерство данного соединения позволяет дружественным "
 "соединениям, находящимся возле него, наносить больший ущерб в бою, но это "
@@ -6670,7 +6656,6 @@ msgid "Horse Lord"
 msgstr "Лорд Наездник"
 
 #: data/units/Horse_Lord.cfg:30
-#, fuzzy
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
@@ -7076,7 +7061,6 @@ msgid "Master at Arms"
 msgstr "Хозяин вооружений"
 
 #: data/units/Master_at_Arms.cfg:22
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -7102,7 +7086,7 @@ msgstr ""
 "Часто они купаются в роскоши, выбрав своё место жительство, и они свободны "
 "бродить по землям, которые им нужно выбрать. Часто они находят себя в "
 "качестве капитанов гарнизона замка или мастером военной академии, должности "
-"в их пышной натуре не постоянны, но они, возможны, пригодятся.\n"
+"в их пышной натуре не постоянны, но они, возможно, пригодятся.\n"
 " \n"
 "Примечание: их навыки застрельщика позволяют этим мастерам фехтования "
 "занимать правильное место перед противником, игнорируя зоны контроля."
@@ -7429,16 +7413,15 @@ msgid "Mounted Fighter"
 msgstr "Конный Боец"
 
 #: data/units/Mounted_Fighter.cfg:30
-#, fuzzy
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
 "commanding their comrades, and they are the ones that become captains of the "
 "armies of the Clans."
 msgstr ""
-"Благороднейшие из людей равнин, они натренированы управлять лошадями, чтобы "
+"Благороднейшие из людей равнин, они натренированы управлять лошадьми, чтобы "
 "стать великими воинами. Тем не менее, они также обучены командовать своими "
-"солдатами, и они - одни из тех, кто станет капитанами армий Кланов."
+"товарищами, и они - одни из тех, кто станет капитанами армий Кланов."
 
 #: data/units/Mounted_Warrior.cfg:3
 msgid "Mounted Warrior"
@@ -7717,7 +7700,6 @@ msgid "Orcish Assassin"
 msgstr "Орк Убийца"
 
 #: data/units/Orcish_Assassin.cfg:25
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -7886,7 +7868,6 @@ msgid "Orcish Slayer"
 msgstr "Орк Наёмный Убийца"
 
 #: data/units/Orcish_Slayer.cfg:26
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -8487,7 +8468,6 @@ msgid "Silver Mage"
 msgstr "Серебряный Маг"
 
 #: data/units/Silver_Mage.cfg:28
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -8529,7 +8509,7 @@ msgstr ""
 "Члены серебряного ордена ревностно отклоняют предложения по работе над тем, "
 "чтобы этим секретом овладели другие маги. За редкими исключениями, никто не "
 "был посвящён в их работу, и их в конце концов оставили в покое, не начиная "
-"этот разговор об этом снова.\n"
+"разговор об этом снова.\n"
 "\n"
 "Серебряные маги являются чаще всего последователями физического воздействия, "
 "в отличие от других, и их навыки неоспоримо пригодятся на поле боя, если "
@@ -8537,8 +8517,9 @@ msgstr ""
 "\n"
 "Примечание: на дистанции серебряный маг атакует магией, которая имеет "
 "большой шанс поразить оппонента. Серебряные маги хорошо защищены от всех "
-"форм магического повреждения. Они могут также быстро перемещаться между "
-"контролируемыми игроком деревнями, а расстояние между ними не имеет значения."
+"форм магического повреждения. Они могут также мгновенно перемещаться между "
+"двумя деревнями, обе деревни должны контролироваться игроком и деревня, в "
+"которую передвигается маг не должна быть оккупирована противником."
 
 #: data/units/Silver_Mage.cfg:149
 msgid "female^Silver Mage"
@@ -9273,9 +9254,8 @@ msgid "+Scenario Designers"
 msgstr "+Дизайн сценариев"
 
 #: src/about.cpp:108
-#, fuzzy
 msgid "+Multiplayer Developers"
-msgstr "+Сетевые карты"
+msgstr "+Разработчики сетевой игры"
 
 #: src/about.cpp:113
 msgid "+Multiplayer Maps"
@@ -9355,9 +9335,8 @@ msgid "+Greek Translation"
 msgstr "+Греческий перевод"
 
 #: src/about.cpp:251
-#, fuzzy
 msgid "+Hebrew Translation"
-msgstr "+Греческий перевод"
+msgstr "+Перевод на иврит"
 
 #: src/about.cpp:255
 msgid "+Hungarian Translation"
@@ -9384,7 +9363,6 @@ msgid "+Polish Translation"
 msgstr "+Польский перевод"
 
 #: src/about.cpp:302
-#, fuzzy
 msgid "+Portuguese Translation"
 msgstr "+Португальский перевод"
 
@@ -9736,9 +9714,8 @@ msgid "Get More Campaigns..."
 msgstr "Загрузить другие кампании..."
 
 #: src/game.cpp:735
-#, fuzzy
 msgid "Download more campaigns from an Internet server."
-msgstr "Загрузить другие кампании из Интернета."
+msgstr "Загрузить больше кампаний из интернета."
 
 #: src/game.cpp:745
 msgid "Choose the campaign you want to play:"
@@ -10045,7 +10022,6 @@ msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Местность с лучшим модификатором, выбираемая автоматически."
 
 #: src/help.cpp:1316
-#, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
@@ -10054,7 +10030,6 @@ msgstr ""
 "того, что лидер находится на этой местности."
 
 #: src/help.cpp:1318
-#, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -10261,7 +10236,7 @@ msgstr "Создать игру"
 
 #: src/multiplayer_create.cpp:46
 msgid "Time limit"
-msgstr ""
+msgstr "Лимит времени"
 
 #: src/multiplayer_create.cpp:55
 msgid "Name of game:"
@@ -10301,24 +10276,20 @@ msgid "Settings..."
 msgstr "Настройки..."
 
 #: src/multiplayer_create.cpp:100
-#, fuzzy
 msgid "The maximum number of turns the game can last"
 msgstr "Максимальное количество ходов в игре"
 
 #: src/multiplayer_create.cpp:103
 msgid "Enables user time limit"
-msgstr ""
+msgstr "Разрешить пользовательский лимит времени"
 
 #: src/multiplayer_create.cpp:109
-#, fuzzy
 msgid "Initial time available for user at the begining of the match"
-msgstr ""
-"Соединения, остающиеся в деревнях, восстанавливают 8 единиц здоровья в "
-"начале своего хода."
+msgstr "Первоначальное время, доступное пользователю в начале игры"
 
 #: src/multiplayer_create.cpp:115
 msgid "Time added to user's clock at the end of each turn"
-msgstr ""
+msgstr "Время добавляется к часам пользователя в конце каждого хода"
 
 #: src/multiplayer_create.cpp:120
 msgid "The amount of income each village yields per turn"
@@ -10387,14 +10358,12 @@ msgid "Unlimited Turns"
 msgstr "Неограниченные ходы"
 
 #: src/multiplayer_create.cpp:266
-#, fuzzy
 msgid "Initial Time: "
-msgstr "Посвящённый"
+msgstr "Первоначальное время:"
 
 #: src/multiplayer_create.cpp:271
-#, fuzzy
 msgid "Turn time: "
-msgstr "Ходы: "
+msgstr "Время на ход: "
 
 #: src/multiplayer_create.cpp:277
 msgid "Village Gold: "
@@ -10607,7 +10576,6 @@ msgid "Scenario Report"
 msgstr "Отчёт о сценарии"
 
 #: src/playlevel.cpp:744
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -10890,13 +10858,12 @@ msgid "invisible: "
 msgstr "невидимый: "
 
 #: src/reports.cpp:143
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
 msgstr ""
-"Данное соединение превратилось в камень. Соединение не может двигаться или "
-"атаковать."
+"Данное соединение было замедлено. Соединение может наносить только половину "
+"урона от обычного уровня при атаке."
 
 #: src/reports.cpp:143
 msgid "slowed: "
@@ -10938,12 +10905,11 @@ msgstr "ущерб"
 
 #: src/reports.cpp:253
 msgid "weapon range: "
-msgstr ""
+msgstr "диапазон действия оружия: "
 
 #: src/reports.cpp:254
-#, fuzzy
 msgid "damage type: "
-msgstr "ущерб"
+msgstr "тип повреждений:"
 
 #: src/reports.cpp:322
 msgid "Lawful units: "
@@ -11144,1109 +11110,3 @@ msgstr "нейтральный"
 
 #~ msgid "Yellow"
 #~ msgstr "Жёлтый"
-
-#, fuzzy
-#~ msgid ""
-#~ "This unit has been slowed. It emits no zone of control, moves at half "
-#~ "speed and enemies will be able to strike earlier once during a fight."
-#~ msgstr ""
-#~ "Данное соединение замедлено. Соединение может двигаться со скоростью в "
-#~ "два раза меньше обычной и на одну единицу уменьшена атака в сравнении с "
-#~ "обычным боем."
-
-#~ msgid "Saved Theme Preference: "
-#~ msgstr "Сохранённая предпочтительная тема: "
-
-#~ msgid "New theme will take effect on next new or loaded game."
-#~ msgstr ""
-#~ "Новая тема будет задействована в следующей новой или загруженной игре."
-
-#~ msgid ""
-#~ "Slow:\n"
-#~ "This attack slows the target. Slowed units move at half normal speed and "
-#~ "receive one less attack than normal in combat until the end of their "
-#~ "controllers' turn."
-#~ msgstr ""
-#~ "Замедление:\n"
-#~ "Данный вид атаки замедляет цель. Замедленные соединения перемещаются в "
-#~ "два раза медленней, чем обычно и получают на одну единицу атаки меньше в "
-#~ "обычном бою, пока не закончится их ход."
-
-#~ msgid "Basic Training"
-#~ msgstr "Простое обучение"
-
-#~ msgid ""
-#~ "I am here to learn how to fight in a battle. As an experienced elder "
-#~ "mage, surely you can explain the art of combat to me..."
-#~ msgstr ""
-#~ "Я здесь для того, чтобы научиться сражаться в бою. Как опытный старший "
-#~ "маг, несомненно, Вы можете объяснить мне искусство битвы..."
-
-#~ msgid ""
-#~ "Before entering any battle, you need to recruit units. To recruit a unit, "
-#~ "right click on the castle tile on which you wish to recruit the unit. "
-#~ "Then select Recruit, and select 'OK'. You can only recruit units on "
-#~ "castle tiles connected to the keep your leader is on."
-#~ msgstr ""
-#~ "Прежде чем начинать любую битву, Вы должны завербовать соединения. Чтобы "
-#~ "завербовать соединение, нажмите правой кнопкой мыши на том квадрате "
-#~ "внутри замка, на который Вы хотите завербовать соединение. Затем выберите "
-#~ "Вербовать новобранца, и нажмите 'OK'. Вы можете вербовать соединения "
-#~ "только на квадраты замка, в котором находится Ваш лидер."
-
-#~ msgid "Recruit a unit"
-#~ msgstr "Вербовать новобранца"
-
-#~ msgid "Excellent! You have recruited an Elvish Fighter."
-#~ msgstr "Отлично! Вы завербовали Эльфа Бойца."
-
-#~ msgid "What do I do next?"
-#~ msgstr "Что мне делать дальше?"
-
-#~ msgid ""
-#~ "Since units cannot move on the turn they are recruited, you must end your "
-#~ "turn. To do this, simply click the 'End Turn' button in the lower-right "
-#~ "hand corner."
-#~ msgstr ""
-#~ "Соединения не могут двигаться на том же ходу, на котором они были "
-#~ "завербованы, Вы должны закончить свой ход. Чтобы сделать это, просто "
-#~ "нажмите кнопку 'Закончить ход' в правом нижнем углу."
-
-#~ msgid "End your turn"
-#~ msgstr "Закончить ход"
-
-#~ msgid "You have successfully ended your turn."
-#~ msgstr "Вы успешно завершили свой ход."
-
-#~ msgid ""
-#~ "Your next task is to move your Elvish Fighter. To move a unit, first "
-#~ "select it, then select his destination. In this case, his destination is "
-#~ "the forest next to the Elvish Shaman, Merle."
-#~ msgstr ""
-#~ "Следующее задание: перемещение Вашего Эльфа бойца. Чтобы перемещать "
-#~ "соединение, выберите соединение, затем укажите, куда Вы хотите его "
-#~ "переместить. Переместите Ваше соединение к Эльфу шаману Мирли."
-
-#~ msgid "Move your Elvish Fighter next to Merle"
-#~ msgstr "Переместите Вашего Эльфа бойца к Мирли"
-
-#~ msgid ""
-#~ "Excellent! You have successfully moved your Elvish Fighter. However, "
-#~ "since he moved next to an enemy unit, he has lost all his movement for "
-#~ "this turn; this is called the 'zone of control'."
-#~ msgstr ""
-#~ "Замечательно! Вы успешно передвинули своего Эльфа бойца. После того, как "
-#~ "Вы передвинули своё соединение к соединению противника, оно больше не "
-#~ "может двигаться на этом же ходу; это называется 'зона контроля'."
-
-#~ msgid ""
-#~ "Now, you need to attack with your fighter. To attack, first select a "
-#~ "unit, then select its target, which must be next to the attacking unit. "
-#~ "You will then see the attack options box, where you must select an attack "
-#~ "to use."
-#~ msgstr ""
-#~ "Теперь Вы должны провести атаку с помощью Вашего бойца. Чтобы провести "
-#~ "атаку, выберите соединение, которое хотите атаковать, учтите, Вы должны "
-#~ "стоять около того соединения, которое хотите атаковать. Наведя курсор на "
-#~ "соединение, которое Вы хотите атаковать, Вы увидете курсор-меч, нажав на "
-#~ "соединении, которое Вы хотите атаковать, Вы увидете окно с вариантами "
-#~ "атаки, в котором Вы должны выбрать тип атаки."
-
-#~ msgid "Attack Merle"
-#~ msgstr "Атакуйте Мирли"
-
-#~ msgid "You have successfully attacked Merle."
-#~ msgstr "Вы успешно атаковали Мирли."
-
-#~ msgid "End your turn, and wait for Merle to attack you."
-#~ msgstr "Завершите свой ход и подождите пока Мирли атакует Вас."
-
-#~ msgid ""
-#~ "Your fighter has survived Merle's attack. Whenever a unit survives a "
-#~ "battle, it gets experience from the combat. Once a unit gains enough "
-#~ "experience, it advances to the next level, and becomes more powerful."
-#~ msgstr ""
-#~ "Ваш боец выжил после атаки Мирли. Всякий раз когда Ваше соединение "
-#~ "выживает в бою, оно приобретает опыт. Когда соединение достигает "
-#~ "определённого количества опыта, оно улучшается до следующего уровня и "
-#~ "становится более мощным."
-
-#~ msgid "Move your fighter onto a village."
-#~ msgstr "Переместите Вашего бойца в деревню."
-
-#~ msgid "Villages heal the units on them."
-#~ msgstr "Деревни исцеляют соединения."
-
-#~ msgid ""
-#~ "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
-#~ "repeatedly."
-#~ msgstr ""
-#~ "Теперь Вы должны убить Мирли, уменьшив её здоровье до 0 ЗД или ниже. "
-#~ "Просто атакуйте повторно."
-
-#~ msgid "Defeat Merle"
-#~ msgstr "Убейте Мирли"
-
-#~ msgid ""
-#~ "Oops! You moved your leader off of the keep. Remember, when your leader "
-#~ "is not on a keep, you cannot recruit. Also remember that if your leader "
-#~ "dies, you lose. In order to continue the tutorial, I will have to "
-#~ "teleport you back onto your keep."
-#~ msgstr ""
-#~ "Осторожно! Вы передвинули своего лидера за территорию замка. Помните, что "
-#~ "если Ваш лидер находится вне замка, Вы не можете призывать и/или "
-#~ "вербовать новые соединения. Кроме того, не забывайте о том, что если "
-#~ "Вашего лидера убьют, Вы проиграете. Для продолжения обучения, я "
-#~ "телепортирую Вас назад в замок."
-
-#~ msgid ""
-#~ "Unfortunately, you lost, because your leader was defeated. Hopefully you "
-#~ "have gained wisdom from my teachings anyway."
-#~ msgstr ""
-#~ "К сожалению, Вы проиграли, потому что Ваш лидер был убит. Надеюсь, что Вы "
-#~ "получили новые знания от моего обучения."
-
-#~ msgid ""
-#~ "Unfortunately, you lost, because you ran out of time. Hopefully you have "
-#~ "gained wisdom from my teachings anyway."
-#~ msgstr ""
-#~ "К сожалению, Вы проиграли, потому что кончилось время. Надеюсь, что Вы "
-#~ "получили новые знания от моего обучения."
-
-#~ msgid "You have successfully completed the first training scenario."
-#~ msgstr "Вы успешно завершили первый обучающий сценарий."
-
-#~ msgid "Hooray!"
-#~ msgstr "Ура!"
-
-#~ msgid "Do you want to review any of the skills learned in this scenario?"
-#~ msgstr "Вы хотите просмотреть уроки, которые были изучены на данном уровне?"
-
-#~ msgid "Yes"
-#~ msgstr "Да"
-
-#~ msgid "I'm done reviewing skills!"
-#~ msgstr "Я закончил просмотр пройденных уроков!"
-
-#~ msgid ""
-#~ "Although you have completed your first scenario, your training is not yet "
-#~ "over. We will now proceed to the next scenario, in which you will fight "
-#~ "me in a mock battle."
-#~ msgstr ""
-#~ "Несмотря на то, что Вы успешно завершили свой первый сценарий, Ваше "
-#~ "обучение ещё не закончено. Дальше мы перейдём к следующему сценарию, в "
-#~ "котором Вы будете биться против меня в тренировочном бою."
-
-#~ msgid "Traits and Specialties"
-#~ msgstr "Особенности и Способности"
-
-#~ msgid ""
-#~ "Now you will be subject to a more difficult test. You must defeat me in "
-#~ "mock battle."
-#~ msgstr ""
-#~ "Теперь Вам предстоит более сложный урок. Вы должны победить меня в "
-#~ "тренировочном бою."
-
-#~ msgid ""
-#~ "You can win most scenarios simply by defeating all enemy leaders. Win "
-#~ "this scenario by defeating me. Your fighter from the previous scenario "
-#~ "can help you in this battle. To recall him, right-click on a castle tile, "
-#~ "select Recall, select your fighter, then select 'OK'. You should also "
-#~ "recruit Elvish Fighters and Elvish Archers."
-#~ msgstr ""
-#~ "Вы можете выиграть большинство сценариев, убив всех лидеров противника. "
-#~ "Выиграйте данный сценарий, победив меня. Ваш боец с прошлого сценария "
-#~ "может помочь Вам в битве. Чтобы призвать его, нажмите правой кнопкой мыши "
-#~ "на квадрате в замке, выберите Призвать, выберите Вашего бойца, затем "
-#~ "нажмите 'OK'. Вы также можете призывать Эльфов Бойцов и Эльфов Лучников."
-
-#~ msgid ""
-#~ "Skills covered:\n"
-#~ "Recalling\n"
-#~ "Traits\n"
-#~ "Gold\n"
-#~ "Time of day\n"
-#~ "Terrains\n"
-#~ "Resistance\n"
-#~ "Specialties\n"
-#~ "Objects"
-#~ msgstr ""
-#~ "Описываются:\n"
-#~ "Призыв\n"
-#~ "Особенности\n"
-#~ "Золото\n"
-#~ "Время суток\n"
-#~ "Местность\n"
-#~ "Сопротивляемость\n"
-#~ "Способности\n"
-#~ "Объекты"
-
-#~ msgid "Defeat Delfador"
-#~ msgstr "Убейте Делфадора"
-
-#~ msgid "Death of Konrad"
-#~ msgstr "Смерть Конрада"
-
-#~ msgid "Turns run out"
-#~ msgstr "Ходы закончились"
-
-#~ msgid "You have successfully recalled your Elvish Fighter."
-#~ msgstr "Вы успешно призвали Вашего Эльфа Бойца."
-
-#~ msgid "En garde!"
-#~ msgstr "Защищайся!"
-
-#~ msgid ""
-#~ "You may notice that your units have slightly different statistics than "
-#~ "the statistics shown before you recruited them. This is because they have "
-#~ "been assigned traits."
-#~ msgstr ""
-#~ "Вы можете заметить, что Ваши соединения могут иметь данные, отличающиеся "
-#~ "от тех, что были при вербовке. Это воздействие особенностей."
-
-#~ msgid ""
-#~ "When you recruit and recall units, you lose gold. If this would cause you "
-#~ "to have less than 0 gold, you cannot recruit or recall."
-#~ msgstr ""
-#~ "Когда Вы призываете и вербуете соединения, Вы теряете золото. Если у Вас "
-#~ "будет менее 0 золота, Вы не сможете призывать или вербовать."
-
-#~ msgid ""
-#~ "The sun is setting over Wesnoth. The time of day affects how much damage "
-#~ "units of different alignments can inflict upon each other."
-#~ msgstr ""
-#~ "Солнце заходит в Весноте. Время суток влияет на урон ваших соединений, в "
-#~ "зависимости их направленности."
-
-#~ msgid "Each hex has a terrain, which gives the hex distinctive properties."
-#~ msgstr ""
-#~ "Каждый квадрат имеет свою местность, которая даёт каждому квадрату "
-#~ "отличительные особенности."
-
-#~ msgid ""
-#~ "Each attack has a damage type which affects how much damage different "
-#~ "units take from that attack."
-#~ msgstr ""
-#~ "У каждой атаки есть тип урона, который влияет на урон отдельным "
-#~ "соединениям, причиняемый от этой атаки."
-
-#~ msgid ""
-#~ "Many units have a specialty which changes the rules of play in some way."
-#~ msgstr ""
-#~ "Соединения могут иметь способности, изменяющие правила игры в некоторых "
-#~ "случаях."
-
-#~ msgid ""
-#~ "Some objects change the statistics of the unit that triggered them. One "
-#~ "of your units found a potion which will make him do more damage on his "
-#~ "attack. To see his new combat statistics, look at the Status Table."
-#~ msgstr ""
-#~ "Различные предметы изменяют параметры соединения, если применяются им. "
-#~ "Одно из Ваших соединений нашло снадобье, увеличивающее его урон. Чтобы "
-#~ "посмотреть новые данные боя, взгляните а на Таблицу Состояния."
-
-#~ msgid ""
-#~ "This potion increases the damage of all the drinker's attacks by four."
-#~ msgstr "Это снадобье увеличивает урон всех атак выпившего вчетверо."
-
-#~ msgid ""
-#~ "Remember to try to prevent the enemy from capturing villages, and to "
-#~ "recapture the ones that they already have. This will cut off their gold "
-#~ "supply and make them unable to recruit."
-#~ msgstr ""
-#~ "Помните, что Вам нужно предотвращать захват деревень противником, а если "
-#~ "противник захватил деревню, постарайтесь вновь захватить деревню себе. "
-#~ "Чем больше у Вас деревень, тем больше у Вас золота и тем больше новых "
-#~ "соединений Вы можете призвать и/или вербовать."
-
-#~ msgid "Next, you may want to begin a campaign, or play multiplayer."
-#~ msgstr ""
-#~ "Дальше Вы можете начать кампанию или сыграть в многопользовательскую игру."
-
-#~ msgid "That was explained well! But.."
-#~ msgstr "Я всё понял! Но..."
-
-#~ msgid ""
-#~ "Skills covered:\n"
-#~ "Recruiting units\n"
-#~ "Moving units\n"
-#~ "Attacking enemy units\n"
-#~ "Gaining experience\n"
-#~ "Winning scenarios"
-#~ msgstr ""
-#~ "Описываются:\n"
-#~ "Вербовка соединений\n"
-#~ "Передвижение соединений\n"
-#~ "Атака противника\n"
-#~ "Получение опыта\n"
-#~ "Победа в сценарии"
-
-#~ msgid "Current objective:"
-#~ msgstr "Текущее задание:"
-
-#~ msgid "Death of Delfador"
-#~ msgstr "Смерть Делфадора"
-
-#~ msgid "How do I recruit units?"
-#~ msgstr "Как вербовать соединения?"
-
-#~ msgid ""
-#~ "To recruit a unit, right click on the castle tile on which you wish to "
-#~ "recruit the unit. Then select Recruit, or just hold your cursor over the "
-#~ "tile and press 'Ctrl-R'. Next, select the type of unit that you want to "
-#~ "recruit, and select 'OK'. In order to recruit faster, you can use 'Ctrl-"
-#~ "Shift-R' to re-recruit the last type of unit you recruited."
-#~ msgstr ""
-#~ "Чтобы завербовать новобранца, нажмите правой кнопкой мыши на том квадрате "
-#~ "в замке, на который Вы хотите поставить соединение. Затем выберите "
-#~ "Вербовать новобранца, либо наведите курсор на квадрат и нажмите 'Ctrl-R'. "
-#~ "Далее, выберите соединение, которое Вы хотите завербовать и нажмите 'OK'. "
-#~ "Чтобы ускорить процесс, Вы можете использовать комбинацию 'Ctrl-Shift-R', "
-#~ "нажав которую, Вы сразу завербуете соединение, которое вербовали в "
-#~ "прошлый раз. "
-
-#~ msgid ""
-#~ "A leader is a unit that can recruit. This means that when the leader is "
-#~ "on a keep, he can recruit units on the surrounding castle tiles. Leaders "
-#~ "are usually powerful units that each side only controls one of. Also, "
-#~ "your leader is usually the first unit that your side controls, and starts "
-#~ "on a keep. You can select your leader quickly by pressing 'l'. If your "
-#~ "leader dies, you lose the game. You can win most scenarios by defeating "
-#~ "all enemy leaders."
-#~ msgstr ""
-#~ "Лидер - это соединение, которое может призывать и вербовать. Это значит, "
-#~ "что когда лидер находится в замке, он может вербовать новые соединения на "
-#~ "свободные квадраты замка. Лидеры обычно мощнее всех остальных соединений. "
-#~ "К тому же Ваш лидер является единственным управляемым Вами соединением "
-#~ "после начала игры. Вы можете быстро выбрать Вашего лидера, нажав 'I'. "
-#~ "Если Ваш лидер погибает, Вы проигрываете игру. Вы можете выиграть "
-#~ "большинство сценариев убив всех лидеров противника."
-
-#~ msgid "What's a leader?"
-#~ msgstr "Кто такой лидер?"
-
-#~ msgid "How should I choose what kind of units to recruit?"
-#~ msgstr "Как мне выбрать, какие именно соединения вербовать?"
-
-#~ msgid ""
-#~ "You have to carefully review their skills, which are displayed to the "
-#~ "left of the unit selection box, and cost, which is displayed after the "
-#~ "name of the unit. You will learn more about these statistics throughout "
-#~ "the tutorial."
-#~ msgstr ""
-#~ "Просмотрите внимательно данные о навыках, отображенных слева от "
-#~ "выбранного соединения, цену, отображенную после имени соединения. Вы "
-#~ "узнаете больше об этих навыках в руководстве."
-
-#~ msgid "What happens when I recruit a unit?"
-#~ msgstr "Что происходит после покупки соединения?"
-
-#~ msgid ""
-#~ "When you recruit a unit, it appears at full health on a castle tile of "
-#~ "your choice. It also receives two traits, which will be discussed later. "
-#~ "It cannot move or attack until you end your turn."
-#~ msgstr ""
-#~ "Когда Вы вербуете соединение, оно получает полное здоровье и занимает "
-#~ "один квадрат в замке. Соединение также получает две характерных "
-#~ "особенности, о которых будет рассказано позже. Соединение не может "
-#~ "двигаться или атаковать на том же ходу, на котором было завербовано. Вы "
-#~ "должны завершить свой ход, только после этого завербованное соединение "
-#~ "сможет двигаться и атаковать."
-
-#~ msgid "How do I end my turn?"
-#~ msgstr "Как мне закончить свой ход?"
-
-#~ msgid ""
-#~ "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
-#~ "right-click and select End Turn, or select the End Turn button in the "
-#~ "lower-right hand corner."
-#~ msgstr ""
-#~ "Во-первых, можно нажать 'Alt-Пробел'. Во-вторых, Вы можете нажать правую "
-#~ "кнопку мыши и выбрать Закончить Ход или нажать кнопку Закончить Ход в "
-#~ "нижнем правом углу."
-
-#~ msgid "What happens when I end my turn?"
-#~ msgstr "Что происходит\\, когда я заканчиваю свой ход?"
-
-#~ msgid ""
-#~ "When you end your turn, it becomes another side's turn and only that side "
-#~ "has the right to move, until that side ends its turn. After all sides end "
-#~ "their turns, the next turn begins. This has various effects, including "
-#~ "causing all units to regain their full movement potential. The number of "
-#~ "the current turn is displayed on the status bar next to the image of a "
-#~ "flag. When this number exceeds the maximum number of turns, you lose the "
-#~ "game."
-#~ msgstr ""
-#~ "Когда Вы заканчиваете ход, настаёт очередь хода другой стороны, и только "
-#~ "она имеет право ходить, пока она не закончит ход. После того, как все "
-#~ "стороны сделают все ходы, начнётся следующий ход. Все соединения снова "
-#~ "получат полный потенциал передвижения.Число сделанных ходов отображено "
-#~ "отображено в статусной строке после изображения флага.Когда число "
-#~ "разрешённых ходов превысит разрешённое, Вы проиграете игру."
-
-#~ msgid "How far can my Elvish Fighter move?"
-#~ msgstr "Как далеко может двигаться мой Эльф боец?"
-
-#~ msgid ""
-#~ "Your Elvish Fighter begins with a certain number of move points each "
-#~ "turn; this is called his speed. When your Elvish Fighter moves along a "
-#~ "path, each hex he goes through costs him move points; this includes his "
-#~ "destination. When you select your Elvish Fighter, all hexes he can't move "
-#~ "onto within one turn will be shaded. If the destination is far enough "
-#~ "away that he needs more than one turn to reach it, a number will appear "
-#~ "showing how many turns it will take him. Clicking on a far-away space "
-#~ "will set the unit on a course for that space, which means it "
-#~ "automatically moves as far as it can towards that space every turn. If "
-#~ "you accidentally set a unit on a course, select it twice to remove the "
-#~ "course."
-#~ msgstr ""
-#~ "Ваш Эльф Боец начинает каждый ход с определенным количеством очков "
-#~ "движения; это количество называется скоростью. Когда Ваш Эльф Боец "
-#~ "передвигается, каждый квадрат отнимает у него очки передвижения. Когда Вы "
-#~ "выбираете Эльфа Бойца, все квадраты, до которых он не может добраться за "
-#~ "этот ход, затенены. Если пункт назначения дальше, чем можно добраться за "
-#~ "один ход, то на нем отображается, сколько ходов понадобится, чтобы "
-#~ "добраться туда. Нажатие мышью на дальнем квадрате устанавливает курс "
-#~ "соединения до этого квадрата, по которому оно будет автоматически "
-#~ "передвигаться каждый ход. Если Вы хотите изменить курс соединения, "
-#~ "выберите его, чтобы отменить текущий курс."
-
-#~ msgid ""
-#~ "A unit's zone of control is the location consisting of all hexes the unit "
-#~ "is adjacent to. Units cannot move through opponent's zones of control; "
-#~ "they can only move into it. When they do this, they lose all of their "
-#~ "remaining movement. Zones of control can be used to block enemies from "
-#~ "reaching your weak and wounded units."
-#~ msgstr ""
-#~ "Зона контроля соединения - это область, содержащая все квадраты, вокруг "
-#~ "него. Соединение не может передвигаться по зоне контроля противника; он "
-#~ "может только вступать в нее. Как только оно сделает это, оно потеряет все "
-#~ "оставшиеся очки движения. Зоны контроля могут быть использованы, чтобы "
-#~ "блокировать врагов к вашим раненым и слабым соединениям."
-
-#~ msgid "What's the zone of control?"
-#~ msgstr "Что такое зона контроля?"
-
-#~ msgid "How do I tell who is allied and who is an enemy?"
-#~ msgstr "Как мне узнать кто союзник и кто противник?"
-
-#~ msgid ""
-#~ "Units you control have a green, yellow, or red energy circle above their "
-#~ "health bar, the green vertical bar next to them. Units with full movement "
-#~ "have green: ones with some movement yellow, ones with no movement red. "
-#~ "Units controlled by the enemy do not have an energy circle. Allied units "
-#~ "you do not control, like me, have a blue energy circle. Also, the option "
-#~ "'Show Team Colors', in Preferences, causes the color of a unit's "
-#~ "controller is displayed as a disc below the unit."
-#~ msgstr ""
-#~ "Соединения под вашим контролем имеют зелёный, жёлтый или красный круг над "
-#~ "своей полоской здоровья, зелёным вертикальным прямоугольником. Ещё не "
-#~ "ходившие соединения имеют зелёный круг, передвигавшиеся - жёлтый, не "
-#~ "имеющие очков передвижения - красный. Соединения под контролем противника "
-#~ "не имеют круга. Союзные соединения, не контролируемые Вами, имеют синий "
-#~ "круг.Также, при включенной опции 'Показывать командные цвета' в "
-#~ "Настройках цвет хозяина соединения будет отображаться в виде диска под "
-#~ "соединением."
-
-#~ msgid "Can Merle retaliate from my attack?"
-#~ msgstr "Может ли Мирли ответить на мою атаку?"
-
-#~ msgid ""
-#~ "Whenever a unit is attacked, it retaliates with one of their own weapons. "
-#~ "This means that after each blow from the attacker, the defender "
-#~ "retaliates with one blow. This continues until one side runs out of "
-#~ "blows, in which case the other unit continues attacking until its blows "
-#~ "are depleted as well. However, any unit can only retaliate by using a "
-#~ "weapon of the same range as the one used to attack. This means that a "
-#~ "ranged attack can only be countered by a ranged attack and a melee attack "
-#~ "can only be countered by a melee attack. Most units have more powerful "
-#~ "melee attacks than ranged attacks. Units with strong ranged attacks are "
-#~ "useful in retaliation against melee oriented units. Some melee units "
-#~ "without ranged attacks won't be able to retaliate at all. However ranged "
-#~ "units cannot shoot across multiple hexes; this is one of the distinctive "
-#~ "features of Wesnoth."
-#~ msgstr ""
-#~ "Когда соединение атаковано, оно отвечает одним из своих вооружений. Это "
-#~ "значит, что после каждого удара атакующего обороняющийся отвечает ударом."
-#~ "Так продолжается до тех пор, пока одна из сторон не исчерпает количество "
-#~ "своих ударов. В этом случае другое соединение продолжает атаковать, пока "
-#~ "и у него не закончатся удары. Также каждое соединение может использовать "
-#~ "только тот тип атаки, который применил противник. Поэтому только "
-#~ "рукопашная атака используется против рукопашной, а атака на расстоянии - "
-#~ "против атаки на расстоянии. Большинство соединений более сильны в "
-#~ "рукопашной, чем в атаке на расстоянии. Соединения с сильной атакой на "
-#~ "расстоянии полезнее против соединений ближнего боя. Некоторые соединения "
-#~ "ближнего боя не могут атаковать на расстоянии и не смогут ответить на "
-#~ "атаку стрелков. Также стрелки не могут стрелять через несколько "
-#~ "квадратов; это один из главных принципов Веснота."
-
-#~ msgid ""
-#~ "Every attack does a certain amount of damage per hit, and can be used a "
-#~ "certain number of times per battle. These numbers, called the attack's "
-#~ "damage and strike numbers, are displayed in order under the name of the "
-#~ "attack on the unit's status table and next to it on the attack options "
-#~ "menu. To quickly find the maximum damage an attack can inflict, multiply "
-#~ "the damage by the number of strikes. For example, my lightning attack "
-#~ "does 14 damage per blow and has 4 blows, so it can deal up to 56 damage "
-#~ "in a single combat."
-#~ msgstr ""
-#~ "Каждая атака содержит определённое количество урона за удар, и  ударов "
-#~ "можно наносить определённое число раз за схватку. Эти цифры, называемые "
-#~ "уроном от атаки и числом ударов, отображены по порядку под названием "
-#~ "атаки в таблице статуса соединения и в меню опций атаки. Чтобы найти "
-#~ "максимально возможный урон, нужно умножить урон на число ударов. Для "
-#~ "примера, моя атака молнией наносит 14 единиц урона за удар и содержит 4 "
-#~ "удара, значит я могу нанести до 56 единиц урона одной отдельной схватке."
-
-#~ msgid "How can you tell how powerful a unit's attacks are?"
-#~ msgstr "Скажите\\, какая атака соединения сильнее?"
-
-#~ msgid ""
-#~ "Units have the ability to block blows. The chance that a unit has to hit "
-#~ "is based on the defender's skill at defending blows, and is listed on the "
-#~ "attack options menu after the damage and strike numbers for the bow "
-#~ "attack."
-#~ msgstr ""
-#~ "Соединения имеют возможность блокировать удары. Шанс того, что соединение "
-#~ "нанесёт удар, основан на навыке обороняющегося отражать удары. Он "
-#~ "отображён в меню опций атаки после урона и количества ударов для каждой "
-#~ "атаки."
-
-#~ msgid "Will my fighter hit every time when he attacks?"
-#~ msgstr "Почему мой боец получает повреждения\\, когда она атакует?"
-
-#~ msgid "What's experience?"
-#~ msgstr "Что такое опыт?"
-
-#~ msgid ""
-#~ "When a unit fights another unit, it gains experience, denoted 'XP', from "
-#~ "the combat. The amount of experience gained is equal to the opponent's "
-#~ "level, which is usually a representation of that unit's power. However, "
-#~ "much more experience is gained from defeating an enemy unit. The amount "
-#~ "of XP gained from killing an enemy is equal to 8 times the enemy's level."
-#~ msgstr ""
-#~ "Когда соединение бьётся с другим, оно получает опыт, сокращённо 'ОП', "
-#~ "после битвы. Количество получаемого опыта равно уровню оппонента. Ещё "
-#~ "больше опыта может быть получено при поражении вражеского соединения. "
-#~ "Количество опыта, получаемого при убийстве противника, равно уровню "
-#~ "противника, умноженного на восемь."
-
-#~ msgid "What happens when a unit advances?"
-#~ msgstr "Что происходит при улучшении соединения?"
-
-#~ msgid ""
-#~ "When a unit advances, it transforms into a different unit type. This unit "
-#~ "type is dependent on what the unit was originally, but occasionally there "
-#~ "will be more than one choice of what to advance into. Advanced units are "
-#~ "usually more powerful and 1 level higher than they were originally. Also, "
-#~ "when a unit advances, it is healed completely and any handicaps that have "
-#~ "been cast on it are removed. This is known as 'advance-heal'."
-#~ msgstr ""
-#~ "Когда соединение получает повышение, оно превращается в другой тип "
-#~ "соединения. Это соединение имеет свойства исходного, но может иметь выбор "
-#~ "- в кого именно улучшаться. Улучшенные соединения уровня 1 и выше гораздо "
-#~ "сильнее, чем начального. Также, когда соединение получает повышение, его "
-#~ "здоровье полностью восстанавливается и все ограничения, наложенные на "
-#~ "него, удаляются. Это называется 'восстановление улучшением'."
-
-#~ msgid "What happens when a unit moves onto a village?"
-#~ msgstr "Что происходит когда соединение входит в деревню?"
-
-#~ msgid ""
-#~ "Whenever a unit moves onto a village, he flags the village for his side. "
-#~ "This action takes all of the unit's remaining movement. Villages flagged "
-#~ "for a side give the side several benefits, including giving the side an "
-#~ "extra gold coin every turn, and reducing the total upkeep cost of that "
-#~ "side's units by one. The total number of villages you control is also "
-#~ "displayed on the status bar after the picture of a house. In addition to "
-#~ "the economic benefit of villages, villages can be used in battle. "
-#~ "Villages heal the units on them 8 HP per turn."
-#~ msgstr ""
-#~ "Как только соединение войдёт в деревню, её флаг поменяется на флаг "
-#~ "соединения. Это действие потребует всех очков движения соединения. "
-#~ "Деревни под определённым флагом оказывают помощь владельцу флага,"
-#~ "выплачивая одну золотую монету за каждый ход и снижая содержание "
-#~ "соединений на единицу. Общее число контролируемых деревень отображено в "
-#~ "статусной строке после изображения дома. Кроме экономической поддержки, "
-#~ "деревни могут использоваться в бою. Деревня восстанавливает здоровье "
-#~ "находящегося в ней соединения на 8 ЗД за каждый ход."
-
-#~ msgid "How do I heal when there aren't any villages nearby?"
-#~ msgstr "Как я могу восстановить здоровье без деревень?"
-
-#~ msgid ""
-#~ "There are ways to heal even without villages. If a unit does not move or "
-#~ "attack for 1 turn, he heals 2 HP from resting. However if an enemy "
-#~ "attacks him he cannot receive rest-heal. Also, there are some units which "
-#~ "heal the units surrounding them. The Elvish Shaman is one such unit; "
-#~ "units next to an Elvish Shaman are healed 4 HP per turn. Finally, "
-#~ "whenever you beat a scenario all of your units are fully healed."
-#~ msgstr ""
-#~ "Есть несколько путей восстановиться без использования деревень. Если "
-#~ "соединение не двигалось и не атаковало один ход, оно восстанавливает 2 ЗД "
-#~ "при отдыхе. Если противник атакует его, то оно не получит отдыха и не "
-#~ "восстановится. Также, некоторые соединения со способностью исцеления "
-#~ "могут исцелять других, если находятся рядом. Эльф Шаман - одно из таких "
-#~ "соединений; соединения, находящиеся рядом с Эльфом Шаманом, "
-#~ "восстанавливают 4 ЗД за ход. Наконец, когда Вы победите в сценарии, все "
-#~ "Ваши соединения полностью восстановят свое здоровье."
-
-#~ msgid "How do I know how to complete a scenario? Will you always tell me?"
-#~ msgstr ""
-#~ "Как мне узнать что нужно сделать для завершения сценария? Вы всегда мне "
-#~ "расскажите?"
-
-#~ msgid ""
-#~ "Sometimes it is not clear how to win a scenario just by listening to the "
-#~ "dialog. In this case you need to look at the scenario objectives, which "
-#~ "appear after the opening dialog. It can also be accessed by clicking "
-#~ "'Objectives' on the menu. The scenario objectives are a list of victory "
-#~ "conditions and defeat conditions, and when any of the conditions are met, "
-#~ "the scenario is over. Hopefully, it was a victory condition that was met."
-#~ msgstr ""
-#~ "Иногда бывает, что не совсем понятно, как победить в сценарии, просто "
-#~ "читая диалоги. В этом случае Вам нужно посмотреть в условиях сценария, "
-#~ "которые появятся после диалогов. Также к ним можно получить доступ, нажав "
-#~ "на 'Задачи Сценария' в меню. Условия сценария отображают список условий "
-#~ "для победы и для поражения, и когда любое из условий будет выполнено, "
-#~ "сценарий закончится. Надеюсь, это будет одно из условий победы."
-
-#~ msgid "What happens when I win a scenario?"
-#~ msgstr "Что происходит когда я выигрываю сценарий?"
-
-#~ msgid ""
-#~ "When you win a scenario, all of your units survive and are revived to "
-#~ "full health, and you do not have to pay them for the remaining turns. "
-#~ "Also, if your army remains in the area after you win, all villages "
-#~ "surrender to you immediately after you win. However between scenarios, "
-#~ "20% of your gold is lost."
-#~ msgstr ""
-#~ "Когда Вы победите в сценарии, все ваши выжившие соединения восстановятся, "
-#~ "и Вам не нужно будет платить за них на оставшихся ходах. Если Ваша армия "
-#~ "останется на карте после Ваше победы, все деревни сдадутся Вам "
-#~ "непосредственно перед тем, как Вы победите. Также между сценариями 20% "
-#~ "Вашего золота теряется."
-
-#~ msgid ""
-#~ "First, you must pay 20 pieces of gold for each unit you recall, "
-#~ "regardless of the type of unit. Other than that, recalled units are "
-#~ "basically like recruited units, except that instead of a new unit "
-#~ "appearing, a unit from a previous scenario will appear."
-#~ msgstr ""
-#~ "Сначала Вы должны заплатить 20 золотых монет за каждого призываемого "
-#~ "соединения. В остальном, призванные соединения похожи на завербованные, "
-#~ "за исключением того, что это не новое соединение, а выбранное из прошлого "
-#~ "сценария."
-
-#~ msgid "What happens when I recall a unit?"
-#~ msgstr "Что происходит\\, когда я призываю соединение?"
-
-#~ msgid "How should I decide which units to recall?"
-#~ msgstr "Какие соединения мне выбирать для призыва?"
-
-#~ msgid ""
-#~ "You should usually recall units that have already advanced to the next "
-#~ "level. However, you may also want to recall units that have high "
-#~ "experience, and are thus likely to advance. You should recall units that "
-#~ "will be useful for the scenario you are in; for example in a forest "
-#~ "scenario, recall elves."
-#~ msgstr ""
-#~ "Выбирайте соединения, которые уже получили повышение до следующего "
-#~ "уровня. Также Вы можете призывать соединения, которые имеют много опыта и "
-#~ "скоро получат повышение. Призывайте соединения, которые будут полезны в "
-#~ "этом сценарии; например, в лесу призывайте эльфов."
-
-#~ msgid ""
-#~ "The function of traits is add variety by making units of the same type "
-#~ "different from each other. This is done by randomly assigning each unit "
-#~ "traits when they are recruited. The traits that a unit has are displayed "
-#~ "on the Status Table, and the function of a specific trait can be found by "
-#~ "putting your cursor over that trait."
-#~ msgstr ""
-#~ "Назначение особенностей - внести неопределённость при создании "
-#~ "соединений, чтобы сделать непохожим каждого из них. Они случайно "
-#~ "приписываются каждому соединению, когда оно будет завербовано. "
-#~ "Особенности соединения отображены в статусной таблице, и назначение "
-#~ "отдельной особенности может быть получено при наведении курсора на неё."
-
-#~ msgid "What do traits do?"
-#~ msgstr "Что дают особенности?"
-
-#~ msgid ""
-#~ "There are four distinct traits, which have effects ranging from "
-#~ "increasing a unit's hit points to decreasing the amount of XP required to "
-#~ "advance. However all traits are designed to improve unit's power; there "
-#~ "are no 'negative' traits. Most units have an equal chance to get any two "
-#~ "different traits when they are recruited. Also, some races and units may "
-#~ "have traits that are unique to them."
-#~ msgstr ""
-#~ "Всего четыре особенности, которые оказывают различное влияние - от "
-#~ "количества здоровья до количество опыта, необходимого для повышения. "
-#~ "Также все особенности направлены на изменение силы соединения; это не "
-#~ "'негативные' особенности. Все соединения имеют равные шансы получить две "
-#~ "разные особенности, когда будут завербованы."
-
-#~ msgid "What kind of traits can my units get?"
-#~ msgstr "Какие особенности могут приобретать мои соединения?"
-
-#~ msgid "How much gold do my units cost?"
-#~ msgstr "Сколько золота стоят мои соединения?"
-
-#~ msgid ""
-#~ "You need to pay each unit you recruit or recall gold when you recruit it. "
-#~ "The cost of recruiting a unit is displayed under the unit's name. The "
-#~ "cost of recalling a unit is always 20 gold. A unit also costs gold for "
-#~ "each turn it is under your control. This cost, called 'upkeep', is equal "
-#~ "to the level of the unit. However, units you do not recruit or recall "
-#~ "such as your leader do not cost any gold at all. The total upkeep cost of "
-#~ "your units is displayed on the status bar at the top after a picture of "
-#~ "gold and then a red arrow."
-#~ msgstr ""
-#~ "Вым нужно платить за каждое вербуемое или призываемое соединение. Цена за "
-#~ "вербуемое соединение отображается под именем соединения. Цена за "
-#~ "призываемое соединение всегда равна 20 золота. Соединение также требует "
-#~ "золота каждый ход. Это называется 'содержанием' и равно уровню "
-#~ "соединения. Также есть соединения, которые нельзя вербовать или призвать, "
-#~ "как Ваш лидер, и не требующие содержания. Полное содержание Ваших "
-#~ "соединений отображено вверху перед изображением золота и красной "
-#~ "стрелкой. "
-
-#~ msgid "How do I get gold?"
-#~ msgstr "Где мне доставать золото?"
-
-#~ msgid ""
-#~ "You begin each scenario with a percentage of gold from the previous "
-#~ "scenario. If this is less than 100 gold, you begin with 100 gold instead. "
-#~ "The amount of gold you have is displayed on the status bar after the "
-#~ "picture of gold. After the start of a scenario, you receive 2 gold every "
-#~ "turn. Since you usually need more gold than that, you should flag "
-#~ "villages, which give you 1 gold per turn."
-#~ msgstr ""
-#~ "Вы начинаете каждый сценарий с частью золота из предыдущего сценария. "
-#~ "Если было меньше 100 единиц золота, Вы всё равно начнёте со 100 "
-#~ "единицами. Количество золота отображено в статусной строке после "
-#~ "изображения золота. После старта сценария Вы будете получать 2 золотые "
-#~ "монеты за каждый ход. Если Вам нужно больше золота, Вы должны занимать "
-#~ "деревни, которые будут приносить Вам 1 монету за ход."
-
-#~ msgid ""
-#~ "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 "
-#~ "times of day: day, twilight, and night. During day, units of the "
-#~ "alignment Lawful, such as humans, do 25% more damage, while Chaotic units "
-#~ "such as undead do 25% less. At night it is reversed. During twilight, all "
-#~ "units do their normal damage. Neutral units such as elves are unaffected "
-#~ "by day and night."
-#~ msgstr ""
-#~ "Есть три направленности: Порядочный, Нейтральный и Хаотичный. Есть также "
-#~ "три времени суток: день, сумерки и ночь. Днём порядочные соединения, как "
-#~ "люди, наносят на 25% больше повреждений. Ночью всё наоборот. В сумерки "
-#~ "все соединения наносят нормальный урон. Нейтральные соединения, как "
-#~ "Эльфы, не подвержены влиянию времени суток."
-
-#~ msgid "What are the different alignments and times of day?"
-#~ msgstr "Что за разные направленности и время суток?"
-
-#~ msgid "How do I know what time of day it is?"
-#~ msgstr "Как мне узнать текущее время суток?"
-
-#~ msgid ""
-#~ "The times of day usually progress in a sequence: dawn- identical to "
-#~ "twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
-#~ "second-watch- night, then repeat. This is represented by the sun and moon "
-#~ "which each rise in the east and set in the west. However some scenarios "
-#~ "have a different sequence, such as underground where it is perpetually "
-#~ "night. You can find out the current time of day by looking at the Status "
-#~ "Table."
-#~ msgstr ""
-#~ "Время суток сменяется в следующей последовательности: рассвет - это "
-#~ "сумерки, утро - это день, вечер - день, закат - сумерки, первая половина "
-#~ "ночи - ночь, вторая половина ночи - ночь, и опять сначала. Это "
-#~ "отображается сменой солнца и луны, восходящих на востоке и заходящих на "
-#~ "западе. Некоторые сценарии имеют другую смену дня и ночи, как например в "
-#~ "подземелье, где всегда ночь. Вы можете узнать, какое сейчас время суток, "
-#~ "посмотрев в статусной таблице."
-
-#~ msgid ""
-#~ "Two terrains have properties which have already been described; namely "
-#~ "villages and castle. However the properties of most terrains are more "
-#~ "subtle, and have to do with the advantages and disadvantages different "
-#~ "units have when they move onto them. The first property of a terrain is "
-#~ "the number of move points it takes each unit to move through the hex. The "
-#~ "second property is the defense that the terrain gives units standing on "
-#~ "it. This is a percentage which determines the unit's chance to be hit on "
-#~ "that terrain. For example; many elves have 70% defense in woods, and are "
-#~ "therefore hit 30% of the time."
-#~ msgstr ""
-#~ "Две местности уже определены - это деревни и замок. Тем не менее "
-#~ "особенности большинства земель более различимы и дают выгодное или "
-#~ "невыгодное положение различным соединениям, находящимся на них. Первая "
-#~ "особенность местности - количество очков движения, требуемое для входа в "
-#~ "квадрат. Вторая особенность - защищённость, которая даётся соединению, "
-#~ "стоящему на этой местности. Это процент, определяющий шанс соединения "
-#~ "получить повреждение на этой местности. Например, многие эльфы имеют 70% "
-#~ "защищённость в траве, следовательно, они имеют шанс в 30% получить "
-#~ "повреждение."
-
-#~ msgid "What are the different properties that terrains have?"
-#~ msgstr "Что за отличительные особенности имеют земли?"
-
-#~ msgid "How do I find out the properties of a specific terrain?"
-#~ msgstr "Как мне найти свойства отдельной земли?"
-
-#~ msgid ""
-#~ "To find out the properties of a terrain with respect to a specific unit, "
-#~ "right-click on the unit, select Unit Description, then look at Terrain "
-#~ "Modifiers. To find out which terrain is on a particular hex, move your "
-#~ "cursor over that hex and look in the upper-right hand corner of the "
-#~ "screen. This will display, in order, the name of the terrain, then the "
-#~ "coordinates of the hex, then the selected unit's defense, then the number "
-#~ "of move points it will cost the selected unit to move through that hex."
-#~ msgstr ""
-#~ "Чтобы определить свойства местности для отдельного соединения, нажмите "
-#~ "правой кнопкой мыши на соединении, выберите Описание Соединения, затем "
-#~ "выберите Тип Местности. Чтобы определить, какая земля в квадрате, "
-#~ "наведите курсор на этот курсор и посмотрите в верхний правый угол экрана. "
-#~ "Там отображены, по порядку, тип местности, координаты квадрата, "
-#~ "защищённость выбранного соединения и количество очков движения, "
-#~ "необходимых для выбранного соединения для того, чтобы дойти до этого "
-#~ "квадрата."
-
-#~ msgid ""
-#~ "Each unit has a certain resistance against each attack type. This "
-#~ "resistance is a percentage which is subtracted from the damage of "
-#~ "opponent's weapons of that type. For example, if an Elvish Scout is "
-#~ "attacked by an Elvish Archer, the archer does 20% more damage than "
-#~ "normal, since Elvish Scouts have -20% resistance to pierce. This bonus/"
-#~ "penalty is calculated additively with other bonuses/penalties like time "
-#~ "of day, so two -50% penalties would add up to -100%."
-#~ msgstr ""
-#~ "Каждое соединение имеет определенную сопротивляемость против каждого типа "
-#~ "атаки. Сопротивляемость - это процент, вычитаемый от урона противника "
-#~ "оружием определённого типа. Например, если Эльф Разведчик атакован Эльфом "
-#~ "Лучником, лучник наносит на 20% больше урона, чем обычно, так как Эльф "
-#~ "Разведчик имеет сопротивляемость -20% колющему оружию. Этот бонус/штраф "
-#~ "будет добавлен к другим бонусам/штрафам, как время суток. Поэтому два -"
-#~ "50% штрафа в сумме дадут -100%."
-
-#~ msgid "How does resistance affect attack damage?"
-#~ msgstr "Как сопротивляемость влияет на ущерб\\, получаемый при атаке?"
-
-#~ msgid ""
-#~ "There are 6 different damage types: blade, pierce, impact, fire, cold, "
-#~ "and holy. Heavily armored units have high resistance to the physical "
-#~ "types: blade, pierce, and impact, but low resistance to the magical "
-#~ "types: fire and cold. All living units have resistance to holy while "
-#~ "undead are extremely weak to it. To find out a specific unit's "
-#~ "resistance, right-click on the unit, select Unit Description, then look "
-#~ "at Resistances."
-#~ msgstr ""
-#~ "Есть 6 различных типов урона: режущее, колющее, удар, огонь, холод и "
-#~ "святое оружие. Сильно защищённые соединения хорошо сопротивляются "
-#~ "физическим типам урона: режущее, колющее оружие и удар, но плохо "
-#~ "сопротивляются магическим типам урона: огню и холоду. Все живые "
-#~ "соединения имеют сопротивляемость к святой атаке, тогда как мертвецы "
-#~ "уязвимы ей. Чтобы узнать, какая сопротивляемость у соединения, нажмите "
-#~ "правой кнопкой мыши по соединению и выберите Описание Соединения, а после "
-#~ "выберите Сопротивляемость."
-
-#~ msgid "What are the different damage types?"
-#~ msgstr "Что означает разные типы повреждений?"
-
-#~ msgid ""
-#~ "Each specialty does something different; that's the whole point of a "
-#~ "specialty. To find a description of a unit's specialty, put your cursor "
-#~ "over the name of the specialty."
-#~ msgstr ""
-#~ "Каждая способность делает что-то отдельное. Это воздействие способности. "
-#~ "Чтобы узнать описание способности, наведите курсор на имя способности."
-
-#~ msgid "What do specialties do?"
-#~ msgstr "Для чего нужны способности?"
-
-#~ msgid ""
-#~ "The specialties a unit gets are determined by the unit type; for example "
-#~ "all generals have the specialty leadership. There are two kinds of "
-#~ "specialties: abilities, and attack specials. Abilities apply to units "
-#~ "while attack specials only apply to one of the unit's attacks."
-#~ msgstr ""
-#~ "Способности свойственны определённому типу соединений. Например, все "
-#~ "генералы имеют способность лидера. Есть два типа способностей - "
-#~ "особенности и способности атаки. Особенности применяются для соединений, "
-#~ "а способности атаки применяются для одного из атакующих соединений."
-
-#~ msgid "Which units get specialties?"
-#~ msgstr "Какие соединения могут использовать способности?"
-
-#~ msgid ""
-#~ "There are many different specialties, and learning about them is one of "
-#~ "the interesting parts of playing Wesnoth. The two most common specialties "
-#~ "are called 'magical' and 'leadership'. Magical attacks have a 70% chance "
-#~ "of hitting enemies regardless of what terrain they are on. Units do more "
-#~ "damage while next to a unit of higher level with leadership."
-#~ msgstr ""
-#~ "Есть много различных способностей, но мы поговорим о самых примечательных "
-#~ "в игре Веснот. Две самые применяемые способности называются 'магия' и "
-#~ "'лидер'. Магические атаки имеют 70% шанс нанести удар по врагу, "
-#~ "независимо на какой местности он стоит. Соединения наносят больше "
-#~ "повреждений, если рядом с ними есть соединение более высокого уровня с "
-#~ "лидерством."
-
-#~ msgid "What kinds of specialties can my units get?"
-#~ msgstr "Какие способности могут приобретать мои соединения?"
-
-#~ msgid "How do I use specialties?"
-#~ msgstr "Как мне использовать способности?"
-
-#~ msgid ""
-#~ "To use a specialty, you just have to move and/or attack with your units "
-#~ "in a way which triggers the specialty. For example, in order to use "
-#~ "leadership, you must move a unit with leadership next to another unit, "
-#~ "then attack with the other unit."
-#~ msgstr ""
-#~ "Чтобы использовать способность, просто передвиньте и/или атакуйте Вашими "
-#~ "соединениями со способностями. Для примера, чтобы использовать лидерство, "
-#~ "Вы должны поставить соединение с лидерством рядом с другим соединением, "
-#~ "которое будет атаковать противника."
-
-#~ msgid ""
-#~ "The objects you encounter are put in by the scenario designer, so they "
-#~ "vary from campaign to campaign. In Heir to the Throne, most objects give "
-#~ "the unit who picks them up a new weapon. However there are usually not "
-#~ "that many objects in a campaign."
-#~ msgstr ""
-#~ "Предметы, найденные Вами, были выброшены Дизайнером сценария (кто это "
-#~ "такой?), и их число может меняться от кампании к кампании. В 'Наследнике "
-#~ "Трона' все предметы дают соединению использовать новое оружие. Их не так "
-#~ "много в кампании."
-
-#~ msgid "What kind of objects am I likely to encounter?"
-#~ msgstr "Что за предметы\\, которые я нашёл?"
-
-#~ msgid "How long do these objects last?"
-#~ msgstr "Как долго используются предметы?"
-
-#~ msgid ""
-#~ "Most objects are permanent changes to the unit that receives them. "
-#~ "However a few objects, such as holy water, last only until the end of the "
-#~ "scenario."
-#~ msgstr ""
-#~ "Большинство предметов постоянно изменяются у соединений, которые получают "
-#~ "их. Но некоторые предметы, такие как Святая Вода, используются только до "
-#~ "конца текущего уровня."
-
-#~ msgid "How do I play a campaign?"
-#~ msgstr "Как мне сыграть в кампанию?"
-
-#~ msgid ""
-#~ "To begin a campaign, run Wesnoth, select 'Campaign', select which "
-#~ "campaign to play, then select Easy, Normal, or Hard. Heir to the Throne "
-#~ "is the suggested for newcomers to Wesnoth."
-#~ msgstr ""
-#~ "Чтобы начать кампанию, запустите Веснот, выберите 'Кампания', выберите, "
-#~ "какую кампанию играть, потом выберите уровень сложности."
-
-#~ msgid "How do I play multiplayer?"
-#~ msgstr "Как мне сыграть по сети?"
-
-#~ msgid ""
-#~ "To play Wesnoth against other people, select 'Multiplayer'. Then select "
-#~ "'Join Official Server'. This will connect you to the official Wesnoth "
-#~ "server, where you can join a game by selecting it, then selecting 'Join "
-#~ "Game'."
-#~ msgstr ""
-#~ "Чтобы играть в Веснот по сети против других людей, выберите 'Игра по "
-#~ "сети'. Затем выберите 'Подключиться к официальному серверу'. Вы "
-#~ "подключитесь к официальному серверу Веснота, где сможете присоединиться к "
-#~ "выбранной игре, выбрав 'Присоединиться к игре'."
-
-#~ msgid "Close Window"
-#~ msgstr "Закрыть окно"
-
-#~ msgid "Map Generator"
-#~ msgstr "Генератор карты"
-
-#~ msgid "Width:"
-#~ msgstr "Ширина:"
-
-#~ msgid "Height:"
-#~ msgstr "Высота:"
-
-#~ msgid "Number of Hills:"
-#~ msgstr "Количество холмов:"
-
-#~ msgid "Max Hill Size:"
-#~ msgstr "Максимальный размер холма:"
-
-#~ msgid "Villages:"
-#~ msgstr "Деревни:"
-
-#~ msgid "Landform:"
-#~ msgstr "Форма земли:"
-
-#~ msgid "Roads Between Castles"
-#~ msgstr "Дороги между замками"
-
-#~ msgid "/1000 tiles"
-#~ msgstr "/1000 квадратов"
-
-#~ msgid "Coastal"
-#~ msgstr "Береговой"
-
-#~ msgid "Inland"
-#~ msgstr "Внутренний"
-
-#~ msgid "Island"
-#~ msgstr "Остров"
-
-#~ msgid "Merman"
-#~ msgstr "Водяной"
-
-#~ msgid "female^Naga"
-#~ msgstr "Нага"
-
-#~ msgid ""
-#~ "Like the Mermen, Nagas are inhabitants of the seas. Smaller and more "
-#~ "nimble than their counterparts, they share a distaste for dry land."
-#~ msgstr ""
-#~ "Как и Водяные, Наги являются жителями морей. Они меньше и проворнее своих "
-#~ "собратьев, сухая земля вызывает у них отвращение."
-
-#~ msgid ""
-#~ "Saurians are skilled in the use of the spear. Despite their lethargic "
-#~ "cold blooded heritage, and their relative frailty, they are highly valued "
-#~ "as scouts as the can navigate through rough terrain and around opponents. "
-#~ "The best Saurians go on to become Saurian Warriors."
-#~ msgstr ""
-#~ "Ящеры мастерски владеют копьём. Несмотря на то, что они унаследовали от "
-#~ "предков  летаргическую хладнокровность и мягкотелость, они очень ценны "
-#~ "как разведчики, так как они могут исследовать заросшие земли и вокруг "
-#~ "противников. Лучшие Ящеры станут Ящерами Воинами."
-
-#~ msgid "Saurian Warrior"
-#~ msgstr "Ящер Воин"
-
-#~ msgid ""
-#~ "Saurian Warriors are highly skilled in the use of the spear. Despite "
-#~ "their lethargic cold blooded heritage, and their relative frailty, they "
-#~ "are highly valued as scouts as they can navigate through rough terrain "
-#~ "and around opponents. Saurian Warriors possess the strength to take full "
-#~ "advantage of this fact."
-#~ msgstr ""
-#~ "Ящеры Воины мастерски владеют копьём. Несмотря на то, что они "
-#~ "унаследовали от предков  летаргическую хладнокровность и мягкотелость, "
-#~ "они очень ценны как разведчики, так как они могут исследовать заросшие "
-#~ "земли и вокруг противников. Ящеры Воины обладают силой, чтобы получить "
-#~ "полное преимущество."
-
-#~ msgid "female^Sea Hag"
-#~ msgstr "Морская Ведьма"
-
-#~ msgid ""
-#~ "Sea Hags are older and more experienced Nagas who have learned to control "
-#~ "the water magic."
-#~ msgstr ""
-#~ "Морские Ведьмы старше и опытнее чем Наги, они узнали, как контролировать "
-#~ "магию воды."
-
-#~ msgid "Triton"
-#~ msgstr "Тритон"
