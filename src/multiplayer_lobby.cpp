@@ -293,7 +293,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		games_.push_back(game_item());
 		if((**game)["mp_era"] != "") {
 			const config* const era_cfg = game_config.find_child("era", "id", (**game)["mp_era"]);
-			games_.back().map_info = era_cfg != NULL ? era_cfg->get_attribute("name") : _("Unkown era");
+			games_.back().map_info = era_cfg != NULL ? era_cfg->get_attribute("name") : _("Unknown era");
 			
 		} else {
 			games_.back().map_info = _("Unknown era");
