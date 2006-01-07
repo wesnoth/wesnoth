@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-01-06 08:38+0100\n"
-"PO-Revision-Date: 2005-12-18 16:59+0100\n"
+"PO-Revision-Date: 2006-01-07 14:51+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: data/amla.cfg:8
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr ", MAKS. PŻ +25%"
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +"
@@ -804,7 +804,6 @@ msgstr ""
 "otrzymasz możliwość wyboru drogi awansu."
 
 #: data/help.cfg:203
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -831,9 +830,14 @@ msgstr ""
 "(APOP). APOP zmienia jednostkę za każdym razem, gdy osiąga ona wystarczający "
 "poziom doświadczenia, ale pozostanie ona na tym samym poziomie. Typowy "
 "efekt, jaki APOP wywiera na jednostkę, to podniesienie maksymalnej liczby PŻ "
-"o 3 co każde 100 zdobytych PD. Zauważ, że niektóre jednostki, takie jak na "
-"przykład trupojad, będą leczyły się z pominięciem efektu APOP, jednak "
-"większość otrzyma po prostu premię do maksymalnych PŻ."
+"o 3. Pierwszy APOP normalnie osiągany jest po zdobyciu 100PD (80PD w "
+"przypadku jednostek inteligentnych). Jednakże zdobywanie kolejnych awansów "
+"jest coraz trudniejsze i często bardziej wartościowe jest awansowanie "
+"jednostek na niższych poziomach.\n"
+"\n"
+"Zauważ, że niektóre jednostki, takie jak na przykład trupojad, będą leczyły "
+"się z pominięciem efektu APOP, jednak większość otrzyma po prostu premię do "
+"maksymalnych PŻ."
 
 #: data/help.cfg:208
 msgid "Healing"
@@ -2015,7 +2019,7 @@ msgstr "2g - Szarża"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
-msgstr ""
+msgstr "2g - Bitwa pod Cynsaun"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
@@ -2023,6 +2027,9 @@ msgid ""
 "favor epic, large-scale duel matches. Recommended settings of 150 G; 1G per "
 "village."
 msgstr ""
+"Pole bitwy to rozległe tereny czekające na eksplorację, stworzone dla "
+"graczy, którzy lubią epickie pojedynki. Rekomendowane początkowe ustawienie "
+"150 sztuk złota; 1 sztuka na wioskę."
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
@@ -2316,17 +2323,15 @@ msgstr ""
 "ustawienie 1 sztuki złota za wioskę."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
-#, fuzzy
 msgid "4p - Morituri"
-msgstr "3g - Morituri"
+msgstr "4g - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
 "settings of 2G per village."
 msgstr ""
-"Trzej gracze stają do walki na poprzecinanym wodą polu bitwy. Rekomendowane "
+"Kto wyjdzie cało ze starcia na tym niebezpiecznym polu bitwy? Rekomendowane "
 "ustawienie 2 sztuk złota za wioskę."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
@@ -2371,7 +2376,7 @@ msgstr "Pięć armi walczy o supremację w różnorodnym krajobrazie."
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
-msgstr ""
+msgstr "6g - Pole krzyżowców"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
 msgid ""
@@ -2380,6 +2385,10 @@ msgid ""
 "through the mountains, trees and rivers. Recommended settings of 1G per "
 "village."
 msgstr ""
+"Tryby wojny znowu ruszyły w ruch na tych zniszczonych przez czas i wojnę "
+"ziemiach, gdzie duchy tysięcy odważnych wojowników unoszą się niewidzialne "
+"nad górami, lasami i rzekami. Rekomendowanie ustawienie 1 sztuki złota na "
+"wioskę."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
@@ -2490,7 +2499,7 @@ msgstr "Zielony"
 
 #: data/team_colors.cfg:22
 msgid "Cyan"
-msgstr ""
+msgstr "Seledyn"
 
 #: data/team_colors.cfg:28
 msgid "Purple"
@@ -2544,9 +2553,8 @@ msgid "Snow Village"
 msgstr "Wioska w śniegu"
 
 #: data/terrain.cfg:297
-#, fuzzy
 msgid "Dwarven Village"
-msgstr "Pustynna wioska"
+msgstr "Krasnoludzka wioska"
 
 #: data/terrain.cfg:334
 msgid "Desert Hills"
@@ -2755,7 +2763,6 @@ msgstr ""
 "strefę, zaś te ze zdolnością \"harcownik\" potrafią ją ignorować."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -2764,7 +2771,7 @@ msgid ""
 msgstr ""
 "Szansa na trafienie jednostki zależy zazwyczaj od terenu, na jakim ona stoi. "
 "Jednakże ataki magiczne zawsze mają 70% szans na powodzenie, a strzały "
-"strzelców 60% szans podczas ataku."
+"strzelców 60% szans, ale tylko podczas ataku."
 
 #: data/tips.cfg:9
 msgid ""
@@ -2774,12 +2781,11 @@ msgstr ""
 "swojej tury."
 
 #: data/tips.cfg:10
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
 msgstr ""
-"Jednostki, które nie poruszą się, ani nie zaatakują, odpoczywają i na "
+"Jednostki, które nie poruszą się, ani nie zaatakują, odpoczywają. Na "
 "początku następnej tury odzyskają 2 punkty życia."
 
 #: data/tips.cfg:11
@@ -2837,15 +2843,13 @@ msgstr ""
 "zbędnych jednostek w kilka kierunków, aby opóźnić marsz wroga."
 
 #: data/tips.cfg:17
-#, fuzzy
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
-"Nie obawiaj się wycofać i przegrupować, często właśnie w tym tkwi klucz do "
+"Nie obawiaj się wycofać i przegrupować; to właśnie często jest kluczem do "
 "zwycięstwa."
 
 #: data/tips.cfg:18
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -2853,9 +2857,9 @@ msgid ""
 "villages and waiting for turns to run out."
 msgstr ""
 "W większość kampanii dostaniesz nagrodę w złocie za wcześniejsze "
-"zakończenie, zależną od liczby wiosek na mapie i od oszczędzonych tur. "
+"zakończenie, zależną od liczby wiosek na mapie i liczby  oszczędzonych tur. "
 "Zawsze zarobisz w ten sposób więcej, niż przejmując wszystkie wioski i "
-"czekając aż minie czas."
+"czekając, aż minie czas."
 
 #: data/tips.cfg:19
 msgid ""
@@ -2870,13 +2874,12 @@ msgstr ""
 "ustąpić miejsca w swojej twierdzy, byś mógł w niej rekrutować."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
 "Szkielety są odporne na ataki kłujące i sieczne, ale czułe na broń obuchową, "
-"świętą oraz na ogień."
+"świętą oraz ogień."
 
 #: data/tips.cfg:21
 msgid ""
@@ -2936,7 +2939,6 @@ msgstr ""
 "pomogą ci odnieść zwycięstwo."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attacks."
@@ -2971,6 +2973,10 @@ msgid ""
 "progressively harder for each AMLA the unit receives, however. Thus, it is "
 "often more useful to try to advance your lower level units."
 msgstr ""
+"Jednostki mogą osiągnąć Awans Po Ostatnim Poziomie (APOP), który zazwyczaj "
+"zwiększa maksymalną liczbę punktów życia jednostki o 3. Zdobycie APOP jest "
+"za każdym razem coraz trudniejsze. Dlatego zazwyczaj dużo bardziej "
+"wartościowe jest awansowanie jednostek na niższych poziomach."
 
 #: data/tips.cfg:34
 msgid ""
@@ -2978,6 +2984,9 @@ msgid ""
 "the Help Wesnoth button.  This information is vital so we can adjust "
 "campaign difficulty."
 msgstr ""
+"Możesz przekazać Projektowi Wesnoth anonimowe zestawienie twoich postępów w "
+"grze przy pomocy przycisku Wspomóż Wesnoth. Informacje te potrzebne są nam "
+"do dopracowania poziomu trudności kampanii."
 
 #: data/traits.cfg:6 data/translations/english.cfg:61
 msgid "loyal"
@@ -6425,7 +6434,6 @@ msgid "Goblin Rouser"
 msgstr "Gobliński buntownik"
 
 #: data/units/Goblin_Rouser.cfg:26
-#, fuzzy
 msgid ""
 "Standard bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -6436,10 +6444,11 @@ msgid ""
 "to it to deal more damage in combat, though this only applies to units of "
 "lower level."
 msgstr ""
-"Chorąży to rzadki widok w armiach goblinów. Po pierwsze, udało im się "
-"przetrwać wojnę, ale co ważniejsze, inne gobliny zapamiętały, że udało im "
-"się tego dokonać. Prowadzony przez niego rozszalały motłoch zdaje się jednak "
-"efektywnie hartować młodych wojowników.\n"
+"Chorąży to rzadki widok w armiach goblinów. Goblin, który przetrwał tyle "
+"bitew, by mógł być uznany za weterana do rzadki widok, a jaszcze rzadziej "
+"zdarza się, że inne gobliny uznają i respektują ten status. Niemniej jednak "
+"szaleńcze wycie chorążego skutecznie umacnia wolę walki w młodszych "
+"kamratach, dzięki czemu walczą ciężej i dłużej, aż zginą.\n"
 "Uwagi specjalne: zdolność dowodzenia goblińskiego buntownika pozwala "
 "sąsiadującym przyjacielskim jednostkom niższego poziomu zadawać w walce "
 "większe obrażenia."
@@ -9417,9 +9426,8 @@ msgid "+English (GB) Translation"
 msgstr "+Tłumaczenie brytyjskie"
 
 #: src/about.cpp:201
-#, fuzzy
 msgid "+Esperanto Translation"
-msgstr "+Tłumaczenie niemieckie"
+msgstr "+Tłumaczenie esperanto"
 
 #: src/about.cpp:205
 msgid "+Estonian Translation"
@@ -9544,9 +9552,8 @@ msgid "Doubled"
 msgstr "Podwojone"
 
 #: src/actions.cpp:453 src/actions.cpp:602
-#, fuzzy
 msgid "Halved"
-msgstr "Zapisano"
+msgstr "Połowę mniejszy"
 
 #: src/actions.cpp:453 src/actions.cpp:602 src/actions.cpp:871
 #: src/actions.cpp:1041
@@ -10497,24 +10504,20 @@ msgid "Status"
 msgstr "Stan"
 
 #: src/multiplayer_lobby.cpp:101
-#, fuzzy
 msgid "--no games open--"
-msgstr "<brak otwartych gier>"
+msgstr "--brak otwartych gier--"
 
 #: src/multiplayer_lobby.cpp:296
-#, fuzzy
 msgid "Unkown era"
-msgstr "Nieznany scenariusz: '"
+msgstr "Nieznana era"
 
 #: src/multiplayer_lobby.cpp:299
-#, fuzzy
 msgid "Unknown era"
-msgstr "Nieznany scenariusz: '"
+msgstr "Nieznana era"
 
 #: src/multiplayer_lobby.cpp:321 src/multiplayer_lobby.cpp:323
-#, fuzzy
 msgid "Unknown scenario"
-msgstr "Nieznany scenariusz: '"
+msgstr "Nieznany scenariusz"
 
 #: src/multiplayer_lobby.cpp:332
 msgid "Vacant Slot"
@@ -10533,9 +10536,8 @@ msgid "Quit"
 msgstr "Wyjdź"
 
 #: src/multiplayer_ui.cpp:79
-#, fuzzy
 msgid "Invalid Color"
-msgstr "Niewłaściwy kolor"
+msgstr "Zły kolor"
 
 #: src/multiplayer_wait.cpp:116
 msgid "Leader: "
@@ -11118,9 +11120,8 @@ msgid "TitleScreen button^Preferences"
 msgstr "Ustawienia"
 
 #: src/titlescreen.cpp:206
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Zapisane gry"
+msgstr "Wspomóż Wesnoth"
 
 #: src/titlescreen.cpp:207
 msgid "About"
@@ -11160,7 +11161,7 @@ msgstr "Pozwala na zmianę ustawień"
 
 #: src/titlescreen.cpp:215
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "Pomóż Wesnoth wysyłając nam informacje"
 
 #: src/titlescreen.cpp:216
 msgid "View the credits"
