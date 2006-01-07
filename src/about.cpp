@@ -88,6 +88,7 @@ std::vector<std::string> get_text() {
 		"-   Slainte",
 		"-   Stephen Stone (Disto)",
 		"-   Svetac",
+		"-   Randall Walls (slightcrazed)",
 
 		"_" N_("+Music"),
 		"-   Aleksi",
