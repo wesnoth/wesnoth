@@ -106,7 +106,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	countdown_init_time_slider_.set_max(7200);
 	countdown_init_time_slider_.set_increment(30);
 	countdown_init_time_slider_.set_value(preferences::countdown_init_time());
-	countdown_init_time_slider_.set_help_string(_("Initial time available for user at the begining of the match"));
+	countdown_init_time_slider_.set_help_string(_("Initial time available to players at start of game"));
 
 	countdown_turn_bonus_slider_.set_min(10);
 	countdown_turn_bonus_slider_.set_max(1000);
