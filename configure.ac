@@ -56,11 +56,15 @@ AC_PROG_RANLIB
 
 AC_ARG_ENABLE([debug],
 	      AS_HELP_STRING([--enable-debug], [enable debug in wesnoth]),
-	      [if test "x${enableval}" = "xyes" ; then
-                   CXXFLAGS="$CXXFLAGS -DDEBUG -O0 -ggdb3 -Wextra -Wall -ansi -pedantic" ;
-		   else 
-                   CXXFLAGS="$CXXFLAGS  -Wextra -Wall -ansi -pedantic" ;
-	       fi])
+	      [debug=$enableval],
+	      [debug=no])
+
+if test "x$debug" = "xyes"
+then
+	CXXFLAGS="$CXXFLAGS -DDEBUG -O0 -ggdb3 -Wextra -Wall -ansi " 
+else
+	CXXFLAGS="$CXXFLAGS  -Wextra -Wall -ansi " 
+fi
 
 AC_ARG_ENABLE([static],
               AS_HELP_STRING([--enable-static], [enable static building of wesnoth]),
