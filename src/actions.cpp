@@ -1354,7 +1354,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		const std::pair<healer_itor,healer_itor> healer_itors = healers.equal_range(loc);
 
 		if(show_healing) {
-			disp.scroll_to_tile(loc.x,loc.y,display::WARP);
+			disp.scroll_to_tile(loc.x,loc.y,display::ONSCREEN);
 			disp.select_hex(loc);
 
 

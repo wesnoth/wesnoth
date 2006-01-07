@@ -168,15 +168,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 				//we try to scroll the map if the unit is at the edge.
 				//keep track of the old position, and if the map moves at all,
 				//then recenter it on the unit
-				adjust_map_position(disp, xloc, yloc, image->w, image->h);
-				if(xsrc != disp.get_location_x(a) || ysrc != disp.get_location_y(a)) {
-					disp.scroll_to_tile(b.x,b.y,display::WARP);
-					xsrc = disp.get_location_x(a);
-					ysrc = disp.get_location_y(a);
-					xloc = xsrc + int(double(xdst-xsrc)*(double(anim_time)/total_anim_time));
-					yloc = ysrc + int(double(ydst-ysrc)*(double(anim_time)/total_anim_time));
-				}
-
+				disp.scroll_to_tile(b.x,b.y,display::ONSCREEN);
 
 				//invalidate the source tile and all adjacent tiles,
 				//since the unit can partially overlap adjacent tiles
@@ -225,15 +217,8 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			//we try to scroll the map if the unit is at the edge.
 			//keep track of the old position, and if the map moves at all,
 			//then recenter it on the unit
-			adjust_map_position(disp, xloc, yloc, image->w, image->h);
 
-			if(xsrc != disp.get_location_x(a) || ysrc != disp.get_location_y(a)) {
-				disp.scroll_to_tile(b.x,b.y,display::WARP);
-				xsrc = disp.get_location_x(a);
-				ysrc = disp.get_location_y(a);
-				xloc = xsrc + int(xstep * i);
-				yloc = ysrc + int(ystep * i);
-			}
+			disp.scroll_to_tile(b.x,b.y,display::ONSCREEN);
 
 			//invalidate the source tile and all adjacent tiles,
 			//since the unit can partially overlap adjacent tiles
@@ -737,7 +722,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		adjust_map_position(disp, xloc, yloc, disp.hex_width(), disp.hex_size());
 
 		if(xloc != disp.get_location_x(a) || yloc != disp.get_location_y(a)) {
-			disp.scroll_to_tile(a.x,a.y,display::WARP);
+			disp.scroll_to_tile(a.x,a.y,display::ONSCREEN);
 		}
 	}
 

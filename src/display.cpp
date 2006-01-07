@@ -582,6 +582,7 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 			continue;
 		}
 
+	invalidate_all();
 		draw();
 	}
 

@@ -2546,7 +2546,7 @@ void turn_info::do_search(const std::string& new_search)
 	}
 	if(found) {
 		last_search_hit_ = loc;
-		gui_.scroll_to_tile(loc.x,loc.y,display::WARP,false);
+		gui_.scroll_to_tile(loc.x,loc.y,display::ONSCREEN,false);
 		gui_.highlight_hex(loc);
 	} else {
 		last_search_hit_ = gamemap::location();
