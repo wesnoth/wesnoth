@@ -132,7 +132,7 @@ static PyMethodDef unittype_methods[] = {
 
 static int unittype_internal_compare(wesnoth_unittype* left, wesnoth_unittype* right)
 {
-	return (int)(left->unit_type_ - right->unit_type_);
+	return (long)(left->unit_type_) - (long)right->unit_type_;
 }
 
 static PyTypeObject wesnoth_unittype_type = {
@@ -378,7 +378,7 @@ static PyMethodDef unit_methods[] = {
 
 static int unit_internal_compare(wesnoth_unit* left, wesnoth_unit* right)
 {
-	return (int)(left->unit_ - right->unit_);
+	return (long)left->unit_ - (long)right->unit_;
 }
 
 static PyTypeObject wesnoth_unit_type = {
@@ -616,7 +616,7 @@ static PyObject* wrapper_team_gold(wesnoth_team* team, void* closure)
 
 static int wrapper_team_internal_compare(wesnoth_team* left, wesnoth_team* right)
 {
-	return (int)(left->team_ - right->team_);
+	return (long)left->team_ - (long)right->team_;
 }
 
 static PyObject* wrapper_team_owns_village( wesnoth_team* team, PyObject* args )
