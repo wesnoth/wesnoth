@@ -121,10 +121,6 @@ upload_log::upload_log(bool enable) : game_(NULL), enabled_(enable)
 		thread_.lastfile = filename_;
 		thread_.t = new threading::thread(upload_logs, &thread_);
 	}
-
-	config_["version"] = VERSION;
-	config_["format_version"] = "1";
-	config_["id"] = preferences::upload_id();
 }
 
 upload_log::~upload_log()
@@ -134,6 +130,9 @@ upload_log::~upload_log()
 		config_.add_child("game", *game_);
 
 	if (enabled_ && !config_.empty()) {
+		config_["version"] = VERSION;
+		config_["format_version"] = "1";
+		config_["id"] = preferences::upload_id();
 		std::ostream *out = ostream_file(filename_);
 		write(*out, config_);
 		delete out;
