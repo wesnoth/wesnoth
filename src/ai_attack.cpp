@@ -325,19 +325,21 @@ int ai::choose_weapon(const location& att, const location& def,
 	int a_hitpoints = itor->second.hitpoints();
 
 	for(size_t a = 0; a != attacks.size(); ++a) {
-		const battle_stats stats = evaluate_battle_stats(map_, teams_, att, def, a, units_,
+		if (attacks[a].attack_weight() > 0){
+			const battle_stats stats = evaluate_battle_stats(map_, teams_, att, def, a, units_,
 		                                                 state_, terrain);
 
-		//TODO: improve this rating formula!
-		const double rating =
-		   (double(stats.chance_to_hit_defender)/100.0)*
-		               minimum<int>(stats.damage_defender_takes,d_hitpoints)*stats.nattacks -
-		   (double(stats.chance_to_hit_attacker)/100.0)*
-		               minimum<int>(stats.damage_attacker_takes,a_hitpoints)*stats.ndefends;
-		if(rating > current_rating || current_choice == -1) {
-			current_choice = a;
-			current_rating = rating;
-			cur_stats = stats;
+			//TODO: improve this rating formula!
+			const double rating =
+			   (double(stats.chance_to_hit_defender)/100.0)*
+		        	       minimum<int>(stats.damage_defender_takes,d_hitpoints)*stats.nattacks -
+			   (double(stats.chance_to_hit_attacker)/100.0)*
+			               minimum<int>(stats.damage_attacker_takes,a_hitpoints)*stats.ndefends;
+			if(rating > current_rating || current_choice == -1) {
+				current_choice = a;
+				current_rating = rating;
+				cur_stats = stats;
+			}
 		}
 	}
 

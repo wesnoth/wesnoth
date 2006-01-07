@@ -673,39 +673,40 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 	attack_calculations_displayer::stats_vector stats;
 
 	for(size_t a = 0; a != attacks.size(); ++a) {
-
-		battle_stats_strings sts;
-		battle_stats st = evaluate_battle_stats(map_, teams_, attacker_loc, defender_loc,
+		if (attacks[a].attack_weight() > 0){
+			battle_stats_strings sts;
+			battle_stats st = evaluate_battle_stats(map_, teams_, attacker_loc, defender_loc,
 		                                        a, units_, status_, 0, &sts);
-		stats.push_back(sts);
+			stats.push_back(sts);
 
-		simple_attack_rating weapon_rating(st);
+			simple_attack_rating weapon_rating(st);
 
-		if (best_weapon_index < 0 || best_weapon_rating < weapon_rating) {
-			best_weapon_index = items.size();
-			best_weapon_rating = weapon_rating;
+			if (best_weapon_index < 0 || best_weapon_rating < weapon_rating) {
+				best_weapon_index = items.size();
+				best_weapon_rating = weapon_rating;
+			}
+
+			//if there is an attack special or defend special, we output a single space for the other unit, to make sure
+			//that the attacks line up nicely.
+			std::string special_pad = (sts.attack_special.empty() && sts.defend_special.empty()) ? "" : " ";
+
+			int damage_defender_takes;
+			damage_defender_takes = st.damage_defender_takes;
+			int damage_attacker_takes;
+			damage_attacker_takes = st.damage_attacker_takes;
+			std::stringstream att;
+			att << IMAGE_PREFIX << sts.attack_icon << COLUMN_SEPARATOR
+			    << font::BOLD_TEXT << sts.attack_name << "\n" << damage_defender_takes << "-"
+			    << st.nattacks << " " << sts.range << " (" << st.chance_to_hit_defender << "%)\n"
+			    << sts.attack_special << special_pad
+			    << COLUMN_SEPARATOR << _("vs") << COLUMN_SEPARATOR
+			    << font::BOLD_TEXT << sts.defend_name << "\n" << damage_attacker_takes << "-"
+			    << st.ndefends << " " << sts.range << " (" << st.chance_to_hit_attacker << "%)\n"
+			    << sts.defend_special << special_pad << COLUMN_SEPARATOR
+			    << IMAGE_PREFIX << sts.defend_icon;
+
+			items.push_back(att.str());
 		}
-
-		//if there is an attack special or defend special, we output a single space for the other unit, to make sure
-		//that the attacks line up nicely.
-		std::string special_pad = (sts.attack_special.empty() && sts.defend_special.empty()) ? "" : " ";
-
-		int damage_defender_takes;
-		damage_defender_takes = st.damage_defender_takes;
-		int damage_attacker_takes;
-		damage_attacker_takes = st.damage_attacker_takes;
-		std::stringstream att;
-		att << IMAGE_PREFIX << sts.attack_icon << COLUMN_SEPARATOR
-		    << font::BOLD_TEXT << sts.attack_name << "\n" << damage_defender_takes << "-"
-		    << st.nattacks << " " << sts.range << " (" << st.chance_to_hit_defender << "%)\n"
-		    << sts.attack_special << special_pad
-		    << COLUMN_SEPARATOR << _("vs") << COLUMN_SEPARATOR
-		    << font::BOLD_TEXT << sts.defend_name << "\n" << damage_attacker_takes << "-"
-		    << st.ndefends << " " << sts.range << " (" << st.chance_to_hit_attacker << "%)\n"
-		    << sts.defend_special << special_pad << COLUMN_SEPARATOR
-		    << IMAGE_PREFIX << sts.defend_icon;
-
-		items.push_back(att.str());
 	}
 
 	if (best_weapon_index >= 0) {

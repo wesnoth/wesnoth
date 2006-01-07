@@ -197,12 +197,18 @@ attack_type::attack_type(const config& cfg)
 	damage_ = atol(cfg["damage"].c_str());
 	num_attacks_ = atol(cfg["number"].c_str());
 
-	attack_weight_ = atof(cfg["attack_weight"].c_str());
-	defense_weight_ = atof(cfg["defense_weight"].c_str());
-	if ( ! attack_weight_ )
-	  attack_weight_ = 1.0;
-	if ( ! defense_weight_ )
-	  defense_weight_ = 1.0;
+	const std::string& attack_weight_string=cfg["attack_weight"];
+	if (attack_weight_string.empty()) {
+		attack_weight_ = 1.0;
+	} else {
+		attack_weight_ = atof(attack_weight_string.c_str());
+	}
+	const std::string& defense_weight_string=cfg["defense_weight"];
+	if (defense_weight_string.empty()) {
+		defense_weight_ = 1.0;
+	} else {
+		defense_weight_ = atof(defense_weight_string.c_str());
+	}
 }
 
 const t_string& attack_type::name() const

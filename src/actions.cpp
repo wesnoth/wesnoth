@@ -370,14 +370,16 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	res.ndefends = 0;
 	for(int defend_option = 0; defend_option != int(defender_attacks.size()); ++defend_option) {
 		if(defender_attacks[defend_option].range() == attack.range()) {
-			const double rating = a->second.damage_against(defender_attacks[defend_option])
-			                      *defender_attacks[defend_option].damage()
-			  * defender_attacks[defend_option].num_swarm_attacks(
-d->second.hitpoints(), d->second.max_hitpoints())
-			  *defender_attacks[defend_option].defense_weight();
-			if(defend_with == -1 || rating > best_defend_rating) {
-				best_defend_rating = rating;
-				defend_with = defend_option;
+			if (defender_attacks[defend_option].defense_weight() > 0) {
+				const double rating = a->second.damage_against(defender_attacks[defend_option])
+					*defender_attacks[defend_option].damage()
+					*defender_attacks[defend_option].num_swarm_attacks(
+						d->second.hitpoints(), d->second.max_hitpoints())
+					*defender_attacks[defend_option].defense_weight();
+				if(defend_with == -1 || rating > best_defend_rating) {
+					best_defend_rating = rating;
+					defend_with = defend_option;
+				}
 			}
 		}
 	}
