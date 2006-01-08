@@ -981,15 +981,11 @@ const std::string& unit::image() const
 	switch(state_) {
 		case STATE_NORMAL: return type_->image();
 		case STATE_DEFENDING: {
-			if(get_animation()) {
-				const std::string& res = anim_.get_current_frame().image;
-				if(res != "") {
-					return res;
-				}
+			const std::string& res = anim_.get_current_frame().image;
+			if(res != "") {
+				return res;
 			}
-
-			const attack_type::RANGE range = (sub_state_ == "ranged") ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE;
-			return type_->image_defensive(range);
+			return type_->image();
 		}
 		case STATE_ATTACKING: {
 			if(attackType_ == NULL)

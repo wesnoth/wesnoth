@@ -75,6 +75,12 @@ unit_animation::unit_animation(const config& cfg)
 	}
 }
 
+unit_animation::unit_animation(const std::string image, int begin_at, int end_at)
+{
+	unit_frames_.add_frame(begin_at, frame(image));
+	unit_frames_.add_frame(end_at);
+}
+
 int unit_animation::get_first_frame_time(unit_animation::FRAME_TYPE type) const
 {
 	if(type == UNIT_FRAME) {
@@ -695,6 +701,26 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
 		defensive_animations_.push_back(defensive_animation(**d));
 	}
+	if(!cfg["image_defensive_short"].empty()) {
+		LOG_STREAM(err, config) << "unit " << id() << " uses an image_defensive_short tag, which is deprecated\n";
+		defensive_animations_.push_back(defensive_animation(cfg["image_defensive_short"],"melee"));
+
+	}
+	if(!cfg["image_defensive_long"].empty()) {
+		LOG_STREAM(err, config) << "unit " << id() << " uses an image_defensive_long tag, which is deprecated\n";
+		defensive_animations_.push_back(defensive_animation(cfg["image_defensive_long"],"ranged"));
+	}
+	if(!cfg["image_defensive"].empty()) {
+		LOG_STREAM(err, config) << "unit " << id() << " uses an image_defensive tag, which is deprecated\n";
+		defensive_animations_.push_back(defensive_animation(cfg["image_defensive"]));
+	}
+	if(defensive_animations_.empty()) {
+		defensive_animations_.push_back(defensive_animation(image()));
+		// always have a defensive animation
+	}
+
+
+	
 	const config::child_list& teleports = cfg_.get_children("teleport_anim");
 	for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
 		teleport_animations_.push_back(unit_animation(**t));
@@ -714,18 +740,17 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
 		movement_animations_.push_back(movement_animation(**movement_anim));
 	}
+	if(!cfg["image_moving"].empty()) {
+		LOG_STREAM(err, config) << "unit " << id() << " uses an image_moving tag, which is deprecated\n";
+		movement_animations_.push_back(movement_animation(cfg["image_moving"]));
+	}
+	if(movement_animations_.empty()) {
+		movement_animations_.push_back(movement_animation(image()));
+		// always have a movement animation
+	}
 
 	flag_rgb_ = string2rgb(cfg["flag_rgb"]);
 	// deprecation messages, only seen when unit is parsed for the first time
-	if(!cfg["image_moving"].empty()) {
-		LOG_STREAM(err, config) << "unit " << id() << " uses an image_moving tag, which is deprecated\n";
-	}
-	if(!cfg["image_defensive_short"].empty()) {
-		LOG_STREAM(err, config) << "unit " << id() << " uses an image_defensive_short tag, which is deprecated\n";
-	}
-	if(!cfg["image_defensive_long"].empty()) {
-		LOG_STREAM(err, config) << "unit " << id() << " uses an image_defensive_long tag, which is deprecated\n";
-	}
 }
 
 unit_type::~unit_type()
@@ -805,15 +830,6 @@ const std::string& unit_type::image_halo() const
 	return cfg_["halo"];
 }
 
-const std::string& unit_type::image_moving() const
-{
-	const std::string& res = cfg_["image_moving"];
-	if(res.empty()) {
-		return image();
-	} else {
-		return res;
-	}
-}
 
 const std::string& unit_type::image_fighting(attack_type::RANGE range) const
 {
@@ -830,21 +846,6 @@ const std::string& unit_type::image_fighting(attack_type::RANGE range) const
 		return image();
 }
 
-const std::string& unit_type::image_defensive(attack_type::RANGE range) const
-{
-	static const std::string short_range("image_defensive_short");
-	static const std::string long_range("image_defensive_long");
-
-	const std::string& str = range == attack_type::LONG_RANGE ?
-		long_range : short_range;
-
-	if(!cfg_[str].empty())
-		return cfg_[str];
-	else if(!cfg_["image_defensive"].empty())
-		return cfg_["image_defensive"];
-	else
-		return cfg_["image"];
-}
 
 const std::string& unit_type::image_leading() const
 {
@@ -1095,6 +1096,7 @@ unit_type::defensive_animation::defensive_animation(const config& cfg) : hits(HI
 	}
 }
 
+
 bool unit_type::defensive_animation::matches(bool h, std::string r) const
 {
 	if(hits == HIT && h == false || hits == MISS && h == true ) {
@@ -1139,6 +1141,12 @@ unit_type::movement_animation::movement_animation(const config& cfg)
 	}
 }
 
+unit_type::movement_animation::movement_animation(const std::string& image,const std::string& terrain,gamemap::location::DIRECTION dir):terrain_types(utils::split(terrain)),animation(image,0,250)
+{
+	if(dir !=gamemap::location::NDIRECTIONS) {
+		directions.push_back(dir);
+	}
+}
 bool unit_type::movement_animation::matches(const std::string &terrain,gamemap::location::DIRECTION dir) const
 {
 	if(terrain_types.empty() == false && std::find(terrain_types.begin(),terrain_types.end(),terrain) == terrain_types.end()) {

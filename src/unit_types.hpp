@@ -43,6 +43,7 @@ public:
 
 	unit_animation();
 	explicit unit_animation(const config& cfg);
+	explicit unit_animation(const std::string image, int begin_at, int end_at);
 
 	enum FRAME_TYPE { UNIT_FRAME, MISSILE_FRAME };
 	enum FRAME_DIRECTION { VERTICAL, DIAGONAL };
@@ -194,10 +195,8 @@ public:
 	// const std::string& name() const;
 	const std::string& image() const;
 	const std::string& image_halo() const;
-	const std::string& image_moving() const;
 	const std::string& image_profile() const;
 	const std::string& image_fighting(attack_type::RANGE range) const;
-	const std::string& image_defensive(attack_type::RANGE range) const;
 	const std::string& image_leading() const;
 	const std::string& image_healing() const;
 	const std::string& image_halo_healing() const;
@@ -306,10 +305,13 @@ private:
 
 	struct defensive_animation
 	{
+		typedef enum { HIT, MISS, HIT_OR_MISS } hit_type;
+
 		explicit defensive_animation(const config& cfg);
+		explicit defensive_animation(const std::string &image, const std::string &range="",const hit_type for_hit= HIT_OR_MISS): hits(for_hit),range(utils::split(range)),animation(image,-150,150) {};
 		bool matches(bool hits, std::string range) const;
 
-		enum { HIT, MISS, HIT_OR_MISS } hits;
+		hit_type hits;
 		std::vector<std::string> range;
 		unit_animation animation;
 	};
@@ -334,6 +336,7 @@ private:
 	struct movement_animation
 	{
 		explicit movement_animation(const config& cfg);
+		explicit movement_animation(const std::string& image,const std::string& terrain="",gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS);
 		bool matches(const std::string &terrain,gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
 
 		std::vector<std::string> terrain_types;
