@@ -32,9 +32,11 @@ public:
 	{
 	public:
 		virtual T operator()(const std::string& s) const { return T(s); }
+		virtual ~string_initializer(){};
 	};
 
 	animated();
+	virtual ~animated(){};
 
 	//if T can be constructed from a string, you may use this constructor
 	// animated(const std::string& cfg);

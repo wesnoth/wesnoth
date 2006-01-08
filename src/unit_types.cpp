@@ -832,23 +832,18 @@ const std::string& unit_type::image_fighting(attack_type::RANGE range) const
 
 const std::string& unit_type::image_defensive(attack_type::RANGE range) const
 {
-	{
-		static const std::string short_range("image_defensive_short");
-		static const std::string long_range("image_defensive_long");
+	static const std::string short_range("image_defensive_short");
+	static const std::string long_range("image_defensive_long");
 
-		const std::string& str = range == attack_type::LONG_RANGE ?
-		                          long_range : short_range;
+	const std::string& str = range == attack_type::LONG_RANGE ?
+		long_range : short_range;
 
-		const std::string& val = cfg_[str];
-
-	}
-
-	const std::string& val = cfg_["image_defensive"];
-	if(val.empty())
+	if(!cfg_[str].empty())
+		return cfg_[str];
+	else if(!cfg_["image_defensive"].empty())
+		return cfg_["image_defensive"];
+	else
 		return cfg_["image"];
-	else {
-		return val;
-	}
 }
 
 const std::string& unit_type::image_leading() const
@@ -1092,7 +1087,7 @@ const std::string& unit_type::race() const
 	return race_->name();
 }
 
-unit_type::defensive_animation::defensive_animation(const config& cfg) : hits(HIT_OR_MISS), animation(cfg), range(utils::split(cfg["range"]))
+unit_type::defensive_animation::defensive_animation(const config& cfg) : hits(HIT_OR_MISS), range(utils::split(cfg["range"])),animation(cfg) 
 {
 	const std::string& hits_str = cfg["hits"];
 	if(hits_str.empty() == false) {

@@ -90,7 +90,7 @@ preprocessor_streambuf::preprocessor_streambuf(preproc_map *def)
 }
 
 preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
-	: current_(NULL), defines_(t.defines_),
+	: std::streambuf(),current_(NULL), defines_(t.defines_),
 	  textdomain_(PACKAGE), depth_(t.depth_), quoted_(t.quoted_)
 {
 }

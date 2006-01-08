@@ -195,9 +195,9 @@ public:
 	virtual void edit_refresh() {}
 
 	//Gets the action's image (if any). Displayed left of the action text in menus.
-	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND command) const { return ""; }
+	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND /*command*/) const { return ""; }
 	//Does the action control a toggle switch? If so, return the state of the action (on or off)
-	virtual ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const { return ACTION_STATELESS; }
+	virtual ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND /*command*/) const { return ACTION_STATELESS; }
 	//Returns the appropriate menu image. Checkable items will get a checked/unchecked image.
 	std::string get_menu_image(hotkey::HOTKEY_COMMAND command) const;
 	//Returns a vector of images for a given menu

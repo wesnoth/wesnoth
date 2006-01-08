@@ -48,7 +48,7 @@ public:
 
 	virtual bool requires_event_focus() const { return false; }
 
-	virtual void process_help_string(int mousex, int mousey) {}
+	virtual void process_help_string(int /*mousex*/, int /*mousey*/) {}
 
 protected:
 	handler();

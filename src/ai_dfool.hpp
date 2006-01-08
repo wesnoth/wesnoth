@@ -96,7 +96,6 @@ namespace dfool {
 	const config::child_list& clear_assign = (**o).get_children("clear_assignment");
 	unit_map matching_units;
 	unit_map assigned_units;
-	int count=num;
 
 	assigned_units.clear();
 	//find units assigned to this order;

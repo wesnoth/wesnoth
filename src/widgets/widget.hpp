@@ -79,7 +79,7 @@ protected:
 
 	CVideo& video() const { return *video_; };
 
-	virtual void handle_event(SDL_Event const &event) {}
+	virtual void handle_event(SDL_Event const &/*event*/) {}
 
 	virtual void draw();
 	virtual void draw_contents() {};

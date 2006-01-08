@@ -47,7 +47,7 @@ inline int div100rounded(int num) {
 
 // round (base_damage * bonus / divisor) to the closest integer
 // but up or down towards base_damage
-static int round_damage(int base_damage, int bonus, int divisor) {
+inline int round_damage(int base_damage, int bonus, int divisor) {
 	const int rounding = divisor / 2 - (bonus < divisor ? 0 : 1);
 	return maximum<int>(1, (base_damage * bonus + rounding) / divisor);
 }

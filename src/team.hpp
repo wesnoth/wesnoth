@@ -148,7 +148,7 @@ public:
 		}
 	}
 
-	bool has_seen(int index) const {
+	bool has_seen(unsigned int index) const {
 		if(!uses_shroud() && !uses_fog()) return true;
 		if(index < seen_.size()) {
 			return seen_[index];
@@ -156,7 +156,7 @@ public:
 			return false;
 		}
 	}
-	void see(int index) {
+	void see(unsigned int index) {
 		if(index >= seen_.size()) {
 			seen_.resize(index+1);
 		}
