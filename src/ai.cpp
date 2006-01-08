@@ -101,12 +101,13 @@ protected:
 
         const std::vector<attack_type>& attacks = att->second.attacks();
 
-        int best_attack_rating = -1;
+        double best_attack_rating = 0.0;
         int best_attack = -1;
         for(size_t n = 0; n != attacks.size(); ++n) {
 		if (attacks[n].attack_weight() > 0){
 			const battle_stats stats = evaluate_battle_stats(get_info().map, get_info().teams, attacker, defender, n, get_info().units, get_info().state);
-			const int attack_rating = stats.damage_defender_takes*stats.nattacks*stats.chance_to_hit_defender;
+			const int attack_rating = stats.damage_defender_takes
+				*stats.nattacks*stats.chance_to_hit_defender*attacks[n].attack_weight();
 			if(best_attack == -1 || attack_rating > best_attack_rating) {
                  		best_attack = n;
                 		best_attack_rating = attack_rating;

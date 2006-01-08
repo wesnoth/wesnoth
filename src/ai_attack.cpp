@@ -332,7 +332,8 @@ int ai::choose_weapon(const location& att, const location& def,
 			//TODO: improve this rating formula!
 			const double rating =
 			   (double(stats.chance_to_hit_defender)/100.0)*
-		        	       minimum<int>(stats.damage_defender_takes,d_hitpoints)*stats.nattacks -
+		        	       minimum<int>(stats.damage_defender_takes,d_hitpoints)*stats.nattacks *
+				       attacks[a].attack_weight() -
 			   (double(stats.chance_to_hit_attacker)/100.0)*
 			               minimum<int>(stats.damage_attacker_takes,a_hitpoints)*stats.ndefends;
 			if(rating > current_rating || current_choice == -1) {
