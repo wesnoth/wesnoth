@@ -1629,8 +1629,6 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 		SDL_BlitSurface(surface,NULL,dst,&dstrect);
 	}
 
-	if (enemy_reach_ != NULL)
-		draw_enemies_reach(loc,xpos,ypos);
 	draw_footstep(loc,xpos,ypos);
 	draw_unit_on_tile(x,y,unit_image,alpha,blend_to);
 
@@ -1649,6 +1647,8 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 
 	if(!shrouded(x,y)) {
 		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOGSHROUD);
+		if (enemy_reach_ != NULL)
+			draw_enemies_reach(loc,xpos,ypos);
 	}
 
 	//draw the time-of-day mask on top of the hex
