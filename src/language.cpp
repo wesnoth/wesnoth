@@ -192,7 +192,7 @@ bool set_language(const language_def& locale)
 
 	// fill string_table (should be moved somwhere else some day)
 	try {
-		scoped_istream stream = preprocess_file("data/translations/english.cfg");
+		scoped_istream stream = preprocess_file("data/english.cfg");
 		read(cfg, *stream);
 	} catch(config::error& e) {
 		std::cerr << "Could not read english.cfg\n";
