@@ -80,7 +80,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	screen_(video), xpos_(0), ypos_(0),
 	zoom_(DefaultZoom), map_(map), units_(units),
 	minimap_(NULL), redrawMinimap_(false),
-	pathsList_(NULL),  status_(status),
+	pathsList_(NULL), enemy_reach_(NULL), status_(status),
 	teams_(t), lastDraw_(0), drawSkips_(0),
 	invalidateAll_(true), invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
@@ -89,8 +89,8 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	turbo_(false), grid_(false), sidebarScaling_(1.0),
 	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map),
-	tod_hex_mask1(NULL), tod_hex_mask2(NULL), enemy_reach_(NULL),
-	diagnostic_label_(0), fps_handle_(0)
+	tod_hex_mask1(NULL), tod_hex_mask2(NULL), diagnostic_label_(0),
+	fps_handle_(0)
 {
 	if(non_interactive()) {
 		screen_.lock_updates(true);
@@ -2320,7 +2320,7 @@ char *timestring ( void )
 
     char *tstring; 
     tstring = new char[TIME_SIZE];
-    strftime(tstring,TIME_SIZE,preferences::clock_format().c_str(),lt);
+    size_t s = strftime(tstring,TIME_SIZE,preferences::clock_format().c_str(),lt);
     return tstring;
     #undef TIME_SIZE
 }
@@ -2531,6 +2531,7 @@ void display::prune_chat_messages(bool remove_all)
 {
 	const unsigned int message_ttl = remove_all ? 0 : 1200000;
 	const unsigned int max_chat_messages = preferences::chat_lines();
+	int ticks = SDL_GetTicks();
 	if(chat_messages_.empty() == false && (chat_messages_.front().created_at+message_ttl < SDL_GetTicks() || chat_messages_.size() > max_chat_messages)) {
 		const int movement = font::get_floating_label_rect(chat_messages_.front().handle).h;
 
