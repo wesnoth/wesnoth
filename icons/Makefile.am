@@ -4,19 +4,19 @@ if GNOME1
 gnome1desktopdir = @GNOME1_DESKTOP@
 dist_gnome1desktop_DATA = wesnoth.desktop
 gnome1icondir = $(datadir)/icons
-gnome1icon_DATA = ../images/wesnoth-icon.png
+gnome1icon_DATA = ../icons/wesnoth-icon.png
 endif
 
 if GNOME2
 gnome2desktopdir = $(datadir)/applications
 dist_gnome2desktop_DATA = wesnoth.desktop 
 gnome2icondir = $(datadir)/icons
-gnome2icon_DATA = ../images/wesnoth-icon.png
+gnome2icon_DATA = ../icons/wesnoth-icon.png
 endif
 
 if KDE
 kdedesktopdir = @KDE_DESKTOP@
 dist_kdedesktop_DATA = wesnoth.desktop
 kdeicondir = @KDE_ICON@
-kdeicon_DATA = ../images/wesnoth-icon.png
+kdeicon_DATA = ../icons/wesnoth-icon.png
 endif
