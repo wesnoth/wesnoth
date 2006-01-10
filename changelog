@@ -5,7 +5,7 @@ SVN trunk (1.1+svn):
      * text cleanup in intro
      * replaced Sea Orc with Naga Fighter in Final Spring, Clearwater Port, and
        Rise of Wesnoth
-   * migrated unique units, scenarios, maps, and images to ./data/campaigns folder
+   * migrated unique units, scenarios, maps, and images to data/campaigns
  * campaign server
    * changed default port for campaign server to 15003 to separate 1.1 and 1.0
  * language and i18n:
@@ -26,6 +26,7 @@ SVN trunk (1.1+svn):
      allowed)
    * fix menu capitalization consistency (#4972)
    * reduce scrolling during unit movement
+   * make default zoom work properly
  * WML improvements
    * game is not limited to melee and ranged attacks anymore, retaliation will
      use any attack of the same range. Official name for current ranges are

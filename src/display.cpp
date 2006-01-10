@@ -493,7 +493,14 @@ int display::hex_width() const
 double display::zoom(int amount)
 {
 	int new_zoom = zoom_ + amount;
-	if (amount != 0 && team_valid() && new_zoom >= MinZoom(map_, map_area()) && new_zoom <= MaxZoom) {
+	const int min_zoom = MinZoom(map_, map_area());
+	if (new_zoom < min_zoom) {
+		new_zoom = min_zoom;
+	}
+	if (new_zoom > MaxZoom) {
+		new_zoom = MaxZoom;
+	}
+	if (new_zoom != zoom_ && team_valid()) {
 		SDL_Rect const &area = map_area();
 		xpos_ += (xpos_ + area.w / 2) * amount / zoom_;
 		ypos_ += (ypos_ + area.h / 2) * amount / zoom_;
