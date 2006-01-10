@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-01-06 08:38+0100\n"
-"PO-Revision-Date: 2006-01-02 00:29+0200\n"
+"PO-Revision-Date: 2006-01-11 01:24+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "MIME-Version: 1.0\n"
@@ -23,11 +23,11 @@ msgstr ""
 
 #: data/amla.cfg:8
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr ", נק\"ן מירבי +25%"
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +"
-msgstr "בונוס לנק\"פ המרביות +"
+msgstr "בונוס לנק\"פ המרבי +"
 
 #: data/amla.cfg:27
 msgid "Full Heal"
@@ -769,7 +769,6 @@ msgstr ""
 "ומתרפאות באופן מלא בתהליך. בחלק מהמקרים ניתן לבחור בין אפשרויות קידום שונות."
 
 #: data/help.cfg:203
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -794,8 +793,12 @@ msgstr ""
 "text=מג</ref>) יכולות להיות ארבע. כאשר יחידה מגיעה לדרגה המרבית שלה,  יתכן "
 "שתהיה זמינה עבורה האפשרות לקידום אחרי דרגה מרבית (קאד\"מ).\n"
 "הקאד\"מ ישנה את היחידה כל פעם שהיא תגיע לניסיון הנדרש, אבל היא תשאר באותה "
-"רמה. ההשפעה האופינית של הקאד\"מ היא הגדלת הנק\"פ  ב 3 לכל 100 נק\"נ שהושג. "
-"שם לב שרק מספר קטן של יחידות, כמו לדוגמה טורף גופות, באמת יתרפאו מהשפעת הקאד"
+"רמה. ההשפעה האופינית של הקאד\"מ היא הגדלת הנק\"פ  ב 3, הקאד\"מ הראשון  יושג "
+"באופן נורמלי ב 100 נק\"נ (80 נק\"נ ליחידות חכמות). בכל אופן, השגת קאד\"מ "
+"הולכת ונהיית קשה יותר עבור כל קאד\"מ שהיחידה קיבלה, כך שלעיתים קרובות יעיל "
+"יותר לנסות לקדם את יחידותיך שבדרגה נמוכה יותר.\n"
+"\n"
+"שים לב שרק מספר קטן של יחידות, כמו לדוגמה טורף גופות, באמת יתרפאו מהשפעת הקאד"
 "\"מ. רוב היחידות רק יזכו בבונוס לנק\"פ המירבי שלהן."
 
 #: data/help.cfg:208
@@ -1320,6 +1323,13 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"הרים תלולים מספיק כך שיחידות יצטרכו לעיתים קרובות לטפס מעל מכשולים כדי לנוע. "
+"מטבע זה, הם מספקים בונוס הגנה משמעותי לרוב היחידות, אבל באותו זמן גם מקשים "
+"באופן רציני את המעבר דרכם. רוב היחידות הרכובות פשוט לא יכולות להכנס לשטח "
+"הררי; לעומת זאת, פרשים אלפים הם יוצאי דופן לכלל זה, כמו גם רוכבי זאבים "
+"גובלינים. גמדים וטרולים ילידי שטח הררי, ולכן יכולים לנוע בו בקלות.\n"
+"\n"
+"רוב היחידות מקבלות בערך 60% הגנה בהרים, בעוד שגמדים נהנים מ - 70%."
 
 #: data/help.cfg:367 data/terrain.cfg:43
 msgid "Swamp"
@@ -1336,6 +1346,13 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
 msgstr ""
+"ביצות מייצגות כמעט כל סוד של אדמה רווית מים. ביצות מאיטות כמעט את כולם, "
+"ופוגעות ביכולתם להגן על עצמם. יוצאי הדופן לכך הם כל הגזעים שמוכשרים גופנית "
+"לשחייה במים, אילו מקבלים גם תנועה מלאה וגם בונוס להגנה. אלה שמוצאים את "
+"פרנסתם בביצות מיומנים גם בשימוש בשטח למציאת מחסה.\n"
+"\n"
+"רוב היחידות צריכות להסתדר עם 30% הגנב בביצות. אנשי-יםת נאגה ולטאנשים נאניםמ "
+"כולם באופן כללי מ 60%."
 
 #: data/help.cfg:377 data/terrain.cfg:34
 msgid "Shallow Water"
@@ -1353,6 +1370,14 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "Naga and Mermen enjoy 60%."
 msgstr ""
+"מים רדודים מייצגים כל גוף מים שעמוק מספיק כדי להגיע בערך מותניו של אדם "
+"בוגר.  דבר שמספיק כדי להאיט כמעט את כולם ולהשאיר אותם פתוחים לגמרי להתקפה. "
+"לגמדים, בהתחשב בכך שהמים מגיעים כמעט מעל ראשם, הדבר גורם לקשיים רבים. יוצאי "
+"הדופן לכך הם כל הגזעים שהגוף שלהם מותאם באופן טיבעי לשחייה, שבזכותו הם "
+"מקבלים בונוס הגנה משמעותי ותנועה מלאה.\n"
+"\n"
+"רוב היחידות צריכות להסתדר עם 20 עד 30% הגנה במים רדודים, בעוד שגם נאגה וגם "
+"אנשי-ים נהנים מ - 60%."
 
 #: data/help.cfg:387 data/terrain.cfg:25
 msgid "Deep Water"
@@ -1366,6 +1391,11 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"מים עמוקים מייצגים כל גוף מים שעמוק מספיק כדי לכסות את ראשו של אדם בוגר. רוב "
+"היחידות לא יכולות להכנס למים עמוקים. זה הוא התחום של יחידות שיכולות או לעוף, "
+"או לשחות בצורה מצויינת.\n"
+"\n"
+"גם אנשי-ים וגם נאגה מקבלים 50% הגנה במים עמוקים, עם תנועה מלאה."
 
 #: data/help.cfg:397 data/terrain.cfg:309
 msgid "Snow"
@@ -1448,6 +1478,8 @@ msgid ""
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
+"למדבריות יש הרכב טיפה שונה ממלכודות חול קטנות או חופים, אבל למטרות המשחק הם "
+"זהים. ראה ערך <ref>dst=terrain_sand text=חול</ref>."
 
 #: data/help.cfg:445 data/terrain.cfg:390
 msgid "Cave"
@@ -1464,6 +1496,12 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"סוג השטח מערה מייצג כל מחילה תת-קרקעית עם מספיק מקום ליחידה כדי לעבור. סוג "
+"השטח לא מוכר לחלוטין לרוב היחידות,  ולכן הן גם מואטות וגם הגנתן נפגעת. "
+"לגמדים וטרולים, שגרים במערות, קל באופן יחסי לנווט בסוג שטח זה, במיוחד גמדים, "
+"שבזכות גודלם הקטן יכולים לעקוף מכשולים רבים שגזעים אחרים לא יכולים.\n"
+"\n"
+"רוב היחידות מקבלות 20 עד 40% הגנה במערות, בעוד למדים יש 50%."
 
 #: data/help.cfg:455 data/terrain.cfg:140
 msgid "Savanna"
@@ -1570,6 +1608,15 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"לאילו שיכולים לבנות אחד, היכולת להניח גשר מציעה שחרור מהטבע ה‮הפכפך של דרכי "
+"המים,  שהמעברות שלהן הולכות ובאות עם הירידה והעליה של קו המים. וכל זה בלי "
+"לדבר על התענוג של רגליים יבשות, שאיבודו הוא לא נושא לצחוק בחודשים הקרים של "
+"השנה..\n"
+"\n"
+"לאילו שהולכים ביבשה או בים, גשר הוא הטוב ביותר משני העולמות - למטרות המשחק, "
+"מתייחסים אליו כאדמת מרעה או מים רדודים, איזה מהם שמציע את התנועה ובונוס "
+"ההגנה הטובים ביותר ליחידה שנמצאת על משושה הגשר. שים לב שיחידות שוחות ויחידות "
+"קרקע לא יכולות להמצא על משושה הגשר באותו זמן."
 
 #: data/help.cfg:504 data/terrain.cfg:397
 msgid "Cave Wall"
@@ -1811,7 +1858,7 @@ msgstr "גמדים"
 
 #: data/multiplayer.cfg:197
 msgid "Saurian"
-msgstr "לטאיש"
+msgstr "לטאנשים"
 
 #: data/multiplayer.cfg:211
 msgid "Age of Heroes"
@@ -1837,7 +1884,7 @@ msgstr "אתה יכול לבוא אם אתה רוצה, אבל המנהיג מע�
 
 #: data/scenarios/multiplayer/2p_Across_the_River.cfg:3
 msgid "2p - Across the River"
-msgstr "מעבר לנהר - 2ש"
+msgstr "2ש - מעבר לנהר"
 
 #: data/scenarios/multiplayer/2p_Across_the_River.cfg:5
 msgid ""
@@ -1845,23 +1892,27 @@ msgid ""
 "pretty well balanced towards both sides.\n"
 "You can use it AI vs AI to see how well a faction fares against another."
 msgstr ""
+"מפה זו היא דרך נוחה במיוחד לערוך בדיקות עם 2 סיעות, בגלל שהיא מאוזנת בצורה "
+"די טובה בין הצדדים.\n"
+"אתה יכול להשתמש בה כמחשב נגד מחשב כדי לראות כמה טוב מסתדרת סיעה נגד סיעה "
+"אחרת."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:7
 msgid "2p - Blitz"
-msgstr "מתקפת בזק - 2ש"
+msgstr "2ש - מתקפת בזק"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
 msgid "A duel map for super fast play. Recommended setting of 2g per village."
-msgstr ""
+msgstr "מפת דו קרב למשחק מהיר ביותר. מומלץ להגדיר 2ז לכפר."
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
 msgid "2p - Charge"
-msgstr "הסתער - 2ש"
+msgstr "2ש - הסתער"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
-msgstr ""
+msgstr "2ש - שדה הקרב סינסאון"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
@@ -1869,40 +1920,46 @@ msgid ""
 "favor epic, large-scale duel matches. Recommended settings of 150 G; 1G per "
 "village."
 msgstr ""
+"יש הרבה לגלות בחזית הקרב רחבת הידיים הזאת, מתוכנן לשחקנים שאוהבים, מערכות דו-"
+"קרב רחבות היקף עם עלילה. מומלץ להגדיר 150ז; 1ז לכפר."
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
-msgstr ""
+msgstr "2ש - מאורת אונים"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet. Recommended settings of 2G per village."
 msgstr ""
+"סכנה אורבת בכל פינה של שדה הקרב התת-קרקעי הזה, מפת דו קרב שבה כח ועורמה "
+"נפגשים. מומלץ להגדיר 2ז לכפר."
 
 #: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:3
 msgid "2p - Divide and Conquer"
-msgstr "הפרד ומשול - 2ש "
+msgstr "2ש - הפרד ומשול"
 
 #: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:4
 msgid ""
 "This small duel map divides the field of battle into three segments. "
 "Recommended settings of 2G per village."
-msgstr ""
+msgstr "מפת דו-קרב קטנה שמחלקת את שדה הקרב לשלושה חלקים. מומלץ להגדיר 2ז לכפר."
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
-msgstr "כפרונים - 2ש"
+msgstr "2ש - כפרונים"
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:4
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Recommended settings of 2G per village."
 msgstr ""
+"הופכת את החוות וכפרים הפשוטים של איזור שליו לשדה קרב מורכב. מומלץ להגדיר 2ז "
+"לכפר."
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
 msgid "2p - Hornshark Island"
-msgstr ""
+msgstr "2ש - אי כריש-הקרן"
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
 msgid ""
@@ -1912,7 +1969,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
 msgid "2p - Meteor Lake"
-msgstr "אגם המטאור  - 2ש"
+msgstr "2ש - אגם המטאור"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
 msgid ""
@@ -1922,7 +1979,7 @@ msgstr " "
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:3
 msgid "2p - Sablestone Delta"
-msgstr ""
+msgstr "2ש - דלתת האבן השחורה"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
 msgid ""
@@ -1932,7 +1989,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
-msgstr ""
+msgstr "2ש - מעבר ראש-הכסף"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
 msgid ""
@@ -1942,7 +1999,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
 msgid "2p - Sullas Ruins"
-msgstr ""
+msgstr "2ש - חורבות סולס"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
 msgid ""
@@ -1953,7 +2010,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
-msgstr ""
+msgstr "2ש -- ווסכדור"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
 msgid ""
@@ -2013,7 +2070,7 @@ msgstr "שיוויון! התוצאה הסופית:  $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:3
 msgid "3p - 1v1v1Hex"
-msgstr ""
+msgstr "3ש - 1נגד1נגד1משושה"
 
 #: data/scenarios/multiplayer/3p_1v1v1Hex.cfg:4
 msgid ""
@@ -2023,7 +2080,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
-msgstr ""
+msgstr "3ש - מוריטורי"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
 msgid ""
@@ -2033,7 +2090,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
 msgid "3p - Triple Blitz"
-msgstr "מתקפת בזק משולשת - 3ש"
+msgstr "3ש - מתקפת בזק משולשת"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
 msgid ""
@@ -2043,7 +2100,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_An_Island.cfg:7
 msgid "4p - An Island"
-msgstr "אי - 4ש"
+msgstr "4ש - אי"
 
 #: data/scenarios/multiplayer/4p_An_Island.cfg:10
 msgid ""
@@ -2055,7 +2112,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:3
 msgid "4p - Blue Water Province"
-msgstr " מושבת המים הכחולים - 4ש"
+msgstr "4ש - מושבת המים הכחולים"
 
 #: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:4
 msgid ""
@@ -2067,7 +2124,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
 msgid "4p - Castle Hopping Isle"
-msgstr ""
+msgstr "4ש - האי קפיצה בין טירות"
 
 #: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:11
 msgid ""
@@ -2078,7 +2135,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
-msgstr "התנגשות - 4ש"
+msgstr "4ש - התנגשות"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid ""
@@ -2088,7 +2145,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:3
 msgid "4p - King of the Hill"
-msgstr "מלך הגבעה - 4ש"
+msgstr "4ש - מלך הגבעה"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 msgid ""
@@ -2098,7 +2155,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
-msgstr "לגונה - 4ש"
+msgstr "4ש - לגונה"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
 msgid ""
@@ -2108,18 +2165,17 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
 msgid "4p - Morituri"
-msgstr ""
+msgstr "4ש - מוריטורי"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
 "settings of 2G per village."
-msgstr " "
+msgstr ""
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
-msgstr ""
+msgstr "4ש - מצור טירות"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:9
 msgid "Take control of this huge river delta."
@@ -2127,15 +2183,15 @@ msgstr "השתלט על דלתת הנהר הענקית הזו."
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:3
 msgid "4p - The Valley of Death"
-msgstr "עמק המוות - 4ש"
+msgstr "4ש - עמק המוות"
 
 #: data/scenarios/multiplayer/4p_The_Valley_of_Death.cfg:5
 msgid "Can you defeat all enemies and declare victory in this desolate valley?"
-msgstr ""
+msgstr "האם אתה יכול להביס את כל האוייבים ולהכריז על נצחון בעמק העזוב הזה?"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
-msgstr ""
+msgstr "4ש - האדמות הפראיות"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
 msgid ""
@@ -2146,15 +2202,15 @@ msgstr ""
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
 msgid "5p - Forest of Fear"
-msgstr "יער הפחד - 4ש"
+msgstr "4ש - יער הפחד"
 
 #: data/scenarios/multiplayer/5p_ForestOfFear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
-msgstr ""
+msgstr "בפני השטח המגוונים האלו, חמישה צבאות נלחמים לעליונות."
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
-msgstr ""
+msgstr "6ש - שדה לוחמי הקודש"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
 msgid ""
@@ -2166,15 +2222,15 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
-msgstr "עוגה משושה - 6ש"
+msgstr "6ש - עוגה משושה"
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr ""
+msgstr "משחק צוות של 2 נגד 2 או 3 נגד 3."
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:3
 msgid "6p - Smallolof"
-msgstr ""
+msgstr "6ש - אולוף הקטנה"
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:4
 msgid ""
@@ -2182,15 +2238,17 @@ msgid ""
 "where six boxed-in armies come to a head. Recommended settings of 2 gold per "
 "village."
 msgstr ""
+"רק טקטיקן אמיתי ישרוד את שדה הקרב הקטלני והמגביל הזה, איכן ששש צבאות שלכודים "
+"ביחד נפגשים ראש בראש. מומךץ להגדיר 2ז לכפר."
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:7
 msgid "7p - Battle World"
-msgstr "עולם הקרב -7ש"
+msgstr "7ש - עולם הקרב"
 
 #: data/scenarios/multiplayer/7p_battleworld.cfg:9
 msgid ""
 "Up to 7 armies thrash about in this peaceful land. Prepare for a long battle."
-msgstr ""
+msgstr "עד 7 צבאות צועדים למלחמה בארץ השלווה הזאת. התכוננן לקרב ארוך."
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:17
@@ -2202,6 +2260,8 @@ msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
+"מפה שמיוצרת באופן אקראי. שים לב: מפות אקראיות הן לעיתים קרובות לא מאוזנות, "
+"אבל אם יש לך את הזמן, אתה יכול ליצור אותן מחדש עד שתקבל אחת טובה."
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:17
@@ -2214,6 +2274,8 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"מפה אקראית עם חול כסוג השטח העיקרי. שים לב: מפות אקראיות הן לעיתים קרובות לא "
+"מאוזנות, אבל אם יש לך את הזמן, אתה יכול ליצור אותן מחדש עד שתקבל אחת טובה."
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:17
@@ -2226,6 +2288,8 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"מפה אקראית עם ביצה כסוג השטח העיקרי. שים לב: מפות אקראיות הן לעיתים קרובות "
+"לא מאוזנות, אבל אם יש לך את הזמן, אתה יכול ליצור אותן מחדש עד שתקבל אחת טובה."
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:17
@@ -2238,6 +2302,9 @@ msgid ""
 "terrains. Note: random maps are often unbalanced, but if you have time, you "
 "can regenerate them until you get a good one."
 msgstr ""
+"מפה אקראית שנמצאת בהפסקה בין הסתיו לחורף, עם בעיקר שטחים מושלגים. שים לב: "
+"מפות אקראיות הן לעיתים קרובות לא מאוזנות, אבל אם יש לך את הזמן, אתה יכול "
+"ליצור אותן מחדש עד שתקבל אחת טובה."
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
@@ -2257,7 +2324,7 @@ msgstr "ירוק"
 
 #: data/team_colors.cfg:22
 msgid "Cyan"
-msgstr ""
+msgstr "ציאן"
 
 #: data/team_colors.cfg:28
 msgid "Purple"
@@ -2311,9 +2378,8 @@ msgid "Snow Village"
 msgstr "כפר שלג"
 
 #: data/terrain.cfg:297
-#, fuzzy
 msgid "Dwarven Village"
-msgstr "כפר מדברי"
+msgstr "כפר גמדי"
 
 #: data/terrain.cfg:334
 msgid "Desert Hills"
@@ -2518,7 +2584,6 @@ msgstr ""
 "מכדי לשלוט על אזור; ויחידות מסתננות מיומנות מספיק בכדי להתעלם מאזורים אלו."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -2535,13 +2600,12 @@ msgid ""
 msgstr "יחידות שמוצבות בכפרים יתרפאו ב 8 נקודות םגיעה בתחילת תורן."
 
 #: data/tips.cfg:10
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
 msgstr ""
-"יחידות שלא זזות או תוקפות במהלך התור שלהן נחות, ויקבלו חזרה 2 נקודות פגיעה "
-"בתחילת התור הבא שלהן."
+"יחידות נחות אם הן לא זזות או תוקפות במהלך התור שלהן. הן יקבלו חזרה 2 נקודות "
+"פגיעה בתחילת התור הבא שלהן."
 
 #: data/tips.cfg:11
 msgid ""
@@ -2595,13 +2659,11 @@ msgstr ""
 "למספר כיוונים כדי לעקב את יחדות האוייב."
 
 #: data/tips.cfg:17
-#, fuzzy
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
-msgstr "אל תפחד לסגת או לתארגן מחדש, לעיתים קרובות זהו המפתח לניצחון."
+msgstr "אל תפחד לסגת ולהתארגן מחדש, לעיתים קרובות זהו המפתח לניצחון."
 
 #: data/tips.cfg:18
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -2624,7 +2686,6 @@ msgstr ""
 "מבעלי בריתך יהיו מוכנים לפנות לך מקום במצודה שלך כדי שתוכל לגייס משם."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
@@ -2687,12 +2748,11 @@ msgstr ""
 "להתקוף אף אחד בעצמם."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attacks."
 msgstr ""
-"יכולת ההתקפה 'האטה'  תגרום ליחדות האוייב לנוע לאט יותר, אבל היא גם מורידה "
+"יכולת ההתקפה 'האטה'  תגרום ליחדות האוייב לנוע לאט יותר, אבל היא גם תפחית "
 "בחצי את הנזק שגורמות ההתקפות שלהן."
 
 #: data/tips.cfg:30
@@ -2720,6 +2780,10 @@ msgid ""
 "progressively harder for each AMLA the unit receives, however. Thus, it is "
 "often more useful to try to advance your lower level units."
 msgstr ""
+"יחידות יכולות לקבל קידום אחרי דרגה מרבית (קאד\"מ), שבדרך כלל מעלה את נקודות "
+"הפגיעה המרביות ב - 3. בכל אופן, השגת קאד\"מ הולכת ונהיית קשה יותר עבור כל קאד"
+"\"מ שהיחידה קיבלה, כך שלעיתים קרובות יעל יותר לנסות לקדם את יחידותיך שבדרגה "
+"נמוכה יותר."
 
 #: data/tips.cfg:34
 msgid ""
@@ -2727,6 +2791,8 @@ msgid ""
 "the Help Wesnoth button.  This information is vital so we can adjust "
 "campaign difficulty."
 msgstr ""
+"אתה יכול לשלוח לפרוייקט ווסנות' סיכום של התקדמותך באופן אנונימי על ידי לחיצה "
+"על הכפתור עזור לווסנות'. מידע זה חיוני כדי שנוכל לכוונן את הקושי של המערכה."
 
 #: data/traits.cfg:6 data/translations/english.cfg:61
 msgid "loyal"
@@ -3069,6 +3135,8 @@ msgid ""
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
+"אבן: התקפה זאת הופכת את הקורבן לאבן. יחידות שהפכו לאבן לא יכולות לזוז או "
+"לתקוף."
 
 #: data/translations/english.cfg:132
 msgid "race^Undead"
@@ -3076,7 +3144,7 @@ msgstr "אל-מתים"
 
 #: data/translations/english.cfg:135
 msgid "$name's Bridge,$name's Crossing"
-msgstr ""
+msgstr "גשר $name,מעברת $name"
 
 #: data/translations/english.cfg:136
 msgid "$name's Highway,$name's Pass,Path of $name"
@@ -3088,7 +3156,7 @@ msgstr "$name נהר,נהר $name"
 
 #: data/translations/english.cfg:138
 msgid "$name Forest,$name's Forest"
-msgstr ""
+msgstr "יער $name, היער של $name"
 
 #: data/translations/english.cfg:139
 msgid "$name Lake"
@@ -4620,7 +4688,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
-msgstr ""
+msgstr "משמר הדרקון הגמדי"
 
 #: data/units/Dwarvish_Dragonguard.cfg:23
 msgid ""
@@ -4637,7 +4705,7 @@ msgstr ""
 #: data/units/Dwarvish_Dragonguard.cfg:27
 #: data/units/Dwarvish_Dragonguard.cfg:47
 msgid "dragonstaff"
-msgstr ""
+msgstr "מטה דרקון"
 
 #: data/units/Dwarvish_Fighter.cfg:3
 msgid "Dwarvish Fighter"
@@ -7620,9 +7688,8 @@ msgid "+English (GB) Translation"
 msgstr "+תרגום לאנגלית (אנגליה)"
 
 #: src/about.cpp:201
-#, fuzzy
 msgid "+Esperanto Translation"
-msgstr "+תרגום לגרמנית"
+msgstr "+תרגום לאספרנטו"
 
 #: src/about.cpp:205
 msgid "+Estonian Translation"
@@ -7745,9 +7812,8 @@ msgid "Doubled"
 msgstr "כפול"
 
 #: src/actions.cpp:453 src/actions.cpp:602
-#, fuzzy
 msgid "Halved"
-msgstr "נשמר"
+msgstr "הופחת בחצי"
 
 #: src/actions.cpp:453 src/actions.cpp:602 src/actions.cpp:871
 #: src/actions.cpp:1041
@@ -8690,24 +8756,20 @@ msgid "Status"
 msgstr "מצב"
 
 #: src/multiplayer_lobby.cpp:101
-#, fuzzy
 msgid "--no games open--"
-msgstr "<אין משחקים פתוחים>"
+msgstr "--אין משחקים פתוחים--"
 
 #: src/multiplayer_lobby.cpp:296
-#, fuzzy
 msgid "Unkown era"
-msgstr "תרחיש לא ידוע: "
+msgstr "עידן לא ידוע"
 
 #: src/multiplayer_lobby.cpp:299
-#, fuzzy
 msgid "Unknown era"
-msgstr "תרחיש לא ידוע: "
+msgstr "עידן לא ידוע: "
 
 #: src/multiplayer_lobby.cpp:321 src/multiplayer_lobby.cpp:323
-#, fuzzy
 msgid "Unknown scenario"
-msgstr "תרחיש לא ידוע: "
+msgstr "תרחיש לא ידוע"
 
 #: src/multiplayer_lobby.cpp:332
 msgid "Vacant Slot"
@@ -8726,7 +8788,6 @@ msgid "Quit"
 msgstr "צא"
 
 #: src/multiplayer_ui.cpp:79
-#, fuzzy
 msgid "Invalid Color"
 msgstr "צבע לא חוקי"
 
@@ -9302,9 +9363,8 @@ msgid "TitleScreen button^Preferences"
 msgstr "העדפות"
 
 #: src/titlescreen.cpp:206
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "טען"
+msgstr "עזור לווסנות'"
 
 #: src/titlescreen.cpp:207
 msgid "About"
@@ -9344,7 +9404,7 @@ msgstr "קבע את אפשרוייות המשחק"
 
 #: src/titlescreen.cpp:215
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "עזור לווסנות' על ידי שליחת מידע אלינו"
 
 #: src/titlescreen.cpp:216
 msgid "View the credits"
@@ -9389,6 +9449,3 @@ msgstr "סדר"
 #: src/unit_types.cpp:989
 msgid "neutral"
 msgstr "ניטרלי"
-
-#~ msgid "Yellow"
-#~ msgstr "צהוב"
