@@ -79,7 +79,6 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 	gui.invalidate_all();
 	gui.draw();
 	gui.update_display();
-	const paths_wiper wiper(gui);
 
 	if(preferences::turn_bell()) {
 		sound::play_sound(game_config::sounds::turn_bell);
@@ -186,6 +185,7 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 
 	//send one more time to make sure network is up-to-date.
 	turn_data.send_data();
+	gui.set_paths(NULL);
 }
 
 turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
@@ -194,8 +194,7 @@ turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
 		     std::vector<team>& teams, int team_num, unit_map& units,
 		     TURN_MODE mode, floating_textbox& textbox,
 		     replay_network_sender& replay_sender)
-  : paths_wiper(gui),
-    gameinfo_(gameinfo), state_of_game_(state_of_game), status_(status),
+  : gameinfo_(gameinfo), state_of_game_(state_of_game), status_(status),
     terrain_config_(terrain_config), level_(level),
     key_(key), gui_(gui), map_(map), teams_(teams), team_num_(team_num),
     units_(units), browse_(mode != PLAY_TURN), allow_network_commands_(mode == BROWSE_NETWORKED),

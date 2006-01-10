@@ -16,13 +16,13 @@
 #include "actions.hpp"
 #include "ai_interface.hpp"
 #include "dialogs.hpp"
+#include "display.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "log.hpp"
 #include "pathfind.hpp"
 #include "playlevel.hpp"
-#include "playturn.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
@@ -792,7 +792,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const bool teleport = u->second.type().teleports();
 
 			paths paths_list(map,state,gameinfo,units,src,teams,ignore_zocs,teleport);
-			paths_wiper wiper(disp);
 
 			unit current_unit = u->second;
 
@@ -852,6 +851,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 
 			fix_shroud = !replayer.is_skipping() && true;
+			disp.set_paths(NULL);
 		}
 
 		else if((child = cfg->child("attack")) != NULL) {

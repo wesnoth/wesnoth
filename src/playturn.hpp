@@ -37,25 +37,13 @@ class replay_network_sender;
 #include <map>
 #include <vector>
 
-struct paths_wiper
-{
-	paths_wiper(display& gui) : gui_(gui)
-	{}
-
-	~paths_wiper() { gui_.set_paths(NULL); }
-
-private:
-	display& gui_;
-};
-
 struct command_disabler
 {
 	command_disabler();
 	~command_disabler();
 };
 
-class turn_info : public hotkey::command_executor, public events::handler,
-                  private paths_wiper
+class turn_info : public hotkey::command_executor, public events::handler
 {
 public:
 	//this keeps track of any textbox that might be used to do searching

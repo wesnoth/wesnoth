@@ -492,6 +492,7 @@ redo_turn:
 					recorder.end_turn();
 					ai_obj->sync_network();
 
+					gui.set_paths(NULL);
 					gui.recalculate_minimap();
 					clear_shroud(gui,status,map,gameinfo,units,teams,player_number-1);
 					gui.invalidate_unit();

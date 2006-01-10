@@ -417,7 +417,6 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 	const bool ignore_zocs = u_it->second.type().is_skirmisher();
 	const bool teleport = u_it->second.type().teleports();
 	paths current_paths(info_.map,info_.state,info_.gameinfo,info_.units,from,info_.teams,ignore_zocs,teleport);
-	paths_wiper wiper(info_.disp);
 
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
 
@@ -501,6 +500,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 		game_events::fire("sighted",to);
 	}
 
+	info_.disp.set_paths(NULL);
 	sync_network();
 
 	return to;
