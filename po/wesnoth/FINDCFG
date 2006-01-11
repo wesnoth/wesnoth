@@ -1,4 +1,5 @@
 find data -name themes -prune -o -name scenarios -prune -o -name campaigns -prune -o -name '*.cfg' -print
 find data/scenarios/multiplayer -name '*.cfg' -print
 find data/campaigns/*/units -name '*.cfg' -print
+echo data/english.cfg
 echo data/themes/default.cfg
