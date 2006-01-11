@@ -219,7 +219,7 @@ static PyObject* attacktype_get_slow(wesnoth_attacktype* type, void* closure)
 
 static PyObject* attacktype_get_range(wesnoth_attacktype* type, void* closure)
 {
-	return Py_BuildValue("s",type->attack_type_->range());
+	return Py_BuildValue("s",type->attack_type_->range().c_str());
 }
 
 static PyGetSetDef attacktype_getseters[] = {
