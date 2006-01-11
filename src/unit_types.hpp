@@ -29,8 +29,8 @@ class unit_animation
 public:
 	struct frame {
 		frame() : xoffset(0), halo_x(0), halo_y(0) {}
-		explicit frame(const std::string& str) : xoffset(0), image(str),
-		                                         halo_x(0), halo_y(0) {}
+		explicit frame(const std::string& str, const std::string & diag ="") : xoffset(0), image(str),image_diagonal(diag),
+		                                         halo_x(0), halo_y(0) {};
 		explicit frame(const config& cfg);
 
 		// int start, end;
@@ -42,21 +42,20 @@ public:
 	};
 
 	unit_animation();
-	explicit unit_animation(const config& cfg);
-	explicit unit_animation(const std::string image, int begin_at, int end_at);
+	explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
+	explicit unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal = "");
 
-	enum FRAME_TYPE { UNIT_FRAME, MISSILE_FRAME };
 	enum FRAME_DIRECTION { VERTICAL, DIAGONAL };
 
-	void start_animation(int start_frame, FRAME_TYPE type, int acceleration);
+	void start_animation(int start_frame,  int acceleration);
 	void update_current_frames();
 	bool animation_finished() const;
-	const frame& get_current_frame(FRAME_TYPE type=UNIT_FRAME) const;
-	const frame& get_first_frame(FRAME_TYPE type=UNIT_FRAME) const;
-	const frame& get_last_frame(FRAME_TYPE type=UNIT_FRAME) const;
+	const frame& get_current_frame() const;
+	const frame& get_first_frame() const;
+	const frame& get_last_frame() const;
 	int get_animation_time() const;
-	int get_first_frame_time(FRAME_TYPE type=UNIT_FRAME) const;
-	int get_last_frame_time(FRAME_TYPE type=UNIT_FRAME) const;
+	int get_first_frame_time() const;
+	int get_last_frame_time() const;
 
 	struct sfx {
 		int time;
@@ -67,13 +66,12 @@ public:
 
 private:
 
-	// std::vector<frame> frames_[2];
 	animated<frame> unit_frames_;
-	animated<frame> missile_frames_;
 
 	std::vector<sfx> sfx_;
 };
 
+class unit_type;
 //the 'attack type' is the type of attack, how many times it strikes,
 //and how much damage it does.
 class attack_type
@@ -81,7 +79,7 @@ class attack_type
 public:
 	enum RANGE { SHORT_RANGE, LONG_RANGE };
 
-	attack_type(const config& cfg);
+	attack_type(const config& cfg, const unit_type& unit);
 	const t_string& name() const;
 	const std::string& id() const;
 	const std::string& type() const;
@@ -101,13 +99,23 @@ public:
 	//this function returns a random animation out of the possible
 	//animations for this attack. It will not return the same attack
 	//each time.
-	const unit_animation& animation(gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
-
+	const std::pair<const unit_animation*,const unit_animation*> animation(gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
 	bool matches_filter(const config& cfg) const;
 	bool apply_modification(const config& cfg,std::string* description);
 private:
-	std::vector<unit_animation> animation_;
-	std::vector<unit_animation> direction_animation_[6];
+	struct attack_animation
+	{
+
+		explicit attack_animation(const config& cfg);
+		explicit attack_animation(const std::string &image):animation(image,-200,100) {};
+		int matches(gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
+
+		std::vector<gamemap::location::DIRECTION> directions;
+		unit_animation animation;
+		unit_animation missile_animation;
+
+	};
+	std::vector<attack_animation> animation_;
 	t_string description_;
 	std::string id_;
 	std::string type_;
@@ -260,11 +268,11 @@ public:
 
 	const std::string& race() const;
 
-	const unit_animation* defend_animation(bool hits, std::string range) const;
+	const unit_animation& defend_animation(bool hits, std::string range) const;
 	const unit_animation* teleport_animation() const;
 	const unit_animation* extra_animation(std::string flag) const;
-	const unit_animation* die_animation(const attack_type* attack) const;
-	const unit_animation* move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
+	const unit_animation& die_animation(const attack_type* attack) const;
+	const unit_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 
 private:
 	void operator=(const unit_type& o);
@@ -309,7 +317,7 @@ private:
 
 		explicit defensive_animation(const config& cfg);
 		explicit defensive_animation(const std::string &image, const std::string &range="",const hit_type for_hit= HIT_OR_MISS): hits(for_hit),range(utils::split(range)),animation(image,-150,150) {};
-		bool matches(bool hits, std::string range) const;
+		int matches(bool hits, std::string range) const;
 
 		hit_type hits;
 		std::vector<std::string> range;
@@ -325,7 +333,8 @@ private:
 	struct death_animation
 	{
 		explicit death_animation(const config& cfg);
-		bool matches(const attack_type* attack) const;
+		explicit death_animation(const std::string &image):animation(image,0,10) {};
+		int matches(const attack_type* attack) const;
 
 		std::vector<std::string> damage_type, special;
 		unit_animation animation;
@@ -337,7 +346,7 @@ private:
 	{
 		explicit movement_animation(const config& cfg);
 		explicit movement_animation(const std::string& image,const std::string& terrain="",gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS);
-		bool matches(const std::string &terrain,gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
+		int matches(const std::string &terrain,gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
 
 		std::vector<std::string> terrain_types;
 		std::vector<gamemap::location::DIRECTION> directions;

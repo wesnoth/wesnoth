@@ -1468,7 +1468,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			if(anim_ptr != NULL) {
 				unit_animation anim(*anim_ptr);
 
-				anim.start_animation(anim.get_first_frame_time(),unit_animation::UNIT_FRAME,screen->turbo() ? 5:1);
+				anim.start_animation(anim.get_first_frame_time(),screen->turbo() ? 5:1);
 				anim.update_current_frames();
 
 				while(!anim.animation_finished()) {

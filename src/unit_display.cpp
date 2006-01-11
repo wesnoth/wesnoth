@@ -75,12 +75,12 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	if (teleport_unit && !disp.fogged(a.x, a.y)) { // teleport
 		unit_animation teleport_animation =  *teleport_animation_p;
 		int animation_time;
-		const int begin_at = teleport_animation.get_first_frame_time(unit_animation::UNIT_FRAME);
-		teleport_animation.start_animation(begin_at, unit_animation::UNIT_FRAME, acceleration);
+		const int begin_at = teleport_animation.get_first_frame_time();
+		teleport_animation.start_animation(begin_at,  acceleration);
 		animation_time = teleport_animation.get_animation_time();
 		disp.scroll_to_tile(a.x,a.y,display::ONSCREEN);
 		while(animation_time < 0) {
-			const std::string* unit_image = &teleport_animation.get_current_frame(unit_animation::UNIT_FRAME).image;
+			const std::string* unit_image = &teleport_animation.get_current_frame().image;
 			image::locator unit_loc;
 			if (unit_image->empty()) {
 				unit_loc = u.image_loc();
@@ -104,16 +104,15 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		}
 	}
 
-	const unit_animation* movement_anim = u.type().move_animation(map.underlying_terrain(src_terrain),a.get_relative_dir(b));
-	const int total_anim_time = (movement_anim->get_last_frame_time(unit_animation::UNIT_FRAME) - movement_anim->get_first_frame_time(unit_animation::UNIT_FRAME)) * u.movement_cost(map,terrain);
-	image::locator unit_loc = image::locator(movement_anim->get_first_frame().image,u.team_rgb_range(),u.type().flag_rgb());
+	const unit_animation& movement_anim = u.type().move_animation(map.underlying_terrain(src_terrain),a.get_relative_dir(b));
+	const int total_anim_time = (movement_anim.get_last_frame_time() - movement_anim.get_first_frame_time()) * u.movement_cost(map,terrain);
+	image::locator unit_loc = image::locator(movement_anim.get_first_frame().image,u.team_rgb_range(),u.type().flag_rgb());
 	for(int i = 0 ; i <  u.movement_cost(map,terrain) ; i++ ) {
-		unit_animation movement_animation(*movement_anim);
-		movement_animation.start_animation(movement_animation.get_first_frame_time(unit_animation::UNIT_FRAME),
-				unit_animation::UNIT_FRAME, acceleration);
+		unit_animation movement_animation(movement_anim);
+		movement_animation.start_animation(movement_animation.get_first_frame_time(), acceleration);
 		while(!movement_animation.animation_finished()) {
-			const std::string* unit_image = &movement_animation.get_current_frame(unit_animation::UNIT_FRAME).image;
-			const int anim_time = i* (total_anim_time/u.movement_cost(map,terrain))+movement_animation.get_animation_time() - movement_animation.get_first_frame_time(unit_animation::UNIT_FRAME);
+			const std::string* unit_image = &movement_animation.get_current_frame().image;
+			const int anim_time = i* (total_anim_time/u.movement_cost(map,terrain))+movement_animation.get_animation_time() - movement_animation.get_first_frame_time();
 			if (!unit_image->empty()) {
 				unit_loc = image::locator(*unit_image,u.team_rgb_range(),u.type().flag_rgb());
 			} else {
@@ -167,11 +166,11 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		unit_animation teleport_animation =  *teleport_animation_p;
 		int animation_time;
 		const int end_at = teleport_animation.get_last_frame_time();
-		teleport_animation.start_animation(0, unit_animation::UNIT_FRAME, acceleration);
+		teleport_animation.start_animation(0, acceleration);
 		animation_time = teleport_animation.get_animation_time();
 		disp.scroll_to_tile(b.x,b.y,display::ONSCREEN);
 		while(animation_time < end_at) {
-			const std::string* unit_image = &teleport_animation.get_current_frame(unit_animation::UNIT_FRAME).image;
+			const std::string* unit_image = &teleport_animation.get_current_frame().image;
 
 			image::locator unit_loc;
 			if (unit_image->empty()) {
@@ -265,28 +264,25 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u, const 
 
 	surface unit_image(NULL);
 
-	const unit_animation* const anim_ptr = u.type().die_animation(attack);
-	if(anim_ptr != NULL) {
-		unit_animation anim(*anim_ptr);
+	unit_animation anim(u.type().die_animation(attack));
 
-		anim.start_animation(anim.get_first_frame_time(),unit_animation::UNIT_FRAME,disp.turbo() ? 5:1);
-		anim.update_current_frames();
+	anim.start_animation(anim.get_first_frame_time(),disp.turbo() ? 5:1);
+	anim.update_current_frames();
 
-		while(!anim.animation_finished()) {
+	while(!anim.animation_finished()) {
 
-			const unit_animation::frame& frame = anim.get_current_frame();
+		const unit_animation::frame& frame = anim.get_current_frame();
 
-			const surface surf(image::get_image(image::locator(frame.image,u.team_rgb_range(), u.type().flag_rgb())));
-			if(surf.get() != NULL) {
-				unit_image = surf;
-			}
-			disp.draw_tile(loc.x,loc.y,unit_image);
-			disp.update_display();
-
-			SDL_Delay(10);
-
-			anim.update_current_frames();
+		const surface surf(image::get_image(image::locator(frame.image,u.team_rgb_range(), u.type().flag_rgb())));
+		if(surf.get() != NULL) {
+			unit_image = surf;
 		}
+		disp.draw_tile(loc.x,loc.y,unit_image);
+		disp.update_display();
+
+		SDL_Delay(10);
+
+		anim.update_current_frames();
 	}
 
 	const int frame_time = 30;
@@ -329,12 +325,14 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		leader->second.set_leading(true);
 	}
 
-	unit_animation attack_anim = attack.animation(get_adjacent_direction(a,b));
+	const std::pair<const unit_animation*,const unit_animation*> tmp_pair = attack.animation(get_adjacent_direction(a,b)) ;
+	unit_animation attack_anim = *tmp_pair.first;
+	unit_animation missile_anim = *tmp_pair.second;
 
 	//the missile frames are based around the time when the missile impacts.
 	//the 'real' frames are based around the time when the missile launches.
-	const int first_missile = minimum<int>(-100,attack_anim.get_first_frame_time(unit_animation::MISSILE_FRAME));
-	const int last_missile = attack_anim.get_last_frame_time(unit_animation::MISSILE_FRAME);
+	const int first_missile = minimum<int>(-100,missile_anim.get_first_frame_time());
+	const int last_missile = missile_anim.get_last_frame_time();
 
 	const int real_last_missile = last_missile - first_missile;
 	const int missile_impact = -first_missile;
@@ -350,7 +348,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	const int play_hit_sound_at = 0;
 
 	const bool hits = damage > 0;
-	const int begin_at = attack_anim.get_first_frame_time(unit_animation::UNIT_FRAME);
+	const int begin_at = attack_anim.get_first_frame_time();
 	// more damage shown for longer, but 1s at most for this factor
 	const int end_at = maximum<int>(minimum<int>((damage+1)*time_resolution+missile_impact, 1000),
 		maximum(attack_anim.get_last_frame_time(),real_last_missile));
@@ -379,10 +377,11 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	const std::string* unit_halo_image = NULL;
 	int missile_halo_x = -1, missile_halo_y = -1, unit_halo_x = -1, unit_halo_y = -1;
 
-	attack_anim.start_animation(begin_at, unit_animation::UNIT_FRAME, acceleration);
-	attack_anim.start_animation(begin_at + first_missile, unit_animation::MISSILE_FRAME, acceleration);
+	attack_anim.start_animation(begin_at, acceleration);
+	missile_anim.start_animation(begin_at + first_missile, acceleration);
 
 	attack_anim.update_current_frames();
+	missile_anim.update_current_frames();
 	int animation_time = attack_anim.get_animation_time();
 	def->second.set_defending(hits, attack.range(), animation_time, acceleration);
 
@@ -404,7 +403,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 			played_hit_sound = true;
 		}
 
-		const unit_animation::frame& unit_frame = attack_anim.get_current_frame(unit_animation::UNIT_FRAME);
+		const unit_animation::frame& unit_frame = attack_anim.get_current_frame();
 
 		LOG_DP << "Animation time :" << animation_time << ", image " << unit_frame.image << "\n";
 		int new_halo_x = unit_frame.halo_x;
@@ -482,7 +481,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		}
 
 		if(animation_time >= 0 && animation_time < real_last_missile && !hide) {
-			const unit_animation::frame& missile_frame = attack_anim.get_current_frame(unit_animation::MISSILE_FRAME);
+			const unit_animation::frame& missile_frame = missile_anim.get_current_frame();
 			LOG_DP << "Missile: animation time :" << animation_time << ", image "
 				<< missile_frame.image << ", halo: " << missile_frame.halo << "\n";
 
@@ -506,6 +505,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 			static const std::string default_missile(game_config::missile_n_image);
 			static const std::string default_diag_missile(game_config::missile_ne_image);
 			if(missile_image->empty()) {
+				printf("qmslkfdjqmslkdfjl\n");
 				if(dir == unit_animation::VERTICAL)
 					missile_image = &default_missile;
 				else
@@ -570,6 +570,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		// ticks = SDL_GetTicks();
 
 		attack_anim.update_current_frames();
+		missile_anim.update_current_frames();
 		def->second.update_defending_frame();
 		animation_time = attack_anim.get_animation_time();
 		events::pump();
@@ -647,7 +648,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		return unit_attack_ranged(disp, units, a, b, damage, attack);
 	}
 
-	unit_animation attack_anim = attack.animation(get_adjacent_direction(a,b));
+	unit_animation attack_anim = *attack.animation(get_adjacent_direction(a,b)).first;
 
 	const bool hits = damage > 0;
 	const std::vector<unit_animation::sfx>& sounds = attack_anim.sound_effects();
@@ -706,7 +707,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	const std::string* halo_image = NULL;
 	int halo_x = -1, halo_y = -1;
 
-	attack_anim.start_animation(begin_at, unit_animation::UNIT_FRAME, acceleration);
+	attack_anim.start_animation(begin_at, acceleration);
 
 	int animation_time = attack_anim.get_animation_time();
 
@@ -766,7 +767,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 		int xoffset = 0;
 
-		const unit_animation::frame& unit_frame = attack_anim.get_current_frame(unit_animation::UNIT_FRAME);
+		const unit_animation::frame& unit_frame = attack_anim.get_current_frame();
 		int new_halo_x = unit_frame.halo_x;
 		int new_halo_y = unit_frame.halo_y;
 

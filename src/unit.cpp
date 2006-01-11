@@ -991,7 +991,7 @@ const std::string& unit::image() const
 			if(attackType_ == NULL)
 				return type_->image();
 
-			const std::string& img = attackType_->animation().get_current_frame().image;
+			const std::string& img = attackType_->animation().first->get_current_frame().image;
 			if (img.empty())
 				return type_->image_fighting(attackType_->range_type());
 			else
@@ -1019,7 +1019,7 @@ const unit_animation* unit::get_animation() const
 {
 	switch(state_) {
 	case STATE_DEFENDING: {
-			const unit_animation* const anim = type_->defend_animation(getsHit_,sub_state_);
+			const unit_animation* const anim = &type_->defend_animation(getsHit_,sub_state_);
 			return anim;
 	}
 	default:
@@ -1041,7 +1041,7 @@ void unit::set_defending(bool hits, std::string range, int start_frame, int acce
 	const unit_animation* const anim = get_animation();
 	if(anim != NULL) {
 		anim_ = *anim;
-		anim_.start_animation(start_frame,unit_animation::UNIT_FRAME,acceleration);
+		anim_.start_animation(start_frame,acceleration);
 	}
 }
 
@@ -1219,7 +1219,7 @@ void unit::add_modification(const std::string& type,
 			reset_modifications();
 			apply_modifications();
 		} else if(apply_to == "new_attack") {
-			attacks_.push_back(attack_type(**i.first));
+			attacks_.push_back(attack_type(**i.first,this->type()));
 		} else if(apply_to == "attack") {
 
 			bool first_attack = true;

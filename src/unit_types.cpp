@@ -39,9 +39,9 @@ unit_animation::frame::frame(const config& cfg)
 unit_animation::unit_animation()
 {}
 
-unit_animation::unit_animation(const config& cfg)
+unit_animation::unit_animation(const config& cfg,const std::string frame_string )
 {
-	config::const_child_itors range = cfg.child_range("frame");
+	config::const_child_itors range = cfg.child_range(frame_string);
 
 	int last_end = INT_MIN;
 	for(; range.first != range.second; ++range.first) {
@@ -50,14 +50,6 @@ unit_animation::unit_animation(const config& cfg)
 	}
 	//unit_frames_.set_animation_end(last_end);
 	unit_frames_.add_frame(last_end);
-
-	last_end = INT_MIN;
-	range = cfg.child_range("missile_frame");
-	for(; range.first != range.second; ++range.first) {
-		missile_frames_.add_frame(atoi((**range.first)["begin"].c_str()), frame(**range.first));
-		last_end = maximum<int>(atoi((**range.first)["end"].c_str()), last_end);
-	}
-	missile_frames_.add_frame(last_end);
 
 	range = cfg.child_range("sound");
 	for(; range.first != range.second; ++range.first){
@@ -75,75 +67,50 @@ unit_animation::unit_animation(const config& cfg)
 	}
 }
 
-unit_animation::unit_animation(const std::string image, int begin_at, int end_at)
+unit_animation::unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal)
 {
-	unit_frames_.add_frame(begin_at, frame(image));
+	unit_frames_.add_frame(begin_at, frame(image,image_diagonal));
 	unit_frames_.add_frame(end_at);
 }
 
-int unit_animation::get_first_frame_time(unit_animation::FRAME_TYPE type) const
+int unit_animation::get_first_frame_time() const
 {
-	if(type == UNIT_FRAME) {
-		return unit_frames_.get_first_frame_time();
-	} else {
-		return missile_frames_.get_first_frame_time();
-	}
+	return unit_frames_.get_first_frame_time();
 }
 
-int unit_animation::get_last_frame_time(unit_animation::FRAME_TYPE type) const
+int unit_animation::get_last_frame_time() const
 {
-	if(type == UNIT_FRAME) {
-		return unit_frames_.get_last_frame_time();
-	} else {
-		return missile_frames_.get_last_frame_time();
-	}
+	return unit_frames_.get_last_frame_time();
 }
 
-void unit_animation::start_animation(int start_frame, FRAME_TYPE type, int acceleration)
+void unit_animation::start_animation(int start_frame, int acceleration)
 {
-	if (type == UNIT_FRAME) {
 		unit_frames_.start_animation(start_frame, 1, acceleration);
-	} else {
-		missile_frames_.start_animation(start_frame, 1, acceleration);
-	}
 }
 
 void unit_animation::update_current_frames()
 {
 	unit_frames_.update_current_frame();
-	missile_frames_.update_current_frame();
 }
 
 bool unit_animation::animation_finished() const
 {
-	return unit_frames_.animation_finished() && missile_frames_.animation_finished();
+	return unit_frames_.animation_finished() ;
 }
 
-const unit_animation::frame& unit_animation::get_current_frame(FRAME_TYPE type) const
+const unit_animation::frame& unit_animation::get_current_frame() const
 {
-	if(type == UNIT_FRAME) {
 		return unit_frames_.get_current_frame();
-	} else {
-		return missile_frames_.get_current_frame();
-	}
 }
 
-const unit_animation::frame& unit_animation::get_first_frame(FRAME_TYPE type) const
+const unit_animation::frame& unit_animation::get_first_frame() const
 {
-	if(type == UNIT_FRAME) {
 		return unit_frames_.get_first_frame();
-	} else {
-		return missile_frames_.get_first_frame();
-	}
 }
 
-const unit_animation::frame& unit_animation::get_last_frame(FRAME_TYPE type) const
+const unit_animation::frame& unit_animation::get_last_frame() const
 {
-	if(type == UNIT_FRAME) {
 		return unit_frames_.get_last_frame();
-	} else {
-		return missile_frames_.get_last_frame();
-	}
 }
 
 int unit_animation::get_animation_time() const
@@ -156,30 +123,28 @@ const std::vector<unit_animation::sfx>& unit_animation::sound_effects() const
 	return sfx_;
 }
 
-attack_type::attack_type(const config& cfg)
+attack_type::attack_type(const config& cfg,const unit_type& unit)
 {
+	if(cfg["range"] == "long" || cfg["range"] == "ranged") {
+		range_type_ = LONG_RANGE;
+	} else {
+		range_type_ = SHORT_RANGE;
+	}
 	const config::child_list& animations = cfg.get_children("animation");
-	for(config::child_list::const_iterator an = animations.begin(); an != animations.end(); ++an) {
-		const std::string& dir = (**an)["direction"];
-		if(dir == "") {
-			animation_.push_back(unit_animation(**an));
-		} else {
-			const std::vector<std::string>& directions = utils::split(dir);
-			for(std::vector<std::string>::const_iterator i = directions.begin(); i != directions.end(); ++i) {
-				const gamemap::location::DIRECTION d = gamemap::location::parse_direction(*i);
-				if(d != gamemap::location::NDIRECTIONS) {
-					direction_animation_[d].push_back(unit_animation(**an));
-				}
-			}
-		}
+	for(config::child_list::const_iterator d = animations.begin(); d != animations.end(); ++d) {
+		animation_.push_back(attack_animation(**d));
 	}
 
 	if(cfg.child("frame") || cfg.child("missile_frame") || cfg.child("sound")) {
-		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << " is directly in the attack, please use [animation]\n" ;
+		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "in unit " << unit.id() << " is directly in the attack, please use [animation]\n" ;
 	}
 	if(animation_.empty()) {
-		animation_.push_back(unit_animation(cfg));
+		animation_.push_back(attack_animation(cfg));
 	}
+	if(animation_.empty()) {
+		animation_.push_back(attack_animation(unit.image_fighting(range_type_)));
+	}
+	assert(!animation_.empty());
 
 	id_ = cfg["name"];
 	description_ = cfg["description"];
@@ -194,11 +159,6 @@ attack_type::attack_type(const config& cfg)
 	if(icon_.empty())
 		icon_ = "attacks/" + id_ + ".png";
 	
-	if(cfg["range"] == "long" || cfg["range"] == "ranged") {
-		range_type_ = LONG_RANGE;
-	} else {
-		range_type_ = SHORT_RANGE;
-	}
 	range_ = cfg["range"];
 	damage_ = atol(cfg["damage"].c_str());
 	num_attacks_ = atol(cfg["number"].c_str());
@@ -295,18 +255,52 @@ bool attack_type::slow() const
 	return slow_;
 }
 
-const unit_animation& attack_type::animation(const gamemap::location::DIRECTION dir) const
+const std::pair<const unit_animation*,const unit_animation*> attack_type::animation(const gamemap::location::DIRECTION dir) const
 {
-	const std::vector<unit_animation>* animation = &animation_;
-	if(dir < sizeof(direction_animation_)/sizeof(*direction_animation_) &&
-	   direction_animation_[dir].empty() == false) {
-		animation = &direction_animation_[dir];
+	//select one of the matching animations at random
+	std::vector<std::pair<const unit_animation*,const unit_animation*> > options;
+	int max_val = -1;
+	for(std::vector<attack_animation>::const_iterator i = animation_.begin(); i != animation_.end(); ++i) {
+		int matching = i->matches(dir);
+		if(matching == max_val) {
+			options.push_back(std::pair<const unit_animation*,const unit_animation*>(&i->animation,&i->missile_animation));
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(std::pair<const unit_animation*,const unit_animation*>(&i->animation,&i->missile_animation));
+		}
 	}
 
-	wassert(animation->empty() == false);
-	return (*animation)[rand()%animation->size()];
+	assert(!options.empty());
+	return options[rand()%options.size()];
 }
+attack_type::attack_animation::attack_animation(const config& cfg):animation(cfg),missile_animation(cfg,"missile_frame")
+{
+	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
+	for(std::vector<std::string>::const_iterator i = my_directions.begin(); i != my_directions.end(); ++i) {
+		const gamemap::location::DIRECTION d = gamemap::location::parse_direction(*i);
+		directions.push_back(d);
+	}
+	if(missile_animation.get_first_frame_time() == 0 && missile_animation.get_last_frame_time() == 0) {
+		// create animation ourself
+		missile_animation = unit_animation(game_config::missile_n_image,-100,0,game_config::missile_ne_image);
+	}
+	assert(missile_animation.get_first_frame_time() != 0 || missile_animation.get_last_frame_time() != 0);
+}
+int attack_type::attack_animation::matches(gamemap::location::DIRECTION dir) const
+{
+	int result = 0;
 
+	if(directions.empty()== false) {
+		if (std::find(directions.begin(),directions.end(),dir)== directions.end()) {
+			return -1;
+		} else {
+			result ++;
+		}
+	}
+
+	return result;
+}
 bool attack_type::matches_filter(const config& cfg) const
 {
 	const std::string& filter_range = cfg["range"];
@@ -740,6 +734,11 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
 		death_animations_.push_back(death_animation(**death));
 	}
+	if(death_animations_.empty()) {
+		death_animations_.push_back(death_animation(image()));
+		// always have a defensive animation
+	}
+
 	const config::child_list& movement_anims = cfg_.get_children("movement_anim");
 	for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
 		movement_animations_.push_back(movement_animation(**movement_anim));
@@ -916,7 +915,7 @@ std::vector<attack_type> unit_type::attacks() const
 	std::vector<attack_type> res;
 	for(config::const_child_itors range = cfg_.child_range("attack");
 	    range.first != range.second; ++range.first) {
-		res.push_back(attack_type(**range.first));
+		res.push_back(attack_type(**range.first,*this));
 	}
 
 	return res;
@@ -1101,16 +1100,25 @@ unit_type::defensive_animation::defensive_animation(const config& cfg) : hits(HI
 }
 
 
-bool unit_type::defensive_animation::matches(bool h, std::string r) const
+int unit_type::defensive_animation::matches(bool h, std::string r) const
 {
-	if(hits == HIT && h == false || hits == MISS && h == true ) {
-		return false;
+	int result = 0;
+	if(hits != HIT_OR_MISS ) {
+		if(hits == h) {
+			result++;
+		} else {
+			return -1;
+		}
 	}
-	if(range.empty()== false && (std::find(range.begin(),range.end(),r) == range.end())) {
-		return false;
+	if(range.empty()== false) {
+		if (std::find(range.begin(),range.end(),r)== range.end()) {
+			return -1;
+		} else {
+			result ++;
+		}
 	}
 
-	return true;
+	return result;
 }
 
 unit_type::death_animation::death_animation(const config& cfg)
@@ -1118,21 +1126,33 @@ unit_type::death_animation::death_animation(const config& cfg)
 {
 }
 
-bool unit_type::death_animation::matches(const attack_type* attack) const
+int unit_type::death_animation::matches(const attack_type* attack) const
 {
+	int result = 0;
 	if(attack == NULL) {
-		return true;
+		if(damage_type.empty() && special.empty())
+			return 0;
+		else
+			return -1;
 	}
 
-	if(damage_type.empty() == false && std::find(damage_type.begin(),damage_type.end(),attack->type()) == damage_type.end()) {
-		return false;
+	if(damage_type.empty()== false) {
+		if (std::find(damage_type.begin(),damage_type.end(),attack->type())== damage_type.end()) {
+			return -1;
+		} else {
+			result ++;
+		}
 	}
 
-	if(special.empty() == false && std::find(special.begin(),special.end(),attack->special()) == special.end()) {
-		return false;
+	if(special.empty()== false) {
+		if (std::find(special.begin(),special.end(),attack->special())== special.end()) {
+			return -1;
+		} else {
+			result ++;
+		}
 	}
 
-	return true;
+	return result;
 }
 
 unit_type::movement_animation::movement_animation(const config& cfg)
@@ -1151,40 +1171,46 @@ unit_type::movement_animation::movement_animation(const std::string& image,const
 		directions.push_back(dir);
 	}
 }
-bool unit_type::movement_animation::matches(const std::string &terrain,gamemap::location::DIRECTION dir) const
+int unit_type::movement_animation::matches(const std::string &terrain,gamemap::location::DIRECTION dir) const
 {
-	if(terrain_types.empty() == false && std::find(terrain_types.begin(),terrain_types.end(),terrain) == terrain_types.end()) {
-		return false;
-	}
-
-	if(directions.empty() == false && std::find(directions.begin(),directions.end(),dir) == directions.end()) {
-		return false;
-	}
-
-	return true;
-}
-
-const unit_animation* unit_type::defend_animation(bool hits, std::string range) const
-{
-	//select one of the matching animations at random
-	const unit_animation* res = NULL;
-	std::vector<const unit_animation*> options;
-	for(std::vector<defensive_animation>::const_iterator i = defensive_animations_.begin(); i != defensive_animations_.end(); ++i) {
-		if(i->matches(hits,range)) {
-			if(res != NULL) {
-				options.push_back(res);
-			}
-
-			res = &i->animation;
+	int result = 0;
+	if(terrain_types.empty()== false) {
+		if (std::find(terrain_types.begin(),terrain_types.end(),terrain)== terrain_types.end()) {
+			return -1;
+		} else {
+			result ++;
 		}
 	}
 
-	if(options.empty()) {
-		return res;
-	} else {
-		options.push_back(res);
-		return options[rand()%options.size()];
+	if(directions.empty()== false) {
+		if (std::find(directions.begin(),directions.end(),dir)== directions.end()) {
+			return -1;
+		} else {
+			result ++;
+		}
 	}
+
+	return result;
+}
+
+const unit_animation& unit_type::defend_animation(bool hits, std::string range) const
+{
+	//select one of the matching animations at random
+	std::vector<const unit_animation*> options;
+	int max_val = -1;
+	for(std::vector<defensive_animation>::const_iterator i = defensive_animations_.begin(); i != defensive_animations_.end(); ++i) {
+		int matching = i->matches(hits,range);
+		if(matching == max_val) {
+			options.push_back(&i->animation);
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(&i->animation);
+		}
+	}
+
+	assert(!options.empty());
+	return *options[rand()%options.size()];
 }
 
 const unit_animation* unit_type::teleport_animation( ) const
@@ -1204,64 +1230,43 @@ const unit_animation* unit_type::extra_animation(std::string flag ) const
 	return &index->second;
 }
 
-const unit_animation* unit_type::die_animation(const attack_type* attack) const
+const unit_animation& unit_type::die_animation(const attack_type* attack) const
 {
-	if(death_animations_.empty()) {
-		return NULL;
-	}
-
-	if(attack == NULL) {
-		return &death_animations_[rand()%death_animations_.size()].animation;
-	}
-
-	const unit_animation* res = NULL;
+	//select one of the matching animations at random
 	std::vector<const unit_animation*> options;
+	int max_val = -1;
 	for(std::vector<death_animation>::const_iterator i = death_animations_.begin(); i != death_animations_.end(); ++i) {
-		if(i->matches(attack)) {
-			if(res != NULL) {
-				options.push_back(res);
-			}
-
-			res = &i->animation;
+		int matching = i->matches(attack);
+		if(matching == max_val) {
+			options.push_back(&i->animation);
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(&i->animation);
 		}
 	}
 
-	if(options.empty()) {
-		return res;
-	} else {
-		options.push_back(res);
-		return options[rand()%options.size()];
-	}
+	assert(!options.empty());
+	return *options[rand()%options.size()];
 }
-
-const unit_animation* unit_type::move_animation(const std::string terrain,gamemap::location::DIRECTION dir) const
+const unit_animation& unit_type::move_animation(const std::string terrain,gamemap::location::DIRECTION dir) const
 {
-	if(movement_animations_.empty()) {
-		return NULL;
-	}
-
-	if(terrain.empty()) {
-		return &movement_animations_[rand()%movement_animations_.size()].animation;
-	}
-
-	const unit_animation* res = NULL;
+	//select one of the matching animations at random
 	std::vector<const unit_animation*> options;
+	int max_val = -1;
 	for(std::vector<movement_animation>::const_iterator i = movement_animations_.begin(); i != movement_animations_.end(); ++i) {
-		if(i->matches(terrain,dir)) {
-			if(res != NULL) {
-				options.push_back(res);
-			}
-
-			res = &i->animation;
+		int matching = i->matches(terrain,dir);
+		if(matching == max_val) {
+			options.push_back(&i->animation);
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(&i->animation);
 		}
 	}
 
-	if(options.empty()) {
-		return res;
-	} else {
-		options.push_back(res);
-		return options[rand()%options.size()];
-	}
+	assert(!options.empty());
+	return *options[rand()%options.size()];
 }
 
 void unit_type::add_advancement(const unit_type &to_unit,int xp)
