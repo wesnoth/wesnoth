@@ -39,6 +39,7 @@ std::vector<std::string> get_text() {
 		"-   Bruno Wolff III",
 		"-   Cedric Duval",
 		"-   Cyril Bouthors (CyrilB)",
+		"-   Dominic Bolin (Xan)",
 		"-   Guillaume Melquiond (silene)",
 		"-   Isaac Clerencia",
 		"-   Jan Zvánovec (jaz)",
@@ -353,7 +354,6 @@ std::vector<std::string> get_text() {
 		"_" N_("+Contributors"),
 		"-   Frédéric Wagner",
 		"-   Jeff Breidenbach (jab)",
-		"-   Dominic Bolin (Xan)",
 		"-   Rusty Russell (rusty)",
 		"-   Laurent Birtz",
 
