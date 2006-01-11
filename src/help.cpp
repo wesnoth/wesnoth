@@ -990,8 +990,8 @@ std::vector<topic> generate_ability_topics()
 	    i != game_info->unit_types.end(); i++) {
 		const unit_type &type = (*i).second;
 		if (description_type(type) == FULL_DESCRIPTION) {
-			for (std::vector<std::string>::const_iterator it = type.abilities().begin();
-				 it != type.abilities().end(); it++) {
+			for (std::vector<std::string>::const_iterator it = type.ability_tooltips().begin();
+				 it != type.ability_tooltips().end(); it++) {
 				if (checked_abilities.find(*it) == checked_abilities.end()) {
 					const std::string id = "ability_" + *it;
 					std::string lang_ability = utils::capitalize(string_table[id]);
@@ -1074,10 +1074,10 @@ public:
 
 		// Print the abilities the units has, cross-reference them
 		// to their respective topics.
-		if (!type_.abilities().empty()) {
+		if (!type_.ability_tooltips().empty()) {
 			ss << _("Abilities: ");
-			for(std::vector<std::string>::const_iterator ability_it = type_.abilities().begin(),
-				 ability_end = type_.abilities().end();
+			for(std::vector<std::string>::const_iterator ability_it = type_.ability_tooltips().begin(),
+				 ability_end = type_.ability_tooltips().end();
 				 ability_it != ability_end; ++ability_it) {
 				const std::string ref_id = std::string("ability_") + *ability_it;
 				std::string lang_ability = string_table[ref_id];
@@ -1089,7 +1089,7 @@ public:
 			ss << "\n";
 		}
 
-		if (!next_units.empty() || !type_.abilities().empty())
+		if (!next_units.empty() || !type_.ability_tooltips().empty())
 			ss << "\n";
 		// Print some basic information such as HP and movement points.
 		ss << _("HP: ") << type_.hitpoints() << jump(30)

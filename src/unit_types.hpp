@@ -243,6 +243,7 @@ public:
 	fixed_t alpha() const;
 
 	const std::vector<std::string>& abilities() const;
+	const std::vector<std::string>& ability_tooltips() const;
 
 	//max_unit_healing returns the maximum hitpoints a unit next to this
 	//unit can heal per turn. heals returns the total amount of hitpoints
@@ -250,11 +251,16 @@ public:
 	int max_unit_healing() const;
 	int heals() const;
 	bool regenerates() const;
+	int regenerate_amount() const;
 	bool is_leader() const;
-	bool illuminates() const;
+	int leadership(int led_level) const;
+	int illuminates() const;
 	bool is_skirmisher() const;
 	bool teleports() const;
 	bool steadfast() const;
+	int steadfast_bonus() const;
+	bool steadfast_ispercent() const;
+	int steadfast_max() const;
 	bool not_living() const;
 	bool can_advance() const;
 
@@ -289,17 +295,23 @@ private:
 	fixed_t alpha_;
 
 	std::vector<std::string> abilities_;
+	std::vector<std::string> ability_tooltips_;
 
 	mutable std::string id_;
 
 	int max_heals_;
 	int heals_;
 	bool regenerates_;
+	int regeneration_;
 	bool leadership_;
-	bool illuminates_;
+	int leadership_percent_;
+	int illuminates_;
 	bool skirmish_;
 	bool teleport_;
 	bool steadfast_;
+	int steadfast_bonus_;
+	int steadfast_max_;
+	bool steadfast_percent_;
         std::vector<std::string> advances_to_;
         int experience_needed_;
 

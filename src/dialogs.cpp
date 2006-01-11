@@ -714,7 +714,7 @@ void unit_preview_pane::draw_contents()
 			<< unit_type::alignment_description(u.type().alignment()) << "\n"
 			<< u.traits_description() << " \n";
 
-	const std::vector<std::string>& abilities = u.type().abilities();
+	const std::vector<std::string>& abilities = u.type().ability_tooltips();
 	for(std::vector<std::string>::const_iterator a = abilities.begin(); a != abilities.end(); ++a) {
 		details << gettext(a->c_str());
 		if(a+1 != abilities.end()) {

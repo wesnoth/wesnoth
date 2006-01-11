@@ -88,11 +88,17 @@ void parse_times(const config& cfg, std::vector<time_of_day>& normal_times, std:
 		normal_times.push_back(time_of_day(**t));
 	}
 
-	const config::child_list& times_illum = cfg.get_children("illuminated_time");
-	const config::child_list& illum = times_illum.empty() ? times : times_illum;
-
-	for(t = illum.begin(); t != illum.end(); ++t) {
-		illuminated_times.push_back(time_of_day(**t));
+	illuminated_times.assign(normal_times.begin(),normal_times.end());
+	if(illuminated_times.empty() == false) {
+		std::sort(illuminated_times.begin(),illuminated_times.end());
+		std::vector<time_of_day>::iterator i=illuminated_times.begin();
+		while(i < illuminated_times.end()-1) {
+			if(i->lawful_bonus == (i+1)->lawful_bonus) {
+				illuminated_times.erase(i+1);
+			} else {
+				i++;
+			}
+		}
 	}
 }
 
@@ -135,9 +141,6 @@ void gamestatus::write(config& cfg) const
 		t->write(cfg.add_child("time"));
 	}
 
-	for(t = illuminatedTimes_.begin(); t != illuminatedTimes_.end(); ++t) {
-		t->write(cfg.add_child("illuminated_time"));
-	}
 
 	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
 		config& area = cfg.add_child("time_area");
@@ -147,9 +150,6 @@ void gamestatus::write(config& cfg) const
 			t->write(area.add_child("time"));
 		}
 
-		for(t = i->illuminated_times.begin(); t != i->illuminated_times.end(); ++t) {
-			t->write(area.add_child("illuminated_time"));
-		}
 	}
 }
 
@@ -174,12 +174,40 @@ const time_of_day& gamestatus::get_previous_time_of_day() const
 	return get_time_of_day_turn(turn()-1);
 }
 
-const time_of_day& gamestatus::get_time_of_day(bool illuminated, const gamemap::location& loc) const
+bool time_of_day::operator <(const time_of_day& o) const
+{
+	return lawful_bonus < o.lawful_bonus;
+}
+
+
+const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc) const
 {
 	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
 		if(i->hexes.count(loc) == 1) {
 			if(illuminated && i->illuminated_times.empty() == false) {
-				return i->illuminated_times[(turn()-1)%i->illuminated_times.size()];
+				int bonus = i->times[(turn()-1)%i->times.size()].lawful_bonus;
+				std::vector<time_of_day>::const_iterator t = i->illuminated_times.begin();
+				while(t->lawful_bonus != bonus) {
+					t++;
+				}
+				t += illuminated;
+				if(t < i->illuminated_times.begin()) {
+					t = i->illuminated_times.begin();
+				} else if(t >= i->illuminated_times.end()) {
+					t = i->illuminated_times.end()-1;
+				}
+				int final_bonus = t->lawful_bonus;
+				unsigned int find_t=turn()-1;
+				unsigned int find_tr=turn()-1;
+				while(1) {
+					if(i->times[(find_t++)%i->times.size()].lawful_bonus == final_bonus) {
+						return i->times[(find_t-1)%i->times.size()];
+					}
+					if(i->times[(find_tr--)%i->times.size()].lawful_bonus == final_bonus) {
+						return i->times[(find_tr+1)%i->times.size()];
+					}
+				}
+				return *t;
 			} else if(i->times.empty() == false) {
 				return i->times[(turn()-1)%i->times.size()];
 			}
@@ -187,7 +215,29 @@ const time_of_day& gamestatus::get_time_of_day(bool illuminated, const gamemap::
 	}
 
 	if(illuminated && illuminatedTimes_.empty() == false) {
-		return illuminatedTimes_[(turn()-1)%illuminatedTimes_.size()];
+		int bonus = times_[(turn()-1)%times_.size()].lawful_bonus;
+		std::vector<time_of_day>::const_iterator t = illuminatedTimes_.begin();
+		while(t->lawful_bonus != bonus) {
+			t++;
+		}
+		t += illuminated;
+		if(t < illuminatedTimes_.begin()) {
+			t = illuminatedTimes_.begin();
+		} else if(t >= illuminatedTimes_.end()) {
+			t = illuminatedTimes_.end()-1;
+		}
+		int final_bonus = t->lawful_bonus;
+		unsigned int find_t=turn()-1;
+		unsigned int find_tr=turn()-1;
+		while(1) {
+			if(times_[(find_t++)%times_.size()].lawful_bonus == final_bonus) {
+				return times_[(find_t-1)%times_.size()];
+			}
+			if(times_[(find_tr--)%times_.size()].lawful_bonus == final_bonus) {
+				return times_[(find_tr+1)%times_.size()];
+			}
+		}
+		return *t;
 	} else if(times_.empty() == false) {
 		return times_[(turn()-1)%times_.size()];
 	}

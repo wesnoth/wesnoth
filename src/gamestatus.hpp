@@ -26,6 +26,8 @@ struct time_of_day
 	explicit time_of_day(const config& cfg);
 	void write(config& cfg) const;
 
+	bool operator <(const time_of_day& o) const;
+
 	//the % bonus lawful units receive. chaotic units will
 	//receive -lawful_bonus.
 	int lawful_bonus;
@@ -54,7 +56,7 @@ public:
 
 	const time_of_day& get_time_of_day() const;
 	const time_of_day& get_previous_time_of_day() const;
-	const time_of_day& get_time_of_day(bool illuminated, const gamemap::location& loc) const;
+	const time_of_day& get_time_of_day(int illuminated, const gamemap::location& loc) const;
 	size_t turn() const;
 	int number_of_turns() const;
 

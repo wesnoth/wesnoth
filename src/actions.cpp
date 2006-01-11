@@ -210,22 +210,22 @@ gamemap::location under_leadership(const std::map<gamemap::location,unit>& units
 
 	const int side = un->second.side();
 	const int level = un->second.type().level();
+	int bonus_tracker = 0;
 
-	int best_leader = -1;
 	gamemap::location best_loc;
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if(it != units.end() && it->second.side() == side &&
-			it->second.type().is_leader() && it->second.type().level() > level &&
-			it->second.type().level() > best_leader &&
+			it->second.type().is_leader() &&
 			it->second.incapacitated() == false) {
-			best_leader = it->second.type().level();
-			best_loc = adjacent[i];
+			if(bonus) {
+				*bonus = maximum<int>(*bonus,it->second.type().leadership(level));
+				if(*bonus != bonus_tracker || i == 0) {
+					best_loc = adjacent[i];
+					bonus_tracker = *bonus;
+				}
+			}
 		}
-	}
-
-	if(bonus != NULL && best_leader != -1) {
-		*bonus = (best_leader - level)*game_config::leadership_bonus;
 	}
 
 	return best_loc;
@@ -323,6 +323,9 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	static const std::string charge_string("charge");
 	const bool charge = res.attacker_special == charge_string;
 	const bool steadfast = d->second.type().steadfast();
+	const bool steadfast_percent = d->second.type().steadfast_ispercent();
+	const int steadfast_bonus = d->second.type().steadfast_bonus();
+	const int steadfast_max = d->second.type().steadfast_max();
 
 	bool backstab = false;
 
@@ -530,11 +533,15 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	int resistance_modifier = d->second.damage_against(attack);
 
 	//steadfast doubles resistance, but is capped at increasing resistance to 50%
-	if (steadfast && resistance_modifier < 100 && resistance_modifier > 50) {
-		const int diff = 100 - resistance_modifier;
-		resistance_modifier -= diff;
-		if(resistance_modifier < 50) {
-			resistance_modifier = 50;
+	if (steadfast && resistance_modifier < 100 && resistance_modifier > steadfast_max) {
+		if(!steadfast_percent) {
+			const int diff = 100 - resistance_modifier;
+			resistance_modifier -= diff*steadfast_bonus/100;
+		} else {
+			resistance_modifier -= steadfast_bonus;
+ 		}
+		if(resistance_modifier < steadfast_max) {
+			resistance_modifier = steadfast_max;
 		}
 	}
 
@@ -1231,8 +1238,10 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		//it has regeneration, and it is wounded
 		if(i->second.side() == side) {
 			if(i->second.hitpoints() < i->second.max_hitpoints() || i->second.poisoned()){
-				if(map.gives_healing(i->first) || i->second.type().regenerates()) {
-					amount_healed = game_config::cure_amount;
+				if(map.gives_healing(i->first)) {
+ 					amount_healed = game_config::cure_amount;
+				} else if(i->second.type().regenerates()) {
+					amount_healed = i->second.type().regenerate_amount();
 				}
 			}
 			if(amount_healed != 0)
@@ -1587,7 +1596,8 @@ void check_victory(std::map<gamemap::location,unit>& units,
 
 const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,const gamemap::location& loc)
 {
-	bool lighten = false;
+	int lighten = 0;
+	int darken = 0;
 
 	if(loc.valid()) {
 		gamemap::location locs[7];
@@ -1598,12 +1608,13 @@ const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,c
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if(itor != units.end() &&
 			   itor->second.type().illuminates() && itor->second.incapacitated() == false) {
-				lighten = true;
+				lighten = maximum<int>(itor->second.type().illuminates() , lighten);
+				darken = minimum<int>(itor->second.type().illuminates() , darken);
 			}
 		}
 	}
 
-	return status.get_time_of_day(lighten,loc);
+	return status.get_time_of_day(lighten + darken,loc);
 }
 
 int combat_modifier(const gamestatus& status,

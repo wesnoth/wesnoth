@@ -565,10 +565,11 @@ unit_type::unit_type(const unit_type& o)
       alpha_(o.alpha_), abilities_(o.abilities_),
       max_heals_(o.max_heals_), heals_(o.heals_), regenerates_(o.regenerates_),
       leadership_(o.leadership_), illuminates_(o.illuminates_),
-      skirmish_(o.skirmish_), teleport_(o.teleport_),
-      steadfast_(o.steadfast_),
+      skirmish_(o.skirmish_), teleport_(o.teleport_),regeneration_(o.regeneration_),
+	  steadfast_bonus_(o.steadfast_bonus_),steadfast_max_(o.steadfast_max_),
+      steadfast_(o.steadfast_),leadership_percent_(o.leadership_percent_),
       advances_to_(o.advances_to_), experience_needed_(o.experience_needed_),
-      alignment_(o.alignment_),
+      alignment_(o.alignment_),ability_tooltips_(o.ability_tooltips_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
@@ -639,30 +640,188 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	const config::child_list& unit_traits = cfg.get_children("trait");
 	possibleTraits_.insert(possibleTraits_.end(),unit_traits.begin(),unit_traits.end());
 
-	abilities_ = utils::split(cfg_["ability"]);
+	heals_ = 0;
+	max_heals_ = 0;
+	regenerates_ = false;
+	skirmish_ = false;
+	teleport_ = false;
+	steadfast_ = false;
+	illuminates_ = false;
+	leadership_ = false;
 
-	//if the string was empty, split will give us one empty string in the list,
-	//remove it.
-	if(!abilities_.empty() && abilities_.back() == "")
-		abilities_.pop_back();
-
-	if(has_ability("heals")) {
-		heals_ = game_config::healer_heals_per_turn;
-		max_heals_ = game_config::heal_amount;
-	} else if(has_ability("cures")) {
-		heals_ = game_config::curer_heals_per_turn;
-		max_heals_ = game_config::cure_amount;
+	/* handle deprecated ability=x,y,... */
+	
+	std::vector<std::string> deprecated_abilities = utils::split(cfg_["ability"]);
+	
+ 	//if the string was empty, split will give us one empty string in the list,
+ 	//remove it.
+	if(!deprecated_abilities.empty() && deprecated_abilities.back() == "") {
+		deprecated_abilities.pop_back();
 	} else {
-		heals_ = 0;
-		max_heals_ = 0;
+		LOG_STREAM(err, config) << "unit " << id() << " uses the ability=list tag, which is deprecated\n";
 	}
 
-	regenerates_ = has_ability("regenerates");
-	leadership_ = has_ability("leadership");
-	illuminates_ = has_ability("illuminates");
-	skirmish_ = has_ability("skirmisher");
-	teleport_ = has_ability("teleport");
-	steadfast_ = has_ability("steadfast");
+	if(!deprecated_abilities.empty()) {
+		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"heals") != deprecated_abilities.end()) {
+			heals_ = game_config::healer_heals_per_turn;
+			max_heals_ = game_config::heal_amount;
+			abilities_.push_back("heals");
+			ability_tooltips_.push_back("heals");
+		}
+		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"cures") != deprecated_abilities.end()) {
+			heals_ = game_config::curer_heals_per_turn;
+			max_heals_ = game_config::cure_amount;
+			abilities_.push_back("cures");
+			ability_tooltips_.push_back("cures");
+		}
+		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"regenerates") != deprecated_abilities.end()) {
+			regenerates_ = true;
+			regeneration_ = game_config::cure_amount;
+			abilities_.push_back("regenerates");
+			ability_tooltips_.push_back("regenerates");
+		}
+		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"steadfast") != deprecated_abilities.end()) {
+			steadfast_ = true;
+			steadfast_bonus_ = 100;
+			steadfast_max_ = 50;
+			steadfast_percent_ = false;
+			abilities_.push_back("steadfast");
+			ability_tooltips_.push_back("steadfast");
+		}
+		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"teleport") != deprecated_abilities.end()) {
+			teleport_ = true;
+			abilities_.push_back("teleport");
+			ability_tooltips_.push_back("teleport");
+		}
+		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"skirmisher") != deprecated_abilities.end()) {
+			skirmish_ = true;
+			abilities_.push_back("skirmisher");
+			ability_tooltips_.push_back("skirmisher");
+		}
+		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"leadership") != deprecated_abilities.end()) {
+			leadership_ = true;
+			leadership_percent_ = game_config::leadership_bonus;
+			abilities_.push_back("leadership");
+			ability_tooltips_.push_back("leadership");
+		}
+		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"illuminates") != deprecated_abilities.end()) {
+			illuminates_ = 1;
+			abilities_.push_back("illuminates");
+			ability_tooltips_.push_back("illuminates");
+		}
+		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"ambush") != deprecated_abilities.end()) {
+			abilities_.push_back("ambush");
+			ability_tooltips_.push_back("ambush");
+		}
+		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"nightstalk") != deprecated_abilities.end()) {
+			abilities_.push_back("nightstalk");
+			ability_tooltips_.push_back("nightstalk");
+		}
+	}
+	
+	const config* abil_cfg = cfg.child("abilities");
+	if(abil_cfg) {
+		const config* heal_ability = abil_cfg->child("heals");
+		const config* regenerates_ability = abil_cfg->child("regenerates");
+		const config* steadfast_ability = abil_cfg->child("steadfast");
+		const config* leadership_ability = abil_cfg->child("leadership");
+		const config* skirmisher_ability = abil_cfg->child("skirmisher");
+		const config* illuminates_ability = abil_cfg->child("illuminates");
+		const config* teleport_ability = abil_cfg->child("teleport");
+		const config* ambush_ability = abil_cfg->child("ambush");
+		const config* nightstalk_ability = abil_cfg->child("nightstalk");
+		
+		if(heal_ability) {
+			abilities_.push_back("heals");
+			if((*heal_ability)["name"] != "") {
+				ability_tooltips_.push_back((*heal_ability)["name"]);
+			} else {
+				ability_tooltips_.push_back("heals");
+			}
+			heals_ = maximum<int>(0,lexical_cast_default<int>((*heal_ability)["amount"],game_config::healer_heals_per_turn));
+			max_heals_ = maximum<int>(0,lexical_cast_default<int>((*heal_ability)["max"],game_config::heal_amount));
+		}
+		if(regenerates_ability) {
+			abilities_.push_back("regenerates");
+			if((*regenerates_ability)["name"] != "") {
+				ability_tooltips_.push_back((*regenerates_ability)["name"]);
+			} else {
+				ability_tooltips_.push_back("regenerates");
+			}
+			regenerates_ = true;
+			regeneration_ = maximum<int>(0,lexical_cast_default<int>((*regenerates_ability)["amount"],game_config::cure_amount));
+		}
+		if(steadfast_ability) {
+			abilities_.push_back("steadfast");
+			if((*steadfast_ability)["name"] != "") {
+				ability_tooltips_.push_back((*steadfast_ability)["name"]);
+			} else {
+				ability_tooltips_.push_back("steadfast");
+			}
+			steadfast_ = true;
+			steadfast_bonus_ = maximum<int>(0,lexical_cast_default<int>((*steadfast_ability)["bonus"],100));
+			steadfast_max_ = maximum<int>(0,lexical_cast_default<int>((*steadfast_ability)["max"],50));
+			std::string steadfast_ispercent = (*steadfast_ability)["bonus"];
+			if(steadfast_ispercent != "" && steadfast_ispercent[steadfast_ispercent.size()-1] == '%') {
+				steadfast_percent_ = true;
+			} else {
+				steadfast_percent_ = false;
+			}
+		}
+		if(leadership_ability) {
+			abilities_.push_back("leadership");
+			if((*leadership_ability)["name"] != "") {
+				ability_tooltips_.push_back((*leadership_ability)["name"]);
+			} else {
+				ability_tooltips_.push_back("leadership");
+			}
+			leadership_ = true;
+			leadership_percent_ = lexical_cast_default<int>((*leadership_ability)["perlevel_bonus"],game_config::leadership_bonus);
+		}
+		if(skirmisher_ability) {
+			abilities_.push_back("skirmisher");
+			if((*skirmisher_ability)["name"] != "") {
+				ability_tooltips_.push_back((*skirmisher_ability)["name"]);
+			} else {
+				ability_tooltips_.push_back("skirmisher");
+			}
+			skirmish_ = true;
+		}
+		if(illuminates_ability) {
+			abilities_.push_back("illuminates");
+			if((*illuminates_ability)["name"] != "") {
+				ability_tooltips_.push_back((*illuminates_ability)["name"]);
+			} else {
+				ability_tooltips_.push_back("illuminates");
+			}
+			illuminates_ = maximum<int>(0,lexical_cast_default<int>((*illuminates_ability)["level"],1));
+		}
+		if(teleport_ability) {
+			abilities_.push_back("teleport");
+			if((*teleport_ability)["name"] != "") {
+				ability_tooltips_.push_back((*teleport_ability)["name"]);
+			} else {
+				ability_tooltips_.push_back("teleport");
+			}
+			teleport_ = true;
+		}
+		if(ambush_ability) {
+			abilities_.push_back("ambush");
+			if((*ambush_ability)["name"] != "") {
+				ability_tooltips_.push_back((*ambush_ability)["name"]);
+			} else {
+				ability_tooltips_.push_back("ambush");
+			}
+		}
+		if(nightstalk_ability) {
+			abilities_.push_back("nightstalk");
+			if((*nightstalk_ability)["name"] != "") {
+				ability_tooltips_.push_back((*nightstalk_ability)["name"]);
+			} else {
+				ability_tooltips_.push_back("nightstalk");
+			}
+		}
+	}
 
 	const std::string& align = cfg_["alignment"];
 	if(align == "lawful")
@@ -1011,6 +1170,11 @@ const std::vector<std::string>& unit_type::abilities() const
 	return abilities_;
 }
 
+const std::vector<std::string>& unit_type::ability_tooltips() const
+{
+	return ability_tooltips_;
+}
+
 int unit_type::max_unit_healing() const
 {
 	return max_heals_;
@@ -1026,12 +1190,31 @@ bool unit_type::regenerates() const
 	return regenerates_;
 }
 
+int unit_type::regenerate_amount() const
+{
+	return regeneration_;
+}
+
+
 bool unit_type::is_leader() const
 {
 	return leadership_;
 }
 
-bool unit_type::illuminates() const
+int unit_type::leadership(int led_level) const
+{
+	char key[24]; // level[x]
+	snprintf(key,sizeof(key),"level_%d",led_level);
+	const config* leadership_ability = cfg_.child("leadership_ability");
+	if(leadership_ability) {
+		if((*leadership_ability)[key] != "") {
+			return lexical_cast_default<int>((*leadership_ability)[key]);
+		}
+	}
+	return maximum<int>(0,leadership_percent_*(level()-led_level));
+}
+
+int unit_type::illuminates() const
 {
 	return illuminates_;
 }
@@ -1049,6 +1232,19 @@ bool unit_type::teleports() const
 bool unit_type::steadfast() const
 {
 	return steadfast_;
+}
+
+int unit_type::steadfast_bonus() const
+{
+	return steadfast_bonus_;
+}
+int unit_type::steadfast_max() const
+{
+	return steadfast_max_;
+}
+bool unit_type::steadfast_ispercent() const
+{
+	return steadfast_percent_;
 }
 
 bool unit_type::not_living() const
