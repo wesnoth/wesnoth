@@ -1205,8 +1205,9 @@ int unit_type::leadership(int led_level) const
 {
 	char key[24]; // level[x]
 	snprintf(key,sizeof(key),"level_%d",led_level);
-	const config* leadership_ability;
-	if(leadership_ability=cfg_.child("abilities") && leadership_ability=leadership_ability->child("leadership") && leadership_ability) {
+	const config* abilities=cfg_.child("abilities");
+	const config* leadership_ability=abilities ? abilities->child("leadership") : NULL;
+	if(leadership_ability) {
 		if((*leadership_ability)[key] != "") {
 			return lexical_cast_default<int>((*leadership_ability)[key]);
 		}
