@@ -180,12 +180,12 @@ bool time_of_day::operator <(const time_of_day& o) const
 }
 
 
-const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc) const
+const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const
 {
 	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
 		if(i->hexes.count(loc) == 1) {
 			if(illuminated && i->illuminated_times.empty() == false) {
-				int bonus = i->times[(turn()-1)%i->times.size()].lawful_bonus;
+				int bonus = i->times[(n_turn-1)%i->times.size()].lawful_bonus;
 				std::vector<time_of_day>::const_iterator t = i->illuminated_times.begin();
 				while(t->lawful_bonus != bonus) {
 					t++;
@@ -197,8 +197,8 @@ const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::l
 					t = i->illuminated_times.end()-1;
 				}
 				int final_bonus = t->lawful_bonus;
-				unsigned int find_t=turn()-1;
-				unsigned int find_tr=turn()-1;
+				unsigned int find_t=n_turn-1;
+				unsigned int find_tr=n_turn-1;
 				while(1) {
 					if(i->times[(find_t++)%i->times.size()].lawful_bonus == final_bonus) {
 						return i->times[(find_t-1)%i->times.size()];
@@ -209,13 +209,13 @@ const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::l
 				}
 				return *t;
 			} else if(i->times.empty() == false) {
-				return i->times[(turn()-1)%i->times.size()];
+				return i->times[(n_turn-1)%i->times.size()];
 			}
 		}
 	}
 
 	if(illuminated && illuminatedTimes_.empty() == false) {
-		int bonus = times_[(turn()-1)%times_.size()].lawful_bonus;
+		int bonus = times_[(n_turn-1)%times_.size()].lawful_bonus;
 		std::vector<time_of_day>::const_iterator t = illuminatedTimes_.begin();
 		while(t->lawful_bonus != bonus) {
 			t++;
@@ -227,8 +227,8 @@ const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::l
 			t = illuminatedTimes_.end()-1;
 		}
 		int final_bonus = t->lawful_bonus;
-		unsigned int find_t=turn()-1;
-		unsigned int find_tr=turn()-1;
+		unsigned int find_t=n_turn-1;
+		unsigned int find_tr=n_turn-1;
 		while(1) {
 			if(times_[(find_t++)%times_.size()].lawful_bonus == final_bonus) {
 				return times_[(find_t-1)%times_.size()];
@@ -239,12 +239,17 @@ const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::l
 		}
 		return *t;
 	} else if(times_.empty() == false) {
-		return times_[(turn()-1)%times_.size()];
+		return times_[(n_turn-1)%times_.size()];
 	}
 
 	config dummy_cfg;
 	static time_of_day const default_time(dummy_cfg);
 	return default_time;
+}
+
+const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc) const
+{
+	return get_time_of_day(illuminated,loc,turn());
 }
 
 size_t gamestatus::turn() const

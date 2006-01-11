@@ -57,6 +57,7 @@ public:
 	const time_of_day& get_time_of_day() const;
 	const time_of_day& get_previous_time_of_day() const;
 	const time_of_day& get_time_of_day(int illuminated, const gamemap::location& loc) const;
+	const time_of_day& get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const;
 	size_t turn() const;
 	int number_of_turns() const;
 
