@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-11 15:59+0100\n"
+"POT-Creation-Date: 2006-01-11 16:47+0100\n"
 "PO-Revision-Date: 2005-12-06 20:41+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT   gmx D OT  net>\n"
 "Language-Team: Language fr <wesnoth@ml.free.fr>\n"
@@ -8164,16 +8164,16 @@ msgstr ""
 "présence."
 
 #: data/units/Ogre.cfg:3
-msgid "units/ogres/ogre"
-msgstr ""
+msgid "Ogre"
+msgstr "Ogre"
 
 #: data/units/Ogre.cfg:23
 #, fuzzy
 msgid ""
-"units/ogres/ogres are giant creatures that usually live alone in the "
-"wilderness, remarkably similar to humans in form, though large and "
-"misshapen. While they can be easily outrun or outsmarted, their strength is "
-"not to be underestimated."
+"Ogres are giant creatures that usually live alone in the wilderness, "
+"remarkably similar to humans in form, though large and misshapen. While they "
+"can be easily outrun or outsmarted, their strength is not to be "
+"underestimated."
 msgstr ""
 "Les ogres sont des géants stupides qui vivent généralement seuls. Bien "
 "qu'ils puissent facilement être semés ou surpassés, leur force ne doit pas "
@@ -11162,300 +11162,6 @@ msgstr "Remplacer par "
 msgid "has left the game. What do you want to do?"
 msgstr "a quitté le jeu. Que voulez-vous faire ?"
 
-#: src/preferences_display.cpp:73 src/preferences_display.cpp:105
-msgid ""
-"The video mode could not be changed. Your window manager must be set to 16 "
-"bits per pixel to run the game in windowed mode. Your display must support "
-"1024x768x16 to run the game full screen."
-msgstr ""
-
-#: src/preferences_display.cpp:215
-msgid "Toggle Full Screen"
-msgstr ""
-
-#: src/preferences_display.cpp:216
-msgid "Accelerated Speed"
-msgstr ""
-
-#: src/preferences_display.cpp:217
-msgid "Skip AI Moves"
-msgstr ""
-
-#: src/preferences_display.cpp:218
-msgid "Show Grid"
-msgstr ""
-
-#: src/preferences_display.cpp:219
-msgid "Show lobby joins"
-msgstr ""
-
-#: src/preferences_display.cpp:220
-msgid "Show Floating Labels"
-msgstr ""
-
-#: src/preferences_display.cpp:221
-#, fuzzy
-msgid "Turn Dialog"
-msgstr "Didacticiel"
-
-#: src/preferences_display.cpp:222
-#, fuzzy
-msgid "Turn Bell"
-msgstr "Tours : "
-
-#: src/preferences_display.cpp:223
-msgid "Show Team Colors"
-msgstr ""
-
-#: src/preferences_display.cpp:224
-msgid "Show Color Cursors"
-msgstr ""
-
-#: src/preferences_display.cpp:225
-msgid "Show Haloing Effects"
-msgstr ""
-
-#: src/preferences_display.cpp:226
-msgid "Video Mode"
-msgstr ""
-
-#: src/preferences_display.cpp:227
-#, fuzzy
-msgid "Theme"
-msgstr "Équipe"
-
-#: src/preferences_display.cpp:228
-msgid "Hotkeys"
-msgstr ""
-
-#: src/preferences_display.cpp:229
-msgid "Adjust Gamma"
-msgstr ""
-
-#: src/preferences_display.cpp:230
-msgid "Reverse Time Graphics"
-msgstr ""
-
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr ""
-
-#: src/preferences_display.cpp:232
-msgid "Sound effects"
-msgstr ""
-
-#: src/preferences_display.cpp:233
-#, fuzzy
-msgid "Music"
-msgstr "+Musiciens"
-
-#: src/preferences_display.cpp:235
-msgid "Music Volume:"
-msgstr ""
-
-#: src/preferences_display.cpp:235
-msgid "SFX Volume:"
-msgstr ""
-
-#: src/preferences_display.cpp:236
-msgid "Gamma:"
-msgstr ""
-
-#: src/preferences_display.cpp:236
-msgid "Scroll Speed:"
-msgstr ""
-
-#: src/preferences_display.cpp:249
-msgid "Sound effects on/off"
-msgstr ""
-
-#: src/preferences_display.cpp:253
-msgid "Change the sound effects volume"
-msgstr ""
-
-#: src/preferences_display.cpp:256
-msgid "Music on/off"
-msgstr ""
-
-#: src/preferences_display.cpp:260
-#, fuzzy
-msgid "Change the music volume"
-msgstr "Changer la langue"
-
-#: src/preferences_display.cpp:266
-msgid "Change the speed of scrolling around the map"
-msgstr ""
-
-#: src/preferences_display.cpp:271 src/preferences_display.cpp:273
-msgid "Set the amount of chat lines shown"
-msgstr ""
-
-#: src/preferences_display.cpp:276
-msgid "Add a timestamp to chat messages"
-msgstr ""
-
-#: src/preferences_display.cpp:279 src/preferences_display.cpp:284
-msgid "Change the brightness of the display"
-msgstr ""
-
-#: src/preferences_display.cpp:287
-msgid "Choose whether the game should run full screen or in a window"
-msgstr ""
-
-#: src/preferences_display.cpp:290
-msgid "Make units move and fight faster"
-msgstr ""
-
-#: src/preferences_display.cpp:293
-msgid "Do not animate AI units moving"
-msgstr ""
-
-#: src/preferences_display.cpp:296
-msgid "Overlay a grid onto the map"
-msgstr ""
-
-#: src/preferences_display.cpp:299
-msgid "Show messages about players joining the multiplayer lobby"
-msgstr ""
-
-#: src/preferences_display.cpp:302
-msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr ""
-
-#: src/preferences_display.cpp:304
-msgid "Change the resolution the game runs at"
-msgstr ""
-
-#: src/preferences_display.cpp:305
-msgid "Change the theme the game runs with"
-msgstr ""
-
-#: src/preferences_display.cpp:308
-msgid "Display a dialog at the beginning of your turn"
-msgstr ""
-
-#: src/preferences_display.cpp:311
-msgid "Play a bell sound at the beginning of your turn"
-msgstr ""
-
-#: src/preferences_display.cpp:314
-msgid ""
-"Show a colored circle around the base of each unit to show which side it is "
-"on"
-msgstr ""
-
-#: src/preferences_display.cpp:317
-msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
-
-#: src/preferences_display.cpp:320
-msgid "Use colored mouse cursors (may be slower)"
-msgstr ""
-
-#: src/preferences_display.cpp:323
-msgid "Use graphical special effects (may be slower)"
-msgstr ""
-
-#: src/preferences_display.cpp:325
-msgid "View and configure keyboard shortcuts"
-msgstr ""
-
-#: src/preferences_display.cpp:475
-#, fuzzy
-msgid "Chat Lines: "
-msgstr "Unités chaotiques : "
-
-#: src/preferences_display.cpp:527
-msgid "yes"
-msgstr ""
-
-#: src/preferences_display.cpp:529
-#, fuzzy
-msgid "no"
-msgstr "Neige"
-
-#: src/preferences_display.cpp:595
-msgid "Prefs section^General"
-msgstr ""
-
-#: src/preferences_display.cpp:596
-msgid "Prefs section^Display"
-msgstr ""
-
-#: src/preferences_display.cpp:597
-msgid "Prefs section^Sound"
-msgstr ""
-
-#: src/preferences_display.cpp:598
-#, fuzzy
-msgid "Prefs section^Multiplayer"
-msgstr "Multi-joueurs"
-
-#: src/preferences_display.cpp:599
-msgid "Advanced section^Advanced"
-msgstr ""
-
-#: src/preferences_display.cpp:609
-#, fuzzy
-msgid "Preferences"
-msgstr "Princesse"
-
-#: src/preferences_display.cpp:650
-msgid "There are no alternative video modes available"
-msgstr ""
-
-#: src/preferences_display.cpp:679
-#, fuzzy
-msgid "Choose Resolution"
-msgstr "Choisissez une arme : "
-
-#: src/preferences_display.cpp:707
-msgid "Close Window"
-msgstr ""
-
-#: src/preferences_display.cpp:712
-#, fuzzy
-msgid "Hotkey Settings"
-msgstr "Paramètres"
-
-#: src/preferences_display.cpp:716 src/preferences_display.cpp:769
-msgid "Press desired Hotkey"
-msgstr ""
-
-#: src/preferences_display.cpp:734
-#, fuzzy
-msgid "Action"
-msgstr "Actions"
-
-#: src/preferences_display.cpp:734
-#, fuzzy
-msgid "Binding"
-msgstr "éclair"
-
-#: src/preferences_display.cpp:746
-msgid "Change Hotkey"
-msgstr ""
-
-#: src/preferences_display.cpp:749
-msgid "Save Hotkeys"
-msgstr ""
-
-#: src/preferences_display.cpp:795
-msgid "This Hotkey is already in use."
-msgstr ""
-
-#: src/preferences_display.cpp:828
-msgid "Saved Theme Preference: "
-msgstr "Thème préféré sauvegardé : "
-
-#: src/preferences_display.cpp:834
-msgid "New theme will take effect on next new or loaded game."
-msgstr ""
-
-#: src/preferences_display.cpp:838
-msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
-
 #: src/reports.cpp:138
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
@@ -11739,6 +11445,61 @@ msgstr ""
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
 
+#, fuzzy
+#~ msgid "Turn Dialog"
+#~ msgstr "Didacticiel"
+
+#, fuzzy
+#~ msgid "Turn Bell"
+#~ msgstr "Tours : "
+
+#, fuzzy
+#~ msgid "Theme"
+#~ msgstr "Équipe"
+
+#, fuzzy
+#~ msgid "Music"
+#~ msgstr "+Musiciens"
+
+#, fuzzy
+#~ msgid "Change the music volume"
+#~ msgstr "Changer la langue"
+
+#, fuzzy
+#~ msgid "Chat Lines: "
+#~ msgstr "Unités chaotiques : "
+
+#, fuzzy
+#~ msgid "no"
+#~ msgstr "Neige"
+
+#, fuzzy
+#~ msgid "Prefs section^Multiplayer"
+#~ msgstr "Multi-joueurs"
+
+#, fuzzy
+#~ msgid "Preferences"
+#~ msgstr "Princesse"
+
+#, fuzzy
+#~ msgid "Choose Resolution"
+#~ msgstr "Choisissez une arme : "
+
+#, fuzzy
+#~ msgid "Hotkey Settings"
+#~ msgstr "Paramètres"
+
+#, fuzzy
+#~ msgid "Action"
+#~ msgstr "Actions"
+
+#, fuzzy
+#~ msgid "Binding"
+#~ msgstr "éclair"
+
+#~ msgid "Saved Theme Preference: "
+#~ msgstr "Thème préféré sauvegardé : "
+
 #~ msgid "Gate"
 #~ msgstr "Porte"
 
@@ -11753,9 +11514,6 @@ msgstr ""
 
 #~ msgid "bump"
 #~ msgstr "bosse"
-
-#~ msgid "Ogre"
-#~ msgstr "Ogre"
 
 #~ msgid "Wall Guard"
 #~ msgstr "Garde-muraille"

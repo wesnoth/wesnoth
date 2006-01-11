@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-11 15:59+0100\n"
+"POT-Creation-Date: 2006-01-11 16:47+0100\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -6182,15 +6182,15 @@ msgid ""
 msgstr ""
 
 #: data/units/Ogre.cfg:3
-msgid "units/ogres/ogre"
-msgstr ""
+msgid "Ogre"
+msgstr "Ogroa"
 
 #: data/units/Ogre.cfg:23
 msgid ""
-"units/ogres/ogres are giant creatures that usually live alone in the "
-"wilderness, remarkably similar to humans in form, though large and "
-"misshapen. While they can be easily outrun or outsmarted, their strength is "
-"not to be underestimated."
+"Ogres are giant creatures that usually live alone in the wilderness, "
+"remarkably similar to humans in form, though large and misshapen. While they "
+"can be easily outrun or outsmarted, their strength is not to be "
+"underestimated."
 msgstr ""
 
 #: data/units/Ogre.cfg:26 data/units/Young_Ogre.cfg:47
@@ -8711,305 +8711,6 @@ msgstr "Ordeztu "
 msgid "has left the game. What do you want to do?"
 msgstr "jokoa utzi du. Zer egin nahi duzu?"
 
-#: src/preferences_display.cpp:73 src/preferences_display.cpp:105
-msgid ""
-"The video mode could not be changed. Your window manager must be set to 16 "
-"bits per pixel to run the game in windowed mode. Your display must support "
-"1024x768x16 to run the game full screen."
-msgstr ""
-
-#: src/preferences_display.cpp:215
-msgid "Toggle Full Screen"
-msgstr ""
-
-#: src/preferences_display.cpp:216
-msgid "Accelerated Speed"
-msgstr ""
-
-#: src/preferences_display.cpp:217
-msgid "Skip AI Moves"
-msgstr ""
-
-#: src/preferences_display.cpp:218
-#, fuzzy
-msgid "Show Grid"
-msgstr "Errepikapena erakutsi"
-
-#: src/preferences_display.cpp:219
-msgid "Show lobby joins"
-msgstr ""
-
-#: src/preferences_display.cpp:220
-msgid "Show Floating Labels"
-msgstr ""
-
-#: src/preferences_display.cpp:221
-#, fuzzy
-msgid "Turn Dialog"
-msgstr "Tutoriala"
-
-#: src/preferences_display.cpp:222
-#, fuzzy
-msgid "Turn Bell"
-msgstr "Txandak: "
-
-#: src/preferences_display.cpp:223
-msgid "Show Team Colors"
-msgstr ""
-
-#: src/preferences_display.cpp:224
-msgid "Show Color Cursors"
-msgstr ""
-
-#: src/preferences_display.cpp:225
-msgid "Show Haloing Effects"
-msgstr ""
-
-#: src/preferences_display.cpp:226
-msgid "Video Mode"
-msgstr ""
-
-#: src/preferences_display.cpp:227
-#, fuzzy
-msgid "Theme"
-msgstr "Taldea"
-
-#: src/preferences_display.cpp:228
-#, fuzzy
-msgid "Hotkeys"
-msgstr "Ezarpenak..."
-
-#: src/preferences_display.cpp:229
-msgid "Adjust Gamma"
-msgstr ""
-
-#: src/preferences_display.cpp:230
-msgid "Reverse Time Graphics"
-msgstr ""
-
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr ""
-
-#: src/preferences_display.cpp:232
-msgid "Sound effects"
-msgstr ""
-
-#: src/preferences_display.cpp:233
-#, fuzzy
-msgid "Music"
-msgstr "+Musika"
-
-#: src/preferences_display.cpp:235
-msgid "Music Volume:"
-msgstr ""
-
-#: src/preferences_display.cpp:235
-msgid "SFX Volume:"
-msgstr ""
-
-#: src/preferences_display.cpp:236
-msgid "Gamma:"
-msgstr ""
-
-#: src/preferences_display.cpp:236
-msgid "Scroll Speed:"
-msgstr ""
-
-#: src/preferences_display.cpp:249
-msgid "Sound effects on/off"
-msgstr ""
-
-#: src/preferences_display.cpp:253
-#, fuzzy
-msgid "Change the sound effects volume"
-msgstr "Hizkuntza aldatu"
-
-#: src/preferences_display.cpp:256
-msgid "Music on/off"
-msgstr ""
-
-#: src/preferences_display.cpp:260
-#, fuzzy
-msgid "Change the music volume"
-msgstr "Hizkuntza aldatu"
-
-#: src/preferences_display.cpp:266
-msgid "Change the speed of scrolling around the map"
-msgstr ""
-
-#: src/preferences_display.cpp:271 src/preferences_display.cpp:273
-msgid "Set the amount of chat lines shown"
-msgstr ""
-
-#: src/preferences_display.cpp:276
-msgid "Add a timestamp to chat messages"
-msgstr ""
-
-#: src/preferences_display.cpp:279 src/preferences_display.cpp:284
-msgid "Change the brightness of the display"
-msgstr ""
-
-#: src/preferences_display.cpp:287
-msgid "Choose whether the game should run full screen or in a window"
-msgstr ""
-
-#: src/preferences_display.cpp:290
-msgid "Make units move and fight faster"
-msgstr ""
-
-#: src/preferences_display.cpp:293
-msgid "Do not animate AI units moving"
-msgstr ""
-
-#: src/preferences_display.cpp:296
-msgid "Overlay a grid onto the map"
-msgstr ""
-
-#: src/preferences_display.cpp:299
-msgid "Show messages about players joining the multiplayer lobby"
-msgstr ""
-
-#: src/preferences_display.cpp:302
-msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr ""
-
-#: src/preferences_display.cpp:304
-msgid "Change the resolution the game runs at"
-msgstr ""
-
-#: src/preferences_display.cpp:305
-msgid "Change the theme the game runs with"
-msgstr ""
-
-#: src/preferences_display.cpp:308
-msgid "Display a dialog at the beginning of your turn"
-msgstr ""
-
-#: src/preferences_display.cpp:311
-msgid "Play a bell sound at the beginning of your turn"
-msgstr ""
-
-#: src/preferences_display.cpp:314
-msgid ""
-"Show a colored circle around the base of each unit to show which side it is "
-"on"
-msgstr ""
-
-#: src/preferences_display.cpp:317
-msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
-
-#: src/preferences_display.cpp:320
-msgid "Use colored mouse cursors (may be slower)"
-msgstr ""
-
-#: src/preferences_display.cpp:323
-msgid "Use graphical special effects (may be slower)"
-msgstr ""
-
-#: src/preferences_display.cpp:325
-msgid "View and configure keyboard shortcuts"
-msgstr ""
-
-#: src/preferences_display.cpp:475
-#, fuzzy
-msgid "Chat Lines: "
-msgstr "Unitate kaotikoak:"
-
-#: src/preferences_display.cpp:527
-#, fuzzy
-msgid "yes"
-msgstr "Bai"
-
-#: src/preferences_display.cpp:529
-#, fuzzy
-msgid "no"
-msgstr "Elurra"
-
-#: src/preferences_display.cpp:595
-msgid "Prefs section^General"
-msgstr ""
-
-#: src/preferences_display.cpp:596
-msgid "Prefs section^Display"
-msgstr ""
-
-#: src/preferences_display.cpp:597
-msgid "Prefs section^Sound"
-msgstr ""
-
-#: src/preferences_display.cpp:598
-#, fuzzy
-msgid "Prefs section^Multiplayer"
-msgstr "Jokalari anitz"
-
-#: src/preferences_display.cpp:599
-msgid "Advanced section^Advanced"
-msgstr ""
-
-#: src/preferences_display.cpp:609
-#, fuzzy
-msgid "Preferences"
-msgstr "Printzesa"
-
-#: src/preferences_display.cpp:650
-msgid "There are no alternative video modes available"
-msgstr ""
-
-#: src/preferences_display.cpp:679
-#, fuzzy
-msgid "Choose Resolution"
-msgstr "Arma aukeratu:"
-
-#: src/preferences_display.cpp:707
-msgid "Close Window"
-msgstr "Leihoa Itxi"
-
-#: src/preferences_display.cpp:712
-#, fuzzy
-msgid "Hotkey Settings"
-msgstr "Ezarpenak..."
-
-#: src/preferences_display.cpp:716 src/preferences_display.cpp:769
-msgid "Press desired Hotkey"
-msgstr ""
-
-#: src/preferences_display.cpp:734
-#, fuzzy
-msgid "Action"
-msgstr "Ekintzak"
-
-#: src/preferences_display.cpp:734
-#, fuzzy
-msgid "Binding"
-msgstr "tximista"
-
-#: src/preferences_display.cpp:746
-msgid "Change Hotkey"
-msgstr ""
-
-#: src/preferences_display.cpp:749
-#, fuzzy
-msgid "Save Hotkeys"
-msgstr "Gordeta"
-
-#: src/preferences_display.cpp:795
-msgid "This Hotkey is already in use."
-msgstr ""
-
-#: src/preferences_display.cpp:828
-msgid "Saved Theme Preference: "
-msgstr "Gordetako Gai Hautaketa:"
-
-#: src/preferences_display.cpp:834
-msgid "New theme will take effect on next new or loaded game."
-msgstr ""
-
-#: src/preferences_display.cpp:838
-msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
-
 #: src/reports.cpp:138
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
@@ -9285,14 +8986,89 @@ msgstr ""
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
 
+#, fuzzy
+#~ msgid "Show Grid"
+#~ msgstr "Errepikapena erakutsi"
+
+#, fuzzy
+#~ msgid "Turn Dialog"
+#~ msgstr "Tutoriala"
+
+#, fuzzy
+#~ msgid "Turn Bell"
+#~ msgstr "Txandak: "
+
+#, fuzzy
+#~ msgid "Theme"
+#~ msgstr "Taldea"
+
+#, fuzzy
+#~ msgid "Hotkeys"
+#~ msgstr "Ezarpenak..."
+
+#, fuzzy
+#~ msgid "Music"
+#~ msgstr "+Musika"
+
+#, fuzzy
+#~ msgid "Change the sound effects volume"
+#~ msgstr "Hizkuntza aldatu"
+
+#, fuzzy
+#~ msgid "Change the music volume"
+#~ msgstr "Hizkuntza aldatu"
+
+#, fuzzy
+#~ msgid "Chat Lines: "
+#~ msgstr "Unitate kaotikoak:"
+
+#, fuzzy
+#~ msgid "yes"
+#~ msgstr "Bai"
+
+#, fuzzy
+#~ msgid "no"
+#~ msgstr "Elurra"
+
+#, fuzzy
+#~ msgid "Prefs section^Multiplayer"
+#~ msgstr "Jokalari anitz"
+
+#, fuzzy
+#~ msgid "Preferences"
+#~ msgstr "Printzesa"
+
+#, fuzzy
+#~ msgid "Choose Resolution"
+#~ msgstr "Arma aukeratu:"
+
+#~ msgid "Close Window"
+#~ msgstr "Leihoa Itxi"
+
+#, fuzzy
+#~ msgid "Hotkey Settings"
+#~ msgstr "Ezarpenak..."
+
+#, fuzzy
+#~ msgid "Action"
+#~ msgstr "Ekintzak"
+
+#, fuzzy
+#~ msgid "Binding"
+#~ msgstr "tximista"
+
+#, fuzzy
+#~ msgid "Save Hotkeys"
+#~ msgstr "Gordeta"
+
+#~ msgid "Saved Theme Preference: "
+#~ msgstr "Gordetako Gai Hautaketa:"
+
 #~ msgid "Gate"
 #~ msgstr "Atea"
 
 #~ msgid "bump"
 #~ msgstr "astindu"
-
-#~ msgid "Ogre"
-#~ msgstr "Ogroa"
 
 #~ msgid "Wall Guard"
 #~ msgstr "Harresiaren zaindaria"
