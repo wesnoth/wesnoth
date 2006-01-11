@@ -204,16 +204,20 @@ attack_type::attack_type(const config& cfg)
 	num_attacks_ = atol(cfg["number"].c_str());
 
 	const std::string& attack_weight_string=cfg["attack_weight"];
-	if (attack_weight_string.empty()) {
+	char *aptr;
+	double res = strtod(attack_weight_string.c_str(),&aptr);
+	if (attack_weight_string.empty() || *aptr != '\0') {
 		attack_weight_ = 1.0;
 	} else {
-		attack_weight_ = atof(attack_weight_string.c_str());
+		attack_weight_ = res;
 	}
 	const std::string& defense_weight_string=cfg["defense_weight"];
-	if (defense_weight_string.empty()) {
+	char *dptr;
+	res = strtod(defense_weight_string.c_str(),&dptr);
+	if (defense_weight_string.empty() || *dptr != '\0') {
 		defense_weight_ = 1.0;
 	} else {
-		defense_weight_ = atof(defense_weight_string.c_str());
+		defense_weight_ = res;
 	}
 }
 

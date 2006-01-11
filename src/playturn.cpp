@@ -665,6 +665,7 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 
 	const std::vector<attack_type>& attacks = attacker->second.attacks();
 	std::vector<std::string> items;
+	std::vector<int> weapons;
 
 	int best_weapon_index = -1;
 	simple_attack_rating best_weapon_rating;
@@ -672,7 +673,9 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 	attack_calculations_displayer::stats_vector stats;
 
 	for(size_t a = 0; a != attacks.size(); ++a) {
+		// skip weapons with attack_weight=0
 		if (attacks[a].attack_weight() > 0){
+			weapons.push_back(a);
 			battle_stats_strings sts;
 			battle_stats st = evaluate_battle_stats(map_, teams_, attacker_loc, defender_loc,
 		                                        a, units_, status_, 0, &sts);
@@ -740,7 +743,7 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 
 	cursor::set(cursor::NORMAL)
 ;
-	if(size_t(res) < attacks.size()) {
+	if(size_t(res) < weapons.size()) {
 
 		attacker->second.set_goto(gamemap::location());
 		clear_undo_stack();
@@ -756,7 +759,7 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 		attacker = units_.find(attacker_loc);
 		defender = units_.find(defender_loc);
 
-		if(attacker == units_.end() || defender == units_.end() || size_t(res) >= attacks.size()) {
+		if(attacker == units_.end() || defender == units_.end() || size_t(weapons[res]) >= attacks.size()) {
 			return true;
 		}
 
@@ -765,10 +768,10 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 
 		const bool defender_human = teams_[defender->second.side()-1].is_human();
 
-		recorder.add_attack(attacker_loc,defender_loc,res);
+		recorder.add_attack(attacker_loc,defender_loc,weapons[res]);
 
 		try {
-			attack(gui_,map_,teams_,attacker_loc,defender_loc,res,units_,status_,gameinfo_);
+			attack(gui_,map_,teams_,attacker_loc,defender_loc,weapons[res],units_,status_,gameinfo_);
 		} catch(end_level_exception&) {
 			//if the level ends due to a unit being killed, still see if
 			//either the attacker or defender should advance
