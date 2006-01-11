@@ -733,8 +733,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		
 		if(heal_ability) {
 			abilities_.push_back("heals");
-			if((*heal_ability)["name"] != "") {
-				ability_tooltips_.push_back((*heal_ability)["name"]);
+			if((*heal_ability)["description"] != "") {
+				ability_tooltips_.push_back((*heal_ability)["description"]);
 			} else {
 				ability_tooltips_.push_back("heals");
 			}
@@ -743,8 +743,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		}
 		if(regenerates_ability) {
 			abilities_.push_back("regenerates");
-			if((*regenerates_ability)["name"] != "") {
-				ability_tooltips_.push_back((*regenerates_ability)["name"]);
+			if((*regenerates_ability)["description"] != "") {
+				ability_tooltips_.push_back((*regenerates_ability)["description"]);
 			} else {
 				ability_tooltips_.push_back("regenerates");
 			}
@@ -753,8 +753,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		}
 		if(steadfast_ability) {
 			abilities_.push_back("steadfast");
-			if((*steadfast_ability)["name"] != "") {
-				ability_tooltips_.push_back((*steadfast_ability)["name"]);
+			if((*steadfast_ability)["description"] != "") {
+				ability_tooltips_.push_back((*steadfast_ability)["description"]);
 			} else {
 				ability_tooltips_.push_back("steadfast");
 			}
@@ -770,8 +770,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		}
 		if(leadership_ability) {
 			abilities_.push_back("leadership");
-			if((*leadership_ability)["name"] != "") {
-				ability_tooltips_.push_back((*leadership_ability)["name"]);
+			if((*leadership_ability)["description"] != "") {
+				ability_tooltips_.push_back((*leadership_ability)["description"]);
 			} else {
 				ability_tooltips_.push_back("leadership");
 			}
@@ -780,8 +780,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		}
 		if(skirmisher_ability) {
 			abilities_.push_back("skirmisher");
-			if((*skirmisher_ability)["name"] != "") {
-				ability_tooltips_.push_back((*skirmisher_ability)["name"]);
+			if((*skirmisher_ability)["description"] != "") {
+				ability_tooltips_.push_back((*skirmisher_ability)["description"]);
 			} else {
 				ability_tooltips_.push_back("skirmisher");
 			}
@@ -789,8 +789,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		}
 		if(illuminates_ability) {
 			abilities_.push_back("illuminates");
-			if((*illuminates_ability)["name"] != "") {
-				ability_tooltips_.push_back((*illuminates_ability)["name"]);
+			if((*illuminates_ability)["description"] != "") {
+				ability_tooltips_.push_back((*illuminates_ability)["description"]);
 			} else {
 				ability_tooltips_.push_back("illuminates");
 			}
@@ -798,8 +798,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		}
 		if(teleport_ability) {
 			abilities_.push_back("teleport");
-			if((*teleport_ability)["name"] != "") {
-				ability_tooltips_.push_back((*teleport_ability)["name"]);
+			if((*teleport_ability)["description"] != "") {
+				ability_tooltips_.push_back((*teleport_ability)["description"]);
 			} else {
 				ability_tooltips_.push_back("teleport");
 			}
@@ -807,16 +807,16 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		}
 		if(ambush_ability) {
 			abilities_.push_back("ambush");
-			if((*ambush_ability)["name"] != "") {
-				ability_tooltips_.push_back((*ambush_ability)["name"]);
+			if((*ambush_ability)["description"] != "") {
+				ability_tooltips_.push_back((*ambush_ability)["description"]);
 			} else {
 				ability_tooltips_.push_back("ambush");
 			}
 		}
 		if(nightstalk_ability) {
 			abilities_.push_back("nightstalk");
-			if((*nightstalk_ability)["name"] != "") {
-				ability_tooltips_.push_back((*nightstalk_ability)["name"]);
+			if((*nightstalk_ability)["description"] != "") {
+				ability_tooltips_.push_back((*nightstalk_ability)["description"]);
 			} else {
 				ability_tooltips_.push_back("nightstalk");
 			}
@@ -1205,8 +1205,8 @@ int unit_type::leadership(int led_level) const
 {
 	char key[24]; // level[x]
 	snprintf(key,sizeof(key),"level_%d",led_level);
-	const config* leadership_ability = cfg_.child("leadership_ability");
-	if(leadership_ability) {
+	const config* leadership_ability;
+	if(leadership_ability=cfg_.child("abilities") && leadership_ability=leadership_ability->child("leadership") && leadership_ability) {
 		if((*leadership_ability)[key] != "") {
 			return lexical_cast_default<int>((*leadership_ability)[key]);
 		}
