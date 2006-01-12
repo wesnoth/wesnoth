@@ -657,11 +657,10 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	//remove it.
 	if(!deprecated_abilities.empty() && deprecated_abilities.back() == "") {
 		deprecated_abilities.pop_back();
-	} else {
-		LOG_STREAM(err, config) << "unit " << id() << " uses the ability=list tag, which is deprecated\n";
 	}
-
+	
 	if(!deprecated_abilities.empty()) {
+		LOG_STREAM(err, config) << "unit " << id() << " uses the ability=list tag, which is deprecated\n";
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"heals") != deprecated_abilities.end()) {
 			heals_ = game_config::healer_heals_per_turn;
 			max_heals_ = game_config::heal_amount;
