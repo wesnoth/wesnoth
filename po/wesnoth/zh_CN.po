@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-11 16:47+0100\n"
+"POT-Creation-Date: 2006-01-12 16:30+0100\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -534,7 +534,7 @@ msgstr "刺"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:48
 #: data/units/Grand_Knight.cfg:59 data/units/Horseman.cfg:39
 #: data/units/Knight.cfg:57 data/units/Lancer.cfg:40 data/units/Paladin.cfg:63
-#: src/actions.cpp:449 src/actions.cpp:573
+#: src/actions.cpp:452 src/actions.cpp:580
 msgid "charge"
 msgstr "冲锋"
 
@@ -580,7 +580,7 @@ msgid "cold"
 msgstr "冰"
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:44
-#: src/actions.cpp:884 src/actions.cpp:1055
+#: src/actions.cpp:891 src/actions.cpp:1062
 msgid "stone"
 msgstr "石化"
 
@@ -610,7 +610,7 @@ msgstr "指挥官"
 #: data/units/Elvish_Captain.cfg:26 data/units/Elvish_Marshal.cfg:26
 #: data/units/General.cfg:35 data/units/Goblin_Rouser.cfg:15
 #: data/units/Grand_Marshal.cfg:31 data/units/Lieutenant.cfg:25
-#: data/units/Sergeant.cfg:26 src/actions.cpp:439 src/actions.cpp:564
+#: data/units/Sergeant.cfg:26 src/actions.cpp:442 src/actions.cpp:571
 msgid "leadership"
 msgstr "领导能力"
 
@@ -3427,24 +3427,23 @@ msgstr "震退～"
 msgid "User Map"
 msgstr "玩家地图"
 
-#: data/multiplayer.cfg:20
-msgid "Default"
-msgstr "缺省"
-
-#: data/multiplayer.cfg:24 data/multiplayer.cfg:42 data/multiplayer.cfg:61
-#: data/multiplayer.cfg:79 src/leader_list.cpp:99
+#: data/multiplayer.cfg:21 src/leader_list.cpp:99
 msgid "Random"
 msgstr "随即"
 
-#: data/multiplayer.cfg:38
+#: data/multiplayer.cfg:28
+msgid "Default"
+msgstr "缺省"
+
+#: data/multiplayer.cfg:41
 msgid "Classic"
 msgstr "经典的"
 
-#: data/multiplayer.cfg:57
+#: data/multiplayer.cfg:55
 msgid "Age of Heroes"
 msgstr "英雄时代"
 
-#: data/multiplayer.cfg:75
+#: data/multiplayer.cfg:68
 msgid "Great War"
 msgstr "宏伟战争"
 
@@ -4530,7 +4529,7 @@ msgstr "匕首"
 #: data/units/Assassin.cfg:48 data/units/Assassin.cfg:138
 #: data/units/Nightgaunt.cfg:61 data/units/Rogue.cfg:34
 #: data/units/Rogue.cfg:106 data/units/Shadow.cfg:35 data/units/Thief.cfg:89
-#: data/units/Thief.cfg:200 src/actions.cpp:582
+#: data/units/Thief.cfg:200 src/actions.cpp:589
 msgid "backstab"
 msgstr "背刺"
 
@@ -8314,169 +8313,169 @@ msgstr "-  艺术与图像设计师"
 msgid "+Developers"
 msgstr "+开发人员"
 
-#: src/about.cpp:58
+#: src/about.cpp:59
 msgid "+General Purpose Administrators"
 msgstr "+常规管理员"
 
-#: src/about.cpp:62
+#: src/about.cpp:63
 msgid "+Artwork and graphics designers"
 msgstr "+艺术与图像设计师"
 
-#: src/about.cpp:93
+#: src/about.cpp:94
 msgid "+Music"
 msgstr "+音乐"
 
-#: src/about.cpp:99
+#: src/about.cpp:100
 msgid "+Scenario Designers"
 msgstr "+剧本设计师"
 
-#: src/about.cpp:109
+#: src/about.cpp:110
 #, fuzzy
 msgid "+Multiplayer Developers"
 msgstr "+多人游戏地图"
 
-#: src/about.cpp:114
+#: src/about.cpp:115
 msgid "+Multiplayer Maps"
 msgstr "+多人游戏地图"
 
-#: src/about.cpp:119
+#: src/about.cpp:120
 msgid "+Packagers"
 msgstr "+游戏打包人员"
 
-#: src/about.cpp:129
+#: src/about.cpp:130
 msgid "+Miscellaneous"
 msgstr "+其它方面"
 
-#: src/about.cpp:134
+#: src/about.cpp:135
 msgid "+Internationalization Managers"
 msgstr "+国际化管理员"
 
-#: src/about.cpp:141
+#: src/about.cpp:142
 msgid "+Afrikaans Translation"
 msgstr "+南非荷兰语"
 
-#: src/about.cpp:147
+#: src/about.cpp:148
 msgid "+Basque Translation"
 msgstr "+巴斯克语"
 
-#: src/about.cpp:152
+#: src/about.cpp:153
 msgid "+Bulgarian Translation"
 msgstr "+保加利亚语"
 
-#: src/about.cpp:156
+#: src/about.cpp:157
 msgid "+Catalan Translation"
 msgstr "+加泰隆语"
 
-#: src/about.cpp:166
+#: src/about.cpp:167
 msgid "+Chinese Translation"
 msgstr "+简体中文"
 
-#: src/about.cpp:169
+#: src/about.cpp:170
 msgid "+Czech Translation"
 msgstr "+捷克语"
 
-#: src/about.cpp:184
+#: src/about.cpp:185
 msgid "+Danish Translation"
 msgstr "+丹麦语"
 
-#: src/about.cpp:191
+#: src/about.cpp:192
 msgid "+Dutch Translation"
 msgstr "+荷兰语"
 
-#: src/about.cpp:199
+#: src/about.cpp:200
 msgid "+English (GB) Translation"
 msgstr "+英语(GB)"
 
-#: src/about.cpp:202
+#: src/about.cpp:203
 #, fuzzy
 msgid "+Esperanto Translation"
 msgstr "+德语"
 
-#: src/about.cpp:206
+#: src/about.cpp:207
 msgid "+Estonian Translation"
 msgstr "+爱沙尼亚语"
 
-#: src/about.cpp:209
+#: src/about.cpp:210
 msgid "+Finnish Translation"
 msgstr "+芬兰语"
 
-#: src/about.cpp:215
+#: src/about.cpp:216
 msgid "+French Translation"
 msgstr "+法语"
 
-#: src/about.cpp:234
+#: src/about.cpp:235
 msgid "+German Translation"
 msgstr "+德语"
 
-#: src/about.cpp:246
+#: src/about.cpp:247
 msgid "+Greek Translation"
 msgstr "+希腊语"
 
-#: src/about.cpp:252
+#: src/about.cpp:253
 msgid "+Hebrew Translation"
 msgstr "+希伯来语"
 
-#: src/about.cpp:256
+#: src/about.cpp:257
 msgid "+Hungarian Translation"
 msgstr "+匈牙利语"
 
-#: src/about.cpp:269
+#: src/about.cpp:270
 msgid "+Italian Translation"
 msgstr "+意大利语"
 
-#: src/about.cpp:278
+#: src/about.cpp:279
 msgid "+Japanese Translation"
 msgstr "+日语"
 
-#: src/about.cpp:283
+#: src/about.cpp:284
 msgid "+Latin Translation"
 msgstr "+拉丁语"
 
-#: src/about.cpp:286
+#: src/about.cpp:287
 msgid "+Norwegian Translation"
 msgstr "+挪威语"
 
-#: src/about.cpp:292
+#: src/about.cpp:293
 msgid "+Polish Translation"
 msgstr "+波兰语"
 
-#: src/about.cpp:303
+#: src/about.cpp:304
 msgid "+Portuguese Translation"
 msgstr "+葡萄牙语"
 
-#: src/about.cpp:306
+#: src/about.cpp:307
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+葡萄牙语(巴西)"
 
-#: src/about.cpp:315
+#: src/about.cpp:316
 msgid "+Russian Translation"
 msgstr "+俄语"
 
-#: src/about.cpp:321
+#: src/about.cpp:322
 msgid "+Serbian Translation"
 msgstr "+塞尔维亚语"
 
-#: src/about.cpp:324
+#: src/about.cpp:325
 msgid "+Slovak Translation"
 msgstr "+斯洛伐克语"
 
-#: src/about.cpp:327
+#: src/about.cpp:328
 msgid "+Slovenian Translation"
 msgstr "+斯洛文尼亚语"
 
-#: src/about.cpp:330
+#: src/about.cpp:331
 msgid "+Spanish Translation"
 msgstr "+西班牙语"
 
-#: src/about.cpp:339
+#: src/about.cpp:340
 msgid "+Swedish Translation"
 msgstr "+瑞典语"
 
-#: src/about.cpp:346
+#: src/about.cpp:347
 msgid "+Turkish Translation"
 msgstr "+土耳其语"
 
-#: src/about.cpp:353
+#: src/about.cpp:354
 msgid "+Contributors"
 msgstr "+贡献者"
 
@@ -8504,85 +8503,85 @@ msgstr "城堡内没有足够的地方用来征募更多单位。"
 msgid "none"
 msgstr "无"
 
-#: src/actions.cpp:419 src/actions.cpp:543
+#: src/actions.cpp:422 src/actions.cpp:550
 msgid "base damage"
 msgstr "基本伤害"
 
-#: src/actions.cpp:449 src/actions.cpp:573 src/actions.cpp:582
+#: src/actions.cpp:452 src/actions.cpp:580 src/actions.cpp:589
 msgid "Doubled"
 msgstr "双倍"
 
-#: src/actions.cpp:458 src/actions.cpp:607
+#: src/actions.cpp:461 src/actions.cpp:614
 #, fuzzy
 msgid "Halved"
 msgstr "以存储"
 
-#: src/actions.cpp:458 src/actions.cpp:607 src/actions.cpp:876
-#: src/actions.cpp:1046
+#: src/actions.cpp:461 src/actions.cpp:614 src/actions.cpp:883
+#: src/actions.cpp:1053
 msgid "slowed"
 msgstr "减速"
 
-#: src/actions.cpp:466
+#: src/actions.cpp:469
 msgid "attacker resistance vs"
 msgstr "攻击者抵抗于"
 
-#: src/actions.cpp:466
+#: src/actions.cpp:469
 msgid "attacker vulnerability vs"
 msgstr "攻击者易受于"
 
-#: src/actions.cpp:480 src/actions.cpp:620
+#: src/actions.cpp:483 src/actions.cpp:627
 msgid "total damage"
 msgstr "总伤害"
 
-#: src/actions.cpp:590
+#: src/actions.cpp:597
 msgid "defender resistance vs"
 msgstr "防御者抵抗于"
 
-#: src/actions.cpp:590
+#: src/actions.cpp:597
 msgid "defender vulnerability vs"
 msgstr "防御者易受于"
 
-#: src/actions.cpp:593
+#: src/actions.cpp:600
 msgid " (+steadfast)"
 msgstr " (+坚定)"
 
-#: src/actions.cpp:656
+#: src/actions.cpp:663
 msgid "(both should survive)"
 msgstr "(两者都能存活)"
 
-#: src/actions.cpp:658
+#: src/actions.cpp:665
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% Pr[杀死/被杀 被/两者 生还]"
 
-#: src/actions.cpp:871 src/actions.cpp:1041
+#: src/actions.cpp:878 src/actions.cpp:1048
 msgid "poisoned"
 msgstr "中毒"
 
-#: src/actions.cpp:1942
+#: src/actions.cpp:1953
 msgid "Ambushed!"
 msgstr "伏击！"
 
-#: src/actions.cpp:1977
+#: src/actions.cpp:1988
 msgid "Friendly unit sighted"
 msgstr "友好单位可见"
 
-#: src/actions.cpp:1979
+#: src/actions.cpp:1990
 msgid "Enemy unit sighted!"
 msgstr "敌人单位可见！"
 
-#: src/actions.cpp:1984
+#: src/actions.cpp:1995
 msgid "$friends Friendly units sighted"
 msgstr "$friends 友好单位可见"
 
-#: src/actions.cpp:1986
+#: src/actions.cpp:1997
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies 敌人单位可见！"
 
-#: src/actions.cpp:1990
+#: src/actions.cpp:2001
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "单位可见！ ($friends 友好 $enemies 敌人)"
 
-#: src/actions.cpp:2005
+#: src/actions.cpp:2016
 msgid "(press $hotkey to continue)"
 msgstr "(按 $hotkey 继续)"
 
@@ -9015,7 +9014,7 @@ msgstr "胜利："
 msgid "Defeat:"
 msgstr "失败："
 
-#: src/gamestatus.cpp:476
+#: src/gamestatus.cpp:531
 msgid "Could not write to file"
 msgstr "不能写入文件"
 
@@ -10151,15 +10150,15 @@ msgstr "： "
 msgid "strikes"
 msgstr "打击"
 
-#: src/unit_types.cpp:994
+#: src/unit_types.cpp:1153
 msgid "chaotic"
 msgstr "混乱的"
 
-#: src/unit_types.cpp:994
+#: src/unit_types.cpp:1153
 msgid "lawful"
 msgstr "善良的"
 
-#: src/unit_types.cpp:994
+#: src/unit_types.cpp:1153
 msgid "neutral"
 msgstr "中立的"
 

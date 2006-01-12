@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.6+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-11 16:47+0100\n"
+"POT-Creation-Date: 2006-01-12 16:30+0100\n"
 "PO-Revision-Date: 2005-08-25 18:14+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -518,7 +518,7 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:48
 #: data/units/Grand_Knight.cfg:59 data/units/Horseman.cfg:39
 #: data/units/Knight.cfg:57 data/units/Lancer.cfg:40 data/units/Paladin.cfg:63
-#: src/actions.cpp:449 src/actions.cpp:573
+#: src/actions.cpp:452 src/actions.cpp:580
 msgid "charge"
 msgstr ""
 
@@ -562,7 +562,7 @@ msgid "cold"
 msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:44
-#: src/actions.cpp:884 src/actions.cpp:1055
+#: src/actions.cpp:891 src/actions.cpp:1062
 msgid "stone"
 msgstr ""
 
@@ -592,7 +592,7 @@ msgstr ""
 #: data/units/Elvish_Captain.cfg:26 data/units/Elvish_Marshal.cfg:26
 #: data/units/General.cfg:35 data/units/Goblin_Rouser.cfg:15
 #: data/units/Grand_Marshal.cfg:31 data/units/Lieutenant.cfg:25
-#: data/units/Sergeant.cfg:26 src/actions.cpp:439 src/actions.cpp:564
+#: data/units/Sergeant.cfg:26 src/actions.cpp:442 src/actions.cpp:571
 msgid "leadership"
 msgstr ""
 
@@ -2894,24 +2894,23 @@ msgstr ""
 msgid "User Map"
 msgstr ""
 
-#: data/multiplayer.cfg:20
-msgid "Default"
-msgstr ""
-
-#: data/multiplayer.cfg:24 data/multiplayer.cfg:42 data/multiplayer.cfg:61
-#: data/multiplayer.cfg:79 src/leader_list.cpp:99
+#: data/multiplayer.cfg:21 src/leader_list.cpp:99
 msgid "Random"
 msgstr ""
 
-#: data/multiplayer.cfg:38
+#: data/multiplayer.cfg:28
+msgid "Default"
+msgstr ""
+
+#: data/multiplayer.cfg:41
 msgid "Classic"
 msgstr ""
 
-#: data/multiplayer.cfg:57
+#: data/multiplayer.cfg:55
 msgid "Age of Heroes"
 msgstr ""
 
-#: data/multiplayer.cfg:75
+#: data/multiplayer.cfg:68
 msgid "Great War"
 msgstr ""
 
@@ -3893,7 +3892,7 @@ msgstr ""
 #: data/units/Assassin.cfg:48 data/units/Assassin.cfg:138
 #: data/units/Nightgaunt.cfg:61 data/units/Rogue.cfg:34
 #: data/units/Rogue.cfg:106 data/units/Shadow.cfg:35 data/units/Thief.cfg:89
-#: data/units/Thief.cfg:200 src/actions.cpp:582
+#: data/units/Thief.cfg:200 src/actions.cpp:589
 msgid "backstab"
 msgstr ""
 
@@ -6936,167 +6935,167 @@ msgstr ""
 msgid "+Developers"
 msgstr ""
 
-#: src/about.cpp:58
+#: src/about.cpp:59
 msgid "+General Purpose Administrators"
 msgstr ""
 
-#: src/about.cpp:62
+#: src/about.cpp:63
 msgid "+Artwork and graphics designers"
 msgstr ""
 
-#: src/about.cpp:93
+#: src/about.cpp:94
 msgid "+Music"
 msgstr ""
 
-#: src/about.cpp:99
+#: src/about.cpp:100
 msgid "+Scenario Designers"
 msgstr ""
 
-#: src/about.cpp:109
+#: src/about.cpp:110
 msgid "+Multiplayer Developers"
 msgstr ""
 
-#: src/about.cpp:114
+#: src/about.cpp:115
 msgid "+Multiplayer Maps"
 msgstr ""
 
-#: src/about.cpp:119
+#: src/about.cpp:120
 msgid "+Packagers"
 msgstr ""
 
-#: src/about.cpp:129
+#: src/about.cpp:130
 msgid "+Miscellaneous"
 msgstr ""
 
-#: src/about.cpp:134
+#: src/about.cpp:135
 msgid "+Internationalization Managers"
 msgstr ""
 
-#: src/about.cpp:141
+#: src/about.cpp:142
 msgid "+Afrikaans Translation"
 msgstr ""
 
-#: src/about.cpp:147
+#: src/about.cpp:148
 msgid "+Basque Translation"
 msgstr ""
 
-#: src/about.cpp:152
+#: src/about.cpp:153
 msgid "+Bulgarian Translation"
 msgstr ""
 
-#: src/about.cpp:156
+#: src/about.cpp:157
 msgid "+Catalan Translation"
 msgstr ""
 
-#: src/about.cpp:166
+#: src/about.cpp:167
 msgid "+Chinese Translation"
 msgstr ""
 
-#: src/about.cpp:169
+#: src/about.cpp:170
 msgid "+Czech Translation"
 msgstr ""
 
-#: src/about.cpp:184
+#: src/about.cpp:185
 msgid "+Danish Translation"
 msgstr ""
 
-#: src/about.cpp:191
+#: src/about.cpp:192
 msgid "+Dutch Translation"
 msgstr ""
 
-#: src/about.cpp:199
+#: src/about.cpp:200
 msgid "+English (GB) Translation"
 msgstr ""
 
-#: src/about.cpp:202
+#: src/about.cpp:203
 msgid "+Esperanto Translation"
 msgstr ""
 
-#: src/about.cpp:206
+#: src/about.cpp:207
 msgid "+Estonian Translation"
 msgstr ""
 
-#: src/about.cpp:209
+#: src/about.cpp:210
 msgid "+Finnish Translation"
 msgstr ""
 
-#: src/about.cpp:215
+#: src/about.cpp:216
 msgid "+French Translation"
 msgstr ""
 
-#: src/about.cpp:234
+#: src/about.cpp:235
 msgid "+German Translation"
 msgstr ""
 
-#: src/about.cpp:246
+#: src/about.cpp:247
 msgid "+Greek Translation"
 msgstr ""
 
-#: src/about.cpp:252
+#: src/about.cpp:253
 msgid "+Hebrew Translation"
 msgstr ""
 
-#: src/about.cpp:256
+#: src/about.cpp:257
 msgid "+Hungarian Translation"
 msgstr ""
 
-#: src/about.cpp:269
+#: src/about.cpp:270
 msgid "+Italian Translation"
 msgstr ""
 
-#: src/about.cpp:278
+#: src/about.cpp:279
 msgid "+Japanese Translation"
 msgstr ""
 
-#: src/about.cpp:283
+#: src/about.cpp:284
 msgid "+Latin Translation"
 msgstr ""
 
-#: src/about.cpp:286
+#: src/about.cpp:287
 msgid "+Norwegian Translation"
 msgstr ""
 
-#: src/about.cpp:292
+#: src/about.cpp:293
 msgid "+Polish Translation"
 msgstr ""
 
-#: src/about.cpp:303
+#: src/about.cpp:304
 msgid "+Portuguese Translation"
 msgstr ""
 
-#: src/about.cpp:306
+#: src/about.cpp:307
 msgid "+Portuguese (Brazil) Translation"
 msgstr ""
 
-#: src/about.cpp:315
+#: src/about.cpp:316
 msgid "+Russian Translation"
 msgstr ""
 
-#: src/about.cpp:321
+#: src/about.cpp:322
 msgid "+Serbian Translation"
 msgstr ""
 
-#: src/about.cpp:324
+#: src/about.cpp:325
 msgid "+Slovak Translation"
 msgstr ""
 
-#: src/about.cpp:327
+#: src/about.cpp:328
 msgid "+Slovenian Translation"
 msgstr ""
 
-#: src/about.cpp:330
+#: src/about.cpp:331
 msgid "+Spanish Translation"
 msgstr ""
 
-#: src/about.cpp:339
+#: src/about.cpp:340
 msgid "+Swedish Translation"
 msgstr ""
 
-#: src/about.cpp:346
+#: src/about.cpp:347
 msgid "+Turkish Translation"
 msgstr ""
 
-#: src/about.cpp:353
+#: src/about.cpp:354
 msgid "+Contributors"
 msgstr ""
 
@@ -7124,84 +7123,84 @@ msgstr ""
 msgid "none"
 msgstr ""
 
-#: src/actions.cpp:419 src/actions.cpp:543
+#: src/actions.cpp:422 src/actions.cpp:550
 msgid "base damage"
 msgstr ""
 
-#: src/actions.cpp:449 src/actions.cpp:573 src/actions.cpp:582
+#: src/actions.cpp:452 src/actions.cpp:580 src/actions.cpp:589
 msgid "Doubled"
 msgstr ""
 
-#: src/actions.cpp:458 src/actions.cpp:607
+#: src/actions.cpp:461 src/actions.cpp:614
 msgid "Halved"
 msgstr ""
 
-#: src/actions.cpp:458 src/actions.cpp:607 src/actions.cpp:876
-#: src/actions.cpp:1046
+#: src/actions.cpp:461 src/actions.cpp:614 src/actions.cpp:883
+#: src/actions.cpp:1053
 msgid "slowed"
 msgstr ""
 
-#: src/actions.cpp:466
+#: src/actions.cpp:469
 msgid "attacker resistance vs"
 msgstr ""
 
-#: src/actions.cpp:466
+#: src/actions.cpp:469
 msgid "attacker vulnerability vs"
 msgstr ""
 
-#: src/actions.cpp:480 src/actions.cpp:620
+#: src/actions.cpp:483 src/actions.cpp:627
 msgid "total damage"
 msgstr ""
 
-#: src/actions.cpp:590
+#: src/actions.cpp:597
 msgid "defender resistance vs"
 msgstr ""
 
-#: src/actions.cpp:590
+#: src/actions.cpp:597
 msgid "defender vulnerability vs"
 msgstr ""
 
-#: src/actions.cpp:593
+#: src/actions.cpp:600
 msgid " (+steadfast)"
 msgstr ""
 
-#: src/actions.cpp:656
+#: src/actions.cpp:663
 msgid "(both should survive)"
 msgstr ""
 
-#: src/actions.cpp:658
+#: src/actions.cpp:665
 msgid "% Pr[kills/killed by/both survive]"
 msgstr ""
 
-#: src/actions.cpp:871 src/actions.cpp:1041
+#: src/actions.cpp:878 src/actions.cpp:1048
 msgid "poisoned"
 msgstr ""
 
-#: src/actions.cpp:1942
+#: src/actions.cpp:1953
 msgid "Ambushed!"
 msgstr ""
 
-#: src/actions.cpp:1977
+#: src/actions.cpp:1988
 msgid "Friendly unit sighted"
 msgstr ""
 
-#: src/actions.cpp:1979
+#: src/actions.cpp:1990
 msgid "Enemy unit sighted!"
 msgstr ""
 
-#: src/actions.cpp:1984
+#: src/actions.cpp:1995
 msgid "$friends Friendly units sighted"
 msgstr ""
 
-#: src/actions.cpp:1986
+#: src/actions.cpp:1997
 msgid "$enemies Enemy units sighted!"
 msgstr ""
 
-#: src/actions.cpp:1990
+#: src/actions.cpp:2001
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr ""
 
-#: src/actions.cpp:2005
+#: src/actions.cpp:2016
 msgid "(press $hotkey to continue)"
 msgstr ""
 
@@ -7628,7 +7627,7 @@ msgstr ""
 msgid "Defeat:"
 msgstr ""
 
-#: src/gamestatus.cpp:476
+#: src/gamestatus.cpp:531
 msgid "Could not write to file"
 msgstr ""
 
@@ -8740,15 +8739,15 @@ msgstr ""
 msgid "strikes"
 msgstr ""
 
-#: src/unit_types.cpp:994
+#: src/unit_types.cpp:1153
 msgid "chaotic"
 msgstr ""
 
-#: src/unit_types.cpp:994
+#: src/unit_types.cpp:1153
 msgid "lawful"
 msgstr ""
 
-#: src/unit_types.cpp:994
+#: src/unit_types.cpp:1153
 msgid "neutral"
 msgstr ""
 
