@@ -58,11 +58,11 @@ public:
 	bool get_experience(int xp);
 	bool unrenamable() const; /** < Set to true for some scenario-specific units which should not be renamed */
 	bool advances() const;
-	int side() const;
+	unsigned int side() const;
         Uint32 team_rgb() const;
         std::vector<Uint32> team_rgb_range() const;
 	unit_race::GENDER gender() const;
-	void set_side(int new_side);
+	void set_side(unsigned int new_side);
 	fixed_t alpha() const;
 	void make_recruiter();
 	bool can_recruit() const;
@@ -201,7 +201,7 @@ private:
 	int experience_;
 	int maxExperience_, backupMaxExperience_;
 
-	int side_;
+	unsigned int side_;
 
 	int moves_;
 	bool user_end_turn_;
@@ -278,9 +278,9 @@ private:
 
 void sort_units(std::vector< unit > &);
 
-int team_units(const unit_map& units, int team_num);
-int team_upkeep(const unit_map& units, int team_num);
-unit_map::const_iterator team_leader(int side, const unit_map& units);
+int team_units(const unit_map& units, unsigned int team_num);
+int team_upkeep(const unit_map& units, unsigned int team_num);
+unit_map::const_iterator team_leader(unsigned int side, const unit_map& units);
 std::string team_name(int side, const unit_map& units);
 unit_map::iterator find_visible_unit(unit_map& units,
 		const gamemap::location loc,
@@ -298,7 +298,7 @@ struct team_data
 
 team_data calculate_team_data(const class team& tm, int side, const unit_map& units);
 
-std::string get_team_name(int side, const unit_map& units);
+std::string get_team_name(unsigned int side, const unit_map& units);
 
 const std::set<gamemap::location> vacant_villages(const std::set<gamemap::location>& villages, const unit_map& units);
 

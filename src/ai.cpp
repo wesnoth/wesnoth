@@ -822,7 +822,7 @@ void ai::do_move()
 		}
 	}
 
-	move_leader_to_goals(enemy_srcdst,enemy_dstsrc);
+	move_leader_to_goals(enemy_dstsrc);
 
 	LOG_AI << "get villages phase\n";
 
@@ -836,7 +836,7 @@ void ai::do_move()
 	LOG_AI << "healing phase\n";
 
 	LOG_AI << "healing...\n";
-	const bool healed_unit = get_healing(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc);
+	const bool healed_unit = get_healing(possible_moves,srcdst,enemy_dstsrc);
 	if(healed_unit) {
 		do_move();
 		return;
@@ -845,7 +845,7 @@ void ai::do_move()
 	LOG_AI << "retreat phase\n";
 
 	LOG_AI << "retreating...\n";
-	const bool retreated_unit = retreat_units(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,leader);
+	const bool retreated_unit = retreat_units(possible_moves,srcdst,dstsrc,enemy_dstsrc,leader);
 	if(retreated_unit) {
 		do_move();
 		return;
@@ -859,7 +859,7 @@ void ai::do_move()
 
 	LOG_AI << "move/targetting phase\n";
 
-	const bool met_invisible_unit = move_to_targets(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,leader);
+	const bool met_invisible_unit = move_to_targets(possible_moves,srcdst,dstsrc,enemy_dstsrc,leader);
 	if(met_invisible_unit) {
 		LOG_AI << "met_invisible_unit\n";
 		do_move();
@@ -1090,7 +1090,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 		if(vuln != vulnerability.end()) {
 			threat = vuln->second;
 		} else {
-			threat = power_projection(j->first,enemy_srcdst,enemy_dstsrc);
+			threat = power_projection(j->first,enemy_dstsrc);
 			vulnerability.insert(std::pair<location,double>(j->first,threat));
 		}
 
@@ -1134,7 +1134,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 
 				const unit_map::const_iterator new_unit = units_.find(loc);
 
-				if(new_unit != units_.end() && power_projection(i->first,enemy_srcdst,enemy_dstsrc) >= new_unit->second.hitpoints()/4) {
+				if(new_unit != units_.end() && power_projection(i->first,enemy_dstsrc) >= new_unit->second.hitpoints()/4) {
 					add_target(target(new_unit->first,1.0,target::SUPPORT));
 				}
 			}
@@ -1151,7 +1151,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 	return moves_made > 0 && village_moves.size() == max_village_moves;
 }
 
-bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
+bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& enemy_dstsrc)
 {
 	//find units in need of healing
 	unit_map::iterator u_it = units_.begin();
@@ -1173,8 +1173,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 			while(it.first != it.second) {
 				const location& dst = it.first->second;
 				if(map_.gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->first)) {
-					const double vuln = power_projection(it.first->first,
-					                    enemy_srcdst,enemy_dstsrc);
+					const double vuln = power_projection(it.first->first, enemy_dstsrc);
 					LOG_AI << "found village with vulnerability: " << vuln << "\n";
 					if(vuln < best_vulnerability || best_loc == it.second) {
 						best_vulnerability = vuln;
@@ -1202,25 +1201,25 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 	return false;
 }
 
-bool ai::should_retreat(const gamemap::location& loc, const unit_map::const_iterator un, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc) const
+bool ai::should_retreat(const gamemap::location& loc, const unit_map::const_iterator un, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc) const
 {
 	const double caution = current_team().caution();
 	if(caution <= 0.0) {
 		return false;
 	}
 
-	const double optimal_terrain = best_defensive_position(un->first,dstsrc,srcdst,enemy_dstsrc,enemy_srcdst).chance_to_hit/100.0;
+	const double optimal_terrain = best_defensive_position(un->first,dstsrc,srcdst,enemy_dstsrc).chance_to_hit/100.0;
 	const double proposed_terrain = un->second.defense_modifier(map_,map_.get_terrain(loc))/100.0;
 
 	//the 'exposure' is the additional % chance to hit this unit receives from being on a sub-optimal defensive terrain
 	const double exposure = proposed_terrain - optimal_terrain;
 
-	const double our_power = power_projection(loc,srcdst,dstsrc);
-	const double their_power = power_projection(loc,enemy_srcdst,enemy_dstsrc);
+	const double our_power = power_projection(loc,dstsrc);
+	const double their_power = power_projection(loc,enemy_dstsrc);
 	return caution*their_power*(1.0+exposure) > our_power;
 }
 
-bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
+bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc,  const move_map& enemy_dstsrc, unit_map::const_iterator leader)
 {
 	//get versions of the move map that assume that all units are at full movement
 	std::map<gamemap::location,paths> dummy_possible_moves;
@@ -1238,7 +1237,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 
 			//this unit still has movement left, and is a candidate to retreat. We see the amount
 			//of power of each side on the situation, and decide whether it should retreat.
-			if(should_retreat(i->first,i,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc)) {
+			if(should_retreat(i->first,i,fullmove_srcdst,fullmove_dstsrc,enemy_dstsrc)) {
 
 				bool can_reach_leader = false;
 
@@ -1262,8 +1261,8 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 					//on the hex we're planning to flee to.
 					const gamemap::location& hex = itors.first->second;
 					const int defense = i->second.type().movement_type().defense_modifier(map_,map_.get_terrain(hex));
-					const double our_power = power_projection(hex,srcdst,dstsrc);
-					const double their_power = power_projection(hex,enemy_srcdst,enemy_dstsrc) * double(defense)/100.0;
+					const double our_power = power_projection(hex,dstsrc);
+					const double their_power = power_projection(hex,enemy_dstsrc) * double(defense)/100.0;
 					const double rating = our_power - their_power;
 					if(rating > best_rating) {
 						best_pos = hex;
@@ -1304,13 +1303,13 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 	return false;
 }
 
-bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
+bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
 {
 	LOG_AI << "finding targets...\n";
 	std::vector<target> targets;
 	for(;;) {
 		if(targets.empty()) {
-			targets = find_targets(leader,enemy_srcdst,enemy_dstsrc);
+			targets = find_targets(leader,enemy_dstsrc);
 			targets.insert(targets.end(),additional_targets_.begin(),
 			                             additional_targets_.end());
 			if(targets.empty()) {
@@ -1319,7 +1318,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		}
 
 		LOG_AI << "choosing move...\n";
-		std::pair<location,location> move = choose_move(targets,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc);
+		std::pair<location,location> move = choose_move(targets,srcdst,dstsrc,enemy_dstsrc);
 		for(std::vector<target>::const_iterator ittg = targets.begin(); ittg != targets.end(); ++ittg) {
 			wassert(map_.on_board(ittg->loc));
 		}
@@ -1524,10 +1523,10 @@ void ai::analyze_potential_recruit_movements()
 
 	log_scope2(ai, "analyze_potential_recruit_movements()");
 
-	const int max_targets = 5;
+	const unsigned int max_targets = 5;
 
 	const move_map srcdst, dstsrc;
-	std::vector<target> targets = find_targets(leader,srcdst,dstsrc);
+	std::vector<target> targets = find_targets(leader,dstsrc);
 	if(targets.size() > max_targets) {
 		std::sort(targets.begin(),targets.end(),target_comparer_distance(start));
 		targets.erase(targets.begin()+max_targets,targets.end());
@@ -1682,7 +1681,7 @@ void ai::do_recruitment()
 	}
 }
 
-void ai::move_leader_to_goals(const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
+void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 {
 	const config* const goal = current_team().ai_parameters().child("leader_goal");
 
@@ -1721,7 +1720,7 @@ void ai::move_leader_to_goals(const move_map& enemy_srcdst, const move_map& enem
 
 	gamemap::location loc;
 	for(std::vector<gamemap::location>::const_iterator itor = route.steps.begin(); itor != route.steps.end(); ++itor) {
-		if(leader_paths.routes.count(*itor) == 1 && power_projection(*itor,enemy_srcdst,enemy_dstsrc) < double(leader->second.hitpoints()/2)) {
+		if(leader_paths.routes.count(*itor) == 1 && power_projection(*itor,enemy_dstsrc) < double(leader->second.hitpoints()/2)) {
 			loc = *itor;
 		}
 	}
@@ -1910,7 +1909,7 @@ int ai::rate_terrain(const unit& u, const gamemap::location& loc)
 	if(map_.is_village(terrain)) {
 		const int owner = village_owner(loc,teams_);
 
-		if(owner+1 == team_num_) {
+		if(owner+1 == (int)team_num_) {
 			rating += friendly_village_value;
 		} else if(owner == -1) {
 			rating += neutral_village_value;
@@ -1922,9 +1921,7 @@ int ai::rate_terrain(const unit& u, const gamemap::location& loc)
 	return rating;
 }
 
-const ai::defensive_position& ai::best_defensive_position(const gamemap::location& loc,
-														  const move_map& dstsrc, const move_map& srcdst,
-														  const move_map& enemy_dstsrc, const move_map& enemy_srcdst) const
+const ai::defensive_position& ai::best_defensive_position(const gamemap::location& loc, const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const
 {
 	const unit_map::const_iterator itor = units_.find(loc);
 	if(itor == units_.end()) {
@@ -1952,8 +1949,8 @@ const ai::defensive_position& ai::best_defensive_position(const gamemap::locatio
 			continue;
 		}
 
-		const double vulnerability = power_projection(i->second,enemy_srcdst,enemy_dstsrc);
-		const double support = power_projection(i->second,srcdst,dstsrc);
+		const double vulnerability = power_projection(i->second,enemy_dstsrc);
+		const double support = power_projection(i->second,dstsrc);
 
 		if(defense < pos.chance_to_hit || support - vulnerability > pos.support - pos.vulnerability) {
 			pos.loc = i->second;

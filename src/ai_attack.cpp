@@ -195,12 +195,12 @@ void ai::do_attack_analysis(
 			}
 
 			//find out how vulnerable we are to attack from enemy units in this hex
-			const double vulnerability = power_projection(tiles[j],enemy_srcdst,enemy_dstsrc);
+			const double vulnerability = power_projection(tiles[j],enemy_dstsrc);
 
 			//calculate how much support we have on this hex from allies. Support does not
 			//take into account terrain, because we don't want to move into a hex that is
 			//surrounded by good defensive terrain
-			const double support = power_projection(tiles[j],fullmove_srcdst,fullmove_dstsrc,false);
+			const double support = power_projection(tiles[j],fullmove_dstsrc,false);
 
 			//if this is a position with equal defense to another position, but more vulnerability
 			//then we don't want to use it
@@ -225,7 +225,7 @@ void ai::do_attack_analysis(
 
 			cur_analysis.is_surrounded = is_surrounded;
 
-			cur_analysis.analyze(map_, units_, 50, *this, dstsrc, srcdst, enemy_dstsrc, enemy_srcdst);
+			cur_analysis.analyze(map_, units_, 50, *this, dstsrc, srcdst, enemy_dstsrc);
 
 			if(cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
 
@@ -355,7 +355,7 @@ int ai::choose_weapon(const location& att, const location& def,
 
 void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_sims, ai& ai_obj,
                                   const ai::move_map& dstsrc, const ai::move_map& srcdst,
-                                  const ai::move_map& enemy_dstsrc, const ai::move_map& enemy_srcdst)
+                                  const ai::move_map& enemy_dstsrc)
 {
 	const unit_map::const_iterator defend_it = units.find(target);
 	wassert(defend_it != units.end());
@@ -570,7 +570,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 		const unit_map::const_iterator att = units.find(movements[i].first);
 		const double cost = att->second.type().cost();
 		cost_sum += cost;
-		alternative_terrain_quality += cost*ai_obj.best_defensive_position(att->first,dstsrc,srcdst,enemy_dstsrc,enemy_srcdst).chance_to_hit;
+		alternative_terrain_quality += cost*ai_obj.best_defensive_position(att->first,dstsrc,srcdst,enemy_dstsrc).chance_to_hit;
 	}
 
 	alternative_terrain_quality /= cost_sum*100;
@@ -715,7 +715,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 	return res;
 }
 
-double ai::power_projection(const gamemap::location& loc, const move_map& srcdst, const move_map& dstsrc, bool use_terrain) const
+double ai::power_projection(const gamemap::location& loc,  const move_map& dstsrc, bool use_terrain) const
 {
 	static gamemap::location used_locs[6];
 	static double ratings[6];

@@ -83,7 +83,7 @@ private:
 	const bool avoid_enemies_;
 };
 
-std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
+std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const move_map& enemy_dstsrc)
 {
 	log_scope2(ai, "finding targets...");
 
@@ -93,7 +93,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 
 	//if enemy units are in range of the leader, then we target the enemies who are in range.
 	if(has_leader) {
-		const double threat = power_projection(leader->first,enemy_srcdst,enemy_dstsrc);
+		const double threat = power_projection(leader->first,enemy_dstsrc);
 		if(threat > 0.0) {
 			//find the location of enemy threats
 			std::set<gamemap::location> threats;
@@ -187,7 +187,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 	return targets;
 }
 
-gamemap::location ai::form_group(const std::vector<location>& route, const move_map& dstsrc, const move_map& srcdst, std::set<location>& res)
+gamemap::location ai::form_group(const std::vector<location>& route, const move_map& dstsrc, std::set<location>& res)
 {
 	if(route.empty()) {
 		return location();
@@ -228,7 +228,7 @@ gamemap::location ai::form_group(const std::vector<location>& route, const move_
 	return *i;
 }
 
-void ai::enemies_along_path(const std::vector<location>& route, const move_map& dstsrc, const move_map& srcdst, std::set<location>& res)
+void ai::enemies_along_path(const std::vector<location>& route, const move_map& dstsrc, std::set<location>& res)
 {
 	for(std::vector<location>::const_iterator i = route.begin(); i != route.end(); ++i) {
 		gamemap::location adj[6];
@@ -378,7 +378,7 @@ double ai::compare_groups(const std::set<location>& our_group, const std::set<lo
 	return a/b;
 }
 
-std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
+std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc)
 {
 	log_scope2(ai, "choosing move");
 
@@ -456,7 +456,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		//scouts do not like encountering enemies on their paths
 		if(u->second.type().usage() == "scout") {
 			std::set<location> enemies_guarding;
-			enemies_along_path(cur_route.steps,enemy_dstsrc,enemy_srcdst,enemies_guarding);
+			enemies_along_path(cur_route.steps,enemy_dstsrc,enemies_guarding);
 
 			if(enemies_guarding.size() > 1) {
 				rating /= enemies_guarding.size();
@@ -537,7 +537,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			//scouts do not like encountering enemies on their paths
 			if(u->second.type().usage() == "scout") {
 				std::set<location> enemies_guarding;
-				enemies_along_path(cur_route.steps,enemy_dstsrc,enemy_srcdst,enemies_guarding);
+				enemies_along_path(cur_route.steps,enemy_dstsrc,enemies_guarding);
 
 				if(enemies_guarding.size() > 1) {
 					rating /= enemies_guarding.size();
@@ -584,7 +584,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			for(std::vector<location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
 				const int distance = distance_between(*i,best_target->loc);
 				const int defense = best->second.defense_modifier(map_,map_.get_terrain(*i));
-				const double vulnerability = power_projection(*i,enemy_srcdst,enemy_dstsrc);
+				const double vulnerability = power_projection(*i,enemy_dstsrc);
 
 				if(best_loc.valid() == false || defense < best_defense || defense == best_defense && vulnerability < best_vulnerability) {
 					best_loc = *i;
@@ -618,8 +618,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		//if any point along the path is too dangerous for our single unit, then we hold back
 		for(std::vector<location>::const_iterator i = best_route.steps.begin(); i != best_route.steps.end() && movement > 0; ++i) {
 
-			const double threat = power_projection(*i,enemy_srcdst,enemy_dstsrc);
-			if(threat >= double(best->second.hitpoints()) && threat > power_projection(*i,fullmove_srcdst,fullmove_dstsrc) ||
+			const double threat = power_projection(*i,enemy_dstsrc);
+			if(threat >= double(best->second.hitpoints()) && threat > power_projection(*i,fullmove_dstsrc) ||
 			   i >= best_route.steps.end()-2 && unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->second.side())) {
 				dangerous = true;
 				break;
@@ -636,8 +636,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	if(dangerous) {
 		LOG_AI << "dangerous path\n";
 		std::set<location> group, enemies;
-		const location dst = form_group(best_route.steps,dstsrc,srcdst,group);
-		enemies_along_path(best_route.steps,enemy_dstsrc,enemy_srcdst,enemies);
+		const location dst = form_group(best_route.steps,dstsrc,group);
+		enemies_along_path(best_route.steps,enemy_dstsrc,enemies);
 
 		const double our_strength = compare_groups(group,enemies,best_route.steps);
 
@@ -677,7 +677,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			for(move_map::const_iterator i = itors.first; i != itors.second; ++i) {
 				const int distance = distance_between(target_loc,i->second);
 				const int defense = un.defense_modifier(map_,map_.get_terrain(i->second));
-				const double threat = (power_projection(i->second,enemy_srcdst,enemy_dstsrc)*defense)/100;
+				const double threat = (power_projection(i->second,enemy_dstsrc)*defense)/100;
 
 				if(best_loc.valid() == false || threat < maximum<double>(best_threat,max_acceptable_threat) && distance < best_distance) {
 					best_loc = i->second;
@@ -715,7 +715,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		std::pair<Itor,Itor> its = dstsrc.equal_range(*ri);
 		while(its.first != its.second) {
 			if(its.first->second == best->first) {
-				if(!should_retreat(its.first->first,best,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc)) {
+				if(!should_retreat(its.first->first,best,fullmove_srcdst,fullmove_dstsrc,enemy_dstsrc)) {
 					const double value = best_target->value - best->second.type().cost()/20.0;
 
 					if(value > 0.0 && best_target->type != target::MASS) {

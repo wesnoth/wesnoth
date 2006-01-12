@@ -30,7 +30,7 @@ public:
 	///that an AI might need access to in order to make and implement its decisions
 	struct info {
 		info(display& disp, const gamemap& map, const game_data& gameinfo, unit_map& units,
-			std::vector<team>& teams, int team_num, const gamestatus& state, class turn_info& turn_data)
+			std::vector<team>& teams, unsigned int team_num, const gamestatus& state, class turn_info& turn_data)
 			: disp(disp), map(map), gameinfo(gameinfo), units(units), teams(teams),
 			  team_num(team_num), state(state), turn_data_(turn_data)
 		{}
@@ -52,7 +52,7 @@ public:
 
 		///the number of the team the AI is. Note that this number is 1-based, so it
 		///has to have 1 subtracted from it for it to be used as an index of 'teams'
-		int team_num;
+		unsigned int team_num;
 
 		///information about what turn it is, and what time of day
 		const gamestatus& state;

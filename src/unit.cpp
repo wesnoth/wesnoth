@@ -110,7 +110,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 
 	clock_t ct = clock();
 	char buf[20];
-	snprintf(buf,sizeof(buf),"-%d",ct);
+	snprintf(buf,sizeof(buf),"-%lu",ct);
 	std::string time_tag(buf);
 
 	if(use_traits) {
@@ -223,7 +223,7 @@ void unit::rename(const std::string& new_description)
 	}
 }
 
-int unit::side() const
+unsigned int unit::side() const
 {
 	return side_;
 }
@@ -247,7 +247,7 @@ unit_race::GENDER unit::gender() const
 	return gender_;
 }
 
-void unit::set_side(int new_side)
+void unit::set_side(unsigned int new_side)
 {
 	side_ = new_side;
 }
@@ -1152,7 +1152,7 @@ std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
     icon.first=(**i)["image"];
     icon.second=(**i)["description"];
 
-    for(int j=0;j<(modification_count("advance",(**i)["id"]));j++) {
+    for(unsigned int j=0;j<(modification_count("advance",(**i)["id"]));j++) {
 
       temp.push_back(icon);
     }
@@ -1401,7 +1401,7 @@ void unit::apply_modifications()
 
 void unit::remove_temporary_modifications()
 {
-	for(int i = 0; i != NumModificationTypes; ++i) {
+	for(unsigned int i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];
 		const config::child_list& mods = modifications_.get_children(mod);
 		for(size_t j = 0; j != mods.size(); ++j) {
@@ -1439,7 +1439,7 @@ bool unit::is_flying() const
 	return type().movement_type().is_flying();
 }
 
-int team_units(const unit_map& units, int side)
+int team_units(const unit_map& units, unsigned int side)
 {
 	int res = 0;
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
@@ -1451,7 +1451,7 @@ int team_units(const unit_map& units, int side)
 	return res;
 }
 
-int team_upkeep(const unit_map& units, int side)
+int team_upkeep(const unit_map& units, unsigned int side)
 {
 	int res = 0;
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
@@ -1463,7 +1463,7 @@ int team_upkeep(const unit_map& units, int side)
 	return res;
 }
 
-unit_map::const_iterator team_leader(int side, const unit_map& units)
+unit_map::const_iterator team_leader(unsigned int side, const unit_map& units)
 {
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 		if(i->second.can_recruit() && i->second.side() == side) {
@@ -1533,7 +1533,7 @@ team_data calculate_team_data(const team& tm, int side, const unit_map& units)
 	return res;
 }
 
-std::string get_team_name(int side, const unit_map& units)
+std::string get_team_name(unsigned int side, const unit_map& units)
 {
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 		if(i->second.can_recruit() && i->second.side() == side) {
