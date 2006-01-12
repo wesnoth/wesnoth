@@ -158,7 +158,7 @@ attack_type::attack_type(const config& cfg,const unit_type& unit)
 	icon_ = cfg["icon"];
 	if(icon_.empty())
 		icon_ = "attacks/" + id_ + ".png";
-	
+
 	range_ = cfg["range"];
 	damage_ = atol(cfg["damage"].c_str());
 	num_attacks_ = atol(cfg["number"].c_str());
@@ -308,7 +308,7 @@ bool attack_type::matches_filter(const config& cfg) const
 	const std::string& filter_type = cfg["type"];
 	const std::string& filter_special = cfg["special"];
 
-	if(filter_range.empty() == false && filter_range != range()) 
+	if(filter_range.empty() == false && filter_range != range())
 			return false;
 
 	if(filter_name.empty() == false && filter_name != name())
@@ -650,11 +650,11 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	leadership_ = false;
 
 	/* handle deprecated ability=x,y,... */
-	
+
 	std::vector<std::string> deprecated_abilities = utils::split(cfg_["ability"]);
-	
- 	//if the string was empty, split will give us one empty string in the list,
- 	//remove it.
+
+	//if the string was empty, split will give us one empty string in the list,
+	//remove it.
 	if(!deprecated_abilities.empty() && deprecated_abilities.back() == "") {
 		deprecated_abilities.pop_back();
 	} else {
@@ -718,7 +718,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 			ability_tooltips_.push_back("nightstalk");
 		}
 	}
-	
+
 	const config* abil_cfg = cfg.child("abilities");
 	if(abil_cfg) {
 		const config* heal_ability = abil_cfg->child("heals");
@@ -730,7 +730,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		const config* teleport_ability = abil_cfg->child("teleport");
 		const config* ambush_ability = abil_cfg->child("ambush");
 		const config* nightstalk_ability = abil_cfg->child("nightstalk");
-		
+
 		if(heal_ability) {
 			abilities_.push_back("heals");
 			if((*heal_ability)["description"] != "") {
@@ -877,7 +877,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 
 
-	
+
 	const config::child_list& teleports = cfg_.get_children("teleport_anim");
 	for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
 		teleport_animations_.push_back(unit_animation(**t));
@@ -1288,7 +1288,7 @@ const std::string& unit_type::race() const
 	return race_->name();
 }
 
-unit_type::defensive_animation::defensive_animation(const config& cfg) : hits(HIT_OR_MISS), range(utils::split(cfg["range"])),animation(cfg) 
+unit_type::defensive_animation::defensive_animation(const config& cfg) : hits(HIT_OR_MISS), range(utils::split(cfg["range"])),animation(cfg)
 {
 	const std::string& hits_str = cfg["hits"];
 	if(hits_str.empty() == false) {

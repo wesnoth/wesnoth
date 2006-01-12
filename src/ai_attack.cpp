@@ -332,7 +332,7 @@ int ai::choose_weapon(const location& att, const location& def,
 			//TODO: improve this rating formula!
 			const double rating =
 			   (double(stats.chance_to_hit_defender)/100.0)*
-		        	       minimum<int>(stats.damage_defender_takes,d_hitpoints)*stats.nattacks *
+			       minimum<int>(stats.damage_defender_takes,d_hitpoints)*stats.nattacks *
 				       attacks[a].attack_weight() -
 			   (double(stats.chance_to_hit_attacker)/100.0)*
 			               minimum<int>(stats.damage_attacker_takes,a_hitpoints)*stats.ndefends;
@@ -456,8 +456,8 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 							atthp = hitpoints[i];
 						}
 
-						if(stat.attacker_slows  && !defender_slowed) { 	 
-							defender_slowed = true; 	 
+						if(stat.attacker_slows  && !defender_slowed) {
+							defender_slowed = true;
 							stat.damage_defender_takes = round_damage(stat.damage_defender_takes,1,2);
 							stat.amount_attacker_drains = round_damage(stat.amount_attacker_drains,1,2);
 						}
@@ -487,8 +487,8 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 						if(defhp > target_max_hp) {
 							defhp = target_max_hp;
 						}
-						if(stat.defender_slows && !attacker_slowed) { 	 
-							attacker_slowed = true; 	 
+						if(stat.defender_slows && !attacker_slowed) {
+							attacker_slowed = true;
 							stat.damage_attacker_takes = round_damage(stat.damage_attacker_takes,1,2);
 							stat.amount_defender_drains = round_damage(stat.amount_defender_drains,1,2);
 						}

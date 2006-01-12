@@ -309,7 +309,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	res.attacker_hp = a->second.hitpoints();
 	res.defender_hp = d->second.hitpoints();
-	
+
 	res.chance_to_hit_attacker = a->second.defense_modifier(map,attacker_terrain);
 	res.chance_to_hit_defender = d->second.defense_modifier(map,defender_terrain);
 
@@ -539,7 +539,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			resistance_modifier -= diff*steadfast_bonus/100;
 		} else {
 			resistance_modifier -= steadfast_bonus;
- 		}
+		}
 		if(resistance_modifier < steadfast_max) {
 			resistance_modifier = steadfast_max;
 		}
@@ -1239,7 +1239,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		if(i->second.side() == side) {
 			if(i->second.hitpoints() < i->second.max_hitpoints() || i->second.poisoned()){
 				if(map.gives_healing(i->first)) {
- 					amount_healed = game_config::cure_amount;
+					amount_healed = game_config::cure_amount;
 				} else if(i->second.type().regenerates()) {
 					amount_healed = i->second.type().regenerate_amount();
 				}

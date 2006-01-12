@@ -129,8 +129,8 @@ surface create_optimized_surface(surface const &surf)
 // don't pass this function 0 scaling arguments
 surface scale_surface(surface const &surf, int w, int h)
 {
- 	assert(SDL_ALPHA_TRANSPARENT==0);
- 
+	assert(SDL_ALPHA_TRANSPARENT==0);
+
 	if(surf == NULL)
 		return NULL;
 
@@ -196,7 +196,7 @@ surface scale_surface(surface const &surf, int w, int h)
 			        pix[1] = *(src_word + dx);       // northeast
 				pix[2] = *(src_word + dy);       // southwest
 				pix[3] = *(src_word + dx + dy);  // southeast
-				
+
 				bilin[0] = n*w;
 				bilin[1] = n*e;
 				bilin[2] = s*w;
@@ -484,20 +484,20 @@ surface recolor_image(surface surf, const color_range& new_rgb, const std::vecto
     Uint16 new_blue = (new_rgb.mid() & 0x000000FF);
     Uint16 max_red  = (new_rgb.max() & 0x00FF0000)>>16;
     Uint16 max_green= (new_rgb.max() & 0x0000FF00)>>8 ;
-    Uint16 max_blue = (new_rgb.max() & 0x000000FF)    ; 
+    Uint16 max_blue = (new_rgb.max() & 0x000000FF)    ;
     Uint16 min_red  = (new_rgb.min() & 0x00FF0000)>>16;
-    Uint16 min_green= (new_rgb.min() & 0x0000FF00)>>8 ; 
+    Uint16 min_green= (new_rgb.min() & 0x0000FF00)>>8 ;
     Uint16 min_blue = (new_rgb.min() & 0x000000FF)    ;
-    
+
     if(surf == NULL)
       return NULL;
-    
+
         surface nsurf(make_neutral_surface(surf));
         if(nsurf == NULL) {
 	  std::cerr << "failed to make neutral surface\n";
 	  return NULL;
         }
-	
+
 	Uint16 reference_avg=0;
 	const Uint16 new_grey = (Uint16)((77*(Uint16) new_red +
 	                                  150*(Uint16)new_green +
@@ -511,9 +511,9 @@ surface recolor_image(surface surf, const color_range& new_rgb, const std::vecto
 	int old_r=(temp_rgb & 0X00FF0000)>>16;
 	int old_g=(temp_rgb & 0X0000FF00)>>8;
 	int old_b=(temp_rgb & 0X000000FF);
-	reference_avg = (Uint16)(((Uint16) old_r + (Uint16)old_g + (Uint16)old_b) 
+	reference_avg = (Uint16)(((Uint16) old_r + (Uint16)old_g + (Uint16)old_b)
 			   / 3);
-	
+
 	{
 	  for(std::vector<Uint32>::const_iterator temp_rgb = old_rgb.begin();
 	      temp_rgb!=old_rgb.end();temp_rgb++)
@@ -521,12 +521,12 @@ surface recolor_image(surface surf, const color_range& new_rgb, const std::vecto
 	      int old_r=((*temp_rgb) & 0X00FF0000)>>16;
 	      int old_g=((*temp_rgb) & 0X0000FF00)>>8;
 	      int old_b=((*temp_rgb) & 0X000000FF);
-	      
+
 	      //	    std::cout<<"recolor:"<<old_r<<","<<old_g<<","<<old_b<<"\n";
 	      surface_lock lock(nsurf);
 	      Uint32* beg = lock.pixels();
 	      Uint32* end = beg + nsurf->w*surf->h;
-	      
+
 	      //const Uint16 old_grey = (Uint16)((77*(Uint16) old_r +
 	      //                                  150*(Uint16)old_g +
 	      //                                  29*(Uint16)old_b) / 256);
@@ -538,19 +538,19 @@ surface recolor_image(surface surf, const color_range& new_rgb, const std::vecto
 	      Uint8 new_r, new_g, new_b;
 
 	      if(reference_avg && old_avg <= reference_avg){
- 		float old_rat = ((float)old_avg)/reference_avg;
+		float old_rat = ((float)old_avg)/reference_avg;
 		new_r=(Uint8)( old_rat * new_red   + (1 - old_rat) * min_red);
 		new_g=(Uint8)( old_rat * new_green + (1 - old_rat) * min_green);
 		new_b=(Uint8)( old_rat * new_blue  + (1 - old_rat) * min_blue);
 	      }else if(255 - reference_avg){
- 		float old_rat = ((float) 255 - old_avg) / (255 - reference_avg);
+		float old_rat = ((float) 255 - old_avg) / (255 - reference_avg);
 		new_r=(Uint8)( old_rat * new_red   + (1 - old_rat) * max_red);
 		new_g=(Uint8)( old_rat * new_green + (1 - old_rat) * max_green);
 		new_b=(Uint8)( old_rat * new_blue  + (1 - old_rat) * max_blue);
 	      }else{
 		//should never get here
-		//would imply old_avg > reference_avg = 255 
-	      }	      
+		//would imply old_avg > reference_avg = 255
+	      }
 
 	      while(beg != end) {
                         Uint8 red, green, blue, alpha;

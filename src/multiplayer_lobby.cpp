@@ -294,7 +294,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		if((**game)["mp_era"] != "") {
 			const config* const era_cfg = game_config.find_child("era", "id", (**game)["mp_era"]);
 			games_.back().map_info = era_cfg != NULL ? era_cfg->get_attribute("name") : _("Unknown era");
-			
+
 		} else {
 			games_.back().map_info = _("Unknown era");
 		}
@@ -363,7 +363,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		} else {
 			games_.back().time_limit = "";
 		}
-				
+
 		games_.back().xp = (**game)["experience_modifier"] + "%";
 		games_.back().observers = (**game)["observer"] != "no" ? true : false;
 	}

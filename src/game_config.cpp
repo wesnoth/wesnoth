@@ -35,7 +35,7 @@ namespace game_config
 	const std::string version = VERSION;
 	bool debug = false, editor = false, ignore_replay_errors = false;
 
-	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music, anonymous_music, 
+	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music, anonymous_music,
 			victory_music, defeat_music;
 	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0,
 	    title_tip_x = 0, title_tip_y = 0, title_tip_width = 0, title_tip_padding = 0;
@@ -162,7 +162,7 @@ namespace game_config
 		download_campaign_image = v["download_campaign_image"];
 		level_image = v["level_image"];
 		ellipsis_image = v["ellipsis_image"];
-		
+
 		const config::child_list& team_colors = v.get_children("team_color");
 		for(config::child_list::const_iterator teamC = team_colors.begin(); teamC != team_colors.end(); ++teamC) {
 		    if(!(**teamC)["side"].empty() && !(**teamC)["team_rgb"].empty()){

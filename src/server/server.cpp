@@ -345,7 +345,7 @@ std::string server::process_command(const std::string& cmd)
 		const std::string motd(i+1,cmd.end());
 		motd_ = motd;
 		out << "message of the day set: " << motd_;
-		
+
 	} else {
 		out << "command '" << command << "' is not recognized";
 		out << "available commands are: msg <message>, status, metrics, ban [<nick>], unban <nick>, kick <nick>";
@@ -853,7 +853,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				g->level().values["map_data"] = data["map_data"];
 				g->level().values["map"] = data["map"];
 			}
-			
+
 			g->level().values["mp_era"] = data.child("era") != NULL ? data.child("era")->get_attribute("id") : "";
 			g->level().values["mp_scenario"] = data["id"];
 			g->level().values["mp_use_map_settings"] = data["mp_use_map_settings"];

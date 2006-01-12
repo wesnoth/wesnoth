@@ -271,7 +271,7 @@ void replay::add_countdown_update(int value, int team)
 
 	val["value"] = lexical_cast_default<std::string>(value);
 	val["team"] = lexical_cast_default<std::string>(team);
-	
+
 	cmd->add_child("countdown_update",val);
 }
 
@@ -609,9 +609,9 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		} else if((child = cfg->child("speak")) != NULL) {
 			const std::string& team_name = (*child)["team_name"];
 			if(team_name == "" || teams[disp.viewing_team()].team_name() == team_name) {
-				bool is_lobby_join = ((*child)["description"] == "server" 
+				bool is_lobby_join = ((*child)["description"] == "server"
 							&& (*child)["message"].value().find("has logged into the lobby") != -1);
-				
+
 				if(!replayer.is_skipping() && (!is_lobby_join || preferences::lobby_joins())) {
 					if(preferences::message_bell()) {
 						sound::play_sound(game_config::sounds::receive_message);

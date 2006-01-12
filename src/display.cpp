@@ -119,7 +119,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 
 		//must recolor flag image
 		animated<image::locator> temp_anim;
-		
+
 		std::vector<std::string> items = utils::split(flag);
 		int current_time = 0;
 		std::vector<std::string>::const_iterator itor = items.begin();
@@ -2320,12 +2320,12 @@ void display::set_grid(bool grid)
 // Uses preferences::clock_format() for formatting.
 char *timestring ( void )
 {
-    #define TIME_SIZE 10 
+    #define TIME_SIZE 10
 
     time_t now = time ( NULL );
     struct tm *lt = localtime( &now );
 
-    char *tstring; 
+    char *tstring;
     tstring = new char[TIME_SIZE];
     strftime(tstring,TIME_SIZE,preferences::clock_format().c_str(),lt);
     return tstring;

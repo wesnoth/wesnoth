@@ -187,7 +187,7 @@ class preprocessor_data: preprocessor
 	void put(std::string const &);
 public:
 	preprocessor_data(preprocessor_streambuf &, std::istream *,
-	                  std::string const &history,  
+	                  std::string const &history,
 	                  std::string const &name, int line,
 	                  std::string const &dir, std::string const &domain);
 	virtual bool get_chunk();
@@ -625,7 +625,7 @@ bool preprocessor_data::get_chunk()
 				std::string const &dir = directory_name(val.location.substr(0, val.location.find(' ')));
 				if (!slowpath_) {
 					LOG_CF << "substituting macro " << symbol << '\n';
-					new preprocessor_data(target_, buffer, val.location, "", 
+					new preprocessor_data(target_, buffer, val.location, "",
 					                      val.linenum, dir, val.textdomain);
 				} else {
 					LOG_CF << "substituting (slow) macro " << symbol << '\n';

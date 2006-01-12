@@ -401,7 +401,7 @@ void map_editor::change_language() {
 	gamemap new_map(game_config_, map_.write());
 	map_ = new_map;
 
-	// Update the selected terrain strings 
+	// Update the selected terrain strings
 	palette_.update_selected_terrains();
 }
 

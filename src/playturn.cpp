@@ -111,16 +111,16 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 		unit_map::const_iterator ui = units.find(*g);
 		turn_data.move_unit_to_loc(ui,ui->second.get_goto(),false);
 	}
-	
-	
+
+
 
 	int cur_ticks = SDL_GetTicks();
 	int beep_warning_time = 10000; //Starts beeping each second when time is less than this (millisec)
 
 	turn_data.start_interactive_turn();
-	
-	
-	
+
+
+
 	while(!turn_data.turn_over()) {
 
 		try {
@@ -137,7 +137,7 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 			turn_data.send_data();
 			throw e;
 		}
-		
+
 
 	if (teams[team_num -1].countdown_time() > 0 &&  ( level["mp_countdown"] == "yes" ) ){
 		SDL_Delay(1);
@@ -169,10 +169,10 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 				turn_data.send_data();
 				throw end_turn_exception();
 			}
-		} 
-		
+		}
+
 	}
-	
+
 		// gui.invalidate_animations();
 		gui.draw();
 
@@ -180,7 +180,7 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 	}
 	if ( level["mp_countdown"] == "yes" ){
 		teams[team_num -1].set_countdown_time(teams[team_num -1].countdown_time() + 1000 * lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0));
-		recorder.add_countdown_update(teams[team_num -1].countdown_time(),team_num);	
+		recorder.add_countdown_update(teams[team_num -1].countdown_time(),team_num);
 	}
 
 	//send one more time to make sure network is up-to-date.
@@ -497,22 +497,22 @@ public:
 		//if our weapon can kill the enemy in one blow, the enemy does not
 		//drain back and our weapon has more blows, prefer our weapon
 		if(stats_.damage_defender_takes >= stats_.defender_hp &&
-		   stats_.amount_defender_drains == 0 && 
+		   stats_.amount_defender_drains == 0 &&
 		   stats_.nattacks > a.stats_.nattacks)
-		   	{
+			{
 			return false;
 			}
-		
+
 		int this_avg_damage_dealt = stats_.chance_to_hit_defender *
 				stats_.damage_defender_takes * stats_.nattacks;
 		int this_avg_damage_taken = stats_.chance_to_hit_attacker *
 				stats_.damage_attacker_takes * stats_.ndefends;
-		
+
 		int other_avg_damage_dealt = a.stats_.chance_to_hit_defender *
 				a.stats_.damage_defender_takes * a.stats_.nattacks;
 		int other_avg_damage_taken = a.stats_.chance_to_hit_attacker *
 				a.stats_.damage_attacker_takes * a.stats_.ndefends;
-		
+
 		//if our weapon does less damage, it's worse
 		if(this_avg_damage_dealt < other_avg_damage_dealt)
 			return true;

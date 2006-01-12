@@ -114,7 +114,7 @@ static int upload_logs(void *_ti)
 // Currently only enabled when playing campaigns.
 upload_log::upload_log(bool enable) : game_(NULL), enabled_(enable)
 {
-	filename_ = next_filename(get_upload_dir()); 
+	filename_ = next_filename(get_upload_dir());
 	if (preferences::upload_log() && !thread_.t) {
 		// Thread can outlive us; it uploads everything up to the next
 		// filename, and unsets thread_.t when it's finished.
@@ -149,7 +149,7 @@ bool upload_log::game_finished(config *game)
 {
 	if (!game)
 		return false;
-	
+
 	return game->child("victory") || game->child("defeat") || game->child("quit");
 }
 
@@ -278,7 +278,7 @@ void upload_log_dialog::show_beg_dialog(display& disp)
 		+ get_upload_dir() + "\n"
 		+ _("You can view the results at ")
 		+ "http://stats.wesnoth.org/?" + preferences::upload_id() + "\n";
- 
+
 
 	gui::show_dialog(disp, NULL,
 					 _("Help us make Wesnoth better for you!"),

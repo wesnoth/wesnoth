@@ -420,7 +420,7 @@ SDL_Colour unit::hp_color() const{
   if(max_hitpoints() > 0) {
     unit_energy = double(hitpoints())/double(max_hitpoints());
   }
-  
+
   if(1.0 == unit_energy){
     energy_colour.r = 33;
     energy_colour.g = 225;

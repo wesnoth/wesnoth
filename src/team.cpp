@@ -110,7 +110,7 @@ team::team_info::team_info(const config& cfg)
 		colour = lexical_cast_default<int>(cfg["side"],-1);
 
 	int side = atoi(cfg["side"].c_str());
-	
+
 	std::vector<Uint32> temp_rgb = string2rgb(cfg["team_rgb"]);
 	std::map<int, color_range>::iterator global_rgb = game_config::team_rgb_range.find(side);
 
@@ -356,7 +356,7 @@ void team::write(config& cfg) const
 	}
 
 	cfg["shroud_data"] = shroud_.write();
-	
+
 	cfg["countdown_time"] = lexical_cast_default<std::string>(countdown_time_);
 }
 
@@ -456,7 +456,7 @@ int team::countdown_time() const
 }
 void team::set_countdown_time(int amount)
 {
-	countdown_time_=amount;	
+	countdown_time_=amount;
 }
 
 const std::set<std::string>& team::recruits() const

@@ -74,7 +74,7 @@ public:
 		std::string team_name;
 		std::string save_id;
 		std::string countdown_time;
-		
+
 		std::string flag;
 
 		std::string description;
@@ -249,7 +249,7 @@ private:
 	team_info info_;
 
 	int countdown_time_;
-	
+
 	config aiparams_;
 
 	//cached values for ai parameters

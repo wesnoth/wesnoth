@@ -143,8 +143,8 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 	if(map_data == "" && (*level)["map"] != "") {
 		map_data = read_map((*level)["map"]);
 	}
-	
-	
+
+
 
 	//if the map should be randomly generated
 	if(map_data == "" && (*level)["map_generation"] != "") {
@@ -168,8 +168,8 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 	const statistics::scenario_context statistics_context(lvl["name"]);
 
 	const int num_turns = atoi(lvl["turns"].c_str());
-	
-	
+
+
 	gamestatus status(*level,num_turns);
 
 	gamemap map(game_config,map_data);
@@ -350,18 +350,18 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 				for(t = teams.begin(); t != teams.end(); ++t) {
 					clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
 				}
-				
-				
+
+
 				if(!loading_game) {
 					game_events::fire("start");
 					state_of_game.set_variable("turn_number", "1");
 				}
 
-				// Initialize countdown clock. 
+				// Initialize countdown clock.
 				for(t = teams.begin(); t != teams.end(); ++t) {
 					std::string countd_enabled = lvl["mp_countdown"].c_str();
 					if ( countd_enabled == "yes" && !loading_game ){
-					 	t->set_countdown_time(1000 * lexical_cast_default<int>(lvl["mp_countdown_init_time"],0));
+						t->set_countdown_time(1000 * lexical_cast_default<int>(lvl["mp_countdown_init_time"],0));
 					}
 				}
 
@@ -445,7 +445,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 					LOG_NG << "result of replay: " << (replaying?"true":"false") << "\n";
 				}
 
-				if(!replaying && team_it->music().empty() == false && 
+				if(!replaying && team_it->music().empty() == false &&
 						(teams[gui.viewing_team()].knows_about_team(player_number-1) || teams[gui.viewing_team()].has_seen(player_number-1))) {
 					LOG_NG << "playing music: '" << team_it->music() << "'\n";
 					sound::play_music(team_it->music());
@@ -460,7 +460,7 @@ redo_turn:
 
 				if(!replaying && team_it->is_human()) {
 					LOG_NG << "is human...\n";
-					
+
 					try {
 						play_turn(gameinfo,state_of_game,status,game_config,
 						          *level, key, gui, map, teams, player_number,
@@ -469,10 +469,10 @@ redo_turn:
 						if (end_turn.redo == player_number)
 							goto redo_turn;
 					}
-					
+
 					if(game_config::debug)
 						display::clear_debug_highlights();
-										
+
 					LOG_NG << "human finished turn...\n";
 
 				} else if(!replaying && team_it->is_ai()) {

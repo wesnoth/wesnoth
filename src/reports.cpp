@@ -83,7 +83,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	unit_map::const_iterator u = units.end();
 	SDL_Color HPC;
 	SDL_Color XPC;
-	  
+
 
 	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END) || type == POSITION) {
 
@@ -180,13 +180,13 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	}
 	case UNIT_HP: {
 	  HPC=u->second.hp_color();
-	  str << "<" << (int) HPC.r << "," << (int) HPC.g << "," << (int) HPC.b << ">" 
+	  str << "<" << (int) HPC.r << "," << (int) HPC.g << "," << (int) HPC.b << ">"
 	      << u->second.hitpoints() << "/" << u->second.max_hitpoints();
 	  break;
 	}
 	case UNIT_XP: {
 	  XPC=u->second.xp_color();
-	  str << "<" << (int) XPC.r << "," << (int) XPC.g << "," << (int) XPC.b << ">" 
+	  str << "<" << (int) XPC.r << "," << (int) XPC.g << "," << (int) XPC.b << ">"
 	      << u->second.experience() << "/" << u->second.max_experience();
 	  break;
 	}
@@ -290,7 +290,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			    //check if we use special(argument)
 			    const std::string::size_type parindex = special.find('(',0);
 			    if (parindex != std::string::npos) {
-			    	// If there is an argument, we use weapon_special_specialname_arg_description instead
+				// If there is an argument, we use weapon_special_specialname_arg_description instead
 				tooltip << string_table["weapon_special_" + special.substr(0,parindex) + "_arg_description"];
 			    } else {
 				tooltip << string_table["weapon_special_" + special + "_description"];
@@ -472,10 +472,10 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			sec = current_team.countdown_time() / 1000;
 
 			if(sec < 60)
-		  		str << "<200,0,0>";
+				str << "<200,0,0>";
 			else if(sec < 120)
-		  		str << "<200,200,0>";
-			
+				str << "<200,200,0>";
+
 			min = sec / 60;
 			str << min << ":";
 			sec = sec % 60;

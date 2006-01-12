@@ -91,8 +91,8 @@ void file_chooser::display_current_files() {
 	// and shorten the rest of the dir:
 	// /home/.../rest_of_the_dir
 	// Note that this is a dirty hack and fundemental changes in the widget subdir
-	// needs to be made... 
-	if(font::line_width(current_path_label_.get_text(), menu_font_size) > 390) 
+	// needs to be made...
+	if(font::line_width(current_path_label_.get_text(), menu_font_size) > 390)
 	{
 		std::string tmp = current_path_label_.get_text();
 		static const int filler_width = font::line_width("...", menu_font_size);
@@ -107,7 +107,7 @@ void file_chooser::display_current_files() {
 		}
 
 		static const int prefix_width = font::line_width(dir_prefix, menu_font_size);
-		
+
 		// Try to cut off text at the '/' or '\' tokens
 		while(font::line_width(tmp, menu_font_size) + filler_width + prefix_width > 390 && tmp.length() != 0)
 		{

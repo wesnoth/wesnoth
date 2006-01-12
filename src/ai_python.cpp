@@ -28,7 +28,7 @@
  be exposed.
 - turn_info, does not need to be exposed.
 
-Additionally, useful utility functions such as those found in pathutils.hpp should be exposed. 
+Additionally, useful utility functions such as those found in pathutils.hpp should be exposed.
 
 */
 

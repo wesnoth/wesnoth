@@ -347,7 +347,7 @@ void textbox::erase_selection()
 }
 
 namespace {
-	const unsigned int copypaste_modifier = 
+	const unsigned int copypaste_modifier =
 #ifdef __APPLE__
 		KMOD_LMETA | KMOD_RMETA
 #else

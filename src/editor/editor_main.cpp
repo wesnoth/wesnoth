@@ -94,7 +94,7 @@ int main(int argc, char** argv)
 			++arg;
 			choosen_bpp = lexical_cast_default<int>(argv[arg]);
 		}
-			
+
 		else if(val == "--resolution" || val == "-r") {
 			if(arg+1 != argc) {
 				++arg;
@@ -165,7 +165,7 @@ int main(int argc, char** argv)
 	image::set_wm_icon();
 	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
 	std::pair<int,int> resolution = preferences::resolution();
-	
+
 	std::cerr << "checking mode possible...\n";
 	const int default_bpp = 24;
 	int bpp = default_bpp;
@@ -212,7 +212,7 @@ int main(int argc, char** argv)
 	} else {
 		bpp = choosen_bpp;
 	}
-	
+
 	std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "\n";
 	const int res = video.setMode(resolution.first,resolution.second,bpp,video_flags);
 	video.setBpp(bpp);

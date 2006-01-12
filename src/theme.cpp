@@ -263,7 +263,7 @@ theme::object::object() : loc_(empty_rect), relative_loc_(empty_rect),
 {}
 
 theme::object::object(const config& cfg)
-                   : id_(cfg["id"]), 
+                   : id_(cfg["id"]),
 					 loc_(read_sdl_rect(cfg)), relative_loc_(empty_rect),
 				     last_screen_(empty_rect),
                      xanchor_(read_anchor(cfg["xanchor"])),
@@ -650,7 +650,7 @@ theme::object& theme::add_object(const config& cfg){
 		LOG_DP << "done adding menu...\n";
 		result = new_menu;
 	}
-	
+
 	return result;
 }
 
@@ -677,9 +677,9 @@ void theme::remove_object(std::string id){
 
 void theme::set_object_location(theme::object& element, std::string rect_str, std::string ref_id){
 	theme::object& ref_element = *(new object());
-	if (ref_id.empty()) { 
+	if (ref_id.empty()) {
 		ref_id = element.get_id();
-		ref_element = element; 
+		ref_element = element;
 	}
 	else {
 		ref_element = find_element(ref_id);

@@ -238,7 +238,7 @@ surface locator::load_image_file() const
 	surface res;
 
 	std::string location = get_binary_file_location("images", val_.filename_);
-	
+
 	bool try_units = false;
 
 	do {

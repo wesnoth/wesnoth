@@ -204,7 +204,7 @@ gamemap::location::DIRECTION gamemap::location::get_relative_dir(gamemap::locati
 	if( diff.y >= 0 && diff.x >= 0 && abs(diff.x) >= abs(diff.y)) return SOUTH_EAST;
 	if( diff.y >= 0 && diff.x < 0 && abs(diff.x) >= abs(diff.y)) return SOUTH_WEST;
 	if( diff.y >= 0 && abs(diff.x) < abs(diff.y)) return SOUTH;
-	
+
 	//impossible
 	wassert(false);
 	return NDIRECTIONS;

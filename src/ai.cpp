@@ -109,9 +109,9 @@ protected:
 			const double attack_rating = stats.damage_defender_takes
 				*stats.nattacks*stats.chance_to_hit_defender*attacks[n].attack_weight();
 			if(best_attack == -1 || attack_rating > best_attack_rating) {
-                 		best_attack = n;
-                		best_attack_rating = attack_rating;
-            		}
+		best_attack = n;
+		best_attack_rating = attack_rating;
+		}
 		   }
 		}
 
