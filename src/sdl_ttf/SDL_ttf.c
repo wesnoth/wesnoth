@@ -314,8 +314,13 @@ TTF_Font* TTF_OpenFontIndexRW( SDL_RWops *src, int freesrc, int ptsize, long ind
 
 	  /* Get the scalable font metrics for this font */
 	  scale = face->size->metrics.y_scale;
-	  font->ascent  = FT_CEIL(FT_MulFix(face->bbox.yMax, scale));
-	  font->descent = FT_CEIL(FT_MulFix(face->bbox.yMin, scale));
+	  /* This broke with fonts containing large boxes that were not
+	   * actually used in the output: */
+	  /* font->ascent  = FT_CEIL(FT_MulFix(face->bbox.yMax, scale)); */
+	  /* font->descent = FT_CEIL(FT_MulFix(face->bbox.yMin, scale)); */
+	  /* fix suggested by Stepan Roh: */
+	  font->ascent  = FT_CEIL(FT_MulFix(face->ascender, scale));
+	  font->descent = FT_CEIL(FT_MulFix(face->descender, scale));
 	  font->height  = font->ascent - font->descent + /* baseline */ 1;
 	  font->lineskip = FT_CEIL(FT_MulFix(face->height, scale));
 	  font->underline_offset = FT_FLOOR(FT_MulFix(face->underline_position, scale));
@@ -439,9 +444,7 @@ static FT_Error Load_Glyph( TTF_Font* font, Uint16 ch, c_glyph* cached, int want
 	if ( ! cached->index ) {
 		cached->index = FT_Get_Char_Index( face, ch );
 	}
-	//error = FT_Load_Glyph( face, cached->index, FT_LOAD_DEFAULT | FT_LOAD_NO_BITMAP );
 	error = FT_Load_Glyph( face, cached->index, FT_LOAD_DEFAULT );
-
 	if( error ) {
 		return error;
 	}
@@ -562,7 +565,6 @@ static FT_Error Load_Glyph( TTF_Font* font, Uint16 ch, c_glyph* cached, int want
 					int j;
 					for ( j = 0; j < src->width; j += 8 ) {
 						unsigned char ch = *srcp++;
-
 						int k;
 						for ( k = 0; k < 8; ++k) {
 							*dstp++ = ch & 0x80 ? 0xff : 0;
@@ -1575,6 +1577,7 @@ SDL_Surface *TTF_RenderUNICODE_Blended(TTF_Font *font,
 	xstart = 0;
 	swapped = TTF_byteswapped;
 	pixel = (fg.r<<16)|(fg.g<<8)|fg.b;
+	SDL_FillRect(textbuf, NULL, pixel);     /* Initialize with fg and 0 alpha */
 
 	for ( ch=text; *ch; ++ch ) {
 		Uint16 c = *ch;
@@ -1694,6 +1697,8 @@ SDL_Surface *TTF_RenderGlyph_Blended(TTF_Font *font, Uint16 ch, SDL_Color fg)
 
 	/* Copy the character from the pixmap */
 	pixel = (fg.r<<16)|(fg.g<<8)|fg.b;
+	SDL_FillRect(textbuf, NULL, pixel);     /* Initialize with fg and 0 alpha */
+
 	for ( row=0; row<textbuf->h; ++row ) {
 		/* Changed src to take pitch into account, not just width */
 		src = glyph->pixmap.buffer + row * glyph->pixmap.pitch;
