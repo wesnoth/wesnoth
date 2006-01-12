@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-01-11 16:47+0100\n"
-"PO-Revision-Date: 2005-12-30 13:23+0200\n"
+"PO-Revision-Date: 2006-01-12 14:20+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 
 #: data/amla.cfg:8
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr ", MAX XP +25%"
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +"
@@ -2593,7 +2593,6 @@ msgstr ""
 "some cases, you will be given a choice of advancement options."
 
 #: data/help.cfg:203
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2619,9 +2618,14 @@ msgstr ""
 "its maximum level, it may have an After Maximum Level Advancement (AMLA) "
 "available to it. The AMLA will modify the unit each time the unit reaches "
 "the experience goal, but the unit will remain the same level. The typical "
-"AMLA effect is for the unit to raise the maximum HP by 3 for every 100 XP "
-"gained. Note that only a small number of units, for example the Necrophage, "
-"will actually heal with AMLA effects. Most units just gain the bonus to the "
+"AMLA effect is for the unit to raise the maximum HP by 3. The first AMLA "
+"will normally be reached with 100 XP gained (80 XP for intelligent units). "
+"However, gaining an AMLA becomes progressively harder for each AMLA the unit "
+"receives, and so it is often more useful to try to advance your lower level "
+"units.\n"
+"\n"
+"Note that only a small number of units, for example the Necrophage, will "
+"actually heal with AMLA effects. Most units just gain the bonus to the "
 "Maximum HP."
 
 #: data/help.cfg:208
@@ -3733,7 +3737,7 @@ msgstr "2p - Charge"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
-msgstr ""
+msgstr "2p - Cynsaun Battlefield"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
@@ -3741,6 +3745,9 @@ msgid ""
 "favor epic, large-scale duel matches. Recommended settings of 150 G; 1G per "
 "village."
 msgstr ""
+"There is much to explore in this vast battlefront, designed for players who "
+"favour epic, large-scale duel matches. Recommended settings of 150 G; 1G per "
+"village."
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
@@ -4030,17 +4037,15 @@ msgstr ""
 "settings of 1G per village."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
-#, fuzzy
 msgid "4p - Morituri"
-msgstr "3p - Morituri"
+msgstr "4p - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
 "settings of 2G per village."
 msgstr ""
-"Three players come head to head on this water-cut battlefield. Recommended "
+"Who will emerge from the confines of this perilous battlefield? Recommended "
 "settings of 2G per village."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
@@ -4084,7 +4089,7 @@ msgstr "In this mixed landscape, five armies battle for supremacy."
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
-msgstr ""
+msgstr "6p - Crusaders' Field"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
 msgid ""
@@ -4093,6 +4098,10 @@ msgid ""
 "through the mountains, trees and rivers. Recommended settings of 1G per "
 "village."
 msgstr ""
+"The rallying cries of battle can once again be heard on this time-worn field "
+"of war, where the ghosts of thousands of brave warriors float invisibly "
+"through the mountains, trees and rivers. Recommended settings of 1G per "
+"village."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
@@ -4202,7 +4211,7 @@ msgstr "Green"
 
 #: data/team_colors.cfg:22
 msgid "Cyan"
-msgstr ""
+msgstr "Cyan"
 
 #: data/team_colors.cfg:28
 msgid "Purple"
@@ -4256,9 +4265,8 @@ msgid "Snow Village"
 msgstr "Snow Village"
 
 #: data/terrain.cfg:297
-#, fuzzy
 msgid "Dwarven Village"
-msgstr "Desert Village"
+msgstr "Dwarven Village"
 
 #: data/terrain.cfg:334
 msgid "Desert Hills"
@@ -4471,7 +4479,6 @@ msgstr ""
 "are skilled enough to ignore these zones."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -4479,9 +4486,9 @@ msgid ""
 "least 60% chance to hit when attacking."
 msgstr ""
 "The chance to hit a unit usually depends on how well that unit can defend "
-"itself in the terrain it is standing in, however magical attacks have a 70% "
-"chance to hit both when attacking and defending, and marksman attacks have "
-"at least 60% chance to hit when attacking."
+"itself in the terrain it is standing in. However, magical attacks have a 70% "
+"chance to hit both when attacking and defending. Marksman attacks have at "
+"least 60% chance to hit when attacking."
 
 #: data/tips.cfg:9
 msgid ""
@@ -4490,13 +4497,12 @@ msgstr ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 
 #: data/tips.cfg:10
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
 msgstr ""
-"Units that do not move or attack during their turn rest, and will recover 2 "
-"hitpoints at the beginning of their next turn."
+"Units rest if they do not move or attack during their turn. They will "
+"recover 2 hitpoints at the beginning of their next turn."
 
 #: data/tips.cfg:11
 msgid ""
@@ -4553,14 +4559,12 @@ msgstr ""
 "expendable units in some directions to delay enemy units."
 
 #: data/tips.cfg:17
-#, fuzzy
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
-"Do not be afraid to retreat and regroup, it is often the key to victory."
+"Do not be afraid to retreat and regroup; it is often the key to victory."
 
 #: data/tips.cfg:18
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -4568,7 +4572,7 @@ msgid ""
 "villages and waiting for turns to run out."
 msgstr ""
 "In most campaigns you will receive a gold bonus for finishing early, "
-"depending on the number of villages on the map, and the number of turns you "
+"depending on the number of villages on the map and the number of turns you "
 "finish early. You will always earn more gold this way than through capturing "
 "villages and waiting for turns to run out."
 
@@ -4585,12 +4589,11 @@ msgstr ""
 "for you on their keep so you can recruit there."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
-"Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
+"Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
 
 #: data/tips.cfg:21
@@ -4652,7 +4655,6 @@ msgstr ""
 "needing to attack anything themselves."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attacks."
@@ -4687,6 +4689,10 @@ msgid ""
 "progressively harder for each AMLA the unit receives, however. Thus, it is "
 "often more useful to try to advance your lower level units."
 msgstr ""
+"Units can gain After Maximum Level Advancements (AMLAs), which usually "
+"increase the unit's maximum hitpoints by 3. Gaining an AMLA becomes "
+"progressively harder for each AMLA the unit receives, however. Thus, it is "
+"often more useful to try to advance your lower level units."
 
 #: data/tips.cfg:34
 msgid ""
@@ -4694,6 +4700,9 @@ msgid ""
 "the Help Wesnoth button.  This information is vital so we can adjust "
 "campaign difficulty."
 msgstr ""
+"You can send the Wesnoth Project an anonymous summary of your progress using "
+"the Help Wesnoth button. This information is vital so we can adjust "
+"campaign difficulty."
 
 #: data/traits.cfg:7
 msgid "Zero upkeep"
@@ -4925,7 +4934,6 @@ msgid "Blood Bat"
 msgstr "Blood Bat"
 
 #: data/units/Blood_Bat.cfg:23
-#, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
@@ -4933,9 +4941,9 @@ msgid ""
 "victims."
 msgstr ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
-"healing themselves, even to the point where they become stronger than they "
-"began the battle. Such is their fury that the fur of these undead flying "
-"beasts is tainted red with the blood of their victims."
+"gaining some of the health lost by their victims. Such is their fury that "
+"the fur of these undead flying beasts is tainted red with the blood of their "
+"victims."
 
 #: data/units/Blood_Bat.cfg:39 data/units/Cave_Spider.cfg:39
 #: data/units/Direwolf_Rider.cfg:38 data/units/Goblin_Knight.cfg:38
@@ -6350,7 +6358,6 @@ msgid "female^Elvish Shyde"
 msgstr "Elvish Shyde"
 
 #: data/units/Elvish_Shyde.cfg:30
-#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -6366,9 +6373,9 @@ msgstr ""
 "these beautiful stewards of the elven forests epitomize the grace and "
 "mystery of their people.\n"
 "\n"
-"Special Notes: A shyde's entangling attack slows enemies down and reduces by "
-"one the strikes they can deliver in combat. Shydes are capable of healing "
-"units around them, and curing them of poison."
+"Special Notes: A shyde's entangling attack slows enemies down and reduces "
+"the damage they can deliver in combat. Shydes are capable of healing units "
+"around them, and curing them of poison."
 
 #: data/units/Elvish_Shyde.cfg:34 data/units/Elvish_Sylph.cfg:31
 msgid "faerie touch"
@@ -6706,7 +6713,6 @@ msgid "Goblin Rouser"
 msgstr "Goblin Rouser"
 
 #: data/units/Goblin_Rouser.cfg:27
-#, fuzzy
 msgid ""
 "Standard bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -6718,10 +6724,11 @@ msgid ""
 "to it to deal more damage in combat, though this only applies to units of "
 "lower level."
 msgstr ""
-"Standard Bearers are an oddity amongst Goblins. First, they have survived a "
-"war, but more significantly, they were remembered to have survived one by "
-"other Goblins. His oft maddened rabble on the battlefield nonetheless seems "
-"to effectively steel the younger at arms.\n"
+"Standard Bearers are an oddity amongst Goblins. A goblin who has survived "
+"enough battles to be considered a veteran is rare enough, and it is rarer "
+"still for the other goblins to recognize and respect this veteran status. "
+"Nonetheless, a rouser's frenzied goading effectively steels the younger at "
+"arms to fight harder and longer before they die.\n"
 "\n"
 "Special Notes: the leadership of a Goblin Rouser enables friendly units next "
 "to it to deal more damage in combat, though this only applies to units of "
@@ -7881,7 +7888,6 @@ msgid "Ogre"
 msgstr "Ogre"
 
 #: data/units/Ogre.cfg:23
-#, fuzzy
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
@@ -9241,9 +9247,8 @@ msgid "+English (GB) Translation"
 msgstr "+English (GB) Translation"
 
 #: src/about.cpp:202
-#, fuzzy
 msgid "+Esperanto Translation"
-msgstr "+German Translation"
+msgstr "+Esperanto Translation"
 
 #: src/about.cpp:206
 msgid "+Estonian Translation"
@@ -9366,9 +9371,8 @@ msgid "Doubled"
 msgstr "Doubled"
 
 #: src/actions.cpp:458 src/actions.cpp:607
-#, fuzzy
 msgid "Halved"
-msgstr "Saved"
+msgstr "Halved"
 
 #: src/actions.cpp:458 src/actions.cpp:607 src/actions.cpp:876
 #: src/actions.cpp:1046
@@ -10322,9 +10326,8 @@ msgid "Enables user time limit"
 msgstr "Enables user time limit"
 
 #: src/multiplayer_create.cpp:109
-#, fuzzy
 msgid "Initial time available to players at start of game"
-msgstr "Initial time available for player at start of game"
+msgstr "Initial time available to players at start of game"
 
 #: src/multiplayer_create.cpp:115
 msgid "Time added to user's clock at the end of each turn"
@@ -10427,19 +10430,16 @@ msgid "Status"
 msgstr "Status"
 
 #: src/multiplayer_lobby.cpp:101
-#, fuzzy
 msgid "--no games open--"
-msgstr "<no games open>"
+msgstr "--no games open--"
 
 #: src/multiplayer_lobby.cpp:296 src/multiplayer_lobby.cpp:299
-#, fuzzy
 msgid "Unknown era"
-msgstr "Unknown scenario: '"
+msgstr "Unknown era"
 
 #: src/multiplayer_lobby.cpp:321 src/multiplayer_lobby.cpp:323
-#, fuzzy
 msgid "Unknown scenario"
-msgstr "Unknown scenario: '"
+msgstr "Unknown scenario"
 
 #: src/multiplayer_lobby.cpp:332
 msgid "Vacant Slot"
@@ -10458,9 +10458,8 @@ msgid "Quit"
 msgstr "Quit"
 
 #: src/multiplayer_ui.cpp:79
-#, fuzzy
 msgid "Invalid Color"
-msgstr "Invalid colour"
+msgstr "Invalid Colour"
 
 #: src/multiplayer_wait.cpp:116
 msgid "Leader: "
@@ -10946,9 +10945,8 @@ msgid "TitleScreen button^Preferences"
 msgstr "Preferences"
 
 #: src/titlescreen.cpp:206
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Load"
+msgstr "Help Wesnoth"
 
 #: src/titlescreen.cpp:207
 msgid "About"
@@ -10988,7 +10986,7 @@ msgstr "Configure the game's settings"
 
 #: src/titlescreen.cpp:215
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "Help Wesnoth by sending us information"
 
 #: src/titlescreen.cpp:216
 msgid "View the credits"
@@ -11041,18 +11039,22 @@ msgid ""
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
+"Wesnoth relies on volunteers like yourself for feedback, especially "
+"beginners and new players. Wesnoth keeps summaries of your games: you can "
+"help us improve game play by giving permission to send these summaries "
+"(anonymously) to wesnoth.org.\n"
 
 #: src/upload_log.cpp:277
 msgid "You can see the summaries to be sent in "
-msgstr ""
+msgstr "You can see the summaries to be sent in "
 
 #: src/upload_log.cpp:279
 msgid "You can view the results at "
-msgstr ""
+msgstr "You can view the results at "
 
 #: src/upload_log.cpp:284
 msgid "Help us make Wesnoth better for you!"
-msgstr ""
+msgstr "Help us make Wesnoth better for you!"
 
 #, fuzzy
 #~ msgid "Turn Dialog"
