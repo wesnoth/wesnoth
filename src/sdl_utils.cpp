@@ -1185,11 +1185,6 @@ void surface_restorer::cancel()
 
 void draw_rectangle(int x, int y, int w, int h, Uint32 colour,surface target)
 {
-	if(x < 0 || y < 0 || x+w >= target->w || y+h >= target->h) {
-		ERR_DP << "Rectangle has illegal co-ordinates: " << x << "," << y
-		          << "," << w << "," << h << "\n";
-		return;
-	}
 
 	SDL_Rect top = {x,y,w,1};
 	SDL_Rect bot = {x,y+h-1,w,1};
@@ -1206,11 +1201,6 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
                                  int r, int g, int b,
                                  double alpha, surface target)
 {
-	if(x < 0 || y < 0 || x+w >= target->w || y+h >= target->h) {
-		ERR_DP << "Rectangle has illegal co-ordinates: " << x << "," << y
-		          << "," << w << "," << h << "\n";
-		return;
-	}
 
 	SDL_Rect rect = {x,y,w,h};
 	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
