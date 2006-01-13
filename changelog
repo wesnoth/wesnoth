@@ -15,34 +15,27 @@ SVN trunk (1.1+svn):
    * gave names to mermaids
    * deleted Wall Guard and Gate (no longer used)
    * updated descriptions: Goblin Rouser
- * gameplay changes :
+ * gameplay changes:
    * improved default weapon selection on player attack (patch #500)
    * attack_weight=0 disables the attack when attacking
    * defense_weight=0 disables the attack when defending
-   * attack_weight is now functionnal (#5014)
+   * attack_weight is now functional (#5014)
  * user interface
-   * centered BFW title logo on main screen for 1024x768 (still off-center for
-     800x600)
-   * prevent icons in themes from being scaled up (only scaling downis
-     allowed)
+   * centered title screen logo for 1024x768 (still off-center for 800x600)
+   * prevent icons in themes from being scaled up (only scaling down is allowed)
    * fix menu capitalization consistency (#4972)
    * reduce scrolling during unit movement
    * make default zoom work properly
  * WML improvements
-   * game is not limited to melee and ranged attacks anymore, retaliation will
-     use any attack of the same range. Official name for current ranges are
-     "melee" and "ranged"
+   * attack ranges renamed to "melee" and "ranged", new ranges can be used
+     (retaliation will use any attack of the same range)
    * starting_villages macro updated for added village types
-   * Splitted the factions of multiplayer.cfg in data/factions.
-     This will make easier to make combined eras without having to maintain
-     mainline factions.
- * Miscelleneous
-   * Added anonymous data logging for single player campaigns, see
-   stats.wesnoth.org
-   * Support for zipios++ can now be disabled by passing --without-zipios
-   to configure - no need to de/re-install it anymore.
-   * functions to easily create one frame anims in code, to handle deprecated
-   images better
+   * split factions of multiplayer.cfg into data/factions to ease making
+     combined eras without having to maintain mainline factions
+ * Miscellaneous
+   * anonymous data logging for single player campaigns, see stats.wesnoth.org
+   * zipios++ can now be disabled by passing --without-zipios to configure
+   * functions to easily create one frame animations, for deprecated images
    * improved (underwater) merfolk village
    * (internal) make attack animations work like all other animations
    * backport latest SDL_ttf change, fix ascender/descender issue for DejaVu
@@ -114,13 +107,13 @@ Version 1.1:
    * unit modifications now round toward original value instead of truncating
    * changed resilient trait bonus from +7hp to +10%+3hp
    * decreased strong trait hitpoints bonus from 2 to 1
-   * added a fisher's clock to MP games to limit turn duration
+   * added Fischer clock to MP games to limit turn duration
  * graphics:
    * HP and XP bar modifications
-	*movement ball seperated from bars
-	*moved to left so xp bar under the ball
-	*xpbar now changes color differently for AMLA then for regular leveling
-	*bar colors and text color in report now forced to match.
+     * movement ball seperated from bars
+     * moved to left so xp bar under the ball
+     * xpbar now changes color differently for AMLA then for regular leveling
+     * bar colors and text color in report now forced to match.
    * team color:
      * units can now have colors redefined to match team colors:
      * team color can be defined in the side tag with "team_rgb=r,g,b"
@@ -141,8 +134,7 @@ Version 1.1:
    * new tiles: swamp, cave wall, paved road, variable-width canyon (#8817)
      snow village (human & elven), underground village, mountains, hills, snow
      hills, dwarven village, additional elven and human village variants
-   * bilinear interpolation of images (better interpolation at high zoom
-     level)
+   * bilinear interpolation of images (better interpolation at high zoom level)
    * new movement animation: elvish fighter
  * language and i18n:
    * added support for right-to-left languages (patch #470)
@@ -218,11 +210,11 @@ Version 1.1:
      * decreased the Gryphon Riders movement from 9 to 8
      * removed Thug from Knalgan faction
      * added the Dwarvish Stalwart and Necrophage as a leader in default era
-     * added diffrent movetypes to variations of WC/Soulless (corpse gain physical
-       resistances of killed unit)
+     * added different movetypes to variations of WC/Soulless (corpses gain
+       physical resistances of killed unit)
      * added drain on the melee attack of the Ghost
-     * increased the Ghosts HP from 17 to 18
-     * synchronized the Ghost's and it's advancements physical resistances to 50%
+     * increased Ghost's HP from 17 to 18
+     * synchronized Ghost line's physical resistances to 50%
      * decreased Ghost line shallow water movement cost from 3 to 2
      * decreased Ghost line deep water movement cost from 4 to 2
      * increased Shadow HP from 24 to 26
@@ -239,7 +231,7 @@ Version 1.1:
      * increased the HP of the Vampire Bat from 14 to 17
      * decreased the cost of the Blood Bat from 24 to 21
      * increased the HP of the Blood Bat from 24 to 27
-     * decreased defense in villages of Wolf Rider, Goblin Knight and Pillager to 50%
+     * decreased village defense of Wolf Rider, Goblin Knight/Pillager to 50%
      * increased Goblin Pillager HP from 40 to 44
      * increased Goblin Knight HP from 45 to 49
      * increased Direwolf Rider HP from 55 to 61
@@ -255,7 +247,8 @@ Version 1.1:
      * added the Dwarvish Sentinel as a leader in AoH era
      * increased the holy resistance of the scuttlefoot movetype from 0% to 20%
      * made Fireball, Gate, Galeons & Watch Tower unpoisonable and unplaguable
-     * recosting and some minor stats changes for many level 2+ units see: http://www.wesnoth.org/forum/viewtopic.php?p=121154#121154
+     * recosting and minor stats changes for many level 2+ units:
+       http://www.wesnoth.org/forum/viewtopic.php?p=121154#121154
  * user interface:
    * added font colors to theme
    * reorganized side-bar information
@@ -883,10 +876,10 @@ Version 0.9.1:
  * terrain improvements:
    * new forest tiles
  * unit balancing:
-     * Dwarvish Guardsmen line removed as leaders in multiplayer	
-     * Dwarvish Guardsmen line only get 1 trait instead of 2 	
+     * Dwarvish Guardsmen line removed as leaders in multiplayer
+     * Dwarvish Guardsmen line only get 1 trait instead of 2
      * revert Drakes pierce resistance to 110%
-     * revert Orcish Assassin to 3-3 ranged attack	
+     * revert Orcish Assassin to 3-3 ranged attack
      * reduced resistance of Ulfserker and Berserker
      * Elvish Rider: increase melee to 6-4, increase ranged to 7-3
      * Elvish Outrider: increase melee to 8-4, increase ranged to 7-4
@@ -927,7 +920,7 @@ Version 0.9.1:
 Version 0.9.0:
  * user interface improvements:
    * added alternative theme: DFool
-   * added theme dialog, launched with ":theme"	
+   * added theme dialog, launched with ":theme"
    * made help use single click instead of double click
  * campaign modifications
    * tutorial polishing
