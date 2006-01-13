@@ -1361,7 +1361,7 @@ unit_type::movement_animation::movement_animation(const config& cfg)
 	}
 }
 
-unit_type::movement_animation::movement_animation(const std::string& image,const std::string& terrain,gamemap::location::DIRECTION dir):terrain_types(utils::split(terrain)),animation(image,0,250)
+unit_type::movement_animation::movement_animation(const std::string& image,const std::string& terrain,gamemap::location::DIRECTION dir):terrain_types(utils::split(terrain)),animation(image,0,150)
 {
 	if(dir !=gamemap::location::NDIRECTIONS) {
 		directions.push_back(dir);
