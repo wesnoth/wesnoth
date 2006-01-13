@@ -24,38 +24,28 @@
 #include <vector>
 
 //a class to describe a unit's animation sequence
-class unit_animation
+struct unit_frame {
+	unit_frame() : xoffset(0), halo_x(0), halo_y(0) {}
+	explicit unit_frame(const std::string& str, const std::string & diag ="") : xoffset(0), image(str),image_diagonal(diag),
+									       halo_x(0), halo_y(0) {};
+	explicit unit_frame(const config& cfg);
+
+	// int start, end;
+	int xoffset;
+	std::string image;
+	std::string image_diagonal;
+	std::string halo;
+	int halo_x, halo_y;
+};
+class unit_animation:public animated<unit_frame> 
 {
 public:
-	struct frame {
-		frame() : xoffset(0), halo_x(0), halo_y(0) {}
-		explicit frame(const std::string& str, const std::string & diag ="") : xoffset(0), image(str),image_diagonal(diag),
-		                                         halo_x(0), halo_y(0) {};
-		explicit frame(const config& cfg);
 
-		// int start, end;
-		int xoffset;
-		std::string image;
-		std::string image_diagonal;
-		std::string halo;
-		int halo_x, halo_y;
-	};
-
-	unit_animation();
+	unit_animation(){};
 	explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
 	explicit unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal = "");
 
 	enum FRAME_DIRECTION { VERTICAL, DIAGONAL };
-
-	void start_animation(int start_frame,  int acceleration);
-	void update_current_frames();
-	bool animation_finished() const;
-	const frame& get_current_frame() const;
-	const frame& get_first_frame() const;
-	const frame& get_last_frame() const;
-	int get_animation_time() const;
-	int get_first_frame_time() const;
-	int get_last_frame_time() const;
 
 	struct sfx {
 		int time;
@@ -65,8 +55,6 @@ public:
 	const std::vector<sfx>& sound_effects() const;
 
 private:
-
-	animated<frame> unit_frames_;
 
 	std::vector<sfx> sfx_;
 };

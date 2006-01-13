@@ -1468,12 +1468,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			if(anim_ptr != NULL) {
 				unit_animation anim(*anim_ptr);
 
-				anim.start_animation(anim.get_first_frame_time(),screen->turbo() ? 5:1);
-				anim.update_current_frames();
+				anim.start_animation(anim.get_first_frame_time(),1,screen->turbo() ? 5:1);
+				anim.update_current_frame();
 
 				while(!anim.animation_finished()) {
 
-					const unit_animation::frame& frame = anim.get_current_frame();
+					const unit_frame& frame = anim.get_current_frame();
 
 					const surface surf(image::get_image(frame.image));
 					if(surf.get() != NULL) {
@@ -1484,7 +1484,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 					SDL_Delay(10);
 
-					anim.update_current_frames();
+					anim.update_current_frame();
 				}
 				unit_image = image::get_image(u->second.image());
 				screen->draw_tile(u->first.x,u->first.y,unit_image);

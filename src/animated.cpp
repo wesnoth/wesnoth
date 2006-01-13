@@ -283,4 +283,4 @@ int animated<T,T_void_value>::get_last_frame_time() const
 
 template class animated< image::locator >;
 template class animated< std::string >;
-template class animated< unit_animation::frame >;
+template class animated< unit_frame >;

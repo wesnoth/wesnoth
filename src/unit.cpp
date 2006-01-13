@@ -1041,14 +1041,14 @@ void unit::set_defending(bool hits, std::string range, int start_frame, int acce
 	const unit_animation* const anim = get_animation();
 	if(anim != NULL) {
 		anim_ = *anim;
-		anim_.start_animation(start_frame,acceleration);
+		anim_.start_animation(start_frame,1,acceleration);
 	}
 }
 
 void unit::update_defending_frame()
 {
 	if(get_animation()) {
-		anim_.update_current_frames();
+		anim_.update_current_frame();
 	}
 }
 

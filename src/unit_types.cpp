@@ -26,7 +26,7 @@
 #include <cstdlib>
 #include <iostream>
 
-unit_animation::frame::frame(const config& cfg)
+unit_frame::unit_frame(const config& cfg)
 {
 	xoffset = atoi(cfg["xoffset"].c_str());
 	image = cfg["image"];
@@ -36,20 +36,16 @@ unit_animation::frame::frame(const config& cfg)
 	halo_y = atoi(cfg["halo_y"].c_str());
 }
 
-unit_animation::unit_animation()
-{}
-
 unit_animation::unit_animation(const config& cfg,const std::string frame_string )
 {
 	config::const_child_itors range = cfg.child_range(frame_string);
 
 	int last_end = INT_MIN;
 	for(; range.first != range.second; ++range.first) {
-		unit_frames_.add_frame(atoi((**range.first)["begin"].c_str()), frame(**range.first));
+		add_frame(atoi((**range.first)["begin"].c_str()), unit_frame(**range.first));
 		last_end = maximum<int>(atoi((**range.first)["end"].c_str()), last_end);
 	}
-	//unit_frames_.set_animation_end(last_end);
-	unit_frames_.add_frame(last_end);
+	add_frame(last_end);
 
 	range = cfg.child_range("sound");
 	for(; range.first != range.second; ++range.first){
@@ -69,54 +65,10 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 
 unit_animation::unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal)
 {
-	unit_frames_.add_frame(begin_at, frame(image,image_diagonal));
-	unit_frames_.add_frame(end_at);
+	add_frame(begin_at, unit_frame(image,image_diagonal));
+	add_frame(end_at);
 }
 
-int unit_animation::get_first_frame_time() const
-{
-	return unit_frames_.get_first_frame_time();
-}
-
-int unit_animation::get_last_frame_time() const
-{
-	return unit_frames_.get_last_frame_time();
-}
-
-void unit_animation::start_animation(int start_frame, int acceleration)
-{
-		unit_frames_.start_animation(start_frame, 1, acceleration);
-}
-
-void unit_animation::update_current_frames()
-{
-	unit_frames_.update_current_frame();
-}
-
-bool unit_animation::animation_finished() const
-{
-	return unit_frames_.animation_finished() ;
-}
-
-const unit_animation::frame& unit_animation::get_current_frame() const
-{
-		return unit_frames_.get_current_frame();
-}
-
-const unit_animation::frame& unit_animation::get_first_frame() const
-{
-		return unit_frames_.get_first_frame();
-}
-
-const unit_animation::frame& unit_animation::get_last_frame() const
-{
-		return unit_frames_.get_last_frame();
-}
-
-int unit_animation::get_animation_time() const
-{
-	return unit_frames_.get_animation_time();
-}
 
 const std::vector<unit_animation::sfx>& unit_animation::sound_effects() const
 {
