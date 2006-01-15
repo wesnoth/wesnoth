@@ -98,7 +98,7 @@ std::string recruit_unit(const gamemap& map, int side,
 	units_map::const_iterator u = units.begin();
 
 	for(; u != units.end(); ++u) {
-		if(u->second.can_recruit() && u->second.side() == side) {
+		if(u->second.can_recruit() && (int)u->second.side() == side) {
 			break;
 		}
 	}
@@ -215,7 +215,7 @@ gamemap::location under_leadership(const std::map<gamemap::location,unit>& units
 	gamemap::location best_loc;
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
-		if(it != units.end() && it->second.side() == side &&
+		if(it != units.end() && (int)it->second.side() == side &&
 			it->second.type().is_leader() &&
 			it->second.incapacitated() == false) {
 			if(bonus) {
@@ -1138,7 +1138,7 @@ bool get_village(const gamemap::location& loc, std::vector<team>& teams,
 unit_map::iterator find_leader(unit_map& units, int side)
 {
 	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() == side && i->second.can_recruit())
+		if((int)i->second.side() == side && i->second.can_recruit())
 			return i;
 	}
 
@@ -1148,7 +1148,7 @@ unit_map::iterator find_leader(unit_map& units, int side)
 unit_map::const_iterator find_leader(const unit_map& units, int side)
 {
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() == side && i->second.can_recruit())
+		if((int)i->second.side() == side && i->second.can_recruit())
 			return i;
 	}
 
@@ -1177,7 +1177,7 @@ bool will_heal(const gamemap::location& loc, int side, const std::vector<team>& 
 		return false;
 	}
 
-	if(healer.side() == side) {
+	if((int)healer.side() == side) {
 		return true;
 	}
 
@@ -1203,7 +1203,7 @@ bool will_heal(const gamemap::location& loc, int side, const std::vector<team>& 
 
 			//the healer won't heal an ally if there is a wounded unit on the same
 			//side next to her
-			if(unit_side == healer.side())
+			if(unit_side == (int)healer.side())
 				return false;
 
 			//choose an arbitrary order for healing
@@ -1237,7 +1237,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 
 		//the unit heals if it's on this side, and it's on a village or
 		//it has regeneration, and it is wounded
-		if(i->second.side() == side) {
+		if((int)i->second.side() == side) {
 			if(i->second.hitpoints() < i->second.max_hitpoints() || i->second.poisoned()){
 				if(map.gives_healing(i->first)) {
 					amount_healed = game_config::cure_amount;
@@ -1285,7 +1285,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				                                   units.find(adjacent[j]);
 				if(adj != units.end() &&
 				   adj->second.hitpoints() < adj->second.max_hitpoints() &&
-				   adj->second.side() == side &&
+				   (int)adj->second.side() == side &&
 				   healed_units[adj->first] < max_healing[adj->first] &&
 				   adj->second.healable()) {
 					++nhealed;
@@ -1319,7 +1319,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 	//are no longer poisoned
 	for(i = units.begin(); i != units.end(); ++i) {
 
-		if(i->second.side() == side && i->second.poisoned() && i->second.healable()) {
+		if((int)i->second.side() == side && i->second.poisoned() && i->second.healable()) {
 			const int damage = minimum<int>(game_config::cure_amount,
 			                                i->second.hitpoints()-1);
 
@@ -1330,7 +1330,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 	}
 
 	for(i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() == side && i->second.healable()) {
+		if((int)i->second.side() == side && i->second.healable()) {
 			if(i->second.hitpoints() < i->second.max_hitpoints() ||
 					i->second.poisoned()){
 				if(i->second.is_resting()) {
@@ -1725,7 +1725,7 @@ void recalculate_fog(const gamemap& map, const gamestatus& status,
 	teams[team].refog();
 
 	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() == team+1) {
+		if((int)i->second.side() == team+1) {
 			const unit_movement_resetter move_resetter(i->second);
 
 			clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
@@ -1745,7 +1745,7 @@ bool clear_shroud(display& disp, const gamestatus& status,
 
 	unit_map::iterator i;
 	for(i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() == team+1) {
+		if((int)i->second.side() == team+1) {
 			const unit_movement_resetter move_resetter(i->second);
 
 			result |= clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
