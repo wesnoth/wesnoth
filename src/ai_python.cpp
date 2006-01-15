@@ -117,7 +117,7 @@ PyObject* python_ai::unittype_advances_to( wesnoth_unittype* type, PyObject* arg
 
 	PyObject* list = PyList_New(type->unit_type_->advances_to().size());
 	int r;
-	for (int advance = 0; advance < type->unit_type_->advances_to().size(); advance++)
+	for (size_t advance = 0; advance < type->unit_type_->advances_to().size(); advance++)
 	{
 		std::map<std::string,unit_type>::const_iterator t = running_instance->get_info().gameinfo.unit_types.find(type->unit_type_->advances_to()[advance]);
 		wassert(t != running_instance->get_info().gameinfo.unit_types.end());
@@ -381,7 +381,7 @@ static PyObject* wrapper_unit_attacks( wesnoth_unit* unit, PyObject* args )
 	if (!running_instance->is_unit_valid(unit->unit_))
 		return NULL;
 	PyObject* list = PyList_New(unit->unit_->attacks().size());
-	for ( int attack = 0; attack < unit->unit_->attacks().size(); attack++)
+	for ( size_t attack = 0; attack < unit->unit_->attacks().size(); attack++)
 		PyList_SetItem(list,attack,wrap_attacktype(unit->unit_->attacks()[attack]));
 	return (PyObject*)list;
 }
@@ -924,7 +924,7 @@ static PyObject* wrap_move_map(const ai_interface::move_map& wrap)
 	return dict;
 }
 
-PyObject* python_ai::wrapper_log_message(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_log_message(PyObject* /*self*/, PyObject* args)
 {
 	const char* msg;
     if ( !PyArg_ParseTuple( args, "s", &msg ) )
@@ -934,7 +934,7 @@ PyObject* python_ai::wrapper_log_message(PyObject* self, PyObject* args)
 	return Py_None;
 }
 
-PyObject* python_ai::wrapper_get_units(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_get_units(PyObject* /*self*/, PyObject* args)
 {
     if ( !PyArg_ParseTuple( args, "" ) )
         return NULL;
@@ -962,7 +962,7 @@ PyObject* python_ai::wrapper_get_units(PyObject* self, PyObject* args)
 	return dict;
 }
 
-PyObject* python_ai::wrapper_get_location(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_get_location(PyObject* /*self*/, PyObject* args)
 {
 	int x, y;
     if ( !PyArg_ParseTuple( args, "ii", &x, &y ) )
@@ -971,7 +971,7 @@ PyObject* python_ai::wrapper_get_location(PyObject* self, PyObject* args)
 	return wrap_location(gamemap::location(x,y));
 }
 
-PyObject* python_ai::wrapper_get_map(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_get_map(PyObject* /*self*/, PyObject* args)
 {
     if ( !PyArg_ParseTuple( args, "" ) )
         return NULL;
@@ -980,7 +980,7 @@ PyObject* python_ai::wrapper_get_map(PyObject* self, PyObject* args)
 	return (PyObject*)map;
 }
 
-PyObject* python_ai::wrapper_get_teams(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_get_teams(PyObject* /*self*/, PyObject* args)
 {
     if ( !PyArg_ParseTuple( args, "" ) )
         return NULL;
@@ -988,7 +988,7 @@ PyObject* python_ai::wrapper_get_teams(PyObject* self, PyObject* args)
 	PyObject* list = PyList_New(running_instance->get_info().teams.size());
 	wesnoth_team* the_team;
 
-	for (int team = 0; team < running_instance->get_info().teams.size(); team++)
+	for (size_t team = 0; team < running_instance->get_info().teams.size(); team++)
 	{
 		the_team = (wesnoth_team*)PyObject_NEW(wesnoth_team, &wesnoth_team_type);
 		the_team->team_ = &running_instance->get_info().teams[team];
@@ -998,7 +998,7 @@ PyObject* python_ai::wrapper_get_teams(PyObject* self, PyObject* args)
 	return list;
 }
 
-PyObject* python_ai::wrapper_get_current_team(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_get_current_team(PyObject* /*self*/, PyObject* /*args*/)
 {
 	wesnoth_team* the_team;
 	the_team = (wesnoth_team*)PyObject_NEW(wesnoth_team, &wesnoth_team_type);
@@ -1006,27 +1006,27 @@ PyObject* python_ai::wrapper_get_current_team(PyObject* self, PyObject* args)
 	return (PyObject*)the_team;
 }
 
-PyObject* python_ai::wrapper_get_src_dst(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_get_src_dst(PyObject* /*self*/, PyObject* /*args*/)
 {
 	return wrap_move_map(running_instance->src_dst_);
 }
 
-PyObject* python_ai::wrapper_get_dst_src(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_get_dst_src(PyObject* /*self*/, PyObject* /*args*/)
 {
 	return wrap_move_map(running_instance->dst_src_);
 }
 
-PyObject* python_ai::wrapper_get_enemy_src_dst(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_get_enemy_src_dst(PyObject* /*self*/, PyObject* /*args*/)
 {
 	return wrap_move_map(running_instance->enemy_src_dst_);
 }
 
-PyObject* python_ai::wrapper_get_enemy_dst_src(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_get_enemy_dst_src(PyObject* /*self*/, PyObject* /*args*/)
 {
 	return wrap_move_map(running_instance->enemy_dst_src_);
 }
 
-PyObject* python_ai::wrapper_move_unit(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
 {
 	wesnoth_location* from;
 	wesnoth_location* to;
@@ -1039,7 +1039,7 @@ PyObject* python_ai::wrapper_move_unit(PyObject* self, PyObject* args)
 	return loc;
 }
 
-PyObject* python_ai::wrapper_attack_unit(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 {
 	wesnoth_location* from;
 	wesnoth_location* to;
@@ -1055,7 +1055,7 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* self, PyObject* args)
 	return Py_None;
 }
 
-PyObject* python_ai::wrapper_get_adjacent_tiles(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_get_adjacent_tiles(PyObject* /*self*/, PyObject* args)
 {
 	wesnoth_location* where;
 	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &where ) )
@@ -1069,7 +1069,7 @@ PyObject* python_ai::wrapper_get_adjacent_tiles(PyObject* self, PyObject* args)
 	return list;
 }
 
-PyObject* python_ai::wrapper_recruit_unit(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_recruit_unit(PyObject* /*self*/, PyObject* args)
 {
 	wesnoth_location* where;
 	const char* name;
@@ -1078,7 +1078,7 @@ PyObject* python_ai::wrapper_recruit_unit(PyObject* self, PyObject* args)
 	return Py_BuildValue("i", running_instance->recruit(name,*where->location_) == true ? 1 : 0);
 }
 
-PyObject* python_ai::wrapper_get_gamestatus(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_get_gamestatus(PyObject* /*self*/, PyObject* args)
 {
 	if ( !PyArg_ParseTuple( args, "" ) )
 		return NULL;
@@ -1107,13 +1107,13 @@ PyObject* python_ai::wrapper_unit_find_path( wesnoth_unit* unit, PyObject* args 
 	const paths::route& route = a_star_search(*from->location_, *to->location_, percent, &calc, running_instance->get_info().map.x(), running_instance->get_info().map.y());
 
 	PyObject* steps = PyList_New(route.steps.size());
-	for (int step = 0; step < route.steps.size(); step++)
+	for (size_t step = 0; step < route.steps.size(); step++)
 		PyList_SetItem(steps,step,wrap_location(route.steps[step]));
 
 	return steps;
 }
 
-PyObject* python_ai::wrapper_script_data(PyObject* self, PyObject* args)
+PyObject* python_ai::wrapper_script_data(PyObject* /*self*/, PyObject* args)
 {
     PyObject* data;
 
