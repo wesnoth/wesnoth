@@ -135,7 +135,7 @@ SOCKET_STATE send_buf(TCPsocket sock, std::vector<char>& buf) {
 			{
 
 #ifdef USE_POLL
-				struct pollfd fd = { ((_TCPsocket*)sock)->channel, POLLOUT };
+				struct pollfd fd = { ((_TCPsocket*)sock)->channel, POLLOUT, 0 };
 				int poll_res;
 				do {
 					poll_res = poll(&fd, 1, 15000);
@@ -224,7 +224,7 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 			{
 
 #ifdef USE_POLL
-				struct pollfd fd = { ((_TCPsocket*)sock)->channel, POLLIN };
+				struct pollfd fd = { ((_TCPsocket*)sock)->channel, POLLIN, 0 };
 				int poll_res;
 				do {
 					poll_res = poll(&fd, 1, 15000);
