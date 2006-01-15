@@ -294,7 +294,7 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 	}
 }
 
-void ui::process_network_data(const config& data, const network::connection sock)
+void ui::process_network_data(const config& data, const network::connection /*sock*/)
 {
 	if(data.child("error")) {
 		throw network::error((*data.child("error"))["message"]);
@@ -329,7 +329,7 @@ void ui::process_network_error(network::error& error)
 	throw error;
 }
 
-void ui::process_network_connection(const network::connection sock)
+void ui::process_network_connection(const network::connection /*sock*/)
 {
 	LOG_NW << "Caught network connection.\n";
 }
@@ -342,7 +342,7 @@ void ui::hide_children(bool hide)
 	users_menu_.hide(hide);
 }
 
-void ui::layout_children(const SDL_Rect& rect)
+void ui::layout_children(const SDL_Rect& /*rect*/)
 {
 	title_.set_location(xscale(12) + 8, yscale(38) + 8);
 	users_menu_.set_width(xscale(159));
