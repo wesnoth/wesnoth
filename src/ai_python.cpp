@@ -286,6 +286,22 @@ static PyTypeObject wesnoth_attacktype_type = {
 	attacktype_methods,             /* tp_methods */
 	0,                         /* tp_members */
 	attacktype_getseters,          /* tp_getset */
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
 };
 
 static PyObject* wrap_attacktype(const attack_type& type)
@@ -429,6 +445,22 @@ static PyTypeObject wesnoth_unit_type = {
 	unit_methods,             /* tp_methods */
 	0,                         /* tp_members */
 	unit_getseters,          /* tp_getset */
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
 };
 
 typedef struct {
@@ -510,6 +542,22 @@ static PyTypeObject wesnoth_location_type = {
 	location_methods,             /* tp_methods */
 	0,                         /* tp_members */
 	location_getseters,          /* tp_getset */
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
 };
 
 static PyObject* wrapper_location_adjacent_to( wesnoth_location* left, PyObject* args )
@@ -613,6 +661,22 @@ static PyTypeObject wesnoth_gamemap_type = {
 	gamemap_methods,             /* tp_methods */
 	0,                         /* tp_members */
 	gamemap_getseters,          /* tp_getset */
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
 };
 
 static PyObject* wrapper_team_name(wesnoth_team* team, void* closure)
@@ -705,6 +769,22 @@ static PyTypeObject wesnoth_team_type = {
 	team_methods,             /* tp_methods */
 	0,                         /* tp_members */
 	team_getseters,          /* tp_getset */
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
 };
 
 static PyObject* wrapper_unit_movement_cost( wesnoth_unit* unit, PyObject* args )
@@ -803,6 +883,22 @@ static PyTypeObject wesnoth_gamestatus_type = {
 	gamestatus_methods,             /* tp_methods */
 	0,                         /* tp_members */
 	gamestatus_getseters,          /* tp_getset */
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
 };
 
 
