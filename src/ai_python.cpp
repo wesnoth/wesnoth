@@ -126,8 +126,8 @@ PyObject* python_ai::unittype_advances_to( wesnoth_unittype* type, PyObject* arg
 }
 
 static PyMethodDef unittype_methods[] = {
-	{ "advances_to",	(PyCFunction)python_ai::unittype_advances_to,	METH_VARARGS},
-	{ NULL, NULL, 0 }
+	{ "advances_to",	(PyCFunction)python_ai::unittype_advances_to,	METH_VARARGS, NULL }, 
+	{ NULL, NULL, 0, NULL }
 };
 
 static int unittype_internal_compare(wesnoth_unittype* left, wesnoth_unittype* right)
@@ -167,6 +167,22 @@ static PyTypeObject wesnoth_unittype_type = {
 	unittype_methods,						/* tp_methods */
 	0,										/* tp_members */
 	unittype_getseters,						/* tp_getset */
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
 };
 
 static PyObject* wrap_unittype(const unit_type& type)
@@ -235,7 +251,7 @@ static PyGetSetDef attacktype_getseters[] = {
 };
 
 static PyMethodDef attacktype_methods[] = {
-	{ NULL, NULL, 0 }
+	{ NULL, NULL, 0, NULL }
 };
 
 static PyTypeObject wesnoth_attacktype_type = {
@@ -367,13 +383,13 @@ static PyObject* wrapper_unit_damage_against( wesnoth_unit* unit, PyObject* args
 }
 
 static PyMethodDef unit_methods[] = {
-	{ "type",				(PyCFunction)wrapper_unit_type,				METH_VARARGS},
-	{ "attacks",			(PyCFunction)wrapper_unit_attacks,			METH_VARARGS},
-	{ "movement_cost",		(PyCFunction)wrapper_unit_movement_cost,	METH_VARARGS},
-	{ "defense_modifier",	(PyCFunction)wrapper_unit_defense_modifier,	METH_VARARGS},
-	{ "damage_against",		(PyCFunction)wrapper_unit_damage_against,	METH_VARARGS},
-	{ "find_path",			(PyCFunction)python_ai::wrapper_unit_find_path,		METH_VARARGS},
-	{ NULL,					NULL,										0 }
+	{ "type",				(PyCFunction)wrapper_unit_type,				METH_VARARGS, NULL},
+	{ "attacks",			(PyCFunction)wrapper_unit_attacks,			METH_VARARGS, NULL},
+	{ "movement_cost",		(PyCFunction)wrapper_unit_movement_cost,	METH_VARARGS, NULL},
+	{ "defense_modifier",	(PyCFunction)wrapper_unit_defense_modifier,	METH_VARARGS, NULL},
+	{ "damage_against",		(PyCFunction)wrapper_unit_damage_against,	METH_VARARGS, NULL},
+	{ "find_path",			(PyCFunction)python_ai::wrapper_unit_find_path,		METH_VARARGS, NULL},
+	{ NULL,					NULL,										0, NULL }
 };
 
 static int unit_internal_compare(wesnoth_unit* left, wesnoth_unit* right)
@@ -457,9 +473,9 @@ static PyGetSetDef location_getseters[] = {
 static PyObject* wrapper_location_adjacent_to( wesnoth_location* left, PyObject* args );
 static PyObject* wrapper_location_distance_to( wesnoth_location* left, PyObject* args );
 static PyMethodDef location_methods[] = {
-	{ "adjacent_to",         (PyCFunction)wrapper_location_adjacent_to,       METH_VARARGS},
-	{ "distance_to",         (PyCFunction)wrapper_location_distance_to,       METH_VARARGS},
-    { NULL, NULL, 0 }
+	{ "adjacent_to",         (PyCFunction)wrapper_location_adjacent_to,       METH_VARARGS, NULL},
+	{ "distance_to",         (PyCFunction)wrapper_location_distance_to,       METH_VARARGS, NULL},
+    { NULL, NULL, 0, NULL }
 };
 
 static PyTypeObject wesnoth_location_type = {
@@ -559,10 +575,10 @@ static PyObject* wrapper_getmap_is_castle( wesnoth_gamemap* map, PyObject* args 
 }
 
 static PyMethodDef gamemap_methods[] = {
-	{ "is_village",	(PyCFunction)wrapper_getmap_is_village,	METH_VARARGS},
-	{ "is_keep",	(PyCFunction)wrapper_getmap_is_keep,	METH_VARARGS},
-	{ "is_castle",	(PyCFunction)wrapper_getmap_is_castle,	METH_VARARGS},
-	{ NULL, NULL, 0 }
+	{ "is_village",	(PyCFunction)wrapper_getmap_is_village,	METH_VARARGS, NULL},
+	{ "is_keep",	(PyCFunction)wrapper_getmap_is_keep,	METH_VARARGS, NULL},
+	{ "is_castle",	(PyCFunction)wrapper_getmap_is_castle,	METH_VARARGS, NULL},
+	{ NULL, NULL, 0, NULL }
 };
 
 static PyTypeObject wesnoth_gamemap_type = {
@@ -645,9 +661,9 @@ PyObject* python_ai::wrapper_team_recruits( wesnoth_team* team, PyObject* args )
 }
 
 static PyMethodDef team_methods[] = {
-	{ "owns_village",         (PyCFunction)wrapper_team_owns_village,       METH_VARARGS},
-	{ "recruits",         (PyCFunction)python_ai::wrapper_team_recruits,       METH_VARARGS},
-    { NULL, NULL, 0 }
+	{ "owns_village",         (PyCFunction)wrapper_team_owns_village,       METH_VARARGS, NULL},
+	{ "recruits",         (PyCFunction)python_ai::wrapper_team_recruits,       METH_VARARGS, NULL},
+    { NULL, NULL, 0, NULL }
 };
 
 static PyGetSetDef team_getseters[] = {
@@ -724,7 +740,7 @@ typedef struct {
 } wesnoth_gamestatus;
 
 static PyMethodDef gamestatus_methods[] = {
-	{ NULL,		NULL,	0 }
+	{ NULL,		NULL,	0, NULL }
 };
 
 static PyObject* wrapper_gamestatus_turn(wesnoth_gamestatus* status, void* closure)
@@ -1001,20 +1017,20 @@ PyObject* python_ai::wrapper_unit_find_path( wesnoth_unit* unit, PyObject* args 
 }
 
 static PyMethodDef wesnoth_python_methods[] = {
-	{ "log_message",				python_ai::wrapper_log_message,			METH_VARARGS},
-	{ "get_units",					python_ai::wrapper_get_units,			METH_VARARGS},
-	{ "get_location",				python_ai::wrapper_get_location,		METH_VARARGS},
-	{ "get_map",					python_ai::wrapper_get_map,				METH_VARARGS},
-	{ "get_teams",					python_ai::wrapper_get_teams,			METH_VARARGS},
-	{ "get_current_team",			python_ai::wrapper_get_current_team,	METH_VARARGS},
-	{ "get_destinations_by_unit",	python_ai::wrapper_get_src_dst,			METH_VARARGS},
-	{ "get_units_by_destination",	python_ai::wrapper_get_dst_src,			METH_VARARGS},
-	{ "move_unit",					python_ai::wrapper_move_unit,			METH_VARARGS},
-	{ "attack_unit",				python_ai::wrapper_attack_unit,			METH_VARARGS},
-	{ "get_adjacent_tiles",			python_ai::wrapper_get_adjacent_tiles,	METH_VARARGS},
-	{ "recruit_unit",				python_ai::wrapper_recruit_unit,		METH_VARARGS},
-	{ "get_gamestatus",				python_ai::wrapper_get_gamestatus,		METH_VARARGS},
-	{ NULL,							NULL,									0 }
+	{ "log_message",				python_ai::wrapper_log_message,			METH_VARARGS, NULL},
+	{ "get_units",					python_ai::wrapper_get_units,			METH_VARARGS, NULL},
+	{ "get_location",				python_ai::wrapper_get_location,		METH_VARARGS, NULL},
+	{ "get_map",					python_ai::wrapper_get_map,			METH_VARARGS, NULL},
+	{ "get_teams",					python_ai::wrapper_get_teams,			METH_VARARGS, NULL},
+	{ "get_current_team",				python_ai::wrapper_get_current_team,		METH_VARARGS, NULL},
+	{ "get_destinations_by_unit",			python_ai::wrapper_get_src_dst,			METH_VARARGS, NULL},
+	{ "get_units_by_destination",			python_ai::wrapper_get_dst_src,			METH_VARARGS, NULL},
+	{ "move_unit",					python_ai::wrapper_move_unit,			METH_VARARGS, NULL},
+	{ "attack_unit",				python_ai::wrapper_attack_unit,			METH_VARARGS, NULL},
+	{ "get_adjacent_tiles",				python_ai::wrapper_get_adjacent_tiles,		METH_VARARGS, NULL},
+	{ "recruit_unit",				python_ai::wrapper_recruit_unit,		METH_VARARGS, NULL},
+	{ "get_gamestatus",				python_ai::wrapper_get_gamestatus,		METH_VARARGS, NULL},
+	{ NULL,						NULL,						0, NULL}
 };
 
 
