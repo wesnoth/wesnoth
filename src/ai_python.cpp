@@ -44,6 +44,7 @@ Additionally, useful utility functions such as those found in pathutils.hpp shou
 static python_ai* running_instance;
 bool python_ai::init_ = false;
 PyObject* python_ai::python_error_ = NULL;
+PyObject* python_ai::script_data_ = NULL;
 
 void python_ai::set_error(const char *fmt, ...)
 {
@@ -712,10 +713,10 @@ PyObject* python_ai::wrapper_team_recruits( wesnoth_team* team, PyObject* args )
 	if ( !PyArg_ParseTuple( args, "" ) )
 		return NULL;
 
-	PyObject* list = PyList_New(running_instance->current_team().recruits().size());
+	PyObject* list = PyList_New(team->team_->recruits().size());
 	int r;
 	int idx = 0;
-	for (std::set<std::string>::const_iterator recruit = running_instance->current_team().recruits().begin(); recruit != running_instance->current_team().recruits().end(); ++recruit)
+	for (std::set<std::string>::const_iterator recruit = team->team_->recruits().begin(); recruit != team->team_->recruits().end(); ++recruit)
 	{
 		std::map<std::string,unit_type>::const_iterator t = running_instance->get_info().gameinfo.unit_types.find(*recruit);
 		wassert(t != running_instance->get_info().gameinfo.unit_types.end());
@@ -1112,6 +1113,24 @@ PyObject* python_ai::wrapper_unit_find_path( wesnoth_unit* unit, PyObject* args 
 	return steps;
 }
 
+PyObject* python_ai::wrapper_script_data(PyObject* self, PyObject* args)
+{
+    PyObject* data;
+
+    if (!PyArg_ParseTuple(args, "", NULL))
+        return NULL;
+
+    data = PyDict_GetItemString(python_ai::script_data_, running_instance->current_team().ai_parameters()["python_script"].c_str());
+    if (!data) {
+        data = PyDict_New();
+        PyDict_SetItemString(python_ai::script_data_, running_instance->current_team().ai_parameters()["python_script"].c_str(), data);
+        Py_DECREF(data);
+    }
+    Py_INCREF(data);
+    return data;
+}
+
+
 static PyMethodDef wesnoth_python_methods[] = {
 	{ "log_message",				python_ai::wrapper_log_message,			METH_VARARGS, NULL},
 	{ "get_units",					python_ai::wrapper_get_units,			METH_VARARGS, NULL},
@@ -1126,6 +1145,7 @@ static PyMethodDef wesnoth_python_methods[] = {
 	{ "get_adjacent_tiles",				python_ai::wrapper_get_adjacent_tiles,		METH_VARARGS, NULL},
 	{ "recruit_unit",				python_ai::wrapper_recruit_unit,		METH_VARARGS, NULL},
 	{ "get_gamestatus",				python_ai::wrapper_get_gamestatus,		METH_VARARGS, NULL},
+	{ "script_data",				python_ai::wrapper_script_data,			METH_VARARGS, NULL},
 	{ NULL,						NULL,						0, NULL}
 };
 
@@ -1151,6 +1171,7 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
 		Py_Register(wesnoth_gamestatus_type, "gamestatus");
 		python_error_ = PyErr_NewException("wesnoth.error",NULL,NULL);
 		PyDict_SetItemString(PyModule_GetDict(module),"error",python_error_);
+		script_data_ = PyDict_New();
 		init_ = true;
 	}
 	calculate_possible_moves(possible_moves_,src_dst_,dst_src_,false);
@@ -1168,9 +1189,15 @@ void python_ai::play_turn()
 {
 	std::string script = current_team().ai_parameters()["python_script"];
 	PyObject* file = PyFile_FromString((char*)script.c_str(),"rt");
-	PyRun_SimpleFile(PyFile_AsFile(file),(char*)script.c_str());
-	if (PyErr_Occurred())
-		PyErr_Print();
+
+    PyObject* dict = PyDict_New();
+    PyDict_SetItemString(dict, "__builtins__", PyEval_GetBuiltins());
+    PyObject* ret = PyRun_File(PyFile_AsFile(file), script.c_str(), Py_file_input, dict, dict);
+    if (PyErr_Occurred()) {
+        PyErr_Print();
+    }
+    Py_XDECREF(ret);
+    Py_DECREF(dict);
 	Py_DECREF(file);
 }
 
