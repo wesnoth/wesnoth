@@ -90,7 +90,7 @@ bool gamemap::is_keep(const gamemap::location& loc) const
 	return on_board(loc) && is_keep(get_terrain(loc));
 }
 
-bool gamemap::filter_location(const gamemap::location &loc,const config &con) const
+bool gamemap::filter_location(const gamemap::location &loc,const config & /*con*/) const
 { //need to fill this in
   return on_board(loc);
 }
