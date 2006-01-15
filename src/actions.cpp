@@ -322,7 +322,10 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	static const std::string charge_string("charge");
 	const bool charge = res.attacker_special == charge_string;
-	const bool steadfast = d->second.type().steadfast();
+	bool steadfast = d->second.type().steadfast();
+	if (steadfast) {
+		steadfast = d->second.type().steadfast_filter().matches_filter(map.underlying_terrain(defender_terrain), state.get_time_of_day().lawful_bonus);
+	}
 	const bool steadfast_percent = d->second.type().steadfast_ispercent();
 	const int steadfast_bonus = d->second.type().steadfast_bonus();
 	const int steadfast_max = d->second.type().steadfast_max();
@@ -423,12 +426,12 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			strings->defend_calculations.push_back(str_base.str());
 		}
 
-		const int tod_modifier = combat_modifier(state,units,d->first,d->second.type().alignment());
+		const int tod_modifier = combat_modifier(state,units,d->first,d->second.type().alignment(),map);
 		bonus += tod_modifier;
 
 		if (strings && tod_modifier != 0) {
 			std::stringstream str_mod;
-			const time_of_day& tod = timeofday_at(state,units,d->first);
+			const time_of_day& tod = timeofday_at(state,units,d->first,map);
 			str_mod << tod.name << EMPTY_COLUMN << (tod_modifier > 0 ? "+" : "") << tod_modifier << '%';
 			strings->defend_calculations.push_back(str_mod.str());
 		}
@@ -551,13 +554,13 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		strings->attack_calculations.push_back(str_base.str());
 	}
 
-	const int tod_modifier = combat_modifier(state,units,a->first,a->second.type().alignment());
+	const int tod_modifier = combat_modifier(state,units,a->first,a->second.type().alignment(),map);
 
 	bonus += tod_modifier;
 
 	if (strings && tod_modifier != 0) {
 		std::stringstream str_mod;
-		const time_of_day& tod = timeofday_at(state,units,a->first);
+		const time_of_day& tod = timeofday_at(state,units,a->first,map);
 		str_mod << tod.name << EMPTY_COLUMN << (tod_modifier > 0 ? "+" : "") << tod_modifier << '%';
 		strings->attack_calculations.push_back(str_mod.str());
 	}
@@ -706,10 +709,8 @@ void attack(display& gui, const gamemap& map,
 	d->second.set_resting(false);
 
 	//if the attacker was invisible, she isn't anymore!
-	static const std::string forest_invisible("ambush");
-	a->second.remove_flag(forest_invisible);
-	static const std::string night_invisible("nightstalk");
-	a->second.remove_flag(night_invisible);
+	static const std::string hides("hides");
+	a->second.remove_flag(hides);
 
 	battle_stats stats = evaluate_battle_stats(map, teams, attacker,
                                                    defender, attack_with,
@@ -1594,7 +1595,7 @@ void check_victory(std::map<gamemap::location,unit>& units,
 	}
 }
 
-const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,const gamemap::location& loc)
+const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,const gamemap::location& loc, const gamemap& map)
 {
 	int lighten = 0;
 	int darken = 0;
@@ -1608,8 +1609,10 @@ const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,c
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if(itor != units.end() &&
 			   itor->second.type().illuminates() && itor->second.incapacitated() == false) {
-				lighten = maximum<int>(itor->second.type().illuminates() , lighten);
-				darken = minimum<int>(itor->second.type().illuminates() , darken);
+			   	if (itor->second.type().illuminates_filter().matches_filter(map.underlying_terrain(map[loc.x][loc.y]), status.get_time_of_day().lawful_bonus)) {
+					lighten = maximum<int>(itor->second.type().illuminates() , lighten);
+					darken = minimum<int>(itor->second.type().illuminates() , darken);
+				}
 			}
 		}
 	}
@@ -1618,11 +1621,12 @@ const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,c
 }
 
 int combat_modifier(const gamestatus& status,
-                    const std::map<gamemap::location,unit>& units,
-					const gamemap::location& loc,
-					unit_type::ALIGNMENT alignment)
+			const std::map<gamemap::location,unit>& units,
+			const gamemap::location& loc,
+			 unit_type::ALIGNMENT alignment,
+			const gamemap& map)
 {
-	const time_of_day& tod = timeofday_at(status,units,loc);
+	const time_of_day& tod = timeofday_at(status,units,loc,map);
 
 	int bonus = tod.lawful_bonus;
 

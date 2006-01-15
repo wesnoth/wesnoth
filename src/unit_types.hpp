@@ -156,6 +156,21 @@ private:
 
 typedef std::map<std::string,unit_movement_type> movement_type_map;
 
+class ability_filter
+{
+public:
+	ability_filter();
+	bool matches_filter(const std::string& terrain, int lawful_bonus) const;
+	void add_filters(const config* cfg);
+	void add_terrain_filter(const std::string& terrains);
+	void add_tod_filter(const std::string& times);
+	void unfilter();
+private:
+	std::vector<std::string> terrain_filter_chaotic;
+	std::vector<std::string> terrain_filter_neutral;
+	std::vector<std::string> terrain_filter_lawful;
+};
+
 class unit_type
 {
 public:
@@ -268,6 +283,15 @@ public:
 	const unit_animation& die_animation(const attack_type* attack) const;
 	const unit_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 
+	const ability_filter heals_filter() const;
+	const ability_filter regenerates_filter() const;
+	const ability_filter leadership_filter() const;
+	const ability_filter illuminates_filter() const;
+	const ability_filter skirmisher_filter() const;
+	const ability_filter teleports_filter() const;
+	const ability_filter steadfast_filter() const;
+	const ability_filter hides_filter() const;
+
 private:
 	void operator=(const unit_type& o);
 
@@ -287,21 +311,39 @@ private:
 
 	mutable std::string id_;
 
+	ability_filter heals_filter_;
 	int max_heals_;
 	int heals_;
+
+	ability_filter regenerates_filter_;
 	bool regenerates_;
 	int regeneration_;
+
+	ability_filter leadership_filter_;
 	bool leadership_;
 	int leadership_percent_;
+
+	ability_filter illuminates_filter_;
 	int illuminates_;
+
+	ability_filter skirmisher_filter_;
 	bool skirmish_;
+
+	ability_filter teleports_filter_;
 	bool teleport_;
+
+	ability_filter steadfast_filter_;
 	bool steadfast_;
 	int steadfast_bonus_;
 	int steadfast_max_;
 	bool steadfast_percent_;
+
+	ability_filter hides_filter_;
+	bool hides_;
+
         std::vector<std::string> advances_to_;
         int experience_needed_;
+	
 
 	ALIGNMENT alignment_;
 

@@ -1567,7 +1567,7 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 	image::TYPE image_type = image::SCALED;
 
 	const time_of_day& tod = status_.get_time_of_day();
-	const time_of_day& tod_at = timeofday_at(status_,units_,loc);
+	const time_of_day& tod_at = timeofday_at(status_,units_,loc,map_);
 	std::string mask = tod_at.image_mask;
 	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL || tod.image_mask != tod_at.image_mask) {
 		image_type = image::UNMASKED;

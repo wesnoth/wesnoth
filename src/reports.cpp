@@ -311,7 +311,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case UNIT_PROFILE:
 		return report("",u->second.type().image_profile(),"");
 	case TIME_OF_DAY: {
-		time_of_day tod = timeofday_at(status,units,mouseover);
+		time_of_day tod = timeofday_at(status,units,mouseover,map);
 		// don't show illuminated time on fogged/shrouded tiles
 		if (current_team.fogged(mouseover.x,mouseover.y) || current_team.shrouded(mouseover.x,mouseover.y)) {
 			tod = status.get_time_of_day(false,mouseover);

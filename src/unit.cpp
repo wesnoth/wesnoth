@@ -340,10 +340,8 @@ void unit::new_turn()
 {
 	user_end_turn_ = false;
 	moves_ = total_movement();
-	if(type().has_ability("ambush"))
-		set_flag("ambush");
-	if(type().has_ability("nightstalk"))
-		set_flag("nightstalk");
+	if(type().has_ability("hides"))
+		set_flag("hides");
 	if(stone())
 		set_attacked();
 	if (hold_position_) {
@@ -542,16 +540,9 @@ bool unit::invisible(const std::string& terrain, int lawful_bonus,
 {
 	bool is_inv = false;
 
-	static const std::string forest_invisible("ambush");
-	if (has_flag(forest_invisible) && is_terrain(terrain, gamemap::FOREST)) {
-		is_inv = true;
-	}
-	else
-	{
-		static const std::string night_invisible("nightstalk");
-		if ((lawful_bonus < 0) && has_flag(night_invisible)) {
-			is_inv = true;
-		}
+	static const std::string hides("hides");
+	if (has_flag(hides)) {
+		is_inv = this->type().hides_filter().matches_filter(terrain, lawful_bonus);
 	}
 
 	if(is_inv){

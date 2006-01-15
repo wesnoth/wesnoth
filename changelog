@@ -39,6 +39,11 @@ SVN trunk (1.1+svn):
    * starting_villages macro updated for added village types
    * split factions of multiplayer.cfg into data/factions to ease making
      combined eras without having to maintain mainline factions
+   * abilities are now more configurable in a [abilities] tag, old ability= tag depreciated (patch #498)
+     - cure is available via the [heals] ability tag
+   * all the currently used abilities were added as macros in data/abilities.cfg 
+   * abilities can receive time of day and terrain [filter]
+     - ambush and nightstalk are available via the new [hides] ability tag
  * Miscellaneous
    * anonymous data logging for single player campaigns, see stats.wesnoth.org
    * zipios++ can now be disabled by passing --without-zipios to configure

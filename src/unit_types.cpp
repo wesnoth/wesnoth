@@ -512,14 +512,118 @@ void unit_movement_type::set_parent(const unit_movement_type* parent)
 	parent_ = parent;
 }
 
+ability_filter::ability_filter()
+{
+	// we add a null string to prevent the filter to be empty
+	terrain_filter_chaotic.push_back("");
+	terrain_filter_neutral.push_back("");
+	terrain_filter_lawful.push_back("");
+}
+
+bool ability_filter::matches_filter(const std::string& terrain, int lawful_bonus) const
+{		
+	const std::vector<std::string>* terrain_filter;
+	if (lawful_bonus < 0) {
+		terrain_filter = &terrain_filter_chaotic;
+	} else if (lawful_bonus == 0) {
+		terrain_filter = &terrain_filter_neutral;
+	} else {
+		terrain_filter = &terrain_filter_lawful;
+	}		
+		
+	if (terrain_filter->empty()) {
+		return true;
+	} else {
+		return std::find(terrain_filter->begin(),terrain_filter->end(),terrain) != terrain_filter->end();
+	}
+}
+
+void ability_filter::unfilter()
+{
+	terrain_filter_chaotic.clear();
+	terrain_filter_neutral.clear();
+	terrain_filter_lawful.clear();		
+}
+
+void ability_filter::add_terrain_filter(const std::string& terrains)
+{
+	std::vector<std::string> add_to_filter = utils::split(terrains);
+	for (std::vector<std::string>::const_iterator t = add_to_filter.begin(); t != add_to_filter.end(); ++t) {
+		terrain_filter_chaotic.push_back(*t);
+		terrain_filter_neutral.push_back(*t);
+		terrain_filter_lawful.push_back(*t);
+	}
+}
+
+void ability_filter::add_tod_filter(const std::string& times)
+{
+	std::vector<std::string> add_to_filter = utils::split(times);
+	for (std::vector<std::string>::const_iterator t = add_to_filter.begin(); t != add_to_filter.end(); ++t) {
+		if (*t == "chaotic") {
+			terrain_filter_chaotic.clear();
+		} else if (*t == "neutral") {
+			terrain_filter_neutral.clear();
+		} else if (*t == "lawful") {
+			terrain_filter_lawful.clear();		
+		} else {
+			LOG_STREAM(err, config) << "Unknown time of day type : " << *t << "\n";
+		}
+	}
+}
+	
+void ability_filter::add_filters(const config* cfg)
+{
+	if (cfg) {
+		std::string tods =(*cfg)["tod"];
+		std::string terrains =(*cfg)["terrains"];
+		if (tods == "" && terrains == "") {
+			unfilter();
+			return;
+		} else if (tods == "") {
+			add_terrain_filter(terrains);
+			return;
+		} else if (terrains == "") {
+			add_tod_filter(tods);
+			return;
+		} else {
+			std::vector<std::string> tod_slices = utils::split(tods);
+			for (std::vector<std::string>::const_iterator td = tod_slices.begin(); td != tod_slices.end(); ++td) {
+				std::vector<std::string>* terrain_filter;
+				if (*td == "chaotic") {
+					terrain_filter= &terrain_filter_chaotic;
+				} else if (*td == "neutral") {
+					terrain_filter= &terrain_filter_neutral;
+				} else if (*td == "lawful") {
+					terrain_filter= &terrain_filter_lawful;
+				} else {
+					LOG_STREAM(err, config) << "Unknown time of day type : " << *td << "\n";
+					continue;
+				}
+				std::vector<std::string> terrain_slices = utils::split(terrains);
+				for (std::vector<std::string>::const_iterator te = terrain_slices.begin(); te != terrain_slices.end(); ++te) {
+					terrain_filter->push_back(*te);
+				}
+			}
+		}
+	} else {
+		unfilter();
+	}
+}
+
 unit_type::unit_type(const unit_type& o)
     : variations_(o.variations_), cfg_(o.cfg_), race_(o.race_),
       alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
-      max_heals_(o.max_heals_), heals_(o.heals_), regenerates_(o.regenerates_),
-      regeneration_(o.regeneration_), leadership_(o.leadership_),
-      leadership_percent_(o.leadership_percent_), illuminates_(o.illuminates_),
-      skirmish_(o.skirmish_), teleport_(o.teleport_), steadfast_(o.steadfast_),
+      heals_filter_(o.heals_filter_), max_heals_(o.max_heals_), heals_(o.heals_), 
+      regenerates_filter_(o.regenerates_filter_),regenerates_(o.regenerates_),
+      regeneration_(o.regeneration_),
+      leadership_filter_(o.leadership_filter_), leadership_(o.leadership_),
+      leadership_percent_(o.leadership_percent_),
+      illuminates_filter_(o.illuminates_filter_), illuminates_(o.illuminates_),
+      skirmisher_filter_(o.skirmisher_filter_), skirmish_(o.skirmish_),
+      teleports_filter_(o.teleports_filter_), teleport_(o.teleport_),
+      steadfast_filter_(o.steadfast_filter_), steadfast_(o.steadfast_),
       steadfast_bonus_(o.steadfast_bonus_),steadfast_max_(o.steadfast_max_),
+      hides_filter_(o.hides_filter_), hides_(o.hides_),
       advances_to_(o.advances_to_), experience_needed_(o.experience_needed_),
       alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
@@ -535,6 +639,7 @@ unit_type::unit_type(const unit_type& o)
 		variations_[i->first] = new unit_type(*i->second);
 	}
 }
+
 
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
@@ -595,11 +700,15 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	heals_ = 0;
 	max_heals_ = 0;
 	regenerates_ = false;
+	regeneration_ = 0;
+	steadfast_ = false;
+	steadfast_bonus_ = 0;
+	steadfast_max_ = 0;
 	skirmish_ = false;
 	teleport_ = false;
-	steadfast_ = false;
-	illuminates_ = false;
+	illuminates_ = 0;
 	leadership_ = false;
+	hides_ = false;
 
 	/* handle deprecated ability=x,y,... */
 
@@ -616,18 +725,21 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"heals") != deprecated_abilities.end()) {
 			heals_ = game_config::healer_heals_per_turn;
 			max_heals_ = game_config::heal_amount;
+			heals_filter_.unfilter();
 			abilities_.push_back("heals");
 			ability_tooltips_.push_back("heals");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"cures") != deprecated_abilities.end()) {
 			heals_ = game_config::curer_heals_per_turn;
 			max_heals_ = game_config::cure_amount;
+			heals_filter_.unfilter();
 			abilities_.push_back("cures");
 			ability_tooltips_.push_back("cures");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"regenerates") != deprecated_abilities.end()) {
 			regenerates_ = true;
 			regeneration_ = game_config::cure_amount;
+			regenerates_filter_.unfilter();
 			abilities_.push_back("regenerates");
 			ability_tooltips_.push_back("regenerates");
 		}
@@ -636,35 +748,44 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 			steadfast_bonus_ = 100;
 			steadfast_max_ = 50;
 			steadfast_percent_ = false;
+			steadfast_filter_.unfilter();
 			abilities_.push_back("steadfast");
 			ability_tooltips_.push_back("steadfast");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"teleport") != deprecated_abilities.end()) {
 			teleport_ = true;
+			teleports_filter_.unfilter();
 			abilities_.push_back("teleport");
 			ability_tooltips_.push_back("teleport");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"skirmisher") != deprecated_abilities.end()) {
 			skirmish_ = true;
+			skirmisher_filter_.unfilter();
 			abilities_.push_back("skirmisher");
 			ability_tooltips_.push_back("skirmisher");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"leadership") != deprecated_abilities.end()) {
 			leadership_ = true;
 			leadership_percent_ = game_config::leadership_bonus;
+			leadership_filter_.unfilter();
 			abilities_.push_back("leadership");
 			ability_tooltips_.push_back("leadership");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"illuminates") != deprecated_abilities.end()) {
 			illuminates_ = 1;
+			illuminates_filter_.unfilter();
 			abilities_.push_back("illuminates");
 			ability_tooltips_.push_back("illuminates");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"ambush") != deprecated_abilities.end()) {
+			hides_ = true;
+			hides_filter_.add_terrain_filter("f");
 			abilities_.push_back("ambush");
 			ability_tooltips_.push_back("ambush");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"nightstalk") != deprecated_abilities.end()) {
+			hides_ = true;
+			hides_filter_.add_tod_filter("chaotic");
 			abilities_.push_back("nightstalk");
 			ability_tooltips_.push_back("nightstalk");
 		}
@@ -672,104 +793,119 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	const config* abil_cfg = cfg.child("abilities");
 	if(abil_cfg) {
-		const config* heal_ability = abil_cfg->child("heals");
-		const config* regenerates_ability = abil_cfg->child("regenerates");
-		const config* steadfast_ability = abil_cfg->child("steadfast");
-		const config* leadership_ability = abil_cfg->child("leadership");
-		const config* skirmisher_ability = abil_cfg->child("skirmisher");
-		const config* illuminates_ability = abil_cfg->child("illuminates");
-		const config* teleport_ability = abil_cfg->child("teleport");
-		const config* ambush_ability = abil_cfg->child("ambush");
-		const config* nightstalk_ability = abil_cfg->child("nightstalk");
-
-		if(heal_ability) {
+		const config::child_list& heal_abilities = abil_cfg->get_children("heals");
+		if (!heal_abilities.empty()) {
 			abilities_.push_back("heals");
-			if((*heal_ability)["description"] != "") {
-				ability_tooltips_.push_back((*heal_ability)["description"]);
-			} else {
-				ability_tooltips_.push_back("heals");
+			for(config::child_list::const_iterator ab = heal_abilities.begin(); ab != heal_abilities.end(); ++ab) {
+				if((**ab)["description"] != "") {
+					ability_tooltips_.push_back((**ab)["description"]);
+				} else {
+					ability_tooltips_.push_back("heals");
+				}
+				heals_ = maximum<int>(heals_, lexical_cast_default<int>((**ab)["amount"],game_config::healer_heals_per_turn));
+				max_heals_ = maximum<int>(max_heals_, lexical_cast_default<int>((**ab)["max"],game_config::heal_amount));
+				heals_filter_.add_filters((*ab)->child("filter"));
 			}
-			heals_ = maximum<int>(0,lexical_cast_default<int>((*heal_ability)["amount"],game_config::healer_heals_per_turn));
-			max_heals_ = maximum<int>(0,lexical_cast_default<int>((*heal_ability)["max"],game_config::heal_amount));
 		}
-		if(regenerates_ability) {
+		const config::child_list& regenerate_abilities = abil_cfg->get_children("regenerates");
+		if (!regenerate_abilities.empty()) {
 			abilities_.push_back("regenerates");
-			if((*regenerates_ability)["description"] != "") {
-				ability_tooltips_.push_back((*regenerates_ability)["description"]);
-			} else {
-				ability_tooltips_.push_back("regenerates");
+			for(config::child_list::const_iterator ab = regenerate_abilities.begin(); ab != regenerate_abilities.end(); ++ab) {
+				if((**ab)["description"] != "") {
+					ability_tooltips_.push_back((**ab)["description"]);
+				} else {
+					ability_tooltips_.push_back("regenerates");
+				}
+				regenerates_ = true;
+				regeneration_ = maximum<int>(regeneration_, lexical_cast_default<int>((**ab)["amount"],game_config::cure_amount));
+				regenerates_filter_.add_filters((*ab)->child("filter"));
 			}
-			regenerates_ = true;
-			regeneration_ = maximum<int>(0,lexical_cast_default<int>((*regenerates_ability)["amount"],game_config::cure_amount));
 		}
-		if(steadfast_ability) {
+		const config::child_list& steadfast_abilities = abil_cfg->get_children("steadfast");
+		if (!steadfast_abilities.empty()) {
 			abilities_.push_back("steadfast");
-			if((*steadfast_ability)["description"] != "") {
-				ability_tooltips_.push_back((*steadfast_ability)["description"]);
-			} else {
-				ability_tooltips_.push_back("steadfast");
-			}
-			steadfast_ = true;
-			steadfast_bonus_ = maximum<int>(0,lexical_cast_default<int>((*steadfast_ability)["bonus"],100));
-			steadfast_max_ = maximum<int>(0,lexical_cast_default<int>((*steadfast_ability)["max"],50));
-			std::string steadfast_ispercent = (*steadfast_ability)["bonus"];
-			if(steadfast_ispercent != "" && steadfast_ispercent[steadfast_ispercent.size()-1] == '%') {
-				steadfast_percent_ = true;
-			} else {
-				steadfast_percent_ = false;
+			for(config::child_list::const_iterator ab = steadfast_abilities.begin(); ab != steadfast_abilities.end(); ++ab) {
+				if((**ab)["description"] != "") {
+					ability_tooltips_.push_back((**ab)["description"]);
+				} else {
+					ability_tooltips_.push_back("steadfast");
+				}
+				steadfast_ = true;
+				steadfast_bonus_ = maximum<int>(steadfast_bonus_,lexical_cast_default<int>((**ab)["bonus"],100));
+				steadfast_max_ = maximum<int>(steadfast_max_,lexical_cast_default<int>((**ab)["max"],50));
+				std::string steadfast_ispercent = (**ab)["bonus"];
+				if(steadfast_ispercent != "" && steadfast_ispercent[steadfast_ispercent.size()-1] == '%') {
+					steadfast_percent_ = true;
+				} else {
+					steadfast_percent_ = false;
+				}
+				steadfast_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
-		if(leadership_ability) {
+		const config::child_list& leadership_abilities = abil_cfg->get_children("leadership");
+		if (!leadership_abilities.empty()) {
 			abilities_.push_back("leadership");
-			if((*leadership_ability)["description"] != "") {
-				ability_tooltips_.push_back((*leadership_ability)["description"]);
-			} else {
-				ability_tooltips_.push_back("leadership");
+			for(config::child_list::const_iterator ab = leadership_abilities.begin(); ab != leadership_abilities.end(); ++ab) {
+				if((**ab)["description"] != "") {
+					ability_tooltips_.push_back((**ab)["description"]);
+				} else {
+					ability_tooltips_.push_back("leadership");
+				}
+				leadership_ = true;
+				leadership_percent_ = lexical_cast_default<int>((**ab)["perlevel_bonus"],game_config::leadership_bonus);
+				leadership_filter_.add_filters((*ab)->child("filter"));
 			}
-			leadership_ = true;
-			leadership_percent_ = lexical_cast_default<int>((*leadership_ability)["perlevel_bonus"],game_config::leadership_bonus);
 		}
-		if(skirmisher_ability) {
+		const config::child_list& skirmisher_abilities = abil_cfg->get_children("skirmisher");
+		if (!skirmisher_abilities.empty()) {
 			abilities_.push_back("skirmisher");
-			if((*skirmisher_ability)["description"] != "") {
-				ability_tooltips_.push_back((*skirmisher_ability)["description"]);
-			} else {
-				ability_tooltips_.push_back("skirmisher");
+			for(config::child_list::const_iterator ab = skirmisher_abilities.begin(); ab != skirmisher_abilities.end(); ++ab) {
+				if((**ab)["description"] != "") {
+					ability_tooltips_.push_back((**ab)["description"]);
+				} else {
+					ability_tooltips_.push_back("skirmisher");
+				}
+				skirmish_ = true;
+				skirmisher_filter_.add_filters((*ab)->child("filter"));
 			}
-			skirmish_ = true;
 		}
-		if(illuminates_ability) {
+		const config::child_list& illuminate_abilities = abil_cfg->get_children("illuminates");
+		if (!illuminate_abilities.empty()) {
 			abilities_.push_back("illuminates");
-			if((*illuminates_ability)["description"] != "") {
-				ability_tooltips_.push_back((*illuminates_ability)["description"]);
-			} else {
-				ability_tooltips_.push_back("illuminates");
+			for(config::child_list::const_iterator ab = illuminate_abilities.begin(); ab != illuminate_abilities.end(); ++ab) {
+				if((**ab)["description"] != "") {
+					ability_tooltips_.push_back((**ab)["description"]);
+				} else {
+					ability_tooltips_.push_back("illuminates");
+				}
+				illuminates_ = maximum<int>(illuminates_,lexical_cast_default<int>((**ab)["level"],1));
+				illuminates_filter_.add_filters((*ab)->child("filter"));
 			}
-			illuminates_ = maximum<int>(0,lexical_cast_default<int>((*illuminates_ability)["level"],1));
 		}
-		if(teleport_ability) {
+		const config::child_list& teleport_abilities = abil_cfg->get_children("teleport");
+		if (!teleport_abilities.empty()) {
 			abilities_.push_back("teleport");
-			if((*teleport_ability)["description"] != "") {
-				ability_tooltips_.push_back((*teleport_ability)["description"]);
-			} else {
-				ability_tooltips_.push_back("teleport");
-			}
-			teleport_ = true;
-		}
-		if(ambush_ability) {
-			abilities_.push_back("ambush");
-			if((*ambush_ability)["description"] != "") {
-				ability_tooltips_.push_back((*ambush_ability)["description"]);
-			} else {
-				ability_tooltips_.push_back("ambush");
+			for(config::child_list::const_iterator ab = teleport_abilities.begin(); ab != teleport_abilities.end(); ++ab) {
+				if((**ab)["description"] != "") {
+					ability_tooltips_.push_back((**ab)["description"]);
+				} else {
+					ability_tooltips_.push_back("teleport");
+				}
+				teleport_ = true;
+				teleports_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
-		if(nightstalk_ability) {
-			abilities_.push_back("nightstalk");
-			if((*nightstalk_ability)["description"] != "") {
-				ability_tooltips_.push_back((*nightstalk_ability)["description"]);
-			} else {
-				ability_tooltips_.push_back("nightstalk");
+		const config::child_list& hide_abilities = abil_cfg->get_children("hides");
+		if (!hide_abilities.empty()) {
+			abilities_.push_back("hides");
+			for(config::child_list::const_iterator ab = hide_abilities.begin(); ab != hide_abilities.end(); ++ab) {
+				if((**ab)["description"] != "") {
+					ability_tooltips_.push_back((**ab)["description"]);
+				} else {
+					ability_tooltips_.push_back("hides");
+				}
+				hides_ = true;
+				hides_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
 	}
@@ -1339,6 +1475,39 @@ int unit_type::movement_animation::matches(const std::string &terrain,gamemap::l
 	}
 
 	return result;
+}
+
+const ability_filter unit_type::heals_filter() const
+{
+	return heals_filter_;
+}
+const ability_filter unit_type::regenerates_filter() const
+{
+	return regenerates_filter_;
+}
+const ability_filter unit_type::leadership_filter() const
+{
+	return leadership_filter_;
+}
+const ability_filter unit_type::illuminates_filter() const
+{
+	return illuminates_filter_;
+}
+const ability_filter unit_type::skirmisher_filter() const
+{
+	return skirmisher_filter_;
+}
+const ability_filter unit_type::teleports_filter() const
+{
+	return teleports_filter_;
+}
+const ability_filter unit_type::steadfast_filter() const
+{
+	return steadfast_filter_;
+}
+const ability_filter unit_type::hides_filter() const
+{
+	return hides_filter_;
 }
 
 const unit_animation& unit_type::defend_animation(bool hits, std::string range) const

@@ -158,14 +158,16 @@ void check_victory(std::map<gamemap::location,unit>& units,
 //in that tile or adjacent.
 const time_of_day&  timeofday_at(const gamestatus& status,
                               const std::map<gamemap::location,unit>& units,
-                              const gamemap::location& loc);
+                              const gamemap::location& loc,
+			      const gamemap& map);
 
 //returns the amount that a unit's damage should be multiplied by due to
 //the current time of day.
 int combat_modifier(const gamestatus& status,
-                    const std::map<gamemap::location,unit>& units,
-					const gamemap::location& loc,
-					unit_type::ALIGNMENT alignment);
+			const std::map<gamemap::location,unit>& units,
+			const gamemap::location& loc,
+			unit_type::ALIGNMENT alignment,
+			const gamemap& map);
 
 //structure which records information to be able to undo a movement
 struct undo_action {
