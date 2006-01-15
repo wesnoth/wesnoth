@@ -828,7 +828,7 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, c
 
 		random %= 100;
 
-		if(random > rule.probability)
+		if(random > (unsigned int)rule.probability)
 			return false;
 	}
 
@@ -1077,7 +1077,7 @@ void terrain_builder::build_terrains()
 							continue;
 					}
 
-					if(rule_matches(rule->second, *itor - loc, rule_index, (biggest_constraint_adjacent + 1) != rule->second.constraints.size())) {
+					if(rule_matches(rule->second, *itor - loc, rule_index, (size_t)(biggest_constraint_adjacent + 1) != rule->second.constraints.size())) {
 						apply_rule(rule->second, *itor - loc);
 					}
 				}

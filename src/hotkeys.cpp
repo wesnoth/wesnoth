@@ -207,7 +207,7 @@ manager::~manager()
 
 void load_descriptions()
 {
-	for (int i = 0; hotkey_list_[i].command; ++i) {
+	for (size_t i = 0; hotkey_list_[i].command; ++i) {
 		if (i >= hotkeys_.size()) {
 			ERR_G << "Hotkey list too short: " << hotkeys_.size() << "\n";
 		}
@@ -697,7 +697,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 	}
 }
 
-void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui)
+void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool /*context_menu*/, display& gui)
 {
 	std::vector<std::string> items = items_arg;
 	if (can_execute_command(hotkey::get_hotkey(items.front()).get_id())){

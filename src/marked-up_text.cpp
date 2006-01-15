@@ -89,7 +89,6 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 		    //could be any non-# char
 		    ++i1;
 		    Uint8 red=0, green=0, blue=0, temp=0;
-		    int count=0;
 		    while(i1 != i2 && *i1 >= '0' && *i1<='9'){
 		      temp*=10;
 		      temp += lexical_cast<int, char>(*i1);
@@ -364,8 +363,8 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 
 			line_width += word_width;
 
-			if(line_width > max_width) {
-				if(word_width > max_width) {
+			if((long)line_width > max_width) {
+				if((long)word_width > max_width) {
 					cut_word(current_line, current_word, font_size, max_width);
 				}
 				if(current_word == " ")

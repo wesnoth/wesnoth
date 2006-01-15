@@ -297,7 +297,7 @@ std::string default_map_generator::create_map(const std::vector<std::string>& ar
 	return generate_map(args);
 }
 
-std::string default_map_generator::generate_map(const std::vector<std::string>& args, std::map<gamemap::location,std::string>* labels)
+std::string default_map_generator::generate_map(const std::vector<std::string>& /*args*/, std::map<gamemap::location,std::string>* labels)
 {
 	// the random generator thinks odd widths are nasty, so make them even
 	if (is_odd(width_))
@@ -347,7 +347,7 @@ config default_map_generator::create_scenario(const std::vector<std::string>& ar
 	std::cerr << "done generating map..\n";
 
 	for(std::map<gamemap::location,std::string>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
-		if(i->first.x >= 0 && i->first.y >= 0 && i->first.x < width_ && i->first.y < height_) {
+		if(i->first.x >= 0 && i->first.y >= 0 && i->first.x < (long)width_ && i->first.y < (long)height_) {
 			config& label = res.add_child("label");
 			label["text"] = i->second;
 			i->first.write(label);

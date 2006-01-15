@@ -66,7 +66,7 @@ size_t cave_map_generator::translate_y(size_t y) const
 
 bool cave_map_generator::allow_user_config() const { return true; }
 
-void cave_map_generator::user_config(display& disp) { return; }
+void cave_map_generator::user_config(display& /*disp*/) { return; }
 
 std::string cave_map_generator::name() const { return "cave"; }
 
@@ -76,7 +76,7 @@ std::string cave_map_generator::create_map(const std::vector<std::string>& args)
 	return res["map_data"];
 }
 
-config cave_map_generator::create_scenario(const std::vector<std::string>& args)
+config cave_map_generator::create_scenario(const std::vector<std::string>& /*args*/)
 {
 	map_ = std::vector<std::vector<gamemap::TERRAIN> >(width_,std::vector<gamemap::TERRAIN>(height_,wall_));
 	chambers_.clear();
@@ -129,7 +129,7 @@ void cave_map_generator::build_chamber(gamemap::location loc, std::set<gamemap::
 	gamemap::location adj[6];
 	get_adjacent_tiles(loc,adj);
 	for(size_t n = 0; n != 6; ++n) {
-		if((rand()%100) < (100-jagged)) {
+		if((rand()%100) < (100l-(long)jagged)) {
 			build_chamber(adj[n],locs,size-1,jagged);
 		}
 	}
@@ -338,13 +338,13 @@ void cave_map_generator::place_passage(const passage& p)
 
 bool cave_map_generator::on_board(const gamemap::location& loc) const
 {
-	return loc.x >= 0 && loc.y >= 0 && loc.x < width_ && loc.y < height_;
+	return loc.x >= 0 && loc.y >= 0 && loc.x < (long)width_ && loc.y < (long)height_;
 }
 
 void cave_map_generator::set_terrain(gamemap::location loc, gamemap::TERRAIN t)
 {
 	if(on_board(loc)) {
-		if(t == clear_ && (rand()%1000) < village_density_) {
+		if(t == clear_ && (rand()%1000) < (long)village_density_) {
 			t = village_;
 		}
 

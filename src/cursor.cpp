@@ -58,15 +58,15 @@ SDL_Cursor* create_cursor(surface surf)
 	//the format that data has to be in to pass to SDL_CreateCursor
 	surface_lock lock(nsurf);
 	const Uint32* const pixels = reinterpret_cast<Uint32*>(lock.pixels());
-	for(size_t y = 0; y != nsurf->h; ++y) {
-		for(size_t x = 0; x != nsurf->w; ++x) {
+	for(int y = 0; y != nsurf->h; ++y) {
+		for(int x = 0; x != nsurf->w; ++x) {
 			Uint8 r,g,b,a;
 			Uint8 trans = 0;
 			Uint8 black = 0;
 
 			const size_t index = y*cursor_width + x;
 
-			if (x < cursor_width) {
+			if ((size_t)x < cursor_width) {
 				SDL_GetRGBA(pixels[y*nsurf->w + x],nsurf->format,&r,&g,&b,&a);
 
 				const size_t shift = 7 - (index%8);
