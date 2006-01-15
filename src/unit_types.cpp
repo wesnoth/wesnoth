@@ -747,7 +747,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 			steadfast_ = true;
 			steadfast_bonus_ = 100;
 			steadfast_max_ = 50;
-			steadfast_percent_ = false;
+			steadfast_percent_ = true;
 			steadfast_filter_.unfilter();
 			abilities_.push_back("steadfast");
 			ability_tooltips_.push_back("steadfast");
