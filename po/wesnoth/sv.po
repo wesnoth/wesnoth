@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-01-12 16:30+0100\n"
-"PO-Revision-Date: 2005-12-20 22:55+0100\n"
+"PO-Revision-Date: 2006-01-15 19:06+0100\n"
 "Last-Translator: Stefan Bergström (tephlon)\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 
 #: data/amla.cfg:8
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr ", max EP +25%"
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +"
@@ -2603,7 +2603,6 @@ msgstr ""
 "nästa roll."
 
 #: data/help.cfg:203
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2631,9 +2630,13 @@ msgstr ""
 "står för After Max Level Advancement. Denna process kommer att förändra "
 "truppen varje gång en viss erfarenhetspoäng är nådd, men truppens "
 "erfarenhetsnivå ökar dock inte. Den vanligaste AMLA-effekten är att truppens "
-"aktuella hälsopoäng ökar med 3 HP för varje 100 EP. Endast ett litet fåtal "
-"truppslag, såsom nekrofagen, återfår full styrka när detta inträffar. De "
-"flesta trupper får bara en höjd maximal HP."
+"maximala hälsopoäng ökar med 3 HP. AMLA uppnås första gången efter 100 EP "
+"(80 EP för intelligenta trupper). Därefter blir det allt svårare att uppnå "
+"AMLA, vilket betyder att det ofta är bättre att försöka få trupper på lägre "
+"nivåer att befordras.\n"
+"\n"
+"Endast ett litet fåtal truppslag, såsom nekrofagen, återfår full styrka när "
+"detta inträffar. De flesta trupper får bara en höjd maximal HP."
 
 #: data/help.cfg:208
 msgid "Healing"
@@ -3032,7 +3035,7 @@ msgstr ""
 
 #: data/help.cfg:303
 msgid "trait^Undead"
-msgstr "trait^Vandöd"
+msgstr "Vandöd"
 
 #: data/help.cfg:304
 msgid "Undead units are immune to poison."
@@ -3737,7 +3740,7 @@ msgstr "2s - Stormning"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
-msgstr ""
+msgstr "2p - Cynsauns slagfält"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
@@ -3745,6 +3748,9 @@ msgid ""
 "favor epic, large-scale duel matches. Recommended settings of 150 G; 1G per "
 "village."
 msgstr ""
+"Det finns mycket att utforska i denna vidsträckta karta, som riktar sig till "
+"spelare som hellre spelar episka storslagna dueller. 150 guldstycken vid "
+"starten och 1 guld per by rekommenderas."
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
@@ -4030,17 +4036,15 @@ msgid ""
 msgstr "Fyra fraktioner slåss om herraväldet. 1 guld per by rekommenderas."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
-#, fuzzy
 msgid "4p - Morituri"
-msgstr "3s - Morituri"
+msgstr "4s - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
 "settings of 2G per village."
 msgstr ""
-"Tre spelare på kollisionskurs på detta vattengenomskurna slagfält. 2 guld "
+"Fyra spelare på kollisionskurs på detta vattengenomskurna slagfält. 2 guld "
 "per by rekommenderas."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
@@ -4082,7 +4086,7 @@ msgstr "Fem arméer slåss om herraväldet över detta blandade landskap."
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
-msgstr ""
+msgstr "6s - Korsfararnas slagfält"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
 msgid ""
@@ -4091,6 +4095,9 @@ msgid ""
 "through the mountains, trees and rivers. Recommended settings of 1G per "
 "village."
 msgstr ""
+"Stridslarmet kan återigen höras från detta av tidens tand angripna slagfält, "
+"där tusentals modiga krigares andras svävar osynligt över bergen, genom "
+"träden och över floderna. 1 guld per by rekommenderas."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
@@ -4200,7 +4207,7 @@ msgstr "Grön"
 
 #: data/team_colors.cfg:22
 msgid "Cyan"
-msgstr ""
+msgstr "Turkos"
 
 #: data/team_colors.cfg:28
 msgid "Purple"
@@ -4254,9 +4261,8 @@ msgid "Snow Village"
 msgstr "Snötäckt by"
 
 #: data/terrain.cfg:297
-#, fuzzy
 msgid "Dwarven Village"
-msgstr "Ökenby"
+msgstr "Dvärgby"
 
 #: data/terrain.cfg:334
 msgid "Desert Hills"
@@ -4468,16 +4474,16 @@ msgstr ""
 "stigfinnare har förmågan att kunna undvika dem."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
 "chance to hit both when attacking and defending. Marksman attacks have at "
 "least 60% chance to hit when attacking."
 msgstr ""
-"Chansen att träffa en annan trupp beror vanligtvis på vilken terräng denna "
-"trupp befinner sig i. Dock har magiska attacker alltid 70% chans att träffa, "
-"och prickskyttar har alltid åtminstone 60% chans att träffa när de anfaller."
+"Chansen att träffa en annan trupp beror vanligtvis på hur väl denna kan "
+"försvara sig på terrängen den befinner sig i. Dock har magiska attacker "
+"alltid 70% chans att träffa, och prickskyttar har alltid åtminstone 60% "
+"chans att träffa när de anfaller."
 
 #: data/tips.cfg:9
 msgid ""
@@ -4485,7 +4491,6 @@ msgid ""
 msgstr "Trupper som befinner sig i byar återfår 8 HP i början på sitt drag."
 
 #: data/tips.cfg:10
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
@@ -4548,15 +4553,13 @@ msgstr ""
 "iväg trupper som du kan avvara och låta dessa sinka fienden."
 
 #: data/tips.cfg:17
-#, fuzzy
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
-"Dra dig inte för att omgruppera eller slå till reträtt - detta är ofta "
-"nyckeln till den slutliga segern."
+"Dra dig inte för att slå till reträtt och omgruppera - detta är ofta nyckeln "
+"till segern."
 
 #: data/tips.cfg:18
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -4565,8 +4568,8 @@ msgid ""
 msgstr ""
 "I de flesta kampanjer får du en guldbonus om du avslutar ett scenario "
 "snabbt. Bonusen beror på antalet byar på kartan och på hur många drag du har "
-"kvar när du slutar. Du tjänar alltid mer guld på detta sätt än genom att "
-"erövra byar och vänta på att dragen tar slut."
+"kvar när scenariot är slut. Du tjänar alltid mer guld på detta sätt än genom "
+"att erövra byar och vänta på att dragen tar slut."
 
 #: data/tips.cfg:19
 msgid ""
@@ -4581,7 +4584,6 @@ msgstr ""
 "allierad ledare låta dig använda sin."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
@@ -4650,13 +4652,12 @@ msgstr ""
 "dina slag för dig utan att själva attackera."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attacks."
 msgstr ""
 "Fiender som träffats av en attack med egenskapen att 'sakta ner' rör sig "
-"långsammare, och skadan de åsamkar halveras."
+"långsammare, och skadan de åsamkar halveras för alla deras attacker."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -4684,6 +4685,10 @@ msgid ""
 "progressively harder for each AMLA the unit receives, however. Thus, it is "
 "often more useful to try to advance your lower level units."
 msgstr ""
+"Trupper kan erhålla AMLA, After Maximum Level Advancements, vilket "
+"vanligtvis ökar en trupps maximala hälsopoäng med tre enheter. Att erhålla "
+"AMLA blir dock allt svårare för varje gång det inträffar. Det är därför ofta "
+"mer fördelaktigt att försöka få trupper på lägre nivåer att befordras."
 
 #: data/tips.cfg:34
 msgid ""
@@ -4691,6 +4696,9 @@ msgid ""
 "the Help Wesnoth button.  This information is vital so we can adjust "
 "campaign difficulty."
 msgstr ""
+"Du kan ge Wesnoth-projektet en anonym sammanställning av hur det går för dig "
+"genom att trycka på knappen Hjälp Wesnoth. Denna information är till stor "
+"hjälp för oss när vi justerar svårighetsgraderna i kampanjerna."
 
 #: data/traits.cfg:7
 msgid "Zero upkeep"
@@ -4923,18 +4931,16 @@ msgid "Blood Bat"
 msgstr "Blodsugande fladdermus"
 
 #: data/units/Blood_Bat.cfg:23
-#, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
 "the fur of these undead flying beasts is tainted red with the blood of their "
 "victims."
 msgstr ""
-"Den blodsugande fladdermusen kan suga blodet och därmed livskraften ur sina "
-"motståndare, och använder blodet för att förbättra sin egen hälsa. På så vis "
-"kan den blodsugande fladdermusen till och med bli kraftigare under pågående "
-"strid. Deras vildsinta attacker färgar detta vandöda flygfäs päls röd av "
-"sina offers blod."
+"Den blodsugande fladdermusen är snabb och kan suga blodet och därmed "
+"livskraften ur sina motståndare, och använder blodet för att förbättra sin "
+"egen hälsa. Deras vildsinta attacker färgar detta vandöda flygfäs päls röd "
+"av sina offers blod."
 
 #: data/units/Blood_Bat.cfg:39 data/units/Cave_Spider.cfg:39
 #: data/units/Direwolf_Rider.cfg:38 data/units/Goblin_Knight.cfg:38
@@ -6333,7 +6339,6 @@ msgid "female^Elvish Shyde"
 msgstr "Älva"
 
 #: data/units/Elvish_Shyde.cfg:30
-#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -6680,7 +6685,6 @@ msgid "Goblin Rouser"
 msgstr "Standarvätte"
 
 #: data/units/Goblin_Rouser.cfg:27
-#, fuzzy
 msgid ""
 "Standard bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -6692,9 +6696,12 @@ msgid ""
 "to it to deal more damage in combat, though this only applies to units of "
 "lower level."
 msgstr ""
-"Standarbärarna är en ovanlighet bland vättar. De har inte bara överlevt ett "
-"krig, att de faktiskt gjort det har också spritt sig bland vättarna, och av "
-"någon anledning verkar detta gjuta mod i de mindre erfarna.\n"
+"Standarbärarna är en kuriositet bland vättar. Att en vätte överlevt nog med "
+"slag för att kunna kallas veteran är ovanligt nog, men ännu mer sällsynt är "
+"det att vättarna erkänner och respekterar detta. Hur som helst stärker "
+"standarbärarnas frenetiska pådrivande de mer oerfarnas moral, så att de "
+"strider både mer intensivt och längre innan de slutligen faller.\n"
+"\n"
 "Anmärkning: under en standarvättes ledarskap åsamkar allierade intillstående "
 "trupper av lägre rang sina motståndare mer skada."
 
@@ -7837,14 +7844,13 @@ msgid "Ogre"
 msgstr "Rese"
 
 #: data/units/Ogre.cfg:23
-#, fuzzy
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
-"Resar är gigantiska humanoider som oftast lever ensamma i vildmarken. De är "
+"Resar är stora humanoider som oftast lever ensamma i vildmarken. De är "
 "anmärkningsvärt lika människor, bortsett från sin storlek och ofördelaktiga "
 "yttre. Även om de är lätta att springa ifrån och lura så skall man se upp "
 "med deras styrka."
@@ -9184,9 +9190,8 @@ msgid "+English (GB) Translation"
 msgstr "+Brittisk-engelsk översättning"
 
 #: src/about.cpp:203
-#, fuzzy
 msgid "+Esperanto Translation"
-msgstr "+Tysk översättning"
+msgstr "+Översättning till esperanto"
 
 #: src/about.cpp:207
 msgid "+Estonian Translation"
@@ -9308,12 +9313,11 @@ msgstr "basskada"
 
 #: src/actions.cpp:452 src/actions.cpp:580 src/actions.cpp:589
 msgid "Doubled"
-msgstr "fördubblad"
+msgstr "Fördubblad"
 
 #: src/actions.cpp:461 src/actions.cpp:614
-#, fuzzy
 msgid "Halved"
-msgstr "Sparat"
+msgstr "Halverad"
 
 #: src/actions.cpp:461 src/actions.cpp:614 src/actions.cpp:883
 #: src/actions.cpp:1053
@@ -10272,9 +10276,8 @@ msgid "Enables user time limit"
 msgstr "Aktivera tidsgräns för spelare"
 
 #: src/multiplayer_create.cpp:109
-#, fuzzy
 msgid "Initial time available to players at start of game"
-msgstr "Tillgänglig tid för varje spelare vid början av spelet"
+msgstr "Tillgänglig tid för varje spelare vid spelets början"
 
 #: src/multiplayer_create.cpp:115
 msgid "Time added to user's clock at the end of each turn"
@@ -10378,19 +10381,16 @@ msgid "Status"
 msgstr "Status"
 
 #: src/multiplayer_lobby.cpp:101
-#, fuzzy
 msgid "--no games open--"
-msgstr "<inga öppna spel>"
+msgstr "--inga öppna spel--"
 
 #: src/multiplayer_lobby.cpp:296 src/multiplayer_lobby.cpp:299
-#, fuzzy
 msgid "Unknown era"
-msgstr "Okänt scenario: '"
+msgstr "Okänd era"
 
 #: src/multiplayer_lobby.cpp:321 src/multiplayer_lobby.cpp:323
-#, fuzzy
 msgid "Unknown scenario"
-msgstr "Okänt scenario: '"
+msgstr "Okänt scenario"
 
 #: src/multiplayer_lobby.cpp:332
 msgid "Vacant Slot"
@@ -10409,7 +10409,6 @@ msgid "Quit"
 msgstr "Avsluta"
 
 #: src/multiplayer_ui.cpp:79
-#, fuzzy
 msgid "Invalid Color"
 msgstr "Ogiltig färg"
 
@@ -10902,9 +10901,8 @@ msgid "TitleScreen button^Preferences"
 msgstr "Inställningar"
 
 #: src/titlescreen.cpp:206
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Sparade spel"
+msgstr "Hjälp Wesnoth"
 
 #: src/titlescreen.cpp:207
 msgid "About"
@@ -10944,7 +10942,7 @@ msgstr "Konfigurera spelet"
 
 #: src/titlescreen.cpp:215
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "Hjälp Wesnoth genom att skicka oss information"
 
 #: src/titlescreen.cpp:216
 msgid "View the credits"
@@ -10997,101 +10995,20 @@ msgid ""
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
+"Wesnoth förlitar sig på att frivilliga, såsom du själv, ger feedback om hur "
+"man uppfattar spelet. Speciellt är detta viktigt från nybörjare och nya "
+"spelare. Wesnoth arkiverar sammanställningar av dina spel; du kan hjälpa oss "
+"att förbättra spelkänslan genom att skicka dessa sammanställningar anonymt "
+"till wesnoth.org.\n"
 
 #: src/upload_log.cpp:277
 msgid "You can see the summaries to be sent in "
-msgstr ""
+msgstr "Du kan se sammanställningarna som skall skickas in på "
 
 #: src/upload_log.cpp:279
 msgid "You can view the results at "
-msgstr ""
+msgstr "Du kan se resultaten på "
 
 #: src/upload_log.cpp:284
 msgid "Help us make Wesnoth better for you!"
-msgstr ""
-
-#, fuzzy
-#~ msgid "Turn Dialog"
-#~ msgstr "Träningsspel"
-
-#, fuzzy
-#~ msgid "Turn Bell"
-#~ msgstr "Drag: "
-
-#, fuzzy
-#~ msgid "Theme"
-#~ msgstr "Lag"
-
-#, fuzzy
-#~ msgid "Music"
-#~ msgstr "+Musik"
-
-#, fuzzy
-#~ msgid "Change the music volume"
-#~ msgstr "Byt språk"
-
-#, fuzzy
-#~ msgid "Chat Lines: "
-#~ msgstr "Ljusskygga trupper: "
-
-#, fuzzy
-#~ msgid "no"
-#~ msgstr "Snö"
-
-#, fuzzy
-#~ msgid "Prefs section^Multiplayer"
-#~ msgstr "Gruppspel"
-
-#, fuzzy
-#~ msgid "Preferences"
-#~ msgstr "Prinsessa"
-
-#, fuzzy
-#~ msgid "Choose Resolution"
-#~ msgstr "Välj vapen: "
-
-#, fuzzy
-#~ msgid "Hotkey Settings"
-#~ msgstr "Inställningar"
-
-#, fuzzy
-#~ msgid "Action"
-#~ msgstr "Handlingar"
-
-#, fuzzy
-#~ msgid "Binding"
-#~ msgstr "blixtar"
-
-#~ msgid "Gate"
-#~ msgstr "Port"
-
-#~ msgid "The door will not open for any who are not allied with it."
-#~ msgstr "Dörren öppnar sig enbart för allierade trupper."
-
-#~ msgid "bump"
-#~ msgstr "stöt"
-
-#~ msgid "Wall Guard"
-#~ msgstr "Vaktpost"
-
-#~ msgid "skirmisher,regenerates"
-#~ msgstr "stigfinnare, regenererar"
-
-#~ msgid ""
-#~ "The guardians of the capital city of Weldyn, the Wall Guards patrol the "
-#~ "walls of the city, shooting at approaching enemies with their crossbows "
-#~ "before their opponent can retaliate even with a ranged attack. Because "
-#~ "they are mounted on high walls, they cannot move anywhere except on walls "
-#~ "and the roofs of castles."
-#~ msgstr ""
-#~ "Vaktposterna i huvudstaden Weldyn går på vakt på stadens murar, och kan "
-#~ "försvara sig mot fiender långt innan dessa är inom räckhåll med sina egna "
-#~ "bågar. Eftersom de står uppe på de höga murarna är de låsta vid att röra "
-#~ "sig på murarna och borgtaken."
-
-#, fuzzy
-#~ msgid "Unkown era"
-#~ msgstr "Okänt scenario: '"
-
-#~ msgid "Yellow"
-#~ msgstr "Gul"
+msgstr "Hjälp oss att förbättra Wesnoth!"
