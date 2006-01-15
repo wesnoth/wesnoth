@@ -59,13 +59,13 @@ void python_ai::set_error(const char *fmt, ...)
 
 static PyObject* wrap_unittype(const unit_type& type);
 
-static PyObject* wrapper_unittype_get_name(wesnoth_unittype* unit, void* closure)
+static PyObject* wrapper_unittype_get_name(wesnoth_unittype* unit, void* /*closure*/)
 {
 	return Py_BuildValue("s",( const char* )unit->unit_type_->language_name().c_str());
 }
 
 #define ut_get( x ) \
-static PyObject* wrapper_unittype_get_##x( wesnoth_unittype* type, void* closure ) \
+static PyObject* wrapper_unittype_get_##x( wesnoth_unittype* type, void* /*closure*/ ) \
 {	\
 	return Py_BuildValue("i",type->unit_type_->x());	\
 }
@@ -198,42 +198,42 @@ typedef struct {
 	const attack_type* attack_type_;
 } wesnoth_attacktype;
 
-static PyObject* attacktype_get_name(wesnoth_attacktype* type, void* closure)
+static PyObject* attacktype_get_name(wesnoth_attacktype* type, void* /*closure*/)
 {
 	return Py_BuildValue("s",type->attack_type_->name().c_str());
 }
 
-static PyObject* attacktype_get_damage(wesnoth_attacktype* type, void* closure)
+static PyObject* attacktype_get_damage(wesnoth_attacktype* type, void* /*closure*/)
 {
 	return Py_BuildValue("i",type->attack_type_->damage());
 }
 
-static PyObject* attacktype_get_num_attacks(wesnoth_attacktype* type, void* closure)
+static PyObject* attacktype_get_num_attacks(wesnoth_attacktype* type, void* /*closure*/)
 {
 	return Py_BuildValue("i",type->attack_type_->num_attacks());
 }
 
-static PyObject* attacktype_get_attack_weight(wesnoth_attacktype* type, void* closure)
+static PyObject* attacktype_get_attack_weight(wesnoth_attacktype* type, void* /*closure*/)
 {
 	return Py_BuildValue("d",type->attack_type_->attack_weight());
 }
 
-static PyObject* attacktype_get_defense_weight(wesnoth_attacktype* type, void* closure)
+static PyObject* attacktype_get_defense_weight(wesnoth_attacktype* type, void* /*closure*/)
 {
 	return Py_BuildValue("d",type->attack_type_->defense_weight());
 }
 
-static PyObject* attacktype_get_backstab(wesnoth_attacktype* type, void* closure)
+static PyObject* attacktype_get_backstab(wesnoth_attacktype* type, void* /*closure*/)
 {
 	return Py_BuildValue("i",type->attack_type_->backstab());
 }
 
-static PyObject* attacktype_get_slow(wesnoth_attacktype* type, void* closure)
+static PyObject* attacktype_get_slow(wesnoth_attacktype* type, void* /*closure*/)
 {
 	return Py_BuildValue("i",type->attack_type_->slow());
 }
 
-static PyObject* attacktype_get_range(wesnoth_attacktype* type, void* closure)
+static PyObject* attacktype_get_range(wesnoth_attacktype* type, void* /*closure*/)
 {
 	return Py_BuildValue("s",type->attack_type_->range().c_str());
 }
@@ -330,28 +330,28 @@ bool python_ai::is_unit_valid(const unit* unit, bool do_set_error)
 	return false;
 }
 
-static PyObject* unit_get_name(wesnoth_unit* unit, void* closure)
+static PyObject* unit_get_name(wesnoth_unit* unit, void* /*closure*/)
 {
 	if (!running_instance->is_unit_valid(unit->unit_))
 		return NULL;
 	return Py_BuildValue("s",( const char* )unit->unit_->name().c_str());
 }
 
-static PyObject* unit_is_enemy(wesnoth_unit* unit, void* closure)
+static PyObject* unit_is_enemy(wesnoth_unit* unit, void* /*closure*/)
 {
 	if (!running_instance->is_unit_valid(unit->unit_))
 		return NULL;
 	return Py_BuildValue("i",running_instance->current_team().is_enemy(unit->unit_->side()) == true ? 1 : 0);
 }
 
-static PyObject* unit_can_recruit(wesnoth_unit* unit, void* closure)
+static PyObject* unit_can_recruit(wesnoth_unit* unit, void* /*closure*/)
 {
 	if (!running_instance->is_unit_valid(unit->unit_))
 		return NULL;
 	return Py_BuildValue("i",unit->unit_->can_recruit() == true ? 1 : 0);
 }
 
-static PyObject* unit_query_valid(wesnoth_unit* unit, void* closure)
+static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 {
 	return Py_BuildValue("i",running_instance->is_unit_valid(unit->unit_) == true ? 1 : 0);
 }
@@ -475,11 +475,11 @@ static void wesnoth_location_dealloc(wesnoth_location* self)
     self->ob_type->tp_free((PyObject*)self);
 }
 
-static PyObject* location_get_x(wesnoth_location* location, void* closure)
+static PyObject* location_get_x(wesnoth_location* location, void* /*closure*/)
 {
 	return Py_BuildValue("i", location->location_->x);
 }
-static PyObject* location_get_y(wesnoth_location* location, void* closure)
+static PyObject* location_get_y(wesnoth_location* location, void* /*closure*/)
 {
 	return Py_BuildValue("i", location->location_->y);
 }
@@ -583,11 +583,11 @@ typedef struct {
 	const gamemap* map_;
 } wesnoth_gamemap;
 
-static PyObject* gamemap_get_x(wesnoth_gamemap* map, void* closure)
+static PyObject* gamemap_get_x(wesnoth_gamemap* map, void* /*closure*/)
 {
 	return Py_BuildValue("i", map->map_->x());
 }
-static PyObject* gamemap_get_y(wesnoth_gamemap* map, void* closure)
+static PyObject* gamemap_get_y(wesnoth_gamemap* map, void* /*closure*/)
 {
 	return Py_BuildValue("i", map->map_->y());
 }
@@ -679,17 +679,17 @@ static PyTypeObject wesnoth_gamemap_type = {
 	NULL
 };
 
-static PyObject* wrapper_team_name(wesnoth_team* team, void* closure)
+static PyObject* wrapper_team_name(wesnoth_team* team, void* /*closure*/)
 {
 	return Py_BuildValue("s", team->team_->team_name().c_str());
 }
 
-static PyObject* wrapper_team_income(wesnoth_team* team, void* closure)
+static PyObject* wrapper_team_income(wesnoth_team* team, void* /*closure*/)
 {
 	return Py_BuildValue("i", team->team_->income());
 }
 
-static PyObject* wrapper_team_gold(wesnoth_team* team, void* closure)
+static PyObject* wrapper_team_gold(wesnoth_team* team, void* /*closure*/)
 {
 	return Py_BuildValue("i", team->team_->gold());
 }
@@ -823,22 +823,22 @@ static PyMethodDef gamestatus_methods[] = {
 	{ NULL,		NULL,	0, NULL }
 };
 
-static PyObject* wrapper_gamestatus_turn(wesnoth_gamestatus* status, void* closure)
+static PyObject* wrapper_gamestatus_turn(wesnoth_gamestatus* status, void* /*closure*/)
 {
 	return Py_BuildValue("i", status->status_->turn());
 }
 
-static PyObject* wrapper_gamestatus_number_of_turns(wesnoth_gamestatus* status, void* closure)
+static PyObject* wrapper_gamestatus_number_of_turns(wesnoth_gamestatus* status, void* /*closure*/)
 {
 	return Py_BuildValue("i", status->status_->number_of_turns());
 }
 
-static PyObject* wrapper_gamestatus_lawful_bonus(wesnoth_gamestatus* status, void* closure)
+static PyObject* wrapper_gamestatus_lawful_bonus(wesnoth_gamestatus* status, void* /*closure*/)
 {
 	return Py_BuildValue("i", status->status_->get_time_of_day().lawful_bonus);
 }
 
-static PyObject* wrapper_gamestatus_previous_lawful_bonus(wesnoth_gamestatus* status, void* closure)
+static PyObject* wrapper_gamestatus_previous_lawful_bonus(wesnoth_gamestatus* status, void* /*closure*/)
 {
 	return Py_BuildValue("i", status->status_->get_previous_time_of_day().lawful_bonus);
 }
