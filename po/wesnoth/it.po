@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-01-12 16:30+0100\n"
-"PO-Revision-Date: 2005-12-27 21:57+0100\n"
+"PO-Revision-Date: 2005-12-29 17:51+0100\n"
 "Last-Translator: Americo_iacovizzi <darkamex@gmail.com>\n"
 "Language-Team:  <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1623,7 +1623,6 @@ msgid "teleport"
 msgstr "teletrasporto"
 
 #: data/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -1631,8 +1630,8 @@ msgid ""
 "to stone)."
 msgstr ""
 "Attacco alle spalle:\n"
-"Questo attacco procura il doppio dei danni se l'unità si trova alle spalle "
-"del bersaglio e non è sotto l'effetto di abilità limitanti. (esempio: "
+"Questo attacco causa il doppio dei danni se l'unità si trova alle spalle del "
+"bersaglio e non è sotto l'effetto di abilità limitanti. (esempio: "
 "trasformata in pietra)"
 
 #: data/english.cfg:96
@@ -1705,7 +1704,6 @@ msgstr ""
 "l'attacco Piaga. (Non funziona sui non morti e sulle unità nei villagi)"
 
 #: data/english.cfg:117
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -1714,8 +1712,8 @@ msgid ""
 msgstr ""
 "Piaga:\n"
 "Quando un uità viene uccisa da un attacco Piaga, quell'unità viene "
-"sostituita da un'unità identica e della stessa squadra dell'unità che con "
-"l'attacco Piaga. (Non funziona sui non morti e sulle unità nei villagi)"
+"sostituita da un'unità identica e della stessa squadra dell'unità con "
+"l'attacco Piaga. (Non ha effetto sui non morti e sulle unità nei villaggi)"
 
 #: data/english.cfg:120
 msgid ""
@@ -4478,38 +4476,32 @@ msgid "statuspanel^movement"
 msgstr "movimenti"
 
 #: data/themes/default.cfg:458
-#, fuzzy
 msgid "Replay"
-msgstr "replay"
+msgstr "Replay"
 
 #: data/themes/default.cfg:471
-#, fuzzy
 msgid "Play"
-msgstr "Giocatori:"
+msgstr "Play"
 
 #: data/themes/default.cfg:484
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: data/themes/default.cfg:497
-#, fuzzy
 msgid "Reset"
-msgstr "Deserto"
+msgstr "Riavvia"
 
 #: data/themes/default.cfg:510
-#, fuzzy
 msgid "Next Turn"
-msgstr "Turno"
+msgstr "Turno Successivo"
 
 #: data/themes/default.cfg:523
-#, fuzzy
 msgid "Next Side"
-msgstr "Prossimo"
+msgstr "Prossimo Giocatore"
 
 #: data/themes/default.cfg:559
-#, fuzzy
 msgid "Skip animation"
-msgstr "+Traduzione in Slovacco"
+msgstr "Salta le animazioni"
 
 #: data/themes/default.cfg:663
 msgid "Act."
@@ -4790,9 +4782,8 @@ msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attacks."
 msgstr ""
-"L'attacco 'rallenta' rende i nemici più lenti, inoltre gli impedisce di "
-"avere una zona di controllo permettendo alle tue unità ferite di fuggire o "
-"ti aiuta ad intercettare le unità nemiche in fuga."
+"L'abilità di attacco attacco 'rallenta' rende i nemici più lenti e "
+"diminuisce il danno che essi causano ad ogni attacco."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -5221,9 +5212,8 @@ msgid "tentacle"
 msgstr "tentacolo"
 
 #: data/units/Cuttle_Fish.cfg:42
-#, fuzzy
 msgid "swarm"
-msgstr "colpo"
+msgstr "sciame"
 
 #: data/units/Cuttle_Fish.cfg:76
 msgid "ink"
@@ -6880,9 +6870,8 @@ msgid "net"
 msgstr "rete"
 
 #: data/units/Goblin_Rouser.cfg:3
-#, fuzzy
 msgid "Goblin Rouser"
-msgstr "Goblin Impalatore"
+msgstr "Goblin Incatato"
 
 #: data/units/Goblin_Rouser.cfg:27
 #, fuzzy
@@ -8093,7 +8082,6 @@ msgid "Ogre"
 msgstr "Ogre"
 
 #: data/units/Ogre.cfg:23
-#, fuzzy
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
@@ -9430,9 +9418,8 @@ msgid "+Scenario Designers"
 msgstr "+Disegnatori degli Scenari"
 
 #: src/about.cpp:110
-#, fuzzy
 msgid "+Multiplayer Developers"
-msgstr "+Mappe per Multiplayer"
+msgstr "+Sviluppatori del multiplayer"
 
 #: src/about.cpp:115
 msgid "+Multiplayer Maps"
@@ -10527,7 +10514,7 @@ msgstr "Crea Partita"
 
 #: src/multiplayer_create.cpp:46
 msgid "Time limit"
-msgstr ""
+msgstr "Tempo limite "
 
 #: src/multiplayer_create.cpp:55
 msgid "Name of game:"
@@ -10572,18 +10559,16 @@ msgstr "Numero massimo dei turni per la partita"
 
 #: src/multiplayer_create.cpp:103
 msgid "Enables user time limit"
-msgstr ""
+msgstr "Abilita il tempo limite per l'utente"
 
 #: src/multiplayer_create.cpp:109
 #, fuzzy
 msgid "Initial time available to players at start of game"
-msgstr ""
-"Le unità che si trovano in un villaggio vengono curate di 8 Punti Ferita "
-"all'inizio del loro turno."
+msgstr "Tempo messo a disposizione del giocatore all'inizio dell'incontro."
 
 #: src/multiplayer_create.cpp:115
 msgid "Time added to user's clock at the end of each turn"
-msgstr ""
+msgstr "Tempo aggiunto all'orologio del giocatore alla fine di ogni turno."
 
 #: src/multiplayer_create.cpp:120
 msgid "The amount of income each village yields per turn"
@@ -10653,14 +10638,12 @@ msgid "Unlimited Turns"
 msgstr "Turni Illimitati"
 
 #: src/multiplayer_create.cpp:266
-#, fuzzy
 msgid "Initial Time: "
-msgstr "Iniziato"
+msgstr "Tempo iniziale: "
 
 #: src/multiplayer_create.cpp:271
-#, fuzzy
 msgid "Turn time: "
-msgstr "Turni:"
+msgstr "Tempo del turno: "
 
 #: src/multiplayer_create.cpp:277
 msgid "Village Gold: "
@@ -11050,11 +11033,11 @@ msgid "invisible: "
 msgstr "invisibile:"
 
 #: src/reports.cpp:143
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
-msgstr "Questa unità è stata pietrificata. Non può muoversi nè attaccare."
+msgstr ""
+"Questa unità è stata rallentata. Quando attacca provoca un danno dimezzato."
 
 #: src/reports.cpp:143
 msgid "slowed: "
@@ -11318,73 +11301,6 @@ msgstr ""
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
 
-#, fuzzy
-#~ msgid "Turn Dialog"
-#~ msgstr "Introduzione"
-
-#, fuzzy
-#~ msgid "Turn Bell"
-#~ msgstr "Turni:"
-
-#, fuzzy
-#~ msgid "Theme"
-#~ msgstr "Squadra"
-
-#, fuzzy
-#~ msgid "Music"
-#~ msgstr "+Musiche"
-
-#, fuzzy
-#~ msgid "Change the music volume"
-#~ msgstr "Cambia la lingua"
-
-#, fuzzy
-#~ msgid "Chat Lines: "
-#~ msgstr "Unità caotiche:"
-
-#, fuzzy
-#~ msgid "yes"
-#~ msgstr "Sì"
-
-#, fuzzy
-#~ msgid "no"
-#~ msgstr "Neve"
-
-#, fuzzy
-#~ msgid "Prefs section^Multiplayer"
-#~ msgstr "Multigiocatore"
-
-#, fuzzy
-#~ msgid "Preferences"
-#~ msgstr "Principessa"
-
-#, fuzzy
-#~ msgid "Choose Resolution"
-#~ msgstr "Scegli l'arma:"
-
-#~ msgid "Close Window"
-#~ msgstr "Chiudi Finestra"
-
-#, fuzzy
-#~ msgid "Hotkey Settings"
-#~ msgstr "Impostazioni"
-
-#, fuzzy
-#~ msgid "Action"
-#~ msgstr "Azioni"
-
-#, fuzzy
-#~ msgid "Binding"
-#~ msgstr "fulmine"
-
-#~ msgid "Saved Theme Preference: "
-#~ msgstr "Temi Salvati:"
-
-#~ msgid "New theme will take effect on next new or loaded game."
-#~ msgstr ""
-#~ "Il nuovo tema avrà effetto sulla prossima nuova partita o sul prossimo "
-#~ "caricamento."
-
 #~ msgid "Gate"
 #~ msgstr "Portone"
 
@@ -11413,10 +11329,6 @@ msgstr ""
 #~ "Visto che si trovano sempre su delle alte mura, esse non possono muoversi "
 #~ "in altri posti oltre le mura e i tetti dei castelli."
 
-#, fuzzy
-#~ msgid "Unkown era"
-#~ msgstr "Scenario sconosciuto: '"
-
 #~ msgid "Yellow"
 #~ msgstr "Giallo"
 
@@ -11427,6 +11339,14 @@ msgstr ""
 #~ "Questa unità è stata rallentata. Non ha alcuna zona di controllo, si "
 #~ "muove con una velocità dimezzata e colpisce una volta in meno durante il "
 #~ "combattimento."
+
+#~ msgid "Saved Theme Preference: "
+#~ msgstr "Temi Salvati:"
+
+#~ msgid "New theme will take effect on next new or loaded game."
+#~ msgstr ""
+#~ "Il nuovo tema avrà effetto sulla prossima nuova partita o sul prossimo "
+#~ "caricamento."
 
 #~ msgid ""
 #~ "Slow:\n"
@@ -11589,6 +11509,9 @@ msgstr ""
 
 #~ msgid "Do you want to review any of the skills learned in this scenario?"
 #~ msgstr "Vuoi rivedere uno degli argomenti trattati in questo scenario?"
+
+#~ msgid "Yes"
+#~ msgstr "Sì"
 
 #~ msgid "I'm done reviewing skills!"
 #~ msgstr "Ho finito di rivedere le abilità!"
@@ -12457,6 +12380,9 @@ msgstr ""
 #~ "'Multiplayer' e quindi scegliere 'Collega al Server ufficiale'. Questo vi "
 #~ "connetterà al server ufficiale di Wesnoth, dove potrai unirti ad una "
 #~ "partita scegliendola e selezionando 'Collegati alla Partita'"
+
+#~ msgid "Close Window"
+#~ msgstr "Chiudi Finestra"
 
 #~ msgid "Map Generator"
 #~ msgstr "Generatore Mappe"
