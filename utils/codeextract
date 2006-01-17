@@ -1,0 +1,11 @@
+#!/usr/bin/perl -n
+# codeextract
+# usage: codeextract status.txt | codelist
+# extracts list of font codes from DejaVu font status.txt file, as a
+# list of decimal integers suitable as input to codelist
+
+next if $. < 7; # skip first 6 lines
+s/ .*//;        # get rid of stuff other than codepoint
+s/^U\+//;       # set up number
+print hex $_, "\n";
+

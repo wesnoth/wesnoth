@@ -1,0 +1,24 @@
+#!/usr/bin/perl -n
+# codelist
+# given list of integers, one per line, outputs a minimal list of ranges
+# describing the list
+
+# this is useful for codepoints that are in a font, based on list of codes
+# output format is suitable for codepoints="" in Wesnoth fonts.cfg
+
+#push @n, hex;
+chomp; push @n, $_;
+END {
+    foreach (sort { $a <=> $b } @n) {
+	if ($_ == $last + 1) {
+	    $last = $_;
+	} else {
+	    push @r, ($first == $last) ? "$first" : "$first-$last";
+	    $first = $last = $_;
+	}
+    }
+    push @r, ($first == $last) ? "$first" : "$first-$last";
+    shift @r; # get rid of blank first element
+    print join(",", @r), "\n";
+}
+
