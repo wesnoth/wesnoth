@@ -425,7 +425,7 @@ bool game_controller::play_multiplayer_mode()
 	}
 
 	std::string era = "era_default";
-	std::string scenario = "multiplayer_test";
+	std::string scenario = "multiplayer_Charge";
 	std::map<int,std::string> side_types, side_controllers, side_algorithms;
 	std::map<int,string_map> side_parameters;
 
