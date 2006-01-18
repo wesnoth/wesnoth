@@ -505,7 +505,6 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 			static const std::string default_missile(game_config::missile_n_image);
 			static const std::string default_diag_missile(game_config::missile_ne_image);
 			if(missile_image->empty()) {
-				printf("qmslkfdjqmslkdfjl\n");
 				if(dir == unit_animation::VERTICAL)
 					missile_image = &default_missile;
 				else

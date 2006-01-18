@@ -58,16 +58,15 @@ public:
 
 	int get_first_frame_time() const;
 	int get_last_frame_time() const;
-	int get_duration() const;
 
 	//inlined for performance
-	void update_current_frame() { if(does_not_change_) return; update_current_frame_internal(); };
+	void update_current_frame();
 	bool frame_changed() const;
 
 	//True if the current animation was finished
 	bool animation_finished() const;
 	int get_animation_time() const;
-	int get_frame_time() const;
+	int get_cycle_time() const;
 	const T& get_current_frame() const;
 	const T& get_first_frame() const;
 	const T& get_last_frame() const;
@@ -88,7 +87,6 @@ private:
 		bool has_value;
 		T value;
 	};
-	void update_current_frame_internal();
 
 	static const T void_value_;
 

@@ -1388,7 +1388,7 @@ int unit_type::defensive_animation::matches(bool h, std::string r) const
 {
 	int result = 0;
 	if(hits != HIT_OR_MISS ) {
-		if(hits == h) {
+		if(h && (hits == HIT)) {
 			result++;
 		} else {
 			return -1;

@@ -110,7 +110,7 @@ void animated<T,T_void_value>::start_animation(int start_frame, int cycles, int 
 
 
 template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::update_current_frame_internal()
+void animated<T,T_void_value>::update_current_frame()
 {
 	// std::cerr << "--- updating frame ---\n";
 	if(does_not_change_)
@@ -220,7 +220,7 @@ int animated<T,T_void_value>::get_animation_time() const
 }
 
 template<typename T,  typename T_void_value>
-int animated<T,T_void_value>::get_frame_time() const
+int animated<T,T_void_value>::get_cycle_time() const
 {
 	return current_time_ - start_ticks_ + start_frame_;
 }
