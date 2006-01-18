@@ -255,7 +255,6 @@ bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
 {
 	const int x_thresh = hex_width();
 	const int y_thresh = hex_size();
-	printf("area %d %d %d %d x %d y %d thres %d %d\n",area.x,area.y,area.w,area.h,x,y,x_thresh,y_thresh);
 	return (x < area.x || x >= area.x + area.w - x_thresh ||
 		y < area.y || y >= area.y + area.h - y_thresh);
 }
