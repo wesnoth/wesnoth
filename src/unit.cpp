@@ -108,19 +108,14 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	//dummy units used by the 'move_unit_fake' command don't need to have a side.
 	if(dummy_unit == false) validate_side(side_);
 
-	clock_t ct = clock();
-	char buf[20];
-	snprintf(buf,sizeof(buf),"-%lu",ct);
-	std::string time_tag(buf);
-
 	if(use_traits) {
 		//units that don't have traits generated are just generic
 		//units, so they shouldn't get a description either.
 		description_ = type_->generate_description();
 		generate_traits();
-		underlying_description_ = description_ + time_tag;
+		underlying_description_ = description_;
 	}else{
-	  underlying_description_ = type_->id() + time_tag;
+	  underlying_description_ = type_->id();
 	}
 }
 
