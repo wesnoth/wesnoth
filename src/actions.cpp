@@ -211,6 +211,7 @@ gamemap::location under_leadership(const std::map<gamemap::location,unit>& units
 	const int side = un->second.side();
 	const int level = un->second.type().level();
 	int bonus_tracker = 0;
+	int current_bonus = 0;
 
 	gamemap::location best_loc;
 	for(int i = 0; i != 6; ++i) {
@@ -218,16 +219,16 @@ gamemap::location under_leadership(const std::map<gamemap::location,unit>& units
 		if(it != units.end() && (int)it->second.side() == side &&
 			it->second.type().is_leader() &&
 			it->second.incapacitated() == false) {
-			if(bonus) {
-				*bonus = maximum<int>(*bonus,it->second.type().leadership(level));
-				if(*bonus != bonus_tracker || i == 0) {
-					best_loc = adjacent[i];
-					bonus_tracker = *bonus;
-				}
+			current_bonus = maximum<int>(current_bonus,it->second.type().leadership(level));
+			if(current_bonus != bonus_tracker) {
+				best_loc = adjacent[i];
+				bonus_tracker = current_bonus;
 			}
 		}
 	}
-
+	if(bonus) {
+		*bonus = current_bonus;
+	}
 	return best_loc;
 }
 
