@@ -322,7 +322,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	if(leader_loc.valid()) {
 		leader = units.find(leader_loc);
 		wassert(leader != units.end());
-		leader->second.set_leading(true);
+		leader->second.set_leading();
 	}
 
 	const std::pair<const unit_animation*,const unit_animation*> tmp_pair = attack.animation(get_adjacent_direction(a,b)) ;
@@ -570,7 +570,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 		attack_anim.update_current_frame();
 		missile_anim.update_current_frame();
-		def->second.update_defending_frame();
+		def->second.update_frame();
 		animation_time = attack_anim.get_animation_time();
 		events::pump();
 		disp.update_display();
@@ -590,7 +590,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	}
 
 	if(leader_loc.valid()){
-		leader->second.set_leading(false);
+		leader->second.set_standing();
 	}
 
 	disp.invalidate(a);
@@ -666,7 +666,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		LOG_DP << "found leader at " << leader_loc << '\n';
 		leader = units.find(leader_loc);
 		wassert(leader != units.end());
-		leader->second.set_leading(true);
+		leader->second.set_leading();
 	}
 
 	const int begin_at = minimum<int>(-200,attack_anim.get_first_frame_time());
@@ -829,7 +829,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		ticks = SDL_GetTicks();
 
 		attack_anim.update_current_frame();
-		def->second.update_defending_frame();
+		def->second.update_frame();
 		animation_time = attack_anim.get_animation_time();
 		events::pump();
 		disp.update_display();
@@ -850,7 +850,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	}
 
 	if(leader_loc.valid()){
-		leader->second.set_leading(false);
+		leader->second.set_standing();
 	}
 
 	disp.invalidate(a);

@@ -139,11 +139,12 @@ public:
 
 	void set_standing();
 	void set_defending(bool hits, std::string range, int start_frame, int acceleration);
-	void update_defending_frame();
-	void set_attacking(bool newval, const attack_type* type=NULL, int ms=0);
+	void update_frame();
+	void set_attacking( const attack_type* type=NULL, int ms=0);
 
-	void set_leading(bool newval);
-	void set_healing(bool newval);
+	void set_leading();
+	void set_healing();
+	void set_walking(const std::string terrain,gamemap::location::DIRECTION,int acceleration);
 
 	bool facing_left() const;
 	void set_facing_left(bool newval);
@@ -188,10 +189,9 @@ private:
 
 	const unit_type* type_;
 
-	enum STATE { STATE_NORMAL, STATE_ATTACKING,
-	             STATE_DEFENDING,  STATE_LEADING, STATE_HEALING};
+	enum STATE { STATE_NORMAL, STATE_ATTACKING, STATE_DEFENDING,
+		STATE_LEADING, STATE_HEALING, STATE_WALKING};
 	STATE state_;
-	std::string sub_state_;
 	const attack_type* attackType_;
 	int attackingMilliseconds_;
 	bool getsHit_;
@@ -247,7 +247,6 @@ private:
 	bool unrenamable_;
 
 	unit_animation anim_;
-	const unit_animation* get_animation() const;
 
 	void reset_modifications();
 	void apply_modifications();

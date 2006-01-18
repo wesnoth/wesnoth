@@ -67,7 +67,6 @@ void sort_units(std::vector< unit > &units)
 //constructor for reading a unit
 unit::unit(const game_data& data, const config& cfg) :
 	state_(STATE_NORMAL),
-	sub_state_(""),
 	moves_(0), user_end_turn_(false), facingLeft_(true),
 	resting_(false), hold_position_(false), recruit_(false),
 	guardian_(false), upkeep_(UPKEEP_FREE)
@@ -89,7 +88,6 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
                gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
 	       type_(&t->get_gender_unit_type(gender_)), state_(STATE_NORMAL),
-	       sub_state_(""),
 	       hitpoints_(type_->hitpoints()),
 	       maxHitpoints_(type_->hitpoints()),
 	       backupMaxHitpoints_(type_->hitpoints()), experience_(0),
@@ -124,7 +122,6 @@ unit::unit(const unit_type* t, const unit& u) :
 	gender_(u.gender_), variation_(u.variation_),
 	type_(&t->get_gender_unit_type(u.gender_).get_variation(u.variation_)),
 	state_(STATE_NORMAL),
-	sub_state_(""),
 	hitpoints_(u.hitpoints()),
 	maxHitpoints_(type_->hitpoints()),
 	backupMaxHitpoints_(type_->hitpoints()),
@@ -971,12 +968,17 @@ const std::string& unit::image() const
 {
 	switch(state_) {
 		case STATE_NORMAL: return type_->image();
+		case STATE_WALKING: 
 		case STATE_DEFENDING: {
 			const std::string& res = anim_.get_current_frame().image;
 			if(res != "") {
 				return res;
+			} else { 
+				if(anim_.animation_finished()) 
+					return anim_.get_last_frame().image;
+				else
+					return type_->image();
 			}
-			return type_->image();
 		}
 		case STATE_ATTACKING: {
 			if(attackType_ == NULL)
@@ -1006,18 +1008,6 @@ const image::locator unit::image_loc() const
   }
 }
 
-const unit_animation* unit::get_animation() const
-{
-	switch(state_) {
-	case STATE_DEFENDING: {
-			const unit_animation* const anim = &type_->defend_animation(getsHit_,sub_state_);
-			return anim;
-	}
-	default:
-		return NULL;
-	}
-}
-
 void unit::set_standing()
 {
 	state_ = STATE_NORMAL;
@@ -1025,40 +1015,43 @@ void unit::set_standing()
 
 void unit::set_defending(bool hits, std::string range, int start_frame, int acceleration)
 {
-	sub_state_ = range ;
 	state_ =  STATE_DEFENDING;
-	getsHit_ = hits;
 
-	const unit_animation* const anim = get_animation();
-	if(anim != NULL) {
-		anim_ = *anim;
-		anim_.start_animation(start_frame,1,acceleration);
-	}
+	anim_ =  type_->defend_animation(hits,range);
+	anim_.start_animation(start_frame,1,acceleration);
 }
 
-void unit::update_defending_frame()
+void unit::update_frame()
 {
-	if(get_animation()) {
 		anim_.update_current_frame();
-	}
+		if(anim_.animation_finished()) set_standing();
 }
 
-void unit::set_attacking(bool newval, const attack_type* type, int ms)
+void unit::set_attacking( const attack_type* type, int ms)
 {
-	state_ = newval ? STATE_ATTACKING : STATE_NORMAL;
+	state_ =  STATE_ATTACKING;
 	attackType_ = type;
 	attackingMilliseconds_ = ms;
 }
 
-void unit::set_leading(bool newval)
+void unit::set_leading()
 {
-	state_ = newval ? STATE_LEADING : STATE_NORMAL;
+	state_ = STATE_LEADING;
 }
 
-void unit::set_healing(bool newval)
+void unit::set_healing()
 {
-	state_ = newval ? STATE_HEALING : STATE_NORMAL;
+	state_ = STATE_HEALING;
 }
+
+void unit::set_walking(const std::string terrain,gamemap::location::DIRECTION dir,int acceleration)
+{
+	state_ = STATE_WALKING;
+	anim_ = type_->move_animation(terrain,dir);
+	anim_.start_animation(anim_.get_first_frame_time(),1,acceleration);
+}
+
+
 
 bool unit::facing_left() const
 {

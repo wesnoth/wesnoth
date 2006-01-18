@@ -1381,7 +1381,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 
 				//only show healing frames if haloing is enabled, or if there is no halo
 				if(halo_image.empty() || preferences::show_haloes()) {
-					healer.set_healing(true);
+					healer.set_healing();
 
 					if(halo_image.empty() == false) {
 						int height_adjust = healer.is_flying() ? 0 :
@@ -1485,7 +1485,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
 				wassert(units.count(i->second));
 				unit& healer = units.find(i->second)->second;
-				healer.set_healing(false);
+				healer.set_standing();
 
 				events::pump();
 
