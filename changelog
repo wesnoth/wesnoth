@@ -54,6 +54,8 @@ SVN trunk (1.1+svn):
    * all currently used abilities added as macros in data/abilities.cfg
    * abilities can receive time of day and terrain [filter]
      - ambush and nightstalk are available via the new [hides] ability tag
+   * added a optionnal random_leader= tag inside a [multiplayer_side] to
+     specify a different list of randomly selectable leaders
  * Miscellaneous
    * anonymous data logging for single player campaigns, see stats.wesnoth.org
    * zipios++ can now be disabled by passing --without-zipios to configure

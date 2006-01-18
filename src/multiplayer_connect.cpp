@@ -482,14 +482,21 @@ void connect::side::resolve_random()
 	if (llm_.get_leader() == "random") {
 		// Choose a random leader type.
 		const config& fact = *parent_->era_sides_[faction_];
-		std::vector<std::string> types = utils::split(fact["leader"]);
+		std::vector<std::string> types = utils::split(fact["random_leader"]);
 		if (!types.empty()) {
 			const int lchoice = rand() % types.size();
 			leader_ = types[lchoice];
 		} else {
-			utils::string_map i18n_symbols;
-			i18n_symbols["faction"] = fact["name"];
-			throw config::error(vgettext("Unable to find a leader type for faction $faction", i18n_symbols));
+			// if random_leader= doesn't exists, we use leader=
+			types = utils::split(fact["leader"]);
+			if (!types.empty()) {
+				const int lchoice = rand() % types.size();
+				leader_ = types[lchoice];
+			} else {
+				utils::string_map i18n_symbols;
+				i18n_symbols["faction"] = fact["name"];
+				throw config::error(vgettext("Unable to find a leader type for faction $faction", i18n_symbols));
+			}
 		}
 	}
 }
