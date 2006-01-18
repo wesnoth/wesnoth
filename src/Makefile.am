@@ -103,6 +103,7 @@ wesnoth_SOURCES = \
 	unit.cpp \
 	unit_display.cpp \
 	unit_types.cpp \
+	unit_animation.cpp \
 	upload_log.cpp \
 	variable.cpp \
 	video.cpp \
@@ -186,6 +187,7 @@ wesnoth_editor_SOURCES = \
 	unit.cpp \
 	unit_display.cpp \
 	unit_types.cpp \
+	unit_animation.cpp \
 	variable.cpp \
 	video.cpp \
 	serialization/binary_or_text.cpp \
@@ -378,6 +380,7 @@ noinst_HEADERS = \
 	intro.hpp \
 	preferences.hpp \
 	unit_types.hpp \
+	unit_animation.hpp \
 	display.hpp \
 	leader_list.hpp \
 	about.hpp \

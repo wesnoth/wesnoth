@@ -13,7 +13,7 @@
 #ifndef UNIT_TYPES_H_INCLUDED
 #define UNIT_TYPES_H_INCLUDED
 
-#include "animated.hpp"
+#include "unit_animation.hpp"
 #include "config.hpp"
 #include "color_range.hpp"
 #include "map.hpp"
@@ -23,41 +23,6 @@
 #include <string>
 #include <vector>
 
-//a class to describe a unit's animation sequence
-struct unit_frame {
-	unit_frame() : xoffset(0), halo_x(0), halo_y(0) {}
-	explicit unit_frame(const std::string& str, const std::string & diag ="") : xoffset(0), image(str),image_diagonal(diag),
-									       halo_x(0), halo_y(0) {};
-	explicit unit_frame(const config& cfg);
-
-	// int start, end;
-	int xoffset;
-	std::string image;
-	std::string image_diagonal;
-	std::string halo;
-	int halo_x, halo_y;
-};
-class unit_animation:public animated<unit_frame> 
-{
-public:
-
-	unit_animation(){};
-	explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
-	explicit unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal = "");
-
-	enum FRAME_DIRECTION { VERTICAL, DIAGONAL };
-
-	struct sfx {
-		int time;
-		std::string on_hit, on_miss;
-	};
-
-	const std::vector<sfx>& sound_effects() const;
-
-private:
-
-	std::vector<sfx> sfx_;
-};
 
 class unit_type;
 //the 'attack type' is the type of attack, how many times it strikes,
@@ -277,11 +242,11 @@ public:
 
 	const std::string& race() const;
 
-	const unit_animation& defend_animation(bool hits, std::string range) const;
+	const defensive_animation& defend_animation(bool hits, std::string range) const;
 	const unit_animation* teleport_animation() const;
 	const unit_animation* extra_animation(std::string flag) const;
-	const unit_animation& die_animation(const attack_type* attack) const;
-	const unit_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
+	const death_animation& die_animation(const attack_type* attack) const;
+	const movement_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 
 	const ability_filter heals_filter() const;
 	const ability_filter regenerates_filter() const;
@@ -353,47 +318,13 @@ private:
 
 	std::vector<unit_race::GENDER> genders_;
 
-	struct defensive_animation
-	{
-		typedef enum { HIT, MISS, HIT_OR_MISS } hit_type;
-
-		explicit defensive_animation(const config& cfg);
-		explicit defensive_animation(const std::string &image, const std::string &range="",const hit_type for_hit= HIT_OR_MISS): hits(for_hit),range(utils::split(range)),animation(image,-150,150) {};
-		int matches(bool hits, std::string range) const;
-
-		hit_type hits;
-		std::vector<std::string> range;
-		unit_animation animation;
-	};
-
 	std::vector<defensive_animation> defensive_animations_;
 
 	std::vector<unit_animation> teleport_animations_;
 
 	std::multimap<std::string,unit_animation> extra_animations_;
 
-	struct death_animation
-	{
-		explicit death_animation(const config& cfg);
-		explicit death_animation(const std::string &image):animation(image,0,10) {};
-		int matches(const attack_type* attack) const;
-
-		std::vector<std::string> damage_type, special;
-		unit_animation animation;
-	};
-
 	std::vector<death_animation> death_animations_;
-
-	struct movement_animation
-	{
-		explicit movement_animation(const config& cfg);
-		explicit movement_animation(const std::string& image,const std::string& terrain="",gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS);
-		int matches(const std::string &terrain,gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
-
-		std::vector<std::string> terrain_types;
-		std::vector<gamemap::location::DIRECTION> directions;
-		unit_animation animation;
-	};
 
 	std::vector<movement_animation> movement_animations_;
 

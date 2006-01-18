@@ -26,54 +26,6 @@
 #include <cstdlib>
 #include <iostream>
 
-unit_frame::unit_frame(const config& cfg)
-{
-	xoffset = atoi(cfg["xoffset"].c_str());
-	image = cfg["image"];
-	image_diagonal = cfg["image_diagonal"];
-	halo = cfg["halo"];
-	halo_x = atoi(cfg["halo_x"].c_str());
-	halo_y = atoi(cfg["halo_y"].c_str());
-}
-
-unit_animation::unit_animation(const config& cfg,const std::string frame_string )
-{
-	config::const_child_itors range = cfg.child_range(frame_string);
-
-	int last_end = INT_MIN;
-	for(; range.first != range.second; ++range.first) {
-		add_frame(atoi((**range.first)["begin"].c_str()), unit_frame(**range.first));
-		last_end = maximum<int>(atoi((**range.first)["end"].c_str()), last_end);
-	}
-	add_frame(last_end);
-
-	range = cfg.child_range("sound");
-	for(; range.first != range.second; ++range.first){
-		sfx sound;
-		sound.time = atoi((**range.first)["time"].c_str());
-		sound.on_hit = (**range.first)["sound"];
-		sound.on_miss = (**range.first)["sound_miss"];
-		if(sound.on_miss.empty())
-			sound.on_miss = sound.on_hit;
-
-		if(sound.on_miss == "null")
-			sound.on_miss = "";
-
-		sfx_.push_back(sound);
-	}
-}
-
-unit_animation::unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal)
-{
-	add_frame(begin_at, unit_frame(image,image_diagonal));
-	add_frame(end_at);
-}
-
-
-const std::vector<unit_animation::sfx>& unit_animation::sound_effects() const
-{
-	return sfx_;
-}
 
 attack_type::attack_type(const config& cfg,const unit_type& unit)
 {
@@ -1375,108 +1327,6 @@ const std::string& unit_type::race() const
 	return race_->name();
 }
 
-unit_type::defensive_animation::defensive_animation(const config& cfg) : hits(HIT_OR_MISS), range(utils::split(cfg["range"])),animation(cfg)
-{
-	const std::string& hits_str = cfg["hits"];
-	if(hits_str.empty() == false) {
-		hits = (hits_str == "yes") ? HIT : MISS;
-	}
-}
-
-
-int unit_type::defensive_animation::matches(bool h, std::string r) const
-{
-	int result = 0;
-	if(hits != HIT_OR_MISS ) {
-		if(h && (hits == HIT)) {
-			result++;
-		} else {
-			return -1;
-		}
-	}
-	if(range.empty()== false) {
-		if (std::find(range.begin(),range.end(),r)== range.end()) {
-			return -1;
-		} else {
-			result ++;
-		}
-	}
-
-	return result;
-}
-
-unit_type::death_animation::death_animation(const config& cfg)
-: damage_type(utils::split(cfg["damage_type"])), special(utils::split(cfg["attack_special"])), animation(cfg)
-{
-}
-
-int unit_type::death_animation::matches(const attack_type* attack) const
-{
-	int result = 0;
-	if(attack == NULL) {
-		if(damage_type.empty() && special.empty())
-			return 0;
-		else
-			return -1;
-	}
-
-	if(damage_type.empty()== false) {
-		if (std::find(damage_type.begin(),damage_type.end(),attack->type())== damage_type.end()) {
-			return -1;
-		} else {
-			result ++;
-		}
-	}
-
-	if(special.empty()== false) {
-		if (std::find(special.begin(),special.end(),attack->special())== special.end()) {
-			return -1;
-		} else {
-			result ++;
-		}
-	}
-
-	return result;
-}
-
-unit_type::movement_animation::movement_animation(const config& cfg)
-: terrain_types(utils::split(cfg["terrain_type"])),animation(cfg)
-{
-	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
-	for(std::vector<std::string>::const_iterator i = my_directions.begin(); i != my_directions.end(); ++i) {
-		const gamemap::location::DIRECTION d = gamemap::location::parse_direction(*i);
-		directions.push_back(d);
-	}
-}
-
-unit_type::movement_animation::movement_animation(const std::string& image,const std::string& terrain,gamemap::location::DIRECTION dir):terrain_types(utils::split(terrain)),animation(image,0,150)
-{
-	if(dir !=gamemap::location::NDIRECTIONS) {
-		directions.push_back(dir);
-	}
-}
-int unit_type::movement_animation::matches(const std::string &terrain,gamemap::location::DIRECTION dir) const
-{
-	int result = 0;
-	if(terrain_types.empty()== false) {
-		if (std::find(terrain_types.begin(),terrain_types.end(),terrain)== terrain_types.end()) {
-			return -1;
-		} else {
-			result ++;
-		}
-	}
-
-	if(directions.empty()== false) {
-		if (std::find(directions.begin(),directions.end(),dir)== directions.end()) {
-			return -1;
-		} else {
-			result ++;
-		}
-	}
-
-	return result;
-}
-
 const ability_filter unit_type::heals_filter() const
 {
 	return heals_filter_;
@@ -1510,19 +1360,19 @@ const ability_filter unit_type::hides_filter() const
 	return hides_filter_;
 }
 
-const unit_animation& unit_type::defend_animation(bool hits, std::string range) const
+const defensive_animation& unit_type::defend_animation(bool hits, std::string range) const
 {
 	//select one of the matching animations at random
-	std::vector<const unit_animation*> options;
+	std::vector<const defensive_animation*> options;
 	int max_val = -1;
 	for(std::vector<defensive_animation>::const_iterator i = defensive_animations_.begin(); i != defensive_animations_.end(); ++i) {
 		int matching = i->matches(hits,range);
 		if(matching == max_val) {
-			options.push_back(&i->animation);
+			options.push_back(&*i);
 		} else if(matching > max_val) {
 			max_val = matching;
 			options.erase(options.begin(),options.end());
-			options.push_back(&i->animation);
+			options.push_back(&*i);
 		}
 	}
 
@@ -1547,38 +1397,38 @@ const unit_animation* unit_type::extra_animation(std::string flag ) const
 	return &index->second;
 }
 
-const unit_animation& unit_type::die_animation(const attack_type* attack) const
+const death_animation& unit_type::die_animation(const attack_type* attack) const
 {
 	//select one of the matching animations at random
-	std::vector<const unit_animation*> options;
+	std::vector<const death_animation*> options;
 	int max_val = -1;
 	for(std::vector<death_animation>::const_iterator i = death_animations_.begin(); i != death_animations_.end(); ++i) {
 		int matching = i->matches(attack);
 		if(matching == max_val) {
-			options.push_back(&i->animation);
+			options.push_back(&*i);
 		} else if(matching > max_val) {
 			max_val = matching;
 			options.erase(options.begin(),options.end());
-			options.push_back(&i->animation);
+			options.push_back(&*i);
 		}
 	}
 
 	assert(!options.empty());
 	return *options[rand()%options.size()];
 }
-const unit_animation& unit_type::move_animation(const std::string terrain,gamemap::location::DIRECTION dir) const
+const movement_animation& unit_type::move_animation(const std::string terrain,gamemap::location::DIRECTION dir) const
 {
 	//select one of the matching animations at random
-	std::vector<const unit_animation*> options;
+	std::vector<const movement_animation*> options;
 	int max_val = -1;
 	for(std::vector<movement_animation>::const_iterator i = movement_animations_.begin(); i != movement_animations_.end(); ++i) {
 		int matching = i->matches(terrain,dir);
 		if(matching == max_val) {
-			options.push_back(&i->animation);
+			options.push_back(&*i);
 		} else if(matching > max_val) {
 			max_val = matching;
 			options.erase(options.begin(),options.end());
-			options.push_back(&i->animation);
+			options.push_back(&*i);
 		}
 	}
 
