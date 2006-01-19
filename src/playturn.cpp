@@ -2716,7 +2716,12 @@ void turn_info::show_enemy_moves(bool ignore_units)
 
 	// Compute enemy movement positions
 	for(unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
-		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y) && !u->second.stone()) {
+		bool invisible = u->second.invisible(map_.underlying_terrain(u->first),
+											 status_.get_time_of_day()
+											 .lawful_bonus,
+											 u->first, units_, teams_);
+
+		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y) && !u->second.stone() && !invisible) {
 			const unit_movement_resetter move_reset(u->second);
 			const bool is_skirmisher = u->second.type().is_skirmisher();
 			const bool teleports = u->second.type().teleports();
