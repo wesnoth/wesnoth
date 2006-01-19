@@ -263,9 +263,14 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 	gui.labels().read(*level);
 	LOG_NG << "c... " << (SDL_GetTicks() - ticks) << "\n";
 
-	const std::string& music = lvl["music"];
-	if(music != "") {
-		sound::play_music(music);
+	const config::child_list& m = lvl.get_children("music_list");
+	if (!m.empty()) {
+		sound::play_music_list(m);
+	} else {
+		const std::string& music = lvl["music"];
+		if(music != "") {
+			sound::play_music_file(music);
+		}
 	}
 
 	LOG_NG << "d... " << (SDL_GetTicks() - ticks) << "\n";
@@ -448,10 +453,10 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 				if(!replaying && team_it->music().empty() == false &&
 						(teams[gui.viewing_team()].knows_about_team(player_number-1) || teams[gui.viewing_team()].has_seen(player_number-1))) {
 					LOG_NG << "playing music: '" << team_it->music() << "'\n";
-					sound::play_music(team_it->music());
+					sound::play_music_file(team_it->music());
 				} else if(!replaying && team_it->music().empty() == false){
 					LOG_NG << "playing music: '" << game_config::anonymous_music<< "'\n";
-					sound::play_music(game_config::anonymous_music);
+					sound::play_music_file(game_config::anonymous_music);
 				}
 				// else leave old music playing, it's a scenario specific music
 
@@ -618,7 +623,7 @@ redo_turn:
 			}
 
 			if (!obs) {
-				sound::play_music(game_config::defeat_music, true);
+				sound::play_music_once(game_config::defeat_music);
 				return DEFEAT;
 			}
 			else
@@ -714,7 +719,7 @@ redo_turn:
 			}
 
 			if (!obs) {
-				sound::play_music(game_config::victory_music, true);
+				sound::play_music_once(game_config::victory_music);
 				gui::show_dialog(gui, NULL, _("Victory"),
 				                 _("You have emerged victorious!"), gui::OK_ONLY);
 			}

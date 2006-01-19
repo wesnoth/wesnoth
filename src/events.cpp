@@ -18,6 +18,7 @@
 #include "events.hpp"
 #include "mouse.hpp"
 #include "preferences_display.hpp"
+#include "sound.hpp"
 #include "video.hpp"
 #include "wassert.hpp"
 
@@ -331,6 +332,8 @@ void pump()
 		resize_dimensions.first = 0;
 		resize_dimensions.second = 0;
 	}
+
+	sound::think_about_music();
 }
 
 void raise_process_event()

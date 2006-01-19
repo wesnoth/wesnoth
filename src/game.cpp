@@ -1676,7 +1676,7 @@ int play_game(int argc, char** argv)
 
 		statistics::fresh_stats();
 
-		sound::play_music(game_config::title_music);
+		sound::play_music_file(game_config::title_music);
 
 		std::cerr << "started music\n";
 		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";

@@ -14,6 +14,8 @@
 #define SOUND_HPP_INCLUDED
 
 #include <string>
+#include <vector>
+#include "config.hpp"
 
 namespace sound {
 
@@ -28,8 +30,14 @@ void close_sound();
 void stop_music();
 void stop_sound();
 
-void play_music(std::string file, bool once = false);
+void play_music_list(const config::child_list &list);
+void play_music_file(const std::string &name);
+void play_music_once(const std::string &name);
+void play_music();
 void play_sound(const std::string& file);
+
+// Called from event loop to see if we need new music track.
+void think_about_music(void);
 
 void set_music_volume(int vol);
 void set_sound_volume(int vol);

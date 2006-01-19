@@ -404,7 +404,7 @@ bool set_music(bool ison) {
 			}
 		}
 		else
-			sound::play_music("");
+			sound::play_music();
 	} else if(music_on() && !ison) {
 		prefs["music"] = "no";
 		if(!sound_on())

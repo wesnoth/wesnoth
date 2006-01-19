@@ -386,7 +386,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "music") {
-		sound::play_music(cfg["name"]);
+		sound::play_music_file(cfg["name"]);
 	}
 
 	else if(cmd == "sound") {

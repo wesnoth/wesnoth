@@ -88,7 +88,7 @@ bool show_intro_part(display &disp, const config& part,
 
 	//play music if available
 	if(music_file != "") {
-		sound::play_music(music_file);
+		sound::play_music_file(music_file);
 	}
 
 	CKey key;
