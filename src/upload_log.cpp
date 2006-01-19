@@ -45,7 +45,7 @@ upload_log::manager::~manager()
 static void send_string(TCPsocket sock, const std::string &str)
 {
 	if (SDLNet_TCP_Send(sock, (void *)str.c_str(), str.length())
-		!= str.length()) {
+		!= (int)str.length()) {
 		throw network::error("");
 	}
 }
@@ -75,7 +75,6 @@ static int upload_logs(void *_ti)
 			std::vector<std::string>::iterator i;
 			for (i = files.begin(); i!=files.end() && *i!=ti->lastfile; i++) {
 				std::string contents;
-				int resplen;
 				char response[10]; //This needs to be strlen("HTTP/1.1 2");
 
 				contents = read_file(*i);
@@ -163,12 +162,11 @@ config &upload_log::add_game_result(const std::string &str, int turn)
 
 // User starts a game (may be new campaign or saved).
 void upload_log::start(game_state &state, const team &team,
-					   int team_number,
+					   unsigned team_number,
 					   const unit_map &units,
 					   const t_string &turn,
 					   int num_turns)
 {
-	const config *player_conf;
 	std::vector<const unit*> all_units;
 
 	// If we have a previous game which is finished, add it.

@@ -34,7 +34,7 @@ struct upload_log
 
 	// User starts a game (may be new campaign or saved).
 	void start(game_state &state, const team &team,
-			   int team_number, const unit_map &map, const t_string &turn,
+			   unsigned int team_number, const unit_map &map, const t_string &turn,
 			   int num_turns);
 
 	// User finishes a level.
