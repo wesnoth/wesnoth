@@ -329,16 +329,17 @@ void get_tiles_radius(gamemap const &map, std::vector<gamemap::location> const &
 bool enemy_zoc(gamemap const &map, gamestatus const &status,
                std::map<gamemap::location, unit> const &units,
                std::vector<team> const &teams,
-               gamemap::location const &loc, team const &current_team, int side)
+               gamemap::location const &loc, team const &viewing_team, unsigned int side)
 {
 	gamemap::location locs[6];
+	const team &current_team = teams[side-1];
 	get_adjacent_tiles(loc,locs);
 	for(int i = 0; i != 6; ++i) {
 		const std::map<gamemap::location,unit>::const_iterator it
 			= find_visible_unit(units,locs[i],
 			map,
 			status.get_time_of_day().lawful_bonus,
-			teams,current_team);
+			teams, viewing_team);
 		if (it != units.end() && it->second.side() != side &&
 		    current_team.is_enemy(it->second.side()) && it->second.emits_zoc()) {
 			return true;
@@ -358,13 +359,16 @@ namespace {
 		int move_left,
 		std::map<gamemap::location,paths::route>& routes,
 		std::vector<team> const &teams,
-		bool ignore_zocs, bool allow_teleport, int turns_left, bool starting_pos)
+		bool ignore_zocs, bool allow_teleport, int turns_left,
+	    bool starting_pos, const team *viewing_team)
 	{
 		if(size_t(u.side()-1) >= teams.size()) {
 			return;
 		}
 
 		team const &current_team = teams[u.side()-1];
+		if (!viewing_team)
+			viewing_team = &current_team;
 
 		//find adjacent tiles
 		std::vector<gamemap::location> locs(6);
@@ -373,7 +377,10 @@ namespace {
 		//check for teleporting units -- we must be on a vacant (or occupied by this unit)
 		//village, that is controlled by our team to be able to teleport.
 		if (allow_teleport && map.is_village(loc) &&
-		    current_team.owns_village(loc) && (starting_pos || units.count(loc) == 0)) {
+		    current_team.owns_village(loc) &&
+			(starting_pos || find_visible_unit(units, loc, map,
+											   status.get_time_of_day().lawful_bonus,
+											   teams, *viewing_team) == units.end())) {
 			const std::vector<gamemap::location>& villages = map.villages();
 
 			//if we are on a village, see all friendly villages that we can
@@ -400,7 +407,7 @@ namespace {
 			const std::map<gamemap::location,unit>::const_iterator unit_it =
 				find_visible_unit(units, locs[i], map,
 				                  status.get_time_of_day().lawful_bonus,
-				                  teams, current_team);
+				                  teams, *viewing_team);
 
 			if (unit_it != units.end() &&
 			    current_team.is_enemy(unit_it->second.side()))
@@ -430,7 +437,7 @@ namespace {
 					continue;
 
 				const bool zoc = !ignore_zocs && enemy_zoc(map,status,units,teams,currentloc,
-							current_team,u.side());
+														   *viewing_team,u.side());
 				paths::route new_route = routes[loc];
 				new_route.steps.push_back(loc);
 
@@ -441,7 +448,7 @@ namespace {
 				if (new_route.move_left > 0) {
 					find_routes(map, status, gamedata, units, u, currentloc,
 					            zoc_move_left, routes, teams, ignore_zocs,
-					            allow_teleport, new_turns_left, false);
+					            allow_teleport, new_turns_left, false, viewing_team);
 				}
 			}
 		}
@@ -454,7 +461,8 @@ paths::paths(gamemap const &map, gamestatus const &status,
              std::map<gamemap::location, unit> const &units,
              gamemap::location const &loc,
              std::vector<team> const &teams,
-             bool ignore_zocs, bool allow_teleport, int additional_turns)
+             bool ignore_zocs, bool allow_teleport, const team *viewing_team,
+			 int additional_turns)
 {
 	const std::map<gamemap::location,unit>::const_iterator i = units.find(loc);
 	if(i == units.end()) {
@@ -465,7 +473,7 @@ paths::paths(gamemap const &map, gamestatus const &status,
 	routes[loc].move_left = i->second.movement_left();
 	find_routes(map,status,gamedata,units,i->second,loc,
 		i->second.movement_left(),routes,teams,
-		ignore_zocs,allow_teleport,additional_turns,true);
+		ignore_zocs,allow_teleport,additional_turns,true,viewing_team);
 }
 
 int route_turns_to_complete(unit const &u, gamemap const &map, paths::route const &rt)
