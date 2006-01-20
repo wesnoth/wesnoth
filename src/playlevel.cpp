@@ -269,6 +269,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		for (i = m.begin(); i != m.end(); i++) {
 			sound::play_music_config(**i);
 		}
+		sound::commit_music_changes();
 	} else {
 		const std::string& music = lvl["music"];
 		if(music != "") {

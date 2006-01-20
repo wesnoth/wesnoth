@@ -1806,6 +1806,8 @@ void turn_info::write_game_snapshot(config& start) const
 		start.add_child("terrain_graphics", **tg);
 	}
 
+	sound::write_music_play_list(start);
+
 	write_game(state_of_game_,start /*,WRITE_SNAPSHOT_ONLY*/);
 
 	// Clobber gold values to make sure the snapshot uses the values

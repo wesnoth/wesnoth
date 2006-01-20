@@ -47,6 +47,9 @@ void play_sound(const std::string& file);
 // Called from event loop to see if we need new music track.
 void think_about_music(void);
 
+// Save music playlist for snapshot
+void write_music_play_list(config& snapshot);
+
 void set_music_volume(int vol);
 void set_sound_volume(int vol);
 

@@ -43,6 +43,8 @@ struct music_track
 	music_track(const std::string &tname,
 				const std::string &ms_before_str,
 				const std::string &ms_after_str);
+	void write(config &snapshot, bool append);
+
 	std::string name;
 	unsigned int ms_before, ms_after;
 	bool once;
@@ -66,6 +68,16 @@ music_track::music_track(const std::string &tname,
 		ms_after = 0;
 	else
 		ms_after = lexical_cast<int,std::string>(ms_after_str);
+}
+
+void music_track::write(config &snapshot, bool append)
+{
+		config& m = snapshot.add_child("music");
+		m["name"] = name;
+		m["ms_before"] = lexical_cast<std::string>(ms_before);
+		m["ms_after"] = lexical_cast<std::string>(ms_after);
+		if (append)
+			m["append"] = "yes";
 }
 
 std::vector<music_track> current_track_list;
@@ -284,6 +296,18 @@ void commit_music_changes()
 	play_music();
 }
 
+void write_music_play_list(config& snapshot)
+{
+	std::vector<music_track>::iterator i;
+	bool append = false;
+
+	// First entry clears playlist, others append to it.
+	for (i = current_track_list.begin(); i != current_track_list.end(); i++) {
+		i->write(snapshot, append);
+		append = true;
+	}
+}
+	
 void play_sound(const std::string& file)
 {
 	if(preferences::sound_on() && mix_ok) {
