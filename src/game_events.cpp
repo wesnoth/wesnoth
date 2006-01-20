@@ -386,7 +386,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "music") {
-		sound::play_music_file(cfg["name"]);
+		sound::play_music_config(cfg.get_parsed_config());
 	}
 
 	else if(cmd == "sound") {
@@ -1530,6 +1530,8 @@ bool event_handler::handle_event(const queued_event& event_info, const vconfig c
 		}
 	}
 
+	// We do this once event has completed any music alterations
+	sound::commit_music_changes();
 	return mutated;
 }
 

@@ -45,16 +45,17 @@ struct music_track
 				const std::string &ms_after_str);
 	std::string name;
 	unsigned int ms_before, ms_after;
+	bool once;
 };
 
 music_track::music_track(const std::string &tname)
-	: name(tname), ms_before(0), ms_after(0)
+	: name(tname), ms_before(0), ms_after(0), once(false)
 {
 }
 music_track::music_track(const std::string &tname,
 						 const std::string &ms_before_str,
 						 const std::string &ms_after_str)
-	: name(tname)
+	: name(tname), once(false)
 {
 	if (ms_before_str.empty())
 		ms_before = 0;
@@ -67,13 +68,13 @@ music_track::music_track(const std::string &tname,
 		ms_after = lexical_cast<int,std::string>(ms_after_str);
 }
 
-std::vector<music_track> current_music_list;
-struct music_track current_music("");
+std::vector<music_track> current_track_list;
+struct music_track current_track("");
 
 const struct music_track &random_track()
 {
-	wassert(!current_music_list.empty());
-	return current_music_list[rand()%current_music_list.size()];
+	wassert(!current_track_list.empty());
+	return current_track_list[rand()%current_track_list.size()];
 }
 };
 
@@ -165,11 +166,11 @@ void stop_sound() {
 void think_about_music(void)
 {
 	if (!music_start_time) {
-		if (!current_music_list.empty() && !Mix_PlayingMusic()) {
+		if (!current_track_list.empty() && !Mix_PlayingMusic()) {
 			// Pick next track, add ending time to its start time.
-			unsigned end_time = current_music.ms_after;
-			current_music = random_track();
-			music_start_time = SDL_GetTicks() + end_time + current_music.ms_before;
+			unsigned end_time = current_track.ms_after;
+			current_track = random_track();
+			music_start_time = SDL_GetTicks() + end_time + current_track.ms_before;
 		}
 	} else {
 		if (SDL_GetTicks() >= music_start_time) {
@@ -181,8 +182,8 @@ void think_about_music(void)
 void play_music_once(const std::string &file)
 {
 	// Clear list so it's not replayed.
-	current_music_list = std::vector<music_track>();
-	current_music = music_track(file);
+	current_track_list = std::vector<music_track>();
+	current_track = music_track(file);
 	play_music();
 }
 
@@ -190,12 +191,12 @@ void play_music()
 {
 	music_start_time = 0;
 
-	if(!preferences::music_on() || !mix_ok || current_music_list.empty())
+	if(!preferences::music_on() || !mix_ok || current_track_list.empty())
 		return;
 
-	std::map<std::string,Mix_Music*>::const_iterator itor = music_cache.find(current_music.name);
+	std::map<std::string,Mix_Music*>::const_iterator itor = music_cache.find(current_track.name);
 	if(itor == music_cache.end()) {
-		const std::string& filename = get_binary_file_location("music", current_music.name);
+		const std::string& filename = get_binary_file_location("music", current_track.name);
 
 		if(filename.empty()) {
 			return;
@@ -208,7 +209,7 @@ void play_music()
 			return;
 		}
 
-		itor = music_cache.insert(std::pair<std::string,Mix_Music*>(current_music.name,music)).first;
+		itor = music_cache.insert(std::pair<std::string,Mix_Music*>(current_track.name,music)).first;
 	}
 
 	if(Mix_PlayingMusic()) {
@@ -217,47 +218,70 @@ void play_music()
 
 	const int res = Mix_FadeInMusic(itor->second, 1, 500);
 	if(res < 0) {
-		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << current_music.name <<" \n";
+		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << current_track.name <<" \n";
 	}
 }
 
-void play_music_file(const std::string &name)
+void play_music_repeatedly(const std::string &name)
 {
 	// Can happen if scenario doesn't specify.
 	if (name.empty())
 		return;
 
-	current_music_list = std::vector<music_track>(1, music_track(name));
+	current_track_list = std::vector<music_track>(1, music_track(name));
 
 	// If we're already playing it, don't interrupt.
-	if (current_music.name != name) {
-		current_music = music_track(name);
+	if (current_track.name != name) {
+		current_track = music_track(name);
 		play_music();
 	}
 }
 
-void play_music_list(const config::child_list &list)
+void play_music_config(const config &music)
 {
-	bool current_track_ok = false;
+	struct music_track track(music["name"],
+							 music["ms_before"],
+							 music["ms_after"]);
 
-	current_music_list = std::vector<music_track>();
-	for (config::const_child_iterator i = list.begin(); i != list.end(); i++) {
-		const std::string &name = (*i)->get_attribute("file");
-		current_music_list.push_back(music_track(name,
-												 (*i)->get_attribute("ms_before"),
-												 (*i)->get_attribute("ms_after")));
-
-		// If we're playing something, that's OK if it's in new list, too.
-		if (Mix_PlayingMusic() && name == current_music.name) {
-			current_track_ok = true;
-		}
+	// If they say play once, we don't alter playlist.
+	if (music["play_once"] == "yes") {
+		current_track = track;
+		current_track.once = true;
+		play_music();
+		return;
 	}
 
-	// FIXME: if they want ms_before, don't start music immediately.
-	if (!current_track_ok) {
-		current_music = random_track();
+	// Clear play list unless they specify append.
+	if (music["append"] != "yes") {
+		current_track_list = std::vector<music_track>();
+	}
+
+	current_track_list.push_back(track);
+
+	// They can tell us to start playing this list immediately.
+	if (music["immediate"] == "yes") {
+		current_track = track;
 		play_music();
 	}
+}
+
+void commit_music_changes()
+{
+	std::vector<music_track>::iterator i;
+
+	// Play-once is OK if still playing.
+	if (current_track.once)
+		return;
+
+	// If current track no longer on playlist, change it.
+	for (i = current_track_list.begin(); i != current_track_list.end(); i++) {
+		if (current_track.name == i->name)
+			return;
+	}
+
+	// FIXME: we don't pause ms_before on this first track.  Should we?
+	current_track = random_track();
+	play_music();
 }
 
 void play_sound(const std::string& file)

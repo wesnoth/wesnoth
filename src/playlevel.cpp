@@ -263,13 +263,16 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 	gui.labels().read(*level);
 	LOG_NG << "c... " << (SDL_GetTicks() - ticks) << "\n";
 
-	const config::child_list& m = lvl.get_children("music_list");
+	const config::child_list& m = lvl.get_children("music");
 	if (!m.empty()) {
-		sound::play_music_list(m);
+		config::const_child_iterator i;
+		for (i = m.begin(); i != m.end(); i++) {
+			sound::play_music_config(**i);
+		}
 	} else {
 		const std::string& music = lvl["music"];
 		if(music != "") {
-			sound::play_music_file(music);
+			sound::play_music_repeatedly(music);
 		}
 	}
 
@@ -453,10 +456,10 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 				if(!replaying && team_it->music().empty() == false &&
 						(teams[gui.viewing_team()].knows_about_team(player_number-1) || teams[gui.viewing_team()].has_seen(player_number-1))) {
 					LOG_NG << "playing music: '" << team_it->music() << "'\n";
-					sound::play_music_file(team_it->music());
+					sound::play_music_repeatedly(team_it->music());
 				} else if(!replaying && team_it->music().empty() == false){
 					LOG_NG << "playing music: '" << game_config::anonymous_music<< "'\n";
-					sound::play_music_file(game_config::anonymous_music);
+					sound::play_music_repeatedly(game_config::anonymous_music);
 				}
 				// else leave old music playing, it's a scenario specific music
 

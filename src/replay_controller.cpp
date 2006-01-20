@@ -157,7 +157,7 @@ void replay_controller::init(CVideo& video, const std::vector<config*>& story){
 
 	const std::string& music = level_["music"];
 	if(music != "") {
-		sound::play_music_file(music);
+		sound::play_music_repeatedly(music);
 	}
 
 	LOG_NG << "d... " << (SDL_GetTicks() - ticks) << "\n";
