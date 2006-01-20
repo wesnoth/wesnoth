@@ -1414,7 +1414,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		          highlight_ratio,blend_with,blend_ratio,submerge,ellipse_back,ellipse_front);
 	}
 
-	const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (loc == mouseoverHex_ ? ftofxp(1.0): ftofxp(0.6));
+	const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (loc == mouseoverHex_ ? ftofxp(1.0): ftofxp(0.75));
 
 	draw_bar(*movement_file,xpos,ypos,0,0,energy_colour,bar_alpha);
 
