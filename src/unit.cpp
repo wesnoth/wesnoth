@@ -69,7 +69,7 @@ unit::unit(const game_data& data, const config& cfg) :
 	state_(STATE_NORMAL),
 	moves_(0), user_end_turn_(false), facingLeft_(true),
 	resting_(false), hold_position_(false), recruit_(false),
-	guardian_(false), upkeep_(UPKEEP_FREE)
+	guardian_(false), upkeep_(UPKEEP_FREE),anim_(NULL)
 {
 	read(data,cfg);
 }
@@ -101,7 +101,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	       attacks_(type_->attacks()),
 	       backupAttacks_(type_->attacks()),
                guardian_(false), upkeep_(UPKEEP_FULL_PRICE),
-               unrenamable_(false)
+               unrenamable_(false),anim_(NULL)
 {
 	//dummy units used by the 'move_unit_fake' command don't need to have a side.
 	if(dummy_unit == false) validate_side(side_);
@@ -141,7 +141,7 @@ unit::unit(const unit_type* t, const unit& u) :
 	modifications_(u.modifications_),
 	traitsDescription_(u.traitsDescription_),
 	guardian_(false), upkeep_(u.upkeep_),
-	unrenamable_(u.unrenamable_)
+	unrenamable_(u.unrenamable_),anim_(NULL)
 {
 	validate_side(side_);
 
@@ -970,14 +970,14 @@ const std::string& unit::image() const
 		case STATE_NORMAL: return type_->image();
 		case STATE_WALKING: 
 		case STATE_DEFENDING: {
-			const std::string& res = anim_.get_current_frame().image;
+			const std::string& res = anim_->get_current_frame().image;
 			if(res != "") {
 				return res;
 			} else { 
-				if(anim_.animation_finished()) 
-					return anim_.get_last_frame().image;
+				if(anim_->animation_finished()) 
+					return anim_->get_last_frame().image;
 				else
-					return type_->image();
+					return anim_->get_first_frame().image;
 			}
 		}
 		case STATE_ATTACKING: {
@@ -1011,25 +1011,41 @@ const image::locator unit::image_loc() const
 void unit::set_standing()
 {
 	state_ = STATE_NORMAL;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
 }
 
 void unit::set_defending(bool hits, std::string range, int start_frame, int acceleration)
 {
 	state_ =  STATE_DEFENDING;
-
-	anim_ =  type_->defend_animation(hits,range);
-	anim_.start_animation(start_frame,1,acceleration);
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
+	anim_ =  new defensive_animation(type_->defend_animation(hits,range));
+	anim_->start_animation(start_frame,1,acceleration);
 }
 
 void unit::update_frame()
 {
-		anim_.update_current_frame();
-		if(anim_.animation_finished()) set_standing();
+	if (!anim_) return;
+	anim_->update_current_frame();
+	if( anim_->animation_finished()) {
+		delete anim_;
+		anim_ = NULL;	
+		set_standing();
+	}
 }
 
 void unit::set_attacking( const attack_type* type, int ms)
 {
 	state_ =  STATE_ATTACKING;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
 	attackType_ = type;
 	attackingMilliseconds_ = ms;
 }
@@ -1037,18 +1053,36 @@ void unit::set_attacking( const attack_type* type, int ms)
 void unit::set_leading()
 {
 	state_ = STATE_LEADING;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
 }
 
 void unit::set_healing()
 {
 	state_ = STATE_HEALING;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
 }
 
 void unit::set_walking(const std::string terrain,gamemap::location::DIRECTION dir,int acceleration)
 {
+	update_frame();
+	if(state_ == STATE_WALKING && 
+			dynamic_cast<movement_animation*>(anim_)->matches(terrain,dir) >=0) {
+		return; // finish current animation, don't start a new one
+	}
 	state_ = STATE_WALKING;
-	anim_ = type_->move_animation(terrain,dir);
-	anim_.start_animation(anim_.get_first_frame_time(),1,acceleration);
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
+	anim_ = new movement_animation(type_->move_animation(terrain,dir));
+	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
+	anim_->update_current_frame();
 }
 
 

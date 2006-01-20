@@ -246,7 +246,7 @@ private:
 
 	bool unrenamable_;
 
-	unit_animation anim_;
+	unit_animation *anim_;
 
 	void reset_modifications();
 	void apply_modifications();
