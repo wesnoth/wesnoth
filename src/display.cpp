@@ -1414,7 +1414,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		          highlight_ratio,blend_with,blend_ratio,submerge,ellipse_back,ellipse_front);
 	}
 
-	const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (loc == mouseoverHex_ ? ftofxp(1.0): ftofxp(0.75));
+	const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (loc == mouseoverHex_ ? ftofxp(1.0): ftofxp(0.7));
 
 	draw_bar(*movement_file,xpos,ypos,0,0,energy_colour,bar_alpha);
 
@@ -1431,9 +1431,9 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 	if (u.can_recruit()) {
 		surface crown(image::get_image("misc/leader-crown.png",image::SCALED,image::NO_ADJUST_COLOUR));
 		if(!crown.null()) {
-			if(bar_alpha != ftofxp(1.0)) {
-				crown = adjust_surface_alpha(crown, bar_alpha);
-			}
+			//if(bar_alpha != ftofxp(1.0)) {
+			//	crown = adjust_surface_alpha(crown, bar_alpha);
+			//}
 
 			SDL_Rect r = {0, 0, crown->w, crown->h};
 			video().blit_surface(xpos,ypos,crown,&r);
@@ -1481,12 +1481,12 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 		height = bar_loc.h;
 	}
 
-	if(alpha != ftofxp(1.0)) {
-		surf.assign(adjust_surface_alpha(surf,alpha));
-		if(surf == NULL) {
-			return;
-		}
-	}
+	//if(alpha != ftofxp(1.0)) {
+	//	surf.assign(adjust_surface_alpha(surf,alpha));
+	//	if(surf == NULL) {
+	//		return;
+	//	}
+	//}
 
 	const size_t skip_rows = bar_loc.h - height;
 
