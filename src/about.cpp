@@ -53,6 +53,7 @@ std::vector<std::string> get_text() {
 		"-   Maksim Orlovich (SadEagle)",
 		"-   Nicolas Weeger (Ryo)",
 		"-   Philippe Plantier (Ayin)",
+		"-   Rusty Russell (rusty)",
 		"-   Yann Dirson",
 		"-   Zas",
 
@@ -354,7 +355,6 @@ std::vector<std::string> get_text() {
 		"_" N_("+Contributors"),
 		"-   Frédéric Wagner",
 		"-   Jeff Breidenbach (jab)",
-		"-   Rusty Russell (rusty)",
 		"-   Laurent Birtz",
 
 		"_" N_("+Bots"),
