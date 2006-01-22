@@ -47,7 +47,7 @@ public:
 	const std::string& unit_description() const;
 
 	void rename(const std::string& new_description);
-        const static int UNIT_ID_MAX;
+        static const int UNIT_ID_MAX;
 
 	int hitpoints() const;
 	int max_hitpoints() const;
