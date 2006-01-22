@@ -1136,11 +1136,18 @@ bool game_controller::play_multiplayer()
 
 	std::string login = preferences::login();
 
-	int res = gui::show_dialog(disp(), NULL, _("Multiplayer"), "",
-	                           gui::OK_CANCEL, &host_or_join, NULL,
-	                           _("Login: "), &login);
+	int res;
+	do {
+		res = gui::show_dialog(disp(), NULL, _("Multiplayer"), "",
+					   gui::OK_CANCEL, &host_or_join, NULL,
+					   _("Login: "), &login);
+		if(login.size() > 18) {
+			gui::show_error_message(disp(), _("The login name you chosed is too long, please use a login with less than 18 characters"));
+		}
+	}while(login.size() > 18) ;
 	if (res < 0)
 		return false;
+
 
 	preferences::set_login(login);
 
