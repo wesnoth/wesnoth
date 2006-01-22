@@ -920,6 +920,7 @@ static PyObject* wrap_move_map(const ai_interface::move_map& wrap)
 			Py_DECREF(list);
 		}
 		PyList_Append(list,wrap_location(pos->second));
+		Py_DECREF(loc);
 	}
 	return dict;
 }
@@ -1032,6 +1033,28 @@ PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
 	wesnoth_location* to;
 	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_location_type, &from, &wesnoth_location_type, &to ) )
 		return NULL;
+
+	bool valid = false;
+	ai_interface::move_map::const_iterator pos;
+	for (pos = running_instance->src_dst_.begin(); pos != running_instance->src_dst_.end(); pos++)
+	{
+		if ( pos->first == ( *from->location_ ) )
+		{
+			valid = true;
+			if ( pos->second == ( *to->location_ ) )
+				break;
+		}
+	}
+	if (!valid)
+	{
+		set_error("No unit at specified position.");
+		return NULL;
+	}
+	if (pos == running_instance->src_dst_.end())
+	{
+		set_error("This unit can't go to specified destination.");
+		return NULL;
+	}
 
 	PyObject* loc = wrap_location(running_instance->move_unit_partial(*from->location_,*to->location_,running_instance->possible_moves_));
 	running_instance->src_dst_.empty();
