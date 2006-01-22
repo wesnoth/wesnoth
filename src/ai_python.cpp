@@ -1034,7 +1034,13 @@ PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
 		return NULL;
 
 	PyObject* loc = wrap_location(running_instance->move_unit_partial(*from->location_,*to->location_,running_instance->possible_moves_));
+	running_instance->src_dst_.empty();
+	running_instance->dst_src_.empty();
+	running_instance->possible_moves_.empty();
 	running_instance->calculate_possible_moves(running_instance->possible_moves_,running_instance->src_dst_,running_instance->dst_src_,false);
+	running_instance->enemy_src_dst_.empty();
+	running_instance->enemy_dst_src_.empty();
+	running_instance->enemy_possible_moves_.empty();
 	running_instance->calculate_possible_moves(running_instance->enemy_possible_moves_,running_instance->enemy_src_dst_,running_instance->enemy_dst_src_,true);
 	return loc;
 }
@@ -1048,7 +1054,13 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 		return NULL;
 
 	running_instance->attack_enemy(*from->location_,*to->location_,weapon);
+	running_instance->src_dst_.empty();
+	running_instance->dst_src_.empty();
+	running_instance->possible_moves_.empty();
 	running_instance->calculate_possible_moves(running_instance->possible_moves_,running_instance->src_dst_,running_instance->dst_src_,false);
+	running_instance->enemy_src_dst_.empty();
+	running_instance->enemy_dst_src_.empty();
+	running_instance->enemy_possible_moves_.empty();
 	running_instance->calculate_possible_moves(running_instance->enemy_possible_moves_,running_instance->enemy_src_dst_,running_instance->enemy_dst_src_,true);
 
 	Py_INCREF(Py_None);
