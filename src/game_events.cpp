@@ -1273,9 +1273,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			filter = &empty_filter;
 
 		const std::string& variable = cfg["variable"];
+		const std::string& mode = cfg["mode"];
+		bool cleared = false;
 
 		config& vars = state_of_game->variables;
-		vars.clear_children(variable);
+		if(mode != "replace" && mode != "append") {
+			vars.clear_children(variable);
+		}
 
 		const bool kill_units = cfg["kill"] == "yes";
 
@@ -1285,6 +1289,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				continue;
 			}
 
+			if(mode == "replace" && !cleared) {
+				vars.clear_children(variable);
+				cleared = true;
+			}
 			config& data = vars.add_child(variable);
 			i->first.write(data);
 			i->second.write(data);
@@ -1308,6 +1316,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 						continue;
 					}
 
+					if(mode == "replace" && !cleared) {
+						vars.clear_children(variable);
+						cleared = true;
+					}
 					config& data = vars.add_child(variable);
 					j->write(data);
 					data["x"] = "recall";
