@@ -609,7 +609,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const std::string& team_name = (*child)["team_name"];
 			if(team_name == "" || teams[disp.viewing_team()].team_name() == team_name) {
 				bool is_lobby_join = ((*child)["description"] == "server"
-							&& (*child)["message"].value().find("has logged into the lobby") != -1);
+							&& (*child)["message"].value().find("has logged into the lobby") != std::string::npos);
 
 				if(!replayer.is_skipping() && (!is_lobby_join || preferences::lobby_joins())) {
 					if(preferences::message_bell()) {
@@ -657,12 +657,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		else if((child = cfg->child("recruit")) != NULL) {
 			const std::string& recruit_num = (*child)["value"];
 			const int val = atoi(recruit_num.c_str());
-
+			
 			gamemap::location loc(*child);
 
 			const std::set<std::string>& recruits = current_team.recruits();
 
-			if(val < 0 || val >= recruits.size()) {
+			if(val < 0 || (size_t)val >= recruits.size()) {
 				ERR_NW << "recruitment index is illegal: " << val
 				       << " while this side only has " << recruits.size()
 				       << " units available for recruitment\n";
@@ -754,7 +754,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const int val = lexical_cast_default<int>(num);
 			const std::string& tnum = (*child)["team"];
 			const int tval = lexical_cast_default<int>(tnum,-1);
-			if ( (tval<0)  || (tval > teams.size()) ) {
+			if ( (tval<0)  || ((size_t)tval > teams.size()) ) {
 				ERR_NW << "Illegal countdown update \n" << "Received update for :" << tval << " Current user :" << team_num << "\n" << " Updated value :" << val;
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			} else {
