@@ -49,11 +49,11 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 replay_controller::replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 						   const int ticks, const int num_turns, const config& game_config,
 						   CVideo& video, const std::vector<config*>& story) :
-	level_(level), gameinfo_(gameinfo), gamestate_(state_of_game), gamestate_start_(state_of_game), ticks_(ticks),
-	status_(level, num_turns), status_start_(level, num_turns), map_(game_config, level["map_data"]),
-	game_config_(game_config), team_manager_(teams_), verify_manager_(units_), help_manager_(&game_config, &gameinfo, &map_),
-	labels_manager_(), xp_modifier_(atoi(level["experience_modifier"].c_str())),
-	mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo)
+	verify_manager_(units_), team_manager_(teams_), labels_manager_(), help_manager_(&game_config, &gameinfo, &map_), 
+	level_(level), game_config_(game_config), gameinfo_(gameinfo), gamestate_(state_of_game),
+	gamestate_start_(state_of_game), status_(level, num_turns), status_start_(level, num_turns),
+	map_(game_config, level["map_data"]), mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo),
+	ticks_(ticks), xp_modifier_(atoi(level["experience_modifier"].c_str()))
 {
 	player_number_ = 1;
 	delay_ = 0;
@@ -75,7 +75,7 @@ replay_controller::~replay_controller(){
 	delete events_manager_;
 }
 
-void replay_controller::init(CVideo& video, const std::vector<config*>& story){
+void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*/){
 	//if the recorder has no event, adds an "game start" event to the
 	//recorder, whose only goal is to initialize the RNG
 	if(recorder.empty()) {
@@ -302,7 +302,7 @@ void replay_controller::replay_next_turn(){
 void replay_controller::replay_next_side(){
 	is_playing_ = true;
 	play_side(player_number_ - 1);
-	if (player_number_ > teams_.size()){
+	if ((size_t)player_number_ > teams_.size()){
 		player_number_ = 1;
 		current_turn_++;
 	}
@@ -361,7 +361,7 @@ void replay_controller::play_turn(){
 
 	LOG_NG << "turn: " << current_turn_ << "\n";
 
-	while ( (player_number_ <= teams_.size()) && (!recorder.at_end()) ){
+	while ( ((size_t)player_number_ <= teams_.size()) && (!recorder.at_end()) ){
 		play_side(player_number_ - 1);
 	}
 
@@ -417,7 +417,7 @@ void replay_controller::play_side(const int team_index){
 
 		if(turn_refresh) {
 			for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
-				if(i->second.side() == player_number_) {
+				if(i->second.side() == (size_t)player_number_) {
 					i->second.new_turn();
 				}
 			}
@@ -457,7 +457,7 @@ void replay_controller::play_side(const int team_index){
 		LOG_NG << "result of replay: " << (replaying?"true":"false") << "\n";
 
 		for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
-			if(uit->second.side() == player_number_){
+			if(uit->second.side() == (size_t)player_number_){
 				uit->second.end_turn();
 			}
 			else{
@@ -479,7 +479,7 @@ void replay_controller::play_side(const int team_index){
 
 	player_number_++;
 
-	if (player_number_ > teams_.size()) {
+	if ((size_t)player_number_ > teams_.size()) {
 		status_.next_turn();
 	}
 	update_teams();
@@ -488,7 +488,7 @@ void replay_controller::play_side(const int team_index){
 
 void replay_controller::update_teams(){
 	int next_team = player_number_;
-	if (next_team > teams_.size()) { next_team = 1; }
+	if ((size_t)next_team > teams_.size()) { next_team = 1; }
 	if (teams_[next_team - 1].uses_fog()){
 		gui_->set_team(next_team - 1);
 		clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, next_team - 1);
