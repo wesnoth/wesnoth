@@ -549,7 +549,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 	replay& replayer = (obj != NULL) ? *obj : recorder;
 
 	if (!replayer.is_skipping()){
-		clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1);
 		disp.recalculate_minimap();
 	}
 
@@ -703,7 +702,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			current_team.spend_gold(u_type->second.cost());
 			LOG_NW << "-> " << (current_team.gold()) << "\n";
-			fix_shroud = !replayer.is_skipping() && true;
+			fix_shroud = !replayer.is_skipping();
 }
 
 		else if((child = cfg->child("recall")) != NULL) {
@@ -729,7 +728,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				ERR_NW << "illegal recall\n";
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
-			fix_shroud = !replayer.is_skipping() && true;
+			fix_shroud = !replayer.is_skipping();
 		}
 
 		else if((child = cfg->child("disband")) != NULL) {
@@ -850,7 +849,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				}
 			}
 
-			fix_shroud = !replayer.is_skipping() && true;
+			fix_shroud = !replayer.is_skipping();
 			disp.set_paths(NULL);
 		}
 
@@ -912,7 +911,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			if(advancing_units.empty()) {
 				check_victory(units,teams);
 			}
-			fix_shroud = !replayer.is_skipping() && true;
+			fix_shroud = !replayer.is_skipping();
 		} else {
 			ERR_NW << "unrecognized action\n";
 			if (!game_config::ignore_replay_errors) throw replay::error();
@@ -922,6 +921,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		//This is needed for shared vision to work properly.
 		if(fix_shroud && clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1) && !recorder.is_skipping()) {
 			disp.recalculate_minimap();
+			disp.invalidate_game_status();
 			disp.invalidate_all();
 		}
 
