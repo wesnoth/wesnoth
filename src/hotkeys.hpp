@@ -71,13 +71,25 @@ public:
 	void load_from_config(const config& cfg);
 
 	void set_description(const std::string& description);
-	void set_key(int keycode, bool alt, bool ctrl, bool shift, bool cmd);
+	void set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd);
 
-	int get_keycode() const { return keycode_; };
-	bool get_alt() const { return alt_; };
-	bool get_ctrl() const { return ctrl_; };
-	bool get_shift() const { return shift_; };
-	bool get_cmd() const { return cmd_; };
+	enum type {
+		UNBOUND,
+		BY_KEYCODE,
+		BY_CHARACTER,
+	};
+
+	enum type get_type() const { return type_; }
+
+	// Returns unicode value of keypress.
+	int get_character() const { return character_; }
+	bool get_alt() const { return alt_; }
+	bool get_cmd() const { return cmd_; }
+	bool get_ctrl() const { return ctrl_; }
+
+	// Return the actual key code.
+	int get_keycode() const { return keycode_; }
+	bool get_shift() const { return shift_; }
 
 	// Return "name" of hotkey for example :"ctrl+alt+g"
 	std::string get_name() const;
@@ -89,11 +101,20 @@ private:
 	std::string command_;
 	std::string description_;
 
-	int keycode_;
-	bool shift_;
+	// UNBOUND means unset, CHARACTER means see character_, KEY means keycode_.
+	enum type type_;
+
+	// Actual unicode character
+	int character_;
 	bool ctrl_;
 	bool alt_;
 	bool cmd_;
+
+	// These used for function keys (which don't have a unicode value) or
+	// space (which doesn't have a distinct unicode value when shifted).
+	int keycode_;
+	bool shift_;
+
 	bool hidden_;
 };
 
@@ -110,12 +131,9 @@ void save_hotkeys(config& cfg);
 
 hotkey_item& get_hotkey(HOTKEY_COMMAND id);
 hotkey_item& get_hotkey(const std::string& command);
-//the "mods" parameter distinguishes between two modes of operation. If mods
-//are disallowed (mods == false), then any match must be exact. I.e. "shift+a"
-//does not match "a". If they are allowed (mods == true), then shift+a will
-//match "a"
-hotkey_item& get_hotkey(int keycode, bool shift, bool ctrl, bool alt, bool cmd, bool mods = false);
-hotkey_item& get_hotkey(const SDL_KeyboardEvent& event, bool mods = false);
+
+hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd);
+hotkey_item& get_hotkey(const SDL_KeyboardEvent& event);
 
 hotkey_item& get_visible_hotkey(int index);
 

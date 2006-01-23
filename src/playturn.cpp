@@ -266,6 +266,8 @@ void turn_info::send_data()
 
 void turn_info::handle_event(const SDL_Event& event)
 {
+	char key = 0;
+
 	if(gui::in_dialog()) {
 		return;
 	}
@@ -287,11 +289,13 @@ void turn_info::handle_event(const SDL_Event& event)
 		//intentionally fall-through
 	case SDL_KEYUP:
 
+		if ((event.key.keysym.unicode & 0xFF80) == 0)
+			key = event.key.keysym.unicode;
+
 		//if the user has pressed 1 through 9, we want to show how far
 		//the unit can move in that many turns
-		if(event.key.keysym.sym >= '1' && event.key.keysym.sym <= '7') {
-			const int new_path_turns = (event.type == SDL_KEYDOWN) ?
-			                           event.key.keysym.sym - '1' : 0;
+		if(key >= '1' && key <= '7') {
+			const int new_path_turns = (event.type == SDL_KEYDOWN) ? key - '1' : 0;
 
 			if(new_path_turns != path_turns_) {
 				path_turns_ = new_path_turns;

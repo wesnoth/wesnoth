@@ -771,13 +771,14 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			disp.update_display();
 			SDL_Event event;
 			event.type = 0;
-			int key=0; //just to avoid warning
+			int character=0,keycode=0; //just to avoid warning
 			int mod=0;
 			while (event.type!=SDL_KEYDOWN) SDL_PollEvent(&event);
 			do {
 				if (event.type==SDL_KEYDOWN)
 				{
-					key=event.key.keysym.sym;
+					keycode=event.key.keysym.sym;
+					character=event.key.keysym.unicode;
 					mod=event.key.keysym.mod;
 				};
 				SDL_PollEvent(&event);
@@ -787,14 +788,14 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			restorer.restore();
 			disp.update_display();
 
-			const hotkey::hotkey_item& oldhk = hotkey::get_hotkey(key, (mod & KMOD_SHIFT) != 0,
+			const hotkey::hotkey_item& oldhk = hotkey::get_hotkey(character, keycode, (mod & KMOD_SHIFT) != 0,
 					(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 			hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
 
 			if(oldhk.get_id() != newhk.get_id() && !oldhk.null()) {
 				gui::show_dialog(disp,NULL,"",_("This Hotkey is already in use."),gui::MESSAGE);
 			} else {
-				newhk.set_key(key, (mod & KMOD_SHIFT) != 0,
+				newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
 						(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 
 				menu_.change_item(menu_.selection(), 1, newhk.get_name());

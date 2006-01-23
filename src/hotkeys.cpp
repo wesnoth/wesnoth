@@ -129,38 +129,72 @@ hotkey::hotkey_item null_hotkey_;
 namespace hotkey {
 
 hotkey_item::hotkey_item(HOTKEY_COMMAND id, const std::string& command, const std::string& description, bool hidden)
-	: id_(id), command_(command), description_(description), keycode_(0),
-	  shift_(false), ctrl_(false), alt_(false), cmd_(false), hidden_(hidden)
+	: id_(id), command_(command), description_(description), type_(UNBOUND),
+	  ctrl_(false), alt_(false), cmd_(false), shift_(false), hidden_(hidden)
 {
 }
 
+// There are two kinds of "key" values.  One refers to actual keys, like
+// F1 or SPACE.  The other refers to characters produced, eg 'M' or ':'.
+// For the latter, specifying shift+; doesn't make sense, because ; is
+// already shifted on French keyboards, for example.  You really want to
+// say ':', however that is typed.  However, when you say shift+SPACE,
+// you're really referring to the space bar, as shift+SPACE usually just
+// produces a SPACE character.
 void hotkey_item::load_from_config(const config& cfg)
 {
-	const std::string& code = cfg["key"];
-	if(code.empty()) {
-		keycode_ = 0;
-	} else {
-		keycode_ = sdl_keysym_from_name(code);
-		if (keycode_ == SDLK_UNKNOWN) {
-			if(code.size() >= 2  && code.size() <= 3 && tolower(code[0]) == 'f') {
-				const int num = lexical_cast_default<int>(std::string(code.begin() + 1, code.end()), 1);
-				keycode_ = num + SDLK_F1 - 1;
-			} else if (code.size() == 1) {
-				keycode_ = code[0];
-			}
-		}
-	}
+	const std::string& key = cfg["key"];
 
 	alt_ = (cfg["alt"] == "yes");
+	cmd_ = (cfg["cmd"] == "yes");
 	ctrl_ = (cfg["ctrl"] == "yes");
 	shift_ = (cfg["shift"] == "yes");
-	cmd_ = (cfg["cmd"] == "yes");
+
+	if (!key.empty()) {
+		// They may really want a specific key on the keyboard: we assume
+		// that any single character keyname is a character.
+		if (key.size() > 1) {
+			type_ = BY_KEYCODE;
+
+			keycode_ = sdl_keysym_from_name(key);
+			if (keycode_ == SDLK_UNKNOWN) {
+				if (tolower(key[0]) != 'f') {
+					LOG_STREAM(err, config)
+						<< "hotkey key '" << key << "' invalid\n";
+				} else {
+					int num = lexical_cast_default<int>
+						(std::string(key.begin()+1,	key.end()), 1);
+					keycode_ = num + SDLK_F1 - 1;
+				}
+			}
+		} else if (key == " " || shift_) {
+			// Space must be treated as a key because shift-space
+			// isn't a different character from space, and control key
+			// makes it go weird.  shift=yes should never be specified
+			// on single characters (eg. key=m, shift=yes would be
+			// key=M), but we don't want to break old preferences
+			// files.
+			type_ = BY_KEYCODE;
+			keycode_ = key[0];
+		} else {
+			type_ = BY_CHARACTER;
+			character_ = key[0];
+		}
+	}
 }
 
 std::string hotkey_item::get_name() const
 {
-	if (keycode_ != 0) {
-		std::stringstream str;
+	std::stringstream str;
+	if (type_ == BY_CHARACTER) {
+		if (alt_)
+			str << "alt+";
+		if (cmd_)
+			str << "cmd+";
+		if (ctrl_)
+			str << "ctrl+";
+		str << (char)character_;
+	} else if (type_ == BY_KEYCODE) {
 		if (alt_)
 			str << "alt+";
 		if (ctrl_)
@@ -169,12 +203,9 @@ std::string hotkey_item::get_name() const
 			str << "shift+";
 		if (cmd_)
 			str << "cmd+";
-
 		str << SDL_GetKeyName(SDLKey(keycode_));
-		return str.str();
-	} else {
-		return "";
 	}
+	return str.str();
 }
 
 void hotkey_item::set_description(const std::string& description)
@@ -182,13 +213,33 @@ void hotkey_item::set_description(const std::string& description)
 	description_ = description;
 }
 
-void hotkey_item::set_key(int keycode, bool shift, bool ctrl, bool alt, bool cmd)
+void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd)
 {
-	keycode_ = keycode;
-	shift_ = shift;
-	ctrl_ = ctrl;
-	alt_ = alt;
-	cmd_ = cmd;
+	const std::string keyname = SDL_GetKeyName(SDLKey(keycode_));
+
+	// Sometimes control modifies by -64, ie ^A == 1.
+	if (character < 64 && ctrl) {
+		if (shift)
+			character += 64;
+		else
+			character += 96;
+	}
+
+	// We handle simple cases by character, others by the actual key.
+	if (isprint(character) && !isspace(character)) {
+		type_ = BY_CHARACTER;
+		character_ = character;
+		ctrl_ = ctrl;
+		alt_ = alt;
+		cmd_ = cmd;
+	} else {
+		type_ = BY_KEYCODE;
+		keycode_ = keycode;
+		shift_ = shift;
+		ctrl_ = ctrl;
+		alt_ = alt;
+		cmd_ = cmd;
+	}
 }
 
 manager::manager()
@@ -232,16 +283,20 @@ void save_hotkeys(config& cfg)
 	cfg.clear_children("hotkey");
 
 	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin(); i != hotkeys_.end(); ++i) {
-		if (i->hidden() || i->get_keycode() == 0)
+		if (i->hidden() || i->get_type() == hotkey_item::UNBOUND)
 			continue;
 
 		config& item = cfg.add_child("hotkey");
-
 		item["command"] = i->get_command();
-		item["key"] = SDL_GetKeyName(SDLKey(i->get_keycode()));
+
+		if (i->get_type() == hotkey_item::BY_KEYCODE) {
+			item["key"] = SDL_GetKeyName(SDLKey(i->get_keycode()));
+			item["shift"] = i->get_shift() ? "yes" : "no";
+		} else if (i->get_type() == hotkey_item::BY_CHARACTER) {
+			item["key"] = std::string(1, (char)i->get_character());
+		}
 		item["alt"] = i->get_alt() ? "yes" : "no";
 		item["ctrl"] = i->get_ctrl() ? "yes" : "no";
-		item["shift"] = i->get_shift() ? "yes" : "no";
 		item["cmd"] = i->get_cmd() ? "yes" : "no";
 	}
 }
@@ -276,25 +331,31 @@ hotkey_item& get_hotkey(const std::string& command)
 	return *itor;
 }
 
-hotkey_item& get_hotkey(int keycode, bool shift, bool ctrl, bool alt, bool cmd, bool mods)
+hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd)
 {
-
 	std::vector<hotkey_item>::iterator itor;
 
+	// Sometimes control modifies by -64, ie ^A == 1.
+	if (character < 64 && ctrl) {
+		if (shift)
+			character += 64;
+		else
+			character += 96;
+	}
+
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		if(mods) {
-			if(itor->get_keycode() == keycode
-					&& (shift == itor->get_shift() || shift == true)
-					&& (ctrl == itor->get_ctrl() || ctrl == true)
-					&& (alt == itor->get_alt() || alt == true)
-					&& (cmd == itor->get_cmd() || cmd == true))
+		if (itor->get_type() == hotkey_item::BY_CHARACTER) {
+			if (character == itor->get_character()
+				&& ctrl == itor->get_ctrl()
+				&& alt == itor->get_alt()
+				&& cmd == itor->get_cmd())
 				break;
-		} else {
-			if(itor->get_keycode() == keycode
-					&& shift == itor->get_shift()
-					&& ctrl == itor->get_ctrl()
-					&& alt == itor->get_alt()
-					&& cmd == itor->get_cmd())
+		} else if (itor->get_type() == hotkey_item::BY_KEYCODE) {
+			if (keycode == itor->get_keycode()
+				&& shift == itor->get_shift()
+				&& ctrl == itor->get_ctrl()
+				&& alt == itor->get_alt()
+				&& cmd == itor->get_cmd())
 				break;
 		}
 	}
@@ -305,9 +366,9 @@ hotkey_item& get_hotkey(int keycode, bool shift, bool ctrl, bool alt, bool cmd, 
 	return *itor;
 }
 
-hotkey_item& get_hotkey(const SDL_KeyboardEvent& event, bool mods)
+hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
 {
-	return get_hotkey(event.keysym.sym,
+	return get_hotkey(event.keysym.unicode, event.keysym.sym,
 			(event.keysym.mod & KMOD_SHIFT) != 0,
 			(event.keysym.mod & KMOD_CTRL) != 0,
 			(event.keysym.mod & KMOD_ALT) != 0,
@@ -315,7 +376,7 @@ hotkey_item& get_hotkey(const SDL_KeyboardEvent& event, bool mods)
 #ifdef __APPLE__
 			|| (event.keysym.mod & KMOD_RMETA) != 0
 #endif
-			, mods);
+			);
 }
 
 hotkey_item& get_visible_hotkey(int index)
@@ -380,10 +441,13 @@ void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_ex
 {
 	const hotkey_item* hk = &get_hotkey(event);
 
+#if 0
+	// This is not generally possible without knowing keyboard layout.
 	if(hk->null()) {
 		//no matching hotkey was found, but try an in-exact match.
 		hk = &get_hotkey(event, true);
 	}
+#endif
 
 	if(hk->null())
 		return;

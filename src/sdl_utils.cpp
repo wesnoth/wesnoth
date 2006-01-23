@@ -25,8 +25,6 @@
 #include <iostream>
 #include <map>
 
-#define ERR_DP LOG_STREAM(err, display)
-
 SDLKey sdl_keysym_from_name(std::string const &keyname)
 {
 	static bool initialized = false;
