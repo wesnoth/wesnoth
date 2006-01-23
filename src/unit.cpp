@@ -774,6 +774,9 @@ void unit::read(const game_data& data, const config& cfg)
 	}
 
 	validate_side(side_);
+	if(cfg["random_traits"] == "yes") {
+		generate_traits();
+	}
 
 	description_ = cfg["user_description"];
 	if(cfg["generate_description"] == "yes") {
