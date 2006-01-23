@@ -291,6 +291,43 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 
 		network::send_data(data);
 		entry_textbox_.clear();
+	} else if(event.keysym.sym == SDLK_TAB ) {
+		std::string text = entry_textbox_.text();
+		std::string semiword;
+		bool beginning;
+
+		const size_t last_space = text.rfind(" ");
+
+		//if last character is a space return
+		if(last_space == text.size() -1) {
+			return;
+		}
+
+		if(last_space == std::string::npos) {
+			beginning = true;
+			semiword = text;
+		}else{
+			beginning = false;
+			semiword.assign(text,last_space+1,text.size());
+		}
+
+		std::string guess;
+
+		std::vector<std::string>& users = user_list_;
+		std::sort<std::vector<std::string>::iterator>(users.begin(), users.end());
+		for(std::vector<std::string>::const_iterator i = users.begin(); i != users.end(); ++i) {
+			if( i->size() >= semiword.size() && 
+					std::equal(semiword.begin(),semiword.end(),i->begin(),chars_equal_insensitive)) {
+				guess = *i;
+				break;
+			}
+		}
+
+		if(guess.empty() == false) {
+			std::string add = beginning ? ": " : " ";
+			text.replace(last_space+1, semiword.size(), guess + add);
+			entry_textbox_.set_text(text);
+		}
 	}
 }
 
