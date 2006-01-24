@@ -135,6 +135,7 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 			turn_data.turn_slice();
 		} catch(end_level_exception& e) {
 			turn_data.send_data();
+			gui.set_paths(NULL);
 			throw e;
 		}
 
