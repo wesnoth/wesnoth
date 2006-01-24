@@ -37,7 +37,11 @@ public:
 	//be corresponding entries for these types of terrain in the terrain
 	//configuration file.
 	static const TERRAIN VOID_TERRAIN = ' ';
-	enum { FOGGED = '~', KEEP = 'K', CASTLE = 'C', VILLAGE = 't', FOREST = 'f' };
+	static const TERRAIN FOGGED = '~';
+	static const TERRAIN KEEP = 'K';
+	static const TERRAIN CASTLE = 'C';
+	static const TERRAIN VILLAGE = 't';
+	static const TERRAIN FOREST = 'f';
 
 	//the name of the terrain is the terrain itself, the underlying terrain
 	//is the name of the terrain for game-logic purposes. I.e. if the terrain
