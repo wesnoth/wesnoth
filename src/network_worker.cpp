@@ -262,7 +262,7 @@ SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 	return SOCKET_READY;
 }
 
-int process_queue(void* data)
+int process_queue(void*)
 {
 	LOG_NW << "thread started...\n";
 	for(;;) {

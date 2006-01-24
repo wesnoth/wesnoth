@@ -234,7 +234,7 @@ void textbox::set_location(const SDL_Rect& rect)
 	set_shown_size(location().h);
 }
 
-void textbox::scroll(int pos)
+void textbox::scroll(unsigned int pos)
 {
 	yscroll_ = pos;
 	set_dirty(true);
@@ -388,7 +388,7 @@ void textbox::handle_event(const SDL_Event& event)
 		int pos = 0;
 		int distance = x;
 
-		for(int i = 1; i < int(char_x_.size()); ++i) {
+		for(unsigned int i = 1; i < char_x_.size(); ++i) {
 			if(yscroll_ + y < char_y_[i]) {
 				break;
 			}

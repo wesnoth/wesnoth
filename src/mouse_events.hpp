@@ -52,7 +52,7 @@ private:
 	bool browse_;
 	mutable unit_map visible_units_;
 	int path_turns_;
-	int team_num_;
+	unsigned int team_num_;
 	undo_list undo_stack_;
 	undo_list redo_stack_;
 

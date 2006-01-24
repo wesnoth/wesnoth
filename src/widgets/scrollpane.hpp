@@ -59,7 +59,7 @@ protected:
 	//virtual void process_event();
 	virtual void draw();
 	virtual void set_inner_location(SDL_Rect const &rect);
-	virtual void scroll(int pos);
+	virtual void scroll(unsigned int pos);
 
 private:
 	void update_widget_positions();

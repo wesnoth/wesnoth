@@ -67,7 +67,7 @@ command_disabler::~command_disabler()
 void play_turn(const game_data& gameinfo, game_state& state_of_game,
                const gamestatus& status, const config& terrain_config,
                const config& level, CKey& key, display& gui, gamemap& map,
-               std::vector<team>& teams, int team_num,
+               std::vector<team>& teams, unsigned int team_num,
                std::map<gamemap::location,unit>& units,
                turn_info::floating_textbox& textbox,
                replay_network_sender& network_sender)
@@ -191,7 +191,7 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
                      const gamestatus& status, const config& terrain_config,
 		     const config& level, CKey& key, display& gui, gamemap& map,
-		     std::vector<team>& teams, int team_num, unit_map& units,
+		     std::vector<team>& teams, unsigned int team_num, unit_map& units,
 		     TURN_MODE mode, floating_textbox& textbox,
 		     replay_network_sender& replay_sender)
   : gameinfo_(gameinfo), state_of_game_(state_of_game), status_(status),
@@ -1781,7 +1781,7 @@ void turn_info::write_game_snapshot(config& start) const
 	start["playing_team"] = buf.str();
 
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		const int side_num = t - teams_.begin() + 1;
+		const unsigned int side_num = t - teams_.begin() + 1;
 
 		config& side = start.add_child("side");
 		t->write(side);
@@ -2578,7 +2578,7 @@ void turn_info::do_command(const std::string& str)
 		image::flush_cache();
 		gui_.redraw_everything();
 	} else if (cmd == "droid") {
-		const int side = lexical_cast_default<int>(data, 1);
+		const unsigned int side = lexical_cast_default<unsigned int>(data, 1);
 		const size_t index = static_cast<size_t>(side - 1);
 		if (index >= teams_.size() || teams_[index].is_network()) {
 			//do nothing
@@ -2604,9 +2604,9 @@ void turn_info::do_command(const std::string& str)
 		if(j != data.end()) {
 			const std::string side(data.begin(),j);
 			const std::string player(j+1,data.end());
-			int side_num;
+			unsigned int side_num;
 			try {
-				side_num = lexical_cast<int, std::string>(side);
+				side_num = lexical_cast<unsigned int, std::string>(side);
 			} catch(bad_lexical_cast&) {
 				return;
 			}

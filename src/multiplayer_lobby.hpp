@@ -44,7 +44,7 @@ public:
 		bool use_map_settings;
 	};
 	gamebrowser(CVideo& video);
-	void scroll(int pos);
+	void scroll(unsigned int pos);
 	void handle_event(const SDL_Event& event);
 	void set_inner_location(const SDL_Rect& rect);
 	void set_item_height(unsigned int height);

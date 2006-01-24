@@ -228,12 +228,12 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  hotkeys_button_(disp.video(), _("Hotkeys")),
 	  gamma_button_(disp.video(), _("Adjust Gamma"), gui::button::TYPE_CHECK),
 	  flip_time_button_(disp.video(), _("Reverse Time Graphics"), gui::button::TYPE_CHECK),
-          chat_timestamp_button_(disp.video(), _("Chat Timestamping"), gui::button::TYPE_CHECK),
+	  advanced_button_(disp.video(), "", gui::button::TYPE_CHECK),
 	  sound_button_(disp.video(), _("Sound effects"), gui::button::TYPE_CHECK),
 	  music_button_(disp.video(), _("Music"), gui::button::TYPE_CHECK),
-	  advanced_button_(disp.video(), "", gui::button::TYPE_CHECK),
-	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")), chat_lines_label_(disp.video(), ""),
-	  scroll_label_(disp.video(), _("Scroll Speed:")), gamma_label_(disp.video(), _("Gamma:")),
+	  chat_timestamp_button_(disp.video(), _("Chat Timestamping"), gui::button::TYPE_CHECK),
+	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
+	  scroll_label_(disp.video(), _("Scroll Speed:")), gamma_label_(disp.video(), _("Gamma:")), chat_lines_label_(disp.video(), ""),
 	  slider_label_width_(0), advanced_(disp.video(),std::vector<std::string>()), advanced_selection_(-1),
 	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg)
 {
@@ -737,7 +737,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(0).set_alpha_sort(1);
 
-	gui::menu menu_(disp.video(), menu_items, false, height, -1, &sorter);
+	gui::menu menu_(disp.video(), menu_items, false, height, 0, &sorter);
 	menu_.sort_by(0);
 	menu_.reset_selection();
 	menu_.set_width(font::relative_size(400));

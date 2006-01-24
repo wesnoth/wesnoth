@@ -77,7 +77,7 @@ public:
 	};
 
 	menu(CVideo& video, const std::vector<std::string>& items,
-	     bool click_selects=false, int max_height=-1, int max_width=-1,
+	     bool click_selects=false, unsigned int max_height=0, unsigned int max_width=0,
 		 const sorter* sorter_obj=NULL);
 
 	int selection() const;
@@ -103,8 +103,8 @@ public:
 	/// Set a new max height for this menu. Note that this does not take
 	/// effect immediately, only after certain operations that clear
 	/// everything, such as set_items().
-	void set_max_height(const int new_max_height);
-	void set_max_width(const int new_max_width);
+	void set_max_height(const unsigned int new_max_height);
+	void set_max_width(const unsigned int new_max_width);
 
 	size_t nitems() const { return items_.size(); }
 
@@ -115,7 +115,7 @@ public:
 	void set_click_selects(bool value);
 	void set_numeric_keypress_selection(bool value);
 
-	void scroll(int pos);
+	void scroll(unsigned int pos);
 
 	void sort_by(int column);
 
@@ -130,7 +130,7 @@ private:
 
 	size_t heading_height() const;
 
-	int max_height_, max_width_;
+	unsigned int max_height_, max_width_;
 	mutable int max_items_, item_height_;
 
 	void adjust_viewport_to_selection();

@@ -456,14 +456,13 @@ std::string wstring_to_string(const wide_string &src)
 {
 	wchar_t ch;
 	wide_string::const_iterator i;
-	int j;
 	Uint32 bitmask;
 	std::string ret;
 
 	try {
 
 		for(i = src.begin(); i != src.end(); ++i) {
-			int count;
+			unsigned int count;
 			ch = *i;
 
 			/* Determine the bytes required */
@@ -472,8 +471,8 @@ std::string wstring_to_string(const wide_string &src)
 				count++;
 
 			bitmask = 0x800;
-			for(j = 0; j < 5; ++j) {
-				if(ch >= bitmask)
+			for(unsigned int j = 0; j < 5; ++j) {
+				if(ch >= (wchar_t)bitmask)
 					count++;
 				bitmask <<= 5;
 			}
@@ -484,10 +483,10 @@ std::string wstring_to_string(const wide_string &src)
 			if(count == 1) {
 				push_back(ret,ch);
 			} else {
-				for(j = count-1; j >= 0; --j) {
+				for(int j = (int)count-1; j >= 0; --j) {
 					unsigned char c = (ch >> (6*j)) & 0x3f;
 					c |= 0x80;
-					if(j == count-1)
+					if(j == (int)count-1)
 						c |= 0xff << (8 - count);
 					push_back(ret,c);
 				}

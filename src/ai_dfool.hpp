@@ -87,7 +87,7 @@ namespace dfool {
 	std::string id=(**o)["id"];
 	std::string number=(**o)["number"];
 	std::string priority=(**o)["priority"];
-	int num=atoi(number.c_str());
+	unsigned int num=atoi(number.c_str());
 	int prior=atoi(priority.c_str());
 	bool pers=(id.size()>0);
 	LOG_STREAM(info, ai)<<"dfool order("<<(pers?id:"")<<"): "<<num<<(num==1?" unit":" units")<<" with priority "<<prior<<std::endl;

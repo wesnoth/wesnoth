@@ -34,8 +34,8 @@ struct end_level_exception {
 };
 
 struct end_turn_exception {
-	end_turn_exception(int r = 0): redo(r) {}
-	int redo;
+	end_turn_exception(unsigned int r = 0): redo(r) {}
+	unsigned int redo;
 };
 
 LEVEL_RESULT play_level(const game_data& gameinfo, const config& terrain_config,

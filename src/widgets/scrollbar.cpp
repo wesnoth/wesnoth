@@ -86,7 +86,7 @@ unsigned scrollbar::get_max_position() const
 
 void scrollbar::set_position(unsigned pos)
 {
-	if (int(pos) > full_height_ - grip_height_)
+	if (pos > full_height_ - grip_height_)
 		pos = full_height_ - grip_height_;
 	if (pos == grip_position_)
 		return;
@@ -98,9 +98,9 @@ void scrollbar::set_position(unsigned pos)
 
 void scrollbar::adjust_position(unsigned pos)
 {
-	if (int(pos) < grip_position_)
+	if (pos < grip_position_)
 		set_position(pos);
-	else if (int(pos) >= grip_position_ + grip_height_)
+	else if (pos >= grip_position_ + grip_height_)
 		set_position(pos - (grip_height_ - 1));
 }
 
@@ -115,7 +115,7 @@ void scrollbar::move_position(int dep)
 
 void scrollbar::set_shown_size(unsigned h)
 {
-	if (int(h) > full_height_)
+	if (h > full_height_)
 		h = full_height_;
 	if (h == grip_height_)
 		return;
@@ -309,7 +309,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 			new_state = on_grip ? ACTIVE : NORMAL;
 		} else if (state_ == DRAGGED && groove.h != grip.h) {
 			int y_dep = e.y - grip.y - mousey_on_grip_;
-			int dep = y_dep * (full_height_ - grip_height_) / (int)(groove.h - grip.h);
+			int dep = y_dep * int(full_height_ - grip_height_) / (int)(groove.h - grip.h);
 			move_position(dep);
 		}
 		break;

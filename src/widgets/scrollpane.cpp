@@ -105,9 +105,9 @@ void scrollpane::draw()
 	//draws the scrollpane background
 }
 
-void scrollpane::scroll(int pos)
+void scrollpane::scroll(unsigned int pos)
 {
-	if (pos == content_pos_.y)
+	if ((int)pos == content_pos_.y)
 		return;
 
 	content_pos_.y = pos;

@@ -79,7 +79,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	//user maps
 	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
 
-	for(int i = 0; i < user_maps_.size(); i++)
+	for(unsigned int i = 0; i < user_maps_.size(); i++)
 		map_options_.push_back(user_maps_[i]);
 
 	//standard maps

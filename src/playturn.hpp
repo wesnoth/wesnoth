@@ -71,7 +71,7 @@ public:
 	turn_info(const game_data& gameinfo, game_state& state_of_game,
 	          const gamestatus& status, const config& terrain_config,
 		  const config& level, CKey& key, display& gui, gamemap& map,
-		  std::vector<team>& teams, int team_num, unit_map& units,
+		  std::vector<team>& teams, unsigned int team_num, unit_map& units,
 		  TURN_MODE mode, floating_textbox& textbox,
 		  replay_network_sender& network_sender);
 
@@ -205,7 +205,7 @@ private:
 	display& gui_;
 	gamemap& map_;
 	std::vector<team>& teams_;
-	int team_num_;
+	unsigned int team_num_;
 	unit_map& units_;
 
 	const unit_map& visible_units() const;
@@ -252,9 +252,9 @@ private:
 
 void play_turn(const game_data& gameinfo, game_state& state_of_game,
                const gamestatus& status, const config& terrain_config,
-	       const config& level,
+			   const config& level,
                CKey& key, display& gui, gamemap& map,
-               std::vector<team>& teams, int team_num,
+               std::vector<team>& teams, unsigned int team_num,
                std::map<gamemap::location,unit>& units,
                turn_info::floating_textbox& textbox,
                replay_network_sender& network_sender);

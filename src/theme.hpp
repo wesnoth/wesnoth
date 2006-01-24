@@ -53,13 +53,12 @@ class theme
 		enum ANCHORING { FIXED, TOP_ANCHORED, PROPORTIONAL, BOTTOM_ANCHORED };
 
 	private:
+		std::string id_;
 		SDL_Rect loc_;
 		mutable SDL_Rect relative_loc_;
 		mutable SDL_Rect last_screen_;
 
 		ANCHORING xanchor_, yanchor_;
-
-		std::string id_;
 
 		static ANCHORING read_anchor(const std::string& str);
 	};

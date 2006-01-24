@@ -39,11 +39,11 @@ namespace mp {
 gamebrowser::gamebrowser(CVideo& video) : scrollarea(video),
 	gold_icon_locator_("misc/gold.png"),
 	xp_icon_locator_("misc/units.png"),
-	time_limit_icon_locator_("misc/sand-clock.png"),
 	vision_icon_locator_("misc/invisible.png"),
-	observer_icon_locator_("misc/eye.png"), header_height_(20),
+	time_limit_icon_locator_("misc/sand-clock.png"),
+	observer_icon_locator_("misc/eye.png"), 
 	item_height_(100), margin_(5), h_padding_(5),
-	v_padding_(5), selected_(0), visible_range_(std::pair<size_t,size_t>(0,0)),
+	v_padding_(5), header_height_(20), selected_(0), visible_range_(std::pair<size_t,size_t>(0,0)),
 	double_clicked_(false), ignore_next_doubleclick_(false), last_was_doubleclick_(false)
 {
 }
@@ -56,9 +56,9 @@ void gamebrowser::set_inner_location(const SDL_Rect& rect)
 	scroll(get_position());
 }
 
-void gamebrowser::scroll(int pos)
+void gamebrowser::scroll(unsigned int pos)
 {
-	if(pos >= 0 && pos < games_.size()) {
+	if(pos < games_.size()) {
 		visible_range_.first = pos;
 		visible_range_.second = minimum<size_t>(pos + inner_location().h / item_height_, games_.size());
 		set_dirty();

@@ -314,7 +314,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 		if(start_of_line) {
 			line_width = 0;
 			format_string = "";
-			while(ch != end && *ch < 0x100U && is_format_char(*ch)) {
+			while(ch != end && *ch < (wchar_t)0x100 && is_format_char(*ch)) {
 				format_string.append(ch.substr().first, ch.substr().second);
 				++ch;
 			}

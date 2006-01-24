@@ -726,7 +726,7 @@ void queue_data(const config& cfg, connection connection_num)
 	send_data(cfg,connection_num,0,QUEUE_ONLY);
 }
 
-void process_send_queue(connection connection_num, size_t max_size)
+void process_send_queue(connection, size_t)
 {
 	check_error();
 }

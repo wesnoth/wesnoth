@@ -257,7 +257,7 @@ public:
 	std::string ref_at(const int x, const int y);
 
 protected:
-	virtual void scroll(int pos);
+	virtual void scroll(unsigned int pos);
 	virtual void set_inner_location(const SDL_Rect& rect);
 
 private:
@@ -2139,7 +2139,7 @@ void help_text_area::draw_contents()
 	update_rect(loc);
 }
 
-void help_text_area::scroll(int)
+void help_text_area::scroll(unsigned int)
 {
 	// Nothing will be done on the actual scroll event. The scroll
 	// position is checked when drawing instead and things drawn

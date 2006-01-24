@@ -50,7 +50,7 @@ public:
 protected:
 	virtual void draw_contents();
 	virtual void set_inner_location(SDL_Rect const &);
-	virtual void scroll(int pos);
+	virtual void scroll(unsigned int pos);
 
 private:
 	size_t max_size_;

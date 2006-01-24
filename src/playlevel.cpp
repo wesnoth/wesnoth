@@ -292,7 +292,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		gui.add_overlay(gamemap::location(**overlay),(**overlay)["image"], (**overlay)["halo"]);
 	}
 
-	int turn = 1, player_number = 0;
+	unsigned int turn = 1, player_number = 0;
 
 	turn_info::floating_textbox textbox_info;
 

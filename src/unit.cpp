@@ -652,7 +652,7 @@ bool unit::matches_filter(const config& cfg) const
 		}
 	}
 
-	if(side.empty() == false && this->side() != atoi(side.c_str()))
+	if(side.empty() == false && this->side() != (unsigned)atoi(side.c_str()))
 	  {
 		if(std::find(side.begin(),side.end(),',') != side.end()) {
 			const std::vector<std::string>& vals = utils::split(side);

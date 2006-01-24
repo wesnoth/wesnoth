@@ -338,7 +338,7 @@ namespace events{
 		start["playing_team"] = buf.str();
 
 		for(std::vector<team>::const_iterator t = teams.begin(); t != teams.end(); ++t) {
-			const int side_num = t - teams.begin() + 1;
+			const unsigned int side_num = t - teams.begin() + 1;
 
 			config& side = start.add_child("side");
 			t->write(side);
