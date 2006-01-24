@@ -30,6 +30,13 @@
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
 
+const gamemap::TERRAIN gamemap::VOID_TERRAIN = ' ';
+const gamemap::TERRAIN gamemap::FOGGED = '~';
+const gamemap::TERRAIN gamemap::KEEP = 'K';
+const gamemap::TERRAIN gamemap::CASTLE = 'C';
+const gamemap::TERRAIN gamemap::VILLAGE = 't';
+const gamemap::TERRAIN gamemap::FOREST = 'f';
+
 std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
 	s << (l.x + 1) << ',' << (l.y + 1);
 	return s;

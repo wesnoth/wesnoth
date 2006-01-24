@@ -36,12 +36,12 @@ public:
 	//in dynamically because they're special. It's asserted that there will
 	//be corresponding entries for these types of terrain in the terrain
 	//configuration file.
-	static const TERRAIN VOID_TERRAIN = ' ';
-	static const TERRAIN FOGGED = '~';
-	static const TERRAIN KEEP = 'K';
-	static const TERRAIN CASTLE = 'C';
-	static const TERRAIN VILLAGE = 't';
-	static const TERRAIN FOREST = 'f';
+	static const TERRAIN VOID_TERRAIN;
+	static const TERRAIN FOGGED;
+	static const TERRAIN KEEP;
+	static const TERRAIN CASTLE;
+	static const TERRAIN VILLAGE;
+	static const TERRAIN FOREST;
 
 	//the name of the terrain is the terrain itself, the underlying terrain
 	//is the name of the terrain for game-logic purposes. I.e. if the terrain
