@@ -1074,8 +1074,8 @@ void unit::set_healing()
 void unit::set_walking(const std::string terrain,gamemap::location::DIRECTION dir,int acceleration)
 {
 	update_frame();
-	if(state_ == STATE_WALKING && 
-			dynamic_cast<movement_animation*>(anim_)->matches(terrain,dir) >=0) {
+	movement_animation* const anim = dynamic_cast<movement_animation*>(anim_);
+	if(state_ == STATE_WALKING && anim != NULL && anim->matches(terrain,dir) >=0) {
 		return; // finish current animation, don't start a new one
 	}
 	state_ = STATE_WALKING;

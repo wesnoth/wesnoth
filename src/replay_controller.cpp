@@ -241,7 +241,7 @@ const bool replay_controller::is_loading_game(){
 }
 
 void replay_controller::objectives(){
-	menu_handler_.objectives(*gui_, level_, teams_[player_number_]);
+	menu_handler_.objectives(*gui_, level_, current_team());
 }
 
 void replay_controller::show_statistics(){
@@ -545,9 +545,9 @@ void replay_controller::replay_slice()
 
 	gui_->draw();
 
-	if(!mouse_handler_.browse() && teams_[player_number_].objectives_changed()) {
-		dialogs::show_objectives(*gui_, level_, teams_[player_number_].objectives());
-		teams_[player_number_].reset_objectives_changed();
+	if(!mouse_handler_.browse() && current_team().objectives_changed()) {
+		dialogs::show_objectives(*gui_, level_, current_team().objectives());
+		current_team().reset_objectives_changed();
 	}
 }
 
