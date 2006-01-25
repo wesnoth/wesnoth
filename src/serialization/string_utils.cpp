@@ -472,16 +472,19 @@ std::string wstring_to_string(const wide_string &src)
 
 			bitmask = 0x800;
 			for(unsigned int j = 0; j < 5; ++j) {
-				if(ch >= (wchar_t)bitmask)
+				if(static_cast<Uint32>(ch) >= bitmask) {
 					count++;
+				}
+
 				bitmask <<= 5;
 			}
 
-			if(count > 6)
+			if(count > 6) {
 				throw invalid_utf8_exception();
+			}
 
 			if(count == 1) {
-				push_back(ret,ch);
+				push_back(ret,static_cast<char>(ch));
 			} else {
 				for(int j = (int)count-1; j >= 0; --j) {
 					unsigned char c = (ch >> (6*j)) & 0x3f;
