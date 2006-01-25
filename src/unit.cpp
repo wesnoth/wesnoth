@@ -1187,7 +1187,21 @@ config::child_list unit::get_modification_advances() const
 	const config::child_list& advances = type().modification_advancements();
 	for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
 		if(modification_count("advance",(**i)["id"]) < lexical_cast_default<size_t>((**i)["max_times"],1)) {
-			res.push_back(*i);
+		  std::vector<std::string> temp = utils::split((**i)["require_amla"]);
+		  if(temp.size()){
+		    sort(temp.begin(),temp.end());
+		    std::vector<std::string> uniq;
+		    unique_copy(temp.begin(),temp.end(),back_inserter(uniq));
+		    for(std::vector<std::string>::const_iterator ii = uniq.begin(); ii != uniq.end(); ii++){
+		      int required_num=count(temp.begin(),temp.end(),*ii);
+		      int mod_num=modification_count("advance",*ii);
+		      if(required_num<=mod_num){
+			res.push_back(*i);		  
+		      }
+		    }
+		  }else{
+		    res.push_back(*i);
+		  }
 		}
 	}
 
