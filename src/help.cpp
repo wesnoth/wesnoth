@@ -2173,7 +2173,7 @@ std::string help_text_area::ref_at(const int x, const int y)
 help_browser::help_browser(display &disp, const section &toplevel)
 	: gui::widget(disp.video()), disp_(disp), menu_(disp.video(), toplevel),
 	  text_area_(disp.video(), toplevel), toplevel_(toplevel), ref_cursor_(false),
-	  back_button_(disp.video(), _("< Back"), gui::button::TYPE_PRESS),
+	  back_button_(disp.video(), _(" < Back"), gui::button::TYPE_PRESS),
 	  forward_button_(disp.video(), _("Forward >"), gui::button::TYPE_PRESS),
 	  shown_topic_(NULL)
 {
