@@ -16,6 +16,7 @@
 .TH WESNOTHD 6 "2006" "wesnothd" "Battle for Wesnoth multiplayer network daemon"
 .
 .SH NAME
+.
 wesnothd \- Battle for Wesnoth multiplayer network daemon
 .
 .SH SYNOPSIS
@@ -58,7 +59,7 @@ sets maximum packet size to the specified value.
 binds the server to the specified port. If no port is specified, port
 15000 will be used.
 .TP
-.BI -t,\ --thread \ number
+.BI -t,\ --threads \ number
 sets the number of worker threads for network I/O to n (default: 5).
 .TP
 .B -V,\ --version
@@ -96,7 +97,7 @@ A comma seperated list of version strings to be accepted by the server.
 .
 .P
 .B [redirect]
-Used to specify a server to redirect certain versions to.
+A tag to specify a server to redirect certain client versions to.
 .RS
 .TP
 .B host
@@ -110,7 +111,8 @@ A comma seperated list of versions to redirect.
 .RE
 .P
 .B [proxy]
-Used to tell the server to act as a proxy and forward the connected client's requests to the specified server.
+A tag to tell the server to act as a proxy and forward the connected client's requests to the specified server.
+Accepts the same keys as [redirect].
 .
 .SH AUTHOR
 .

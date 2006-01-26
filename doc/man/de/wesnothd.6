@@ -12,63 +12,118 @@
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
-
+.
 .TH WESNOTHD 6 "2005" "wesnothd" "Battle for Wesnoth Mehrspieler Netzwerkdämon"
-
+.
 .SH NAME
-Battle for Wesnoth Mehrspieler Netzwerkdämon
-
-.SH ZUSAMMENFASSUNG
+.
+wesnothd \-Battle for Wesnoth Mehrspieler Netzwerkdämon
+.
+.SH SYNTAX
+.
 .B wesnothd
-
+.RB [\| \-dvV \|]
+.RB [\| \-c
+.IR Pfad \|]
+.RB [\| \-m
+.IR Größe \|]
+.RB [\| \-p
+.IR Port \|]
+.RB [\| \-t
+.IR Zahl \|]
+.
 .SH BESCHREIBUNG
+.
 Battle for
 .B Wesnoth
 Mehrspieler Netzwerkdämon.
-
+.
 .SH KOMMANDOZEILENOPTIONEN
-
+.
 .TP
-.BR -d , \ --deamon
+.BI -c,\ --config \ Pfad
+Legt die zu verwendende Konfigurationsdatei fest. Die Syntax ist im Abschnitt
+.B SERVER KONFIGURATION
+weiter unten beschrieben.
+.TP
+.B -d,\ --daemon
 Startet das Programm als Dämon.
-
 .TP
-.BR --fifo \ PFAD
-Legt den PFAD (Weg) zur der Datei fest, die als Eingabestream benutzt werden soll.
-
-.TP
-.BR -h , \ --help
+.B -h,\ --help
 Gibt die möglichen Kommandozeilenoptionen aus.
-
 .TP
-.BR -m , \ --max_packet_size
+.BI -m,\ --max_packet_size \ Zahl
 Bestimmt die maximale Größe eine Packetes.
-
 .TP
-.BR -p , \ --port
+.BR -p,\ --port
 Weist dem Server einen bestimmten Port zu. Wenn kein Port angegeben wird, wird Port 15000 verwendet.
-
 .TP
-.BR -t , \ --threads <WERT>
+.BI -t , \ --threads <WERT>
 Legt die Anzahl an Threads für Netzwerk I/O fest. (Standard: 5)
-
 .TP
-.BR -v , \ --verbose
+.B -v,\ --verbose
 Aktiviert die Anzeige von ausführlicheren Meldungen des Servers.
-
 .TP
-.BR -V , \ --version
+.B -V,\ --version
 Zeigt die Versionsnummer an und beendet das Programm.
-
+.
+.SH SERVER KONFIGURATION
+.
+.SS Der allgemeine Aufbau:
+.
+.P
+[\fIElement\fR]
+.IP
+Schlüssel="\fIWert\fR"
+.IP
+Schlüssel=...
+.P
+[/\fIElement\fR]
+.
+.SS "Globale Schlüssel:"
+.
+.TP
+.B motd
+Die "Nachricht des Tages".
+.TP
+.B passwd
+Das Passwort um auf dem Server Administratorrechte zu erhalten. Es beginnt per Konvention mit "admin ".
+.TP
+.B versions_accepted
+Eine durch Komma getrennte Liste der Programmversionen, die der Server zulässt.
+.
+.SS "Globale Elemente:"
+.
+.P
+.B [redirect]
+Ein Element um bestimmte Programmversionen anzugeben, die auf einen anderen Server umgeleitet werden sollen.
+.RS
+.TP
+.B host
+Die Adresse des Rechners, zu dem umgeleitet wird.
+.TP
+.B port
+Der dabei zu verwendende Port.
+.TP
+.B version
+Eine durch Komma getrennte Liste der Versionen, die umgeleitet werden sollen.
+.RE
+.P
+.B [proxy]
+Ein Element, das benutzt wird um dem Server mitzuteilen wie ein Proxy zu agieren und somit alle Anfragen des mit ihm verbundenen Rechners an den angegebenen Server weiterzuleiten.
+Es werden die gleichen Schlüssel wie bei [redirect] akzeptiert.
+.
 .SH AUTOR
+.
 Geschrieben von David White <davidnwhite@verizon.net>.
-Bearbeitet von Nils Kneuper <crazy-ivanovic@gmx.net> und ott <ott@gaon.net>.
-Übersetzt von Jan-Heiner Laberenz <Jan-Heiner@arcor.de> und Nils Kneuper <crazy-ivanovic@gmx.net>.
+Bearbeitet von Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> und Soliton <soliton@sonnenkinder.org>.
+Übersetzt von Jan-Heiner Laberenz <Jan-Heiner@arcor.de>, Nils Kneuper <crazy-ivanovic@gmx.net> und Soliton <soliton@sonnenkinder.org>.
 Diese Beschreibung stammt im Original von Cyril Bouthors <cyril@bouthors.org>.
 .br
 Besucht auch die offizielle Webseite: http://www.wesnoth.org/
-
+.
 .SH COPYRIGHT
+.
 Copyright \(co 2003-2006 David White <davidnwhite@verizon.net>
 .br
 Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 2 der Lizenz oder (nach Ihrer Option) jeder späteren Version.
@@ -76,6 +131,7 @@ Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU
 Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
 .br
 Sie sollten eine Kopie der GNU General Public License zusammen mit diesem Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-
-.SH ANDERE
+.
+.SH SIEHE AUCH
+.
 wesnoth(6), wesnoth_editor(6)
