@@ -841,7 +841,7 @@ void unit::read(const game_data& data, const config& cfg)
 	}
 
 	const std::string& hitpoints = cfg["hitpoints"];
-	hitpoints_ = lexical_cast_default<int>(hitpoints,0);
+	hitpoints_ = lexical_cast_default<int>(hitpoints,maxHitpoints_);
 	
 	const config* const modifications = cfg.child("modifications");
 	if(modifications != NULL) {
@@ -849,10 +849,6 @@ void unit::read(const game_data& data, const config& cfg)
 		apply_modifications();
 	}
 	
-	if(hitpoints != "") {
-		hitpoints_ = maxHitpoints_;
-	}
-
 	goto_.x = atoi(cfg["goto_x"].c_str()) - 1;
 	goto_.y = atoi(cfg["goto_y"].c_str()) - 1;
 
