@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2005-08-14 20:06+0100\n"
 "Last-Translator: Bjarke Sørensen <bs@wasd.dk>\n"
 "Language-Team: Danish <wesnoth-da@lillesvin.net>\n"
@@ -390,11 +390,11 @@ msgstr "Indtast brugerkomando"
 msgid "Change the language"
 msgstr "Skift sprog"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "Er du sikker på at du vil afslutte?"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "Afslut"
 
@@ -506,10 +506,6 @@ msgstr "Justér Gamma"
 msgid "Reverse Time Graphics"
 msgstr "Omvendt tidsgrafik"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr ""
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "Lydeffekter"
@@ -517,6 +513,10 @@ msgstr "Lydeffekter"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "Musik"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr ""
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -695,20 +695,20 @@ msgstr "Skift genvejstaster"
 msgid "Save Hotkeys"
 msgstr "Gem genvejstaster"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 #, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "Denne genvejstaste er allerede i brug."
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2006-01-07 14:59+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team: none\n"
@@ -382,11 +382,11 @@ msgstr "Wprowadź komendę"
 msgid "Change the language"
 msgstr "Pozwala wybrać język gry"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "Czy na pewno wyjść?"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "Wyjdź"
 
@@ -496,10 +496,6 @@ msgstr "Ustaw współczynnik gamma"
 msgid "Reverse Time Graphics"
 msgstr "Odwróć wskaźnik czasu"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr "Znaczniki czasowe wiadomości"
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "Efekty dźwiękowe"
@@ -507,6 +503,10 @@ msgstr "Efekty dźwiękowe"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "Muzyka"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr "Znaczniki czasowe wiadomości"
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -681,20 +681,20 @@ msgstr "Zmień skrót"
 msgid "Save Hotkeys"
 msgstr "Zapisz skróty"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 msgid "This Hotkey is already in use."
 msgstr "Ten skrót jest już używany."
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr "Zapisz"
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Nowa skórka zostanie zastosowana po rozpoczęciu nowej lub załadowaniu gry."
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Brak znanych skórek. Spróbuj zmienić ją w trakcie gry."
 

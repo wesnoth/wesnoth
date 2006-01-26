@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2005-09-03 04:49+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -389,11 +389,11 @@ msgstr "ユーザーコマンドを入力してください"
 msgid "Change the language"
 msgstr "言語を変更します"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "本当に終了しますか？"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "終了"
 
@@ -503,10 +503,6 @@ msgstr "ガンマ補正"
 msgid "Reverse Time Graphics"
 msgstr "時間グラフィックを反転"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr ""
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "効果音"
@@ -514,6 +510,10 @@ msgstr "効果音"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "音楽"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr ""
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -688,20 +688,20 @@ msgstr "ホットキーの変更"
 msgid "Save Hotkeys"
 msgstr "ホットキーを保存"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 #, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "このホットキーは既に使用されています。"
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 

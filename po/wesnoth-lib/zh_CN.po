@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2005-12-12 02:09+0800\n"
 "Last-Translator: firen <qinhy@163.com>\n"
 "Language-Team: none <i18n-translation@lists.linux.net.cn>\n"
@@ -384,11 +384,11 @@ msgstr "进入用户命令"
 msgid "Change the language"
 msgstr "语言切换"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "您要退出吗？"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "退出"
 
@@ -497,10 +497,6 @@ msgstr "调整亮度"
 msgid "Reverse Time Graphics"
 msgstr "翻转表示时间的图像"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr ""
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "音效"
@@ -508,6 +504,10 @@ msgstr "音效"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "音乐"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr ""
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -681,20 +681,20 @@ msgstr "变更快捷键"
 msgid "Save Hotkeys"
 msgstr "保存快捷键"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 #, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "此快捷键已经被使用"
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr "保存主题设置： "
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr "新主题在下一个新或载入的游戏时生效。"
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "没有以知主题。  试着用已有的主题内来代替。"
 

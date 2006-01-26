@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2006-01-06 14:07+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -386,11 +386,11 @@ msgstr "הכנס פקודת משתמש"
 msgid "Change the language"
 msgstr "החלף שפה"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "האם באמת ברצונך לצאת?"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "צא"
 
@@ -500,10 +500,6 @@ msgstr "כוון גאמא"
 msgid "Reverse Time Graphics"
 msgstr "הפוך כיוון תנועת השמש"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr "חתימת זמן בשיחה"
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "אפקטים של צליל"
@@ -511,6 +507,10 @@ msgstr "אפקטים של צליל"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "מוסיקה"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr "חתימת זמן בשיחה"
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -682,19 +682,19 @@ msgstr "עדכון מקש קיצור"
 msgid "Save Hotkeys"
 msgstr "שמירת מקשי קיצור"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 msgid "This Hotkey is already in use."
 msgstr "מקש קיצור זה כבר נמצא בשימוש."
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr "העדפות השמורות של ערכת הנושא : "
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr "השינוי לערכת הנושא החדשה יתרחש במשחק חדש הבא או אחרי טעינת המשחק הבאה."
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "אין ערכות נושא ידועות. נסה לשנות מתוך משחק קיים."
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2005-12-23 16:08+0100\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -385,11 +385,11 @@ msgstr "Felhasználói parancs megadása"
 msgid "Change the language"
 msgstr "Nyelv megváltoztatása"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "Biztos ki akarsz lépni?"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -500,10 +500,6 @@ msgstr "Gamma kezelés"
 msgid "Reverse Time Graphics"
 msgstr "Napszakmegjelenítés megfordítása"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr "Csevegés sorainak időbélyegzése"
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "Hanghatások"
@@ -511,6 +507,10 @@ msgstr "Hanghatások"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "Zene"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr "Csevegés sorainak időbélyegzése"
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -686,21 +686,21 @@ msgstr "Gyorsbillentyű megváltoztatása"
 msgid "Save Hotkeys"
 msgstr "Gyorsbillentyűk mentése"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 msgid "This Hotkey is already in use."
 msgstr "Ez a gyorsbillentyű már használatban van."
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr "Elmentett téma beállításai: "
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Az új téma beállításai a következő új vagy betöltött játék indításakor "
 "fognak életbe lépni."
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 "Nincsenek ismert témák. Próbáld meg egy létező játékból megváltoztatni!"

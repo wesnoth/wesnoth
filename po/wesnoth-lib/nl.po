@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2005-12-15 22:08+0100\n"
 "Last-Translator: Maarten Albrecht <maartenalbrecht@gmail.com>\n"
 "Language-Team: Dutch <onne@grammex.com>\n"
@@ -383,11 +383,11 @@ msgstr "Typ gebruikerscommando in"
 msgid "Change the language"
 msgstr "De taal veranderen"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "Weet je zeker dat je het spel wilt verlaten?"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "Verlaten"
 
@@ -498,10 +498,6 @@ msgstr "Gamma instellen"
 msgid "Reverse Time Graphics"
 msgstr "Tijdplaatjes omdraaien"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr "Chat tijdmerken"
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "Geluidseffecten"
@@ -509,6 +505,10 @@ msgstr "Geluidseffecten"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "Muziek"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr "Chat tijdmerken"
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -684,19 +684,19 @@ msgstr "Sneltoets veranderen"
 msgid "Save Hotkeys"
 msgstr "Sneltoets bewaren"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 msgid "This Hotkey is already in use."
 msgstr "Deze sneltoets is al in gebruik."
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr "Bewaarde thema-instelling: "
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Het nieuwe thema wordt gebruikt zodra je een nieuw spel begint."
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 "Er zijn geen thema's. Probeer het thema vanuit een bestaand spel te "

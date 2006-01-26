@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-11 12:23+0100\n"
+"POT-Creation-Date: 2006-01-26 15:32+0100\n"
 "PO-Revision-Date: 2005-10-15 01:54+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,7 +15,18 @@ msgstr ""
 msgid "Basic Training"
 msgstr "Základný výcvik"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:72
+#: data/tutorial/scenarios/Basic_Training.cfg:23
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:22
+msgid "Konrad"
+msgstr ""
+
+#: data/tutorial/scenarios/Basic_Training.cfg:33
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:33
+#, fuzzy
+msgid "Delfador"
+msgstr "Poraz Delfadora"
+
+#: data/tutorial/scenarios/Basic_Training.cfg:74
 msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
 "surely you can explain the art of combat to me..."
@@ -23,7 +34,7 @@ msgstr ""
 "Som tu, aby som sa naučil bojovať. Ako skúsený starší mág mi iste vieš "
 "vysvetliť umenie boja..."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:76
+#: data/tutorial/scenarios/Basic_Training.cfg:78
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -36,24 +47,24 @@ msgstr ""
 "verbovať iba na poliach hradu patriacich k pevnosti, v ktorej je tvoj "
 "veliteľ."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:79
+#: data/tutorial/scenarios/Basic_Training.cfg:81
 msgid "Recruit a unit"
 msgstr "Naverbuj jednotku"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:86
+#: data/tutorial/scenarios/Basic_Training.cfg:88
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr "Výborne! Naverboval si elfa vojaka."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:89
-#: data/tutorial/scenarios/Basic_Training.cfg:113
-#: data/tutorial/scenarios/Basic_Training.cfg:151
-#: data/tutorial/scenarios/Basic_Training.cfg:181
-#: data/tutorial/scenarios/Basic_Training.cfg:198
-#: data/tutorial/scenarios/Basic_Training.cfg:224
+#: data/tutorial/scenarios/Basic_Training.cfg:91
+#: data/tutorial/scenarios/Basic_Training.cfg:115
+#: data/tutorial/scenarios/Basic_Training.cfg:153
+#: data/tutorial/scenarios/Basic_Training.cfg:183
+#: data/tutorial/scenarios/Basic_Training.cfg:200
+#: data/tutorial/scenarios/Basic_Training.cfg:226
 msgid "What do I do next?"
 msgstr "Čo mám robiť ďalej?"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:100
+#: data/tutorial/scenarios/Basic_Training.cfg:102
 msgid ""
 "Since units cannot move on the turn they are recruited, you must end your "
 "turn. To do this, simply click the 'End Turn' button in the lower-right hand "
@@ -63,15 +74,15 @@ msgstr ""
 "ukončiť kolo. Jednoducho stlač tlačidlo 'Koniec kola' v pravom dolnom rohu "
 "obrazovky."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:103
+#: data/tutorial/scenarios/Basic_Training.cfg:105
 msgid "End your turn"
 msgstr "Ukončí kolo"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:110
+#: data/tutorial/scenarios/Basic_Training.cfg:112
 msgid "You have successfully ended your turn."
 msgstr "Úspešne si ukončil kolo."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:119
+#: data/tutorial/scenarios/Basic_Training.cfg:121
 msgid ""
 "Your next task is to move your Elvish Fighter. To move a unit, first select "
 "it, then select his destination. In this case, his destination is the forest "
@@ -81,11 +92,11 @@ msgstr ""
 "označíš, a potom označíš jej cieľ. V tomto prípade je cieľom les vedľa elfej "
 "šamanky Merle."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:122
+#: data/tutorial/scenarios/Basic_Training.cfg:124
 msgid "Move your Elvish Fighter next to Merle"
 msgstr "Posuň svojho elfa vojaka vedľa Merla"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:148
+#: data/tutorial/scenarios/Basic_Training.cfg:150
 msgid ""
 "Excellent! You have successfully moved your Elvish Fighter. However, since "
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
@@ -95,7 +106,7 @@ msgstr ""
 "nepriateľskej jednotky, už sa v tomto kole nemôže pohybovať; súper ho "
 "blokuje."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:157
+#: data/tutorial/scenarios/Basic_Training.cfg:159
 msgid ""
 "Now, you need to attack with your fighter. To attack, first select a unit, "
 "then select its target, which must be next to the attacking unit. You will "
@@ -105,19 +116,19 @@ msgstr ""
 "jednotku, potom označíš jej terč, ktorý musí byť vedľa útočiacej jednotky. "
 "Uvidíš menu s možnými útokmi, kde si vyberieš, ktorý útok použiješ."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:160
+#: data/tutorial/scenarios/Basic_Training.cfg:162
 msgid "Attack Merle"
 msgstr "Zaútoč na Merla"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:178
+#: data/tutorial/scenarios/Basic_Training.cfg:180
 msgid "You have successfully attacked Merle."
 msgstr "Úspešne si zaútočil na Merle."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:187
+#: data/tutorial/scenarios/Basic_Training.cfg:189
 msgid "End your turn, and wait for Merle to attack you."
 msgstr "Ukonči kolo a počkaj, kým Merle zaútočí na teba."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:195
+#: data/tutorial/scenarios/Basic_Training.cfg:197
 #, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
@@ -128,27 +139,27 @@ msgstr ""
 "skúsenosti. Keď má jednotka dostatok skúseností, je povýšená na ďalšiu "
 "úroveň, a stane sa silnejšou."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:204
-#: data/tutorial/scenarios/Basic_Training.cfg:207
+#: data/tutorial/scenarios/Basic_Training.cfg:206
+#: data/tutorial/scenarios/Basic_Training.cfg:209
 msgid "Move your fighter onto a village."
 msgstr "Pohni svojho bojovníka do dediny."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:221
+#: data/tutorial/scenarios/Basic_Training.cfg:223
 msgid "Villages heal the units on them."
 msgstr "Dediny liečia jednotky, ktoré sú v nich."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:230
+#: data/tutorial/scenarios/Basic_Training.cfg:232
 msgid ""
 "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
 msgstr ""
 "Teraz musíš poraziť Merle, čiže znížiť jej životy na 0. Niekoľkokrát zaútoč."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:233
+#: data/tutorial/scenarios/Basic_Training.cfg:235
 msgid "Defeat Merle"
 msgstr "Poraz Merla"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:252
+#: data/tutorial/scenarios/Basic_Training.cfg:254
 msgid ""
 "Oops! You moved your leader off of the keep. Remember, when your leader is "
 "not on a keep, you cannot recruit. Also remember that if your leader dies, "
@@ -160,8 +171,8 @@ msgstr ""
 "prehral si. Aby si mohol pokračovať vo výcviku, premiestnim ťa teraz späť do "
 "pevnosti."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:271
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:230
+#: data/tutorial/scenarios/Basic_Training.cfg:273
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:232
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
@@ -169,8 +180,8 @@ msgstr ""
 "Žiaľ, prehral si, lebo tvoj veliteľ padol. Dúfam, že si sa napriek tomu "
 "niečo naučil."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:279
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:238
+#: data/tutorial/scenarios/Basic_Training.cfg:281
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:240
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
@@ -178,36 +189,36 @@ msgstr ""
 "Žiaľ, prehral si, lebo sa minul čas. Dúfam, že si sa napriek tomu niečo "
 "naučil."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:291
+#: data/tutorial/scenarios/Basic_Training.cfg:293
 msgid "You have successfully completed the first training scenario."
 msgstr "Úspešne si dokončil prvú tréningovú mapu."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:294
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:288
+#: data/tutorial/scenarios/Basic_Training.cfg:296
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:290
 msgid "Hooray!"
 msgstr "Hurááá!"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:300
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:250
+#: data/tutorial/scenarios/Basic_Training.cfg:302
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:252
 msgid "Do you want to review any of the skills learned in this scenario?"
 msgstr "Chceš si zopakovať niečo z toho, čo si sa v tejto scéne naučil?"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:303
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:253
+#: data/tutorial/scenarios/Basic_Training.cfg:305
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:255
 msgid "Yes"
 msgstr "Áno"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:305
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:255
+#: data/tutorial/scenarios/Basic_Training.cfg:307
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:257
 msgid "I'm done reviewing skills!"
 msgstr "Už som si všetko zopakoval!"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:319
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:270
+#: data/tutorial/scenarios/Basic_Training.cfg:321
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:272
 msgid "No"
 msgstr "Nie"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:325
+#: data/tutorial/scenarios/Basic_Training.cfg:327
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
 "over. We will now proceed to the next scenario, in which you will fight me "
@@ -220,7 +231,7 @@ msgstr ""
 msgid "Traits and Specialties"
 msgstr "Vlastnosti a schopnosti"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:47
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:49
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
@@ -228,7 +239,7 @@ msgstr ""
 "Teraz ťa vyskúšam v náročnejšom teste. Budeme predstierať boj a musíš ma "
 "poraziť."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:51
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:53
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -242,7 +253,7 @@ msgstr ""
 "tlačidlom myši na pole v hrade, vyberieš 'Privolaj', vyberieš svojho vojaka, "
 "a odklepneš 'OK'. Okrem toho môžeš verbovať elfov vojakov a strelcov."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:70
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:72
 msgid ""
 "Skills covered:\n"
 "Recalling\n"
@@ -264,36 +275,36 @@ msgstr ""
 "Schopnosti\n"
 "Predmety"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:72
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:74
 msgid "Defeat Delfador"
 msgstr "Poraz Delfadora"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:76
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:78
 #: data/tutorial/scenarios/utils.cfg:52
 msgid "Death of Konrad"
 msgstr "Zomrie Konrád"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:80
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:82
 #: data/tutorial/scenarios/utils.cfg:60
 msgid "Turns run out"
 msgstr "Vyprší čas"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:95
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:97
 msgid "You have successfully recalled your Elvish Fighter."
 msgstr "Úspešne si privolal svojho elfa vojaka."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:98
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:110
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:123
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:135
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:147
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:159
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:171
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:203
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:100
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:112
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:125
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:137
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:149
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:161
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:173
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:205
 msgid "En garde!"
 msgstr "Do strehu!"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:107
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:109
 #, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics from the "
@@ -304,7 +315,7 @@ msgstr ""
 "zobrazovali, než si ich naverboval. To je preto, že im boli pridelené "
 "vlastnosti."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:120
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:122
 msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
@@ -312,7 +323,7 @@ msgstr ""
 "Keď verbuješ a privolávaš jednotky, míňaš zlato. Ak by mal počet zlatiek "
 "klesnúť pod 0, nemôžeš verbovať ani privolávať."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:132
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:134
 msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
@@ -320,11 +331,11 @@ msgstr ""
 "Slnko nad Wesnothom zapadá. Denná doba ovplyvňuje, koľko zranenia môžu "
 "spôsobiť jednotky rôznych orientácií."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:144
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:146
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
 msgstr "Každé šesťuholníkové pole má terén, ktorý mu dáva rozličné vlastnosti."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:156
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:158
 msgid ""
 "Each attack has a damage type which affects how much damage different units "
 "take from that attack."
@@ -332,13 +343,13 @@ msgstr ""
 "Každý útok spôsobuje nejaký typ zranenia a od toho závisí, aké veľké "
 "zranenie utrpia po tomto útoku jednotlivé jednotky."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:168
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:170
 msgid ""
 "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 "Mnohé jednotky majú zvláštne schopnosti, ktoré nejako upravujú pravidlá hry."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:190
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:192
 msgid ""
 "Some objects change the statistics of the unit that triggered them. One of "
 "your units found a potion which will make him do more damage on his attack. "
@@ -348,15 +359,15 @@ msgstr ""
 "tvojich jednotiek našla nápoj, ktorý jej útokom zvýši zranenie. Ak si chceš "
 "pozrieť nové bojové vlastnosti jednotky, pozri sa do stavovej tabuľky."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:198
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:200
 msgid "This potion increases the damage of all the drinker's attacks by four."
 msgstr "Tento nápoj zvyšuje zranenie všetkých útokov tejto jednotky o štyri."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:199
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:201
 msgid "Potion of Strength"
 msgstr "Nápoj sily"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:219
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:221
 msgid ""
 "Remember to try to prevent the enemy from capturing villages, and to "
 "recapture the ones that they already have. This will cut off their gold "
@@ -365,7 +376,7 @@ msgstr ""
 "Pamätaj, že máš nepriateľovi brániť v dobýjaní dedín, a že máš naopak dobyť "
 "jeho dediny. To mu obmedzí prísun zlata a tak nebude môcť verbovať."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:285
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:287
 msgid "Next, you may want to begin a campaign, or play multiplayer."
 msgstr "Ďalej, môžeš začať hrať príbeh alebo súboj."
 

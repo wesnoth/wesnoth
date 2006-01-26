@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2006-01-05 14:50+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: Russian\n"
@@ -393,11 +393,11 @@ msgstr "Ввести команду пользователя"
 msgid "Change the language"
 msgstr "Изменить язык игры"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "Вы действительно хотите выйти?"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "Выйти"
 
@@ -507,10 +507,6 @@ msgstr "Настроить гамму"
 msgid "Reverse Time Graphics"
 msgstr "Обратить отображение времени"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr "Отметка времени в чате"
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "Звуковые эффекты"
@@ -518,6 +514,10 @@ msgstr "Звуковые эффекты"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "Музыка"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr "Отметка времени в чате"
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -692,20 +692,20 @@ msgstr "Изменить"
 msgid "Save Hotkeys"
 msgstr "Сохранить"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 msgid "This Hotkey is already in use."
 msgstr "Данная горячая клавиша уже используется."
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr "Сохранённые настройки темы:"
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Новая тема будет задействована при следующей новой или загруженной игре."
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Неизвестная тема. Попробуйте поменять в существующей игре."
 

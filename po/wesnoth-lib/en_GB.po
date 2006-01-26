@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2006-01-12 14:21+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
@@ -378,11 +378,11 @@ msgstr "Enter user command"
 msgid "Change the language"
 msgstr "Change the language"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "Do you really want to quit?"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "Quit"
 
@@ -492,10 +492,6 @@ msgstr "Adjust Gamma"
 msgid "Reverse Time Graphics"
 msgstr "Reverse Time Graphics"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr "Chat Timestamping"
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "Sound effects"
@@ -503,6 +499,10 @@ msgstr "Sound effects"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "Music"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr "Chat Timestamping"
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -676,19 +676,19 @@ msgstr "Change Hotkey"
 msgid "Save Hotkeys"
 msgstr "Save Hotkeys"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 msgid "This Hotkey is already in use."
 msgstr "This Hotkey is already in use."
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr "Saved Theme Preference: "
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr "New theme will take effect on next new or loaded game."
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "No known themes. Try changing from within an existing game."
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2006-01-15 19:07+0100\n"
 "Last-Translator: Stefan Bergström (tephlon)\n"
 "Language-Team: Swedish\n"
@@ -382,11 +382,11 @@ msgstr "Ange användarkommando"
 msgid "Change the language"
 msgstr "Byt språk"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "Vill du verkligen sluta?"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "Avsluta"
 
@@ -496,10 +496,6 @@ msgstr "Ställ in ljusstyrka"
 msgid "Reverse Time Graphics"
 msgstr "Flippa tidsgrafiken"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr "Chattidsangivelser"
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "Ljudeffekter"
@@ -507,6 +503,10 @@ msgstr "Ljudeffekter"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "Musik"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr "Chattidsangivelser"
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -683,19 +683,19 @@ msgstr "Ställ in snabbtangenter"
 msgid "Save Hotkeys"
 msgstr "Spara snabbtangenter"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 msgid "This Hotkey is already in use."
 msgstr "Den tangenten används redan till något annat."
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr "Sparad temainställning: "
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Det nya temat träder i kraft vid nästa spel."
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Inga kända teman. Försök att ändra i ett existerande spel."
 

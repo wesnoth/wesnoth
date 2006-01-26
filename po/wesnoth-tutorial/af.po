@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-11 12:23+0100\n"
+"POT-Creation-Date: 2006-01-26 15:32+0100\n"
 "PO-Revision-Date: 2005-12-14 12:32+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -14,7 +14,18 @@ msgstr ""
 msgid "Basic Training"
 msgstr "Basiese Opleiding"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:72
+#: data/tutorial/scenarios/Basic_Training.cfg:23
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:22
+msgid "Konrad"
+msgstr ""
+
+#: data/tutorial/scenarios/Basic_Training.cfg:33
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:33
+#, fuzzy
+msgid "Delfador"
+msgstr "Verslaan Delfador"
+
+#: data/tutorial/scenarios/Basic_Training.cfg:74
 msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
 "surely you can explain the art of combat to me..."
@@ -22,7 +33,7 @@ msgstr ""
 "Ek is hier om te leer hoe om in 'n geveg te baklei. Sekerlik kan 'n ervare "
 "ou towenaar soos jy die gevegkuns aan my verduidelik..."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:76
+#: data/tutorial/scenarios/Basic_Training.cfg:78
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -34,24 +45,24 @@ msgstr ""
 "Werf en dan 'OK'. Jy kan slegs eenhede op kasteelblokke werf wat verbind is "
 "met die vesting waarop jou leier is."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:79
+#: data/tutorial/scenarios/Basic_Training.cfg:81
 msgid "Recruit a unit"
 msgstr "Werf 'n eenheid"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:86
+#: data/tutorial/scenarios/Basic_Training.cfg:88
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr "Uitstekend! Jy het 'n Elfse Vegter gewerf."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:89
-#: data/tutorial/scenarios/Basic_Training.cfg:113
-#: data/tutorial/scenarios/Basic_Training.cfg:151
-#: data/tutorial/scenarios/Basic_Training.cfg:181
-#: data/tutorial/scenarios/Basic_Training.cfg:198
-#: data/tutorial/scenarios/Basic_Training.cfg:224
+#: data/tutorial/scenarios/Basic_Training.cfg:91
+#: data/tutorial/scenarios/Basic_Training.cfg:115
+#: data/tutorial/scenarios/Basic_Training.cfg:153
+#: data/tutorial/scenarios/Basic_Training.cfg:183
+#: data/tutorial/scenarios/Basic_Training.cfg:200
+#: data/tutorial/scenarios/Basic_Training.cfg:226
 msgid "What do I do next?"
 msgstr "Wat moet ek volgende doen?"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:100
+#: data/tutorial/scenarios/Basic_Training.cfg:102
 msgid ""
 "Since units cannot move on the turn they are recruited, you must end your "
 "turn. To do this, simply click the 'End Turn' button in the lower-right hand "
@@ -61,15 +72,15 @@ msgstr ""
 "nie, moet jy jou beurt beïndig. Om dit te doen, kliek eenvoudig die 'Eindig "
 "Beurt' knop in die regter onderkantste hoekie."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:103
+#: data/tutorial/scenarios/Basic_Training.cfg:105
 msgid "End your turn"
 msgstr "Beëindig jou beurt"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:110
+#: data/tutorial/scenarios/Basic_Training.cfg:112
 msgid "You have successfully ended your turn."
 msgstr "Jy het jou beurt suksesvol beïndig."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:119
+#: data/tutorial/scenarios/Basic_Training.cfg:121
 msgid ""
 "Your next task is to move your Elvish Fighter. To move a unit, first select "
 "it, then select his destination. In this case, his destination is the forest "
@@ -79,11 +90,11 @@ msgstr ""
 "kies dit eers, kies dan sy bestemming. In hierdie geval is sy bestemming die "
 "woud langs die Elfse Toordokter, Merle."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:122
+#: data/tutorial/scenarios/Basic_Training.cfg:124
 msgid "Move your Elvish Fighter next to Merle"
 msgstr "Beweeg jou Elfse Vegter tot langs Merle"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:148
+#: data/tutorial/scenarios/Basic_Training.cfg:150
 msgid ""
 "Excellent! You have successfully moved your Elvish Fighter. However, since "
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
@@ -93,7 +104,7 @@ msgstr ""
 "langs 'n vyandige eenheid inbeweeg het, het hy al sy beweging vir hierdie "
 "beurt verloor; dit word die 'beheersone' genoem."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:157
+#: data/tutorial/scenarios/Basic_Training.cfg:159
 msgid ""
 "Now, you need to attack with your fighter. To attack, first select a unit, "
 "then select its target, which must be next to the attacking unit. You will "
@@ -103,19 +114,19 @@ msgstr ""
 "dan sy teiken wat langs die aanvallende eenheid moet wees. Jy sal dan die "
 "aanval keuseboks sien, waar jy moet kies hoe jy gaan aanval."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:160
+#: data/tutorial/scenarios/Basic_Training.cfg:162
 msgid "Attack Merle"
 msgstr "Val Merle aan"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:178
+#: data/tutorial/scenarios/Basic_Training.cfg:180
 msgid "You have successfully attacked Merle."
 msgstr "Jy het Merle suksesvol aangeval."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:187
+#: data/tutorial/scenarios/Basic_Training.cfg:189
 msgid "End your turn, and wait for Merle to attack you."
 msgstr "Beeïndig jou beurt en wag vir Merle om jou aan te val."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:195
+#: data/tutorial/scenarios/Basic_Training.cfg:197
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it receives experience from the combat. Once a unit gains enough experience, "
@@ -125,16 +136,16 @@ msgstr ""
 "oorleef kry dit ervaring uit die geveg. Wanneer 'n eenheid genoeg ervaring "
 "opdoen, word dit na die volgende vlak bevorder en word dan sterker."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:204
-#: data/tutorial/scenarios/Basic_Training.cfg:207
+#: data/tutorial/scenarios/Basic_Training.cfg:206
+#: data/tutorial/scenarios/Basic_Training.cfg:209
 msgid "Move your fighter onto a village."
 msgstr "Skuif jou vegter na 'n dorp."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:221
+#: data/tutorial/scenarios/Basic_Training.cfg:223
 msgid "Villages heal the units on them."
 msgstr "Dorpies genees eenhede op hulle."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:230
+#: data/tutorial/scenarios/Basic_Training.cfg:232
 msgid ""
 "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
@@ -142,11 +153,11 @@ msgstr ""
 "Nou moet jy Merle verslaan deur haar LP tot 0 of minder te verlaag. Val net "
 "aanhoudend aan."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:233
+#: data/tutorial/scenarios/Basic_Training.cfg:235
 msgid "Defeat Merle"
 msgstr "Verslaan Merle"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:252
+#: data/tutorial/scenarios/Basic_Training.cfg:254
 msgid ""
 "Oops! You moved your leader off of the keep. Remember, when your leader is "
 "not on a keep, you cannot recruit. Also remember that if your leader dies, "
@@ -158,8 +169,8 @@ msgstr ""
 "jou leier sou sterf, jy verloor. Om met die les aan te gaan sal ek jou na "
 "terug na jou vesting moet verplaas."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:271
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:230
+#: data/tutorial/scenarios/Basic_Training.cfg:273
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:232
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
@@ -167,8 +178,8 @@ msgstr ""
 "Ongelukkig het jy verloor omdat jou leier verslaan is. Hopelik het my lesse "
 "jou so 'n bietjie wysheid besorg."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:279
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:238
+#: data/tutorial/scenarios/Basic_Training.cfg:281
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:240
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
@@ -176,38 +187,38 @@ msgstr ""
 "Ongelukkig het jy verloor aangesien jou tyd uitgehardloop het. Hopelik het "
 "my lesse jou so 'n bietjie wysheid besorg."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:291
+#: data/tutorial/scenarios/Basic_Training.cfg:293
 msgid "You have successfully completed the first training scenario."
 msgstr "Jy het die eerste opleidingscenario suksesvol afgehandel."
 
-#: data/tutorial/scenarios/Basic_Training.cfg:294
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:288
+#: data/tutorial/scenarios/Basic_Training.cfg:296
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:290
 msgid "Hooray!"
 msgstr "Hoera!"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:300
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:250
+#: data/tutorial/scenarios/Basic_Training.cfg:302
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:252
 msgid "Do you want to review any of the skills learned in this scenario?"
 msgstr ""
 "Wil jy enige van die vaardighede hersien wat jy tydens die scenario geleer "
 "het?"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:303
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:253
+#: data/tutorial/scenarios/Basic_Training.cfg:305
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:255
 msgid "Yes"
 msgstr "Ja"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:305
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:255
+#: data/tutorial/scenarios/Basic_Training.cfg:307
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:257
 msgid "I'm done reviewing skills!"
 msgstr "Ek's klaar met die hersien van vaardighede!"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:319
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:270
+#: data/tutorial/scenarios/Basic_Training.cfg:321
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:272
 msgid "No"
 msgstr "Nee"
 
-#: data/tutorial/scenarios/Basic_Training.cfg:325
+#: data/tutorial/scenarios/Basic_Training.cfg:327
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
 "over. We will now proceed to the next scenario, in which you will fight me "
@@ -221,7 +232,7 @@ msgstr ""
 msgid "Traits and Specialties"
 msgstr "Karaktertrekke en Besonderhede"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:47
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:49
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
@@ -229,7 +240,7 @@ msgstr ""
 "Nou sal ons jou aan 'n moeilker toets blootstel. Jy moet my in 'n skyngeveg "
 "verslaan."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:51
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:53
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -243,7 +254,7 @@ msgstr ""
 "op 'n kasteelblok, kies Terugroep, kies jou vegter en dan 'OK'. Jy behoort "
 "ook Elfse Vegters en Elfse Boogskutters te werf."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:70
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:72
 msgid ""
 "Skills covered:\n"
 "Recalling\n"
@@ -265,36 +276,36 @@ msgstr ""
 " Spesialiteite\n"
 " Voorwerpe"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:72
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:74
 msgid "Defeat Delfador"
 msgstr "Verslaan Delfador"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:76
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:78
 #: data/tutorial/scenarios/utils.cfg:52
 msgid "Death of Konrad"
 msgstr "Konrad sterf"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:80
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:82
 #: data/tutorial/scenarios/utils.cfg:60
 msgid "Turns run out"
 msgstr "Beurte raak op"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:95
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:97
 msgid "You have successfully recalled your Elvish Fighter."
 msgstr "Jy het jou Elfse Vegter suksesvol herroep."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:98
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:110
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:123
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:135
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:147
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:159
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:171
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:203
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:100
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:112
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:125
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:137
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:149
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:161
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:173
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:205
 msgid "En garde!"
 msgstr "En garde!"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:107
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:109
 msgid ""
 "You may notice that your units have slightly different statistics from the "
 "statistics shown before you recruited them. This is because they have been "
@@ -304,7 +315,7 @@ msgstr ""
 "statistieke wat vertoon is voordat jy hulle gewerf het. Dit is omdat hulle "
 "sekere karaktertrekke gekry het."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:120
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:122
 msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
@@ -312,7 +323,7 @@ msgstr ""
 "Wanneer jy eenhede wil werf of herroep, verloor jy goud. As dit sou "
 "veroorsaak dat jy minder as 0 goud het kan jy nie werf of herroep nie."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:132
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:134
 msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
@@ -320,12 +331,12 @@ msgstr ""
 "Die son is besig om oor Wesnoth te sak. Die tyd in die dag bepaal hoeveel "
 "skade eenhede van verskillende eenhede mekaar kan aandoen."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:144
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:146
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
 msgstr ""
 "Elke blok het 'n terrein wat aan die blok besondere eienskappe verleen."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:156
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:158
 msgid ""
 "Each attack has a damage type which affects how much damage different units "
 "take from that attack."
@@ -333,14 +344,14 @@ msgstr ""
 "Elke aanval het 'n soort skade wat bepaal hoeveel skade verskillende eenhede "
 "sal ly as gevolg van daardie aanval."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:168
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:170
 msgid ""
 "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 "Baie eenhede het 'n besondere eienskap wat die reëls van die spel op 'n "
 "manier verander."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:190
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:192
 msgid ""
 "Some objects change the statistics of the unit that triggered them. One of "
 "your units found a potion which will make him do more damage on his attack. "
@@ -351,15 +362,15 @@ msgstr ""
 "skade aanrig met sy aanval. Om sy nuwe statistieke te sien, kyk na die "
 "Statustabel."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:198
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:200
 msgid "This potion increases the damage of all the drinker's attacks by four."
 msgstr "Hierdie doepa verhoog die skade van die drinker se aanval met vier."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:199
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:201
 msgid "Potion of Strength"
 msgstr "Sterkmaak Doepa"
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:219
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:221
 msgid ""
 "Remember to try to prevent the enemy from capturing villages, and to "
 "recapture the ones that they already have. This will cut off their gold "
@@ -369,7 +380,7 @@ msgstr ""
 "terug te neem wat hulle reeds oorgeneem het. Dit sal hulle goudvoorraad "
 "verminder en veroorsaak dat hulle nie kan werf nie."
 
-#: data/tutorial/scenarios/Traits_and_Specialties.cfg:285
+#: data/tutorial/scenarios/Traits_and_Specialties.cfg:287
 msgid "Next, you may want to begin a campaign, or play multiplayer."
 msgstr ""
 "Jy mag dalk volgende 'n veldtog wil loods of 'n veelspeler spel wil speel."

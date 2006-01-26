@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2005-12-14 12:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans <wesnothaf@gmail.com>\n"
@@ -386,11 +386,11 @@ msgstr "Voer gebruikerbevel in"
 msgid "Change the language"
 msgstr "Verander die taal"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "Wil jy regtig die spel verlaat?"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "Sluit"
 
@@ -501,10 +501,6 @@ msgstr "Verstel Gamma (lig/donker kontras)"
 msgid "Reverse Time Graphics"
 msgstr "Keer Tydgrafieke Om"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr ""
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "Klankeffekte"
@@ -512,6 +508,10 @@ msgstr "Klankeffekte"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "Musiek:"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr ""
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -687,19 +687,19 @@ msgstr "Verander Sleutelbordstelling"
 msgid "Save Hotkeys"
 msgstr "Stoor Sleutelbordstellings"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 msgid "This Hotkey is already in use."
 msgstr "Hierdie Kortpadsleutel is reeds in gebruik"
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr "Gestoorde Tema Voorkeur: "
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 

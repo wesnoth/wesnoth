@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-22 18:31+0100\n"
+"POT-Creation-Date: 2006-01-26 15:32+0100\n"
 "PO-Revision-Date: 2006-01-23 20:53+0100\n"
 "Last-Translator: Stefan Bergström (tephlon)\n"
 "Language-Team: Swedish\n"
@@ -102,7 +102,7 @@ msgstr "Besegra en av fiendeledarna"
 #: data/campaigns/Heir_To_The_Throne/scenarios/Plunging_Into_the_Darkness.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/Princess_of_Wesnoth.cfg:27
 #: data/campaigns/Heir_To_The_Throne/scenarios/Return_to_Wesnoth.cfg:28
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:33
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:33
 #: data/campaigns/Heir_To_The_Throne/scenarios/Snow_Plains.cfg:29
 #: data/campaigns/Heir_To_The_Throne/scenarios/Swamp_Of_Dread.cfg:29
 #: data/campaigns/Heir_To_The_Throne/scenarios/The_Lost_General.cfg:24
@@ -128,7 +128,7 @@ msgstr "Konrad dör"
 #: data/campaigns/Heir_To_The_Throne/scenarios/Plunging_Into_the_Darkness.cfg:29
 #: data/campaigns/Heir_To_The_Throne/scenarios/Princess_of_Wesnoth.cfg:31
 #: data/campaigns/Heir_To_The_Throne/scenarios/Return_to_Wesnoth.cfg:32
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:37
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:37
 #: data/campaigns/Heir_To_The_Throne/scenarios/Snow_Plains.cfg:33
 #: data/campaigns/Heir_To_The_Throne/scenarios/Swamp_Of_Dread.cfg:33
 #: data/campaigns/Heir_To_The_Throne/scenarios/The_Lost_General.cfg:28
@@ -142,7 +142,7 @@ msgstr "Delfador dör"
 #: data/campaigns/Heir_To_The_Throne/scenarios/Home_Clan.cfg:40
 #: data/campaigns/Heir_To_The_Throne/scenarios/Home_North_Elves.cfg:36
 #: data/campaigns/Heir_To_The_Throne/scenarios/Return_to_Wesnoth.cfg:36
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:41
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:41
 #: data/campaigns/Heir_To_The_Throne/scenarios/Snow_Plains.cfg:37
 #: data/campaigns/Heir_To_The_Throne/scenarios/Swamp_Of_Dread.cfg:37
 #: data/campaigns/Heir_To_The_Throne/scenarios/Valley_of_Statues.cfg:27
@@ -163,7 +163,7 @@ msgstr "Li'sar dör"
 #: data/campaigns/Heir_To_The_Throne/scenarios/Plunging_Into_the_Darkness.cfg:33
 #: data/campaigns/Heir_To_The_Throne/scenarios/Princess_of_Wesnoth.cfg:35
 #: data/campaigns/Heir_To_The_Throne/scenarios/Return_to_Wesnoth.cfg:40
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:45
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:45
 #: data/campaigns/Heir_To_The_Throne/scenarios/Snow_Plains.cfg:41
 #: data/campaigns/Heir_To_The_Throne/scenarios/Swamp_Of_Dread.cfg:41
 #: data/campaigns/Heir_To_The_Throne/scenarios/The_Lost_General.cfg:32
@@ -194,7 +194,7 @@ msgstr "Kalenz dör"
 #: data/campaigns/Heir_To_The_Throne/scenarios/Plunging_Into_the_Darkness.cfg:46
 #: data/campaigns/Heir_To_The_Throne/scenarios/Princess_of_Wesnoth.cfg:71
 #: data/campaigns/Heir_To_The_Throne/scenarios/Return_to_Wesnoth.cfg:53
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:93
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:156
 #: data/campaigns/Heir_To_The_Throne/scenarios/Snow_Plains.cfg:52
 #: data/campaigns/Heir_To_The_Throne/scenarios/Swamp_Of_Dread.cfg:52
 #: data/campaigns/Heir_To_The_Throne/scenarios/The_Lost_General.cfg:41
@@ -778,9 +778,10 @@ msgid "Gwarloa"
 msgstr "Gwarloa"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/Bay_of_Pearls.cfg:531
+#, fuzzy
 msgid ""
 "Thank you for rescuing us! Now we can help you fight the evil orcs! The main "
-"cage where they keep most of the mermen is in the north-west!"
+"cage where they keep most of the mermen is in the northwest!"
 msgstr ""
 "Tack för att ni befriade oss! Nu kan vi hjälpa er att slåss mot de onda "
 "orcherna! Merparten av oss hålls fångna i buren i nordväst!"
@@ -819,9 +820,10 @@ msgid ""
 msgstr "Vi har äntligen befriat sjöfolket. Återvänd till havet och lev i fred."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/Bay_of_Pearls.cfg:655
+#, fuzzy
 msgid ""
 "My lord! You may need the help of some of us who have skill in the sea in "
-"future. We would like to offer you help, and come with you."
+"future. We would like to come with you and offer you help."
 msgstr ""
 "Ers nåd, du kanske även i framtiden behöver hjälp av några av oss som känner "
 "havet. Vi skulle vilja erbjuda dig vår hjälp och vårt sällskap."
@@ -1281,9 +1283,10 @@ msgstr ""
 "befrielse hade ännu inte nått henne."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/Crossroads.cfg:46
+#, fuzzy
 msgid ""
 "Small as it was, Konrad's army avoided the notice of hostile eyes in the "
-"sparsely populated western countryside. However, their luck did not to hold."
+"sparsely populated western countryside. However, their luck did not hold."
 msgstr ""
 "Liten som den var lyckades Konrads armé undvika fiendens sökande ögon i de "
 "glest befolkade trakterna i väst. Men deras tur skulle inte hålla i sig."
@@ -1297,7 +1300,8 @@ msgid "Mokho Kimer"
 msgstr "Mokho Kimer"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/Crossroads.cfg:201
-msgid "Here we come to the great cross-roads. We should go north-east."
+#, fuzzy
+msgid "Here we come to the great cross-roads. We should go northeast."
 msgstr "Här är den stora vägkorsningen. Vi skall åt nordost."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/Crossroads.cfg:205
@@ -1315,7 +1319,8 @@ msgid "Then fight we shall. Let it begin!"
 msgstr "Då slåss vi. Sätt igång!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/Crossroads.cfg:228
-msgid "Victory is ours, men. Let us proceed north-east!"
+#, fuzzy
+msgid "Victory is ours, men. Let us proceed northeast!"
 msgstr "Segern är vår! Nu fortsätter vi åt nordost!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/Crossroads.cfg:244
@@ -3378,15 +3383,15 @@ msgstr ""
 msgid "Seimus"
 msgstr "Seimus"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:263
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:270
 msgid "Delfador, my old master! You have saved the island from the orcs!"
 msgstr "Delfador, min gamle mästare! Du har räddat ön från orcherna!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:268
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:275
 msgid "My apprentice! How did the island fall to such as these?"
 msgstr "Min lärling! Hur kunde ön falla i sådana händer?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:273
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:280
 msgid ""
 "You have not heard, master Delfador? Asheviere is trying to control the "
 "entire western coast. She hired many orcs and sent them here. They were "
@@ -3398,7 +3403,7 @@ msgstr ""
 "hit. Jag hölls fången i väntan på ett skepp som skulle föra mig till Weldyn, "
 "där jag skulle ställas inför rätta för förräderi för att ha utbildat magiker!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:278
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:285
 msgid ""
 "We have come from fighting her forces at Blackwater. Where else has she "
 "attacked?"
@@ -3406,7 +3411,7 @@ msgstr ""
 "Vi kommer just från Svartvattnet, där vi har slagits mot hennes trupper. Var "
 "har hon anfallit mer?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:283
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:290
 msgid ""
 "She has taken control of the Bay of Pearls, long held by the Mermen, and has "
 "turned them into slaves. There they dive for pearls by which she grows "
@@ -3418,7 +3423,7 @@ msgstr ""
 "rikedomar växer för var dag. Det ryktas till och med att hon funderar på att "
 "bryta det gamla fördraget och attackera Elensefar!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:288
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:295
 msgid ""
 "Can't we strike back at her? How many forces does she have at the Bay of "
 "Pearls? Can we take it back from her?"
@@ -3426,7 +3431,7 @@ msgstr ""
 "Kan vi inte slå tillbaka? Hur stora styrkor har hon i Pärlbukten? Kan vi "
 "återerövra den?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:293
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_Anduin.cfg:300
 msgid ""
 "We must indeed go there. Let us therefore rest here a little, and then set "
 "sail for the Bay. Hopefully we will defeat her forces there!"
@@ -3474,11 +3479,11 @@ msgstr "Kalba"
 msgid "Gnaba"
 msgstr "Gnaba"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:176
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:172
 msgid "Whew, I survived. But now where am I? Is this island inhabited?"
 msgstr "Puh, jag överlevde. Men var är jag? Är den här ön bebodd?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:180
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:176
 msgid ""
 "We have heard only the worst things about this place, my lord. It is said "
 "that the fiends of the undead have come in great numbers and turned the "
@@ -3487,7 +3492,7 @@ msgstr ""
 "Vi har hört det värsta om denna plats, herre. Det sägs att ett stort antal "
 "vandöda har kommit hit, och förvandlat ön till ett fult ödeland."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:184
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:180
 msgid ""
 "Let's hope these rumors are not true! I have none of my men with me! How "
 "could I defend myself?"
@@ -3495,7 +3500,7 @@ msgstr ""
 "Låt oss hoppas att de ryktena inte är sanna! Jag har inte några av mina "
 "mannar med mig. Hur skulle jag kunna försvara mig?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:188
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:184
 msgid ""
 "There are still some bands of humans hiding on the island, my lord. If you "
 "recruit some of them to help, we might have some hope of holding off the "
@@ -3505,35 +3510,36 @@ msgstr ""
 "du rekryterar några av dem, så har vi kanske något hopp om att hålla stånd "
 "mot de vandöda horderna!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:197
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:193
 msgid "Delurin"
 msgstr "Delurin"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:201
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:200
 msgid "Maybe we can make a deal! Help us defeat those evil creatures!"
 msgstr ""
 "Kanske vi kan komma överens! Hjälp oss att besegra de där onda varelserna!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:210
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:209
+#, fuzzy
 msgid ""
-"There are some ancient temples to the south-west, I wonder what might be "
+"There are some ancient temples to the southwest; I wonder what might be "
 "inside them!"
 msgstr ""
 "Det finns några uråldriga tempel i sydväst, jag undrar vad som kan finnas i "
 "dem!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:224
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:280
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:223
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:279
 msgid "Looks like there is somebody hidden in the temple."
 msgstr "Det verkar vara någon som gömmer i templet."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:228
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:227
 #: data/campaigns/Heir_To_The_Throne/scenarios/Valley_of_Death.cfg:217
 #: data/campaigns/Heir_To_The_Throne/scenarios/Valley_of_Death.cfg:248
 msgid "Moremirmu"
 msgstr "Moremirmu"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:257
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:256
 msgid ""
 "I was hiding in this holy place, planning how to defeat the evil undead. Now "
 "with your help, I can destroy them."
@@ -3541,11 +3547,11 @@ msgstr ""
 "Jag gömde mig på den här heliga platsen för att smida planer för att besegra "
 "de vandöda. Nu, med er hjälp, kan jag förgöra dem."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:261
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:260
 msgid "Join us, wise one. We welcome your aid!"
 msgstr "Kom med oss, du vise. Vi välkomnar din hjälp!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:265
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:264
 msgid ""
 "If we eradicate the undead blight on these islands, I will surely go with "
 "you. Otherwise, I plan to finish my task here before moving on."
@@ -3553,25 +3559,25 @@ msgstr ""
 "Om vi utplånar de vandöda kommer jag med er. Annars måste jag avsluta mitt "
 "arbete här på egen hand innan jag beger mig vidare."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:286
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:285
 msgid "Xakae"
 msgstr "Xakae"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:304
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:303
 msgid "Surprise! Searching for magi, and all I get is these foul humans!"
 msgstr ""
 "Överraskning! Jag letade efter magiker, och allt jag hittar är de här "
 "stinkande människorna!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:338
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:336
 msgid "The temple seems to be empty."
 msgstr "Templet verkar vara tomt."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:350
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:348
 msgid "Fight on against the undead without me, friends!"
 msgstr "Slåss vidare mot de vandöda utan mig, vänner!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:428
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:426
 msgid ""
 "We have wrested control of the island from the evil undead! Now all we have "
 "to do is wait for the ship to arrive, so we can make our way to Elensefar!"
@@ -3579,7 +3585,7 @@ msgstr ""
 "Vi har tagit kontrollen över ön från de onda vandöda! Nu behöver vi bara "
 "vänta på att skeppet ska anlända, så att vi fortsätta till Elensefar!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:443
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:441
 msgid ""
 "Together we have vanquished the foul undead! Come, I will join you on your "
 "noble quest."
@@ -3587,7 +3593,7 @@ msgstr ""
 "Tillsammans har vi besegrat de avskyvärda vandöda! Kom, jag kommer med dig "
 "på din ärofyllda resa."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:462
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:460
 msgid ""
 "Thank goodness we have found you, sir! Come aboard quickly, we shall take "
 "you away from this horrible island!"
@@ -3595,7 +3601,7 @@ msgstr ""
 "Tack och lov att vi fann er, herre! Snabbt, kom ombord så ska vi ta dig från "
 "denna hemska ö."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:466
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:464
 msgid ""
 "It's a shame complete victory could not be ours, but thank goodness I am "
 "rescued! On to Elensefar!"
@@ -3603,7 +3609,7 @@ msgstr ""
 "Det är synd och skam att vi inte kunde uppnå fullständig seger, men gudars "
 "vad skönt att jag blev räddad! Mot Elensefar!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:476
+#: data/campaigns/Heir_To_The_Throne/scenarios/Isle_of_the_Damned.cfg:474
 msgid ""
 "Thank you for your assistance here brothers. I will stay to continue "
 "resisting the foul undead. May fate be with you in your noble quest, and may "
@@ -4515,28 +4521,28 @@ msgstr ""
 "Vi måste skynda oss! Långt större utmaningar ligger framför oss, och genom "
 "att ödsla tid här så tär vi på våra tillgångar i onödan."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:4
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:12
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:4
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:12
 msgid "The Scepter of Fire"
 msgstr "Eldspiran"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:29
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:29
 msgid "Capture the Scepter of Fire with Konrad or Li'sar"
 msgstr "Erövra Eldspiran med Konrad eller Li'sar"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:66
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:129
 msgid "The Scepter must be getting close now! Where shall we go?"
 msgstr "Eldspiran måste vara nära nu! Vart ska vi gå?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:70
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:133
 msgid "Yes, I feel it is near here! We must search for it carefully."
 msgstr "Ja, jag känner att den är nära! Vi måste leta noggrant."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:301
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:364
 msgid "Scepter of Fire"
 msgstr "Eldspiran"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:304
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:367
 msgid ""
 "This ancient Scepter was forged by the great Dwarves of the Deep Mountains. "
 "A symbol of the kingship of Wesnoth, the Scepter has the power to shoot "
@@ -4545,38 +4551,38 @@ msgstr ""
 "Denna uråldriga spira smiddes av Djupa Bergens dvärgar. Den är en symbol för "
 "kungamakten i Wesnoth, och kan skjuta eldklot på bärarens fiender!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:305
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:368
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr "Detta är Eldspiran. Bara en sann arvinge till tronen kan våga ta den!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:328
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:391
 msgid "Here it is at last, I have the Scepter!"
 msgstr "Äntligen, här är den! Jag har Eldspiran!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:332
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:395
 msgid "So it is in our hands! Now let us leave this stinking pit."
 msgstr "Den är i våra händer! Låt oss nu lämna detta stinkande hål."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:336
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:399
 msgid ""
 "I think that if we travel just a little north, we might be able to get out."
 msgstr ""
 "Jag tror att om vi kan komma ut härifrån om vi fortsätter ett litet stycke "
 "norrut."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:356
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:419
 msgid "At last! I have the Scepter!"
 msgstr "Äntligen! Jag har Eldspiran!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:360
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:423
 msgid "Indeed. You managed to reach it Li'sar. I hope you shall use it wisely."
 msgstr ""
 "Se där ja. Du fann den, Li'sar. Jag hoppas att du kommer att använda den "
 "vist."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:364
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:427
 msgid ""
 "Well my first use for it is going to be to help us get out of this hole! I "
 "hope you consider that wise."
@@ -4584,7 +4590,7 @@ msgstr ""
 "Det första jag kommer att göra med den är att få oss ut ur det här hålet! "
 "Jag hoppas att du tycker att det är vist."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:368
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:431
 msgid ""
 "The Scepter makes its wielder powerful, but hardly immortal, child. Use it "
 "prudently. Now come, I believe there is an exit to the north!"
@@ -4592,7 +4598,7 @@ msgstr ""
 "Eldspiran gör sin bärare mäktig, men knappast odödlig, barn. Använd den med "
 "förnuft. Kom nu, jag tror att det finns en utgång norrut!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/Sceptre.cfg:372
+#: data/campaigns/Heir_To_The_Throne/scenarios/Scepter_of_Fire.cfg:435
 msgid "I think I know what I'm doing. Come, let us go!"
 msgstr "Jag tror nog att jag vet vad jag gör. Kom, så går vi!"
 
@@ -4929,26 +4935,26 @@ msgid "Reglok"
 msgstr "Reglok"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:221
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:358
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:454
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:361
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:457
 msgid "Gelgar"
 msgstr "Gelgar"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:233
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:370
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:467
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:373
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:470
 msgid "Gamlel"
 msgstr "Gamlel"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:249
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:252
 msgid "As night began to fall, three dark figures crept out of the forest."
 msgstr "I nattens mörker smyger tre mörka figurer fram ur skogen."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:253
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:256
 msgid "Halt! Who goes there, friend or foe?"
 msgstr "Halt! Vem där, vän eller fiende?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:257
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:260
 msgid ""
 "Greetings, friend. We are from the Elensefar Thieves' Guild. We would like "
 "to help you against the orcs!"
@@ -4956,11 +4962,11 @@ msgstr ""
 "Var hälsad, vän. Vi är från Elensefars tjuvgille. Vi skulle vilja hjälpa er "
 "mot orcherna!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:261
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:264
 msgid "Thieves, hmmm? Who says we can trust such as you?"
 msgstr "Tjuvar, va? Vem påstår att vi kan lita på såna som er?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:265
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:268
 msgid ""
 "We would understand if you didn't trust us, of course, but it is in our "
 "mutual interest to rid the city of the orcs!"
@@ -4968,11 +4974,11 @@ msgstr ""
 "Vi förstår förstås om ni inte litar på oss, men det ligger bådas intresse "
 "att bli av med orcherna!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:269
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:272
 msgid "Very well. You may join us."
 msgstr "Nåväl, ni kan förena era styrkor med våra."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:273
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:276
 msgid ""
 "We will serve you well, for we respect the help you are providing to our "
 "city. You shall find that there is honor, even among thieves."
@@ -4980,11 +4986,11 @@ msgstr ""
 "Vi kommer att tjäna dig väl, för vi respekterar att du kommit för att hjälpa "
 "vår stad. Du skall få se att även vi tjuvar har heder."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:277
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:280
 msgid "Yes, but where is your fighting force? How can you help us?"
 msgstr "Ja, men var är era trupper? Hur kan ni hjälpa oss?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:281
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:284
 msgid ""
 "We survive by stealth. We can help you sneak into the city and surround the "
 "orcs. Alternatively, we can lay in wait until you give us a signal then "
@@ -4994,15 +5000,15 @@ msgstr ""
 "och omringa orcherna. Eller så kan vi lägga oss i bakhåll och på er signal "
 "överfalla orcherna bakifrån."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:285
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:288
 msgid "Hmm... I have to consider this..."
 msgstr "Hmm... Jag måste tänka över det här..."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:287
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:290
 msgid "Help us infiltrate the city. We can do the rest."
 msgstr "Hjälp oss att infiltrera staden. Vi kan göra resten."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:291
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:294
 msgid ""
 "Excellent. Two hours past midnight meet us on the west bank of the river, "
 "across from Elensefar's docks."
@@ -5010,13 +5016,13 @@ msgstr ""
 "Utmärkt. Möt oss på flodens västra strand, mittemot Elensefars hamn, två "
 "timmar efter midnatt. "
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:303
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:306
 msgid "I want you to reinforce us once we break through their line."
 msgstr ""
 "Jag vill att ni ger oss förstärkning när vi brutit igenom deras "
 "försvarslinje."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:307
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:310
 msgid ""
 "Very well. When you raise your red banner over any building in the city "
 "proper, we will see the sign and attack from the city's northern gate."
@@ -5024,11 +5030,11 @@ msgstr ""
 "Nåväl. När ni reser ert banér över en byggnad inne i själva staden, så "
 "attackerar vi från stadens norra port."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:311
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:314
 msgid "Agreed. But, will you be able to see our flag if it's dark?"
 msgstr "Överenskommet. Men kan ni se vår flagga även om det är mörkt?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:315
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:318
 msgid ""
 "Yes, we will see it. In fact, we prefer to fight at night. I pray you do not "
 "lead us into slaughter."
@@ -5036,7 +5042,7 @@ msgstr ""
 "Ja, det gör vi. Faktum är att vi föredrar att slåss i mörker. Jag hoppas att "
 "du inte leder oss rakt in i en slakt."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:319
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:322
 msgid ""
 "Do not fear, friends. There will be a slaughter here, but it will be orcish "
 "blood staining the streets."
@@ -5044,7 +5050,7 @@ msgstr ""
 "Frukta icke, vänner. En slakt kommer det att bli, men det är orchblod som "
 "kommer att fläcka gatorna."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:334
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:337
 msgid ""
 "As the banner was raised, sounds of fighting could be heard from across the "
 "city."
@@ -5052,21 +5058,21 @@ msgstr ""
 "När banéret hissades kunde man höra ljudet av en strid från andra sidan "
 "staden."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:382
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:385
 msgid "Darglen"
 msgstr "Darglen"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:394
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:397
 msgid "Let's expel these invaders! Today, the city is ours again!"
 msgstr "Nu kör vi bort inkräktarna! Idag blir staden vår igen!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:427
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:430
 msgid ""
 "On the banks of Elensefar's port district, three shadowy figures appeared."
 msgstr ""
 "Tre skuggor lösgör sig ur mörkret på flodstranden i Elensefars hamndistrikt."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:431
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:434
 msgid ""
 "To Konrad's surprise, they quickly made their way across the river's mouth. "
 "The turbulent waters hid a nearly invisible ford, wide enough for two "
@@ -5076,7 +5082,7 @@ msgstr ""
 "strida vattnet dolde ett nästan osynligt vadställe, brett nog för två "
 "soldater att passera i bredd."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:486
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:489
 msgid ""
 "Very few people know that the river can be forded here. The orcs have yet to "
 "discover this place. Bring your forces into the city, quickly now, and you "
@@ -5085,23 +5091,23 @@ msgstr ""
 "Få känner till att det finns ett vadställe här. Orcherna har inte upptäckt "
 "det ännu. Ta snabbt in trupperna i staden, så kan ni ta deras flank."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:498
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:501
 msgid "Finally, we have retaken the city! Let us rest here, friends."
 msgstr "Äntligen har vi återtagit staden! Låt oss vila här ett tag, vänner."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:506
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:509
 msgid "Victory! The thieves of Elensefar will be in your service, my lord"
 msgstr "Seger! Elensefars tjuvar står till ditt förfogande, ers nåd."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:510
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:513
 msgid "The party rested for three days, after which an old friend returned."
 msgstr "Efter tre dagars välbehövlig vila återvände en gammal vän."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:529
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:532
 msgid "Kalenz"
 msgstr "Kalenz"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:545
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:548
 msgid ""
 "Greetings, friends. I see that you have rescued the city! I knew that you "
 "could do it."
@@ -5109,11 +5115,11 @@ msgstr ""
 "Var hälsade, vänner. Jag ser att ni har räddat staden! Jag visste att du "
 "skulle klara det."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:550
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:553
 msgid "Delfador! So good to see you! Where have you been?"
 msgstr "Delfador! Så trevligt att se dig! Var har du varit?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:555
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:558
 msgid ""
 "I have been meeting with the Great Elven Council. This is Kalenz, a lord of "
 "the Northern Elves who came to the Council to offer us the support of the "
@@ -5122,11 +5128,11 @@ msgstr ""
 "Jag har suttit i möte med alvernas stora råd. Det här är Kalenz, en furste "
 "från nordalverna, som kom till rådet för att erbjuda oss nordalvernas stöd."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:560
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:563
 msgid "Greetings, friend."
 msgstr "Var hälsad, vän."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:565
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:568
 msgid ""
 "Delfador, we have captured this city, but surely Asheviere's men will come "
 "and attack us! What should we do?"
@@ -5134,15 +5140,15 @@ msgstr ""
 "Delfador, vi har återerövrat staden, men Ashevieres män kommer med all "
 "sannolikhet att anfalla oss! Vad ska vi göra?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:570
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:573
 msgid "The Council has met and decided: we must capture the Scepter of Fire."
 msgstr "Rådet har samlats och beslutat att vi måste hitta Eldspiran."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:575
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:578
 msgid "The Scepter of Fire? What's that?"
 msgstr "Eldspiran? Vad är det?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:580
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:583
 msgid ""
 "During the reign of Garard I, your grandfather, the dwarves of Knalga agreed "
 "to make the king a magnificent scepter. It took their finest smiths years to "
@@ -5158,11 +5164,11 @@ msgstr ""
 "vissa delar, så krigar de ständigt med de orcher som finns i området. "
 "Eldspiran har gått förlorad någonstans i de stora grottorna."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:585
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:588
 msgid "But what has this to do with me?"
 msgstr "Men vad har det här med mig att göra?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:590
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:593
 msgid ""
 "When Garard II, your uncle, was deciding upon a successor, he issued an "
 "edict that whichever member of the royal family could retrieve the Scepter "
@@ -5172,15 +5178,15 @@ msgstr ""
 "att den medlem av kungafamiljen som återfann Eldspiran skulle regera över "
 "landet."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:595
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:598
 msgid "Oh, and you want me to get this scepter?"
 msgstr "Åh, och nu vill du att jag ska hämta den där spiran?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:600
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:603
 msgid "We will help you retrieve it, my lord."
 msgstr "Vi skall hjälpa dig att hitta den, herre."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:605
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:608
 msgid ""
 "Time is short. We think that Asheviere is also searching for the Scepter, to "
 "help seal her place as ruler. But if you find the Scepter first, the people "
@@ -5190,17 +5196,17 @@ msgstr ""
 "att säkra sin plats på tronen. Men om du får tag på Eldspiran först, så "
 "kommer folket att följa dig som kung."
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:610
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:613
 msgid "Me? King?"
 msgstr "Jag? Kung?"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:615
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:618
 msgid "Yes, Konrad. I believe you will be king one day. Now let us make haste!"
 msgstr ""
 "Ja, Konrad. Jag tror att du kommer att bli kung en dag. Nu, låt oss skynda "
 "oss!"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:629
+#: data/campaigns/Heir_To_The_Throne/scenarios/The_Siege_of_Elensefar.cfg:632
 msgid "So you endeavor to fight me in my home. Foolish."
 msgstr "Så du dristar dig till att kämpa mot mig i mitt eget hem. Dåraktigt."
 

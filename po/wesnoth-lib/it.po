@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2005-12-29 18:01+0100\n"
 "Last-Translator: Americo_iacovizzi <darkamex@gmail.com>\n"
 "Language-Team: none\n"
@@ -383,11 +383,11 @@ msgstr "Invia un comando utente"
 msgid "Change the language"
 msgstr "Cambia la lingua"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "Vuoi davvero uscire?"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "Esci"
 
@@ -498,10 +498,6 @@ msgstr "Correggi Gamma"
 msgid "Reverse Time Graphics"
 msgstr "Inverti i grafici del tempo"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr "visualizzazione del tempo nella chat"
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "Effetti Sonori"
@@ -509,6 +505,10 @@ msgstr "Effetti Sonori"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "Musica"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr "visualizzazione del tempo nella chat"
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -688,19 +688,19 @@ msgstr "Cambia la Scorciatoia"
 msgid "Save Hotkeys"
 msgstr "Salva le Scorciatoie"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 msgid "This Hotkey is already in use."
 msgstr "Questa tasto di Scorciatoia è già in uso."
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr "Preferenze sul tema salvate:"
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Il nuovo tema avrà effetto sul gioco che inizierai o che caricherai."
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Nessun tema conosciuto. Prova a cambiarlo in un gioco conosciuto."
 

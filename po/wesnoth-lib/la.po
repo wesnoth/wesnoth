@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.0.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2005-08-25 20:54+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -387,11 +387,11 @@ msgstr "Imperium utentis dare"
 msgid "Change the language"
 msgstr "Linguam mutare"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "Visne vere relinquere?"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "Relinquere"
 
@@ -502,10 +502,6 @@ msgstr "Gamma Accomodare"
 msgid "Reverse Time Graphics"
 msgstr "Imagines Tempi Invertere"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr ""
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "Iactationes Aureolae"
@@ -513,6 +509,10 @@ msgstr "Iactationes Aureolae"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "Musica"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr ""
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -691,20 +691,20 @@ msgstr "Clavem Notarum Mutare"
 msgid "Save Hotkeys"
 msgstr "Claves Notarum Servare"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 #, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "Haec Clavis Notarum iam usum habet."
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 

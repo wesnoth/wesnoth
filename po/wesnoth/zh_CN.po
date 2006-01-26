@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-22 18:26+0100\n"
+"POT-Creation-Date: 2006-01-26 15:28+0100\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Max HP bonus +"
 msgstr "最大生命值奖励 +"
 
-#: data/amla.cfg:27
+#: data/amla.cfg:28
 msgid "Full Heal"
 msgstr "生命全满"
 
@@ -142,7 +142,7 @@ msgstr "剑"
 #: data/units/Drake_Fire.cfg:75 data/units/Drake_Flameheart.cfg:79
 #: data/units/Drake_Flare.cfg:83 data/units/Drake_Gladiator.cfg:75
 #: data/units/Drake_Inferno.cfg:76 data/units/Drake_Slasher.cfg:76
-#: data/units/Drake_Warden.cfg:33 data/units/Drake_Warrior.cfg:78
+#: data/units/Drake_Warden.cfg:80 data/units/Drake_Warrior.cfg:78
 #: data/units/Draug.cfg:44 data/units/Duelist.cfg:76
 #: data/units/Dwarvish_Berserker.cfg:35 data/units/Dwarvish_Fighter.cfg:29
 #: data/units/Dwarvish_Lord.cfg:35 data/units/Dwarvish_Lord.cfg:72
@@ -248,11 +248,11 @@ msgstr "晨星攻击"
 #: data/units/Saurian_Soothsayer.cfg:33 data/units/Saurian_Tribalist.cfg:32
 #: data/units/Shock_Trooper.cfg:26 data/units/Silver_Mage.cfg:93
 #: data/units/Silver_Mage.cfg:241 data/units/Skeleton_Archer.cfg:31
-#: data/units/Soulless.cfg:52 data/units/Tentacle.cfg:64
+#: data/units/Soulless.cfg:50 data/units/Tentacle.cfg:64
 #: data/units/Thug.cfg:27 data/units/Troll.cfg:32 data/units/Troll_Hero.cfg:32
 #: data/units/Troll_Rocklobber.cfg:33 data/units/Troll_Rocklobber.cfg:53
 #: data/units/Troll_Warrior.cfg:33 data/units/Troll_Whelp.cfg:32
-#: data/units/Walking_Corpse.cfg:54 data/units/White_Mage.cfg:64
+#: data/units/Walking_Corpse.cfg:52 data/units/White_Mage.cfg:64
 #: data/units/White_Mage.cfg:173 data/units/Wose.cfg:34 data/units/Yeti.cfg:41
 msgid "impact"
 msgstr "冲击"
@@ -403,8 +403,8 @@ msgstr "火"
 #: data/tutorial/units/Commander.cfg:173 data/tutorial/units/Elder_Mage.cfg:51
 #: data/tutorial/units/Fighter.cfg:102 data/tutorial/units/Lord.cfg:141
 #: data/units/Ancient_Lich.cfg:67 data/units/Arch_Mage.cfg:72
-#: data/units/Arch_Mage.cfg:194 data/units/Dark_Adept.cfg:36
-#: data/units/Dark_Adept.cfg:130 data/units/Dark_Sorcerer.cfg:58
+#: data/units/Arch_Mage.cfg:194 data/units/Dark_Adept.cfg:33
+#: data/units/Dark_Adept.cfg:124 data/units/Dark_Sorcerer.cfg:58
 #: data/units/Dwarvish_Runemaster.cfg:56 data/units/Elvish_Druid.cfg:80
 #: data/units/Elvish_Enchantress.cfg:140 data/units/Elvish_Shyde.cfg:38
 #: data/units/Elvish_Shyde.cfg:89 data/units/Elvish_Sorceress.cfg:140
@@ -478,7 +478,7 @@ msgstr "矛"
 #: data/units/Death_Knight.cfg:62 data/units/Dragoon.cfg:81
 #: data/units/Drake_Clasher.cfg:102 data/units/Drake_Enforcer.cfg:110
 #: data/units/Drake_Gladiator.cfg:95 data/units/Drake_Slasher.cfg:96
-#: data/units/Drake_Warden.cfg:53 data/units/Duelist.cfg:94
+#: data/units/Drake_Warden.cfg:100 data/units/Duelist.cfg:94
 #: data/units/Dwarvish_Dragonguard.cfg:48 data/units/Dwarvish_Guardsman.cfg:35
 #: data/units/Dwarvish_Guardsman.cfg:50 data/units/Dwarvish_Sentinel.cfg:43
 #: data/units/Dwarvish_Sentinel.cfg:58 data/units/Dwarvish_Stalwart.cfg:38
@@ -563,7 +563,7 @@ msgstr "凝视"
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:43
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:44
 #: data/units/Ancient_Lich.cfg:51 data/units/Ancient_Lich.cfg:66
-#: data/units/Dark_Adept.cfg:35 data/units/Dark_Adept.cfg:129
+#: data/units/Dark_Adept.cfg:32 data/units/Dark_Adept.cfg:123
 #: data/units/Dark_Sorcerer.cfg:57 data/units/Elvish_Enchantress.cfg:136
 #: data/units/Elvish_Sorceress.cfg:136 data/units/Elvish_Sylph.cfg:95
 #: data/units/Ghost.cfg:30 data/units/Ghost.cfg:45 data/units/Lich.cfg:35
@@ -1064,13 +1064,13 @@ msgstr "火龙"
 msgid ""
 "A fire dragon is an ancient and horrifying being that normally lives only in "
 "hushed rumor and fantastic stories. It is normal for centuries to pass "
-"without a dragon being seen Wesnoth, and usually it is only as a shadowy "
+"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
 "form flying in the distance. Legends are very specific about the ravages of "
 "fire dragons: hideously swift in flight, leathery wings spread over one "
-"hundred feet in width, they swoop in blast their prey with inferno jets of "
-"flame. Anything escaping the dragon's fire breath must beware its ferocious "
-"bite and crushing tail. Fire dragons are cunning and cruel and often take "
-"underlings whom they help lead to victory."
+"hundred feet in width, they swoop in and blast their prey with inferno jets "
+"of flame. Anything escaping the dragon's fire breath must beware its "
+"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
+"often take underlings whom they lead to victory."
 msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:29
@@ -1580,15 +1580,15 @@ msgstr ""
 "金钟罩：\n"
 "这会让单位变得和石头一样硬。使用金钟罩后就不能移动或攻击。"
 
-#: data/english.cfg:129 data/factions/elves-classic.cfg:3
+#: data/english.cfg:129
 msgid "Elves"
 msgstr "精灵"
 
-#: data/english.cfg:130 data/factions/humans-classic.cfg:3
+#: data/english.cfg:130
 msgid "Humans"
 msgstr "人类"
 
-#: data/english.cfg:131 data/factions/orcs-classic.cfg:3
+#: data/english.cfg:131
 msgid "Orcs"
 msgstr "兽人"
 
@@ -1666,14 +1666,9 @@ msgstr "黑暗联盟"
 msgid "Alliance of Light"
 msgstr "光明联盟"
 
-#: data/factions/drakes-aoh.cfg:3 data/factions/drakes-classic.cfg:3
-#: data/factions/drakes-default.cfg:3
+#: data/factions/drakes-aoh.cfg:3 data/factions/drakes-default.cfg:3
 msgid "Drakes"
 msgstr "龙战士"
-
-#: data/factions/dwarves-classic.cfg:3
-msgid "Dwarves"
-msgstr "矮人"
 
 #: data/factions/knalgans-aoh.cfg:3 data/factions/knalgans-default.cfg:3
 msgid "Knalgan Alliance"
@@ -1691,12 +1686,7 @@ msgstr "北方人"
 msgid "Rebels"
 msgstr "反叛者"
 
-#: data/factions/saurians-classic.cfg:3
-msgid "Saurian"
-msgstr "蜥蜴人"
-
-#: data/factions/undead-aoh.cfg:3 data/factions/undead-classic.cfg:3
-#: data/factions/undead-default.cfg:3
+#: data/factions/undead-aoh.cfg:3 data/factions/undead-default.cfg:3
 msgid "Undead"
 msgstr "不死"
 
@@ -1720,11 +1710,11 @@ msgstr "游戏介绍"
 msgid "Gameplay"
 msgstr "游戏玩法"
 
-#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2300
+#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2304
 msgid "Traits"
 msgstr "特质"
 
-#: data/help.cfg:29 src/menu_events.cpp:218 src/playturn.cpp:1840
+#: data/help.cfg:29 src/menu_events.cpp:218 src/playturn.cpp:1844
 msgid "Units"
 msgstr "单位"
 
@@ -3299,63 +3289,63 @@ msgstr "重生戒指"
 msgid "This ring will heal the bearer a little each turn."
 msgstr "戒指会让持有人每回合恢复一些生命。"
 
-#: data/items.cfg:556
+#: data/items.cfg:555
 msgid "Can't set abilities yet, sorry."
 msgstr "还不能设置技能，抱歉。"
 
-#: data/items.cfg:577
+#: data/items.cfg:576
 msgid "Ring of Slowness"
 msgstr "迟缓戒指"
 
-#: data/items.cfg:580
+#: data/items.cfg:579
 msgid "The bearer of this ring is slowed."
 msgstr "戒指持有人行动变慢。"
 
-#: data/items.cfg:615
+#: data/items.cfg:614
 msgid "Staff of Swiftness"
 msgstr "快速棍"
 
-#: data/items.cfg:618
+#: data/items.cfg:617
 msgid "This staff will grant the bearer swift movement."
 msgstr "加速棍会让持有者加速移动。"
 
-#: data/items.cfg:619
+#: data/items.cfg:618
 msgid "Only magical beings can wield such an object."
 msgstr "只有魔法师可以使用本物品。"
 
-#: data/items.cfg:653
+#: data/items.cfg:652
 msgid "Storm Trident"
 msgstr "雷霆叉"
 
-#: data/items.cfg:656
+#: data/items.cfg:655
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "雷霆叉会让人鱼向敌人射出闪电。"
 
-#: data/items.cfg:657
+#: data/items.cfg:656
 msgid "Only the mermen can use this item!"
 msgstr "仅有人鱼可以使用本物品！"
 
-#: data/items.cfg:669
+#: data/items.cfg:668
 msgid "storm trident"
 msgstr "雷霆叉"
 
-#: data/items.cfg:709
+#: data/items.cfg:710
 msgid "Flaming Sword"
 msgstr "火焰剑"
 
-#: data/items.cfg:713
+#: data/items.cfg:714
 msgid "Only the leader of an army can wield this sword!"
 msgstr "仅有部队领袖可以使用本剑！"
 
-#: data/items.cfg:725
+#: data/items.cfg:726
 msgid "flaming sword"
 msgstr "火焰剑"
 
-#: data/items.cfg:759
+#: data/items.cfg:760
 msgid "Scepter of Fire"
 msgstr "火焰权杖"
 
-#: data/items.cfg:762
+#: data/items.cfg:763
 msgid ""
 "This ancient Scepter was forged by the Dwarves. A symbol of the kingship of "
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
@@ -3364,13 +3354,13 @@ msgstr ""
 "这古老的权杖由矮人所打造。是韦诺之地上君主的象征，权杖可以让持有者向敌人放出"
 "火球！"
 
-#: data/items.cfg:763
+#: data/items.cfg:764
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr "这是火焰权杖。只有真正的王位继承人才能使用！"
 
-#: data/items.cfg:816
+#: data/items.cfg:817
 #, fuzzy
 msgid "Zap"
 msgstr "震退～"
@@ -3388,14 +3378,10 @@ msgid "Default"
 msgstr "缺省"
 
 #: data/multiplayer.cfg:41
-msgid "Classic"
-msgstr "经典的"
-
-#: data/multiplayer.cfg:55
 msgid "Age of Heroes"
 msgstr "英雄时代"
 
-#: data/multiplayer.cfg:68
+#: data/multiplayer.cfg:54
 msgid "Great War"
 msgstr "宏伟战争"
 
@@ -3521,25 +3507,27 @@ msgid "2p - Wesbowl"
 msgstr "2p － 一起来玩球"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
+#, fuzzy
 msgid ""
-"In Wesbowl, a player must get their ball to the other player's end zone. "
-"However, the other player can attack your units. Wesbowl is played with "
-"blunt weapons, and healers are on hand, so when units are killed, they "
-"return to that player's end zone with an injury."
+"In Wesbowl, a player has to get any of the balls to the other player's end "
+"zone as often as possible. However, the other player can attack your units. "
+"Wesbowl is played with blunt weapons, and healers are on hand, so when units "
+"are killed, they return to that player's end zone with an injury."
 msgstr ""
 "在一起来玩球中，一个玩家必须把球放入别的玩家终点区域里。然而，别的玩家可以攻"
 "击你的单位。在本游戏中都是钝武器，并且有治疗者支持，所以当单位被杀死后，会以"
 "受伤的惩罚形式回到玩家自己的终点区域中。"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:11
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
-"@Move either ball to your opponent's endzone more times than they move their "
-"ball to yours\n"
+"@Move either ball to your opponent's end zone more times than they move a "
+"ball to yours.\n"
 "Defeat:\n"
-"#Opponent moves the balls to your endzone more times than you move them to "
-"theirs"
+"#Opponent moves the balls to your end zone more times than you move them to "
+"the opponent's end zone"
 msgstr ""
 "\n"
 "胜利：\n"
@@ -3547,40 +3535,40 @@ msgstr ""
 "失败：\n"
 "#对手移动球到你的终点区域内的次数多于你移动过去的次数"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:199
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:476
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:194
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:471
 msgid "Red scores! Current score is $redscore-$bluescore"
 msgstr "红牌！当前牌是 $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:247
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:524
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:242
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:519
 msgid "Blue scores! Current score is $redscore-$bluescore"
 msgstr "蓝牌！当前牌是 $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:337
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:614
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:332
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:609
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
 msgstr "我该把球移到 $passto 里吗 ($xloc,$yloc)？"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:339
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:616
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:334
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:611
 msgid "Yes!"
 msgstr "是的！"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:361
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:638
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:356
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:633
 msgid "No"
 msgstr "不是"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:661
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:656
 msgid "Blue team wins! Final score: $redscore-$bluescore"
 msgstr "蓝队赢！最终牌是： $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:673
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:668
 msgid "Red team wins! Final score: $redscore-$bluescore"
 msgstr "红队鹰！最终牌是： $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:685
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:680
 msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "平局!最终牌是： $redscore-$bluescore"
 
@@ -3760,7 +3748,7 @@ msgstr ""
 "军。建议设置2金币每村庄。"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
-#: data/scenarios/multiplayer/Random_Scenario.cfg:17
+#: data/scenarios/multiplayer/Random_Scenario.cfg:12
 msgid "Random map"
 msgstr "随机地图"
 
@@ -3773,7 +3761,7 @@ msgstr ""
 "很平衡的地图。"
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
-#: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:17
+#: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:12
 msgid "Random map (Desert)"
 msgstr "随机地图 (沙漠)"
 
@@ -3787,7 +3775,7 @@ msgstr ""
 "够的时间，能生成一个很平衡的地图。"
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:3
-#: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:17
+#: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:12
 msgid "Random map (Marsh)"
 msgstr "随机地图 (沼泽)"
 
@@ -3801,7 +3789,7 @@ msgstr ""
 "的时间，能生成一个很平衡的地图。"
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
-#: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:17
+#: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:12
 msgid "Random map (Winter)"
 msgstr "随机地图 (冬天)"
 
@@ -3946,13 +3934,13 @@ msgstr "动作"
 msgid "End Turn"
 msgstr "结束回合"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2298
-#: src/unit.cpp:1270
+#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2302
+#: src/unit.cpp:1287
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2111
-#: src/playturn.cpp:2299
+#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2115
+#: src/playturn.cpp:2303
 msgid "XP"
 msgstr "XP"
 
@@ -4641,7 +4629,7 @@ msgstr "墨汁"
 msgid "Dark Adept"
 msgstr "黑暗狂热者"
 
-#: data/units/Dark_Adept.cfg:31 data/units/Dark_Adept.cfg:125
+#: data/units/Dark_Adept.cfg:28 data/units/Dark_Adept.cfg:119
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -4666,12 +4654,12 @@ msgstr ""
 "\n"
 "特别提示：黑暗狂热者的攻击属于魔法攻击，同常对对手有很高的击中比率。"
 
-#: data/units/Dark_Adept.cfg:34 data/units/Dark_Adept.cfg:128
+#: data/units/Dark_Adept.cfg:31 data/units/Dark_Adept.cfg:122
 #, fuzzy
 msgid "shadow wave"
 msgstr "猛推"
 
-#: data/units/Dark_Adept.cfg:98
+#: data/units/Dark_Adept.cfg:95
 msgid "female^Dark Adept"
 msgstr "女性黑暗狂热者"
 
@@ -4708,7 +4696,7 @@ msgstr ""
 "特别提示：黑暗术士的远程攻击是魔法攻击，并对对手有很高的击中比率。黑暗术士的"
 "武器是瘟疫，并且对手死后为他的不死部下。"
 
-#: data/units/Dark_Sorcerer.cfg:36 data/units/Soulless.cfg:56
+#: data/units/Dark_Sorcerer.cfg:36 data/units/Soulless.cfg:54
 msgid "plague(Walking Corpse)"
 msgstr "瘟疫(僵尸)"
 
@@ -5033,12 +5021,12 @@ msgstr ""
 "剑士近战中主要的优势。"
 
 #: data/units/Drake_Slasher.cfg:75 data/units/Drake_Slasher.cfg:95
-#: data/units/Drake_Warden.cfg:32 data/units/Drake_Warden.cfg:52
+#: data/units/Drake_Warden.cfg:79 data/units/Drake_Warden.cfg:99
 #: data/units/Halbardier.cfg:34 data/units/Halbardier.cfg:75
 msgid "halberd"
 msgstr "戟"
 
-#: data/units/Drake_Slasher.cfg:98 data/units/Drake_Warden.cfg:55
+#: data/units/Drake_Slasher.cfg:98 data/units/Drake_Warden.cfg:102
 #: data/units/Goblin_Impaler.cfg:35 data/units/Halbardier.cfg:40
 #: data/units/Javelineer.cfg:34 data/units/Pikeman.cfg:63
 #: data/units/Spearman.cfg:66
@@ -5971,8 +5959,8 @@ msgstr ""
 "或拳头进行攻击。"
 
 #: data/units/Giant_Mudcrawler.cfg:50 data/units/Skeleton_Archer.cfg:30
-#: data/units/Soulless.cfg:51 data/units/Troll_Rocklobber.cfg:32
-#: data/units/Troll_Whelp.cfg:31 data/units/Walking_Corpse.cfg:53
+#: data/units/Soulless.cfg:49 data/units/Troll_Rocklobber.cfg:32
+#: data/units/Troll_Whelp.cfg:31 data/units/Walking_Corpse.cfg:51
 #: data/units/Yeti.cfg:40
 msgid "fist"
 msgstr "拳头"
@@ -7773,7 +7761,7 @@ msgstr ""
 msgid "Soulless"
 msgstr "无魂怪"
 
-#: data/units/Soulless.cfg:30
+#: data/units/Soulless.cfg:28
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living."
@@ -8049,7 +8037,7 @@ msgstr ""
 msgid "Walking Corpse"
 msgstr "僵尸"
 
-#: data/units/Walking_Corpse.cfg:29
+#: data/units/Walking_Corpse.cfg:27
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Although weak in combat, these zombies can spread their curse to those they "
@@ -8058,7 +8046,7 @@ msgstr ""
 "僵尸是死去人们的躯壳，被黑暗魔法召回回来。虽然疏于战斗，这些僵尸会诅咒那些被"
 "杀死的敌人，召回他们加入不死军队。"
 
-#: data/units/Walking_Corpse.cfg:58
+#: data/units/Walking_Corpse.cfg:56
 msgid "plague"
 msgstr "瘟疫"
 
@@ -8494,100 +8482,100 @@ msgstr "单位可见！ ($friends 友好 $enemies 敌人)"
 msgid "(press $hotkey to continue)"
 msgstr "(按 $hotkey 继续)"
 
-#: src/dialogs.cpp:101
+#: src/dialogs.cpp:105
 msgid "Advance Unit"
 msgstr "升级单位"
 
-#: src/dialogs.cpp:102
+#: src/dialogs.cpp:106
 msgid "What should our victorious unit become?"
 msgstr "胜利的单位成为？"
 
-#: src/dialogs.cpp:174
+#: src/dialogs.cpp:178
 msgid "No objectives available"
 msgstr "无有效目标"
 
-#: src/dialogs.cpp:188
+#: src/dialogs.cpp:192
 msgid "Save Game"
 msgstr "保存游戏"
 
-#: src/dialogs.cpp:190
+#: src/dialogs.cpp:194
 msgid "Overwrite?"
 msgstr "覆盖？"
 
-#: src/dialogs.cpp:191
+#: src/dialogs.cpp:195
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "存档以存在，要覆盖吗？"
 
-#: src/dialogs.cpp:220 src/dialogs.cpp:503
+#: src/dialogs.cpp:224 src/dialogs.cpp:507
 msgid "Don't ask me again!"
 msgstr "别再问我！"
 
-#: src/dialogs.cpp:222
+#: src/dialogs.cpp:226
 msgid "Do you really want to delete this game?"
 msgstr "你真的想删除这个游戏？"
 
-#: src/dialogs.cpp:359
+#: src/dialogs.cpp:363
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:372
+#: src/dialogs.cpp:376
 msgid "#(Invalid)"
 msgstr "#(无效的)"
 
-#: src/dialogs.cpp:377 src/game.cpp:744
+#: src/dialogs.cpp:381 src/game.cpp:744
 msgid "Campaign"
 msgstr "战役"
 
-#: src/dialogs.cpp:379 src/game.cpp:1139
+#: src/dialogs.cpp:383 src/game.cpp:1141
 msgid "Multiplayer"
 msgstr "多人游戏"
 
-#: src/dialogs.cpp:381
+#: src/dialogs.cpp:385
 msgid "Tutorial"
 msgstr "教程"
 
-#: src/dialogs.cpp:389
+#: src/dialogs.cpp:393
 msgid "replay"
 msgstr "游戏录像"
 
-#: src/dialogs.cpp:391 src/menu_events.cpp:295 src/multiplayer_lobby.cpp:330
-#: src/playturn.cpp:1678
+#: src/dialogs.cpp:395 src/menu_events.cpp:295 src/multiplayer_lobby.cpp:330
+#: src/playturn.cpp:1682
 msgid "Turn"
 msgstr "回合"
 
-#: src/dialogs.cpp:393
+#: src/dialogs.cpp:397
 msgid "Scenario Start"
 msgstr "剧本开始"
 
-#: src/dialogs.cpp:396
+#: src/dialogs.cpp:400
 msgid "Difficulty: "
 msgstr "难易度： "
 
-#: src/dialogs.cpp:398
+#: src/dialogs.cpp:402
 msgid "Version: "
 msgstr "版本： "
 
-#: src/dialogs.cpp:422 src/dialogs.cpp:438
+#: src/dialogs.cpp:426 src/dialogs.cpp:442
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:428
+#: src/dialogs.cpp:432
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:431
+#: src/dialogs.cpp:435
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:434
+#: src/dialogs.cpp:438
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:458
+#: src/dialogs.cpp:462
 msgid "No Saved Games"
 msgstr "没有存档"
 
-#: src/dialogs.cpp:459
+#: src/dialogs.cpp:463
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
@@ -8595,15 +8583,15 @@ msgstr ""
 "没有存档够载入。\n"
 "(当你完成一个剧本时会自动存档)"
 
-#: src/dialogs.cpp:478
+#: src/dialogs.cpp:482
 msgid "Delete Save"
 msgstr "删除存档"
 
-#: src/dialogs.cpp:493
+#: src/dialogs.cpp:497
 msgid "Import Saved Games"
 msgstr "导入存档"
 
-#: src/dialogs.cpp:494
+#: src/dialogs.cpp:498
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
 "Wesnoth. Would you like to update these to the latest version? This may take "
@@ -8612,7 +8600,7 @@ msgstr ""
 "你的存档目录里有些来至于旧版的韦诺之战的存档文件。你想把它们转为新版的吗？这"
 "将花点时间。"
 
-#: src/dialogs.cpp:499
+#: src/dialogs.cpp:503
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
@@ -8620,45 +8608,45 @@ msgid ""
 msgstr ""
 "你的存档目录中有些文件非本版韦诺之战生成的。你想注册这些文件至游戏中吗？"
 
-#: src/dialogs.cpp:554
+#: src/dialogs.cpp:558
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:554 src/game.cpp:877 src/help.cpp:1119
-#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:31 src/playturn.cpp:2109
-#: src/playturn.cpp:2297
+#: src/dialogs.cpp:558 src/game.cpp:877 src/help.cpp:1119
+#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:31 src/playturn.cpp:2113
+#: src/playturn.cpp:2301
 msgid "Name"
 msgstr "名字"
 
-#: src/dialogs.cpp:580
+#: src/dialogs.cpp:584
 msgid "Show replay"
 msgstr "显示游戏录像"
 
-#: src/dialogs.cpp:583 src/multiplayer_create.cpp:77
+#: src/dialogs.cpp:587 src/multiplayer_create.cpp:77
 msgid "Load Game"
 msgstr "载入游戏"
 
-#: src/dialogs.cpp:584
+#: src/dialogs.cpp:588
 msgid "Choose the game to load"
 msgstr "选择游戏载入"
 
-#: src/dialogs.cpp:620 src/dialogs.cpp:632
+#: src/dialogs.cpp:624 src/dialogs.cpp:636
 msgid "Profile"
 msgstr "设定"
 
-#: src/dialogs.cpp:712 src/help.cpp:1037
+#: src/dialogs.cpp:716 src/help.cpp:1037
 msgid "level"
 msgstr "等级"
 
-#: src/dialogs.cpp:733 src/help.cpp:1095
+#: src/dialogs.cpp:737 src/help.cpp:1095
 msgid "HP: "
 msgstr "HP: "
 
-#: src/dialogs.cpp:737 src/dialogs.cpp:745
+#: src/dialogs.cpp:741 src/dialogs.cpp:749
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:750 src/help.cpp:1096
+#: src/dialogs.cpp:754 src/help.cpp:1096
 msgid "Moves: "
 msgstr "移动： "
 
@@ -8867,51 +8855,57 @@ msgstr "人 vs AI"
 msgid "Play a game against AI opponents"
 msgstr "与敌人AI作战"
 
-#: src/game.cpp:1141 src/multiplayer.cpp:188
+#: src/game.cpp:1143 src/multiplayer.cpp:188
 msgid "Login: "
 msgstr "登入： "
 
-#: src/game.cpp:1172 src/playcampaign.cpp:113 src/playcampaign.cpp:268
+#: src/game.cpp:1145
+msgid ""
+"The login name you chosed is too long, please use a login with less than 18 "
+"characters"
+msgstr ""
+
+#: src/game.cpp:1179 src/playcampaign.cpp:113 src/playcampaign.cpp:268
 msgid "The game could not be loaded: "
 msgstr "游戏不能被加载： "
 
-#: src/game.cpp:1174 src/playcampaign.cpp:115 src/playcampaign.cpp:271
+#: src/game.cpp:1181 src/playcampaign.cpp:115 src/playcampaign.cpp:271
 msgid "Error while playing the game: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1186 src/playcampaign.cpp:117 src/playcampaign.cpp:274
+#: src/game.cpp:1193 src/playcampaign.cpp:117 src/playcampaign.cpp:274
 msgid "The game map could not be loaded: "
 msgstr "游戏地图不能加载： "
 
-#: src/game.cpp:1210
+#: src/game.cpp:1217
 msgid "Language"
 msgstr "语言"
 
-#: src/game.cpp:1211
+#: src/game.cpp:1218
 msgid "Choose your preferred language:"
 msgstr "选择你最爱的语言："
 
-#: src/game.cpp:1347
+#: src/game.cpp:1354
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "以下附加的战役有错误并不能加载："
 
-#: src/game.cpp:1352
+#: src/game.cpp:1359
 msgid "ERROR DETAILS:"
 msgstr "错误细节："
 
-#: src/game.cpp:1361
+#: src/game.cpp:1368
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "警告：载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1411
+#: src/game.cpp:1418
 msgid "Error loading game configuration files: '"
 msgstr "载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1412
+#: src/game.cpp:1419
 msgid "' (The game will now exit)"
 msgstr "' (现在将退出游戏)"
 
-#: src/game.cpp:1524
+#: src/game.cpp:1531
 msgid "Battle for Wesnoth"
 msgstr "韦诺之战"
 
@@ -8947,8 +8941,8 @@ msgstr "需要 XP： "
 msgid "attacks"
 msgstr "攻击次数"
 
-#: src/help.cpp:1120 src/menu_events.cpp:149 src/playturn.cpp:2108
-#: src/playturn.cpp:2296
+#: src/help.cpp:1120 src/menu_events.cpp:149 src/playturn.cpp:2112
+#: src/playturn.cpp:2300
 msgid "Type"
 msgstr "类型"
 
@@ -9019,7 +9013,8 @@ msgid "This terrain gives healing."
 msgstr "本地形有治疗能力。"
 
 #: src/help.cpp:2176
-msgid "< Back"
+#, fuzzy
+msgid " < Back"
 msgstr "< 回退"
 
 #: src/help.cpp:2177
@@ -9058,114 +9053,114 @@ msgstr "系统默认语言"
 msgid "?"
 msgstr "？"
 
-#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2384
-#: src/playturn.cpp:2446
+#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2388
+#: src/playturn.cpp:2450
 msgid "Recruits"
 msgstr "征兵"
 
-#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2390
-#: src/playturn.cpp:2450
+#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2394
+#: src/playturn.cpp:2454
 msgid "Recalls"
 msgstr "召回"
 
-#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2396
-#: src/playturn.cpp:2454
+#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2400
+#: src/playturn.cpp:2458
 msgid "Advancements"
 msgstr "升级"
 
-#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2402
-#: src/playturn.cpp:2458
+#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2406
+#: src/playturn.cpp:2462
 msgid "Losses"
 msgstr "损失"
 
-#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2408
-#: src/playturn.cpp:2462
+#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2412
+#: src/playturn.cpp:2466
 msgid "Kills"
 msgstr "杀死"
 
-#: src/menu_events.cpp:69 src/playturn.cpp:2414
+#: src/menu_events.cpp:69 src/playturn.cpp:2418
 msgid "Damage Inflicted"
 msgstr "施加伤害"
 
-#: src/menu_events.cpp:75 src/playturn.cpp:2420
+#: src/menu_events.cpp:75 src/playturn.cpp:2424
 msgid "Damage Taken"
 msgstr "受到伤害"
 
-#: src/menu_events.cpp:81 src/playturn.cpp:2426
+#: src/menu_events.cpp:81 src/playturn.cpp:2430
 msgid "Damage Inflicted (EV)"
 msgstr "施加伤害 (EV)"
 
-#: src/menu_events.cpp:88 src/playturn.cpp:2433
+#: src/menu_events.cpp:88 src/playturn.cpp:2437
 msgid "Damage Taken (EV)"
 msgstr "受到伤害 (EV)"
 
-#: src/menu_events.cpp:94 src/playturn.cpp:2439
+#: src/menu_events.cpp:94 src/playturn.cpp:2443
 msgid "Statistics"
 msgstr "统计"
 
-#: src/menu_events.cpp:154 src/playturn.cpp:2301 src/unit.cpp:1302
+#: src/menu_events.cpp:154 src/playturn.cpp:2305 src/unit.cpp:1319
 msgid "Moves"
 msgstr "移动"
 
-#: src/menu_events.cpp:155 src/playturn.cpp:2302
+#: src/menu_events.cpp:155 src/playturn.cpp:2306
 msgid "Location"
 msgstr "位置"
 
-#: src/menu_events.cpp:201 src/playturn.cpp:2348
+#: src/menu_events.cpp:201 src/playturn.cpp:2352
 msgid "Unit List"
 msgstr "单位列表"
 
-#: src/menu_events.cpp:215 src/playturn.cpp:1837
+#: src/menu_events.cpp:215 src/playturn.cpp:1841
 msgid "Leader"
 msgstr "领袖"
 
 #: src/menu_events.cpp:216 src/menu_events.cpp:227
-#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1838 src/playturn.cpp:1849
+#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1842 src/playturn.cpp:1853
 msgid "Gold"
 msgstr "金币"
 
-#: src/menu_events.cpp:217 src/playturn.cpp:1839
+#: src/menu_events.cpp:217 src/playturn.cpp:1843
 msgid "Villages"
 msgstr "村庄"
 
-#: src/menu_events.cpp:219 src/playturn.cpp:1841
+#: src/menu_events.cpp:219 src/playturn.cpp:1845
 msgid "Upkeep"
 msgstr "维护费"
 
-#: src/menu_events.cpp:220 src/playturn.cpp:1842
+#: src/menu_events.cpp:220 src/playturn.cpp:1846
 msgid "Income"
 msgstr "收入"
 
 #: src/menu_events.cpp:304 src/playcampaign.cpp:239 src/playcampaign.cpp:360
-#: src/playturn.cpp:1687
+#: src/playturn.cpp:1691
 msgid "Name:"
 msgstr "名字："
 
 #: src/menu_events.cpp:309 src/menu_events.cpp:322
-#: src/multiplayer_create.cpp:403 src/playturn.cpp:1692 src/playturn.cpp:1705
+#: src/multiplayer_create.cpp:403 src/playturn.cpp:1696 src/playturn.cpp:1709
 msgid "Error"
 msgstr "错误"
 
-#: src/menu_events.cpp:309 src/playturn.cpp:1692
+#: src/menu_events.cpp:309 src/playturn.cpp:1696
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr "存档明不能包含冒号，斜线或反斜线。请选择不同的名字。"
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1702
+#: src/menu_events.cpp:319 src/playturn.cpp:1706
 msgid "Saved"
 msgstr "以存储"
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1702
+#: src/menu_events.cpp:319 src/playturn.cpp:1706
 msgid "The game has been saved"
 msgstr "游戏以存储"
 
 #: src/menu_events.cpp:322 src/playcampaign.cpp:247 src/playcampaign.cpp:368
-#: src/playturn.cpp:1705
+#: src/playturn.cpp:1709
 msgid "The game could not be saved"
 msgstr "游戏不能被保存"
 
-#: src/menu_events.cpp:403 src/playturn.cpp:2497
+#: src/menu_events.cpp:403 src/playturn.cpp:2501
 msgid "Chat Log"
 msgstr "聊天记录"
 
@@ -9529,15 +9524,15 @@ msgstr "读取游戏数据..."
 msgid "Choose your side:"
 msgstr "选择阵营："
 
-#: src/multiplayer_wait.cpp:389 src/unit.cpp:1357
+#: src/multiplayer_wait.cpp:389 src/unit.cpp:1374
 msgid "("
 msgstr "("
 
-#: src/multiplayer_wait.cpp:389 src/unit.cpp:1364
+#: src/multiplayer_wait.cpp:389 src/unit.cpp:1381
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1941
+#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1945
 msgid "unit^Gold"
 msgstr "单位金币"
 
@@ -9653,92 +9648,92 @@ msgstr "网络断开连接，游戏将不能继续进行。你想保存游戏吗
 msgid "It is now your turn"
 msgstr "回合到你了"
 
-#: src/playturn.cpp:630
+#: src/playturn.cpp:634
 msgid "Attacker"
 msgstr "攻击者"
 
-#: src/playturn.cpp:632
+#: src/playturn.cpp:636
 msgid "Defender"
 msgstr "防御者"
 
-#: src/playturn.cpp:652 src/playturn.cpp:726
+#: src/playturn.cpp:656 src/playturn.cpp:730
 msgid "Damage Calculations"
 msgstr "攻击计算"
 
-#: src/playturn.cpp:704 src/reports.cpp:269
+#: src/playturn.cpp:708 src/reports.cpp:269
 msgid "vs"
 msgstr "vs"
 
-#: src/playturn.cpp:738
+#: src/playturn.cpp:742
 msgid "Attack Enemy"
 msgstr "攻击敌人"
 
-#: src/playturn.cpp:739
+#: src/playturn.cpp:743
 msgid "Choose weapon:"
 msgstr "选择武器："
 
-#: src/playturn.cpp:1370
+#: src/playturn.cpp:1374
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "你这回合还没使用，你真的想结束本回合吗？"
 
-#: src/playturn.cpp:1378 src/playturn.cpp:1383
+#: src/playturn.cpp:1382 src/playturn.cpp:1387
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "有些单位还有移动机会，你真的要结束本回合吗？"
 
-#: src/playturn.cpp:1398
+#: src/playturn.cpp:1402
 msgid "Auto-Save"
 msgstr "自动存档"
 
-#: src/playturn.cpp:1400
+#: src/playturn.cpp:1404
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "不能自动存储当前游戏，请手动存档。"
 
-#: src/playturn.cpp:1641
+#: src/playturn.cpp:1645
 msgid "Rename Unit"
 msgstr "重命名单位"
 
-#: src/playturn.cpp:1947
+#: src/playturn.cpp:1951
 msgid "You have no units available to recruit."
 msgstr "你没有足够的单位去征募。"
 
-#: src/playturn.cpp:1959
+#: src/playturn.cpp:1963
 msgid "Recruit"
 msgstr "征兵"
 
-#: src/playturn.cpp:1960 src/playturn.cpp:2150
+#: src/playturn.cpp:1964 src/playturn.cpp:2154
 msgid "Select unit:"
 msgstr "选择单位："
 
-#: src/playturn.cpp:1994
+#: src/playturn.cpp:1998
 msgid "You don't have enough gold to recruit that unit"
 msgstr "你没有足够的金币去征募单位"
 
-#: src/playturn.cpp:2052
+#: src/playturn.cpp:2056
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr "主人，这是个富有经验的单位，已升级！你真的想解雇 $noun 吗?"
 
-#: src/playturn.cpp:2054
+#: src/playturn.cpp:2058
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr "主人，这个单位就快升级了！你真的想解雇 $noun 吗？"
 
-#: src/playturn.cpp:2059
+#: src/playturn.cpp:2063
 msgid "her"
 msgstr "她"
 
-#: src/playturn.cpp:2059
+#: src/playturn.cpp:2063
 msgid "him"
 msgstr "他"
 
-#: src/playturn.cpp:2100
+#: src/playturn.cpp:2104
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "你与你的士兵分离，已不能再召回他们。"
 
-#: src/playturn.cpp:2102
+#: src/playturn.cpp:2106
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -9746,47 +9741,47 @@ msgstr ""
 "没有部队能召回\n"
 "(你必须有从上个剧本里存活下来的老兵)"
 
-#: src/playturn.cpp:2110
+#: src/playturn.cpp:2114
 msgid "Level"
 msgstr "等级"
 
-#: src/playturn.cpp:2137
+#: src/playturn.cpp:2141
 msgid "Dismiss Unit"
 msgstr "解散单位"
 
-#: src/playturn.cpp:2149
+#: src/playturn.cpp:2153
 msgid "Recall"
 msgstr "召回"
 
-#: src/playturn.cpp:2161
+#: src/playturn.cpp:2165
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "你至少需要 $cost 金币来召回单位"
 
-#: src/playturn.cpp:2206
+#: src/playturn.cpp:2210
 msgid "Message:"
 msgstr "信息："
 
-#: src/playturn.cpp:2206
+#: src/playturn.cpp:2210
 msgid "Send to allies only"
 msgstr "仅发送给同盟"
 
-#: src/playturn.cpp:2476
+#: src/playturn.cpp:2480
 msgid "Search"
 msgstr "搜索"
 
-#: src/playturn.cpp:2486
+#: src/playturn.cpp:2490
 msgid "prompt^Command:"
 msgstr "提示命令："
 
-#: src/playturn.cpp:2562
+#: src/playturn.cpp:2566
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "不能找到含有 '$search' 的标签和单位。"
 
-#: src/playturn.cpp:2690
+#: src/playturn.cpp:2694
 msgid "Place Label"
 msgstr "位置标签"
 
-#: src/playturn.cpp:2691
+#: src/playturn.cpp:2695
 msgid "Label:"
 msgstr "标签："
 
@@ -10043,15 +10038,15 @@ msgstr "更多"
 msgid "-- The Tome of Wesnoth"
 msgstr "－－，韦诺手册"
 
-#: src/unit.cpp:1253 src/unit.cpp:1362
+#: src/unit.cpp:1270 src/unit.cpp:1379
 msgid "; "
 msgstr "； "
 
-#: src/unit.cpp:1319
+#: src/unit.cpp:1336
 msgid "XP to advance"
 msgstr "XP去升级"
 
-#: src/unit.cpp:1353
+#: src/unit.cpp:1370
 msgid ": "
 msgstr "： "
 
@@ -10090,6 +10085,15 @@ msgstr ""
 #: src/upload_log.cpp:282
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#~ msgid "Dwarves"
+#~ msgstr "矮人"
+
+#~ msgid "Saurian"
+#~ msgstr "蜥蜴人"
+
+#~ msgid "Classic"
+#~ msgstr "经典的"
 
 #~ msgid "leadership,skirmisher"
 #~ msgstr "领导能力，刺客"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-01-06 08:55+0100\n"
+"POT-Creation-Date: 2006-01-26 15:31+0100\n"
 "PO-Revision-Date: 2005-09-08 20:55+0200\n"
 "Last-Translator: Georgi Dimitrov <oblak@gbg.bg>\n"
 "Language-Team: none\n"
@@ -386,11 +386,11 @@ msgstr "Въведи командите на потребителя"
 msgid "Change the language"
 msgstr "Смяна на езика"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Do you really want to quit?"
 msgstr "Наистина ли искаш да излезеш от играта?"
 
-#: src/hotkeys.cpp:368 src/hotkeys.cpp:562
+#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
 msgid "Quit"
 msgstr "Изход"
 
@@ -502,10 +502,6 @@ msgstr "Пригоди цветната гама"
 msgid "Reverse Time Graphics"
 msgstr "Обърни графиките на деня и нощта"
 
-#: src/preferences_display.cpp:231
-msgid "Chat Timestamping"
-msgstr ""
-
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
 msgstr "Звукови ефекти"
@@ -513,6 +509,10 @@ msgstr "Звукови ефекти"
 #: src/preferences_display.cpp:233
 msgid "Music"
 msgstr "Музика"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr ""
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -690,20 +690,20 @@ msgstr "Смени горещия клавиш"
 msgid "Save Hotkeys"
 msgstr "Запази горещия клавиш"
 
-#: src/preferences_display.cpp:795
+#: src/preferences_display.cpp:796
 #, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "Този горещ клавиш е вече в употреба"
 
-#: src/preferences_display.cpp:828
+#: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/preferences_display.cpp:834
+#: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/preferences_display.cpp:838
+#: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 
