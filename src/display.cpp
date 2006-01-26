@@ -81,7 +81,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	screen_(video), xpos_(0), ypos_(0),
 	zoom_(DefaultZoom), map_(map), units_(units),
 	minimap_(NULL), redrawMinimap_(false),
-	pathsList_(NULL),  status_(status),
+	status_(status),
 	teams_(t), lastDraw_(0), drawSkips_(0),
 	invalidateAll_(true), invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
@@ -90,7 +90,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	turbo_(false), grid_(false), sidebarScaling_(1.0),
 	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map),
-	tod_hex_mask1(NULL), tod_hex_mask2(NULL), enemy_reach_(NULL),
+	tod_hex_mask1(NULL), tod_hex_mask2(NULL),
 	diagnostic_label_(0), fps_handle_(0)
 {
 	if(non_interactive()) {
@@ -1536,6 +1536,8 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 
 void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 blend_to)
 {
+	reach_map::iterator reach = reach_map_.end();
+
 	if(screen_.update_locked()) {
 		return;
 	}
@@ -1574,16 +1576,10 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 		mask = tod_at.image_mask;
 	}
 
-	//find if this tile should be darkened or bightened (on a path)
-	if(pathsList_ != NULL) {
-		if (pathsList_->routes.find(gamemap::location(x,y)) == pathsList_->routes.end()) {
-			image_type = image::DARKENED;
-		} else {
-			image_type = image::UNMASKED;
-		}
-	}
-	if(enemy_reach_ != NULL) {
-		if (enemy_reach_->find(loc) == enemy_reach_->end()) {
+	//find if this tile should be darkened or bightened (reach of a unit)
+	if (!reach_map_.empty()) {
+		reach = reach_map_.find(gamemap::location(x,y));
+		if (reach == reach_map_.end()) {
 			image_type = image::DARKENED;
 		} else {
 			image_type = image::UNMASKED;
@@ -1655,8 +1651,8 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 
 	if(!shrouded(x,y)) {
 		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOGSHROUD);
-		if (enemy_reach_ != NULL)
-			draw_enemies_reach(loc,xpos,ypos);
+		if (reach != reach_map_.end())
+			draw_enemies_reach(reach->second,xpos,ypos);
 	}
 
 	//draw the time-of-day mask on top of the hex
@@ -1696,22 +1692,14 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 	update_rect(xpos,ypos,zoom_,zoom_);
 }
 
-void display::draw_enemies_reach(const gamemap::location& loc, int xloc, int yloc)
+void display::draw_enemies_reach(unsigned int num, int xloc, int yloc)
 {
-	const reach_map::const_iterator reach_it = enemy_reach_->find(loc);
-
-	// not reachable, leave greyed out.
-	if (reach_it == enemy_reach_->end())
+	// only one can reach, don't number it
+	if (num == 1)
 		return;
 
-	// only one can reach, leave highlighted.
-	if (reach_it->second == 1)
-		return;
-
-	// multiple can reach: print number
-	std::stringstream text;
-	text << reach_it->second;
-	const std::string &str = text.str();
+	// multiple can reach: print number (ie. Show Enemy Moves)
+	std::string str = lexical_cast<std::string>(num);
 	const SDL_Rect& rect = map_area();
 
 	const SDL_Rect& text_area = font::text_area(str,font::SIZE_LARGE);
@@ -2031,17 +2019,26 @@ surface display::get_minimap(int w, int h)
 	return minimap_;
 }
 
-void display::set_paths(const paths* paths_list)
+void display::highlight_reach(const paths &paths_list)
 {
-	pathsList_ = paths_list;
-	enemy_reach_ = NULL;
-	invalidate_all();
+	unhighlight_reach();
+	highlight_another_reach(paths_list);
 }
 
-void display::set_reach_map(const reach_map *reach_map)
+void display::highlight_another_reach(const paths &paths_list)
 {
-	pathsList_ = NULL;
-	enemy_reach_ = reach_map;
+	paths::routes_map::const_iterator r;
+
+	// Fold endpoints of routes into reachability map.
+	for (r = paths_list.routes.begin(); r != paths_list.routes.end(); ++r) {
+		reach_map_[r->first]++;
+		invalidate(r->first);
+	}
+}
+
+void display::unhighlight_reach()
+{
+	reach_map_ = reach_map();
 	invalidate_all();
 }
 

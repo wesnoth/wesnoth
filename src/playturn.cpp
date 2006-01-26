@@ -135,7 +135,6 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 			turn_data.turn_slice();
 		} catch(end_level_exception& e) {
 			turn_data.send_data();
-			gui.set_paths(NULL);
 			throw e;
 		}
 
@@ -186,7 +185,7 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 
 	//send one more time to make sure network is up-to-date.
 	turn_data.send_data();
-	gui.set_paths(NULL);
+	gui.unhighlight_reach();
 }
 
 turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
@@ -309,7 +308,7 @@ void turn_info::handle_event(const SDL_Event& event)
 					current_paths_ = paths(map_,status_,gameinfo_,units_,u->first,
 					                       teams_,ignore_zocs,teleport,NULL,
 					                       path_turns_);
-					gui_.set_paths(&current_paths_);
+					gui_.highlight_reach(current_paths_);
 				}
 			}
 		}
@@ -403,9 +402,9 @@ void turn_info::mouse_motion(int x, int y)
 		}
 
 		if(enemy_paths_) {
-			enemy_paths_ = false;
+			gui_.unhighlight_reach();
 			current_paths_ = paths();
-			gui_.set_paths(NULL);
+			enemy_paths_ = false;
 		}
 
 		const gamemap::location& dest = attack_from.valid() ? attack_from : new_hex;
@@ -453,7 +452,7 @@ void turn_info::mouse_motion(int x, int y)
 			const bool teleport = un->second.type().teleports();
 			current_paths_ = paths(map_,status_,gameinfo_,units_,new_hex,teams_,
 								   ignore_zocs,teleport,&current_team,path_turns_);
-			gui_.set_paths(&current_paths_);
+			gui_.highlight_reach(current_paths_);
 			enemy_paths_ = true;
 		}
 	}
@@ -551,7 +550,7 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 		if(!current_paths_.routes.empty()) {
 			selected_hex_ = gamemap::location();
 			gui_.select_hex(gamemap::location());
-			gui_.set_paths(NULL);
+			gui_.unhighlight_reach();
 			current_paths_ = paths();
 			current_route_.steps.clear();
 			gui_.set_route(NULL);
@@ -755,7 +754,7 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 		redo_stack_.clear();
 
 		current_paths_ = paths();
-		gui_.set_paths(NULL);
+		gui_.unhighlight_reach();
 
 		game_events::fire("attack",attacker_loc,defender_loc);
 
@@ -821,7 +820,7 @@ bool turn_info::move_unit_along_current_route(bool check_shroud)
 	gui_.select_hex(gamemap::location());
 
 	gui_.set_route(NULL);
-	gui_.set_paths(NULL);
+	gui_.unhighlight_reach();
 	current_paths_ = paths();
 
 	if(moves == 0)
@@ -848,7 +847,7 @@ bool turn_info::move_unit_along_current_route(bool check_shroud)
 			current_paths_.routes[dst] = paths::route();
 			selected_hex_ = dst;
 			gui_.select_hex(dst);
-			gui_.set_paths(&current_paths_);
+			gui_.highlight_reach(current_paths_);
 		}
 	}
 
@@ -913,7 +912,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 						selected_hex_ = src;
 						gui_.select_hex(src);
 						current_paths_ = orig_paths;
-						gui_.set_paths(&current_paths_);
+						gui_.highlight_reach(current_paths_);
 						return;
 					}
 				}
@@ -945,7 +944,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			clear_undo_stack();
 		}
 	} else {
-		gui_.set_paths(NULL);
+		gui_.unhighlight_reach();
 		current_paths_ = paths();
 
 		selected_hex_ = hex;
@@ -965,7 +964,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 			show_attack_options(it);
 
-			gui_.set_paths(&current_paths_);
+			gui_.highlight_reach(current_paths_);
 
 			unit u = it->second;
 			const gamemap::location go_to = u.get_goto();
@@ -1285,7 +1284,7 @@ void turn_info::cycle_units()
 		const bool ignore_zocs = it->second.type().is_skirmisher();
 		const bool teleport = it->second.type().teleports();
 		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,ignore_zocs,teleport,NULL,path_turns_);
-		gui_.set_paths(&current_paths_);
+		gui_.highlight_reach(current_paths_);
 
 		gui_.scroll_to_tile(it->first.x,it->first.y,display::WARP);
 	}
@@ -1331,7 +1330,7 @@ void turn_info::cycle_back_units()
 		const bool ignore_zocs = it->second.type().is_skirmisher();
 		const bool teleport = it->second.type().teleports();
 		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,ignore_zocs,teleport,NULL,path_turns_);
-		gui_.set_paths(&current_paths_);
+		gui_.highlight_reach(current_paths_);
 
 		gui_.scroll_to_tile(it->first.x,it->first.y,display::WARP);
 	}
@@ -1429,7 +1428,7 @@ void turn_info::unit_hold_position()
 		gui_.draw_tile(selected_hex_.x,selected_hex_.y);
 
 		gui_.set_route(NULL);
-		gui_.set_paths(NULL);
+		gui_.unhighlight_reach();
 		current_paths_ = paths();
 		gui_.draw();
 
@@ -1454,7 +1453,7 @@ void turn_info::end_unit_turn()
 		gui_.draw_tile(selected_hex_.x,selected_hex_.y);
 
 		gui_.set_route(NULL);
-		gui_.set_paths(NULL);
+		gui_.unhighlight_reach();
 		current_paths_ = paths();
 		gui_.draw();
 
@@ -1532,7 +1531,7 @@ void turn_info::undo()
 	redo_stack_.push_back(action);
 	undo_stack_.pop_back();
 
-	gui_.set_paths(NULL);
+	gui_.unhighlight_reach();
 	current_paths_ = paths();
 	selected_hex_ = gamemap::location();
 	current_route_.steps.clear();
@@ -1557,7 +1556,7 @@ void turn_info::redo()
 	const command_disabler disable_commands;
 
 	//clear routes, selected hex, etc
-	gui_.set_paths(NULL);
+	gui_.unhighlight_reach();
 	current_paths_ = paths();
 	selected_hex_ = gamemap::location();
 	current_route_.steps.clear();
@@ -2719,7 +2718,7 @@ bool turn_info::enemies_visible() const
 // Highlights squares that an enemy could move to on their turn, showing how many can reach each square.
 void turn_info::show_enemy_moves(bool ignore_units)
 {
-	reach_map_ = display::reach_map();
+	gui_.unhighlight_reach();
 
 	// Compute enemy movement positions
 	for(unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
@@ -2737,13 +2736,9 @@ void turn_info::show_enemy_moves(bool ignore_units)
 			const paths& path = paths(map_,status_,gameinfo_,ignore_units?units:units_,
 									  u->first,teams_,is_skirmisher,teleports,&current_team());
 
-			for (paths::routes_map::const_iterator route = path.routes.begin(); route != path.routes.end(); ++route) {
-				reach_map_[route->first]++;
-			}
+			gui_.highlight_another_reach(path);
 		}
 	}
-
-	gui_.set_reach_map(&reach_map_);
 }
 
 void turn_info::toggle_shroud_updates() {

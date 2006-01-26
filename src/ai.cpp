@@ -500,7 +500,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 		game_events::fire("sighted",to);
 	}
 
-	info_.disp.set_paths(NULL);
+	info_.disp.unhighlight_reach();
 	sync_network();
 
 	return to;

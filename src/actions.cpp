@@ -2122,7 +2122,7 @@ void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& sta
 		disp->invalidate_game_status();
 		clear_shroud(*disp,status,map,gamedata,units,teams,team);
 		disp->recalculate_minimap();
-		disp->set_paths(NULL);
+		disp->unhighlight_reach();
 		disp->set_route(NULL);
 	} else {
 		recalculate_fog(map,status,gamedata,units,teams,team);

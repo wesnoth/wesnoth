@@ -850,7 +850,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 
 			fix_shroud = !replayer.is_skipping();
-			disp.set_paths(NULL);
+			disp.unhighlight_reach();
 		}
 
 		else if((child = cfg->child("attack")) != NULL) {

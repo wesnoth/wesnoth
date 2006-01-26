@@ -169,15 +169,15 @@ public:
 	bool unit_image_on(int x, int y);
 
 	//sets the paths that are currently displayed as available for the unit
-	//to move along. All other paths will be greyed out. If NULL, no paths
-	//will be displayed as selected.
-	//paths_list must remain valid until it is set again
-	void set_paths(const paths* paths_list);
+	//to move along.  All other paths will be greyed out.
+	void highlight_reach(const paths &paths_list);
 
-	//variation of set_paths which shows how many units can reach each tile.
-	//Setting the reach_map clears the paths_list, and vice-versa.
-	typedef std::map<gamemap::location,unsigned int> reach_map;
-	void set_reach_map(const reach_map *reach_map);
+	//add more paths to highlight.  Print numbers where they overlap.
+	//Used only by Show Enemy Moves.
+	void highlight_another_reach(const paths &paths_list);
+
+	//reset highlighting of paths.
+	void unhighlight_reach();
 
 	//sets the route along which footsteps are drawn to show movement of a
 	//unit. If NULL, no route is displayed.
@@ -220,7 +220,7 @@ private:
 
 	// void draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
-	void draw_enemies_reach(const gamemap::location& loc, int xloc, int yloc);
+	void draw_enemies_reach(unsigned int num, int xloc, int yloc);
 
 public:
 	//function to draw a footstep for the given location, on screen at
@@ -425,7 +425,6 @@ private:
 	surface minimap_;
 	bool redrawMinimap_;
 
-	const paths* pathsList_;
 	paths::route route_;
 
 	const gamestatus& status_;
@@ -507,10 +506,12 @@ private:
 	//then we will use these two masks on top of all hexes when we blit
 	surface tod_hex_mask1, tod_hex_mask2;
 
+	//tiles lit for showing where unit(s) can reach
+	typedef std::map<gamemap::location,unsigned int> reach_map;
+	reach_map reach_map_;
+
 	typedef std::map<gamemap::location,int> halo_map;
 	halo_map haloes_;
-
-	const reach_map *enemy_reach_;
 
 	//for debug mode
 	static std::map<gamemap::location,fixed_t> debugHighlights_;

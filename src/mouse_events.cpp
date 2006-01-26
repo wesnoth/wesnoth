@@ -101,7 +101,7 @@ void mouse_handler::mouse_motion(int x, int y)
 		if(enemy_paths_) {
 			enemy_paths_ = false;
 			current_paths_ = paths();
-			(*gui_).set_paths(NULL);
+			gui_->unhighlight_reach();
 		}
 
 		const gamemap::location& dest = attack_from.valid() ? attack_from : new_hex;
@@ -150,7 +150,7 @@ void mouse_handler::mouse_motion(int x, int y)
 			const bool teleport = un->second.type().teleports();
 			current_paths_ = paths(map_,status_,gameinfo_,units_,new_hex,teams_,
 								   ignore_zocs,teleport,NULL,path_turns_);
-			(*gui_).set_paths(&current_paths_);
+			gui_->highlight_reach(current_paths_);
 			enemy_paths_ = true;
 		}
 	}
@@ -253,7 +253,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const int pla
 		if(!current_paths_.routes.empty()) {
 			selected_hex_ = gamemap::location();
 			gui_->select_hex(gamemap::location());
-			gui_->set_paths(NULL);
+			gui_->unhighlight_reach();
 			current_paths_ = paths();
 			current_route_.steps.clear();
 			gui_->set_route(NULL);
@@ -357,7 +357,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event)
 	paths orig_paths = current_paths_;
 
 	{
-		gui_->set_paths(NULL);
+		gui_->unhighlight_reach();
 		current_paths_ = paths();
 
 		selected_hex_ = hex;
@@ -377,7 +377,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event)
 
 			show_attack_options(it);
 
-			gui_->set_paths(&current_paths_);
+			gui_->highlight_reach(current_paths_);
 
 			unit u = it->second;
 			const gamemap::location go_to = u.get_goto();
