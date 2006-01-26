@@ -80,7 +80,11 @@ void advance_unit(const game_data& info,
 		sample_units.push_back(::get_advanced_unit(info,units,loc,u->second.type().id()));
 		sample_units.back().add_modification("advance",**mod);
 		const unit_type& type = sample_units.back().type();
-		lang_options.push_back(IMAGE_PREFIX + type.image() + COLUMN_SEPARATOR + (**mod)["description"].str());
+		if((**mod)["image"].str().size()){
+		  lang_options.push_back(IMAGE_PREFIX + (**mod)["image"].str() + COLUMN_SEPARATOR + (**mod)["description"].str());
+		}else{
+		  lang_options.push_back(IMAGE_PREFIX + type.image() + COLUMN_SEPARATOR + (**mod)["description"].str());
+		}
 	}
 
 	LOG_DP << "options: " << options.size() << "\n";

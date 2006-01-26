@@ -1170,7 +1170,7 @@ std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 
   const config::child_list& advances = type().modification_advancements();
   for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
-    icon.first=(**i)["image"];
+    icon.first=(**i)["icon"];
     icon.second=(**i)["description"];
 
     for(unsigned int j=0;j<(modification_count("advance",(**i)["id"]));j++) {
