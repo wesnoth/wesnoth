@@ -30,7 +30,7 @@ public:
 
 	const std::string text() const;
 	void set_text(const std::string& text);
-	void append_text(const std::string& text);
+	void append_text(const std::string& text,bool auto_scroll = false);
 	void clear();
 	void process();
 

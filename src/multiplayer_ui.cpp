@@ -119,8 +119,7 @@ void chat::update_textbox(gui::textbox& textbox)
 		s.append(format_message(*itor));
 	}
 
-	textbox.append_text(s);
-	textbox.scroll_to_bottom();
+	textbox.append_text(s,true);
 
 	last_update_ = message_history_.size();
 }

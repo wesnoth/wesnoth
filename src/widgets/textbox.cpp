@@ -71,7 +71,7 @@ void textbox::set_text(const std::string& text)
 	update_text_cache(true);
 }
 
-void textbox::append_text(const std::string& text)
+void textbox::append_text(const std::string& text, bool auto_scroll)
 {
 	if(text_image_.get() == NULL) {
 		set_text(text);
@@ -82,7 +82,7 @@ void textbox::append_text(const std::string& text)
 	if(wrap_ == false && std::find_if(text.begin(),text.end(),utils::isnewline) != text.end()) {
 		return;
 	}
-
+	const bool is_at_bottom = get_position() == get_max_position();
 	const wide_string& wtext = utils::string_to_wstring(text);
 
 	const surface new_text = add_text_line(wtext);
@@ -102,6 +102,7 @@ void textbox::append_text(const std::string& text)
 
 	set_dirty(true);
 	update_text_cache(false);
+	if(auto_scroll && is_at_bottom) scroll_to_bottom();
 }
 
 void textbox::clear()
