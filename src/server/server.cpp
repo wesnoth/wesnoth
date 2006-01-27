@@ -701,7 +701,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 		//mark the player as unavailable in the lobby
 		const player_map::iterator pl = players_.find(sock);
 		if(pl != players_.end()) {
-			pl->second.mark_available(false,it->level()["name"]);
+			pl->second.mark_available(false,(*it->description())["name"]);
 
 			lobby_players_.send_data(sync_initial_response());
 		} else {
