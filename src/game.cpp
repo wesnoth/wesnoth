@@ -1142,7 +1142,7 @@ bool game_controller::play_multiplayer()
 					   gui::OK_CANCEL, &host_or_join, NULL,
 					   _("Login: "), &login);
 		if(login.size() > 18) {
-			gui::show_error_message(disp(), _("The login name you chosed is too long, please use a login with less than 18 characters"));
+			gui::show_error_message(disp(), _("The login name you chose is too long, please use a login with less than 18 characters"));
 		}
 	}while(login.size() > 18) ;
 	if (res < 0)
