@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-01-26 15:28+0100\n"
-"PO-Revision-Date: 2006-01-23 20:14+0100\n"
+"PO-Revision-Date: 2006-01-27 21:55+0100\n"
 "Last-Translator: Stefan Bergström (tephlon)\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -1098,7 +1098,6 @@ msgid "Fire Dragon"
 msgstr "Eldsprutande drake"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:26
-#, fuzzy
 msgid ""
 "A fire dragon is an ancient and horrifying being that normally lives only in "
 "hushed rumor and fantastic stories. It is normal for centuries to pass "
@@ -1114,8 +1113,8 @@ msgstr ""
 "bara påträffas i viskade rykten och fantasifulla historier. Det går ofta "
 "många århundraden mellan att de syns till i Wesnoth, och då ofta bara som en "
 "skugga som flyktar förbi i fjärran. I legenderna berättas mycket om deras "
-"våldsamma framfart: med jättelika segel till vingar sveper de förbi för att "
-"överskölja sitt byte med ett inferno av eld. Den som lyckas komma undan "
+"våldsamma framfart: med sina jättelika segel till vingar sveper de förbi för "
+"att överskölja sitt byte med ett inferno av eld. Den som lyckas komma undan "
 "deras eld måste ändå se upp med deras vildsinta käftar och tunga svans. "
 "Eldsprutande drakar är sluga och grymma och kan få för sig att bistå andra, "
 "om än för sina helt egna skäl."
@@ -3785,20 +3784,19 @@ msgid "2p - Wesbowl"
 msgstr "2s - Wesbowl"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
-#, fuzzy
 msgid ""
 "In Wesbowl, a player has to get any of the balls to the other player's end "
 "zone as often as possible. However, the other player can attack your units. "
 "Wesbowl is played with blunt weapons, and healers are on hand, so when units "
 "are killed, they return to that player's end zone with an injury."
 msgstr ""
-"I Wesbowl skall en spelare få sin boll till den andra spelarens målzon. "
-"Motståndaren kan dock försöka förhindra detta genom att attackera. Wesbowl "
-"spelas med trubbiga vapen och helare finns på plats, så att när trupper "
-"dödas så återbördas de skadade till spelarens målzon."
+"I Wesbowl skall en spelare få någon av bollarna till den andra spelarens "
+"målzon så mycket som möjligt. Motståndaren kan dock försöka förhindra detta "
+"genom att attackera. Wesbowl spelas med trubbiga vapen och helare finns på "
+"plats, så att när trupper dödas så återbördas de till spelarens målzon "
+"skadade."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:11
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -9677,6 +9675,8 @@ msgid ""
 "The login name you chosed is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
+"Loginnamnet du har valt är för långt. Var snäll och välj ett namn med mindre "
+"än 18 tecken"
 
 #: src/game.cpp:1179 src/playcampaign.cpp:113 src/playcampaign.cpp:268
 msgid "The game could not be loaded: "
@@ -9830,13 +9830,12 @@ msgid "This terrain gives healing."
 msgstr "Den här terrängen läker trupper."
 
 #: src/help.cpp:2176
-#, fuzzy
 msgid " < Back"
-msgstr "< Bakåt"
+msgstr " < Tillbaka"
 
 #: src/help.cpp:2177
 msgid "Forward >"
-msgstr "Framåt >"
+msgstr "Fram >"
 
 #: src/help.cpp:2289
 msgid "Reference to unknown topic: "
@@ -10919,12 +10918,3 @@ msgstr "Du kan se resultaten på "
 #: src/upload_log.cpp:282
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjälp oss att förbättra Wesnoth!"
-
-#~ msgid "Dwarves"
-#~ msgstr "Dvärgar"
-
-#~ msgid "Saurian"
-#~ msgstr "Ödleman"
-
-#~ msgid "Classic"
-#~ msgstr "Klassisk"

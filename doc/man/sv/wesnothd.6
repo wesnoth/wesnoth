@@ -12,53 +12,102 @@
 .\" along with this program; if not, write to the Free Software
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
-
-.TH WESNOTHD 6 "2005" "wesnothd" "Kampen om Wesnoths n\[:a]tverksdaemon"
-
+.
+.TH WESNOTHD 6 "2006" "wesnothd" "Kampen om Wesnoths n\[:a]tverksdaemon"
+.
 .SH NAMN
-Kampen om Wesnoths n\[:a]tverksdaemon
-
+wesnothd \- Kampen om Wesnoths n\[:a]tverksdaemon
+.
 .SH SYNOPSIS
-.B wesnothd
-
+.B wesnothd 
+.RB [\| \-dvV \|]
+.RB [\| \-c
+.IR path \|]
+.RB [\| \-m
+.IR size \|]
+.RB [\| \-p
+.IR port \|]
+.RB [\| \-t
+.IR number \|]
+.
 .SH BESKRIVNING
 Kampen om \fBWesnoth\fRs n\[:a]tverksdaemon f\[:o]r gruppspel.
-
+.
 .SH FLAGGOR
-
+.
+.TP
+.BI -c,\ --config \ S\[:O]KV\[:A]G
+anger var wesnothd skall leta efter konfigurationsfilen. Se avsnittet om 
+.B SERVERKONFIGURATION
+nedan f\[:o]r syntaxen.
 .TP
 .BR -d , \ --daemon
 k\[:o]r wesnothd som en daemon.
-
-.TP
-.BR --fifo \ S\[:O]KV\[:A]G
-anger s\[:o]kv\[:a]gen till filen som skall anv\[:a]ndas f\[:o]r input-str\[:o]mmen.
-
 .TP
 .BR -h , \ --help
 visar en sammanfattning av m\[:o]jliga kommandoradsflaggor.
-
 .TP
 .BR -m , \ --max_packet_size
 anger maximal paketstorlek
-
 .TP
 .BR -p , \ --port
 knyter servern till den specificerade porten. Om ingen port anges s\[oa] 
 anv\[:a]nds port 15000. 
-
 .TP
 .BR -t , \ --thread
 anger antalet tr\[oa]dar f\[:o]r n\[:a]tverkstrafik (standardv\[:a]rde: 5)
-
 .TP
 .BR -V , \ --version
 visar versionen.
-
 .TP
 .BR -v , \ --verbose
 ger mer utf\[:o]rlig information.
-
+.
+.SH SERVERKONFIGURATION
+.
+.SS Den allm\[:a]nna syntaxen \[:a]r:
+.
+.P
+[\fItag\fR]
+.IP
+nyckel="\fIv\[:a]rde\fR"
+.IP
+nyckel=...
+.P
+[/\fItag\fR]
+.
+.SS "Globala nycklar:"
+.
+.TP
+.B motd
+Meddelandet f\[:o]r dagen.
+.TP
+.B passwd
+L\[:o]senordet f\[:o]r administrationsr\[:a]ttigheter. B\[:o]rjar ofta med "admin ".
+.TP
+.B versions_accepted
+En komma-separerad lista med versionsstr\[:a]ngar som accepteras av servern.
+.
+.SS "Globala tag:ar:"
+.
+.P
+.B [redirect]
+En tag som anger vart en server skall omdirigera vissa klienterversion.
+.RS
+.TP
+.B host
+V\[:a]rdadressen att omdirigera till,
+.TP
+.B port
+Porten att ansluta till.
+.TP
+.B version
+En komma-separerad lista av versioner att omdirigera.
+.RE
+.P
+.B [proxy]
+En tag som anger att servern skall agera som proxy och vidarebefordra klientf\[:o]rfr\[oa]gningar till den angiva servern. Accepterar samma nycklar som [redirect].
+.
 .SH F\[:O]RFATTARE
 Skriven av David White <davidnwhite@verizon.net>.
 .br
@@ -69,13 +118,13 @@ Redigerad av Nils Kneuper <crazy-ivanovic@gmx.net> och ott <ott@gaon.net>.
 Denna manualsida skrevs ursprungligen av Cyril Bouthors <cyril@bouthors.org>.
 .br
 Bes\[:o]k den officiella hemsidan: http://www.wesnoth.org/
-
+.
 .SH COPYRIGHT
 Copyright \(co 2003-2006 David White <davidnwhite@verizon.net>
 .br
 Detta \[:a]r fri mjukvara; denna mjukvara \[:a]r licensierad under GPL version  2, 
 s\[oa]som publicerad av Free Software Foundation. INGEN garanti ges; inte ens  
 f\[:o]r S\[:A]LJBARHET eller L\[:A]MPLIGHET F\[:O]R ETT VISST SYFTE.
-
+.
 .SH SE \[:A]VEN
 wesnoth(6), wesnoth_editor(6)
