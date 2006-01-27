@@ -658,7 +658,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 		//mark the player as unavailable in the lobby
 		const player_map::iterator pl = players_.find(sock);
 		if(pl != players_.end()) {
-			pl->second.mark_available(false);
+			pl->second.mark_available(false,games_.back().level()["name"]);
 
 			lobby_players_.send_data(sync_initial_response());
 		} else {
@@ -701,7 +701,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 		//mark the player as unavailable in the lobby
 		const player_map::iterator pl = players_.find(sock);
 		if(pl != players_.end()) {
-			pl->second.mark_available(false);
+			pl->second.mark_available(false,it->level()["name"]);
 
 			lobby_players_.send_data(sync_initial_response());
 		} else {
@@ -806,7 +806,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			lobby_players_.add_player(pl->first);
 
 			//mark the player as available in the lobby
-			pl->second.mark_available(true);
+			pl->second.mark_available(true,"");
 
 			//send the player who was banned the lobby game list
 			network::send_data(initial_response_,pl->first);
@@ -966,7 +966,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			//set the availability status for all quitting players
 			for(player_map::iterator pl = players_.begin(); pl != players_.end(); ++pl) {
 				if(g->is_member(pl->first)) {
-					pl->second.mark_available(true);
+					pl->second.mark_available(true,"");
 				}
 			}
 
@@ -988,7 +988,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			//mark the player as available in the lobby
 			const player_map::iterator pl = players_.find(sock);
 			if(pl != players_.end()) {
-				pl->second.mark_available(true);
+				pl->second.mark_available(true,"");
 			} else {
 				std::cerr << "ERROR: Could not find player in map\n";
 			}

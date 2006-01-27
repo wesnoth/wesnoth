@@ -400,7 +400,11 @@ void ui::gamelist_updated(bool silent)
 	config::child_iterator user;
 	for (user = users.begin(); user != users.end(); ++user) {
 		const std::string prefix = (**user)["available"] == "no" ? "#" : "";
-		user_strings.push_back(prefix + (**user)["name"].str());
+		std::string suffix = "";
+		if(!(**user)["location"].empty()) {
+			suffix = std::string(" (") + (**user)["location"] + std::string(")");
+		}
+		user_strings.push_back(prefix + (**user)["name"].str() + suffix);
 	}
 	set_user_list(user_strings, silent);
 }

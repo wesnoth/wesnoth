@@ -18,12 +18,13 @@
 player::player(const std::string& n, config& cfg) : name_(n), cfg_(cfg), flood_start_(0), messages_since_flood_start_(0)
 {
 	cfg_["name"] = n;
-	mark_available(true);
+	mark_available(true,"");
 }
 
-void player::mark_available(bool val)
+void player::mark_available(bool val,std::string location )
 {
 	cfg_.values["available"] = (val ? "yes" : "no");
+	cfg_.values["location"] = location;
 }
 
 const std::string& player::name() const

@@ -25,7 +25,7 @@ class player
 public:
 	player(const std::string& n, config& cfg);
 
-	void mark_available(bool val);
+	void mark_available(bool val,std::string location);
 
 	const std::string& name() const;
 
