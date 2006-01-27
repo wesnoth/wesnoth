@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-01-26 15:28+0100\n"
-"PO-Revision-Date: 2006-01-12 14:20+0200\n"
+"PO-Revision-Date: 2006-01-27 11:18+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -1117,6 +1117,15 @@ msgid ""
 "ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
 "often take underlings whom they lead to victory."
 msgstr ""
+"A fire dragon is an ancient and horrifying being that normally lives only in "
+"hushed rumour and fantastic stories. It is normal for centuries to pass "
+"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
+"form flying in the distance. Legends are very specific about the ravages of "
+"fire dragons: hideously swift in flight, leathery wings spread over one "
+"hundred feet in width, they swoop in to blast their prey with inferno jets of "
+"flame. Anything escaping the dragon's fire breath must beware its ferocious "
+"bite and crushing tail. Fire dragons are cunning and cruel and often take "
+"underlings whom they help lead to victory."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:29
 msgid "bite"
@@ -3352,16 +3361,15 @@ msgid "Chasm"
 msgstr "Chasm"
 
 #: data/help.cfg:476
-#, fuzzy
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
 "is concerned, only units capable of flying over chasms can cross this "
 "terrain."
 msgstr ""
-"A canyon is a gorge in the ground, leading to depths unknown. Canyons are "
+"A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
-"is concerned, only units capable of flying over canyons can cross this "
+"is concerned, only units capable of flying over chasms can cross this "
 "terrain."
 
 #: data/help.cfg:481 data/terrain.cfg:412
@@ -3773,20 +3781,18 @@ msgid "2p - Wesbowl"
 msgstr "2p - Wesbowl"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
-#, fuzzy
 msgid ""
 "In Wesbowl, a player has to get any of the balls to the other player's end "
 "zone as often as possible. However, the other player can attack your units. "
 "Wesbowl is played with blunt weapons, and healers are on hand, so when units "
 "are killed, they return to that player's end zone with an injury."
 msgstr ""
-"In Wesbowl, a player must get their ball to the other player's end zone. "
-"However, the other player can attack your units. Wesbowl is played with "
-"blunt weapons, and healers are on hand, so when units are killed, they "
-"return to that player's end zone with an injury."
+"In Wesbowl, a player must move any of the balls to the other player's end "
+"zone as often as possible. However, the other player can attack your units. "
+"Wesbowl is played with blunt weapons, and healers are on hand, so when units "
+"are killed, they return to that player's end zone with an injury."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:11
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -3798,11 +3804,11 @@ msgid ""
 msgstr ""
 "\n"
 "Victory:\n"
-"@Move either ball to your opponent's endzone more times than they move their "
+"@Move either ball to your opponent's end zone more times than they move a "
 "ball to yours\n"
 "Defeat:\n"
-"#Opponent moves the balls to your endzone more times than you move them to "
-"theirs"
+"#Opponent moves the balls to your end zone more times than you move them to "
+"the opponent's end zone"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:194
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:471
@@ -8385,7 +8391,6 @@ msgid "Silver Mage"
 msgstr "Silver Mage"
 
 #: data/units/Silver_Mage.cfg:30
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -8434,17 +8439,16 @@ msgstr ""
 "the mage into applying them.\n"
 "\n"
 "Special Notes: the ranged attack of a silver mage is magical, and always has "
-"a high chance of hitting an opponent. Silver Magi are highly resistant to "
-"many forms of magical damage. They can also teleport between any two "
-"villages instantly, though the player must control both, and the destination "
-"village must be unoccupied."
+"a high chance of hitting an opponent. Silver Magi are well-attuned to their "
+"magical natures and are highly resistant to non-physical damage. They can "
+"also teleport between any two villages instantly, though the player must "
+"control both, and the destination village must be unoccupied."
 
 #: data/units/Silver_Mage.cfg:151
 msgid "female^Silver Mage"
 msgstr "Silver Mage"
 
 #: data/units/Silver_Mage.cfg:185
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. The silver magi have devoted themselves to a study of the forces that "
@@ -8493,10 +8497,10 @@ msgstr ""
 "the mage into applying them.\n"
 "\n"
 "Special Notes: the ranged attack of a silver mage is magical, and always has "
-"a high chance of hitting an opponent. Silver Magi are highly resistant to "
-"many forms of magical damage. They can also teleport between any two "
-"villages instantly, though the player must control both, and the destination "
-"village must be unoccupied."
+"a high chance of hitting an opponent. Silver Magi are well-attuned to their "
+"magical natures and are highly resistant to non-physical damage. They can "
+"also teleport between any two villages instantly, though the player must "
+"control both, and the destination village must be unoccupied."
 
 #: data/units/Skeleton.cfg:3
 msgid "Skeleton"
@@ -9722,6 +9726,8 @@ msgid ""
 "The login name you chosed is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
+"The login name you chose is too long, please use a login with less than 18 "
+"characters"
 
 #: src/game.cpp:1179 src/playcampaign.cpp:113 src/playcampaign.cpp:268
 msgid "The game could not be loaded: "
@@ -9873,9 +9879,8 @@ msgid "This terrain gives healing."
 msgstr "This terrain gives healing."
 
 #: src/help.cpp:2176
-#, fuzzy
 msgid " < Back"
-msgstr "< Back"
+msgstr " < Back"
 
 #: src/help.cpp:2177
 msgid "Forward >"
@@ -10954,164 +10959,3 @@ msgstr "You can view the results at "
 #: src/upload_log.cpp:282
 msgid "Help us make Wesnoth better for you!"
 msgstr "Help us make Wesnoth better for you!"
-
-#~ msgid "Dwarves"
-#~ msgstr "Dwarves"
-
-#~ msgid "Saurian"
-#~ msgstr "Saurian"
-
-#~ msgid "Classic"
-#~ msgstr "Classic"
-
-#~ msgid "leadership,skirmisher"
-#~ msgstr "leadership,skirmisher"
-
-#~ msgid ""
-#~ "Long lived and terrifying, the fire dragon is a member of the dragon "
-#~ "family that happens to breathe fire. It can put its fire breath to good "
-#~ "use in combat. Additionally, it has a ferocious bite, and can crush "
-#~ "opponents with its tail. Fire Dragons are cunning and cruel, and often "
-#~ "take underlings whom they help lead to victory."
-#~ msgstr ""
-#~ "Long lived and terrifying, the fire dragon is a member of the dragon "
-#~ "family that happens to breathe fire. It can put its fire breath to good "
-#~ "use in combat. Additionally, it has a ferocious bite, and can crush "
-#~ "opponents with its tail. Fire Dragons are cunning and cruel, and often "
-#~ "take underlings whom they help lead to victory."
-
-#~ msgid "skirmisher,leadership"
-#~ msgstr "skirmisher,leadership"
-
-#~ msgid "Canyon"
-#~ msgstr "Canyon"
-
-#~ msgid "2p - Across the River"
-#~ msgstr "2p - Across the River"
-
-#~ msgid ""
-#~ "This map is a convenient way to do some testing with two factions, as it "
-#~ "is pretty well balanced towards both sides.\n"
-#~ "You can use it AI vs AI to see how well a faction fares against another."
-#~ msgstr ""
-#~ "This map is a convenient way to do some testing with two factions, as it "
-#~ "is pretty well balanced towards both sides.\n"
-#~ "You can use it AI vs AI to see how well a faction fares against another."
-
-#~ msgid "4p - The Valley of Death"
-#~ msgstr "4p - The Valley of Death"
-
-#~ msgid ""
-#~ "Can you defeat all enemies and declare victory in this desolate valley?"
-#~ msgstr ""
-#~ "Can you defeat all enemies and declare victory in this desolate valley?"
-
-#~ msgid "7p - Battle World"
-#~ msgstr "7p - Battle World"
-
-#~ msgid ""
-#~ "Up to 7 armies thrash about in this peaceful land. Prepare for a long "
-#~ "battle."
-#~ msgstr ""
-#~ "Up to 7 armies thrash about in this peaceful land. Prepare for a long "
-#~ "battle."
-
-#~ msgid "ambush,regenerates"
-#~ msgstr "ambush,regenerates"
-
-#~ msgid "illuminates,cures"
-#~ msgstr "illuminates,cures"
-
-#, fuzzy
-#~ msgid "Turn Dialog"
-#~ msgstr "Tutorial"
-
-#, fuzzy
-#~ msgid "Turn Bell"
-#~ msgstr "Turns: "
-
-#, fuzzy
-#~ msgid "Theme"
-#~ msgstr "Team"
-
-#, fuzzy
-#~ msgid "Music"
-#~ msgstr "+Music"
-
-#, fuzzy
-#~ msgid "Change the music volume"
-#~ msgstr "Change the language"
-
-#, fuzzy
-#~ msgid "Chat Lines: "
-#~ msgstr "Chaotic units: "
-
-#, fuzzy
-#~ msgid "no"
-#~ msgstr "Snow"
-
-#, fuzzy
-#~ msgid "Prefs section^Multiplayer"
-#~ msgstr "Multiplayer"
-
-#, fuzzy
-#~ msgid "Preferences"
-#~ msgstr "Princess"
-
-#, fuzzy
-#~ msgid "Choose Resolution"
-#~ msgstr "Choose weapon:"
-
-#, fuzzy
-#~ msgid "Hotkey Settings"
-#~ msgstr "Settings"
-
-#, fuzzy
-#~ msgid "Action"
-#~ msgstr "Actions"
-
-#, fuzzy
-#~ msgid "Binding"
-#~ msgstr "lightning"
-
-#~ msgid "Gate"
-#~ msgstr "Gate"
-
-#~ msgid "The door will not open for any who are not allied with it."
-#~ msgstr "The door will not open for any who are not allied with it."
-
-#~ msgid "bump"
-#~ msgstr "bump"
-
-#~ msgid "Wall Guard"
-#~ msgstr "Wall Guard"
-
-#~ msgid "skirmisher,regenerates"
-#~ msgstr "skirmisher,regenerates"
-
-#~ msgid ""
-#~ "The guardians of the capital city of Weldyn, the Wall Guards patrol the "
-#~ "walls of the city, shooting at approaching enemies with their crossbows "
-#~ "before their opponent can retaliate even with a ranged attack. Because "
-#~ "they are mounted on high walls, they cannot move anywhere except on walls "
-#~ "and the roofs of castles."
-#~ msgstr ""
-#~ "The guardians of the capital city of Weldyn, the Wall Guards patrol the "
-#~ "walls of the city, shooting at approaching enemies with their crossbows "
-#~ "before their opponent can retaliate even with a ranged attack. Because "
-#~ "they are mounted on high walls, they cannot move anywhere except on walls "
-#~ "and the roofs of castles."
-
-#, fuzzy
-#~ msgid "Unkown era"
-#~ msgstr "Unknown scenario: '"
-
-#~ msgid "Yellow"
-#~ msgstr "Yellow"
-
-#~ msgid ""
-#~ "This unit has been slowed. It emits no zone of control, moves at half "
-#~ "speed and enemies will be able to strike earlier once during a fight."
-#~ msgstr ""
-#~ "This unit has been slowed. It emits no zone of control, moves at half "
-#~ "speed and enemies will be able to strike earlier once during a fight."
