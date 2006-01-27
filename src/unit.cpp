@@ -849,6 +849,10 @@ void unit::read(const game_data& data, const config& cfg)
 		apply_modifications();
 	}
 	
+	if(hitpoints == "") {
+		hitpoints_ = maxHitpoints_;
+	}
+	
 	goto_.x = atoi(cfg["goto_x"].c_str()) - 1;
 	goto_.y = atoi(cfg["goto_y"].c_str()) - 1;
 
