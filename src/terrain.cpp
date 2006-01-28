@@ -49,7 +49,7 @@ terrain_type::terrain_type(const config& cfg)
 	height_adjust_ = atoi(cfg["unit_height_adjust"].c_str());
 	submerge_ = atof(cfg["submerge"].c_str());
 
-	is_light_ = cfg["light"] == "true";
+	light_modification_ = atoi(cfg["light"].c_str());
 
 	heals_ = cfg["heals"] == "true";
 	village_ = cfg["gives_income"] == "true";
@@ -87,9 +87,9 @@ const std::string& terrain_type::type() const
 	return type_;
 }
 
-bool terrain_type::is_light() const
+int terrain_type::light_modification() const
 {
-	return is_light_;
+	return light_modification_;
 }
 
 bool terrain_type::is_alias() const

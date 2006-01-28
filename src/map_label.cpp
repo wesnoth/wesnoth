@@ -105,13 +105,6 @@ void map_labels::set_label(const gamemap::location& loc, const std::string& str)
 
 	SDL_Color colour = font::NORMAL_COLOUR;
 
-#if 0
-	if(map_.get_terrain_info(map_.get_terrain(loc)).is_light()) {
-		colour.r = 0;
-		colour.g = 0;
-		colour.b = 0;
-	}
-#endif
 
 	const gamemap::location loc_nextx(loc.x+1,loc.y);
 	const gamemap::location loc_nexty(loc.x,loc.y+1);

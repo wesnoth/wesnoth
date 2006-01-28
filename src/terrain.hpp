@@ -37,7 +37,7 @@ public:
 	const std::string& type() const;
 
 	bool is_nonnull() const;
-	bool is_light() const;
+	int light_modification() const;
 	bool is_alias() const;
 
 	int unit_height_adjust() const;
@@ -63,7 +63,7 @@ private:
 
 	double submerge_;
 
-	bool is_light_;
+	int light_modification_;
 
 	bool heals_, village_, castle_, keep_;
 };

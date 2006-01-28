@@ -1598,8 +1598,8 @@ void check_victory(std::map<gamemap::location,unit>& units,
 
 const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,const gamemap::location& loc, const gamemap& map)
 {
-	int lighten = 0;
-	int darken = 0;
+	int lighten = maximum<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
+	int darken = minimum<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
 
 	if(loc.valid()) {
 		gamemap::location locs[7];
