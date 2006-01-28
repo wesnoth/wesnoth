@@ -299,23 +299,33 @@ int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrai
 	}
 
 	//if this is an alias, then select the best of all underlying terrains
-	const std::string& underlying = map.underlying_terrain(terrain);
+	const std::string& underlying = map.underlying_mvt_terrain(terrain);
 	if(underlying.size() != 1 || underlying[0] != terrain) {
+		bool revert = (underlying[0] == '-'?true:false);
 		if(recurse_count >= 100) {
 			return impassable;
 		}
 
-		int min_value = impassable;
+		int ret_value = revert?0:impassable;
 		for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
+			if(*i == '+') {
+				revert = false;
+				continue;
+			} else if(*i == '-') {
+				revert = true;
+				continue;
+			}
 			const int value = movement_cost(map,*i,recurse_count+1);
-			if(value < min_value) {
-				min_value = value;
+			if(value < ret_value && !revert) {
+				ret_value = value;
+			} else if(value > ret_value && revert) {
+				ret_value = value;
 			}
 		}
 
-		moveCosts_.insert(std::pair<gamemap::TERRAIN,int>(terrain,min_value));
+		moveCosts_.insert(std::pair<gamemap::TERRAIN,int>(terrain,ret_value));
 
-		return min_value;
+		return ret_value;
 	}
 
 	const config* movement_costs = cfg_.child("movement_costs");
@@ -358,23 +368,36 @@ int unit_movement_type::defense_modifier(const gamemap& map,gamemap::TERRAIN ter
 	}
 
 	//if this is an alias, then select the best of all underlying terrains
-	const std::string& underlying = map.underlying_terrain(terrain);
+	const std::string& underlying = map.underlying_mvt_terrain(terrain);
 	if(underlying.size() != 1 || underlying[0] != terrain) {
+		bool revert = (underlying[0] == '-'?true:false);
 		if(recurse_count >= 100) {
 			return 100;
 		}
 
-		int min_value = 100;
+		int ret_value = revert?0:100;
 		for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
+			if(*i == '+') {
+				revert = false;
+				continue;
+			} else if(*i == '-') {
+				revert = true;
+				continue;
+			}
 			const int value = defense_modifier(map,*i,recurse_count+1);
-			if(value < min_value) {
-				min_value = value;
+			if(value < ret_value && !revert) {
+				ret_value = value;
+			} else if(value > ret_value && revert) {
+				ret_value = value;
+			}
+			if(value < ret_value) {
+				ret_value = value;
 			}
 		}
 
-		defenseMods_.insert(std::pair<gamemap::TERRAIN,int>(terrain,min_value));
+		defenseMods_.insert(std::pair<gamemap::TERRAIN,int>(terrain,ret_value));
 
-		return min_value;
+		return ret_value;
 	}
 
 	int res = -1;

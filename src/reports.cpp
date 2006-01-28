@@ -133,7 +133,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		std::stringstream tooltip;
 		report res;
 
-		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y]),status.get_time_of_day().lawful_bonus,loc,units,teams)) {
+		if(map.on_board(loc) && u->second.invisible(map.underlying_union_terrain(map[loc.x][loc.y]),status.get_time_of_day().lawful_bonus,loc,units,teams)) {
 			unit_status << "misc/invisible.png";
 			tooltip << _("invisible: ") << _("This unit is invisible. It cannot be seen or attacked by enemy units.");
 			res.add_image(unit_status,tooltip);
@@ -369,7 +369,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			break;
 
 		const gamemap::TERRAIN terrain = map.get_terrain(mouseover);
-		const std::string& underlying = map.underlying_terrain(terrain);
+		const std::string& underlying = map.underlying_union_terrain(terrain);
 
 		if(map.is_village(mouseover)) {
 			const int owner = village_owner(mouseover,teams)+1;

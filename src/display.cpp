@@ -1193,7 +1193,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 		if(fogged(u->first.x,u->first.y) ||
 				(teams_[currentTeam_].is_enemy(u->second.side()) &&
-				u->second.invisible(map_.underlying_terrain(map_[u->first.x][u->first.y]),
+				u->second.invisible(map_.underlying_union_terrain(map_[u->first.x][u->first.y]),
 				status_.get_time_of_day().lawful_bonus,u->first,
 				units_,teams_))) {
 			continue;
@@ -1331,7 +1331,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 			highlight_ratio = it->second.alpha();
 		}
 
-		if(u.invisible(map_.underlying_terrain(map_[x][y]),
+		if(u.invisible(map_.underlying_union_terrain(map_[x][y]),
 					status_.get_time_of_day().lawful_bonus,loc,
 					units_,teams_) &&
 		   highlight_ratio > ftofxp(0.5)) {
@@ -1366,7 +1366,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 
 	if(unit_image == NULL || fogged(x,y) ||
 			(teams_[currentTeam_].is_enemy(it->second.side()) &&
-			it->second.invisible(map_.underlying_terrain(map_[x][y]),
+			it->second.invisible(map_.underlying_union_terrain(map_[x][y]),
 					status_.get_time_of_day().lawful_bonus,loc,
 					units_,teams_))) {
 		return;

@@ -19,7 +19,7 @@
 #include <cstdlib>
 #include <iostream>
 
-terrain_type::terrain_type() : symbol_image_("void"), letter_(' '), type_(" "),
+terrain_type::terrain_type() : symbol_image_("void"), letter_(' '),mvt_type_(" "), def_type_(" "),
                                height_adjust_(0), submerge_(0.0),
                                heals_(false), village_(false), castle_(false), keep_(false)
 {}
@@ -38,13 +38,29 @@ terrain_type::terrain_type(const config& cfg)
 		letter_ = letter[0];
 	}
 
+	mvt_type_.resize(1);
+	mvt_type_[0] = letter_;
+	def_type_.resize(1);
+	def_type_[0] = letter_;
 	const std::string& alias = cfg["aliasof"];
-	if(alias.empty()) {
-		type_.resize(1);
-		type_[0] = letter_;
-	} else {
-		type_ = alias;
+	if(!alias.empty()) {
+		mvt_type_ = alias;
+		def_type_ = alias;
 	}
+	const std::string& mvt_alias = cfg["mvt_alias"];
+	if(!mvt_alias.empty()) {
+		mvt_type_ = mvt_alias;
+	}
+
+	const std::string& def_alias = cfg["def_alias"];
+	if(!def_alias.empty()) {
+		def_type_ = def_alias;
+	}
+	union_type_ = mvt_type_ +def_type_;
+	union_type_.erase(std::remove(union_type_.begin(),union_type_.end(),'-'),union_type_.end());
+	union_type_.erase(std::remove(union_type_.begin(),union_type_.end(),'+'),union_type_.end());
+	std::sort(union_type_.begin(),union_type_.end());
+	union_type_.erase(std::unique(union_type_.begin(),union_type_.end()),union_type_.end());
 
 	height_adjust_ = atoi(cfg["unit_height_adjust"].c_str());
 	submerge_ = atof(cfg["submerge"].c_str());
@@ -82,19 +98,25 @@ bool terrain_type::is_nonnull() const
 	return (letter_ != 0) && (letter_ != ' ');
 }
 
-const std::string& terrain_type::type() const
+const std::string& terrain_type::mvt_type() const
 {
-	return type_;
+	return mvt_type_;
 }
+
+const std::string& terrain_type::def_type() const
+{
+	return def_type_;
+}
+
+const std::string& terrain_type::union_type() const
+{
+	return union_type_;
+}
+
 
 int terrain_type::light_modification() const
 {
 	return light_modification_;
-}
-
-bool terrain_type::is_alias() const
-{
-	return type_.size() != 1 || type_[0] != letter_;
 }
 
 int terrain_type::unit_height_adjust() const

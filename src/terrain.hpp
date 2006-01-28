@@ -34,11 +34,12 @@ public:
 	char letter() const;
 
 	//the underlying type of the terrain
-	const std::string& type() const;
+	const std::string& mvt_type() const;
+	const std::string& def_type() const;
+	const std::string& union_type() const;
 
 	bool is_nonnull() const;
 	int light_modification() const;
-	bool is_alias() const;
 
 	int unit_height_adjust() const;
 	double unit_submerge() const;
@@ -57,7 +58,9 @@ private:
 	//terrain type. The 'type' is a list of the 'underlying types'
 	//of the terrain. This may simply be the same as the letter.
 	char letter_;
-	std::string type_;
+	std::string mvt_type_;
+	std::string def_type_;
+	std::string union_type_;
 
 	int height_adjust_;
 

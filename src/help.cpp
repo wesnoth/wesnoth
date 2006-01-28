@@ -1207,7 +1207,7 @@ public:
 				if (terrain == gamemap::FOGGED || terrain == gamemap::VOID_TERRAIN)
 					continue;
 				const terrain_type& info = map->get_terrain_info(terrain);
-				if (!info.is_alias() && info.is_nonnull()) {
+				if (info.union_type().size() == 1 && info.union_type()[0] == info.letter() && info.is_nonnull()) {
 					std::vector<item> row;
 					const std::string& name = info.name();
 					const std::string id = info.id();
@@ -1290,8 +1290,8 @@ struct terrain_topic_generator: topic_generator
 	virtual std::string operator()() const {
 		std::stringstream ss;
 		ss << "<img>src='terrain/" << type.symbol_image() << ".png'</img>\n\n";
-		if (type.is_alias()) {
-			const std::string aliased_terrains = type.type();
+		if (type.mvt_type().size() != 1 || type.mvt_type()[0] != type.letter()) {
+			const std::string aliased_terrains = type.mvt_type();
 			std::stringstream alias_ss;
 			for (std::string::const_iterator it = aliased_terrains.begin();
 				  it != aliased_terrains.end(); it++) {
@@ -1307,9 +1307,35 @@ struct terrain_topic_generator: topic_generator
 			utils::string_map sm;
 			sm["terrains"] = alias_ss.str();
 			ss << utils::interpolate_variables_into_string(
-				_("This terrain acts as $terrains for movement and defense purposes."), &sm);
-			if (aliased_terrains.size() > 1)
+				_("This terrain acts as $terrains for movement purposes."), &sm);
+			if (aliased_terrains.size() > 1 && aliased_terrains[0] != '-')
 				ss << " " << _("The terrain with the best modifier is chosen automatically.");
+			else
+				ss << " " << _("The terrain with the worst modifier is chosen automatically.");
+			ss << "\n\n";
+		}
+		if (type.def_type().size() != 1 || type.def_type()[0] != type.letter()) {
+			const std::string aliased_terrains = type.def_type();
+			std::stringstream alias_ss;
+			for (std::string::const_iterator it = aliased_terrains.begin();
+				  it != aliased_terrains.end(); it++) {
+				const gamemap::TERRAIN t = *it;
+				const std::string &alias_name = map->get_terrain_info(t).name();
+				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
+					 << escape(std::string("terrain_") + t) << "'</ref>";
+				if (it + 2 == aliased_terrains.end())
+					alias_ss << " " << _("or") << " ";
+				else if (it + 1 != aliased_terrains.end())
+					alias_ss << ", ";
+			}
+			utils::string_map sm;
+			sm["terrains"] = alias_ss.str();
+			ss << utils::interpolate_variables_into_string(
+				_("This terrain acts as $terrains for defense purposes."), &sm);
+			if (aliased_terrains.size() > 1 && aliased_terrains[0] != '-')
+				ss << " " << _("The terrain with the best modifier is chosen automatically.");
+			else
+				ss << " " << _("The terrain with the worst modifier is chosen automatically.");
 			ss << "\n\n";
 		}
 		if (type.is_keep())

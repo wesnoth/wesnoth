@@ -690,7 +690,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 
 		//attack anyone who is on the enemy side, and who is not invisible or turned to stone
 		if(current_team().is_enemy(j->second.side()) && j->second.stone() == false &&
-		   j->second.invisible(map_.underlying_terrain(map_[j->first.x][j->first.y]),
+		   j->second.invisible(map_.underlying_union_terrain(map_[j->first.x][j->first.y]),
 				state_.get_time_of_day().lawful_bonus,j->first,
 				units_,teams_) == false) {
 			location adjacent[6];

@@ -47,7 +47,9 @@ public:
 	//is the name of the terrain for game-logic purposes. I.e. if the terrain
 	//is simply an alias, the underlying terrain name is the name of the
 	//terrain that it's aliased to
-	const std::string& underlying_terrain(TERRAIN terrain) const;
+	const std::string& underlying_mvt_terrain(TERRAIN terrain) const;
+	const std::string& underlying_def_terrain(TERRAIN terrain) const;
+	const std::string& underlying_union_terrain(TERRAIN terrain) const;
 
 	//exception thrown if the map file is not in the correct format.
 	struct incorrect_format_exception {
@@ -96,8 +98,12 @@ public:
 		static location null_location;
 	};
 
-	const std::string& underlying_terrain(const location& loc) const
-	{ return underlying_terrain(get_terrain(loc)); }
+	const std::string& underlying_mvt_terrain(const location& loc) const
+	{ return underlying_mvt_terrain(get_terrain(loc)); }
+	const std::string& underlying_def_terrain(const location& loc) const
+	{ return underlying_def_terrain(get_terrain(loc)); }
+	const std::string& underlying_union_terrain(const location& loc) const
+	{ return underlying_union_terrain(get_terrain(loc)); }
 
 	bool is_village(TERRAIN terrain) const;
 	bool gives_healing(TERRAIN terrain) const;

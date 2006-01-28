@@ -111,7 +111,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = SDL_GetTicks() -start_time;
 	while(mvt_time < total_mvt_time) {
-		u.set_walking(map.underlying_terrain(src_terrain),a.get_relative_dir(b),acceleration);
+		u.set_walking(map.underlying_mvt_terrain(src_terrain),a.get_relative_dir(b),acceleration);
 		surface image(image::get_image(u.image_loc()));
 		if (!face_left) {
 			image.assign(image::reverse_image(image));
@@ -191,8 +191,8 @@ bool unit_visible_on_path(display& disp, const gamemap& map, const std::vector<g
 {
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 		const bool invisible = teams[u.side()-1].is_enemy(int(disp.viewing_team()+1)) &&
-	             u.invisible(map.underlying_terrain(path[i]),tod.lawful_bonus,path[i],units,teams) &&
-		         u.invisible(map.underlying_terrain(path[i+1]),tod.lawful_bonus,path[i+1],units,teams);
+	             u.invisible(map.underlying_union_terrain(path[i]),tod.lawful_bonus,path[i],units,teams) &&
+		         u.invisible(map.underlying_union_terrain(path[i+1]),tod.lawful_bonus,path[i+1],units,teams);
 		if(!invisible) {
 			return true;
 		}
@@ -219,8 +219,8 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 			invisible = false;
 		} else {
 			invisible = teams[u.side()-1].is_enemy(int(disp.viewing_team()+1)) &&
-				u.invisible(map.underlying_terrain(path[i]),tod.lawful_bonus,path[i],units,teams) &&
-				u.invisible(map.underlying_terrain(path[i+1]),tod.lawful_bonus,path[i+1],units,teams);
+				u.invisible(map.underlying_union_terrain(path[i]),tod.lawful_bonus,path[i],units,teams) &&
+				u.invisible(map.underlying_union_terrain(path[i+1]),tod.lawful_bonus,path[i+1],units,teams);
 		}
 
 		if(!invisible) {

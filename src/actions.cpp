@@ -325,7 +325,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	const bool charge = res.attacker_special == charge_string;
 	bool steadfast = d->second.type().steadfast();
 	if (steadfast) {
-		steadfast = d->second.type().steadfast_filter().matches_filter(map.underlying_terrain(defender_terrain), state.get_time_of_day().lawful_bonus);
+		steadfast = d->second.type().steadfast_filter().matches_filter(map.underlying_union_terrain(defender_terrain), state.get_time_of_day().lawful_bonus);
 	}
 	const bool steadfast_percent = d->second.type().steadfast_ispercent();
 	const int steadfast_bonus = d->second.type().steadfast_bonus();
@@ -1359,7 +1359,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 
 		const bool show_healing = !disp.turbo() && !recorder.is_skipping() &&
 		                          !disp.fogged(loc.x,loc.y) &&
-								  (!u.invisible(map.underlying_terrain(map[h->first.x][h->first.y]),
+								  (!u.invisible(map.underlying_union_terrain(map[h->first.x][h->first.y]),
 								                status.get_time_of_day().lawful_bonus,h->first,units,teams) ||
 								                teams[disp.viewing_team()].is_enemy(side) == false);
 
@@ -1610,7 +1610,7 @@ const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,c
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if(itor != units.end() &&
 			   itor->second.type().illuminates() && itor->second.incapacitated() == false) {
-			   	if (itor->second.type().illuminates_filter().matches_filter(map.underlying_terrain(map[loc.x][loc.y]), status.get_time_of_day().lawful_bonus)) {
+			   	if (itor->second.type().illuminates_filter().matches_filter(map.underlying_union_terrain(map[loc.x][loc.y]), status.get_time_of_day().lawful_bonus)) {
 					lighten = maximum<int>(itor->second.type().illuminates() , lighten);
 					darken = minimum<int>(itor->second.type().illuminates() , darken);
 				}
@@ -1703,7 +1703,7 @@ bool clear_shroud_unit(const gamemap& map,
 
 		const unit_map::const_iterator sighted = units.find(*it);
 		if(sighted != units.end() &&
-		  (sighted->second.invisible(map.underlying_terrain(map[it->x][it->y]),status.get_time_of_day().lawful_bonus,*it,units,teams) == false
+		  (sighted->second.invisible(map.underlying_union_terrain(map[it->x][it->y]),status.get_time_of_day().lawful_bonus,*it,units,teams) == false
 		  || teams[team].is_enemy(sighted->second.side()) == false)) {
 			if(seen_units == NULL || known_units == NULL) {
 				static const std::string sighted("sighted");
@@ -1857,7 +1857,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 			const std::map<gamemap::location,unit>::const_iterator it = units.find(adjacent[i]);
 			if(it != units.end() && teams[u.side()-1].is_enemy(it->second.side()) &&
-			   it->second.invisible(map.underlying_terrain(map[it->first.x][it->first.y]),
+			   it->second.invisible(map.underlying_union_terrain(map[it->first.x][it->first.y]),
 			   status.get_time_of_day().lawful_bonus,it->first,units,teams)) {
 				discovered_unit = true;
 				should_clear_stack = true;

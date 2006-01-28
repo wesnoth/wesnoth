@@ -44,7 +44,7 @@ std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
 
 gamemap::location gamemap::location::null_location;
 
-const std::string& gamemap::underlying_terrain(TERRAIN terrain) const
+const std::string& gamemap::underlying_mvt_terrain(TERRAIN terrain) const
 {
 	const std::map<TERRAIN,terrain_type>::const_iterator i = letterToTerrain_.find(terrain);
 	if(i == letterToTerrain_.end()) {
@@ -53,7 +53,31 @@ const std::string& gamemap::underlying_terrain(TERRAIN terrain) const
 		res[0] = terrain;
 		return res;
 	} else {
-		return i->second.type();
+		return i->second.mvt_type();
+	}
+}
+const std::string& gamemap::underlying_def_terrain(TERRAIN terrain) const
+{
+	const std::map<TERRAIN,terrain_type>::const_iterator i = letterToTerrain_.find(terrain);
+	if(i == letterToTerrain_.end()) {
+		static std::string res;
+		res.resize(1);
+		res[0] = terrain;
+		return res;
+	} else {
+		return i->second.def_type();
+	}
+}
+const std::string& gamemap::underlying_union_terrain(TERRAIN terrain) const
+{
+	const std::map<TERRAIN,terrain_type>::const_iterator i = letterToTerrain_.find(terrain);
+	if(i == letterToTerrain_.end()) {
+		static std::string res;
+		res.resize(1);
+		res[0] = terrain;
+		return res;
+	} else {
+		return i->second.union_type();
 	}
 }
 
