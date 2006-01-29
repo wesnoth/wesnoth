@@ -1259,7 +1259,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			for(int j = 0; j != 6; ++j) {
 				if(will_heal(adjacent[j],i->second.side(),teams,units)) {
 					const unit_map::const_iterator healer = units.find(adjacent[j]);
-					max_heal = maximum(max_heal,healer->second.type().max_unit_healing());
+					max_heal = maximum(max_heal,healer->second.type().heals());
 
 					healers.insert(std::pair<gamemap::location,gamemap::location>(i->first,adjacent[j]));
 				}
@@ -1299,7 +1299,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			if(nhealed == 0)
 				continue;
 
-			const int healing_per_unit = i->second.type().heals()/nhealed;
+			const int healing_per_unit = i->second.type().max_unit_healing()/nhealed;
 
 			for(j = 0; j != 6; ++j) {
 				if(!gets_healed[j])
