@@ -16,6 +16,7 @@
 #include "config.hpp"
 #include "terrain.hpp"
 
+#include <algorithm>
 #include <cstdlib>
 #include <iostream>
 
