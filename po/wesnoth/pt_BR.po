@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-01-26 15:28+0100\n"
-"PO-Revision-Date: 2005-12-09 09:50+0900\n"
+"PO-Revision-Date: 2006-01-29 23:47+0900\n"
 "Last-Translator: Nils Kneuper <crazy - ivanovic AT gmx DOT de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/amla.cfg:8
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr ", HP Máximo +25%"
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +"
@@ -262,7 +262,6 @@ msgid "Mounted Fighter"
 msgstr "Lutador Montado"
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:30
-#, fuzzy
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -271,7 +270,7 @@ msgid ""
 msgstr ""
 "Os nobres entre os homens das planícies treinaram com os outros cavalariços "
 "para se tornar grandes guerreiros. Porém, eles tambem treinaram para "
-"comandar seus companheiros, e são aqueles que se tornarão os capitães dos "
+"comandar seus companheiros, e são aqueles que se tornaram os capitães dos "
 "exércitos dos clãs."
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:3
@@ -1123,6 +1122,17 @@ msgid ""
 "ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
 "often take underlings whom they lead to victory."
 msgstr ""
+"Um Dragão de fogo é uma besta ancestral e aterrorizante, que normalmente "
+"vive apenas entre estórias fantásticas e boatos sem fontes. Normalmente "
+"passam-se séculos sem se ver um dragão em Wesnoth, e quando se vê, é apenas "
+"uma sombra voando à distância. As lendas são bem específicas quando se trata "
+"sobre o ataque de um dragão de fogo: Terrivelmente ágeis no voo, eles abrem "
+"suas asas de couro com mais de 30 metros de envergadura, e mergulham sobre "
+"suas presas, cuspindo jatos de chamas que mais parecem um inferno. Aqueles "
+"que conseguem escapar da baforada de fogo do dragão ainda devem tomar "
+"cuidado com sua mordida feroz e seu rabo esmagador. Dragões de Fogo são "
+"astutos e cruéis, e em costumam trazer servos consigo, os quais eles "
+"comandam como um exército em direção à vitória."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:29
 msgid "bite"
@@ -1543,7 +1553,6 @@ msgid "teleport"
 msgstr "teleporte"
 
 #: data/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -1551,8 +1560,9 @@ msgid ""
 "to stone)."
 msgstr ""
 "Golpe por trás:\n"
-"Este ataque causa o dobro de dano se uma unidade aliada estiver do lado "
-"oposto do alvo. (Não funciona contra unidades aliadas.)"
+"Este ataque causa o dobro de dano se uma unidade inimiga do alvo estiver do "
+"lado oposto deste, e se essa unidade não estiver incapacitada (p.ex. "
+"transformada em pedra)."
 
 #: data/english.cfg:96
 msgid ""
@@ -1625,7 +1635,6 @@ msgstr ""
 "praga(isto não funciona sobre Mortos-Vivos ou unidades em vilas)."
 
 #: data/english.cfg:117
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -1634,7 +1643,7 @@ msgid ""
 msgstr ""
 "Praga:\n"
 "Quando a unidade é morta por um ataque de 'Praga', a unidade é substituída "
-"com uma unidade idêntica e do mesmo time que a unidade que a atacou com a "
+"por uma unidade específica e do mesmo time que a unidade que a atacou com a "
 "praga(isto não funciona sobre Mortos-Vivos ou unidades em vilas)."
 
 #: data/english.cfg:120
@@ -1655,6 +1664,11 @@ msgid ""
 "move at half normal speed, do not emit a zone of control, and always lose "
 "initiative in fights."
 msgstr ""
+"Lentidão:\n"
+"Este ataque deixa o alvo mais lento. Lentidão muda a ordem dos golpes, "
+"permitindo ao atacante golpear mais uma vez antes que o defensor possa "
+"retribuir. Unidades lentas movem-se a metade da velocidade normal, não "
+"emitem uma zona de controle, e sempre perdem a iniciativa em combates."
 
 #: data/english.cfg:126
 msgid ""
@@ -2221,7 +2235,6 @@ msgid "Shroud and Fog of War"
 msgstr "Escuridão e Névoa de Combate"
 
 #: data/help.cfg:138
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -2237,13 +2250,13 @@ msgstr ""
 "mecanismos para isso, que podem ocorrer separadamente ou em conjunto. A "
 "'Escuridão' esconde tanto o terreno quanto quaisquer unidades sobre esse "
 "terreno. Porém, uma vez que ela seja removida de um local, você sempre "
-"podera ver aquele local. A 'Névoa de Guerra' apenas esconde as unidades e o "
+"poderá ver aquele local. A 'Névoa de Guerra' apenas esconde as unidades e o "
 "indicador de posse das cidades (exceto as suas e de seus aliados). A névoa "
 "de guerra é removida temporariamente quando você tem unidades próximas, mas "
 "retorna uma vez que estas se afastem. Tanto a  escuridão quanto a névoa de "
 "guerra são removidas pela presença de unidades. Cada unidade irá limpar os "
-"locais seu raio de ação de um turno (ignorando zona de controle e unidades "
-"inimigas), e os locais adjacentes a esses."
+"locais em seu raio de ação de um turno (ignorando zona de controle e "
+"unidades inimigas), e os locais adjacentes a esses."
 
 #: data/help.cfg:143
 msgid "Combat"
@@ -2563,7 +2576,6 @@ msgstr ""
 "alguns casos, você poderá escolher como a unidade avançará."
 
 #: data/help.cfg:203
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2587,13 +2599,18 @@ msgstr ""
 "Enquanto que a maioria das unidades possuem três níveis, nem todas são "
 "assim. Algumas unidades (como os <ref>dst=unit_Mage text=Magos</ref>) podem "
 "ter quatro. Depois que uma unidade alcançar seu nível máximo, ela pode ter "
-"também Avanço Além do Máximo (AAM) disponível para ela.\n"
-"O AAM modificará a unidade cada vez que ela alcançar os pontos de "
-"experiência necessários, mas a unidade continuará contando como se fosse do "
-"mesmo nível. O efeito mais comum do AAM é a unidade ganhar mais 3 pontos de "
-"energia para cada 100 pontos de experiência. Note que poucas unidades, como "
-"o Necrófago, irão se curar por efeito do AAM. A maioria das unidades só "
-"ganha o bônus para o HP máximo."
+"também Avanço Além do Nível Máximo (AMLA, em inglês) disponível para ela. O "
+"AMLA modificará a unidade cada vez que ela alcançar os pontos de experiência "
+"necessários, mas a unidade continuará contando como se fosse do mesmo nível. "
+"O efeito mais comum do AMLA é a unidade ganhar mais 3 pontos de vida. O "
+"primeiro AMLA é recebido normalmente quando se ganha 100 pontos de "
+"experiência (80 para unidades inteligentes). Depois disso, ganhar um AMLA se "
+"torna cada vez mais difícil, de maneira que em geral é mais útil tentar "
+"avançar suas unidades de nível mais baixo.\n"
+"\n"
+"Note que apenas um pequeno número de unidades, como por exemplo o "
+"Necrophago, irão se curar ao ganhar um AMLA. A maioria das unidades ganha "
+"apenas o aumento no número máximo de pontos de vida."
 
 #: data/help.cfg:208
 msgid "Healing"
@@ -3377,10 +3394,9 @@ msgstr ""
 
 #: data/help.cfg:474 data/terrain.cfg:405
 msgid "Chasm"
-msgstr ""
+msgstr "Desfiladeiro"
 
 #: data/help.cfg:476
-#, fuzzy
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -3390,7 +3406,7 @@ msgstr ""
 "Um desfiladeiro é uma rachadura no solo, que chega a profundidades "
 "desconhecidas. Desfiladeiros são conhecidos por suas paredes recortadas que "
 "tomam dias para serem atravessadas. No jogo, somente unidades que podem voar "
-"sobre desfiladeiro podem atravessar este terreno. "
+"sobre desfiladeiros podem atravessar este terreno. "
 
 #: data/help.cfg:481 data/terrain.cfg:412
 msgid "Lava"
@@ -3686,7 +3702,7 @@ msgstr "2p - Carga"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
-msgstr ""
+msgstr "2p - Campo de Batalha de Cynsaun"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
@@ -3694,6 +3710,9 @@ msgid ""
 "favor epic, large-scale duel matches. Recommended settings of 150 G; 1G per "
 "village."
 msgstr ""
+"Há muito o que explorar neste vasto campo de batalha, criado para jogadores "
+"que preferem duelos épicos, de grande escala. Recomendado 150 ouros "
+"iniciais, e 1 ouro por vila."
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
@@ -3799,7 +3818,6 @@ msgid "2p - Wesbowl"
 msgstr "2p - Wesbowl"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:6
-#, fuzzy
 msgid ""
 "In Wesbowl, a player has to get any of the balls to the other player's end "
 "zone as often as possible. However, the other player can attack your units. "
@@ -3812,7 +3830,6 @@ msgstr ""
 "mortas, elas voltam para a linha final de seu respectivo jogador."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:11
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -3984,18 +4001,16 @@ msgstr ""
 "por vila."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
-#, fuzzy
 msgid "4p - Morituri"
-msgstr "3p - Morituri"
+msgstr "4p - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
 "settings of 2G per village."
 msgstr ""
-"3 Jogadores disputam mano a mano sobre este campo cortado pela água. "
-"Recomenda-se 2 ouros  por vila."
+"Quem sairá vitorioso deste perigoso campo de batalha? Recomenda-se 2 ouros  "
+"por vila."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
 msgid "4p - Siege Castles"
@@ -4028,7 +4043,7 @@ msgstr "Neste território mixto, cinco exércitos lutam por supremacia."
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
-msgstr ""
+msgstr "6p - Campo dos Cruzados"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
 msgid ""
@@ -4037,6 +4052,9 @@ msgid ""
 "through the mountains, trees and rivers. Recommended settings of 1G per "
 "village."
 msgstr ""
+"Os gritos de batalha podem ser ouvidos novamente neste campo desgastado pelo "
+"tempo, onde os fantasmas de milhares de bravos guerreiros flutuam invisíveis "
+"por entre as montanhas, rios e árvores. Recomenda-se 1 ouro por vila."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
@@ -4136,7 +4154,7 @@ msgstr "Verde"
 
 #: data/team_colors.cfg:22
 msgid "Cyan"
-msgstr ""
+msgstr "Celeste"
 
 #: data/team_colors.cfg:28
 msgid "Purple"
@@ -4190,9 +4208,8 @@ msgid "Snow Village"
 msgstr "Vila da neve"
 
 #: data/terrain.cfg:297
-#, fuzzy
 msgid "Dwarven Village"
-msgstr "Vila do Deserto"
+msgstr "Vila dos Anões"
 
 #: data/terrain.cfg:334
 msgid "Desert Hills"
@@ -4289,38 +4306,32 @@ msgid "statuspanel^movement"
 msgstr "movimento"
 
 #: data/themes/default.cfg:458
-#, fuzzy
 msgid "Replay"
-msgstr "replay"
+msgstr "Replay"
 
 #: data/themes/default.cfg:471
-#, fuzzy
 msgid "Play"
-msgstr "Jogadores:"
+msgstr "Reproduzir"
 
 #: data/themes/default.cfg:484
 msgid "Stop"
-msgstr ""
+msgstr "Parar"
 
 #: data/themes/default.cfg:497
-#, fuzzy
 msgid "Reset"
-msgstr "Deserto"
+msgstr "Reiniciar"
 
 #: data/themes/default.cfg:510
-#, fuzzy
 msgid "Next Turn"
-msgstr "Turno"
+msgstr "Próximo Turno"
 
 #: data/themes/default.cfg:523
-#, fuzzy
 msgid "Next Side"
-msgstr "Próximo"
+msgstr "Próximo Time"
 
 #: data/themes/default.cfg:559
-#, fuzzy
 msgid "Skip animation"
-msgstr "+Tradução para o Eslovaco"
+msgstr "Pular animação"
 
 #: data/themes/default.cfg:663
 msgid "Act."
@@ -4407,7 +4418,6 @@ msgstr ""
 "ignorar essas áreas."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -4416,8 +4426,8 @@ msgid ""
 msgstr ""
 "A chance de acertar uma unidade geralmente depende em quão bem aquela "
 "unidade pode se defender no terreno em que ela está. Porém, ataques mágicos "
-"sempre tem 70% de chance de acertar, e atiradores de elite têm pelo menos "
-"60% de chance de acertar."
+"sempre tem 70% de chance de acertar, tanto no ataque quanto na defesa, e "
+"atiradores de elite têm pelo menos 60% de chance de acertar quando atacando."
 
 #: data/tips.cfg:9
 msgid ""
@@ -4426,7 +4436,6 @@ msgstr ""
 "Unidades paradas em vilas curam 8 pontos de vida no início de seu turno."
 
 #: data/tips.cfg:10
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
@@ -4490,7 +4499,6 @@ msgstr ""
 "inimigas "
 
 #: data/tips.cfg:17
-#, fuzzy
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
@@ -4498,17 +4506,16 @@ msgstr ""
 "vitória."
 
 #: data/tips.cfg:18
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
 "finish early. You will always earn more gold this way than through capturing "
 "villages and waiting for turns to run out."
 msgstr ""
-"Na maior parte das campanhas você recebera um bônus em ouro por terminar um "
+"Na maior parte das campanhas você receberá um bônus em ouro por terminar um "
 "cenário cedo, dependendo do número de vilas do mapa, e do número de turnos "
-"mais cedo. Você sempre ganhará mais ouro por esse bônus do que se capturasse "
-"todas as vilas e ficasse esperanto até o último turno."
+"mais cedoque voce terminou. Você sempre ganhará mais ouro por esse bônus do "
+"que se capturasse todas as vilas e ficasse esperanto até o último turno."
 
 #: data/tips.cfg:19
 msgid ""
@@ -4523,7 +4530,6 @@ msgstr ""
 "podem dar-lhe espaço para que você recrute a partir do forte deles."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
@@ -4592,14 +4598,12 @@ msgstr ""
 "sua vitória sem precisar atacar ninguém."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attacks."
 msgstr ""
-"O ataque 'lentidão' faz um inimigo se mover mais lentamente, e também "
-"diminui o número de golpes que ele normalmente faria. Logo ele é muito "
-"efetivo contra unidades com poucos ataques poderosos."
+"A habilidade de ataque 'lentidão' não apenas faz um inimigo se mover mais "
+"lentamente, como também diminui o dano de todos os ataques pela metade."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -4628,6 +4632,11 @@ msgid ""
 "progressively harder for each AMLA the unit receives, however. Thus, it is "
 "often more useful to try to advance your lower level units."
 msgstr ""
+"Unidades podem ganhas um Avanço Além do Nível Máximo (em inglês, AMLA), que "
+"normalmente aumenta o número de pontos de vida máximos da unidade em 3. "
+"Ganhar mais um AMLA vai se tornando cada vez mais difícil, para cada AMLA "
+"que a unidade receba. Desse modo, normalmente é mais útil tentar avançar "
+"suas unidades de nível mais baixo."
 
 #: data/tips.cfg:34
 msgid ""
@@ -4635,6 +4644,9 @@ msgid ""
 "the Help Wesnoth button.  This information is vital so we can adjust "
 "campaign difficulty."
 msgstr ""
+"Você pode enviar um sumário anônimo de seu progresso para o Projeto Wesnoth, "
+"utilizando o botão \"Ajude Wesnoth\". Essa informação é vital para podermos "
+"ajustar o nível de dificuldade das campanhas."
 
 #: data/traits.cfg:7
 msgid "Zero upkeep"
@@ -4860,7 +4872,6 @@ msgid "Blood Bat"
 msgstr "Morcego de Sangue"
 
 #: data/units/Blood_Bat.cfg:23
-#, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
@@ -5017,9 +5028,8 @@ msgid "tentacle"
 msgstr "tentáculo"
 
 #: data/units/Cuttle_Fish.cfg:42
-#, fuzzy
 msgid "swarm"
-msgstr "encontrão"
+msgstr "enxame"
 
 #: data/units/Cuttle_Fish.cfg:76
 msgid "ink"
@@ -5060,9 +5070,8 @@ msgstr ""
 "possuem uma alta chance de atingir um oponente."
 
 #: data/units/Dark_Adept.cfg:31 data/units/Dark_Adept.cfg:122
-#, fuzzy
 msgid "shadow wave"
-msgstr "golpe"
+msgstr "onda sombria"
 
 #: data/units/Dark_Adept.cfg:95
 msgid "female^Dark Adept"
@@ -6297,7 +6306,6 @@ msgid "female^Elvish Shyde"
 msgstr "Shyde Élfica"
 
 #: data/units/Elvish_Shyde.cfg:32
-#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -6314,9 +6322,8 @@ msgstr ""
 "de seu povo.\n"
 "\n"
 "Nota especial: O ataque de prender de uma Shyde diminui a velocidade de um "
-"inimigo, diminuindo também em um o número de golpes que eles podem causar em "
-"combate. Shydes são capazes de curar unidades ao seu redor, removendo os "
-"efeitos de venenos."
+"inimigo, diminuindo também o dano que eles podem causar em combate. Shydes "
+"são capazes de curar unidades ao seu redor, removendo os efeitos de venenos."
 
 #: data/units/Elvish_Shyde.cfg:36 data/units/Elvish_Sylph.cfg:31
 msgid "faerie touch"
@@ -6648,12 +6655,10 @@ msgid "net"
 msgstr "rede"
 
 #: data/units/Goblin_Rouser.cfg:3
-#, fuzzy
 msgid "Goblin Rouser"
-msgstr "Impalador Goblin"
+msgstr "Atiçador Goblin"
 
 #: data/units/Goblin_Rouser.cfg:29
-#, fuzzy
 msgid ""
 "Standard bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -6665,11 +6670,14 @@ msgid ""
 "to it to deal more damage in combat, though this only applies to units of "
 "lower level."
 msgstr ""
-"O grau de Grande Marechal é um dos maiores nos exércitos da humanidade, e "
-"aqueles que portam este título sobrepujaram muitos testes de ferro e fogo, "
-"provando sua habilidade tática, e sua dureza em combate.\n"
+"Portadores de bandeiras são uma coisa estranha entre os goblins. Um goblin "
+"que sobreviveu a várias batalhas a ponto de ser considerado um veterano já é "
+"algo raro, e mais rado ainda é ver outros goblins reconhecerem e respeitarem "
+"o seu status. De qualquer jeito, os gritos insandecidos de um atiçador de "
+"fato eriça os mais jovens para que lutem com maior intensidade antes de "
+"morrerem.\n"
 "\n"
-"Nota especial: a liderança de um grande marechal permite a unidades aliadas "
+"Nota especial: a liderança de um atiçador goblin permite a unidades aliadas "
 "próximas a ele causar maior dano em combate, embora isto só se aplique a "
 "unidades de nível mais baixo."
 
@@ -7838,16 +7846,16 @@ msgid "Ogre"
 msgstr "Ogro"
 
 #: data/units/Ogre.cfg:23
-#, fuzzy
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
-"Ogros são humanóides gigantes e estúpidos, que geralmente vivem sozinhos nas "
-"áreas selvagens. Embora seja fácil fugir deles ou enganá-los, sua força não "
-"deve ser subestimada."
+"Ogros são gigantes que normalmente vivem sozinhos nas áreas selvagens. Eles "
+"são bastante similares aos humanos em forma, embora sejam grandes e "
+"deformados. Embora seja fácil fugir deles ou enganá-los, sua força não deve "
+"ser subestimada."
 
 #: data/units/Ogre.cfg:26 data/units/Young_Ogre.cfg:47
 msgid "cleaver"
@@ -8454,7 +8462,6 @@ msgid "Silver Mage"
 msgstr "Mago prateado"
 
 #: data/units/Silver_Mage.cfg:30
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -8503,17 +8510,17 @@ msgstr ""
 "alguém consiga convencer o mago a aplicá-las.\n"
 "\n"
 "Nota especial: O ataque a distância do mago prateado é mágico, e sempre tem "
-"uma alta chance de acertar o oponente. Magos prateados são altamente "
-"resistentes a várias formas de ataques mágicos. Além disso, eles podem "
-"viajar entre duas vilas quaisquer instantaneamente, dado que o jogador "
-"controle ambas as vilas, e a vila de destino esteja desocupada."
+"uma alta chance de acertar o oponente. Magos prateados estão bem atunados a "
+"sua natureza mágica, e se tornam resistentes a danos de natureza não física. "
+"Além disso, eles podem viajar entre duas vilas quaisquer instantaneamente, "
+"dado que o jogador controle ambas as vilas, e a vila de destino esteja "
+"desocupada."
 
 #: data/units/Silver_Mage.cfg:151
 msgid "female^Silver Mage"
 msgstr "Maga prateada"
 
 #: data/units/Silver_Mage.cfg:185
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. The silver magi have devoted themselves to a study of the forces that "
@@ -8541,31 +8548,32 @@ msgid ""
 "also teleport between any two villages instantly, though the player must "
 "control both, and the destination village must be unoccupied."
 msgstr ""
-"Os vários caminhos que um mago pode trilhar por seu estudo levam a finais "
-"completamente diferentes. Os magos prateados se devotaram ao estudo das "
+"Os vários caminhos que uma maga pode trilhar por seu estudo levam a finais "
+"completamente diferentes. As magas prateadas se devotaram ao estudo das "
 "forças que formam a realidade, e conseguiram, até certo ponto, descobrir os "
 "mistérios de um mundo muito maior que a maioria das pessoas consegue "
-"imaginar. Muitas vezes vistos como sábios, ou místicos errantes, os magos "
-"prateados agem com propósitos que mesmos os outros magos têm dificuldade em "
+"imaginar. Muitas vezes vistas como sábias, ou místicas errantes, as magas "
+"prateadas agem com propósitos que mesmos os outros magos têm dificuldade em "
 "compreender. Apesar de úteis para aqueles que empregam os seus serviços, "
-"eles sempre se mantém um tanto quanto distantes.\n"
+"elas sempre se mantém um tanto quanto distantes.\n"
 "\n"
-"Eles têm, de fato, sua própria organização entre os magos, uma ordem que "
+"Elas têm, de fato, sua própria organização entre os magos, uma ordem que "
 "esconde certos segredos de seus pares. Um deles é a habilidade de viajar "
 "grandes distâncias mais rapidamente do que seria realisticamente possível. "
 "Membros da ordem se recusam a falar sobre esta técnica com outros magos, e "
-"nas poucas vezes em que alguém conseguiu espionar o trabalho de um mago "
-"prateado, eles abandonaram sua busca, e nunca mais falaram do assunto.\n"
+"nas poucas vezes em que alguém conseguiu espionar o trabalho de uma maga "
+"prateada, eles abandonaram sua busca, e nunca mais falaram do assunto.\n"
 "\n"
-"Magos prateados costumam ser mais aptos fisicamente do que outros magos, e "
+"Magas prateadas costumam ser mais aptas fisicamente do que outros magos, e "
 "suas habilidades são de utilidade inegável no campo de batalha, uma vez que "
-"alguém consiga convencer o mago a aplicá-las.\n"
+"alguém consiga convencer a maga a aplicá-las.\n"
 "\n"
-"Nota especial: O ataque a distância do mago prateado é mágico, e sempre tem "
-"uma alta chance de acertar o oponente. Magos prateados são altamente "
-"resistentes a várias formas de ataques mágicos. Além disso, eles podem "
-"viajar entre duas vilas quaisquer instantaneamente, dado que o jogador "
-"controle ambas as vilas, e a vila de destino esteja desocupada."
+"Nota especial: O ataque a distância da maga prateada é mágico, e sempre tem "
+"uma alta chance de acertar o oponente. Magas prateadas estão bem atunadas à "
+"sua natureza mágica, e se tornam resistentes a danos de natureza não física. "
+"Além disso, elas podem viajar entre duas vilas quaisquer instantaneamente, "
+"dado que o jogador controle ambas as vilas, e a vila de destino esteja "
+"desocupada."
 
 #: data/units/Skeleton.cfg:3
 msgid "Skeleton"
@@ -9155,9 +9163,8 @@ msgid "+Scenario Designers"
 msgstr "+Designers de cenário"
 
 #: src/about.cpp:111
-#, fuzzy
 msgid "+Multiplayer Developers"
-msgstr "+Mapas Multijogador"
+msgstr "+Desenvolvedores para Multijogador"
 
 #: src/about.cpp:116
 msgid "+Multiplayer Maps"
@@ -9212,9 +9219,8 @@ msgid "+English (GB) Translation"
 msgstr "+Tradução para o Inglês"
 
 #: src/about.cpp:204
-#, fuzzy
 msgid "+Esperanto Translation"
-msgstr "+Tradução para o Alemão"
+msgstr "+Tradução para o Esperanto"
 
 #: src/about.cpp:208
 msgid "+Estonian Translation"
@@ -9237,9 +9243,8 @@ msgid "+Greek Translation"
 msgstr "+Tradução para o Grego"
 
 #: src/about.cpp:254
-#, fuzzy
 msgid "+Hebrew Translation"
-msgstr "+Tradução para o Grego"
+msgstr "+Tradução para o Hebreu"
 
 #: src/about.cpp:258
 msgid "+Hungarian Translation"
@@ -9266,9 +9271,8 @@ msgid "+Polish Translation"
 msgstr "+Tradução para o Polonês"
 
 #: src/about.cpp:305
-#, fuzzy
 msgid "+Portuguese Translation"
-msgstr "+Tradução para o Português do Brasil"
+msgstr "+Tradução para o Português"
 
 #: src/about.cpp:308
 msgid "+Portuguese (Brazil) Translation"
@@ -9340,9 +9344,8 @@ msgid "Doubled"
 msgstr "Dobrado"
 
 #: src/actions.cpp:465 src/actions.cpp:618
-#, fuzzy
 msgid "Halved"
-msgstr "Salvo"
+msgstr "Dividido por 2"
 
 #: src/actions.cpp:465 src/actions.cpp:618 src/actions.cpp:885
 #: src/actions.cpp:1055
@@ -9802,6 +9805,8 @@ msgid ""
 "The login name you chosed is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
+"O nome de login que voce escolheu é longo demais. Por favor escolha um nome "
+"de login com menos de 18 caracteres"
 
 #: src/game.cpp:1179 src/playcampaign.cpp:113 src/playcampaign.cpp:268
 msgid "The game could not be loaded: "
@@ -9954,7 +9959,6 @@ msgid "This terrain gives healing."
 msgstr "Este terreno cura"
 
 #: src/help.cpp:2176
-#, fuzzy
 msgid " < Back"
 msgstr "< Voltar"
 
@@ -10257,7 +10261,7 @@ msgstr "Criar jogo"
 
 #: src/multiplayer_create.cpp:46
 msgid "Time limit"
-msgstr ""
+msgstr "Limite de tempo"
 
 #: src/multiplayer_create.cpp:55
 msgid "Name of game:"
@@ -10302,17 +10306,15 @@ msgstr "Número máximo de turnos do jogo"
 
 #: src/multiplayer_create.cpp:103
 msgid "Enables user time limit"
-msgstr ""
+msgstr "Liga o limite de tempo"
 
 #: src/multiplayer_create.cpp:109
-#, fuzzy
 msgid "Initial time available to players at start of game"
-msgstr ""
-"Unidades paradas em vilas curam 8 pontos de vida no início de seu turno."
+msgstr "Tempo disponível aos jogadores no início do jogo."
 
 #: src/multiplayer_create.cpp:115
 msgid "Time added to user's clock at the end of each turn"
-msgstr ""
+msgstr "Tempo adicionado ao relógio do jogador ao final de cada turno"
 
 #: src/multiplayer_create.cpp:120
 msgid "The amount of income each village yields per turn"
@@ -10381,14 +10383,12 @@ msgid "Unlimited Turns"
 msgstr "Ilimitado"
 
 #: src/multiplayer_create.cpp:266
-#, fuzzy
 msgid "Initial Time: "
-msgstr "Iniciado"
+msgstr "Tempo inicial: "
 
 #: src/multiplayer_create.cpp:271
-#, fuzzy
 msgid "Turn time: "
-msgstr "Turnos: "
+msgstr "Tempo por turno: "
 
 #: src/multiplayer_create.cpp:277
 msgid "Village Gold: "
@@ -10415,19 +10415,16 @@ msgid "Status"
 msgstr "Status"
 
 #: src/multiplayer_lobby.cpp:101
-#, fuzzy
 msgid "--no games open--"
-msgstr "<não há jogos abertos>"
+msgstr "--não há jogos abertos--"
 
 #: src/multiplayer_lobby.cpp:296 src/multiplayer_lobby.cpp:299
-#, fuzzy
 msgid "Unknown era"
-msgstr "Cenário desconhecido: '"
+msgstr "Era desconhecida"
 
 #: src/multiplayer_lobby.cpp:321 src/multiplayer_lobby.cpp:323
-#, fuzzy
 msgid "Unknown scenario"
-msgstr "Cenário desconhecido: '"
+msgstr "Cenário desconhecido"
 
 #: src/multiplayer_lobby.cpp:332
 msgid "Vacant Slot"
@@ -10446,7 +10443,6 @@ msgid "Quit"
 msgstr "Sair"
 
 #: src/multiplayer_ui.cpp:79
-#, fuzzy
 msgid "Invalid Color"
 msgstr "Cor inválida"
 
@@ -10777,11 +10773,12 @@ msgid "invisible: "
 msgstr "invisível: "
 
 #: src/reports.cpp:143
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
-msgstr "Esta unidade esta petreficada. Ela não pode se mover ou atacar."
+msgstr ""
+"Esta unidade sofreu lentidão. Ela causará apenas metade de seu dano normal "
+"quando atacar."
 
 #: src/reports.cpp:143
 msgid "slowed: "
@@ -10821,12 +10818,11 @@ msgstr "dano"
 
 #: src/reports.cpp:253
 msgid "weapon range: "
-msgstr ""
+msgstr "alcance da arma: "
 
 #: src/reports.cpp:254
-#, fuzzy
 msgid "damage type: "
-msgstr "dano"
+msgstr "tipo de dano: "
 
 #: src/reports.cpp:322
 msgid "Lawful units: "
@@ -10939,9 +10935,8 @@ msgid "TitleScreen button^Preferences"
 msgstr "Preferências"
 
 #: src/titlescreen.cpp:206
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Carregar"
+msgstr "Ajude Wesnoth"
 
 #: src/titlescreen.cpp:207
 msgid "About"
@@ -10981,7 +10976,7 @@ msgstr "Configurar o jogo"
 
 #: src/titlescreen.cpp:215
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "Ajude Wesnoth nos enviando informações"
 
 #: src/titlescreen.cpp:216
 msgid "View the credits"
@@ -11034,18 +11029,22 @@ msgid ""
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
+"Wesnoth conta com informações vindas de voluntários como você, especialmente "
+"novos jogadores. O programa grava resumos de seus jogos: você pode nos "
+"ajudar a melhorar o jogo permitindo que essas informações sejam enviadas "
+"(anonimamente) para wesnoth.org.\n"
 
 #: src/upload_log.cpp:275
 msgid "You can see the summaries to be sent in "
-msgstr ""
+msgstr "Você pode ver os resumos que serão enviados em "
 
 #: src/upload_log.cpp:277
 msgid "You can view the results at "
-msgstr ""
+msgstr "Você pode ver os resultados em "
 
 #: src/upload_log.cpp:282
 msgid "Help us make Wesnoth better for you!"
-msgstr ""
+msgstr "Ajúde-nos a fazer um Wesnoth melhor para você!"
 
 #~ msgid "Dwarves"
 #~ msgstr "Anões"
@@ -11077,10 +11076,6 @@ msgstr ""
 
 #~ msgid "Canyon"
 #~ msgstr "Desfiladeiro"
-
-#, fuzzy
-#~ msgid "2p - Across the River"
-#~ msgstr "2p - Através do Rio"
 
 #~ msgid ""
 #~ "This map is a convenient way to do some testing with two factions, as it "
@@ -11117,65 +11112,6 @@ msgstr ""
 #~ msgid "illuminates,cures"
 #~ msgstr "ilumina, cura"
 
-#, fuzzy
-#~ msgid "Turn Dialog"
-#~ msgstr "Tutorial"
-
-#, fuzzy
-#~ msgid "Turn Bell"
-#~ msgstr "Turnos: "
-
-#, fuzzy
-#~ msgid "Theme"
-#~ msgstr "Time"
-
-#, fuzzy
-#~ msgid "Music"
-#~ msgstr "+Música"
-
-#, fuzzy
-#~ msgid "Change the music volume"
-#~ msgstr "Mudar a língua"
-
-#, fuzzy
-#~ msgid "Chat Lines: "
-#~ msgstr "Unidades caóticas: "
-
-#, fuzzy
-#~ msgid "yes"
-#~ msgstr "Sim"
-
-#, fuzzy
-#~ msgid "no"
-#~ msgstr "Neve"
-
-#, fuzzy
-#~ msgid "Prefs section^Multiplayer"
-#~ msgstr "Multijogador"
-
-#, fuzzy
-#~ msgid "Preferences"
-#~ msgstr "Princesa"
-
-#, fuzzy
-#~ msgid "Choose Resolution"
-#~ msgstr "Escolha a arma:"
-
-#~ msgid "Close Window"
-#~ msgstr "Fechar janela"
-
-#, fuzzy
-#~ msgid "Hotkey Settings"
-#~ msgstr "Configurações"
-
-#, fuzzy
-#~ msgid "Action"
-#~ msgstr "Ações"
-
-#, fuzzy
-#~ msgid "Binding"
-#~ msgstr "raio"
-
 #~ msgid "Saved Theme Preference: "
 #~ msgstr "Gravou preferência de tema: "
 
@@ -11211,20 +11147,8 @@ msgstr ""
 #~ "montados em altas paredes, eles não podem se mover para nenhum local "
 #~ "exceto as paredes e tetos dos castelos."
 
-#, fuzzy
-#~ msgid "Unkown era"
-#~ msgstr "Cenário desconhecido: '"
-
 #~ msgid "Yellow"
 #~ msgstr "Amarelo"
-
-#, fuzzy
-#~ msgid ""
-#~ "This unit has been slowed. It emits no zone of control, moves at half "
-#~ "speed and enemies will be able to strike earlier once during a fight."
-#~ msgstr ""
-#~ "Esta unidade foi tornada lenta. Ela se move na metade da velocidade "
-#~ "normal e causa um ataque a menos que o normal em combate."
 
 #~ msgid "Basic Training"
 #~ msgstr "Treinamento Básico"
