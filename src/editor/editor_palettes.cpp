@@ -157,7 +157,7 @@ void terrain_palette::update_selected_terrains(void) {
 std::string terrain_palette::get_terrain_string(const gamemap::TERRAIN t) {
 	std::stringstream str;
 	const std::string& name = map_.get_terrain_info(t).name();
-	const std::string& underlying = map_.underlying_terrain(t);
+	const std::string& underlying = map_.underlying_union_terrain(t);
 	str << name;
 	if(underlying.size() != 1 || underlying[0] != t) {
 		str << " (";
