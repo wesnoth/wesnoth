@@ -592,7 +592,7 @@ void combatant::fight(combatant &opp)
 				  summary, opp.summary);
 
 	untouched = 1.0;
-	opp.untouched *= 1.0;
+	opp.untouched = 1.0;
 	unsigned max_attacks = maximum(hit_chances_.size(),
 								   opp.hit_chances_.size());
 
@@ -603,14 +603,15 @@ void combatant::fight(combatant &opp)
 		for (i = 0; i < max_attacks; i++) {
 			if (i < hit_chances_.size()) {
 				debug(("A strikes\n"));
-				m.receive_blow_b(damage_, hit_chances_[i], slows_, drains_);
+				m.receive_blow_b(damage_, hit_chances_[i],
+								 slows_ && !opp.slowed_, drains_);
 				m.dump();
 				opp.untouched *= (1 - hit_chances_[i]);
 			}
 			if (i < opp.hit_chances_.size()) {
 				debug(("B strikes\n"));
 				m.receive_blow_a(opp.damage_, opp.hit_chances_[i],
-								 opp.slows_, opp.drains_);
+								 opp.slows_ && !slowed_, opp.drains_);
 				m.dump();
 				untouched *= (1 - opp.hit_chances_[i]);
 			}
@@ -753,7 +754,7 @@ static combatant *parse_unit(char ***argv,
 							 bool *slowsp = NULL)
 {
 	unsigned damage, num_attacks, hp, max_hp, hit_chance;
-	bool slows, drains, berserk, swarm, firststrike;
+	bool slows, slowed, drains, berserk, swarm, firststrike;
 	combatant *u;
 
 	damage = atoi((*argv)[1]);
@@ -761,6 +762,7 @@ static combatant *parse_unit(char ***argv,
 	hp = max_hp = atoi((*argv)[3]);
 	hit_chance = atoi((*argv)[4]);
 	slows = false;
+	slowed = false;
 	drains = false;
 	berserk = false;
 	swarm = false;
@@ -790,8 +792,10 @@ static combatant *parse_unit(char ***argv,
 			}
 			drains = true;
 		}
-		if (strstr((*argv)[5], "slow"))
+		if (strstr((*argv)[5], "slows"))
 			slows = true;
+		if (strstr((*argv)[5], "slowed"))
+			slowed = true;
 		if (strstr((*argv)[5], "berserk"))
 			berserk = true;
 		if (strstr((*argv)[5], "firststrike"))
@@ -807,7 +811,7 @@ static combatant *parse_unit(char ***argv,
 	} else {
 		*argv += 4;
 	}
-	u = new combatant(hp, max_hp, false, true);
+	u = new combatant(hp, max_hp, slowed, true);
 	u->set_weapon(num_attacks, drains, berserk, swarm, firststrike);
 	u->set_effectiveness(damage, hit_chance/100.0, slows);
 	return u;
@@ -825,12 +829,12 @@ int main(int argc, char *argv[])
 		run(argv[1] ? atoi(argv[1]) : 0);
 
 	if (argc < 9) {
-		fprintf(stderr,"Usage: %s <damage> <attacks> <hp> <hitprob> [drain,slow,swarm,firststrike,berserk,maxhp=<num>] <damage> <attacks> <hp> <hitprob> [drain,slow,berserk,firststrike,swarm,maxhp=<num>] ...",
+		fprintf(stderr,"Usage: %s <damage> <attacks> <hp> <hitprob> [drain,slows,slowed,swarm,firststrike,berserk,maxhp=<num>] <damage> <attacks> <hp> <hitprob> [drain,slows,slowed,berserk,firststrike,swarm,maxhp=<num>] ...",
 				argv[0]);
 		exit(1);
 	}
 
-		def = parse_unit(&argv, &damage, &hit_chance, &slows);
+	def = parse_unit(&argv, &damage, &hit_chance, &slows);
 	for (i = 0; argv[1]; i++)
 		att[i] = parse_unit(&argv);
 	att[i] = NULL;
