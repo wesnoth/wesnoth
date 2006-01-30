@@ -444,8 +444,7 @@ struct combatant
 
 	// Only used in benchmarking.
 	void reset();
-	void print(const char label[], unsigned int battle, double touched = 0.0)
-		const;
+	void print(const char label[], unsigned int battle) const;
 
 	// Resulting probability distribution (may NOT be as large as max_hp)
 	std::vector<double> hp_dist;
@@ -660,7 +659,7 @@ void combatant::fight(combatant &opp)
   } while (0)
 
 #ifdef CHECK
-void combatant::print(const char label[], unsigned int battle, double touched) const
+void combatant::print(const char label[], unsigned int battle) const
 {
 	printf("#%u: %s: %u %u %u %2g%% ", battle,
 		   label, damage_, base_num_attacks_, hp_, base_hit_chance_*100.0);
@@ -675,14 +674,13 @@ void combatant::print(const char label[], unsigned int battle, double touched) c
 	if (firststrike_)
 		printf("firststrike,");
 	printf("maxhp=%u ", hp_dist.size()-1);
-	if (touched != 0.0)
-		printf(" %.2f", touched);
+	printf(" %.2f", untouched);
 	for (unsigned int i = 0; i < hp_dist.size(); i++)
 		printf(" %.2f", hp_dist[i] * 100);
 	printf("\n");
 }
 #else  // ... BENCHMARK
-void combatant::print(const char label[], unsigned int battle, double touched) const
+void combatant::print(const char label[], unsigned int battle) const
 {
 }
 #endif
@@ -709,21 +707,22 @@ static void run(unsigned specific_battle)
 			if (i == j)
 				continue;
 			for (k = 0; k < NUM_UNITS; k++) {
-				double touched;
+				double untouched;
 				if (i == k || j == k)
 					continue;
 				battle++;
 				if (battle < specific_battle)
 					continue;
 				u[j]->fight(*u[i]);
-				touched = 1 - u[i]->untouched;
+				untouched = u[i]->untouched;
 				// We need this here, because swarm means out num hits
 				// can change.
 				u[i]->set_effectiveness((i % 7) + 2, 0.3 + (i % 6)*0.1,
 										(i % 8) == 0);
 				u[k]->fight(*u[i]);
-				touched *= 1 - u[i]->untouched;
-				u[i]->print("Defender", battle, touched);
+				// We want cumulative untouched for defender.
+				u[i]->untouched *= untouched;
+				u[i]->print("Defender", battle);
 				u[j]->print("Attacker #1", battle);
 				u[k]->print("Attacker #2", battle);
 				u[i]->reset();

@@ -240,10 +240,11 @@ static void draw_results(const double res[], const struct unit *u,
 }
 
 static void compare_results(const double res[], const struct unit *u,
-			    const char label[], unsigned battle, double def_touched, FILE *f)
+			    const char label[], unsigned battle, double def_untouched, FILE *f)
 {
 	unsigned int i;
 	char line[128], cmp[128];
+	double val;
 
 	sprintf(cmp, "#%u: %s: %u %u %u %u%% ", battle,
 		label, u->damage, u->num_attacks, u->hp, u->hit_chance);
@@ -266,18 +267,18 @@ static void compare_results(const double res[], const struct unit *u,
 		barf("Battle %u is different: '%.*s' should be '%s'",
 		     battle, strlen(cmp), line, cmp);
 
-	if (def_touched != 0.0) {
-		double val;
-		if (fscanf(f, " %lf", &val) != 1)
-			barf("Malformed touched: %s hp %u battle %u", 
-			     label, i, battle);
-		if (abs(val - def_touched)*100 > 1.0)
+	if (fscanf(f, " %lf", &val) != 1)
+		barf("Malformed touched: %s hp %u battle %u", 
+		     label, i, battle);
+
+	/* We only calculate this for defender... */
+	if (def_untouched != 0.0) {
+		if (abs(val - def_untouched)*100 > 1.0)
 			barf("Expected %f touched, got %f battle %u",
-			     def_touched, val, battle);
+			     def_untouched, val, battle);
 	}
 
 	for (i = 0; i < u->max_hp+1; i++) {
-		double val;
 		if (fscanf(f, " %lf", &val) != 1)
 			barf("Malformed hp line: %s hp %u battle %u", 
 			     label, i, battle);
@@ -364,7 +365,7 @@ static void check(const char *filename)
 				check_sum(j_result, u[j].max_hp);
 				check_sum(k_result, u[k].max_hp);
 				compare_results(i_result, &u[i], "Defender",
-						battle, i_touched, f);
+						battle, 1 - i_touched, f);
 				compare_results(j_result, &u[j], "Attacker #1",
 						battle, 0.0, f);
 				compare_results(k_result, &u[k], "Attacker #2",
