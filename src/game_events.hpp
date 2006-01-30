@@ -57,6 +57,7 @@ struct manager {
 
 void write_events(config& cfg);
 
+bool matches_special_filter(const config& cfg, const vconfig filter);
 bool unit_matches_filter(const unit& u, const vconfig filter);
 bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter);
 bool unit_matches_filter(const unit& u, const vconfig filter);
@@ -65,11 +66,13 @@ bool unit_matches_filter(const unit& u, const vconfig filter);
 //which must be locations.
 bool fire(const std::string& event,
           const gamemap::location& loc1=gamemap::location::null_location,
-          const gamemap::location& loc2=gamemap::location::null_location);
+          const gamemap::location& loc2=gamemap::location::null_location,
+		  const config& data=config());
 
 void raise(const std::string& event,
           const gamemap::location& loc1=gamemap::location::null_location,
-          const gamemap::location& loc2=gamemap::location::null_location);
+          const gamemap::location& loc2=gamemap::location::null_location,
+		  const config& data=config());
 
 bool conditional_passed(const std::map<gamemap::location,unit>* units,
                         const vconfig cond);

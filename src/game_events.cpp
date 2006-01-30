@@ -161,12 +161,14 @@ bool events_init() { return screen != NULL; }
 
 struct queued_event {
 	queued_event(const std::string& name, const gamemap::location& loc1,
-	                                      const gamemap::location& loc2)
-			: name(name), loc1(loc1), loc2(loc2) {}
+	                                      const gamemap::location& loc2,
+										  const config& data)
+			: name(name), loc1(loc1), loc2(loc2),data(data) {}
 
 	std::string name;
 	gamemap::location loc1;
 	gamemap::location loc2;
+	config data;
 };
 
 std::deque<queued_event> events_queue;
@@ -200,10 +202,18 @@ public:
 	{
 		return cfg_.get_children("filter");
 	}
+	const vconfig::child_list first_special_filters()
+	{
+		return cfg_.get_children("special_filter");
+	}
 
 	const vconfig::child_list second_arg_filters()
 	{
 		return cfg_.get_children("filter_second");
+	}
+	const vconfig::child_list second_special_filters()
+	{
+		return cfg_.get_children("special_filter_second");
 	}
 
 	bool handle_event(const queued_event& event_info,
@@ -1632,6 +1642,18 @@ bool process_event(event_handler& handler, const queued_event& ev)
 			return false;
 		}
 	}
+	bool special_matches = false;
+	const vconfig::child_list first_special_filters = handler.first_special_filters();
+	for(vconfig::child_list::const_iterator ffi = first_special_filters.begin();
+	    ffi != first_special_filters.end(); ++ffi) {
+
+		if(unit1 != units->end() && game_events::matches_special_filter(ev.data,*ffi)) {
+			special_matches = true;
+		}
+	}
+	if(!special_matches) {
+		return false;
+	}
 
 	const vconfig::child_list second_filters = handler.second_arg_filters();
 	for(vconfig::child_list::const_iterator sfi = second_filters.begin();
@@ -1639,6 +1661,18 @@ bool process_event(event_handler& handler, const queued_event& ev)
 		if(unit2 == units->end() || !game_events::unit_matches_filter(unit2,*sfi)) {
 			return false;
 		}
+	}
+	special_matches = false;
+	const vconfig::child_list second_special_filters = handler.second_special_filters();
+	for(vconfig::child_list::const_iterator ffi = second_special_filters.begin();
+	    ffi != second_special_filters.end(); ++ffi) {
+
+		if(unit1 != units->end() && game_events::matches_special_filter(ev.data,*ffi)) {
+			special_matches = true;
+		}
+	}
+	if(!special_matches) {
+		return false;
 	}
 
 	//the event hasn't been filtered out, so execute the handler
@@ -1654,6 +1688,28 @@ bool process_event(event_handler& handler, const queued_event& ev)
 } //end anonymous namespace
 
 namespace game_events {
+
+bool matches_special_filter(const config& cfg, const vconfig filter)
+{
+	if(filter["weapon"] != "") {
+		if(filter["weapon"] != cfg["weapon"]) {
+			return false;
+		}
+	}
+	if(filter["terrain"] != "") {
+		if(filter["terrain"] != cfg["terrain"]) {
+			return false;
+		}
+	}
+	
+	const vconfig::child_list& nots = filter.get_children("not");
+	for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
+		if(matches_special_filter(cfg,*i)) {
+			return false;
+		}
+	}
+	return true;
+}
 
 bool unit_matches_filter(const unit& u, const vconfig filter)
 {
@@ -1753,19 +1809,21 @@ manager::~manager() {
 
 void raise(const std::string& event,
            const gamemap::location& loc1,
-           const gamemap::location& loc2)
+           const gamemap::location& loc2,
+		   const config& data)
 {
 	if(!events_init())
 		return;
 
-	events_queue.push_back(queued_event(event,loc1,loc2));
+	events_queue.push_back(queued_event(event,loc1,loc2,data));
 }
 
 bool fire(const std::string& event,
           const gamemap::location& loc1,
-          const gamemap::location& loc2)
+          const gamemap::location& loc2,
+		  const config& data)
 {
-	raise(event,loc1,loc2);
+	raise(event,loc1,loc2,data);
 	return pump();
 }
 

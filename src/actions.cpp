@@ -782,7 +782,14 @@ void attack(display& gui, const gamemap& map,
 				const int defender_side = d->second.side();
 				const int attacker_side = a->second.side();
 				LOG_NG << "firing attacker_hits event\n";
-				game_events::fire("attacker_hits",attacker,defender);
+				config dat;
+				dat["weapon"]=a->second.attacks()[attack_with].name();
+				gamemap::TERRAIN att_terrain = map[attacker.x][attacker.y];
+				const terrain_type& att_ttype = map.get_terrain_info(att_terrain);
+				std::string terrain_letter("");
+				terrain_letter += att_ttype.letter();
+				dat["terrain"]=terrain_letter;
+				game_events::fire("attacker_hits",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
 				if(a == units.end() || d == units.end()) {
@@ -791,7 +798,7 @@ void attack(display& gui, const gamemap& map,
 					gui.recalculate_minimap();
 					gui.update_display();
 					LOG_NG << "firing attack_end event\n";
-					game_events::fire("attack_end",attacker,defender);
+					game_events::fire("attack_end",attacker,defender,dat);
 					a = units.find(attacker);
 					d = units.find(defender);
 					break;
@@ -800,7 +807,14 @@ void attack(display& gui, const gamemap& map,
 				const int defender_side = d->second.side();
 				const int attacker_side = a->second.side();
 				LOG_NG << "firing attacker_misses event\n";
-				game_events::fire("attacker_misses",attacker,defender);
+				config dat;
+				dat["weapon"]=a->second.attacks()[attack_with].name();
+				gamemap::TERRAIN att_terrain = map[attacker.x][attacker.y];
+				const terrain_type& att_ttype = map.get_terrain_info(att_terrain);
+				std::string terrain_letter("");
+				terrain_letter += att_ttype.letter();
+				dat["terrain"]=terrain_letter;
+				game_events::fire("attacker_misses",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
 				if(a == units.end() || d == units.end()) {
@@ -998,7 +1012,14 @@ void attack(display& gui, const gamemap& map,
 				const int defender_side = d->second.side();
 				const int attacker_side = a->second.side();
 				LOG_NG << "firing defender_hits event\n";
-				game_events::fire("defender_hits",attacker,defender);
+				config dat;
+				dat["weapon"]=d->second.attacks()[stats.defend_with].name();
+				gamemap::TERRAIN att_terrain = map[defender.x][defender.y];
+				const terrain_type& att_ttype = map.get_terrain_info(att_terrain);
+				std::string terrain_letter("");
+				terrain_letter += att_ttype.letter();
+				dat["terrain"]=terrain_letter;
+				game_events::fire("defender_hits",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
 				if(a == units.end() || d == units.end()) {
@@ -1014,7 +1035,14 @@ void attack(display& gui, const gamemap& map,
 				const int defender_side = d->second.side();
 				const int attacker_side = a->second.side();
 				LOG_NG << "firing defender_misses event\n";
-				game_events::fire("defender_misses",attacker,defender);
+				config dat;
+				dat["weapon"]=a->second.attacks()[stats.defend_with].name();
+				gamemap::TERRAIN att_terrain = map[defender.x][defender.y];
+				const terrain_type& att_ttype = map.get_terrain_info(att_terrain);
+				std::string terrain_letter("");
+				terrain_letter += att_ttype.letter();
+				dat["terrain"]=terrain_letter;
+				game_events::fire("defender_misses",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
 				if(a == units.end() || d == units.end()) {
