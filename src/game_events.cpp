@@ -1133,7 +1133,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(speaker != units->end()) {
 			LOG_DP << "scrolling to speaker..\n";
 			screen->highlight_hex(speaker->first);
-			screen->scroll_to_tile(speaker->first.x,speaker->first.y);
+			screen->scroll_to_tile(speaker->first.x,speaker->first.y-1);
 
 			if(image.empty()) {
 				image = speaker->second.type().image_profile();
@@ -1172,9 +1172,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		//to be made, show the dialog.
 		if(get_replay_source().at_end() || options.empty()) {
 			const std::string msg = utils::interpolate_variables_into_string(cfg["message"], *state_of_game);
+			const SDL_Rect& map_area = screen->map_area();
 			option_chosen = gui::show_dialog(*screen,surface,caption,msg,
 		                        options.empty() ? gui::MESSAGE : gui::OK_ONLY,
-		                        options.empty() ? NULL : &options);
+		                        options.empty() ? NULL : &options,
+								NULL, "", NULL, 256, NULL, NULL, -1, map_area.y);
 
 			LOG_DP << "showed dialog...\n";
 
