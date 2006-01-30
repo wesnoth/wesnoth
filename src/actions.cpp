@@ -1241,9 +1241,10 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		if((int)i->second.side() == side) {
 			if(i->second.hitpoints() < i->second.max_hitpoints() || i->second.poisoned()){
 				if(map.gives_healing(i->first)) {
-					amount_healed = game_config::cure_amount;
-				} else if(i->second.type().regenerates()) {
-					amount_healed = i->second.type().regenerate_amount();
+					amount_healed = maximum<int>(amount_healed,game_config::cure_amount);
+				}
+				if(i->second.type().regenerates()) {
+					amount_healed = maximum<int>(amount_healed,i->second.type().regenerate_amount());
 				}
 			}
 			if(amount_healed != 0)
