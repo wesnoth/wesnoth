@@ -774,10 +774,47 @@ void attack(display& gui, const gamemap& map,
 					damage_defender_takes = results_damage;
 				}
 			}
-
+			
 			bool dies = unit_display::unit_attack(gui,units,map,attacker,defender,
 				            damage_defender_takes,
 							a->second.attacks()[attack_with]);
+			if(hits) {
+				const int defender_side = d->second.side();
+				const int attacker_side = a->second.side();
+				LOG_NG << "firing attacker_hits event\n";
+				game_events::fire("attacker_hits",attacker,defender);
+				a = units.find(attacker);
+				d = units.find(defender);
+				if(a == units.end() || d == units.end()) {
+					recalculate_fog(map,state,info,units,teams,attacker_side-1);
+					recalculate_fog(map,state,info,units,teams,defender_side-1);
+					gui.recalculate_minimap();
+					gui.update_display();
+					LOG_NG << "firing attack_end event\n";
+					game_events::fire("attack_end",attacker,defender);
+					a = units.find(attacker);
+					d = units.find(defender);
+					break;
+				}
+			} else {
+				const int defender_side = d->second.side();
+				const int attacker_side = a->second.side();
+				LOG_NG << "firing attacker_misses event\n";
+				game_events::fire("attacker_misses",attacker,defender);
+				a = units.find(attacker);
+				d = units.find(defender);
+				if(a == units.end() || d == units.end()) {
+					recalculate_fog(map,state,info,units,teams,attacker_side-1);
+					recalculate_fog(map,state,info,units,teams,defender_side-1);
+					gui.recalculate_minimap();
+					gui.update_display();
+					LOG_NG << "firing attack_end event\n";
+					game_events::fire("attack_end",attacker,defender);
+					a = units.find(attacker);
+					d = units.find(defender);
+					break;
+				}
+			}
 
 			LOG_NG << "done attacking\n";
 
@@ -832,6 +869,8 @@ void attack(display& gui, const gamemap& map,
 				gamemap::location attacker_loc = a->first;
 				std::string undead_variation = d->second.type().undead_variation();
 				const int defender_side = d->second.side();
+				LOG_NG << "firing attack_end event\n";
+				game_events::fire("attack_end",attacker,defender);
 				LOG_NG << "firing die event\n";
 				game_events::fire("die",loc,a->first);
 				d = units.find(loc);
@@ -955,6 +994,39 @@ void attack(display& gui, const gamemap& map,
 			bool dies = unit_display::unit_attack(gui,units,map,defender,attacker,
 			               damage_attacker_takes,
 						   d->second.attacks()[stats.defend_with]);
+			if(hits) {
+				const int defender_side = d->second.side();
+				const int attacker_side = a->second.side();
+				LOG_NG << "firing defender_hits event\n";
+				game_events::fire("defender_hits",attacker,defender);
+				a = units.find(attacker);
+				d = units.find(defender);
+				if(a == units.end() || d == units.end()) {
+					recalculate_fog(map,state,info,units,teams,attacker_side-1);
+					recalculate_fog(map,state,info,units,teams,defender_side-1);
+					gui.recalculate_minimap();
+					gui.update_display();
+					LOG_NG << "firing attack_end event\n";
+					game_events::fire("attack_end",attacker,defender);
+					break;
+				}
+			} else {
+				const int defender_side = d->second.side();
+				const int attacker_side = a->second.side();
+				LOG_NG << "firing defender_misses event\n";
+				game_events::fire("defender_misses",attacker,defender);
+				a = units.find(attacker);
+				d = units.find(defender);
+				if(a == units.end() || d == units.end()) {
+					recalculate_fog(map,state,info,units,teams,attacker_side-1);
+					recalculate_fog(map,state,info,units,teams,defender_side-1);
+					gui.recalculate_minimap();
+					gui.update_display();
+					LOG_NG << "firing attack_end event\n";
+					game_events::fire("attack_end",attacker,defender);
+					break;
+				}
+			}
 
 			attack_stats.defend_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
 			                           : statistics::attack_context::MISSES);
@@ -1005,6 +1077,9 @@ void attack(display& gui, const gamemap& map,
 				gamemap::location loc = a->first;
 				gamemap::location defender_loc = d->first;
 				const int attacker_side = a->second.side();
+				LOG_NG << "firing attack_end event\n";
+				game_events::fire("attack_end",attacker,defender);
+				LOG_NG << "firing die event\n";
 				game_events::fire("die",loc,d->first);
 				a = units.find(loc);
 				d = units.end();
@@ -1079,13 +1154,19 @@ void attack(display& gui, const gamemap& map,
 			stats.ndefends = orig_defends;
 			--to_the_death;
 		}
+		if(stats.nattacks <= 0 && stats.ndefends <= 0) {
+			LOG_NG << "firing attack_end event\n";
+			game_events::fire("attack_end",attacker,defender);
+			a = units.find(attacker);
+			d = units.find(defender);
+		}
 	}
 
-	if(attackerxp) {
+	if(attackerxp && a != units.end()) {
 		a->second.get_experience(attackerxp);
 	}
 
-	if(defenderxp) {
+	if(defenderxp && d != units.end()) {
 		d->second.get_experience(defenderxp);
 	}
 
