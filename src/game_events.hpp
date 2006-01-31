@@ -57,7 +57,7 @@ struct manager {
 
 void write_events(config& cfg);
 
-bool matches_special_filter(const config& cfg, const vconfig filter);
+bool matches_special_filter(const config* cfg, const vconfig filter);
 bool unit_matches_filter(const unit& u, const vconfig filter);
 bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter);
 bool unit_matches_filter(const unit& u, const vconfig filter);

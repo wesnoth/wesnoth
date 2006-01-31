@@ -1644,10 +1644,11 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	}
 	bool special_matches = false;
 	const vconfig::child_list first_special_filters = handler.first_special_filters();
+	special_matches = first_special_filters.size() ? false : true;
 	for(vconfig::child_list::const_iterator ffi = first_special_filters.begin();
 	    ffi != first_special_filters.end(); ++ffi) {
 
-		if(unit1 != units->end() && game_events::matches_special_filter(ev.data,*ffi)) {
+		if(unit1 != units->end() && game_events::matches_special_filter(ev.data.child("first"),*ffi)) {
 			special_matches = true;
 		}
 	}
@@ -1662,12 +1663,12 @@ bool process_event(event_handler& handler, const queued_event& ev)
 			return false;
 		}
 	}
-	special_matches = false;
 	const vconfig::child_list second_special_filters = handler.second_special_filters();
+	special_matches = second_special_filters.size() ? false : true;
 	for(vconfig::child_list::const_iterator ffi = second_special_filters.begin();
 	    ffi != second_special_filters.end(); ++ffi) {
 
-		if(unit1 != units->end() && game_events::matches_special_filter(ev.data,*ffi)) {
+		if(unit2 != units->end() && game_events::matches_special_filter(ev.data.child("second"),*ffi)) {
 			special_matches = true;
 		}
 	}
@@ -1689,15 +1690,15 @@ bool process_event(event_handler& handler, const queued_event& ev)
 
 namespace game_events {
 
-bool matches_special_filter(const config& cfg, const vconfig filter)
+bool matches_special_filter(const config* cfg, const vconfig filter)
 {
 	if(filter["weapon"] != "") {
-		if(filter["weapon"] != cfg["weapon"]) {
+		if(filter["weapon"] != (*cfg)["weapon"]) {
 			return false;
 		}
 	}
 	if(filter["terrain"] != "") {
-		if(filter["terrain"] != cfg["terrain"]) {
+		if(filter["terrain"] != (*cfg)["terrain"]) {
 			return false;
 		}
 	}
