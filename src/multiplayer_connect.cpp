@@ -908,7 +908,7 @@ void connect::lists_init()
 			std::vector<std::string>::const_iterator itor = std::find(team_names_.begin(), team_names_.end(), team_name);
 			if(itor == team_names_.end()) {
 				team_names_.push_back(team_name);
-				player_teams_.push_back(team_prefix_ + team_name.str());
+				player_teams_.push_back(team_name.str());
 			}
 		}
 	} else {
