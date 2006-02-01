@@ -1635,7 +1635,8 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	unit_map::iterator unit2 = units->find(ev.loc2);
 
 	const vconfig::child_list first_filters = handler.first_arg_filters();
-	for(vconfig::child_list::const_iterator ffi = first_filters.begin();
+	vconfig::child_list::const_iterator ffi;
+	for(ffi = first_filters.begin();
 	    ffi != first_filters.end(); ++ffi) {
 
 		if(unit1 == units->end() || !game_events::unit_matches_filter(unit1,*ffi)) {
@@ -1645,7 +1646,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	bool special_matches = false;
 	const vconfig::child_list first_special_filters = handler.first_special_filters();
 	special_matches = first_special_filters.size() ? false : true;
-	for(vconfig::child_list::const_iterator ffi = first_special_filters.begin();
+	for(ffi = first_special_filters.begin();
 	    ffi != first_special_filters.end(); ++ffi) {
 
 		if(unit1 != units->end() && game_events::matches_special_filter(ev.data.child("first"),*ffi)) {
@@ -1665,7 +1666,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	}
 	const vconfig::child_list second_special_filters = handler.second_special_filters();
 	special_matches = second_special_filters.size() ? false : true;
-	for(vconfig::child_list::const_iterator ffi = second_special_filters.begin();
+	for(ffi = second_special_filters.begin();
 	    ffi != second_special_filters.end(); ++ffi) {
 
 		if(unit2 != units->end() && game_events::matches_special_filter(ev.data.child("second"),*ffi)) {
