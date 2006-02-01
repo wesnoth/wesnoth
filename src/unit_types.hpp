@@ -111,7 +111,7 @@ public:
 	bool is_flying() const;
 
 private:
-	config cfg_;
+	const config cfg_;
 
 	mutable std::map<gamemap::TERRAIN,int> moveCosts_;
 	mutable std::map<gamemap::TERRAIN,int> defenseMods_;

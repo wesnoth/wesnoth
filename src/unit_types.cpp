@@ -615,8 +615,6 @@ unit_type::unit_type(const unit_type& o)
 	}
 }
 
-#include "serialization/binary_or_text.hpp"
-#include <fstream>
 
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
