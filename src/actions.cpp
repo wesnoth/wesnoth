@@ -786,7 +786,7 @@ void attack(display& gui, const gamemap& map,
 				dat.add_child("first");
 				dat.add_child("second");
 				(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
-				(*(dat.child("second")))["weapon"]=d->second.attacks()[stats.defend_with].name();
+				(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
 				gamemap::TERRAIN att_terrain = map[attacker.x][attacker.y];
 				std::string terrain_letter("");
 				terrain_letter += att_terrain;
@@ -817,7 +817,7 @@ void attack(display& gui, const gamemap& map,
 				dat.add_child("first");
 				dat.add_child("second");
 				(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
-				(*(dat.child("second")))["weapon"]=d->second.attacks()[stats.defend_with].name();
+				(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
 				gamemap::TERRAIN att_terrain = map[attacker.x][attacker.y];
 				std::string terrain_letter("");
 				terrain_letter += att_terrain;
@@ -1028,7 +1028,7 @@ void attack(display& gui, const gamemap& map,
 				dat.add_child("first");
 				dat.add_child("second");
 				(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
-				(*(dat.child("second")))["weapon"]=d->second.attacks()[stats.defend_with].name();
+				(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
 				gamemap::TERRAIN att_terrain = map[attacker.x][attacker.y];
 				std::string terrain_letter("");
 				terrain_letter += att_terrain;
@@ -1057,7 +1057,7 @@ void attack(display& gui, const gamemap& map,
 				dat.add_child("first");
 				dat.add_child("second");
 				(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
-				(*(dat.child("second")))["weapon"]=d->second.attacks()[stats.defend_with].name();
+				(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
 				gamemap::TERRAIN att_terrain = map[attacker.x][attacker.y];
 				std::string terrain_letter("");
 				terrain_letter += att_terrain;
