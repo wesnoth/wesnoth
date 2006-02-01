@@ -615,6 +615,8 @@ unit_type::unit_type(const unit_type& o)
 	}
 }
 
+#include "serialization/binary_or_text.hpp"
+#include <fstream>
 
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
@@ -630,12 +632,20 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	const config* const male_cfg = cfg.child("male");
 	if(male_cfg != NULL) {
-		gender_types_[unit_race::MALE] = new unit_type(*male_cfg,mv_types,races,traits);
+		config m_cfg(cfg);
+		m_cfg = m_cfg.merge_with(*male_cfg);
+		m_cfg.clear_children("male");
+		m_cfg.clear_children("female");
+		gender_types_[unit_race::MALE] = new unit_type(m_cfg,mv_types,races,traits);
 	}
 
 	const config* const female_cfg = cfg.child("female");
 	if(female_cfg != NULL) {
-		gender_types_[unit_race::FEMALE] = new unit_type(*female_cfg,mv_types,races,traits);
+		config f_cfg(cfg);
+		f_cfg = f_cfg.merge_with(*female_cfg);
+		f_cfg.clear_children("male");
+		f_cfg.clear_children("female");
+		gender_types_[unit_race::FEMALE] = new unit_type(f_cfg,mv_types,races,traits);
 	}
 
 	const std::vector<std::string> genders = utils::split(cfg["gender"]);

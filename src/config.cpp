@@ -527,6 +527,40 @@ void config::apply_diff(const config& diff)
 	}
 }
 
+config config::merge_with(const config& c) const
+{
+	config n(*this);
+	for(string_map::const_iterator i = c.values.begin(); i != c.values.end(); ++i) {
+		n.values[i->first] = i->second;
+	}
+	const child_map& child_changes = c.all_children();
+	child_map::const_iterator i;
+//	std::map<std::string , size_t> index_map;
+	for(i = child_changes.begin(); i != child_changes.end(); ++i) {
+//		const size_t index = index_map[(*i).first]++;
+		
+		size_t index = 0;
+		for(const_child_iterator j = i->second.begin(); j != i->second.end(); ++j) {
+			//const std::pair<const std::string*,const config*> item = *j;
+			const config* item = *j;
+			
+			if(i->first.empty()) {
+				continue;
+			}
+
+			const child_map::iterator itor = n.children.find(i->first);
+			//const child_map::iterator itor = children.find(*item.first);
+			if(itor == children.end() || index >= itor->second.size()) {
+				throw error("error in merge_with: could not find element '" + i->first + "'");
+			}
+
+			*(itor->second[index]) = itor->second[index]->merge_with(*item);
+			index++;
+		}
+	}
+	return n;
+}
+
 void config::reset_translation() const
 {
 	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {

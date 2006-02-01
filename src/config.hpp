@@ -119,7 +119,9 @@ public:
 	config get_diff(const config& c) const;
 
 	void apply_diff(const config& diff); //throw error
-
+	
+	config merge_with(const config& c) const;
+	
 	//append data from another config object to this one. attributes in the
 	//latter config object will clobber attributes in this one.
 	void append(const config& cfg);

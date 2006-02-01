@@ -111,7 +111,7 @@ public:
 	bool is_flying() const;
 
 private:
-	const config& cfg_;
+	config cfg_;
 
 	mutable std::map<gamemap::TERRAIN,int> moveCosts_;
 	mutable std::map<gamemap::TERRAIN,int> defenseMods_;
@@ -265,7 +265,7 @@ private:
 	typedef std::map<std::string,unit_type*> variations_map;
 	variations_map variations_;
 
-	const config& cfg_;
+	config cfg_;
 
 	const unit_race* race_;
 
