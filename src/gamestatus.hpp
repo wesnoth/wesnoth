@@ -26,8 +26,6 @@ struct time_of_day
 	explicit time_of_day(const config& cfg);
 	void write(config& cfg) const;
 
-	bool operator <(const time_of_day& o) const;
-
 	//the % bonus lawful units receive. chaotic units will
 	//receive -lawful_bonus.
 	int lawful_bonus;
@@ -36,6 +34,10 @@ struct time_of_day
 	std::string image;
 	t_string name;
 	std::string id;
+	std::string lighter_id;
+	std::string darker_id;
+	time_of_day* lighter;
+	time_of_day* darker;
 
 	//the image that is to be laid over all images while it's this
 	//time of day

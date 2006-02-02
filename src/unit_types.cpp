@@ -861,7 +861,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				} else {
 					ability_tooltips_.push_back("illuminates");
 				}
-				illuminates_ = maximum<int>(illuminates_,lexical_cast_default<int>((**ab)["level"],1));
+				illuminates_ += lexical_cast_default<int>((**ab)["level"],1);
 				illuminates_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
