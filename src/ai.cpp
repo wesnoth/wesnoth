@@ -809,6 +809,35 @@ void ai::do_move()
 		remove_unit_from_moves(leader->first,srcdst,dstsrc);
 	}
 
+	//execute gotos - first collect gotos in a list
+	std::vector<gamemap::location> gotos;
+
+	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
+		if(ui->second.get_goto() == ui->first) {
+			ui->second.set_goto(gamemap::location());
+		} else if(ui->second.side() == team_num_ && map_.on_board(ui->second.get_goto())) {
+			gotos.push_back(ui->first);
+		}
+	}
+
+	for(std::vector<gamemap::location>::const_iterator g = gotos.begin(); g != gotos.end(); ++g) {
+		unit_map::const_iterator ui = units_.find(*g);
+		int closest_distance = -1;
+		std::pair<location,location> closest_move;
+		for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
+			const int distance = distance_between(ui->first,ui->second.get_goto());
+			if(closest_distance == -1 || distance < closest_distance) {
+				closest_distance = distance;
+				closest_move = *i;
+			}
+		}
+
+		if(closest_distance != -1) {
+			move_unit(ui->first,closest_move.first,possible_moves);
+		}
+	}
+	
+	
 	std::vector<attack_analysis> analysis;
 
 	LOG_AI << "combat phase\n";
