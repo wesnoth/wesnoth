@@ -283,7 +283,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			config cfg;
 			do {
 				cfg.clear();
-				network::connection data_res = gui::network_data_dialog(disp,
+				network::connection data_res = gui::network_receive_dialog(disp,
 						_("Downloading next level..."), cfg);
 				if(!data_res)
 					throw network::error(_("Connection timed out"));

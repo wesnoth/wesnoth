@@ -166,7 +166,7 @@ void wait::process_event()
 void wait::join_game(bool observe)
 {
 	for(;;) {
-		network::connection data_res = gui::network_data_dialog(disp(),
+		network::connection data_res = gui::network_receive_dialog(disp(),
 				_("Getting game data..."), level_);
 		check_response(data_res, level_);
 

@@ -837,10 +837,8 @@ int show_dialog(display& disp, surface image,
 
 namespace gui {
 
-network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num)
+	network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))
 {
-	const std::string title = _("Receiving data...");
-
 	const size_t width = 300;
 	const size_t height = 80;
 	const size_t border = 20;
@@ -853,7 +851,7 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
 	surface_restorer restorer;
-	gui::draw_dialog(left,top,width,height,disp.video(),title,NULL,&buttons_ptr,&restorer);
+	gui::draw_dialog(left,top,width,height,disp.video(),msg,NULL,&buttons_ptr,&restorer);
 
 	const SDL_Rect progress_rect = {left+border,top+border,width-border*2,height-border*2};
 	gui::progress_bar progress(disp.video());
@@ -862,12 +860,12 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 	events::raise_draw_event();
 	disp.flip();
 
-	network::statistics old_stats = network::get_receive_stats(connection_num);
+	network::statistics old_stats = get_stats(connection_num);
 
 	cfg.clear();
 	for(;;) {
 		const network::connection res = network::receive_data(cfg,connection_num,100);
-		const network::statistics stats = network::get_receive_stats(connection_num);
+		const network::statistics stats = get_stats(connection_num);
 		if(stats.current_max != 0 && stats != old_stats) {
 			old_stats = stats;
 			progress.set_progress_percent((stats.current*100)/stats.current_max);
@@ -888,6 +886,18 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 			return res;
 		}
 	}
+}
+
+network::connection network_send_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num)
+{
+	return network_data_dialog(disp, msg, cfg, connection_num,
+							   network::get_send_stats);
+}
+
+network::connection network_receive_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num)
+{
+	return network_data_dialog(disp, msg, cfg, connection_num,
+							   network::get_receive_stats);
 }
 
 namespace {

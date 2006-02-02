@@ -852,7 +852,7 @@ void game_controller::download_campaigns()
 		cfg.add_child("request_campaign_list");
 		network::send_data(cfg,sock);
 
-		network::connection res = gui::network_data_dialog(disp(),_("Awaiting response from server"),cfg,sock);
+		network::connection res = gui::network_receive_dialog(disp(),_("Asking for campaign list"),cfg,sock);
 		if(!res) {
 			return;
 		}
@@ -971,7 +971,7 @@ void game_controller::download_campaigns()
 		request.add_child("request_campaign")["name"] = campaigns[index];
 		network::send_data(request,sock);
 
-		res = gui::network_data_dialog(disp(),_("Downloading campaign..."),cfg,sock);
+		res = gui::network_receive_dialog(disp(),_("Downloading campaign..."),cfg,sock);
 		if(!res) {
 			return;
 		}
@@ -1065,7 +1065,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	std::cerr << "uploading campaign...\n";
 	network::send_data(data,sock);
 
-	sock = gui::network_data_dialog(disp(),_("Awaiting response from server"),data,sock);
+	sock = gui::network_send_dialog(disp(),_("Sending campaign"),data,sock);
 	if(!sock) {
 		gui::show_error_message(disp(), _("Connection timed out"));
 	} else if(data.child("error")) {

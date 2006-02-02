@@ -130,8 +130,8 @@ server_type open_connection(display& disp, const std::string& original_host)
 		}
 
 		data.clear();
-		network::connection data_res = gui::network_data_dialog(
-				disp,_("Connecting to remote host..."),data);
+		network::connection data_res = gui::network_receive_dialog(
+				disp,_("Reading from Server..."),data);
 		mp::check_response(data_res, data);
 
 		// Backwards-compatibility "version" attribute
