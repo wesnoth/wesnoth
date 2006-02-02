@@ -268,6 +268,9 @@ std::vector<std::string> get_text() {
 		"-   Salamon András (ott)",
 		"-   Széll Tamás (TomJoad)",
 
+		"_" N_("+Indonesian Translation"),
+		"-  Benny Lin",
+
 		"_" N_("+Italian Translation"),
 		"-   Alessio D'Ascanio (otaku)",
 		"-   Americo Iacovizzi (DarkAmex)",
