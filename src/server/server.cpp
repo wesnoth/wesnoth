@@ -348,7 +348,7 @@ std::string server::process_command(const std::string& cmd)
 
 	} else {
 		out << "command '" << command << "' is not recognized";
-		out << "available commands are: msg <message>, status, metrics, ban [<nick>], unban <nick>, kick <nick>";
+		out << "available commands are: msg <message>, motd <message>, status, metrics, ban [<nick>], unban <nick>, kick <nick>, kban <nick> ";
 	}
 
 	return out.str();
@@ -912,7 +912,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		const bool res = g->take_side(sock,data);
 		config response;
 		if(res) {
-			std::cerr << "played joined side\n";
+			std::cerr << "player joined side\n";
 			response["side_secured"] = side->second;
 
 			//update the number of available slots
