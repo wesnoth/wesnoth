@@ -104,7 +104,8 @@ SVN trunk (1.1+svn):
    * abilities are now more configurable in a [abilities] tag, old ability=
      tag deprecated (patch #498), cure is available via [heals] ability tag
    * all currently used abilities added as macros in data/abilities.cfg
-   * abilities can receive time of day and terrain [filter]
+   * abilities can receive time of day and terrain [filter] (currently only
+     [hides], [steadfast], [illuminates])
      - ambush and nightstalk are available via the new [hides] ability tag
    * added a optional random_leader= tag inside a [multiplayer_side] to
      specify a different list of randomly selectable leaders
