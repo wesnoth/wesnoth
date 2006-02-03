@@ -40,7 +40,7 @@ config* player::config_address()
 namespace
 {
 	const size_t MaxMessages = 4;
-	const size_t TimePeriod = 5;
+	const size_t TimePeriod = 10;
 }
 
 
