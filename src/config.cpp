@@ -550,7 +550,7 @@ config config::merge_with(const config& c) const
 
 			const child_map::iterator itor = n.children.find(i->first);
 			//const child_map::iterator itor = children.find(*item.first);
-			if(itor == children.end() || index >= itor->second.size()) {
+			if(itor == n.children.end() || index >= itor->second.size()) {
 				throw error("error in merge_with: could not find element '" + i->first + "'");
 			}
 
