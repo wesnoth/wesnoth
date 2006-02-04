@@ -889,6 +889,7 @@ AC_CONFIG_FILES([Makefile
 		 po/wesnoth-sotbe/Makefile.in
 		 po/wesnoth-ei/Makefile.in
 		 po/wesnoth-trow/Makefile.in
+		 po/wesnoth-Two_Brothers/Makefile.in
 		 m4/Makefile
 		 icons/Makefile
 		 src/Makefile
