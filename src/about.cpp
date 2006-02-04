@@ -114,6 +114,7 @@ std::vector<std::string> get_text() {
 		"-   Soliton",
 
 		"_" N_("+Multiplayer Maps"),
+		"-   Joshua Northey (Becephalus)",
 		"-   Mike Quinones (Doc Paterson)",
 		"-   Peter Groen (pg)",
 		"-   Tom Chance (telex4)",
