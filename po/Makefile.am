@@ -1,4 +1,4 @@
-SUBDIRS = wesnoth wesnoth-editor wesnoth-lib wesnoth-tutorial wesnoth-httt wesnoth-tdh wesnoth-sotbe wesnoth-ei wesnoth-trow
+SUBDIRS = wesnoth wesnoth-editor wesnoth-lib wesnoth-tutorial wesnoth-httt wesnoth-tdh wesnoth-sotbe wesnoth-ei wesnoth-trow wesnoth-Two_Brothers
 
 EXTRA_DIST = Makefile.in.in
 
