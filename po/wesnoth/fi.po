@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-02-03 19:12+0100\n"
+"POT-Creation-Date: 2006-02-04 17:46+0100\n"
 "PO-Revision-Date: 2005-09-29 19:20+0200\n"
 "Last-Translator: Matias Parmala <matias.parmala@pp.inet.fi>\n"
 "Language-Team: none\n"
@@ -233,7 +233,7 @@ msgstr "piikkinuija"
 #: data/units/Tentacle.cfg:64 data/units/Thug.cfg:27 data/units/Troll.cfg:32
 #: data/units/Troll_Hero.cfg:32 data/units/Troll_Rocklobber.cfg:33
 #: data/units/Troll_Rocklobber.cfg:53 data/units/Troll_Warrior.cfg:33
-#: data/units/Troll_Whelp.cfg:32 data/units/Walking_Corpse.cfg:52
+#: data/units/Troll_Whelp.cfg:76 data/units/Walking_Corpse.cfg:52
 #: data/units/White_Mage.cfg:64 data/units/Wose.cfg:34 data/units/Yeti.cfg:41
 msgid "impact"
 msgstr "murjova isku"
@@ -295,12 +295,12 @@ msgstr "kita"
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:126
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:199
 #: data/campaigns/The_Dark_Hordes/units/Dark_Spirit.cfg:43
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:43
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:32
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:47
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:36
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:33
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:48
-#: data/units/Ancient_Lich.cfg:55 data/units/Blood_Bat.cfg:44
-#: data/units/Ghost.cfg:34 data/units/Lich.cfg:42 data/units/Spectre.cfg:58
+#: data/units/Ancient_Lich.cfg:59 data/units/Blood_Bat.cfg:44
+#: data/units/Ghost.cfg:34 data/units/Lich.cfg:39 data/units/Spectre.cfg:58
 #: data/units/Vampire_Bat.cfg:30 data/units/Wraith.cfg:34
 msgid "drain"
 msgstr "energiaimu"
@@ -379,19 +379,19 @@ msgstr "tuli"
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:141
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:100
 #: data/campaigns/The_Dark_Hordes/units/Deathmaster.cfg:63
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:55
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:44
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:59
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:48
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:29
 #: data/tutorial/units/Commander.cfg:173 data/tutorial/units/Elder_Mage.cfg:51
 #: data/tutorial/units/Fighter.cfg:102 data/tutorial/units/Lord.cfg:141
-#: data/units/Ancient_Lich.cfg:67 data/units/Arch_Mage.cfg:72
+#: data/units/Ancient_Lich.cfg:71 data/units/Arch_Mage.cfg:72
 #: data/units/Dark_Adept.cfg:33 data/units/Dark_Sorcerer.cfg:58
 #: data/units/Dwarvish_Runemaster.cfg:56 data/units/Elvish_Druid.cfg:80
 #: data/units/Elvish_Enchantress.cfg:140 data/units/Elvish_Shyde.cfg:38
 #: data/units/Elvish_Shyde.cfg:89 data/units/Elvish_Sorceress.cfg:140
 #: data/units/Elvish_Sylph.cfg:33 data/units/Elvish_Sylph.cfg:96
-#: data/units/Great_Mage.cfg:60 data/units/Lich.cfg:54 data/units/Mage.cfg:80
+#: data/units/Great_Mage.cfg:60 data/units/Lich.cfg:51 data/units/Mage.cfg:80
 #: data/units/Mage_of_Light.cfg:65 data/units/Mermaid_Diviner.cfg:63
 #: data/units/Mermaid_Enchantress.cfg:53 data/units/Mermaid_Initiate.cfg:55
 #: data/units/Mermaid_Priestess.cfg:57 data/units/Mermaid_Siren.cfg:37
@@ -407,8 +407,8 @@ msgstr "maaginen"
 msgid "Chocobone"
 msgstr "Luuratsu"
 
-#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:30
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:30
+#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:33
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:33
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
@@ -418,8 +418,8 @@ msgstr ""
 "strutsimaisten lintujen selässä nämä yksiköt liikkuvat nopeammin kuin "
 "useimmat ratsastavat yksiköt."
 
-#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:45
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:45
+#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:48
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:48
 #: data/units/Drake_Clasher.cfg:101 data/units/Drake_Enforcer.cfg:109
 #: data/units/Drake_Gladiator.cfg:94 data/units/Dwarvish_Guardsman.cfg:33
 #: data/units/Dwarvish_Guardsman.cfg:49 data/units/Dwarvish_Sentinel.cfg:41
@@ -440,7 +440,7 @@ msgstr ""
 msgid "spear"
 msgstr "keihäs"
 
-#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:46
+#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:49
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:76
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:51
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Leader.cfg:48
@@ -450,7 +450,7 @@ msgstr "keihäs"
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:195
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Sovereign.cfg:55
 #: data/campaigns/Son_Of_The_Black_Eye/units/Watch_Tower.cfg:21
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:46
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:49
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:65
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:65
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:44
@@ -504,8 +504,8 @@ msgstr "keihäs"
 msgid "pierce"
 msgstr "lävistys"
 
-#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:48
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:48
+#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:51
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:51
 #: data/units/Grand_Knight.cfg:59 data/units/Horseman.cfg:39
 #: data/units/Knight.cfg:58 data/units/Lancer.cfg:40 data/units/Paladin.cfg:65
 #: src/actions.cpp:456 src/actions.cpp:584
@@ -536,16 +536,16 @@ msgstr "katse"
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:55
 #: data/campaigns/The_Dark_Hordes/units/Dark_Spirit.cfg:58
 #: data/campaigns/The_Dark_Hordes/units/Deathmaster.cfg:62
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:39
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:54
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:28
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:43
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:43
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:58
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:32
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:47
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:44
-#: data/units/Ancient_Lich.cfg:51 data/units/Ancient_Lich.cfg:66
+#: data/units/Ancient_Lich.cfg:55 data/units/Ancient_Lich.cfg:70
 #: data/units/Dark_Adept.cfg:32 data/units/Dark_Sorcerer.cfg:57
 #: data/units/Elvish_Enchantress.cfg:136 data/units/Elvish_Sorceress.cfg:136
 #: data/units/Elvish_Sylph.cfg:95 data/units/Ghost.cfg:30
-#: data/units/Ghost.cfg:45 data/units/Lich.cfg:38 data/units/Lich.cfg:53
+#: data/units/Ghost.cfg:45 data/units/Lich.cfg:35 data/units/Lich.cfg:50
 #: data/units/Necromancer.cfg:48 data/units/Saurian_Icecaster.cfg:52
 #: data/units/Saurian_Soothsayer.cfg:52 data/units/Saurian_Tribalist.cfg:51
 #: data/units/Spectre.cfg:73 data/units/Wraith.cfg:49
@@ -1006,10 +1006,10 @@ msgstr ""
 "kaikelle, mikä elää."
 
 #: data/campaigns/The_Dark_Hordes/units/Deathmaster.cfg:61
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:53
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:42
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:57
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:46
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:43
-#: data/units/Ancient_Lich.cfg:65 data/units/Lich.cfg:52
+#: data/units/Ancient_Lich.cfg:69 data/units/Lich.cfg:49
 msgid "magic"
 msgstr "taikuus"
 
@@ -1017,7 +1017,7 @@ msgstr "taikuus"
 msgid "Demilich"
 msgstr "Kuolleiden herra"
 
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:23
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:27
 msgid ""
 "After too much time dabbling with forbidden magics and dark arts, these magi "
 "have begun to pay a heavy price. Demiliches have started losing their "
@@ -1028,10 +1028,10 @@ msgstr ""
 "maksamaan kallista hintaa. Kuoleiden herrat menettävät hitaasti ruumiitaan, "
 "muuttuen itse epäkuolleiksi. Lopulta heistä tulee todellisia epäkuolleita."
 
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:38
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:27
-#: data/units/Ancient_Lich.cfg:50 data/units/Ghost.cfg:29
-#: data/units/Lich.cfg:37
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:42
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:31
+#: data/units/Ancient_Lich.cfg:54 data/units/Ghost.cfg:29
+#: data/units/Lich.cfg:34
 msgid "touch"
 msgstr "kosketus"
 
@@ -1039,7 +1039,7 @@ msgstr "kosketus"
 msgid "Dread Lich"
 msgstr "Kuolleiden valtias"
 
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:24
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:28
 msgid ""
 "At long last, Ha'atel has paid the ultimate sacrifice for the dark arts into "
 "which he has delved, and has, himself, entered into undeath. At the apex of "
@@ -1477,7 +1477,28 @@ msgstr ""
 msgid "steadfast"
 msgstr "vankkumaton"
 
-#: data/english.cfg:86
+#: data/english.cfg:88
+#, fuzzy
+msgid ""
+"Submerge:\n"
+"This unit can hide in deep water, and remain undetected by its enemies.\n"
+"\n"
+"Enemy units cannot see or attack this unit when it is in deep water, except "
+"for any turn immediately after this unit has attacked, or if there are enemy "
+"units next to this unit."
+msgstr ""
+"Väijytys:\n"
+"Tämä yksikkö voi piiloutua metsään, jolloin viholliset eivät huomaa sitä.\n"
+"\n"
+"Vihollisyksiköt eivät näe tätä  yksikköä, eivätkä voi hyökätä tätä yksikköä "
+"kohti, jos tämä yksikkö on metsässä, eikä hyökännyt edellisellä vuorolla."
+
+#: data/english.cfg:90
+#, fuzzy
+msgid "submerge"
+msgstr "pisto"
+
+#: data/english.cfg:93
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -1486,11 +1507,11 @@ msgstr ""
 "Kaukosiirto:\n"
 "Tämä yksikkö voi kaukosiirtyä välittömästi kahden ystävällisen kylän välillä."
 
-#: data/english.cfg:88
+#: data/english.cfg:95
 msgid "teleport"
 msgstr "kaukosiirto"
 
-#: data/english.cfg:93
+#: data/english.cfg:100
 #, fuzzy
 msgid ""
 "Backstab:\n"
@@ -1503,7 +1524,7 @@ msgstr ""
 "puolella on ystävällinen yksikkö. (Tämä ei toimi liittolaisten yksiköiden "
 "kanssa.)"
 
-#: data/english.cfg:96
+#: data/english.cfg:103
 #, fuzzy
 msgid ""
 "Berserk:\n"
@@ -1513,7 +1534,7 @@ msgstr ""
 "Hurma:\n"
 "Hyökätessä hurmayksiköt taistelevat, kunnes jompikumpi osapuoli kuolee."
 
-#: data/english.cfg:99
+#: data/english.cfg:106
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -1523,7 +1544,7 @@ msgstr ""
 "Tämä hyökkäys tekee kaksinkertaisen vahingon kohteelle, mutta tämä yksikkö "
 "myös vastaanottaa kaksinkertaisen vahingon kohteen vastahyökkäyksestä."
 
-#: data/english.cfg:102
+#: data/english.cfg:109
 #, fuzzy
 msgid ""
 "Drain:\n"
@@ -1534,7 +1555,7 @@ msgstr ""
 "Tämä yksikkö imee voimia elävistä yksiköistä, parantaen itseään puolella "
 "siitä vahingosta, jonka tekee."
 
-#: data/english.cfg:105
+#: data/english.cfg:112
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -1543,7 +1564,7 @@ msgstr ""
 "Yksikkö iskee taistelussa aina ensin tällä hyökkäuksellä, myös "
 "puolustautuessaan."
 
-#: data/english.cfg:108
+#: data/english.cfg:115
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -1551,7 +1572,7 @@ msgstr ""
 "Maaginen hyökkäys:\n"
 "Tällä hyökkäyksellä on aina 70% mahdollisuus osua."
 
-#: data/english.cfg:111
+#: data/english.cfg:118
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -1559,7 +1580,7 @@ msgstr ""
 "Tarkk'ampuja:\n"
 "Hyökättäessä tällä hyökkäyksellä on vähintään 60% mahdollisuus osua."
 
-#: data/english.cfg:114
+#: data/english.cfg:121
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -1571,7 +1592,7 @@ msgstr ""
 "yksiköllä, joka on identtinen ja samalla puolella kuin ruttohyökkäyksen "
 "tehnyt yksikkö. (Tämä ei toimi epäkuolleisiin eikä yksiköihin kylissä.)"
 
-#: data/english.cfg:117
+#: data/english.cfg:124
 #, fuzzy
 msgid ""
 "Plague:\n"
@@ -1584,7 +1605,7 @@ msgstr ""
 "yksiköllä, joka on identtinen ja samalla puolella kuin ruttohyökkäyksen "
 "tehnyt yksikkö. (Tämä ei toimi epäkuolleisiin eikä yksiköihin kylissä.)"
 
-#: data/english.cfg:120
+#: data/english.cfg:127
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -1595,7 +1616,7 @@ msgstr ""
 "elämäpistettä (EP) joka vuoro, kunnes ne parannetaan, tai niillä on 1 "
 "elämäpiste jäljellä."
 
-#: data/english.cfg:123
+#: data/english.cfg:130
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow reorders the attacks allowing the "
@@ -1604,7 +1625,7 @@ msgid ""
 "initiative in fights."
 msgstr ""
 
-#: data/english.cfg:126
+#: data/english.cfg:133
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -1614,7 +1635,7 @@ msgstr ""
 "Tämä hyökkäys kivettää kohteen. Kivetetyt yksiköt eivät voi liikkua eivätkä "
 "hyökätä."
 
-#: data/english.cfg:129
+#: data/english.cfg:136
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -1623,86 +1644,86 @@ msgid ""
 "strikes."
 msgstr ""
 
-#: data/english.cfg:132
+#: data/english.cfg:139
 msgid "Elves"
 msgstr "Haltiat"
 
-#: data/english.cfg:133
+#: data/english.cfg:140
 msgid "Humans"
 msgstr "Ihmiset"
 
-#: data/english.cfg:134
+#: data/english.cfg:141
 msgid "Orcs"
 msgstr "Örkit"
 
-#: data/english.cfg:135
+#: data/english.cfg:142
 #, fuzzy
 msgid "race^Undead"
 msgstr "Epäkuolleet"
 
-#: data/english.cfg:138
+#: data/english.cfg:145
 msgid "$name's Bridge,$name's Crossing"
 msgstr "$name|in silta,$name|in ylityspaikka"
 
-#: data/english.cfg:139
+#: data/english.cfg:146
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name|intie,$name|in sola,$name|in polku"
 
-#: data/english.cfg:140
+#: data/english.cfg:147
 msgid "$name River,River $name"
 msgstr "$name|joki,$name|inuoma"
 
-#: data/english.cfg:141
+#: data/english.cfg:148
 msgid "$name Forest,$name's Forest"
 msgstr "$name|metsä,$name|in metsä"
 
-#: data/english.cfg:142
+#: data/english.cfg:149
 msgid "$name Lake"
 msgstr "$name|järvi"
 
-#: data/english.cfg:143
+#: data/english.cfg:150
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|kylä,$name|in kirkonkylä,$name|in pitäjä"
 
-#: data/english.cfg:144
+#: data/english.cfg:151
 msgid "$name|harbor,$name|port"
 msgstr "$name|in satama,$name|in maihinlaskupaikka"
 
-#: data/english.cfg:145
+#: data/english.cfg:152
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 "$name|kylä,$name|in kahlaamo,$name|in risteys,$river|in kahlaamo,$river|in "
 "haara"
 
-#: data/english.cfg:146
+#: data/english.cfg:153
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "$river|silta,$river|in silta,$river|silta,$name|in kylä,$name|in silta"
 
-#: data/english.cfg:147
+#: data/english.cfg:154
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|in kylä,$name|in pitäjä,$name|pelto"
 
-#: data/english.cfg:148
+#: data/english.cfg:155
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|in kylä,$name|in pitäjä,$name|metsä,$name|metsä"
 
-#: data/english.cfg:149
+#: data/english.cfg:156
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 "$name|in kylä,$name|kylä,$name|in pitäjä,$name|in kukkula,$name|kukkulat"
 
-#: data/english.cfg:150
+#: data/english.cfg:157
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "$name|in kylä,$name|kylä,$name|in pitäjä,$name|vuori,$name|vuori,$name|in "
 "jyrkänne,$name|jyrkänne"
 
-#: data/english.cfg:153
+#: data/english.cfg:160
 msgid "melee"
 msgstr "lähitaistelu"
 
-#: data/english.cfg:154
+#: data/english.cfg:161
 msgid "ranged"
 msgstr "kaukotaistelu"
 
@@ -4668,7 +4689,7 @@ msgstr "kestävä"
 msgid "Ancient Lich"
 msgstr "Muinainen kuolonherra"
 
-#: data/units/Ancient_Lich.cfg:28
+#: data/units/Ancient_Lich.cfg:32
 msgid ""
 "A being of this order is a herald of the age long past. Anyone who "
 "encounters an Ancient Lich likely has far worse things to worry about than "
@@ -6500,7 +6521,7 @@ msgstr ""
 
 #: data/units/Giant_Mudcrawler.cfg:50 data/units/Skeleton_Archer.cfg:33
 #: data/units/Soulless.cfg:49 data/units/Troll_Rocklobber.cfg:32
-#: data/units/Troll_Whelp.cfg:31 data/units/Walking_Corpse.cfg:51
+#: data/units/Troll_Whelp.cfg:75 data/units/Walking_Corpse.cfg:51
 #: data/units/Yeti.cfg:40
 msgid "fist"
 msgstr "nyrkki"
@@ -7036,7 +7057,7 @@ msgstr ""
 msgid "Lich"
 msgstr "Kuolonherra"
 
-#: data/units/Lich.cfg:34
+#: data/units/Lich.cfg:31
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -8997,159 +9018,159 @@ msgstr "+Moninpelikartat"
 msgid "+Multiplayer Maps"
 msgstr "+Moninpelikartat"
 
-#: src/about.cpp:121
+#: src/about.cpp:122
 msgid "+Packagers"
 msgstr "+Pakkaajat"
 
-#: src/about.cpp:131
+#: src/about.cpp:132
 msgid "+Miscellaneous"
 msgstr "+Muut"
 
-#: src/about.cpp:136
+#: src/about.cpp:137
 msgid "+Internationalization Managers"
 msgstr "+Kansainvälistyksen hallinnointi"
 
-#: src/about.cpp:143
+#: src/about.cpp:144
 msgid "+Afrikaans Translation"
 msgstr "+Afrikaansinkielinen käännös"
 
-#: src/about.cpp:149
+#: src/about.cpp:150
 msgid "+Basque Translation"
 msgstr "+Baskinkielinen käännös"
 
-#: src/about.cpp:154
+#: src/about.cpp:155
 msgid "+Bulgarian Translation"
 msgstr "+Bulgariankielinen käännös"
 
-#: src/about.cpp:158
+#: src/about.cpp:159
 msgid "+Catalan Translation"
 msgstr "+Katalaaninkielinen käännös"
 
-#: src/about.cpp:168
+#: src/about.cpp:169
 msgid "+Chinese Translation"
 msgstr "+Kiinankielinen käännös"
 
-#: src/about.cpp:171
+#: src/about.cpp:172
 msgid "+Czech Translation"
 msgstr "+Tsekinkielinen käännös"
 
-#: src/about.cpp:186
+#: src/about.cpp:187
 msgid "+Danish Translation"
 msgstr "+Tanskankielinen käännös"
 
-#: src/about.cpp:193
+#: src/about.cpp:194
 msgid "+Dutch Translation"
 msgstr "+Hollanninkielinen käännös"
 
-#: src/about.cpp:201
+#: src/about.cpp:202
 msgid "+English (GB) Translation"
 msgstr "+Ison-Britannian englannin kielinen käännös"
 
-#: src/about.cpp:204
+#: src/about.cpp:205
 #, fuzzy
 msgid "+Esperanto Translation"
 msgstr "+Saksankielinen käännös"
 
-#: src/about.cpp:208
+#: src/about.cpp:209
 msgid "+Estonian Translation"
 msgstr "+Vironkielinen käännös"
 
-#: src/about.cpp:211
+#: src/about.cpp:212
 msgid "+Finnish Translation"
 msgstr "+Suomenkielinen käännös"
 
-#: src/about.cpp:217
+#: src/about.cpp:218
 msgid "+French Translation"
 msgstr "+Ranskankielinen käännös"
 
-#: src/about.cpp:236
+#: src/about.cpp:237
 msgid "+German Translation"
 msgstr "+Saksankielinen käännös"
 
-#: src/about.cpp:248
+#: src/about.cpp:249
 msgid "+Greek Translation"
 msgstr "+Kreikankielinen käännös"
 
-#: src/about.cpp:254
+#: src/about.cpp:255
 #, fuzzy
 msgid "+Hebrew Translation"
 msgstr "+Kreikankielinen käännös"
 
-#: src/about.cpp:258
+#: src/about.cpp:259
 msgid "+Hungarian Translation"
 msgstr "+Unkarinkielinen käännös"
 
-#: src/about.cpp:271
+#: src/about.cpp:272
 #, fuzzy
 msgid "+Indonesian Translation"
 msgstr "+Vironkielinen käännös"
 
-#: src/about.cpp:274
+#: src/about.cpp:275
 msgid "+Italian Translation"
 msgstr "+Italiankielinen käännös"
 
-#: src/about.cpp:283
+#: src/about.cpp:284
 msgid "+Japanese Translation"
 msgstr "+Japaninkielinen käännös"
 
-#: src/about.cpp:288
+#: src/about.cpp:289
 msgid "+Latin Translation"
 msgstr "+Latinankielinen käännös"
 
-#: src/about.cpp:291
+#: src/about.cpp:292
 msgid "+Norwegian Translation"
 msgstr "+Norjankielinen käännös"
 
-#: src/about.cpp:297
+#: src/about.cpp:298
 msgid "+Polish Translation"
 msgstr "+Puolankielinen käännös"
 
-#: src/about.cpp:308
+#: src/about.cpp:309
 #, fuzzy
 msgid "+Portuguese Translation"
 msgstr "+Brasilian portugalin kielinen käännös"
 
-#: src/about.cpp:311
+#: src/about.cpp:312
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Brasilian portugalin kielinen käännös"
 
-#: src/about.cpp:320
+#: src/about.cpp:321
 msgid "+Russian Translation"
 msgstr "+Venäjänkielinen käännös"
 
-#: src/about.cpp:326
+#: src/about.cpp:327
 msgid "+Serbian Translation"
 msgstr "+Serbiankielinen käännös"
 
-#: src/about.cpp:329
+#: src/about.cpp:330
 msgid "+Slovak Translation"
 msgstr "+Slovakiankielinen käännös"
 
-#: src/about.cpp:332
+#: src/about.cpp:333
 msgid "+Slovenian Translation"
 msgstr "+Sloveniankielinen käännös"
 
-#: src/about.cpp:335
+#: src/about.cpp:336
 msgid "+Spanish Translation"
 msgstr "+Espanjankielinen käännös"
 
-#: src/about.cpp:344
+#: src/about.cpp:345
 msgid "+Swedish Translation"
 msgstr "+Ruotsinkielinen käännös"
 
-#: src/about.cpp:351
+#: src/about.cpp:352
 msgid "+Turkish Translation"
 msgstr "+Turkinkielinen käännös"
 
-#: src/about.cpp:358
+#: src/about.cpp:359
 msgid "+Contributors"
 msgstr "+Osallistuneet"
 
-#: src/about.cpp:363
+#: src/about.cpp:364
 msgid "+Bots"
 msgstr "+Botit"
 
-#: src/about.cpp:399 src/help.cpp:2687
+#: src/about.cpp:400 src/help.cpp:2687
 msgid "Close"
 msgstr "Sulje"
 

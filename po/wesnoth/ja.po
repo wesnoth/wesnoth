@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-02-03 19:12+0100\n"
+"POT-Creation-Date: 2006-02-04 17:46+0100\n"
 "PO-Revision-Date: 2005-11-04 10:30+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -239,7 +239,7 @@ msgstr "モーニングスター"
 #: data/units/Tentacle.cfg:64 data/units/Thug.cfg:27 data/units/Troll.cfg:32
 #: data/units/Troll_Hero.cfg:32 data/units/Troll_Rocklobber.cfg:33
 #: data/units/Troll_Rocklobber.cfg:53 data/units/Troll_Warrior.cfg:33
-#: data/units/Troll_Whelp.cfg:32 data/units/Walking_Corpse.cfg:52
+#: data/units/Troll_Whelp.cfg:76 data/units/Walking_Corpse.cfg:52
 #: data/units/White_Mage.cfg:64 data/units/Wose.cfg:34 data/units/Yeti.cfg:41
 msgid "impact"
 msgstr "打撃"
@@ -302,12 +302,12 @@ msgstr "顎爪"
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:126
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:199
 #: data/campaigns/The_Dark_Hordes/units/Dark_Spirit.cfg:43
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:43
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:32
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:47
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:36
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:33
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:48
-#: data/units/Ancient_Lich.cfg:55 data/units/Blood_Bat.cfg:44
-#: data/units/Ghost.cfg:34 data/units/Lich.cfg:42 data/units/Spectre.cfg:58
+#: data/units/Ancient_Lich.cfg:59 data/units/Blood_Bat.cfg:44
+#: data/units/Ghost.cfg:34 data/units/Lich.cfg:39 data/units/Spectre.cfg:58
 #: data/units/Vampire_Bat.cfg:30 data/units/Wraith.cfg:34
 msgid "drain"
 msgstr "生命吸収"
@@ -385,19 +385,19 @@ msgstr "火炎"
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:141
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:100
 #: data/campaigns/The_Dark_Hordes/units/Deathmaster.cfg:63
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:55
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:44
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:59
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:48
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:29
 #: data/tutorial/units/Commander.cfg:173 data/tutorial/units/Elder_Mage.cfg:51
 #: data/tutorial/units/Fighter.cfg:102 data/tutorial/units/Lord.cfg:141
-#: data/units/Ancient_Lich.cfg:67 data/units/Arch_Mage.cfg:72
+#: data/units/Ancient_Lich.cfg:71 data/units/Arch_Mage.cfg:72
 #: data/units/Dark_Adept.cfg:33 data/units/Dark_Sorcerer.cfg:58
 #: data/units/Dwarvish_Runemaster.cfg:56 data/units/Elvish_Druid.cfg:80
 #: data/units/Elvish_Enchantress.cfg:140 data/units/Elvish_Shyde.cfg:38
 #: data/units/Elvish_Shyde.cfg:89 data/units/Elvish_Sorceress.cfg:140
 #: data/units/Elvish_Sylph.cfg:33 data/units/Elvish_Sylph.cfg:96
-#: data/units/Great_Mage.cfg:60 data/units/Lich.cfg:54 data/units/Mage.cfg:80
+#: data/units/Great_Mage.cfg:60 data/units/Lich.cfg:51 data/units/Mage.cfg:80
 #: data/units/Mage_of_Light.cfg:65 data/units/Mermaid_Diviner.cfg:63
 #: data/units/Mermaid_Enchantress.cfg:53 data/units/Mermaid_Initiate.cfg:55
 #: data/units/Mermaid_Priestess.cfg:57 data/units/Mermaid_Siren.cfg:37
@@ -413,8 +413,8 @@ msgstr "魔法"
 msgid "Chocobone"
 msgstr "チョコボーン"
 
-#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:30
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:30
+#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:33
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:33
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
@@ -423,8 +423,8 @@ msgstr ""
 "失なわれた文明で乗用に使用されていたダチョウのような大鳥の骨にまたがっている"
 "チョコボーンはほとんどの騎乗ユニットよりも早く移動することができます。"
 
-#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:45
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:45
+#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:48
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:48
 #: data/units/Drake_Clasher.cfg:101 data/units/Drake_Enforcer.cfg:109
 #: data/units/Drake_Gladiator.cfg:94 data/units/Dwarvish_Guardsman.cfg:33
 #: data/units/Dwarvish_Guardsman.cfg:49 data/units/Dwarvish_Sentinel.cfg:41
@@ -445,7 +445,7 @@ msgstr ""
 msgid "spear"
 msgstr "槍"
 
-#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:46
+#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:49
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:76
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:51
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Leader.cfg:48
@@ -455,7 +455,7 @@ msgstr "槍"
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:195
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Sovereign.cfg:55
 #: data/campaigns/Son_Of_The_Black_Eye/units/Watch_Tower.cfg:21
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:46
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:49
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:65
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:65
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:44
@@ -509,8 +509,8 @@ msgstr "槍"
 msgid "pierce"
 msgstr "貫通"
 
-#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:48
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:48
+#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:51
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:51
 #: data/units/Grand_Knight.cfg:59 data/units/Horseman.cfg:39
 #: data/units/Knight.cfg:58 data/units/Lancer.cfg:40 data/units/Paladin.cfg:65
 #: src/actions.cpp:456 src/actions.cpp:584
@@ -542,16 +542,16 @@ msgstr "凝視"
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:55
 #: data/campaigns/The_Dark_Hordes/units/Dark_Spirit.cfg:58
 #: data/campaigns/The_Dark_Hordes/units/Deathmaster.cfg:62
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:39
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:54
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:28
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:43
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:43
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:58
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:32
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:47
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:44
-#: data/units/Ancient_Lich.cfg:51 data/units/Ancient_Lich.cfg:66
+#: data/units/Ancient_Lich.cfg:55 data/units/Ancient_Lich.cfg:70
 #: data/units/Dark_Adept.cfg:32 data/units/Dark_Sorcerer.cfg:57
 #: data/units/Elvish_Enchantress.cfg:136 data/units/Elvish_Sorceress.cfg:136
 #: data/units/Elvish_Sylph.cfg:95 data/units/Ghost.cfg:30
-#: data/units/Ghost.cfg:45 data/units/Lich.cfg:38 data/units/Lich.cfg:53
+#: data/units/Ghost.cfg:45 data/units/Lich.cfg:35 data/units/Lich.cfg:50
 #: data/units/Necromancer.cfg:48 data/units/Saurian_Icecaster.cfg:52
 #: data/units/Saurian_Soothsayer.cfg:52 data/units/Saurian_Tribalist.cfg:51
 #: data/units/Spectre.cfg:73 data/units/Wraith.cfg:49
@@ -998,10 +998,10 @@ msgstr ""
 "れるようになるでしょう。"
 
 #: data/campaigns/The_Dark_Hordes/units/Deathmaster.cfg:61
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:53
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:42
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:57
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:46
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:43
-#: data/units/Ancient_Lich.cfg:65 data/units/Lich.cfg:52
+#: data/units/Ancient_Lich.cfg:69 data/units/Lich.cfg:49
 msgid "magic"
 msgstr "魔力の塊"
 
@@ -1009,7 +1009,7 @@ msgstr "魔力の塊"
 msgid "Demilich"
 msgstr "デミリッチ"
 
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:23
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:27
 msgid ""
 "After too much time dabbling with forbidden magics and dark arts, these magi "
 "have begun to pay a heavy price. Demiliches have started losing their "
@@ -1021,10 +1021,10 @@ msgstr ""
 "す。時を経て、彼等は完全に不死の体となり、生ける者全てから恐れられるようにな"
 "るでしょう。"
 
-#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:38
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:27
-#: data/units/Ancient_Lich.cfg:50 data/units/Ghost.cfg:29
-#: data/units/Lich.cfg:37
+#: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:42
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:31
+#: data/units/Ancient_Lich.cfg:54 data/units/Ghost.cfg:29
+#: data/units/Lich.cfg:34
 msgid "touch"
 msgstr "接触"
 
@@ -1032,7 +1032,7 @@ msgstr "接触"
 msgid "Dread Lich"
 msgstr "ドレッド・リッチ"
 
-#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:24
+#: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:28
 msgid ""
 "At long last, Ha'atel has paid the ultimate sacrifice for the dark arts into "
 "which he has delved, and has, himself, entered into undeath. At the apex of "
@@ -1466,7 +1466,29 @@ msgstr ""
 msgid "steadfast"
 msgstr "装甲"
 
-#: data/english.cfg:86
+#: data/english.cfg:88
+#, fuzzy
+msgid ""
+"Submerge:\n"
+"This unit can hide in deep water, and remain undetected by its enemies.\n"
+"\n"
+"Enemy units cannot see or attack this unit when it is in deep water, except "
+"for any turn immediately after this unit has attacked, or if there are enemy "
+"units next to this unit."
+msgstr ""
+"伏兵:\n"
+"このユニットは森に隠れることができ、 敵に見つからなくなります。\n"
+"\n"
+"このユニットが森にいるときは、 このユニットが攻撃した直後のターンか、 敵がこ"
+"のユニットの隣にいる場合を除いて、 敵ユニットはこのユニットが見えないし攻撃で"
+"きません。"
+
+#: data/english.cfg:90
+#, fuzzy
+msgid "submerge"
+msgstr "突き刺し"
+
+#: data/english.cfg:93
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -1476,11 +1498,11 @@ msgstr ""
 "このユニットは１回の移動を使用して、 ２つの友好的な村の間を瞬間移動することが"
 "できます。"
 
-#: data/english.cfg:88
+#: data/english.cfg:95
 msgid "teleport"
 msgstr "瞬間移動"
 
-#: data/english.cfg:93
+#: data/english.cfg:100
 #, fuzzy
 msgid ""
 "Backstab:\n"
@@ -1492,7 +1514,7 @@ msgstr ""
 "もし自軍ユニットが攻撃目標の後方にもいる場合は、 この攻撃は２倍のダメージとな"
 "ります。 これは同盟ユニットでは機能しません。"
 
-#: data/english.cfg:96
+#: data/english.cfg:103
 #, fuzzy
 msgid ""
 "Berserk:\n"
@@ -1503,7 +1525,7 @@ msgstr ""
 "攻撃においても防御においてもこの攻撃が戦いで使われた場合、いずれかの戦闘ユ"
 "ニットが倒されるまで交戦をやめません。"
 
-#: data/english.cfg:99
+#: data/english.cfg:106
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -1513,7 +1535,7 @@ msgstr ""
 "この攻撃は攻撃目標への与えるダメージが２倍となります。 攻撃目標からの反撃の与"
 "えられるダメージも２倍となります。"
 
-#: data/english.cfg:102
+#: data/english.cfg:109
 #, fuzzy
 msgid ""
 "Drain:\n"
@@ -1524,7 +1546,7 @@ msgstr ""
 "このユニットは生者から生命力を奪って、 与えたダメージの半分だけ自分のHPを回復"
 "させます。"
 
-#: data/english.cfg:105
+#: data/english.cfg:112
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -1532,7 +1554,7 @@ msgstr ""
 "先制:\n"
 "このユニットは、 たとえ防御時であっても常にこの攻撃で先に攻撃します。"
 
-#: data/english.cfg:108
+#: data/english.cfg:115
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -1540,7 +1562,7 @@ msgstr ""
 "魔法:\n"
 "この攻撃は常に命中率が70%となります。"
 
-#: data/english.cfg:111
+#: data/english.cfg:118
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -1548,7 +1570,7 @@ msgstr ""
 "射撃:\n"
 "攻撃時に使用され、 この攻撃は命中率が最低60%はあるようになります。"
 
-#: data/english.cfg:114
+#: data/english.cfg:121
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -1560,7 +1582,7 @@ msgstr ""
 "ラスで同じ陣営のユニットに置き換えられます。 この攻撃はアンデッドや村にいるユ"
 "ニットには効果がありません。"
 
-#: data/english.cfg:117
+#: data/english.cfg:124
 #, fuzzy
 msgid ""
 "Plague:\n"
@@ -1573,7 +1595,7 @@ msgstr ""
 "ラスで同じ陣営のユニットに置き換えられます。 この攻撃はアンデッドや村にいるユ"
 "ニットには効果がありません。"
 
-#: data/english.cfg:120
+#: data/english.cfg:127
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -1583,7 +1605,7 @@ msgstr ""
 "この攻撃は攻撃目標を毒状態にします。 毒を受けているユニットは解毒するかHPが１"
 "になるまで、 毎ターンHPが８減っていきます。"
 
-#: data/english.cfg:123
+#: data/english.cfg:130
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow reorders the attacks allowing the "
@@ -1592,7 +1614,7 @@ msgid ""
 "initiative in fights."
 msgstr ""
 
-#: data/english.cfg:126
+#: data/english.cfg:133
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -1601,7 +1623,7 @@ msgstr ""
 "石化:\n"
 "この攻撃は攻撃目標を石にします。 石化したユニットは移動や攻撃はできません。"
 
-#: data/english.cfg:129
+#: data/english.cfg:136
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -1610,81 +1632,81 @@ msgid ""
 "strikes."
 msgstr ""
 
-#: data/english.cfg:132
+#: data/english.cfg:139
 msgid "Elves"
 msgstr "エルフ族"
 
-#: data/english.cfg:133
+#: data/english.cfg:140
 msgid "Humans"
 msgstr "人間族"
 
-#: data/english.cfg:134
+#: data/english.cfg:141
 msgid "Orcs"
 msgstr "オーク族"
 
-#: data/english.cfg:135
+#: data/english.cfg:142
 #, fuzzy
 msgid "race^Undead"
 msgstr "アンデッド"
 
-#: data/english.cfg:138
+#: data/english.cfg:145
 msgid "$name's Bridge,$name's Crossing"
 msgstr "$name の橋, $name の渡"
 
-#: data/english.cfg:139
+#: data/english.cfg:146
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name の高速道路, $name の通り, $name の道"
 
-#: data/english.cfg:140
+#: data/english.cfg:147
 msgid "$name River,River $name"
 msgstr "$name 川,$name 河"
 
-#: data/english.cfg:141
+#: data/english.cfg:148
 msgid "$name Forest,$name's Forest"
 msgstr "$name 森,$name の森"
 
-#: data/english.cfg:142
+#: data/english.cfg:149
 msgid "$name Lake"
 msgstr "$name 湖"
 
-#: data/english.cfg:143
+#: data/english.cfg:150
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|bury,$name|ham,$name|ton"
 
-#: data/english.cfg:144
+#: data/english.cfg:151
 msgid "$name|harbor,$name|port"
 msgstr "$name|湾,$name|港"
 
-#: data/english.cfg:145
+#: data/english.cfg:152
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 
-#: data/english.cfg:146
+#: data/english.cfg:153
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "$river|橋,$river|橋,$river|橋,$name|大橋,$name|橋"
 
-#: data/english.cfg:147
+#: data/english.cfg:154
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|ham,$name|ton,$name|field"
 
-#: data/english.cfg:148
+#: data/english.cfg:155
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|森,$name|森,$name|森,$name 森"
 
-#: data/english.cfg:149
+#: data/english.cfg:156
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 
-#: data/english.cfg:150
+#: data/english.cfg:157
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr "$name|山,$name|山,$name|岳,$name|山脈,$name|山脈,$name|岳,$name|岳"
 
-#: data/english.cfg:153
+#: data/english.cfg:160
 msgid "melee"
 msgstr "格闘"
 
-#: data/english.cfg:154
+#: data/english.cfg:161
 msgid "ranged"
 msgstr "投射"
 
@@ -4566,7 +4588,7 @@ msgstr "頑強"
 msgid "Ancient Lich"
 msgstr "古代リッチ"
 
-#: data/units/Ancient_Lich.cfg:28
+#: data/units/Ancient_Lich.cfg:32
 msgid ""
 "A being of this order is a herald of the age long past. Anyone who "
 "encounters an Ancient Lich likely has far worse things to worry about than "
@@ -6360,7 +6382,7 @@ msgstr ""
 
 #: data/units/Giant_Mudcrawler.cfg:50 data/units/Skeleton_Archer.cfg:33
 #: data/units/Soulless.cfg:49 data/units/Troll_Rocklobber.cfg:32
-#: data/units/Troll_Whelp.cfg:31 data/units/Walking_Corpse.cfg:51
+#: data/units/Troll_Whelp.cfg:75 data/units/Walking_Corpse.cfg:51
 #: data/units/Yeti.cfg:40
 msgid "fist"
 msgstr "拳"
@@ -6884,7 +6906,7 @@ msgstr ""
 msgid "Lich"
 msgstr "リッチ"
 
-#: data/units/Lich.cfg:34
+#: data/units/Lich.cfg:31
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -8798,158 +8820,158 @@ msgstr "+マルチプレイヤーマップ"
 msgid "+Multiplayer Maps"
 msgstr "+マルチプレイヤーマップ"
 
-#: src/about.cpp:121
+#: src/about.cpp:122
 msgid "+Packagers"
 msgstr "+パッケージ"
 
-#: src/about.cpp:131
+#: src/about.cpp:132
 msgid "+Miscellaneous"
 msgstr "+その他"
 
-#: src/about.cpp:136
+#: src/about.cpp:137
 msgid "+Internationalization Managers"
 msgstr "+国際化責任者"
 
-#: src/about.cpp:143
+#: src/about.cpp:144
 msgid "+Afrikaans Translation"
 msgstr "+アフリカーンス語翻訳"
 
-#: src/about.cpp:149
+#: src/about.cpp:150
 msgid "+Basque Translation"
 msgstr "+バスク語翻訳"
 
-#: src/about.cpp:154
+#: src/about.cpp:155
 msgid "+Bulgarian Translation"
 msgstr "+ブルガリア語翻訳"
 
-#: src/about.cpp:158
+#: src/about.cpp:159
 msgid "+Catalan Translation"
 msgstr "+カタロニア語翻訳"
 
-#: src/about.cpp:168
+#: src/about.cpp:169
 msgid "+Chinese Translation"
 msgstr "+中国語翻訳"
 
-#: src/about.cpp:171
+#: src/about.cpp:172
 msgid "+Czech Translation"
 msgstr "+チェコ語翻訳"
 
-#: src/about.cpp:186
+#: src/about.cpp:187
 msgid "+Danish Translation"
 msgstr "+デンマーク語翻訳"
 
-#: src/about.cpp:193
+#: src/about.cpp:194
 msgid "+Dutch Translation"
 msgstr "+オランダ語翻訳"
 
-#: src/about.cpp:201
+#: src/about.cpp:202
 msgid "+English (GB) Translation"
 msgstr "+英語（イギリス）翻訳"
 
-#: src/about.cpp:204
+#: src/about.cpp:205
 #, fuzzy
 msgid "+Esperanto Translation"
 msgstr "+ドイツ語翻訳"
 
-#: src/about.cpp:208
+#: src/about.cpp:209
 msgid "+Estonian Translation"
 msgstr "+エストニア語翻訳"
 
-#: src/about.cpp:211
+#: src/about.cpp:212
 msgid "+Finnish Translation"
 msgstr "+フィンランド語翻訳"
 
-#: src/about.cpp:217
+#: src/about.cpp:218
 msgid "+French Translation"
 msgstr "+フランス語翻訳"
 
-#: src/about.cpp:236
+#: src/about.cpp:237
 msgid "+German Translation"
 msgstr "+ドイツ語翻訳"
 
-#: src/about.cpp:248
+#: src/about.cpp:249
 msgid "+Greek Translation"
 msgstr "+ギリシャ語翻訳"
 
-#: src/about.cpp:254
+#: src/about.cpp:255
 msgid "+Hebrew Translation"
 msgstr "+ヘブライ語翻訳"
 
-#: src/about.cpp:258
+#: src/about.cpp:259
 msgid "+Hungarian Translation"
 msgstr "+ハンガリー語翻訳"
 
-#: src/about.cpp:271
+#: src/about.cpp:272
 #, fuzzy
 msgid "+Indonesian Translation"
 msgstr "+エストニア語翻訳"
 
-#: src/about.cpp:274
+#: src/about.cpp:275
 msgid "+Italian Translation"
 msgstr "+イタリア語翻訳"
 
-#: src/about.cpp:283
+#: src/about.cpp:284
 msgid "+Japanese Translation"
 msgstr "+日本語翻訳"
 
-#: src/about.cpp:288
+#: src/about.cpp:289
 msgid "+Latin Translation"
 msgstr "+ラテン語翻訳"
 
-#: src/about.cpp:291
+#: src/about.cpp:292
 msgid "+Norwegian Translation"
 msgstr "+ノルウェー語翻訳"
 
-#: src/about.cpp:297
+#: src/about.cpp:298
 msgid "+Polish Translation"
 msgstr "+ポーランド語翻訳"
 
-#: src/about.cpp:308
+#: src/about.cpp:309
 #, fuzzy
 msgid "+Portuguese Translation"
 msgstr "+ポルトガル（ブラジル）語翻訳"
 
-#: src/about.cpp:311
+#: src/about.cpp:312
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+ポルトガル（ブラジル）語翻訳"
 
-#: src/about.cpp:320
+#: src/about.cpp:321
 msgid "+Russian Translation"
 msgstr "+ロシア語翻訳"
 
-#: src/about.cpp:326
+#: src/about.cpp:327
 msgid "+Serbian Translation"
 msgstr "+セルビア語翻訳"
 
-#: src/about.cpp:329
+#: src/about.cpp:330
 msgid "+Slovak Translation"
 msgstr "+スロバキア語翻訳"
 
-#: src/about.cpp:332
+#: src/about.cpp:333
 msgid "+Slovenian Translation"
 msgstr "+スロベニア語翻訳"
 
-#: src/about.cpp:335
+#: src/about.cpp:336
 msgid "+Spanish Translation"
 msgstr "+スペイン語翻訳"
 
-#: src/about.cpp:344
+#: src/about.cpp:345
 msgid "+Swedish Translation"
 msgstr "+スウェーデン語翻訳"
 
-#: src/about.cpp:351
+#: src/about.cpp:352
 msgid "+Turkish Translation"
 msgstr "+トルコ語翻訳"
 
-#: src/about.cpp:358
+#: src/about.cpp:359
 msgid "+Contributors"
 msgstr "+貢献者"
 
-#: src/about.cpp:363
+#: src/about.cpp:364
 msgid "+Bots"
 msgstr "+ボット"
 
-#: src/about.cpp:399 src/help.cpp:2687
+#: src/about.cpp:400 src/help.cpp:2687
 msgid "Close"
 msgstr "閉じる"
 
