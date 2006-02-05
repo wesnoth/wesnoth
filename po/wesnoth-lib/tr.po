@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-02-03 19:21+0100\n"
-"PO-Revision-Date: 2005-10-22 00:16+0300\n"
-"Last-Translator: ihsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
+"PO-Revision-Date: 2006-01-12 19:15+0200\n"
+"Last-Translator: ihsan <ihsan_akin@yahoo.com>\n"
 "Language-Team: Turkish <farsakoglu@web.de>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -249,39 +249,36 @@ msgid "Best Possible Enemy Moves"
 msgstr "Muhtemel en iyi düşman hareketleri"
 
 #: src/hotkeys.cpp:81
-#, fuzzy
 msgid "Play"
-msgstr "Oyuncular:"
+msgstr "Oyun"
 
 #: src/hotkeys.cpp:82
 msgid "Reset"
-msgstr ""
+msgstr "Sıfırla"
 
 #: src/hotkeys.cpp:83
 msgid "Stop"
-msgstr ""
+msgstr "Dur"
 
 #: src/hotkeys.cpp:84
-#, fuzzy
 msgid "Next Turn"
-msgstr "Sonraki birim"
+msgstr "Sonraki Sıra"
 
 #: src/hotkeys.cpp:85
-#, fuzzy
 msgid "Next Side"
-msgstr "Sonraki birim"
+msgstr "Sonraki "
 
 #: src/hotkeys.cpp:86
 msgid "Shroud"
-msgstr ""
+msgstr "Örtülü"
 
 #: src/hotkeys.cpp:87
 msgid "Fog"
-msgstr ""
+msgstr "Sis"
 
 #: src/hotkeys.cpp:88
 msgid "Skip animation"
-msgstr ""
+msgstr "Animasyonu atla"
 
 #: src/hotkeys.cpp:90
 msgid "Set Terrain"
@@ -467,7 +464,7 @@ msgstr "YZ hareketlerini atla"
 
 #: src/preferences_display.cpp:219
 msgid "Show lobby joins"
-msgstr ""
+msgstr "Lobbiye katılanları göster"
 
 #: src/preferences_display.cpp:220
 msgid "Show Floating Labels"
@@ -495,7 +492,7 @@ msgstr "Nur efektlerini göster"
 
 #: src/preferences_display.cpp:227
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: src/preferences_display.cpp:229
 msgid "Adjust Gamma"
@@ -515,7 +512,7 @@ msgstr "Müzik"
 
 #: src/preferences_display.cpp:234
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "Yazışma zaman bilgisi"
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -551,11 +548,11 @@ msgstr "Haritada ekranın kayma hızını değiştir"
 
 #: src/preferences_display.cpp:271 src/preferences_display.cpp:273
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "Gösterielcek yazışma satırlarını miktarını ayarla"
 
 #: src/preferences_display.cpp:276
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Yazışma  mesajlarına zaman bilgisi ekle"
 
 #: src/preferences_display.cpp:279 src/preferences_display.cpp:284
 msgid "Change the brightness of the display"
@@ -579,7 +576,7 @@ msgstr "Haritanın üzerine bir ızgara yerleştir"
 
 #: src/preferences_display.cpp:299
 msgid "Show messages about players joining the multiplayer lobby"
-msgstr ""
+msgstr "Çokouncu lobisine katılan oyuncular hakkındaki mesajları göster"
 
 #: src/preferences_display.cpp:302
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -591,9 +588,8 @@ msgid "Change the resolution the game runs at"
 msgstr "Oyunun çalıştığı çözünürlüğü değiştir"
 
 #: src/preferences_display.cpp:305
-#, fuzzy
 msgid "Change the theme the game runs with"
-msgstr "Oyunun çalıştığı çözünürlüğü değiştir"
+msgstr "Oyunun çalıştığı temayı değiştir"
 
 #: src/preferences_display.cpp:308
 msgid "Display a dialog at the beginning of your turn"
@@ -629,7 +625,7 @@ msgstr "Klavye kısayollarını gör ve değiştir"
 
 #: src/preferences_display.cpp:475
 msgid "Chat Lines: "
-msgstr ""
+msgstr "Yazışma Satırları:"
 
 #: src/preferences_display.cpp:527
 msgid "yes"
@@ -652,9 +648,8 @@ msgid "Prefs section^Sound"
 msgstr "Ses"
 
 #: src/preferences_display.cpp:598
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "Görüntü"
+msgstr "Ayarlar section^Multiplayer"
 
 #: src/preferences_display.cpp:599
 msgid "Advanced section^Advanced"
@@ -673,7 +668,6 @@ msgid "Hotkey Settings"
 msgstr "Klavye kısayolu ayarları"
 
 #: src/preferences_display.cpp:716 src/preferences_display.cpp:769
-#, fuzzy
 msgid "Press desired Hotkey"
 msgstr "Klavye kısayolunu gir"
 
@@ -694,21 +688,22 @@ msgid "Save Hotkeys"
 msgstr "Kısayolları kaydet"
 
 #: src/preferences_display.cpp:796
-#, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "Bu kısayol zaten kullanımda"
 
 #: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Kayıt edilen Tema Tercihleri"
 
 #: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
+"Yeni tema bir sonraki yeni oyunda yada yüklenen oyunda etkili olmaya "
+"başlayacak."
 
 #: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
+msgstr "Bilinen tema yok. Var olan bir oyundan değiştirmeyi dene."
 
 #: src/show_dialog.cpp:314
 msgid "Error"
