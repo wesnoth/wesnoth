@@ -16,6 +16,7 @@
 
 class config;
 #include "map.hpp"
+#include "font.hpp"
 
 #include <map>
 #include <string>
@@ -36,7 +37,7 @@ public:
 	static int get_max_chars();
 
 	const std::string& get_label(const gamemap::location& loc) const;
-	void set_label(const gamemap::location& loc, const std::string& text);
+	void set_label(const gamemap::location& loc, const std::string& text, const SDL_Color colour = font::NORMAL_COLOUR);
 	void clear();
 
 	void scroll(double xmove, double ymove);

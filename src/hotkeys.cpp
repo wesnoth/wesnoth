@@ -76,6 +76,7 @@ const struct {
 	{ hotkey::HOTKEY_STATISTICS, "statistics", N_("Statistics"), false },
 	{ hotkey::HOTKEY_QUIT_GAME, "quit", N_("Quit Game"), false },
 	{ hotkey::HOTKEY_LABEL_TERRAIN, "labelterrain", N_("Set Label"), false },
+	{ hotkey::HOTKEY_CLEAR_LABELS, "clearlabels", N_("Clear Labels"), false },
 	{ hotkey::HOTKEY_SHOW_ENEMY_MOVES, "showenemymoves", N_("Show Enemy Moves"), false },
 	{ hotkey::HOTKEY_BEST_ENEMY_MOVES, "bestenemymoves", N_("Best Possible Enemy Moves"), false },
 	{ hotkey::HOTKEY_PLAY_REPLAY, "playreplay", N_("Play"), false },
@@ -595,6 +596,10 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_LABEL_TERRAIN:
 			if(executor)
 				executor->label_terrain();
+			break;
+		case HOTKEY_CLEAR_LABELS:
+			if(executor)
+				executor->clear_labels();
 			break;
 		case HOTKEY_SHOW_ENEMY_MOVES:
 			if(executor)

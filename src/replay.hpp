@@ -54,6 +54,7 @@ public:
 	                int weapon);
 	void choose_option(int index);
 	void add_label(const std::string& text, const gamemap::location& loc);
+	void clear_labels();
 	void add_rename(const std::string& name, const gamemap::location& loc);
 	void end_turn();
 

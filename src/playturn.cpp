@@ -1162,6 +1162,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_SPEAK_ALLY:
 	case hotkey::HOTKEY_SPEAK_ALL:
 	case hotkey::HOTKEY_CHAT_LOG:
+	case hotkey::HOTKEY_CLEAR_LABELS:
 		return network::nconnections() > 0;
 
 	case hotkey::HOTKEY_REDO:
@@ -2700,6 +2701,11 @@ void turn_info::label_terrain()
 	}
 }
 
+void turn_info::clear_labels()
+{
+	gui_.labels().clear();
+	recorder.clear_labels();
+}
 // Returns true if any enemy units are visible.
 bool turn_info::enemies_visible() const
 {

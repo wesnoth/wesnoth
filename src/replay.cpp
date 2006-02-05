@@ -335,6 +335,16 @@ void replay::add_label(const std::string& text, const gamemap::location& loc)
 	cmd->add_child("label",val);
 }
 
+void replay::clear_labels()
+{
+	config* const cmd = add_command(false);
+
+	(*cmd)["undo"] = "no";
+
+
+	cmd->add_child("clear_labels");
+}
+
 void replay::add_rename(const std::string& name, const gamemap::location& loc)
 {
 	config* const cmd = add_command(false);
@@ -628,6 +638,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			if (!replayer.is_skipping()){
 				disp.labels().set_label(loc,text);
 			}
+		} else if((child = cfg->child("clear_labels")) != NULL) {
+			disp.labels().clear();
 		}
 
 		else if((child = cfg->child("rename")) != NULL) {

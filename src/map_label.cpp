@@ -86,7 +86,7 @@ const std::string& map_labels::get_label(const gamemap::location& loc) const
 	}
 }
 
-void map_labels::set_label(const gamemap::location& loc, const std::string& str)
+void map_labels::set_label(const gamemap::location& loc, const std::string& str, const SDL_Color colour)
 {
 	std::string text = str;
 	if(text.size() > max_label_size) {
@@ -103,7 +103,6 @@ void map_labels::set_label(const gamemap::location& loc, const std::string& str)
 		return;
 	}
 
-	SDL_Color colour = font::NORMAL_COLOUR;
 
 
 	const gamemap::location loc_nextx(loc.x+1,loc.y);
