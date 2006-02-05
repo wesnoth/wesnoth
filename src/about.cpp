@@ -111,12 +111,13 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Multiplayer Developers"),
 		"-   Bartek Waresiak (Dragonking)",
+		"-   Mike Quiñones (Doc Paterson)",
 		"-   Richard S. (Noy)",
 		"-   Soliton",
 
 		"_" N_("+Multiplayer Maps"),
 		"-   Joshua Northey (Becephalus)",
-		"-   Mike Quinones (Doc Paterson)",
+		"-   Mike Quiñones (Doc Paterson)",
 		"-   Peter Groen (pg)",
 		"-   Tom Chance (telex4)",
 
