@@ -19,12 +19,38 @@ SVN trunk (1.1+svn):
    * migrated unique units, scenarios, maps, and images to data/campaigns
  * campaign server
    * changed default port for campaign server to 15003 to separate 1.1 and 1.0
+ * gameplay changes:
+   * improved default weapon selection on player attack (patch #500)
+   * attack_weight=0 disables the attack when attacking
+   * defense_weight=0 disables the attack when defending
+   * attack_weight is now functional (#5014)
+   * added a new terrain "Mushroom Grove" (id=fungus)
+   * changed several terrains to be "mixed", having worst movement and best
+     defense: Snow Forest, Snow Hill, Dunes (renamed from Desert Hill)
+   * added new schedule: deep underground (-30%, very dark)
+ * graphics:
+   * New castle tiles
+   * New sand tiles
+   * New terrain: Rockbound Cave, Mushroom Grove
+   * Added Drake, Gladiator, Enforcer, and Slasher death animations
+   * Added item bones.png
  * language and i18n:
    * new translations: Indonesian
    * new manual: Indonesian
    * updated translations: British English, Chinese, German, Hebrew, Italian,
      Norwegian, Polish, Portuguese (Brazil), Russian, Slovenian, Swedish
    * updated man pages: English, German, Swedish
+ * multiplayer maps:
+   * revised multiplayer maps: Blitz, Charge, Den of Onis, Silverhead Crossing,
+     Sulla's Ruins, Cynsaun Battlefield, Morituri, Triple Blitz, Castle Hopping
+     Isle, Clash, King of the Hill, Lagoon, Smallolof, Forest of Fear
+   * added multiplayer maps: Loris River, Paths of Daggers
+   * removed multiplayer maps: Across the River, An Island, The Valley of Death,
+     Battle World
+   * renamed multiplayer maps: 1v1v1Hex -> Island of the Horatii
+ * music:
+   * support for more than one music file per scenario with adjustable spacing
+   * new music: gameplay03.ogg
  * units
    * gave names to mermaids
    * deleted Wall Guard and Gate (no longer used)
@@ -63,28 +89,6 @@ SVN trunk (1.1+svn):
      * added many level 2 units and the Ancient Wose as leaders in AoH but not
        as random_leader
      * added Stalwart and Necrophage as leaders in the classic era
- * revised multiplayer maps: Blitz, Charge, Den of Onis, Silverhead Crossing,
-     Sulla's Ruins, Cynsaun Battlefield, Morituri, Triple Blitz, Castle Hopping
-     Isle, Clash, King of the Hill, Lagoon, Smallolof, Forest of Fear
- * added multiplayer maps: Loris River, Paths of Daggers
- * removed multiplayer maps: Across the River, An Island, The Valley of Death,
-     Battle World
- * renamed multiplayer maps: 1v1v1Hex -> Island of the Horatii
- * gameplay changes:
-   * improved default weapon selection on player attack (patch #500)
-   * attack_weight=0 disables the attack when attacking
-   * defense_weight=0 disables the attack when defending
-   * attack_weight is now functional (#5014)
-   * added a new terrain "Mushroom Grove" (id=fungus)
-   * changed several terrains to be "mixed", having worst movement and best
-     defense: Snow Forest, Snow Hill, Dunes (renamed from Desert Hill)
-   * added new schedule: deep underground (-30%, very dark)
- * graphics:
-   * New castle tiles
-   * New sand tiles
-   * New terrain: Rockbound Cave, Mushroom Grove
-   * Added Drake, Gladiator, Enforcer, and Slasher death animations
-   * Added item bones.png
  * user interface
    * added new image in advancement tag that is displayed in advancement dialog 
      and changed old image to icon in advancement tag.
@@ -118,9 +122,6 @@ SVN trunk (1.1+svn):
      combining
    * choice policy for combined terrain can be separately specified for def
    and mvt
- * music:
-   * support for more than one music file per scenario with adjustable spacing
-   * new music: gameplay03.ogg
  * Miscellaneous
    * added a require_amla element to [advancement] tags.
    * anonymous data logging for single player campaigns, see stats.wesnoth.org
