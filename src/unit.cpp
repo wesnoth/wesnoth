@@ -840,18 +840,18 @@ void unit::read(const game_data& data, const config& cfg)
 		variables_.clear();
 	}
 
-	const std::string& hitpoints = cfg["hitpoints"];
-	hitpoints_ = lexical_cast_default<int>(hitpoints,maxHitpoints_);
-	
+	// Set this to some sane value: add_modification clamps it when
+	// altering maxHitpoints_, and if we don't set it valgrind
+	// complains.  We actually set it below once maxHitpoints_ is stable.
+	hitpoints_ = 1;
 	const config* const modifications = cfg.child("modifications");
 	if(modifications != NULL) {
 		modifications_ = *modifications;
 		apply_modifications();
 	}
 	
-	if(hitpoints == "") {
-		hitpoints_ = maxHitpoints_;
-	}
+	const std::string& hitpoints = cfg["hitpoints"];
+	hitpoints_ = lexical_cast_default<int>(hitpoints,maxHitpoints_);
 	
 	goto_.x = atoi(cfg["goto_x"].c_str()) - 1;
 	goto_.y = atoi(cfg["goto_y"].c_str()) - 1;
