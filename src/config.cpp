@@ -530,8 +530,8 @@ void config::apply_diff(const config& diff)
 config config::merge_with(const config& c) const
 {
 	config n(*this);
-	for(string_map::const_iterator i = c.values.begin(); i != c.values.end(); ++i) {
-		n.values[i->first] = i->second;
+	for(string_map::const_iterator j = c.values.begin(); j != c.values.end(); ++j) {
+		n.values[j->first] = j->second;
 	}
 	const child_map& child_changes = c.all_children();
 	child_map::const_iterator i;
