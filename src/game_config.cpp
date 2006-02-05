@@ -54,7 +54,7 @@ namespace game_config
 	std::string partmoved_ball_image = "misc/ball-partmoved.png";
 	std::string enemy_ball_image = "misc/ball-enemy.png";
 	std::string ally_ball_image = "misc/ball-ally.png";
-	std::string flag_image = "terrain/flag-team%d-1.png:150,terrain/flag-team%d-2.png:150";
+	std::string flag_image = "terrain/flag-1.png:150,terrain/flag-2.png:150";
   std::vector<Uint32> flag_rgb;
 
 	std::string dot_image = "misc/dot.png";
