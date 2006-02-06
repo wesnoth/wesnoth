@@ -222,6 +222,11 @@ const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::l
 {
 	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
 		if(i->hexes.count(loc) == 1) {
+			if (i->times.empty()) { // prevent division by zero if no time is available
+				config dummy_cfg;
+				static time_of_day const default_time(dummy_cfg);
+				return default_time;
+			}
 			if(illuminated) {
 				const time_of_day* cur = &i->times[(n_turn-1)%i->times.size()];
 				while(illuminated>0 && cur->lighter) {
@@ -233,7 +238,7 @@ const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::l
 					illuminated++;
 				}
 				return *cur;
-			} else if(i->times.empty() == false) {
+			} else {
 				return i->times[(n_turn-1)%i->times.size()];
 			}
 		}
