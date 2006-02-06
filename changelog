@@ -122,11 +122,14 @@ SVN trunk (1.1+svn):
    * combined terrain can now take "best of" or "worst of" values for
      combining
    * choice policy for combined terrain can be separately specified for def
-   and mvt
+     and mvt
    * added random_traits key for the create unit event.
    * [female] and [male] unit tags now inherit from [unit].
-   * Added new events 'attack_end', which occurs after a battle is ended, 'attacker_hits', which occurs when the attacker hits the defender, 'defender_hits', 'attacker_misses', and 'defender_misses'.
-   * Added [special_filter] and [special_filter_second] to events. These allow some events to be filtered by weapon used and by terrain.
+   * Added new events 'attack_end', which occurs after a battle is ended,
+     'attacker_hits', which occurs when the attacker hits the defender,
+     'defender_hits', 'attacker_misses', and 'defender_misses'.
+   * Added [special_filter] and [special_filter_second] to events. These allow
+     some events to be filtered by weapon used and by terrain.
    * Added 'mode' tag to [store_unit]; allows appending to variable.
  * Miscellaneous
    * added a require_amla element to [advancement] tags.
