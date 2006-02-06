@@ -444,15 +444,22 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 					size_t n;
 					for(n = 0; n != 6; ++n) {
 
-						//see if there is an enemy unit next to this tile. Note that we don't
-						//actually have to check if it's invisible, since it being invisible is
-						//the only possibility
-						const unit_map::const_iterator invisible_unit = info_.units.find(adj[n]);
-						if (invisible_unit != info_.units.end() && invisible_unit->second.emits_zoc() &&
-						   current_team().is_enemy(invisible_unit->second.side())) {
-							to = *i;
-							steps.erase(i,steps.end());
-							break;
+						//see if there is an enemy unit next to this tile.  If it's invisible,
+						//we need to stop: we're ambushed.  If it's not, we must be a skirmisher,
+						//otherwise AI wouldn't try.
+						const unit_map::const_iterator u = info_.units.find(adj[n]);
+						if (u != info_.units.end() && u->second.emits_zoc()
+							&& current_team().is_enemy(u->second.side())) {
+							if (u->second.invisible(info_.map.underlying_union_terrain(adj[n]),
+													info_.state.get_time_of_day().lawful_bonus,
+													adj[n], info_.units, info_.teams)) {
+								to = *i;
+								steps.erase(i,steps.end());
+								break;
+							} else {
+								if (!ignore_zocs)
+									LOG_STREAM(err, ai) << "AI tried to skirmish with non-skirmisher\n";
+							}
 						}
 					}
 
