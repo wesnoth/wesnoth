@@ -375,11 +375,11 @@ int show_dialog(display& disp, surface image,
 	}
 
 #ifdef USE_TINY_GUI
-	const unsigned int max_menu_width = 150;
+	const int max_menu_width = 150;
 #else
-	const unsigned int max_menu_width = 0;
+	const int max_menu_width = -1;
 #endif
-	menu menu_(screen,menu_items,type == MESSAGE,0,max_menu_width,sorter);
+	menu menu_(screen,menu_items,type == MESSAGE,-1,max_menu_width,sorter);
 
 	menu_.set_numeric_keypress_selection(use_textbox == false);
 

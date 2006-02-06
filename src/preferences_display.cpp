@@ -737,7 +737,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(0).set_alpha_sort(1);
 
-	gui::menu menu_(disp.video(), menu_items, false, height, 0, &sorter);
+	gui::menu menu_(disp.video(), menu_items, false, height, -1, &sorter);
 	menu_.sort_by(0);
 	menu_.reset_selection();
 	menu_.set_width(font::relative_size(400));

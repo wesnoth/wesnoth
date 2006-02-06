@@ -151,7 +151,7 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 }
 
 menu::menu(CVideo& video, const std::vector<std::string>& items,
-           bool click_selects, unsigned int max_height, unsigned int max_width,
+           bool click_selects, int max_height, int max_width,
 		   const sorter* sorter_obj)
         : scrollarea(video),
           max_height_(max_height), max_width_(max_width), max_items_(-1), item_height_(-1),
@@ -299,7 +299,7 @@ void menu::update_size()
 	    i != i_end; ++i)
 		h += get_item_rect(i).h;
 	h = maximum(h, height());
-	if (max_height_ != 0 && h > max_height_)
+	if (max_height_ > 0 && h > max_height_)
 		h = max_height_;
 
 	std::vector<int> const &widths = column_widths();
@@ -307,7 +307,7 @@ void menu::update_size()
 	if (items_.size() > max_items_onscreen())
 		w += scrollbar_width();
 	w = maximum(w, width());
-	if (max_width_ != 0 && w > max_width_)
+	if (max_width_ > 0 && w > max_width_)
 		w = max_width_;
 
 	update_scrollbar_grip_height();
@@ -408,7 +408,7 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, b
 	set_dirty();
 }
 
-void menu::set_max_height(const unsigned int new_max_height)
+void menu::set_max_height(const int new_max_height)
 {
 	max_height_ = new_max_height;
 	itemRects_.clear();
@@ -416,7 +416,7 @@ void menu::set_max_height(const unsigned int new_max_height)
 	update_size();
 }
 
-void menu::set_max_width(const unsigned int new_max_width)
+void menu::set_max_width(const int new_max_width)
 {
 	max_width_ = new_max_width;
 }
@@ -427,7 +427,7 @@ size_t menu::max_items_onscreen() const
 		return size_t(max_items_);
 	}
 
-	const size_t max_height = (max_height_ ? max_height_ : (video().gety()*66)/100) - heading_height();
+	const size_t max_height = (max_height_ == -1 ? (video().gety()*66)/100 : max_height_) - heading_height();
 	std::vector<int> heights;
 	size_t n;
 	for(n = 0; n != items_.size(); ++n) {
@@ -773,8 +773,8 @@ void menu::draw_row(const std::vector<std::string>& row, const SDL_Rect& rect, R
 			if (!str.empty() && str[0] == IMAGE_PREFIX) {
 				const std::string image_name(str.begin()+1,str.end());
 				const surface img = image::get_image(image_name,image::UNSCALED);
-				const int max_width = max_width_ ? minimum<int>(max_width_, area.w - xpos) : area.w;
-					
+				const int max_width = max_width_ < 0 ? area.w :
+					minimum<int>(max_width_, area.w - xpos);
 				if(img != NULL && (xpos - rect.x) + img->w < max_width
 				   && rect.y + img->h < area.h) {
 					const size_t y = rect.y + (rect.h - img->h)/2;
@@ -787,7 +787,7 @@ void menu::draw_row(const std::vector<std::string>& row, const SDL_Rect& rect, R
 				}
 			} else {
 				column.x = xpos;
-				const std::string to_show = max_width_ ?
+				const std::string to_show = max_width_ > -1 ?
 					font::make_text_ellipsis(str, menu_font_size, loc.w - (xpos - rect.x)) : str;
 				const SDL_Rect& text_size = font::text_area(str,menu_font_size);
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
