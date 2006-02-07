@@ -801,4 +801,94 @@ void game_state::set_variable(const std::string& key, const t_string& value)
 	variables[key] = value;
 }
 
+void game_state::clear_variable(const std::string& varname)
+{
+	config* vars(&variables);
+	std::string key(varname);
+	std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
+	int dot_index = key.find('.');
+	// "mover.modifications.trait[0]"
+	while(itor != key.end()) { // subvar access
+		std::string element=key.substr(0,dot_index);
+		key = key.substr(dot_index+1);
+		
+		size_t index = 0;
+		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
+		const bool explicit_index = index_start != element.end();
+		if(explicit_index) {
+			const std::string::iterator index_end = std::find(index_start,element.end(),']');
+			const std::string index_str(index_start+1,index_end);
+			index = static_cast<size_t>(lexical_cast_default<int>(index_str));
+			if(index > MaxLoop) {
+				LOG_NG << "clear_variable: index greater than " << MaxLoop
+				       << ", truncated\n";
+				index = MaxLoop;
+			}
+			element = std::string(element.begin(),index_start);
+		}
+		const config::child_list& items = vars->get_children(element);
+		
+		if(itor == key.end()) {
+			std::string last_element(key);
+
+			size_t index = 0;
+			const std::string::iterator index_start = std::find(last_element.begin(),last_element.end(),'[');
+			const bool explicit_index = index_start != last_element.end();
+			if(explicit_index) {
+				const std::string::iterator index_end = std::find(index_start,last_element.end(),']');
+				const std::string index_str(index_start+1,index_end);
+				index = static_cast<size_t>(lexical_cast_default<int>(index_str));
+				if(index > MaxLoop) {
+					LOG_NG << "clear_variable: index greater than " << MaxLoop
+					       << ", truncated\n";
+					index = MaxLoop;
+				}
+				last_element = std::string(last_element.begin(),index_start);
+			}
+			if(vars->get_children(element).size() <= index) {
+				return;
+			}
+			//std::cerr << "Removing " << last_element << "\n";
+			vars->values.erase(last_element);
+			vars->remove_child(last_element,index);
+			return;
+		} else {
+			if(vars->get_children(element).size() <= index) {
+				return;
+			}
+			//std::cerr << "Entering " << element << "[" << index << "] of [" << vars->get_children(element).size() << "]\n";
+			vars = vars->get_children(element)[index];
+			if(!vars) {
+				return;
+			}
+		}
+		itor = std::find(key.begin(),key.end(),'.');
+		dot_index = key.find('.');
+	}
+	size_t index = 0;
+	const std::string::iterator index_start = std::find(key.begin(),key.end(),'[');
+	const bool explicit_index = index_start != key.end();
+	if(explicit_index) {
+		const std::string::iterator index_end = std::find(index_start,key.end(),']');
+		const std::string index_str(index_start+1,index_end);
+		index = static_cast<size_t>(lexical_cast_default<int>(index_str));
+		if(index > MaxLoop) {
+			LOG_NG << "clear_variable: index greater than " << MaxLoop
+				   << ", truncated\n";
+			index = MaxLoop;
+		}
+		key = std::string(key.begin(),index_start);
+	}
+	const config::child_list& items = vars->get_children(key);
+	
+	if(vars->get_children(key).size() <= index) {
+		return;
+	}
+	//std::cerr << "Removing " << key << "\n";
+	vars->values.erase(key);
+	vars->remove_child(key,index);
+}
+
+
+
 

@@ -126,7 +126,9 @@ struct game_state : public variable_set
 
 	config& get_variable_cfg(const std::string& varname);
 	void set_variable(const std::string& varname, const t_string& value);
-
+	
+	void clear_variable(const std::string& varname);
+	
 	std::string difficulty; //the difficulty level the game is being played on.
 
 	//if the game is saved mid-level, we have a series of replay steps to

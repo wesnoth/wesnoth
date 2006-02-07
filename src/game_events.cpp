@@ -1440,8 +1440,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//command to remove a variable
 	else if(cmd == "clear_variable") {
-		state_of_game->variables.values.erase(cfg["name"]);
-		state_of_game->variables.clear_children(cfg["name"]);
+		const std::string& name = utils::interpolate_variables_into_string(
+			cfg.get_attribute("name"), *state_of_game);
+		state_of_game->clear_variable(name);
 	}
 
 	else if(cmd == "endlevel") {
