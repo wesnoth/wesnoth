@@ -381,6 +381,7 @@ noinst_HEADERS = \
 	preferences.hpp \
 	unit_types.hpp \
 	unit_animation.hpp \
+	upload_log.hpp \
 	display.hpp \
 	leader_list.hpp \
 	about.hpp \
