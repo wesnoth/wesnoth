@@ -667,9 +667,13 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 			if(race_->uses_global_traits() == false) {
 				possibleTraits_.clear();
 			}
-
-			const config::child_list& traits = race_->additional_traits();
-			possibleTraits_.insert(possibleTraits_.end(),traits.begin(),traits.end());
+			
+			if(cfg["ignore_race_traits"] == "yes") {
+				possibleTraits_.clear();
+			} else {
+				const config::child_list& traits = race_->additional_traits();
+				possibleTraits_.insert(possibleTraits_.end(),traits.begin(),traits.end());
+			}
 		}
 	} else {
 		static const unit_race dummy_race;
