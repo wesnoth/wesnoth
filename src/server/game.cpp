@@ -341,7 +341,7 @@ bool game::describe_slots()
 
 	const int val = int(available_slots());
 	char buf[50];
-	snprintf(buf,sizeof(buf),"%d",val);
+	snprintf(buf,sizeof(buf),"%d/%d",val,level_.get_children("side").size());
 
 	if(buf != (*description())["slots"]) {
 		description()->values["slots"] = buf;

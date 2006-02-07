@@ -329,7 +329,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		if(turn != "")
 			games_.back().status = _("Turn") + (" " + turn);
 		else if(slots != "")
-			games_.back().status = slots + " " + ngettext(_("Vacant Slot"), _("Vacant Slots"), games_.back().vacant_slots);
+			games_.back().status = std::string(ngettext(_("Vacant Slot:"), _("Vacant Slots:"), games_.back().vacant_slots)) + " " + slots;
 
 		if((**game)["mp_use_map_settings"] == "yes") {
 			games_.back().gold = _("Use map settings");
