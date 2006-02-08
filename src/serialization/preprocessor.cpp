@@ -516,6 +516,11 @@ bool preprocessor_data::get_chunk()
 			      << linenum_ << ' ' << target_.location_;
 			ERR_CF << error.str() << '\n';
 			throw config::error(error.str());
+		} else if (command == "undef") {
+			skip_spaces();
+			std::string const &symbol = read_word();
+			target_.defines_->erase(symbol);
+			LOG_CF << "undefine macro " << symbol << " (location " << target_.location_ << ")\n";
 		} else
 			comment = true;
 		skip_eol();
