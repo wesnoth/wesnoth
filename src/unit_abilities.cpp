@@ -26,92 +26,46 @@
 /// filter ///
 ability::filter::filter()
 {
-	// we add a null string to prevent the filter to be empty
-	terrain_filter_chaotic.push_back("");
-	terrain_filter_neutral.push_back("");
-	terrain_filter_lawful.push_back("");
 }
 
 bool ability::filter::matches_filter(const std::string& terrain, int lawful_bonus) const
-{		
-	const std::vector<std::string>* terrain_filter;
-	if (lawful_bonus < 0) {
-		terrain_filter = &terrain_filter_chaotic;
-	} else if (lawful_bonus == 0) {
-		terrain_filter = &terrain_filter_neutral;
-	} else {
-		terrain_filter = &terrain_filter_lawful;
-	}		
-		
-	if (terrain_filter->empty()) {
+{
+	const std::string& tod_string = lawful_bonus > 0 ? "lawful" : (lawful_bonus < 0 ? "chaotic" : "neutral");
+	if(filters.empty()) {
 		return true;
-	} else {
-		return std::find(terrain_filter->begin(),terrain_filter->end(),terrain) != terrain_filter->end();
 	}
+	for(std::vector<config>::const_iterator i=filters.begin(); i != filters.end(); ++i) {
+		std::vector<std::string> terrain_filters;
+		std::vector<std::string> tod_filters;
+		if(std::find(terrain_filters.begin(),terrain_filters.end(),",")!=terrain_filters.end() && (*i)["terrain"].str().find(terrain)) {
+			terrain_filters = utils::split((*i)["terrain"]);
+		} else if((*i)["terrain"] != "") {
+			terrain_filters.push_back((*i)["terrain"]);
+		}
+		if(std::find(tod_filters.begin(),tod_filters.end(),",")!=tod_filters.end() && (*i)["tod"].str().find(tod_string)) {
+			tod_filters = utils::split((*i)["tod"]);
+		} else if((*i)["tod"] != "") {
+			tod_filters.push_back((*i)["tod"]);
+		}
+		if(terrain_filters.size() && std::find(terrain_filters.begin(),terrain_filters.end(),terrain) == terrain_filters.end()) {
+			return false;
+		}
+		if(tod_filters.size() && std::find(tod_filters.begin(),tod_filters.end(),tod_string) == tod_filters.end()) {
+			return false;
+		}
+	}
+	return true;
 }
 
 void ability::filter::unfilter()
 {
-	terrain_filter_chaotic.clear();
-	terrain_filter_neutral.clear();
-	terrain_filter_lawful.clear();		
-}
-
-void ability::filter::add_terrain_filter(const std::string& terrains)
-{
-	std::vector<std::string> add_to_filter = utils::split(terrains);
-	for (std::vector<std::string>::const_iterator t = add_to_filter.begin(); t != add_to_filter.end(); ++t) {
-		terrain_filter_chaotic.push_back(*t);
-		terrain_filter_neutral.push_back(*t);
-		terrain_filter_lawful.push_back(*t);
-	}
-}
-
-void ability::filter::add_tod_filter(const std::string& times)
-{
-	std::vector<std::string> add_to_filter = utils::split(times);
-	for (std::vector<std::string>::const_iterator t = add_to_filter.begin(); t != add_to_filter.end(); ++t) {
-		if (*t == "chaotic") {
-			terrain_filter_chaotic.clear();
-		} else if (*t == "neutral") {
-			terrain_filter_neutral.clear();
-		} else if (*t == "lawful") {
-			terrain_filter_lawful.clear();		
-		}
-	}
+	filters.clear();
 }
 	
 void ability::filter::add_filters(const config* cfg)
 {
 	if (cfg) {
-		std::string tods =(*cfg)["tod"];
-		std::string terrains =(*cfg)["terrains"];
-		if (tods == "" && terrains == "") {
-			unfilter();
-			return;
-		} else if (tods == "") {
-			add_terrain_filter(terrains);
-			return;
-		} else if (terrains == "") {
-			add_tod_filter(tods);
-			return;
-		} else {
-			std::vector<std::string> tod_slices = utils::split(tods);
-			for (std::vector<std::string>::const_iterator td = tod_slices.begin(); td != tod_slices.end(); ++td) {
-				std::vector<std::string>* terrain_filter;
-				if (*td == "chaotic") {
-					terrain_filter= &terrain_filter_chaotic;
-				} else if (*td == "neutral") {
-					terrain_filter= &terrain_filter_neutral;
-				} else if (*td == "lawful") {
-					terrain_filter= &terrain_filter_lawful;
-				}
-				std::vector<std::string> terrain_slices = utils::split(terrains);
-				for (std::vector<std::string>::const_iterator te = terrain_slices.begin(); te != terrain_slices.end(); ++te) {
-					terrain_filter->push_back(*te);
-				}
-			}
-		}
+		filters.push_back(*cfg);
 	} else {
 		unfilter();
 	}

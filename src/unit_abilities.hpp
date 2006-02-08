@@ -30,13 +30,9 @@ public:
 		filter();
 		bool matches_filter(const std::string& terrain, int lawful_bonus) const;
 		void add_filters(const config* cfg);
-		void add_terrain_filter(const std::string& terrains);
-		void add_tod_filter(const std::string& times);
 		void unfilter();
 	private:
-		std::vector<std::string> terrain_filter_chaotic;
-		std::vector<std::string> terrain_filter_neutral;
-		std::vector<std::string> terrain_filter_lawful;
+		std::vector<config> filters;
 	};
 
 	const std::string description() const;
