@@ -1,4 +1,4 @@
-EXTRA_DIST = wesnoth.desktop
+EXTRA_DIST = wesnoth.desktop wesnoth-icon.png
 
 if GNOME1
 gnome1desktopdir = @GNOME1_DESKTOP@
