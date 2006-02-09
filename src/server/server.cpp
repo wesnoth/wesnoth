@@ -985,6 +985,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			lobby_players_.send_data(sync_initial_response());
 		} else {
 
+			bool obs = g->is_observer(sock);
 			g->remove_player(sock);
 			g->describe_slots();
 			lobby_players_.add_player(sock);
@@ -992,11 +993,15 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			//mark the player as available in the lobby
 			const player_map::iterator pl = players_.find(sock);
 			if(pl != players_.end()) {
+				if(!obs) {
+					const config& msg = construct_server_message(pl->second.name() + " has left the game",*g);
+					g->send_data(msg);
+				}
 				pl->second.mark_available(true,"");
 			} else {
 				std::cerr << "ERROR: Could not find player in map\n";
 			}
-
+			
 			//send the player who has quit the game list
 			network::send_data(initial_response_,sock);
 
