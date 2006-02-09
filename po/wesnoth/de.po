@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-02-04 17:46+0100\n"
-"PO-Revision-Date: 2006-02-03 14:43+0100\n"
+"PO-Revision-Date: 2006-02-05 20:43+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1642,7 +1642,6 @@ msgid "steadfast"
 msgstr "Unerschütterlich"
 
 #: data/english.cfg:88
-#, fuzzy
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -1651,18 +1650,17 @@ msgid ""
 "for any turn immediately after this unit has attacked, or if there are enemy "
 "units next to this unit."
 msgstr ""
-"Hinterhalt:\n"
-"Diese Einheit kann sich im Wald vor ihren Gegnern verstecken. \n"
+"Abtauchen:\n"
+"Diese Einheit kann sich in tiefem Wasser vor ihren Gegnern verstecken. \n"
 "\n"
 "Feindliche Einheiten können diese Einheit nicht sehen oder angreifen, wenn "
-"sie im Wald ist, außer, wenn sich eine feindliche Einheitauf einem "
+"sie im Wald ist, außer, wenn sich eine feindliche Einheit auf einem "
 "angrenzenden Feld befindet, oder direkt nachdem die Einheit selbst "
 "angegriffen hat."
 
 #: data/english.cfg:90
-#, fuzzy
 msgid "submerge"
-msgstr "Knochendolch"
+msgstr "Abtauchen"
 
 #: data/english.cfg:93
 msgid ""
@@ -1822,6 +1820,11 @@ msgid ""
 "For example a unit with 3/4 of its maximum HP will get 3/4 of the number of "
 "strikes."
 msgstr ""
+"Schwarm:\n"
+"Die Anzahl der Angriffe verringert sich, wenn die Einheit verwundet wird. "
+"Die Anzahl der Angriffe ist proportional dem Verhältnis von aktuellen LP zu "
+"maximalen LP. Zum Bespiel verfügt eine Einheit mit 3/4 ihrer maximalen LP "
+"auch nur über 3/4 ihrer Angriffe."
 
 #: data/english.cfg:139
 msgid "Elves"
@@ -3553,7 +3556,7 @@ msgstr ""
 
 #: data/help.cfg:465 data/terrain.cfg:372
 msgid "Mushroom Grove"
-msgstr ""
+msgstr "Pilzhain"
 
 #: data/help.cfg:470
 msgid ""
@@ -3567,6 +3570,17 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"Pilzhaine sind mit den oberirdischen Wäldern vergleichbar. In der Dunkelheit "
+"gedeihen diese riesigen Gewächse auf das Prächtigste. Den meisten Einheiten "
+"bereitet es Schwierigkeiten, sich über den schwammigen, mit kleinen Pilzen "
+"bewachsenen Boden zu bewegen, jedoch bieten die großen Stengel "
+"ausgezeichnete Versteckmöglichkeiten. Berittene Einheiten haben in diesem "
+"unwegsamen Gelände jedoch ihre Schwierigkeiten und können nicht mehr "
+"effektiv kämpfen. Untote Einheiten, die von Verfall angezogen werden, haben "
+"weniger Schwierigkeiten in diesen Wäldern aus Pilzen voran zu kommen.\n"
+"\n"
+"Die meisten Einheiten haben 50 bis 60% Verteidigung in Pilzhainen, "
+"Kavallerie hingegen nur 20%."
 
 #: data/help.cfg:475 data/terrain.cfg:138
 msgid "Savanna"
@@ -3925,7 +3939,6 @@ msgstr "2S - Blitz"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
-#, fuzzy
 msgid ""
 "A duel map for super fast play. Recommended setting of 2 gold per village."
 msgstr ""
@@ -3941,7 +3954,6 @@ msgid "2p - Cynsaun Battlefield"
 msgstr "2S - Das Schlachtfeld von Cysaun"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
-#, fuzzy
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
 "favor epic, large-scale duel matches. Recommended settings of 150 gold and 1 "
@@ -3957,7 +3969,6 @@ msgid "2p - Den of Onis"
 msgstr "2S - Die Höhle von Onis"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
-#, fuzzy
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet. Recommended setting of 2 gold per village."
@@ -3975,7 +3986,6 @@ msgid "2p - Divide and Conquer"
 msgstr "2S - Teile oder herrsche"
 
 #: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:4
-#, fuzzy
 msgid ""
 "This small duel map divides the field of battle into three segments. "
 "Recommended setting of 2 goldper village."
@@ -3988,13 +3998,12 @@ msgid "2p - Hamlets"
 msgstr "2S - Entzweites Land"
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:4
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Recommended setting of 2 gold per village."
 msgstr ""
-"Diverse Schlachten haben diese einst friedliche ländliche Region in ein "
-"verwüstetes Schlachtfeld verwandelt.\n"
+"Diverse Schlachten haben diese einst friedliche, ländliche Region in ein "
+"wüstes Schlachtfeld verwandelt.\n"
 "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
@@ -4002,7 +4011,6 @@ msgid "2p - Hornshark Island"
 msgstr "2S - Die Insel der Stachelhaie"
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
-#, fuzzy
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island. Recommended setting of 2 gold per village."
@@ -4016,7 +4024,6 @@ msgid "2p - Meteor Lake"
 msgstr "2S - Der See von Meteor"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
-#, fuzzy
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region. Recommended settings of 2 gold per village."
@@ -4030,7 +4037,6 @@ msgid "2p - Sablestone Delta"
 msgstr "2S - Das Säbelstein Delta"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
-#, fuzzy
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers. Recommended setting of 2 gold per village."
@@ -4044,7 +4050,6 @@ msgid "2p - Silverhead Crossing"
 msgstr "2S - Die Furt am Silberkopf"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
-#, fuzzy
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map. Recommended setting of 2 gold per village."
@@ -4058,7 +4063,6 @@ msgid "2p - Sullas Ruins"
 msgstr "2S - Die Ruinen der Sulla"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
-#, fuzzy
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire. Recommended "
@@ -4163,7 +4167,6 @@ msgid "3p - Morituri"
 msgstr "3S - Die Totgeweihten"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
-#, fuzzy
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map. Recommended setting of 2 gold per village."
@@ -4177,7 +4180,6 @@ msgid "3p - Triple Blitz"
 msgstr "3S - Dreifach Blitz"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
-#, fuzzy
 msgid ""
 "Three players come head to head on this water-cut battlefield. Recommended "
 "setting of 2 gold per village."
@@ -4244,7 +4246,6 @@ msgid "4p - Lagoon"
 msgstr "4S - Die Lagune"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
-#, fuzzy
 msgid ""
 "Four factions contend for dominance over this watery settlement. Recommended "
 "setting of 1 gold per village."
@@ -4294,7 +4295,6 @@ msgid "4p - Siege Castles"
 msgstr "4S - Belagerte Burgen"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:9
-#, fuzzy
 msgid ""
 "Take control of this huge river delta in a team battle or in a free for all."
 msgstr ""
@@ -4307,7 +4307,6 @@ msgid "4p - The Wilderlands"
 msgstr "4S - Raues Land"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
-#, fuzzy
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses. Recommended setting of 1 "
@@ -4335,7 +4334,6 @@ msgid "6p - Crusaders' Field"
 msgstr "6S - "
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
-#, fuzzy
 msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
 "of war, where the ghosts of thousands of brave warriors float invisibly "
@@ -4344,7 +4342,7 @@ msgid ""
 msgstr ""
 "Und wieder sind die Schreie der Sterbenden über diesem Kriegsschauplatz zu "
 "vernehmen, wo tausende von Geistern der hier gestorbenen Krieger unsichtbar "
-"durch die Berge, Bäume und Flüsse schweben.\n"
+"durch die Berge, Wälder und Flüsse schweben.\n"
 "Empfohlene Einstellung: 1 Einheit Gold pro Dorf."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
@@ -4360,7 +4358,6 @@ msgid "6p - Smallolof"
 msgstr "6S - Scharmützel"
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:4
-#, fuzzy
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head. Recommended setting of 2 gold per "
@@ -4496,9 +4493,8 @@ msgid "Oasis"
 msgstr "Oase"
 
 #: data/terrain.cfg:323
-#, fuzzy
 msgid "Dunes"
-msgstr "Abenddämmerung"
+msgstr "Dünen"
 
 #: data/terrain.cfg:332
 msgid "Snow Hills"
@@ -5963,9 +5959,8 @@ msgstr ""
 
 #: data/units/Duelist.cfg:75 data/units/Fencer.cfg:79
 #: data/units/Master_at_Arms.cfg:40
-#, fuzzy
 msgid "sabre"
-msgstr "Knochendolch"
+msgstr "Säbel"
 
 #: data/units/Dwarvish_Berserker.cfg:3
 msgid "Dwarvish Berserker"
@@ -9831,9 +9826,8 @@ msgid "+Hungarian Translation"
 msgstr "+Ungarische Übersetzung"
 
 #: src/about.cpp:272
-#, fuzzy
 msgid "+Indonesian Translation"
-msgstr "+Estländische Übersetzung"
+msgstr "+Indonesische Übersetzung"
 
 #: src/about.cpp:275
 msgid "+Italian Translation"
@@ -10251,7 +10245,7 @@ msgstr "Es konnte keine Verbindung zum Server aufgebaut werden."
 
 #: src/game.cpp:855
 msgid "Asking for campaign list"
-msgstr ""
+msgstr "Warte auf Kampagnenliste"
 
 #: src/game.cpp:868
 msgid "Error communicating with the server."
@@ -10338,9 +10332,8 @@ msgid "Terms"
 msgstr "Bedingungen"
 
 #: src/game.cpp:1068
-#, fuzzy
 msgid "Sending campaign"
-msgstr "Kampagne wird geladen ..."
+msgstr "Sende Kampagne"
 
 #: src/game.cpp:1075 src/game.cpp:1100
 msgid "Response"
@@ -10391,7 +10384,6 @@ msgid "Login: "
 msgstr "Euer Name: "
 
 #: src/game.cpp:1145
-#, fuzzy
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
@@ -10523,27 +10515,21 @@ msgid "or"
 msgstr "oder"
 
 #: src/help.cpp:1310
-#, fuzzy
 msgid "This terrain acts as $terrains for movement purposes."
-msgstr ""
-"Dieses Gelände verhält sich wie das Gelände $terrains was Bewegungskosten "
-"und Verteidigung angeht."
+msgstr "Dieses Gelände verhält sich wie $terrains was Bewegungskosten angeht."
 
 #: src/help.cpp:1312 src/help.cpp:1336
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Das Gelände mit den besten Modifikatoren wird automatisch ausgewählt."
 
 #: src/help.cpp:1314 src/help.cpp:1338
-#, fuzzy
 msgid "The terrain with the worst modifier is chosen automatically."
-msgstr "Das Gelände mit den besten Modifikatoren wird automatisch ausgewählt."
+msgstr ""
+"Das Gelände mit den schlechtesten Modifikatoren wird automatisch ausgewählt."
 
 #: src/help.cpp:1334
-#, fuzzy
 msgid "This terrain acts as $terrains for defense purposes."
-msgstr ""
-"Dieses Gelände verhält sich wie das Gelände $terrains was Bewegungskosten "
-"und Verteidigung angeht."
+msgstr "Dieses Gelände verhält sich wie $terrains was Verteidigung angeht."
 
 #: src/help.cpp:1342
 msgid ""
@@ -10734,9 +10720,8 @@ msgid "Connecting to Server..."
 msgstr "Verbinde mit Server..."
 
 #: src/multiplayer.cpp:134
-#, fuzzy
 msgid "Reading from Server..."
-msgstr "Verbinde mit Server..."
+msgstr "Lese vom Server..."
 
 #: src/multiplayer.cpp:143
 msgid ""
