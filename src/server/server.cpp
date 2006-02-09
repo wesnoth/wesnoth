@@ -793,7 +793,12 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				g->ban_player(pl->first);
 				const config& msg = construct_server_message("You have been banned",*g);
 				network::send_data(msg, pl->first);
+				
+				const config& p_msg = construct_server_message(pl->second.name() + " has been banned",*g);
+				g->send_data(p_msg);
 			} else {
+				const config& p_msg = construct_server_message(pl->second.name() + " has been kicked",*g);
+				g->send_data(p_msg);
 				g->remove_player(pl->first);
 			}
 
