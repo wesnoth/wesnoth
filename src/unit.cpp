@@ -134,6 +134,7 @@ unit::unit(const unit_type* t, const unit& u) :
 	backupMaxMovement_(type_->movement()),
 	resting_(u.resting_), hold_position_(u.hold_position_),
 	underlying_description_(u.underlying_description_),
+	profile_(u.profile_),
 	description_(u.description_), recruit_(u.recruit_),
 	role_(u.role_), statusFlags_(u.statusFlags_),
 	overlays_(u.overlays_), variables_(u.variables_),
@@ -197,6 +198,10 @@ const std::string& unit::description() const
 const std::string& unit::underlying_description() const
 {
 	return underlying_description_;
+}
+const std::string& unit::profile() const
+{
+	return profile_;
 }
 
 const std::string& unit::unit_description() const
@@ -598,6 +603,7 @@ bool unit::matches_filter(const config& cfg) const
 	const std::string& description = cfg["description"];
 	const std::string& speaker = cfg["speaker"];
 	const std::string& type = cfg["type"];
+	const std::string& profile = cfg["profile"];
 	const std::string& ability = cfg["ability"];
 	const std::string& side = cfg["side"];
 	const std::string& weapon = cfg["has_weapon"];
@@ -608,6 +614,9 @@ bool unit::matches_filter(const config& cfg) const
 	const std::string& level = cfg["level"];
 
 	if(description.empty() == false && description != this->underlying_description()) {
+		return false;
+	}
+	if(profile.empty() == false && profile != profile_) {
 		return false;
 	}
 
@@ -873,6 +882,8 @@ void unit::read(const game_data& data, const config& cfg)
 
 	resting_ = (cfg["resting"] == "yes");
 	unrenamable_ = (cfg["unrenamable"] == "yes");
+	
+	profile_ = cfg["profile"];
 }
 
 void unit::write(config& cfg) const
@@ -941,6 +952,8 @@ void unit::write(config& cfg) const
 
 	cfg["resting"] = resting_ ? "yes" : "no";
 	cfg["unrenamable"] = unrenamable_ ? "yes" : "no";
+	
+	cfg["profile"] = profile_;
 }
 
 void unit::assign_role(const std::string& role)

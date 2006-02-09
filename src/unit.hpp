@@ -42,6 +42,7 @@ public:
 	std::string name() const;
 	const std::string& description() const;
 	const std::string& underlying_description() const;
+	const std::string& profile() const;
 
 	//information about the unit -- a detailed description of it
 	const std::string& unit_description() const;
@@ -210,7 +211,7 @@ private:
 	bool resting_;
 	bool hold_position_;
 
-	std::string underlying_description_, description_;
+	std::string underlying_description_, description_, profile_;
 
 	//this field is used if the scenario creator places a custom unit description
 	//with a certain unit. If this field is empty, then the more general unit description

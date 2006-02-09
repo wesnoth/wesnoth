@@ -1146,7 +1146,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			screen->scroll_to_tile(speaker->first.x,speaker->first.y-1);
 
 			if(image.empty()) {
-				image = speaker->second.type().image_profile();
+				if(speaker->second.profile() == "") {
+					image = speaker->second.type().image_profile();
+				} else {
+					image = speaker->second.profile();
+					if(image == "unit_image") {
+						image = speaker->second.type().image();
+					}
+				}
 			}
 
 			if(caption.empty()) {
@@ -1516,6 +1523,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				screen->update_display();
 			}
 		}
+	} else if(cmd == "label") {
+		const gamemap::location loc(lexical_cast_default<int>(cfg["x"],-1),lexical_cast_default<int>(cfg["y"],-1));
+		const std::string& text = cfg["text"];
+		screen->labels().set_label(loc,text);
 	}
 
 
