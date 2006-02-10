@@ -783,6 +783,8 @@ void unit::read(const game_data& data, const config& cfg)
 	}
 
 	validate_side(side_);
+	
+	traitsDescription_ = cfg["traits_description"];
 	if(cfg["random_traits"] == "yes") {
 		generate_traits();
 	}
@@ -799,7 +801,6 @@ void unit::read(const game_data& data, const config& cfg)
 
 	custom_unit_description_ = cfg["unit_description"];
 
-	traitsDescription_ = cfg["traits_description"];
 	const string_map::const_iterator recruit_itor = cfg.values.find("canrecruit");
 	if(recruit_itor != cfg.values.end() && recruit_itor->second == "1") {
 		recruit_ = true;
