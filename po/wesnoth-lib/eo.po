@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-02-03 19:21+0100\n"
+"POT-Creation-Date: 2006-02-10 16:38+0100\n"
 "PO-Revision-Date: 2003-02-01 13:19+0100\n"
 "Last-Translator: Rastislav Šarišský <rsarissky@post.sk>\n"
 "Language-Team: none\n"
@@ -90,7 +90,7 @@ msgid "Hotkeys"
 msgstr "Klavkomandoj"
 
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Resize Map"
 msgstr "Ŝanĝi grandecon de mapo"
 
@@ -238,162 +238,167 @@ msgid "Set Label"
 msgstr "Fari markon"
 
 #: src/hotkeys.cpp:79
+#, fuzzy
+msgid "Clear Labels"
+msgstr "Fari markon"
+
+#: src/hotkeys.cpp:80
 msgid "Show Enemy Moves"
 msgstr "Montri malamikaj movoj"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Best Possible Enemy Moves"
 msgstr "Amplekso de malamika movebleco"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 #, fuzzy
 msgid "Play"
 msgstr "ludanto"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Reset"
 msgstr ""
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Stop"
 msgstr ""
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 #, fuzzy
 msgid "Next Turn"
 msgstr "Plia milit-unuo"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 #, fuzzy
 msgid "Next Side"
 msgstr "Plia milit-unuo"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Shroud"
 msgstr ""
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Fog"
 msgstr ""
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Skip animation"
 msgstr ""
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Set Terrain"
 msgstr "Agordi terenon"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Quit Editor"
 msgstr "Fini la redaktilon"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "New Map"
 msgstr "Nova mapo"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Load Map"
 msgstr "Legi mapon"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Save Map"
 msgstr "Konservi mapon"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Save As"
 msgstr "Konservi kiel"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Set Player's keep"
 msgstr ""
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Flood Fill"
 msgstr "Plenigu"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Fill Selection"
 msgstr "Plenigi markitan"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Cut"
 msgstr "Eltondi"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Copy"
 msgstr "Kopii"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Paste"
 msgstr "Enmeti"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Revert from Disk"
 msgstr "Relegi el la disko"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Flip Map"
 msgstr "Renversi la mapon"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Select All"
 msgstr "Elekti ĉiiujn"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Draw Terrain"
 msgstr "Bildigi terenon"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Refresh Image Cache"
 msgstr ""
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Delay Shroud Updates"
 msgstr ""
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Update Shroud Now"
 msgstr ""
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Continue Move"
 msgstr "Daŭri movon"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Find Label or Unit"
 msgstr "Trovi markon aŭ batalunuon "
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Speak to Ally"
 msgstr "Diri al la aliancano"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Speak to All"
 msgstr "Diri al ĉiuj"
 
-#: src/hotkeys.cpp:115 src/show_dialog.cpp:577
+#: src/hotkeys.cpp:116 src/show_dialog.cpp:577
 msgid "Help"
 msgstr "Helpo"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "View Chat Log"
 msgstr "Montri babil-protokolo"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Enter user command"
 msgstr "Enmeti uzantordono"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 #, fuzzy
 msgid "Change the language"
 msgstr "Agordu laŭteco de muziko"
 
-#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
+#: src/hotkeys.cpp:430 src/hotkeys.cpp:631
 msgid "Do you really want to quit?"
 msgstr "Ĉu vi vere volas adiaŭi?"
 
-#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
+#: src/hotkeys.cpp:430 src/hotkeys.cpp:631
 msgid "Quit"
 msgstr "Adiaŭu"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-02-03 19:21+0100\n"
+"POT-Creation-Date: 2006-02-10 16:38+0100\n"
 "PO-Revision-Date: 2005-06-05 14:49-0600\n"
 "Last-Translator: Srecko Toroman <sreckotoroman@gmail.com>\n"
 "Language-Team: none\n"
@@ -87,7 +87,7 @@ msgid "Hotkeys"
 msgstr "Скраћенице"
 
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Resize Map"
 msgstr "Промијени Величину Мапе"
 
@@ -234,161 +234,166 @@ msgid "Set Label"
 msgstr "Постави Натпис"
 
 #: src/hotkeys.cpp:79
+#, fuzzy
+msgid "Clear Labels"
+msgstr "Постави Натпис"
+
+#: src/hotkeys.cpp:80
 msgid "Show Enemy Moves"
 msgstr "Прикажи Противничке Потезе"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Best Possible Enemy Moves"
 msgstr "Најбољи Противнички Потези"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 #, fuzzy
 msgid "Play"
 msgstr "Играчи:"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Reset"
 msgstr ""
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Stop"
 msgstr ""
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 #, fuzzy
 msgid "Next Turn"
 msgstr "Слиједећа Јединица"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 #, fuzzy
 msgid "Next Side"
 msgstr "Слиједећа Јединица"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Shroud"
 msgstr ""
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Fog"
 msgstr ""
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Skip animation"
 msgstr ""
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Set Terrain"
 msgstr "Постави Терен"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Quit Editor"
 msgstr "Изађи из Уређивача"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "New Map"
 msgstr "Нова Мапа"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Load Map"
 msgstr "Учитај Мапу"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Save Map"
 msgstr "Сачувај Мапу"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Save As"
 msgstr "Сачувај Као ..."
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Set Player's keep"
 msgstr ""
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Flood Fill"
 msgstr "Поплави"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Fill Selection"
 msgstr "Испуни Одабрано"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Cut"
 msgstr "Исијеци"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Copy"
 msgstr "Копирај"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Paste"
 msgstr "Залијепи"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Revert from Disk"
 msgstr "Врати са Диска"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Flip Map"
 msgstr "Окрени Мапу"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Select All"
 msgstr "Изабери Све"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Draw Terrain"
 msgstr "Исцртај Терен"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Refresh Image Cache"
 msgstr "Освјежи Кеш Слика"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Delay Shroud Updates"
 msgstr "Одуговлачи Освјежавање Сјенке"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Update Shroud Now"
 msgstr "Освјежи Сјенку Сада"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Continue Move"
 msgstr "Настави Потез"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Find Label or Unit"
 msgstr "Нађи Ознаку или Јединицу"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Speak to Ally"
 msgstr "Причај са Пријатељем"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Speak to All"
 msgstr "Причај са Свима"
 
-#: src/hotkeys.cpp:115 src/show_dialog.cpp:577
+#: src/hotkeys.cpp:116 src/show_dialog.cpp:577
 msgid "Help"
 msgstr "Помоћ!"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "View Chat Log"
 msgstr "Погледај Запис Разговора"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Enter user command"
 msgstr "Унеси корисничку команду"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Change the language"
 msgstr "Промени језик"
 
-#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
+#: src/hotkeys.cpp:430 src/hotkeys.cpp:631
 msgid "Do you really want to quit?"
 msgstr "Желите ли да изађете?"
 
-#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
+#: src/hotkeys.cpp:430 src/hotkeys.cpp:631
 msgid "Quit"
 msgstr "Изађи"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-02-04 17:46+0100\n"
+"POT-Creation-Date: 2006-02-10 16:36+0100\n"
 "PO-Revision-Date: 2005-11-04 10:30+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -174,7 +174,7 @@ msgstr "剣"
 #: data/units/Shadow.cfg:33 data/units/Skeleton.cfg:47
 #: data/units/Spectre.cfg:54 data/units/Swordsman.cfg:32
 #: data/units/Thief.cfg:86 data/units/Trapper.cfg:34
-#: data/units/Vampire_Bat.cfg:26 data/units/Wolf_Rider.cfg:39
+#: data/units/Vampire_Bat.cfg:26 data/units/Wolf_Rider.cfg:70
 #: data/units/Wraith.cfg:30 data/units/Young_Ogre.cfg:48
 msgid "blade"
 msgstr "剣"
@@ -1746,11 +1746,11 @@ msgstr "アンデッド"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:27
+#: data/game.cfg:29
 msgid "Binary Saves"
 msgstr "バイナリ保存"
 
-#: data/game.cfg:34
+#: data/game.cfg:36
 msgid "Show Combat"
 msgstr "戦闘を表示"
 
@@ -1762,11 +1762,11 @@ msgstr "はじめに"
 msgid "Gameplay"
 msgstr "ゲームの遊び方"
 
-#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2304
+#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2305
 msgid "Traits"
 msgstr "特性"
 
-#: data/help.cfg:29 src/menu_events.cpp:218 src/playturn.cpp:1844
+#: data/help.cfg:29 src/menu_events.cpp:218 src/playturn.cpp:1845
 msgid "Units"
 msgstr "ユニット"
 
@@ -3232,7 +3232,7 @@ msgstr ""
 #: data/help.cfg:460
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
-"erosive particles of carving a rock. It resembles a scraggy underground "
+"erosive particles that carve the rock. It resembles a scraggy underground "
 "cavern which reduces efficiency of most units, but shoulders defense. "
 "Dwarves and Trolls, who are main settlers of caves, have a relatively easy "
 "time navigating this terrain. Dwarves, who by dint of their small size have "
@@ -3633,7 +3633,7 @@ msgstr "2P - 分割と征服"
 #, fuzzy
 msgid ""
 "This small duel map divides the field of battle into three segments. "
-"Recommended setting of 2 goldper village."
+"Recommended setting of 2 gold per village."
 msgstr ""
 "この小さな戦闘マップでは戦場が3つのセグメントに分かれている。 １村あたり 2Gの"
 "設定を推奨。"
@@ -4175,13 +4175,13 @@ msgstr "行動"
 msgid "End Turn"
 msgstr "ターン終了"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2302
-#: src/unit.cpp:1291
+#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2303
+#: src/unit.cpp:1308
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2115
-#: src/playturn.cpp:2303
+#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2116
+#: src/playturn.cpp:2304
 msgid "XP"
 msgstr "経験"
 
@@ -4780,7 +4780,7 @@ msgstr ""
 #: data/units/Blood_Bat.cfg:39 data/units/Cave_Spider.cfg:39
 #: data/units/Direwolf_Rider.cfg:38 data/units/Goblin_Knight.cfg:38
 #: data/units/Sea_Serpent.cfg:26 data/units/Vampire_Bat.cfg:25
-#: data/units/Wolf_Rider.cfg:38
+#: data/units/Wolf_Rider.cfg:69
 msgid "fangs"
 msgstr "牙"
 
@@ -8667,7 +8667,7 @@ msgstr "女白魔術師"
 msgid "Wolf Rider"
 msgstr "ウルフライダー"
 
-#: data/units/Wolf_Rider.cfg:35
+#: data/units/Wolf_Rider.cfg:66
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being. Goblins are smaller and much weaker than orcs. Any who can manage to "
@@ -8811,167 +8811,167 @@ msgstr "+音楽"
 msgid "+Scenario Designers"
 msgstr "+シナリオデザイナー"
 
-#: src/about.cpp:111
+#: src/about.cpp:112
 #, fuzzy
 msgid "+Multiplayer Developers"
 msgstr "+マルチプレイヤーマップ"
 
-#: src/about.cpp:116
+#: src/about.cpp:118
 msgid "+Multiplayer Maps"
 msgstr "+マルチプレイヤーマップ"
 
-#: src/about.cpp:122
+#: src/about.cpp:124
 msgid "+Packagers"
 msgstr "+パッケージ"
 
-#: src/about.cpp:132
+#: src/about.cpp:134
 msgid "+Miscellaneous"
 msgstr "+その他"
 
-#: src/about.cpp:137
+#: src/about.cpp:139
 msgid "+Internationalization Managers"
 msgstr "+国際化責任者"
 
-#: src/about.cpp:144
+#: src/about.cpp:146
 msgid "+Afrikaans Translation"
 msgstr "+アフリカーンス語翻訳"
 
-#: src/about.cpp:150
+#: src/about.cpp:152
 msgid "+Basque Translation"
 msgstr "+バスク語翻訳"
 
-#: src/about.cpp:155
+#: src/about.cpp:157
 msgid "+Bulgarian Translation"
 msgstr "+ブルガリア語翻訳"
 
-#: src/about.cpp:159
+#: src/about.cpp:161
 msgid "+Catalan Translation"
 msgstr "+カタロニア語翻訳"
 
-#: src/about.cpp:169
+#: src/about.cpp:171
 msgid "+Chinese Translation"
 msgstr "+中国語翻訳"
 
-#: src/about.cpp:172
+#: src/about.cpp:174
 msgid "+Czech Translation"
 msgstr "+チェコ語翻訳"
 
-#: src/about.cpp:187
+#: src/about.cpp:189
 msgid "+Danish Translation"
 msgstr "+デンマーク語翻訳"
 
-#: src/about.cpp:194
+#: src/about.cpp:196
 msgid "+Dutch Translation"
 msgstr "+オランダ語翻訳"
 
-#: src/about.cpp:202
+#: src/about.cpp:204
 msgid "+English (GB) Translation"
 msgstr "+英語（イギリス）翻訳"
 
-#: src/about.cpp:205
+#: src/about.cpp:207
 #, fuzzy
 msgid "+Esperanto Translation"
 msgstr "+ドイツ語翻訳"
 
-#: src/about.cpp:209
+#: src/about.cpp:211
 msgid "+Estonian Translation"
 msgstr "+エストニア語翻訳"
 
-#: src/about.cpp:212
+#: src/about.cpp:214
 msgid "+Finnish Translation"
 msgstr "+フィンランド語翻訳"
 
-#: src/about.cpp:218
+#: src/about.cpp:220
 msgid "+French Translation"
 msgstr "+フランス語翻訳"
 
-#: src/about.cpp:237
+#: src/about.cpp:239
 msgid "+German Translation"
 msgstr "+ドイツ語翻訳"
 
-#: src/about.cpp:249
+#: src/about.cpp:251
 msgid "+Greek Translation"
 msgstr "+ギリシャ語翻訳"
 
-#: src/about.cpp:255
+#: src/about.cpp:257
 msgid "+Hebrew Translation"
 msgstr "+ヘブライ語翻訳"
 
-#: src/about.cpp:259
+#: src/about.cpp:261
 msgid "+Hungarian Translation"
 msgstr "+ハンガリー語翻訳"
 
-#: src/about.cpp:272
+#: src/about.cpp:274
 #, fuzzy
 msgid "+Indonesian Translation"
 msgstr "+エストニア語翻訳"
 
-#: src/about.cpp:275
+#: src/about.cpp:277
 msgid "+Italian Translation"
 msgstr "+イタリア語翻訳"
 
-#: src/about.cpp:284
+#: src/about.cpp:286
 msgid "+Japanese Translation"
 msgstr "+日本語翻訳"
 
-#: src/about.cpp:289
+#: src/about.cpp:291
 msgid "+Latin Translation"
 msgstr "+ラテン語翻訳"
 
-#: src/about.cpp:292
+#: src/about.cpp:294
 msgid "+Norwegian Translation"
 msgstr "+ノルウェー語翻訳"
 
-#: src/about.cpp:298
+#: src/about.cpp:300
 msgid "+Polish Translation"
 msgstr "+ポーランド語翻訳"
 
-#: src/about.cpp:309
+#: src/about.cpp:311
 #, fuzzy
 msgid "+Portuguese Translation"
 msgstr "+ポルトガル（ブラジル）語翻訳"
 
-#: src/about.cpp:312
+#: src/about.cpp:314
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+ポルトガル（ブラジル）語翻訳"
 
-#: src/about.cpp:321
+#: src/about.cpp:323
 msgid "+Russian Translation"
 msgstr "+ロシア語翻訳"
 
-#: src/about.cpp:327
+#: src/about.cpp:329
 msgid "+Serbian Translation"
 msgstr "+セルビア語翻訳"
 
-#: src/about.cpp:330
+#: src/about.cpp:332
 msgid "+Slovak Translation"
 msgstr "+スロバキア語翻訳"
 
-#: src/about.cpp:333
+#: src/about.cpp:335
 msgid "+Slovenian Translation"
 msgstr "+スロベニア語翻訳"
 
-#: src/about.cpp:336
+#: src/about.cpp:338
 msgid "+Spanish Translation"
 msgstr "+スペイン語翻訳"
 
-#: src/about.cpp:345
+#: src/about.cpp:347
 msgid "+Swedish Translation"
 msgstr "+スウェーデン語翻訳"
 
-#: src/about.cpp:352
+#: src/about.cpp:354
 msgid "+Turkish Translation"
 msgstr "+トルコ語翻訳"
 
-#: src/about.cpp:359
+#: src/about.cpp:361
 msgid "+Contributors"
 msgstr "+貢献者"
 
-#: src/about.cpp:364
+#: src/about.cpp:366
 msgid "+Bots"
 msgstr "+ボット"
 
-#: src/about.cpp:400 src/help.cpp:2687
+#: src/about.cpp:402 src/help.cpp:2687
 msgid "Close"
 msgstr "閉じる"
 
@@ -9131,7 +9131,7 @@ msgid "replay"
 msgstr "リプレイ"
 
 #: src/dialogs.cpp:395 src/menu_events.cpp:295 src/multiplayer_lobby.cpp:330
-#: src/playturn.cpp:1682
+#: src/playturn.cpp:1683
 msgid "Turn"
 msgstr "ターン"
 
@@ -9208,8 +9208,8 @@ msgid "Date"
 msgstr "日付"
 
 #: src/dialogs.cpp:558 src/game.cpp:877 src/help.cpp:1119
-#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:31 src/playturn.cpp:2113
-#: src/playturn.cpp:2301
+#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:31 src/playturn.cpp:2114
+#: src/playturn.cpp:2302
 msgid "Name"
 msgstr "名前"
 
@@ -9519,7 +9519,7 @@ msgstr "勝利条件:"
 msgid "Defeat:"
 msgstr "敗北条件:"
 
-#: src/gamestatus.cpp:543
+#: src/gamestatus.cpp:550
 msgid "Could not write to file"
 msgstr "ファイルに書き込みできませんでした。"
 
@@ -9543,8 +9543,8 @@ msgstr "必要経験値: "
 msgid "attacks"
 msgstr "攻撃"
 
-#: src/help.cpp:1120 src/menu_events.cpp:149 src/playturn.cpp:2112
-#: src/playturn.cpp:2300
+#: src/help.cpp:1120 src/menu_events.cpp:149 src/playturn.cpp:2113
+#: src/playturn.cpp:2301
 msgid "Type"
 msgstr "型"
 
@@ -9670,95 +9670,95 @@ msgstr "システムデフォルト言語"
 msgid "?"
 msgstr "？"
 
-#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2388
-#: src/playturn.cpp:2450
+#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2389
+#: src/playturn.cpp:2451
 msgid "Recruits"
 msgstr "雇用"
 
-#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2394
-#: src/playturn.cpp:2454
+#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2395
+#: src/playturn.cpp:2455
 msgid "Recalls"
 msgstr "召還"
 
-#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2400
-#: src/playturn.cpp:2458
+#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2401
+#: src/playturn.cpp:2459
 msgid "Advancements"
 msgstr "レベルアップ"
 
-#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2406
-#: src/playturn.cpp:2462
+#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2407
+#: src/playturn.cpp:2463
 msgid "Losses"
 msgstr "失った数"
 
-#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2412
-#: src/playturn.cpp:2466
+#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2413
+#: src/playturn.cpp:2467
 msgid "Kills"
 msgstr "殺した数"
 
-#: src/menu_events.cpp:69 src/playturn.cpp:2418
+#: src/menu_events.cpp:69 src/playturn.cpp:2419
 msgid "Damage Inflicted"
 msgstr "与えたダメージ"
 
-#: src/menu_events.cpp:75 src/playturn.cpp:2424
+#: src/menu_events.cpp:75 src/playturn.cpp:2425
 msgid "Damage Taken"
 msgstr "受けたダメージ"
 
-#: src/menu_events.cpp:81 src/playturn.cpp:2430
+#: src/menu_events.cpp:81 src/playturn.cpp:2431
 msgid "Damage Inflicted (EV)"
 msgstr "与えたダメージ (EV)"
 
-#: src/menu_events.cpp:88 src/playturn.cpp:2437
+#: src/menu_events.cpp:88 src/playturn.cpp:2438
 msgid "Damage Taken (EV)"
 msgstr "受けたダメージ (EV)"
 
-#: src/menu_events.cpp:94 src/playturn.cpp:2443
+#: src/menu_events.cpp:94 src/playturn.cpp:2444
 msgid "Statistics"
 msgstr "統計情報"
 
-#: src/menu_events.cpp:154 src/playturn.cpp:2305 src/unit.cpp:1323
+#: src/menu_events.cpp:154 src/playturn.cpp:2306 src/unit.cpp:1340
 msgid "Moves"
 msgstr "移動"
 
-#: src/menu_events.cpp:155 src/playturn.cpp:2306
+#: src/menu_events.cpp:155 src/playturn.cpp:2307
 msgid "Location"
 msgstr "位置"
 
-#: src/menu_events.cpp:201 src/playturn.cpp:2352
+#: src/menu_events.cpp:201 src/playturn.cpp:2353
 msgid "Unit List"
 msgstr "ユニット一覧"
 
-#: src/menu_events.cpp:215 src/playturn.cpp:1841
+#: src/menu_events.cpp:215 src/playturn.cpp:1842
 msgid "Leader"
 msgstr "リーダー"
 
 #: src/menu_events.cpp:216 src/menu_events.cpp:227
-#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1842 src/playturn.cpp:1853
+#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1843 src/playturn.cpp:1854
 msgid "Gold"
 msgstr "所持金"
 
-#: src/menu_events.cpp:217 src/playturn.cpp:1843
+#: src/menu_events.cpp:217 src/playturn.cpp:1844
 msgid "Villages"
 msgstr "村の数"
 
-#: src/menu_events.cpp:219 src/playturn.cpp:1845
+#: src/menu_events.cpp:219 src/playturn.cpp:1846
 msgid "Upkeep"
 msgstr "維持"
 
-#: src/menu_events.cpp:220 src/playturn.cpp:1846
+#: src/menu_events.cpp:220 src/playturn.cpp:1847
 msgid "Income"
 msgstr "収入"
 
 #: src/menu_events.cpp:304 src/playcampaign.cpp:239 src/playcampaign.cpp:360
-#: src/playturn.cpp:1691
+#: src/playturn.cpp:1692
 msgid "Name:"
 msgstr "名前:"
 
 #: src/menu_events.cpp:309 src/menu_events.cpp:322
-#: src/multiplayer_create.cpp:403 src/playturn.cpp:1696 src/playturn.cpp:1709
+#: src/multiplayer_create.cpp:403 src/playturn.cpp:1697 src/playturn.cpp:1710
 msgid "Error"
 msgstr "エラー"
 
-#: src/menu_events.cpp:309 src/playturn.cpp:1696
+#: src/menu_events.cpp:309 src/playturn.cpp:1697
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -9766,20 +9766,20 @@ msgstr ""
 "保存名は、コロン(:)、スラッシュ(/)、バックスラッシュ(\\)を 含んではいけませ"
 "ん。 違う名前をつけて下さい。"
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1706
+#: src/menu_events.cpp:319 src/playturn.cpp:1707
 msgid "Saved"
 msgstr "保存された"
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1706
+#: src/menu_events.cpp:319 src/playturn.cpp:1707
 msgid "The game has been saved"
 msgstr "ゲームを保存しました。"
 
 #: src/menu_events.cpp:322 src/playcampaign.cpp:247 src/playcampaign.cpp:368
-#: src/playturn.cpp:1709
+#: src/playturn.cpp:1710
 msgid "The game could not be saved"
 msgstr "ゲームは保存できませんでした"
 
-#: src/menu_events.cpp:403 src/playturn.cpp:2501
+#: src/menu_events.cpp:403 src/playturn.cpp:2502
 msgid "Chat Log"
 msgstr "チャットログ"
 
@@ -10107,11 +10107,13 @@ msgid "Unknown scenario"
 msgstr "不明のシナリオ: '"
 
 #: src/multiplayer_lobby.cpp:332
-msgid "Vacant Slot"
+#, fuzzy
+msgid "Vacant Slot:"
 msgstr "空いているスロット"
 
 #: src/multiplayer_lobby.cpp:332
-msgid "Vacant Slots"
+#, fuzzy
+msgid "Vacant Slots:"
 msgstr "空のスロット"
 
 #: src/multiplayer_lobby.cpp:447
@@ -10147,15 +10149,15 @@ msgstr "ゲームデータ入手中..."
 msgid "Choose your side:"
 msgstr "あなたのつく側を選んで下さい:"
 
-#: src/multiplayer_wait.cpp:389 src/unit.cpp:1378
+#: src/multiplayer_wait.cpp:389 src/unit.cpp:1395
 msgid "("
 msgstr "（"
 
-#: src/multiplayer_wait.cpp:389 src/unit.cpp:1385
+#: src/multiplayer_wait.cpp:389 src/unit.cpp:1402
 msgid ")"
 msgstr "）"
 
-#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1945
+#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1946
 msgid "unit^Gold"
 msgstr "ゴールド"
 
@@ -10297,47 +10299,47 @@ msgstr "敵を攻撃する"
 msgid "Choose weapon:"
 msgstr "武器の選択:"
 
-#: src/playturn.cpp:1374
+#: src/playturn.cpp:1375
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "このターンではまだ行動を開始していません。 本当に自分のターンを終了しますか？"
 
-#: src/playturn.cpp:1382 src/playturn.cpp:1387
+#: src/playturn.cpp:1383 src/playturn.cpp:1388
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "まだ移動可能な ユニットが 残っています。 本当にターンを 終了して よろしいです"
 "か？"
 
-#: src/playturn.cpp:1402
+#: src/playturn.cpp:1403
 msgid "Auto-Save"
 msgstr "自動保存"
 
-#: src/playturn.cpp:1404
+#: src/playturn.cpp:1405
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "ゲームを 自動保存できませんでした。 手動で 保存して下さい。"
 
-#: src/playturn.cpp:1645
+#: src/playturn.cpp:1646
 msgid "Rename Unit"
 msgstr "ユニット名変更"
 
-#: src/playturn.cpp:1951
+#: src/playturn.cpp:1952
 msgid "You have no units available to recruit."
 msgstr "雇用できるユニットがいない。"
 
-#: src/playturn.cpp:1963
+#: src/playturn.cpp:1964
 msgid "Recruit"
 msgstr "雇う"
 
-#: src/playturn.cpp:1964 src/playturn.cpp:2154
+#: src/playturn.cpp:1965 src/playturn.cpp:2155
 msgid "Select unit:"
 msgstr "ユニットを選択してください:"
 
-#: src/playturn.cpp:1998
+#: src/playturn.cpp:1999
 msgid "You don't have enough gold to recruit that unit"
 msgstr "そのユニットを 雇えるだけのお金が ありません。"
 
-#: src/playturn.cpp:2056
+#: src/playturn.cpp:2057
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -10345,7 +10347,7 @@ msgstr ""
 "王よ、このユニットは高レベルの経験を積んでいます！ 本当に $noun を解雇します"
 "か？"
 
-#: src/playturn.cpp:2058
+#: src/playturn.cpp:2059
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -10353,19 +10355,19 @@ msgstr ""
 "王様、 このユニットはもうすぐレベルアップしますよ！ 本当に $noun を解雇するの"
 "ですか？"
 
-#: src/playturn.cpp:2063
+#: src/playturn.cpp:2064
 msgid "her"
 msgstr "彼女"
 
-#: src/playturn.cpp:2063
+#: src/playturn.cpp:2064
 msgid "him"
 msgstr "彼"
 
-#: src/playturn.cpp:2104
+#: src/playturn.cpp:2105
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "あなたは 戦士達から離れてしまい、 彼等を召還することはできない。"
 
-#: src/playturn.cpp:2106
+#: src/playturn.cpp:2107
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -10373,51 +10375,51 @@ msgstr ""
 "召還可能な部隊がありません\n"
 "(経験の積んだ生存者が前のシナリオにいなければなりません)"
 
-#: src/playturn.cpp:2114
+#: src/playturn.cpp:2115
 msgid "Level"
 msgstr "レベル"
 
-#: src/playturn.cpp:2141
+#: src/playturn.cpp:2142
 msgid "Dismiss Unit"
 msgstr "ユニットを解雇する"
 
-#: src/playturn.cpp:2153
+#: src/playturn.cpp:2154
 msgid "Recall"
 msgstr "召還"
 
-#: src/playturn.cpp:2165
+#: src/playturn.cpp:2166
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "１ユニット召還するのに 少なくとも $cost ゴールド必要です。"
 
-#: src/playturn.cpp:2210
+#: src/playturn.cpp:2211
 msgid "Message:"
 msgstr "メッセージ: "
 
-#: src/playturn.cpp:2210
+#: src/playturn.cpp:2211
 msgid "Send to allies only"
 msgstr "同盟者にのみ送る"
 
-#: src/playturn.cpp:2480
+#: src/playturn.cpp:2481
 msgid "Search"
 msgstr "検索"
 
-#: src/playturn.cpp:2490
+#: src/playturn.cpp:2491
 msgid "prompt^Command:"
 msgstr "コマンド:"
 
-#: src/playturn.cpp:2566
+#: src/playturn.cpp:2567
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "文字「 $search 」を含む ラベル名や ユニットは見つかりませんでした。"
 
-#: src/playturn.cpp:2694
+#: src/playturn.cpp:2695
 msgid "Place Label"
 msgstr "ラベルをつける"
 
-#: src/playturn.cpp:2695
+#: src/playturn.cpp:2696
 msgid "Label:"
 msgstr "ラベル:"
 
-#: src/playturn.cpp:2826
+#: src/playturn.cpp:2832
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -10425,23 +10427,23 @@ msgstr ""
 "このゲームは 同期が取れなくなったため、 終了するしかありません。 ゲームのエ"
 "ラーログを保存しますか？"
 
-#: src/playturn.cpp:2879
+#: src/playturn.cpp:2885
 msgid "Replace with AI"
 msgstr "AIと交代する"
 
-#: src/playturn.cpp:2880
+#: src/playturn.cpp:2886
 msgid "Replace with local player"
 msgstr "ローカルプレイヤーと交代する"
 
-#: src/playturn.cpp:2881
+#: src/playturn.cpp:2887
 msgid "Abort game"
 msgstr "ゲームを中断する"
 
-#: src/playturn.cpp:2884
+#: src/playturn.cpp:2890
 msgid "Replace with "
 msgstr "交代する "
 
-#: src/playturn.cpp:2888
+#: src/playturn.cpp:2894
 msgid "has left the game. What do you want to do?"
 msgstr " はゲームを去りました。 どうしますか？"
 
@@ -10529,7 +10531,7 @@ msgstr "敵所有の村"
 msgid "Allied village"
 msgstr "同盟所有の村"
 
-#: src/reports.cpp:440
+#: src/reports.cpp:457
 msgid "Observers:"
 msgstr "観戦者:"
 
@@ -10674,15 +10676,15 @@ msgstr "次"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnothの書"
 
-#: src/unit.cpp:1274 src/unit.cpp:1383
+#: src/unit.cpp:1291 src/unit.cpp:1400
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:1340
+#: src/unit.cpp:1357
 msgid "XP to advance"
 msgstr "レベルアップに必要な経験値"
 
-#: src/unit.cpp:1374
+#: src/unit.cpp:1391
 msgid ": "
 msgstr ": "
 
@@ -10690,15 +10692,15 @@ msgstr ": "
 msgid "strikes"
 msgstr "回数"
 
-#: src/unit_types.cpp:1223
+#: src/unit_types.cpp:1227
 msgid "chaotic"
 msgstr "混沌"
 
-#: src/unit_types.cpp:1223
+#: src/unit_types.cpp:1227
 msgid "lawful"
 msgstr "秩序"
 
-#: src/unit_types.cpp:1223
+#: src/unit_types.cpp:1227
 msgid "neutral"
 msgstr "中立"
 

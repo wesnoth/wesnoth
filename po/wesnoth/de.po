@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-02-04 17:46+0100\n"
+"POT-Creation-Date: 2006-02-10 16:36+0100\n"
 "PO-Revision-Date: 2006-02-05 20:43+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
@@ -169,7 +169,7 @@ msgstr "Schwert"
 #: data/units/Shadow.cfg:33 data/units/Skeleton.cfg:47
 #: data/units/Spectre.cfg:54 data/units/Swordsman.cfg:32
 #: data/units/Thief.cfg:86 data/units/Trapper.cfg:34
-#: data/units/Vampire_Bat.cfg:26 data/units/Wolf_Rider.cfg:39
+#: data/units/Vampire_Bat.cfg:26 data/units/Wolf_Rider.cfg:70
 #: data/units/Wraith.cfg:30 data/units/Young_Ogre.cfg:48
 msgid "blade"
 msgstr "Klinge"
@@ -1941,11 +1941,11 @@ msgstr "Untote"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:27
+#: data/game.cfg:29
 msgid "Binary Saves"
 msgstr "Binäre Spielstände"
 
-#: data/game.cfg:34
+#: data/game.cfg:36
 msgid "Show Combat"
 msgstr "Kampf zeigen"
 
@@ -1957,11 +1957,11 @@ msgstr "Einführung"
 msgid "Gameplay"
 msgstr "Spielregeln"
 
-#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2304
+#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2305
 msgid "Traits"
 msgstr "Charakteristiken"
 
-#: data/help.cfg:29 src/menu_events.cpp:218 src/playturn.cpp:1844
+#: data/help.cfg:29 src/menu_events.cpp:218 src/playturn.cpp:1845
 msgid "Units"
 msgstr "Einheiten"
 
@@ -3544,7 +3544,7 @@ msgstr ""
 #: data/help.cfg:460
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
-"erosive particles of carving a rock. It resembles a scraggy underground "
+"erosive particles that carve the rock. It resembles a scraggy underground "
 "cavern which reduces efficiency of most units, but shoulders defense. "
 "Dwarves and Trolls, who are main settlers of caves, have a relatively easy "
 "time navigating this terrain. Dwarves, who by dint of their small size have "
@@ -3986,9 +3986,10 @@ msgid "2p - Divide and Conquer"
 msgstr "2S - Teile oder herrsche"
 
 #: data/scenarios/multiplayer/2p_Divide_and_Conquer.cfg:4
+#, fuzzy
 msgid ""
 "This small duel map divides the field of battle into three segments. "
-"Recommended setting of 2 goldper village."
+"Recommended setting of 2 gold per village."
 msgstr ""
 "Diese kleine Duellkarte teilt das Schlachtfeld in drei Bereiche.\n"
 "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
@@ -4554,13 +4555,13 @@ msgstr "Aktionen"
 msgid "End Turn"
 msgstr "Zug beenden"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2302
-#: src/unit.cpp:1291
+#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2303
+#: src/unit.cpp:1308
 msgid "HP"
 msgstr "LP"
 
-#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2115
-#: src/playturn.cpp:2303
+#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2116
+#: src/playturn.cpp:2304
 msgid "XP"
 msgstr "EP"
 
@@ -5211,7 +5212,7 @@ msgstr ""
 #: data/units/Blood_Bat.cfg:39 data/units/Cave_Spider.cfg:39
 #: data/units/Direwolf_Rider.cfg:38 data/units/Goblin_Knight.cfg:38
 #: data/units/Sea_Serpent.cfg:26 data/units/Vampire_Bat.cfg:25
-#: data/units/Wolf_Rider.cfg:38
+#: data/units/Wolf_Rider.cfg:69
 msgid "fangs"
 msgstr "Fänge"
 
@@ -9580,7 +9581,7 @@ msgstr "Weiße Magierin"
 msgid "Wolf Rider"
 msgstr "Wolfsreiter"
 
-#: data/units/Wolf_Rider.cfg:35
+#: data/units/Wolf_Rider.cfg:66
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being. Goblins are smaller and much weaker than orcs. Any who can manage to "
@@ -9737,163 +9738,163 @@ msgstr "+Musik"
 msgid "+Scenario Designers"
 msgstr "+Szenarien"
 
-#: src/about.cpp:111
+#: src/about.cpp:112
 msgid "+Multiplayer Developers"
 msgstr "+Mehrspielerentwicklung"
 
-#: src/about.cpp:116
+#: src/about.cpp:118
 msgid "+Multiplayer Maps"
 msgstr "+Mehrspielerkarten"
 
-#: src/about.cpp:122
+#: src/about.cpp:124
 msgid "+Packagers"
 msgstr "+Binärpakete"
 
-#: src/about.cpp:132
+#: src/about.cpp:134
 msgid "+Miscellaneous"
 msgstr "+Verschiedenes"
 
-#: src/about.cpp:137
+#: src/about.cpp:139
 msgid "+Internationalization Managers"
 msgstr "+Internationalisierungsleitung"
 
-#: src/about.cpp:144
+#: src/about.cpp:146
 msgid "+Afrikaans Translation"
 msgstr "+Afrikaans Übersetzung"
 
-#: src/about.cpp:150
+#: src/about.cpp:152
 msgid "+Basque Translation"
 msgstr "+Baskische Übersetzung"
 
-#: src/about.cpp:155
+#: src/about.cpp:157
 msgid "+Bulgarian Translation"
 msgstr "+Bulgarische Übersetzung"
 
-#: src/about.cpp:159
+#: src/about.cpp:161
 msgid "+Catalan Translation"
 msgstr "+Katalanische Übersetzung"
 
-#: src/about.cpp:169
+#: src/about.cpp:171
 msgid "+Chinese Translation"
 msgstr "+Chinesische Übersetzung"
 
-#: src/about.cpp:172
+#: src/about.cpp:174
 msgid "+Czech Translation"
 msgstr "+Tschechische Übersetzung"
 
-#: src/about.cpp:187
+#: src/about.cpp:189
 msgid "+Danish Translation"
 msgstr "+Dänische Übersetzung"
 
-#: src/about.cpp:194
+#: src/about.cpp:196
 msgid "+Dutch Translation"
 msgstr "+Niederländische Übersetzung"
 
-#: src/about.cpp:202
+#: src/about.cpp:204
 msgid "+English (GB) Translation"
 msgstr "+Englische (GB) Übersetzung"
 
-#: src/about.cpp:205
+#: src/about.cpp:207
 msgid "+Esperanto Translation"
 msgstr "+Esperanto Übersetzung"
 
-#: src/about.cpp:209
+#: src/about.cpp:211
 msgid "+Estonian Translation"
 msgstr "+Estländische Übersetzung"
 
-#: src/about.cpp:212
+#: src/about.cpp:214
 msgid "+Finnish Translation"
 msgstr "+Finnische Übersetzung"
 
-#: src/about.cpp:218
+#: src/about.cpp:220
 msgid "+French Translation"
 msgstr "+Französische Übersetzung"
 
-#: src/about.cpp:237
+#: src/about.cpp:239
 msgid "+German Translation"
 msgstr "+Deutsche Übersetzung"
 
-#: src/about.cpp:249
+#: src/about.cpp:251
 msgid "+Greek Translation"
 msgstr "+Griechische Übersetzung"
 
-#: src/about.cpp:255
+#: src/about.cpp:257
 msgid "+Hebrew Translation"
 msgstr "+Hebräische Übersetzung"
 
-#: src/about.cpp:259
+#: src/about.cpp:261
 msgid "+Hungarian Translation"
 msgstr "+Ungarische Übersetzung"
 
-#: src/about.cpp:272
+#: src/about.cpp:274
 msgid "+Indonesian Translation"
 msgstr "+Indonesische Übersetzung"
 
-#: src/about.cpp:275
+#: src/about.cpp:277
 msgid "+Italian Translation"
 msgstr "+Italienische Übersetzung"
 
-#: src/about.cpp:284
+#: src/about.cpp:286
 msgid "+Japanese Translation"
 msgstr "+Japanische Übersetzung"
 
-#: src/about.cpp:289
+#: src/about.cpp:291
 msgid "+Latin Translation"
 msgstr "+Lateinische Übersetzung"
 
-#: src/about.cpp:292
+#: src/about.cpp:294
 msgid "+Norwegian Translation"
 msgstr "+Norwegische Übersetzung"
 
-#: src/about.cpp:298
+#: src/about.cpp:300
 msgid "+Polish Translation"
 msgstr "+Polnische Übersetzung"
 
-#: src/about.cpp:309
+#: src/about.cpp:311
 msgid "+Portuguese Translation"
 msgstr "+Portugiesische Übersetzung"
 
-#: src/about.cpp:312
+#: src/about.cpp:314
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+(Brasilianisch-)Portugiesische Übersetzung"
 
-#: src/about.cpp:321
+#: src/about.cpp:323
 msgid "+Russian Translation"
 msgstr "+Russische Übersetzung"
 
-#: src/about.cpp:327
+#: src/about.cpp:329
 msgid "+Serbian Translation"
 msgstr "+Serbische Übersetzung"
 
-#: src/about.cpp:330
+#: src/about.cpp:332
 msgid "+Slovak Translation"
 msgstr "+Slovakische Übersetzung"
 
-#: src/about.cpp:333
+#: src/about.cpp:335
 msgid "+Slovenian Translation"
 msgstr "+Slowenische Übersetzung"
 
-#: src/about.cpp:336
+#: src/about.cpp:338
 msgid "+Spanish Translation"
 msgstr "+Spanische Übersetzung"
 
-#: src/about.cpp:345
+#: src/about.cpp:347
 msgid "+Swedish Translation"
 msgstr "+Schwedische Übersetzung"
 
-#: src/about.cpp:352
+#: src/about.cpp:354
 msgid "+Turkish Translation"
 msgstr "+Türkische Übersetzung"
 
-#: src/about.cpp:359
+#: src/about.cpp:361
 msgid "+Contributors"
 msgstr "+Mitarbeiter"
 
-#: src/about.cpp:364
+#: src/about.cpp:366
 msgid "+Bots"
 msgstr "+Bots"
 
-#: src/about.cpp:400 src/help.cpp:2687
+#: src/about.cpp:402 src/help.cpp:2687
 msgid "Close"
 msgstr "Schließen"
 
@@ -10053,7 +10054,7 @@ msgid "replay"
 msgstr "Wiederholung anzeigen"
 
 #: src/dialogs.cpp:395 src/menu_events.cpp:295 src/multiplayer_lobby.cpp:330
-#: src/playturn.cpp:1682
+#: src/playturn.cpp:1683
 msgid "Turn"
 msgstr "Runde"
 
@@ -10130,8 +10131,8 @@ msgid "Date"
 msgstr "Datum"
 
 #: src/dialogs.cpp:558 src/game.cpp:877 src/help.cpp:1119
-#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:31 src/playturn.cpp:2113
-#: src/playturn.cpp:2301
+#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:31 src/playturn.cpp:2114
+#: src/playturn.cpp:2302
 msgid "Name"
 msgstr "Name"
 
@@ -10445,7 +10446,7 @@ msgstr "Sieg:"
 msgid "Defeat:"
 msgstr "Niederlage:"
 
-#: src/gamestatus.cpp:543
+#: src/gamestatus.cpp:550
 msgid "Could not write to file"
 msgstr "In die Datei konnte nicht geschrieben werden"
 
@@ -10469,8 +10470,8 @@ msgstr "Benötigte EP: "
 msgid "attacks"
 msgstr "Attacken"
 
-#: src/help.cpp:1120 src/menu_events.cpp:149 src/playturn.cpp:2112
-#: src/playturn.cpp:2300
+#: src/help.cpp:1120 src/menu_events.cpp:149 src/playturn.cpp:2113
+#: src/playturn.cpp:2301
 msgid "Type"
 msgstr "Typ"
 
@@ -10594,95 +10595,95 @@ msgstr "Systemvorgabe"
 msgid "?"
 msgstr "?"
 
-#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2388
-#: src/playturn.cpp:2450
+#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2389
+#: src/playturn.cpp:2451
 msgid "Recruits"
 msgstr "Ausgebildet"
 
-#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2394
-#: src/playturn.cpp:2454
+#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2395
+#: src/playturn.cpp:2455
 msgid "Recalls"
 msgstr "Einberufungen"
 
-#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2400
-#: src/playturn.cpp:2458
+#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2401
+#: src/playturn.cpp:2459
 msgid "Advancements"
 msgstr "Stufenaufstiege"
 
-#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2406
-#: src/playturn.cpp:2462
+#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2407
+#: src/playturn.cpp:2463
 msgid "Losses"
 msgstr "Verluste"
 
-#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2412
-#: src/playturn.cpp:2466
+#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2413
+#: src/playturn.cpp:2467
 msgid "Kills"
 msgstr "Tötungen"
 
-#: src/menu_events.cpp:69 src/playturn.cpp:2418
+#: src/menu_events.cpp:69 src/playturn.cpp:2419
 msgid "Damage Inflicted"
 msgstr "Verursachter Schaden"
 
-#: src/menu_events.cpp:75 src/playturn.cpp:2424
+#: src/menu_events.cpp:75 src/playturn.cpp:2425
 msgid "Damage Taken"
 msgstr "Erlittener Schaden"
 
-#: src/menu_events.cpp:81 src/playturn.cpp:2430
+#: src/menu_events.cpp:81 src/playturn.cpp:2431
 msgid "Damage Inflicted (EV)"
 msgstr "Verursachter Schaden (EV)"
 
-#: src/menu_events.cpp:88 src/playturn.cpp:2437
+#: src/menu_events.cpp:88 src/playturn.cpp:2438
 msgid "Damage Taken (EV)"
 msgstr "Erlittener Schaden (EV)"
 
-#: src/menu_events.cpp:94 src/playturn.cpp:2443
+#: src/menu_events.cpp:94 src/playturn.cpp:2444
 msgid "Statistics"
 msgstr "Statistiken"
 
-#: src/menu_events.cpp:154 src/playturn.cpp:2305 src/unit.cpp:1323
+#: src/menu_events.cpp:154 src/playturn.cpp:2306 src/unit.cpp:1340
 msgid "Moves"
 msgstr "BP"
 
-#: src/menu_events.cpp:155 src/playturn.cpp:2306
+#: src/menu_events.cpp:155 src/playturn.cpp:2307
 msgid "Location"
 msgstr "Standort"
 
-#: src/menu_events.cpp:201 src/playturn.cpp:2352
+#: src/menu_events.cpp:201 src/playturn.cpp:2353
 msgid "Unit List"
 msgstr "Einheitenübersicht"
 
-#: src/menu_events.cpp:215 src/playturn.cpp:1841
+#: src/menu_events.cpp:215 src/playturn.cpp:1842
 msgid "Leader"
 msgstr "Heerführer"
 
 #: src/menu_events.cpp:216 src/menu_events.cpp:227
-#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1842 src/playturn.cpp:1853
+#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1843 src/playturn.cpp:1854
 msgid "Gold"
 msgstr "Gold"
 
-#: src/menu_events.cpp:217 src/playturn.cpp:1843
+#: src/menu_events.cpp:217 src/playturn.cpp:1844
 msgid "Villages"
 msgstr "Dörfer"
 
-#: src/menu_events.cpp:219 src/playturn.cpp:1845
+#: src/menu_events.cpp:219 src/playturn.cpp:1846
 msgid "Upkeep"
 msgstr "Ausgaben"
 
-#: src/menu_events.cpp:220 src/playturn.cpp:1846
+#: src/menu_events.cpp:220 src/playturn.cpp:1847
 msgid "Income"
 msgstr "Einkommen"
 
 #: src/menu_events.cpp:304 src/playcampaign.cpp:239 src/playcampaign.cpp:360
-#: src/playturn.cpp:1691
+#: src/playturn.cpp:1692
 msgid "Name:"
 msgstr "Name:"
 
 #: src/menu_events.cpp:309 src/menu_events.cpp:322
-#: src/multiplayer_create.cpp:403 src/playturn.cpp:1696 src/playturn.cpp:1709
+#: src/multiplayer_create.cpp:403 src/playturn.cpp:1697 src/playturn.cpp:1710
 msgid "Error"
 msgstr "Fehler"
 
-#: src/menu_events.cpp:309 src/playturn.cpp:1696
+#: src/menu_events.cpp:309 src/playturn.cpp:1697
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -10690,20 +10691,20 @@ msgstr ""
 "Der Name eines Spielstands darf folgende Zeichen nicht enthalten: »/«, »\\« "
 "und »:«. Bitte verwendet einen anderen Namen."
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1706
+#: src/menu_events.cpp:319 src/playturn.cpp:1707
 msgid "Saved"
 msgstr "Gespeichert"
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1706
+#: src/menu_events.cpp:319 src/playturn.cpp:1707
 msgid "The game has been saved"
 msgstr "Der Spielstand wurde gespeichert"
 
 #: src/menu_events.cpp:322 src/playcampaign.cpp:247 src/playcampaign.cpp:368
-#: src/playturn.cpp:1709
+#: src/playturn.cpp:1710
 msgid "The game could not be saved"
 msgstr "Der Spielstand konnte nicht gespeichert werden"
 
-#: src/menu_events.cpp:403 src/playturn.cpp:2501
+#: src/menu_events.cpp:403 src/playturn.cpp:2502
 msgid "Chat Log"
 msgstr "Gesprächsprotokoll"
 
@@ -11027,11 +11028,13 @@ msgid "Unknown scenario"
 msgstr "Unbekanntes Szenario"
 
 #: src/multiplayer_lobby.cpp:332
-msgid "Vacant Slot"
+#, fuzzy
+msgid "Vacant Slot:"
 msgstr "Verfügbarer Platz"
 
 #: src/multiplayer_lobby.cpp:332
-msgid "Vacant Slots"
+#, fuzzy
+msgid "Vacant Slots:"
 msgstr "Verfügbare Plätze"
 
 #: src/multiplayer_lobby.cpp:447
@@ -11066,15 +11069,15 @@ msgstr "Empfange Spieldaten..."
 msgid "Choose your side:"
 msgstr "Wählt Eure Fraktion:"
 
-#: src/multiplayer_wait.cpp:389 src/unit.cpp:1378
+#: src/multiplayer_wait.cpp:389 src/unit.cpp:1395
 msgid "("
 msgstr "("
 
-#: src/multiplayer_wait.cpp:389 src/unit.cpp:1385
+#: src/multiplayer_wait.cpp:389 src/unit.cpp:1402
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1945
+#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1946
 msgid "unit^Gold"
 msgstr "Gold"
 
@@ -11215,50 +11218,50 @@ msgstr "Gegner angreifen"
 msgid "Choose weapon:"
 msgstr "Waffe auswählen:"
 
-#: src/playturn.cpp:1374
+#: src/playturn.cpp:1375
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Ihr habt Euren Zug noch nicht begonnen. Wollt Ihr diese Runde wirklich schon "
 "beenden?"
 
-#: src/playturn.cpp:1382 src/playturn.cpp:1387
+#: src/playturn.cpp:1383 src/playturn.cpp:1388
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Einige Eurer Einheiten verfügen noch über Bewegungspunkte. Wollt Ihr Euren "
 "Zug wirklich schon beenden?"
 
-#: src/playturn.cpp:1402
+#: src/playturn.cpp:1403
 msgid "Auto-Save"
 msgstr "Autospeichern"
 
-#: src/playturn.cpp:1404
+#: src/playturn.cpp:1405
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Der Spielstand konnte nicht automatisch gespeichert werden. Ihr solltet den "
 "Spielstand manuell speichern."
 
-#: src/playturn.cpp:1645
+#: src/playturn.cpp:1646
 msgid "Rename Unit"
 msgstr "Einheit umbenennen"
 
-#: src/playturn.cpp:1951
+#: src/playturn.cpp:1952
 msgid "You have no units available to recruit."
 msgstr "Es gibt keine Einheiten, die Ihr ausbilden könntet."
 
-#: src/playturn.cpp:1963
+#: src/playturn.cpp:1964
 msgid "Recruit"
 msgstr "Ausbilden"
 
-#: src/playturn.cpp:1964 src/playturn.cpp:2154
+#: src/playturn.cpp:1965 src/playturn.cpp:2155
 msgid "Select unit:"
 msgstr "Einheit auswählen:"
 
-#: src/playturn.cpp:1998
+#: src/playturn.cpp:1999
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Ihr verfügt nicht über genug Gold, um diese Einheit auszubilden."
 
-#: src/playturn.cpp:2056
+#: src/playturn.cpp:2057
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -11266,7 +11269,7 @@ msgstr ""
 "Diese Einheit ist sehr erfahren und ist bereits mindestens eine Stufe "
 "aufgestiegen. Wollt Ihr $noun wirklich entlassen?"
 
-#: src/playturn.cpp:2058
+#: src/playturn.cpp:2059
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -11274,19 +11277,19 @@ msgstr ""
 "Diese Einheit steht kurz vor dem Stufenaufstieg! Wollt Ihr $noun wirklich "
 "entlassen?"
 
-#: src/playturn.cpp:2063
+#: src/playturn.cpp:2064
 msgid "her"
 msgstr "ihr"
 
-#: src/playturn.cpp:2063
+#: src/playturn.cpp:2064
 msgid "him"
 msgstr "sein"
 
-#: src/playturn.cpp:2104
+#: src/playturn.cpp:2105
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Ihr seid von Euren Soldaten getrennt und könnt diese nicht einberufen."
 
-#: src/playturn.cpp:2106
+#: src/playturn.cpp:2107
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -11294,55 +11297,55 @@ msgstr ""
 "Ihr verfügt über keine Truppen, die Ihr einberufen könntet.\n"
 "(Ihr benötigt überlebende Veteranen aus früheren Szenarien.)"
 
-#: src/playturn.cpp:2114
+#: src/playturn.cpp:2115
 msgid "Level"
 msgstr "Stufe"
 
-#: src/playturn.cpp:2141
+#: src/playturn.cpp:2142
 msgid "Dismiss Unit"
 msgstr "Einheit entlassen"
 
-#: src/playturn.cpp:2153
+#: src/playturn.cpp:2154
 msgid "Recall"
 msgstr "Einberufen"
 
-#: src/playturn.cpp:2165
+#: src/playturn.cpp:2166
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr ""
 "Ihr benötigt mindestens $cost Goldstücke, um eine Einheit einberufen zu "
 "können."
 
-#: src/playturn.cpp:2210
+#: src/playturn.cpp:2211
 msgid "Message:"
 msgstr "Nachricht:"
 
-#: src/playturn.cpp:2210
+#: src/playturn.cpp:2211
 msgid "Send to allies only"
 msgstr "Nur an Verbündete senden"
 
-#: src/playturn.cpp:2480
+#: src/playturn.cpp:2481
 msgid "Search"
 msgstr "Suchen"
 
-#: src/playturn.cpp:2490
+#: src/playturn.cpp:2491
 msgid "prompt^Command:"
 msgstr "Befehl:"
 
-#: src/playturn.cpp:2566
+#: src/playturn.cpp:2567
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Eine Beschriftung oder Einheit, deren Name »$search« enthält, konnte nicht "
 "gefunden werden."
 
-#: src/playturn.cpp:2694
+#: src/playturn.cpp:2695
 msgid "Place Label"
 msgstr "Beschriftung erstellen"
 
-#: src/playturn.cpp:2695
+#: src/playturn.cpp:2696
 msgid "Label:"
 msgstr "Beschriftung:"
 
-#: src/playturn.cpp:2826
+#: src/playturn.cpp:2832
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -11350,23 +11353,23 @@ msgstr ""
 "Das Spiel läuft nicht mehr synchron und muss beendet werden. Möchtet Ihr "
 "einen Fehlerbericht dieses Spiels abspeichern?"
 
-#: src/playturn.cpp:2879
+#: src/playturn.cpp:2885
 msgid "Replace with AI"
 msgstr "Durch Computer ersetzen"
 
-#: src/playturn.cpp:2880
+#: src/playturn.cpp:2886
 msgid "Replace with local player"
 msgstr "Durch lokalen Spieler ersetzen"
 
-#: src/playturn.cpp:2881
+#: src/playturn.cpp:2887
 msgid "Abort game"
 msgstr "Spiel abbrechen"
 
-#: src/playturn.cpp:2884
+#: src/playturn.cpp:2890
 msgid "Replace with "
 msgstr "Ersetzen durch "
 
-#: src/playturn.cpp:2888
+#: src/playturn.cpp:2894
 msgid "has left the game. What do you want to do?"
 msgstr "hat das Spiel verlassen. Was wollt Ihr tun?"
 
@@ -11458,7 +11461,7 @@ msgstr "Gegnerisches Dorf"
 msgid "Allied village"
 msgstr "Verbündetes Dorf"
 
-#: src/reports.cpp:440
+#: src/reports.cpp:457
 msgid "Observers:"
 msgstr "Beobachter:"
 
@@ -11605,15 +11608,15 @@ msgstr "Nächste Seite"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Das Buch von Wesnoth"
 
-#: src/unit.cpp:1274 src/unit.cpp:1383
+#: src/unit.cpp:1291 src/unit.cpp:1400
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:1340
+#: src/unit.cpp:1357
 msgid "XP to advance"
 msgstr "EP pro Stufenanstieg"
 
-#: src/unit.cpp:1374
+#: src/unit.cpp:1391
 msgid ": "
 msgstr ": "
 
@@ -11621,15 +11624,15 @@ msgstr ": "
 msgid "strikes"
 msgstr "Attacken"
 
-#: src/unit_types.cpp:1223
+#: src/unit_types.cpp:1227
 msgid "chaotic"
 msgstr "lichtscheu"
 
-#: src/unit_types.cpp:1223
+#: src/unit_types.cpp:1227
 msgid "lawful"
 msgstr "redlich"
 
-#: src/unit_types.cpp:1223
+#: src/unit_types.cpp:1227
 msgid "neutral"
 msgstr "neutral"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-02-03 19:21+0100\n"
+"POT-Creation-Date: 2006-02-10 16:38+0100\n"
 "PO-Revision-Date: 2005-11-10 17:59-0000\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -89,7 +89,7 @@ msgid "Hotkeys"
 msgstr "快捷键"
 
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Resize Map"
 msgstr "改变地图大小"
 
@@ -237,161 +237,166 @@ msgid "Set Label"
 msgstr "标记"
 
 #: src/hotkeys.cpp:79
+#, fuzzy
+msgid "Clear Labels"
+msgstr "标记"
+
+#: src/hotkeys.cpp:80
 msgid "Show Enemy Moves"
 msgstr "显示敌方移动范围"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Best Possible Enemy Moves"
 msgstr "显示敌方最大可能移动范围"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 #, fuzzy
 msgid "Play"
 msgstr "玩家"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Reset"
 msgstr ""
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Stop"
 msgstr ""
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 #, fuzzy
 msgid "Next Turn"
 msgstr "下一单位"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 #, fuzzy
 msgid "Next Side"
 msgstr "下一单位"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Shroud"
 msgstr ""
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Fog"
 msgstr ""
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Skip animation"
 msgstr ""
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Set Terrain"
 msgstr "设定地形"
 
-#: src/hotkeys.cpp:91
+#: src/hotkeys.cpp:92
 msgid "Quit Editor"
 msgstr "退度编辑器"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "New Map"
 msgstr "新地图"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Load Map"
 msgstr "载入地图"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "Save Map"
 msgstr "保存地图"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Save As"
 msgstr "另存为"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Set Player's keep"
 msgstr "设定玩家的城堡"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Flood Fill"
 msgstr "色彩填充"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Fill Selection"
 msgstr "填充选择区域"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Cut"
 msgstr "剪切"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Copy"
 msgstr "复制"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Revert from Disk"
 msgstr "重新读取文件"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Flip Map"
 msgstr "翻转地图"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Select All"
 msgstr "全选"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Draw Terrain"
 msgstr "绘制地形"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Refresh Image Cache"
 msgstr "刷新图像缓存"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Delay Shroud Updates"
 msgstr "暂缓刷新阴影区域"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:111
 msgid "Update Shroud Now"
 msgstr "立即刷新阴影区域"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Continue Move"
 msgstr "继续移动"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Find Label or Unit"
 msgstr "查找标记或单位"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Speak to Ally"
 msgstr "与盟友谈话"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Speak to All"
 msgstr "与所有人谈话"
 
-#: src/hotkeys.cpp:115 src/show_dialog.cpp:577
+#: src/hotkeys.cpp:116 src/show_dialog.cpp:577
 msgid "Help"
 msgstr "帮助"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "View Chat Log"
 msgstr "察看聊天纪录"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Enter user command"
 msgstr "进入用户命令"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Change the language"
 msgstr "语言切换"
 
-#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
+#: src/hotkeys.cpp:430 src/hotkeys.cpp:631
 msgid "Do you really want to quit?"
 msgstr "您要退出吗？"
 
-#: src/hotkeys.cpp:429 src/hotkeys.cpp:626
+#: src/hotkeys.cpp:430 src/hotkeys.cpp:631
 msgid "Quit"
 msgstr "退出"
 

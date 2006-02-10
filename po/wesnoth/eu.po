@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-02-04 17:46+0100\n"
+"POT-Creation-Date: 2006-02-10 16:36+0100\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -171,7 +171,7 @@ msgstr "ezpata"
 #: data/units/Shadow.cfg:33 data/units/Skeleton.cfg:47
 #: data/units/Spectre.cfg:54 data/units/Swordsman.cfg:32
 #: data/units/Thief.cfg:86 data/units/Trapper.cfg:34
-#: data/units/Vampire_Bat.cfg:26 data/units/Wolf_Rider.cfg:39
+#: data/units/Vampire_Bat.cfg:26 data/units/Wolf_Rider.cfg:70
 #: data/units/Wraith.cfg:30 data/units/Young_Ogre.cfg:48
 msgid "blade"
 msgstr ""
@@ -1529,11 +1529,11 @@ msgstr "Ez Hilak"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:27
+#: data/game.cfg:29
 msgid "Binary Saves"
 msgstr "Gorde konprimatuta"
 
-#: data/game.cfg:34
+#: data/game.cfg:36
 msgid "Show Combat"
 msgstr "Borrokak erakutsi"
 
@@ -1545,11 +1545,11 @@ msgstr "Sarrera"
 msgid "Gameplay"
 msgstr "Jokua"
 
-#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2304
+#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2305
 msgid "Traits"
 msgstr "Berezitasunak"
 
-#: data/help.cfg:29 src/menu_events.cpp:218 src/playturn.cpp:1844
+#: data/help.cfg:29 src/menu_events.cpp:218 src/playturn.cpp:1845
 msgid "Units"
 msgstr "Unitateak"
 
@@ -2638,7 +2638,7 @@ msgstr ""
 #: data/help.cfg:460
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
-"erosive particles of carving a rock. It resembles a scraggy underground "
+"erosive particles that carve the rock. It resembles a scraggy underground "
 "cavern which reduces efficiency of most units, but shoulders defense. "
 "Dwarves and Trolls, who are main settlers of caves, have a relatively easy "
 "time navigating this terrain. Dwarves, who by dint of their small size have "
@@ -3011,7 +3011,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "This small duel map divides the field of battle into three segments. "
-"Recommended setting of 2 goldper village."
+"Recommended setting of 2 gold per village."
 msgstr ""
 "Buruz buruko mapa txiki honek borroka lekua hiru zatitan zatitzen du. "
 "Herrixkako urrezko 2 txaponeko ezarpena gomendatzen da."
@@ -3523,13 +3523,13 @@ msgstr "Ekintzak"
 msgid "End Turn"
 msgstr "Txanda Amaitu"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2302
-#: src/unit.cpp:1291
+#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2303
+#: src/unit.cpp:1308
 msgid "HP"
 msgstr "BP"
 
-#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2115
-#: src/playturn.cpp:2303
+#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2116
+#: src/playturn.cpp:2304
 msgid "XP"
 msgstr "EP"
 
@@ -4015,7 +4015,7 @@ msgstr ""
 #: data/units/Blood_Bat.cfg:39 data/units/Cave_Spider.cfg:39
 #: data/units/Direwolf_Rider.cfg:38 data/units/Goblin_Knight.cfg:38
 #: data/units/Sea_Serpent.cfg:26 data/units/Vampire_Bat.cfg:25
-#: data/units/Wolf_Rider.cfg:38
+#: data/units/Wolf_Rider.cfg:69
 msgid "fangs"
 msgstr ""
 
@@ -6895,7 +6895,7 @@ msgstr "Mago zuria"
 msgid "Wolf Rider"
 msgstr "Otso gidaria"
 
-#: data/units/Wolf_Rider.cfg:35
+#: data/units/Wolf_Rider.cfg:66
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being. Goblins are smaller and much weaker than orcs. Any who can manage to "
@@ -7004,168 +7004,168 @@ msgstr "+Musika"
 msgid "+Scenario Designers"
 msgstr "+Gudaguneko diseinatzaileak"
 
-#: src/about.cpp:111
+#: src/about.cpp:112
 #, fuzzy
 msgid "+Multiplayer Developers"
 msgstr "+Jokalari anitzeko mapak"
 
-#: src/about.cpp:116
+#: src/about.cpp:118
 msgid "+Multiplayer Maps"
 msgstr "+Jokalari anitzeko mapak"
 
-#: src/about.cpp:122
+#: src/about.cpp:124
 msgid "+Packagers"
 msgstr "+Paketelariak"
 
-#: src/about.cpp:132
+#: src/about.cpp:134
 msgid "+Miscellaneous"
 msgstr "+Hainbat"
 
-#: src/about.cpp:137
+#: src/about.cpp:139
 msgid "+Internationalization Managers"
 msgstr "+Internazionalizazio Zuzendariak"
 
-#: src/about.cpp:144
+#: src/about.cpp:146
 msgid "+Afrikaans Translation"
 msgstr "+Afrikaans Itzulpena"
 
-#: src/about.cpp:150
+#: src/about.cpp:152
 msgid "+Basque Translation"
 msgstr "+Euskara Itzulpena"
 
-#: src/about.cpp:155
+#: src/about.cpp:157
 msgid "+Bulgarian Translation"
 msgstr "+Bulgariera Itzulpena"
 
-#: src/about.cpp:159
+#: src/about.cpp:161
 msgid "+Catalan Translation"
 msgstr "+Katalan Itzulpena"
 
-#: src/about.cpp:169
+#: src/about.cpp:171
 msgid "+Chinese Translation"
 msgstr "+Txinera Itzulpena"
 
-#: src/about.cpp:172
+#: src/about.cpp:174
 msgid "+Czech Translation"
 msgstr "+Txekiera Itzulpena"
 
-#: src/about.cpp:187
+#: src/about.cpp:189
 msgid "+Danish Translation"
 msgstr "+Daniera Itzulpena"
 
-#: src/about.cpp:194
+#: src/about.cpp:196
 msgid "+Dutch Translation"
 msgstr "+Nederlandera Itzulpena"
 
-#: src/about.cpp:202
+#: src/about.cpp:204
 msgid "+English (GB) Translation"
 msgstr "+Ingeles (Erresuma Batua) Itzulpena"
 
-#: src/about.cpp:205
+#: src/about.cpp:207
 #, fuzzy
 msgid "+Esperanto Translation"
 msgstr "+Aleman Itzulpena"
 
-#: src/about.cpp:209
+#: src/about.cpp:211
 msgid "+Estonian Translation"
 msgstr "+Estoniera itzulpena"
 
-#: src/about.cpp:212
+#: src/about.cpp:214
 msgid "+Finnish Translation"
 msgstr "+Finlandiera Itzulpena"
 
-#: src/about.cpp:218
+#: src/about.cpp:220
 msgid "+French Translation"
 msgstr "+Frantses Itzulpena"
 
-#: src/about.cpp:237
+#: src/about.cpp:239
 msgid "+German Translation"
 msgstr "+Aleman Itzulpena"
 
-#: src/about.cpp:249
+#: src/about.cpp:251
 msgid "+Greek Translation"
 msgstr "+Greko Itzulpena"
 
-#: src/about.cpp:255
+#: src/about.cpp:257
 #, fuzzy
 msgid "+Hebrew Translation"
 msgstr "+Greko Itzulpena"
 
-#: src/about.cpp:259
+#: src/about.cpp:261
 msgid "+Hungarian Translation"
 msgstr "+Hungariera Itzulpena"
 
-#: src/about.cpp:272
+#: src/about.cpp:274
 #, fuzzy
 msgid "+Indonesian Translation"
 msgstr "+Estoniera itzulpena"
 
-#: src/about.cpp:275
+#: src/about.cpp:277
 msgid "+Italian Translation"
 msgstr "+Italiera Itzulpena"
 
-#: src/about.cpp:284
+#: src/about.cpp:286
 msgid "+Japanese Translation"
 msgstr "+Japoniera Itzulpena"
 
-#: src/about.cpp:289
+#: src/about.cpp:291
 msgid "+Latin Translation"
 msgstr "+Latin Itzulpena"
 
-#: src/about.cpp:292
+#: src/about.cpp:294
 msgid "+Norwegian Translation"
 msgstr "+Norvegiera Itzulpena"
 
-#: src/about.cpp:298
+#: src/about.cpp:300
 msgid "+Polish Translation"
 msgstr "+Poloniera Itzulpena"
 
-#: src/about.cpp:309
+#: src/about.cpp:311
 #, fuzzy
 msgid "+Portuguese Translation"
 msgstr "+Portuges (Brazil) Itzulpena"
 
-#: src/about.cpp:312
+#: src/about.cpp:314
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portuges (Brazil) Itzulpena"
 
-#: src/about.cpp:321
+#: src/about.cpp:323
 msgid "+Russian Translation"
 msgstr "+Errusiera Itzulpena"
 
-#: src/about.cpp:327
+#: src/about.cpp:329
 msgid "+Serbian Translation"
 msgstr "+Serbiera Itzulpena"
 
-#: src/about.cpp:330
+#: src/about.cpp:332
 msgid "+Slovak Translation"
 msgstr "+Eslovakiera Itzulpena"
 
-#: src/about.cpp:333
+#: src/about.cpp:335
 msgid "+Slovenian Translation"
 msgstr "+Eslobeniera Itzulpena"
 
-#: src/about.cpp:336
+#: src/about.cpp:338
 msgid "+Spanish Translation"
 msgstr "+Gaztelania Itzulpena"
 
-#: src/about.cpp:345
+#: src/about.cpp:347
 msgid "+Swedish Translation"
 msgstr "+Suediera Itzulpena"
 
-#: src/about.cpp:352
+#: src/about.cpp:354
 msgid "+Turkish Translation"
 msgstr "+Turkiera Itzulpena"
 
-#: src/about.cpp:359
+#: src/about.cpp:361
 msgid "+Contributors"
 msgstr "+Laguntzaileak"
 
-#: src/about.cpp:364
+#: src/about.cpp:366
 msgid "+Bots"
 msgstr "+Errobotak"
 
-#: src/about.cpp:400 src/help.cpp:2687
+#: src/about.cpp:402 src/help.cpp:2687
 msgid "Close"
 msgstr "Itxi"
 
@@ -7329,7 +7329,7 @@ msgid "replay"
 msgstr "errepikatu"
 
 #: src/dialogs.cpp:395 src/menu_events.cpp:295 src/multiplayer_lobby.cpp:330
-#: src/playturn.cpp:1682
+#: src/playturn.cpp:1683
 msgid "Turn"
 msgstr "Txanda"
 
@@ -7403,8 +7403,8 @@ msgid "Date"
 msgstr "Data"
 
 #: src/dialogs.cpp:558 src/game.cpp:877 src/help.cpp:1119
-#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:31 src/playturn.cpp:2113
-#: src/playturn.cpp:2301
+#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:31 src/playturn.cpp:2114
+#: src/playturn.cpp:2302
 msgid "Name"
 msgstr "Izena"
 
@@ -7719,7 +7719,7 @@ msgstr "Garaipena:"
 msgid "Defeat:"
 msgstr "Gainditu:"
 
-#: src/gamestatus.cpp:543
+#: src/gamestatus.cpp:550
 msgid "Could not write to file"
 msgstr "Ezin izan da fitxategian idatzi"
 
@@ -7743,8 +7743,8 @@ msgstr "Beharrezko EP: "
 msgid "attacks"
 msgstr "erasotzen du"
 
-#: src/help.cpp:1120 src/menu_events.cpp:149 src/playturn.cpp:2112
-#: src/playturn.cpp:2300
+#: src/help.cpp:1120 src/menu_events.cpp:149 src/playturn.cpp:2113
+#: src/playturn.cpp:2301
 msgid "Type"
 msgstr "Mota"
 
@@ -7863,114 +7863,114 @@ msgstr "Sistemako lehenetsitako hizkuntza"
 msgid "?"
 msgstr ""
 
-#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2388
-#: src/playturn.cpp:2450
+#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2389
+#: src/playturn.cpp:2451
 msgid "Recruits"
 msgstr "Bilketak"
 
-#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2394
-#: src/playturn.cpp:2454
+#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2395
+#: src/playturn.cpp:2455
 msgid "Recalls"
 msgstr "Deiak"
 
-#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2400
-#: src/playturn.cpp:2458
+#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2401
+#: src/playturn.cpp:2459
 msgid "Advancements"
 msgstr "Aurrerapenak"
 
-#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2406
-#: src/playturn.cpp:2462
+#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2407
+#: src/playturn.cpp:2463
 msgid "Losses"
 msgstr "Galdutakoak"
 
-#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2412
-#: src/playturn.cpp:2466
+#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2413
+#: src/playturn.cpp:2467
 msgid "Kills"
 msgstr "Hildakoak"
 
-#: src/menu_events.cpp:69 src/playturn.cpp:2418
+#: src/menu_events.cpp:69 src/playturn.cpp:2419
 msgid "Damage Inflicted"
 msgstr "Egindako kaltea"
 
-#: src/menu_events.cpp:75 src/playturn.cpp:2424
+#: src/menu_events.cpp:75 src/playturn.cpp:2425
 msgid "Damage Taken"
 msgstr "Hartutako kaltea"
 
-#: src/menu_events.cpp:81 src/playturn.cpp:2430
+#: src/menu_events.cpp:81 src/playturn.cpp:2431
 msgid "Damage Inflicted (EV)"
 msgstr "Egindako kaltea (BE)"
 
-#: src/menu_events.cpp:88 src/playturn.cpp:2437
+#: src/menu_events.cpp:88 src/playturn.cpp:2438
 msgid "Damage Taken (EV)"
 msgstr "Hartutako kaltea (BE)"
 
-#: src/menu_events.cpp:94 src/playturn.cpp:2443
+#: src/menu_events.cpp:94 src/playturn.cpp:2444
 msgid "Statistics"
 msgstr "Estatistikak"
 
-#: src/menu_events.cpp:154 src/playturn.cpp:2305 src/unit.cpp:1323
+#: src/menu_events.cpp:154 src/playturn.cpp:2306 src/unit.cpp:1340
 msgid "Moves"
 msgstr "Mugimenduak"
 
-#: src/menu_events.cpp:155 src/playturn.cpp:2306
+#: src/menu_events.cpp:155 src/playturn.cpp:2307
 msgid "Location"
 msgstr "Kokapena"
 
-#: src/menu_events.cpp:201 src/playturn.cpp:2352
+#: src/menu_events.cpp:201 src/playturn.cpp:2353
 msgid "Unit List"
 msgstr "Unitate Zerrenda"
 
-#: src/menu_events.cpp:215 src/playturn.cpp:1841
+#: src/menu_events.cpp:215 src/playturn.cpp:1842
 msgid "Leader"
 msgstr "Burua"
 
 #: src/menu_events.cpp:216 src/menu_events.cpp:227
-#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1842 src/playturn.cpp:1853
+#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1843 src/playturn.cpp:1854
 msgid "Gold"
 msgstr "Urrea"
 
-#: src/menu_events.cpp:217 src/playturn.cpp:1843
+#: src/menu_events.cpp:217 src/playturn.cpp:1844
 msgid "Villages"
 msgstr "Herrixkak"
 
-#: src/menu_events.cpp:219 src/playturn.cpp:1845
+#: src/menu_events.cpp:219 src/playturn.cpp:1846
 msgid "Upkeep"
 msgstr "Gastuak"
 
-#: src/menu_events.cpp:220 src/playturn.cpp:1846
+#: src/menu_events.cpp:220 src/playturn.cpp:1847
 msgid "Income"
 msgstr "Irabaziak"
 
 #: src/menu_events.cpp:304 src/playcampaign.cpp:239 src/playcampaign.cpp:360
-#: src/playturn.cpp:1691
+#: src/playturn.cpp:1692
 msgid "Name:"
 msgstr "Izena:"
 
 #: src/menu_events.cpp:309 src/menu_events.cpp:322
-#: src/multiplayer_create.cpp:403 src/playturn.cpp:1696 src/playturn.cpp:1709
+#: src/multiplayer_create.cpp:403 src/playturn.cpp:1697 src/playturn.cpp:1710
 msgid "Error"
 msgstr "Okerra"
 
-#: src/menu_events.cpp:309 src/playturn.cpp:1696
+#: src/menu_events.cpp:309 src/playturn.cpp:1697
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1706
+#: src/menu_events.cpp:319 src/playturn.cpp:1707
 msgid "Saved"
 msgstr "Gordeta"
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1706
+#: src/menu_events.cpp:319 src/playturn.cpp:1707
 msgid "The game has been saved"
 msgstr "Jokua gordeta"
 
 #: src/menu_events.cpp:322 src/playcampaign.cpp:247 src/playcampaign.cpp:368
-#: src/playturn.cpp:1709
+#: src/playturn.cpp:1710
 msgid "The game could not be saved"
 msgstr "Ezin izan da jokua gorde"
 
-#: src/menu_events.cpp:403 src/playturn.cpp:2501
+#: src/menu_events.cpp:403 src/playturn.cpp:2502
 msgid "Chat Log"
 msgstr "Berriketa historikoa"
 
@@ -8299,12 +8299,13 @@ msgstr "Guda leku ezezaguna: '"
 
 #: src/multiplayer_lobby.cpp:332
 #, fuzzy
-msgid "Vacant Slot"
+msgid "Vacant Slot:"
 msgstr "(Erreten hutsa)"
 
 #: src/multiplayer_lobby.cpp:332
-msgid "Vacant Slots"
-msgstr ""
+#, fuzzy
+msgid "Vacant Slots:"
+msgstr "(Erreten hutsa)"
 
 #: src/multiplayer_lobby.cpp:447
 msgid "Observe Game"
@@ -8339,15 +8340,15 @@ msgstr "Jokuaren datuak lortzen..."
 msgid "Choose your side:"
 msgstr "Aukeratu zure aldea:"
 
-#: src/multiplayer_wait.cpp:389 src/unit.cpp:1378
+#: src/multiplayer_wait.cpp:389 src/unit.cpp:1395
 msgid "("
 msgstr "("
 
-#: src/multiplayer_wait.cpp:389 src/unit.cpp:1385
+#: src/multiplayer_wait.cpp:389 src/unit.cpp:1402
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1945
+#: src/multiplayer_wait.cpp:390 src/playturn.cpp:1946
 msgid "unit^Gold"
 msgstr "Urrea"
 
@@ -8492,72 +8493,72 @@ msgstr "Etsaia Eraso"
 msgid "Choose weapon:"
 msgstr "Arma aukeratu:"
 
-#: src/playturn.cpp:1374
+#: src/playturn.cpp:1375
 #, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Oraindik ez duzu zure txanda hasi. Benetan bukatu nahi duzu zure txanda?"
 
-#: src/playturn.cpp:1382 src/playturn.cpp:1387
+#: src/playturn.cpp:1383 src/playturn.cpp:1388
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Zenbait unitatek mugitu daitezke oraindik. Benetan bukatu nahi duzu zure "
 "txanda?"
 
-#: src/playturn.cpp:1402
+#: src/playturn.cpp:1403
 msgid "Auto-Save"
 msgstr "Auto-Gorde"
 
-#: src/playturn.cpp:1404
+#: src/playturn.cpp:1405
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Ezin izan da jokua automatikoki gorde. Mesedez gorde ezazu eskuz"
 
-#: src/playturn.cpp:1645
+#: src/playturn.cpp:1646
 msgid "Rename Unit"
 msgstr "Unitatea berrizendatu"
 
-#: src/playturn.cpp:1951
+#: src/playturn.cpp:1952
 msgid "You have no units available to recruit."
 msgstr "Ez duzu biltzeko unitaterik."
 
-#: src/playturn.cpp:1963
+#: src/playturn.cpp:1964
 msgid "Recruit"
 msgstr "Bildu"
 
-#: src/playturn.cpp:1964 src/playturn.cpp:2154
+#: src/playturn.cpp:1965 src/playturn.cpp:2155
 msgid "Select unit:"
 msgstr "Unitatea Aukeratu:"
 
-#: src/playturn.cpp:1998
+#: src/playturn.cpp:1999
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Ez duzu unitate hori biltzeko adina diru"
 
-#: src/playturn.cpp:2056
+#: src/playturn.cpp:2057
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:2058
+#: src/playturn.cpp:2059
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:2063
+#: src/playturn.cpp:2064
 msgid "her"
 msgstr "bera"
 
-#: src/playturn.cpp:2063
+#: src/playturn.cpp:2064
 msgid "him"
 msgstr "bera"
 
-#: src/playturn.cpp:2104
+#: src/playturn.cpp:2105
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Zure gudarietatik aldendua izan zara eta ezin dituzu deitu"
 
-#: src/playturn.cpp:2106
+#: src/playturn.cpp:2107
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -8565,51 +8566,51 @@ msgstr ""
 "Ez dago deitzeko unitaterik\n"
 "(aurreko guda-guneko bizirik irtendako unitaterik izan behar duzu)"
 
-#: src/playturn.cpp:2114
+#: src/playturn.cpp:2115
 msgid "Level"
 msgstr "Maila"
 
-#: src/playturn.cpp:2141
+#: src/playturn.cpp:2142
 msgid "Dismiss Unit"
 msgstr "Unitatea lizentziatu"
 
-#: src/playturn.cpp:2153
+#: src/playturn.cpp:2154
 msgid "Recall"
 msgstr "Deitu"
 
-#: src/playturn.cpp:2165
+#: src/playturn.cpp:2166
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Gutxienez $cost urre izan behar duzu unitateak deidu ahal izateko"
 
-#: src/playturn.cpp:2210
+#: src/playturn.cpp:2211
 msgid "Message:"
 msgstr "Mezua:"
 
-#: src/playturn.cpp:2210
+#: src/playturn.cpp:2211
 msgid "Send to allies only"
 msgstr "Lagunei soilik bidali"
 
-#: src/playturn.cpp:2480
+#: src/playturn.cpp:2481
 msgid "Search"
 msgstr "Bilatu"
 
-#: src/playturn.cpp:2490
+#: src/playturn.cpp:2491
 msgid "prompt^Command:"
 msgstr "Komandoa:"
 
-#: src/playturn.cpp:2566
+#: src/playturn.cpp:2567
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Ezin izan da '$search' katea duen etiketa edo unitaterik aurkitu."
 
-#: src/playturn.cpp:2694
+#: src/playturn.cpp:2695
 msgid "Place Label"
 msgstr "Etiketa ezarri"
 
-#: src/playturn.cpp:2695
+#: src/playturn.cpp:2696
 msgid "Label:"
 msgstr "Etiketa:"
 
-#: src/playturn.cpp:2826
+#: src/playturn.cpp:2832
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -8617,23 +8618,23 @@ msgstr ""
 "Jokuek sinkronizazioa galdu dute eta irten beharko dute. Zure jokuaren "
 "akatsen historikoa gorde nahi duzu?"
 
-#: src/playturn.cpp:2879
+#: src/playturn.cpp:2885
 msgid "Replace with AI"
 msgstr "AA-rekin ordeztu"
 
-#: src/playturn.cpp:2880
+#: src/playturn.cpp:2886
 msgid "Replace with local player"
 msgstr "Jokalari lokalarekin ordezkatu"
 
-#: src/playturn.cpp:2881
+#: src/playturn.cpp:2887
 msgid "Abort game"
 msgstr "Jokoa bertan behera utzi"
 
-#: src/playturn.cpp:2884
+#: src/playturn.cpp:2890
 msgid "Replace with "
 msgstr "Ordeztu "
 
-#: src/playturn.cpp:2888
+#: src/playturn.cpp:2894
 msgid "has left the game. What do you want to do?"
 msgstr "jokoa utzi du. Zer egin nahi duzu?"
 
@@ -8721,7 +8722,7 @@ msgstr "Herrixka arerio"
 msgid "Allied village"
 msgstr "Herrixka lagun"
 
-#: src/reports.cpp:440
+#: src/reports.cpp:457
 msgid "Observers:"
 msgstr "Ikusleak:"
 
@@ -8864,15 +8865,15 @@ msgstr "Gehiago"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoth-eko liburukotea"
 
-#: src/unit.cpp:1274 src/unit.cpp:1383
+#: src/unit.cpp:1291 src/unit.cpp:1400
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:1340
+#: src/unit.cpp:1357
 msgid "XP to advance"
 msgstr "Aurreratzeko EP"
 
-#: src/unit.cpp:1374
+#: src/unit.cpp:1391
 msgid ": "
 msgstr ": "
 
@@ -8880,15 +8881,15 @@ msgstr ": "
 msgid "strikes"
 msgstr "erasoak"
 
-#: src/unit_types.cpp:1223
+#: src/unit_types.cpp:1227
 msgid "chaotic"
 msgstr "kaotikoa"
 
-#: src/unit_types.cpp:1223
+#: src/unit_types.cpp:1227
 msgid "lawful"
 msgstr "bidezkoa"
 
-#: src/unit_types.cpp:1223
+#: src/unit_types.cpp:1227
 msgid "neutral"
 msgstr "neutrala"
 
