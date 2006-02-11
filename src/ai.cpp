@@ -967,7 +967,8 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		location target_loc = choice_it->target;
 		const int weapon = choice_it->weapons[0];
 
-		const unit_map::const_iterator tgt = units_.find(target_loc);
+		// never used
+		//		const unit_map::const_iterator tgt = units_.find(target_loc);
 
 		const location arrived_at = move_unit(from,to,possible_moves);
 		if(arrived_at != to) {
