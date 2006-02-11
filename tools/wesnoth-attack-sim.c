@@ -107,6 +107,7 @@ static unsigned int num_attacks(unsigned base, unsigned max, unsigned hp,
 static void calculate_attack(const struct unit *defender,
 			     double defender_res[],
 			     double *defender_touched,
+			     double attacker_touched[],
 			     const struct unit *attackers[],
 			     double *attacker_res[],
 			     unsigned num_attackers,
@@ -115,6 +116,9 @@ static void calculate_attack(const struct unit *defender,
 	unsigned int i, j;
 
 	*defender_touched = 0;
+
+	for (j = 0; j < num_attackers; j++)
+		attacker_touched[j] = 0;
 
 	for (i = 0; i < num_sims; i++) {
 		struct unit def = *defender;
@@ -135,6 +139,8 @@ static void calculate_attack(const struct unit *defender,
 			else
 				simulate_attack(&att, &def);
 			attacker_res[j][att.hp]++;
+			if (att.touched)
+				attacker_touched[j]++;
 		}
 		defender_res[def.hp]++;
 		if (def.touched)
@@ -155,6 +161,7 @@ static void calculate_attack(const struct unit *defender,
 		/* Any battle we weren't in, we're unscathed. */
 		attacker_res[i][attackers[i]->hp]
 			+= (1.0*num_sims-battles)/num_sims;
+		attacker_touched[i] /= battles;
 	}
 }
 
@@ -217,6 +224,7 @@ static void graph_prob(unsigned int hp, double prob)
 #endif
 
 static void draw_results(const double res[], const struct unit *u,
+			 double touched,
 			 const char label[])
 {
 	unsigned int i;
@@ -234,6 +242,7 @@ static void draw_results(const double res[], const struct unit *u,
 	if (u->firststrike)
 		printf("firststrike,");
 	printf("maxhp=%u ", u->max_hp);
+	printf("touched:%.2f%% ", touched*100);
 	for (i = 0; i < u->max_hp+1; i++)
 		printf(" %.2f", res[i]*100);
 	printf("\n");
@@ -271,12 +280,9 @@ static void compare_results(const double res[], const struct unit *u,
 		barf("Malformed touched: %s hp %u battle %u", 
 		     label, i, battle);
 
-	/* We only calculate this for defender... */
-	if (def_untouched != 0.0) {
-		if (abs(val - def_untouched)*100 > 1.0)
-			barf("Expected %f touched, got %f battle %u",
-			     def_untouched, val, battle);
-	}
+	if (abs(val - def_untouched)*100 > 1.0)
+		barf("Expected %f touched, got %f battle %u",
+		     def_untouched, val, battle);
 
 	for (i = 0; i < u->max_hp+1; i++) {
 		if (fscanf(f, " %lf", &val) != 1)
@@ -305,7 +311,7 @@ static void check_sum(double *arr, unsigned int num)
 	assert(sum > 0.999 && sum < 1.001);
 }
 
-#define NUM_UNITS 25
+#define NUM_UNITS 50
 static void check(const char *filename)
 {
 	/* N^2 battles. */
@@ -318,8 +324,8 @@ static void check(const char *filename)
 
 	printf("Creating %i units...\n", NUM_UNITS);
 	for (i = 0; i < NUM_UNITS; i++) {
-		u[i].hp = 1 + i/2 + ((i*2)%40);
-		u[i].max_hp = u[i].hp + (i+7)%20;
+		u[i].hp = 1 + ((i*3)%23);
+		u[i].max_hp = u[i].hp + (i+7)%17;
 		u[i].damage = (i % 7) + 2;
 		u[i].num_attacks = (i % 4) + 1;
 		u[i].slows = (i % 8) == 0;
@@ -348,6 +354,7 @@ static void check(const char *filename)
 				double i_touched;
 				double *attacker_res[2];
 				const struct unit *attackers[2];
+				double touched[2];
 
 				memset(i_result, 0, sizeof(i_result));
 				memset(j_result, 0, sizeof(j_result));
@@ -358,6 +365,7 @@ static void check(const char *filename)
 				attackers[0] = &u[j];
 				attackers[1] = &u[k];
 				calculate_attack(&u[i], i_result, &i_touched,
+						 touched,
 						 attackers, attacker_res, 2,
 						 10000);
 				battle++;
@@ -367,9 +375,9 @@ static void check(const char *filename)
 				compare_results(i_result, &u[i], "Defender",
 						battle, 1 - i_touched, f);
 				compare_results(j_result, &u[j], "Attacker #1",
-						battle, 0.0, f);
+						battle, 1 - touched[0], f);
 				compare_results(k_result, &u[k], "Attacker #2",
-						battle, 0.0, f);
+						battle, 1 - touched[1], f);
 				if ((battle % percent) == 0) {
 					printf(".");
 					fflush(stdout);
@@ -384,7 +392,7 @@ static void check(const char *filename)
 int main(int argc, char *argv[])
 {
 	unsigned int i;
-	double *res_def, *res_att[argc / 4], touched;
+	double *res_def, *res_att[argc / 4], def_touched, att_touched[argc/4];
 	const struct unit *def, *attacker[argc / 4 + 1];
 
 	if (argc == 3 && strcmp(argv[1], "--check") == 0)
@@ -404,9 +412,11 @@ int main(int argc, char *argv[])
 	attacker[i] = NULL;
 
 	srandom(time(NULL));
-	calculate_attack(def, res_def, &touched, attacker, res_att, i, 10000);
-	draw_results(res_def, def, "Defender");
+	calculate_attack(def, res_def, &def_touched, att_touched,
+			 attacker, res_att, i, 10000);
+	draw_results(res_def, def, def_touched, "Defender");
 	for (i = 0; attacker[i]; i++)
-		draw_results(res_att[i], attacker[i], "Attacker");
+		draw_results(res_att[i], attacker[i], att_touched[i],
+			     "Attacker");
 	return 0;
 }

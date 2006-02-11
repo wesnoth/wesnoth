@@ -436,7 +436,6 @@ struct combatant
 					bool swarm, bool firststrike);
 
 	// Set effect against this particular opponent.
-	// FIXME: damage if slowed.
 	void set_effectiveness(unsigned damage, double hit_chance, bool slows);
 
 	// Fight!
@@ -641,11 +640,7 @@ void combatant::fight(combatant &opp)
 #if defined(BENCHMARK) || defined(CHECK)
 // We create a significant number of nasty-to-calculate units, and
 // test each one against the others.
-#ifdef BENCHMARK
 #define NUM_UNITS 50
-#else
-#define NUM_UNITS 25
-#endif
 
 // Stolen from glibc headers sys/time.h 
 #define timer_sub(a, b, result)						      \
@@ -693,8 +688,8 @@ static void run(unsigned specific_battle)
 	struct timeval start, end, total;
 
 	for (i = 0; i < NUM_UNITS; i++) {
-		unsigned hp = 1 + i/2 + ((i*2)%40);
-		u[i] = new combatant(hp, hp + (i+7)%20, false);
+		unsigned hp = 1 + ((i*3)%23);
+		u[i] = new combatant(hp, hp + (i+7)%17, false);
 		u[i]->set_weapon((i % 4) + 1, (i % 9) == 0, (i % 5) == 0,
 						 ((i+4) % 4) == 0,
 						 ((i+3) % 5) == 0);
