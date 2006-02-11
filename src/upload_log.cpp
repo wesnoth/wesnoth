@@ -14,6 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth"
 
+#include "game_config.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
 #include "preferences.hpp"
@@ -128,7 +129,7 @@ upload_log::~upload_log()
 	if (game_finished(game_))
 		config_.add_child("game", *game_);
 
-	if (enabled_ && !config_.empty()) {
+	if (enabled_ && !config_.empty() && !game_config::debug) {
 		config_["version"] = VERSION;
 		config_["format_version"] = "1";
 		config_["id"] = preferences::upload_id();
