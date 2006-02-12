@@ -96,6 +96,7 @@ public:
 	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void play_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();
+  const config& game_config(){return game_config_;};
 
 private:
 	game_controller(const game_controller&);
@@ -365,6 +366,7 @@ bool game_controller::init_config()
 	game_config::load_config(game_config_.child("game_config"));
 
 	hotkey::load_hotkeys(game_config_);
+	about::set_about(game_config_);
 	paths_manager_.set_paths(game_config_);
 	::init_textdomains(game_config_);
 

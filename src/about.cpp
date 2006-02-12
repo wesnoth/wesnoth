@@ -22,6 +22,8 @@
 namespace about
 {
 
+  config about_list = config();
+
 std::vector<std::string> get_text() {
 	static const char *credits[] = {
 		"_" N_("+Core Developers"),
@@ -45,6 +47,7 @@ std::vector<std::string> get_text() {
 		"-   Jan Zvánovec (jaz)",
 		"-   Jérémy Rosen (Boucman)",
 		"-   John B. Messerly",
+		"-   John W. C. McNabb (Darth Fool)",
 		"-   Jon Daniel (forcemstr)",
 		"-   Jörg Hinrichs (Yogi Bear/YogiHH)",
 		"-   Justin Zaun (jzaun)",
@@ -56,315 +59,9 @@ std::vector<std::string> get_text() {
 		"-   Rusty Russell (rusty)",
 		"-   Yann Dirson",
 		"-   Zas",
-
 		"_" N_("+General Purpose Administrators"),
 		"-   Crossbow/Miyo",
 		"-   Isaac Clerencia",
-
-		"_" N_("+Artwork and graphics designers"),
-		"-   Alex Jarocha-Ernst (Jormungandr)",
-		"-   Andrew James Patterson (Kamahawk)",
-		"-   antwerp",
-		"-   Christophe Anjard",
-		"-   Diego Brea (Cobretti)",
-		"-   Eli Dupree (Elvish Pillager)",
-		"-   Gareth Miller (Gafgarion)",
-		"-   Hogne Håskjold (frame)",
-		"-   James Barton (Sangel)",
-		"-   James Woo (Pickslide)",
-		"-   Jason Lutes",
-		"-   Jimmy Olsson (Azlan)",
-		"-   Johanna Manninen (lohari)",
-		"-   John Muccigrosso (Eponymous Archon)",
-		"-   John-Robert Funck (XJaPaN)",
-		"-   Jonatan Alamà (tin)",
-		"-   Joseph Simmons (Turin)",
-		"-   J.W. Bjerk (Eleazar)",
-		"-   J.W.C. McNabb (Darth Fool)",
-		"-   Michael Gil de Muro (grp21)",
-		"-   Neorice",
-		"-   Pekka Aikio",
-		"-   Peter Geinitz (Shadow)",
-		"-   Richard Kettering (Jetryl)",
-		"-   Robert Bolin (Zebulon)",
-		"-   Slainte",
-		"-   Stephen Stone (Disto)",
-		"-   Svetac",
-		"-   Randall Walls (slightcrazed)",
-
-		"_" N_("+Music"),
-		"-   Aleksi",
-		"-   Fredrik Lindroth",
-		"-   Joseph Toscano (zhaymusic.com)",
-		"-   Pau Congost",
-
-		"_" N_("+Scenario Designers"),
-		"-   Benjamin Drieu",
-		"-   Dacyn",
-		"-   David White (Sirp)",
-		"-   Francisco Muñoz (fmunoz)",
-		"-   James Spencer (Shade)",
-		"-   Joseph Simmons (Turin)",
-		"-   Justin Zaun (jzaun)",
-		"-   Nils Kneuper (Ivanovic)",
-		"_   Scott Klempner",
-
-		"_" N_("+Multiplayer Developers"),
-		"-   Bartek Waresiak (Dragonking)",
-		"-   Mike Quiñones (Doc Paterson)",
-		"-   Richard S. (Noy)",
-		"-   Soliton",
-
-		"_" N_("+Multiplayer Maps"),
-		"-   Joshua Northey (Becephalus)",
-		"-   Mike Quiñones (Doc Paterson)",
-		"-   Peter Groen (pg)",
-		"-   Tom Chance (telex4)",
-
-		"_" N_("+Packagers"),
-		"-   Cyril Bouthors (CyrilB)",
-		"-   Darryl Dixon",
-		"-   edge",
-		"-   Isaac Clerencia",
-		"-   Jay Hopping",
-		"-   Marcin Konicki (ahwayakchih)",
-		"-   Marcus Phillips (Sithrandel)",
-		"-   Mark Michelsen (skovbaer)",
-
-		"_" N_("+Miscellaneous"),
-		"-   Francesco Gigli (Jaramir)",
-		"-   Jordà Polo (ettin)",
-		"-   Ruben Philipp Wickenhäuser (The Very Uhu)",
-
-		"_" N_("+Internationalization Managers"),
-		"-   Cédric Duval",
-		"-   David Philippi (Torangan)",
-		"-   Mark Michelsen (skovbaer)",
-		"-   Nils Kneuper (Ivanovic)",
-		"-   Susanna Björverud (sanna)",
-
-		"_" N_("+Afrikaans Translation"),
-		"-   András Salamon (ott)",
-		"-   Erhard Eiselen",
-		"-   Nico Oliver (nicoza)",
-		"-   Renier Maritz",
-
-		"_" N_("+Basque Translation"),
-		"-   Alfredo Beaumont (ziberpunk)",
-		"-   Julen Landa (genars)",
-		"-   Mikel Olasagasti (Hey_neken)",
-
-		"_" N_("+Bulgarian Translation"),
-		"-   Anton Tsigularov (Atilla)",
-		"-   Georgi Dimitrov (oblak)",
-
-		"_" N_("+Catalan Translation"),
-		"-   Carles Company (brrr)",
-		"-   Dan Rosàs Garcia (focks)",
-		"-   Daniel López (Azazelo)",
-		"-   Jonatan Alamà (tin)",
-		"-   Jordà Polo (ettin)",
-		"-   Jose Gordillo (kilder)",
-		"-   Mark Recasens",
-		"-   Pau Rul·lan Ferragut",
-
-		"_" N_("+Chinese Translation"),
-		"-   林俊杰 - Lim Choon Kiat",
-
-		"_" N_("+Czech Translation"),
-		"-   Anežka Bubeníčková (Bubu)",
-		"-   David Nečas (Yeti)",
-		"-   Lukáš Faltýnek",
-		"-   Martin Šín",
-		"-   Mintaka",
-		"-   Oto Buchta (tapik)",
-		"-   Petr Kopač (Ferda)",
-		"-   Petr Kovár (Juans)",
-		"-   Rudolf Orság",
-		"-   Sofronius",
-		"-   Vít Komárek",
-		"-   Vít Krčál",
-		"-   Vladimír Slávik",
-
-		"_" N_("+Danish Translation"),
-		"-   Anders K. Madsen (madsen)",
-		"-   Bjarke Sørensen (basher)",
-		"-   Jesper Fuglsang Wolff (ulven)",
-		"-   Mark Michelsen (skovbaer)",
-		"-   Mathias Bundgaard Svensson (freaken)",
-
-		"_" N_("+Dutch Translation"),
-		"-   Arne Deprez",
-		"-   Lala",
-		"-   Maarten Albrecht",
-		"-   Pieter Vermeylen (Onne)",
-                "-   Roel Thijs (Roel)",
-		"-   Tobe Deprez",
-
-		"_" N_("+English (GB) Translation"),
-		"-   András Salamon (ott)",
-
-		"_" N_("+Esperanto Translation"),
-		"-  Aleksej Korgenkov",
-                "-  Asto",
-
-		"_" N_("+Estonian Translation"),
-		"-   Mart Tõnso",
-
-		"_" N_("+Finnish Translation"),
-		"-   Ankka",
-		"-   kko",
-		"-   Matias Parmala",
-		"-   paxed",
-
-		"_" N_("+French Translation"),
-		"-   Aurélien Brevers (Breversa)",
-		"-   Benoit Astruc",
-		"-   Cédric Duval",
-		"-   DaringTremayne",
-		"-   François Orieux",
-		"-   Guillaume Duwelz-Rebert",
-		"-   Guillaume Massart (Piou2fois)",
-		"-   Guillaume Melquiond (silene)",
-		"-   Jean Privat (Tout)",
-		"-   Jean-Luc Richard (Le Gnome)",
-		"-   Jérémy Rosen (Boucman)",
-		"-   Julien Moncel",
-		"-   Julien Tailleur",
-		"-   Nicolas Boudin (Blurgk)",
-		"-   Philippe Plantier (Ayin)",
-		"-   Yann Dirson",
-		"-   Zas",
-
-		"_" N_("+German Translation"),
-		"-   Andre Schmidt (schmidta)",
-		"-   Boris Stumm (quijote_)",
-		"-   Christoph Berg (chrber)",
-		"-   Gerfried Fuchs (Alfie)",
-		"-   Jan Greve (Jan)",
-		"-   Jan Heiner Laberenz (jan-heiner)",
-		"-   Kai Ensenbach (Pingu)",
-		"-   Nils Kneuper (Ivanovic)",
-		"-   Ruben Philipp Wickenhäuser (The Very Uhu)",
-		"-   Stephan Grochtmann (Schattenstephan)",
-
-		"_" N_("+Greek Translation"),
-		"-   Katerina Sykioti",
-		"-   Konstantinos Karasavvas",
-                "-   Spiros, Giorgis",
-                "-   Alexander Alexiou (Santi)",
-
-		"_" N_("+Hebrew Translation"),
-		"-   Oron Peled",
-		"-   Ely Levy",
-
-		"_" N_("+Hungarian Translation"),
-		"-   adson",
-		"-   Beer (Eddi)",
-		"-   dentro",
-		"-   Gilluin",
-		"-   Kékkői László (BlackEvil)",
-		"-   Kertész Csaba",
-		"-   Khiraly",
-		"-   Kovács Dániel",
-		"-   krix",
-		"-   Salamon András (ott)",
-		"-   Széll Tamás (TomJoad)",
-
-		"_" N_("+Indonesian Translation"),
-		"-  Benny Lin",
-
-		"_" N_("+Italian Translation"),
-		"-   Alessio D'Ascanio (otaku)",
-		"-   Americo Iacovizzi (DarkAmex)",
-		"-   crys0000",
-		"-   Eugenio Favalli (ElvenProgrammer)",
-		"-   Federico Tomassetti",
-		"-   isazi",
-		"-   RokStar",
-
-		"_" N_("+Japanese Translation"),
-		"-   いいむらなおき (amatubu) - Naoki Iimura",
-		"-   岡田信人 - Nobuhito Okada",
-		"-   Yuji Matsumoto",
-
-		"_" N_("+Latin Translation"),
-		"-   Mark Polo (mpolo)",
-
-		"_" N_("+Norwegian Translation"),
-		"-   Hallvard Norheim Bø (Lysander)",
-		"-   Håvard Korsvoll",
-		"-   Erik J. Mesoy (Circon)",
-		"-   Susanne Mesoy (Rarlgland)",
-
-		"_" N_("+Polish Translation"),
-		"-   Arkadiusz Danilecki (szopen)",
-		"-   Artur R. Czechowski",
-		"-   Bartek Waresiak (Dragonking)",
-		"-   BOrsuk",
-		"-   Karol Nowak (grzywacz)",
-		"-   methinks",
-		"-   Michał Jedynak (Artanis)",
-		"-   Paweł Stradomski",
-		"-   Paweł Tomak",
-
-                "_" N_("+Portuguese Translation"),
-                "-   Luis Passos",
-
-		"_" N_("+Portuguese (Brazil) Translation"),
-		"-   Ambra Viviani Loos",
-		"-   Celso Goya",
-		"-   Claus Aranha",
-		"-   Michel Loos",
-		"-   Renato Cunha",
-		"-   Sérgio de Miranda Costa",
-		"-   Tiago Souza (Salvador)",
-
-		"_" N_("+Russian Translation"),
-		"-   Alexandr Menovchicov",
-		"-   Azamat Hackimov",
-		"-   Ilya Kaznacheev",
-		"-   Roman Tuchin (Sankt)",
-
-		"_" N_("+Serbian Translation"),
-		"-   Srecko Toroman (FreeCraft)",
-
-		"_" N_("+Slovak Translation"),
-		"-   Viliam Bur",
-
-		"_" N_("+Slovenian Translation"),
-		"-   Jaka Kranjc (lynx)",
-
-		"_" N_("+Spanish Translation"),
-		"-   David Martínez Moreno",
-		"-   Flamma",
-		"-   Francisco Muñoz (fmunoz)",
-		"-   Gabriel Rodríguez (Chewie)",
-		"-   Iván Herrero (navitux)",
-		"-   Jose Gordillo (kilder)",
-		"-   Jose Manuel Gomez (joseg)",
-
-		"_" N_("+Swedish Translation"),
-		"-   Alexander Kjäll (capitol)",
-		"-   Leo Danielson (Lugo Moll)",
-		"-   Stefan Bergström (tephlon)",
-		"-   Susanna Björverud (sanna)",
-		"-   wint3r",
-
-		"_" N_("+Turkish Translation"),
-		"-   Enes Akın (yekialem)",
-		"-   İhsan Akın",
-		"-   Kosif",
-		"-   Pınar Yanardağ (moonquelle)",
-		"-   Selim Farsakoğlu",
-
-		"_" N_("+Contributors"),
-		"-   Frédéric Wagner",
-		"-   Jeff Breidenbach (jab)",
-		"-   Laurent Birtz",
-
-		"_" N_("+Bots"),
-		"-   wesbot",
 	};
 
 	std::vector< std::string > res;
@@ -373,16 +70,71 @@ std::vector<std::string> get_text() {
 	for(size_t i = 0; i < len; ++i) {
 		const char *s = credits[i];
 		if (s[0] == '_')
-			s = gettext(s + 1);
+		  s = gettext(s + 1);
 		res.push_back(s);
 	}
+
+	const config::child_list& children = about::about_list.get_children("about");
+	for(config::child_list::const_iterator cc = children.begin(); cc != children.end(); ++cc) {
+	  std::string title=(**cc)["title"];
+	  if(title.size()){
+	    title = N_("+" + title);
+	    res.push_back(title);
+	  }
+	  std::vector<std::string> lines=utils::split((**cc)["text"],'\n');
+	  for(std::vector<std::string>::iterator line=lines.begin();
+	      line != lines.end(); line++){
+	    if((*line)[0] == '+' && (*line).size()>1){
+	      *line = N_("+  " + (*line).substr(1,(*line).size()-1));
+	    }else{
+	      *line = "-  " + *line;
+	    }
+	    if(line->size()){
+	      if ((*line)[0] == '_')
+		*line = gettext(line->substr(1,title.size()-1).c_str());
+	      res.push_back(*line);
+	    }
+	  } 
+	}
+
 	return res;
+}
+
+void set_about(const config& cfg){
+  config::child_list campaigns = cfg.get_children("campaign");
+  for(config::child_list::const_iterator C = campaigns.begin(); C != campaigns.end(); C++) {
+    config::child_list about = (**C).get_children("about");
+    if(about.size()){
+      config temp;
+      std::string text;
+      std::string title;
+      title=(**C)["name"];
+      temp["title"]=title;
+      for(config::child_list::const_iterator A = about.begin(); A != about.end(); A++) {
+	config AA = (**A);
+	//	text+="+   " + AA["title"] +"\n";
+	text+=AA["title"]+"\n";
+	std::vector<std::string> lines=utils::split(AA["text"],'\n');
+	for(std::vector<std::string>::iterator line=lines.begin();
+		      line != lines.end(); line++){
+	  text+="    "+(*line)+"\n";
+	}
+      }
+      temp["text"]=text;
+      about_list.add_child("about",temp);
+    }
+  }
+
+  config::child_list about = cfg.get_children("about");
+  for(config::child_list::const_iterator A = about.begin(); A != about.end(); A++) {
+    about_list.add_child("about",(**A));
+  }
 }
 
 void show_about(display &disp)
 {
 	CVideo &video = disp.video();
-	std::vector<std::string> text = get_text();
+	std::vector<std::string> text = about::get_text();
 	SDL_Rect rect = {0, 0, video.getx(), video.gety()};
 
 	const surface_restorer restorer(&video, rect);
