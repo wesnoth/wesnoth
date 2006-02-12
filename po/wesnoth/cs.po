@@ -10,20 +10,19 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-02-10 17:13+0100\n"
-"PO-Revision-Date: 2005-12-18 18:40+0100\n"
-"Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
+"PO-Revision-Date: 2006-01-31 17:05+0100\n"
+"Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Poedit-Bookmarks: 843,543,568,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Generator: KBabel 1.10\n"
 
 #: data/amla.cfg:8
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr ", MAX XP +25%"
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +"
@@ -1504,9 +1503,8 @@ msgstr ""
 "nepřátelské jednotky."
 
 #: data/english.cfg:90
-#, fuzzy
 msgid "submerge"
-msgstr "bodnutí"
+msgstr ""
 
 #: data/english.cfg:93
 msgid ""
@@ -2529,7 +2527,6 @@ msgstr ""
 "vývoje."
 
 #: data/help.cfg:203
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2556,10 +2553,15 @@ msgstr ""
 "rozvoje (After Maximum Level Advancement - AMLA). AMLA bude měnit nějaké "
 "vlastnosti jednotky pokaždé, kdy jednotka dosáhne počtu zkušenostních bodů "
 "nutných pro získání další úrovně, ale jednotka zůstane na stejné úrovni. "
-"Obvykle AMLA ovlivní jednotku tak, že zvýší maximální počet životů o 3 za "
-"každých 100 získaných zkušenostních bodů. Pamatujte, že jen velmi malé "
-"množství jednotek, například Požírači mrtvol, se mohou léčit pomocí AMLA. "
-"Většina jednotek pouze získá bonus k maximálnímu počtu životů."
+"Obvykle AMLA ovlivní jednotku tak, že zvýší maximální počet životů o 3. "
+"První AMLA je dosažena po 100 získaných zkušenostních bodech (80 pro "
+"inteligentní jednotky). Množství zkušenostních bodů pro dosažení AMLA se "
+"postupně zvyšuje, proto je často vhodnější pokusit se povýšit jednotky nižší "
+"úrovně.\n"
+"\n"
+"Pamatujte, že jen velmi malé množství jednotek, například Požírači mrtvol, "
+"se mohou léčit pomocí AMLA. Většina jednotek pouze získá bonus k maximálnímu "
+"počtu životů."
 
 #: data/help.cfg:208
 msgid "Healing"
@@ -3684,7 +3686,7 @@ msgstr "2p - Výpad"
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 #, fuzzy
 msgid "2p - Cynsaun Battlefield"
-msgstr "Princeznino bitevní pole"
+msgstr "2p - Princeznino bitevní pole"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
@@ -3987,9 +3989,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
-#, fuzzy
 msgid "4p - Morituri"
-msgstr "3p - Morituri"
+msgstr "4p - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
 #, fuzzy
@@ -4045,8 +4046,9 @@ msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "V této různorodé krajině svede 5 armád boj o nadvládu."
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
+#, fuzzy
 msgid "6p - Crusaders' Field"
-msgstr ""
+msgstr "6p - Křižácké pole"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
 msgid ""
@@ -4160,7 +4162,7 @@ msgstr "Zelená"
 
 #: data/team_colors.cfg:22
 msgid "Cyan"
-msgstr ""
+msgstr "Modrozelená"
 
 #: data/team_colors.cfg:28
 msgid "Purple"
@@ -4204,7 +4206,7 @@ msgstr "Oáza"
 #: data/terrain.cfg:323
 #, fuzzy
 msgid "Dunes"
-msgstr "Soumrak"
+msgstr "Duelista"
 
 #: data/terrain.cfg:332
 msgid "Snow Hills"
@@ -4414,7 +4416,6 @@ msgstr ""
 "ignorují."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -4422,8 +4423,8 @@ msgid ""
 "least 60% chance to hit when attacking."
 msgstr ""
 "Šance zasáhnout jednotku obvykle závisí na tom, jak dobře se dokáže bránit v "
-"terénu, v němž stojí; avšak magické útoky mají vždy 70% šanci zasáhnout a "
-"odstřelovači mají vždy alespoň 60% šanci zasáhnout."
+"terénu, v němž stojí; avšak magické útoky mají vždy 70% šanci zasáhnout. "
+"Odstřelovači mají také vždy alespoň 60% šanci zasáhnout, pokud útočí."
 
 #: data/tips.cfg:9
 msgid ""
@@ -4432,13 +4433,12 @@ msgstr ""
 "Jednotky umístěné ve vesnicích se uzdravují o 8 životů na začátku svého kola."
 
 #: data/tips.cfg:10
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
 msgstr ""
-"Jednotky, které se nepohnou ani neútočí během svého kola, se uzdraví o dva "
-"životy na začátku příštího kola."
+"Jednotky, které se nepohnou ani neútočí během svého kola, odpočívají a "
+"uzdraví se o dva životy na začátku příštího kola."
 
 #: data/tips.cfg:11
 msgid ""
@@ -4494,13 +4494,11 @@ msgstr ""
 "postradatelné jednotky do některých stran, aby zdržely nepřátelské jednotky."
 
 #: data/tips.cfg:17
-#, fuzzy
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr "Neboj se ustoupit a přeskupit; je to často klíčem k vítězství."
 
 #: data/tips.cfg:18
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -4525,13 +4523,12 @@ msgstr ""
 "abys odtamtud mohl verbovat."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
-"Kostlivci jsou odolní vůči útokům čepelí a bodání, ale bezbranní vůči "
-"úderům, ohni a svatým útokům."
+"Kostlivci jsou odolní vůči útokům čepelí a bodání, ale zranitelní údery, "
+"ohněm a svatými útoky."
 
 #: data/tips.cfg:21
 msgid ""
@@ -4591,13 +4588,12 @@ msgstr ""
 "zaútočit."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attacks."
 msgstr ""
 "Útok 'zpomalení' jednak zpomaluje pohyb nepřátelských jednotek, ale také "
-"zmenšuje jimi způsobená poškození na polovinu."
+"zmenšuje poškození způsobená jakýmkoliv jejich útokem na polovinu."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -4626,6 +4622,10 @@ msgid ""
 "progressively harder for each AMLA the unit receives, however. Thus, it is "
 "often more useful to try to advance your lower level units."
 msgstr ""
+"Jednotky mají schopnost rozvoje po dosažení maximální úrovně (After Maximum "
+"Level Advancement - AMLA), která obvykle zvýší maximální počet životů o 3. "
+"Každá dosažená AMLA ztíží podmínky pro dosažení další; proto je většinou "
+"vhodnější pokusit se povýšit jednotky nižší úrovně."
 
 #: data/tips.cfg:34
 msgid ""
@@ -4633,6 +4633,9 @@ msgid ""
 "the Help Wesnoth button.  This information is vital so we can adjust "
 "campaign difficulty."
 msgstr ""
+"Můžete poslat Projektu Wesnoth anonymní souhrn vašeho postupu ve hře "
+"použitím tlačítka 'Pomozte Wesnothu'.  Tyto informace jsou důležité pro "
+"upravení obtížnosti kampaní."
 
 #: data/traits.cfg:7
 msgid "Zero upkeep"
@@ -4851,17 +4854,15 @@ msgid "Blood Bat"
 msgstr "Krvavý netopýr"
 
 #: data/units/Blood_Bat.cfg:23
-#, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
 "the fur of these undead flying beasts is tainted red with the blood of their "
 "victims."
 msgstr ""
-"Krvaví netopýři jsou rychlí a vysávají krev svých protivníků, čímž se sami "
-"léčí, dokonce až tak, že mohou ze souboje vyjít silnější, než do něj "
-"vstoupili. Běsní tak, že srst těchto nemrtvých létajících dravců je "
-"zabarvena krví jejich obětí."
+"Krvaví netopýři jsou rychlí a mohou vysávat krev svých protivníků, čímž se "
+"sami léčí o část životů ubraných oběti. Běsní tak, že srst těchto nemrtvých "
+"létajících dravců je zabarvena krví jejich obětí."
 
 #: data/units/Blood_Bat.cfg:39 data/units/Cave_Spider.cfg:39
 #: data/units/Direwolf_Rider.cfg:38 data/units/Goblin_Knight.cfg:38
@@ -5561,7 +5562,7 @@ msgstr ""
 #: data/units/Master_at_Arms.cfg:40
 #, fuzzy
 msgid "sabre"
-msgstr "bodnutí"
+msgstr "polapení"
 
 #: data/units/Dwarvish_Berserker.cfg:3
 msgid "Dwarvish Berserker"
@@ -6253,7 +6254,6 @@ msgid "female^Elvish Shyde"
 msgstr "Elfí víla"
 
 #: data/units/Elvish_Shyde.cfg:32
-#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -6264,13 +6264,12 @@ msgid ""
 "the damage they can deliver in combat. Shydes are capable of healing units "
 "around them, and curing them of poison."
 msgstr ""
-"Oddanost kouzelnickým schopnostem ji nakonec transformovala z elfí dívky na "
-"stvoření z obou světů. Vedena přirozeností, kterou lze těžko pochopit, tyto "
+"Oddanost kouzelnickým schopnostem nakonec transformuje elfí dívku na "
+"stvoření z obou světů. Vedeny přirozeností, kterou lze těžko pochopit, tyto "
 "překrásné správkyně elfích lesů představují ctnost a tajemství svých lidí.\n"
 "\n"
-"Zvláštní rysy: Útoky zamotání zpomalí nepřítele a sníží o jedna jeho "
-"schopnost rozdávat rány v boji. Víly umí uzdravovat jednotky okolo a "
-"zbavovat je otravy."
+"Zvláštní rysy: Útoky zamotání zpomalí nepřítele a sníží zranění, které může "
+"v boji způsobit. Víly umí uzdravovat jednotky okolo a zbavovat je otravy."
 
 #: data/units/Elvish_Shyde.cfg:36 data/units/Elvish_Sylph.cfg:31
 msgid "faerie touch"
@@ -6601,7 +6600,6 @@ msgid "Goblin Rouser"
 msgstr "Goblin se zástavou"
 
 #: data/units/Goblin_Rouser.cfg:29
-#, fuzzy
 msgid ""
 "Standard bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -6613,10 +6611,11 @@ msgid ""
 "to it to deal more damage in combat, though this only applies to units of "
 "lower level."
 msgstr ""
-"Zástavy jsou mezi Gobliny velkou vzácností. Nejprve musejí jejich majitelé "
-"přežít válku, a za druhé musí bojovat tak, aby si je ostatní přeživší "
-"Goblini zapamatovali. Jejich často šílené zástavy nicméně dodávají kuráž "
-"mladším spolubojovníkům.\n"
+"Nosiči zástav jsou mezi Gobliny velkou vzácností. Goblin který přežil tolik "
+"bojů, aby mohl být považován za veterána je vzácný jev a ještě zřídkavější "
+"je, aby jej ostatní goblini jako veterána uznávali. Jejich pokřikování "
+"nicméně rozkuráží mladší spolubojovníky tak, že bojují o chvíli déle a "
+"urputněji než padnou.\n"
 "\n"
 "Zvláštní rysy: vůdcovské schopnosti Goblina se zástavou umožňují "
 "spolubojovníkům v jeho okolí způsobit v boji více poškození, to ale platí "
@@ -7747,14 +7746,13 @@ msgid "Ogre"
 msgstr "Obr"
 
 #: data/units/Ogre.cfg:23
-#, fuzzy
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
-"Obři jsou veliké bytosti žijící v divočině a většinou samotářsky, výrazně se "
+"Obři jsou veliké bytosti žijící v divočině a většinou samotářsky. Výrazně se "
 "podobají lidem, i když nabývají úctyhodných rozměrů a jsou deformovaní. I "
 "když jsou nemotorní a docela hloupí, jejich síla se nesmí podceňovat."
 
@@ -9037,7 +9035,7 @@ msgstr "+Anglický (VB) překlad"
 #: src/about.cpp:207
 #, fuzzy
 msgid "+Esperanto Translation"
-msgstr "+Německý překlad"
+msgstr "+Překlad do Esperanta"
 
 #: src/about.cpp:211
 msgid "+Estonian Translation"
@@ -10141,7 +10139,6 @@ msgid "Enables user time limit"
 msgstr "Zapíná časový limit hráče"
 
 #: src/multiplayer_create.cpp:109
-#, fuzzy
 msgid "Initial time available to players at start of game"
 msgstr "Čas, který má hráč k dispozici na začátku zápasu"
 
@@ -10254,14 +10251,12 @@ msgid "--no games open--"
 msgstr "<nic rozehraného>"
 
 #: src/multiplayer_lobby.cpp:296 src/multiplayer_lobby.cpp:299
-#, fuzzy
 msgid "Unknown era"
-msgstr "Neznámý scénář: '"
+msgstr "Neznámý věk"
 
 #: src/multiplayer_lobby.cpp:321 src/multiplayer_lobby.cpp:323
-#, fuzzy
 msgid "Unknown scenario"
-msgstr "Neznámý scénář: '"
+msgstr "Neznámý scénář"
 
 #: src/multiplayer_lobby.cpp:332
 #, fuzzy
@@ -10282,7 +10277,6 @@ msgid "Quit"
 msgstr "Konec"
 
 #: src/multiplayer_ui.cpp:79
-#, fuzzy
 msgid "Invalid Color"
 msgstr "Neplatná barva"
 
@@ -10771,9 +10765,8 @@ msgid "TitleScreen button^Preferences"
 msgstr "Nastavení "
 
 #: src/titlescreen.cpp:206
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "O hře"
+msgstr "Pomozte Wesnothu"
 
 #: src/titlescreen.cpp:207
 msgid "About"
@@ -10812,7 +10805,7 @@ msgstr "Změnit nastavení hry"
 
 #: src/titlescreen.cpp:215
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "Pomozte Wesnothu tím, že nám odešlete informace"
 
 #: src/titlescreen.cpp:216
 msgid "View the credits"
@@ -10859,24 +10852,69 @@ msgid "neutral"
 msgstr "neutrální"
 
 #: src/upload_log.cpp:274
+#, fuzzy
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
+"Wesnoth závisí na informacích od dobrovolníků jako Vy, zejména začátečníků a "
+"nových hráčů. Wesnoth zaznamenává souhrny Vašich her: můžete nám pomoci "
+"zlepšit hratelnost povolením k odesílání (anonymnímu) těchto záznamů na "
+"wesnoth.org.\n"
 
+# předpokládám, že to ukáže složku kde jsou nebo tak
 #: src/upload_log.cpp:275
 msgid "You can see the summaries to be sent in "
-msgstr ""
+msgstr "Záznamy k odeslání si můžete prohlédnout v "
 
 #: src/upload_log.cpp:277
 msgid "You can view the results at "
-msgstr ""
+msgstr "Výsledky si můžete prohlédnout na"
 
 #: src/upload_log.cpp:282
 msgid "Help us make Wesnoth better for you!"
-msgstr ""
+msgstr "Pomožte nám vylepšit Wesnoth!"
+
+#~ msgid "leadership,skirmisher"
+#~ msgstr "velení, průbojnost"
+
+#~ msgid ""
+#~ "Long lived and terrifying, the fire dragon is a member of the dragon "
+#~ "family that happens to breathe fire. It can put its fire breath to good "
+#~ "use in combat. Additionally, it has a ferocious bite, and can crush "
+#~ "opponents with its tail. Fire Dragons are cunning and cruel, and often "
+#~ "take underlings whom they help lead to victory."
+#~ msgstr ""
+#~ "Dlouze živ a hrůzostrašný, Ohnivý drak je členem dračí rodiny, která je "
+#~ "schopna chrlit oheň. V bitvě nachází jeho ohnivý dech dobré uplatnění. "
+#~ "Také zuřivě kouše, nebo může rozdrtit nepřátele svým ocasem. Tito draci "
+#~ "jsou mazaní a krutí, pro dosažení svých cílů často využívají poskoky."
+
+#~ msgid "skirmisher,leadership"
+#~ msgstr "průbojnost, vedení"
+
+#~ msgid "Dwarves"
+#~ msgstr "Trpaslíci"
+
+#~ msgid "Saurian"
+#~ msgstr "Ještěrák"
+
+#~ msgid "Canyon"
+#~ msgstr "Kaňon"
+
+#~ msgid "Classic"
+#~ msgstr "Klasický"
+
+#~ msgid ""
+#~ "This map is a convenient way to do some testing with two factions, as it "
+#~ "is pretty well balanced towards both sides.\n"
+#~ "You can use it AI vs AI to see how well a faction fares against another."
+#~ msgstr ""
+#~ "Tato mapa je vhodná pro určité testování se dvěma frakcemi, neboť je "
+#~ "pěkně vyrovnaná na obě dvě strany.\n"
+#~ "Můžete použít pro test AI proti AI a pak sledovat průběh boje."
 
 #~ msgid "3p - 1v1v1Hex"
 #~ msgstr "3p - 1v1v1Hex"
@@ -10916,6 +10954,25 @@ msgstr ""
 #~ "Kdo zůstane Králem vršku? Nejlépe se hraje stylem volnost-pro-všechny "
 #~ "(každý bojuje s každým)."
 
+#~ msgid "4p - The Valley of Death"
+#~ msgstr "4p - Údolí smrti"
+
+#~ msgid ""
+#~ "Can you defeat all enemies and declare victory in this desolate valley?"
+#~ msgstr ""
+#~ "Dokážete porazit všechny nepřátele a vyhlásit vítězství v tomto opuštěném "
+#~ "údolí?"
+
+#~ msgid "7p - Battle World"
+#~ msgstr "7p - Bitevní svět"
+
+#~ msgid ""
+#~ "Up to 7 armies thrash about in this peaceful land. Prepare for a long "
+#~ "battle."
+#~ msgstr ""
+#~ "Až 7 armád se bije v této mírumilovné krajině. Připravte se na dlouhou "
+#~ "bitvu."
+
 #~ msgid "Desert Village"
 #~ msgstr "Pouštní vesnice"
 
@@ -10925,9 +10982,8 @@ msgstr ""
 #~ msgid "Snow Village"
 #~ msgstr "Vesnice pokrytá sněhem"
 
-#, fuzzy
 #~ msgid "Dwarven Village"
-#~ msgstr "Pouštní vesnice"
+#~ msgstr "Trpasličí vesnice"
 
 #~ msgid "Desert Hills"
 #~ msgstr "Pouštní kopce"
@@ -10935,10 +10991,15 @@ msgstr ""
 #~ msgid "Desert Mountains"
 #~ msgstr "Pouštní hory"
 
+#~ msgid "ambush,regenerates"
+#~ msgstr "přepadení, regenerace"
+
 #~ msgid "rapier"
 #~ msgstr "kord"
 
-#, fuzzy
+#~ msgid "illuminates,cures"
+#~ msgstr "osvětluje, uzdravuje"
+
 #~ msgid ""
 #~ "The many paths that a mage can take in study lead to strikingly different "
 #~ "ends. The silver magi have devoted themselves to a study of the forces "
@@ -10962,10 +11023,10 @@ msgstr ""
 #~ "coerce the mage into applying them.\n"
 #~ "\n"
 #~ "Special Notes: the ranged attack of a silver mage is magical, and always "
-#~ "has a high chance of hitting an opponent. Silver Magi are well-attuned to "
-#~ "their magical natures and are highly resistant to non-physical damage. "
-#~ "They can also teleport between any two villages instantly, though the "
-#~ "player must control both, and the destination village must be unoccupied."
+#~ "has a high chance of hitting an opponent. Silver Magi are highly "
+#~ "resistant to many forms of magical damage. They can also teleport between "
+#~ "any two villages instantly, though the player must control both, and the "
+#~ "destination village must be unoccupied."
 #~ msgstr ""
 #~ "Mnoho cest, které si mág může zvolit ke svým studiím, vede k mnoha "
 #~ "rozdílným cílům. Stříbrní mágové zasvětili svá studia silám, které pojí "
@@ -10997,70 +11058,6 @@ msgstr ""
 
 #~ msgid "Connecting to remote host..."
 #~ msgstr "Připojuji se k vzdálenému hostiteli..."
-
-#~ msgid "Dwarves"
-#~ msgstr "Trpaslíci"
-
-#~ msgid "Saurian"
-#~ msgstr "Ještěrák"
-
-#~ msgid "Classic"
-#~ msgstr "Klasický"
-
-#~ msgid "leadership,skirmisher"
-#~ msgstr "velení, průbojnost"
-
-#~ msgid ""
-#~ "Long lived and terrifying, the fire dragon is a member of the dragon "
-#~ "family that happens to breathe fire. It can put its fire breath to good "
-#~ "use in combat. Additionally, it has a ferocious bite, and can crush "
-#~ "opponents with its tail. Fire Dragons are cunning and cruel, and often "
-#~ "take underlings whom they help lead to victory."
-#~ msgstr ""
-#~ "Dlouze živ a hrůzostrašný, Ohnivý drak je členem dračí rodiny, která je "
-#~ "schopna chrlit oheň. V bitvě nachází jeho ohnivý dech dobré uplatnění. "
-#~ "Také zuřivě kouše, nebo může rozdrtit nepřátele svým ocasem. Tito draci "
-#~ "jsou mazaní a krutí, pro dosažení svých cílů často využívají poskoky."
-
-#~ msgid "skirmisher,leadership"
-#~ msgstr "průbojnost, vedení"
-
-#~ msgid "Canyon"
-#~ msgstr "Kaňon"
-
-#~ msgid ""
-#~ "This map is a convenient way to do some testing with two factions, as it "
-#~ "is pretty well balanced towards both sides.\n"
-#~ "You can use it AI vs AI to see how well a faction fares against another."
-#~ msgstr ""
-#~ "Tato mapa je vhodná pro určité testování se dvěma frakcemi, neboť je "
-#~ "pěkně vyrovnaná na obě dvě strany.\n"
-#~ "Můžete použít pro test AI proti AI a pak sledovat průběh boje."
-
-#~ msgid "4p - The Valley of Death"
-#~ msgstr "4p - Údolí smrti"
-
-#~ msgid ""
-#~ "Can you defeat all enemies and declare victory in this desolate valley?"
-#~ msgstr ""
-#~ "Dokážete porazit všechny nepřátele a vyhlásit vítězství v tomto opuštěném "
-#~ "údolí?"
-
-#~ msgid "7p - Battle World"
-#~ msgstr "7p - Bitevní svět"
-
-#~ msgid ""
-#~ "Up to 7 armies thrash about in this peaceful land. Prepare for a long "
-#~ "battle."
-#~ msgstr ""
-#~ "Až 7 armád se bije v této mírumilovné krajině. Připravte se na dlouhou "
-#~ "bitvu."
-
-#~ msgid "ambush,regenerates"
-#~ msgstr "přepadení, regenerace"
-
-#~ msgid "illuminates,cures"
-#~ msgstr "osvětluje, uzdravuje"
 
 #~ msgid ""
 #~ "The video mode could not be changed. Your window manager must be set to "
