@@ -1998,7 +1998,11 @@ surface display::get_flag(gamemap::TERRAIN terrain, int x, int y)
 
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		if(teams_[i].owns_village(loc) && (!fogged(x,y) || !shrouded(x,y) && !teams_[currentTeam_].is_enemy(i+1))) {
-			return image::get_image(flags_[i].get_current_frame());
+			if(image::get_image(flags_[i].get_current_frame())) {
+				return image::get_image(flags_[i].get_current_frame());
+			} else {
+				return image::get_image(flags_[i].get_first_frame());
+			}
 		}
 	}
 
