@@ -756,9 +756,9 @@ bool game_controller::new_campaign()
 		download_campaigns();
 		return new_campaign();
 	}
-
 	const config& campaign = *campaigns[res];
 
+	state_.campaign = campaign["id"];
 	state_.scenario = campaign["first_scenario"];
 
 	const std::string difficulty_descriptions = campaign["difficulty_descriptions"];
@@ -1469,7 +1469,8 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 		// change this if MP campaigns are implemented
 		if(result == VICTORY && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {
 			the_end(disp());
-			about::show_about(disp());
+			printf("got here...%s[[[\n",state_.campaign.c_str());
+			about::show_about(disp(),state_.campaign);
 		}
 	} catch(game::load_game_exception& e) {
 

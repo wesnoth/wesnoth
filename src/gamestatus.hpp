@@ -107,6 +107,7 @@ struct game_state : public variable_set
 
 	std::string campaign_define; //if there is a define the campaign uses to customize data
 
+	std::string campaign; //the campaign being played
 	std::string scenario; //the scenario being played
 
 	// information about campaign players who carry resources from

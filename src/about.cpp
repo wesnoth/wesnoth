@@ -24,7 +24,7 @@ namespace about
 
   config about_list = config();
 
-std::vector<std::string> get_text() {
+std::vector<std::string> get_text(std::string campaign) {
 	static const char *credits[] = {
 		"_" N_("+Core Developers"),
 		"_" N_("-   Main Developer"),
@@ -67,6 +67,35 @@ std::vector<std::string> get_text() {
 	std::vector< std::string > res;
 	size_t len = sizeof(credits) / sizeof(*credits);
 	res.reserve(len);
+
+	const config::child_list& children = about::about_list.get_children("about");
+
+	for(config::child_list::const_iterator cc = children.begin(); cc != children.end(); ++cc) {
+	  //just finished a particular campaign
+	  if((**cc)["id"].size())printf("got here:%s,%s\n",campaign.c_str(),(**cc)["id"].c_str());
+	  if(campaign.size() && campaign == (**cc)["id"]){
+	    std::string title=(**cc)["title"];
+	    if(title.size()){
+	      title = N_("+" + title);
+	      res.push_back(title);
+	    }
+	    std::vector<std::string> lines=utils::split((**cc)["text"],'\n');
+	    for(std::vector<std::string>::iterator line=lines.begin();
+		line != lines.end(); line++){
+	      if((*line)[0] == '+' && (*line).size()>1){
+		*line = N_("+  " + (*line).substr(1,(*line).size()-1));
+	      }else{
+		*line = "-  " + *line;
+	      }
+	      if(line->size()){
+		if ((*line)[0] == '_')
+		  *line = gettext(line->substr(1,line->size()-1).c_str());
+		res.push_back(*line);
+	      }
+	    } 
+	  }
+	}
+
 	for(size_t i = 0; i < len; ++i) {
 		const char *s = credits[i];
 		if (s[0] == '_')
@@ -74,14 +103,13 @@ std::vector<std::string> get_text() {
 		res.push_back(s);
 	}
 
-	const config::child_list& children = about::about_list.get_children("about");
-	for(config::child_list::const_iterator cc = children.begin(); cc != children.end(); ++cc) {
-	  std::string title=(**cc)["title"];
+	for(config::child_list::const_iterator acc = children.begin(); acc != children.end(); ++acc) {
+	  std::string title=(**acc)["title"];
 	  if(title.size()){
 	    title = N_("+" + title);
 	    res.push_back(title);
 	  }
-	  std::vector<std::string> lines=utils::split((**cc)["text"],'\n');
+	  std::vector<std::string> lines=utils::split((**acc)["text"],'\n');
 	  for(std::vector<std::string>::iterator line=lines.begin();
 	      line != lines.end(); line++){
 	    if((*line)[0] == '+' && (*line).size()>1){
@@ -91,7 +119,7 @@ std::vector<std::string> get_text() {
 	    }
 	    if(line->size()){
 	      if ((*line)[0] == '_')
-		*line = gettext(line->substr(1,title.size()-1).c_str());
+		*line = gettext(line->substr(1,line->size()-1).c_str());
 	      res.push_back(*line);
 	    }
 	  } 
@@ -101,6 +129,10 @@ std::vector<std::string> get_text() {
 }
 
 void set_about(const config& cfg){
+  config::child_list about = cfg.get_children("about");
+  for(config::child_list::const_iterator A = about.begin(); A != about.end(); A++) {
+    about_list.add_child("about",(**A));
+  }
   config::child_list campaigns = cfg.get_children("campaign");
   for(config::child_list::const_iterator C = campaigns.begin(); C != campaigns.end(); C++) {
     config::child_list about = (**C).get_children("about");
@@ -110,10 +142,14 @@ void set_about(const config& cfg){
       std::string title;
       title=(**C)["name"];
       temp["title"]=title;
+      temp["id"]=(**C)["id"];
       for(config::child_list::const_iterator A = about.begin(); A != about.end(); A++) {
 	config AA = (**A);
-	//	text+="+   " + AA["title"] +"\n";
-	text+=AA["title"]+"\n";
+	std::string subtitle=AA["title"];
+	if(subtitle.size()){
+	      if (subtitle[0] == '_')
+		subtitle = gettext(subtitle.substr(1,subtitle.size()-1).c_str());	    }
+	text += subtitle + "\n";
 	std::vector<std::string> lines=utils::split(AA["text"],'\n');
 	for(std::vector<std::string>::iterator line=lines.begin();
 		      line != lines.end(); line++){
@@ -124,17 +160,12 @@ void set_about(const config& cfg){
       about_list.add_child("about",temp);
     }
   }
-
-  config::child_list about = cfg.get_children("about");
-  for(config::child_list::const_iterator A = about.begin(); A != about.end(); A++) {
-    about_list.add_child("about",(**A));
-  }
 }
 
-void show_about(display &disp)
+void show_about(display &disp, std::string campaign)
 {
 	CVideo &video = disp.video();
-	std::vector<std::string> text = about::get_text();
+	std::vector<std::string> text = about::get_text(campaign);
 	SDL_Rect rect = {0, 0, video.getx(), video.gety()};
 
 	const surface_restorer restorer(&video, rect);
