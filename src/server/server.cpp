@@ -553,9 +553,9 @@ void server::process_login(const network::connection sock, const config& data, c
 		return;
 	}
 
-	if(username == "server") {
+	if(username == "server" || username == "ai" || username == "human" || username == "network") {
 		network::send_data(construct_error(
-		                   "The nick 'server' is reserved and can not be used by players"),sock);
+		                   "The nick '" + username + "' is reserved and can not be used by players"),sock);
 		return;
 	}
 
