@@ -415,6 +415,7 @@ void server::run()
 				std::cerr << "socket closed: " << e.message << "\n";
 
 				const std::map<network::connection,player>::iterator pl_it = players_.find(e.socket);
+				const std::string pl_name = pl_it != players_.end() ? pl_it->second.name() : "";
 				if(pl_it != players_.end()) {
 					const config::child_list& users = initial_response_.get_children("user");
 					const size_t index = std::find(users.begin(),users.end(),pl_it->second.config_address()) - users.begin();
@@ -433,9 +434,8 @@ void server::run()
 						break;
 					} else {
 						bool observer = i->is_observer(e.socket);
-						const player_map::iterator pl = players_.find(e.socket);
-						if(! observer && pl != players_.end()) {
-							i->send_data(construct_server_message(pl->second.name() + " has disconnected",*i));
+						if(! observer && pl_name != "") {
+							i->send_data(construct_server_message(pl_name + " has disconnected",*i));
 						}
 						i->remove_player(e.socket);
 					}
