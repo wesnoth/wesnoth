@@ -34,6 +34,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 		return i1;
 	}
 
+	std::string::const_iterator i_start=i1;
 	while(i1 != i2) {
 		switch(*i1) {
 		case '\\':
@@ -96,7 +97,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 		    }
 		    red=temp;
 		    temp=0;
-		    if(i1 != i2){
+		    if(i1 != i2 && '>' != (*i1)){
 		      ++i1;
 		      while(i1 != i2 && *i1 >= '0' && *i1<='9'){
 			temp*=10;
@@ -106,7 +107,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 		      green=temp;
 		      temp=0;
 		    }
-		    if(i1 != i2){
+		    if(i1 != i2 && '>' != (*i1)){
 		      ++i1;
 		      while(i1 != i2 && *i1 >= '0' && *i1<='9'){
 			temp*=10;
@@ -115,17 +116,19 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 		      }
 		    }
 		    blue=temp;
-		    SDL_Color temp_color = {red,green,blue,0};
-			(*colour) = temp_color;
+		    if(i1 != i2 && i1+1 != i2 && '>'==(*i1)){
+		      SDL_Color temp_color = {red,green,blue,0};
+		      (*colour) = temp_color;
+		      return i1+1;
+		    }else
+		      return i_start;
 		    break;
 		  }
 		default:
 		  return i1;
 		}
-
 		++i1;
 	}
-
 	return i1;
 }
 
