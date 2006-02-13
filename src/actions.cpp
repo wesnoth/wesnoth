@@ -179,9 +179,9 @@ std::string recruit_unit(const gamemap& map, int side,
 				rc << "\n";
 
 			::write(std::cerr, cfg_unit);
-			// FIXME: this was not playtested, so I will disable it
-			// for release.
-			//if (!game_config::ignore_replay_errors) throw replay::error();
+			//// FIXME: this was not playtested, so I will disable it
+			//// for release.
+			if (!game_config::ignore_replay_errors) throw replay::error();
 		}
 
 	} else {
@@ -695,13 +695,14 @@ void attack(display& gui, const gamemap& map,
 {
 	//stop the user from issuing any commands while the units are fighting
 	const command_disabler disable_commands;
-
+	
 	std::map<gamemap::location,unit>::iterator a = units.find(attacker);
 	std::map<gamemap::location,unit>::iterator d = units.find(defender);
 
 	if(a == units.end() || d == units.end()) {
 		return;
 	}
+	bool OOS_error = false;
 
 	int attackerxp = d->second.type().level();
 	int defenderxp = a->second.type().level();
@@ -753,6 +754,7 @@ void attack(display& gui, const gamemap& map,
 						<< results_chance << "; Calculation: " << stats.chance_to_hit_defender
 						<< " (over-riding game calculations with data source results)\n";
 					stats.chance_to_hit_defender = results_chance;
+					OOS_error = true;
 				}
 				if(hits != results_hits) {
 					ERR_NW << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
@@ -764,6 +766,7 @@ void attack(display& gui, const gamemap& map,
 						<< (ran_num%100) << "/" << results_chance
 						<< " (over-riding game calculations with data source results)\n";
 					hits = results_hits;
+					OOS_error = true;
 				}
 				if(results_damage != damage_defender_takes) {
 					ERR_NW << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
@@ -772,6 +775,7 @@ void attack(display& gui, const gamemap& map,
 						<< damage_defender_takes
 						<< " damage (over-riding game calculations with data source results)\n";
 					damage_defender_takes = results_damage;
+					OOS_error = true;
 				}
 			}
 			
@@ -867,6 +871,7 @@ void attack(display& gui, const gamemap& map,
 						<< (dies ? "perished" : "survived")
 						<< " (over-riding game calculations with data source results)\n";
 					dies = results_dies;
+					OOS_error = true;
 				}
 			}
 
@@ -995,6 +1000,7 @@ void attack(display& gui, const gamemap& map,
 						<< results_chance << "; Calculation: " << stats.chance_to_hit_attacker
 						<< " (over-riding game calculations with data source results)\n";
 					stats.chance_to_hit_attacker = results_chance;
+					OOS_error = true;
 				}
 				if(hits != results_hits) {
 					ERR_NW << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
@@ -1006,6 +1012,7 @@ void attack(display& gui, const gamemap& map,
 						<< results_chance
 						<< " (over-riding game calculations with data source results)\n";
 					hits = results_hits;
+					OOS_error = true;
 				}
 				if(results_damage != damage_attacker_takes) {
 					ERR_NW << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
@@ -1014,6 +1021,7 @@ void attack(display& gui, const gamemap& map,
 						<< damage_attacker_takes
 						<< " damage (over-riding game calculations with data source results)\n";
 					damage_attacker_takes = results_damage;
+					OOS_error = true;
 				}
 			}
 
@@ -1101,6 +1109,7 @@ void attack(display& gui, const gamemap& map,
 						<< (dies ? "perished" : "survived")
 						<< " (over-riding game calculations with data source results)\n";
 					dies = results_dies;
+					OOS_error = true;
 				}
 			}
 
@@ -1228,6 +1237,13 @@ void attack(display& gui, const gamemap& map,
 		gui.invalidate(defender);
 		gui.draw(true,true);
 	}
+	
+	if(OOS_error) {
+		if (!game_config::ignore_replay_errors) {
+			throw replay::error();
+		}
+	}
+	
 }
 
 int village_owner(const gamemap::location& loc, const std::vector<team>& teams)
