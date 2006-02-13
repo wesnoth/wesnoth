@@ -509,7 +509,12 @@ bool ability_filter::matches_filter(const std::string& terrain, int lawful_bonus
 	if (terrain_filter->empty()) {
 		return true;
 	} else {
-		return std::find(terrain_filter->begin(),terrain_filter->end(),terrain) != terrain_filter->end();
+		for (std::string::const_iterator i = terrain.begin(); i != terrain.end(); ++i) {
+			std::string t(1,*i);
+			if (std::find(terrain_filter->begin(),terrain_filter->end(),t) != terrain_filter->end())
+				return true;
+		}
+		return false;
 	}
 }
 
