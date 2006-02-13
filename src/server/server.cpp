@@ -432,6 +432,11 @@ void server::run()
 						e.socket = 0;
 						break;
 					} else {
+						bool observer = i->is_observer(e.socket);
+						const player_map::iterator pl = players_.find(e.socket);
+						if(! observer && pl != players_.end()) {
+							i->send_data(construct_server_message(pl->second.name() + " has disconnected",*i));
+						}
 						i->remove_player(e.socket);
 					}
 				}
