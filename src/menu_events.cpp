@@ -261,7 +261,7 @@ namespace events{
 				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;
 			}
 
-			if(enemy) {
+			if(enemy && viewing_team.uses_fog()) {
 				str << ' ' << COLUMN_SEPARATOR;
 			} else {
 				str << data.gold << COLUMN_SEPARATOR;
