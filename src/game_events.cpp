@@ -480,9 +480,24 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 	}
-
+	//stores of some attributes of a side: gold, income, team name
+	else if(cmd == "store_side") {
+		const std::string& side = cfg["side"];
+		wassert(state_of_game != NULL);
+		std::string var_name = cfg["variable"];
+		var_name = utils::interpolate_variables_into_string(var_name, *state_of_game);
+		const int side_num = lexical_cast_default<int>(side,1);
+		const size_t team_index = side_num-1;
+		if(team_index < teams->size()) {
+			state_of_game->get_variable(var_name+".gold") = lexical_cast_default<std::string>((*teams)[team_index].gold(),"");
+			state_of_game->get_variable(var_name+".income") = lexical_cast_default<std::string>((*teams)[team_index].income(),"");
+			state_of_game->get_variable(var_name+".name") = (*teams)[team_index].name();
+			state_of_game->get_variable(var_name+".team_name") = (*teams)[team_index].team_name();
+		}
+	}
 	//command to store gold into a variable
 	else if(cmd == "store_gold") {
+		WRN_NG << "[store_gold] tag is now deprecated; use [store_side] instead.\n";
 		const std::string& side = cfg["side"];
 		std::string var_name = cfg["variable"];
 		if(var_name.empty()) {
@@ -1193,7 +1208,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			option_chosen = gui::show_dialog(*screen,surface,caption,msg,
 		                        options.empty() ? gui::MESSAGE : gui::OK_ONLY,
 		                        options.empty() ? NULL : &options,
-								NULL, "", NULL, 256, NULL, NULL, -1, map_area.y);
+								NULL, "", NULL, 256, NULL, NULL, -1, map_area.y+4);
 
 			LOG_DP << "showed dialog...\n";
 
