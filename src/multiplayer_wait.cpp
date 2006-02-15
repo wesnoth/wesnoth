@@ -303,6 +303,9 @@ void wait::process_network_data(const config& data, const network::connection so
 {
 	ui::process_network_data(data, sock);
 
+	if(data["message"] != "") {
+		gui::show_dialog(disp(),NULL,_("Response"),data["message"],gui::OK_ONLY);
+	}
 	if(data["failed"] == "yes") {
 		set_result(QUIT);
 		return;
