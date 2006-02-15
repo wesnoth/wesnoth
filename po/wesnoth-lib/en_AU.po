@@ -1,0 +1,728 @@
+# English translations for Battle for Wesnoth package.
+# Copyright (C) 2006 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Automatically generated, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2006-02-10 17:14+0100\n"
+"PO-Revision-Date: 2006-02-10 17:14+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/editor/editor_dialogs.cpp:48
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr "Your modifications to the map will be lost. Continue?"
+
+#: src/editor/editor_dialogs.cpp:75 src/editor/editor_dialogs.cpp:196
+msgid "Create New Map"
+msgstr "Create New Map"
+
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
+#: src/mapgen_dialog.cpp:106
+msgid "Width:"
+msgstr "Width:"
+
+#: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
+#: src/mapgen_dialog.cpp:107
+msgid "Height:"
+msgstr "Height:"
+
+#: src/editor/editor_dialogs.cpp:94
+msgid "Generate New Map"
+msgstr "Generate New Map"
+
+#: src/editor/editor_dialogs.cpp:95
+msgid "Generate Random Map"
+msgstr "Generate Random Map"
+
+#: src/editor/editor_dialogs.cpp:96
+msgid "Random Generator Settings"
+msgstr "Random Generator Settings"
+
+#: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
+#: src/filechooser.cpp:54 src/show_dialog.cpp:430 src/show_dialog.cpp:436
+#: src/show_dialog.cpp:850 src/show_dialog.cpp:940
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/editor/editor_dialogs.cpp:182
+msgid "Map creation failed."
+msgstr "Map creation failed."
+
+#: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
+#: src/preferences_display.cpp:707
+msgid "Close Window"
+msgstr "Close Window"
+
+#: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
+#: src/hotkeys.cpp:73 src/preferences_display.cpp:609
+msgid "Preferences"
+msgstr "Preferences"
+
+#: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:236
+msgid "Scroll Speed:"
+msgstr "Scroll Speed:"
+
+#: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:56
+#: src/preferences_display.cpp:215
+msgid "Toggle Full Screen"
+msgstr "Toggle Full Screen"
+
+#: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:218
+msgid "Show Grid"
+msgstr "Show Grid"
+
+#: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:226
+msgid "Video Mode"
+msgstr "Video Mode"
+
+#: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:228
+msgid "Hotkeys"
+msgstr "Hotkeys"
+
+#: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
+#: src/hotkeys.cpp:104
+msgid "Resize Map"
+msgstr "Resize Map"
+
+#: src/editor/editor_dialogs.cpp:409 src/filechooser.cpp:53
+#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
+msgid "OK"
+msgstr "OK"
+
+#: src/editor/editor_dialogs.cpp:492
+msgid "X-Axis"
+msgstr "X-Axis"
+
+#: src/editor/editor_dialogs.cpp:493
+msgid "Y-Axis"
+msgstr "Y-Axis"
+
+#: src/editor/editor_dialogs.cpp:494
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr "Flip around (this may change the dimensions of the map):"
+
+#: src/hotkeys.cpp:46
+msgid "Next Unit"
+msgstr "Next Unit"
+
+#: src/hotkeys.cpp:47
+msgid "Previous Unit"
+msgstr "Previous Unit"
+
+#: src/hotkeys.cpp:48
+msgid "Hold Position"
+msgstr "Hold Position"
+
+#: src/hotkeys.cpp:49
+msgid "End Unit Turn"
+msgstr "End Unit Turn"
+
+#: src/hotkeys.cpp:50
+msgid "Leader"
+msgstr "Leader"
+
+#: src/hotkeys.cpp:51
+msgid "Undo"
+msgstr "Undo"
+
+#: src/hotkeys.cpp:52
+msgid "Redo"
+msgstr "Redo"
+
+#: src/hotkeys.cpp:53
+msgid "Zoom In"
+msgstr "Zoom In"
+
+#: src/hotkeys.cpp:54
+msgid "Zoom Out"
+msgstr "Zoom Out"
+
+#: src/hotkeys.cpp:55
+msgid "Default Zoom"
+msgstr "Default Zoom"
+
+#: src/hotkeys.cpp:57
+msgid "Screenshot"
+msgstr "Screenshot"
+
+#: src/hotkeys.cpp:58
+msgid "Accelerated"
+msgstr "Accelerated"
+
+#: src/hotkeys.cpp:59
+msgid "Unit Description"
+msgstr "Unit Description"
+
+#: src/hotkeys.cpp:60
+msgid "Rename Unit"
+msgstr "Rename Unit"
+
+#: src/hotkeys.cpp:61
+msgid "Save Game"
+msgstr "Save Game"
+
+#: src/hotkeys.cpp:62
+msgid "Load Game"
+msgstr "Load Game"
+
+#: src/hotkeys.cpp:63
+msgid "Recruit"
+msgstr "Recruit"
+
+#: src/hotkeys.cpp:64
+msgid "Repeat Recruit"
+msgstr "Repeat Recruit"
+
+#: src/hotkeys.cpp:65
+msgid "Recall"
+msgstr "Recall"
+
+#: src/hotkeys.cpp:66
+msgid "End Turn"
+msgstr "End Turn"
+
+#: src/hotkeys.cpp:67
+msgid "Toggle Grid"
+msgstr "Toggle Grid"
+
+#: src/hotkeys.cpp:68
+msgid "Status Table"
+msgstr "Status Table"
+
+#: src/hotkeys.cpp:69
+msgid "Mute"
+msgstr "Mute"
+
+#: src/hotkeys.cpp:70
+msgid "Speak"
+msgstr "Speak"
+
+#: src/hotkeys.cpp:71
+msgid "Create Unit (Debug!)"
+msgstr "Create Unit (Debug!)"
+
+#: src/hotkeys.cpp:72
+msgid "Change Unit Side (Debug!)"
+msgstr "Change Unit Side (Debug!)"
+
+#: src/hotkeys.cpp:74
+msgid "Scenario Objectives"
+msgstr "Scenario Objectives"
+
+#: src/hotkeys.cpp:75
+msgid "Unit List"
+msgstr "Unit List"
+
+#: src/hotkeys.cpp:76
+msgid "Statistics"
+msgstr "Statistics"
+
+#: src/hotkeys.cpp:77
+msgid "Quit Game"
+msgstr "Quit Game"
+
+#: src/hotkeys.cpp:78
+msgid "Set Label"
+msgstr "Set Label"
+
+#: src/hotkeys.cpp:79
+msgid "Clear Labels"
+msgstr "Clear Labels"
+
+#: src/hotkeys.cpp:80
+msgid "Show Enemy Moves"
+msgstr "Show Enemy Moves"
+
+#: src/hotkeys.cpp:81
+msgid "Best Possible Enemy Moves"
+msgstr "Best Possible Enemy Moves"
+
+#: src/hotkeys.cpp:82
+msgid "Play"
+msgstr "Play"
+
+#: src/hotkeys.cpp:83
+msgid "Reset"
+msgstr "Reset"
+
+#: src/hotkeys.cpp:84
+msgid "Stop"
+msgstr "Stop"
+
+#: src/hotkeys.cpp:85
+msgid "Next Turn"
+msgstr "Next Turn"
+
+#: src/hotkeys.cpp:86
+msgid "Next Side"
+msgstr "Next Side"
+
+#: src/hotkeys.cpp:87
+msgid "Shroud"
+msgstr "Shroud"
+
+#: src/hotkeys.cpp:88
+msgid "Fog"
+msgstr "Fog"
+
+#: src/hotkeys.cpp:89
+msgid "Skip animation"
+msgstr "Skip animation"
+
+#: src/hotkeys.cpp:91
+msgid "Set Terrain"
+msgstr "Set Terrain"
+
+#: src/hotkeys.cpp:92
+msgid "Quit Editor"
+msgstr "Quit Editor"
+
+#: src/hotkeys.cpp:93
+msgid "New Map"
+msgstr "New Map"
+
+#: src/hotkeys.cpp:94
+msgid "Load Map"
+msgstr "Load Map"
+
+#: src/hotkeys.cpp:95
+msgid "Save Map"
+msgstr "Save Map"
+
+#: src/hotkeys.cpp:96
+msgid "Save As"
+msgstr "Save As"
+
+#: src/hotkeys.cpp:97
+msgid "Set Player's keep"
+msgstr "Set Player's keep"
+
+#: src/hotkeys.cpp:98
+msgid "Flood Fill"
+msgstr "Flood Fill"
+
+#: src/hotkeys.cpp:99
+msgid "Fill Selection"
+msgstr "Fill Selection"
+
+#: src/hotkeys.cpp:100
+msgid "Cut"
+msgstr "Cut"
+
+#: src/hotkeys.cpp:101
+msgid "Copy"
+msgstr "Copy"
+
+#: src/hotkeys.cpp:102
+msgid "Paste"
+msgstr "Paste"
+
+#: src/hotkeys.cpp:103
+msgid "Revert from Disk"
+msgstr "Revert from Disk"
+
+#: src/hotkeys.cpp:105
+msgid "Flip Map"
+msgstr "Flip Map"
+
+#: src/hotkeys.cpp:106
+msgid "Select All"
+msgstr "Select All"
+
+#: src/hotkeys.cpp:107
+msgid "Draw Terrain"
+msgstr "Draw Terrain"
+
+#: src/hotkeys.cpp:108
+msgid "Refresh Image Cache"
+msgstr "Refresh Image Cache"
+
+#: src/hotkeys.cpp:110
+msgid "Delay Shroud Updates"
+msgstr "Delay Shroud Updates"
+
+#: src/hotkeys.cpp:111
+msgid "Update Shroud Now"
+msgstr "Update Shroud Now"
+
+#: src/hotkeys.cpp:112
+msgid "Continue Move"
+msgstr "Continue Move"
+
+#: src/hotkeys.cpp:113
+msgid "Find Label or Unit"
+msgstr "Find Label or Unit"
+
+#: src/hotkeys.cpp:114
+msgid "Speak to Ally"
+msgstr "Speak to Ally"
+
+#: src/hotkeys.cpp:115
+msgid "Speak to All"
+msgstr "Speak to All"
+
+#: src/hotkeys.cpp:116 src/show_dialog.cpp:577
+msgid "Help"
+msgstr "Help"
+
+#: src/hotkeys.cpp:117
+msgid "View Chat Log"
+msgstr "View Chat Log"
+
+#: src/hotkeys.cpp:118
+msgid "Enter user command"
+msgstr "Enter user command"
+
+#: src/hotkeys.cpp:120
+msgid "Change the language"
+msgstr "Change the language"
+
+#: src/hotkeys.cpp:430 src/hotkeys.cpp:631
+msgid "Do you really want to quit?"
+msgstr "Do you really want to quit?"
+
+#: src/hotkeys.cpp:430 src/hotkeys.cpp:631
+msgid "Quit"
+msgstr "Quit"
+
+#: src/mapgen_dialog.cpp:100
+msgid "Map Generator"
+msgstr "Map Generator"
+
+#: src/mapgen_dialog.cpp:105
+msgid "Players:"
+msgstr "Players:"
+
+#: src/mapgen_dialog.cpp:108
+msgid "Number of Hills:"
+msgstr "Number of Hills:"
+
+#: src/mapgen_dialog.cpp:109
+msgid "Max Hill Size:"
+msgstr "Max Hill Size:"
+
+#: src/mapgen_dialog.cpp:110
+msgid "Villages:"
+msgstr "Villages:"
+
+#: src/mapgen_dialog.cpp:111
+msgid "Landform:"
+msgstr "Landform:"
+
+#: src/mapgen_dialog.cpp:217
+msgid "Roads Between Castles"
+msgstr "Roads Between Castles"
+
+#: src/mapgen_dialog.cpp:274
+msgid "/1000 tiles"
+msgstr "/1000 tiles"
+
+#: src/mapgen_dialog.cpp:279
+msgid "Coastal"
+msgstr "Coastal"
+
+#: src/mapgen_dialog.cpp:279
+msgid "Inland"
+msgstr "Inland"
+
+#: src/mapgen_dialog.cpp:279
+msgid "Island"
+msgstr "Island"
+
+#: src/preferences.cpp:299
+msgid "player"
+msgstr "player"
+
+#: src/preferences_display.cpp:73 src/preferences_display.cpp:105
+msgid ""
+"The video mode could not be changed. Your window manager must be set to 16 "
+"bits per pixel to run the game in windowed mode. Your display must support "
+"1024x768x16 to run the game full screen."
+msgstr ""
+"The video mode could not be changed. Your window manager must be set to 16 "
+"bits per pixel to run the game in windowed mode. Your display must support "
+"1024x768x16 to run the game full screen."
+
+#: src/preferences_display.cpp:216
+msgid "Accelerated Speed"
+msgstr "Accelerated Speed"
+
+#: src/preferences_display.cpp:217
+msgid "Skip AI Moves"
+msgstr "Skip AI Moves"
+
+#: src/preferences_display.cpp:219
+msgid "Show lobby joins"
+msgstr "Show lobby joins"
+
+#: src/preferences_display.cpp:220
+msgid "Show Floating Labels"
+msgstr "Show Floating Labels"
+
+#: src/preferences_display.cpp:221
+msgid "Turn Dialog"
+msgstr "Turn Dialog"
+
+#: src/preferences_display.cpp:222
+msgid "Turn Bell"
+msgstr "Turn Bell"
+
+#: src/preferences_display.cpp:223
+msgid "Show Team Colors"
+msgstr "Show Team Colors"
+
+#: src/preferences_display.cpp:224
+msgid "Show Color Cursors"
+msgstr "Show Color Cursors"
+
+#: src/preferences_display.cpp:225
+msgid "Show Haloing Effects"
+msgstr "Show Haloing Effects"
+
+#: src/preferences_display.cpp:227
+msgid "Theme"
+msgstr "Theme"
+
+#: src/preferences_display.cpp:229
+msgid "Adjust Gamma"
+msgstr "Adjust Gamma"
+
+#: src/preferences_display.cpp:230
+msgid "Reverse Time Graphics"
+msgstr "Reverse Time Graphics"
+
+#: src/preferences_display.cpp:232
+msgid "Sound effects"
+msgstr "Sound effects"
+
+#: src/preferences_display.cpp:233
+msgid "Music"
+msgstr "Music"
+
+#: src/preferences_display.cpp:234
+msgid "Chat Timestamping"
+msgstr "Chat Timestamping"
+
+#: src/preferences_display.cpp:235
+msgid "Music Volume:"
+msgstr "Music Volume:"
+
+#: src/preferences_display.cpp:235
+msgid "SFX Volume:"
+msgstr "SFX Volume:"
+
+#: src/preferences_display.cpp:236
+msgid "Gamma:"
+msgstr "Gamma:"
+
+#: src/preferences_display.cpp:249
+msgid "Sound effects on/off"
+msgstr "Sound effects on/off"
+
+#: src/preferences_display.cpp:253
+msgid "Change the sound effects volume"
+msgstr "Change the sound effects volume"
+
+#: src/preferences_display.cpp:256
+msgid "Music on/off"
+msgstr "Music on/off"
+
+#: src/preferences_display.cpp:260
+msgid "Change the music volume"
+msgstr "Change the music volume"
+
+#: src/preferences_display.cpp:266
+msgid "Change the speed of scrolling around the map"
+msgstr "Change the speed of scrolling around the map"
+
+#: src/preferences_display.cpp:271 src/preferences_display.cpp:273
+msgid "Set the amount of chat lines shown"
+msgstr "Set the amount of chat lines shown"
+
+#: src/preferences_display.cpp:276
+msgid "Add a timestamp to chat messages"
+msgstr "Add a timestamp to chat messages"
+
+#: src/preferences_display.cpp:279 src/preferences_display.cpp:284
+msgid "Change the brightness of the display"
+msgstr "Change the brightness of the display"
+
+#: src/preferences_display.cpp:287
+msgid "Choose whether the game should run full screen or in a window"
+msgstr "Choose whether the game should run full screen or in a window"
+
+#: src/preferences_display.cpp:290
+msgid "Make units move and fight faster"
+msgstr "Make units move and fight faster"
+
+#: src/preferences_display.cpp:293
+msgid "Do not animate AI units moving"
+msgstr "Do not animate AI units moving"
+
+#: src/preferences_display.cpp:296
+msgid "Overlay a grid onto the map"
+msgstr "Overlay a grid onto the map"
+
+#: src/preferences_display.cpp:299
+msgid "Show messages about players joining the multiplayer lobby"
+msgstr "Show messages about players joining the multiplayer lobby"
+
+#: src/preferences_display.cpp:302
+msgid "Show text above a unit when it is hit to display damage inflicted"
+msgstr "Show text above a unit when it is hit to display damage inflicted"
+
+#: src/preferences_display.cpp:304
+msgid "Change the resolution the game runs at"
+msgstr "Change the resolution the game runs at"
+
+#: src/preferences_display.cpp:305
+msgid "Change the theme the game runs with"
+msgstr "Change the theme the game runs with"
+
+#: src/preferences_display.cpp:308
+msgid "Display a dialog at the beginning of your turn"
+msgstr "Display a dialog at the beginning of your turn"
+
+#: src/preferences_display.cpp:311
+msgid "Play a bell sound at the beginning of your turn"
+msgstr "Play a bell sound at the beginning of your turn"
+
+#: src/preferences_display.cpp:314
+msgid ""
+"Show a colored circle around the base of each unit to show which side it is "
+"on"
+msgstr ""
+"Show a colored circle around the base of each unit to show which side it is "
+"on"
+
+#: src/preferences_display.cpp:317
+msgid "Choose whether the sun moves left-to-right or right-to-left"
+msgstr "Choose whether the sun moves left-to-right or right-to-left"
+
+#: src/preferences_display.cpp:320
+msgid "Use colored mouse cursors (may be slower)"
+msgstr "Use colored mouse cursors (may be slower)"
+
+#: src/preferences_display.cpp:323
+msgid "Use graphical special effects (may be slower)"
+msgstr "Use graphical special effects (may be slower)"
+
+#: src/preferences_display.cpp:325
+msgid "View and configure keyboard shortcuts"
+msgstr "View and configure keyboard shortcuts"
+
+#: src/preferences_display.cpp:475
+msgid "Chat Lines: "
+msgstr "Chat Lines: "
+
+#: src/preferences_display.cpp:527
+msgid "yes"
+msgstr "yes"
+
+#: src/preferences_display.cpp:529
+msgid "no"
+msgstr "no"
+
+#: src/preferences_display.cpp:595
+msgid "Prefs section^General"
+msgstr "Prefs section^General"
+
+#: src/preferences_display.cpp:596
+msgid "Prefs section^Display"
+msgstr "Prefs section^Display"
+
+#: src/preferences_display.cpp:597
+msgid "Prefs section^Sound"
+msgstr "Prefs section^Sound"
+
+#: src/preferences_display.cpp:598
+msgid "Prefs section^Multiplayer"
+msgstr "Prefs section^Multiplayer"
+
+#: src/preferences_display.cpp:599
+msgid "Advanced section^Advanced"
+msgstr "Advanced section^Advanced"
+
+#: src/preferences_display.cpp:650
+msgid "There are no alternative video modes available"
+msgstr "There are no alternative video modes available"
+
+#: src/preferences_display.cpp:679
+msgid "Choose Resolution"
+msgstr "Choose Resolution"
+
+#: src/preferences_display.cpp:712
+msgid "Hotkey Settings"
+msgstr "Hotkey Settings"
+
+#: src/preferences_display.cpp:716 src/preferences_display.cpp:769
+msgid "Press desired Hotkey"
+msgstr "Press desired Hotkey"
+
+#: src/preferences_display.cpp:734
+msgid "Action"
+msgstr "Action"
+
+#: src/preferences_display.cpp:734
+msgid "Binding"
+msgstr "Binding"
+
+#: src/preferences_display.cpp:746
+msgid "Change Hotkey"
+msgstr "Change Hotkey"
+
+#: src/preferences_display.cpp:749
+msgid "Save Hotkeys"
+msgstr "Save Hotkeys"
+
+#: src/preferences_display.cpp:796
+msgid "This Hotkey is already in use."
+msgstr "This Hotkey is already in use."
+
+#: src/preferences_display.cpp:829
+msgid "Saved Theme Preference: "
+msgstr "Saved Theme Preference: "
+
+#: src/preferences_display.cpp:835
+msgid "New theme will take effect on next new or loaded game."
+msgstr "New theme will take effect on next new or loaded game."
+
+#: src/preferences_display.cpp:839
+msgid "No known themes.  Try changing from within an existing game."
+msgstr "No known themes.  Try changing from within an existing game."
+
+#: src/show_dialog.cpp:314
+msgid "Error"
+msgstr "Error"
+
+#: src/show_dialog.cpp:422
+msgid "Yes"
+msgstr "Yes"
+
+#: src/show_dialog.cpp:423
+msgid "No"
+msgstr "No"
+
+#: src/show_dialog.cpp:442
+msgid "Close"
+msgstr "Close"
+
+#: src/show_dialog.cpp:873
+msgid "KB"
+msgstr "KB"
+
+#: src/widgets/file_chooser.cpp:37
+msgid "Delete File"
+msgstr "Delete File"
+
+#: src/widgets/file_chooser.cpp:169
+msgid "Deletion of the file failed."
+msgstr "Deletion of the file failed."
