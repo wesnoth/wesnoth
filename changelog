@@ -7,6 +7,8 @@ SVN trunk (1.1.1+svn):
      * rewrote dialogue in Lake Vrug, Evacuation, and The Drowned Plains
      * redid cave maps to take advantage of new terrains
      * redid some outdoor maps to be more interesting
+   * Son of the Black Eye
+     * fixed Gruu not appearing in Siege of Barag Gor (#5156)
  * WML improvements
    * moved much of about into WML as well as enabled campaign [about]
    * added a #undef preprocessor directive
@@ -14,7 +16,7 @@ SVN trunk (1.1.1+svn):
    * added [label] inside [event]
  * language and i18n:
    * new translations: Vietnamese
-   * updated translations: Catalan, Czech, German, Hebrew
+   * updated translations: Catalan, Czech, German, Hebrew, Italian, Turkish
  * miscellaneous
    * reordered macro calls in game.cfg to fix no-AMLA bug for campaigns
    * {abilities.cfg} call moved from utils.cfg to game.cfg for consistency
