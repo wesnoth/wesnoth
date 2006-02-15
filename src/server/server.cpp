@@ -131,6 +131,7 @@ private:
 	std::set<std::string> accepted_versions_;
 	std::map<std::string,config> redirected_versions_;
 	std::map<std::string,config> proxy_versions_;
+	std::vector<std::string> disallowed_names_;
 
 	bool ip_exceeds_connection_limit(const std::string& ip);
 
@@ -150,7 +151,9 @@ server::server(int port, input_stream& input, const config& cfg, size_t nthreads
 	version_query_response_.add_child("version");
 
 	login_response_.add_child("mustlogin");
-
+	
+	disallowed_names_ = utils::split(cfg_["disallow_names"]);
+	
 	const std::string& versions = cfg_["versions_accepted"];
 	if(versions.empty() == false) {
 		const std::vector<std::string> accepted(utils::split(versions));
@@ -553,7 +556,7 @@ void server::process_login(const network::connection sock, const config& data, c
 		return;
 	}
 
-	if(username == "server" || username == "ai" || username == "human" || username == "network") {
+	if(std::find(disallowed_names_.begin(),disallowed_names_.end(),username) != disallowed_names_.end()) {
 		network::send_data(construct_error(
 		                   "The nick '" + username + "' is reserved and can not be used by players"),sock);
 		return;
