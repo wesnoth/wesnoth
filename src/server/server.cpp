@@ -157,9 +157,9 @@ server::server(int port, input_stream& input, const config& cfg, size_t nthreads
 	login_response_.add_child("mustlogin");
 	
 	disallowed_names_ = utils::split(cfg_["disallow_names"]);
-	default_max_messages_ = lexical_cast_default<int>(cfg_["max_messages"]);
-	default_time_period_ = lexical_cast_default<int>(cfg_["messages_time_period"]);
-	concurrent_connections_ = lexical_cast_default<int>(cfg_["connections_allowed"]);
+	default_max_messages_ = lexical_cast_default<int>(cfg_["max_messages"],4);
+	default_time_period_ = lexical_cast_default<int>(cfg_["messages_time_period"],10);
+	concurrent_connections_ = lexical_cast_default<int>(cfg_["connections_allowed"],5);
 	
 	const std::string& versions = cfg_["versions_accepted"];
 	if(versions.empty() == false) {
