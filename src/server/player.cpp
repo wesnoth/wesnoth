@@ -15,7 +15,7 @@
 
 #include "player.hpp"
 
-player::player(const std::string& n, config& cfg) : name_(n), cfg_(cfg), flood_start_(0), messages_since_flood_start_(0)
+player::player(const std::string& n, config& cfg,size_t max_messages,size_t time_period) : name_(n), cfg_(cfg), flood_start_(0), messages_since_flood_start_(0), MaxMessages(max_messages), TimePeriod(time_period)
 {
 	cfg_["name"] = n;
 	mark_available(true,"");
@@ -35,12 +35,6 @@ const std::string& player::name() const
 config* player::config_address()
 {
 	return &cfg_;
-}
-
-namespace
-{
-	const size_t MaxMessages = 4;
-	const size_t TimePeriod = 10;
 }
 
 

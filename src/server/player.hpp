@@ -23,7 +23,7 @@
 class player
 {
 public:
-	player(const std::string& n, config& cfg);
+	player(const std::string& n, config& cfg,size_t max_messages=4,size_t time_period=10);
 
 	void mark_available(bool val,std::string location);
 
@@ -40,6 +40,8 @@ private:
 
 	time_t flood_start_;
 	int messages_since_flood_start_;
+	size_t MaxMessages;
+	size_t TimePeriod;
 };
 
 #endif

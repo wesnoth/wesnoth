@@ -127,7 +127,11 @@ private:
 	metrics metrics_;
 
 	const config& cfg_;
-
+	
+	size_t default_max_messages_;
+	size_t default_time_period_;
+	size_t concurrent_connections_;
+	
 	std::set<std::string> accepted_versions_;
 	std::map<std::string,config> redirected_versions_;
 	std::map<std::string,config> proxy_versions_;
@@ -153,6 +157,9 @@ server::server(int port, input_stream& input, const config& cfg, size_t nthreads
 	login_response_.add_child("mustlogin");
 	
 	disallowed_names_ = utils::split(cfg_["disallow_names"]);
+	default_max_messages_ = lexical_cast_default<int>(cfg_["max_messages"]);
+	default_time_period_ = lexical_cast_default<int>(cfg_["messages_time_period"]);
+	concurrent_connections_ = lexical_cast_default<int>(cfg_["connections_allowed"]);
 	
 	const std::string& versions = cfg_["versions_accepted"];
 	if(versions.empty() == false) {
@@ -185,7 +192,6 @@ server::server(int port, input_stream& input, const config& cfg, size_t nthreads
 
 bool server::ip_exceeds_connection_limit(const std::string& ip)
 {
-	const size_t MaxConnections = 5;
 	size_t connections = 0;
 	for(player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
 		if(network::ip_address(i->first) == ip) {
@@ -193,7 +199,7 @@ bool server::ip_exceeds_connection_limit(const std::string& ip)
 		}
 	}
 
-	return connections > MaxConnections;
+	return connections > concurrent_connections_;
 }
 
 bool server::is_ip_banned(const std::string& ip)
@@ -580,7 +586,7 @@ void server::process_login(const network::connection sock, const config& data, c
 
 	config* const player_cfg = &initial_response_.add_child("user");
 
-	const player new_player(username,*player_cfg);
+	const player new_player(username,*player_cfg,default_max_messages_,default_time_period_);
 
 	players_.insert(std::pair<network::connection,player>(sock,new_player));
 
