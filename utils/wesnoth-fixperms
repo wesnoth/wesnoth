@@ -2,7 +2,7 @@
 
 files = (`find . -maxdepth 1 -name "MANUAL*" -perm -100`).split("\n")
 
-dirs = ["data","images","src"]
+dirs = ["data","images","src","po"]
 
 dirs.each { | dir |
 	dirfiles = (`find #{dir} -perm -100 -a -type f`).split("\n")
