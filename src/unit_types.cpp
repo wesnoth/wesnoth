@@ -961,6 +961,10 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
 		teleport_animations_.push_back(unit_animation(**t));
 	}
+	if(teleport_animations_.empty()) {
+		teleport_animations_.push_back(unit_animation(image(),-20,20));
+		// always have a defensive animation
+	}
 	const config::child_list& extra_anims = cfg_.get_children("extra_anim");
 	{
 		for(config::child_list::const_iterator t = extra_anims.begin(); t != extra_anims.end(); ++t) {
@@ -1420,10 +1424,9 @@ const defensive_animation& unit_type::defend_animation(bool hits, std::string ra
 	return *options[rand()%options.size()];
 }
 
-const unit_animation* unit_type::teleport_animation( ) const
+const unit_animation& unit_type::teleport_animation( ) const
 {
-	if (teleport_animations_.empty()) return NULL;
-	return &teleport_animations_[rand() % teleport_animations_.size()];
+	return teleport_animations_[rand() % teleport_animations_.size()];
 }
 
 const unit_animation* unit_type::extra_animation(std::string flag ) const

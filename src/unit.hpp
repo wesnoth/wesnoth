@@ -25,6 +25,7 @@
 #include <vector>
 
 class unit;
+class display;
 
 typedef std::map<gamemap::location,unit> unit_map;
 
@@ -33,11 +34,13 @@ class unit
 public:
 	friend struct unit_movement_resetter;
 
+	unit(const unit& u) { *this=u ; unit_halo_ = 0; }
 	unit(const game_data& data, const config& cfg);
 	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE);
 
 	//a constructor used when advancing a unit
 	unit(const unit_type* t, const unit& u);
+	virtual ~unit();
 	const unit_type& type() const;
 	std::string name() const;
 	const std::string& description() const;
@@ -135,8 +138,9 @@ public:
 
 	//gets the unit image that should currently be displayed
 	//(could be in the middle of an attack etc)
-	const std::string& image() const;
+	const std::string& absolute_image() const {return type_->image();}
 	const image::locator image_loc() const;
+	void refresh_unit(display& disp,const int& x,const int& y,const double& submerge);
 
 	void set_standing();
 	void set_defending(bool hits, std::string range, int start_frame, int acceleration);
@@ -183,15 +187,17 @@ public:
 	// MOVED if moved and then pressed "end turn"
 	// NOT_MOVED if not moved and pressed "end turn"
 	enum MOVES { ATTACKED=-1, MOVED=-2, NOT_MOVED=-3 };
+	enum STATE { STATE_NORMAL, STATE_ATTACKING, STATE_DEFENDING,
+		STATE_LEADING, STATE_HEALING, STATE_WALKING};
+	STATE state() const {return state_;}
 private:
+	const std::string& image() const;
 	unit_race::GENDER generate_gender(const unit_type& type, bool use_genders);
 	unit_race::GENDER gender_;
 	std::string variation_;
 
 	const unit_type* type_;
 
-	enum STATE { STATE_NORMAL, STATE_ATTACKING, STATE_DEFENDING,
-		STATE_LEADING, STATE_HEALING, STATE_WALKING};
 	STATE state_;
 	const attack_type* attackType_;
 	int attackingMilliseconds_;
@@ -254,6 +260,9 @@ private:
 	void remove_temporary_modifications();
 	void generate_traits();
 	void generate_traits_description();
+	int unit_halo_;
+	int unit_anim_halo_;
+		
 };
 
 //object which temporarily resets a unit's movement

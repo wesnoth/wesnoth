@@ -33,7 +33,7 @@
 namespace
 {
 
-void move_unit_between(display& disp, const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& u)
+void teleport_unit_between(display& disp, const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& u)
 {
 	if(disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)) {
 		return;
@@ -57,8 +57,6 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 	LOG_DP << "submerge: " << src_submerge << " -> " << dst_submerge << "\n";
 
-	const gamemap::TERRAIN terrain = map.get_terrain(b);
-
 	const int acceleration = disp.turbo() ? 5:1;
 
 	gamemap::location src_adjacent[6];
@@ -73,10 +71,9 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		halo_effect.assign(halo::add(0,0,halo));
 	}
 
-	const unit_animation *teleport_animation_p = u.type().teleport_animation();
-	bool teleport_unit = teleport_animation_p && !tiles_adjacent(a, b);
-	if (teleport_unit && !disp.fogged(a.x, a.y)) { // teleport
-		unit_animation teleport_animation =  *teleport_animation_p;
+	const unit_animation &teleport_animation_p = u.type().teleport_animation();
+	if (!disp.fogged(a.x, a.y)) { // teleport
+		unit_animation teleport_animation =  teleport_animation_p;
 		int animation_time;
 		const int begin_at = teleport_animation.get_first_frame_time();
 		teleport_animation.start_animation(begin_at,1,  acceleration);
@@ -99,57 +96,20 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			for(int tile = 0; tile != 6; ++tile) {
 				disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
 			}
-			disp.draw_unit(xsrc,ysrc,image,false, ftofxp(1.0), 0, 0.0, src_submerge);
+			disp.draw_unit(xsrc,ysrc - src_height_adjust,image,false, ftofxp(1.0), 0, 0.0, src_submerge);
 			disp.update_display();
 			events::pump();
 			teleport_animation.update_current_frame();
 			animation_time = teleport_animation.get_animation_time();
 		}
-	}
-
-	const int total_mvt_time = 150 * u.movement_cost(map,terrain)/acceleration;
-	const unsigned int start_time = SDL_GetTicks();
-	int mvt_time = SDL_GetTicks() -start_time;
-	while(mvt_time < total_mvt_time) {
-		u.set_walking(map.underlying_mvt_terrain(src_terrain),a.get_relative_dir(b),acceleration);
-		surface image(image::get_image(u.image_loc()));
-		if (!face_left) {
-			image.assign(image::reverse_image(image));
-		}
-		const int xloc = xsrc + int(double(xdst-xsrc)*(double(mvt_time)/total_mvt_time));
-		const int yloc = ysrc + int(double(ydst-ysrc)*(double(mvt_time)/total_mvt_time));
-		disp.scroll_to_tile(b.x,b.y,display::ONSCREEN);
-		disp.draw_tile(a.x, a.y);
-		for(int tile = 0; tile != 6; ++tile) {
-			disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
-			disp.draw_tile(dst_adjacent[tile].x, dst_adjacent[tile].y);
-		}
-
-		if (!teleport_unit) {
-			const int height_adjust = src_height_adjust + int(double(dst_height_adjust - src_height_adjust) * (double(mvt_time) / total_mvt_time));
-			const double submerge = src_submerge + int(double(dst_submerge - src_submerge) * (double(mvt_time) / total_mvt_time));
-			const int xpos = xloc;
-			const int ypos = yloc - height_adjust;
-			disp.draw_unit(xpos, ypos, image, false, ftofxp(1.0), 0, 0.0, submerge);
-
-			if (halo_effect != 0) {
-				int d = disp.hex_size() / 2;
-				halo::set_location(halo_effect, xpos + d, ypos + d);
-			}
-		}
-
+		disp.draw_tile(a.x,a.y);
 		disp.update_display();
 		events::pump();
-
-
-
-		mvt_time = SDL_GetTicks() -start_time;
+		teleport_animation.update_current_frame();
 	}
 
-
-
-	if (teleport_unit && !disp.fogged(b.x, b.y)) { // teleport
-		unit_animation teleport_animation =  *teleport_animation_p;
+	if (!disp.fogged(b.x, b.y)) { // teleport
+		unit_animation teleport_animation =  teleport_animation_p;
 		int animation_time;
 		const int end_at = teleport_animation.get_last_frame_time();
 		teleport_animation.start_animation(0,1, acceleration);
@@ -173,12 +133,67 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			for(int tile = 0; tile != 6; ++tile) {
 				disp.draw_tile(dst_adjacent[tile].x,dst_adjacent[tile].y);
 			}
-			disp.draw_unit(xdst, ydst, image, false, ftofxp(1.0), 0, 0.0, dst_submerge);
+			disp.draw_unit(xdst, ydst - dst_height_adjust, image, false, ftofxp(1.0), 0, 0.0, dst_submerge);
 			disp.update_display();
 			events::pump();
 			teleport_animation.update_current_frame();
 			animation_time = teleport_animation.get_animation_time();
 		}
+	}
+}
+
+
+
+void move_unit_between(display& disp, const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& u)
+{
+	if(disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)) {
+		return;
+	}
+
+	const int xsrc = disp.get_location_x(a);
+	const int ysrc = disp.get_location_y(a);
+	const int xdst = disp.get_location_x(b);
+	const int ydst = disp.get_location_y(b);
+
+	const gamemap::TERRAIN src_terrain = map.get_terrain(a);
+	const gamemap::TERRAIN dst_terrain = map.get_terrain(b);
+
+	const int src_height_adjust = u.is_flying() ? 0 : int(map.get_terrain_info(src_terrain).unit_height_adjust() * disp.zoom());
+	const int dst_height_adjust = u.is_flying() ? 0 : int(map.get_terrain_info(dst_terrain).unit_height_adjust() * disp.zoom());
+
+	const double src_submerge = u.is_flying() ? 0.0 : map.get_terrain_info(src_terrain).unit_submerge();
+	const double dst_submerge = u.is_flying() ? 0.0 : map.get_terrain_info(dst_terrain).unit_submerge();
+
+	LOG_DP << "submerge: " << src_submerge << " -> " << dst_submerge << "\n";
+
+	const int acceleration = disp.turbo() ? 5:1;
+
+	gamemap::location src_adjacent[6];
+	get_adjacent_tiles(a, src_adjacent);
+
+	gamemap::location dst_adjacent[6];
+	get_adjacent_tiles(b, dst_adjacent);
+
+	const std::string& halo = u.type().image_halo();
+	util::scoped_resource<int,halo::remover> halo_effect(0);
+	if(halo.empty() == false && !disp.fogged(b.x,b.y)) {
+		halo_effect.assign(halo::add(0,0,halo));
+	}
+
+	const int total_mvt_time = 150 * u.movement_cost(map,dst_terrain)/acceleration;
+	const unsigned int start_time = SDL_GetTicks();
+	int mvt_time = SDL_GetTicks() -start_time;
+	disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
+	while(mvt_time < total_mvt_time) {
+		u.set_walking(map.underlying_mvt_terrain(src_terrain),a.get_relative_dir(b),acceleration);
+
+		const int height_adjust = src_height_adjust + int(double(dst_height_adjust - src_height_adjust) * (double(mvt_time) / total_mvt_time));
+		const double submerge = src_submerge + int(double(dst_submerge - src_submerge) * (double(mvt_time) / total_mvt_time));
+		const int xloc = xsrc + int(double(xdst-xsrc)*(double(mvt_time)/total_mvt_time));
+		const int yloc = ysrc + int(double(ydst-ysrc)*(double(mvt_time)/total_mvt_time)) - height_adjust;
+		u.refresh_unit(disp,xloc,yloc,submerge);
+
+		mvt_time = SDL_GetTicks() -start_time;
 	}
 }
 
@@ -224,7 +239,11 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 		}
 
 		if(!invisible) {
-			move_unit_between(disp,map,path[i],path[i+1],u);
+			if( !tiles_adjacent(path[i], path[i+1])) {
+				teleport_unit_between(disp,map,path[i],path[i+1],u);
+			} else {
+				move_unit_between(disp,map,path[i],path[i+1],u);
+			}
 			previous_visible = true;
 		} else if(previous_visible) {
 			disp.draw_tile(path[i].x,path[i].y);
@@ -757,10 +776,13 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		int new_halo_x = unit_frame.halo_x;
 		int new_halo_y = unit_frame.halo_y;
 
-		const std::string& unit_image_name = unit_frame.image.empty() ? attacker.image() : unit_frame.image;
-
-		image::locator unit_image(unit_image_name,attacker.team_rgb_range(),attacker.type().flag_rgb());
-
+		const std::string& unit_image_name = unit_frame.image ;
+		image::locator unit_image;
+		if(!unit_image_name.empty()) {
+			unit_image = image::locator(unit_image_name,attacker.team_rgb_range(),attacker.type().flag_rgb());
+		} else {
+			unit_image = attacker.image_loc();
+		}
 		if(!attacker.facing_left()) {
 			xoffset *= -1;
 			new_halo_x *= -1;

@@ -1533,7 +1533,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 					anim.update_current_frame();
 				}
-				unit_image = image::get_image(u->second.image());
+				unit_image = image::get_image(u->second.image_loc());
 				screen->draw_tile(u->first.x,u->first.y,unit_image);
 				screen->update_display();
 			}

@@ -243,7 +243,7 @@ public:
 	const std::string& race() const;
 
 	const defensive_animation& defend_animation(bool hits, std::string range) const;
-	const unit_animation* teleport_animation() const;
+	const unit_animation& teleport_animation() const;
 	const unit_animation* extra_animation(std::string flag) const;
 	const death_animation& die_animation(const attack_type* attack) const;
 	const movement_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;

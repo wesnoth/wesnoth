@@ -71,6 +71,9 @@ public:
 	const T& get_first_frame() const;
 	const T& get_last_frame() const;
 
+
+	static void synchronize_start(animated<T> &a, animated<T>& b,int acceleration);
+
 private:
 	struct frame
 	{

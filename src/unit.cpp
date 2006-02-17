@@ -25,6 +25,8 @@
 #include "util.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
+#include "halo.hpp"
+#include "display.hpp"
 
 //DEBUG
 #include <iostream>
@@ -69,9 +71,12 @@ unit::unit(const game_data& data, const config& cfg) :
 	state_(STATE_NORMAL),
 	moves_(0), user_end_turn_(false), facingLeft_(true),
 	resting_(false), hold_position_(false), recruit_(false),
-	guardian_(false), upkeep_(UPKEEP_FREE),anim_(NULL)
+	guardian_(false), upkeep_(UPKEEP_FREE),anim_(NULL),
+	unit_halo_(0),unit_anim_halo_(0)
 {
 	read(data,cfg);
+				
+	
 }
 
 unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
@@ -83,7 +88,6 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 		return unit_race::MALE;
 	}
 }
-
 //constructor for creating a new unit
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
                gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
@@ -101,7 +105,8 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	       attacks_(type_->attacks()),
 	       backupAttacks_(type_->attacks()),
                guardian_(false), upkeep_(UPKEEP_FULL_PRICE),
-               unrenamable_(false),anim_(NULL)
+               unrenamable_(false),anim_(NULL),unit_halo_(0),
+	       unit_anim_halo_(0)
 {
 	//dummy units used by the 'move_unit_fake' command don't need to have a side.
 	if(dummy_unit == false) validate_side(side_);
@@ -142,7 +147,8 @@ unit::unit(const unit_type* t, const unit& u) :
 	modifications_(u.modifications_),
 	traitsDescription_(u.traitsDescription_),
 	guardian_(false), upkeep_(u.upkeep_),
-	unrenamable_(u.unrenamable_),anim_(NULL)
+	unrenamable_(u.unrenamable_),anim_(NULL),unit_halo_(0),
+	unit_anim_halo_(0)
 {
 	validate_side(side_);
 
@@ -154,6 +160,12 @@ unit::unit(const unit_type* t, const unit& u) :
 	statusFlags_.clear();
 }
 
+unit::~unit()
+{
+	if(unit_halo_) {
+		halo::remove(unit_halo_);
+	}
+}
 void unit::generate_traits()
 {
 	if(!traitsDescription_.empty())
@@ -1043,6 +1055,7 @@ void unit::set_standing()
 
 void unit::set_defending(bool hits, std::string range, int start_frame, int acceleration)
 {
+	update_frame();
 	state_ =  STATE_DEFENDING;
 	if(anim_) {
 		delete anim_;
@@ -1050,6 +1063,7 @@ void unit::set_defending(bool hits, std::string range, int start_frame, int acce
 	}
 	anim_ =  new defensive_animation(type_->defend_animation(hits,range));
 	anim_->start_animation(start_frame,1,acceleration);
+	anim_->update_current_frame();
 }
 
 void unit::update_frame()
@@ -1494,6 +1508,37 @@ bool unit::is_flying() const
 {
 	return type().movement_type().is_flying();
 }
+
+void unit::refresh_unit(display& disp,const int& x, const int& y, const double& submerge)
+{
+		gamemap::location hex = disp.hex_clicked_on(x+disp.hex_size()/2,y+disp.hex_size()/2);
+		gamemap::location adjacent[6];
+		get_adjacent_tiles(hex, adjacent);
+		
+		surface image(image::get_image(image_loc()));
+		if (!facing_left()) {
+			image.assign(image::reverse_image(image));
+		}
+		disp.draw_tile(hex.x, hex.y);
+		for(int tile = 0; tile != 6; ++tile) {
+			disp.draw_tile(adjacent[tile].x, adjacent[tile].y);
+		}
+		disp.draw_unit(x, y, image, false, ftofxp(1.0), 0, 0.0, submerge);
+		if(!unit_halo_ && !type().image_halo().empty()) {
+			unit_halo_ = halo::add(0,0,type().image_halo());
+		}
+		if(unit_halo_) {
+			int d = disp.hex_size() / 2;
+			halo::set_location(unit_halo_, x+ d, y+ d);
+		}
+
+
+
+		disp.update_display();
+		events::pump();
+}
+
+
 
 int team_units(const unit_map& units, unsigned int side)
 {
