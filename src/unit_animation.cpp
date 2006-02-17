@@ -93,6 +93,8 @@ int defensive_animation::matches(bool h, std::string r) const
 	if(hits != HIT_OR_MISS ) {
 		if(h && (hits == HIT)) {
 			result++;
+		} else if(!h && (hits == MISS)) {
+			result++;
 		} else {
 			return -1;
 		}

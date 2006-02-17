@@ -159,13 +159,13 @@ bool attack_type::slow() const
 	return slow_;
 }
 
-const std::pair<const unit_animation*,const unit_animation*> attack_type::animation(const gamemap::location::DIRECTION dir) const
+const std::pair<const unit_animation*,const unit_animation*> attack_type::animation(bool hit,const gamemap::location::DIRECTION dir) const
 {
 	//select one of the matching animations at random
 	std::vector<std::pair<const unit_animation*,const unit_animation*> > options;
 	int max_val = -1;
 	for(std::vector<attack_animation>::const_iterator i = animation_.begin(); i != animation_.end(); ++i) {
-		int matching = i->matches(dir);
+		int matching = i->matches(hit,dir);
 		if(matching == max_val) {
 			options.push_back(std::pair<const unit_animation*,const unit_animation*>(&i->animation,&i->missile_animation));
 		} else if(matching > max_val) {
@@ -178,7 +178,7 @@ const std::pair<const unit_animation*,const unit_animation*> attack_type::animat
 	assert(!options.empty());
 	return options[rand()%options.size()];
 }
-attack_type::attack_animation::attack_animation(const config& cfg):animation(cfg),missile_animation(cfg,"missile_frame")
+attack_type::attack_animation::attack_animation(const config& cfg):animation(cfg),missile_animation(cfg,"missile_frame"),hits(HIT_OR_MISS)
 {
 	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
 	for(std::vector<std::string>::const_iterator i = my_directions.begin(); i != my_directions.end(); ++i) {
@@ -189,9 +189,13 @@ attack_type::attack_animation::attack_animation(const config& cfg):animation(cfg
 		// create animation ourself
 		missile_animation = unit_animation(game_config::missile_n_image,-100,0,game_config::missile_ne_image);
 	}
+	const std::string& hits_str = cfg["hits"];
+	if(hits_str.empty() == false) {
+		hits = (hits_str == "yes") ? HIT : MISS;
+	}
 	assert(missile_animation.get_first_frame_time() != 0 || missile_animation.get_last_frame_time() != 0);
 }
-int attack_type::attack_animation::matches(gamemap::location::DIRECTION dir) const
+int attack_type::attack_animation::matches(bool hit,gamemap::location::DIRECTION dir) const
 {
 	int result = 0;
 
@@ -200,6 +204,15 @@ int attack_type::attack_animation::matches(gamemap::location::DIRECTION dir) con
 			return -1;
 		} else {
 			result ++;
+		}
+	}
+	if(hits != HIT_OR_MISS ) {
+		if(hit && (hits == HIT)) {
+			result++;
+		} else if(!hit && (hits == MISS)) {
+			result++;
+		} else {
+			return -1;
 		}
 	}
 

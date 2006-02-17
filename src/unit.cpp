@@ -1020,7 +1020,7 @@ const std::string& unit::image() const
 			if(attackType_ == NULL)
 				return type_->image();
 
-			const std::string& img = attackType_->animation().first->get_current_frame().image;
+			const std::string& img = attackType_->animation(true).first->get_current_frame().image;
 			if (img.empty())
 				return type_->image_fighting(attackType_->range_type());
 			else

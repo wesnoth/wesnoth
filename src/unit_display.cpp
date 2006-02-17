@@ -331,7 +331,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		leader->second.set_leading();
 	}
 
-	const std::pair<const unit_animation*,const unit_animation*> tmp_pair = attack.animation(get_adjacent_direction(a,b)) ;
+	const bool hits = damage > 0;
+	const std::pair<const unit_animation*,const unit_animation*> tmp_pair = attack.animation(hits,get_adjacent_direction(a,b)) ;
 	unit_animation attack_anim = *tmp_pair.first;
 	unit_animation missile_anim = *tmp_pair.second;
 
@@ -353,7 +354,6 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	bool played_hit_sound = (hit_sound == "" || hit_sound == "null");
 	const int play_hit_sound_at = 0;
 
-	const bool hits = damage > 0;
 	const int begin_at = attack_anim.get_first_frame_time();
 	// more damage shown for longer, but 1s at most for this factor
 	const int end_at = maximum<int>(minimum<int>((damage+1)*time_resolution+missile_impact, 1000),
@@ -653,9 +653,9 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		return unit_attack_ranged(disp, units, a, b, damage, attack);
 	}
 
-	unit_animation attack_anim = *attack.animation(get_adjacent_direction(a,b)).first;
-
 	const bool hits = damage > 0;
+	unit_animation attack_anim = *attack.animation(hits,get_adjacent_direction(a,b)).first;
+
 	const std::vector<unit_animation::sfx>& sounds = attack_anim.sound_effects();
 	std::vector<unit_animation::sfx>::const_iterator sfx_it = sounds.begin();
 
