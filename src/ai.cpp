@@ -832,7 +832,10 @@ void ai::do_move()
 		int closest_distance = -1;
 		std::pair<location,location> closest_move;
 		for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
-			const int distance = distance_between(ui->first,ui->second.get_goto());
+			if(i->second != ui->first) {
+				continue;
+			}
+			const int distance = distance_between(i->first,ui->second.get_goto());
 			if(closest_distance == -1 || distance < closest_distance) {
 				closest_distance = distance;
 				closest_move = *i;
