@@ -12,24 +12,28 @@ SVN trunk (1.1.1+svn):
      * redid some outdoor maps to be more interesting
    * Son of the Black Eye
      * fixed Gruu not appearing in Siege of Barag Gor (#5156)
+ * graphics
+   * new attack icons: animal fangs, axe, baneblade, battle axe, claws-animal,
+     faery touch, fireball, fist-troll, fist-skeletal, hammer, hatchet, 
+     lightbeam, lightning, magic missile, necromatic staff, magic staff, spear
+ * language and i18n:
+   * new translations: Vietnamese
+   * updated translations: Catalan, Czech, German, Hebrew, Italian, Polish, 
+     Portuguese (Brazil), Turkish
+   * updated man pages: Swedish
+ * multiplayer maps:
+   * revised multiplayer maps: Blitz, Cynsaun Battlefield, Den of Onis,
+     Divide and Conquer, Hamlets, Hornshark Island, Meteor Lake, Silverhead 
+     Crossing, The Wilderlands, Triple Blitz
  * WML improvements
    * moved much of about into WML as well as enabled campaign [about]
    * added a #undef preprocessor directive
    * added 'profile' key to [unit] variables
    * added [label] inside [event]
    * attack animations can now be filtered on hit an miss
- * language and i18n:
-   * new translations: Vietnamese
-   * updated translations: Catalan, Czech, German, Hebrew, Italian,
-     Portuguese (Brazil), Turkish
-   * updated man pages: Swedish
- * multiplayer maps:
-   * revised multiplayer maps: Blitz, Cynsaun Battlefield, Den of Onis,
-     Divide and Conquer, Hamlets, Hornshark Island, Meteor Lake, Silverhead Crossing,
-     The Wilderlands, Triple Blitz
  * miscellaneous
    * added a --load FILE command-line option, where FILE is a saved game
-	in the standard save game directory.
+     in the standard save game directory.
    * reordered macro calls in game.cfg to fix no-AMLA bug for campaigns
    * {abilities.cfg} call moved from utils.cfg to game.cfg for consistency
    * Send message on player ban or kick
@@ -37,10 +41,6 @@ SVN trunk (1.1.1+svn):
    * WML-generated units with "random_traits" now show the traits description
    * flags on village don't "flicker" at the end of their animations
    * really fix bug 3388, now really centering on image when clicking it
- * graphics
-   * new attack icons: animal fangs, axe, baneblade, battle axe, claws-animal,
-     faery touch, fireball, fist-troll, fist-skeletal, hammer, hatchet, lightbeam,
-     lightning, magic missile, necromatic staff, magic staff, spear
    
 Version 1.1.1:
  * campaigns
