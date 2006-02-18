@@ -1474,7 +1474,6 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 		// change this if MP campaigns are implemented
 		if(result == VICTORY && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {
 			the_end(disp());
-			printf("got here...%s[[[\n",state_.campaign.c_str());
 			about::show_about(disp(),state_.campaign);
 		}
 	} catch(game::load_game_exception& e) {

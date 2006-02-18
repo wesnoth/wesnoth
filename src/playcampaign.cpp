@@ -148,6 +148,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			LOG_G << "loading scenario: '" << state.scenario << "'\n";
 			scenario = game_config.find_child(type,"id",state.scenario);
 			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
+			config snapshot;
+			recorder.save_game("Campaign Start", snapshot, state.starting_pos);
 		}
 	} else {
 		LOG_G << "loading snapshot...\n";
