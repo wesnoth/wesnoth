@@ -181,6 +181,11 @@ game_controller::game_controller(int argc, char** argv)
 				++arg_;
 				force_bpp_ = lexical_cast_default<int>(argv_[arg_],-1);
 			}
+		} else if(val == "--load") {
+			if(arg_+1 != argc_) {
+				++arg_;
+				loaded_game_ = argv_[arg_];
+			}
 		} else if(val == "--nogui") {
 			no_gui_ = true;
 		} else if(val == "--windowed" || val == "-w") {
@@ -1517,6 +1522,7 @@ int play_game(int argc, char** argv)
 			<< "  -h, --help        Prints this message and exits\n"
 			<< "  --path            Prints the name of the game data directory and exits\n"
 			<< "  -t, --test        Runs the game in a small example scenario\n"
+			<< "  --load FILE       Runs the game, loading FILE\n"
 			<< "  -w, --windowed    Runs the game in windowed mode\n"
 			<< "  -v, --version     Prints the game's version number and exits\n"
 			<< "  --log-error=\"domain1,domain2,...\", --log-warning=..., --log-info=...\n"
