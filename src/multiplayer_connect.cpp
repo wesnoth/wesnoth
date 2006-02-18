@@ -945,10 +945,15 @@ void connect::lists_init()
 	for(sd = sides.first; sd != sides.second; ++sd, ++index) {
 		sides_.push_back(side(*this, **sd, index));
 	}
+	int offset=0;
 	// This function must be called after the sides_ vector is fully populated.
 	for(side_list::iterator s = sides_.begin(); s != sides_.end(); ++s) {
 		const int side_num = s - sides_.begin();
-		const int spos = 60 * side_num;
+		const int spos = 60 * (side_num-offset);
+		if(s->get_config()["allow_player"] == "no") {
+			offset++;
+			continue;
+		}
 
 		s->add_widgets_to_scrollpane(scroll_pane_, spos);
 	}

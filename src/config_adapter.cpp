@@ -135,7 +135,7 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 		const std::string& x = (**su)["x"];
 		const std::string& y = (**su)["y"];
 
-		const gamemap::location loc(**su);
+		gamemap::location loc(**su);
 		if(x.empty() && y.empty()) {
 			if(player) {
 				player->available_units.push_back(new_unit);

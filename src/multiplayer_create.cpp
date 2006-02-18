@@ -380,11 +380,6 @@ void create::process_event()
 			side["controller"] = "human";
 		}
 
-		//if there are too many sides, remove some
-		while(int(parameters_.scenario_data.get_children("side").size()) > map_positions) {
-			 parameters_.scenario_data.remove_child("side",
-					  parameters_.scenario_data.get_children("side").size()-1);
-		}
 
 		if(map.get() != NULL) {
 			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,*map,0));
@@ -395,7 +390,14 @@ void create::process_event()
 			}
 		}
 
-		const int nsides = parameters_.scenario_data.get_children("side").size();
+		int nsides = parameters_.scenario_data.get_children("side").size();
+		const config::child_list& player_sides = parameters_.scenario_data.get_children("side");
+		for(config::child_list::const_iterator k = player_sides.begin(); k != player_sides.end(); ++k) {
+			if((**k)["allow_player"] == "no") {
+				nsides--;
+			}
+		}
+		
 		std::stringstream players;
 		if(map.get() != NULL) {
 			players << _("Players: ") << nsides;
