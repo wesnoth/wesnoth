@@ -589,8 +589,6 @@ void combatant::fight(combatant &opp)
 				  slows_ && !opp.slowed_, opp.slows_ && !slowed_, hp_, opp.hp_,
 				  summary, opp.summary);
 
-	untouched = 1.0;
-	opp.untouched = 1.0;
 	unsigned max_attacks = maximum(hit_chances_.size(),
 								   opp.hit_chances_.size());
 
@@ -604,14 +602,12 @@ void combatant::fight(combatant &opp)
 				m.receive_blow_b(damage_, hit_chances_[i],
 								 slows_ && !opp.slowed_, drains_);
 				m.dump();
-				opp.untouched *= (1 - hit_chances_[i]);
 			}
 			if (i < opp.hit_chances_.size()) {
 				debug(("B strikes\n"));
 				m.receive_blow_a(opp.damage_, opp.hit_chances_[i],
 								 opp.slows_ && !slowed_, opp.drains_);
 				m.dump();
-				untouched *= (1 - opp.hit_chances_[i]);
 			}
 		}
 
@@ -634,6 +630,10 @@ void combatant::fight(combatant &opp)
 		for (i = 0; i < opp.hp_dist.size(); i++)
 			opp.hp_dist[i] = opp.summary[0][i] + opp.summary[1][i];
 	}
+
+	// FIXME: This is approximate: we could drain, then get hit.
+	untouched = hp_dist[hp_];
+	opp.untouched = opp.hp_dist[opp.hp_];
 }
 };
 
@@ -706,17 +706,14 @@ static void run(unsigned specific_battle)
 				if (i == k || j == k)
 					continue;
 				battle++;
-				if (battle < specific_battle)
+				if (specific_battle && battle != specific_battle)
 					continue;
 				u[j]->fight(*u[i]);
-				untouched = u[i]->untouched;
 				// We need this here, because swarm means out num hits
 				// can change.
 				u[i]->set_effectiveness((i % 7) + 2, 0.3 + (i % 6)*0.1,
 										(i % 8) == 0);
 				u[k]->fight(*u[i]);
-				// We want cumulative untouched for defender.
-				u[i]->untouched *= untouched;
 				u[i]->print("Defender", battle);
 				u[j]->print("Attacker #1", battle);
 				u[k]->print("Attacker #2", battle);

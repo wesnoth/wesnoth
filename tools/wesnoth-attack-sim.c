@@ -124,10 +124,12 @@ static void calculate_attack(const struct unit *defender,
 		struct unit def = *defender;
 
 		def.slowed = false;
+		def.touched = false;
 		for (j = 0; j < num_attackers && def.hp; j++) {
 			struct unit att = *attackers[j];
 
 			att.slowed = false;
+			att.touched = false;
 			att.num_attacks	= num_attacks(att.num_attacks,
 						      att.max_hp, att.hp,
 						      att.swarm);
@@ -161,7 +163,15 @@ static void calculate_attack(const struct unit *defender,
 		/* Any battle we weren't in, we're unscathed. */
 		attacker_res[i][attackers[i]->hp]
 			+= (1.0*num_sims-battles)/num_sims;
-		attacker_touched[i] /= battles;
+
+		/* If this attacker wasn't in more than 1% of battles, don't
+		 * pretend to know this probability. */
+		if (battles <= num_sims / 100)
+			attacker_touched[i] = -1.0;
+		else
+			/* FIXME: attack_prediction doesn't take into account
+			 * that opponent might already be dead. */
+			attacker_touched[i] /= num_sims;
 	}
 }
 
@@ -242,14 +252,18 @@ static void draw_results(const double res[], const struct unit *u,
 	if (u->firststrike)
 		printf("firststrike,");
 	printf("maxhp=%u ", u->max_hp);
-	printf("touched:%.2f%% ", touched*100);
+	if (touched == -1)
+		printf("touched:unknown ");
+	else
+		printf("touched:%.2f%% ", touched*100);
 	for (i = 0; i < u->max_hp+1; i++)
 		printf(" %.2f", res[i]*100);
 	printf("\n");
 }
 
 static void compare_results(const double res[], const struct unit *u,
-			    const char label[], unsigned battle, double def_untouched, FILE *f)
+			    const char label[], unsigned battle,
+			    double touched, FILE *f)
 {
 	unsigned int i;
 	char line[128], cmp[128];
@@ -277,12 +291,15 @@ static void compare_results(const double res[], const struct unit *u,
 		     battle, strlen(cmp), line, cmp);
 
 	if (fscanf(f, " %lf", &val) != 1)
-		barf("Malformed touched: %s hp %u battle %u", 
-		     label, i, battle);
+		barf("Malformed untouched: %s battle %u", 
+		     label, battle);
 
-	if (abs(val - def_untouched)*100 > 1.0)
-		barf("Expected %f touched, got %f battle %u",
-		     def_untouched, val, battle);
+	/* We *must* have result for defender and attacker 1. */
+	if (touched == -1)
+		assert(strcmp(label, "Attacker #2") == 0);
+	else if (abs((val - (1.0 - touched))*100) > 1.0)
+		printf("Warning: expected %f untouched, got %f battle %u %s\n",
+		       1.0 - touched, val, battle, label);
 
 	for (i = 0; i < u->max_hp+1; i++) {
 		if (fscanf(f, " %lf", &val) != 1)
@@ -373,11 +390,11 @@ static void check(const char *filename)
 				check_sum(j_result, u[j].max_hp);
 				check_sum(k_result, u[k].max_hp);
 				compare_results(i_result, &u[i], "Defender",
-						battle, 1 - i_touched, f);
+						battle, i_touched, f);
 				compare_results(j_result, &u[j], "Attacker #1",
-						battle, 1 - touched[0], f);
+						battle, touched[0], f);
 				compare_results(k_result, &u[k], "Attacker #2",
-						battle, 1 - touched[1], f);
+						battle, touched[1], f);
 				if ((battle % percent) == 0) {
 					printf(".");
 					fflush(stdout);
