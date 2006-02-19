@@ -47,8 +47,15 @@ bool ability::filter::matches_filter(const std::string& terrain, int lawful_bonu
 		} else if((*i)["tod"] != "") {
 			tod_filters.push_back((*i)["tod"]);
 		}
-		if(terrain_filters.size() && std::find(terrain_filters.begin(),terrain_filters.end(),terrain) == terrain_filters.end()) {
-			return false;
+		if(terrain_filters.size()) {
+			bool matches_filter = false;
+			for (std::string::const_iterator t = terrain.begin(); t != terrain.end(); ++i) {
+				std::string ts(1,*t);
+				matches_filter |= (std::find(terrain_filters.begin(),terrain_filters.end(),ts) == terrain_filters.end());
+			}
+			if(!matches_filter) {
+				return false;
+			}
 		}
 		if(tod_filters.size() && std::find(tod_filters.begin(),tod_filters.end(),tod_string) == tod_filters.end()) {
 			return false;
