@@ -3027,14 +3027,6 @@ void turn_info::enter_textbox()
 	close_textbox();
 }
 
-namespace {
-
-bool tab_complete(const std::string& partword, const std::string& name)
-{
-	return name.size() >= partword.size() && std::equal(partword.begin(),partword.end(),name.begin(),chars_equal_insensitive);
-}
-
-}
 
 void turn_info::tab_textbox()
 {
@@ -3064,7 +3056,8 @@ void turn_info::tab_textbox()
 			semiword.assign(text,last_space+1,text.size());
 		}
 
-		std::string guess;
+		std::vector<std::string> matches;
+		std::string best_match = semiword;
 
 		for(size_t n = 0; n != teams_.size(); ++n) {
 			if(teams_[n].is_empty()) {
@@ -3073,25 +3066,51 @@ void turn_info::tab_textbox()
 			const unit_map::const_iterator leader = team_leader(n+1,units_);
 			if(leader != units_.end()) {
 				const std::string& name = leader->second.description();
-				if(tab_complete(semiword,name)) {
-					guess = name;
+				if( name.size() >= semiword.size() && 
+						std::equal(semiword.begin(),semiword.end(),name.begin(),chars_equal_insensitive)) {
+					if(matches.empty()) {
+						best_match = name;
+					} else {
+						int j= 0;;
+						while(best_match[j] == name[j]) j++;
+						best_match.erase(best_match.begin()+j,best_match.end());
+					}
+					matches.push_back(name);
 				}
 			}
 		}
 
-		if(guess.empty()) {
+		if(matches.empty()) {
 			const std::set<std::string>& observers = gui_.observers();
 			for(std::set<std::string>::const_iterator i = observers.begin(); i != observers.end(); ++i) {
-				if(tab_complete(semiword,*i)) {
-					guess = *i;
-					break;
+				if( i->size() >= semiword.size() && 
+						std::equal(semiword.begin(),semiword.end(),i->begin(),chars_equal_insensitive)) {
+					if(matches.empty()) {
+						best_match = *i;
+					} else {
+						int j;
+						while(best_match[j] == (*i)[j]) j++;
+						best_match.erase(best_match.begin()+j,best_match.end());
+					}
+					matches.push_back(*i);
 				}
 			}
 		}
 
-		if(guess.empty() == false) {
+		if(!matches.empty()) {
 			std::string add = beginning ? ": " : " ";
-			text.replace(last_space+1, semiword.size(), guess + add);
+			text.replace(last_space+1, semiword.size(), best_match);
+			if(matches.size() == 1) {
+				text.append(add);
+			} else {
+				std::string completion_list;
+				std::vector<std::string>::iterator it;
+				for(it =matches.begin();it!=matches.end();it++) {
+					completion_list += " ";
+					completion_list += *it;
+				}
+				gui_.add_chat_message("",0,completion_list,display::MESSAGE_PRIVATE);
+			}
 			textbox_.box->set_text(text);
 		}
 		break;
