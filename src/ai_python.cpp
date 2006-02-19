@@ -1191,6 +1191,8 @@ static PyMethodDef wesnoth_python_methods[] = {
 	{ "get_current_team",				python_ai::wrapper_get_current_team,		METH_VARARGS, NULL},
 	{ "get_destinations_by_unit",			python_ai::wrapper_get_src_dst,			METH_VARARGS, NULL},
 	{ "get_units_by_destination",			python_ai::wrapper_get_dst_src,			METH_VARARGS, NULL},
+	{ "get_enemy_destinations_by_unit",			python_ai::wrapper_get_enemy_src_dst,			METH_VARARGS, NULL},
+	{ "get_enemy_units_by_destination",			python_ai::wrapper_get_enemy_dst_src,			METH_VARARGS, NULL},
 	{ "move_unit",					python_ai::wrapper_move_unit,			METH_VARARGS, NULL},
 	{ "attack_unit",				python_ai::wrapper_attack_unit,			METH_VARARGS, NULL},
 	{ "get_adjacent_tiles",				python_ai::wrapper_get_adjacent_tiles,		METH_VARARGS, NULL},
