@@ -803,7 +803,7 @@ void game_state::set_variable(const std::string& key, const t_string& value)
 
 void game_state::clear_variable(const std::string& varname)
 {
-	config* vars(&variables);
+	config* vars = &variables;
 	std::string key(varname);
 	std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
 	int dot_index = key.find('.');
