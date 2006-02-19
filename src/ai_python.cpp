@@ -352,6 +352,20 @@ static PyObject* unit_can_recruit(wesnoth_unit* unit, void* /*closure*/)
 	return Py_BuildValue("i",unit->unit_->can_recruit() == true ? 1 : 0);
 }
 
+static PyObject* unit_side(wesnoth_unit* unit, void* /*closure*/)
+{
+	if (!running_instance->is_unit_valid(unit->unit_))
+		return NULL;
+	return Py_BuildValue("i",unit->unit_->side());
+}
+
+static PyObject* unit_movement_left(wesnoth_unit* unit, void* /*closure*/)
+{
+	if (!running_instance->is_unit_valid(unit->unit_))
+		return NULL;
+	return Py_BuildValue("i",unit->unit_->movement_left());
+}
+
 static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 {
 	return Py_BuildValue("i",running_instance->is_unit_valid(unit->unit_) == true ? 1 : 0);
@@ -362,6 +376,8 @@ static PyGetSetDef unit_getseters[] = {
 	{ "is_enemy",		(getter)unit_is_enemy,		NULL,	NULL,	NULL },
 	{ "can_recruit",	(getter)unit_can_recruit,	NULL,	NULL,	NULL },
 	{ "is_valid",		(getter)unit_query_valid,	NULL,	NULL,	NULL },
+	{ "side",		(getter)unit_side,	NULL,	NULL,	NULL },
+	{ "movement_left",	(getter)unit_movement_left,	NULL,	NULL,	NULL },
 	{ NULL,				NULL,						NULL,	NULL,	NULL }
 };
 
