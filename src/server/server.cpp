@@ -93,6 +93,7 @@ private:
 
 	void process_login(network::connection sock, const config& data, config& gamelist);
 	void process_query(network::connection sock, const config& query, config& gamelist);
+	void process_whisper(const network::connection sock, const config& whisper);
 	void process_data_from_player_in_lobby(network::connection sock, config& data, config& gamelist);
 	void process_data_from_player_in_game(network::connection sock, config& data, config& gamelist);
 
@@ -483,12 +484,15 @@ void server::process_data(const network::connection sock, config& data, config& 
 		process_login(sock,data,gamelist);
 	} else if(const config* query = data.child("query")) {
 		process_query(sock,*query,gamelist);
+	} else if(const config* whisper = data.child("whisper")) {
+		process_whisper(sock,*whisper);
 	} else if(lobby_players_.is_member(sock)) {
 		process_data_from_player_in_lobby(sock,data,gamelist);
 	} else {
 		process_data_from_player_in_game(sock,data,gamelist);
 	}
 }
+
 
 void server::process_login(const network::connection sock, const config& data, config& gamelist)
 {
@@ -647,6 +651,40 @@ void server::process_query(const network::connection sock, const config& query, 
 	}
 
 	network::send_data(construct_server_message(response.str(),lobby_players_),sock);
+}
+
+void server::process_whisper(const network::connection sock, const config& whisper)
+{
+	bool sent = false;
+	if ((whisper["receiver"]!="") && (whisper["message"]!="") && (whisper["sender"]!="")){
+		for(player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
+			if(i->second.name() == whisper["receiver"])
+				{			
+					config cwhisper;
+					cwhisper.add_child("whisper",whisper);
+					network::send_data(cwhisper,i->first);
+					sent = true;
+					break;
+				}
+		}
+	} else { 
+		config msg;
+		config data;
+		msg["message"] = "Invalid number of arguments";
+		msg["sender"] = "server";
+		data.add_child("message", msg);
+		network::send_data(data,sock);	
+		sent = true;
+	}
+		
+	if (sent == false){
+		config msg;
+		config data;
+		msg["message"] = "Can't find player "+whisper["receiver"];
+		msg["sender"] = "server";
+		data.add_child("message", msg);
+		network::send_data(data,sock);	
+	}
 }
 
 void server::process_data_from_player_in_lobby(const network::connection sock, config& data, config& gamelist)

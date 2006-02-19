@@ -267,13 +267,35 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 		//if the text starts with '/query' it's a query to the server.
 		//otherwise it's just a chat message
 		static const std::string query = "/query ";
-
+		static const std::string whisper = "/msg ";
+		
 		config data;
 
 		if(text.size() >= query.size() && std::equal(query.begin(),query.end(),text.begin())) {
 			const std::string args = text.substr(query.size());
 
 			data.add_child("query")["type"] = args;
+			
+		} else if (text.size() >= whisper.size() && std::equal(whisper.begin(),whisper.end(),text.begin())) {
+		
+			int pos;
+			pos = text.find(" ",whisper.size());
+			
+			const std::string message = text.substr((pos+1),text.size());
+			
+			const std::string receiver = text.substr(whisper.size(),
+			(text.size()-message.size()-whisper.size()-1));
+			
+			config cwhisper;
+			cwhisper["message"] = message;
+			cwhisper["sender"] = preferences::login();
+			cwhisper["receiver"] = receiver;
+			data.add_child("whisper", cwhisper);
+
+			chat_.add_message(("whisper to "+cwhisper["receiver"]),
+			(entry_textbox_.text().substr(whisper.size()+receiver.size()+1)));
+			
+			chat_.update_textbox(chat_textbox_);
 
 		} else {
 
@@ -310,40 +332,21 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 			semiword.assign(text,last_space+1,text.size());
 		}
 
+		std::string guess;
 
 		std::vector<std::string>& users = user_list_;
-		std::vector<std::string> matches;
 		std::sort<std::vector<std::string>::iterator>(users.begin(), users.end());
-		std::string best_match = semiword;
-		for(std::vector<std::string>::iterator i = users.begin(); i != users.end(); ++i) {
+		for(std::vector<std::string>::const_iterator i = users.begin(); i != users.end(); ++i) {
 			if( i->size() >= semiword.size() && 
 					std::equal(semiword.begin(),semiword.end(),i->begin(),chars_equal_insensitive)) {
-				if(matches.empty()) {
-					best_match = *i;
-				} else {
-					int j=0;
-					while(best_match[j] == (*i)[j]) j++;
-					best_match.erase(best_match.begin()+j,best_match.end());
-				}
-				matches.push_back(*i);
+				guess = *i;
+				break;
 			}
 		}
 
-		if(!matches.empty()) {
+		if(guess.empty() == false) {
 			std::string add = beginning ? ": " : " ";
-			text.replace(last_space+1, semiword.size(), best_match);
-			if(matches.size() == 1) {
-				text.append(add);
-			} else {
-				std::string completion_list;
-				std::vector<std::string>::iterator it;
-				for(it =matches.begin();it!=matches.end();it++) {
-					completion_list += " ";
-					completion_list += *it;
-				}
-				chat_.add_message("",completion_list);
-				chat_.update_textbox(chat_textbox_);
-			}
+			text.replace(last_space+1, semiword.size(), guess + add);
 			entry_textbox_.set_text(text);
 		}
 	}
@@ -359,6 +362,14 @@ void ui::process_network_data(const config& data, const network::connection /*so
 
 			const config& msg = *data.child("message");
 			chat_.add_message(msg["sender"], msg["message"]);
+			chat_.update_textbox(chat_textbox_);
+		}
+		
+		if(data.child("whisper")){
+			sound::play_sound(game_config::sounds::receive_message);
+			
+			const config& cwhisper = *data.child("whisper");
+			chat_.add_message("whisper: "+cwhisper["sender"], cwhisper["message"]);
 			chat_.update_textbox(chat_textbox_);
 		}
 
@@ -449,4 +460,3 @@ const gui::widget& ui::title() const
 
 
 }
-

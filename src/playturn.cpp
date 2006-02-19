@@ -2219,6 +2219,27 @@ void turn_info::do_speak(const std::string& message, bool allies_only)
 		return;
 	}
 
+	static const std::string whisper = "/msg ";
+	if (is_observer() && message.size() >= whisper.size() &&
+	std::equal(whisper.begin(),whisper.end(),message.begin())) {
+		
+		int pos;
+		pos = message.find(" ",whisper.size());
+			
+		const std::string text = message.substr((pos+1),message.size());
+			
+		const std::string receiver = message.substr(whisper.size(),
+		(message.size()-text.size()-whisper.size()-1));
+			
+		config cwhisper,data;
+		cwhisper["message"] = text;
+		cwhisper["sender"] = preferences::login();
+		cwhisper["receiver"] = receiver;
+		data.add_child("whisper", cwhisper);
+		gui_.add_chat_message("whisper to "+cwhisper["receiver"],0,cwhisper["message"], display::MESSAGE_PRIVATE);
+		network::send_data(data);
+	} else {
+	
 	config cfg;
 	cfg["description"] = preferences::login();
 	cfg["message"] = message;
@@ -2237,6 +2258,7 @@ void turn_info::do_speak(const std::string& message, bool allies_only)
 	recorder.speak(cfg);
 	gui_.add_chat_message(cfg["description"],side,message,
 		                  private_message ? display::MESSAGE_PRIVATE : display::MESSAGE_PUBLIC);
+	}
 }
 
 void turn_info::create_unit()
@@ -2788,6 +2810,12 @@ void turn_info::continue_move()
 
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg, network::connection from, std::deque<config>& backlog)
 {
+	if(cfg.child("whisper") != NULL && is_observer()){
+		sound::play_sound(game_config::sounds::receive_message);
+			
+		const config& cwhisper = *cfg.child("whisper");
+		gui_.add_chat_message("whisper: "+cwhisper["sender"],0,cwhisper["message"], display::MESSAGE_PRIVATE);
+		}
 	if(cfg.child("observer") != NULL) {
 		const config::child_list& observers = cfg.get_children("observer");
 		for(config::child_list::const_iterator ob = observers.begin(); ob != observers.end(); ++ob) {
