@@ -1732,6 +1732,9 @@ namespace game_events {
 
 bool matches_special_filter(const config* cfg, const vconfig filter)
 {
+	if(!cfg) {
+		return false;
+	}
 	if(filter["weapon"] != "") {
 		if(filter["weapon"] != (*cfg)["weapon"]) {
 			return false;
