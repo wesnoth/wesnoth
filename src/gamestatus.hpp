@@ -62,6 +62,8 @@ public:
 	const time_of_day& get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const;
 	size_t turn() const;
 	int number_of_turns() const;
+	void modify_turns(const std::string& mod);
+	void add_turns(int num);
 
 	//function to move to the next turn. Returns true iff time
 	//has expired.

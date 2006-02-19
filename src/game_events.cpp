@@ -495,6 +495,18 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			state_of_game->get_variable(var_name+".team_name") = (*teams)[team_index].team_name();
 		}
 	}
+	else if(cmd == "modify_turns") {
+		const std::string& value = cfg["value"];
+		const bool modify = cfg["add"] != "yes";
+		
+		wassert(status_ptr != NULL);
+		if(modify) {
+			status_ptr->modify_turns(value);
+		} else {
+			status_ptr->add_turns(lexical_cast_default<int>(value,0));
+		}
+		
+	}
 	//command to store gold into a variable
 	else if(cmd == "store_gold") {
 		WRN_NG << "[store_gold] tag is now deprecated; use [store_side] instead.\n";

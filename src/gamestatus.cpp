@@ -280,6 +280,15 @@ int gamestatus::number_of_turns() const
 {
 	return numTurns_;
 }
+void gamestatus::modify_turns(const std::string& mod)
+{
+	numTurns_ = maximum<int>(utils::apply_modifier(numTurns_,mod,0),-1);
+}
+void gamestatus::add_turns(int num)
+{
+	numTurns_ = maximum<int>(numTurns_ + num,-1);
+}
+
 
 bool gamestatus::next_turn()
 {
