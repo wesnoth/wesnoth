@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.6+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-02-17 13:03+0100\n"
+"POT-Creation-Date: 2006-02-20 01:03+0100\n"
 "PO-Revision-Date: 2005-08-25 18:14+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -180,7 +180,7 @@ msgstr ""
 msgid "Contributors"
 msgstr ""
 
-#: data/about.cfg:470
+#: data/about.cfg:471
 msgid "Bots"
 msgstr ""
 
@@ -466,6 +466,7 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:65
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:65
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:44
+#: data/campaigns/The_South_Guard/units/Chocobone.cfg:49
 #: data/tutorial/units/Commander.cfg:76 data/tutorial/units/Lord.cfg:51
 #: data/units/Bone_Shooter.cfg:62 data/units/Bowman.cfg:60
 #: data/units/Cavalier.cfg:78 data/units/Cuttle_Fish.cfg:77
@@ -568,6 +569,8 @@ msgstr ""
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:48
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:29
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:59
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:48
 #: data/tutorial/units/Commander.cfg:173 data/tutorial/units/Elder_Mage.cfg:51
 #: data/tutorial/units/Fighter.cfg:102 data/tutorial/units/Lord.cfg:141
 #: data/units/Ancient_Lich.cfg:71 data/units/Arch_Mage.cfg:73
@@ -637,6 +640,8 @@ msgstr ""
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:36
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:33
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:48
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:47
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:36
 #: data/units/Ancient_Lich.cfg:59 data/units/Blood_Bat.cfg:45
 #: data/units/Ghost.cfg:34 data/units/Lich.cfg:39 data/units/Spectre.cfg:58
 #: data/units/Vampire_Bat.cfg:31 data/units/Wraith.cfg:34
@@ -670,11 +675,13 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:3
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:3
+#: data/campaigns/The_South_Guard/units/Chocobone.cfg:3
 msgid "Chocobone"
 msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:33
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:33
+#: data/campaigns/The_South_Guard/units/Chocobone.cfg:33
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
@@ -683,6 +690,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:48
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:48
+#: data/campaigns/The_South_Guard/units/Chocobone.cfg:48
 #: data/units/Drake_Clasher.cfg:101 data/units/Drake_Enforcer.cfg:109
 #: data/units/Drake_Gladiator.cfg:94 data/units/Dwarvish_Guardsman.cfg:33
 #: data/units/Dwarvish_Guardsman.cfg:49 data/units/Dwarvish_Sentinel.cfg:41
@@ -705,6 +713,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:51
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:51
+#: data/campaigns/The_South_Guard/units/Chocobone.cfg:51
 #: data/units/Grand_Knight.cfg:59 data/units/Horseman.cfg:39
 #: data/units/Knight.cfg:58 data/units/Lancer.cfg:40 data/units/Paladin.cfg:65
 #: src/actions.cpp:456 src/actions.cpp:584
@@ -738,6 +747,10 @@ msgstr ""
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:32
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:47
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:44
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:43
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:58
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:32
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:47
 #: data/units/Ancient_Lich.cfg:55 data/units/Ancient_Lich.cfg:70
 #: data/units/Dark_Adept.cfg:32 data/units/Dark_Sorcerer.cfg:58
 #: data/units/Elvish_Enchantress.cfg:140 data/units/Elvish_Sorceress.cfg:140
@@ -1086,15 +1099,19 @@ msgstr ""
 #: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:57
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:46
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:43
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:57
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:46
 #: data/units/Ancient_Lich.cfg:69 data/units/Lich.cfg:49
 msgid "magic"
 msgstr ""
 
 #: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:3
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:3
 msgid "Demilich"
 msgstr ""
 
 #: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:27
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:27
 msgid ""
 "After too much time dabbling with forbidden magics and dark arts, these magi "
 "have begun to pay a heavy price. Demiliches have started losing their "
@@ -1104,12 +1121,15 @@ msgstr ""
 
 #: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:42
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:31
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:42
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:31
 #: data/units/Ancient_Lich.cfg:54 data/units/Ghost.cfg:29
 #: data/units/Lich.cfg:34
 msgid "touch"
 msgstr ""
 
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:3
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:3
 msgid "Dread Lich"
 msgstr ""
 
@@ -1285,6 +1305,15 @@ msgstr ""
 #: data/units/Mage_of_Light.cfg:44 data/units/Outlaw.cfg:27
 #: data/units/Shock_Trooper.cfg:25
 msgid "mace"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:28
+msgid ""
+"Some Necromancers pay the ultimate sacrifice for delving into the dark arts "
+"and entered into undeath. At the apex of their power, they become a lich, a "
+"waking embodiment of dread. They are, beyond any doubt, past the point of no "
+"return. Power and immortality are the hollow consolation for what they have "
+"lost."
 msgstr ""
 
 #: data/english.cfg:2
@@ -1704,11 +1733,11 @@ msgstr ""
 msgid "Gameplay"
 msgstr ""
 
-#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2305
+#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2329
 msgid "Traits"
 msgstr ""
 
-#: data/help.cfg:29 src/menu_events.cpp:218 src/playturn.cpp:1845
+#: data/help.cfg:29 src/menu_events.cpp:218 src/playturn.cpp:1847
 msgid "Units"
 msgstr ""
 
@@ -2558,7 +2587,7 @@ msgstr ""
 msgid "Forest"
 msgstr ""
 
-#: data/help.cfg:342
+#: data/help.cfg:343
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -2572,14 +2601,15 @@ msgid ""
 "\n"
 "Most units have 50% defense in forests, but cavalry are limited to 40%. "
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
-"Dwarves generally receive only 30% defense in forests."
+"Dwarves generally receive only 30% defense in forests.\n"
+"<img>src=terrain/great-tree-tile.png align=middle box=no</img>"
 msgstr ""
 
-#: data/help.cfg:347 data/terrain.cfg:316
+#: data/help.cfg:349 data/terrain.cfg:316
 msgid "Hills"
 msgstr ""
 
-#: data/help.cfg:352
+#: data/help.cfg:354
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -2592,11 +2622,11 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
 
-#: data/help.cfg:357 data/terrain.cfg:350 data/terrain.cfg:357
+#: data/help.cfg:359 data/terrain.cfg:350 data/terrain.cfg:357
 msgid "Mountains"
 msgstr ""
 
-#: data/help.cfg:362
+#: data/help.cfg:364
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -2609,11 +2639,11 @@ msgid ""
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
 
-#: data/help.cfg:367 data/terrain.cfg:43
+#: data/help.cfg:369 data/terrain.cfg:43
 msgid "Swamp"
 msgstr ""
 
-#: data/help.cfg:372
+#: data/help.cfg:374
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -2625,11 +2655,11 @@ msgid ""
 "all generally enjoy 60%."
 msgstr ""
 
-#: data/help.cfg:377 data/terrain.cfg:34
+#: data/help.cfg:379 data/terrain.cfg:34
 msgid "Shallow Water"
 msgstr ""
 
-#: data/help.cfg:382
+#: data/help.cfg:384
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -2642,11 +2672,11 @@ msgid ""
 "Naga and Mermen enjoy 60%."
 msgstr ""
 
-#: data/help.cfg:387 data/terrain.cfg:25
+#: data/help.cfg:389 data/terrain.cfg:25
 msgid "Deep Water"
 msgstr ""
 
-#: data/help.cfg:392
+#: data/help.cfg:394
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -2655,11 +2685,11 @@ msgid ""
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
 
-#: data/help.cfg:397 data/terrain.cfg:300
+#: data/help.cfg:399 data/terrain.cfg:300
 msgid "Snow"
 msgstr ""
 
-#: data/help.cfg:402
+#: data/help.cfg:404
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -2668,22 +2698,22 @@ msgid ""
 "Most units have 20 to 40% defense in snow."
 msgstr ""
 
-#: data/help.cfg:407 data/terrain.cfg:307
+#: data/help.cfg:409 data/terrain.cfg:307
 msgid "Ice"
 msgstr ""
 
-#: data/help.cfg:410
+#: data/help.cfg:412
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
 
-#: data/help.cfg:415 data/terrain.cfg:446 data/terrain.cfg:533
+#: data/help.cfg:417 data/terrain.cfg:446 data/terrain.cfg:533
 msgid "Castle"
 msgstr ""
 
-#: data/help.cfg:420
+#: data/help.cfg:422
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -2695,11 +2725,11 @@ msgid ""
 "Most units have about 60% defense in a castle."
 msgstr ""
 
-#: data/help.cfg:427 data/terrain.cfg:89
+#: data/help.cfg:429 data/terrain.cfg:89
 msgid "Sand"
 msgstr ""
 
-#: data/help.cfg:432
+#: data/help.cfg:434
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -2708,22 +2738,22 @@ msgid ""
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
 
-#: data/help.cfg:437 data/terrain.cfg:97
+#: data/help.cfg:439 data/terrain.cfg:97
 msgid "Desert"
 msgstr ""
 
-#: data/help.cfg:440
+#: data/help.cfg:442
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
 
-#: data/help.cfg:445 data/terrain.cfg:396
+#: data/help.cfg:447 data/terrain.cfg:396
 msgid "Cave"
 msgstr ""
 
-#: data/help.cfg:450
+#: data/help.cfg:452
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2735,11 +2765,11 @@ msgid ""
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
 
-#: data/help.cfg:455 data/terrain.cfg:341
+#: data/help.cfg:457 data/terrain.cfg:341
 msgid "Rockbound Cave"
 msgstr ""
 
-#: data/help.cfg:460
+#: data/help.cfg:462
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2752,11 +2782,11 @@ msgid ""
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
 
-#: data/help.cfg:465 data/terrain.cfg:372
+#: data/help.cfg:467 data/terrain.cfg:372
 msgid "Mushroom Grove"
 msgstr ""
 
-#: data/help.cfg:470
+#: data/help.cfg:472
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness.  Most units have trouble negotiating the spongy "
@@ -2769,18 +2799,18 @@ msgid ""
 "receive only 20%."
 msgstr ""
 
-#: data/help.cfg:475 data/terrain.cfg:138
+#: data/help.cfg:477 data/terrain.cfg:138
 msgid "Savanna"
 msgstr ""
 
-#: data/help.cfg:477
+#: data/help.cfg:479
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
 
-#: data/help.cfg:482 data/terrain.cfg:148 data/terrain.cfg:160
+#: data/help.cfg:484 data/terrain.cfg:148 data/terrain.cfg:160
 #: data/terrain.cfg:170 data/terrain.cfg:179 data/terrain.cfg:189
 #: data/terrain.cfg:199 data/terrain.cfg:219 data/terrain.cfg:229
 #: data/terrain.cfg:239 data/terrain.cfg:249 data/terrain.cfg:259
@@ -2789,7 +2819,7 @@ msgstr ""
 msgid "Village"
 msgstr ""
 
-#: data/help.cfg:487
+#: data/help.cfg:489
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2802,11 +2832,11 @@ msgid ""
 "40%."
 msgstr ""
 
-#: data/help.cfg:494 data/terrain.cfg:420
+#: data/help.cfg:496 data/terrain.cfg:420
 msgid "Chasm"
 msgstr ""
 
-#: data/help.cfg:496
+#: data/help.cfg:498
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -2814,22 +2844,22 @@ msgid ""
 "terrain."
 msgstr ""
 
-#: data/help.cfg:501 data/terrain.cfg:427
+#: data/help.cfg:503 data/terrain.cfg:427
 msgid "Lava"
 msgstr ""
 
-#: data/help.cfg:503
+#: data/help.cfg:505
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
 "distance above it."
 msgstr ""
 
-#: data/help.cfg:508 data/terrain.cfg:52
+#: data/help.cfg:510 data/terrain.cfg:52
 msgid "River Ford"
 msgstr ""
 
-#: data/help.cfg:510
+#: data/help.cfg:512
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2839,12 +2869,12 @@ msgid ""
 "the unit on it."
 msgstr ""
 
-#: data/help.cfg:515 data/terrain.cfg:62 data/terrain.cfg:70
+#: data/help.cfg:517 data/terrain.cfg:62 data/terrain.cfg:70
 #: data/terrain.cfg:78
 msgid "Bridge"
 msgstr ""
 
-#: data/help.cfg:519
+#: data/help.cfg:521
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2859,11 +2889,11 @@ msgid ""
 "capable of occupying a bridge hex at the same time."
 msgstr ""
 
-#: data/help.cfg:524 data/terrain.cfg:413
+#: data/help.cfg:526 data/terrain.cfg:413
 msgid "Cave Wall"
 msgstr ""
 
-#: data/help.cfg:526
+#: data/help.cfg:528
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -3568,13 +3598,13 @@ msgstr ""
 msgid "End Turn"
 msgstr ""
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2303
-#: src/unit.cpp:1308
+#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2327
+#: src/unit.cpp:1322
 msgid "HP"
 msgstr ""
 
-#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2116
-#: src/playturn.cpp:2304
+#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2118
+#: src/playturn.cpp:2328
 msgid "XP"
 msgstr ""
 
@@ -3859,6 +3889,19 @@ msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button.  This information is vital so we can adjust "
 "campaign difficulty."
+msgstr ""
+
+#: data/tips.cfg:35
+msgid ""
+"On maps where the shroud or fog of war has been enabled, a unit's sight is "
+"limited by its maximum movement. Remember this when deciding what unit is "
+"best to scout specific types of terrain."
+msgstr ""
+
+#: data/tips.cfg:36
+msgid ""
+"Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
+"your mouse pointer over one to get an explanation or description."
 msgstr ""
 
 #: data/traits.cfg:7
@@ -6474,7 +6517,7 @@ msgstr ""
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
-"forth the magic of the cold north, and the do retain their basic healing "
+"forth the magic of the cold north, and they do retain their basic healing "
 "ability."
 msgstr ""
 
@@ -7144,11 +7187,11 @@ msgstr ""
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:381 src/game.cpp:746
+#: src/dialogs.cpp:381 src/game.cpp:751
 msgid "Campaign"
 msgstr ""
 
-#: src/dialogs.cpp:383 src/game.cpp:1143
+#: src/dialogs.cpp:383 src/game.cpp:1148
 msgid "Multiplayer"
 msgstr ""
 
@@ -7161,7 +7204,7 @@ msgid "replay"
 msgstr ""
 
 #: src/dialogs.cpp:395 src/menu_events.cpp:295 src/multiplayer_lobby.cpp:330
-#: src/playturn.cpp:1683
+#: src/playturn.cpp:1685
 msgid "Turn"
 msgstr ""
 
@@ -7229,9 +7272,9 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: src/dialogs.cpp:558 src/game.cpp:879 src/help.cpp:1119
-#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:31 src/playturn.cpp:2114
-#: src/playturn.cpp:2302
+#: src/dialogs.cpp:558 src/game.cpp:884 src/help.cpp:1119
+#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:31 src/playturn.cpp:2116
+#: src/playturn.cpp:2326
 msgid "Name"
 msgstr ""
 
@@ -7271,273 +7314,273 @@ msgstr ""
 msgid "Screenshot"
 msgstr ""
 
-#: src/game.cpp:385
+#: src/game.cpp:390
 msgid "The Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:616
+#: src/game.cpp:621
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 
-#: src/game.cpp:638 src/multiplayer_connect.cpp:990
+#: src/game.cpp:643 src/multiplayer_connect.cpp:995
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 
-#: src/game.cpp:646 src/game.cpp:649 src/multiplayer_connect.cpp:975
+#: src/game.cpp:651 src/game.cpp:654 src/multiplayer_connect.cpp:980
 msgid "The file you have tried to load is corrupt: '"
 msgstr ""
 
-#: src/game.cpp:652
+#: src/game.cpp:657
 msgid "File I/O Error while reading the game"
 msgstr ""
 
-#: src/game.cpp:736
+#: src/game.cpp:741
 msgid "Get More Campaigns..."
 msgstr ""
 
-#: src/game.cpp:737
+#: src/game.cpp:742
 msgid "Download more campaigns from an Internet server."
 msgstr ""
 
-#: src/game.cpp:747
+#: src/game.cpp:752
 msgid "Choose the campaign you want to play:"
 msgstr ""
 
-#: src/game.cpp:775
+#: src/game.cpp:780
 msgid "Difficulty"
 msgstr ""
 
-#: src/game.cpp:776
+#: src/game.cpp:781
 msgid "Select difficulty level:"
 msgstr ""
 
-#: src/game.cpp:801
+#: src/game.cpp:806
 msgid "B"
 msgstr ""
 
-#: src/game.cpp:804
+#: src/game.cpp:809
 msgid "KB"
 msgstr ""
 
-#: src/game.cpp:807
+#: src/game.cpp:812
 msgid "MB"
 msgstr ""
 
-#: src/game.cpp:834
+#: src/game.cpp:839
 msgid "Connect to Server"
 msgstr ""
 
-#: src/game.cpp:835
+#: src/game.cpp:840
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 
-#: src/game.cpp:836
+#: src/game.cpp:841
 msgid "Server: "
 msgstr ""
 
-#: src/game.cpp:849
+#: src/game.cpp:854
 msgid "Could not connect to host."
 msgstr ""
 
-#: src/game.cpp:857
+#: src/game.cpp:862
 msgid "Asking for campaign list"
 msgstr ""
 
-#: src/game.cpp:870
+#: src/game.cpp:875
 msgid "Error communicating with the server."
 msgstr ""
 
-#: src/game.cpp:879 src/titlescreen.cpp:183
+#: src/game.cpp:884 src/titlescreen.cpp:183
 msgid "Version"
 msgstr ""
 
-#: src/game.cpp:880
+#: src/game.cpp:885
 msgid "Author"
 msgstr ""
 
-#: src/game.cpp:880
+#: src/game.cpp:885
 msgid "Downloads"
 msgstr ""
 
-#: src/game.cpp:880
+#: src/game.cpp:885
 msgid "Size"
 msgstr ""
 
-#: src/game.cpp:941
+#: src/game.cpp:946
 msgid "Publish campaign: "
 msgstr ""
 
-#: src/game.cpp:945
+#: src/game.cpp:950
 msgid "Delete campaign: "
 msgstr ""
 
-#: src/game.cpp:949
+#: src/game.cpp:954
 msgid "There are no campaigns available for download from this server."
 msgstr ""
 
-#: src/game.cpp:956
+#: src/game.cpp:961
 msgid "Choose the campaign to download."
 msgstr ""
 
-#: src/game.cpp:956
+#: src/game.cpp:961
 msgid "Get Campaign"
 msgstr ""
 
-#: src/game.cpp:976
+#: src/game.cpp:981
 msgid "Downloading campaign..."
 msgstr ""
 
-#: src/game.cpp:1000
+#: src/game.cpp:1005
 msgid "Cannot rescan the filesystem"
 msgstr ""
 
-#: src/game.cpp:1015
+#: src/game.cpp:1020
 msgid "Campaign Installed"
 msgstr ""
 
-#: src/game.cpp:1015
+#: src/game.cpp:1020
 msgid "The campaign has been installed."
 msgstr ""
 
-#: src/game.cpp:1017
+#: src/game.cpp:1022
 msgid "Network communication error."
 msgstr ""
 
-#: src/game.cpp:1019
+#: src/game.cpp:1024
 msgid "Remote host disconnected."
 msgstr ""
 
-#: src/game.cpp:1021
+#: src/game.cpp:1026
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 
-#: src/game.cpp:1033 src/game.cpp:1072 src/game.cpp:1097
-#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:289
+#: src/game.cpp:1038 src/game.cpp:1077 src/game.cpp:1102
+#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:291
 msgid "Connection timed out"
 msgstr ""
 
-#: src/game.cpp:1036 src/game.cpp:1074 src/game.cpp:1099
+#: src/game.cpp:1041 src/game.cpp:1079 src/game.cpp:1104
 msgid "The server responded with an error: \""
 msgstr ""
 
-#: src/game.cpp:1040
+#: src/game.cpp:1045
 msgid "Terms"
 msgstr ""
 
-#: src/game.cpp:1070
+#: src/game.cpp:1075
 msgid "Sending campaign"
 msgstr ""
 
-#: src/game.cpp:1077 src/game.cpp:1102 src/multiplayer_wait.cpp:307
+#: src/game.cpp:1082 src/game.cpp:1107 src/multiplayer_wait.cpp:307
 msgid "Response"
 msgstr ""
 
-#: src/game.cpp:1124
+#: src/game.cpp:1129
 msgid "Join Official Server"
 msgstr ""
 
-#: src/game.cpp:1125
+#: src/game.cpp:1130
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
-#: src/game.cpp:1127 src/multiplayer_lobby.cpp:448
+#: src/game.cpp:1132 src/multiplayer_lobby.cpp:448
 msgid "Join Game"
 msgstr ""
 
-#: src/game.cpp:1128
+#: src/game.cpp:1133
 msgid "Join a server or hosted game"
 msgstr ""
 
-#: src/game.cpp:1130
+#: src/game.cpp:1135
 msgid "Host Networked Game"
 msgstr ""
 
-#: src/game.cpp:1131
+#: src/game.cpp:1136
 msgid "Host a game without using a server"
 msgstr ""
 
-#: src/game.cpp:1133
+#: src/game.cpp:1138
 msgid "Hotseat Game"
 msgstr ""
 
-#: src/game.cpp:1134
+#: src/game.cpp:1139
 msgid "Play a multiplayer game sharing the same machine"
 msgstr ""
 
-#: src/game.cpp:1136
+#: src/game.cpp:1141
 msgid "Human vs AI"
 msgstr ""
 
-#: src/game.cpp:1137
+#: src/game.cpp:1142
 msgid "Play a game against AI opponents"
 msgstr ""
 
-#: src/game.cpp:1145 src/multiplayer.cpp:188
+#: src/game.cpp:1150 src/multiplayer.cpp:188
 msgid "Login: "
 msgstr ""
 
-#: src/game.cpp:1147
+#: src/game.cpp:1152
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
 
-#: src/game.cpp:1181 src/playcampaign.cpp:113 src/playcampaign.cpp:268
+#: src/game.cpp:1186 src/playcampaign.cpp:113 src/playcampaign.cpp:270
 msgid "The game could not be loaded: "
 msgstr ""
 
-#: src/game.cpp:1183 src/playcampaign.cpp:115 src/playcampaign.cpp:271
+#: src/game.cpp:1188 src/playcampaign.cpp:115 src/playcampaign.cpp:273
 msgid "Error while playing the game: "
 msgstr ""
 
-#: src/game.cpp:1195 src/playcampaign.cpp:117 src/playcampaign.cpp:274
+#: src/game.cpp:1200 src/playcampaign.cpp:117 src/playcampaign.cpp:276
 msgid "The game map could not be loaded: "
 msgstr ""
 
-#: src/game.cpp:1219
+#: src/game.cpp:1224
 msgid "Language"
 msgstr ""
 
-#: src/game.cpp:1220
+#: src/game.cpp:1225
 msgid "Choose your preferred language:"
 msgstr ""
 
-#: src/game.cpp:1356
+#: src/game.cpp:1361
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr ""
 
-#: src/game.cpp:1361
+#: src/game.cpp:1366
 msgid "ERROR DETAILS:"
 msgstr ""
 
-#: src/game.cpp:1370
+#: src/game.cpp:1375
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1420
+#: src/game.cpp:1425
 msgid "Error loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1421
+#: src/game.cpp:1426
 msgid "' (The game will now exit)"
 msgstr ""
 
-#: src/game.cpp:1534
+#: src/game.cpp:1539
 msgid "Battle for Wesnoth"
 msgstr ""
 
-#: src/game_events.cpp:616
+#: src/game_events.cpp:628
 msgid "Victory:"
 msgstr ""
 
-#: src/game_events.cpp:619
+#: src/game_events.cpp:631
 msgid "Defeat:"
 msgstr ""
 
-#: src/gamestatus.cpp:550
+#: src/gamestatus.cpp:559
 msgid "Could not write to file"
 msgstr ""
 
@@ -7561,8 +7604,8 @@ msgstr ""
 msgid "attacks"
 msgstr ""
 
-#: src/help.cpp:1120 src/menu_events.cpp:149 src/playturn.cpp:2113
-#: src/playturn.cpp:2301
+#: src/help.cpp:1120 src/menu_events.cpp:149 src/playturn.cpp:2115
+#: src/playturn.cpp:2325
 msgid "Type"
 msgstr ""
 
@@ -7678,114 +7721,114 @@ msgstr ""
 msgid "?"
 msgstr ""
 
-#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2389
-#: src/playturn.cpp:2451
+#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2413
+#: src/playturn.cpp:2475
 msgid "Recruits"
 msgstr ""
 
-#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2395
-#: src/playturn.cpp:2455
+#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2419
+#: src/playturn.cpp:2479
 msgid "Recalls"
 msgstr ""
 
-#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2401
-#: src/playturn.cpp:2459
+#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2425
+#: src/playturn.cpp:2483
 msgid "Advancements"
 msgstr ""
 
-#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2407
-#: src/playturn.cpp:2463
+#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2431
+#: src/playturn.cpp:2487
 msgid "Losses"
 msgstr ""
 
-#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2413
-#: src/playturn.cpp:2467
+#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2437
+#: src/playturn.cpp:2491
 msgid "Kills"
 msgstr ""
 
-#: src/menu_events.cpp:69 src/playturn.cpp:2419
+#: src/menu_events.cpp:69 src/playturn.cpp:2443
 msgid "Damage Inflicted"
 msgstr ""
 
-#: src/menu_events.cpp:75 src/playturn.cpp:2425
+#: src/menu_events.cpp:75 src/playturn.cpp:2449
 msgid "Damage Taken"
 msgstr ""
 
-#: src/menu_events.cpp:81 src/playturn.cpp:2431
+#: src/menu_events.cpp:81 src/playturn.cpp:2455
 msgid "Damage Inflicted (EV)"
 msgstr ""
 
-#: src/menu_events.cpp:88 src/playturn.cpp:2438
+#: src/menu_events.cpp:88 src/playturn.cpp:2462
 msgid "Damage Taken (EV)"
 msgstr ""
 
-#: src/menu_events.cpp:94 src/playturn.cpp:2444
+#: src/menu_events.cpp:94 src/playturn.cpp:2468
 msgid "Statistics"
 msgstr ""
 
-#: src/menu_events.cpp:154 src/playturn.cpp:2306 src/unit.cpp:1340
+#: src/menu_events.cpp:154 src/playturn.cpp:2330 src/unit.cpp:1354
 msgid "Moves"
 msgstr ""
 
-#: src/menu_events.cpp:155 src/playturn.cpp:2307
+#: src/menu_events.cpp:155 src/playturn.cpp:2331
 msgid "Location"
 msgstr ""
 
-#: src/menu_events.cpp:201 src/playturn.cpp:2353
+#: src/menu_events.cpp:201 src/playturn.cpp:2377
 msgid "Unit List"
 msgstr ""
 
-#: src/menu_events.cpp:215 src/playturn.cpp:1842
+#: src/menu_events.cpp:215 src/playturn.cpp:1844
 msgid "Leader"
 msgstr ""
 
 #: src/menu_events.cpp:216 src/menu_events.cpp:227
-#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1843 src/playturn.cpp:1854
+#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1845 src/playturn.cpp:1856
 msgid "Gold"
 msgstr ""
 
-#: src/menu_events.cpp:217 src/playturn.cpp:1844
+#: src/menu_events.cpp:217 src/playturn.cpp:1846
 msgid "Villages"
 msgstr ""
 
-#: src/menu_events.cpp:219 src/playturn.cpp:1846
+#: src/menu_events.cpp:219 src/playturn.cpp:1848
 msgid "Upkeep"
 msgstr ""
 
-#: src/menu_events.cpp:220 src/playturn.cpp:1847
+#: src/menu_events.cpp:220 src/playturn.cpp:1849
 msgid "Income"
 msgstr ""
 
-#: src/menu_events.cpp:304 src/playcampaign.cpp:239 src/playcampaign.cpp:360
-#: src/playturn.cpp:1692
+#: src/menu_events.cpp:304 src/playcampaign.cpp:241 src/playcampaign.cpp:362
+#: src/playturn.cpp:1694
 msgid "Name:"
 msgstr ""
 
 #: src/menu_events.cpp:309 src/menu_events.cpp:322
-#: src/multiplayer_create.cpp:403 src/playturn.cpp:1697 src/playturn.cpp:1710
+#: src/multiplayer_create.cpp:405 src/playturn.cpp:1699 src/playturn.cpp:1712
 msgid "Error"
 msgstr ""
 
-#: src/menu_events.cpp:309 src/playturn.cpp:1697
+#: src/menu_events.cpp:309 src/playturn.cpp:1699
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1707
+#: src/menu_events.cpp:319 src/playturn.cpp:1709
 msgid "Saved"
 msgstr ""
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1707
+#: src/menu_events.cpp:319 src/playturn.cpp:1709
 msgid "The game has been saved"
 msgstr ""
 
-#: src/menu_events.cpp:322 src/playcampaign.cpp:247 src/playcampaign.cpp:368
-#: src/playturn.cpp:1710
+#: src/menu_events.cpp:322 src/playcampaign.cpp:249 src/playcampaign.cpp:370
+#: src/playturn.cpp:1712
 msgid "The game could not be saved"
 msgstr ""
 
-#: src/menu_events.cpp:403 src/playturn.cpp:2502
+#: src/menu_events.cpp:403 src/playturn.cpp:2526
 msgid "Chat Log"
 msgstr ""
 
@@ -7912,21 +7955,21 @@ msgstr ""
 msgid "Empty"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:982
+#: src/multiplayer_connect.cpp:987
 msgid "This is not a multiplayer save"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1028
+#: src/multiplayer_connect.cpp:1033
 msgid "Cannot find era $era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1046
+#: src/multiplayer_connect.cpp:1051
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1082
+#: src/multiplayer_connect.cpp:1087
 msgid "Waiting for players to join..."
 msgstr ""
 
@@ -8071,7 +8114,7 @@ msgstr ""
 msgid "Experience Modifier: "
 msgstr ""
 
-#: src/multiplayer_create.cpp:401
+#: src/multiplayer_create.cpp:403
 msgid "Players: "
 msgstr ""
 
@@ -8139,15 +8182,15 @@ msgstr ""
 msgid "Choose your side:"
 msgstr ""
 
-#: src/multiplayer_wait.cpp:392 src/unit.cpp:1395
+#: src/multiplayer_wait.cpp:392 src/unit.cpp:1409
 msgid "("
 msgstr ""
 
-#: src/multiplayer_wait.cpp:392 src/unit.cpp:1402
+#: src/multiplayer_wait.cpp:392 src/unit.cpp:1416
 msgid ")"
 msgstr ""
 
-#: src/multiplayer_wait.cpp:393 src/playturn.cpp:1946
+#: src/multiplayer_wait.cpp:393 src/playturn.cpp:1948
 msgid "unit^Gold"
 msgstr ""
 
@@ -8167,31 +8210,31 @@ msgstr ""
 msgid "Could not send initial handshake"
 msgstr ""
 
-#: src/playcampaign.cpp:216
+#: src/playcampaign.cpp:218
 msgid "Defeat"
 msgstr ""
 
-#: src/playcampaign.cpp:217
+#: src/playcampaign.cpp:219
 msgid "You have been defeated!"
 msgstr ""
 
-#: src/playcampaign.cpp:230
+#: src/playcampaign.cpp:232
 msgid " replay"
 msgstr ""
 
-#: src/playcampaign.cpp:238
+#: src/playcampaign.cpp:240
 msgid "Do you want to save a replay of this scenario?"
 msgstr ""
 
-#: src/playcampaign.cpp:287
+#: src/playcampaign.cpp:289
 msgid "Downloading next level..."
 msgstr ""
 
-#: src/playcampaign.cpp:359
+#: src/playcampaign.cpp:361
 msgid "Do you want to save your game?"
 msgstr ""
 
-#: src/playcampaign.cpp:384
+#: src/playcampaign.cpp:386
 msgid "Unknown scenario: '"
 msgstr ""
 
@@ -8286,140 +8329,140 @@ msgstr ""
 msgid "Choose weapon:"
 msgstr ""
 
-#: src/playturn.cpp:1375
+#: src/playturn.cpp:1377
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 
-#: src/playturn.cpp:1383 src/playturn.cpp:1388
+#: src/playturn.cpp:1385 src/playturn.cpp:1390
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
-#: src/playturn.cpp:1403
+#: src/playturn.cpp:1405
 msgid "Auto-Save"
 msgstr ""
 
-#: src/playturn.cpp:1405
+#: src/playturn.cpp:1407
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 
-#: src/playturn.cpp:1646
+#: src/playturn.cpp:1648
 msgid "Rename Unit"
 msgstr ""
 
-#: src/playturn.cpp:1952
+#: src/playturn.cpp:1954
 msgid "You have no units available to recruit."
 msgstr ""
 
-#: src/playturn.cpp:1964
+#: src/playturn.cpp:1966
 msgid "Recruit"
 msgstr ""
 
-#: src/playturn.cpp:1965 src/playturn.cpp:2155
+#: src/playturn.cpp:1967 src/playturn.cpp:2157
 msgid "Select unit:"
 msgstr ""
 
-#: src/playturn.cpp:1999
+#: src/playturn.cpp:2001
 msgid "You don't have enough gold to recruit that unit"
 msgstr ""
 
-#: src/playturn.cpp:2057
+#: src/playturn.cpp:2059
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:2059
+#: src/playturn.cpp:2061
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:2064
+#: src/playturn.cpp:2066
 msgid "her"
 msgstr ""
 
-#: src/playturn.cpp:2064
+#: src/playturn.cpp:2066
 msgid "him"
 msgstr ""
 
-#: src/playturn.cpp:2105
+#: src/playturn.cpp:2107
 msgid "You are separated from your soldiers and may not recall them"
 msgstr ""
 
-#: src/playturn.cpp:2107
+#: src/playturn.cpp:2109
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 
-#: src/playturn.cpp:2115
+#: src/playturn.cpp:2117
 msgid "Level"
 msgstr ""
 
-#: src/playturn.cpp:2142
+#: src/playturn.cpp:2144
 msgid "Dismiss Unit"
 msgstr ""
 
-#: src/playturn.cpp:2154
+#: src/playturn.cpp:2156
 msgid "Recall"
 msgstr ""
 
-#: src/playturn.cpp:2166
+#: src/playturn.cpp:2168
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr ""
 
-#: src/playturn.cpp:2211
+#: src/playturn.cpp:2213
 msgid "Message:"
 msgstr ""
 
-#: src/playturn.cpp:2211
+#: src/playturn.cpp:2213
 msgid "Send to allies only"
 msgstr ""
 
-#: src/playturn.cpp:2481
+#: src/playturn.cpp:2505
 msgid "Search"
 msgstr ""
 
-#: src/playturn.cpp:2491
+#: src/playturn.cpp:2515
 msgid "prompt^Command:"
 msgstr ""
 
-#: src/playturn.cpp:2567
+#: src/playturn.cpp:2591
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/playturn.cpp:2695
+#: src/playturn.cpp:2719
 msgid "Place Label"
 msgstr ""
 
-#: src/playturn.cpp:2696
+#: src/playturn.cpp:2720
 msgid "Label:"
 msgstr ""
 
-#: src/playturn.cpp:2832
+#: src/playturn.cpp:2862
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
 
-#: src/playturn.cpp:2885
+#: src/playturn.cpp:2915
 msgid "Replace with AI"
 msgstr ""
 
-#: src/playturn.cpp:2886
+#: src/playturn.cpp:2916
 msgid "Replace with local player"
 msgstr ""
 
-#: src/playturn.cpp:2887
+#: src/playturn.cpp:2917
 msgid "Abort game"
 msgstr ""
 
-#: src/playturn.cpp:2890
+#: src/playturn.cpp:2920
 msgid "Replace with "
 msgstr ""
 
-#: src/playturn.cpp:2894
+#: src/playturn.cpp:2924
 msgid "has left the game. What do you want to do?"
 msgstr ""
 
@@ -8463,7 +8506,7 @@ msgstr ""
 msgid "stone: "
 msgstr ""
 
-#: src/reports.cpp:238 src/reports.cpp:240 src/unit_types.cpp:260
+#: src/reports.cpp:238 src/reports.cpp:240 src/unit_types.cpp:273
 msgid "damage"
 msgstr ""
 
@@ -8641,31 +8684,31 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr ""
 
-#: src/unit.cpp:1291 src/unit.cpp:1400
+#: src/unit.cpp:1305 src/unit.cpp:1414
 msgid "; "
 msgstr ""
 
-#: src/unit.cpp:1357
+#: src/unit.cpp:1371
 msgid "XP to advance"
 msgstr ""
 
-#: src/unit.cpp:1391
+#: src/unit.cpp:1405
 msgid ": "
 msgstr ""
 
-#: src/unit_types.cpp:268
+#: src/unit_types.cpp:281
 msgid "strikes"
 msgstr ""
 
-#: src/unit_types.cpp:1232
+#: src/unit_types.cpp:1249
 msgid "chaotic"
 msgstr ""
 
-#: src/unit_types.cpp:1232
+#: src/unit_types.cpp:1249
 msgid "lawful"
 msgstr ""
 
-#: src/unit_types.cpp:1232
+#: src/unit_types.cpp:1249
 msgid "neutral"
 msgstr ""
 

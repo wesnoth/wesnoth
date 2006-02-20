@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: no\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-02-17 13:03+0100\n"
+"POT-Creation-Date: 2006-02-20 01:03+0100\n"
 "PO-Revision-Date: 2005-09-29 19:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmål <en@li.org>\n"
@@ -222,7 +222,7 @@ msgstr "+Dansk oversettelse"
 msgid "Contributors"
 msgstr "+Medvirkende"
 
-#: data/about.cfg:470
+#: data/about.cfg:471
 #, fuzzy
 msgid "Bots"
 msgstr "+Bots"
@@ -515,6 +515,7 @@ msgstr "bue"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:65
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:65
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:44
+#: data/campaigns/The_South_Guard/units/Chocobone.cfg:49
 #: data/tutorial/units/Commander.cfg:76 data/tutorial/units/Lord.cfg:51
 #: data/units/Bone_Shooter.cfg:62 data/units/Bowman.cfg:60
 #: data/units/Cavalier.cfg:78 data/units/Cuttle_Fish.cfg:77
@@ -617,6 +618,8 @@ msgstr "ild"
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:48
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:29
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:59
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:48
 #: data/tutorial/units/Commander.cfg:173 data/tutorial/units/Elder_Mage.cfg:51
 #: data/tutorial/units/Fighter.cfg:102 data/tutorial/units/Lord.cfg:141
 #: data/units/Ancient_Lich.cfg:71 data/units/Arch_Mage.cfg:73
@@ -693,6 +696,8 @@ msgstr "kjeve"
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:36
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:33
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:48
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:47
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:36
 #: data/units/Ancient_Lich.cfg:59 data/units/Blood_Bat.cfg:45
 #: data/units/Ghost.cfg:34 data/units/Lich.cfg:39 data/units/Spectre.cfg:58
 #: data/units/Vampire_Bat.cfg:31 data/units/Wraith.cfg:34
@@ -733,11 +738,13 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:3
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:3
+#: data/campaigns/The_South_Guard/units/Chocobone.cfg:3
 msgid "Chocobone"
 msgstr "Chocobone"
 
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:33
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:33
+#: data/campaigns/The_South_Guard/units/Chocobone.cfg:33
 #, fuzzy
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
@@ -750,6 +757,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:48
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:48
+#: data/campaigns/The_South_Guard/units/Chocobone.cfg:48
 #: data/units/Drake_Clasher.cfg:101 data/units/Drake_Enforcer.cfg:109
 #: data/units/Drake_Gladiator.cfg:94 data/units/Dwarvish_Guardsman.cfg:33
 #: data/units/Dwarvish_Guardsman.cfg:49 data/units/Dwarvish_Sentinel.cfg:41
@@ -772,6 +780,7 @@ msgstr "spyd"
 
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:51
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:51
+#: data/campaigns/The_South_Guard/units/Chocobone.cfg:51
 #: data/units/Grand_Knight.cfg:59 data/units/Horseman.cfg:39
 #: data/units/Knight.cfg:58 data/units/Lancer.cfg:40 data/units/Paladin.cfg:65
 #: src/actions.cpp:456 src/actions.cpp:584
@@ -805,6 +814,10 @@ msgstr "blikk"
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:32
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:47
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:44
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:43
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:58
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:32
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:47
 #: data/units/Ancient_Lich.cfg:55 data/units/Ancient_Lich.cfg:70
 #: data/units/Dark_Adept.cfg:32 data/units/Dark_Sorcerer.cfg:58
 #: data/units/Elvish_Enchantress.cfg:140 data/units/Elvish_Sorceress.cfg:140
@@ -1212,15 +1225,19 @@ msgstr ""
 #: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:57
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:46
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:43
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:57
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:46
 #: data/units/Ancient_Lich.cfg:69 data/units/Lich.cfg:49
 msgid "magic"
 msgstr "magi"
 
 #: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:3
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:3
 msgid "Demilich"
 msgstr ""
 
 #: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:27
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:27
 msgid ""
 "After too much time dabbling with forbidden magics and dark arts, these magi "
 "have begun to pay a heavy price. Demiliches have started losing their "
@@ -1230,12 +1247,15 @@ msgstr ""
 
 #: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:42
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:31
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:42
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:31
 #: data/units/Ancient_Lich.cfg:54 data/units/Ghost.cfg:29
 #: data/units/Lich.cfg:34
 msgid "touch"
 msgstr "berøring"
 
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:3
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:3
 msgid "Dread Lich"
 msgstr ""
 
@@ -1429,6 +1449,15 @@ msgstr ""
 #: data/units/Shock_Trooper.cfg:25
 msgid "mace"
 msgstr "stridsklubbe"
+
+#: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:28
+msgid ""
+"Some Necromancers pay the ultimate sacrifice for delving into the dark arts "
+"and entered into undeath. At the apex of their power, they become a lich, a "
+"waking embodiment of dread. They are, beyond any doubt, past the point of no "
+"return. Power and immortality are the hollow consolation for what they have "
+"lost."
+msgstr ""
 
 #: data/english.cfg:2
 msgid "Easy"
@@ -1944,11 +1973,11 @@ msgstr "Innledning"
 msgid "Gameplay"
 msgstr "Spillteknikk"
 
-#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2305
+#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2329
 msgid "Traits"
 msgstr "Karaktertrekk"
 
-#: data/help.cfg:29 src/menu_events.cpp:218 src/playturn.cpp:1845
+#: data/help.cfg:29 src/menu_events.cpp:218 src/playturn.cpp:1847
 msgid "Units"
 msgstr "Enheter"
 
@@ -3012,7 +3041,7 @@ msgstr ""
 msgid "Forest"
 msgstr "Skog"
 
-#: data/help.cfg:342
+#: data/help.cfg:343
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3026,14 +3055,15 @@ msgid ""
 "\n"
 "Most units have 50% defense in forests, but cavalry are limited to 40%. "
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
-"Dwarves generally receive only 30% defense in forests."
+"Dwarves generally receive only 30% defense in forests.\n"
+"<img>src=terrain/great-tree-tile.png align=middle box=no</img>"
 msgstr ""
 
-#: data/help.cfg:347 data/terrain.cfg:316
+#: data/help.cfg:349 data/terrain.cfg:316
 msgid "Hills"
 msgstr "Åser"
 
-#: data/help.cfg:352
+#: data/help.cfg:354
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -3046,11 +3076,11 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
 
-#: data/help.cfg:357 data/terrain.cfg:350 data/terrain.cfg:357
+#: data/help.cfg:359 data/terrain.cfg:350 data/terrain.cfg:357
 msgid "Mountains"
 msgstr "Fjell"
 
-#: data/help.cfg:362
+#: data/help.cfg:364
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -3063,11 +3093,11 @@ msgid ""
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
 
-#: data/help.cfg:367 data/terrain.cfg:43
+#: data/help.cfg:369 data/terrain.cfg:43
 msgid "Swamp"
 msgstr "Sump"
 
-#: data/help.cfg:372
+#: data/help.cfg:374
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -3079,11 +3109,11 @@ msgid ""
 "all generally enjoy 60%."
 msgstr ""
 
-#: data/help.cfg:377 data/terrain.cfg:34
+#: data/help.cfg:379 data/terrain.cfg:34
 msgid "Shallow Water"
 msgstr "Grunt vann"
 
-#: data/help.cfg:382
+#: data/help.cfg:384
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -3096,11 +3126,11 @@ msgid ""
 "Naga and Mermen enjoy 60%."
 msgstr ""
 
-#: data/help.cfg:387 data/terrain.cfg:25
+#: data/help.cfg:389 data/terrain.cfg:25
 msgid "Deep Water"
 msgstr "Dypt vann"
 
-#: data/help.cfg:392
+#: data/help.cfg:394
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -3109,11 +3139,11 @@ msgid ""
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
 
-#: data/help.cfg:397 data/terrain.cfg:300
+#: data/help.cfg:399 data/terrain.cfg:300
 msgid "Snow"
 msgstr "Snø"
 
-#: data/help.cfg:402
+#: data/help.cfg:404
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -3122,22 +3152,22 @@ msgid ""
 "Most units have 20 to 40% defense in snow."
 msgstr ""
 
-#: data/help.cfg:407 data/terrain.cfg:307
+#: data/help.cfg:409 data/terrain.cfg:307
 msgid "Ice"
 msgstr "Is"
 
-#: data/help.cfg:410
+#: data/help.cfg:412
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
 
-#: data/help.cfg:415 data/terrain.cfg:446 data/terrain.cfg:533
+#: data/help.cfg:417 data/terrain.cfg:446 data/terrain.cfg:533
 msgid "Castle"
 msgstr "Borg"
 
-#: data/help.cfg:420
+#: data/help.cfg:422
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -3149,11 +3179,11 @@ msgid ""
 "Most units have about 60% defense in a castle."
 msgstr ""
 
-#: data/help.cfg:427 data/terrain.cfg:89
+#: data/help.cfg:429 data/terrain.cfg:89
 msgid "Sand"
 msgstr "Sand"
 
-#: data/help.cfg:432
+#: data/help.cfg:434
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -3162,23 +3192,23 @@ msgid ""
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
 
-#: data/help.cfg:437 data/terrain.cfg:97
+#: data/help.cfg:439 data/terrain.cfg:97
 #, fuzzy
 msgid "Desert"
 msgstr "Ørkenåser"
 
-#: data/help.cfg:440
+#: data/help.cfg:442
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
 
-#: data/help.cfg:445 data/terrain.cfg:396
+#: data/help.cfg:447 data/terrain.cfg:396
 msgid "Cave"
 msgstr "Hule"
 
-#: data/help.cfg:450
+#: data/help.cfg:452
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -3190,11 +3220,11 @@ msgid ""
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
 
-#: data/help.cfg:455 data/terrain.cfg:341
+#: data/help.cfg:457 data/terrain.cfg:341
 msgid "Rockbound Cave"
 msgstr ""
 
-#: data/help.cfg:460
+#: data/help.cfg:462
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -3207,11 +3237,11 @@ msgid ""
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
 
-#: data/help.cfg:465 data/terrain.cfg:372
+#: data/help.cfg:467 data/terrain.cfg:372
 msgid "Mushroom Grove"
 msgstr ""
 
-#: data/help.cfg:470
+#: data/help.cfg:472
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness.  Most units have trouble negotiating the spongy "
@@ -3224,18 +3254,18 @@ msgid ""
 "receive only 20%."
 msgstr ""
 
-#: data/help.cfg:475 data/terrain.cfg:138
+#: data/help.cfg:477 data/terrain.cfg:138
 msgid "Savanna"
 msgstr "Savanne"
 
-#: data/help.cfg:477
+#: data/help.cfg:479
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
 
-#: data/help.cfg:482 data/terrain.cfg:148 data/terrain.cfg:160
+#: data/help.cfg:484 data/terrain.cfg:148 data/terrain.cfg:160
 #: data/terrain.cfg:170 data/terrain.cfg:179 data/terrain.cfg:189
 #: data/terrain.cfg:199 data/terrain.cfg:219 data/terrain.cfg:229
 #: data/terrain.cfg:239 data/terrain.cfg:249 data/terrain.cfg:259
@@ -3244,7 +3274,7 @@ msgstr ""
 msgid "Village"
 msgstr "Landsby"
 
-#: data/help.cfg:487
+#: data/help.cfg:489
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -3257,11 +3287,11 @@ msgid ""
 "40%."
 msgstr ""
 
-#: data/help.cfg:494 data/terrain.cfg:420
+#: data/help.cfg:496 data/terrain.cfg:420
 msgid "Chasm"
 msgstr ""
 
-#: data/help.cfg:496
+#: data/help.cfg:498
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -3269,22 +3299,22 @@ msgid ""
 "terrain."
 msgstr ""
 
-#: data/help.cfg:501 data/terrain.cfg:427
+#: data/help.cfg:503 data/terrain.cfg:427
 msgid "Lava"
 msgstr ""
 
-#: data/help.cfg:503
+#: data/help.cfg:505
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
 "distance above it."
 msgstr ""
 
-#: data/help.cfg:508 data/terrain.cfg:52
+#: data/help.cfg:510 data/terrain.cfg:52
 msgid "River Ford"
 msgstr ""
 
-#: data/help.cfg:510
+#: data/help.cfg:512
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -3294,12 +3324,12 @@ msgid ""
 "the unit on it."
 msgstr ""
 
-#: data/help.cfg:515 data/terrain.cfg:62 data/terrain.cfg:70
+#: data/help.cfg:517 data/terrain.cfg:62 data/terrain.cfg:70
 #: data/terrain.cfg:78
 msgid "Bridge"
 msgstr "Bru"
 
-#: data/help.cfg:519
+#: data/help.cfg:521
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -3314,12 +3344,12 @@ msgid ""
 "capable of occupying a bridge hex at the same time."
 msgstr ""
 
-#: data/help.cfg:524 data/terrain.cfg:413
+#: data/help.cfg:526 data/terrain.cfg:413
 #, fuzzy
 msgid "Cave Wall"
 msgstr "Hulevegg"
 
-#: data/help.cfg:526
+#: data/help.cfg:528
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -4052,13 +4082,13 @@ msgstr "Handlinger"
 msgid "End Turn"
 msgstr "Avslutt runde"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2303
-#: src/unit.cpp:1308
+#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2327
+#: src/unit.cpp:1322
 msgid "HP"
 msgstr "LP"
 
-#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2116
-#: src/playturn.cpp:2304
+#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2118
+#: src/playturn.cpp:2328
 msgid "XP"
 msgstr "EP"
 
@@ -4366,6 +4396,19 @@ msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button.  This information is vital so we can adjust "
 "campaign difficulty."
+msgstr ""
+
+#: data/tips.cfg:35
+msgid ""
+"On maps where the shroud or fog of war has been enabled, a unit's sight is "
+"limited by its maximum movement. Remember this when deciding what unit is "
+"best to scout specific types of terrain."
+msgstr ""
+
+#: data/tips.cfg:36
+msgid ""
+"Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
+"your mouse pointer over one to get an explanation or description."
 msgstr ""
 
 #: data/traits.cfg:7
@@ -7168,7 +7211,7 @@ msgstr "Saurianerkriger"
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
-"forth the magic of the cold north, and the do retain their basic healing "
+"forth the magic of the cold north, and they do retain their basic healing "
 "ability."
 msgstr ""
 
@@ -7870,11 +7913,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Ugydig)"
 
-#: src/dialogs.cpp:381 src/game.cpp:746
+#: src/dialogs.cpp:381 src/game.cpp:751
 msgid "Campaign"
 msgstr "Felttog"
 
-#: src/dialogs.cpp:383 src/game.cpp:1143
+#: src/dialogs.cpp:383 src/game.cpp:1148
 msgid "Multiplayer"
 msgstr "Gruppespill"
 
@@ -7887,7 +7930,7 @@ msgid "replay"
 msgstr "avspilling"
 
 #: src/dialogs.cpp:395 src/menu_events.cpp:295 src/multiplayer_lobby.cpp:330
-#: src/playturn.cpp:1683
+#: src/playturn.cpp:1685
 msgid "Turn"
 msgstr "Runde"
 
@@ -7962,9 +8005,9 @@ msgstr ""
 msgid "Date"
 msgstr "Port"
 
-#: src/dialogs.cpp:558 src/game.cpp:879 src/help.cpp:1119
-#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:31 src/playturn.cpp:2114
-#: src/playturn.cpp:2302
+#: src/dialogs.cpp:558 src/game.cpp:884 src/help.cpp:1119
+#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:31 src/playturn.cpp:2116
+#: src/playturn.cpp:2326
 msgid "Name"
 msgstr "Navn"
 
@@ -8004,16 +8047,16 @@ msgstr "Flytt: "
 msgid "Screenshot"
 msgstr ""
 
-#: src/game.cpp:385
+#: src/game.cpp:390
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:616
+#: src/game.cpp:621
 #, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Det er noe galt med filen du prøvde å laste"
 
-#: src/game.cpp:638 src/multiplayer_connect.cpp:990
+#: src/game.cpp:643 src/multiplayer_connect.cpp:995
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -8021,267 +8064,267 @@ msgstr ""
 "Dette lagrede spillet er fra en annen versjon. Vil du prøve å laste det inn "
 "likevel?"
 
-#: src/game.cpp:646 src/game.cpp:649 src/multiplayer_connect.cpp:975
+#: src/game.cpp:651 src/game.cpp:654 src/multiplayer_connect.cpp:980
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Det er noe galt med filen du prøver å laste: '"
 
-#: src/game.cpp:652
+#: src/game.cpp:657
 msgid "File I/O Error while reading the game"
 msgstr "I/U-feil ved lesing frå fil"
 
-#: src/game.cpp:736
+#: src/game.cpp:741
 msgid "Get More Campaigns..."
 msgstr "Hent flere felttog ..."
 
-#: src/game.cpp:737
+#: src/game.cpp:742
 #, fuzzy
 msgid "Download more campaigns from an Internet server."
 msgstr "Last ned flere felttog fra en tjener på internett."
 
-#: src/game.cpp:747
+#: src/game.cpp:752
 msgid "Choose the campaign you want to play:"
 msgstr "Velg hvilket felttog du vil spille:"
 
-#: src/game.cpp:775
+#: src/game.cpp:780
 msgid "Difficulty"
 msgstr "Vanskelighet"
 
-#: src/game.cpp:776
+#: src/game.cpp:781
 msgid "Select difficulty level:"
 msgstr "Velg vanskelighetsgrad:"
 
-#: src/game.cpp:801
+#: src/game.cpp:806
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:804
+#: src/game.cpp:809
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:807
+#: src/game.cpp:812
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:834
+#: src/game.cpp:839
 msgid "Connect to Server"
 msgstr "Koble til tjener"
 
-#: src/game.cpp:835
+#: src/game.cpp:840
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 "Du kommer nå til å koble til en felttogstjener for å laste ned felttog."
 
-#: src/game.cpp:836
+#: src/game.cpp:841
 msgid "Server: "
 msgstr "Tjener: "
 
-#: src/game.cpp:849
+#: src/game.cpp:854
 msgid "Could not connect to host."
 msgstr "Klarte ikke koble til vert."
 
-#: src/game.cpp:857
+#: src/game.cpp:862
 msgid "Asking for campaign list"
 msgstr ""
 
-#: src/game.cpp:870
+#: src/game.cpp:875
 msgid "Error communicating with the server."
 msgstr "Feil i kommunikasjon med tjeneren."
 
-#: src/game.cpp:879 src/titlescreen.cpp:183
+#: src/game.cpp:884 src/titlescreen.cpp:183
 msgid "Version"
 msgstr "Versjon"
 
-#: src/game.cpp:880
+#: src/game.cpp:885
 msgid "Author"
 msgstr "Forfatter"
 
-#: src/game.cpp:880
+#: src/game.cpp:885
 msgid "Downloads"
 msgstr "Nedlastinger"
 
-#: src/game.cpp:880
+#: src/game.cpp:885
 msgid "Size"
 msgstr "Størrelse"
 
-#: src/game.cpp:941
+#: src/game.cpp:946
 msgid "Publish campaign: "
 msgstr "Publiser felttog: "
 
-#: src/game.cpp:945
+#: src/game.cpp:950
 msgid "Delete campaign: "
 msgstr "Fjern felttog: "
 
-#: src/game.cpp:949
+#: src/game.cpp:954
 msgid "There are no campaigns available for download from this server."
 msgstr "Det er ingen felttog tilgjengelig for nedlasting på denne tjeneren."
 
-#: src/game.cpp:956
+#: src/game.cpp:961
 msgid "Choose the campaign to download."
 msgstr "Velg felttog som skal lastes ned."
 
-#: src/game.cpp:956
+#: src/game.cpp:961
 msgid "Get Campaign"
 msgstr "Hent felttog"
 
-#: src/game.cpp:976
+#: src/game.cpp:981
 msgid "Downloading campaign..."
 msgstr "Laster ned felttog ..."
 
-#: src/game.cpp:1000
+#: src/game.cpp:1005
 msgid "Cannot rescan the filesystem"
 msgstr "Kan ikke lese om igjen filsystemet"
 
-#: src/game.cpp:1015
+#: src/game.cpp:1020
 msgid "Campaign Installed"
 msgstr "Felttog installert"
 
-#: src/game.cpp:1015
+#: src/game.cpp:1020
 msgid "The campaign has been installed."
 msgstr "Felttoget er installert."
 
-#: src/game.cpp:1017
+#: src/game.cpp:1022
 msgid "Network communication error."
 msgstr "Nettverksfeil."
 
-#: src/game.cpp:1019
+#: src/game.cpp:1024
 msgid "Remote host disconnected."
 msgstr "Tilkobling avbrutt."
 
-#: src/game.cpp:1021
+#: src/game.cpp:1026
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Det var et problem under oppretting av de filer som trengs for å installere "
 "dette felttoget."
 
-#: src/game.cpp:1033 src/game.cpp:1072 src/game.cpp:1097
-#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:289
+#: src/game.cpp:1038 src/game.cpp:1077 src/game.cpp:1102
+#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:291
 msgid "Connection timed out"
 msgstr "Forbindelse utgått på tid"
 
-#: src/game.cpp:1036 src/game.cpp:1074 src/game.cpp:1099
+#: src/game.cpp:1041 src/game.cpp:1079 src/game.cpp:1104
 msgid "The server responded with an error: \""
 msgstr "Teneren svarte med en feil: \""
 
-#: src/game.cpp:1040
+#: src/game.cpp:1045
 msgid "Terms"
 msgstr "Vilkår"
 
-#: src/game.cpp:1070
+#: src/game.cpp:1075
 #, fuzzy
 msgid "Sending campaign"
 msgstr "Laster ned felttog ..."
 
-#: src/game.cpp:1077 src/game.cpp:1102 src/multiplayer_wait.cpp:307
+#: src/game.cpp:1082 src/game.cpp:1107 src/multiplayer_wait.cpp:307
 msgid "Response"
 msgstr "Svar"
 
-#: src/game.cpp:1124
+#: src/game.cpp:1129
 msgid "Join Official Server"
 msgstr "Koble til offisiell vert"
 
-#: src/game.cpp:1125
+#: src/game.cpp:1130
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Koble til den offisielle Wesnoth-flerspillerverten"
 
-#: src/game.cpp:1127 src/multiplayer_lobby.cpp:448
+#: src/game.cpp:1132 src/multiplayer_lobby.cpp:448
 msgid "Join Game"
 msgstr "Bli med i spill"
 
-#: src/game.cpp:1128
+#: src/game.cpp:1133
 msgid "Join a server or hosted game"
 msgstr "Koble opp til en vertsmaskin eller annet spill"
 
-#: src/game.cpp:1130
+#: src/game.cpp:1135
 msgid "Host Networked Game"
 msgstr "Vær vert for nettverksspill"
 
-#: src/game.cpp:1131
+#: src/game.cpp:1136
 msgid "Host a game without using a server"
 msgstr "Vær vert for et spill uten server"
 
-#: src/game.cpp:1133
+#: src/game.cpp:1138
 #, fuzzy
 msgid "Hotseat Game"
 msgstr "Populære spill"
 
-#: src/game.cpp:1134
+#: src/game.cpp:1139
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Spill et gruppespill med den samme datamaskinen"
 
-#: src/game.cpp:1136
+#: src/game.cpp:1141
 msgid "Human vs AI"
 msgstr "Mennesker mot datamaskin"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1142
 msgid "Play a game against AI opponents"
 msgstr "Spill mot datamaskinen"
 
-#: src/game.cpp:1145 src/multiplayer.cpp:188
+#: src/game.cpp:1150 src/multiplayer.cpp:188
 msgid "Login: "
 msgstr "Logg inn: "
 
-#: src/game.cpp:1147
+#: src/game.cpp:1152
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
 
-#: src/game.cpp:1181 src/playcampaign.cpp:113 src/playcampaign.cpp:268
+#: src/game.cpp:1186 src/playcampaign.cpp:113 src/playcampaign.cpp:270
 msgid "The game could not be loaded: "
 msgstr "Spillet kunne ikke lastes: "
 
-#: src/game.cpp:1183 src/playcampaign.cpp:115 src/playcampaign.cpp:271
+#: src/game.cpp:1188 src/playcampaign.cpp:115 src/playcampaign.cpp:273
 msgid "Error while playing the game: "
 msgstr "Feil under spilling av spillet: "
 
-#: src/game.cpp:1195 src/playcampaign.cpp:117 src/playcampaign.cpp:274
+#: src/game.cpp:1200 src/playcampaign.cpp:117 src/playcampaign.cpp:276
 msgid "The game map could not be loaded: "
 msgstr "Spillkartet kunne ikke lastes: "
 
-#: src/game.cpp:1219
+#: src/game.cpp:1224
 msgid "Language"
 msgstr "Språk"
 
-#: src/game.cpp:1220
+#: src/game.cpp:1225
 msgid "Choose your preferred language:"
 msgstr "Velg språket du foretrekker:"
 
-#: src/game.cpp:1356
+#: src/game.cpp:1361
 #, fuzzy
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "Spillkartet kunne ikke lastes: "
 
-#: src/game.cpp:1361
+#: src/game.cpp:1366
 msgid "ERROR DETAILS:"
 msgstr ""
 
-#: src/game.cpp:1370
+#: src/game.cpp:1375
 #, fuzzy
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Feil ved lasting av konfigurasjonsfiler: '"
 
-#: src/game.cpp:1420
+#: src/game.cpp:1425
 msgid "Error loading game configuration files: '"
 msgstr "Feil ved lasting av konfigurasjonsfiler: '"
 
-#: src/game.cpp:1421
+#: src/game.cpp:1426
 msgid "' (The game will now exit)"
 msgstr "' (Spillet vil nå avsluttes)"
 
-#: src/game.cpp:1534
+#: src/game.cpp:1539
 msgid "Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game_events.cpp:616
+#: src/game_events.cpp:628
 msgid "Victory:"
 msgstr "Seier:"
 
-#: src/game_events.cpp:619
+#: src/game_events.cpp:631
 msgid "Defeat:"
 msgstr "Nederlag:"
 
-#: src/gamestatus.cpp:550
+#: src/gamestatus.cpp:559
 #, fuzzy
 msgid "Could not write to file"
 msgstr "Klarte ikke koble til vert."
@@ -8306,8 +8349,8 @@ msgstr "Nødvendige EP: "
 msgid "attacks"
 msgstr "angrep"
 
-#: src/help.cpp:1120 src/menu_events.cpp:149 src/playturn.cpp:2113
-#: src/playturn.cpp:2301
+#: src/help.cpp:1120 src/menu_events.cpp:149 src/playturn.cpp:2115
+#: src/playturn.cpp:2325
 msgid "Type"
 msgstr "Type"
 
@@ -8438,95 +8481,95 @@ msgstr "Automatisk språkvalg"
 msgid "?"
 msgstr ""
 
-#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2389
-#: src/playturn.cpp:2451
+#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2413
+#: src/playturn.cpp:2475
 msgid "Recruits"
 msgstr "Rekrutter"
 
-#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2395
-#: src/playturn.cpp:2455
+#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2419
+#: src/playturn.cpp:2479
 msgid "Recalls"
 msgstr "Tilbakekallinger"
 
-#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2401
-#: src/playturn.cpp:2459
+#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2425
+#: src/playturn.cpp:2483
 msgid "Advancements"
 msgstr "Forfremmelser"
 
-#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2407
-#: src/playturn.cpp:2463
+#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2431
+#: src/playturn.cpp:2487
 msgid "Losses"
 msgstr "Tap"
 
-#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2413
-#: src/playturn.cpp:2467
+#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2437
+#: src/playturn.cpp:2491
 msgid "Kills"
 msgstr "Drepte fiender"
 
-#: src/menu_events.cpp:69 src/playturn.cpp:2419
+#: src/menu_events.cpp:69 src/playturn.cpp:2443
 msgid "Damage Inflicted"
 msgstr "Skade mottat"
 
-#: src/menu_events.cpp:75 src/playturn.cpp:2425
+#: src/menu_events.cpp:75 src/playturn.cpp:2449
 msgid "Damage Taken"
 msgstr "Mottatt skade"
 
-#: src/menu_events.cpp:81 src/playturn.cpp:2431
+#: src/menu_events.cpp:81 src/playturn.cpp:2455
 msgid "Damage Inflicted (EV)"
 msgstr "Utført skade (VV)"
 
-#: src/menu_events.cpp:88 src/playturn.cpp:2438
+#: src/menu_events.cpp:88 src/playturn.cpp:2462
 msgid "Damage Taken (EV)"
 msgstr "Mottatt skade (VV)"
 
-#: src/menu_events.cpp:94 src/playturn.cpp:2444
+#: src/menu_events.cpp:94 src/playturn.cpp:2468
 msgid "Statistics"
 msgstr "Statistikk"
 
-#: src/menu_events.cpp:154 src/playturn.cpp:2306 src/unit.cpp:1340
+#: src/menu_events.cpp:154 src/playturn.cpp:2330 src/unit.cpp:1354
 msgid "Moves"
 msgstr "Flytt"
 
-#: src/menu_events.cpp:155 src/playturn.cpp:2307
+#: src/menu_events.cpp:155 src/playturn.cpp:2331
 msgid "Location"
 msgstr "Sted"
 
-#: src/menu_events.cpp:201 src/playturn.cpp:2353
+#: src/menu_events.cpp:201 src/playturn.cpp:2377
 msgid "Unit List"
 msgstr "Liste over enheter"
 
-#: src/menu_events.cpp:215 src/playturn.cpp:1842
+#: src/menu_events.cpp:215 src/playturn.cpp:1844
 msgid "Leader"
 msgstr "Leder"
 
 #: src/menu_events.cpp:216 src/menu_events.cpp:227
-#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1843 src/playturn.cpp:1854
+#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1845 src/playturn.cpp:1856
 msgid "Gold"
 msgstr "Gullstykker"
 
-#: src/menu_events.cpp:217 src/playturn.cpp:1844
+#: src/menu_events.cpp:217 src/playturn.cpp:1846
 msgid "Villages"
 msgstr "Landsbyer"
 
-#: src/menu_events.cpp:219 src/playturn.cpp:1846
+#: src/menu_events.cpp:219 src/playturn.cpp:1848
 msgid "Upkeep"
 msgstr "Underhold"
 
-#: src/menu_events.cpp:220 src/playturn.cpp:1847
+#: src/menu_events.cpp:220 src/playturn.cpp:1849
 msgid "Income"
 msgstr "Inntekt"
 
-#: src/menu_events.cpp:304 src/playcampaign.cpp:239 src/playcampaign.cpp:360
-#: src/playturn.cpp:1692
+#: src/menu_events.cpp:304 src/playcampaign.cpp:241 src/playcampaign.cpp:362
+#: src/playturn.cpp:1694
 msgid "Name:"
 msgstr "Navn:"
 
 #: src/menu_events.cpp:309 src/menu_events.cpp:322
-#: src/multiplayer_create.cpp:403 src/playturn.cpp:1697 src/playturn.cpp:1710
+#: src/multiplayer_create.cpp:405 src/playturn.cpp:1699 src/playturn.cpp:1712
 msgid "Error"
 msgstr "Feil"
 
-#: src/menu_events.cpp:309 src/playturn.cpp:1697
+#: src/menu_events.cpp:309 src/playturn.cpp:1699
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -8534,20 +8577,20 @@ msgstr ""
 "Filnavn kan ikke inneholde kolon eller skråstreker. Vennligst velg et annet "
 "navn."
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1707
+#: src/menu_events.cpp:319 src/playturn.cpp:1709
 msgid "Saved"
 msgstr "Lagret"
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1707
+#: src/menu_events.cpp:319 src/playturn.cpp:1709
 msgid "The game has been saved"
 msgstr "Spillet har nå blitt lagret"
 
-#: src/menu_events.cpp:322 src/playcampaign.cpp:247 src/playcampaign.cpp:368
-#: src/playturn.cpp:1710
+#: src/menu_events.cpp:322 src/playcampaign.cpp:249 src/playcampaign.cpp:370
+#: src/playturn.cpp:1712
 msgid "The game could not be saved"
 msgstr "Spillet kunne ikke lagres"
 
-#: src/menu_events.cpp:403 src/playturn.cpp:2502
+#: src/menu_events.cpp:403 src/playturn.cpp:2526
 msgid "Chat Log"
 msgstr "Pratelogg"
 
@@ -8676,15 +8719,15 @@ msgstr "Datastyrt spiller"
 msgid "Empty"
 msgstr "Tom(t)"
 
-#: src/multiplayer_connect.cpp:982
+#: src/multiplayer_connect.cpp:987
 msgid "This is not a multiplayer save"
 msgstr "Dette er ikke et lagret flerspiller-spill"
 
-#: src/multiplayer_connect.cpp:1028
+#: src/multiplayer_connect.cpp:1033
 msgid "Cannot find era $era"
 msgstr "Finner ikke epoke $era"
 
-#: src/multiplayer_connect.cpp:1046
+#: src/multiplayer_connect.cpp:1051
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -8692,7 +8735,7 @@ msgstr ""
 "Seier:\n"
 "@Overvinn fiendens leder(e)"
 
-#: src/multiplayer_connect.cpp:1082
+#: src/multiplayer_connect.cpp:1087
 msgid "Waiting for players to join..."
 msgstr "Venter på at spillere skal bli med ..."
 
@@ -8841,7 +8884,7 @@ msgstr "Gull fra landsbyer: "
 msgid "Experience Modifier: "
 msgstr "Erfaringskrav: "
 
-#: src/multiplayer_create.cpp:401
+#: src/multiplayer_create.cpp:403
 msgid "Players: "
 msgstr "Spillere: "
 
@@ -8917,15 +8960,15 @@ msgstr "Laster spilldata..."
 msgid "Choose your side:"
 msgstr "Velg side:"
 
-#: src/multiplayer_wait.cpp:392 src/unit.cpp:1395
+#: src/multiplayer_wait.cpp:392 src/unit.cpp:1409
 msgid "("
 msgstr ""
 
-#: src/multiplayer_wait.cpp:392 src/unit.cpp:1402
+#: src/multiplayer_wait.cpp:392 src/unit.cpp:1416
 msgid ")"
 msgstr ""
 
-#: src/multiplayer_wait.cpp:393 src/playturn.cpp:1946
+#: src/multiplayer_wait.cpp:393 src/playturn.cpp:1948
 msgid "unit^Gold"
 msgstr "Gull"
 
@@ -8947,33 +8990,33 @@ msgstr "Klarte ikke koble til vert."
 msgid "Could not send initial handshake"
 msgstr ""
 
-#: src/playcampaign.cpp:216
+#: src/playcampaign.cpp:218
 msgid "Defeat"
 msgstr "Nederlag"
 
-#: src/playcampaign.cpp:217
+#: src/playcampaign.cpp:219
 msgid "You have been defeated!"
 msgstr "Du har tapt!"
 
-#: src/playcampaign.cpp:230
+#: src/playcampaign.cpp:232
 #, fuzzy
 msgid " replay"
 msgstr "avspilling"
 
-#: src/playcampaign.cpp:238
+#: src/playcampaign.cpp:240
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Vil du lagre hendelsene som skjedde i dette scenariet?"
 
-#: src/playcampaign.cpp:287
+#: src/playcampaign.cpp:289
 #, fuzzy
 msgid "Downloading next level..."
 msgstr "Laster ned felttog ..."
 
-#: src/playcampaign.cpp:359
+#: src/playcampaign.cpp:361
 msgid "Do you want to save your game?"
 msgstr "Vil du lagre dette spillet?"
 
-#: src/playcampaign.cpp:384
+#: src/playcampaign.cpp:386
 msgid "Unknown scenario: '"
 msgstr "Ukjent scenario: '"
 
@@ -9071,7 +9114,7 @@ msgstr "Angrip fiende"
 msgid "Choose weapon:"
 msgstr "Velg våpen:"
 
-#: src/playturn.cpp:1375
+#: src/playturn.cpp:1377
 #, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
@@ -9079,39 +9122,39 @@ msgstr ""
 "Du har ikke begynt turen din ennå. Er du sikker på at du vil avslutte turen "
 "din?"
 
-#: src/playturn.cpp:1383 src/playturn.cpp:1388
+#: src/playturn.cpp:1385 src/playturn.cpp:1390
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Noen enheter kan fremdeles flytte. Vil du likevel avslutte runden din?"
 
-#: src/playturn.cpp:1403
+#: src/playturn.cpp:1405
 msgid "Auto-Save"
 msgstr "Lagre automatisk"
 
-#: src/playturn.cpp:1405
+#: src/playturn.cpp:1407
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kunne ikke lagre spillet automatisk. Du bør lagre spillet manuelt."
 
-#: src/playturn.cpp:1646
+#: src/playturn.cpp:1648
 msgid "Rename Unit"
 msgstr "Gi enheten nytt navn"
 
-#: src/playturn.cpp:1952
+#: src/playturn.cpp:1954
 msgid "You have no units available to recruit."
 msgstr "Det finnes ingen enheter du kan rekruttere."
 
-#: src/playturn.cpp:1964
+#: src/playturn.cpp:1966
 msgid "Recruit"
 msgstr "Rekrutter"
 
-#: src/playturn.cpp:1965 src/playturn.cpp:2155
+#: src/playturn.cpp:1967 src/playturn.cpp:2157
 msgid "Select unit:"
 msgstr "Velg enhet:"
 
-#: src/playturn.cpp:1999
+#: src/playturn.cpp:2001
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Du har ikke nok gullstykker til å rekruttere denne enheten."
 
-#: src/playturn.cpp:2057
+#: src/playturn.cpp:2059
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -9119,7 +9162,7 @@ msgstr ""
 "Men herre, dette er en erfaren enhet av høy rang! Er du sikker på at du vil "
 "sende bort $noun?"
 
-#: src/playturn.cpp:2059
+#: src/playturn.cpp:2061
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -9127,19 +9170,19 @@ msgstr ""
 "Men herre, denne enheten er nær ved å gå opp et nivå! Er du sikker på at du "
 "vil sende bort $noun?"
 
-#: src/playturn.cpp:2064
+#: src/playturn.cpp:2066
 msgid "her"
 msgstr "henne"
 
-#: src/playturn.cpp:2064
+#: src/playturn.cpp:2066
 msgid "him"
 msgstr "ham"
 
-#: src/playturn.cpp:2105
+#: src/playturn.cpp:2107
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Du er blitt skilt fra soldatene dine og kan ikke kalle dem tilbake"
 
-#: src/playturn.cpp:2107
+#: src/playturn.cpp:2109
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -9147,52 +9190,52 @@ msgstr ""
 "Det finnes ingen tropper å tilbakekalle\n"
 "(Du må ha veterantropper som har overlevd tidligere scenarier)."
 
-#: src/playturn.cpp:2115
+#: src/playturn.cpp:2117
 #, fuzzy
 msgid "Level"
 msgstr "nivå"
 
-#: src/playturn.cpp:2142
+#: src/playturn.cpp:2144
 msgid "Dismiss Unit"
 msgstr "Send bort enhet"
 
-#: src/playturn.cpp:2154
+#: src/playturn.cpp:2156
 msgid "Recall"
 msgstr "Tilbakekall"
 
-#: src/playturn.cpp:2166
+#: src/playturn.cpp:2168
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Du må ha minst $cost gullstykker for å tilbakekalle en enhet"
 
-#: src/playturn.cpp:2211
+#: src/playturn.cpp:2213
 msgid "Message:"
 msgstr "Beskjed:"
 
-#: src/playturn.cpp:2211
+#: src/playturn.cpp:2213
 msgid "Send to allies only"
 msgstr "Send kun til allierte"
 
-#: src/playturn.cpp:2481
+#: src/playturn.cpp:2505
 msgid "Search"
 msgstr "Søk"
 
-#: src/playturn.cpp:2491
+#: src/playturn.cpp:2515
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
-#: src/playturn.cpp:2567
+#: src/playturn.cpp:2591
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kunne ikke finne navn eller enhet som inneholdt '$search'."
 
-#: src/playturn.cpp:2695
+#: src/playturn.cpp:2719
 msgid "Place Label"
 msgstr "Sett ut navn"
 
-#: src/playturn.cpp:2696
+#: src/playturn.cpp:2720
 msgid "Label:"
 msgstr "Namn:"
 
-#: src/playturn.cpp:2832
+#: src/playturn.cpp:2862
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -9200,23 +9243,23 @@ msgstr ""
 "Spillene er ikke synkroniserte og må derfor avsluttes. Vil du lagre en "
 "feillogg?"
 
-#: src/playturn.cpp:2885
+#: src/playturn.cpp:2915
 msgid "Replace with AI"
 msgstr "Erstatt med datastyrt spiller"
 
-#: src/playturn.cpp:2886
+#: src/playturn.cpp:2916
 msgid "Replace with local player"
 msgstr "Erstatt med lokal spiller"
 
-#: src/playturn.cpp:2887
+#: src/playturn.cpp:2917
 msgid "Abort game"
 msgstr "Avbryt spill"
 
-#: src/playturn.cpp:2890
+#: src/playturn.cpp:2920
 msgid "Replace with "
 msgstr "Erstatt med "
 
-#: src/playturn.cpp:2894
+#: src/playturn.cpp:2924
 msgid "has left the game. What do you want to do?"
 msgstr "har forlatt spillet. Hva vil du gjøre?"
 
@@ -9271,7 +9314,7 @@ msgstr ""
 msgid "stone: "
 msgstr "forsteinet: "
 
-#: src/reports.cpp:238 src/reports.cpp:240 src/unit_types.cpp:260
+#: src/reports.cpp:238 src/reports.cpp:240 src/unit_types.cpp:273
 msgid "damage"
 msgstr "skade"
 
@@ -9454,31 +9497,31 @@ msgstr "Mer"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoths krønike"
 
-#: src/unit.cpp:1291 src/unit.cpp:1400
+#: src/unit.cpp:1305 src/unit.cpp:1414
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:1357
+#: src/unit.cpp:1371
 msgid "XP to advance"
 msgstr ""
 
-#: src/unit.cpp:1391
+#: src/unit.cpp:1405
 msgid ": "
 msgstr ": "
 
-#: src/unit_types.cpp:268
+#: src/unit_types.cpp:281
 msgid "strikes"
 msgstr "slag"
 
-#: src/unit_types.cpp:1232
+#: src/unit_types.cpp:1249
 msgid "chaotic"
 msgstr "kaotisk"
 
-#: src/unit_types.cpp:1232
+#: src/unit_types.cpp:1249
 msgid "lawful"
 msgstr "lovlydig"
 
-#: src/unit_types.cpp:1232
+#: src/unit_types.cpp:1249
 msgid "neutral"
 msgstr "nøytral"
 
