@@ -497,11 +497,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 	else if(cmd == "modify_turns") {
 		const std::string& value = cfg["value"];
-		const bool modify = cfg["add"] != "yes";
+		const std::string& add = cfg["add"];
 		
 		wassert(status_ptr != NULL);
-		if(modify) {
-			status_ptr->modify_turns(value);
+		if(add != "") {
+			status_ptr->modify_turns(add);
 		} else {
 			status_ptr->add_turns(lexical_cast_default<int>(value,0));
 		}
