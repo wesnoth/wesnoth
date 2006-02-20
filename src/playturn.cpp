@@ -756,17 +756,6 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 		current_paths_ = paths();
 		gui_.unhighlight_reach();
 
-		game_events::fire("attack",attacker_loc,defender_loc);
-
-		//the event could have killed either the attacker or
-		//defender, so we have to make sure they still exist
-		attacker = units_.find(attacker_loc);
-		defender = units_.find(defender_loc);
-
-		if(attacker == units_.end() || defender == units_.end() || size_t(weapons[res]) >= attacks.size()) {
-			return true;
-		}
-
 		gui_.invalidate_all();
 		gui_.draw();
 

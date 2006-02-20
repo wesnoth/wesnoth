@@ -898,14 +898,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
 
-			game_events::fire("attack",src,dst);
-
-			u = units.find(src);
-			tgt = units.find(dst);
-
-			if(u != units.end() && tgt != units.end()) {
-				attack(disp, map, teams, src, dst, weapon_num, units, state, gameinfo);
-			}
+			attack(disp, map, teams, src, dst, weapon_num, units, state, gameinfo);
 
 			u = units.find(src);
 			tgt = units.find(dst);

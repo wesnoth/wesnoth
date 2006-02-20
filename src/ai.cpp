@@ -1008,7 +1008,6 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 		}
 
 		recorder.add_attack(u,target,weapon);
-		game_events::fire("attack",u,target);
 
 		attack(info_.disp, info_.map, info_.teams, u, target, weapon, info_.units, info_.state, info_.gameinfo);
 		check_victory(info_.units,info_.teams);

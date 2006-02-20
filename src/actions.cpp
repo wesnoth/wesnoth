@@ -719,7 +719,30 @@ void attack(display& gui, const gamemap& map,
                                                    units, state);
 
 	statistics::attack_context attack_stats(a->second,d->second,stats);
-
+	
+	LOG_NG << "firing attack event\n";
+	config dat;
+	dat.add_child("first");
+	dat.add_child("second");
+	(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
+	(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
+	gamemap::TERRAIN att_terrain = map[attacker.x][attacker.y];
+	std::string terrain_letter("");
+	terrain_letter += att_terrain;
+	(*(dat.child("first")))["terrain"]=terrain_letter;
+	gamemap::TERRAIN dtt_terrain = map[defender.x][defender.y];
+	terrain_letter = "";
+	terrain_letter += dtt_terrain;
+	(*(dat.child("second")))["terrain"]=terrain_letter;
+	game_events::fire("attack",attacker,defender,dat);
+	//the event could have killed either the attacker or
+	//defender, so we have to make sure they still exist
+	a = units.find(attacker);
+	d = units.find(defender);
+	if(a == units.end() || d == units.end() || size_t(attack_with) >= a->second.attacks().size() || size_t(stats.defend_with) >= d->second.attacks().size()) {
+		return;
+	}
+	
 	int orig_attacks = stats.nattacks;
 	int orig_defends = stats.ndefends;
 
@@ -802,7 +825,7 @@ void attack(display& gui, const gamemap& map,
 				game_events::fire("attacker_hits",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
-				if(a == units.end() || d == units.end()) {
+				if(a == units.end() || d == units.end() || size_t(attack_with) >= a->second.attacks().size() || size_t(stats.defend_with) >= d->second.attacks().size()) {
 					recalculate_fog(map,state,info,units,teams,attacker_side-1);
 					recalculate_fog(map,state,info,units,teams,defender_side-1);
 					gui.recalculate_minimap();
@@ -833,7 +856,7 @@ void attack(display& gui, const gamemap& map,
 				game_events::fire("attacker_misses",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
-				if(a == units.end() || d == units.end()) {
+				if(a == units.end() || d == units.end() || size_t(attack_with) >= a->second.attacks().size() || size_t(stats.defend_with) >= d->second.attacks().size()) {
 					recalculate_fog(map,state,info,units,teams,attacker_side-1);
 					recalculate_fog(map,state,info,units,teams,defender_side-1);
 					gui.recalculate_minimap();
@@ -1048,7 +1071,7 @@ void attack(display& gui, const gamemap& map,
 				game_events::fire("defender_hits",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
-				if(a == units.end() || d == units.end()) {
+				if(a == units.end() || d == units.end() || size_t(attack_with) >= a->second.attacks().size() || size_t(stats.defend_with) >= d->second.attacks().size()) {
 					recalculate_fog(map,state,info,units,teams,attacker_side-1);
 					recalculate_fog(map,state,info,units,teams,defender_side-1);
 					gui.recalculate_minimap();
@@ -1077,7 +1100,7 @@ void attack(display& gui, const gamemap& map,
 				game_events::fire("defender_misses",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
-				if(a == units.end() || d == units.end()) {
+				if(a == units.end() || d == units.end() || size_t(attack_with) >= a->second.attacks().size() || size_t(stats.defend_with) >= d->second.attacks().size()) {
 					recalculate_fog(map,state,info,units,teams,attacker_side-1);
 					recalculate_fog(map,state,info,units,teams,defender_side-1);
 					gui.recalculate_minimap();
