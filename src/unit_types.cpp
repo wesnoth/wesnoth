@@ -67,22 +67,8 @@ attack_type::attack_type(const config& cfg,const unit_type& unit)
 	damage_ = atol(cfg["damage"].c_str());
 	num_attacks_ = atol(cfg["number"].c_str());
 
-	const std::string& attack_weight_string=cfg["attack_weight"];
-	char *aptr;
-	double res = strtod(attack_weight_string.c_str(),&aptr);
-	if (attack_weight_string.empty() || *aptr != '\0') {
-		attack_weight_ = 1.0;
-	} else {
-		attack_weight_ = res;
-	}
-	const std::string& defense_weight_string=cfg["defense_weight"];
-	char *dptr;
-	res = strtod(defense_weight_string.c_str(),&dptr);
-	if (defense_weight_string.empty() || *dptr != '\0') {
-		defense_weight_ = 1.0;
-	} else {
-		defense_weight_ = res;
-	}
+	attack_weight_ = lexical_cast_default<double>(cfg["attack_weight"],1.0);
+	defense_weight_ = lexical_cast_default<double>(cfg["defense_weight"],1.0);
 }
 
 const t_string& attack_type::name() const
@@ -250,6 +236,8 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 	const std::string& set_special = cfg["set_special"];
 	const std::string& increase_damage = cfg["increase_damage"];
 	const std::string& increase_attacks = cfg["increase_attacks"];
+	const std::string& set_attack_weight = cfg["attack_weight"];
+	const std::string& set_defense_weight = cfg["defense_weight"];
 
 	std::stringstream desc;
 
@@ -280,6 +268,14 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 		if(description != NULL) {
 			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks << " " << _("strikes");
 		}
+	}
+
+	if(set_attack_weight.empty() == false) {
+		attack_weight_ = lexical_cast_default<double>(set_attack_weight,1.0);
+	}
+
+	if(set_defense_weight.empty() == false) {
+		defense_weight_ = lexical_cast_default<double>(set_defense_weight,1.0);
 	}
 
 	if(description != NULL) {
