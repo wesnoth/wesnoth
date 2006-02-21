@@ -66,3 +66,17 @@ int lexical_cast_default<int, const char*>(const char* a, int def)
 	}
 }
 
+template<>
+double lexical_cast_default<double, const std::string&>(const std::string& a, double def)
+{
+	char* endptr;
+	double res = strtod(a.c_str(), &endptr);
+
+	if (a.empty() || *endptr != '\0') {
+		return def;
+	} else {
+		return res;
+	}
+}
+
+
