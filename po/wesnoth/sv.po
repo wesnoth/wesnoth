@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-02-20 01:03+0100\n"
-"PO-Revision-Date: 2006-02-17 01:30+0100\n"
+"PO-Revision-Date: 2006-02-21 01:43+0100\n"
 "Last-Translator: Stefan Bergström (tephlon)\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -1453,7 +1453,6 @@ msgid "mace"
 msgstr "spikklubba"
 
 #: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:28
-#, fuzzy
 msgid ""
 "Some Necromancers pay the ultimate sacrifice for delving into the dark arts "
 "and entered into undeath. At the apex of their power, they become a lich, a "
@@ -1461,12 +1460,12 @@ msgid ""
 "return. Power and immortality are the hollow consolation for what they have "
 "lost."
 msgstr ""
-"Efter en lång färd har Ha'atel gjort det slutgiltiga offret för de mörka "
-"konster till vilka han hängivit sig, och själv trätt in i vandöden. Vid "
-"höjden av sin makt har han blivit en dödsmästare, ett vandrade "
-"förkroppsligande av döden. Han har passerat gränsen bortom vilken ingen "
-"återvändo finns, och hans makt och odödlighet måste nu räcka som belöning "
-"för allt han förlorat på vägen i sin åstundan efter dem."
+"Vissa nekromantiker gör det slutgiltiga offret för de mörka konster till "
+"vilka de hängivit sig, och träder själva in i vandöden. Vid höjden av sin "
+"makt blir de dödsmästare, vandrande förkroppsligande av döden. De har "
+"passerat gränsen bortom vilken ingen återvändo finns, och deras makt och "
+"odödlighet måste nu räcka som belöning för allt de förlorat på vägen i sin "
+"åstundan efter dem."
 
 #: data/english.cfg:2
 msgid "Easy"
@@ -3281,7 +3280,6 @@ msgid "Forest"
 msgstr "Skog"
 
 #: data/help.cfg:343
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3308,7 +3306,8 @@ msgstr ""
 "\n"
 "De flesta truppslag har 50% försvar i skog, men kavalleri har 40%. Alver har "
 "däremot 60-70% försvar, även till häst. Dvärgar har vanligtvis bara 30% "
-"försvar i skog."
+"försvar i skog.\n"
+"<img>src=terrain/great-tree-tile.png align=middle box=no</img>"
 
 #: data/help.cfg:349 data/terrain.cfg:316
 msgid "Hills"
@@ -4885,12 +4884,18 @@ msgid ""
 "limited by its maximum movement. Remember this when deciding what unit is "
 "best to scout specific types of terrain."
 msgstr ""
+"Om slöja eller stridsdimma används, begränsas en trupps synfält av dess "
+"maximala förflyttning. Minns detta när du skickar en trupp på "
+"spaningsuppdrag."
 
 #: data/tips.cfg:36
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
+"Nästan alla ikoner och begrepp i Wesnoths spelpanel har verktygstips. Peka "
+"på någon av dem med muspekaren för att få en förklaring eller beskrivning av "
+"begreppet."
 
 #: data/traits.cfg:7
 msgid "Zero upkeep"
@@ -8454,12 +8459,10 @@ msgstr ""
 "De bästa bland bakhållstrupperna blir flanktrupper i ödlefolkets armé."
 
 #: data/units/Saurian_Augur.cfg:4
-#, fuzzy
 msgid "Saurian Augur"
-msgstr "Bakhållstrupp"
+msgstr "Mystiker"
 
 #: data/units/Saurian_Augur.cfg:26
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Augurs are valued as healers because they can provide aid to their "
@@ -8467,7 +8470,7 @@ msgid ""
 "possess knowledge of cold magic."
 msgstr ""
 "Trots sitt kallblodiga arv och sin relativa bräcklighet, är ödlefolkets "
-"tribalister aktade som helare då de kan bistå sina allierade oavsett terräng "
+"mystiker aktade som helare då de kan bistå sina allierade oavsett terräng "
 "eller motstånd. Utöver helande besitter de kunskaper om frostmagi."
 
 #: data/units/Saurian_Flanker.cfg:4
@@ -8488,19 +8491,17 @@ msgstr ""
 "Ödlefolkets flanktrupper har styrkan att dra full nytta av detta faktum."
 
 #: data/units/Saurian_Oracle.cfg:3
-#, fuzzy
 msgid "Saurian Oracle"
-msgstr "Tribalist"
+msgstr "Orakel"
 
 #: data/units/Saurian_Oracle.cfg:25
-#, fuzzy
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
 "forth the magic of the cold north, and they do retain their basic healing "
 "ability."
 msgstr ""
-"Ödlefolkets ismanare har avstått vidare träning i läkandets konst för att "
+"Ödlefolkets orakel har avstått vidare träning i läkandets konst för att "
 "kunna hänge sig åt att förfina sin skicklighet i de mörka konsterna. Trots "
 "sin bräcklighet besitter de kunskaper om frostmagi och har kvar sin "
 "grundläggande förmåga som helare."
@@ -10994,9 +10995,3 @@ msgstr "Du kan se resultaten på "
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjälp oss att förbättra Wesnoth!"
-
-#~ msgid "Saurian Icecaster"
-#~ msgstr "Ismanare"
-
-#~ msgid "frost blast"
-#~ msgstr "köldstöt"
