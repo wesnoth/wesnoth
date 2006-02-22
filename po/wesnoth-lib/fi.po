@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-02-10 17:14+0100\n"
-"PO-Revision-Date: 2005-09-07 13:46+0200\n"
-"Last-Translator: Matias Parmala <matias.parmala@pp.inet.fi>\n"
+"PO-Revision-Date: 2006-02-22 08:28+0200\n"
+"Last-Translator: Mikko Kraft <mikkokraft@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,12 +110,10 @@ msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Käännä (saattaa muuttaa kartan kokoa):"
 
 #: src/hotkeys.cpp:46
-#, fuzzy
 msgid "Next Unit"
 msgstr "Seuraava yksikkö"
 
 #: src/hotkeys.cpp:47
-#, fuzzy
 msgid "Previous Unit"
 msgstr "Edellinen yksikkö"
 
@@ -137,19 +135,19 @@ msgstr "Peruuta"
 
 #: src/hotkeys.cpp:52
 msgid "Redo"
-msgstr "Toista"
+msgstr "Tee uudestaan"
 
 #: src/hotkeys.cpp:53
 msgid "Zoom In"
-msgstr "Zoomaa sisään"
+msgstr "Zoomaa lähemmäs"
 
 #: src/hotkeys.cpp:54
 msgid "Zoom Out"
-msgstr "Zoomaa ulos"
+msgstr "Zoomaa kauemmas"
 
 #: src/hotkeys.cpp:55
 msgid "Default Zoom"
-msgstr "Vakio-zoom"
+msgstr "Nollaa zoomaus"
 
 #: src/hotkeys.cpp:57
 msgid "Screenshot"
@@ -165,7 +163,7 @@ msgstr "Yksikön kuvaus"
 
 #: src/hotkeys.cpp:60
 msgid "Rename Unit"
-msgstr "Nimeä yksikkö"
+msgstr "Nimeä yksikkö uudelleen"
 
 #: src/hotkeys.cpp:61
 msgid "Save Game"
@@ -236,9 +234,8 @@ msgid "Set Label"
 msgstr "Lisää karttamerkintä"
 
 #: src/hotkeys.cpp:79
-#, fuzzy
 msgid "Clear Labels"
-msgstr "Lisää karttamerkintä"
+msgstr "Poista karttamerkinnät"
 
 #: src/hotkeys.cpp:80
 msgid "Show Enemy Moves"
@@ -249,39 +246,36 @@ msgid "Best Possible Enemy Moves"
 msgstr "Vihollisen parhaat mahdolliset liikkeet"
 
 #: src/hotkeys.cpp:82
-#, fuzzy
 msgid "Play"
-msgstr "Pelaajia:"
+msgstr "Toista"
 
 #: src/hotkeys.cpp:83
 msgid "Reset"
-msgstr ""
+msgstr "Palauta"
 
 #: src/hotkeys.cpp:84
 msgid "Stop"
-msgstr ""
+msgstr "Pysäytä"
 
 #: src/hotkeys.cpp:85
-#, fuzzy
 msgid "Next Turn"
-msgstr "Seuraava yksikkö"
+msgstr "Seuraava vuoro"
 
 #: src/hotkeys.cpp:86
-#, fuzzy
 msgid "Next Side"
-msgstr "Seuraava yksikkö"
+msgstr "Seuraava puoli"
 
 #: src/hotkeys.cpp:87
 msgid "Shroud"
-msgstr ""
+msgstr "Huntu"
 
 #: src/hotkeys.cpp:88
 msgid "Fog"
-msgstr ""
+msgstr "Sumu"
 
 #: src/hotkeys.cpp:89
 msgid "Skip animation"
-msgstr ""
+msgstr "Hyppää animaatioiden yli"
 
 #: src/hotkeys.cpp:91
 msgid "Set Terrain"
@@ -385,7 +379,7 @@ msgstr "Katso keskusteluhistoria"
 
 #: src/hotkeys.cpp:118
 msgid "Enter user command"
-msgstr "Syötä käyttäjän komento"
+msgstr "Komentorivi"
 
 #: src/hotkeys.cpp:120
 msgid "Change the language"
@@ -393,7 +387,7 @@ msgstr "Vaihda käytettävää kieltä."
 
 #: src/hotkeys.cpp:430 src/hotkeys.cpp:631
 msgid "Do you really want to quit?"
-msgstr "Haluatko todellakin lopettaa?"
+msgstr "Haluatko todella lopettaa?"
 
 #: src/hotkeys.cpp:430 src/hotkeys.cpp:631
 msgid "Quit"
@@ -409,11 +403,11 @@ msgstr "Pelaajia:"
 
 #: src/mapgen_dialog.cpp:108
 msgid "Number of Hills:"
-msgstr "Kukkuloiden määrä:"
+msgstr "Mäkien määrä:"
 
 #: src/mapgen_dialog.cpp:109
 msgid "Max Hill Size:"
-msgstr "Kukkulan enimmäiskoko:"
+msgstr "Mäkien enimmäiskoko:"
 
 #: src/mapgen_dialog.cpp:110
 msgid "Villages:"
@@ -468,7 +462,7 @@ msgstr "Ohita tietokoneen liikkeet"
 
 #: src/preferences_display.cpp:219
 msgid "Show lobby joins"
-msgstr ""
+msgstr "Näytä aulaan liittymiset"
 
 #: src/preferences_display.cpp:220
 msgid "Show Floating Labels"
@@ -476,7 +470,7 @@ msgstr "Näytä leijuvat merkit"
 
 #: src/preferences_display.cpp:221
 msgid "Turn Dialog"
-msgstr "Näytä vuoron ilmoitus"
+msgstr "Näytä vuoron vaihtuminen"
 
 #: src/preferences_display.cpp:222
 msgid "Turn Bell"
@@ -484,7 +478,7 @@ msgstr "Soita vuoron äänimerkki"
 
 #: src/preferences_display.cpp:223
 msgid "Show Team Colors"
-msgstr "Näytä joukkueen värit"
+msgstr "Näytä joukkueiden värit"
 
 #: src/preferences_display.cpp:224
 msgid "Show Color Cursors"
@@ -496,7 +490,7 @@ msgstr "Näytä valokehä-efektit"
 
 #: src/preferences_display.cpp:227
 msgid "Theme"
-msgstr ""
+msgstr "Teema"
 
 #: src/preferences_display.cpp:229
 msgid "Adjust Gamma"
@@ -516,7 +510,7 @@ msgstr "Musiikki"
 
 #: src/preferences_display.cpp:234
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "Chatin lähetysajat"
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -536,7 +530,7 @@ msgstr "Ääniefektit päällä/pois"
 
 #: src/preferences_display.cpp:253
 msgid "Change the sound effects volume"
-msgstr "Muuta ääniefektien voimakkuutta."
+msgstr "Muuta ääniefektien voimakkuutta"
 
 #: src/preferences_display.cpp:256
 msgid "Music on/off"
@@ -544,35 +538,35 @@ msgstr "Musiikki päällä/pois"
 
 #: src/preferences_display.cpp:260
 msgid "Change the music volume"
-msgstr "Muuta musiikin voimakkuutta."
+msgstr "Muuta musiikin voimakkuutta"
 
 #: src/preferences_display.cpp:266
 msgid "Change the speed of scrolling around the map"
-msgstr "Muuta kartan vieritysnopeutta."
+msgstr "Muuta kartan vieritysnopeutta"
 
 #: src/preferences_display.cpp:271 src/preferences_display.cpp:273
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "Aseta näytettävien chat-rivien määrä"
 
 #: src/preferences_display.cpp:276
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Näytä viestien lähetysajat"
 
 #: src/preferences_display.cpp:279 src/preferences_display.cpp:284
 msgid "Change the brightness of the display"
-msgstr "Vaihda näytön kirkkausasetuksia."
+msgstr "Vaihda näytön kirkkautta"
 
 #: src/preferences_display.cpp:287
 msgid "Choose whether the game should run full screen or in a window"
-msgstr "Valitse, onko peli koko ruudun kokoinen vai ikkunoitu."
+msgstr "Valitse, onko peli koko ruudun kokoinen vai ikkunoitu"
 
 #: src/preferences_display.cpp:290
 msgid "Make units move and fight faster"
-msgstr "Valitse, jos haluat, että yksiköt liikkuvat ja taistelevat nopeammin."
+msgstr "Valitse, jos haluat, että yksiköt liikkuvat ja taistelevat nopeammin"
 
 #: src/preferences_display.cpp:293
 msgid "Do not animate AI units moving"
-msgstr "Älä animoi tietokoneen yksikköjen liikkeitä."
+msgstr "Älä animoi tietokoneen yksikköjen liikkeitä"
 
 #: src/preferences_display.cpp:296
 msgid "Overlay a grid onto the map"
@@ -580,54 +574,53 @@ msgstr "Näytä ruudukko kartalla."
 
 #: src/preferences_display.cpp:299
 msgid "Show messages about players joining the multiplayer lobby"
-msgstr ""
+msgstr "Näytä viestejä, kun pelaajat liittyvät moninpeliaulaan"
 
 #: src/preferences_display.cpp:302
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr "Näytä yksikön yläpuolella sen saama vahinko."
+msgstr "Näytä yksikön yläpuolella sen saama vahinko"
 
 #: src/preferences_display.cpp:304
 msgid "Change the resolution the game runs at"
 msgstr "Vaihda näyttötarkkuutta."
 
 #: src/preferences_display.cpp:305
-#, fuzzy
 msgid "Change the theme the game runs with"
-msgstr "Vaihda näyttötarkkuutta."
+msgstr "Vaihda pelissä käytettävää teemaa"
 
 #: src/preferences_display.cpp:308
 msgid "Display a dialog at the beginning of your turn"
-msgstr "Näytä ilmoitus vuorosi alussa."
+msgstr "Näytä ilmoitus vuorosi alussa"
 
 #: src/preferences_display.cpp:311
 msgid "Play a bell sound at the beginning of your turn"
-msgstr "Soita äänimerkki vuorosi alussa."
+msgstr "Soita äänimerkki vuorosi alussa"
 
 #: src/preferences_display.cpp:314
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
-msgstr "Näytä yksikön alla värillinen kehä, joka osoittaa yksikön joukkueen."
+msgstr "Näytä yksikön alla värillinen kehä, joka osoittaa yksikön joukkueen"
 
 #: src/preferences_display.cpp:317
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr "Valitse, liikkuuko aurinko vasemmalta oikealle, vai päinvastoin."
+msgstr "Valitse, liikkuuko aurinko vasemmalta oikealle, vai päinvastoin"
 
 #: src/preferences_display.cpp:320
 msgid "Use colored mouse cursors (may be slower)"
-msgstr "Värilliset hiiren kursorit (mahdollisesti hitaampi)."
+msgstr "Värilliset hiiren kursorit (mahdollisesti hitaampi)"
 
 #: src/preferences_display.cpp:323
 msgid "Use graphical special effects (may be slower)"
-msgstr "Käytä graafisia erikoistehosteita (mahdollisesti hitaampi)."
+msgstr "Käytä erikoistehosteita (mahdollisesti hitaampi)"
 
 #: src/preferences_display.cpp:325
 msgid "View and configure keyboard shortcuts"
-msgstr "Katso ja muokkaa pikanäppäimiä."
+msgstr "Katso ja muokkaa pikanäppäimiä"
 
 #: src/preferences_display.cpp:475
 msgid "Chat Lines: "
-msgstr ""
+msgstr "Chat-rivejä: "
 
 #: src/preferences_display.cpp:527
 msgid "yes"
@@ -650,9 +643,8 @@ msgid "Prefs section^Sound"
 msgstr "Äänet"
 
 #: src/preferences_display.cpp:598
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "Näyttö"
+msgstr "Moninpeli"
 
 #: src/preferences_display.cpp:599
 msgid "Advanced section^Advanced"
@@ -671,9 +663,8 @@ msgid "Hotkey Settings"
 msgstr "Pikanäppäinten asetukset"
 
 #: src/preferences_display.cpp:716 src/preferences_display.cpp:769
-#, fuzzy
 msgid "Press desired Hotkey"
-msgstr "Valitse uusi pikanäppäin"
+msgstr "Valitse pikanäppäin painamalla sitä"
 
 #: src/preferences_display.cpp:734
 msgid "Action"
@@ -685,28 +676,27 @@ msgstr "Valinta"
 
 #: src/preferences_display.cpp:746
 msgid "Change Hotkey"
-msgstr "Vaihda"
+msgstr "Vaihda pikanäppäintä"
 
 #: src/preferences_display.cpp:749
 msgid "Save Hotkeys"
-msgstr "Tallenna"
+msgstr "Tallenna muutokset"
 
 #: src/preferences_display.cpp:796
-#, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "Tämä pikanäppäin on jo käytössä."
 
 #: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Käytössä oleva teema: "
 
 #: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "Uusi teema otetaan käyttöön seuraavassa uudessa tai ladatussa pelissä."
 
 #: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
+msgstr "Ei teemoja. Yritä vaihtamista käynnissä olevasta pelistä."
 
 #: src/show_dialog.cpp:314
 msgid "Error"

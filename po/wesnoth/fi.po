@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-02-20 01:03+0100\n"
-"PO-Revision-Date: 2006-02-21 21:20+0200\n"
+"PO-Revision-Date: 2006-02-22 08:57+0200\n"
 "Last-Translator: Mikko Kraft <mikkokraft@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1455,7 +1455,6 @@ msgid "mace"
 msgstr "helanuija"
 
 #: data/campaigns/The_South_Guard/units/Dread_Lich.cfg:28
-#, fuzzy
 msgid ""
 "Some Necromancers pay the ultimate sacrifice for delving into the dark arts "
 "and entered into undeath. At the apex of their power, they become a lich, a "
@@ -1463,11 +1462,11 @@ msgid ""
 "return. Power and immortality are the hollow consolation for what they have "
 "lost."
 msgstr ""
-"Viimein Ha'atel on maksanut lopullisen hinnan pimeistä taidoista, joita hän "
-"on tutkinut, ja on itse astunut epäelämään. Voimansa huipulla hänestä on "
-"tullut kuolonherra, kauhun nouseva ruumiillistuma. Hän on epäilemättä "
-"ylittänyt paluupisteen, ja hänen voimansa ja kuolemattomuutensa täytyy "
-"korvata se, mitä hän on menettänyt ne saavuttaakseen."
+"Jotkin pimeät noidat maksavat kauhistuttavan hinnan pimeistä taidoista, "
+"joita ovat tutkineet: he ovat itse astuneet epäelämään. Voimiensa huipulla "
+"heistä on tullut kuolonherroja, kauhun ruumiillistumia. Heillä ei ole enää "
+"paluuta ihmisyyteen, muttan heidän voimansa ja kuolemattomuutensa korvaavat "
+"sen, mitä he ovat menettäneet ne saavuttaakseen."
 
 #: data/english.cfg:2
 msgid "Easy"
@@ -3268,7 +3267,6 @@ msgid "Forest"
 msgstr "metsä"
 
 #: data/help.cfg:343
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3291,14 +3289,15 @@ msgstr ""
 "metsässä on kuitenkin siinä määrin vaikeaa, etteivät ne hyödy "
 "puolustuksellisesti metsästä. Haltiat ovat poikkeus tähän yleissääntöön - he "
 "liikkuvat vaivatta metsässä ja saavat siellä lisäksi huomattavaa "
-"puolustuksellista etua. Kääpiöt ovat toinen poikkeus säännöstä - vaikka he "
-"ovat tarpeeksi vahvoja liikkuakseen metsässä hidastamatta, eivät he ole "
-"kotonaan metsässä, eivätkä siten saa siellä puolustuksellista etua.\n"
+"puolustuksellista etua. Kääpiöt ovat toinen poikkeus sääntöön - vaikka he "
+"ovat tarpeeksi vahvoja liikkuakseen metsässä vaivattomasti, he eivät saa "
+"siellä puolustuksellista etua, metsien ollessa heille outoja.\n"
 "\n"
 "Useimpien yksiköiden puolustus metsässä on 50%, mutta ratsuyksiköillä "
 "korkeintaan 40%. Haltijoiden - jopa heidän ratsastavien yksiköidensä - "
 "puolustus metsässä on 60% tai 70%. Kääpiöiden puolustus metsässä on yleensä "
-"vain 30%."
+"vain 30%.\n"
+"<img>src=terrain/great-tree-tile.png align=middle box=no</img>"
 
 #: data/help.cfg:349 data/terrain.cfg:316
 msgid "Hills"
@@ -4888,12 +4887,17 @@ msgid ""
 "limited by its maximum movement. Remember this when deciding what unit is "
 "best to scout specific types of terrain."
 msgstr ""
+"Kartoissa joissa on käytössä sumu tai huntu, näkevät yksiköt vain niin kauas "
+"kuin pystyvät liikkumaan. Muista tämä päättäessäsi mikä yksikkö on paras "
+"tiedustelemaan missäkin maastossa."
 
 #: data/tips.cfg:36
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
+"Wesnothissa lähes jokaisesta kohteesta näytöllä on saatavilla vihje. Pidä "
+"hiiren osoitinta kohteen päällä saadaksesi kohteen selityksen."
 
 #: data/traits.cfg:7
 msgid "Zero upkeep"
@@ -8444,21 +8448,20 @@ msgstr ""
 "Parhaista väijyliskoista tulee kiertoliskoja."
 
 #: data/units/Saurian_Augur.cfg:4
-#, fuzzy
 msgid "Saurian Augur"
-msgstr "Väijylisko"
+msgstr "Ennustajalisko"
 
 #: data/units/Saurian_Augur.cfg:26
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Augurs are valued as healers because they can provide aid to their "
 "allies regardless of terrain or opposition. In addition to healing they "
 "possess knowledge of cold magic."
 msgstr ""
-"Kylmäverisyydestään ja suhteellisesta herkkyydestään huolimatta heimoliskot "
-"ovat arvostettuja parantajia, koska he voivat tarjota apua maastosta "
-"riippumatta. Parannustaitojensa lisäksi he hallitsevat kylmää taikuutta."
+"Kylmäverisyydestään ja suhteellisesta herkkyydestään huolimatta "
+"ennustajaliskot ovat arvostettuja parantajia, koska he voivat tarjota apua "
+"maastosta riippumatta. Parannustaitojensa lisäksi he hallitsevat kylmää "
+"taikuutta."
 
 #: data/units/Saurian_Flanker.cfg:4
 msgid "Saurian Flanker"
@@ -8478,21 +8481,19 @@ msgstr ""
 "ovat tarpeeksi voimakkaita hyödyntääkseen tätä erityisen tehokkaasti."
 
 #: data/units/Saurian_Oracle.cfg:3
-#, fuzzy
 msgid "Saurian Oracle"
-msgstr "Heimolisko"
+msgstr "lisko-oraakkeli"
 
 #: data/units/Saurian_Oracle.cfg:25
-#, fuzzy
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
 "forth the magic of the cold north, and they do retain their basic healing "
 "ability."
 msgstr ""
-"Jääliskot eivät harjoittele parannustaitojaan vaan keskittyvät kehittämään "
-"pimeitä taitoja. Heikkoudestaan huolimatta he osaavat käyttää pohjoisen "
-"kylmää taikuttaa ja pitävät perusparannuskykynsä."
+"Lisko-oraakkelit ovat hylänneet parannustaitojen harjoituksen keskittyäkseen "
+"sen sijaan pimeyden voimiin. Heikkoudestaan huolimatta he osaavat käyttää "
+"pohjoisen kylmää taikuttaa ja pitävät perusparannuskykynsä."
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
@@ -8512,7 +8513,7 @@ msgstr ""
 
 #: data/units/Saurian_Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr "Ennustajalisko"
+msgstr "Tietäjälisko"
 
 #: data/units/Saurian_Soothsayer.cfg:27
 msgid ""
@@ -8520,7 +8521,7 @@ msgid ""
 "aid to their friends regardless of terrain or opposition. In addition to "
 "curing their allies they possess knowledge of cold magic."
 msgstr ""
-"Ennustajaliskot ovat arvostettuja parantajia, koska he voivat tarjota apua "
+"Tietäjäliskot ovat arvostettuja parantajia, koska he voivat tarjota apua "
 "maastosta riippumatta. Parannustaitojensa lisäksi he hallitsevat kylmää "
 "taikuutta."
 
