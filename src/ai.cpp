@@ -416,7 +416,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 
 	const bool ignore_zocs = u_it->second.type().is_skirmisher();
 	const bool teleport = u_it->second.type().teleports();
-	paths current_paths(info_.map,info_.state,info_.gameinfo,info_.units,from,info_.teams,ignore_zocs,teleport);
+	paths current_paths(info_.map,info_.state,info_.gameinfo,info_.units,from,info_.teams,ignore_zocs,teleport,current_team());
 
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
 
@@ -537,7 +537,7 @@ bool ai::multistep_move_possible(location from, location to, location via, std::
 					unit temp_unit(i->second);
 					temp_unit.set_movement(move_left);
 					const temporary_unit_placer unit_placer(units_,via,temp_unit);
-					const paths unit_paths(map_,state_,gameinfo_,units_,via,teams_,false,false);
+					const paths unit_paths(map_,state_,gameinfo_,units_,via,teams_,false,false,current_team());
 
 					LOG_AI << "found " << unit_paths.routes.size() << " moves for temp leader\n";
 
@@ -666,7 +666,7 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 		const bool teleports = un_it->second.type().teleports();
 		res.insert(std::pair<gamemap::location,paths>(
 		                un_it->first,paths(info_.map,info_.state,info_.gameinfo,info_.units,
-		                un_it->first,info_.teams,ignore_zocs,teleports)));
+					    un_it->first,info_.teams,ignore_zocs,teleports,current_team())));
 	}
 
 	for(std::map<location,paths>::iterator m = res.begin(); m != res.end(); ++m) {
@@ -1752,7 +1752,7 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 		return;
 	}
 
-	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
+	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false,current_team());
 
 	std::map<gamemap::location,paths> possible_moves;
 	possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
@@ -1778,7 +1778,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 	}
 
 	//find where the leader can move
-	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
+	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false,current_team());
 	const gamemap::location& start_pos = nearest_keep(leader->first);
 
 	std::map<gamemap::location,paths> possible_moves;
@@ -1826,7 +1826,7 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 		return;
 	}
 
-	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
+	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false,current_team());
 
 	std::map<gamemap::location,paths> possible_moves;
 	possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
@@ -1857,7 +1857,7 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 						<< "," << str_cast(current_loc.y+1);
 					unit_map temp_units;
 					temp_units.insert(std::pair<location,unit>(current_loc,leader->second));
-					const paths p(map_,state_,gameinfo_,temp_units,current_loc,teams_,false,false);
+					const paths p(map_,state_,gameinfo_,temp_units,current_loc,teams_,false,false,current_team());
 
 					if(p.routes.count(i->first)) {
 						move_unit(leader->first,current_loc,possible_moves);
@@ -1924,7 +1924,7 @@ bool ai::leader_can_reach_keep() const
 	}
 
 	//find where the leader can move
-	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
+	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false,current_team());
 
 
 	return leader_paths.routes.count(start_pos) > 0;

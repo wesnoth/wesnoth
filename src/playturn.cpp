@@ -306,8 +306,8 @@ void turn_info::handle_event(const SDL_Event& event)
 					const bool ignore_zocs = u->second.type().is_skirmisher();
 					const bool teleport = u->second.type().teleports();
 					current_paths_ = paths(map_,status_,gameinfo_,units_,u->first,
-					                       teams_,ignore_zocs,teleport,NULL,
-					                       path_turns_);
+					                       teams_,ignore_zocs,teleport,
+					                       viewing_team(),path_turns_);
 					gui_.highlight_reach(current_paths_);
 				}
 			}
@@ -365,7 +365,6 @@ void turn_info::mouse_motion(int x, int y)
 
 	gamemap::location::DIRECTION nearest_hex = gamemap::location::NDIRECTIONS;
 	gamemap::location::DIRECTION second_nearest_hex = gamemap::location::NDIRECTIONS;
-	const team& current_team = teams_[team_num_-1];
 	const gamemap::location new_hex = gui_.hex_clicked_on(x,y,&nearest_hex,&second_nearest_hex);
 
 	if(new_hex != last_hex_ || nearest_hex != last_nearest_ || second_nearest_hex != last_second_nearest_) {
@@ -392,7 +391,7 @@ void turn_info::mouse_motion(int x, int y)
 		                                     attack_from.valid())) {
 			if(mouseover_unit == units_.end()) {
 				cursor::set(cursor::MOVE);
-			} else if(current_team.is_enemy(mouseover_unit->second.side()) && !mouseover_unit->second.stone()) {
+			} else if(viewing_team().is_enemy(mouseover_unit->second.side()) && !mouseover_unit->second.stone()) {
 				cursor::set(cursor::ATTACK);
 			} else {
 				cursor::set(cursor::NORMAL);
@@ -418,7 +417,7 @@ void turn_info::mouse_motion(int x, int y)
 			unit_map::const_iterator un = find_unit(selected_hex_);
 
 			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && !un->second.stone()) {
-				const shortest_path_calculator calc(un->second,current_team,
+				const shortest_path_calculator calc(un->second,viewing_team(),
 				                                    visible_units(),teams_,map_,status_);
 				const bool can_teleport = un->second.type().teleports();
 
@@ -426,9 +425,9 @@ void turn_info::mouse_motion(int x, int y)
 
 				std::set<gamemap::location> allowed_teleports;
 				if(can_teleport) {
-					allowed_teleports = vacant_villages(current_team.villages(),units_);
+					allowed_teleports = vacant_villages(viewing_team().villages(),units_);
 					teleports = &allowed_teleports;
-					if(current_team.villages().count(un->first))
+					if(viewing_team().villages().count(un->first))
 						allowed_teleports.insert(un->first);
 				}
 
@@ -451,7 +450,7 @@ void turn_info::mouse_motion(int x, int y)
 			const bool ignore_zocs = un->second.type().is_skirmisher();
 			const bool teleport = un->second.type().teleports();
 			current_paths_ = paths(map_,status_,gameinfo_,units_,new_hex,teams_,
-								   ignore_zocs,teleport,&current_team,path_turns_);
+								   ignore_zocs,teleport,viewing_team(),path_turns_);
 			gui_.highlight_reach(current_paths_);
 			enemy_paths_ = true;
 		}
@@ -949,7 +948,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			const bool ignore_zocs = it->second.type().is_skirmisher();
 			const bool teleport = it->second.type().teleports();
 			current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
-								   ignore_zocs,teleport,NULL,path_turns_);
+								   ignore_zocs,teleport,viewing_team(),path_turns_);
 
 			next_unit_ = it->first;
 
@@ -1275,7 +1274,7 @@ void turn_info::cycle_units()
 	if(it != units_.end() && !gui_.fogged(it->first.x,it->first.y)) {
 		const bool ignore_zocs = it->second.type().is_skirmisher();
 		const bool teleport = it->second.type().teleports();
-		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,ignore_zocs,teleport,NULL,path_turns_);
+		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,ignore_zocs,teleport,viewing_team(),path_turns_);
 		gui_.highlight_reach(current_paths_);
 
 		gui_.scroll_to_tile(it->first.x,it->first.y,display::WARP);
@@ -1321,7 +1320,7 @@ void turn_info::cycle_back_units()
 	if(it != units_.begin() && !gui_.fogged(it->first.x,it->first.y)) {
 		const bool ignore_zocs = it->second.type().is_skirmisher();
 		const bool teleport = it->second.type().teleports();
-		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,ignore_zocs,teleport,NULL,path_turns_);
+		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,ignore_zocs,teleport,viewing_team(),path_turns_);
 		gui_.highlight_reach(current_paths_);
 
 		gui_.scroll_to_tile(it->first.x,it->first.y,display::WARP);
@@ -2745,7 +2744,7 @@ void turn_info::show_enemy_moves(bool ignore_units)
 			unit_map units;
 			units.insert(*u);
 			const paths& path = paths(map_,status_,gameinfo_,ignore_units?units:units_,
-									  u->first,teams_,is_skirmisher,teleports,&current_team());
+									  u->first,teams_,is_skirmisher,teleports,viewing_team());
 
 			gui_.highlight_another_reach(path);
 		}

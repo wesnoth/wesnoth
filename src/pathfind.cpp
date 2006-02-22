@@ -360,15 +360,13 @@ namespace {
 		std::map<gamemap::location,paths::route>& routes,
 		std::vector<team> const &teams,
 		bool ignore_zocs, bool allow_teleport, int turns_left,
-	    bool starting_pos, const team *viewing_team)
+	    bool starting_pos, const team &viewing_team)
 	{
 		if(size_t(u.side()-1) >= teams.size()) {
 			return;
 		}
 
 		team const &current_team = teams[u.side()-1];
-		if (!viewing_team)
-			viewing_team = &current_team;
 
 		//find adjacent tiles
 		std::vector<gamemap::location> locs(6);
@@ -380,7 +378,7 @@ namespace {
 		    current_team.owns_village(loc) &&
 			(starting_pos || find_visible_unit(units, loc, map,
 											   status.get_time_of_day().lawful_bonus,
-											   teams, *viewing_team) == units.end())) {
+											   teams, viewing_team) == units.end())) {
 			const std::vector<gamemap::location>& villages = map.villages();
 
 			//if we are on a village, see all friendly villages that we can
@@ -407,7 +405,7 @@ namespace {
 			const std::map<gamemap::location,unit>::const_iterator unit_it =
 				find_visible_unit(units, locs[i], map,
 				                  status.get_time_of_day().lawful_bonus,
-				                  teams, *viewing_team);
+				                  teams, viewing_team);
 
 			if (unit_it != units.end() &&
 			    current_team.is_enemy(unit_it->second.side()))
@@ -437,7 +435,7 @@ namespace {
 					continue;
 
 				const bool zoc = !ignore_zocs && enemy_zoc(map,status,units,teams,currentloc,
-														   *viewing_team,u.side());
+														   viewing_team,u.side());
 				paths::route new_route = routes[loc];
 				new_route.steps.push_back(loc);
 
@@ -461,7 +459,7 @@ paths::paths(gamemap const &map, gamestatus const &status,
              std::map<gamemap::location, unit> const &units,
              gamemap::location const &loc,
              std::vector<team> const &teams,
-             bool ignore_zocs, bool allow_teleport, const team *viewing_team,
+             bool ignore_zocs, bool allow_teleport, const team &viewing_team,
 			 int additional_turns)
 {
 	const std::map<gamemap::location,unit>::const_iterator i = units.find(loc);

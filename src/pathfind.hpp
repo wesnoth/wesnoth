@@ -81,7 +81,7 @@ struct paths
 	      std::map<gamemap::location, unit> const &units,
 	      gamemap::location const &loc, std::vector<team> const &teams,
 	      bool ignore_zocs, bool allow_teleport,
-		  const team *viewing_team = NULL, int additional_turns = 0);
+		  const team &viewing_team, int additional_turns = 0);
 
 	//structure which holds a single route between one location and another.
 	struct route

@@ -149,7 +149,7 @@ void mouse_handler::mouse_motion(int x, int y)
 			const bool ignore_zocs = un->second.type().is_skirmisher();
 			const bool teleport = un->second.type().teleports();
 			current_paths_ = paths(map_,status_,gameinfo_,units_,new_hex,teams_,
-								   ignore_zocs,teleport,NULL,path_turns_);
+								   ignore_zocs,teleport,viewing_team(),path_turns_);
 			gui_->highlight_reach(current_paths_);
 			enemy_paths_ = true;
 		}
@@ -367,7 +367,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event)
 			const bool ignore_zocs = it->second.type().is_skirmisher();
 			const bool teleport = it->second.type().teleports();
 			current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
-								   ignore_zocs,teleport,NULL,path_turns_);
+								   ignore_zocs,teleport,viewing_team(),path_turns_);
 
 			next_unit_ = it->first;
 

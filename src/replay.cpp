@@ -802,7 +802,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const bool ignore_zocs = u->second.type().is_skirmisher();
 			const bool teleport = u->second.type().teleports();
 
-			paths paths_list(map,state,gameinfo,units,src,teams,ignore_zocs,teleport);
+			paths paths_list(map,state,gameinfo,units,src,teams,ignore_zocs,teleport,current_team);
 
 			unit current_unit = u->second;
 
