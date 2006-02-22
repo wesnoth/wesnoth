@@ -22,6 +22,7 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "show_dialog.hpp"
+#include "sound.hpp"
 
 namespace {
 
@@ -454,6 +455,7 @@ lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
 {
 	game_config::debug = false;
 	gamelist_updated();
+	sound::play_music_repeatedly(game_config::title_music);
 }
 
 void lobby::hide_children(bool hide)
