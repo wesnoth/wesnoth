@@ -943,14 +943,14 @@ void display::draw_sidebar()
 					status_.get_time_of_day().lawful_bonus,
 					teams_,teams_[viewing_team()]);
 
-		if(i == units_.end() || fogged(i->first.x,i->first.y)) {
+		if(i == units_.end()) {
 			i = find_visible_unit(units_,selectedHex_,
 					map_,
 					status_.get_time_of_day().lawful_bonus,
 					teams_,teams_[viewing_team()]);
 		}
 
-		if(i != units_.end() && !fogged(i->first.x,i->first.y)) {
+		if(i != units_.end()) {
 			for(size_t r = reports::UNIT_REPORTS_BEGIN; r != reports::UNIT_REPORTS_END; ++r) {
 				draw_report(reports::TYPE(r));
 			}

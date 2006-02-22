@@ -162,10 +162,6 @@ void mouse_handler::mouse_motion(int x, int y)
 
 unit_map::const_iterator mouse_handler::find_unit(const gamemap::location& hex)
 {
-	if ((*gui_).fogged(hex.x,hex.y)) {
-		return units_.end();
-	}
-
 	return find_visible_unit(units_,hex,map_,status_.get_time_of_day().lawful_bonus,teams_,viewing_team());
 }
 

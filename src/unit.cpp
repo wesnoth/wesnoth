@@ -1592,6 +1592,9 @@ unit_map::iterator find_visible_unit(unit_map& units,
 	unit_map::iterator u = units.find(loc);
 	if(map.on_board(loc)){
 		if(u != units.end()){
+			if(current_team.fogged(loc.x, loc.y)){
+				return units.end();
+			}
 			if(current_team.is_enemy(u->second.side()) &&
 					u->second.invisible(
 						map.underlying_union_terrain(map[loc.x][loc.y]),lawful_bonus,
@@ -1611,6 +1614,9 @@ unit_map::const_iterator find_visible_unit(const unit_map& units,
 	unit_map::const_iterator u = units.find(loc);
 	if(map.on_board(loc)){
 		if(u != units.end()){
+			if(current_team.fogged(loc.x, loc.y)){
+				return units.end();
+			}
 			if(current_team.is_enemy(u->second.side()) &&
 					u->second.invisible(
 						map.underlying_union_terrain(map[loc.x][loc.y]),lawful_bonus,

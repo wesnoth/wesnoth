@@ -1706,19 +1706,11 @@ void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_ty
 
 unit_map::const_iterator turn_info::find_unit(const gamemap::location& hex) const
 {
-	if(gui_.fogged(hex.x,hex.y)) {
-		return units_.end();
-	}
-
 	return find_visible_unit(units_,hex,map_,status_.get_time_of_day().lawful_bonus,teams_,viewing_team());
 }
 
 unit_map::iterator turn_info::find_unit(const gamemap::location& hex)
 {
-	if(gui_.fogged(hex.x,hex.y)) {
-		return units_.end();
-	}
-
 	return find_visible_unit(units_,hex,map_,status_.get_time_of_day().lawful_bonus,teams_,viewing_team());
 }
 

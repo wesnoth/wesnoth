@@ -545,7 +545,7 @@ double shortest_path_calculator::cost(const gamemap::location& loc, const double
 			enemy_unit = find_visible_unit(units_, adj[i], map_, lawful_bonus_, teams_, team_);
 
 			if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()) &&
-			    !team_.fogged(adj[i].x, adj[i].y) && enemy_unit->second.emits_zoc())
+			    enemy_unit->second.emits_zoc())
 				return getNoPathValue();
 		}
 	}

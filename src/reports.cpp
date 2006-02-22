@@ -87,21 +87,15 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 
 	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END) || type == POSITION) {
 
-		if(!current_team.fogged(mouseover.x,mouseover.y)) {
-			u = find_visible_unit(units,mouseover,
-					map,
-					status.get_time_of_day().lawful_bonus,
-					teams,current_team);
-		}
-
+		u = find_visible_unit(units,mouseover,
+							  map,
+							  status.get_time_of_day().lawful_bonus,
+							  teams,current_team);
 		if(u == units.end()) {
-			if(!current_team.fogged(loc.x,loc.y)) {
-				u = find_visible_unit(units,loc,
-						map,
-						status.get_time_of_day().lawful_bonus,
-						teams,current_team);
-			}
-
+			u = find_visible_unit(units,loc,
+								  map,
+								  status.get_time_of_day().lawful_bonus,
+								  teams,current_team);
 			if(u == units.end() && type != POSITION) {
 				return report();
 			}
