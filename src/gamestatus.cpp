@@ -183,6 +183,9 @@ void gamestatus::write(config& cfg) const
 	for(t = times_.begin(); t != times_.end(); ++t) {
 		t->write(cfg.add_child("time"));
 	}
+	for(t = illuminatedTimes_.begin(); t != illuminatedTimes_.end(); ++t) {
+		t->write(cfg.add_child("illuminated_time"));
+	}
 
 
 	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
@@ -191,6 +194,9 @@ void gamestatus::write(config& cfg) const
 		area["y"] = i->ysrc;
 		for(t = i->times.begin(); t != i->times.end(); ++t) {
 			t->write(area.add_child("time"));
+		}
+		for(t = i->illuminated_times.begin(); t != i->illuminated_times.end(); ++t) {
+			t->write(area.add_child("illuminated_time"));
 		}
 
 	}
