@@ -37,10 +37,6 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-namespace {
-	const int min_room_at_bottom = 150;
-}
-
 bool show_intro_part(display &disp, const config& part,
 		const std::string& scenario);
 
@@ -114,40 +110,52 @@ bool show_intro_part(display &disp, const config& part,
 
 	SDL_Rect dstrect;
 
-	if(!background.null()) {
-		dstrect.x = video.getx()/2 - background->w/2;
-		dstrect.y = video.gety()/2 - background->h/2;
-		dstrect.w = background->w;
-		dstrect.h = background->h;
+	if(background.null() || background->w*background->h == 0) {
+		background.assign(SDL_CreateRGBSurface(SDL_SWSURFACE,1,1,32,0xFF0000,0xFF00,0xFF,0xFF000000));
+	}
 
-		if(dstrect.y + dstrect.h > video.gety() - min_room_at_bottom) {
-			dstrect.y = maximum<int>(0,video.gety() - dstrect.h - min_room_at_bottom);
-		}
+	const int source_aspect = (background->w*1000)/background->h;
+	const int dest_aspect = (video.getx()*1000)/video.gety();
 
-		SDL_BlitSurface(background,NULL,video.getSurface(),&dstrect);
+	int xscale = video.getx();
+	int yscale = video.gety();
+
+	if(dest_aspect >= source_aspect) {
+		xscale = (background->w*yscale)/background->h;
+	} else {
+		yscale = (background->h*xscale)/background->w;
+	}
+
+	background = scale_surface(background,xscale,yscale);
+
+	dstrect.x = video.getx()/2 - background->w/2;
+	dstrect.y = video.gety()/2 - background->h/2;
+	dstrect.w = background->w;
+	dstrect.h = background->h;
+
+	SDL_BlitSurface(background,NULL,video.getSurface(),&dstrect);
 
 #ifdef USE_TINY_GUI
-		textx = 10;
-		int xbuttons = video.getx() - 50;
+	textx = 10;
+	int xbuttons = video.getx() - 50;
 #else
-		int xbuttons;
+	int xbuttons;
 
-		if (background->w > 400) {
-			textx = dstrect.x;
-			xbuttons = dstrect.x+dstrect.w-40;
-		} else {
-			textx = 200;
-			xbuttons = video.getx() - 200 - 40;
-		}
-#endif
-		texty = dstrect.y + dstrect.h + 10;
-
-		next_button.set_location(xbuttons,dstrect.y+dstrect.h+20);
-		skip_button.set_location(xbuttons,dstrect.y+dstrect.h+70);
+	if (background->w > 500) {
+		textx = dstrect.x + 150;
+		xbuttons = dstrect.x+dstrect.w-140;
 	} else {
-		next_button.set_location(video.getx()-200,video.gety()-150);
-		skip_button.set_location(video.getx()-200,video.gety()-100);
+		textx = 200;
+		xbuttons = video.getx() - 200 - 40;
 	}
+#endif
+	texty = dstrect.y + dstrect.h - 200;
+
+	//darken the area for the text and buttons to be drawn on
+	draw_solid_tinted_rectangle(0,texty,video.getx(),video.gety()-texty,0,0,0,0.5,video.getSurface());
+
+	next_button.set_location(xbuttons,dstrect.y+dstrect.h-180);
+	skip_button.set_location(xbuttons,dstrect.y+dstrect.h-130);
 
 	//draw title if needed
 	if(show_title) {
@@ -158,6 +166,7 @@ bool show_intro_part(display &disp, const config& part,
 					    dstrect.x,dstrect.y - scenario_size.h - 4));
 	}
 
+	events::raise_draw_event();
 	update_whole_screen();
 	disp.flip();
 
