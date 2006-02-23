@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-02-17 13:07+0100\n"
+"POT-Creation-Date: 2006-02-23 20:31+0100\n"
 "PO-Revision-Date: 2005-09-20 18:47+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -49,597 +49,214 @@ msgstr ""
 "kráľovskej armády a bol si vyslaný na východný front chrániť dedinčanov a "
 "zistiť, čo sa deje."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:4
-msgid "Approaching Weldyn"
-msgstr "Na ceste do Weldynu"
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:4
+msgid "The Outpost"
+msgstr "Hliadka"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:32
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:65
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:32
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:34
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:26
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:36
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:32
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:39
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:32
-#: data/campaigns/Eastern_Invasion/scenarios/Ogre_Training.cfg:34
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:32
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:30
-#: data/campaigns/Eastern_Invasion/scenarios/The_Duel.cfg:30
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:42
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:62
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:33
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:33
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:33
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Crossing.cfg:31
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:31
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:45
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:42
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:26
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:31
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:34
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:33
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:39
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:32
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:33
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:32
+#: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:31
+#: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:34
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:33
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:32
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:65
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:36
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:30
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:32
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:62
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:45
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:30
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:32
 msgid "Gweddry"
 msgstr "Gweddry"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:55
-msgid "Mal-un-Darak"
-msgstr "Mal-un-Darak"
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:52
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:219
+msgid "Dacyn"
+msgstr "Dacyn"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:69
-msgid "Mal-un-Zanrad"
-msgstr "Mal-un-Zanrad"
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:71
+msgid "Mal-Sakkat"
+msgstr "Mal-Sakkat"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:83
-msgid "Mal-un-Xadrux"
-msgstr "Mal-un-Xadrux"
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:91
+msgid "Mal-Talar"
+msgstr "Mal-Talar"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:97
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:72
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:196
-msgid "Konrad II"
-msgstr "Konrád II"
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:108
+#, fuzzy
+msgid "Mal-Uldhar"
+msgstr "Mal-Talar"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:114
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:109
-msgid "Get Gweddry to Weldyn"
-msgstr "Dostaneš Gweddryho do Weldynu"
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:131
+#, fuzzy
+msgid "Resist until you receive further instructions from Dacyn"
+msgstr "Vydržíš, dokiaľ nedostaneš ďalšie pokyny od Dacyna"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:118
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:185
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:87
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:76
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:94
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:113
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:83
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:108
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:106
-#: data/campaigns/Eastern_Invasion/scenarios/Ogre_Training.cfg:68
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:130
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:217
-#: data/campaigns/Eastern_Invasion/scenarios/The_Duel.cfg:58
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:133
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:249
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:89
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:79
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:77
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Crossing.cfg:59
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:102
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:161
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:135
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:252
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:94
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:102
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:76
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:77
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:108
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:107
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:79
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:87
+#: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:59
+#: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:68
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:89
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:83
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:185
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:113
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:217
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:118
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:161
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:58
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:130
 msgid "Death of Gweddry"
 msgstr "Zomrie Gweddry"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:122
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:189
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:91
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:80
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:98
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:117
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:87
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:112
-#: data/campaigns/Eastern_Invasion/scenarios/Ogre_Training.cfg:72
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:134
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:221
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:253
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:93
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:83
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:81
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Crossing.cfg:63
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:106
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:165
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:156
+msgid "What? What is going on?"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:160
+msgid ""
+"Look. To the east. Undead approach! But wait... I sense something... They "
+"cannot see me..."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:173
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:88
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:40
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:89
+msgid "Mal-Ravanal"
+msgstr "Mal-Ravanal"
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:180
+msgid ""
+"Hm. I do not sense anything out of the ordinary here. My scouts must have "
+"decieved me. Very well; destroy them."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:184
+msgid "Very well, Dark Archon. They will die. And then?"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:189
+msgid ""
+"On with the search. I trust you can defeat these men yourself? I have no "
+"time to waste here."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:201
+msgid "What?! Men, to arms! And where did Dacyn go?!"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:205
+msgid ""
+"There are too many undead, I cannot defeat them... but my orders are to hold "
+"this outpost. It appears we will die this day."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:227
+msgid "Gweddry? Good! You are still alive. Quickly, we must leave this place!"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:231
+msgid "Where did you go?! And where did you come from?"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:235
+msgid ""
+"There is no time to explain. If you wish to survive, you will escape through "
+"this trapdoor."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:239
+msgid "But what about the outpost?"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:243
+msgid ""
+"It is pointless to try to defend it. Now come on, we do not have much time "
+"to spare!"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:248
+msgid "Move Gweddry to the trapdoor"
+msgstr "Dostaneš Gweddryho k padacím dverám"
+
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:256
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:98
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:106
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:80
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:81
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:112
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:83
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:91
+#: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:63
+#: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:72
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:93
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:87
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:189
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:117
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:221
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:122
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:165
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:134
 msgid "Death of Dacyn"
 msgstr "Zomrie Dacyn"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:126
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:193
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:95
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:121
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:91
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:110
-#: data/campaigns/Eastern_Invasion/scenarios/Ogre_Training.cfg:76
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:138
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:225
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:97
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:87
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Crossing.cfg:67
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:169
-msgid "Death of Owaec"
-msgstr "Zomrie Owaec"
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:260
+msgid "Turns run out"
+msgstr "Vypeší čas"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:130
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:173
-msgid "Death of Konrad II"
-msgstr "Zomrie Konrád II"
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:279
+msgid "Follow me, men! Through the trapdoor!"
+msgstr "Za mnou, muži! Cez padacie dvere!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:188
+#: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:293
 msgid ""
-"We have finally reached Weldyn, but it seems the undead have surrounded it. "
-"We must break through to reach the king!"
+"Hurry! Before long enemy reinforcements will arrive, and we will all die! Go "
+"to the trapdoor!"
 msgstr ""
-"Konečne sme prišli k Weldynu, ale zdá sa, že ho obkľúčili nemŕtvi. Musíme sa "
-"cez nich presekať ku kráľovi!"
+"Pohyb! Čoskoro prídu nepriateľom posily, a my všetci zomrieme! Poďte cez "
+"padacie dvere!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:192
-msgid ""
-"It would be best not to try to defeat these undead, there are too many of "
-"them. Go straight to the city."
-msgstr ""
-"Lepšie by bolo nesnažiť sa týchto nemŕtvych poraziť, lebo je ich príliš "
-"veľa. Choď priamo do mesta."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:205
-msgid ""
-"We have reached Weldyn. Now we must have a council to decide what to do next."
-msgstr "Došli sme do Weldynu. Teraz musíme zvolať radu a rozhodnúť, čo ďalej."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:209
-msgid "Come, into the castle."
-msgstr "Poďme do hradu."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Approaching_Weldyn.cfg:224
-msgid "Weldyn has been captured, and Wesnoth is no more..."
-msgstr "Weldyn bol dobytý a Wesnoth zanikol..."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:4
-msgid "Captured"
-msgstr "V zajatí"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:22
-msgid ""
-"After reaching what they believed was safety, Gweddry and his men had been "
-"captured by northern orcs."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:26
-#, fuzzy
-msgid ""
-"They were being taken to the orcish king, Dra-Nak, but, of course, they "
-"wished to escape before that happened..."
-msgstr ""
-"Po prekročení nebezpečného jazera Vrug Gweddryho a jeho mužov zajali severní "
-"orkovia. Idú ich predviesť pred kráľa orkov, Dra-Naka, ale oni by samozrejme "
-"radšej predtým ušli..."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:36
-msgid "Prison"
-msgstr "Väzenie"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:40
-msgid "Torture Chamber"
-msgstr "Mučiareň"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:44
-msgid "Throne Room"
-msgstr "Trónna sála"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:48
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:52
-msgid "The City"
-msgstr "Mesto"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:56
-msgid "Exit"
-msgstr "Východ"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:77
-msgid "King Dra-Nak"
-msgstr "Kráľ Dra-Nak"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:181
-msgid "Escape through the south-west tunnel"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:261
-msgid ""
-"I think Dacyn and Owaec have escaped already. Now I have to, also... these "
-"guards are not being very alert, I may be able to get past them..."
-msgstr ""
-"Myslím, že Dacyn a Owaec už ušli. Teraz musím aj ja... stráže nie sú príliš "
-"pozorné, možno sa poza ne prešmyknem..."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:286
-msgid "Aha! There is a small crack in the cave wall here."
-msgstr "Aha! Tu je malá trhlina v stene jaskyne."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:309
-msgid ""
-"So, Gweddry, you escaped too? Good. I think they have the rest of our troops "
-"captive, along with the peasants following us. We should be able to rescue "
-"them."
-msgstr ""
-"Takže, Gweddry, aj ty si ušiel? Dobre. Myslím, že držia väčšinu našich "
-"jednotiek v zajatí, spolu s roľníkmi, ktorí nás nasledovali. Mali by sme ich "
-"zvládnuť zachrániť."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:313
-msgid "Where are they? These caves are impossible to navigate!"
-msgstr "Kde sú? V týchto jaskyniach sa nedá orientovať!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:317
-msgid ""
-"Somewhere south of us. We are in a hidden passage in the north. Oh, and some "
-"others escaped too, along with Owaec."
-msgstr ""
-"Niekde na juh od nás. My sme v tajnej ceste na severe. A niektorí ušli spolu "
-"s Owaecom."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:321
-msgid "Well, where are the prisoners?"
-msgstr "Tak, kde sú tí väzni?"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:325
-msgid "Right here, boss."
-msgstr "Priamo tu, šéfe."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:329
-msgid "Well, where's their leader? I don't see him."
-msgstr "No a kde je ich veliteľ? Nevidím ho."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:333
-msgid "Uh... (whispers).. I dunno. He escaped, I think."
-msgstr "Hm... (šepot)... neviem. Ušiel, myslím."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:337
-msgid ""
-"You fool! Well, find him. Bring him to me! Wait, no, just kill him on sight."
-msgstr ""
-"Ty somár! Nájdi ho. Priveď ho ku mne! Vlastne nie, zabi ho, keď ho nájdeš."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:350
-msgid "Look, the escaped prisoners have returned!"
-msgstr "Aha, ušlí väzni sa vrátili!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:354
-msgid "Kill them."
-msgstr "Zabite ich."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:392
-msgid "The guards are distracted! Now is the time to escape!"
-msgstr "Stráže nedávajú pozor! Teraz je čas na útek!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:396
-msgid "Huh? Who's there, who said that?"
-msgstr "He? Kto je tam? Kto to povedal?"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:430
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:217
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:382
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:240
-msgid "Holy Amulet"
-msgstr "Svätý amulet"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:433
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:220
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:385
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:243
-msgid "Wearing this amulet will cause every blow you deal to be holy!"
-msgstr "Tento amulet spôsobí, že každý tvoj úder bude svätý!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:434
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:221
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:386
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:244
-msgid "I am not suited to using this item! Let another take it."
-msgstr "Ja tento predmet nemôžem použiť! Nech si ho vezme niekto iný."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:473
-#, fuzzy
-msgid "I see the exit to the tunnel! Onward!"
-msgstr "Dosiahneš koniec tunela"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:477
-msgid ""
-"Wait! We cannot go out that way. There are too many orcs. We must exit "
-"through the south-west gates."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:481
-msgid "Very well. We must go the other way."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Captured.cfg:496
-msgid "Good! We have escaped these accursed caves!"
-msgstr "Dobre! Unikli sme z tých prekliatych jaskýň!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:4
-msgid "The Crossing"
-msgstr "Križovatka"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:41
-msgid "Garnad"
-msgstr "Garnad"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:52
-msgid "Draka-Kura"
-msgstr "Draka-Kura"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:63
-msgid "Grug"
-msgstr "Grug"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:83
-msgid "Get Gweddry and Owaec across the river"
-msgstr "Dostaneš Gweddryho a Owaeca cez rieku"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:111
-#, fuzzy
-msgid ""
-"We have come to the Great River. What should we do? Should we attempt to "
-"cross it?"
-msgstr "Prišli sme k veľkej rieke. Čo máme robiť? Pokúsime sa ju prekročiť?"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:115
-msgid ""
-"We must cross this river. The undead are chasing us, and their hordes are "
-"much too great for us to defeat. Reinforcements for the undead will arrive "
-"soon. We must be across the river before that happens."
-msgstr ""
-"Túto rieku musíme prekročiť. Nemŕtvi nás naháňajú a je ich priveľa na to, "
-"aby sme s nimi bojovali. Čoskoro nemŕtvym prídu posily. Než sa tak stane, "
-"musíme byť na druhej strane rieky."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:119
-msgid ""
-"Across this river lies the Northland. If we can get there, we may be able to "
-"get some ogres to help us - but the orcs will definitely attack us before "
-"that happens."
-msgstr ""
-"Za touto riekou leží Severná zem. Ak sa tam dostaneme, možno získame na "
-"pomoc nejakých ohyzdov - ale orkovia nás určite napadnú ešte predtým."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:123
-msgid "Grug say we no help you! We finish must battle orc with!"
-msgstr "Grug hovoriť my pomoc nie! My dokončiť musíme orkov bojovať!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:127
-msgid ""
-"Was that comprehensible to anyone? Silence, foolish ogre. I will deal with "
-"you later. Right now there are men trying to cross this river."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:131
-msgid "Orc foolish! Die you now!"
-msgstr "Ork hnusný! Zomrieť ty teraz!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:135
-msgid ""
-"If we show ourselves as enemies of the orcs, they may aid us. But I think we "
-"should cross the river before trying to convince these ogres to help."
-msgstr ""
-"Ak sa im ukážeme ako nepriatelia orkov, možno nám pomôžu. Ale myslím, že by "
-"sme mali prekročiť rieku skôr ako začneme týchto ohyzdov presviedčať."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:177
-msgid "Mal-Hakralan"
-msgstr "Mal-Hakralan"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:189
-msgid ""
-"The undead reinforcements have arrived! We must cross the river immediately!"
-msgstr "Nemŕtvym prišli posily! Musíme okamžite prekročiť rieku!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:226
-msgid ""
-"Good! We have crossed. Now let's see if we can get the Ogres to join us. "
-"They have been convinced to work for the Crown in the past; maybe it can be "
-"done again."
-msgstr ""
-"Dobre! Prešli sme. Teraz skúsme, či si dokážeme získať ohyzdov na svoju "
-"stranu. V minulosti sa ich podarilo presvedčiť, aby pracovali pre Korunu; "
-"možno sa to podarí znova."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:235
-#, fuzzy
-msgid "Grug say join you will he."
-msgstr "Grug hovoriť pridať vy možno on."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:255
-msgid "Gork"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:261
-#, fuzzy
-msgid "Drog"
-msgstr "Darg"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:271
-msgid "You may now recruit ogres!"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Crossing.cfg:288
-#, fuzzy
-msgid "Hurry up. We must get across before these undead slaughter us!"
-msgstr ""
-"Ponáhľajme sa. Potrebujeme prejsť na druhú stranu skôr než nás nemŕtvi "
-"pozabíjajú!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:4
-msgid "An Elven Alliance"
-msgstr "Spojenectvo elfov"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:44
-msgid "Volas"
-msgstr "Volas"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:58
-msgid "Gruga-Har"
-msgstr "Gruga-Har"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:72
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Crossing.cfg:55
-msgid "Defeat enemy leader"
-msgstr "Porazíš veliteľa nepriateľov"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:84
-msgid "Death of Volas"
-msgstr "Zomrie Volas"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:103
-msgid "Greetings, travelers! Welcome to my realm."
-msgstr "Zdravím vás, pútnici! Vitajte v mojom kraji."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:107
-msgid ""
-"Would it be possible for us to rest in your lands for a while? We have been "
-"pursued by fell undead, although they did not dare to enter the forest... "
-"yet."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:111
-msgid "Certainly."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:115
-msgid ""
-"Good. Now, you should be warned. This undead warlord is very powerful. If "
-"you choose to battle with him then even if you are victorious few will "
-"survive. I advise that you join us, and head north. We may be able to leave "
-"the area he wishes to conquer."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:119
-msgid ""
-"I thank you for your offer. But I will not leave my homeland. These undead "
-"cannot be as powerful as you say. I will fight them."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:123
-msgid ""
-"This is not a wise choice, but it is yours to make. If you will not join us, "
-"will you at least help us reach the northern outpost? We wish to warn our "
-"comrades there."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:127
-msgid ""
-"I will aid you. Although I too think that yours is the foolish choice. You "
-"should stay, and fight."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:131
-msgid ""
-"After we rest for a short while, we will leave. We have little time to spare."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:144
-msgid "Intruders!"
-msgstr "Votrelci!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:148
-msgid "What? Orcs! Where did they come from?"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:152
-#, fuzzy
-msgid ""
-"I know not. But they are right in the Northern Path. You will have to fight "
-"them to move on."
-msgstr "Sú priamo na severnej ceste. Musíme ich poraziť, ak chceme ísť ďalej."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:156
-msgid "Bring forth the assassins, we may be able to poison them!"
-msgstr "Priveďte zabijakov, možno ich otrávime!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:166
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:201
-msgid "Nafga"
-msgstr "Nafga"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:173
-msgid ""
-"Your Warlordship, I am the only assassin left! Do you want me to go poison "
-"their leader?"
-msgstr ""
-"Vaše vojvodstvo, ja som jediný zvyšný zabijak! Chcete, aby som išiel otráviť "
-"ich veliteľa?"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:177
-msgid "Perfect! Go, into the forest!"
-msgstr "Výborne! Choď do lesa!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:192
-msgid ""
-"They have sent an assassin into the forest. We will have to be careful, and "
-"make sure he does not come out and attack us unexpectedly."
-msgstr ""
-"Poslali do lesa zabijaka. Mali by sme byť opatrní a dať si pozor, aby na nás "
-"nevyskočil nečakane."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:208
-msgid "Hahaha! Nafga will kill the elves!"
-msgstr "Hahaha! Nafga pozabíja elfov!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:219
-msgid "No! This is the first time I have failed a mission, and it is my last!"
-msgstr "Nie! To je prvýkrát, čo som nesplnil poslanie, a zároveň aj posledný!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:223
-msgid ""
-"My assassin is dead! the elves must pay, not for his death, but for stopping "
-"him in his mission!"
-msgstr ""
-"Môj zabijak je mŕtvy! Za to elfovia zaplatia. Nie za jeho smrť, ale že mu "
-"nedovolili splniť úlohu!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:234
-#, fuzzy
-msgid "You have failed me, man of Wesnoth..."
-msgstr "Nie! Porazili ste ma, a teraz máte voľnú cestu do Wesnothu!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:245
-msgid "We have defeated the orcs! Now you can rest, and then leave."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:249
-msgid ""
-"We have not the time. This battle has wasted too much of it already. We must "
-"leave now."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Elven_Alliance.cfg:253
-msgid "Very well. I will send guides to lead you to your allies."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:4
 msgid "The Escape Tunnel"
 msgstr "Únikový tunel"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:40
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:40
 msgid "Kabak"
 msgstr "Kabak"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:51
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:51
 msgid "Knutan"
 msgstr "Knutan"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:74
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:74
 msgid "Mal-Bakral"
 msgstr "Mal-Bakral"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:90
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:90
 msgid "Reach the end of the tunnel"
 msgstr "Dosiahneš koniec tunela"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:112
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:112
 msgid "Where are we? I can't see where we are going."
 msgstr "Kde sme? Nevidím, kam ideme."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:116
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:116
 msgid ""
 "I do not know. There are trolls in here, which may try to fight us. Now "
 "hurry, we have to move quickly with those Lichs still behind us."
@@ -647,11 +264,11 @@ msgstr ""
 "Neviem. Sú tu trollovia, možno nás napadnú. Ponáhľajme sa, musíme ísť "
 "rýchlo, keď máme za chrbtom tých kostejov."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:120
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:120
 msgid "Wait, before we go anywhere - who were those undead?"
 msgstr "Počkaj, skôr než niekam pôjdeme... kto boli tí nemŕtvi?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:124
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:124
 msgid ""
 "It doesn't matter. They are much too powerful for us; our only hope is to "
 "get away, far away. Perhaps we should go north, and meet with Owaec."
@@ -659,15 +276,15 @@ msgstr ""
 "Na tom nezáleží. Boli na nás príliš silní; naša jediná šanca je dostať sa "
 "preč, ďaleko preč. Možno by sme mali ísť na sever a stretnúť sa s Owaecom."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:149
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:149
 msgid "TROL TREZZUR HOLE: KEEP OWT"
 msgstr "TROLY PO KLAD: CHOD PREC"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:163
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:163
 msgid "Who goes there?"
 msgstr "Kto je tam?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:167
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:167
 msgid ""
 "We are travelers loyal to the king of Wesnoth. Will you help us escape these "
 "trolls?"
@@ -675,7 +292,7 @@ msgstr ""
 "My sme pútnici, poddaní kráľa z Wesnothu. Pomôžete nám ujsť pred týmito "
 "trollmi?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:171
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:171
 msgid ""
 "Yes, we will help you, for we have no love for the trolls. Anyone attacked "
 "by them deserves some help, I think."
@@ -683,362 +300,430 @@ msgstr ""
 "Áno, pomôžeme vám. Nemáme síce žiadne záväzky voči Wesnoth, ale veríme, že "
 "idete za vznešeným cieľom."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:181
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:181
 msgid ""
 "Thank you. Now, I advise you join us. Undead have followed us into these "
 "caves, and they will kill you if you stay behind."
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:187
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:187
 msgid ""
 "Thank you. Now, I advise you join us. Undead are in these lands, and they "
 "will find these caves."
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:193
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:193
 msgid ""
 "My clan has lived in these caves for centuries. We will not leave now "
 "because of some roving undead."
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:197
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:197
 msgid "Very well. The best of luck in your battle."
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:257
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:217
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:383
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:240
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:430
+msgid "Holy Amulet"
+msgstr "Svätý amulet"
+
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:220
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:386
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:243
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:433
+msgid "Wearing this amulet will cause every blow you deal to be holy!"
+msgstr "Tento amulet spôsobí, že každý tvoj úder bude svätý!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:221
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:387
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:244
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:434
+msgid "I am not suited to using this item! Let another take it."
+msgstr "Ja tento predmet nemôžem použiť! Nech si ho vezme niekto iný."
+
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:257
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold."
 msgstr "V tejto truhlici je obrovské bohatstvo! Je to dvesto zlatých!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:334
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:334
 #, fuzzy
 msgid "We have found you, live one! Prepare to die!"
 msgstr "Našli sme ťa, človek! Priprav sa na smrť!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:338
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:338
 msgid ""
 "They follow us... we must get out of this tunnel. It looks like it is "
 "leading east. That is unfortunate, for it will bring us further from Weldyn. "
 "But it is our only option."
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/Escape_Tunnel.cfg:351
+#: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:351
 #, fuzzy
 msgid "We have reached the end of the tunnel. I see daylight above us!"
 msgstr "Dosiahli sme koniec únikového tunela. Nad nami vidím denné svetlo!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:4
-msgid "Evacuation"
-msgstr "Evakuácia"
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:4
+msgid "An Unexpected Appearance"
+msgstr "Nečakané zjavenie"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:23
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:42
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:43
+msgid "Mal-Skraat"
+msgstr "Mal-Skraat"
+
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:62
+msgid "Mal-Tar"
+msgstr "Mal-Tar"
+
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:76
+msgid "Mal-Kallat"
+msgstr "Mal-Kallat"
+
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:98
+msgid "Defeat either enemy necromancer"
+msgstr "Porazíš niektorého z nepriateľských černokňažníkov"
+
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:125
+msgid "We have escaped from those dark tunnels! But where are we now?"
+msgstr "Unikli sme z tých temných tunelov! Ale kde to sme?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:129
 msgid ""
-"Gweddry had escaped from the orcish prisons. He found himself in the "
-"Northlands, farther south than before. Orcs were at his back. He and his men "
-"went south, until they reached the Great River."
+"We are in the middle of the eastern mountains, in a mountain pass leading "
+"east and west. We need to head north, to meet Owaec, but we cannot go "
+"through the mountains... we must go east, or west, and hope we can get "
+"around them."
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:45
-msgid "Varrak-Klar"
-msgstr "Varrak-Klar"
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:133
+msgid "Hahaha! We have you surrounded!"
+msgstr "Hahaha! Ste obkľúčení!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:58
-msgid "Unhk"
-msgstr "Unhk"
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:137
+msgid ""
+"Why don't we see if the new recruit can handle them. After all, there are "
+"only two!"
+msgstr ""
+"Vyskúšajme, či si s nimi poradí náš nový regrút. Napokon, sú len dvaja!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:71
-msgid "Ran-Lar"
-msgstr "Ran-Lar"
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:141
+msgid "No!!! They'll kill me!"
+msgstr "Nie!!! Veď ma zabijú!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:105
-msgid "Destroy the bridge OR defeat all enemies"
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:145
+msgid "That would be your problem, then."
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:125
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:149
+msgid ""
+"These undead are toying with us! This here adept is weak - we may be able to "
+"take his castle."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:153
+msgid ""
+"A good idea. Then, we must kill either of the necromancers. I would prefer "
+"to attack the western one, so we can get closer to Wesnoth."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:164
+msgid "No! You have defeated me, and can re-enter Wesnoth!"
+msgstr "Nie! Porazili ste ma, a teraz máte voľnú cestu do Wesnothu!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/03.An_Unexpected_Appearance.cfg:180
+msgid "You have defeated my brother, but I will follow you and kill you!"
+msgstr "Porazili ste môjho brata, ale ja si vás nájdem a zabijem!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:4
+msgid "An Elven Alliance"
+msgstr "Spojenectvo elfov"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:44
+msgid "Volas"
+msgstr "Volas"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:58
+msgid "Gruga-Har"
+msgstr "Gruga-Har"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:72
+#: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:55
+msgid "Defeat enemy leader"
+msgstr "Porazíš veliteľa nepriateľov"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:84
+msgid "Death of Volas"
+msgstr "Zomrie Volas"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:103
+msgid "Greetings, travelers! Welcome to my realm."
+msgstr "Zdravím vás, pútnici! Vitajte v mojom kraji."
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:107
+msgid ""
+"Would it be possible for us to rest in your lands for a while? We have been "
+"pursued by fell undead, although they did not dare to enter the forest... "
+"yet."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:111
+msgid "Certainly."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:115
+msgid ""
+"Good. Now, you should be warned. This undead warlord is very powerful. If "
+"you choose to battle with him then even if you are victorious few will "
+"survive. I advise that you join us, and head north. We may be able to leave "
+"the area he wishes to conquer."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:119
+msgid ""
+"I thank you for your offer. But I will not leave my homeland. These undead "
+"cannot be as powerful as you say. I will fight them."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:123
+msgid ""
+"This is not a wise choice, but it is yours to make. If you will not join us, "
+"will you at least help us reach the northern outpost? We wish to warn our "
+"comrades there."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:127
+msgid ""
+"I will aid you. Although I too think that yours is the foolish choice. You "
+"should stay, and fight."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:131
+msgid ""
+"After we rest for a short while, we will leave. We have little time to spare."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:144
+msgid "Intruders!"
+msgstr "Votrelci!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:148
+msgid "What? Orcs! Where did they come from?"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:152
 #, fuzzy
-msgid "Leave any of the three heroes on the north side of the river"
-msgstr "Necháš niektorého z troch hrdinov na severnom brehu rieky"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:173
-msgid "Engineer"
-msgstr "Inžinier"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:180
 msgid ""
-"All is lost! We have to get out of the Northlands as quickly as possible! "
-"Run for your - what the...?!? Who are you?"
-msgstr ""
-"Všetko je stratené. Musíme sa dostať do Severnej zeme tak rýchlo, ako sa len "
-"dá. Bežte, ako len... čo to...?!? Kto si?"
+"I know not. But they are right in the Northern Path. You will have to fight "
+"them to move on."
+msgstr "Sú priamo na severnej ceste. Musíme ich poraziť, ak chceme ísť ďalej."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:184
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:156
+msgid "Bring forth the assassins, we may be able to poison them!"
+msgstr "Priveďte zabijakov, možno ich otrávime!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:166
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:201
+msgid "Nafga"
+msgstr "Nafga"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:173
 msgid ""
-"I'm an enginea'. I s'pect you'll have a need of me services. I bet you're "
-"gonna want me to blow up that bridge ov'r theah."
+"Your Warlordship, I am the only assassin left! Do you want me to go poison "
+"their leader?"
 msgstr ""
-"Ja som inžinier. Reku, asi potrebujete moje služby. Isto by ste potrebovali "
-"vyhodiť henten most do vzduchu."
+"Vaše vojvodstvo, ja som jediný zvyšný zabijak! Chcete, aby som išiel otráviť "
+"ich veliteľa?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:188
-msgid "Why would we want to do that?!?"
-msgstr "Prečo by sme to robili?!?"
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:177
+msgid "Perfect! Go, into the forest!"
+msgstr "Výborne! Choď do lesa!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:192
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:192
+msgid ""
+"They have sent an assassin into the forest. We will have to be careful, and "
+"make sure he does not come out and attack us unexpectedly."
+msgstr ""
+"Poslali do lesa zabijaka. Mali by sme byť opatrní a dať si pozor, aby na nás "
+"nevyskočil nečakane."
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:208
+msgid "Hahaha! Nafga will kill the elves!"
+msgstr "Hahaha! Nafga pozabíja elfov!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:219
+msgid "No! This is the first time I have failed a mission, and it is my last!"
+msgstr "Nie! To je prvýkrát, čo som nesplnil poslanie, a zároveň aj posledný!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:223
+msgid ""
+"My assassin is dead! the elves must pay, not for his death, but for stopping "
+"him in his mission!"
+msgstr ""
+"Môj zabijak je mŕtvy! Za to elfovia zaplatia. Nie za jeho smrť, ale že mu "
+"nedovolili splniť úlohu!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:234
 #, fuzzy
+msgid "You have failed me, man of Wesnoth..."
+msgstr "Nie! Porazili ste ma, a teraz máte voľnú cestu do Wesnothu!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:245
+msgid "We have defeated the orcs! Now you can rest, and then leave."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:249
 msgid ""
-"Well, I see those orcs are chasin' you, and if I blow up the bridge, they "
-"can't get across. It'll help you to escape."
-msgstr ""
-"No, vidím, že vás naháňajú orkovia, a keď ten most vyhodím, nedostanú sa k "
-"vám. Môžete ľahšie ujsť."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:196
-msgid "I see... I think it is a good idea to hire him. How much?"
+"We have not the time. This battle has wasted too much of it already. We must "
+"leave now."
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:200
-#, fuzzy
+#: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:253
+msgid "Very well. I will send guides to lead you to your allies."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:4
+msgid "The Undead Border Patrol"
+msgstr "Pohraničná hliadka nemŕtvych"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:54
+msgid "Mal-Telnarad"
+msgstr "Mal-Telnarad"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:73
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:75
+msgid "Defeat either enemy leader"
+msgstr "Porazíš niektorého z nepriateľských veliteľov"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:94
 msgid ""
-"I aint charging gold - I wants protecshun! Everywhere I go, I see orcs, "
-"undead. 'T'aint safe 'round 'ere!"
+"We have gotten out of that mountain range now, and the path northwards is "
+"clear. Let us go north, now, and try to reach Owaec at the outpost."
 msgstr ""
-"Nechcem zlato... ja len chcem pokoj od tých nemŕtvych! Zničili mój dom, a už "
-"nemám kam ísť!"
+"Práve sme sa dostali z tohoto horského pásma, a cesta na sever je voľná. "
+"Poďme teda na sever a pokúsme sa nájsť Owaeca pri hliadke."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:204
-#, fuzzy
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:98
 msgid ""
-"Very well, we'll protect you from the undead. But we can't help you until we "
-"get across this river. Now let's go!"
+"Wait. I am not sure that is the best option. If we go east now, we may be "
+"able to find the lich Mal-Ravanal who attacked us, and destroy him before he "
+"can attack Wesnoth again. After we escaped, I suspect he went back east to "
+"find us."
 msgstr ""
-"Nuž dobre, my ťa ochránime pred nemŕtvymi. Ale nemôžeme ti pomôcť, kým sa "
-"nedostaneme cez rieku. Teraz poďme!"
+"Moment. Nie som si istý, že je to tá najlepšia možnosť. Ak pôjdeme teraz na "
+"východ, mali by sme nájsť toho kosteja Mal-Ravanala, ktorý nás napadol. "
+"Môžeme ho zničiť skôr ako opäť zaútočí na Wesnoth. Predpokladám, že sa po "
+"našom úteku vrátil na východ, aby nás hľadal."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:208
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:102
 msgid ""
-"Deal. I c'n blow'er up once I get to that signpost ov'r dere. That's where "
-"my eq'pment is."
+"They run from me! Still, it will not help them, the border patrol will "
+"destroy them. I may even be promoted!"
 msgstr ""
-"Platí. Môžem ho odpáliť, keď sa dostanem k hentej značke. Tam mám náradie."
+"Utekajú predo mnou! Ale to im nepomôže, rozdrví ich pohraničná hliadka. "
+"Možno ma potom povýšia!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:225
-msgid "So, d'ya want me to blow up der bridge yet, Cap'n?"
-msgstr "Tak už mám ten most vyhodiť, šéfe?"
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:113
+msgid "Now I will never get promoted!"
+msgstr "Teraz ma už nepovýšia!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:229
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:137
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:322
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:117
+msgid "Come, let us return to Wesnoth and aid the Northern Outpost."
+msgstr "Poďte, vrátime sa do Wesnothu a podporíme severnú hliadku."
+
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:133
+msgid ""
+"We have defeated this patrol, but we can still turn back! Do we want to go "
+"further into these lands now, or do we want to try to turn back and defeat "
+"this necromancer?"
+msgstr ""
+"Porazili sme túto hliadku, ale stále sa môžeme vrátiť! Chceme ísť ešte "
+"hlbšie do tejto krajiny, alebo sa skúsime otočiť a poraziť toho "
+"černokňažníka?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:137
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:229
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:322
 msgid "Hmm..."
 msgstr "Hmmm..."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:231
-msgid "Yes, blow it up."
-msgstr "Áno, vyhoď to do vzduchu."
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:139
+msgid "I wish to destroy the evil before it can spread. East we go!"
+msgstr "Musíme zničiť zlo skôr ako sa rozšíri. Poďme na východ!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:235
-msgid "Alright! Blast'n time!"
-msgstr "Jasné. Ohňostroj začína!"
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:143
+msgid "I will not say if this is a good decision, but I will follow you."
+msgstr "Nepovedal by som, že je to dobré rozhodnutie, ale idem s tebou."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:260
-msgid "BOOM!!!"
-msgstr "BUM!!!"
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:147
+msgid "Noo!!! I can't be promoted if they run away!"
+msgstr "Nie!!! Ak mi ujdú, nepovýšia ma!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:278
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:157
+msgid ""
+"You are right. It is foolish to go onward - we must defeat Mal-Skraat and "
+"turn back, going to the Northern Outpost."
+msgstr ""
+"Máš pravdu. Bola by hlúposť ísť vpred... musíme poraziť Mal-Skraata a vrátiť "
+"sa, ísť do severnej hliadky."
+
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:161
+msgid "Good! if I defeat them, I can become a lich!"
+msgstr "Dobre! Ak ich porazím, bude zo mňa kostej!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:177
+msgid ""
+"We failed to defeat either enemy! Now more lichs will come, and we will be "
+"overwhelmed!"
+msgstr ""
+"Nepodarilo sa nám poraziť nikoho! Teraz prídu ďalší kosteji a prevalcujú nás!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:186
 #, fuzzy
 msgid ""
-"Good, we have escaped from these orcs. But where will we go? There are "
-"undead in Wesnoth."
-msgstr "Unikli sme z tých temných tunelov! Ale kde to sme?"
+"We cannot spend any more time attempting to defeat Mal-Skraat. Like it or "
+"not, we must go further into these undead lands."
+msgstr ""
+"Nemôžeme strácať čas bojom s Mal-Skraatom. Či sa nám to páči alebo nie, "
+"musíme ísť hlbšie to tejto krajiny nemŕtvych."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:282
+#: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:190
 msgid ""
-"It is not safe here, but we cannot go back north. The orcs are a more "
-"immediate threat."
+"Noo!!! He will reach Mal-Ravanal's capital, and I shall be punished for "
+"letting him escape!"
 msgstr ""
+"Nie!!! Pôjde do hlavného mesta Mal-Ravanal a mňa potrestajú za to, že mi "
+"ušiel!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:291
-msgid "No, wait until later."
-msgstr "Nie, ešte počkaj."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:295
-msgid "Neh? Alright then, we'll wait fa' later, eh?"
-msgstr "Ne? No dobre, ešte počkám, hej?"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:306
-msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
-msgstr "Nestihli sme včas zničiť most! Orkovia nás všetkých pobijú!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:314
-#, fuzzy
-msgid ""
-"Well, we didn't have to blow up the bridge after all, but we still have to "
-"leave the northlands. More orcs will come. But where will we go? There are "
-"undead in Wesnoth."
-msgstr ""
-"No, však ten most predsa nemusíme zničiť, len musíme ísť na juh. Dúfajme, že "
-"tu na západe nie je veľa nemŕtvych."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:322
-msgid "So what do you propose?"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:326
-msgid ""
-"We cannot go north, for that is where orcs are... we cannot go east, for "
-"that is where the undead come from... we cannot go west, for the ocean lies "
-"in that direction, and we have no ships. We would survive for a time, but we "
-"would still be in Wesnoth, and the undead would still find us."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:330
-msgid ""
-"We could go south, and return to Wesnoth...  but I do not know what that "
-"would accomplish."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:334
-msgid "It would accomplish nothing! The undead will kill us all!"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:338
-msgid ""
-"Have you not heard what Dacyn said? Either the orcs or undead will kill us "
-"no matter what we do. Our only hope was to isolate ourselves on the Isle of "
-"Vrug. We are too far away now to return that way, and we have aroused the "
-"orcfolk. We cannot try that again. So, if we have no hope..."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:342
-msgid ""
-"There is still some hope left. If we return to Wesnoth, we may be able to "
-"aid the king in defeating these invaders. We saw them attack us. And, I "
-"have... advice. To give the king. I may know the undead's weakness."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:346
-msgid ""
-"Very well. If returning to Wesnoth has an chance of success, it is our best "
-"option. We will go south."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:350
-msgid ""
-"I do not like this. But is appears we will die no matter our course of "
-"action."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Evacuation.cfg:354
-msgid ""
-"I'll be followin' yah from now on. Hope yah can get to Weld'n an' all so I "
-"c'n stop runnin'..."
-msgstr "Pójdem za vami. Snáď sa dostaneme do Weldynu a bude pokoj..."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:4
-msgid "Lake Vrug"
-msgstr "Jazero Vrug"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:43
-msgid "Darg"
-msgstr "Darg"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:58
-msgid "Kraagak"
-msgstr "Kraagak"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:79
-msgid "Defeat the trolls and gryphons"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:111
-msgid ""
-"The trail stops soon. We have almost reached our destination, if we can call "
-"it that. There is a large lake in front of us, with a small island off the "
-"coast. If we burn down the bridge to it, no one will ever be able to reach "
-"us."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:115
-msgid ""
-"But what if there are already people living on it? We will have to fight "
-"them! And besides, the undead can build boats."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:119
-msgid ""
-"There are other people. A tribe of trolls, and some gryphons. But it is "
-"safer than fighting the undead, and once we kill them, the island will be "
-"ours."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:123
-#, fuzzy
-msgid ""
-"Very well, we will go on, take this island. It appears we have no choice. "
-"Onward!"
-msgstr "Dobre teda, poďme a nájdime to údolie. Aj tak nemáme na výber. Vpred!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:135
-msgid ""
-"There is an abandoned castle here. It looks repairable - we should settle "
-"here."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:139
-msgid ""
-"Very well. Let us rally there, and then move to destroy these trolls and "
-"gryphons."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:151
-msgid "We will base our attack from here. Now go, destroy the enemy!"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:159
-msgid "You find 100 gold in the fortress!"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:173
-msgid "We have done it! The island is ours. Our journey is complete."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Lake_Vrug.cfg:214
-msgid "Be not going too fast. You gonna come wid us."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:4
 msgid "Mal-Ravanal's Capital"
 msgstr "Mal-Ravanalovo hlavné mesto"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:49
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:49
 msgid "Mal-Marak"
 msgstr "Mal-Marak"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:61
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:61
 msgid "Mal-Galkar"
 msgstr "Mal-Galkar"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:73
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:73
 msgid "Rava-Krodaz"
 msgstr "Rava-Krodaz"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:88
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:89
-#: data/campaigns/Eastern_Invasion/scenarios/The_Duel.cfg:40
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:171
-msgid "Mal-Ravanal"
-msgstr "Mal-Ravanal"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:104
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:104
 msgid "Escape from the capital by killing one of the two necromancers"
 msgstr ""
 "Unikneš z hlavného mesta tak, že zabiješ jedného z dvoch černokňažníkov"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:125
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:125
 msgid "We have come all the way to Mal-Ravanal's Capital!"
 msgstr "Dostali sme sa až do hlavného mesta Mal-Ravanala!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:130
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:130
 msgid ""
 "Yes, but look! The undead forces are closing in behind us. As I said before, "
 "we cannot kill Mal-Ravanal. It was foolish to come this far, we must turn "
@@ -1047,7 +732,7 @@ msgstr ""
 "Áno, ale pozri! Nemŕtve armády sa za nami uzatvárajú. Ako som hovoril, "
 "nemôžeme zabiť Mal-Ravanala. Bola hlúposť ísť až sem, musíme sa vrátiť!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:135
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:135
 msgid ""
 "Perhaps. To retreat, we must kill one of these necromancers that follow us. "
 "But, perhaps we can kill this Mal-Ravanal still. I might wish to try."
@@ -1056,15 +741,15 @@ msgstr ""
 "prenasledujú. Ale možno dokážeme zabiť aj toho Mal-Ravanala. Ja by som to "
 "asi skúsil."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:141
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:141
 msgid "These humans have dared to come this far into my land. Crush them!"
 msgstr "Títo ľudia sa odvážili zájsť priďaleko do mojej krajiny. Rozdrvte ich!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:159
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:159
 msgid "Terraent"
 msgstr "Terraent"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:165
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:165
 msgid ""
 "Thank you for destroying that skeleton warrior! Every time you kill one of "
 "the Revenants, one of us knights is let free!"
@@ -1072,11 +757,11 @@ msgstr ""
 "Ďakujeme vám, že ste zničili toho kostlivého bojovníka! Vždy keď zabijete "
 "jedného z ich kostlivých bojovníkov, jeden z nás rytierov sa oslobodí!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:169
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:169
 msgid "Why? Are you the undead's prisoners?"
 msgstr "Prečo? Vy ste väzni nemŕtvych?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:173
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:173
 msgid ""
 "Yes. My allies and I were questing when we were ambushed by undead. The "
 "guard is playing a sick game- whenever one of their warriors dies, one of us "
@@ -1087,7 +772,7 @@ msgstr ""
 "prepustia jedného z nás, ale keď vy stratíte jednu jednotku, zabijú jedného "
 "z nás."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:177
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:177
 msgid ""
 "This sounds dangerous. We will try to free as many of you as possible before "
 "we escape from here."
@@ -1095,7 +780,7 @@ msgstr ""
 "To znie nebezpečne. Pokúsime sa vás oslobodiť, koľko sa len bude dať, než "
 "odtiaľto utečieme."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:181
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:181
 msgid ""
 "There are five of us still locked up in the jail. All of us will join you if "
 "you can get us free."
@@ -1103,11 +788,11 @@ msgstr ""
 "Piati z nás sú ešte zavretí vo väzení. Všetci sa k vám pridáme, ak nás "
 "oslobodíte."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:239
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:239
 msgid "You dare to attack ME?!? Go back to your master!"
 msgstr "Ty sa ma opovažuješ napadnúť?!? Vráť sa k svojmu pánovi!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Mal-Ravanals_Capital.cfg:243
+#: data/campaigns/Eastern_Invasion/scenarios/04c.Mal-Ravanals_Capital.cfg:243
 msgid ""
 "This is not good; we are unable to attack Mal-Ravanal at all, for his magic "
 "is too strong! We must turn back, it was foolish to press the attack."
@@ -1115,45 +800,61 @@ msgstr ""
 "To nie je dobré; vôbec nedokážeme napadnúť Mal-Ravanala, lebo jeho mágia je "
 "príliš silná! Musíme sa otočiť, bolo hlúpe snažiť sa útočiť."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:4
 msgid "Northern Outpost"
 msgstr "Severná hliadka"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:44
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:101
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:44
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:101
 msgid "Owaec"
 msgstr "Owaec"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:64
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:65
 msgid "Lanar-Skal"
 msgstr "Lanar-Skal"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:98
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:99
 msgid "Find the outlaw leader in the villages and kill him"
 msgstr "Nájdi v dedinách veliteľa zbojníkov a zabi ho"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:102
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:103
 msgid "Defeat the undead leader"
 msgstr "Porazíš veliteľa nemŕtvych"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:127
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:111
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:87
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:95
+#: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:67
+#: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:76
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:97
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:91
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:193
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:121
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:225
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:126
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:169
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:138
+msgid "Death of Owaec"
+msgstr "Zomrie Owaec"
+
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:128
 msgid "Hail, Gweddry!"
 msgstr "Zdravím, Gweddry!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:131
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:132
 msgid ""
 "Greetings, Owaec! We have been forced from our positions by undead invaders. "
 "They follow us even now."
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:135
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:136
 msgid ""
 "Indeed, they do. And do not think you will be able to defeat them. They are "
 "too powerful. We are heading for the Northlands, were we may be able to "
 "outrun them. Will you join us?"
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:139
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:140
 #, fuzzy
 msgid ""
 "I am not sure. There are bandits in this country, and I have been told that "
@@ -1166,7 +867,7 @@ msgstr ""
 "pobijú skôr ako stihnem poslať posily, a potom sa zase skryjú v dedinách. "
 "Neviem dôjsť na to, ako ich poraziť."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:143
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:144
 #, fuzzy
 msgid ""
 "Hoping to protect these villages is foolish; all who stay here will die. "
@@ -1179,7 +880,7 @@ msgstr ""
 "nami do severných krajín, a možno založiť novú krajinu. Wesnoth už nie je "
 "bezpečný."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:147
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:148
 msgid ""
 "Well, you appear to know what you're talking about... but, I have no way to "
 "remove these bandits."
@@ -1187,7 +888,7 @@ msgstr ""
 "No, zdá sa, že vieš, o čom hovoríš... ale nemám si ako poradiť s tými "
 "banditmi."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:151
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:152
 msgid ""
 "I think I may be able to help you. I am a mage; I believe I will be able to "
 "cast a spell that will reveal them if you enter the villages. However, I "
@@ -1196,13 +897,13 @@ msgstr ""
 "Možno ti budem vedieť pomôcť. Som mág; myslím, že dokážem doslať kúzlo, "
 "ktoré ich odhalí, keď vojdeš do dediny. Ale v samotnom boji ti neviem pomôcť."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:155
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:156
 msgid ""
 "That sounds good; it is time to drive out some bandits. Dacyn, go cast your "
 "spell!"
 msgstr "To znie dobre; je načase vyhnať tých banditov. Dacyn, zošli kúzlo!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:159
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:160
 msgid ""
 "I believe there is a leader behind these outlaws; kill him, and we will have "
 "defeated these bandits."
@@ -1210,11 +911,11 @@ msgstr ""
 "Myslím, že tí zbojníci majú svojho veliteľa; zabi ho a porazíme tých "
 "banditov."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:163
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:164
 msgid "Go, go far from here! But me and my kind will chase you, and kill you!"
 msgstr "Pakuj sa stadeto! My si ťa nájdeme a zabijeme!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:167
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:168
 msgid ""
 "It seems the undead have caught up with us! We will have to kill them, too, "
 "if we want these villages to be safe. Well, I will see you when you defeat "
@@ -1223,38 +924,38 @@ msgstr ""
 "Zdá sa, že nás nemŕtvi dobehli! Musíme ich tiež pobiť, ak chceme, aby boli "
 "dediny v bezpečí. Uvidíme sa teda potom čo porazíte zbojníkov aj nemŕtvych!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:229
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:230
 msgid "They're here!"
 msgstr "Tu sú!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:254
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:255
 msgid "Shodrano"
 msgstr "Shodrano"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:262
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:263
 msgid ""
 "So, you have found my hiding place. Very well, I guess I will have to kill "
 "you!"
 msgstr "Tak ste našli môj úkryt. No dobre, zrejme vás musím zabiť!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:266
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:267
 msgid ""
 "That's the bandit leader! Kill him, and we will have fulfilled our duty!"
 msgstr "To je veliteľ banditov! Zabi ho a splnili sme úlohu!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:274
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:275
 msgid "No outlaws in this village."
 msgstr "V tejto dedine nie sú zbojníci."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:291
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:292
 msgid "You have defeated me! I can terrorize the villagers no more..."
 msgstr "Porazili ste ma! Už viac nemôžem terorizovať dediny..."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:300
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:301
 msgid "We still need to defeat these undead for the villagers to be safe."
 msgstr "Aby boli dediny v bezpečí, musíme ešte poraziť týchto nemŕtvych."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:306
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:307
 msgid ""
 "I have fulfilled my duty to the villages. Now I suppose I can join you in "
 "your quest."
@@ -1262,8 +963,8 @@ msgstr ""
 "Splnil som si povinnosť voči dedinám. Teraz sa zrejme už môžem pridať k "
 "vašej výprave."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:314
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:357
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:315
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:358
 msgid ""
 "Good job! Now, we should move onward, north. Tell the villagers to pack "
 "their belongings and follow us."
@@ -1271,13 +972,13 @@ msgstr ""
 "Dobrá práca! Teraz pokračujeme na sever. Povedz dedinčanom, nech si zbalia "
 "veci a idú za nami."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:343
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:344
 msgid ""
 "There are still these outlaws to take care of - we must continue fighting "
 "here."
 msgstr "Ešte sa treba postarať o tamtých zbojníkov - musíme tu bojovať ďalej."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Northern_Outpost.cfg:349
+#: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:350
 msgid ""
 "Well, both the outlaws and undead are defeated. We have some time to spare "
 "now before more undead arrive."
@@ -1285,27 +986,285 @@ msgstr ""
 "Dobre, porazili sme zbojníkov i nemŕtvych. Teraz máme trochu času, kým prídu "
 "ďalší nemŕtvi."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Ogre_Training.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:4
+msgid "Two Paths"
+msgstr "Dve cesty"
+
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:44
+msgid "Wak-Rano"
+msgstr "Wak-Rano"
+
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:57
+msgid "Mal-Arnai"
+msgstr "Mal-Arnai"
+
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:108
+msgid "Look! The road splits here. Which way shall we go?"
+msgstr "Hľa! Tu sa cesta rozdeľuje. Kadiaľ pôjdeme?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:112
+#, fuzzy
+msgid ""
+"I know this area. I was here on an earlier patrol. Just north of here there "
+"is a river that leads to the northlands, where orcs live. To the west there "
+"is a path that stays inside the realm of Wesnoth, for a time. If we travel "
+"along this path, we will not have to fight orcs immediately."
+msgstr ""
+"Túto oblasť poznám. Kedysi som tu hliadkoval. Priamo na sever odtiaľto je "
+"rieka, ktorá vedie na sever, kde žijú orkovia. Na západe je cesta, ktorá "
+"čiastočne vedie vnútrozemím Wesnothu. Ak pôjdeme po nej, nebudeme hneď "
+"musieť bojovať s orkmi."
+
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:116
+msgid ""
+"We should probably go north to the orcish lands immediately. I suspect that "
+"the undead have already bypassed us, and cut off any crossing to the west of "
+"here."
+msgstr ""
+"Asi by sme mali ihneď ísť na sever, do orských krajov. Obávam sa, že nás "
+"nemŕtvi už obišli, a odrežú nám všetky cesty na západ."
+
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:120
+msgid ""
+"The orcs are more powerful than you suspect. I doubt the undead have had "
+"time to get past us in large enough numbers to make them more dangerous than "
+"the orcs."
+msgstr ""
+"Orkovia sú mocnejší než si myslíš. Pochybujem, že by nemŕtvi mali dosť času, "
+"aby nás obehli v takom počte, ktorý by bol nebezpečnejší ako orkovia."
+
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:124
+msgid ""
+"Either way we will have to fight. Look, the orcs and undead are in a "
+"conflict, and block our path!"
+msgstr ""
+"Tak či onak musíme bojovať. Pozri, orkovia a nemŕtvi bojujú navzájom, a "
+"blokujú nám cestu!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:128
+#, fuzzy
+msgid ""
+"Well, orc, we can either continue this fight, or we can crush these "
+"intruders and battle later. Your call."
+msgstr ""
+"Počuj, ork, môžeme pokračovať v našom boji, alebo rozdrvíme týchto otravných "
+"ľudí a potom pokračujeme v boji. Vyber si."
+
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:132
+#, fuzzy
+msgid ""
+"Hmm... I know. We will make a pact to destroy these men, and continue our "
+"fight later. (Hopefully you will die, for then I will win our battle withou "
+"fighting.)"
+msgstr ""
+"Hm... jasné. Spojme sa proti týmto ľuďom a potom pokračujme v našom boji. "
+"(Dúfam, že pritom zatrasieš krpcami, lebo vtedy ja vyhrám bez boja.)"
+
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:136
+msgid "Very well, we are allies, for now. (This foolish orc will surely die.)"
+msgstr ""
+"Dobre teda, sme spojenci, zatiaľ. (Ten hnusný ork pritom isto otrčí kopytá.)"
+
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:147
+msgid ""
+"No! These undead won our battle, and you will be able to enter my northern "
+"homeland!"
+msgstr ""
+"Nie! Nemŕtvi vyhrali našu bitku, a vy sa dostanete na sever do mojej "
+"domoviny!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:163
+msgid "I was supposed to kill you all! I have failed."
+msgstr "Mal som vás všetkých zabiť! Zlyhal som."
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:4
+msgid "The Crossing"
+msgstr "Križovatka"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:41
+msgid "Garnad"
+msgstr "Garnad"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:52
+msgid "Draka-Kura"
+msgstr "Draka-Kura"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:63
+msgid "Grug"
+msgstr "Grug"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:83
+msgid "Get Gweddry and Owaec across the river"
+msgstr "Dostaneš Gweddryho a Owaeca cez rieku"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:111
+#, fuzzy
+msgid ""
+"We have come to the Great River. What should we do? Should we attempt to "
+"cross it?"
+msgstr "Prišli sme k veľkej rieke. Čo máme robiť? Pokúsime sa ju prekročiť?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:115
+msgid ""
+"We must cross this river. The undead are chasing us, and their hordes are "
+"much too great for us to defeat. Reinforcements for the undead will arrive "
+"soon. We must be across the river before that happens."
+msgstr ""
+"Túto rieku musíme prekročiť. Nemŕtvi nás naháňajú a je ich priveľa na to, "
+"aby sme s nimi bojovali. Čoskoro nemŕtvym prídu posily. Než sa tak stane, "
+"musíme byť na druhej strane rieky."
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:119
+msgid ""
+"Across this river lies the Northland. If we can get there, we may be able to "
+"get some ogres to help us - but the orcs will definitely attack us before "
+"that happens."
+msgstr ""
+"Za touto riekou leží Severná zem. Ak sa tam dostaneme, možno získame na "
+"pomoc nejakých ohyzdov - ale orkovia nás určite napadnú ešte predtým."
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:123
+msgid "Grug say we no help you! We finish must battle orc with!"
+msgstr "Grug hovoriť my pomoc nie! My dokončiť musíme orkov bojovať!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:127
+msgid ""
+"Was that comprehensible to anyone? Silence, foolish ogre. I will deal with "
+"you later. Right now there are men trying to cross this river."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:131
+msgid "Orc foolish! Die you now!"
+msgstr "Ork hnusný! Zomrieť ty teraz!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:135
+msgid ""
+"If we show ourselves as enemies of the orcs, they may aid us. But I think we "
+"should cross the river before trying to convince these ogres to help."
+msgstr ""
+"Ak sa im ukážeme ako nepriatelia orkov, možno nám pomôžu. Ale myslím, že by "
+"sme mali prekročiť rieku skôr ako začneme týchto ohyzdov presviedčať."
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:177
+msgid "Mal-Hakralan"
+msgstr "Mal-Hakralan"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:189
+msgid ""
+"The undead reinforcements have arrived! We must cross the river immediately!"
+msgstr "Nemŕtvym prišli posily! Musíme okamžite prekročiť rieku!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:226
+msgid ""
+"Good! We have crossed. Now let's see if we can get the Ogres to join us. "
+"They have been convinced to work for the Crown in the past; maybe it can be "
+"done again."
+msgstr ""
+"Dobre! Prešli sme. Teraz skúsme, či si dokážeme získať ohyzdov na svoju "
+"stranu. V minulosti sa ich podarilo presvedčiť, aby pracovali pre Korunu; "
+"možno sa to podarí znova."
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:235
+#, fuzzy
+msgid "Grug say join you will he."
+msgstr "Grug hovoriť pridať vy možno on."
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:255
+msgid "Gork"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:261
+#, fuzzy
+msgid "Drog"
+msgstr "Darg"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:271
+msgid "You may now recruit ogres!"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/07a.The_Crossing.cfg:288
+#, fuzzy
+msgid "Hurry up. We must get across before these undead slaughter us!"
+msgstr ""
+"Ponáhľajme sa. Potrebujeme prejsť na druhú stranu skôr než nás nemŕtvi "
+"pozabíjajú!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:4
+msgid "Undead Crossing"
+msgstr "Križovatka nemŕtvych"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:41
+msgid "Mal-un-Karad"
+msgstr "Mal-un-Karad"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:83
+msgid ""
+"These fens look impassable. I don't think we will be able to continue on "
+"this road; it is time to turn northwards, away from these undead."
+msgstr ""
+"Tieto močiare vyzerajú nepriechodne. Nemyslím, že by sme po tejto ceste "
+"mohli pokračovať. Prišiel čas obrátiť sa na sever, preč od týchto nemŕtvych."
+
+#: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:87
+msgid ""
+"We must cross this river, then. We must make haste, already we have wasted "
+"too much time. Undead have positioned themselves in the middle of the ford."
+msgstr ""
+"Potom musíme prejsť cez rieku. Musíme sa poponáhľať, už sme premárnili "
+"priveľa času. Nemŕtvi sa opevnili uprostred brodu."
+
+#: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:91
+msgid ""
+"Across this river lies the Northland. Ogres live there, as do orcs. We "
+"should proceed with caution. The undead are dangerous, but the orcs may be "
+"more dangerous still."
+msgstr ""
+"Za touto riekou leží Severná zem. Žijú tam ohyzdi a orkovia. Mali by sme "
+"pokračovať opatrne. Nemŕtvi sú nebezpeční, ale orkovia by mohli byť ešte "
+"nebezpečnejší."
+
+#: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:95
+msgid ""
+"I will leave your bodies to rot in the river, then I will raise you up to "
+"serve in my Master's undead hordes!"
+msgstr ""
+"Nechám vaše telá zhniť v rieke, a potom vás vzkriesim ako služobníkov v "
+"nemŕtvych hordách môjho pána!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:112
+msgid ""
+"I summon from the depths of the river those beasts which will destroy you!"
+msgstr "Z hlbín rieky privolám tvory, ktoré vás zničia!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/07b.Undead_Crossing.cfg:143
+msgid ""
+"It seems as if in addition to summoning undead this foul sorcerer has "
+"learned to call up monsters from the deep!"
+msgstr ""
+"Zdá sa, že okrem privolávania nemŕtvych sa tento kostej naučil aj vyvolávať "
+"démonov!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:4
 msgid "Training the Ogres"
 msgstr "Výcvik ohyzdov"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Ogre_Training.cfg:60
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:157
+#: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:60
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:157
 msgid "Survive until end of turns"
 msgstr "Prežiješ stanovený čas"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Ogre_Training.cfg:64
+#: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:64
 msgid "To add ogres to your army, keep two on the grass until end of turns"
 msgstr "Ak chceš mať v armáde ohyzdov, udrž dvoch z nich na lúke stanovený čas"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Ogre_Training.cfg:102
+#: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:102
 msgid ""
 "Look, we have found a pack of Ogres. We should try to capture some to train."
 msgstr ""
 "Pozri, našli sme tu zopár ohyzdov. Mali by sme skúsiť niektorých chytiť a "
 "vycvičiť."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Ogre_Training.cfg:106
+#: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:106
 #, fuzzy
 msgid ""
 "All right, we have to keep at least two of these Ogres on the grass where "
@@ -1316,7 +1275,7 @@ msgstr ""
 "kým sem prídu naše jednotky, aby ich zajali. Potom nás privedú ku svojmu "
 "kmeňu."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Ogre_Training.cfg:110
+#: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:110
 msgid ""
 "We should try to surround them. Gweddry, you stay where you are. Dacyn, you "
 "go north-east. I'll go north-west."
@@ -1324,12 +1283,12 @@ msgstr ""
 "Mali by sme ich skúsiť obkľúčiť. Gweddry, zostaň, kde si. Dacyn, choď na "
 "severovýchod. Ja idem na severozápad."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Ogre_Training.cfg:143
+#: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:143
 #, fuzzy
 msgid "We have let one escape. Let's hope they don't all!"
 msgstr "Jeden nám unikol. Dúfam, že sa to nepodarí aj ostatným!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Ogre_Training.cfg:168
+#: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:168
 msgid ""
 "Our troops have caught up! Now, we will be able to recruit Ogres, since "
 "these will be able to convince their tribe to join us."
@@ -1337,119 +1296,579 @@ msgstr ""
 "Naše jednotky nás dobehli! Teraz budeme môcť verbovať ohyzdov, keďže títo "
 "presvedčia svoje kmene, aby sa pridali na našu stranu."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Ogre_Training.cfg:177
+#: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:177
 msgid ""
 "We didn't capture enough of the ogres here. We will have to go on without "
 "them."
 msgstr "Nezajali sme dosť ohyzdov. Musíme pokračovať bez nich."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:4
-msgid "Weldyn Besieged"
-msgstr "Obliehanie Weldynu"
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:4
+msgid "Xenophobia"
+msgstr "Xenofóbia"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:41
-msgid "Mal-Akranbral"
-msgstr "Mal-Akranbral"
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:43
+msgid "Pelathsil"
+msgstr "Pelathsil"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:53
-msgid "Mal-Hadanak"
-msgstr "Mal-Hadanak"
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:54
+msgid "Prok-Bak"
+msgstr "Prok-Bak"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:65
-msgid "Mal-Drakanal"
-msgstr "Mal-Drakanal"
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:69
+msgid "Elandin"
+msgstr "Elandin"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:77
-msgid "Mal-Larakan"
-msgstr "Mal-Larakan"
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:85
+msgid "Defeat all enemy leaders"
+msgstr "Porazíš všetkých nepriateľských veliteľov"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:100
-msgid "Mal-Xaskanat"
-msgstr "Mal-Xaskanat"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:112
-msgid "Mal-Katklagad"
-msgstr "Mal-Katklagad"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:126
-#: data/campaigns/Eastern_Invasion/scenarios/The_Duel.cfg:54
-msgid "Defeat Mal-Ravanal"
-msgstr "Porazíš Mal-Ravanala"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:142
-msgid "Letting any enemy unit on to your keep"
-msgstr "Necháš nepriateľkú jednotku vojsť do tvojej pevnosti"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:161
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:116
 msgid ""
-"You people are fools! You decided to reject my master's duel... very well, "
-"you will all DIE! And know, my master is here, watching your very demise. "
-"For he does not fear you at all, and knows that you will never be able to "
-"find him and kill him! There are seven of us, and only ONE of us is the real "
-"leader! ha ha ha ha! To be fair about it, we will all tell you our names."
+"Hail, Dwarves! Will you help us get by these foul Orcs? We need to get "
+"further along this path."
 msgstr ""
-"Vy ľudia ste blázni! Rozhodli ste sa odmietnuť súboj s mojím pánom... dobre, "
-"teraz všetci ZOMRIETE! A vedzte, že môj pán je tu a sleduje vašu porážku. "
-"Pretože on sa vás nebojí, a vie, že ho nikdy nedokážete nájsť a zabiť! Je "
-"nás tu sedem, a iba JEDEN z nás je pravý veliteľ! Ha ha ha ha! Aby sme boli "
-"féroví, prezradíme vám naše mená."
+"Zdravím vás, trpaslíci! Pomôžete nám prejsť cez týchto hnusných orkov? "
+"Musíme pokračovať touto cestou."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:165
-msgid "Remember, we have to kill Mal-Ravanal. He's here somewhere..."
-msgstr "Pamätaj, musíme zabiť Mal-Ravanala. Je niekde tu..."
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:120
+msgid "You human! Call us foul, will you?!?!"
+msgstr "Ty, človek! Opovažuješ sa nás nazvať hnusnými?!?!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:177
-msgid "How did you know...?"
-msgstr "Ako si vedel...?"
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:124
+msgid "Why should we help you? You're not a dwarf!"
+msgstr "Prečo by sme ti mali pomôcť? Ty nie si trpaslík!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:195
-msgid "Kill the king!"
-msgstr "Zabite kráľa!"
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:128
+msgid ""
+"Your people helped us in the past, in the tunnels in the South. Why won't "
+"you help us now?"
+msgstr ""
+"Tvoji ľudia nám pomohli v minulosti, v južných tuneloch. Prečo by si nám "
+"teraz nepomohol ty?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Reject.cfg:199
-msgid "They killed Konrad... now, even if we save Weldyn, Wesnoth has fallen."
-msgstr "Zabili Konráda... teraz, aj keby sme zachránili Weldyn, Wesnoth padol."
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:132
+msgid ""
+"Impossible! I can't believe any of my comrades would have helped a human!"
+msgstr "Nemožné! Nemôžem uveriť, že by niekto z našej krvi pomáhal človeku!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:136
+msgid "Indeed. Why should any of us help those not of our people?"
+msgstr ""
+"A vôbec. Prečo by niekto z nás pomáhal tomu, kto nepatrí do nášho národa?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:140
+msgid ""
+"Will you then just let us pass, so that we may fight the orcs on our own?"
+msgstr "Necháte nás teda aspoň prejsť, aby sme mohli bojovať proti orkom?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:144
+msgid "I am afraid that is... impossible."
+msgstr "Obávam sa, že je to... nemožné."
+
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:148
+msgid "Orcs, kill'em all! Humans, elves or dwarves, it don't matter!"
+msgstr "Orkovia, pobite ich všetkých! Ľudia, elfovia, trpaslíci, všetko jedno!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:152
+msgid ""
+"These orcs will die. But so will you, human. You have trespassed on Elvish "
+"land."
+msgstr ""
+"Títo orkovia zomrú. A takisto ty, človeče. Prenikol si na elfské územie."
+
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:156
+msgid "Oh, Elvish land is it now? Die, you elf-dog! And you too, human!"
+msgstr ""
+"Ale, elfské územie je to zrazu? Skap, ty elfský pes! A ty tiež, človek!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:160
+msgid ""
+"These people won't listen to reason, they are all blinded by their belief in "
+"their own supposed superiority. We probably will have to fight them, "
+"although we may be able to bypass them."
+msgstr ""
+"Títo ľudkovia na hlas rozumu veľa nedajú, predstavy o ich vlastnej "
+"nadradenosti ich zaslepujú. Asi proti nim budeme musieť bojovať, hoci možno "
+"sa nám podarí aj obísť ich."
+
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:164
+msgid ""
+"True. As much as I dislike killing anything but orcs and undead, it seems we "
+"will have to kill these elves, and these dwarves, before they kill us."
+msgstr ""
+"Veru. A hoci sa mi protiví zabíjať niečo iné ako orkov a nemŕtvych, asi "
+"budeme musieť zabiť týchto elfov i týchto trpaslíkov, skôr ako oni zabijú "
+"nás."
+
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:175
+msgid "Argh! I'm dead! Well, dwarves are still the best!"
+msgstr "Argh! Som mŕtvy! No a čo, trpaslíci sú aj tak najlepší!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:193
+msgid "I die? Orcs rule all!"
+msgstr "Zomieram? Orkovia raz zvíťazia!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:211
+msgid "It seems these humans are more powerful than I thought. Ugh."
+msgstr "Zdá sa, že títo ľudia sú mocnejší než som si myslel. Ugh."
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:4
+msgid "Lake Vrug"
+msgstr "Jazero Vrug"
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:43
+msgid "Darg"
+msgstr "Darg"
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:58
+msgid "Kraagak"
+msgstr "Kraagak"
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:79
+msgid "Defeat the trolls and gryphons"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:111
+msgid ""
+"The trail stops soon. We have almost reached our destination, if we can call "
+"it that. There is a large lake in front of us, with a small island off the "
+"coast. If we burn down the bridge to it, no one will ever be able to reach "
+"us."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:115
+msgid ""
+"But what if there are already people living on it? We will have to fight "
+"them! And besides, the undead can build boats."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:119
+msgid ""
+"There are other people. A tribe of trolls, and some gryphons. But it is "
+"safer than fighting the undead, and once we kill them, the island will be "
+"ours."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:123
+#, fuzzy
+msgid ""
+"Very well, we will go on, take this island. It appears we have no choice. "
+"Onward!"
+msgstr "Dobre teda, poďme a nájdime to údolie. Aj tak nemáme na výber. Vpred!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:135
+msgid ""
+"There is an abandoned castle here. It looks repairable - we should settle "
+"here."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:139
+msgid ""
+"Very well. Let us rally there, and then move to destroy these trolls and "
+"gryphons."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:151
+msgid "We will base our attack from here. Now go, destroy the enemy!"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:159
+msgid "You find 100 gold in the fortress!"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:173
+msgid "We have done it! The island is ours. Our journey is complete."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:214
+msgid "Be not going too fast. You gonna come wid us."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:4
+msgid "Captured"
+msgstr "V zajatí"
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:22
+msgid ""
+"After reaching what they believed was safety, Gweddry and his men had been "
+"captured by northern orcs."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:26
+#, fuzzy
+msgid ""
+"They were being taken to the orcish king, Dra-Nak, but, of course, they "
+"wished to escape before that happened..."
+msgstr ""
+"Po prekročení nebezpečného jazera Vrug Gweddryho a jeho mužov zajali severní "
+"orkovia. Idú ich predviesť pred kráľa orkov, Dra-Naka, ale oni by samozrejme "
+"radšej predtým ušli..."
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:36
+msgid "Prison"
+msgstr "Väzenie"
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:40
+msgid "Torture Chamber"
+msgstr "Mučiareň"
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:44
+msgid "Throne Room"
+msgstr "Trónna sála"
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:48
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:52
+msgid "The City"
+msgstr "Mesto"
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:56
+msgid "Exit"
+msgstr "Východ"
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:77
+msgid "King Dra-Nak"
+msgstr "Kráľ Dra-Nak"
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:181
+msgid "Escape through the south-west tunnel"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:261
+msgid ""
+"I think Dacyn and Owaec have escaped already. Now I have to, also... these "
+"guards are not being very alert, I may be able to get past them..."
+msgstr ""
+"Myslím, že Dacyn a Owaec už ušli. Teraz musím aj ja... stráže nie sú príliš "
+"pozorné, možno sa poza ne prešmyknem..."
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:286
+msgid "Aha! There is a small crack in the cave wall here."
+msgstr "Aha! Tu je malá trhlina v stene jaskyne."
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:309
+msgid ""
+"So, Gweddry, you escaped too? Good. I think they have the rest of our troops "
+"captive, along with the peasants following us. We should be able to rescue "
+"them."
+msgstr ""
+"Takže, Gweddry, aj ty si ušiel? Dobre. Myslím, že držia väčšinu našich "
+"jednotiek v zajatí, spolu s roľníkmi, ktorí nás nasledovali. Mali by sme ich "
+"zvládnuť zachrániť."
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:313
+msgid "Where are they? These caves are impossible to navigate!"
+msgstr "Kde sú? V týchto jaskyniach sa nedá orientovať!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:317
+msgid ""
+"Somewhere south of us. We are in a hidden passage in the north. Oh, and some "
+"others escaped too, along with Owaec."
+msgstr ""
+"Niekde na juh od nás. My sme v tajnej ceste na severe. A niektorí ušli spolu "
+"s Owaecom."
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:321
+msgid "Well, where are the prisoners?"
+msgstr "Tak, kde sú tí väzni?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:325
+msgid "Right here, boss."
+msgstr "Priamo tu, šéfe."
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:329
+msgid "Well, where's their leader? I don't see him."
+msgstr "No a kde je ich veliteľ? Nevidím ho."
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:333
+msgid "Uh... (whispers).. I dunno. He escaped, I think."
+msgstr "Hm... (šepot)... neviem. Ušiel, myslím."
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:337
+msgid ""
+"You fool! Well, find him. Bring him to me! Wait, no, just kill him on sight."
+msgstr ""
+"Ty somár! Nájdi ho. Priveď ho ku mne! Vlastne nie, zabi ho, keď ho nájdeš."
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:350
+msgid "Look, the escaped prisoners have returned!"
+msgstr "Aha, ušlí väzni sa vrátili!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:354
+msgid "Kill them."
+msgstr "Zabite ich."
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:392
+msgid "The guards are distracted! Now is the time to escape!"
+msgstr "Stráže nedávajú pozor! Teraz je čas na útek!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:396
+msgid "Huh? Who's there, who said that?"
+msgstr "He? Kto je tam? Kto to povedal?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:473
+#, fuzzy
+msgid "I see the exit to the tunnel! Onward!"
+msgstr "Dosiahneš koniec tunela"
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:477
+msgid ""
+"Wait! We cannot go out that way. There are too many orcs. We must exit "
+"through the south-west gates."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:481
+msgid "Very well. We must go the other way."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:496
+msgid "Good! We have escaped these accursed caves!"
+msgstr "Dobre! Unikli sme z tých prekliatych jaskýň!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:4
+msgid "Evacuation"
+msgstr "Evakuácia"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:23
+msgid ""
+"Gweddry had escaped from the orcish prisons. He found himself in the "
+"Northlands, farther south than before. Orcs were at his back. He and his men "
+"went south, until they reached the Great River."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:45
+msgid "Varrak-Klar"
+msgstr "Varrak-Klar"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:58
+msgid "Unhk"
+msgstr "Unhk"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:71
+msgid "Ran-Lar"
+msgstr "Ran-Lar"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:105
+msgid "Destroy the bridge OR defeat all enemies"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:109
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:114
+msgid "Get Gweddry to Weldyn"
+msgstr "Dostaneš Gweddryho do Weldynu"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:125
+#, fuzzy
+msgid "Leave any of the three heroes on the north side of the river"
+msgstr "Necháš niektorého z troch hrdinov na severnom brehu rieky"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:173
+msgid "Engineer"
+msgstr "Inžinier"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:180
+msgid ""
+"All is lost! We have to get out of the Northlands as quickly as possible! "
+"Run for your - what the...?!? Who are you?"
+msgstr ""
+"Všetko je stratené. Musíme sa dostať do Severnej zeme tak rýchlo, ako sa len "
+"dá. Bežte, ako len... čo to...?!? Kto si?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:184
+msgid ""
+"I'm an enginea'. I s'pect you'll have a need of me services. I bet you're "
+"gonna want me to blow up that bridge ov'r theah."
+msgstr ""
+"Ja som inžinier. Reku, asi potrebujete moje služby. Isto by ste potrebovali "
+"vyhodiť henten most do vzduchu."
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:188
+msgid "Why would we want to do that?!?"
+msgstr "Prečo by sme to robili?!?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:192
+#, fuzzy
+msgid ""
+"Well, I see those orcs are chasin' you, and if I blow up the bridge, they "
+"can't get across. It'll help you to escape."
+msgstr ""
+"No, vidím, že vás naháňajú orkovia, a keď ten most vyhodím, nedostanú sa k "
+"vám. Môžete ľahšie ujsť."
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:196
+msgid "I see... I think it is a good idea to hire him. How much?"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:200
+#, fuzzy
+msgid ""
+"I aint charging gold - I wants protecshun! Everywhere I go, I see orcs, "
+"undead. 'T'aint safe 'round 'ere!"
+msgstr ""
+"Nechcem zlato... ja len chcem pokoj od tých nemŕtvych! Zničili mój dom, a už "
+"nemám kam ísť!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:204
+#, fuzzy
+msgid ""
+"Very well, we'll protect you from the undead. But we can't help you until we "
+"get across this river. Now let's go!"
+msgstr ""
+"Nuž dobre, my ťa ochránime pred nemŕtvymi. Ale nemôžeme ti pomôcť, kým sa "
+"nedostaneme cez rieku. Teraz poďme!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:208
+msgid ""
+"Deal. I c'n blow'er up once I get to that signpost ov'r dere. That's where "
+"my eq'pment is."
+msgstr ""
+"Platí. Môžem ho odpáliť, keď sa dostanem k hentej značke. Tam mám náradie."
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:225
+msgid "So, d'ya want me to blow up der bridge yet, Cap'n?"
+msgstr "Tak už mám ten most vyhodiť, šéfe?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:231
+msgid "Yes, blow it up."
+msgstr "Áno, vyhoď to do vzduchu."
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:235
+msgid "Alright! Blast'n time!"
+msgstr "Jasné. Ohňostroj začína!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:260
+msgid "BOOM!!!"
+msgstr "BUM!!!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:278
+#, fuzzy
+msgid ""
+"Good, we have escaped from these orcs. But where will we go? There are "
+"undead in Wesnoth."
+msgstr "Unikli sme z tých temných tunelov! Ale kde to sme?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:282
+msgid ""
+"It is not safe here, but we cannot go back north. The orcs are a more "
+"immediate threat."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:291
+msgid "No, wait until later."
+msgstr "Nie, ešte počkaj."
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:295
+msgid "Neh? Alright then, we'll wait fa' later, eh?"
+msgstr "Ne? No dobre, ešte počkám, hej?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:306
+msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
+msgstr "Nestihli sme včas zničiť most! Orkovia nás všetkých pobijú!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:314
+#, fuzzy
+msgid ""
+"Well, we didn't have to blow up the bridge after all, but we still have to "
+"leave the northlands. More orcs will come. But where will we go? There are "
+"undead in Wesnoth."
+msgstr ""
+"No, však ten most predsa nemusíme zničiť, len musíme ísť na juh. Dúfajme, že "
+"tu na západe nie je veľa nemŕtvych."
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:322
+msgid "So what do you propose?"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:326
+msgid ""
+"We cannot go north, for that is where orcs are... we cannot go east, for "
+"that is where the undead come from... we cannot go west, for the ocean lies "
+"in that direction, and we have no ships. We would survive for a time, but we "
+"would still be in Wesnoth, and the undead would still find us."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:330
+msgid ""
+"We could go south, and return to Wesnoth...  but I do not know what that "
+"would accomplish."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:334
+msgid "It would accomplish nothing! The undead will kill us all!"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:338
+msgid ""
+"Have you not heard what Dacyn said? Either the orcs or undead will kill us "
+"no matter what we do. Our only hope was to isolate ourselves on the Isle of "
+"Vrug. We are too far away now to return that way, and we have aroused the "
+"orcfolk. We cannot try that again. So, if we have no hope..."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:342
+msgid ""
+"There is still some hope left. If we return to Wesnoth, we may be able to "
+"aid the king in defeating these invaders. We saw them attack us. And, I "
+"have... advice. To give the king. I may know the undead's weakness."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:346
+msgid ""
+"Very well. If returning to Wesnoth has an chance of success, it is our best "
+"option. We will go south."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:350
+msgid ""
+"I do not like this. But is appears we will die no matter our course of "
+"action."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:354
+msgid ""
+"I'll be followin' yah from now on. Hope yah can get to Weld'n an' all so I "
+"c'n stop runnin'..."
+msgstr "Pójdem za vami. Snáď sa dostaneme do Weldynu a bude pokoj..."
+
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:4
 msgid "The Drowned Plains"
 msgstr "Zaplavené nížiny"
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:123
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:123
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:152
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:152
 msgid "There are still humans in this village! They can help us."
 msgstr "V tejto dedine sú ešte ľudia! Môžu nám pomôcť."
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:159
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:166
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:159
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:166
 msgid "Villager"
 msgstr "Dedinčan"
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:180
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:180
 msgid ""
 "The undead have killed all the villagers here, but they left their valuables."
 msgstr "Nemŕtvi tu zabili všetkých obyvateľov, ale zostali tu ich veci."
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:213
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:213
 msgid "Defeat Khrakrahs, the Skeletal Dragon"
 msgstr "Poraz Khrakrahsa, kostlivého draka"
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:262
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:262
 msgid ""
 "Now, we have reached the fair homeland of my people. They may be able to "
 "help us in - "
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:266
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:266
 #, fuzzy
 msgid ""
 "What?! Swamps?! Those Undead have destroyed the grasslands of my House, and "
 "they shall pay for it!"
 msgstr "Čo je to... močiare? Títo nemŕtvi zničili naše lúky, a za to zaplatia!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:270
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:270
 #, fuzzy
 msgid ""
 "The lich-lord must have flooded the valley. The undead like the swamp. It is "
@@ -1458,7 +1877,7 @@ msgstr ""
 "Kráľ kostejov Mal-Ravanal toto údolie iste zaplavil. Nemŕtvi majú radi "
 "močiare. Je tu smrť, rozklad, to je ich pravé prostredie."
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:274
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:274
 msgid ""
 "I s'ppose we'll hav' to wade across it... ugh. An' with dis mist from de "
 "swamp, we can't e'en see any 'nemies."
@@ -1466,16 +1885,16 @@ msgstr ""
 "Zdá sa mi, že to budeme musieť prejsť... fuj. A skrze tú hmlu nad močiarom "
 "ani nevidíme nepriateľov."
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:278
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:278
 #, fuzzy
 msgid "Findshhhh... slayhhhh... killhhhh..."
 msgstr "Nájdiii... zomriii.... zabiii..."
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:282
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:282
 msgid "What is that?!?"
 msgstr "Čo je to?!?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:286
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:286
 #, fuzzy
 msgid ""
 "I do not know, but my guess is the dragon Khrakrahs. He was a powerful beast "
@@ -1486,167 +1905,77 @@ msgstr ""
 "najmocnejších tvorov v Severných horách. Možno kedysi odišiel na východ, a "
 "teraz ho oživili nemŕtvi."
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:359
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:359
 msgid "Undead, undead are rising out of the ground!"
 msgstr "Nemŕtvi, nemŕtvi vstávajú zo zeme!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Drowned_Plains.cfg:375
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:375
 msgid ""
 "Aha! I see what they have done. They have raised him as a dragon. But he "
 "does not appear to be weak to my holy flame... this is strange magic indeed."
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Duel.cfg:4
-msgid "The Duel"
-msgstr "Duel"
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:4
+msgid "Approaching Weldyn"
+msgstr "Na ceste do Weldynu"
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Duel.cfg:70
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:55
+msgid "Mal-un-Darak"
+msgstr "Mal-un-Darak"
+
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:69
+msgid "Mal-un-Zanrad"
+msgstr "Mal-un-Zanrad"
+
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:83
+msgid "Mal-un-Xadrux"
+msgstr "Mal-un-Xadrux"
+
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:97
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:72
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:196
+msgid "Konrad II"
+msgstr "Konrád II"
+
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:130
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:173
+msgid "Death of Konrad II"
+msgstr "Zomrie Konrád II"
+
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:188
 msgid ""
-"I have waited a long time for this day to come. Prepare to die, Gweddry of "
-"Wesnoth!"
+"We have finally reached Weldyn, but it seems the undead have surrounded it. "
+"We must break through to reach the king!"
 msgstr ""
+"Konečne sme prišli k Weldynu, ale zdá sa, že ho obkľúčili nemŕtvi. Musíme sa "
+"cez nich presekať ku kráľovi!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Duel.cfg:80
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:192
 msgid ""
-"The rules of the duel are these:\n"
-"You may recruit or recall up to 6 units.\n"
-"At the end of your first turn, your keep will disappear, and you must battle "
-"with whatever troops you have at that time.\n"
-"The first leader to fall loses the duel."
+"It would be best not to try to defeat these undead, there are too many of "
+"them. Go straight to the city."
 msgstr ""
+"Lepšie by bolo nesnažiť sa týchto nemŕtvych poraziť, lebo je ich príliš "
+"veľa. Choď priamo do mesta."
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Duel.cfg:136
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:205
 msgid ""
-"Wait - What just happened? He called more warriors out of the ground! That's "
-"not allowed!"
-msgstr ""
+"We have reached Weldyn. Now we must have a council to decide what to do next."
+msgstr "Došli sme do Weldynu. Teraz musíme zvolať radu a rozhodnúť, čo ďalej."
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Duel.cfg:141
-msgid ""
-"Stop talking and fight! The rules do not stop me from bringing up warriors "
-"that were already here."
-msgstr ""
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:209
+msgid "Come, into the castle."
+msgstr "Poďme do hradu."
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Duel.cfg:154
-msgid "I... lose?..."
-msgstr "Prehral som...?"
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:224
+msgid "Weldyn has been captured, and Wesnoth is no more..."
+msgstr "Weldyn bol dobytý a Wesnoth zanikol..."
 
-#: data/campaigns/Eastern_Invasion/scenarios/The_Duel.cfg:167
-msgid "And more!"
-msgstr "Ešte viac!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:4
-msgid "The Outpost"
-msgstr "Hliadka"
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:51
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:217
-msgid "Dacyn"
-msgstr "Dacyn"
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:69
-msgid "Mal-Sakkat"
-msgstr "Mal-Sakkat"
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:89
-msgid "Mal-Talar"
-msgstr "Mal-Talar"
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:106
-#, fuzzy
-msgid "Mal-Uldhar"
-msgstr "Mal-Talar"
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:129
-#, fuzzy
-msgid "Resist until you receive further instructions from Dacyn"
-msgstr "Vydržíš, dokiaľ nedostaneš ďalšie pokyny od Dacyna"
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:154
-msgid "What? What is going on?"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:158
-msgid ""
-"Look. To the east. Undead approach! But wait... I sense something... They "
-"cannot see me..."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:178
-msgid ""
-"Hm. I do not sense anything out of the ordinary here. My scouts must have "
-"decieved me. Very well; destroy them."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:182
-msgid "Very well, Dark Archon. They will die. And then?"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:187
-msgid ""
-"On with the search. I trust you can defeat these men yourself? I have no "
-"time to waste here."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:199
-msgid "What?! Men, to arms! And where did Dacyn go?!"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:203
-msgid ""
-"There are too many undead, I cannot defeat them... but my orders are to hold "
-"this outpost. It appears we will die this day."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:224
-msgid "Gweddry? Good! You are still alive. Quickly, we must leave this place!"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:228
-msgid "Where did you go?! And where did you come from?"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:232
-msgid ""
-"There is no time to explain. If you wish to survive, you will escape through "
-"this trapdoor."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:236
-msgid "But what about the outpost?"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:240
-msgid ""
-"It is pointless to try to defend it. Now come on, we do not have much time "
-"to spare!"
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:245
-msgid "Move Gweddry to the trapdoor"
-msgstr "Dostaneš Gweddryho k padacím dverám"
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:257
-msgid "Turns run out"
-msgstr "Vypeší čas"
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:276
-msgid "Follow me, men! Through the trapdoor!"
-msgstr "Za mnou, muži! Cez padacie dvere!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/The_Outpost.cfg:290
-msgid ""
-"Hurry! Before long enemy reinforcements will arrive, and we will all die! Go "
-"to the trapdoor!"
-msgstr ""
-"Pohyb! Čoskoro prídu nepriateľom posily, a my všetci zomrieme! Poďte cez "
-"padacie dvere!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:4
 msgid "The Council"
 msgstr "Koncil"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:22
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:22
 msgid ""
 "Before we begin our council, I must tell you all a story, of who this lich "
 "we face is. He was at first a mage of light, like me, and his fall began "
@@ -1656,7 +1985,7 @@ msgstr ""
 "kostej, proti ktorému stojíme. Kedysi to bol mág svetla, tak ako ja, a jeho "
 "pád začal počas vlády Haldrika VII..."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:27
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:27
 msgid ""
 "The greatest seer in the land, Galdren, foresaw that some day, some day "
 "soon, a great evil would spread over the land. The king, naturally, was "
@@ -1669,7 +1998,7 @@ msgstr ""
 "starosti. Veštec mu povedal, že je len jedna cesta, ako zastaviť zlo. "
 "Vymenovať mága skúseného v boji s temnými duchmi za kráľovho radcu."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:32
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:32
 msgid ""
 "In all the land, there were two magi of light that clearly stood out from "
 "the rest. A mage from the East named Ravan, and myself. The King, wishing to "
@@ -1683,7 +2012,7 @@ msgstr ""
 "Nikto nevie, o čom hovorili, ale keď sa vrátil, ohlásil, že veštec je mŕtvy, "
 "a vybral si mňa ako nového radcu."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:37
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:37
 msgid ""
 "Ravan took this quietly enough, we all thought, but now I think that this "
 "was when he began his fall. He went deep into conversation with the spirits "
@@ -1697,7 +2026,7 @@ msgstr ""
 "ako to robia všetci mágovia smrti, si vzal život, aby sa premenil na "
 "kosteja, jedného z najmocnejších tvorov."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:42
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:42
 msgid ""
 "One day, he disguised himself and came to the castle, where I was living. He "
 "demanded to see me, and the guards let him in, for then he was still a "
@@ -1708,7 +2037,7 @@ msgstr ""
 "stráže ho vpustili, keďže bol stále váženým dvoranom. Keď som vyšiel, "
 "odhalil sa, nazval sa menom Mal-Ravanal a vyzval ma na súboj."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:47
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:47
 msgid ""
 "The guards, surprised by this sudden revelation, advanced to attack him. "
 "However, as he was now skilled in the magical art of teleportation, he "
@@ -1718,11 +2047,11 @@ msgstr ""
 "pri jeho schopnostiach premiestňovacej mágie jednoducho zmizol. A odvtedy ho "
 "nikto nevidel."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:82
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:82
 msgid "Kaldor"
 msgstr "Kaldor"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:99
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:99
 msgid ""
 "Not been seen, that is, until the day when he attacked Gweddry and me in "
 "that outpost on the Eastern border. This is the lich we are facing: Mal-"
@@ -1731,17 +2060,17 @@ msgstr ""
 "Nikto ho nevidel až do toho dňa, keď napadol Gweddryho a mňa v hliadke na "
 "východnej hranici. Toto je kostej, proti ktorému stojíme: Mal-Ravanal."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:103
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:103
 msgid "So what should we do now?"
 msgstr "Čo by sme teda mali robiť?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:107
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:107
 msgid ""
 "We must fight, obviously. Surely the might of Wesnoth can triumph over a "
 "mere Lich!"
 msgstr "Zrejme musíme bojovať. Moc Wesnothu iste porazí nejakého kosteja!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:111
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:111
 msgid ""
 "I can tell by your words that you have not seen the hordes for yourself. It "
 "is like all of the dead warriors from all the ages have come back to attack "
@@ -1753,7 +2082,7 @@ msgstr ""
 "pochodujúcich kostlivcov, škriekajúcich duchov, pekelných netopierov a "
 "zástupy černokňažníkov, ktorí ich oživili."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:115
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:115
 msgid ""
 "At first we tried to escape them, for we knew they were too powerful; it is "
 "only by horrible luck that we are back in Wesnoth at all."
@@ -1761,14 +2090,14 @@ msgstr ""
 "Najprv sme sa im snažili uniknúť, pretože sme vedeli, že sú príliš mocní; je "
 "to len vďaka ohromnému šťastiu, že sme sa vôbec dostali späť do Wesnothu."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:119
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:119
 msgid ""
 "That simply makes you cowards. True warriors would have stayed and fought, "
 "to the death!"
 msgstr ""
 "Tak ste jednoducho zbabelci. Pravý bojovník by zostal a bojoval, až do konca!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:123
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:123
 msgid ""
 "It doesn't matter anyway. The point is, we already know we cannot defeat the "
 "hordes of the enemy head-on in battle. So it seems that the only path to "
@@ -1778,11 +2107,11 @@ msgstr ""
 "poraziť v priamom boji. Zdá sa, že jedinou cestou k víťazstvu je zničiť "
 "hlavu týchto černokňažníkov, kosteja Mal-Ravanala."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:127
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:127
 msgid "But as yet we have no idea how to do it!"
 msgstr "Ale stále netušíme, ako na to!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:131
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:131
 msgid ""
 "Well, we do know that he is very arrogant, and can be easily tricked. That "
 "is how he fell in the first place."
@@ -1790,7 +2119,7 @@ msgstr ""
 "Vieme o ňom, že je veľmi namyslený, a možno ho ľahko prekabátiť. To bolo "
 "príčinou jeho pádu."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:135
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:135
 msgid ""
 "So maybe we can trick him into exposing himself to us? Dacyn, does he know "
 "we know who he is?"
@@ -1798,7 +2127,7 @@ msgstr ""
 "Takže by sme ho možno vedeli nachytať, aby sa nám ukázal? Dacyn, vie o tom, "
 "že vieme, kto je?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:139
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:139
 msgid ""
 "No, I don't think so. I am the only person alive who would recognize the "
 "name Mal-Ravanal, and if he had known I was there when he attacked, he would "
@@ -1808,478 +2137,43 @@ msgstr ""
 "Ravanal, a keby vedel, že som bol tu, keď na nás útočil, dal by si viac "
 "záležať na našom prenasledovaní."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:150
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:150
 msgid "Sire, the undead armies are attacking!"
 msgstr "Pane, armády nemŕtvych útočia!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Throne_Room.cfg:154
+#: data/campaigns/Eastern_Invasion/scenarios/16.The_Council.cfg:154
 msgid "Well, that will have to be the end of our council. Let us fight!"
 msgstr "Nuž, toto je koniec nášho koncilu. Poďme bojovať!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:4
-msgid "Xenophobia"
-msgstr "Xenofóbia"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:43
-msgid "Pelathsil"
-msgstr "Pelathsil"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:54
-msgid "Prok-Bak"
-msgstr "Prok-Bak"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:69
-msgid "Elandin"
-msgstr "Elandin"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:85
-msgid "Defeat all enemy leaders"
-msgstr "Porazíš všetkých nepriateľských veliteľov"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:116
-msgid ""
-"Hail, Dwarves! Will you help us get by these foul Orcs? We need to get "
-"further along this path."
-msgstr ""
-"Zdravím vás, trpaslíci! Pomôžete nám prejsť cez týchto hnusných orkov? "
-"Musíme pokračovať touto cestou."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:120
-msgid "You human! Call us foul, will you?!?!"
-msgstr "Ty, človek! Opovažuješ sa nás nazvať hnusnými?!?!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:124
-msgid "Why should we help you? You're not a dwarf!"
-msgstr "Prečo by sme ti mali pomôcť? Ty nie si trpaslík!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:128
-msgid ""
-"Your people helped us in the past, in the tunnels in the South. Why won't "
-"you help us now?"
-msgstr ""
-"Tvoji ľudia nám pomohli v minulosti, v južných tuneloch. Prečo by si nám "
-"teraz nepomohol ty?"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:132
-msgid ""
-"Impossible! I can't believe any of my comrades would have helped a human!"
-msgstr "Nemožné! Nemôžem uveriť, že by niekto z našej krvi pomáhal človeku!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:136
-msgid "Indeed. Why should any of us help those not of our people?"
-msgstr ""
-"A vôbec. Prečo by niekto z nás pomáhal tomu, kto nepatrí do nášho národa?"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:140
-msgid ""
-"Will you then just let us pass, so that we may fight the orcs on our own?"
-msgstr "Necháte nás teda aspoň prejsť, aby sme mohli bojovať proti orkom?"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:144
-msgid "I am afraid that is... impossible."
-msgstr "Obávam sa, že je to... nemožné."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:148
-msgid "Orcs, kill'em all! Humans, elves or dwarves, it don't matter!"
-msgstr "Orkovia, pobite ich všetkých! Ľudia, elfovia, trpaslíci, všetko jedno!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:152
-msgid ""
-"These orcs will die. But so will you, human. You have trespassed on Elvish "
-"land."
-msgstr ""
-"Títo orkovia zomrú. A takisto ty, človeče. Prenikol si na elfské územie."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:156
-msgid "Oh, Elvish land is it now? Die, you elf-dog! And you too, human!"
-msgstr ""
-"Ale, elfské územie je to zrazu? Skap, ty elfský pes! A ty tiež, človek!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:160
-msgid ""
-"These people won't listen to reason, they are all blinded by their belief in "
-"their own supposed superiority. We probably will have to fight them, "
-"although we may be able to bypass them."
-msgstr ""
-"Títo ľudkovia na hlas rozumu veľa nedajú, predstavy o ich vlastnej "
-"nadradenosti ich zaslepujú. Asi proti nim budeme musieť bojovať, hoci možno "
-"sa nám podarí aj obísť ich."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:164
-msgid ""
-"True. As much as I dislike killing anything but orcs and undead, it seems we "
-"will have to kill these elves, and these dwarves, before they kill us."
-msgstr ""
-"Veru. A hoci sa mi protiví zabíjať niečo iné ako orkov a nemŕtvych, asi "
-"budeme musieť zabiť týchto elfov i týchto trpaslíkov, skôr ako oni zabijú "
-"nás."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:175
-msgid "Argh! I'm dead! Well, dwarves are still the best!"
-msgstr "Argh! Som mŕtvy! No a čo, trpaslíci sú aj tak najlepší!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:193
-msgid "I die? Orcs rule all!"
-msgstr "Zomieram? Orkovia raz zvíťazia!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Tribal_Warfare.cfg:211
-msgid "It seems these humans are more powerful than I thought. Ugh."
-msgstr "Zdá sa, že títo ľudia sú mocnejší než som si myslel. Ugh."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:4
-msgid "Two Paths"
-msgstr "Dve cesty"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:44
-msgid "Wak-Rano"
-msgstr "Wak-Rano"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:57
-msgid "Mal-Arnai"
-msgstr "Mal-Arnai"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:75
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:73
-msgid "Defeat either enemy leader"
-msgstr "Porazíš niektorého z nepriateľských veliteľov"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:108
-msgid "Look! The road splits here. Which way shall we go?"
-msgstr "Hľa! Tu sa cesta rozdeľuje. Kadiaľ pôjdeme?"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:112
-#, fuzzy
-msgid ""
-"I know this area. I was here on an earlier patrol. Just north of here there "
-"is a river that leads to the northlands, where orcs live. To the west there "
-"is a path that stays inside the realm of Wesnoth, for a time. If we travel "
-"along this path, we will not have to fight orcs immediately."
-msgstr ""
-"Túto oblasť poznám. Kedysi som tu hliadkoval. Priamo na sever odtiaľto je "
-"rieka, ktorá vedie na sever, kde žijú orkovia. Na západe je cesta, ktorá "
-"čiastočne vedie vnútrozemím Wesnothu. Ak pôjdeme po nej, nebudeme hneď "
-"musieť bojovať s orkmi."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:116
-msgid ""
-"We should probably go north to the orcish lands immediately. I suspect that "
-"the undead have already bypassed us, and cut off any crossing to the west of "
-"here."
-msgstr ""
-"Asi by sme mali ihneď ísť na sever, do orských krajov. Obávam sa, že nás "
-"nemŕtvi už obišli, a odrežú nám všetky cesty na západ."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:120
-msgid ""
-"The orcs are more powerful than you suspect. I doubt the undead have had "
-"time to get past us in large enough numbers to make them more dangerous than "
-"the orcs."
-msgstr ""
-"Orkovia sú mocnejší než si myslíš. Pochybujem, že by nemŕtvi mali dosť času, "
-"aby nás obehli v takom počte, ktorý by bol nebezpečnejší ako orkovia."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:124
-msgid ""
-"Either way we will have to fight. Look, the orcs and undead are in a "
-"conflict, and block our path!"
-msgstr ""
-"Tak či onak musíme bojovať. Pozri, orkovia a nemŕtvi bojujú navzájom, a "
-"blokujú nám cestu!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:128
-#, fuzzy
-msgid ""
-"Well, orc, we can either continue this fight, or we can crush these "
-"intruders and battle later. Your call."
-msgstr ""
-"Počuj, ork, môžeme pokračovať v našom boji, alebo rozdrvíme týchto otravných "
-"ľudí a potom pokračujeme v boji. Vyber si."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:132
-#, fuzzy
-msgid ""
-"Hmm... I know. We will make a pact to destroy these men, and continue our "
-"fight later. (Hopefully you will die, for then I will win our battle withou "
-"fighting.)"
-msgstr ""
-"Hm... jasné. Spojme sa proti týmto ľuďom a potom pokračujme v našom boji. "
-"(Dúfam, že pritom zatrasieš krpcami, lebo vtedy ja vyhrám bez boja.)"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:136
-msgid "Very well, we are allies, for now. (This foolish orc will surely die.)"
-msgstr ""
-"Dobre teda, sme spojenci, zatiaľ. (Ten hnusný ork pritom isto otrčí kopytá.)"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:147
-msgid ""
-"No! These undead won our battle, and you will be able to enter my northern "
-"homeland!"
-msgstr ""
-"Nie! Nemŕtvi vyhrali našu bitku, a vy sa dostanete na sever do mojej "
-"domoviny!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Two_Paths.cfg:163
-msgid "I was supposed to kill you all! I have failed."
-msgstr "Mal som vás všetkých zabiť! Zlyhal som."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:4
-msgid "The Undead Border Patrol"
-msgstr "Pohraničná hliadka nemŕtvych"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:43
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:42
-msgid "Mal-Skraat"
-msgstr "Mal-Skraat"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:54
-msgid "Mal-Telnarad"
-msgstr "Mal-Telnarad"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:94
-msgid ""
-"We have gotten out of that mountain range now, and the path northwards is "
-"clear. Let us go north, now, and try to reach Owaec at the outpost."
-msgstr ""
-"Práve sme sa dostali z tohoto horského pásma, a cesta na sever je voľná. "
-"Poďme teda na sever a pokúsme sa nájsť Owaeca pri hliadke."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:98
-msgid ""
-"Wait. I am not sure that is the best option. If we go east now, we may be "
-"able to find the lich Mal-Ravanal who attacked us, and destroy him before he "
-"can attack Wesnoth again. After we escaped, I suspect he went back east to "
-"find us."
-msgstr ""
-"Moment. Nie som si istý, že je to tá najlepšia možnosť. Ak pôjdeme teraz na "
-"východ, mali by sme nájsť toho kosteja Mal-Ravanala, ktorý nás napadol. "
-"Môžeme ho zničiť skôr ako opäť zaútočí na Wesnoth. Predpokladám, že sa po "
-"našom úteku vrátil na východ, aby nás hľadal."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:102
-msgid ""
-"They run from me! Still, it will not help them, the border patrol will "
-"destroy them. I may even be promoted!"
-msgstr ""
-"Utekajú predo mnou! Ale to im nepomôže, rozdrví ich pohraničná hliadka. "
-"Možno ma potom povýšia!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:113
-msgid "Now I will never get promoted!"
-msgstr "Teraz ma už nepovýšia!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:117
-msgid "Come, let us return to Wesnoth and aid the Northern Outpost."
-msgstr "Poďte, vrátime sa do Wesnothu a podporíme severnú hliadku."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:133
-msgid ""
-"We have defeated this patrol, but we can still turn back! Do we want to go "
-"further into these lands now, or do we want to try to turn back and defeat "
-"this necromancer?"
-msgstr ""
-"Porazili sme túto hliadku, ale stále sa môžeme vrátiť! Chceme ísť ešte "
-"hlbšie do tejto krajiny, alebo sa skúsime otočiť a poraziť toho "
-"černokňažníka?"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:139
-msgid "I wish to destroy the evil before it can spread. East we go!"
-msgstr "Musíme zničiť zlo skôr ako sa rozšíri. Poďme na východ!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:143
-msgid "I will not say if this is a good decision, but I will follow you."
-msgstr "Nepovedal by som, že je to dobré rozhodnutie, ale idem s tebou."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:147
-msgid "Noo!!! I can't be promoted if they run away!"
-msgstr "Nie!!! Ak mi ujdú, nepovýšia ma!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:157
-msgid ""
-"You are right. It is foolish to go onward - we must defeat Mal-Skraat and "
-"turn back, going to the Northern Outpost."
-msgstr ""
-"Máš pravdu. Bola by hlúposť ísť vpred... musíme poraziť Mal-Skraata a vrátiť "
-"sa, ísť do severnej hliadky."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:161
-msgid "Good! if I defeat them, I can become a lich!"
-msgstr "Dobre! Ak ich porazím, bude zo mňa kostej!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:177
-msgid ""
-"We failed to defeat either enemy! Now more lichs will come, and we will be "
-"overwhelmed!"
-msgstr ""
-"Nepodarilo sa nám poraziť nikoho! Teraz prídu ďalší kosteji a prevalcujú nás!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:186
-#, fuzzy
-msgid ""
-"We cannot spend any more time attempting to defeat Mal-Skraat. Like it or "
-"not, we must go further into these undead lands."
-msgstr ""
-"Nemôžeme strácať čas bojom s Mal-Skraatom. Či sa nám to páči alebo nie, "
-"musíme ísť hlbšie to tejto krajiny nemŕtvych."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Border_Patrol.cfg:190
-msgid ""
-"Noo!!! He will reach Mal-Ravanal's capital, and I shall be punished for "
-"letting him escape!"
-msgstr ""
-"Nie!!! Pôjde do hlavného mesta Mal-Ravanal a mňa potrestajú za to, že mi "
-"ušiel!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Crossing.cfg:4
-msgid "Undead Crossing"
-msgstr "Križovatka nemŕtvych"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Crossing.cfg:41
-msgid "Mal-un-Karad"
-msgstr "Mal-un-Karad"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Crossing.cfg:83
-msgid ""
-"These fens look impassable. I don't think we will be able to continue on "
-"this road; it is time to turn northwards, away from these undead."
-msgstr ""
-"Tieto močiare vyzerajú nepriechodne. Nemyslím, že by sme po tejto ceste "
-"mohli pokračovať. Prišiel čas obrátiť sa na sever, preč od týchto nemŕtvych."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Crossing.cfg:87
-msgid ""
-"We must cross this river, then. We must make haste, already we have wasted "
-"too much time. Undead have positioned themselves in the middle of the ford."
-msgstr ""
-"Potom musíme prejsť cez rieku. Musíme sa poponáhľať, už sme premárnili "
-"priveľa času. Nemŕtvi sa opevnili uprostred brodu."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Crossing.cfg:91
-msgid ""
-"Across this river lies the Northland. Ogres live there, as do orcs. We "
-"should proceed with caution. The undead are dangerous, but the orcs may be "
-"more dangerous still."
-msgstr ""
-"Za touto riekou leží Severná zem. Žijú tam ohyzdi a orkovia. Mali by sme "
-"pokračovať opatrne. Nemŕtvi sú nebezpeční, ale orkovia by mohli byť ešte "
-"nebezpečnejší."
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Crossing.cfg:95
-msgid ""
-"I will leave your bodies to rot in the river, then I will raise you up to "
-"serve in my Master's undead hordes!"
-msgstr ""
-"Nechám vaše telá zhniť v rieke, a potom vás vzkriesim ako služobníkov v "
-"nemŕtvych hordách môjho pána!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Crossing.cfg:112
-msgid ""
-"I summon from the depths of the river those beasts which will destroy you!"
-msgstr "Z hlbín rieky privolám tvory, ktoré vás zničia!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Undead_Crossing.cfg:143
-msgid ""
-"It seems as if in addition to summoning undead this foul sorcerer has "
-"learned to call up monsters from the deep!"
-msgstr ""
-"Zdá sa, že okrem privolávania nemŕtvych sa tento kostej naučil aj vyvolávať "
-"démonov!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:4
-msgid "An Unexpected Appearance"
-msgstr "Nečakané zjavenie"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:62
-msgid "Mal-Tar"
-msgstr "Mal-Tar"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:76
-msgid "Mal-Kallat"
-msgstr "Mal-Kallat"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:98
-msgid "Defeat either enemy necromancer"
-msgstr "Porazíš niektorého z nepriateľských černokňažníkov"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:125
-msgid "We have escaped from those dark tunnels! But where are we now?"
-msgstr "Unikli sme z tých temných tunelov! Ale kde to sme?"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:129
-msgid ""
-"We are in the middle of the eastern mountains, in a mountain pass leading "
-"east and west. We need to head north, to meet Owaec, but we cannot go "
-"through the mountains... we must go east, or west, and hope we can get "
-"around them."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:133
-msgid "Hahaha! We have you surrounded!"
-msgstr "Hahaha! Ste obkľúčení!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:137
-msgid ""
-"Why don't we see if the new recruit can handle them. After all, there are "
-"only two!"
-msgstr ""
-"Vyskúšajme, či si s nimi poradí náš nový regrút. Napokon, sú len dvaja!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:141
-msgid "No!!! They'll kill me!"
-msgstr "Nie!!! Veď ma zabijú!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:145
-msgid "That would be your problem, then."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:149
-msgid ""
-"These undead are toying with us! This here adept is weak - we may be able to "
-"take his castle."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:153
-msgid ""
-"A good idea. Then, we must kill either of the necromancers. I would prefer "
-"to attack the western one, so we can get closer to Wesnoth."
-msgstr ""
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:164
-msgid "No! You have defeated me, and can re-enter Wesnoth!"
-msgstr "Nie! Porazili ste ma, a teraz máte voľnú cestu do Wesnothu!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Unexpected_Appearance.cfg:180
-msgid "You have defeated my brother, but I will follow you and kill you!"
-msgstr "Porazili ste môjho brata, ale ja si vás nájdem a zabijem!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:4
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:4
 msgid "Weldyn under Attack"
 msgstr "Útok na Weldyn"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:56
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:56
 msgid "Halrad"
 msgstr "Halrad"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:70
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:70
 msgid "Halric"
 msgstr "Halrik"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:84
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:84
 msgid "Halrod"
 msgstr "Halrod"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:99
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:99
 msgid "Mal-Grekulak"
 msgstr "Mal-Grekulak"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:114
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:114
 msgid "Mal-Xakralan"
 msgstr "Mal-Xakralan"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:129
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:129
 msgid "Mal-Uknalu"
 msgstr "Mal-Uknalu"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:204
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:204
 msgid ""
 "We will fight soon, my lord. Look, night approaches; they will soon attack. "
 "I hope we can hold them off."
@@ -2287,45 +2181,45 @@ msgstr ""
 "O chvíľu budeme bojovať, môj pane. Hľa, blíži sa noc... čoskoro zaútočia. "
 "Dúfam, že ich dokážeme odraziť."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:208
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:208
 msgid "Very well. But this... Mal-Ravanal, that you spoke of, is he here?"
 msgstr "Výborne. Ale ten... Mal-Ravanal, o ktorom si hovoril, je tu tiež?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:212
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:212
 msgid "I do not sense his magic, but he might be concealing his presence."
 msgstr "Necítim jeho mágiu, ale možno sa tu niekde skrýva."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:216
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:216
 msgid ""
 "In any case, the undead are attacking now. Let us hope we can last out the "
 "night."
 msgstr "Tak či tak, nemŕtvi už útočia. Dúfajme, že vydržíme túto noc."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:228
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:228
 msgid "The undead are tearing down our defences!"
 msgstr "Nemŕtvi prerazili našu obranu!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:252
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:252
 msgid "I have died, and with me gone the city shall fall."
 msgstr "Zomieram, a so mnou padne aj mesto."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:264
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:264
 msgid "Look, the sun has risen, and the undead are retreating."
 msgstr "Hľa, slnko vychádza. Nemŕtvi ustupujú."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:276
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:276
 msgid "Messenger of Doom"
 msgstr "Posol osudu"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:282
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:282
 msgid "I come bearing a message from my leader."
 msgstr "Prichádzam so správou od svojho veliteľa."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:286
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:286
 msgid "Very well, you may read it. It might tell us something useful."
 msgstr "Výborne, môžeš ju prečítať. Možno sa dozvieme niečo užitočné."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:290
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:290
 msgid ""
 "He says: 'Well done; you have defeated some of my less powerful captains, "
 "and a small fraction of my horde. Were I to bring the whole might of my "
@@ -2346,13 +2240,13 @@ msgstr ""
 "kapitánov, ale v skutočnosti si sa akurát ukrýval v bezpečí za líniami, kde "
 "ostatní, udatnejší od teba, bojovali a zomierali v tvojom mene.'"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:294
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:294
 msgid ""
 "What is the point of this message? Does it consist of anything more than "
 "insults?"
 msgstr "Čo má byť pointou tento správy? Máš pre nás niečo viac ako urážky?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:298
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:298
 msgid ""
 "The point is that you did not defeat my Lord's minions, it was others doing "
 "the work for you! The mighty Gweddry himself would last but a few moments in "
@@ -2363,13 +2257,13 @@ msgstr ""
 "druhí! Pochybujem, že by Gweddry v skutočnom súboji vydržal čo len pár "
 "sekúnd. A môj pán to dokáže. Vyzýva ťa, Gweddry, do boja, na duel."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:302
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:302
 msgid ""
 "What are his terms? I won't accept anything obviously weighted towards his "
 "victory!"
 msgstr "Aké sú jeho podmienky? Neprijmem nič, čo by ho jasne zvýhodňovalo!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:306
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:306
 msgid ""
 "That only proves you are a coward. Nevertheless, these are his terms: You "
 "pick your six best warriors and he will pick his six best. Then you will "
@@ -2379,7 +2273,7 @@ msgstr ""
 "svojich najlepších bojovníkov a on si vyberie svojich šesť. Potom budete "
 "bojovať, na smrť, kým jeden z vás nepadne!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:310
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:310
 msgid ""
 "Gweddry, I don't think you should accept. He is bound to bring more than six "
 "Undead to the battle; he will bring an army!"
@@ -2387,7 +2281,7 @@ msgstr ""
 "Gweddry, myslím, že by si to nemal prijať. On si prinesie do boja viac ako "
 "šesť nemŕtvych; prinesie si celú armádu!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:314
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:314
 msgid ""
 "Well, I think you should accept. There is a small chance that it will be a "
 "fair fight, and otherwise we will definitely have to face his whole undead "
@@ -2396,7 +2290,7 @@ msgstr ""
 "Nuž, podľa mňa by si mal prijať. Budeš mať aspoň aké-také šance na čestný "
 "boj; inak budeme musieť čeliť celej jeho armáde nemŕtvych."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:318
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:318
 msgid ""
 "I will simplify your choice. Accept, coward, or face the onslaught of my "
 "lord's hordes at dawn tomorrow!"
@@ -2404,16 +2298,122 @@ msgstr ""
 "Máš jednoduchú voľbu. Prijmi, zbabelec, alebo sa priprav na útok hôrd môjho "
 "pána pri zajtrajšom úsvite!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:324
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:324
 msgid ""
 "I will accept this challenge. By your own master's terms, that proves I am "
 "no coward."
 msgstr ""
 "Prijímam túto výzvu. Podľa slov tvojho pána tým ukážem, že nie som zbabelec."
 
-#: data/campaigns/Eastern_Invasion/scenarios/Weldyn_Attack.cfg:340
+#: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:340
 msgid "I will not accept a fight in which he will obviously cheat! I refuse!"
 msgstr "Neprijmem súboj, v ktorom je zrejmé, že bude podvádzať! Odmietam!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:4
+msgid "The Duel"
+msgstr "Duel"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:54
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:126
+msgid "Defeat Mal-Ravanal"
+msgstr "Porazíš Mal-Ravanala"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:70
+msgid ""
+"I have waited a long time for this day to come. Prepare to die, Gweddry of "
+"Wesnoth!"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:80
+msgid ""
+"The rules of the duel are these:\n"
+"You may recruit or recall up to 6 units.\n"
+"At the end of your first turn, your keep will disappear, and you must battle "
+"with whatever troops you have at that time.\n"
+"The first leader to fall loses the duel."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:136
+msgid ""
+"Wait - What just happened? He called more warriors out of the ground! That's "
+"not allowed!"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:141
+msgid ""
+"Stop talking and fight! The rules do not stop me from bringing up warriors "
+"that were already here."
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:154
+msgid "I... lose?..."
+msgstr "Prehral som...?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18a.The_Duel.cfg:167
+msgid "And more!"
+msgstr "Ešte viac!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:4
+msgid "Weldyn Besieged"
+msgstr "Obliehanie Weldynu"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:41
+msgid "Mal-Akranbral"
+msgstr "Mal-Akranbral"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:53
+msgid "Mal-Hadanak"
+msgstr "Mal-Hadanak"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:65
+msgid "Mal-Drakanal"
+msgstr "Mal-Drakanal"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:77
+msgid "Mal-Larakan"
+msgstr "Mal-Larakan"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:100
+msgid "Mal-Xaskanat"
+msgstr "Mal-Xaskanat"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:112
+msgid "Mal-Katklagad"
+msgstr "Mal-Katklagad"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:142
+msgid "Letting any enemy unit on to your keep"
+msgstr "Necháš nepriateľkú jednotku vojsť do tvojej pevnosti"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:161
+msgid ""
+"You people are fools! You decided to reject my master's duel... very well, "
+"you will all DIE! And know, my master is here, watching your very demise. "
+"For he does not fear you at all, and knows that you will never be able to "
+"find him and kill him! There are seven of us, and only ONE of us is the real "
+"leader! ha ha ha ha! To be fair about it, we will all tell you our names."
+msgstr ""
+"Vy ľudia ste blázni! Rozhodli ste sa odmietnuť súboj s mojím pánom... dobre, "
+"teraz všetci ZOMRIETE! A vedzte, že môj pán je tu a sleduje vašu porážku. "
+"Pretože on sa vás nebojí, a vie, že ho nikdy nedokážete nájsť a zabiť! Je "
+"nás tu sedem, a iba JEDEN z nás je pravý veliteľ! Ha ha ha ha! Aby sme boli "
+"féroví, prezradíme vám naše mená."
+
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:165
+msgid "Remember, we have to kill Mal-Ravanal. He's here somewhere..."
+msgstr "Pamätaj, musíme zabiť Mal-Ravanala. Je niekde tu..."
+
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:177
+msgid "How did you know...?"
+msgstr "Ako si vedel...?"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:195
+msgid "Kill the king!"
+msgstr "Zabite kráľa!"
+
+#: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:199
+msgid "They killed Konrad... now, even if we save Weldyn, Wesnoth has fallen."
+msgstr "Zabili Konráda... teraz, aj keby sme zachránili Weldyn, Wesnoth padol."
 
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9
 msgid "No! I... die..."
