@@ -71,7 +71,7 @@ unit::unit(const game_data& data, const config& cfg) :
 	state_(STATE_NORMAL),
 	moves_(0), user_end_turn_(false), facingLeft_(true),
 	resting_(false), hold_position_(false), recruit_(false),
-	guardian_(false), upkeep_(UPKEEP_FREE),anim_(NULL),
+	guardian_(false), upkeep_(UPKEEP_FREE),anim_(NULL),user_image_(""),
 	unit_halo_(0),unit_anim_halo_(0)
 {
 	read(data,cfg);
@@ -105,7 +105,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	       attacks_(type_->attacks()),
 	       backupAttacks_(type_->attacks()),
                guardian_(false), upkeep_(UPKEEP_FULL_PRICE),
-               unrenamable_(false),anim_(NULL),unit_halo_(0),
+               unrenamable_(false),anim_(NULL),unit_halo_(0),user_image_(""),
 	       unit_anim_halo_(0)
 {
 	//dummy units used by the 'move_unit_fake' command don't need to have a side.
@@ -147,7 +147,7 @@ unit::unit(const unit_type* t, const unit& u) :
 	modifications_(u.modifications_),
 	traitsDescription_(u.traitsDescription_),
 	guardian_(false), upkeep_(u.upkeep_),
-	unrenamable_(u.unrenamable_),anim_(NULL),unit_halo_(0),
+	unrenamable_(u.unrenamable_),anim_(NULL),unit_halo_(0),user_image_(u.user_image_),
 	unit_anim_halo_(0)
 {
 	validate_side(side_);
@@ -805,6 +805,7 @@ void unit::read(const game_data& data, const config& cfg)
 	if(cfg["generate_description"] == "yes") {
 		description_ = type_->generate_description();
 	}
+	user_image_ = cfg["image"];
 
 	underlying_description_ = cfg["description"];
 	if(description_.empty()) {
@@ -934,6 +935,7 @@ void unit::write(config& cfg) const
 	cfg["user_description"] = description_;
 	cfg["description"] = underlying_description_;
 	cfg["unit_description"] = custom_unit_description_;
+	cfg["image"] = user_image_;
 
 	cfg["traits_description"] = traitsDescription_;
 
@@ -1003,7 +1005,11 @@ int unit::damage_against(const attack_type& attack) const
 const std::string& unit::image() const
 {
 	switch(state_) {
-		case STATE_NORMAL: return type_->image();
+		case STATE_NORMAL:
+			if(! user_image_.empty()) {
+				return user_image_;
+			}
+			return type_->image();
 		case STATE_WALKING: 
 		case STATE_DEFENDING: {
 			const std::string& res = anim_->get_current_frame().image;

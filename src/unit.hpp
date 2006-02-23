@@ -254,6 +254,7 @@ private:
 	bool unrenamable_;
 
 	unit_animation *anim_;
+	std::string user_image_;
 
 	void reset_modifications();
 	void apply_modifications();
