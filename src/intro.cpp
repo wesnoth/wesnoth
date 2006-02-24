@@ -126,6 +126,9 @@ bool show_intro_part(display &disp, const config& part,
 		yscale = (background->h*xscale)/background->w;
 	}
 
+	const int map_w = background->w;
+	const int map_h = background->h;
+
 	background = scale_surface(background,xscale,yscale);
 
 	dstrect.x = video.getx()/2 - background->w/2;
@@ -152,7 +155,9 @@ bool show_intro_part(display &disp, const config& part,
 	texty = dstrect.y + dstrect.h - 200;
 
 	//darken the area for the text and buttons to be drawn on
-	draw_solid_tinted_rectangle(0,texty,video.getx(),video.gety()-texty,0,0,0,0.5,video.getSurface());
+	if(show_title == false) {
+		draw_solid_tinted_rectangle(0,texty,video.getx(),video.gety()-texty,0,0,0,0.5,video.getSurface());
+	}
 
 	next_button.set_location(xbuttons,dstrect.y+dstrect.h-180);
 	skip_button.set_location(xbuttons,dstrect.y+dstrect.h-130);
@@ -163,7 +168,7 @@ bool show_intro_part(display &disp, const config& part,
 		const SDL_Rect scenario_size =
 		      font::draw_text(NULL,area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,0,0);
 		update_rect(font::draw_text(&video,area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,
-					    dstrect.x,dstrect.y - scenario_size.h - 4));
+					    dstrect.x + 20,dstrect.y + 20));
 	}
 
 	events::raise_draw_event();
@@ -182,8 +187,8 @@ bool show_intro_part(display &disp, const config& part,
 			const std::string& image_name = (**i)["file"];
 			const std::string& delay_str = (**i)["delay"];
 			const int delay = (delay_str == "") ? 0: atoi(delay_str.c_str());
-			const int x = atoi(xloc.c_str());
-			const int y = atoi(yloc.c_str());
+			const int x = (atoi(xloc.c_str())*background->w)/map_w;
+			const int y = (atoi(yloc.c_str())*background->h)/map_h;
 
 			if(x < 0 || x >= background->w || y < 0 || y >= background->h)
 				continue;
