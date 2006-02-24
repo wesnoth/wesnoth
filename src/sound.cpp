@@ -291,6 +291,10 @@ void commit_music_changes()
 			return;
 	}
 
+	// Victory empties playlist: if next scenario doesn't specify one...
+	if (current_track_list.empty())
+		return;
+
 	// FIXME: we don't pause ms_before on this first track.  Should we?
 	current_track = random_track();
 	play_music();
