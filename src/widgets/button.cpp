@@ -255,6 +255,10 @@ void button::mouse_motion(SDL_MouseMotionEvent const &event)
 			state_ = ACTIVE;
 		else if (state_ == PRESSED && type_ == TYPE_CHECK)
 			state_ = PRESSED_ACTIVE;
+		if (type_ == TYPE_CHECK){
+			bg_update();
+			draw();
+		}
 	} else {
 		// the cursor is not over the widget
 		if (state_ == PRESSED_ACTIVE)

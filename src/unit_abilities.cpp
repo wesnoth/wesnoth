@@ -95,7 +95,7 @@ const std::string ability::description() const
 
 /// heals_ability ///
 heals_ability::heals_ability(const config* cfg)
-: ability::ability(cfg)
+: ability(cfg)
 {
 	amount_=lexical_cast_default<int>((*cfg)["amount"],game_config::healer_heals_per_turn);
 	max_=lexical_cast_default<int>((*cfg)["max"],game_config::heal_amount);
@@ -119,7 +119,7 @@ void heals_ability::set_heal(int amount, int max)
 
 /// regenerates_ability ///
 regenerates_ability::regenerates_ability(const config* cfg)
-: ability::ability(cfg)
+: ability(cfg)
 {
 	regeneration_=lexical_cast_default<int>((*cfg)["amount"],game_config::cure_amount);
 }
@@ -136,7 +136,7 @@ void regenerates_ability::set_regeneration(int reg)
 
 /// leadership_ability ///
 leadership_ability::leadership_ability(const config* cfg)
-: ability::ability(cfg)
+: ability(cfg)
 {
 	perlevel_bonus_=lexical_cast_default<int>((*cfg)["perlevel_bonus"],game_config::leadership_bonus);
 }
@@ -153,7 +153,7 @@ void leadership_ability::set_leadership(int perlevel_bonus)
 
 /// illuminates_ability ///
 illuminates_ability::illuminates_ability(const config* cfg)
-: ability::ability(cfg)
+: ability(cfg)
 {
 	level_=lexical_cast_default<int>((*cfg)["level"],1);
 }
@@ -170,7 +170,7 @@ void illuminates_ability::set_illumination(int level)
 
 /// steadfast_ability ///
 steadfast_ability::steadfast_ability(const config* cfg)
-: ability::ability(cfg)
+: ability(cfg)
 {
 	std::string bonus_string = (*cfg)["bonus"];
 	bonus_=lexical_cast_default<int>(bonus_string,100);

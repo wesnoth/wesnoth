@@ -41,6 +41,7 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 		}
 	}
 	catch(end_level_exception&){
+		LOG_NG << "play_replay_level: end_level_exception\n";
 	}
 
 	return LEVEL_CONTINUE;
