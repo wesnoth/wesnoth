@@ -102,6 +102,11 @@ std::string get(const std::string key) {
 	return prefs[key];
 }
 
+config* get_prefs(){
+	config* pointer = &prefs;
+	return pointer;
+}
+
 namespace {
 	bool is_fullscreen = false;
 }

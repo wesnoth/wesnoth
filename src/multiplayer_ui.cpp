@@ -268,6 +268,7 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 		//otherwise it's just a chat message
 		static const std::string query = "/query ";
 		static const std::string whisper = "/msg ";
+		static const std::string ignore = "/ignore ";
 		
 		config data;
 
@@ -296,7 +297,62 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 			(entry_textbox_.text().substr(whisper.size()+receiver.size()+1)));
 			
 			chat_.update_textbox(chat_textbox_);
+			
+		} else if (text.size() >= ignore.size() && std::equal(ignore.begin(),ignore.end(),text.begin())) {
+		
+			static const std::string add = "add";
+			static const std::string remove = "remove";
+			static const std::string list = "list";
+			static const std::string clear = "clear";
+			
+			int pos;
+			pos = text.find(" ",ignore.size());
+			
+			const std::string arg = text.substr((pos+1),text.find_first_of(' '));
+			
+			const std::string command = text.substr(ignore.size(),
+			(text.size()-arg.size()-ignore.size()-1));
+			
+			config* cignore;
+			
+			if (std::equal(add.begin(),add.end(),command.begin())){
+				if (!preferences::get_prefs()->child("ignore")){
+					preferences::get_prefs()->add_child("ignore");
+				}
+				cignore = preferences::get_prefs()->child("ignore");
+				(*cignore)[arg] = "yes";
+				chat_.add_message("ignores list", "Added "+arg+" to ignore list.");
+				
+			} else if (std::equal(remove.begin(),remove.end(),command.begin())){
+				if ((cignore = preferences::get_prefs()->child("ignore"))){
+					(*cignore)[arg] = "no";
+					chat_.add_message("ignores list", "Removed "+arg+" from ignore list.");
+				}	
+			} else if (std::equal(list.begin(),list.end(),command.begin())){
+				std::string message = " ";
+				if ((cignore = preferences::get_prefs()->child("ignore"))){
+					std::map<std::string,t_string>::const_iterator i ;
+					for( i = cignore->values.begin(); i != cignore->values.end(); ++i){
+						if (i->second == "yes"){
+							message+=i->first+",";
+						}
+					}
+					message.erase(message.length()-1,1);
+				}	
+				chat_.add_message("ignores list", message);
+			} else if (std::equal(clear.begin(),clear.end(),command.begin())){
 
+				if ((cignore = preferences::get_prefs()->child("ignore"))){
+					string_map::iterator nick;
+					for(nick= cignore->values.begin() ; nick!= cignore->values.end(); nick++) {
+						(*cignore)[nick->first] = "no";
+						chat_.add_message("ignores list", "Removed "+nick->first+" from ignore list.");
+					}
+				}	
+			} else {				
+				chat_.add_message("ignores list", "unknown command "+command+".");	
+			}
+			chat_.update_textbox(chat_textbox_);
 		} else {
 
 			// Sends the message to the network
@@ -358,11 +414,26 @@ void ui::process_network_data(const config& data, const network::connection /*so
 		throw network::error((*data.child("error"))["message"]);
 	} else {
 		if(data.child("message")) {
-			sound::play_sound(game_config::sounds::receive_message);
-
 			const config& msg = *data.child("message");
-			chat_.add_message(msg["sender"], msg["message"]);
-			chat_.update_textbox(chat_textbox_);
+			config* cignore;
+			bool ignored = false;
+			if ((cignore = preferences::get_prefs()->child("ignore"))){
+				for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
+				i != cignore->values.end(); ++i){
+					if(msg["sender"] == i->first){
+						if (i->second == "yes"){
+							ignored = true;
+						}
+					}
+				}
+			}
+			
+			if (!ignored){
+				sound::play_sound(game_config::sounds::receive_message);
+			
+				chat_.add_message(msg["sender"], msg["message"]);
+				chat_.update_textbox(chat_textbox_);
+			}
 		}
 		
 		if(data.child("whisper")){

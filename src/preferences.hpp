@@ -44,6 +44,8 @@ namespace preferences {
 	// low-level, should be seen only by preferences_display ?
 	void set(std::string key, std::string value);
 	std::string get(const std::string key);
+	
+	config* get_prefs();
 
 	bool fullscreen();
 	void _set_fullscreen(bool ison);

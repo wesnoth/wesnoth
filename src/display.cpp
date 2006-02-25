@@ -2465,70 +2465,85 @@ namespace {
 
 void display::add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type)
 {
-	bool action;
-	std::string msg;
-
-	if(message.find("/me ") == 0) {
-		msg.assign(message,4,message.size());
-		action = true;
-	} else {
-		msg = message;
-		action = false;
-	}
-	msg = font::word_wrap_text(msg,font::SIZE_SMALL,mapx()*3/4);
-
-	int ypos = chat_message_x;
-	for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
-		ypos += font::get_floating_label_rect(m->handle).h;
-	}
-
-	SDL_Color speaker_colour = {255,255,255,255};
-	if(side >= 1) {
-		speaker_colour = team::get_side_colour(side);
-	}
-
-	SDL_Color message_colour = chat_message_colour;
-	std::stringstream str;
-	std::stringstream message_str;
-	if(type == MESSAGE_PUBLIC) {
-		if(action) {
-			str << "<" << speaker << " " << msg << ">";
-			message_colour = speaker_colour;
-			message_str << " ";
-		} else {
-			str << "<" << speaker << ">";
-			message_str << msg;
-		}
-	} else {
-		if(action) {
-			str << "*" << speaker << " " << msg << "*";
-			message_colour = speaker_colour;
-			message_str << " ";
-		} else {
-			str << "*" << speaker << "*";
-			message_str << msg;
+	config* cignore;
+	bool ignored = false;
+	if (cignore = preferences::get_prefs()->child("ignore")){
+		for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
+		i != cignore->values.end(); ++i){
+			if(speaker == i->first){
+				if (i->second == "yes"){
+					ignored = true;
+				}
+			}
 		}
 	}
+	
+	if (!ignored){
+		bool action;
+		std::string msg;
 
-	// prepend message with timestamp
-	std::stringstream message_complete;
-	if (preferences::chat_timestamp()) {
-		message_complete << timestring() << " ";
+		if(message.find("/me ") == 0) {
+			msg.assign(message,4,message.size());
+			action = true;
+		} else {
+			msg = message;
+			action = false;
+		}
+		msg = font::word_wrap_text(msg,font::SIZE_SMALL,mapx()*3/4);
+	
+		int ypos = chat_message_x;
+		for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
+			ypos += font::get_floating_label_rect(m->handle).h;
+		}
+
+		SDL_Color speaker_colour = {255,255,255,255};
+		if(side >= 1) {
+			speaker_colour = team::get_side_colour(side);
+		}
+
+		SDL_Color message_colour = chat_message_colour;
+		std::stringstream str;
+		std::stringstream message_str;
+		if(type == MESSAGE_PUBLIC) {
+			if(action) {
+				str << "<" << speaker << " " << msg << ">";
+				message_colour = speaker_colour;
+				message_str << " ";
+			} else {
+				str << "<" << speaker << ">";
+				message_str << msg;
+			}
+		} else {
+			if(action) {
+				str << "*" << speaker << " " << msg << "*";
+				message_colour = speaker_colour;
+				message_str << " ";
+			} else {
+				str << "*" << speaker << "*";
+				message_str << msg;
+			}
+		}
+
+		// prepend message with timestamp
+		std::stringstream message_complete;
+		if (preferences::chat_timestamp()) {
+			message_complete << timestring() << " ";
+		}
+		message_complete << str.str();
+	
+		const SDL_Rect rect = map_area();
+		const int speaker_handle = font::add_floating_label(message_complete.str(),font::SIZE_SMALL,speaker_colour,
+			rect.x+chat_message_x,rect.y+ypos,
+			0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
+
+		const int message_handle = font::add_floating_label(message_str.str(),font::SIZE_SMALL,message_colour,
+			rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,rect.y+ypos,
+			0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
+
+		chat_messages_.push_back(chat_message(speaker_handle,message_handle));
+
+		prune_chat_messages();
 	}
-	message_complete << str.str();
-
-	const SDL_Rect rect = map_area();
-	const int speaker_handle = font::add_floating_label(message_complete.str(),font::SIZE_SMALL,speaker_colour,
-		rect.x+chat_message_x,rect.y+ypos,
-		0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
-
-	const int message_handle = font::add_floating_label(message_str.str(),font::SIZE_SMALL,message_colour,
-		rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,rect.y+ypos,
-		0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
-
-	chat_messages_.push_back(chat_message(speaker_handle,message_handle));
-
-	prune_chat_messages();
 }
 
 void display::clear_chat_messages()
