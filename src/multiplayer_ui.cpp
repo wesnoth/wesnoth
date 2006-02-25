@@ -388,23 +388,43 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 			semiword.assign(text,last_space+1,text.size());
 		}
 
-		std::string guess;
 
+		std::vector<std::string> matches;
+		std::string best_match = semiword;
 		std::vector<std::string>& users = user_list_;
 		std::sort<std::vector<std::string>::iterator>(users.begin(), users.end());
 		for(std::vector<std::string>::const_iterator i = users.begin(); i != users.end(); ++i) {
 			if( i->size() >= semiword.size() && 
 					std::equal(semiword.begin(),semiword.end(),i->begin(),chars_equal_insensitive)) {
-				guess = *i;
-				break;
+				if(matches.empty()) {
+					best_match = *i;
+				} else {
+					int j= 0;;
+					while(best_match[j] == (*i)[j]) j++;
+					best_match.erase(best_match.begin()+j,best_match.end());
+				}
+				matches.push_back(*i);
 			}
 		}
 
-		if(guess.empty() == false) {
+		if(!matches.empty()) {
 			std::string add = beginning ? ": " : " ";
-			text.replace(last_space+1, semiword.size(), guess + add);
+			text.replace(last_space+1, semiword.size(), best_match);
+			if(matches.size() == 1) {
+				text.append(add);
+			} else {
+				std::string completion_list;
+				std::vector<std::string>::iterator it;
+				for(it =matches.begin();it!=matches.end();it++) {
+					completion_list += " ";
+					completion_list += *it;
+				}
+				chat_.add_message("",completion_list);
+				chat_.update_textbox(chat_textbox_);
+			}
 			entry_textbox_.set_text(text);
 		}
+
 	}
 }
 
