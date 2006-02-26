@@ -862,7 +862,7 @@ void attack(display& gui, const gamemap& map,
 					gui.recalculate_minimap();
 					gui.update_display();
 					LOG_NG << "firing attack_end event\n";
-					game_events::fire("attack_end",attacker,defender);
+					game_events::fire("attack_end",attacker,defender,dat);
 					a = units.find(attacker);
 					d = units.find(defender);
 					break;
@@ -924,7 +924,7 @@ void attack(display& gui, const gamemap& map,
 				std::string undead_variation = d->second.type().undead_variation();
 				const int defender_side = d->second.side();
 				LOG_NG << "firing attack_end event\n";
-				game_events::fire("attack_end",attacker,defender);
+				game_events::fire("attack_end",attacker,defender,dat);
 				LOG_NG << "firing die event\n";
 				game_events::fire("die",loc,a->first);
 				d = units.find(loc);
@@ -1077,7 +1077,7 @@ void attack(display& gui, const gamemap& map,
 					gui.recalculate_minimap();
 					gui.update_display();
 					LOG_NG << "firing attack_end event\n";
-					game_events::fire("attack_end",attacker,defender);
+					game_events::fire("attack_end",attacker,defender,dat);
 					break;
 				}
 			} else {
@@ -1106,7 +1106,7 @@ void attack(display& gui, const gamemap& map,
 					gui.recalculate_minimap();
 					gui.update_display();
 					LOG_NG << "firing attack_end event\n";
-					game_events::fire("attack_end",attacker,defender);
+					game_events::fire("attack_end",attacker,defender,dat);
 					break;
 				}
 			}
@@ -1162,7 +1162,7 @@ void attack(display& gui, const gamemap& map,
 				gamemap::location defender_loc = d->first;
 				const int attacker_side = a->second.side();
 				LOG_NG << "firing attack_end event\n";
-				game_events::fire("attack_end",attacker,defender);
+				game_events::fire("attack_end",attacker,defender,dat);
 				LOG_NG << "firing die event\n";
 				game_events::fire("die",loc,d->first);
 				a = units.find(loc);
@@ -1240,7 +1240,7 @@ void attack(display& gui, const gamemap& map,
 		}
 		if(stats.nattacks <= 0 && stats.ndefends <= 0) {
 			LOG_NG << "firing attack_end event\n";
-			game_events::fire("attack_end",attacker,defender);
+			game_events::fire("attack_end",attacker,defender,dat);
 			a = units.find(attacker);
 			d = units.find(defender);
 		}
