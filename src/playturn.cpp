@@ -977,6 +977,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 				route.move_left = route_turns_to_complete(it->second,map_,route);
 				gui_.set_route(&route);
 			}
+			game_events::fire("select",hex);
 		}
 	}
 }
