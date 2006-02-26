@@ -54,7 +54,7 @@ std::vector<team>* teams = NULL;
 game_state* state_of_game = NULL;
 const game_data* game_data_ptr = NULL;
 gamestatus* status_ptr = NULL;
-
+int floating_label = 0;
 } //end anonymous namespace
 
 namespace game_events {
@@ -1124,10 +1124,15 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		SDL_Color colour = {red,green,blue,255};
 
+		//remove any old one.
+		if (floating_label)
+			font::remove_floating_label(floating_label);
+
 		const std::string& msg = text;
 		if(msg != "") {
 			const SDL_Rect rect = screen->map_area();
-			font::add_floating_label(msg,size,colour,rect.w/2,rect.h/2,
+			floating_label = font::add_floating_label(msg,size,colour,
+									 rect.w/2,rect.h/2,
 			                         0.0,0.0,lifetime,rect,font::CENTER_ALIGN);
 		}
 	}
