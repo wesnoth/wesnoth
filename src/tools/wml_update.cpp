@@ -12,19 +12,99 @@
 
 
  * Version 1.1.2
- * Update 5
+ * Update 6
 */
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <stdlib.h>
 #include <string>
 #include <deque>
 #include <vector>
 #include <ctype.h>
 #include <dirent.h>
+#ifdef USE_EXCEPT1
+#include <excpt.h>
+EXCEPTION_DISPOSITION exp_handle(struct _EXCEPTION_RECORD*, void*, struct _CONTEXT*, void*)
+{
+	longjmp();
+	return ExceptionContinueExecution;
+}
+#endif
+
 #include <sys/stat.h>
 
+struct Level;
+
+typedef std::deque<Level*> child_list;
+
+template<typename To, typename From>
+To lexical_cast_default(From a, To def=To())
+{
+	To res;
+	std::stringstream str;
+
+	if(!(str << a && str >> res)) {
+		return def;
+	} else {
+		return res;
+	}
+}
+
+
+std::string left_side(std::string& s)
+{
+	return s.substr(0,s.find('='));
+}
+std::string right_side(std::string& s)
+{
+	return s.substr(s.find('=')+1,s.size());
+}
+bool isnewline(char c)
+{
+	return c == '\r' || c == '\n';
+}
+
+int pattern_match(const std::string& pat,const std::string& mat)
+{
+	int ppos=0;
+	int mpos=0;
+	while(1) {
+		if(ppos>=pat.size()) {
+			if(mpos<mat.size()) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+		if(mpos>=mat.size()) {
+			if(ppos<pat.size()) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+		if(pat[ppos] == '*') {
+			ppos++;
+			if(ppos>=pat.size()) {
+				return true;
+			}
+			while(mat[mpos] != pat[ppos]) {
+				mpos++;
+				if(mpos>=mat.size()) {
+					return false;
+				}
+			}
+		} else if(pat[ppos] != '&') {
+			if(mat[mpos] != pat[ppos]) {
+				return false;
+			}
+		}
+		ppos++;
+		mpos++;
+	}
+}
 
 
 enum FILE_NAME_MODE { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
@@ -95,12 +175,122 @@ void list_directory(const std::string& directory,
 
 
 struct Level {
-	Level(const std::string& itag,Level* p) {tag=itag;parent=p;};
-	~Level() {for(std::vector<Level*>::iterator i = data.begin(); i != data.end(); ++i) {delete *i;}};
-	std::vector<Level*> data;
+	Level(const std::string& itag,Level* p) {tag=itag;parent=p;is_tag=false;};
+	~Level() {for(child_list::iterator i = data.begin(); i != data.end(); ++i) {delete *i;}};
+	
+	Level* add_child(Level* l)
+	{
+		data.push_back(l);
+		l->parent=this;
+		is_tag = true;
+		return l;
+	}
+	
+	Level* set(Level& l)
+	{
+		tag=l.tag;
+		parent=l.parent;
+		is_tag=l.is_tag;
+		for(child_list::iterator i = l.data.begin(); i != l.data.end(); ++i) {
+			add_child((new Level((*i)->tag,this))->set(**i));
+		}
+		return this;
+	}
+	
+	Level* child(const std::string& key)
+	{
+		for(child_list::iterator i = data.begin(); i != data.end(); ++i) {
+			if((*i)->tag == key) {
+				return *i;
+			}
+		}
+		return NULL;
+	}
+	void delete_child(const std::string& key)
+	{
+		for(child_list::iterator i = data.begin(); i != data.end(); ++i) {
+			if((*i)->tag == key) {
+					delete *i;
+					data.erase(i);
+					return;
+			}
+		}
+	}
+	void delete_lchild(const std::string& key)
+	{
+		for(child_list::iterator i = data.begin(); i != data.end(); ++i) {
+			if(left_side((*i)->tag) == key) {
+					delete *i;
+					data.erase(i);
+					return;
+			}
+		}
+	}
+	
+	Level* insert(int index,const std::string& key,Level* l)
+	{
+		for(child_list::iterator i = data.begin(); i != data.end(); ++i) {
+			if((*i)->tag == key) {
+				if(index == 0) {
+					data.insert(i,l);
+					return l;
+				} else {
+					index--;
+				}
+			}
+		}
+		add_child(l);
+		return l;
+	}
+	
+	std::string operator [](const std::string& key)
+	{
+		for(child_list::iterator i = data.begin(); i != data.end(); ++i) {
+			if(left_side((*i)->tag) == key) {
+				return right_side((*i)->tag);
+			}
+		}
+		return "";
+	}
+	void replace_child(const std::string& key,const std::string value)
+	{
+		for(child_list::iterator i = data.begin(); i != data.end(); ++i) {
+			if(left_side((*i)->tag) == key) {
+				(*i)->tag = key + value;
+				return;
+			}
+		}
+	}
+	
+	child_list get_children(const std::string& key)
+	{
+		child_list ret;
+		for(child_list::iterator i = data.begin(); i != data.end(); ++i) {
+			if((*i)->tag == key) {
+				ret.push_back(*i);
+			}
+		}
+		return ret;
+	}
+	
+	bool is_tag;
+	child_list data;
 	std::string tag;
 	Level* parent;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 std::vector<std::string> preproc_actions;
 
@@ -122,7 +312,7 @@ void output_level(Level& l,std::ofstream& outfile,int tabs,bool comments)
 		return;
 	}
 	
-	if(l.data.empty()) { // tag
+	if(!l.is_tag && l.data.empty()) { // key
 		if(l.tag[0] != '#') {
 			TABS(outfile,tabs);
 		}
@@ -132,7 +322,7 @@ void output_level(Level& l,std::ofstream& outfile,int tabs,bool comments)
 			outfile.flush();
 		}
 	} else { // section
-		if(l.tag != "]]]MAIN[[[") {
+		if(l.tag != "]]]{MAIN}[[[") {
 			TABS(outfile,tabs);
 			outfile.put('[');
 			outfile.write(l.tag.c_str(),l.tag.size());
@@ -141,9 +331,9 @@ void output_level(Level& l,std::ofstream& outfile,int tabs,bool comments)
 			outfile.flush();
 		}
 		for(int w=0;w<l.data.size();w++) {
-			output_level(*l.data[w],outfile,tabs+(l.tag != "]]]MAIN[[["),comments);
+			output_level(*l.data[w],outfile,tabs+(l.tag != "]]]{MAIN}[[["),comments);
 		}
-		if(l.tag != "]]]MAIN[[[") {
+		if(l.tag != "]]]{MAIN}[[[") {
 			TABS(outfile,tabs);
 			outfile.put('[');
 			outfile.put('/');
@@ -157,19 +347,6 @@ void output_level(Level& l,std::ofstream& outfile,int tabs,bool comments)
 			outfile.flush();
 		}
 	}
-}
-
-std::string left_side(std::string& s)
-{
-	return s.substr(0,s.find('='));
-}
-std::string right_side(std::string& s)
-{
-	return s.substr(s.find('=')+1,s.size());
-}
-bool isnewline(char c)
-{
-	return c == '\r' || c == '\n';
 }
 
 //make sure that we can use Mac, DOS, or Unix style text files on any system
@@ -237,9 +414,252 @@ std::vector< std::string > split(std::string const &val, char c = ',', int flags
 	return res;
 }
 
+void update_tree(Level& l,bool verbose);
+
+bool integrity_check(Level& l,bool verbose,Level* p)
+{
+	bool success = true;
+	if(l.parent != p) {
+		std::cerr << "Internal Error: Parent integrity check failed! (" << l.parent->tag << " : " << p->tag << ")\n";
+		return false;
+	}
+	if(!l.is_tag && l.data.empty()) { // key
+		if(l.tag.find('=') == std::string::npos && l.tag.find('{') == std::string::npos && l.tag.find('#') == std::string::npos) {
+			std::cerr << "Internal Error: Key integrity check failed! (" << l.tag << ")\n";
+			return false;
+		}
+	} else {
+		if(l.tag.find('=') != std::string::npos) {
+			std::cerr << "Internal Error: Tag integrity check failed! (" << l.tag << ")\n";
+			return false;
+		}
+		for(int w=0;w<l.data.size();w++) {
+			success = success && integrity_check(*l.data[w],verbose,&l);
+		}
+	}
+	return success;
+}
+
+void resolve_tree(Level& l,bool verbose)
+{
+	if(l.data.empty()) { // key
+	} else {
+		if(l.tag == "animation" && (l.parent->tag == "attack" || l.parent->tag == "effect")) {
+			child_list frame_tags = l.get_children("frame");
+			for(child_list::iterator i = frame_tags.begin(); i != frame_tags.end(); ++i) {
+				l.data.erase(std::find(l.data.begin(),l.data.end(),*i));
+			}
+			while(frame_tags.size()) {
+				int first = 10000;
+				child_list::iterator j;
+				for(child_list::iterator i = frame_tags.begin(); i != frame_tags.end(); ++i) {
+					if(lexical_cast_default<int>((**i)["begin"]) < first) {
+						j=i;
+						first = lexical_cast_default<int>((**i)["begin"]);
+					}
+				}
+				l.add_child(*j);
+				frame_tags.erase(j);
+			}
+			bool dirty = false;
+			frame_tags = l.get_children("frame");
+			for(child_list::iterator i = frame_tags.begin(); i != frame_tags.end(); ++i) {
+				if(i+1 != frame_tags.end()) {
+					if(lexical_cast_default<int>((**i)["end"]) > lexical_cast_default<int>((**(i+1))["begin"])) {
+						if(lexical_cast_default<int>((**i)["end"]) > lexical_cast_default<int>((**(i+1))["end"])) {
+							Level* nframe = (new Level("frame",&l))->set(**i);
+							nframe->replace_child("begin","="+(**(i+1))["end"]);
+							nframe->replace_child("end","="+(**i)["end"]);
+							nframe->delete_lchild("sound");
+							l.add_child(nframe);
+							dirty = true;
+							if(verbose) {
+								std::cerr << "Splitting frame\n";
+							}
+						}
+						if(verbose) {
+							std::cerr << "Changing frame end to next begin (" << (**i)["end"] << " -> " << (**(i+1))["begin"] << "\n";
+						}
+						(*i)->replace_child("end","="+(**(i+1))["begin"]);
+					}
+				}
+			}
+			if(dirty) {
+				resolve_tree(l,verbose);
+			}
+		}
+		
+		for(int w=0;w<l.data.size();w++) {
+			resolve_tree(*l.data[w],verbose);
+		}
+	}
+}
+
+bool pre_update(Level& l,bool verbose) // split things here
+{
+	bool need_update = false;
+	if(l.data.empty()) { // key
+	} else {
+		if(l.tag == "animation" && (l.parent->tag == "attack" || l.parent->tag == "effect")) {
+			// Split sound_hit and sound_miss
+			child_list sound_tags = l.get_children("sound");
+			Level* miss_anim = (new Level(l.tag,l.parent))->set(l);
+			Level* hit_anim = (new Level(l.tag,l.parent))->set(l);
+			
+			bool use_miss = false;
+			bool use_hit = false;
+			for(child_list::iterator i = sound_tags.begin(); i != sound_tags.end(); ++i) {
+				if((**i)["sound_miss"] != "") {
+					use_miss = true;
+				}
+				if((**i)["sound"] != "" && (**i)["sound_miss"] != "") {
+					use_hit = true;
+				}
+			}
+			if(use_miss && use_hit) { // needs splitting; maybe always split if sound_miss exists?
+				miss_anim->data.push_front(new Level("hits=no",miss_anim));
+				hit_anim->data.push_front(new Level("hits=yes",hit_anim));
+				
+				Level* p = l.parent;
+				child_list::iterator f = std::find(p->data.begin(),p->data.end(),&l);
+				delete &l;
+				p->data.erase(f);
+				
+				update_tree(*miss_anim,verbose);
+				update_tree(*hit_anim,verbose);
+				
+				miss_anim->parent = p;
+				hit_anim->parent = p;
+				p->add_child(miss_anim);
+				p->add_child(hit_anim);
+				
+				if(verbose)
+					std::cerr << "splitting sound_miss and sound\n";
+				return true;
+			}
+			
+			bool hits = l.child("hits=no") == NULL;
+			std::string sound_suffix((hits ? "" : "_miss"));
+			
+			while(l.child("sound")) {
+				// needs to find/make a frame with sound=
+				Level* i = l.child("sound");
+				child_list frame_tags = l.get_children("frame");
+				bool create = true;
+				// find a frame with equal time if possible
+				for(child_list::iterator j = frame_tags.begin(); j != frame_tags.end(); ++j) {
+					if(lexical_cast_default<int>((**j)["begin"],0) == lexical_cast_default<int>((*i)["time"],0)) {
+						if((*i)["sound_miss"] == "" && !hits) {
+							(*j)->add_child(new Level("sound=" + (*i)[std::string("sound")],*j));
+						} else {
+							(*j)->add_child(new Level("sound=" + (*i)[std::string("sound") + sound_suffix],*j));
+						}
+						if(verbose)
+							std::cerr << "merging frame for sound\n";
+						create = false;
+						break;
+					}
+				}
+				if(create) {
+					// create new frame
+					int index=0;
+					for(child_list::iterator j = frame_tags.begin(); j != frame_tags.end(); ++j) {
+						if(lexical_cast_default<int>((**j)["begin"],0) > lexical_cast_default<int>((*i)["time"],0)) {
+							Level* nframe = new Level("frame",&l);
+							if((*i)["sound_miss"] == "" && !hits) {
+								nframe->add_child(new Level("sound=" + (*i)[std::string("sound")],nframe));
+							} else {
+								nframe->add_child(new Level("sound=" + (*i)[std::string("sound") + sound_suffix],nframe));
+							}
+							nframe->add_child(new Level("begin="+(*i)["time"],nframe));
+							for(child_list::iterator k = i->data.begin(); k != i->data.end(); ++k) {
+								if(pattern_match("halo*=*",(*k)->tag)) {
+									nframe->add_child((new Level((*k)->tag,nframe))->set(**k));
+								}
+							}
+							nframe->add_child(new Level("end="+lexical_cast_default<std::string>(lexical_cast_default<int>((*i)["time"],0)+1),nframe));
+							for(child_list::iterator k = frame_tags.begin(); k != frame_tags.end(); ++k) {
+								if((lexical_cast_default<int>((**k)["end"]) >= lexical_cast_default<int>((*i)["time"])) && (lexical_cast_default<int>((**k)["begin"]) <= lexical_cast_default<int>((*i)["time"]))) {
+									for(child_list::iterator y = (*k)->data.begin(); y != (*k)->data.end(); ++y) {
+										if(pattern_match("halo*=*",(*y)->tag)) {
+											nframe->add_child(new Level((*y)->tag,nframe));
+										}
+									}
+								}
+							}
+							l.insert(index,"frame",nframe);
+							
+							if(j != frame_tags.begin()) { // not beginning
+								if(j+1 != frame_tags.end()) { // middle
+//									(*(j-1))->replace_child("end",(*i)["time"]);
+//									nframe->add_child(new Level("end="+(**(j+1))["end"],nframe));
+									nframe->add_child(new Level("image="+(**(j-1))["image"],nframe));
+									if(verbose)
+										std::cerr << "adding new frame for sound\n";
+									create = false;
+									break;
+								} else { // end
+//									nframe->add_child(new Level("end="+lexical_cast_default<std::string>(lexical_cast_default<int>((*i)["time"],0)+1),nframe));
+									nframe->add_child(new Level("image="+(**(j-1))["image"],nframe));
+									if(verbose)
+										std::cerr << "adding new frame for sound\n";
+									create = false;
+									break;
+								}
+							} else { // beginning
+//									nframe->add_child(new Level("end="+lexical_cast_default<std::string>(lexical_cast_default<int>((*i)["time"],0)+1),nframe));
+									if(verbose)
+										std::cerr << "adding new frame for sound\n";
+									create = false;
+									break;
+							}
+							
+						}
+						index++;
+					}
+					if(create) {
+						Level* nframe = new Level("frame",&l);
+						if((*i)["sound_miss"] == "" && !hits) {
+							nframe->add_child(new Level("sound=" + (*i)[std::string("sound")],nframe));
+						} else {
+							nframe->add_child(new Level("sound=" + (*i)[std::string("sound") + sound_suffix],nframe));
+						}
+						nframe->add_child(new Level("begin="+(*i)["time"],nframe));
+						nframe->add_child(new Level("end="+lexical_cast_default<std::string>(lexical_cast_default<int>((*i)["time"],0)+1),nframe));
+						for(child_list::iterator k = frame_tags.begin(); k != frame_tags.end(); ++k) {
+								if((lexical_cast_default<int>((**k)["end"]) >= lexical_cast_default<int>((*i)["time"])) && (lexical_cast_default<int>((**k)["begin"]) <= lexical_cast_default<int>((*i)["time"]))) {
+									for(child_list::iterator y = (*k)->data.begin(); y != (*k)->data.end(); ++y) {
+									if(pattern_match("halo*=*",(*y)->tag)) {
+										nframe->add_child(new Level((*y)->tag,nframe));
+									}
+								}
+							}
+						}
+						if(frame_tags.size()) {
+							nframe->add_child(new Level("image="+(**(frame_tags.end()-1))["image"],nframe));
+							l.data.insert(std::find(l.data.begin(),l.data.end(),(frame_tags.back())),nframe);
+						} else {
+							l.add_child(nframe);
+						}
+						if(verbose)
+							std::cerr << "adding new frame for sound\n";
+					}
+				}
+				std::cerr << "deleting [sound]\n";
+				l.delete_child("sound");
+				need_update = true;
+			}
+		}
+		for(int w=0;w<l.data.size();w++) {
+			need_update |= pre_update(*l.data[w],verbose);
+		}
+	}
+	return need_update;
+}
+
 void update_tree(Level& l,bool verbose)
 {
-	if(l.data.empty()) { // tag
+	if(l.data.empty()) { // key
 		if(l.tag == "range=short" && (l.parent->tag == "attack" || l.parent->tag == "defend" || l.parent->tag == "effect")) {
 			l.tag = "range=melee";
 			if(verbose)
@@ -256,42 +676,42 @@ void update_tree(Level& l,bool verbose)
 			std::string save_tag = l.tag;
 			l.tag = "defend";
 			Level* new_frame = new Level("frame",&l);
-			l.data.push_back(new_frame);
-			new_frame->data.push_back(new Level("begin=-150",new_frame));
-			new_frame->data.push_back(new Level("end=150",new_frame));
-			new_frame->data.push_back(new Level(std::string("image=")+right_side(save_tag),new_frame));
+			l.add_child(new_frame);
+			new_frame->add_child(new Level("begin=-150",new_frame));
+			new_frame->add_child(new Level("end=150",new_frame));
+			new_frame->add_child(new Level(std::string("image=")+right_side(save_tag),new_frame));
 			if(verbose)
 				std::cerr << "updating image_defensive\n";
 		} else if(left_side(l.tag) == "image_defensive_short" && (l.parent->tag == "unit" || l.parent->tag == "female" || l.parent->tag == "variation" || l.parent->tag == "male")) {
 			std::string save_tag = l.tag;
 			l.tag = "defend";
-			l.data.push_back(new Level("range=melee",&l));
+			l.add_child(new Level("range=melee",&l));
 			Level* new_frame = new Level("frame",&l);
-			l.data.push_back(new_frame);
-			new_frame->data.push_back(new Level("begin=-150",new_frame));
-			new_frame->data.push_back(new Level("end=150",new_frame));
-			new_frame->data.push_back(new Level(std::string("image=")+right_side(save_tag),new_frame));
+			l.add_child(new_frame);
+			new_frame->add_child(new Level("begin=-150",new_frame));
+			new_frame->add_child(new Level("end=150",new_frame));
+			new_frame->add_child(new Level(std::string("image=")+right_side(save_tag),new_frame));
 			if(verbose)
 				std::cerr << "updating image_defensive_short\n";
 		} else if((left_side(l.tag) == "image_defensive_range" || left_side(l.tag) == "image_defensive_long") && (l.parent->tag == "unit" || l.parent->tag == "female" || l.parent->tag == "variation" || l.parent->tag == "male")) {
 			std::string save_tag = l.tag;
 			l.tag = "defend";
-			l.data.push_back(new Level("range=ranged",&l));
+			l.add_child(new Level("range=ranged",&l));
 			Level* new_frame = new Level("frame",&l);
-			l.data.push_back(new_frame);
-			new_frame->data.push_back(new Level("begin=-150",new_frame));
-			new_frame->data.push_back(new Level("end=150",new_frame));
-			new_frame->data.push_back(new Level(std::string("image=")+right_side(save_tag),new_frame));
+			l.add_child(new_frame);
+			new_frame->add_child(new Level("begin=-150",new_frame));
+			new_frame->add_child(new Level("end=150",new_frame));
+			new_frame->add_child(new Level(std::string("image=")+right_side(save_tag),new_frame));
 			if(verbose)
 				std::cerr << "updating image_defensive_long\n";
 		} else if (left_side(l.tag) == "image_moving" && (l.parent->tag == "unit" || l.parent->tag == "female" || l.parent->tag == "variation" || l.parent->tag == "male")) {
 			std::string save_tag = l.tag;
 			l.tag = "movement_anim";
 			Level* new_frame = new Level("frame",&l);
-			l.data.push_back(new_frame);
-			new_frame->data.push_back(new Level("begin=0",new_frame));
-			new_frame->data.push_back(new Level("end=150",new_frame));
-			new_frame->data.push_back(new Level(std::string("image=")+right_side(save_tag),new_frame));
+			l.add_child(new_frame);
+			new_frame->add_child(new Level("begin=0",new_frame));
+			new_frame->add_child(new Level("end=150",new_frame));
+			new_frame->add_child(new Level(std::string("image=")+right_side(save_tag),new_frame));
 			if(verbose)
 				std::cerr << "updating image_moving\n";
 		} else if(left_side(l.tag) == "ability" && (l.parent->tag == "unit" || l.parent->tag == "female" || l.parent->tag == "variation" || l.parent->tag == "male")) {
@@ -301,44 +721,56 @@ void update_tree(Level& l,bool verbose)
 				for(int c=0;c<abilities[a].size();c++) {
 					abilities[a][c]=toupper(abilities[a][c]);
 				}
-//				l.data.push_back(Level(std::string("{ABILITY_") + abilities[a] + (abilities[a]=="AMBUSH" ? " f" : "") + "}",&l));
-				l.data.push_back(new Level(std::string("{ABILITY_") + abilities[a] + "}",&l));
+//				l.add_child(Level(std::string("{ABILITY_") + abilities[a] + (abilities[a]=="AMBUSH" ? " f" : "") + "}",&l));
+				l.add_child(new Level(std::string("{ABILITY_") + abilities[a] + "}",&l));
 			}
 			if(verbose)
 				std::cerr << "updating ability=\n";
 		}
 	} else {
-		if(l.tag == "attack" || l.tag == "effect") {
+		if(l.tag == "animation") {
+			if(l.child("hits=no")) {
+				child_list sounds = l.get_children("sound");
+				for(child_list::iterator i = sounds.begin(); i != sounds.end(); ++i) {
+					if(((**i)["sound"] != "") && ((**i)["sound_miss"] != "")) {
+						Level* to_del = (*i)->child("sound=" + (**i)["sound"]);
+						if(to_del) {
+							(*i)->data.erase(std::find((*i)->data.begin(),(*i)->data.end(),to_del));
+							delete to_del;
+						}
+					}
+				}
+			} else if(l.child("hits=yes")) {
+				child_list sounds = l.get_children("sound");
+				for(child_list::iterator i = sounds.begin(); i != sounds.end(); ++i) {
+					if((**i)["sound_miss"] != "") {
+						Level* to_del = (*i)->child("sound_miss=" + (**i)["sound_miss"]);
+						if(to_del) {
+							(*i)->data.erase(std::find((*i)->data.begin(),(*i)->data.end(),to_del));
+							delete to_del;
+						}
+					}
+				}
+			}
+		} else if(l.tag == "attack" || l.tag == "effect") {
 			Level* n_anim = new Level("animation",&l);
-			for(int s=0;s<l.data.size();s++) {
-				if(l.data[s]->tag == "frame") {
-					l.data[s]->parent = n_anim;
-					n_anim->data.push_back(l.data[s]);
-					std::vector<Level*>::iterator i= l.data.begin()+s;
-					l.data.erase(i);
-					s--;
-				}
+			child_list frames = l.get_children("frame");
+			child_list mframes = l.get_children("missile_frame");
+			child_list sframes = l.get_children("sound");
+			for(child_list::iterator i = frames.begin(); i != frames.end(); ++i) {
+				n_anim->add_child(*i);
+				l.data.erase(std::find(l.data.begin(),l.data.end(),*i));
 			}
-			for(int s=0;s<l.data.size();s++) {
-				if(l.data[s]->tag == "missile_frame") {
-					l.data[s]->parent = n_anim;
-					n_anim->data.push_back(l.data[s]);
-					std::vector<Level*>::iterator i= l.data.begin()+s;
-					l.data.erase(i);
-					s--;
-				}
+			for(child_list::iterator i = mframes.begin(); i != mframes.end(); ++i) {
+				n_anim->add_child(*i);
+				l.data.erase(std::find(l.data.begin(),l.data.end(),*i));
 			}
-			for(int s=0;s<l.data.size();s++) {
-				if(l.data[s]->tag == "sound") {
-					l.data[s]->parent = n_anim;
-					n_anim->data.push_back(l.data[s]);
-					std::vector<Level*>::iterator i= l.data.begin()+s;
-					l.data.erase(i);
-					s--;
-				}
+			for(child_list::iterator i = sframes.begin(); i != sframes.end(); ++i) {
+				n_anim->add_child(*i);
+				l.data.erase(std::find(l.data.begin(),l.data.end(),*i));
 			}
 			if(n_anim->data.size()) {
-				l.data.push_back(n_anim);
+				l.add_child(n_anim);
 				if(verbose)
 					std::cerr << "updating attack_anim\n";
 			}
@@ -373,7 +805,7 @@ void update_file(const std::string& path,bool do_update,bool comments,bool verbo
 		idata += "\n";
 	}
 	
-	Level* p_data = new Level("]]]MAIN[[[",NULL);
+	Level* p_data = new Level("]]]{MAIN}[[[",NULL);
 	Level* current_level=p_data;
 	
 	int t=0;
@@ -385,7 +817,7 @@ void update_file(const std::string& path,bool do_update,bool comments,bool verbo
 				t++;
 				CEND(idata,t)
 			}
-			current_level->data.push_back(new Level(ntag,current_level));
+			current_level->add_child(new Level(ntag,current_level));
 			t++;
 		} else if(idata[t] == '[' && idata[t+1] != '/') { // enter new level
 			t++;
@@ -399,8 +831,9 @@ void update_file(const std::string& path,bool do_update,bool comments,bool verbo
 			t++;
 			CENDB(idata,t)
 			new_tag=strip(new_tag,true);
-			current_level->data.push_back(new Level(new_tag,current_level));
+			current_level->add_child(new Level(new_tag,current_level));
 			current_level=(current_level->data.back());
+			current_level->is_tag = true;
 		} else if(idata[t] == '[' && idata[t+1] == '/') { // close level
 			t += 2;
 			CEND(idata,t)
@@ -425,7 +858,7 @@ void update_file(const std::string& path,bool do_update,bool comments,bool verbo
 				std::cerr << "Syntax error: closing tag [/" << close_tag << "] without starting tag\n";
 			}
 			current_level = current_level->parent;
-		} else if(idata[t] != ' ') { // tag
+		} else if(idata[t] != ' ') { // key
 			std::string ntag;
 			while(idata[t] != '\n') {
 				if(idata[t] != '\"') {
@@ -471,7 +904,7 @@ void update_file(const std::string& path,bool do_update,bool comments,bool verbo
 				if(ntag[0] == '+' || (current_level->data.size() && current_level->data.back()->tag[current_level->data.back()->tag.size()-1]=='+' )) {
 					current_level->data.back()->tag += " " + ntag;
 				} else {
-					current_level->data.push_back(new Level(ntag,current_level));
+					current_level->add_child(new Level(ntag,current_level));
 				}
 			}
 			t++;
@@ -487,11 +920,14 @@ void update_file(const std::string& path,bool do_update,bool comments,bool verbo
 	finish:
 	
 	if(do_update) {
+		while(pre_update(*p_data,verbose));
 		update_tree(*p_data,verbose);
+		resolve_tree(*p_data,verbose);
 	}
-	
-	std::ofstream outfile(path.c_str());
-	output_level(*p_data,outfile,0,comments);
+	if(integrity_check(*p_data,verbose,NULL)) {
+		std::ofstream outfile(path.c_str());
+		output_level(*p_data,outfile,0,comments);
+	}
 	
 	delete p_data;
 	
@@ -500,8 +936,16 @@ void update_file(const std::string& path,bool do_update,bool comments,bool verbo
 int main(int argc, char *argv[])
 {
 	
+	printf("xx_xx");
+	setjmp();
+	__try1(exp_handle) {
+		*((int*)0xdeaddead) = 0;
+	} __except1 {
+		
+	}
+	
 	if(argc<2) {
-		std::cerr << "Usage: filenames [options]\n\t -u : Update the WML syntax from 1.0 to 1.1\n\t -r : Process all .cfg files recursively\n\t -v : verbose output\n\t -rem : Remove comments\n";
+		std::cerr << "Usage: filenames [options]\n\t -u : Update the WML syntax from 1.0 to 1.1.2\n\t -r : Process all .cfg files recursively\n\t -v : verbose output\n\t -rem : Remove comments\n";
 		return 0;
 	}
 	
@@ -548,8 +992,17 @@ int main(int argc, char *argv[])
 	}
 	
 	while(files.size()) {
+#ifdef USE_EXCEPT1
+		__try1(exp_handle) {
+			update_file(files[0],do_update,comments,verbose);
+		} __except1 {
+			
+		}
+		files.pop_front();
+#else
 		update_file(files[0],do_update,comments,verbose);
 		files.pop_front();
+#endif
 	}
 	
 	
