@@ -553,8 +553,8 @@ void server::process_login(const network::connection sock, const config& data, c
 	//check the username is valid (all alpha-numeric or space (but no space at ends))
 	std::string username = (*login)["username"];
 	const size_t alnum = std::count_if(username.begin(),username.end(),isalnum);
-	const size_t spaces = std::count(username.begin(),username.end(),' ');
-	if((alnum + spaces != username.size()) || spaces == username.size() || username.empty() || username[0] == ' ' || username[username.size()-1] == ' ') {
+	const size_t underscore = std::count(username.begin(),username.end(),'_');
+	if((alnum + underscore != username.size()) || underscore == username.size() || username.empty() ) {
 		network::send_data(construct_error(
 		                   "This username is not valid"),sock);
 		return;
