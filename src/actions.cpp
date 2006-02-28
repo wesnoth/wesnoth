@@ -954,6 +954,7 @@ void attack(display& gui, const gamemap& map,
 						 variation["apply_to"]="variation";
 						 variation["name"]=undead_variation;
 						 newunit.add_modification("variation",mod);
+						 newunit.heal_all();
 					       }
 
 					       units.insert(std::pair<gamemap::location,unit>(loc,newunit));
