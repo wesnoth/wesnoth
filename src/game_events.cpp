@@ -106,42 +106,42 @@ bool conditional_passed(const std::map<gamemap::location,unit>* units,
 		const double num_value = atof(value.c_str());
 
 		const std::string& equals = values["equals"];
-		if(equals != "" && value != equals) {
+		if(values.get_attribute("equals") != "" && value != equals) {
 			return false;
 		}
 
 		const std::string& numerical_equals = values["numerical_equals"];
-		if(numerical_equals != "" && atof(numerical_equals.c_str()) != num_value){
+		if(values.get_attribute("numerical_equals") != "" && atof(numerical_equals.c_str()) != num_value){
 			return false;
 		}
 
 		const std::string& not_equals = values["not_equals"];
-		if(not_equals != "" && not_equals == value) {
+		if(values.get_attribute("not_equals") != "" && not_equals == value) {
 			return false;
 		}
 
 		const std::string& numerical_not_equals = values["numerical_not_equals"];
-		if(numerical_not_equals != "" && atof(numerical_not_equals.c_str()) == num_value){
+		if(values.get_attribute("numerical_not_equals") != "" && atof(numerical_not_equals.c_str()) == num_value){
 			return false;
 		}
 
 		const std::string& greater_than = values["greater_than"];
-		if(greater_than != "" && atof(greater_than.c_str()) >= num_value){
+		if(values.get_attribute("greater_than") != "" && atof(greater_than.c_str()) >= num_value){
 			return false;
 		}
 
 		const std::string& less_than = values["less_than"];
-		if(less_than != "" && atof(less_than.c_str()) <= num_value){
+		if(values.get_attribute("less_than") != "" && atof(less_than.c_str()) <= num_value){
 			return false;
 		}
 
 		const std::string& greater_than_equal_to = values["greater_than_equal_to"];
-		if(greater_than_equal_to != "" && atof(greater_than_equal_to.c_str()) > num_value){
+		if(values.get_attribute("greater_than_equal_to") != "" && atof(greater_than_equal_to.c_str()) > num_value){
 			return false;
 		}
 
 		const std::string& less_than_equal_to = values["less_than_equal_to"];
-		if(less_than_equal_to != "" && atof(less_than_equal_to.c_str()) < num_value) {
+		if(values.get_attribute("less_than_equal_to") != "" && atof(less_than_equal_to.c_str()) < num_value) {
 			return false;
 		}
 	}
