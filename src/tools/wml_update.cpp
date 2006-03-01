@@ -24,15 +24,6 @@
 #include <vector>
 #include <ctype.h>
 #include <dirent.h>
-#ifdef USE_EXCEPT1
-#include <excpt.h>
-EXCEPTION_DISPOSITION exp_handle(struct _EXCEPTION_RECORD*, void*, struct _CONTEXT*, void*)
-{
-	longjmp();
-	return ExceptionContinueExecution;
-}
-#endif
-
 #include <sys/stat.h>
 
 struct Level;
@@ -935,15 +926,6 @@ void update_file(const std::string& path,bool do_update,bool comments,bool verbo
 
 int main(int argc, char *argv[])
 {
-	
-	printf("xx_xx");
-	setjmp();
-	__try1(exp_handle) {
-		*((int*)0xdeaddead) = 0;
-	} __except1 {
-		
-	}
-	
 	if(argc<2) {
 		std::cerr << "Usage: filenames [options]\n\t -u : Update the WML syntax from 1.0 to 1.1.2\n\t -r : Process all .cfg files recursively\n\t -v : verbose output\n\t -rem : Remove comments\n";
 		return 0;
@@ -992,17 +974,8 @@ int main(int argc, char *argv[])
 	}
 	
 	while(files.size()) {
-#ifdef USE_EXCEPT1
-		__try1(exp_handle) {
-			update_file(files[0],do_update,comments,verbose);
-		} __except1 {
-			
-		}
-		files.pop_front();
-#else
 		update_file(files[0],do_update,comments,verbose);
 		files.pop_front();
-#endif
 	}
 	
 	
