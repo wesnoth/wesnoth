@@ -347,9 +347,6 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	const int time_resolution = 20;
 	const int acceleration = disp.turbo() ? 5:1;
 
-	const std::vector<unit_animation::sfx>& sounds = attack_anim.sound_effects();
-	std::vector<unit_animation::sfx>::const_iterator sfx_it = sounds.begin();
-
 	const std::string& hit_sound = def->second.type().get_hit_sound();
 	bool played_hit_sound = (hit_sound == "" || hit_sound == "null");
 	const int play_hit_sound_at = 0;
@@ -393,24 +390,15 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 	while(animation_time < end_at && !hide) {
 
-		//this is a while instead of an if, because there might be multiple
-		//sounds playing simultaneously or close together
-		while(!hide && sfx_it != sounds.end() && animation_time >= sfx_it->time) {
-			const std::string& sfx = hits ? sfx_it->on_hit : sfx_it->on_miss;
-			if(sfx.empty() == false) {
-				sound::play_sound(hits ? sfx_it->on_hit : sfx_it->on_miss);
-			}
-
-			++sfx_it;
-		}
-
 		if(!hide && hits && !played_hit_sound && animation_time >= play_hit_sound_at) {
 			sound::play_sound(hit_sound);
 			played_hit_sound = true;
 		}
 
 		const unit_frame& attack_frame = attack_anim.get_current_frame();
-
+		if(attack_anim.frame_changed() && !attack_frame.sound.empty()) {
+			sound::play_sound(attack_frame.sound);
+		}
 		LOG_DP << "Animation time :" << animation_time << ", image " << attack_frame.image << "\n";
 		int new_halo_x = attack_frame.halo_x;
 		int new_halo_y = attack_frame.halo_y;
@@ -656,9 +644,6 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	const bool hits = damage > 0;
 	unit_animation attack_anim = *attack.animation(hits,get_adjacent_direction(a,b)).first;
 
-	const std::vector<unit_animation::sfx>& sounds = attack_anim.sound_effects();
-	std::vector<unit_animation::sfx>::const_iterator sfx_it = sounds.begin();
-
 	const std::string& hit_sound = def->second.type().get_hit_sound();
 	bool played_hit_sound = (hit_sound == "" || hit_sound == "null");
 	const int play_hit_sound_at = 0;
@@ -712,7 +697,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	const std::string* halo_image = NULL;
 	int halo_x = -1, halo_y = -1;
 
-	attack_anim.start_animation(begin_at,1, acceleration);
+	attack_anim.start_animation(begin_at+1,1, acceleration);
 
 	int animation_time = attack_anim.get_animation_time();
 
@@ -720,15 +705,11 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 	while(animation_time < end_at && !hide) {
 
-		//this is a while instead of an if, because there might be multiple
-		//sounds playing simultaneously or close together
-		while(!hide && sfx_it != sounds.end() && animation_time >= sfx_it->time) {
-			const std::string& sfx = hits ? sfx_it->on_hit : sfx_it->on_miss;
-			if(sfx.empty() == false) {
-				sound::play_sound(hits ? sfx_it->on_hit : sfx_it->on_miss);
-			}
-
-			++sfx_it;
+		const unit_frame& unit_frame = attack_anim.get_current_frame();
+		if(!unit_frame.sound.empty()) {
+		}
+		if(attack_anim.frame_changed() && !unit_frame.sound.empty()) {
+			sound::play_sound(unit_frame.sound);
 		}
 
 		if(!hide && hits && !played_hit_sound && animation_time >= play_hit_sound_at) {
@@ -772,7 +753,6 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 		int xoffset = 0;
 
-		const unit_frame& unit_frame = attack_anim.get_current_frame();
 		int new_halo_x = unit_frame.halo_x;
 		int new_halo_y = unit_frame.halo_y;
 

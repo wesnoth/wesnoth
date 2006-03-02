@@ -187,7 +187,7 @@ public:
 	// MOVED if moved and then pressed "end turn"
 	// NOT_MOVED if not moved and pressed "end turn"
 	enum MOVES { ATTACKED=-1, MOVED=-2, NOT_MOVED=-3 };
-	enum STATE { STATE_NORMAL, STATE_ATTACKING, STATE_DEFENDING,
+	enum STATE { STATE_STANDING, STATE_ATTACKING, STATE_DEFENDING,
 		STATE_LEADING, STATE_HEALING, STATE_WALKING};
 	STATE state() const {return state_;}
 private:

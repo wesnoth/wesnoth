@@ -35,6 +35,7 @@ unit_frame::unit_frame(const config& cfg)
 	halo = cfg["halo"];
 	halo_x = atoi(cfg["halo_x"].c_str());
 	halo_y = atoi(cfg["halo_y"].c_str());
+	sound = cfg["sound"];
 }
 
 unit_animation::unit_animation(const config& cfg,const std::string frame_string )
@@ -48,19 +49,10 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	}
 	add_frame(last_end);
 
-	range = cfg.child_range("sound");
-	for(; range.first != range.second; ++range.first){
-		sfx sound;
-		sound.time = atoi((**range.first)["time"].c_str());
-		sound.on_hit = (**range.first)["sound"];
-		sound.on_miss = (**range.first)["sound_miss"];
-		if(sound.on_miss.empty())
-			sound.on_miss = sound.on_hit;
+	/* warn on deprecated WML */
+	if(cfg.child("sound")) {
+		LOG_STREAM(err, config) << "an animation uses the deprecated [sound] tag, please include sound in the [frame] tag\n";
 
-		if(sound.on_miss == "null")
-			sound.on_miss = "";
-
-		sfx_.push_back(sound);
 	}
 }
 
@@ -69,14 +61,6 @@ unit_animation::unit_animation(const std::string image, int begin_at, int end_at
 	add_frame(begin_at, unit_frame(image,image_diagonal));
 	add_frame(end_at);
 }
-
-
-const std::vector<unit_animation::sfx>& unit_animation::sound_effects() const
-{
-	return sfx_;
-}
-
-
 
 defensive_animation::defensive_animation(const config& cfg) :unit_animation(cfg), hits(HIT_OR_MISS), range(utils::split(cfg["range"]))
 {

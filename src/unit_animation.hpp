@@ -34,6 +34,7 @@ struct unit_frame {
 	std::string image;
 	std::string image_diagonal;
 	std::string halo;
+	std::string sound;
 	int halo_x, halo_y;
 };
 class unit_animation:public animated<unit_frame> 
@@ -46,16 +47,7 @@ class unit_animation:public animated<unit_frame>
 
 		enum FRAME_DIRECTION { VERTICAL, DIAGONAL };
 
-		struct sfx {
-			int time;
-			std::string on_hit, on_miss;
-		};
-
-		const std::vector<sfx>& sound_effects() const;
-
 	private:
-
-		std::vector<sfx> sfx_;
 };
 
 

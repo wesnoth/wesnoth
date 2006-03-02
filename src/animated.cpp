@@ -100,12 +100,15 @@ void animated<T,T_void_value>::start_animation(int start_frame, int cycles, int 
 	acceleration_ = acceleration;
 	// current_frame_ = frames_.begin();
 	current_frame_ = 0;
+	no_current_frame_ = false;
 
 	if (ending_frame_time_ >= start_frame_) {
 		duration_ = ending_frame_time_ - start_frame_;
 	} else {
 		duration_ = 0;
 	}
+	no_current_frame_ = false;
+	frame_changed_ = true;
 }
 
 

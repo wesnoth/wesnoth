@@ -68,7 +68,7 @@ void sort_units(std::vector< unit > &units)
 
 //constructor for reading a unit
 unit::unit(const game_data& data, const config& cfg) :
-	state_(STATE_NORMAL),
+	state_(STATE_STANDING),
 	moves_(0), user_end_turn_(false), facingLeft_(true),
 	resting_(false), hold_position_(false), recruit_(false),
 	guardian_(false), upkeep_(UPKEEP_FREE),anim_(NULL),user_image_(""),
@@ -91,7 +91,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 //constructor for creating a new unit
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
                gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
-	       type_(&t->get_gender_unit_type(gender_)), state_(STATE_NORMAL),
+	       type_(&t->get_gender_unit_type(gender_)), state_(STATE_STANDING),
 	       hitpoints_(type_->hitpoints()),
 	       maxHitpoints_(type_->hitpoints()),
 	       backupMaxHitpoints_(type_->hitpoints()), experience_(0),
@@ -126,7 +126,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 unit::unit(const unit_type* t, const unit& u) :
 	gender_(u.gender_), variation_(u.variation_),
 	type_(&t->get_gender_unit_type(u.gender_).get_variation(u.variation_)),
-	state_(STATE_NORMAL),
+	state_(STATE_STANDING),
 	hitpoints_(u.hitpoints()),
 	maxHitpoints_(type_->hitpoints()),
 	backupMaxHitpoints_(type_->hitpoints()),
@@ -1005,7 +1005,7 @@ int unit::damage_against(const attack_type& attack) const
 const std::string& unit::image() const
 {
 	switch(state_) {
-		case STATE_NORMAL:
+		case STATE_STANDING:
 			if(! user_image_.empty()) {
 				return user_image_;
 			}
@@ -1052,7 +1052,7 @@ const image::locator unit::image_loc() const
 
 void unit::set_standing()
 {
-	state_ = STATE_NORMAL;
+	state_ = STATE_STANDING;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
