@@ -366,6 +366,27 @@ static PyObject* unit_movement_left(wesnoth_unit* unit, void* /*closure*/)
 	return Py_BuildValue("i",unit->unit_->movement_left());
 }
 
+static PyObject* unit_hitpoints(wesnoth_unit* unit, void* /*closure*/)
+{
+	if (!running_instance->is_unit_valid(unit->unit_))
+		return NULL;
+	return Py_BuildValue("i",(int)unit->unit_->hitpoints());
+}
+
+static PyObject* unit_max_hitpoints(wesnoth_unit* unit, void* /*closure*/)
+{
+       if (!running_instance->is_unit_valid(unit->unit_))
+               return NULL;
+       return Py_BuildValue("i",(int)unit->unit_->max_hitpoints());
+}
+
+static PyObject* unit_poisoned(wesnoth_unit* unit, void* /*closure*/)
+{
+    if (!running_instance->is_unit_valid(unit->unit_))
+        return NULL;
+    return Py_BuildValue("i",unit->unit_->poisoned( ) == true ? 1 : 0);
+}
+
 static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 {
 	return Py_BuildValue("i",running_instance->is_unit_valid(unit->unit_) == true ? 1 : 0);
@@ -375,9 +396,12 @@ static PyGetSetDef unit_getseters[] = {
 	{ "name",			(getter)unit_get_name,		NULL,	NULL,	NULL },
 	{ "is_enemy",		(getter)unit_is_enemy,		NULL,	NULL,	NULL },
 	{ "can_recruit",	(getter)unit_can_recruit,	NULL,	NULL,	NULL },
+	{ "hitpoints",		(getter)unit_hitpoints,	NULL,	NULL,	NULL },
+	{ "max_hitpoints",	(getter)unit_max_hitpoints,	NULL,	NULL,	NULL },
 	{ "is_valid",		(getter)unit_query_valid,	NULL,	NULL,	NULL },
-	{ "side",		(getter)unit_side,	NULL,	NULL,	NULL },
+	{ "side",			(getter)unit_side,	NULL,	NULL,	NULL },
 	{ "movement_left",	(getter)unit_movement_left,	NULL,	NULL,	NULL },
+	{ "poisoned",		(getter)unit_poisoned,	NULL,	NULL,	NULL },
 	{ NULL,				NULL,						NULL,	NULL,	NULL }
 };
 
