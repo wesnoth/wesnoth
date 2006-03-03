@@ -420,7 +420,7 @@ private:
 
 /// Dispatch generators to their appropriate functions.
 std::vector<section> generate_sections(const std::string &generator);
-std::vector<topic> generate_topics(const std::string &generator);
+std::vector<topic> generate_topics(bool sort_topics,const std::string &generator);
 std::string generate_topic_text(const std::string &generator);
 std::string generate_about_text();
 std::string generate_traits_text();
@@ -815,10 +815,24 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		const std::vector<section> generated_sections =
 			generate_sections((*section_cfg)["generator"]);
 		std::transform(generated_sections.begin(), generated_sections.end(),
-					   std::back_inserter(sec.sections), create_section());
-		const std::vector<std::string> topics = utils::quoted_split((*section_cfg)["topics"]);
+			       std::back_inserter(sec.sections), create_section());
+		bool sort_topics = false;
+ 
+		if ((*section_cfg)["sort_topics"] == "yes") 
+		  sort_topics = true;
+		else if ((*section_cfg)["sort_topics"] == "no")
+		  sort_topics = false;
+		else if ((*section_cfg)["sort_topics"] != "") {
+		  std::stringstream ss;
+		  ss << "Invalid sort option: '" << (*section_cfg)["sort_topics"] << "'";
+		  throw parse_error(ss.str());
+		}
+		  
+		const std::vector<std::string> topics_id = utils::quoted_split((*section_cfg)["topics"]);
+		std::vector<topic> topics;
+ 		
 		// Find all topics in this section.
-		for (it = topics.begin(); it != topics.end(); it++) {
+		for (it = topics_id.begin(); it != topics_id.end(); it++) {
 			config const *topic_cfg = help_cfg->find_child("topic", "id", *it);
 			if (topic_cfg != NULL) {
 				std::string text = (*topic_cfg)["text"];
@@ -829,7 +843,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 					ss << "Invalid ID, used for internal purpose: '" << id << "'";
 					throw parse_error(ss.str());
 				}
-				sec.topics.push_back(child_topic);
+				topics.push_back(child_topic);
 			}
 			else {
 				std::stringstream ss;
@@ -838,10 +852,23 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 				throw parse_error(ss.str());
 			}
 		}
+		
 		const std::vector<topic> generated_topics =
-			generate_topics((*section_cfg)["generator"]);
-		std::copy(generated_topics.begin(), generated_topics.end(),
-				  std::back_inserter(sec.topics));
+		  generate_topics(sort_topics,(*section_cfg)["generator"]);
+		
+		if (sort_topics) {		  
+		  std::sort(topics.begin(),topics.end(), title_less());
+		  
+		  std::merge(generated_topics.begin(),generated_topics.end()
+			     ,topics.begin(),topics.end()
+			     ,std::back_inserter(sec.topics),title_less());
+		}
+		else {
+		  std::copy(generated_topics.begin(), generated_topics.end(),
+			  std::back_inserter(sec.topics));
+		  std::copy(topics.begin(), topics.end(),
+			  std::back_inserter(sec.topics));
+		}
 	}
 }
 
@@ -865,7 +892,7 @@ std::vector<section> generate_sections(const std::string &generator)
 	return empty_vec;
 }
 
-std::vector<topic> generate_topics(const std::string &generator)
+std::vector<topic> generate_topics(bool sort_topics,const std::string &generator)
 {
 	std::vector<topic> res;
 	if (generator == "units") {
@@ -881,7 +908,9 @@ std::vector<topic> generate_topics(const std::string &generator)
 //	else if (generator == "terrains") {
 //		res = generate_terrains_topics();
 //	}
-	std::sort(res.begin(), res.end(), title_less());
+	if (sort_topics)
+	  std::sort(res.begin(), res.end(), title_less());
+
 	return res;
 }
 
