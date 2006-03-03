@@ -562,8 +562,11 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 
 	const int xpos = get_location_x(loc);
 	const int ypos = get_location_y(loc);
-	if ((scroll_type == ONSCREEN) && !outside_area(map_area(),xpos,ypos))
+	if ((scroll_type == ONSCREEN) && !outside_area(map_area(),xpos,ypos)) {
+		invalidate_all();
+		draw();
 		return;
+	}
 
 	const int speed = preferences::scroll_speed()*2;
 

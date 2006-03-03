@@ -607,6 +607,7 @@ void unit_speak(const config& message_info, display& disp, const unit_map& units
 {
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 		if(i->second.matches_filter(message_info)) {
+
 			disp.scroll_to_tile(i->first.x,i->first.y);
 			const surface surface(image::get_image(i->second.type().image_profile(),image::UNSCALED));
 			gui::show_dialog(disp,surface,i->second.underlying_description(),message_info["message"],gui::MESSAGE);

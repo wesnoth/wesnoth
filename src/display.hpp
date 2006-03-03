@@ -107,7 +107,7 @@ public:
 	//it will also try to make it such that x2,y2 is on-screen but this
 	//is not guaranteed.
 	void scroll_to_tiles(int x1, int y1, int x2, int y2,
-	                     SCROLL_TYPE scroll_type=SCROLL, bool check_fogged=true);
+	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true);
 
 	//scrolls to the leader of a certain side. This will normally be the playing team.
 	void scroll_to_leader(unit_map& units, int side);
