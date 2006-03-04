@@ -42,7 +42,8 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& terrain_config,
 		config const* level, CVideo& video,
 		game_state& state_of_game,
 		const std::vector<config*>& story,
-		upload_log &log);
+		upload_log &log,
+		bool skip_replay);
 
 namespace play{
 	void place_sides_in_preferred_locations(gamemap& map, const config::child_list& sides);

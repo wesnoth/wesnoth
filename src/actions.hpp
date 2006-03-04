@@ -102,7 +102,8 @@ void attack(display& gui, const gamemap& map,
             int attack_with,
             std::map<gamemap::location,unit>& units,
             const gamestatus& state,
-            const game_data& info);
+            const game_data& info,
+			bool update_display = true);
 
 //given the location of a village, will return the 0-based index of the team
 //that currently owns it, and -1 if it is unowned.
@@ -123,7 +124,7 @@ unit_map::const_iterator find_leader(const unit_map& units, int side);
 //at the beginning of a side's turn.
 void calculate_healing(display& disp, const gamestatus& status, const gamemap& map,
                        std::map<gamemap::location,unit>& units, int side,
-					   const std::vector<team>& teams);
+					   const std::vector<team>& teams, bool update_display);
 
 //function which, given the location of a unit that is advancing, and the
 //name of the unit it is advancing to, will return the advanced version of

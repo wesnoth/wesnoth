@@ -259,7 +259,7 @@ void enter_wait_mode(display& disp, const config& game_config, game_data& data, 
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, data, disp.video(), nolog, IO_CLIENT);
+		play_game(disp, state, game_config, data, disp.video(), nolog, IO_CLIENT, mp::skip_mp_replay);
 		recorder.clear();
 
 		break;
@@ -395,6 +395,8 @@ void enter_lobby_mode(display& disp, const config& game_config, game_data& data,
 }
 
 namespace mp {
+
+bool skip_mp_replay = false;
 
 void start_server(display& disp, const config& game_config, game_data& data,
 		mp::controller default_controller, bool is_server)

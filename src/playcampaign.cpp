@@ -121,7 +121,7 @@ void play_replay(display& disp, game_state& state, const config& game_config,
 LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_config,
 		const game_data& units_data, CVideo& video,
 		upload_log &log,
-		io_type_t io_type)
+		io_type_t io_type, bool skip_replay)
 {
 	std::string type = state.campaign_type;
 	if(type.empty())
@@ -203,7 +203,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			if (state.label.empty())
 				state.label = (*scenario)["name"];
 
-			LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story,log);
+			LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story,log, skip_replay);
 			//LEVEL_RESULT res = play_scenario(units_data,game_config,scenario,video,state,story);
 
 			state.snapshot = config();

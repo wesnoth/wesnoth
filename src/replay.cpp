@@ -191,6 +191,14 @@ void replay::set_skip(bool skip)
 
 bool replay::is_skipping() const
 {
+	//YogiHH, 03.03.2006
+	//In multiplayer, skipping is implemented through the skip_ flag.
+	//Since at_end() is always true in mp replays (process_network_data
+	//creates a new replayer for every single command), we need a separate
+	//condition for it
+	//mp replay skipped or "skip_animation" in replay mode checked
+	if (skip_) { return true; }
+	//mp replay not skipped or "skip animation" in replay mode not checked
 	return at_end() == false && skip_;
 }
 
@@ -554,7 +562,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 {
 	log_scope("do replay");
 
-	const replay_source_manager replay_manager(obj);
+	const replay_source_manager replaymanager(obj);
 
 	replay& replayer = (obj != NULL) ? *obj : recorder;
 
@@ -898,7 +906,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
 
-			attack(disp, map, teams, src, dst, weapon_num, units, state, gameinfo);
+			attack(disp, map, teams, src, dst, weapon_num, units, state, gameinfo, !replayer.is_skipping());
 
 			u = units.find(src);
 			tgt = units.find(dst);

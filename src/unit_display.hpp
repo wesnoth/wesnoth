@@ -39,7 +39,7 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u, const 
 ///playing field.
 bool unit_attack(display& disp, unit_map& units, const gamemap& map,
                  const gamemap::location& a, const gamemap::location& b, int damage,
-                 const attack_type& attack);
+                 const attack_type& attack, bool update_display);
 
 }
 

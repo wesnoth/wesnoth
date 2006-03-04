@@ -46,5 +46,6 @@ void start_server(display& disp, const config& game_config, game_data& data,
 void start_client(display& disp, const config& game_config, game_data& data,
 		const std::string host);
 
+extern bool skip_mp_replay;
 }
 #endif

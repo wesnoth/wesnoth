@@ -70,7 +70,8 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
                std::vector<team>& teams, unsigned int team_num,
                std::map<gamemap::location,unit>& units,
                turn_info::floating_textbox& textbox,
-               replay_network_sender& network_sender)
+               replay_network_sender& network_sender,
+			   bool skip_replay)
 {
 	log_scope("player turn");
 
@@ -129,7 +130,7 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 			std::deque<config> backlog;
 
 			if(res != network::null_connection) {
-				turn_data.process_network_data(cfg,res,backlog);
+				turn_data.process_network_data(cfg,res,backlog,skip_replay);
 			}
 
 			turn_data.turn_slice();
@@ -2845,7 +2846,7 @@ void turn_info::continue_move()
 	move_unit_to_loc(i,i->second.get_interrupted_move(),true);
 }
 
-turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg, network::connection from, std::deque<config>& backlog)
+turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg, network::connection from, std::deque<config>& backlog, bool skip_replay)
 {
 	if(cfg.child("whisper") != NULL && is_observer()){
 		sound::play_sound(game_config::sounds::receive_message);
@@ -2883,6 +2884,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 		if(turn_end == false) {
 			replay replay_obj(**t);
+			replay_obj.set_skip(skip_replay);
 			replay_obj.start_replay();
 
 			try {

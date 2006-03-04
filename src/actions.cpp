@@ -691,7 +691,8 @@ void attack(display& gui, const gamemap& map,
             int attack_with,
             std::map<gamemap::location,unit>& units,
             const gamestatus& state,
-            const game_data& info)
+            const game_data& info,
+			bool update_display)
 {
 	//stop the user from issuing any commands while the units are fighting
 	const command_disabler disable_commands;
@@ -804,7 +805,8 @@ void attack(display& gui, const gamemap& map,
 			
 			bool dies = unit_display::unit_attack(gui,units,map,attacker,defender,
 				            damage_defender_takes,
-							a->second.attacks()[attack_with]);
+							a->second.attacks()[attack_with], 
+							update_display);
 			if(hits) {
 				const int defender_side = d->second.side();
 				const int attacker_side = a->second.side();
@@ -826,10 +828,12 @@ void attack(display& gui, const gamemap& map,
 				a = units.find(attacker);
 				d = units.find(defender);
 				if(a == units.end() || d == units.end() || (attack_with != -1 && size_t(attack_with) >= a->second.attacks().size()) || (stats.defend_with != -1 && size_t(stats.defend_with)) >= d->second.attacks().size()) {
-					recalculate_fog(map,state,info,units,teams,attacker_side-1);
-					recalculate_fog(map,state,info,units,teams,defender_side-1);
-					gui.recalculate_minimap();
-					gui.update_display();
+					if (update_display){
+						recalculate_fog(map,state,info,units,teams,attacker_side-1);
+						recalculate_fog(map,state,info,units,teams,defender_side-1);
+						gui.recalculate_minimap();
+						gui.update_display();
+					}
 					LOG_NG << "firing attack_end event\n";
 					game_events::fire("attack_end",attacker,defender,dat);
 					a = units.find(attacker);
@@ -857,10 +861,12 @@ void attack(display& gui, const gamemap& map,
 				a = units.find(attacker);
 				d = units.find(defender);
 				if(a == units.end() || d == units.end() || (attack_with != -1 && size_t(attack_with) >= a->second.attacks().size()) || (stats.defend_with != -1 && size_t(stats.defend_with) >= d->second.attacks().size())) {
-					recalculate_fog(map,state,info,units,teams,attacker_side-1);
-					recalculate_fog(map,state,info,units,teams,defender_side-1);
-					gui.recalculate_minimap();
-					gui.update_display();
+					if (update_display){
+						recalculate_fog(map,state,info,units,teams,attacker_side-1);
+						recalculate_fog(map,state,info,units,teams,defender_side-1);
+						gui.recalculate_minimap();
+						gui.update_display();
+					}
 					LOG_NG << "firing attack_end event\n";
 					game_events::fire("attack_end",attacker,defender,dat);
 					a = units.find(attacker);
@@ -904,7 +910,9 @@ void attack(display& gui, const gamemap& map,
 					amount_drained = stats.amount_attacker_drains;
 					char buf[50];
 					snprintf(buf,sizeof(buf),"%d",amount_drained);
-					gui.float_label(a->first,buf,0,255,0);
+					if (update_display){
+						gui.float_label(a->first,buf,0,255,0);
+					}
 					a->second.heal(amount_drained);
 				}
 			}
@@ -958,25 +966,33 @@ void attack(display& gui, const gamemap& map,
 					       }
 
 					       units.insert(std::pair<gamemap::location,unit>(loc,newunit));
-					       gui.draw_tile(loc.x,loc.y);
+						   if (update_display){
+						       gui.draw_tile(loc.x,loc.y);
+						   }
 					}else{
 					       LOG_NG<<"unit not reanimated"<<std::endl;
 					}
 				}
-				recalculate_fog(map,state,info,units,teams,defender_side-1);
-				gui.recalculate_minimap();
-				gui.update_display();
+				if (update_display){
+					recalculate_fog(map,state,info,units,teams,defender_side-1);
+					gui.recalculate_minimap();
+					gui.update_display();
+				}
 				break;
 			} else if(hits) {
 				if (stats.attacker_special == poison_string &&
 				   d->second.has_flag("poisoned") == false &&
 				   !d->second.type().not_living()) {
-					gui.float_label(d->first,_("poisoned"),255,0,0);
+					if (update_display){
+						gui.float_label(d->first,_("poisoned"),255,0,0);
+					}
 					d->second.set_flag("poisoned");
 				}
 
 				if(stats.attacker_slows && d->second.slowed() == false) {
-					gui.float_label(d->first,_("slowed"),255,0,0);
+					if (update_display){
+						gui.float_label(d->first,_("slowed"),255,0,0);
+					}
 					d->second.set_flag("slowed");
 					stats.damage_attacker_takes = round_damage(stats.damage_attacker_takes,1,2);
 				}
@@ -984,7 +1000,9 @@ void attack(display& gui, const gamemap& map,
 				//if the defender is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
 				if (stats.attacker_special == stone_string) {
-					gui.float_label(d->first,_("stone"),255,0,0);
+					if (update_display){
+						gui.float_label(d->first,_("stone"),255,0,0);
+					}
 					d->second.set_flag(stone_string);
 					stats.ndefends = 0;
 					stats.nattacks = 0;
@@ -1051,7 +1069,8 @@ void attack(display& gui, const gamemap& map,
 
 			bool dies = unit_display::unit_attack(gui,units,map,defender,attacker,
 			               damage_attacker_takes,
-						   d->second.attacks()[stats.defend_with]);
+						   d->second.attacks()[stats.defend_with], 
+						   update_display);
 			if(hits) {
 				const int defender_side = d->second.side();
 				const int attacker_side = a->second.side();
@@ -1073,10 +1092,12 @@ void attack(display& gui, const gamemap& map,
 				a = units.find(attacker);
 				d = units.find(defender);
 				if(a == units.end() || d == units.end() || (attack_with != -1 && size_t(attack_with) >= a->second.attacks().size()) || (stats.defend_with != -1 && size_t(stats.defend_with) >= d->second.attacks().size())) {
-					recalculate_fog(map,state,info,units,teams,attacker_side-1);
-					recalculate_fog(map,state,info,units,teams,defender_side-1);
-					gui.recalculate_minimap();
-					gui.update_display();
+					if (update_display){
+						recalculate_fog(map,state,info,units,teams,attacker_side-1);
+						recalculate_fog(map,state,info,units,teams,defender_side-1);
+						gui.recalculate_minimap();
+						gui.update_display();
+					}
 					LOG_NG << "firing attack_end event\n";
 					game_events::fire("attack_end",attacker,defender,dat);
 					break;
@@ -1102,10 +1123,12 @@ void attack(display& gui, const gamemap& map,
 				a = units.find(attacker);
 				d = units.find(defender);
 				if(a == units.end() || d == units.end() || (attack_with != -1 && size_t(attack_with) >= a->second.attacks().size()) || (stats.defend_with != -1 && size_t(stats.defend_with) >= d->second.attacks().size())) {
-					recalculate_fog(map,state,info,units,teams,attacker_side-1);
-					recalculate_fog(map,state,info,units,teams,defender_side-1);
-					gui.recalculate_minimap();
-					gui.update_display();
+					if (update_display){
+						recalculate_fog(map,state,info,units,teams,attacker_side-1);
+						recalculate_fog(map,state,info,units,teams,defender_side-1);
+						gui.recalculate_minimap();
+						gui.update_display();
+					}
 					LOG_NG << "firing attack_end event\n";
 					game_events::fire("attack_end",attacker,defender,dat);
 					break;
@@ -1143,7 +1166,9 @@ void attack(display& gui, const gamemap& map,
 					amount_drained = stats.amount_defender_drains;
 					char buf[50];
 					snprintf(buf,sizeof(buf),"%d",amount_drained);
-					gui.float_label(d->first,buf,0,255,0);
+					if (update_display){
+						gui.float_label(d->first,buf,0,255,0);
+					}
 					d->second.heal(amount_drained);
 				}
 			}
@@ -1194,25 +1219,33 @@ void attack(display& gui, const gamemap& map,
 					       }
 
 					       units.insert(std::pair<gamemap::location,unit>(loc,newunit));
-					       gui.draw_tile(loc.x,loc.y);
+						   if (update_display){
+						       gui.draw_tile(loc.x,loc.y);
+						   }
 					}else{
 					       LOG_NG<<"unit not reanimated"<<std::endl;
 					}
 				}
-				gui.recalculate_minimap();
-				gui.update_display();
-				recalculate_fog(map,state,info,units,teams,attacker_side-1);
+				if (update_display){
+					gui.recalculate_minimap();
+					gui.update_display();
+					recalculate_fog(map,state,info,units,teams,attacker_side-1);
+				}
 				break;
 			} else if(hits) {
 				if (stats.defender_special == poison_string &&
 				   a->second.has_flag("poisoned") == false &&
 				   !a->second.type().not_living()) {
-					gui.float_label(a->first,_("poisoned"),255,0,0);
+					if (update_display){
+						gui.float_label(a->first,_("poisoned"),255,0,0);
+					}
 					a->second.set_flag("poisoned");
 				}
 
 				if(stats.defender_slows && a->second.slowed() == false) {
-					gui.float_label(a->first,_("slowed"),255,0,0);
+					if (update_display){
+						gui.float_label(a->first,_("slowed"),255,0,0);
+					}
 					a->second.set_flag("slowed");
 					stats.damage_defender_takes = round_damage(stats.damage_defender_takes,1,2);
 				}
@@ -1221,7 +1254,9 @@ void attack(display& gui, const gamemap& map,
 				//if the attacker is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
 				if (stats.defender_special == stone_string) {
-					gui.float_label(a->first,_("stone"),255,0,0);
+					if (update_display){
+						gui.float_label(a->first,_("stone"),255,0,0);
+					}
 					a->second.set_flag(stone_string);
 					stats.ndefends = 0;
 					stats.nattacks = 0;
@@ -1255,7 +1290,7 @@ void attack(display& gui, const gamemap& map,
 		d->second.get_experience(defenderxp);
 	}
 
-	if (!recorder.is_skipping()){
+	if (update_display){
 		gui.invalidate_unit();
 		gui.invalidate(attacker);
 		gui.invalidate(defender);
@@ -1394,7 +1429,7 @@ bool will_heal(const gamemap::location& loc, int side, const std::vector<team>& 
 
 void calculate_healing(display& disp, const gamestatus& status, const gamemap& map,
                        std::map<gamemap::location,unit>& units, int side,
-					   const std::vector<team>& teams)
+					   const std::vector<team>& teams, bool update_display)
 {
 	std::map<gamemap::location,int> healed_units, max_healing;
 
@@ -1532,7 +1567,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		unit& u = units.find(loc)->second;
 
 		const bool show_healing = !disp.turbo() && !recorder.is_skipping() &&
-		                          !disp.fogged(loc.x,loc.y) &&
+		                          !disp.fogged(loc.x,loc.y) && update_display &&
 								  (!u.invisible(map.underlying_union_terrain(map[h->first.x][h->first.y]),
 								                status.get_time_of_day().lawful_bonus,h->first,units,teams) ||
 								                teams[disp.viewing_team()].is_enemy(side) == false);
@@ -1587,8 +1622,8 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			   max_healing[h->first] >= game_config::cure_amount) {
 				u.remove_flag("poisoned");
 
+				events::pump();
 				if(show_healing) {
-					events::pump();
 
 					sound::play_sound("heal.wav");
 					SDL_Delay(DelayAmount);

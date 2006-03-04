@@ -251,8 +251,8 @@ void wait::join_game(bool observe)
 		network::send_data(response);
 	}
 	else{
-		//const int res = gui::show_dialog(disp(),NULL,_("Skip replay"),_("Do you want to skip the replay?"),gui::YES_NO);
-		//recorder.set_skip(res == 0);
+		const int res = gui::show_dialog(disp(),NULL,_("Skip replay"),_("Do you want to skip the replay?"),gui::YES_NO);
+		skip_mp_replay = (res == 0);
 	}
 
 	generate_menu();

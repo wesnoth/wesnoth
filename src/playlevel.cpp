@@ -110,7 +110,8 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		config const* level, CVideo& video,
 		game_state& state_of_game,
 		const std::vector<config*>& story,
-		upload_log &log)
+		upload_log &log,
+		bool skip_replay)
 {
 	//if the recorder has no event, adds an "game start" event to the
 	//recorder, whose only goal is to initialize the RNG
@@ -429,7 +430,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 						team_it->spend_gold(expense);
 					}
 
-					calculate_healing(gui,status,map,units,player_number,teams);
+					calculate_healing(gui,status,map,units,player_number,teams, !skip_replay);
 				}
 
 				team_it->set_time_of_day(int(status.turn()),status.get_time_of_day());
@@ -438,7 +439,9 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 
 				clear_shroud(gui,status,map,gameinfo,units,teams,player_number-1);
 
-				gui.scroll_to_leader(units, player_number);
+				if (!skip_replay){
+					gui.scroll_to_leader(units, player_number);
+				}
 
 				if(replaying) {
 					const hotkey::basic_handler key_events_handler(&gui);
@@ -473,7 +476,7 @@ redo_turn:
 					try {
 						play_turn(gameinfo,state_of_game,status,game_config,
 						          *level, key, gui, map, teams, player_number,
-						          units, textbox_info, replay_sender);
+						          units, textbox_info, replay_sender, skip_replay);
 					} catch(end_turn_exception& end_turn) {
 						if (end_turn.redo == player_number)
 							goto redo_turn;
@@ -517,7 +520,6 @@ redo_turn:
 							    map,teams,player_number,units,
 							    turn_info::BROWSE_NETWORKED,
 							    textbox_info,replay_sender);
-
 					for(;;) {
 
 						bool have_data = false;
@@ -535,12 +537,15 @@ redo_turn:
 						}
 
 						if(have_data) {
-							const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg,from,data_backlog);
+							const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg,from,data_backlog, skip_replay);
 							if(result == turn_info::PROCESS_RESTART_TURN) {
 								goto redo_turn;
 							} else if(result == turn_info::PROCESS_END_TURN) {
 								break;
 							}
+						}
+						else{
+							skip_replay = false;
 						}
 
 						turn_data.turn_slice();

@@ -366,7 +366,7 @@ void ai_interface::sync_network()
 		config cfg;
 		while(network::connection res = network::receive_data(cfg)) {
 			std::deque<config> backlog;
-			info_.turn_data_.process_network_data(cfg,res,backlog);
+			info_.turn_data_.process_network_data(cfg,res,backlog,false);
 			cfg.clear();
 		}
 

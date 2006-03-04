@@ -315,10 +315,10 @@ namespace {
 
 bool unit_attack_ranged(display& disp, unit_map& units,
                         const gamemap::location& a, const gamemap::location& b,
-                        int damage, const attack_type& attack)
+                        int damage, const attack_type& attack, bool update_display)
 {
 	const bool hide = disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)
-	                  || preferences::show_combat() == false;
+	                  || preferences::show_combat() == false || (!update_display);
 
 	const unit_map::iterator att = units.find(a);
 	const unit_map::iterator def = units.find(b);
@@ -575,7 +575,9 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 	if(damage > 0 && shown_label == false) {
 		shown_label = true;
-		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
+		if (update_display){
+			disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
+		}
 	}
 
 	if(damage > 0 && def->second.gets_hit(damage)) {
@@ -592,7 +594,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 	def->second.set_standing();
 
-	if(leader_loc.valid()){
+	if(leader_loc.valid() && update_display){
 		disp.draw_tile(leader_loc.x,leader_loc.y);
 	}
 
@@ -607,10 +609,10 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 bool unit_attack(display& disp, unit_map& units, const gamemap& map,
                  const gamemap::location& a, const gamemap::location& b, int damage,
-                 const attack_type& attack)
+                 const attack_type& attack, bool update_display)
 {
 	const bool hide = disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)
-	                  || preferences::show_combat() == false;
+	                  || preferences::show_combat() == false || (!update_display);
 
 	if(!hide) {
 		//we try to scroll the map if the unit is at the edge.
@@ -638,7 +640,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	}
 
 	if(attack.range_type() == attack_type::LONG_RANGE) {
-		return unit_attack_ranged(disp, units, a, b, damage, attack);
+		return unit_attack_ranged(disp, units, a, b, damage, attack, update_display);
 	}
 
 	const bool hits = damage > 0;
@@ -680,7 +682,9 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 	int ticks = SDL_GetTicks();
 
-	disp.hide_unit(a);
+	if (update_display){
+		disp.hide_unit(a);
+	}
 
 	const gamemap::TERRAIN src_terrain = map.get_terrain(a);
 	const gamemap::TERRAIN dst_terrain = map.get_terrain(b);
@@ -828,10 +832,14 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 	if(damage > 0 && shown_label == false) {
 		shown_label = true;
-		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
+		if (update_display){
+			disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
+		}
 	}
 
-	disp.hide_unit(gamemap::location());
+	if (update_display){
+		disp.hide_unit(gamemap::location());
+	}
 
 	if(damage > 0 && def->second.gets_hit(damage)) {
 		dead = true;
@@ -844,8 +852,11 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 	disp.invalidate(a);
 	disp.invalidate(b);
-	if(leader_loc.valid()) {
-		disp.draw_tile(leader_loc.x,leader_loc.y);
+
+	if (update_display){
+		if(leader_loc.valid()) {
+			disp.draw_tile(leader_loc.x,leader_loc.y);
+		}
 	}
 
 	def->second.set_standing();

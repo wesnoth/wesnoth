@@ -433,7 +433,7 @@ void replay_controller::play_side(const int team_index){
 				current_team.spend_gold(expense);
 			}
 
-			calculate_healing((*gui_),status_,map_,units_,player_number_,teams_);
+			calculate_healing((*gui_),status_,map_,units_,player_number_,teams_, !recorder.is_skipping());
 		}
 
 		current_team.set_time_of_day(int(status_.turn()),status_.get_time_of_day());
