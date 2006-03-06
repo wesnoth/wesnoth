@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-04 17:47+0100\n"
+"POT-Creation-Date: 2006-03-06 16:32+0100\n"
 "PO-Revision-Date: 2005-09-15 19:05+0200\n"
 "Last-Translator: Iván Herrero Bartolomé <navitux@gmail.com>\n"
 "Language-Team:  <es@li.org>\n"
@@ -678,7 +678,7 @@ msgstr "fuego"
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:59
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:29
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:60
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:61
 #: data/tutorial/units/Commander.cfg:191 data/tutorial/units/Elder_Mage.cfg:48
 #: data/tutorial/units/Fighter.cfg:94 data/tutorial/units/Lord.cfg:161
 #: data/units/Dwarvish_Runemaster.cfg:80 data/units/Elvish_Druid.cfg:92
@@ -765,7 +765,7 @@ msgstr "mordisco"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:47
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:33
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:48
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:48
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:49
 #: data/units/Undead_Bat_Blood.cfg:52 data/units/Undead_Bat_Vampire.cfg:39
 #: data/units/Undead_Necro_Ancient_Lich.cfg:58
 #: data/units/Undead_Necro_Lich.cfg:39 data/units/Undead_Spirit_Ghost.cfg:34
@@ -890,8 +890,8 @@ msgstr "mirada"
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:44
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:58
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:44
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:59
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:45
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:60
 #: data/units/Elvish_Enchantress.cfg:168 data/units/Elvish_Sorceress.cfg:168
 #: data/units/Elvish_Sylph.cfg:90 data/units/Saurian_Augur.cfg:53
 #: data/units/Saurian_Oracle.cfg:53 data/units/Saurian_Soothsayer.cfg:54
@@ -908,7 +908,7 @@ msgid "cold"
 msgstr "frío"
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:43
-#: src/actions.cpp:987 src/actions.cpp:1224
+#: src/actions.cpp:1004 src/actions.cpp:1258
 msgid "stone"
 msgstr "piedra"
 
@@ -1343,7 +1343,7 @@ msgstr ""
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:46
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:57
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:58
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:59
 #: data/units/Undead_Necro_Ancient_Lich.cfg:69
 #: data/units/Undead_Necro_Lich.cfg:50
 msgid "magic"
@@ -1372,7 +1372,7 @@ msgstr ""
 #: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:42
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:42
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:43
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:44
 #: data/units/Undead_Necro_Ancient_Lich.cfg:53
 #: data/units/Undead_Necro_Lich.cfg:34 data/units/Undead_Spirit_Ghost.cfg:29
 msgid "touch"
@@ -2134,11 +2134,11 @@ msgstr "Introducción"
 msgid "Gameplay"
 msgstr "Juego"
 
-#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2366
+#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2367
 msgid "Traits"
 msgstr "Rasgos"
 
-#: data/help.cfg:30 src/menu_events.cpp:218 src/playturn.cpp:1828
+#: data/help.cfg:30 src/menu_events.cpp:218 src/playturn.cpp:1829
 msgid "Units"
 msgstr "Unidades"
 
@@ -4688,13 +4688,13 @@ msgstr "Acciones"
 msgid "End Turn"
 msgstr "Fin de turno"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2364
+#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2365
 #: src/unit.cpp:1328
 msgid "HP"
 msgstr "pv"
 
-#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2099
-#: src/playturn.cpp:2365
+#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2100
+#: src/playturn.cpp:2366
 msgid "XP"
 msgstr "PX"
 
@@ -9694,8 +9694,8 @@ msgstr "Doblado"
 msgid "Halved"
 msgstr "Guardado"
 
-#: src/actions.cpp:465 src/actions.cpp:618 src/actions.cpp:979
-#: src/actions.cpp:1215
+#: src/actions.cpp:465 src/actions.cpp:618 src/actions.cpp:994
+#: src/actions.cpp:1247
 msgid "slowed"
 msgstr "ralentizado"
 
@@ -9731,35 +9731,35 @@ msgstr "(ambos deberían sobrevivir)"
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% Prob[matar/morir/ambos sobreviven]"
 
-#: src/actions.cpp:974 src/actions.cpp:1210
+#: src/actions.cpp:987 src/actions.cpp:1240
 msgid "poisoned"
 msgstr "envenenado"
 
-#: src/actions.cpp:2132
+#: src/actions.cpp:2167
 msgid "Ambushed!"
 msgstr "¡Emboscada!"
 
-#: src/actions.cpp:2167
+#: src/actions.cpp:2202
 msgid "Friendly unit sighted"
 msgstr "¡Aliado avistado!"
 
-#: src/actions.cpp:2169
+#: src/actions.cpp:2204
 msgid "Enemy unit sighted!"
 msgstr "¡Enemigo avistado!"
 
-#: src/actions.cpp:2174
+#: src/actions.cpp:2209
 msgid "$friends Friendly units sighted"
 msgstr "$friends unidades aliadas avistadas"
 
-#: src/actions.cpp:2176
+#: src/actions.cpp:2211
 msgid "$enemies Enemy units sighted!"
 msgstr "¡$enemies unidades enemigas avistadas!"
 
-#: src/actions.cpp:2180
+#: src/actions.cpp:2215
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Unidades avistadas ($friends aliadas, $enemies enemigas)"
 
-#: src/actions.cpp:2195
+#: src/actions.cpp:2230
 msgid "(press $hotkey to continue)"
 msgstr "(pulse $hotkey para continuar)"
 
@@ -9820,7 +9820,7 @@ msgid "replay"
 msgstr "repetición"
 
 #: src/dialogs.cpp:395 src/menu_events.cpp:295 src/multiplayer_lobby.cpp:331
-#: src/playturn.cpp:1674
+#: src/playturn.cpp:1675
 msgid "Turn"
 msgstr ", turno"
 
@@ -9897,8 +9897,8 @@ msgid "Date"
 msgstr "Fecha"
 
 #: src/dialogs.cpp:558 src/game.cpp:884 src/help.cpp:1148
-#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:32 src/playturn.cpp:2097
-#: src/playturn.cpp:2363
+#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:32 src/playturn.cpp:2098
+#: src/playturn.cpp:2364
 msgid "Name"
 msgstr "Nombre"
 
@@ -10240,8 +10240,8 @@ msgstr "PX requeridos: "
 msgid "attacks"
 msgstr "ataques"
 
-#: src/help.cpp:1149 src/menu_events.cpp:149 src/playturn.cpp:2096
-#: src/playturn.cpp:2362
+#: src/help.cpp:1149 src/menu_events.cpp:149 src/playturn.cpp:2097
+#: src/playturn.cpp:2363
 msgid "Type"
 msgstr "Tipo"
 
@@ -10367,95 +10367,95 @@ msgstr "Idioma predeterminado del sistema"
 msgid "?"
 msgstr "?"
 
-#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2450
-#: src/playturn.cpp:2512
+#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2451
+#: src/playturn.cpp:2513
 msgid "Recruits"
 msgstr "Reclutas"
 
-#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2456
-#: src/playturn.cpp:2516
+#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2457
+#: src/playturn.cpp:2517
 msgid "Recalls"
 msgstr "Veteranos"
 
-#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2462
-#: src/playturn.cpp:2520
+#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2463
+#: src/playturn.cpp:2521
 msgid "Advancements"
 msgstr "Avances"
 
-#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2468
-#: src/playturn.cpp:2524
+#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2469
+#: src/playturn.cpp:2525
 msgid "Losses"
 msgstr "Pérdidas"
 
-#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2474
-#: src/playturn.cpp:2528
+#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2475
+#: src/playturn.cpp:2529
 msgid "Kills"
 msgstr "Muertos"
 
-#: src/menu_events.cpp:69 src/playturn.cpp:2480
+#: src/menu_events.cpp:69 src/playturn.cpp:2481
 msgid "Damage Inflicted"
 msgstr "Daño infligido"
 
-#: src/menu_events.cpp:75 src/playturn.cpp:2486
+#: src/menu_events.cpp:75 src/playturn.cpp:2487
 msgid "Damage Taken"
 msgstr "Daño recibido"
 
-#: src/menu_events.cpp:81 src/playturn.cpp:2492
+#: src/menu_events.cpp:81 src/playturn.cpp:2493
 msgid "Damage Inflicted (EV)"
 msgstr "Daño infligido (VE)"
 
-#: src/menu_events.cpp:88 src/playturn.cpp:2499
+#: src/menu_events.cpp:88 src/playturn.cpp:2500
 msgid "Damage Taken (EV)"
 msgstr "Daño recibido (VE)"
 
-#: src/menu_events.cpp:94 src/playturn.cpp:2505
+#: src/menu_events.cpp:94 src/playturn.cpp:2506
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#: src/menu_events.cpp:154 src/playturn.cpp:2367 src/unit.cpp:1360
+#: src/menu_events.cpp:154 src/playturn.cpp:2368 src/unit.cpp:1360
 msgid "Moves"
 msgstr "Movimientos"
 
-#: src/menu_events.cpp:155 src/playturn.cpp:2368
+#: src/menu_events.cpp:155 src/playturn.cpp:2369
 msgid "Location"
 msgstr "Lugar"
 
-#: src/menu_events.cpp:201 src/playturn.cpp:2414
+#: src/menu_events.cpp:201 src/playturn.cpp:2415
 msgid "Unit List"
 msgstr "Lista de unidades"
 
-#: src/menu_events.cpp:215 src/playturn.cpp:1825
+#: src/menu_events.cpp:215 src/playturn.cpp:1826
 msgid "Leader"
 msgstr "Líder"
 
 #: src/menu_events.cpp:216 src/menu_events.cpp:227
-#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1826 src/playturn.cpp:1837
+#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1827 src/playturn.cpp:1838
 msgid "Gold"
 msgstr "Oro"
 
-#: src/menu_events.cpp:217 src/playturn.cpp:1827
+#: src/menu_events.cpp:217 src/playturn.cpp:1828
 msgid "Villages"
 msgstr "Aldeas"
 
-#: src/menu_events.cpp:219 src/playturn.cpp:1829
+#: src/menu_events.cpp:219 src/playturn.cpp:1830
 msgid "Upkeep"
 msgstr "Mantenimiento"
 
-#: src/menu_events.cpp:220 src/playturn.cpp:1830
+#: src/menu_events.cpp:220 src/playturn.cpp:1831
 msgid "Income"
 msgstr "Ingresos"
 
 #: src/menu_events.cpp:304 src/playcampaign.cpp:241 src/playcampaign.cpp:362
-#: src/playturn.cpp:1683
+#: src/playturn.cpp:1684
 msgid "Name:"
 msgstr "Nombre:"
 
 #: src/menu_events.cpp:309 src/menu_events.cpp:322
-#: src/multiplayer_create.cpp:405 src/playturn.cpp:1688 src/playturn.cpp:1701
+#: src/multiplayer_create.cpp:405 src/playturn.cpp:1689 src/playturn.cpp:1702
 msgid "Error"
 msgstr "Error"
 
-#: src/menu_events.cpp:309 src/playturn.cpp:1688
+#: src/menu_events.cpp:309 src/playturn.cpp:1689
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -10463,20 +10463,20 @@ msgstr ""
 "El nombre de la partida guardada no puede contener dos puntos, o barras "
 "inclinadas. Por favor, escoja un nombre diferente."
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1698
+#: src/menu_events.cpp:319 src/playturn.cpp:1699
 msgid "Saved"
 msgstr "Guardado"
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1698
+#: src/menu_events.cpp:319 src/playturn.cpp:1699
 msgid "The game has been saved"
 msgstr "El juego ha sido guardado."
 
 #: src/menu_events.cpp:322 src/playcampaign.cpp:249 src/playcampaign.cpp:370
-#: src/playturn.cpp:1701
+#: src/playturn.cpp:1702
 msgid "The game could not be saved"
 msgstr "La partida no se ha podido guardar."
 
-#: src/menu_events.cpp:403 src/playturn.cpp:2563
+#: src/menu_events.cpp:403 src/playturn.cpp:2564
 msgid "Chat Log"
 msgstr "Registro de conversaciones"
 
@@ -10849,6 +10849,16 @@ msgstr "Obteniendo datos de la partida..."
 msgid "Choose your side:"
 msgstr "Escoja su bando:"
 
+#: src/multiplayer_wait.cpp:254
+#, fuzzy
+msgid "Do you want to skip the replay?"
+msgstr "¿Quiere guardar el juego?"
+
+#: src/multiplayer_wait.cpp:254
+#, fuzzy
+msgid "Skip replay"
+msgstr " repetición"
+
 #: src/multiplayer_wait.cpp:392 src/unit.cpp:1415
 msgid "("
 msgstr "("
@@ -10857,7 +10867,7 @@ msgstr "("
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:393 src/playturn.cpp:1929
+#: src/multiplayer_wait.cpp:393 src/playturn.cpp:1930
 msgid "unit^Gold"
 msgstr "Oro"
 
@@ -10905,64 +10915,64 @@ msgstr "¿Quiere guardar el juego?"
 msgid "Unknown scenario: '"
 msgstr "Escenario desconocido: '"
 
-#: src/playlevel.cpp:450 src/playlevel.cpp:739 src/replay_controller.cpp:454
+#: src/playlevel.cpp:453 src/playlevel.cpp:744 src/replay_controller.cpp:454
 msgid "The file you have tried to load is corrupt"
 msgstr "El fichero que ha intentado cargar está corrompido."
 
-#: src/playlevel.cpp:613
+#: src/playlevel.cpp:618
 msgid "Game Over"
 msgstr "Fin del juego"
 
-#: src/playlevel.cpp:614
+#: src/playlevel.cpp:619
 msgid "The game is over."
 msgstr "El juego se ha acabado."
 
-#: src/playlevel.cpp:705
+#: src/playlevel.cpp:710
 msgid "Remaining gold: "
 msgstr "Oro restante: "
 
-#: src/playlevel.cpp:708
+#: src/playlevel.cpp:713
 msgid "Early finish bonus: "
 msgstr "Bonificación por finalizar pronto: "
 
-#: src/playlevel.cpp:710
+#: src/playlevel.cpp:715
 msgid "per turn"
 msgstr "por turno"
 
-#: src/playlevel.cpp:711
+#: src/playlevel.cpp:716
 msgid "Turns finished early: "
 msgstr "Turnos finalizados pronto: "
 
-#: src/playlevel.cpp:713
+#: src/playlevel.cpp:718
 msgid "Bonus: "
 msgstr "Bonificación: "
 
-#: src/playlevel.cpp:715
+#: src/playlevel.cpp:720
 msgid "Gold: "
 msgstr "Oro: "
 
-#: src/playlevel.cpp:720
+#: src/playlevel.cpp:725
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "El 80% del oro se conserva para el siguiente escenario"
 
-#: src/playlevel.cpp:721
+#: src/playlevel.cpp:726
 msgid "Retained Gold: "
 msgstr "Oro conservado: "
 
-#: src/playlevel.cpp:727
+#: src/playlevel.cpp:732
 msgid "Victory"
 msgstr "Victoria"
 
-#: src/playlevel.cpp:728
+#: src/playlevel.cpp:733
 msgid "You have emerged victorious!"
 msgstr "¡Has vencido!"
 
-#: src/playlevel.cpp:733
+#: src/playlevel.cpp:738
 msgid "Scenario Report"
 msgstr "Informe del escenario"
 
-#: src/playlevel.cpp:754
+#: src/playlevel.cpp:759
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -10971,78 +10981,78 @@ msgstr ""
 "Se ha producido una desconexión en la red y el juego no puede continuar. "
 "¿Quiere guardar la partida?"
 
-#: src/playturn.cpp:88
+#: src/playturn.cpp:89
 msgid "It is now your turn"
 msgstr "Es su turno."
 
-#: src/playturn.cpp:633
+#: src/playturn.cpp:634
 msgid "Attacker"
 msgstr "Atacante"
 
-#: src/playturn.cpp:635
+#: src/playturn.cpp:636
 msgid "Defender"
 msgstr "Defensor"
 
-#: src/playturn.cpp:655 src/playturn.cpp:729
+#: src/playturn.cpp:656 src/playturn.cpp:730
 msgid "Damage Calculations"
 msgstr "Cálculo del daño"
 
-#: src/playturn.cpp:707 src/reports.cpp:263
+#: src/playturn.cpp:708 src/reports.cpp:263
 msgid "vs"
 msgstr "contra"
 
-#: src/playturn.cpp:741
+#: src/playturn.cpp:742
 msgid "Attack Enemy"
 msgstr "Atacar al enemigo"
 
-#: src/playturn.cpp:742
+#: src/playturn.cpp:743
 msgid "Choose weapon:"
 msgstr "Escoger arma:"
 
-#: src/playturn.cpp:1366
+#: src/playturn.cpp:1367
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Aún no ha hecho nada en este turno. ¿Está seguro de que quiere terminar el "
 "turno?"
 
-#: src/playturn.cpp:1374 src/playturn.cpp:1379
+#: src/playturn.cpp:1375 src/playturn.cpp:1380
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Algunas unidades todavía tienen puntos de movimiento. ¿Quiere finalizar su "
 "turno?"
 
-#: src/playturn.cpp:1394
+#: src/playturn.cpp:1395
 msgid "Auto-Save"
 msgstr "Autoguardado"
 
-#: src/playturn.cpp:1396
+#: src/playturn.cpp:1397
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "El juego no se ha podido guardar automáticamente. Por favor, guárdelo "
 "manualmente."
 
-#: src/playturn.cpp:1637
+#: src/playturn.cpp:1638
 msgid "Rename Unit"
 msgstr "Renombrar unidad"
 
-#: src/playturn.cpp:1935
+#: src/playturn.cpp:1936
 msgid "You have no units available to recruit."
 msgstr "No tiene unidades disponibles para reclutar."
 
-#: src/playturn.cpp:1947
+#: src/playturn.cpp:1948
 msgid "Recruit"
 msgstr "Reclutar"
 
-#: src/playturn.cpp:1948 src/playturn.cpp:2138
+#: src/playturn.cpp:1949 src/playturn.cpp:2139
 msgid "Select unit:"
 msgstr "Seleccionar unidad:"
 
-#: src/playturn.cpp:1982
+#: src/playturn.cpp:1983
 msgid "You don't have enough gold to recruit that unit"
 msgstr "No tiene suficiente oro para reclutar a esta unidad."
 
-#: src/playturn.cpp:2040
+#: src/playturn.cpp:2041
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -11050,7 +11060,7 @@ msgstr ""
 "¡Mi señor, esta unidad es veterana y tiene experiencia! ¿Realmente queréis "
 "licenciar a $noun?"
 
-#: src/playturn.cpp:2042
+#: src/playturn.cpp:2043
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -11058,19 +11068,19 @@ msgstr ""
 "¡Mi señor, está unidad está a punto de subir de nivel! ¿Realmente queréis "
 "licenciar a $noun?"
 
-#: src/playturn.cpp:2047
+#: src/playturn.cpp:2048
 msgid "her"
 msgstr "ella"
 
-#: src/playturn.cpp:2047
+#: src/playturn.cpp:2048
 msgid "him"
 msgstr "él"
 
-#: src/playturn.cpp:2088
+#: src/playturn.cpp:2089
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Está separado de sus soldados y no puede reincorporarlos."
 
-#: src/playturn.cpp:2090
+#: src/playturn.cpp:2091
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -11078,52 +11088,52 @@ msgstr ""
 "No hay tropas disponibles para reincorporar.\n"
 "(Debe tener veteranos supervivientes de escenarios previos)."
 
-#: src/playturn.cpp:2098
+#: src/playturn.cpp:2099
 msgid "Level"
 msgstr "Nivel"
 
-#: src/playturn.cpp:2125
+#: src/playturn.cpp:2126
 msgid "Dismiss Unit"
 msgstr "Licenciar unidad"
 
-#: src/playturn.cpp:2137
+#: src/playturn.cpp:2138
 msgid "Recall"
 msgstr "Reincorporar"
 
-#: src/playturn.cpp:2149
+#: src/playturn.cpp:2150
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr ""
 "Ha de tener por lo menos $cost piezas de oro para reincorporar a una unidad."
 
-#: src/playturn.cpp:2194
+#: src/playturn.cpp:2195
 msgid "Message:"
 msgstr "Mensaje:"
 
-#: src/playturn.cpp:2194
+#: src/playturn.cpp:2195
 msgid "Send to allies only"
 msgstr "Mandarlo sólo a aliados"
 
-#: src/playturn.cpp:2542
+#: src/playturn.cpp:2543
 msgid "Search"
 msgstr "Buscar"
 
-#: src/playturn.cpp:2552
+#: src/playturn.cpp:2553
 msgid "prompt^Command:"
 msgstr "Orden:"
 
-#: src/playturn.cpp:2628
+#: src/playturn.cpp:2629
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "No se encontró una etiquieta o unidad con la cadena «$search»."
 
-#: src/playturn.cpp:2756
+#: src/playturn.cpp:2757
 msgid "Place Label"
 msgstr "Poner etiqueta"
 
-#: src/playturn.cpp:2757
+#: src/playturn.cpp:2758
 msgid "Label:"
 msgstr "Etiqueta:"
 
-#: src/playturn.cpp:2899
+#: src/playturn.cpp:2901
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -11131,23 +11141,23 @@ msgstr ""
 "El juego no está sincronizado y tendrá que salir. ¿Quiere guardar un "
 "registro de error de su partida?"
 
-#: src/playturn.cpp:2952
+#: src/playturn.cpp:2954
 msgid "Replace with AI"
 msgstr "Reemplazar con IA"
 
-#: src/playturn.cpp:2953
+#: src/playturn.cpp:2955
 msgid "Replace with local player"
 msgstr "Reemplazar con jugador local"
 
-#: src/playturn.cpp:2954
+#: src/playturn.cpp:2956
 msgid "Abort game"
 msgstr "Terminar juego"
 
-#: src/playturn.cpp:2957
+#: src/playturn.cpp:2959
 msgid "Replace with "
 msgstr "Reemplazar con "
 
-#: src/playturn.cpp:2961
+#: src/playturn.cpp:2963
 msgid "has left the game. What do you want to do?"
 msgstr "ha dejado el juego. ¿Qué quiere hacer?"
 

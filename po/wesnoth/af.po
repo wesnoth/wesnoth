@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-04 17:47+0100\n"
+"POT-Creation-Date: 2006-03-06 16:32+0100\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -668,7 +668,7 @@ msgstr "vuur"
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:59
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:29
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:60
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:61
 #: data/tutorial/units/Commander.cfg:191 data/tutorial/units/Elder_Mage.cfg:48
 #: data/tutorial/units/Fighter.cfg:94 data/tutorial/units/Lord.cfg:161
 #: data/units/Dwarvish_Runemaster.cfg:80 data/units/Elvish_Druid.cfg:92
@@ -753,7 +753,7 @@ msgstr "kakebeen"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:47
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:33
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:48
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:48
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:49
 #: data/units/Undead_Bat_Blood.cfg:52 data/units/Undead_Bat_Vampire.cfg:39
 #: data/units/Undead_Necro_Ancient_Lich.cfg:58
 #: data/units/Undead_Necro_Lich.cfg:39 data/units/Undead_Spirit_Ghost.cfg:34
@@ -877,8 +877,8 @@ msgstr "staar"
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:44
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:58
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:44
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:59
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:45
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:60
 #: data/units/Elvish_Enchantress.cfg:168 data/units/Elvish_Sorceress.cfg:168
 #: data/units/Elvish_Sylph.cfg:90 data/units/Saurian_Augur.cfg:53
 #: data/units/Saurian_Oracle.cfg:53 data/units/Saurian_Soothsayer.cfg:54
@@ -895,7 +895,7 @@ msgid "cold"
 msgstr "koue"
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:43
-#: src/actions.cpp:987 src/actions.cpp:1224
+#: src/actions.cpp:1004 src/actions.cpp:1258
 msgid "stone"
 msgstr "versteen"
 
@@ -1323,7 +1323,7 @@ msgstr ""
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:46
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:57
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:58
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:59
 #: data/units/Undead_Necro_Ancient_Lich.cfg:69
 #: data/units/Undead_Necro_Lich.cfg:50
 msgid "magic"
@@ -1352,7 +1352,7 @@ msgstr ""
 #: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:42
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:42
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:43
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:44
 #: data/units/Undead_Necro_Ancient_Lich.cfg:53
 #: data/units/Undead_Necro_Lich.cfg:34 data/units/Undead_Spirit_Ghost.cfg:29
 msgid "touch"
@@ -2112,11 +2112,11 @@ msgstr "Inleiding"
 msgid "Gameplay"
 msgstr "Spel-omstandighede"
 
-#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2366
+#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2367
 msgid "Traits"
 msgstr "Karaktertrekke"
 
-#: data/help.cfg:30 src/menu_events.cpp:218 src/playturn.cpp:1828
+#: data/help.cfg:30 src/menu_events.cpp:218 src/playturn.cpp:1829
 msgid "Units"
 msgstr "Eenhede"
 
@@ -4632,13 +4632,13 @@ msgstr "Aksies"
 msgid "End Turn"
 msgstr "Eindig Beurt"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2364
+#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2365
 #: src/unit.cpp:1328
 msgid "HP"
 msgstr "LP"
 
-#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2099
-#: src/playturn.cpp:2365
+#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2100
+#: src/playturn.cpp:2366
 msgid "XP"
 msgstr "EP"
 
@@ -9512,8 +9512,8 @@ msgstr "Verdubbel"
 msgid "Halved"
 msgstr "Gestoor"
 
-#: src/actions.cpp:465 src/actions.cpp:618 src/actions.cpp:979
-#: src/actions.cpp:1215
+#: src/actions.cpp:465 src/actions.cpp:618 src/actions.cpp:994
+#: src/actions.cpp:1247
 msgid "slowed"
 msgstr "vertraag"
 
@@ -9549,35 +9549,35 @@ msgstr "(albei behoort te leef)"
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% Pr[doodgemaak/doodgemaak deur/beide oorlewe]"
 
-#: src/actions.cpp:974 src/actions.cpp:1210
+#: src/actions.cpp:987 src/actions.cpp:1240
 msgid "poisoned"
 msgstr "vergiftig"
 
-#: src/actions.cpp:2132
+#: src/actions.cpp:2167
 msgid "Ambushed!"
 msgstr "Lokval!"
 
-#: src/actions.cpp:2167
+#: src/actions.cpp:2202
 msgid "Friendly unit sighted"
 msgstr "Goedgesinde eenheid opgemerk"
 
-#: src/actions.cpp:2169
+#: src/actions.cpp:2204
 msgid "Enemy unit sighted!"
 msgstr "Vyandige eenheid opgemerk!"
 
-#: src/actions.cpp:2174
+#: src/actions.cpp:2209
 msgid "$friends Friendly units sighted"
 msgstr "$friends Goedgesinde eenhede opgemerk"
 
-#: src/actions.cpp:2176
+#: src/actions.cpp:2211
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies Vyandige eenhede opgemerk!"
 
-#: src/actions.cpp:2180
+#: src/actions.cpp:2215
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Eenhede opgemerk! ($friends vriende, $enemies vyande)"
 
-#: src/actions.cpp:2195
+#: src/actions.cpp:2230
 msgid "(press $hotkey to continue)"
 msgstr "(druk $hotkey om voort te gaan)"
 
@@ -9638,7 +9638,7 @@ msgid "replay"
 msgstr "wys weer"
 
 #: src/dialogs.cpp:395 src/menu_events.cpp:295 src/multiplayer_lobby.cpp:331
-#: src/playturn.cpp:1674
+#: src/playturn.cpp:1675
 msgid "Turn"
 msgstr "Beurt"
 
@@ -9714,8 +9714,8 @@ msgid "Date"
 msgstr "Datum"
 
 #: src/dialogs.cpp:558 src/game.cpp:884 src/help.cpp:1148
-#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:32 src/playturn.cpp:2097
-#: src/playturn.cpp:2363
+#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:32 src/playturn.cpp:2098
+#: src/playturn.cpp:2364
 msgid "Name"
 msgstr "Naam"
 
@@ -10057,8 +10057,8 @@ msgstr "Vereiste EP: "
 msgid "attacks"
 msgstr "aanvalle"
 
-#: src/help.cpp:1149 src/menu_events.cpp:149 src/playturn.cpp:2096
-#: src/playturn.cpp:2362
+#: src/help.cpp:1149 src/menu_events.cpp:149 src/playturn.cpp:2097
+#: src/playturn.cpp:2363
 msgid "Type"
 msgstr "Tipe"
 
@@ -10186,95 +10186,95 @@ msgstr "Standaard stelseltaal"
 msgid "?"
 msgstr "?"
 
-#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2450
-#: src/playturn.cpp:2512
+#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2451
+#: src/playturn.cpp:2513
 msgid "Recruits"
 msgstr "Rekrute"
 
-#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2456
-#: src/playturn.cpp:2516
+#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2457
+#: src/playturn.cpp:2517
 msgid "Recalls"
 msgstr "Terugroepings"
 
-#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2462
-#: src/playturn.cpp:2520
+#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2463
+#: src/playturn.cpp:2521
 msgid "Advancements"
 msgstr "Bevorderings"
 
-#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2468
-#: src/playturn.cpp:2524
+#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2469
+#: src/playturn.cpp:2525
 msgid "Losses"
 msgstr "Verliese"
 
-#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2474
-#: src/playturn.cpp:2528
+#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2475
+#: src/playturn.cpp:2529
 msgid "Kills"
 msgstr "Dooies"
 
-#: src/menu_events.cpp:69 src/playturn.cpp:2480
+#: src/menu_events.cpp:69 src/playturn.cpp:2481
 msgid "Damage Inflicted"
 msgstr "Skade berokken"
 
-#: src/menu_events.cpp:75 src/playturn.cpp:2486
+#: src/menu_events.cpp:75 src/playturn.cpp:2487
 msgid "Damage Taken"
 msgstr "Skade verduur"
 
-#: src/menu_events.cpp:81 src/playturn.cpp:2492
+#: src/menu_events.cpp:81 src/playturn.cpp:2493
 msgid "Damage Inflicted (EV)"
 msgstr "Skade berokken (VW)"
 
-#: src/menu_events.cpp:88 src/playturn.cpp:2499
+#: src/menu_events.cpp:88 src/playturn.cpp:2500
 msgid "Damage Taken (EV)"
 msgstr "Skade Ontvang (VW)"
 
-#: src/menu_events.cpp:94 src/playturn.cpp:2505
+#: src/menu_events.cpp:94 src/playturn.cpp:2506
 msgid "Statistics"
 msgstr "Statistieke"
 
-#: src/menu_events.cpp:154 src/playturn.cpp:2367 src/unit.cpp:1360
+#: src/menu_events.cpp:154 src/playturn.cpp:2368 src/unit.cpp:1360
 msgid "Moves"
 msgstr "Skuiwe"
 
-#: src/menu_events.cpp:155 src/playturn.cpp:2368
+#: src/menu_events.cpp:155 src/playturn.cpp:2369
 msgid "Location"
 msgstr "Ligging"
 
-#: src/menu_events.cpp:201 src/playturn.cpp:2414
+#: src/menu_events.cpp:201 src/playturn.cpp:2415
 msgid "Unit List"
 msgstr "Eenheidlys"
 
-#: src/menu_events.cpp:215 src/playturn.cpp:1825
+#: src/menu_events.cpp:215 src/playturn.cpp:1826
 msgid "Leader"
 msgstr "Leier"
 
 #: src/menu_events.cpp:216 src/menu_events.cpp:227
-#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1826 src/playturn.cpp:1837
+#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1827 src/playturn.cpp:1838
 msgid "Gold"
 msgstr "Goud"
 
-#: src/menu_events.cpp:217 src/playturn.cpp:1827
+#: src/menu_events.cpp:217 src/playturn.cpp:1828
 msgid "Villages"
 msgstr "Dorpies"
 
-#: src/menu_events.cpp:219 src/playturn.cpp:1829
+#: src/menu_events.cpp:219 src/playturn.cpp:1830
 msgid "Upkeep"
 msgstr "Onderhoud"
 
-#: src/menu_events.cpp:220 src/playturn.cpp:1830
+#: src/menu_events.cpp:220 src/playturn.cpp:1831
 msgid "Income"
 msgstr "Inkomste"
 
 #: src/menu_events.cpp:304 src/playcampaign.cpp:241 src/playcampaign.cpp:362
-#: src/playturn.cpp:1683
+#: src/playturn.cpp:1684
 msgid "Name:"
 msgstr "Naam:"
 
 #: src/menu_events.cpp:309 src/menu_events.cpp:322
-#: src/multiplayer_create.cpp:405 src/playturn.cpp:1688 src/playturn.cpp:1701
+#: src/multiplayer_create.cpp:405 src/playturn.cpp:1689 src/playturn.cpp:1702
 msgid "Error"
 msgstr "Fout"
 
-#: src/menu_events.cpp:309 src/playturn.cpp:1688
+#: src/menu_events.cpp:309 src/playturn.cpp:1689
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -10282,20 +10282,20 @@ msgstr ""
 "Gestoorde name mag nie deeltekens of skuinsstrepe bevat nie. Kies asseblief "
 "'n ander naam."
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1698
+#: src/menu_events.cpp:319 src/playturn.cpp:1699
 msgid "Saved"
 msgstr "Gestoor"
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1698
+#: src/menu_events.cpp:319 src/playturn.cpp:1699
 msgid "The game has been saved"
 msgstr "Die spel is gestoor"
 
 #: src/menu_events.cpp:322 src/playcampaign.cpp:249 src/playcampaign.cpp:370
-#: src/playturn.cpp:1701
+#: src/playturn.cpp:1702
 msgid "The game could not be saved"
 msgstr "Die spel kon nie gestoor word nie"
 
-#: src/menu_events.cpp:403 src/playturn.cpp:2563
+#: src/menu_events.cpp:403 src/playturn.cpp:2564
 msgid "Chat Log"
 msgstr "Gesels Lys"
 
@@ -10666,6 +10666,16 @@ msgstr "Besig om speldata te lees..."
 msgid "Choose your side:"
 msgstr "Kies aan watter kant jy wil wees:"
 
+#: src/multiplayer_wait.cpp:254
+#, fuzzy
+msgid "Do you want to skip the replay?"
+msgstr "Wil jy jou spel stoor?"
+
+#: src/multiplayer_wait.cpp:254
+#, fuzzy
+msgid "Skip replay"
+msgstr " wys weer"
+
 #: src/multiplayer_wait.cpp:392 src/unit.cpp:1415
 msgid "("
 msgstr "("
@@ -10674,7 +10684,7 @@ msgstr "("
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:393 src/playturn.cpp:1929
+#: src/multiplayer_wait.cpp:393 src/playturn.cpp:1930
 msgid "unit^Gold"
 msgstr "Goud"
 
@@ -10722,64 +10732,64 @@ msgstr "Wil jy jou spel stoor?"
 msgid "Unknown scenario: '"
 msgstr "Onbekende scenario: '"
 
-#: src/playlevel.cpp:450 src/playlevel.cpp:739 src/replay_controller.cpp:454
+#: src/playlevel.cpp:453 src/playlevel.cpp:744 src/replay_controller.cpp:454
 msgid "The file you have tried to load is corrupt"
 msgstr "Die lêer wat jy probeer laai het is beskadig"
 
-#: src/playlevel.cpp:613
+#: src/playlevel.cpp:618
 msgid "Game Over"
 msgstr "Spel is Oor"
 
-#: src/playlevel.cpp:614
+#: src/playlevel.cpp:619
 msgid "The game is over."
 msgstr "Die spel is klaar."
 
-#: src/playlevel.cpp:705
+#: src/playlevel.cpp:710
 msgid "Remaining gold: "
 msgstr "Oorblywende goud: "
 
-#: src/playlevel.cpp:708
+#: src/playlevel.cpp:713
 msgid "Early finish bonus: "
 msgstr "Bonus vir vroeg klaarspeel: "
 
-#: src/playlevel.cpp:710
+#: src/playlevel.cpp:715
 msgid "per turn"
 msgstr "per beurt"
 
-#: src/playlevel.cpp:711
+#: src/playlevel.cpp:716
 msgid "Turns finished early: "
 msgstr "Aantal beurte voor einde klaargemaak: "
 
-#: src/playlevel.cpp:713
+#: src/playlevel.cpp:718
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playlevel.cpp:715
+#: src/playlevel.cpp:720
 msgid "Gold: "
 msgstr "Goud: "
 
-#: src/playlevel.cpp:720
+#: src/playlevel.cpp:725
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% van die goud bly behoue in die volgende scenario"
 
-#: src/playlevel.cpp:721
+#: src/playlevel.cpp:726
 msgid "Retained Gold: "
 msgstr "Goud Behou: "
 
-#: src/playlevel.cpp:727
+#: src/playlevel.cpp:732
 msgid "Victory"
 msgstr "Oorwinning"
 
-#: src/playlevel.cpp:728
+#: src/playlevel.cpp:733
 msgid "You have emerged victorious!"
 msgstr "Jy het die oorwinning behaal!"
 
-#: src/playlevel.cpp:733
+#: src/playlevel.cpp:738
 msgid "Scenario Report"
 msgstr "Scenarioverslag"
 
-#: src/playlevel.cpp:754
+#: src/playlevel.cpp:759
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -10787,72 +10797,72 @@ msgstr ""
 "'n Netwerk-koppelprobleem het ontstaan en die spel kan nie voortgaan nie. "
 "Wil jy die spel stoor?"
 
-#: src/playturn.cpp:88
+#: src/playturn.cpp:89
 msgid "It is now your turn"
 msgstr "Dis nou jou beurt"
 
-#: src/playturn.cpp:633
+#: src/playturn.cpp:634
 msgid "Attacker"
 msgstr "Aanvaller"
 
-#: src/playturn.cpp:635
+#: src/playturn.cpp:636
 msgid "Defender"
 msgstr "Verdediger"
 
-#: src/playturn.cpp:655 src/playturn.cpp:729
+#: src/playturn.cpp:656 src/playturn.cpp:730
 msgid "Damage Calculations"
 msgstr "Skadeberekenings"
 
-#: src/playturn.cpp:707 src/reports.cpp:263
+#: src/playturn.cpp:708 src/reports.cpp:263
 msgid "vs"
 msgstr "teen"
 
-#: src/playturn.cpp:741
+#: src/playturn.cpp:742
 msgid "Attack Enemy"
 msgstr "Val vyand aan"
 
-#: src/playturn.cpp:742
+#: src/playturn.cpp:743
 msgid "Choose weapon:"
 msgstr "Kies wapen:"
 
-#: src/playturn.cpp:1366
+#: src/playturn.cpp:1367
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Jy het nog nie jou beurt begin nie. Wil jy rerig jou beurt stop?"
 
-#: src/playturn.cpp:1374 src/playturn.cpp:1379
+#: src/playturn.cpp:1375 src/playturn.cpp:1380
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Sommige eenhede het bewegings oor. Wil jy rerig jou beurt stop?"
 
-#: src/playturn.cpp:1394
+#: src/playturn.cpp:1395
 msgid "Auto-Save"
 msgstr "Outo-stoor"
 
-#: src/playturn.cpp:1396
+#: src/playturn.cpp:1397
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kon nie die spel outo-stoor nie. Stoor die spel self, asseblief."
 
-#: src/playturn.cpp:1637
+#: src/playturn.cpp:1638
 msgid "Rename Unit"
 msgstr "Herdoop Eenheid"
 
-#: src/playturn.cpp:1935
+#: src/playturn.cpp:1936
 msgid "You have no units available to recruit."
 msgstr "Jy het geen eenhede om te werf nie."
 
-#: src/playturn.cpp:1947
+#: src/playturn.cpp:1948
 msgid "Recruit"
 msgstr "Werf"
 
-#: src/playturn.cpp:1948 src/playturn.cpp:2138
+#: src/playturn.cpp:1949 src/playturn.cpp:2139
 msgid "Select unit:"
 msgstr "Kies eenheid:"
 
-#: src/playturn.cpp:1982
+#: src/playturn.cpp:1983
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Jy het nie genoeg goud om daai eenheid te werf nie"
 
-#: src/playturn.cpp:2040
+#: src/playturn.cpp:2041
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -10860,7 +10870,7 @@ msgstr ""
 "Mapstieks, hierdie eenheid is ervare met gevorderde vlakke! Wil jy rerig "
 "$noun ontslaan?"
 
-#: src/playturn.cpp:2042
+#: src/playturn.cpp:2043
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -10868,19 +10878,19 @@ msgstr ""
 "Mapstieks, hierdie eenheid is naby aan 'n volgende vlak! Wil jy rerig $noun "
 "ontslaan?"
 
-#: src/playturn.cpp:2047
+#: src/playturn.cpp:2048
 msgid "her"
 msgstr "haar"
 
-#: src/playturn.cpp:2047
+#: src/playturn.cpp:2048
 msgid "him"
 msgstr "hom"
 
-#: src/playturn.cpp:2088
+#: src/playturn.cpp:2089
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Jy het afgedwaal van jou soldate en kan hulle nie herroep nie"
 
-#: src/playturn.cpp:2090
+#: src/playturn.cpp:2091
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -10888,51 +10898,51 @@ msgstr ""
 "Daar is geen troepe beskikbaar om te herroep nie\n"
 "(Jy moet veterane oorhê vanuit 'n vorige scenario)"
 
-#: src/playturn.cpp:2098
+#: src/playturn.cpp:2099
 msgid "Level"
 msgstr "Vlak"
 
-#: src/playturn.cpp:2125
+#: src/playturn.cpp:2126
 msgid "Dismiss Unit"
 msgstr "Ontslaan Eenheid"
 
-#: src/playturn.cpp:2137
+#: src/playturn.cpp:2138
 msgid "Recall"
 msgstr "Terugroep"
 
-#: src/playturn.cpp:2149
+#: src/playturn.cpp:2150
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Jy moet ten minste $cost goudstukke hê om 'n eenheid te herroep"
 
-#: src/playturn.cpp:2194
+#: src/playturn.cpp:2195
 msgid "Message:"
 msgstr "Boodskap:"
 
-#: src/playturn.cpp:2194
+#: src/playturn.cpp:2195
 msgid "Send to allies only"
 msgstr "Stuur slegs aan bondgenote"
 
-#: src/playturn.cpp:2542
+#: src/playturn.cpp:2543
 msgid "Search"
 msgstr "Soek"
 
-#: src/playturn.cpp:2552
+#: src/playturn.cpp:2553
 msgid "prompt^Command:"
 msgstr "Bevel:"
 
-#: src/playturn.cpp:2628
+#: src/playturn.cpp:2629
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kon nie die plakker of eenheid met die string '$search' kry nie."
 
-#: src/playturn.cpp:2756
+#: src/playturn.cpp:2757
 msgid "Place Label"
 msgstr "Plaas Plakker"
 
-#: src/playturn.cpp:2757
+#: src/playturn.cpp:2758
 msgid "Label:"
 msgstr "Plakker:"
 
-#: src/playturn.cpp:2899
+#: src/playturn.cpp:2901
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -10940,23 +10950,23 @@ msgstr ""
 "Die spel is nie in pas nie en sal stop. Wil jy 'n foutregister van jou spel "
 "bêre?"
 
-#: src/playturn.cpp:2952
+#: src/playturn.cpp:2954
 msgid "Replace with AI"
 msgstr "Vervang met Rekenaarspeler"
 
-#: src/playturn.cpp:2953
+#: src/playturn.cpp:2955
 msgid "Replace with local player"
 msgstr "Vervang met plaaslike speler"
 
-#: src/playturn.cpp:2954
+#: src/playturn.cpp:2956
 msgid "Abort game"
 msgstr "Skop op"
 
-#: src/playturn.cpp:2957
+#: src/playturn.cpp:2959
 msgid "Replace with "
 msgstr "Vervang met"
 
-#: src/playturn.cpp:2961
+#: src/playturn.cpp:2963
 msgid "has left the game. What do you want to do?"
 msgstr "het die spel verlaat. Wat wil jy doen?"
 

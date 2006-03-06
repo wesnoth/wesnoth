@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-04 17:47+0100\n"
+"POT-Creation-Date: 2006-03-06 16:32+0100\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -666,7 +666,7 @@ msgstr "火"
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:59
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:29
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:60
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:61
 #: data/tutorial/units/Commander.cfg:191 data/tutorial/units/Elder_Mage.cfg:48
 #: data/tutorial/units/Fighter.cfg:94 data/tutorial/units/Lord.cfg:161
 #: data/units/Dwarvish_Runemaster.cfg:80 data/units/Elvish_Druid.cfg:92
@@ -747,7 +747,7 @@ msgstr "颚"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:47
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:33
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:48
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:48
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:49
 #: data/units/Undead_Bat_Blood.cfg:52 data/units/Undead_Bat_Vampire.cfg:39
 #: data/units/Undead_Necro_Ancient_Lich.cfg:58
 #: data/units/Undead_Necro_Lich.cfg:39 data/units/Undead_Spirit_Ghost.cfg:34
@@ -866,8 +866,8 @@ msgstr "凝视"
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:44
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:58
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:44
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:59
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:45
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:60
 #: data/units/Elvish_Enchantress.cfg:168 data/units/Elvish_Sorceress.cfg:168
 #: data/units/Elvish_Sylph.cfg:90 data/units/Saurian_Augur.cfg:53
 #: data/units/Saurian_Oracle.cfg:53 data/units/Saurian_Soothsayer.cfg:54
@@ -884,7 +884,7 @@ msgid "cold"
 msgstr "冰"
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:43
-#: src/actions.cpp:987 src/actions.cpp:1224
+#: src/actions.cpp:1004 src/actions.cpp:1258
 msgid "stone"
 msgstr "石化"
 
@@ -1274,7 +1274,7 @@ msgstr ""
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:46
 #: data/campaigns/The_Dark_Hordes/units/Initiate.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:57
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:58
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:59
 #: data/units/Undead_Necro_Ancient_Lich.cfg:69
 #: data/units/Undead_Necro_Lich.cfg:50
 msgid "magic"
@@ -1302,7 +1302,7 @@ msgstr ""
 #: data/campaigns/The_Dark_Hordes/units/Demilich.cfg:42
 #: data/campaigns/The_Dark_Hordes/units/Dread_Lich.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Demilich.cfg:42
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:43
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:44
 #: data/units/Undead_Necro_Ancient_Lich.cfg:53
 #: data/units/Undead_Necro_Lich.cfg:34 data/units/Undead_Spirit_Ghost.cfg:29
 msgid "touch"
@@ -2012,11 +2012,11 @@ msgstr "游戏介绍"
 msgid "Gameplay"
 msgstr "游戏玩法"
 
-#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2366
+#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2367
 msgid "Traits"
 msgstr "特质"
 
-#: data/help.cfg:30 src/menu_events.cpp:218 src/playturn.cpp:1828
+#: data/help.cfg:30 src/menu_events.cpp:218 src/playturn.cpp:1829
 msgid "Units"
 msgstr "单位"
 
@@ -4296,13 +4296,13 @@ msgstr "动作"
 msgid "End Turn"
 msgstr "结束回合"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2364
+#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2365
 #: src/unit.cpp:1328
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2099
-#: src/playturn.cpp:2365
+#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2100
+#: src/playturn.cpp:2366
 msgid "XP"
 msgstr "XP"
 
@@ -8586,8 +8586,8 @@ msgstr "双倍"
 msgid "Halved"
 msgstr "以存储"
 
-#: src/actions.cpp:465 src/actions.cpp:618 src/actions.cpp:979
-#: src/actions.cpp:1215
+#: src/actions.cpp:465 src/actions.cpp:618 src/actions.cpp:994
+#: src/actions.cpp:1247
 msgid "slowed"
 msgstr "减速"
 
@@ -8623,35 +8623,35 @@ msgstr "(两者都能存活)"
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% Pr[杀死/被杀 被/两者 生还]"
 
-#: src/actions.cpp:974 src/actions.cpp:1210
+#: src/actions.cpp:987 src/actions.cpp:1240
 msgid "poisoned"
 msgstr "中毒"
 
-#: src/actions.cpp:2132
+#: src/actions.cpp:2167
 msgid "Ambushed!"
 msgstr "伏击！"
 
-#: src/actions.cpp:2167
+#: src/actions.cpp:2202
 msgid "Friendly unit sighted"
 msgstr "友好单位可见"
 
-#: src/actions.cpp:2169
+#: src/actions.cpp:2204
 msgid "Enemy unit sighted!"
 msgstr "敌人单位可见！"
 
-#: src/actions.cpp:2174
+#: src/actions.cpp:2209
 msgid "$friends Friendly units sighted"
 msgstr "$friends 友好单位可见"
 
-#: src/actions.cpp:2176
+#: src/actions.cpp:2211
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies 敌人单位可见！"
 
-#: src/actions.cpp:2180
+#: src/actions.cpp:2215
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "单位可见！ ($friends 友好 $enemies 敌人)"
 
-#: src/actions.cpp:2195
+#: src/actions.cpp:2230
 msgid "(press $hotkey to continue)"
 msgstr "(按 $hotkey 继续)"
 
@@ -8712,7 +8712,7 @@ msgid "replay"
 msgstr "游戏录像"
 
 #: src/dialogs.cpp:395 src/menu_events.cpp:295 src/multiplayer_lobby.cpp:331
-#: src/playturn.cpp:1674
+#: src/playturn.cpp:1675
 msgid "Turn"
 msgstr "回合"
 
@@ -8786,8 +8786,8 @@ msgid "Date"
 msgstr "日期"
 
 #: src/dialogs.cpp:558 src/game.cpp:884 src/help.cpp:1148
-#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:32 src/playturn.cpp:2097
-#: src/playturn.cpp:2363
+#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:32 src/playturn.cpp:2098
+#: src/playturn.cpp:2364
 msgid "Name"
 msgstr "名字"
 
@@ -9119,8 +9119,8 @@ msgstr "需要 XP： "
 msgid "attacks"
 msgstr "攻击次数"
 
-#: src/help.cpp:1149 src/menu_events.cpp:149 src/playturn.cpp:2096
-#: src/playturn.cpp:2362
+#: src/help.cpp:1149 src/menu_events.cpp:149 src/playturn.cpp:2097
+#: src/playturn.cpp:2363
 msgid "Type"
 msgstr "类型"
 
@@ -9242,114 +9242,114 @@ msgstr "系统默认语言"
 msgid "?"
 msgstr "？"
 
-#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2450
-#: src/playturn.cpp:2512
+#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2451
+#: src/playturn.cpp:2513
 msgid "Recruits"
 msgstr "征兵"
 
-#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2456
-#: src/playturn.cpp:2516
+#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2457
+#: src/playturn.cpp:2517
 msgid "Recalls"
 msgstr "召回"
 
-#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2462
-#: src/playturn.cpp:2520
+#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2463
+#: src/playturn.cpp:2521
 msgid "Advancements"
 msgstr "升级"
 
-#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2468
-#: src/playturn.cpp:2524
+#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2469
+#: src/playturn.cpp:2525
 msgid "Losses"
 msgstr "损失"
 
-#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2474
-#: src/playturn.cpp:2528
+#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2475
+#: src/playturn.cpp:2529
 msgid "Kills"
 msgstr "杀死"
 
-#: src/menu_events.cpp:69 src/playturn.cpp:2480
+#: src/menu_events.cpp:69 src/playturn.cpp:2481
 msgid "Damage Inflicted"
 msgstr "施加伤害"
 
-#: src/menu_events.cpp:75 src/playturn.cpp:2486
+#: src/menu_events.cpp:75 src/playturn.cpp:2487
 msgid "Damage Taken"
 msgstr "受到伤害"
 
-#: src/menu_events.cpp:81 src/playturn.cpp:2492
+#: src/menu_events.cpp:81 src/playturn.cpp:2493
 msgid "Damage Inflicted (EV)"
 msgstr "施加伤害 (EV)"
 
-#: src/menu_events.cpp:88 src/playturn.cpp:2499
+#: src/menu_events.cpp:88 src/playturn.cpp:2500
 msgid "Damage Taken (EV)"
 msgstr "受到伤害 (EV)"
 
-#: src/menu_events.cpp:94 src/playturn.cpp:2505
+#: src/menu_events.cpp:94 src/playturn.cpp:2506
 msgid "Statistics"
 msgstr "统计"
 
-#: src/menu_events.cpp:154 src/playturn.cpp:2367 src/unit.cpp:1360
+#: src/menu_events.cpp:154 src/playturn.cpp:2368 src/unit.cpp:1360
 msgid "Moves"
 msgstr "移动"
 
-#: src/menu_events.cpp:155 src/playturn.cpp:2368
+#: src/menu_events.cpp:155 src/playturn.cpp:2369
 msgid "Location"
 msgstr "位置"
 
-#: src/menu_events.cpp:201 src/playturn.cpp:2414
+#: src/menu_events.cpp:201 src/playturn.cpp:2415
 msgid "Unit List"
 msgstr "单位列表"
 
-#: src/menu_events.cpp:215 src/playturn.cpp:1825
+#: src/menu_events.cpp:215 src/playturn.cpp:1826
 msgid "Leader"
 msgstr "领袖"
 
 #: src/menu_events.cpp:216 src/menu_events.cpp:227
-#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1826 src/playturn.cpp:1837
+#: src/multiplayer_connect.cpp:524 src/playturn.cpp:1827 src/playturn.cpp:1838
 msgid "Gold"
 msgstr "金币"
 
-#: src/menu_events.cpp:217 src/playturn.cpp:1827
+#: src/menu_events.cpp:217 src/playturn.cpp:1828
 msgid "Villages"
 msgstr "村庄"
 
-#: src/menu_events.cpp:219 src/playturn.cpp:1829
+#: src/menu_events.cpp:219 src/playturn.cpp:1830
 msgid "Upkeep"
 msgstr "维护费"
 
-#: src/menu_events.cpp:220 src/playturn.cpp:1830
+#: src/menu_events.cpp:220 src/playturn.cpp:1831
 msgid "Income"
 msgstr "收入"
 
 #: src/menu_events.cpp:304 src/playcampaign.cpp:241 src/playcampaign.cpp:362
-#: src/playturn.cpp:1683
+#: src/playturn.cpp:1684
 msgid "Name:"
 msgstr "名字："
 
 #: src/menu_events.cpp:309 src/menu_events.cpp:322
-#: src/multiplayer_create.cpp:405 src/playturn.cpp:1688 src/playturn.cpp:1701
+#: src/multiplayer_create.cpp:405 src/playturn.cpp:1689 src/playturn.cpp:1702
 msgid "Error"
 msgstr "错误"
 
-#: src/menu_events.cpp:309 src/playturn.cpp:1688
+#: src/menu_events.cpp:309 src/playturn.cpp:1689
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr "存档明不能包含冒号，斜线或反斜线。请选择不同的名字。"
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1698
+#: src/menu_events.cpp:319 src/playturn.cpp:1699
 msgid "Saved"
 msgstr "以存储"
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1698
+#: src/menu_events.cpp:319 src/playturn.cpp:1699
 msgid "The game has been saved"
 msgstr "游戏以存储"
 
 #: src/menu_events.cpp:322 src/playcampaign.cpp:249 src/playcampaign.cpp:370
-#: src/playturn.cpp:1701
+#: src/playturn.cpp:1702
 msgid "The game could not be saved"
 msgstr "游戏不能被保存"
 
-#: src/menu_events.cpp:403 src/playturn.cpp:2563
+#: src/menu_events.cpp:403 src/playturn.cpp:2564
 msgid "Chat Log"
 msgstr "聊天记录"
 
@@ -9716,6 +9716,16 @@ msgstr "读取游戏数据..."
 msgid "Choose your side:"
 msgstr "选择阵营："
 
+#: src/multiplayer_wait.cpp:254
+#, fuzzy
+msgid "Do you want to skip the replay?"
+msgstr "你想保存游戏吗？"
+
+#: src/multiplayer_wait.cpp:254
+#, fuzzy
+msgid "Skip replay"
+msgstr " 游戏录像"
+
 #: src/multiplayer_wait.cpp:392 src/unit.cpp:1415
 msgid "("
 msgstr "("
@@ -9724,7 +9734,7 @@ msgstr "("
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_wait.cpp:393 src/playturn.cpp:1929
+#: src/multiplayer_wait.cpp:393 src/playturn.cpp:1930
 msgid "unit^Gold"
 msgstr "单位金币"
 
@@ -9772,160 +9782,160 @@ msgstr "你想保存游戏吗？"
 msgid "Unknown scenario: '"
 msgstr "未知剧本： '"
 
-#: src/playlevel.cpp:450 src/playlevel.cpp:739 src/replay_controller.cpp:454
+#: src/playlevel.cpp:453 src/playlevel.cpp:744 src/replay_controller.cpp:454
 msgid "The file you have tried to load is corrupt"
 msgstr "你想载入的文件不正确"
 
-#: src/playlevel.cpp:613
+#: src/playlevel.cpp:618
 msgid "Game Over"
 msgstr "游戏结束"
 
-#: src/playlevel.cpp:614
+#: src/playlevel.cpp:619
 msgid "The game is over."
 msgstr "本游戏结束。"
 
-#: src/playlevel.cpp:705
+#: src/playlevel.cpp:710
 msgid "Remaining gold: "
 msgstr "所剩金币： "
 
-#: src/playlevel.cpp:708
+#: src/playlevel.cpp:713
 msgid "Early finish bonus: "
 msgstr "提早结束奖励： "
 
-#: src/playlevel.cpp:710
+#: src/playlevel.cpp:715
 msgid "per turn"
 msgstr "每回合"
 
-#: src/playlevel.cpp:711
+#: src/playlevel.cpp:716
 msgid "Turns finished early: "
 msgstr "回合数提早结束： "
 
-#: src/playlevel.cpp:713
+#: src/playlevel.cpp:718
 msgid "Bonus: "
 msgstr "奖励： "
 
-#: src/playlevel.cpp:715
+#: src/playlevel.cpp:720
 msgid "Gold: "
 msgstr "金币： "
 
-#: src/playlevel.cpp:720
+#: src/playlevel.cpp:725
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80%的金币会带入下个剧本"
 
-#: src/playlevel.cpp:721
+#: src/playlevel.cpp:726
 msgid "Retained Gold: "
 msgstr "所剩金币： "
 
-#: src/playlevel.cpp:727
+#: src/playlevel.cpp:732
 msgid "Victory"
 msgstr "胜利"
 
-#: src/playlevel.cpp:728
+#: src/playlevel.cpp:733
 msgid "You have emerged victorious!"
 msgstr "你已显现出胜利的姿态！"
 
-#: src/playlevel.cpp:733
+#: src/playlevel.cpp:738
 msgid "Scenario Report"
 msgstr "剧本报告"
 
-#: src/playlevel.cpp:754
+#: src/playlevel.cpp:759
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "网络断开连接，游戏将不能继续进行。你想保存游戏吗？"
 
-#: src/playturn.cpp:88
+#: src/playturn.cpp:89
 msgid "It is now your turn"
 msgstr "回合到你了"
 
-#: src/playturn.cpp:633
+#: src/playturn.cpp:634
 msgid "Attacker"
 msgstr "攻击者"
 
-#: src/playturn.cpp:635
+#: src/playturn.cpp:636
 msgid "Defender"
 msgstr "防御者"
 
-#: src/playturn.cpp:655 src/playturn.cpp:729
+#: src/playturn.cpp:656 src/playturn.cpp:730
 msgid "Damage Calculations"
 msgstr "攻击计算"
 
-#: src/playturn.cpp:707 src/reports.cpp:263
+#: src/playturn.cpp:708 src/reports.cpp:263
 msgid "vs"
 msgstr "vs"
 
-#: src/playturn.cpp:741
+#: src/playturn.cpp:742
 msgid "Attack Enemy"
 msgstr "攻击敌人"
 
-#: src/playturn.cpp:742
+#: src/playturn.cpp:743
 msgid "Choose weapon:"
 msgstr "选择武器："
 
-#: src/playturn.cpp:1366
+#: src/playturn.cpp:1367
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "你这回合还没使用，你真的想结束本回合吗？"
 
-#: src/playturn.cpp:1374 src/playturn.cpp:1379
+#: src/playturn.cpp:1375 src/playturn.cpp:1380
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "有些单位还有移动机会，你真的要结束本回合吗？"
 
-#: src/playturn.cpp:1394
+#: src/playturn.cpp:1395
 msgid "Auto-Save"
 msgstr "自动存档"
 
-#: src/playturn.cpp:1396
+#: src/playturn.cpp:1397
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "不能自动存储当前游戏，请手动存档。"
 
-#: src/playturn.cpp:1637
+#: src/playturn.cpp:1638
 msgid "Rename Unit"
 msgstr "重命名单位"
 
-#: src/playturn.cpp:1935
+#: src/playturn.cpp:1936
 msgid "You have no units available to recruit."
 msgstr "你没有足够的单位去征募。"
 
-#: src/playturn.cpp:1947
+#: src/playturn.cpp:1948
 msgid "Recruit"
 msgstr "征兵"
 
-#: src/playturn.cpp:1948 src/playturn.cpp:2138
+#: src/playturn.cpp:1949 src/playturn.cpp:2139
 msgid "Select unit:"
 msgstr "选择单位："
 
-#: src/playturn.cpp:1982
+#: src/playturn.cpp:1983
 msgid "You don't have enough gold to recruit that unit"
 msgstr "你没有足够的金币去征募单位"
 
-#: src/playturn.cpp:2040
+#: src/playturn.cpp:2041
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr "主人，这是个富有经验的单位，已升级！你真的想解雇 $noun 吗?"
 
-#: src/playturn.cpp:2042
+#: src/playturn.cpp:2043
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr "主人，这个单位就快升级了！你真的想解雇 $noun 吗？"
 
-#: src/playturn.cpp:2047
+#: src/playturn.cpp:2048
 msgid "her"
 msgstr "她"
 
-#: src/playturn.cpp:2047
+#: src/playturn.cpp:2048
 msgid "him"
 msgstr "他"
 
-#: src/playturn.cpp:2088
+#: src/playturn.cpp:2089
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "你与你的士兵分离，已不能再召回他们。"
 
-#: src/playturn.cpp:2090
+#: src/playturn.cpp:2091
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -9933,73 +9943,73 @@ msgstr ""
 "没有部队能召回\n"
 "(你必须有从上个剧本里存活下来的老兵)"
 
-#: src/playturn.cpp:2098
+#: src/playturn.cpp:2099
 msgid "Level"
 msgstr "等级"
 
-#: src/playturn.cpp:2125
+#: src/playturn.cpp:2126
 msgid "Dismiss Unit"
 msgstr "解散单位"
 
-#: src/playturn.cpp:2137
+#: src/playturn.cpp:2138
 msgid "Recall"
 msgstr "召回"
 
-#: src/playturn.cpp:2149
+#: src/playturn.cpp:2150
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "你至少需要 $cost 金币来召回单位"
 
-#: src/playturn.cpp:2194
+#: src/playturn.cpp:2195
 msgid "Message:"
 msgstr "信息："
 
-#: src/playturn.cpp:2194
+#: src/playturn.cpp:2195
 msgid "Send to allies only"
 msgstr "仅发送给同盟"
 
-#: src/playturn.cpp:2542
+#: src/playturn.cpp:2543
 msgid "Search"
 msgstr "搜索"
 
-#: src/playturn.cpp:2552
+#: src/playturn.cpp:2553
 msgid "prompt^Command:"
 msgstr "提示命令："
 
-#: src/playturn.cpp:2628
+#: src/playturn.cpp:2629
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "不能找到含有 '$search' 的标签和单位。"
 
-#: src/playturn.cpp:2756
+#: src/playturn.cpp:2757
 msgid "Place Label"
 msgstr "位置标签"
 
-#: src/playturn.cpp:2757
+#: src/playturn.cpp:2758
 msgid "Label:"
 msgstr "标签："
 
-#: src/playturn.cpp:2899
+#: src/playturn.cpp:2901
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr "游戏不再同步而即将退出。你想保存当前游戏的错误记录吗？"
 
-#: src/playturn.cpp:2952
+#: src/playturn.cpp:2954
 msgid "Replace with AI"
 msgstr "用AI替换"
 
-#: src/playturn.cpp:2953
+#: src/playturn.cpp:2955
 msgid "Replace with local player"
 msgstr "用本地玩家替换"
 
-#: src/playturn.cpp:2954
+#: src/playturn.cpp:2956
 msgid "Abort game"
 msgstr "终止游戏"
 
-#: src/playturn.cpp:2957
+#: src/playturn.cpp:2959
 msgid "Replace with "
 msgstr "替换为 "
 
-#: src/playturn.cpp:2961
+#: src/playturn.cpp:2963
 msgid "has left the game. What do you want to do?"
 msgstr "已经离开游戏，你想做些什么？"
 
