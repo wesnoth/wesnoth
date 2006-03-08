@@ -879,8 +879,8 @@ void unit::read(const game_data& data, const config& cfg)
 		hitpoints_ = maxHitpoints_;
 	}
 	
-	goto_.x = atoi(cfg["goto_x"].c_str()) - 1;
-	goto_.y = atoi(cfg["goto_y"].c_str()) - 1;
+	goto_.x = lexical_cast_default<int>(cfg["goto_x"]) - 1;
+	goto_.y = lexical_cast_default<int>(cfg["goto_y"]) - 1;
 
 	const std::string& moves = cfg["moves"];
 	if(moves.empty())
@@ -1339,8 +1339,7 @@ void unit::add_modification(const std::string& type,
 			}
 
 			if(increase_hp.empty() == false) {
-				const int increase = atoi(increase_hp.c_str());
-				hitpoints_ += increase;
+				hitpoints_ = utils::apply_modifier(hitpoints_, increase_hp);
 			}
 
 			LOG_UT << "modded to " << hitpoints_ << "/" << maxHitpoints_ << "\n";
