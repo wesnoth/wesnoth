@@ -1319,10 +1319,27 @@ void unit::add_modification(const std::string& type,
 			const std::string& increase_hp = (**i.first)["increase"];
 			const std::string& heal_full = (**i.first)["heal_full"];
 			const std::string& increase_total = (**i.first)["increase_total"];
+			const std::string& set_hp = (**i.first)["set"];
+			const std::string& set_total = (**i.first)["set_total"];
 
 			//if the hitpoints are allowed to end up greater than max hitpoints
 			const std::string& violate_max = (**i.first)["violate_maximum"];
-
+			
+			if(set_hp.empty() == false) {
+				if(set_hp[set_hp.size()-1] == '%') {
+					hitpoints_ = lexical_cast_default<int>(set_hp)*maxHitpoints_/100;
+				} else {
+					hitpoints_ = lexical_cast_default<int>(set_hp);
+				}
+			}
+			if(set_total.empty() == false) {
+				if(set_total[set_total.size()-1] == '%') {
+					maxHitpoints_ = lexical_cast_default<int>(set_total)*maxHitpoints_/100;
+				} else {
+					maxHitpoints_ = lexical_cast_default<int>(set_total);
+				}
+			}
+			
 			if(increase_total.empty() == false) {
 				description += (increase_total[0] != '-' ? "+" : "") + increase_total +
 					" " + t_string(N_("HP"), "wesnoth");
