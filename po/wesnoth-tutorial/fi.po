@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-03-04 17:51+0100\n"
-"PO-Revision-Date: 2006-02-22 09:38+0200\n"
+"PO-Revision-Date: 2006-03-08 13:29+0200\n"
 "Last-Translator: Mikko Kraft <mikkokraft@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -27,12 +27,11 @@ msgstr "Delfador"
 
 #: data/tutorial/scenarios/Basic_Training.cfg:74
 msgid "Good morning, master Delfador."
-msgstr ""
+msgstr "Huomenta, mestari Delfador."
 
 #: data/tutorial/scenarios/Basic_Training.cfg:79
-#, fuzzy
 msgid "Hello, Konrad."
-msgstr "Konradin kuolema"
+msgstr "Hei, Konrad."
 
 #: data/tutorial/scenarios/Basic_Training.cfg:84
 msgid ""
@@ -43,7 +42,6 @@ msgstr ""
 "opettaa minulle sotataitoa."
 
 #: data/tutorial/scenarios/Basic_Training.cfg:97
-#, fuzzy
 msgid ""
 "*Basic Training\n"
 "Skills covered:\n"
@@ -53,12 +51,13 @@ msgid ""
 "- Gaining experience\n"
 "- Winning scenarios"
 msgstr ""
+"*Perusharjoittelu\n"
 "Käsitellyt taidot:\n"
-"Yksiköiden värväys\n"
-"Yksiköiden liikuttaminen\n"
-"Hyökkääminen\n"
-"Kokemuksen kerääminen\n"
-"Skenaarioiden voittaminen"
+"-Yksiköiden värväys\n"
+"-Yksiköiden liikuttaminen\n"
+"-Hyökkääminen\n"
+"-Kokemuksen kerääminen\n"
+"-Skenaarioiden voittaminen"
 
 #: data/tutorial/scenarios/Basic_Training.cfg:102
 msgid ""
@@ -152,15 +151,19 @@ msgid ""
 "because I want to answer your questions first. Then, we will see how your "
 "Elvish Fighter fares against Merle."
 msgstr ""
+"Olet hyökännyt Merlen kimppuun onnistuneesti. Hyökkäys ei ole vielä "
+"tapahtunut, sillä haluan ensin vastata kysymykseesi. Sitten katsomme kuinka "
+"Haltiasoturisi pärjää Merlelle."
 
 #: data/tutorial/scenarios/Basic_Training.cfg:213
 msgid ""
 "Now we will watch your Elvish Fighter attack Merle.  Afterwards, end your "
 "turn and wait for Merle to attack you."
 msgstr ""
+"Nyt katsomme, kun Haltiasoturisi hyökkää Merlen kimppuun. Lopeta sen jälkeen "
+"vuorosi ja odota kun Merle hyökkää sinun kimppuusi."
 
 #: data/tutorial/scenarios/Basic_Training.cfg:221
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it receives experience from the combat. Once a unit gains enough experience, "
@@ -264,7 +267,6 @@ msgid "Traits and Specialties"
 msgstr "Kyvyt ja erikoisuudet"
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:60
-#, fuzzy
 msgid ""
 "*Basic Training Part II:\n"
 "Recalling\n"
@@ -276,15 +278,16 @@ msgid ""
 "Specialties\n"
 "Objects"
 msgstr ""
+"*Perusharjoittelu  osa II:\n"
 "Käsitellyt taidot:\n"
-"Kutsuminen\n"
-"Kyvyt\n"
-"Kulta\n"
-"Vuorokausirytmi\n"
-"Maasto\n"
-"Vastustukset\n"
-"Erikoisuudet\n"
-"Esineet"
+"-Kutsuminen\n"
+"-Kyvyt\n"
+"-Kulta\n"
+"-Vuorokausirytmi\n"
+"-Maasto\n"
+"-Vastustukset\n"
+"-Erikoisuudet\n"
+"-Esineet"
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:65
 msgid ""
@@ -325,21 +328,24 @@ msgstr "Vuorot loppuvat"
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:100
 msgid "So what should I be doing right now?"
-msgstr ""
+msgstr "Mitä minun pitäisi nyt tehdä?"
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:104
 msgid ""
 "Um, yes. In simple terms, recruit an army, move it towards my castle, and "
 "attempt to kill me and any of my units that get in your way."
 msgstr ""
+"Öö, kyllä. Yksinkertaistettuna: värvää armeija, liikuta sitä kohti minun "
+"linnaani, ja yritä tappaa minut ja yksiköitä, jotka yrittävät estää pääsyn "
+"linnalleni. "
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:108
 msgid "Sounds simple, master Delfador."
-msgstr ""
+msgstr "Kuulostaa uksinkertaiselta, mestari Delfador."
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:112
 msgid "We shall see. I will continue to tutor you as you come closer."
-msgstr ""
+msgstr "Näemme sen sitten. Jatkan sinun neuvomista kun tulet lähemmäs."
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:126
 msgid "You have successfully recalled your Elvish Fighter."
@@ -357,18 +363,16 @@ msgid "En garde!"
 msgstr "En garde!"
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:138
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics from the "
 "statistics shown before you recruited them. This is because all units "
 "naturally have 2 traits that are determined when you recruit the unit."
 msgstr ""
 "Huomaa että yksiköilläsi on hieman erilaiset ominaisuudet kuin ne jotka "
-"näytettiin ennen kuin värväsit ne. Tämä johtuu siitä että niillä on annettu "
-"kykyjä."
+"näytettiin ennen kuin värväsit ne. Tämä johtuu siitä, että normaalisti "
+"kaikille yksiköille annetaan kaksi kykyä värvättäessä."
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:151
-#, fuzzy
 msgid ""
 "When you recruit and recall units, you spend gold. If this would cause you "
 "to have less than 0 gold, you cannot recruit or recall."
@@ -405,14 +409,13 @@ msgstr ""
 "tavalla."
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:221
-#, fuzzy
 msgid ""
 "Some objects change the capabilities or status of the unit that triggered "
 "them. One of your units found a potion which will make him do more damage on "
 "his attack. To see his new combat statistics, look at the Status Table."
 msgstr ""
-"Jotkut esineet muuttavat sen käynnistäneen yksikön ominaisuuksia. Eräs "
-"yksiköistäsi löysi juoman, jonka takia hänen hyökkäyksensä tekee enemmän "
+"Jotkut esineet muuttavat sen poimineen yksikön ominaisuuksia. Eräs "
+"yksiköistäsi löysi juoman, jonka takia hänen hyökkäyksensä tekevät enemmän "
 "vahinkoa. Näet yksikön uudet ominaisuudet tilannepaneelista."
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:229
@@ -435,32 +438,32 @@ msgstr ""
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:281
 msgid "Alright, lad, I yield. Good job."
-msgstr ""
+msgstr "Selvä, poika, minä luovutan. Hienoa."
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:285
 msgid "So I win? Great!"
-msgstr ""
+msgstr "Voitinko minä? Mahtavaa!"
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:289
-#, fuzzy
 msgid ""
 "Yes, congratulations. Do you want to review any of the skills learned in "
 "this scenario?"
-msgstr "Haluatko kerrata joitain taitoja jotka opit tässä skenaariossa?"
+msgstr ""
+"Kyllä, onneksi olkoon. Haluatko kerrata joitain taitoja jotka opit tässä "
+"skenaariossa?"
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:323
-#, fuzzy
 msgid "Next, you may want to begin a campaign or play a multiplayer game."
 msgstr ""
 "Seuraavaksi haluat luultavasti aloittaa kampanjan tai pelata moninpeliä."
 
 #: data/tutorial/scenarios/Traits_and_Specialties.cfg:328
 msgid "I'm ready to start."
-msgstr ""
+msgstr "Olen valmis aloittamaan."
 
 #: data/tutorial/scenarios/utils.cfg:12
 msgid "I understand, but I have more questions..."
-msgstr ""
+msgstr "Ymmärrän, mutta minulla on vielä kysyttävää..."
 
 #: data/tutorial/scenarios/utils.cfg:40
 msgid "Current objective:"
@@ -485,16 +488,14 @@ msgstr ""
 "toistat viimeeksi tehdyn värväyksen."
 
 #: data/tutorial/scenarios/utils.cfg:61
-#, fuzzy
 msgid "How do I recruit units again?"
-msgstr "Kuinka värvään yksiköitä?"
+msgstr "Kuinka värvättiin yksiköitä?"
 
 #: data/tutorial/scenarios/utils.cfg:62
 msgid "What's a leader?"
 msgstr "Mikä tai kuka on johtaja?"
 
 #: data/tutorial/scenarios/utils.cfg:62
-#, fuzzy
 msgid ""
 "A leader is a unit that can recruit. This means that when the leader is on a "
 "keep, units can be recruited on the surrounding castle tiles. Leaders are "
@@ -507,10 +508,10 @@ msgstr ""
 "Johtaja on yksikkö, joka voi värvätä. Tämä tarkoittaa sitä, että kun johtaja "
 "on linnakkeessa, hän voi värvätä yksiköitä ympäröiviin linnaheksoihin. "
 "Johtajat ovat yleensä voimakkaita yksiköitä, joita on kullakin puolella vain "
-"yksi. Yleensä johtaja on ensimmäinen yksikkö, jota kontrolloit, ja se "
-"yleensä aloittaa pelin linnakkeessa. Johtajan valitseminen onnistuu nopeasti "
-"painamalla 'l'. Jos johtajasi kuolee, häviät pelin. Voit voittaa useimmat "
-"skenaariot kukistamalla kaikki vihollisjohtajat."
+"yksi. Yleensä johtaja on ensimmäinen yksikkö jota kontrolloit, ja se yleensä "
+"aloittaa pelin linnakkeessa. Johtajan valitseminen onnistuu nopeasti "
+"painamalla 'l' (pieni 'L'). Jos johtajasi kuolee, häviät pelin. Voit voittaa "
+"useimmat skenaariot kukistamalla kaikki vihollisjohtajat."
 
 #: data/tutorial/scenarios/utils.cfg:63
 msgid ""
@@ -551,9 +552,8 @@ msgstr ""
 "oikeassa alanurkassa."
 
 #: data/tutorial/scenarios/utils.cfg:68
-#, fuzzy
 msgid "How did I end my turn again?"
-msgstr "Kuinka lopetan vuoroni?"
+msgstr "Kuinka lopetettiin vuoro?"
 
 #: data/tutorial/scenarios/utils.cfg:69
 msgid ""
@@ -584,15 +584,22 @@ msgid ""
 "yellow orbs. Units with no movement have red. If all your units have red "
 "orbs, ending your turn is usually the only thing you can do."
 msgstr ""
+"Yksiköilläsi on vihreä, keltainen tai punainen energiapallo terveyspalkin "
+"yläpuolella (vihreä pystysuora palkki yksikön vieressä). Energiapallo kertoo "
+"millä yksiköistäsi on kaikki liikkuminen, osa liikkumisesta tai ei lainkaan "
+"liikkumista jäljellä. Yksiköillä joilla on kaikki liikkuminen jäljellä on "
+"vihreä energiapallo. Niillä joilla on osa liikkumisesta jäljellä on "
+"keltainen energiapallo. Yksiköillä jotka eivät voi liikkua enää on punainen "
+"energiapallo. Jos kaikilla yksiköilläsi on punainen energiapallo, vuoron "
+"lopettaminen on yleensä ainoa asia minkä voit tehdä."
 
 #: data/tutorial/scenarios/utils.cfg:70
 msgid "What are these colored circles for?"
-msgstr ""
+msgstr "Mikä merkitys näillä värillisillä ympyröillä on?"
 
 #: data/tutorial/scenarios/utils.cfg:74
-#, fuzzy
 msgid "How did I move my unit again?"
-msgstr "Kuinka lopetan vuoroni?"
+msgstr "Kuinka liikutettiin yksiköitä?"
 
 #: data/tutorial/scenarios/utils.cfg:74
 msgid ""
@@ -600,6 +607,9 @@ msgid ""
 "up and areas it cannot move to will be shaded. Select any hex to move the "
 "unit to that hex."
 msgstr ""
+"Valitse yksikkö, jota haluat liikuttaa. Alue jolle yksikkö voi liikkua näkyy "
+"kirkkaampana, ja alue jonne se ei voi liikkua näkyy tummempana. Valitse "
+"sitten mikä tahansa heksa liikuttaaksesi valittu yksikkö kyseiseen heksaan."
 
 #: data/tutorial/scenarios/utils.cfg:75
 msgid "How far can my Elvish Fighter move?"
@@ -613,6 +623,12 @@ msgid ""
 "Elves are very fast in woods, using up only 1 movement point. On the other "
 "hand, you are human and require 2 movement points to travel through woods."
 msgstr ""
+"Haltiasoturisi aloittaa jokaisen vuoron tietyllä määrällä liikkumispisteitä; "
+"tätä kutsutaan myös sen nopeudeksi. Kun Haltiasoturisi liikkuu reittiä "
+"pitkin, jokainen heksa jonka halki se kulkee maksaa sille liikkumispisteitä "
+"- mukaanlukien itse määränpää. Haltiat ovat erittäin nopeita metsässä ja "
+"käyttävät siellä vain yhden liikkumispisteen. Toisaalta, sinä olet ihminen "
+"ja sinulta kuluu kaksi pistettä kulkea metsäheksan läpi."
 
 #: data/tutorial/scenarios/utils.cfg:76
 msgid ""
@@ -623,18 +639,27 @@ msgid ""
 "encounter appear in the library, and encountering new units unlocks their "
 "help information."
 msgstr ""
+"Pelin ohje näyttää tämän tiedon mistä yksiköstä vain, jonka olet valinnut. "
+"Valitse yksikkä ja paina 'd':tä saadaksesi esiin kysisen yksikön ohjeen. F1 "
+"tai valitsemalla valikosta 'ohje' avaa pääohjeen, josta voit avata "
+"yksikköosion. Vain yksiköt jotka olet jo kohdannut tai tulet pian kohtaamaan "
+"löytyvät ohjeesta. Eli uusien yksiköiden kohtaaminen saa niiden tiedot "
+"näkyviin ohjeessa."
 
 #: data/tutorial/scenarios/utils.cfg:76
 msgid "So how do I learn what the movement costs are for each unit?"
 msgstr ""
+"Kuinka opin miten paljon liikkuminen maksaa liikkumispisteitä kullekin "
+"yksikölle?"
 
 #: data/tutorial/scenarios/utils.cfg:77
 msgid ""
 "What happens if I try to move a unit farther than it has movement points?"
 msgstr ""
+"Mitä tapahtuu jos yritän liikuttaa yksikköä kauemmas kuin sen "
+"liikkumispisteet riittävät?"
 
 #: data/tutorial/scenarios/utils.cfg:77
-#, fuzzy
 msgid ""
 "When you select a unit, all hexes it can't move onto within one turn will be "
 "shaded. If the destination is far enough away that more than one turn is "
@@ -644,18 +669,16 @@ msgid ""
 "space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
-"Haltiasoturillasi on aluksi tietty määrä liikkumispisteitä - tätä kutsutaan "
-"sen liikkumiseksi tai nopeudeksi. Kun haltiasoturi liikkuu polkua pitkin, "
-"kukin heksa maksaa sille liikkumispistettä, kohdeheksa mukaan lukien. Kun "
-"valitset haltiasoturin, kaikki heksat joihin hän ei voi liikkua yhdessä "
-"vuorossa varjostetaan. Jos kohde on useamman kuin yhden vuoron matkan "
-"päässä, näkyviin tulee numero joka kertoo tarvittavien vuorojen lukumäärän. "
-"Pitkän matkan päässä olevan heksan painaminen asettaa yksikön kurssille sitä "
-"heksaa kohti jota kohti se automaattisesti suuntaa kunkin vuoron alussa. Jos "
-"annat yksikölle kurssin vahingossa, valitse se kahdesti poistaaksesi kurssin."
+"Kun valitset yksikön, kaikki heksat joihin se ei voi liikkua yhdessä "
+"vuorossa varjostetaan. Jos kohteen saavuttamiseen kuluu enemmän kuin yksi "
+"vuoro, näkyy numero joka ilmoittaa kuinka monta vuoro sinne pääsemiseen "
+"kuluu. Painamalla kaukana olevaa heksaa voit asettaa yksikkösi kulkemaan "
+"automaattisesti kohti kohdetta nopeinta mahdollista reittiä pitkin. Tällöin "
+"yksikkösi liikkuu itsekseen jokaisen vuoron alussa niin pitkälle reitillä "
+"kuin mahdollista. Jos lähetät vahingossa yksikön kurssille tällä tavalla, "
+"valitse se kahdesti peruaksesi kurssin."
 
 #: data/tutorial/scenarios/utils.cfg:78
-#, fuzzy
 msgid ""
 "A unit's zone of control is the location consisting of all hexes adjacent to "
 "the unit. Units cannot move through opponent's zones of control; they can "
@@ -664,28 +687,26 @@ msgid ""
 "from reaching your weak and wounded units."
 msgstr ""
 "Yksikön hallitsema alue koostuu kaikista heksoista yksikön vieressä. "
-"Vihollisyksiköiden hallitseman alueen läpi ei voi liikkua, vain sen sisään "
+"Vihollisyksiköiden hallitseman alueen läpi ei voi liikkua, mutta sen sisään "
 "voi. Kun yksikkö tekee tämän, se menettää kaiken jäljellä olevan "
 "liikkumisen. Hallitsemalla aluetta voi estää vihollisia pääsemästä heikkojen "
-"ja rampojen yksiköiden kimppuun."
+"ja haavoittuneiden yksiköiden kimppuun."
 
 #: data/tutorial/scenarios/utils.cfg:78
 msgid "What's the zone of control?"
 msgstr "Mikä on yksikön hallitsema alue?"
 
 #: data/tutorial/scenarios/utils.cfg:79
-#, fuzzy
 msgid "What happens when I move next to an enemy unit?"
-msgstr "Mitä tapahtuu kun lopetan vuoroni?"
+msgstr "Mitä tapahtuu kun liikun vihollisyksikön viereen?"
 
 #: data/tutorial/scenarios/utils.cfg:79
 msgid "d"
-msgstr ""
+msgstr "d"
 
 #: data/tutorial/scenarios/utils.cfg:83
-#, fuzzy
 msgid "How did I attack again?"
-msgstr "Kuinkan pelaan kampanjan?"
+msgstr "Miten hyökättiin?"
 
 #: data/tutorial/scenarios/utils.cfg:83
 msgid ""
@@ -694,6 +715,10 @@ msgid ""
 "energy orb to yellow. Next, click on the unit you want to attack to bring up "
 "the attack dialog."
 msgstr ""
+"Ensin sinun täytyy liikkua yksikön viereen. Muista, että yksikön, joka "
+"hallitsee viereisiään heksoja, viereen liikkuminen poistaa jäljellä olevan "
+"liikkumisen ja muuttaa energiapallosi keltaiseksi. Seuraavaksi, paina "
+"yksikköä, jonka kimppuun haluat hyökätä tudaksesi esiin hyökkäysikkunan."
 
 #: data/tutorial/scenarios/utils.cfg:84
 msgid "Can Merle retaliate from my attack?"
@@ -766,7 +791,6 @@ msgstr ""
 "iskumäärien jälkeen."
 
 #: data/tutorial/scenarios/utils.cfg:87
-#, fuzzy
 msgid ""
 "As you know, your units will have a green, yellow, or red energy orb. Allied "
 "units you do not control, like me, have a blue energy circle. Units "
@@ -775,14 +799,12 @@ msgid ""
 "displayed as a disc below the unit. This helps tell you what side each unit "
 "is on."
 msgstr ""
-"Yksiköilläsi on vihreä, keltainen tai punainen energiapallo terveyspalkin "
-"yläpuolella (vihreä pystysuora palkki yksikön vieressä). Vihreä on "
-"yksiköillä joilla on kaikki liikkuminen jäljellä, keltainen niillä joilla on "
-"osa liikkumisesta jäljellä ja punainen niillä jotka eivät voi liikkua enää. "
-"Vihollisen yksiköillä ei ole energiapalloa. Ystävällisillä yksiköillä joita "
-"et hallitse, kuten minulla, on sininen energiapallo. Jos 'Joukkuuen Värit' "
-"on säädetty asetuksista päälle, yksikön hallitsijan väri näkyy kiekkona "
-"yksikön alla."
+"Kuten tiedät, yksiköilläsi on vihreä, keltainen tai punainen energiapallo. "
+"Ystävällisillä yksiköillä joita et hallitse, kuten minulla, on sininen "
+"energiapallo. Vihollisen yksiköillä ei ole lainkaan energiapalloa. Jos "
+"'Joukkuuen Värit' on säädetty asetuksista päälle, yksikön hallitsijan väri "
+"näkyy kiekkona yksikön alla. Tämä auttaa tunnistamaan mille puolelle kukin "
+"yksikkö kuuluu."
 
 #: data/tutorial/scenarios/utils.cfg:87
 msgid "How do I tell who is allied and who is an enemy?"
@@ -827,7 +849,7 @@ msgstr "Mitä tapahtuu kun yksikkö ylenee?"
 
 #: data/tutorial/scenarios/utils.cfg:93
 msgid "How many times can a unit advance in level?"
-msgstr ""
+msgstr "Kuinka monesti yksikkö voi ylentyä seuraavalle tasolle?"
 
 #: data/tutorial/scenarios/utils.cfg:93
 msgid ""
@@ -835,6 +857,9 @@ msgid ""
 "extraordinary units may break the limits of mortal existence and advance "
 "beyond level 3, but this is very rare."
 msgstr ""
+"Suurin osa yksiköistä voi ylentyä tasolta 1 tasolle 2 ja siitä vielä tasolle "
+"3. Jotkin ainutlaatuiset yksiköt voivat rikkoa kuolevaisuuden asettamat "
+"rajat ja ylentyä vielä 3. tasoa ylemmäs, mutta se on harvinaista."
 
 #: data/tutorial/scenarios/utils.cfg:94
 msgid ""
@@ -843,14 +868,17 @@ msgid ""
 "hitpoints for the unit. Some unit types may even gain additional abilites if "
 "enough after-max-level experience is earned."
 msgstr ""
+"Saavutettuaan maksimitasonsa (2. tai 3. taso useimmilla yksiköillä), yksikkö "
+"kerää edelleen kokemusta. Tämän kokemuksen karttuessa riittävästi, yksikkö "
+"voi saada esimerkiksi ylimääräisiä elämäpisteitä. Jotkin yksiköt voivat jopa "
+"saada ylimääräisiä erikoistaitoja, ansaittuaan riittävästi enimmäistason "
+"jälkeistä kokemusta."
 
 #: data/tutorial/scenarios/utils.cfg:94
-#, fuzzy
 msgid "What happens when a unit reaches its max level?"
-msgstr "Mitä tapahtuu, kun yksikkö siirtyy kylään?"
+msgstr "Mitä tapahtuu, kun yksikkö saavuttaa maksimitasonsa?"
 
 #: data/tutorial/scenarios/utils.cfg:98
-#, fuzzy
 msgid ""
 "Whenever a unit captures a village, it flags the village for its side. This "
 "action takes all the unit's remaining movement. Villages flagged for a side "
@@ -861,13 +889,13 @@ msgid ""
 "villages, villages can be used in battle. Villages heal the units on them 8 "
 "HP per turn."
 msgstr ""
-"Kun yksikkö liikkuu kylään, se valtaa sen omalle puolelleen. Tämän jälkeen "
-"yksikkö ei voi enää liikkua ennen seuraavaa vuoroa. Kylistä saa useita "
-"hyötyjä kuten yhden kultapalan per vuoro ja yhden kultapalan vähennyksen "
-"ylläpitokustannuksiin. Hallitsemiesi kylien lukumäärä näkyy tilannepalkissa "
-"talon kuvan vieressä. Rahallisten hyötyjen lisäksi kyliä voi käyttää "
-"taistelussa. Ne parantavat niissä olevia yksiköitä 8 elämäpistettä "
-"vuorossaan."
+"Kun yksikkö liikkuu kylään, se valtaa sen omalle puolelleen ja merkitsee sen "
+"oman puolensa värisellä lipulla. Tämän jälkeen yksikkö ei voi enää liikkua "
+"ennen seuraavaa vuoroa. Kylistä saa useita hyötyjä kuten yhden kultapalan "
+"per vuoro ja yhden kultapalan vähennyksen ylläpitokustannuksiin. "
+"Hallitsemiesi kylien lukumäärä näkyy tilannepalkissa talon kuvan vieressä. "
+"Rahallisten hyötyjen lisäksi kyliä voi käyttää taistelussa. Ne parantavat "
+"niissä olevia yksiköitä 8 elämäpistettä vuorossaan."
 
 #: data/tutorial/scenarios/utils.cfg:98
 msgid "What happens when a unit moves onto a village?"
@@ -895,7 +923,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/utils.cfg:100
 msgid "How important are villages?"
-msgstr ""
+msgstr "Kuinka tärkeitä kylät ovat?"
 
 #: data/tutorial/scenarios/utils.cfg:100
 msgid ""
@@ -906,6 +934,13 @@ msgid ""
 "must protect your wounded soldiers and move them to villages or healers. "
 "This is war, my boy, and life is fragile."
 msgstr ""
+"Kylät ovat avainasemassa taistelujen voittamisessa, Konrad. Monet yksiköt "
+"saavat puolustusetua kylästä. Kylästä saadut tulot ovat korvaamattomia "
+"armeijaa värvättäessä. Lopuksi vielä, yksiköittesi pitäminen hengissä on "
+"kaikkein vaativin tehtävistäsi. Jos he aikovat koskaan yletä seuraavalle "
+"tasolle, sinun tätyy suojella haavoittuneita sotilaita ja liikuttaa ne "
+"kyliin tai esim. hoivaajien luo parantumaan. Tämä on sotaa, ja elämä on "
+"hauras."
 
 #: data/tutorial/scenarios/utils.cfg:104
 msgid "How do I know how to complete a scenario? Will you always tell me?"
@@ -932,7 +967,6 @@ msgid "What happens when I win a scenario?"
 msgstr "Mitä tapahtuu kun voitan skenaarion?"
 
 #: data/tutorial/scenarios/utils.cfg:105
-#, fuzzy
 msgid ""
 "When you win a scenario, all your units survive and are revived to full "
 "health, and you do not have to pay them for the remaining turns. Also, if "
@@ -943,18 +977,22 @@ msgstr ""
 "Kun voitat skenaarion, kaikki yksikkösi selviävät ja paranevat täysin, "
 "eivätkä tarvitse ylläpitoa jäljellä olevista vuoroista. Jos sen lisäksi "
 "armeijasi jää alueelle voittosi jälkeen kaikki kylät antautuvat sinulle "
-"välittömästi kun voitat. Skenaarioiden välillä menetät 20% kullastasi."
+"välittömästi kun voitat. Skenaarioiden välillä menetät kuitenkin 20% "
+"kullastasi, sillä armeijasi on ruokittava, vaatetettava, suojattava ja "
+"kuljetettava."
 
 #: data/tutorial/scenarios/utils.cfg:109
-#, fuzzy
 msgid "How did I recall a unit again?"
-msgstr "Kuinka värvään yksiköitä?"
+msgstr "Kuinka kutsuttiin yksiköitä?"
 
 #: data/tutorial/scenarios/utils.cfg:109
 msgid ""
 "By selecting 'recall' from the menu, right-clicking on a castle hex and "
 "selecting 'recall', or by hitting alt-r."
 msgstr ""
+"Valitsemalla valikosta 'kutsu veteraaniyksikkö', painamalla hiiren oikealla "
+"napilla linnaheksaa ja valitsemalla 'kutsu veteraaniyksikkö tai painamalla "
+"alt-r."
 
 #: data/tutorial/scenarios/utils.cfg:110
 msgid "What happens when I recall a unit?"
@@ -973,9 +1011,8 @@ msgstr ""
 "uusi vaan edellisestä skenaariosta."
 
 #: data/tutorial/scenarios/utils.cfg:111
-#, fuzzy
 msgid "Why should I recall my units?"
-msgstr "Mitä tapahtuu kun kutsun yksikön takaisin?"
+msgstr "Miksi minun pitäisi kutsua veteraaniyksiköitäni takaisin?"
 
 #: data/tutorial/scenarios/utils.cfg:111
 msgid ""
@@ -983,6 +1020,9 @@ msgid ""
 "up. Using experienced units rather than new units will give you a much more "
 "powerful army over the long run."
 msgstr ""
+"Veteraaniyksiköillä on enemmän kokemusta kuin uusilla ja osa saattaa olla "
+"jopa ylentynyt. Käytä mieluummin kokeneita yksiköitä kuin uusia, niin "
+"rakennat pitällä tähtäimellä paljon voimakkaamman armeijan."
 
 #: data/tutorial/scenarios/utils.cfg:112
 msgid "How should I decide which units to recall?"
@@ -1001,7 +1041,6 @@ msgstr ""
 "olet - esimerkiksi metsäskenaariossa kutsu halitoita."
 
 #: data/tutorial/scenarios/utils.cfg:116
-#, fuzzy
 msgid ""
 "Each unit you recruit is an individual person, Konrad. Units of the same "
 "type have slight variations in how strong or how skilled they are. The "
@@ -1009,10 +1048,11 @@ msgid ""
 "displayed in the Status Table, and the function of a specific trait can be "
 "found by putting your cursor over that trait."
 msgstr ""
-"Kykyjen tarkoitus on lisätä vaihtelua tekemällä saman yksikkötyypin "
-"yksiköistä keskenään erilaisia. Kyvyt jaetaan satunnaisesti värvätessä. "
-"Yksiköllä olevat kyvyt näkyvät tilataulussa ja kunkin kyvyn tarkoituksen "
-"näkee pitämällä kursoria kyvyn päällä."
+"Jokainen värväämäsi yksikkö on yksilö, Konrad. Saman tyyppisillä yksiköillä "
+"on pieniä eroja esimerkiksi siinä, miten vahvoja tai taitavia ne ovat. "
+"Kykyjen tarkoitus on lisätä vaihtelua armeijasi yksiköihin. Yksiköllä olevat "
+"kyvyt näkyvät tilataulussa ja kunkin kyvyn vaikutuksen näkee pitämällä "
+"kursoria kyvyn päällä."
 
 #: data/tutorial/scenarios/utils.cfg:116
 msgid "What do traits do?"
@@ -1020,7 +1060,7 @@ msgstr "Mitä kyvyt tekevät?"
 
 #: data/tutorial/scenarios/utils.cfg:117
 msgid "So all units receive traits?"
-msgstr ""
+msgstr "Onko kaikilla yksiköillä ominaisuuksia?"
 
 #: data/tutorial/scenarios/utils.cfg:117
 msgid ""
@@ -1029,6 +1069,11 @@ msgid ""
 "during the course of a scenario. However, units you recruit can be counted "
 "on to have two traits."
 msgstr ""
+"Useimmilla, mutta ei kaikilla. Taikuuden luomuksilla kuten aaveilla ja "
+"luurangoilla ei ole ominaisuuksia. Saatat myös kohdata skenaarioiden "
+"varrella yksiköitä, joilla on vain yksi tai ei lainkaan ominaisuuksia. "
+"Kuitenkin kun värväät yksikön, voit luottaa siihen että sillä on kaksi "
+"ominaisuutta."
 
 #: data/tutorial/scenarios/utils.cfg:118
 msgid ""
@@ -1117,7 +1162,6 @@ msgid "How do I know what time of day it is?"
 msgstr "Kuinka saan selville mikä vuorokaudenaika on nyt?"
 
 #: data/tutorial/scenarios/utils.cfg:128
-#, fuzzy
 msgid ""
 "The times of day progress in sequence: dawn (twilight), morning and "
 "afternoon (day), dusk (twilight), first watch and second watch (night), then "
@@ -1135,7 +1179,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/utils.cfg:129
 msgid "What should I do when it becomes nighttime?"
-msgstr ""
+msgstr "Mitä minun tulisi tehdä kun tulee yö?"
 
 #: data/tutorial/scenarios/utils.cfg:129
 msgid ""
@@ -1145,9 +1189,14 @@ msgid ""
 "Your elves, however, are neutral. They fight equally well during day or "
 "night, so you should continue your advance."
 msgstr ""
+"Wesnoth on vaarallinen paikka, Konrad. Älä aliarvio bonuksia, jotka sinä "
+"saat päivällä ja jotka vihollisesi saavat yöllä. Tarvitaan paljon taitoa, "
+"jotta pystyy kertomaan milloin kannattaa hyökätä ja milloin olla "
+"kärsivällinen ja odottaa. Haltiasi, sen sijaan, ovat neutraaleja. He "
+"taistelevat yhtä hyvin sekä päivällä että yöllä, joten voit jatkaa "
+"hyökkäystäsi."
 
 #: data/tutorial/scenarios/utils.cfg:133
-#, fuzzy
 msgid ""
 "The first property of a terrain is the number of move points it takes each "
 "unit to move through the hex. The second property is the defense that the "
@@ -1155,14 +1204,11 @@ msgid ""
 "the unit's chance to be hit on that terrain. For example, many elves have "
 "70% defense in forest, and are therefore hit on average 30% of the time."
 msgstr ""
-"Kahdella maastotyypillä, linnoilla ja kylillä, on ominaisuudet, jotka on jo "
-"kuvattu. Yleensä maaston ominaisuudet ovat kuitenkin hienovaraisempia ja "
-"liittyvät niihin liikkuvien yksiköiden etuihin ja haittoihin. Maaston yksi "
-"ominaisuus on kyseisen heksan läpi liikkuessa kuluvien liikkumispisteiden "
-"määrä, toinen maastossa olevan yksikön puolustus. Tämä on prosenttiluku joka "
-"määrää kuinka helppo yksikköön on osua kyseisessä maastossa. Esimerkiksi "
-"monilla haltioilla on 70% puolustus metsässä, joten heihin osuu keskimäärin "
-"30% iskuista."
+"Maaston yksi ominaisuus on kyseisen heksan läpi liikkuessa kuluvien "
+"liikkumispisteiden määrä, toinen maastossa olevan yksikön puolustus. Tämä on "
+"prosenttiluku joka määrää kuinka helppo yksikköön on osua kyseisessä "
+"maastossa. Esimerkiksi monilla haltioilla on 70% puolustus metsässä, joten "
+"heihin osuu keskimäärin 30% iskuista."
 
 #: data/tutorial/scenarios/utils.cfg:133
 msgid "What are the different properties that terrains have?"
@@ -1192,7 +1238,7 @@ msgstr "Kuinka saan selville tietyn maastotyypin ominaisuudet?"
 
 #: data/tutorial/scenarios/utils.cfg:135
 msgid "Why is terrain so important?"
-msgstr ""
+msgstr "Miksi maasto on niin tärkeää?"
 
 #: data/tutorial/scenarios/utils.cfg:135
 msgid ""
@@ -1201,28 +1247,27 @@ msgid ""
 "chance of being hit when standing in forest. On the other hand, if that elf "
 "attacks from shallow water, it would be decimated."
 msgstr ""
+"Hyvän puolustusaseman löytäminen ennen hyökkäystä on ensiarvoinen taito. "
+"Haltian tulisi aina kun mahdollista hyökätä metsästä, sillä siihen on hyvin "
+"hankala osua kun se on metsässä. Toisaalta, jos haltia hyökkäisi matalasta "
+"vedestä, se tuhoutuisi helposti."
 
 #: data/tutorial/scenarios/utils.cfg:139
 msgid "How does resistance affect attack damage?"
 msgstr "Kuinka vastustus vaikuttaa vahinkoon?"
 
 #: data/tutorial/scenarios/utils.cfg:139
-#, fuzzy
 msgid ""
 "Each unit has a certain resistance against each attack type. For example, if "
 "an Elvish Scout is attacked by an Elvish Archer, the archer does 20% more "
 "damage than normal, since Elvish Scouts have -20% resistance to pierce."
 msgstr ""
-"Jokaisella yksiköllä on tietty vastaus kutakin hyökkäystyyppiä vastaan. "
-"Vastustus on prosenttiluku joka vähennetään tietyntyyppisestä vahingosta. "
-"Esimerkiksi jos haltiatiedustelijan kimppuun hyökkää jousihaltia, jousimies "
-"tekee 20% enemmän vahinkoa kuin yleensä, koska haltiatiedustelijoilla on -"
-"20% vastustus lävistystä vastaan. Tämä hyöty/haitta lasketaan yhteen muiden "
-"hyötyjen/haittojen, kuten vuorokaudenajan, kanssa, joten kaksi -50% haittaa "
-"olisi yhteensä -100%."
+"Jokaisella yksiköllä on tietty vastustus kutakin hyökkäystyyppiä vastaan. "
+"Esimerkiksi jos haltiatiedustelijan kimppuun hyökkää jousihaltia, tekee se "
+"20% enemmän vahinkoa kuin yleensä, koska haltiatiedustelijoilla on -20% "
+"vastustus lävistystä vastaan."
 
 #: data/tutorial/scenarios/utils.cfg:140
-#, fuzzy
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
@@ -1234,10 +1279,8 @@ msgstr ""
 "pyhä. Raskaasti panssaroiduilla yksiköillä on korkeat vastustukset fyysisiä "
 "tyyppejä (teräase, lävistys, murjova isku) vastaan, mutta matala vastustus "
 "maagisia tyyppejä (tuli ja kylmä) vastaan. Kaikilla elävillä yksiköillä on "
-"vastustusta pyhää vastaan ja toisaalta epäkuolleet ovat erittäin heikkoja "
-"pyhää vastaan. Saadaksesi selville tietyn yksikön vastustukset, paina "
-"yksikköä hiiren oikealla napilla, valitse yksikön kuvaus ja katso "
-"Vastustukset."
+"vastustusta pyhää vastaan, mutta epäkuolleet ovat erittäin heikkoja pyhää "
+"vastaan."
 
 #: data/tutorial/scenarios/utils.cfg:140
 msgid "What are the different damage types?"
@@ -1252,11 +1295,16 @@ msgid ""
 "unit with a white mage's holy attack you will start to appreciate "
 "resistances."
 msgstr ""
+"Saadaksesi selville tietyn yksikön vastustukset, paina yksikköä hiiron "
+"oikealla napilla, valitse 'Yksikön kuvaus', ja katso vastustuksia. Uudelle "
+"pelaajalle vastustukset eivät ole niin merkittäviä... yksiköissä ja "
+"käytettävissä asetyypeissä ei ole paljoa valinnanvaraa. Mutta kun "
+"ensimmäisen kerran hävität täydellisesti epäkuolleen yksikön Valkean velhon "
+"pyhällä hyökkäyksellä, alat varmasti arvostaa vastustuksia."
 
 #: data/tutorial/scenarios/utils.cfg:141
-#, fuzzy
 msgid "How do I learn a unit's resistances?"
-msgstr "Kuinka värvään yksiköitä?"
+msgstr "Kuinka opin yksikön vastustukset?"
 
 #: data/tutorial/scenarios/utils.cfg:145
 msgid ""
@@ -1273,17 +1321,16 @@ msgid "What do specialties do?"
 msgstr "Mitkä erikoisuudet tekevät?"
 
 #: data/tutorial/scenarios/utils.cfg:146
-#, fuzzy
 msgid ""
 "The specialties a unit gets are determined by the unit type; for example all "
 "Lieutenants and Generals have the specialty leadership. Some are abilities "
 "that the unit has. Others are weapon abilities such as poison on a dagger "
 "blade."
 msgstr ""
-"Yksiköden erikoisuudet riippuvat yksikön tyypistä. Esimerkiksi kaikilla "
+"Yksiköiden erikoisuudet riippuvat yksikön tyypistä. Esimerkiksi kaikilla "
 "kenraaleilla on erikoistaito johtaminen. Erikoisuuksia on kahdenlaisia: "
-"taitoja ja hyökkäystaitoja. Erikoistaidot vaikuttavat yksiköihin kun "
-"hyökkäystaidot koskevat vain yhtä yksikön hyökkäyksistä."
+"erikoistaitoja, joita on itse yksiköllä, ja hyökkäystaitoja, joita on "
+"yksikön hyökkäyksillä (esim. myrkky tikarin terässä)."
 
 #: data/tutorial/scenarios/utils.cfg:146
 msgid "Which units get specialties?"
@@ -1310,6 +1357,7 @@ msgstr "Millaisia erikoisuuksia yksikköni voivat saada?"
 #: data/tutorial/scenarios/utils.cfg:148
 msgid "Any other interesting specialties I should know about?"
 msgstr ""
+"Onko mitään muita kiinnostavia erikoisuuksia joita minun tulisi tietää?"
 
 #: data/tutorial/scenarios/utils.cfg:148
 msgid ""
@@ -1320,6 +1368,14 @@ msgid ""
 "ignore zones of control. This ability is deadly. Finally, some mounted units "
 "can charge, doubling the damage they deal and receive."
 msgstr ""
+"Toki. Haltiashamaanit voivat hidastaa vihollisen, mikä vähentää sen tekemää "
+"vahinkoa ja liikkumista. Vihollisyksikön hidastaminen on hyvin tehokasta, "
+"kun teet sen juuri ennen kuin hyökkäät sen kimppuun vahvemmalla "
+"yksiköilläsi. Jotkin viholliset myrkyttävät sinut - jos niin käy, mene "
+"kylään parantumaan siitä. Jotkin viholliset ovat kahakoitsijoita, jotka "
+"eivät välitä yksiköidesi hallitsemista alueista. Kahakoitsiminen on hyvin "
+"vaarallinen erikoistaito. Lopuksi, jotkut ratsuyksiköistä voivat rynnäköidä "
+"tuplaten sekä tekemänsä että vastaanottamansa vahingon."
 
 #: data/tutorial/scenarios/utils.cfg:149
 msgid "How do I use specialties?"
@@ -1339,7 +1395,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/utils.cfg:150
 msgid "Are these specialties listed anywhere?"
-msgstr ""
+msgstr "Onko nämä erikoisuudet nähtävissä jossain?"
 
 #: data/tutorial/scenarios/utils.cfg:150
 msgid ""
@@ -1347,11 +1403,13 @@ msgid ""
 "view the help by selecting 'help' from the menu, pressing F1, or by "
 "selecting a unit and pressing 'd'."
 msgstr ""
+"Voit lukea yksiköstä ja sen erikoisominaisuuksista pelin ohjeesta. Voit "
+"selata ohjetta valitsemalla valikosta 'ohje', painamalla 'F1', tai "
+"valitsemalla yksikön ja painamalla 'd'."
 
 #: data/tutorial/scenarios/utils.cfg:154
-#, fuzzy
 msgid "How did I get this object again?"
-msgstr "Kuinka kauan nämä esineet kestävät?"
+msgstr "Kuinka poimittiin esineitä?"
 
 #: data/tutorial/scenarios/utils.cfg:154
 msgid ""
@@ -1362,13 +1420,18 @@ msgid ""
 "before picking it up and give you the option of using it. However, you "
 "should not count on this happening."
 msgstr ""
+"Esineitä poimitaan liikkumalla samaan heksaan niiden kanssa. On miltei "
+"mahdotonta tietää mitä esineet tekevät, ennen niiden poimimista. Ja mikä "
+"pahinta, et voi millään tietää onko esine siunaus vai kirous. Harvoissa "
+"tapauksissa yksikkösi osaa määrittää minkä tyyppisestä esineestä on kyse "
+"ennen kuin poimii sen, ja voit valita käyttääkö sitä vai ei. Sinun ei "
+"kuitenkaan kannata luottaa siihen, että näin tapahtuu."
 
 #: data/tutorial/scenarios/utils.cfg:155
 msgid "What kind of objects am I likely to encounter?"
 msgstr "Millaisia esineitä saatan nähdä?"
 
 #: data/tutorial/scenarios/utils.cfg:155
-#, fuzzy
 msgid ""
 "The objects you encounter are put in by the scenario designer, so they vary "
 "from campaign to campaign. In 'Heir to the Throne', all objects are "
@@ -1376,9 +1439,9 @@ msgid ""
 "there are usually not that many objects in a campaign."
 msgstr ""
 "Kohtaamasi esineet ovat skenaarion suunnittelijan asettamia joten ne "
-"vaihtelevat kampanjasta toiseen. Valtaistuimen Perillisessä useimmat esineet "
-"antavat ne nostavalle yksikölle uuden aseen. Yleensä kampanjoissa ei tosin "
-"ole kovin montaa esinettä."
+"vaihtelevat kampanjasta toiseen. 'Valtaistuimen Perillisessä' kaikki ovat "
+"hyödyllisiä ja useimmat antavat ne poimivalle yksikölle uuden aseen. Yleensä "
+"kampanjoissa ei tosin ole kovin montaa esinettä."
 
 #: data/tutorial/scenarios/utils.cfg:156
 msgid ""
@@ -1397,7 +1460,6 @@ msgid "How do I play a campaign?"
 msgstr "Kuinkan pelaan kampanjan?"
 
 #: data/tutorial/scenarios/utils.cfg:160
-#, fuzzy
 msgid ""
 "To begin a campaign, run Wesnoth, select 'Campaign', select which campaign "
 "to play, then select Easy, Normal, or Hard. New players, even those who are "
@@ -1406,8 +1468,10 @@ msgid ""
 "didn't warn you, Konrad."
 msgstr ""
 "Aloittaaksesi kampanjan käynnistä Wesnoth, valitse 'Kampanja', valitse minkä "
-"kampanjan haluat pelata ja valitse vaikeusaste kolmesta vaihtoehdosta. "
-"Valtaistuimen Perillistä suositellaan uusille Wesnothin pelaajille."
+"kampanjan haluat pelata ja valitse vaikeusaste. Uusien pelaajien, jopa "
+"niiden joille sota ei ole vierasta, suositellaan helpointa tasoa kunnes he "
+"saavat kiinni Wesnothin taistelusysteemistä. He eivät kuitenkaan koskaan "
+"kuuntele. Älä sano etten olisi varoittanut sinua Konrad."
 
 #: data/tutorial/scenarios/utils.cfg:161
 msgid ""
@@ -1416,10 +1480,14 @@ msgid ""
 "If you exhaust the options that come with the game, the in-game campaign "
 "server has more offerings to try."
 msgstr ""
+"Kampanjat listan alussa on tarkoitettu uusille pelaajille. 'Valtaistuimen "
+"perillinen' on pelin virallinen kampanja, mutta se vaatii jo melko korkeaa "
+"osaamista. Jos pelaat loppuun kaikki pelin mukana tulleet kampanjat, pelin "
+"kampanjapalvelimelta löytyy paljon muita vaihtoehtoja. "
 
 #: data/tutorial/scenarios/utils.cfg:161
 msgid "Which campaigns should I play?"
-msgstr ""
+msgstr "Mitä kampanjoita minun kannattaisi pelata?"
 
 #: data/tutorial/scenarios/utils.cfg:162
 msgid "How do I play multiplayer?"
