@@ -12,7 +12,7 @@
 
 
  * Version 1.1.2
- * Update 6
+ * Update 7
 */
 
 #include <iostream>
@@ -264,9 +264,9 @@ struct Level {
 		return ret;
 	}
 	
+	std::string tag;
 	bool is_tag;
 	child_list data;
-	std::string tag;
 	Level* parent;
 };
 
@@ -406,6 +406,39 @@ std::vector< std::string > split(std::string const &val, char c = ',', int flags
 }
 
 void update_tree(Level& l,bool verbose);
+
+bool level_compare(Level* a,Level* b)
+{
+	if(a->data.empty()) {
+		if(b->data.empty()) {
+			if(a->tag < b->tag) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return true;
+		}
+	} else {
+		if(b->data.empty()) {
+			return false;
+		} else {
+			if(a->tag < b->tag) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+}
+
+void reorder_tree(Level& l)
+{
+	std::sort(l.data.begin(),l.data.end(),level_compare);
+	for(int w=0;w<l.data.size();w++) {
+		reorder_tree(*l.data[w]);
+	}
+}
 
 bool integrity_check(Level& l,bool verbose,Level* p)
 {
@@ -774,7 +807,7 @@ void update_tree(Level& l,bool verbose)
 
 
 
-void update_file(const std::string& path,bool do_update,bool comments,bool verbose)
+void update_file(const std::string& path,bool do_update,bool comments,bool verbose,bool reorder)
 {
 	std::cerr << "Processing " << path << "... \n";
 	std::ifstream infile(path.c_str());
@@ -914,6 +947,9 @@ void update_file(const std::string& path,bool do_update,bool comments,bool verbo
 		while(pre_update(*p_data,verbose));
 		update_tree(*p_data,verbose);
 		resolve_tree(*p_data,verbose);
+		if(reorder) {
+			reorder_tree(*p_data);
+		}
 	}
 	if(integrity_check(*p_data,verbose,NULL)) {
 		std::ofstream outfile(path.c_str());
@@ -927,7 +963,7 @@ void update_file(const std::string& path,bool do_update,bool comments,bool verbo
 int main(int argc, char *argv[])
 {
 	if(argc<2) {
-		std::cerr << "Usage: filenames [options]\n\t -u : Update the WML syntax from 1.0 to 1.1.2\n\t -r : Process all .cfg files recursively\n\t -v : verbose output\n\t -rem : Remove comments\n";
+		std::cerr << "Usage: filenames [options]\n\t -u : Update the WML syntax from 1.0 to 1.1.2\n\t -r : Process all .cfg files recursively\n\t -v : verbose output\n\t -rem : Remove comments\n\t --reorder : reorder keys/tags in ascii order\n";
 		return 0;
 	}
 	
@@ -940,6 +976,7 @@ int main(int argc, char *argv[])
 	bool recurse = false;
 	bool comments = true;
 	bool verbose = false;
+	bool reorder = false;
 	
 	for(int t=1;t<argc;t++) {
 		if(argv[t][0]=='-') {
@@ -951,6 +988,8 @@ int main(int argc, char *argv[])
 				comments = false;
 			} else if(strcmp(argv[t],"-v")==0) {
 				verbose = true;
+			} else if(strcmp(argv[t],"--reorder")==0) {
+				reorder = true;
 			} else {
 				std::cerr << "Unknown option '" << argv[t] << "'\n";
 			}
@@ -974,7 +1013,7 @@ int main(int argc, char *argv[])
 	}
 	
 	while(files.size()) {
-		update_file(files[0],do_update,comments,verbose);
+		update_file(files[0],do_update,comments,verbose,reorder);
 		files.pop_front();
 	}
 	
