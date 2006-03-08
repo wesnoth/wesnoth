@@ -743,6 +743,18 @@ static PyObject* wrapper_team_gold(wesnoth_team* team, void* /*closure*/)
 	return Py_BuildValue("i", team->team_->gold());
 }
 
+static PyObject* wrapper_team_side(wesnoth_team* team, void* /*closure*/)
+{
+    int side = 0;
+    for (size_t t = 0; t < running_instance->get_teams().size(); t++) {
+        if (team->team_ == &running_instance->get_teams()[t]) {
+            side = 1 + t;
+            break;
+        }
+    }
+    return Py_BuildValue("i", side);
+}
+				
 static int wrapper_team_internal_compare(wesnoth_team* left, wesnoth_team* right)
 {
 	return (long)left->team_ - (long)right->team_;
