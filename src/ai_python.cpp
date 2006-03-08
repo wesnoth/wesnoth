@@ -366,6 +366,13 @@ static PyObject* unit_movement_left(wesnoth_unit* unit, void* /*closure*/)
 	return Py_BuildValue("i",unit->unit_->movement_left());
 }
 
+static PyObject* unit_can_attack(wesnoth_unit* unit, void* /*closure*/)
+{
+	if (!running_instance->is_unit_valid(unit->unit_))
+		return NULL;
+	return Py_BuildValue("i",unit->unit_->can_attack());
+}
+
 static PyObject* unit_hitpoints(wesnoth_unit* unit, void* /*closure*/)
 {
 	if (!running_instance->is_unit_valid(unit->unit_))
@@ -401,6 +408,7 @@ static PyGetSetDef unit_getseters[] = {
 	{ "is_valid",		(getter)unit_query_valid,	NULL,	NULL,	NULL },
 	{ "side",			(getter)unit_side,	NULL,	NULL,	NULL },
 	{ "movement_left",	(getter)unit_movement_left,	NULL,	NULL,	NULL },
+	{ "can_attack",         (getter)unit_can_attack,	NULL,	NULL,	NULL },
 	{ "poisoned",		(getter)unit_poisoned,	NULL,	NULL,	NULL },
 	{ NULL,				NULL,						NULL,	NULL,	NULL }
 };
@@ -775,6 +783,7 @@ static PyGetSetDef team_getseters[] = {
 	{ "name",	(getter)wrapper_team_name,		NULL,	NULL,	NULL },
 	{ "gold",	(getter)wrapper_team_gold,		NULL,	NULL,	NULL },
 	{ "income",	(getter)wrapper_team_income,	NULL,	NULL,	NULL },
+	{ "side",       (getter)wrapper_team_side,              NULL,   NULL,   NULL},
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
