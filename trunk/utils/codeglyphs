@@ -1,0 +1,12 @@
+#!/bin/sh
+# codeglyphs
+# usage: codeglyphs en_GB | codelist
+# (this should yield something like 10,32-95,97-126,235,243,252)
+# run this in the main wesnoth directory
+# expects as input a language code used in LINGUAS
+# extracts list of glyphs used in translation files, suitable as input
+# to codelist
+
+cat `find po -name "$1.po" -print` | \
+perl -ne 'BEGIN { use Unicode::String } $u = Unicode::String->new($_); push @u, $u->unpack; END { print join("\n",@u), "\n" }' | \
+sort -nu

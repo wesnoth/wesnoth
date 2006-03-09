@@ -1,0 +1,109 @@
+#!/usr/bin/perl
+# mkmam: make Makefile.am from Makefile.am.in,
+# substituting file lists into _SOURCES variables
+
+#   Copyright (C) 2005 by ott
+#   Part of the Battle for Wesnoth Project http://wesnoth.org/
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License.
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY.
+#
+#   See the COPYING file for more details.
+
+# Automake is dysfunctional: it doesn't understand
+# that one may want to use a list of sources for multiple projects,
+# and that this list should be clean and simple...
+# The automake authors seem to think one should extract the list of sources
+# from the Makefile.am _SOURCES variable if one needs it.
+# This script works around this limitation by substituting any
+# occurrences of @NAME@ inside any _SOURCES variable assignments
+# in FILE.in with the contents of the file NAME, and writes FILE as the output.
+# It is assumed that NAME contains a list of files, one per line
+# and multiple files can be substituted at once.
+# Watch out for @ substitutions inside file NAME, no check is made
+# for infinite loops -- it's probably best to avoid @ inside the NAME files.
+
+use strict;
+use File::Basename;
+
+my $DEBUG = 0;
+my $filename;
+
+sub process_arg {
+    # uses global $filename
+    my $arg = shift;
+    $DEBUG and print STDERR "argument :$arg:\n";
+    while (1) { # process $arg
+	my $i = index($arg, '@');
+	my $l = index($arg, '@', $i+1) - $i + 1;
+	last if $l <= 1; # stop unless we find two @'s
+	# now $l > 1 and substr($arg, $i, $l) =~ /^@.*@$/
+	my $thisfile = substr($arg, $i, $l, '');
+	$thisfile =~ s/^@([^@]*)@/\1/;
+	my ($base,$path,$type) = fileparse($filename, '');
+	$thisfile = (fileparse($filename, ''))[1] . $thisfile unless $thisfile =~ /^\//;
+	$DEBUG and print STDERR "substituting $thisfile\n";
+	substr($arg, $i, 0) = `cat $thisfile`;
+    }
+    $arg =~ s/^([^\\])/\\\n\1/;
+    $arg =~ s/([^\\\n ])\n/\1 \\\n/g;
+    $arg =~ s/\n +/\n\t/g;
+    $arg =~ s/\n([^\t\n])/\n\t\1/g;
+    $arg =~ s/\s*\\(\n+)$/\1/;
+    $DEBUG and print STDERR "argument now :$arg:\n";
+    return $arg;
+}
+
+my $state;
+my $arg;
+
+Argument:
+while ($filename = shift) {
+    $DEBUG and print STDERR "opening $filename for reading\n";
+    if (! open(CURRENT, $filename)) {
+        warn("cannot open file $filename, skipping");
+        next Argument;
+    }
+    my ($base,$path,$type) = fileparse($filename, qr{\.in});
+    if ($type ne '.in') {
+	warn "Can only process files ending with .in, skipping $filename";
+	next Argument;
+    }
+    my $outfile = $path . $base;
+    $DEBUG and print STDERR "opening $outfile for writing\n";
+    if (! open(OUTFILE, ">$outfile")) {
+        warn "Can't open $outfile for writing, skipping $filename";
+	next Argument;
+    }
+    $state = 0;
+    $arg = '';
+    while (<CURRENT>) {                                                         
+	if ($state == 0) {
+	    if ( /^(\w+_SOURCES\s*=\s*)(.*)/s ) {
+		print OUTFILE $1;
+		$arg = $2;
+		# chomp $arg;
+		if ( $arg =~ /\\$/ ) {
+		    $state = 1;
+		} else {
+		    print OUTFILE process_arg( $arg );
+		}
+	    } else {
+		print OUTFILE; # keep looking
+	    }
+	} elsif ($state == 1) { # looking for more lines
+	    $arg .= $_;
+	    if ( ! /\\$/ ) { # got the whole SOURCES line, substitute
+		print OUTFILE process_arg($arg);
+		$arg = '';
+		$state = 0;
+	    }
+	} else {
+	    die 'Internal error, quitting';
+	}
+    }
+    print OUTFILE process_arg($arg) if $arg;
+    close $outfile;
+}
