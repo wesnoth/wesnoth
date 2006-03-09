@@ -22,6 +22,7 @@
 #include "hotkeys.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
+#include "play_controller.hpp"
 #include "playlevel.hpp"
 #include "preferences_display.hpp"
 #include "tooltips.hpp"
@@ -29,7 +30,7 @@
 
 #include <vector>
 
-class replay_controller : public hotkey::command_executor, public events::handler
+class replay_controller : public play_controller, public hotkey::command_executor, public events::handler
 {
 public:
 	replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
@@ -90,18 +91,17 @@ private:
 	game_events::manager* events_manager_;
 	help::help_manager help_manager_;
 
-	const config& level_;
+	//const config& level_;
 	const config& game_config_;
 	const game_data& gameinfo_;
-	game_state& gamestate_, gamestate_start_;
+	game_state& /*gamestate_,*/ gamestate_start_;
 	display* gui_;
-	gamestatus status_, status_start_;
+	gamestatus /*status_,*/ status_start_;
 	gamemap map_;
 	unit_map units_, units_start_;
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
 
-	const int ticks_;
 	int player_number_;
 	int first_player_;
 	bool loading_game_;

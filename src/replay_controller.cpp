@@ -49,12 +49,13 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 
 replay_controller::replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 						   const int ticks, const int num_turns, const config& game_config,
-						   CVideo& video, const std::vector<config*>& story) :
+						   CVideo& video, const std::vector<config*>& story)
+	: play_controller(level, state_of_game, ticks, num_turns), 
 	verify_manager_(units_), team_manager_(teams_), labels_manager_(), help_manager_(&game_config, &gameinfo, &map_), 
-	level_(level), game_config_(game_config), gameinfo_(gameinfo), gamestate_(state_of_game),
-	gamestate_start_(state_of_game), status_(level, num_turns), status_start_(level, num_turns),
+	game_config_(game_config), gameinfo_(gameinfo),
+	gamestate_start_(state_of_game), status_start_(level, num_turns),
 	map_(game_config, level["map_data"]), mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo),
-	ticks_(ticks), xp_modifier_(atoi(level["experience_modifier"].c_str()))
+	xp_modifier_(atoi(level["experience_modifier"].c_str()))
 {
 	player_number_ = 1;
 	delay_ = 0;
@@ -77,18 +78,6 @@ replay_controller::~replay_controller(){
 }
 
 void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*/){
-	//if the recorder has no event, adds an "game start" event to the
-	//recorder, whose only goal is to initialize the RNG
-	if(recorder.empty()) {
-		recorder.add_start();
-	} else {
-		recorder.pre_replay();
-	}
-	recorder.set_skip(false);
-	replay_network_sender replay_sender(recorder);
-
-	const set_random_generator generator_setter(&recorder);
-
 	//guarantee the cursor goes back to 'normal' at the end of the level
 	const cursor::setter cursor_setter(cursor::NORMAL);
 
