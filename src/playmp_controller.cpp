@@ -33,7 +33,7 @@ LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_confi
 //	try{
 	const int ticks = SDL_GetTicks();
 	const int num_turns = atoi((*level)["turns"].c_str());
-	playmp_controller playcontroller(*level, state_of_game, ticks, num_turns);
+	playmp_controller playcontroller(*level, state_of_game, ticks, num_turns, game_config);
 	return playcontroller.play_scenario(gameinfo, game_config, level, video, state_of_game, story, log, skip_replay);
 	//return LEVEL_CONTINUE;
 		
@@ -48,8 +48,8 @@ LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_confi
 
 }
 
-playmp_controller::playmp_controller(const config& level, game_state& state_of_game, const int ticks, const int num_turns)
-	: play_controller(level, state_of_game, ticks, num_turns),
+playmp_controller::playmp_controller(const config& level, game_state& state_of_game, const int ticks, const int num_turns, const config& game_config)
+	: play_controller(level, state_of_game, ticks, num_turns, game_config),
 	generator_setter(&recorder), cursor_setter(cursor::NORMAL)
 {
 }

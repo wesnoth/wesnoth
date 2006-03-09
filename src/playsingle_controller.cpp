@@ -21,7 +21,6 @@
 #include "preferences_display.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
-#include "statistics.hpp"
 #include "tooltips.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
@@ -33,8 +32,8 @@ LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_c
 //	try{
 		const int ticks = SDL_GetTicks();
 		const int num_turns = atoi((*level)["turns"].c_str());
-		playsingle_controller playcontroller(*level, state_of_game, ticks, num_turns);
-		return playcontroller.play_scenario(gameinfo, game_config, video, story, log, skip_replay);
+		playsingle_controller playcontroller(*level, state_of_game, ticks, num_turns, game_config);
+		return playcontroller.play_scenario(gameinfo, video, story, log, skip_replay);
 	//return LEVEL_CONTINUE;
 		
 		//play event-loop
@@ -47,23 +46,18 @@ LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_c
 
 }
 
-playsingle_controller::playsingle_controller(const config& level, game_state& state_of_game, const int ticks, const int num_turns)
-	: play_controller(level, state_of_game, ticks, num_turns), 
+playsingle_controller::playsingle_controller(const config& level, game_state& state_of_game, 
+											 const int ticks, const int num_turns, const config& game_config)
+	: play_controller(level, state_of_game, ticks, num_turns, game_config), 
 	generator_setter(&recorder), cursor_setter(cursor::NORMAL)
-{}
+{
+	LOG_NG << "created objects... " << (SDL_GetTicks() - ticks_) << "\n";
+}
 
-LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, const config& game_config,
-		CVideo& video,
+LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, CVideo& video,
 		const std::vector<config*>& story, upload_log& log, bool skip_replay)
 {
-	const int ticks = SDL_GetTicks();
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
-
-	const statistics::scenario_context statistics_context(level_["name"]);
-
-	gamemap map(game_config,level_["map_data"]);
-
-	LOG_NG << "created objects... " << (SDL_GetTicks() - ticks) << "\n";
 
 	CKey key;
 	unit_map units;
@@ -83,11 +77,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, con
 
 	if(level_["modify_placing"] == "true") {
 		LOG_NG << "modifying placing...\n";
-		play::place_sides_in_preferred_locations(map,unit_cfg);
+		play::place_sides_in_preferred_locations(map_,unit_cfg);
 	}
 
 	LOG_NG << "initializing teams..." << unit_cfg.size() << "\n";;
-	LOG_NG << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << (SDL_GetTicks() - ticks_) << "\n";
 
 	std::set<std::string> seen_save_ids;
 
@@ -97,33 +91,33 @@ LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, con
 		if (first_human_team == -1){
 			first_human_team = get_first_human_team(ui, unit_cfg);
 		}
-		get_player_info(**ui, gamestate_, save_id, teams, level_, gameinfo, map, units);
+		get_player_info(**ui, gamestate_, save_id, teams, level_, gameinfo, map_, units);
 	}
 
 	preferences::encounter_recruitable_units(teams);
 	preferences::encounter_start_units(units);
 	preferences::encounter_recallable_units(gamestate_);
-	preferences::encounter_map_terrain(map);
+	preferences::encounter_map_terrain(map_);
 
-	LOG_NG << "initialized teams... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "initialized teams... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	const config* theme_cfg = NULL;
 	if(level_["theme"] != "") {
-		theme_cfg = game_config.find_child("theme","name",level_["theme"]);
+		theme_cfg = game_config_.find_child("theme","name",level_["theme"]);
 	}
 
 	if(theme_cfg == NULL) {
-		theme_cfg = game_config.find_child("theme","name",preferences::theme());
+		theme_cfg = game_config_.find_child("theme","name",preferences::theme());
 	}
 
-	LOG_NG << "initializing display... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
 	const config dummy_cfg;
-	display gui(units,video,map,status_,teams,theme_cfg != NULL ? *theme_cfg : dummy_cfg, game_config, level_);
-	theme::set_known_themes(&game_config);
+	display gui(units,video,map_,status_,teams,theme_cfg != NULL ? *theme_cfg : dummy_cfg, game_config_, level_);
+	theme::set_known_themes(&game_config_);
 
-	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
 
-	LOG_NG << "a... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "a... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	if(first_human_team != -1) {
 		gui.set_team(first_human_team);
@@ -132,11 +126,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, con
 	const preferences::display_manager prefs_disp_manager(&gui);
 	const tooltips::manager tooltips_manager(gui.video());
 
-	LOG_NG << "b... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "b... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	//this *needs* to be created before the show_intro and show_map_scene
 	//as that functions use the manager state_of_game
-	game_events::manager events_manager(level_,gui,map,units,teams,
+	game_events::manager events_manager(level_,gui,map_,units,teams,
 	                                    gamestate_,status_,gameinfo);
 
 	if(!recorder.is_skipping()) {
@@ -150,21 +144,21 @@ LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, con
 	const font::floating_label_context labels_manager;
 	const halo::manager halo_manager(gui);
 	gui.labels().read(level_);
-	LOG_NG << "c... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "c... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	const std::string& music = level_["music"];
 	if(music != "") {
 		sound::play_music_repeatedly(music);
 	}
 
-	LOG_NG << "d... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "d... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	victory_conditions::set_victory_when_enemies_defeated(
 						level_["victory_when_enemies_defeated"] != "no");
 
-	LOG_NG << "initializing events manager... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "initializing events manager... " << (SDL_GetTicks() - ticks_) << "\n";
 
-	help::help_manager help_manager(&game_config, &gameinfo, &map);
+	help::help_manager help_manager(&game_config_, &gameinfo, &map_);
 
 	//find a list of 'items' (i.e. overlays) on the level, and add them
 	const config::child_list& overlays = level_.get_children("item");
@@ -176,7 +170,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, con
 
 	turn_info::floating_textbox textbox_info;
 
-	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	replay_network_sender replay_sender(recorder);
 
@@ -195,15 +189,15 @@ LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, con
 		gui.begin_game();
 		gui.adjust_colours(0,0,0);
 
-		LOG_NG << "scrolling... " << (SDL_GetTicks() - ticks) << "\n";
+		LOG_NG << "scrolling... " << (SDL_GetTicks() - ticks_) << "\n";
 		if(first_human_team != -1) {
-			LOG_NG << "b " << (SDL_GetTicks() - ticks) << "\n";
-			gui.scroll_to_tile(map.starting_position(first_human_team + 1).x,
-			                   map.starting_position(first_human_team + 1).y, display::WARP);
-			LOG_NG << "c " << (SDL_GetTicks() - ticks) << "\n";
+			LOG_NG << "b " << (SDL_GetTicks() - ticks_) << "\n";
+			gui.scroll_to_tile(map_.starting_position(first_human_team + 1).x,
+			                   map_.starting_position(first_human_team + 1).y, display::WARP);
+			LOG_NG << "c " << (SDL_GetTicks() - ticks_) << "\n";
 		}
-		gui.scroll_to_tile(map.starting_position(1).x,map.starting_position(1).y,display::WARP);
-		LOG_NG << "done scrolling... " << (SDL_GetTicks() - ticks) << "\n";
+		gui.scroll_to_tile(map_.starting_position(1).x,map_.starting_position(1).y,display::WARP);
+		LOG_NG << "done scrolling... " << (SDL_GetTicks() - ticks_) << "\n";
 
 		bool replaying = (recorder.at_end() == false);
 
@@ -213,12 +207,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, con
 		}
 
 		for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
-			clear_shroud(gui,status_,map,gameinfo,units,teams,(t-teams.begin()));
+			clear_shroud(gui,status_,map_,gameinfo,units,teams,(t-teams.begin()));
 		}
 
 		std::deque<config> data_backlog;
 
-		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks) << "\n";
+		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 		for(bool first_time = true; true; first_time = false, first_player = 0) {
 			if(first_time) {
 				const hotkey::basic_handler key_events_handler(&gui);
@@ -228,7 +222,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, con
 				events::raise_draw_event();
 				gui.draw();
 				for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
-					clear_shroud(gui,status_,map,gameinfo,units,teams,(t-teams.begin()));
+					clear_shroud(gui,status_,map_,gameinfo,units,teams,(t-teams.begin()));
 				}
 
 				if(!loading_game) {
@@ -291,14 +285,14 @@ LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, con
 						team_it->spend_gold(expense);
 					}
 
-					calculate_healing(gui,status_,map,units,player_number,teams, !skip_replay);
+					calculate_healing(gui,status_,map_,units,player_number,teams, !skip_replay);
 				}
 
 				team_it->set_time_of_day(int(status_.turn()),status_.get_time_of_day());
 
 				gui.set_playing_team(size_t(player_number-1));
 
-				clear_shroud(gui,status_,map,gameinfo,units,teams,player_number-1);
+				clear_shroud(gui,status_,map_,gameinfo,units,teams,player_number-1);
 
 				if (!skip_replay){
 					gui.scroll_to_leader(units, player_number);
@@ -308,7 +302,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, con
 					const hotkey::basic_handler key_events_handler(&gui);
 					LOG_NG << "doing replay " << player_number << "\n";
 					try {
-						replaying = do_replay(gui,map,gameinfo,units,teams,
+						replaying = do_replay(gui,map_,gameinfo,units,teams,
 						                      player_number,status_,gamestate_);
 					} catch(replay::error&) {
 						gui::show_dialog(gui,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_ONLY);
@@ -335,8 +329,8 @@ redo_turn:
 					LOG_NG << "is human...\n";
 
 					try {
-						play_turn(gameinfo,gamestate_,status_,game_config,
-						          level_, key, gui, map, teams, player_number,
+						play_turn(gameinfo,gamestate_,status_,game_config_,
+						          level_, key, gui, map_, teams, player_number,
 						          units, textbox_info, replay_sender, skip_replay);
 					} catch(end_turn_exception& end_turn) {
 						if (end_turn.redo == player_number)
@@ -355,18 +349,18 @@ redo_turn:
 					const cursor::setter cursor_setter(cursor::WAIT);
 
 					turn_info turn_data(gameinfo,gamestate_,status_,
-						                game_config,level_,key,gui,
-						                map,teams,player_number,units,
+						                game_config_,level_,key,gui,
+						                map_,teams,player_number,units,
 								turn_info::BROWSE_AI,textbox_info,replay_sender);
 
-					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status_,turn_data);
+					ai_interface::info ai_info(gui,map_,gameinfo,units,teams,player_number,status_,turn_data);
 					util::scoped_ptr<ai_interface> ai_obj(create_ai(team_it->ai_algorithm(),ai_info));
 					ai_obj->play_turn();
 					recorder.end_turn();
 					ai_obj->sync_network();
 
 					gui.recalculate_minimap();
-					clear_shroud(gui,status_,map,gameinfo,units,teams,player_number-1);
+					clear_shroud(gui,status_,map_,gameinfo,units,teams,player_number-1);
 					gui.invalidate_unit();
 					gui.invalidate_game_status();
 					gui.invalidate_all();
@@ -376,8 +370,8 @@ redo_turn:
 					LOG_NG << "is networked...\n";
 
 					turn_info turn_data(gameinfo,gamestate_,status_,
-					                    game_config,level_,key,gui,
-							    map,teams,player_number,units,
+					                    game_config_,level_,key,gui,
+							    map_,teams,player_number,units,
 							    turn_info::BROWSE_NETWORKED,
 							    textbox_info,replay_sender);
 
@@ -536,7 +530,7 @@ redo_turn:
 
 				const int remaining_gold = i->gold();
 				const int finishing_bonus_per_turn =
-				             map.villages().size() * game_config::village_income +
+				             map_.villages().size() * game_config::village_income +
 				             game_config::base_income;
 				const int turns_left = maximum<int>(0,status_.number_of_turns() - status_.turn());
 				const int finishing_bonus = end_level.gold_bonus ?
@@ -597,8 +591,8 @@ redo_turn:
 		}
 
 		turn_info turn_data(gameinfo,gamestate_,status_,
-				game_config,level_,key,gui,
-				map,teams,player_number,units,turn_info::BROWSE_NETWORKED,textbox_info,replay_sender);
+				game_config_,level_,key,gui,
+				map_,teams,player_number,units,turn_info::BROWSE_NETWORKED,textbox_info,replay_sender);
 
 		turn_data.save_game(_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"),gui::YES_NO);
 		if(disconnect) {

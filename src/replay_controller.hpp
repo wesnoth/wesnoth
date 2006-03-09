@@ -91,13 +91,10 @@ private:
 	game_events::manager* events_manager_;
 	help::help_manager help_manager_;
 
-	//const config& level_;
-	const config& game_config_;
 	const game_data& gameinfo_;
-	game_state& /*gamestate_,*/ gamestate_start_;
+	game_state& gamestate_start_;
 	display* gui_;
-	gamestatus /*status_,*/ status_start_;
-	gamemap map_;
+	gamestatus status_start_;
 	unit_map units_, units_start_;
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;

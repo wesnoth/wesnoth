@@ -17,20 +17,25 @@
 #include "gamestatus.hpp"
 #include "hotkeys.hpp"
 #include "playlevel.hpp"
+#include "statistics.hpp"
 
 #include <vector>
 
 class play_controller
 {
 public:
-	play_controller(const config& level, game_state& state_of_game, int ticks, int num_turns);
+	play_controller(const config& level, game_state& state_of_game, 
+		int ticks, int num_turns, const config& game_config);
 
 protected:
 	virtual void init();
 
 	const config& level_;
+	const config& game_config_;
 	game_state& gamestate_;
 	gamestatus status_;
+	gamemap map_;
+	const statistics::scenario_context statistics_context_;
 
 	const int ticks_;
 private:

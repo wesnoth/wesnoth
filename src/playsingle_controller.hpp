@@ -24,10 +24,10 @@
 class playsingle_controller : play_controller
 {
 public:
-	playsingle_controller(const config& level, game_state& state_of_game, const int ticks, const int num_turns);
+	playsingle_controller(const config& level, game_state& state_of_game, 
+		const int ticks, const int num_turns, const config& game_config);
 
-	LEVEL_RESULT play_scenario(const game_data& gameinfo, const config& terrain_config,
-		CVideo& video,
+	LEVEL_RESULT play_scenario(const game_data& gameinfo, CVideo& video,
 		const std::vector<config*>& story, upload_log& log, bool skip_replay);
 
 protected:

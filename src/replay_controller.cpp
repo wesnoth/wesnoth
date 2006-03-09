@@ -18,7 +18,6 @@
 #include "replay.hpp"
 #include "replay_controller.hpp"
 #include "sound.hpp"
-#include "statistics.hpp"
 #include "tooltips.hpp"
 
 #include <iostream>
@@ -50,11 +49,10 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 replay_controller::replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 						   const int ticks, const int num_turns, const config& game_config,
 						   CVideo& video, const std::vector<config*>& story)
-	: play_controller(level, state_of_game, ticks, num_turns), 
+	: play_controller(level, state_of_game, ticks, num_turns, game_config), 
 	verify_manager_(units_), team_manager_(teams_), labels_manager_(), help_manager_(&game_config, &gameinfo, &map_), 
-	game_config_(game_config), gameinfo_(gameinfo),
-	gamestate_start_(state_of_game), status_start_(level, num_turns),
-	map_(game_config, level["map_data"]), mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo),
+	gameinfo_(gameinfo), gamestate_start_(state_of_game), status_start_(level, num_turns),
+	mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo),
 	xp_modifier_(atoi(level["experience_modifier"].c_str()))
 {
 	player_number_ = 1;
@@ -67,6 +65,7 @@ replay_controller::replay_controller(const config& level, const game_data& gamei
 		first_player_ = 0;
 	}
 	init(video, story);
+	LOG_NG << "created objects... " << (SDL_GetTicks() - ticks_) << "\n";
 }
 
 replay_controller::~replay_controller(){
@@ -78,15 +77,10 @@ replay_controller::~replay_controller(){
 }
 
 void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*/){
-	//guarantee the cursor goes back to 'normal' at the end of the level
-	const cursor::setter cursor_setter(cursor::NORMAL);
-
-	const int ticks = SDL_GetTicks();
 	LOG_NG << "in replay_controller::init()...\n";
 
-	const statistics::scenario_context statistics_context(level_["name"]);
-
-	LOG_NG << "created objects... " << (SDL_GetTicks() - ticks) << "\n";
+	//guarantee the cursor goes back to 'normal' at the end of the level
+	const cursor::setter cursor_setter(cursor::NORMAL);
 
 	const unit_type::experience_accelerator xp_mod(xp_modifier_ > 0 ? xp_modifier_ : 100);
 
@@ -98,7 +92,7 @@ void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*
 	}
 
 	LOG_NG << "initializing teams..." << unit_cfg.size() << "\n";;
-	LOG_NG << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << (SDL_GetTicks() - ticks_) << "\n";
 	int first_human_team = -1;
 	std::set<std::string> seen_save_ids;
 
@@ -115,9 +109,9 @@ void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*
 	preferences::encounter_start_units(units_);
 	preferences::encounter_recallable_units(gamestate_);
 	preferences::encounter_map_terrain(map_);
-	LOG_NG << "initialized teams... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "initialized teams... " << (SDL_GetTicks() - ticks_) << "\n";
 
-	LOG_NG << "initializing display... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
 	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
 	gui_ = new display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_);
 	const config* replay_theme_cfg = theme_cfg->child("resolution")->child("replay");
@@ -125,7 +119,7 @@ void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*
 	    gui_->get_theme().modify(replay_theme_cfg);
 	mouse_handler_.set_gui(gui_);
 	theme::set_known_themes(&game_config_);
-	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	if(first_human_team != -1) {
 		gui_->set_team(first_human_team);
@@ -143,14 +137,14 @@ void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*
 	*/
 
 	gui_->labels().read(level_);
-	LOG_NG << "c... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "c... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	const std::string& music = level_["music"];
 	if(music != "") {
 		sound::play_music_repeatedly(music);
 	}
 
-	LOG_NG << "d... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "d... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	//find a list of 'items' (i.e. overlays) on the level, and add them
 	const config::child_list& overlays = level_.get_children("item");
@@ -175,9 +169,9 @@ void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*
 		t->set_shroud(false);
 	}
 
-	LOG_NG << "scrolling... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "scrolling... " << (SDL_GetTicks() - ticks_) << "\n";
 	gui_->scroll_to_leader(units_, player_number_);
-	LOG_NG << "done scrolling... " << (SDL_GetTicks() - ticks) << "\n";
+	LOG_NG << "done scrolling... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	if(!loading_game_) {
 		game_events::fire("start");
