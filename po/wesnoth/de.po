@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-03-08 18:33+0100\n"
-"PO-Revision-Date: 2006-02-17 14:54+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT   gmx D OT  net>\n"
+"PO-Revision-Date: 2006-03-10 13:43+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1357,7 +1357,6 @@ msgstr "Berührung"
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:44
 #: data/units/Undead_Necro_Ancient_Lich.cfg:70
 #: data/units/Undead_Necro_Lich.cfg:51
-#, fuzzy
 msgid "chill tempest"
 msgstr "Frostwelle"
 
@@ -1755,6 +1754,10 @@ msgid ""
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
+"Verlangsamen:\n"
+"Unsichtbare Fäden scheinen das Opfer zu behindern und festzuhalten. "
+"Verlangsamte Einheiten verlieren die Hälfte ihrer Aktionen im Kampf sowie "
+"ihrer Bewegungspunkte (aufgerundet). Die Verlangsamung hält eine Runde an."
 
 #: data/english.cfg:133
 msgid ""
@@ -3210,7 +3213,6 @@ msgid "Forest"
 msgstr "Wald"
 
 #: data/help.cfg:348
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3244,7 +3246,8 @@ msgstr ""
 "sind, erhalten 60 bis 70% Verteidigung.\n"
 "Zwerge verfügen generell nur über 30% Verteidigung in Wäldern.\n"
 "Fußtruppen der übrigen Rassen erhalten 50% Verteidigung in allen "
-"Waldfeldern, wohingegen ihre Kavallerie auf 40% begrenzt ist."
+"Waldfeldern, wohingegen ihre Kavallerie auf 40% begrenzt ist.\n"
+"<img>src=terrain/great-tree-tile.png align=middle box=no</img>"
 
 #: data/help.cfg:354 data/terrain.cfg:316
 msgid "Hills"
@@ -4101,9 +4104,8 @@ msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "Unentschieden! Der Endstand: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:5
-#, fuzzy
 msgid "3p - Island of the Horatii"
-msgstr "4S - König des Hügels"
+msgstr "3S - Die Insel des Horatius"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
 #, fuzzy
@@ -4212,9 +4214,8 @@ msgstr ""
 "Empfohlene Einstellung: 1 Einheit Gold pro Dorf."
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:5
-#, fuzzy
 msgid "4p - Loris River"
-msgstr "2S - Über den Fluss"
+msgstr "4S - Der Lorisfluss"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
 msgid ""
@@ -4239,7 +4240,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:5
 msgid "4p - Paths of Daggers"
-msgstr ""
+msgstr "4S - Pfad der Dolche"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
 msgid ""
@@ -4391,9 +4392,8 @@ msgid "Underground"
 msgstr "Untergrund"
 
 #: data/schedules.cfg:98 data/schedules.cfg:109
-#, fuzzy
 msgid "Deep Underground"
-msgstr "Untergrund"
+msgstr "Tiefer Untergrund"
 
 #: data/team_colors.cfg:4
 msgid "Red"
@@ -4467,14 +4467,12 @@ msgid "Snow Forest"
 msgstr "Verschneiter Wald"
 
 #: data/terrain.cfg:403
-#, fuzzy
 msgid "Cave Lit"
-msgstr "Höhle"
+msgstr "Erhellte Höhle"
 
 #: data/terrain.cfg:436
-#, fuzzy
 msgid "Great Tree"
-msgstr "Trollheld"
+msgstr "Bedeutsamer Baum"
 
 #: data/terrain.cfg:455
 msgid "Encampment"
@@ -4862,8 +4860,8 @@ msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attacks."
 msgstr ""
-"Der »Verlangsamungs«-Angriff halbiert die Bewegungsgeschwindigkeit und "
-"Angriffsstärke des Gegners für eine Runde."
+"Der »Verlangsamungs«-Angriff verringert die Anzahl gegnerischer BP und "
+"halbiert außerdem den angerichteten Schaden bei jeder gegnerischen Attacke."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -4916,6 +4914,10 @@ msgid ""
 "limited by its maximum movement. Remember this when deciding what unit is "
 "best to scout specific types of terrain."
 msgstr ""
+"Auf Karten, für die der »Nebel des Krieges« oder der »Schleier der "
+"Finsternis« eingeschaltet wurde, ist die Sichtweite einer Einheit durch ihre "
+"Bewegungsreichweite beschränkt. Behaltet dies im Hinterkopf, wenn Ihr Eure "
+"Späher für ein bestimmtes Gelände auswählt."
 
 #: data/tips.cfg:36
 msgid ""
@@ -5748,7 +5750,6 @@ msgid "female^Elvish Druid"
 msgstr "Elfendruidin"
 
 #: data/units/Elvish_Druid.cfg:26
-#, fuzzy
 msgid ""
 "The magic of the wood elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they live can be quickened by a word of "
@@ -5771,10 +5772,10 @@ msgstr ""
 "die sie bei ihrem Volk in hoher Achtung steht.\n"
 "\n"
 "Anmerkung: Elfendruidinnen können den Zorn des Waldes heraufbeschwören, so "
-"dass ihre Gegner verlangsamt werden und sie einen Angriff weniger ausführen "
-"können. Zudem sind sie in der Lage, alle befreundeten, direkt benachbarten "
-"Einheiten von ihren Wunden zu heilen oder von der Wirkung eines Giftes zu "
-"kurieren."
+"dass die Aktionen des Gegners im Kampf sowie sein Bewegungspunkte um die "
+"Hälfte reduziert werden. Zudem sind sie in der Lage, alle befreundeten, "
+"direkt benachbarten Einheiten von ihren Wunden zu heilen oder von der "
+"Wirkung eines Giftes zu kurieren."
 
 #: data/units/Elvish_Druid.cfg:57 data/units/Elvish_Shyde.cfg:57
 msgid "ensnare"
@@ -6022,7 +6023,6 @@ msgid "female^Elvish Shaman"
 msgstr "Elfenschamanin"
 
 #: data/units/Elvish_Shaman.cfg:27
-#, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -6049,9 +6049,9 @@ msgstr ""
 "sie bei ihrem Volk in hoher Achtung steht.\n"
 "\n"
 "Anmerkung: Elfenschamaninen können einen Efeumantel heraufbeschwören, so "
-"dass ihre Gegner verlangsamt werden und sie einen Angriff weniger ausführen "
-"können. Zudem sind sie in der Lage, alle befreundeten, direkt benachbarten "
-"Einheiten von ihren Wunden zu heilen."
+"dass die Aktionen des Gegners im Kampf sowie seine Bewegungspunkte um die "
+"Hälfte reduziert werden. Zudem sind sie in der Lage, alle befreundeten, "
+"direkt benachbarten Einheiten von ihren Wunden zu heilen."
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
@@ -6087,7 +6087,6 @@ msgid "female^Elvish Shyde"
 msgstr "Waldfee"
 
 #: data/units/Elvish_Shyde.cfg:26
-#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -6103,11 +6102,11 @@ msgstr ""
 "Libellenflügel und sie verwandeln sich in wunderschöne Geschöpfe, die "
 "unbeschwert durch den Elfenwald schweben.\n"
 "\n"
-"Anmerkung: Waldfeen können den Zorn des Waldes heraufbeschwören, so dass "
-"ihre Gegner verlangsamt werden und sie einen Angriff weniger ausführen "
-"können. Zudem sind sie in der Lage, alle befreundeten, direkt benachbarten "
-"Einheiten von ihren Wunden zu heilen oder von der Wirkung eines Giftes zu "
-"kurieren."
+"Anmerkung: Waldfeen können den Zorn des Waldes heraufbeschwören, so dass die "
+"Aktionen des Gegners im Kampf sowie seine Bewegungspunkte um die Hälfte "
+"reduziert werden. Zudem sind sie in der Lage, alle befreundeten, direkt "
+"benachbarten Einheiten von ihren Wunden zu heilen oder von der Wirkung eines "
+"Giftes zu kurieren."
 
 #: data/units/Elvish_Shyde.cfg:30 data/units/Elvish_Sylph.cfg:26
 msgid "faerie touch"
@@ -6248,7 +6247,6 @@ msgid "Goblin Pillager"
 msgstr "Kobold Plünderer"
 
 #: data/units/Goblin_Pillager.cfg:36
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -6265,8 +6263,9 @@ msgstr ""
 "vor allem wegen ihrem Umgang mit dem Wurfnetz eingesetzt, da sie so schon "
 "ganze Truppenverbände durcheinander brachten.\n"
 "\n"
-"Anmerkung: Wenn ein Gegner in einem Netz verstrickt ist, wird jeder seiner "
-"Angriffe um eins reduziert."
+"Anmerkung: Wenn ein Gegner sich in einem Netz verfängt, wird er so sehr "
+"behindert, dass seine Aktionen im Kampf sowie seine Bewegungspunkte um die "
+"Hälfte reduziert werden."
 
 #: data/units/Goblin_Pillager.cfg:40
 msgid "torch"
@@ -8005,7 +8004,6 @@ msgid "Merman Entangler"
 msgstr "Wassermann Netzmeister"
 
 #: data/units/Merman_Entangler.cfg:20
-#, fuzzy
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
 "well; those who master it are valued and revered by their comrades. This "
@@ -8024,7 +8022,8 @@ msgstr ""
 "nicht heimisch sind.\n"
 "\n"
 "Anmerkung: Wenn ein Gegner sich in einem Netz verfängt, wird er so sehr "
-"behindert, dass er im Kampf einmal weniger zuschlagen kann."
+"behindert, dass seine Aktionen im Kampf sowie seine Bewegungspunkte um die "
+"Hälfte reduziert werden."
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
@@ -8104,7 +8103,6 @@ msgid "Merman Netcaster"
 msgstr "Wassermann Netzwerfer"
 
 #: data/units/Merman_Netcaster.cfg:19
-#, fuzzy
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets. These are not very damaging in themselves, but they "
@@ -8120,7 +8118,7 @@ msgid ""
 msgstr ""
 "Die Art von Fischerei, wie sie vom Meeresvolk betrieben wird, besteht "
 "größtenteils darin, einen Schwarm Fische in die vorbereiteten Netze zu "
-"treiben. An sich kann man mit diesen Netzen keinen ernsthaften Schaden "
+"treiben. An sich lässt sich mit diesen Netzen kein ernsthafter Schaden "
 "anrichten. Allerdings sind sie hervorragend dafür geeignet, einen Gegner bei "
 "der Durchquerung eines Flusses zu behindern. Für Zeiten des Krieges gibt es "
 "spezielle Netze, die mit Gewichten beschwert werden, so dass sie dafür "
@@ -8129,7 +8127,8 @@ msgstr ""
 "zu beseitigen.\n"
 "\n"
 "Anmerkung: Wenn ein Gegner sich in einem Netz verfängt, wird er so sehr "
-"behindert, dass er im Kampf einmal weniger zuschlagen kann."
+"behindert, dass seine Aktionen im Kampf sowie seine Bewegungspunkte um die "
+"Hälfte reduziert werden."
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
@@ -8744,7 +8743,7 @@ msgstr ""
 #: data/units/Saurian_Augur.cfg:3
 #, fuzzy
 msgid "Saurian Augur"
-msgstr "Saurianischer Hinterlistling"
+msgstr "Saurianischer Tribalist"
 
 #: data/units/Saurian_Augur.cfg:25
 #, fuzzy
@@ -8755,11 +8754,11 @@ msgid ""
 "possess knowledge of cold magic."
 msgstr ""
 "Trotz ihrer lethargischen kaltblütigen Abstammung und ihrer relativen "
-"Schwäche sind Saurianische Tribalisten wertvoll als Heiler, da sie die "
+"Schwäche sind Saurianische Herbalisten wertvoll als Heiler, da sie die "
 "Wunden ihrer Verbündeten heilen können, unabhängig auf welchem Gelände sie "
 "sich befinden. Außerdem verfügen sie über die Kräfte der Kältemagie.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff Saurianischer Tribalisten ist magischer "
+"Anmerkung: Der Fernkampfangriff Saurianischer Herbalisten ist magischer "
 "Natur und hat daher eine erhöhte Trefferwahrscheinlichkeit. Zudem sind sie "
 "in der Lage, alle befreundeten, direkt benachbarten Einheiten von ihren "
 "Wunden zu heilen."
@@ -8787,12 +8786,10 @@ msgstr ""
 "Kontrollzonen zu ignorieren."
 
 #: data/units/Saurian_Oracle.cfg:3
-#, fuzzy
 msgid "Saurian Oracle"
-msgstr "Saurianischer Tribalist"
+msgstr "Saurianischer Frostmeister"
 
 #: data/units/Saurian_Oracle.cfg:25
-#, fuzzy
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
@@ -8832,7 +8829,7 @@ msgstr ""
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
-msgstr "Saurianischer Wahrsager"
+msgstr "Saurianischer Herbalist"
 
 #: data/units/Saurian_Soothsayer.cfg:26
 msgid ""
@@ -8840,14 +8837,14 @@ msgid ""
 "aid to their friends regardless of terrain or opposition. In addition to "
 "curing their allies they possess knowledge of cold magic."
 msgstr ""
-"Saurianische Wahrsager sind sehr wertvoll als Heiler, weil sie die Wunden "
+"Saurianische Herbalisten sind sehr wertvoll als Heiler, weil sie die Wunden "
 "ihrer Verbündeten heilen, unabhängig vom Gelände auf dem sie sich gerade "
 "befinden. Außerdem besitzen sie Wissen über Kältemagie.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff Saurianischer Wahrsager ist magischer Natur "
-"und hat daher eine erhöhte Trefferwahrscheinlichkeit. Zudem sind sie in der "
-"Lage, alle befreundeten, direkt benachbarten Einheiten von ihren Wunden zu "
-"heilen oder von der Wirkung eines Giftes zu kurieren."
+"Anmerkung: Der Fernkampfangriff Saurianischer Herbalisten ist magischer "
+"Natur und hat daher eine erhöhte Trefferwahrscheinlichkeit. Zudem sind sie "
+"in der Lage, alle befreundeten, direkt benachbarten Einheiten von ihren "
+"Wunden zu heilen oder von der Wirkung eines Giftes zu kurieren."
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
@@ -9238,6 +9235,24 @@ msgid ""
 "Special Notes: The ranged attacks of a Dark Sorcerer are magical, and always "
 "have a high chance of hitting an opponent."
 msgstr ""
+"Seit jeher sind die Magier von Wesnoth auf der Suche, nach dem Geheimnis des "
+"ewigen Lebens. Der erste Schritt den Tod zu überwinden, sollte mit den "
+"Künsten der Nekromantie - das Erwecken von Toten - erreicht werden. "
+"Schließlich stellte sich aber heraus, dass diese Magierichtung die "
+"Erwartungen nicht erfüllte. Zwar konnte man die Toten wieder zum Leben "
+"erwecken, jedoch waren die Wiedererweckten danach nicht mehr als "
+"Marionetten. Ihnen fehlte der eigene Wille, dem jeden Lebewesen inne ist. "
+"Als die Magier erkannten, was diese Kunst in den falschen Händen anrichten "
+"konnte, vernichten sie alle Aufzeichnungen über ihre Versuche und ließen die "
+"Nutzung der Nekromantie im ganzen Land verbieten.\n"
+"\n"
+"Jedoch wollten sich einige Magier nicht von dieser Macht trennen und so "
+"verschwanden sie mit ihren Unterlagen in Gebiete fernab der Zivilisation. "
+"Sie schlossen sich bald in einem eigenen Zirkel zusammen und begannen damit, "
+"im Verborgenen Zöglinge anzuwerben und auszubilden.\n"
+"\n"
+"Anmerkung: Der Fernkampfangriff eines Schwarzen Magiers ist magischer Natur "
+"und hat daher eine erhöhte Trefferwahrscheinlichkeit."
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:57
 #: data/units/Undead_Necromancer.cfg:71
@@ -9302,13 +9317,29 @@ msgid ""
 "a high chance of hitting an opponent. The staff of a necromancer is marked "
 "with the plague, and any foe struck down by it will rise again in unlife."
 msgstr ""
+"Wenn der Sinn der Nekromantie wirklich darin besteht, Unsterblichkeit zu "
+"erlangen, sollte die Transformation in einen Lich ein Ziel sein, welches "
+"schnellstmöglich erreicht werden sollte, bevor Krankheit oder Altersschwäche "
+"einen Schwarzen Magier heimsuchen können. Trotz allem hat man derweil "
+"Totenbeschwörer gesehen, die recht alt wirkten, aber über Kräfte verfügten, "
+"die ihnen die Möglichkeit geben würden, einen Lich herauszufordern.\n"
+"\n"
+"Warum diese Magier die Transformation aufschieben oder vollständig darauf "
+"verzichten, ist nicht bekannt. Es wird gemutmaßt, dass man entweder als Lich "
+"doch nicht die wahre Unsterblichkeit erlangt oder dass man einen zu hohen "
+"Preis für die Verwandlung zahlen muss, um den nur sie wissen.\n"
+"\n"
+"Anmerkung: Der Fernkampfangriff eines Totenbeschwörers ist magischer Natur "
+"und hat daher eine erhöhte Trefferwahrscheinlichkeit.\n"
+"Jeder, der von einem Totenbeschwörer mittels seines Stabes niedergestreckt "
+"wird, erhebt sich sogleich wieder als wandelnde Leiche,um an der Seite des "
+"Magiers zu kämpfen."
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
 msgstr "Knochenbogenschütze"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:24
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -9468,7 +9499,6 @@ msgid "Ghost"
 msgstr "Geist"
 
 #: data/units/Undead_Spirit_Ghost.cfg:26
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -10963,14 +10993,12 @@ msgid "Choose your side:"
 msgstr "Wählt Eure Fraktion:"
 
 #: src/multiplayer_wait.cpp:254
-#, fuzzy
 msgid "Do you want to skip the replay?"
-msgstr "Möchtet Ihr diesen Spielstand abspeichern?"
+msgstr "Möchtet Ihr den Spielverlauf überspringen?"
 
 #: src/multiplayer_wait.cpp:254
-#, fuzzy
 msgid "Skip replay"
-msgstr " Spielverlauf"
+msgstr "Spielverlauf überspringen"
 
 #: src/multiplayer_wait.cpp:392 src/unit.cpp:1415
 msgid "("
@@ -11562,564 +11590,3 @@ msgstr "Betrachtet die Ergebnisse unter "
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr "Helft uns, Wesnoth zu verbessern!"
-
-#~ msgid "Orcish Shaman"
-#~ msgstr "Orkschamane"
-
-#~ msgid ""
-#~ "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#~ "tribes, they form the Orcish Council, which makes important decisions for "
-#~ "the whole Orcish community and arbitrates the many conflicts that arise "
-#~ "between tribes of this argumentative race. Although physically weak (for "
-#~ "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#~ "draining their life."
-#~ msgstr ""
-#~ "Schamanen haben als einzige Angehörige der orkischen Rasse die Fähigkeit, "
-#~ "Magie zu wirken. Deshalb genießen sie eine besondere Stellung innerhalb "
-#~ "der Stämme, sodass in jedem Stamm mindestens ein Schamane zu finden ist. "
-#~ "Zusammengenommen bilden sie den Großen Rat, der Entscheidungen, die das "
-#~ "gesamte orkische Volk betreffen, fällt sowie Konflikte, die zwischen den "
-#~ "orkischen Stämmen auftreten, löst. Obwohl sie körperlich eher gebrechlich "
-#~ "wirken und der direkten Konfrontation aus dem Weg gehen, sind ihre "
-#~ "Zaubersprüche um so verheerender. Mit mächtigen Flüchen rauben sie dem "
-#~ "Opfer die Lebenskraft und führen sich einen Teil davon selbst zu, um ihre "
-#~ "Wunden zu heilen.\n"
-#~ "\n"
-#~ "Anmerkung: Wird ein Gegner von dem Fluch eines Orkschamanen getroffen, "
-#~ "wird ein Teil von dessen Lebenskraft abgesaugt und auf den Schamanen "
-#~ "übertragen."
-
-#~ msgid "Novice Orcish Shaman"
-#~ msgstr "Junger Orkschamane"
-
-#~ msgid ""
-#~ "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#~ "tribes, they form the Orcish Council, which makes important decisions for "
-#~ "the whole Orcish community and arbitrates the many conflicts that arise "
-#~ "between tribes of this argumentative race. Although physically weak (for "
-#~ "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#~ "draining their life. Novice Shamans are still young and vigorous, but "
-#~ "their spell-casting ability still needs improvement."
-#~ msgstr ""
-#~ "Die Lehrlinge der schamanischen Künste sind immer noch wild und ungestüm, "
-#~ "sodass sie ihre Zauberkraft noch nicht so gut kontrollieren können.\n"
-#~ "\n"
-#~ "Anmerkung: Wird ein Gegner von dem Fluch eines Jungen Orkschamanen "
-#~ "getroffen, wird ein Teil von dessen Lebenskraft abgesaugt und auf den "
-#~ "Schamanen übertragen."
-
-#~ msgid "Old Orcish Shaman"
-#~ msgstr "Alter Orkschamane"
-
-#~ msgid ""
-#~ "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#~ "tribes, they form the Orcish Council, which makes important decisions for "
-#~ "the whole Orcish community and arbitrates the many conflicts that arise "
-#~ "between tribes of this argumentative race. Although physically weak (for "
-#~ "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#~ "draining their life. Old Orcish Shamans are shamans that have mastered "
-#~ "magic, although their physical strength has declined with age."
-#~ msgstr ""
-#~ "Den Ältesten unter den Schamanen fällt es leicht, die Magie ihrem Willen "
-#~ "zu unterwerfen. Allerdings hat die Konzentration auf ihre magischen "
-#~ "Fähigkeiten und das hohe Alter dazu geführt, dass ihr Körper nicht mehr "
-#~ "als eine Hülle geworden ist.\n"
-#~ "\n"
-#~ "Anmerkung: Wird ein Gegner von dem Fluch eines Alten Orkschamanen "
-#~ "getroffen, wird ein Teil von dessen Lebenskraft abgesaugt und auf den "
-#~ "Schamanen übertragen."
-
-#~ msgid "Watch Tower"
-#~ msgstr "Beobachtungsturm"
-
-#~ msgid ""
-#~ "Watch Towers are good places from which to spot enemies and then shoot "
-#~ "miscellaneous items at them with ballistas."
-#~ msgstr ""
-#~ "Beobachtungstürme werden genutzt, um herannahende Feinde ausfindig zu "
-#~ "machen und danach verschiedene Geschosse mit Ballistas auf sie zu feuern."
-
-#~ msgid "Dark Spirit"
-#~ msgstr "Dunkler Geist"
-
-#~ msgid ""
-#~ "Dark Spirits are messengers and bearers of tidings from the realm of the "
-#~ "dead, and a force of dread in this world. Happily, they have rarely been "
-#~ "seen in Wesnoth."
-#~ msgstr ""
-#~ "Dunkle Geister sind Botschafter und Übermittler von Nachrichten aus dem "
-#~ "Totenreich. In unserer Welt sind sie gefürchtete Gegner. Glücklicherweise "
-#~ "wurden nur sehr wenige von ihnen in Wesnoth gesichtet.\n"
-#~ "\n"
-#~ "Anmerkung: Wird ein Gegner von der Klinge eines Dunklen Geistes "
-#~ "getroffen, wird ein Teil von dessen Lebenskraft abgesaugt und auf den "
-#~ "Geist übertragen."
-
-#~ msgid "Deathmaster"
-#~ msgstr "Todesmeister"
-
-#~ msgid ""
-#~ "His wanderings on a dark path have given him power normally not granted "
-#~ "to mortals, but with a terrible cost: the undead that he gave his soul to "
-#~ "are gradually claiming his mortal shell too, and with time, he will be a "
-#~ "true undead and a terror to all that lives."
-#~ msgstr ""
-#~ "Seine Wanderungen auf dem dunklen Pfad gaben ihm Kräfte über die "
-#~ "normalerweise kein Sterblicher verfügt. Aber gegen einen furchtbaren "
-#~ "Preis: Die Untoten, denen er seine Seele gab, beanspruchen nun auch seine "
-#~ "sterbliche Hülle für sich. Es ist nur eine Frage der Zeit, bis er selbst "
-#~ "ein Untoter ist und Angst und Schrecken unter allen Lebenden verbreiten "
-#~ "wird.\n"
-#~ "\n"
-#~ "Anmerkung: Der Fernkampfangriff eines Todesmeisters ist magischer Natur "
-#~ "und hat daher eine erhöhte Trefferwahrscheinlichkeit."
-
-#~ msgid "magic"
-#~ msgstr "Kälteschock"
-
-#~ msgid "Dread Lich"
-#~ msgstr "Todeslich"
-
-#~ msgid ""
-#~ "At long last, Ha'atel has paid the ultimate sacrifice for the dark arts "
-#~ "into which he has delved, and has, himself, entered into undeath. At the "
-#~ "apex of his power, he has become a lich, a waking embodiment of dread. He "
-#~ "has, beyond any doubt, passed the point of no return, and his power and "
-#~ "immortality will have to provide consolation for what he has lost in his "
-#~ "quest to achieve them."
-#~ msgstr ""
-#~ "Letztendlich hat Ha'atal das letzte Opfer für die dunklen Künste, denen "
-#~ "er verfallen ist, erbracht und wurde selbst zum Untoten. Auf der Höhe "
-#~ "seiner Macht, wurde zu einem Lich, die wandelnde Verkörperung des "
-#~ "Grauens. Doch ist jener Pfad, auf dem er sich jetzt befindet, ein Pfad "
-#~ "ohne Rückkehr. Im Austausch für Macht und Unsterblichkeit musste er große "
-#~ "Opfer auf seiner Queste erbringen.\n"
-#~ "\n"
-#~ "Anmerkung: Der Fernkampfangriff eines Todeslichs ist magischer Natur und "
-#~ "hat daher eine erhöhte Trefferwahrscheinlichkeit.\n"
-#~ "Wird ein Gegner von ihm berührt, wird ein Teil von dessen Lebenskraft "
-#~ "abgesaugt und auf den Todeslich übertragen."
-
-#~ msgid "Initiate"
-#~ msgstr "Eingeweihter"
-
-#~ msgid ""
-#~ "Dabbling in the Death Magic, this young Ha'atel's lust for power has "
-#~ "weakened him to the point where he is too weak to attack in regular "
-#~ "combat."
-#~ msgstr ""
-#~ "Nach ersten Erfahrungen in der Totenmagie hat seine Gier nach Macht "
-#~ "diesen jungen Ha'atel soweit geschwächt, dass er an einem Punkt "
-#~ "angekommen ist, von dem an er nicht mehr auf reguläre Weise in einem "
-#~ "Kampf bestehen kann.\n"
-#~ "\n"
-#~ "Anmerkung: Der Fernkampfangriff eines Eingeweithen ist magischer Natur "
-#~ "und hat daher eine erhöhte Trefferwahrscheinlichkeit."
-
-#~ msgid ""
-#~ "The dread inspired by black magic comes chiefly from how little is known "
-#~ "about it, to the common man. If immortality is truly what it grants, then "
-#~ "the transformation to lichdom would seem something to be achieved as soon "
-#~ "as possible, lest disease or infirmity claim the mage. Yet, on occasion, "
-#~ "a dark sorcerer has been seen who was quite aged, and yet clearly "
-#~ "powerful enough to rival a lich.\n"
-#~ "\n"
-#~ "One can only speculate why such a person would delay, or forgo that path "
-#~ "entirely. It is surmised that either lichdom falls short of the true "
-#~ "immortality it is claimed to be, or that there is a terrible and unspoken "
-#~ "price for becoming one.\n"
-#~ "\n"
-#~ "Special Notes: the ranged attacks of a dark sorcerer are magical, and "
-#~ "always have a high chance of hitting an opponent. The staff of a dark "
-#~ "sorcerer is marked with the plague, and any foe struck down by it will "
-#~ "rise again in unlife."
-#~ msgstr ""
-#~ "Wenn der Sinn der Nekromantie wirklich darin besteht, Unsterblichkeit zu "
-#~ "erlangen, sollte die Transformation in einen Lich ein Ziel sein, welches "
-#~ "schnellstmöglich erreicht werden sollte, bevor Krankheit oder "
-#~ "Altersschwäche einen Totenbeschwörer heimsuchen können. Trotz allem hat "
-#~ "man derweil Schwarze Magier gesehen, die recht alt wirkten, aber über "
-#~ "Kräfte verfügten, die ihnen die Möglichkeit geben würden, einen Lich "
-#~ "herauszufordern.\n"
-#~ "\n"
-#~ "Warum diese Magier die Transformation aufschieben oder vollständig darauf "
-#~ "verzichten, ist nicht bekannt. Es wird gemutmaßt, dass man entweder als "
-#~ "Lich doch nicht die wahre Unsterblichkeit erlangt oder dass man einen zu "
-#~ "hohen Preis für die Verwandlung zahlen muss, um den nur sie wissen.\n"
-#~ "\n"
-#~ "Anmerkung: Der Fernkampfangriff eines Schwarzen Magiers ist magischer "
-#~ "Natur und hat daher eine erhöhte Trefferwahrscheinlichkeit.\n"
-#~ "Jeder, der von einem Schwarzen Magier mittels seines Stabes "
-#~ "niedergestreckt wird, erhebt sich sogleich wieder als wandelnde Leiche, "
-#~ "um an der Seite des Magiers zu kämpfen."
-
-#~ msgid ""
-#~ "One of the greatest circles of what is considered 'black magic' is the "
-#~ "art of necromancy, the terrible ability to awaken the dead with false "
-#~ "life. This ability, in all aspects, was the first step towards cheating "
-#~ "death of its ultimate prize; though not the fulfillment of what they had "
-#~ "hoped for, it was a discovery that nonetheless had terrible "
-#~ "ramifications. This art alone may have caused humanity's condemnation of "
-#~ "what is now known as 'black magic', and has given fear a vast new "
-#~ "arsenal.\n"
-#~ "\n"
-#~ "Special Notes: The ranged attacks of a necromancer are magical, and "
-#~ "always have a high chance of hitting an opponent."
-#~ msgstr ""
-#~ "Seit jeher sind die Magier von Wesnoth auf der Suche, nach dem Geheimnis "
-#~ "des ewigen Lebens. Der erste Schritt den Tod zu überwinden, sollte mit "
-#~ "den Künsten der Nekromantie - das Erwecken von Toten - erreicht werden. "
-#~ "Schließlich stellte sich aber heraus, dass diese Magierichtung die "
-#~ "Erwartungen nicht erfüllte. Zwar konnte man die Toten wieder zum Leben "
-#~ "erwecken, jedoch waren die Wiedererweckten danach nicht mehr als "
-#~ "Marionetten. Ihnen fehlte der eigene Wille, dem jeden Lebewesen inne ist. "
-#~ "Als die Magier erkannten, was diese Kunst in den falschen Händen "
-#~ "anrichten konnte, vernichten sie alle Aufzeichnungen über ihre Versuche "
-#~ "und ließen die Nutzung der Nekromantie im ganzen Land verbieten.\n"
-#~ "\n"
-#~ "Jedoch wollten sich einige Magier nicht von dieser Macht trennen und so "
-#~ "verschwanden sie mit ihren Unterlagen in Gebiete fernab der Zivilisation. "
-#~ "Sie schlossen sich bald in einem eigenen Zirkel zusammen und begannen "
-#~ "damit, im Verborgenen Zöglinge anzuwerben und auszubilden.\n"
-#~ "\n"
-#~ "Anmerkung: Der Fernkampfangriff eines Totenbeschwörers ist magischer "
-#~ "Natur und hat daher eine erhöhte Trefferwahrscheinlichkeit."
-
-#, fuzzy
-#~ msgid ""
-#~ "Some Necromancers pay the ultimate sacrifice for delving into the dark "
-#~ "arts and entered into undeath. At the apex of their power, they become a "
-#~ "lich, a waking embodiment of dread. They are, beyond any doubt, past the "
-#~ "point of no return. Power and immortality are the hollow consolation for "
-#~ "what they have lost."
-#~ msgstr ""
-#~ "Letztendlich hat Ha'atal das letzte Opfer für die dunklen Künste, denen "
-#~ "er verfallen ist, erbracht und wurde selbst zum Untoten. Auf der Höhe "
-#~ "seiner Macht, wurde zu einem Lich, die wandelnde Verkörperung des "
-#~ "Grauens. Doch ist jener Pfad, auf dem er sich jetzt befindet, ein Pfad "
-#~ "ohne Rückkehr. Im Austausch für Macht und Unsterblichkeit musste er große "
-#~ "Opfer auf seiner Queste erbringen.\n"
-#~ "\n"
-#~ "Anmerkung: Der Fernkampfangriff eines Todeslichs ist magischer Natur und "
-#~ "hat daher eine erhöhte Trefferwahrscheinlichkeit.\n"
-#~ "Wird ein Gegner von ihm berührt, wird ein Teil von dessen Lebenskraft "
-#~ "abgesaugt und auf den Todeslich übertragen."
-
-#~ msgid "Saurian Icecaster"
-#~ msgstr "Saurianischer Frostmeister"
-
-#~ msgid "frost blast"
-#~ msgstr "Kältestoß"
-
-#~ msgid ""
-#~ "Slow:\n"
-#~ "This attack slows the target. Slow reorders the attacks allowing the "
-#~ "attacker to strike one more time until the defender can fight. Slowed "
-#~ "units move at half normal speed, do not emit a zone of control, and "
-#~ "always lose initiative in fights."
-#~ msgstr ""
-#~ "Verlangsamen:\n"
-#~ "Unsichtbare Fäden scheinen das Opfer zu behindern und festzuhalten. "
-#~ "Verlangsamte Einheiten können sich nur mit der Hälfte ihrer BP "
-#~ "fortbewegen, verfügen über keine Kontrollzone, verlieren immer ihre "
-#~ "Initiative im Kampf und verlieren einen Angriff im Kampf. Die "
-#~ "Verlangsamung hält eine Runde an."
-
-#~ msgid "+Music"
-#~ msgstr "+Musik"
-
-#~ msgid "+Contributors"
-#~ msgstr "+Mitarbeiter"
-
-#~ msgid "3p - 1v1v1Hex"
-#~ msgstr "3S - 3er-Hex"
-
-#~ msgid ""
-#~ "Three players do battle in this small, enclosed region. Recommended "
-#~ "settings of 2G per village."
-#~ msgstr ""
-#~ "Drei Spieler versuchen die Herrschaft in dieser kleinen und "
-#~ "abgeschlossenen Region zu erlangen.\n"
-#~ "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
-
-#~ msgid "4p - An Island"
-#~ msgstr "4S - Die heilige Quelle"
-
-#~ msgid ""
-#~ "A 4 player map that is suitable for individual or team play, victory "
-#~ "rests of dominating the centre island. North-West: Forest dominated area, "
-#~ "North-East: Mixed snow plains, South-West: Mixed desert plains, South-"
-#~ "East: Mountain dominated area."
-#~ msgstr ""
-#~ "Eine 4-Spieler-Karte, die sowohl dafür geeignet ist, alleine zu spielen, "
-#~ "als auch im Team. Derjenige wird siegreich sein, dem es gelingt, die "
-#~ "Heilige Quelle in Besitz zu nehmen. Nordwesten: von Wald beherrschtes "
-#~ "Gebiet, Nordosten: gemischte Schneeflächen, Südwesten: gemischte "
-#~ "Wüstenfelder, Südosten: gebirgige Landschaft"
-
-#~ msgid ""
-#~ "Small map for 2v2. Teams should be player 1 and 3, vs player 2 and 4. "
-#~ "Recommended setting of 2 gold per village."
-#~ msgstr ""
-#~ "Eine Karte für 2 gegen 2 Spiele. Spieler 1 und 3 sollten in einem Team "
-#~ "sein, ebenso Spieler 2 und 4.\n"
-#~ "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
-
-#~ msgid ""
-#~ "Who will remain standing as King of the Hill? Best played as a free-for-"
-#~ "all (with everyone fighting everyone else)."
-#~ msgstr ""
-#~ "Wer wird schließlich übrig bleiben, um als König des Hügels zu herrschen? "
-#~ "Die Zeit wird es zeigen...\n"
-#~ "Empfohlene Einstellung: Jeder gegen Jeden"
-
-#~ msgid "Desert Village"
-#~ msgstr "Wüstensiedlung"
-
-#~ msgid "Tropical Forest Village"
-#~ msgstr "Tropendorf"
-
-#~ msgid "Snow Village"
-#~ msgstr "Verschneites Dorf"
-
-#~ msgid "Dwarven Village"
-#~ msgstr "Zwergisches Dorf"
-
-#~ msgid "Desert Hills"
-#~ msgstr "Wüstenhügel"
-
-#~ msgid "Desert Mountains"
-#~ msgstr "Wüstenberge"
-
-#~ msgid "rapier"
-#~ msgstr "Rapier"
-
-#~ msgid ""
-#~ "The many paths that a mage can take in study lead to strikingly different "
-#~ "ends. The silver magi have devoted themselves to a study of the forces "
-#~ "that bind reality together, and have managed, somewhat, to unravel the "
-#~ "mysteries of a world far more vast than most would ever imagine. Often "
-#~ "viewed as sages, or wandering mystics, silver magi act under an agenda "
-#~ "which is obscure even to their own colleagues. Though helpful to the "
-#~ "magisteriums which often employ them in the field, they remain somewhat "
-#~ "aloof.\n"
-#~ "\n"
-#~ "They have, in fact, their own order amongst the ranks of magi, an order "
-#~ "which withholds certain secrets from their peers. One of these is an "
-#~ "apparent ability to cross great distances, faster than one could possibly "
-#~ "travel on foot. Members of the silver order ardently refuse to discuss "
-#~ "the workings of this with any of their fellow magi, and on those rare "
-#~ "occasions when others have pried into their work, they have abandoned the "
-#~ "endeavor, never to speak of it again.\n"
-#~ "\n"
-#~ "Silver magi are often more physically adept than other magi, and their "
-#~ "skills are of undeniable use on the battlefield, if one can manage to "
-#~ "coerce the mage into applying them.\n"
-#~ "\n"
-#~ "Special Notes: the ranged attack of a silver mage is magical, and always "
-#~ "has a high chance of hitting an opponent. Silver Magi are well-attuned to "
-#~ "their magical natures and are highly resistant to non-physical damage. "
-#~ "They can also teleport between any two villages instantly, though the "
-#~ "player must control both, and the destination village must be unoccupied."
-#~ msgstr ""
-#~ "Für das Studium gibt es nahezu unbegrenzte Möglichkeiten. Die silbernen "
-#~ "Magier haben sich dazu entschlossen, jene Kräfte zu studieren, die die "
-#~ "Welt zusammenhalten. Sie haben so manches Mysterium entschlüsselt und "
-#~ "einiges entdeckt, was viele sich nicht einmal ansatzweise vorstellen "
-#~ "können. Oftmals wandern sie als Sagenerzähler umher, wobei noch nicht mal "
-#~ "ein anderer Magier sie wirklich voll und ganz verstehen kann.\n"
-#~ "\n"
-#~ "Die silbernen Magier haben ihren eigenen Orden gegründet, der so manches "
-#~ "Geheimnis vor ihren Brüdern geheim hält. Zum Beispiel das Geheimnis um "
-#~ "ihre Fähigkeit große Distanzen in unglaublich kurzer Zeit zu überbrücken, "
-#~ "schneller als jemals irgendein Wesen sich fortbewegen könnte.\n"
-#~ "\n"
-#~ "Silberne Magier kommen weit besser mit dem weltlichen Leben zurecht, als "
-#~ "die meisten anderen Magier. So ist ihr Körper besser trainiert und "
-#~ "während ihrer Reisen mussten sie sich auch schon des Öfteren gegen eine "
-#~ "Bande Straßenräuber verteidigen. Deshalb sind ihre Fähigkeiten von "
-#~ "unschätzbarem Wert in der Schlacht, wenn man sie erstmal dazu bringt, sie "
-#~ "einzusetzen.\n"
-#~ "\n"
-#~ "Anmerkung: Der Fernkampfangriff eines Silbernen Magiers ist magischer "
-#~ "Natur und hat daher eine erhöhte Trefferwahrscheinlichkeit. Sie verfügen "
-#~ "über große Widerstandskräfte gegen jedwede Art der Magie und können sich "
-#~ "zwischen zwei Dörfern hin und her teleportieren. Dafür muss der Spieler "
-#~ "allerdings beide Dörfer kontrollieren und in den Dörfern dürfen keine "
-#~ "anderen Einheiten stehen."
-
-#~ msgid "Awaiting response from server"
-#~ msgstr "Warte auf Serverantwort..."
-
-#~ msgid "Connecting to remote host..."
-#~ msgstr "Verbinde zum Server ..."
-
-#~ msgid "Dwarves"
-#~ msgstr "Zwerge"
-
-#~ msgid "Saurian"
-#~ msgstr "Saurianer"
-
-#~ msgid "Classic"
-#~ msgstr "Klassik"
-
-#~ msgid "leadership,skirmisher"
-#~ msgstr "Führungsqualitäten,Plänkler"
-
-#~ msgid ""
-#~ "Long lived and terrifying, the fire dragon is a member of the dragon "
-#~ "family that happens to breathe fire. It can put its fire breath to good "
-#~ "use in combat. Additionally, it has a ferocious bite, and can crush "
-#~ "opponents with its tail. Fire Dragons are cunning and cruel, and often "
-#~ "take underlings whom they help lead to victory."
-#~ msgstr ""
-#~ "Feuerdrachen sind alte und furchteinflößende Kreaturen, sie gehören zur "
-#~ "Familie der Drachen, die dafür bekannt ist Feuer speien zu können. Der "
-#~ "Feueratem des Drachens ist sehr nützlich im Kampf, außerdem kann er durch "
-#~ "seinen Biss furchtbare Wunden reißen oder seine Gegner mit seinem Schwanz "
-#~ "zerquetschen. Feuerdrachen sind listig und grausam. Oft suchen sie sich "
-#~ "Diener-Kreaturen, denen sie mit ihrer Führungsstärke zum Sieg verhelfen.\n"
-#~ "\n"
-#~ "Anmerkung: Ihre angeborene Fähigkeit, Feuer zu spucken, erlaubt es den "
-#~ "Feuerdrachen jeden Feind mit hoher Wahrscheinlichkeit zu treffen. Dies "
-#~ "gilt jedoch nur in der Offensive."
-
-#~ msgid "skirmisher,leadership"
-#~ msgstr "Plänkler,Führungsqualitäten"
-
-#~ msgid "Canyon"
-#~ msgstr "Schlucht"
-
-#~ msgid ""
-#~ "This map is a convenient way to do some testing with two factions, as it "
-#~ "is pretty well balanced towards both sides.\n"
-#~ "You can use it AI vs AI to see how well a faction fares against another."
-#~ msgstr ""
-#~ "Diese Karte wird gerne genutzt, um zu testen, wie gut zwei Fraktionen "
-#~ "ausbalanciert sind, da beide Seiten etwa gleiche Bedingungen haben.\n"
-#~ "Ihr könnt Computer gegen Computer spielen lassen, um zu sehen, wie sich "
-#~ "die Fraktionen gegeneinander schlagen."
-
-#~ msgid "4p - The Valley of Death"
-#~ msgstr "4S - Das Tal des Todes"
-
-#~ msgid ""
-#~ "Can you defeat all enemies and declare victory in this desolate valley?"
-#~ msgstr ""
-#~ "Das Tal sollte einst dem jungen Konrad und seinen Mannen zum Verhängnis "
-#~ "werden, jedoch konnte der junge Heerführer die Untoten zurückdrängen. "
-#~ "Auch heute ist dieses Tal noch ein Ort, an dem zwielichtige Gestalten "
-#~ "Reisenden auflauern."
-
-#~ msgid "7p - Battle World"
-#~ msgstr "7S - Welt des Krieges"
-
-#~ msgid ""
-#~ "Up to 7 armies thrash about in this peaceful land. Prepare for a long "
-#~ "battle."
-#~ msgstr ""
-#~ "In diesem friedlichen Landstrich treten bis zu 7 Herrscher gegeneinander "
-#~ "an. Es wird ein langer und harter Krieg werden..."
-
-#~ msgid "ambush,regenerates"
-#~ msgstr "Hinterhalt,Regeneration"
-
-#~ msgid "illuminates,cures"
-#~ msgstr "Lichtaura,Kurieren"
-
-#, fuzzy
-#~ msgid "Turn Dialog"
-#~ msgstr "Einführung"
-
-#, fuzzy
-#~ msgid "Turn Bell"
-#~ msgstr "Runden:"
-
-#, fuzzy
-#~ msgid "Theme"
-#~ msgstr "Team"
-
-#, fuzzy
-#~ msgid "Change the music volume"
-#~ msgstr "Spracheinstellungen ändern"
-
-#, fuzzy
-#~ msgid "Chat Lines: "
-#~ msgstr "Lichtscheue Einheiten:"
-
-#, fuzzy
-#~ msgid "no"
-#~ msgstr "Schnee"
-
-#, fuzzy
-#~ msgid "Prefs section^Multiplayer"
-#~ msgstr "Mehrspieler"
-
-#, fuzzy
-#~ msgid "Preferences"
-#~ msgstr "Prinzessin"
-
-#, fuzzy
-#~ msgid "Choose Resolution"
-#~ msgstr "Waffe auswählen:"
-
-#, fuzzy
-#~ msgid "Hotkey Settings"
-#~ msgstr "Einstellungen"
-
-#, fuzzy
-#~ msgid "Action"
-#~ msgstr "Aktionen"
-
-#, fuzzy
-#~ msgid "Binding"
-#~ msgstr "Blitzschlag"
-
-#~ msgid "Gate"
-#~ msgstr "Tor"
-
-#~ msgid "The door will not open for any who are not allied with it."
-#~ msgstr ""
-#~ "Diese Tür wird sich für niemanden öffnen, der nicht dazu berechtigt ist."
-
-#~ msgid "bump"
-#~ msgstr "RUMS"
-
-#~ msgid "Wall Guard"
-#~ msgstr "Turmwache"
-
-#~ msgid "skirmisher,regenerates"
-#~ msgstr "Plänkler,Regeneration"
-
-#~ msgid ""
-#~ "The guardians of the capital city of Weldyn, the Wall Guards patrol the "
-#~ "walls of the city, shooting at approaching enemies with their crossbows "
-#~ "before their opponent can retaliate even with a ranged attack. Because "
-#~ "they are mounted on high walls, they cannot move anywhere except on walls "
-#~ "and the roofs of castles."
-#~ msgstr ""
-#~ "Die Beschützer der Hauptstadt Weldyn, die Turmwachen, patrouillieren auf "
-#~ "den Stadtmauern und schießen mit ihren Armbrüsten auf nahende Gegner "
-#~ "bevor diese zu einem Rückschlag ausholen können. Weil sie sich auf den "
-#~ "hohen Stadtmauern befinden, können sie sich nur auf diesen Mauern und den "
-#~ "Dächern von Festungen bewegen.\n"
-#~ "\n"
-#~ "Anmerkung: Turmwachen verfügen über die Fertigkeit der Regeneration. "
-#~ "Dadurch erhalten sie genauso viele Lebenspunkte, als würden sie sich in "
-#~ "einem Dorf aufhalten. Zudem erlaubt es ihnen ihre Fähigkeit als Plänkler "
-#~ "an ihren Feinden vorbeizuflitzen und dabei jegliche Kontrollzonen zu "
-#~ "ignorieren."
-
-#~ msgid "Unkown era"
-#~ msgstr "Unbekannte Ära"
-
-#~ msgid "Yellow"
-#~ msgstr "Gelb"
-
-#~ msgid ""
-#~ "This unit has been slowed. It emits no zone of control, moves at half "
-#~ "speed and enemies will be able to strike earlier once during a fight."
-#~ msgstr ""
-#~ "Diese Einheit wurde verlangsamt. Sie besitzt keine Kontrollzone und kann "
-#~ "sich nur mit der Hälfte ihrer sonst üblichen BP bewegen. Außerdem wird "
-#~ "ihr zusätzlich eine Attacke pro Waffe abgezogen."
