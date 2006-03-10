@@ -307,6 +307,7 @@ private:
 
 	ability_filter hides_filter_;
 	bool hides_;
+	bool zoc_;
 
         std::vector<std::string> advances_to_;
         int experience_needed_;

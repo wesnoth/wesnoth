@@ -619,7 +619,7 @@ unit_type::unit_type(const unit_type& o)
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
       death_animations_(o.death_animations_), movement_animations_(o.movement_animations_),
-      flag_rgb_(o.flag_rgb_)
+      flag_rgb_(o.flag_rgb_),zoc_(o.zoc_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
@@ -922,6 +922,16 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		LOG_STREAM(err, config) << "Invalid alignment found for " << id() << ": '" << align << "'\n";
 		alignment_ = NEUTRAL;
 	}
+	
+	if(cfg_["zoc"] == "") {
+		zoc_ = lexical_cast_default<int>(cfg_["level"]) > 0;
+	} else {
+		zoc_ = false;
+		if(cfg_["zoc"] == "yes") {
+			zoc_ = true;
+		}
+	}
+	
 
 	const std::string& alpha_blend = cfg_["alpha"];
 	if(alpha_blend.empty() == false) {
@@ -1352,7 +1362,7 @@ bool unit_type::can_advance() const
 
 bool unit_type::has_zoc() const
 {
-	return level() > 0;
+	return zoc_;
 }
 
 bool unit_type::has_ability(const std::string& ability) const
