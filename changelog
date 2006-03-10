@@ -3,6 +3,7 @@ SVN trunk (1.1.1+svn):
    * campaigns removed from mainline: Son of the Black Eye, The Dark Hordes
    * campaigns added to mainline: The South Guard
    * The South Guard
+     * switched to using the {IS_HERO} macro
      * all the unit names are not translatable
      * made translatable some forgotten strings
      * switched over to [music] from music=
@@ -18,7 +19,7 @@ SVN trunk (1.1.1+svn):
      * Replaced all occurences of the Demilich with the normal Lich
      * Updated path information
    * Two Brothers
-     * switched to using the {IS_HERO} marco for all units that are not
+     * switched to using the {IS_HERO} macro for all units that are not
        allowed to die
    * Eastern Invasion
      * rewrote dialogue in Lake Vrug, Evacuation, and The Drowned Plains
@@ -97,6 +98,7 @@ SVN trunk (1.1.1+svn):
      Divide and Conquer, Hamlets, Hornshark Island, Meteor Lake, Silverhead 
      Crossing, Triple Blitz, Clash, Hexcake, The Wilderlands
  * WML improvements
+   * new {IS_HERO} macro to display a hero icon for new units
    * moved much of about into WML as well as enabled campaign [about]
    * added a #undef preprocessor directive
    * added 'profile' key to [unit] variables
