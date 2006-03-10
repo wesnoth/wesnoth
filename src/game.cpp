@@ -1501,38 +1501,6 @@ void game_controller::play_replay()
 	}
 }
 
-void display_progress(display &dsply, int percentage)
-{		
-	CVideo &video = dsply.video();
-	/* Saturate percentage. */
-	if (percentage < 0) {
-		percentage = 0;
-	}
-	else if (percentage > 100) {
-		percentage = 100;
-	}
-	int bcr = 255, bcg = 255, bcb = 255; /* Border color. */
-	int dcr =   0, dcg =   0, dcb = 255; /* Done color. */
-	int lcr =   0, lcg =   0, lcb =  15; /* Leftover color. */
-	int bw = 5; /* Border width in pixels. */
-        int scrx = video.getx() - 2*bw; /* Available width. */
-	int scry = video.gety() - 2*bw; /* Available height. */
-	int pbx = scrx/2; /* Used width. */
-	int pby = scry/16; /* Used heigth. */
-	/* Draw border. */
-	draw_solid_tinted_rectangle ((scrx-pbx)/2-bw, (scry-pby)/2-bw, pbx + 2*bw, bw, bcr, bcg, bcb, 1.0, video.getSurface());
-	draw_solid_tinted_rectangle ((scrx-pbx)/2-bw, (scry-pby)/2-bw, bw, pby + 2*bw, bcr, bcg, bcb, 1.0, video.getSurface());
-	draw_solid_tinted_rectangle ((scrx-pbx)/2-bw, (scry-pby)/2+pby+bw, pbx + 2*bw, bw, bcr, bcg, bcb, 1.0, video.getSurface());
-	draw_solid_tinted_rectangle ((scrx-pbx)/2+pbx+bw, (scry-pby)/2-bw, bw, pby + 2*bw, bcr, bcg, bcb, 1.0, video.getSurface());
-	/* Draw done piece. */
-	draw_solid_tinted_rectangle ((scrx-pbx)/2, (scry-pby)/2, percentage * pbx / 100, pby, dcr, dcg, dcb, 1.0, video.getSurface());
-	/* Draw leftover piece. */
-	draw_solid_tinted_rectangle ((scrx-pbx)/2 + percentage * pbx / 100, (scry-pby)/2, (100 - percentage) * pbx / 100, pby, lcr, lcg, lcb, 1.0, video.getSurface());
-	/* Update the screen. */
-	update_whole_screen();
-	dsply.flip();
-}
-
 int play_game(int argc, char** argv)
 {
 	const int start_ticks = SDL_GetTicks();
@@ -1678,7 +1646,6 @@ int play_game(int argc, char** argv)
 		std::cerr << "could not initialize display\n";
 		return 0;
 	}
-	display_progress (game.disp(),  10);
 
 #ifdef WIN32
 	res = game.init_config();
@@ -1687,21 +1654,18 @@ int play_game(int argc, char** argv)
 		return 0;
 	}
 #endif
-	display_progress (game.disp(),  25);
 
 	res = game.init_language();
 	if(res == false) {
 		std::cerr << "could not initialize the language\n";
 		return 0;
 	}
-	display_progress (game.disp(),  40);
 
 	res = font::load_font_config();
 	if(res == false) {
 		std::cerr << "could not re-initialize fonts for the current language\n";
 		return 0;
 	}
-	display_progress (game.disp(),  55);
 
 #ifndef WIN32
 	// it is better for gettext-native platforms to read the config
@@ -1712,7 +1676,6 @@ int play_game(int argc, char** argv)
 		return 0;
 	}
 #endif
-	display_progress (game.disp(),  70);
 
 	const cursor::manager cursor_manager;
 #if defined(_X11) && !defined(__APPLE__)
@@ -1721,8 +1684,6 @@ int play_game(int argc, char** argv)
 
 	int ntip = -1;
 	config tips_of_day;
-
-	display_progress (game.disp(),  85);
 
 	for(;;) {
 		//make sure the game config is always set to how it should be at the title screen
