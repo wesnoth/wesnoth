@@ -62,6 +62,16 @@ namespace game_events {
 bool conditional_passed(const std::map<gamemap::location,unit>* units,
                         const vconfig cond)
 {
+	//an 'and' statement means that if the contained statements are false,
+	//then it automatically fails
+	const vconfig::child_list& and_statements = cond.get_children("and");
+	for(vconfig::child_list::const_iterator and_it = and_statements.begin();
+			and_it != and_statements.end(); ++and_it) {
+		if(!conditional_passed(units,*and_it)) {
+			return false;
+		}
+	}
+
 	//an 'or' statement means that if the contained statements are true,
 	//then it automatically passes
 	const vconfig::child_list& or_statements = cond.get_children("or");
@@ -146,7 +156,15 @@ bool conditional_passed(const std::map<gamemap::location,unit>* units,
 		}
 	}
 
-	return !have_unit.empty() || !variables.empty();
+	const vconfig::child_list& not_statements = cond.get_children("not");
+	for(vconfig::child_list::const_iterator not_it = not_statements.begin();
+			not_it != not_statements.end(); ++not_it) {
+		if(conditional_passed(units,*not_it)) {
+			return false;
+		}
+	}
+
+	return !have_unit.empty() || !variables.empty() || !not_statements.empty() || !and_statements.empty();
 }
 
 } //end namespace game_events
