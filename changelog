@@ -2,6 +2,19 @@ SVN trunk (1.1.1+svn):
  * campaigns
    * campaigns removed from mainline: Son of the Black Eye, The Dark Hordes
    * campaigns added to mainline: The South Guard
+   * Eastern Invasion
+     * rewrote dialogue in Lake Vrug, Evacuation, and The Drowned Plains
+     * redid cave maps to take advantage of new terrains
+     * redid some outdoor maps to be more interesting
+     * gave an early finish bonus in scenario Captured
+   * Heir to the Throne
+     * switched over to [music] from music=
+     * minor gameplay improvement for Swamp of Dread
+     * new story art
+     * Northern Winter - added turns for balancing
+   * The Rise of Wesnoth
+     * Replaced all occurences of the Demilich with the normal Lich
+     * Updated path information
    * The South Guard
      * switched to using the {IS_HERO} macro
      * all the unit names are not translatable
@@ -11,24 +24,44 @@ SVN trunk (1.1.1+svn):
      * Proven By The Sword: fixed recall of Javelineers
      * removed the uneeded Dread Lich
      * added custom SG flag
-   * Heir to the Throne
-     * switched over to [music] from music=
-     * minor gameplay improvement for Swamp of Dread
-     * new story art
-     * Northern Winter - added turns for balancing
-   * The Rise of Wesnoth
-     * Replaced all occurences of the Demilich with the normal Lich
-     * Updated path information
    * Two Brothers
-     * switched to using the {IS_HERO} macro for all units that are not
-       allowed to die
-   * Eastern Invasion
-     * rewrote dialogue in Lake Vrug, Evacuation, and The Drowned Plains
-     * redid cave maps to take advantage of new terrains
-     * redid some outdoor maps to be more interesting
-     * gave an early finish bonus in scenario Captured
-   * Son of the Black Eye
-     * fixed Gruu not appearing in Siege of Barag Gor (#5156)
+     * switched to using the {IS_HERO} macro
+     * changed music in all scenarios
+ * graphics
+   * moved hero icon from the South Guard into main directories
+   * new attack icons: animal fangs, axe, baneblade, battle axe, beak, 
+     claws-animal, claw-undead, entangle, faery touch, fireball, 
+     fist-troll, fist-skeletal, hammer, hatchet, human-greatsword,
+     iceball, lightbeam, lightning, magic missile, necromatic staff,
+     magic staff, shield, spear, trident
+   * new portrait for Drake Clasher, Giant Scorpion
+   * improved runemaster graphics from Sceptre of Fire
+   * new modified Wesnoth map for HttT (larger, more legible)
+   * new "units" icon for the menu
+   * Death animations: dark adept, yeti death
+ * language and i18n:
+   * new translations: Vietnamese
+   * updated translations: British English, Catalan, Czech, Dutch, German,
+     Finnish, French, Hebrew, Italian, Polish, Portuguese (Brazil), Swedish,
+     Turkish
+   * updated man pages: Swedish
+ * multiplayer maps:
+   * all multiplayer maps now use a pmaylist to specify their music
+   * revised multiplayer maps: Blitz, Charge, Cynsaun Battlefield, Den of Onis,
+     Divide and Conquer, Hamlets, Hornshark Island, Meteor Lake, Silverhead 
+     Crossing, Triple Blitz, Clash, Hexcake, The Wilderlands
+ * music & sound
+   * multiplayer no longer uses faction specific music, music is now
+     specified per scenario like it is done in the singleplayer mode
+   * new music: gameplay01, gameplay02
+   * new sounds: turn end bell, drake hit&die, dwarf hit&die, short fanfare,
+     additional female-hit, hiss-die, hiss-hit, holy attack, 3 ghostly wails, 
+     3 gryphon, miss, 2 orc-die, 3 skeleton, 2 troll hit&die, water blast,
+     wolf hit&die, 4 dark magic, 2 lightning, 12 human hit&die
+   * sound added to units: 
+     * death sounds: all drakes, dwarves, orcs & goblins, all humans, monsters,
+       nagas, saurians, trolls, all skeletons, woses
+     * lightbeam attacks, elves, gryphons, some ghost attacks
  * units
    * back in mainline: Orcish Leader, Orcish Ruler, Orcish Sovereign
    * Swapped names for necromancer (now a L3) and dark sorcerer (now a L2) (no
@@ -67,38 +100,6 @@ SVN trunk (1.1.1+svn):
      * increased melee damage of the Draug from 11-4 to 12-4
      * increased cost of the Draug from 40 to 50
      * decreased melee damage of the Blood Bat from 6-3 to 5-3
- * graphics
-   * moved hero icon from the South Guard into main directories
-   * new attack icons: animal fangs, axe, baneblade, battle axe, beak, 
-     claws-animal, claw-undead, entangle, faery touch, fireball, 
-     fist-troll, fist-skeletal, hammer, hatchet, human-greatsword,
-     iceball, lightbeam, lightning, magic missile, necromatic staff,
-     magic staff, shield, spear, trident
-   * new portrait for Drake Clasher, Giant Scorpion
-   * improved runemaster graphics from Sceptre of Fire
-   * new modified Wesnoth map for HttT (larger, more legible)
-   * new "units" icon for the menu
-   * Death animations: dark adept, yeti death
- * music & sound
-   * new music: gameplay01, gameplay02
-   * new sounds: turn end bell, drake hit&die, dwarf hit&die, short fanfare,
-     additional female-hit, hiss-die, hiss-hit, holy attack, 3 ghostly wails, 
-     3 gryphon, miss, 2 orc-die, 3 skeleton, 2 troll hit&die, water blast,
-     wolf hit&die, 4 dark magic, 2 lightning, 12 human hit&die
-   * sound added to units: 
-     * death sounds: all drakes, dwarves, orcs & goblins, all humans, monsters,
-       nagas, saurians, trolls, all skeletons, woses
-     * lightbeam attacks, elves, gryphons, some ghost attacks
- * language and i18n:
-   * new translations: Vietnamese
-   * updated translations: British English, Catalan, Czech, Dutch, German,
-     Finnish, French, Hebrew, Italian, Polish, Portuguese (Brazil), Swedish,
-     Turkish
-   * updated man pages: Swedish
- * multiplayer maps:
-   * revised multiplayer maps: Blitz, Charge, Cynsaun Battlefield, Den of Onis,
-     Divide and Conquer, Hamlets, Hornshark Island, Meteor Lake, Silverhead 
-     Crossing, Triple Blitz, Clash, Hexcake, The Wilderlands
  * WML improvements
    * [if] now supports [and] and [not] tags
    * new {IS_HERO} macro to display a hero icon for new units
@@ -109,7 +110,7 @@ SVN trunk (1.1.1+svn):
    * attack animations can now be filtered on hit an miss
    * [effect] can modify attack/defense weight
    * change in the [sound] tag. sounds must now be part of animation
- * miscellaneous
+ * miscellaneous changes
    * added a --load FILE command-line option, where FILE is a saved game
      in the standard save game directory.
    * reordered macro calls in game.cfg to fix no-AMLA bug for campaigns
@@ -124,9 +125,9 @@ SVN trunk (1.1.1+svn):
    * added whisper support for lobby and observers in game
    * Added ignore list on MP
    * MP server only accepts nicks made from alphanumeric and underscore
-   characters
+     characters
    * force a refresh after calls to ONSCREEN scrolls, to avoid refresh
-   problems.
+     problems.
    * add sort_topics command to the WML of help
 
 Version 1.1.1:
