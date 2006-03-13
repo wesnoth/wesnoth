@@ -547,7 +547,10 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 	} else if(is_left_click(event) && event.state == SDL_PRESSED) {
 		left_click(event);
 	} else if(is_right_click(event) && event.state == SDL_PRESSED) {
-		if(!current_paths_.routes.empty()) {
+		// FIXME: when it's not our turn, movement gets highlighted
+		// merely by mousing over.  This hack means we don't require a
+		// two clicks to access right menu.
+		if (gui_.viewing_team() == team_num_-1 && !current_paths_.routes.empty()) {
 			selected_hex_ = gamemap::location();
 			gui_.select_hex(gamemap::location());
 			gui_.unhighlight_reach();
