@@ -21,11 +21,11 @@
 
 #include <vector>
 
-class playsingle_controller : play_controller
+class playsingle_controller : public play_controller
 {
 public:
-	playsingle_controller(const config& level, game_state& state_of_game, 
-		const int ticks, const int num_turns, const config& game_config);
+	playsingle_controller(const config& level, const game_data& gameinfo, game_state& state_of_game, 
+		const int ticks, const int num_turns, const config& game_config, CVideo& video);
 
 	LEVEL_RESULT play_scenario(const game_data& gameinfo, CVideo& video,
 		const std::vector<config*>& story, upload_log& log, bool skip_replay);

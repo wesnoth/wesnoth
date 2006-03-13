@@ -34,6 +34,8 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 		const int num_turns = atoi((*level)["turns"].c_str());
 		replay_controller replaycontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video, story);
 
+		const unit_type::experience_accelerator xp_mod(replaycontroller.get_xp_modifier() > 0 ? replaycontroller.get_xp_modifier() : 100);
+
 		//replay event-loop
 		for (;;){
 			replaycontroller.replay_slice();
@@ -49,11 +51,9 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 replay_controller::replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 						   const int ticks, const int num_turns, const config& game_config,
 						   CVideo& video, const std::vector<config*>& story)
-	: play_controller(level, state_of_game, ticks, num_turns, game_config), 
-	verify_manager_(units_), team_manager_(teams_), labels_manager_(), help_manager_(&game_config, &gameinfo, &map_), 
-	gameinfo_(gameinfo), gamestate_start_(state_of_game), status_start_(level, num_turns),
-	mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo),
-	xp_modifier_(atoi(level["experience_modifier"].c_str()))
+	: play_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video), 
+	gamestate_start_(state_of_game), status_start_(level, num_turns),
+	mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo)
 {
 	player_number_ = 1;
 	delay_ = 0;
@@ -69,11 +69,6 @@ replay_controller::replay_controller(const config& level, const game_data& gamei
 }
 
 replay_controller::~replay_controller(){
-	delete gui_;
-	delete halo_manager_;
-	delete prefs_disp_manager_;
-	delete tooltips_manager_;
-	delete events_manager_;
 }
 
 void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*/){
@@ -82,50 +77,13 @@ void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*
 	//guarantee the cursor goes back to 'normal' at the end of the level
 	const cursor::setter cursor_setter(cursor::NORMAL);
 
-	const unit_type::experience_accelerator xp_mod(xp_modifier_ > 0 ? xp_modifier_ : 100);
-
-	const config::child_list& unit_cfg = level_.get_children("side");
-
-	if(level_["modify_placing"] == "true") {
-		LOG_NG << "modifying placing...\n";
-		play::place_sides_in_preferred_locations(map_,unit_cfg);
-	}
-
-	LOG_NG << "initializing teams..." << unit_cfg.size() << "\n";;
-	LOG_NG << (SDL_GetTicks() - ticks_) << "\n";
-	int first_human_team = -1;
-	std::set<std::string> seen_save_ids;
-
-	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
-		std::string save_id = get_unique_saveid(**ui, seen_save_ids);
-		seen_save_ids.insert(save_id);
-		if (first_human_team == -1){
-			first_human_team = get_first_human_team(ui, unit_cfg);
-		}
-		get_player_info(**ui, gamestate_, save_id, teams_, level_, gameinfo_, map_, units_);
-	}
-
-	preferences::encounter_recruitable_units(teams_);
-	preferences::encounter_start_units(units_);
-	preferences::encounter_recallable_units(gamestate_);
-	preferences::encounter_map_terrain(map_);
-	LOG_NG << "initialized teams... " << (SDL_GetTicks() - ticks_) << "\n";
-
-	LOG_NG << "initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
+	LOG_NG << "initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
-	gui_ = new display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_);
 	const config* replay_theme_cfg = theme_cfg->child("resolution")->child("replay");
 	if (NULL != replay_theme_cfg)
 	    gui_->get_theme().modify(replay_theme_cfg);
 	mouse_handler_.set_gui(gui_);
-	theme::set_known_themes(&game_config_);
-	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
-
-	if(first_human_team != -1) {
-		gui_->set_team(first_human_team);
-	}
-
-	init_managers();
+	LOG_NG << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	/*
 	if(recorder.is_skipping() == false) {
@@ -135,16 +93,6 @@ void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*
 		}
 	}
 	*/
-
-	gui_->labels().read(level_);
-	LOG_NG << "c... " << (SDL_GetTicks() - ticks_) << "\n";
-
-	const std::string& music = level_["music"];
-	if(music != "") {
-		sound::play_music_repeatedly(music);
-	}
-
-	LOG_NG << "d... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	//find a list of 'items' (i.e. overlays) on the level, and add them
 	const config::child_list& overlays = level_.get_children("item");
@@ -182,18 +130,6 @@ void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*
 
 	units_start_ = units_;
 	teams_start_ = team_manager_.clone(teams_);
-}
-
-void replay_controller::init_managers(){
-	prefs_disp_manager_ = new preferences::display_manager(gui_);
-	tooltips_manager_ = new tooltips::manager(gui_->video());
-
-	//this *needs* to be created before the show_intro and show_map_scene
-	//as that functions use the manager state_of_game
-	events_manager_ = new game_events::manager(level_,*gui_,map_,units_,teams_,
-	                                    gamestate_,status_,gameinfo_);
-
-	halo_manager_ = new halo::manager(*gui_);
 }
 
 std::vector<team>& replay_controller::get_teams(){

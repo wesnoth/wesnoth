@@ -69,10 +69,9 @@ public:
 	void replay_switch_shroud();
 	void replay_skip_animation();
 
-	std::vector<team> teams_, teams_start_;
+	std::vector<team> teams_start_;
 private:
 	void init(CVideo& video, const std::vector<config*>& story);
-	void init_managers();
 	void play_turn();
 	void play_side(const int team_index);
 	void update_teams();
@@ -81,21 +80,9 @@ private:
 	team& current_team() { return teams_[player_number_-1]; }
 	const team& current_team() const { return teams_[player_number_-1]; }
 
-	//managers
-	const verification_manager verify_manager_;
-	teams_manager team_manager_;
-	halo::manager* halo_manager_;
-	font::floating_label_context labels_manager_;
-	preferences::display_manager* prefs_disp_manager_;
-	tooltips::manager* tooltips_manager_;
-	game_events::manager* events_manager_;
-	help::help_manager help_manager_;
-
-	const game_data& gameinfo_;
 	game_state& gamestate_start_;
-	display* gui_;
 	gamestatus status_start_;
-	unit_map units_, units_start_;
+	unit_map units_start_;
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
 
@@ -105,7 +92,6 @@ private:
 	int delay_;
 	bool is_playing_;
 	int current_turn_;
-	const int xp_modifier_;
 };
 
 

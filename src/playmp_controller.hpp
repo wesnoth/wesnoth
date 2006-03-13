@@ -23,8 +23,8 @@
 class playmp_controller : public play_controller
 {
 public:
-	playmp_controller(const config& level, game_state& state_of_game, 
-		const int ticks, const int num_turns, const config& game_config);
+	playmp_controller(const config& level, const game_data& gameinfo, game_state& state_of_game, 
+		const int ticks, const int num_turns, const config& game_config, CVideo& video);
 
 	LEVEL_RESULT play_scenario(const game_data& gameinfo, const config& terrain_config,
 		const config* level, CVideo& video,	game_state& state_of_game,
