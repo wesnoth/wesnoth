@@ -122,7 +122,18 @@ SVN trunk (1.1.1+svn):
    * moved much of about into WML as well as enabled campaign [about]
    * added a #undef preprocessor directive
    * added 'profile' key to [unit] variables
+   * added 'image' key to [unit] variables
+   * added [modify_turns] to [event]. Takes 'value' and 'add' as keys.
+   * added new key to [side]: allow_player; if set to 'no' then this side will 
+     not appear in the creation screen. Some maps with more sides than starting
+	 positions may be broken.
+   * added [store_side] tag, which takes 'variable' and 'side' as keys, and 
+     stores data to variable.gold, variable.income, variable.name, 
+	 and variable.team_name.
    * added [label] inside [event]
+   * added 'zoc' key to unit types
+   * added 'set_hp' and 'set_total' to unit modifications
+   * allowed increase on hp to use %.
    * attack animations can now be filtered on hit an miss
    * [effect] can modify attack/defense weight
    * change in the [sound] tag. sounds must now be part of animation
