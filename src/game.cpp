@@ -1531,7 +1531,7 @@ int play_game(int argc, char** argv)
 			<< "  --nosound         Disables sounds\n"
 			<< "  --compress file1 file2 Compresses the text-WML file file1 into the\n"
 			<< "                    binary-WML file file2\n"
-			<< "  --decompress file1 file2 Uncompresses the binary-WML file file2 into\n"
+			<< "  --decompress file1 file2 Uncompresses the binary-WML file file1 into\n"
 			<< "                    the text-WML file file2\n"
 			;
 			return 0;
