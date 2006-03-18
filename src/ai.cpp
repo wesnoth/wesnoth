@@ -1006,6 +1006,10 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 			LOG_STREAM(err, ai) << "attempt to attack unit that is turned to stone\n";
 			return;
 		}
+		if(!info_.units.find(u)->second.can_attack()) {
+			LOG_STREAM(err, ai) << "attempt to attack twice with the same unit\n";
+			return;
+		}
 
 		recorder.add_attack(u,target,weapon);
 
