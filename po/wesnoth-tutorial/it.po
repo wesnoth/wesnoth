@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-03-12 14:10+0100\n"
-"PO-Revision-Date: 2006-02-18 21:02+0100\n"
-"Last-Translator: Gwain <mcgwain@hotmail.com>\n"
+"PO-Revision-Date: 2006-03-18 09:07+0100\n"
+"Last-Translator: Andrea Calvani <stildurak@yahoo.it>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,7 +13,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:69
 msgid "Wesnoth Tutorial"
-msgstr ""
+msgstr "Tutorial di Wesnoth"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:97
 #: data/tutorial/scenarios/1_Tutorial.cfg:175
@@ -24,7 +24,7 @@ msgstr "Konrad"
 #: data/tutorial/scenarios/1_Tutorial.cfg:107
 #: data/tutorial/scenarios/1_Tutorial.cfg:356
 msgid "Dummy"
-msgstr ""
+msgstr "Fantoccio"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:128
 msgid "Delfador"
@@ -38,24 +38,29 @@ msgid ""
 " healing\n"
 " recruiting"
 msgstr ""
+"Imparerai i fondamentali riguardo: \n"
+" movimento\n"
+" attacco\n"
+" guarigione\n"
+" reclutamento"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:153
 msgid "Destroy a fierce enemy"
-msgstr ""
+msgstr "Distruggere un feroce nemico"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:157
 msgid "Get yourself killed"
-msgstr ""
+msgstr "Vieni ucciso"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:173
 msgid "Who would you like to play?"
-msgstr ""
+msgstr "Con chi ti piacerebbe giocare?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:183
 #: data/tutorial/scenarios/1_Tutorial.cfg:186
 #: data/tutorial/scenarios/1_Tutorial.cfg:196
 msgid "Li'sar"
-msgstr ""
+msgstr "Li'sar"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:212
 msgid ""
@@ -64,10 +69,15 @@ msgid ""
 "mentor Delfador is on the East side of the river.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"*Benvenuto in Wesnoth!\n"
+"In questo tutorial giocherai con $student, nella fortezza. Il tuo mentore "
+"Delfador si trova sulla riva orientale del fiume.\n"
+"*Clicca col pulsante sinistro del mouse o premi qualunque pulsante per "
+"continuare..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:215
 msgid "Left click on $student"
-msgstr ""
+msgstr "Clicca col sinistro su $student"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:232
 msgid ""
@@ -75,20 +85,27 @@ msgid ""
 "The places $he could move to are highlighted.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"*Hai selezionato $student.\n"
+"La zona in cui $he può muovere è evidenziata.\n"
+"*Clicca col pulsante sinistro del mouse o premi qualunque pulsante per "
+"continuare..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:235
 msgid "HERE"
-msgstr ""
+msgstr "Qui"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:241
 msgid ""
 "Move $student next to Delfador, by clicking on the place marked 'HERE'\n"
 "*Left click or any key to continue..."
 msgstr ""
+"Muovi $student vicino a Delfador, cliccando sul luogo segnato 'Qui'\n"
+"*Clicca col pulsante sinistro del mouse o premi qualunque pulsante per "
+"continuare..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:245
 msgid "Left click on tile labelled HERE"
-msgstr ""
+msgstr "Clicca col pulsante sinistro del mouse sul riquadro etichettato 'Qui'"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:283
 msgid ""
@@ -97,35 +114,42 @@ msgid ""
 "Undo, then try again.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"*Ops!\n"
+"Hai mosso nel posto sbagliato! Dopo aver chiuso questo messaggio, puoi "
+"premere 'u' per annullare la mossa, per poi riprovare.\n"
+"*Clicca col pulsante sinistro del mouse o premi qualunque pulsante per "
+"continuare..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:306
 msgid "Good morning Delfador!  Is it time to attack things?"
-msgstr ""
+msgstr "Buongiorno Delfador! Non è il momento di combattere qualcosa?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:311
 msgid "Um, well..."
-msgstr ""
+msgstr "Uhm, bene..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:316
 msgid "Have you found an orc for me to fight, huh?  A troll?"
-msgstr ""
+msgstr "Hai trovato un orco da farmi combattere? O un troll?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:321
 msgid "Quiet!  I will summon an enemy for you..."
-msgstr ""
+msgstr "Silenzio! Evocherò un nemico per te..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:361
 msgid "... this quintain!"
-msgstr ""
+msgstr "... questo fantoccio-bersaglio!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:366
 msgid "A quintain?  You want me to pretend to fight a dummy??"
-msgstr ""
+msgstr "Un fantoccio? Vuoi farmi fingere un combattimento con un fantoccio?!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:371
 msgid ""
 "Child, you have 32 hitpoints and a sword.    I'm fairly sure you'll win."
 msgstr ""
+"Ragazzo, hai 32 punti resistenza e una spada. Sono abbastanza sicuro che "
+"vincerai."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:377
 msgid ""
@@ -134,41 +158,48 @@ msgid ""
 "attack.  When you click OK, $student will attack.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"Per attaccare il fantoccio, per prima cosa seleziona l'attaccante ($student) "
+"e poi il bersaglio (il fantoccio). Vedrai una descrizione dei dettagli "
+"dell'attacco. Quando cliccherai OK, $student attaccherà.\n"
+"*Clicca col pulsante sinistro del mouse o premi qualunque pulsante per "
+"continuare..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:386
 msgid "Click on the dummy to attack it"
-msgstr ""
+msgstr "Clicca sul fantoccio per attaccarlo"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:389
 #: data/tutorial/scenarios/1_Tutorial.cfg:489
 msgid "Click on $student"
-msgstr ""
+msgstr "Clicca su $student"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:418
 msgid "Hey! This dummy fights back!"
-msgstr ""
+msgstr "Ehi! Questo fantoccio risponde agli attacchi!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:423
 msgid "Hmm, maybe we should have started with a doll."
-msgstr ""
+msgstr "Hmm, forse avremmo dovuto cominciare con una bambola."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:428
 msgid "Should I retreat?"
-msgstr ""
+msgstr "Dovrei ritirarmi?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:433
 msgid "Good idea!"
-msgstr ""
+msgstr "Buona idea!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:456
 msgid ""
 "Unfortunately, you've used up your turn attacking the dummy.  The dummy will "
 "now get a turn."
 msgstr ""
+"Sfortunatamente, hai sfruttato il tuo turno per attaccare il fantoccio. Ora "
+"sarà il suo turno."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:460
 msgid "The DUMMY gets a turn?"
-msgstr ""
+msgstr "Sarà il turno del FANTOCCIO?!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:465
 msgid ""
@@ -176,18 +207,23 @@ msgid ""
 "Now, this dummy gets five chances to hit you, and if it hits every time, "
 "you'll drop from $student_hp to $future_hp hit points.  Brace yourself!"
 msgstr ""
+"Certo: è un fantoccio magico.\n"
+"Ora, questo fantoccio ha cinque possibilità di colpirti, e se colpirà ogni "
+"volta, cadrai da $student_hp a $future_hp punti resistenza. Preparati!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:467
 msgid "Click on the End Turn button on the bottom right"
-msgstr ""
+msgstr "Clicca sul pulsante Fine del turno in fondo a destra"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:479
 msgid "Ouch!  I need to heal!  Only $student_hp hp left!"
 msgstr ""
+"Ahi! Avrei bisogno di guarire! Ho ancora $student_hp punti resistenza "
+"soltanto!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:482
 msgid "Village"
-msgstr ""
+msgstr "Villaggio"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:486
 msgid ""
@@ -195,10 +231,12 @@ msgid ""
 "good idea, and ending your turn in one will heal you: you should retreat to "
 "there."
 msgstr ""
+"C'è un villaggio sull'altra riva del fiume. Entrare nei villaggi è una buona "
+"idea, e finendo il turno in uno di essi guarirai: dovresti ritirarti là."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:497
 msgid "Click on the village to move $student"
-msgstr ""
+msgstr "Clicca sul villaggio per muovere $student"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:514
 msgid ""
@@ -207,6 +245,12 @@ msgid ""
 "gold: every turn you gain two gold, plus one for every village you own.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"Ora 'possiedi' questo villaggio: puoi vedervi sventolare la tua bandiera, e "
+"presto un '1' apparirà vicino all'icona con la casa in alto dello schermo. I "
+"villaggi forniscono oro: ogni turno ricavi due monete d'oro, più un'altra "
+"per ogni villaggio in tuo possesso.\n"
+"*Clicca col pulsante sinistro del mouse o premi qualunque pulsante per "
+"continuare..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:516
 #: data/tutorial/scenarios/1_Tutorial.cfg:609
@@ -214,31 +258,35 @@ msgstr ""
 #: data/tutorial/scenarios/1_Tutorial.cfg:715
 #: data/tutorial/scenarios/1_Tutorial.cfg:759
 msgid "Click on the End Turn button"
-msgstr ""
+msgstr "Clicca sul pulsante Fine del turno"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:546
 msgid ""
 "You're about to be healed by 8 hitpoints.   But I think you're going to need "
 "some help against that dummy."
 msgstr ""
+"Stai per essere guarito di 8 punti resistenza. Ma penso che avrai bisogno di "
+"aiuto contro quel "
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:551
 msgid "I'll recruit some elves!"
-msgstr ""
+msgstr "Recluterò alcuni elfi!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:554
 msgid "Keep"
-msgstr ""
+msgstr "Fortezza"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:558
 msgid ""
 "A splendid idea.  If you return to your keep, you can recruit two units.  "
 "You have plenty of gold for that."
 msgstr ""
+"Ottima idea. Se ritorni nella tua fortezza, potrai reclutare due unità. Hai "
+"molto oro per farlo."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:562
 msgid "Move $student to the keep"
-msgstr ""
+msgstr "Porta $student nella fortezza"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:581
 msgid ""
@@ -247,10 +295,16 @@ msgid ""
 "one type of unit to choose: select it.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"Ogni volta che ti trovi in una fortezza, puoi reclutare nei riquadri "
+"'castello' attorno ad essa, cliccando con il destro e selezionando "
+"'Recluta'. Per questa volta avrai a disposizione solo un tipo di unità da "
+"scegliere: selezionala.\n"
+"*Clicca col pulsante sinistro del mouse o premi qualunque pulsante per "
+"continuare..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:584
 msgid "Right click on one castle tile and select Recruit"
-msgstr ""
+msgstr "Clicca col destro su un riquadro 'castello' e seleziona Recluta"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:605
 #: data/tutorial/scenarios/1_Tutorial.cfg:635
@@ -261,16 +315,24 @@ msgid ""
 "description on the right of the screen.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"Queste unità appena reclutate non possono fare nulla questo turno: le "
+"controllerai il prossimo.\n"
+"Nota: dopo questo messaggio, potrai muovere il mouse sopra una unità per "
+"vederne la descrizione sulla destra dello schermo.\n"
+"*Clicca col pulsante sinistro del mouse o premi qualunque pulsante per "
+"continuare..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:612
 #: data/tutorial/scenarios/1_Tutorial.cfg:642
 msgid "Right click on the other castle tile and Recruit another unit"
-msgstr ""
+msgstr "Clicca sul destro sull'altro riquadro libero e recluta un'altra unità"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:654
 msgid ""
 "Hey, the dummy just healed by two hitpoints!  I'd better attack it at once!"
 msgstr ""
+"Ehi, il fantoccio è appena guarito di 2 punti resistenza! Sarà meglio "
+"attaccarlo subito!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:659
 msgid ""
@@ -278,30 +340,32 @@ msgid ""
 "But before you send your fighters against the dummy, you should know they "
 "have two kinds of attack..."
 msgstr ""
+"Sì, se una unità non fa nulla per un turno, guarirà lentamente.\n"
+"Ma prima che tu mandi i tuoi combattenti contro il fantoccio, dovresti "
+"sapere che hanno due tipi di attacco..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:663
 msgid "I'll tell them to use the one which does most damage!"
-msgstr ""
+msgstr "Dirò loro di usare quello che fa più danni!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:667
 msgid ""
 "And which would that be?  The sword (5-4) or the bow (3-3)?  I guess you'll "
 "find out..."
 msgstr ""
+"E quale sarebbe? La spada (5-4) o l'arco (3-3)? Immagino che lo scoprirai..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:669
-#, fuzzy
 msgid "Left click on an Elvish Fighter"
-msgstr "Che distanza può coprire il mio Combattente Elfico?"
+msgstr "Clicca col sinistro su un Combattente Elfico"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:670
-#, fuzzy
 msgid "End your turn, then attack again."
-msgstr "Termina il turno e aspetta che Merle ti attacchi."
+msgstr "Termina il turno, quindi attacca di nuovo."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:677
 msgid "Left click on the Dummy to attack it."
-msgstr ""
+msgstr "Clicca col sinistro sul Fantoccio per attaccarlo."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:706
 msgid ""
@@ -309,6 +373,9 @@ msgid ""
 "attack, so the dummy defended with its melee attack (3-5).  The ranged "
 "attack was safer."
 msgstr ""
+"Il tuo elfo ha usato una spada (5-4, o meglio 5 di danno e 4 attacchi), un "
+"attacco da mischia, quindi il fantoccio si è difeso con il suo (3-5). "
+"L'attacco da distanza era più sicuro."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:713
 msgid ""
@@ -317,6 +384,10 @@ msgid ""
 "attack was safer.\n"
 "End your turn, then attack again."
 msgstr ""
+"Il tuo elfo ha usato una spada (5-4, o meglio 5 di danno e 4 attacchi), un "
+"attacco da mischia, quindi il fantoccio si è difeso con il suo (3-5). "
+"L'attacco da distanza era più sicuro.\n"
+"Finisci il tuo turno, quindi attacca di nuovo."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:722
 msgid ""
@@ -324,11 +395,14 @@ msgid ""
 "attack, so the dummy defended with its melee attack (3-5).  You should tell "
 "the other Elf to use the bow."
 msgstr ""
+"Il tuo elfo ha usato una spada (5-4, o meglio 5 di danno e 4 attacchi), un "
+"attacco da mischia, quindi il fantoccio si è difeso con il suo (3-5). "
+"Dovresti dire all'altro elfo di usare l'arco."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:724
 #: data/tutorial/scenarios/1_Tutorial.cfg:768
 msgid "Attack with the other Elf"
-msgstr ""
+msgstr "Attacca con l'altro elfo."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:750
 #: data/tutorial/scenarios/1_Tutorial.cfg:766
@@ -337,6 +411,9 @@ msgid ""
 "attacks).  The dummy has no ranged attack, only a melee attack, so it could "
 "not defend itself."
 msgstr ""
+"Il tuo elfo ha usato un arco, un attacco da distanza (3-3, o meglio 3 di "
+"danno e 3 attacchi). Il fantoccio non possiede attacchi da distanza, ma solo "
+"da mischia, quindi non ha potuto difendersi."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:757
 msgid ""
@@ -345,20 +422,29 @@ msgid ""
 "not defend itself.\n"
 "End your turn, then attack again."
 msgstr ""
+"Il tuo elfo ha usato un arco, un attacco da distanza (3-3, o meglio 3 di "
+"danno e 3 attacchi). Il fantoccio non possiede attacchi da distanza, ma solo "
+"da mischia, quindi non ha potuto difendersi.\n"
+"Finisci il tuo turno, quindi attacca di nuovo."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:779
 msgid "Keep attacking, with both elves, until the dummy is finished!"
 msgstr ""
+"Continua ad attaccare con entrambi gli elfi, fino a quando il fantoccio non "
+"morirà!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:787
 msgid "Maybe you should recruit another elf?"
-msgstr ""
+msgstr "Forse dovresti reclutare un altro elfo?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:792
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description"
 msgstr ""
+"Note:\n"
+"Puoi cliccare col destro su un'unità per vedere la sua descrizione "
+"dettagliata"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:807
 msgid ""
@@ -366,6 +452,10 @@ msgid ""
 "Remember to pull back wounded units into villages, and recruit more if you "
 "need.  Take special care of units with the highest experience points (XP)."
 msgstr ""
+"Note:\n"
+"Ricorda di ritirare le unità ferite nei villaggi, e reclutane altre se ne "
+"hai bisogno. Abbi particolare attenzione delle unità con più punti "
+"esperienza (PE)."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:824
 msgid ""
@@ -373,6 +463,9 @@ msgid ""
 "These dummies only attack if you are a single tile away.  With care, you "
 "should be able to kill them one at a time."
 msgstr ""
+"Note:\n"
+"Questi fantocci attaccano solamente se sei nei riquadri immediatamente "
+"vicini. Con attenzione, dovresti riuscire a ucciderli uno per volta."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:835
 msgid ""
@@ -381,6 +474,11 @@ msgid ""
 "the right), it will go up a level.  Elvish Fighters have two options, and "
 "you will get to choose which one you want."
 msgstr ""
+"Note:\n"
+"Quando un'unità acquisisce abbastanza esperienza (l'indicatore "
+"dell'esperienza è la barra più piccola sulla destra), questa avanzerà di "
+"livello. I Combattenti Elfici hanno due opzioni, e dovrai scegliere quale di "
+"essi."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:844
 msgid ""
@@ -388,6 +486,9 @@ msgid ""
 "Each village you own can support a single unit for free.  After that, each "
 "unit costs you one gold per turn."
 msgstr ""
+"Note:\n"
+"Ogni villaggio che possiedi può supportare una singola unità gratis. Oltre, "
+"ogni unità ti costerà una moneta d'oro per turno."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:853
 msgid ""
@@ -397,10 +498,16 @@ msgid ""
 "villages, bad inside rivers.  The dummies' attacks are magical, however, so "
 "they have a 70% chance of hitting you wherever you stand."
 msgstr ""
+"Note:\n"
+"Una volta che avrai selezionato una unità, vedrai delle percentuali per ogni "
+"terreno differente: più sono alte più il terreno è difendibile. Per esempio, "
+"la difesa è buona nei castelli e nei villaggi, peggiore nei fiumi. Comunque, "
+"gli attacchi dei fantocci sono magici, pertanto hanno una possibilità di "
+"colpire del 70%, dovunque tu sia."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:875
 msgid "The dummy is dead, sirs, and I have gained more experience!"
-msgstr ""
+msgstr "Il fantoccio è morto, signori, e ho guadagnato esperienza!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:880
 msgid ""
@@ -408,18 +515,21 @@ msgid ""
 "opponent: gain enough experience and you become more powerful.\n"
 "Now $student, I will leave you with more dummies to practice on!"
 msgstr ""
+"Sì, guadagni esperienza con la battaglia, specialmente uccidendo un "
+"avversario: acquisisci abbastanza esperienza e diventerai più potente.\n"
+"Now, $student, ti darò più fantocci con cui far pratica!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:945
 msgid "Do you want to keep practicing?"
-msgstr ""
+msgstr "Vuoi continuare ad esercitarti?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:947
 msgid "Yes, I'm still figuring it out."
-msgstr ""
+msgstr "Sì, sto ancora cercando di capire."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:950
 msgid "No, I think I've got it."
-msgstr ""
+msgstr "No, penso che abbia capito."
 
 #~ msgid "Basic Training"
 #~ msgstr "Corso di base"
