@@ -1021,12 +1021,27 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
+			const bool show = screen != NULL && !screen->turbo() &&
+				!screen->fogged(loc.x,loc.y) && cfg["fade_in"] != "";
+			if (show) {
+				screen->draw(true,true);
+			}
+
 			units->insert(std::pair<gamemap::location,unit>(loc,new_unit));
 			if(game_map->is_village(loc)) {
 				get_village(loc,*teams,new_unit.side()-1,*units);
 			}
 
 			screen->invalidate(loc);
+
+			if (show) {
+				for(fixed_t alpha = ftofxp(0.0); alpha <= ftofxp(1.0); alpha += ftofxp(0.1)) {
+					events::pump();
+					screen->draw_tile(loc.x,loc.y,NULL,alpha);
+					screen->update_display();
+					SDL_Delay(20);
+				}
+			}
 		} else {
 			player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
 

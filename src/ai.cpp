@@ -788,6 +788,7 @@ void ai::add_target(const target& tgt)
 void ai::play_turn()
 {
 	consider_combat_ = true;
+	game_events::fire("ai turn");
 	do_move();
 }
 
