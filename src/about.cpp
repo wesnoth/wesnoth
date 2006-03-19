@@ -183,8 +183,8 @@ void show_about(display &disp, std::string campaign)
 	map_rect.h = map_image->h;
 
 	gui::button close(video,_("Close"));
-	close.set_location((video.getx()/2)-(close.width()/2), map_rect.y+map_rect.h+15);
-
+	close.set_location((video.getx()/2)-(close.width()/2), video.gety() - 30);
+	close.set_volatile(true);
 
 	//substitute in the correct control characters for '+' and '-'
 	std::string before_header(2, ' ');
@@ -223,7 +223,11 @@ void show_about(display &disp, std::string campaign)
 	SDL_Rect lower_src = {0, map_rect.h - bottom_margin, map_rect.w, bottom_margin};
 	SDL_Rect lower_dest = {map_rect.x, map_rect.y + map_rect.h - bottom_margin, map_rect.w, bottom_margin};
 
+	CKey key;
+	bool last_escape;
 	do {
+		last_escape = key[SDLK_ESCAPE] != 0;
+
 		// draw map to screen, thus erasing all text
 		SDL_BlitSurface(map_image,&middle_src,video.getSurface(),&middle_dest);
 
@@ -272,10 +276,11 @@ void show_about(display &disp, std::string campaign)
 
 		// update screen and wait, so the text does not scroll too fast
 		update_rect(map_rect);
+		close.set_dirty(true);
 		disp.flip();
 		SDL_Delay(20);
 
-	} while(!close.pressed());
+	} while(!close.pressed() && (last_escape || !key[SDLK_ESCAPE]));
 
 }
 
