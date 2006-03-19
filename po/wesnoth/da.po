@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-19 16:27+0100\n"
+"POT-Creation-Date: 2006-03-19 17:06+0100\n"
 "PO-Revision-Date: 2005-08-17 17:58+0200\n"
 "Last-Translator: Anders K. Madsen <madsen@lillesvin.linux.dk>\n"
 "Language-Team: Danish <wesnoth-da@lillesvin.net>\n"
@@ -4532,8 +4532,8 @@ msgstr ""
 
 #: data/tutorial/units/Quintain.cfg:20
 #, fuzzy
-msgid "quintain"
-msgstr "Bjerge"
+msgid "flail"
+msgstr "hale"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -8047,7 +8047,7 @@ msgstr ""
 "Kunne ikke lave de nødvendige filer for at denne kampagne kan installeres."
 
 #: src/game.cpp:1038 src/game.cpp:1077 src/game.cpp:1102
-#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:291
+#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:293
 msgid "Connection timed out"
 msgstr ""
 
@@ -8118,15 +8118,15 @@ msgid ""
 "characters"
 msgstr ""
 
-#: src/game.cpp:1186 src/playcampaign.cpp:113 src/playcampaign.cpp:270
+#: src/game.cpp:1186 src/playcampaign.cpp:113 src/playcampaign.cpp:272
 msgid "The game could not be loaded: "
 msgstr "Spillet kunne ikke indlæses: "
 
-#: src/game.cpp:1188 src/playcampaign.cpp:115 src/playcampaign.cpp:273
+#: src/game.cpp:1188 src/playcampaign.cpp:115 src/playcampaign.cpp:275
 msgid "Error while playing the game: "
 msgstr "Fejl under spillet: "
 
-#: src/game.cpp:1200 src/playcampaign.cpp:117 src/playcampaign.cpp:276
+#: src/game.cpp:1200 src/playcampaign.cpp:117 src/playcampaign.cpp:278
 msgid "The game map could not be loaded: "
 msgstr "Kortet kunne ikke indlæses: "
 
@@ -8401,7 +8401,7 @@ msgstr ""
 msgid "Income"
 msgstr "Indkomst"
 
-#: src/menu_events.cpp:304 src/playcampaign.cpp:241 src/playcampaign.cpp:362
+#: src/menu_events.cpp:304 src/playcampaign.cpp:243 src/playcampaign.cpp:364
 #: src/playturn.cpp:1687
 msgid "Name:"
 msgstr "Navn:"
@@ -8425,7 +8425,7 @@ msgstr "Gemt"
 msgid "The game has been saved"
 msgstr "Spillet er gemt"
 
-#: src/menu_events.cpp:322 src/playcampaign.cpp:249 src/playcampaign.cpp:370
+#: src/menu_events.cpp:322 src/playcampaign.cpp:251 src/playcampaign.cpp:372
 #: src/playturn.cpp:1705
 msgid "The game could not be saved"
 msgstr "Spillet kunne ikke gemmes"
@@ -8841,31 +8841,31 @@ msgstr ""
 msgid "Could not send initial handshake"
 msgstr ""
 
-#: src/playcampaign.cpp:218
+#: src/playcampaign.cpp:220
 msgid "Defeat"
 msgstr "Nederlag"
 
-#: src/playcampaign.cpp:219
+#: src/playcampaign.cpp:221
 msgid "You have been defeated!"
 msgstr "Du er blevet besejret!"
 
-#: src/playcampaign.cpp:232
+#: src/playcampaign.cpp:234
 msgid " replay"
 msgstr ""
 
-#: src/playcampaign.cpp:240
+#: src/playcampaign.cpp:242
 msgid "Do you want to save a replay of this scenario?"
 msgstr ""
 
-#: src/playcampaign.cpp:289
+#: src/playcampaign.cpp:291
 msgid "Downloading next level..."
 msgstr "Henter næste level..."
 
-#: src/playcampaign.cpp:361
+#: src/playcampaign.cpp:363
 msgid "Do you want to save your game?"
 msgstr "Vil du gemme spillet?"
 
-#: src/playcampaign.cpp:386
+#: src/playcampaign.cpp:388
 msgid "Unknown scenario: '"
 msgstr "Ukendt scenarie: '"
 
@@ -9381,6 +9381,10 @@ msgstr ""
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "quintain"
+#~ msgstr "Bjerge"
 
 #, fuzzy
 #~ msgid "Cave Spider"

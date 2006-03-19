@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-19 16:27+0100\n"
+"POT-Creation-Date: 2006-03-19 17:06+0100\n"
 "PO-Revision-Date: 2005-12-23 15:52+0100\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -5179,8 +5179,8 @@ msgstr ""
 
 #: data/tutorial/units/Quintain.cfg:20
 #, fuzzy
-msgid "quintain"
-msgstr "Hegyvidék"
+msgid "flail"
+msgstr "farok"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -9336,7 +9336,7 @@ msgid ""
 msgstr "Gond volt a hadjárathoz szükséges fájlok létrehozásával."
 
 #: src/game.cpp:1038 src/game.cpp:1077 src/game.cpp:1102
-#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:291
+#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:293
 msgid "Connection timed out"
 msgstr "A kapcsolat túllépte az időt"
 
@@ -9407,15 +9407,15 @@ msgid ""
 "characters"
 msgstr ""
 
-#: src/game.cpp:1186 src/playcampaign.cpp:113 src/playcampaign.cpp:270
+#: src/game.cpp:1186 src/playcampaign.cpp:113 src/playcampaign.cpp:272
 msgid "The game could not be loaded: "
 msgstr "A játékot nem sikerült betölteni: "
 
-#: src/game.cpp:1188 src/playcampaign.cpp:115 src/playcampaign.cpp:273
+#: src/game.cpp:1188 src/playcampaign.cpp:115 src/playcampaign.cpp:275
 msgid "Error while playing the game: "
 msgstr "Hiba a játék közben: "
 
-#: src/game.cpp:1200 src/playcampaign.cpp:117 src/playcampaign.cpp:276
+#: src/game.cpp:1200 src/playcampaign.cpp:117 src/playcampaign.cpp:278
 msgid "The game map could not be loaded: "
 msgstr "A pályát nem sikerült betölteni: "
 
@@ -9688,7 +9688,7 @@ msgstr "Fenntartás"
 msgid "Income"
 msgstr "Bevétel"
 
-#: src/menu_events.cpp:304 src/playcampaign.cpp:241 src/playcampaign.cpp:362
+#: src/menu_events.cpp:304 src/playcampaign.cpp:243 src/playcampaign.cpp:364
 #: src/playturn.cpp:1687
 msgid "Name:"
 msgstr "Név:"
@@ -9714,7 +9714,7 @@ msgstr "Elmentve"
 msgid "The game has been saved"
 msgstr "Az állás el lett mentve"
 
-#: src/menu_events.cpp:322 src/playcampaign.cpp:249 src/playcampaign.cpp:370
+#: src/menu_events.cpp:322 src/playcampaign.cpp:251 src/playcampaign.cpp:372
 #: src/playturn.cpp:1705
 msgid "The game could not be saved"
 msgstr "A játék nem menthető el"
@@ -10125,31 +10125,31 @@ msgstr "Nem sikerült a foglalatot a foglalatcsoporthoz adni"
 msgid "Could not send initial handshake"
 msgstr "Nem sikerült a kézfogás kezdeményezése"
 
-#: src/playcampaign.cpp:218
+#: src/playcampaign.cpp:220
 msgid "Defeat"
 msgstr "Vereség"
 
-#: src/playcampaign.cpp:219
+#: src/playcampaign.cpp:221
 msgid "You have been defeated!"
 msgstr "Kikaptál!"
 
-#: src/playcampaign.cpp:232
+#: src/playcampaign.cpp:234
 msgid " replay"
 msgstr " visszajátszás"
 
-#: src/playcampaign.cpp:240
+#: src/playcampaign.cpp:242
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Szeretnéd a pálya visszajátszását elmenteni?"
 
-#: src/playcampaign.cpp:289
+#: src/playcampaign.cpp:291
 msgid "Downloading next level..."
 msgstr "Következő szint letöltése..."
 
-#: src/playcampaign.cpp:361
+#: src/playcampaign.cpp:363
 msgid "Do you want to save your game?"
 msgstr "Szeretnéd elmenteni a játékot?"
 
-#: src/playcampaign.cpp:386
+#: src/playcampaign.cpp:388
 msgid "Unknown scenario: '"
 msgstr "Ismeretlen pálya: '"
 
@@ -10671,6 +10671,10 @@ msgstr ""
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "quintain"
+#~ msgstr "Hegyvidék"
 
 #, fuzzy
 #~ msgid "Cave Spider"

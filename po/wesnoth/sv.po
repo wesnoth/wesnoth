@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-19 16:27+0100\n"
+"POT-Creation-Date: 2006-03-19 17:06+0100\n"
 "PO-Revision-Date: 2006-03-16 23:54+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -5191,8 +5191,8 @@ msgstr ""
 
 #: data/tutorial/units/Quintain.cfg:20
 #, fuzzy
-msgid "quintain"
-msgstr "Berg"
+msgid "flail"
+msgstr "svans"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -9697,7 +9697,7 @@ msgstr ""
 "kampanj."
 
 #: src/game.cpp:1038 src/game.cpp:1077 src/game.cpp:1102
-#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:291
+#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:293
 msgid "Connection timed out"
 msgstr "Anslutningstiden tog slut"
 
@@ -9769,15 +9769,15 @@ msgstr ""
 "Loginnamnet du har valt är för långt. Var snäll och välj ett namn med färre "
 "än 18 tecken"
 
-#: src/game.cpp:1186 src/playcampaign.cpp:113 src/playcampaign.cpp:270
+#: src/game.cpp:1186 src/playcampaign.cpp:113 src/playcampaign.cpp:272
 msgid "The game could not be loaded: "
 msgstr "Spelet kunde inte öppnas: "
 
-#: src/game.cpp:1188 src/playcampaign.cpp:115 src/playcampaign.cpp:273
+#: src/game.cpp:1188 src/playcampaign.cpp:115 src/playcampaign.cpp:275
 msgid "Error while playing the game: "
 msgstr "Fel under spel: "
 
-#: src/game.cpp:1200 src/playcampaign.cpp:117 src/playcampaign.cpp:276
+#: src/game.cpp:1200 src/playcampaign.cpp:117 src/playcampaign.cpp:278
 msgid "The game map could not be loaded: "
 msgstr "Kartan kunde inte öppnas: "
 
@@ -10044,7 +10044,7 @@ msgstr "Underhåll"
 msgid "Income"
 msgstr "Inkomst"
 
-#: src/menu_events.cpp:304 src/playcampaign.cpp:241 src/playcampaign.cpp:362
+#: src/menu_events.cpp:304 src/playcampaign.cpp:243 src/playcampaign.cpp:364
 #: src/playturn.cpp:1687
 msgid "Name:"
 msgstr "Namn:"
@@ -10070,7 +10070,7 @@ msgstr "Sparat"
 msgid "The game has been saved"
 msgstr "Spelet har sparats"
 
-#: src/menu_events.cpp:322 src/playcampaign.cpp:249 src/playcampaign.cpp:370
+#: src/menu_events.cpp:322 src/playcampaign.cpp:251 src/playcampaign.cpp:372
 #: src/playturn.cpp:1705
 msgid "The game could not be saved"
 msgstr "Spelet kunde inte sparas"
@@ -10470,31 +10470,31 @@ msgstr "Kunde inte lägga till sockel till sockellistan"
 msgid "Could not send initial handshake"
 msgstr "Kunde inte utföra handskakning"
 
-#: src/playcampaign.cpp:218
+#: src/playcampaign.cpp:220
 msgid "Defeat"
 msgstr "Nederlag"
 
-#: src/playcampaign.cpp:219
+#: src/playcampaign.cpp:221
 msgid "You have been defeated!"
 msgstr "Du har förlorat!"
 
-#: src/playcampaign.cpp:232
+#: src/playcampaign.cpp:234
 msgid " replay"
 msgstr " repris"
 
-#: src/playcampaign.cpp:240
+#: src/playcampaign.cpp:242
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Vill du spara en repris för detta scenario?"
 
-#: src/playcampaign.cpp:289
+#: src/playcampaign.cpp:291
 msgid "Downloading next level..."
 msgstr "Hämtar nästa scenario..."
 
-#: src/playcampaign.cpp:361
+#: src/playcampaign.cpp:363
 msgid "Do you want to save your game?"
 msgstr "Vill du spara ditt spel?"
 
-#: src/playcampaign.cpp:386
+#: src/playcampaign.cpp:388
 msgid "Unknown scenario: '"
 msgstr "Okänt scenario: '"
 
@@ -11024,6 +11024,10 @@ msgstr "Du kan se resultaten på "
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjälp oss att förbättra Wesnoth!"
+
+#, fuzzy
+#~ msgid "quintain"
+#~ msgstr "Berg"
 
 #, fuzzy
 #~ msgid "Cave Spider"

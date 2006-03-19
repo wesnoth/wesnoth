@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-19 16:27+0100\n"
+"POT-Creation-Date: 2006-03-19 17:06+0100\n"
 "PO-Revision-Date: 2004-12-20 19:16+0200\n"
 "Last-Translator: Anton (Atilla) Tsigularov <theatilla@gmail.com>\n"
 "Language-Team: none\n"
@@ -4269,8 +4269,8 @@ msgstr ""
 
 #: data/tutorial/units/Quintain.cfg:20
 #, fuzzy
-msgid "quintain"
-msgstr "Планини"
+msgid "flail"
+msgstr "опашка"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -7842,7 +7842,7 @@ msgid ""
 msgstr ""
 
 #: src/game.cpp:1038 src/game.cpp:1077 src/game.cpp:1102
-#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:291
+#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:293
 msgid "Connection timed out"
 msgstr ""
 
@@ -7912,16 +7912,16 @@ msgid ""
 "characters"
 msgstr ""
 
-#: src/game.cpp:1186 src/playcampaign.cpp:113 src/playcampaign.cpp:270
+#: src/game.cpp:1186 src/playcampaign.cpp:113 src/playcampaign.cpp:272
 #, fuzzy
 msgid "The game could not be loaded: "
 msgstr "Играта бе запазена"
 
-#: src/game.cpp:1188 src/playcampaign.cpp:115 src/playcampaign.cpp:273
+#: src/game.cpp:1188 src/playcampaign.cpp:115 src/playcampaign.cpp:275
 msgid "Error while playing the game: "
 msgstr ""
 
-#: src/game.cpp:1200 src/playcampaign.cpp:117 src/playcampaign.cpp:276
+#: src/game.cpp:1200 src/playcampaign.cpp:117 src/playcampaign.cpp:278
 msgid "The game map could not be loaded: "
 msgstr ""
 
@@ -8190,7 +8190,7 @@ msgstr "Надници"
 msgid "Income"
 msgstr "Приход"
 
-#: src/menu_events.cpp:304 src/playcampaign.cpp:241 src/playcampaign.cpp:362
+#: src/menu_events.cpp:304 src/playcampaign.cpp:243 src/playcampaign.cpp:364
 #: src/playturn.cpp:1687
 msgid "Name:"
 msgstr ""
@@ -8216,7 +8216,7 @@ msgstr "Запазена"
 msgid "The game has been saved"
 msgstr "Играта бе запазена"
 
-#: src/menu_events.cpp:322 src/playcampaign.cpp:249 src/playcampaign.cpp:370
+#: src/menu_events.cpp:322 src/playcampaign.cpp:251 src/playcampaign.cpp:372
 #: src/playturn.cpp:1705
 msgid "The game could not be saved"
 msgstr ""
@@ -8641,32 +8641,32 @@ msgstr ""
 msgid "Could not send initial handshake"
 msgstr ""
 
-#: src/playcampaign.cpp:218
+#: src/playcampaign.cpp:220
 msgid "Defeat"
 msgstr "Загуба"
 
-#: src/playcampaign.cpp:219
+#: src/playcampaign.cpp:221
 msgid "You have been defeated!"
 msgstr "Вие бяхте победени!"
 
-#: src/playcampaign.cpp:232
+#: src/playcampaign.cpp:234
 #, fuzzy
 msgid " replay"
 msgstr "Начин на игра"
 
-#: src/playcampaign.cpp:240
+#: src/playcampaign.cpp:242
 msgid "Do you want to save a replay of this scenario?"
 msgstr ""
 
-#: src/playcampaign.cpp:289
+#: src/playcampaign.cpp:291
 msgid "Downloading next level..."
 msgstr ""
 
-#: src/playcampaign.cpp:361
+#: src/playcampaign.cpp:363
 msgid "Do you want to save your game?"
 msgstr ""
 
-#: src/playcampaign.cpp:386
+#: src/playcampaign.cpp:388
 msgid "Unknown scenario: '"
 msgstr ""
 
@@ -9208,6 +9208,10 @@ msgstr ""
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "quintain"
+#~ msgstr "Планини"
 
 #, fuzzy
 #~ msgid "Cave Spider"

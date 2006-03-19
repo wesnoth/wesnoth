@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-19 16:27+0100\n"
+"POT-Creation-Date: 2006-03-19 17:06+0100\n"
 "PO-Revision-Date: 2006-03-12 09:05+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: en_GB\n"
@@ -5175,8 +5175,8 @@ msgstr ""
 
 #: data/tutorial/units/Quintain.cfg:20
 #, fuzzy
-msgid "quintain"
-msgstr "Mountains"
+msgid "flail"
+msgstr "tail"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -9724,7 +9724,7 @@ msgstr ""
 "There was a problem creating the files necessary to install this campaign."
 
 #: src/game.cpp:1038 src/game.cpp:1077 src/game.cpp:1102
-#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:291
+#: src/multiplayer.cpp:204 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:293
 msgid "Connection timed out"
 msgstr "Connection timed out"
 
@@ -9797,15 +9797,15 @@ msgstr ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 
-#: src/game.cpp:1186 src/playcampaign.cpp:113 src/playcampaign.cpp:270
+#: src/game.cpp:1186 src/playcampaign.cpp:113 src/playcampaign.cpp:272
 msgid "The game could not be loaded: "
 msgstr "The game could not be loaded: "
 
-#: src/game.cpp:1188 src/playcampaign.cpp:115 src/playcampaign.cpp:273
+#: src/game.cpp:1188 src/playcampaign.cpp:115 src/playcampaign.cpp:275
 msgid "Error while playing the game: "
 msgstr "Error while playing the game: "
 
-#: src/game.cpp:1200 src/playcampaign.cpp:117 src/playcampaign.cpp:276
+#: src/game.cpp:1200 src/playcampaign.cpp:117 src/playcampaign.cpp:278
 msgid "The game map could not be loaded: "
 msgstr "The game map could not be loaded: "
 
@@ -10072,7 +10072,7 @@ msgstr "Upkeep"
 msgid "Income"
 msgstr "Income"
 
-#: src/menu_events.cpp:304 src/playcampaign.cpp:241 src/playcampaign.cpp:362
+#: src/menu_events.cpp:304 src/playcampaign.cpp:243 src/playcampaign.cpp:364
 #: src/playturn.cpp:1687
 msgid "Name:"
 msgstr "Name:"
@@ -10098,7 +10098,7 @@ msgstr "Saved"
 msgid "The game has been saved"
 msgstr "The game has been saved"
 
-#: src/menu_events.cpp:322 src/playcampaign.cpp:249 src/playcampaign.cpp:370
+#: src/menu_events.cpp:322 src/playcampaign.cpp:251 src/playcampaign.cpp:372
 #: src/playturn.cpp:1705
 msgid "The game could not be saved"
 msgstr "The game could not be saved"
@@ -10497,31 +10497,31 @@ msgstr "Could not add socket to socket set"
 msgid "Could not send initial handshake"
 msgstr "Could not send initial handshake"
 
-#: src/playcampaign.cpp:218
+#: src/playcampaign.cpp:220
 msgid "Defeat"
 msgstr "Defeat"
 
-#: src/playcampaign.cpp:219
+#: src/playcampaign.cpp:221
 msgid "You have been defeated!"
 msgstr "You have been defeated!"
 
-#: src/playcampaign.cpp:232
+#: src/playcampaign.cpp:234
 msgid " replay"
 msgstr " replay"
 
-#: src/playcampaign.cpp:240
+#: src/playcampaign.cpp:242
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Do you want to save a replay of this scenario?"
 
-#: src/playcampaign.cpp:289
+#: src/playcampaign.cpp:291
 msgid "Downloading next level..."
 msgstr "Downloading next level..."
 
-#: src/playcampaign.cpp:361
+#: src/playcampaign.cpp:363
 msgid "Do you want to save your game?"
 msgstr "Do you want to save your game?"
 
-#: src/playcampaign.cpp:386
+#: src/playcampaign.cpp:388
 msgid "Unknown scenario: '"
 msgstr "Unknown scenario: '"
 
@@ -11043,6 +11043,10 @@ msgstr "You can view the results at "
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr "Help us make Wesnoth better for you!"
+
+#, fuzzy
+#~ msgid "quintain"
+#~ msgstr "Mountains"
 
 #, fuzzy
 #~ msgid "Cave Spider"
