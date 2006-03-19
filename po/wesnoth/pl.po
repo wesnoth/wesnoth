@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-19 20:04+0100\n"
+"POT-Creation-Date: 2006-03-19 23:17+0100\n"
 "PO-Revision-Date: 2006-02-28 22:28+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <pl@li.org>\n"
@@ -14,7 +14,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/about.cfg:2 data/campaigns/Two_Brothers.cfg:27
+#: data/about.cfg:2 data/campaigns/Two_Brothers.cfg:31
+#: data/campaigns/Under_the_Burning_Suns.cfg:36
 #, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "Projektanci grafiki"
@@ -39,7 +40,8 @@ msgstr "Mapy do gry wieloosobowej"
 msgid "Packagers"
 msgstr "Pakujący"
 
-#: data/about.cfg:110 data/campaigns/Two_Brothers.cfg:32
+#: data/about.cfg:110 data/campaigns/Two_Brothers.cfg:36
+#: data/campaigns/Under_the_Burning_Suns.cfg:47
 msgid "Miscellaneous"
 msgstr "Różności"
 
@@ -500,10 +502,6 @@ msgstr "łuk"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:67
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:45
 #: data/campaigns/The_South_Guard/units/Chocobone.cfg:26
-#: data/campaigns/Under_the_Burning_Suns/units/Rogrimir_Dwarvish_Sentinel.cfg:45
-#: data/campaigns/Under_the_Burning_Suns/units/Rogrimir_Dwarvish_Sentinel.cfg:59
-#: data/campaigns/Under_the_Burning_Suns/units/Rogrimir_Dwarvish_Stalwart.cfg:40
-#: data/campaigns/Under_the_Burning_Suns/units/Rogrimir_Dwarvish_Stalwart.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/units/Sea_Serpent2.cfg:30
 #: data/tutorial/units/Commander.cfg:72 data/tutorial/units/Lord.cfg:70
 #: data/units/Boat_Pirate_Galleon.cfg:20
@@ -765,10 +763,6 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:25
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:25
 #: data/campaigns/The_South_Guard/units/Chocobone.cfg:25
-#: data/campaigns/Under_the_Burning_Suns/units/Rogrimir_Dwarvish_Sentinel.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/Rogrimir_Dwarvish_Sentinel.cfg:58
-#: data/campaigns/Under_the_Burning_Suns/units/Rogrimir_Dwarvish_Stalwart.cfg:38
-#: data/campaigns/Under_the_Burning_Suns/units/Rogrimir_Dwarvish_Stalwart.cfg:53
 #: data/units/Drake_Clasher.cfg:103 data/units/Drake_Enforcer.cfg:137
 #: data/units/Drake_Gladiator.cfg:120 data/units/Dwarvish_Guardsman.cfg:33
 #: data/units/Dwarvish_Guardsman.cfg:48 data/units/Dwarvish_Sentinel.cfg:41
@@ -1301,9 +1295,16 @@ msgid "chill tempest"
 msgstr "fala chłodu"
 
 #: data/campaigns/Two_Brothers.cfg:22
+#: data/campaigns/Under_the_Burning_Suns.cfg:28
 #, fuzzy
 msgid "Campaign Designer"
 msgstr "Kampania"
+
+#: data/campaigns/Two_Brothers.cfg:27
+#: data/campaigns/Under_the_Burning_Suns.cfg:32
+#, fuzzy
+msgid "Current Maintainer"
+msgstr "Aktualny cel:"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:161
@@ -1533,36 +1534,6 @@ msgstr "plaga(chodzący trup)"
 #: data/units/Undead_Necromancer.cfg:71
 msgid "chill wave"
 msgstr "fala chłodu"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Rogrimir_Dwarvish_Sentinel.cfg:4
-#: data/units/Dwarvish_Sentinel.cfg:3
-msgid "Dwarvish Sentinel"
-msgstr "Krasnoludzki wartownik"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Rogrimir_Dwarvish_Sentinel.cfg:39
-#: data/units/Dwarvish_Sentinel.cfg:37
-msgid ""
-"The Sentinel, with his tower shield and great courage, refuses to yield "
-"under even the strongest of enemy attacks."
-msgstr ""
-"Krasnoludzki wartownik wyposażony w olbrzymią tarczę i równie wielką odwagę "
-"nigdy nie ulega nawet najsilniejszym atakom wroga."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Rogrimir_Dwarvish_Stalwart.cfg:4
-#: data/units/Dwarvish_Stalwart.cfg:3
-msgid "Dwarvish Stalwart"
-msgstr "Krasnoludzki siłacz"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Rogrimir_Dwarvish_Stalwart.cfg:34
-#: data/units/Dwarvish_Stalwart.cfg:32
-msgid ""
-"Stalwarts, after years in battle, have fashioned new shields and strong "
-"armor from the ruins of their enemies. While slow, they are feared for their "
-"resilience and strength."
-msgstr ""
-"Krasnoludzcy siłacze, zaprawieni w wielu bojach, skompletowali nowe tarcze i "
-"mocniejsze zbroje z tego, co zostało po ich wrogach. Choć powolni, ich "
-"odwaga i wytrzymałość budzi przestrach."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Sea_Serpent2.cfg:4
 #: data/units/Monster_Sea_Serpent.cfg:3
@@ -5624,6 +5595,32 @@ msgstr "młot runiczny"
 #: data/units/Dwarvish_Runemaster.cfg:74
 msgid "Lightning bolt"
 msgstr "Błyskawica"
+
+#: data/units/Dwarvish_Sentinel.cfg:3
+msgid "Dwarvish Sentinel"
+msgstr "Krasnoludzki wartownik"
+
+#: data/units/Dwarvish_Sentinel.cfg:37
+msgid ""
+"The Sentinel, with his tower shield and great courage, refuses to yield "
+"under even the strongest of enemy attacks."
+msgstr ""
+"Krasnoludzki wartownik wyposażony w olbrzymią tarczę i równie wielką odwagę "
+"nigdy nie ulega nawet najsilniejszym atakom wroga."
+
+#: data/units/Dwarvish_Stalwart.cfg:3
+msgid "Dwarvish Stalwart"
+msgstr "Krasnoludzki siłacz"
+
+#: data/units/Dwarvish_Stalwart.cfg:32
+msgid ""
+"Stalwarts, after years in battle, have fashioned new shields and strong "
+"armor from the ruins of their enemies. While slow, they are feared for their "
+"resilience and strength."
+msgstr ""
+"Krasnoludzcy siłacze, zaprawieni w wielu bojach, skompletowali nowe tarcze i "
+"mocniejsze zbroje z tego, co zostało po ich wrogach. Choć powolni, ich "
+"odwaga i wytrzymałość budzi przestrach."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -11881,9 +11878,6 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "Atakowanie wrogich jednostek\n"
 #~ "Zdobywanie doświadczenia\n"
 #~ "Wygrywanie scenariuszy"
-
-#~ msgid "Current objective:"
-#~ msgstr "Aktualny cel:"
 
 #~ msgid "Death of Delfador"
 #~ msgstr "Śmierć Delfadora"
