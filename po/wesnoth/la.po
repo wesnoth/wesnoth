@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.0.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-19 17:06+0100\n"
+"POT-Creation-Date: 2006-03-19 20:04+0100\n"
 "PO-Revision-Date: 2005-09-29 19:20+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/about.cfg:2
+#: data/about.cfg:2 data/campaigns/Two_Brothers.cfg:27
 #, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "+Inventores artium ingenuarum"
@@ -46,7 +46,7 @@ msgstr "+Chartae Plurum Lusorum"
 msgid "Packagers"
 msgstr "+Factores Fasciculorum"
 
-#: data/about.cfg:110
+#: data/about.cfg:110 data/campaigns/Two_Brothers.cfg:32
 #, fuzzy
 msgid "Miscellaneous"
 msgstr "+Varii"
@@ -337,8 +337,6 @@ msgstr "gladius"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:46
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:29
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:38
 #: data/tutorial/units/Commander.cfg:52 data/tutorial/units/Commander.cfg:169
 #: data/tutorial/units/Fighter.cfg:27 data/tutorial/units/Fighter.cfg:72
 #: data/tutorial/units/Fighteress.cfg:28 data/tutorial/units/Fighteress.cfg:77
@@ -750,9 +748,6 @@ msgstr "fauces"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:49
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:32
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:65
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:42
 #: data/units/Undead_Bat_Blood.cfg:52 data/units/Undead_Bat_Vampire.cfg:39
 #: data/units/Undead_Necro_Ancient_Lich.cfg:59
 #: data/units/Undead_Necro_Lich.cfg:40 data/units/Undead_Spirit_Ghost.cfg:35
@@ -873,10 +868,6 @@ msgstr "aspicere"
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:48
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:28
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:45
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:38
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:53
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:77
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:56
 #: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:150
 #: data/units/Elvish_Sylph.cfg:86 data/units/Saurian_Augur.cfg:53
@@ -1321,7 +1312,6 @@ msgstr ""
 "metuti ab omnibus."
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:37
 #: data/units/Undead_Necro_Ancient_Lich.cfg:54
 #: data/units/Undead_Necro_Lich.cfg:35 data/units/Undead_Spirit_Ghost.cfg:30
 msgid "touch"
@@ -1333,6 +1323,11 @@ msgstr "tactus"
 #, fuzzy
 msgid "chill tempest"
 msgstr "unda gelida"
+
+#: data/campaigns/Two_Brothers.cfg:22
+#, fuzzy
+msgid "Campaign Designer"
+msgstr "Stipendium"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:161
@@ -1515,117 +1510,6 @@ msgstr ""
 #: data/units/Human_Mage.cfg:91 data/units/Human_Mage_Silver.cfg:119
 msgid "missile"
 msgstr "telum magicum"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:4
-msgid "Ethereal Ghost"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:33
-#, fuzzy
-msgid ""
-"It is one of the greater mercies of creation that a human soul is immutable, "
-"and cannot be destroyed. However, the many things a necromancer can do, "
-"despite this, are entirely horrifying.\n"
-"\n"
-"Trapped within a shroud of vile enchantments, a spirit likens unto the wind "
-"in the sails of a ship. The contrivance that results from this prison is an "
-"unfailing servant, which can be bound to whatever task their master sees "
-"fit.\n"
-"\n"
-"Special Notes: Ghosts have very unusual resistances to damage, and move "
-"quite slowly over open water."
-msgstr ""
-"Una ex misericoridiis maximis creatoris est anima humana immutabilis et "
-"indestructibilis. Res multae quas faciunt necromantium exercentes tamen "
-"perterrentes sunt.\n"
-"\n"
-"Inlaqueatus in integumento fascinationum vilium spiritus est ut ventus in "
-"velis navis. Machinatio quae ex hoc carcere resultat est servus fidelis, qui "
-"ad omne opus ligari potest quod dominus vult.\n"
-"\n"
-"Nota Praecipua: Repugnatiae ad damnum larvarum insolitae sunt. Moventur "
-"satis lente trans aquam."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:52
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:76
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:53
-#: data/units/Undead_Spirit_Ghost.cfg:46
-#: data/units/Undead_Spirit_Spectre.cfg:73
-#: data/units/Undead_Spirit_Wraith.cfg:52
-msgid "wail"
-msgstr "eiulatus"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:4
-#, fuzzy
-msgid "Ethereal Spectre"
-msgstr "Spectrum"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:34
-#: data/units/Undead_Spirit_Spectre.cfg:21
-msgid ""
-"Sometimes called the 'hollow men', spectres form the right arm of their "
-"master's power. These abominations are a rightful terror to the living, and "
-"keep a sleepless vigil over their master's domain.\n"
-"\n"
-"The creation of these is no mean feat; the real danger in encountering one "
-"is that it is likely only the harbinger of a much more dangerous force that "
-"will follow in its wake.\n"
-"\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the spectre. Spectres have very unusual resistances to damage, and "
-"move quite slowly over open water."
-msgstr ""
-"Nonnumquam nominantur 'homines vacuuos' spectra sunt bracchium dextrum "
-"dominorum suorum. Haec nefas terrorem rectum sunt viventibus et sine somnio "
-"custodiant regnum domini.\n"
-"\n"
-"Creatio horum non est gestum humilem; periculum verum cum uni obviam eas "
-"adest: saepe sunt tantum praenuntii potentia periculosioris quae eos "
-"sequentur.\n"
-"\n"
-"Nota Praecipua: ictus a lamina eorum vitam ex victima exhauriet et spectrum "
-"renovabit. Repugnatiae ad damnum spectrorum insolitae sunt. Moventur "
-"satis·lente trans aquam."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:60
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:37
-#: data/units/Undead_Spirit_Spectre.cfg:47
-#: data/units/Undead_Spirit_Wraith.cfg:25
-msgid "baneblade"
-msgstr "lamina perniciosa"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:4
-msgid "Ethereal Wraith"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:33
-#: data/units/Undead_Spirit_Wraith.cfg:20
-msgid ""
-"These tortured forms of what were once warriors are among the most "
-"terrifying things a necromancer can create, for a sword will cleave right "
-"through them, as through air itself. What inspires such fear is the thought "
-"that these beasts are invincible, a belief that is actually far from the "
-"truth.\n"
-"\n"
-"Because of this, a means was made by which the enchantments that drive these "
-"creatures could renew themselves through the very thing which threatened "
-"them.\n"
-"\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the wraith. Wraiths have very unusual resistances to damage, and move "
-"quite slowly over open water."
-msgstr ""
-"Formae hae cruciatae quae olim erant bellatores sunt inter formidolosissima "
-"quae evocator mortuorum facere potest, quia gladius discindet per eas ut per "
-"aera ipsum. Ex quo multi putant eas bestias invictas esse, sed haec "
-"credentia longe est a veritate.\n"
-"\n"
-"Propterea domini idolonorum dant eis instrumentum per quod magicae "
-"renovantur quae eos animant ex vita minarum eorum.\n"
-"\n"
-"Nota Praecipua: ictus a lamina idoloni vitam ex victima exhauriet et eum "
-"renovabit. Repugnatiae·ad·damnum·idolonorum·insolitae·sunt."
-"·Moventur·satis·lente·trans·aquam."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
 #: data/units/Undead_Necromancer.cfg:3
@@ -4108,6 +3992,12 @@ msgstr "Aetas Heroum"
 #: data/multiplayer.cfg:49
 msgid "Great War"
 msgstr "Bellum Magnum"
+
+#: data/names.cfg:51
+msgid ""
+"Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
+"Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
+msgstr ""
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -8994,6 +8884,12 @@ msgstr ""
 "Nota Praecipua: Repugnatiae ad damnum larvarum insolitae sunt. Moventur "
 "satis lente trans aquam."
 
+#: data/units/Undead_Spirit_Ghost.cfg:46
+#: data/units/Undead_Spirit_Spectre.cfg:73
+#: data/units/Undead_Spirit_Wraith.cfg:52
+msgid "wail"
+msgstr "eiulatus"
+
 #: data/units/Undead_Spirit_Nightgaunt.cfg:3
 msgid "Nightgaunt"
 msgstr "Macer Noctis"
@@ -9055,9 +8951,68 @@ msgstr ""
 msgid "Spectre"
 msgstr "Spectrum"
 
+#: data/units/Undead_Spirit_Spectre.cfg:21
+msgid ""
+"Sometimes called the 'hollow men', spectres form the right arm of their "
+"master's power. These abominations are a rightful terror to the living, and "
+"keep a sleepless vigil over their master's domain.\n"
+"\n"
+"The creation of these is no mean feat; the real danger in encountering one "
+"is that it is likely only the harbinger of a much more dangerous force that "
+"will follow in its wake.\n"
+"\n"
+"Special Notes: a strike from their blade will drain life from the victim, to "
+"renew the spectre. Spectres have very unusual resistances to damage, and "
+"move quite slowly over open water."
+msgstr ""
+"Nonnumquam nominantur 'homines vacuuos' spectra sunt bracchium dextrum "
+"dominorum suorum. Haec nefas terrorem rectum sunt viventibus et sine somnio "
+"custodiant regnum domini.\n"
+"\n"
+"Creatio horum non est gestum humilem; periculum verum cum uni obviam eas "
+"adest: saepe sunt tantum praenuntii potentia periculosioris quae eos "
+"sequentur.\n"
+"\n"
+"Nota Praecipua: ictus a lamina eorum vitam ex victima exhauriet et spectrum "
+"renovabit. Repugnatiae ad damnum spectrorum insolitae sunt. Moventur "
+"satis·lente trans aquam."
+
+#: data/units/Undead_Spirit_Spectre.cfg:47
+#: data/units/Undead_Spirit_Wraith.cfg:25
+msgid "baneblade"
+msgstr "lamina perniciosa"
+
 #: data/units/Undead_Spirit_Wraith.cfg:3
 msgid "Wraith"
 msgstr "Idolon"
+
+#: data/units/Undead_Spirit_Wraith.cfg:20
+msgid ""
+"These tortured forms of what were once warriors are among the most "
+"terrifying things a necromancer can create, for a sword will cleave right "
+"through them, as through air itself. What inspires such fear is the thought "
+"that these beasts are invincible, a belief that is actually far from the "
+"truth.\n"
+"\n"
+"Because of this, a means was made by which the enchantments that drive these "
+"creatures could renew themselves through the very thing which threatened "
+"them.\n"
+"\n"
+"Special Notes: a strike from their blade will drain life from the victim, to "
+"renew the wraith. Wraiths have very unusual resistances to damage, and move "
+"quite slowly over open water."
+msgstr ""
+"Formae hae cruciatae quae olim erant bellatores sunt inter formidolosissima "
+"quae evocator mortuorum facere potest, quia gladius discindet per eas ut per "
+"aera ipsum. Ex quo multi putant eas bestias invictas esse, sed haec "
+"credentia longe est a veritate.\n"
+"\n"
+"Propterea domini idolonorum dant eis instrumentum per quod magicae "
+"renovantur quae eos animant ex vita minarum eorum.\n"
+"\n"
+"Nota Praecipua: ictus a lamina idoloni vitam ex victima exhauriet et eum "
+"renovabit. Repugnatiae·ad·damnum·idolonorum·insolitae·sunt."
+"·Moventur·satis·lente·trans·aquam."
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
@@ -10946,6 +10901,39 @@ msgstr ""
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Artwork and Graphic Designers"
+#~ msgstr "+Inventores artium ingenuarum"
+
+#, fuzzy
+#~ msgid ""
+#~ "It is one of the greater mercies of creation that a human soul is "
+#~ "immutable, and cannot be destroyed. However, the many things a "
+#~ "necromancer can do, despite this, are entirely horrifying.\n"
+#~ "\n"
+#~ "Trapped within a shroud of vile enchantments, a spirit likens unto the "
+#~ "wind in the sails of a ship. The contrivance that results from this "
+#~ "prison is an unfailing servant, which can be bound to whatever task their "
+#~ "master sees fit.\n"
+#~ "\n"
+#~ "Special Notes: Ghosts have very unusual resistances to damage, and move "
+#~ "quite slowly over open water."
+#~ msgstr ""
+#~ "Una ex misericoridiis maximis creatoris est anima humana immutabilis et "
+#~ "indestructibilis. Res multae quas faciunt necromantium exercentes tamen "
+#~ "perterrentes sunt.\n"
+#~ "\n"
+#~ "Inlaqueatus in integumento fascinationum vilium spiritus est ut ventus in "
+#~ "velis navis. Machinatio quae ex hoc carcere resultat est servus fidelis, "
+#~ "qui ad omne opus ligari potest quod dominus vult.\n"
+#~ "\n"
+#~ "Nota Praecipua: Repugnatiae ad damnum larvarum insolitae sunt. Moventur "
+#~ "satis lente trans aquam."
+
+#, fuzzy
+#~ msgid "Ethereal Spectre"
+#~ msgstr "Spectrum"
 
 #, fuzzy
 #~ msgid "quintain"

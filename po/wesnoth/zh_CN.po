@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-19 17:06+0100\n"
+"POT-Creation-Date: 2006-03-19 20:04+0100\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/about.cfg:2
+#: data/about.cfg:2 data/campaigns/Two_Brothers.cfg:27
 #, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "+艺术与图像设计师"
@@ -48,7 +48,7 @@ msgstr "+多人游戏地图"
 msgid "Packagers"
 msgstr "+游戏打包人员"
 
-#: data/about.cfg:110
+#: data/about.cfg:110 data/campaigns/Two_Brothers.cfg:32
 #, fuzzy
 msgid "Miscellaneous"
 msgstr "+其它方面"
@@ -338,8 +338,6 @@ msgstr "剑"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:46
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:29
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:38
 #: data/tutorial/units/Commander.cfg:52 data/tutorial/units/Commander.cfg:169
 #: data/tutorial/units/Fighter.cfg:27 data/tutorial/units/Fighter.cfg:72
 #: data/tutorial/units/Fighteress.cfg:28 data/tutorial/units/Fighteress.cfg:77
@@ -746,9 +744,6 @@ msgstr "颚"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:49
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:32
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:65
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:42
 #: data/units/Undead_Bat_Blood.cfg:52 data/units/Undead_Bat_Vampire.cfg:39
 #: data/units/Undead_Necro_Ancient_Lich.cfg:59
 #: data/units/Undead_Necro_Lich.cfg:40 data/units/Undead_Spirit_Ghost.cfg:35
@@ -864,10 +859,6 @@ msgstr "凝视"
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:48
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:28
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:45
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:38
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:53
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:77
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:56
 #: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:150
 #: data/units/Elvish_Sylph.cfg:86 data/units/Saurian_Augur.cfg:53
@@ -1292,7 +1283,6 @@ msgstr ""
 "所惧怕。"
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:37
 #: data/units/Undead_Necro_Ancient_Lich.cfg:54
 #: data/units/Undead_Necro_Lich.cfg:35 data/units/Undead_Spirit_Ghost.cfg:30
 msgid "touch"
@@ -1304,6 +1294,11 @@ msgstr "触碰"
 #, fuzzy
 msgid "chill tempest"
 msgstr "冷冻波"
+
+#: data/campaigns/Two_Brothers.cfg:22
+#, fuzzy
+msgid "Campaign Designer"
+msgstr "战役"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:161
@@ -1466,106 +1461,6 @@ msgstr ""
 #: data/units/Human_Mage.cfg:91 data/units/Human_Mage_Silver.cfg:119
 msgid "missile"
 msgstr "魔法飞弹"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:4
-msgid "Ethereal Ghost"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:33
-#, fuzzy
-msgid ""
-"It is one of the greater mercies of creation that a human soul is immutable, "
-"and cannot be destroyed. However, the many things a necromancer can do, "
-"despite this, are entirely horrifying.\n"
-"\n"
-"Trapped within a shroud of vile enchantments, a spirit likens unto the wind "
-"in the sails of a ship. The contrivance that results from this prison is an "
-"unfailing servant, which can be bound to whatever task their master sees "
-"fit.\n"
-"\n"
-"Special Notes: Ghosts have very unusual resistances to damage, and move "
-"quite slowly over open water."
-msgstr ""
-"这是人类灵魂不朽之后强大的产物，且不会被摧毁。然而，死灵法师能够震退他们。\n"
-"\n"
-"陷入邪恶妖法的灵魂，就如同船上的风帆。这在监狱之下成功改造成无说畏惧的仆人，"
-"被他们的主人用于任何合适的任务。\n"
-"\n"
-"特别提示：幽灵对很多伤害都有不凡抗性，且在水面上移动很慢。"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:52
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:76
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:53
-#: data/units/Undead_Spirit_Ghost.cfg:46
-#: data/units/Undead_Spirit_Spectre.cfg:73
-#: data/units/Undead_Spirit_Wraith.cfg:52
-msgid "wail"
-msgstr "哀嚎"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:4
-#, fuzzy
-msgid "Ethereal Spectre"
-msgstr "妖怪"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:34
-#: data/units/Undead_Spirit_Spectre.cfg:21
-msgid ""
-"Sometimes called the 'hollow men', spectres form the right arm of their "
-"master's power. These abominations are a rightful terror to the living, and "
-"keep a sleepless vigil over their master's domain.\n"
-"\n"
-"The creation of these is no mean feat; the real danger in encountering one "
-"is that it is likely only the harbinger of a much more dangerous force that "
-"will follow in its wake.\n"
-"\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the spectre. Spectres have very unusual resistances to damage, and "
-"move quite slowly over open water."
-msgstr ""
-"有时被称为‘窟窿人’，妖怪是他们主人力量的表现形式。这些令人厌恶的生物在生者眼"
-"中是可怕的，并在他们主人的领地上不眠不休的监视着。\n"
-"\n"
-"创造这些生物并不意味着壮举：正真的危险是当他们醒来之后未知的危险力量。\n"
-"\n"
-"特别提示：他们的剑刃攻击会吸血，并治疗自己。他们对伤害有非凡的抗性，在水面上"
-"移动很慢。"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:60
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:37
-#: data/units/Undead_Spirit_Spectre.cfg:47
-#: data/units/Undead_Spirit_Wraith.cfg:25
-msgid "baneblade"
-msgstr "涂毒剑"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:4
-msgid "Ethereal Wraith"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:33
-#: data/units/Undead_Spirit_Wraith.cfg:20
-msgid ""
-"These tortured forms of what were once warriors are among the most "
-"terrifying things a necromancer can create, for a sword will cleave right "
-"through them, as through air itself. What inspires such fear is the thought "
-"that these beasts are invincible, a belief that is actually far from the "
-"truth.\n"
-"\n"
-"Because of this, a means was made by which the enchantments that drive these "
-"creatures could renew themselves through the very thing which threatened "
-"them.\n"
-"\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the wraith. Wraiths have very unusual resistances to damage, and move "
-"quite slowly over open water."
-msgstr ""
-"这些曾经的勇士被死灵法师召唤出来，而形成糟糕扭曲的生命形式，一把剑就能轻易的"
-"穿过他们，因为他们就是空气。这些生物不惧怕死亡，使得他们有点无敌，一个信念竟"
-"这样远离真像。\n"
-"\n"
-"因为这样，召唤他们出来的妖术能恢复他们。\n"
-"\n"
-"特别提示：他们的剑攻击能吸血，并治疗自己。幻影有非凡的伤害抗性，在水里会减慢"
-"移动速度。"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
 #: data/units/Undead_Necromancer.cfg:3
@@ -3866,6 +3761,12 @@ msgstr "英雄时代"
 #: data/multiplayer.cfg:49
 msgid "Great War"
 msgstr "宏伟战争"
+
+#: data/names.cfg:51
+msgid ""
+"Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
+"Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
+msgstr ""
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -8328,6 +8229,12 @@ msgstr ""
 "\n"
 "特别提示：幽灵对很多伤害都有不凡抗性，且在水面上移动很慢。"
 
+#: data/units/Undead_Spirit_Ghost.cfg:46
+#: data/units/Undead_Spirit_Spectre.cfg:73
+#: data/units/Undead_Spirit_Wraith.cfg:52
+msgid "wail"
+msgstr "哀嚎"
+
 #: data/units/Undead_Spirit_Nightgaunt.cfg:3
 msgid "Nightgaunt"
 msgstr "夜幕刺客"
@@ -8382,9 +8289,61 @@ msgstr ""
 msgid "Spectre"
 msgstr "妖怪"
 
+#: data/units/Undead_Spirit_Spectre.cfg:21
+msgid ""
+"Sometimes called the 'hollow men', spectres form the right arm of their "
+"master's power. These abominations are a rightful terror to the living, and "
+"keep a sleepless vigil over their master's domain.\n"
+"\n"
+"The creation of these is no mean feat; the real danger in encountering one "
+"is that it is likely only the harbinger of a much more dangerous force that "
+"will follow in its wake.\n"
+"\n"
+"Special Notes: a strike from their blade will drain life from the victim, to "
+"renew the spectre. Spectres have very unusual resistances to damage, and "
+"move quite slowly over open water."
+msgstr ""
+"有时被称为‘窟窿人’，妖怪是他们主人力量的表现形式。这些令人厌恶的生物在生者眼"
+"中是可怕的，并在他们主人的领地上不眠不休的监视着。\n"
+"\n"
+"创造这些生物并不意味着壮举：正真的危险是当他们醒来之后未知的危险力量。\n"
+"\n"
+"特别提示：他们的剑刃攻击会吸血，并治疗自己。他们对伤害有非凡的抗性，在水面上"
+"移动很慢。"
+
+#: data/units/Undead_Spirit_Spectre.cfg:47
+#: data/units/Undead_Spirit_Wraith.cfg:25
+msgid "baneblade"
+msgstr "涂毒剑"
+
 #: data/units/Undead_Spirit_Wraith.cfg:3
 msgid "Wraith"
 msgstr "幻影"
+
+#: data/units/Undead_Spirit_Wraith.cfg:20
+msgid ""
+"These tortured forms of what were once warriors are among the most "
+"terrifying things a necromancer can create, for a sword will cleave right "
+"through them, as through air itself. What inspires such fear is the thought "
+"that these beasts are invincible, a belief that is actually far from the "
+"truth.\n"
+"\n"
+"Because of this, a means was made by which the enchantments that drive these "
+"creatures could renew themselves through the very thing which threatened "
+"them.\n"
+"\n"
+"Special Notes: a strike from their blade will drain life from the victim, to "
+"renew the wraith. Wraiths have very unusual resistances to damage, and move "
+"quite slowly over open water."
+msgstr ""
+"这些曾经的勇士被死灵法师召唤出来，而形成糟糕扭曲的生命形式，一把剑就能轻易的"
+"穿过他们，因为他们就是空气。这些生物不惧怕死亡，使得他们有点无敌，一个信念竟"
+"这样远离真像。\n"
+"\n"
+"因为这样，召唤他们出来的妖术能恢复他们。\n"
+"\n"
+"特别提示：他们的剑攻击能吸血，并治疗自己。幻影有非凡的伤害抗性，在水里会减慢"
+"移动速度。"
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
@@ -10239,6 +10198,36 @@ msgstr ""
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Artwork and Graphic Designers"
+#~ msgstr "+艺术与图像设计师"
+
+#, fuzzy
+#~ msgid ""
+#~ "It is one of the greater mercies of creation that a human soul is "
+#~ "immutable, and cannot be destroyed. However, the many things a "
+#~ "necromancer can do, despite this, are entirely horrifying.\n"
+#~ "\n"
+#~ "Trapped within a shroud of vile enchantments, a spirit likens unto the "
+#~ "wind in the sails of a ship. The contrivance that results from this "
+#~ "prison is an unfailing servant, which can be bound to whatever task their "
+#~ "master sees fit.\n"
+#~ "\n"
+#~ "Special Notes: Ghosts have very unusual resistances to damage, and move "
+#~ "quite slowly over open water."
+#~ msgstr ""
+#~ "这是人类灵魂不朽之后强大的产物，且不会被摧毁。然而，死灵法师能够震退他"
+#~ "们。\n"
+#~ "\n"
+#~ "陷入邪恶妖法的灵魂，就如同船上的风帆。这在监狱之下成功改造成无说畏惧的仆"
+#~ "人，被他们的主人用于任何合适的任务。\n"
+#~ "\n"
+#~ "特别提示：幽灵对很多伤害都有不凡抗性，且在水面上移动很慢。"
+
+#, fuzzy
+#~ msgid "Ethereal Spectre"
+#~ msgstr "妖怪"
 
 #, fuzzy
 #~ msgid "quintain"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-19 17:06+0100\n"
+"POT-Creation-Date: 2006-03-19 20:04+0100\n"
 "PO-Revision-Date: 2005-11-04 10:30+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: KBabel 1.9\n"
 
-#: data/about.cfg:2
+#: data/about.cfg:2 data/campaigns/Two_Brothers.cfg:27
 #, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "+アートワークおよびグラフィクスデザイナー"
@@ -51,7 +51,7 @@ msgstr "+マルチプレイヤーマップ"
 msgid "Packagers"
 msgstr "+パッケージ"
 
-#: data/about.cfg:110
+#: data/about.cfg:110 data/campaigns/Two_Brothers.cfg:32
 #, fuzzy
 msgid "Miscellaneous"
 msgstr "+その他"
@@ -342,8 +342,6 @@ msgstr "剣"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:46
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:29
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:38
 #: data/tutorial/units/Commander.cfg:52 data/tutorial/units/Commander.cfg:169
 #: data/tutorial/units/Fighter.cfg:27 data/tutorial/units/Fighter.cfg:72
 #: data/tutorial/units/Fighteress.cfg:28 data/tutorial/units/Fighteress.cfg:77
@@ -755,9 +753,6 @@ msgstr "顎爪"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:49
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:32
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:65
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:42
 #: data/units/Undead_Bat_Blood.cfg:52 data/units/Undead_Bat_Vampire.cfg:39
 #: data/units/Undead_Necro_Ancient_Lich.cfg:59
 #: data/units/Undead_Necro_Lich.cfg:40 data/units/Undead_Spirit_Ghost.cfg:35
@@ -876,10 +871,6 @@ msgstr "凝視"
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:48
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:28
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:45
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:38
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:53
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:77
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:56
 #: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:150
 #: data/units/Elvish_Sylph.cfg:86 data/units/Saurian_Augur.cfg:53
@@ -1322,7 +1313,6 @@ msgstr ""
 "るでしょう。"
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:37
 #: data/units/Undead_Necro_Ancient_Lich.cfg:54
 #: data/units/Undead_Necro_Lich.cfg:35 data/units/Undead_Spirit_Ghost.cfg:30
 msgid "touch"
@@ -1334,6 +1324,11 @@ msgstr "接触"
 #, fuzzy
 msgid "chill tempest"
 msgstr "冷気の嵐"
+
+#: data/campaigns/Two_Brothers.cfg:22
+#, fuzzy
+msgid "Campaign Designer"
+msgstr "キャンペーン"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:161
@@ -1515,116 +1510,6 @@ msgstr ""
 #: data/units/Human_Mage.cfg:91 data/units/Human_Mage_Silver.cfg:119
 msgid "missile"
 msgstr "魔法の矢"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:4
-msgid "Ethereal Ghost"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:33
-#, fuzzy
-msgid ""
-"It is one of the greater mercies of creation that a human soul is immutable, "
-"and cannot be destroyed. However, the many things a necromancer can do, "
-"despite this, are entirely horrifying.\n"
-"\n"
-"Trapped within a shroud of vile enchantments, a spirit likens unto the wind "
-"in the sails of a ship. The contrivance that results from this prison is an "
-"unfailing servant, which can be bound to whatever task their master sees "
-"fit.\n"
-"\n"
-"Special Notes: Ghosts have very unusual resistances to damage, and move "
-"quite slowly over open water."
-msgstr ""
-"人間の魂は不変で滅びることはないというのが、創造主の偉大な慈悲の一つです。し"
-"かしながら、ネクロマンサーができる多くのことは、これにもかかわらず、全くぞっ"
-"とさせます。\n"
-"\n"
-"不愉快な魔法の白布にまとわれるため、幽霊は船の帆の風になぞられます。この投獄"
-"に起因する計略は忠実な下僕で、彼等の主人が適しているとみなす務めは何でも行わ"
-"せることができます。\n"
-"\n"
-"特記事項: ゴーストはダメージに対して全く普通ではない抵抗力があり、水の上を極"
-"めてゆっくりと移動します。"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:52
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:76
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:53
-#: data/units/Undead_Spirit_Ghost.cfg:46
-#: data/units/Undead_Spirit_Spectre.cfg:73
-#: data/units/Undead_Spirit_Wraith.cfg:52
-msgid "wail"
-msgstr "叫び声"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:4
-#, fuzzy
-msgid "Ethereal Spectre"
-msgstr "スペクター"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:34
-#: data/units/Undead_Spirit_Spectre.cfg:21
-msgid ""
-"Sometimes called the 'hollow men', spectres form the right arm of their "
-"master's power. These abominations are a rightful terror to the living, and "
-"keep a sleepless vigil over their master's domain.\n"
-"\n"
-"The creation of these is no mean feat; the real danger in encountering one "
-"is that it is likely only the harbinger of a much more dangerous force that "
-"will follow in its wake.\n"
-"\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the spectre. Spectres have very unusual resistances to damage, and "
-"move quite slowly over open water."
-msgstr ""
-"「透明人間」とも呼ばれ、スペクターは彼らの主人の力の右腕になります。これらの"
-"憎悪は生きているものにとって本当の脅威であり、彼らの主人の領地では夜通し監視"
-"をしなければなりません。\n"
-"\n"
-"これらの創造は大きな功績です。1 体に遭遇したことにおける本当の危険は、これが"
-"その後ろに続くもっと危険な軍の単なる前触れかも知れないということです。\n"
-"\n"
-"特記事項: 彼らの刀による一撃は犠牲者から生命力を奪い、スペクターを再生させま"
-"す。スペクターはダメージに対してとても並外れた抵抗力があり、水上では非常に"
-"ゆっくり移動します。"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:60
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:37
-#: data/units/Undead_Spirit_Spectre.cfg:47
-#: data/units/Undead_Spirit_Wraith.cfg:25
-msgid "baneblade"
-msgstr "死の剣"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:4
-msgid "Ethereal Wraith"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:33
-#: data/units/Undead_Spirit_Wraith.cfg:20
-msgid ""
-"These tortured forms of what were once warriors are among the most "
-"terrifying things a necromancer can create, for a sword will cleave right "
-"through them, as through air itself. What inspires such fear is the thought "
-"that these beasts are invincible, a belief that is actually far from the "
-"truth.\n"
-"\n"
-"Because of this, a means was made by which the enchantments that drive these "
-"creatures could renew themselves through the very thing which threatened "
-"them.\n"
-"\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the wraith. Wraiths have very unusual resistances to damage, and move "
-"quite slowly over open water."
-msgstr ""
-"かつては戦士だった者が拷問された姿はネクロマンサーの創造物の中で最も恐ろしい"
-"ものです。剣は彼らが空気そのものであるかのように彼らを素通りするでしょう。こ"
-"れらの生き物が無敵であるという考えがこのような恐怖を引き起こしていて、その考"
-"えは実際には真実にはほど遠いものです。\n"
-"\n"
-"このため、彼らを追い払う魔法によって、彼らを脅かしたまさにそのものを通して彼"
-"ら自身を再生するという方法が作られました。\n"
-"\n"
-"特記事項: 彼らの刀による一撃は犠牲者から生命力を奪い、レイスを再生させます。"
-"レイスはダメージに対してとても並外れた抵抗力があり、水上では非常にゆっくり移"
-"動します。"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
 #: data/units/Undead_Necromancer.cfg:3
@@ -4052,6 +3937,12 @@ msgstr "「英雄の時代」"
 #: data/multiplayer.cfg:49
 msgid "Great War"
 msgstr "「大いなる戦い」"
+
+#: data/names.cfg:51
+msgid ""
+"Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
+"Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
+msgstr ""
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -8884,6 +8775,12 @@ msgstr ""
 "特記事項: ゴーストはダメージに対して全く普通ではない抵抗力があり、水の上を極"
 "めてゆっくりと移動します。"
 
+#: data/units/Undead_Spirit_Ghost.cfg:46
+#: data/units/Undead_Spirit_Spectre.cfg:73
+#: data/units/Undead_Spirit_Wraith.cfg:52
+msgid "wail"
+msgstr "叫び声"
+
 #: data/units/Undead_Spirit_Nightgaunt.cfg:3
 msgid "Nightgaunt"
 msgstr "夜鬼"
@@ -8944,9 +8841,67 @@ msgstr ""
 msgid "Spectre"
 msgstr "スペクター"
 
+#: data/units/Undead_Spirit_Spectre.cfg:21
+msgid ""
+"Sometimes called the 'hollow men', spectres form the right arm of their "
+"master's power. These abominations are a rightful terror to the living, and "
+"keep a sleepless vigil over their master's domain.\n"
+"\n"
+"The creation of these is no mean feat; the real danger in encountering one "
+"is that it is likely only the harbinger of a much more dangerous force that "
+"will follow in its wake.\n"
+"\n"
+"Special Notes: a strike from their blade will drain life from the victim, to "
+"renew the spectre. Spectres have very unusual resistances to damage, and "
+"move quite slowly over open water."
+msgstr ""
+"「透明人間」とも呼ばれ、スペクターは彼らの主人の力の右腕になります。これらの"
+"憎悪は生きているものにとって本当の脅威であり、彼らの主人の領地では夜通し監視"
+"をしなければなりません。\n"
+"\n"
+"これらの創造は大きな功績です。1 体に遭遇したことにおける本当の危険は、これが"
+"その後ろに続くもっと危険な軍の単なる前触れかも知れないということです。\n"
+"\n"
+"特記事項: 彼らの刀による一撃は犠牲者から生命力を奪い、スペクターを再生させま"
+"す。スペクターはダメージに対してとても並外れた抵抗力があり、水上では非常に"
+"ゆっくり移動します。"
+
+#: data/units/Undead_Spirit_Spectre.cfg:47
+#: data/units/Undead_Spirit_Wraith.cfg:25
+msgid "baneblade"
+msgstr "死の剣"
+
 #: data/units/Undead_Spirit_Wraith.cfg:3
 msgid "Wraith"
 msgstr "レイス"
+
+#: data/units/Undead_Spirit_Wraith.cfg:20
+msgid ""
+"These tortured forms of what were once warriors are among the most "
+"terrifying things a necromancer can create, for a sword will cleave right "
+"through them, as through air itself. What inspires such fear is the thought "
+"that these beasts are invincible, a belief that is actually far from the "
+"truth.\n"
+"\n"
+"Because of this, a means was made by which the enchantments that drive these "
+"creatures could renew themselves through the very thing which threatened "
+"them.\n"
+"\n"
+"Special Notes: a strike from their blade will drain life from the victim, to "
+"renew the wraith. Wraiths have very unusual resistances to damage, and move "
+"quite slowly over open water."
+msgstr ""
+"かつては戦士だった者が拷問された姿はネクロマンサーの創造物の中で最も恐ろしい"
+"ものです。剣は彼らが空気そのものであるかのように彼らを素通りするでしょう。こ"
+"れらの生き物が無敵であるという考えがこのような恐怖を引き起こしていて、その考"
+"えは実際には真実にはほど遠いものです。\n"
+"\n"
+"このため、彼らを追い払う魔法によって、彼らを脅かしたまさにそのものを通して彼"
+"ら自身を再生するという方法が作られました。\n"
+"\n"
+"特記事項: 彼らの刀による一撃は犠牲者から生命力を奪い、レイスを再生させます。"
+"レイスはダメージに対してとても並外れた抵抗力があり、水上では非常にゆっくり移"
+"動します。"
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
@@ -10841,6 +10796,39 @@ msgstr ""
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Artwork and Graphic Designers"
+#~ msgstr "+アートワークおよびグラフィクスデザイナー"
+
+#, fuzzy
+#~ msgid ""
+#~ "It is one of the greater mercies of creation that a human soul is "
+#~ "immutable, and cannot be destroyed. However, the many things a "
+#~ "necromancer can do, despite this, are entirely horrifying.\n"
+#~ "\n"
+#~ "Trapped within a shroud of vile enchantments, a spirit likens unto the "
+#~ "wind in the sails of a ship. The contrivance that results from this "
+#~ "prison is an unfailing servant, which can be bound to whatever task their "
+#~ "master sees fit.\n"
+#~ "\n"
+#~ "Special Notes: Ghosts have very unusual resistances to damage, and move "
+#~ "quite slowly over open water."
+#~ msgstr ""
+#~ "人間の魂は不変で滅びることはないというのが、創造主の偉大な慈悲の一つです。"
+#~ "しかしながら、ネクロマンサーができる多くのことは、これにもかかわらず、全く"
+#~ "ぞっとさせます。\n"
+#~ "\n"
+#~ "不愉快な魔法の白布にまとわれるため、幽霊は船の帆の風になぞられます。この投"
+#~ "獄に起因する計略は忠実な下僕で、彼等の主人が適しているとみなす務めは何でも"
+#~ "行わせることができます。\n"
+#~ "\n"
+#~ "特記事項: ゴーストはダメージに対して全く普通ではない抵抗力があり、水の上を"
+#~ "極めてゆっくりと移動します。"
+
+#, fuzzy
+#~ msgid "Ethereal Spectre"
+#~ msgstr "スペクター"
 
 #, fuzzy
 #~ msgid "quintain"

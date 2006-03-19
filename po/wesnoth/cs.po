@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-19 17:06+0100\n"
+"POT-Creation-Date: 2006-03-19 20:04+0100\n"
 "PO-Revision-Date: 2006-02-19 12:13+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Poedit-Language: Czech\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
 
-#: data/about.cfg:2
+#: data/about.cfg:2 data/campaigns/Two_Brothers.cfg:27
 #, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "Kresby a grafický design"
@@ -47,7 +47,7 @@ msgstr "Mapy pro Hry více hráčů"
 msgid "Packagers"
 msgstr "Tvůrci balíčků"
 
-#: data/about.cfg:110
+#: data/about.cfg:110 data/campaigns/Two_Brothers.cfg:32
 msgid "Miscellaneous"
 msgstr "Různé"
 
@@ -302,8 +302,6 @@ msgstr "meč"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:46
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:29
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:38
 #: data/tutorial/units/Commander.cfg:52 data/tutorial/units/Commander.cfg:169
 #: data/tutorial/units/Fighter.cfg:27 data/tutorial/units/Fighter.cfg:72
 #: data/tutorial/units/Fighteress.cfg:28 data/tutorial/units/Fighteress.cfg:77
@@ -716,9 +714,6 @@ msgstr "čelist"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:49
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:32
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:65
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:42
 #: data/units/Undead_Bat_Blood.cfg:52 data/units/Undead_Bat_Vampire.cfg:39
 #: data/units/Undead_Necro_Ancient_Lich.cfg:59
 #: data/units/Undead_Necro_Lich.cfg:40 data/units/Undead_Spirit_Ghost.cfg:35
@@ -838,10 +833,6 @@ msgstr "pohled"
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:48
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:28
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:45
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:38
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:53
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:77
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:56
 #: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:150
 #: data/units/Elvish_Sylph.cfg:86 data/units/Saurian_Augur.cfg:53
@@ -1302,7 +1293,6 @@ msgstr ""
 "sám nemrtvým. Časem se může stát nesmrtelným -- a obávaným všemi bez výjimky."
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:37
 #: data/units/Undead_Necro_Ancient_Lich.cfg:54
 #: data/units/Undead_Necro_Lich.cfg:35 data/units/Undead_Spirit_Ghost.cfg:30
 msgid "touch"
@@ -1314,6 +1304,11 @@ msgstr "dotek"
 #, fuzzy
 msgid "chill tempest"
 msgstr "vlna mrazu"
+
+#: data/campaigns/Two_Brothers.cfg:22
+#, fuzzy
+msgid "Campaign Designer"
+msgstr "Tažení"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:161
@@ -1501,117 +1496,6 @@ msgstr ""
 #: data/units/Human_Mage.cfg:91 data/units/Human_Mage_Silver.cfg:119
 msgid "missile"
 msgstr "střela"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:4
-msgid "Ethereal Ghost"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:33
-#, fuzzy
-msgid ""
-"It is one of the greater mercies of creation that a human soul is immutable, "
-"and cannot be destroyed. However, the many things a necromancer can do, "
-"despite this, are entirely horrifying.\n"
-"\n"
-"Trapped within a shroud of vile enchantments, a spirit likens unto the wind "
-"in the sails of a ship. The contrivance that results from this prison is an "
-"unfailing servant, which can be bound to whatever task their master sees "
-"fit.\n"
-"\n"
-"Special Notes: Ghosts have very unusual resistances to damage, and move "
-"quite slowly over open water."
-msgstr ""
-"Jedním z největších zázraků stvoření je fakt, že lidská duše je neměnná a "
-"nemůže být zničena. Navzdory  tomu existuje řada hrozných věcí, které s ní "
-"nekromanti mohou provádět.\n"
-"\n"
-"Svázán úponky děsivých kouzel, duch by se dal přirovnat k větru zachycenému "
-"plachtovím lodě. Účelem takového věznění je získat neúnavného sluhu, který "
-"vyplní jakýkoliv úkol, který je mu pánem zadán. \n"
-"\n"
-"Zvláštní rysy: Duchové mají velice neobvyklou odolnost proti poškození a "
-"přes vodní plochy se pohybují velice pomalu."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:52
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:76
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:53
-#: data/units/Undead_Spirit_Ghost.cfg:46
-#: data/units/Undead_Spirit_Spectre.cfg:73
-#: data/units/Undead_Spirit_Wraith.cfg:52
-msgid "wail"
-msgstr "skřek"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:4
-#, fuzzy
-msgid "Ethereal Spectre"
-msgstr "Přízrak"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:34
-#: data/units/Undead_Spirit_Spectre.cfg:21
-msgid ""
-"Sometimes called the 'hollow men', spectres form the right arm of their "
-"master's power. These abominations are a rightful terror to the living, and "
-"keep a sleepless vigil over their master's domain.\n"
-"\n"
-"The creation of these is no mean feat; the real danger in encountering one "
-"is that it is likely only the harbinger of a much more dangerous force that "
-"will follow in its wake.\n"
-"\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the spectre. Spectres have very unusual resistances to damage, and "
-"move quite slowly over open water."
-msgstr ""
-"Přízraky, někdy také nazývané ‘neviditelní lidé‘ jsou pravou ruku síly svého "
-"mistra. Tyto ohavnosti jsou oprávněným postrachem živých, držící nekonečnou "
-"hlídku nad říší svého pána. \n"
-"\n"
-"Jejich stvoření není samo o sobě zlým činem, ta pravá hrůza z jejich "
-"spatření tkví v tom, že jsou většinou pouhými zvěstovateli mnohem většího "
-"nebezpečí, kráčejícího v jejich stopách. \n"
-"\n"
-"Zvláštní rysy: Zásah jejich čepelí vysaje z oběti život, který potom přejde "
-"do přízraku. Přízraky mají velmi nezvyklou odolnost proti poškození, po vodě "
-"je jejich pohyb zpomalen."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:60
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:37
-#: data/units/Undead_Spirit_Spectre.cfg:47
-#: data/units/Undead_Spirit_Wraith.cfg:25
-msgid "baneblade"
-msgstr "čepel zkázy"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:4
-msgid "Ethereal Wraith"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:33
-#: data/units/Undead_Spirit_Wraith.cfg:20
-msgid ""
-"These tortured forms of what were once warriors are among the most "
-"terrifying things a necromancer can create, for a sword will cleave right "
-"through them, as through air itself. What inspires such fear is the thought "
-"that these beasts are invincible, a belief that is actually far from the "
-"truth.\n"
-"\n"
-"Because of this, a means was made by which the enchantments that drive these "
-"creatures could renew themselves through the very thing which threatened "
-"them.\n"
-"\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the wraith. Wraiths have very unusual resistances to damage, and move "
-"quite slowly over open water."
-msgstr ""
-"Tyto zmučené figury, kdysi dávno bojovníci, patří mezi nejstrašnější "
-"pomocníky, které nekromant může vyvolat - meče procházejí skrz ně, jako by "
-"procházeli vzduchem. Zdrojem tak velkého strachu  je myšlenka, že tyto "
-"bestie jsou nezničitelné, což je ale názor velice vzdálený pravdě. \n"
-"\n"
-"Kvůli tomu byla upravena zaklínadla ovládající tyto stvůry tak, že mohou "
-"obnovovat sami sebe skrze věc, která je ohrožovala.\n"
-"\n"
-"Zvláštní rysy: Zásah jejich čepelí vysaje z oběti život, který potom přejde "
-"do fantóma. Fantómové mají velmi nezvyklou odolnost proti poškození, po vodě "
-"je jejich pohyb zpomalen."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
 #: data/units/Undead_Necromancer.cfg:3
@@ -4121,6 +4005,12 @@ msgstr "Věk hrdinů"
 #: data/multiplayer.cfg:49
 msgid "Great War"
 msgstr "Velká válka"
+
+#: data/names.cfg:51
+msgid ""
+"Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
+"Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
+msgstr ""
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -9026,6 +8916,12 @@ msgstr ""
 "Zvláštní rysy: Duchové mají velice neobvyklou odolnost proti poškození a "
 "přes vodní plochy se pohybují velice pomalu."
 
+#: data/units/Undead_Spirit_Ghost.cfg:46
+#: data/units/Undead_Spirit_Spectre.cfg:73
+#: data/units/Undead_Spirit_Wraith.cfg:52
+msgid "wail"
+msgstr "skřek"
+
 #: data/units/Undead_Spirit_Nightgaunt.cfg:3
 msgid "Nightgaunt"
 msgstr "Nightgaunt"
@@ -9087,9 +8983,68 @@ msgstr ""
 msgid "Spectre"
 msgstr "Přízrak"
 
+#: data/units/Undead_Spirit_Spectre.cfg:21
+msgid ""
+"Sometimes called the 'hollow men', spectres form the right arm of their "
+"master's power. These abominations are a rightful terror to the living, and "
+"keep a sleepless vigil over their master's domain.\n"
+"\n"
+"The creation of these is no mean feat; the real danger in encountering one "
+"is that it is likely only the harbinger of a much more dangerous force that "
+"will follow in its wake.\n"
+"\n"
+"Special Notes: a strike from their blade will drain life from the victim, to "
+"renew the spectre. Spectres have very unusual resistances to damage, and "
+"move quite slowly over open water."
+msgstr ""
+"Přízraky, někdy také nazývané ‘neviditelní lidé‘ jsou pravou ruku síly svého "
+"mistra. Tyto ohavnosti jsou oprávněným postrachem živých, držící nekonečnou "
+"hlídku nad říší svého pána. \n"
+"\n"
+"Jejich stvoření není samo o sobě zlým činem, ta pravá hrůza z jejich "
+"spatření tkví v tom, že jsou většinou pouhými zvěstovateli mnohem většího "
+"nebezpečí, kráčejícího v jejich stopách. \n"
+"\n"
+"Zvláštní rysy: Zásah jejich čepelí vysaje z oběti život, který potom přejde "
+"do přízraku. Přízraky mají velmi nezvyklou odolnost proti poškození, po vodě "
+"je jejich pohyb zpomalen."
+
+#: data/units/Undead_Spirit_Spectre.cfg:47
+#: data/units/Undead_Spirit_Wraith.cfg:25
+msgid "baneblade"
+msgstr "čepel zkázy"
+
 #: data/units/Undead_Spirit_Wraith.cfg:3
 msgid "Wraith"
 msgstr "Fantóm"
+
+#: data/units/Undead_Spirit_Wraith.cfg:20
+msgid ""
+"These tortured forms of what were once warriors are among the most "
+"terrifying things a necromancer can create, for a sword will cleave right "
+"through them, as through air itself. What inspires such fear is the thought "
+"that these beasts are invincible, a belief that is actually far from the "
+"truth.\n"
+"\n"
+"Because of this, a means was made by which the enchantments that drive these "
+"creatures could renew themselves through the very thing which threatened "
+"them.\n"
+"\n"
+"Special Notes: a strike from their blade will drain life from the victim, to "
+"renew the wraith. Wraiths have very unusual resistances to damage, and move "
+"quite slowly over open water."
+msgstr ""
+"Tyto zmučené figury, kdysi dávno bojovníci, patří mezi nejstrašnější "
+"pomocníky, které nekromant může vyvolat - meče procházejí skrz ně, jako by "
+"procházeli vzduchem. Zdrojem tak velkého strachu  je myšlenka, že tyto "
+"bestie jsou nezničitelné, což je ale názor velice vzdálený pravdě. \n"
+"\n"
+"Kvůli tomu byla upravena zaklínadla ovládající tyto stvůry tak, že mohou "
+"obnovovat sami sebe skrze věc, která je ohrožovala.\n"
+"\n"
+"Zvláštní rysy: Zásah jejich čepelí vysaje z oběti život, který potom přejde "
+"do fantóma. Fantómové mají velmi nezvyklou odolnost proti poškození, po vodě "
+"je jejich pohyb zpomalen."
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
@@ -10966,6 +10921,39 @@ msgstr "Výsledky si můžete prohlédnout na"
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr "Pomožte nám vylepšit Wesnoth!"
+
+#, fuzzy
+#~ msgid "Artwork and Graphic Designers"
+#~ msgstr "Kresby a grafický design"
+
+#, fuzzy
+#~ msgid ""
+#~ "It is one of the greater mercies of creation that a human soul is "
+#~ "immutable, and cannot be destroyed. However, the many things a "
+#~ "necromancer can do, despite this, are entirely horrifying.\n"
+#~ "\n"
+#~ "Trapped within a shroud of vile enchantments, a spirit likens unto the "
+#~ "wind in the sails of a ship. The contrivance that results from this "
+#~ "prison is an unfailing servant, which can be bound to whatever task their "
+#~ "master sees fit.\n"
+#~ "\n"
+#~ "Special Notes: Ghosts have very unusual resistances to damage, and move "
+#~ "quite slowly over open water."
+#~ msgstr ""
+#~ "Jedním z největších zázraků stvoření je fakt, že lidská duše je neměnná a "
+#~ "nemůže být zničena. Navzdory  tomu existuje řada hrozných věcí, které s "
+#~ "ní nekromanti mohou provádět.\n"
+#~ "\n"
+#~ "Svázán úponky děsivých kouzel, duch by se dal přirovnat k větru "
+#~ "zachycenému plachtovím lodě. Účelem takového věznění je získat neúnavného "
+#~ "sluhu, který vyplní jakýkoliv úkol, který je mu pánem zadán. \n"
+#~ "\n"
+#~ "Zvláštní rysy: Duchové mají velice neobvyklou odolnost proti poškození a "
+#~ "přes vodní plochy se pohybují velice pomalu."
+
+#, fuzzy
+#~ msgid "Ethereal Spectre"
+#~ msgstr "Přízrak"
 
 #, fuzzy
 #~ msgid "quintain"

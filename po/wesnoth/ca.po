@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-19 17:06+0100\n"
+"POT-Creation-Date: 2006-03-19 20:04+0100\n"
 "PO-Revision-Date: 2006-03-12 10:57+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/about.cfg:2
+#: data/about.cfg:2 data/campaigns/Two_Brothers.cfg:27
 #, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "Dissenyadors i grafistes"
@@ -43,7 +43,7 @@ msgstr "Mapes multijugador"
 msgid "Packagers"
 msgstr "Empaquetadors"
 
-#: data/about.cfg:110
+#: data/about.cfg:110 data/campaigns/Two_Brothers.cfg:32
 msgid "Miscellaneous"
 msgstr "Altres"
 
@@ -300,8 +300,6 @@ msgstr "espasa"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:46
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:29
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:38
 #: data/tutorial/units/Commander.cfg:52 data/tutorial/units/Commander.cfg:169
 #: data/tutorial/units/Fighter.cfg:27 data/tutorial/units/Fighter.cfg:72
 #: data/tutorial/units/Fighteress.cfg:28 data/tutorial/units/Fighteress.cfg:77
@@ -716,9 +714,6 @@ msgstr "mandíbula"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:49
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:32
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:65
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:42
 #: data/units/Undead_Bat_Blood.cfg:52 data/units/Undead_Bat_Vampire.cfg:39
 #: data/units/Undead_Necro_Ancient_Lich.cfg:59
 #: data/units/Undead_Necro_Lich.cfg:40 data/units/Undead_Spirit_Ghost.cfg:35
@@ -840,10 +835,6 @@ msgstr "mirada"
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:48
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:28
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:45
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:38
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:53
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:77
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:56
 #: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:150
 #: data/units/Elvish_Sylph.cfg:86 data/units/Saurian_Augur.cfg:53
@@ -1299,7 +1290,6 @@ msgstr ""
 "cada vegada més temuts per tothom."
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:37
 #: data/units/Undead_Necro_Ancient_Lich.cfg:54
 #: data/units/Undead_Necro_Lich.cfg:35 data/units/Undead_Spirit_Ghost.cfg:30
 msgid "touch"
@@ -1311,6 +1301,11 @@ msgstr "toc"
 #, fuzzy
 msgid "chill tempest"
 msgstr "onada de fred"
+
+#: data/campaigns/Two_Brothers.cfg:22
+#, fuzzy
+msgid "Campaign Designer"
+msgstr "Campanya"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:161
@@ -1505,120 +1500,6 @@ msgstr ""
 #: data/units/Human_Mage.cfg:91 data/units/Human_Mage_Silver.cfg:119
 msgid "missile"
 msgstr "míssil"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:4
-msgid "Ethereal Ghost"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:33
-#, fuzzy
-msgid ""
-"It is one of the greater mercies of creation that a human soul is immutable, "
-"and cannot be destroyed. However, the many things a necromancer can do, "
-"despite this, are entirely horrifying.\n"
-"\n"
-"Trapped within a shroud of vile enchantments, a spirit likens unto the wind "
-"in the sails of a ship. The contrivance that results from this prison is an "
-"unfailing servant, which can be bound to whatever task their master sees "
-"fit.\n"
-"\n"
-"Special Notes: Ghosts have very unusual resistances to damage, and move "
-"quite slowly over open water."
-msgstr ""
-"Una de les grans bondats de la creació es que l'ànima humana és immutable, i "
-"no pot ser destruïda. Tanmateix, les coses que pot arribar a fer un "
-"nigromant són realment espantoses.\n"
-"\n"
-"Atrapat en la foscor de vils encanteris, un esperit és semblant al vent que "
-"xoca amb les veles d'un vaixell. El resultat d'aquesta presó és un servent "
-"infalible, que pot encarregar-se de qualsevol tasca apta per a ell.\n"
-"\n"
-"Notes especials\n"
-"Els fantasmes tenen una inusual resistència al mal, i es mouen relativament "
-"lents fins i tot sobre l'aigua."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:52
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:76
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:53
-#: data/units/Undead_Spirit_Ghost.cfg:46
-#: data/units/Undead_Spirit_Spectre.cfg:73
-#: data/units/Undead_Spirit_Wraith.cfg:52
-msgid "wail"
-msgstr "lamentació"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:4
-#, fuzzy
-msgid "Ethereal Spectre"
-msgstr "Espectre"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:34
-#: data/units/Undead_Spirit_Spectre.cfg:21
-msgid ""
-"Sometimes called the 'hollow men', spectres form the right arm of their "
-"master's power. These abominations are a rightful terror to the living, and "
-"keep a sleepless vigil over their master's domain.\n"
-"\n"
-"The creation of these is no mean feat; the real danger in encountering one "
-"is that it is likely only the harbinger of a much more dangerous force that "
-"will follow in its wake.\n"
-"\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the spectre. Spectres have very unusual resistances to damage, and "
-"move quite slowly over open water."
-msgstr ""
-"De vegades nomenats 'hollow men', els espectres són el braç dret del poder "
-"dels seus mestres. Aquestes abominacions són el veritable terror dels vius, "
-"i vigilen sense descans els dominis del seu mestre. \n"
-"\n"
-"La seva creació no és cap proesa. El veritable perill de trobar-se un és que "
-"probablement no és sinó només l'avenç d'una força molt més poderosa que el "
-"seguirà en l'atac.\n"
-"\n"
-"Notes especials\n"
-"Un cop de la seva espasa drena la vida de la víctima per curar l'aparició. "
-"Els espectres tenen una resistència molt inusual als impactes i es mouen "
-"bastant lentament sobre l'aigua."
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:60
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:37
-#: data/units/Undead_Spirit_Spectre.cfg:47
-#: data/units/Undead_Spirit_Wraith.cfg:25
-msgid "baneblade"
-msgstr "fulla maleïda"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:4
-msgid "Ethereal Wraith"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:33
-#: data/units/Undead_Spirit_Wraith.cfg:20
-msgid ""
-"These tortured forms of what were once warriors are among the most "
-"terrifying things a necromancer can create, for a sword will cleave right "
-"through them, as through air itself. What inspires such fear is the thought "
-"that these beasts are invincible, a belief that is actually far from the "
-"truth.\n"
-"\n"
-"Because of this, a means was made by which the enchantments that drive these "
-"creatures could renew themselves through the very thing which threatened "
-"them.\n"
-"\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the wraith. Wraiths have very unusual resistances to damage, and move "
-"quite slowly over open water."
-msgstr ""
-"Aquestes torturades formes que una vegada foren guerrers estan entre els "
-"monstres més terrorífics que un nigromant pot crear. Una espasa passarà a "
-"través d'ell com si es tractés d'aire. El que inspira més terror és pensar "
-"que aquestes bèsties són invencibles, una creença que actualment està lluny "
-"de la realitat.\n"
-"\n"
-" A causa d'això, els que guien aquestes criatures les varen encantar perquè "
-"poguessin curar-se mitjançant la mateixa cosa que les va ferir.\n"
-"Notes especials\n"
-"Un cop de la seva espasa drena la vida de la víctima per curar l'aparició. "
-"Les aparicions tenen una resistència molt inusual als impactes i es mouen "
-"bastant lentament sobre l'aigua."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
 #: data/units/Undead_Necromancer.cfg:3
@@ -4132,6 +4013,12 @@ msgstr "L'Era dels Herois"
 #: data/multiplayer.cfg:49
 msgid "Great War"
 msgstr "La Gran Guerra"
+
+#: data/names.cfg:51
+msgid ""
+"Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
+"Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
+msgstr ""
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -9230,6 +9117,12 @@ msgstr ""
 "Els fantasmes tenen una inusual resistència al mal, i es mouen relativament "
 "lents fins i tot sobre l'aigua."
 
+#: data/units/Undead_Spirit_Ghost.cfg:46
+#: data/units/Undead_Spirit_Spectre.cfg:73
+#: data/units/Undead_Spirit_Wraith.cfg:52
+msgid "wail"
+msgstr "lamentació"
+
 #: data/units/Undead_Spirit_Nightgaunt.cfg:3
 msgid "Nightgaunt"
 msgstr "Malson"
@@ -9294,9 +9187,70 @@ msgstr ""
 msgid "Spectre"
 msgstr "Espectre"
 
+#: data/units/Undead_Spirit_Spectre.cfg:21
+msgid ""
+"Sometimes called the 'hollow men', spectres form the right arm of their "
+"master's power. These abominations are a rightful terror to the living, and "
+"keep a sleepless vigil over their master's domain.\n"
+"\n"
+"The creation of these is no mean feat; the real danger in encountering one "
+"is that it is likely only the harbinger of a much more dangerous force that "
+"will follow in its wake.\n"
+"\n"
+"Special Notes: a strike from their blade will drain life from the victim, to "
+"renew the spectre. Spectres have very unusual resistances to damage, and "
+"move quite slowly over open water."
+msgstr ""
+"De vegades nomenats 'hollow men', els espectres són el braç dret del poder "
+"dels seus mestres. Aquestes abominacions són el veritable terror dels vius, "
+"i vigilen sense descans els dominis del seu mestre. \n"
+"\n"
+"La seva creació no és cap proesa. El veritable perill de trobar-se un és que "
+"probablement no és sinó només l'avenç d'una força molt més poderosa que el "
+"seguirà en l'atac.\n"
+"\n"
+"Notes especials\n"
+"Un cop de la seva espasa drena la vida de la víctima per curar l'aparició. "
+"Els espectres tenen una resistència molt inusual als impactes i es mouen "
+"bastant lentament sobre l'aigua."
+
+#: data/units/Undead_Spirit_Spectre.cfg:47
+#: data/units/Undead_Spirit_Wraith.cfg:25
+msgid "baneblade"
+msgstr "fulla maleïda"
+
 #: data/units/Undead_Spirit_Wraith.cfg:3
 msgid "Wraith"
 msgstr "Aparició"
+
+#: data/units/Undead_Spirit_Wraith.cfg:20
+msgid ""
+"These tortured forms of what were once warriors are among the most "
+"terrifying things a necromancer can create, for a sword will cleave right "
+"through them, as through air itself. What inspires such fear is the thought "
+"that these beasts are invincible, a belief that is actually far from the "
+"truth.\n"
+"\n"
+"Because of this, a means was made by which the enchantments that drive these "
+"creatures could renew themselves through the very thing which threatened "
+"them.\n"
+"\n"
+"Special Notes: a strike from their blade will drain life from the victim, to "
+"renew the wraith. Wraiths have very unusual resistances to damage, and move "
+"quite slowly over open water."
+msgstr ""
+"Aquestes torturades formes que una vegada foren guerrers estan entre els "
+"monstres més terrorífics que un nigromant pot crear. Una espasa passarà a "
+"través d'ell com si es tractés d'aire. El que inspira més terror és pensar "
+"que aquestes bèsties són invencibles, una creença que actualment està lluny "
+"de la realitat.\n"
+"\n"
+" A causa d'això, els que guien aquestes criatures les varen encantar perquè "
+"poguessin curar-se mitjançant la mateixa cosa que les va ferir.\n"
+"Notes especials\n"
+"Un cop de la seva espasa drena la vida de la víctima per curar l'aparició. "
+"Les aparicions tenen una resistència molt inusual als impactes i es mouen "
+"bastant lentament sobre l'aigua."
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
@@ -11210,6 +11164,41 @@ msgstr ""
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Artwork and Graphic Designers"
+#~ msgstr "Dissenyadors i grafistes"
+
+#, fuzzy
+#~ msgid ""
+#~ "It is one of the greater mercies of creation that a human soul is "
+#~ "immutable, and cannot be destroyed. However, the many things a "
+#~ "necromancer can do, despite this, are entirely horrifying.\n"
+#~ "\n"
+#~ "Trapped within a shroud of vile enchantments, a spirit likens unto the "
+#~ "wind in the sails of a ship. The contrivance that results from this "
+#~ "prison is an unfailing servant, which can be bound to whatever task their "
+#~ "master sees fit.\n"
+#~ "\n"
+#~ "Special Notes: Ghosts have very unusual resistances to damage, and move "
+#~ "quite slowly over open water."
+#~ msgstr ""
+#~ "Una de les grans bondats de la creació es que l'ànima humana és "
+#~ "immutable, i no pot ser destruïda. Tanmateix, les coses que pot arribar a "
+#~ "fer un nigromant són realment espantoses.\n"
+#~ "\n"
+#~ "Atrapat en la foscor de vils encanteris, un esperit és semblant al vent "
+#~ "que xoca amb les veles d'un vaixell. El resultat d'aquesta presó és un "
+#~ "servent infalible, que pot encarregar-se de qualsevol tasca apta per a "
+#~ "ell.\n"
+#~ "\n"
+#~ "Notes especials\n"
+#~ "Els fantasmes tenen una inusual resistència al mal, i es mouen "
+#~ "relativament lents fins i tot sobre l'aigua."
+
+#, fuzzy
+#~ msgid "Ethereal Spectre"
+#~ msgstr "Espectre"
 
 #, fuzzy
 #~ msgid "quintain"
