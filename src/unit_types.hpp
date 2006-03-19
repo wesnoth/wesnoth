@@ -172,6 +172,7 @@ public:
 	//language_name should eventually be renamed name()
 	// const std::string& name() const;
 	const std::string& image() const;
+	const std::string& image_ellipse() const;
 	const std::string& image_halo() const;
 	const std::string& image_profile() const;
 	const std::string& image_fighting(attack_type::RANGE range) const;

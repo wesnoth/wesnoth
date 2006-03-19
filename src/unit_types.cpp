@@ -1089,11 +1089,15 @@ const std::string& unit_type::image() const
 	return cfg_["image"];
 }
 
+const std::string& unit_type::image_ellipse() const
+{
+	return cfg_["ellipse"];
+}
+
 const std::string& unit_type::image_halo() const
 {
 	return cfg_["halo"];
 }
-
 
 const std::string& unit_type::image_fighting(attack_type::RANGE range) const
 {
