@@ -72,7 +72,6 @@ std::vector<std::string> get_text(std::string campaign) {
 
 	for(config::child_list::const_iterator cc = children.begin(); cc != children.end(); ++cc) {
 	  //just finished a particular campaign
-	  if((**cc)["id"].size())printf("got here:%s,%s\n",campaign.c_str(),(**cc)["id"].c_str());
 	  if(campaign.size() && campaign == (**cc)["id"]){
 	    std::string title=(**cc)["title"];
 	    if(title.size()){
@@ -175,7 +174,7 @@ void show_about(display &disp, std::string campaign)
 	                                 0,0,0,1.0,video.getSurface());
 	update_whole_screen();
 
-	const surface map_image(image::get_image(game_config::map_image,image::UNSCALED));
+	const surface map_image(scale_surface(image::get_image(game_config::game_title,image::UNSCALED), disp.x(), disp.y()));
 	SDL_Rect map_rect;
 	map_rect.x = video.getx()/2 - map_image->w/2;
 	map_rect.y = video.gety()/2 - map_image->h/2;
@@ -252,7 +251,7 @@ void show_about(display &disp, std::string campaign)
 		} while(y<map_rect.y + map_rect.h - bottom_margin);
 
 		// performs the actual scrolling
-		const int scroll_speed = 2;		// scroll_speed*50 = speed of scroll in pixel per second
+		const int scroll_speed = 1;		// scroll_speed*50 = speed of scroll in pixel per second
 
 		offset += scroll_speed;
 		if(offset>=first_line_height) {
