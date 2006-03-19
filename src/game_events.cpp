@@ -1022,7 +1022,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
 			const bool show = screen != NULL && !screen->turbo() &&
-				!screen->fogged(loc.x,loc.y) && cfg["fade_in"] != "";
+				!screen->fogged(loc.x,loc.y) && cfg["animate"] != "";
 			if (show) {
 				screen->draw(true,true);
 			}
