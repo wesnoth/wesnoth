@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-03-20 08:41+0100\n"
-"PO-Revision-Date: 2006-02-28 22:28+0100\n"
+"PO-Revision-Date: 2006-03-17 08:19+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1304,9 +1304,8 @@ msgstr "dotyk"
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:44
 #: data/units/Undead_Necro_Ancient_Lich.cfg:70
 #: data/units/Undead_Necro_Lich.cfg:51
-#, fuzzy
 msgid "chill tempest"
-msgstr "fala chłodu"
+msgstr "nawałnica chłodu"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:161
@@ -1524,6 +1523,22 @@ msgid ""
 "a high chance of hitting an opponent. The staff of a necromancer is marked "
 "with the plague, and any foe struck down by it will rise again in unlife."
 msgstr ""
+"Jednym z najpotężniejszych aspektów tego, co zwykło się określać mianem "
+"\"czarnej magii\", jest sztuka nekromancji, czyli przerażająca zdolność do "
+"dawania zmarłym fałszywego życia. Odkrycie to wiązało się z okropnymi "
+"zdarzeniami i spowodowało, że ludzkość zaczęła potępiać jej wykorzystanie, "
+"gdyż obawiano się jej wielkich możliwości.\n"
+"\n"
+"Umiejętność ta jest, w każdym aspekcie, pierwszym krokiem w kierunku "
+"oszukania śmierci. Jest to największa moc jaką może osiągnąć mroczny mag, "
+"nie tracąc przy tym swojego człowieczeństwa, ale blednie w porównaniu z "
+"śmiercionośnymi mocami, którymi władają licze. Ponadto magia wzmacnia ich "
+"śmiertelne ciała, w przeciwieństwie do delikatnych, rozkładającej się ciał "
+"liczy.\n"
+"\n"
+"Uwagi specjalne: zdalne ataki nekromanty są magiczne i zawsze mają wysoką "
+"szansę trafienia przeciwnika. Różdżka nekromanty przenosi plagę i każdy "
+"pokonany nią wróg powstanie z powrotem jako nieumarły."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:38
 #: data/units/Undead_Corpse_Soulless.cfg:52
@@ -1744,7 +1759,7 @@ msgstr ""
 "Ta jednostka staje się nocą niewidoczna.\n"
 "\n"
 "Nieprzyjaciel nie może zobaczyć ani zaatakować nocą tej jednostki, z "
-"wyjątkiem tury następującej po jej ataku, lub gdy sąsiadują z nią wrogie "
+"wyjątkiem tury następującej po jej ataku lub gdy sąsiadują z nią wrogie "
 "jednostki."
 
 #: data/english.cfg:68
@@ -1809,7 +1824,7 @@ msgstr ""
 "przez nieprzyjaciół.\n"
 "\n"
 "Wrogi jednostki nie mogą zauważyć ani zaatakować tej jednostki, gdy znajduje "
-"się ona w głębokiej wodzie, z wyjątkiem tury następującej po jej ataku, lub "
+"się ona w głębokiej wodzie, z wyjątkiem tury następującej po jej ataku lub "
 "gdy koło niej znajdują się inne nieprzyjacielskie jednostki."
 
 #: data/english.cfg:90
@@ -1952,7 +1967,6 @@ msgstr ""
 "ruszać ani atakować."
 
 #: data/english.cfg:136
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -1996,7 +2010,7 @@ msgstr "Rzeka $name,Potok $name"
 
 #: data/english.cfg:148
 msgid "$name Forest,$name's Forest"
-msgstr "Las $namet,Puszcza $name"
+msgstr "Las $name,Puszcza $name"
 
 #: data/english.cfg:149
 msgid "$name Lake"
@@ -2008,7 +2022,7 @@ msgstr "Wieś |$name,Przysiółek |$name,Osada |$name"
 
 #: data/english.cfg:151
 msgid "$name|harbor,$name|port"
-msgstr "Las $namet,Puszcza $name"
+msgstr "Przystań |$name,Port |$name"
 
 #: data/english.cfg:152
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
@@ -2019,7 +2033,8 @@ msgstr ""
 #: data/english.cfg:153
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
-"Most nad |$river,Most nad |$river,Most nad $river,$name|ham,Most |$name"
+"Most nad |$river,Most nad |$river,Most nad $river,Przysiółek |$name,Most |"
+"$name"
 
 #: data/english.cfg:154
 msgid "$name|ham,$name|ton,$name|field"
@@ -2027,17 +2042,18 @@ msgstr "Przysiółek |$name,Osada |$name,Pole |$name"
 
 #: data/english.cfg:155
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr "$name|ham,$name|ton,Las $name,Puszcza $name"
+msgstr "Przysiółek |$name,Osada |$name, Gaj |$name,Las |$name"
 
 #: data/english.cfg:156
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr "$name|ham,$name|bury,$name|ton,Wzgórze |$name,$name|crest"
+msgstr "Przysiółek |$name,Wieś |$name,Osada |$name,Wzgórze |$name,Lenno |$name"
 
 #: data/english.cfg:157
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,Klif |$name,Klif |$name"
+"Przysiółek |$name,Osada |$name,Wieś |$name,Wzgórze |$name,Wzniesienie |$name,"
+"Klif |$name,Klif |$name"
 
 #: data/english.cfg:160
 msgid "melee"
@@ -2165,11 +2181,11 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
-"Te strony zarysowują wszystko to, co powinieneś wiedzieć, aby grać w Bitwę o "
-"Wesnoth. Omawiają podstawowe mechanizmy i sposoby gry. Wraz z postępem "
-"rozgrywki pojawiać się tu będą kolejne informacje dotyczące nowych aspektów "
-"gry. Bardziej szczegółowe wyjaśnienia specjalnych sytuacji i wyjątków od "
-"reguł znajdziesz pod odpowiednimi linkami."
+"Te strony przedstawiają wszystko to, co powinieneś wiedzieć, aby grać w "
+"Bitwę o Wesnoth. Omawiają podstawowe mechanizmy i sposoby gry. Wraz z "
+"postępem rozgrywki pojawiać się tu będą kolejne informacje dotyczące nowych "
+"aspektów gry. Bardziej szczegółowe wyjaśnienia specjalnych sytuacji i "
+"wyjątków od reguł znajdziesz pod odpowiednimi linkami."
 
 #: data/help.cfg:76
 msgid ""
@@ -2280,13 +2296,13 @@ msgstr ""
 "początku bitwy oraz w czasie jej trwania, będziesz musiał rekrutować "
 "<ref>dst=units text=jednostki</ref> do swojej armii. Aby móc rekrutować "
 "jednostki, twój przywódca (na przykład Konrad w kampanii Dziedzic Tronu) "
-"musi być w twierdzy w <ref>dst=terrain_castle text=zamku</ref>. Możesz wtedy "
-"rekrutować jednostki poprzez wybranie 'Rekrutuj' z menu, albo poprzez "
-"klikniecie prawym przyciskiem myszy na heksie zamku i wybranie "
+"musi znajdować się w <ref>dst=terrain_castle text=zamkowym</ref> donżonie. "
+"Możesz wtedy rekrutować jednostki poprzez wybranie 'Rekrutuj' z menu, albo "
+"poprzez klikniecie prawym przyciskiem myszy na heksie zamku i wybranie "
 "<italic>text=Rekrutuj</italic>. To spowoduje pojawienie się menu rekrutacji "
-"z listą dostępnych jednostek wraz z kosztem ich rekrutacji. Kliknij na "
-"jednostkę, aby zobaczyć jej statystyki, a następnie kliknij na przycisk "
-"'Rekrutuj', aby powołać daną jednostkę do swojej armii."
+"z listą dostępnych jednostek wraz z ich kosztem. Kliknij na jednostkę, aby "
+"zobaczyć jej statystyki, a następnie kliknij na przycisk 'Rekrutuj', aby "
+"powołać daną jednostkę do swojej armii."
 
 #: data/help.cfg:97
 msgid ""
@@ -2935,8 +2951,8 @@ msgid ""
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regenerates text=Regeneracja</ref>: Pewne jednostki (takie "
-"jak trolle) automatycznie odzyskują 8PŻ w każdej turze."
+"<ref>dst=ability_regenerates text=Regeneracja</ref>: Niektóre jednostki "
+"(takie jak trolle) automatycznie odzyskują 8PŻ w każdej turze."
 
 #: data/help.cfg:219
 msgid ""
@@ -2948,9 +2964,9 @@ msgid ""
 "per unit."
 msgstr ""
 "\n"
-"Leczenie: jednostki z umiejętnością <ref>dst=ability_heals text=leczenia</"
+"Leczenie: Jednostki z umiejętnością <ref>dst=ability_heals text=leczenia</"
 "ref> leczą do 8PŻ na turę oraz potrafią zatrzymać działanie trucizny. "
-"Uleczone zostaną tylko jednostki stojące po tej samej stronie, co lecząca "
+"Uleczone zostaną tylko jednostki stojące po tej samej stronie co lecząca "
 "oraz znajdujące się na przylegających polach, maksymalnie do 4PŻ na "
 "jednostkę."
 
@@ -3370,7 +3386,6 @@ msgid "Forest"
 msgstr "Las"
 
 #: data/help.cfg:347
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3398,10 +3413,9 @@ msgstr ""
 "że nie otrzymują żadnej premii do obrony.\n"
 "\n"
 "Większość jednostek posiada w lasach obronę na poziomie 50%, ale kawaleria "
-"jest ograniczona do 40%. Z drugiej strony elfy cieszą się obroną od 60 do "
-"70%, łącznie z ich jednostkami konnymi. Krasnoludy ogólnie mają w lasach "
-"tylko 30% obronę.\n"
-"<img>src=terrain/great-tree-tile.png align=middle box=no</img>"
+"jest ograniczona do 40%. Z drugiej strony elfy cieszą się w nich obroną od "
+"60 do 70%, łącznie z ich jednostkami konnymi. Krasnoludy ogólnie mają w "
+"lasach tylko 30% obronę."
 
 #: data/help.cfg:353 data/terrain.cfg:316
 msgid "Hills"
@@ -3519,9 +3533,9 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
-"Głęboka woda reprezentuje zbiornik na tyle głęboki, że woda zakryłaby głowę "
+"Głęboka woda reprezentuje zbiornik na tyle głęboki, że woda zakryłaby "
 "człowieka. Większość jednostek nie może wchodzić do głębokiej wody: jest ona "
-"domeną jednostek, które potrafią latać, lub są wyśmienitymi pływakami.\n"
+"domeną jednostek, które potrafią latać lub są wyśmienitymi pływakami.\n"
 "\n"
 "Mermeni i nagi poruszają się w głębokiej wodzie bez problemów i otrzymują "
 "50% obronę."
@@ -3751,10 +3765,9 @@ msgid ""
 "is concerned, only units capable of flying over chasms can cross this "
 "terrain."
 msgstr ""
-"Otchłań to szczelina w ziemi, prowadząca w niezbadane głębiny. "
-"Charakteryzują ją strome ściany, których pokonanie zabrałoby całe dnie. "
-"Jeśli chodzi o rozgrywkę, to przekraczać ją mogą tylko jednostki potrafiące "
-"latać."
+"Otchłań to szczelina w ziemi prowadząca w niezbadane głębiny. Charakteryzują "
+"ją strome ściany, których pokonanie zabrałoby całe dnie. Jeśli chodzi o "
+"rozgrywkę, to przekraczać ją mogą tylko jednostki potrafiące latać."
 
 #: data/help.cfg:507 data/terrain.cfg:427
 msgid "Lava"
@@ -4741,7 +4754,7 @@ msgid ""
 msgstr ""
 "Istnieje sześć rodzajów ataków: kłute, sieczne, obuchowe, święte, ogień i "
 "mróz. Różne jednostki są czułe na różne typy ataków. Kliknij prawym "
-"przyciskiem myszy jednostkę i wybierz \"Opis jednostki\", a potem kliknij na "
+"przyciskiem myszy jednostkę i wybierz \"Opis jednostki\", a potem na "
 "\"Odporność\", aby zobaczyć jak reaguje ona na różne rodzaje ataków."
 
 #: data/tips.cfg:4
@@ -5002,7 +5015,7 @@ msgid ""
 msgstr ""
 "Jednostki mogą osiągnąć Awans Po Ostatnim Poziomie (APOP), który zazwyczaj "
 "zwiększa maksymalną liczbę punktów życia jednostki o 3. Zdobycie APOP jest "
-"za każdym razem coraz trudniejsze. Dlatego zazwyczaj dużo bardziej "
+"za każdym razem coraz trudniejsze, dlatego zazwyczaj dużo bardziej "
 "wartościowe jest awansowanie jednostek na niższych poziomach."
 
 #: data/tips.cfg:34
@@ -5068,9 +5081,8 @@ msgid "resilient"
 msgstr "odporny"
 
 #: data/tutorial/units/Fighteress.cfg:5 data/tutorial/units/Fighteress.cfg:54
-#, fuzzy
 msgid "female^Fighter"
-msgstr "Mag"
+msgstr "Wojowniczka"
 
 #: data/tutorial/units/Quintain.cfg:3
 #, fuzzy
@@ -5078,10 +5090,13 @@ msgid "Quintain"
 msgstr "Góry"
 
 #: data/tutorial/units/Quintain.cfg:13
+#, fuzzy
 msgid ""
 "Quintains are used to practice swordplay and jousting on.  It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
+"Atrapy używane są do praktykowania walki mieczem oraz potyczek. Byłoby "
+"niezwykle dziwne, gdyby któraś sama zaatakowała."
 
 #: data/tutorial/units/Quintain.cfg:20
 #, fuzzy
@@ -8834,6 +8849,19 @@ msgid ""
 "Special Notes: The ranged attacks of a Dark Sorcerer are magical, and always "
 "have a high chance of hitting an opponent."
 msgstr ""
+"Lęk powodowany przez czarną magię pochodzi głównie z powodu braku jej "
+"zrozumienia pośród zwyczajnych ludzi. Czarnoksiężnicy zaczęli odkrywać "
+"sekrety życia i śmierci, szybko stając się mistrzami w dręczeniu i zadawaniu "
+"bólu.\n"
+"\n"
+"Ostateczną nagrodą czekającą na tych, którzy opanują mroczne sztuki, jest "
+"całkowite panowanie nad życiem i śmiercią. Czarnoksiężnicy uczą się jak "
+"manipulować życiem i śmiercią wskrzeszając ciała, szkielety i dusze. "
+"Większość jest zepsuta, żądna władzy i stara się się całkowicie pokonać "
+"śmierć, stając się liczami i osiągając przerażającą nieśmiertelność.\n"
+"\n"
+"Uwagi specjalne: ataki na odległość Czarnoksiężników są magiczne i zawsze "
+"mają wysoką szansę trafienia przeciwnika."
 
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
@@ -8874,7 +8902,6 @@ msgid "Bone Shooter"
 msgstr "Miotacz kości"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:18
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -8884,11 +8911,11 @@ msgid ""
 "abominations are a terror to all who live."
 msgstr ""
 "Niektóre spośród istot stworzonych przez nekromantę lepiej pasują do "
-"nadanego im fałszywego życia. Mocy nadanego im życia odpowiada ich ekwipunek "
-"- w szczególności łucznicy posiadają odrażający arsenał. Ich kołczany nie są "
-"wypełnione pociskami zrobionymi z drewna, lecz z kości ich ofiar. Pechowi "
-"przeciwnicy nazywają te terroryzujące żywych, odrażające istoty \"Miotaczami "
-"kości\"."
+"nadanego im fałszywego życia. Mocy nadanego im życia odpowiada ich "
+"ekwipunek, w szczególności łucznicy posiadają odrażający arsenał. Ich "
+"kołczany nie są wypełnione pociskami zrobionymi z drewna, lecz z kości ich "
+"ofiar. Pechowi przeciwnicy nazywają te odrażające i terroryzujące żywych "
+"istoty \"Miotaczami kości\"."
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:41
 #: data/units/Undead_Skele_Soul_Shooter.cfg:31
@@ -9024,7 +9051,6 @@ msgid "Ghost"
 msgstr "Duch"
 
 #: data/units/Undead_Spirit_Ghost.cfg:26
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -9039,12 +9065,12 @@ msgid ""
 "quite slowly over open water."
 msgstr ""
 "Jest jedną z łask stworzenia, że ludzka dusza jest niezmienna i nie da się "
-"jej zniszczyć. Mimo tego, wiele rzeczy, które potrafi uczynić nekromanta, "
+"jej zniszczyć. Mimo tego wiele z rzeczy, które potrafi uczynić nekromanta, "
 "jest całkowicie przerażające.\n"
 "\n"
-"Uwięzieni zasłoną wstrętnych zaklęć, duch upodabnia się do wiatru w żaglach "
+"Opleciony zasłoną wstrętnych zaklęć, duch upodabnia się do wiatru w żaglach "
 "okrętu. Rezultatem tego uwięzienia jest niezawodny sługa, któremu można "
-"zlecić takie zadanie, jakiegokolwiek zażyczy sobie jego pan.\n"
+"zlecić każde zadanie, którego zażyczy sobie jego pan.\n"
 "\n"
 "Uwagi specjalne: Duchy mają niezwykłą odporność na obrażenia i poruszają się "
 "dość wolno nad otwartą wodą.\""
@@ -10478,14 +10504,12 @@ msgid "Choose your side:"
 msgstr "Wybierz stronę:"
 
 #: src/multiplayer_wait.cpp:254
-#, fuzzy
 msgid "Do you want to skip the replay?"
-msgstr "Czy zapisać grę?"
+msgstr "Czy chcesz pominąć powtórkę?"
 
 #: src/multiplayer_wait.cpp:254
-#, fuzzy
 msgid "Skip replay"
-msgstr "powtórka"
+msgstr "Pomiń powtórkę"
 
 #: src/multiplayer_wait.cpp:392 src/unit.cpp:1431
 msgid "("
@@ -11062,58 +11086,6 @@ msgstr "Możesz obejrzeć wyniki pod adresem "
 msgid "Help us make Wesnoth better for you!"
 msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 
-#, fuzzy
-#~ msgid "Artwork and Graphic Designers"
-#~ msgstr "Projektanci grafiki"
-
-#, fuzzy
-#~ msgid ""
-#~ "It is one of the greater mercies of creation that a human soul is "
-#~ "immutable, and cannot be destroyed. However, the many things a "
-#~ "necromancer can do, despite this, are entirely horrifying.\n"
-#~ "\n"
-#~ "Trapped within a shroud of vile enchantments, a spirit likens unto the "
-#~ "wind in the sails of a ship. The contrivance that results from this "
-#~ "prison is an unfailing servant, which can be bound to whatever task their "
-#~ "master sees fit.\n"
-#~ "\n"
-#~ "Special Notes: Ghosts have very unusual resistances to damage, and move "
-#~ "quite slowly over open water."
-#~ msgstr ""
-#~ "Jest jedną z łask stworzenia, że ludzka dusza jest niezmienna i nie da "
-#~ "się jej zniszczyć. Mimo tego, wiele rzeczy, które potrafi uczynić "
-#~ "nekromanta, jest całkowicie przerażające.\n"
-#~ "\n"
-#~ "Uwięzieni zasłoną wstrętnych zaklęć, duch upodabnia się do wiatru w "
-#~ "żaglach okrętu. Rezultatem tego uwięzienia jest niezawodny sługa, któremu "
-#~ "można zlecić takie zadanie, jakiegokolwiek zażyczy sobie jego pan.\n"
-#~ "\n"
-#~ "Uwagi specjalne: Duchy mają niezwykłą odporność na obrażenia i poruszają "
-#~ "się dość wolno nad otwartą wodą.\""
-
-#, fuzzy
-#~ msgid "Ethereal Spectre"
-#~ msgstr "Widmo"
-
-#, fuzzy
-#~ msgid "quintain"
-#~ msgstr "Góry"
-
-#, fuzzy
-#~ msgid "Cave Spider"
-#~ msgstr "Gigantyczny pająk"
-
-#, fuzzy
-#~ msgid ""
-#~ "Cave Spiders are roam deep under the earth, devouring many victims. They "
-#~ "can bite at close range, thereby poisoning their enemies, and also can "
-#~ "attack with a web at long range, slowing their foes down."
-#~ msgstr ""
-#~ "Podobno w głębinach Knalgi żyją wielkie pająki, pożerające wiele ofiar. "
-#~ "Jadowicie kąsają tych, którzy nieopatrznie się do nich zbliżą, a "
-#~ "trzymających się na dystans przeciwników spowalniają atakując nad wyraz "
-#~ "wytrzymałą i lepką pajęczyną."
-
 #~ msgid ""
 #~ "Take control of this huge river delta in a team battle or in a free for "
 #~ "all."
@@ -11121,9 +11093,8 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym dla Ciebie!"
 #~ "Zdobądź kontrolę nad wielką deltą rzeki w bitwie drużynowej lub wolnym "
 #~ "starciu."
 
-#, fuzzy
 #~ msgid "Dummy"
-#~ msgstr "atrapa"
+#~ msgstr "Atrapa"
 
 #~ msgid "Orcish Shaman"
 #~ msgstr "Szaman orków"
