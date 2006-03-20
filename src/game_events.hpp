@@ -37,7 +37,7 @@ class display;
 //movement, keyboard events, etc. See events.hpp for how they are handled.
 namespace game_events
 {
-
+typedef std::map<gamemap::location,unit> units_map;
 //the game event manager loads the scenario configuration object, and
 //ensures that events are handled according to the scenario configuration
 //for its lifetime.
@@ -48,7 +48,7 @@ struct manager {
 	//note that references will be maintained, and must remain valid
 	//for the life of the object.
 	manager(const config& scenario_cfg, display& disp, gamemap& map,
-			std::map<gamemap::location,unit>& units, std::vector<team>& teams,
+			units_map& units, std::vector<team>& teams,
 			game_state& state_of_game, gamestatus& status, const game_data& data);
 	~manager();
 
@@ -58,9 +58,8 @@ struct manager {
 void write_events(config& cfg);
 
 bool matches_special_filter(const config* cfg, const vconfig filter);
-bool unit_matches_filter(const unit& u, const vconfig filter);
+bool unit_matches_filter(const unit& u, const vconfig filter,const gamemap::location& loc);
 bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter);
-bool unit_matches_filter(const unit& u, const vconfig filter);
 
 //function to fire an event. Events may have up to two arguments, both of
 //which must be locations.
@@ -74,7 +73,7 @@ void raise(const std::string& event,
           const gamemap::location& loc2=gamemap::location::null_location,
 		  const config& data=config());
 
-bool conditional_passed(const std::map<gamemap::location,unit>* units,
+bool conditional_passed(const units_map* units,
                         const vconfig cond);
 bool pump();
 

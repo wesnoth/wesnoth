@@ -65,13 +65,13 @@ void teleport_unit_between(display& disp, const gamemap& map, const gamemap::loc
 	gamemap::location dst_adjacent[6];
 	get_adjacent_tiles(b, dst_adjacent);
 
-	const std::string& halo = u.type().image_halo();
+	const std::string& halo = u.image_halo();
 	util::scoped_resource<int,halo::remover> halo_effect(0);
 	if(halo.empty() == false && !disp.fogged(b.x,b.y)) {
 		halo_effect.assign(halo::add(0,0,halo));
 	}
 
-	const unit_animation &teleport_animation_p = u.type().teleport_animation();
+	const unit_animation &teleport_animation_p = u.teleport_animation();
 	if (!disp.fogged(a.x, a.y)) { // teleport
 		unit_animation teleport_animation =  teleport_animation_p;
 		int animation_time;
@@ -85,7 +85,7 @@ void teleport_unit_between(display& disp, const gamemap& map, const gamemap::loc
 			if (unit_image->empty()) {
 				unit_loc = u.image_loc();
 			} else {
-				unit_loc = image::locator(*unit_image,u.team_rgb_range(),u.type().flag_rgb());
+				unit_loc = image::locator(*unit_image,u.team_rgb_range(),u.flag_rgb());
 			}
 
 			surface image(image::get_image(unit_loc));
@@ -122,7 +122,7 @@ void teleport_unit_between(display& disp, const gamemap& map, const gamemap::loc
 			if (unit_image->empty()) {
 			  unit_loc = u.image_loc();
 			}else{
-			  unit_loc = image::locator(*unit_image,u.team_rgb_range(),u.type().flag_rgb());
+			  unit_loc = image::locator(*unit_image,u.team_rgb_range(),u.flag_rgb());
 			}
 
 			surface image(image::get_image(unit_loc));
@@ -174,13 +174,13 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	gamemap::location dst_adjacent[6];
 	get_adjacent_tiles(b, dst_adjacent);
 
-	const std::string& halo = u.type().image_halo();
+	const std::string& halo = u.image_halo();
 	util::scoped_resource<int,halo::remover> halo_effect(0);
 	if(halo.empty() == false && !disp.fogged(b.x,b.y)) {
 		halo_effect.assign(halo::add(0,0,halo));
 	}
 
-	const int total_mvt_time = 150 * u.movement_cost(map,dst_terrain)/acceleration;
+	const int total_mvt_time = 150 * u.movement_cost(dst_terrain)/acceleration;
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = SDL_GetTicks() -start_time;
 	disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
@@ -221,9 +221,9 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 	bool previous_visible = false;
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 		if(path[i+1].x > path[i].x) {
-			u.set_facing_left(true);
+			u.set_facing(unit::LEFT);
 		} else if(path[i+1].x < path[i].x) {
-			u.set_facing_left(false);
+			u.set_facing(unit::RIGHT);
 		}
 
 		disp.remove_footstep(path[i]);
@@ -263,14 +263,14 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u, const 
 		return;
 	}
 
-	const std::string& die_sound = u.type().die_sound();
+	const std::string& die_sound = u.die_sound();
 	if(die_sound != "" && die_sound != "null") {
 		sound::play_sound(die_sound);
 	}
 
 	surface unit_image(NULL);
 
-	unit_animation anim(u.type().die_animation(attack));
+	unit_animation anim(u.die_animation(attack));
 
 	anim.start_animation(anim.get_first_frame_time(),1,disp.turbo() ? 5:1);
 	anim.update_current_frame();
@@ -279,7 +279,7 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u, const 
 
 		const unit_frame& frame = anim.get_current_frame();
 
-		const surface surf(image::get_image(image::locator(frame.image,u.team_rgb_range(), u.type().flag_rgb())));
+		const surface surf(image::get_image(image::locator(frame.image,u.team_rgb_range(), u.flag_rgb())));
 		if(surf.get() != NULL) {
 			unit_image = surf;
 		}
@@ -347,7 +347,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	const int time_resolution = 20;
 	const int acceleration = disp.turbo() ? 5:1;
 
-	const std::string& hit_sound = def->second.type().get_hit_sound();
+	const std::string& hit_sound = def->second.get_hit_sound();
 	bool played_hit_sound = (hit_sound == "" || hit_sound == "null");
 	const int play_hit_sound_at = 0;
 
@@ -429,12 +429,12 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		}
 
 		if(unit_image->empty()) {
-			unit_image = &att->second.type().image_fighting(attack_type::LONG_RANGE);
+			unit_image = &att->second.image_fighting(attack_type::LONG_RANGE);
 		}
 
 		if(!hide) {
 
-			const surface image((unit_image == NULL) ? surface(NULL) : image::get_image(image::locator(*unit_image,att->second.team_rgb_range(),att->second.type().flag_rgb())));
+			const surface image((unit_image == NULL) ? surface(NULL) : image::get_image(image::locator(*unit_image,att->second.team_rgb_range(),att->second.flag_rgb())));
 			disp.draw_tile(a.x,a.y,image);
 		}
 
@@ -448,7 +448,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 		LOG_DP << "Waiting for missile impact at " << missile_impact << "\n";
 		if(damage > 0 && animation_time >= missile_impact) {
-			if(def->second.gets_hit(minimum<int>(drain_speed,damage))) {
+			if(def->second.take_hit(minimum<int>(drain_speed,damage))) {
 				dead = true;
 				damage = 0;
 			} else {
@@ -580,7 +580,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		}
 	}
 
-	if(damage > 0 && def->second.gets_hit(damage)) {
+	if(damage > 0 && def->second.take_hit(damage)) {
 		dead = true;
 		damage = 0;
 	}
@@ -632,11 +632,11 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	wassert(def != units.end());
 
 	if(b.x > a.x) {
-		att->second.set_facing_left(true);
-		def->second.set_facing_left(false);
+		att->second.set_facing(unit::LEFT);
+		def->second.set_facing(unit::RIGHT);
 	} else if(b.x < a.x) {
-		att->second.set_facing_left(false);
-		def->second.set_facing_left(true);
+		att->second.set_facing(unit::RIGHT);
+		def->second.set_facing(unit::LEFT);
 	}
 
 	if(attack.range_type() == attack_type::LONG_RANGE) {
@@ -646,7 +646,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	const bool hits = damage > 0;
 	unit_animation attack_anim = *attack.animation(hits,get_adjacent_direction(a,b)).first;
 
-	const std::string& hit_sound = def->second.type().get_hit_sound();
+	const std::string& hit_sound = def->second.get_hit_sound();
 	bool played_hit_sound = (hit_sound == "" || hit_sound == "null");
 	const int play_hit_sound_at = 0;
 
@@ -734,7 +734,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		}
 
 		if(damage > 0 && animation_time >= 0) {
-			if(def->second.gets_hit(minimum<int>(drain_speed,damage))) {
+			if(def->second.take_hit(minimum<int>(drain_speed,damage))) {
 				dead = true;
 				damage = 0;
 			} else {
@@ -763,7 +763,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		const std::string& unit_image_name = unit_frame.image ;
 		image::locator unit_image;
 		if(!unit_image_name.empty()) {
-			unit_image = image::locator(unit_image_name,attacker.team_rgb_range(),attacker.type().flag_rgb());
+			unit_image = image::locator(unit_image_name,attacker.team_rgb_range(),attacker.flag_rgb());
 		} else {
 			unit_image = attacker.image_loc();
 		}
@@ -841,7 +841,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		disp.hide_unit(gamemap::location());
 	}
 
-	if(damage > 0 && def->second.gets_hit(damage)) {
+	if(damage > 0 && def->second.take_hit(damage)) {
 		dead = true;
 		damage = 0;
 	}

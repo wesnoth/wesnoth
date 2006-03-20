@@ -654,7 +654,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const gamemap::location loc(*child);
 			const std::string& name = (*child)["name"];
 
-			std::map<gamemap::location,unit>::iterator u = units.find(loc);
+			units_map::iterator u = units.find(loc);
 
 			if(u->second.unrenamable()) {
 				ERR_NW << "renaming unrenamable unit " << u->second.name() << "\n";
@@ -702,7 +702,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			if (version < 1.1){
 				old_replay = true;
 			}
-			unit new_unit(&(u_type->second),team_num,true, old_replay);
+			unit new_unit(&gameinfo,&units,&map,&state,&teams,&(u_type->second),team_num,true, old_replay);
 			const std::string& res = recruit_unit(map,team_num,units,new_unit,loc);
 			if(!res.empty()) {
 				ERR_NW << "cannot recruit unit: " << res << "\n";
@@ -741,6 +741,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			if(val >= 0 && val < int(player->available_units.size())) {
 				statistics::recall_unit(player->available_units[val]);
+				player->available_units[val].set_game_context(&gameinfo,&units,&map,&state,&teams);
 				recruit_unit(map,team_num,units,player->available_units[val],loc);
 				player->available_units.erase(player->available_units.begin()+val);
 				current_team.spend_gold(game_config::recall_cost);
@@ -794,7 +795,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const gamemap::location src(*source);
 			const gamemap::location dst(*destination);
 
-			std::map<gamemap::location,unit>::iterator u = units.find(dst);
+			units_map::iterator u = units.find(dst);
 			if(u != units.end()) {
 				ERR_NW << "destination already occupied: "
 				       << dst << '\n';
@@ -807,8 +808,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				throw replay::error();
 			}
 
-			const bool ignore_zocs = u->second.type().is_skirmisher();
-			const bool teleport = u->second.type().teleports();
+			const bool ignore_zocs = u->second.get_ability_bool("skirmisher",u->first);
+			const bool teleport = u->second.get_ability_bool("teleport",u->first);
 
 			paths paths_list(map,state,gameinfo,units,src,teams,ignore_zocs,teleport,current_team);
 
@@ -888,7 +889,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const std::string& weapon = (*child)["weapon"];
 			const int weapon_num = atoi(weapon.c_str());
 
-			std::map<gamemap::location,unit>::iterator u = units.find(src);
+			units_map::iterator u = units.find(src);
 			if(u == units.end()) {
 				ERR_NW << "unfound location for source of attack\n";
 				throw replay::error();
@@ -899,7 +900,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
 
-			std::map<gamemap::location,unit>::const_iterator tgt = units.find(dst);
+			units_map::const_iterator tgt = units.find(dst);
 
 			if(tgt == units.end()) {
 				ERR_NW << "unfound defender for attack: " << src << " -> " << dst << '\n';

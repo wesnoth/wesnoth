@@ -27,8 +27,9 @@
 #include <iostream>
 
 
-attack_type::attack_type(const config& cfg,const unit_type& unit)
+attack_type::attack_type(const config& cfg,const std::string& id, const std::string& image_fighting)
 {
+	cfg_ = cfg;
 	if(cfg["range"] == "long" || cfg["range"] == "ranged") {
 		range_type_ = LONG_RANGE;
 	} else {
@@ -40,13 +41,13 @@ attack_type::attack_type(const config& cfg,const unit_type& unit)
 	}
 
 	if(cfg.child("frame") || cfg.child("missile_frame") || cfg.child("sound")) {
-		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "in unit " << unit.id() << " is directly in the attack, please use [animation]\n" ;
+		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "in unit " << id << " is directly in the attack, please use [animation]\n" ;
 	}
 	if(animation_.empty()) {
 		animation_.push_back(attack_animation(cfg));
 	}
 	if(animation_.empty()) {
-		animation_.push_back(attack_animation(unit.image_fighting(range_type_)));
+		animation_.push_back(attack_animation(image_fighting));
 	}
 	assert(!animation_.empty());
 
@@ -56,9 +57,6 @@ attack_type::attack_type(const config& cfg,const unit_type& unit)
 		description_ = egettext(id_.c_str());
 
 	type_ = cfg["type"];
-	special_ = cfg["special"];
-	backstab_ = special_ == "backstab";
-	slow_ = special_ == "slow";
 	icon_ = cfg["icon"];
 	if(icon_.empty())
 		icon_ = "attacks/" + id_ + ".png";
@@ -69,6 +67,11 @@ attack_type::attack_type(const config& cfg,const unit_type& unit)
 
 	attack_weight_ = lexical_cast_default<double>(cfg["attack_weight"],1.0);
 	defense_weight_ = lexical_cast_default<double>(cfg["defense_weight"],1.0);
+}
+
+const config& attack_type::get_cfg() const
+{
+	return cfg_;
 }
 
 const t_string& attack_type::name() const
@@ -84,11 +87,6 @@ const std::string& attack_type::id() const
 const std::string& attack_type::type() const
 {
 	return type_;
-}
-
-const std::string& attack_type::special() const
-{
-	return special_;
 }
 
 const std::string& attack_type::icon() const
@@ -116,15 +114,6 @@ int attack_type::num_attacks() const
 	return num_attacks_;
 }
 
-int attack_type::num_swarm_attacks(int hp, int maxhp) const
-{
-  if(special() == "swarm"){
-    return (num_attacks_ - (num_attacks_ * (maxhp-hp) / maxhp));
-  }else{
-    return (num_attacks_);
-  }
-}
-
 double attack_type::attack_weight() const
 {
 	return attack_weight_;
@@ -135,15 +124,25 @@ double attack_type::defense_weight() const
 	return defense_weight_;
 }
 
-bool attack_type::backstab() const
+
+int attack_type::movement_used() const
 {
-	return backstab_;
+	return cfg_["movement_used"] == "" ? 100000 : lexical_cast_default<int>(cfg_["movement_used"]);
 }
 
-bool attack_type::slow() const
-{
-	return slow_;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const std::pair<const unit_animation*,const unit_animation*> attack_type::animation(bool hit,const gamemap::location::DIRECTION dir) const
 {
@@ -204,7 +203,7 @@ int attack_type::attack_animation::matches(bool hit,gamemap::location::DIRECTION
 
 	return result;
 }
-bool attack_type::matches_filter(const config& cfg) const
+bool attack_type::matches_filter(const config& cfg,int set_) const
 {
 	const std::string& filter_range = cfg["range"];
 	const t_string& filter_name = cfg["name"];
@@ -220,15 +219,15 @@ bool attack_type::matches_filter(const config& cfg) const
 	if(filter_type.empty() == false && filter_type != type())
 		return false;
 
-	if(filter_special.empty() == false && filter_special != special())
+	if(filter_special.empty() == false && !get_special_bool(filter_special))
 		return false;
 
 	return true;
 }
 
-bool attack_type::apply_modification(const config& cfg, std::string* description)
+bool attack_type::apply_modification(const config& cfg,std::string* description,int set_)
 {
-	if(!matches_filter(cfg))
+	if(!matches_filter(cfg,0))
 		return false;
 
 	const t_string& set_name = cfg["set_name"];
@@ -251,7 +250,7 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 	}
 
 	if(set_special.empty() == false) {
-		special_ = set_special;
+		wassert("not done" == "done");
 	}
 
 	if(increase_damage.empty() == false) {
@@ -495,6 +494,16 @@ void unit_movement_type::set_parent(const unit_movement_type* parent)
 {
 	parent_ = parent;
 }
+
+const std::map<gamemap::TERRAIN,int>& unit_movement_type::movement_costs() const
+{
+	return moveCosts_;
+}
+const std::map<gamemap::TERRAIN,int>& unit_movement_type::defense_mods() const
+{
+	return defenseMods_;
+}
+
 
 ability_filter::ability_filter()
 {
@@ -1176,7 +1185,7 @@ std::vector<attack_type> unit_type::attacks() const
 	std::vector<attack_type> res;
 	for(config::const_child_itors range = cfg_.child_range("attack");
 	    range.first != range.second; ++range.first) {
-		res.push_back(attack_type(**range.first,*this));
+		res.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
 	}
 
 	return res;

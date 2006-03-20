@@ -940,7 +940,7 @@ void display::draw_sidebar()
 	if(invalidateUnit_) {
 		//we display the unit the mouse is over if it is over a unit
 		//otherwise we display the unit that is selected
-		std::map<gamemap::location,unit>::const_iterator i =
+		units_map::const_iterator i =
 			find_visible_unit(units_,mouseoverHex_,
 					map_,
 					status_.get_time_of_day().lawful_bonus,
@@ -1243,7 +1243,7 @@ void display::draw_halo_on_tile(int x, int y)
 		halo::remove(halo_it->second);
 		haloes_.erase(halo_it);
 	} else if(halo_it == haloes_.end() && it != units_.end()) {
-		const std::string& halo = it->second.type().image_halo();
+		const std::string& halo = it->second.image_halo();
 		if(halo.empty() == false) {
 			haloes_.insert(std::pair<gamemap::location,int>(loc,halo::add(xpos+hex_width()/2,ypos+hex_size()/2,halo)));
 		}
@@ -1292,7 +1292,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 
 	if(loc != hiddenUnit_ || !hideEnergy_) {
 		if(unit_image == NULL) {
-			unit_image.assign(image::get_image(u.image_loc(),it->second.stone() ? image::GREYED : image::SCALED));
+			unit_image.assign(image::get_image(u.image_loc(),it->second.get_state("stoned")=="true" ? image::GREYED : image::SCALED));
 		}
 
 		if(unit_image == NULL) {
@@ -1384,10 +1384,10 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 	if(loc == advancingUnit_ && it != units_.end()) {
 		//the unit is advancing - set the advancing colour to white if it's a
 		//non-chaotic unit, otherwise black
-		blend_with = it->second.type().alignment() == unit_type::CHAOTIC ?
+		blend_with = it->second.alignment() == unit_type::CHAOTIC ?
 		                                        rgb(16,16,16) : rgb(255,255,255);
 		blend_ratio = 1 - advancingAmount_;
-	} else if(it->second.poisoned() /* && highlight_ratio == 1.0 */) {
+	} else if(it->second.get_state("poisoned")=="true" /* && highlight_ratio == 1.0 */) {
 		//the unit is poisoned - draw with a green hue
 		blend_with = rgb(0,255,0);
 		blend_ratio = 0.25;
@@ -1425,7 +1425,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 
 	if(u.experience() > 0 && u.can_advance()) {
 		const double filled = double(u.experience())/double(u.max_experience());
-		const int level = maximum<int>(u.type().level(),1);
+		const int level = maximum<int>(u.level(),1);
 
 		SDL_Color colour=u.xp_color();
 		draw_bar(*energy_file,xpos,ypos,u.max_experience()/(level*2),filled,colour,bar_alpha);
@@ -1777,7 +1777,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	const std::string* image_str = &image_category->front();
 	const unit_map::const_iterator un = units_.find(route_.steps.front());
 	if(un != units_.end()) {
-		const int move_cost = un->second.movement_cost(map_,map_.get_terrain(loc)) - 1;
+		const int move_cost = un->second.movement_cost(map_.get_terrain(loc)) - 1;
 		if(move_cost >= int(image_category->size())) {
 			image_str = &image_category->back();
 		} else if(move_cost > 0) {
@@ -1818,7 +1818,7 @@ void display::draw_movement_info(const gamemap::location& loc, int xloc, int ylo
 #ifndef USE_TINY_GUI
 	const unit_map::const_iterator un = units_.find(route_.steps.front());
 	if(un != units_.end() && zoom_ >= DefaultZoom) {
-		text << (100-un->second.defense_modifier(map_,map_.get_terrain(loc))) << "%";
+		text << (100-un->second.defense_modifier(map_.get_terrain(loc))) << "%";
 	}
 #endif
 

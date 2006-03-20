@@ -269,7 +269,7 @@ scenario_context::~scenario_context()
 }
 
 attack_context::attack_context(const unit& a, const unit& d, const battle_stats& stats)
-   : attacker_type(a.type().id()), defender_type(d.type().id()),
+   : attacker_type(a.id()), defender_type(d.id()),
      bat_stats(stats), attacker_side(a.side()), defender_side(d.side())
 {
 }
@@ -346,8 +346,8 @@ void recruit_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.recruits[u.type().id()]++;
-	s.recruit_cost += u.type().cost();
+	s.recruits[u.id()]++;
+	s.recruit_cost += u.cost();
 }
 
 void recall_unit(const unit& u)
@@ -356,8 +356,8 @@ void recall_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.recalls[u.type().id()]++;
-	s.recall_cost += u.type().cost();
+	s.recalls[u.id()]++;
+	s.recall_cost += u.cost();
 }
 
 void un_recall_unit(const unit& u)
@@ -366,8 +366,8 @@ void un_recall_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.recalls[u.type().id()]--;
-	s.recall_cost -= u.type().cost();
+	s.recalls[u.id()]--;
+	s.recall_cost -= u.cost();
 }
 
 void advance_unit(const unit& u)
@@ -376,7 +376,7 @@ void advance_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.advanced_to[u.type().id()]++;
+	s.advanced_to[u.id()]++;
 }
 
 std::vector<std::string> get_categories()

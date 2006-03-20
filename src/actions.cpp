@@ -38,7 +38,7 @@ struct castle_cost_calculator : cost_calculator
 	castle_cost_calculator(const gamemap& map) : map_(map)
 	{}
 
-	virtual double cost(const gamemap::location& loc, const double, const bool) const
+	virtual double cost(const gamemap::location& src, const gamemap::location& loc, const double, const bool) const
 	{
 		if(!map_.is_castle(loc))
 			return 10000;
@@ -86,7 +86,7 @@ bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const g
 }
 
 std::string recruit_unit(const gamemap& map, int side,
-       std::map<gamemap::location,unit>& units, unit& new_unit,
+       unit_map& units, unit new_unit,
        gamemap::location& recruit_location, display* disp, bool need_castle, bool full_movement)
 {
 	const command_disabler disable_commands;
@@ -137,7 +137,7 @@ std::string recruit_unit(const gamemap& map, int side,
 		new_unit.set_movement(new_unit.total_movement());
 	} else {
 		new_unit.set_movement(0);
-		new_unit.set_attacked();
+		new_unit.set_attacks(0);
 	}
 	new_unit.heal_all();
 
@@ -173,7 +173,7 @@ std::string recruit_unit(const gamemap& map, int side,
 		unsigned long rc = lexical_cast_default<unsigned long>
 			((*ran_results)["checksum"], 0);
 		if((*ran_results)["checksum"].empty() || rc != cs.checksum()) {
-			ERR_NW << "SYNC: In recruit " << new_unit.type().id() <<
+			ERR_NW << "SYNC: In recruit " << new_unit.id() <<
 				": has checksum " << cs.checksum() <<
 				" while datasource has checksum " <<
 				rc << "\n";
@@ -198,7 +198,7 @@ void validate_recruit_unit()
 
 }
 
-gamemap::location under_leadership(const std::map<gamemap::location,unit>& units,
+gamemap::location under_leadership(const units_map& units,
                                    const gamemap::location& loc, int* bonus)
 {
 	gamemap::location adjacent[6];
@@ -209,7 +209,7 @@ gamemap::location under_leadership(const std::map<gamemap::location,unit>& units
 	}
 
 	const int side = un->second.side();
-	const int level = un->second.type().level();
+	const int level = un->second.level();
 	int bonus_tracker = 0;
 	int current_bonus = 0;
 
@@ -217,9 +217,9 @@ gamemap::location under_leadership(const std::map<gamemap::location,unit>& units
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if(it != units.end() && (int)it->second.side() == side &&
-			it->second.type().is_leader() &&
-			it->second.incapacitated() == false) {
-			current_bonus = maximum<int>(current_bonus,it->second.type().leadership(level));
+			it->second.get_ability_bool("leader",adjacent[i]) &&
+			it->second.get_state("stoned") != "true") {
+			current_bonus = maximum<int>(current_bonus,it->second.get_abilities("leadership",adjacent[i]).highest("value"));
 			if(current_bonus != bonus_tracker) {
 				best_loc = adjacent[i];
 				bonus_tracker = current_bonus;
@@ -286,8 +286,9 @@ battle_stats evaluate_battle_stats(const gamemap& map,
                                    const gamemap::location& attacker,
                                    const gamemap::location& defender,
                                    int attack_with,
-                                   std::map<gamemap::location,unit>& units,
+                                   units_map& units,
                                    const gamestatus& state,
+                                   const game_data& gamedata,
                                    gamemap::TERRAIN attacker_terrain_override,
                                    battle_stats_strings *strings)
 {
@@ -298,8 +299,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	if (strings)
 		strings->defend_name = _("none");
 
-	const std::map<gamemap::location,unit>::iterator a = units.find(attacker);
-	const std::map<gamemap::location,unit>::iterator d = units.find(defender);
+	const units_map::iterator a = units.find(attacker);
+	const units_map::iterator d = units.find(defender);
 
 	wassert(a != units.end());
 	wassert(d != units.end());
@@ -311,63 +312,102 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	res.attacker_hp = a->second.hitpoints();
 	res.defender_hp = d->second.hitpoints();
 
-	res.chance_to_hit_attacker = a->second.defense_modifier(map,attacker_terrain);
-	res.chance_to_hit_defender = d->second.defense_modifier(map,defender_terrain);
+	res.chance_to_hit_attacker = a->second.defense_modifier(attacker_terrain);
+	res.chance_to_hit_defender = d->second.defense_modifier(defender_terrain);
 
-	const std::vector<attack_type>& attacker_attacks = a->second.attacks();
-	const std::vector<attack_type>& defender_attacks = d->second.attacks();
+	std::vector<attack_type>& attacker_attacks = a->second.attacks();
+	std::vector<attack_type>& defender_attacks = d->second.attacks();
 
 	wassert((unsigned)attack_with < attacker_attacks.size());
-	const attack_type& attack = attacker_attacks[attack_with];
-	res.attacker_special = attack.special();
+	attack_type& attack = attacker_attacks[attack_with];
+	attack.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,true);
 
-	static const std::string charge_string("charge");
-	const bool charge = res.attacker_special == charge_string;
-	bool steadfast = d->second.type().steadfast();
-	if (steadfast) {
-		steadfast = d->second.type().steadfast_filter().matches_filter(map.underlying_union_terrain(defender_terrain), state.get_time_of_day().lawful_bonus);
-	}
-	const bool steadfast_percent = d->second.type().steadfast_ispercent();
-	const int steadfast_bonus = d->second.type().steadfast_bonus();
-	const int steadfast_max = d->second.type().steadfast_max();
-
-	bool backstab = false;
+	unit_ability_list steadfast_abilities = d->second.get_abilities("steadfast",d->first);
+	bool steadfast = steadfast_abilities.empty() == false;
+	const int steadfast_bonus = steadfast_abilities.highest("bonus");
+	const int steadfast_max = steadfast_abilities.lowest("max_bonus");
 
 	static const std::string to_the_death_string("berserk");
-	res.to_the_death = res.attacker_special == to_the_death_string;
+	res.rounds = attack.get_specials(to_the_death_string).highest("rounds");
 	res.defender_strikes_first = false;
 
 	static const std::string backstab_string("backstab");
-	if (res.attacker_special == backstab_string) {
-		backstab = backstab_check(attacker, defender, units, teams);
-	}
-
+	
+	weapon_special_list plague = attack.get_specials("plague");
 	static const std::string plague_string("plague");
-	res.attacker_plague = !d->second.type().not_living() &&
-	  (res.attacker_special.substr(0,6) == plague_string) &&
-	  strcmp(d->second.type().undead_variation().c_str(),"null") &&
+	res.attacker_plague = d->second.get_state("not_living") != "true" &&
+	  (!plague.empty()) &&
+	  strcmp(d->second.undead_variation().c_str(),"null") &&
 	  !map.is_village(defender);
-	if(res.attacker_special.size()>8){ //plague(type) used
-	  res.attacker_plague_type=res.attacker_special.substr(7,res.attacker_special.size()-8);
-	}else{//plague type is that of attacker
-	  res.attacker_plague_type= a->second.type().id();
+	
+	if(!plague.empty()) {
+		if((*plague.cfgs.front())["type"] == "") {
+		  res.attacker_plague_type = a->second.id();
+		} else {
+		  res.attacker_plague_type = (*plague.cfgs.front())["type"];
+		}
 	}
 	res.defender_plague = false;
 
 	static const std::string slow_string("slow");
-	res.attacker_slows = res.attacker_special == slow_string;
-
-	res.nattacks = attack.num_swarm_attacks(a->second.hitpoints(), a->second.max_hitpoints());
+	res.attacker_slows = attack.get_special_bool(slow_string);
+	static const std::string poison_string("slow");
+	res.attacker_poisons = attack.get_special_bool(poison_string);
+	static const std::string stones_string("stones");
+	res.attacker_stones = attack.get_special_bool(stones_string);
+	
+	{ // modify chance to hit
+		weapon_special_list cth_specials = attack.get_specials("chance_to_hit");
+		int cth_def = res.chance_to_hit_defender;
+		int cth_def_mod = 0;
+		bool cth_def_set = false;
+		bool cth_def_mod_set = false;
+		for(config::child_list::const_iterator cth_it = cth_specials.cfgs.begin(); cth_it != cth_specials.cfgs.end(); ++cth_it) {
+			if((**cth_it)["cumulative"]=="yes") {
+				cth_def = maximum<int>(cth_def,lexical_cast_default<int>((**cth_it)["value"]));
+				if(cth_def_mod_set && (**cth_it)["add"] != "") {
+					cth_def_mod += lexical_cast_default<int>((**cth_it)["add"]);
+				} else if((**cth_it)["add"] != "") {
+					cth_def_mod = lexical_cast_default<int>((**cth_it)["add"]);
+					cth_def_mod_set = true;
+				}
+			} else {
+				if(cth_def_set) {
+					cth_def = maximum<int>(cth_def,lexical_cast_default<int>((**cth_it)["value"]));
+				} else {
+					cth_def = lexical_cast_default<int>((**cth_it)["value"]);
+					cth_def_set = true;
+				}
+				if(cth_def_mod_set && (**cth_it)["add"] != "") {
+					cth_def_mod = maximum<int>(cth_def,lexical_cast_default<int>((**cth_it)["add"]));
+				} else if((**cth_it)["add"] != "") {
+					cth_def_mod = lexical_cast_default<int>((**cth_it)["add"]);
+					cth_def_mod_set = true;
+				}
+			}
+		}
+		res.chance_to_hit_defender = cth_def + cth_def_mod;
+	}
+	
+	// compute swarm attacks;
+	weapon_special_list swarm = attack.get_specials("attacks");
+	if(!swarm.empty()) {
+		int swarm_min_attacks = swarm.highest("attacks_max");
+		int swarm_max_attacks = swarm.highest("attacks_min");
+		int hitp = a->second.hitpoints();
+		int mhitp = a->second.max_hitpoints();
+		
+		res.nattacks = swarm_min_attacks + swarm_max_attacks * hitp / mhitp;
+		
+	} else {
+		res.nattacks = attack.num_attacks();
+	}
 
 	if (strings) {
 		strings->attack_name = attack.name();
 		strings->attack_type = egettext(attack.type().c_str());
-		strings->attack_special = egettext(res.attacker_special.c_str());
+		strings->attack_special = attack.weapon_specials();
 		strings->attack_icon = attack.icon();
-
-		//don't show backstabbing unless it's actually happening
-		if(res.attacker_special == backstab_string && !backstab)
-			strings->attack_special = "";
 
 		strings->range = gettext(N_(attack.range().c_str()));
 	}
@@ -378,10 +418,22 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	for(int defend_option = 0; defend_option != int(defender_attacks.size()); ++defend_option) {
 		if(defender_attacks[defend_option].range() == attack.range()) {
 			if (defender_attacks[defend_option].defense_weight() > 0) {
-				const double rating = a->second.damage_against(defender_attacks[defend_option])
+				
+				int dnattacks = defender_attacks[defend_option].num_attacks();
+				weapon_special_list swarm = defender_attacks[defend_option].get_specials("attacks");
+				if(!swarm.empty()) {
+					int swarm_min_attacks = swarm.highest("attacks_max");
+					int swarm_max_attacks = swarm.highest("attacks_min");
+					int hitp = d->second.hitpoints();
+					int mhitp = d->second.max_hitpoints();
+					
+					dnattacks = swarm_min_attacks + swarm_max_attacks * hitp / mhitp;
+					
+				}
+				
+				const double rating = a->second.damage_from(defender_attacks[defend_option])
 					*defender_attacks[defend_option].damage()
-					*defender_attacks[defend_option].num_swarm_attacks(
-						d->second.hitpoints(), d->second.max_hitpoints())
+					*dnattacks
 					*defender_attacks[defend_option].defense_weight();
 				if(defend_with == -1 || rating > best_defend_rating) {
 					best_defend_rating = rating;
@@ -395,39 +447,95 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	const bool counterattack = defend_with != -1;
 
-	static const std::string drain_string("drain");
-	static const std::string magical_string("magical");
 	static const std::string EMPTY_COLUMN = std::string(1, COLUMN_SEPARATOR) + ' ' + COLUMN_SEPARATOR;
 
 	res.damage_attacker_takes = 0;
 	res.amount_attacker_drains = 0;
 	res.amount_defender_drains = 0;
 	if (counterattack) {
-		const attack_type& defend = defender_attacks[defend_with];
-		res.defender_special = defend.special();
+		attack_type& defend = defender_attacks[defend_with];
+		defend.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,false);
 
-		if(res.defender_special == to_the_death_string) {
-			res.to_the_death = true;
-		}
+		res.rounds = maximum<int>(res.rounds,defend.get_specials(to_the_death_string).highest("rounds"));
 
-		//magical attacks always have a 70% chance to hit
-		if (res.defender_special == magical_string) {
-			res.chance_to_hit_attacker = 70;
+		{ // modify chance to hit
+			weapon_special_list cth_specials = defend.get_specials("chance_to_hit");
+			int cth_def = res.chance_to_hit_attacker;
+			int cth_def_mod = 0;
+			bool cth_def_set = false;
+			bool cth_def_mod_set = false;
+			for(config::child_list::const_iterator cth_it = cth_specials.cfgs.begin(); cth_it != cth_specials.cfgs.end(); ++cth_it) {
+				if((**cth_it)["cumulative"]=="yes") {
+					cth_def = maximum<int>(cth_def,lexical_cast_default<int>((**cth_it)["value"]));
+					if(cth_def_mod_set && (**cth_it)["add"] != "") {
+						cth_def_mod += lexical_cast_default<int>((**cth_it)["add"]);
+					} else if((**cth_it)["add"] != "") {
+						cth_def_mod = lexical_cast_default<int>((**cth_it)["add"]);
+						cth_def_mod_set = true;
+					}
+				} else {
+					if(cth_def_set) {
+						cth_def = maximum<int>(cth_def,lexical_cast_default<int>((**cth_it)["value"]));
+					} else {
+						cth_def = lexical_cast_default<int>((**cth_it)["value"]);
+						cth_def_set = true;
+					}
+					if(cth_def_mod_set && (**cth_it)["add"] != "") {
+						cth_def_mod = maximum<int>(cth_def,lexical_cast_default<int>((**cth_it)["add"]));
+					} else if((**cth_it)["add"] != "") {
+						cth_def_mod = lexical_cast_default<int>((**cth_it)["add"]);
+						cth_def_mod_set = true;
+					}
+				}
+			}
+			res.chance_to_hit_attacker = cth_def + cth_def_mod;
 		}
 
 		int bonus = 100;
 		int divisor = 100;
 
-		const int base_damage = defend.damage();
-		const int resistance_modifier = a->second.damage_against(defend);
+		int base_damage = defend.damage();
+		const int resistance_modifier = a->second.damage_from(defend);
 
+		{ // modify damage
+			weapon_special_list dmg_specials = defend.get_specials("damage");
+			int dmg_def = base_damage;
+			int dmg_def_mod = 0;
+			bool dmg_def_set = false;
+			bool dmg_def_mod_set = false;
+			for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
+				if((**dmg_it)["cumulative"]=="yes") {
+					dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
+					if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
+						dmg_def_mod += lexical_cast_default<int>((**dmg_it)["add"]);
+					} else if((**dmg_it)["add"] != "") {
+						dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
+						dmg_def_mod_set = true;
+					}
+				} else {
+					if(dmg_def_set) {
+						dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
+					} else {
+						dmg_def = lexical_cast_default<int>((**dmg_it)["value"]);
+						dmg_def_set = true;
+					}
+					if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
+						dmg_def_mod = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["add"]));
+					} else if((**dmg_it)["add"] != "") {
+						dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
+						dmg_def_mod_set = true;
+					}
+				}
+			}
+			base_damage = dmg_def + dmg_def_mod;
+		}
 		if (strings) {
 			std::stringstream str_base;
 			str_base << _("base damage") << COLUMN_SEPARATOR << base_damage;
 			strings->defend_calculations.push_back(str_base.str());
 		}
 
-		const int tod_modifier = combat_modifier(state,units,d->first,d->second.type().alignment(),map);
+		const int tod_modifier = combat_modifier(state,units,d->first,d->second.alignment(),map);
 		bonus += tod_modifier;
 
 		if (strings && tod_modifier != 0) {
@@ -447,7 +555,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 				strings->defend_calculations.push_back(str.str());
 			}
 		}
-
+/*
 		if (charge) {
 			bonus *= 2;
 
@@ -457,8 +565,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 				strings->defend_calculations.push_back(str.str());
 			}
 		}
-
-		if (d->second.slowed()) {
+*/
+		if (d->second.get_state("slowed") == "true") {
 			divisor *= 2;
 			if (strings) {
 				std::stringstream str;
@@ -490,60 +598,96 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			strings->defend_calculations.push_back(str.str());
 		}
 
-		res.ndefends = defend.num_swarm_attacks(d->second.hitpoints(), d->second.max_hitpoints());
+		// compute swarm attacks;
+		weapon_special_list swarm = defend.get_specials("attacks");
+		if(!swarm.empty()) {
+			int swarm_min_attacks = swarm.highest("attacks_max");
+			int swarm_max_attacks = swarm.highest("attacks_min");
+			int hitp = d->second.hitpoints();
+			int mhitp = d->second.max_hitpoints();
+			
+			res.ndefends = swarm_min_attacks + swarm_max_attacks * hitp / mhitp;
+			
+		} else {
+			res.ndefends = defend.num_attacks();
+		}
 
 		if (strings) {
 			strings->defend_name = defend.name();
 			strings->defend_type = egettext(defend.type().c_str());
-			strings->defend_special = egettext(res.defender_special.c_str());
+			strings->defend_special = defend.weapon_specials();
 			strings->defend_icon = defend.icon();
 		}
 
 		//if the defender drains, and the attacker is a living creature, then
 		//the defender will drain for half the damage it does
-		if (res.defender_special == drain_string && !a->second.type().not_living()) {
+		if (defend.get_special_bool("drains") && a->second.get_state("not_living") != "true") {
 			res.amount_defender_drains = res.damage_attacker_takes/2;
 		}
 
-		res.defender_plague = !a->second.type().not_living() &&
-		  (res.defender_special.substr(0,6) == plague_string) &&
-		  strcmp(a->second.type().undead_variation().c_str(),"null") &&
+		weapon_special_list defend_plague = attack.get_specials("plague");
+		res.defender_plague = a->second.get_state("not_living") != "true" &&
+		  (!defend_plague.empty()) &&
+		  strcmp(a->second.undead_variation().c_str(),"null") &&
 		  !map.is_village(attacker);
-		if(res.defender_special.size()>8){ //plague(type) used
-		        res.defender_plague_type=res.defender_special.substr(7,res.defender_special.size()-8);
-		}else{//plague type is that of attacker
-		        res.defender_plague_type= d->second.type().id();
+		if(!plague.empty()) {
+			if((*plague.cfgs.front())["type"] == "") {
+			  res.defender_plague_type = d->second.id();
+			} else {
+			  res.defender_plague_type = (*plague.cfgs.front())["type"];
+			}
 		}
 
-		res.defender_slows = (defend.special() == slow_string);
+		res.defender_slows = (defend.get_special_bool(slow_string));
+		res.defender_poisons = (defend.get_special_bool(poison_string));
+		res.defender_stones = (defend.get_special_bool(stones_string));
 
 		static const std::string first_strike = "firststrike";
-		res.defender_strikes_first = res.defender_special == first_strike && res.attacker_special != first_strike;
+		res.defender_strikes_first = defend.get_special_bool(first_strike) && !attack.get_special_bool(first_strike);
 	}
-
-	if (res.attacker_special == magical_string)
-		res.chance_to_hit_defender = 70;
-
-	static const std::string marksman_string("marksman");
-
-	//offensive marksman attacks always have at least 60% chance to hit
-	if(res.chance_to_hit_defender < 60 && res.attacker_special == marksman_string)
-		res.chance_to_hit_defender = 60;
 
 	int bonus = 100;
 	int divisor = 100;
 
-	const int base_damage = attack.damage();
-	int resistance_modifier = d->second.damage_against(attack);
+	int base_damage = attack.damage();
+	int resistance_modifier = d->second.damage_from(attack);
 
+	{ // modify damage
+		weapon_special_list dmg_specials = attack.get_specials("damage");
+		int dmg_def = base_damage;
+		int dmg_def_mod = 0;
+		bool dmg_def_set = false;
+		bool dmg_def_mod_set = false;
+		for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
+			if((**dmg_it)["cumulative"]=="yes") {
+				dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
+				if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
+					dmg_def_mod += lexical_cast_default<int>((**dmg_it)["add"]);
+				} else if((**dmg_it)["add"] != "") {
+					dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
+					dmg_def_mod_set = true;
+				}
+			} else {
+				if(dmg_def_set) {
+					dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
+				} else {
+					dmg_def = dmg_def,lexical_cast_default<int>((**dmg_it)["value"]);
+					dmg_def_set = true;
+				}
+				if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
+					dmg_def_mod = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["add"]));
+				} else if((**dmg_it)["add"] != "") {
+					dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
+					dmg_def_mod_set = true;
+				}
+			}
+		}
+		base_damage = dmg_def + dmg_def_mod;
+	}
 	//steadfast doubles resistance, but is capped at increasing resistance to 50%
 	if (steadfast && resistance_modifier < 100 && resistance_modifier > steadfast_max) {
-		if(!steadfast_percent) {
-			const int diff = 100 - resistance_modifier;
-			resistance_modifier -= diff*steadfast_bonus/100;
-		} else {
-			resistance_modifier -= steadfast_bonus;
-		}
+		const int diff = 100 - resistance_modifier;
+		resistance_modifier -= diff*steadfast_bonus/100;
 		if(resistance_modifier < steadfast_max) {
 			resistance_modifier = steadfast_max;
 		}
@@ -555,7 +699,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		strings->attack_calculations.push_back(str_base.str());
 	}
 
-	const int tod_modifier = combat_modifier(state,units,a->first,a->second.type().alignment(),map);
+	const int tod_modifier = combat_modifier(state,units,a->first,a->second.alignment(),map);
 
 	bonus += tod_modifier;
 
@@ -576,7 +720,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			strings->attack_calculations.push_back(str.str());
 		}
 	}
-
+/*
 	if (charge) {
 		bonus *= 2;
 		if (strings) {
@@ -585,8 +729,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			strings->attack_calculations.push_back(str.str());
 		}
 	}
-
-	if (backstab) {
+*/
+	if (attack.get_special_bool(backstab_string)) {
 		bonus *= 2;
 		if (strings) {
 			std::stringstream str;
@@ -610,7 +754,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	}
 
-	if (a->second.slowed()) {
+	if (a->second.get_state("slowed") == "true") {
 		divisor *= 2;
 
 		if (strings) {
@@ -636,17 +780,17 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	//if the attacker drains, and the defender is a living creature, then
 	//the attacker will drain for half the damage it does
-	if(res.attacker_special == drain_string && !d->second.type().not_living()) {
+	if(attack.get_special_bool("drains") && d->second.get_state("not_living") != "true") {
 		res.amount_attacker_drains = res.damage_defender_takes/2;
 	}
 
 	// FIXME: doesn't take into account berserk+slow or drain
 	if (strings && res.amount_attacker_drains == 0 &&
 		res.amount_defender_drains == 0 &&
-		!(res.to_the_death &&
+		!(res.rounds &&
 			(res.attacker_slows || res.defender_slows)))
 	{
-		const int maxrounds = (res.to_the_death ? 30 : 1);
+		const int maxrounds = (res.rounds ? res.rounds : 1);
 		const int hpa = res.attacker_hp;
 		const int hpb = res.defender_hp;
 		const int dmga = res.damage_defender_takes;
@@ -680,7 +824,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 static std::string unit_dump(std::pair< gamemap::location, unit > const &u)
 {
 	std::stringstream s;
-	s << u.second.type().id() << " (" << u.first.x + 1 << ',' << u.first.y + 1 << ')';
+	s << u.second.id() << " (" << u.first.x + 1 << ',' << u.first.y + 1 << ')';
 	return s.str();
 }
 
@@ -689,7 +833,7 @@ void attack(display& gui, const gamemap& map,
             gamemap::location attacker,
             gamemap::location defender,
             int attack_with,
-            std::map<gamemap::location,unit>& units,
+            units_map& units,
             const gamestatus& state,
             const game_data& info,
 			bool update_display)
@@ -697,27 +841,28 @@ void attack(display& gui, const gamemap& map,
 	//stop the user from issuing any commands while the units are fighting
 	const command_disabler disable_commands;
 	
-	std::map<gamemap::location,unit>::iterator a = units.find(attacker);
-	std::map<gamemap::location,unit>::iterator d = units.find(defender);
+	units_map::iterator a = units.find(attacker);
+	units_map::iterator d = units.find(defender);
 
 	if(a == units.end() || d == units.end()) {
 		return;
 	}
 	bool OOS_error = false;
 
-	int attackerxp = d->second.type().level();
-	int defenderxp = a->second.type().level();
-
-	a->second.set_attacked();
+	int attackerxp = d->second.level();
+	int defenderxp = a->second.level();
+	
+	a->second.set_attacks(a->second.attacks_left()-1);
+	a->second.set_movement(a->second.movement_left()-a->second.attacks()[attack_with].movement_used());
 	d->second.set_resting(false);
-
+	
 	//if the attacker was invisible, she isn't anymore!
 	static const std::string hides("hides");
-	a->second.remove_flag(hides);
+	a->second.set_state(hides,"");
 
 	battle_stats stats = evaluate_battle_stats(map, teams, attacker,
                                                    defender, attack_with,
-                                                   units, state);
+                                                   units, state, info);
 
 	statistics::attack_context attack_stats(a->second,d->second,stats);
 	
@@ -747,7 +892,7 @@ void attack(display& gui, const gamemap& map,
 	int orig_attacks = stats.nattacks;
 	int orig_defends = stats.ndefends;
 
-	int to_the_death = stats.to_the_death ? 30 : 0;
+	int to_the_death = stats.rounds ? stats.rounds : 0;
 
 	static const std::string poison_string("poison");
 
@@ -918,8 +1063,8 @@ void attack(display& gui, const gamemap& map,
 			}
 
 			if(dies) {//attacker kills defender
-				attackerxp = game_config::kill_experience*d->second.type().level();
-				if(d->second.type().level() == 0)
+				attackerxp = game_config::kill_experience*d->second.level();
+				if(d->second.level() == 0)
 					attackerxp = game_config::kill_experience/2;
 
 				a->second.get_experience(attackerxp);
@@ -929,7 +1074,7 @@ void attack(display& gui, const gamemap& map,
 
 				gamemap::location loc = d->first;
 				gamemap::location attacker_loc = a->first;
-				std::string undead_variation = d->second.type().undead_variation();
+				std::string undead_variation = d->second.undead_variation();
 				const int defender_side = d->second.side();
 				LOG_NG << "firing attack_end event\n";
 				game_events::fire("attack_end",attacker,defender,dat);
@@ -952,8 +1097,8 @@ void attack(display& gui, const gamemap& map,
 				        LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
 
 					if(reanimitor != info.unit_types.end()) {
-					       unit newunit=unit(&reanimitor->second,a->second.side(),true,true);
-					       newunit.set_attacked();
+					       unit newunit=unit(&info,&units,&map,&state,&teams,&reanimitor->second,a->second.side(),true,true);
+					       newunit.set_attacks(0);
 
 					       //apply variation
 					       if(strcmp(undead_variation.c_str(),"null")){
@@ -980,30 +1125,30 @@ void attack(display& gui, const gamemap& map,
 				}
 				break;
 			} else if(hits) {
-				if (stats.attacker_special == poison_string &&
-				   d->second.has_flag("poisoned") == false &&
-				   !d->second.type().not_living()) {
+				if (stats.attacker_poisons &&
+				   d->second.get_state("poisoned") != "true" &&
+				   d->second.get_state("not_living") != "true") {
 					if (update_display){
 						gui.float_label(d->first,_("poisoned"),255,0,0);
 					}
-					d->second.set_flag("poisoned");
+					d->second.set_state("poisoned","true");
 				}
 
-				if(stats.attacker_slows && d->second.slowed() == false) {
+				if(stats.attacker_slows && d->second.get_state("slowed") != "true") {
 					if (update_display){
 						gui.float_label(d->first,_("slowed"),255,0,0);
 					}
-					d->second.set_flag("slowed");
+					d->second.set_state("slowed","true");
 					stats.damage_attacker_takes = round_damage(stats.damage_attacker_takes,1,2);
 				}
 
 				//if the defender is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
-				if (stats.attacker_special == stone_string) {
+				if (stats.attacker_stones) {
 					if (update_display){
 						gui.float_label(d->first,_("stone"),255,0,0);
 					}
-					d->second.set_flag(stone_string);
+					d->second.set_state("stoned","true");
 					stats.ndefends = 0;
 					stats.nattacks = 0;
 					game_events::fire(stone_string,d->first,a->first);
@@ -1174,8 +1319,8 @@ void attack(display& gui, const gamemap& map,
 			}
 
 			if(dies) {//defender kills attacker
-				defenderxp = game_config::kill_experience*a->second.type().level();
-				if(a->second.type().level() == 0)
+				defenderxp = game_config::kill_experience*a->second.level();
+				if(a->second.level() == 0)
 					defenderxp = game_config::kill_experience/2;
 
 				d->second.get_experience(defenderxp);
@@ -1183,7 +1328,7 @@ void attack(display& gui, const gamemap& map,
 				defenderxp = 0;
 				attackerxp = 0;
 
-				std::string undead_variation = a->second.type().undead_variation();
+				std::string undead_variation = a->second.undead_variation();
 				gamemap::location loc = a->first;
 				gamemap::location defender_loc = d->first;
 				const int attacker_side = a->second.side();
@@ -1208,7 +1353,7 @@ void attack(display& gui, const gamemap& map,
 				        LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
 
 					if(reanimitor != info.unit_types.end()) {
-					       unit newunit=unit(&reanimitor->second,d->second.side(),true,true);
+					       unit newunit=unit(&info,&units,&map,&state,&teams,&reanimitor->second,d->second.side(),true,true);
 					       //apply variation
 					       if(strcmp(undead_variation.c_str(),"null")){
 						 config mod;
@@ -1233,31 +1378,31 @@ void attack(display& gui, const gamemap& map,
 				}
 				break;
 			} else if(hits) {
-				if (stats.defender_special == poison_string &&
-				   a->second.has_flag("poisoned") == false &&
-				   !a->second.type().not_living()) {
+				if (stats.defender_poisons &&
+				   a->second.get_state("poisoned") != "true" &&
+				   a->second.get_state("not_living") != "true") {
 					if (update_display){
 						gui.float_label(a->first,_("poisoned"),255,0,0);
 					}
-					a->second.set_flag("poisoned");
+					a->second.set_state("poisoned","true");
 				}
 
-				if(stats.defender_slows && a->second.slowed() == false) {
+				if(stats.defender_slows && a->second.get_state("slowed") != "true") {
 					if (update_display){
 						gui.float_label(a->first,_("slowed"),255,0,0);
 					}
-					a->second.set_flag("slowed");
+					a->second.set_state("slowed","true");
 					stats.damage_defender_takes = round_damage(stats.damage_defender_takes,1,2);
 				}
 
 
 				//if the attacker is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
-				if (stats.defender_special == stone_string) {
+				if (stats.defender_stones) {
 					if (update_display){
 						gui.float_label(a->first,_("stone"),255,0,0);
 					}
-					a->second.set_flag(stone_string);
+					a->second.set_state("stoned","true");
 					stats.ndefends = 0;
 					stats.nattacks = 0;
 					game_events::fire(stone_string,a->first,d->first);
@@ -1376,13 +1521,13 @@ bool will_heal(const gamemap::location& loc, int side, const std::vector<team>& 
 			   const unit_map& units)
 {
 	const unit_map::const_iterator healer_it = units.find(loc);
-	if(healer_it == units.end() || healer_it->second.type().heals() == false) {
+	if(healer_it == units.end() || healer_it->second.get_ability_bool("heals",healer_it->first) == false) {
 		return false;
 	}
 
 	const unit& healer = healer_it->second;
 
-	if(healer.incapacitated()) {
+	if(healer.get_state("stoned") == "true") {
 		return false;
 	}
 
@@ -1403,9 +1548,9 @@ bool will_heal(const gamemap::location& loc, int side, const std::vector<team>& 
 	get_adjacent_tiles(loc,adjacent);
 	for(int n = 0; n != 6; ++n) {
 		const unit_map::const_iterator u = units.find(adjacent[n]);
-		if(u != units.end() && (u->second.hitpoints() < u->second.max_hitpoints() || u->second.poisoned())) {
+		if(u != units.end() && (u->second.hitpoints() < u->second.max_hitpoints() || u->second.get_state("poisoned") == "true")) {
 			//ignore stoned units
-			if(!u->second.healable())
+			if(u->second.get_state("stoned") == "true")
 				continue;
 
 			const int unit_side = u->second.side();
@@ -1428,7 +1573,7 @@ bool will_heal(const gamemap::location& loc, int side, const std::vector<team>& 
 }
 
 void calculate_healing(display& disp, const gamestatus& status, const gamemap& map,
-                       std::map<gamemap::location,unit>& units, int side,
+                       units_map& units, int side,
 					   const std::vector<team>& teams, bool update_display)
 {
 	std::map<gamemap::location,int> healed_units, max_healing;
@@ -1436,23 +1581,23 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 	//a map of healed units to their healers
 	std::multimap<gamemap::location,gamemap::location> healers;
 
-	std::map<gamemap::location,unit>::iterator i;
+	units_map::iterator i;
 	int amount_healed;
 	for(i = units.begin(); i != units.end(); ++i) {
 		amount_healed = 0;
 
-		if (!i->second.healable())
+		if (i->second.get_state("healable") == "false")
 			continue;
 
 		//the unit heals if it's on this side, and it's on a village or
 		//it has regeneration, and it is wounded
 		if((int)i->second.side() == side) {
-			if(i->second.hitpoints() < i->second.max_hitpoints() || i->second.poisoned()){
+			if(i->second.hitpoints() < i->second.max_hitpoints() || i->second.get_state("poisoned") == "true"){
 				if(map.gives_healing(i->first)) {
 					amount_healed = maximum<int>(amount_healed,game_config::cure_amount);
 				}
-				if(i->second.type().regenerates()) {
-					amount_healed = maximum<int>(amount_healed,i->second.type().regenerate_amount());
+				if(i->second.get_ability_bool("regenerates",i->first)) {
+					amount_healed = maximum<int>(amount_healed,i->second.get_abilities("regenerate",i->first).highest("value"));
 				}
 			}
 			if(amount_healed != 0)
@@ -1468,7 +1613,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			for(int j = 0; j != 6; ++j) {
 				if(will_heal(adjacent[j],i->second.side(),teams,units)) {
 					const unit_map::const_iterator healer = units.find(adjacent[j]);
-					max_heal = maximum(max_heal,healer->second.type().heals());
+					max_heal = maximum(max_heal,healer->second.get_abilities("heals",healer->first).highest("value"));
 
 					healers.insert(std::pair<gamemap::location,gamemap::location>(i->first,adjacent[j]));
 				}
@@ -1491,13 +1636,13 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			int nhealed = 0;
 			int j;
 			for(j = 0; j != 6; ++j) {
-				const std::map<gamemap::location,unit>::const_iterator adj =
+				const units_map::const_iterator adj =
 				                                   units.find(adjacent[j]);
 				if(adj != units.end() &&
 				   adj->second.hitpoints() < adj->second.max_hitpoints() &&
 				   (int)adj->second.side() == side &&
 				   healed_units[adj->first] < max_healing[adj->first] &&
-				   adj->second.healable()) {
+				   adj->second.get_state("stoned") != "true") {
 					++nhealed;
 					gets_healed[j] = true;
 				} else {
@@ -1508,7 +1653,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			if(nhealed == 0)
 				continue;
 
-			const int healing_per_unit = i->second.type().max_unit_healing()/nhealed;
+			const int healing_per_unit = i->second.get_abilities("heals",i->first).highest("max_value")/nhealed;
 
 			for(j = 0; j != 6; ++j) {
 				if(!gets_healed[j])
@@ -1529,7 +1674,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 	//are no longer poisoned
 	for(i = units.begin(); i != units.end(); ++i) {
 
-		if((int)i->second.side() == side && i->second.poisoned() && i->second.healable()) {
+		if((int)i->second.side() == side && i->second.get_state("poisoned")=="true" && i->second.get_state("healable")!="false") {
 			const int damage = minimum<int>(game_config::cure_amount,
 			                                i->second.hitpoints()-1);
 
@@ -1540,10 +1685,10 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 	}
 
 	for(i = units.begin(); i != units.end(); ++i) {
-		if((int)i->second.side() == side && i->second.healable()) {
+		if((int)i->second.side() == side && i->second.get_state("healable")!="false") {
 			if(i->second.hitpoints() < i->second.max_hitpoints() ||
-					i->second.poisoned()){
-				if(i->second.is_resting()) {
+					i->second.get_state("poisoned")=="true"){
+				if(i->second.resting()) {
 					const std::map<gamemap::location,int>::iterator u =
 						healed_units.find(i->first);
 					if(u != healed_units.end()) {
@@ -1586,7 +1731,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				wassert(units.count(i->second));
 				unit& healer = units.find(i->second)->second;
 
-				const std::string& halo_image = healer.type().image_halo_healing();
+				const std::string& halo_image = healer.image_halo_healing();
 
 				//only show healing frames if haloing is enabled, or if there is no halo
 				if(halo_image.empty() || preferences::show_haloes()) {
@@ -1612,15 +1757,15 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 
 		const int DelayAmount = 50;
 
-		LOG_NG << "unit is poisoned? " << (u.has_flag("poisoned") ? "yes" : "no") << ","
+		LOG_NG << "unit is poisoned? " << (u.get_state("poisoned")=="true" ? "yes" : "no") << ","
 			<< h->second << "," << max_healing[h->first] << "\n";
 
-		if(u.has_flag("poisoned") && h->second > 0) {
+		if(u.get_state("poisoned")=="true" && h->second > 0) {
 
 			//poison is purged only if we are on a village or next to a curer
 			if(h->second >= game_config::cure_amount ||
 			   max_healing[h->first] >= game_config::cure_amount) {
-				u.remove_flag("poisoned");
+				u.set_state("poisoned","");
 
 				events::pump();
 				if(show_healing) {
@@ -1673,7 +1818,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 
 		while(h->second < 0) {
 			const Uint32 damage_colour = disp.rgb(200,0,0);
-			u.gets_hit(1);
+			u.take_hit(1);
 
 			if(show_healing) {
 				if(is_odd(h->second))
@@ -1708,13 +1853,15 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 }
 
 unit get_advanced_unit(const game_data& info,
-                  std::map<gamemap::location,unit>& units,
+                  units_map& units,
                   const gamemap::location& loc, const std::string& advance_to)
 {
 	const std::map<std::string,unit_type>::const_iterator new_type = info.unit_types.find(advance_to);
-	const std::map<gamemap::location,unit>::iterator un = units.find(loc);
+	const units_map::iterator un = units.find(loc);
 	if(new_type != info.unit_types.end() && un != units.end()) {
-		return unit(&(new_type->second),un->second);
+		unit new_unit(un->second);
+		new_unit.advance_to(&(new_type->second));
+		return new_unit;
 	} else {
 		throw game::game_error("Could not find the unit being advanced"
 		                             " to: " + advance_to);
@@ -1722,7 +1869,7 @@ unit get_advanced_unit(const game_data& info,
 }
 
 void advance_unit(const game_data& info,
-                  std::map<gamemap::location,unit>& units,
+                  units_map& units,
                   gamemap::location loc, const std::string& advance_to)
 {
 	if(units.count(loc) == 0) {
@@ -1734,8 +1881,8 @@ void advance_unit(const game_data& info,
 	game_events::fire("advance",loc);
 	statistics::advance_unit(new_unit);
 
-	preferences::encountered_units().insert(new_unit.type().id());
-	LOG_STREAM(info, config) << "Added '" << new_unit.type().id() << "' to encountered units\n";
+	preferences::encountered_units().insert(new_unit.id());
+	LOG_STREAM(info, config) << "Added '" << new_unit.id() << "' to encountered units\n";
 
 	units.erase(loc);
 	units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
@@ -1743,11 +1890,11 @@ void advance_unit(const game_data& info,
 	game_events::fire("post_advance",loc);
 }
 
-void check_victory(std::map<gamemap::location,unit>& units,
+void check_victory(units_map& units,
                    std::vector<team>& teams)
 {
 	std::vector<int> seen_leaders;
-	for(std::map<gamemap::location,unit>::const_iterator i = units.begin();
+	for(units_map::const_iterator i = units.begin();
 	    i != units.end(); ++i) {
 		if(i->second.can_recruit()) {
 			LOG_NG << "seen leader for side " << i->second.side() << "\n";
@@ -1818,11 +1965,9 @@ const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,c
 		for(int i = 0; i != 7; ++i) {
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if(itor != units.end() &&
-			   itor->second.type().illuminates() && itor->second.incapacitated() == false) {
-			   	if (itor->second.type().illuminates_filter().matches_filter(map.underlying_union_terrain(map[loc.x][loc.y]), status.get_time_of_day().lawful_bonus)) {
-					lighten = maximum<int>(itor->second.type().illuminates() , lighten);
-					darken = minimum<int>(itor->second.type().illuminates() , darken);
-				}
+			   itor->second.get_ability_bool("illuminates",itor->first) && itor->second.get_state("stoned")!="true") {
+				lighten = maximum<int>(itor->second.get_abilities("illuminates",itor->first).highest("value"), lighten);
+				darken = minimum<int>(itor->second.get_abilities("illuminates",itor->first).lowest("value"), darken);
 			}
 		}
 	}
@@ -1831,7 +1976,7 @@ const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,c
 }
 
 int combat_modifier(const gamestatus& status,
-			const std::map<gamemap::location,unit>& units,
+			const units_map& units,
 			const gamemap::location& loc,
 			 unit_type::ALIGNMENT alignment,
 			const gamemap& map)
@@ -1992,7 +2137,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 	const size_t team_num = u.side()-1;
 
-	const bool skirmisher = u.type().is_skirmisher();
+	const bool skirmisher = u.get_ability_bool("skirmisher",ui->first);
 
 	team& team = teams[team_num];
 	const bool check_shroud = should_clear_shroud && team.auto_shroud_updates() &&
@@ -2021,7 +2166,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 
-		const int mv = u.movement_cost(map,terrain);
+		const int mv = u.movement_cost(terrain);
 		if(discovered_unit || continue_move == false && seen_units.empty() == false ||
 		   mv > moves_left || enemy_unit != units.end() && team.is_enemy(enemy_unit->second.side())) {
 			break;
@@ -2064,7 +2209,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			if(adjacent[i] == ui->first)
 				continue;
 
-			const std::map<gamemap::location,unit>::const_iterator it = units.find(adjacent[i]);
+			const units_map::const_iterator it = units.find(adjacent[i]);
 			if(it != units.end() && teams[u.side()-1].is_enemy(it->second.side()) &&
 			   it->second.invisible(map.underlying_union_terrain(map[it->first.x][it->first.y]),
 			   status.get_time_of_day().lawful_bonus,it->first,units,teams)) {
@@ -2084,7 +2229,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		gamemap::location const &loc = steps.back();
 		if (units.count(loc) == 0)
 			break;
-		moves_left += u.movement_cost(map, map[loc.x][loc.y]);
+		moves_left += u.movement_cost(map[loc.x][loc.y]);
 		steps.pop_back();
 	}
 
@@ -2255,7 +2400,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 	const unit& u = u_it->second;
 	const team& current_team = teams[u.side()-1];
 
-	if(!u.can_attack())
+	if(!u.attacks_left() && u.movement_left()==0)
 		return false;
 
 	//units with goto commands that have already done their gotos this turn
@@ -2270,12 +2415,12 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 		if(map.on_board(locs[n])) {
 			const unit_map::const_iterator i = units.find(locs[n]);
 			if(i != units.end()) {
-				if(i->second.incapacitated() == false && current_team.is_enemy(i->second.side())) {
+				if(i->second.get_state("stoned")!="true" && current_team.is_enemy(i->second.side())) {
 					return true;
 				}
 			}
 
-			if(u.movement_cost(map,map[locs[n].x][locs[n].y]) <= u.movement_left()) {
+			if(u.movement_cost(map[locs[n].x][locs[n].y]) <= u.movement_left()) {
 				return true;
 			}
 		}
@@ -2340,9 +2485,9 @@ void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& sta
 
 bool backstab_check(const gamemap::location& attacker_loc,
 	const gamemap::location& defender_loc,
-	std::map<gamemap::location,unit>& units, std::vector<team>& teams)
+	units_map& units, std::vector<team>& teams)
 {
-	const std::map<gamemap::location,unit>::const_iterator defender =
+	const units_map::const_iterator defender =
 		units.find(defender_loc);
 	if(defender == units.end()) return false; // No defender
 
@@ -2355,10 +2500,10 @@ bool backstab_check(const gamemap::location& attacker_loc,
 	}
 	if(i >= 6) return false;  // Attack not from adjacent location
 
-	const std::map<gamemap::location,unit>::const_iterator opp =
+	const units_map::const_iterator opp =
 		units.find(adj[(i+3)%6]);
 	if(opp == units.end()) return false; // No opposite unit
-	if(opp->second.incapacitated()) return false;
+	if(opp->second.get_state("stoned") == "true") return false;
 	if(size_t(defender->second.side()-1) >= teams.size() ||
 		size_t(opp->second.side()-1) >= teams.size())
 		return true; // If sides aren't valid teams, then they are enemies

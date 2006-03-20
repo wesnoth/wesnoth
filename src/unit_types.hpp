@@ -25,6 +25,24 @@
 
 
 class unit_type;
+class unit;
+class game_data;
+class gamestatus;
+class team;
+typedef std::map<gamemap::location,unit> unit_map;
+class weapon_special_list
+{
+	public:
+		
+		bool empty() const;
+		
+		int highest(const std::string& key, int def=0) const;
+		int lowest(const std::string& key, int def=100) const;
+		
+		config::child_list cfgs;
+	private:
+		
+};
 //the 'attack type' is the type of attack, how many times it strikes,
 //and how much damage it does.
 class attack_type
@@ -32,30 +50,49 @@ class attack_type
 public:
 	enum RANGE { SHORT_RANGE, LONG_RANGE };
 
-	attack_type(const config& cfg, const unit_type& unit);
+	attack_type(const config& cfg, const std::string& id, const std::string& image_fighting);
 	const t_string& name() const;
 	const std::string& id() const;
 	const std::string& type() const;
-	const std::string& special() const;
 	const std::string& icon() const;
 	RANGE range_type() const;
 	const std::string& range() const;
 	int damage() const;
 	int num_attacks() const;
-        int num_swarm_attacks(int hp, int maxhp) const;
 	double attack_weight() const;
 	double defense_weight() const;
-
-	bool backstab() const;
-	bool slow() const;
+	
+	bool get_special_bool(const std::string& special) const;
+	weapon_special_list get_specials(const std::string& special) const;
+	std::vector<std::string> special_tooltips() const;
+	std::string weapon_specials() const;
+	void set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
+                              const game_data* gamedata, const unit_map* unitmap, 
+							  const gamemap* map, const gamestatus* game_status, 
+							  const std::vector<team>* teams,bool attacker);
 
 	//this function returns a random animation out of the possible
 	//animations for this attack. It will not return the same attack
 	//each time.
 	const std::pair<const unit_animation*,const unit_animation*> animation(bool hit,gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
-	bool matches_filter(const config& cfg) const;
-	bool apply_modification(const config& cfg,std::string* description);
+	bool matches_filter(const config& cfg,int set_) const;
+	bool apply_modification(const config& cfg,std::string* description,int set_);
+	
+	int movement_used() const;
+	
+	const config& get_cfg() const;
 private:
+	gamemap::location aloc_,dloc_;
+	bool attacker_;
+	const game_data* gamedata_;
+	const unit_map* unitmap_; 
+	const gamemap* map_;
+	const gamestatus* game_status_;
+	const std::vector<team>* teams_;
+	bool special_active(const config& cfg) const;
+	bool special_affects_opponent(const config& cfg) const;
+	bool special_affects_self(const config& cfg) const;
+	
 	struct attack_animation
 	{
 		typedef enum { HIT, MISS, HIT_OR_MISS } hit_type;
@@ -70,23 +107,19 @@ private:
 		hit_type hits;
 
 	};
+	config cfg_;
 	std::vector<attack_animation> animation_;
 	t_string description_;
 	std::string id_;
 	std::string type_;
-	std::string special_;
 	std::string icon_;
 	RANGE range_type_;
 	std::string range_;
-	int hexes_;
 	int damage_;
 	int num_attacks_;
 	double attack_weight_;
 	double defense_weight_;
 
-	//caches whether the unit can backstab and slow. This is important
-	//because the AI queries it alot.
-	bool backstab_, slow_;
 };
 
 class unit_movement_type;
@@ -111,6 +144,8 @@ public:
 	void set_parent(const unit_movement_type* parent);
 
 	bool is_flying() const;
+	const std::map<gamemap::TERRAIN,int>& movement_costs() const;
+	const std::map<gamemap::TERRAIN,int>& defense_mods() const;
 
 private:
 	const config cfg_;
@@ -141,23 +176,22 @@ private:
 class unit_type
 {
 public:
-	//this class assumes that the passed in references will remain valid
-	//for at least as long as the class instance
+	friend class unit;
 	unit_type(const config& cfg, const movement_type_map& movement_types,
 	          const race_map& races, const std::vector<config*>& traits);
 	unit_type(const unit_type& o);
 
 	~unit_type();
 
-        // adds an additional advancement path to a unit type
-        // this is used to implement the [advancefrom] tag
-        void add_advancement(const unit_type &advance_to,int experience);
+    // adds an additional advancement path to a unit type
+    // this is used to implement the [advancefrom] tag
+    void add_advancement(const unit_type &advance_to,int experience);
 
 
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
-        //info on the type of unit that the unit reanimates as
-        const std::string& undead_variation() const;
+    //info on the type of unit that the unit reanimates as
+    const std::string& undead_variation() const;
 
 	int num_traits() const;
 
@@ -182,7 +216,7 @@ public:
 	const std::string& get_hit_sound() const;
 	const std::string& die_sound() const;
 
-        const std::vector<Uint32>& flag_rgb() const;
+    const std::vector<Uint32>& flag_rgb() const;
 
 	int hitpoints() const;
 	std::vector<attack_type> attacks() const;
@@ -309,8 +343,8 @@ private:
 	bool hides_;
 	bool zoc_;
 
-        std::vector<std::string> advances_to_;
-        int experience_needed_;
+    std::vector<std::string> advances_to_;
+    int experience_needed_;
 	
 
 	ALIGNMENT alignment_;
@@ -331,7 +365,7 @@ private:
 
 	std::vector<movement_animation> movement_animations_;
 
-        std::vector<Uint32> flag_rgb_;
+    std::vector<Uint32> flag_rgb_;
 };
 
 struct game_data

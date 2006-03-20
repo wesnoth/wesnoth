@@ -255,7 +255,7 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 			   const config& level,
                CKey& key, display& gui, gamemap& map,
                std::vector<team>& teams, unsigned int team_num,
-               std::map<gamemap::location,unit>& units,
+               units_map& units,
                turn_info::floating_textbox& textbox,
                replay_network_sender& network_sender,
 			   bool skip_replay);

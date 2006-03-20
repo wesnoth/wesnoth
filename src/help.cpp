@@ -977,23 +977,13 @@ std::vector<topic> generate_weapon_special_topics()
 			std::vector<attack_type> attacks = type.attacks();
 			for (std::vector<attack_type>::const_iterator it = attacks.begin();
 				 it != attacks.end(); it++) {
-				std::string special = (*it).special();
+				std::string special = (*it).weapon_specials();
 
-				//some abilities like plague can be in the form ability(argument)
-				//make sure we cut off the argument
-				special.erase(std::find(special.begin(),special.end(),'('),special.end());
 				if (special != "") {
 					if (checked_specials.find(special) == checked_specials.end()) {
-						std::string lang_special = gettext(special.c_str());
+						std::string lang_special = special;
 						lang_special = utils::capitalize(lang_special);
-						std::string description
-							= string_table["weapon_special_" + special + "_description"];
-						const size_t colon_pos = description.find(':');
-						if (colon_pos != std::string::npos) {
-							// Remove the first colon and the following newline.
-							description.erase(0, colon_pos + 2);
-						}
-						topic t(lang_special, "weaponspecial_" + special, description);
+						topic t(lang_special, "weaponspecial_" + special, lang_special);
 						topics.push_back(t);
 						checked_specials.insert(special);
 					}
@@ -1172,10 +1162,10 @@ public:
 				// Show this attack's special, if it has any. Cross
 				// reference it to the section describing the
 				// special.
-				if (!attack_it->special().empty()) {
+				std::string lang_special = attack_it->weapon_specials();
+				if (!lang_special.empty()) {
 					const std::string ref_id = std::string("weaponspecial_")
-						+ (*attack_it).special();
-					std::string lang_special = gettext(attack_it->special().c_str());
+						+ lang_special;
 					attack_ss << "<ref>dst='" << escape(ref_id)
 					          << "' text='" << escape(lang_special) << "'</ref>";
 					row.push_back(std::make_pair(attack_ss.str(),
@@ -1408,6 +1398,9 @@ std::vector<topic> generate_terrains_topics()
 	return res;
 }
 
+
+// FIXME ?
+#if 0
 std::string generate_traits_text()
 {
 	// OK, this didn't go as well as I thought since the information
@@ -1439,6 +1432,7 @@ std::string generate_traits_text()
 	}
 	return ss.str();
 }
+#endif
 
 
 std::string generate_about_text()

@@ -109,7 +109,7 @@ static void a_star_explore_neighbours(gamemap::location const &dst, const double
 		if (locLocation.valid(int(parWidth), int(parHeight)) == false)
 			continue;
 		locNextNode = aStarGameWorld.getNodeFromLocation(locLocation, locIsCreated);
-		locCost = locCostFather + costCalculator->cost(locLocation, locCostFather, locLocation == dst);
+		locCost = locCostFather + costCalculator->cost(parCurNode->loc,locLocation, locCostFather, locLocation == dst);
 		if (locIsCreated) {
 			locNextNode->initNode(locLocation, dst, locCost, parCurNode, teleports);
 			if (locNextNode->g + locNextNode->h < stop_at) {
@@ -162,7 +162,7 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 
 	LOG_PF << "A* search: " << src << " -> " << dst << '\n';
 
-	if (costCalculator->cost(dst, 0, true) >= stop_at) {
+	if (costCalculator->cost(src,dst, 0, true) >= stop_at) {
 		LOG_PF << "aborted A* search because Start or Dest is invalid\n";
 		locRoute.move_left = int(costCalculator->getNoPathValue());
 		return locRoute;
@@ -218,7 +218,7 @@ label_AStarSearch_end:
 
 namespace {
 	gamemap::location find_vacant(const gamemap& map,
-		const std::map<gamemap::location,unit>& units,
+		const units_map& units,
 		const gamemap::location& loc, int depth,
 		VACANT_TILE_TYPE vacancy,
 		std::set<gamemap::location>& touched)
@@ -254,7 +254,7 @@ namespace {
 }
 
 gamemap::location find_vacant_tile(const gamemap& map,
-																	 const std::map<gamemap::location,unit>& units,
+																	 const units_map& units,
 																	 const gamemap::location& loc,
 																	 VACANT_TILE_TYPE vacancy)
 {
@@ -335,7 +335,7 @@ bool enemy_zoc(gamemap const &map, gamestatus const &status,
 	const team &current_team = teams[side-1];
 	get_adjacent_tiles(loc,locs);
 	for(int i = 0; i != 6; ++i) {
-		const std::map<gamemap::location,unit>::const_iterator it
+		const units_map::const_iterator it
 			= find_visible_unit(units,locs[i],
 			map,
 			status.get_time_of_day().lawful_bonus,
@@ -353,7 +353,7 @@ namespace {
 
 	void find_routes(const gamemap& map, const gamestatus& status,
 		const game_data& gamedata,
-		const std::map<gamemap::location,unit>& units,
+		const units_map& units,
 		const unit& u,
 		const gamemap::location& loc,
 		int move_left,
@@ -402,7 +402,7 @@ namespace {
 				continue;
 
 			//see if the tile is on top of an enemy unit
-			const std::map<gamemap::location,unit>::const_iterator unit_it =
+			const units_map::const_iterator unit_it =
 				find_visible_unit(units, locs[i], map,
 				                  status.get_time_of_day().lawful_bonus,
 				                  teams, viewing_team);
@@ -415,7 +415,7 @@ namespace {
 			const gamemap::TERRAIN terrain = map[currentloc.x][currentloc.y];
 
 			//find the movement cost of this type onto the terrain
-			const int move_cost = u.movement_cost(map,terrain);
+			const int move_cost = u.movement_cost(terrain);
 			if (move_cost <= move_left ||
 			    turns_left > 0 && move_cost <= u.total_movement()) {
 				int new_move_left = move_left - move_cost;
@@ -462,7 +462,7 @@ paths::paths(gamemap const &map, gamestatus const &status,
              bool ignore_zocs, bool allow_teleport, const team &viewing_team,
 			 int additional_turns)
 {
-	const std::map<gamemap::location,unit>::const_iterator i = units.find(loc);
+	const units_map::const_iterator i = units.find(loc);
 	if(i == units.end()) {
 		std::cerr << "unit not found\n";
 		return;
@@ -483,7 +483,7 @@ int route_turns_to_complete(unit const &u, gamemap const &map, paths::route cons
 	for(std::vector<gamemap::location>::const_iterator i = rt.steps.begin()+1;
 	    i != rt.steps.end(); ++i) {
 		wassert(map.on_board(*i));
-		const int move_cost = u.movement_cost(map, map[i->x][i->y]);
+		const int move_cost = u.movement_cost(map[i->x][i->y]);
 		movement -= move_cost;
 		if (movement < 0) {
 			++turns;
@@ -503,13 +503,12 @@ shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
                                                    gamestatus const &status)
 	: unit_(u), team_(t), units_(units), teams_(teams), map_(map),
 	  lawful_bonus_(status.get_time_of_day().lawful_bonus),
-	  unit_is_skirmisher_(unit_.type().is_skirmisher()),
 	  movement_left_(unit_.movement_left()),
 	  total_movement_(unit_.total_movement())
 {
 }
 
-double shortest_path_calculator::cost(const gamemap::location& loc, const double so_far, const bool isDst) const
+double shortest_path_calculator::cost(const gamemap::location& src,const gamemap::location& loc, const double so_far, const bool isDst) const
 {
 	wassert(map_.on_board(loc));
 
@@ -523,7 +522,7 @@ double shortest_path_calculator::cost(const gamemap::location& loc, const double
 	if (team_.shrouded(loc.x, loc.y))
 		return getNoPathValue();
 
-	int const base_cost = unit_.movement_cost(map_, map_[loc.x][loc.y]);
+	int const base_cost = unit_.movement_cost(map_[loc.x][loc.y]);
 	wassert(base_cost >= 1); // pathfinding heuristic: the cost must be at least 1
 	if (total_movement_ < base_cost)
 		return getNoPathValue();
@@ -535,7 +534,7 @@ double shortest_path_calculator::cost(const gamemap::location& loc, const double
 	if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()))
 		return getNoPathValue();
 
-	if (!isDst && !unit_is_skirmisher_) {
+	if (!isDst && !unit_.get_ability_bool("skirmisher",src)) {
 		gamemap::location adj[6];
 		get_adjacent_tiles(loc, adj);
 
