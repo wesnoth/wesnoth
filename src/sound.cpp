@@ -211,6 +211,7 @@ void play_music()
 		const std::string& filename = get_binary_file_location("music", current_track.name);
 
 		if(filename.empty()) {
+			ERR_AUDIO << "Could not open track '" << current_track.name << "'\n";
 			return;
 		}
 
@@ -220,9 +221,9 @@ void play_music()
 					  << Mix_GetError() << "\n";
 			return;
 		}
-
 		itor = music_cache.insert(std::pair<std::string,Mix_Music*>(current_track.name,music)).first;
 	}
+	LOG_AUDIO << "Playing track '" << current_track.name << "'\n";
 
 	if(Mix_PlayingMusic()) {
 		Mix_FadeOutMusic(500);
