@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-19 23:17+0100\n"
+"POT-Creation-Date: 2006-03-20 08:41+0100\n"
 "PO-Revision-Date: 2006-03-08 20:11+0200\n"
 "Last-Translator: Mikko Kraft <mikkokraft@gmail.com>\n"
 "Language-Team: none\n"
@@ -15,7 +15,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/about.cfg:2 data/campaigns/Two_Brothers.cfg:31
+#: data/about.cfg:2 data/campaigns/The_South_Guard.cfg:33
+#: data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
 #, fuzzy
 msgid "Artwork and Graphics Designers"
@@ -41,7 +42,8 @@ msgstr "Moninpelikartat"
 msgid "Packagers"
 msgstr "Pakkaajat"
 
-#: data/about.cfg:110 data/campaigns/Two_Brothers.cfg:36
+#: data/about.cfg:110 data/campaigns/The_South_Guard.cfg:39
+#: data/campaigns/Two_Brothers.cfg:36
 #: data/campaigns/Under_the_Burning_Suns.cfg:47
 msgid "Miscellaneous"
 msgstr "Muut"
@@ -1260,6 +1262,18 @@ msgstr ""
 msgid "mace"
 msgstr "helanuija"
 
+#: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
+#: data/campaigns/Under_the_Burning_Suns.cfg:28
+#, fuzzy
+msgid "Campaign Designer"
+msgstr "Kampanja"
+
+#: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
+#: data/campaigns/Under_the_Burning_Suns.cfg:32
+#, fuzzy
+msgid "Current Maintainer"
+msgstr "Tavoite tällä hetkellä:"
+
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:3
 msgid "Demilich"
 msgstr "Kuolleiden herra"
@@ -1286,18 +1300,6 @@ msgstr "kosketus"
 #: data/units/Undead_Necro_Lich.cfg:51
 msgid "chill tempest"
 msgstr "jäämyrsky"
-
-#: data/campaigns/Two_Brothers.cfg:22
-#: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
-msgid "Campaign Designer"
-msgstr "Kampanja"
-
-#: data/campaigns/Two_Brothers.cfg:27
-#: data/campaigns/Under_the_Burning_Suns.cfg:32
-#, fuzzy
-msgid "Current Maintainer"
-msgstr "Tavoite tällä hetkellä:"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:161
