@@ -25,7 +25,9 @@
  *	TODO:
  *	1. Add terrain and ToD filtering.
  *	2. Implement abilities and weapon specials.
- *	3. Fix the bugs.
+ *	3. Write backwards compatibility.
+ *	4. Fix bugs.
+ *	5. Goto step 4.
  *
  */
 
