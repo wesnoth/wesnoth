@@ -63,9 +63,9 @@ SVN trunk (1.1.1+svn):
      * increased HP of the Desert Sharpshooter from 45 to 47
  * graphics
    * added 'ellipse=blah' tag to units which will select the four images from 
-	the misc directory for use as an ellipse: misc/blah-bottom.png, 
-	misc/blah-top.png, misc/selected-blah-bottom.png, 
-	and misc/selected-blah-top.png 
+     the misc directory for use as an ellipse: misc/blah-bottom.png, 
+     misc/blah-top.png, misc/selected-blah-bottom.png, 
+     misc/selected-blah-top.png 
    * new encampment graphics
    * moved hero icon from the South Guard into main directories
    * new attack icons: animal fangs, axe, baneblade, battle axe, beak, 
@@ -215,10 +215,10 @@ SVN trunk (1.1.1+svn):
    * added [modify_turns] to [event]. Takes 'value' and 'add' as keys.
    * added new key to [side]: allow_player; if set to 'no' then this side will 
      not appear in the creation screen. Some maps with more sides than starting
-	 positions may be broken.
+     positions may be broken.
    * added [store_side] tag, which takes 'variable' and 'side' as keys, and 
      stores data to variable.gold, variable.income, variable.name, 
-	 and variable.team_name.
+     and variable.team_name.
    * added [label] inside [event]
    * added 'zoc' key to unit types
    * added 'set_hp' and 'set_total' to unit modifications
@@ -238,7 +238,7 @@ SVN trunk (1.1.1+svn):
    * really fix bug 3388, now really centering on image when clicking it
    * tab completion now completes to smallest substring, and show possible
      completions
-   * added whisper support for lobby and observers in game
+   * added whisper (/msg) support for lobby and observers in game
    * Added ignore list on MP
    * MP server only accepts nicks made from alphanumeric and underscore
      characters
