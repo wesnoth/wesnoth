@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-03-21 00:32+0100\n"
-"PO-Revision-Date: 2006-03-16 23:54+0100\n"
+"PO-Revision-Date: 2006-03-21 04:24+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -17,7 +17,6 @@ msgstr ""
 #: data/about.cfg:2 data/campaigns/The_South_Guard.cfg:33
 #: data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
-#, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "Grafik"
 
@@ -1265,18 +1264,17 @@ msgstr "spikklubba"
 
 #: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
 #: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
 msgid "Campaign Designer"
-msgstr "Kampanj"
+msgstr "Kampanjdesigner"
 
 #: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
 #: data/campaigns/Under_the_Burning_Suns.cfg:32
 msgid "Current Maintainer"
-msgstr ""
+msgstr "Huvudansvarig"
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:3
 msgid "Demilich"
-msgstr "Andebesvärjare"
+msgstr "Dödsbesvärjare"
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:22
 msgid ""
@@ -1286,7 +1284,7 @@ msgid ""
 "and feared by all alike."
 msgstr ""
 "Dessa magiker har tillbringat alltför mycket tid med förbjuden magi och "
-"mörkrets konster, vilket har börjat utkräva ett högt pris. Andebesvärjare "
+"mörkrets konster, vilket har börjat utkräva ett högt pris. Dödsbesvärjare "
 "förlorar långsamt sina kroppar och blir så småningom vandöda, och fruktas av "
 "alla."
 
@@ -4008,10 +4006,13 @@ msgid "Great War"
 msgstr "Det stora kriget"
 
 #: data/names.cfg:51
+#, fuzzy
 msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
+"Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
+"Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -4359,15 +4360,14 @@ msgid "4p - Siege Castles"
 msgstr "4s - Belägring"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well 2 vs 2 or FFA. There are approximately 45 villages. "
 "Recommended setting of 2 gold per village."
 msgstr ""
-"En 25x25-rutors karta för spel två mot två vid en flod med par av fästningar "
-"i motsatta hörn. Gruppera enligt 1 och 3 mot 2 och 4. Två guld per by "
-"rekommenderas."
+"En 40x30-rutors karta där styrkorna från 4 borgar stöter ihop där två floder "
+"löper samman. Lämplig för spel 2 mot 2 eller alla mot alla. Ungefär 45 byar. "
+"Två guld per by rekommenderas."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -4797,7 +4797,7 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
-"Hästburna trupper är i allmänhet motståndskraftiga mot hugg- och krossvapen, "
+"Beridna trupper är i allmänhet motståndskraftiga mot hugg- och krossvapen, "
 "men är sårbara mot stickvapen, såsom bågar och spjut."
 
 #: data/tips.cfg:13
@@ -5039,12 +5039,10 @@ msgid "female^Fighter"
 msgstr "Krigare"
 
 #: data/tutorial/units/Quintain.cfg:3
-#, fuzzy
 msgid "Quintain"
-msgstr "Berg"
+msgstr "Kvintan"
 
 #: data/tutorial/units/Quintain.cfg:13
-#, fuzzy
 msgid ""
 "Quintains are used to practice swordplay and jousting on.  It would be "
 "extremely unusual to be attacked by one."
@@ -5053,9 +5051,8 @@ msgstr ""
 "vara extremt ovanligt."
 
 #: data/tutorial/units/Quintain.cfg:20
-#, fuzzy
 msgid "flail"
-msgstr "svans"
+msgstr "stridsgissel"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -10977,61 +10974,3 @@ msgstr "Du kan se resultaten på "
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjälp oss att förbättra Wesnoth!"
-
-#, fuzzy
-#~ msgid "Artwork and Graphic Designers"
-#~ msgstr "Grafik"
-
-#, fuzzy
-#~ msgid ""
-#~ "It is one of the greater mercies of creation that a human soul is "
-#~ "immutable, and cannot be destroyed. However, the many things a "
-#~ "necromancer can do, despite this, are entirely horrifying.\n"
-#~ "\n"
-#~ "Trapped within a shroud of vile enchantments, a spirit likens unto the "
-#~ "wind in the sails of a ship. The contrivance that results from this "
-#~ "prison is an unfailing servant, which can be bound to whatever task their "
-#~ "master sees fit.\n"
-#~ "\n"
-#~ "Special Notes: Ghosts have very unusual resistances to damage, and move "
-#~ "quite slowly over open water."
-#~ msgstr ""
-#~ "Det är en av skapelsen större nåder att människans själ är oföränderlig "
-#~ "och oförstörbar. Detta bekymrar dock inte nekromantikern, som genom detta "
-#~ "inte ser sitt värv särdeles försvårat. Med sin själ fångad av ohyggliga "
-#~ "besvärjelser är spöket en pålitlig tjänare, som kan bindas att genomföra "
-#~ "de uppgifter mästaren vill ha utförda.\n"
-#~ "\n"
-#~ "Anmärkning: spöken är ovanligt motståndskraftiga, men rör sig långsamt "
-#~ "över öppet vatten."
-
-#, fuzzy
-#~ msgid "Ethereal Spectre"
-#~ msgstr "Ond ande"
-
-#, fuzzy
-#~ msgid "quintain"
-#~ msgstr "Berg"
-
-#, fuzzy
-#~ msgid "Cave Spider"
-#~ msgstr "Jättespindel"
-
-#, fuzzy
-#~ msgid ""
-#~ "Cave Spiders are roam deep under the earth, devouring many victims. They "
-#~ "can bite at close range, thereby poisoning their enemies, and also can "
-#~ "attack with a web at long range, slowing their foes down."
-#~ msgstr ""
-#~ "Jättespindlarna sägs leva i Knalgas djup och livnär sig på oförsiktiga "
-#~ "besökare. De som kommer för nära kan de förgifta med sitt bett, och de "
-#~ "kan sinka sina fiender genom att kasta nät över dem."
-
-#~ msgid ""
-#~ "Take control of this huge river delta in a team battle or in a free for "
-#~ "all."
-#~ msgstr ""
-#~ "Ta kontrollen över detta stora floddelta i lagspel eller alla mot alla."
-
-#~ msgid "Dummy"
-#~ msgstr "Kvintan"
