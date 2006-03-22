@@ -1,23 +1,24 @@
-# Norwegian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
+"Project-Id-Version: Battle for Wesnoth 1.1.1-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-03-20 08:42+0100\n"
-"PO-Revision-Date: 2004-11-15 22:20+0100\n"
-"Last-Translator: Erik <erikmesoy@yahoo.com>\n"
+"PO-Revision-Date: 2006-03-22 11:19+0100\n"
+"Last-Translator: Gauteamus <gauteamusATgmailDOTcom>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Norwegian Bokmal\n"
+"X-Poedit-Country: NORWAY\n"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
-msgstr ""
+msgstr "Endringene i kartet vil gå tapt. Fortsette?"
 
 #: src/editor/editor_dialogs.cpp:75 src/editor/editor_dialogs.cpp:196
 msgid "Create New Map"
@@ -39,7 +40,7 @@ msgstr "Generer nytt kart"
 
 #: src/editor/editor_dialogs.cpp:95
 msgid "Generate Random Map"
-msgstr "Tilfeldig kart"
+msgstr "Generer tilfeldig kart"
 
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
@@ -53,7 +54,7 @@ msgstr "Avbryt"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
-msgstr "Kartlaging feilet."
+msgstr "Kartlaging mislyktes."
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
 #: src/preferences_display.cpp:707
@@ -71,17 +72,16 @@ msgstr "Panoreringsfart:"
 
 #: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:57
 #: src/preferences_display.cpp:215
-#, fuzzy
 msgid "Toggle Full Screen"
-msgstr "Fullskjerm"
+msgstr "Fullskjerm av/på"
 
 #: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:218
 msgid "Show Grid"
-msgstr "Vis rutenett"
+msgstr "Vis nett"
 
 #: src/editor/editor_dialogs.cpp:297 src/preferences_display.cpp:226
 msgid "Video Mode"
-msgstr "Video-modus"
+msgstr "Videomodus"
 
 #: src/editor/editor_dialogs.cpp:300 src/preferences_display.cpp:228
 msgid "Hotkeys"
@@ -90,7 +90,7 @@ msgstr "Hurtigtaster"
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
 #: src/hotkeys.cpp:105
 msgid "Resize Map"
-msgstr "Endre kartets dimensjoner"
+msgstr "Omform kartet"
 
 #: src/editor/editor_dialogs.cpp:409 src/filechooser.cpp:53
 #: src/show_dialog.cpp:416 src/show_dialog.cpp:429
@@ -99,32 +99,31 @@ msgstr "OK"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
-msgstr "X-Akse"
+msgstr "X-akse"
 
 #: src/editor/editor_dialogs.cpp:493
 msgid "Y-Axis"
-msgstr "Y-Akse"
+msgstr "Y-akse"
 
 #: src/editor/editor_dialogs.cpp:494
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Speilvend (dette kan komme til å endre kartets dimensjoner):"
 
 #: src/hotkeys.cpp:47
-#, fuzzy
 msgid "Next Unit"
 msgstr "Neste enhet"
 
 #: src/hotkeys.cpp:48
 msgid "Previous Unit"
-msgstr ""
+msgstr "Forrige enhet"
 
 #: src/hotkeys.cpp:49
 msgid "Hold Position"
-msgstr ""
+msgstr "Fasthold posisjon"
 
 #: src/hotkeys.cpp:50
 msgid "End Unit Turn"
-msgstr "Avslutt enhetens tur"
+msgstr "Avslutt enhetens runde"
 
 #: src/hotkeys.cpp:51
 msgid "Leader"
@@ -136,23 +135,23 @@ msgstr "Ta tilbake"
 
 #: src/hotkeys.cpp:53
 msgid "Redo"
-msgstr "Gjør om"
+msgstr "Gjør igjen"
 
 #: src/hotkeys.cpp:54
 msgid "Zoom In"
-msgstr "Gå nærmere"
+msgstr "Panorer inn"
 
 #: src/hotkeys.cpp:55
 msgid "Zoom Out"
-msgstr "Gå ut"
+msgstr "Panorer ut"
 
 #: src/hotkeys.cpp:56
 msgid "Default Zoom"
-msgstr "Standardoppløsning"
+msgstr "Standard panorering"
 
 #: src/hotkeys.cpp:58
 msgid "Screenshot"
-msgstr ""
+msgstr "Skjermbilde"
 
 #: src/hotkeys.cpp:59
 msgid "Accelerated"
@@ -164,7 +163,7 @@ msgstr "Enhetsbeskrivelse"
 
 #: src/hotkeys.cpp:61
 msgid "Rename Unit"
-msgstr "Gi enheten nytt navn"
+msgstr "Navngi enheten"
 
 #: src/hotkeys.cpp:62
 msgid "Save Game"
@@ -192,7 +191,7 @@ msgstr "Avslutt runde"
 
 #: src/hotkeys.cpp:68
 msgid "Toggle Grid"
-msgstr "Rutenett"
+msgstr "Nett av/på"
 
 #: src/hotkeys.cpp:69
 msgid "Status Table"
@@ -200,11 +199,11 @@ msgstr "Statustabell"
 
 #: src/hotkeys.cpp:70
 msgid "Mute"
-msgstr "Stum"
+msgstr "Lydløs"
 
 #: src/hotkeys.cpp:71
 msgid "Speak"
-msgstr "Si"
+msgstr "Melding"
 
 #: src/hotkeys.cpp:72
 msgid "Create Unit (Debug!)"
@@ -220,7 +219,7 @@ msgstr "Scenariets mål"
 
 #: src/hotkeys.cpp:76
 msgid "Unit List"
-msgstr "Liste over enheter"
+msgstr "Enhetsliste"
 
 #: src/hotkeys.cpp:77
 msgid "Statistics"
@@ -235,9 +234,8 @@ msgid "Set Label"
 msgstr "Sett merkelapp"
 
 #: src/hotkeys.cpp:80
-#, fuzzy
 msgid "Clear Labels"
-msgstr "Sett merkelapp"
+msgstr "Slett merkelapper"
 
 #: src/hotkeys.cpp:81
 msgid "Show Enemy Moves"
@@ -245,51 +243,47 @@ msgstr "Vis fiendens rekkevidde"
 
 #: src/hotkeys.cpp:82
 msgid "Best Possible Enemy Moves"
-msgstr "Vis fiendens beste mulige rekkevidde"
+msgstr "Vis fiendens best mulige rekkevidde"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Play"
-msgstr "Spillere:"
+msgstr "Spill av"
 
 #: src/hotkeys.cpp:84
 msgid "Reset"
-msgstr ""
+msgstr "Tilbakestill"
 
 #: src/hotkeys.cpp:85
 msgid "Stop"
-msgstr ""
+msgstr "Stopp"
 
 #: src/hotkeys.cpp:86
-#, fuzzy
 msgid "Next Turn"
-msgstr "Neste enhet"
+msgstr "Neste runde"
 
 #: src/hotkeys.cpp:87
-#, fuzzy
 msgid "Next Side"
-msgstr "Neste enhet"
+msgstr "Neste side"
 
 #: src/hotkeys.cpp:88
 msgid "Shroud"
-msgstr ""
+msgstr "Skodde"
 
 #: src/hotkeys.cpp:89
 msgid "Fog"
-msgstr ""
+msgstr "Slagdis"
 
 #: src/hotkeys.cpp:90
 msgid "Skip animation"
-msgstr ""
+msgstr "Utelat animasjon"
 
 #: src/hotkeys.cpp:92
-#, fuzzy
 msgid "Set Terrain"
-msgstr "Tegn terreng"
+msgstr "Angi terreng"
 
 #: src/hotkeys.cpp:93
 msgid "Quit Editor"
-msgstr "Lukk kartbehandler"
+msgstr "Avslutt kartbehandler"
 
 #: src/hotkeys.cpp:94
 msgid "New Map"
@@ -309,15 +303,15 @@ msgstr "Lagre som"
 
 #: src/hotkeys.cpp:98
 msgid "Set Player's keep"
-msgstr ""
+msgstr "Angi spillerens vakttårn"
 
 #: src/hotkeys.cpp:99
 msgid "Flood Fill"
-msgstr "Fyll"
+msgstr "Fyll ut"
 
 #: src/hotkeys.cpp:100
 msgid "Fill Selection"
-msgstr "Fyll valgt"
+msgstr "Velg fyll"
 
 #: src/hotkeys.cpp:101
 msgid "Cut"
@@ -333,7 +327,7 @@ msgstr "Lim inn"
 
 #: src/hotkeys.cpp:104
 msgid "Revert from Disk"
-msgstr ""
+msgstr "Tilbakestill fra disk"
 
 #: src/hotkeys.cpp:106
 msgid "Flip Map"
@@ -349,15 +343,15 @@ msgstr "Tegn terreng"
 
 #: src/hotkeys.cpp:109
 msgid "Refresh Image Cache"
-msgstr ""
+msgstr "Oppfrisk bildebank"
 
 #: src/hotkeys.cpp:111
 msgid "Delay Shroud Updates"
-msgstr "Forsink skyggeoppdateringer"
+msgstr "Forsink skoddeoppdateringer"
 
 #: src/hotkeys.cpp:112
 msgid "Update Shroud Now"
-msgstr "Oppdater skygge nå"
+msgstr "Oppdater skodde"
 
 #: src/hotkeys.cpp:113
 msgid "Continue Move"
@@ -369,11 +363,11 @@ msgstr "Finn merkelapp eller enhet"
 
 #: src/hotkeys.cpp:115
 msgid "Speak to Ally"
-msgstr "Snakk med allierte"
+msgstr "Melding til allierte"
 
 #: src/hotkeys.cpp:116
 msgid "Speak to All"
-msgstr "Snakk med alle"
+msgstr "Melding til alle"
 
 #: src/hotkeys.cpp:117 src/show_dialog.cpp:577
 msgid "Help"
@@ -381,15 +375,15 @@ msgstr "Hjelp"
 
 #: src/hotkeys.cpp:118
 msgid "View Chat Log"
-msgstr "Se pratelogg"
+msgstr "Se meldingslogg"
 
 #: src/hotkeys.cpp:119
 msgid "Enter user command"
-msgstr ""
+msgstr "Oppgi brukerkommando"
 
 #: src/hotkeys.cpp:121
 msgid "Change the language"
-msgstr "Velg språk"
+msgstr "Endre språk"
 
 #: src/hotkeys.cpp:459 src/hotkeys.cpp:660
 msgid "Do you really want to quit?"
@@ -409,11 +403,11 @@ msgstr "Spillere:"
 
 #: src/mapgen_dialog.cpp:108
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Antall åser:"
 
 #: src/mapgen_dialog.cpp:109
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Maks utstrekning åser:"
 
 #: src/mapgen_dialog.cpp:110
 msgid "Villages:"
@@ -429,11 +423,11 @@ msgstr "Veier mellom slott"
 
 #: src/mapgen_dialog.cpp:274
 msgid "/1000 tiles"
-msgstr "/1000 ruter"
+msgstr "/1000 felter"
 
 #: src/mapgen_dialog.cpp:279
 msgid "Coastal"
-msgstr "Kyst"
+msgstr "Kystlinje"
 
 #: src/mapgen_dialog.cpp:279
 msgid "Inland"
@@ -453,21 +447,21 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
-"Video-modusen kunne ikke endres. Vindu-manageren din må settes til 16 bits "
-"per pixel for å kjøre dette spillet i vindumodus. Displayet må støtte "
-"1024x768x16 for å kunne kjøres med full skjerm."
+"Videomodusen kunne ikke endres. Vindumanageren din må settes til 16 bits per "
+"pixel for å kjøre dette spillet i vindumodus. Displayet må støtte "
+"1024x768x16 for å kunne kjøre spillet med full skjerm."
 
 #: src/preferences_display.cpp:216
 msgid "Accelerated Speed"
-msgstr "Akselerert"
+msgstr "Akselererte trekk"
 
 #: src/preferences_display.cpp:217
 msgid "Skip AI Moves"
-msgstr "Ignorer datamaskinens bevegelser"
+msgstr "Ignorer AI-trekk"
 
 #: src/preferences_display.cpp:219
 msgid "Show lobby joins"
-msgstr ""
+msgstr "Vis inntredende spillere"
 
 #: src/preferences_display.cpp:220
 msgid "Show Floating Labels"
@@ -479,11 +473,11 @@ msgstr "Dialogboks på ny runde"
 
 #: src/preferences_display.cpp:222
 msgid "Turn Bell"
-msgstr "Pling på ny runde"
+msgstr "Lydsignal ved ny runde"
 
 #: src/preferences_display.cpp:223
 msgid "Show Team Colors"
-msgstr "Vis lagenes farger"
+msgstr "Vis lagfarger"
 
 #: src/preferences_display.cpp:224
 msgid "Show Color Cursors"
@@ -491,32 +485,31 @@ msgstr "Vis fargede pekere"
 
 #: src/preferences_display.cpp:225
 msgid "Show Haloing Effects"
-msgstr "Vis halo-effekter"
+msgstr "Vis haloeffekter"
 
 #: src/preferences_display.cpp:227
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: src/preferences_display.cpp:229
 msgid "Adjust Gamma"
-msgstr "Endre gammanivå"
+msgstr "Tilpass gammanivå"
 
 #: src/preferences_display.cpp:230
 msgid "Reverse Time Graphics"
-msgstr ""
+msgstr "Speilvend sol/måne"
 
 #: src/preferences_display.cpp:232
-#, fuzzy
 msgid "Sound effects"
-msgstr "Vis halo-effekter"
+msgstr "Lydeffekter"
 
 #: src/preferences_display.cpp:233
 msgid "Music"
-msgstr ""
+msgstr "Musikk"
 
 #: src/preferences_display.cpp:234
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "Tidsur på meldingslogg"
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -524,7 +517,7 @@ msgstr "Musikkvolum:"
 
 #: src/preferences_display.cpp:235
 msgid "SFX Volume:"
-msgstr "Lydeffektvolum:"
+msgstr "Effektvolum:"
 
 #: src/preferences_display.cpp:236
 msgid "Gamma:"
@@ -532,19 +525,19 @@ msgstr "Gamma:"
 
 #: src/preferences_display.cpp:249
 msgid "Sound effects on/off"
-msgstr ""
+msgstr "Effekter av/på"
 
 #: src/preferences_display.cpp:253
 msgid "Change the sound effects volume"
-msgstr "Endre lydeffektsvolumet"
+msgstr "Endre effektvolum"
 
 #: src/preferences_display.cpp:256
 msgid "Music on/off"
-msgstr ""
+msgstr "Musikk av/på"
 
 #: src/preferences_display.cpp:260
 msgid "Change the music volume"
-msgstr "Endre musikkvolumet"
+msgstr "Endre musikkvolum"
 
 #: src/preferences_display.cpp:266
 msgid "Change the speed of scrolling around the map"
@@ -552,11 +545,11 @@ msgstr "Endre panoreringsfart"
 
 #: src/preferences_display.cpp:271 src/preferences_display.cpp:273
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "Angi antall viste meldingslinjer"
 
 #: src/preferences_display.cpp:276
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Legg tidsur til meldingslogg"
 
 #: src/preferences_display.cpp:279 src/preferences_display.cpp:284
 msgid "Change the brightness of the display"
@@ -564,36 +557,35 @@ msgstr "Endre lysstyrke"
 
 #: src/preferences_display.cpp:287
 msgid "Choose whether the game should run full screen or in a window"
-msgstr "Velge om spillet skal kjøres med full skjerm eller i vindu"
+msgstr "Velg om spillet skal kjøres med full skjerm eller i vindu"
 
 #: src/preferences_display.cpp:290
 msgid "Make units move and fight faster"
-msgstr "Enheter beveger og slåss raskere"
+msgstr "Enheter sloss og beveger seg raskere"
 
 #: src/preferences_display.cpp:293
 msgid "Do not animate AI units moving"
-msgstr "Ikke vis at datastyrte enheter beveger seg"
+msgstr "Ikke animer AI-styrte enheter"
 
 #: src/preferences_display.cpp:296
 msgid "Overlay a grid onto the map"
-msgstr "Vis et rutenett på kartet"
+msgstr "Legg et nett over kartet"
 
 #: src/preferences_display.cpp:299
 msgid "Show messages about players joining the multiplayer lobby"
-msgstr ""
+msgstr "Vis meldinger om inntredende spillere i lobbyen"
 
 #: src/preferences_display.cpp:302
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr "Vis tall over en truffet enhet for å vise påført skade"
+msgstr "Vis tekst over en truffet enhet for å vise påført skade"
 
 #: src/preferences_display.cpp:304
 msgid "Change the resolution the game runs at"
-msgstr "Endre oppløsningsgraden til spillet"
+msgstr "Endre oppløsningsgraden spillet kjører på"
 
 #: src/preferences_display.cpp:305
-#, fuzzy
 msgid "Change the theme the game runs with"
-msgstr "Endre oppløsningsgraden til spillet"
+msgstr "Endre temaet spillet kjører med"
 
 #: src/preferences_display.cpp:308
 msgid "Display a dialog at the beginning of your turn"
@@ -601,68 +593,66 @@ msgstr "Vis dialogboks hver gang det blir din tur"
 
 #: src/preferences_display.cpp:311
 msgid "Play a bell sound at the beginning of your turn"
-msgstr "Pling hver gang det blir din tur"
+msgstr "Gi lydsignal hver gang det blir din tur"
 
 #: src/preferences_display.cpp:314
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
-msgstr "Vis farget oval rundt hver enhet for å vise hvilken side den tilhører"
+msgstr ""
+"Vis lagfarget oval rundt hver enhet for å vise hvilken side den tilhører"
 
 #: src/preferences_display.cpp:317
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
+msgstr "Velg om solen skal bevege seg fra venstre mot høyre eller vice versa"
 
 #: src/preferences_display.cpp:320
 msgid "Use colored mouse cursors (may be slower)"
-msgstr "Bruk fargede musepekere (kan sakke spillet)"
+msgstr "Bruk fargede musepekere (kan saktne spillet)"
 
 #: src/preferences_display.cpp:323
 msgid "Use graphical special effects (may be slower)"
-msgstr "Bruk spesielle grafikk-effekter (kan sakke spillet)"
+msgstr "Bruk grafiske spesialeffekter (kan saktne spillet)"
 
 #: src/preferences_display.cpp:325
 msgid "View and configure keyboard shortcuts"
-msgstr "Se og endre snarveier på tastaturet"
+msgstr "Se over og/eller endre hurtigtaster"
 
 #: src/preferences_display.cpp:475
 msgid "Chat Lines: "
-msgstr ""
+msgstr "Meldingslinjer: "
 
 #: src/preferences_display.cpp:527
-#, fuzzy
 msgid "yes"
-msgstr "Ja"
+msgstr "ja"
 
 #: src/preferences_display.cpp:529
-#, fuzzy
 msgid "no"
-msgstr "Ta tilbake"
+msgstr "nei"
 
 #: src/preferences_display.cpp:595
 msgid "Prefs section^General"
-msgstr "Allmenne innstillinger"
+msgstr "Generelt"
 
 #: src/preferences_display.cpp:596
 msgid "Prefs section^Display"
-msgstr "Skjerminnstillinger"
+msgstr "Skjermvisning"
 
 #: src/preferences_display.cpp:597
 msgid "Prefs section^Sound"
-msgstr "Lydinnstillinger"
+msgstr "Lydeffekter"
 
 #: src/preferences_display.cpp:598
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "Skjerminnstillinger"
+msgstr "Gruppespill"
 
 #: src/preferences_display.cpp:599
 msgid "Advanced section^Advanced"
-msgstr ""
+msgstr "Advansert"
 
 #: src/preferences_display.cpp:650
 msgid "There are no alternative video modes available"
-msgstr "Det finnes ingen alternative video-moduser tilgjengelig"
+msgstr "Ingen tilgjengelige alternativer for videomodus"
 
 #: src/preferences_display.cpp:679
 msgid "Choose Resolution"
@@ -670,20 +660,19 @@ msgstr "Velg oppløsning"
 
 #: src/preferences_display.cpp:712
 msgid "Hotkey Settings"
-msgstr "Innstillinger for Hurtigtaster"
+msgstr "Innstillinger for hurtigtaster"
 
 #: src/preferences_display.cpp:716 src/preferences_display.cpp:769
-#, fuzzy
 msgid "Press desired Hotkey"
 msgstr "Trykk ønsket hurtigtast"
 
 #: src/preferences_display.cpp:734
 msgid "Action"
-msgstr ""
+msgstr "Handling"
 
 #: src/preferences_display.cpp:734
 msgid "Binding"
-msgstr ""
+msgstr "Binding"
 
 #: src/preferences_display.cpp:746
 msgid "Change Hotkey"
@@ -694,21 +683,20 @@ msgid "Save Hotkeys"
 msgstr "Lagre hurtigtaster"
 
 #: src/preferences_display.cpp:796
-#, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "Denne hurtigtasten er allerede i bruk."
 
 #: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Lagret temainnstilling: "
 
 #: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "Nytt tema vil tre i effekt ved neste nye eller lastede spill."
 
 #: src/preferences_display.cpp:839
 msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
+msgstr "Ingen kjente tema. Prøv å endre fra et eksisterende spill."
 
 #: src/show_dialog.cpp:314
 msgid "Error"
@@ -736,7 +724,7 @@ msgstr "Slett fil"
 
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
-msgstr "Filsletting slo feil."
+msgstr "Filsletting mislykket."
 
 #~ msgid "Ok"
 #~ msgstr "OK"
@@ -745,4 +733,4 @@ msgstr "Filsletting slo feil."
 #~ msgstr "Full skjerm"
 
 #~ msgid "Set Player Start Position"
-#~ msgstr "Sett startposisjon for spiller"
+#~ msgstr "Angi startposisjon for spiller"
