@@ -67,10 +67,10 @@ class unit_ability_list
 		
 		bool empty() const;
 		
-		int highest(const std::string& key, int def=0) const;
-		int lowest(const std::string& key, int def=100) const;
+		std::pair<int,gamemap::location> highest(const std::string& key, int def=0) const;
+		std::pair<int,gamemap::location> lowest(const std::string& key, int def=100) const;
 		
-		config::child_list cfgs;
+		std::vector<std::pair<config*,gamemap::location> > cfgs;
 	private:
 		
 };
@@ -158,7 +158,7 @@ class unit
 		bool has_moved() const;
 		bool has_goto() const;
 		int emits_zoc() const;
-		bool matches_filter(const config& cfg,const gamemap::location& loc) const;
+		bool matches_filter(const config& cfg,const gamemap::location& loc,bool use_flat_tod=false) const;
 		void add_overlay(const std::string& overlay);
 		void remove_overlay(const std::string& overlay);
 		const std::vector<std::string>& overlays() const;
@@ -274,9 +274,9 @@ class unit
 		
 	private:
 		
-		bool ability_active(const config& cfg,const gamemap::location& loc) const;
-		bool ability_affects_adjacent(const config& cfg,int dir,const gamemap::location& loc) const;
-		bool ability_affects_self(const config& cfg,const gamemap::location& loc) const;
+		bool ability_active(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
+		bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const;
+		bool ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
 		
 		config cfg_;
 		

@@ -700,7 +700,7 @@ int unit::emits_zoc() const
 {
 	return emit_zoc_;
 }
-bool unit::matches_filter(const config& cfg,const gamemap::location& loc) const
+bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool use_flat_tod) const
 {
 	const std::string& description = cfg["description"];
 	const std::string& speaker = cfg["speaker"];
@@ -726,7 +726,18 @@ bool unit::matches_filter(const config& cfg,const gamemap::location& loc) const
 	if(speaker.empty() == false && speaker != this->underlying_description()) {
 		return false;
 	}
-
+	
+	const config* filter_location = cfg.child("filter_location");
+	if(filter_location) {
+		wassert(map_ != NULL);
+		wassert(gamestatus_ != NULL);
+		wassert(units_ != NULL);
+		bool res = map_->terrain_matches_filter(loc,*filter_location,*gamestatus_,*units_,use_flat_tod);
+		if(res == false) {
+			return false;
+		}
+	}
+	
 	const std::string& this_type = id();
 
 	//the type could be a comma-seperated list of types
@@ -1968,11 +1979,18 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
  * 	[filter] // SUF
  * 		...
  * 	[/filter]
- * 	
+ * 	[filter_location]
+ * 		terrain=f
+ * 		tod=lawful
+ * 	[/filter_location]
  * 	[filter_self] // SUF
  * 		...
  * 	[/filter_self]
  * 	[filter_adjacent] // SUF
+ * 		adjacent=n,ne,nw
+ * 		...
+ * 	[/filter_adjacent]
+ * 	[filter_adjacent_location]
  * 		adjacent=n,ne,nw
  * 		...
  * 	[/filter_adjacent]
@@ -2003,7 +2021,7 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 	if(abilities) {
 		const config::child_list& list = abilities->get_children(ability);
 		for(config::child_list::const_iterator i = list.begin(); i != list.end(); ++i) {
-			if(ability_active(**i,loc) && ability_affects_self(**i,loc)) {
+			if(ability_active(ability,**i,loc) && ability_affects_self(ability,**i,loc)) {
 				return true;
 			}
 		}
@@ -2016,13 +2034,14 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
 		if(it != units_->end() && 
-					((int)it->second.side() == side() || !(*teams_)[side()-1].is_enemy(it->second.side())) &&
 					it->second.get_state("stoned") != "true") {
 			const config* adj_abilities = it->second.cfg_.child("abilities");
 			if(adj_abilities) {
 				const config::child_list& list = adj_abilities->get_children(ability);
 				for(config::child_list::const_iterator j = list.begin(); j != list.end(); ++j) {
-					if(ability_active(**j,loc) && ability_affects_adjacent(**j,i,loc)) {
+					if(((**j)["affect_allies"]=="yes" && !(*teams_)[side()-1].is_enemy(it->second.side())) 
+						|| ((**j)["affect_enemies"]=="yes" && (*teams_)[side()-1].is_enemy(it->second.side())) &&
+							ability_active(ability,**j,loc) && ability_affects_adjacent(ability,**j,i,loc)) {
 						return true;
 					}
 				}
@@ -2041,8 +2060,8 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 	if(abilities) {
 		const config::child_list& list = abilities->get_children(ability);
 		for(config::child_list::const_iterator i = list.begin(); i != list.end(); ++i) {
-			if(ability_active(**i,loc) && ability_affects_self(**i,loc)) {
-				res.cfgs.push_back(*i);
+			if(ability_active(ability,**i,loc) && ability_affects_self(ability,**i,loc)) {
+				res.cfgs.push_back(std::pair<config*,gamemap::location>(*i,loc));
 			}
 		}
 	}
@@ -2053,14 +2072,15 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
 		if(it != units_->end() && 
-		((int)it->second.side() == side() || !(*teams_)[side()-1].is_enemy(it->second.side())) &&
 		it->second.get_state("stoned") != "true") {
 			const config* adj_abilities = it->second.cfg_.child("abilities");
 			if(adj_abilities) {
 				const config::child_list& list = adj_abilities->get_children(ability);
 				for(config::child_list::const_iterator j = list.begin(); j != list.end(); ++j) {
-					if(ability_active(**j,loc) && ability_affects_adjacent(**j,i,loc)) {
-						res.cfgs.push_back(*j);
+					if(((**j)["affect_allies"]=="yes" && !(*teams_)[side()-1].is_enemy(it->second.side())) 
+						|| ((**j)["affect_enemies"]=="yes" && (*teams_)[side()-1].is_enemy(it->second.side())) &&
+						ability_active(ability,**j,loc) && ability_affects_adjacent(ability,**j,i,loc)) {
+						res.cfgs.push_back(std::pair<config*,gamemap::location>(*j,loc));
 					}
 				}
 			}
@@ -2097,7 +2117,7 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 		const config::child_map& list_map = abilities->all_children();
 		for(config::child_map::const_iterator i = list_map.begin(); i != list_map.end(); ++i) {
 			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-				if(ability_active(**j,loc)) {
+				if(ability_active(i->first,**j,loc)) {
 					if((**j)["name"] != "") {
 						res.push_back((**j)["name"].str());
 						res.push_back((**j)["description"].str());
@@ -2118,37 +2138,39 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
 		if(it != units_->end() && 
-		((int)it->second.side() == side() || !(*teams_)[side()-1].is_enemy(it->second.side())) &&
 		it->second.get_state("stoned") != "true") {
 			const config* adj_abilities = it->second.cfg_.child("abilities");
 			if(adj_abilities) {
 				const config::child_map& list_map = adj_abilities->all_children();
 				for(config::child_map::const_iterator k = list_map.begin(); k != list_map.end(); ++k) {
 					for(config::child_list::const_iterator j = k->second.begin(); j != k->second.end(); ++j) {
-						const config* adj_desc = (*j)->child("adjacent_description");
-						if(ability_affects_adjacent(**j,i,loc)) {
-							if(adj_desc) {
-								if(ability_active(**j,loc)) {
-									if((**j)["name"] != "") {
-										res.push_back((**j)["name"].str());
-										res.push_back((**j)["description"].str());
+					if(((**j)["affect_allies"]=="yes" && !(*teams_)[side()-1].is_enemy(it->second.side())) 
+						|| ((**j)["affect_enemies"]=="yes" && (*teams_)[side()-1].is_enemy(it->second.side()))) {
+							const config* adj_desc = (*j)->child("adjacent_description");
+							if(ability_affects_adjacent(k->first,**j,i,loc)) {
+								if(adj_desc) {
+									if(ability_active(k->first,**j,loc)) {
+										if((**j)["name"] != "") {
+											res.push_back((**j)["name"].str());
+											res.push_back((**j)["description"].str());
+										}
+									} else {
+										if((**j)["name_inactive"] != "") {
+											res.push_back((**j)["name_inactive"].str());
+											res.push_back((**j)["description_inactive"].str());
+										}
 									}
 								} else {
-									if((**j)["name_inactive"] != "") {
-										res.push_back((**j)["name_inactive"].str());
-										res.push_back((**j)["description_inactive"].str());
-									}
-								}
-							} else {
-								if(ability_active(**j,loc)) {
-									if((*adj_desc)["name"] != "") {
-										res.push_back((*adj_desc)["name"].str());
-										res.push_back((*adj_desc)["description"].str());
-									}
-								} else {
-									if((*adj_desc)["name_inactive"] != "") {
-										res.push_back((*adj_desc)["name_inactive"].str());
-										res.push_back((*adj_desc)["description_inacive"].str());
+									if(ability_active(k->first,**j,loc)) {
+										if((*adj_desc)["name"] != "") {
+											res.push_back((*adj_desc)["name"].str());
+											res.push_back((*adj_desc)["description"].str());
+										}
+									} else {
+										if((*adj_desc)["name_inactive"] != "") {
+											res.push_back((*adj_desc)["name_inactive"].str());
+											res.push_back((*adj_desc)["description_inacive"].str());
+										}
 									}
 								}
 							}
@@ -2164,10 +2186,10 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 }
 
 
-bool unit::ability_active(const config& cfg,const gamemap::location& loc) const
+bool unit::ability_active(const std::string& ability,const config& cfg,const gamemap::location& loc) const
 {
 	if(cfg.child("filter_self") != NULL) {
-		if(!matches_filter(*cfg.child("filter_self"),loc)) {
+		if(!matches_filter(*cfg.child("filter_self"),loc,ability=="illuminates")) {
 			return false;
 		}
 	}
@@ -2201,7 +2223,39 @@ bool unit::ability_active(const config& cfg,const gamemap::location& loc) const
 					if(unit == units_->end()) {
 						return false;
 					}
-					if(!unit->second.matches_filter(**i,unit->first)) {
+					if(!unit->second.matches_filter(**i,unit->first,ability=="illuminates")) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+	index=-1;
+	const config::child_list& adj_filt_loc = cfg.get_children("filter_adjacent_location");
+	for(config::child_list::const_iterator i = adj_filt_loc.begin(); i != adj_filt_loc.end(); ++i) {
+		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
+		if(dirs.size()==1 && dirs.front()=="") {	
+		} else {
+			for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
+				if(*j=="n") {
+					index=0;
+				} else if(*j=="ne") {
+					index=1;
+				} else if(*j=="se") {
+					index=2;
+				} else if(*j=="s") {
+					index=3;
+				} else if(*j=="sw") {
+					index=4;
+				} else if(*j=="nw") {
+					index=5;
+				} else {
+					index=-1;
+				}
+				if(index != -1) {
+					wassert(map_ != NULL);
+					wassert(gamestatus_ != NULL);
+					if(!map_->terrain_matches_filter(adjacent[index],**i,*gamestatus_,*units_,ability=="illuminates")) {
 						return false;
 					}
 				}
@@ -2210,7 +2264,7 @@ bool unit::ability_active(const config& cfg,const gamemap::location& loc) const
 	}
 	return true;
 }
-bool unit::ability_affects_adjacent(const config& cfg,int dir,const gamemap::location& loc) const
+bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const
 {
 //	wassert("not done" == "done");
 	wassert(dir >=0 && dir <= 5);
@@ -2221,7 +2275,7 @@ bool unit::ability_affects_adjacent(const config& cfg,int dir,const gamemap::loc
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		if(std::find(dirs.begin(),dirs.end(),adjacent_names[dir]) != dirs.end()) {
 			if((*i)->child("filter") != NULL) {
-				if(matches_filter(*(*i)->child("filter"),loc)) {
+				if(matches_filter(*(*i)->child("filter"),loc,ability=="illuminates")) {
 					passed = true;
 				} else {
 					return false;
@@ -2233,7 +2287,7 @@ bool unit::ability_affects_adjacent(const config& cfg,int dir,const gamemap::loc
 	}
 	return passed;
 }
-bool unit::ability_affects_self(const config& cfg,const gamemap::location& loc) const
+bool unit::ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const
 {
 	if(cfg.child("filter")==NULL) {
 		if(cfg["affect_self"] == "yes") {
@@ -2243,7 +2297,7 @@ bool unit::ability_affects_self(const config& cfg,const gamemap::location& loc) 
 		}
 	}
 	if(cfg["affect_self"] == "yes") {
-		return matches_filter(*cfg.child("filter"),loc);
+		return matches_filter(*cfg.child("filter"),loc,ability=="illuminates");
 	} else {
 		return false;
 	}
@@ -2306,31 +2360,51 @@ bool unit_ability_list::empty() const
 	return cfgs.empty();
 }
 
-int unit_ability_list::highest(const std::string& key, int def) const
+std::pair<int,gamemap::location> unit_ability_list::highest(const std::string& key, int def) const
 {
+	gamemap::location best_loc;
+	int abs_max = def;
 	int flat = def;
 	int stack = 0;
-	for(config::child_list::const_iterator i = cfgs.begin(); i != cfgs.end(); ++i) {
-		if((**i)["cumulative"]=="yes") {
-			stack += lexical_cast_default<int>((**i)[key]);
+	for(std::vector<std::pair<config*,gamemap::location> >::const_iterator i = cfgs.begin(); i != cfgs.end(); ++i) {
+		if((*i->first)["cumulative"]=="yes") {
+			stack += lexical_cast_default<int>((*i->first)[key]);
+			if(lexical_cast_default<int>((*i->first)[key]) > abs_max) {
+				abs_max = lexical_cast_default<int>((*i->first)[key]);
+				best_loc = i->second;
+			}
 		} else {
-			flat = maximum<int>(flat,lexical_cast_default<int>((**i)[key]));
+			flat = maximum<int>(flat,lexical_cast_default<int>((*i->first)[key]));
+			if(lexical_cast_default<int>((*i->first)[key]) > abs_max) {
+				abs_max = lexical_cast_default<int>((*i->first)[key]);
+				best_loc = i->second;
+			}
 		}
 	}
-	return flat + stack;
+	return std::pair<int,gamemap::location>(flat + stack,best_loc);
 }
-int unit_ability_list::lowest(const std::string& key, int def) const
+std::pair<int,gamemap::location> unit_ability_list::lowest(const std::string& key, int def) const
 {
+	gamemap::location best_loc;
+	int abs_max = def;
 	int flat = def;
 	int stack = 0;
-	for(config::child_list::const_iterator i = cfgs.begin(); i != cfgs.end(); ++i) {
-		if((**i)["cumulative"]=="yes") {
-			stack += lexical_cast_default<int>((**i)[key]);
+	for(std::vector<std::pair<config*,gamemap::location> >::const_iterator i = cfgs.begin(); i != cfgs.end(); ++i) {
+		if((*i->first)["cumulative"]=="yes") {
+			stack += lexical_cast_default<int>((*i->first)[key]);
+			if(lexical_cast_default<int>((*i->first)[key]) < abs_max) {
+				abs_max = lexical_cast_default<int>((*i->first)[key]);
+				best_loc = i->second;
+			}
 		} else {
-			flat = minimum<int>(flat,lexical_cast_default<int>((**i)[key]));
+			flat = minimum<int>(flat,lexical_cast_default<int>((*i->first)[key]));
+			if(lexical_cast_default<int>((*i->first)[key]) < abs_max) {
+				abs_max = lexical_cast_default<int>((*i->first)[key]);
+				best_loc = i->second;
+			}
 		}
 	}
-	return flat + stack;
+	return std::pair<int,gamemap::location>(flat + stack,best_loc);
 }
 
 
@@ -2378,6 +2452,7 @@ int unit_ability_list::lowest(const std::string& key, int def) const
  * 	[filter_attacker] // SUF
  * 	[filter_defender] // SUF
  * 	[filter_adjacent] // SAUF
+ * 	[filter_adjacent_location] // SAUF + locs
  * [/swarm]
  * [/special]
  * 
@@ -2545,6 +2620,38 @@ bool attack_type::special_active(const config& cfg) const
 						return false;
 					}
 					if(!unit->second.matches_filter(**i,unit->first)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
+	index=-1;
+	const config::child_list& adj_filt_loc = cfg.get_children("filter_adjacent_location");
+	for(config::child_list::const_iterator i = adj_filt_loc.begin(); i != adj_filt_loc.end(); ++i) {
+		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
+		if(dirs.size()==1 && dirs.front()=="") {	
+		} else {
+			for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
+				if(*j=="n") {
+					index=0;
+				} else if(*j=="ne") {
+					index=1;
+				} else if(*j=="se") {
+					index=2;
+				} else if(*j=="s") {
+					index=3;
+				} else if(*j=="sw") {
+					index=4;
+				} else if(*j=="nw") {
+					index=5;
+				} else {
+					index=-1;
+				}
+				if(index != -1) {
+					wassert(map_ != NULL);
+					wassert(game_status_ != NULL);
+					if(!map_->terrain_matches_filter(adjacent[index],**i,*game_status_,*unitmap_)) {
 						return false;
 					}
 				}
