@@ -201,12 +201,20 @@ void validate_recruit_unit()
 gamemap::location under_leadership(const units_map& units,
                                    const gamemap::location& loc, int* bonus)
 {
-	gamemap::location adjacent[6];
-	get_adjacent_tiles(loc,adjacent);
+	
 	const unit_map::const_iterator un = units.find(loc);
 	if(un == units.end()) {
 		return gamemap::location::null_location;
 	}
+	int best_bonus = un->second.get_abilities("leadership",loc).highest("value").first;
+	if(bonus) {
+		*bonus = best_bonus;
+	}
+	return un->second.get_abilities("leadership",loc).highest("value").second;
+	
+	/*
+	gamemap::location adjacent[6];
+	get_adjacent_tiles(loc,adjacent);
 
 	const int side = un->second.side();
 	const int level = un->second.level();
@@ -230,6 +238,7 @@ gamemap::location under_leadership(const units_map& units,
 		*bonus = current_bonus;
 	}
 	return best_loc;
+	*/
 }
 
 double pr_atleast(int m, double p, int n, int d)
@@ -324,8 +333,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	unit_ability_list steadfast_abilities = d->second.get_abilities("steadfast",d->first);
 	bool steadfast = steadfast_abilities.empty() == false;
-	const int steadfast_bonus = steadfast_abilities.highest("bonus");
-	const int steadfast_max = steadfast_abilities.lowest("max_bonus");
+	const int steadfast_bonus = steadfast_abilities.highest("bonus").first;
+	const int steadfast_max = steadfast_abilities.lowest("max_bonus").first;
 
 	static const std::string to_the_death_string("berserk");
 	res.rounds = attack.get_specials(to_the_death_string).highest("rounds");
@@ -872,14 +881,6 @@ void attack(display& gui, const gamemap& map,
 	dat.add_child("second");
 	(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
 	(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
-	gamemap::TERRAIN att_terrain = map[attacker.x][attacker.y];
-	std::string terrain_letter("");
-	terrain_letter += att_terrain;
-	(*(dat.child("first")))["terrain"]=terrain_letter;
-	gamemap::TERRAIN dtt_terrain = map[defender.x][defender.y];
-	terrain_letter = "";
-	terrain_letter += dtt_terrain;
-	(*(dat.child("second")))["terrain"]=terrain_letter;
 	game_events::fire("attack",attacker,defender,dat);
 	//the event could have killed either the attacker or
 	//defender, so we have to make sure they still exist
@@ -961,14 +962,6 @@ void attack(display& gui, const gamemap& map,
 				dat.add_child("second");
 				(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
 				(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
-				gamemap::TERRAIN att_terrain = map[attacker.x][attacker.y];
-				std::string terrain_letter("");
-				terrain_letter += att_terrain;
-				(*(dat.child("first")))["terrain"]=terrain_letter;
-				gamemap::TERRAIN dtt_terrain = map[defender.x][defender.y];
-				terrain_letter = "";
-				terrain_letter += dtt_terrain;
-				(*(dat.child("second")))["terrain"]=terrain_letter;
 				game_events::fire("attacker_hits",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
@@ -994,14 +987,6 @@ void attack(display& gui, const gamemap& map,
 				dat.add_child("second");
 				(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
 				(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
-				gamemap::TERRAIN att_terrain = map[attacker.x][attacker.y];
-				std::string terrain_letter("");
-				terrain_letter += att_terrain;
-				(*(dat.child("first")))["terrain"]=terrain_letter;
-				gamemap::TERRAIN dtt_terrain = map[defender.x][defender.y];
-				terrain_letter = "";
-				terrain_letter += dtt_terrain;
-				(*(dat.child("second")))["terrain"]=terrain_letter;
 				game_events::fire("attacker_misses",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
@@ -1225,14 +1210,6 @@ void attack(display& gui, const gamemap& map,
 				dat.add_child("second");
 				(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
 				(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
-				gamemap::TERRAIN att_terrain = map[attacker.x][attacker.y];
-				std::string terrain_letter("");
-				terrain_letter += att_terrain;
-				(*(dat.child("first")))["terrain"]=terrain_letter;
-				gamemap::TERRAIN dtt_terrain = map[defender.x][defender.y];
-				terrain_letter = "";
-				terrain_letter += dtt_terrain;
-				(*(dat.child("second")))["terrain"]=terrain_letter;
 				game_events::fire("defender_hits",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
@@ -1256,14 +1233,6 @@ void attack(display& gui, const gamemap& map,
 				dat.add_child("second");
 				(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
 				(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
-				gamemap::TERRAIN att_terrain = map[attacker.x][attacker.y];
-				std::string terrain_letter("");
-				terrain_letter += att_terrain;
-				(*(dat.child("first")))["terrain"]=terrain_letter;
-				gamemap::TERRAIN dtt_terrain = map[defender.x][defender.y];
-				terrain_letter = "";
-				terrain_letter += dtt_terrain;
-				(*(dat.child("second")))["terrain"]=terrain_letter;
 				game_events::fire("defender_misses",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
@@ -1597,7 +1566,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 					amount_healed = maximum<int>(amount_healed,game_config::cure_amount);
 				}
 				if(i->second.get_ability_bool("regenerates",i->first)) {
-					amount_healed = maximum<int>(amount_healed,i->second.get_abilities("regenerate",i->first).highest("value"));
+					amount_healed = maximum<int>(amount_healed,i->second.get_abilities("regenerate",i->first).highest("value").first);
 				}
 			}
 			if(amount_healed != 0)
@@ -1613,7 +1582,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			for(int j = 0; j != 6; ++j) {
 				if(will_heal(adjacent[j],i->second.side(),teams,units)) {
 					const unit_map::const_iterator healer = units.find(adjacent[j]);
-					max_heal = maximum(max_heal,healer->second.get_abilities("heals",healer->first).highest("value"));
+					max_heal = maximum(max_heal,healer->second.get_abilities("heals",healer->first).highest("value").first);
 
 					healers.insert(std::pair<gamemap::location,gamemap::location>(i->first,adjacent[j]));
 				}
@@ -1653,7 +1622,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			if(nhealed == 0)
 				continue;
 
-			const int healing_per_unit = i->second.get_abilities("heals",i->first).highest("max_value")/nhealed;
+			const int healing_per_unit = i->second.get_abilities("heals",i->first).highest("max_value").first/nhealed;
 
 			for(j = 0; j != 6; ++j) {
 				if(!gets_healed[j])
@@ -1956,7 +1925,8 @@ const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,c
 {
 	int lighten = maximum<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
 	int darken = minimum<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
-
+	
+	
 	if(loc.valid()) {
 		gamemap::location locs[7];
 		locs[0] = loc;
@@ -1966,8 +1936,8 @@ const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,c
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if(itor != units.end() &&
 			   itor->second.get_ability_bool("illuminates",itor->first) && itor->second.get_state("stoned")!="true") {
-				lighten = maximum<int>(itor->second.get_abilities("illuminates",itor->first).highest("value"), lighten);
-				darken = minimum<int>(itor->second.get_abilities("illuminates",itor->first).lowest("value"), darken);
+				lighten = maximum<int>(itor->second.get_abilities("illuminates",itor->first).highest("value").first, lighten);
+				darken = minimum<int>(itor->second.get_abilities("illuminates",itor->first).lowest("value").first, darken);
 			}
 		}
 	}

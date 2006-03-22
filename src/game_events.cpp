@@ -1780,11 +1780,6 @@ bool matches_special_filter(const config* cfg, const vconfig filter)
 			return false;
 		}
 	}
-	if(filter["terrain"] != "") {
-		if(filter["terrain"] != (*cfg)["terrain"]) {
-			return false;
-		}
-	}
 	
 	const vconfig::child_list& nots = filter.get_children("not");
 	for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
