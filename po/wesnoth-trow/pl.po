@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-16 18:32+0100\n"
+"POT-Creation-Date: 2006-03-22 20:23+0100\n"
 "PO-Revision-Date: 2006-03-14 21:00+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team: none\n"
@@ -12,6 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:4
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:8
 msgid "The Rise of Wesnoth"
 msgstr "Powstanie Wesnoth"
@@ -73,6 +74,9 @@ msgstr "Lato burz"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:28
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:38
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:38
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:28
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:39
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:35
 msgid "Prince Haldric"
 msgstr "Książę Haldric"
 
@@ -81,17 +85,17 @@ msgstr "Książę Haldric"
 msgid "Wesfolk Leader"
 msgstr "Przywódca Wesfolk"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:75
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:76
 msgid "King Eldaric IV"
 msgstr "Król Eldaric IV"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:80
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:157
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:81
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:158
 msgid "Defeat the Wesfolk Leader"
 msgstr "Pokonaj przywódcę Wesfolk"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:84
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:161
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:85
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:162
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:126
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:166
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:165
@@ -109,15 +113,16 @@ msgstr "Pokonaj przywódcę Wesfolk"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:301
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:201
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:203
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:288
 msgid "Death of Prince Haldric"
 msgstr "Śmierć księcia Haldrica"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:88
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:89
 msgid "Death of King Eldaric"
 msgstr "Śmierć Króla Eldarica"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:92
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:173
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:93
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:174
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:130
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_River_Road.cfg:170
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04b_The_Midlands.cfg:169
@@ -134,10 +139,11 @@ msgstr "Śmierć Króla Eldarica"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:309
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:209
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:215
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:304
 msgid "Turns run out"
 msgstr "Koniec tur"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:102
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:103
 msgid ""
 "The trouble seems to have finally reached to the heart of the Isle, to the "
 "isolated lands of King Eldaric IV."
@@ -145,7 +151,7 @@ msgstr ""
 "Kłopoty zdają się w końcu sięgać serca Wyspy, do odizolowanych ziem Króla "
 "Eldarica IV."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:106
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:107
 msgid ""
 "It looks like a Wesfolk rabble have seized the Northern Keep! Prepare for "
 "battle, Haldric!"
@@ -153,13 +159,13 @@ msgstr ""
 "Wygląda na to, że motłoch z Wesfolk zdobył Północny Gród! Przygotuj się do "
 "bitwy, Haldricu!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:110
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:111
 msgid "Father, I am of age now. May I lead our forces in battle?"
 msgstr ""
 "Ojcze, jestem już wystarczająco dojrzały. Czy mogę poprowadzić nasze wojska "
 "do bitwy?"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:114
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:115
 msgid ""
 "You're showing initiative, son! I'm proud of you! You may lead our forces to "
 "battle, but I'll stay near to keep an eye on you."
@@ -167,7 +173,7 @@ msgstr ""
 "Okazujesz inicjatywę synu! Jestem z ciebie dumny! Możesz poprowadzić nasze "
 "wojska do boju, ale ja zostanę w pobliżu, by mieć na ciebie oko."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:118
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:119
 msgid "Onward to victory!"
 msgstr "Naprzód, ku zwycięstwu!"
 
@@ -189,15 +195,15 @@ msgstr ""
 msgid "Make haste, son! We must win before the summer crop is in ruin."
 msgstr "Śpiesz się, synu! Musimy wygrać zanim zniszczą letnie zbiory!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:151
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:150
 msgid "I invoke the right of surrender! Don't kill me..."
 msgstr "Proszę o prawo do poddania się! Nie zabijajcie mnie..."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:155
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:154
 msgid "Why have you come to trouble our lands?"
 msgstr "Dlaczego przybyliście, by kłopotać nasze ziemie?"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:159
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:158
 msgid ""
 "Trouble your lands! Bah! Your fool Prince of Southbay has attacked our "
 "lands. The Lich-Lords had no choice... They opened a gate... and..."
@@ -205,11 +211,11 @@ msgstr ""
 "Kłopotać wasze ziemie! Bah! Twój głupi książę z Południowej Zatoki "
 "zaatakował nasze! Władcy liczów nie mieli wyboru... Otworzyli bramę... i..."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:163
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:162
 msgid "And what?"
 msgstr "I co?"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:167
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:166
 msgid ""
 "They pledged to visit all of the terrors of the hells upon the Isle. They "
 "built a great stone gate to the heart of the homeland of the orcs in the "
@@ -220,11 +226,11 @@ msgstr ""
 "zachodzie! Teraz nawet my, Wesfolk, musimy uciekać albo zostaniemy "
 "niewolnikami."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:171
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:170
 msgid "Orcs are just creatures of tall tales!"
 msgstr "Orki to tylko stworzenia z bajek!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:175
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:174
 msgid ""
 "You've been on this island too long. I assure you that orcs exist. By now "
 "there are probably a half dozen gates to the orcish homeland. There is no "
@@ -234,7 +240,7 @@ msgstr ""
 "momencie jest już prawdopodobnie pół tuzina bram do ich ojczyzny. Nie ma już "
 "nadziei."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:179
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:178
 msgid ""
 "We must prepare the defenses! Haldric, stay at the keep. I must go and "
 "fortify our frontier."
@@ -242,11 +248,11 @@ msgstr ""
 "Musimy przygotować obronę! Haldric, zostań w grodzie. Ja muszę ufortyfikować "
 "naszą granicę."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:183
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:182
 msgid "My forces are defeated, under your customs of surrender I will go now."
 msgstr "Moje wojska zostały pokonane, odejdę teraz na twoich warunkach."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:187
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:186
 msgid ""
 "You may go. See to it that you trouble us no more, for the custom states "
 "that you may invoke surrender but once. If we meet again, I won't be so "
@@ -256,15 +262,15 @@ msgstr ""
 "mogę ponownie uznać cię za wroga. Nie będę taki litościwy jeżeli znów się "
 "spotkamy."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:200
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:199
 msgid "We have run out of time... The crops shall spoil, we'll starve!"
 msgstr "Skończył nam się czas... Zbiory zepsują się, umrzemy z głodu!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:211
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:210
 msgid "Die, Wesfolk scum!"
 msgstr "Giń, szumowino z Wesfolk!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:222
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg:221
 msgid "Feel my wrath, you fiend!"
 msgstr "Poczuj mój gniew, ty potworze!"
 
@@ -272,34 +278,34 @@ msgstr "Poczuj mój gniew, ty potworze!"
 msgid "The Fall"
 msgstr "Jesień"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:67
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:68
 msgid "Tan-Rarbag"
 msgstr "Tan-Rarbag"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:90
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:91
 msgid "Tan-Erang"
 msgstr "Tan-Erang"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:120
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:121
 msgid "Eldaric's Guard"
 msgstr "Straż Eldarica"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:137
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:139
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:138
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:140
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:141
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:142
 msgid "Wesfolk"
 msgstr "Wesfolk"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:165
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:166
 msgid "Death of King Eldaric IV"
 msgstr "Śmierć Króla Eldarica IV"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:169
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:170
 msgid "Orcs kill the Wesfolk Leader"
 msgstr "Orki zabijają przywódcę Wesfolk"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:184
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:185
 msgid ""
 "Summer passes into fall, and King Eldaric fortifies his frontiers. It is not "
 "long before the first orcish scouts are spotted. War has come to the valley."
@@ -307,7 +313,7 @@ msgstr ""
 "Lato przechodzi w jesień, a król Eldaric fortyfikuje swoje granice. Niedługo "
 "potem pierwsi zwiadowcy orków zostają dostrzeżeni. Wojna przybyła do doliny."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:189
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:190
 msgid ""
 "Haldric, things have not gone well! The orcs have arrived. We met them at "
 "the north keep but they were just too many. They have flanked us to the east "
@@ -319,7 +325,7 @@ msgstr ""
 "wschód stąd. Moja straż przyboczna chroni przejścia na północ, ale nie "
 "będzie w stanie wytrzymać długo... Musimy ewakuować nasz dom."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:194
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:195
 msgid ""
 "That's awful! And it only gets worse. That Wesfolk rabble has set up shop "
 "again in the south pass..."
@@ -327,7 +333,7 @@ msgstr ""
 "To okropne! A sytuacja tylko się pogarsza. Motłoch z Wesfolk znów "
 "przygotował nam niemiłą niespodziankę na południowej przełęczy..."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:199
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:200
 msgid ""
 "That's the only way out of the valley! This is a disaster! We must defeat "
 "that Wesfolk scum and flee to the south. Our home is lost... We must make "
@@ -337,11 +343,11 @@ msgstr ""
 "to ścierwo z Wesfolk i uciec na południe. Nasz dom jest stracony... Musimy "
 "się śpieszyć."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:204
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:205
 msgid "So HUMAN, care to make your final stand?"
 msgstr "Więc CZŁOWIEKU, odważysz się stawić nam czoła po raz ostatni?"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:209
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:210
 msgid "Die! Die! Die!"
 msgstr "Giń! Giń! Giń!"
 
@@ -353,15 +359,15 @@ msgstr "Zaraz zacznie się robić paskudnie..."
 msgid "Hurry! Only death awaits in this valley!"
 msgstr "Szybko! Tylko śmierć czeka na nas w dolinie!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:267
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:266
 msgid "Umm, I invoke the right of surren..."
 msgstr "Umm, proszę o prawo do podda..."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:272
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:271
 msgid "Nay! Off with your hea- - -"
 msgstr "Nie! Zapłacisz głow- - -"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:277
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:276
 msgid ""
 "But I can help! Really! You could use me and my men's skills on the long "
 "road ahead!"
@@ -369,51 +375,51 @@ msgstr ""
 "Ale mogę pomóc! Naprawdę! Możecie wykorzystać mnie i umiejętności moich "
 "ludzi na długiej drodze, która was czeka!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:282
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:281
 msgid "Haldric, what say you on this matter?"
 msgstr "Haldric, co ty o tym myślisz?"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:287
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:286
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/09_Fallen_Lich_Point.cfg:353
 msgid "Hmm... after some thought..."
 msgstr "Hmm... po namyśle..."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:290
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:289
 msgid "I think that your skills may be useful. You may join us."
 msgstr ""
 "Myślę, że twoje umiejętności mogą być użyteczne. Możesz do nas dołączyć."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:296
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:294
 msgid "Let there be peace between us, our survival depends on it."
 msgstr "Niech nastanie między nami pokój, nasze przetrwanie od tego zależy."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:321
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:319
 msgid "So what shall I call you?"
 msgstr "Więc jak mam cię zwać?"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:326
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:323
 msgid "The Lady Outlaw will do."
 msgstr "Pani Banitów wystarczy."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:330
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:327
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:150
 msgid "Lady Outlaw"
 msgstr "Pani Banitów"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:343
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:341
 msgid "Your word can't be trusted. Prepare to meet your Gods!"
 msgstr ""
 "Twoim słowom nie można ufać. Przygotuj się na spotkanie ze swoimi Bogami!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:348
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:345
 msgid "Arrogant fools! (Reaches into pocket) POOF!"
 msgstr "Aroganccy głupcy! (Sięga do kieszeni) PUUF!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:353
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:350
 msgid "Argh, she's gone. Next time, more sword, less chat."
 msgstr "Argh, zniknęła. Następnym razem więcej walki, mniej gadania."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:358
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:355
 msgid ""
 "She's clever! Maybe I made the wrong choice. Well, at least she left some of "
 "her gold behind..."
@@ -421,7 +427,7 @@ msgstr ""
 "Jest sprytna! Może źle postąpiłem. Cóż, przynajmniej zostawiła trochę "
 "swojego złota..."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:381
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:378
 msgid ""
 "Son, you must lead our people through the south pass. I will remain behind "
 "to hold off these vile monsters for as long as I can."
@@ -429,29 +435,29 @@ msgstr ""
 "Synu, musisz przeprowadzić naszych ludzi przez południową przełęcz. Zostanę "
 "z tyłu, by zatrzymać te nikczemne potwory tak długo jak będę mógł."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:385
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:382
 msgid "But Father!"
 msgstr "Ależ ojcze!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:390
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:387
 msgid "It's the only way. Go now, and don't look back! Luck be with you!"
 msgstr ""
 "To jedyny sposób. Idź już i nie oglądaj się! Niech szczęście będzie z tobą!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:412
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:409
 msgid "We're surrounded! The orcs have taken the southern pass! All is lost!"
 msgstr ""
 "Jesteśmy otoczeni! Orki zdobyły południową przełęcz! Wszystko stracone!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:424
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:421
 msgid "We're surrounded! I can see their reinforcements! All is lost!"
 msgstr "Jesteśmy otoczeni! Widzę ich posiłki! Wszystko stracone!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:437
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:434
 msgid "Our Home! Where shall we go!"
 msgstr "Nasz dom! Dokąd teraz pójdziemy!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:441
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/02_The_Fall.cfg:438
 msgid "There can be no looking back! We must go south."
 msgstr "Nie możemy oglądać się za siebie! Musimy iść na południe."
 
@@ -516,22 +522,22 @@ msgstr ""
 msgid "Father, I wish you were here..."
 msgstr "Ojcze, żałuję, że cię tu nie ma..."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:151
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:150
 msgid ""
 "I'd drop the sentiment and pick up your sword. There's plenty of fighting "
 "ahead of us!"
 msgstr ""
 "Zapomniałabym o sentymentach i chwyciła za miecz. Przed nami mnóstwo walki!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:156
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:155
 msgid "You won't get much further boy. Grrrr!"
 msgstr "Dalej nie zajdziesz, chłopcze. Grrrr!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:170
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:169
 msgid "Who goes there?"
 msgstr "Kto idzie?"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:175
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:174
 msgid "Burin the Lost"
 msgstr "Burin Zagubiony"
 
@@ -616,26 +622,26 @@ msgstr ""
 msgid "I think I'll take the River Road..."
 msgstr "Myślę, że wybiorę Rzeczną Drogę..."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:282
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:281
 msgid "Good. The Midlands are probably an orc-infested ruin by now."
 msgstr ""
 "Dobrze. Śródziemie prawdopodobnie jest teraz ruiną rojącą się od orków."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:287
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:286
 msgid ""
 "SWAMP! I'm under 5 feet tall, and I don't float! Argh, have it your way."
 msgstr ""
 "BAGNO! Mam mniej niż 5 stóp wysokości i nie pływam! Argh, niech ci będzie."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:297
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:296
 msgid "We'll go through the Midlands..."
 msgstr "Pójdziemy przez Śródziemie..."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:302
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:300
 msgid "I suspect that the Midlands might be in ruins by now."
 msgstr "Podejrzewam, że Śródziemie może być już w ruinach."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:307
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:305
 msgid ""
 "It's better than the swamp. I'm under 5 feet tall, and I don't float! "
 "Besides, I'd rather enjoy meeting more orcs."
@@ -643,42 +649,42 @@ msgstr ""
 "I tak są lepsze niż bagna. Mam mniej niż 5 stóp wzrostu i nie pływam. "
 "Ponadto, z radością spotkałbym więcej orków."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:350
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:358
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:412
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:419
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:348
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:356
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:410
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:417
 msgid "Hashnak"
 msgstr "Hashnak"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:359
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:420
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:357
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:418
 msgid "Grork"
 msgstr "Grork"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:360
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:421
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:358
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:419
 msgid "Vigdish"
 msgstr "Vigdish"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:365
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:363
 msgid "Come and get it!"
 msgstr "Chodź i weź!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:369
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:429
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:367
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:427
 msgid "Die, human."
 msgstr "Giń, człowieku."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:373
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:433
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:371
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:431
 msgid "Uh-oh!"
 msgstr "Uch-och!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:425
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:423
 msgid "I'll not go so easily!"
 msgstr "Nie pójdzie tak łatwo!"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:443
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:441
 msgid ""
 "We've escaped the pass. Well, at least I know that the orcs can be beaten. "
 "Hmm, I guess that this is the last I'll see of my home... and my Father. "
@@ -687,7 +693,7 @@ msgstr ""
 "Uciekliśmy z przełęczy. No, przynajmniej wiem, że orków można pokonać. Hmm, "
 "sądzę że to ostatni raz kiedy widzę mój dom ... i mojego Ojca. (Wzdycha)"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:447
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/03_A_Harrowing_Escape.cfg:445
 msgid ""
 "We should make our way to Southbay. It is the largest city on the Isle. We "
 "should be able to make a stand there. Failing that, there's always "
@@ -1829,6 +1835,7 @@ msgstr "Heroicznie: pokonaj wszystkich przywódców wroga"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17c_Troll_Hole.cfg:275
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17d_Cursed_Isle.cfg:305
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:207
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:292
 msgid "Death of Lady Jessica"
 msgstr "Śmierć Pani Jessiki"
 
@@ -2918,11 +2925,13 @@ msgstr "Prędko. Musimy zabezpieczyć granicę albo wszystko przepadnie!"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:310
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_New_Land.cfg:286
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:276
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:266
 msgid "Familiar"
 msgstr "Chowaniec"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:411
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:284
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:58
 msgid "Lich-Lord Jevyan"
 msgstr "Władca liczów Jevyan"
 
@@ -3174,6 +3183,8 @@ msgstr "Nie uznaję tej myśli za zbyt pocieszającą."
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:301
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:315
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:325
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:387
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:483
 msgid "Neep! Neep!"
 msgstr "Piip! Piip!"
 
@@ -3189,10 +3200,12 @@ msgid "Rough Landing"
 msgstr "Twarde lądowanie"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:45
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1015
 msgid "Abraxas"
 msgstr "Abraxas"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:68
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1026
 msgid "Xamalia"
 msgstr "Xamalia"
 
@@ -4039,6 +4052,7 @@ msgid "Ick! When you kill them they divide."
 msgstr "Bleh! Dzielą się, kiedy je zabijasz."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:249
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1037
 msgid "Riaa"
 msgstr "Riaa"
 
@@ -4047,18 +4061,24 @@ msgid "We must protect the Saurians. We need the metal!"
 msgstr "Musimy bronić jaszczurów. Potrzebujemy metalu!"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:256
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1031
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1036
 msgid "Liabra"
 msgstr "Liabra"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:257
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1027
 msgid "Brissal"
 msgstr "Brissal"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:266
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1038
 msgid "Griama"
 msgstr "Griama"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/17b_A_Beach.cfg:267
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1030
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1035
 msgid "Saxiala"
 msgstr "Saxiala"
 
@@ -4731,6 +4751,831 @@ msgstr ""
 msgid "I- I die?"
 msgstr "Ja- Ja umieram?"
 
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:4
+msgid "The Plan"
+msgstr "Plan"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:140
+msgid "So what is your plan?"
+msgstr "A więc jaki masz plan?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:144
+msgid ""
+"We're going to convince Jevyan that we gave the elves the Ruby of Fire to "
+"secure our place in this new land. Then if the orcs return, hopefully "
+"they'll go looking for our not so loyal elven allies first."
+msgstr ""
+"Zamierzamy przekonać Jevyana, że przekazaliśmy Rubin Ognia elfom, by "
+"zapewnić sobie miejsce w tej nowej krainie. Wtedy, gdy orki powrócą, miejmy "
+"nadzieję, że udadzą się najpierw na poszukiwania naszych niezbyt lojalnych "
+"elfickich sojuszników."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:148
+msgid ""
+"Haldric, that's devious. I kind of like this plan. But you spoke a pact with "
+"the elves. You'll be expected to come to their aid."
+msgstr ""
+"Haldric, to przebiegłe. W pewnym sensie podoba mi się twój plan. Ale "
+"zawarłeś pakt z elfami. Będą od ciebie oczekiwały, że przybędziesz im na "
+"pomoc."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:152
+msgid ""
+"Yes, and we may come to their aid. We'll have to weigh our options when and "
+"if the time comes. If the orcs return in great numbers the brunt of their "
+"assault must fall on somebody else. Who knows, maybe I won't even come to "
+"their aid at all-"
+msgstr ""
+"Tak. Możemy przybyć im na pomoc. Będziemy musieli ocenić nasze możliwości "
+"jeśli i gdy nadejdzie czas. Jeśli orki powrócą w wielkiej ilości, impet ich "
+"uderzenia musi spaść na kogoś innego. Kto wie, może nie będę musiał wcale "
+"przybywać im z pomo-"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:156
+msgid ""
+"Many people will call you a coward. They will say that you turned your back "
+"on your pact with the elves. It's not like you can tell people what I "
+"overheard."
+msgstr ""
+"Wielu ludzi nazwie cię tchórzem. Powiedzą, że złamałeś pakt z elfami. Nie "
+"jest tak, że możesz powiedzieć ludziom to co ja podsłuchałam."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:160
+msgid ""
+"Recent events have taught me one thing: that survival trumps honor. Besides, "
+"they won't be screaming at me- I'll be dead."
+msgstr ""
+"Ostatnie wydarzenia nauczyły mnie jednej rzeczy: przeżycie jest ważniejsze "
+"od honoru. Poza tym nie będą na mnie wrzeszczeć- przecież będę martwy."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:164
+msgid "WHAT!"
+msgstr "CO!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:168
+msgid ""
+"I'll be dead. I mean we can't just say that we gave away the Ruby of Fire, "
+"or send Jevyan a letter. Well, we are going to say it- but that's not the "
+"point. Jessica, you're going to forge a very official looking treaty, in "
+"which we give the elves the Ruby of Fire, in return for our place here."
+msgstr ""
+"Będę martwy. Mam na myśli to, że nie możemy po prostu powiedzieć, że "
+"oddaliśmy Rubin Ognia albo wysłać Jevyanowi list. Cóż, powiemy, że - ale nie "
+"o to chodzi. Jessico, podrobisz bardzo oficjalnie wyglądający traktat, na "
+"mocy którego przekazujemy elfom Rubin Ognia w zamian za nasze miejsce tutaj."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:172
+msgid ""
+"I'm going to face Jevyan, and if rumors of his power are true he's going to "
+"pick that treaty off my mangled corpse. Then, you're going to destroy Jevyan "
+"after word of the treaty has spread to the orcs, but before he has a chance "
+"to read my undead mind..."
+msgstr ""
+"Zmierzę się z Jevyanem i jeśli plotki o jego sile są prawdziwe, znajdzie ten "
+"pakt przy moich zmasakrowanych zwłokach. Wtedy zniszczysz Jevyana po tym jak "
+"plotki o pakcie rozejdą się wśród orków, ale zanim będzie miał szansę, by "
+"odczytać co zawiera mój nieumarły umysł..."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:176
+msgid ""
+"Haldric! I won't do it... I won't help. What is it with your kind, always "
+"rushing to a fool's death. Who'll lead these people?"
+msgstr ""
+"Haldric! Nie zrobię tego... Nie pomogę. Co jest z wami, zawsze pędzącymi do "
+"głupiej śmierci? Kto poprowadzi tych ludzi?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:180
+msgid ""
+"You will. I wouldn't have made it this far without you. We really have to "
+"convince Jevyan-"
+msgstr ""
+"Ty. Nie doszedłbym tak daleko bez ciebie. Naprawdę musimy przekonać Jevyana-"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:184
+msgid "Haldric, this is ridiculous! I- -"
+msgstr "Haldirc, to absurdalne! Ja- -"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:217
+msgid ""
+"There is no way I'm letting you go through with this, Sir! Over our dead "
+"bodies, right Jessica?"
+msgstr ""
+"Nie ma mowy, żebym pozwolił ci to zrobić, panie! Po naszych trupach, prawda "
+"Jessica?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:221
+msgid "Right!"
+msgstr "Racja!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:226
+msgid "I'll do it sir."
+msgstr "Ja to zrobię, panie."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:230
+msgid "No. I can't ask you to do this."
+msgstr "Nie. Nie mogę cię o to prosić."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:235
+msgid ""
+"You've denied me my honorable death twice already. Once when you arrived at "
+"Clearwater Port, and once again when your ships rescued me. I'll not be "
+"denied in this a third time!"
+msgstr ""
+"Już dwa razy odmówiłeś mi honorowej śmierci. Po raz pierwszy, gdy dotarliśmy "
+"do portu Clearwater, a drugi, kiedy uratowały mnie twoje statki. Nie "
+"pozwolę, by stało się to po raz trzeci!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:239
+msgid "No, this is my sacrifice to make!"
+msgstr "Nie, to jest poświęcenie, które ja muszę uczynić!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:245
+msgid ""
+"Sir, my family has been slaughtered, and my home lost. All I long for is to "
+"join them. Give me this honorable death... Please, Sir! I beg you!"
+msgstr ""
+"Panie, moja rodzina została zmasakrowana, a mój dom zniszczony. Jedyną "
+"rzeczą, której pragnę, jest dołączenie do nich. Pozwól mi ponieść honorową "
+"śmierć... Proszę, panie! Błagam!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:250
+msgid ""
+"After this conflict is over I'll have to suffer through the long years "
+"alone, with no honorable way of joining them. I want to look that monster "
+"Jevyan in the eye before I go! I won't be denied!"
+msgstr ""
+"Kiedy ten konflikt się skończy, będę musiał cierpieć sam przez długie lata, "
+"bez honorowego sposobu, by do nich dołączyć. Chcę spojrzeć w oczy temu "
+"potworowi Jevyanowi zanim odejdę! Nikt mi tego nie odmówi!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:254
+msgid ""
+"Very well, if you can't be deterred. Remember, you MUST be slain by the hand "
+"of Jevyan himself. We can't have an illiterate orc or mindless skeleton "
+"getting the treaty. We will honor your sacrifice."
+msgstr ""
+"Dobrze, skoro nie można cię powstrzymać. Pamiętaj, musisz zostać zgładzony "
+"przez Jevyana jego własną ręką. Nie możemy pozwolić, by jakiś ciemny ork czy "
+"bezmyślny szkielet zdobył traktat. Uczcimy twoje poświęcenie."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:259
+msgid ""
+"Honor me by destroying Jevyan! Preferably before he can do unnatural things "
+"to me. I want to rest in the ground, not be some mindless undead slave for "
+"all eternity!"
+msgstr ""
+"Uczcijcie moją pamięć niszcząc Jevyana! Lepiej zanim zrobi mi coś "
+"nienaturalnego. Chcę spocząć w ziemi, a nie być jakimś bezmyślnym nieumarłym "
+"niewolnikiem przez całą wieczność."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:263
+msgid "We'll make sure. I promise."
+msgstr "Upewnimy się. Obiecuję."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:267
+msgid ""
+"We'll have to be careful to let one of the orcish leaders escape back to the "
+"Green Isle with the knowledge that the elves 'have' the Ruby of Fire. "
+"Sheesh... What is your kind's infatuation with rushing to an 'honorable "
+"death'?"
+msgstr ""
+"Musimy być ostrożni i pozwolić jednemu z przywódców orków uciec na Zieloną "
+"Wyspę z wiedzą, że elfy \"mają\" Rubin Ognia. Rany... Dlaczego jesteście tak "
+"zaślepieni tym pędem ku \"honorowej śmierci\"?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:89
+msgid "Tan-Vragish"
+msgstr "Tan-Vragish"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:113
+msgid "Ut'Tan-Grorag"
+msgstr "Ut'Tan-Grorag"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:147
+msgid "Tan-Erinak"
+msgstr "Tan-Erinak"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:182
+msgid "Tan-Prodash"
+msgstr "Tan-Prodash"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:276
+msgid "Lt. Aethyr sacrifices himself to Lich-Lord Jevyan and"
+msgstr "Por. Aethyr poświęca się władcy liczów Jevyana i"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:280
+msgid "Destroy Lich-Lord Jevyan and"
+msgstr "Zniszcz władcę liczów Jevyana i"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:284
+msgid "Defeat all enemy leaders except for one"
+msgstr "Pokonaj wszystkich przywódców wroga z wyjątkiem jednego"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:296
+msgid "Death of Lt. Aethyr by somebody other than Jevyan"
+msgstr "Zabicie por. Aethyra przez kogoś innego niż Jevyan"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:300
+msgid "Fail to leave one enemy leader behind"
+msgstr "Nie pozostanie jeden przywódca wroga"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:314
+msgid ""
+"Haldric rapidly approaches the site where Lich-Lord Jevyan has made "
+"landfall. The final confrontation looms before him."
+msgstr ""
+"Haldric gwałtownie zbliża się do miejsca gdzie władca liczów Jevyan dobił do "
+"brzegu. Zbliża się ostateczna konfrontacja."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:318
+msgid "You can not win. Give me the Ruby of Fire and I will go in peace."
+msgstr "Nie możesz wygrać. Daj mi Rubin Ognia, a odejdę w pokoju."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:322
+msgid ""
+"This ends here, Jevyan. Even if I believed your words I couldn't give you "
+"the Ruby of Fire."
+msgstr ""
+"To skończy się tutaj, Jevyan. Nawet gdybym uwierzył twoim słowom, nie "
+"mógłbym dać ci Rubinu Ognia."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:326
+msgid ""
+"Bah! Even if you have learned to conceal the power of the Ruby of Fire you "
+"will deliver it unto me in death!"
+msgstr ""
+"Bah! Nawet gdybyś nauczył się ukrywać moc Rubinu Ognia, to i tak wpadnie on "
+"w moje ręce wraz z twoją śmiercią! "
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:330
+msgid ""
+"You're a fool, Jevyan. How do you think we secured our place here? We had to "
+"give the elves the Ruby of Fire. We just signed a treaty with the elves "
+"ensuring our place here."
+msgstr ""
+"Jesteś głupcem, Jevyan. Jak myślisz, w jaki sposób zabezpieczyliśmy tutaj "
+"nasze miejsce? Musieliśmy dać Rubin Ognia elfom. Właśnie podpisaliśmy "
+"traktat z elfami zapewniający nam te ziemie."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:334
+msgid ""
+"No! I don't believe it. Only a fool would give away an artifact of such "
+"power."
+msgstr ""
+"Nie! Nie wierzę w to! Tylko głupiec pozbyłby się artefaktu o takiej mocy."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:338
+msgid "A fool, or a desperate band of refugees!"
+msgstr "Głupiec albo zdesperowana banda uchodźców!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:342
+msgid "No. It can't be!"
+msgstr "Nie. To niemożliwe!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:346
+msgid ""
+"Fool human, you shouldn't give such toys to elves! Bah! It matters little to "
+"me. I'm no wizard. All I got is my axe. He, he. It's all I need -- Prepare "
+"to die, orcish scum!"
+msgstr ""
+"Głupi człowieku, nie powinieneś dawać elfom takich zabawek! Jej! Niewiele to "
+"dla mnie znaczy. Nie jestem czarodziejem. Wszystko co mam, to mój topór. He, "
+"he. To wszystko czego mi trzeba - przygotujcie się na śmierć, orkowe ścierwa!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:351
+msgid "Ha. Let all of the footsoldiers of darkness be cast down!"
+msgstr "Ha. Niech padną wszyscy żołnierze ciemności!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:355
+msgid "It matters little, because here you fall!"
+msgstr "To niewiele znaczy, bo tutaj doświadczysz swojego upadku!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:360
+msgid "For all of the good people of Clearwater Port!"
+msgstr "Za wszystkich dobrych ludzi z Portu Clearwater!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:365
+msgid "For the honor of Southbay!"
+msgstr "Za honor Południowej Zatoki!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:370
+msgid ""
+"We don't need some magic trinket to beat you! Prepare to meet your fate you "
+"decrepit sack of bones! For the honor of all of the people of the west-north!"
+msgstr ""
+"Nie potrzebujemy magicznych świecidełek, by cię pokonać! Przygotuj się na "
+"spotkanie z przeznaczeniem, zgrzybiały worku kości! Za honor wszystkich "
+"ludzi z północnego zachodu!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:374
+msgid "Charge!"
+msgstr "Do ataku!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:378
+msgid ""
+"I hate it when my prey gets chatty! Get them, it's a long boat ride back "
+"home!"
+msgstr ""
+"Nienawidzę, gdy moja zdobycz staje się rozmowna! Brać ich, powrót do domu "
+"zajmie nam sporo czasu!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:382
+msgid "We shall soon see if you have the Ruby of Fire!"
+msgstr "Wkrótce się przekonamy czy masz Rubin Ognia!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:391
+msgid "<Whispering> Lieutenant, you remember the plan right?"
+msgstr "<Szepcząc> Poruczniku, pamiętasz plan, prawda?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:396
+msgid "<Whispering> Yes Sir. I am ready."
+msgstr "<Szepcząc> Tak panie. Jestem gotowy."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:407
+msgid "He's raising our dead! Be careful!"
+msgstr "Wskrzesza naszych umarłych! Bądźcie ostrożni!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:431
+msgid ""
+"Feel my wrath, Jevyan, I'm coming for you! No piece of paper in my pocket is "
+"going to stop me from destroying you. For my family! For the people of "
+"Clearwater Port!"
+msgstr ""
+"Poczuj mój gniew, Jevyan, idę po ciebie! Żaden kawałek papieru w mojej "
+"kieszeni nie jest w stanie zatrzymać mnie przed zniszczeniem ciebie. Za moją "
+"rodzinę! Za ludzi z Portu Clearwater!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:435
+msgid "All life is finite, you will be made to serve along with the rest."
+msgstr "Każde życie się kiedyś kończy, a ty będziesz mi służył razem z innymi."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:446
+msgid "Come on, stay still, just for a second..."
+msgstr "No dalej, stój spokojnie, tylko przez sekundę..."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:457
+msgid "For the Wesfolk!"
+msgstr "Za Wesfolk!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:471
+msgid "Be careful, Lieutenant!"
+msgstr "Bądź ostrożny, poruczniku!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:528
+msgid "The battle is going against us!"
+msgstr "Walka nie toczy się po naszej myśli!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:532
+msgid "Our forces are being routed! We should flee back to the Green Isle!"
+msgstr ""
+"Nasze siły są rozgramiane! Powinniśmy uciec z powrotem na Zieloną Wyspę!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:536
+msgid "It goes poorly for us!"
+msgstr "Idzie nam kiepsko!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:540
+msgid "Defeated, by humans?"
+msgstr "Pokonani, przez ludzi?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:544
+msgid "Fight on, you cowardly orcish worms!"
+msgstr "Walczcie dalej, wy tchórzliwe orkowe robaki!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:551
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:754
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:761
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:768
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:775
+msgid ""
+"Da old bag of bones has been crushed, and our cause is lost. We know da "
+"elfses have da fire ruby. Retreat!"
+msgstr ""
+"Stary worek kości został zniszczony i nasza walka straciła sens. Wiemy już, "
+"że elfy mieć ognia rubin. Odwrót!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:558
+msgid "Da elfses have the fire ruby, we must flee. To da ships!"
+msgstr "Elfy mieć ognia rubin, my musieć uciekać. Do statki!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:565
+msgid ""
+"We have many kinsmen on the Green Isle- we will return for the Ruby of Fire!"
+msgstr "Mamy wielu krewnych na Zielonej Wyspie - wrócimy po Rubin Ognia!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:572
+msgid ""
+"We must get back to the Green Isle. The elfses have the Ruby of Fire and our "
+"assault has been stopped."
+msgstr ""
+"Musimy wrócić na Zieloną Wyspę. Elfy mają Rubin Ognia, a nasze natarcie "
+"zostało zatrzymane."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:594
+msgid ""
+"The plan revolved around some orcs making it back to the Green Isle to tell "
+"their kin that the elves have the Ruby of Fire so we wouldn't have to bear "
+"the brunt of the next invasion."
+msgstr ""
+"Plan polegał na tym, że część orków miała wrócić na Zieloną Wyspę, by "
+"powiedzieć swoim współplemieńcom, że elfy mają Rubin Ognia. Tak, żebyśmy nie "
+"musieli przyjąć całego ciężaru następnej inwazji."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:598
+msgid "What have we done?"
+msgstr "Cóż takiego uczyniliśmy?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:674
+msgid "My love, my family, I'll be there soo-"
+msgstr "Moja miłości, moja rodzino, będę tam wkrót-"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:679
+msgid ""
+"Lieutenant Aethyr! No! He was critical for convincing Jevyan that the elves "
+"have the Ruby of Fire."
+msgstr ""
+"Poruczniku Aethyr! Nie! Nie bardzo podobał mu się pomysł, by przekonać "
+"Jevyana, że elfy są w posiadaniu Rubinu Ognia."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:700
+msgid ""
+"Jevyan- I spit upon thee. Your end awaits. My love, my family, I'll be there "
+"soo-"
+msgstr ""
+"Jevyan- pluję na ciebie. Twój koniec nadejdzie. Moja miłości, moja rodzino, "
+"będę tam wkrót-"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:705
+msgid ""
+"Fool. You are no match for my power. What! What's this? A treaty. That's elf "
+"script."
+msgstr ""
+"Głupcze. Nie dorównujesz mojej mocy. Co! Co to jest? Traktat. To pismo elfów."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:710
+msgid ""
+"No. Why? You fools, you gave the Ruby of Fire to the elves. But that won't "
+"save you from me. I will destroy you, then I will deal with the elves."
+msgstr ""
+"Nie. Dlaczego? Głupcy, daliście Rubin Ognia elfom. Ale to was nie uratuje "
+"przed mną. Zniszczę was, a później zajmę się nimi."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:715
+msgid "We'll see about that. For the honor of Lieutenant Aethyr, forward!"
+msgstr "Zobaczymy. Za honor porucznika Aethyra, naprzód!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:726
+msgid ""
+"I am fallen before my plans have reached fruition. A curse upon you Haldric, "
+"may you and your descendants know nothing but strife!"
+msgstr ""
+"Przegrałem zanim udało mi się urzeczywistnić moje plany. Przeklinam cię "
+"Haldric, niech ty i twoi potomkowie nie zaznają niczego poza wojną!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:738
+msgid ""
+"You deny me my honorable death? Our foes are not yet convinced that the "
+"elves have the ruby."
+msgstr ""
+"Odmawiasz mi honorowej śmierci? Nasi wrogowie nie są jeszcze przekonani, że "
+"elfy mają rubin."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:788
+msgid "Da old bag 'o bones is gone, but you haven't beat us yet!"
+msgstr "Stary worek kości przepadł, ale jeszcze nas nie pokonaliście!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:792
+msgid "We took yer home now we'll take yer lives!"
+msgstr "Zabraliśmy wasze domy, teraz zabierzemy wasze życia!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:796
+msgid "The elfses have da fire ruby, and you have nothing!"
+msgstr "Elfy mieć ognia rubin, a wy nie macie niczego!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:800
+msgid "We will suck the marrow from your bones human!"
+msgstr "Wyssiemy szpik z twoich kości, człowieku!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:825
+msgid "Squidy"
+msgstr "Mackowaty"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:838
+msgid "Ack. One of those monsters is destroying the bridge."
+msgstr "Ups. Jeden z tych potworów niszczy most."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:891
+msgid "Inky"
+msgstr "Atramentowy"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:904
+msgid "The bridge!"
+msgstr "Most!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:957
+msgid "Beaky"
+msgstr "Dziobaty"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:970
+msgid "Our advance is thwarted, that monster has destroyed the bridge!"
+msgstr "Nie możemy kontynuować marszu, ten potwór zniszczył most!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1023
+msgid ""
+"It's the Haldric! Jevyan, you never said you came to destroy this monster. "
+"We will help you."
+msgstr ""
+"To Haldric! Jevyan, nigdy nie powiedziałeś, że przybyłeś zniszczyć tego "
+"potwora. Pomożemy ci."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1051
+msgid "Come in from the deep my loyal soldiers!"
+msgstr "Przybywajcie z głębin moi, żołnierze!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1079
+msgid "Rise, rise from the ground!"
+msgstr "Wstańcie, wstańcie z ziemi!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1112
+msgid "Neep! SPLAT!"
+msgstr "Piip! PLASK!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1116
+msgid "Ahh... That almost makes it all worth while!"
+msgstr "Ach... Dla takich chwil warto walczyć!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1120
+msgid "You'll pay for that!"
+msgstr "Zapłacisz za to!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1127
+msgid "Strike down these fools."
+msgstr "Uderz na tych głupców."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1198
+msgid "We did it! We won!"
+msgstr "Udało się! Wygraliśmy!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1202
+msgid ""
+"Jevyan is destroyed, but at a terrible price. Let's put Lieutenant Aethyr to "
+"rest and discuss what is to come in the following days."
+msgstr ""
+"Jevyan został zniszczony, ale za straszną cenę. Pochowajmy porucznika "
+"Aethera i przedyskutujmy co należy czynić w nadchodzących dniach."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_Rise_of_Wesnoth.cfg:1210
+msgid ""
+"Our strength is waning, and our foes grow stronger by the hour. The battle "
+"is lost!"
+msgstr ""
+"Nasza moc słabnie, a nasi wrogowie rosną w siłę z każdą godziną. Bitwa jest "
+"przegrana!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:4
+msgid "Epilogue"
+msgstr "Epilog"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:177
+msgid ""
+"May Lieutenant Aethyr have a peaceful journey into the next world, where he "
+"has been preceded by his wife and loving daughters. For his heroism in the "
+"face of adversity a place of glory is assured to him in the Halls of Light..."
+msgstr ""
+"Niech porucznik Aether odbędzie spokojną podróż na tamten świat, gdzie "
+"oczekują go żona i kochające córki. Za jego bohaterstwo w obliczu "
+"przeciwności ma zapewnione miejsce chwały w Salach Światła..."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:181
+msgid ""
+"Without the Lieutenant's noble sacrifice we would have never carried the "
+"day. We have won a great victory here today but much has been lost. My "
+"father Eldaric and King Addroran have fallen, and with them many other good "
+"people. However, there is hope, and a new land is open before us!"
+msgstr ""
+"Bez szlachetnego poświęcenia porucznika nigdy nie dożylibyśmy tego dnia. "
+"Odnieśliśmy dziś wielkie zwycięstwo, ale ponieśliśmy wiele strat, "
+"straciliśmy wielu dobrych ludzi. Mojego ojca  Eldarica i króla Addrorana... "
+"Jednakże jest nowa nadzieja, nowa kraina rozciąga się przed nami!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:202
+msgid ""
+"But dark deeds have been done on all sides. There is now a secret that only "
+"Jessica and I share. I must have your word that what I say will never be "
+"uttered again."
+msgstr ""
+"Ale ciemne postępki zostały poczynione po obu stronach. Istnieje sekret, "
+"który dzielimy tylko Jessica i ja. Muszę wasze słowo, że to co teraz powiem, "
+"nigdy więcej nie zostanie powtórzone."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:206
+msgid "I have followed you this far, I will keep your secret. I pledge."
+msgstr "Podążałem za tobą aż dotąd, dotrzymam tajemnicy. Przyrzekam."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:211
+msgid "Lord, I shall guard your secret until the time of my death."
+msgstr "Panie, będę strzegł twojej tajemnicy aż do mojej śmierci."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:216
+msgid "I will take it with me to my grave."
+msgstr "Zabiorę ją ze sobą do grobu."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:221
+msgid ""
+"I agree, but misfortune may follow you depending on the nature of your "
+"misdeed."
+msgstr ""
+"Zgadzam się, ale nieszczęście może podążać za tobą w zależności od natury "
+"twojego złego czynu."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:225
+msgid ""
+"The elves don't have the Ruby of Fire. We perpetrated a ruse on the orcs. If "
+"they return they will come looking for the elves."
+msgstr ""
+"Elfy nie mają Rubinu Ognia. Wywiedliśmy orków w pole. Jeśli powrócą, to będą "
+"szukać elfów."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:229
+msgid ""
+"To be fair to you, Haldric, the elves were reconsidering their Pact with us."
+msgstr ""
+"Szczerze mówiąc, Haldricu, elfy ponownie rozważały Pakt, który z nimi "
+"zawarliśmy."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:233
+msgid ""
+"Humph. I suspected as much -- from both the elves and you. Humans and elves "
+"always think they're so clever!"
+msgstr ""
+"Hmmm. Podejrzewałem to -- zarówno elfów jak i ciebie. Ludzie i elfy zawsze "
+"myślą, że są tacy sprytni!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:238
+msgid "May the Lords of Light have Mercy on you. But, I am bound by my word."
+msgstr ""
+"Niech Władcy Światła mają nad tobą litość. Jednakże jestem związany danym "
+"słowem."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:245
+msgid "Jessica, you hid the ruby away in that vile Troll Hole? Didn't you?"
+msgstr "Jessico, ukryłaś Rubin w tej obrzydliwej dziurze trolli? Nieprawdaż?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:249
+msgid "What? Why would you doubt me?"
+msgstr "Co? Dlaczego we mnie wątpisz?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:253
+msgid ""
+"The orcs that didn't escape in the ships have regrouped. They are preparing "
+"to march on the elves. We should come to the aid of our new friends."
+msgstr ""
+"Orki, które nie uciekły statkami, przegrupowały się. Przygotowują się do "
+"marszu na elfy. Powinniśmy udać się na pomoc naszym nowym przyjaciołom."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:257
+msgid ""
+"These orcs are few, but the elves aren't accustomed to war. Besides we will "
+"have to rely on elven charity if we are to survive this first winter."
+msgstr ""
+"Tych orków jest niewiele, ale elfy nie są przyzwyczajone do wojny. Poza tym "
+"będziemy musieli polegać na ich życzliwości jeśli chcemy przetrwać pierwszą "
+"zimę."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:261
+msgid ""
+"After that we should build towns in all of the regions that the elves have "
+"given us. We should move our capital inland, away from the coast. I hope the "
+"children of the good people of the west-north, of the Green Isle, find "
+"prosperity in this new land."
+msgstr ""
+"Potem powinniśmy wybudować miasta we wszystkich regionach, które elfy nam "
+"przekazały. Powinniśmy również przesunąć naszą stolicę wgłąb lądu, z dala od "
+"wybrzeża. Mam nadzieję, że dzieci dobrych ludzi ze północnego-zachodu, z "
+"Zielonej Wyspy, znajdą dobrobyt na nowej ziemi."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:281
+msgid "So what of the rest of you?"
+msgstr "A co z resztą z was?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:285
+msgid ""
+"I shall go back to my people. It seems we have grown many and strong in the "
+"time I was gone. I will try to convince them of the wisdom of using the "
+"underways to settle new lands."
+msgstr ""
+"Wrócę do moich ludzi. Wydaje się, że zyskaliśmy na liczbie i sile w czasie, "
+"gdy mnie nie było. Będę starał się przekonać o sensie używania podziemnych "
+"przejść do kolonizacji nowych terenów."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:289
+msgid ""
+"I know the way to many places, I think. I want to find out if there are "
+"dwarves in other lands. It's a big world with lots of good mountains. Of "
+"that much I am sure."
+msgstr ""
+"Znam drogę do wielu miejsc. Tak sądzę. Chcę się dowiedzieć, czy krasnoludy "
+"żyją też na innych ziemiach. To duży świat z wieloma dobrymi górami. Tego "
+"jestem pewien."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:294
+msgid ""
+"We have lost much in the last few months, but we should not lose all of our "
+"knowledge. I will go forth amongst the people and spread wisdom, and see "
+"about establishing a new order of Magi in this new land."
+msgstr ""
+"Wiele straciliśmy w ostatnich miesiącach, ale nie powinniśmy stracić całej "
+"naszej wiedzy. Pójdę do ludzi, by dalej szerzyć mądrość i zajmę się "
+"ustanawianiem nowego zakonu magów w tej nowej krainie."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:299
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:304
+msgid ""
+"I am but a humble servant of the Crown. I will establish a new order of "
+"knights for a new land. For a new King, if you will allow me to serve under "
+"your banner."
+msgstr ""
+"Jestem wyłącznie skromnym sługą Korony. Ustanowię nowy porządek rycerzy dla "
+"nowej krainy. Dla nowego króla, jeśli pozwolisz mi służyć pod twoim "
+"sztandarem."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:308
+msgid "Excellent."
+msgstr "Doskonale."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:314
+msgid ""
+"I suppose I am King Haldric now. Hmm... but what to call this new kingdom?"
+msgstr ""
+"Przypuszczam że jestem teraz królem Haldrikiem. Hmm... ale jak nazwać to "
+"nowe królestwo?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:318
+msgid "May I make a suggestion?"
+msgstr "Czy mogę coś zasugerować?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:322
+msgid "Sure."
+msgstr "Oczywiście."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:326
+msgid ""
+"The word Wesfolk is from your old tongue. It means 'People of the West'. The "
+"elves call us the people of the west-north. Under the same old tongue that "
+"would be 'Wes Noth'. So I suggest that the new kingdom be called 'Wesnoth', "
+"in honor of our old home."
+msgstr ""
+"Słowo Wesfolk pochodzi z waszego dawnego języka i oznacza \"ludzi z zachodu"
+"\"'. Elfy nazywają nas ludźmi z północnego wschodu, co w tym samym języku "
+"zapisane zostałoby jako \"Wes Noth\". Sugeruję, by to nowe królestwo nazwać "
+"\"Wesnoth\", ku czci naszego dawnego domu."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:330
+msgid ""
+"Hmm. 'Wesnoth'. I like it. Yes, 'Wesnoth' would be fine. So I am the first "
+"King of Wesnoth!"
+msgstr ""
+"Hmm. \"Wesnoth\" podoba mi się. Tak, \"Wesnoth\" będzie w porządku. A więc "
+"jestem pierwszym królem Wesnoth!"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:334
+msgid "So, what is to become of me?"
+msgstr "A kim ja zostałam?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:338
+msgid ""
+"There are many Wesfolk amongst the remains of my people. We must stay united "
+"under one banner. I will need you by my side if there is any hope of "
+"building a true 'Kingdom of Wesnoth'. Come, we have much work to do."
+msgstr ""
+"Jest wielu z Wesfolk żyjących pośród resztek moich ludzi. Musimy zostać "
+"zjednoczeni pod jednym sztandarem. Będę potrzebował cię u mego boku, jeśli "
+"istnieje jakakolwiek nadzieja zbudowania prawdziwego \"Królestwa Wesnoth\". "
+"Chodź, mamy wiele do zrobienia."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:342
+msgid "We!?"
+msgstr "My!?"
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:346
+msgid ""
+"In later ages the bards would sing the 'The Breaking of the Pact', an epic "
+"tale of Haldric's betrayal of the elves. They would whisper of the price he "
+"and his descendants would pay for that betrayal without knowing the whole "
+"truth."
+msgstr ""
+"W późniejszych wiekach bardowie śpiewaliby \"Złamanie Paktu\", epicką "
+"opowieść o Haldricu zdradzającym elfy. Szeptaliby o cenie, którą on i jego "
+"potomkowie zapłaciliby za zdradę bez poznania całej prawdy."
+
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:350
+msgid ""
+"But some of us have remembered the true story of our arrival on this great "
+"continent. The true story of the Rise of Wesnoth."
+msgstr ""
+"Ale część z nas zapamiętała prawdziwą historię naszego przybycia na ten "
+"wielki kontynent. Prawdziwą historię Powstania Wesnoth."
+
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:9
 msgid "I can't be finished yet... I still have so much more to do."
 msgstr "To nie może być koniec... Mam wciąż tyle do zrobienia."
@@ -5017,712 +5862,6 @@ msgstr ""
 "książę Południowej Zatoki zdołał założyć na niej przyczółek, pomimo "
 "wojowniczej natury jej gadzich mieszkańców. Niestety do dzisiaj niewiele z "
 "niego zostało."
-
-#~ msgid "Epilogue"
-#~ msgstr "Epilog"
-
-#~ msgid ""
-#~ "May Lieutenant Aethyr have a peaceful journey into the next world, where "
-#~ "he has been preceded by his wife and loving daughters. For his heroism in "
-#~ "the face of adversity a place of glory is assured to him in the Halls of "
-#~ "Light..."
-#~ msgstr ""
-#~ "Niech porucznik Aether odbędzie spokojną podróż na tamten świat, gdzie "
-#~ "oczekują go żona i kochające córki. Za jego bohaterstwo w obliczu "
-#~ "przeciwności ma zapewnione miejsce chwały w Salach Światła..."
-
-#~ msgid ""
-#~ "Without the Lieutenant's noble sacrifice we would have never carried the "
-#~ "day. We have won a great victory here today but much has been lost. My "
-#~ "father Eldaric and King Addroran have fallen, and with them many other "
-#~ "good people. However, there is hope, and a new land is open before us!"
-#~ msgstr ""
-#~ "Bez szlachetnego poświęcenia porucznika nigdy nie dożylibyśmy tego dnia. "
-#~ "Odnieśliśmy dziś wielkie zwycięstwo, ale ponieśliśmy wiele strat, "
-#~ "straciliśmy wielu dobrych ludzi. Mojego ojca  Eldarica i króla "
-#~ "Addrorana... Jednakże jest nowa nadzieja, nowa kraina rozciąga się przed "
-#~ "nami!"
-
-#~ msgid ""
-#~ "But dark deeds have been done on all sides. There is now a secret that "
-#~ "only Jessica and I share. I must have your word that what I say will "
-#~ "never be uttered again."
-#~ msgstr ""
-#~ "Ale ciemne postępki zostały poczynione po obu stronach. Istnieje sekret, "
-#~ "który dzielimy tylko Jessica i ja. Muszę wasze słowo, że to co teraz "
-#~ "powiem, nigdy więcej nie zostanie powtórzone."
-
-#~ msgid "I have followed you this far, I will keep your secret. I pledge."
-#~ msgstr "Podążałem za tobą aż dotąd, dotrzymam tajemnicy. Przyrzekam."
-
-#~ msgid "Lord, I shall guard your secret until the time of my death."
-#~ msgstr "Panie, będę strzegł twojej tajemnicy aż do mojej śmierci."
-
-#~ msgid "I will take it with me to my grave."
-#~ msgstr "Zabiorę ją ze sobą do grobu."
-
-#~ msgid ""
-#~ "I agree, but misfortune may follow you depending on the nature of your "
-#~ "misdeed."
-#~ msgstr ""
-#~ "Zgadzam się, ale nieszczęście może podążać za tobą w zależności od natury "
-#~ "twojego złego czynu."
-
-#~ msgid ""
-#~ "The elves don't have the Ruby of Fire. We perpetrated a ruse on the orcs. "
-#~ "If they return they will come looking for the elves."
-#~ msgstr ""
-#~ "Elfy nie mają Rubinu Ognia. Wywiedliśmy orków w pole. Jeśli powrócą, to "
-#~ "będą szukać elfów."
-
-#~ msgid ""
-#~ "To be fair to you, Haldric, the elves were reconsidering their Pact with "
-#~ "us."
-#~ msgstr ""
-#~ "Szczerze mówiąc, Haldricu, elfy ponownie rozważały Pakt, który z nimi "
-#~ "zawarliśmy."
-
-#~ msgid ""
-#~ "Humph. I suspected as much -- from both the elves and you. Humans and "
-#~ "elves always think they're so clever!"
-#~ msgstr ""
-#~ "Hmmm. Podejrzewałem to -- zarówno elfów jak i ciebie. Ludzie i elfy "
-#~ "zawsze myślą, że są tacy sprytni!"
-
-#~ msgid ""
-#~ "May the Lords of Light have Mercy on you. But, I am bound by my word."
-#~ msgstr ""
-#~ "Niech Władcy Światła mają nad tobą litość. Jednakże jestem związany danym "
-#~ "słowem."
-
-#~ msgid "Jessica, you hid the ruby away in that vile Troll Hole? Didn't you?"
-#~ msgstr ""
-#~ "Jessico, ukryłaś Rubin w tej obrzydliwej dziurze trolli? Nieprawdaż?"
-
-#~ msgid "What? Why would you doubt me?"
-#~ msgstr "Co? Dlaczego we mnie wątpisz?"
-
-#~ msgid ""
-#~ "The orcs that didn't escape in the ships have regrouped. They are "
-#~ "preparing to march on the elves. We should come to the aid of our new "
-#~ "friends."
-#~ msgstr ""
-#~ "Orki, które nie uciekły statkami, przegrupowały się. Przygotowują się do "
-#~ "marszu na elfy. Powinniśmy udać się na pomoc naszym nowym przyjaciołom."
-
-#~ msgid ""
-#~ "These orcs are few, but the elves aren't accustomed to war. Besides we "
-#~ "will have to rely on elven charity if we are to survive this first winter."
-#~ msgstr ""
-#~ "Tych orków jest niewiele, ale elfy nie są przyzwyczajone do wojny. Poza "
-#~ "tym będziemy musieli polegać na ich życzliwości jeśli chcemy przetrwać "
-#~ "pierwszą zimę."
-
-#~ msgid ""
-#~ "After that we should build towns in all of the regions that the elves "
-#~ "have given us. We should move our capital inland, away from the coast. I "
-#~ "hope the children of the good people of the west-north, of the Green "
-#~ "Isle, find prosperity in this new land."
-#~ msgstr ""
-#~ "Potem powinniśmy wybudować miasta we wszystkich regionach, które elfy nam "
-#~ "przekazały. Powinniśmy również przesunąć naszą stolicę wgłąb lądu, z dala "
-#~ "od wybrzeża. Mam nadzieję, że dzieci dobrych ludzi ze północnego-zachodu, "
-#~ "z Zielonej Wyspy, znajdą dobrobyt na nowej ziemi."
-
-#~ msgid "So what of the rest of you?"
-#~ msgstr "A co z resztą z was?"
-
-#~ msgid ""
-#~ "I shall go back to my people. It seems we have grown many and strong in "
-#~ "the time I was gone. I will try to convince them of the wisdom of using "
-#~ "the underways to settle new lands."
-#~ msgstr ""
-#~ "Wrócę do moich ludzi. Wydaje się, że zyskaliśmy na liczbie i sile w "
-#~ "czasie, gdy mnie nie było. Będę starał się przekonać o sensie używania "
-#~ "podziemnych przejść do kolonizacji nowych terenów."
-
-#~ msgid ""
-#~ "I know the way to many places, I think. I want to find out if there are "
-#~ "dwarves in other lands. It's a big world with lots of good mountains. Of "
-#~ "that much I am sure."
-#~ msgstr ""
-#~ "Znam drogę do wielu miejsc. Tak sądzę. Chcę się dowiedzieć, czy "
-#~ "krasnoludy żyją też na innych ziemiach. To duży świat z wieloma dobrymi "
-#~ "górami. Tego jestem pewien."
-
-#~ msgid ""
-#~ "We have lost much in the last few months, but we should not lose all of "
-#~ "our knowledge. I will go forth amongst the people and spread wisdom, and "
-#~ "see about establishing a new order of Magi in this new land."
-#~ msgstr ""
-#~ "Wiele straciliśmy w ostatnich miesiącach, ale nie powinniśmy stracić "
-#~ "całej naszej wiedzy. Pójdę do ludzi, by dalej szerzyć mądrość i zajmę się "
-#~ "ustanawianiem nowego zakonu magów w tej nowej krainie."
-
-#~ msgid ""
-#~ "I am but a humble servant of the Crown. I will establish a new order of "
-#~ "knights for a new land. For a new King, if you will allow me to serve "
-#~ "under your banner."
-#~ msgstr ""
-#~ "Jestem wyłącznie skromnym sługą Korony. Ustanowię nowy porządek rycerzy "
-#~ "dla nowej krainy. Dla nowego króla, jeśli pozwolisz mi służyć pod twoim "
-#~ "sztandarem."
-
-#~ msgid "Excellent."
-#~ msgstr "Doskonale."
-
-#~ msgid ""
-#~ "I suppose I am King Haldric now. Hmm... but what to call this new kingdom?"
-#~ msgstr ""
-#~ "Przypuszczam że jestem teraz królem Haldrikiem. Hmm... ale jak nazwać to "
-#~ "nowe królestwo?"
-
-#~ msgid "May I make a suggestion?"
-#~ msgstr "Czy mogę coś zasugerować?"
-
-#~ msgid "Sure."
-#~ msgstr "Oczywiście."
-
-#~ msgid ""
-#~ "The word Wesfolk is from your old tongue. It means 'People of the West'. "
-#~ "The elves call us the people of the west-north. Under the same old tongue "
-#~ "that would be 'Wes Noth'. So I suggest that the new kingdom be called "
-#~ "'Wesnoth', in honor of our old home."
-#~ msgstr ""
-#~ "Słowo Wesfolk pochodzi z waszego dawnego języka i oznacza \"ludzi z "
-#~ "zachodu\"'. Elfy nazywają nas ludźmi z północnego wschodu, co w tym samym "
-#~ "języku zapisane zostałoby jako \"Wes Noth\". Sugeruję, by to nowe "
-#~ "królestwo nazwać \"Wesnoth\", ku czci naszego dawnego domu."
-
-#~ msgid ""
-#~ "Hmm. 'Wesnoth'. I like it. Yes, 'Wesnoth' would be fine. So I am the "
-#~ "first King of Wesnoth!"
-#~ msgstr ""
-#~ "Hmm. \"Wesnoth\" podoba mi się. Tak, \"Wesnoth\" będzie w porządku. A "
-#~ "więc jestem pierwszym królem Wesnoth!"
-
-#~ msgid "So, what is to become of me?"
-#~ msgstr "A kim ja zostałam?"
-
-#~ msgid ""
-#~ "There are many Wesfolk amongst the remains of my people. We must stay "
-#~ "united under one banner. I will need you by my side if there is any hope "
-#~ "of building a true 'Kingdom of Wesnoth'. Come, we have much work to do."
-#~ msgstr ""
-#~ "Jest wielu z Wesfolk żyjących pośród resztek moich ludzi. Musimy zostać "
-#~ "zjednoczeni pod jednym sztandarem. Będę potrzebował cię u mego boku, "
-#~ "jeśli istnieje jakakolwiek nadzieja zbudowania prawdziwego \"Królestwa "
-#~ "Wesnoth\". Chodź, mamy wiele do zrobienia."
-
-#~ msgid "We!?"
-#~ msgstr "My!?"
-
-#~ msgid ""
-#~ "In later ages the bards would sing the 'The Breaking of the Pact', an "
-#~ "epic tale of Haldric's betrayal of the elves. They would whisper of the "
-#~ "price he and his descendants would pay for that betrayal without knowing "
-#~ "the whole truth."
-#~ msgstr ""
-#~ "W późniejszych wiekach bardowie śpiewaliby \"Złamanie Paktu\", epicką "
-#~ "opowieść o Haldricu zdradzającym elfy. Szeptaliby o cenie, którą on i "
-#~ "jego potomkowie zapłaciliby za zdradę bez poznania całej prawdy."
-
-#~ msgid ""
-#~ "But some of us have remembered the true story of our arrival on this "
-#~ "great continent. The true story of the Rise of Wesnoth."
-#~ msgstr ""
-#~ "Ale część z nas zapamiętała prawdziwą historię naszego przybycia na ten "
-#~ "wielki kontynent. Prawdziwą historię Powstania Wesnoth."
-
-#~ msgid "Tan-Vragish"
-#~ msgstr "Tan-Vragish"
-
-#~ msgid "Ut'Tan-Grorag"
-#~ msgstr "Ut'Tan-Grorag"
-
-#~ msgid "Tan-Erinak"
-#~ msgstr "Tan-Erinak"
-
-#~ msgid "Tan-Prodash"
-#~ msgstr "Tan-Prodash"
-
-#~ msgid "Lt. Aethyr sacrifices himself to Lich-Lord Jevyan and"
-#~ msgstr "Por. Aethyr poświęca się władcy liczów Jevyana i"
-
-#~ msgid "Destroy Lich-Lord Jevyan and"
-#~ msgstr "Zniszcz władcę liczów Jevyana i"
-
-#~ msgid "Defeat all enemy leaders except for one"
-#~ msgstr "Pokonaj wszystkich przywódców wroga z wyjątkiem jednego"
-
-#~ msgid "Death of Lt. Aethyr by somebody other than Jevyan"
-#~ msgstr "Zabicie por. Aethyra przez kogoś innego niż Jevyan"
-
-#~ msgid "Fail to leave one enemy leader behind"
-#~ msgstr "Nie pozostanie jeden przywódca wroga"
-
-#~ msgid ""
-#~ "Haldric rapidly approaches the site where Lich-Lord Jevyan has made "
-#~ "landfall. The final confrontation looms before him."
-#~ msgstr ""
-#~ "Haldric gwałtownie zbliża się do miejsca gdzie władca liczów Jevyan dobił "
-#~ "do brzegu. Zbliża się ostateczna konfrontacja."
-
-#~ msgid "You can not win. Give me the Ruby of Fire and I will go in peace."
-#~ msgstr "Nie możesz wygrać. Daj mi Rubin Ognia, a odejdę w pokoju."
-
-#~ msgid ""
-#~ "This ends here, Jevyan. Even if I believed your words I couldn't give you "
-#~ "the Ruby of Fire."
-#~ msgstr ""
-#~ "To skończy się tutaj, Jevyan. Nawet gdybym uwierzył twoim słowom, nie "
-#~ "mógłbym dać ci Rubinu Ognia."
-
-#~ msgid ""
-#~ "Bah! Even if you have learned to conceal the power of the Ruby of Fire "
-#~ "you will deliver it unto me in death!"
-#~ msgstr ""
-#~ "Bah! Nawet gdybyś nauczył się ukrywać moc Rubinu Ognia, to i tak wpadnie "
-#~ "on w moje ręce wraz z twoją śmiercią! "
-
-#~ msgid ""
-#~ "You're a fool, Jevyan. How do you think we secured our place here? We had "
-#~ "to give the elves the Ruby of Fire. We just signed a treaty with the "
-#~ "elves ensuring our place here."
-#~ msgstr ""
-#~ "Jesteś głupcem, Jevyan. Jak myślisz, w jaki sposób zabezpieczyliśmy tutaj "
-#~ "nasze miejsce? Musieliśmy dać Rubin Ognia elfom. Właśnie podpisaliśmy "
-#~ "traktat z elfami zapewniający nam te ziemie."
-
-#~ msgid ""
-#~ "No! I don't believe it. Only a fool would give away an artifact of such "
-#~ "power."
-#~ msgstr ""
-#~ "Nie! Nie wierzę w to! Tylko głupiec pozbyłby się artefaktu o takiej mocy."
-
-#~ msgid "A fool, or a desperate band of refugees!"
-#~ msgstr "Głupiec albo zdesperowana banda uchodźców!"
-
-#~ msgid "No. It can't be!"
-#~ msgstr "Nie. To niemożliwe!"
-
-#~ msgid ""
-#~ "Fool human, you shouldn't give such toys to elves! Bah! It matters little "
-#~ "to me. I'm no wizard. All I got is my axe. He, he. It's all I need -- "
-#~ "Prepare to die, orcish scum!"
-#~ msgstr ""
-#~ "Głupi człowieku, nie powinieneś dawać elfom takich zabawek! Jej! Niewiele "
-#~ "to dla mnie znaczy. Nie jestem czarodziejem. Wszystko co mam, to mój "
-#~ "topór. He, he. To wszystko czego mi trzeba - przygotujcie się na śmierć, "
-#~ "orkowe ścierwa!"
-
-#~ msgid "Ha. Let all of the footsoldiers of darkness be cast down!"
-#~ msgstr "Ha. Niech padną wszyscy żołnierze ciemności!"
-
-#~ msgid "It matters little, because here you fall!"
-#~ msgstr "To niewiele znaczy, bo tutaj doświadczysz swojego upadku!"
-
-#~ msgid "For all of the good people of Clearwater Port!"
-#~ msgstr "Za wszystkich dobrych ludzi z Portu Clearwater!"
-
-#~ msgid "For the honor of Southbay!"
-#~ msgstr "Za honor Południowej Zatoki!"
-
-#~ msgid ""
-#~ "We don't need some magic trinket to beat you! Prepare to meet your fate "
-#~ "you decrepit sack of bones! For the honor of all of the people of the "
-#~ "west-north!"
-#~ msgstr ""
-#~ "Nie potrzebujemy magicznych świecidełek, by cię pokonać! Przygotuj się na "
-#~ "spotkanie z przeznaczeniem, zgrzybiały worku kości! Za honor wszystkich "
-#~ "ludzi z północnego zachodu!"
-
-#~ msgid "Charge!"
-#~ msgstr "Do ataku!"
-
-#~ msgid ""
-#~ "I hate it when my prey gets chatty! Get them, it's a long boat ride back "
-#~ "home!"
-#~ msgstr ""
-#~ "Nienawidzę, gdy moja zdobycz staje się rozmowna! Brać ich, powrót do domu "
-#~ "zajmie nam sporo czasu!"
-
-#~ msgid "We shall soon see if you have the Ruby of Fire!"
-#~ msgstr "Wkrótce się przekonamy czy masz Rubin Ognia!"
-
-#~ msgid "<Whispering> Lieutenant, you remember the plan right?"
-#~ msgstr "<Szepcząc> Poruczniku, pamiętasz plan, prawda?"
-
-#~ msgid "<Whispering> Yes Sir. I am ready."
-#~ msgstr "<Szepcząc> Tak panie. Jestem gotowy."
-
-#~ msgid "He's raising our dead! Be careful!"
-#~ msgstr "Wskrzesza naszych umarłych! Bądźcie ostrożni!"
-
-#~ msgid ""
-#~ "Feel my wrath, Jevyan, I'm coming for you! No piece of paper in my pocket "
-#~ "is going to stop me from destroying you. For my family! For the people of "
-#~ "Clearwater Port!"
-#~ msgstr ""
-#~ "Poczuj mój gniew, Jevyan, idę po ciebie! Żaden kawałek papieru w mojej "
-#~ "kieszeni nie jest w stanie zatrzymać mnie przed zniszczeniem ciebie. Za "
-#~ "moją rodzinę! Za ludzi z Portu Clearwater!"
-
-#~ msgid "All life is finite, you will be made to serve along with the rest."
-#~ msgstr ""
-#~ "Każde życie się kiedyś kończy, a ty będziesz mi służył razem z innymi."
-
-#~ msgid "Come on, stay still, just for a second..."
-#~ msgstr "No dalej, stój spokojnie, tylko przez sekundę..."
-
-#~ msgid "For the Wesfolk!"
-#~ msgstr "Za Wesfolk!"
-
-#~ msgid "Be careful, Lieutenant!"
-#~ msgstr "Bądź ostrożny, poruczniku!"
-
-#~ msgid "The battle is going against us!"
-#~ msgstr "Walka nie toczy się po naszej myśli!"
-
-#~ msgid "Our forces are being routed! We should flee back to the Green Isle!"
-#~ msgstr ""
-#~ "Nasze siły są rozgramiane! Powinniśmy uciec z powrotem na Zieloną Wyspę!"
-
-#~ msgid "It goes poorly for us!"
-#~ msgstr "Idzie nam kiepsko!"
-
-#~ msgid "Defeated, by humans?"
-#~ msgstr "Pokonani, przez ludzi?"
-
-#~ msgid "Fight on, you cowardly orcish worms!"
-#~ msgstr "Walczcie dalej, wy tchórzliwe orkowe robaki!"
-
-#~ msgid ""
-#~ "Da old bag of bones has been crushed, and our cause is lost. We know da "
-#~ "elfses have da fire ruby. Retreat!"
-#~ msgstr ""
-#~ "Stary worek kości został zniszczony i nasza walka straciła sens. Wiemy "
-#~ "już, że elfy mieć ognia rubin. Odwrót!"
-
-#~ msgid "Da elfses have the fire ruby, we must flee. To da ships!"
-#~ msgstr "Elfy mieć ognia rubin, my musieć uciekać. Do statki!"
-
-#~ msgid ""
-#~ "We have many kinsmen on the Green Isle- we will return for the Ruby of "
-#~ "Fire!"
-#~ msgstr "Mamy wielu krewnych na Zielonej Wyspie - wrócimy po Rubin Ognia!"
-
-#~ msgid ""
-#~ "We must get back to the Green Isle. The elfses have the Ruby of Fire and "
-#~ "our assault has been stopped."
-#~ msgstr ""
-#~ "Musimy wrócić na Zieloną Wyspę. Elfy mają Rubin Ognia, a nasze natarcie "
-#~ "zostało zatrzymane."
-
-#~ msgid ""
-#~ "The plan revolved around some orcs making it back to the Green Isle to "
-#~ "tell their kin that the elves have the Ruby of Fire so we wouldn't have "
-#~ "to bear the brunt of the next invasion."
-#~ msgstr ""
-#~ "Plan polegał na tym, że część orków miała wrócić na Zieloną Wyspę, by "
-#~ "powiedzieć swoim współplemieńcom, że elfy mają Rubin Ognia. Tak, żebyśmy "
-#~ "nie musieli przyjąć całego ciężaru następnej inwazji."
-
-#~ msgid "What have we done?"
-#~ msgstr "Cóż takiego uczyniliśmy?"
-
-#~ msgid "My love, my family, I'll be there soo-"
-#~ msgstr "Moja miłości, moja rodzino, będę tam wkrót-"
-
-#~ msgid ""
-#~ "Lieutenant Aethyr! No! He was critical for convincing Jevyan that the "
-#~ "elves have the Ruby of Fire."
-#~ msgstr ""
-#~ "Poruczniku Aethyr! Nie! Nie bardzo podobał mu się pomysł, by przekonać "
-#~ "Jevyana, że elfy są w posiadaniu Rubinu Ognia."
-
-#~ msgid ""
-#~ "Jevyan- I spit upon thee. Your end awaits. My love, my family, I'll be "
-#~ "there soo-"
-#~ msgstr ""
-#~ "Jevyan- pluję na ciebie. Twój koniec nadejdzie. Moja miłości, moja "
-#~ "rodzino, będę tam wkrót-"
-
-#~ msgid ""
-#~ "Fool. You are no match for my power. What! What's this? A treaty. That's "
-#~ "elf script."
-#~ msgstr ""
-#~ "Głupcze. Nie dorównujesz mojej mocy. Co! Co to jest? Traktat. To pismo "
-#~ "elfów."
-
-#~ msgid ""
-#~ "No. Why? You fools, you gave the Ruby of Fire to the elves. But that "
-#~ "won't save you from me. I will destroy you, then I will deal with the "
-#~ "elves."
-#~ msgstr ""
-#~ "Nie. Dlaczego? Głupcy, daliście Rubin Ognia elfom. Ale to was nie uratuje "
-#~ "przed mną. Zniszczę was, a później zajmę się nimi."
-
-#~ msgid "We'll see about that. For the honor of Lieutenant Aethyr, forward!"
-#~ msgstr "Zobaczymy. Za honor porucznika Aethyra, naprzód!"
-
-#~ msgid ""
-#~ "I am fallen before my plans have reached fruition. A curse upon you "
-#~ "Haldric, may you and your descendants know nothing but strife!"
-#~ msgstr ""
-#~ "Przegrałem zanim udało mi się urzeczywistnić moje plany. Przeklinam cię "
-#~ "Haldric, niech ty i twoi potomkowie nie zaznają niczego poza wojną!"
-
-#~ msgid ""
-#~ "You deny me my honorable death? Our foes are not yet convinced that the "
-#~ "elves have the ruby."
-#~ msgstr ""
-#~ "Odmawiasz mi honorowej śmierci? Nasi wrogowie nie są jeszcze przekonani, "
-#~ "że elfy mają rubin."
-
-#~ msgid "Da old bag 'o bones is gone, but you haven't beat us yet!"
-#~ msgstr "Stary worek kości przepadł, ale jeszcze nas nie pokonaliście!"
-
-#~ msgid "We took yer home now we'll take yer lives!"
-#~ msgstr "Zabraliśmy wasze domy, teraz zabierzemy wasze życia!"
-
-#~ msgid "The elfses have da fire ruby, and you have nothing!"
-#~ msgstr "Elfy mieć ognia rubin, a wy nie macie niczego!"
-
-#~ msgid "We will suck the marrow from your bones human!"
-#~ msgstr "Wyssiemy szpik z twoich kości, człowieku!"
-
-#~ msgid "Squidy"
-#~ msgstr "Mackowaty"
-
-#~ msgid "Ack. One of those monsters is destroying the bridge."
-#~ msgstr "Ups. Jeden z tych potworów niszczy most."
-
-#~ msgid "Inky"
-#~ msgstr "Atramentowy"
-
-#~ msgid "The bridge!"
-#~ msgstr "Most!"
-
-#~ msgid "Beaky"
-#~ msgstr "Dziobaty"
-
-#~ msgid "Our advance is thwarted, that monster has destroyed the bridge!"
-#~ msgstr "Nie możemy kontynuować marszu, ten potwór zniszczył most!"
-
-#~ msgid ""
-#~ "It's the Haldric! Jevyan, you never said you came to destroy this "
-#~ "monster. We will help you."
-#~ msgstr ""
-#~ "To Haldric! Jevyan, nigdy nie powiedziałeś, że przybyłeś zniszczyć tego "
-#~ "potwora. Pomożemy ci."
-
-#~ msgid "Come in from the deep my loyal soldiers!"
-#~ msgstr "Przybywajcie z głębin moi, żołnierze!"
-
-#~ msgid "Rise, rise from the ground!"
-#~ msgstr "Wstańcie, wstańcie z ziemi!"
-
-#~ msgid "Neep! SPLAT!"
-#~ msgstr "Piip! PLASK!"
-
-#~ msgid "Ahh... That almost makes it all worth while!"
-#~ msgstr "Ach... Dla takich chwil warto walczyć!"
-
-#~ msgid "You'll pay for that!"
-#~ msgstr "Zapłacisz za to!"
-
-#~ msgid "Strike down these fools."
-#~ msgstr "Uderz na tych głupców."
-
-#~ msgid "We did it! We won!"
-#~ msgstr "Udało się! Wygraliśmy!"
-
-#~ msgid ""
-#~ "Jevyan is destroyed, but at a terrible price. Let's put Lieutenant Aethyr "
-#~ "to rest and discuss what is to come in the following days."
-#~ msgstr ""
-#~ "Jevyan został zniszczony, ale za straszną cenę. Pochowajmy porucznika "
-#~ "Aethera i przedyskutujmy co należy czynić w nadchodzących dniach."
-
-#~ msgid ""
-#~ "Our strength is waning, and our foes grow stronger by the hour. The "
-#~ "battle is lost!"
-#~ msgstr ""
-#~ "Nasza moc słabnie, a nasi wrogowie rosną w siłę z każdą godziną. Bitwa "
-#~ "jest przegrana!"
-
-#~ msgid "The Plan"
-#~ msgstr "Plan"
-
-#~ msgid "So what is your plan?"
-#~ msgstr "A więc jaki masz plan?"
-
-#~ msgid ""
-#~ "We're going to convince Jevyan that we gave the elves the Ruby of Fire to "
-#~ "secure our place in this new land. Then if the orcs return, hopefully "
-#~ "they'll go looking for our not so loyal elven allies first."
-#~ msgstr ""
-#~ "Zamierzamy przekonać Jevyana, że przekazaliśmy Rubin Ognia elfom, by "
-#~ "zapewnić sobie miejsce w tej nowej krainie. Wtedy, gdy orki powrócą, "
-#~ "miejmy nadzieję, że udadzą się najpierw na poszukiwania naszych niezbyt "
-#~ "lojalnych elfickich sojuszników."
-
-#~ msgid ""
-#~ "Haldric, that's devious. I kind of like this plan. But you spoke a pact "
-#~ "with the elves. You'll be expected to come to their aid."
-#~ msgstr ""
-#~ "Haldric, to przebiegłe. W pewnym sensie podoba mi się twój plan. Ale "
-#~ "zawarłeś pakt z elfami. Będą od ciebie oczekiwały, że przybędziesz im na "
-#~ "pomoc."
-
-#~ msgid ""
-#~ "Yes, and we may come to their aid. We'll have to weigh our options when "
-#~ "and if the time comes. If the orcs return in great numbers the brunt of "
-#~ "their assault must fall on somebody else. Who knows, maybe I won't even "
-#~ "come to their aid at all-"
-#~ msgstr ""
-#~ "Tak. Możemy przybyć im na pomoc. Będziemy musieli ocenić nasze możliwości "
-#~ "jeśli i gdy nadejdzie czas. Jeśli orki powrócą w wielkiej ilości, impet "
-#~ "ich uderzenia musi spaść na kogoś innego. Kto wie, może nie będę musiał "
-#~ "wcale przybywać im z pomo-"
-
-#~ msgid ""
-#~ "Many people will call you a coward. They will say that you turned your "
-#~ "back on your pact with the elves. It's not like you can tell people what "
-#~ "I overheard."
-#~ msgstr ""
-#~ "Wielu ludzi nazwie cię tchórzem. Powiedzą, że złamałeś pakt z elfami. Nie "
-#~ "jest tak, że możesz powiedzieć ludziom to co ja podsłuchałam."
-
-#~ msgid ""
-#~ "Recent events have taught me one thing: that survival trumps honor. "
-#~ "Besides, they won't be screaming at me- I'll be dead."
-#~ msgstr ""
-#~ "Ostatnie wydarzenia nauczyły mnie jednej rzeczy: przeżycie jest "
-#~ "ważniejsze od honoru. Poza tym nie będą na mnie wrzeszczeć- przecież będę "
-#~ "martwy."
-
-#~ msgid "WHAT!"
-#~ msgstr "CO!"
-
-#~ msgid ""
-#~ "I'll be dead. I mean we can't just say that we gave away the Ruby of "
-#~ "Fire, or send Jevyan a letter. Well, we are going to say it- but that's "
-#~ "not the point. Jessica, you're going to forge a very official looking "
-#~ "treaty, in which we give the elves the Ruby of Fire, in return for our "
-#~ "place here."
-#~ msgstr ""
-#~ "Będę martwy. Mam na myśli to, że nie możemy po prostu powiedzieć, że "
-#~ "oddaliśmy Rubin Ognia albo wysłać Jevyanowi list. Cóż, powiemy, że - ale "
-#~ "nie o to chodzi. Jessico, podrobisz bardzo oficjalnie wyglądający "
-#~ "traktat, na mocy którego przekazujemy elfom Rubin Ognia w zamian za nasze "
-#~ "miejsce tutaj."
-
-#~ msgid ""
-#~ "I'm going to face Jevyan, and if rumors of his power are true he's going "
-#~ "to pick that treaty off my mangled corpse. Then, you're going to destroy "
-#~ "Jevyan after word of the treaty has spread to the orcs, but before he has "
-#~ "a chance to read my undead mind..."
-#~ msgstr ""
-#~ "Zmierzę się z Jevyanem i jeśli plotki o jego sile są prawdziwe, znajdzie "
-#~ "ten pakt przy moich zmasakrowanych zwłokach. Wtedy zniszczysz Jevyana po "
-#~ "tym jak plotki o pakcie rozejdą się wśród orków, ale zanim będzie miał "
-#~ "szansę, by odczytać co zawiera mój nieumarły umysł..."
-
-#~ msgid ""
-#~ "Haldric! I won't do it... I won't help. What is it with your kind, always "
-#~ "rushing to a fool's death. Who'll lead these people?"
-#~ msgstr ""
-#~ "Haldric! Nie zrobię tego... Nie pomogę. Co jest z wami, zawsze pędzącymi "
-#~ "do głupiej śmierci? Kto poprowadzi tych ludzi?"
-
-#~ msgid ""
-#~ "You will. I wouldn't have made it this far without you. We really have to "
-#~ "convince Jevyan-"
-#~ msgstr ""
-#~ "Ty. Nie doszedłbym tak daleko bez ciebie. Naprawdę musimy przekonać "
-#~ "Jevyana-"
-
-#~ msgid "Haldric, this is ridiculous! I- -"
-#~ msgstr "Haldirc, to absurdalne! Ja- -"
-
-#~ msgid ""
-#~ "There is no way I'm letting you go through with this, Sir! Over our dead "
-#~ "bodies, right Jessica?"
-#~ msgstr ""
-#~ "Nie ma mowy, żebym pozwolił ci to zrobić, panie! Po naszych trupach, "
-#~ "prawda Jessica?"
-
-#~ msgid "Right!"
-#~ msgstr "Racja!"
-
-#~ msgid "I'll do it sir."
-#~ msgstr "Ja to zrobię, panie."
-
-#~ msgid "No. I can't ask you to do this."
-#~ msgstr "Nie. Nie mogę cię o to prosić."
-
-#~ msgid ""
-#~ "You've denied me my honorable death twice already. Once when you arrived "
-#~ "at Clearwater Port, and once again when your ships rescued me. I'll not "
-#~ "be denied in this a third time!"
-#~ msgstr ""
-#~ "Już dwa razy odmówiłeś mi honorowej śmierci. Po raz pierwszy, gdy "
-#~ "dotarliśmy do portu Clearwater, a drugi, kiedy uratowały mnie twoje "
-#~ "statki. Nie pozwolę, by stało się to po raz trzeci!"
-
-#~ msgid "No, this is my sacrifice to make!"
-#~ msgstr "Nie, to jest poświęcenie, które ja muszę uczynić!"
-
-#~ msgid ""
-#~ "Sir, my family has been slaughtered, and my home lost. All I long for is "
-#~ "to join them. Give me this honorable death... Please, Sir! I beg you!"
-#~ msgstr ""
-#~ "Panie, moja rodzina została zmasakrowana, a mój dom zniszczony. Jedyną "
-#~ "rzeczą, której pragnę, jest dołączenie do nich. Pozwól mi ponieść "
-#~ "honorową śmierć... Proszę, panie! Błagam!"
-
-#~ msgid ""
-#~ "After this conflict is over I'll have to suffer through the long years "
-#~ "alone, with no honorable way of joining them. I want to look that monster "
-#~ "Jevyan in the eye before I go! I won't be denied!"
-#~ msgstr ""
-#~ "Kiedy ten konflikt się skończy, będę musiał cierpieć sam przez długie "
-#~ "lata, bez honorowego sposobu, by do nich dołączyć. Chcę spojrzeć w oczy "
-#~ "temu potworowi Jevyanowi zanim odejdę! Nikt mi tego nie odmówi!"
-
-#~ msgid ""
-#~ "Very well, if you can't be deterred. Remember, you MUST be slain by the "
-#~ "hand of Jevyan himself. We can't have an illiterate orc or mindless "
-#~ "skeleton getting the treaty. We will honor your sacrifice."
-#~ msgstr ""
-#~ "Dobrze, skoro nie można cię powstrzymać. Pamiętaj, musisz zostać "
-#~ "zgładzony przez Jevyana jego własną ręką. Nie możemy pozwolić, by jakiś "
-#~ "ciemny ork czy bezmyślny szkielet zdobył traktat. Uczcimy twoje "
-#~ "poświęcenie."
-
-#~ msgid ""
-#~ "Honor me by destroying Jevyan! Preferably before he can do unnatural "
-#~ "things to me. I want to rest in the ground, not be some mindless undead "
-#~ "slave for all eternity!"
-#~ msgstr ""
-#~ "Uczcijcie moją pamięć niszcząc Jevyana! Lepiej zanim zrobi mi coś "
-#~ "nienaturalnego. Chcę spocząć w ziemi, a nie być jakimś bezmyślnym "
-#~ "nieumarłym niewolnikiem przez całą wieczność."
-
-#~ msgid "We'll make sure. I promise."
-#~ msgstr "Upewnimy się. Obiecuję."
-
-#~ msgid ""
-#~ "We'll have to be careful to let one of the orcish leaders escape back to "
-#~ "the Green Isle with the knowledge that the elves 'have' the Ruby of Fire. "
-#~ "Sheesh... What is your kind's infatuation with rushing to an 'honorable "
-#~ "death'?"
-#~ msgstr ""
-#~ "Musimy być ostrożni i pozwolić jednemu z przywódców orków uciec na "
-#~ "Zieloną Wyspę z wiedzą, że elfy \"mają\" Rubin Ognia. Rany... Dlaczego "
-#~ "jesteście tak zaślepieni tym pędem ku \"honorowej śmierci\"?"
 
 #~ msgid "Rolo"
 #~ msgstr "Rolo"

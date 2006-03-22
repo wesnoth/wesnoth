@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-21 00:32+0100\n"
+"POT-Creation-Date: 2006-03-22 20:20+0100\n"
 "PO-Revision-Date: 2006-02-23 20:05+0100\n"
 "Last-Translator: Gwain <mcgwain@hotmail.com>\n"
 "Language-Team:  <it@li.org>\n"
@@ -25,8 +25,10 @@ msgstr ""
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: data/about.cfg:2 data/campaigns/The_South_Guard.cfg:33
-#: data/campaigns/Two_Brothers.cfg:31
+#: data/about.cfg:2 data/campaigns/Eastern_Invasion.cfg:26
+#: data/campaigns/Heir_To_The_Throne.cfg:29
+#: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
+#: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
 #, fuzzy
 msgid "Artwork and Graphics Designers"
@@ -150,51 +152,51 @@ msgstr "Traduzione in Latino"
 msgid "Norwegian Translation"
 msgstr "Traduzione in Norvegese"
 
-#: data/about.cfg:376
+#: data/about.cfg:377
 msgid "Polish Translation"
 msgstr "Traduzione in Polacco"
 
-#: data/about.cfg:391
+#: data/about.cfg:392
 msgid "Portuguese Translation"
 msgstr "Traduzione in Portoghese"
 
-#: data/about.cfg:398
+#: data/about.cfg:399
 msgid "Portuguese (Brazil) Translation"
 msgstr "Traduzione in Portoghese (Brasiliano)"
 
-#: data/about.cfg:411
+#: data/about.cfg:412
 msgid "Russian Translation"
 msgstr "Traduzione in Russo"
 
-#: data/about.cfg:421
+#: data/about.cfg:422
 msgid "Serbian Translation"
 msgstr "Traduzione in Serbo"
 
-#: data/about.cfg:428
+#: data/about.cfg:429
 msgid "Slovak Translation"
 msgstr "Traduzione in Slovacco"
 
-#: data/about.cfg:435
+#: data/about.cfg:436
 msgid "Slovenian Translation"
 msgstr "Traduzione in Sloveno"
 
-#: data/about.cfg:442
+#: data/about.cfg:443
 msgid "Spanish Translation"
 msgstr "Traduzione in Spagnolo"
 
-#: data/about.cfg:455
+#: data/about.cfg:456
 msgid "Swedish Translation"
 msgstr "Traduzione in Svedese"
 
-#: data/about.cfg:466
+#: data/about.cfg:468
 msgid "Turkish Translation"
 msgstr "Traduzione in Turco"
 
-#: data/about.cfg:477 data/help.cfg:246
+#: data/about.cfg:479 data/help.cfg:246
 msgid "Contributors"
 msgstr "Contributi"
 
-#: data/about.cfg:489
+#: data/about.cfg:491
 msgid "Bots"
 msgstr "Automazioni"
 
@@ -209,6 +211,15 @@ msgstr "Bonus PF Massimo +"
 #: data/amla.cfg:28
 msgid "Full Heal"
 msgstr "Energia Massima"
+
+#: data/campaigns/Eastern_Invasion.cfg:22
+#: data/campaigns/Heir_To_The_Throne.cfg:21
+#: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
+#: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
+#: data/campaigns/Under_the_Burning_Suns.cfg:28
+#, fuzzy
+msgid "Campaign Designer"
+msgstr "Campagna"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
@@ -322,8 +333,8 @@ msgstr "spada"
 #: data/units/Drake_Slasher.cfg:75 data/units/Drake_Warden.cfg:81
 #: data/units/Drake_Warrior.cfg:78 data/units/Dwarvish_Berserker.cfg:36
 #: data/units/Dwarvish_Dragonguard.cfg:28 data/units/Dwarvish_Fighter.cfg:30
-#: data/units/Dwarvish_Lord.cfg:36 data/units/Dwarvish_Lord.cfg:95
-#: data/units/Dwarvish_Steelclad.cfg:36 data/units/Dwarvish_Thunderer.cfg:45
+#: data/units/Dwarvish_Lord.cfg:33 data/units/Dwarvish_Lord.cfg:92
+#: data/units/Dwarvish_Steelclad.cfg:33 data/units/Dwarvish_Thunderer.cfg:45
 #: data/units/Dwarvish_Thunderguard.cfg:31
 #: data/units/Dwarvish_Ulfserker.cfg:35 data/units/Elvish_Archer.cfg:25
 #: data/units/Elvish_Avenger.cfg:64 data/units/Elvish_Captain.cfg:45
@@ -413,8 +424,8 @@ msgstr "mazza ferrata"
 #: data/units/Drake_Enforcer.cfg:104 data/units/Drake_Gladiator.cfg:167
 #: data/units/Drake_Glider.cfg:80 data/units/Drake_Hurricane.cfg:89
 #: data/units/Drake_Sky.cfg:90 data/units/Dwarvish_Fighter.cfg:63
-#: data/units/Dwarvish_Lord.cfg:70 data/units/Dwarvish_Runemaster.cfg:28
-#: data/units/Dwarvish_Steelclad.cfg:69 data/units/Elvish_Druid.cfg:31
+#: data/units/Dwarvish_Lord.cfg:67 data/units/Dwarvish_Runemaster.cfg:28
+#: data/units/Dwarvish_Steelclad.cfg:66 data/units/Elvish_Druid.cfg:31
 #: data/units/Elvish_Druid.cfg:58 data/units/Elvish_Enchantress.cfg:26
 #: data/units/Elvish_Enchantress.cfg:93 data/units/Elvish_Shaman.cfg:32
 #: data/units/Elvish_Shaman.cfg:58 data/units/Elvish_Shyde.cfg:32
@@ -739,6 +750,14 @@ msgstr "assorbi"
 #: data/units/Undead_Spirit_Shadow.cfg:34
 msgid "claws"
 msgstr "artigli"
+
+#: data/campaigns/Heir_To_The_Throne.cfg:25
+#: data/campaigns/The_Rise_Of_Wesnoth.cfg:25
+#: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
+#: data/campaigns/Under_the_Burning_Suns.cfg:32
+#, fuzzy
+msgid "Current Maintainer"
+msgstr "Attuale obiettivo:"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:85
@@ -1289,18 +1308,6 @@ msgstr ""
 #: data/units/Human_Outlaw_Bandit.cfg:40 data/units/Troll_Great.cfg:33
 msgid "mace"
 msgstr "mazza"
-
-#: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
-#: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
-msgid "Campaign Designer"
-msgstr "Campagna"
-
-#: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
-#: data/campaigns/Under_the_Burning_Suns.cfg:32
-#, fuzzy
-msgid "Current Maintainer"
-msgstr "Attuale obiettivo:"
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:3
 msgid "Demilich"
@@ -5625,8 +5632,8 @@ msgstr ""
 msgid "axe"
 msgstr "ascia"
 
-#: data/units/Dwarvish_Fighter.cfg:62 data/units/Dwarvish_Lord.cfg:69
-#: data/units/Dwarvish_Steelclad.cfg:68 data/units/Troll_Warrior.cfg:27
+#: data/units/Dwarvish_Fighter.cfg:62 data/units/Dwarvish_Lord.cfg:66
+#: data/units/Dwarvish_Steelclad.cfg:65 data/units/Troll_Warrior.cfg:27
 msgid "hammer"
 msgstr "martello"
 
@@ -5649,7 +5656,7 @@ msgstr ""
 msgid "Dwarvish Lord"
 msgstr "Signore dei nani"
 
-#: data/units/Dwarvish_Lord.cfg:31
+#: data/units/Dwarvish_Lord.cfg:28
 msgid ""
 "Clad in shining armor, these dwarves look like kings from under the "
 "mountains. They wield axe and hammer with masterful skill, and can hit a "
@@ -5662,12 +5669,12 @@ msgstr ""
 "distanza. Sebbene lenti a piedi, questi nani sono una testimonianza della "
 "prodezza della loro stirpe."
 
-#: data/units/Dwarvish_Lord.cfg:35 data/units/Dwarvish_Steelclad.cfg:34
+#: data/units/Dwarvish_Lord.cfg:32 data/units/Dwarvish_Steelclad.cfg:31
 #: data/units/Undead_Skele_Death_Knight.cfg:38
 msgid "battle axe"
 msgstr "ascia da battaglia"
 
-#: data/units/Dwarvish_Lord.cfg:94
+#: data/units/Dwarvish_Lord.cfg:91
 msgid "hatchet"
 msgstr "accetta"
 
@@ -5726,7 +5733,7 @@ msgstr ""
 msgid "Dwarvish Steelclad"
 msgstr "Nano d'acciaio"
 
-#: data/units/Dwarvish_Steelclad.cfg:30
+#: data/units/Dwarvish_Steelclad.cfg:27
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
