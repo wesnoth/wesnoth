@@ -331,11 +331,6 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	attack_type& attack = attacker_attacks[attack_with];
 	attack.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,true);
 
-	unit_ability_list steadfast_abilities = d->second.get_abilities("steadfast",d->first);
-	bool steadfast = steadfast_abilities.empty() == false;
-	const int steadfast_bonus = steadfast_abilities.highest("bonus").first;
-	const int steadfast_max = steadfast_abilities.lowest("max_bonus").first;
-
 	static const std::string to_the_death_string("berserk");
 	res.rounds = attack.get_specials(to_the_death_string).highest("rounds");
 	res.defender_strikes_first = false;
@@ -440,7 +435,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 					
 				}
 				
-				const double rating = a->second.damage_from(defender_attacks[defend_option])
+				const double rating = a->second.damage_from(defender_attacks[defend_option],true,a->first)
 					*defender_attacks[defend_option].damage()
 					*dnattacks
 					*defender_attacks[defend_option].defense_weight();
@@ -504,7 +499,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		int divisor = 100;
 
 		int base_damage = defend.damage();
-		const int resistance_modifier = a->second.damage_from(defend);
+		int resistance_modifier = a->second.damage_from(defend,true,a->first);
 
 		{ // modify damage
 			weapon_special_list dmg_specials = defend.get_specials("damage");
@@ -538,6 +533,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			}
 			base_damage = dmg_def + dmg_def_mod;
 		}
+		
 		if (strings) {
 			std::stringstream str_base;
 			str_base << _("base damage") << COLUMN_SEPARATOR << base_damage;
@@ -659,7 +655,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	int divisor = 100;
 
 	int base_damage = attack.damage();
-	int resistance_modifier = d->second.damage_from(attack);
+	int resistance_modifier = d->second.damage_from(attack,false,d->first);
 
 	{ // modify damage
 		weapon_special_list dmg_specials = attack.get_specials("damage");
@@ -693,15 +689,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		}
 		base_damage = dmg_def + dmg_def_mod;
 	}
-	//steadfast doubles resistance, but is capped at increasing resistance to 50%
-	if (steadfast && resistance_modifier < 100 && resistance_modifier > steadfast_max) {
-		const int diff = 100 - resistance_modifier;
-		resistance_modifier -= diff*steadfast_bonus/100;
-		if(resistance_modifier < steadfast_max) {
-			resistance_modifier = steadfast_max;
-		}
-	}
-
+	
 	if (strings) {
 		std::stringstream str_base;
 		str_base << _("base damage") << COLUMN_SEPARATOR << base_damage << COLUMN_SEPARATOR;
@@ -753,9 +741,9 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		std::stringstream str_resist;
 		str_resist << gettext(resist < 0 ? N_("defender resistance vs") : N_("defender vulnerability vs"))
 		           << ' ' << gettext(attack.type().c_str());
-		if(steadfast && resistance_modifier < 100) {
-			str_resist << ' ' << _(" (+steadfast)");
-		}
+//		if(steadfast && resistance_modifier < 100) {
+//			str_resist << ' ' << _(" (+steadfast)");
+//		}
 
 		str_resist << EMPTY_COLUMN
 		           << (resist > 0 ? "+" : "") << resist << '%';

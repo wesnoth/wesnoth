@@ -1120,9 +1120,9 @@ std::vector<attack_type>& unit::attacks()
 	return attacks_;
 }
 
-int unit::damage_from(const attack_type& attack) const
+int unit::damage_from(const attack_type& attack,bool attacker,const gamemap::location& loc) const
 {
-	return resistance_against(attack);
+	return resistance_against(attack,attacker,loc);
 }
 
 const std::string& unit::image() const
@@ -1446,19 +1446,146 @@ int unit::defense_modifier(gamemap::TERRAIN terrain, int recurse_count) const
 	return res;
 }
 
-int unit::resistance_against(const attack_type& damage_type) const
+bool unit::resistance_filter_matches(const config& cfg,const gamemap::location& loc,bool attacker,const attack_type& damage_type) const
 {
+	if(!(cfg["active_on"]=="" || (attacker && cfg["active_on"]=="offense") || (!attacker && cfg["active_on"]=="defense"))) {
+		return false;
+	}
+	const std::string& apply_to = cfg["apply_to"];
+	const std::string& damage_name = damage_type.type();
+	if(!apply_to.empty()) {
+		if(damage_name != apply_to) {
+			if(std::find(apply_to.begin(),apply_to.end(),',') != apply_to.end() &&
+				std::search(apply_to.begin(),apply_to.end(),
+				damage_name.begin(),damage_name.end()) != apply_to.end()) {
+				const std::vector<std::string>& vals = utils::split(apply_to);
+				if(std::find(vals.begin(),vals.end(),damage_name) == vals.end()) {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		}
+	}
 	int res = 100;
-
 	const config* const resistance = cfg_.child("resistance");
 	if(resistance != NULL) {
-		const std::string& val = (*resistance)[damage_type.type()];
+		const std::string& val = (*resistance)[damage_name];
 		if(val != "") {
 			res = lexical_cast_default<int>(val);
 		}
 	}
+	res = 100 - res;
+	const config* const apply_filter = cfg.child("filter_apply");
+	if(apply_filter) {
+		if((*apply_filter)["type"] == "value") {
+			if((*apply_filter)["equals"] != "" && lexical_cast_default<int>((*apply_filter)["equals"]) != res) {
+				return false;
+			}
+			if((*apply_filter)["not_equals"] != "" && lexical_cast_default<int>((*apply_filter)["not_equals"]) == res) {
+				return false;
+			}
+			if((*apply_filter)["less_than"] != "" && lexical_cast_default<int>((*apply_filter)["less_than"]) >= res) {
+				return false;
+			}
+			if((*apply_filter)["greater_than"] != "" && lexical_cast_default<int>((*apply_filter)["greater_than"]) <= res) {
+				return false;
+			}
+			if((*apply_filter)["greater_than_equal_to"] != "" && lexical_cast_default<int>((*apply_filter)["greater_than_equal_to"]) < res) {
+				return false;
+			}
+			if((*apply_filter)["less_than_equal_to"] != "" && lexical_cast_default<int>((*apply_filter)["less_than_equal_to"]) > res) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
 
-	return res;
+
+int unit::resistance_against(const attack_type& damage_type,bool attacker,const gamemap::location& loc) const
+{
+	int res = 100;
+	
+	const std::string& damage_name = damage_type.type();
+	const config* const resistance = cfg_.child("resistance");
+	if(resistance != NULL) {
+		const std::string& val = (*resistance)[damage_name];
+		if(val != "") {
+			res = lexical_cast_default<int>(val);
+		}
+	}
+	res = 100 - res;
+	
+	int set_to = 0;
+	bool set_to_set = false;
+	int add_cum = 0;
+	int add_ncum = 0;
+	int mul_cum = 1;
+	int mul_ncum = 1;
+	int max_value = -100000;
+	int min_value = 100000;
+	bool max_set = false;
+	bool min_set = false;
+	
+	unit_ability_list resistance_abilities = get_abilities("resistance",loc);
+	for(std::vector<std::pair<config*,gamemap::location> >::iterator i = resistance_abilities.cfgs.begin(); i != resistance_abilities.cfgs.end(); ++i) {
+		if(resistance_filter_matches(*i->first,loc,attacker,damage_type)) {
+			if((*i->first)["cumulative"] == "yes") {
+				if((*i->first)["value"]!="") {
+					if(set_to_set) {
+						set_to = maximum<int>(set_to,lexical_cast_default<int>((*i->first)["value"]));
+					} else {
+						set_to = lexical_cast_default<int>((*i->first)["value"]);
+						set_to_set = true;
+					}
+				}
+				add_cum += lexical_cast_default<int>((*i->first)["add"]);
+				mul_cum *= lexical_cast_default<int>((*i->first)["multiply"],1);
+			} else {
+				if((*i->first)["value"]!="") {
+					if(set_to_set) {
+						set_to = maximum<int>(set_to,lexical_cast_default<int>((*i->first)["value"]));
+					} else {
+						set_to = lexical_cast_default<int>((*i->first)["value"]);
+						set_to_set = true;
+					}
+				}
+				add_ncum = maximum<int>(add_ncum,lexical_cast_default<int>((*i->first)["add"]));
+				mul_ncum = maximum<int>(mul_ncum,lexical_cast_default<int>((*i->first)["multiply"],1));
+			}
+			if((*i->first)["min_value"]!="") {
+				if(min_set) {
+					min_value = minimum<int>(min_value,lexical_cast_default<int>((*i->first)["min_value"]));
+				} else {
+					min_value = lexical_cast_default<int>((*i->first)["min_value"]);
+					min_set = true;
+				}
+			}
+			if((*i->first)["max_value"]!="") {
+				if(max_set) {
+					max_value = maximum<int>(max_value,lexical_cast_default<int>((*i->first)["max_value"]));
+				} else {
+					max_value = lexical_cast_default<int>((*i->first)["max_value"]);
+					max_set = true;
+				}
+			}
+		}
+	}
+	if(set_to_set) {
+		res = set_to;
+	}
+	res *= maximum<int>(mul_cum,mul_ncum);
+	res += maximum<int>(add_cum,add_ncum);
+	
+	if(min_set) {
+		res = maximum<int>(min_value,res);
+	}
+	if(max_set) {
+		res = minimum<int>(max_value,res);
+	}
+
+	return 100 - res;
 }
 #if 0
 std::map<gamemap::TERRAIN,int> unit::movement_type() const

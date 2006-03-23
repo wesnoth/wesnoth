@@ -174,7 +174,7 @@ class unit
 		const std::vector<attack_type>& attacks() const;
 		std::vector<attack_type>& attacks();
 		
-		int damage_from(const attack_type& attack) const;
+		int damage_from(const attack_type& attack,bool attacker,const gamemap::location& loc) const;
 		
 		const std::string& image() const;
 		const image::locator image_loc() const;
@@ -206,7 +206,7 @@ class unit
 		bool is_flying() const;
 		int movement_cost(gamemap::TERRAIN terrain, int recurse_count=0) const;
 		int defense_modifier(gamemap::TERRAIN terrain, int recurse_count=0) const;
-		int resistance_against(const attack_type& damage_type) const;
+		int resistance_against(const attack_type& damage_type,bool attacker,const gamemap::location& loc) const;
 //		std::map<gamemap::TERRAIN,int> movement_type() const;
 		
 		bool can_advance() const;
@@ -277,6 +277,8 @@ class unit
 		bool ability_active(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
 		bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const;
 		bool ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
+		
+		bool resistance_filter_matches(const config& cfg,const gamemap::location& loc,bool attacker,const attack_type& damage_type) const;
 		
 		config cfg_;
 		
