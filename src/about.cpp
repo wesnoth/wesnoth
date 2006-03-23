@@ -136,7 +136,6 @@ void set_about(const config& cfg){
 		config AA = (**A);
 		about_list.add_child("about",AA);
 		if(!AA["images"].empty()){
-			std::cout<<"set here:"<<""<<":\n";
 			if(images_default.empty()){
 				images_default=AA["images"];
 			}else{
@@ -168,9 +167,8 @@ void set_about(const config& cfg){
 		      	line != lines.end(); line++){
 	  				text+="    "+(*line)+"\n";
 				}
-									std::cout<<"set here:"<<title<<":\n";
+								
 				if(!AA["images"].empty()){
-					std::cout<<"set here:"<<title<<":\n";
 					if(images[campaign].empty()){
 						images[campaign]=AA["images"];
 					}else{
@@ -196,14 +194,11 @@ void show_about(display &disp, std::string campaign)
 	draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,
 	                                 0,0,0,1.0,video.getSurface());
 	update_whole_screen();
-	std::cout<<"got here:"<<campaign<<":\n";
 	std::vector<std::string> image_list;
 	if(campaign.size()){
 		image_list=utils::split(images[campaign]);
 	}else{
-		std::cout<<"got here--"<<images_default<<"--\n";
 		image_list=utils::split(images_default,',',utils::STRIP_SPACES);
-		std::cout<<"got here--"<<image_list[0]<<"--\n";
 	}
 	surface map_image(scale_surface(image::get_image(image_list[0],image::UNSCALED), disp.x(), disp.y()));
 	if(! map_image){
@@ -265,11 +260,7 @@ void show_about(display &disp, std::string campaign)
 		last_escape = key[SDLK_ESCAPE] != 0;
 
 		// check to see if background image has changed
-		std::cout<<"got here: "<<text.size()<<" : "<<startline<<":"<<image_count<<"<?"<<startline*(image_list.size())/text.size()<<"\n";
-		std::cout<<"\t"<< (text.size()) << ":" << ((image_count)) << ":"<< ((startline*(image_list.size())/text.size()))<<"\n";
-		std::cout<<std::flush;
 		if(text.size() && (image_count < ((startline*(int)image_list.size())/(int)text.size()))){
-			std::cout<<"\tgot count\n";
 			image_count++;
 			surface temp=surface(scale_surface(image::get_image(image_list[image_count],image::UNSCALED), disp.x(), disp.y()));
 			map_image=temp?temp:map_image;
