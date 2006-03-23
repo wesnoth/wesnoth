@@ -77,7 +77,7 @@ void ai::do_attack_analysis(
 		std::vector<attack_type>& attacks = unit_itor->second.attacks();
 		for(std::vector<attack_type>::iterator a = attacks.begin(); a != attacks.end(); ++a) {
 			a->set_specials_context(gamemap::location(),gamemap::location(),
-															&gameinfo_,&units_,&map_,&state_,&teams_,true);
+															&gameinfo_,&units_,&map_,&state_,&teams_,true,NULL);
 			if(a->get_special_bool("backstab")) {
 				backstab = true;
 			}

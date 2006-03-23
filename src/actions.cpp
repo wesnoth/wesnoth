@@ -323,13 +323,127 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	res.chance_to_hit_attacker = a->second.defense_modifier(attacker_terrain);
 	res.chance_to_hit_defender = d->second.defense_modifier(defender_terrain);
-
+	
 	std::vector<attack_type>& attacker_attacks = a->second.attacks();
 	std::vector<attack_type>& defender_attacks = d->second.attacks();
 
 	wassert((unsigned)attack_with < attacker_attacks.size());
 	attack_type& attack = attacker_attacks[attack_with];
-	attack.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,true);
+	
+	double best_defend_rating = 0.0;
+	int defend_with = -1;
+	res.ndefends = 0;
+	for(int defend_option = 0; defend_option != int(defender_attacks.size()); ++defend_option) {
+		if(defender_attacks[defend_option].range() == attack.range()) {
+			if (defender_attacks[defend_option].defense_weight() > 0) {
+				attack_type& defend = defender_attacks[defend_option];
+				attack.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,true,&defend);
+				defend.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,false,&attack);
+				int d_nattacks = defend.num_attacks();
+				
+				weapon_special_list swarm = defend.get_specials("attacks");
+				if(!swarm.empty()) {
+					int swarm_min_attacks = swarm.highest("attacks_max");
+					int swarm_max_attacks = swarm.highest("attacks_min");
+					int hitp = d->second.hitpoints();
+					int mhitp = d->second.max_hitpoints();
+					
+					d_nattacks = swarm_min_attacks + swarm_max_attacks * hitp / mhitp;
+				}
+				
+				// calculate damage
+				int bonus = 100;
+				int divisor = 100;
+				
+				int base_damage = defend.damage();
+				int resistance_modifier = a->second.damage_from(defend,true,a->first);
+				
+				{ // modify damage
+					weapon_special_list dmg_specials = defend.get_specials("damage");
+					int dmg_def = base_damage;
+					int dmg_def_mod = 0;
+					int dmg_def_mul_cum = 1;
+					int dmg_def_mul_ncum = 1;
+					bool dmg_def_set = false;
+					bool dmg_def_mod_set = false;
+					for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
+						if((**dmg_it)["cumulative"]=="yes") {
+							dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
+							dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"]);
+							if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
+								dmg_def_mod += lexical_cast_default<int>((**dmg_it)["add"]);
+							} else if((**dmg_it)["add"] != "") {
+								dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
+								dmg_def_mod_set = true;
+							}
+						} else {
+							dmg_def_mul_ncum = maximum<int>(dmg_def_mul_ncum,lexical_cast_default<int>((**dmg_it)["multiply"]));
+							if(dmg_def_set) {
+								dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
+							} else {
+								dmg_def = lexical_cast_default<int>((**dmg_it)["value"]);
+								dmg_def_set = true;
+							}
+							if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
+								dmg_def_mod = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["add"]));
+							} else if((**dmg_it)["add"] != "") {
+								dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
+								dmg_def_mod_set = true;
+							}
+						}
+					}
+					base_damage = (dmg_def * maximum<int>(dmg_def_mul_cum,dmg_def_mul_ncum)) + dmg_def_mod;
+				}
+				
+				const int tod_modifier = combat_modifier(state,units,d->first,d->second.alignment(),map);
+				bonus += tod_modifier;
+				
+				int leader_bonus = 0;
+				if (under_leadership(units, defender, &leader_bonus).valid()) {
+					bonus += leader_bonus;
+		
+				}
+				if (d->second.get_state("slowed") == "true") {
+					divisor *= 2;
+				}
+		
+				bonus *= resistance_modifier;
+				divisor *= 100;
+				const int final_damage = round_damage(base_damage, bonus, divisor);
+				
+				const double rating = a->second.damage_from(defender_attacks[defend_option],true,a->first)
+					*final_damage
+					*d_nattacks
+					*defender_attacks[defend_option].defense_weight();
+				if(defend_with == -1 || rating > best_defend_rating) {
+					best_defend_rating = rating;
+					defend_with = defend_option;
+				}
+			}
+		}
+	}
+	
+	res.defend_with = defend_with;
+	attack_type& defend = defender_attacks[defend_with];
+	attack.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,true,&defend);
+	defend.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,false,&attack);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	static const std::string to_the_death_string("berserk");
 	res.rounds = attack.get_specials(to_the_death_string).highest("rounds");
@@ -416,39 +530,6 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		strings->range = gettext(N_(attack.range().c_str()));
 	}
 
-	double best_defend_rating = 0.0;
-	int defend_with = -1;
-	res.ndefends = 0;
-	for(int defend_option = 0; defend_option != int(defender_attacks.size()); ++defend_option) {
-		if(defender_attacks[defend_option].range() == attack.range()) {
-			if (defender_attacks[defend_option].defense_weight() > 0) {
-				
-				int dnattacks = defender_attacks[defend_option].num_attacks();
-				weapon_special_list swarm = defender_attacks[defend_option].get_specials("attacks");
-				if(!swarm.empty()) {
-					int swarm_min_attacks = swarm.highest("attacks_max");
-					int swarm_max_attacks = swarm.highest("attacks_min");
-					int hitp = d->second.hitpoints();
-					int mhitp = d->second.max_hitpoints();
-					
-					dnattacks = swarm_min_attacks + swarm_max_attacks * hitp / mhitp;
-					
-				}
-				
-				const double rating = a->second.damage_from(defender_attacks[defend_option],true,a->first)
-					*defender_attacks[defend_option].damage()
-					*dnattacks
-					*defender_attacks[defend_option].defense_weight();
-				if(defend_with == -1 || rating > best_defend_rating) {
-					best_defend_rating = rating;
-					defend_with = defend_option;
-				}
-			}
-		}
-	}
-
-	res.defend_with = defend_with;
-
 	const bool counterattack = defend_with != -1;
 
 	static const std::string EMPTY_COLUMN = std::string(1, COLUMN_SEPARATOR) + ' ' + COLUMN_SEPARATOR;
@@ -457,9 +538,6 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	res.amount_attacker_drains = 0;
 	res.amount_defender_drains = 0;
 	if (counterattack) {
-		attack_type& defend = defender_attacks[defend_with];
-		defend.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,false);
-
 		res.rounds = maximum<int>(res.rounds,defend.get_specials(to_the_death_string).highest("rounds"));
 
 		{ // modify chance to hit
@@ -500,16 +578,20 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 		int base_damage = defend.damage();
 		int resistance_modifier = a->second.damage_from(defend,true,a->first);
-
+		
+		
 		{ // modify damage
 			weapon_special_list dmg_specials = defend.get_specials("damage");
 			int dmg_def = base_damage;
 			int dmg_def_mod = 0;
+			int dmg_def_mul_cum = 1;
+			int dmg_def_mul_ncum = 1;
 			bool dmg_def_set = false;
 			bool dmg_def_mod_set = false;
 			for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
 				if((**dmg_it)["cumulative"]=="yes") {
 					dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
+					dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"]);
 					if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
 						dmg_def_mod += lexical_cast_default<int>((**dmg_it)["add"]);
 					} else if((**dmg_it)["add"] != "") {
@@ -517,6 +599,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 						dmg_def_mod_set = true;
 					}
 				} else {
+					dmg_def_mul_ncum = maximum<int>(dmg_def_mul_ncum,lexical_cast_default<int>((**dmg_it)["multiply"]));
 					if(dmg_def_set) {
 						dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
 					} else {
@@ -531,7 +614,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 					}
 				}
 			}
-			base_damage = dmg_def + dmg_def_mod;
+			base_damage = (dmg_def * maximum<int>(dmg_def_mul_cum,dmg_def_mul_ncum)) + dmg_def_mod;
 		}
 		
 		if (strings) {
@@ -661,11 +744,14 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		weapon_special_list dmg_specials = attack.get_specials("damage");
 		int dmg_def = base_damage;
 		int dmg_def_mod = 0;
+		int dmg_def_mul_cum = 1;
+		int dmg_def_mul_ncum = 1;
 		bool dmg_def_set = false;
 		bool dmg_def_mod_set = false;
 		for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
 			if((**dmg_it)["cumulative"]=="yes") {
 				dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
+				dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"]);
 				if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
 					dmg_def_mod += lexical_cast_default<int>((**dmg_it)["add"]);
 				} else if((**dmg_it)["add"] != "") {
@@ -673,6 +759,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 					dmg_def_mod_set = true;
 				}
 			} else {
+				dmg_def_mul_ncum = maximum<int>(dmg_def_mul_ncum,lexical_cast_default<int>((**dmg_it)["multiply"]));
 				if(dmg_def_set) {
 					dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
 				} else {
@@ -687,7 +774,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 				}
 			}
 		}
-		base_damage = dmg_def + dmg_def_mod;
+		base_damage = (dmg_def*maximum<int>(dmg_def_mul_cum,dmg_def_mul_ncum)) + dmg_def_mod;
 	}
 	
 	if (strings) {
