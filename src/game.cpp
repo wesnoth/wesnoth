@@ -371,9 +371,9 @@ bool game_controller::init_config()
 	game_config::load_config(game_config_.child("game_config"));
 
 	hotkey::load_hotkeys(game_config_);
-	about::set_about(game_config_);
 	paths_manager_.set_paths(game_config_);
 	::init_textdomains(game_config_);
+	about::set_about(game_config_);
 
 	return true;
 }

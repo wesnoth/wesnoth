@@ -330,6 +330,7 @@ game_state read_game(const game_data& data, const config* cfg)
 	res.label = (*cfg)["label"];
 	res.version = (*cfg)["version"];
 	res.scenario = (*cfg)["scenario"];
+	res.campaign = (*cfg)["campaign"];
 
 	const config::child_list& players = cfg->get_children("player");
 
@@ -441,6 +442,8 @@ void write_game(const game_state& game, config& cfg/*, WRITE_GAME_MODE mode*/)
 	cfg["version"] = game_config::version;
 
 	cfg["scenario"] = game.scenario;
+
+	cfg["campaign"] = game.campaign;
 
 	cfg["campaign_type"] = game.campaign_type;
 
