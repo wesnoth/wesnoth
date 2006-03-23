@@ -33,6 +33,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
+#include <iterator>
 
 #define LOG_UT LOG_STREAM(info, engine)
 
@@ -2596,8 +2597,19 @@ bool attack_type::get_special_bool(const std::string& special) const
 	if(specials) {
 		const config::child_list& list = specials->get_children(special);
 		for(config::child_list::const_iterator i = list.begin(); i != list.end(); ++i) {
-			if(special_active(**i)) {
+			if(special_active(**i,true)) {
 				return true;
+			}
+		}
+	}
+	if(other_attack_ != NULL) {
+		specials = other_attack_->cfg_.child("specials");
+		if(specials) {
+			const config::child_list& list = specials->get_children(special);
+			for(config::child_list::const_iterator i = list.begin(); i != list.end(); ++i) {
+				if(other_attack_->special_active(**i,false)) {
+					return true;
+				}
 			}
 		}
 	}
@@ -2610,8 +2622,19 @@ weapon_special_list attack_type::get_specials(const std::string& special) const
 	if(specials) {
 		const config::child_list& list = specials->get_children(special);
 		for(config::child_list::const_iterator i = list.begin(); i != list.end(); ++i) {
-			if(special_active(**i)) {
+			if(special_active(**i,true)) {
 				res.cfgs.push_back(*i);
+			}
+		}
+	}
+	if(other_attack_ != NULL) {
+		specials = other_attack_->cfg_.child("specials");
+		if(specials) {
+			const config::child_list& list = specials->get_children(special);
+			for(config::child_list::const_iterator i = list.begin(); i != list.end(); ++i) {
+				if(other_attack_->special_active(**i,false)) {
+					res.cfgs.push_back(*i);
+				}
 			}
 		}
 	}
@@ -2625,7 +2648,7 @@ std::vector<std::string> attack_type::special_tooltips() const
 		const config::child_map& list_map = specials->all_children();
 		for(config::child_map::const_iterator i = list_map.begin(); i != list_map.end(); ++i) {
 			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-				if(special_active(**j)) {
+				if(special_active(**j,true)) {
 					if((**j)["name"] != "") {
 						res.push_back((**j)["name"]);
 						res.push_back((**j)["description"]);
@@ -2649,7 +2672,7 @@ std::string attack_type::weapon_specials() const
 		const config::child_map& list_map = specials->all_children();
 		for(config::child_map::const_iterator i = list_map.begin(); i != list_map.end(); ++i) {
 			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-				if(special_active(**j)) {
+				if(special_active(**j,true)) {
 					if((**j)["name"] != "") {
 						res += (**j)["name"];
 						res += ",";
@@ -2669,11 +2692,22 @@ std::string attack_type::weapon_specials() const
 
 
 
-bool attack_type::special_active(const config& cfg) const
+bool attack_type::special_active(const config& cfg,bool self) const
 {
 	unit_map::const_iterator att = unitmap_->find(aloc_);
 	unit_map::const_iterator def = unitmap_->find(dloc_);
 	wassert(unitmap_ != NULL);
+	
+	if(self) {
+		if(!special_affects_self(cfg)) {
+			return false;
+		}
+	} else {
+		if(!special_affects_opponent(cfg)) {
+			return false;
+		}
+	}
+	
 	if(attacker_) {
 		if(cfg["active_on"] != "" && cfg["active_on"] != "attacker") {
 			return false;
@@ -2682,10 +2716,21 @@ bool attack_type::special_active(const config& cfg) const
 			if(att == unitmap_->end() || !att->second.matches_filter(*cfg.child("filter_self"),aloc_)) {
 				return false;
 			}
+			if(cfg.child("filter_self")->child("filter_weapon") != NULL) {
+				if(!matches_filter(*cfg.child("filter_self")->child("filter_weapon"),0,true)) {
+					return false;
+				}
+			}
 		}
 		if(cfg.child("filter_opponent") != NULL) {
 			if(def == unitmap_->end() || !def->second.matches_filter(*cfg.child("filter_opponent"),dloc_)) {
 				return false;
+			}
+			
+			if(cfg.child("filter_opponent")->child("filter_weapon") != NULL) {
+				if(!other_attack_ || other_attack_->matches_filter(*cfg.child("filter_opponent")->child("filter_weapon"),0,true)) {
+					return false;
+				}
 			}
 		}
 	} else {
@@ -2696,10 +2741,20 @@ bool attack_type::special_active(const config& cfg) const
 			if(def == unitmap_->end() || !def->second.matches_filter(*cfg.child("filter_self"),dloc_)) {
 				return false;
 			}
+			if(cfg.child("filter_self")->child("filter_weapon") != NULL) {
+				if(!matches_filter(*cfg.child("filter_self")->child("filter_weapon"),0,true)) {
+					return false;
+				}
+			}
 		}
 		if(cfg.child("filter_opponent") != NULL) {
 			if(att == unitmap_->end() || !att->second.matches_filter(*cfg.child("filter_opponent"),aloc_)) {
 				return false;
+			}
+			if(cfg.child("filter_opponent")->child("filter_weapon") != NULL) {
+				if(!other_attack_ || !other_attack_->matches_filter(*cfg.child("filter_opponent")->child("filter_weapon"),0,true)) {
+					return false;
+				}
 			}
 		}
 	}
@@ -2707,10 +2762,36 @@ bool attack_type::special_active(const config& cfg) const
 		if(att == unitmap_->end() || !att->second.matches_filter(*cfg.child("filter_attacker"),aloc_)) {
 			return false;
 		}
+		if(attacker_) {
+			if(cfg.child("filter_attacker")->child("filter_weapon") != NULL) {
+				if(!matches_filter(*cfg.child("filter_attacker")->child("filter_weapon"),0,true)) {
+					return false;
+				}
+			}
+		} else {
+			if(cfg.child("filter_attacker")->child("filter_weapon") != NULL) {
+				if(!other_attack_ || !other_attack_->matches_filter(*cfg.child("filter_attacker")->child("filter_weapon"),0,true)) {
+					return false;
+				}
+			}
+		}
 	}
 	if(cfg.child("filter_defender") != NULL) {
 		if(def == unitmap_->end() || !def->second.matches_filter(*cfg.child("filter_defender"),dloc_)) {
 			return false;
+		}
+		if(!attacker_) {
+			if(cfg.child("filter_defender")->child("filter_weapon") != NULL) {
+				if(!matches_filter(*cfg.child("filter_defender")->child("filter_weapon"),0,true)) {
+					return false;
+				}
+			}
+		} else {
+			if(cfg.child("filter_defender")->child("filter_weapon") != NULL) {
+				if(!other_attack_ || !other_attack_->matches_filter(*cfg.child("filter_defender")->child("filter_weapon"),0,true)) {
+					return false;
+				}
+			}
 		}
 	}
 	gamemap::location adjacent[6];
@@ -2818,7 +2899,7 @@ bool attack_type::special_affects_self(const config& cfg) const
 void attack_type::set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
                               const game_data* gamedata, const unit_map* unitmap, 
 							  const gamemap* map, const gamestatus* game_status, 
-							  const std::vector<team>* teams, bool attacker)
+							  const std::vector<team>* teams, bool attacker,const attack_type* other_attack)
 {
 	aloc_ = aloc;
 	dloc_ = dloc;
@@ -2828,10 +2909,16 @@ void attack_type::set_specials_context(const gamemap::location& aloc,const gamem
 	game_status_ = game_status;
 	teams_ = teams;
 	attacker_ = attacker;
+	other_attack_ = other_attack;
 }
 
 
 
+weapon_special_list& weapon_special_list::operator +(const weapon_special_list& w)
+{
+	std::copy(w.cfgs.begin(),w.cfgs.end(),std::insert_iterator<config::child_list>(cfgs,cfgs.end()));
+	return *this;
+}
 
 bool weapon_special_list::empty() const
 {

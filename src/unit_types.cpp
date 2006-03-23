@@ -67,6 +67,13 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 
 	attack_weight_ = lexical_cast_default<double>(cfg["attack_weight"],1.0);
 	defense_weight_ = lexical_cast_default<double>(cfg["defense_weight"],1.0);
+	
+	gamedata_=NULL;
+	unitmap_=NULL; 
+	map_=NULL;
+	game_status_=NULL;
+	teams_=NULL;
+	other_attack_=NULL;
 }
 
 const config& attack_type::get_cfg() const
@@ -203,7 +210,7 @@ int attack_type::attack_animation::matches(bool hit,gamemap::location::DIRECTION
 
 	return result;
 }
-bool attack_type::matches_filter(const config& cfg,int set_) const
+bool attack_type::matches_filter(const config& cfg,int set_,bool self) const
 {
 	const std::string& filter_range = cfg["range"];
 	const t_string& filter_name = cfg["name"];
@@ -219,7 +226,7 @@ bool attack_type::matches_filter(const config& cfg,int set_) const
 	if(filter_type.empty() == false && filter_type != type())
 		return false;
 
-	if(filter_special.empty() == false && !get_special_bool(filter_special))
+	if(!self && filter_special.empty() == false && !get_special_bool(filter_special))
 		return false;
 
 	return true;

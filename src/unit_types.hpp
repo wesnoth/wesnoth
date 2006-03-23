@@ -34,6 +34,8 @@ class weapon_special_list
 {
 	public:
 		
+		weapon_special_list& operator +(const weapon_special_list& w);
+		
 		bool empty() const;
 		
 		int highest(const std::string& key, int def=0) const;
@@ -69,13 +71,13 @@ public:
 	void set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
                               const game_data* gamedata, const unit_map* unitmap, 
 							  const gamemap* map, const gamestatus* game_status, 
-							  const std::vector<team>* teams,bool attacker);
+							  const std::vector<team>* teams,bool attacker,const attack_type* other_attack);
 
 	//this function returns a random animation out of the possible
 	//animations for this attack. It will not return the same attack
 	//each time.
 	const std::pair<const unit_animation*,const unit_animation*> animation(bool hit,gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
-	bool matches_filter(const config& cfg,int set_) const;
+	bool matches_filter(const config& cfg,int set_,bool self=false) const;
 	bool apply_modification(const config& cfg,std::string* description,int set_);
 	
 	int movement_used() const;
@@ -89,7 +91,8 @@ private:
 	const gamemap* map_;
 	const gamestatus* game_status_;
 	const std::vector<team>* teams_;
-	bool special_active(const config& cfg) const;
+	const attack_type* other_attack_;
+	bool special_active(const config& cfg,bool self) const;
 	bool special_affects_opponent(const config& cfg) const;
 	bool special_affects_self(const config& cfg) const;
 	
