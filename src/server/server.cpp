@@ -157,7 +157,17 @@ server::server(int port, input_stream& input, const config& cfg, size_t nthreads
 
 	login_response_.add_child("mustlogin");
 	
-	disallowed_names_ = utils::split(cfg_["disallow_names"]);
+	if(cfg_["disallow_names"] == "") {
+		disallowed_names_.push_back("server");
+		disallowed_names_.push_back("ai");
+		disallowed_names_.push_back("player");
+		disallowed_names_.push_back("network");
+		disallowed_names_.push_back("human");
+		disallowed_names_.push_back("admin");
+		disallowed_names_.push_back("computer");
+	} else {
+		disallowed_names_ = utils::split(cfg_["disallow_names"]);
+	}
 	default_max_messages_ = lexical_cast_default<int>(cfg_["max_messages"],4);
 	default_time_period_ = lexical_cast_default<int>(cfg_["messages_time_period"],10);
 	concurrent_connections_ = lexical_cast_default<int>(cfg_["connections_allowed"],5);
