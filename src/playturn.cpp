@@ -1510,9 +1510,9 @@ void turn_info::undo()
 		unit un = u->second;
 		un.set_goto(gamemap::location());
 
-		gui_.hide_unit(u->first,true);
+		u->second.set_hidden(true);
 		unit_display::move_unit(gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
-		gui_.hide_unit(gamemap::location());
+		u->second.set_hidden(false);
 
 		units_.erase(u);
 		un.set_movement(starting_moves);
@@ -1598,9 +1598,9 @@ void turn_info::redo()
 		unit un = u->second;
 		un.set_goto(gamemap::location());
 
-		gui_.hide_unit(u->first,true);
+		u->second.set_hidden(true);
 		unit_display::move_unit(gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
-		gui_.hide_unit(gamemap::location());
+		u->second.set_hidden(false);
 
 		units_.erase(u);
 		un.set_movement(starting_moves);

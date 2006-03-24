@@ -52,10 +52,8 @@ public:
 	//this function returns a random animation out of the possible
 	//animations for this attack. It will not return the same attack
 	//each time.
-	const std::pair<const unit_animation*,const unit_animation*> animation(bool hit,gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
 	bool matches_filter(const config& cfg) const;
 	bool apply_modification(const config& cfg,std::string* description);
-private:
 	struct attack_animation
 	{
 		typedef enum { HIT, MISS, HIT_OR_MISS } hit_type;
@@ -70,6 +68,8 @@ private:
 		hit_type hits;
 
 	};
+	const attack_animation& animation(bool hit,gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
+private:
 	std::vector<attack_animation> animation_;
 	t_string description_;
 	std::string id_;

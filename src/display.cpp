@@ -85,8 +85,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	teams_(t), lastDraw_(0), drawSkips_(0),
 	invalidateAll_(true), invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
-	currentTeam_(0), activeTeam_(0), hideEnergy_(false),
-	deadAmount_(ftofxp(0.0)), advancingAmount_(0.0),
+	currentTeam_(0), activeTeam_(0), 
 	turbo_(false), grid_(false), sidebarScaling_(1.0),
 	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map),
@@ -218,13 +217,6 @@ void display::adjust_colours(int r, int g, int b)
 	image::set_colour_adjustment(tod.red+r,tod.green+g,tod.blue+b);
 }
 
-gamemap::location display::hide_unit(const gamemap::location& loc, bool hide_energy)
-{
-	const gamemap::location res = hiddenUnit_;
-	hiddenUnit_ = loc;
-	hideEnergy_ = hide_energy;
-	return res;
-}
 
 int display::x() const { return screen_.getx(); }
 int display::mapx() const { return x() - 140; }
@@ -1228,232 +1220,30 @@ void display::draw_minimap(int x, int y, int w, int h)
 	update_rect(minimap_location);
 }
 
-void display::draw_halo_on_tile(int x, int y)
+
+void display::draw_unit_on_tile(int x, int y,double offset)
 {
-	const gamemap::location loc(x,y);
-	int xpos = get_location_x(loc);
-	int ypos = get_location_y(loc);
 
-	const halo_map::iterator halo_it = haloes_.find(loc);
-
+	const gamemap::location src(x,y);
 	//see if there is a unit on this tile
-	const unit_map::const_iterator it = fogged(x,y) ? units_.end() : units_.find(gamemap::location(x,y));
-
-	if(halo_it != haloes_.end() && it == units_.end()) {
-		halo::remove(halo_it->second);
-		haloes_.erase(halo_it);
-	} else if(halo_it == haloes_.end() && it != units_.end()) {
-		const std::string& halo = it->second.type().image_halo();
-		if(halo.empty() == false) {
-			haloes_.insert(std::pair<gamemap::location,int>(loc,halo::add(xpos+hex_width()/2,ypos+hex_size()/2,halo)));
-		}
-	}
-}
-
-void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
-		fixed_t highlight_ratio, Uint32 blend_with)
-{
-	if(screen_.update_locked()) {
-		return;
-	}
-
-	const gamemap::location loc(x,y);
-	int xpos = get_location_x(loc);
-	int ypos = get_location_y(loc);
-
-	//see if there is a unit on this tile
-	const unit_map::const_iterator it = units_.find(loc);
-
+	unit_map::iterator it = units_.find(src);
 	if(it == units_.end()) {
 		return;
 	}
 
-	SDL_Rect clip_rect = map_area();
 
-	if(xpos > clip_rect.x + clip_rect.w || ypos > clip_rect.y + clip_rect.h ||
-	   xpos + zoom_ < clip_rect.x || ypos + zoom_ < clip_rect.y) {
-		return;
-	}
+	const gamemap::location dst= src.get_direction(it->second.facing());
+	const double xsrc = get_location_x(src);
+	const double ysrc = get_location_y(src);
+	const double xdst = get_location_x(dst);
+	const double ydst = get_location_y(dst);
 
-	surface const dst(screen_.getSurface());
+	const int posx = int(offset*xdst + (1.0-offset)*xsrc);
+	const int posy = int(offset*ydst + (1.0-offset)*ysrc);
 
-	clip_rect_setter set_clip_rect(dst,clip_rect);
-
-	double unit_energy = 0.0;
+	it->second.refresh_unit(*this,src,posx,posy,true);
 
 
-	surface unit_image(unit_image_override);
-
-	const std::string* movement_file = NULL;
-	const std::string* energy_file = &game_config::energy_image;
-
-	const unit& u = it->second;
-	SDL_Color energy_colour = u.hp_color();
-
-	if(loc != hiddenUnit_ || !hideEnergy_) {
-		if(unit_image == NULL) {
-			unit_image.assign(image::get_image(u.image_loc(),it->second.stone() ? image::GREYED : image::SCALED));
-		}
-
-		if(unit_image == NULL) {
-			return;
-		}
-
-		const int unit_move = it->second.movement_left();
-		const int unit_total_move = it->second.total_movement();
-
-		if(size_t(u.side()) != currentTeam_+1) {
-			if(team_valid() &&
-			   teams_[currentTeam_].is_enemy(it->second.side())) {
-				movement_file = &game_config::enemy_ball_image;
-			} else {
-				movement_file = &game_config::ally_ball_image;
-			}
-		} else {
-			if(activeTeam_ == currentTeam_ && unit_move == unit_total_move && !it->second.user_end_turn()) {
-				movement_file = &game_config::unmoved_ball_image;
-			} else if(activeTeam_ == currentTeam_ && unit_can_move(loc,units_,map_,teams_) && !it->second.user_end_turn()) {
-				movement_file = &game_config::partmoved_ball_image;
-			} else {
-				movement_file = &game_config::moved_ball_image;
-			}
-		}
-
-		wassert(movement_file != NULL);
-		if(movement_file == NULL) {
-			ERR_DP << "movement file is NULL\n";
-			return;
-		}
-		wassert(energy_file != NULL);
-		if(energy_file == NULL) {
-			ERR_DP << "energy file is NULL\n";
-			return;
-		}
-
-		if(highlight_ratio == ftofxp(1.0)) {
-			highlight_ratio = it->second.alpha();
-		}
-
-		if(u.invisible(map_.underlying_union_terrain(map_[x][y]),
-					status_.get_time_of_day().lawful_bonus,loc,
-					units_,teams_) &&
-		   highlight_ratio > ftofxp(0.5)) {
-			highlight_ratio = ftofxp(0.5);
-		}
-
-		if(loc == selectedHex_ && highlight_ratio == ftofxp(1.0)) {
-			highlight_ratio = ftofxp(1.5);
-			// blend_with = rgb(255,255,255);
-		}
-
-		if(u.max_hitpoints() > 0) {
-			unit_energy = double(u.hitpoints())/double(u.max_hitpoints());
-		}
-
-		if(u.facing_left() == false) {
-			//reverse the image here. image::reverse_image is more efficient, however
-			//it can be used only if we are sure that unit_image came from image::get_image.
-			//Since we aren't sure of that in the case of overrides, use the less efficient
-			//flip_surface if the image has been over-ridden.
-			if(unit_image_override == NULL) {
-				unit_image.assign(image::reverse_image(unit_image));
-			} else {
-				unit_image.assign(flip_surface(unit_image));
-			}
-		}
-	}
-
-	if(deadUnit_ == gamemap::location(x,y)) {
-		highlight_ratio = deadAmount_;
-	}
-
-	if(unit_image == NULL || fogged(x,y) ||
-			(teams_[currentTeam_].is_enemy(it->second.side()) &&
-			it->second.invisible(map_.underlying_union_terrain(map_[x][y]),
-					status_.get_time_of_day().lawful_bonus,loc,
-					units_,teams_))) {
-		return;
-	}
-
-	const gamemap::TERRAIN terrain = map_.get_terrain(loc);
-	const int height_adjust = it->second.is_flying() ? 0 : int(map_.get_terrain_info(terrain).unit_height_adjust()*zoom());
-	const double submerge = it->second.is_flying() ? 0.0 : map_.get_terrain_info(terrain).unit_submerge();
-
-	double blend_ratio = 0.0;
-
-	if(loc == advancingUnit_ && it != units_.end()) {
-		//the unit is advancing - set the advancing colour to white if it's a
-		//non-chaotic unit, otherwise black
-		blend_with = it->second.type().alignment() == unit_type::CHAOTIC ?
-		                                        rgb(16,16,16) : rgb(255,255,255);
-		blend_ratio = 1 - advancingAmount_;
-	} else if(it->second.poisoned() /* && highlight_ratio == 1.0 */) {
-		//the unit is poisoned - draw with a green hue
-		blend_with = rgb(0,255,0);
-		blend_ratio = 0.25;
-		//highlight_ratio *= 0.75;
-	}
-
-	if(loc != hiddenUnit_) {
-		surface ellipse_front(NULL);
-		surface ellipse_back(NULL);
-
-		if(preferences::show_side_colours()) {
-			const char* const selected = selectedHex_ == loc ? "selected-" : "";
-			std::vector<Uint32> temp_rgb;
-			//ellipse not pure red=255!
-			for(int i=255;i>100;i--){
-			  temp_rgb.push_back((Uint32)(i<<16));
-			}
-			//selected ellipse not pure red at all!
-			char buf[100];
-			std::string ellipse=it->second.type().image_ellipse();
-			if(ellipse.empty()){
-				ellipse="misc/ellipse";
-		     }	
-			snprintf(buf,sizeof(buf),"%s-%stop.png",ellipse.c_str(),selected);
-			ellipse_back.assign(image::get_image(image::locator(buf,it->second.team_rgb_range(),temp_rgb)));
-			snprintf(buf,sizeof(buf),"%s-%sbottom.png",ellipse.c_str(),selected);
-			ellipse_front.assign(image::get_image(image::locator(buf,it->second.team_rgb_range(),temp_rgb)));
-		}
-
-		draw_unit(xpos,ypos - height_adjust,unit_image,false,
-		          highlight_ratio,blend_with,blend_ratio,submerge,ellipse_back,ellipse_front);
-	}
-
-	const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (loc == mouseoverHex_ ? ftofxp(1.0): ftofxp(0.7));
-
-	draw_bar(*movement_file,xpos,ypos,0,0,energy_colour,bar_alpha);
-
-	draw_bar(*energy_file,xpos-5,ypos,(u.max_hitpoints()*2)/3,unit_energy,energy_colour,bar_alpha);
-
-	if(u.experience() > 0 && u.can_advance()) {
-		const double filled = double(u.experience())/double(u.max_experience());
-		const int level = maximum<int>(u.type().level(),1);
-
-		SDL_Color colour=u.xp_color();
-		draw_bar(*energy_file,xpos,ypos,u.max_experience()/(level*2),filled,colour,bar_alpha);
-	}
-
-	if (u.can_recruit()) {
-		surface crown(image::get_image("misc/leader-crown.png",image::SCALED,image::NO_ADJUST_COLOUR));
-		if(!crown.null()) {
-			//if(bar_alpha != ftofxp(1.0)) {
-			//	crown = adjust_surface_alpha(crown, bar_alpha);
-			//}
-
-			SDL_Rect r = {0, 0, crown->w, crown->h};
-			video().blit_surface(xpos,ypos,crown,&r);
-		}
-	}
-
-	const std::vector<std::string>& overlays = it->second.overlays();
-	for(std::vector<std::string>::const_iterator ov = overlays.begin(); ov != overlays.end(); ++ov) {
-		const surface img(image::get_image(*ov));
-		if(img != NULL) {
-			draw_unit(xpos,ypos,img);
-		}
-	}
 }
 
 void display::draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
@@ -1541,7 +1331,7 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 	}
 }
 
-void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 blend_to)
+void display::draw_tile(int x, int y, double offset)
 {
 	reach_map::iterator reach = reach_map_.end();
 
@@ -1549,7 +1339,6 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 		return;
 	}
 
-	draw_halo_on_tile(x,y);
 
 	const gamemap::location loc(x,y);
 	int xpos = int(get_location_x(loc));
@@ -1641,7 +1430,7 @@ void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 
 	}
 
 	draw_footstep(loc,xpos,ypos);
-	draw_unit_on_tile(x,y,unit_image,alpha,blend_to);
+	draw_unit_on_tile(x,y,offset);
 
 	if(!is_shrouded) {
 		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOREGROUND);
@@ -2298,12 +2087,6 @@ void display::set_playing_team(size_t team)
 	invalidate_game_status();
 }
 
-void display::set_advancing_unit(const gamemap::location& loc, double amount)
-{
-	advancingUnit_ = loc;
-	advancingAmount_ = amount;
-	draw_tile(loc.x,loc.y);
-}
 
 bool display::turbo() const
 {
@@ -2474,7 +2257,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 {
 	config* cignore;
 	bool ignored = false;
-	if (cignore = preferences::get_prefs()->child("ignore")){
+	if ((cignore = preferences::get_prefs()->child("ignore"))){
 		for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
 		i != cignore->values.end(); ++i){
 			if(speaker == i->first){

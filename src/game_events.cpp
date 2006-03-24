@@ -246,10 +246,10 @@ private:
 	vconfig cfg_;
 };
 
-gamemap::location cfg_to_loc(const vconfig cfg)
+gamemap::location cfg_to_loc(const vconfig cfg,int defaultx = 0, int defaulty = 0)
 {
-	int x = lexical_cast_default(cfg["x"], 0) - 1;
-	int y = lexical_cast_default(cfg["y"], 0) - 1;
+	int x = lexical_cast_default(cfg["x"], defaultx) - 1;
+	int y = lexical_cast_default(cfg["y"], defaulty) - 1;
 
 	return gamemap::location(x, y);
 }
@@ -941,13 +941,21 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	//hiding units
 	else if(cmd == "hide_unit") {
 		const gamemap::location loc = cfg_to_loc(cfg);
-		screen->hide_unit(loc,true);
-		screen->draw_tile(loc.x,loc.y);
+		unit_map::iterator u = units->find(loc);
+		if(u != units->end()) {
+			u->second.set_hidden(true);
+			screen->draw_tile(loc.x,loc.y);
+		}
 	}
 
 	else if(cmd == "unhide_unit") {
-		const gamemap::location loc = screen->hide_unit(gamemap::location());
-		screen->draw_tile(loc.x,loc.y);
+		const gamemap::location loc = cfg_to_loc(cfg);
+		unit_map::iterator u;
+		// unhide all for backward compatibility
+		for(u =  units->begin(); u != units->end() ; u++) {
+			u->second.set_hidden(false);
+			screen->draw_tile(loc.x,loc.y);
+		}
 	}
 
 	//adding new items
@@ -1034,14 +1042,21 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			screen->invalidate(loc);
 
-			if (show) {
-				for(fixed_t alpha = ftofxp(0.0); alpha <= ftofxp(1.0); alpha += ftofxp(0.1)) {
-					events::pump();
-					screen->draw_tile(loc.x,loc.y,NULL,alpha);
+			unit_map::iterator un = units->find(loc);
+
+			if(show) {
+
+				un->second.set_recruited(screen->turbo()?5:1);
+				screen->scroll_to_tile(loc.x,loc.y,display::ONSCREEN);
+				while(!un->second.get_animation()->animation_finished()) {
+					screen->draw_tile(loc.x,loc.y);
 					screen->update_display();
-					SDL_Delay(20);
+					events::pump();
+					if(!screen->turbo()) SDL_Delay(10);
+
 				}
 			}
+			un->second.set_standing(screen->turbo()?5:1);
 		} else {
 			player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
 
@@ -1306,7 +1321,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			if(game_events::unit_matches_filter(un,cfg)) {
 				if(cfg["animate"] == "yes") {
 					screen->scroll_to_tile(un->first.x,un->first.y);
-					unit_display::unit_die(*screen,un->first,un->second);
+					unit_display::unit_die(*screen,*game_map,un->first,un->second);
 				}
 
 				if(cfg["fire_event"] == "yes") {
@@ -1560,33 +1575,18 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			screen->highlight_hex(u->first);
 			screen->scroll_to_tile(u->first.x,u->first.y);
 
-			surface unit_image(NULL);
-			const unit_animation* const anim_ptr = u->second.type().extra_animation(cfg["flag"]);
-			if(anim_ptr != NULL) {
-				unit_animation anim(*anim_ptr);
-
-				anim.start_animation(anim.get_first_frame_time(),1,screen->turbo() ? 5:1);
-				anim.update_current_frame();
-
-				while(!anim.animation_finished()) {
-
-					const unit_frame& frame = anim.get_current_frame();
-
-					const surface surf(image::get_image(frame.image));
-					if(surf.get() != NULL) {
-						unit_image = surf;
-					}
-					screen->draw_tile(u->first.x,u->first.y,unit_image);
-					screen->update_display();
-
-					SDL_Delay(10);
-
-					anim.update_current_frame();
-				}
-				unit_image = image::get_image(u->second.image_loc());
-				screen->draw_tile(u->first.x,u->first.y,unit_image);
+			u->second.set_extra_anim(cfg["flag"],screen->turbo()?5:1);
+			while(!u->second.get_animation()->animation_finished()) {
+				screen->draw_tile(u->first.x,u->first.y);
 				screen->update_display();
+				events::pump();
+				if(!screen->turbo()) SDL_Delay(10);
+
 			}
+			u->second.set_standing(screen->turbo()?5:1);
+			screen->draw_tile(u->first.x,u->first.y);
+			screen->update_display();
+			events::pump();
 		}
 	} else if(cmd == "label") {
 		const gamemap::location loc(lexical_cast_default<int>(cfg["x"],-1),lexical_cast_default<int>(cfg["y"],-1));

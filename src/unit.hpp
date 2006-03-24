@@ -34,7 +34,8 @@ class unit
 public:
 	friend struct unit_movement_resetter;
 
-	unit(const unit& u) { *this=u ; unit_halo_ = 0; }
+	//unit(const unit& u) { *this=u ; unit_halo_ = 0; unit_anim_halo_ = 0; anim_ =new unit_animation(*u.anim_);}
+	unit(const unit& u) { *this=u ; unit_halo_ = 0; unit_anim_halo_ = 0; anim_ =NULL; }
 	unit(const game_data& data, const config& cfg);
 	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE);
 
@@ -136,23 +137,31 @@ public:
 	int defense_modifier(const gamemap& map, gamemap::TERRAIN terrain) const;
 	int damage_against(const attack_type& attack) const;
 
-	//gets the unit image that should currently be displayed
-	//(could be in the middle of an attack etc)
+	//the name of the file to display (used in menus
 	const std::string& absolute_image() const {return type_->image();}
-	const image::locator image_loc() const;
-	void refresh_unit(display& disp,const int& x,const int& y,const double& submerge);
+	// a sdl surface, ready for display for place where we need a fix image of the unit
+	const surface still_image() const;
+	void refresh_unit(display& disp,gamemap::location hex,const int& x,const int& y, bool with_status =false);
 
-	void set_standing();
-	void set_defending(bool hits, std::string range, int start_frame, int acceleration);
-	void update_frame();
-	void set_attacking( const attack_type* type=NULL, int ms=0);
+	void set_standing(int acceleration);
+	void set_defending(int damage, std::string range, int acceleration);
+	void set_leading(int acceleration);
+	void set_healing(int acceleration);
+	void set_leveling_in(int acceleration);
+	void set_leveling_out(int acceleration);
+	void set_teleporting (int acceleration);
+	void set_extra_anim(std::string flag, int acceleration);
+	void set_dying(const attack_type *attack, int acceleration);
+	void set_walking(const std::string terrain,int acceleration);
+	const unit_animation & set_attacking(int acceleration,bool hit,const attack_type& type);
+	void set_recruited(int acceleration);
+	void set_healed(int healing,int acceleration);
+	void set_poisoned(int damage,int acceleration);
+	void restart_animation(int start_time, int acceleration);
+	const unit_animation* get_animation() const {  return anim_;};
 
-	void set_leading();
-	void set_healing();
-	void set_walking(const std::string terrain,gamemap::location::DIRECTION,int acceleration);
-
-	bool facing_left() const;
-	void set_facing_left(bool newval);
+	void set_facing(gamemap::location::DIRECTION);
+	gamemap::location::DIRECTION facing() const;
 
 	const t_string& traits_description() const;
 
@@ -164,6 +173,7 @@ public:
 
 	int upkeep() const;
 
+	void set_hidden(bool state) {hidden_ = state;};
 	bool is_flying() const;
 
 	bool can_advance() const;
@@ -188,7 +198,9 @@ public:
 	// NOT_MOVED if not moved and pressed "end turn"
 	enum MOVES { ATTACKED=-1, MOVED=-2, NOT_MOVED=-3 };
 	enum STATE { STATE_STANDING, STATE_ATTACKING, STATE_DEFENDING,
-		STATE_LEADING, STATE_HEALING, STATE_WALKING};
+		STATE_LEADING, STATE_HEALING, STATE_WALKING, STATE_LEVELIN,
+		STATE_LEVELOUT, STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
+		STATE_RECRUITED, STATE_HEALED, STATE_POISONED};
 	STATE state() const {return state_;}
 private:
 	const std::string& image() const;
@@ -199,8 +211,6 @@ private:
 	const unit_type* type_;
 
 	STATE state_;
-	const attack_type* attackType_;
-	int attackingMilliseconds_;
 	bool getsHit_;
 
 	int hitpoints_;
@@ -212,7 +222,7 @@ private:
 
 	int moves_;
 	bool user_end_turn_;
-	bool facingLeft_;
+	gamemap::location::DIRECTION facing_;
 	int maxMovement_, backupMaxMovement_;
 	bool resting_;
 	bool hold_position_;
@@ -263,6 +273,8 @@ private:
 	void generate_traits_description();
 	int unit_halo_;
 	int unit_anim_halo_;
+	bool refreshing_; // avoid infinit recursion
+	bool hidden_;
 		
 };
 

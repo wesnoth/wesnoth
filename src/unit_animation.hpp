@@ -24,18 +24,31 @@
 
 //a class to describe a unit's animation sequence
 struct unit_frame {
-	unit_frame() : xoffset(0), halo_x(0), halo_y(0) {}
-	explicit unit_frame(const std::string& str, const std::string & diag ="") : xoffset(0), image(str),image_diagonal(diag),
-										    halo_x(0), halo_y(0) {};
-	explicit unit_frame(const config& cfg);
+		unit_frame() : xoffset(0), halo_x(0), halo_y(0), begin_time(0), end_time(0),highlight_ratio(ftofxp(1)){}
+		explicit unit_frame(const std::string& str, const std::string & diag ="",
+				int begin=0,int end = 0,
+				Uint32 blend_color = 0, double blend_rate = 0.0, 
+				fixed_t highlight = ftofxp(1),
+				std::string in_halo = "") :
+			xoffset(0), image(str),image_diagonal(diag),
+			halo_x(0), halo_y(0),
+			begin_time(begin), end_time(end),
+			blend_with(blend_color), blend_ratio(blend_rate),
+			highlight_ratio(highlight)  {halo = prepare_halo(in_halo,begin,end);};
+		explicit unit_frame(const config& cfg);
 
-	// int start, end;
-	int xoffset;
-	std::string image;
-	std::string image_diagonal;
-	std::string halo;
-	std::string sound;
-	int halo_x, halo_y;
+		// int start, end;
+		int xoffset;
+		std::string image;
+		std::string image_diagonal;
+		std::vector<std::pair<std::string,int> > halo;
+		std::string sound;
+		int halo_x, halo_y;
+		int begin_time, end_time;
+		Uint32 blend_with;
+		double blend_ratio;
+		fixed_t highlight_ratio;
+		static std::vector<std::pair<std::string,int> > prepare_halo(const std::string & halo,int begin, int end);
 };
 class unit_animation:public animated<unit_frame> 
 {
@@ -43,7 +56,8 @@ class unit_animation:public animated<unit_frame>
 
 		unit_animation(){};
 		explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
-		explicit unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal = "");
+		explicit unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal = "",const std::string halo="");
+		explicit unit_animation(const std::string image);
 
 		enum FRAME_DIRECTION { VERTICAL, DIAGONAL };
 

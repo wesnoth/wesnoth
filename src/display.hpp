@@ -58,7 +58,7 @@ public:
 			const config& cfg, const config& level);
 	~display();
 
-	Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue);
+	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue);
 
 	//new_turn should be called on every new turn, to update
 	//lighting settings.
@@ -68,11 +68,6 @@ public:
 	//the map. Used for special effects like flashes.
 	void adjust_colours(int r, int g, int b);
 
-	//function to make it so a unit is 'hidden' - not displayed
-	//when the tile it is on is drawn. Only one unit may be hidden
-	//at a time. The previously hidden unit will be returned.
-	//'hide_energy' determines whether the unit's energy bar should be hidden too.
-	gamemap::location hide_unit(const gamemap::location& loc, bool hide_energy=false);
 
 	//function which scrolls the display by xmov,ymov. Invalidation and
 	//redrawing will be scheduled.
@@ -142,6 +137,8 @@ public:
 	//and there is no unit in the currently highlighted hex, the unit will be
 	//displayed in the sidebar.
 	void select_hex(gamemap::location hex);
+	const gamemap::location& selected_hex() { return selectedHex_; }
+	const gamemap::location& mouseover_hex() { return mouseoverHex_; }
 
 	//function to highlight a location. If a unit is in the location, it will
 	//be displayed in the sidebar. Selection is used when a unit has been
@@ -198,23 +195,21 @@ public:
 	//then it will be used, otherwise the unit's default image will be used.
 	//alpha controls how faded the unit is. If blend_to is not 0, then the
 	//unit will be alpha-blended to blend_to instead of the background colour
-	void draw_tile(int x, int y, surface unit_image=surface(NULL),
-	               fixed_t alpha=ftofxp(1.0), Uint32 blend_to=0);
+	void draw_tile(int x, int y,double offset=0);
 
 	//function to float a label above a tile
 	void float_label(const gamemap::location& loc, const std::string& text,
 	                 int red, int green, int blue);
 
+	const gamemap& get_map() { return map_;}
 private:
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 
 	//composes and draws the terrains on a tile
 	void draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
-	void draw_unit_on_tile(int x, int y, surface unit_image=surface(NULL),
-	                       fixed_t alpha=ftofxp(1.0), Uint32 blend_to=0);
+	void draw_unit_on_tile(int x, int y,double offset);
 
-	void draw_halo_on_tile(int x, int y);
 
 	gui::button::TYPE string_to_button_type(std::string type);
 
@@ -243,6 +238,7 @@ public:
 
 	//function to invalidate the game status displayed on the sidebar.
 	void invalidate_game_status();
+	const gamestatus &get_game_status() {return status_;};
 
 	//function to invalidate that unit status displayed on the sidebar.
 	void invalidate_unit();
@@ -290,11 +286,9 @@ public:
 	//set_playing_team sets the team whose turn it currently is
 	void set_team(size_t team);
 	void set_playing_team(size_t team);
+	const std::vector<team>& get_teams() {return teams_;};
 
-	//makes it so that the unit at the given location will be displayed
-	//in an advancing-highlight with intensity between 0.0 and 1.0 given
-	//by amount.
-	void set_advancing_unit(const gamemap::location& loc, double amount);
+	const unit_map& get_units() {return units_;};
 
 	//compat methods to be dropped after full migration
 	void lock_updates(bool value) {screen_.lock_updates(value); };
@@ -323,6 +317,7 @@ public:
 	//is the team whose turn it is
 	size_t viewing_team() const;
 	size_t playing_team() const;
+	bool team_valid() const;
 
 	theme& get_theme();
 
@@ -378,6 +373,7 @@ public:
 	void begin_game();
 
 	bool in_game() const { return in_game_; }
+	void draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha);
 
 private:
 	display(const display&);
@@ -415,7 +411,6 @@ private:
 
 	unit_map& units_;
 
-	void draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha);
 
 	//function which finds the start and end rows on the energy bar image
 	//where white pixels are substituted for the colour of the energy
@@ -429,7 +424,6 @@ private:
 
 	const gamestatus& status_;
 
-	bool team_valid() const;
 
 	const std::vector<team>& teams_;
 
@@ -460,18 +454,8 @@ private:
 
 	size_t currentTeam_, activeTeam_;
 
-	//used to store a unit that is not drawn, because it's currently
-	//being moved or otherwise changed
-	gamemap::location hiddenUnit_;
-	bool hideEnergy_;
 
-	//used to store any unit that is dying
-	gamemap::location deadUnit_;
-	fixed_t deadAmount_;
 
-	//used to store any unit that is advancing
-	gamemap::location advancingUnit_;
-	double advancingAmount_;
 
 	bool turbo_, grid_;
 	double sidebarScaling_;
@@ -510,9 +494,6 @@ private:
 	typedef std::map<gamemap::location,unsigned int> reach_map;
 	reach_map reach_map_;
 
-	typedef std::map<gamemap::location,int> halo_map;
-	halo_map haloes_;
-
 	//for debug mode
 	static std::map<gamemap::location,fixed_t> debugHighlights_;
 
@@ -521,6 +502,7 @@ private:
 	int diagnostic_label_;
 
 	//animated flags for each team
+	//
 	std::vector<animated<image::locator> > flags_;
 
 	//the handle for the label which displays fps

@@ -32,12 +32,41 @@ unit_frame::unit_frame(const config& cfg)
 	xoffset = atoi(cfg["xoffset"].c_str());
 	image = cfg["image"];
 	image_diagonal = cfg["image_diagonal"];
-	halo = cfg["halo"];
 	halo_x = atoi(cfg["halo_x"].c_str());
 	halo_y = atoi(cfg["halo_y"].c_str());
 	sound = cfg["sound"];
+	begin_time = atoi(cfg["begin"].c_str());
+	end_time = atoi(cfg["end"].c_str());
+	highlight_ratio = ftofxp(1);
+	halo = prepare_halo(cfg["halo"],begin_time,end_time);
+	
 }
 
+std::vector<std::pair<std::string,int> > unit_frame::prepare_halo(const std::string & halo,int begin, int end)
+{
+		const int duration = end - begin;
+		const std::vector<std::string> first_pass = utils::split(halo);
+		const int time_chunk = maximum<int>(duration / (first_pass.size()?first_pass.size():1),1);
+
+		std::vector<std::string>::const_iterator tmp;
+		std::vector<std::pair<std::string,int> > result;
+		for(tmp=first_pass.begin();tmp != first_pass.end() ; tmp++) {
+			std::vector<std::string> second_pass = utils::split(*tmp,':');
+			if(second_pass.size() > 1) {
+				result.push_back(std::pair<std::string,int>(second_pass[0],atoi(second_pass[1].c_str())));
+			} else {
+				result.push_back(std::pair<std::string,int>(second_pass[0],time_chunk));
+			}
+		}
+		return result;
+}
+
+
+
+unit_animation::unit_animation(const std::string image )
+{
+	add_frame(0,unit_frame(image));
+}
 unit_animation::unit_animation(const config& cfg,const std::string frame_string )
 {
 	config::const_child_itors range = cfg.child_range(frame_string);
@@ -56,9 +85,9 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	}
 }
 
-unit_animation::unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal)
+unit_animation::unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal,const std::string halo)
 {
-	add_frame(begin_at, unit_frame(image,image_diagonal));
+	add_frame(begin_at, unit_frame(image,image_diagonal,begin_at,end_at,0,0.0,ftofxp(1),halo));
 	add_frame(end_at);
 }
 

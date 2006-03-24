@@ -301,7 +301,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		return res;
 	}
 	case UNIT_IMAGE:
-	        return report("",u->second.image_loc(),"");
+	        return report("",u->second.type().image(),"");
 	case UNIT_PROFILE:
 		return report("",u->second.type().image_profile(),"");
 	case TIME_OF_DAY: {

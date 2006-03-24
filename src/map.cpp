@@ -145,6 +145,27 @@ gamemap::location::DIRECTION gamemap::location::parse_direction(const std::strin
 	}
 }
 
+std::string gamemap::location::write_direction(gamemap::location::DIRECTION dir)
+{
+	switch(dir) {
+		case NORTH:
+			return std::string("n");
+		case NORTH_EAST:
+			return std::string("ne");
+		case NORTH_WEST:
+			return std::string("nw");
+		case SOUTH:
+			return std::string("s");
+		case SOUTH_EAST:
+			return std::string("se");
+		case SOUTH_WEST:
+			return std::string("sw");
+		default:
+			return std::string();
+
+	}
+}
+
 gamemap::location::location(const config& cfg) : x(-1), y(-1)
 {
 	const std::string& xstr = cfg["x"];

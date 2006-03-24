@@ -147,21 +147,25 @@ std::string recruit_unit(const gamemap& map, int side,
 		disp->draw(true,true);
 	}
 
-	units.insert(std::pair<gamemap::location,unit>(
-							recruit_location,new_unit));
+	units.insert(std::pair<gamemap::location,unit>( recruit_location,new_unit));
+	unit_map::iterator un = units.find(recruit_location);
 
-	LOG_NG << "firing recruit event\n";
-	game_events::fire("recruit",recruit_location);
 
 	if(show) {
 
-		for(fixed_t alpha = ftofxp(0.0); alpha <= ftofxp(1.0); alpha += ftofxp(0.1)) {
-			events::pump();
-			disp->draw_tile(recruit_location.x,recruit_location.y,NULL,alpha);
+		un->second.set_recruited(disp->turbo()?5:1);
+		disp->scroll_to_tile(recruit_location.x,recruit_location.y,display::ONSCREEN);
+		while(!un->second.get_animation()->animation_finished()) {
+			disp->draw_tile(recruit_location.x,recruit_location.y);
 			disp->update_display();
-			SDL_Delay(20);
+			events::pump();
+			if(!disp->turbo()) SDL_Delay(10);
+
 		}
 	}
+	un->second.set_standing(disp->turbo()?5:1);
+	LOG_NG << "firing recruit event\n";
+	game_events::fire("recruit",recruit_location);
 
 	checksumstream cs;
 	config cfg_unit;
@@ -1575,6 +1579,8 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		typedef std::multimap<gamemap::location,gamemap::location>::const_iterator healer_itor;
 		const std::pair<healer_itor,healer_itor> healer_itors = healers.equal_range(loc);
 
+		// time at which we start all anmations
+		int start_time = 0;
 		if(show_healing) {
 			disp.scroll_to_tile(loc.x,loc.y,display::ONSCREEN);
 			disp.select_hex(loc);
@@ -1585,32 +1591,11 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
 				wassert(units.count(i->second));
 				unit& healer = units.find(i->second)->second;
-
-				const std::string& halo_image = healer.type().image_halo_healing();
-
-				//only show healing frames if haloing is enabled, or if there is no halo
-				if(halo_image.empty() || preferences::show_haloes()) {
-					healer.set_healing();
-
-					if(halo_image.empty() == false) {
-						int height_adjust = healer.is_flying() ? 0 :
-							int(map.get_terrain_info(map.get_terrain(i->second)).
-								unit_height_adjust() * disp.zoom());
-						int d = disp.hex_size();
-						halo::add(disp.get_location_x(i->second) + d / 2,
-						          disp.get_location_y(i->second) + d / 2 - height_adjust,
-						          halo_image, healer.facing_left() ? halo::NORMAL :
-						                                             halo::REVERSE, 1);
-					}
-
-					disp.draw_tile(i->second.x,i->second.y);
-				}
+				healer.set_healing(disp.turbo()?5:1);
+				start_time = minimum<int>(start_time,healer.get_animation()->get_first_frame_time());
 			}
-
-			disp.update_display();
 		}
 
-		const int DelayAmount = 50;
 
 		LOG_NG << "unit is poisoned? " << (u.has_flag("poisoned") ? "yes" : "no") << ","
 			<< h->second << "," << max_healing[h->first] << "\n";
@@ -1626,9 +1611,6 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				if(show_healing) {
 
 					sound::play_sound("heal.wav");
-					SDL_Delay(DelayAmount);
-					disp.invalidate_unit();
-					disp.update_display();
 				}
 			}
 
@@ -1653,57 +1635,50 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			}
 		}
 
-		while(h->second > 0) {
-			const Uint32 heal_colour = disp.rgb(0,0,200);
-			u.heal(1);
 
-			if(show_healing) {
-				if(is_odd(h->second))
-					disp.draw_tile(loc.x,loc.y,NULL,ftofxp(0.5),heal_colour);
-				else
-					disp.draw_tile(loc.x,loc.y);
-
-				events::pump();
-				SDL_Delay(DelayAmount);
-				disp.update_display();
-			}
-
-			--h->second;
+		if(h->second > 0)  {
+			u.set_healed(h->second,disp.turbo()?5:1);
+			start_time = minimum<int>(start_time,u.get_animation()->get_first_frame_time());
 		}
-
-		while(h->second < 0) {
-			const Uint32 damage_colour = disp.rgb(200,0,0);
-			u.gets_hit(1);
-
-			if(show_healing) {
-				if(is_odd(h->second))
-					disp.draw_tile(loc.x,loc.y,NULL,ftofxp(0.5),damage_colour);
-				else
-					disp.draw_tile(loc.x,loc.y);
-
-				events::pump();
-
-				SDL_Delay(DelayAmount);
-				disp.update_display();
-			}
-
-			++h->second;
+		if(h->second < 0)  {
+			u.set_poisoned(-h->second,disp.turbo()?5:1);
+			start_time = minimum<int>(start_time,u.get_animation()->get_first_frame_time());
 		}
-
-		if(show_healing) {
+		std::vector<unit*>::iterator itor;
+		// restart all anims in a synchronized way
+		u.restart_animation(start_time,disp.turbo()?5:1);
+		for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
+			unit& healer = units.find(i->second)->second;
+			healer.restart_animation(start_time,disp.turbo()?5:1);
+		}
+		bool finished = false;
+		while(!finished) {
+			finished = (u.get_animation()->animation_finished());
+			disp.draw_tile(loc.x,loc.y);
 			for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
-				wassert(units.count(i->second));
-				unit& healer = units.find(i->second)->second;
-				healer.set_standing();
-
-				events::pump();
-
+				finished = (finished && u.get_animation()->animation_finished());
 				disp.draw_tile(i->second.x,i->second.y);
 			}
-
-			disp.draw_tile(loc.x,loc.y);
+			if(h->second > 0) {
+				u.heal(1);
+				--h->second;
+			}  else if (h->second <0) {
+				u.gets_hit(1);
+				++h->second;
+			}
+			finished &= (h->second ==0);
 			disp.update_display();
+			events::pump();
+			if(!disp.turbo()) SDL_Delay(10);
+			
 		}
+		u.set_standing(disp.turbo()?5:1);
+		for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
+			unit& healer = units.find(i->second)->second;
+			healer.set_standing(disp.turbo()?5:1);
+		}
+		disp.update_display();
+		events::pump();
 	}
 }
 
@@ -2112,15 +2087,14 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	//remove it until the move is done, so that while the unit is moving status etc will
 	//still display the correct number of units.
 	if(disp != NULL) {
-		disp->hide_unit(ui->first,true);
+		ui->second.set_hidden(true);
+		disp->draw_tile(ui->first.x,ui->first.y);
 		unit_display::move_unit(*disp,map,steps,u,status.get_time_of_day(),units,teams);
+		ui->second.set_hidden(false);
 	}
 
 	u.set_movement(moves_left);
 
-	if(disp != NULL) {
-		disp->hide_unit(gamemap::location());
-	}
 
 	units.erase(ui);
 	ui = units.insert(std::pair<gamemap::location,unit>(steps.back(),u)).first;

@@ -64,6 +64,7 @@ public:
 		                 SOUTH_WEST, NORTH_WEST, NDIRECTIONS };
 
 		static DIRECTION parse_direction(const std::string& str);
+		static std::string write_direction(DIRECTION dir);
 
 		location() : x(-1), y(-1) {}
 		location(int x, int y) : x(x), y(y) {}

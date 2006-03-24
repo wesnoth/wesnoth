@@ -39,107 +39,30 @@ void teleport_unit_between(display& disp, const gamemap& map, const gamemap::loc
 		return;
 	}
 
-	const bool face_left = u.facing_left();
 
-	const int xsrc = disp.get_location_x(a);
-	const int ysrc = disp.get_location_y(a);
-	const int xdst = disp.get_location_x(b);
-	const int ydst = disp.get_location_y(b);
 
-	const gamemap::TERRAIN src_terrain = map.get_terrain(a);
-	const gamemap::TERRAIN dst_terrain = map.get_terrain(b);
-
-	const int src_height_adjust = u.is_flying() ? 0 : int(map.get_terrain_info(src_terrain).unit_height_adjust() * disp.zoom());
-	const int dst_height_adjust = u.is_flying() ? 0 : int(map.get_terrain_info(dst_terrain).unit_height_adjust() * disp.zoom());
-
-	const double src_submerge = u.is_flying() ? 0.0 : map.get_terrain_info(src_terrain).unit_submerge();
-	const double dst_submerge = u.is_flying() ? 0.0 : map.get_terrain_info(dst_terrain).unit_submerge();
-
-	LOG_DP << "submerge: " << src_submerge << " -> " << dst_submerge << "\n";
-
-	const int acceleration = disp.turbo() ? 5:1;
-
-	gamemap::location src_adjacent[6];
-	get_adjacent_tiles(a, src_adjacent);
-
-	gamemap::location dst_adjacent[6];
-	get_adjacent_tiles(b, dst_adjacent);
-
-	const std::string& halo = u.type().image_halo();
-	util::scoped_resource<int,halo::remover> halo_effect(0);
-	if(halo.empty() == false && !disp.fogged(b.x,b.y)) {
-		halo_effect.assign(halo::add(0,0,halo));
-	}
-
-	const unit_animation &teleport_animation_p = u.type().teleport_animation();
+	u.set_teleporting(disp.turbo()?5:1);
 	if (!disp.fogged(a.x, a.y)) { // teleport
-		unit_animation teleport_animation =  teleport_animation_p;
-		int animation_time;
-		const int begin_at = teleport_animation.get_first_frame_time();
-		teleport_animation.start_animation(begin_at,1,  acceleration);
-		animation_time = teleport_animation.get_animation_time();
-		disp.scroll_to_tile(a.x,a.y,display::ONSCREEN);
-		while(animation_time < 0) {
-			const std::string* unit_image = &teleport_animation.get_current_frame().image;
-			image::locator unit_loc;
-			if (unit_image->empty()) {
-				unit_loc = u.image_loc();
-			} else {
-				unit_loc = image::locator(*unit_image,u.team_rgb_range(),u.type().flag_rgb());
-			}
-
-			surface image(image::get_image(unit_loc));
-			if (!face_left) {
-				image.assign(image::reverse_image(image));
-			}
+		while(!u.get_animation()->animation_finished()  && u.get_animation()->get_animation_time() < 0) {
 			disp.draw_tile(a.x,a.y);
-			for(int tile = 0; tile != 6; ++tile) {
-				disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
-			}
-			disp.draw_unit(xsrc,ysrc - src_height_adjust,image,false, ftofxp(1.0), 0, 0.0, src_submerge);
 			disp.update_display();
 			events::pump();
-			teleport_animation.update_current_frame();
-			animation_time = teleport_animation.get_animation_time();
-		}
-		disp.draw_tile(a.x,a.y);
-		disp.update_display();
-		events::pump();
-		teleport_animation.update_current_frame();
-	}
+			if(!disp.turbo()) SDL_Delay(10);
 
+		}
+	}
 	if (!disp.fogged(b.x, b.y)) { // teleport
-		unit_animation teleport_animation =  teleport_animation_p;
-		int animation_time;
-		const int end_at = teleport_animation.get_last_frame_time();
-		teleport_animation.start_animation(0,1, acceleration);
-		animation_time = teleport_animation.get_animation_time();
 		disp.scroll_to_tile(b.x,b.y,display::ONSCREEN);
-		while(animation_time < end_at) {
-			const std::string* unit_image = &teleport_animation.get_current_frame().image;
-
-			image::locator unit_loc;
-			if (unit_image->empty()) {
-			  unit_loc = u.image_loc();
-			}else{
-			  unit_loc = image::locator(*unit_image,u.team_rgb_range(),u.type().flag_rgb());
-			}
-
-			surface image(image::get_image(unit_loc));
-			if (!face_left) {
-				image.assign(image::reverse_image(image));
-			}
+		while(u.get_animation()->animation_finished()) {
 			disp.draw_tile(b.x,b.y);
-			for(int tile = 0; tile != 6; ++tile) {
-				disp.draw_tile(dst_adjacent[tile].x,dst_adjacent[tile].y);
-			}
-			disp.draw_unit(xdst, ydst - dst_height_adjust, image, false, ftofxp(1.0), 0, 0.0, dst_submerge);
 			disp.update_display();
 			events::pump();
-			teleport_animation.update_current_frame();
-			animation_time = teleport_animation.get_animation_time();
+			if(!disp.turbo()) SDL_Delay(10);
 		}
 	}
+	u.set_standing(disp.turbo()?5:1);
+	disp.update_display();
+	events::pump();
 }
 
 
@@ -150,21 +73,8 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		return;
 	}
 
-	const int xsrc = disp.get_location_x(a);
-	const int ysrc = disp.get_location_y(a);
-	const int xdst = disp.get_location_x(b);
-	const int ydst = disp.get_location_y(b);
-
 	const gamemap::TERRAIN src_terrain = map.get_terrain(a);
 	const gamemap::TERRAIN dst_terrain = map.get_terrain(b);
-
-	const int src_height_adjust = u.is_flying() ? 0 : int(map.get_terrain_info(src_terrain).unit_height_adjust() * disp.zoom());
-	const int dst_height_adjust = u.is_flying() ? 0 : int(map.get_terrain_info(dst_terrain).unit_height_adjust() * disp.zoom());
-
-	const double src_submerge = u.is_flying() ? 0.0 : map.get_terrain_info(src_terrain).unit_submerge();
-	const double dst_submerge = u.is_flying() ? 0.0 : map.get_terrain_info(dst_terrain).unit_submerge();
-
-	LOG_DP << "submerge: " << src_submerge << " -> " << dst_submerge << "\n";
 
 	const int acceleration = disp.turbo() ? 5:1;
 
@@ -174,24 +84,24 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	gamemap::location dst_adjacent[6];
 	get_adjacent_tiles(b, dst_adjacent);
 
-	const std::string& halo = u.type().image_halo();
-	util::scoped_resource<int,halo::remover> halo_effect(0);
-	if(halo.empty() == false && !disp.fogged(b.x,b.y)) {
-		halo_effect.assign(halo::add(0,0,halo));
-	}
-
 	const int total_mvt_time = 150 * u.movement_cost(map,dst_terrain)/acceleration;
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = SDL_GetTicks() -start_time;
 	disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
+	const double xsrc = disp.get_location_x(a);
+	const double ysrc = disp.get_location_y(a);
+	const double xdst = disp.get_location_x(b);
+	const double ydst = disp.get_location_y(b);
 	while(mvt_time < total_mvt_time) {
-		u.set_walking(map.underlying_mvt_terrain(src_terrain),a.get_relative_dir(b),acceleration);
-
-		const int height_adjust = src_height_adjust + int(double(dst_height_adjust - src_height_adjust) * (double(mvt_time) / total_mvt_time));
-		const double submerge = src_submerge + int(double(dst_submerge - src_submerge) * (double(mvt_time) / total_mvt_time));
-		const int xloc = xsrc + int(double(xdst-xsrc)*(double(mvt_time)/total_mvt_time));
-		const int yloc = ysrc + int(double(ydst-ysrc)*(double(mvt_time)/total_mvt_time)) - height_adjust;
-		u.refresh_unit(disp,xloc,yloc,submerge);
+		u.set_walking(map.underlying_mvt_terrain(src_terrain),acceleration);
+		const double pos =double(mvt_time)/total_mvt_time;
+		const int posx = int(pos*xdst + (1.0-pos)*xsrc);
+		const int posy = int(pos*ydst + (1.0-pos)*ysrc);
+		disp.draw_tile(a.x,a.y);
+		u.refresh_unit(disp,a,posx,posy);
+		disp.update_display();
+		events::pump();
+		if(!disp.turbo()) SDL_Delay(10);
 
 		mvt_time = SDL_GetTicks() -start_time;
 	}
@@ -220,11 +130,7 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 {
 	bool previous_visible = false;
 	for(size_t i = 0; i+1 < path.size(); ++i) {
-		if(path[i+1].x > path[i].x) {
-			u.set_facing_left(true);
-		} else if(path[i+1].x < path[i].x) {
-			u.set_facing_left(false);
-		}
+		u.set_facing(path[i].get_relative_dir(path[i+1]));
 
 		disp.remove_footstep(path[i]);
 
@@ -249,7 +155,7 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 			disp.draw_tile(path[i].x,path[i].y);
 		}
 	}
-	u.set_standing();
+	u.set_standing(disp.turbo()?5:1);
 
 	//make sure the entire path is cleaned properly
 	for(std::vector<gamemap::location>::const_iterator it = path.begin(); it != path.end(); ++it) {
@@ -257,7 +163,7 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 	}
 }
 
-void unit_die(display& disp, const gamemap::location& loc, const unit& u, const attack_type* attack)
+void unit_die(display& disp, const gamemap &map,const gamemap::location& loc, unit& u, const attack_type* attack)
 {
 	if(disp.update_locked() || disp.fogged(loc.x,loc.y) || preferences::show_combat() == false) {
 		return;
@@ -267,342 +173,146 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u, const 
 	if(die_sound != "" && die_sound != "null") {
 		sound::play_sound(die_sound);
 	}
+	u.set_dying(attack,disp.turbo() ? 5:1);
 
-	surface unit_image(NULL);
 
-	unit_animation anim(u.type().die_animation(attack));
+	while(!u.get_animation()->animation_finished()) {
 
-	anim.start_animation(anim.get_first_frame_time(),1,disp.turbo() ? 5:1);
-	anim.update_current_frame();
-
-	while(!anim.animation_finished()) {
-
-		const unit_frame& frame = anim.get_current_frame();
-
-		const surface surf(image::get_image(image::locator(frame.image,u.team_rgb_range(), u.type().flag_rgb())));
-		if(surf.get() != NULL) {
-			unit_image = surf;
-		}
-		disp.draw_tile(loc.x,loc.y,unit_image);
+		disp.draw_tile(loc.x,loc.y);
 		disp.update_display();
-
-		SDL_Delay(10);
-
-		anim.update_current_frame();
+		events::pump();
+		if(!disp.turbo()) SDL_Delay(10);
 	}
-
-	const int frame_time = 30;
-	int ticks = SDL_GetTicks();
-
-	for(fixed_t alpha = ftofxp(1.0); alpha > ftofxp(0.0); alpha -= ftofxp(0.05)) {
-		disp.draw_tile(loc.x,loc.y,unit_image,alpha);
-
-		const int wait_time = ticks + frame_time - SDL_GetTicks();
-
-		if(wait_time > 0 && !disp.turbo())
-			SDL_Delay(wait_time);
-
-		ticks = SDL_GetTicks();
-
-		disp.update_display();
-	}
-
-	disp.draw_tile(loc.x,loc.y,unit_image,ftofxp(0.0));
+	u.set_standing(disp.turbo() ? 5:1);
 	disp.update_display();
+	events::pump();
+
 }
 
 namespace {
 
-bool unit_attack_ranged(display& disp, unit_map& units,
+bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
                         const gamemap::location& a, const gamemap::location& b,
-                        int damage, const attack_type& attack, bool update_display)
+			int damage, const attack_type& attack, bool update_display)
+
 {
 	const bool hide = disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)
-	                  || preferences::show_combat() == false || (!update_display);
+		|| preferences::show_combat() == false || (!update_display);
+
+	log_scope("unit_attack_range");
 
 	const unit_map::iterator att = units.find(a);
-	const unit_map::iterator def = units.find(b);
+	wassert(att != units.end());
+	unit& attacker = att->second;
 
-	const gamemap::location leader_loc = under_leadership(units,a);
-	unit_map::iterator leader = units.end();
-	if(leader_loc.valid()) {
-		leader = units.find(leader_loc);
-		wassert(leader != units.end());
-		leader->second.set_leading();
-	}
+	const unit_map::iterator def = units.find(b);
+	wassert(def != units.end());
+	unit& defender = def->second;
 
 	const bool hits = damage > 0;
-	const std::pair<const unit_animation*,const unit_animation*> tmp_pair = attack.animation(hits,get_adjacent_direction(a,b)) ;
-	unit_animation attack_anim = *tmp_pair.first;
-	unit_animation missile_anim = *tmp_pair.second;
+	const int acceleration = disp.turbo() ? 5 : 1;
 
-	//the missile frames are based around the time when the missile impacts.
-	//the 'real' frames are based around the time when the missile launches.
-	const int first_missile = minimum<int>(-100,missile_anim.get_first_frame_time());
-	const int last_missile = missile_anim.get_last_frame_time();
 
-	const int real_last_missile = last_missile - first_missile;
-	const int missile_impact = -first_missile;
 
-	const int time_resolution = 20;
-	const int acceleration = disp.turbo() ? 5:1;
 
-	const std::string& hit_sound = def->second.type().get_hit_sound();
-	bool played_hit_sound = (hit_sound == "" || hit_sound == "null");
-	const int play_hit_sound_at = 0;
 
-	const int begin_at = attack_anim.get_first_frame_time();
+
 	// more damage shown for longer, but 1s at most for this factor
-	const int end_at = maximum<int>(minimum<int>((damage+1)*time_resolution+missile_impact, 1000),
-		maximum(attack_anim.get_last_frame_time(),real_last_missile));
-
 	const double xsrc = disp.get_location_x(a);
 	const double ysrc = disp.get_location_y(a);
 	const double xdst = disp.get_location_x(b);
 	const double ydst = disp.get_location_y(b);
 
 	gamemap::location update_tiles[6];
-	get_adjacent_tiles(a,update_tiles);
+	get_adjacent_tiles(b,update_tiles);
+
+	bool dead = false;
+
+
+
+	// start leader and attacker animation, wait for attacker animation to end
+	unit_animation missile_animation = attacker.set_attacking(acceleration,hits,attack);
+	const gamemap::location leader_loc = under_leadership(units,a);
+	unit_map::iterator leader = units.end();
+	if(leader_loc.valid()){
+		LOG_DP << "found leader at " << leader_loc << '\n';
+		leader = units.find(leader_loc);
+		wassert(leader != units.end());
+		leader->second.set_leading(disp.turbo()?5:1);
+	}
+	while(!attacker.get_animation()->animation_finished() ) {
+		disp.draw_tile(a.x,a.y);
+		//if(leader_loc.valid()) leader->second.refresh_unit(disp,map,disp.get_location_x(leader_loc),disp.get_location_y(leader_loc));
+		disp.update_display();
+		events::pump();
+		if(!disp.turbo()) SDL_Delay(10);
+	}
+
+
+	int animation_time;
+
 
 	const bool vflip = b.y > a.y || b.y == a.y && is_even(a.x);
 	const bool hflip = b.x < a.x;
 	const unit_animation::FRAME_DIRECTION dir = (a.x == b.x) ? unit_animation::VERTICAL:unit_animation::DIAGONAL;
 
-	bool dead = false;
-	const int drain_speed = 1*acceleration;
-
-	int flash_num = 0;
-
-	bool shown_label = false;
-
-	util::scoped_resource<int,halo::remover> missile_halo_effect(0), unit_halo_effect(0);
-	const std::string* missile_halo_image = NULL;
-	const std::string* unit_halo_image = NULL;
-	int missile_halo_x = -1, missile_halo_y = -1, unit_halo_x = -1, unit_halo_y = -1;
-
-	attack_anim.start_animation(begin_at,1, acceleration);
-	missile_anim.start_animation(begin_at + first_missile,1, acceleration);
-
-	attack_anim.update_current_frame();
-	missile_anim.update_current_frame();
-	int animation_time = attack_anim.get_animation_time();
-	def->second.set_defending(hits, attack.range(), animation_time, acceleration);
-
-	while(animation_time < end_at && !hide) {
-
-		if(!hide && hits && !played_hit_sound && animation_time >= play_hit_sound_at) {
-			sound::play_sound(hit_sound);
-			played_hit_sound = true;
-		}
-
-		const unit_frame& attack_frame = attack_anim.get_current_frame();
-		if(attack_anim.frame_changed() && !attack_frame.sound.empty()) {
-			sound::play_sound(attack_frame.sound);
-		}
-		LOG_DP << "Animation time :" << animation_time << ", image " << attack_frame.image << "\n";
-		int new_halo_x = attack_frame.halo_x;
-		int new_halo_y = attack_frame.halo_y;
-		const std::string* unit_image = &attack_frame.image;
-
-		if(att->second.facing_left() == false) {
-			new_halo_x *= -1;
-		}
-
-		if(unit_halo_image != &attack_frame.halo ||
-				unit_halo_x != new_halo_x ||
-				unit_halo_y != new_halo_y) {
-
-			unit_halo_image = &attack_frame.halo;
-			unit_halo_x = new_halo_x;
-			unit_halo_y = new_halo_y;
-
-			if(!attack_frame.halo.empty() && !disp.fogged(a.x,a.y)) {
-				const int halo_xpos = int(disp.get_location_x(a) +
-						disp.hex_size()/2.0 + unit_halo_x*disp.zoom());
-				const int halo_ypos = int(disp.get_location_y(a) +
-						disp.hex_size()/2.0 + unit_halo_y*disp.zoom());
-
-				unit_halo_effect.assign(halo::add(halo_xpos,halo_ypos,*unit_halo_image));
-			} else {
-				unit_halo_effect.assign(0);
-			}
-		}
-
-		if(unit_image->empty()) {
-			unit_image = &att->second.type().image_fighting(attack_type::LONG_RANGE);
-		}
-
-		if(!hide) {
-
-			const surface image((unit_image == NULL) ? surface(NULL) : image::get_image(image::locator(*unit_image,att->second.team_rgb_range(),att->second.type().flag_rgb())));
-			disp.draw_tile(a.x,a.y,image);
-		}
-
-		if(damage > 0 && animation_time >= missile_impact && shown_label == false) {
-			shown_label = true;
-			disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
-		}
-
-		Uint32 defensive_colour = 0;
-		fixed_t defensive_alpha = ftofxp(1.0);
-
-		LOG_DP << "Waiting for missile impact at " << missile_impact << "\n";
-		if(damage > 0 && animation_time >= missile_impact) {
-			if(def->second.gets_hit(minimum<int>(drain_speed,damage))) {
-				dead = true;
-				damage = 0;
-			} else {
-				damage -= drain_speed;
-			}
-
-			if(flash_num == 0 || flash_num == 2) {
-				defensive_alpha = ftofxp(0.0);
-				defensive_colour = disp.rgb(200,0,0);
-			}
-
-			++flash_num;
-		}
-
-		for(int j = 0; j != 6; ++j) {
-			if(update_tiles[j] != b) {
-				disp.draw_tile(update_tiles[j].x,update_tiles[j].y);
-			}
-		}
-
-		disp.draw_tile(b.x,b.y,NULL,defensive_alpha,defensive_colour);
-		if(leader_loc.valid()) {
-			disp.draw_tile(leader_loc.x,leader_loc.y);
-		}
-
-		if(animation_time >= 0 && animation_time < real_last_missile && !hide) {
-			const unit_frame& missile_frame = missile_anim.get_current_frame();
-			LOG_DP << "Missile: animation time :" << animation_time << ", image "
-				<< missile_frame.image << ", halo: " << missile_frame.halo << "\n";
-
-			new_halo_x = missile_frame.halo_x;
-			new_halo_y = missile_frame.halo_y;
-
-			if(att->second.facing_left() == false) {
-				new_halo_x *= -1;
-			}
-
-			new_halo_x = int(new_halo_x*disp.zoom());
-			new_halo_y = int(new_halo_y*disp.zoom());
-
+	
+	defender.set_defending(damage,attack.range(),acceleration);
+	const int start_time = minimum<int>(minimum<int>(defender.get_animation()->get_first_frame_time(),
+				missile_animation.get_first_frame_time()),-200);
+	missile_animation.start_animation(start_time,acceleration);
+	defender.restart_animation(start_time,acceleration);
+	while(!defender.get_animation()->animation_finished()  ||
+			(leader_loc.valid() && !leader->second.get_animation()->animation_finished())) {
+		const double pos = animation_time < defender.get_animation()->get_first_frame_time()?1.0:
+			double(animation_time)/double(attacker.get_animation()->get_first_frame_time());
+		const int posx = int(pos*xsrc + (1.0-pos)*xdst);
+		const int posy = int(pos*ysrc + (1.0-pos)*ydst);
+		disp.draw_tile(b.x,b.y);
+		disp.draw_tile(a.x,a.y);
+		//if(leader_loc.valid()) leader->second.refresh_unit(disp,leader_loc.x,leader_loc.y);
+		if(pos > 0.0 && pos < 1.0) {
+			const unit_frame& missile_frame = missile_animation.get_current_frame();
 			const std::string *missile_image = NULL;
 			if(dir == unit_animation::VERTICAL) {
 				missile_image = &missile_frame.image;
 			} else {
 				missile_image = &missile_frame.image_diagonal;
 			}
-
-			static const std::string default_missile(game_config::missile_n_image);
-			static const std::string default_diag_missile(game_config::missile_ne_image);
-			if(missile_image->empty()) {
-				if(dir == unit_animation::VERTICAL)
-					missile_image = &default_missile;
-				else
-					missile_image = &default_diag_missile;
-			}
-
 			surface img(image::get_image(image::locator(*missile_image)));
 
 			if(hflip) {
 				img.assign(image::reverse_image(img));
 			}
+			disp.draw_unit(posx, posy , img,vflip);
 
-			double pos = double(missile_impact - animation_time)/double(missile_impact);
-			if(pos < 0.0) {
-				pos = 0.0;
-			}
-
-			const int xpos = int((xsrc+new_halo_x)*pos + xdst*(1.0-pos));
-			const int ypos = int((ysrc+new_halo_y)*pos + ydst*(1.0-pos));
-
-			if(img != NULL) {
-				disp.draw_unit(xpos,ypos,img,vflip);
-			}
-
-			const int halo_xpos = xpos+disp.hex_size()/2;
-			const int halo_ypos = ypos+disp.hex_size()/2;
-
-			if(missile_halo_image != &missile_frame.halo || missile_halo_x != new_halo_x || missile_halo_y != new_halo_y) {
-				missile_halo_image = &missile_frame.halo;
-				missile_halo_x = new_halo_x;
-				missile_halo_y = new_halo_y;
-
-				if(missile_halo_image != NULL &&
-						!missile_halo_image->empty() &&
-						!disp.fogged(b.x,b.y)) {
-					missile_halo_effect.assign(halo::add(halo_xpos,halo_ypos,*missile_halo_image));
-				} else {
-					missile_halo_effect.assign(0);
-				}
-			}
-
-			else if(missile_halo_effect != 0) {
-				halo::set_location(missile_halo_effect,halo_xpos,halo_ypos);
-			}
-		} else {
-			//the missile halo should disappear now, since the missile has stopped being shown
-			missile_halo_effect.assign(0);
 		}
-
-		//TODO: fix this
-		SDL_Delay(20);
-#if 0
-		const int wait_time = ticks + time_resolution - SDL_GetTicks();
-		if(wait_time > 0 && !hide) {
-			SDL_Delay(wait_time);
-		} else if(wait_time < 0) {
-			//if we're not keeping up, then skip frames
-			i += minimum<int>(time_resolution*4,-wait_time);
-		}
-#endif
-
-		// ticks = SDL_GetTicks();
-
-		attack_anim.update_current_frame();
-		missile_anim.update_current_frame();
-		def->second.update_frame();
-		animation_time = attack_anim.get_animation_time();
-		events::pump();
 		disp.update_display();
+		events::pump();
+		if(!disp.turbo()) SDL_Delay(10);
+		animation_time = defender.get_animation()->get_animation_time();
 	}
-
-	unit_halo_effect.assign(0);
-	missile_halo_effect.assign(0);
-
-	if(damage > 0 && shown_label == false) {
-		shown_label = true;
-		if (update_display){
-			disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
-		}
+	sound::play_sound(def->second.type().get_hit_sound());
+	if(damage > 0 && !hide) {
+		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
 	}
-
-	if(damage > 0 && def->second.gets_hit(damage)) {
+	if(def->second.gets_hit(damage)) {
 		dead = true;
-		damage = 0;
 	}
 
-	if(leader_loc.valid()){
-		leader->second.set_standing();
-	}
-
-	disp.invalidate(a);
-	disp.invalidate(b);
-
-	def->second.set_standing();
-
-	if(leader_loc.valid() && update_display){
-		disp.draw_tile(leader_loc.x,leader_loc.y);
-	}
 
 	if(dead) {
-		unit_die(disp,def->first,def->second,&attack);
+		unit_display::unit_die(disp,map,def->first,def->second,&attack);
+	} else {
+		def->second.set_standing(disp.turbo()?5:1);
 	}
+	if(leader_loc.valid()) leader->second.set_standing(disp.turbo()?5:1);
+	att->second.set_standing(disp.turbo()?5:1);
+	disp.update_display();
+	events::pump();
 
 	return dead;
+
 }
 
 } //end anon namespace
@@ -625,33 +335,33 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 	const unit_map::iterator att = units.find(a);
 	wassert(att != units.end());
-
 	unit& attacker = att->second;
 
 	const unit_map::iterator def = units.find(b);
 	wassert(def != units.end());
+	unit& defender = def->second;
 
-	if(b.x > a.x) {
-		att->second.set_facing_left(true);
-		def->second.set_facing_left(false);
-	} else if(b.x < a.x) {
-		att->second.set_facing_left(false);
-		def->second.set_facing_left(true);
-	}
-
+	att->second.set_facing(a.get_relative_dir(b));
+	def->second.set_facing(b.get_relative_dir(a));
 	if(attack.range_type() == attack_type::LONG_RANGE) {
-		return unit_attack_ranged(disp, units, a, b, damage, attack, update_display);
+		return unit_attack_ranged(disp, map,units, a, b, damage, attack, update_display);
 	}
 
 	const bool hits = damage > 0;
-	unit_animation attack_anim = *attack.animation(hits,get_adjacent_direction(a,b)).first;
-
-	const std::string& hit_sound = def->second.type().get_hit_sound();
-	bool played_hit_sound = (hit_sound == "" || hit_sound == "null");
-	const int play_hit_sound_at = 0;
-
-	const int time_resolution = 20;
 	const int acceleration = disp.turbo() ? 5 : 1;
+	int start_time = 500;
+	int end_time = 0;
+	
+	
+	attacker.set_attacking(acceleration,hits,attack);
+	start_time=minimum<int>(start_time,attacker.get_animation()->get_first_frame_time());
+	end_time=maximum<int>(end_time,attacker.get_animation()->get_last_frame_time());
+
+	defender.set_defending(damage,attack.range(),acceleration);
+	start_time=minimum<int>(start_time,defender.get_animation()->get_first_frame_time());
+	end_time=maximum<int>(end_time,defender.get_animation()->get_last_frame_time());
+
+
 
 	const gamemap::location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
@@ -659,213 +369,71 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		LOG_DP << "found leader at " << leader_loc << '\n';
 		leader = units.find(leader_loc);
 		wassert(leader != units.end());
-		leader->second.set_leading();
+		leader->second.set_leading(disp.turbo()?5:1);
+		start_time=minimum<int>(start_time,leader->second.get_animation()->get_first_frame_time());
+		end_time=maximum<int>(end_time,leader->second.get_animation()->get_last_frame_time());
 	}
 
-	const int begin_at = minimum<int>(-200,attack_anim.get_first_frame_time());
-	// more damage shown for longer, but 1s at most for this factor
-	const int end_at = maximum<int>(minimum<int>((damage+1)*time_resolution,1000),
-	                                       maximum<int>(200,attack_anim.get_last_frame_time()));
-
-	const double xsrc = disp.get_location_x(a);
-	const double ysrc = disp.get_location_y(a);
-	const double xdst = disp.get_location_x(b)*0.6 + xsrc*0.4;
-	const double ydst = disp.get_location_y(b)*0.6 + ysrc*0.4;
 
 	gamemap::location update_tiles[6];
 	get_adjacent_tiles(b,update_tiles);
 
 	bool dead = false;
-	const int drain_speed = 1*acceleration;
-
-	int flash_num = 0;
-
-	int ticks = SDL_GetTicks();
-
-	if (update_display){
-		disp.hide_unit(a);
-	}
-
-	const gamemap::TERRAIN src_terrain = map.get_terrain(a);
-	const gamemap::TERRAIN dst_terrain = map.get_terrain(b);
-
-	const double src_height_adjust = attacker.is_flying() ? 0 : map.get_terrain_info(src_terrain).unit_height_adjust() * disp.zoom();
-	const double dst_height_adjust = attacker.is_flying() ? 0 : map.get_terrain_info(dst_terrain).unit_height_adjust() * disp.zoom();
-
-	const double src_submerge = attacker.is_flying() ? 0 : map.get_terrain_info(src_terrain).unit_submerge();
-	const double dst_submerge = attacker.is_flying() ? 0 : map.get_terrain_info(dst_terrain).unit_submerge();
-
-	bool shown_label = false;
-
-	util::scoped_resource<int,halo::remover> halo_effect(0);
-	const std::string* halo_image = NULL;
-	int halo_x = -1, halo_y = -1;
-
-	attack_anim.start_animation(begin_at+1,1, acceleration);
-
-	int animation_time = attack_anim.get_animation_time();
-
-	def->second.set_defending(hits, attack.range(), animation_time, acceleration);
-
-	while(animation_time < end_at && !hide) {
-
-		const unit_frame& unit_frame = attack_anim.get_current_frame();
-		if(!unit_frame.sound.empty()) {
-		}
-		if(attack_anim.frame_changed() && !unit_frame.sound.empty()) {
-			sound::play_sound(unit_frame.sound);
-		}
-
-		if(!hide && hits && !played_hit_sound && animation_time >= play_hit_sound_at) {
-			sound::play_sound(hit_sound);
-			played_hit_sound = true;
-		}
-
-		for(int j = 0; j != 6; ++j) {
-			disp.draw_tile(update_tiles[j].x,update_tiles[j].y);
-		}
-
-		Uint32 defender_colour = 0;
-		fixed_t defender_alpha = ftofxp(1.0);
-
-		if(damage > 0 && animation_time >= 0 && shown_label == false) {
-			shown_label = true;
-			disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
-		}
-
-		if(damage > 0 && animation_time >= 0) {
-			if(def->second.gets_hit(minimum<int>(drain_speed,damage))) {
-				dead = true;
-				damage = 0;
-			} else {
-				damage -= drain_speed;
-			}
-
-			if(flash_num == 0 || flash_num == 2) {
-				defender_alpha = ftofxp(0.0);
-				defender_colour = disp.rgb(200,0,0);
-			}
-
-			++flash_num;
-		}
-
-		disp.draw_tile(b.x,b.y,NULL,defender_alpha,defender_colour);
-		if(leader_loc.valid()) {
-			disp.draw_tile(leader_loc.x,leader_loc.y);
-		}
 
 
-		int xoffset = 0;
 
-		int new_halo_x = unit_frame.halo_x;
-		int new_halo_y = unit_frame.halo_y;
 
-		const std::string& unit_image_name = unit_frame.image ;
-		image::locator unit_image;
-		if(!unit_image_name.empty()) {
-			unit_image = image::locator(unit_image_name,attacker.team_rgb_range(),attacker.type().flag_rgb());
-		} else {
-			unit_image = attacker.image_loc();
-		}
-		if(!attacker.facing_left()) {
-			xoffset *= -1;
-			new_halo_x *= -1;
-		}
 
-		new_halo_x = int(new_halo_x*disp.zoom());
+	attacker.restart_animation(start_time,acceleration);
+	defender.restart_animation(start_time,acceleration);
+	if(leader_loc.valid()) leader->second.restart_animation(start_time,acceleration);
 
-		xoffset = int(double(xoffset)*disp.zoom());
-
-		surface image(image::get_image(unit_image));
-		if(attacker.facing_left() == false) {
-			image.assign(image::reverse_image(image));
-		}
-
-		const double pos = double(animation_time)/double(animation_time < 0 ? begin_at : end_at);
-		const int posx = int(pos*xsrc + (1.0-pos)*xdst) + xoffset;
-		const int posy = int(pos*ysrc + (1.0-pos)*ydst);
-
-		const int halo_xpos = posx+disp.hex_size()/2;
-		const int halo_ypos = posy+disp.hex_size()/2;
-
-		if(&unit_frame.halo != halo_image ||
-				new_halo_x != halo_x ||
-				new_halo_y != halo_y) {
-			halo_image = &unit_frame.halo;
-			halo_x = new_halo_x;
-			halo_y = new_halo_y;
-
-			if(!unit_frame.halo.empty() &&
-					(!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
-				halo_effect.assign(halo::add(halo_xpos,halo_ypos,*halo_image));
-			} else {
-				halo_effect.assign(0);
-			}
-		}
-
-		else if(halo_effect != 0) {
-			halo::set_location(halo_effect,halo_xpos,halo_ypos);
-		}
-
-		const int height_adjust = int(src_height_adjust*pos + dst_height_adjust*(1.0-pos));
-		const double submerge = src_submerge*pos + dst_submerge*(1.0-pos);
-
-		if(image != NULL && !hide) {
-			disp.draw_unit(posx, posy - height_adjust, image, false, ftofxp(1.0), 0, 0.0, submerge);
-		}
-
-		const int wait_time = ticks + time_resolution - SDL_GetTicks();
-		if(wait_time > 0 && !hide) {
-			SDL_Delay(wait_time);
-		}
-
-		ticks = SDL_GetTicks();
-
-		attack_anim.update_current_frame();
-		def->second.update_frame();
-		animation_time = attack_anim.get_animation_time();
-		events::pump();
+	int animation_time = start_time;
+	while(animation_time < 0 && !hide) {
+		const double pos = animation_time < attacker.get_animation()->get_first_frame_time()?0.0:
+			(1.0 - double(animation_time)/double(attacker.get_animation()->get_first_frame_time()));
+		disp.draw_tile(a.x,a.y,pos*0.6);
+		//defender.refresh_unit(disp,disp.get_location_x(b), disp.get_location_y(b));
+		//if(leader_loc.valid()) leader->second.refresh_unit(disp,leader_loc.x,leader_loc.y);
 		disp.update_display();
+		events::pump();
+		if(!disp.turbo()) SDL_Delay(10);
+
+		animation_time = attacker.get_animation()->get_animation_time();
 	}
-
-	halo_effect.assign(0);
-
-	if(damage > 0 && shown_label == false) {
-		shown_label = true;
-		if (update_display){
-			disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
-		}
+	sound::play_sound(def->second.type().get_hit_sound());
+	if(damage > 0 && !hide) {
+		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
 	}
-
-	if (update_display){
-		disp.hide_unit(gamemap::location());
-	}
-
-	if(damage > 0 && def->second.gets_hit(damage)) {
+	if(def->second.gets_hit(damage)) {
 		dead = true;
-		damage = 0;
+	}
+	while(!attacker.get_animation()->animation_finished() ||
+			!defender.get_animation()->animation_finished()  ||
+			(leader_loc.valid() && !leader->second.get_animation()->animation_finished() )) {
+		const double pos = (1.0-double(animation_time)/double(end_time));
+		disp.draw_tile(a.x,a.y,pos*0.6);
+		//defender.refresh_unit(disp,disp.get_location_x(b), disp.get_location_y(b));
+		//if(leader_loc.valid()) leader->second.refresh_unit(disp,leader_loc.x,leader_loc.y);
+		disp.update_display();
+		events::pump();
+		if(!disp.turbo()) SDL_Delay(10);
+
+		animation_time = attacker.get_animation()->get_animation_time();
 	}
 
-	if(leader_loc.valid()){
-		leader->second.set_standing();
-	}
-
-	disp.invalidate(a);
-	disp.invalidate(b);
-
-	if (update_display){
-		if(leader_loc.valid()) {
-			disp.draw_tile(leader_loc.x,leader_loc.y);
-		}
-	}
-
-	def->second.set_standing();
 
 	if(dead) {
-		unit_display::unit_die(disp,def->first,def->second,&attack);
+		unit_display::unit_die(disp,map,def->first,def->second,&attack);
+	} else {
+		def->second.set_standing(disp.turbo()?5:1);
 	}
+	if(leader_loc.valid()) leader->second.set_standing(disp.turbo()?5:1);
+	att->second.set_standing(disp.turbo()?5:1);
+	disp.update_display();
+	events::pump();
 
 	return dead;
-}
 
 }
+} // end unit display namespace

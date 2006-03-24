@@ -145,25 +145,26 @@ bool attack_type::slow() const
 	return slow_;
 }
 
-const std::pair<const unit_animation*,const unit_animation*> attack_type::animation(bool hit,const gamemap::location::DIRECTION dir) const
+const attack_type::attack_animation& attack_type::animation(bool hit,const gamemap::location::DIRECTION dir) const
 {
 	//select one of the matching animations at random
-	std::vector<std::pair<const unit_animation*,const unit_animation*> > options;
+	std::vector<const attack_animation*>  options;
 	int max_val = -1;
 	for(std::vector<attack_animation>::const_iterator i = animation_.begin(); i != animation_.end(); ++i) {
 		int matching = i->matches(hit,dir);
 		if(matching == max_val) {
-			options.push_back(std::pair<const unit_animation*,const unit_animation*>(&i->animation,&i->missile_animation));
+			options.push_back(&*i);
 		} else if(matching > max_val) {
 			max_val = matching;
 			options.erase(options.begin(),options.end());
-			options.push_back(std::pair<const unit_animation*,const unit_animation*>(&i->animation,&i->missile_animation));
+			options.push_back(&*i);
 		}
 	}
 
 	assert(!options.empty());
-	return options[rand()%options.size()];
+	return *options[rand()%options.size()];
 }
+
 attack_type::attack_animation::attack_animation(const config& cfg):animation(cfg),missile_animation(cfg,"missile_frame"),hits(HIT_OR_MISS)
 {
 	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);

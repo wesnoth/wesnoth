@@ -27,6 +27,9 @@
 #include "serialization/string_utils.hpp"
 #include "halo.hpp"
 #include "display.hpp"
+#include "gamestatus.hpp"
+#include "actions.hpp"
+#include "sound.hpp"
 
 //DEBUG
 #include <iostream>
@@ -69,10 +72,10 @@ void sort_units(std::vector< unit > &units)
 //constructor for reading a unit
 unit::unit(const game_data& data, const config& cfg) :
 	state_(STATE_STANDING),
-	moves_(0), user_end_turn_(false), facingLeft_(true),
+	moves_(0), user_end_turn_(false), facing_(gamemap::location::NORTH_EAST),
 	resting_(false), hold_position_(false), recruit_(false),
 	guardian_(false), upkeep_(UPKEEP_FREE),anim_(NULL),user_image_(""),
-	unit_halo_(0),unit_anim_halo_(0)
+	unit_halo_(0),unit_anim_halo_(0),refreshing_(false),hidden_(false)
 {
 	read(data,cfg);
 				
@@ -98,15 +101,15 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	       maxExperience_(type_->experience_needed()),
 	       backupMaxExperience_(type_->experience_needed()),
 	       side_(side), moves_(0),
-	       user_end_turn_(false), facingLeft_(side != 1),
+	       user_end_turn_(false), facing_(gamemap::location::NORTH_EAST),
 	       maxMovement_(type_->movement()),
 	       backupMaxMovement_(type_->movement()),
 	       resting_(false), hold_position_(false), recruit_(false),
 	       attacks_(type_->attacks()),
 	       backupAttacks_(type_->attacks()),
                guardian_(false), upkeep_(UPKEEP_FULL_PRICE),
-               unrenamable_(false),anim_(NULL),unit_halo_(0),user_image_(""),
-	       unit_anim_halo_(0)
+               unrenamable_(false),anim_(NULL),user_image_(""),unit_halo_(0),
+	       unit_anim_halo_(0),refreshing_(false),hidden_(false)
 {
 	//dummy units used by the 'move_unit_fake' command don't need to have a side.
 	if(dummy_unit == false) validate_side(side_);
@@ -134,21 +137,21 @@ unit::unit(const unit_type* t, const unit& u) :
 	maxExperience_(type_->experience_needed()),
 	backupMaxExperience_(type_->experience_needed()),
 	side_(u.side()), moves_(u.moves_),
-	user_end_turn_(false), facingLeft_(u.facingLeft_),
+	user_end_turn_(false), facing_(u.facing_),
 	maxMovement_(type_->movement()),
 	backupMaxMovement_(type_->movement()),
 	resting_(u.resting_), hold_position_(u.hold_position_),
 	underlying_description_(u.underlying_description_),
-	profile_(u.profile_),
-	description_(u.description_), recruit_(u.recruit_),
+	description_(u.description_),profile_(u.profile_),
+	 recruit_(u.recruit_),
 	role_(u.role_), statusFlags_(u.statusFlags_),
 	overlays_(u.overlays_), variables_(u.variables_),
 	attacks_(type_->attacks()), backupAttacks_(type_->attacks()),
 	modifications_(u.modifications_),
 	traitsDescription_(u.traitsDescription_),
 	guardian_(false), upkeep_(u.upkeep_),
-	unrenamable_(u.unrenamable_),anim_(NULL),unit_halo_(0),user_image_(u.user_image_),
-	unit_anim_halo_(0)
+	unrenamable_(u.unrenamable_),anim_(NULL),user_image_(u.user_image_),unit_halo_(0),
+	unit_anim_halo_(0),refreshing_(false),hidden_(false)
 {
 	validate_side(side_);
 
@@ -165,6 +168,10 @@ unit::~unit()
 	if(unit_halo_) {
 		halo::remove(unit_halo_);
 	}
+	if(unit_anim_halo_) {
+		halo::remove(unit_anim_halo_);
+	}
+	if(anim_) delete anim_;
 }
 void unit::generate_traits()
 {
@@ -539,9 +546,6 @@ void unit::heal_all()
 	hitpoints_ = max_hitpoints();
 }
 
-static bool is_terrain(std::string const &terrain, gamemap::TERRAIN type) {
-	return std::count(terrain.begin(), terrain.end(), static_cast<gamemap::TERRAIN>(type)) != 0;
-}
 
 bool unit::invisible(const std::string& terrain, int lawful_bonus,
 		const gamemap::location& loc,
@@ -828,11 +832,8 @@ void unit::read(const game_data& data, const config& cfg)
 		upkeep_ = UPKEEP_FREE;
 	}
 
-	const std::string& facing = cfg["facing"];
-	if(facing == "reverse")
-		facingLeft_ = false;
-	else
-		facingLeft_ = true;
+	 facing_ = gamemap::location::parse_direction(cfg["facing"]);
+	 if(facing_ == gamemap::location::NDIRECTIONS) facing_ = gamemap::location::NORTH_EAST;
 
 	const std::string& ai_special = cfg["ai_special"];
 	if(ai_special == "guardian") {
@@ -944,7 +945,7 @@ void unit::write(config& cfg) const
 
 	cfg.add_child("modifications",modifications_);
 
-	cfg["facing"] = facingLeft_ ? "normal" : "reverse";
+	cfg["facing"] = gamemap::location::write_direction(facing_);
 
 	switch(upkeep_) {
 	case UPKEEP_FULL_PRICE: cfg["upkeep"] = "full"; break;
@@ -1002,121 +1003,279 @@ int unit::damage_against(const attack_type& attack) const
 	return type_->movement_type().damage_against(attack);
 }
 
-const std::string& unit::image() const
+
+const surface unit::still_image() const
 {
-	switch(state_) {
-		case STATE_STANDING:
-			if(! user_image_.empty()) {
-				return user_image_;
-			}
-			return type_->image();
-		case STATE_WALKING: 
-		case STATE_DEFENDING: {
-			const std::string& res = anim_->get_current_frame().image;
-			if(res != "") {
-				return res;
-			} else { 
-				if(anim_->animation_finished()) 
-					return anim_->get_last_frame().image;
-				else
-					return anim_->get_first_frame().image;
-			}
-		}
-		case STATE_ATTACKING: {
-			if(attackType_ == NULL)
-				return type_->image();
-
-			const std::string& img = attackType_->animation(true).first->get_current_frame().image;
-			if (img.empty())
-				return type_->image_fighting(attackType_->range_type());
-			else
-				return img;
-		}
-		case STATE_HEALING:
-			return type_->image_healing();
-		case STATE_LEADING:
-			return type_->image_leading();
-
-		default: return type_->image();
+	image::locator  loc;
+	if(type().flag_rgb().size()){
+		loc = image::locator(absolute_image(),team_rgb_range(),type().flag_rgb());
+	}else{
+		loc = image::locator(absolute_image());
 	}
+	surface unit_image(image::get_image(loc,image::UNSCALED));
+	return unit_image;
 }
 
-const image::locator unit::image_loc() const
-{
-  if(type().flag_rgb().size()){
-    return(image::locator(image(),team_rgb_range(),type().flag_rgb()));
-  }else{
-    return(image::locator(image()));
-  }
-}
-
-void unit::set_standing()
+void unit::set_standing(int acceleration)
 {
 	state_ = STATE_STANDING;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
 	}
+	if(!user_image_.empty()) {
+		anim_ = new unit_animation(user_image_);
+	} else {
+		anim_ = new unit_animation(type_->image());
+	}
+	anim_->start_animation(anim_->get_first_frame_time(),unit_animation::INFINITE_CYCLES,acceleration);
+	anim_->update_current_frame();
 }
 
-void unit::set_defending(bool hits, std::string range, int start_frame, int acceleration)
+void unit::set_defending(int damage, std::string range, int acceleration)
 {
-	update_frame();
 	state_ =  STATE_DEFENDING;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
 	}
-	anim_ =  new defensive_animation(type_->defend_animation(hits,range));
-	anim_->start_animation(start_frame,1,acceleration);
-	anim_->update_current_frame();
-}
-
-void unit::update_frame()
-{
-	if (!anim_) return;
-	anim_->update_current_frame();
-	if( anim_->animation_finished()) {
-		delete anim_;
-		anim_ = NULL;	
-		set_standing();
+	anim_ =  new defensive_animation(type_->defend_animation(damage > 0?true:false,range));
+	
+	// add a blink on damage effect
+	int anim_time = anim_->get_last_frame_time();
+	int damage_left = damage;
+	const std::string my_image = anim_->get_last_frame().image;
+	while(anim_time < 1000 && damage_left > 0 ) {
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),1.0));
+		anim_time += 30;
+		damage_left --;
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),0.0));
+		anim_time += 30;
+		damage_left --;
 	}
+	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
+	anim_->update_current_frame();
 }
 
-void unit::set_attacking( const attack_type* type, int ms)
+void unit::set_extra_anim(std::string flag, int acceleration)
+{
+	state_ =  STATE_EXTRA;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
+	if(!type_->extra_animation(flag)) {
+		set_standing(acceleration);
+		return;
+	}
+	anim_ =  new unit_animation(*(type_->extra_animation(flag)));
+	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
+	anim_->update_current_frame();
+}
+
+
+const unit_animation & unit::set_attacking(int acceleration,bool hit,const attack_type& type)
 {
 	state_ =  STATE_ATTACKING;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
 	}
-	attackType_ = type;
-	attackingMilliseconds_ = ms;
+	const attack_type::attack_animation &attack_anim = type.animation(hit,facing_) ;
+	anim_ =  new unit_animation(attack_anim.animation);
+	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
+	anim_->update_current_frame();
+	return attack_anim.missile_animation;
 }
 
-void unit::set_leading()
+void unit::set_leading(int acceleration)
 {
 	state_ = STATE_LEADING;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
 	}
+	anim_ = new unit_animation(type().image_leading());
+	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
+	anim_->update_current_frame();
 }
 
-void unit::set_healing()
+void unit::set_leveling_in(int acceleration)
+{
+	state_ = STATE_LEVELIN;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
+	std::string my_image;
+	if(! user_image_.empty()) {
+		my_image = user_image_;
+	} else {
+		my_image = type_->image();
+	}
+	anim_ = new unit_animation();
+	// add a fade in effect
+	double blend_ratio =1;
+	int anim_time =0;
+	while(blend_ratio > 0) {
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+10,display::rgb(255,255,255),blend_ratio));
+		blend_ratio -=0.015;
+		anim_time += 10;
+	}
+	
+	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
+	anim_->update_current_frame();
+}
+
+void unit::set_leveling_out(int acceleration)
+{
+	state_ = STATE_LEVELOUT;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
+	std::string my_image;
+	if(! user_image_.empty()) {
+		my_image = user_image_;
+	} else {
+		my_image = type_->image();
+	}
+	anim_ = new unit_animation();
+	// add a fade out effect
+	double blend_ratio =0;
+	int anim_time =0;
+	while(blend_ratio < 1) {
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+10,display::rgb(255,255,255),blend_ratio));
+		blend_ratio +=0.015;
+		anim_time += 10;
+	}
+	
+	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
+	anim_->update_current_frame();
+}
+
+void unit::set_recruited(int acceleration)
+{
+	state_ = STATE_RECRUITED;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
+	anim_ = new unit_animation();
+	// add a fade in effect
+	double blend_ratio =0;
+	int anim_time =0;
+	while(blend_ratio < 1) {
+		anim_->add_frame(anim_time,unit_frame(type_->image(),"",anim_time,anim_time+10,0,0,ftofxp(blend_ratio)));
+		blend_ratio +=0.015;
+		anim_time += 10;
+	}
+	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
+	anim_->update_current_frame();
+}
+
+void unit::set_healed(int healing,int acceleration)
+{
+	state_ = STATE_HEALED;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
+	anim_ = new unit_animation(type_->image());
+	// add a blink on heal effect
+	int anim_time = anim_->get_last_frame_time();
+	int heal_left = healing;
+	const std::string my_image = anim_->get_last_frame().image;
+	while(anim_time < 1000 && heal_left > 0 ) {
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),1.0));
+		anim_time += 30;
+		heal_left --;
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),0.0));
+		anim_time += 30;
+		heal_left --;
+	}
+	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
+	anim_->update_current_frame();
+}
+
+void unit::set_poisoned(int damage,int acceleration)
+{
+	state_ = STATE_POISONED;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
+	anim_ = new unit_animation(type_->image());
+	// add a blink on damage effect
+	int anim_time = anim_->get_last_frame_time();
+	int damage_left = damage;
+	const std::string my_image = anim_->get_last_frame().image;
+	while(anim_time < 1000 && damage_left > 0 ) {
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(0,255,0),1.0));
+		anim_time += 30;
+		damage_left --;
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(0,255,0),0.0));
+		anim_time += 30;
+		damage_left --;
+	}
+	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
+	anim_->update_current_frame();
+}
+
+void unit::set_teleporting(int acceleration)
+{
+	state_ = STATE_TELEPORT;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
+	anim_ =  new unit_animation(type_->teleport_animation());
+	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
+	anim_->update_current_frame();
+}
+
+void unit::set_dying(const attack_type* attack, int acceleration)
+{
+	state_ = STATE_DYING;
+	if(anim_) {
+		delete anim_;
+		anim_ = NULL;
+	}
+	anim_ =  new death_animation(type_->die_animation(attack));
+	double blend_ratio = 1.0;
+	std::string tmp_image = anim_->get_last_frame().image;
+	int anim_time =anim_->get_last_frame_time();
+	while(blend_ratio > 0.0) {
+		anim_->add_frame(anim_time,unit_frame(tmp_image,"",anim_time,anim_time+10,0,0,ftofxp(blend_ratio)));
+		blend_ratio -=0.015;
+		anim_time += 10;
+	}
+	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
+	anim_->update_current_frame();
+}
+void unit::set_healing(int acceleration)
 {
 	state_ = STATE_HEALING;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
 	}
+	int duration =0;
+	const std::vector<std::pair<std::string,int> > halos = unit_frame::prepare_halo(type().image_halo_healing(),0,0);
+	std::vector<std::pair<std::string,int> >::const_iterator cur_halo;
+	for(cur_halo = halos.begin() ; cur_halo != halos.end() ; cur_halo++) {
+		duration += cur_halo->second;
+	}
+	duration = maximum<int>(200,duration);
+	anim_ = new unit_animation(type().image_healing(),0,duration,"",type().image_halo_healing());
+	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
+	anim_->update_current_frame();
 }
 
-void unit::set_walking(const std::string terrain,gamemap::location::DIRECTION dir,int acceleration)
+void unit::set_walking(const std::string terrain,int acceleration)
 {
-	update_frame();
 	movement_animation* const anim = dynamic_cast<movement_animation*>(anim_);
-	if(state_ == STATE_WALKING && anim != NULL && anim->matches(terrain,dir) >=0) {
+	if(state_ == STATE_WALKING && anim != NULL && anim->matches(terrain,facing_) >=0) {
 		return; // finish current animation, don't start a new one
 	}
 	state_ = STATE_WALKING;
@@ -1124,21 +1283,22 @@ void unit::set_walking(const std::string terrain,gamemap::location::DIRECTION di
 		delete anim_;
 		anim_ = NULL;
 	}
-	anim_ = new movement_animation(type_->move_animation(terrain,dir));
+	anim_ = new movement_animation(type_->move_animation(terrain,facing_));
 	anim_->start_animation(anim_->get_first_frame_time(),1,acceleration);
 	anim_->update_current_frame();
 }
 
 
 
-bool unit::facing_left() const
+gamemap::location::DIRECTION unit::facing() const
 {
-	return facingLeft_;
+	return facing_;
 }
 
-void unit::set_facing_left(bool newval)
+void unit::set_facing(gamemap::location::DIRECTION dir)
 {
-	facingLeft_ = newval;
+	wassert(dir != gamemap::location::NDIRECTIONS);
+	facing_ = dir;
 }
 
 const t_string& unit::traits_description() const
@@ -1531,33 +1691,206 @@ bool unit::is_flying() const
 	return type().movement_type().is_flying();
 }
 
-void unit::refresh_unit(display& disp,const int& x, const int& y, const double& submerge)
+void unit::restart_animation(int start_time, int acceleration) {
+	if(!anim_) return;
+	anim_->start_animation(start_time,1,acceleration);
+}
+
+void unit::refresh_unit(display& disp,gamemap::location hex,const int& x, const int& y,bool with_status)
 {
-		gamemap::location hex = disp.hex_clicked_on(x+disp.hex_size()/2,y+disp.hex_size()/2);
-		gamemap::location adjacent[6];
-		get_adjacent_tiles(hex, adjacent);
-		
-		surface image(image::get_image(image_loc()));
-		if (!facing_left()) {
-			image.assign(image::reverse_image(image));
+	const gamemap & map = disp.get_map();
+	if(hidden_) { 
+		if(unit_halo_) halo::remove(unit_halo_);
+		unit_halo_ = 0;
+		if(unit_anim_halo_) halo::remove(unit_anim_halo_);
+		unit_anim_halo_ = 0;
+		return;
+	}
+	if(refreshing_) return;
+	if(disp.fogged(hex.x,hex.y)) { return;}
+	if(invisible(map.underlying_union_terrain(map[hex.x][hex.y]),
+				disp.get_game_status().get_time_of_day().lawful_bonus,hex,
+				disp.get_units(),disp.get_teams()) &&
+			disp.get_teams()[disp.playing_team()].is_enemy(side())) {
+		return;
+	}
+	refreshing_ = true;
+	gamemap::location adjacent[6];
+	get_adjacent_tiles(hex, adjacent);
+	if(!anim_) set_standing(disp.turbo()?5:1);
+	anim_->update_current_frame();
+	const gamemap::TERRAIN terrain = map.get_terrain(hex);
+	const double submerge = is_flying() ? 0.0 : map.get_terrain_info(terrain).unit_submerge();
+	const int height_adjust = is_flying() ? 0 : int(map.get_terrain_info(terrain).unit_height_adjust() * disp.zoom());
+
+	std::string image_name;
+	unit_frame current_frame;
+	if(anim_->animation_finished()) current_frame = anim_->get_last_frame();
+	else if(anim_->get_first_frame_time() > anim_->get_animation_time()) current_frame = anim_->get_first_frame();
+	else current_frame = anim_->get_current_frame();
+
+	image_name = current_frame.image;
+	if(anim_->frame_changed() ) {
+		if(!current_frame.sound.empty()) {
+			sound::play_sound(current_frame.sound);
 		}
-		disp.draw_tile(hex.x, hex.y);
+
+	}
+	if(unit_anim_halo_) halo::remove(unit_anim_halo_);
+	unit_anim_halo_ = 0;
+	if(!current_frame.halo.empty()) {
+		int time = current_frame.begin_time;
+		unsigned int sub_halo = 0;
+		while(time < anim_->get_animation_time()&& sub_halo < current_frame.halo.size()) {
+			time += current_frame.halo[sub_halo].second;
+			sub_halo++;
+
+		}
+		if(sub_halo >= current_frame.halo.size()) sub_halo = current_frame.halo.size() -1;
+
+
+		if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
+			const int d = disp.hex_size() / 2;
+			unit_anim_halo_ = halo::add(x+d-current_frame.halo_x,
+					y-current_frame.halo_y,
+					current_frame.halo[sub_halo].first);
+		} else {
+			const int d = disp.hex_size() / 2;
+			unit_anim_halo_ = halo::add(x+d+current_frame.halo_x,
+					y-current_frame.halo_y,
+					current_frame.halo[sub_halo].first,
+					halo::REVERSE);
+		}
+	}
+	if(image_name.empty()) {
+		image_name = type_->image();
+	}
+	image::locator  loc;
+	if(type().flag_rgb().size()){
+		loc = image::locator(image_name,team_rgb_range(),type().flag_rgb());
+	}else{
+		loc = image::locator(image_name);
+	}
+	surface image(image::get_image(loc,stone()?image::GREYED : image::UNSCALED));
+	if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
+		image.assign(image::reverse_image(image));
+	}
+
+	Uint32 blend_with = current_frame.blend_with;
+	double blend_ratio = current_frame.blend_ratio;
+	fixed_t highlight_ratio = minimum<fixed_t>(type().alpha(),current_frame.highlight_ratio);
+	if(invisible(map.underlying_union_terrain(map[hex.x][hex.y]),
+				disp.get_game_status().get_time_of_day().lawful_bonus,hex,
+				disp.get_units(),disp.get_teams()) &&
+			highlight_ratio > ftofxp(0.5)) {
+		highlight_ratio = ftofxp(0.5);
+	}
+	if(hex == disp.selected_hex() && highlight_ratio == ftofxp(1.0)) {
+		highlight_ratio = ftofxp(1.5);
+	}
+
+	if (poisoned() && blend_ratio == 0){
+		blend_with = disp.rgb(0,255,0);
+		blend_ratio = 0.25;
+	}
+
+	
+
+	
+	surface ellipse_front(NULL);
+	surface ellipse_back(NULL);
+	if(preferences::show_side_colours() && with_status) {
+		const char* const selected = disp.selected_hex() == hex ? "selected-" : "";
+		std::vector<Uint32> temp_rgb;
+		//ellipse not pure red=255!
+		for(int i=255;i>100;i--){
+			temp_rgb.push_back((Uint32)(i<<16));
+		}
+		//selected ellipse not pure red at all!
+		char buf[100];
+		std::string ellipse=type().image_ellipse();
+		if(ellipse.empty()){
+			ellipse="misc/ellipse";
+		}	
+		snprintf(buf,sizeof(buf),"%s-%stop.png",ellipse.c_str(),selected);
+		ellipse_back.assign(image::get_image(image::locator(buf,team_rgb_range(),temp_rgb)));
+		snprintf(buf,sizeof(buf),"%s-%sbottom.png",ellipse.c_str(),selected);
+		ellipse_front.assign(image::get_image(image::locator(buf,team_rgb_range(),temp_rgb)));
+	}
+
+	disp.draw_tile(hex.x, hex.y);
+	if(state_ != STATE_STANDING) {
 		for(int tile = 0; tile != 6; ++tile) {
 			disp.draw_tile(adjacent[tile].x, adjacent[tile].y);
 		}
-		disp.draw_unit(x, y, image, false, ftofxp(1.0), 0, 0.0, submerge);
-		if(!unit_halo_ && !type().image_halo().empty()) {
-			unit_halo_ = halo::add(0,0,type().image_halo());
+	}
+	disp.draw_unit(x, y -height_adjust, image, false, highlight_ratio, 
+			blend_with, blend_ratio, submerge,ellipse_back,ellipse_front);
+	if(!unit_halo_ && !type().image_halo().empty()) {
+		unit_halo_ = halo::add(0,0,type().image_halo());
+	}
+	if(unit_halo_) {
+		const int d = disp.hex_size() / 2;
+		halo::set_location(unit_halo_, x+ d, y -height_adjust+ d);
+	}
+
+	if(with_status) {
+		const std::string* movement_file = NULL;
+		const std::string* energy_file = &game_config::energy_image;
+		const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (hex == disp.mouseover_hex() ? ftofxp(1.0): ftofxp(0.7));
+
+		if(size_t(side()) != disp.playing_team()+1) {
+			if(disp.team_valid() &&
+			   disp.get_teams()[disp.playing_team()].is_enemy(side())) {
+				movement_file = &game_config::enemy_ball_image;
+			} else {
+				movement_file = &game_config::ally_ball_image;
+			}
+		} else {
+			if(disp.playing_team() == disp.playing_team() && movement_left() == total_movement() && !user_end_turn()) {
+				movement_file = &game_config::unmoved_ball_image;
+			} else if(disp.playing_team() == disp.playing_team() && unit_can_move(hex,disp.get_units(),map,disp.get_teams()) && !user_end_turn()) {
+				movement_file = &game_config::partmoved_ball_image;
+			} else {
+				movement_file = &game_config::moved_ball_image;
+			}
 		}
-		if(unit_halo_) {
-			int d = disp.hex_size() / 2;
-			halo::set_location(unit_halo_, x+ d, y+ d);
+		disp.draw_bar(*movement_file,x,y-height_adjust,0,0,hp_color(),bar_alpha);
+
+		double unit_energy = 0.0;
+		if(max_hitpoints() > 0) {
+			unit_energy = double(hitpoints())/double(max_hitpoints());
+		}
+		disp.draw_bar(*energy_file,x-5,y-height_adjust,(max_hitpoints()*2)/3,unit_energy,hp_color(),bar_alpha);
+
+		if(experience() > 0 && can_advance()) {
+			const double filled = double(experience())/double(max_experience());
+			const int level = maximum<int>(type().level(),1);
+
+			SDL_Color colour=xp_color();
+			disp.draw_bar(*energy_file,x,y-height_adjust,max_experience()/(level*2),filled,colour,bar_alpha);
 		}
 
+		if (can_recruit()) {
+			surface crown(image::get_image("misc/leader-crown.png",image::SCALED,image::NO_ADJUST_COLOUR));
+			if(!crown.null()) {
+				//if(bar_alpha != ftofxp(1.0)) {
+				//	crown = adjust_surface_alpha(crown, bar_alpha);
+				//}
 
+				SDL_Rect r = {0, 0, crown->w, crown->h};
+				disp.video().blit_surface(x,y-height_adjust,crown,&r);
+			}
+		}
 
-		disp.update_display();
-		events::pump();
+	}
+	for(std::vector<std::string>::const_iterator ov = overlays().begin(); ov != overlays().end(); ++ov) {
+		const surface img(image::get_image(*ov));
+		if(img != NULL) {
+			disp.draw_unit(x,y-height_adjust,img);
+		}
+	}
+	refreshing_ = false;
 }
 
 
