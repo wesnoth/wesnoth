@@ -444,7 +444,7 @@ void server::run()
 						break;
 					} else {
 						bool observer = i->is_observer(e.socket);
-						if(! observer && pl_name != "") {
+						if(! observer && pl_name != "" && i->is_member(e.socket)) {
 							i->send_data(construct_server_message(pl_name + " has disconnected",*i));
 						}
 						i->remove_player(e.socket);
