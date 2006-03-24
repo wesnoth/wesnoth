@@ -20,7 +20,7 @@ SVN trunk (1.1.2+svn):
      * Switched to use of profile key in single unit definitions
      * Minor text cleanups
    * Under the Burning Suns
-     * Removed Skirmish Ability from Desert Rider and Desert Outrider     
+     * Removed Skirmish Ability from Desert Rider and Desert Outrider
      * Added Skirmish Ability to Desert Horseman
      * increased melee damage of Desert Horseman from 4-3 to 5-3
      * increased HP of the Desert Horseman from 45 to 50
@@ -29,6 +29,10 @@ SVN trunk (1.1.2+svn):
      * portraits:
         * troll, assassin, dwarf-guard from old UtBS
      * death animations: vampire bat
+  * music & sound
+     * new or improved sounds: thunderstick and dragonstick, fist, club,
+       hatchet
+     * minor edits to several sounds
  * language and i18n:
    * updated translations: Czech, German, Korean, Norwegian
  * units
@@ -37,7 +41,7 @@ SVN trunk (1.1.2+svn):
 Version 1.1.2:
  * campaigns
    * campaigns removed from mainline: Son of the Black Eye, The Dark Hordes
-   * campaigns added to mainline: 
+   * campaigns added to mainline:
      * The South Guard
      * Under the Burning Suns
    * new tutorial replacing the old one
@@ -100,14 +104,14 @@ Version 1.1.2:
        * increased XP requirement of the Desert Fighter from 38 to 40
        * increased HP of the Desert Sharpshooter from 45 to 47
  * graphics
-   * added 'ellipse=blah' tag to units which will select the four images from 
-     the misc directory for use as an ellipse: misc/blah-bottom.png, 
-     misc/blah-top.png, misc/selected-blah-bottom.png, 
-     misc/selected-blah-top.png 
+   * added 'ellipse=blah' tag to units which will select the four images from
+     the misc directory for use as an ellipse: misc/blah-bottom.png,
+     misc/blah-top.png, misc/selected-blah-bottom.png,
+     misc/selected-blah-top.png
    * new encampment graphics
    * moved hero icon from the South Guard into main directories
-   * new attack icons: animal fangs, axe, baneblade, battle axe, beak, 
-     claws-animal, claw-undead, entangle, faery touch, fireball, 
+   * new attack icons: animal fangs, axe, baneblade, battle axe, beak,
+     claws-animal, claw-undead, entangle, faery touch, fireball,
      fist-troll, fist-skeletal, hammer, hatchet, human-greatsword,
      iceball, lightbeam, lightning, magic missile, necromatic staff,
      magic staff, shield, spear, trident
@@ -127,7 +131,7 @@ Version 1.1.2:
  * multiplayer maps:
    * all multiplayer maps now use a playlist to specify their music
    * revised multiplayer maps: Blitz, Charge, Cynsaun Battlefield, Den of Onis,
-     Divide and Conquer, Hamlets, Hornshark Island, Meteor Lake, Silverhead 
+     Divide and Conquer, Hamlets, Hornshark Island, Meteor Lake, Silverhead
      Crossing, Triple Blitz, Bluewater Province, Clash, Siege Castles, Hexcake,
      The Wilderlands
  * music & sound
@@ -137,11 +141,11 @@ Version 1.1.2:
    * updated music: gameplay03
    * removed music: wesnoth-3, wesnoth-4, wesnoth-6, wesnoth-7, wesnoth-8
    * new sounds: turn end bell, drake hit&die, dwarf hit&die, short fanfare,
-     additional female-hit, hiss-die, hiss-hit, holy attack, 3 ghostly wails, 
+     additional female-hit, hiss-die, hiss-hit, holy attack, 3 ghostly wails,
      3 gryphon, miss, 2 orc-die, 3 skeleton, 2 troll hit&die, water blast,
      wolf hit&die, 4 dark magic, 2 lightning, 12 human hit&die, flame hit&miss
      3 new merfolk hit&die
-   * sound added to units: 
+   * sound added to units:
      * death sounds: all drakes, dwarves, orcs & goblins, all humans, monsters,
        merfolk, nagas, saurians, trolls, all skeletons, woses
      * lightbeam attacks, elves, gryphons, some ghost attacks
@@ -199,7 +203,7 @@ Version 1.1.2:
      * decreased melee damage of the Elvish Champion from 12-4 to 9-5
      * increased experience requirement of the Cavalryman from 34 to 40
      * decreased melee damage of the Dragoon from 7-4 to 6-4
-     * decreased ranged damage of the Dragoon from 15-1 to 12-1  
+     * decreased ranged damage of the Dragoon from 15-1 to 12-1
      * decreased XP requirement of the Dragoon from 110 to 95
      * increased experience requirement of the Fencer from 37 to 42
      * decreased ranged damage of the Duelist from 15-1 to 12-1
@@ -252,11 +256,11 @@ Version 1.1.2:
    * added 'profile' key to [unit] variables
    * added 'image' key to [unit] variables
    * added [modify_turns] to [event]. Takes 'value' and 'add' as keys.
-   * added new key to [side]: allow_player; if set to 'no' then this side will 
+   * added new key to [side]: allow_player; if set to 'no' then this side will
      not appear in the creation screen. Some maps with more sides than starting
      positions may be broken.
-   * added [store_side] tag, which takes 'variable' and 'side' as keys, and 
-     stores data to variable.gold, variable.income, variable.name, 
+   * added [store_side] tag, which takes 'variable' and 'side' as keys, and
+     stores data to variable.gold, variable.income, variable.name,
      and variable.team_name.
    * added [label] inside [event]
    * added 'zoc' key to unit types
@@ -381,7 +385,7 @@ Version 1.1.1:
        as random_leader
    * flags in status bar are now properly team colored
  * user interface
-   * added new image in advancement tag that is displayed in advancement dialog 
+   * added new image in advancement tag that is displayed in advancement dialog
      and changed old image to icon in advancement tag.
    * centered title screen logo for 1024x768 (still off-center for 800x600)
    * prevent icons in themes from being scaled up (only scaling down is allowed)
