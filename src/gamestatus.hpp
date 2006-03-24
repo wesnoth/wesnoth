@@ -36,8 +36,6 @@ struct time_of_day
 	std::string id;
 	std::string lighter_id;
 	std::string darker_id;
-	time_of_day* lighter;
-	time_of_day* darker;
 
 	//the image that is to be laid over all images while it's this
 	//time of day

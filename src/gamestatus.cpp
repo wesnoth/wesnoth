@@ -50,7 +50,7 @@ player_info* game_state::get_player(const std::string& id) {
 time_of_day::time_of_day(const config& cfg)
                  : lawful_bonus(atoi(cfg["lawful_bonus"].c_str())),
                    image(cfg["image"]), name(cfg["name"]), id(cfg["id"]),
-		   lighter_id(cfg["lighter"]),darker_id(cfg["darker"]),lighter(NULL),darker(NULL),image_mask(cfg["mask"]),
+		   lighter_id(cfg["lighter"]),darker_id(cfg["darker"]),image_mask(cfg["mask"]),
                    red(atoi(cfg["red"].c_str())),
                    green(atoi(cfg["green"].c_str())),
                    blue(atoi(cfg["blue"].c_str()))
@@ -95,54 +95,6 @@ void parse_times(const config& cfg, std::vector<time_of_day>& normal_times, std:
 		illuminated_times.push_back(time_of_day(**t));
 	}
 	
-	// Find pointers to lighter and darker times of day
-	std::vector<time_of_day>::iterator d;
-	for(d = normal_times.begin(); d != normal_times.end(); ++d) {
-		const std::string& lt_id = d->lighter_id;
-		const std::string& dk_id = d->darker_id;
-		d->lighter=NULL;
-		d->darker=NULL;
-		std::vector<time_of_day>::iterator f;
-		for(f = normal_times.begin(); f!= normal_times.end(); ++f) {
-			if(lt_id == f->id) {
-				d->lighter = &(*f);
-			}
-			if(dk_id == f->id) {
-				d->darker = &(*f);
-			}
-		}
-		for(f = illuminated_times.begin(); f!= illuminated_times.end(); ++f) {
-			if(lt_id == f->id) {
-				d->lighter = &(*f);
-			}
-			if(dk_id == f->id) {
-				d->darker = &(*f);
-			}
-		}
-	}
-	for(d = illuminated_times.begin(); d != illuminated_times.end(); ++d) {
-		const std::string& lt_id = d->lighter_id;
-		const std::string& dk_id = d->darker_id;
-		d->lighter=NULL;
-		d->darker=NULL;
-		std::vector<time_of_day>::iterator f;
-		for(f = normal_times.begin(); f!= normal_times.end(); ++f) {
-			if(lt_id == f->id) {
-				d->lighter = &(*f);
-			}
-			if(dk_id == f->id) {
-				d->darker = &(*f);
-			}
-		}
-		for(f = illuminated_times.begin(); f!= illuminated_times.end(); ++f) {
-			if(lt_id == f->id) {
-				d->lighter = &(*f);
-			}
-			if(dk_id == f->id) {
-				d->darker = &(*f);
-			}
-		}
-	}
 }
 
 }
@@ -234,12 +186,42 @@ const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::l
 			}
 			if(illuminated) {
 				const time_of_day* cur = &i->times[(n_turn-1)%i->times.size()];
-				while(illuminated>0 && cur->lighter) {
-					cur = cur->lighter;
+				while(illuminated>0) {
+					// Find pointer to lighter time of day
+					std::vector<time_of_day>::const_iterator d;
+					for(d = i->times.begin(); d != i->times.end(); ++d) {
+						if(d->id == cur->lighter_id) {
+							cur = &(*d);
+							break;
+						}
+					}
+					if(d == i->times.end()) {
+						for(d = i->illuminated_times.begin(); d != i->illuminated_times.end(); ++d) {
+							if(d->id == cur->lighter_id) {
+								cur = &(*d);
+								break;
+							}
+						}
+					}
 					illuminated--;
 				}
-				while(illuminated<0 && cur->darker) {
-					cur = cur->darker;
+				while(illuminated<0) {
+					// Find pointer to darker time of day
+					std::vector<time_of_day>::const_iterator d;
+					for(d = i->times.begin(); d != i->times.end(); ++d) {
+						if(d->id == cur->darker_id) {
+							cur = &(*d);
+							break;
+						}
+					}
+					if(d == i->times.end()) {
+						for(d = i->illuminated_times.begin(); d != i->illuminated_times.end(); ++d) {
+							if(d->id == cur->darker_id) {
+								cur = &(*d);
+								break;
+							}
+						}
+					}
 					illuminated++;
 				}
 				return *cur;
@@ -257,12 +239,42 @@ const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::l
 
 	if(illuminated) {
 		const time_of_day* cur = &times_[(n_turn-1)%times_.size()];
-		while(illuminated>0 && cur->lighter) {
-			cur = cur->lighter;
+		while(illuminated>0) {
+			// Find pointer to lighter time of day
+			std::vector<time_of_day>::const_iterator d;
+			for(d = times_.begin(); d != times_.end(); ++d) {
+				if(d->id == cur->lighter_id) {
+					cur = &(*d);
+					break;
+				}
+			}
+			if(d == times_.end()) {
+				for(d = illuminatedTimes_.begin(); d != illuminatedTimes_.end(); ++d) {
+					if(d->id == cur->lighter_id) {
+						cur = &(*d);
+						break;
+					}
+				}
+			}
 			illuminated--;
 		}
-		while(illuminated<0 && cur->darker) {
-			cur = cur->darker;
+		while(illuminated<0) {
+			// Find pointer to darker time of day
+			std::vector<time_of_day>::const_iterator d;
+			for(d = times_.begin(); d != times_.end(); ++d) {
+				if(d->id == cur->darker_id) {
+					cur = &(*d);
+					break;
+				}
+			}
+			if(d == times_.end()) {
+				for(d = illuminatedTimes_.begin(); d != illuminatedTimes_.end(); ++d) {
+					if(d->id == cur->darker_id) {
+						cur = &(*d);
+						break;
+					}
+				}
+			}
 			illuminated++;
 		}
 		return *cur;
