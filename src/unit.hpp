@@ -85,6 +85,7 @@ public:
 	void new_turn();
 	void end_turn();
 	void new_level();
+	void refresh() {if(anim_ && !refreshing_) anim_->update_current_frame(); }
 
 	void set_resting(bool resting);
 	bool is_resting() const;

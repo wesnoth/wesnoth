@@ -1718,7 +1718,6 @@ void unit::refresh_unit(display& disp,gamemap::location hex,const int& x, const 
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(hex, adjacent);
 	if(!anim_) set_standing(disp.turbo()?5:1);
-	anim_->update_current_frame();
 	const gamemap::TERRAIN terrain = map.get_terrain(hex);
 	const double submerge = is_flying() ? 0.0 : map.get_terrain_info(terrain).unit_submerge();
 	const int height_adjust = is_flying() ? 0 : int(map.get_terrain_info(terrain).unit_height_adjust() * disp.zoom());

@@ -1344,6 +1344,10 @@ void display::draw_tile(int x, int y, double offset)
 	int xpos = int(get_location_x(loc));
 	int ypos = int(get_location_y(loc));
 
+	unit_map::iterator it = units_.find(loc);
+	if(it != units_.end()) {
+		it->second.refresh();;
+	}
 	SDL_Rect clip_rect = map_area();
 
 	if(xpos >= clip_rect.x + clip_rect.w || ypos >= clip_rect.y + clip_rect.h ||
@@ -2022,6 +2026,8 @@ void display::invalidate_animations()
 			}
 		}
 	}
+
+
 }
 
 void display::recalculate_minimap()
