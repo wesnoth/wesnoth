@@ -226,7 +226,7 @@ bool attack_type::matches_filter(const config& cfg,int set_,bool self) const
 	if(filter_type.empty() == false && filter_type != type())
 		return false;
 
-	if(!self && filter_special.empty() == false && !get_special_bool(filter_special))
+	if(!self && filter_special.empty() == false && !get_special_bool(filter_special,true))
 		return false;
 
 	return true;

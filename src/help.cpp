@@ -977,7 +977,7 @@ std::vector<topic> generate_weapon_special_topics()
 			std::vector<attack_type> attacks = type.attacks();
 			for (std::vector<attack_type>::const_iterator it = attacks.begin();
 				 it != attacks.end(); it++) {
-				std::string special = (*it).weapon_specials();
+				std::string special = (*it).weapon_specials(true);
 
 				if (special != "") {
 					if (checked_specials.find(special) == checked_specials.end()) {
@@ -1162,7 +1162,7 @@ public:
 				// Show this attack's special, if it has any. Cross
 				// reference it to the section describing the
 				// special.
-				std::string lang_special = attack_it->weapon_specials();
+				std::string lang_special = attack_it->weapon_specials(true);
 				if (!lang_special.empty()) {
 					const std::string ref_id = std::string("weaponspecial_")
 						+ lang_special;

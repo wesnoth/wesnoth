@@ -74,13 +74,13 @@ void report::add_image(const std::string& image, const std::string& tooltip) {
 	this->push_back(element("",image,tooltip));
 }
 
-report generate_report(TYPE type, const gamemap& map, const unit_map& units,
+report generate_report(TYPE type, const gamemap& map, unit_map& units,
                        const std::vector<team>& teams, const team& current_team,
                        int current_side, int playing_side,
                        const gamemap::location& loc, const gamemap::location& mouseover,
                        const gamestatus& status, const std::set<std::string>& observers)
 {
-	unit_map::const_iterator u = units.end();
+	unit_map::iterator u = units.end();
 	SDL_Color HPC;
 	SDL_Color XPC;
 
@@ -214,9 +214,10 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			return res;
 		}
 
-		const std::vector<attack_type>& attacks = u->second.attacks();
-		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
+		std::vector<attack_type>& attacks = u->second.attacks();
+		for(std::vector<attack_type>::iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
+			at_it->set_specials_context(u->first,u->second);
 			const std::string& lang_type = gettext(at_it->type().c_str());
 			str.str("");
 			str << "<245,230,193>";

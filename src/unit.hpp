@@ -84,13 +84,13 @@ class unit
 		unit(const unit& u);
 		// Initilizes a unit from a config
 		unit(const game_data& gamedata, const config& cfg);
-		unit(const game_data* gamedata, const unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const config& cfg);
+		unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const config& cfg);
 		// Initilizes a unit from a unit type
 		unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE);
-		unit(const game_data* gamedata, const unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE);
+		unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE);
 		virtual ~unit();
 		
-		void set_game_context(const game_data* gamedata, const unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams);
+		void set_game_context(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams);
 		
 		// Advances this unit to another type
 		void advance_to(const unit_type* t);
@@ -357,9 +357,9 @@ class unit
 		
 		config modifications_;
 		
-		
+	public:
 		const game_data* gamedata_;
-		const unit_map* units_;
+		mutable unit_map* units_;
 		const gamemap* map_;
 		const gamestatus* gamestatus_;
 		const std::vector<team>* teams_;

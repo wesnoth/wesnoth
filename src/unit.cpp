@@ -155,7 +155,7 @@ unit::unit(const unit& u)
 }
 
 // Initilizes a unit from a config
-unit::unit(const game_data* gamedata, const unit_map* unitmap, const gamemap* map, 
+unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, 
      const gamestatus* game_status, const std::vector<team>* teams,
 	 const config& cfg) : gamedata_(gamedata),units_(unitmap),map_(map),
 	                      gamestatus_(game_status),teams_(teams)
@@ -184,7 +184,7 @@ unit::unit(const game_data& gamedata,const config& cfg) : gamedata_(&gamedata),u
 }
 
 // Initilizes a unit from a unit type
-unit::unit(const game_data* gamedata, const unit_map* unitmap, const gamemap* map, 
+unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, 
            const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, 
 					 int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) : 
            gamedata_(gamedata),units_(unitmap),map_(map),gamestatus_(game_status),teams_(teams)
@@ -237,7 +237,7 @@ unit::~unit()
 		halo::remove(unit_halo_);
 	}
 }
-void unit::set_game_context(const game_data* gamedata, const unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams)
+void unit::set_game_context(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams)
 {
 	gamedata_ = gamedata;
 	units_ = unitmap;
@@ -2591,18 +2591,18 @@ std::pair<int,gamemap::location> unit_ability_list::lowest(const std::string& ke
 
 
 
-bool attack_type::get_special_bool(const std::string& special) const
+bool attack_type::get_special_bool(const std::string& special,bool force) const
 {
 	const config* specials = cfg_.child("specials");
 	if(specials) {
 		const config::child_list& list = specials->get_children(special);
 		for(config::child_list::const_iterator i = list.begin(); i != list.end(); ++i) {
-			if(special_active(**i,true)) {
+			if(force || special_active(**i,true)) {
 				return true;
 			}
 		}
 	}
-	if(other_attack_ != NULL) {
+	if(!force && other_attack_ != NULL) {
 		specials = other_attack_->cfg_.child("specials");
 		if(specials) {
 			const config::child_list& list = specials->get_children(special);
@@ -2664,7 +2664,7 @@ std::vector<std::string> attack_type::special_tooltips() const
 	}
 	return res;
 }
-std::string attack_type::weapon_specials() const
+std::string attack_type::weapon_specials(bool force) const
 {
 	std::string res;
 	const config* specials = cfg_.child("specials");
@@ -2672,7 +2672,7 @@ std::string attack_type::weapon_specials() const
 		const config::child_map& list_map = specials->all_children();
 		for(config::child_map::const_iterator i = list_map.begin(); i != list_map.end(); ++i) {
 			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-				if(special_active(**j,true)) {
+				if(force || special_active(**j,true)) {
 					if((**j)["name"] != "") {
 						res += (**j)["name"];
 						res += ",";
@@ -2897,9 +2897,9 @@ bool attack_type::special_affects_self(const config& cfg) const
 	return false;
 }
 void attack_type::set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
-                              const game_data* gamedata, const unit_map* unitmap, 
+                              const game_data* gamedata, unit_map* unitmap, 
 							  const gamemap* map, const gamestatus* game_status, 
-							  const std::vector<team>* teams, bool attacker,const attack_type* other_attack)
+							  const std::vector<team>* teams, bool attacker,attack_type* other_attack)
 {
 	aloc_ = aloc;
 	dloc_ = dloc;
@@ -2912,6 +2912,18 @@ void attack_type::set_specials_context(const gamemap::location& aloc,const gamem
 	other_attack_ = other_attack;
 }
 
+void attack_type::set_specials_context(const gamemap::location& loc,const unit& un)
+{
+	aloc_ = loc;
+	dloc_ = gamemap::location();
+	gamedata_ = un.gamedata_;
+	unitmap_ = un.units_;
+	map_ = un.map_;
+	game_status_ = un.gamestatus_;
+	teams_ = un.teams_;
+	attacker_ = true;
+	other_attack_ = NULL;
+}
 
 
 weapon_special_list& weapon_special_list::operator +(const weapon_special_list& w)

@@ -119,7 +119,7 @@ int death_animation::matches(const attack_type* attack) const
 
 	if(special.empty()== false) {
 		bool found = false;
-		std::vector<std::string> at_specials = utils::split(attack->weapon_specials());
+		std::vector<std::string> at_specials = utils::split(attack->weapon_specials(true));
 		for(std::vector<std::string>::const_iterator sp_it = special.begin(); sp_it != special.end(); ++sp_it) {
 			if (std::find(at_specials.begin(),at_specials.end(),*sp_it) != at_specials.end()) {
 				result ++;

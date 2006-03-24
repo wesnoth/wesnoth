@@ -64,15 +64,15 @@ public:
 	double attack_weight() const;
 	double defense_weight() const;
 	
-	bool get_special_bool(const std::string& special) const;
+	bool get_special_bool(const std::string& special,bool force=false) const;
 	weapon_special_list get_specials(const std::string& special) const;
 	std::vector<std::string> special_tooltips() const;
-	std::string weapon_specials() const;
+	std::string weapon_specials(bool force=false) const;
 	void set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
-                              const game_data* gamedata, const unit_map* unitmap, 
+                              const game_data* gamedata, unit_map* unitmap, 
 							  const gamemap* map, const gamestatus* game_status, 
-							  const std::vector<team>* teams,bool attacker,const attack_type* other_attack);
-
+							  const std::vector<team>* teams,bool attacker,attack_type* other_attack);
+	void set_specials_context(const gamemap::location& loc,const unit& un);
 	//this function returns a random animation out of the possible
 	//animations for this attack. It will not return the same attack
 	//each time.
@@ -87,11 +87,11 @@ private:
 	gamemap::location aloc_,dloc_;
 	bool attacker_;
 	const game_data* gamedata_;
-	const unit_map* unitmap_; 
+	mutable unit_map* unitmap_; 
 	const gamemap* map_;
 	const gamestatus* game_status_;
 	const std::vector<team>* teams_;
-	const attack_type* other_attack_;
+	mutable attack_type* other_attack_;
 	bool special_active(const config& cfg,bool self) const;
 	bool special_affects_opponent(const config& cfg) const;
 	bool special_affects_self(const config& cfg) const;

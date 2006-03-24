@@ -632,7 +632,7 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const un
 	unit_store_.push_back(u);
 }
 
-unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const std::vector<unit>& units, TYPE type, bool on_left_side)
+unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, std::vector<unit>& units, TYPE type, bool on_left_side)
                                     : gui::preview_pane(disp.video()), disp_(disp),
 				      details_button_(disp.video(),_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
 				      map_(map), units_(&units), index_(0), left_(on_left_side),
@@ -669,7 +669,7 @@ void unit_preview_pane::draw_contents()
 		return;
 	}
 
-	const unit& u = (*units_)[index_];
+	unit& u = (*units_)[index_];
 
 	const bool right_align = left_side();
 
@@ -757,9 +757,10 @@ void unit_preview_pane::draw_contents()
 				<< u.total_movement()
 				<< "\n";
 
-		const std::vector<attack_type>& attacks = u.attacks();
-		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
+		std::vector<attack_type>& attacks = u.attacks();
+		for(std::vector<attack_type>::iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
+			at_it->set_specials_context(gamemap::location(),u);
 
 			details << "\n" << at_it->name()
 			        << " (" << gettext(at_it->type().c_str()) << ")\n";
