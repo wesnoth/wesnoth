@@ -29,12 +29,12 @@ namespace about
 std::vector<std::string> get_text(std::string campaign) {
 	static const char *credits[] = {
 		"_" N_("+Core Developers"),
-		"_" N_("-   Main Developer"),
-		"   David White (Sirp)",
+		"_" N_("+  Main Developer"),
+		"-  David White (Sirp)",
 		"- ",
-		"_" N_("-   Artwork and graphics designer"),
-		"   Francisco Muñoz (fmunoz)",
-
+		"_" N_("+  Artwork and graphics designer"),
+		"-   Francisco Muñoz (fmunoz)",
+		"- ",
 		"_" N_("+Developers"),
 		"-   Alfredo Beaumont (ziberpunk)",
 		"-   András Salamon (ott)",
@@ -60,8 +60,7 @@ std::vector<std::string> get_text(std::string campaign) {
 		"-   Philippe Plantier (Ayin)",
 		"-   Rusty Russell (rusty)",
 		"-   Yann Dirson",
-		"-   Zas",
-		
+		"-   Zas",		
 		"_" N_("+General Purpose Administrators"),
 		"-   Crossbow/Miyo",
 		"-   Isaac Clerencia",
@@ -160,8 +159,8 @@ void set_about(const config& cfg){
 				if(subtitle.size()){
 	      			if (subtitle[0] == '_')
 						subtitle = gettext(subtitle.substr(1,subtitle.size()-1).c_str());
+					text += "+" + subtitle + "\n";
 				}
-				text += subtitle + "\n";
 				std::vector<std::string> lines=utils::split(AA["text"],'\n');
 				for(std::vector<std::string>::iterator line=lines.begin();
 		      	line != lines.end(); line++){
