@@ -1771,6 +1771,9 @@ void unit::refresh_unit(display& disp,gamemap::location hex,const int& x, const 
 		loc = image::locator(image_name);
 	}
 	surface image(image::get_image(loc,stone()?image::GREYED : image::UNSCALED));
+	if(image ==NULL) {
+		image = still_image();
+	}
 	if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
 		image.assign(image::reverse_image(image));
 	}
