@@ -1647,17 +1647,15 @@ int play_game(int argc, char** argv)
 		return 0;
 	}
 
-#ifdef WIN32
-	res = game.init_config();
-	if(res == false) {
-		std::cerr << "could not initialize game config\n";
-		return 0;
-	}
-#endif
-
 	res = game.init_language();
 	if(res == false) {
 		std::cerr << "could not initialize the language\n";
+		return 0;
+	}
+		
+	res = game.init_config();
+	if(res == false) {
+		std::cerr << "could not initialize game config\n";
 		return 0;
 	}
 
@@ -1666,16 +1664,6 @@ int play_game(int argc, char** argv)
 		std::cerr << "could not re-initialize fonts for the current language\n";
 		return 0;
 	}
-
-#ifndef WIN32
-	// it is better for gettext-native platforms to read the config
-	// files after having pre-initialized the language, maybe...
-	res = game.init_config();
-	if(res == false) {
-		std::cerr << "could not initialize game config\n";
-		return 0;
-	}
-#endif
 
 	const cursor::manager cursor_manager;
 #if defined(_X11) && !defined(__APPLE__)
