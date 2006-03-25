@@ -18,6 +18,7 @@
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "video.hpp"
+#include "show_dialog.hpp"
 
 namespace about
 {
@@ -267,7 +268,9 @@ void show_about(display &disp, std::string campaign)
 		// draw map to screen, thus erasing all text
 		
 		SDL_BlitSurface(map_image,&middle_src,video.getSurface(),&middle_dest);
-
+		std::string style = "mainmenu";
+		
+          gui::draw_dialog_frame(map_rect.x, map_rect.y + top_margin, map_rect.w, map_rect.h - top_margin - bottom_margin,disp.video(),&style);
 		// draw one screen full of text
 		const int line_spacing = 5;
 		int y = map_rect.y + top_margin - offset;
