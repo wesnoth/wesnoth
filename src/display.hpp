@@ -195,7 +195,7 @@ public:
 	//then it will be used, otherwise the unit's default image will be used.
 	//alpha controls how faded the unit is. If blend_to is not 0, then the
 	//unit will be alpha-blended to blend_to instead of the background colour
-	void draw_tile(int x, int y,double offset=0);
+	void draw_tile(int x, int y);
 
 	//function to float a label above a tile
 	void float_label(const gamemap::location& loc, const std::string& text,
@@ -208,7 +208,7 @@ private:
 	//composes and draws the terrains on a tile
 	void draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
-	void draw_unit_on_tile(int x, int y,double offset);
+	void draw_unit_on_tile(int x, int y);
 
 
 	gui::button::TYPE string_to_button_type(std::string type);

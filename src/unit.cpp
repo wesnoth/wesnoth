@@ -1019,6 +1019,7 @@ const surface unit::still_image() const
 void unit::set_standing(int acceleration)
 {
 	state_ = STATE_STANDING;
+	offset_=0;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
@@ -1696,7 +1697,7 @@ void unit::restart_animation(int start_time, int acceleration) {
 	anim_->start_animation(start_time,1,acceleration);
 }
 
-void unit::refresh_unit(display& disp,gamemap::location hex,const int& x, const int& y,bool with_status)
+void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
 {
 	const gamemap & map = disp.get_map();
 	if(hidden_) { 
@@ -1715,8 +1716,15 @@ void unit::refresh_unit(display& disp,gamemap::location hex,const int& x, const 
 		return;
 	}
 	refreshing_ = true;
-	gamemap::location adjacent[6];
-	get_adjacent_tiles(hex, adjacent);
+	const gamemap::location dst= hex.get_direction(facing());
+	const double xsrc = disp.get_location_x(hex);
+	const double ysrc = disp.get_location_y(hex);
+	const double xdst = disp.get_location_x(dst);
+	const double ydst = disp.get_location_y(dst);
+
+	const int x = int(offset_*xdst + (1.0-offset_)*xsrc);
+	const int y = int(offset_*ydst + (1.0-offset_)*ysrc);
+
 	if(!anim_) set_standing(disp.turbo()?5:1);
 	const gamemap::TERRAIN terrain = map.get_terrain(hex);
 	const double submerge = is_flying() ? 0.0 : map.get_terrain_info(terrain).unit_submerge();
@@ -1820,6 +1828,8 @@ void unit::refresh_unit(display& disp,gamemap::location hex,const int& x, const 
 		ellipse_front.assign(image::get_image(image::locator(buf,team_rgb_range(),temp_rgb)));
 	}
 
+	gamemap::location adjacent[6];
+	get_adjacent_tiles(hex, adjacent);
 	disp.draw_tile(hex.x, hex.y);
 	if(state_ != STATE_STANDING) {
 		for(int tile = 0; tile != 6; ++tile) {

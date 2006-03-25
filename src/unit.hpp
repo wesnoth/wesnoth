@@ -142,7 +142,7 @@ public:
 	const std::string& absolute_image() const {return type_->image();}
 	// a sdl surface, ready for display for place where we need a fix image of the unit
 	const surface still_image() const;
-	void refresh_unit(display& disp,gamemap::location hex,const int& x,const int& y, bool with_status =false);
+	void refresh_unit(display& disp,gamemap::location hex, bool with_status =false);
 
 	void set_standing(int acceleration);
 	void set_defending(int damage, std::string range, int acceleration);
@@ -160,6 +160,7 @@ public:
 	void set_poisoned(int damage,int acceleration);
 	void restart_animation(int start_time, int acceleration);
 	const unit_animation* get_animation() const {  return anim_;};
+	void set_offset(double offset){offset_ = offset;}
 
 	void set_facing(gamemap::location::DIRECTION);
 	gamemap::location::DIRECTION facing() const;
@@ -265,6 +266,7 @@ private:
 	bool unrenamable_;
 
 	unit_animation *anim_;
+	double offset_;
 	std::string user_image_;
 
 	void reset_modifications();

@@ -88,17 +88,12 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = SDL_GetTicks() -start_time;
 	disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
-	const double xsrc = disp.get_location_x(a);
-	const double ysrc = disp.get_location_y(a);
-	const double xdst = disp.get_location_x(b);
-	const double ydst = disp.get_location_y(b);
 	while(mvt_time < total_mvt_time) {
 		u.set_walking(map.underlying_mvt_terrain(src_terrain),acceleration);
 		const double pos =double(mvt_time)/total_mvt_time;
-		const int posx = int(pos*xdst + (1.0-pos)*xsrc);
-		const int posy = int(pos*ydst + (1.0-pos)*ysrc);
 		disp.draw_tile(a.x,a.y);
-		u.refresh_unit(disp,a,posx,posy);
+		u.set_offset(pos);
+		u.refresh_unit(disp,a);
 		disp.update_display();
 		events::pump();
 		if(!disp.turbo()) SDL_Delay(10);
@@ -242,7 +237,7 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 	}
 	while(!attacker.get_animation()->animation_finished() ) {
 		disp.draw_tile(a.x,a.y);
-		//if(leader_loc.valid()) leader->second.refresh_unit(disp,map,disp.get_location_x(leader_loc),disp.get_location_y(leader_loc));
+		if(leader_loc.valid()) disp.draw_tile(leader_loc.x,leader_loc.y);
 		disp.update_display();
 		events::pump();
 		if(!disp.turbo()) SDL_Delay(10);
@@ -270,8 +265,8 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 		const int posy = int(pos*ysrc + (1.0-pos)*ydst);
 		disp.draw_tile(b.x,b.y);
 		disp.draw_tile(a.x,a.y);
-		//if(leader_loc.valid()) leader->second.refresh_unit(disp,leader_loc.x,leader_loc.y);
-		if(pos > 0.0 && pos < 1.0) {
+		if(leader_loc.valid()) disp.draw_tile(leader_loc.x,leader_loc.y);
+		if(pos > 0.0 && pos < 1.0 && (!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
 			const unit_frame& missile_frame = missile_animation.get_current_frame();
 			const std::string *missile_image = NULL;
 			if(dir == unit_animation::VERTICAL) {
@@ -392,9 +387,10 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	while(animation_time < 0 && !hide) {
 		const double pos = animation_time < attacker.get_animation()->get_first_frame_time()?0.0:
 			(1.0 - double(animation_time)/double(attacker.get_animation()->get_first_frame_time()));
-		disp.draw_tile(a.x,a.y,pos*0.6);
-		//defender.refresh_unit(disp,disp.get_location_x(b), disp.get_location_y(b));
-		//if(leader_loc.valid()) leader->second.refresh_unit(disp,leader_loc.x,leader_loc.y);
+		attacker.set_offset(pos*0.6);
+		disp.draw_tile(a.x,a.y);
+		disp.draw_tile(b.x,b.y);
+		if(leader_loc.valid()) disp.draw_tile(leader_loc.x,leader_loc.y);
 		disp.update_display();
 		events::pump();
 		if(!disp.turbo()) SDL_Delay(10);
@@ -412,9 +408,10 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 			!defender.get_animation()->animation_finished()  ||
 			(leader_loc.valid() && !leader->second.get_animation()->animation_finished() )) {
 		const double pos = (1.0-double(animation_time)/double(end_time));
-		disp.draw_tile(a.x,a.y,pos*0.6);
-		//defender.refresh_unit(disp,disp.get_location_x(b), disp.get_location_y(b));
-		//if(leader_loc.valid()) leader->second.refresh_unit(disp,leader_loc.x,leader_loc.y);
+		attacker.set_offset(pos*0.6);
+		disp.draw_tile(a.x,a.y);
+		disp.draw_tile(b.x,b.y);
+		if(leader_loc.valid()) disp.draw_tile(leader_loc.x,leader_loc.y);
 		disp.update_display();
 		events::pump();
 		if(!disp.turbo()) SDL_Delay(10);

@@ -1221,7 +1221,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 }
 
 
-void display::draw_unit_on_tile(int x, int y,double offset)
+void display::draw_unit_on_tile(int x, int y)
 {
 
 	const gamemap::location src(x,y);
@@ -1232,16 +1232,8 @@ void display::draw_unit_on_tile(int x, int y,double offset)
 	}
 
 
-	const gamemap::location dst= src.get_direction(it->second.facing());
-	const double xsrc = get_location_x(src);
-	const double ysrc = get_location_y(src);
-	const double xdst = get_location_x(dst);
-	const double ydst = get_location_y(dst);
 
-	const int posx = int(offset*xdst + (1.0-offset)*xsrc);
-	const int posy = int(offset*ydst + (1.0-offset)*ysrc);
-
-	it->second.refresh_unit(*this,src,posx,posy,true);
+	it->second.refresh_unit(*this,src,true);
 
 
 }
@@ -1331,7 +1323,7 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 	}
 }
 
-void display::draw_tile(int x, int y, double offset)
+void display::draw_tile(int x, int y)
 {
 	reach_map::iterator reach = reach_map_.end();
 
@@ -1434,7 +1426,7 @@ void display::draw_tile(int x, int y, double offset)
 	}
 
 	draw_footstep(loc,xpos,ypos);
-	draw_unit_on_tile(x,y,offset);
+	draw_unit_on_tile(x,y);
 
 	if(!is_shrouded) {
 		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOREGROUND);
