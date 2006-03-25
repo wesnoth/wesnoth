@@ -163,7 +163,7 @@ std::string recruit_unit(const gamemap& map, int side,
 
 		}
 	}
-	un->second.set_standing(disp->turbo()?5:1);
+	un->second.set_standing(disp && disp->turbo()?5:1);
 	LOG_NG << "firing recruit event\n";
 	game_events::fire("recruit",recruit_location);
 
