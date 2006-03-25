@@ -26,6 +26,8 @@ namespace about
   config about_list = config();
   std::map<std::string , std::string> images;
   std::string images_default;
+  std::map<std::string, config> music_cfg;
+  config music_cfg_default;
   
 std::vector<std::string> get_text(std::string campaign) {
 	static const char *credits[] = {
@@ -278,8 +280,8 @@ void show_about(display &disp, std::string campaign)
 		int cur_line = 0;
 
 		do {
-			SDL_Rect tr2 = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::BLACK_COLOUR,
-						text[line], map_rect.x + map_rect.w / 8 + 1,y + 1);
+//			SDL_Rect tr2 = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::BLACK_COLOUR,
+//						text[line], map_rect.x + map_rect.w / 8 + 1,y + 1);
 			SDL_Rect tr = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::NORMAL_COLOUR,
 					              text[line], map_rect.x + map_rect.w / 8,y);
 
