@@ -270,7 +270,7 @@ void show_about(display &disp, std::string campaign)
 		SDL_BlitSurface(map_image,&middle_src,video.getSurface(),&middle_dest);
 		std::string style = "mainmenu";
 		
-          gui::draw_dialog_frame(map_rect.x + map_rect.w/16, map_rect.y + top_margin, map_rect.w * 7 / 8, map_rect.h - top_margin - bottom_margin,disp.video(),&style);
+          gui::draw_dialog_frame(map_rect.x + map_rect.w * 3/32, map_rect.y + top_margin, map_rect.w * 13 / 16, map_rect.h - top_margin - bottom_margin,disp.video(),&style);
 		// draw one screen full of text
 		const int line_spacing = 5;
 		int y = map_rect.y + top_margin - offset;
@@ -278,9 +278,9 @@ void show_about(display &disp, std::string campaign)
 		int cur_line = 0;
 
 		do {
-			SDL_Rect tr2 = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::NORMAL_COLOUR,
+			SDL_Rect tr2 = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::BLACK_COLOUR,
 						text[line], map_rect.x + map_rect.w / 8 + 1,y + 1);
-			SDL_Rect tr = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::BLACK_COLOUR,
+			SDL_Rect tr = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::NORMAL_COLOUR,
 					              text[line], map_rect.x + map_rect.w / 8,y);
 
 			if(is_new_line) {
