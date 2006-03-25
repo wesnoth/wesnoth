@@ -160,6 +160,15 @@ const struct music_track &choose_track()
 	played_before.push_back(current_track_list[track].name);
 	return current_track_list[track];
 }
+
+std::string pick_one(const std::string &files)
+{
+	std::vector<std::string> names = utils::split(files);
+
+	if (names.size() == 0)
+		return "";
+	return names[rand()%names.size()];
+}
 };
 
 namespace sound {
@@ -388,9 +397,10 @@ void write_music_play_list(config& snapshot)
 	}
 }
 	
-void play_sound(const std::string& file)
+void play_sound(const std::string& files)
 {
 	if(preferences::sound_on() && mix_ok) {
+		std::string file = pick_one(files);
 		// the insertion will fail if there is already an element in the cache
 		std::pair< std::map< std::string, Mix_Chunk * >::iterator, bool >
 			it = sound_cache.insert(std::make_pair(file, (Mix_Chunk *)0));
