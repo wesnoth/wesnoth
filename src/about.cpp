@@ -33,7 +33,7 @@ std::vector<std::string> get_text(std::string campaign) {
 		"-  David White (Sirp)",
 		"- ",
 		"_" N_("+  Artwork and graphics designer"),
-		"-   Francisco Muñoz (fmunoz)",
+		"-   Francisco MuÃ±oz (fmunoz)",
 		"- ",
 		"_" N_("+Developers"),
 		"-   Alfredo Beaumont (ziberpunk)",
