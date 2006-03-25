@@ -137,6 +137,10 @@ namespace preferences {
 	void set_countdown_init_time(int value);
 	int countdown_turn_bonus();
 	void set_countdown_turn_bonus(int value);
+	int countdown_reservoir_time();
+	void set_countdown_reservoir_time(int value);
+	int countdown_action_bonus();
+	void set_countdown_action_bonus(int value);
 
 	int village_gold();
 	void set_village_gold(int value);

@@ -8,7 +8,7 @@ SVN trunk (1.1.2+svn):
      * added a move_unit_fake to have Brenda not appear out of nowhere (easy
        only)
      * improved dialogs in the 3rd scenario
- * The South Guard
+   * The South Guard
      * improved/additional dialog
      * new portraits
    * Heir to the Throne
@@ -43,6 +43,12 @@ SVN trunk (1.1.2+svn):
    * added unit cost to help
  * WML improvements
    * interpret the variables/arrays in a few more tags
+ * multiplayer settings:
+   * two additional MP timer settings, time reservoir limit and action bonus:
+     * Reservoir prevents the turn timer from exceeding an upper limit.
+     * Action bonus is added after turn for each attack, capture, and recruit.
+   * share view/map option removed from multiplayer create screen
+   * slider for each player to adjust their base income
  * misc
    * fix alt key under MacosX
 

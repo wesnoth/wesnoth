@@ -153,8 +153,10 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 			}
 		} else {
 			// Clock time ended
-			// If no turn bonus -> defeat
-			if ( lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0) == 0){
+			// If no turn bonus or action bonus -> defeat
+			const int action_increment = lexical_cast_default<int>(level["mp_countdown_action_bonus"],0);
+			if ( lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0) == 0 
+				&& (action_increment == 0 || teams[team_num -1].action_bonus_count() == 0)) {
 				// Not possible to end level in MP with throw end_level_exception(DEFEAT);
 				// because remote players only notice network disconnection
 				// Current solution end remaining turns automatically
@@ -164,7 +166,12 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 				turn_data.send_data();
 				throw end_turn_exception();
 			} else {
-				teams[team_num -1].set_countdown_time(1000 * lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0));
+				const int maxtime = lexical_cast_default<int>(level["mp_countdown_reservoir_time"],0);
+				int secs = lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0);
+				secs += action_increment  * teams[team_num -1].action_bonus_count();
+				teams[team_num -1].set_action_bonus_count(0);
+				secs = (secs > maxtime) ? maxtime : secs;
+				teams[team_num -1].set_countdown_time(1000 * secs);
 				recorder.add_countdown_update(teams[team_num -1].countdown_time(),team_num);
 				recorder.end_turn();
 				turn_data.send_data();
@@ -180,7 +187,13 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 		turn_data.send_data();
 	}
 	if ( level["mp_countdown"] == "yes" ){
-		teams[team_num -1].set_countdown_time(teams[team_num -1].countdown_time() + 1000 * lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0));
+		const int action_increment = lexical_cast_default<int>(level["mp_countdown_action_bonus"],0);
+		const int maxtime = lexical_cast_default<int>(level["mp_countdown_reservoir_time"],0);
+		int secs = (teams[team_num -1].countdown_time() / 1000) + lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0);
+		secs += action_increment  * teams[team_num -1].action_bonus_count();
+		teams[team_num -1].set_action_bonus_count(0);
+		secs = (secs > maxtime) ? maxtime : secs;
+		teams[team_num -1].set_countdown_time(1000 * secs);
 		recorder.add_countdown_update(teams[team_num -1].countdown_time(),team_num);
 	}
 
@@ -765,6 +778,9 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 		const bool defender_human = teams_[defender->second.side()-1].is_human();
 
 		recorder.add_attack(attacker_loc,defender_loc,weapons[res]);
+
+		//MP_COUNTDOWN grant time bonus for attacking
+		current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
 
 		try {
 			attack(gui_,map_,teams_,attacker_loc,defender_loc,weapons[res],units_,status_,gameinfo_);
@@ -1503,6 +1519,11 @@ void turn_info::undo()
 
 		if(map_.is_village(route.front())) {
 			get_village(route.front(),teams_,action.original_village_owner,units_);
+			//MP_COUNTDOWN take away bonus
+			if(action.countdown_time_bonus)
+			{
+				teams_[team_num_-1].set_action_bonus_count(teams_[team_num_-1].action_bonus_count() - 1);
+			}
 		}
 
 		action.starting_moves = u->second.movement_left();
@@ -1608,6 +1629,11 @@ void turn_info::redo()
 
 		if(map_.is_village(route.back())) {
 			get_village(route.back(),teams_,un.side()-1,units_);
+			//MP_COUNTDOWN restore bonus
+			if(action.countdown_time_bonus)
+			{
+				teams_[team_num_-1].set_action_bonus_count(1 + teams_[team_num_-1].action_bonus_count());
+			}
 		}
 
 		gui_.draw_tile(route.back().x,route.back().y);
@@ -1995,6 +2021,9 @@ void turn_info::do_recruit(const std::string& name)
 		if(msg.empty()) {
 			current_team.spend_gold(u_type->second.cost());
 			statistics::recruit_unit(new_unit);
+
+			//MP_COUNTDOWN grant time bonus for recruiting
+			current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 			clear_undo_stack();
 			redo_stack_.clear();

@@ -39,6 +39,8 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 
 	tooltip_manager_(disp.video()),
 	map_selection_(-1),
+	mp_countdown_init_time_(270),
+	mp_countdown_reservoir_time_(330),
 
 	maps_menu_(disp.video(), std::vector<std::string>()),
 	turns_slider_(disp.video()),
@@ -46,8 +48,12 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	countdown_game_(disp.video(), _("Time limit"), gui::button::TYPE_CHECK),
 	countdown_init_time_slider_(disp.video()),
 	countdown_init_time_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
+	countdown_reservoir_time_slider_(disp.video()),
+	countdown_reservoir_time_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	countdown_turn_bonus_slider_(disp.video()),
 	countdown_turn_bonus_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
+	countdown_action_bonus_slider_(disp.video()),
+	countdown_action_bonus_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	village_gold_slider_(disp.video()),
 	village_gold_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	xp_modifier_slider_(disp.video()),
@@ -103,16 +109,28 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	countdown_game_.set_help_string(_("Enables user time limit"));
 
 	countdown_init_time_slider_.set_min(0);
-	countdown_init_time_slider_.set_max(7200);
+	countdown_init_time_slider_.set_max(1500);
 	countdown_init_time_slider_.set_increment(30);
 	countdown_init_time_slider_.set_value(preferences::countdown_init_time());
-	countdown_init_time_slider_.set_help_string(_("Initial time available to players at start of game"));
+	countdown_init_time_slider_.set_help_string(_("Longest time allowed for first turn (seconds)"));
+
+	countdown_reservoir_time_slider_.set_min(30);
+	countdown_reservoir_time_slider_.set_max(1500);
+	countdown_reservoir_time_slider_.set_increment(30);
+	countdown_reservoir_time_slider_.set_value(preferences::countdown_reservoir_time());
+	countdown_reservoir_time_slider_.set_help_string(_("Longest time possible for any turn (seconds)"));
 
 	countdown_turn_bonus_slider_.set_min(10);
-	countdown_turn_bonus_slider_.set_max(1000);
-	countdown_turn_bonus_slider_.set_increment(10);
+	countdown_turn_bonus_slider_.set_max(300);
+	countdown_turn_bonus_slider_.set_increment(5);
 	countdown_turn_bonus_slider_.set_value(preferences::countdown_turn_bonus());
-	countdown_turn_bonus_slider_.set_help_string(_("Time added to user's clock at the end of each turn"));
+	countdown_turn_bonus_slider_.set_help_string(_("Time for general tasks each turn (seconds)"));
+
+	countdown_action_bonus_slider_.set_min(0);
+	countdown_action_bonus_slider_.set_max(30);
+	countdown_action_bonus_slider_.set_increment(1);
+	countdown_action_bonus_slider_.set_value(preferences::countdown_action_bonus());
+	countdown_action_bonus_slider_.set_help_string(_("Time for each attack, recruit, and capture"));
 
 	village_gold_slider_.set_min(1);
 	village_gold_slider_.set_max(5);
@@ -184,6 +202,8 @@ create::~create()
 	preferences::set_countdown(parameters_.mp_countdown);
 	preferences::set_countdown_init_time(parameters_.mp_countdown_init_time);
 	preferences::set_countdown_turn_bonus(parameters_.mp_countdown_turn_bonus);
+	preferences::set_countdown_reservoir_time(parameters_.mp_countdown_reservoir_time);
+	preferences::set_countdown_action_bonus(parameters_.mp_countdown_action_bonus);
 	preferences::set_village_gold(parameters_.village_gold);
 	preferences::set_xp_modifier(parameters_.xp_modifier);
 	preferences::set_era(era_combo_.selected()); // FIXME: may be broken if new eras are added
@@ -197,10 +217,16 @@ create::parameters& create::get_parameters()
 	const int turns = turns_slider_.value() < turns_slider_.max_value() ?
 		turns_slider_.value() : -1;
 
-	const int mp_countdown_init_time_val = countdown_init_time_slider_.value() < countdown_init_time_slider_.max_value() ?
-		countdown_init_time_slider_.value() : -1;
-	const int mp_countdown_turn_bonus_val = countdown_turn_bonus_slider_.value() < countdown_turn_bonus_slider_.max_value() ?
+	const int mp_countdown_turn_bonus_val = countdown_turn_bonus_slider_.value() <= countdown_turn_bonus_slider_.max_value() ?
 		countdown_turn_bonus_slider_.value() : -1;
+	const int mp_countdown_action_bonus_val = countdown_action_bonus_slider_.value() <= countdown_action_bonus_slider_.max_value() ?
+		countdown_action_bonus_slider_.value() : -1;
+	const int mp_countdown_reservoir_time_val = countdown_reservoir_time_slider_.value() <= countdown_reservoir_time_slider_.max_value() ?
+		countdown_reservoir_time_slider_.value() : -1;
+	int mp_countdown_init_time_val = countdown_init_time_slider_.value() <= countdown_init_time_slider_.max_value() ?
+		countdown_init_time_slider_.value() : -1;
+	if(mp_countdown_reservoir_time_val > 0 && mp_countdown_init_time_val > mp_countdown_reservoir_time_val)
+		mp_countdown_init_time_val = mp_countdown_reservoir_time_val;
 
 	// Updates the values in the "parameters_" member to match the values
 	// selected by the user with the widgets:
@@ -210,8 +236,11 @@ create::parameters& create::get_parameters()
 	}
 	parameters_.era = (*era_list[era_combo_.selected()])["id"];
 	parameters_.num_turns = turns;
+	//CHECK
 	parameters_.mp_countdown_init_time = mp_countdown_init_time_val;
 	parameters_.mp_countdown_turn_bonus = mp_countdown_turn_bonus_val;
+	parameters_.mp_countdown_reservoir_time = mp_countdown_reservoir_time_val;
+	parameters_.mp_countdown_action_bonus = mp_countdown_action_bonus_val;
 	parameters_.mp_countdown = countdown_game_.checked();
 	parameters_.village_gold = village_gold_slider_.value();
 	parameters_.xp_modifier = xp_modifier_slider_.value();
@@ -261,15 +290,43 @@ void create::process_event()
 	countdown_turn_bonus_label_.hide(!countdown_game_.checked());
 	countdown_turn_bonus_slider_.hide(!countdown_game_.checked());
 
-	const int mp_countdown_init_time_val = countdown_init_time_slider_.value();
+	countdown_reservoir_time_label_.hide(!countdown_game_.checked());
+	countdown_reservoir_time_slider_.hide(!countdown_game_.checked());
+	countdown_action_bonus_label_.hide(!countdown_game_.checked());
+	countdown_action_bonus_slider_.hide(!countdown_game_.checked());
+
+	if(mp_countdown_init_time_ != countdown_init_time_slider_.value()
+		&& countdown_init_time_slider_.value() > countdown_reservoir_time_slider_.value())
+	{
+		countdown_reservoir_time_slider_.set_value(countdown_init_time_slider_.value());
+	}
+	if(mp_countdown_reservoir_time_ != countdown_reservoir_time_slider_.value()
+		&& countdown_reservoir_time_slider_.value() < countdown_init_time_slider_.value())
+	{
+		countdown_init_time_slider_.set_value(countdown_reservoir_time_slider_.value());
+	}
+	mp_countdown_init_time_ = countdown_init_time_slider_.value();
+	mp_countdown_reservoir_time_ = countdown_reservoir_time_slider_.value();
+
+
 	buf.str("");
-	buf <<  _("Initial Time: ") << mp_countdown_init_time_val;
+	buf <<  _("Init. Limit: ") << mp_countdown_init_time_; // << _(" sec.");
 	countdown_init_time_label_.set_text(buf.str());
 
 	const int mp_countdown_turn_bonus_val = countdown_turn_bonus_slider_.value();
 	buf.str("");
-	buf <<  _("Turn time: ") << mp_countdown_turn_bonus_val;
+	buf <<  _("Turn Bonus: ") << mp_countdown_turn_bonus_val; // << _(" sec.");
 	countdown_turn_bonus_label_.set_text(buf.str());
+
+	buf.str("");
+	buf <<  _("Reservoir: ") << mp_countdown_reservoir_time_; // << _(" sec.");
+	countdown_reservoir_time_label_.set_text(buf.str());
+
+	const int mp_countdown_action_bonus_val = countdown_action_bonus_slider_.value();
+	buf.str("");
+	buf <<  _("Action Bonus: ") << mp_countdown_action_bonus_val; // << _(" sec.");
+	countdown_action_bonus_label_.set_text(buf.str());
+
 
 	//Villages can produce between 1 and 10 gold a turn
 	const int village_gold = village_gold_slider_.value();
@@ -428,6 +485,10 @@ void create::hide_children(bool hide)
 	countdown_init_time_label_.hide(hide);
 	countdown_turn_bonus_slider_.hide(hide);
 	countdown_turn_bonus_label_.hide(hide);
+	countdown_reservoir_time_slider_.hide(hide);
+	countdown_reservoir_time_label_.hide(hide);
+	countdown_action_bonus_slider_.hide(hide);
+	countdown_action_bonus_label_.hide(hide);
 	countdown_game_.hide(hide);
 
 	village_gold_slider_.hide(hide);
@@ -515,6 +576,11 @@ void create::layout_children(const SDL_Rect& rect)
 	era_combo_.set_location(xpos + era_label_.width() + border_size, ypos);
 	ypos += era_combo_.height() + border_size;
 
+#ifdef MP_VISION_OPTIONAL
+	vision_combo_.set_location(xpos, ypos);
+	ypos += vision_combo_.height() + border_size;
+#endif
+
 	// Second column: map menu
 	ypos = ypos_columntop;
 	xpos += minimap_width + column_border_size;
@@ -563,6 +629,15 @@ void create::layout_children(const SDL_Rect& rect)
 	countdown_turn_bonus_slider_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
 	ypos += countdown_init_time_slider_.height() + border_size;
 
+	countdown_reservoir_time_label_.set_location(xpos, ypos);
+	countdown_action_bonus_label_.set_location(xpos + (ca.w - xpos)/2 + 5 , ypos);
+	ypos += countdown_reservoir_time_label_.height() + border_size;
+	countdown_reservoir_time_slider_.set_width(((ca.w - xpos)/2)-5);
+	countdown_action_bonus_slider_.set_width(((ca.w - xpos)/2)-5);
+	countdown_reservoir_time_slider_.set_location(xpos, ypos);
+	countdown_action_bonus_slider_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
+	ypos += countdown_reservoir_time_slider_.height() + border_size;
+
 	countdown_game_.set_location(xpos, ypos);
 //	ypos += countdown_game_.height() + border_size;
 
@@ -574,9 +649,6 @@ void create::layout_children(const SDL_Rect& rect)
 
 	observers_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
 	ypos += observers_game_.height() + border_size;
-
-	vision_combo_.set_location(xpos, ypos);
-	ypos += vision_combo_.height() + border_size;
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;

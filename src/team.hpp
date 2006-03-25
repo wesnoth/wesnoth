@@ -74,6 +74,7 @@ public:
 		std::string team_name;
 		std::string save_id;
 		std::string countdown_time;
+		int action_bonus_count;
 
 		std::string flag;
 
@@ -126,6 +127,8 @@ public:
 	void set_income(int amount);
 	int countdown_time() const;
 	void set_countdown_time(int amount);
+	int action_bonus_count() const;
+	void set_action_bonus_count(int count);
 
 	const std::set<std::string>& recruits() const;
 	std::set<std::string>& recruits();
@@ -249,6 +252,7 @@ private:
 	team_info info_;
 
 	int countdown_time_;
+	int action_bonus_count_;
 
 	config aiparams_;
 

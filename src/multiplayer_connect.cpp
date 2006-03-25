@@ -57,7 +57,9 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	combo_team_(parent.disp(), parent.player_teams_),
 	combo_colour_(parent.disp(), parent.player_colours_),
 	slider_gold_(parent.video()),
+	slider_income_(parent.video()),
 	label_gold_(parent.video(), "100", font::SIZE_SMALL, font::LOBBY_COLOUR),
+	label_income_(parent.video(), _("Normal"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	enabled_(!parent_->params_.saved_game),
 	changed_(false),
 	llm_(parent.era_sides_, &parent.game_data_, enabled_ ? &combo_leader_ : NULL)
@@ -74,16 +76,23 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	}
 
 	slider_gold_.set_min(20);
-	slider_gold_.set_max(1000);
+	slider_gold_.set_max(800);
 	slider_gold_.set_increment(25);
 	slider_gold_.set_value(lexical_cast_default<int>(cfg_["gold"], 100));
-	slider_gold_.set_measurements(100, 16);
+	slider_gold_.set_measurements(80, 16);
+
+	slider_income_.set_min(-2);
+	slider_income_.set_max(18);
+	slider_income_.set_increment(1);
+	slider_income_.set_value(lexical_cast_default<int>(cfg_["income"], 0));
+	slider_income_.set_measurements(50, 16);
 
 	combo_faction_.enable(enabled_);
 	combo_leader_.enable(enabled_);
 	combo_team_.enable(enabled_);
 	combo_colour_.enable(enabled_);
 	slider_gold_.hide(!enabled_);
+	slider_income_.hide(!enabled_);
 
 	id_ = ""; // Id is reset, and not imported from loading savegames
 	save_id_ = cfg_["save_id"];
@@ -97,6 +106,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	}
 	colour_ = lexical_cast_default<int>(cfg_["colour"], index_ + 1) - 1;
 	gold_ = lexical_cast_default<int>(cfg_["gold"], 100);
+	income_ = lexical_cast_default<int>(cfg_["income"], 0);
 
 	// "Faction name" hack
 	if (!enabled_) {
@@ -141,12 +151,13 @@ connect::side::side(const side& a) :
 	index_(a.index_), id_(a.id_),  save_id_(a.save_id_),
 	controller_(a.controller_),
 	faction_(a.faction_), team_(a.team_), colour_(a.colour_),
-	gold_(a.gold_), leader_(a.leader_), /* taken_(a.taken_), */
+	gold_(a.gold_), income_(a.income_), leader_(a.leader_), /* taken_(a.taken_), */
 	player_number_(a.player_number_), combo_controller_(a.combo_controller_),
 	orig_controller_(a.orig_controller_),
 	combo_faction_(a.combo_faction_), combo_leader_(a.combo_leader_),
 	combo_team_(a.combo_team_), combo_colour_(a.combo_colour_),
 	slider_gold_(a.slider_gold_), label_gold_(a.label_gold_),
+	slider_income_(a.slider_income_), label_income_(a.label_income_),
 	enabled_(a.enabled_), changed_(a.changed_), llm_(a.llm_)
 {
 	llm_.set_combo(enabled_ ? &combo_leader_ : NULL);
@@ -161,8 +172,12 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 	pane.add_widget(&combo_leader_, 135, 35 + pos);
 	pane.add_widget(&combo_team_, 250, 5 + pos);
 	pane.add_widget(&combo_colour_, 365, 5 + pos);
-	pane.add_widget(&slider_gold_, 480, 5 + pos);
-	pane.add_widget(&label_gold_, 490 + slider_gold_.width(), 8 + pos);
+	pane.add_widget(&slider_gold_, 475, 5 + pos);
+	//pane.add_widget(&label_gold_, 490 + slider_gold_.width(), 8 + pos);
+	pane.add_widget(&label_gold_, 475, 35 + pos);
+	pane.add_widget(&slider_income_, 480 + slider_gold_.width(), 5 + pos);
+	pane.add_widget(&label_income_, 480 + slider_gold_.width(), 35 + pos);
+
 }
 
 void connect::side::process_event()
@@ -231,6 +246,20 @@ void connect::side::process_event()
 		label_gold_.set_text(lexical_cast_default<std::string>(gold_, "0"));
 		changed_ = true;
 	}
+	if (slider_income_.value() != income_) {
+
+		income_ = slider_income_.value();
+		std::stringstream buf;
+		if(income_ < 0) {
+			buf << _("(") << income_ << _(")");
+		} else if(income_ > 0) {
+			buf << _("+") << income_;
+		} else {
+			buf << _("Normal");
+		}
+		label_income_.set_text(buf.str());
+		changed_ = true;
+	}
 }
 
 bool connect::side::changed()
@@ -273,6 +302,16 @@ void connect::side::update_ui()
 	combo_colour_.set_selected(colour_);
 	slider_gold_.set_value(gold_);
 	label_gold_.set_text(lexical_cast_default<std::string>(gold_, "0"));
+	slider_income_.set_value(income_);
+	std::stringstream buf;
+	if(income_ < 0) {
+		buf << _("(") << income_ << _(")");
+	} else if(income_ > 0) {
+		buf << _("+") << income_;
+	} else {
+		buf << _("Normal");
+	}
+	label_income_.set_text(buf.str());
 }
 
 config connect::side::get_config() const
@@ -336,6 +375,7 @@ config connect::side::get_config() const
 		res["team_name"] = parent_->team_names_[team_];
 		res["colour"] = lexical_cast<std::string>(colour_ + 1);
 		res["gold"] = lexical_cast<std::string>(gold_);
+		res["income"] = lexical_cast<std::string>(income_);
 
 		if(!parent_->params_.use_map_settings || res["fog"].empty() || (res["fog"] != "yes" && res["fog"] != "no")) {
 			res["fog"] = parent_->params_.fog_game ? "yes" : "no";
@@ -356,7 +396,12 @@ config connect::side::get_config() const
 		if(!parent_->params_.use_map_settings || res["mp_countdown_turn_bonus"].empty()) {
 			res["mp_countdown_turn_bonus"] = lexical_cast<std::string>(parent_->params_.mp_countdown_turn_bonus);
 		}
-
+		if(!parent_->params_.use_map_settings || res["mp_countdown_reservoir_time"].empty()) {
+			res["mp_countdown_reservoir_time"] = lexical_cast<std::string>(parent_->params_.mp_countdown_reservoir_time);
+		}
+		if(!parent_->params_.use_map_settings || res["mp_countdown_action_bonus"].empty()) {
+			res["mp_countdown_action_bonus"] = lexical_cast<std::string>(parent_->params_.mp_countdown_action_bonus);
+		}
 
 		res["share_maps"] = parent_->params_.share_maps ? "yes" : "no";
 		res["share_view"] =  parent_->params_.share_view ? "yes" : "no";
@@ -522,6 +567,7 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 	team_title_label_(video(), _("Team"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	colour_title_label_(video(), _("Color"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	gold_title_label_(video(), _("Gold"), font::SIZE_SMALL, font::LOBBY_COLOUR),
+	income_title_label_(video(), _("Income"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 
 	ai_(video(), _("Computer vs Computer")),
 	launch_(video(), _("I'm Ready")),
@@ -647,6 +693,7 @@ void connect::hide_children(bool hide)
 	team_title_label_.hide(hide);
 	colour_title_label_.hide(hide);
 	gold_title_label_.hide(hide);
+	income_title_label_.hide(hide);
 
 	ai_.hide(hide);
 	launch_.hide(hide);
@@ -871,6 +918,7 @@ void connect::layout_children(const SDL_Rect& rect)
 	team_title_label_.set_location((left+260), top+35);
 	colour_title_label_.set_location((left+375), top+35);
 	gold_title_label_.set_location((left+493), top+35);
+	income_title_label_.set_location((left+560), top+35);
 
 	SDL_Rect scroll_pane_rect;
 	scroll_pane_rect.x = ca.x;
@@ -1018,8 +1066,10 @@ void connect::load_game()
 		level_ = params_.scenario_data;
 		level_["turns"] = lexical_cast_default<std::string>(params_.num_turns, "20");
 		level_["mp_countdown"] = params_.mp_countdown ? "yes" : "no";
-		level_["mp_countdown_init_time"] = lexical_cast_default<std::string>(params_.mp_countdown_init_time, "600");
-		level_["mp_countdown_turn_bonus"] = lexical_cast_default<std::string>(params_.mp_countdown_turn_bonus, "100");
+		level_["mp_countdown_init_time"] = lexical_cast_default<std::string>(params_.mp_countdown_init_time, "270");
+		level_["mp_countdown_turn_bonus"] = lexical_cast_default<std::string>(params_.mp_countdown_turn_bonus, "35");
+		level_["mp_countdown_reservoir_time"] = lexical_cast_default<std::string>(params_.mp_countdown_reservoir_time, "330");
+		level_["mp_countdown_action_bonus"] = lexical_cast_default<std::string>(params_.mp_countdown_action_bonus, "13");
 
 
 

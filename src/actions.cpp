@@ -1322,11 +1322,18 @@ int village_owner(const gamemap::location& loc, const std::vector<team>& teams)
 bool get_village(const gamemap::location& loc, std::vector<team>& teams,
                  size_t team_num, const unit_map& units)
 {
+	return get_village(loc,teams,team_num,units,NULL);
+}
+
+bool get_village(const gamemap::location& loc, std::vector<team>& teams,
+                 size_t team_num, const unit_map& units, int *action_timebonus)
+{
 	if(team_num < teams.size() && teams[team_num].owns_village(loc)) {
 		return false;
 	}
 
 	const bool has_leader = find_leader(units,int(team_num+1)) != units.end();
+	bool grants_timebonus = false;
 
 	//we strip the village off all other sides, unless it is held by an ally
 	//and we don't have a leader (and thus can't occupy it)
@@ -1334,7 +1341,15 @@ bool get_village(const gamemap::location& loc, std::vector<team>& teams,
 		const int side = i - teams.begin() + 1;
 		if(team_num >= teams.size() || has_leader || teams[team_num].is_enemy(side)) {
 			i->lose_village(loc);
+			if(team_num + 1 != side && action_timebonus) {
+				grants_timebonus = true;
+			}
 		}
+	}
+
+	if(grants_timebonus) {
+		teams[team_num].set_action_bonus_count(1 + teams[team_num].action_bonus_count());
+		*action_timebonus = 1;
 	}
 
 	if(team_num >= teams.size()) {
@@ -2110,12 +2125,14 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	bool event_mutated = false;
 
 	int orig_village_owner = -1;
+	int action_time_bonus = 0;
+
 	if(map.is_village(steps.back())) {
 		orig_village_owner = village_owner(steps.back(),teams);
 
 		if(size_t(orig_village_owner) != team_num) {
 			ui->second.set_movement(0);
-			event_mutated = get_village(steps.back(),teams,team_num,units);
+			event_mutated = get_village(steps.back(),teams,team_num,units,&action_time_bonus);
 		}
 	}
 
@@ -2128,7 +2145,8 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			apply_shroud_changes(*undo_stack,disp,status,map,gamedata,units,teams,team_num);
 			undo_stack->clear();
 		} else {
-			undo_stack->push_back(undo_action(u,steps,starting_moves,orig_village_owner));
+			//MP_COUNTDOWN: added param
+			undo_stack->push_back(undo_action(u,steps,starting_moves,action_time_bonus,orig_village_owner));
 		}
 	}
 

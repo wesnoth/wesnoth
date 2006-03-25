@@ -511,12 +511,12 @@ void set_countdown(bool value)
 
 int countdown_init_time()
 {
-	static const int default_value = 300;
+	static const int default_value = 270;
 	int value = 0;
 	const std::string& timer_init = prefs["mp_countdown_init_time"];
 	value = lexical_cast_default<int>(timer_init,default_value);
 
-	if(value < 0 || value > 7200) {
+	if(value < 0 || value > 1500) {
 		value = default_value;
 	}
 
@@ -528,14 +528,33 @@ void set_countdown_init_time(int value)
 	prefs["mp_countdown_init_time"] = lexical_cast<std::string>(value);
 }
 
+int countdown_reservoir_time()
+{
+	static const int default_value = 330;
+	int value = 0;
+	const std::string& timer_init = prefs["mp_countdown_reservoir_time"];
+	value = lexical_cast_default<int>(timer_init,default_value);
+
+	if(value < 30 || value > 1500) {
+		value = default_value;
+	}
+
+	return value;
+}
+
+void set_countdown_reservoir_time(int value)
+{
+	prefs["mp_countdown_reservoir_time"] = lexical_cast<std::string>(value);
+}
+
 int countdown_turn_bonus()
 {
-	static const int default_value = 150;
+	static const int default_value = 35;
 	int value = 0;
 	const std::string& timer_bonus = prefs["mp_countdown_turn_bonus"];
 	value = lexical_cast_default<int>(timer_bonus,default_value);
 
-	if(value <= 0 || value > 1000) {
+	if(value <= 0 || value > 300) {
 		value = default_value;
 	}
 
@@ -547,6 +566,24 @@ void set_countdown_turn_bonus(int value)
 	prefs["mp_countdown_turn_bonus"] =lexical_cast<std::string>(value);
 }
 
+int countdown_action_bonus()
+{
+	static const int default_value = 13;
+	int value = 0;
+	const std::string& timer_bonus = prefs["mp_countdown_action_bonus"];
+	value = lexical_cast_default<int>(timer_bonus,default_value);
+
+	if(value < 0 || value > 30) {
+		value = default_value;
+	}
+
+	return value;
+}
+
+void set_countdown_action_bonus(int value)
+{
+	prefs["mp_countdown_action_bonus"] =lexical_cast<std::string>(value);
+}
 
 int village_gold()
 {

@@ -390,8 +390,17 @@ void wait::generate_menu()
 		// Mark parentheses translatable for languages like Japanese
 		if(!leader_name.empty())
 			str << _("(") << leader_name << _(")");
-		str << COLUMN_SEPARATOR << sd["gold"] << ' ' << sgettext("unit^Gold")
-			<< COLUMN_SEPARATOR << sd["team_name"];
+		str << COLUMN_SEPARATOR << sd["gold"] << ' ' << sgettext("unit^Gold") << COLUMN_SEPARATOR;
+
+		int income_amt = lexical_cast_default<int>(sd["income"], 0);
+		if(income_amt != 0){
+			str << _("(") << _("Income") << ' ';
+			if(income_amt > 0)
+				str << _("+");
+			str << sd["income"] << _(")");
+		}
+
+		str	<< COLUMN_SEPARATOR << sd["team_name"];
 		str << COLUMN_SEPARATOR << get_colour_string(lexical_cast_default<int>(sd["colour"], 0) - 1);
 		details.push_back(str.str());
 	}

@@ -930,6 +930,8 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			g->level().values["mp_countdown"] = data["mp_countdown"];
 			g->level().values["mp_countdown_init_time"] = data["mp_countdown_init_time"];
 			g->level().values["mp_countdown_turn_bonus"] = data["mp_countdown_turn_bonus"];
+			g->level().values["mp_countdown_reservoir_time"] = data["mp_countdown_reservoir_time"];
+			g->level().values["mp_countdown_action_bonus"] = data["mp_countdown_action_bonus"];
 
 			//update our config object which describes the
 			//open games, and notifies the game of where its description

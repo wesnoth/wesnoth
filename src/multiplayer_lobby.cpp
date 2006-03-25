@@ -360,7 +360,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			}
 		}
 		if((**game)["mp_countdown"] == "yes" ) {
-			games_.back().time_limit = (**game)["mp_countdown_init_time"] + " / +" + (**game)["mp_countdown_turn_bonus"];
+			games_.back().time_limit = (**game)["mp_countdown_init_time"] + " / +" + (**game)["mp_countdown_turn_bonus"] + " " + (**game)["mp_countdown_action_bonus"];
 		} else {
 			games_.back().time_limit = "";
 		}

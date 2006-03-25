@@ -105,6 +105,7 @@ public:
 		int team_;
 		int colour_;
 		int gold_;
+		int income_;
 		std::string leader_;
 		//bool taken_;
 
@@ -117,7 +118,9 @@ public:
 		gui::combo combo_team_;
 		gui::combo combo_colour_;
 		gui::slider slider_gold_;
+		gui::slider slider_income_;
 		gui::label label_gold_;
+		gui::label label_income_;
 
 		bool enabled_;
 		bool changed_;
@@ -226,6 +229,7 @@ private:
 	gui::label team_title_label_;
 	gui::label colour_title_label_;
 	gui::label gold_title_label_;
+	gui::label income_title_label_;
 
 	gui::button ai_;
 	gui::button launch_;
