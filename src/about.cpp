@@ -270,7 +270,7 @@ void show_about(display &disp, std::string campaign)
 		SDL_BlitSurface(map_image,&middle_src,video.getSurface(),&middle_dest);
 		std::string style = "mainmenu";
 		
-          gui::draw_dialog_frame(map_rect.x, map_rect.y + top_margin, map_rect.w, map_rect.h - top_margin - bottom_margin,disp.video(),&style);
+          gui::draw_dialog_frame(map_rect.x + map_rect.w/16, map_rect.y + top_margin, map_rect.w * 7 / 8, map_rect.h - top_margin - bottom_margin,disp.video(),&style);
 		// draw one screen full of text
 		const int line_spacing = 5;
 		int y = map_rect.y + top_margin - offset;
