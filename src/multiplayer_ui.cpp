@@ -400,7 +400,7 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 					best_match = *i;
 				} else {
 					int j= 0;;
-					while(best_match[j] == (*i)[j]) j++;
+					while(toupper(best_match[j]) == toupper((*i)[j])) j++;
 					best_match.erase(best_match.begin()+j,best_match.end());
 				}
 				matches.push_back(*i);
