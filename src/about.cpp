@@ -38,8 +38,8 @@ std::vector<std::string> get_text(std::string campaign) {
 		"- ",
 		"_" N_("+Developers"),
 		"-   Alfredo Beaumont (ziberpunk)",
-		"-   András Salamon (ott)",
-		"-   Benoît Timbert (Noyga)",
+		"-   AndrÃ¡s Salamon (ott)",
+		"-   BenoÃ®t Timbert (Noyga)",
 		"-   Bram Ridder (Morloth)",
 		"-   Bruno Wolff III",
 		"-   Cedric Duval",
@@ -47,12 +47,12 @@ std::vector<std::string> get_text(std::string campaign) {
 		"-   Dominic Bolin (Xan)",
 		"-   Guillaume Melquiond (silene)",
 		"-   Isaac Clerencia",
-		"-   Jan Zvánovec (jaz)",
-		"-   Jérémy Rosen (Boucman)",
+		"-   Jan ZvÃ¡novec (jaz)",
+		"-   JÃ©rÃ©my Rosen (Boucman)",
 		"-   John B. Messerly",
 		"-   John W. C. McNabb (Darth Fool)",
 		"-   Jon Daniel (forcemstr)",
-		"-   Jörg Hinrichs (Yogi Bear/YogiHH)",
+		"-   JÃ¶rg Hinrichs (Yogi Bear/YogiHH)",
 		"-   Justin Zaun (jzaun)",
 		"-   J.R. Blain (Cowboy)",
 		"-   Kristoffer Erlandsson (erl)",
@@ -61,7 +61,7 @@ std::vector<std::string> get_text(std::string campaign) {
 		"-   Philippe Plantier (Ayin)",
 		"-   Rusty Russell (rusty)",
 		"-   Yann Dirson",
-		"-   Zas",		
+		"-   Zas",
 		"_" N_("+General Purpose Administrators"),
 		"-   Crossbow/Miyo",
 		"-   Isaac Clerencia",
@@ -94,7 +94,7 @@ std::vector<std::string> get_text(std::string campaign) {
 		  *line = gettext(line->substr(1,line->size()-1).c_str());
 		res.push_back(*line);
 	      }
-	    } 
+	    }
 	  }
 	}
 
@@ -124,7 +124,7 @@ std::vector<std::string> get_text(std::string campaign) {
 		*line = gettext(line->substr(1,line->size()-1).c_str());
 	      res.push_back(*line);
 	    }
-	  } 
+	  }
 	}
 
 	return res;
@@ -141,7 +141,7 @@ void set_about(const config& cfg){
 			}else{
 				images_default+=","+AA["images"];
 			}
-	 	}
+		}
 	}
 	config::child_list campaigns = cfg.get_children("campaign");
 	for(config::child_list::const_iterator C = campaigns.begin(); C != campaigns.end(); C++) {
@@ -158,24 +158,24 @@ void set_about(const config& cfg){
 				config AA = (**A);
 				std::string subtitle=AA["title"];
 				if(subtitle.size()){
-	      			if (subtitle[0] == '_')
+				if (subtitle[0] == '_')
 						subtitle = gettext(subtitle.substr(1,subtitle.size()-1).c_str());
 					text += "+" + subtitle + "\n";
 				}
 				std::vector<std::string> lines=utils::split(AA["text"],'\n');
 				for(std::vector<std::string>::iterator line=lines.begin();
-		      	line != lines.end(); line++){
-	  				text+="    "+(*line)+"\n";
+			line != lines.end(); line++){
+					text+="    "+(*line)+"\n";
 				}
-								
+
 				if(!AA["images"].empty()){
 					if(images[campaign].empty()){
 						images[campaign]=AA["images"];
 					}else{
 						images[campaign]+=","+AA["images"];
 					}
-	 			}
-      		}
+				}
+		}
 			temp["text"]=text;
 			about_list.add_child("about",temp);
 		}
@@ -211,7 +211,7 @@ void show_about(display &disp, std::string campaign)
 	map_rect.y = video.gety()/2 - map_image->h/2;
 	map_rect.w = map_image->w;
 	map_rect.h = map_image->h;
-	
+
 	gui::button close(video,_("Close"));
 	close.set_location((video.getx()/2)-(close.width()/2), video.gety() - 30);
 	close.set_volatile(true);
@@ -266,10 +266,10 @@ void show_about(display &disp, std::string campaign)
 			map_image=temp?temp:map_image;
 		}
 		// draw map to screen, thus erasing all text
-		
+
 		SDL_BlitSurface(map_image,&middle_src,video.getSurface(),&middle_dest);
 		std::string style = "mainmenu";
-		
+
           gui::draw_dialog_frame(map_rect.x + map_rect.w * 3/32, map_rect.y + top_margin, map_rect.w * 13 / 16, map_rect.h - top_margin - bottom_margin,disp.video(),&style);
 		// draw one screen full of text
 		const int line_spacing = 5;
