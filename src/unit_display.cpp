@@ -387,8 +387,8 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		const double pos = animation_time < attacker.get_animation()->get_first_frame_time()?0.0:
 			(1.0 - double(animation_time)/double(attacker.get_animation()->get_first_frame_time()));
 		attacker.set_offset(pos*0.6);
-		disp.draw_tile(a.x,a.y);
 		disp.draw_tile(b.x,b.y);
+		disp.draw_tile(a.x,a.y);
 		if(leader_loc.valid()) disp.draw_tile(leader_loc.x,leader_loc.y);
 		disp.update_display();
 		events::pump();
@@ -408,8 +408,8 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 			(leader_loc.valid() && !leader->second.get_animation()->animation_finished() )) {
 		const double pos = (1.0-double(animation_time)/double(end_time));
 		attacker.set_offset(pos*0.6);
-		disp.draw_tile(a.x,a.y);
 		disp.draw_tile(b.x,b.y);
+		disp.draw_tile(a.x,a.y);
 		if(leader_loc.valid()) disp.draw_tile(leader_loc.x,leader_loc.y);
 		disp.update_display();
 		events::pump();

@@ -1338,7 +1338,7 @@ void display::draw_tile(int x, int y)
 
 	unit_map::iterator it = units_.find(loc);
 	if(it != units_.end()) {
-		it->second.refresh();;
+		it->second.refresh();
 	}
 	SDL_Rect clip_rect = map_area();
 

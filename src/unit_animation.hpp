@@ -37,7 +37,6 @@ struct unit_frame {
 			highlight_ratio(highlight)  {halo = prepare_halo(in_halo,begin,end);};
 		explicit unit_frame(const config& cfg);
 
-		// int start, end;
 		int xoffset;
 		std::string image;
 		std::string image_diagonal;
