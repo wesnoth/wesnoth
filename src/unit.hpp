@@ -266,6 +266,7 @@ private:
 	bool unrenamable_;
 
 	unit_animation *anim_;
+	int frame_begin_time;
 	double offset_;
 	std::string user_image_;
 

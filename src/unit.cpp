@@ -1030,6 +1030,7 @@ void unit::set_standing(const display &disp)
 		anim_ = new unit_animation(type_->image());
 	}
 	anim_->start_animation(anim_->get_first_frame_time(),unit_animation::INFINITE_CYCLES,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
 
@@ -1055,6 +1056,7 @@ void unit::set_defending(const display &disp, int damage, std::string range)
 		damage_left --;
 	}
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
 
@@ -1071,6 +1073,7 @@ void unit::set_extra_anim(const display &disp, std::string flag)
 	}
 	anim_ =  new unit_animation(*(type_->extra_animation(flag)));
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
 
@@ -1085,6 +1088,7 @@ const unit_animation & unit::set_attacking(const display &disp,bool hit,const at
 	const attack_type::attack_animation &attack_anim = type.animation(hit,facing_) ;
 	anim_ =  new unit_animation(attack_anim.animation);
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 	return attack_anim.missile_animation;
 }
@@ -1098,6 +1102,7 @@ void unit::set_leading(const display &disp)
 	}
 	anim_ = new unit_animation(type().image_leading());
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
 
@@ -1125,6 +1130,7 @@ void unit::set_leveling_in(const display &disp)
 	}
 	
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
 
@@ -1152,6 +1158,7 @@ void unit::set_leveling_out(const display &disp)
 	}
 	
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
 
@@ -1172,6 +1179,7 @@ void unit::set_recruited(const display &disp)
 		anim_time += 10;
 	}
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
 
@@ -1196,6 +1204,7 @@ void unit::set_healed(const display &disp, int healing)
 		heal_left --;
 	}
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
 
@@ -1220,6 +1229,7 @@ void unit::set_poisoned(const display &disp, int damage)
 		damage_left --;
 	}
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
 
@@ -1232,6 +1242,7 @@ void unit::set_teleporting(const display &disp)
 	}
 	anim_ =  new unit_animation(type_->teleport_animation());
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
 
@@ -1252,6 +1263,7 @@ void unit::set_dying(const display &disp, const attack_type* attack)
 		anim_time += 10;
 	}
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
 void unit::set_healing(const display &disp)
@@ -1270,6 +1282,7 @@ void unit::set_healing(const display &disp)
 	duration = maximum<int>(200,duration);
 	anim_ = new unit_animation(type().image_healing(),0,duration,"",type().image_halo_healing(),0);
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
 
@@ -1286,6 +1299,7 @@ void unit::set_walking(const display &disp, const std::string terrain)
 	}
 	anim_ = new movement_animation(type_->move_animation(terrain,facing_));
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
+	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
 
@@ -1695,6 +1709,7 @@ bool unit::is_flying() const
 void unit::restart_animation(const display& disp,int start_time) {
 	if(!anim_) return;
 	anim_->start_animation(start_time,1,disp.turbo()?5:1);
+	frame_begin_time = start_time -1;
 }
 
 void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
@@ -1737,7 +1752,8 @@ void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
 	else current_frame = anim_->get_current_frame();
 
 	image_name = current_frame.image;
-	if(anim_->frame_changed() ) {
+	if(frame_begin_time != current_frame.begin_time) {
+		frame_begin_time = current_frame.begin_time;
 		if(!current_frame.sound.empty()) {
 			sound::play_sound(current_frame.sound);
 		}
