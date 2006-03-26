@@ -90,6 +90,9 @@ private:
 	const gamestatus* game_status_;
 	const std::vector<team>* teams_;
 	mutable attack_type* other_attack_;
+	/*
+	 * cfg: a weapon special WML structure
+	 */
 	bool special_active(const config& cfg,bool self) const;
 	bool special_affects_opponent(const config& cfg) const;
 	bool special_affects_self(const config& cfg) const;

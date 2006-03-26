@@ -158,6 +158,7 @@ class unit
 		bool has_moved() const;
 		bool has_goto() const;
 		int emits_zoc() const;
+		/* cfg: standard unit filter */
 		bool matches_filter(const config& cfg,const gamemap::location& loc,bool use_flat_tod=false) const;
 		void add_overlay(const std::string& overlay);
 		void remove_overlay(const std::string& overlay);
@@ -274,10 +275,12 @@ class unit
 		
 	private:
 		
+		/*
+		 * cfg: an ability WML structure
+		 */
 		bool ability_active(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
 		bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const;
 		bool ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
-		
 		bool resistance_filter_matches(const config& cfg,const gamemap::location& loc,bool attacker,const attack_type& damage_type) const;
 		
 		config cfg_;

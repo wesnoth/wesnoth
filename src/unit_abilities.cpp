@@ -263,6 +263,11 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 	return res;
 }
 
+/*
+ *
+ * cfg: an ability WML structure
+ *
+ */
 
 bool unit::ability_active(const std::string& ability,const config& cfg,const gamemap::location& loc) const
 {
@@ -342,6 +347,11 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 	}
 	return true;
 }
+/*
+ *
+ * cfg: an ability WML structure
+ *
+ */
 bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const
 {
 //	wassert("not done" == "done");
@@ -365,6 +375,11 @@ bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg
 	}
 	return passed;
 }
+/*
+ *
+ * cfg: an ability WML structure
+ *
+ */
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const
 {
 	if(cfg.child("filter")==NULL) {
@@ -597,6 +612,11 @@ std::string attack_type::weapon_specials(bool force) const
 
 
 
+/*
+ *
+ * cfg: a weapon special WML structure
+ *
+ */
 bool attack_type::special_active(const config& cfg,bool self) const
 {
 	log_scope("special_active");
@@ -774,6 +794,11 @@ bool attack_type::special_active(const config& cfg,bool self) const
 	}
 	return true;
 }
+/*
+ *
+ * cfg: a weapon special WML structure
+ *
+ */
 bool attack_type::special_affects_opponent(const config& cfg) const
 {
 	log_scope("special_affects_opponent");
@@ -790,6 +815,11 @@ bool attack_type::special_affects_opponent(const config& cfg) const
 	}
 	return false;
 }
+/*
+ *
+ * cfg: a weapon special WML structure
+ *
+ */
 bool attack_type::special_affects_self(const config& cfg) const
 {
 	log_scope("special_affects_self");
