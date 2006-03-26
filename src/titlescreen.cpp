@@ -246,6 +246,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	}
 
 	gui::button next_tip_button(screen.video(),_("More"),button::TYPE_PRESS,"lite_small");
+	gui::button help_tip_button(screen.video(),_("Help"),button::TYPE_PRESS,"lite_small");
 
 	if(tips_of_day.empty()) {
 		tips_of_day = get_tips_of_day();
@@ -273,6 +274,10 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 		next_tip_button.set_location(area.x + area.w - next_tip_button.location().w - pad,
 		                             area.y + area.h - pad - next_tip_button.location().h);
+
+		help_tip_button.set_location(area.x + pad,
+		                             area.y + area.h - pad - next_tip_button.location().h);
+
 
 		font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
 		                tip_of_day, area.x + pad, area.y + pad);
@@ -306,6 +311,10 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 			}
 
 			return TITLE_CONTINUE;
+		}
+
+		if(help_tip_button.pressed()) {
+			return SHOW_HELP;
 		}
 
 		events::raise_process_event();

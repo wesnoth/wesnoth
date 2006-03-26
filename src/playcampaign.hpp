@@ -22,7 +22,7 @@ struct game_state;
 class config;
 struct game_data;
 class CVideo;
-class upload_log;
+struct upload_log;
 
 enum io_type_t {
 	IO_NONE,

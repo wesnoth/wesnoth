@@ -1659,7 +1659,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			u.set_poisoned(-h->second,disp.turbo()?5:1);
 			start_time = minimum<int>(start_time,u.get_animation()->get_first_frame_time());
 		}
-		std::vector<unit*>::iterator itor;
+		//std::vector<unit*>::iterator itor;
 		// restart all anims in a synchronized way
 		u.restart_animation(start_time,disp.turbo()?5:1);
 		for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
@@ -1668,9 +1668,10 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		}
 		bool finished = false;
 		while(!finished) {
+			healer_itor i;
 			finished = (u.get_animation()->animation_finished());
 			disp.draw_tile(loc.x,loc.y);
-			for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
+			for(i = healer_itors.first; i != healer_itors.second; ++i) {
 				finished = (finished && u.get_animation()->animation_finished());
 				disp.draw_tile(i->second.x,i->second.y);
 			}

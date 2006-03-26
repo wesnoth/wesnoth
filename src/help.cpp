@@ -2721,7 +2721,8 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 					 NULL, &buttons_ptr, &restorer);
 
 	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
-	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains)) {
+	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
+		last_num_encountered_units < 0) {
 		// More units or terrains encountered, update the contents.
 		last_num_encountered_units = preferences::encountered_units().size();
 		last_num_encountered_terrains = preferences::encountered_terrains().size();

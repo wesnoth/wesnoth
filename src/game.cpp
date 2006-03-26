@@ -26,6 +26,7 @@
 #include "game_errors.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
+#include "help.hpp"
 #include "hotkeys.hpp"
 #include "intro.hpp"
 #include "language.hpp"
@@ -90,6 +91,7 @@ public:
 	bool play_multiplayer();
 	bool change_language();
 
+	void show_help();
 	void show_preferences();
 	void show_upload_begging();
 
@@ -97,6 +99,7 @@ public:
 	void play_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();
   const config& game_config(){return game_config_;};
+  const game_data& units_data(){return units_data_;};
 
 private:
 	game_controller(const game_controller&);
@@ -1734,6 +1737,12 @@ int play_game(int argc, char** argv)
 			continue;
 		} else if(res == gui::SHOW_ABOUT) {
 			about::show_about(game.disp());
+			continue;
+		} else if(res == gui::SHOW_HELP) {
+			config dummy_help_cfg;
+			gamemap dummy_help_map(dummy_help_cfg, "1");
+			help::help_manager help_manager(&game.game_config(), &game.units_data(), &dummy_help_map);
+			help::show_help(game.disp());
 			continue;
 		} else if(res == gui::BEG_FOR_UPLOAD) {
 			game.show_upload_begging();
