@@ -472,7 +472,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	static const std::string slow_string("slow");
 	res.attacker_slows = attack.get_special_bool(slow_string);
-	static const std::string poison_string("slow");
+	static const std::string poison_string("poison");
 	res.attacker_poisons = attack.get_special_bool(poison_string);
 	static const std::string stones_string("stones");
 	res.attacker_stones = attack.get_special_bool(stones_string);
