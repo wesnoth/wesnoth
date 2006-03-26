@@ -34,8 +34,6 @@ class weapon_special_list
 {
 	public:
 		
-		weapon_special_list& operator +(const weapon_special_list& w);
-		
 		bool empty() const;
 		
 		int highest(const std::string& key, int def=0) const;

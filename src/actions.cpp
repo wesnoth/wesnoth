@@ -302,7 +302,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
                                    battle_stats_strings *strings)
 {
 	battle_stats res;
-
+	LOG_NG << "Evaluating battle stats...\n";
 	res.attack_with = attack_with;
 
 	if (strings)
@@ -333,6 +333,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	double best_defend_rating = 0.0;
 	int defend_with = -1;
 	res.ndefends = 0;
+	LOG_NG << "Finding defender weapon...\n";
 	for(int defend_option = 0; defend_option != int(defender_attacks.size()); ++defend_option) {
 		if(defender_attacks[defend_option].range() == attack.range()) {
 			if (defender_attacks[defend_option].defense_weight() > 0) {
@@ -424,7 +425,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	}
 	
 	res.defend_with = defend_with;
-	attack_type& defend = defender_attacks[defend_with];
+	int defend_weapon = defend_with == -1 ? 0 : defend_with;
+	attack_type& defend = defender_attacks[defend_weapon];
 	attack.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,true,&defend);
 	defend.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,false,&attack);
 	
@@ -444,6 +446,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	
 	
 	
+	LOG_NG << "getting weapon specials...\n";
 
 	static const std::string to_the_death_string("berserk");
 	res.rounds = attack.get_specials(to_the_death_string).highest("rounds");
@@ -901,6 +904,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		}
 		strings->attack_calculations.push_back(str.str());
 	}
+	LOG_NG << "done...\n";
 
 	return res;
 }
@@ -947,6 +951,7 @@ void attack(display& gui, const gamemap& map,
 	battle_stats stats = evaluate_battle_stats(map, teams, attacker,
                                                    defender, attack_with,
                                                    units, state, info);
+	LOG_NG << "getting attack statistics\n";
 
 	statistics::attack_context attack_stats(a->second,d->second,stats);
 	

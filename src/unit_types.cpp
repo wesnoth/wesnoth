@@ -257,7 +257,8 @@ bool attack_type::apply_modification(const config& cfg,std::string* description,
 	}
 
 	if(set_special.empty() == false) {
-		wassert("not done" == "done");
+		// Uh. Fix me?
+//		wassert("not done" == "done");
 	}
 
 	if(increase_damage.empty() == false) {

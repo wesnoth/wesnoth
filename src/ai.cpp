@@ -596,7 +596,7 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 			get_adjacent_tiles(res,locs.data());
 			for(adjacent_tiles_array::const_iterator adj_i = locs.begin(); adj_i != locs.end(); ++adj_i) {
 				const unit_map::const_iterator itor = units_.find(*adj_i);
-				if(i->second.attacks_left() && itor != units_.end() && current_team().is_enemy(itor->second.side()) &&
+				if(itor != units_.end() && current_team().is_enemy(itor->second.side()) &&
 				   itor->second.get_state("stoned") != "true") {
 					battle_stats stats;
 					const int weapon = choose_weapon(res,itor->first,stats,0);
@@ -1414,7 +1414,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		const unit_map::const_iterator un_it = units_.find(arrived_at);
 
 		//if we're going to attack someone
-		if(un_it->second.attacks_left() && u_it != units_.end() && u_it->second.get_state("stoned") != "true" && weapon != -1) {
+		if(u_it != units_.end() && u_it->second.get_state("stoned") != "true" && weapon != -1) {
 			attack_enemy(move.second,target,weapon);
 		}
 
