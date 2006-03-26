@@ -26,9 +26,7 @@ namespace about
   config about_list = config();
   std::map<std::string , std::string> images;
   std::string images_default;
-  std::map<std::string, config> music_cfg;
-  config music_cfg_default;
-  
+
 std::vector<std::string> get_text(std::string campaign) {
 	static const char *credits[] = {
 		"_" N_("+Core Developers"),
