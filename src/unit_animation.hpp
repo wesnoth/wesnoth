@@ -29,9 +29,9 @@ struct unit_frame {
 				int begin=0,int end = 0,
 				Uint32 blend_color = 0, double blend_rate = 0.0, 
 				fixed_t highlight = ftofxp(1),
-				std::string in_halo = "") :
+				std::string in_halo = "",int halox = 0,int haloy = 0) :
 			xoffset(0), image(str),image_diagonal(diag),
-			halo_x(0), halo_y(0),
+			halo_x(halox), halo_y(haloy),
 			begin_time(begin), end_time(end),
 			blend_with(blend_color), blend_ratio(blend_rate),
 			highlight_ratio(highlight)  {halo = prepare_halo(in_halo,begin,end);};
@@ -56,7 +56,7 @@ class unit_animation:public animated<unit_frame>
 
 		unit_animation(){};
 		explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
-		explicit unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal = "",const std::string halo="");
+		explicit unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal = "",const std::string halo="",int halo_x=0,int halo_y=0);
 		explicit unit_animation(const std::string image);
 
 		enum FRAME_DIRECTION { VERTICAL, DIAGONAL };

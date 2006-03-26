@@ -1110,7 +1110,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			if(show) {
 
-				un->second.set_recruited(screen->turbo()?5:1);
+				un->second.set_recruited(*screen);
 				screen->scroll_to_tile(loc.x,loc.y,display::ONSCREEN);
 				while(!un->second.get_animation()->animation_finished()) {
 					screen->draw_tile(loc.x,loc.y);
@@ -1119,8 +1119,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					if(!screen->turbo()) SDL_Delay(10);
 
 				}
+				un->second.set_standing(*screen);
 			}
-			un->second.set_standing(screen->turbo()?5:1);
 		} else {
 			player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
 
@@ -1639,7 +1639,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			screen->highlight_hex(u->first);
 			screen->scroll_to_tile(u->first.x,u->first.y);
 
-			u->second.set_extra_anim(cfg["flag"],screen->turbo()?5:1);
+			u->second.set_extra_anim(*screen,cfg["flag"]);
 			while(!u->second.get_animation()->animation_finished()) {
 				screen->draw_tile(u->first.x,u->first.y);
 				screen->update_display();
@@ -1647,7 +1647,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				if(!screen->turbo()) SDL_Delay(10);
 
 			}
-			u->second.set_standing(screen->turbo()?5:1);
+			u->second.set_standing(*screen);
 			screen->draw_tile(u->first.x,u->first.y);
 			screen->update_display();
 			events::pump();

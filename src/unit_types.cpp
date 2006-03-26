@@ -1129,8 +1129,11 @@ const std::string& unit_type::image_leading() const
 const std::string& unit_type::image_healing() const
 {
 	const std::string& val = cfg_["image_healing"];
+	static const std::string empty = "misc/blank.png";
 	if(val.empty()) {
 		return image();
+	} else if (val == "null"){
+		return empty;
 	} else {
 		return val;
 	}

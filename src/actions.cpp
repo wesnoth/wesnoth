@@ -153,7 +153,7 @@ std::string recruit_unit(const gamemap& map, int side,
 
 	if(show) {
 
-		un->second.set_recruited(disp->turbo()?5:1);
+		un->second.set_recruited(*disp);
 		disp->scroll_to_tile(recruit_location.x,recruit_location.y,display::ONSCREEN);
 		while(!un->second.get_animation()->animation_finished()) {
 			disp->draw_tile(recruit_location.x,recruit_location.y);
@@ -162,8 +162,8 @@ std::string recruit_unit(const gamemap& map, int side,
 			if(!disp->turbo()) SDL_Delay(10);
 
 		}
+		un->second.set_standing(*disp);
 	}
-	un->second.set_standing(disp && disp->turbo()?5:1);
 	LOG_NG << "firing recruit event\n";
 	game_events::fire("recruit",recruit_location);
 
@@ -1606,7 +1606,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
 				wassert(units.count(i->second));
 				unit& healer = units.find(i->second)->second;
-				healer.set_healing(disp.turbo()?5:1);
+				healer.set_healing(disp);
 				start_time = minimum<int>(start_time,healer.get_animation()->get_first_frame_time());
 			}
 		}
@@ -1651,20 +1651,21 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		}
 
 
-		if(h->second > 0)  {
-			u.set_healed(h->second,disp.turbo()?5:1);
+		if(h->second >= 0)  {
+			u.set_healed(disp,h->second);
 			start_time = minimum<int>(start_time,u.get_animation()->get_first_frame_time());
 		}
 		if(h->second < 0)  {
-			u.set_poisoned(-h->second,disp.turbo()?5:1);
+			u.set_poisoned(disp,-h->second);
 			start_time = minimum<int>(start_time,u.get_animation()->get_first_frame_time());
 		}
 		//std::vector<unit*>::iterator itor;
 		// restart all anims in a synchronized way
-		u.restart_animation(start_time,disp.turbo()?5:1);
+		u.restart_animation(disp,start_time);
 		for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
 			unit& healer = units.find(i->second)->second;
-			healer.restart_animation(start_time,disp.turbo()?5:1);
+			healer.set_facing(i->first.get_relative_dir(i->second));
+			healer.restart_animation(disp,start_time);
 		}
 		bool finished = false;
 		while(!finished) {
@@ -1672,7 +1673,8 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			finished = (u.get_animation()->animation_finished());
 			disp.draw_tile(loc.x,loc.y);
 			for(i = healer_itors.first; i != healer_itors.second; ++i) {
-				finished = (finished && u.get_animation()->animation_finished());
+				unit& healer = units.find(i->second)->second;
+				finished &=  healer.get_animation()->animation_finished();
 				disp.draw_tile(i->second.x,i->second.y);
 			}
 			if(h->second > 0) {
@@ -1688,10 +1690,10 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			if(!disp.turbo()) SDL_Delay(10);
 			
 		}
-		u.set_standing(disp.turbo()?5:1);
+		u.set_standing(disp);
 		for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
 			unit& healer = units.find(i->second)->second;
-			healer.set_standing(disp.turbo()?5:1);
+			healer.set_standing(disp);
 		}
 		disp.update_display();
 		events::pump();

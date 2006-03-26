@@ -144,21 +144,21 @@ public:
 	const surface still_image() const;
 	void refresh_unit(display& disp,gamemap::location hex, bool with_status =false);
 
-	void set_standing(int acceleration);
-	void set_defending(int damage, std::string range, int acceleration);
-	void set_leading(int acceleration);
-	void set_healing(int acceleration);
-	void set_leveling_in(int acceleration);
-	void set_leveling_out(int acceleration);
-	void set_teleporting (int acceleration);
-	void set_extra_anim(std::string flag, int acceleration);
-	void set_dying(const attack_type *attack, int acceleration);
-	void set_walking(const std::string terrain,int acceleration);
-	const unit_animation & set_attacking(int acceleration,bool hit,const attack_type& type);
-	void set_recruited(int acceleration);
-	void set_healed(int healing,int acceleration);
-	void set_poisoned(int damage,int acceleration);
-	void restart_animation(int start_time, int acceleration);
+	void set_standing(const display& disp);
+	void set_defending(const display& disp, int damage, std::string range);
+	void set_leading(const display& disp);
+	void set_healing(const display& disp);
+	void set_leveling_in(const display& disp);
+	void set_leveling_out(const display& disp);
+	void set_teleporting (const display& disp);
+	void set_extra_anim(const display& disp, std::string flag);
+	void set_dying( const display& disp,const attack_type *attack);
+	void set_walking(const display& disp,const std::string terrain);
+	const unit_animation & set_attacking(const display& disp,bool hit,const attack_type& type);
+	void set_recruited(const display& disp);
+	void set_healed(const display& disp,int healing);
+	void set_poisoned(const display& disp,int damage);
+	void restart_animation(const display& disp,int start_time);
 	const unit_animation* get_animation() const {  return anim_;};
 	void set_offset(double offset){offset_ = offset;}
 
