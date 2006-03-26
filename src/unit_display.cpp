@@ -287,8 +287,8 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 		if(!disp.turbo()) SDL_Delay(10);
 		animation_time = defender.get_animation()->get_animation_time();
 	}
-	sound::play_sound(def->second.type().get_hit_sound());
 	if(damage > 0 && !hide) {
+		sound::play_sound(def->second.type().get_hit_sound());
 		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
 	}
 	if(def->second.gets_hit(damage)) {
@@ -397,8 +397,8 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 		animation_time = attacker.get_animation()->get_animation_time();
 	}
-	sound::play_sound(def->second.type().get_hit_sound());
 	if(damage > 0 && !hide) {
+		sound::play_sound(def->second.type().get_hit_sound());
 		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
 	}
 	if(def->second.gets_hit(damage)) {
