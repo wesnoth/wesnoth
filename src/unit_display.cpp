@@ -259,8 +259,8 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 	defender.restart_animation(disp,start_time);
 	while(!defender.get_animation()->animation_finished()  ||
 			(leader_loc.valid() && !leader->second.get_animation()->animation_finished())) {
-		const double pos = animation_time < defender.get_animation()->get_first_frame_time()?1.0:
-			double(animation_time)/double(attacker.get_animation()->get_first_frame_time());
+		const double pos = animation_time < missile_animation.get_first_frame_time()?1.0:
+			double(animation_time)/double(missile_animation.get_first_frame_time());
 		const int posx = int(pos*xsrc + (1.0-pos)*xdst);
 		const int posy = int(pos*ysrc + (1.0-pos)*ydst);
 		disp.draw_tile(b.x,b.y);
@@ -343,7 +343,6 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	}
 
 	const bool hits = damage > 0;
-	const int acceleration = disp.turbo() ? 5 : 1;
 	int start_time = 500;
 	int end_time = 0;
 	
