@@ -77,7 +77,7 @@ turns on more verbose logging.
 .IP
 key="\fIvalue\fR"
 .IP
-key=...
+key="\fIvalue\fR,\fIvalue\fR,..."
 .P
 [/\fItag\fR]
 .
@@ -86,6 +86,10 @@ key=...
 .TP
 .B connections_allowed
 The number of allowed connections from the same IP.
+.TP
+.B disallow_names
+Names/nicks that are not accepted by the server.
+Default values (used if nothing is specified) are: 'server,ai,player,network,human,admin,computer'.
 .TP
 .B max_messages
 The number of allowed messages in \fBmessages_time_period\fR.
