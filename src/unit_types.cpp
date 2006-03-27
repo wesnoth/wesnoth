@@ -646,7 +646,11 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	const config* const male_cfg = cfg.child("male");
 	if(male_cfg != NULL) {
 		config m_cfg(cfg);
-		m_cfg = m_cfg.merge_with(*male_cfg);
+		if((*male_cfg)["inherit"]=="no") {
+			m_cfg = *male_cfg;
+		} else {
+			m_cfg = m_cfg.merge_with(*male_cfg);
+		}
 		m_cfg.clear_children("male");
 		m_cfg.clear_children("female");
 		gender_types_[unit_race::MALE] = new unit_type(m_cfg,mv_types,races,traits);
@@ -655,7 +659,11 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	const config* const female_cfg = cfg.child("female");
 	if(female_cfg != NULL) {
 		config f_cfg(cfg);
-		f_cfg = f_cfg.merge_with(*female_cfg);
+		if((*female_cfg)["inherit"]=="no") {
+			f_cfg = *female_cfg;
+		} else {
+			f_cfg = f_cfg.merge_with(*female_cfg);
+		}
 		f_cfg.clear_children("male");
 		f_cfg.clear_children("female");
 		gender_types_[unit_race::FEMALE] = new unit_type(f_cfg,mv_types,races,traits);
