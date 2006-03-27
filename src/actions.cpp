@@ -1645,7 +1645,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				if(map.gives_healing(i->first)) {
 					amount_healed = maximum<int>(amount_healed,game_config::cure_amount);
 				}
-				if(i->second.get_ability_bool("regenerates",i->first)) {
+				if(i->second.get_ability_bool("regenerate",i->first)) {
 					amount_healed = maximum<int>(amount_healed,i->second.get_abilities("regenerate",i->first).highest("value").first);
 				}
 			}
