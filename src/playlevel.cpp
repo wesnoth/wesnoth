@@ -431,6 +431,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 					}
 
 					calculate_healing(gui,status,map,units,player_number,teams, !skip_replay);
+					reset_resting(units, player_number);
 				}
 
 				team_it->set_time_of_day(int(status.turn()),status.get_time_of_day());

@@ -226,35 +226,20 @@ HEALING
 Injured units in villages will recover 8 hitpoints every turn.  Injured
 units that are adjacent to units with the 'heal' or 'cure' abilities
 will also heal.  A unit that does not move or fight during a turn is
-'resting' and will recover 2 hitpoints.  Hitpoints recovered through
-'resting' are added on top of hitpoints recovered through healing or
-regenerating.
+'resting' and will recover an additional 2 hitpoints.
 
-A unit with the 'heals' ability may heal up to 8 hitpoints total per
-turn.  A unit with the 'cures' ability may heal up to 18 hitpoints total
-per turn.
+A unit with the 'heals' ability will heal adjacent allied units by up
+to 4 hitpoints each, at the beginning of the healer's turn.  Poisoned
+units will have their poison damage stopped by the healer, instead.
 
-Units next to unit(s) with the 'heals' ability will recover a maximum of
-4 hitpoints per turn; units next to unit(s) with the 'cures' ability
-will recover a maximum of 8 hitpoints per turn.  The more units around a
-unit that can heal, the less each one will be healed.
+A unit with the 'cures' ability will heal adjacent allied units by up
+to 8 hitpoints each, at the beginning of the curer's turn.  Poisoned
+units will have their poison cured by healer, instead.
 
-An example of 'heals' with multiple adjacent units: 
-
-  Two units next to a 'healer' will receive 4 hitpoints each.
-
-  3 units next to a 'healer' will NOT receive 4 hitpoints each:
-  two will receive 3 hitpoints and one will receive 2 hitpoints.
-
-A unit may be healed a maximum of 8 hitpoints per turn, with a possible
-2 hitpoints extra if resting.  Trolls, which have the regenerate
-ability, will only recover 8 hitpoints when residing in a village, not
-16.  Nor will a unit inside a village get extra healing from adjacent
-healers.
-
-'Heals' prevents poison from causing damage while 'cures' removes
-poison.  When poison is cured or prevented the unit does not gain or lose
-hitpoints on that turn due to healing/poisoning.
+No unit can be healed or cured by more than one thing at a time: the
+effects are not cumulative.  For example, a unit standing in a village
+gains no additional benefit from a curer standing next to it.  A unit
+standing next to two healers and a curer will not use the two healers.
 
 For more information see the in-game help. 
 

@@ -126,8 +126,12 @@ unit_map::const_iterator find_leader(const unit_map& units, int side);
 //calculates healing for all units for the given side. Should be called
 //at the beginning of a side's turn.
 void calculate_healing(display& disp, const gamestatus& status, const gamemap& map,
-                       std::map<gamemap::location,unit>& units, int side,
+                       std::map<gamemap::location,unit>& units, unsigned int side,
 					   const std::vector<team>& teams, bool update_display);
+
+// Resets resting for all units on this side: should be called after calculate_healing().
+// FIXME: Try moving this to unit::new_turn, then move it above calculate_healing().
+void reset_resting(std::map<gamemap::location,unit>& units, unsigned int side);
 
 //function which, given the location of a unit that is advancing, and the
 //name of the unit it is advancing to, will return the advanced version of

@@ -98,7 +98,6 @@ heals_ability::heals_ability(const config* cfg)
 : ability(cfg)
 {
 	amount_=lexical_cast_default<int>((*cfg)["amount"],game_config::healer_heals_per_turn);
-	max_=lexical_cast_default<int>((*cfg)["max"],game_config::heal_amount);
 }
 
 const int heals_ability::amount() const
@@ -106,15 +105,9 @@ const int heals_ability::amount() const
 	return amount_;
 }
 
-const int heals_ability::max() const
-{
-	return max_;
-}
-
-void heals_ability::set_heal(int amount, int max)
+void heals_ability::set_heal(int amount)
 {
 	amount_=amount;
-	max_=max;
 }
 
 /// regenerates_ability ///

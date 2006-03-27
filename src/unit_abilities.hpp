@@ -46,11 +46,9 @@ class heals_ability : public ability
 public : 
 	heals_ability(const config* cfg);
 	const int amount() const;
-	const int max() const;
-	void set_heal(int amount, int max);
+	void set_heal(int amount);
 private :
 	int amount_;
-	int max_;
 };
 
 class regenerates_ability : public ability

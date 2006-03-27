@@ -1384,317 +1384,189 @@ unit_map::const_iterator find_leader(const unit_map& units, int side)
 }
 
 namespace {
-
-//function which returns true iff the unit at 'loc' will heal a unit from side 'side'
-//on this turn.
-//
-//units heal other units if they are (1) on the same side as them; or (2) are on a
-//different but allied side, and there are no 'higher priority' sides also adjacent
-//to the healer
-bool will_heal(const gamemap::location& loc, int side, const std::vector<team>& teams,
-			   const unit_map& units)
+struct patient
 {
-	const unit_map::const_iterator healer_it = units.find(loc);
-	if(healer_it == units.end() || healer_it->second.type().heals() == false) {
-		return false;
+	patient(unit &un, bool allied)
+		: u(un), healing(0), poison_stopped(false), ally(allied) { }
+
+	unit &u;
+
+	// How much have we been healed?
+	int healing;
+
+	// Was our poison stopped / cured?
+	bool poison_stopped;
+
+	// Are we an ally?  In which case we only get healed.
+	bool ally;
+
+	void heal(int amount, bool allies_too);
+	void harm(int amount);
+	void rest();
+};
+
+void patient::heal(int amount, bool allies_too)
+{
+	if (ally && !allies_too)
+		return;
+
+	if (u.poisoned()) {
+		if (amount >= game_config::cure_amount)
+			u.remove_flag("poisoned");
+		poison_stopped = true;
+	} else {
+		healing = minimum(u.max_hitpoints() - u.hitpoints(), amount);
+		std::cerr << "healing by " << lexical_cast<std::string>(healing) << " of potential " 
+				  << lexical_cast<std::string>(u.max_hitpoints() - u.hitpoints()) << "\n";
 	}
+}
 
-	const unit& healer = healer_it->second;
+void patient::harm(int amount)
+{
+	if (ally)
+		return;
+	wassert(!healing && !poison_stopped);
+	healing = -minimum(u.hitpoints() - 1, amount);
+}
 
-	if(healer.incapacitated()) {
-		return false;
-	}
+void patient::rest()
+{
+	if (ally)
+		return;
+	healing += minimum(u.max_hitpoints() - (u.hitpoints() + healing), game_config::rest_heal_amount);
+	std::cerr << "resting by " << lexical_cast<std::string>(minimum(u.max_hitpoints() - (u.hitpoints() + healing), game_config::rest_heal_amount)) << "\n";
+}
 
-	if((int)healer.side() == side) {
-		return true;
-	}
-
-	if(size_t(side-1) >= teams.size() || size_t(healer.side()-1) >= teams.size()) {
-		return false;
-	}
-
-	//if the healer is an enemy, it won't heal
-	if(teams[healer.side()-1].is_enemy(side)) {
-		return false;
-	}
-
+// Find the best adjacent healer.
+unit_map::iterator find_healer(const gamemap::location &loc, std::map<gamemap::location,unit>& units,
+							   unsigned int side)
+{
 	gamemap::location adjacent[6];
-	get_adjacent_tiles(loc,adjacent);
-	for(int n = 0; n != 6; ++n) {
-		const unit_map::const_iterator u = units.find(adjacent[n]);
-		if(u != units.end() && (u->second.hitpoints() < u->second.max_hitpoints() || u->second.poisoned())) {
-			//ignore stoned units
-			if(!u->second.healable())
+	unit_map::iterator healer = units.end();
+
+	get_adjacent_tiles(loc, adjacent);
+	for (unsigned int n = 0; n != 6U; ++n) {
+		unit_map::iterator i = units.find(adjacent[n]);
+		if (i != units.end()) {
+			if (i->second.incapacitated())
 				continue;
-
-			const int unit_side = u->second.side();
-
-			//the healer won't heal an ally if there is a wounded unit on the same
-			//side next to her
-			if(unit_side == (int)healer.side())
-				return false;
-
-			//choose an arbitrary order for healing
-			if(unit_side > side)
-				return false;
+			if (i->second.side() != side)
+				continue;
+			if (!i->second.type().heals())
+				continue;
+			if (healer == units.end() || i->second.type().heals() > healer->second.type().heals())
+				healer = i;
 		}
 	}
-
-	//there's no-one of higher priority nearby, so the ally will heal
-	return true;
+	return healer;
+}
 }
 
+void reset_resting(std::map<gamemap::location,unit>& units, unsigned int side)
+{
+	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
+		if (i->second.side() == side)
+			i->second.set_resting(true);
+	}
 }
-
+	
+// Simple algorithm: no maximum number of patients per healer.
 void calculate_healing(display& disp, const gamestatus& status, const gamemap& map,
-                       std::map<gamemap::location,unit>& units, int side,
+                       std::map<gamemap::location,unit>& units, unsigned int side,
 					   const std::vector<team>& teams, bool update_display)
 {
-	std::map<gamemap::location,int> healed_units, max_healing;
-
-	//a map of healed units to their healers
-	std::multimap<gamemap::location,gamemap::location> healers;
-
-	std::map<gamemap::location,unit>::iterator i;
-	int amount_healed;
-	for(i = units.begin(); i != units.end(); ++i) {
-		amount_healed = 0;
+	// We look for all allied units, then we see if our healer is near them.
+	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
+		if (teams[i->second.side()-1].is_enemy(side))
+			continue;
 
 		if (!i->second.healable())
 			continue;
 
-		//the unit heals if it's on this side, and it's on a village or
-		//it has regeneration, and it is wounded
-		if((int)i->second.side() == side) {
-			if(i->second.hitpoints() < i->second.max_hitpoints() || i->second.poisoned()){
-				if(map.gives_healing(i->first)) {
-					amount_healed = maximum<int>(amount_healed,game_config::cure_amount);
-				}
-				if(i->second.type().regenerates()) {
-					amount_healed = maximum<int>(amount_healed,i->second.type().regenerate_amount());
-				}
-			}
-			if(amount_healed != 0)
-				healed_units.insert(std::pair<gamemap::location,int>(
-			                            i->first, amount_healed));
+		patient p(i->second, i->second.side() != side);
+		unit_map::iterator healer = units.end();
+
+		if (p.u.type().regenerates())
+			p.heal(p.u.type().regenerate_amount(), false);
+		else if (map.gives_healing(i->first))
+			p.heal(game_config::cure_amount, false);
+		else {
+			healer = find_healer(i->first, units, side);
+			if (healer != units.end())
+				p.heal(healer->second.type().heals(), true);
+		}
+		if (p.u.poisoned() && !p.poison_stopped)
+			p.harm(game_config::cure_amount);
+		if (p.u.is_resting())
+			p.rest();
+
+		if (!p.healing && !p.poison_stopped)
+			continue;
+
+		if (disp.turbo() || recorder.is_skipping()
+			|| disp.fogged(i->first.x, i->first.y)
+			|| !update_display 
+			|| (p.u.invisible(map.underlying_union_terrain(map[i->first.x][i->first.y]),
+							  status.get_time_of_day().lawful_bonus,i->first,units,teams) &&
+				teams[disp.viewing_team()].is_enemy(side))) {
+			// Simple path.
+			if (p.healing > 0)
+				p.u.heal(p.healing);
+			else if (p.healing < 0)
+				p.u.gets_hit(-p.healing);
+			continue;
 		}
 
-		//otherwise find the maximum healing for the unit
-		if(amount_healed == 0) {
-			int max_heal = 0;
-			gamemap::location adjacent[6];
-			get_adjacent_tiles(i->first,adjacent);
-			for(int j = 0; j != 6; ++j) {
-				if(will_heal(adjacent[j],i->second.side(),teams,units)) {
-					const unit_map::const_iterator healer = units.find(adjacent[j]);
-					max_heal = maximum(max_heal,healer->second.type().heals());
-
-					healers.insert(std::pair<gamemap::location,gamemap::location>(i->first,adjacent[j]));
-				}
-			}
-
-			if(max_heal > 0) {
-				max_healing.insert(std::pair<gamemap::location,int>(i->first,max_heal));
-			}
-		}
-	}
-
-	//now see about units that can heal other units
-	for(i = units.begin(); i != units.end(); ++i) {
-
-		if(will_heal(i->first,side,teams,units)) {
-			gamemap::location adjacent[6];
-			bool gets_healed[6];
-			get_adjacent_tiles(i->first,adjacent);
-
-			int nhealed = 0;
-			int j;
-			for(j = 0; j != 6; ++j) {
-				const std::map<gamemap::location,unit>::const_iterator adj =
-				                                   units.find(adjacent[j]);
-				if(adj != units.end() &&
-				   adj->second.hitpoints() < adj->second.max_hitpoints() &&
-				   (int)adj->second.side() == side &&
-				   healed_units[adj->first] < max_healing[adj->first] &&
-				   adj->second.healable()) {
-					++nhealed;
-					gets_healed[j] = true;
-				} else {
-					gets_healed[j] = false;
-				}
-			}
-
-			if(nhealed == 0)
-				continue;
-
-			const int healing_per_unit = i->second.type().max_unit_healing()/nhealed;
-
-			for(j = 0; j != 6; ++j) {
-				if(!gets_healed[j])
-					continue;
-
-				wassert(units.find(adjacent[j]) != units.end());
-
-				healed_units[adjacent[j]]
-				        = minimum(max_healing[adjacent[j]],
-				                  healed_units[adjacent[j]]+healing_per_unit);
-			}
-		}
-	}
-
-	//poisoned units will take the same amount of damage per turn, as
-	//curing heals until they are reduced to 1 hitpoint. If they are
-	//cured on a turn, they recover 0 hitpoints that turn, but they
-	//are no longer poisoned
-	for(i = units.begin(); i != units.end(); ++i) {
-
-		if((int)i->second.side() == side && i->second.poisoned() && i->second.healable()) {
-			const int damage = minimum<int>(game_config::cure_amount,
-			                                i->second.hitpoints()-1);
-
-			if(damage > 0) {
-				healed_units.insert(std::pair<gamemap::location,int>(i->first,-damage));
-			}
-		}
-	}
-
-	for(i = units.begin(); i != units.end(); ++i) {
-		if((int)i->second.side() == side && i->second.healable()) {
-			if(i->second.hitpoints() < i->second.max_hitpoints() ||
-					i->second.poisoned()){
-				if(i->second.is_resting()) {
-					const std::map<gamemap::location,int>::iterator u =
-						healed_units.find(i->first);
-					if(u != healed_units.end()) {
-						healed_units[i->first] += game_config::rest_heal_amount;
-					} else {
-						healed_units.insert(std::pair<gamemap::location,int>(i->first,game_config::rest_heal_amount));
-					}
-				}
-			}
-			i->second.set_resting(true);
-		}
-	}
-
-	for(std::map<gamemap::location,int>::iterator h = healed_units.begin();
-	    h != healed_units.end(); ++h) {
-
-		const gamemap::location& loc = h->first;
-
-		wassert(units.count(loc) == 1);
-
-		unit& u = units.find(loc)->second;
-
-		const bool show_healing = !disp.turbo() && !recorder.is_skipping() &&
-		                          !disp.fogged(loc.x,loc.y) && update_display &&
-								  (!u.invisible(map.underlying_union_terrain(map[h->first.x][h->first.y]),
-								                status.get_time_of_day().lawful_bonus,h->first,units,teams) ||
-								                teams[disp.viewing_team()].is_enemy(side) == false);
-
-		typedef std::multimap<gamemap::location,gamemap::location>::const_iterator healer_itor;
-		const std::pair<healer_itor,healer_itor> healer_itors = healers.equal_range(loc);
-
-		// time at which we start all anmations
+		// This is all the pretty stuff.
 		int start_time = 0;
-		if(show_healing) {
-			disp.scroll_to_tile(loc.x,loc.y,display::ONSCREEN);
-			disp.select_hex(loc);
+		disp.scroll_to_tile(i->first.x, i->first.y, display::ONSCREEN);
+		disp.select_hex(i->first);
 
-
-			//iterate over any units that are healing this unit, and make them
-			//enter their healing frame
-			for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
-				wassert(units.count(i->second));
-				unit& healer = units.find(i->second)->second;
-				healer.set_healing(disp);
-				start_time = minimum<int>(start_time,healer.get_animation()->get_first_frame_time());
-			}
+		if (healer != units.end()) {
+			healer->second.set_healing(disp);
+			start_time = healer->second.get_animation()->get_first_frame_time();
 		}
-
-
-		LOG_NG << "unit is poisoned? " << (u.has_flag("poisoned") ? "yes" : "no") << ","
-			<< h->second << "," << max_healing[h->first] << "\n";
-
-		if(u.has_flag("poisoned") && h->second > 0) {
-
-			//poison is purged only if we are on a village or next to a curer
-			if(h->second >= game_config::cure_amount ||
-			   max_healing[h->first] >= game_config::cure_amount) {
-				u.remove_flag("poisoned");
-
-				events::pump();
-				if(show_healing) {
-
-					sound::play_sound("heal.wav");
-				}
-			}
-
-			h->second = 0;
+		if (p.healing < 0) {
+			p.u.set_poisoned(disp, -p.healing);
+			start_time = minimum<int>(start_time, p.u.get_animation()->get_first_frame_time());
+			sound::play_sound("groan.wav");
+			disp.float_label(i->first, lexical_cast<std::string>(-p.healing), 255,0,0);
 		} else {
-			if(h->second > 0 && h->second > u.max_hitpoints()-u.hitpoints()) {
-				h->second = u.max_hitpoints()-u.hitpoints();
-				if(h->second <= 0)
-					continue;
-			}
-
-			if(h->second < 0) {
-				if(show_healing) {
-					sound::play_sound("groan.wav");
-					disp.float_label(h->first,lexical_cast<std::string>(h->second*-1),255,0,0);
-				}
-			} else if(h->second > 0) {
-				if(show_healing) {
-					sound::play_sound("heal.wav");
-					disp.float_label(h->first,lexical_cast<std::string>(h->second),0,255,0);
-				}
-			}
+			p.u.set_healed(disp, p.healing);
+			start_time = minimum<int>(start_time, p.u.get_animation()->get_first_frame_time());
+			sound::play_sound("heal.wav");
+			disp.float_label(i->first, lexical_cast<std::string>(p.healing), 0,255,0);
 		}
 
+		// restart both anims in a synchronized way
+		p.u.restart_animation(disp, start_time);
+		if (healer != units.end())
+			healer->second.restart_animation(disp, start_time);
 
-		if(h->second >= 0)  {
-			u.set_healed(disp,h->second);
-			start_time = minimum<int>(start_time,u.get_animation()->get_first_frame_time());
-		}
-		if(h->second < 0)  {
-			u.set_poisoned(disp,-h->second);
-			start_time = minimum<int>(start_time,u.get_animation()->get_first_frame_time());
-		}
-		//std::vector<unit*>::iterator itor;
-		// restart all anims in a synchronized way
-		u.restart_animation(disp,start_time);
-		for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
-			unit& healer = units.find(i->second)->second;
-			healer.set_facing(i->first.get_relative_dir(i->second));
-			healer.restart_animation(disp,start_time);
-		}
-		bool finished = false;
-		while(!finished) {
-			healer_itor i;
-			finished = (u.get_animation()->animation_finished());
-			disp.draw_tile(loc.x,loc.y);
-			for(i = healer_itors.first; i != healer_itors.second; ++i) {
-				unit& healer = units.find(i->second)->second;
-				finished &=  healer.get_animation()->animation_finished();
-				disp.draw_tile(i->second.x,i->second.y);
+		bool finished;
+		do {
+			finished = (p.u.get_animation()->animation_finished());
+			disp.draw_tile(i->first.x, i->first.y);
+			if (healer != units.end()) {
+				finished &= healer->second.get_animation()->animation_finished();
+				disp.draw_tile(healer->first.x, healer->first.y);
 			}
-			if(h->second > 0) {
-				u.heal(1);
-				--h->second;
-			}  else if (h->second <0) {
-				u.gets_hit(1);
-				++h->second;
+			if (p.healing > 0) {
+				p.u.heal(1);
+				--p.healing;
+			} else if (p.healing < 0) {
+				p.u.gets_hit(1);
+				++p.healing;
 			}
-			finished &= (h->second ==0);
+			finished &= (!p.healing);
 			disp.update_display();
 			events::pump();
-			if(!disp.turbo()) SDL_Delay(10);
-			
-		}
-		u.set_standing(disp);
-		for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
-			unit& healer = units.find(i->second)->second;
-			healer.set_standing(disp);
-		}
+			SDL_Delay(10);
+		} while (!finished);
+
+		p.u.set_standing(disp);
+		if (healer != units.end())
+			healer->second.set_standing(disp);
 		disp.update_display();
 		events::pump();
 	}

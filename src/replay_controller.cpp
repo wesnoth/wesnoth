@@ -434,6 +434,7 @@ void replay_controller::play_side(const int team_index){
 			}
 
 			calculate_healing((*gui_),status_,map_,units_,player_number_,teams_, !recorder.is_skipping());
+			reset_resting(units_, player_number_);
 		}
 
 		current_team.set_time_of_day(int(status_.turn()),status_.get_time_of_day());
