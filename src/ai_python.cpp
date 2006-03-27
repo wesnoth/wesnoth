@@ -71,7 +71,6 @@ static PyObject* wrapper_unittype_get_##x( wesnoth_unittype* type, void* /*closu
 	return Py_BuildValue("i",type->unit_type_->x());	\
 }
 
-ut_get( max_unit_healing )
 ut_get( heals )
 ut_get( regenerates )
 ut_get( is_leader )
@@ -92,7 +91,6 @@ ut_get( alignment )
 
 static PyGetSetDef unittype_getseters[] = {
 	ut_gs( name )
-	ut_gs( max_unit_healing )
 	ut_gs( heals )
 	ut_gs( regenerates )
 	ut_gs( is_leader )
