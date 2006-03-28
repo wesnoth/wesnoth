@@ -23,12 +23,19 @@
 
 /*
  *	TODO:
- *	1. Add terrain and ToD filtering.
- *	2. Implement abilities and weapon specials.
+ *	1. Add terrain and ToD filtering. DONE
+ *	2. Implement abilities and weapon specials. DONE
  *	3. Write backwards compatibility.
  *	4. Fix bugs.
  *	5. Goto step 4.
  *
+ * 
+ * Known Issues:
+ * 1. The wesnoth help is _seriously_ messed up.
+ * 2. Translations probably don't work.
+ * 3. The modification 'set_special' doesn't work.
+ * 4. [damage] and [backstab] should be merged.
+ * 
  */
 
 
