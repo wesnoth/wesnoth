@@ -25,6 +25,11 @@
 #include <ctype.h>
 #include <dirent.h>
 #include <sys/stat.h>
+#ifdef __APPLE__
+#include <CoreFoundation/CoreFoundation.h>
+#include <CoreFoundation/CFString.h>
+#include <CoreFoundation/CFBase.h>
+#endif
 
 struct Level;
 

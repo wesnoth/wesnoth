@@ -117,6 +117,9 @@ int village_owner(const gamemap::location& loc, const std::vector<team>& teams);
 //0-based team number. Returns true if getting the village triggered a mutating event
 bool get_village(const gamemap::location& loc, std::vector<team>& teams,
                size_t team_num, const unit_map& units);
+bool get_village(const gamemap::location& loc, std::vector<team>& teams,
+               size_t team_num, const unit_map& units, int *time_bonus);
+
 
 //given the 1-based side, will find the leader of that side,
 //and return an iterator to the leader
@@ -127,8 +130,12 @@ unit_map::const_iterator find_leader(const unit_map& units, int side);
 //calculates healing for all units for the given side. Should be called
 //at the beginning of a side's turn.
 void calculate_healing(display& disp, const gamestatus& status, const gamemap& map,
-                       units_map& units, int side,
+                       units_map& units, unsigned int side,
 					   const std::vector<team>& teams, bool update_display);
+
+// Resets resting for all units on this side: should be called after calculate_healing().
+// FIXME: Try moving this to unit::new_turn, then move it above calculate_healing().
+void reset_resting(std::map<gamemap::location,unit>& units, unsigned int side);
 
 //function which, given the location of a unit that is advancing, and the
 //name of the unit it is advancing to, will return the advanced version of
@@ -176,8 +183,8 @@ int combat_modifier(const gamestatus& status,
 
 //structure which records information to be able to undo a movement
 struct undo_action {
-	undo_action(unit u,const std::vector<gamemap::location>& rt,int sm,int orig=-1)
-		: route(rt), starting_moves(sm), original_village_owner(orig), recall_pos(-1), affected_unit(u) {}
+	undo_action(unit u,const std::vector<gamemap::location>& rt,int sm,int timebonus=0,int orig=-1)
+		: route(rt), starting_moves(sm), original_village_owner(orig), recall_pos(-1), affected_unit(u), countdown_time_bonus(timebonus) {}
 	undo_action(unit u,const gamemap::location& loc, int pos)
 		: recall_loc(loc), recall_pos(pos), affected_unit(u) {}
 	std::vector<gamemap::location> route;
@@ -186,6 +193,7 @@ struct undo_action {
 	gamemap::location recall_loc;
 	int recall_pos;
 	unit affected_unit;
+	int countdown_time_bonus;
 	bool is_recall() const { return recall_pos >= 0; }
 };
 

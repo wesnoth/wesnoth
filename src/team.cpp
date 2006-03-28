@@ -105,6 +105,12 @@ team::team_info::team_info(const config& cfg)
 
 	countdown_time = cfg["countdown_time"];
 
+	const std::string& bonus = cfg["action_bonus_count"];
+	if(bonus.empty())
+		action_bonus_count = 0;
+	else
+		action_bonus_count = atoi(bonus.c_str());
+
 	colour = lexical_cast_default<int>(cfg["colour"],-1);
 	if(colour == -1)
 		colour = lexical_cast_default<int>(cfg["side"],-1);
@@ -255,6 +261,9 @@ void team::team_info::write(config& cfg) const
 	cfg["countdown_time"]= countdown_time;
 
 	char buf[50];
+	snprintf(buf,sizeof(buf),"%d",action_bonus_count);
+	cfg["action_bonus_count"]= buf;
+
 	snprintf(buf,sizeof(buf),"%d",income_per_village);
 	cfg["village_gold"] = buf;
 
@@ -338,6 +347,7 @@ team::team(const config& cfg, int gold) : gold_(gold), auto_shroud_updates_(true
 	}
 
 	countdown_time_=lexical_cast_default<int>(cfg["countdown_time"],0);
+	action_bonus_count_=lexical_cast_default<int>(cfg["action_bonus_count"],0);
 }
 
 void team::write(config& cfg) const
@@ -358,6 +368,8 @@ void team::write(config& cfg) const
 	cfg["shroud_data"] = shroud_.write();
 
 	cfg["countdown_time"] = lexical_cast_default<std::string>(countdown_time_);
+	cfg["action_bonus_count"] = lexical_cast_default<std::string>(action_bonus_count_);
+
 }
 
 bool team::get_village(const gamemap::location& loc)
@@ -457,6 +469,15 @@ int team::countdown_time() const
 void team::set_countdown_time(int amount)
 {
 	countdown_time_=amount;
+}
+
+int team::action_bonus_count() const
+{
+	return action_bonus_count_;
+}
+void team::set_action_bonus_count(int count)
+{
+	action_bonus_count_=count;
 }
 
 const std::set<std::string>& team::recruits() const

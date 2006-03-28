@@ -70,7 +70,7 @@ void advance_unit(const game_data& info,
 	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
 		sample_units.push_back(::get_advanced_unit(info,units,loc,*op));
 		const unit& type = sample_units.back();
-		lang_options.push_back(IMAGE_PREFIX + type.image() + COLUMN_SEPARATOR + type.language_name());
+		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + type.language_name());
 		preferences::encountered_units().insert(*op);
 	}
 
@@ -83,7 +83,7 @@ void advance_unit(const game_data& info,
 		if((**mod)["image"].str().size()){
 		  lang_options.push_back(IMAGE_PREFIX + (**mod)["image"].str() + COLUMN_SEPARATOR + (**mod)["description"].str());
 		}else{
-		  lang_options.push_back(IMAGE_PREFIX + type.image() + COLUMN_SEPARATOR + (**mod)["description"].str());
+		  lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + (**mod)["description"].str());
 		}
 	}
 
@@ -133,12 +133,12 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	//new unit, then fades back to the normal colour
 
 	if(!gui.update_locked()) {
-		for(double intensity = 1.0; intensity >= 0.0; intensity -= 0.05) {
-			gui.set_advancing_unit(loc,intensity);
-			events::pump();
-			gui.draw(false);
+		u->second.set_leveling_out(gui);
+		while(!u->second.get_animation()->animation_finished()) {
+			gui.draw_tile(loc.x,loc.y);
 			gui.update_display();
-			SDL_Delay(30);
+			events::pump();
+			if(!gui.turbo()) SDL_Delay(10);
 		}
 	}
 
@@ -156,16 +156,18 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	gui.invalidate_unit();
 
 	if(!gui.update_locked()) {
-		for(double intensity = 0.0; intensity <= 1.0; intensity += 0.05) {
-			gui.set_advancing_unit(loc,intensity);
-			events::pump();
-			gui.draw(false);
+		u->second.set_leveling_in(gui);
+		while(!u->second.get_animation()->animation_finished()) {
+			gui.draw_tile(loc.x,loc.y);
 			gui.update_display();
-			SDL_Delay(30);
+			events::pump();
+			if(!gui.turbo()) SDL_Delay(10);
 		}
+		u->second.set_standing(gui);
+		gui.draw_tile(loc.x,loc.y);
+		gui.update_display();
+		events::pump();
 	}
-
-	gui.set_advancing_unit(gamemap::location(),0.0);
 
 	gui.invalidate_all();
 	gui.draw();
@@ -681,10 +683,7 @@ void unit_preview_pane::draw_contents()
 	SDL_Rect clip_area = area;
 	const clip_rect_setter clipper(screen,clip_area);
 
-	surface unit_image(image::get_image(u.image_loc(),image::UNSCALED));
-	if(left_side() == false && unit_image != NULL) {
-		unit_image.assign(image::reverse_image(unit_image));
-	}
+	surface unit_image = u.still_image();
 
 	SDL_Rect image_rect = {area.x,area.y,0,0};
 

@@ -107,7 +107,6 @@ void animated<T,T_void_value>::start_animation(int start_frame, int cycles, int 
 	} else {
 		duration_ = 0;
 	}
-	no_current_frame_ = false;
 	frame_changed_ = true;
 }
 
@@ -183,10 +182,12 @@ void animated<T,T_void_value>::update_current_frame()
 	} else {
 		// If the duration is void, the animation is automatically finished.
 		// current_cycle_ = cycles_;
-		if(cycles_ != -1)
+		if(cycles_ != -1) {
 			started_ = false;
+		} else {
 
 		does_not_change_ = true;
+		}
 		frame_changed_ = false;
 		// current_frame_ = frames_.size() - 1;
 		// frame_changed_ = false;
@@ -280,13 +281,6 @@ int animated<T,T_void_value>::get_last_frame_time() const
 }
 
 
-template<typename T, typename T_void_value>
-void animated<T, T_void_value>::synchronize_start(animated<T> &a, animated<T> &b,int acceleration) 
-{
-	int start_time = minimum<int>(a.get_first_frame_time(),b.get_first_frame_time());
-	a.start_animation(start_time,1,acceleration);
-	b.start_animation(start_time,1,acceleration);
-}
 // Force compilation of the following template instantiations
 
 #include "image.hpp"

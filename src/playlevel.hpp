@@ -16,7 +16,7 @@
 class config;
 class CVideo;
 struct game_state;
-class upload_log;
+struct upload_log;
 
 #include "game_config.hpp"
 #include "unit_types.hpp"

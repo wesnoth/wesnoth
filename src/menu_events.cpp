@@ -255,7 +255,7 @@ namespace events{
 			//output the number of the side first, and this will
 			//cause it to be displayed in the correct colour
 			if(leader != units.end()) {
-				str << IMAGE_PREFIX << leader->second.image() << COLUMN_SEPARATOR
+				str << IMAGE_PREFIX << leader->second.absolute_image() << COLUMN_SEPARATOR
 					<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm' << leader->second.description() << COLUMN_SEPARATOR;
 			} else {
 				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;

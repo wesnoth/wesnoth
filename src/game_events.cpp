@@ -246,10 +246,10 @@ private:
 	vconfig cfg_;
 };
 
-gamemap::location cfg_to_loc(const vconfig cfg)
+gamemap::location cfg_to_loc(const vconfig cfg,int defaultx = 0, int defaulty = 0)
 {
-	int x = lexical_cast_default(cfg["x"], 0) - 1;
-	int y = lexical_cast_default(cfg["y"], 0) - 1;
+	int x = lexical_cast_default(cfg["x"], defaultx) - 1;
+	int y = lexical_cast_default(cfg["y"], defaulty) - 1;
 
 	return gamemap::location(x, y);
 }
@@ -283,7 +283,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "remove_shroud" || cmd == "place_shroud") {
 		const bool remove = cmd == "remove_shroud";
 
-		const size_t index = maximum<int>(1,atoi(cfg["side"].c_str())) - 1;
+		std::string side = cfg["side"];
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		const int side_num = lexical_cast_default<int>(side,1);
+		const size_t index = side_num-1;
+
 		if(index < teams->size()) {
 			const std::vector<gamemap::location>& locs = multiple_locs(cfg);
 			for(std::vector<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
@@ -355,8 +360,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//allow a side to recruit a new type of unit
 	else if(cmd == "allow_recruit") {
-		const int side = maximum<int>(1,atoi(cfg["side"].c_str()));
-		const size_t index = side-1;
+		std::string side = cfg["side"];
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		const int side_num = lexical_cast_default<int>(side,1);
+		const size_t index = side_num-1;
+
 		if(index >= teams->size())
 			return rval;
 
@@ -376,8 +385,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//remove the ability to recruit a unit from a certain side
 	else if(cmd == "disallow_recruit") {
-		const int side = maximum<int>(1,atoi(cfg["side"].c_str()));
-		const size_t index = side-1;
+		std::string side = cfg["side"];
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		const int side_num = lexical_cast_default<int>(side,1);
+		const size_t index = side_num-1;
+
 		if(index >= teams->size())
 			return rval;
 
@@ -394,8 +407,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "set_recruit") {
-		const int side = maximum<int>(1,atoi(cfg["side"].c_str()));
-		const size_t index = side-1;
+		std::string side = cfg["side"];
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		const int side_num = lexical_cast_default<int>(side,1);
+		const size_t index = side_num-1;
+
 		if(index >= teams->size())
 			return rval;
 
@@ -422,29 +439,49 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "colour_adjust") {
-		const int r = atoi(cfg["red"].c_str());
-		const int g = atoi(cfg["green"].c_str());
-		const int b = atoi(cfg["blue"].c_str());
+		std::string red = cfg["red"];
+		std::string green = cfg["green"];
+		std::string blue = cfg["blue"];
+		wassert(state_of_game != NULL);
+		red = utils::interpolate_variables_into_string(red, *state_of_game);
+		green = utils::interpolate_variables_into_string(green, *state_of_game);
+		blue = utils::interpolate_variables_into_string(blue, *state_of_game);
+		const int r = atoi(red.c_str());
+		const int g = atoi(green.c_str());
+		const int b = atoi(blue.c_str());
 		screen->adjust_colours(r,g,b);
 		screen->invalidate_all();
 		screen->draw(true,true);
 	}
 
 	else if(cmd == "delay") {
-		const int delay_time = atoi(cfg["time"].c_str());
+		std::string delay_string = cfg["time"];
+		wassert(state_of_game != NULL);
+		delay_string = utils::interpolate_variables_into_string(delay_string, *state_of_game);
+		const int delay_time = atoi(delay_string.c_str());
 		::SDL_Delay(delay_time);
 	}
 
 	else if(cmd == "scroll") {
-		const int xoff = atoi(cfg["x"].c_str());
-		const int yoff = atoi(cfg["y"].c_str());
+		std::string x = cfg["x"];
+		std::string y = cfg["y"];
+		wassert(state_of_game != NULL);
+		x = utils::interpolate_variables_into_string(x, *state_of_game);
+		y = utils::interpolate_variables_into_string(y, *state_of_game);
+		const int xoff = atoi(x.c_str());
+		const int yoff = atoi(y.c_str());
 		screen->scroll(xoff,yoff);
 		screen->draw(true,true);
 	}
 
 	else if(cmd == "scroll_to") {
-		const int xpos = atoi(cfg["x"].c_str());
-		const int ypos = atoi(cfg["y"].c_str());
+		std::string x = cfg["x"];
+		std::string y = cfg["y"];
+		wassert(state_of_game != NULL);
+		x = utils::interpolate_variables_into_string(x, *state_of_game);
+		y = utils::interpolate_variables_into_string(y, *state_of_game);
+		const int xpos = atoi(x.c_str());
+		const int ypos = atoi(y.c_str());
 		screen->scroll_to_tile(xpos,ypos);
 	}
 
@@ -462,9 +499,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//an award of gold to a particular side
 	else if(cmd == "gold") {
-		const std::string& side = cfg["side"];
-		const std::string& amount = cfg["amount"];
-		const int side_num = side.empty() ? 1 : atoi(side.c_str());
+		std::string side = cfg["side"];
+		std::string amount = cfg["amount"];
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		amount = utils::interpolate_variables_into_string(amount, *state_of_game);
+		const int side_num = lexical_cast_default<int>(side,1);
 		const int amount_num = atoi(amount.c_str());
 		const size_t team_index = side_num-1;
 		if(team_index < teams->size()) {
@@ -475,11 +515,16 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	//modifications of some attributes of a side: gold, income, team name
 	else if(cmd == "modify_side") {
 		std::cerr << "modifying side...\n";
-		const std::string& side = cfg["side"];
-		const std::string& income = cfg["income"];
-		const std::string& team_name = cfg["team_name"];
-		const std::string& gold = cfg["gold"];
-		const int side_num = lexical_cast_default<int>(side.c_str(),1);
+		std::string side = cfg["side"];
+		std::string income = cfg["income"];
+		std::string team_name = cfg["team_name"];
+		std::string gold = cfg["gold"];
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		income = utils::interpolate_variables_into_string(income, *state_of_game);
+		team_name = utils::interpolate_variables_into_string(team_name, *state_of_game);
+		gold = utils::interpolate_variables_into_string(gold, *state_of_game);
+		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t team_index = side_num-1;
 
 		if(team_index < teams->size()) {
@@ -500,9 +545,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 	//stores of some attributes of a side: gold, income, team name
 	else if(cmd == "store_side") {
-		const std::string& side = cfg["side"];
-		wassert(state_of_game != NULL);
+		std::string side = cfg["side"];
 		std::string var_name = cfg["variable"];
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		var_name = utils::interpolate_variables_into_string(var_name, *state_of_game);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t team_index = side_num-1;
@@ -514,8 +560,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 	else if(cmd == "modify_turns") {
-		const std::string& value = cfg["value"];
-		const std::string& add = cfg["add"];
+		std::string value = cfg["value"];
+		std::string add = cfg["add"];
+		wassert(state_of_game != NULL);
+		value = utils::interpolate_variables_into_string(value, *state_of_game);
+		add = utils::interpolate_variables_into_string(add, *state_of_game);
 		
 		wassert(status_ptr != NULL);
 		if(add != "") {
@@ -528,13 +577,15 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	//command to store gold into a variable
 	else if(cmd == "store_gold") {
 		WRN_NG << "[store_gold] tag is now deprecated; use [store_side] instead.\n";
-		const std::string& side = cfg["side"];
+		std::string side = cfg["side"];
 		std::string var_name = cfg["variable"];
 		if(var_name.empty()) {
 			var_name = "gold";
 		}
-
-		const int side_num = side.empty() ? 1 : atoi(side.c_str());
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		var_name = utils::interpolate_variables_into_string(var_name, *state_of_game);
+		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t team_index = side_num-1;
 		if(team_index < teams->size()) {
 			char value[50];
@@ -547,12 +598,22 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	//moving a 'unit' - i.e. a dummy unit that is just moving for
 	//the visual effect
 	else if(cmd == "move_unit_fake") {
-		const std::string& type = cfg["type"];
-		const std::string& side = cfg["side"];
-		size_t side_num = atoi(side.c_str())-1;
+		std::string type = cfg["type"];
+		std::string side = cfg["side"];
+		std::string gender_string = cfg["gender"];
+		std::string x = cfg["x"];
+		std::string y = cfg["y"];
+		wassert(state_of_game != NULL);
+		type = utils::interpolate_variables_into_string(type, *state_of_game);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		gender_string = utils::interpolate_variables_into_string(gender_string, *state_of_game);
+		x = utils::interpolate_variables_into_string(x, *state_of_game);
+		y = utils::interpolate_variables_into_string(y, *state_of_game);
+		
+		size_t side_num = lexical_cast_default<int>(side,1)-1;
 		if (side_num >= teams->size()) side_num = 0;
 
-		const unit_race::GENDER gender = cfg["gender"] == "female" ? unit_race::FEMALE : unit_race::MALE;
+		const unit_race::GENDER gender = gender_string == "female" ? unit_race::FEMALE : unit_race::MALE;
 		const game_data::unit_type_map::const_iterator itor = game_data_ptr->unit_types.find(type);
 		if(itor != game_data_ptr->unit_types.end()) {
 			wassert(game_data_ptr != NULL);
@@ -560,8 +621,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			wassert(game_map != NULL);
 			wassert(status_ptr != NULL);
 			unit dummy_unit(game_data_ptr,units,game_map,status_ptr,teams,&itor->second,0,false,true,gender);
-			const std::vector<std::string> xvals = utils::split(cfg["x"]);
-			const std::vector<std::string> yvals = utils::split(cfg["y"]);
+			const std::vector<std::string> xvals = utils::split(x);
+			const std::vector<std::string> yvals = utils::split(y);
 			std::vector<gamemap::location> path;
 			gamemap::location src;
 			gamemap::location dst;
@@ -637,10 +698,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		const t_string& summary = cfg["summary"];
 		const t_string& note = cfg["note"];
-		const size_t side = lexical_cast_default<size_t>(cfg["side"], 0);
+		std::string side = cfg["side"];
 		bool silent = cfg["silent"] == "yes";
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		const size_t side_num = lexical_cast_default<size_t>(side,0);
 
-		if(side != 0 && (side - 1) >= teams->size()) {
+		if(side_num != 0 && (side_num - 1) >= teams->size()) {
 			ERR_NG << "Invalid side: " << cfg["side"] << " in objectives event\n";
 			return rval;
 		}
@@ -689,14 +753,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(!note.empty())
 			objs += note + "\n";
 
-		if(side == 0) {
+		if(side_num == 0) {
 			for(std::vector<team>::iterator itor = teams->begin();
 					itor != teams->end(); ++itor) {
 
 				itor->set_objectives(objs, silent);
 			}
 		} else {
-			(*teams)[side - 1].set_objectives(objs, silent);
+			(*teams)[side_num - 1].set_objectives(objs, silent);
 		}
 	}
 
@@ -945,13 +1009,21 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	//hiding units
 	else if(cmd == "hide_unit") {
 		const gamemap::location loc = cfg_to_loc(cfg);
-		screen->hide_unit(loc,true);
-		screen->draw_tile(loc.x,loc.y);
+		unit_map::iterator u = units->find(loc);
+		if(u != units->end()) {
+			u->second.set_hidden(true);
+			screen->draw_tile(loc.x,loc.y);
+		}
 	}
 
 	else if(cmd == "unhide_unit") {
-		const gamemap::location loc = screen->hide_unit(gamemap::location());
-		screen->draw_tile(loc.x,loc.y);
+		const gamemap::location loc = cfg_to_loc(cfg);
+		unit_map::iterator u;
+		// unhide all for backward compatibility
+		for(u =  units->begin(); u != units->end() ; u++) {
+			u->second.set_hidden(false);
+			screen->draw_tile(loc.x,loc.y);
+		}
 	}
 
 	//adding new items
@@ -1029,12 +1101,34 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
+			const bool show = screen != NULL && !screen->turbo() &&
+				!screen->fogged(loc.x,loc.y) && cfg["animate"] != "";
+			if (show) {
+				screen->draw(true,true);
+			}
+
 			units->insert(std::pair<gamemap::location,unit>(loc,new_unit));
 			if(game_map->is_village(loc)) {
 				get_village(loc,*teams,new_unit.side()-1,*units);
 			}
 
 			screen->invalidate(loc);
+
+			unit_map::iterator un = units->find(loc);
+
+			if(show) {
+
+				un->second.set_recruited(*screen);
+				screen->scroll_to_tile(loc.x,loc.y,display::ONSCREEN);
+				while(!un->second.get_animation()->animation_finished()) {
+					screen->draw_tile(loc.x,loc.y);
+					screen->update_display();
+					events::pump();
+					if(!screen->turbo()) SDL_Delay(10);
+
+				}
+				un->second.set_standing(*screen);
+			}
 		} else {
 			player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
 
@@ -1209,14 +1303,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			screen->scroll_to_tile(speaker->first.x,speaker->first.y-1);
 
 			if(image.empty()) {
-				if(speaker->second.profile() == "") {
-					image = speaker->second.profile();
-				} else {
-					image = speaker->second.profile();
-					if(image == "unit_image") {
-						image = speaker->second.image();
-					}
-				}
+				image = speaker->second.profile();
 			}
 
 			if(caption.empty()) {
@@ -1304,7 +1391,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			if(game_events::unit_matches_filter(un,cfg)) {
 				if(cfg["animate"] == "yes") {
 					screen->scroll_to_tile(un->first.x,un->first.y);
-					unit_display::unit_die(*screen,un->first,un->second);
+					unit_display::unit_die(*screen,*game_map,un->first,un->second);
 				}
 
 				if(cfg["fire_event"] == "yes") {
@@ -1562,33 +1649,18 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			screen->highlight_hex(u->first);
 			screen->scroll_to_tile(u->first.x,u->first.y);
 
-			surface unit_image(NULL);
-			const unit_animation* const anim_ptr = u->second.extra_animation(cfg["flag"]);
-			if(anim_ptr != NULL) {
-				unit_animation anim(*anim_ptr);
-
-				anim.start_animation(anim.get_first_frame_time(),1,screen->turbo() ? 5:1);
-				anim.update_current_frame();
-
-				while(!anim.animation_finished()) {
-
-					const unit_frame& frame = anim.get_current_frame();
-
-					const surface surf(image::get_image(frame.image));
-					if(surf.get() != NULL) {
-						unit_image = surf;
-					}
-					screen->draw_tile(u->first.x,u->first.y,unit_image);
-					screen->update_display();
-
-					SDL_Delay(10);
-
-					anim.update_current_frame();
-				}
-				unit_image = image::get_image(u->second.image_loc());
-				screen->draw_tile(u->first.x,u->first.y,unit_image);
+			u->second.set_extra_anim(*screen,cfg["flag"]);
+			while(!u->second.get_animation()->animation_finished()) {
+				screen->draw_tile(u->first.x,u->first.y);
 				screen->update_display();
+				events::pump();
+				if(!screen->turbo()) SDL_Delay(10);
+
 			}
+			u->second.set_standing(*screen);
+			screen->draw_tile(u->first.x,u->first.y);
+			screen->update_display();
+			events::pump();
 		}
 	} else if(cmd == "label") {
 		const gamemap::location loc(lexical_cast_default<int>(cfg["x"],-1),lexical_cast_default<int>(cfg["y"],-1));

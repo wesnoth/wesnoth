@@ -157,7 +157,17 @@ server::server(int port, input_stream& input, const config& cfg, size_t nthreads
 
 	login_response_.add_child("mustlogin");
 	
-	disallowed_names_ = utils::split(cfg_["disallow_names"]);
+	if(cfg_["disallow_names"] == "") {
+		disallowed_names_.push_back("server");
+		disallowed_names_.push_back("ai");
+		disallowed_names_.push_back("player");
+		disallowed_names_.push_back("network");
+		disallowed_names_.push_back("human");
+		disallowed_names_.push_back("admin");
+		disallowed_names_.push_back("computer");
+	} else {
+		disallowed_names_ = utils::split(cfg_["disallow_names"]);
+	}
 	default_max_messages_ = lexical_cast_default<int>(cfg_["max_messages"],4);
 	default_time_period_ = lexical_cast_default<int>(cfg_["messages_time_period"],10);
 	concurrent_connections_ = lexical_cast_default<int>(cfg_["connections_allowed"],5);
@@ -444,7 +454,7 @@ void server::run()
 						break;
 					} else {
 						bool observer = i->is_observer(e.socket);
-						if(! observer && pl_name != "") {
+						if(! observer && pl_name != "" && i->is_member(e.socket)) {
 							i->send_data(construct_server_message(pl_name + " has disconnected",*i));
 						}
 						i->remove_player(e.socket);
@@ -920,6 +930,8 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			g->level().values["mp_countdown"] = data["mp_countdown"];
 			g->level().values["mp_countdown_init_time"] = data["mp_countdown_init_time"];
 			g->level().values["mp_countdown_turn_bonus"] = data["mp_countdown_turn_bonus"];
+			g->level().values["mp_countdown_reservoir_time"] = data["mp_countdown_reservoir_time"];
+			g->level().values["mp_countdown_action_bonus"] = data["mp_countdown_action_bonus"];
 
 			//update our config object which describes the
 			//open games, and notifies the game of where its description

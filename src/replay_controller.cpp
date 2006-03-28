@@ -419,7 +419,7 @@ void replay_controller::play_side(const int team_index){
 		if(turn_refresh) {
 			for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
 				if(i->second.side() == (size_t)player_number_) {
-//					i->second.new_turn();
+					i->second.new_turn(i->first);
 				}
 			}
 
@@ -434,6 +434,7 @@ void replay_controller::play_side(const int team_index){
 			}
 
 			calculate_healing((*gui_),status_,map_,units_,player_number_,teams_, !recorder.is_skipping());
+			reset_resting(units_, player_number_);
 		}
 
 		current_team.set_time_of_day(int(status_.turn()),status_.get_time_of_day());
@@ -463,7 +464,7 @@ void replay_controller::play_side(const int team_index){
 			}
 			else{
 				//this is necessary for replays in order to show possible movements
-//				uit->second.new_turn();
+				uit->second.new_turn(uit->first);
 			}
 		}
 
@@ -671,4 +672,5 @@ void replay_controller::handle_event(const SDL_Event& event)
 	}
 
 }
+
 

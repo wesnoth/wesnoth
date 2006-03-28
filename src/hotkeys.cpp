@@ -34,6 +34,7 @@
 #include <map>
 
 #define ERR_G LOG_STREAM(err, general)
+#define INFO_C LOG_STREAM(info, config)
 
 namespace {
 
@@ -168,7 +169,11 @@ void hotkey_item::load_from_config(const config& cfg)
 					keycode_ = num + SDLK_F1 - 1;
 				}
 			}
-		} else if (key == " " || shift_) {
+		} else if (key == " " || shift_ 
+#ifdef __APPLE__
+			   || alt_
+#endif
+			   ) {
 			// Space must be treated as a key because shift-space
 			// isn't a different character from space, and control key
 			// makes it go weird.  shift=yes should never be specified
@@ -218,12 +223,21 @@ void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, boo
 {
 	const std::string keyname = SDL_GetKeyName(SDLKey(keycode_));
 
+	INFO_C << "setting hotkey: char=" << lexical_cast<std::string>(character)
+		   << " keycode="  << lexical_cast<std::string>(keycode) << " "
+		   << (shift ? "shift," : "")
+		   << (ctrl ? "ctrl," : "")
+		   << (alt ? "alt," : "")
+		   << (cmd ? "cmd," : "")
+		   << "\n";
+
 	// Sometimes control modifies by -64, ie ^A == 1.
 	if (character < 64 && ctrl) {
 		if (shift)
 			character += 64;
 		else
 			character += 96;
+		INFO_C << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
 	}
 
 	// We handle simple cases by character, others by the actual key.
@@ -233,6 +247,7 @@ void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, boo
 		ctrl_ = ctrl;
 		alt_ = alt;
 		cmd_ = cmd;
+		INFO_C << "type = BY_CHARACTER\n";
 	} else {
 		type_ = BY_KEYCODE;
 		keycode_ = keycode;
@@ -240,6 +255,7 @@ void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, boo
 		ctrl_ = ctrl;
 		alt_ = alt;
 		cmd_ = cmd;
+		INFO_C << "type = BY_KEYCODE\n";
 	}
 }
 
@@ -336,28 +352,45 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, bool 
 {
 	std::vector<hotkey_item>::iterator itor;
 
+	INFO_C << "getting hotkey: char=" << lexical_cast<std::string>(character)
+		   << " keycode="  << lexical_cast<std::string>(keycode) << " "
+		   << (shift ? "shift," : "")
+		   << (ctrl ? "ctrl," : "")
+		   << (alt ? "alt," : "")
+		   << (cmd ? "cmd," : "")
+		   << "\n";
+
 	// Sometimes control modifies by -64, ie ^A == 1.
 	if (character < 64 && ctrl) {
 		if (shift)
 			character += 64;
 		else
 			character += 96;
+		INFO_C << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
 	}
 
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
 		if (itor->get_type() == hotkey_item::BY_CHARACTER) {
-			if (character == itor->get_character()
-				&& ctrl == itor->get_ctrl()
-				&& alt == itor->get_alt()
-				&& cmd == itor->get_cmd())
-				break;
+			if (character == itor->get_character()) {
+				if (ctrl == itor->get_ctrl()
+					&& alt == itor->get_alt()
+					&& cmd == itor->get_cmd()) {
+					INFO_C << "Could match by character..." << "yes\n";
+					break;
+				}
+				INFO_C << "Could match by character..." << "but modifiers different\n";
+			}
 		} else if (itor->get_type() == hotkey_item::BY_KEYCODE) {
-			if (keycode == itor->get_keycode()
-				&& shift == itor->get_shift()
-				&& ctrl == itor->get_ctrl()
-				&& alt == itor->get_alt()
-				&& cmd == itor->get_cmd())
-				break;
+			if (keycode == itor->get_keycode()) {
+				if (shift == itor->get_shift()
+					&& ctrl == itor->get_ctrl()
+					&& alt == itor->get_alt()
+					&& cmd == itor->get_cmd()) {
+					INFO_C << "Could match by keycode..." << "yes\n";
+					break;
+				}
+				INFO_C << "Could match by keycode..." << "but modifiers different\n";
+			}
 		}
 	}
 

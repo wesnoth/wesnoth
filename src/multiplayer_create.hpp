@@ -38,6 +38,8 @@ public:
 			mp_countdown=false;
 			mp_countdown_init_time=0;
 			mp_countdown_turn_bonus=0;
+			mp_countdown_reservoir_time=0;
+			mp_countdown_action_bonus=0;
 			use_map_settings = fog_game = shroud_game = allow_observers = share_view = share_maps = false;
 
 			scenario_data.clear();
@@ -52,7 +54,9 @@ public:
 		int village_gold;
 		int xp_modifier;
 		int mp_countdown_init_time;
+		int mp_countdown_reservoir_time;
 		int mp_countdown_turn_bonus;
+		int mp_countdown_action_bonus;
 		bool mp_countdown;
 		bool use_map_settings;
 		bool fog_game;
@@ -83,6 +87,9 @@ private:
 
 	tooltips::manager tooltip_manager_;
 	int map_selection_;
+	int mp_countdown_init_time_;
+	int mp_countdown_reservoir_time_;
+
 
 	std::vector<std::string> user_maps_;
 	std::vector<std::string> map_options_;
@@ -93,8 +100,12 @@ private:
 	gui::button countdown_game_;
 	gui::slider countdown_init_time_slider_;
 	gui::label countdown_init_time_label_;
-	gui::slider countdown_turn_bonus_slider_;
+	gui::slider countdown_reservoir_time_slider_;
+	gui::label countdown_reservoir_time_label_;
 	gui::label countdown_turn_bonus_label_;
+	gui::slider countdown_turn_bonus_slider_;
+	gui::label countdown_action_bonus_label_;
+	gui::slider countdown_action_bonus_slider_;
 	gui::slider village_gold_slider_;
 	gui::label village_gold_label_;
 	gui::slider xp_modifier_slider_;

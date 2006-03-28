@@ -74,14 +74,12 @@ public:
 	//this function returns a random animation out of the possible
 	//animations for this attack. It will not return the same attack
 	//each time.
-	const std::pair<const unit_animation*,const unit_animation*> animation(bool hit,gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
 	bool matches_filter(const config& cfg,int set_,bool self=false) const;
 	bool apply_modification(const config& cfg,std::string* description,int set_);
 	
 	int movement_used() const;
 	
 	const config& get_cfg() const;
-private:
 	gamemap::location aloc_,dloc_;
 	bool attacker_;
 	const game_data* gamedata_;
@@ -112,6 +110,8 @@ private:
 
 	};
 	config cfg_;
+	const attack_animation& animation(bool hit,gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
+private:
 	std::vector<attack_animation> animation_;
 	t_string description_;
 	std::string id_;
@@ -210,6 +210,7 @@ public:
 	//language_name should eventually be renamed name()
 	// const std::string& name() const;
 	const std::string& image() const;
+	const std::string& image_ellipse() const;
 	const std::string& image_halo() const;
 	const std::string& image_profile() const;
 	const std::string& image_fighting(attack_type::RANGE range) const;
@@ -253,10 +254,6 @@ public:
 	const std::vector<std::string>& abilities() const;
 	const std::vector<std::string>& ability_tooltips() const;
 
-	//max_unit_healing returns the maximum hitpoints a unit next to this
-	//unit can heal per turn. heals returns the total amount of hitpoints
-	//this unit can heal out of all adjacent units
-	int max_unit_healing() const;
 	int heals() const;
 	bool regenerates() const;
 	int regenerate_amount() const;
@@ -317,7 +314,6 @@ private:
 	mutable std::string id_;
 
 	ability_filter heals_filter_;
-	int max_heals_;
 	int heals_;
 
 	ability_filter regenerates_filter_;

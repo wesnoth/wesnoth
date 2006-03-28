@@ -153,8 +153,10 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 			}
 		} else {
 			// Clock time ended
-			// If no turn bonus -> defeat
-			if ( lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0) == 0){
+			// If no turn bonus or action bonus -> defeat
+			const int action_increment = lexical_cast_default<int>(level["mp_countdown_action_bonus"],0);
+			if ( lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0) == 0 
+				&& (action_increment == 0 || teams[team_num -1].action_bonus_count() == 0)) {
 				// Not possible to end level in MP with throw end_level_exception(DEFEAT);
 				// because remote players only notice network disconnection
 				// Current solution end remaining turns automatically
@@ -164,7 +166,12 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 				turn_data.send_data();
 				throw end_turn_exception();
 			} else {
-				teams[team_num -1].set_countdown_time(1000 * lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0));
+				const int maxtime = lexical_cast_default<int>(level["mp_countdown_reservoir_time"],0);
+				int secs = lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0);
+				secs += action_increment  * teams[team_num -1].action_bonus_count();
+				teams[team_num -1].set_action_bonus_count(0);
+				secs = (secs > maxtime) ? maxtime : secs;
+				teams[team_num -1].set_countdown_time(1000 * secs);
 				recorder.add_countdown_update(teams[team_num -1].countdown_time(),team_num);
 				recorder.end_turn();
 				turn_data.send_data();
@@ -180,7 +187,13 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
 		turn_data.send_data();
 	}
 	if ( level["mp_countdown"] == "yes" ){
-		teams[team_num -1].set_countdown_time(teams[team_num -1].countdown_time() + 1000 * lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0));
+		const int action_increment = lexical_cast_default<int>(level["mp_countdown_action_bonus"],0);
+		const int maxtime = lexical_cast_default<int>(level["mp_countdown_reservoir_time"],0);
+		int secs = (teams[team_num -1].countdown_time() / 1000) + lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0);
+		secs += action_increment  * teams[team_num -1].action_bonus_count();
+		teams[team_num -1].set_action_bonus_count(0);
+		secs = (secs > maxtime) ? maxtime : secs;
+		teams[team_num -1].set_countdown_time(1000 * secs);
 		recorder.add_countdown_update(teams[team_num -1].countdown_time(),team_num);
 	}
 
@@ -765,6 +778,9 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 		const bool defender_human = teams_[defender->second.side()-1].is_human();
 
 		recorder.add_attack(attacker_loc,defender_loc,weapons[res]);
+
+		//MP_COUNTDOWN grant time bonus for attacking
+		current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
 
 		try {
 			attack(gui_,map_,teams_,attacker_loc,defender_loc,weapons[res],units_,status_,gameinfo_);
@@ -1503,6 +1519,11 @@ void turn_info::undo()
 
 		if(map_.is_village(route.front())) {
 			get_village(route.front(),teams_,action.original_village_owner,units_);
+			//MP_COUNTDOWN take away bonus
+			if(action.countdown_time_bonus)
+			{
+				teams_[team_num_-1].set_action_bonus_count(teams_[team_num_-1].action_bonus_count() - 1);
+			}
 		}
 
 		action.starting_moves = u->second.movement_left();
@@ -1510,9 +1531,9 @@ void turn_info::undo()
 		unit un = u->second;
 		un.set_goto(gamemap::location());
 
-		gui_.hide_unit(u->first,true);
+		u->second.set_hidden(true);
 		unit_display::move_unit(gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
-		gui_.hide_unit(gamemap::location());
+		u->second.set_hidden(false);
 
 		units_.erase(u);
 		un.set_movement(starting_moves);
@@ -1599,9 +1620,9 @@ void turn_info::redo()
 		unit un = u->second;
 		un.set_goto(gamemap::location());
 
-		gui_.hide_unit(u->first,true);
+		u->second.set_hidden(true);
 		unit_display::move_unit(gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
-		gui_.hide_unit(gamemap::location());
+		u->second.set_hidden(false);
 
 		units_.erase(u);
 		un.set_movement(starting_moves);
@@ -1609,6 +1630,11 @@ void turn_info::redo()
 
 		if(map_.is_village(route.back())) {
 			get_village(route.back(),teams_,un.side()-1,units_);
+			//MP_COUNTDOWN restore bonus
+			if(action.countdown_time_bonus)
+			{
+				teams_[team_num_-1].set_action_bonus_count(1 + teams_[team_num_-1].action_bonus_count());
+			}
 		}
 
 		gui_.draw_tile(route.back().x,route.back().y);
@@ -1870,7 +1896,7 @@ void turn_info::status_table()
 		//output the number of the side first, and this will
 		//cause it to be displayed in the correct colour
 		if(leader != units_.end()) {
-			str << IMAGE_PREFIX << leader->second.image() << COLUMN_SEPARATOR
+			str << IMAGE_PREFIX << leader->second.absolute_image() << COLUMN_SEPARATOR
 			    << "\033[3" << lexical_cast<char, size_t>(n+1) << 'm' << leader->second.description() << COLUMN_SEPARATOR;
 		} else {
 			str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;
@@ -1996,6 +2022,9 @@ void turn_info::do_recruit(const std::string& name)
 		if(msg.empty()) {
 			current_team.spend_gold(u_type->second.cost());
 			statistics::recruit_unit(new_unit);
+
+			//MP_COUNTDOWN grant time bonus for recruiting
+			current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 			clear_undo_stack();
 			redo_stack_.clear();
@@ -3161,7 +3190,7 @@ void turn_info::tab_textbox()
 						best_match = *i;
 					} else {
 						int j;
-						while(best_match[j] == (*i)[j]) j++;
+						while(toupper(best_match[j]) == toupper((*i)[j])) j++;
 						best_match.erase(best_match.begin()+j,best_match.end());
 					}
 					matches.push_back(*i);

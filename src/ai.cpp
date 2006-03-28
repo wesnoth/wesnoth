@@ -476,9 +476,9 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 
 				info_.disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
 
-				info_.disp.hide_unit(u_it->first,true);
+				u_it->second.set_hidden(true);
 				unit_display::move_unit(info_.disp,info_.map,steps,current_unit,info_.state.get_time_of_day(),info_.units,info_.teams);
-				info_.disp.hide_unit(gamemap::location());
+				u_it->second.set_hidden(false);
 				info_.units.erase(u_it);
 				u_it = info_.units.end();
 			}
@@ -788,6 +788,7 @@ void ai::add_target(const target& tgt)
 void ai::play_turn()
 {
 	consider_combat_ = true;
+	game_events::fire("ai turn");
 	do_move();
 }
 
@@ -1004,6 +1005,10 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 	if(info_.units.count(u) && info_.units.count(target)) {
 		if(info_.units.find(target)->second.get_state("stoned")=="true") {
 			LOG_STREAM(err, ai) << "attempt to attack unit that is turned to stone\n";
+			return;
+		}
+		if(!info_.units.find(u)->second.attacks_left()) {
+			LOG_STREAM(err, ai) << "attempt to attack twice with the same unit\n";
 			return;
 		}
 

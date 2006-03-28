@@ -54,20 +54,6 @@ class gamestatus;
 typedef std::map<gamemap::location,unit> unit_map;
 
 
-class unit_temporary_state
-{
-	public:
-		
-		void reset();
-		void take_healing(int value, bool cumulative);
-		int total_healing();
-		
-	private:
-		int healing_flat_;
-		int healing_cumulative_;
-};
-
-
 class unit_ability_list
 {
 	public:
@@ -152,6 +138,8 @@ class unit
 		void new_turn(const gamemap::location& loc);
 		void end_turn();
 		void new_level();
+		void refresh() {if(anim_ && !refreshing_) anim_->update_current_frame(); }
+		
 		bool take_hit(int damage);
 		void heal();
 		void heal(int amount);
@@ -184,22 +172,29 @@ class unit
 		
 		int damage_from(const attack_type& attack,bool attacker,const gamemap::location& loc) const;
 		
-		const std::string& image() const;
-		const image::locator image_loc() const;
-		void refresh_unit(display& disp,const int& x,const int& y,const double& submerge);
+		// a sdl surface, ready for display for place where we need a fix image of the unit
+		const surface still_image() const;
+		void refresh_unit(display& disp,gamemap::location hex, bool with_status =false);
 		
-		void set_standing();
-		void set_defending(bool hits, std::string range, int start_frame, int acceleration);
-		void update_frame();
-		void set_attacking( const attack_type* type=NULL, int ms=0);
-		
-		void set_leading();
-		void set_healing();
-		void set_walking(const std::string terrain,gamemap::location::DIRECTION,int acceleration);
-		
-		bool facing_left() const;
-		enum FACING {NORTH=0,NORTH_EAST=1,SOUTH_EAST=2,SOUTH=3,SOUTH_WEST=4,NORTH_WEST=5,LEFT=6,RIGHT=7};
-		void set_facing(FACING newval);
+		void set_standing(const display& disp);
+		void set_defending(const display& disp, int damage, std::string range);
+		void set_leading(const display& disp);
+		void set_healing(const display& disp);
+		void set_leveling_in(const display& disp);
+		void set_leveling_out(const display& disp);
+		void set_teleporting (const display& disp);
+		void set_extra_anim(const display& disp, std::string flag);
+		void set_dying( const display& disp,const attack_type *attack);
+		void set_walking(const display& disp,const std::string terrain);
+		const unit_animation & set_attacking(const display& disp,bool hit,const attack_type& type);
+		void set_recruited(const display& disp);
+		void set_healed(const display& disp,int healing);
+		void set_poisoned(const display& disp,int damage);
+		void restart_animation(const display& disp,int start_time);
+		const unit_animation* get_animation() const {  return anim_;};
+		void set_offset(double offset){offset_ = offset;}
+		void set_facing(gamemap::location::DIRECTION);
+		gamemap::location::DIRECTION facing() const;
 		
 		const t_string& traits_description() const;
 		
@@ -211,6 +206,7 @@ class unit
 		
 		int upkeep() const;
 		
+		void set_hidden(bool state) {hidden_ = state;};
 		bool is_flying() const;
 		int movement_cost(gamemap::TERRAIN terrain, int recurse_count=0) const;
 		int defense_modifier(gamemap::TERRAIN terrain, int recurse_count=0) const;
@@ -238,9 +234,12 @@ class unit
 		void set_interrupted_move(const gamemap::location& interrupted_move);
 		
 		enum STATE { STATE_STANDING, STATE_ATTACKING, STATE_DEFENDING,
-			STATE_LEADING, STATE_HEALING, STATE_WALKING};
+		STATE_LEADING, STATE_HEALING, STATE_WALKING, STATE_LEVELIN,
+		STATE_LEVELOUT, STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
+		STATE_RECRUITED, STATE_HEALED, STATE_POISONED};
 		STATE state() const;
 		
+		//the name of the file to display (used in menus
 		const std::string& absolute_image() const;
 		const std::string& image_halo() const;
 		const std::string& image_profile() const;
@@ -250,6 +249,7 @@ class unit
 		const std::string& image_halo_healing() const;
 		const std::string& get_hit_sound() const;
 		const std::string& die_sound() const;
+		const std::string& image_ellipse() const;
 		
 		const std::string& usage() const;
 		unit_type::ALIGNMENT alignment() const;
@@ -336,7 +336,7 @@ class unit
 		
 		std::string role_;
 		std::vector<attack_type> attacks_, attacks_b_;
-		FACING facing_dir_;
+		gamemap::location::DIRECTION facing_;
 		
 		t_string traits_description_;
 		int unit_value_;
@@ -358,12 +358,13 @@ class unit
 		
 		std::vector<movement_animation> movement_animations_;
 		unit_animation *anim_;
+		int frame_begin_time;
+		double offset_;
 		int unit_halo_;
 		int unit_anim_halo_;
-		const attack_type* attackType_;
-		int attackingMilliseconds_;
 		bool getsHit_;
-		
+		bool refreshing_; // avoid infinite recursion
+		bool hidden_;
 		
 		config modifications_;
 		

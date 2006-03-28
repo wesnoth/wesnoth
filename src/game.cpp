@@ -26,6 +26,7 @@
 #include "game_errors.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
+#include "help.hpp"
 #include "hotkeys.hpp"
 #include "intro.hpp"
 #include "language.hpp"
@@ -90,6 +91,7 @@ public:
 	bool play_multiplayer();
 	bool change_language();
 
+	void show_help();
 	void show_preferences();
 	void show_upload_begging();
 
@@ -97,6 +99,7 @@ public:
 	void play_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
 	void play_replay();
   const config& game_config(){return game_config_;};
+  const game_data& units_data(){return units_data_;};
 
 private:
 	game_controller(const game_controller&);
@@ -371,9 +374,9 @@ bool game_controller::init_config()
 	game_config::load_config(game_config_.child("game_config"));
 
 	hotkey::load_hotkeys(game_config_);
-	about::set_about(game_config_);
 	paths_manager_.set_paths(game_config_);
 	::init_textdomains(game_config_);
+	about::set_about(game_config_);
 
 	return true;
 }
@@ -1531,7 +1534,7 @@ int play_game(int argc, char** argv)
 			<< "  --nosound         Disables sounds\n"
 			<< "  --compress file1 file2 Compresses the text-WML file file1 into the\n"
 			<< "                    binary-WML file file2\n"
-			<< "  --decompress file1 file2 Uncompresses the binary-WML file file2 into\n"
+			<< "  --decompress file1 file2 Uncompresses the binary-WML file file1 into\n"
 			<< "                    the text-WML file file2\n"
 			;
 			return 0;
@@ -1647,17 +1650,15 @@ int play_game(int argc, char** argv)
 		return 0;
 	}
 
-#ifdef WIN32
-	res = game.init_config();
-	if(res == false) {
-		std::cerr << "could not initialize game config\n";
-		return 0;
-	}
-#endif
-
 	res = game.init_language();
 	if(res == false) {
 		std::cerr << "could not initialize the language\n";
+		return 0;
+	}
+		
+	res = game.init_config();
+	if(res == false) {
+		std::cerr << "could not initialize game config\n";
 		return 0;
 	}
 
@@ -1666,16 +1667,6 @@ int play_game(int argc, char** argv)
 		std::cerr << "could not re-initialize fonts for the current language\n";
 		return 0;
 	}
-
-#ifndef WIN32
-	// it is better for gettext-native platforms to read the config
-	// files after having pre-initialized the language, maybe...
-	res = game.init_config();
-	if(res == false) {
-		std::cerr << "could not initialize game config\n";
-		return 0;
-	}
-#endif
 
 	const cursor::manager cursor_manager;
 #if defined(_X11) && !defined(__APPLE__)
@@ -1746,6 +1737,12 @@ int play_game(int argc, char** argv)
 			continue;
 		} else if(res == gui::SHOW_ABOUT) {
 			about::show_about(game.disp());
+			continue;
+		} else if(res == gui::SHOW_HELP) {
+			config dummy_help_cfg;
+			gamemap dummy_help_map(dummy_help_cfg, "1");
+			help::help_manager help_manager(&game.game_config(), &game.units_data(), &dummy_help_map);
+			help::show_help(game.disp());
 			continue;
 		} else if(res == gui::BEG_FOR_UPLOAD) {
 			game.show_upload_begging();

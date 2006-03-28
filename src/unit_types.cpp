@@ -137,39 +137,26 @@ int attack_type::movement_used() const
 	return cfg_["movement_used"] == "" ? 100000 : lexical_cast_default<int>(cfg_["movement_used"]);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const std::pair<const unit_animation*,const unit_animation*> attack_type::animation(bool hit,const gamemap::location::DIRECTION dir) const
+const attack_type::attack_animation& attack_type::animation(bool hit,const gamemap::location::DIRECTION dir) const
 {
 	//select one of the matching animations at random
-	std::vector<std::pair<const unit_animation*,const unit_animation*> > options;
+	std::vector<const attack_animation*>  options;
 	int max_val = -1;
 	for(std::vector<attack_animation>::const_iterator i = animation_.begin(); i != animation_.end(); ++i) {
 		int matching = i->matches(hit,dir);
 		if(matching == max_val) {
-			options.push_back(std::pair<const unit_animation*,const unit_animation*>(&i->animation,&i->missile_animation));
+			options.push_back(&*i);
 		} else if(matching > max_val) {
 			max_val = matching;
 			options.erase(options.begin(),options.end());
-			options.push_back(std::pair<const unit_animation*,const unit_animation*>(&i->animation,&i->missile_animation));
+			options.push_back(&*i);
 		}
 	}
 
 	assert(!options.empty());
-	return options[rand()%options.size()];
+	return *options[rand()%options.size()];
 }
+
 attack_type::attack_animation::attack_animation(const config& cfg):animation(cfg),missile_animation(cfg,"missile_frame"),hits(HIT_OR_MISS)
 {
 	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
@@ -619,7 +606,7 @@ void ability_filter::add_filters(const config* cfg)
 unit_type::unit_type(const unit_type& o)
     : variations_(o.variations_), cfg_(o.cfg_), race_(o.race_),
       alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
-      heals_filter_(o.heals_filter_), max_heals_(o.max_heals_), heals_(o.heals_), 
+      heals_filter_(o.heals_filter_), heals_(o.heals_), 
       regenerates_filter_(o.regenerates_filter_),regenerates_(o.regenerates_),
       regeneration_(o.regeneration_),
       leadership_filter_(o.leadership_filter_), leadership_(o.leadership_),
@@ -662,7 +649,11 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	const config* const male_cfg = cfg.child("male");
 	if(male_cfg != NULL) {
 		config m_cfg(cfg);
-		m_cfg = m_cfg.merge_with(*male_cfg);
+		if((*male_cfg)["inherit"]=="no") {
+			m_cfg = *male_cfg;
+		} else {
+			m_cfg = m_cfg.merge_with(*male_cfg);
+		}
 		m_cfg.clear_children("male");
 		m_cfg.clear_children("female");
 		gender_types_[unit_race::MALE] = new unit_type(m_cfg,mv_types,races,traits);
@@ -671,7 +662,11 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	const config* const female_cfg = cfg.child("female");
 	if(female_cfg != NULL) {
 		config f_cfg(cfg);
-		f_cfg = f_cfg.merge_with(*female_cfg);
+		if((*female_cfg)["inherit"]=="no") {
+			f_cfg = *female_cfg;
+		} else {
+			f_cfg = f_cfg.merge_with(*female_cfg);
+		}
 		f_cfg.clear_children("male");
 		f_cfg.clear_children("female");
 		gender_types_[unit_race::FEMALE] = new unit_type(f_cfg,mv_types,races,traits);
@@ -716,7 +711,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	possibleTraits_.insert(possibleTraits_.end(),unit_traits.begin(),unit_traits.end());
 
 	heals_ = 0;
-	max_heals_ = 0;
 	regenerates_ = false;
 	regeneration_ = 0;
 	steadfast_ = false;
@@ -741,15 +735,13 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	if(!deprecated_abilities.empty()) {
 		LOG_STREAM(err, config) << "unit " << id() << " uses the ability=list tag, which is deprecated\n";
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"heals") != deprecated_abilities.end()) {
-			heals_ = game_config::healer_heals_per_turn;
-			max_heals_ = game_config::heal_amount;
+			heals_ = game_config::heal_amount;
 			heals_filter_.unfilter();
 			abilities_.push_back("heals");
 			ability_tooltips_.push_back("heals");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"cures") != deprecated_abilities.end()) {
-			heals_ = game_config::curer_heals_per_turn;
-			max_heals_ = game_config::cure_amount;
+			heals_ = game_config::cure_amount;
 			heals_filter_.unfilter();
 			abilities_.push_back("cures");
 			ability_tooltips_.push_back("cures");
@@ -820,8 +812,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				} else {
 					ability_tooltips_.push_back("heals");
 				}
-				heals_ = maximum<int>(heals_, lexical_cast_default<int>((**ab)["amount"],game_config::healer_heals_per_turn));
-				max_heals_ = maximum<int>(max_heals_, lexical_cast_default<int>((**ab)["max"],game_config::heal_amount));
+				heals_ = maximum<int>(heals_, lexical_cast_default<int>((**ab)["amount"],game_config::heal_amount));
 				heals_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
@@ -1106,11 +1097,15 @@ const std::string& unit_type::image() const
 	return cfg_["image"];
 }
 
+const std::string& unit_type::image_ellipse() const
+{
+	return cfg_["ellipse"];
+}
+
 const std::string& unit_type::image_halo() const
 {
 	return cfg_["halo"];
 }
-
 
 const std::string& unit_type::image_fighting(attack_type::RANGE range) const
 {
@@ -1141,8 +1136,11 @@ const std::string& unit_type::image_leading() const
 const std::string& unit_type::image_healing() const
 {
 	const std::string& val = cfg_["image_healing"];
+	static const std::string empty = "misc/blank.png";
 	if(val.empty()) {
 		return image();
+	} else if (val == "null"){
+		return empty;
 	} else {
 		return val;
 	}
@@ -1292,11 +1290,6 @@ const std::vector<std::string>& unit_type::abilities() const
 const std::vector<std::string>& unit_type::ability_tooltips() const
 {
 	return ability_tooltips_;
-}
-
-int unit_type::max_unit_healing() const
-{
-	return max_heals_;
 }
 
 int unit_type::heals() const

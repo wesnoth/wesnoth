@@ -18,21 +18,24 @@
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "video.hpp"
+#include "show_dialog.hpp"
 
 namespace about
 {
 
   config about_list = config();
+  std::map<std::string , std::string> images;
+  std::string images_default;
 
 std::vector<std::string> get_text(std::string campaign) {
 	static const char *credits[] = {
 		"_" N_("+Core Developers"),
-		"_" N_("-   Main Developer"),
-		"   David White (Sirp)",
+		"_" N_("+  Main Developer"),
+		"-  David White (Sirp)",
 		"- ",
-		"_" N_("-   Artwork and graphics designer"),
-		"   Francisco Muñoz (fmunoz)",
-
+		"_" N_("+  Artwork and graphics designer"),
+		"-   Francisco Muñoz (fmunoz)",
+		"- ",
 		"_" N_("+Developers"),
 		"-   Alfredo Beaumont (ziberpunk)",
 		"-   András Salamon (ott)",
@@ -72,7 +75,6 @@ std::vector<std::string> get_text(std::string campaign) {
 
 	for(config::child_list::const_iterator cc = children.begin(); cc != children.end(); ++cc) {
 	  //just finished a particular campaign
-	  if((**cc)["id"].size())printf("got here:%s,%s\n",campaign.c_str(),(**cc)["id"].c_str());
 	  if(campaign.size() && campaign == (**cc)["id"]){
 	    std::string title=(**cc)["title"];
 	    if(title.size()){
@@ -92,7 +94,7 @@ std::vector<std::string> get_text(std::string campaign) {
 		  *line = gettext(line->substr(1,line->size()-1).c_str());
 		res.push_back(*line);
 	      }
-	    } 
+	    }
 	  }
 	}
 
@@ -122,44 +124,62 @@ std::vector<std::string> get_text(std::string campaign) {
 		*line = gettext(line->substr(1,line->size()-1).c_str());
 	      res.push_back(*line);
 	    }
-	  } 
+	  }
 	}
 
 	return res;
 }
 
 void set_about(const config& cfg){
-  config::child_list about = cfg.get_children("about");
-  for(config::child_list::const_iterator A = about.begin(); A != about.end(); A++) {
-    about_list.add_child("about",(**A));
-  }
-  config::child_list campaigns = cfg.get_children("campaign");
-  for(config::child_list::const_iterator C = campaigns.begin(); C != campaigns.end(); C++) {
-    config::child_list about = (**C).get_children("about");
-    if(about.size()){
-      config temp;
-      std::string text;
-      std::string title;
-      title=(**C)["name"];
-      temp["title"]=title;
-      temp["id"]=(**C)["id"];
-      for(config::child_list::const_iterator A = about.begin(); A != about.end(); A++) {
-	config AA = (**A);
-	std::string subtitle=AA["title"];
-	if(subtitle.size()){
-	      if (subtitle[0] == '_')
-		subtitle = gettext(subtitle.substr(1,subtitle.size()-1).c_str());	    }
-	text += subtitle + "\n";
-	std::vector<std::string> lines=utils::split(AA["text"],'\n');
-	for(std::vector<std::string>::iterator line=lines.begin();
-		      line != lines.end(); line++){
-	  text+="    "+(*line)+"\n";
+	config::child_list about = cfg.get_children("about");
+	for(config::child_list::const_iterator A = about.begin(); A != about.end(); A++) {
+		config AA = (**A);
+		about_list.add_child("about",AA);
+		if(!AA["images"].empty()){
+			if(images_default.empty()){
+				images_default=AA["images"];
+			}else{
+				images_default+=","+AA["images"];
+			}
+		}
 	}
-      }
-      temp["text"]=text;
-      about_list.add_child("about",temp);
-    }
-  }
+	config::child_list campaigns = cfg.get_children("campaign");
+	for(config::child_list::const_iterator C = campaigns.begin(); C != campaigns.end(); C++) {
+		config::child_list about = (**C).get_children("about");
+		if(about.size()){
+			config temp;
+			std::string text;
+			std::string title;
+			std::string campaign=(**C)["id"];
+			title=(**C)["name"];
+			temp["title"]=title;
+			temp["id"]=(**C)["id"];
+			for(config::child_list::const_iterator A = about.begin(); A != about.end(); A++) {
+				config AA = (**A);
+				std::string subtitle=AA["title"];
+				if(subtitle.size()){
+				if (subtitle[0] == '_')
+						subtitle = gettext(subtitle.substr(1,subtitle.size()-1).c_str());
+					text += "+" + subtitle + "\n";
+				}
+				std::vector<std::string> lines=utils::split(AA["text"],'\n');
+				for(std::vector<std::string>::iterator line=lines.begin();
+			line != lines.end(); line++){
+					text+="    "+(*line)+"\n";
+				}
+
+				if(!AA["images"].empty()){
+					if(images[campaign].empty()){
+						images[campaign]=AA["images"];
+					}else{
+						images[campaign]+=","+AA["images"];
+					}
+				}
+		}
+			temp["text"]=text;
+			about_list.add_child("about",temp);
+		}
+	}
 }
 
 void show_about(display &disp, std::string campaign)
@@ -174,8 +194,18 @@ void show_about(display &disp, std::string campaign)
 	draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,
 	                                 0,0,0,1.0,video.getSurface());
 	update_whole_screen();
+	std::vector<std::string> image_list;
+	if(campaign.size()){
+		image_list=utils::split(images[campaign]);
+	}else{
+		image_list=utils::split(images_default,',',utils::STRIP_SPACES);
+	}
+	surface map_image(scale_surface(image::get_image(image_list[0],image::UNSCALED), disp.x(), disp.y()));
+	if(! map_image){
+		image_list[0]=game_config::game_title;
+		map_image=surface(scale_surface(image::get_image(image_list[0],image::UNSCALED), disp.x(), disp.y()));
+	}
 
-	const surface map_image(image::get_image(game_config::map_image,image::UNSCALED));
 	SDL_Rect map_rect;
 	map_rect.x = video.getx()/2 - map_image->w/2;
 	map_rect.y = video.gety()/2 - map_image->h/2;
@@ -183,8 +213,8 @@ void show_about(display &disp, std::string campaign)
 	map_rect.h = map_image->h;
 
 	gui::button close(video,_("Close"));
-	close.set_location((video.getx()/2)-(close.width()/2), map_rect.y+map_rect.h+15);
-
+	close.set_location((video.getx()/2)-(close.width()/2), video.gety() - 30);
+	close.set_volatile(true);
 
 	//substitute in the correct control characters for '+' and '-'
 	std::string before_header(2, ' ');
@@ -223,10 +253,24 @@ void show_about(display &disp, std::string campaign)
 	SDL_Rect lower_src = {0, map_rect.h - bottom_margin, map_rect.w, bottom_margin};
 	SDL_Rect lower_dest = {map_rect.x, map_rect.y + map_rect.h - bottom_margin, map_rect.w, bottom_margin};
 
+	CKey key;
+	bool last_escape;
+	int image_count=0;
 	do {
-		// draw map to screen, thus erasing all text
-		SDL_BlitSurface(map_image,&middle_src,video.getSurface(),&middle_dest);
+		last_escape = key[SDLK_ESCAPE] != 0;
 
+		// check to see if background image has changed
+		if(text.size() && (image_count < ((startline*(int)image_list.size())/(int)text.size()))){
+			image_count++;
+			surface temp=surface(scale_surface(image::get_image(image_list[image_count],image::UNSCALED), disp.x(), disp.y()));
+			map_image=temp?temp:map_image;
+		}
+		// draw map to screen, thus erasing all text
+
+		SDL_BlitSurface(map_image,&middle_src,video.getSurface(),&middle_dest);
+		std::string style = "mainmenu";
+
+          gui::draw_dialog_frame(map_rect.x + map_rect.w * 3/32, map_rect.y + top_margin, map_rect.w * 13 / 16, map_rect.h - top_margin - bottom_margin,disp.video(),&style);
 		// draw one screen full of text
 		const int line_spacing = 5;
 		int y = map_rect.y + top_margin - offset;
@@ -234,8 +278,11 @@ void show_about(display &disp, std::string campaign)
 		int cur_line = 0;
 
 		do {
-			SDL_Rect tr = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::BLACK_COLOUR,
+//			SDL_Rect tr2 = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::BLACK_COLOUR,
+//						text[line], map_rect.x + map_rect.w / 8 + 1,y + 1);
+			SDL_Rect tr = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::NORMAL_COLOUR,
 					              text[line], map_rect.x + map_rect.w / 8,y);
+
 			if(is_new_line) {
 				is_new_line = false;
 				first_line_height = tr.h + line_spacing;
@@ -248,15 +295,17 @@ void show_about(display &disp, std::string campaign)
 		} while(y<map_rect.y + map_rect.h - bottom_margin);
 
 		// performs the actual scrolling
-		const int scroll_speed = 2;		// scroll_speed*50 = speed of scroll in pixel per second
+		const int scroll_speed = 4;		// scroll_speed*50 = speed of scroll in pixel per second
 
 		offset += scroll_speed;
 		if(offset>=first_line_height) {
 			offset -= first_line_height;
 			is_new_line = true;
 			startline++;
-			if(size_t(startline) == text.size())
+			if(size_t(startline) == text.size()){
 				startline = 0;
+				image_count = -1;
+			}
 		}
 
 		// mask off the upper and lower half of the map,
@@ -272,10 +321,11 @@ void show_about(display &disp, std::string campaign)
 
 		// update screen and wait, so the text does not scroll too fast
 		update_rect(map_rect);
+		close.set_dirty(true);
 		disp.flip();
 		SDL_Delay(20);
 
-	} while(!close.pressed());
+	} while(!close.pressed() && (last_escape || !key[SDLK_ESCAPE]));
 
 }
 

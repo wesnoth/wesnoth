@@ -33,8 +33,7 @@ bool preproc_define::operator==(preproc_define const &v) const {
 	return value == v.value && arguments == v.arguments;
 }
 
-// FIXME
-struct config {
+struct preproc_config {
 	struct error {
 		error(const std::string& msg) : message(msg) {}
 		std::string message;
@@ -372,7 +371,7 @@ bool preprocessor_data::get_chunk()
 		      << token.linenum << ' ' << target_.location_;
 		ERR_CF << error.str() << '\n';
 		pop_token();
-		throw config::error(error.str());
+		throw preproc_config::error(error.str());
 	}
 
 	if (c == '\376') {
@@ -406,7 +405,7 @@ bool preprocessor_data::get_chunk()
 			error << "nested quoted string started at "
 			      << linenum_ << ' ' << target_.location_;
 			ERR_CF << error.str() << '\n';
-			throw config::error(error.str());
+			throw preproc_config::error(error.str());
 		}
 	} else if (c == '{') {
 		if (token.type == '{')
@@ -429,7 +428,7 @@ bool preprocessor_data::get_chunk()
 				error << "no macro name found after #define directive at "
 				      << linenum_ << ' ' << target_.location_;
 				ERR_CF << error.str() << '\n';
-				throw config::error(error.str());
+				throw preproc_config::error(error.str());
 			}
 			std::string symbol = items.front();
 			items.erase(items.begin());
@@ -456,7 +455,7 @@ bool preprocessor_data::get_chunk()
 				error << "unterminated preprocessor definition at "
 				      << linenum << ' ' << target_.location_;
 				ERR_CF << error.str() << '\n';
-				throw config::error(error.str());
+				throw preproc_config::error(error.str());
 			}
 			if (!skipping_) {
 				buffer.erase(buffer.end() - 7, buffer.end());
@@ -487,7 +486,7 @@ bool preprocessor_data::get_chunk()
 				error << "unexpected #else at "
 				      << linenum_ << ' ' << target_.location_;
 				ERR_CF << error.str() << '\n';
-				throw config::error(error.str());
+				throw preproc_config::error(error.str());
 			}
 		} else if (command == "endif") {
 			switch (token.type) {
@@ -500,7 +499,7 @@ bool preprocessor_data::get_chunk()
 				error << "unexpected #endif at "
 				      << linenum_ << ' ' << target_.location_;
 				ERR_CF << error.str() << '\n';
-				throw config::error(error.str());
+				throw preproc_config::error(error.str());
 			}
 			pop_token();
 		} else if (command == "textdomain") {
@@ -515,7 +514,7 @@ bool preprocessor_data::get_chunk()
 			error << "unexpected #enddef at "
 			      << linenum_ << ' ' << target_.location_;
 			ERR_CF << error.str() << '\n';
-			throw config::error(error.str());
+			throw preproc_config::error(error.str());
 		} else if (command == "undef") {
 			skip_spaces();
 			std::string const &symbol = read_word();
@@ -569,7 +568,7 @@ bool preprocessor_data::get_chunk()
 					      << nb_arg << " arguments at " << linenum_
 					      << ' ' << target_.location_;
 					ERR_CF << error.str() << '\n';
-					throw config::error(error.str());
+					throw preproc_config::error(error.str());
 				}
 
 				std::stringstream *buffer = new std::stringstream;
