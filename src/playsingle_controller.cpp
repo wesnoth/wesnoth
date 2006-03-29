@@ -310,11 +310,24 @@ void playsingle_controller::play_turn(){
 
 	LOG_NG << "turn: " << current_turn_++ << "\n";
 
+	bool replaying = (recorder.at_end() == false);
 	for(player_number_ = first_player_ + 1; player_number_ <= teams_.size(); player_number_++) {
-		bool replaying = (recorder.at_end() == false);
 
 		init_side(player_number_ - 1);
-		replaying = do_replay(replaying);
+
+		if (replaying){
+			const hotkey::basic_handler key_events_handler(gui_);
+			LOG_NG << "doing replay " << player_number_ << "\n";
+			try {
+				replaying = ::do_replay(*gui_,map_,gameinfo_,units_,teams_,
+						              player_number_,status_,gamestate_);
+			} catch(replay::error&) {
+				gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_ONLY);
+
+				replaying = false;
+			}
+			LOG_NG << "result of replay: " << (replaying?"true":"false") << "\n";
+		}
 		check_music(replaying);
 
 		if (!replaying){
