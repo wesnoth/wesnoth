@@ -379,7 +379,7 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	const location loc = move_unit_partial(from,to,possible_moves);
 	const unit_map::iterator u = info_.units.find(loc);
 	if(u != info_.units.end()) {
-		if(u->second.movement()==u->second.max_movement()) {
+		if(u->second.movement_left()==u->second.total_movement()) {
 			u->second.set_movement(0);
 			u->second.set_state("not_moved","yes");
 		} else {
