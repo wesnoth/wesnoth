@@ -1109,9 +1109,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			unit_map::iterator un = units->find(loc);
 
 			if(show) {
-
-				un->second.set_recruited(*screen);
+				un->second.set_hidden(true);
 				screen->scroll_to_tile(loc.x,loc.y,display::ONSCREEN);
+				un->second.set_hidden(false);
+				un->second.set_recruited(*screen);
 				while(!un->second.get_animation()->animation_finished()) {
 					screen->draw_tile(loc.x,loc.y);
 					screen->update_display();

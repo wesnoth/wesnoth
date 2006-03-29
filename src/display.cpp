@@ -1327,19 +1327,19 @@ void display::draw_tile(int x, int y)
 {
 	reach_map::iterator reach = reach_map_.end();
 
+	const gamemap::location loc(x,y);
+	unit_map::iterator it = units_.find(loc);
+	if(it != units_.end()) {
+		it->second.refresh();
+	}
 	if(screen_.update_locked()) {
 		return;
 	}
 
 
-	const gamemap::location loc(x,y);
 	int xpos = int(get_location_x(loc));
 	int ypos = int(get_location_y(loc));
 
-	unit_map::iterator it = units_.find(loc);
-	if(it != units_.end()) {
-		it->second.refresh();
-	}
 	SDL_Rect clip_rect = map_area();
 
 	if(xpos >= clip_rect.x + clip_rect.w || ypos >= clip_rect.y + clip_rect.h ||
