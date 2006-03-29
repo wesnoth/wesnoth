@@ -898,6 +898,44 @@ void unit::read(const config& cfg)
 	    range.first != range.second; ++range.first) {
 		attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
 	}
+	const config::child_list& defends = cfg_.get_children("defend");
+	for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
+		defensive_animations_.push_back(defensive_animation(**d));
+	}
+	if(defensive_animations_.empty()) {
+		defensive_animations_.push_back(defensive_animation(absolute_image()));
+		// always have a defensive animation
+	}
+	const config::child_list& teleports = cfg_.get_children("teleport_anim");
+	for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
+		teleport_animations_.push_back(unit_animation(**t));
+	}
+	if(teleport_animations_.empty()) {
+		teleport_animations_.push_back(unit_animation(absolute_image(),-20,20));
+		// always have a teleport animation
+	}
+	const config::child_list& extra_anims = cfg_.get_children("extra_anim");
+	{
+		for(config::child_list::const_iterator t = extra_anims.begin(); t != extra_anims.end(); ++t) {
+			extra_animations_.insert(std::pair<std::string,unit_animation>((**t)["flag"],unit_animation(**t)));
+		}
+	}
+	const config::child_list& deaths = cfg_.get_children("death");
+	for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
+		death_animations_.push_back(death_animation(**death));
+	}
+	if(death_animations_.empty()) {
+		death_animations_.push_back(death_animation(absolute_image()));
+		// always have a death animation
+	}
+	const config::child_list& movement_anims = cfg_.get_children("movement_anim");
+	for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
+		movement_animations_.push_back(movement_animation(**movement_anim));
+	}
+	if(movement_animations_.empty()) {
+		movement_animations_.push_back(movement_animation(absolute_image()));
+		// always have a movement animation
+	}
 	
 }
 void unit::write(config& cfg) const
