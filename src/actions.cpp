@@ -17,13 +17,16 @@
 #include "game_errors.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
+#include "halo.hpp"
+#include "hotkeys.hpp"
+#include "menu_events.hpp"
+#include "mouse_events.hpp"
 #include "pathfind.hpp"
-#include "playlevel.hpp"
-#include "playturn.hpp"
 #include "preferences.hpp"
 #include "random.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
+#include "statistics.hpp"
 #include "unit_display.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
@@ -89,7 +92,7 @@ std::string recruit_unit(const gamemap& map, int side,
        std::map<gamemap::location,unit>& units, unit& new_unit,
        gamemap::location& recruit_location, display* disp, bool need_castle, bool full_movement)
 {
-	const command_disabler disable_commands;
+	const events::command_disabler disable_commands;
 
 	LOG_NG << "recruiting unit for side " << side << "\n";
 	typedef std::map<gamemap::location,unit> units_map;
@@ -695,7 +698,7 @@ void attack(display& gui, const gamemap& map,
 			bool update_display)
 {
 	//stop the user from issuing any commands while the units are fighting
-	const command_disabler disable_commands;
+	const events::command_disabler disable_commands;
 	
 	std::map<gamemap::location,unit>::iterator a = units.find(attacker);
 	std::map<gamemap::location,unit>::iterator d = units.find(defender);
@@ -1980,7 +1983,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	wassert(route.empty() == false);
 
 	//stop the user from issuing any commands while the unit is moving
-	const command_disabler disable_commands;
+	const events::command_disabler disable_commands;
 
 	unit_map::iterator ui = units.find(route.front());
 

@@ -1,4 +1,4 @@
-#include "global.hpp"
+#include "playsingle_controller.hpp"
 
 #include "ai_interface.hpp"
 #include "config_adapter.hpp"
@@ -15,8 +15,6 @@
 #include "log.hpp"
 #include "map_create.hpp"
 #include "marked-up_text.hpp"
-#include "playsingle_controller.hpp"
-#include "playturn.hpp"
 #include "preferences.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
@@ -29,35 +27,105 @@ LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_c
 		const config* level, CVideo& video, game_state& state_of_game,
 		const std::vector<config*>& story, upload_log& log, bool skip_replay)
 {
-//	try{
-		const int ticks = SDL_GetTicks();
-		const int num_turns = atoi((*level)["turns"].c_str());
-		playsingle_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video);
-		const unit_type::experience_accelerator xp_mod(playcontroller.get_xp_modifier() > 0 ? playcontroller.get_xp_modifier() : 100);
-		
-		return playcontroller.play_scenario(gameinfo, video, story, log, skip_replay);
-	//return LEVEL_CONTINUE;
-		
-		//play event-loop
-//		for (;;){
-//			replaycontroller.replay_slice();
-//		}
-		
-//	}
-//	catch(end_level_exception&){}
-
+	const int ticks = SDL_GetTicks();
+	const int num_turns = atoi((*level)["turns"].c_str());
+	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
+	playsingle_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay);
+	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
+	const unit_type::experience_accelerator xp_mod(playcontroller.get_xp_modifier() > 0 ? playcontroller.get_xp_modifier() : 100);
+	
+	return playcontroller.play_scenario(story, log, skip_replay);
 }
 
 playsingle_controller::playsingle_controller(const config& level, const game_data& gameinfo, game_state& state_of_game, 
-											 const int ticks, const int num_turns, const config& game_config, CVideo& video)
-	: play_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video), 
-	generator_setter(&recorder), cursor_setter(cursor::NORMAL)
+											 const int ticks, const int num_turns, const config& game_config, CVideo& video,
+											 bool skip_replay)
+	: play_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay), 
+	generator_setter(&recorder), cursor_setter(cursor::NORMAL), replay_sender_(recorder)
 {
-	LOG_NG << "created objects... " << (SDL_GetTicks() - ticks_) << "\n";
+	end_turn_ = false;
 }
 
-LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, CVideo& video,
-		const std::vector<config*>& story, upload_log& log, bool skip_replay)
+void playsingle_controller::init_gui(){
+	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks_) << "\n";
+	play_controller::init_gui();
+
+	if(first_human_team_ != -1) {
+		gui_->scroll_to_tile(map_.starting_position(first_human_team_ + 1).x,
+			               map_.starting_position(first_human_team_ + 1).y, display::WARP);
+	}
+	gui_->scroll_to_tile(map_.starting_position(1).x,map_.starting_position(1).y,display::WARP);
+
+	update_locker lock_display(gui_->video(),recorder.is_skipping());
+	events::raise_draw_event();
+	gui_->draw();
+	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
+		::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,(t-teams_.begin()));
+	}
+}
+
+void playsingle_controller::recruit(){
+	if (!browse_)
+		menu_handler_.recruit(browse_, player_number_, mouse_handler_);
+}
+
+void playsingle_controller::repeat_recruit(){
+	if (!browse_)
+		menu_handler_.repeat_recruit(player_number_, mouse_handler_);
+}
+
+void playsingle_controller::recall(){
+	if (!browse_)
+		menu_handler_.recall(player_number_, mouse_handler_);
+}
+
+void playsingle_controller::toggle_shroud_updates(){
+	menu_handler_.toggle_shroud_updates(player_number_);
+}
+
+void playsingle_controller::update_shroud_now(){
+	menu_handler_.update_shroud_now(player_number_);
+}
+
+void playsingle_controller::end_turn(){
+	if (!browse_){
+		menu_handler_.end_turn(player_number_);
+		end_turn_ = true;
+	}
+}
+
+void playsingle_controller::rename_unit(){
+	menu_handler_.rename_unit(mouse_handler_);
+}
+
+void playsingle_controller::create_unit(){
+	menu_handler_.create_unit(mouse_handler_);
+}
+
+void playsingle_controller::change_unit_side(){
+	menu_handler_.change_unit_side(mouse_handler_);
+}
+
+void playsingle_controller::label_terrain(){
+	menu_handler_.label_terrain(mouse_handler_);
+}
+
+void playsingle_controller::continue_move(){
+	menu_handler_.continue_move(mouse_handler_, player_number_);
+}
+
+void playsingle_controller::unit_hold_position(){
+	if (!browse_)
+		menu_handler_.unit_hold_position(mouse_handler_, player_number_);
+}
+
+void playsingle_controller::end_unit_turn(){
+	if (!browse_)
+		menu_handler_.end_unit_turn(mouse_handler_, player_number_);
+}
+
+LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, upload_log& log, 
+												  bool skip_replay)
 {
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
 
@@ -67,299 +135,22 @@ LEVEL_RESULT playsingle_controller::play_scenario(const game_data& gameinfo, CVi
 			show_intro(*gui_,**story_i, level_);
 		}
 	}
-
 	victory_conditions::set_victory_when_enemies_defeated(
 						level_["victory_when_enemies_defeated"] != "no");
 
-	//find a list of 'items' (i.e. overlays) on the level, and add them
-	const config::child_list& overlays = level_.get_children("item");
-	for(config::child_list::const_iterator overlay = overlays.begin(); overlay != overlays.end(); ++overlay) {
-		gui_->add_overlay(gamemap::location(**overlay),(**overlay)["image"], (**overlay)["halo"]);
-	}
-
-	int turn = 1, player_number = 0;
-
-	turn_info::floating_textbox textbox_info;
-
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
-
-	replay_network_sender replay_sender(recorder);
-
 	try {
-		//if a team is specified whose turn it is, it means we're loading a game
-		//instead of starting a fresh one
-		const bool loading_game = level_["playing_team"].empty() == false;
+		fire_prestart(!loading_game_);
+		init_gui();
 
-		//pre-start events must be executed before any GUI operation,
-		//as those may cause the display to be refreshed.
-		if(!loading_game) {
-			update_locker lock_display(gui_->video());
-			game_events::fire("prestart");
-		}
+		LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
 
-		gui_->begin_game();
-		gui_->adjust_colours(0,0,0);
-
-		LOG_NG << "scrolling... " << (SDL_GetTicks() - ticks_) << "\n";
-		if(first_human_team_ != -1) {
-			LOG_NG << "b " << (SDL_GetTicks() - ticks_) << "\n";
-			gui_->scroll_to_tile(map_.starting_position(first_human_team_ + 1).x,
-			                   map_.starting_position(first_human_team_ + 1).y, display::WARP);
-			LOG_NG << "c " << (SDL_GetTicks() - ticks_) << "\n";
-		}
-		gui_->scroll_to_tile(map_.starting_position(1).x,map_.starting_position(1).y,display::WARP);
-		LOG_NG << "done scrolling... " << (SDL_GetTicks() - ticks_) << "\n";
-
-		bool replaying = (recorder.at_end() == false);
-
-		int first_player = atoi(level_["playing_team"].c_str());
-		if(first_player < 0 || first_player >= int(teams_.size())) {
-			first_player = 0;
-		}
-
-		for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-			clear_shroud(*gui_,status_,map_,gameinfo,units_,teams_,(t-teams_.begin()));
-		}
-
-		std::deque<config> data_backlog;
+		fire_start(!loading_game_);
+		gui_->recalculate_minimap();
 
 		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
-		for(bool first_time = true; true; first_time = false, first_player = 0) {
-			if(first_time) {
-				const hotkey::basic_handler key_events_handler(gui_);
-
-				LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
-				update_locker lock_display(gui_->video(),recorder.is_skipping());
-				events::raise_draw_event();
-				gui_->draw();
-				for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-					clear_shroud(*gui_,status_,map_,gameinfo,units_,teams_,(t-teams_.begin()));
-				}
-
-				if(!loading_game) {
-					game_events::fire("start");
-					gamestate_.set_variable("turn_number", "1");
-				}
-
-				gui_->recalculate_minimap();
-			}
-			player_number = 0;
-
-			gui_->new_turn();
-			gui_->invalidate_game_status();
-			events::raise_draw_event();
-
-			LOG_NG << "turn: " << turn++ << "\n";
-
-			for(std::vector<team>::iterator team_it = teams_.begin()+first_player; team_it != teams_.end(); ++team_it) {
-				log_scope("player turn");
-				player_number = (team_it - teams_.begin()) + 1;
-
-				//if a side is dead, don't do their turn
-				if(team_it->is_empty() || team_units(units_,player_number) == 0) {
-					continue;
-				}
-
-				if(team_manager_.is_observer()) {
-					gui_->set_team(size_t(player_number-1));
-				}
-
-				std::stringstream player_number_str;
-				player_number_str << player_number;
-				gamestate_.set_variable("side_number",player_number_str.str());
-
-				//fire side turn event only if real side change occurs not counting changes from void to a side
-				if (team_it != teams_.begin()+first_player || !first_time) {
-					game_events::fire("side turn");
-				}
-
-				//we want to work out if units for this player should get healed, and the
-				//player should get income now. healing/income happen if it's not the first
-				//turn of processing, or if we are loading a game, and this is not the
-				//player it started with.
-				const bool turn_refresh = !first_time || loading_game && team_it != teams_.begin()+first_player;
-
-				if(turn_refresh) {
-					for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
-						if(i->second.side() == player_number) {
-							i->second.new_turn();
-						}
-					}
-
-					team_it->new_turn();
-
-					//if the expense is less than the number of villages owned,
-					//then we don't have to pay anything at all
-					const int expense = team_upkeep(units_,player_number) -
-										team_it->villages().size();
-					if(expense > 0) {
-						team_it->spend_gold(expense);
-					}
-
-					calculate_healing(*gui_,status_,map_,units_,player_number,teams_, !skip_replay);
-				}
-
-				team_it->set_time_of_day(int(status_.turn()),status_.get_time_of_day());
-
-				gui_->set_playing_team(size_t(player_number-1));
-
-				clear_shroud(*gui_,status_,map_,gameinfo,units_,teams_,player_number-1);
-
-				if (!skip_replay){
-					gui_->scroll_to_leader(units_, player_number);
-				}
-
-				if(replaying) {
-					const hotkey::basic_handler key_events_handler(gui_);
-					LOG_NG << "doing replay " << player_number << "\n";
-					try {
-						replaying = do_replay(*gui_,map_,gameinfo,units_,teams_,
-						                      player_number,status_,gamestate_);
-					} catch(replay::error&) {
-						gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_ONLY);
-
-						replaying = false;
-					}
-					LOG_NG << "result of replay: " << (replaying?"true":"false") << "\n";
-				}
-
-				if(!replaying && team_it->music().empty() == false && 
-						(teams_[gui_->viewing_team()].knows_about_team(player_number-1) || teams_[gui_->viewing_team()].has_seen(player_number-1))) {
-					LOG_NG << "playing music: '" << team_it->music() << "'\n";
-					sound::play_music_repeatedly(team_it->music());
-				} else if(!replaying && team_it->music().empty() == false){
-					LOG_NG << "playing music: '" << game_config::anonymous_music<< "'\n";
-					sound::play_music_repeatedly(game_config::anonymous_music);
-				}
-				// else leave old music playing, it's a scenario specific music
-
-//goto this label if the type of a team (human/ai/networked) has changed mid-turn
-redo_turn:
-
-				if(!replaying && team_it->is_human()) {
-					LOG_NG << "is human...\n";
-
-					try {
-						play_turn(gameinfo,gamestate_,status_,game_config_,
-						          level_, key_, *gui_, map_, teams_, player_number,
-						          units_, textbox_info, replay_sender, skip_replay);
-					} catch(end_turn_exception& end_turn) {
-						if (end_turn.redo == player_number)
-							goto redo_turn;
-					}
-
-					if(game_config::debug)
-						display::clear_debug_highlights();
-
-					LOG_NG << "human finished turn...\n";
-
-				} else if(!replaying && team_it->is_ai()) {
-					LOG_NG << "is ai...\n";
-					gui_->recalculate_minimap();
-
-					const cursor::setter cursor_setter(cursor::WAIT);
-
-					turn_info turn_data(gameinfo,gamestate_,status_,
-						                game_config_,level_,key_,*gui_,
-						                map_,teams_,player_number,units_,
-								turn_info::BROWSE_AI,textbox_info,replay_sender);
-
-					ai_interface::info ai_info(*gui_,map_,gameinfo,units_,teams_,player_number,status_,turn_data);
-					util::scoped_ptr<ai_interface> ai_obj(create_ai(team_it->ai_algorithm(),ai_info));
-					ai_obj->play_turn();
-					recorder.end_turn();
-					ai_obj->sync_network();
-
-					gui_->recalculate_minimap();
-					clear_shroud(*gui_,status_,map_,gameinfo,units_,teams_,player_number-1);
-					gui_->invalidate_unit();
-					gui_->invalidate_game_status();
-					gui_->invalidate_all();
-					gui_->draw();
-					SDL_Delay(500);
-				} else if(!replaying && team_it->is_network()) {
-					LOG_NG << "is networked...\n";
-
-					turn_info turn_data(gameinfo,gamestate_,status_,
-					                    game_config_,level_,key_,*gui_,
-							    map_,teams_,player_number,units_,
-							    turn_info::BROWSE_NETWORKED,
-							    textbox_info,replay_sender);
-
-					for(;;) {
-
-						bool have_data = false;
-						config cfg;
-
-						network::connection from = network::null_connection;
-
-						if(data_backlog.empty() == false) {
-							have_data = true;
-							cfg = data_backlog.front();
-							data_backlog.pop_front();
-						} else {
-							from = network::receive_data(cfg);
-							have_data = from != network::null_connection;
-						}
-
-						if(have_data) {
-							const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg,from,data_backlog,skip_replay);
-							if(result == turn_info::PROCESS_RESTART_TURN) {
-								goto redo_turn;
-							} else if(result == turn_info::PROCESS_END_TURN) {
-								break;
-							}
-						}
-
-						turn_data.turn_slice();
-						turn_data.send_data();
-						gui_->draw();
-					}
-
-					LOG_NG << "finished networked...\n";
-				}
-
-				for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
-					if(uit->second.side() == player_number)
-						uit->second.end_turn();
-				}
-
-				//This implements "delayed map sharing." It's meant as an alternative to shared vision.
-				if(team_it->copy_ally_shroud()) {
-					gui_->recalculate_minimap();
-					gui_->invalidate_all();
-				}
-
-				game_events::pump();
-
-				check_victory(units_,teams_);
-			}
-
-			//time has run out
-			if(!status_.next_turn()) {
-
-				if(non_interactive()) {
-					std::cout << "time over (draw)\n";
-				}
-
-				LOG_NG << "firing time over event...\n";
-				game_events::fire("time over");
-				LOG_NG << "done firing time over event...\n";
-
-				throw end_level_exception(DEFEAT);
-			}
-
-			std::stringstream event_stream;
-			event_stream << status_.turn();
-
-			{
-				LOG_NG << "turn event..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
-				update_locker lock_display(gui_->video(),recorder.is_skipping());
-				const std::string turn_num = event_stream.str();
-				gamestate_.set_variable("turn_number",turn_num);
-				game_events::fire("turn " + turn_num);
-				game_events::fire("new turn");
-			}
+		for(; ; first_player_ = 0) {
+			play_turn();
 		} //end for loop
 
 	} catch(end_level_exception& end_level) {
@@ -501,11 +292,7 @@ redo_turn:
 			disconnect = true;
 		}
 
-		turn_info turn_data(gameinfo,gamestate_,status_,
-				game_config_,level_,key_,*gui_,
-				map_,teams_,player_number,units_,turn_info::BROWSE_NETWORKED,textbox_info,replay_sender);
-
-		turn_data.save_game(_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"),gui::YES_NO);
+		menu_handler_.save_game(_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"),gui::YES_NO);
 		if(disconnect) {
 			throw network::error();
 		} else {
@@ -514,4 +301,199 @@ redo_turn:
 	}
 
 	return QUIT;
+}
+
+void playsingle_controller::play_turn(){
+	gui_->new_turn();
+	gui_->invalidate_game_status();
+	events::raise_draw_event();
+
+	LOG_NG << "turn: " << current_turn_++ << "\n";
+
+	for(player_number_ = first_player_ + 1; player_number_ <= teams_.size(); player_number_++) {
+		bool replaying = (recorder.at_end() == false);
+
+		init_side(player_number_ - 1);
+		replaying = do_replay(replaying);
+		check_music(replaying);
+
+		if (!replaying){
+			play_side(player_number_);
+		}
+
+		finish_side_turn();
+		check_victory(units_,teams_);
+	}
+
+	//time has run out
+	check_time_over();
+
+	finish_turn();
+}
+
+void playsingle_controller::play_side(const int team_index){
+//goto this label if the type of a team (human/ai/networked) has changed mid-turn
+redo_turn:
+	//although this flag is used only in this method it has to be a class member
+	//since derived classes rely on it
+	player_type_changed_ = false;
+	end_turn_ = false;
+
+	if(current_team().is_human()) {
+		LOG_NG << "is human...\n";
+		try{
+			before_human_turn();
+			play_human_turn();
+			after_human_turn();
+		} catch(end_turn_exception& end_turn) {
+			if (end_turn.redo == player_number_)
+				player_type_changed_ = true;
+		}
+	
+		if(game_config::debug)
+			display::clear_debug_highlights();
+
+		LOG_NG << "human finished turn...\n";
+	} else if(current_team().is_ai()) {
+		play_ai_turn();
+	}
+
+	if (player_type_changed_) { goto redo_turn; }
+}
+
+void playsingle_controller::before_human_turn(){
+	log_scope("player turn");
+	browse_ = false;
+
+	gui_->set_team(player_number_ - 1);
+	gui_->recalculate_minimap();
+	gui_->invalidate_all();
+	gui_->draw();
+	gui_->update_display();
+
+	if(preferences::turn_bell()) {
+		sound::play_sound(game_config::sounds::turn_bell);
+	}
+
+	if(preferences::turn_dialog()) {
+		gui::show_dialog(*gui_,NULL,"",_("It is now your turn"),gui::MESSAGE);
+	}
+
+	const std::string& turn_cmd = preferences::turn_cmd();
+	if(turn_cmd.empty() == false) {
+		system(turn_cmd.c_str());
+	}
+
+	//execute gotos - first collect gotos in a list
+	std::vector<gamemap::location> gotos;
+
+	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
+		if(ui->second.get_goto() == ui->first)
+			ui->second.set_goto(gamemap::location());
+
+		if(ui->second.side() == player_number_ && map_.on_board(ui->second.get_goto()))
+			gotos.push_back(ui->first);
+	}
+
+	for(std::vector<gamemap::location>::const_iterator g = gotos.begin(); g != gotos.end(); ++g) {
+		unit_map::const_iterator ui = units_.find(*g);
+		menu_handler_.move_unit_to_loc(ui,ui->second.get_goto(),false, player_number_, mouse_handler_);
+	}
+}
+
+void playsingle_controller::play_human_turn(){
+	while(!end_turn_) {
+		play_slice();
+
+		menu_handler_.clear_undo_stack(player_number_);
+		gui_->invalidate_animations();
+		gui_->draw();
+	}
+}
+
+void playsingle_controller::after_human_turn(){
+	gui_->unhighlight_reach();
+}
+
+void playsingle_controller::play_ai_turn(){
+	LOG_NG << "is ai...\n";
+	browse_ = true;
+	gui_->recalculate_minimap();
+
+	const cursor::setter cursor_setter(cursor::WAIT);
+
+	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
+						map_,teams_,player_number_,units_,
+				turn_info::BROWSE_AI,replay_sender_);
+
+	ai_interface::info ai_info(*gui_,map_,gameinfo_,units_,teams_,player_number_,status_, turn_data);
+	util::scoped_ptr<ai_interface> ai_obj(create_ai(current_team().ai_algorithm(),ai_info));
+	ai_obj->play_turn();
+	recorder.end_turn();
+	turn_data.sync_network();
+
+	gui_->recalculate_minimap();
+	::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,player_number_-1);
+	gui_->invalidate_unit();
+	gui_->invalidate_game_status();
+	gui_->invalidate_all();
+	gui_->draw();
+	SDL_Delay(500);
+}
+
+void playsingle_controller::check_time_over(){
+	if(!status_.next_turn()) {
+
+		if(non_interactive()) {
+			std::cout << "time over (draw)\n";
+		}
+
+		LOG_NG << "firing time over event...\n";
+		game_events::fire("time over");
+		LOG_NG << "done firing time over event...\n";
+
+		throw end_level_exception(DEFEAT);
+	}
+}
+
+bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
+{
+	switch (command){
+		case hotkey::HOTKEY_UNIT_HOLD_POSITION:
+		case hotkey::HOTKEY_END_UNIT_TURN:
+		case hotkey::HOTKEY_RECRUIT:
+		case hotkey::HOTKEY_REPEAT_RECRUIT:
+		case hotkey::HOTKEY_RECALL:
+		case hotkey::HOTKEY_ENDTURN:
+			return !browse_ && !events::commands_disabled;
+
+		case hotkey::HOTKEY_DELAY_SHROUD:
+			return !browse_ && (current_team().uses_fog() || current_team().uses_shroud());
+		case hotkey::HOTKEY_UPDATE_SHROUD:
+			return !browse_ && !events::commands_disabled && current_team().auto_shroud_updates() == false;
+
+		//commands we can only do if in debug mode
+		case hotkey::HOTKEY_CREATE_UNIT:
+		case hotkey::HOTKEY_CHANGE_UNIT_SIDE:
+			return !events::commands_disabled && game_config::debug && map_.on_board(mouse_handler_.get_last_hex());
+
+		case hotkey::HOTKEY_LABEL_TERRAIN:
+			return !events::commands_disabled && map_.on_board(mouse_handler_.get_last_hex()) 
+				&& !gui_->shrouded(mouse_handler_.get_last_hex().x, mouse_handler_.get_last_hex().y) 
+				&& !is_observer();
+
+		case hotkey::HOTKEY_CONTINUE_MOVE: {
+			if(browse_ || events::commands_disabled)
+				return false;
+
+			if( (menu_handler_.current_unit(mouse_handler_) != units_.end()) 
+				&& (menu_handler_.current_unit(mouse_handler_)->second.move_interrupted()))
+				return true;
+			const unit_map::const_iterator i = units_.find(mouse_handler_.get_selected_hex());
+			if (i == units_.end()) return false;
+			return i->second.move_interrupted();
+		}
+	}
+
+	return play_controller::can_execute_command(command);
 }

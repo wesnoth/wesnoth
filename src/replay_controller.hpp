@@ -23,14 +23,13 @@
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
-#include "playlevel.hpp"
 #include "preferences_display.hpp"
 #include "tooltips.hpp"
 #include "wml_separators.hpp"
 
 #include <vector>
 
-class replay_controller : public play_controller, public hotkey::command_executor, public events::handler
+class replay_controller : public play_controller
 {
 public:
 	replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
@@ -38,9 +37,7 @@ public:
 		const std::vector<config*>& story);
 	~replay_controller();
 
-	void handle_event(const SDL_Event& event);
-	void replay_slice();
-	bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
+	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 
 	std::vector<team>& get_teams();
 	unit_map get_units();
@@ -51,15 +48,6 @@ public:
 	const bool is_loading_game();
 
 	//event handlers
-	void objectives();
-	void show_statistics();
-	void unit_list();
-	void status_table();
-	void save_game();
-	void load_game();
-	void preferences();
-	void show_chat_log();
-	void show_help();
 	void play_replay();
 	void reset_replay();
 	void stop_replay();
@@ -70,28 +58,23 @@ public:
 	void replay_skip_animation();
 
 	std::vector<team> teams_start_;
+
+protected:
+	virtual void init_gui();
+
 private:
 	void init(CVideo& video, const std::vector<config*>& story);
-	void play_turn();
-	void play_side(const int team_index);
+	virtual void play_turn();
+	virtual void play_side(const int team_index);
 	void update_teams();
 	void update_gui();
-
-	team& current_team() { return teams_[player_number_-1]; }
-	const team& current_team() const { return teams_[player_number_-1]; }
 
 	game_state& gamestate_start_;
 	gamestatus status_start_;
 	unit_map units_start_;
-	events::mouse_handler mouse_handler_;
-	events::menu_handler menu_handler_;
 
-	int player_number_;
-	int first_player_;
-	bool loading_game_;
 	int delay_;
 	bool is_playing_;
-	int current_turn_;
 };
 
 

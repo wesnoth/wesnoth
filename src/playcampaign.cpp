@@ -17,13 +17,11 @@
 #include <map>
 
 #include "playcampaign.hpp"
-#include "playlevel.hpp"
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "gamestatus.hpp"
 #include "map_create.hpp"
-//30.12.2005 YogiHH
-//please keep in for the moment, supports me in merging gameplay and replay functionality
+#include "playmp_controller.hpp"
 #include "playsingle_controller.hpp"
 #include "replay.hpp"
 #include "replay_controller.hpp"
@@ -215,6 +213,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				//level_ = scenario;
 
 				state.starting_pos = scenario2;
+				scenario = &scenario2;
 			}
 
 			std::string map_data = (*scenario)["map_data"];
@@ -239,7 +238,17 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			}
 
 			//LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story,log, skip_replay);
-			LEVEL_RESULT res = playsingle_scenario(units_data,game_config,&starting_pos,video,state,story,log, skip_replay);
+			LEVEL_RESULT res;
+			switch (io_type){
+			case IO_NONE:
+				res = playsingle_scenario(units_data,game_config,scenario,video,state,story,log, skip_replay);
+				break;
+			case IO_SERVER:
+			case IO_CLIENT:
+				res = playmp_scenario(units_data,game_config,scenario,video,state,story,log, skip_replay);
+				break;
+			}
+
 
 			state.snapshot = config();
 			if (res == DEFEAT) {

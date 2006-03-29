@@ -21,8 +21,9 @@
 #include "tstring.hpp"
 #include "unit.hpp"
 
-struct upload_log
+class upload_log
 {
+public:
 	struct manager {
 		manager() { };
 		~manager();

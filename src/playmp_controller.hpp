@@ -14,26 +14,32 @@
 #define PLAYMP_CONTROLLER_H_INCLUDED
 
 #include "hotkeys.hpp"
-#include "playlevel.hpp"
-#include "play_controller.hpp"
-#include "random.hpp"
+#include "playsingle_controller.hpp"
 
 #include <vector>
 
-class playmp_controller : public play_controller
+class playmp_controller : public playsingle_controller
 {
 public:
 	playmp_controller(const config& level, const game_data& gameinfo, game_state& state_of_game, 
-		const int ticks, const int num_turns, const config& game_config, CVideo& video);
-
-	LEVEL_RESULT play_scenario(const game_data& gameinfo, const config& terrain_config,
-		const config* level, CVideo& video,	game_state& state_of_game,
-		const std::vector<config*>& story, upload_log& log, bool skip_replay);
+		const int ticks, const int num_turns, const config& game_config, CVideo& video, bool skip_replay);
 
 protected:
-	const set_random_generator generator_setter;
-	const cursor::setter cursor_setter;
+	virtual void speak();
+	virtual void clear_labels();
+	virtual void user_command();
+	virtual bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 
+	virtual void play_side(const int team_index);
+	virtual void before_human_turn();
+	virtual void play_human_turn();
+	virtual void after_human_turn();
+	virtual void finish_side_turn();
+	bool play_network_turn();
+
+	turn_info* turn_data_;
+
+	int beep_warning_time_;
 private:
 };
 

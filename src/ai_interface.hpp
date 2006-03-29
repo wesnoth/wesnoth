@@ -75,9 +75,6 @@ public:
 	team& current_team();
 	const team& current_team() const;
 
-	///function to update network players as to what the AI has done so far this turn
-	void sync_network();
-
 	///function to show a diagnostic message on the screen
 	void diagnostic(const std::string& msg);
 

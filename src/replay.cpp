@@ -22,7 +22,6 @@
 #include "game_events.hpp"
 #include "log.hpp"
 #include "pathfind.hpp"
-#include "playlevel.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
@@ -616,7 +615,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 		//if there is nothing more in the records
 		if(cfg == NULL) {
-			replayer.set_skip(false);
+			//replayer.set_skip(false);
 			return false;
 		}
 

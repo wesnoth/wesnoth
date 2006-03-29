@@ -26,7 +26,6 @@
 #include "key.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "playlevel.hpp"
 #include "show_dialog.hpp"
 #include "thread.hpp"
 #include "language.hpp"

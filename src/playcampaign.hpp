@@ -15,7 +15,7 @@
 #ifndef PLAYCAMPAIGN_H_INCLUDED
 #define PLAYCAMPAIGN_H_INCLUDED
 
-#include "playlevel.hpp"
+#include "menu_events.hpp"
 
 class display;
 struct game_state;
