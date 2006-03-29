@@ -456,8 +456,6 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	res.rounds = attack.get_specials(to_the_death_string).highest("rounds");
 	res.defender_strikes_first = false;
 
-	static const std::string backstab_string("backstab");
-	
 	weapon_special_list plague = attack.get_specials("plague");
 	static const std::string plague_string("plague");
 	res.attacker_plague = d->second.get_state("not_living") != "yes" &&
@@ -596,6 +594,11 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			bool dmg_def_set = false;
 			bool dmg_def_mod_set = false;
 			for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
+				if((**dmg_it)["backstab"]=="yes") {
+					if(!backstab_check(d->first,a->first,units,teams)) {
+						continue;
+					}
+				}
 				if((**dmg_it)["cumulative"]=="yes") {
 					dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
 					dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"]);
@@ -756,6 +759,11 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		bool dmg_def_set = false;
 		bool dmg_def_mod_set = false;
 		for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
+				if((**dmg_it)["backstab"]=="yes") {
+					if(!backstab_check(a->first,d->first,units,teams)) {
+						continue;
+					}
+				}
 			if((**dmg_it)["cumulative"]=="yes") {
 				dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
 				dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"]);
@@ -821,6 +829,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		}
 	}
 */
+/*
 	if (attack.get_special_bool(backstab_string)) {
 		bonus *= 2;
 		if (strings) {
@@ -829,7 +838,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			strings->attack_calculations.push_back(str.str());
 		}
 	}
-
+*/
 	if (strings && resistance_modifier != 100) {
 		const int resist = resistance_modifier - 100;
 		std::stringstream str_resist;

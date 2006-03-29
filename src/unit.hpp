@@ -34,7 +34,7 @@
  * 1. The wesnoth help is _seriously_ messed up.
  * 2. Translations probably don't work.
  * 3. The modification 'set_special' doesn't work.
- * 4. [damage] and [backstab] should be merged.
+ * 4. [damage] and [backstab] should be merged. DONE
  * 
  */
 
