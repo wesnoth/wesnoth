@@ -91,7 +91,6 @@ public:
 	bool is_resting() const;
 
 	bool gets_hit(int damage);
-	void heal();
 	void heal(int amount);
 	void heal_all();
 

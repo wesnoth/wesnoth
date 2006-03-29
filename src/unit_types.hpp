@@ -217,6 +217,7 @@ public:
 	const std::vector<std::string>& ability_tooltips() const;
 
 	int heals() const;
+	bool cures() const;
 	bool regenerates() const;
 	int regenerate_amount() const;
 	bool is_leader() const;
@@ -247,7 +248,6 @@ public:
 	const death_animation& die_animation(const attack_type* attack) const;
 	const movement_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 
-	const ability_filter heals_filter() const;
 	const ability_filter regenerates_filter() const;
 	const ability_filter leadership_filter() const;
 	const ability_filter illuminates_filter() const;
@@ -275,8 +275,8 @@ private:
 
 	mutable std::string id_;
 
-	ability_filter heals_filter_;
 	int heals_;
+	bool cures_;
 
 	ability_filter regenerates_filter_;
 	bool regenerates_;

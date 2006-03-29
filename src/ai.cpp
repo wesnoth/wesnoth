@@ -1206,7 +1206,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 		//worth of healing, and doesn't regenerate itself, then try to
 		//find a vacant village for it to rest in
 		if(u.side() == team_num_ &&
-		   u.max_hitpoints() - u.hitpoints() >= game_config::cure_amount/2 &&
+		   u.max_hitpoints() - u.hitpoints() >= game_config::poison_amount/2 &&
 		   !u.type().regenerates()) {
 
 			//look for the village which is the least vulnerable to enemy attack

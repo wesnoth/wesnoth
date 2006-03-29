@@ -532,7 +532,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 
 			//if the attacker moved onto a village, reward it for doing so
 			else if(on_village) {
-				atthp += game_config::cure_amount*2; //double reward to emphasize getting onto villages
+				atthp += game_config::poison_amount*2; //double reward to emphasize getting onto villages
 			}
 
 			defenderxp += (atthp == 0 ? game_config::kill_experience:1)*att->second.type().level();
@@ -550,8 +550,8 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 			defhp = defend_it->second.hitpoints();
 		} else if(defhp == 0) {
 			chance_to_kill += 1.0;
-		} else if(map.is_village(defend_it->first)) {
-			defhp += game_config::cure_amount;
+		} else if(map.gives_healing(defend_it->first)) {
+			defhp += map.gives_healing(defend_it->first);
 			if(defhp > target_hp)
 				defhp = target_hp;
 		}

@@ -107,12 +107,12 @@ public:
 	{ return underlying_union_terrain(get_terrain(loc)); }
 
 	bool is_village(TERRAIN terrain) const;
-	bool gives_healing(TERRAIN terrain) const;
+	int gives_healing(TERRAIN terrain) const;
 	bool is_castle(TERRAIN terrain) const;
 	bool is_keep(TERRAIN terrain) const;
 
 	bool is_village(const location& loc) const;
-	bool gives_healing(const location& loc) const;
+	int gives_healing(const location& loc) const;
 	bool is_castle(const location& loc) const;
 	bool is_keep(const location& loc) const;
 

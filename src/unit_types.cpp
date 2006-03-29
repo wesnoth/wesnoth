@@ -603,7 +603,7 @@ void ability_filter::add_filters(const config* cfg)
 unit_type::unit_type(const unit_type& o)
     : variations_(o.variations_), cfg_(o.cfg_), race_(o.race_),
       alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
-      heals_filter_(o.heals_filter_), heals_(o.heals_), 
+      heals_(o.heals_), cures_(o.cures_),
       regenerates_filter_(o.regenerates_filter_),regenerates_(o.regenerates_),
       regeneration_(o.regeneration_),
       leadership_filter_(o.leadership_filter_), leadership_(o.leadership_),
@@ -708,6 +708,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	possibleTraits_.insert(possibleTraits_.end(),unit_traits.begin(),unit_traits.end());
 
 	heals_ = 0;
+	cures_ = false;
 	regenerates_ = false;
 	regeneration_ = 0;
 	steadfast_ = false;
@@ -732,20 +733,21 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	if(!deprecated_abilities.empty()) {
 		LOG_STREAM(err, config) << "unit " << id() << " uses the ability=list tag, which is deprecated\n";
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"heals") != deprecated_abilities.end()) {
-			heals_ = game_config::heal_amount;
-			heals_filter_.unfilter();
+			heals_ = 4;
 			abilities_.push_back("heals");
 			ability_tooltips_.push_back("heals");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"cures") != deprecated_abilities.end()) {
-			heals_ = game_config::cure_amount;
-			heals_filter_.unfilter();
+			heals_ = 8;
+			cures_ = true;
+			abilities_.push_back("heals");
+			ability_tooltips_.push_back("heals");
 			abilities_.push_back("cures");
 			ability_tooltips_.push_back("cures");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"regenerates") != deprecated_abilities.end()) {
 			regenerates_ = true;
-			regeneration_ = game_config::cure_amount;
+			regeneration_ = 8;
 			regenerates_filter_.unfilter();
 			abilities_.push_back("regenerates");
 			ability_tooltips_.push_back("regenerates");
@@ -809,9 +811,17 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				} else {
 					ability_tooltips_.push_back("heals");
 				}
-				heals_ = maximum<int>(heals_, lexical_cast_default<int>((**ab)["amount"],game_config::heal_amount));
-				heals_filter_.add_filters((*ab)->child("filter"));
+				if ((**ab)["amount"] == "")
+					LOG_STREAM(err, config) << "unit " << id() << " uses the [heals] tag without amount=\n";
+
+				heals_ = maximum<int>(heals_, lexical_cast<int>((**ab)["amount"]));
 			}
+		}
+		const config::child_list& cure_abilities = abil_cfg->get_children("cures");
+		if (!cure_abilities.empty()) {
+			abilities_.push_back("cures");
+			ability_tooltips_.push_back("cures");
+			cures_ = true;
 		}
 		const config::child_list& regenerate_abilities = abil_cfg->get_children("regenerates");
 		if (!regenerate_abilities.empty()) {
@@ -823,7 +833,9 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 					ability_tooltips_.push_back("regenerates");
 				}
 				regenerates_ = true;
-				regeneration_ = maximum<int>(regeneration_, lexical_cast_default<int>((**ab)["amount"],game_config::cure_amount));
+				if ((**ab)["amount"] == "")
+					LOG_STREAM(err, config) << "unit " << id() << " uses the [regenerates] tag without amount=\n";
+				regeneration_ = maximum<int>(regeneration_, lexical_cast<int>((**ab)["amount"]));
 				regenerates_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
@@ -1294,6 +1306,11 @@ int unit_type::heals() const
 	return heals_;
 }
 
+bool unit_type::cures() const
+{
+	return cures_;
+}
+
 bool unit_type::regenerates() const
 {
 	return regenerates_;
@@ -1397,10 +1414,6 @@ const std::string& unit_type::race() const
 	return race_->name();
 }
 
-const ability_filter unit_type::heals_filter() const
-{
-	return heals_filter_;
-}
 const ability_filter unit_type::regenerates_filter() const
 {
 	return regenerates_filter_;
