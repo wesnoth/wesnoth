@@ -500,11 +500,12 @@ void unit::unit_hold_position()
 void unit::end_unit_turn()
 {
 //	wassert("not done" == "done");
-//	if(movement_ == total_movement()) {
-//		movement_ = NOT_MOVED;
-//	} else if(movement_ >= 0) {
-//		movement_ = MOVED;
-//	}
+	if(movement_ == total_movement()) {
+		movement_ = 0;
+		set_state("not_moved","yes");
+	} else if(movement_ >= 0) {
+		movement_ = 0;
+	}
 }
 void unit::new_turn(const gamemap::location& loc)
 {
@@ -526,9 +527,10 @@ void unit::new_turn(const gamemap::location& loc)
 void unit::end_turn()
 {
 	set_state("slowed","");
-	if((movement_ != total_movement())) {
+	if((movement_ != total_movement()) && get_state("not_moved")!="yes") {
 		resting_ = false;
 	}
+	set_state("not_moved","");
 	//clear interrupted move
 	set_interrupted_move(gamemap::location());
 }
