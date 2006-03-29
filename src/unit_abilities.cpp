@@ -509,7 +509,7 @@ std::pair<int,gamemap::location> unit_ability_list::lowest(const std::string& ke
 
 bool attack_type::get_special_bool(const std::string& special,bool force) const
 {
-	log_scope("get_special_bool");
+//	log_scope("get_special_bool");
 	const config* specials = cfg_.child("specials");
 	if(specials) {
 		const config::child_list& list = specials->get_children(special);
@@ -534,7 +534,7 @@ bool attack_type::get_special_bool(const std::string& special,bool force) const
 }
 weapon_special_list attack_type::get_specials(const std::string& special) const
 {
-	log_scope("get_specials");
+//	log_scope("get_specials");
 	weapon_special_list res;
 	const config* specials = cfg_.child("specials");
 	if(specials) {
@@ -560,7 +560,7 @@ weapon_special_list attack_type::get_specials(const std::string& special) const
 }
 std::vector<std::string> attack_type::special_tooltips() const
 {
-	log_scope("special_tooltips");
+//	log_scope("special_tooltips");
 	std::vector<std::string> res;
 	const config* specials = cfg_.child("specials");
 	if(specials) {
@@ -585,7 +585,7 @@ std::vector<std::string> attack_type::special_tooltips() const
 }
 std::string attack_type::weapon_specials(bool force) const
 {
-	log_scope("weapon_specials");
+//	log_scope("weapon_specials");
 	std::string res;
 	const config* specials = cfg_.child("specials");
 	if(specials) {
@@ -619,7 +619,7 @@ std::string attack_type::weapon_specials(bool force) const
  */
 bool attack_type::special_active(const config& cfg,bool self) const
 {
-	log_scope("special_active");
+//	log_scope("special_active");
 	wassert(unitmap_ != NULL);
 	unit_map::const_iterator att = unitmap_->find(aloc_);
 	unit_map::const_iterator def = unitmap_->find(dloc_);
@@ -801,7 +801,7 @@ bool attack_type::special_active(const config& cfg,bool self) const
  */
 bool attack_type::special_affects_opponent(const config& cfg) const
 {
-	log_scope("special_affects_opponent");
+//	log_scope("special_affects_opponent");
 	if(cfg["apply_to"]=="opponent") {
 		return true;
 	}
@@ -822,7 +822,7 @@ bool attack_type::special_affects_opponent(const config& cfg) const
  */
 bool attack_type::special_affects_self(const config& cfg) const
 {
-	log_scope("special_affects_self");
+//	log_scope("special_affects_self");
 	if(cfg["apply_to"]=="self" || cfg["apply_to"]=="") {
 		return true;
 	}
