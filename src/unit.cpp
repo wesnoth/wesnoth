@@ -512,11 +512,11 @@ void unit::new_turn(const gamemap::location& loc)
 	movement_ = total_movement();
 	attacks_left_ = max_attacks_;
 	if(get_ability_bool("hides",loc)) {
-		set_state("hides","true");
+		set_state("hides","yes");
 	} else {
 		set_state("hides","");
 	}
-	if(get_state("stoned")=="true") {
+	if(get_state("stoned")=="yes") {
 		set_attacks(0);
 	}
 	if (hold_position_) {
@@ -2123,7 +2123,7 @@ void unit::add_modification(const std::string& type, const config& mod,
 			const std::string& remove = (**i.first)["remove"];
 
 			if(add.empty() == false) {
-				set_state(add,"true");
+				set_state(add,"yes");
 			}
 
 			if(remove.empty() == false) {
@@ -2456,7 +2456,7 @@ bool unit::invisible(const std::string& terrain, int lawful_bonus,
 	bool is_inv = false;
 
 	static const std::string hides("hides");
-	if (get_state(hides)=="true") {
+	if (get_state(hides)=="yes") {
 		is_inv = this->get_ability_bool("hides",loc);
 	}
 

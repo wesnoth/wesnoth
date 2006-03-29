@@ -405,7 +405,7 @@ void turn_info::mouse_motion(int x, int y)
 		                                     attack_from.valid())) {
 			if(mouseover_unit == units_.end()) {
 				cursor::set(cursor::MOVE);
-			} else if(viewing_team().is_enemy(mouseover_unit->second.side()) && mouseover_unit->second.get_state("stoned")!="true") {
+			} else if(viewing_team().is_enemy(mouseover_unit->second.side()) && mouseover_unit->second.get_state("stoned")!="yes") {
 				cursor::set(cursor::ATTACK);
 			} else {
 				cursor::set(cursor::NORMAL);
@@ -430,7 +430,7 @@ void turn_info::mouse_motion(int x, int y)
 
 			unit_map::const_iterator un = find_unit(selected_hex_);
 
-			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && un->second.get_state("stoned")!="true") {
+			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && un->second.get_state("stoned")!="yes") {
 				const shortest_path_calculator calc(un->second,viewing_team(),
 				                                    visible_units(),teams_,map_,status_);
 				const bool can_teleport = un->second.get_ability_bool("teleport",un->first);
@@ -916,7 +916,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 				u = find_unit(attack_from);
 				// enemy = find_unit(hex);
 				if(u != units_.end() && u->second.side() == team_num_ &&
-				   enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && enemy->second.get_state("stoned")!="true") {
+				   enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && enemy->second.get_state("stoned")!="yes") {
 					if(attack_enemy(u,enemy) == false) {
 						undo();
 						selected_hex_ = src;
@@ -1011,7 +1011,7 @@ void turn_info::show_attack_options(unit_map::const_iterator u)
 
 	for(unit_map::const_iterator target = units_.begin(); target != units_.end(); ++target) {
 		if(current_team.is_enemy(target->second.side()) &&
-			distance_between(target->first,u->first) == 1 && target->second.get_state("stoned")!="true") {
+			distance_between(target->first,u->first) == 1 && target->second.get_state("stoned")!="yes") {
 			current_paths_.routes[target->first] = paths::route();
 		}
 	}
@@ -2829,7 +2829,7 @@ void turn_info::show_enemy_moves(bool ignore_units)
 											 .lawful_bonus,
 											 u->first, units_, teams_);
 
-		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y) && u->second.get_state("stoned")!="true" && !invisible) {
+		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y) && u->second.get_state("stoned")!="yes" && !invisible) {
 			const unit_movement_resetter move_reset(u->second);
 			const bool is_skirmisher = u->second.get_ability_bool("skirmisher",u->first);
 			const bool teleports = u->second.get_ability_bool("teleport",u->first);

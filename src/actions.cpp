@@ -230,7 +230,7 @@ gamemap::location under_leadership(const units_map& units,
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if(it != units.end() && (int)it->second.side() == side &&
 			it->second.get_ability_bool("leader",adjacent[i]) &&
-			it->second.get_state("stoned") != "true") {
+			it->second.get_state("stoned") != "yes") {
 			current_bonus = maximum<int>(current_bonus,it->second.get_abilities("leadership",adjacent[i]).highest("value"));
 			if(current_bonus != bonus_tracker) {
 				best_loc = adjacent[i];
@@ -408,7 +408,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 					bonus += leader_bonus;
 		
 				}
-				if (d->second.get_state("slowed") == "true") {
+				if (d->second.get_state("slowed") == "yes") {
 					divisor *= 2;
 				}
 		
@@ -460,7 +460,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	
 	weapon_special_list plague = attack.get_specials("plague");
 	static const std::string plague_string("plague");
-	res.attacker_plague = d->second.get_state("not_living") != "true" &&
+	res.attacker_plague = d->second.get_state("not_living") != "yes" &&
 	  (!plague.empty()) &&
 	  strcmp(d->second.undead_variation().c_str(),"null") &&
 	  !map.is_village(defender);
@@ -661,7 +661,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			}
 		}
 */
-		if (d->second.get_state("slowed") == "true") {
+		if (d->second.get_state("slowed") == "yes") {
 			divisor *= 2;
 			if (strings) {
 				std::stringstream str;
@@ -716,12 +716,12 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 		//if the defender drains, and the attacker is a living creature, then
 		//the defender will drain for half the damage it does
-		if (defend.get_special_bool("drains") && a->second.get_state("not_living") != "true") {
+		if (defend.get_special_bool("drains") && a->second.get_state("not_living") != "yes") {
 			res.amount_defender_drains = res.damage_attacker_takes/2;
 		}
 
 		weapon_special_list defend_plague = attack.get_specials("plague");
-		res.defender_plague = a->second.get_state("not_living") != "true" &&
+		res.defender_plague = a->second.get_state("not_living") != "yes" &&
 		  (!defend_plague.empty()) &&
 		  strcmp(a->second.undead_variation().c_str(),"null") &&
 		  !map.is_village(attacker);
@@ -845,7 +845,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	}
 
-	if (a->second.get_state("slowed") == "true") {
+	if (a->second.get_state("slowed") == "yes") {
 		divisor *= 2;
 
 		if (strings) {
@@ -871,7 +871,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	//if the attacker drains, and the defender is a living creature, then
 	//the attacker will drain for half the damage it does
-	if(attack.get_special_bool("drains") && d->second.get_state("not_living") != "true") {
+	if(attack.get_special_bool("drains") && d->second.get_state("not_living") != "yes") {
 		res.amount_attacker_drains = res.damage_defender_takes/2;
 	}
 
@@ -1195,19 +1195,19 @@ void attack(display& gui, const gamemap& map,
 				break;
 			} else if(hits) {
 				if (stats.attacker_poisons &&
-				   d->second.get_state("poisoned") != "true" &&
-				   d->second.get_state("not_living") != "true") {
+				   d->second.get_state("poisoned") != "yes" &&
+				   d->second.get_state("not_living") != "yes") {
 					if (update_display){
 						gui.float_label(d->first,_("poisoned"),255,0,0);
 					}
-					d->second.set_state("poisoned","true");
+					d->second.set_state("poisoned","yes");
 				}
 
-				if(stats.attacker_slows && d->second.get_state("slowed") != "true") {
+				if(stats.attacker_slows && d->second.get_state("slowed") != "yes") {
 					if (update_display){
 						gui.float_label(d->first,_("slowed"),255,0,0);
 					}
-					d->second.set_state("slowed","true");
+					d->second.set_state("slowed","yes");
 					stats.damage_attacker_takes = round_damage(stats.damage_attacker_takes,1,2);
 				}
 
@@ -1217,7 +1217,7 @@ void attack(display& gui, const gamemap& map,
 					if (update_display){
 						gui.float_label(d->first,_("stone"),255,0,0);
 					}
-					d->second.set_state("stoned","true");
+					d->second.set_state("stoned","yes");
 					stats.ndefends = 0;
 					stats.nattacks = 0;
 					game_events::fire(stone_string,d->first,a->first);
@@ -1432,19 +1432,19 @@ void attack(display& gui, const gamemap& map,
 				break;
 			} else if(hits) {
 				if (stats.defender_poisons &&
-				   a->second.get_state("poisoned") != "true" &&
-				   a->second.get_state("not_living") != "true") {
+				   a->second.get_state("poisoned") != "yes" &&
+				   a->second.get_state("not_living") != "yes") {
 					if (update_display){
 						gui.float_label(a->first,_("poisoned"),255,0,0);
 					}
-					a->second.set_state("poisoned","true");
+					a->second.set_state("poisoned","yes");
 				}
 
-				if(stats.defender_slows && a->second.get_state("slowed") != "true") {
+				if(stats.defender_slows && a->second.get_state("slowed") != "yes") {
 					if (update_display){
 						gui.float_label(a->first,_("slowed"),255,0,0);
 					}
-					a->second.set_state("slowed","true");
+					a->second.set_state("slowed","yes");
 					stats.damage_defender_takes = round_damage(stats.damage_defender_takes,1,2);
 				}
 
@@ -1455,7 +1455,7 @@ void attack(display& gui, const gamemap& map,
 					if (update_display){
 						gui.float_label(a->first,_("stone"),255,0,0);
 					}
-					a->second.set_state("stoned","true");
+					a->second.set_state("stoned","yes");
 					stats.ndefends = 0;
 					stats.nattacks = 0;
 					game_events::fire(stone_string,a->first,d->first);
@@ -1643,7 +1643,7 @@ unit_map::iterator find_healer(const gamemap::location &loc, std::map<gamemap::l
 	for (unsigned int n = 0; n != 6U; ++n) {
 		unit_map::iterator i = units.find(adjacent[n]);
 		if (i != units.end()) {
-			if (i->second.get_state("stoned")=="true")
+			if (i->second.get_state("stoned")=="yes")
 				continue;
 			if (i->second.side() != side)
 				continue;
@@ -1674,7 +1674,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		if (teams[i->second.side()-1].is_enemy(side))
 			continue;
 
-		if (i->second.get_state("healable") == "false")
+		if (i->second.get_state("healable") == "no")
 			continue;
 
 		patient p(i->second, i->first,i->second.side() != side);
@@ -1882,7 +1882,7 @@ const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,c
 		for(int i = 0; i != 7; ++i) {
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if(itor != units.end() &&
-			   itor->second.get_ability_bool("illuminates",itor->first) && itor->second.get_state("stoned")!="true") {
+			   itor->second.get_ability_bool("illuminates",itor->first) && itor->second.get_state("stoned")!="yes") {
 				lighten = maximum<int>(itor->second.get_abilities("illuminates",itor->first).highest("value").first, lighten);
 				darken = minimum<int>(itor->second.get_abilities("illuminates",itor->first).lowest("value").first, darken);
 			}
@@ -2334,7 +2334,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 		if(map.on_board(locs[n])) {
 			const unit_map::const_iterator i = units.find(locs[n]);
 			if(i != units.end()) {
-				if(i->second.get_state("stoned")!="true" && current_team.is_enemy(i->second.side())) {
+				if(i->second.get_state("stoned")!="yes" && current_team.is_enemy(i->second.side())) {
 					return true;
 				}
 			}
@@ -2422,7 +2422,7 @@ bool backstab_check(const gamemap::location& attacker_loc,
 	const units_map::const_iterator opp =
 		units.find(adj[(i+3)%6]);
 	if(opp == units.end()) return false; // No opposite unit
-	if(opp->second.get_state("stoned") == "true") return false;
+	if(opp->second.get_state("stoned") == "yes") return false;
 	if(size_t(defender->second.side()-1) >= teams.size() ||
 		size_t(opp->second.side()-1) >= teams.size())
 		return true; // If sides aren't valid teams, then they are enemies

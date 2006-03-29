@@ -398,7 +398,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 	//find the first eligible unit
 	for(u = units_.begin(); u != units_.end(); ++u) {
-		if(!(u->second.side() != team_num_ || u->second.can_recruit() || u->second.movement_left() <= 0 || u->second.get_state("stoned")=="true")) {
+		if(!(u->second.side() != team_num_ || u->second.can_recruit() || u->second.movement_left() <= 0 || u->second.get_state("stoned")=="yes")) {
 			break;
 		}
 	}
@@ -409,7 +409,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	}
 
 	//guardian units stay put
-	if(u->second.get_state("guardian")=="true") {
+	if(u->second.get_state("guardian")=="yes") {
 		LOG_AI << u->second.id() << " is guardian, staying still\n";
 		return std::pair<location,location>(u->first,u->first);
 	}
@@ -499,7 +499,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
 			if(u->second.side() != team_num_ || u->second.can_recruit() ||
-			   u->second.movement_left() <= 0 || u->second.get_state("guardian")=="true" || u->second.get_state("stoned")=="true") {
+			   u->second.movement_left() <= 0 || u->second.get_state("guardian")=="yes" || u->second.get_state("stoned")=="yes") {
 				continue;
 			}
 

@@ -89,7 +89,7 @@ void mouse_handler::mouse_motion(int x, int y)
 		                                     attack_from.valid())) {
 			if(mouseover_unit == units_.end()) {
 				cursor::set(cursor::MOVE);
-			} else if(current_team().is_enemy(mouseover_unit->second.side()) && mouseover_unit->second.get_state("stoned")!="true") {
+			} else if(current_team().is_enemy(mouseover_unit->second.side()) && mouseover_unit->second.get_state("stoned")!="yes") {
 				cursor::set(cursor::ATTACK);
 			} else {
 				cursor::set(cursor::NORMAL);
@@ -114,7 +114,7 @@ void mouse_handler::mouse_motion(int x, int y)
 
 			unit_map::const_iterator un = find_unit(selected_hex_);
 
-			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && un->second.get_state("stoned")!="true") {
+			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && un->second.get_state("stoned")!="yes") {
 				const shortest_path_calculator calc(un->second,current_team(), visible_units(),teams_,map_,status_);
 				const bool can_teleport = un->second.get_ability_bool("teleport",un->first);
 
@@ -409,7 +409,7 @@ void mouse_handler::show_attack_options(unit_map::const_iterator u)
 
 	for(unit_map::const_iterator target = units_.begin(); target != units_.end(); ++target) {
 		if(current_team.is_enemy(target->second.side()) &&
-			distance_between(target->first,u->first) == 1 && target->second.get_state("stoned")!="true") {
+			distance_between(target->first,u->first) == 1 && target->second.get_state("stoned")!="yes") {
 			current_paths_.routes[target->first] = paths::route();
 		}
 	}
