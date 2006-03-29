@@ -1595,20 +1595,24 @@ struct patient
 	// Are we an ally?  In which case we only get healed.
 	bool ally;
 
-	void heal(int amount, bool allies_too);
+	void heal(int amount, bool allies_too, const std::string& poison_action);
 	void harm(int amount);
 	void rest();
 };
 
-void patient::heal(int amount, bool allies_too)
+void patient::heal(int amount, bool allies_too, const std::string& poison_action)
 {
 	if (ally && !allies_too)
 		return;
 
 	if (u.get_state("poisoned")=="yes") {
-		if (amount >= game_config::cure_amount)
+		if (poison_action == "cured") {
 			u.set_state("poisoned","");
-		poison_stopped = true;
+			poison_stopped = true;
+		}
+		if (poison_action == "slowed") {
+			poison_stopped = true;
+		}
 	} else {
 		healing = minimum(u.max_hitpoints() - u.hitpoints(), amount);
 		std::cerr << "healing by " << lexical_cast<std::string>(healing) << " of potential " 
@@ -1636,24 +1640,9 @@ void patient::rest()
 unit_map::iterator find_healer(const gamemap::location &loc, std::map<gamemap::location,unit>& units,
 							   unsigned int side)
 {
-	gamemap::location adjacent[6];
-	unit_map::iterator healer = units.end();
-
-	get_adjacent_tiles(loc, adjacent);
-	for (unsigned int n = 0; n != 6U; ++n) {
-		unit_map::iterator i = units.find(adjacent[n]);
-		if (i != units.end()) {
-			if (i->second.get_state("stoned")=="yes")
-				continue;
-			if (i->second.side() != side)
-				continue;
-			int healing = i->second.get_abilities("heals",i->first).highest("value").first;
-			if (healer == units.end() || healing > healer->second.get_abilities("heals",healer->first).highest("value").first)
-				healer = i;
-		}
-	}
+	unit_map::iterator patient = units.find(loc);
+	unit_map::iterator healer = units.find(patient->second.get_abilities("heals",patient->first).highest("value").second);
 	return healer;
-}
 }
 
 void reset_resting(std::map<gamemap::location,unit>& units, unsigned int side)
@@ -1680,16 +1669,36 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		patient p(i->second, i->first,i->second.side() != side);
 		unit_map::iterator healer = units.end();
 		
-		// FIXME: regenerates shouldn't prevent healing?
-		int regen = p.u.get_abilities("regenerate",p.l).highest("value").first;
-		if (regen)
-			p.heal(regen, false);
-		else if (map.gives_healing(i->first))
-			p.heal(game_config::cure_amount, false);
-		else {
-			healer = find_healer(i->first, units, side);
-			if (healer != units.end())
-				p.heal(healer->second.get_abilities("heals",healer->first).highest("value").first, true);
+		int healing = 0;
+		std::string curing;
+		if(!p.ally) {
+			unit_ability_list regen = p.u.get_abilities("regenerate",p.l);
+			healing = maximum<int>(healing,regen.highest("value").first);
+			for(std::vector<std::pair<config*,gamemap::location> >::const_iterator regen_it = regen.cfgs.begin(); regen_it != regen.cfgs.end(); ++regen_it) {
+				if((*regen_it->first)["poison"] == "cured") {
+					curing = "cured";
+				} else if(curing != "cured" && (*regen_it->first)["poison"] == "slowed") {
+					curing = "slowed";
+				}
+			}
+			if (map.gives_healing(i->first)) {
+				healing = maximum<int>(healing,game_config::cure_amount);	
+			}
+		}
+		healer = find_healer(i->first, units, side);
+		if (healer != units.end()) {
+			unit_ability_list heal = p.u.get_abilities("heals",p.l);
+			healing = maximum<int>(healing,heal.highest("value").first);
+			for(std::vector<std::pair<config*,gamemap::location> >::const_iterator heal_it = heal.cfgs.begin(); heal_it != heal.cfgs.end(); ++heal_it) {
+				if((*heal_it->first)["poison"] == "cured") {
+					curing = "cured";
+				} else if(curing != "cured" && (*heal_it->first)["poison"] == "slowed") {
+					curing = "slowed";
+				}
+			}
+		}
+		if(healing || curing != "") {
+			p.heal(healing,true,curing);
 		}
 		if (p.u.get_state("poisoned")=="yes" && !p.poison_stopped)
 			p.harm(game_config::cure_amount);
