@@ -606,17 +606,6 @@ void ability_filter::add_filters(const config* cfg)
 unit_type::unit_type(const unit_type& o)
     : variations_(o.variations_), cfg_(o.cfg_), race_(o.race_),
       alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
-      heals_filter_(o.heals_filter_), heals_(o.heals_), 
-      regenerates_filter_(o.regenerates_filter_),regenerates_(o.regenerates_),
-      regeneration_(o.regeneration_),
-      leadership_filter_(o.leadership_filter_), leadership_(o.leadership_),
-      leadership_percent_(o.leadership_percent_),
-      illuminates_filter_(o.illuminates_filter_), illuminates_(o.illuminates_),
-      skirmisher_filter_(o.skirmisher_filter_), skirmish_(o.skirmish_),
-      teleports_filter_(o.teleports_filter_), teleport_(o.teleport_),
-      steadfast_filter_(o.steadfast_filter_), steadfast_(o.steadfast_),
-      steadfast_bonus_(o.steadfast_bonus_),steadfast_max_(o.steadfast_max_),
-      hides_filter_(o.hides_filter_), hides_(o.hides_),
       advances_to_(o.advances_to_), experience_needed_(o.experience_needed_),
       alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
@@ -710,18 +699,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	const config::child_list& unit_traits = cfg.get_children("trait");
 	possibleTraits_.insert(possibleTraits_.end(),unit_traits.begin(),unit_traits.end());
 
-	heals_ = 0;
-	regenerates_ = false;
-	regeneration_ = 0;
-	steadfast_ = false;
-	steadfast_bonus_ = 0;
-	steadfast_max_ = 0;
-	skirmish_ = false;
-	teleport_ = false;
-	illuminates_ = 0;
-	leadership_ = false;
-	hides_ = false;
-
 	/* handle deprecated ability=x,y,... */
 
 	std::vector<std::string> deprecated_abilities = utils::split(cfg_["ability"]);
@@ -735,67 +712,42 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	if(!deprecated_abilities.empty()) {
 		LOG_STREAM(err, config) << "unit " << id() << " uses the ability=list tag, which is deprecated\n";
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"heals") != deprecated_abilities.end()) {
-			heals_ = game_config::heal_amount;
-			heals_filter_.unfilter();
 			abilities_.push_back("heals");
 			ability_tooltips_.push_back("heals");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"cures") != deprecated_abilities.end()) {
-			heals_ = game_config::cure_amount;
-			heals_filter_.unfilter();
 			abilities_.push_back("cures");
 			ability_tooltips_.push_back("cures");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"regenerates") != deprecated_abilities.end()) {
-			regenerates_ = true;
-			regeneration_ = game_config::cure_amount;
-			regenerates_filter_.unfilter();
 			abilities_.push_back("regenerates");
 			ability_tooltips_.push_back("regenerates");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"steadfast") != deprecated_abilities.end()) {
-			steadfast_ = true;
-			steadfast_bonus_ = 100;
-			steadfast_max_ = 50;
-			steadfast_percent_ = true;
-			steadfast_filter_.unfilter();
 			abilities_.push_back("steadfast");
 			ability_tooltips_.push_back("steadfast");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"teleport") != deprecated_abilities.end()) {
-			teleport_ = true;
-			teleports_filter_.unfilter();
 			abilities_.push_back("teleport");
 			ability_tooltips_.push_back("teleport");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"skirmisher") != deprecated_abilities.end()) {
-			skirmish_ = true;
-			skirmisher_filter_.unfilter();
 			abilities_.push_back("skirmisher");
 			ability_tooltips_.push_back("skirmisher");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"leadership") != deprecated_abilities.end()) {
-			leadership_ = true;
-			leadership_percent_ = game_config::leadership_bonus;
-			leadership_filter_.unfilter();
 			abilities_.push_back("leadership");
 			ability_tooltips_.push_back("leadership");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"illuminates") != deprecated_abilities.end()) {
-			illuminates_ = 1;
-			illuminates_filter_.unfilter();
 			abilities_.push_back("illuminates");
 			ability_tooltips_.push_back("illuminates");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"ambush") != deprecated_abilities.end()) {
-			hides_ = true;
-			hides_filter_.add_terrain_filter("f");
 			abilities_.push_back("ambush");
 			ability_tooltips_.push_back("ambush");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"nightstalk") != deprecated_abilities.end()) {
-			hides_ = true;
-			hides_filter_.add_tod_filter("chaotic");
 			abilities_.push_back("nightstalk");
 			ability_tooltips_.push_back("nightstalk");
 		}
@@ -812,8 +764,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				} else {
 					ability_tooltips_.push_back("heals");
 				}
-				heals_ = maximum<int>(heals_, lexical_cast_default<int>((**ab)["amount"],game_config::heal_amount));
-				heals_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
 		const config::child_list& regenerate_abilities = abil_cfg->get_children("regenerates");
@@ -825,9 +775,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				} else {
 					ability_tooltips_.push_back("regenerates");
 				}
-				regenerates_ = true;
-				regeneration_ = maximum<int>(regeneration_, lexical_cast_default<int>((**ab)["amount"],game_config::cure_amount));
-				regenerates_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
 		const config::child_list& steadfast_abilities = abil_cfg->get_children("steadfast");
@@ -839,16 +786,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				} else {
 					ability_tooltips_.push_back("steadfast");
 				}
-				steadfast_ = true;
-				steadfast_bonus_ = maximum<int>(steadfast_bonus_,lexical_cast_default<int>((**ab)["bonus"],100));
-				steadfast_max_ = maximum<int>(steadfast_max_,lexical_cast_default<int>((**ab)["max"],50));
-				std::string steadfast_ispercent = (**ab)["bonus"];
-				if(steadfast_ispercent != "" && steadfast_ispercent[steadfast_ispercent.size()-1] == '%') {
-					steadfast_percent_ = true;
-				} else {
-					steadfast_percent_ = false;
-				}
-				steadfast_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
 		const config::child_list& leadership_abilities = abil_cfg->get_children("leadership");
@@ -860,9 +797,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				} else {
 					ability_tooltips_.push_back("leadership");
 				}
-				leadership_ = true;
-				leadership_percent_ = lexical_cast_default<int>((**ab)["perlevel_bonus"],game_config::leadership_bonus);
-				leadership_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
 		const config::child_list& skirmisher_abilities = abil_cfg->get_children("skirmisher");
@@ -874,8 +808,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				} else {
 					ability_tooltips_.push_back("skirmisher");
 				}
-				skirmish_ = true;
-				skirmisher_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
 		const config::child_list& illuminate_abilities = abil_cfg->get_children("illuminates");
@@ -887,8 +819,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				} else {
 					ability_tooltips_.push_back("illuminates");
 				}
-				illuminates_ += lexical_cast_default<int>((**ab)["level"],1);
-				illuminates_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
 		const config::child_list& teleport_abilities = abil_cfg->get_children("teleport");
@@ -900,8 +830,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				} else {
 					ability_tooltips_.push_back("teleport");
 				}
-				teleport_ = true;
-				teleports_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
 		const config::child_list& hide_abilities = abil_cfg->get_children("hides");
@@ -913,8 +841,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				} else {
 					ability_tooltips_.push_back("hides");
 				}
-				hides_ = true;
-				hides_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
 	}
@@ -1292,73 +1218,6 @@ const std::vector<std::string>& unit_type::ability_tooltips() const
 	return ability_tooltips_;
 }
 
-int unit_type::heals() const
-{
-	return heals_;
-}
-
-bool unit_type::regenerates() const
-{
-	return regenerates_;
-}
-
-int unit_type::regenerate_amount() const
-{
-	return regeneration_;
-}
-
-
-bool unit_type::is_leader() const
-{
-	return leadership_;
-}
-
-int unit_type::leadership(int led_level) const
-{
-	char key[24]; // level[x]
-	snprintf(key,sizeof(key),"level_%d",led_level);
-	const config* abilities=cfg_.child("abilities");
-	const config* leadership_ability=abilities ? abilities->child("leadership") : NULL;
-	if(leadership_ability) {
-		if((*leadership_ability)[key] != "") {
-			return lexical_cast_default<int>((*leadership_ability)[key]);
-		}
-	}
-	return maximum<int>(0,leadership_percent_*(level()-led_level));
-}
-
-int unit_type::illuminates() const
-{
-	return illuminates_;
-}
-
-bool unit_type::is_skirmisher() const
-{
-	return skirmish_;
-}
-
-bool unit_type::teleports() const
-{
-	return teleport_;
-}
-
-bool unit_type::steadfast() const
-{
-	return steadfast_;
-}
-
-int unit_type::steadfast_bonus() const
-{
-	return steadfast_bonus_;
-}
-int unit_type::steadfast_max() const
-{
-	return steadfast_max_;
-}
-bool unit_type::steadfast_ispercent() const
-{
-	return steadfast_percent_;
-}
 
 bool unit_type::not_living() const
 {
@@ -1400,38 +1259,6 @@ const std::string& unit_type::race() const
 	return race_->name();
 }
 
-const ability_filter unit_type::heals_filter() const
-{
-	return heals_filter_;
-}
-const ability_filter unit_type::regenerates_filter() const
-{
-	return regenerates_filter_;
-}
-const ability_filter unit_type::leadership_filter() const
-{
-	return leadership_filter_;
-}
-const ability_filter unit_type::illuminates_filter() const
-{
-	return illuminates_filter_;
-}
-const ability_filter unit_type::skirmisher_filter() const
-{
-	return skirmisher_filter_;
-}
-const ability_filter unit_type::teleports_filter() const
-{
-	return teleports_filter_;
-}
-const ability_filter unit_type::steadfast_filter() const
-{
-	return steadfast_filter_;
-}
-const ability_filter unit_type::hides_filter() const
-{
-	return hides_filter_;
-}
 
 const defensive_animation& unit_type::defend_animation(bool hits, std::string range) const
 {

@@ -14,6 +14,8 @@
 #include "global.hpp"
 #include "tstring.hpp"
 #include "config.hpp"
+#include "log.hpp"
+#include "util.hpp"
 #include "terrain.hpp"
 
 #include <algorithm>
@@ -68,7 +70,12 @@ terrain_type::terrain_type(const config& cfg)
 
 	light_modification_ = atoi(cfg["light"].c_str());
 
-	heals_ = cfg["heals"] == "true";
+	if (cfg["heals"] == "true") {
+		LOG_STREAM(err, config) << "terrain " << id() << " uses heals=true which is deprecated (use number)\n";
+		heals_ = 8;
+	} else {
+		heals_ = lexical_cast_default<int>(cfg["heals"], 0);
+	}
 	village_ = cfg["gives_income"] == "true";
 	castle_ = cfg["recruit_onto"] == "true";
 	keep_ = cfg["recruit_from"] == "true";
@@ -130,7 +137,7 @@ double terrain_type::unit_submerge() const
 	return submerge_;
 }
 
-bool terrain_type::gives_healing() const
+int terrain_type::gives_healing() const
 {
 	return heals_;
 }

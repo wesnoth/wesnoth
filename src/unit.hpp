@@ -141,7 +141,6 @@ class unit
 		void refresh() {if(anim_ && !refreshing_) anim_->update_current_frame(); }
 		
 		bool take_hit(int damage);
-		void heal();
 		void heal(int amount);
 		void heal_all();
 		bool resting() const;

@@ -44,7 +44,7 @@ public:
 	int unit_height_adjust() const;
 	double unit_submerge() const;
 
-	bool gives_healing() const;
+	int gives_healing() const;
 	bool is_village() const;
 	bool is_castle() const;
 	bool is_keep() const;
@@ -66,9 +66,9 @@ private:
 
 	double submerge_;
 
-	int light_modification_;
+	int light_modification_, heals_;
 
-	bool heals_, village_, castle_, keep_;
+	bool village_, castle_, keep_;
 };
 
 void create_terrain_maps(const std::vector<config*>& cfgs,

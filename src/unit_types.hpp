@@ -254,18 +254,6 @@ public:
 	const std::vector<std::string>& abilities() const;
 	const std::vector<std::string>& ability_tooltips() const;
 
-	int heals() const;
-	bool regenerates() const;
-	int regenerate_amount() const;
-	bool is_leader() const;
-	int leadership(int led_level) const;
-	int illuminates() const;
-	bool is_skirmisher() const;
-	bool teleports() const;
-	bool steadfast() const;
-	int steadfast_bonus() const;
-	bool steadfast_ispercent() const;
-	int steadfast_max() const;
 	bool not_living() const;
 	bool can_advance() const;
 
@@ -284,15 +272,6 @@ public:
 	const unit_animation* extra_animation(std::string flag) const;
 	const death_animation& die_animation(const attack_type* attack) const;
 	const movement_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
-
-	const ability_filter heals_filter() const;
-	const ability_filter regenerates_filter() const;
-	const ability_filter leadership_filter() const;
-	const ability_filter illuminates_filter() const;
-	const ability_filter skirmisher_filter() const;
-	const ability_filter teleports_filter() const;
-	const ability_filter steadfast_filter() const;
-	const ability_filter hides_filter() const;
 
 private:
 	void operator=(const unit_type& o);
@@ -313,34 +292,6 @@ private:
 
 	mutable std::string id_;
 
-	ability_filter heals_filter_;
-	int heals_;
-
-	ability_filter regenerates_filter_;
-	bool regenerates_;
-	int regeneration_;
-
-	ability_filter leadership_filter_;
-	bool leadership_;
-	int leadership_percent_;
-
-	ability_filter illuminates_filter_;
-	int illuminates_;
-
-	ability_filter skirmisher_filter_;
-	bool skirmish_;
-
-	ability_filter teleports_filter_;
-	bool teleport_;
-
-	ability_filter steadfast_filter_;
-	bool steadfast_;
-	int steadfast_bonus_;
-	int steadfast_max_;
-	bool steadfast_percent_;
-
-	ability_filter hides_filter_;
-	bool hides_;
 	bool zoc_;
 
     std::vector<std::string> advances_to_;

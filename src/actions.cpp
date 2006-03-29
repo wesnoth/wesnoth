@@ -1635,7 +1635,7 @@ void patient::rest()
 	healing += minimum(u.max_hitpoints() - (u.hitpoints() + healing), game_config::rest_heal_amount);
 	std::cerr << "resting by " << lexical_cast<std::string>(minimum(u.max_hitpoints() - (u.hitpoints() + healing), game_config::rest_heal_amount)) << "\n";
 }
-
+}
 // Find the best adjacent healer.
 unit_map::iterator find_healer(const gamemap::location &loc, std::map<gamemap::location,unit>& units,
 							   unsigned int side)
@@ -1682,7 +1682,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				}
 			}
 			if (map.gives_healing(i->first)) {
-				healing = maximum<int>(healing,game_config::cure_amount);	
+				healing = maximum<int>(healing,map.gives_healing(i->first));	
 			}
 		}
 		healer = find_healer(i->first, units, side);
@@ -1701,7 +1701,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			p.heal(healing,true,curing);
 		}
 		if (p.u.get_state("poisoned")=="yes" && !p.poison_stopped)
-			p.harm(game_config::cure_amount);
+			p.harm(game_config::poison_amount);
 		if (p.u.resting())
 			p.rest();
 
@@ -1777,6 +1777,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 	}
 }
 
+
 unit get_advanced_unit(const game_data& info,
                   units_map& units,
                   const gamemap::location& loc, const std::string& advance_to)
@@ -1800,7 +1801,6 @@ void advance_unit(const game_data& info,
 	if(units.count(loc) == 0) {
 		return;
 	}
-
 	const unit& new_unit = get_advanced_unit(info,units,loc,advance_to);
 	LOG_NG << "firing advance event\n";
 	game_events::fire("advance",loc);

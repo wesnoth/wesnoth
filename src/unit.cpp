@@ -568,10 +568,6 @@ bool unit::take_hit(int damage)
 	hit_points_ -= damage;
 	return hit_points_ <= 0;
 }
-void unit::heal()
-{
-	heal(game_config::heal_amount);
-}
 void unit::heal(int amount)
 {
 	int max_hp = max_hitpoints();
@@ -580,6 +576,9 @@ void unit::heal(int amount)
 		if (hit_points_ > max_hp) {
 			hit_points_ = max_hp;
 		}
+	}
+	if(hit_points_<1) {
+		hit_points_ = 1;
 	}
 }
 void unit::heal_all()
