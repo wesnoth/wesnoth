@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-03-29 19:04+0200\n"
-"PO-Revision-Date: 2006-03-21 04:24+0100\n"
+"PO-Revision-Date: 2006-03-30 00:38+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -133,9 +133,8 @@ msgid "Japanese Translation"
 msgstr "Japansk översättning"
 
 #: data/about.cfg:363
-#, fuzzy
 msgid "Korean Translation"
-msgstr "Norsk översättning"
+msgstr "Koreansk översättning"
 
 #: data/about.cfg:370
 msgid "Latin Translation"
@@ -1622,13 +1621,16 @@ msgid ""
 "Most units with this ability also are extremely effective healers, but will "
 "cure poisoned units rather than healing them."
 msgstr ""
+"Botar:\n"
+"Denna trupp kombinerar örtläkemedel med magi för att bota en förgiftad trupp "
+"från förgiftningen. De flesta trupper med denna förmåga är även mycket "
+"skickliga helare, men botar förgiftade trupper istället för att hela dem."
 
 #: data/english.cfg:28
 msgid "cures"
-msgstr "helar"
+msgstr "botar"
 
 #: data/english.cfg:35
-#, fuzzy
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -1642,17 +1644,18 @@ msgid ""
 "cure it: the poisoned unit must seek the care of a village or a unit that "
 "can cure."
 msgstr ""
-"Vårdar:\n"
-"Truppen vårdar närliggande allierade trupper i början av varje drag.\n"
+"Helar:\n"
+"Truppen helar närliggande allierade trupper i början av sitt drag.\n"
 "\n"
-"Truppen återställer upp till 4 HP per drag.\n"
-"Truppen kan sammanlagt återställa högst 8 HP per drag.\n"
-"En förgiftad trupp kan inte återställas helt av en vårdande trupp, utan "
-"måste söka tillflykt till en by eller få hjälp av en trupp som kan hela."
+"Alla icke förgiftade trupper som helas återfår 4 eller 8 hälsopoäng per "
+"drag, beroende på den helarens förmåga.\n"
+"En helare stoppar giftets utbredning i en förgiftad trupp under innevarande "
+"drag, men kan inte helt bota förgiftningen. En förgiftad trupp måste söka "
+"tillflykt till en by eller få hjälp av en trupp som kan bota."
 
 #: data/english.cfg:37
 msgid "heals"
-msgstr "vårdar"
+msgstr "helar"
 
 #: data/english.cfg:42
 msgid ""
@@ -2923,7 +2926,6 @@ msgstr ""
 "troll) återfår alltid 8 HP i början av draget."
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -2931,14 +2933,11 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"- Vårdande trupper: Trupper med förmågan att <ref>dst=ability_heals "
-"text=vårda</ref> återskänker upp till sammanlagt 8 HP per drag till "
-"allierade trupper som står i de intilliggande rutorna. De förhindrar även "
-"att trupperna i intilliggande rutor förgiftas. En trupp kan återfå maximalt "
-"4 HP per drag av en vårdande trupp."
+"- Helande trupper: Trupper med förmågan att <ref>dst=ability_heals "
+"text=hela</ref> läker alla intillstående trupper med vanligtvis 4 eller 8 "
+"hälsopoäng per drag, eller hindrar en förgiftning från att göra skada."
 
 #: data/help.cfg:220
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -2946,13 +2945,11 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"- Helande trupper: Trupper med förmågan att <ref>dst=ability_cures "
-"text=hela</ref> återskänker upp till sammanlagt 18 HP per drag, samt botar "
-"förgiftning. Endast allierade trupper som står i de intilliggande rutorna "
-"helas, och högst 8 HP kan återfås per drag."
+"- Botande trupper: Trupper med förmågan att <ref>dst=ability_cures "
+"text=bota</ref> återställer intillstående förgiftade trupper. Om den läkande "
+"truppen även kan hela, så botar den förgiftningen först."
 
 #: data/help.cfg:222
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2962,11 +2959,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Vila kan kombineras med andra sorters helande, men byar, regenerering och "
-"vårda/hela kan inte kombineras med varandra. En trupp med läkande förmågor "
-"som ser till flera trupper samtidigt delar sina krafter mellan de olika "
-"trupperna och blir således mindre effektiv. Slutligen, alla trupper återfår "
-"sin fulla styrka mellan scenarier."
+"Vila kan kombineras med andra sorters helande, men byar, regenerering, "
+"helande och botande kan inte kombineras med varandra. I de fall där flera "
+"möjligheter till helande finns, väljs den kraftigaste metoden. Slutligen, "
+"alla trupper återfår sin fulla styrka mellan scenarier."
 
 #: data/help.cfg:227
 msgid "Income and Upkeep"
@@ -3699,7 +3695,7 @@ msgstr ""
 "truppslag, även kavalleri, manövrerar utan svårighet i byar, och de flesta "
 "trupper har försvarsfördelar i dem. Byar ger trupper möjlighet att göra rent "
 "och läka sina sår, vilket betyder att trupper som placerade i byar antingen "
-"läker åtta hälsopoäng varje drag eller blir helade från gift.\n"
+"läker åtta hälsopoäng varje drag eller blir botade från gift.\n"
 "\n"
 "De flesta truppslag har 50-60% försvar i byar; kavalleri har 40%."
 
@@ -4544,9 +4540,8 @@ msgid "Cave Lit"
 msgstr "Upplyst grotta"
 
 #: data/terrain.cfg:414
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "Berg"
+msgstr "Obestigbara berg"
 
 #: data/terrain.cfg:445
 msgid "Great Tree"
@@ -4704,7 +4699,6 @@ msgstr ""
 "har på sin terräng visas längst upp till höger."
 
 #: data/tips.cfg:5
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -4714,7 +4708,7 @@ msgstr ""
 "Förgiftade trupper förlorar 8 HP varje drag, men de kan inte dö av "
 "förgiftning allena: de får aldrig mindre än 1 HP av giftet. Förgiftade "
 "trupper kan botas genom att ställas i en by eller alldeles bredvid en trupp "
-"som har förmågan att 'hela'."
+"som har förmågan att 'bota'."
 
 #: data/tips.cfg:6
 msgid ""
@@ -5788,7 +5782,7 @@ msgstr ""
 "\n"
 "Anmärkning: druidernas insnärjningsattack sinkar fiendesoldater och minskar "
 "både deras förflyttning och vållad skada med hälften. Druider har förmågan "
-"att vårda trupper i sin närhet och att bota dem från förgiftning."
+"att hela trupper i sin närhet och att bota dem från förgiftning."
 
 #: data/units/Elvish_Druid.cfg:55 data/units/Elvish_Shyde.cfg:56
 msgid "ensnare"
@@ -6045,7 +6039,7 @@ msgstr ""
 "\n"
 "Anmärkning: schamanernas insnärjningsattack sinkar fiendesoldater och "
 "minskar både deras förflyttning och vållad skada med hälften. Schamaner har "
-"förmågan att vårda trupper i sin närhet, men de kan inte bota en förgiftning "
+"förmågan att hela trupper i sin närhet, men de kan inte bota en förgiftning "
 "helt och hållet, utan endast bromsa giftets utbredning."
 
 #: data/units/Elvish_Sharpshooter.cfg:3
@@ -6097,7 +6091,7 @@ msgstr ""
 "\n"
 "Anmärkning: älvornas insnärjningsattack sinkar fiendesoldater och minskar "
 "både deras förflyttning och vållad skada med hälften. Älvor har förmågan att "
-"vårda trupper i sin närhet och att bota dem från förgiftning."
+"hela trupper i sin närhet och att bota dem från förgiftning."
 
 #: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:24
 msgid "faerie touch"
@@ -6142,7 +6136,6 @@ msgid "Direwolf Rider"
 msgstr "Monstervargryttare"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:21
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the garden variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -6170,7 +6163,7 @@ msgstr ""
 "använder, vilket gör en reva av dessa monsters tassar högst dödlig.\n"
 "\n"
 "Anmärkning: de som träffas av monstervargens klor förgiftas, och försvagas "
-"gradvis tills de kan botas i en by eller av en helare."
+"gradvis tills de kan botas i en by eller av en trupp som kan bota."
 
 #: data/units/Goblin_Direwolf_Rider.cfg:39 data/units/Goblin_Knight.cfg:39
 #: data/units/Goblin_Wolf_Rider.cfg:70 data/units/Monster_Cave_Spider.cfg:39
@@ -6500,7 +6493,7 @@ msgstr ""
 "Även om de inte är en fullt så imponerande syn på slagfältet som "
 "storriddarna, så är de ändå en mäktig kraft i strid, och deras fromhet har "
 "gett dem andra gåvor. En tempelriddare är de vandödas bane, och de har "
-"tränat sig i att vårda sina kamraters sår."
+"tränat sig i att hela sina kamraters sår."
 
 #: data/units/Human_Horse_Paladin.cfg:21
 msgid ""
@@ -8129,7 +8122,8 @@ msgstr ""
 "deras taktik till stor nytta för deras större och brutalare släktingar.\n"
 "\n"
 "Anmärkning: orchernas lönnmördare använder förgiftade kastknivar, och deras "
-"offer försvagas gradvis tills de kan botas i en by eller av en helare."
+"offer försvagas gradvis tills de kan få vård i en by eller av en trupp som "
+"kan bota."
 
 #: data/units/Orcish_Assassin.cfg:54 data/units/Orcish_Slayer.cfg:75
 msgid "throwing knives"
@@ -8208,7 +8202,6 @@ msgid "Orcish Slayer"
 msgstr "Slaktarorch"
 
 #: data/units/Orcish_Slayer.cfg:19
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -8228,7 +8221,8 @@ msgstr ""
 "verkliga orsaken till orchernas segrar.\n"
 "\n"
 "Anmärkning: slaktarorcherna använder förgiftade kastknivar, och deras offer "
-"kommer att försvagas gradvis tills de kan botas i en by eller av en helare."
+"kommer att försvagas gradvis tills de kan botas i en by eller av en trupp "
+"som kan bota."
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
@@ -8572,7 +8566,6 @@ msgid "Ghoul"
 msgstr "Ghul"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:20
-#, fuzzy
 msgid ""
 "Only those who have delved into the circles of necromancy know what must be "
 "done to turn a person into a ghoul, and it is a secret they are not telling. "
@@ -8595,16 +8588,16 @@ msgstr ""
 "föddes, och smörjer kråset med köttet från de döda.\n"
 "\n"
 "Det är på grund av sådana handlingar som nekromantin hatas och fördöms.\n"
+"\n"
 "Anmärkning: ghulernas klor är täckta av gift, och de som blir förgiftade i "
 "kampen mot en ghul kommer att försvagas gradvis tills de kan bli botade i en "
-"by eller av en helare."
+"by eller av en trupp som kan bota."
 
 #: data/units/Undead_Corpse_Necrophage.cfg:3
 msgid "Necrophage"
 msgstr "Nekrofag"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -8622,7 +8615,7 @@ msgstr ""
 "\n"
 "Anmärkning: nekrofagernas klor är täckta av gift, och de som blir förgiftade "
 "i kampen mot en nekrofag kommer att försvagas gradvis tills de kan bli "
-"botade i en by eller av en helare."
+"botade i en by eller av en trupp som kan bota."
 
 #: data/units/Undead_Corpse_Soulless.cfg:4
 msgid "Soulless"
@@ -8781,9 +8774,8 @@ msgstr ""
 "häxmästaren."
 
 #: data/units/Undead_Necromancer.cfg:32
-#, fuzzy
 msgid "plague staff"
-msgstr "pest"
+msgstr "peststav"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
@@ -9203,14 +9195,12 @@ msgid "+Core Developers"
 msgstr "+Spelutvecklare"
 
 #: src/about.cpp:33
-#, fuzzy
 msgid "+  Main Developer"
-msgstr "-   Huvudutvecklare"
+msgstr "+  Huvudutvecklare"
 
 #: src/about.cpp:36
-#, fuzzy
 msgid "+  Artwork and graphics designer"
-msgstr "-   Grafikutvecklare"
+msgstr "+  Grafikutvecklare"
 
 #: src/about.cpp:39
 msgid "+Developers"
@@ -9794,9 +9784,8 @@ msgid "Abilities: "
 msgstr "Förmågor: "
 
 #: src/help.cpp:1126
-#, fuzzy
 msgid "Cost: "
-msgstr "Förflyttning: "
+msgstr "Kostnad: "
 
 #: src/help.cpp:1127
 msgid "Alignment: "
@@ -10095,7 +10084,7 @@ msgstr "Inga sidor för gruppspel funna"
 #: src/multiplayer_connect.cpp:62 src/multiplayer_connect.cpp:258
 #: src/multiplayer_connect.cpp:312
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
 #: src/multiplayer_wait.cpp:392 src/multiplayer_wait.cpp:397 src/unit.cpp:1601
@@ -10260,19 +10249,19 @@ msgstr "Aktivera tidsgräns för spelare"
 
 #: src/multiplayer_create.cpp:115
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "Den längsta tid som tillåts för det första draget (sekunder)"
 
 #: src/multiplayer_create.cpp:121
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "Den längsta tid som tillåts för varje drag (sekunder)"
 
 #: src/multiplayer_create.cpp:127
 msgid "Time for general tasks each turn (seconds)"
-msgstr ""
+msgstr "Tid för allmänna handlingar varje drag (sekunder)"
 
 #: src/multiplayer_create.cpp:133
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "Tid för varje anfall, rekrytering och intagande av byar"
 
 #: src/multiplayer_create.cpp:138
 msgid "The amount of income each village yields per turn"
@@ -10340,24 +10329,20 @@ msgid "Unlimited Turns"
 msgstr "Obegränsat antal drag"
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Init. Limit: "
-msgstr "Starttid: "
+msgstr "Begynnelsetidsgräns: "
 
 #: src/multiplayer_create.cpp:318
-#, fuzzy
 msgid "Turn Bonus: "
-msgstr "Drag: "
+msgstr "Dragbonux: "
 
 #: src/multiplayer_create.cpp:322
-#, fuzzy
 msgid "Reservoir: "
-msgstr "Server: "
+msgstr "Reservoar: "
 
 #: src/multiplayer_create.cpp:327
-#, fuzzy
 msgid "Action Bonus: "
-msgstr "Handlingar"
+msgstr "Handlingsbonus: "
 
 #: src/multiplayer_create.cpp:334
 msgid "Village Gold: "
@@ -10766,7 +10751,7 @@ msgid ""
 msgstr ""
 "Den här truppen är förgiftad och kommer att förlora 8 HP per drag tills den "
 "kan hitta ett motmedel i en by eller få hjälp av en allierad med förmågan "
-"att hela.\n"
+"att bota.\n"
 "\n"
 "Trupper kan inte dö av enbart förgiftning, så truppen kommer inte att få "
 "mindre än 1 HP."
@@ -10962,7 +10947,7 @@ msgstr "Läs mer"
 
 #: src/titlescreen.cpp:249
 msgid "Help"
-msgstr ""
+msgstr "Hjälp"
 
 #: src/titlescreen.cpp:259
 msgid "-- The Tome of Wesnoth"
@@ -11021,36 +11006,3 @@ msgstr "Du kan se resultaten på "
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjälp oss att förbättra Wesnoth!"
-
-#~ msgid ""
-#~ "Cures:\n"
-#~ "This unit combines herbal remedies with magic to heal units more quickly "
-#~ "than is normally possible on the battlefield.\n"
-#~ "\n"
-#~ "This unit will care for all adjacent friendly units that are injured at "
-#~ "the beginning of each turn.\n"
-#~ "A unit cared for by a curer may heal up to 8 HP per turn.\n"
-#~ "A curer may heal a total of 18 HP per turn, for all units it cares for.\n"
-#~ "A curer can cure a unit of poison, although that unit will receive no "
-#~ "additional healing on the turn it is cured of the poison."
-#~ msgstr ""
-#~ "Helar:\n"
-#~ "Den här truppen kombinerar örter och andra naturläkemedel med magi för "
-#~ "att återställa trupper snabbare än vad som vanligtvis är möjligt på ett "
-#~ "slagfält.\n"
-#~ "\n"
-#~ "En trupp som kan hela tar hand om alla allierade trupper som står på "
-#~ "närliggande rutor i början av varje drag.\n"
-#~ "Varje trupp kan att återfå upp till 8 HP per drag.\n"
-#~ "En helare kan sammanlagt återställa högst 18 HP per drag.\n"
-#~ "En trupp som kan hela kan också häva en förgiftning, men då återfår inte "
-#~ "den förgiftade truppen några HP under samma drag."
-
-#~ msgid "Initial time available to players at start of game"
-#~ msgstr "Tillgänglig tid för varje spelare vid spelets början"
-
-#~ msgid "Time added to user's clock at the end of each turn"
-#~ msgstr "Tid som läggs till spelarens klocka vid slutet av varje drag"
-
-#~ msgid "Turn time: "
-#~ msgstr "Dragtid: "

@@ -22,13 +22,13 @@ wesnothd \- Kampen om Wesnoths n\[:a]tverksdaemon
 .B wesnothd 
 .RB [\| \-dvV \|]
 .RB [\| \-c
-.IR path \|]
+.IR s\[:o]kv\[:a]g \|]
 .RB [\| \-m
-.IR size \|]
+.IR storlek \|]
 .RB [\| \-p
 .IR port \|]
 .RB [\| \-t
-.IR number \|]
+.IR antal \|]
 .
 .SH BESKRIVNING
 Kampen om \fBWesnoth\fRs n\[:a]tverksdaemon f\[:o]r gruppspel.
@@ -36,7 +36,7 @@ Kampen om \fBWesnoth\fRs n\[:a]tverksdaemon f\[:o]r gruppspel.
 .SH FLAGGOR
 .
 .TP
-.BI -c,\ --config \ S\[:O]KV\[:A]G
+.BI -c,\ --config \ s\[:o]kv\[:a]g
 anger var wesnothd skall leta efter konfigurationsfilen. Se avsnittet om 
 .B SERVERKONFIGURATION
 nedan f\[:o]r syntaxen.
@@ -47,14 +47,14 @@ k\[:o]r wesnothd som en daemon.
 .BR -h , \ --help
 visar en sammanfattning av m\[:o]jliga kommandoradsflaggor.
 .TP
-.BR -m , \ --max_packet_size
+.BI -m , \ --max_packet_size \ storlek
 anger maximal paketstorlek
 .TP
-.BR -p , \ --port
+.BI -p , \ --port \ port
 knyter servern till den specificerade porten. Om ingen port anges s\[oa] 
 anv\[:a]nds port 15000. 
 .TP
-.BR -t , \ --thread
+.BI -t , \ --thread \ antal
 anger antalet tr\[oa]dar f\[:o]r n\[:a]tverkstrafik (standardv\[:a]rde: 5)
 .TP
 .BR -V , \ --version
@@ -72,7 +72,7 @@ ger mer utf\[:o]rlig information.
 .IP
 nyckel="\fIv\[:a]rde\fR"
 .IP
-nyckel=...
+nyckel="\fIv\[:a]rde\fR,\fIv\[:a]rde\fR,..."
 .P
 [/\fItag\fR]
 .
@@ -81,6 +81,10 @@ nyckel=...
 .TP
 .B connections_allowed
 Antal till\[oa]tna anslutningar fr\[oa]n samma v\[:a]rd (IP).
+.TP
+.B disallow_names
+Namn/smeknamn som ej accepteras av servern. Standardv\[:a]rden (som anv\[:a]nds om 
+inget anges) \[:a]r 'server,ai,player,network,human,admin,computer'.
 .TP
 .B max_messages
 Antal till\[oa]tna meddelanden inom \fBmessages_time_period\fR.
