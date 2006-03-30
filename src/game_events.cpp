@@ -1,4 +1,5 @@
 /* $Id$ */
+/* $Id$ */
 /*
    Copyright (C) 2003 by David White <davidnwhite@verizon.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -1525,6 +1526,18 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 				units->erase(loc);
 				units->insert(std::pair<gamemap::location,unit>(loc,u));
+				
+				const std::string& text = cfg["text"];
+				if(!text.empty())
+				{
+					//Print floating label
+					const int red = lexical_cast_default<int>(cfg["red"],0);
+					const int green = lexical_cast_default<int>(cfg["green"],0);
+					const int blue = lexical_cast_default<int>(cfg["blue"],0);
+					{
+						screen->float_label(loc,text,red,green,blue);
+					}
+				}
 			} else {
 				player_info *player=state_of_game->get_player((*teams)[u.side()-1].save_id());
 
