@@ -244,8 +244,69 @@ bool attack_type::apply_modification(const config& cfg,std::string* description,
 	}
 
 	if(set_special.empty() == false) {
-		// Uh. Fix me?
-//		wassert("not done" == "done");
+		cfg_.clear_children("specials");
+		config new_specials;
+		if(set_special == "berserk") {
+			config& sp = new_specials.add_child("berserk");
+			sp["name"] = t_string::from_serialized("_ \"berserk\"");
+			sp["description"] = t_string::from_serialized("_ \"Berserk:\nWhether used offensively or defensively, this attack presses the engagement until one of the combatants is slain, or 30 rounds of attacks have occurred.\"");
+			sp["cumulative"] = "no";
+			sp["rounds"] = "30";
+		} else if(set_special == "backstab") {
+			config& sp = new_specials.add_child("damage");
+			sp["name"] = t_string::from_serialized("_ \"backstab\"");
+			sp["description"] = t_string::from_serialized("_ \"Backstab:\nThis attack deals double damage if there is an enemy of the target on the opposite side of the target, and that unit is not incapacitated (e.g. turned to stone).\"");
+			sp["cumulative"] = "no";
+			sp["backstab"] = "yes";
+			sp["multiply"] = "2";
+			sp["active_on"] = "offense";
+		} else if(set_special == "plague") {
+			config& sp = new_specials.add_child("plague");
+			sp["name"] = t_string::from_serialized("_ \"plague\"");
+			sp["description"] = t_string::from_serialized("_ \"Plague:\nWhen a unit is killed by a Plague attack, that unit is replaced with a unit identical to and on the same side as the unit with the Plague attack. (This doesn't work on Undead or units in villages.)\"");
+		} else if(set_special == "slow") {
+			config& sp = new_specials.add_child("slow");
+			sp["name"] = t_string::from_serialized("_ \"slows\"");
+			sp["description"] = t_string::from_serialized("_ \"Slow:\nThis attack slows the target. Slow halves the damage caused by attacks and slowed units move at half the normal speed (rounded up).\"");
+			sp["cumulative"] = "no";
+		} else if(set_special == "stone") {
+			config& sp = new_specials.add_child("stones");
+			sp["name"] = t_string::from_serialized("_ \"stones\"");
+			sp["description"] = t_string::from_serialized("_ \"Stone:\nThis attack turns the target to stone. Units that have been turned to stone may not move or attack.\"");
+		} else if(set_special == "marksman") {
+			config& sp = new_specials.add_child("chance_to_hit");
+			sp["name"] = t_string::from_serialized("_ \"marksman\"");
+			sp["description"] = t_string::from_serialized("_ \"Marksman:\nWhen used offensively, this attack always has at least a 60% chance to hit.\"");
+			sp["value"] = "60";
+			sp["cumulative"] = "yes";
+			sp["active_on"] = "offense";
+		} else if(set_special == "magical") {
+			config& sp = new_specials.add_child("chance_to_hit");
+			sp["name"] = t_string::from_serialized("_ \"magical\"");
+			sp["description"] = t_string::from_serialized("_ \"Magical:\nThis attack always has a 70% chance to hit.\"");
+			sp["value"] = "70";
+			sp["cumulative"] = "no";
+		} else if(set_special == "charge") {
+			config& sp = new_specials.add_child("damage");
+			sp["name"] = t_string::from_serialized("_ \"charge\"");
+			sp["description"] = t_string::from_serialized("_ \"Charge:\nThis attack deals double damage to the target. It also causes this unit to take double damage from the target's counterattack.\"");
+			sp["cumulative"] = "no";
+			sp["multiply"] = "2";
+			sp["active_on"] = "offense";
+			sp["apply_to"] = "self,opponent";
+		} else if(set_special == "drain") {
+			config& sp = new_specials.add_child("drains");
+			sp["name"] = t_string::from_serialized("_ \"drains\"");
+			sp["description"] = t_string::from_serialized("_ \"Drain:\nThis unit drains health from living units, healing itself for half the amount of damage it deals (rounded down).\"");
+		} else if(set_special == "firststrike") {
+			config& sp = new_specials.add_child("firststrike");
+			sp["name"] = t_string::from_serialized("_ \"firststrike\"");
+			sp["description"] = t_string::from_serialized("_ \"Firststrike:\nThis unit always strikes first with this attack, even if they are defending.\"");
+		} else if(set_special == "poison") {
+			config& sp = new_specials.add_child("poison");
+			sp["name"] = t_string::from_serialized("_ \"poison\"");
+			sp["description"] = t_string::from_serialized("_ \"Poison:\nThis attack poisons the target. Poisoned units lose 8 HP every turn until they are cured or are reduced to 1 HP.\"");
+		}
 	}
 
 	if(increase_damage.empty() == false) {
