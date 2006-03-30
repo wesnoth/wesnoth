@@ -558,7 +558,7 @@ weapon_special_list attack_type::get_specials(const std::string& special) const
 	}
 	return res;
 }
-std::vector<std::string> attack_type::special_tooltips() const
+std::vector<std::string> attack_type::special_tooltips(bool force) const
 {
 //	log_scope("special_tooltips");
 	std::vector<std::string> res;
@@ -567,7 +567,7 @@ std::vector<std::string> attack_type::special_tooltips() const
 		const config::child_map& list_map = specials->all_children();
 		for(config::child_map::const_iterator i = list_map.begin(); i != list_map.end(); ++i) {
 			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-				if(special_active(**j,true)) {
+				if(force || special_active(**j,true)) {
 					if((**j)["name"] != "") {
 						res.push_back((**j)["name"]);
 						res.push_back((**j)["description"]);
