@@ -90,6 +90,9 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	backup_state();
 	refreshing_  = false;
 	hidden_ = false;
+	if(race_->not_living()) {
+		set_state("not_living","yes");
+	}
 }
 
 unit::unit(const game_data& gamedata,const config& cfg) : gamedata_(&gamedata),units_(NULL),map_(NULL),
@@ -102,6 +105,9 @@ unit::unit(const game_data& gamedata,const config& cfg) : gamedata_(&gamedata),u
 	backup_state();
 	refreshing_  = false;
 	hidden_ = false;
+	if(race_->not_living()) {
+		set_state("not_living","yes");
+	}
 }
 
 // Initilizes a unit from a unit type
@@ -250,6 +256,9 @@ void unit::advance_to(const unit_type* t)
 	set_state("poisoned","");
 	set_state("slowed","");
 	set_state("stoned","");
+	if(race_->not_living()) {
+		set_state("not_living","yes");
+	}
 	end_turn_ = false;
 	refreshing_  = false;
 	hidden_ = false;
@@ -853,15 +862,6 @@ void unit::read(const config& cfg)
 	undead_variation_ = cfg["undead_variation"];
 	variation_ = cfg["variation"];
 	
-	if(cfg["alignment"]=="lawful") {
-		alignment_ == unit_type::LAWFUL;
-	} else if(cfg["alignment"]=="neutral") {
-		alignment_ == unit_type::NEUTRAL;
-	} else if(cfg["alignment"]=="chaotic") {
-		alignment_ == unit_type::CHAOTIC;
-	} else {
-		alignment_ == unit_type::NEUTRAL;
-	}
 	flag_rgb_ = string2rgb(cfg["flag_rgb"]);
 	alpha_ = lexical_cast_default<fixed_t>(cfg["alpha"]);
 	
@@ -895,6 +895,15 @@ void unit::read(const config& cfg)
 	if(cfg["type"] != "") {
 		advance_to(&i->second);
 		max_attacks_ = 1;
+	}
+	if(cfg["alignment"]=="lawful") {
+		alignment_ = unit_type::LAWFUL;
+	} else if(cfg["alignment"]=="neutral") {
+		alignment_ = unit_type::NEUTRAL;
+	} else if(cfg["alignment"]=="chaotic") {
+		alignment_ = unit_type::CHAOTIC;
+	} else {
+		alignment_ = unit_type::NEUTRAL;
 	}
 	for(config::const_child_itors range = cfg.child_range("attack");
 	    range.first != range.second; ++range.first) {

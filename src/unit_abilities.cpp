@@ -11,7 +11,6 @@
    See the COPYING file for more details.
 */
 
-#include "unit_types.hpp"
 #include "unit.hpp"
 
 #include "wassert.hpp"
@@ -281,7 +280,8 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 	get_adjacent_tiles(loc,adjacent);
 	int index=-1;
 	const config::child_list& adj_filt = cfg.get_children("filter_adjacent");
-	for(config::child_list::const_iterator i = adj_filt.begin(); i != adj_filt.end(); ++i) {
+	config::child_list::const_iterator i;
+	for(i = adj_filt.begin(); i != adj_filt.end(); ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		if(dirs.size()==1 && dirs.front()=="") {	
 		} else {
@@ -315,7 +315,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 	}
 	index=-1;
 	const config::child_list& adj_filt_loc = cfg.get_children("filter_adjacent_location");
-	for(config::child_list::const_iterator i = adj_filt_loc.begin(); i != adj_filt_loc.end(); ++i) {
+	for(i = adj_filt_loc.begin(); i != adj_filt_loc.end(); ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		if(dirs.size()==1 && dirs.front()=="") {	
 		} else {
@@ -728,7 +728,8 @@ bool attack_type::special_active(const config& cfg,bool self) const
 	}
 	int index=-1;
 	const config::child_list& adj_filt = cfg.get_children("filter_adjacent");
-	for(config::child_list::const_iterator i = adj_filt.begin(); i != adj_filt.end(); ++i) {
+	config::child_list::const_iterator i;
+	for(i = adj_filt.begin(); i != adj_filt.end(); ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		if(dirs.size()==1 && dirs.front()=="") {	
 		} else {
@@ -762,7 +763,7 @@ bool attack_type::special_active(const config& cfg,bool self) const
 	}
 	index=-1;
 	const config::child_list& adj_filt_loc = cfg.get_children("filter_adjacent_location");
-	for(config::child_list::const_iterator i = adj_filt_loc.begin(); i != adj_filt_loc.end(); ++i) {
+	for(i = adj_filt_loc.begin(); i != adj_filt_loc.end(); ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		if(dirs.size()==1 && dirs.front()=="") {	
 		} else {
