@@ -162,7 +162,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		std::stringstream tooltip;
 		const std::vector<std::string>& abilities = u->second.type().ability_tooltips();
 		for(std::vector<std::string>::const_iterator i = abilities.begin(); i != abilities.end(); ++i) {
-			str << gettext(i->c_str());
+			str << string_table[std::string("ability_") + *i];
 			if(i+1 != abilities.end())
 				str << ",";
 

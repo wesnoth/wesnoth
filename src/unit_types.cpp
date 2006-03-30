@@ -735,13 +735,13 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"heals") != deprecated_abilities.end()) {
 			heals_ = 4;
 			abilities_.push_back("heals");
-			ability_tooltips_.push_back("heals");
+			ability_tooltips_.push_back("heals4");
 		}
 		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"cures") != deprecated_abilities.end()) {
 			heals_ = 8;
 			cures_ = true;
 			abilities_.push_back("heals");
-			ability_tooltips_.push_back("heals");
+			ability_tooltips_.push_back("heals8");
 			abilities_.push_back("cures");
 			ability_tooltips_.push_back("cures");
 		}
