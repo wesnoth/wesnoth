@@ -902,7 +902,7 @@ void unit::read(const config& cfg)
 		alignment_ = unit_type::NEUTRAL;
 	} else if(cfg["alignment"]=="chaotic") {
 		alignment_ = unit_type::CHAOTIC;
-	} else {
+	} else if(cfg["type"]=="") {
 		alignment_ = unit_type::NEUTRAL;
 	}
 	for(config::const_child_itors range = cfg.child_range("attack");
