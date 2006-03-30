@@ -53,7 +53,7 @@ void teleport_unit_between(display& disp, const gamemap& map, const gamemap::loc
 	}
 	if (!disp.fogged(b.x, b.y)) { // teleport
 		disp.scroll_to_tile(b.x,b.y,display::ONSCREEN);
-		while(u.get_animation()->animation_finished()) {
+		while(!u.get_animation()->animation_finished()) {
 			disp.draw_tile(b.x,b.y);
 			disp.update_display();
 			events::pump();
