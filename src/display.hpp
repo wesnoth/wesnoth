@@ -288,7 +288,7 @@ public:
 	void set_playing_team(size_t team);
 	const std::vector<team>& get_teams() {return teams_;};
 
-	const unit_map& get_units() {return units_;};
+	unit_map& get_units() {return units_;};
 
 	//compat methods to be dropped after full migration
 	void lock_updates(bool value) {screen_.lock_updates(value); };
