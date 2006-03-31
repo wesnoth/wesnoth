@@ -168,7 +168,7 @@ namespace events{
 				continue;
 
 			std::stringstream row;
-			row << i->second.type().language_name() << COLUMN_SEPARATOR
+			row << i->second.language_name() << COLUMN_SEPARATOR
 				<< i->second.description() << COLUMN_SEPARATOR
 				<< i->second.hitpoints() << "/" << i->second.max_hitpoints() << COLUMN_SEPARATOR
 				<< i->second.experience() << "/";
@@ -255,7 +255,7 @@ namespace events{
 			//output the number of the side first, and this will
 			//cause it to be displayed in the correct colour
 			if(leader != units.end()) {
-				str << IMAGE_PREFIX << leader->second.type().image() << COLUMN_SEPARATOR
+				str << IMAGE_PREFIX << leader->second.absolute_image() << COLUMN_SEPARATOR
 					<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm' << leader->second.description() << COLUMN_SEPARATOR;
 			} else {
 				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;
@@ -347,7 +347,7 @@ namespace events{
 			buf << side_num;
 			side["side"] = buf.str();
 
-			for(std::map<gamemap::location,unit>::const_iterator i = units.begin(); i != units.end(); ++i) {
+			for(units_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 				if(i->second.side() == side_num) {
 					config& u = side.add_child("unit");
 					i->first.write(u);

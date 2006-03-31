@@ -119,7 +119,7 @@ void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*
 		if (first_human_team == -1){
 			first_human_team = get_first_human_team(ui, unit_cfg);
 		}
-		get_player_info(**ui, gamestate_, save_id, teams_, level_, gameinfo_, map_, units_);
+		get_player_info(**ui, gamestate_, save_id, teams_, level_, gameinfo_, map_, units_, status_);
 	}
 
 	preferences::encounter_recruitable_units(teams_);
@@ -419,7 +419,7 @@ void replay_controller::play_side(const int team_index){
 		if(turn_refresh) {
 			for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
 				if(i->second.side() == (size_t)player_number_) {
-					i->second.new_turn();
+					i->second.new_turn(i->first);
 				}
 			}
 
@@ -464,7 +464,7 @@ void replay_controller::play_side(const int team_index){
 			}
 			else{
 				//this is necessary for replays in order to show possible movements
-				uit->second.new_turn();
+				uit->second.new_turn(uit->first);
 			}
 		}
 
@@ -672,4 +672,5 @@ void replay_controller::handle_event(const SDL_Event& event)
 	}
 
 }
+
 

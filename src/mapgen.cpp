@@ -329,7 +329,7 @@ struct road_path_calculator : cost_calculator
 
 				  //find out how windy roads should be.
 				  windiness_(maximum<int>(1,atoi(cfg["road_windiness"].c_str()))) {}
-	virtual double cost(const location& loc, const double so_far, const bool isDst) const;
+	virtual double cost(const location& src, const location& loc, const double so_far, const bool isDst) const;
 
 	void terrain_changed(const location& loc) { loc_cache_.erase(loc); }
 	mutable int calls;
@@ -341,7 +341,7 @@ private:
 	mutable std::map<char,double> cache_;
 };
 
-double road_path_calculator::cost(const location& loc, const double /*so_far*/, const bool /*isDst*/) const
+double road_path_calculator::cost(const location& src, const location& loc, const double /*so_far*/, const bool /*isDst*/) const
 {
 	++calls;
 	if (loc.x < 0 || loc.y < 0 || loc.x >= (long)map_.size() || loc.y >= (long)map_.front().size())
@@ -911,7 +911,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 			continue;
 		}
 
-		if (calc.cost(src, 0.0, false) >= 1000.0 || calc.cost(dst, 0.0, true) >= 1000.0) {
+		if (calc.cost(src,src, 0.0, false) >= 1000.0 || calc.cost(src,dst, 0.0, true) >= 1000.0) {
 			continue;
 		}
 

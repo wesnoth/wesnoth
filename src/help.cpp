@@ -963,6 +963,7 @@ topic_text::operator std::vector< std::string > const &() const
 
 std::vector<topic> generate_weapon_special_topics()
 {
+
 	std::vector<topic> topics;
 	if (game_info == NULL) {
 		return topics;
@@ -977,25 +978,32 @@ std::vector<topic> generate_weapon_special_topics()
 			std::vector<attack_type> attacks = type.attacks();
 			for (std::vector<attack_type>::const_iterator it = attacks.begin();
 				 it != attacks.end(); it++) {
-				std::string special = (*it).special();
 
-				//some abilities like plague can be in the form ability(argument)
-				//make sure we cut off the argument
-				special.erase(std::find(special.begin(),special.end(),'('),special.end());
-				if (special != "") {
-					if (checked_specials.find(special) == checked_specials.end()) {
-						std::string lang_special = gettext(special.c_str());
-						lang_special = utils::capitalize(lang_special);
-						std::string description
-							= string_table["weapon_special_" + special + "_description"];
-						const size_t colon_pos = description.find(':');
-						if (colon_pos != std::string::npos) {
-							// Remove the first colon and the following newline.
-							description.erase(0, colon_pos + 2);
+				std::vector<std::string> specials = (*it).special_tooltips(true);
+				std::vector<std::string>::iterator sp_it;
+				for (sp_it = specials.begin(); sp_it != specials.end(); ++sp_it)
+				{
+					std::string special = *sp_it;
+					++sp_it;
+
+					//some abilities like plague can be in the form ability(argument)
+					//make sure we cut off the argument
+					special.erase(std::find(special.begin(),special.end(),'('),special.end());
+					if (special != "") {
+						if (checked_specials.find(special) == checked_specials.end()) {
+							std::string lang_special = gettext(special.c_str());
+							lang_special = utils::capitalize(lang_special);
+							std::string description;
+							description = *sp_it;
+							const size_t colon_pos = description.find(':');
+							if (colon_pos != std::string::npos) {
+								// Remove the first colon and the following newline.
+								description.erase(0, colon_pos + 2);
+							}
+							topic t(lang_special, "weaponspecial_" + special, description);
+							topics.push_back(t);
+							checked_specials.insert(special);
 						}
-						topic t(lang_special, "weaponspecial_" + special, description);
-						topics.push_back(t);
-						checked_specials.insert(special);
 					}
 				}
 			}
@@ -1016,15 +1024,24 @@ std::vector<topic> generate_ability_topics()
 	// for display. We do not want to show abilities that the user has
 	// not encountered yet.
 	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
-	    i != game_info->unit_types.end(); i++) {
+	    i != game_info->unit_types.end(); ++i) {
 		const unit_type &type = (*i).second;
 		if (description_type(type) == FULL_DESCRIPTION) {
-			for (std::vector<std::string>::const_iterator it = type.ability_tooltips().begin();
-				 it != type.ability_tooltips().end(); it++) {
+			std::vector<std::string> descriptions = type.ability_tooltips();
+			std::vector<std::string>::const_iterator desc_it = descriptions.begin();
+			for (std::vector<std::string>::const_iterator it = type.abilities().begin();
+				 it != type.abilities().end(); ++it) {
 				if (checked_abilities.find(*it) == checked_abilities.end()) {
 					const std::string id = "ability_" + *it;
-					std::string lang_ability = utils::capitalize(string_table[id]);
-					std::string description = string_table[*it + "_description"];
+					std::string lang_ability = utils::capitalize(gettext(it->c_str()));
+					std::string description;
+					if(desc_it != descriptions.end())
+					{
+						description = *desc_it;
+						++desc_it;
+					} else {
+						description = string_table[*it + "_description"];
+					}
 					const size_t colon_pos = description.find(':');
 					if (colon_pos != std::string::npos) {
 						// Remove the first colon and the following newline.
@@ -1103,13 +1120,13 @@ public:
 
 		// Print the abilities the units has, cross-reference them
 		// to their respective topics.
-		if (!type_.ability_tooltips().empty()) {
+		if (!type_.abilities().empty()) {
 			ss << _("Abilities: ");
-			for(std::vector<std::string>::const_iterator ability_it = type_.ability_tooltips().begin(),
-				 ability_end = type_.ability_tooltips().end();
+			for(std::vector<std::string>::const_iterator ability_it = type_.abilities().begin(),
+				 ability_end = type_.abilities().end();
 				 ability_it != ability_end; ++ability_it) {
 				const std::string ref_id = std::string("ability_") + *ability_it;
-				std::string lang_ability = string_table[ref_id];
+				std::string lang_ability = gettext(ability_it->c_str());
 				ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_ability)
 				   << "'</ref>";
 				if (ability_it + 1 != ability_end)
@@ -1173,15 +1190,26 @@ public:
 				// Show this attack's special, if it has any. Cross
 				// reference it to the section describing the
 				// special.
-				if (!attack_it->special().empty()) {
-					const std::string ref_id = std::string("weaponspecial_")
-						+ (*attack_it).special();
-					std::string lang_special = gettext(attack_it->special().c_str());
-					attack_ss << "<ref>dst='" << escape(ref_id)
-					          << "' text='" << escape(lang_special) << "'</ref>";
+				std::vector<std::string> specials = attack_it->special_tooltips(true);
+				if(!specials.empty())
+				{
+					std::string lang_special = "";
+					std::vector<std::string>::iterator sp_it;
+					for (sp_it = specials.begin(); sp_it < specials.end(); sp_it++) {
+						const std::string ref_id = std::string("weaponspecial_")
+							+ (*sp_it);
+						lang_special = gettext(sp_it->c_str());
+						attack_ss << "<ref>dst='" << escape(ref_id)
+								  << "' text='" << escape(lang_special) << "'</ref>";
+						if((sp_it + 1) != specials.end() && (sp_it + 2) != specials.end())
+						{
+							attack_ss << ", "; //comma placed before next special
+						}
+						sp_it++; //skip description
+					}
 					row.push_back(std::make_pair(attack_ss.str(),
-								     font::line_width(lang_special,
-										      normal_font_size)));
+						font::line_width(lang_special, normal_font_size)));
+
 				}
 				table.push_back(row);
 			}

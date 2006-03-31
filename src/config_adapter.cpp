@@ -27,7 +27,7 @@ std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_sav
 	return save_id;
 }
 
-void get_player_info(const config& cfg, game_state& gamestate, std::string save_id, std::vector<team>& teams, const config& level, const game_data& gameinfo, gamemap& map, unit_map& units){
+void get_player_info(const config& cfg, game_state& gamestate, std::string save_id, std::vector<team>& teams, const config& level, const game_data& gameinfo, gamemap& map, unit_map& units, gamestatus& game_status){
 	player_info *player = NULL;
 
 	if(cfg["controller"] == "human" ||
@@ -73,14 +73,15 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 
 	//if this side tag describes the leader of the side
 	if(cfg["no_leader"] != "yes" && cfg["controller"] != "null") {
-		unit new_unit(gameinfo, cfg);
-
+		unit new_unit(&gameinfo, &units, &map, &game_status, &teams,cfg);
+		
 		//search the recall list for leader units, and if there is
 		//one, use it in place of the config-described unit
 		if(player != NULL) {
 			for(std::vector<unit>::iterator it = player->available_units.begin(); it != player->available_units.end(); ++it) {
 				if(it->can_recruit()) {
 					new_unit = *it;
+					new_unit.set_game_context(&gameinfo, &units, &map, &game_status, &teams);
 					player->available_units.erase(it);
 					break;
 				}
@@ -107,7 +108,7 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 				lexical_cast<std::string>(side) + ".");
 		}
 
-		new_unit.new_turn();
+		new_unit.new_turn(map.starting_position(new_unit.side()));
 		units.insert(std::pair<gamemap::location,unit>(
 				map.starting_position(new_unit.side()), new_unit));
 		LOG_NG << "initializing side '" << cfg["side"] << "' at "
@@ -128,7 +129,7 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 	//if there are additional starting units on this side
 	const config::child_list& starting_units = cfg.get_children("unit");
 	for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
-		unit new_unit(gameinfo,**su);
+		unit new_unit(&gameinfo, &units, &map, &game_status,&teams,**su);
 
 		new_unit.set_side(side);
 

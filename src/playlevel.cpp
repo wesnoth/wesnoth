@@ -209,7 +209,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		if (first_human_team == -1){
 			first_human_team = get_first_human_team(ui, unit_cfg);
 		}
-		get_player_info(**ui, state_of_game, save_id, teams, lvl, gameinfo, map, units);
+		get_player_info(**ui, state_of_game, save_id, teams, lvl, gameinfo, map, units, status);
 	}
 
 	preferences::encounter_recruitable_units(teams);
@@ -416,7 +416,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 				if(turn_refresh) {
 					for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
 						if(i->second.side() == player_number) {
-							i->second.new_turn();
+							i->second.new_turn(i->first);
 						}
 					}
 
@@ -647,11 +647,11 @@ redo_turn:
 			                               state_of_game.scenario != "null";
 
 			//add all the units that survived the scenario
-			for(std::map<gamemap::location,unit>::iterator un = units.begin(); un != units.end(); ++un) {
+			for(units_map::iterator un = units.begin(); un != units.end(); ++un) {
 				player_info *player=state_of_game.get_player(teams[un->second.side()-1].save_id());
 
 				if(player) {
-					un->second.new_turn();
+					un->second.new_turn(un->first);
 					un->second.new_level();
 					player->available_units.push_back(un->second);
 				}

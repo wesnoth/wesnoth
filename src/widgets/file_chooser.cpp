@@ -61,14 +61,14 @@ void file_chooser::display_current_files() {
 	if (!is_root(current_dir_)) {
 		to_show.push_back("..");
 	}
-	std::copy(dirs_in_current_dir_.begin(), dirs_in_current_dir_.end(),
-			  std::back_inserter(to_show));
+	//std::copy(dirs_in_current_dir_.begin(), dirs_in_current_dir_.end(),
+//			  std::back_inserter(to_show));
 	std::vector<std::string>::iterator it;
-	for (it = to_show.begin(); it != to_show.end(); it++) {
+	for (it = dirs_in_current_dir_.begin(); it != dirs_in_current_dir_.end(); it++) {
 		// Add an image to show that these are directories.
 		std::stringstream ss;
 		ss << font::IMAGE << dir_picture << COLUMN_SEPARATOR << *it;
-		*it = ss.str();
+		to_show.push_back(ss.str());
 	}
 	for (it = files_in_current_dir_.begin(); it != files_in_current_dir_.end(); it++) {
 		const std::string display_string = COLUMN_SEPARATOR + *it;

@@ -1,4 +1,5 @@
 /* $Id$ */
+/* $Id$ */
 /*
    Copyright (C) 2003 by David White <davidnwhite@verizon.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -49,7 +50,7 @@ namespace {
 
 display* screen = NULL;
 gamemap* game_map = NULL;
-std::map<gamemap::location,unit>* units = NULL;
+units_map* units = NULL;
 std::vector<team>* teams = NULL;
 game_state* state_of_game = NULL;
 const game_data* game_data_ptr = NULL;
@@ -59,7 +60,7 @@ int floating_label = 0;
 
 namespace game_events {
 
-bool conditional_passed(const std::map<gamemap::location,unit>* units,
+bool conditional_passed(const units_map* units,
                         const vconfig cond)
 {
 	//an 'and' statement means that if the contained statements are false,
@@ -91,7 +92,7 @@ bool conditional_passed(const std::map<gamemap::location,unit>* units,
 		if(units == NULL)
 			return false;
 
-		std::map<gamemap::location,unit>::const_iterator itor;
+		units_map::const_iterator itor;
 		for(itor = units->begin(); itor != units->end(); ++itor) {
 			if(itor->second.hitpoints() > 0 && game_events::unit_matches_filter(itor, *u)) {
 				break;
@@ -347,12 +348,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "unstone") {
 		const vconfig filter = cfg.child("filter");
 		for(unit_map::iterator i = units->begin(); i != units->end(); ++i) {
-			if(i->second.stone()) {
+			if(i->second.get_state("stoned")=="yes") {
 				if(!filter.null()) {
 					if(game_events::unit_matches_filter(i, filter))
-						i->second.remove_flag("stone");
+						i->second.set_state("stoned","");
 				} else {
-					i->second.remove_flag("stone");
+					i->second.set_state("stoned","");
 				}
 			}
 		}
@@ -616,7 +617,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const unit_race::GENDER gender = gender_string == "female" ? unit_race::FEMALE : unit_race::MALE;
 		const game_data::unit_type_map::const_iterator itor = game_data_ptr->unit_types.find(type);
 		if(itor != game_data_ptr->unit_types.end()) {
-			unit dummy_unit(&itor->second,0,false,true,gender);
+			wassert(game_data_ptr != NULL);
+			wassert(units != NULL);
+			wassert(game_map != NULL);
+			wassert(status_ptr != NULL);
+			unit dummy_unit(game_data_ptr,units,game_map,status_ptr,teams,&itor->second,0,false,true,gender);
 			const std::vector<std::string> xvals = utils::split(x);
 			const std::vector<std::string> yvals = utils::split(y);
 			std::vector<gamemap::location> path;
@@ -918,7 +923,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			item["role"] = "";
 			vconfig filter(&item);
 
-			std::map<gamemap::location,unit>::iterator itor;
+			units_map::iterator itor;
 			for(itor = units->begin(); itor != units->end(); ++itor) {
 				if(game_events::unit_matches_filter(itor, filter)) {
 					itor->second.assign_role(cfg["role"]);
@@ -945,7 +950,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					std::vector<unit>::iterator ui;
 					for(ui = player->available_units.begin();
 							ui != player->available_units.end(); ++ui) {
-						if(game_events::unit_matches_filter(*ui, filter)) {
+						if(game_events::unit_matches_filter(*ui, filter,gamemap::location())) {
 							ui->assign_role(cfg["role"]);
 							found=true;
 							break;
@@ -960,7 +965,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					//iterate over the units, and try to find one that matches
 					for(ui = pi->second.available_units.begin();
 							ui != pi->second.available_units.end(); ++ui) {
-						if(game_events::unit_matches_filter(*ui, filter)) {
+						if(game_events::unit_matches_filter(*ui, filter,gamemap::location())) {
 							ui->assign_role(cfg["role"]);
 							found=true;
 							break;
@@ -985,7 +990,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "unit_overlay") {
-		for(std::map<gamemap::location,unit>::iterator itor = units->begin(); itor != units->end(); ++itor) {
+		for(units_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
 			if(game_events::unit_matches_filter(itor,cfg)) {
 				itor->second.add_overlay(cfg["image"]);
 				break;
@@ -994,7 +999,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "remove_unit_overlay") {
-		for(std::map<gamemap::location,unit>::iterator itor = units->begin(); itor != units->end(); ++itor) {
+		for(units_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
 			if(game_events::unit_matches_filter(itor,cfg)) {
 				itor->second.remove_overlay(cfg["image"]);
 				break;
@@ -1087,8 +1092,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//if we should spawn a new unit on the map somewhere
 	else if(cmd == "unit") {
-		unit new_unit(*game_data_ptr, cfg.get_parsed_config());
-		preferences::encountered_units().insert(new_unit.type().id());
+		wassert(game_data_ptr != NULL);
+		wassert(units != NULL);
+		wassert(game_map != NULL);
+		wassert(status_ptr != NULL);
+		unit new_unit(game_data_ptr,units,game_map,status_ptr,teams,cfg.get_parsed_config());
+		preferences::encountered_units().insert(new_unit.id());
 		gamemap::location loc = cfg_to_loc(cfg);
 
 		if(game_map->on_board(loc)) {
@@ -1150,8 +1159,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 				LOG_NG << "checking unit against filter...\n";
-				if(game_events::unit_matches_filter(*u,cfg)) {
+				if(game_events::unit_matches_filter(*u, cfg,gamemap::location())) {
 					gamemap::location loc = cfg_to_loc(cfg);
+					wassert(game_data_ptr != NULL);
+					wassert(units != NULL);
+					wassert(game_map != NULL);
+					wassert(status_ptr != NULL);
+					u->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 					recruit_unit(*game_map,index+1,*units,*u,loc,cfg["show"] == "no" ? NULL : screen,false,true);
 					avail.erase(u);
 					break;
@@ -1252,7 +1266,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//displaying a message dialog
 	else if(cmd == "message") {
-		std::map<gamemap::location,unit>::iterator speaker = units->end();
+		units_map::iterator speaker = units->end();
 		if(cfg["speaker"] == "unit") {
 			speaker = units->find(event_info.loc1);
 		} else if(cfg["speaker"] == "second_unit") {
@@ -1291,20 +1305,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			screen->scroll_to_tile(speaker->first.x,speaker->first.y-1);
 
 			if(image.empty()) {
-				if(speaker->second.profile() == "") {
-					image = speaker->second.type().image_profile();
-				} else {
-					image = speaker->second.profile();
-					if(image == "unit_image") {
-						image = speaker->second.type().image();
-					}
-				}
+				image = speaker->second.profile();
 			}
 
 			if(caption.empty()) {
 				caption = speaker->second.description();
 				if(caption.empty()) {
-					caption = speaker->second.type().language_name();
+					caption = speaker->second.language_name();
 				}
 			}
 			LOG_DP << "done scrolling to speaker...\n";
@@ -1413,7 +1420,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
                       pi!=players.end(); ++pi) {
                         std::vector<unit>& avail_units = pi->second.available_units;
 			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-                          if(game_events::unit_matches_filter(*j, cfg)) {
+				if(game_events::unit_matches_filter(*j, cfg,gamemap::location())) {
                             j = avail_units.erase(j);
                           } else {
                             ++j;
@@ -1475,7 +1482,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					pi!=players.end(); ++pi) {
 				std::vector<unit>& avail_units = pi->second.available_units;
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-					if(game_events::unit_matches_filter(*j, filter) == false) {
+				if(game_events::unit_matches_filter(*j, filter,gamemap::location())) {
 						++j;
 						continue;
 					}
@@ -1506,7 +1513,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				*state_of_game));
 
 		try {
-			const unit u(*game_data_ptr,var);
+			wassert(game_data_ptr != NULL);
+			wassert(units != NULL);
+			wassert(game_map != NULL);
+			wassert(status_ptr != NULL);
+			const unit u(game_data_ptr,units,game_map,status_ptr,teams,var);
 			gamemap::location loc(var);
 			if(loc.valid()) {
 				if(cfg["find_vacant"] == "yes") {
@@ -1855,11 +1866,6 @@ bool matches_special_filter(const config* cfg, const vconfig filter)
 			return false;
 		}
 	}
-	if(filter["terrain"] != "") {
-		if(filter["terrain"] != (*cfg)["terrain"]) {
-			return false;
-		}
-	}
 	
 	const vconfig::child_list& nots = filter.get_children("not");
 	for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
@@ -1870,13 +1876,13 @@ bool matches_special_filter(const config* cfg, const vconfig filter)
 	return true;
 }
 
-bool unit_matches_filter(const unit& u, const vconfig filter)
+bool unit_matches_filter(const unit& u, const vconfig filter,const gamemap::location& loc)
 {
-	const bool res = u.matches_filter(filter.get_parsed_config());
+	const bool res = u.matches_filter(filter.get_parsed_config(),loc);
 	if(res == true) {
 		const vconfig::child_list& nots = filter.get_children("not");
 		for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
-			if(unit_matches_filter(u,*i)) {
+			if(unit_matches_filter(u,*i,loc)) {
 				return false;
 			}
 		}
@@ -1887,7 +1893,7 @@ bool unit_matches_filter(const unit& u, const vconfig filter)
 
 bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter)
 {
-	const bool res = filter_loc(itor->first,filter) && itor->second.matches_filter(filter.get_parsed_config());
+	const bool res = filter_loc(itor->first,filter) && itor->second.matches_filter(filter.get_parsed_config(),itor->first);
 	if(res == true) {
 		const vconfig::child_list& nots = filter.get_children("not");
 		for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
@@ -1901,7 +1907,7 @@ bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter)
 }
 
 manager::manager(const config& cfg, display& gui_, gamemap& map_,
-                 std::map<gamemap::location,unit>& units_,
+                 units_map& units_,
                  std::vector<team>& teams_,
                  game_state& state_of_game_, gamestatus& status,
 		 const game_data& game_data_) :

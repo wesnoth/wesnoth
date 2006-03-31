@@ -68,7 +68,7 @@ void play_turn(const game_data& gameinfo, game_state& state_of_game,
                const gamestatus& status, const config& terrain_config,
                const config& level, CKey& key, display& gui, gamemap& map,
                std::vector<team>& teams, unsigned int team_num,
-               std::map<gamemap::location,unit>& units,
+               units_map& units,
                turn_info::floating_textbox& textbox,
                replay_network_sender& network_sender,
 			   bool skip_replay)
@@ -317,8 +317,8 @@ void turn_info::handle_event(const SDL_Event& event)
 				const unit_map::iterator u = selected_unit();
 
 				if(u != units_.end() && u->second.side() == team_num_) {
-					const bool ignore_zocs = u->second.type().is_skirmisher();
-					const bool teleport = u->second.type().teleports();
+					const bool ignore_zocs = u->second.get_ability_bool("skirmisher",u->first);
+					const bool teleport = u->second.get_ability_bool("teleport",u->first);
 					current_paths_ = paths(map_,status_,gameinfo_,units_,u->first,
 					                       teams_,ignore_zocs,teleport,
 					                       viewing_team(),path_turns_);
@@ -405,7 +405,7 @@ void turn_info::mouse_motion(int x, int y)
 		                                     attack_from.valid())) {
 			if(mouseover_unit == units_.end()) {
 				cursor::set(cursor::MOVE);
-			} else if(viewing_team().is_enemy(mouseover_unit->second.side()) && !mouseover_unit->second.stone()) {
+			} else if(viewing_team().is_enemy(mouseover_unit->second.side()) && mouseover_unit->second.get_state("stoned")!="yes") {
 				cursor::set(cursor::ATTACK);
 			} else {
 				cursor::set(cursor::NORMAL);
@@ -430,10 +430,10 @@ void turn_info::mouse_motion(int x, int y)
 
 			unit_map::const_iterator un = find_unit(selected_hex_);
 
-			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && !un->second.stone()) {
+			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && un->second.get_state("stoned")!="yes") {
 				const shortest_path_calculator calc(un->second,viewing_team(),
 				                                    visible_units(),teams_,map_,status_);
-				const bool can_teleport = un->second.type().teleports();
+				const bool can_teleport = un->second.get_ability_bool("teleport",un->first);
 
 				const std::set<gamemap::location>* teleports = NULL;
 
@@ -461,8 +461,8 @@ void turn_info::mouse_motion(int x, int y)
 		   current_paths_.routes.empty() && !gui_.fogged(un->first.x,un->first.y)) {
 			unit_movement_resetter move_reset(un->second);
 
-			const bool ignore_zocs = un->second.type().is_skirmisher();
-			const bool teleport = un->second.type().teleports();
+			const bool ignore_zocs = un->second.get_ability_bool("skirmisher",un->first);
+			const bool teleport = un->second.get_ability_bool("teleport",un->first);
 			current_paths_ = paths(map_,status_,gameinfo_,units_,new_hex,teams_,
 								   ignore_zocs,teleport,viewing_team(),path_turns_);
 			gui_.highlight_reach(current_paths_);
@@ -698,7 +698,7 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 			weapons.push_back(a);
 			battle_stats_strings sts;
 			battle_stats st = evaluate_battle_stats(map_, teams_, attacker_loc, defender_loc,
-		                                        a, units_, status_, 0, &sts);
+		                                        a, units_, status_, gameinfo_, 0, &sts);
 			stats.push_back(sts);
 
 			simple_attack_rating weapon_rating(st);
@@ -916,7 +916,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 				u = find_unit(attack_from);
 				// enemy = find_unit(hex);
 				if(u != units_.end() && u->second.side() == team_num_ &&
-				   enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.stone()) {
+				   enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && enemy->second.get_state("stoned")!="yes") {
 					if(attack_enemy(u,enemy) == false) {
 						undo();
 						selected_hex_ = src;
@@ -965,8 +965,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		const unit_map::iterator it = find_unit(hex);
 
 		if(it != units_.end() && it->second.side() == team_num_ && !gui_.fogged(it->first.x,it->first.y)) {
-			const bool ignore_zocs = it->second.type().is_skirmisher();
-			const bool teleport = it->second.type().teleports();
+			const bool ignore_zocs = it->second.get_ability_bool("skirmisher",it->first);
+			const bool teleport = it->second.get_ability_bool("teleport",it->first);
 			current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
 								   ignore_zocs,teleport,viewing_team(),path_turns_);
 
@@ -985,7 +985,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 				const std::set<gamemap::location>* teleports = NULL;
 
 				std::set<gamemap::location> allowed_teleports;
-				if(u.type().teleports()) {
+				if(u.get_ability_bool("teleport",it->first)) {
 					allowed_teleports = vacant_villages(current_team().villages(),units_);
 					teleports = &allowed_teleports;
 					if(current_team().villages().count(it->first))
@@ -1006,12 +1006,12 @@ void turn_info::show_attack_options(unit_map::const_iterator u)
 {
 	team& current_team = teams_[team_num_-1];
 
-	if(u == units_.end() || u->second.can_attack() == false)
+	if(u == units_.end() || u->second.attacks_left() == 0)
 		return;
 
 	for(unit_map::const_iterator target = units_.begin(); target != units_.end(); ++target) {
 		if(current_team.is_enemy(target->second.side()) &&
-			distance_between(target->first,u->first) == 1 && !target->second.stone()) {
+			distance_between(target->first,u->first) == 1 && target->second.get_state("stoned")!="yes") {
 			current_paths_.routes[target->first] = paths::route();
 		}
 	}
@@ -1077,7 +1077,7 @@ void turn_info::move_unit_to_loc(const unit_map::const_iterator& ui, const gamem
 	const std::set<gamemap::location>* teleports = NULL;
 
 	std::set<gamemap::location> allowed_teleports;
-	if(u.type().teleports()) {
+	if(u.get_ability_bool("teleport",ui->first)) {
 		allowed_teleports = vacant_villages(current_team().villages(),units_);
 		teleports = &allowed_teleports;
 		if(current_team().villages().count(ui->first))
@@ -1293,8 +1293,8 @@ void turn_info::cycle_units()
 	}
 
 	if(it != units_.end() && !gui_.fogged(it->first.x,it->first.y)) {
-		const bool ignore_zocs = it->second.type().is_skirmisher();
-		const bool teleport = it->second.type().teleports();
+		const bool ignore_zocs = it->second.get_ability_bool("skirmisher",it->first);
+		const bool teleport = it->second.get_ability_bool("teleport",it->first);
 		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,ignore_zocs,teleport,viewing_team(),path_turns_);
 		gui_.highlight_reach(current_paths_);
 
@@ -1339,8 +1339,8 @@ void turn_info::cycle_back_units()
 	}
 
 	if(it != units_.begin() && !gui_.fogged(it->first.x,it->first.y)) {
-		const bool ignore_zocs = it->second.type().is_skirmisher();
-		const bool teleport = it->second.type().teleports();
+		const bool ignore_zocs = it->second.get_ability_bool("skirmisher",it->first);
+		const bool teleport = it->second.get_ability_bool("teleport",it->first);
 		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,ignore_zocs,teleport,viewing_team(),path_turns_);
 		gui_.highlight_reach(current_paths_);
 
@@ -1588,9 +1588,10 @@ void turn_info::redo()
 		} else {
 			// Redo recall
 			std::vector<unit>& recall_list = player->available_units;
-			unit& un = recall_list[action.recall_pos];
+			unit un = recall_list[action.recall_pos];
 
 			recorder.add_recall(action.recall_pos,action.recall_loc);
+			un.set_game_context(&gameinfo_,&units_,&map_,&status_,&teams_);
 			const std::string& msg = recruit_unit(map_,team_num_,units_,un,action.recall_loc,&gui_);
 			if(msg.empty()) {
 				statistics::recall_unit(un);
@@ -1804,7 +1805,7 @@ void turn_info::write_game_snapshot(config& start) const
 		buf << side_num;
 		side["side"] = buf.str();
 
-		for(std::map<gamemap::location,unit>::const_iterator i = units_.begin(); i != units_.end(); ++i) {
+		for(units_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 			if(i->second.side() == side_num) {
 				config& u = side.add_child("unit");
 				i->first.write(u);
@@ -1895,7 +1896,7 @@ void turn_info::status_table()
 		//output the number of the side first, and this will
 		//cause it to be displayed in the correct colour
 		if(leader != units_.end()) {
-			str << IMAGE_PREFIX << leader->second.type().image() << COLUMN_SEPARATOR
+			str << IMAGE_PREFIX << leader->second.absolute_image() << COLUMN_SEPARATOR
 			    << "\033[3" << lexical_cast<char, size_t>(n+1) << 'm' << leader->second.description() << COLUMN_SEPARATOR;
 		} else {
 			str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;
@@ -1958,7 +1959,7 @@ void turn_info::recruit()
 		            << prefix << type.language_name() << "\n"
 		            << prefix << type.cost() << " " << sgettext("unit^Gold");
 		items.push_back(description.str());
-		sample_units.push_back(unit(&type,team_num_));
+		sample_units.push_back(unit(&gameinfo_,&units_,&map_,&status_,&teams_,&type,team_num_));
 	}
 
 	if(sample_units.empty()) {
@@ -2015,7 +2016,7 @@ void turn_info::do_recruit(const std::string& name)
 
 		//create a unit with traits
 		recorder.add_recruit(recruit_num,last_hex_);
-		unit new_unit(&(u_type->second),team_num_,true);
+		unit new_unit(&gameinfo_,&units_,&map_,&status_,&teams_,&(u_type->second),team_num_,true);
 		gamemap::location loc = last_hex_;
 		const std::string& msg = recruit_unit(map_,team_num_,units_,new_unit,loc,&gui_);
 		if(msg.empty()) {
@@ -2069,7 +2070,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		//if the unit is of level > 1, or is close to advancing, we warn the player
 		//about it
 		std::string message = "";
-		if(u.type().level() > 1) {
+		if(u.level() > 1) {
 			message = _("My lord, this unit is an experienced one, having advanced levels! Do you really want to dismiss $noun?");
 		} else if(u.experience() > u.max_experience()/2) {
 			message = _("My lord, this unit is close to advancing a level! Do you really want to dismiss $noun?");
@@ -2140,9 +2141,9 @@ void turn_info::recall()
 			std::stringstream option;
 			const std::string& description = u->description().empty() ? "-" : u->description();
 			option << IMAGE_PREFIX << u->absolute_image() << COLUMN_SEPARATOR
-			       << u->type().language_name() << COLUMN_SEPARATOR
+			       << u->language_name() << COLUMN_SEPARATOR
 			       << description << COLUMN_SEPARATOR
-			       << u->type().level() << COLUMN_SEPARATOR
+			       << u->level() << COLUMN_SEPARATOR
 			       << u->experience() << "/";
 
 			if(u->can_advance() == false) {
@@ -2185,6 +2186,7 @@ void turn_info::recall()
 				unit& un = recall_list[res];
 				gamemap::location loc = last_hex_;
 				recorder.add_recall(res,loc);
+				un.set_game_context(&gameinfo_,&units_,&map_,&status_,&teams_);
 				const std::string err = recruit_unit(map_,team_num_,units_,un,loc,&gui_);
 				if(!err.empty()) {
 					recorder.undo();
@@ -2337,8 +2339,8 @@ void turn_info::create_unit()
 	std::vector<unit> unit_choices;
 	for(game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.begin(); i != gameinfo_.unit_types.end(); ++i) {
 		options.push_back(i->second.language_name());
-		unit_choices.push_back(unit(&i->second,1,false));
-		unit_choices.back().new_turn();
+		unit_choices.push_back(unit(&gameinfo_,&units_,&map_,&status_,&teams_,&i->second,1,false));
+		unit_choices.back().new_turn(gamemap::location());
 	}
 
 	int choice = 0;
@@ -2414,7 +2416,7 @@ void turn_info::unit_list()
 			continue;
 
 		std::stringstream row;
-		row << i->second.type().language_name() << COLUMN_SEPARATOR
+		row << i->second.language_name() << COLUMN_SEPARATOR
 		    << i->second.description() << COLUMN_SEPARATOR
 		    << i->second.hitpoints() << "/" << i->second.max_hitpoints() << COLUMN_SEPARATOR
 		    << i->second.experience() << "/";
@@ -2743,7 +2745,7 @@ void turn_info::do_command(const std::string& str)
 				config cfg;
 				i->second.write(cfg);
 				cfg[name] = value;
-				i->second = unit(gameinfo_,cfg);
+				i->second = unit(&gameinfo_,&units_,&map_,&status_,&teams_,cfg);
 
 				gui_.invalidate(i->first);
 				gui_.invalidate_unit();
@@ -2756,7 +2758,7 @@ void turn_info::do_command(const std::string& str)
 		}
 
 		units_.erase(last_hex_);
-		units_.insert(std::pair<gamemap::location,unit>(last_hex_,unit(&i->second,1,false)));
+		units_.insert(std::pair<gamemap::location,unit>(last_hex_,unit(&gameinfo_,&units_,&map_,&status_,&teams_,&i->second,1,false)));
 		gui_.invalidate(last_hex_);
 		gui_.invalidate_unit();
 	} else if(game_config::debug && cmd == "gold") {
@@ -2827,10 +2829,10 @@ void turn_info::show_enemy_moves(bool ignore_units)
 											 .lawful_bonus,
 											 u->first, units_, teams_);
 
-		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y) && !u->second.stone() && !invisible) {
+		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y) && u->second.get_state("stoned")!="yes" && !invisible) {
 			const unit_movement_resetter move_reset(u->second);
-			const bool is_skirmisher = u->second.type().is_skirmisher();
-			const bool teleports = u->second.type().teleports();
+			const bool is_skirmisher = u->second.get_ability_bool("skirmisher",u->first);
+			const bool teleports = u->second.get_ability_bool("teleport",u->first);
 			unit_map units;
 			units.insert(*u);
 			const paths& path = paths(map_,status_,gameinfo_,ignore_units?units:units_,

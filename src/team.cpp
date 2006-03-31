@@ -805,7 +805,7 @@ void validate_side(int side)
 	}
 
 	if(side < 1 || side > int(teams->size())) {
-		throw game::game_error("invalid side found in unit definition");
+		throw game::game_error("invalid side(" + lexical_cast_default<std::string>(side) + ") found in unit definition");
 	}
 }
 

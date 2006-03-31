@@ -29,6 +29,7 @@ class gamestatus;
 
 //a convenient type for storing a list of tiles adjacent to a certain tile
 typedef util::array<gamemap::location,6> adjacent_tiles_array;
+typedef std::map<gamemap::location,unit> units_map;
 
 //function which, given a location, will find all tiles within 'radius' of that tile
 void get_tiles_radius(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res);
@@ -46,7 +47,7 @@ enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 //
 //if no valid location can be found, it will return a null location.
 gamemap::location find_vacant_tile(const gamemap& map,
-                                   const std::map<gamemap::location,unit>& un,
+                                   const units_map& un,
                                    const gamemap::location& loc,
                                    VACANT_TILE_TYPE vacancy=VACANT_ANY);
 
@@ -58,7 +59,7 @@ bool enemy_zoc(gamemap const &map, gamestatus const &status,
 
 struct cost_calculator
 {
-	virtual double cost(const gamemap::location& loc, const double so_far, const bool isDst) const = 0;
+	virtual double cost(const gamemap::location& src, const gamemap::location& loc, const double so_far, const bool isDst) const = 0;
 	virtual ~cost_calculator() {}
 	inline double getNoPathValue(void) const { return (42424242.0); }
 };
@@ -110,7 +111,7 @@ struct shortest_path_calculator : cost_calculator
 	shortest_path_calculator(const unit& u, const team& t,
 	                         const unit_map& units, const std::vector<team>& teams,
 	                         const gamemap& map, const gamestatus& status);
-	virtual double cost(const gamemap::location& loc, const double so_far, const bool isDst) const;
+	virtual double cost(const gamemap::location& src, const gamemap::location& loc, const double so_far, const bool isDst) const;
 
 private:
 	unit const &unit_;
@@ -119,7 +120,6 @@ private:
 	std::vector<team> const &teams_;
 	gamemap const &map_;
 	int const lawful_bonus_;
-	bool const unit_is_skirmisher_;
 	int const movement_left_;
 	int const total_movement_;
 };

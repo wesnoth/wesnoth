@@ -14,12 +14,14 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "pathutils.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
+#include "actions.hpp"
 
 #include <algorithm>
 #include <cctype>
@@ -526,6 +528,72 @@ const terrain_type& gamemap::get_terrain_info(const gamemap::location &loc) cons
 {
 	return get_terrain_info(get_terrain(loc));
 }
+bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config& cfg, const gamestatus& game_status, const unit_map& units,bool flat_tod) const
+{
+	const std::string& terrain = cfg["terrain"];
+	const std::string& tod_type = cfg["time_of_day"];
+	const std::string& tod_id = cfg["time_of_day_id"];
+	// Any of these may be a CSV
+	std::string terrain_letter;
+	terrain_letter += get_terrain_info(loc).letter();
+	if(!terrain.empty()) {
+		if(terrain != terrain_letter) {
+			if(std::find(terrain.begin(),terrain.end(),',') != terrain.end() &&
+				std::search(terrain.begin(),terrain.end(),
+				terrain_letter.begin(),terrain_letter.end()) != terrain.end()) {
+				const std::vector<std::string>& vals = utils::split(terrain);
+				if(std::find(vals.begin(),vals.end(),terrain_letter) == vals.end()) {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		}
+	}
+	
+	static config const dummy_cfg;
+	time_of_day tod(dummy_cfg);
+	if(!tod_type.empty() || !tod_id.empty()) {
+		if(flat_tod) {
+			tod = game_status.get_time_of_day(0,loc);
+		} else {
+			tod = timeofday_at(game_status,units,loc,*this);
+		}
+	}
+	if(!tod_type.empty()) {
+		const std::vector<std::string>& vals = utils::split(terrain);
+		if(tod.lawful_bonus<0) {
+			if(std::find(vals.begin(),vals.end(),"chaotic") == vals.end()) {
+				return false;
+			}
+		} else if(tod.lawful_bonus>0) {
+			if(std::find(vals.begin(),vals.end(),"lawful") == vals.end()) {
+				return false;
+			}
+		} else {
+			if(std::find(vals.begin(),vals.end(),"neutral") == vals.end()) {
+				return false;
+			}
+		}
+	}
+	if(!tod_id.empty()) {
+		if(tod_id != tod.id) {
+			if(std::find(tod_id.begin(),tod_id.end(),',') != tod_id.end() &&
+				std::search(tod_id.begin(),tod_id.end(),
+				tod.id.begin(),tod.id.end()) != tod_id.end()) {
+				const std::vector<std::string>& vals = utils::split(tod_id);
+				if(std::find(vals.begin(),vals.end(),tod.id) == vals.end()) {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		}
+	}
+	
+	return true;
+}
+
 
 const std::vector<gamemap::TERRAIN>& gamemap::get_terrain_list() const
 {

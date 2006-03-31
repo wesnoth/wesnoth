@@ -52,38 +52,38 @@ namespace dialogs
 
 void advance_unit(const game_data& info,
 				  const gamemap& map,
-                  std::map<gamemap::location,unit>& units,
+                  units_map& units,
                   gamemap::location loc,
                   display& gui, bool random_choice)
 {
-	std::map<gamemap::location,unit>::iterator u = units.find(loc);
+	units_map::iterator u = units.find(loc);
 	if(u == units.end() || u->second.advances() == false)
 		return;
 
-	LOG_DP << "advance_unit: " << u->second.type().id() << "\n";
+	LOG_DP << "advance_unit: " << u->second.id() << "\n";
 
-	const std::vector<std::string>& options = u->second.type().advances_to();
+	const std::vector<std::string>& options = u->second.advances_to();
 
 	std::vector<std::string> lang_options;
 
 	std::vector<unit> sample_units;
 	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
 		sample_units.push_back(::get_advanced_unit(info,units,loc,*op));
-		const unit_type& type = sample_units.back().type();
-		lang_options.push_back(IMAGE_PREFIX + type.image() + COLUMN_SEPARATOR + type.language_name());
+		const unit& type = sample_units.back();
+		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + type.language_name());
 		preferences::encountered_units().insert(*op);
 	}
 
 	const config::child_list& mod_options = u->second.get_modification_advances();
 
 	for(config::child_list::const_iterator mod = mod_options.begin(); mod != mod_options.end(); ++mod) {
-		sample_units.push_back(::get_advanced_unit(info,units,loc,u->second.type().id()));
+		sample_units.push_back(::get_advanced_unit(info,units,loc,u->second.id()));
 		sample_units.back().add_modification("advance",**mod);
-		const unit_type& type = sample_units.back().type();
+		const unit& type = sample_units.back();
 		if((**mod)["image"].str().size()){
 		  lang_options.push_back(IMAGE_PREFIX + (**mod)["image"].str() + COLUMN_SEPARATOR + (**mod)["description"].str());
 		}else{
-		  lang_options.push_back(IMAGE_PREFIX + type.image() + COLUMN_SEPARATOR + (**mod)["description"].str());
+		  lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + (**mod)["description"].str());
 		}
 	}
 
@@ -117,12 +117,12 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 {
 	const command_disabler cmd_disabler;
 
-	std::map<gamemap::location,unit>::iterator u = units.find(loc);
+	units_map::iterator u = units.find(loc);
 	if(u == units.end() || u->second.advances() == false) {
 		return false;
 	}
 
-	const std::vector<std::string>& options = u->second.type().advances_to();
+	const std::vector<std::string>& options = u->second.advances_to();
 	const config::child_list& mod_options = u->second.get_modification_advances();
 
 	if(choice >= options.size() + mod_options.size()) {
@@ -143,7 +143,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	}
 
 	if(choice < options.size()) {
-		const std::string& chosen_unit = choice < options.size() ? options[choice] : u->second.type().id();
+		const std::string& chosen_unit = choice < options.size() ? options[choice] : u->second.id();
 		::advance_unit(info,units,loc,chosen_unit);
 	}
 
@@ -608,10 +608,10 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 void unit_speak(const config& message_info, display& disp, const unit_map& units)
 {
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->second.matches_filter(message_info)) {
+		if(i->second.matches_filter(message_info,i->first)) {
 
 			disp.scroll_to_tile(i->first.x,i->first.y);
-			const surface surface(image::get_image(i->second.type().image_profile(),image::UNSCALED));
+			const surface surface(image::get_image(i->second.profile(),image::UNSCALED));
 			gui::show_dialog(disp,surface,i->second.underlying_description(),message_info["message"],gui::MESSAGE);
 		}
 	}
@@ -634,7 +634,7 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const un
 	unit_store_.push_back(u);
 }
 
-unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const std::vector<unit>& units, TYPE type, bool on_left_side)
+unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, std::vector<unit>& units, TYPE type, bool on_left_side)
                                     : gui::preview_pane(disp.video()), disp_(disp),
 				      details_button_(disp.video(),_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
 				      map_(map), units_(&units), index_(0), left_(on_left_side),
@@ -671,7 +671,7 @@ void unit_preview_pane::draw_contents()
 		return;
 	}
 
-	const unit& u = (*units_)[index_];
+	unit& u = (*units_)[index_];
 
 	const bool right_align = left_side();
 
@@ -712,18 +712,19 @@ void unit_preview_pane::draw_contents()
 	}
 
 	std::stringstream details;
-	details << u.type().language_name()
+	details << u.language_name()
 			<< "\n" << _("level") << " "
-			<< u.type().level() << "\n"
-			<< unit_type::alignment_description(u.type().alignment()) << "\n"
+			<< u.level() << "\n"
+			<< unit_type::alignment_description(u.alignment()) << "\n"
 			<< u.traits_description() << " \n";
 
-	const std::vector<std::string>& abilities = u.type().ability_tooltips();
+	const std::vector<std::string>& abilities = u.unit_ability_tooltips();
 	for(std::vector<std::string>::const_iterator a = abilities.begin(); a != abilities.end(); ++a) {
 		details << gettext(a->c_str());
-		if(a+1 != abilities.end()) {
+		if(a+2 != abilities.end()) {
 			details << ", ";
 		}
+		++a;
 	}
 
 	details << " \n";
@@ -755,14 +756,15 @@ void unit_preview_pane::draw_contents()
 				<< u.total_movement()
 				<< "\n";
 
-		const std::vector<attack_type>& attacks = u.attacks();
-		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
+		std::vector<attack_type>& attacks = u.attacks();
+		for(std::vector<attack_type>::iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
+			at_it->set_specials_context(gamemap::location(),u);
 
 			details << "\n" << at_it->name()
 			        << " (" << gettext(at_it->type().c_str()) << ")\n";
-			if (!at_it->special().empty())
-				details << gettext(at_it->special().c_str());
+			
+			details << at_it->weapon_specials();
 			details << "\n"
 			        << at_it->damage() << "-" << at_it->num_attacks() << " -- "
 			        << _(at_it->range().c_str());
@@ -801,7 +803,7 @@ void unit_preview_pane::process_event()
 
 void show_unit_description(display &disp, const unit& u)
 {
-	help::show_help(disp,"unit_" + u.type().id());
+	help::show_help(disp,"unit_" + u.id());
 }
 
 

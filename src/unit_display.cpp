@@ -84,7 +84,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	gamemap::location dst_adjacent[6];
 	get_adjacent_tiles(b, dst_adjacent);
 
-	const int total_mvt_time = 150 * u.movement_cost(map,dst_terrain)/acceleration;
+	const int total_mvt_time = 150 * u.movement_cost(dst_terrain)/acceleration;
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = SDL_GetTicks() -start_time;
 	disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
@@ -164,7 +164,7 @@ void unit_die(display& disp, const gamemap &map,const gamemap::location& loc, un
 		return;
 	}
 
-	const std::string& die_sound = u.type().die_sound();
+	const std::string& die_sound = u.die_sound();
 	if(die_sound != "" && die_sound != "null") {
 		sound::play_sound(die_sound);
 	}
@@ -208,10 +208,6 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 	const int acceleration = disp.turbo() ? 5 : 1;
 
 
-
-
-
-
 	// more damage shown for longer, but 1s at most for this factor
 	const double xsrc = disp.get_location_x(a);
 	const double ysrc = disp.get_location_y(a);
@@ -251,7 +247,6 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 	const bool hflip = b.x < a.x;
 	const unit_animation::FRAME_DIRECTION dir = (a.x == b.x) ? unit_animation::VERTICAL:unit_animation::DIAGONAL;
 
-	
 	defender.set_defending(disp,damage,attack.range());
 	const int start_time = minimum<int>(minimum<int>(defender.get_animation()->get_first_frame_time(),
 				missile_animation.get_first_frame_time()),-200);
@@ -288,10 +283,10 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 		animation_time = defender.get_animation()->get_animation_time();
 	}
 	if(damage > 0 && !hide) {
-		sound::play_sound(def->second.type().get_hit_sound());
+		sound::play_sound(def->second.get_hit_sound());
 		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
 	}
-	if(def->second.gets_hit(damage)) {
+	if(def->second.take_hit(damage)) {
 		dead = true;
 	}
 
@@ -356,7 +351,6 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	end_time=maximum<int>(end_time,defender.get_animation()->get_last_frame_time());
 
 
-
 	const gamemap::location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
 	if(leader_loc.valid()){
@@ -397,10 +391,10 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		animation_time = attacker.get_animation()->get_animation_time();
 	}
 	if(damage > 0 && !hide) {
-		sound::play_sound(def->second.type().get_hit_sound());
+		sound::play_sound(def->second.get_hit_sound());
 		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
 	}
-	if(def->second.gets_hit(damage)) {
+	if(def->second.take_hit(damage)) {
 		dead = true;
 	}
 	while(!attacker.get_animation()->animation_finished() ||

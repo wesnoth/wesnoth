@@ -681,7 +681,7 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 	    p!=state.players.end(); ++p) {
 		for(std::vector<unit>::const_iterator u = p->second.available_units.begin(); u != p->second.available_units.end(); ++u) {
 			if(u->can_recruit()) {
-				leader = u->type().id();
+				leader = u->id();
 			}
 		}
 	}
@@ -704,7 +704,7 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 			const config::child_list& units = (**s).get_children("unit");
 			for(config::child_list::const_iterator u = units.begin(); u != units.end(); ++u) {
 				if((**u)["canrecruit"] == "1") {
-					leader = (**u)["type"];
+					leader = (**u)["id"];
 					break;
 				}
 			}

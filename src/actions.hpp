@@ -24,6 +24,7 @@ class replay;
 #include "unit.hpp"
 
 #include <deque>
+typedef std::map<gamemap::location,unit> units_map;
 
 //this file defines various functions which implement different in-game
 //events and commands.
@@ -41,7 +42,7 @@ bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const g
 //If the unit cannot be recruited, then a human-readable message
 //describing why not will be returned. On success, the return string is empty
 std::string recruit_unit(const gamemap& map, int team, unit_map& units,
-		unit& u, gamemap::location& recruit_location,
+		unit u, gamemap::location& recruit_location,
 		display *disp=NULL, bool need_castle=true, bool full_movement=false);
 
 //a structure which defines all the statistics for a potential
@@ -57,8 +58,10 @@ struct battle_stats
 	bool attacker_plague, defender_plague;
         std::string attacker_plague_type, defender_plague_type;
 	bool attacker_slows, defender_slows;
-	bool to_the_death, defender_strikes_first;
-	std::string attacker_special, defender_special;
+	int rounds;
+	bool defender_strikes_first;
+	bool attacker_poisons, defender_poisons;
+	bool attacker_stones, defender_stones;
 };
 
 struct battle_stats_strings
@@ -89,8 +92,9 @@ battle_stats evaluate_battle_stats(const gamemap& map,
                                    const gamemap::location& attacker,
                                    const gamemap::location& defender,
                                    int attack_with,
-                                   std::map<gamemap::location,unit>& units,
+                                   units_map& units,
                                    const gamestatus& state,
+                                   const game_data& gamedata,
                                    gamemap::TERRAIN attacker_terrain_override = 0,
                                    battle_stats_strings *strings = NULL);
 
@@ -100,7 +104,7 @@ void attack(display& gui, const gamemap& map,
             gamemap::location attacker,
             gamemap::location defender,
             int attack_with,
-            std::map<gamemap::location,unit>& units,
+            units_map& units,
             const gamestatus& state,
             const game_data& info,
 			bool update_display = true);
@@ -126,7 +130,7 @@ unit_map::const_iterator find_leader(const unit_map& units, int side);
 //calculates healing for all units for the given side. Should be called
 //at the beginning of a side's turn.
 void calculate_healing(display& disp, const gamestatus& status, const gamemap& map,
-                       std::map<gamemap::location,unit>& units, unsigned int side,
+                       units_map& units, unsigned int side,
 					   const std::vector<team>& teams, bool update_display);
 
 // Resets resting for all units on this side: should be called after calculate_healing().
@@ -137,7 +141,7 @@ void reset_resting(std::map<gamemap::location,unit>& units, unsigned int side);
 //name of the unit it is advancing to, will return the advanced version of
 //this unit. (with traits and items retained).
 unit get_advanced_unit(const game_data& info,
-                  std::map<gamemap::location,unit>& units,
+                  units_map& units,
                   const gamemap::location& loc, const std::string& advance_to);
 
 //function which will advance the unit at loc to 'advance_to'.
@@ -145,7 +149,7 @@ unit get_advanced_unit(const game_data& info,
 //safely pass in a reference to the item in the map that we're going to delete,
 //since deletion would invalidate the reference.
 void advance_unit(const game_data& info,
-                  std::map<gamemap::location,unit>& units,
+                  units_map& units,
                   gamemap::location loc, const std::string& advance_to);
 
 //function which tests if the unit at loc is currently affected
@@ -153,26 +157,26 @@ void advance_unit(const game_data& info,
 //if it does, then the location of the leader unit will be returned, otherwise
 //gamemap::location::null_location will be returned
 //if 'bonus' is not NULL, the % bonus will be stored in it
-gamemap::location under_leadership(const std::map<gamemap::location,unit>& units,
+gamemap::location under_leadership(const units_map& units,
                                    const gamemap::location& loc, int* bonus=NULL);
 
 //checks to see if a side has won, and will throw an end_level_exception
 //if one has. Will also remove control of villages from sides  with dead leaders
-void check_victory(std::map<gamemap::location,unit>& units,
+void check_victory(units_map& units,
                    std::vector<team>& teams);
 
 //gets the time of day at a certain tile. Certain tiles may have a time of
 //day that differs from 'the' time of day, if a unit that illuminates is
 //in that tile or adjacent.
 const time_of_day&  timeofday_at(const gamestatus& status,
-                              const std::map<gamemap::location,unit>& units,
+                              const units_map& units,
                               const gamemap::location& loc,
 			      const gamemap& map);
 
 //returns the amount that a unit's damage should be multiplied by due to
 //the current time of day.
 int combat_modifier(const gamestatus& status,
-			const std::map<gamemap::location,unit>& units,
+			const units_map& units,
 			const gamemap::location& loc,
 			unit_type::ALIGNMENT alignment,
 			const gamemap& map);
@@ -242,6 +246,6 @@ namespace victory_conditions {
 //be made to make sure the opposite unit isn't also the attacker.
 bool backstab_check(const gamemap::location& attacker_loc,
 	const gamemap::location& defender_loc,
-	std::map<gamemap::location,unit>& units, std::vector<team>& teams);
+	units_map& units, std::vector<team>& teams);
 
 #endif

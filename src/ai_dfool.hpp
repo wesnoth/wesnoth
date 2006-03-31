@@ -225,7 +225,7 @@ namespace dfool {
     {
       unit_map filtered_units_;
       for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
-	if(i->second.matches_filter(filter)) {
+	if(i->second.matches_filter(filter,i->first)) {
 	  filtered_units_.insert(*i);
 	}
       }

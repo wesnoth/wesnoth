@@ -67,20 +67,22 @@ void ai::do_attack_analysis(
 	for(size_t i = 0; i != units.size(); ++i) {
 		const location current_unit = units[i];
 
-		const unit_map::const_iterator unit_itor = units_.find(current_unit);
+		unit_map::iterator unit_itor = units_.find(current_unit);
 		wassert(unit_itor != units_.end());
 
 		//see if the unit has the backstab ability -- units with backstab
 		//will want to try to have a friendly unit opposite the position they move to
 		//see if the unit has the slow ability -- units with slow only attack first
 		bool backstab = false, slow = false;
-		const std::vector<attack_type>& attacks = unit_itor->second.attacks();
-		for(std::vector<attack_type>::const_iterator a = attacks.begin(); a != attacks.end(); ++a) {
-			if(a->backstab()) {
+		std::vector<attack_type>& attacks = unit_itor->second.attacks();
+		for(std::vector<attack_type>::iterator a = attacks.begin(); a != attacks.end(); ++a) {
+			a->set_specials_context(gamemap::location(),gamemap::location(),
+															&gameinfo_,&units_,&map_,&state_,&teams_,true,NULL);
+			if(a->get_special_bool("backstab")) {
 				backstab = true;
 			}
 
-			if(a->slow()) {
+			if(a->get_special_bool("slow")) {
 				slow = true;
 			}
 		}
@@ -327,7 +329,7 @@ int ai::choose_weapon(const location& att, const location& def,
 	for(size_t a = 0; a != attacks.size(); ++a) {
 		if (attacks[a].attack_weight() > 0){
 			const battle_stats stats = evaluate_battle_stats(map_, teams_, att, def, a, units_,
-		                                                 state_, terrain);
+		                                                 state_, gameinfo_, terrain);
 
 			//TODO: improve this rating formula!
 			const double rating =
@@ -374,7 +376,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 	leader_threat = (tile != 6);
 	uses_leader = false;
 
-	target_value = defend_it->second.type().cost();
+	target_value = defend_it->second.cost();
 	target_value += (double(defend_it->second.experience())/
 	                 double(defend_it->second.max_experience()))*target_value;
 	target_starting_damage = defend_it->second.max_hitpoints() -
@@ -412,7 +414,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 
 		int defenderxp = 0;
 
-		bool defender_slowed= defend_it->second.slowed();
+		bool defender_slowed= defend_it->second.get_state("slowed")=="yes";
 
 		int defhp = target_hp;
 		for(size_t i = 0; i != movements.size() && defhp; ++i) {
@@ -423,14 +425,14 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 			int defends = stat.ndefends;
 
 			unit_map::const_iterator att = units.find(movements[i].first);
-			double cost = att->second.type().cost();
+			double cost = att->second.cost();
 
 			if(att->second.can_recruit()) {
 				uses_leader = true;
 			}
 
 			const bool on_village = map.is_village(movements[i].second);
-			bool attacker_slowed= att->second.slowed();
+			bool attacker_slowed= att->second.get_state("slowed")=="yes";
 
 			//up to double the value of a unit based on experience
 			cost += (double(att->second.experience())/
@@ -498,14 +500,14 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 				}
 			}
 
-			const int xp = defend_it->second.type().level() * (defhp <= 0 ? game_config::kill_experience : 1);
+			const int xp = defend_it->second.level() * (defhp <= 0 ? game_config::kill_experience : 1);
 
 			const int xp_for_advance = att->second.max_experience() - att->second.experience();
 
 			//the reward for advancing a unit is to get a 'negative' loss of that unit
-			if(att->second.type().advances_to().empty() == false) {
+			if(att->second.advances_to().empty() == false) {
 				if(xp >= xp_for_advance) {
-					avg_losses -= att->second.type().cost();
+					avg_losses -= att->second.cost();
 
 					//ignore any damage done to this unit
 					atthp = hitpoints[i];
@@ -514,7 +516,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 					//the proportion of remaining experience needed, and multiply
 					//it by a quarter of the unit cost. This will cause the AI
 					//to heavily favor getting xp for close-to-advance units.
-					avg_losses -= (att->second.type().cost()*xp)/(xp_for_advance*4);
+					avg_losses -= (att->second.cost()*xp)/(xp_for_advance*4);
 				}
 			}
 
@@ -522,7 +524,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 				//the reward for killing with a unit that
 				//plagues is to get a 'negative' loss of that unit
 				if(stat.attacker_plague) {
-					avg_losses -= att->second.type().cost();
+					avg_losses -= att->second.cost();
 				}
 
 				break;
@@ -535,14 +537,14 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 				atthp += game_config::poison_amount*2; //double reward to emphasize getting onto villages
 			}
 
-			defenderxp += (atthp == 0 ? game_config::kill_experience:1)*att->second.type().level();
+			defenderxp += (atthp == 0 ? game_config::kill_experience:1)*att->second.level();
 
 			avg_damage_taken += hitpoints[i] - atthp;
 		}
 
 		//penalty for allowing advancement is a 'negative' kill, and
 		//defender's hitpoints get restored to maximum
-		if(defend_it->second.type().advances_to().empty() == false &&
+		if(defend_it->second.advances_to().empty() == false &&
 		   defend_it->second.experience() < defend_it->second.max_experience() &&
 		   defend_it->second.experience() + defenderxp >=
 		   defend_it->second.max_experience()) {
@@ -568,7 +570,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 	double cost_sum = 0.0;
 	for(size_t i = 0; i != movements.size(); ++i) {
 		const unit_map::const_iterator att = units.find(movements[i].first);
-		const double cost = att->second.type().cost();
+		const double cost = att->second.cost();
 		cost_sum += cost;
 		alternative_terrain_quality += cost*ai_obj.best_defensive_position(att->first,dstsrc,srcdst,enemy_dstsrc).chance_to_hit;
 	}
@@ -689,7 +691,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 	for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 
 		//attack anyone who is on the enemy side, and who is not invisible or turned to stone
-		if(current_team().is_enemy(j->second.side()) && j->second.stone() == false &&
+		if(current_team().is_enemy(j->second.side()) && j->second.get_state("stoned")!="yes" &&
 		   j->second.invisible(map_.underlying_union_terrain(map_[j->first.x][j->first.y]),
 				state_.get_time_of_day().lawful_bonus,j->first,
 				units_,teams_) == false) {
@@ -761,9 +763,9 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 				const unit& un = u->second;
 
 				int tod_modifier = 0;
-				if(un.type().alignment() == unit_type::LAWFUL) {
+				if(un.alignment() == unit_type::LAWFUL) {
 					tod_modifier = lawful_bonus;
-				} else if(un.type().alignment() == unit_type::CHAOTIC) {
+				} else if(un.alignment() == unit_type::CHAOTIC) {
 					tod_modifier = -lawful_bonus;
 				}
 
@@ -781,7 +783,7 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 				const bool village = map_.is_village(terrain);
 				const double village_bonus = (use_terrain && village) ? 1.5 : 1.0;
 
-				const double defense = use_terrain ? double(100 - un.defense_modifier(map_,terrain))/100.0 : 0.5;
+				const double defense = use_terrain ? double(100 - un.defense_modifier(terrain))/100.0 : 0.5;
 				const double rating = village_bonus*hp*defense*double(most_damage);
 				if(rating > best_rating) {
 					best_rating = rating;

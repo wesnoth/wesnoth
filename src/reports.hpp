@@ -87,7 +87,7 @@ namespace reports {
 		void add_image(std::stringstream& image, std::stringstream& tooltip);
 	};
 
-	report generate_report(TYPE type, const gamemap& map, const unit_map& units,
+	report generate_report(TYPE type, const gamemap& map, unit_map& units,
 	                       const std::vector<team>& teams, const team& current_team,
 	                       int current_side, int active_side,
 	                       const gamemap::location& loc, const gamemap::location& mouseover,

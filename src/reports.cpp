@@ -74,13 +74,13 @@ void report::add_image(const std::string& image, const std::string& tooltip) {
 	this->push_back(element("",image,tooltip));
 }
 
-report generate_report(TYPE type, const gamemap& map, const unit_map& units,
+report generate_report(TYPE type, const gamemap& map, unit_map& units,
                        const std::vector<team>& teams, const team& current_team,
                        int current_side, int playing_side,
                        const gamemap::location& loc, const gamemap::location& mouseover,
                        const gamestatus& status, const std::set<std::string>& observers)
 {
-	unit_map::const_iterator u = units.end();
+	unit_map::iterator u = units.end();
 	SDL_Color HPC;
 	SDL_Color XPC;
 
@@ -108,9 +108,9 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	case UNIT_DESCRIPTION:
 		return report(u->second.description(),"",u->second.description());
 	case UNIT_TYPE:
-	        return report(u->second.type().language_name(),"",u->second.unit_description());
+	        return report(u->second.language_name(),"",u->second.unit_description());
 	case UNIT_LEVEL:
-		str << u->second.type().level();
+		str << u->second.level();
 		break;
 	case UNIT_AMLA: {
 	  report res;
@@ -132,19 +132,19 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 			tooltip << _("invisible: ") << _("This unit is invisible. It cannot be seen or attacked by enemy units.");
 			res.add_image(unit_status,tooltip);
 		}
-		if(u->second.has_flag("slowed")) {
+		if(u->second.get_state("slowed")=="yes") {
 			unit_status << "misc/slowed.png";
 			tooltip << _("slowed: ") << _("This unit has been slowed. It will only deal half its normal damage when attacking.");
 			res.add_image(unit_status,tooltip);
 		}
-		if(u->second.has_flag("poisoned")) {
+		if(u->second.get_state("poisoned")=="yes") {
 			unit_status << "misc/poisoned.png";
 			tooltip << _("poisoned: ") << _("This unit is poisoned. It will lose 8 HP every turn until it can seek a cure to the poison in a village or from a friendly unit with the 'cures' ability.\n\
 \n\
 Units cannot be killed by poison alone. The poison will not reduce it below 1 HP.");
 			res.add_image(unit_status,tooltip);
 		}
-		if(u->second.has_flag("stone")) {
+		if(u->second.get_state("stoned")=="yes") {
 			unit_status << "misc/stone.png";
 			tooltip << _("stone: ") << _("This unit has been turned to stone. It may not move or attack.");
 			res.add_image(unit_status,tooltip);
@@ -153,20 +153,20 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		return res;
 	}
 	case UNIT_ALIGNMENT: {
-		const std::string& align = unit_type::alignment_description(u->second.type().alignment());
-		const std::string& align_id = unit_type::alignment_id(u->second.type().alignment());
+		const std::string& align = unit_type::alignment_description(u->second.alignment());
+		const std::string& align_id = unit_type::alignment_id(u->second.alignment());
 		return report(align, "", string_table[align_id + "_description"]);
 	}
 	case UNIT_ABILITIES: {
 		report res;
 		std::stringstream tooltip;
-		const std::vector<std::string>& abilities = u->second.type().ability_tooltips();
+		const std::vector<std::string>& abilities = u->second.ability_tooltips(u->first);
 		for(std::vector<std::string>::const_iterator i = abilities.begin(); i != abilities.end(); ++i) {
-			str << string_table[std::string("ability_") + *i];
-			if(i+1 != abilities.end())
+			str << gettext(i->c_str());
+			if(i+2 != abilities.end())
 				str << ",";
-
-			tooltip << string_table[*i + "_description"];
+			++i;
+			tooltip << i->c_str();//string_table[*i + "_description"];
 			res.add_text(str,tooltip);
 		}
 
@@ -195,7 +195,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	}
 	case UNIT_MOVES: {
 	  int x = 180;
-	  if(u->second.stone()){
+	  if(u->second.get_state("stoned")=="yes"){
 	    x = 128;
 	  }else{
 	    x = (int)(128 + (255-128)*((float)u->second.movement_left()/u->second.total_movement()));
@@ -214,26 +214,41 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			return res;
 		}
 
-		const std::vector<attack_type>& attacks = u->second.attacks();
-		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
+		std::vector<attack_type>& attacks = u->second.attacks();
+		for(std::vector<attack_type>::iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
+			at_it->set_specials_context(u->first,u->second);
 			const std::string& lang_type = gettext(at_it->type().c_str());
 			str.str("");
 			str << "<245,230,193>";
-			if(u->second.slowed()) {
+			if(u->second.get_state("slowed")=="yes") {
 				str << round_damage(at_it->damage(),1,2) << "-" ;
 			} else {
 				str << at_it->damage() << "-" ;
 			}
-			str << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
+			int nattacks = at_it->num_attacks();
+			// compute swarm attacks;
+			weapon_special_list swarm = at_it->get_specials("attacks");
+			if(!swarm.empty()) {
+				int swarm_min_attacks = swarm.highest("attacks_max",nattacks);
+				int swarm_max_attacks = swarm.highest("attacks_min");
+				int hitp = u->second.hitpoints();
+				int mhitp = u->second.max_hitpoints();
+				
+				nattacks = swarm_min_attacks + swarm_max_attacks * hitp / mhitp;
+				
+			} else {
+				nattacks = at_it->num_attacks();
+			}
+			str << nattacks;
 			str << " " << at_it->name();
 			tooltip << at_it->name() << "\n";
-			if(u->second.slowed()) {
+			if(u->second.get_state("slowed")=="yes") {
 				tooltip << round_damage(at_it->damage(),1,2) << " " << _("damage") << ", ";
 			} else {
 				tooltip << at_it->damage() << " " << _("damage") << ", ";
 			}
-			tooltip << at_it->num_swarm_attacks(u->second.hitpoints(), u->second.max_hitpoints());
+			tooltip << nattacks;
 			tooltip << " " << _("attacks");
 
 			str<<"\n";
@@ -251,10 +266,10 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			std::map<int,std::vector<std::string> > resistances;
 			for(unit_map::const_iterator u_it = units.begin(); u_it != units.end(); ++u_it) {
 				if(teams[team_index].is_enemy(u_it->second.side()) && !current_team.fogged(u_it->first.x,u_it->first.y) &&
-				   seen_units.count(u_it->second.type().id()) == 0) {
-					seen_units.insert(u_it->second.type().id());
-					const int resistance = u_it->second.type().movement_type().resistance_against(*at_it) - 100;
-					resistances[resistance].push_back(u_it->second.type().language_name());
+				   seen_units.count(u_it->second.id()) == 0) {
+					seen_units.insert(u_it->second.id());
+					const int resistance = u_it->second.resistance_against(*at_it,false,u_it->first) - 100;
+					resistances[resistance].push_back(u_it->second.language_name());
 				}
 			}
 
@@ -274,36 +289,26 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			res.add_text(str,tooltip);
 
 			str << "<166,146,117>  ";
-			static const std::string swarm_string("swarm");
-			const std::string special = at_it->special();
-			if (!special.empty()) {
-			  if(special == swarm_string){
-			    str << gettext(special.c_str())<<"("<<at_it->num_swarm_attacks(u->second.hitpoints(),u->second.max_hitpoints())<<"/"<< at_it->num_attacks() <<")" << "\n";
-			    tooltip << string_table["weapon_special_" + special + "_description"];
-			  }else{
-			    //check if we use special(argument)
-			    const std::string::size_type parindex = special.find('(',0);
-			    if (parindex != std::string::npos) {
-				// If there is an argument, we use weapon_special_specialname_arg_description instead
-				tooltip << string_table["weapon_special_" + special.substr(0,parindex) + "_arg_description"];
-			    } else {
-				tooltip << string_table["weapon_special_" + special + "_description"];
-			    }
-			    str << gettext(special.c_str());
-			  }
-				str<<"\n";
+			
+			const std::vector<std::string>& specials = at_it->special_tooltips();
+			
+			if(! specials.empty()) {
+				for(std::vector<std::string>::const_iterator sp_it = specials.begin(); sp_it != specials.end(); ++sp_it) {
+					str << gettext(sp_it->c_str());
+					str<<"\n";
+					++sp_it;
+					tooltip << gettext(sp_it->c_str());
+				}
 				res.add_text(str,tooltip);
 			}
-
-
 		}
 
 		return res;
 	}
 	case UNIT_IMAGE:
-	        return report("",u->second.type().image(),"");
+	        return report("",u->second.absolute_image(),"");
 	case UNIT_PROFILE:
-		return report("",u->second.type().image_profile(),"");
+		return report("",u->second.profile(),"");
 	case TIME_OF_DAY: {
 		time_of_day tod = timeofday_at(status,units,mouseover,map);
 		// don't show illuminated time on fogged/shrouded tiles
@@ -406,8 +411,8 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		const gamemap::TERRAIN terrain = map[mouseover.x][mouseover.y];
 
-		const int move_cost = u->second.movement_cost(map,terrain);
-		const int defense = 100 - u->second.defense_modifier(map,terrain);
+		const int move_cost = u->second.movement_cost(terrain);
+		const int defense = 100 - u->second.defense_modifier(terrain);
 
 		if(move_cost > 10) {
 			str << " (-)";

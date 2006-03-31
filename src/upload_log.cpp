@@ -208,7 +208,7 @@ void upload_log::start(game_state &state, const team &team,
 		if ((*i)->can_recruit()) {
 			config &sp = game_->add_child("special-unit");
 			sp["name"] = (*i)->name();
-			sp["level"] = lexical_cast<std::string>((*i)->type().level());
+			sp["level"] = lexical_cast<std::string>((*i)->level());
 			sp["experience"] = lexical_cast<std::string>((*i)->experience());
 		}
 	}
@@ -221,13 +221,13 @@ void upload_log::start(game_state &state, const team &team,
 
 		higher_units = false;
 		for (i = all_units.begin(); i != all_units.end(); ++i) {
-			if ((*i)->type().level() > level)
+			if ((*i)->level() > level)
 				higher_units = true;
-			else if ((*i)->type().level() == level) {
-				if (tally.find((*i)->type().id()) == tally.end())
-					tally[(*i)->type().id()] = 1;
+			else if ((*i)->level() == level) {
+				if (tally.find((*i)->id()) == tally.end())
+					tally[(*i)->id()] = 1;
 				else
-					tally[(*i)->type().id()]++;
+					tally[(*i)->id()]++;
 			}
 		}
 		if (!tally.empty()) {

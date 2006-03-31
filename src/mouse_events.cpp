@@ -89,7 +89,7 @@ void mouse_handler::mouse_motion(int x, int y)
 		                                     attack_from.valid())) {
 			if(mouseover_unit == units_.end()) {
 				cursor::set(cursor::MOVE);
-			} else if(current_team().is_enemy(mouseover_unit->second.side()) && !mouseover_unit->second.stone()) {
+			} else if(current_team().is_enemy(mouseover_unit->second.side()) && mouseover_unit->second.get_state("stoned")!="yes") {
 				cursor::set(cursor::ATTACK);
 			} else {
 				cursor::set(cursor::NORMAL);
@@ -114,9 +114,9 @@ void mouse_handler::mouse_motion(int x, int y)
 
 			unit_map::const_iterator un = find_unit(selected_hex_);
 
-			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && !un->second.stone()) {
+			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && un->second.get_state("stoned")!="yes") {
 				const shortest_path_calculator calc(un->second,current_team(), visible_units(),teams_,map_,status_);
-				const bool can_teleport = un->second.type().teleports();
+				const bool can_teleport = un->second.get_ability_bool("teleport",un->first);
 
 				const std::set<gamemap::location>* teleports = NULL;
 
@@ -146,8 +146,8 @@ void mouse_handler::mouse_motion(int x, int y)
 			unit un2 = un->second;
 			unit_movement_resetter move_reset(un2);
 
-			const bool ignore_zocs = un->second.type().is_skirmisher();
-			const bool teleport = un->second.type().teleports();
+			const bool ignore_zocs = un->second.get_ability_bool("skirmisher",un->first);
+			const bool teleport = un->second.get_ability_bool("teleport",un->first);
 			current_paths_ = paths(map_,status_,gameinfo_,units_,new_hex,teams_,
 								   ignore_zocs,teleport,viewing_team(),path_turns_);
 			gui_->highlight_reach(current_paths_);
@@ -364,8 +364,8 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event)
 		unit_map::const_iterator it = find_unit(hex);
 
 		if(it != units_.end() && it->second.side() == team_num_ && !gui_->fogged(it->first.x,it->first.y)) {
-			const bool ignore_zocs = it->second.type().is_skirmisher();
-			const bool teleport = it->second.type().teleports();
+			const bool ignore_zocs = it->second.get_ability_bool("skirmisher",it->first);
+			const bool teleport = it->second.get_ability_bool("teleport",it->first);
 			current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
 								   ignore_zocs,teleport,viewing_team(),path_turns_);
 
@@ -384,7 +384,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event)
 				const std::set<gamemap::location>* teleports = NULL;
 
 				std::set<gamemap::location> allowed_teleports;
-				if(u.type().teleports()) {
+				if(u.get_ability_bool("teleport",it->first)) {
 					allowed_teleports = vacant_villages(current_team().villages(),units_);
 					teleports = &allowed_teleports;
 					if(current_team().villages().count(it->first))
@@ -404,12 +404,12 @@ void mouse_handler::show_attack_options(unit_map::const_iterator u)
 {
 	team& current_team = teams_[team_num_-1];
 
-	if(u == units_.end() || u->second.can_attack() == false)
+	if(u == units_.end() || u->second.attacks_left() == 0)
 		return;
 
 	for(unit_map::const_iterator target = units_.begin(); target != units_.end(); ++target) {
 		if(current_team.is_enemy(target->second.side()) &&
-			distance_between(target->first,u->first) == 1 && !target->second.stone()) {
+			distance_between(target->first,u->first) == 1 && target->second.get_state("stoned")!="yes") {
 			current_paths_.routes[target->first] = paths::route();
 		}
 	}

@@ -66,7 +66,7 @@ public:
 	enum TYPE { SHOW_ALL, SHOW_BASIC };
 
 	unit_preview_pane(display &disp, const gamemap* map, const unit& u, TYPE type=SHOW_ALL, bool left_side=true);
-	unit_preview_pane(display &disp, const gamemap* map, const std::vector<unit>& units, TYPE type=SHOW_ALL, bool left_side=true);
+	unit_preview_pane(display &disp, const gamemap* map, std::vector<unit>& units, TYPE type=SHOW_ALL, bool left_side=true);
 
 	bool show_above() const;
 	bool left_side() const;
@@ -80,7 +80,7 @@ private:
 
 	gui::button details_button_;
 	const gamemap* map_;
-	const std::vector<unit>* units_;
+	std::vector<unit>* units_;
 	std::vector<unit> unit_store_;
 	int index_;
 	bool left_;

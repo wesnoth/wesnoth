@@ -932,7 +932,7 @@ void display::draw_sidebar()
 	if(invalidateUnit_) {
 		//we display the unit the mouse is over if it is over a unit
 		//otherwise we display the unit that is selected
-		std::map<gamemap::location,unit>::const_iterator i =
+		units_map::const_iterator i =
 			find_visible_unit(units_,mouseoverHex_,
 					map_,
 					status_.get_time_of_day().lawful_bonus,
@@ -1230,12 +1230,9 @@ void display::draw_unit_on_tile(int x, int y)
 	if(it == units_.end()) {
 		return;
 	}
-
-
-
+	
 	it->second.refresh_unit(*this,src,true);
-
-
+	
 }
 
 void display::draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
@@ -1566,7 +1563,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	const std::string* image_str = &image_category->front();
 	const unit_map::const_iterator un = units_.find(route_.steps.front());
 	if(un != units_.end()) {
-		const int move_cost = un->second.movement_cost(map_,map_.get_terrain(loc)) - 1;
+		const int move_cost = un->second.movement_cost(map_.get_terrain(loc)) - 1;
 		if(move_cost >= int(image_category->size())) {
 			image_str = &image_category->back();
 		} else if(move_cost > 0) {
@@ -1607,7 +1604,7 @@ void display::draw_movement_info(const gamemap::location& loc, int xloc, int ylo
 #ifndef USE_TINY_GUI
 	const unit_map::const_iterator un = units_.find(route_.steps.front());
 	if(un != units_.end() && zoom_ >= DefaultZoom) {
-		text << (100-un->second.defense_modifier(map_,map_.get_terrain(loc))) << "%";
+		text << (100-un->second.defense_modifier(map_.get_terrain(loc))) << "%";
 	}
 #endif
 

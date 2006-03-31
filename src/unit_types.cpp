@@ -27,8 +27,9 @@
 #include <iostream>
 
 
-attack_type::attack_type(const config& cfg,const unit_type& unit)
+attack_type::attack_type(const config& cfg,const std::string& id, const std::string& image_fighting)
 {
+	cfg_ = cfg;
 	if(cfg["range"] == "long" || cfg["range"] == "ranged") {
 		range_type_ = LONG_RANGE;
 	} else {
@@ -40,13 +41,13 @@ attack_type::attack_type(const config& cfg,const unit_type& unit)
 	}
 
 	if(cfg.child("frame") || cfg.child("missile_frame") || cfg.child("sound")) {
-		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "in unit " << unit.id() << " is directly in the attack, please use [animation]\n" ;
+		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "in unit " << id << " is directly in the attack, please use [animation]\n" ;
 	}
 	if(animation_.empty()) {
 		animation_.push_back(attack_animation(cfg));
 	}
 	if(animation_.empty()) {
-		animation_.push_back(attack_animation(unit.image_fighting(range_type_)));
+		animation_.push_back(attack_animation(image_fighting));
 	}
 	assert(!animation_.empty());
 
@@ -56,9 +57,6 @@ attack_type::attack_type(const config& cfg,const unit_type& unit)
 		description_ = egettext(id_.c_str());
 
 	type_ = cfg["type"];
-	special_ = cfg["special"];
-	backstab_ = special_ == "backstab";
-	slow_ = special_ == "slow";
 	icon_ = cfg["icon"];
 	if(icon_.empty())
 		icon_ = "attacks/" + id_ + ".png";
@@ -69,6 +67,28 @@ attack_type::attack_type(const config& cfg,const unit_type& unit)
 
 	attack_weight_ = lexical_cast_default<double>(cfg["attack_weight"],1.0);
 	defense_weight_ = lexical_cast_default<double>(cfg["defense_weight"],1.0);
+	
+	gamedata_=NULL;
+	unitmap_=NULL; 
+	map_=NULL;
+	game_status_=NULL;
+	teams_=NULL;
+	other_attack_=NULL;
+	
+	// BACKWARDS COMPATIBILITY
+	const std::string& set_special = cfg["special"];
+	if(set_special != "") {
+		LOG_STREAM(err, config) << "[attack] uses special=" << set_special <<", which is now deprecated. Use the macros provided in abilities.cfg.\n";
+		config new_specials;
+		
+		new_specials["set_special"] = set_special;
+		apply_modification(new_specials,NULL,0);
+	}
+}
+
+const config& attack_type::get_cfg() const
+{
+	return cfg_;
 }
 
 const t_string& attack_type::name() const
@@ -84,11 +104,6 @@ const std::string& attack_type::id() const
 const std::string& attack_type::type() const
 {
 	return type_;
-}
-
-const std::string& attack_type::special() const
-{
-	return special_;
 }
 
 const std::string& attack_type::icon() const
@@ -116,15 +131,6 @@ int attack_type::num_attacks() const
 	return num_attacks_;
 }
 
-int attack_type::num_swarm_attacks(int hp, int maxhp) const
-{
-  if(special() == "swarm"){
-    return (num_attacks_ - (num_attacks_ * (maxhp-hp) / maxhp));
-  }else{
-    return (num_attacks_);
-  }
-}
-
 double attack_type::attack_weight() const
 {
 	return attack_weight_;
@@ -135,14 +141,10 @@ double attack_type::defense_weight() const
 	return defense_weight_;
 }
 
-bool attack_type::backstab() const
-{
-	return backstab_;
-}
 
-bool attack_type::slow() const
+int attack_type::movement_used() const
 {
-	return slow_;
+	return cfg_["movement_used"] == "" ? 100000 : lexical_cast_default<int>(cfg_["movement_used"]);
 }
 
 const attack_type::attack_animation& attack_type::animation(bool hit,const gamemap::location::DIRECTION dir) const
@@ -205,7 +207,7 @@ int attack_type::attack_animation::matches(bool hit,gamemap::location::DIRECTION
 
 	return result;
 }
-bool attack_type::matches_filter(const config& cfg) const
+bool attack_type::matches_filter(const config& cfg,int set_,bool self) const
 {
 	const std::string& filter_range = cfg["range"];
 	const t_string& filter_name = cfg["name"];
@@ -221,15 +223,15 @@ bool attack_type::matches_filter(const config& cfg) const
 	if(filter_type.empty() == false && filter_type != type())
 		return false;
 
-	if(filter_special.empty() == false && filter_special != special())
+	if(!self && filter_special.empty() == false && !get_special_bool(filter_special,true))
 		return false;
 
 	return true;
 }
 
-bool attack_type::apply_modification(const config& cfg, std::string* description)
+bool attack_type::apply_modification(const config& cfg,std::string* description,int set_)
 {
-	if(!matches_filter(cfg))
+	if(!matches_filter(cfg,0))
 		return false;
 
 	const t_string& set_name = cfg["set_name"];
@@ -252,7 +254,79 @@ bool attack_type::apply_modification(const config& cfg, std::string* description
 	}
 
 	if(set_special.empty() == false) {
-		special_ = set_special;
+		cfg_.clear_children("specials");
+		config new_specials;
+		if(set_special == "berserk") {
+			config& sp = new_specials.add_child("berserk");
+			sp["name"] = t_string("berserk","wesnoth");
+			sp["description"] = t_string("Berserk:\nWhether used offensively or defensively, this attack presses the engagement until one of the combatants is slain, or 30 rounds of attacks have occurred.","wesnoth");
+			sp["cumulative"] = "no";
+			sp["rounds"] = "30";
+		} else if(set_special == "backstab") {
+			config& sp = new_specials.add_child("damage");
+			sp["name"] = t_string("backstab","wesnoth");
+			sp["description"] = t_string("Backstab:\nThis attack deals double damage if there is an enemy of the target on the opposite side of the target, and that unit is not incapacitated (e.g. turned to stone).","wesnoth");
+			sp["cumulative"] = "no";
+			sp["backstab"] = "yes";
+			sp["multiply"] = "2";
+			sp["active_on"] = "offense";
+		} else if(set_special == "plague") {
+			config& sp = new_specials.add_child("plague");
+			sp["name"] = t_string("plague","wesnoth");
+			sp["description"] = t_string("Plague:\nWhen a unit is killed by a Plague attack, that unit is replaced with a unit identical to and on the same side as the unit with the Plague attack. (This doesn't work on Undead or units in villages.)","wesnoth");
+		} else if(set_special.substr(0,7) == "plague(") {
+			config& sp = new_specials.add_child("plague");
+			sp["name"] = t_string("plague","wesnoth") + set_special.substr(6,set_special.size());
+			sp["description"] = t_string("Plague:\nWhen a unit is killed by a Plague attack, that unit is replaced with a unit of the specified type on the same side as the unit with the Plague attack. (This doesn't work on Undead or units in villages.)","wesnoth");
+			sp["type"] = set_special.substr(7,set_special.size()-1);
+		} else if(set_special == "swarm") {
+			config& sp = new_specials.add_child("attacks");
+			sp["name"] = t_string("swarm","wesnoth");
+			sp["description"] = t_string("Swarm:\nThe number of strikes of this attack decreases when the unit is wounded. The number of strikes is proportional to the % of HP/maximum HP the unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the number of strikes.","wesnoth");
+		} else if(set_special == "slow") {
+			config& sp = new_specials.add_child("slow");
+			sp["name"] = t_string("slows","wesnoth");
+			sp["description"] = t_string("Slow:\nThis attack slows the target. Slow halves the damage caused by attacks and slowed units move at half the normal speed (rounded up).","wesnoth");
+			sp["cumulative"] = "no";
+		} else if(set_special == "stone") {
+			config& sp = new_specials.add_child("stones");
+			sp["name"] = t_string("stones","wesnoth");
+			sp["description"] = t_string("Stone:\nThis attack turns the target to stone. Units that have been turned to stone may not move or attack.","wesnoth");
+		} else if(set_special == "marksman") {
+			config& sp = new_specials.add_child("chance_to_hit");
+			sp["name"] = t_string("marksman","wesnoth");
+			sp["description"] = t_string("Marksman:\nWhen used offensively, this attack always has at least a 60% chance to hit.","wesnoth");
+			sp["value"] = "60";
+			sp["cumulative"] = "yes";
+			sp["active_on"] = "offense";
+		} else if(set_special == "magical") {
+			config& sp = new_specials.add_child("chance_to_hit");
+			sp["name"] = t_string("magical","wesnoth");
+			sp["description"] = t_string("Magical:\nThis attack always has a 70% chance to hit.","wesnoth");
+			sp["value"] = "70";
+			sp["cumulative"] = "no";
+		} else if(set_special == "charge") {
+			config& sp = new_specials.add_child("damage");
+			sp["name"] = t_string("charge","wesnoth");
+			sp["description"] = t_string("Charge:\nThis attack deals double damage to the target. It also causes this unit to take double damage from the target's counterattack.","wesnoth");
+			sp["cumulative"] = "no";
+			sp["multiply"] = "2";
+			sp["active_on"] = "offense";
+			sp["apply_to"] = "self,opponent";
+		} else if(set_special == "drain") {
+			config& sp = new_specials.add_child("drains");
+			sp["name"] = t_string("drains","wesnoth");
+			sp["description"] = t_string("Drain:\nThis unit drains health from living units, healing itself for half the amount of damage it deals (rounded down).","wesnoth");
+		} else if(set_special == "firststrike") {
+			config& sp = new_specials.add_child("firststrike");
+			sp["name"] = t_string("firststrike","wesnoth");
+			sp["description"] = t_string("Firststrike:\nThis unit always strikes first with this attack, even if they are defending.","wesnoth");
+		} else if(set_special == "poison") {
+			config& sp = new_specials.add_child("poison");
+			sp["name"] = t_string("poison","wesnoth");
+			sp["description"] = t_string("Poison:\nThis attack poisons the target. Poisoned units lose 8 HP every turn until they are cured or are reduced to 1 HP.","wesnoth");
+		}
+		cfg_.add_child("specials",new_specials);
 	}
 
 	if(increase_damage.empty() == false) {
@@ -492,10 +566,29 @@ bool unit_movement_type::is_flying() const
 	return flies == "true";
 }
 
+const config& unit_movement_type::get_cfg() const
+{
+	return cfg_;
+}
+const unit_movement_type* unit_movement_type::get_parent() const
+{
+	return parent_;
+}
+
 void unit_movement_type::set_parent(const unit_movement_type* parent)
 {
 	parent_ = parent;
 }
+
+const std::map<gamemap::TERRAIN,int>& unit_movement_type::movement_costs() const
+{
+	return moveCosts_;
+}
+const std::map<gamemap::TERRAIN,int>& unit_movement_type::defense_mods() const
+{
+	return defenseMods_;
+}
+
 
 ability_filter::ability_filter()
 {
@@ -603,17 +696,6 @@ void ability_filter::add_filters(const config* cfg)
 unit_type::unit_type(const unit_type& o)
     : variations_(o.variations_), cfg_(o.cfg_), race_(o.race_),
       alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
-      heals_(o.heals_), cures_(o.cures_),
-      regenerates_filter_(o.regenerates_filter_),regenerates_(o.regenerates_),
-      regeneration_(o.regeneration_),
-      leadership_filter_(o.leadership_filter_), leadership_(o.leadership_),
-      leadership_percent_(o.leadership_percent_),
-      illuminates_filter_(o.illuminates_filter_), illuminates_(o.illuminates_),
-      skirmisher_filter_(o.skirmisher_filter_), skirmish_(o.skirmish_),
-      teleports_filter_(o.teleports_filter_), teleport_(o.teleport_),
-      steadfast_filter_(o.steadfast_filter_), steadfast_(o.steadfast_),
-      steadfast_bonus_(o.steadfast_bonus_),steadfast_max_(o.steadfast_max_),
-      hides_filter_(o.hides_filter_), hides_(o.hides_),
       advances_to_(o.advances_to_), experience_needed_(o.experience_needed_),
       alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
@@ -707,223 +789,15 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	const config::child_list& unit_traits = cfg.get_children("trait");
 	possibleTraits_.insert(possibleTraits_.end(),unit_traits.begin(),unit_traits.end());
 
-	heals_ = 0;
-	cures_ = false;
-	regenerates_ = false;
-	regeneration_ = 0;
-	steadfast_ = false;
-	steadfast_bonus_ = 0;
-	steadfast_max_ = 0;
-	skirmish_ = false;
-	teleport_ = false;
-	illuminates_ = 0;
-	leadership_ = false;
-	hides_ = false;
-
-	/* handle deprecated ability=x,y,... */
-
-	std::vector<std::string> deprecated_abilities = utils::split(cfg_["ability"]);
-
-	//if the string was empty, split will give us one empty string in the list,
-	//remove it.
-	if(!deprecated_abilities.empty() && deprecated_abilities.back() == "") {
-		deprecated_abilities.pop_back();
-	}
-	
-	if(!deprecated_abilities.empty()) {
-		LOG_STREAM(err, config) << "unit " << id() << " uses the ability=list tag, which is deprecated\n";
-		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"heals") != deprecated_abilities.end()) {
-			heals_ = 4;
-			abilities_.push_back("heals");
-			ability_tooltips_.push_back("heals4");
-		}
-		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"cures") != deprecated_abilities.end()) {
-			heals_ = 8;
-			cures_ = true;
-			abilities_.push_back("heals");
-			ability_tooltips_.push_back("heals8");
-			abilities_.push_back("cures");
-			ability_tooltips_.push_back("cures");
-		}
-		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"regenerates") != deprecated_abilities.end()) {
-			regenerates_ = true;
-			regeneration_ = 8;
-			regenerates_filter_.unfilter();
-			abilities_.push_back("regenerates");
-			ability_tooltips_.push_back("regenerates");
-		}
-		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"steadfast") != deprecated_abilities.end()) {
-			steadfast_ = true;
-			steadfast_bonus_ = 100;
-			steadfast_max_ = 50;
-			steadfast_percent_ = true;
-			steadfast_filter_.unfilter();
-			abilities_.push_back("steadfast");
-			ability_tooltips_.push_back("steadfast");
-		}
-		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"teleport") != deprecated_abilities.end()) {
-			teleport_ = true;
-			teleports_filter_.unfilter();
-			abilities_.push_back("teleport");
-			ability_tooltips_.push_back("teleport");
-		}
-		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"skirmisher") != deprecated_abilities.end()) {
-			skirmish_ = true;
-			skirmisher_filter_.unfilter();
-			abilities_.push_back("skirmisher");
-			ability_tooltips_.push_back("skirmisher");
-		}
-		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"leadership") != deprecated_abilities.end()) {
-			leadership_ = true;
-			leadership_percent_ = game_config::leadership_bonus;
-			leadership_filter_.unfilter();
-			abilities_.push_back("leadership");
-			ability_tooltips_.push_back("leadership");
-		}
-		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"illuminates") != deprecated_abilities.end()) {
-			illuminates_ = 1;
-			illuminates_filter_.unfilter();
-			abilities_.push_back("illuminates");
-			ability_tooltips_.push_back("illuminates");
-		}
-		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"ambush") != deprecated_abilities.end()) {
-			hides_ = true;
-			hides_filter_.add_terrain_filter("f");
-			abilities_.push_back("ambush");
-			ability_tooltips_.push_back("ambush");
-		}
-		if(std::find(deprecated_abilities.begin(),deprecated_abilities.end(),"nightstalk") != deprecated_abilities.end()) {
-			hides_ = true;
-			hides_filter_.add_tod_filter("chaotic");
-			abilities_.push_back("nightstalk");
-			ability_tooltips_.push_back("nightstalk");
-		}
-	}
-
 	const config* abil_cfg = cfg.child("abilities");
 	if(abil_cfg) {
-		const config::child_list& heal_abilities = abil_cfg->get_children("heals");
-		if (!heal_abilities.empty()) {
-			abilities_.push_back("heals");
-			for(config::child_list::const_iterator ab = heal_abilities.begin(); ab != heal_abilities.end(); ++ab) {
-				if((**ab)["description"] != "") {
-					ability_tooltips_.push_back((**ab)["description"]);
-				} else {
-					ability_tooltips_.push_back("heals");
+		const config::child_map& abi = abil_cfg->all_children();
+		for(config::child_map::const_iterator j = abi.begin(); j != abi.end(); ++j) {
+			for(config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
+				if((**k)["name"] != "") {
+					abilities_.push_back((**k)["name"]);
+					ability_tooltips_.push_back((**k)["description"]);
 				}
-				if ((**ab)["amount"] == "")
-					LOG_STREAM(err, config) << "unit " << id() << " uses the [heals] tag without amount=\n";
-
-				heals_ = maximum<int>(heals_, lexical_cast<int>((**ab)["amount"]));
-			}
-		}
-		const config::child_list& cure_abilities = abil_cfg->get_children("cures");
-		if (!cure_abilities.empty()) {
-			abilities_.push_back("cures");
-			ability_tooltips_.push_back("cures");
-			cures_ = true;
-		}
-		const config::child_list& regenerate_abilities = abil_cfg->get_children("regenerates");
-		if (!regenerate_abilities.empty()) {
-			abilities_.push_back("regenerates");
-			for(config::child_list::const_iterator ab = regenerate_abilities.begin(); ab != regenerate_abilities.end(); ++ab) {
-				if((**ab)["description"] != "") {
-					ability_tooltips_.push_back((**ab)["description"]);
-				} else {
-					ability_tooltips_.push_back("regenerates");
-				}
-				regenerates_ = true;
-				if ((**ab)["amount"] == "")
-					LOG_STREAM(err, config) << "unit " << id() << " uses the [regenerates] tag without amount=\n";
-				regeneration_ = maximum<int>(regeneration_, lexical_cast<int>((**ab)["amount"]));
-				regenerates_filter_.add_filters((*ab)->child("filter"));
-			}
-		}
-		const config::child_list& steadfast_abilities = abil_cfg->get_children("steadfast");
-		if (!steadfast_abilities.empty()) {
-			abilities_.push_back("steadfast");
-			for(config::child_list::const_iterator ab = steadfast_abilities.begin(); ab != steadfast_abilities.end(); ++ab) {
-				if((**ab)["description"] != "") {
-					ability_tooltips_.push_back((**ab)["description"]);
-				} else {
-					ability_tooltips_.push_back("steadfast");
-				}
-				steadfast_ = true;
-				steadfast_bonus_ = maximum<int>(steadfast_bonus_,lexical_cast_default<int>((**ab)["bonus"],100));
-				steadfast_max_ = maximum<int>(steadfast_max_,lexical_cast_default<int>((**ab)["max"],50));
-				std::string steadfast_ispercent = (**ab)["bonus"];
-				if(steadfast_ispercent != "" && steadfast_ispercent[steadfast_ispercent.size()-1] == '%') {
-					steadfast_percent_ = true;
-				} else {
-					steadfast_percent_ = false;
-				}
-				steadfast_filter_.add_filters((*ab)->child("filter"));
-			}
-		}
-		const config::child_list& leadership_abilities = abil_cfg->get_children("leadership");
-		if (!leadership_abilities.empty()) {
-			abilities_.push_back("leadership");
-			for(config::child_list::const_iterator ab = leadership_abilities.begin(); ab != leadership_abilities.end(); ++ab) {
-				if((**ab)["description"] != "") {
-					ability_tooltips_.push_back((**ab)["description"]);
-				} else {
-					ability_tooltips_.push_back("leadership");
-				}
-				leadership_ = true;
-				leadership_percent_ = lexical_cast_default<int>((**ab)["perlevel_bonus"],game_config::leadership_bonus);
-				leadership_filter_.add_filters((*ab)->child("filter"));
-			}
-		}
-		const config::child_list& skirmisher_abilities = abil_cfg->get_children("skirmisher");
-		if (!skirmisher_abilities.empty()) {
-			abilities_.push_back("skirmisher");
-			for(config::child_list::const_iterator ab = skirmisher_abilities.begin(); ab != skirmisher_abilities.end(); ++ab) {
-				if((**ab)["description"] != "") {
-					ability_tooltips_.push_back((**ab)["description"]);
-				} else {
-					ability_tooltips_.push_back("skirmisher");
-				}
-				skirmish_ = true;
-				skirmisher_filter_.add_filters((*ab)->child("filter"));
-			}
-		}
-		const config::child_list& illuminate_abilities = abil_cfg->get_children("illuminates");
-		if (!illuminate_abilities.empty()) {
-			abilities_.push_back("illuminates");
-			for(config::child_list::const_iterator ab = illuminate_abilities.begin(); ab != illuminate_abilities.end(); ++ab) {
-				if((**ab)["description"] != "") {
-					ability_tooltips_.push_back((**ab)["description"]);
-				} else {
-					ability_tooltips_.push_back("illuminates");
-				}
-				illuminates_ += lexical_cast_default<int>((**ab)["level"],1);
-				illuminates_filter_.add_filters((*ab)->child("filter"));
-			}
-		}
-		const config::child_list& teleport_abilities = abil_cfg->get_children("teleport");
-		if (!teleport_abilities.empty()) {
-			abilities_.push_back("teleport");
-			for(config::child_list::const_iterator ab = teleport_abilities.begin(); ab != teleport_abilities.end(); ++ab) {
-				if((**ab)["description"] != "") {
-					ability_tooltips_.push_back((**ab)["description"]);
-				} else {
-					ability_tooltips_.push_back("teleport");
-				}
-				teleport_ = true;
-				teleports_filter_.add_filters((*ab)->child("filter"));
-			}
-		}
-		const config::child_list& hide_abilities = abil_cfg->get_children("hides");
-		if (!hide_abilities.empty()) {
-			abilities_.push_back("hides");
-			for(config::child_list::const_iterator ab = hide_abilities.begin(); ab != hide_abilities.end(); ++ab) {
-				if((**ab)["description"] != "") {
-					ability_tooltips_.push_back((**ab)["description"]);
-				} else {
-					ability_tooltips_.push_back("hides");
-				}
-				hides_ = true;
-				hides_filter_.add_filters((*ab)->child("filter"));
 			}
 		}
 	}
@@ -1200,7 +1074,7 @@ std::vector<attack_type> unit_type::attacks() const
 	std::vector<attack_type> res;
 	for(config::const_child_itors range = cfg_.child_range("attack");
 	    range.first != range.second; ++range.first) {
-		res.push_back(attack_type(**range.first,*this));
+		res.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
 	}
 
 	return res;
@@ -1301,78 +1175,6 @@ const std::vector<std::string>& unit_type::ability_tooltips() const
 	return ability_tooltips_;
 }
 
-int unit_type::heals() const
-{
-	return heals_;
-}
-
-bool unit_type::cures() const
-{
-	return cures_;
-}
-
-bool unit_type::regenerates() const
-{
-	return regenerates_;
-}
-
-int unit_type::regenerate_amount() const
-{
-	return regeneration_;
-}
-
-
-bool unit_type::is_leader() const
-{
-	return leadership_;
-}
-
-int unit_type::leadership(int led_level) const
-{
-	char key[24]; // level[x]
-	snprintf(key,sizeof(key),"level_%d",led_level);
-	const config* abilities=cfg_.child("abilities");
-	const config* leadership_ability=abilities ? abilities->child("leadership") : NULL;
-	if(leadership_ability) {
-		if((*leadership_ability)[key] != "") {
-			return lexical_cast_default<int>((*leadership_ability)[key]);
-		}
-	}
-	return maximum<int>(0,leadership_percent_*(level()-led_level));
-}
-
-int unit_type::illuminates() const
-{
-	return illuminates_;
-}
-
-bool unit_type::is_skirmisher() const
-{
-	return skirmish_;
-}
-
-bool unit_type::teleports() const
-{
-	return teleport_;
-}
-
-bool unit_type::steadfast() const
-{
-	return steadfast_;
-}
-
-int unit_type::steadfast_bonus() const
-{
-	return steadfast_bonus_;
-}
-int unit_type::steadfast_max() const
-{
-	return steadfast_max_;
-}
-bool unit_type::steadfast_ispercent() const
-{
-	return steadfast_percent_;
-}
 
 bool unit_type::not_living() const
 {
@@ -1414,34 +1216,6 @@ const std::string& unit_type::race() const
 	return race_->name();
 }
 
-const ability_filter unit_type::regenerates_filter() const
-{
-	return regenerates_filter_;
-}
-const ability_filter unit_type::leadership_filter() const
-{
-	return leadership_filter_;
-}
-const ability_filter unit_type::illuminates_filter() const
-{
-	return illuminates_filter_;
-}
-const ability_filter unit_type::skirmisher_filter() const
-{
-	return skirmisher_filter_;
-}
-const ability_filter unit_type::teleports_filter() const
-{
-	return teleports_filter_;
-}
-const ability_filter unit_type::steadfast_filter() const
-{
-	return steadfast_filter_;
-}
-const ability_filter unit_type::hides_filter() const
-{
-	return hides_filter_;
-}
 
 const defensive_animation& unit_type::defend_animation(bool hits, std::string range) const
 {

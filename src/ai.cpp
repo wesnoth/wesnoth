@@ -73,7 +73,7 @@ protected:
 
 						const gamemap::TERRAIN terrain = get_info().map.get_terrain(dst);
 
-						const int chance_to_hit = un->second.defense_modifier(get_info().map,terrain);
+						const int chance_to_hit = un->second.defense_modifier(terrain);
 
 						if(best_defense == -1 || chance_to_hit < best_defense) {
 							best_defense = chance_to_hit;
@@ -105,7 +105,7 @@ protected:
         int best_attack = -1;
         for(size_t n = 0; n != attacks.size(); ++n) {
 		if (attacks[n].attack_weight() > 0){
-			const battle_stats stats = evaluate_battle_stats(get_info().map, get_info().teams, attacker, defender, n, get_info().units, get_info().state);
+			const battle_stats stats = evaluate_battle_stats(get_info().map, get_info().teams, attacker, defender, n, get_info().units, get_info().state, get_info().gameinfo);
 			const double attack_rating = stats.damage_defender_takes
 				*stats.nattacks*stats.chance_to_hit_defender*attacks[n].attack_weight();
 			if(best_attack == -1 || attack_rating > best_attack_rating) {
@@ -286,7 +286,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	    " gold=" << (current_team().gold()) <<
 	    " (-> " << (current_team().gold()-u->second.cost()) << ")\n";
 
-	unit new_unit(&u->second,info_.team_num,true);
+	unit new_unit(&info_.gameinfo,&info_.units,&info_.map,&info_.state,&info_.teams,&u->second,info_.team_num,true);
 
 	//see if we can actually recruit (i.e. have enough room etc)
 	if(recruit_unit(info_.map,info_.team_num,info_.units,new_unit,loc,preferences::show_ai_moves() ? &info_.disp : NULL).empty()) {
@@ -379,10 +379,12 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	const location loc = move_unit_partial(from,to,possible_moves);
 	const unit_map::iterator u = info_.units.find(loc);
 	if(u != info_.units.end()) {
-		if (from == to)
-			u->second.set_movement(unit::NOT_MOVED);
-		else
+		if(u->second.movement_left()==u->second.total_movement()) {
 			u->second.set_movement(0);
+			u->second.set_state("not_moved","yes");
+		} else {
+			u->second.set_movement(0);
+		}
 	}
 
 	return loc;
@@ -414,8 +416,8 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 
 	const bool show_move = preferences::show_ai_moves();
 
-	const bool ignore_zocs = u_it->second.type().is_skirmisher();
-	const bool teleport = u_it->second.type().teleports();
+	const bool ignore_zocs = u_it->second.get_ability_bool("skirmisher",u_it->first);
+	const bool teleport = u_it->second.get_ability_bool("teleports",u_it->first);
 	paths current_paths(info_.map,info_.state,info_.gameinfo,info_.units,from,info_.teams,ignore_zocs,teleport,current_team());
 
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
@@ -594,10 +596,10 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 			//we've been ambushed; find the ambushing unit and attack them
 			adjacent_tiles_array locs;
 			get_adjacent_tiles(res,locs.data());
-			for(adjacent_tiles_array::const_iterator i = locs.begin(); i != locs.end(); ++i) {
-				const unit_map::const_iterator itor = units_.find(*i);
+			for(adjacent_tiles_array::const_iterator adj_i = locs.begin(); adj_i != locs.end(); ++adj_i) {
+				const unit_map::const_iterator itor = units_.find(*adj_i);
 				if(itor != units_.end() && current_team().is_enemy(itor->second.side()) &&
-				   !itor->second.incapacitated()) {
+				   itor->second.get_state("stoned") != "yes") {
 					battle_stats stats;
 					const int weapon = choose_weapon(res,itor->first,stats,0);
 					attack_enemy(res,itor->first,weapon);
@@ -631,7 +633,7 @@ void ai::attack_enemy(const location& attacking_unit, const location& target, in
 
 void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement, const std::set<gamemap::location>* remove_destinations)
 {
-	for(std::map<gamemap::location,unit>::iterator un_it = info_.units.begin(); un_it != info_.units.end(); ++un_it) {
+	for(units_map::iterator un_it = info_.units.begin(); un_it != info_.units.end(); ++un_it) {
 		//if we are looking for the movement of enemies, then this unit must be an enemy unit
 		//if we are looking for movement of our own units, it must be on our side.
 		//if we are assuming full movement, then it may be a unit on our side, or allied
@@ -642,7 +644,7 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 		}
 
 		//discount incapacitated units
-		if(un_it->second.incapacitated()) {
+		if(un_it->second.get_state("stoned")=="yes") {
 			continue;
 		}
 
@@ -662,8 +664,8 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 			dstsrc.insert(trivial_mv);
 		}
 
-		const bool ignore_zocs = un_it->second.type().is_skirmisher();
-		const bool teleports = un_it->second.type().teleports();
+		const bool ignore_zocs = un_it->second.get_ability_bool("skirmisher",un_it->first);
+		const bool teleports = un_it->second.get_ability_bool("teleports",un_it->first);
 		res.insert(std::pair<gamemap::location,paths>(
 		                un_it->first,paths(info_.map,info_.state,info_.gameinfo,info_.units,
 					    un_it->first,info_.teams,ignore_zocs,teleports,current_team())));
@@ -1003,11 +1005,11 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 	const command_disabler disable_commands;
 
 	if(info_.units.count(u) && info_.units.count(target)) {
-		if(info_.units.find(target)->second.stone()) {
+		if(info_.units.find(target)->second.get_state("stoned")=="yes") {
 			LOG_STREAM(err, ai) << "attempt to attack unit that is turned to stone\n";
 			return;
 		}
-		if(!info_.units.find(u)->second.can_attack()) {
+		if(!info_.units.find(u)->second.attacks_left()) {
 			LOG_STREAM(err, ai) << "attempt to attack twice with the same unit\n";
 			return;
 		}
@@ -1139,12 +1141,12 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 		}
 
 		const unit_map::const_iterator u = units_.find(j->second);
-		if(u == units_.end() || u->second.is_guardian()) {
+		if(u == units_.end() || u->second.get_state("guardian")=="yes") {
 			continue;
 		}
 
 		const unit& un = u->second;
-		if(un.hitpoints() < (threat*2*un.defense_modifier(map_,map_.get_terrain(j->first)))/100) {
+		if(un.hitpoints() < (threat*2*un.defense_modifier(map_.get_terrain(j->first)))/100) {
 			continue;
 		}
 
@@ -1207,7 +1209,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 		//find a vacant village for it to rest in
 		if(u.side() == team_num_ &&
 		   u.max_hitpoints() - u.hitpoints() >= game_config::poison_amount/2 &&
-		   !u.type().regenerates()) {
+		   !u.get_ability_bool("regenerate",u_it->first)) {
 
 			//look for the village which is the least vulnerable to enemy attack
 			typedef std::multimap<location,location>::const_iterator Itor;
@@ -1253,7 +1255,7 @@ bool ai::should_retreat(const gamemap::location& loc, const unit_map::const_iter
 	}
 
 	const double optimal_terrain = best_defensive_position(un->first,dstsrc,srcdst,enemy_dstsrc).chance_to_hit/100.0;
-	const double proposed_terrain = un->second.defense_modifier(map_,map_.get_terrain(loc))/100.0;
+	const double proposed_terrain = un->second.defense_modifier(map_.get_terrain(loc))/100.0;
 
 	//the 'exposure' is the additional % chance to hit this unit receives from being on a sub-optimal defensive terrain
 	const double exposure = proposed_terrain - optimal_terrain;
@@ -1304,7 +1306,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 					//to theirs, multiplying their power projection by their chance to hit us
 					//on the hex we're planning to flee to.
 					const gamemap::location& hex = itors.first->second;
-					const int defense = i->second.type().movement_type().defense_modifier(map_,map_.get_terrain(hex));
+					const int defense = i->second.defense_modifier(map_.get_terrain(hex));
 					const double our_power = power_projection(hex,dstsrc);
 					const double their_power = power_projection(hex,enemy_dstsrc) * double(defense)/100.0;
 					const double rating = our_power - their_power;
@@ -1335,7 +1337,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 				}
 
 				if(best_pos.valid()) {
-					LOG_AI << "retreating '" << i->second.type().id() << "' " << i->first
+					LOG_AI << "retreating '" << i->second.id() << "' " << i->first
 					       << " -> " << best_pos << '\n';
 					move_unit(i->first,best_pos,possible_moves);
 					return true;
@@ -1392,7 +1394,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 					teams_,current_team());
 
 			if(enemy != units_.end() &&
-			   current_team().is_enemy(enemy->second.side()) && enemy->second.stone() == false) {
+			   current_team().is_enemy(enemy->second.side()) && enemy->second.get_state("stoned") != "yes") {
 				const int res = choose_weapon(move.first,adj[n],bat_stats,
 				                       map_[move.second.x][move.second.y]);
 
@@ -1416,9 +1418,10 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		}
 
 		const unit_map::const_iterator u_it = units_.find(move.second);
+		const unit_map::const_iterator un_it = units_.find(arrived_at);
 
 		//if we're going to attack someone
-		if(u_it != units_.end() && u_it->second.stone() == false && weapon != -1) {
+		if(u_it != units_.end() && u_it->second.get_state("stoned") != "yes" && weapon != -1) {
 			attack_enemy(move.second,target,weapon);
 		}
 
@@ -1502,8 +1505,8 @@ void ai::analyze_potential_recruit_combat()
 				continue;
 			}
 
-			weighting += j->second.type().cost();
-			score += compare_unit_types(info->second,j->second.type())*j->second.type().cost();
+			weighting += j->second.cost();
+			score += compare_unit_types(info->second,gameinfo_.unit_types.find(j->second.id())->second)*j->second.cost();
 		}
 
 		if(weighting != 0) {
@@ -1588,7 +1591,7 @@ void ai::analyze_potential_recruit_movements()
 			continue;
 		}
 
-		const unit temp_unit(&info->second,team_num_);
+		const unit temp_unit(&get_info().gameinfo,&get_info().units,&get_info().map,&get_info().state,&get_info().teams,&info->second,team_num_);
 		unit_map units;
 		const temporary_unit_placer placer(units,start,temp_unit);
 
@@ -1618,9 +1621,9 @@ void ai::analyze_potential_recruit_movements()
 			const int score = (average_cost * (targets_reached+targets_missed))/targets_reached;
 			unit_movement_scores_[*i] = score;
 
-			const std::map<std::string,int>::const_iterator current_best = best_scores.find(temp_unit.type().usage());
+			const std::map<std::string,int>::const_iterator current_best = best_scores.find(temp_unit.usage());
 			if(current_best == best_scores.end() || score < current_best->second) {
-				best_scores[temp_unit.type().usage()] = score;
+				best_scores[temp_unit.usage()] = score;
 			}
 		}
 	}
@@ -1700,7 +1703,7 @@ void ai::do_recruitment()
 
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 		if(u->second.side() == team_num_) {
-			++unit_types[u->second.type().usage()];
+			++unit_types[u->second.usage()];
 		}
 	}
 
@@ -1741,7 +1744,7 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 	}
 
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.incapacitated()) {
+	if(leader == units_.end() || leader->second.get_state("stoned")=="yes") {
 		WRN_AI << "Leader not found\n";
 		return;
 	}
@@ -1778,7 +1781,7 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 {
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.incapacitated()) {
+	if(leader == units_.end() || leader->second.get_state("stoned")=="yes") {
 		return;
 	}
 
@@ -1827,7 +1830,7 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 	LOG_AI << "moving leader after recruit...\n";
 
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.incapacitated()) {
+	if(leader == units_.end() || leader->second.get_state("stoned")=="yes") {
 		return;
 	}
 
@@ -1915,7 +1918,7 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 bool ai::leader_can_reach_keep() const
 {
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.incapacitated()) {
+	if(leader == units_.end() || leader->second.get_state("stoned")=="yes") {
 		return false;
 	}
 
@@ -1938,7 +1941,7 @@ bool ai::leader_can_reach_keep() const
 int ai::rate_terrain(const unit& u, const gamemap::location& loc)
 {
 	const gamemap::TERRAIN terrain = map_.get_terrain(loc);
-	const int defense = u.defense_modifier(map_,terrain);
+	const int defense = u.defense_modifier(terrain);
 	int rating = 100 - defense;
 
 	const int healing_value = 10;
@@ -1946,7 +1949,7 @@ int ai::rate_terrain(const unit& u, const gamemap::location& loc)
 	const int neutral_village_value = 10;
 	const int enemy_village_value = 15;
 
-	if(map_.gives_healing(terrain) && u.type().regenerates() == false) {
+	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerates",loc) == false) {
 		rating += healing_value;
 	}
 
@@ -1988,7 +1991,7 @@ const ai::defensive_position& ai::best_defensive_position(const gamemap::locatio
 	typedef move_map::const_iterator Itor;
 	const std::pair<Itor,Itor> itors = srcdst.equal_range(loc);
 	for(Itor i = itors.first; i != itors.second; ++i) {
-		const int defense = itor->second.defense_modifier(map_,map_.get_terrain(i->second));
+		const int defense = itor->second.defense_modifier(map_.get_terrain(i->second));
 		if(defense > pos.chance_to_hit) {
 			continue;
 		}

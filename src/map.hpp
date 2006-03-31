@@ -15,6 +15,8 @@
 #define MAP_H_INCLUDED
 
 class config;
+class gamestatus;
+class unit;
 
 #include "terrain.hpp"
 
@@ -98,6 +100,7 @@ public:
 
 		static location null_location;
 	};
+	typedef std::map<location,unit> unit_map;
 
 	const std::string& underlying_mvt_terrain(const location& loc) const
 	{ return underlying_mvt_terrain(get_terrain(loc)); }
@@ -172,6 +175,8 @@ public:
 
 	//shortcut to get_terrain_info(get_terrain(loc))
 	const terrain_type& get_terrain_info(const location &loc) const;
+	//
+	bool terrain_matches_filter(const location& loc, const config& cfg, const gamestatus& game_status, const unit_map& units,bool flat_tod=false) const;
 
 	//gets the list of terrains
 	const std::vector<TERRAIN>& get_terrain_list() const;

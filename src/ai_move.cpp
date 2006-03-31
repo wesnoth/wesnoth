@@ -33,11 +33,11 @@ struct move_cost_calculator : cost_calculator
 						 const ai::move_map& dstsrc,
 						 const ai::move_map& enemy_dstsrc)
 	  : unit_(u), map_(map), data_(data), units_(units),
-	    move_type_(u.type().movement_type()), loc_(loc), dstsrc_(dstsrc), enemy_dstsrc_(enemy_dstsrc),
-		avoid_enemies_(u.type().usage() == "scout")
+	    loc_(loc), dstsrc_(dstsrc), enemy_dstsrc_(enemy_dstsrc),
+		avoid_enemies_(u.usage() == "scout")
 	{}
 
-	virtual double cost(const gamemap::location& loc, const double, const bool) const
+	virtual double cost(const gamemap::location& src,const gamemap::location& loc, const double, const bool) const
 	{
 		/*
 		if(!map_.on_board(loc))
@@ -58,7 +58,7 @@ struct move_cost_calculator : cost_calculator
 		const gamemap::TERRAIN terrain = map_[loc.x][loc.y];
 
 		const double modifier = 1.0; //move_type_.defense_modifier(map_,terrain);
-		const double move_cost = move_type_.movement_cost(map_,terrain);
+		const double move_cost = unit_.movement_cost(terrain);//move_type_[terrain];
 
 		const int enemies = 1 + (avoid_enemies_ ? enemy_dstsrc_.count(loc) : 0);
 		double res = modifier*move_cost*double(enemies);
@@ -77,7 +77,7 @@ private:
 	const gamemap& map_;
 	const game_data& data_;
 	const unit_map& units_;
-	const unit_movement_type& move_type_;
+//	mutable std::map<gamemap::TERRAIN,int> move_type_;
 	const gamemap::location loc_;
 	const ai::move_map dstsrc_, enemy_dstsrc_;
 	const bool avoid_enemies_;
@@ -153,7 +153,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 		//explicit targets for this team
 		for(std::vector<team::target>::iterator j = team_targets.begin();
 		    j != team_targets.end(); ++j) {
-			if(u->second.matches_filter(j->criteria)) {
+			if(u->second.matches_filter(j->criteria,u->first)) {
 				LOG_AI << "found explicit target..." << j->value << "\n";
 				targets.push_back(target(u->first,j->value,target::EXPLICIT));
 			}
@@ -303,7 +303,7 @@ bool ai::move_group(const location& dst, const std::vector<location>& route, con
 				continue;
 			}
 
-			const int defense = un->second.defense_modifier(map_,map_.get_terrain(*j));
+			const int defense = un->second.defense_modifier(map_.get_terrain(*j));
 			if(best_loc.valid() == false || defense < best_defense) {
 				best_loc = *j;
 				best_defense = defense;
@@ -352,7 +352,7 @@ double ai::rate_group(const std::set<location>& group, const std::vector<locatio
 
 		int defense = 0;
 		for(std::vector<location>::const_iterator j = battlefield.begin(); j != battlefield.end(); ++j) {
-			defense += un.defense_modifier(map_,map_.get_terrain(*j));
+			defense += un.defense_modifier(map_.get_terrain(*j));
 		}
 
 		defense /= battlefield.size();
@@ -398,7 +398,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 	//find the first eligible unit
 	for(u = units_.begin(); u != units_.end(); ++u) {
-		if(!(u->second.side() != team_num_ || u->second.can_recruit() || u->second.movement_left() <= 0 || u->second.incapacitated())) {
+		if(!(u->second.side() != team_num_ || u->second.can_recruit() || u->second.movement_left() <= 0 || u->second.get_state("stoned")=="yes")) {
 			break;
 		}
 	}
@@ -409,8 +409,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	}
 
 	//guardian units stay put
-	if(u->second.is_guardian()) {
-		LOG_AI << u->second.type().id() << " is guardian, staying still\n";
+	if(u->second.get_state("guardian")=="yes") {
+		LOG_AI << u->second.id() << " is guardian, staying still\n";
 		return std::pair<location,location>(u->first,u->first);
 	}
 
@@ -454,7 +454,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		}
 
 		//scouts do not like encountering enemies on their paths
-		if(u->second.type().usage() == "scout") {
+		if(u->second.usage() == "scout") {
 			std::set<location> enemies_guarding;
 			enemies_along_path(cur_route.steps,enemy_dstsrc,enemies_guarding);
 
@@ -499,7 +499,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
 			if(u->second.side() != team_num_ || u->second.can_recruit() ||
-			   u->second.movement_left() <= 0 || u->second.is_guardian() || u->second.incapacitated()) {
+			   u->second.movement_left() <= 0 || u->second.get_state("guardian")=="yes" || u->second.get_state("stoned")=="yes") {
 				continue;
 			}
 
@@ -535,7 +535,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			}
 
 			//scouts do not like encountering enemies on their paths
-			if(u->second.type().usage() == "scout") {
+			if(u->second.usage() == "scout") {
 				std::set<location> enemies_guarding;
 				enemies_along_path(cur_route.steps,enemy_dstsrc,enemies_guarding);
 
@@ -583,7 +583,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 			for(std::vector<location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
 				const int distance = distance_between(*i,best_target->loc);
-				const int defense = best->second.defense_modifier(map_,map_.get_terrain(*i));
+				const int defense = best->second.defense_modifier(map_.get_terrain(*i));
 				const double vulnerability = power_projection(*i,enemy_dstsrc);
 
 				if(best_loc.valid() == false || defense < best_defense || defense == best_defense && vulnerability < best_vulnerability) {
@@ -626,7 +626,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			}
 
 			if(!defensive_grouping) {
-				movement -= best->second.movement_cost(map_,map_.get_terrain(*i));
+				movement -= best->second.movement_cost(map_.get_terrain(*i));
 			}
 		}
 
@@ -676,7 +676,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = srcdst.equal_range(loc);
 			for(move_map::const_iterator i = itors.first; i != itors.second; ++i) {
 				const int distance = distance_between(target_loc,i->second);
-				const int defense = un.defense_modifier(map_,map_.get_terrain(i->second));
+				const int defense = un.defense_modifier(map_.get_terrain(i->second));
 				const double threat = (power_projection(i->second,enemy_dstsrc)*defense)/100;
 
 				if(best_loc.valid() == false || threat < maximum<double>(best_threat,max_acceptable_threat) && distance < best_distance) {
@@ -716,7 +716,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		while(its.first != its.second) {
 			if(its.first->second == best->first) {
 				if(!should_retreat(its.first->first,best,fullmove_srcdst,fullmove_dstsrc,enemy_dstsrc)) {
-					const double value = best_target->value - best->second.type().cost()/20.0;
+					const double value = best_target->value - best->second.cost()/20.0;
 
 					if(value > 0.0 && best_target->type != target::MASS) {
 						//there are enemies ahead. Rally troops around us to
