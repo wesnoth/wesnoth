@@ -487,15 +487,15 @@ void play_controller::enter_textbox()
 		return;
 	}
 
-	switch(menu_handler_.get_textbox().mode) {
+	switch(menu_handler_.get_textbox().mode_) {
 	case gui::TEXTBOX_SEARCH:
-		menu_handler_.do_search(menu_handler_.get_textbox().box->text());
+		menu_handler_.do_search(menu_handler_.get_textbox().box_->text());
 		break;
 	case gui::TEXTBOX_MESSAGE:
 		menu_handler_.do_speak();
 		break;
 	case gui::TEXTBOX_COMMAND:
-		//do_command(menu_handler_.get_textbox().box->text());
+		menu_handler_.do_command(menu_handler_.get_textbox().box_->text(), player_number_, mouse_handler_);
 		break;
 	default:
 		LOG_STREAM(err, display) << "unknown textbox mode\n";
@@ -512,8 +512,6 @@ void play_controller::handle_event(const SDL_Event& event)
 
 	switch(event.type) {
 	case SDL_KEYDOWN:
-		hotkey::key_event(*gui_,event.key,this);
-
 		//detect key press events, unless there is a textbox present on-screen
 		//in which case the key press events should go only to it.
 		if(menu_handler_.get_textbox().active() == false) {

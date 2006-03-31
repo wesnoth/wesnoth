@@ -22,15 +22,15 @@ namespace gui{
 		void show(gui::TEXTBOX_MODE mode, const std::string& label, 
 			const std::string& check_label, bool checked, display& gui);
 		void tab(std::vector<team>& teams, const unit_map& units, display& gui);
-		bool active() const { return box.get() != NULL; }
+		bool active() const { return box_.get() != NULL; }
 
-		util::scoped_ptr<gui::textbox> box;
-		util::scoped_ptr<gui::button> check;
+		util::scoped_ptr<gui::textbox> box_;
+		util::scoped_ptr<gui::button> check_;
 
-		TEXTBOX_MODE mode;
+		TEXTBOX_MODE mode_;
 
-		std::string label_string;
-		int label;
+		std::string label_string_;
+		int label_;
 	private:
 	};
 }

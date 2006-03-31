@@ -1208,7 +1208,7 @@ namespace events{
 	}
 
 	void menu_handler::do_speak(){
-		do_speak(textbox_info_.box->text(),textbox_info_.check != NULL ? textbox_info_.check->checked() : false);
+		do_speak(textbox_info_.box_->text(),textbox_info_.check_ != NULL ? textbox_info_.check_->checked() : false);
 	}
 
 	void menu_handler::do_speak(const std::string& message, bool allies_only)

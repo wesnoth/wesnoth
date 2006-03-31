@@ -4,7 +4,7 @@
 #include "preferences.hpp"
 
 namespace gui{
-	floating_textbox::floating_textbox() : box(NULL), check(NULL), mode(TEXTBOX_NONE), label(0)
+	floating_textbox::floating_textbox() : box_(NULL), check_(NULL), mode_(TEXTBOX_NONE), label_(0)
 	{}
 
 	void floating_textbox::close(display& gui)
@@ -12,58 +12,58 @@ namespace gui{
 		if(!active()) {
 			return;
 		}
-		if(check != NULL) {
-			if(mode == TEXTBOX_MESSAGE) {
-				preferences::set_message_private(check->checked());
+		if(check_ != NULL) {
+			if(mode_ == TEXTBOX_MESSAGE) {
+				preferences::set_message_private(check_->checked());
 			}
 		}
-		box.assign(NULL);
-		check.assign(NULL);
-		font::remove_floating_label(label);
-		mode = TEXTBOX_NONE;
+		box_.assign(NULL);
+		check_.assign(NULL);
+		font::remove_floating_label(label_);
+		mode_ = TEXTBOX_NONE;
 		gui.invalidate_all();
 	}
 
 	void floating_textbox::update_location(display& gui)
 	{
-		if (box == NULL)
+		if (box_ == NULL)
 			return;
 
 		const SDL_Rect& area = gui.map_area();
 
 		const int border_size = 10;
 
-		const int ypos = area.y+area.h-30 - (check != NULL ? check->height() + border_size : 0);
+		const int ypos = area.y+area.h-30 - (check_ != NULL ? check_->height() + border_size : 0);
 
-		if (label != 0)
-			font::remove_floating_label(label);
+		if (label_ != 0)
+			font::remove_floating_label(label_);
 
-		label = font::add_floating_label(label_string,font::SIZE_NORMAL,
+		label_ = font::add_floating_label(label_string_,font::SIZE_NORMAL,
 				font::YELLOW_COLOUR,area.x+border_size,ypos,0,0,-1, area,font::LEFT_ALIGN);
 
-		if (label == 0)
+		if (label_ == 0)
 			return;
 
-		const SDL_Rect& label_area = font::get_floating_label_rect(label);
+		const SDL_Rect& label_area = font::get_floating_label_rect(label_);
 		const int textbox_width = area.w - label_area.w - border_size*3;
 
 		if(textbox_width <= 0) {
-			font::remove_floating_label(label);
+			font::remove_floating_label(label_);
 			return;
 		}
 
-		if(box != NULL) {
-			box->set_volatile(true);
+		if(box_ != NULL) {
+			box_->set_volatile(true);
 			const SDL_Rect rect = {
 				area.x + label_area.w + border_size*2, ypos,
-				textbox_width, box->height()
+				textbox_width, box_->height()
 			};
-			box->set_location(rect);
+			box_->set_location(rect);
 		}
 
-		if(check != NULL) {
-			check->set_volatile(true);
-			check->set_location(box->location().x,box->location().y + box->location().h + border_size);
+		if(check_ != NULL) {
+			check_->set_volatile(true);
+			check_->set_location(box_->location().x,box_->location().y + box_->location().h + border_size);
 		}
 	}
 
@@ -72,16 +72,16 @@ namespace gui{
 	{
 		close(gui);
 
-		label_string = label;
-		mode = mode;
+		label_string_ = label;
+		mode_ = mode;
 
 		if(check_label != "") {
-			check.assign(new gui::button(gui.video(),check_label,gui::button::TYPE_CHECK));
-			check->set_check(checked);
+			check_.assign(new gui::button(gui.video(),check_label,gui::button::TYPE_CHECK));
+			check_->set_check(checked);
 		}
 
 
-		box.assign(new gui::textbox(gui.video(),100,"",true,256,0.8,0.6));
+		box_.assign(new gui::textbox(gui.video(),100,"",true,256,0.8,0.6));
 
 		update_location(gui);
 	}
@@ -92,10 +92,10 @@ namespace gui{
 			return;
 		}
 
-		switch(mode) {
+		switch(mode_) {
 		case gui::TEXTBOX_MESSAGE:
 		{
-			std::string text = box->text();
+			std::string text = box_->text();
 			std::string semiword;
 			bool beginning;
 
@@ -169,7 +169,7 @@ namespace gui{
 					}
 					gui.add_chat_message("",0,completion_list,display::MESSAGE_PRIVATE);
 				}
-				box->set_text(text);
+				box_->set_text(text);
 			}
 			break;
 		}
