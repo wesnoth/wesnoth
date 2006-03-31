@@ -101,6 +101,7 @@ wesnoth_SOURCES = \
 	titlescreen.cpp \
 	tooltips.cpp \
 	unit.cpp \
+	unit_abilities.cpp \
 	unit_display.cpp \
 	unit_types.cpp \
 	unit_animation.cpp \
