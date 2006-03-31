@@ -177,8 +177,10 @@ std::vector<std::string> unit::unit_ability_tooltips() const
 		const config::child_map& list_map = abilities->all_children();
 		for(config::child_map::const_iterator i = list_map.begin(); i != list_map.end(); ++i) {
 			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-				res.push_back((**j)["name"].str());
-				res.push_back((**j)["description"].str());
+				if((**j)["name"] != "") {
+					res.push_back((**j)["name"].str());
+					res.push_back((**j)["description"].str());
+				}
 			}
 		}
 	}

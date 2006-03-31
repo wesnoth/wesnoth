@@ -834,8 +834,10 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		const config::child_map& abi = abil_cfg->all_children();
 		for(config::child_map::const_iterator j = abi.begin(); j != abi.end(); ++j) {
 			for(config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
-				abilities_.push_back((**k)["name"]);
-				ability_tooltips_.push_back((**k)["description"]);
+				if((**k)["name"] != "") {
+					abilities_.push_back((**k)["name"]);
+					ability_tooltips_.push_back((**k)["description"]);
+				}
 			}
 		}
 	}

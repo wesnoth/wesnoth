@@ -782,8 +782,6 @@ const std::vector<std::string>& unit::overlays() const
 void unit::read(const config& cfg)
 {
 	cfg_ = cfg;
-	wassert(gamedata_ != NULL);
-	std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 	if(cfg["id"]=="") {
 		id_ = cfg["type"];
 	} else {
@@ -818,7 +816,7 @@ void unit::read(const config& cfg)
 		generate_traits();
 	}
 
-	description_ = cfg["user_description"];
+	description_ = cfg["unit_description"];
 	if(cfg["generate_description"] == "yes") {
 		description_ = generate_description();
 	}
@@ -827,7 +825,7 @@ void unit::read(const config& cfg)
 		description_ = underlying_description_;
 	}
 
-	custom_unit_description_ = cfg["unit_description"];
+	custom_unit_description_ = cfg["user_description"];
 	
 	role_ = cfg["role"];
 	overlays_ = utils::split(cfg["overlays"]);
@@ -841,14 +839,14 @@ void unit::read(const config& cfg)
 	} else {
 		variables_.clear();
 	}
-	hit_points_ = lexical_cast_default<int>("hitpoints");
-	max_hit_points_ = lexical_cast_default<int>("max_hitpoints");
+	hit_points_ = lexical_cast_default<int>(cfg["hitpoints"]);
+	max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"]);
 	goto_.x = lexical_cast_default<int>(cfg["goto_x"]) - 1;
 	goto_.y = lexical_cast_default<int>(cfg["goto_y"]) - 1;
-	movement_ = lexical_cast_default<int>("moves");
-	max_movement_ = lexical_cast_default<int>("max_moves");
-	experience_ = lexical_cast_default<int>("experience");
-	max_experience_ = lexical_cast_default<int>("max_experience");
+	movement_ = lexical_cast_default<int>(cfg["moves"]);
+	max_movement_ = lexical_cast_default<int>(cfg["max_moves"]);
+	experience_ = lexical_cast_default<int>(cfg["experience"]);
+	max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
 	resting_ = (cfg["resting"] == "yes");
 	unrenamable_ = (cfg["unrenamable"] == "yes");
 	
@@ -893,6 +891,8 @@ void unit::read(const config& cfg)
 	}
 	
 	if(cfg["type"] != "") {
+		wassert(gamedata_ != NULL);
+		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		advance_to(&i->second);
 		max_attacks_ = 1;
 	}
@@ -947,11 +947,10 @@ void unit::read(const config& cfg)
 		movement_animations_.push_back(movement_animation(absolute_image()));
 		// always have a movement animation
 	}
-	
 }
 void unit::write(config& cfg) const
 {
-	cfg = cfg_;
+	cfg.append(cfg_);
 	cfg["type"] = "";
 	cfg["id"] = id();
 
@@ -983,8 +982,10 @@ void unit::write(config& cfg) const
 	for(std::map<std::string,std::string>::const_iterator st = states_.begin(); st != states_.end(); ++st) {
 		status_flags[st->first] = st->second;
 	}
-
+	
+	cfg.clear_children("variables");
 	cfg.add_child("variables",variables_);
+	cfg.clear_children("states");
 	cfg.add_child("states",status_flags);
 
 	cfg["overlays"] = utils::join(overlays_);
@@ -996,8 +997,6 @@ void unit::write(config& cfg) const
 
 	if(can_recruit())
 		cfg["canrecruit"] = "1";
-
-	cfg.add_child("modifications",modifications_);
 
 	cfg["facing"] = gamemap::location::write_direction(facing_);
 	
@@ -1055,6 +1054,7 @@ void unit::write(config& cfg) const
 	cfg["attacks_left"] = lexical_cast_default<std::string>(attacks_left_);
 	cfg["max_attacks"] = lexical_cast_default<std::string>(max_attacks_);
 	cfg["zoc"] = lexical_cast_default<std::string>(emit_zoc_);
+	cfg.clear_children("attack");
 	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
 		cfg.add_child("attack",i->get_cfg());
 	}
@@ -1064,7 +1064,9 @@ void unit::write(config& cfg) const
 	for(string_map::const_iterator k = modification_descriptions_.begin(); k != modification_descriptions_.end(); ++k) {
 		mod_desc[k->first] = k->second;
 	}
+	cfg.clear_children("modifications_description");
 	cfg.add_child("modifications_description",mod_desc);
+	cfg.clear_children("modifications");
 	cfg.add_child("modifications",modifications_);
 	
 	

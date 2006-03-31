@@ -26,7 +26,7 @@
 
 class unit_type;
 class unit;
-class game_data;
+struct game_data;
 class gamestatus;
 class team;
 typedef std::map<gamemap::location,unit> unit_map;

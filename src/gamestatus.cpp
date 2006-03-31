@@ -704,7 +704,7 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 			const config::child_list& units = (**s).get_children("unit");
 			for(config::child_list::const_iterator u = units.begin(); u != units.end(); ++u) {
 				if((**u)["canrecruit"] == "1") {
-					leader = (**u)["type"];
+					leader = (**u)["id"];
 					break;
 				}
 			}

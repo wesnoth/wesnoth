@@ -1628,7 +1628,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		if (healer != units.end() && healer->second.side()==side) {
 			unit_ability_list heal = i->second.get_abilities("heals",i->first);
 			hitpoints_mod_pos_ncum = maximum<int>(hitpoints_mod_pos_ncum,heal.highest("value").first);
-			hitpoints_mod_neg_ncum = minimum<int>(hitpoints_mod_neg_ncum,heal.lowest("value").first);
+			hitpoints_mod_neg_ncum = minimum<int>(hitpoints_mod_neg_ncum,heal.lowest("value",0).first);
 			for(std::vector<std::pair<config*,gamemap::location> >::const_iterator heal_it = heal.cfgs.begin(); heal_it != heal.cfgs.end(); ++heal_it) {
 				if((*heal_it->first)["poison"] == "cured") {
 					curing = "cured";
@@ -1648,7 +1648,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		if(i->second.side() == side) {
 			unit_ability_list regen = i->second.get_abilities("regenerate",i->first);
 			hitpoints_mod_pos_ncum = maximum<int>(hitpoints_mod_pos_ncum,regen.highest("value").first);
-			hitpoints_mod_neg_ncum = minimum<int>(hitpoints_mod_neg_ncum,regen.lowest("value").first);
+			hitpoints_mod_neg_ncum = minimum<int>(hitpoints_mod_neg_ncum,regen.lowest("value",0).first);
 			for(std::vector<std::pair<config*,gamemap::location> >::const_iterator regen_it = regen.cfgs.begin(); regen_it != regen.cfgs.end(); ++regen_it) {
 				if((*regen_it->first)["poison"] == "cured") {
 					curing = "cured";
@@ -1877,7 +1877,7 @@ const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,c
 			if(itor != units.end() &&
 			   itor->second.get_ability_bool("illuminates",itor->first) && itor->second.get_state("stoned")!="yes") {
 				lighten = maximum<int>(itor->second.get_abilities("illuminates",itor->first).highest("value").first, lighten);
-				darken = minimum<int>(itor->second.get_abilities("illuminates",itor->first).lowest("value").first, darken);
+				darken = minimum<int>(itor->second.get_abilities("illuminates",itor->first).lowest("value",0).first, darken);
 			}
 		}
 	}
