@@ -350,7 +350,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 				
 				weapon_special_list swarm = defend.get_specials("attacks");
 				if(!swarm.empty()) {
-					int swarm_min_attacks = swarm.highest("attacks_max");
+					int swarm_min_attacks = swarm.highest("attacks_max",d_nattacks);
 					int swarm_max_attacks = swarm.highest("attacks_min");
 					int hitp = d->second.hitpoints();
 					int mhitp = d->second.max_hitpoints();
@@ -517,7 +517,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	// compute swarm attacks;
 	weapon_special_list swarm = attack.get_specials("attacks");
 	if(!swarm.empty()) {
-		int swarm_min_attacks = swarm.highest("attacks_max");
+		int swarm_min_attacks = swarm.highest("attacks_max",res.nattacks);
 		int swarm_max_attacks = swarm.highest("attacks_min");
 		int hitp = a->second.hitpoints();
 		int mhitp = a->second.max_hitpoints();
@@ -701,7 +701,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		// compute swarm attacks;
 		weapon_special_list swarm = defend.get_specials("attacks");
 		if(!swarm.empty()) {
-			int swarm_min_attacks = swarm.highest("attacks_max");
+			int swarm_min_attacks = swarm.highest("attacks_max",res.ndefends);
 			int swarm_max_attacks = swarm.highest("attacks_min");
 			int hitp = d->second.hitpoints();
 			int mhitp = d->second.max_hitpoints();
@@ -1674,7 +1674,6 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				hitpoints_mod_pos_cum += game_config::rest_heal_amount;
 			}
 			if(i->second.get_state("poisoned")=="yes") {
-				std::cerr << "poisoned...\n";
 				if(curing == "cured") {
 					i->second.set_state("poisoned","");
 					hitpoints_mod_pos_ncum = 0;
@@ -1689,6 +1688,16 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		int total_mod = maximum<int>(hitpoints_mod_pos_ncum,hitpoints_mod_pos_cum) + minimum<int>(hitpoints_mod_neg_ncum,hitpoints_mod_neg_cum);
 		
 		if (curing == "" && hitpoints_mod_pos_ncum==0 && hitpoints_mod_pos_cum==0 && hitpoints_mod_neg_ncum ==0 && hitpoints_mod_neg_cum==0) {
+			continue;
+		}
+		int pos_max = i->second.max_hitpoints() - i->second.hitpoints();
+		int neg_max = -(i->second.hitpoints() - 1);
+		if(total_mod > pos_max) {
+			total_mod = pos_max;
+		} else if(total_mod < neg_max) {
+			total_mod = neg_max;
+		}
+		if(total_mod == 0) {
 			continue;
 		}
 

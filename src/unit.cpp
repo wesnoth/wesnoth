@@ -129,6 +129,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	}else{
 	  underlying_description_ = id();
 	}
+	unrenamable_ = false;
 	anim_ = NULL;
 	getsHit_=0;
 	end_turn_ = false;
@@ -152,6 +153,10 @@ unit::unit(const unit_type* t,
 	}else{
 	  underlying_description_ = id();
 	}
+	unrenamable_ = false;
+	anim_ = NULL;
+	getsHit_=0;
+	end_turn_ = false;
 	attacks_left_ = max_attacks_;
 }
 
@@ -211,6 +216,11 @@ void unit::generate_traits()
 void unit::advance_to(const unit_type* t)
 {
 	
+	id_ = t->id();
+	if(t->movement_type().get_parent()) {
+		std::cerr << "Error engine: deprecated movement_type= is used in unit '" << t->id() << "', use the macros provided in units.cfg instead\n";
+		cfg_ = cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
+	}
 	cfg_ = cfg_.merge_with(t->cfg_);
 	
 	advances_to_ = t->advances_to();
@@ -234,6 +244,7 @@ void unit::advance_to(const unit_type* t)
 	unit_value_ = t->cost();
 	upkeep_ = t->level();
 	flying_ = t->movement_type().is_flying();
+	
 //	movement_costs_ = t->movement_type().movement_costs();
 //	defense_mods_ = t->movement_type().defense_mods();
 	max_attacks_ = lexical_cast_default<int>(t->cfg_["attacks"],1);
@@ -251,7 +262,6 @@ void unit::advance_to(const unit_type* t)
 	if(id()!=t->id()) {
 	  heal_all();
 	}
-	id_ = t->id();
 	
 	set_state("poisoned","");
 	set_state("slowed","");
@@ -276,11 +286,16 @@ const std::string& unit::id() const
 // the actual name of the unit
 const std::string& unit::name() const
 {
-	return name_;
+	if(description_.empty() == false)
+		return description_;
+	else
+		return language_name();
 }
 void unit::rename(const std::string& name)
 {
-	name_ = name;
+	if (!unrenamable_) {
+		description_ = name;
+	}
 }
 // the unit type name
 const std::string& unit::description() const
@@ -895,6 +910,9 @@ void unit::read(const config& cfg)
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		advance_to(&i->second);
 		max_attacks_ = 1;
+		if(cfg["moves"]=="") {
+			movement_ = max_movement_;
+		}
 	}
 	if(cfg["alignment"]=="lawful") {
 		alignment_ = unit_type::LAWFUL;
@@ -990,7 +1008,8 @@ void unit::write(config& cfg) const
 
 	cfg["overlays"] = utils::join(overlays_);
 
-	cfg["user_description"] = description_;
+	cfg["user_description"] = custom_unit_description_;
+	cfg["unit_description"] = description_;
 	cfg["description"] = underlying_description_;
 
 	cfg["traits_description"] = traits_description_;

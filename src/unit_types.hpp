@@ -150,7 +150,9 @@ public:
 	bool is_flying() const;
 	const std::map<gamemap::TERRAIN,int>& movement_costs() const;
 	const std::map<gamemap::TERRAIN,int>& defense_mods() const;
-
+	
+	const config& get_cfg() const;
+	const unit_movement_type* get_parent() const;
 private:
 	const config cfg_;
 
