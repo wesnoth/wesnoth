@@ -1195,7 +1195,7 @@ public:
 				{
 					std::string lang_special = "";
 					std::vector<std::string>::iterator sp_it;
-					for (sp_it = specials.begin(); sp_it < specials.end(); sp_it++) {
+					for (sp_it = specials.begin(); sp_it != specials.end(); sp_it++) {
 						const std::string ref_id = std::string("weaponspecial_")
 							+ (*sp_it);
 						lang_special = gettext(sp_it->c_str());
