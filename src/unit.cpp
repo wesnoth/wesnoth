@@ -1691,6 +1691,7 @@ bool unit::is_flying() const
 int unit::movement_cost(gamemap::TERRAIN terrain, int recurse_count) const
 {
 	const int impassable = 10000000;
+	bool slowed = (get_state("slowed")=="yes") ? 2 : 1;
 	
 //	const std::map<gamemap::TERRAIN,int>::const_iterator i = movement_costs_.find(terrain);
 //	if(i != movement_costs_.end()) {
@@ -1725,7 +1726,7 @@ int unit::movement_cost(gamemap::TERRAIN terrain, int recurse_count) const
 
 //		movement_costs_.insert(std::pair<gamemap::TERRAIN,int>(terrain,ret_value));
 
-		return ret_value;
+		return ret_value*slowed;
 	}
 
 	const config* movement_costs = cfg_.child("movement_costs");
@@ -1753,7 +1754,7 @@ int unit::movement_cost(gamemap::TERRAIN terrain, int recurse_count) const
 
 //	movement_costs_.insert(std::pair<gamemap::TERRAIN,int>(terrain,res));
 
-	return res;
+	return res*slowed;
 }
 
 int unit::defense_modifier(gamemap::TERRAIN terrain, int recurse_count) const
