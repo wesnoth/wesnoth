@@ -385,20 +385,20 @@ bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const
 {
 	if(cfg.child("filter")==NULL) {
-		if(cfg["affect_self"] == "yes") {
+		if(cfg["affect_self"] == "yes" || cfg["affect_self"] == "") {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	if(cfg["affect_self"] == "yes") {
+	if(cfg["affect_self"] == "yes" || cfg["affect_self"] == "") {
 		return matches_filter(*cfg.child("filter"),loc,ability=="illuminates");
 	} else {
 		return false;
 	}
 }
 
-
+]
 
 
 bool unit_ability_list::empty() const

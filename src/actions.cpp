@@ -1779,6 +1779,7 @@ unit get_advanced_unit(const game_data& info,
 	const units_map::iterator un = units.find(loc);
 	if(new_type != info.unit_types.end() && un != units.end()) {
 		unit new_unit(un->second);
+		new_unit.get_experience(new_unit.max_experience());
 		new_unit.advance_to(&(new_type->second));
 		return new_unit;
 	} else {

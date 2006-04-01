@@ -118,6 +118,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 {
 	side_ = side;
 	movement_ = 0;
+	experience_ = 0;
 	advance_to(t);
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
@@ -142,6 +143,7 @@ unit::unit(const unit_type* t,
 {
 	side_ = side;
 	movement_ = 0;
+	experience_ = 0;
 	advance_to(t);
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
@@ -229,7 +231,6 @@ void unit::advance_to(const unit_type* t)
 	language_name_ = t->language_name();
 	cfg_["unit_description"] = t->unit_description();
 	undead_variation_ = t->undead_variation();
-	experience_ = 0;
 //	experience_ = t->experience_needed();
 	max_experience_ = t->experience_needed();
 	level_ = t->level();
