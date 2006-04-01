@@ -258,7 +258,7 @@ void unit::advance_to(const unit_type* t)
 	
 	backup_state();
 	//apply modifications etc, refresh the unit
-	reset_modifications();
+	//reset_modifications();
 	apply_modifications();
 	if(id()!=t->id()) {
 	  heal_all();
@@ -863,16 +863,6 @@ void unit::read(const config& cfg)
 	} else {
 		variables_.clear();
 	}
-	hit_points_ = lexical_cast_default<int>(cfg["hitpoints"]);
-	max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"]);
-	goto_.x = lexical_cast_default<int>(cfg["goto_x"]) - 1;
-	goto_.y = lexical_cast_default<int>(cfg["goto_y"]) - 1;
-	movement_ = lexical_cast_default<int>(cfg["moves"]);
-	max_movement_ = lexical_cast_default<int>(cfg["max_moves"]);
-	experience_ = lexical_cast_default<int>(cfg["experience"]);
-	max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
-	resting_ = (cfg["resting"] == "yes");
-	unrenamable_ = (cfg["unrenamable"] == "yes");
 	
 	advances_to_ = utils::split(cfg["advances_to"]);
 	if(advances_to_.size() == 1 && advances_to_.front() == "") {
@@ -917,7 +907,11 @@ void unit::read(const config& cfg)
 	if(cfg["type"] != "") {
 		wassert(gamedata_ != NULL);
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
-		advance_to(&i->second);
+		if(i != gamedata_->unit_types.end()) {
+			advance_to(&i->second);
+		} else {
+			LOG_STREAM(err, engine) << "unit of type " << cfg["type"] << " not found!\n";
+		}
 		attacks_left_ = 1;
 		max_attacks_ = 1;
 		if(cfg["moves"]=="") {
@@ -928,6 +922,32 @@ void unit::read(const config& cfg)
 			movement_ = 0;
 		}
 	}
+	if(cfg["hitpoints"] != "") {
+		hit_points_ = lexical_cast_default<int>(cfg["hitpoints"]);
+	}
+	if(cfg["max_hitpoints"] != "") {
+		max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"]);
+	}
+	goto_.x = lexical_cast_default<int>(cfg["goto_x"]) - 1;
+	goto_.y = lexical_cast_default<int>(cfg["goto_y"]) - 1;
+	if(cfg["moves"] != "") {
+		movement_ = lexical_cast_default<int>(cfg["moves"]);
+		if(movement_ < 0) {
+			attacks_left_ = 0;
+			movement_ = 0;
+		}
+	}
+	if(cfg["max_moves"] != "") {
+		max_movement_ = lexical_cast_default<int>(cfg["max_moves"]);
+	}
+	if(cfg["experience"] != "") {
+		experience_ = lexical_cast_default<int>(cfg["experience"]);
+	}
+	if(cfg["max_experience"] != "") {
+		max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
+	}
+	resting_ = (cfg["resting"] == "yes");
+	unrenamable_ = (cfg["unrenamable"] == "yes");
 	if(cfg["alignment"]=="lawful") {
 		alignment_ = unit_type::LAWFUL;
 	} else if(cfg["alignment"]=="neutral") {
