@@ -1409,16 +1409,16 @@ void display::draw_tile(int x, int y)
 	}
 
 	draw_footstep(loc,xpos,ypos);
-	if(it != units_.end()) {
-		it->second.refresh_unit(*this,loc,true);
-	}
-	
 
 	if(!is_shrouded) {
 		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOREGROUND);
 		draw_movement_info(loc,xpos,ypos);
 	}
 
+	if(it != units_.end()) {
+		it->second.refresh_unit(*this,loc,true);
+	}
+	
 	if(fogged(x,y) && shrouded(x,y) == false) {
 		const surface fog_surface(image::get_image("terrain/fog.png"));
 		if(fog_surface != NULL) {
