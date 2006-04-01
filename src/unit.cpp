@@ -918,9 +918,14 @@ void unit::read(const config& cfg)
 		wassert(gamedata_ != NULL);
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		advance_to(&i->second);
+		attacks_left_ = 1;
 		max_attacks_ = 1;
 		if(cfg["moves"]=="") {
 			movement_ = max_movement_;
+		}
+		if(movement_ < 0) {
+			attacks_left_ = 0;
+			movement_ = 0;
 		}
 	}
 	if(cfg["alignment"]=="lawful") {
