@@ -324,6 +324,14 @@ const std::string& unit::unit_description() const
 {
 	return cfg_["unit_description"];
 }
+
+
+const config::child_list unit::wml_events() const
+{
+	return cfg_.get_children("event");
+}
+
+
 const std::string& unit::undead_variation() const
 {
 	return undead_variation_;
@@ -968,7 +976,12 @@ void unit::read(const config& cfg)
 }
 void unit::write(config& cfg) const
 {
+	// if a location has been saved in the config, keep it
+	std::string x = cfg["x"];
+	std::string y = cfg["y"];
 	cfg.append(cfg_);
+	cfg["x"] = x;
+	cfg["y"] = y;
 	cfg["type"] = "";
 	cfg["id"] = id();
 
@@ -1059,7 +1072,11 @@ void unit::write(config& cfg) const
 	}
 	std::stringstream flg_rgb;
 	for(std::vector<Uint32>::const_iterator j = flag_rgb_.begin(); j != flag_rgb_.end(); ++j) {
-		flg_rgb << *j;
+		flg_rgb << (((*j)&0xFF0000)>>16);
+		flg_rgb << ",";
+		flg_rgb << (((*j)&0xFF00)>>8);
+		flg_rgb << ",";
+		flg_rgb << (((*j)&0xFF));
 		if(j+1 != flag_rgb_.end()) {
 			flg_rgb << ",";
 		}

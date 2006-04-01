@@ -26,16 +26,16 @@ std::vector<Uint32> string2rgb(std::string s){
   int r,g,b;
 
   while(c!=rgb_vec.end()){
-    r = (atoi(c->c_str()));
+    r = (lexical_cast_default<int>(*c));
     c++;
     if(c != rgb_vec.end()){
-      g = (atoi(c->c_str()));
+      g = (lexical_cast_default<int>(*c));
     }else{
       g=0;
     }
     c++;
     if(c != rgb_vec.end()){
-      b=(atoi(c->c_str()));
+      b=(lexical_cast_default<int>(*c));
     }else{
       b=0;
     }

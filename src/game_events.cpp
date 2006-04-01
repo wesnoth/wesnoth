@@ -1906,6 +1906,9 @@ bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter)
 	return res;
 }
 
+config::child_list unit_wml_configs;
+std::set<std::string> unit_wml_ids;
+
 manager::manager(const config& cfg, display& gui_, gamemap& map_,
                  units_map& units_,
                  std::vector<team>& teams_,
@@ -1920,6 +1923,10 @@ manager::manager(const config& cfg, display& gui_, gamemap& map_,
 		events_map.insert(std::pair<std::string,event_handler>(
 					new_handler.name(), new_handler));
 	}
+	std::vector<std::string> unit_ids = utils::split(cfg["unit_wml_ids"]);
+	for(std::vector<std::string>::const_iterator id_it = unit_ids.begin(); id_it != unit_ids.end(); ++id_it) {
+		unit_wml_ids.insert(*id_it);
+	}
 
 	teams = &teams_;
 	screen = &gui_;
@@ -1930,6 +1937,7 @@ manager::manager(const config& cfg, display& gui_, gamemap& map_,
 	status_ptr = &status;
 
 	used_items.clear();
+	
 	const std::string& used = cfg["used_items"];
 	if(!used.empty()) {
 		const std::vector<std::string>& v = utils::split(used);
@@ -1956,6 +1964,15 @@ void write_events(config& cfg)
 	}
 
 	cfg["used_items"] = used.str();
+	std::stringstream ids;
+	for(std::set<std::string>::const_iterator u = unit_wml_ids.begin(); u != unit_wml_ids.end(); ++u) {
+		if(u != unit_wml_ids.begin())
+			ids << ",";
+
+		ids << *u;
+	}
+
+	cfg["unit_wml_ids"] = ids.str();
 
 	if(screen != NULL)
 		screen->write_overlays(cfg);
@@ -1970,6 +1987,11 @@ manager::~manager() {
 	state_of_game = NULL;
 	game_data_ptr = NULL;
 	status_ptr = NULL;
+	for(config::child_list::iterator d = unit_wml_configs.begin(); d != unit_wml_configs.end(); ++d) {
+		delete *d;
+	}
+	unit_wml_configs.clear();
+	unit_wml_ids.clear();
 }
 
 void raise(const std::string& event,
@@ -1998,6 +2020,20 @@ bool pump()
 		return false;
 
 	bool result = false;
+	
+	if(units != NULL) {
+		for(units_map::const_iterator u_it = units->begin(); u_it != units->end(); ++u_it) {
+			if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),u_it->second.id()) == unit_wml_ids.end()) {
+				unit_wml_ids.insert(u_it->second.id());
+				config::child_list ev_list = u_it->second.wml_events();
+				for(config::child_list::const_iterator new_ev = ev_list.begin(); new_ev != ev_list.end(); ++ new_ev) {
+					unit_wml_configs.push_back(new config(**new_ev));
+					event_handler new_handler(*unit_wml_configs.back());
+					events_map.insert(std::pair<std::string,event_handler>(new_handler.name(), new_handler));
+				}
+			}
+		}
+	}
 
 	while(events_queue.empty() == false) {
 		queued_event ev = events_queue.front();
