@@ -398,7 +398,7 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	}
 }
 
-]
+
 
 
 bool unit_ability_list::empty() const
