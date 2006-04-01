@@ -148,23 +148,23 @@ std::string recruit_unit(const gamemap& map, int side,
 	}
 
 	units.insert(std::pair<gamemap::location,unit>( recruit_location,new_unit));
-	unit_map::iterator un = disp->get_units().find(recruit_location);
 
+	if(show) {
+	    unit_map::iterator un = disp->get_units().find(recruit_location);
+	    if( un !=disp->get_units().end()) {
+			un->second.set_hidden(true);
+			disp->scroll_to_tile(recruit_location.x,recruit_location.y,display::ONSCREEN);
+			un->second.set_hidden(false);
+			un->second.set_recruited(*disp);
+			while(!un->second.get_animation()->animation_finished()) {
+				disp->draw_tile(recruit_location.x,recruit_location.y);
+				disp->update_display();
+				events::pump();
+				if(!disp->turbo()) SDL_Delay(10);
 
-	if(show && un !=disp->get_units().end()) {
-
-		un->second.set_hidden(true);
-		disp->scroll_to_tile(recruit_location.x,recruit_location.y,display::ONSCREEN);
-		un->second.set_hidden(false);
-		un->second.set_recruited(*disp);
-		while(!un->second.get_animation()->animation_finished()) {
-			disp->draw_tile(recruit_location.x,recruit_location.y);
-			disp->update_display();
-			events::pump();
-			if(!disp->turbo()) SDL_Delay(10);
-
+			}
+			un->second.set_standing(*disp);
 		}
-		un->second.set_standing(*disp);
 	}
 	LOG_NG << "firing recruit event\n";
 	game_events::fire("recruit",recruit_location);
