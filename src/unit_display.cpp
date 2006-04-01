@@ -43,6 +43,7 @@ void teleport_unit_between(display& disp, const gamemap& map, const gamemap::loc
 
 	u.set_teleporting(disp);
 	if (!disp.fogged(a.x, a.y)) { // teleport
+		disp.scroll_to_tile(a.x,a.y,display::ONSCREEN);
 		while(!u.get_animation()->animation_finished()  && u.get_animation()->get_animation_time() < 0) {
 			disp.draw_tile(a.x,a.y);
 			disp.update_display();
@@ -52,6 +53,7 @@ void teleport_unit_between(display& disp, const gamemap& map, const gamemap::loc
 		}
 	}
 	if (!disp.fogged(b.x, b.y)) { // teleport
+		u.restart_animation(disp,0);
 		disp.scroll_to_tile(b.x,b.y,display::ONSCREEN);
 		while(!u.get_animation()->animation_finished()) {
 			disp.draw_tile(b.x,b.y);

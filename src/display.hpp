@@ -208,7 +208,6 @@ private:
 	//composes and draws the terrains on a tile
 	void draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
-	void draw_unit_on_tile(int x, int y);
 
 
 	gui::button::TYPE string_to_button_type(std::string type);

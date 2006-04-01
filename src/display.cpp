@@ -1221,20 +1221,6 @@ void display::draw_minimap(int x, int y, int w, int h)
 }
 
 
-void display::draw_unit_on_tile(int x, int y)
-{
-
-	const gamemap::location src(x,y);
-	//see if there is a unit on this tile
-	unit_map::iterator it = units_.find(src);
-	if(it == units_.end()) {
-		return;
-	}
-	
-	it->second.refresh_unit(*this,src,true);
-	
-}
-
 void display::draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha)
 {
 
@@ -1423,7 +1409,10 @@ void display::draw_tile(int x, int y)
 	}
 
 	draw_footstep(loc,xpos,ypos);
-	draw_unit_on_tile(x,y);
+	if(it != units_.end()) {
+		it->second.refresh_unit(*this,loc,true);
+	}
+	
 
 	if(!is_shrouded) {
 		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOREGROUND);
