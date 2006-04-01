@@ -739,7 +739,11 @@ void game_state::get_variable_internal(const std::string& key, config& cfg,
 	const std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
 	if(itor != key.end()) {
 		std::string element(key.begin(),itor);
-		const std::string sub_key(itor+1,key.end());
+		std::string sub_key(itor+1,key.end());
+		// redirect 'type' to 'id' for backwards compatibility
+		if(sub_key == "type") {
+			sub_key = "id";
+		}
 
 		size_t index = 0;
 		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
