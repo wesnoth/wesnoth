@@ -1691,7 +1691,7 @@ bool unit::is_flying() const
 int unit::movement_cost(gamemap::TERRAIN terrain, int recurse_count) const
 {
 	const int impassable = 10000000;
-	bool slowed = (get_state("slowed")=="yes") ? 2 : 1;
+	int slowed = (get_state("slowed")=="yes") ? 2 : 1;
 	
 //	const std::map<gamemap::TERRAIN,int>::const_iterator i = movement_costs_.find(terrain);
 //	if(i != movement_costs_.end()) {
