@@ -70,7 +70,7 @@ private:
 class ui : public gui::widget
 {
 public:
-	enum result { CONTINUE, JOIN, OBSERVE, CREATE, PLAY, QUIT };
+	enum result { CONTINUE, JOIN, OBSERVE, CREATE, PREFERENCES, PLAY, QUIT };
 
 	ui(display& d, const std::string& title,
 			const config& cfg, chat& c, config& gamelist);

@@ -25,6 +25,7 @@
 #include "network.hpp"
 #include "playcampaign.hpp"
 #include "preferences.hpp"
+#include "preferences_display.hpp"
 #include "random.hpp"
 #include "replay.hpp"
 #include "video.hpp"
@@ -386,6 +387,14 @@ void enter_lobby_mode(display& disp, const config& game_config, game_data& data,
 			}
 			break;
 		case mp::ui::QUIT:
+			return;
+		case mp::ui::PREFERENCES:
+			{
+				const preferences::display_manager disp_manager(&disp);
+				preferences::show_preferences_dialog(disp,game_config);
+				disp.redraw_everything();
+			}
+			break;			
 		default:
 			return;
 		}
