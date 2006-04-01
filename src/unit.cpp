@@ -922,11 +922,13 @@ void unit::read(const config& cfg)
 			movement_ = 0;
 		}
 	}
-	if(cfg["hitpoints"] != "") {
-		hit_points_ = lexical_cast_default<int>(cfg["hitpoints"]);
-	}
 	if(cfg["max_hitpoints"] != "") {
 		max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"]);
+	}
+	if(cfg["hitpoints"] != "") {
+		hit_points_ = lexical_cast_default<int>(cfg["hitpoints"]);
+	} else {
+		hit_points_ = max_hit_points_;
 	}
 	goto_.x = lexical_cast_default<int>(cfg["goto_x"]) - 1;
 	goto_.y = lexical_cast_default<int>(cfg["goto_y"]) - 1;
@@ -940,9 +942,7 @@ void unit::read(const config& cfg)
 	if(cfg["max_moves"] != "") {
 		max_movement_ = lexical_cast_default<int>(cfg["max_moves"]);
 	}
-	if(cfg["experience"] != "") {
-		experience_ = lexical_cast_default<int>(cfg["experience"]);
-	}
+	experience_ = lexical_cast_default<int>(cfg["experience"]);
 	if(cfg["max_experience"] != "") {
 		max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
 	}
