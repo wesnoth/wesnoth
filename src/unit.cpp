@@ -817,6 +817,13 @@ void unit::read(const config& cfg)
 
 	validate_side(side_);
 	
+	/* prevent un-initialized variables */
+	max_hit_points=1;
+	hit_points_=1;
+	max_movement_=0;
+	max_experience_=0;
+	/* */
+	
 	const std::string& gender = cfg["gender"];
 	if(gender == "male") {
 		gender_ = unit_race::MALE;
@@ -887,7 +894,7 @@ void unit::read(const config& cfg)
 		recruits_.clear();
 	}
 	attacks_left_ = lexical_cast_default<int>(cfg["attacks_left"]);
-	max_attacks_ = lexical_cast_default<int>(cfg["max_attacks"]);
+	max_attacks_ = lexical_cast_default<int>(cfg["max_attacks"],1);
 	emit_zoc_ = lexical_cast_default<int>(cfg["zoc"]);
 	unit_value_ = lexical_cast_default<int>(cfg["value"]);
 	const config* mod_desc = cfg.child("modifications_description");
