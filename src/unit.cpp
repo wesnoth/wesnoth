@@ -818,7 +818,7 @@ void unit::read(const config& cfg)
 	validate_side(side_);
 	
 	/* prevent un-initialized variables */
-	max_hit_points=1;
+	max_hit_points_=1;
 	hit_points_=1;
 	max_movement_=0;
 	max_experience_=0;
