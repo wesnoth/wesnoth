@@ -65,6 +65,7 @@ wesnoth_SOURCES = \
 	key.cpp \
 	language.cpp \
 	leader_list.cpp \
+	loadscreen.cpp \
 	map_create.cpp \
 	map_label.cpp \
 	mapgen.cpp \
@@ -163,6 +164,7 @@ wesnoth_editor_SOURCES = \
 	image.cpp \
 	key.cpp \
 	language.cpp \
+	loadscreen.cpp \
 	map_create.cpp \
 	map_label.cpp \
 	mapgen.cpp \
@@ -222,6 +224,7 @@ wesnothd_SOURCES = \
 	server/server.cpp \
 	network.cpp \
 	network_worker.cpp \
+	loadscreen_empty.cpp \
 	serialization/parser.cpp
 
 wesnothd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
@@ -416,7 +419,6 @@ libwesnoth_core_a_SOURCES = \
 	color_range.cpp \
 	game_config.cpp \
 	gettext.cpp \
-	loadscreen.cpp \
 	log.cpp \
 	map.cpp \
 	pathutils.cpp \

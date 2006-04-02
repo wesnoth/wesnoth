@@ -1066,14 +1066,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//creating a mask of the terrain
 	else if(cmd == "terrain_mask") {
-		gamemap::location loc = cfg_to_loc(cfg);
-		if(loc.x == -1) {
-			loc.x = 0;
-		}
-
-		if(loc.y == -1) {
-			loc.y = 0;
-		}
+		gamemap::location loc = cfg_to_loc(cfg, 1, 1);
 
 		gamemap mask(*game_map);
 

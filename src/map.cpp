@@ -361,12 +361,20 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 {
 	const config::child_list& rules = rules_cfg.get_children("rule");
 
-	const int xend = minimum<int>(xpos+m.x(),x());
-	const int yend = minimum<int>(ypos+m.y(),y());
-	for(int x = xpos; x < xend; ++x) {
-		for(int y = ypos; y < yend; ++y) {
-			const TERRAIN t = m[x-xpos][y-ypos];
-			const TERRAIN current = (*this)[x][y];
+	const int xstart = maximum<int>(0, -xpos);
+	const int ystart = maximum<int>(0, -ypos-((xpos & 1) ? 1 : 0));
+	const int xend = minimum<int>(m.x(),x()-xpos);
+	const int yend = minimum<int>(m.y(),y()-ypos);
+	for(int x1 = xstart; x1 < xend; ++x1) {
+		for(int y1 = ystart; y1 < yend; ++y1) {
+			const int x2 = x1 + xpos;
+			const int y2 = y1 + ypos +
+				((xpos & 1) && (x1 & 1) ? 1 : 0);
+			if (y2 < 0 || y2 >= y()) {
+				continue;
+			}   
+			const TERRAIN t = m[x1][y1];
+			const TERRAIN current = (*this)[x2][y2];
 
 			if(t == FOGGED || t == VOID_TERRAIN) {
 				continue;
@@ -406,12 +414,12 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 				const config& cfg = **rule;
 				const std::string& terrain = cfg["terrain"];
 				if(terrain != "") {
-					set_terrain(location(x,y),terrain[0]);
+					set_terrain(location(x2,y2),terrain[0]);
 				} else if(cfg["use_old"] != "yes") {
-					set_terrain(location(x,y),t);
+					set_terrain(location(x2,y2),t);
 				}
 			} else {
-				set_terrain(location(x,y),t);
+				set_terrain(location(x2,y2),t);
 			}
 		}
 	}
