@@ -13,6 +13,8 @@
 
 #include "global.hpp"
 
+#include "loadscreen.hpp"
+
 //include files for opendir(3), readdir(3), etc. These files may vary
 //from platform to platform, since these functions are NOT ANSI-conforming
 //functions. They may have to be altered to port to new platforms
@@ -685,7 +687,7 @@ void get_file_tree_checksum_internal(const std::string& path, file_tree_checksum
 {
 	std::vector<std::string> files, dirs;
 	get_files_in_dir(path,&files,&dirs,ENTIRE_FILE_PATH);
-
+	increment_filesystem_progress();
 	for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
 		++res.nfiles;
 

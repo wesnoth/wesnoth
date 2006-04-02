@@ -19,6 +19,7 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
+#include "loadscreen.hpp"
 #include "log.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
@@ -112,6 +113,7 @@ void parser::operator()(std::string* error_log)
 
 			*error_log += e.message + '\n';
 		}
+		increment_parser_progress();
 	} while (tok_.current_token().type != token::END);
 
 	// The main element should be there. If it is not, this is a parser error.

@@ -30,6 +30,7 @@
 #include "hotkeys.hpp"
 #include "intro.hpp"
 #include "language.hpp"
+#include "loadscreen.hpp"
 #include "multiplayer.hpp"
 #include "network.hpp"
 #include "playcampaign.hpp"
@@ -1319,6 +1320,11 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 				//read the file and then write to the cache
 				scoped_istream stream = preprocess_file("data/game.cfg", &defines_map);
 
+				//reset the parse counter before reading the game files
+				if (loadscreen::global_loadscreen) {
+					loadscreen::global_loadscreen->parser_counter = 0;
+				}
+
 				std::string error_log, user_error_log;
 
 				read(cfg, *stream, &error_log);
@@ -1650,17 +1656,22 @@ int play_game(int argc, char** argv)
 		return 0;
 	}
 
+	loadscreen::global_loadscreen = new loadscreen(game.disp().video());
+	loadscreen::global_loadscreen->clear_screen();
+	
 	res = game.init_language();
 	if(res == false) {
 		std::cerr << "could not initialize the language\n";
 		return 0;
 	}
 		
+	loadscreen::global_loadscreen->increment_progress(5, "Loading game configuration.");
 	res = game.init_config();
 	if(res == false) {
 		std::cerr << "could not initialize game config\n";
 		return 0;
 	}
+	loadscreen::global_loadscreen->increment_progress(10, "Re-initialize fonts for the current language.");
 
 	res = font::load_font_config();
 	if(res == false) {
@@ -1675,6 +1686,10 @@ int play_game(int argc, char** argv)
 
 	int ntip = -1;
 	config tips_of_day;
+
+	loadscreen::global_loadscreen->set_progress(100, "Loading title screen.");
+	delete loadscreen::global_loadscreen;
+	loadscreen::global_loadscreen = 0;
 
 	for(;;) {
 		//make sure the game config is always set to how it should be at the title screen

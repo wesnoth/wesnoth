@@ -334,6 +334,7 @@ noinst_HEADERS = \
 	ai_interface.hpp \
 	multiplayer_wait.hpp \
 	gettext.hpp \
+	loadscreen.hpp \
 	builder.hpp \
 	publish_campaign.hpp \
 	playlevel.hpp \
@@ -415,6 +416,7 @@ libwesnoth_core_a_SOURCES = \
 	color_range.cpp \
 	game_config.cpp \
 	gettext.cpp \
+	loadscreen.cpp \
 	log.cpp \
 	map.cpp \
 	pathutils.cpp \

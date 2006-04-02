@@ -15,6 +15,7 @@
 
 #include "game_config.hpp"
 #include "gettext.hpp"
+#include "loadscreen.hpp"
 #include "log.hpp"
 #include "unit_types.hpp"
 #include "util.hpp"
@@ -702,7 +703,7 @@ unit_type::unit_type(const unit_type& o)
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
       death_animations_(o.death_animations_), movement_animations_(o.movement_animations_),
-      flag_rgb_(o.flag_rgb_),zoc_(o.zoc_)
+      flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
@@ -1350,18 +1351,21 @@ void game_data::set_config(const config& cfg)
 		movement_types.insert(
 				std::pair<std::string,unit_movement_type>(move_type.name(),
 						                                  move_type));
+		increment_set_config_progress();
 	}
 
 	for(config::const_child_itors r = cfg.child_range("race");
 	    r.first != r.second; ++r.first) {
 		const unit_race race(**r.first);
 		races.insert(std::pair<std::string,unit_race>(race.name(),race));
+		increment_set_config_progress();
 	}
 
 	for(config::const_child_itors j = cfg.child_range("unit");
 	    j.first != j.second; ++j.first) {
 		const unit_type u_type(**j.first,movement_types,races,unit_traits);
 		unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
+		increment_set_config_progress();
 	}
 
         // fix up advance_from references
@@ -1382,6 +1386,7 @@ void game_data::set_config(const config& cfg)
                 wassert(to_unit!=unit_types.end());
 
                 from_unit->second.add_advancement(to_unit->second,xp);
+		increment_set_config_progress();
         }
 
 }
