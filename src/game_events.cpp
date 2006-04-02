@@ -950,6 +950,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					std::vector<unit>::iterator ui;
 					for(ui = player->available_units.begin();
 							ui != player->available_units.end(); ++ui) {
+						wassert(game_data_ptr != NULL);
+						ui->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 						if(game_events::unit_matches_filter(*ui, filter,gamemap::location())) {
 							ui->assign_role(cfg["role"]);
 							found=true;
@@ -965,6 +967,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					//iterate over the units, and try to find one that matches
 					for(ui = pi->second.available_units.begin();
 							ui != pi->second.available_units.end(); ++ui) {
+						wassert(game_data_ptr != NULL);
+						ui->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 						if(game_events::unit_matches_filter(*ui, filter,gamemap::location())) {
 							ui->assign_role(cfg["role"]);
 							found=true;
@@ -1152,13 +1156,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 				LOG_NG << "checking unit against filter...\n";
+				wassert(game_data_ptr != NULL);
+				u->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 				if(game_events::unit_matches_filter(*u, cfg,gamemap::location())) {
 					gamemap::location loc = cfg_to_loc(cfg);
-					wassert(game_data_ptr != NULL);
-					wassert(units != NULL);
-					wassert(game_map != NULL);
-					wassert(status_ptr != NULL);
-					u->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 					recruit_unit(*game_map,index+1,*units,*u,loc,cfg["show"] == "no" ? NULL : screen,false,true);
 					avail.erase(u);
 					break;
@@ -1413,6 +1414,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
                       pi!=players.end(); ++pi) {
                         std::vector<unit>& avail_units = pi->second.available_units;
 			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
+				wassert(game_data_ptr != NULL);
+				j->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 				if(game_events::unit_matches_filter(*j, cfg,gamemap::location())) {
                             j = avail_units.erase(j);
                           } else {
@@ -1475,6 +1478,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					pi!=players.end(); ++pi) {
 				std::vector<unit>& avail_units = pi->second.available_units;
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
+				wassert(game_data_ptr != NULL);
+				j->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 				if(game_events::unit_matches_filter(*j, filter,gamemap::location())) {
 						++j;
 						continue;

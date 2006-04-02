@@ -54,7 +54,7 @@ static bool compare_unit_values(unit const &a, unit const &b)
 	const int xpa = a.max_experience() - a.experience();
 	const int xpb = b.max_experience() - b.experience();
 
-	return lvla > lvlb || lvla == lvlb || lvla == lvlb && xpa < xpb;
+	return lvla > lvlb || (lvla == lvlb && xpa < xpb);
 }
 
 void sort_units(std::vector< unit > &units)
