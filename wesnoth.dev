@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth.dev
 Name=wesnoth
-UnitCount=225
+UnitCount=227
 Type=1
 Ver=1
 ObjFiles=
@@ -12,7 +12,7 @@ ResourceIncludes=
 MakeIncludes=
 Compiler=
 CppCompiler=
-Linker=-lmingw32_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lws2_32 _@@_-lwinmm _@@_-lfreetype _@@_-lintl _@@_-mwindows _@@_-lpython24 _@@_-lpng_@@_
+Linker=-lmingw32_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lws2_32 _@@_-lwinmm _@@_-lfreetype _@@_-lintl _@@_-mwindows _@@_-lpython24 _@@_-lpng13_@@_
 IsCpp=1
 Icon=
 ExeOutput=
@@ -2259,16 +2259,6 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit226]
-FileName=src\zipios++\xcoll.hpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [VersionInfo]
 Major=0
 Minor=1
@@ -2301,6 +2291,36 @@ BuildCmd=
 FileName=src\unit_animation.hpp
 CompileCpp=1
 Folder=Wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit227]
+FileName=src\loadscreen.hpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit228]
+FileName=src\loadscreen.hpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit226]
+FileName=src\loadscreen.cpp
+CompileCpp=1
+Folder=wesnoth
 Compile=1
 Link=1
 Priority=1000
