@@ -220,7 +220,6 @@ void unit::advance_to(const unit_type* t)
 	
 	id_ = t->id();
 	if(t->movement_type().get_parent()) {
-		std::cerr << "Error engine: deprecated movement_type= is used in unit '" << t->id() << "', use the macros provided in units.cfg instead\n";
 		cfg_ = cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
 	}
 	cfg_ = cfg_.merge_with(t->cfg_);
