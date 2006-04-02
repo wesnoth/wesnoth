@@ -138,7 +138,6 @@ const bool replay_controller::is_loading_game(){
 
 void replay_controller::reset_replay(){
 	is_playing_ = false;
-	current_turn_ = 1;
 	player_number_ = 1;
 	recorder.start_replay();
 	units_ = *(new unit_map(units_start_));

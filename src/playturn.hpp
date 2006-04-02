@@ -44,6 +44,8 @@ public:
 		  std::vector<team>& teams, unsigned int team_num, unit_map& units,
 		  TURN_MODE mode, replay_network_sender& network_sender);
 
+	~turn_info();
+
 	void turn_slice();
 	void sync_network();
 

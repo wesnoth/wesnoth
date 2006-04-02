@@ -44,6 +44,7 @@ playsingle_controller::playsingle_controller(const config& level, const game_dat
 	generator_setter(&recorder), cursor_setter(cursor::NORMAL), replay_sender_(recorder)
 {
 	end_turn_ = false;
+	replaying_ = false;
 }
 
 void playsingle_controller::init_gui(){
@@ -147,6 +148,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 		fire_start(!loading_game_);
 		gui_->recalculate_minimap();
+
+		bool replaying_ = (recorder.at_end() == false);
 
 		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 		for(; ; first_player_ = 0) {
@@ -308,29 +311,28 @@ void playsingle_controller::play_turn(){
 	gui_->invalidate_game_status();
 	events::raise_draw_event();
 
-	LOG_NG << "turn: " << current_turn_++ << "\n";
+	LOG_NG << "turn: " << current_turn_ << "\n";
+	current_turn_++;
 
-	bool replaying = (recorder.at_end() == false);
 	for(player_number_ = first_player_ + 1; player_number_ <= teams_.size(); player_number_++) {
-
 		init_side(player_number_ - 1);
 
-		if (replaying){
+		if (replaying_){
 			const hotkey::basic_handler key_events_handler(gui_);
 			LOG_NG << "doing replay " << player_number_ << "\n";
 			try {
-				replaying = ::do_replay(*gui_,map_,gameinfo_,units_,teams_,
+				replaying_ = ::do_replay(*gui_,map_,gameinfo_,units_,teams_,
 						              player_number_,status_,gamestate_);
 			} catch(replay::error&) {
 				gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_ONLY);
 
-				replaying = false;
+				replaying_ = false;
 			}
-			LOG_NG << "result of replay: " << (replaying?"true":"false") << "\n";
+			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 		}
-		check_music(replaying);
+		check_music(replaying_);
 
-		if (!replaying){
+		if (!replaying_){
 			play_side(player_number_);
 		}
 

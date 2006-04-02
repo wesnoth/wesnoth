@@ -30,6 +30,10 @@ turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
 	gui_.enable_menu("endturn", mode == PLAY_TURN);
 }
 
+turn_info::~turn_info(){
+	undo_stack_.clear();
+}
+
 void turn_info::turn_slice()
 {
 	events::pump();

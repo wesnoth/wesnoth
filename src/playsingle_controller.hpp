@@ -68,6 +68,7 @@ protected:
 
 	bool end_turn_;
 	bool player_type_changed_;
+	bool replaying_;
 private:
 };
 

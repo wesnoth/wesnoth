@@ -150,14 +150,20 @@ void playmp_controller::after_human_turn(){
 
 	//send one more time to make sure network is up-to-date.
 	turn_data_->send_data();
+	if (turn_data_ != NULL){
+		delete turn_data_;
+		turn_data_ = NULL;
+	}
 
 	playsingle_controller::after_human_turn();
 }
 
 void playmp_controller::finish_side_turn(){
 	play_controller::finish_side_turn();
+	//just in case due to an exception turn_data_ has not been deleted in after_human_turn
 	if (turn_data_ != NULL){
 		delete turn_data_;
+		turn_data_ = NULL;
 	}
 }
 
