@@ -228,7 +228,7 @@ void unit::generate_traits()
 void unit::advance_to(const unit_type* t)
 {
 	
-	id_ = t->id();
+	reset_modifications();
 	if(t->movement_type().get_parent()) {
 		cfg_ = cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
 	}
@@ -267,10 +267,10 @@ void unit::advance_to(const unit_type* t)
 	
 	backup_state();
 	//apply modifications etc, refresh the unit
-	//reset_modifications();
 	apply_modifications();
 	if(id()!=t->id()) {
 	  heal_all();
+		id_ = t->id();
 	}
 	
 	set_state("poisoned","");
