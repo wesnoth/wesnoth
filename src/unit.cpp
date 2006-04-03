@@ -87,7 +87,6 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	read(cfg);
 	getsHit_=0;
 	end_turn_ = false;
-	backup_state();
 	refreshing_  = false;
 	hidden_ = false;
 	if(race_->not_living()) {
@@ -102,7 +101,6 @@ unit::unit(const game_data& gamedata,const config& cfg) : gamedata_(&gamedata),u
 	read(cfg);
 	getsHit_=0;
 	end_turn_ = false;
-	backup_state();
 	refreshing_  = false;
 	hidden_ = false;
 	if(race_->not_living()) {
@@ -851,10 +849,6 @@ void unit::read(const config& cfg)
 		static const unit_race dummy_race;
 		race_ = &dummy_race;
 	}
-	traits_description_ = cfg["traits_description"];
-	if(cfg["random_traits"] == "yes") {
-		generate_traits();
-	}
 
 	description_ = cfg["unit_description"];
 	if(cfg["generate_description"] == "yes") {
@@ -1015,6 +1009,14 @@ void unit::read(const config& cfg)
 		movement_animations_.push_back(movement_animation(absolute_image()));
 		// always have a movement animation
 	}
+	if(cfg_["type"] == "") {
+		backup_state();
+	}
+	apply_modifications();
+	traits_description_ = cfg["traits_description"];
+	if(cfg["random_traits"] == "yes") {
+		generate_traits();
+	}
 }
 void unit::write(config& cfg) const
 {
@@ -1031,14 +1033,14 @@ void unit::write(config& cfg) const
 	hp << hit_points_;
 	cfg["hitpoints"] = hp.str();
 	std::stringstream hpm;
-	hpm << max_hit_points_;
+	hpm << max_hit_points_b_;
 	cfg["max_hitpoints"] = hpm.str();
 
 	std::stringstream xp;
 	xp << experience_;
 	cfg["experience"] = xp.str();
 	std::stringstream xpm;
-	xpm << max_experience_;
+	xpm << max_experience_b_;
 	cfg["max_experience"] = xpm.str();
 
 	std::stringstream sd;
@@ -1086,7 +1088,7 @@ void unit::write(config& cfg) const
 
 	snprintf(buf,sizeof(buf),"%d",movement_);
 	cfg["moves"] = buf;
-	snprintf(buf,sizeof(buf),"%d",max_movement_);
+	snprintf(buf,sizeof(buf),"%d",max_movement_b_);
 	cfg["max_moves"] = buf;
 
 	cfg["resting"] = resting_ ? "yes" : "no";
@@ -1133,7 +1135,7 @@ void unit::write(config& cfg) const
 	cfg["max_attacks"] = lexical_cast_default<std::string>(max_attacks_);
 	cfg["zoc"] = lexical_cast_default<std::string>(emit_zoc_);
 	cfg.clear_children("attack");
-	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
+	for(std::vector<attack_type>::const_iterator i = attacks_b_.begin(); i != attacks_b_.end(); ++i) {
 		cfg.add_child("attack",i->get_cfg());
 	}
 	cfg["value"] = lexical_cast_default<std::string>(unit_value_);
@@ -1146,7 +1148,6 @@ void unit::write(config& cfg) const
 	cfg.add_child("modifications_description",mod_desc);
 	cfg.clear_children("modifications");
 	cfg.add_child("modifications",modifications_);
-	
 	
 }
 
@@ -2472,6 +2473,7 @@ const movement_animation& unit::move_animation(const std::string terrain,gamemap
 void unit::apply_modifications()
 {
 	log_scope("apply mods");
+	reset_modifications();
 	modification_descriptions_.clear();
 
 	for(size_t i = 0; i != NumModificationTypes; ++i) {

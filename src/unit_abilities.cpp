@@ -637,7 +637,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 	}
 	
 	if(attacker_) {
-		if(!report && self && cfg["active_on"] != "" && cfg["active_on"] != "offense") {
+		if(!report && cfg["active_on"] != "" && cfg["active_on"] != "offense") {
 			return false;
 		}
 		if(cfg.child("filter_self") != NULL) {
@@ -662,7 +662,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 			}
 		}
 	} else {
-		if(!report && self && cfg["active_on"] != "" && cfg["active_on"] != "defense") {
+		if(!report && cfg["active_on"] != "" && cfg["active_on"] != "defense") {
 			return false;
 		}
 		if(cfg.child("filter_self") != NULL) {
