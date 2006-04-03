@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-02 13:13+0200\n"
-"PO-Revision-Date: 2006-03-25 20:42+0100\n"
+"PO-Revision-Date: 2006-03-26 13:54+0100\n"
 "Last-Translator: Americo Iacovizzi <darkamex@gmail.com>\n"
 "Language-Team:  <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -71,17 +71,17 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Cura:\n"
-"Questa unità combina dei rimedi a base di erbe alla magia per curare le "
-"unità sul campo di battaglia il più rapidamente possibile.\n"
+"Guarire\n"
+"Permette all'unità di guarire, all'inizio del turno, le truppe amiche "
+"vicine.\n"
 "\n"
-"Questa unità provvederà alla cura di tutte le unità amiche adiacenti che "
-"sono ferite all'inizio del turno .\n"
-"Un'unità curata può recuperare fino ad un massimo di 8 PF per turno.\n"
-"Un'unità curante può guarire fino a 18 PF per turno divisi tra le tutte le "
-"unità amiche di cui si occupa.\n"
-"Un curatore può rimuovere l'effetto del veleno  sulle altre unità, tuttavia "
-"le unità curate in questo modo non subiscono il ripristino dei PF."
+"L'unità di cui si è occupata il guaritore può recuperare fino a 4 PF per "
+"turno.\n"
+"Un guaritore può medicare fino ad 8 PF per turno, suddivisi tra tutte le "
+"unità di cui si occupa.\n"
+"Un'unità avvelenata non può essere curata dal veleno da un guaritore e dovrà "
+"cercare l'assistenza di un villaggio o di un'unità che abbia l'abilità "
+"'cura'."
 
 #: data/abilities.cfg:40
 msgid "cures"
@@ -412,7 +412,6 @@ msgid "swarm"
 msgstr "sciame"
 
 #: data/abilities.cfg:458
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -421,10 +420,10 @@ msgid ""
 "strikes."
 msgstr ""
 "Sciame:\n"
-"Il numero di colpi di questo attacco diminuisce quando questa unità è "
-"ferita. Il numero di colpi è proporzionale alla % di PF/Max PF che l'unità "
-"possiede. Per esempio un unità con 3/4 dei suoi massimi Punti Ferita "
-"otterrebbe 3/4 del numero di colpi."
+"Il numero di colpi di questo attacco diminuisce quando l'unità è ferita. Il "
+"numero di colpi è proporzionale alla % di PF/PF Max che l'unità possiede. "
+"Per esempio un unità con 3/4 dei suoi massimi punti ferita otterrebbe 3/4 "
+"del numero di colpi."
 
 #: data/abilities.cfg:464
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:28
@@ -1190,9 +1189,8 @@ msgstr "artigli"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:25
 #: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
 #: data/campaigns/Under_the_Burning_Suns.cfg:32
-#, fuzzy
 msgid "Current Maintainer"
-msgstr "Attuale obiettivo:"
+msgstr "Attuale Responsabile"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:85
@@ -1755,9 +1753,8 @@ msgstr "tocco"
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:43
 #: data/units/Undead_Necro_Ancient_Lich.cfg:70
 #: data/units/Undead_Necro_Lich.cfg:52
-#, fuzzy
 msgid "chill tempest"
-msgstr "onda di terrore"
+msgstr "tempesta fredda"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:146
@@ -2061,7 +2058,7 @@ msgstr "Strada di $name, Passo di $name,Percorso di $name"
 
 #: data/english.cfg:25
 msgid "$name River,River $name"
-msgstr "Fiume $name ,Fiume $name"
+msgstr "Fiume $name , Fiume $name"
 
 #: data/english.cfg:26
 msgid "$name Forest,$name's Forest"
@@ -3005,7 +3002,7 @@ msgid ""
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
 "\n"
-"Villagi: Un unità che inizia il turno dentro un villaggio recupera 8 PF."
+"Villaggi: Un unità che inizia il turno dentro un villaggio recupera 8 PF."
 
 #: data/help.cfg:218
 msgid ""
@@ -3452,7 +3449,6 @@ msgid "Forest"
 msgstr "Foresta"
 
 #: data/help.cfg:347
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3471,19 +3467,18 @@ msgstr ""
 "Le foreste rappresentano le zone boschive con una notevole quantità di "
 "sottobosco, abbastanza rigoglioso da rendere il passaggio difficile. Anche "
 "se le foreste rallentano quasi tutte le creature, in queste zone si ha una "
-"maggiore difesa rispetto alle zone aperte. La Cavalleria comunque ha molti "
-"problemi a muoversi attraverso la foresta. Gli Elfi sono l'eccezione alla "
+"maggiore difesa rispetto alle zone aperte. La cavalleria comunque ha molti "
+"problemi a muoversi attraverso la foresta. Gli elfi sono l'eccezione alla "
 "regola. Non solo riescono a muoversi con agilità attraverso le foreste, ma "
 "hanno un bonus significativo nella difesa. I Nani sono un altra eccezione; "
 "anche se riescono a muoversi nelle foreste senza diminuire troppo "
 "l'andatura, la loro scarsa conoscenza del terreno li rende molto vulnerabili "
 "agli attacchi.\n"
 "\n"
-"Gran parte delle unità hanno il 50% di difesa nelle foreste, ma la "
+"Gran parte delle unità ha il 50% di difesa nelle foreste, mentre la "
 "cavalleria ha il 40%. Gli Elfi, d'altro canto, godono del 60-70% di difesa, "
 "anche le loro unità a cavallo. I nani di solito hanno il 30% di difesa nelle "
-"foreste.\n"
-"<img>src=terrain/great-tree-tile.png align=middle box=no</img>"
+"foreste."
 
 #: data/help.cfg:353 data/terrain.cfg:318
 msgid "Hills"
@@ -3605,12 +3600,12 @@ msgid ""
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
 "Le Acque Profonde rappresentano massa d'acqua tanto profonda da coprire la "
-"testa di un uomo. La maggior parte delle untià non può attraversare le acque "
+"testa di un uomo. La maggior parte delle unità non può attraversare le acque "
 "profonde: essa è infatti il dominio delle unità che possono volare o che "
 "sono degli buoni nuotatori\n"
 "\n"
 "I Nereidi e le Naga ricevono ambedue il 50% di difesa nelle acque profonde, "
-"ed hanno massima gilità di movimento."
+"ed hanno massima libertà di movimento."
 
 #: data/help.cfg:403 data/terrain.cfg:302
 msgid "Snow"
@@ -4129,6 +4124,8 @@ msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
+"Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
+"Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -5014,8 +5011,8 @@ msgid ""
 msgstr ""
 "Il tuo Condottiero può reclutare o richiamare unità da qualsiasi fortezza "
 "dentro un castello e non solo dalla fortezza da cui inizia. Puoi conquistare "
-"un mantenimento di un  nemico e reclutare da lì. Inoltre, alcuni dei tuoi "
-"alleati potrebbero farti spazio nel loro mantenimento per farti reclutare "
+"una fortezza di un  nemico e reclutare da lì. Inoltre, alcuni dei tuoi "
+"alleati potrebbero farti spazio nella loro fortezza per farti reclutare "
 "unità."
 
 #: data/tips.cfg:20
@@ -5208,9 +5205,8 @@ msgstr ""
 "l'addestramento. È piuttosto difficile venire attaccati da una di esse."
 
 #: data/tutorial/units/Quintain.cfg:20
-#, fuzzy
 msgid "flail"
-msgstr "coda"
+msgstr "mazza"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -6230,7 +6226,7 @@ msgid ""
 "healing, though they can only delay the effects of poison, not cure them "
 "entirely."
 msgstr ""
-"Essnedo in parte fatati per natura, gli elfi hanno un'innata capacità per la "
+"Essendo in parte fatati per natura, gli elfi hanno un'innata capacità per la "
 "magia. Ciò si realizza grazie alla loro affinità con il mondo naturale, che "
 "essi richiamano come un alleato durante il combattimento. Nemici che vagano "
 "nelle loro foreste possono improvvisamente ritrovarsi intrappolati dalle "
@@ -6238,10 +6234,10 @@ msgstr ""
 "\n"
 "L'abilità di guarire degli elfi è degna di nota, e preziosa in battaglia.\n"
 "\n"
-"Note speciali: l'attacco rallentamento di uno shamano rallenta i nemici, "
-"dimezzandone il danno ed il fattore movimento. Gli sciamani sono in grado di "
+"Note speciali: l'attacco rallentamento di una sciamana rallenta i nemici, "
+"dimezzandone il danno ed il fattore movimento. Le sciamane sono in grado di "
 "fornire una guarigione di base, però possono solo ritardare gli effetti del "
-"veleno, non curarlo completamente."
+"veleno e non curarlo completamente."
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
@@ -6368,7 +6364,7 @@ msgstr ""
 "loro zampe.\n"
 "\n"
 "Note speciali: chiunque venga colpito dagli artigli di un lupo tremendo sarà "
-"avvelenato, e le vittime di tale veleno continueranno a subire danno finchè "
+"avvelenato, e le vittime di tale veleno continueranno a subire danno finché "
 "non saranno curate in città o da un guaritore."
 
 #: data/units/Goblin_Direwolf_Rider.cfg:39 data/units/Goblin_Knight.cfg:39
@@ -6440,9 +6436,9 @@ msgid ""
 "Special Notes: being caught in a net slows enemies down, halving their "
 "movement speed and attack damage."
 msgstr ""
-"Alcuni Goblin addestrano i loro lupi a superare la paura del fuoco. Nelle "
+"Alcuni goblin addestrano i loro lupi a superare la paura del fuoco. Nelle "
 "incursioni, questi goblin hanno un ruolo di supporto; essi incendiano le "
-"case e i raccolti dei loro nemici, inoltre portano con sè delle reti per "
+"case e i raccolti dei loro nemici, inoltre portano con sé delle reti per "
 "portare caos tra coloro che tentano una difesa o rappresaglia.\n"
 "\n"
 "Note speciali: i nemici catturati in una rete vengono rallentati e dimezzano "
@@ -6680,7 +6676,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Note Speciali: La carica dei Lanciari raddoppia sia il danno inflitto che "
+"Note Speciali: La carica dei Lancieri raddoppia sia il danno inflitto che "
 "quello ricevuto. Ciò non modifica le percentuali difensive."
 
 #: data/units/Human_Horse_Paladin.cfg:3
@@ -6883,15 +6879,15 @@ msgstr ""
 "volte spingerli a una precipitosa dimostrazione del loro diritto di "
 "nascita.\n"
 "\n"
-"Schermidori esperti, che spesso aspirano alla nobiltà se non sempre di "
-"nobile origine, portano con sè una piccola balestra che può essere "
+"Schermitori esperti, che spesso aspirano alla nobiltà se non sempre di "
+"nobile origine, portano con sé una piccola balestra che può essere "
 "facilmente celata sotto un cappotto o un mantello. Lenta da caricare e "
 "spesso disonorevole da utilizzare, è in realtà molto utile, e quelli del "
 "loro rango che vivono abbastanza da diventare veterani tipicamente vi "
 "riescono facendo concessioni per comodità e sopravvivenza.\n"
 "\n"
 "Note speciali: la loro abilità di impegnarsi in una schermaglia permette a "
-"questi schermidori di balzare al di là di un avversario, ignorando le zone "
+"questi schermitori di balzare al di là di un avversario, ignorando le zone "
 "di controllo."
 
 #: data/units/Human_Loyalist_Duelist.cfg:75
@@ -6924,13 +6920,13 @@ msgstr ""
 "armature che la maggior parte dei soldati vestono in combattimento "
 "rappresentano il loro peggior nemico. Mentre le armature possono solo "
 "attenuare un colpo, schivarlo ne annullerebbe completamente gli effetti. "
-"Esseere in grado di evitare ogni mossa offensiva è un lusso che solo un "
-"corpo in forma può permettersi, e quindi solo coloro che seguono un rigoroso "
+"Essere in grado di evitare ogni mossa offensiva è un lusso che solo un corpo "
+"in forma può permettersi, e quindi solo coloro che seguono un rigoroso "
 "addestramento.\n"
 "\n"
-"Armati solamente di daga e spadino, gli spadaccini legegri sui propri piedi "
+"Armati solamente di daga e spadino, gli spadaccini leggeri sui propri piedi "
 "ed utili in molte situazioni dove i loro compagni legati alle armature sono "
-"in difficoltà. Essi amano, spesso letteralmente, dancare in cerchio attorno "
+"in difficoltà. Essi amano, spesso letteralmente, danzare in cerchio attorno "
 "a truppe come la fanteria pesante, schernendoli del prezzo che pagano per la "
 "loro armatura.\n"
 "\n"
@@ -7011,8 +7007,8 @@ msgstr ""
 "colpire, 2 in più di una lancia o di una picca; queste sono la punta, la "
 "lama, l'arpione alla base dell'impugnatura, e il punto più interno della "
 "lama, che può essere usato con un movimento verso colui che la impugna. "
-"Tutto ciò la rende un arma molto versatile nelle mische, specialmente contro "
-"la cavalleria.\n"
+"Tutto ciò la rende un arma molto versatile nelle mischie, specialmente "
+"contro la cavalleria.\n"
 "\n"
 "Tuttavia una alabarda è molto più costosa da realizzare rispetto ad una "
 "lancia, e in mani inesperte, molto meno efficace. Nelle armate di Wesnoth, è "
@@ -7118,7 +7114,7 @@ msgid ""
 "level."
 msgstr ""
 "Capace con le spade e le balestre il tenente guida piccoli gruppi di soldati "
-"umani, coordinado i loro attacchi.\n"
+"umani, coordinando i loro attacchi.\n"
 "\n"
 "Note Speciali: il comando di un Tenente rende le unità alleate più "
 "efficienti in combattimento, ciò è applicato esclusivamente alle unità di "
@@ -7319,7 +7315,7 @@ msgstr ""
 "spesa troppo onerosa. Le lance sono più facili da forgiare e funzionano bene "
 "anche senza pensare, inoltre molti possono permetterseli. Vestiti di "
 "armature di pelle e spesso equipaggiati di uno scudo e alcuni giavellotti, i "
-"lanciari sono le fondamenta di molti eserciti e spesso vengono schierati "
+"lancieri sono le fondamenta di molti eserciti e spesso vengono schierati "
 "dopo un misero addestramento di base.\n"
 "\n"
 "Note Speciali: la lunghezza delle loro armi permette ai lancieri di colpire "
@@ -7375,8 +7371,8 @@ msgstr ""
 "Gli umani hanno spesso riflettuto su come funzioni il mondo in cui vivono. "
 "Alcuni si sforzano di elevare le oziose riflessioni per impostarle come "
 "principale impresa per la loro vita. I maghi hanno dedicato numerosi anni "
-"allo studio e hanno accumulato tanta conoscenza da contradistinguerli. In un "
-"mondo dove solo poche persone sanno leggere e scrivere, questi uomini e "
+"allo studio e hanno accumulato tanta conoscenza da contraddistinguerli. In "
+"un mondo dove solo poche persone sanno leggere e scrivere, questi uomini e "
 "queste donne hanno sacrificato la loro intera vita all'inseguimento della "
 "conoscenza. Le loro classi sono piene di bambini dalle nobili speranze, o di "
 "coloro che cercavano una fuga dal vuoto intellettuale prodotto dai lavori di "
@@ -7496,7 +7492,7 @@ msgstr ""
 "una elevata probabilità di colpire il nemico. Questa luce infligge enormi "
 "danni ai non-morti e spesso anche ad alcune creature viventi. I Maghi della "
 "Luce sono capaci di guarire le unità vicine e possono curare gli effetti del "
-"veleno. Possiedono anche il potere dell'Illuminazione che aumenta il grado "
+"veleno. Possiedono anche il potere dell'illuminazione che aumenta il grado "
 "di luce nell'area circostante al mago."
 
 #: data/units/Human_Mage_of_Light.cfg:103
@@ -7652,7 +7648,7 @@ msgstr ""
 "Il condottiero di un gruppo di ladri guadagna la sua posizione grazie alle "
 "sue capacità. Questi banditi hanno passato molti momenti spiacevoli "
 "sgattaiolando attraverso la gente e schivando coloro che potevano essere "
-"pericolosi, guadagnado così una serie di abilità molto utili in battaglia. "
+"pericolosi, guadagnando così una serie di abilità molto utili in battaglia. "
 "Maestri con i coltelli, possono lanciarli con impressionante precisione, e "
 "le lunghe ore passate a vagare furtivamente nel cuore nella notte li hanno "
 "resi più abili nel combattimento notturno.\n"
@@ -7702,7 +7698,7 @@ msgstr "Ladra"
 
 #: data/units/Human_Outlaw_Thug.cfg:3
 msgid "Thug"
-msgstr "Strangolatore"
+msgstr "Scagnozzo"
 
 #: data/units/Human_Outlaw_Thug.cfg:16
 msgid ""
@@ -7712,12 +7708,11 @@ msgid ""
 "sustenance. Regardless of their background, they all share the practice of "
 "beating their victims with large clubs."
 msgstr ""
-"Gli Strangolatori provengo da una grande varietà di zone; alcuni sono nati "
-"da altri strangolatori, altri sono soldati stanchi di servire l'esercito, "
-"altri ancora sono contadini che hanno abbandonato le loro terre. Essi "
-"diventano rapidamente Strangolatori per procurarsi del cibo e dei vestiti. A "
-"prescindere dal loro passato tutti utilizzano grosse clave per combattere i "
-"nemici."
+"Gli scagnozzi provengo da una grande varietà di zone; alcuni sono nati da "
+"altri strangolatori, altri sono soldati stanchi di servire l'esercito, altri "
+"ancora sono contadini che hanno abbandonato le loro terre. Essi diventano "
+"rapidamente scagnozzi per procurarsi del cibo e dei vestiti. A prescindere "
+"dal loro passato tutti utilizzano grosse clave per combattere i nemici."
 
 #: data/units/Human_Outlaw_Trapper.cfg:3
 msgid "Trapper"
@@ -7754,7 +7749,7 @@ msgstr "Forcone"
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
-msgstr "Nereide Divinatrice"
+msgstr "Nereide divinatrice"
 
 #: data/units/Mermaid_Diviner.cfg:24
 msgid ""
@@ -7771,23 +7766,23 @@ msgid ""
 "power of Illumination, which increases the lighting level in the area "
 "adjacent to the mermaid."
 msgstr ""
-"Le Sacerdotesse Nereidi seguono la loro vocazione con un fervore tale che "
+"Le sacerdotesse nereidi seguono la loro vocazione con un fervore tale che "
 "lascia le loro controparti umane attonite. Tutto ciò potrebbe trarre origine "
-"da una leggenda che raccontano, parlando di un senzanome, oscuro orrore che "
-"nel passato distrusse il loro popolo. Sebbene si sappia poco a riguardo è "
-"chiaro che in qualche modo fu il potere della luce a sconfiggerlo e salvare "
-"la loro gente. \n"
+"da una leggenda che raccontano, parlando di un  oscuro orrore senza nome, "
+"che nel passato distrusse il loro popolo. Sebbene si sappia poco a riguardo "
+"è chiaro che in qualche modo fu il potere della luce a sconfiggerlo e "
+"salvare la loro gente. \n"
 "\n"
 "Note Speciali: La Luce lanciata da un divinatore è di origina magica ed ha "
 "sempre un'alta probabilità di colpire l'avversario. Questa luce infligge "
 "danni tremendi ai non-morti e spesso anche alle creature viventi. I "
 "Divinatori possono guarire le unità vicine e curare gli effetti del veleno. "
-"Infine hanno il potere dell'Illuminazione che aumenta il livello di "
+"Infine hanno il potere dell'illuminazione che aumenta il livello di "
 "luminosità nell'area adiacente alla Nereide."
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
-msgstr "Nereide Incantarice"
+msgstr "Nereide incantarice"
 
 #: data/units/Mermaid_Enchantress.cfg:20
 msgid ""
@@ -7806,7 +7801,7 @@ msgstr ""
 "controllano questa abilità sono tenute in grande considerazione e le loro "
 "abilità vengono utilizzate in una moltitudine di impieghi, molti dei quali "
 "sono al di là dei sogni umani. L'utilizzo in guerra di tali abilità è "
-"vietato contro la loro stezza razza - questo potere in parte serve a "
+"vietato contro la loro stessa razza - questo potere in parte serve a "
 "proteggere le loro genti dai mostri che infestano gli abissi.\n"
 "\n"
 "Note Speciali: L'esplosione d'acqua evocata dalle nereidi è un attacco "
@@ -7819,7 +7814,7 @@ msgstr "spruzzo d'acqua"
 
 #: data/units/Mermaid_Initiate.cfg:3
 msgid "female^Mermaid Initiate"
-msgstr "Nereide Iniziata"
+msgstr "Nereide iniziata"
 
 #: data/units/Mermaid_Initiate.cfg:22
 msgid ""
@@ -7848,7 +7843,7 @@ msgstr ""
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
-msgstr "Nereide Sacerdotessa"
+msgstr "Nereide sacerdotessa"
 
 #: data/units/Mermaid_Priestess.cfg:22
 msgid ""
@@ -7916,11 +7911,11 @@ msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:35
 msgid "naia touch"
-msgstr "tocco del Naia"
+msgstr "tocco del naia"
 
 #: data/units/Merman_Entangler.cfg:3
 msgid "Merman Entangler"
-msgstr "Nereide Intrappolatore"
+msgstr "Nereide intrappolatrice"
 
 #: data/units/Merman_Entangler.cfg:20
 msgid ""
@@ -7933,10 +7928,10 @@ msgid ""
 "Special Notes: being caught in a net slows enemies down, halving their "
 "movement speed and attack damage."
 msgstr ""
-"Le pesanti reti usate dalle Nereidi durante la battaglia sono armi difficili "
+"Le pesanti reti usate dalle nereidi durante la battaglia sono armi difficili "
 "da usare correttamente; coloro che ci riescono sono apprezzate dalle loro "
-"compagne. Questa arma aiuta a capire la netta superiorità delle Nereidi nel "
-"loro elemento, e rende la loro razza una minaccia per i nemici che si "
+"compagne. Questa arma aiuta a capire la netta superiorità delle nereidi nel "
+"loro elemento e rende la loro razza una minaccia per i nemici che si "
 "avvicinano alle acque.\n"
 "\n"
 "Note Speciali: quando un nemico viene imprigionato da una rete esso viene "
@@ -7945,14 +7940,14 @@ msgstr ""
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
-msgstr "Nereide Combattente"
+msgstr "Nereide combattente"
 
 #: data/units/Merman_Fighter.cfg:17
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but struggle greatly to move on land."
 msgstr ""
-"Capaci creature del mare, i Nereidi sono potenti e veloci in tutti gli "
+"Capaci creature del mare, i nereidi sono potenti e veloci in tutti gli "
 "ambienti acquatici, ma faticano notevolmente nel muoversi sulla terra"
 
 #: data/units/Merman_Fighter.cfg:31 data/units/Merman_Hoplite.cfg:47
@@ -7963,7 +7958,7 @@ msgstr "tridente"
 
 #: data/units/Merman_Hoplite.cfg:3
 msgid "Merman Hoplite"
-msgstr "Nereide Oplite"
+msgstr "Nereide oplite"
 
 #: data/units/Merman_Hoplite.cfg:19
 msgid ""
@@ -7972,15 +7967,15 @@ msgid ""
 "steadfast line against the rages of battle. In times of desperation, they "
 "can even do so on land, though not nearly as well as a creature with legs."
 msgstr ""
-"Con i loro scudi a torre le Nereidi Oplite formano una guardia elitaria nel "
+"Con i loro scudi a torre le nereidi oplite formano una guardia elitaria nel "
 "regno acquatico. Le loro potenti armature e la loro rigida disciplina "
-"permette loro di mantenere le fila durante battaglie fuoriose. In casi "
+"permette loro di mantenere le fila durante battaglie furiose. In casi "
 "disperati posso anche combattere sulla terraferma, ovviamente nemmeno "
 "lontanamente bene come le creature dotate di gambe."
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
-msgstr "Nereide Cacciatore"
+msgstr "Nereide cacciatrice"
 
 #: data/units/Merman_Hunter.cfg:17
 msgid ""
@@ -7989,14 +7984,14 @@ msgid ""
 "of need, many mermen of that occupation will volunteer to swell the ranks of "
 "their military."
 msgstr ""
-"L'abilità impiegata dalle Nereidi per arpionare il pesce è facilmente "
+"L'abilità impiegata dalle nereidi per arpionare il pesce è facilmente "
 "trasportata ed adattata alle battaglie, specialmente contro le creature che "
-"normalmente non vivono in acqua. In caso di necessità, molte Nereidi "
-"pescatrici si offrono volontarie per unirsi alla milizia."
+"normalmente non vivono in acqua. In caso di necessità, molte nereidi si "
+"offrono volontarie per unirsi alla milizia."
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
-msgstr "Nereide Giavellottiere"
+msgstr "Nereide giavellottiera"
 
 #: data/units/Merman_Javelineer.cfg:18
 msgid ""
@@ -8005,15 +8000,15 @@ msgid ""
 "impact of one is considerably greater. In the water, the mobility of the "
 "mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
-"Le Nereidi che controllano l'arte del giavellotto possono efficaci quasi "
-"come arcieri - tuttavia, anche se la natura delle loro armi limita il loro "
-"raggio d'azione, l'impatto di uno di essi è considerevolmente potente. In "
-"acqua, la mobilità delle Nereidi le rende avversarie temibili contro coloro "
-"che non sanno nuotare."
+"Le nereidi che controllano l'arte del giavellotto possono essere efficaci "
+"quasi come gli arcieri - tuttavia, anche se la natura delle loro armi limita "
+"il loro raggio d'azione, l'impatto di uno di essi è considerevolmente più  "
+"potente. In acqua, la mobilità delle nereidi le rende avversarie temibili "
+"contro coloro che non sanno nuotare."
 
 #: data/units/Merman_Netcaster.cfg:3
 msgid "Merman Netcaster"
-msgstr "Nereide Intrappolatore"
+msgstr "Nereide lanciareti"
 
 #: data/units/Merman_Netcaster.cfg:19
 msgid ""
@@ -8029,13 +8024,13 @@ msgid ""
 "Special Notes: being caught in a net slows enemies down, halving their "
 "movement speed and attack damage."
 msgstr ""
-"La pesca, nel modo in cui la praticano le Nereidi, consiste principalmente "
+"La pesca, nel modo in cui la praticano le nereidi, consiste principalmente "
 "nel condurre dei banchi di pesce verso le reti in attesa. Queste reti non "
 "sono molto pericolose, ma possono essere usate con grande efficacia contro "
 "le truppe che provano a guadare un fiume. Più piccole, le reti con i piombi "
 "possono essere lanciate in aria; poiché questo tipo di rete non è stato "
 "pensato per i periodi pacifici, è molto efficace nei combattimenti. Le "
-"Nereidi usano questo tipo di arma sia per immobilizzare le truppe in acqua, "
+"nereidi usano questo tipo di arma sia per immobilizzare le truppe in acqua, "
 "sia sulla terra per rallentare le truppe che altrimenti sarebbero "
 "avvantaggiate.\n"
 "\n"
@@ -8044,7 +8039,7 @@ msgstr ""
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
-msgstr "Nereide Lanciere"
+msgstr "Nereide lanciera"
 
 #: data/units/Merman_Spearman.cfg:17
 msgid ""
@@ -8086,13 +8081,13 @@ msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."
 msgstr ""
-"I Nereidi Guerrieri formano il cuore delle armate Nereidi. Maneggiando i "
+"I Nereidi Guerrieri formano il cuore delle armate nereidi. Maneggiando i "
 "loro potenti tritoni, son la una rovina per chiunque osi entrare nelle loro "
 "acque."
 
 #: data/units/Monster_Cave_Spider.cfg:3
 msgid "Giant Spider"
-msgstr "Ragno Gigante"
+msgstr "Ragno gigante"
 
 #: data/units/Monster_Cave_Spider.cfg:16
 msgid ""
@@ -8110,7 +8105,7 @@ msgstr "ragnatela"
 
 #: data/units/Monster_Cuttle_Fish.cfg:3
 msgid "Cuttle Fish"
-msgstr "Piovra Gigante"
+msgstr "Piovra gigante"
 
 #: data/units/Monster_Cuttle_Fish.cfg:16
 msgid ""
@@ -8119,8 +8114,8 @@ msgid ""
 "distance. The best way to survive an encounter with these monsters is to "
 "remain ashore."
 msgstr ""
-"Le Piovre Giganti sono gigantesche creature dei mari. Possono afferrare i "
-"loro avversari con potenti tentacoli, o spruzzare dalla distanza un velenoso "
+"Le piovre giganti sono gigantesche creature dei mari. Possono afferrare i "
+"loro avversari con potenti tentacoli o spruzzare dalla distanza un velenoso "
 "inchiostro nero. Il modo migliore per sopravvivere ad un incontro con questi "
 "mostri è quello di rimanere sulla spiaggia."
 
@@ -8134,7 +8129,7 @@ msgstr "inchiostro"
 
 #: data/units/Monster_Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
-msgstr "Fanghiglia Gigante"
+msgstr "Fanghiglia gigante"
 
 #: data/units/Monster_Giant_Mudcrawler.cfg:16
 msgid ""
@@ -8142,7 +8137,7 @@ msgid ""
 "constructs of soil and water. They attack by belching lumps of mud at their "
 "foes, or by slapping them with their fists."
 msgstr ""
-"Le Fanghiglie Giganti sono il tipo più grande di Fanghiglia e sono dei "
+"Le fanghiglie giganti sono il tipo più grande di fanghiglia e sono dei "
 "costrutti magici di suolo ed acqua. Queste creature attaccano spruzzando "
 "pezzi di fango verso i loro nemici, o colpendoli con i loro pugni. "
 
@@ -8150,7 +8145,7 @@ msgstr ""
 #: data/units/Troll_Rocklobber.cfg:27 data/units/Troll_Whelp.cfg:26
 #: data/units/Undead_Skeleton_Archer.cfg:34
 msgid "fist"
-msgstr "Pugno"
+msgstr "pugno"
 
 #: data/units/Monster_Giant_Mudcrawler.cfg:87
 #: data/units/Monster_Mudcrawler.cfg:50
@@ -8159,7 +8154,7 @@ msgstr "pozza di fango"
 
 #: data/units/Monster_Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
-msgstr "Scorpione Gigante"
+msgstr "Scorpione gigante"
 
 #: data/units/Monster_Giant_Scorpion.cfg:17
 msgid ""
@@ -8171,7 +8166,7 @@ msgstr ""
 
 #: data/units/Monster_Giant_Scorpion.cfg:28
 msgid "sting"
-msgstr "Pungiglione"
+msgstr "pungiglione"
 
 #: data/units/Monster_Giant_Scorpion.cfg:55
 msgid "pincers"
@@ -8186,7 +8181,7 @@ msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
-"Le Fanghiglie sono dei costrutti magici di sabbia ed acqua. Attaccano "
+"Le fanghiglie sono dei costrutti magici di sabbia ed acqua. Attaccano "
 "spruzzando dei getti di fango bollente contro i loro avversari."
 
 #: data/units/Monster_Sea_Serpent.cfg:3
@@ -8208,7 +8203,7 @@ msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
 "below the waves."
 msgstr ""
-"I Tentacoli dal Profondo sono delle appendici di qualche mostro più grande "
+"I tentacoli dal Profondo sono delle appendici di qualche mostro più grande "
 "che si nasconde sott'acqua"
 
 #: data/units/Monster_Yeti.cfg:3
@@ -8221,13 +8216,13 @@ msgid ""
 "snow-covered mountains. Few profess to have seen one, and their existence is "
 "doubted by many."
 msgstr ""
-"Gli Yeti sono gigantesche creature umanoidi che vivono sulle montagne "
+"Gli yeti sono gigantesche creature umanoidi che vivono sulle montagne "
 "innevate. Sono in pochi ad affermare di averne visto uno tanto che la loro "
 "esistenza è considerata una legenda."
 
 #: data/units/Naga_Fighter.cfg:3
 msgid "Naga Fighter"
-msgstr "Naga Guerriera"
+msgstr "Naga guerriera"
 
 #: data/units/Naga_Fighter.cfg:18
 msgid ""
@@ -8331,7 +8326,7 @@ msgstr "Mannaia"
 
 #: data/units/Ogre_Young.cfg:3
 msgid "Young Ogre"
-msgstr "Giovane Ogre"
+msgstr "Giovane ogre"
 
 #: data/units/Ogre_Young.cfg:15
 msgid ""
@@ -8527,9 +8522,9 @@ msgid ""
 "powerful fighters. Their natural leadership skills make them very precious "
 "in battle: if the Sovereign is lost, so is the battle."
 msgstr ""
-"Gli Orchi Sovrani sono i capi delle loro tribù. Sono cololoro che prendeno "
-"le decisioni più importanti e guidano i loro uomini in battaglia. Sono "
-"equipaggiati con archi che utilizzano in caso di necesità, ma sono "
+"Gli Orchi Sovrani sono i capi delle loro tribù. Sono coloro che prendono le "
+"decisioni più importanti e guidano i loro uomini in battaglia. Sono "
+"equipaggiati con archi che utilizzano in caso di necessità, ma sono "
 "decisamente più abili nel combattimento con la spada; sono potenti "
 "combattenti. La loro naturale capacità di condottieri li rende preziosi in "
 "battaglia: se il Sovrano viene sconfitto la battaglia è persa."
@@ -8685,7 +8680,7 @@ msgstr ""
 "dall'energia che si cela dietro alla loro innaturale vitalità e forza. Un "
 "troll adulto che si trova di fronte ad un uomo, è una minaccia pericolosa "
 "anche se disarmato. Le tipiche clave che i troll amano usare per combattere "
-"vengono usate come estenzioni delle loro braccia, usate per sottometere i "
+"vengono usate come estensioni delle loro braccia, usate per sottomettere i "
 "loro nemici.\n"
 "\n"
 "Note Speciali: I Troll possiedono l'abilità di rigenerarsi e si curano come "
@@ -8872,18 +8867,18 @@ msgid ""
 "poison will continually take damage until they can be cured in town or by a "
 "unit which cures."
 msgstr ""
-"Solamente coloro che si sono addentrati nei cerchi della necromanzia sanno "
+"Solamente coloro che si sono addentrati nei cerchi della negromanzia sanno "
 "cosa debba essere fatto per trasformare un uomo in un divoratore di "
 "cadaveri, ed è un segreto che essi non svelano. Qualunque inenarrabile rito "
 "essi abbiano compiuto, il risultato è una bestia che non ricorda niente dei "
 "suoi giorni da essere umano, una creatura che vaga nuda come quando nacque, "
 "e divora le carni dei morti.\n"
 "\n"
-"Ed è proprio a causa di ciò che la necromanzia viene condannata con un odio "
+"Ed è proprio a causa di ciò che la negromanzia viene condannata con un odio "
 "primordiale.\n"
 "\n"
 "Note speciali: gli artigli di un divoratore di cadaveri sono ricoperti di "
-"veleno, e le vittime di questo veleno continueranno a subire danno finchè "
+"veleno, e le vittime di questo veleno continueranno a subire danno finché "
 "non saranno curate in una città o da un guaritore."
 
 #: data/units/Undead_Corpse_Necrophage.cfg:3
@@ -8982,7 +8977,7 @@ msgstr ""
 "Per attirare un qualsiasi praticante, la tentazione della magia nera deve "
 "avere sicuramente una grande ricompensa, in quanto chiunque venga sorpreso a "
 "praticare tale arte nel mondo civilizzato è soggetto alla pena di morte. E "
-"tuttavia ci sono ancora persone che inseguono tale arte, poichè il premio "
+"tuttavia ci sono ancora persone che inseguono tale arte, poiché il premio "
 "offerto è niente di meno che l'immortalità. Nascosti in culti segreti, o "
 "iniziati dagli oscuri ordini del mondo sotterraneo, l'addestramento a cui "
 "questi fanatici si sottopongono spesso li spinge a sfinimento e "
@@ -9046,7 +9041,7 @@ msgstr ""
 "l'immortalità. Per diventare Lich bisogna fregare la morte. Solo la mente "
 "continua a vivere, e gli spiriti seguaci, ma il corpo viene distrutto.\n"
 "\n"
-"Nessuno sa, eccetto i necromanti, se la vita viene prolungata all'infinito o "
+"Nessuno sa, eccetto i negromanti, se la vita viene prolungata all'infinito o "
 "se essa viene solo allungata. Anche se fosse solo allungata sarebbe solo un "
 "piccolo tributo in confronto alla soddisfazione di aver ottenuto tale "
 "scopo.\n"
@@ -9152,7 +9147,7 @@ msgid ""
 "their past. Such questions aside, a Revenant is a powerful tool in combat: a "
 "fearless warrior that feels no pain, and which will fight to the bitter end."
 msgstr ""
-"Fornite di una falsa vita per combattare nuovamente, le creature chiamate "
+"Fornite di una falsa vita per combattere nuovamente, le creature chiamate "
 "Squartatori erano chiaramente dei valorosi guerrieri un tempo, tuttavia la "
 "loro memoria è andata perduta. Anche gli stregoni che li riportano in vita "
 "possono solo speculare sul loro passato. Tralasciando queste domande, gli "
@@ -9234,7 +9229,7 @@ msgstr ""
 "negromante può fare di essa sono realmente terrificanti.\n"
 "\n"
 "Intrappolato in un manto di disgustoso maleficio, lo spettro è come il vento "
-"impriggionato tra le vele di una nave. Ciò che ne risulta da questa prigione "
+"imprigionato tra le vele di una nave. Ciò che ne risulta da questa prigione "
 "è un servo fidato, che può svolgere qualunque compito il suo maestro pensi "
 "gli si addica.\n"
 "\n"
@@ -9264,12 +9259,12 @@ msgid ""
 "damage, and move quite slowly over open water. Nightgaunts are able to hide "
 "at night, leaving no trace of their presence."
 msgstr ""
-"Nessuno conosce il motivo per cui queste creature indossano le loro masche, "
-"ed il loro contenuto è del tutto oscuro. Queste creature terribili sono "
-"state viste raramente dai vivi, e coloro che ne hanno raccontato le storie "
-"non hanno avuto modo di studiare questo nemico.\n"
+"Nessuno conosce il motivo per cui queste creature indossano le loro "
+"maschere, ed il loro contenuto è del tutto oscuro. Queste creature terribili "
+"sono state viste raramente dai vivi, e coloro che ne hanno raccontato le "
+"storie non hanno avuto modo di studiare questo nemico.\n"
 "\n"
-"Note Speciali: quando un'unità della stessa alleanza della Presenza Nottura "
+"Note Speciali: quando un'unità della stessa alleanza della Presenza nottura "
 "distrae un nemico, la Presenza Notturna può attaccare il nemico alle spalle, "
 "infliggendo il doppio dei danni. Le Presenze Notturne hanno un'insolita "
 "resistenza ai danni e si muovono molto lentamente in acqua. Le Presenze "
@@ -9296,10 +9291,10 @@ msgid ""
 msgstr ""
 "Quando la luce illuminò il mondo delineando e mostrando ciò che era "
 "sconosciuto, la paura fu costretta a ritirarsi nell'oscurità. Da quel giorno "
-"le Ombre del mondo hanno trattenuto il terrore dell'umanià, anche se non se "
+"le Ombre del mondo hanno trattenuto il terrore dell'umanità, anche se non se "
 "ne conosce il motivo.\n"
 "\n"
-"Questa è una domanda a cui potrebbe rispondere facilmente un necromante.\n"
+"Questa è una domanda a cui potrebbe rispondere facilmente un negromante.\n"
 "\n"
 "Note Speciali: quando un'unità alleata dell'Ombra distrae un nemico, essa è "
 "in grado di colpire l'avversario alle spalle infliggendo il doppio dei "
@@ -9396,7 +9391,7 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
-"Anche gli elfi hanno visto raramente i Wose, un tipo di creatura di cui si "
+"Anche gli elfi hanno visto raramente i wose, un tipo di creatura di cui si "
 "sa davvero poco. Il maggior numero di informazioni proviene dagli elfi; "
 "sanno che queste creature non discendono dagli alberi, nonostante la loro "
 "somiglianza, e sanno che un wose è più legato degli stessi elfi al regno "
@@ -9409,7 +9404,7 @@ msgstr ""
 "\n"
 "Note Speciali: I Wose si rigenerano utilizzando le risorse naturali che li "
 "circondano, non hanno perciò bisogno di posizionarsi nei villaggi per "
-"ottenere sotegno ed aiuto."
+"ottenere sostegno ed aiuto."
 
 #: data/units/Wose.cfg:35 data/units/Wose_Ancient.cfg:29
 #: data/units/Wose_Elder.cfg:28
@@ -9470,9 +9465,9 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
-"Si dice che gli Wose posseggano molte forme, tutte quante a forma di albero, "
-"e che crescono di  dimensione con l'avanzare dell'età. Le storie raccontano "
-"di wose che somigliano ad alberi che sovrastano le creature che camminano ai "
+"Si dice che i Wose posseggano molte forme, tutte quante a forma di albero, e "
+"che crescono di  dimensione con l'avanzare dell'età. Le storie raccontano di "
+"wose che somigliano ad alberi che sovrastano le creature che camminano ai "
 "loro piedi. Questa è la parte migliore del perchè è così raro vederli - "
 "quando si assopisce e ciò avviene spesso, un wose di tale statura sembra "
 "essere niente di più che un albero dalla strana forma. Anche un elfo incauto "
@@ -9482,8 +9477,8 @@ msgstr ""
 "capace di offesa, se qualcuno riuscisse a scatenare l'ira di queste "
 "creature.\n"
 "\n"
-"Note speciali: gli Wose si rigenerando attingendo alle risorse naturali che "
-"li circondano senza bisogno di recarsi ad un villaggio per ottenere "
+"Note speciali: I wose si rigenerando attingendo alle risorse naturali che li "
+"circondano senza bisogno di recarsi ad un villaggio per ottenere "
 "sostentamento e aiuto."
 
 #: src/about.cpp:32
@@ -9679,11 +9674,11 @@ msgstr "Inizia Scenario"
 
 #: src/dialogs.cpp:402
 msgid "Difficulty: "
-msgstr "Difficoltà:"
+msgstr "Difficoltà: "
 
 #: src/dialogs.cpp:404
 msgid "Version: "
-msgstr "Versione:"
+msgstr "Versione: "
 
 #: src/dialogs.cpp:428 src/dialogs.cpp:444
 msgid "%b %d %y"
@@ -9773,15 +9768,15 @@ msgstr "Livello"
 
 #: src/dialogs.cpp:738 src/help.cpp:1141
 msgid "HP: "
-msgstr "PF:"
+msgstr "PF: "
 
 #: src/dialogs.cpp:742 src/dialogs.cpp:750
 msgid "XP: "
-msgstr "PE:"
+msgstr "PE: "
 
 #: src/dialogs.cpp:755 src/help.cpp:1142
 msgid "Moves: "
-msgstr "Mosse:"
+msgstr "Mosse: "
 
 #: src/display.cpp:529
 msgid "Screenshot"
@@ -9794,8 +9789,8 @@ msgstr "The Battle for Wesnoth"
 #: src/game.cpp:625
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
-"Avviso; Il file che hai provato a caricare è danneggiato. Cerco di caricarlo "
-"comunque.\n"
+"Attenzione: Il file che hai provato a caricare è danneggiato. Cerco di "
+"caricarlo comunque.\n"
 
 #: src/game.cpp:647 src/multiplayer_connect.cpp:1043
 msgid ""
@@ -9807,7 +9802,7 @@ msgstr ""
 
 #: src/game.cpp:655 src/game.cpp:658 src/multiplayer_connect.cpp:1028
 msgid "The file you have tried to load is corrupt: '"
-msgstr "Il file che hai provato a caricare è danneggiato"
+msgstr "Il file che hai provato a caricare è danneggiato: '"
 
 #: src/game.cpp:661
 msgid "File I/O Error while reading the game"
@@ -9999,7 +9994,7 @@ msgstr "Gioca una partita contro il Computer"
 
 #: src/game.cpp:1154 src/multiplayer.cpp:189
 msgid "Login: "
-msgstr "Login:"
+msgstr "Login: "
 
 #: src/game.cpp:1156
 msgid ""
@@ -10011,7 +10006,7 @@ msgstr ""
 
 #: src/game.cpp:1190 src/playcampaign.cpp:113 src/playcampaign.cpp:272
 msgid "The game could not be loaded: "
-msgstr "La partita non può essere caricata:"
+msgstr "La partita non può essere caricata: "
 
 #: src/game.cpp:1192 src/playcampaign.cpp:115 src/playcampaign.cpp:275
 msgid "Error while playing the game: "
@@ -10019,7 +10014,7 @@ msgstr "Errore mentre si gioca la partita: "
 
 #: src/game.cpp:1204 src/playcampaign.cpp:117 src/playcampaign.cpp:278
 msgid "The game map could not be loaded: "
-msgstr "La mappa non può essere caricata"
+msgstr "La mappa non può essere caricata: "
 
 #: src/game.cpp:1228
 msgid "Language"
@@ -10040,7 +10035,8 @@ msgstr "DETTAGLI SULL'ERRORE:"
 
 #: src/game.cpp:1384
 msgid "Warning: Errors occurred while loading game configuration files: '"
-msgstr "Avviso: Errore durante il caricamento dei files di configurazione: '"
+msgstr ""
+"Attenzione: Errore durante il caricamento dei files di configurazione: '"
 
 #: src/game.cpp:1434
 msgid "Error loading game configuration files: '"
@@ -10068,24 +10064,24 @@ msgstr "Impossibile scrivere su file"
 
 #: src/help.cpp:1103
 msgid "Advances to: "
-msgstr "Avanza come:"
+msgstr "Avanza come: "
 
 #: src/help.cpp:1124
 msgid "Abilities: "
-msgstr "Abilità:"
+msgstr "Abilità: "
 
 #: src/help.cpp:1143
 #, fuzzy
 msgid "Cost: "
-msgstr "Mosse:"
+msgstr "Mosse: "
 
 #: src/help.cpp:1144
 msgid "Alignment: "
-msgstr "Allineamento:"
+msgstr "Allineamento: "
 
 #: src/help.cpp:1150
 msgid "Required XP: "
-msgstr "PE Richiesti:"
+msgstr "PE Richiesti: "
 
 #: src/help.cpp:1159 src/reports.cpp:252
 msgid "attacks"
@@ -10182,7 +10178,7 @@ msgstr "Avanti >"
 
 #: src/help.cpp:2373
 msgid "Reference to unknown topic: "
-msgstr "Riferimento ad un argomento sconosciuto:"
+msgstr "Riferimento ad un argomento sconosciuto: "
 
 #: src/help.cpp:2748
 msgid "The Battle for Wesnoth Help"
@@ -10251,7 +10247,7 @@ msgstr "Danni Inflitti (EV)"
 
 #: src/menu_events.cpp:88 src/playturn.cpp:2534
 msgid "Damage Taken (EV)"
-msgstr "Danni Subiti (EV)"
+msgstr "Danni subiti (EV)"
 
 #: src/menu_events.cpp:94 src/playturn.cpp:2540
 msgid "Statistics"
@@ -10267,7 +10263,7 @@ msgstr "Luogo"
 
 #: src/menu_events.cpp:201 src/playturn.cpp:2449
 msgid "Unit List"
-msgstr "Lista delle Unità"
+msgstr "Lista delle unità"
 
 #: src/menu_events.cpp:215 src/playturn.cpp:1856
 msgid "Leader"
@@ -10328,19 +10324,19 @@ msgstr "Chat Log"
 
 #: src/multiplayer.cpp:94
 msgid "Connect to Host"
-msgstr "Connetti al Server"
+msgstr "Connetti al server"
 
 #: src/multiplayer.cpp:96
 msgid "Choose host to connect to: "
-msgstr "Scegli l'host a cui connetterti:"
+msgstr "Scegli l'host a cui connetterti: "
 
 #: src/multiplayer.cpp:125 src/multiplayer.cpp:162
 msgid "Connecting to Server..."
-msgstr "Connessione al Server..."
+msgstr "Connessione al server..."
 
 #: src/multiplayer.cpp:135
 msgid "Reading from Server..."
-msgstr "Connessione al Server..."
+msgstr "Connessione al server..."
 
 #: src/multiplayer.cpp:144
 msgid ""
@@ -10390,11 +10386,11 @@ msgstr ")"
 
 #: src/multiplayer_connect.cpp:337
 msgid "(Vacant slot)"
-msgstr "(Slot Vuoto)"
+msgstr "(Slot vuoto)"
 
 #: src/multiplayer_connect.cpp:343
 msgid "Anonymous local player"
-msgstr "Giocatore Locale Anonimo"
+msgstr "Giocatore locale anonimo"
 
 #: src/multiplayer_connect.cpp:349
 msgid "Computer player"
@@ -10439,7 +10435,7 @@ msgstr "Computer contro Computer"
 
 #: src/multiplayer_connect.cpp:573
 msgid "I'm Ready"
-msgstr "Sono Pronto"
+msgstr "Sono pronto"
 
 #: src/multiplayer_connect.cpp:574 src/multiplayer_create.cpp:69
 #: src/multiplayer_wait.cpp:150
@@ -10452,11 +10448,11 @@ msgstr "Lo scenario non è valido perché non ha alcuno schieramento. "
 
 #: src/multiplayer_connect.cpp:935
 msgid "Network Player"
-msgstr "Giocatore Remoto"
+msgstr "Giocatore remoto"
 
 #: src/multiplayer_connect.cpp:936
 msgid "Local Player"
-msgstr "Giocatore Locale"
+msgstr "Giocatore locale"
 
 #: src/multiplayer_connect.cpp:937
 msgid "Computer Player"
@@ -10616,7 +10612,7 @@ msgstr "Devi inserire un nome"
 
 #: src/multiplayer_create.cpp:282
 msgid "Turns: "
-msgstr "Turni:"
+msgstr "Turni: "
 
 #: src/multiplayer_create.cpp:284
 msgid "Unlimited Turns"
@@ -10630,7 +10626,7 @@ msgstr "Tempo iniziale: "
 #: src/multiplayer_create.cpp:318
 #, fuzzy
 msgid "Turn Bonus: "
-msgstr "Turni:"
+msgstr "Turni: "
 
 #: src/multiplayer_create.cpp:322
 #, fuzzy
@@ -10644,15 +10640,15 @@ msgstr "Azioni"
 
 #: src/multiplayer_create.cpp:334
 msgid "Village Gold: "
-msgstr "Monete d'oro per Villaggio:"
+msgstr "Monete d'oro per Villaggio: "
 
 #: src/multiplayer_create.cpp:340
 msgid "Experience Modifier: "
-msgstr "Modificatori dell'Esperienza:"
+msgstr "Modificatori dell'Esperienza: "
 
 #: src/multiplayer_create.cpp:460
 msgid "Players: "
-msgstr "Giocatori:"
+msgstr "Giocatori: "
 
 #: src/multiplayer_lobby.cpp:32
 msgid "Map"
@@ -10705,7 +10701,7 @@ msgstr "Colore non valido"
 
 #: src/multiplayer_wait.cpp:116
 msgid "Leader: "
-msgstr "Condottiero:"
+msgstr "Condottiero: "
 
 #: src/multiplayer_wait.cpp:118
 msgid "Recruits: "
@@ -10793,11 +10789,11 @@ msgstr "La partita è finita."
 
 #: src/playlevel.cpp:701
 msgid "Remaining gold: "
-msgstr "Oro rimanente:"
+msgstr "Oro rimanente: "
 
 #: src/playlevel.cpp:704
 msgid "Early finish bonus: "
-msgstr "Bonus sui turni risparmiati:"
+msgstr "Bonus sui turni risparmiati: "
 
 #: src/playlevel.cpp:706
 msgid "per turn"
@@ -10805,15 +10801,15 @@ msgstr "per turno"
 
 #: src/playlevel.cpp:707
 msgid "Turns finished early: "
-msgstr "Turni risparmiati:"
+msgstr "Turni risparmiati: "
 
 #: src/playlevel.cpp:709
 msgid "Bonus: "
-msgstr "Bonus:"
+msgstr "Bonus: "
 
 #: src/playlevel.cpp:711
 msgid "Gold: "
-msgstr "Oro:"
+msgstr "Oro: "
 
 #: src/playlevel.cpp:716
 #, no-c-format
@@ -10822,7 +10818,7 @@ msgstr "80% dell'oro sarà trattenuto per il prossimo scenario"
 
 #: src/playlevel.cpp:717
 msgid "Retained Gold: "
-msgstr "Oro trattenuto:"
+msgstr "Oro trattenuto: "
 
 #: src/playlevel.cpp:723
 msgid "Victory"
@@ -11028,7 +11024,7 @@ msgstr ""
 
 #: src/reports.cpp:132
 msgid "invisible: "
-msgstr "invisibile:"
+msgstr "invisibile: "
 
 #: src/reports.cpp:137
 msgid ""
@@ -11039,7 +11035,7 @@ msgstr ""
 
 #: src/reports.cpp:137
 msgid "slowed: "
-msgstr "rallentato:"
+msgstr "rallentato: "
 
 #: src/reports.cpp:142
 msgid ""
@@ -11058,7 +11054,7 @@ msgstr ""
 
 #: src/reports.cpp:142
 msgid "poisoned: "
-msgstr "avvelenato:"
+msgstr "avvelenato: "
 
 #: src/reports.cpp:149
 msgid "This unit has been turned to stone. It may not move or attack."
@@ -11066,7 +11062,7 @@ msgstr "Questa unità è stata pietrificata. Non può muoversi nè attaccare."
 
 #: src/reports.cpp:149
 msgid "stone: "
-msgstr "pietrifica:"
+msgstr "pietrifica: "
 
 #: src/reports.cpp:247 src/reports.cpp:249 src/unit_types.cpp:337
 msgid "damage"
@@ -11074,23 +11070,23 @@ msgstr "danno"
 
 #: src/reports.cpp:262
 msgid "weapon range: "
-msgstr "portata dell'arma:"
+msgstr "portata dell'arma: "
 
 #: src/reports.cpp:263
 msgid "damage type: "
-msgstr "Tipo di dannno:"
+msgstr "Tipo di dannno: "
 
 #: src/reports.cpp:321
 msgid "Lawful units: "
-msgstr "Unità legali:"
+msgstr "Unità legali: "
 
 #: src/reports.cpp:323
 msgid "Neutral units: "
-msgstr "Unità neutrali:"
+msgstr "Unità neutrali: "
 
 #: src/reports.cpp:324
 msgid "Chaotic units: "
-msgstr "Unità caotiche:"
+msgstr "Unità caotiche: "
 
 #: src/reports.cpp:378
 msgid "Owned village"
@@ -11264,7 +11260,7 @@ msgstr "PE per avanzare"
 
 #: src/unit.cpp:2257
 msgid ": "
-msgstr ":"
+msgstr ": "
 
 #: src/unit_types.cpp:345
 msgid "strikes"
@@ -11289,14 +11285,14 @@ msgid ""
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
-"Wesnoth si basa sui volontari come te per esser testato, specialmente su "
+"Wesnoth si basa sui volontari come te per essere testato, specialmente da "
 "nuovi giocatori e principianti. Wesnoth tiene una lista delle tue partite: "
 "puoi aiutarci a migliorare il gioco dandoci il permesso di mandare queste "
 "liste (in maniera anonima) a wesnoth.org.\n"
 
 #: src/upload_log.cpp:276
 msgid "You can see the summaries to be sent in "
-msgstr "Puoi vedere le liste da mandare in"
+msgstr "Puoi vedere le liste da mandare in "
 
 #: src/upload_log.cpp:278
 msgid "You can view the results at "
@@ -11305,6 +11301,31 @@ msgstr "Puoi vedere i risultati a"
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr "Aiutaci a rendere Wesnoth migliore per te!"
+
+#~ msgid ""
+#~ "Cures:\n"
+#~ "This unit combines herbal remedies with magic to heal units more quickly "
+#~ "than is normally possible on the battlefield.\n"
+#~ "\n"
+#~ "This unit will care for all adjacent friendly units that are injured at "
+#~ "the beginning of each turn.\n"
+#~ "A unit cared for by a curer may heal up to 8 HP per turn.\n"
+#~ "A curer may heal a total of 18 HP per turn, for all units it cares for.\n"
+#~ "A curer can cure a unit of poison, although that unit will receive no "
+#~ "additional healing on the turn it is cured of the poison."
+#~ msgstr ""
+#~ "Cura:\n"
+#~ "Questa unità combina dei rimedi a base di erbe alla magia per curare le "
+#~ "unità sul campo di battaglia il più rapidamente possibile.\n"
+#~ "\n"
+#~ "Questa unità provvederà alla cura di tutte le unità amiche adiacenti che "
+#~ "sono ferite all'inizio del turno .\n"
+#~ "Un'unità curata può recuperare fino ad un massimo di 8 PF per turno.\n"
+#~ "Un'unità curante può guarire fino a 18 PF per turno divisi tra le tutte "
+#~ "le unità amiche di cui si occupa.\n"
+#~ "Un curatore può rimuovere l'effetto del veleno  sulle altre unità, "
+#~ "tuttavia le unità curate in questo modo non subiscono il ripristino dei "
+#~ "PF."
 
 #~ msgid ""
 #~ "Loyal:\n"
