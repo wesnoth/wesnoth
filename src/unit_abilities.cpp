@@ -594,7 +594,7 @@ std::string attack_type::weapon_specials(bool force) const
 		const config::child_map& list_map = specials->all_children();
 		for(config::child_map::const_iterator i = list_map.begin(); i != list_map.end(); ++i) {
 			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
-				if(force || special_active(**j,true)) {
+				if(force || special_active(**j,true,true)) {
 					if((**j)["name"] != "") {
 						res += (**j)["name"];
 						res += ",";
@@ -619,7 +619,7 @@ std::string attack_type::weapon_specials(bool force) const
  * cfg: a weapon special WML structure
  *
  */
-bool attack_type::special_active(const config& cfg,bool self) const
+bool attack_type::special_active(const config& cfg,bool self,bool report) const
 {
 //	log_scope("special_active");
 	wassert(unitmap_ != NULL);
@@ -637,7 +637,7 @@ bool attack_type::special_active(const config& cfg,bool self) const
 	}
 	
 	if(attacker_) {
-		if(cfg["active_on"] != "" && cfg["active_on"] != "attacker") {
+		if(!report && self && cfg["active_on"] != "" && cfg["active_on"] != "offense") {
 			return false;
 		}
 		if(cfg.child("filter_self") != NULL) {
@@ -662,7 +662,7 @@ bool attack_type::special_active(const config& cfg,bool self) const
 			}
 		}
 	} else {
-		if(cfg["active_on"] != "" && cfg["active_on"] != "defender") {
+		if(!report && self && cfg["active_on"] != "" && cfg["active_on"] != "defense") {
 			return false;
 		}
 		if(cfg.child("filter_self") != NULL) {
@@ -805,6 +805,9 @@ bool attack_type::special_active(const config& cfg,bool self) const
 bool attack_type::special_affects_opponent(const config& cfg) const
 {
 //	log_scope("special_affects_opponent");
+	if(cfg["apply_to"]=="both") {
+		return true;
+	}
 	if(cfg["apply_to"]=="opponent") {
 		return true;
 	}
@@ -826,6 +829,9 @@ bool attack_type::special_affects_opponent(const config& cfg) const
 bool attack_type::special_affects_self(const config& cfg) const
 {
 //	log_scope("special_affects_self");
+	if(cfg["apply_to"]=="both") {
+		return true;
+	}
 	if(cfg["apply_to"]=="self" || cfg["apply_to"]=="") {
 		return true;
 	}

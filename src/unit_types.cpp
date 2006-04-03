@@ -313,7 +313,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description,
 			sp["cumulative"] = "no";
 			sp["multiply"] = "2";
 			sp["active_on"] = "offense";
-			sp["apply_to"] = "self,opponent";
+			sp["apply_to"] = "both";
 		} else if(set_special == "drain") {
 			config& sp = new_specials.add_child("drains");
 			sp["name"] = t_string("drains","wesnoth");

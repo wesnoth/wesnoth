@@ -350,8 +350,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 				
 				weapon_special_list swarm = defend.get_specials("attacks");
 				if(!swarm.empty()) {
-					int swarm_min_attacks = swarm.highest("attacks_max",d_nattacks);
-					int swarm_max_attacks = swarm.highest("attacks_min");
+					int swarm_min_attacks = swarm.highest("attacks_min");
+					int swarm_max_attacks = swarm.highest("attacks_max",d_nattacks);
 					int hitp = d->second.hitpoints();
 					int mhitp = d->second.max_hitpoints();
 					
@@ -374,9 +374,16 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 					bool dmg_def_set = false;
 					bool dmg_def_mod_set = false;
 					for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
+						if((**dmg_it)["backstab"]=="yes") {
+							if(!backstab_check(d->first,a->first,units,teams)) {
+								continue;
+							}
+						}
 						if((**dmg_it)["cumulative"]=="yes") {
-							dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
-							dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"]);
+							if((**dmg_it)["value"] != "") {
+								dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
+							}
+							dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"],1);
 							if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
 								dmg_def_mod += lexical_cast_default<int>((**dmg_it)["add"]);
 							} else if((**dmg_it)["add"] != "") {
@@ -384,12 +391,14 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 								dmg_def_mod_set = true;
 							}
 						} else {
-							dmg_def_mul_ncum = maximum<int>(dmg_def_mul_ncum,lexical_cast_default<int>((**dmg_it)["multiply"]));
+							dmg_def_mul_ncum = maximum<int>(dmg_def_mul_ncum,lexical_cast_default<int>((**dmg_it)["multiply"],1));
 							if(dmg_def_set) {
 								dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
 							} else {
-								dmg_def = lexical_cast_default<int>((**dmg_it)["value"]);
-								dmg_def_set = true;
+								if((**dmg_it)["value"] != "") {
+									dmg_def = lexical_cast_default<int>((**dmg_it)["value"]);
+									dmg_def_set = true;
+								}
 							}
 							if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
 								dmg_def_mod = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["add"]));
@@ -517,8 +526,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	// compute swarm attacks;
 	weapon_special_list swarm = attack.get_specials("attacks");
 	if(!swarm.empty()) {
-		int swarm_min_attacks = swarm.highest("attacks_max",res.nattacks);
-		int swarm_max_attacks = swarm.highest("attacks_min");
+		int swarm_min_attacks = swarm.highest("attacks_min");
+		int swarm_max_attacks = swarm.highest("attacks_max",attack.num_attacks());
 		int hitp = a->second.hitpoints();
 		int mhitp = a->second.max_hitpoints();
 		
@@ -602,8 +611,10 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 					}
 				}
 				if((**dmg_it)["cumulative"]=="yes") {
-					dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
-					dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"]);
+					if((**dmg_it)["value"] != "") {
+						dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
+					}
+					dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"],1);
 					if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
 						dmg_def_mod += lexical_cast_default<int>((**dmg_it)["add"]);
 					} else if((**dmg_it)["add"] != "") {
@@ -611,12 +622,14 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 						dmg_def_mod_set = true;
 					}
 				} else {
-					dmg_def_mul_ncum = maximum<int>(dmg_def_mul_ncum,lexical_cast_default<int>((**dmg_it)["multiply"]));
+					dmg_def_mul_ncum = maximum<int>(dmg_def_mul_ncum,lexical_cast_default<int>((**dmg_it)["multiply"],1));
 					if(dmg_def_set) {
 						dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
 					} else {
-						dmg_def = lexical_cast_default<int>((**dmg_it)["value"]);
-						dmg_def_set = true;
+						if((**dmg_it)["value"] != "") {
+							dmg_def = lexical_cast_default<int>((**dmg_it)["value"]);
+							dmg_def_set = true;
+						}
 					}
 					if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
 						dmg_def_mod = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["add"]));
@@ -701,8 +714,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		// compute swarm attacks;
 		weapon_special_list swarm = defend.get_specials("attacks");
 		if(!swarm.empty()) {
-			int swarm_min_attacks = swarm.highest("attacks_max",res.ndefends);
-			int swarm_max_attacks = swarm.highest("attacks_min");
+			int swarm_min_attacks = swarm.highest("attacks_min");
+			int swarm_max_attacks = swarm.highest("attacks_max",defend.num_attacks());
 			int hitp = d->second.hitpoints();
 			int mhitp = d->second.max_hitpoints();
 			
@@ -767,8 +780,10 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 					}
 				}
 			if((**dmg_it)["cumulative"]=="yes") {
-				dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
-				dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"]);
+				if((**dmg_it)["value"] != "") {
+					dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
+				}
+				dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"],1);
 				if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
 					dmg_def_mod += lexical_cast_default<int>((**dmg_it)["add"]);
 				} else if((**dmg_it)["add"] != "") {
@@ -776,7 +791,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 					dmg_def_mod_set = true;
 				}
 			} else {
-				dmg_def_mul_ncum = maximum<int>(dmg_def_mul_ncum,lexical_cast_default<int>((**dmg_it)["multiply"]));
+				dmg_def_mul_ncum = maximum<int>(dmg_def_mul_ncum,lexical_cast_default<int>((**dmg_it)["multiply"],1));
 				if(dmg_def_set) {
 					dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
 				} else {
@@ -786,8 +801,10 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 				if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
 					dmg_def_mod = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["add"]));
 				} else if((**dmg_it)["add"] != "") {
-					dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
-					dmg_def_mod_set = true;
+					if((**dmg_it)["value"] != "") {
+						dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
+						dmg_def_mod_set = true;
+					}
 				}
 			}
 		}
