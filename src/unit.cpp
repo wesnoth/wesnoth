@@ -109,17 +109,27 @@ unit::unit(const game_data& gamedata,const config& cfg) : gamedata_(&gamedata),u
 		set_state("not_living","yes");
 	}
 }
+unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
+{
+	const std::vector<unit_race::GENDER>& genders = type.genders();
+	if(genders.empty() == false) {
+		return gen ? genders[get_random()%genders.size()] : genders.front();
+	} else {
+		return unit_race::MALE;
+	}
+}
 
 // Initilizes a unit from a unit type
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, 
            const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, 
-					 int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) : facing_(gamemap::location::NORTH_EAST),
+					 int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) : 
+					 gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), facing_(gamemap::location::NORTH_EAST),
            gamedata_(gamedata),units_(unitmap),map_(map),gamestatus_(game_status),teams_(teams)
 {
 	side_ = side;
 	movement_ = 0;
 	experience_ = 0;
-	advance_to(t);
+	advance_to(&t->get_gender_unit_type(gender_));
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
 		//units that don't have traits generated are just generic
@@ -139,12 +149,12 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 unit::unit(const unit_type* t,
 					 int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) : 
            gamedata_(NULL),units_(NULL),map_(NULL),gamestatus_(NULL),teams_(NULL),
-           facing_(gamemap::location::NORTH_EAST)
+           facing_(gamemap::location::NORTH_EAST),gender_(dummy_unit ? gender : generate_gender(*t,use_traits))
 {
 	side_ = side;
 	movement_ = 0;
 	experience_ = 0;
-	advance_to(t);
+	advance_to(&t->get_gender_unit_type(gender_));
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
 		//units that don't have traits generated are just generic
