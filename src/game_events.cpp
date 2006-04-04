@@ -1480,7 +1480,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
 				wassert(game_data_ptr != NULL);
 				j->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
-				if(game_events::unit_matches_filter(*j, filter,gamemap::location())) {
+				if(game_events::unit_matches_filter(*j, filter,gamemap::location()) == false) {
 						++j;
 						continue;
 					}
