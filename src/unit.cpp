@@ -132,7 +132,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	if(use_traits) {
 		//units that don't have traits generated are just generic
 		//units, so they shouldn't get a description either.
-		description_ = generate_description();
+		custom_unit_description_ = generate_description();
 		generate_traits();
 		underlying_description_ = description_;
 	}else{
@@ -157,7 +157,7 @@ unit::unit(const unit_type* t,
 	if(use_traits) {
 		//units that don't have traits generated are just generic
 		//units, so they shouldn't get a description either.
-		description_ = generate_description();
+		custom_unit_description_ = generate_description();
 		generate_traits();
 		underlying_description_ = description_;
 	}else{
@@ -302,7 +302,7 @@ const std::string& unit::name() const
 void unit::rename(const std::string& name)
 {
 	if (!unrenamable_) {
-		description_ = name;
+		custom_unit_description_ = name;
 	}
 }
 // the unit type name
@@ -852,7 +852,7 @@ void unit::read(const config& cfg)
 
 	description_ = cfg["unit_description"];
 	if(cfg["generate_description"] == "yes") {
-		description_ = generate_description();
+		custom_unit_description_ = generate_description();
 	}
 	underlying_description_ = cfg["description"];
 	if(description_.empty()) {
