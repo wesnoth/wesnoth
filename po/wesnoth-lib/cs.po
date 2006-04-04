@@ -1,22 +1,25 @@
+# translation of lib-cs.po to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Czech Wesnoth translation team, Yeti <yeti@physics.muni.cz> et al, 2004.
 #
+# Czech Wesnoth translation team, Yeti <yeti@physics.muni.cz> et al, 2004.
+# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
+"Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-03-29 19:12+0200\n"
-"PO-Revision-Date: 2005-12-14 12:16+0100\n"
-"Last-Translator: Anežka Bubeníčková <masozravapalma@gmail.com>\n"
+"PO-Revision-Date: 2006-04-04 14:24+0200\n"
+"Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: KBabel 1.11.2\n"
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
@@ -112,12 +115,10 @@ msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Převrať dokola (může změnit rozměry mapy):"
 
 #: src/hotkeys.cpp:47
-#, fuzzy
 msgid "Next Unit"
 msgstr "Další jednotka"
 
 #: src/hotkeys.cpp:48
-#, fuzzy
 msgid "Previous Unit"
 msgstr "Předešlá jednotka"
 
@@ -238,9 +239,8 @@ msgid "Set Label"
 msgstr "Umísti popisek"
 
 #: src/hotkeys.cpp:80
-#, fuzzy
 msgid "Clear Labels"
-msgstr "Umísti popisek"
+msgstr "Smaž popisek"
 
 #: src/hotkeys.cpp:81
 msgid "Show Enemy Moves"
@@ -467,7 +467,7 @@ msgstr "Přeskakuj tahy počítače"
 
 #: src/preferences_display.cpp:219
 msgid "Show lobby joins"
-msgstr ""
+msgstr "Ukaž lobby připojení"
 
 #: src/preferences_display.cpp:220
 msgid "Show Floating Labels"
@@ -515,7 +515,7 @@ msgstr "Hudba"
 
 #: src/preferences_display.cpp:234
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "Časování chatu"
 
 #: src/preferences_display.cpp:235
 msgid "Music Volume:"
@@ -551,11 +551,11 @@ msgstr "Změna rychlosti posouvání mapy"
 
 #: src/preferences_display.cpp:271 src/preferences_display.cpp:273
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "Nastav počet zobrazovaných řádek chatu"
 
 #: src/preferences_display.cpp:276
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Přiřaď čas k chatové zprávě"
 
 #: src/preferences_display.cpp:279 src/preferences_display.cpp:284
 msgid "Change the brightness of the display"
@@ -579,7 +579,7 @@ msgstr "Nakresli přes mapu mřížku"
 
 #: src/preferences_display.cpp:299
 msgid "Show messages about players joining the multiplayer lobby"
-msgstr ""
+msgstr "Ukaž zprávy od hráčů, kteří se připojili na multiplayer lobby"
 
 #: src/preferences_display.cpp:302
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -626,7 +626,7 @@ msgstr "Zobraz a nastav klávesové zkratky"
 
 #: src/preferences_display.cpp:475
 msgid "Chat Lines: "
-msgstr ""
+msgstr "Řádek chatu:"
 
 #: src/preferences_display.cpp:527
 msgid "yes"
@@ -649,9 +649,8 @@ msgid "Prefs section^Sound"
 msgstr "Zvuky"
 
 #: src/preferences_display.cpp:598
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "Zobrazení"
+msgstr "Multiplayer"
 
 #: src/preferences_display.cpp:599
 msgid "Advanced section^Advanced"
