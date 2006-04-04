@@ -656,7 +656,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 			}
 			
 			if(cfg.child("filter_opponent")->child("filter_weapon") != NULL) {
-				if(!other_attack_ || other_attack_->matches_filter(*cfg.child("filter_opponent")->child("filter_weapon"),0,true)) {
+				if(!other_attack_ || !other_attack_->matches_filter(*cfg.child("filter_opponent")->child("filter_weapon"),0,true)) {
 					return false;
 				}
 			}
