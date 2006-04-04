@@ -157,7 +157,7 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 					if(((**j)["affect_allies"]=="yes" && !(*teams_)[side()-1].is_enemy(it->second.side())) 
 						|| ((**j)["affect_enemies"]=="yes" && (*teams_)[side()-1].is_enemy(it->second.side())) &&
 						ability_active(ability,**j,loc) && ability_affects_adjacent(ability,**j,i,loc)) {
-						res.cfgs.push_back(std::pair<config*,gamemap::location>(*j,loc));
+						res.cfgs.push_back(std::pair<config*,gamemap::location>(*j,adjacent[i]));
 					}
 				}
 			}
