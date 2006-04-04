@@ -464,8 +464,10 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_CHAT_LOG:
 		return network::nconnections() > 0;
 
+	case hotkey::HOTKEY_REDO:
+		return !browse_ && !redo_stack_.empty() && !events::commands_disabled;
 	case hotkey::HOTKEY_UNDO:
-		return !browse_ && !menu_handler_.get_undo_list().empty() && !events::commands_disabled;
+		return !browse_ && !undo_stack_.empty() && !events::commands_disabled;
 
 	case hotkey::HOTKEY_UNIT_DESCRIPTION:
 		return menu_handler_.current_unit(mouse_handler_) != units_.end();

@@ -885,4 +885,11 @@ void mouse_handler::cycle_back_units()
 	}
 }
 
+void mouse_handler::set_current_paths(paths new_paths) { 
+	gui_->unhighlight_reach();
+	current_paths_ = new_paths; 
+	current_route_.steps.clear();
+	gui_->set_route(NULL);
+}
+
 }

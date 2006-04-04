@@ -81,7 +81,7 @@ namespace events{
 	{
 	}
 
-	const undo_list menu_handler::get_undo_list() const{
+	const undo_list& menu_handler::get_undo_list() const{
 		 return undo_stack_;
 	}
 
@@ -491,7 +491,7 @@ namespace events{
 		return false;
 	}
 
-	void menu_handler::recruit(const bool browse, const int team_num, mouse_handler& mousehandler)
+	void menu_handler::recruit(const bool browse, const int team_num, const gamemap::location& last_hex)
 	{
 		if(browse)
 			return;
@@ -548,17 +548,17 @@ namespace events{
 		}
 
 		if(recruit_res != -1) {
-			do_recruit(item_keys[recruit_res], team_num, mousehandler);
+			do_recruit(item_keys[recruit_res], team_num, last_hex);
 		}
 	}
 
-	void menu_handler::repeat_recruit(const int team_num, mouse_handler& mousehandler)
+	void menu_handler::repeat_recruit(const int team_num, const gamemap::location& last_hex)
 	{
 		if(last_recruit_.empty() == false)
-			do_recruit(last_recruit_, team_num, mousehandler);
+			do_recruit(last_recruit_, team_num, last_hex);
 	}
 
-	void menu_handler::do_recruit(const std::string& name, const int team_num, mouse_handler& mousehandler)
+	void menu_handler::do_recruit(const std::string& name, const int team_num, const gamemap::location& last_hex)
 	{
 		team& current_team = teams_[team_num-1];
 
@@ -587,9 +587,9 @@ namespace events{
 			last_recruit_ = name;
 
 			//create a unit with traits
-			recorder.add_recruit(recruit_num, mousehandler.get_last_hex());
+			recorder.add_recruit(recruit_num, last_hex);
 			unit new_unit(&(u_type->second),team_num,true);
-			gamemap::location loc = mousehandler.get_last_hex();
+			gamemap::location loc = last_hex;
 			const std::string& msg = recruit_unit(map_,team_num,units_,new_unit,loc,gui_);
 			if(msg.empty()) {
 				current_team.spend_gold(u_type->second.cost());
@@ -610,7 +610,7 @@ namespace events{
 		}
 	}
 
-	void menu_handler::recall(const int team_num, mouse_handler& mousehandler)
+	void menu_handler::recall(const int team_num, const gamemap::location& last_hex)
 	{
 		player_info *player = gamestate_.get_player(teams_[team_num-1].save_id());
 		if(!player) {
@@ -694,7 +694,7 @@ namespace events{
 					gui::show_dialog(*gui_,NULL,"",msg.str());
 				} else {
 					unit& un = recall_list[res];
-					gamemap::location loc = mousehandler.get_last_hex();
+					gamemap::location loc = last_hex;
 					recorder.add_recall(res,loc);
 					const std::string err = recruit_unit(map_,team_num,units_,un,loc,gui_);
 					if(!err.empty()) {
@@ -784,11 +784,8 @@ namespace events{
 		redo_stack_.push_back(action);
 		undo_stack_.pop_back();
 
-		gui_->unhighlight_reach();
-		mousehandler.set_current_paths(paths());
 		mousehandler.set_selected_hex(gamemap::location());
-		mousehandler.get_current_route().steps.clear();
-		gui_->set_route(NULL);
+		mousehandler.set_current_paths(paths());
 
 		recorder.undo();
 
@@ -809,11 +806,8 @@ namespace events{
 		const events::command_disabler disable_commands;
 
 		//clear routes, selected hex, etc
-		gui_->unhighlight_reach();
-		mousehandler.set_current_paths(paths());
 		mousehandler.set_selected_hex(gamemap::location());
-		mousehandler.get_current_route().steps.clear();
-		gui_->set_route(NULL);
+		mousehandler.set_current_paths(paths());
 
 		undo_action& action = redo_stack_.back();
 		if(action.is_recall()) {
@@ -1163,8 +1157,6 @@ namespace events{
 			un->second.set_hold_position(!un->second.hold_position());
 			gui_->draw_tile(mousehandler.get_selected_hex().x, mousehandler.get_selected_hex().y);
 
-			gui_->set_route(NULL);
-			gui_->unhighlight_reach();
 			mousehandler.set_current_paths(paths());
 			gui_->draw();
 
@@ -1185,8 +1177,6 @@ namespace events{
 			}
 			gui_->draw_tile(mousehandler.get_selected_hex().x, mousehandler.get_selected_hex().y);
 
-			gui_->set_route(NULL);
-			gui_->unhighlight_reach();
 			mousehandler.set_current_paths(paths());
 			gui_->draw();
 

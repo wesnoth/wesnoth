@@ -31,12 +31,12 @@ public:
 	int get_path_turns() const { return path_turns_; }
 	paths get_current_paths() { return current_paths_; }
 	paths::route get_current_route() const { return current_route_; }
-	gamemap::location get_last_hex() const { return last_hex_; }
+	const gamemap::location& get_last_hex() const { return last_hex_; }
 	gamemap::location get_selected_hex() const { return selected_hex_; }
 	const bool get_undo() const { return undo_; }
 	const bool get_show_menu() const { return show_menu_; }
 	void set_path_turns(const int path_turns) { path_turns_ = path_turns; }
-	void set_current_paths(paths new_paths) { current_paths_ = new_paths; }
+	void set_current_paths(paths new_paths);
 	void set_selected_hex(gamemap::location hex) { selected_hex_ = hex; }
 	void set_gui(display* gui) { gui_ = gui; }
 

@@ -67,17 +67,17 @@ void playsingle_controller::init_gui(){
 
 void playsingle_controller::recruit(){
 	if (!browse_)
-		menu_handler_.recruit(browse_, player_number_, mouse_handler_);
+		menu_handler_.recruit(browse_, player_number_, mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::repeat_recruit(){
 	if (!browse_)
-		menu_handler_.repeat_recruit(player_number_, mouse_handler_);
+		menu_handler_.repeat_recruit(player_number_, mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::recall(){
 	if (!browse_)
-		menu_handler_.recall(player_number_, mouse_handler_);
+		menu_handler_.recall(player_number_, mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::toggle_shroud_updates(){
@@ -420,13 +420,13 @@ void playsingle_controller::play_human_turn(){
 	while(!end_turn_) {
 		play_slice();
 
-		menu_handler_.clear_undo_stack(player_number_);
 		gui_->invalidate_animations();
 		gui_->draw();
 	}
 }
 
 void playsingle_controller::after_human_turn(){
+	menu_handler_.clear_undo_stack(player_number_);
 	gui_->unhighlight_reach();
 }
 

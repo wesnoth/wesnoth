@@ -35,7 +35,7 @@ public:
 		const config& game_config, const gamestatus& status, game_state& gamestate,
 		undo_list& undo_stack, undo_list& redo_stack);
 
-	const undo_list get_undo_list() const;
+	const undo_list& get_undo_list() const;
 	gui::floating_textbox& get_textbox();
 	void set_gui(display* gui) { gui_ = gui; }
 
@@ -49,9 +49,9 @@ public:
 	void show_chat_log();
 	void show_help();
 	void speak();
-	void recruit(const bool browse, const int team_num, mouse_handler& mousehandler);
-	void repeat_recruit(const int team_num, mouse_handler& mousehandler);
-	void recall(const int team_num, mouse_handler& mousehandler);
+	void recruit(const bool browse, const int team_num, const gamemap::location& last_hex);
+	void repeat_recruit(const int team_num, const gamemap::location& last_hex);
+	void recall(const int team_num, const gamemap::location& last_hex);
 	void undo(const int team_num, mouse_handler& mousehandler);
 	void redo(const int team_num, mouse_handler& mousehandler);
 	void show_enemy_moves(bool ignore_units, const int team_num);
@@ -82,7 +82,7 @@ public:
 	void clear_undo_stack(const int team_num);
 private:
 	void do_speak(const std::string& message, bool allies_only);
-	void do_recruit(const std::string& name, const int team_num, mouse_handler& mousehandler);
+	void do_recruit(const std::string& name, const int team_num, const gamemap::location& last_hex);
 	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m);
 	void write_game_snapshot(config& start) const;
 	bool has_friends() const;
