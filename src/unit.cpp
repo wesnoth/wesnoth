@@ -325,7 +325,10 @@ const t_string& unit::language_name() const
 // the unit's profile
 const std::string& unit::profile() const
 {
-	return cfg_["profile"];
+	if(cfg_["profile"] != "" && cfg_["profile"] != "unit_image") {
+		return cfg_["profile"];
+	}
+	return absolute_image();
 }
 //information about the unit -- a detailed description of it
 const std::string& unit::unit_description() const
