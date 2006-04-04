@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-02 13:13+0200\n"
-"PO-Revision-Date: 2006-02-16 00:39+0900\n"
+"PO-Revision-Date: 2006-04-04 15:08+0900\n"
 "Last-Translator: Claus Aranha <caranha AT gmail DOT com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "MIME-Version: 1.0\n"
@@ -60,17 +60,14 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Cura:\n"
-"Esta unidade combina vários remédios herbais e mágica para curar unidades "
-"mais rapidamente do que é normal no campo de batalha.\n"
-"\n"
-"Esta unidade vai cuidar de todas as unidades aliadas adjacentes que estão "
-"feridas no começo do turno.\n"
-"Uma unidade curada por um curandeiro recupera até 8 PV por turno.\n"
-"Um curandeiro pode curar  um total de 18 PV por turno, divididos entre todas "
-"as unidades cuidadas por ele.\n"
-"Um curandeiro também pode curar o veneno de uma outra unidade, embora essa "
-"unidade não recuperará pontos de vida no turno em que é curada do veneno."
+"Tratar:\n"
+"Permite a unidade tratar as feridas de unidades amigas adjacentes no começo "
+"do turno.\n"
+"Uma unidade tratada pode curar 4 PV por turno.\n"
+"Um unidade com tratar pode curar um total de 8 PV por turno, para todas as "
+"unidades das quais esta cuidando.\n"
+"Uma unidade envenenada não pode ser curada de seu veneno por uma unidade com "
+"tratar, e deve procurar o cuidade de uma vila, ou de uma unidade curandeira."
 
 #: data/abilities.cfg:40
 msgid "cures"
@@ -400,7 +397,6 @@ msgid "swarm"
 msgstr "enxame"
 
 #: data/abilities.cfg:458
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -492,9 +488,8 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
 #: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
-#, fuzzy
 msgid "Artwork and Graphics Designers"
-msgstr "Designers artísticos e gráficos"
+msgstr "Designers de artes e gráficos"
 
 #: data/about.cfg:51
 msgid "Music"
@@ -684,9 +679,8 @@ msgstr "Cura Total"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
 #: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
 #: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
 msgid "Campaign Designer"
-msgstr "Campanha"
+msgstr "Designer da Campanha"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
@@ -1181,7 +1175,7 @@ msgstr "garras"
 #: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
 #: data/campaigns/Under_the_Burning_Suns.cfg:32
 msgid "Current Maintainer"
-msgstr ""
+msgstr "Responsável Atual"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:85
@@ -1737,7 +1731,6 @@ msgstr "toque"
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:43
 #: data/units/Undead_Necro_Ancient_Lich.cfg:70
 #: data/units/Undead_Necro_Lich.cfg:52
-#, fuzzy
 msgid "chill tempest"
 msgstr "onda gelada"
 
@@ -1954,6 +1947,21 @@ msgid ""
 "a high chance of hitting an opponent. The staff of a necromancer is marked "
 "with the plague, and any foe struck down by it will rise again in unlife."
 msgstr ""
+"Um dos maiores grupos daquilo que é considerado 'magia negra' é o da arte da "
+"necromancia, a terrível habilidade de reanimar os mortos com uma falsa vida. "
+"As ramificações terríveis desta arte são a razão pela qual a humanidade hoje "
+"condena a 'magia negra', por ter dado ao medo um novo arsenal.\n"
+"\n"
+"Esta habilidade, em todos os seus aspectos, foi o primeiro passo para "
+"enganar a morte. É o maior grau de poder que um mago negro pode alcançar sem "
+"perder sua humanidade, mas não é nada quando comparado ao poder mortal "
+"possuído pelos Liches. Seus corpos físicos também se tornam mais resistentes "
+"atravéz de magia, em contraste com a forma frágil e decaída de um Lich.\n"
+"\n"
+"Nota especial: Os ataques a distância de um necromante são magicos, e sempre "
+"têm uma grande chance de acertar um oponente. O cajado de um necromante é "
+"marcado pela praga, e qualquer inimigo morto por ele irá voltar como um "
+"morto-vivo."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:38
 #: data/units/Undead_Corpse_Soulless.cfg:53
@@ -3414,7 +3422,6 @@ msgid "Forest"
 msgstr "Floresta"
 
 #: data/help.cfg:347
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3434,7 +3441,7 @@ msgstr ""
 "vegetação rasteira, que consiga atrapalhar a passagem. Apesar da floresta "
 "atrapalhar a todos igualmente, elas oferecem uma defesa melhor do que campo "
 "aberto para a maioria das unidades. Unidades montadas, por outro lado, têm "
-"tanto problema para atravessá-las que perdem qualquer beneficio que poderia "
+"tanto problema para atravessá-las que perdem qualquer benefício que poderia "
 "vir da camuflagem. Os elfos são uma exceção à regra geral nas florestas. Não "
 "só eles possuem movimentação normal na floresta, como também ganham um bom "
 "bônus defensivo. Os anões são outra exceção à regra: apesar de serem capazes "
@@ -4065,6 +4072,8 @@ msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
+"Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
+"Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -4418,15 +4427,14 @@ msgid "4p - Siege Castles"
 msgstr "4p - Castelos em cerco"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well 2 vs 2 or FFA. There are approximately 45 villages. "
 "Recommended setting of 2 gold per village."
 msgstr ""
-"Um mapa de 2 contra 2 com 25 hexágonos de lado, centrado ao redor de um rio "
-"com um par de fortes em cantos opostos. Jogadores 1 e 3 jogam contra 2 e 4. "
-"Há 28 vilas, recomenda-se 2 outros por vila."
+"Mapa de 4 jogadores de tamanho 40X30, onde 4 castelos poderosos se enfrentam "
+"no ponto de convergência de dois rios. Funciona bem em 2 contra 2 ou todos "
+"contra todos. Há aproximadamente 45 vilas. Recomenta-se 2 outros por vila."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -5060,12 +5068,19 @@ msgid ""
 "limited by its maximum movement. Remember this when deciding what unit is "
 "best to scout specific types of terrain."
 msgstr ""
+"Em mapas nos quais a escuridão, ou a neblina de guerra estiverem em ação, o "
+"campo de visão de uma unidade é limitado pelo seu movimento máximo. Se "
+"lembre disso quando for decidir quais unidades são melhores como batedoras "
+"para diversos tipos de terreno."
 
 #: data/tips.cfg:36
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
+"Quase todos os ícones e palavras na tela de jogo de Wesnoth possuem uma dica "
+"instantânea. Coloque o ponteiro do mouse sobre um desses para ver uma "
+"explicação ou descrição."
 
 #: data/traits.cfg:6
 msgid "loyal"
@@ -5104,25 +5119,24 @@ msgid "resilient"
 msgstr "resistente"
 
 #: data/tutorial/units/Fighteress.cfg:5 data/tutorial/units/Fighteress.cfg:54
-#, fuzzy
 msgid "female^Fighter"
-msgstr "Maga"
+msgstr "Lutadora"
 
 #: data/tutorial/units/Quintain.cfg:3
-#, fuzzy
 msgid "Quintain"
-msgstr "Montanhas"
+msgstr "Boneco de treino"
 
 #: data/tutorial/units/Quintain.cfg:13
 msgid ""
 "Quintains are used to practice swordplay and jousting on.  It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
+"Estes bonecos são usados para a prática da esgrima e da justa. Seria "
+"extremamente estranho ser atacado por um deles."
 
 #: data/tutorial/units/Quintain.cfg:20
-#, fuzzy
 msgid "flail"
-msgstr "cauda"
+msgstr "mangual"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -8441,22 +8455,20 @@ msgstr ""
 "Flanqueadores."
 
 #: data/units/Saurian_Augur.cfg:3
-#, fuzzy
 msgid "Saurian Augur"
-msgstr "Lagarto Emboscador"
+msgstr "Lagarto Augur"
 
 #: data/units/Saurian_Augur.cfg:25
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Augurs are valued as healers because they can provide aid to their "
 "allies regardless of terrain or opposition. In addition to healing they "
 "possess knowledge of cold magic."
 msgstr ""
-"Apesar de seu sangue frio e de sua fragilidade, os tribalistas são valiosos "
-"como curandeiros, por poderem ajudar seus aliados independentemente do "
-"terreno ou das forças inimigas. Além da cura, eles possuem conhecimento da "
-"magia do frio."
+"Apesar de seu sangue frio e de sua fragilidade, os Auguros são valiosos como "
+"curandeiros, por poderem ajudar seus aliados independentemente do terreno ou "
+"das forças inimigas. Além da cura, eles possuem conhecimento da magia do "
+"frio."
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
@@ -8477,21 +8489,19 @@ msgstr ""
 "se aproveitar completamente desse fato."
 
 #: data/units/Saurian_Oracle.cfg:3
-#, fuzzy
 msgid "Saurian Oracle"
-msgstr "Lagarto Tribalista"
+msgstr "Oráculo Lagarto"
 
 #: data/units/Saurian_Oracle.cfg:25
-#, fuzzy
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
 "forth the magic of the cold north, and they do retain their basic healing "
 "ability."
 msgstr ""
-"Os lagartos denominados de Congelantes são aqueles que abandonaram seu papél "
+"Os lagartos denominados de Oráculos são aqueles que abandonaram seu papel "
 "como curandeiros para refinar sua habilidade com as artes negras. Apesar de "
-"frágeis, eles possuem um profundo conhecimento da magia do frio, e possuem "
+"frágeis, eles possuem um profundo conhecimento da magia do frio, e mantém "
 "algumas habilidades simples de cura."
 
 #: data/units/Saurian_Skirmisher.cfg:3
@@ -8859,7 +8869,7 @@ msgstr "Aprendiz da Escuridão"
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
-msgstr "Mago Negro"
+msgstr "Feiticeiro Negro"
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:20
 msgid ""
@@ -8876,6 +8886,20 @@ msgid ""
 "Special Notes: The ranged attacks of a Dark Sorcerer are magical, and always "
 "have a high chance of hitting an opponent."
 msgstr ""
+"O terror inspirado pela magia negra vem em grande parte do fato de que a "
+"maioria das pessoas sabe muito pouco sobre ela. Feiticeiros Negros começaram "
+"a desvendar os mistérios da vida e da morte, rapidamente se tornando mestres "
+"nas artes de causar dor e angústia. \n"
+"\n"
+"O prêmio final das artes negras é a dominação completa da vida e da morte. "
+"Feiticeiros negros eventualmente aprendem a manipulação da vida e da morte "
+"atravéz da reanimação de corpos, esqueletos, e espíritos. Aqueles que forem "
+"mais corruptos e sedentos pelo poder tentarão conquistar completamente a "
+"morte através de sua transformação em liches, e obtenção de uma forma "
+"distorcida de imortalidade.\n"
+"\n"
+"Notas especiais: Os ataques de distância de um feiticeiro negro são mágicos, "
+"e possuem uma alta chance de acertar um oponente."
 
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
@@ -8921,7 +8945,6 @@ msgid "Bone Shooter"
 msgstr "Atirador de Ossos"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:14
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -8930,10 +8953,10 @@ msgid ""
 "Dubbed simply 'Bone-Shooters' by their unfortunate enemies, these "
 "abominations are a terror to all who live."
 msgstr ""
-"Das criações de um necromante, algumas se utilizam com mais vontade da falsa "
-"vida dada a elas. Equipamento equivalenteà essa vontade é dado, arqueiros em "
-"particular são muitas vezes presenteados com um arsenal realmente vil. Seus "
-"sacos de flechas são enchidos com flechas feitas não de madeira, mas dos "
+"Das criações de um feiticeiro negro, algumas se adaptam melhor à falsa vida "
+"dada a elas. À essa adaptação é dado um equipamento equivalente, e os "
+"arqueiros em particular muitas vezes são presenteados com um arsenal "
+"realmente vil. Seus sacos de flechas são enchidos não de madeira, mas dos "
 "ossos de suas vítimas. Chamados simplesmente de \"Atiradores de Ossos\" "
 "pelos seus inimigos desafortunados, essas abominações são um terror para "
 "todos os que vivem."
@@ -9074,7 +9097,6 @@ msgid "Ghost"
 msgstr "Fantasma"
 
 #: data/units/Undead_Spirit_Ghost.cfg:19
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -9089,10 +9111,10 @@ msgid ""
 "quite slowly over open water."
 msgstr ""
 "Um dos maiores milagres da criação é que uma alma humana é imutavel, e não "
-"pode ser destruida. Porém, entre as várias coisas que um necromante PODE "
-"fazer, são completamente horripilantes.\n"
+"pode ser destruída. Porém, as várias outras coisas que um necromante PODE "
+"fazer são completamente horripilantes.\n"
 "\n"
-"Presas em um cerco de encantamentos vis, um espírito se torna como o vento "
+"Preso em um cerco de encantamentos vis, um espírito se torna como o vento "
 "nas velas de um navio. O resultado desta prisão mágica é um servo fiel, que "
 "irá atender a qualquer tarefa que seu mestre escolher.\n"
 "\n"
@@ -9607,11 +9629,11 @@ msgstr "Mostrar o replay"
 
 #: src/dialogs.cpp:589 src/multiplayer_create.cpp:83
 msgid "Load Game"
-msgstr "Carregar Jogo"
+msgstr "Continuar um Jogo"
 
 #: src/dialogs.cpp:590
 msgid "Choose the game to load"
-msgstr "Escolha o jogo a carregar"
+msgstr "Escolha o jogo a ser continuado"
 
 #: src/dialogs.cpp:627 src/dialogs.cpp:639
 msgid "Profile"
@@ -9749,7 +9771,7 @@ msgstr "Não há campanhas disponíveis"
 
 #: src/game.cpp:965
 msgid "Choose the campaign to download."
-msgstr "Escolha o jogo a carregar"
+msgstr "Escolha a campanha para fazer o download"
 
 #: src/game.cpp:965
 msgid "Get Campaign"
@@ -10570,14 +10592,12 @@ msgid "Choose your side:"
 msgstr "Escolha o seu time:"
 
 #: src/multiplayer_wait.cpp:254
-#, fuzzy
 msgid "Do you want to skip the replay?"
-msgstr "Quer salvar o seu jogo?"
+msgstr "Você quer pular o replay?"
 
 #: src/multiplayer_wait.cpp:254
-#, fuzzy
 msgid "Skip replay"
-msgstr " replay"
+msgstr "Pular replay"
 
 #: src/multiplayer_wait.cpp:393 src/playturn.cpp:1960
 msgid "unit^Gold"
@@ -11029,7 +11049,7 @@ msgstr "Multijogador"
 
 #: src/titlescreen.cpp:203
 msgid "TitleScreen button^Load"
-msgstr "Carregar"
+msgstr "Continuar"
 
 #: src/titlescreen.cpp:204
 msgid "TitleScreen button^Language"
@@ -11069,7 +11089,7 @@ msgstr ""
 
 #: src/titlescreen.cpp:212
 msgid "Load a single player saved game"
-msgstr "Carregar um jogo de um jogador"
+msgstr "Continua um jogo salvo"
 
 #: src/titlescreen.cpp:213
 msgid "Change the language"
@@ -11156,6 +11176,31 @@ msgid "Help us make Wesnoth better for you!"
 msgstr "Ajude-nos a fazer um Wesnoth melhor para você!"
 
 #~ msgid ""
+#~ "Cures:\n"
+#~ "This unit combines herbal remedies with magic to heal units more quickly "
+#~ "than is normally possible on the battlefield.\n"
+#~ "\n"
+#~ "This unit will care for all adjacent friendly units that are injured at "
+#~ "the beginning of each turn.\n"
+#~ "A unit cared for by a curer may heal up to 8 HP per turn.\n"
+#~ "A curer may heal a total of 18 HP per turn, for all units it cares for.\n"
+#~ "A curer can cure a unit of poison, although that unit will receive no "
+#~ "additional healing on the turn it is cured of the poison."
+#~ msgstr ""
+#~ "Cura:\n"
+#~ "Esta unidade combina vários remédios herbais e mágica para curar unidades "
+#~ "mais rapidamente do que é normal no campo de batalha.\n"
+#~ "\n"
+#~ "Esta unidade vai cuidar de todas as unidades aliadas adjacentes que estão "
+#~ "feridas no começo do turno.\n"
+#~ "Uma unidade curada por um curandeiro recupera até 8 PV por turno.\n"
+#~ "Um curandeiro pode curar  um total de 18 PV por turno, divididos entre "
+#~ "todas as unidades cuidadas por ele.\n"
+#~ "Um curandeiro também pode curar o veneno de uma outra unidade, embora "
+#~ "essa unidade não recuperará pontos de vida no turno em que é curada do "
+#~ "veneno."
+
+#~ msgid ""
 #~ "Loyal:\n"
 #~ "Never more than 1 upkeep."
 #~ msgstr ""
@@ -11188,273 +11233,3 @@ msgstr "Ajude-nos a fazer um Wesnoth melhor para você!"
 
 #~ msgid "Turn time: "
 #~ msgstr "Tempo por turno: "
-
-#, fuzzy
-#~ msgid "Artwork and Graphic Designers"
-#~ msgstr "Designers artísticos e gráficos"
-
-#, fuzzy
-#~ msgid ""
-#~ "It is one of the greater mercies of creation that a human soul is "
-#~ "immutable, and cannot be destroyed. However, the many things a "
-#~ "necromancer can do, despite this, are entirely horrifying.\n"
-#~ "\n"
-#~ "Trapped within a shroud of vile enchantments, a spirit likens unto the "
-#~ "wind in the sails of a ship. The contrivance that results from this "
-#~ "prison is an unfailing servant, which can be bound to whatever task their "
-#~ "master sees fit.\n"
-#~ "\n"
-#~ "Special Notes: Ghosts have very unusual resistances to damage, and move "
-#~ "quite slowly over open water."
-#~ msgstr ""
-#~ "Um dos maiores milagres da criação é que uma alma humana é imutavel, e "
-#~ "não pode ser destruida. Porém, entre as várias coisas que um necromante "
-#~ "PODE fazer, são completamente horripilantes.\n"
-#~ "\n"
-#~ "Presas em um cerco de encantamentos vis, um espírito se torna como o "
-#~ "vento nas velas de um navio. O resultado desta prisão mágica é um servo "
-#~ "fiel, que irá atender a qualquer tarefa que seu mestre escolher.\n"
-#~ "\n"
-#~ "Nota especial: fantasmas possuem resistências a dano incomuns, e moven-se "
-#~ "bem lentamente sobre a água."
-
-#, fuzzy
-#~ msgid "Ethereal Spectre"
-#~ msgstr "Espectro"
-
-#, fuzzy
-#~ msgid "quintain"
-#~ msgstr "Montanhas"
-
-#, fuzzy
-#~ msgid "Cave Spider"
-#~ msgstr "Aranha Gigante"
-
-#, fuzzy
-#~ msgid ""
-#~ "Cave Spiders are roam deep under the earth, devouring many victims. They "
-#~ "can bite at close range, thereby poisoning their enemies, and also can "
-#~ "attack with a web at long range, slowing their foes down."
-#~ msgstr ""
-#~ "Dizem que as aranhas gigantes habitam as profundezas de Knalga, devorando "
-#~ "os incautos. Elas podem morder e envenenar seus inimigos, ou podem atirar "
-#~ "suas teias à longa distância, deixando-os lentos."
-
-#~ msgid ""
-#~ "Take control of this huge river delta in a team battle or in a free for "
-#~ "all."
-#~ msgstr ""
-#~ "Tome o controle deste gigantesco delta em uma batalha de times ou num "
-#~ "todos contra todos."
-
-#, fuzzy
-#~ msgid "Dummy"
-#~ msgstr "falso"
-
-#~ msgid "Orcish Shaman"
-#~ msgstr "Xamã Orc"
-
-#~ msgid ""
-#~ "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#~ "tribes, they form the Orcish Council, which makes important decisions for "
-#~ "the whole Orcish community and arbitrates the many conflicts that arise "
-#~ "between tribes of this argumentative race. Although physically weak (for "
-#~ "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#~ "draining their life."
-#~ msgstr ""
-#~ "Xamãs orcs são os guardiões da magia orc. Respeitados entre as tribos "
-#~ "orcs, eles formam o conselho orc, que faz decisões importantes para toda "
-#~ "a comunidade e decidem os vários conflitos que nascem entre as tribos "
-#~ "desta irritadiça raça. Apesar de fisicamente fracos (comparados com "
-#~ "outros orcs), os Xamãs são bons feiticeiros e podem amaldiçoar seus "
-#~ "inimigos, drenando sua vida."
-
-#~ msgid "Novice Orcish Shaman"
-#~ msgstr "Aprendiz de Xamã Orc"
-
-#~ msgid ""
-#~ "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#~ "tribes, they form the Orcish Council, which makes important decisions for "
-#~ "the whole Orcish community and arbitrates the many conflicts that arise "
-#~ "between tribes of this argumentative race. Although physically weak (for "
-#~ "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#~ "draining their life. Novice Shamans are still young and vigorous, but "
-#~ "their spell-casting ability still needs improvement."
-#~ msgstr ""
-#~ "Xamãs orcs são os guardiões da magia orc. Respeitados entre as tribos "
-#~ "orcs, eles formam o conselho orc, que faz decisões importantes para toda "
-#~ "a comunidade e decidem os vários conflitos que nascem entre as tribos "
-#~ "desta irritadiça raça. Apesar de fisicamente fracos (comparados com "
-#~ "outros orcs), os Xamãs são bons feiticeiros e podem amaldiçoar seus "
-#~ "inimigos, drenando sua vida. Os Xamãs aprendizes são ainda novos e "
-#~ "vigorosos, mas sua habilidade de feitiçaria ainda precisa melhorar."
-
-#~ msgid "Old Orcish Shaman"
-#~ msgstr "Xãma Orc Ancião"
-
-#~ msgid ""
-#~ "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#~ "tribes, they form the Orcish Council, which makes important decisions for "
-#~ "the whole Orcish community and arbitrates the many conflicts that arise "
-#~ "between tribes of this argumentative race. Although physically weak (for "
-#~ "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#~ "draining their life. Old Orcish Shamans are shamans that have mastered "
-#~ "magic, although their physical strength has declined with age."
-#~ msgstr ""
-#~ "Xamãs orcs são os guardiões da magia orc. Respeitados entre as tribos "
-#~ "orcs, eles formam o conselho orc, que faz decisões importantes para toda "
-#~ "a comunidade e decidem os vários conflitos que nascem entre as tribos "
-#~ "desta irritadiça raça. Apesar de fisicamente fracos (comparados com "
-#~ "outros orcs), os Xamãs são bons feiticeiros e podem amaldiçoar seus "
-#~ "inimigos, drenando sua vida. Xamãs anciões já se tornaram mestres da "
-#~ "feitiçaria, apesar de sua força ter declinado com a idade."
-
-#~ msgid "Watch Tower"
-#~ msgstr "Torre da Guarda"
-
-#~ msgid ""
-#~ "Watch Towers are good places from which to spot enemies and then shoot "
-#~ "miscellaneous items at them with ballistas."
-#~ msgstr ""
-#~ "Torres da guarda são bons locais dos quais se observar inimigos e atirar "
-#~ "diversas coisas neles com balistas."
-
-#~ msgid "Dark Spirit"
-#~ msgstr "Espírito da Escuridão"
-
-#~ msgid ""
-#~ "Dark Spirits are messengers and bearers of tidings from the realm of the "
-#~ "dead, and a force of dread in this world. Happily, they have rarely been "
-#~ "seen in Wesnoth."
-#~ msgstr ""
-#~ "Espiritos da Escuridão são mensageiros do mundo dos mortos, e uma força "
-#~ "do medo neste mundo. Felizmente, eles são raramente vistos em Wesnoth."
-
-#~ msgid "Deathmaster"
-#~ msgstr "Mestre da Morte"
-
-#~ msgid ""
-#~ "His wanderings on a dark path have given him power normally not granted "
-#~ "to mortals, but with a terrible cost: the undead that he gave his soul to "
-#~ "are gradually claiming his mortal shell too, and with time, he will be a "
-#~ "true undead and a terror to all that lives."
-#~ msgstr ""
-#~ "Seus experimentos no caminho da escuridão deram a ele poder normalmente "
-#~ "não disponível para mortais, mas a um terrível custo: Os mortos vivos aos "
-#~ "quais ele deu sua alma estão aos poucos tomando também sua casca mortal. "
-#~ "Com o tempo, ele se tornará um verdadeiro morto vivo e um terror para "
-#~ "todos aqueles que vivem."
-
-#~ msgid "magic"
-#~ msgstr "magia"
-
-#~ msgid "Dread Lich"
-#~ msgstr "Liches Pérfido"
-
-#~ msgid ""
-#~ "At long last, Ha'atel has paid the ultimate sacrifice for the dark arts "
-#~ "into which he has delved, and has, himself, entered into undeath. At the "
-#~ "apex of his power, he has become a lich, a waking embodiment of dread. He "
-#~ "has, beyond any doubt, passed the point of no return, and his power and "
-#~ "immortality will have to provide consolation for what he has lost in his "
-#~ "quest to achieve them."
-#~ msgstr ""
-#~ "Finalmente, Ha'atel pagou o sacrifício definitivo para as artes negras "
-#~ "com as quais se envolveu, e entrou no mundo dos mortos vivos. No ápice de "
-#~ "seu poder, se tornou um lich, uma encarnação animada de perfídia. Ele sem "
-#~ "sombra de dúvida já passou do ponto sem volta, e seu poder e imortalidade "
-#~ "terão que prover consolação pelo que ele perdeu em sua busca para "
-#~ "conseguí-los."
-
-#~ msgid "Initiate"
-#~ msgstr "Iniciado"
-
-#~ msgid ""
-#~ "Dabbling in the Death Magic, this young Ha'atel's lust for power has "
-#~ "weakened him to the point where he is too weak to attack in regular "
-#~ "combat."
-#~ msgstr ""
-#~ "Experimentando com a magia da morte, a sede de poder do jovem Ha'atel o "
-#~ "enfraqueceu ao ponto em que ele não é mais capaz de atacar em lutas "
-#~ "normais."
-
-#~ msgid ""
-#~ "The dread inspired by black magic comes chiefly from how little is known "
-#~ "about it, to the common man. If immortality is truly what it grants, then "
-#~ "the transformation to lichdom would seem something to be achieved as soon "
-#~ "as possible, lest disease or infirmity claim the mage. Yet, on occasion, "
-#~ "a dark sorcerer has been seen who was quite aged, and yet clearly "
-#~ "powerful enough to rival a lich.\n"
-#~ "\n"
-#~ "One can only speculate why such a person would delay, or forgo that path "
-#~ "entirely. It is surmised that either lichdom falls short of the true "
-#~ "immortality it is claimed to be, or that there is a terrible and unspoken "
-#~ "price for becoming one.\n"
-#~ "\n"
-#~ "Special Notes: the ranged attacks of a dark sorcerer are magical, and "
-#~ "always have a high chance of hitting an opponent. The staff of a dark "
-#~ "sorcerer is marked with the plague, and any foe struck down by it will "
-#~ "rise again in unlife."
-#~ msgstr ""
-#~ "O terror inspirado pela magia negra vem de sua maioria de fato de que "
-#~ "muito pouco se é conhecido sobre isso, pelo homem comum. Se imortalidade "
-#~ "é realmente o que ela oferece, então a transformação em liche deveria ser "
-#~ "vista como algo para se ser atingido o mais cedo possível, antes que a "
-#~ "doença ou a enfermidade tome mago. Ainda assim, em algumas ocasições, um "
-#~ "mago negro é visto como um homem bem envelhecido, mas ainda assim "
-#~ "poderoso o suficiente para rivalizar um liche.\n"
-#~ "\n"
-#~ "Uma pessoa pode apenas especular porque tal pessoa adia tanto, ou esquece "
-#~ "o caminho inteiramente. É perguntado se o lichismo é pior que a "
-#~ "verdadeira imortalidade que clama possuir, ou existe algum preço terrível "
-#~ "e não falado para se tornar um.\n"
-#~ "\n"
-#~ "Notas especiais: Os ataques de distância de um mago negro são mágicos, e "
-#~ "possuem uma alta chance de acertar um oponente. O cajado do mago negro é "
-#~ "marcado com a praga, e qualquer inimigo morto por ele irá renascer "
-#~ "novamenta na não-vida."
-
-#~ msgid ""
-#~ "One of the greatest circles of what is considered 'black magic' is the "
-#~ "art of necromancy, the terrible ability to awaken the dead with false "
-#~ "life. This ability, in all aspects, was the first step towards cheating "
-#~ "death of its ultimate prize; though not the fulfillment of what they had "
-#~ "hoped for, it was a discovery that nonetheless had terrible "
-#~ "ramifications. This art alone may have caused humanity's condemnation of "
-#~ "what is now known as 'black magic', and has given fear a vast new "
-#~ "arsenal.\n"
-#~ "\n"
-#~ "Special Notes: The ranged attacks of a necromancer are magical, and "
-#~ "always have a high chance of hitting an opponent."
-#~ msgstr ""
-#~ "Um dos maiores grupos daquilo que é considerado 'magia negra' é o da arte "
-#~ "da necromancia, a terrível habilidade de reanimar os mortos com uma falsa "
-#~ "vida. Esta habilidade, em todos os seus aspectos, foi o primeiro passo "
-#~ "para enganar a morte; apesar de não ser exatamente o que os magos estavam "
-#~ "procurando, foi um avanço que certamente teve terríveis consequências. "
-#~ "Esta arte tem uma grande parte na razão pela qual a humanidade hoje "
-#~ "condena a 'magia negra', e deu ao medo um novo arsenal.\n"
-#~ "\n"
-#~ "Nota especial: Os ataques a distância de um necromante são magicos, e "
-#~ "sempre têm uma grande chance de acertar um oponente."
-
-#, fuzzy
-#~ msgid ""
-#~ "Some Necromancers pay the ultimate sacrifice for delving into the dark "
-#~ "arts and entered into undeath. At the apex of their power, they become a "
-#~ "lich, a waking embodiment of dread. They are, beyond any doubt, past the "
-#~ "point of no return. Power and immortality are the hollow consolation for "
-#~ "what they have lost."
-#~ msgstr ""
-#~ "Finalmente, Ha'atel pagou o sacrifício definitivo para as artes negras "
-#~ "com as quais se envolveu, e entrou no mundo dos mortos vivos. No ápice de "
-#~ "seu poder, se tornou um lich, uma encarnação animada de perfídia. Ele sem "
-#~ "sombra de dúvida já passou do ponto sem volta, e seu poder e imortalidade "
-#~ "terão que prover consolação pelo que ele perdeu em sua busca para "
-#~ "conseguí-los."
-
-#~ msgid "Saurian Icecaster"
-#~ msgstr "Lagarto Congelante"
-
-#~ msgid "frost blast"
-#~ msgstr "raio gelado"
