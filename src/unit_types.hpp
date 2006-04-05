@@ -69,8 +69,8 @@ public:
 	void set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
                               const game_data* gamedata, unit_map* unitmap, 
 							  const gamemap* map, const gamestatus* game_status, 
-							  const std::vector<team>* teams,bool attacker,attack_type* other_attack);
-	void set_specials_context(const gamemap::location& loc,const unit& un);
+							  const std::vector<team>* teams,bool attacker,const attack_type* other_attack) const;
+	void set_specials_context(const gamemap::location& loc,const unit& un) const;
 	//this function returns a random animation out of the possible
 	//animations for this attack. It will not return the same attack
 	//each time.
@@ -80,14 +80,14 @@ public:
 	int movement_used() const;
 	
 	const config& get_cfg() const;
-	gamemap::location aloc_,dloc_;
-	bool attacker_;
-	const game_data* gamedata_;
-	mutable unit_map* unitmap_; 
-	const gamemap* map_;
-	const gamestatus* game_status_;
-	const std::vector<team>* teams_;
-	mutable attack_type* other_attack_;
+	mutable gamemap::location aloc_,dloc_;
+	mutable bool attacker_;
+	const mutable game_data* gamedata_;
+	const mutable unit_map* unitmap_; 
+	const mutable gamemap* map_;
+	const mutable gamestatus* game_status_;
+	const mutable std::vector<team>* teams_;
+	const mutable attack_type* other_attack_;
 	/*
 	 * cfg: a weapon special WML structure
 	 */

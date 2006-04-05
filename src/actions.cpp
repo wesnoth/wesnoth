@@ -314,8 +314,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	if (strings)
 		strings->defend_name = _("none");
 
-	const units_map::iterator a = units.find(attacker);
-	const units_map::iterator d = units.find(defender);
+	const units_map::const_iterator a = units.find(attacker);
+	const units_map::const_iterator d = units.find(defender);
 
 	wassert(a != units.end());
 	wassert(d != units.end());
@@ -330,11 +330,11 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	res.chance_to_hit_attacker = a->second.defense_modifier(attacker_terrain);
 	res.chance_to_hit_defender = d->second.defense_modifier(defender_terrain);
 	
-	std::vector<attack_type>& attacker_attacks = a->second.attacks();
-	std::vector<attack_type>& defender_attacks = d->second.attacks();
+	const std::vector<attack_type>& attacker_attacks = a->second.attacks();
+	const std::vector<attack_type>& defender_attacks = d->second.attacks();
 
 	wassert((unsigned)attack_with < attacker_attacks.size());
-	attack_type& attack = attacker_attacks[attack_with];
+	const attack_type& attack = attacker_attacks[attack_with];
 	
 	double best_defend_rating = 0.0;
 	int defend_with = -1;
@@ -343,7 +343,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	for(int defend_option = 0; defend_option != int(defender_attacks.size()); ++defend_option) {
 		if(defender_attacks[defend_option].range() == attack.range()) {
 			if (defender_attacks[defend_option].defense_weight() > 0) {
-				attack_type& defend = defender_attacks[defend_option];
+				const attack_type& defend = defender_attacks[defend_option];
 				attack.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,true,&defend);
 				defend.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,false,&attack);
 				int d_nattacks = defend.num_attacks();
@@ -441,7 +441,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	
 	res.defend_with = defend_with;
 	static attack_type no_weapon(config(),"fake_attack","");
-	attack_type& defend = defend_with == -1 ? no_weapon : defender_attacks[defend_with];
+	const attack_type& defend = defend_with == -1 ? no_weapon : defender_attacks[defend_with];
 	attack.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,true,&defend);
 	defend.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,false,&attack);
 	
