@@ -315,7 +315,6 @@ void playsingle_controller::play_turn(){
 			}
 			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 		}
-		check_music(replaying_);
 
 		if (!replaying_){
 			play_side(player_number_);

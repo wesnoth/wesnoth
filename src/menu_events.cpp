@@ -41,7 +41,7 @@ namespace events{
 			//if the unit is of level > 1, or is close to advancing, we warn the player
 			//about it
 			std::string message = "";
-			if(u.type().level() > 1) {
+			if(u.level() > 1) {
 				message = _("My lord, this unit is an experienced one, having advanced levels! Do you really want to dismiss $noun?");
 			} else if(u.experience() > u.max_experience()/2) {
 				message = _("My lord, this unit is close to advancing a level! Do you really want to dismiss $noun?");
@@ -234,7 +234,7 @@ namespace events{
 				continue;
 
 			std::stringstream row;
-			row << i->second.type().language_name() << COLUMN_SEPARATOR
+			row << i->second.language_name() << COLUMN_SEPARATOR
 				<< i->second.description() << COLUMN_SEPARATOR
 				<< i->second.hitpoints() << "/" << i->second.max_hitpoints() << COLUMN_SEPARATOR
 				<< i->second.experience() << "/";
@@ -321,7 +321,7 @@ namespace events{
 			//output the number of the side first, and this will
 			//cause it to be displayed in the correct colour
 			if(leader != units_.end()) {
-				str << IMAGE_PREFIX << leader->second.type().image() << COLUMN_SEPARATOR
+				str << IMAGE_PREFIX << leader->second.absolute_image() << COLUMN_SEPARATOR
 					<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm' << leader->second.description() << COLUMN_SEPARATOR;
 			} else {
 				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;
@@ -409,7 +409,7 @@ namespace events{
 			buf << side_num;
 			side["side"] = buf.str();
 
-			for(std::map<gamemap::location,unit>::const_iterator i = units_.begin(); i != units_.end(); ++i) {
+			for(units_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 				if(i->second.side() == side_num) {
 					config& u = side.add_child("unit");
 					i->first.write(u);
@@ -525,7 +525,7 @@ namespace events{
 						<< prefix << type.language_name() << "\n"
 						<< prefix << type.cost() << " " << sgettext("unit^Gold");
 			items.push_back(description.str());
-			sample_units.push_back(unit(&type,team_num));
+			sample_units.push_back(unit(&gameinfo_,&units_,&map_,&status_,&teams_,&type,team_num_));
 		}
 
 		if(sample_units.empty()) {
@@ -588,12 +588,15 @@ namespace events{
 
 			//create a unit with traits
 			recorder.add_recruit(recruit_num, last_hex);
-			unit new_unit(&(u_type->second),team_num,true);
+			unit new_unit(&gameinfo_,&units_,&map_,&status_,&teams_,&(u_type->second),team_num_,true);
 			gamemap::location loc = last_hex;
 			const std::string& msg = recruit_unit(map_,team_num,units_,new_unit,loc,gui_);
 			if(msg.empty()) {
 				current_team.spend_gold(u_type->second.cost());
 				statistics::recruit_unit(new_unit);
+
+				//MP_COUNTDOWN grant time bonus for recruiting
+				current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 				clear_undo_stack(team_num);
 				redo_stack_.clear();
@@ -651,10 +654,10 @@ namespace events{
 				std::stringstream option;
 				const std::string& description = u->description().empty() ? "-" : u->description();
 				option << IMAGE_PREFIX << u->absolute_image() << COLUMN_SEPARATOR
-					   << u->type().language_name() << COLUMN_SEPARATOR
-					   << description << COLUMN_SEPARATOR
-					   << u->type().level() << COLUMN_SEPARATOR
-					   << u->experience() << "/";
+						<< u->language_name() << COLUMN_SEPARATOR
+						<< description << COLUMN_SEPARATOR
+						<< u->level() << COLUMN_SEPARATOR
+						<< u->experience() << "/";
 
 				if(u->can_advance() == false) {
 					option << "-";
@@ -696,6 +699,7 @@ namespace events{
 					unit& un = recall_list[res];
 					gamemap::location loc = last_hex;
 					recorder.add_recall(res,loc);
+					un.set_game_context(&gameinfo_,&units_,&map_,&status_,&teams_);
 					const std::string err = recruit_unit(map_,team_num,units_,un,loc,gui_);
 					if(!err.empty()) {
 						recorder.undo();
@@ -760,6 +764,11 @@ namespace events{
 
 			if(map_.is_village(route.front())) {
 				get_village(route.front(),teams_,action.original_village_owner,units_);
+				//MP_COUNTDOWN take away bonus
+				if(action.countdown_time_bonus)
+				{
+					teams_[team_num_-1].set_action_bonus_count(teams_[team_num_-1].action_bonus_count() - 1);
+				}
 			}
 
 			action.starting_moves = u->second.movement_left();
@@ -767,9 +776,9 @@ namespace events{
 			unit un = u->second;
 			un.set_goto(gamemap::location());
 
-			gui_->hide_unit(u->first,true);
+			u->second.set_hidden(true);
 			unit_display::move_unit(*gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
-			gui_->hide_unit(gamemap::location());
+			u->second.set_hidden(false);
 
 			units_.erase(u);
 			un.set_movement(starting_moves);
@@ -818,9 +827,10 @@ namespace events{
 			} else {
 				// Redo recall
 				std::vector<unit>& recall_list = player->available_units;
-				unit& un = recall_list[action.recall_pos];
+				unit un = recall_list[action.recall_pos];
 
 				recorder.add_recall(action.recall_pos,action.recall_loc);
+				un.set_game_context(&gameinfo_,&units_,&map_,&status_,&teams_);
 				const std::string& msg = recruit_unit(map_,team_num,units_,un,action.recall_loc,gui_);
 				if(msg.empty()) {
 					statistics::recall_unit(un);
@@ -848,9 +858,9 @@ namespace events{
 			unit un = u->second;
 			un.set_goto(gamemap::location());
 
-			gui_->hide_unit(u->first,true);
+			u->second.set_hidden(true);
 			unit_display::move_unit(*gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
-			gui_->hide_unit(gamemap::location());
+			u->second.set_hidden(false);
 
 			units_.erase(u);
 			un.set_movement(starting_moves);
@@ -858,6 +868,11 @@ namespace events{
 
 			if(map_.is_village(route.back())) {
 				get_village(route.back(),teams_,un.side()-1,units_);
+				//MP_COUNTDOWN restore bonus
+				if(action.countdown_time_bonus)
+				{
+					teams_[team_num_-1].set_action_bonus_count(1 + teams_[team_num_-1].action_bonus_count());
+				}
 			}
 
 			gui_->draw_tile(route.back().x,route.back().y);
@@ -897,10 +912,10 @@ namespace events{
 												 .lawful_bonus,
 												 u->first, units_, teams_);
 
-			if(teams_[team_num - 1].is_enemy(u->second.side()) && !gui_->fogged(u->first.x,u->first.y) && !u->second.stone() && !invisible) {
+			if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y) && u->second.get_state("stoned")!="yes" && !invisible) {
 				const unit_movement_resetter move_reset(u->second);
-				const bool is_skirmisher = u->second.type().is_skirmisher();
-				const bool teleports = u->second.type().teleports();
+				const bool is_skirmisher = u->second.get_ability_bool("skirmisher",u->first);
+				const bool teleports = u->second.get_ability_bool("teleport",u->first);
 				unit_map units;
 				units.insert(*u);
 				const paths& path = paths(map_,status_,gameinfo_,ignore_units?units:units_,
@@ -1043,8 +1058,8 @@ namespace events{
 		std::vector<unit> unit_choices;
 		for(game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.begin(); i != gameinfo_.unit_types.end(); ++i) {
 			options.push_back(i->second.language_name());
-			unit_choices.push_back(unit(&i->second,1,false));
-			unit_choices.back().new_turn();
+			unit_choices.push_back(unit(&gameinfo_,&units_,&map_,&status_,&teams_,&i->second,1,false));
+			unit_choices.back().new_turn(gamemap::location());
 		}
 
 		int choice = 0;
@@ -1125,7 +1140,7 @@ namespace events{
 		const std::set<gamemap::location>* teleports = NULL;
 
 		std::set<gamemap::location> allowed_teleports;
-		if(u.type().teleports()) {
+		if(u.get_ability_bool("teleport",ui->first)) {
 			allowed_teleports = vacant_villages(teams_[team_num - 1].villages(),units_);
 			teleports = &allowed_teleports;
 			if(teams_[team_num - 1].villages().count(ui->first))
@@ -1454,7 +1469,7 @@ namespace events{
 					config cfg;
 					i->second.write(cfg);
 					cfg[name] = value;
-					i->second = unit(gameinfo_,cfg);
+					i->second = unit(&gameinfo_,&units_,&map_,&status_,&teams_,cfg);
 
 					gui_->invalidate(i->first);
 					gui_->invalidate_unit();
@@ -1467,7 +1482,7 @@ namespace events{
 			}
 
 			units_.erase(mousehandler.get_last_hex());
-			units_.insert(std::pair<gamemap::location,unit>(mousehandler.get_last_hex(),unit(&i->second,1,false)));
+			units_.insert(std::pair<gamemap::location,unit>(last_hex_,unit(&gameinfo_,&units_,&map_,&status_,&teams_,&i->second,1,false)));
 			gui_->invalidate(mousehandler.get_last_hex());
 			gui_->invalidate_unit();
 		} else if(game_config::debug && cmd == "gold") {

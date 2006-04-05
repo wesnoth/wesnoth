@@ -82,7 +82,6 @@ protected:
 	virtual void init_side(const int team_index);
 	void place_sides_in_preferred_locations(gamemap& map, const config::child_list& sides);
 	bool do_replay(const bool replaying);
-	void check_music(const bool replaying);
 	virtual void finish_side_turn();
 	void finish_turn();
 	bool clear_shroud();

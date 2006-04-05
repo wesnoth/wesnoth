@@ -92,8 +92,10 @@ void playmp_controller::play_human_turn(){
 				}
 			} else {
 				// Clock time ended
-				// If no turn bonus -> defeat
-				if ( lexical_cast_default<int>(level_["mp_countdown_turn_bonus"],0) == 0){
+				// If no turn bonus or action bonus -> defeat
+				const int action_increment = lexical_cast_default<int>(level["mp_countdown_action_bonus"],0);
+				if ( lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0) == 0 
+					&& (action_increment == 0 || teams[team_num -1].action_bonus_count() == 0)) {
 					// Not possible to end level in MP with throw end_level_exception(DEFEAT);
 					// because remote players only notice network disconnection
 					// Current solution end remaining turns automatically
@@ -103,7 +105,12 @@ void playmp_controller::play_human_turn(){
 					turn_data_->send_data();
 					throw end_turn_exception();
 				} else {
-					current_team().set_countdown_time(1000 * lexical_cast_default<int>(level_["mp_countdown_turn_bonus"],0));
+					const int maxtime = lexical_cast_default<int>(level["mp_countdown_reservoir_time"],0);
+					int secs = lexical_cast_default<int>(level["mp_countdown_turn_bonus"],0);
+					secs += action_increment  * teams[team_num -1].action_bonus_count();
+					teams[team_num -1].set_action_bonus_count(0);
+					secs = (secs > maxtime) ? maxtime : secs;
+					teams[team_num -1].set_countdown_time(1000 * secs);
 					recorder.add_countdown_update(current_team().countdown_time(),player_number_);
 					recorder.end_turn();
 					turn_data_->send_data();

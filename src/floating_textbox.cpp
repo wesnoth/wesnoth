@@ -147,7 +147,7 @@ namespace gui{
 							best_match = *i;
 						} else {
 							int j;
-							while(best_match[j] == (*i)[j]) j++;
+							while(toupper(best_match[j]) == toupper((*i)[j])) j++;
 							best_match.erase(best_match.begin()+j,best_match.end());
 						}
 						matches.push_back(*i);

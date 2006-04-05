@@ -333,6 +333,7 @@ void play_controller::init_side(const int team_index){
 			}
 
 			calculate_healing((*gui_),status_,map_,units_,player_number_,teams_, !recorder.is_skipping());
+			reset_resting(units_, player_number_);
 		}
 
 		current_team.set_time_of_day(int(status_.turn()),status_.get_time_of_day());
@@ -365,18 +366,6 @@ bool play_controller::do_replay(const bool replaying){
 		LOG_NG << "result of replay: " << (result?"true":"false") << "\n";
 	}
 	return result;
-}
-
-void play_controller::check_music(const bool replaying){
-	if(!replaying && current_team().music().empty() == false && 
-			(teams_[gui_->viewing_team()].knows_about_team(player_number_-1) || teams_[gui_->viewing_team()].has_seen(player_number_-1))) {
-		LOG_NG << "playing music: '" << current_team().music() << "'\n";
-		sound::play_music_repeatedly(current_team().music());
-	} else if(!replaying && current_team().music().empty() == false){
-		LOG_NG << "playing music: '" << game_config::anonymous_music<< "'\n";
-		sound::play_music_repeatedly(game_config::anonymous_music);
-	}
-	// else leave old music playing, it's a scenario specific music
 }
 
 void play_controller::finish_side_turn(){
@@ -537,8 +526,8 @@ void play_controller::handle_event(const SDL_Event& event)
 				const unit_map::iterator u = mouse_handler_.selected_unit();
 
 				if(u != units_.end() && u->second.side() == player_number_) {
-					const bool ignore_zocs = u->second.type().is_skirmisher();
-					const bool teleport = u->second.type().teleports();
+					const bool ignore_zocs = u->second.get_ability_bool("skirmisher",u->first);
+					const bool teleport = u->second.get_ability_bool("teleport",u->first);
 					mouse_handler_.set_current_paths(paths(map_,status_,gameinfo_,units_,u->first,
 					                       teams_,ignore_zocs,teleport, teams_[gui_->viewing_team()],
 					                       mouse_handler_.get_path_turns()));

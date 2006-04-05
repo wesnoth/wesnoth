@@ -1430,6 +1430,14 @@ bool will_heal(const gamemap::location& loc, int side, const std::vector<team>& 
 
 }
 
+void reset_resting(std::map<gamemap::location,unit>& units, unsigned int side)
+{
+	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
+		if (i->second.side() == side)
+			i->second.set_resting(true);
+	}
+}
+
 void calculate_healing(display& disp, const gamestatus& status, const gamemap& map,
                        std::map<gamemap::location,unit>& units, int side,
 					   const std::vector<team>& teams, bool update_display)
