@@ -43,6 +43,7 @@ wesnoth_SOURCES = \
 	ai_python.cpp \
 	animated.cpp \
 	astarnode.cpp \
+	attack_prediction.cpp \
 	builder.cpp \
 	cavegen.cpp \
 	checksum.cpp \
