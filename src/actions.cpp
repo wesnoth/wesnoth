@@ -355,7 +355,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 					int hitp = d->second.hitpoints();
 					int mhitp = d->second.max_hitpoints();
 					
-					d_nattacks = swarm_min_attacks + swarm_max_attacks * hitp / mhitp;
+					d_nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
 				}
 				
 				// calculate damage
@@ -367,12 +367,14 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 				
 				{ // modify damage
 					weapon_special_list dmg_specials = defend.get_specials("damage");
-					int dmg_def = base_damage;
-					int dmg_def_mod = 0;
-					int dmg_def_mul_cum = 1;
-					int dmg_def_mul_ncum = 1;
-					bool dmg_def_set = false;
-					bool dmg_def_mod_set = false;
+					int dmg_ncum_set = base_damage; bool dmg_ncum_set_set = false;
+					int dmg_ncum_add = 0; bool dmg_ncum_add_set = false;
+					int dmg_ncum_mul = 1;
+					int dmg_cum_set = base_damage;
+					int dmg_cum_add = 0;
+					int dmg_cum_mul = 1;
+					bool use_ncum = false;
+					bool use_cum = false;
 					for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
 						if((**dmg_it)["backstab"]=="yes") {
 							if(!backstab_check(d->first,a->first,units,teams)) {
@@ -380,35 +382,40 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 							}
 						}
 						if((**dmg_it)["cumulative"]=="yes") {
-							if((**dmg_it)["value"] != "") {
-								dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
-							}
-							dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"],1);
-							if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
-								dmg_def_mod += lexical_cast_default<int>((**dmg_it)["add"]);
-							} else if((**dmg_it)["add"] != "") {
-								dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
-								dmg_def_mod_set = true;
-							}
+							dmg_cum_set = maximum<int>(dmg_cum_set,lexical_cast_default<int>((**dmg_it)["value"]));
+							dmg_cum_add += lexical_cast_default<int>((**dmg_it)["add"]);
+							dmg_cum_mul *= lexical_cast_default<int>((**dmg_it)["multiply"]);
+							use_cum = true;
 						} else {
-							dmg_def_mul_ncum = maximum<int>(dmg_def_mul_ncum,lexical_cast_default<int>((**dmg_it)["multiply"],1));
-							if(dmg_def_set) {
-								dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
-							} else {
-								if((**dmg_it)["value"] != "") {
-									dmg_def = lexical_cast_default<int>((**dmg_it)["value"]);
-									dmg_def_set = true;
+							if((**dmg_it)["value"] != "") {
+								if(dmg_ncum_set_set) {
+									dmg_ncum_set = maximum<int>(dmg_ncum_set,lexical_cast_default<int>((**dmg_it)["value"]));
+								} else {
+									dmg_ncum_set = lexical_cast_default<int>((**dmg_it)["value"]);
+									dmg_ncum_set_set = true;
 								}
+								use_ncum = true;
 							}
-							if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
-								dmg_def_mod = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["add"]));
-							} else if((**dmg_it)["add"] != "") {
-								dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
-								dmg_def_mod_set = true;
+							if((**dmg_it)["add"] != "") {
+								if(dmg_ncum_add_set) {
+									dmg_ncum_add = maximum<int>(dmg_ncum_add,lexical_cast_default<int>((**dmg_it)["add"]));
+								} else {
+									dmg_ncum_add = lexical_cast_default<int>((**dmg_it)["add"]);
+									dmg_ncum_add_set = true;
+								}
+								use_ncum = true;
+							}
+							if((**dmg_it)["multiply"] != "") {
+								dmg_ncum_mul = maximum<int>(dmg_ncum_mul,lexical_cast_default<int>((**dmg_it)["multiply"]));
+								use_ncum = true;
 							}
 						}
 					}
-					base_damage = (dmg_def * maximum<int>(dmg_def_mul_cum,dmg_def_mul_ncum)) + dmg_def_mod;
+					if(use_cum) {
+						base_damage = maximum<int>(dmg_cum_set*dmg_cum_mul + dmg_cum_add,dmg_ncum_set + dmg_ncum_add);
+					} else if(use_ncum) {
+						base_damage = dmg_ncum_set*dmg_ncum_mul + dmg_ncum_add;
+					}
 				}
 				
 				const int tod_modifier = combat_modifier(state,units,d->first,d->second.alignment(),map);
@@ -492,35 +499,42 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	
 	{ // modify chance to hit
 		weapon_special_list cth_specials = attack.get_specials("chance_to_hit");
-		int cth_def = res.chance_to_hit_defender;
-		int cth_def_mod = 0;
-		bool cth_def_set = false;
-		bool cth_def_mod_set = false;
+		int cth_ncum_set = res.chance_to_hit_defender; bool cth_ncum_set_set = false;
+		int cth_ncum_add = 0; bool cth_ncum_add_set = false;
+		int cth_cum_set = res.chance_to_hit_defender;
+		int cth_cum_add = 0;
+		bool use_ncum = false;
+		bool use_cum = false;
 		for(config::child_list::const_iterator cth_it = cth_specials.cfgs.begin(); cth_it != cth_specials.cfgs.end(); ++cth_it) {
 			if((**cth_it)["cumulative"]=="yes") {
-				cth_def = maximum<int>(cth_def,lexical_cast_default<int>((**cth_it)["value"]));
-				if(cth_def_mod_set && (**cth_it)["add"] != "") {
-					cth_def_mod += lexical_cast_default<int>((**cth_it)["add"]);
-				} else if((**cth_it)["add"] != "") {
-					cth_def_mod = lexical_cast_default<int>((**cth_it)["add"]);
-					cth_def_mod_set = true;
-				}
+				cth_cum_set = maximum<int>(cth_cum_set,lexical_cast_default<int>((**cth_it)["value"]));
+				cth_cum_add += lexical_cast_default<int>((**cth_it)["add"]);
+				use_cum = true;
 			} else {
-				if(cth_def_set) {
-					cth_def = maximum<int>(cth_def,lexical_cast_default<int>((**cth_it)["value"]));
-				} else {
-					cth_def = lexical_cast_default<int>((**cth_it)["value"]);
-					cth_def_set = true;
+				if((**cth_it)["value"] != "") {
+					if(cth_ncum_set_set) {
+						cth_ncum_set = maximum<int>(cth_ncum_set,lexical_cast_default<int>((**cth_it)["value"]));
+					} else {
+						cth_ncum_set = lexical_cast_default<int>((**cth_it)["value"]);
+						cth_ncum_set_set = true;
+					}
 				}
-				if(cth_def_mod_set && (**cth_it)["add"] != "") {
-					cth_def_mod = maximum<int>(cth_def,lexical_cast_default<int>((**cth_it)["add"]));
-				} else if((**cth_it)["add"] != "") {
-					cth_def_mod = lexical_cast_default<int>((**cth_it)["add"]);
-					cth_def_mod_set = true;
+				if((**cth_it)["add"] != "") {
+					if(cth_ncum_add_set) {
+						cth_ncum_add = maximum<int>(cth_ncum_add,lexical_cast_default<int>((**cth_it)["add"]));
+					} else {
+						cth_ncum_add = lexical_cast_default<int>((**cth_it)["add"]);
+						cth_ncum_add_set = true;
+					}
 				}
+				use_ncum = true;
 			}
 		}
-		res.chance_to_hit_defender = cth_def + cth_def_mod;
+		if(use_cum) {
+			res.chance_to_hit_defender = maximum<int>(cth_cum_set + cth_cum_add,cth_ncum_set + cth_ncum_add);
+		} else if(use_ncum) {
+			res.chance_to_hit_defender = cth_ncum_set + cth_ncum_add;
+		}
 	}
 	
 	// compute swarm attacks;
@@ -531,7 +545,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		int hitp = a->second.hitpoints();
 		int mhitp = a->second.max_hitpoints();
 		
-		res.nattacks = swarm_min_attacks + swarm_max_attacks * hitp / mhitp;
+		res.nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
 		
 	} else {
 		res.nattacks = attack.num_attacks();
@@ -558,35 +572,42 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 		{ // modify chance to hit
 			weapon_special_list cth_specials = defend.get_specials("chance_to_hit");
-			int cth_def = res.chance_to_hit_attacker;
-			int cth_def_mod = 0;
-			bool cth_def_set = false;
-			bool cth_def_mod_set = false;
+			int cth_ncum_set = res.chance_to_hit_attacker; bool cth_ncum_set_set = false;
+			int cth_ncum_add = 0; bool cth_ncum_add_set = false;
+			int cth_cum_set = res.chance_to_hit_attacker;
+			int cth_cum_add = 0;
+			bool use_ncum = false;
+			bool use_cum = false;
 			for(config::child_list::const_iterator cth_it = cth_specials.cfgs.begin(); cth_it != cth_specials.cfgs.end(); ++cth_it) {
 				if((**cth_it)["cumulative"]=="yes") {
-					cth_def = maximum<int>(cth_def,lexical_cast_default<int>((**cth_it)["value"]));
-					if(cth_def_mod_set && (**cth_it)["add"] != "") {
-						cth_def_mod += lexical_cast_default<int>((**cth_it)["add"]);
-					} else if((**cth_it)["add"] != "") {
-						cth_def_mod = lexical_cast_default<int>((**cth_it)["add"]);
-						cth_def_mod_set = true;
-					}
+					cth_cum_set = maximum<int>(cth_cum_set,lexical_cast_default<int>((**cth_it)["value"]));
+					cth_cum_add += lexical_cast_default<int>((**cth_it)["add"]);
+					use_cum = true;
 				} else {
-					if(cth_def_set) {
-						cth_def = maximum<int>(cth_def,lexical_cast_default<int>((**cth_it)["value"]));
-					} else {
-						cth_def = lexical_cast_default<int>((**cth_it)["value"]);
-						cth_def_set = true;
+					if((**cth_it)["value"] != "") {
+						if(cth_ncum_set_set) {
+							cth_ncum_set = maximum<int>(cth_ncum_set,lexical_cast_default<int>((**cth_it)["value"]));
+						} else {
+							cth_ncum_set = lexical_cast_default<int>((**cth_it)["value"]);
+							cth_ncum_set_set = true;
+						}
 					}
-					if(cth_def_mod_set && (**cth_it)["add"] != "") {
-						cth_def_mod = maximum<int>(cth_def,lexical_cast_default<int>((**cth_it)["add"]));
-					} else if((**cth_it)["add"] != "") {
-						cth_def_mod = lexical_cast_default<int>((**cth_it)["add"]);
-						cth_def_mod_set = true;
+					if((**cth_it)["add"] != "") {
+						if(cth_ncum_add_set) {
+							cth_ncum_add = maximum<int>(cth_ncum_add,lexical_cast_default<int>((**cth_it)["add"]));
+						} else {
+							cth_ncum_add = lexical_cast_default<int>((**cth_it)["add"]);
+							cth_ncum_add_set = true;
+						}
 					}
+					use_ncum = true;
 				}
 			}
-			res.chance_to_hit_attacker = cth_def + cth_def_mod;
+			if(use_cum) {
+				res.chance_to_hit_attacker = maximum<int>(cth_cum_set + cth_cum_add,cth_ncum_set + cth_ncum_add);
+			} else if(use_ncum) {
+				res.chance_to_hit_attacker = cth_ncum_set + cth_ncum_add;
+			}
 		}
 
 		int bonus = 100;
@@ -595,15 +616,16 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		int base_damage = defend.damage();
 		int resistance_modifier = a->second.damage_from(defend,true,a->first);
 		
-		
 		{ // modify damage
 			weapon_special_list dmg_specials = defend.get_specials("damage");
-			int dmg_def = base_damage;
-			int dmg_def_mod = 0;
-			int dmg_def_mul_cum = 1;
-			int dmg_def_mul_ncum = 1;
-			bool dmg_def_set = false;
-			bool dmg_def_mod_set = false;
+			int dmg_ncum_set = base_damage; bool dmg_ncum_set_set = false;
+			int dmg_ncum_add = 0; bool dmg_ncum_add_set = false;
+			int dmg_ncum_mul = 1;
+			int dmg_cum_set = base_damage;
+			int dmg_cum_add = 0;
+			int dmg_cum_mul = 1;
+			bool use_ncum = false;
+			bool use_cum = false;
 			for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
 				if((**dmg_it)["backstab"]=="yes") {
 					if(!backstab_check(d->first,a->first,units,teams)) {
@@ -611,35 +633,40 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 					}
 				}
 				if((**dmg_it)["cumulative"]=="yes") {
-					if((**dmg_it)["value"] != "") {
-						dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
-					}
-					dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"],1);
-					if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
-						dmg_def_mod += lexical_cast_default<int>((**dmg_it)["add"]);
-					} else if((**dmg_it)["add"] != "") {
-						dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
-						dmg_def_mod_set = true;
-					}
+					dmg_cum_set = maximum<int>(dmg_cum_set,lexical_cast_default<int>((**dmg_it)["value"]));
+					dmg_cum_add += lexical_cast_default<int>((**dmg_it)["add"]);
+					dmg_cum_mul *= lexical_cast_default<int>((**dmg_it)["multiply"]);
+					use_cum = true;
 				} else {
-					dmg_def_mul_ncum = maximum<int>(dmg_def_mul_ncum,lexical_cast_default<int>((**dmg_it)["multiply"],1));
-					if(dmg_def_set) {
-						dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
-					} else {
-						if((**dmg_it)["value"] != "") {
-							dmg_def = lexical_cast_default<int>((**dmg_it)["value"]);
-							dmg_def_set = true;
+					if((**dmg_it)["value"] != "") {
+						if(dmg_ncum_set_set) {
+							dmg_ncum_set = maximum<int>(dmg_ncum_set,lexical_cast_default<int>((**dmg_it)["value"]));
+						} else {
+							dmg_ncum_set = lexical_cast_default<int>((**dmg_it)["value"]);
+							dmg_ncum_set_set = true;
 						}
+						use_ncum = true;
 					}
-					if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
-						dmg_def_mod = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["add"]));
-					} else if((**dmg_it)["add"] != "") {
-						dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
-						dmg_def_mod_set = true;
+					if((**dmg_it)["add"] != "") {
+						if(dmg_ncum_add_set) {
+							dmg_ncum_add = maximum<int>(dmg_ncum_add,lexical_cast_default<int>((**dmg_it)["add"]));
+						} else {
+							dmg_ncum_add = lexical_cast_default<int>((**dmg_it)["add"]);
+							dmg_ncum_add_set = true;
+						}
+						use_ncum = true;
+					}
+					if((**dmg_it)["multiply"] != "") {
+						dmg_ncum_mul = maximum<int>(dmg_ncum_mul,lexical_cast_default<int>((**dmg_it)["multiply"]));
+						use_ncum = true;
 					}
 				}
 			}
-			base_damage = (dmg_def * maximum<int>(dmg_def_mul_cum,dmg_def_mul_ncum)) + dmg_def_mod;
+			if(use_cum) {
+				base_damage = maximum<int>(dmg_cum_set*dmg_cum_mul + dmg_cum_add,dmg_ncum_set + dmg_ncum_add);
+			} else if(use_ncum) {
+				base_damage = dmg_ncum_set*dmg_ncum_mul + dmg_ncum_add;
+			}
 		}
 		
 		if (strings) {
@@ -719,7 +746,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			int hitp = d->second.hitpoints();
 			int mhitp = d->second.max_hitpoints();
 			
-			res.ndefends = swarm_min_attacks + swarm_max_attacks * hitp / mhitp;
+			res.ndefends = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
 			
 		} else {
 			res.ndefends = defend.num_attacks();
@@ -767,48 +794,55 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	{ // modify damage
 		weapon_special_list dmg_specials = attack.get_specials("damage");
-		int dmg_def = base_damage;
-		int dmg_def_mod = 0;
-		int dmg_def_mul_cum = 1;
-		int dmg_def_mul_ncum = 1;
-		bool dmg_def_set = false;
-		bool dmg_def_mod_set = false;
+		int dmg_ncum_set = base_damage; bool dmg_ncum_set_set = false;
+		int dmg_ncum_add = 0; bool dmg_ncum_add_set = false;
+		int dmg_ncum_mul = 1;
+		int dmg_cum_set = base_damage;
+		int dmg_cum_add = 0;
+		int dmg_cum_mul = 1;
+		bool use_ncum = false;
+		bool use_cum = false;
 		for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
-				if((**dmg_it)["backstab"]=="yes") {
-					if(!backstab_check(a->first,d->first,units,teams)) {
-						continue;
-					}
+			if((**dmg_it)["backstab"]=="yes") {
+				if(!backstab_check(a->first,d->first,units,teams)) {
+					continue;
 				}
+			}
 			if((**dmg_it)["cumulative"]=="yes") {
-				if((**dmg_it)["value"] != "") {
-					dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
-				}
-				dmg_def_mul_cum *= lexical_cast_default<int>((**dmg_it)["multiply"],1);
-				if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
-					dmg_def_mod += lexical_cast_default<int>((**dmg_it)["add"]);
-				} else if((**dmg_it)["add"] != "") {
-					dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
-					dmg_def_mod_set = true;
-				}
+				dmg_cum_set = maximum<int>(dmg_cum_set,lexical_cast_default<int>((**dmg_it)["value"]));
+				dmg_cum_add += lexical_cast_default<int>((**dmg_it)["add"]);
+				dmg_cum_mul *= lexical_cast_default<int>((**dmg_it)["multiply"]);
+				use_cum = true;
 			} else {
-				dmg_def_mul_ncum = maximum<int>(dmg_def_mul_ncum,lexical_cast_default<int>((**dmg_it)["multiply"],1));
-				if(dmg_def_set) {
-					dmg_def = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["value"]));
-				} else {
-					dmg_def = dmg_def,lexical_cast_default<int>((**dmg_it)["value"]);
-					dmg_def_set = true;
-				}
-				if(dmg_def_mod_set && (**dmg_it)["add"] != "") {
-					dmg_def_mod = maximum<int>(dmg_def,lexical_cast_default<int>((**dmg_it)["add"]));
-				} else if((**dmg_it)["add"] != "") {
-					if((**dmg_it)["value"] != "") {
-						dmg_def_mod = lexical_cast_default<int>((**dmg_it)["add"]);
-						dmg_def_mod_set = true;
+				if((**dmg_it)["value"] != "") {
+					if(dmg_ncum_set_set) {
+						dmg_ncum_set = maximum<int>(dmg_ncum_set,lexical_cast_default<int>((**dmg_it)["value"]));
+					} else {
+						dmg_ncum_set = lexical_cast_default<int>((**dmg_it)["value"]);
+						dmg_ncum_set_set = true;
 					}
+					use_ncum = true;
+				}
+				if((**dmg_it)["add"] != "") {
+					if(dmg_ncum_add_set) {
+						dmg_ncum_add = maximum<int>(dmg_ncum_add,lexical_cast_default<int>((**dmg_it)["add"]));
+					} else {
+						dmg_ncum_add = lexical_cast_default<int>((**dmg_it)["add"]);
+						dmg_ncum_add_set = true;
+					}
+					use_ncum = true;
+				}
+				if((**dmg_it)["multiply"] != "") {
+					dmg_ncum_mul = maximum<int>(dmg_ncum_mul,lexical_cast_default<int>((**dmg_it)["multiply"]));
+					use_ncum = true;
 				}
 			}
 		}
-		base_damage = (dmg_def*maximum<int>(dmg_def_mul_cum,dmg_def_mul_ncum)) + dmg_def_mod;
+		if(use_cum) {
+			base_damage = maximum<int>(dmg_cum_set*dmg_cum_mul + dmg_cum_add,dmg_ncum_set + dmg_ncum_add);
+		} else if(use_ncum) {
+			base_damage = dmg_ncum_set*dmg_ncum_mul + dmg_ncum_add;
+		}
 	}
 	
 	if (strings) {
