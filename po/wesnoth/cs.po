@@ -2,33 +2,31 @@
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Czech Wesnoth translation team, Yeti <yeti@physics.muni.cz> et al, 2004.
-# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005.
 #
+# Czech Wesnoth translation team, Yeti <yeti@physics.muni.cz> et al, 2004.
+# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005, 2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-02 13:13+0200\n"
-"PO-Revision-Date: 2006-02-19 12:13+0100\n"
-"Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
+"PO-Revision-Date: 2006-04-05 12:12+0200\n"
+"Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.10\n"
+"X-Generator: KBabel 1.11.2\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
 
 #: data/abilities.cfg:7
-#, fuzzy
 msgid "heals +4"
-msgstr "léčení"
+msgstr "ošetření"
 
 #: data/abilities.cfg:12
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -39,23 +37,20 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Léčení:\n"
-"Jednotka dokáže léčit spřátelené jednotky na vedlejších polích na začátku "
+"Ošetření:\n"
+"Jednotka dokáže ošetřit spřátelené jednotky na vedlejších polích na začátku "
 "tahu.\n"
 "\n"
-"Jedna zraněná jednotka se může za jeden tah vyléčit až o 4 životy.\n"
-"Léčitel může v jednom tahu vyléčit všechny opatrované jednotky celkem o 8 "
-"životů.\n"
-"Léčitel nedokáže uzdravit otrávenou jednotku; taková jednotka musí vyhledat "
-"pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
+"Jedna zraněná jednotka se může za jeden tah vyléčit až o 4 životy nebo se jí "
+"může na jeden tah zastavit působení jedu.\n"
+"Ošetřovatel nedokáže uzdravit otrávenou jednotku; taková jednotka musí "
+"vyhledat pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #: data/abilities.cfg:26
-#, fuzzy
 msgid "heals +8"
 msgstr "léčení"
 
 #: data/abilities.cfg:31
-#, fuzzy
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -66,17 +61,16 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Uzdravováni:\n"
+"Léčení:\n"
 "Tato jednotka kombinuje účinky léčivých rostlin s magií, aby vyléčila "
 "jednotky rychleji než je běžně možné na bitevním poli.\n"
 "\n"
 "Tato jednotka se na začátku tahu postará o všechny spřátelené zraněné "
 "jednotky stojící na sousedních polích.\n"
-"Zraněná jednotka se může za jeden tah vyléčit až o 8 životů.\n"
-"Uzdravovatel může vyléčit všechny opatrované jednotky celkem o 18 životů za "
-"tah.\n"
-"Uzdravovatel dokáže uzdravit i otrávenou jednotku, ale tato jednotka už v "
-"daném tahu nebude dále léčena."
+"Zraněná jednotka se může za jeden tah vyléčit až o 8 životů nebo zastavit na "
+"jeden tah průběh otravy.\n"
+"Léčitel nedokáže uzdravit otrávenou jednotku; taková jednotka musí vyhledat "
+"pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #: data/abilities.cfg:40
 msgid "cures"
@@ -88,6 +82,9 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Uzdravování:\n"
+"Uzdravovatel dokáže uzdravit otrávenou jednotku, ale tato jednotka už v "
+"daném tahu nebude dále léčena."
 
 #: data/abilities.cfg:55
 msgid "regenerates"
@@ -306,7 +303,6 @@ msgstr ""
 "jednotek umístěných ve vesnicích.)"
 
 #: data/abilities.cfg:418
-#, fuzzy
 msgid "slows"
 msgstr "zpomalení"
 
@@ -321,7 +317,6 @@ msgstr ""
 "jednotkou a počet pohybů (zaokrouhleno nahoru)."
 
 #: data/abilities.cfg:427
-#, fuzzy
 msgid "stones"
 msgstr "zkamenění"
 
@@ -401,7 +396,6 @@ msgid "swarm"
 msgstr "hejno"
 
 #: data/abilities.cfg:458
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -435,7 +429,6 @@ msgstr ""
 "dvojnásobné poranění útočníka při protivníkově odvetném útoku."
 
 #: data/abilities.cfg:476
-#, fuzzy
 msgid "drains"
 msgstr "vysátí"
 
@@ -490,9 +483,8 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
 #: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
-#, fuzzy
 msgid "Artwork and Graphics Designers"
-msgstr "Kresby a grafický design"
+msgstr "Kresby a grafika"
 
 #: data/about.cfg:51
 msgid "Music"
@@ -605,9 +597,8 @@ msgid "Japanese Translation"
 msgstr "Japonský překlad"
 
 #: data/about.cfg:363
-#, fuzzy
 msgid "Korean Translation"
-msgstr "Norský překlad"
+msgstr "Korejský překlad"
 
 #: data/about.cfg:370
 msgid "Latin Translation"
@@ -682,7 +673,6 @@ msgstr "Celkové vyléčení"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
 #: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
 #: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
 msgid "Campaign Designer"
 msgstr "Tažení"
 
@@ -1175,9 +1165,8 @@ msgstr "drápy"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:25
 #: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
 #: data/campaigns/Under_the_Burning_Suns.cfg:32
-#, fuzzy
 msgid "Current Maintainer"
-msgstr "Současný úkol:"
+msgstr "Současný správce"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:85
@@ -1517,7 +1506,6 @@ msgid "Fire Dragon"
 msgstr "Ohnivý drak"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:26
-#, fuzzy
 msgid ""
 "A fire dragon is an ancient and horrifying being that normally lives only in "
 "hushed rumor and fantastic stories. It is normal for centuries to pass "
@@ -1529,7 +1517,7 @@ msgid ""
 "ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
 "often take underlings whom they lead to victory."
 msgstr ""
-"Ohnivý drak je prastará a strašlivá bytost která běžně žije jen v "
+"Ohnivý drak je prastará a strašlivá bytost, která běžně žije jen v "
 "povídačkách a smyšlených příbězích. Ve Wesnothu normálně uplynou století, "
 "aniž by byl drak spatřen a obvykle je to pouze mlhavý tvar letící v dáli. "
 "Legendy jsou velmi konkrétní ve věci zkázonosných nájezdů ohnivých draků: "
@@ -1537,7 +1525,7 @@ msgstr ""
 "se na svou kořist až překvapivě hbitě a sežehnou ji pekelnými proudy ohně. "
 "Pokud snad něco unikne drakovu ohnivému dechu, je ještě zapotřebí dát pozor "
 "na jeho zuřivě kousající tlamu a drtící ocas. Ohniví draci jsou lstiví a "
-"krutí; také často nasbírají poskoky které vedou k vítězství."
+"krutí; také často nasbírají poskoky, které vedou k vítězství."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:30
 msgid "bite"
@@ -1727,9 +1715,8 @@ msgstr "dotek"
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:43
 #: data/units/Undead_Necro_Ancient_Lich.cfg:70
 #: data/units/Undead_Necro_Lich.cfg:52
-#, fuzzy
 msgid "chill tempest"
-msgstr "vlna mrazu"
+msgstr "mrazivá bouře"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:146
@@ -1941,6 +1928,21 @@ msgid ""
 "a high chance of hitting an opponent. The staff of a necromancer is marked "
 "with the plague, and any foe struck down by it will rise again in unlife."
 msgstr ""
+"Jedním z nejvyšších dovedností černé magie je umění nekromancie, hrozivá "
+"schopnost pozvednout mrtvé k falešnému životu. Objev tohoto umění přinesl "
+"hrůzné následky a zapříčinil odsouzení černé magie lidmi. Jejich strach se "
+"však stal ohromnou novou zbraní v rukou černé magie.\n"
+"\n"
+"Tato schopnost, ve všech svých aspektech, se stala prvním krokem na cestě k "
+"oklamání smrti. Cena za něj je ale strašná. Nejvyšším stupněm moci je pak "
+"schopnost temných mágů docílit získání moci, kterou vládnou Lichové, bez "
+"ztráty své lidské podstaty. Jejich smrtelná těla se pak mocí magie stávají "
+"silnější a odolnější, na rozdíl od těl Lichů, která jsou křehká a "
+"práchniví.\n"
+"\n"
+"Zvláštní rysy: útok nekromantů na dálku je magický a má vysokou šanci na "
+"úspěch. jeho hůl pak roznáší stopy nákazy, takže holí zabitý protivník je "
+"znovu pozvednut jako nemrtvý."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:38
 #: data/units/Undead_Corpse_Soulless.cfg:53
@@ -2957,7 +2959,6 @@ msgstr ""
 "trolové) se vyléčí automaticky o 8HP každý tah."
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -2966,13 +2967,11 @@ msgid ""
 msgstr ""
 "\n"
 "Léčitelé: Jednotky se schopností <ref>dst=ability_heals text=Léčení</ref> "
-"mohou léčit až o 8HP každý tah, stejně dobře jako chránit před jedy "
-"způsobujícími poškození. Budou vyléčeny pouze ty jednotky, které se "
-"nacházejí v těsné blízkosti a jsou na stejné straně jako léčitel a to pouze "
-"o 4HP na jednotku."
+"mohou léčit či chránit před jedy způsobujícími poškození. Budou vyléčeny "
+"pouze ty jednotky, které se nacházejí v těsné blízkosti a jsou na stejné "
+"straně jako léčitel a to pouze o 4 nebo 8HP na jednotku."
 
 #: data/help.cfg:220
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -2980,10 +2979,10 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"Ošetřovatelé: Jednotky se schopností <ref>dst=ability_cures "
-"text='uzdravování'</ref> uzdraví vše až o 18HP na kolo, nebo vyléčí otravu. "
-"Budou uzdraveny pouze jednotky nacházející se v blízkém okolí a bojující na "
-"stejné straně jako uzdravující jednotka a to ne více než o 8HP na jednotku."
+"Uzdravovatelé: Jednotky se schopností <ref>dst=ability_cures "
+"text='uzdravování'</ref> uzdraví všechny spřátelené jednotky z otravy "
+"(uzdravování má u spřátelené jednotky vyšší prioritu než léčení či "
+"ošetřování, má-li uzdravovatel i tuto schopnost)."
 
 #: data/help.cfg:222
 #, fuzzy
@@ -4013,10 +4012,13 @@ msgid "Great War"
 msgstr "Velká válka"
 
 #: data/names.cfg:51
+#, fuzzy
 msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
+"Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
+"Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -4044,7 +4046,7 @@ msgstr "2p - Výpad"
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 #, fuzzy
 msgid "2p - Cynsaun Battlefield"
-msgstr "2p - Princeznino bitevní pole"
+msgstr "2p - Cynsaunovo bitevní pole"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 #, fuzzy
@@ -4227,9 +4229,8 @@ msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "Remíza!  Konečné skóre: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:5
-#, fuzzy
 msgid "3p - Island of the Horatii"
-msgstr "4p - Ostrov Horáciů"
+msgstr "3p - Ostrov Horáciů"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
 msgid ""
@@ -4360,7 +4361,6 @@ msgstr "4p - Stezky dýk"
 
 # možnými způsoby útoku
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid ""
 "A 35X27 2 vs. 2 map with five separate paths of engagement.  Balanced to be "
 "played east vs west (1&3 vs 2&4), but works well with any teams or FFA.  "
@@ -4376,15 +4376,14 @@ msgid "4p - Siege Castles"
 msgstr "4p - Obležené hrady"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well 2 vs 2 or FFA. There are approximately 45 villages. "
 "Recommended setting of 2 gold per village."
 msgstr ""
-"Osu této mapy 25x25 pro dva proti dvěma tvoří řeka; v protilehlých rozích "
-"jsou dvojice tvrzí. Navrženo pro spojenectví 1&3 proti 2&4. Na mapě je 28 "
-"vesnic. Doporučené nastavení 2 zlaté na vesnici."
+"Mapa 40X30 pro 4 hráče kde mezi dvěma řekami proti sobě stojí čtyři mocné "
+"tvrze. Dobře hratelné pro dva proti dvěma či všichni proti všem. Na mapě je "
+"45 vesnic. Doporučené nastavení 2 zlaté na vesnici."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -4413,7 +4412,6 @@ msgid "6p - Crusaders' Field"
 msgstr "6p - Křižácké pole"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
-#, fuzzy
 msgid ""
 "The rallying cries of battle can once again be heard on this time-worn field "
 "of war, where the ghosts of thousands of brave warriors float invisibly "
@@ -4422,7 +4420,7 @@ msgid ""
 msgstr ""
 "Sílící zvuky bitvy se opět rozléhají po tomto časem opotřebeném bojišti, kde "
 "duchové tisíců hrdinných válečníků neviditelně proplouvají horami, stromy a "
-"řekami. Doporučené nastavení 2 zlaté na vesnici."
+"řekami. Doporučené nastavení 1 zlatý na vesnici."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
@@ -4588,9 +4586,8 @@ msgid "Cave Lit"
 msgstr "Osvětlená jeskyně"
 
 #: data/terrain.cfg:414
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "Pouštní hory"
+msgstr "Neschůdné hory"
 
 #: data/terrain.cfg:445
 msgid "Great Tree"
@@ -5054,14 +5051,12 @@ msgid "resilient"
 msgstr "houževnatý"
 
 #: data/tutorial/units/Fighteress.cfg:5 data/tutorial/units/Fighteress.cfg:54
-#, fuzzy
 msgid "female^Fighter"
-msgstr "Čarodějka"
+msgstr "Bojovnice"
 
 #: data/tutorial/units/Quintain.cfg:3
-#, fuzzy
 msgid "Quintain"
-msgstr "Hory"
+msgstr ""
 
 #: data/tutorial/units/Quintain.cfg:13
 msgid ""
@@ -5070,9 +5065,8 @@ msgid ""
 msgstr ""
 
 #: data/tutorial/units/Quintain.cfg:20
-#, fuzzy
 msgid "flail"
-msgstr "ocas"
+msgstr "cep"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -6068,9 +6062,9 @@ msgstr ""
 "Léčitelské schopnosti elfů jsou také nevšední a v boji naleznou skvělé "
 "uplatnění.\n"
 "\n"
-"Zvláštní údaje: šamanův útok zamotáním zpomalí nepřítele - sníží na polovinu "
-"jeho pohyb a zranění jím způsobované. Šamani znají základy uzdravování, "
-"takže mohou zdržet následky otravy, nedokáží je však vyléčit."
+"Zvláštní údaje: šamančin útok zamotáním zpomalí nepřítele - sníží na "
+"polovinu jeho pohyb a zranění jím způsobované. Šamanky znají základy "
+"uzdravování, takže mohou zdržet následky otravy, nedokáží je však vyléčit."
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
@@ -6139,7 +6133,7 @@ msgid ""
 msgstr ""
 "Vyhýbají se studiu uzdravování ku prospěchu agresivnějšího použití magie. "
 "Elfí vědmy se staly docela zručné v boji na dálku. Jejich útok zamotání je "
-"znatelně efektivnější než u Elfího šamana a mohou vyvolat poryv chladného "
+"znatelně efektivnější než u Elfí šamanky a mohou vyvolat poryv chladného "
 "nadpozemského větru a tak uhodit na ty, kteří se jim postaví."
 
 #: data/units/Elvish_Sylph.cfg:3
@@ -6165,7 +6159,6 @@ msgid "Direwolf Rider"
 msgstr "Jezdec na pravlku"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:21
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the garden variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -6194,7 +6187,8 @@ msgstr ""
 "smrtící.\n"
 "\n"
 "Zvláštní rysy: Kdokoli zasažený úderem drápů pravlka je otráven a bude "
-"kontinuálně ztrácet životy, dokud nebude vyléčen ve městě nebo léčitelem."
+"kontinuálně ztrácet životy, dokud nebude uzdraven ve městě nebo "
+"uzdravovatelem."
 
 #: data/units/Goblin_Direwolf_Rider.cfg:39 data/units/Goblin_Knight.cfg:39
 #: data/units/Goblin_Wolf_Rider.cfg:70 data/units/Monster_Cave_Spider.cfg:39
@@ -8194,9 +8188,8 @@ msgstr ""
 
 #: data/units/Orcish_Ruler.cfg:30 data/units/Orcish_Sovereign.cfg:32
 #: data/units/Orcish_Warlord.cfg:28 data/units/Orcish_Warrior.cfg:27
-#, fuzzy
 msgid "greatsword"
-msgstr "meč"
+msgstr "velký meč"
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
@@ -8308,9 +8301,8 @@ msgstr ""
 "mohou stát Ještěráckými megaútočníky."
 
 #: data/units/Saurian_Augur.cfg:3
-#, fuzzy
 msgid "Saurian Augur"
-msgstr "Ještěrácké přepadové komando"
+msgstr "Ještěrácký šaman"
 
 #: data/units/Saurian_Augur.cfg:25
 #, fuzzy
@@ -8344,9 +8336,8 @@ msgstr ""
 "využít."
 
 #: data/units/Saurian_Oracle.cfg:3
-#, fuzzy
 msgid "Saurian Oracle"
-msgstr "Ještěrácký šaman"
+msgstr "Ještěrácký vrhači ledu"
 
 #: data/units/Saurian_Oracle.cfg:25
 #, fuzzy
