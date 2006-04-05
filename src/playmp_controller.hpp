@@ -13,6 +13,8 @@
 #ifndef PLAYMP_CONTROLLER_H_INCLUDED
 #define PLAYMP_CONTROLLER_H_INCLUDED
 
+#include "global.hpp"
+
 #include "hotkeys.hpp"
 #include "playsingle_controller.hpp"
 

@@ -1,28 +1,7 @@
-#include "global.hpp"
-
-#include "ai_interface.hpp"
-#include "config_adapter.hpp"
-#include "cursor.hpp"
-#include "display.hpp"
-#include "filesystem.hpp"
-#include "font.hpp"
-#include "game_events.hpp"
-#include "gettext.hpp"
-#include "halo.hpp"
-#include "help.hpp"
-#include "intro.hpp"
-#include "key.hpp"
-#include "log.hpp"
-#include "map_create.hpp"
-#include "marked-up_text.hpp"
 #include "playmp_controller.hpp"
-#include "playturn.hpp"
-#include "preferences.hpp"
-#include "preferences_display.hpp"
-#include "replay.hpp"
+
+#include "log.hpp"
 #include "sound.hpp"
-#include "statistics.hpp"
-#include "tooltips.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 

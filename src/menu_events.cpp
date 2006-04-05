@@ -1198,7 +1198,9 @@ namespace events{
 	}
 
 	void menu_handler::do_speak(){
-		do_speak(textbox_info_.box_->text(),textbox_info_.check_ != NULL ? textbox_info_.check_->checked() : false);
+		//None of the two parameters really needs to be passed since the informations belong to members of the class.
+		//But since it makes the called method more generic, it is done anyway.
+		do_speak(textbox_info_.box()->text(),textbox_info_.check() != NULL ? textbox_info_.check()->checked() : false);
 	}
 
 	void menu_handler::do_speak(const std::string& message, bool allies_only)

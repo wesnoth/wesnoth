@@ -1,14 +1,10 @@
 #include "play_controller.hpp"
 
 #include "config_adapter.hpp"
-#include "dialogs.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
-#include "unit_display.hpp"
-#include "wassert.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 
@@ -489,15 +485,15 @@ void play_controller::enter_textbox()
 		return;
 	}
 
-	switch(menu_handler_.get_textbox().mode_) {
+	switch(menu_handler_.get_textbox().mode()) {
 	case gui::TEXTBOX_SEARCH:
-		menu_handler_.do_search(menu_handler_.get_textbox().box_->text());
+		menu_handler_.do_search(menu_handler_.get_textbox().box()->text());
 		break;
 	case gui::TEXTBOX_MESSAGE:
 		menu_handler_.do_speak();
 		break;
 	case gui::TEXTBOX_COMMAND:
-		menu_handler_.do_command(menu_handler_.get_textbox().box_->text(), player_number_, mouse_handler_);
+		menu_handler_.do_command(menu_handler_.get_textbox().box()->text(), player_number_, mouse_handler_);
 		break;
 	default:
 		LOG_STREAM(err, display) << "unknown textbox mode\n";
