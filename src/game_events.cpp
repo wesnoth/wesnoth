@@ -1954,7 +1954,8 @@ void write_events(config& cfg)
 	}
 
 	std::stringstream used;
-	for(std::set<std::string>::const_iterator u = used_items.begin(); u != used_items.end(); ++u) {
+	std::set<std::string>::const_iterator u;
+	for(u = used_items.begin(); u != used_items.end(); ++u) {
 		if(u != used_items.begin())
 			used << ",";
 
@@ -1963,7 +1964,7 @@ void write_events(config& cfg)
 
 	cfg["used_items"] = used.str();
 	std::stringstream ids;
-	for(std::set<std::string>::const_iterator u = unit_wml_ids.begin(); u != unit_wml_ids.end(); ++u) {
+	for(u = unit_wml_ids.begin(); u != unit_wml_ids.end(); ++u) {
 		if(u != unit_wml_ids.begin())
 			ids << ",";
 
