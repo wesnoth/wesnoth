@@ -131,6 +131,9 @@ namespace preferences {
 	int turns();
 	void set_turns(int value);
 
+	bool skip_mp_replay();
+	void set_skip_mp_replay(bool value);
+
 	bool countdown();
 	void set_countdown(bool value);
 	int countdown_init_time();

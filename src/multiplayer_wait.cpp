@@ -249,11 +249,7 @@ void wait::join_game(bool observe)
 		response["leader"] = leader_choice;
 
 		network::send_data(response);
-	}
-	else{
-		const int res = gui::show_dialog(disp(),NULL,_("Skip replay"),_("Do you want to skip the replay?"),gui::YES_NO);
-		skip_mp_replay = (res == 0);
-	}
+	} 
 
 	generate_menu();
 }

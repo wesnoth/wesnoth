@@ -498,6 +498,17 @@ void set_turns(int value)
 	prefs["mp_turns"] = stream.str();
 }
 
+bool skip_mp_replay()
+{
+	return prefs["skip_mp_replay"] == "yes";
+}
+
+void set_skip_mp_replay(bool value)
+{
+	prefs["skip_mp_replay"] = value ? "yes" : "no";
+}
+
+
 bool countdown()
 {
 	return prefs["mp_countdown"] == "yes";

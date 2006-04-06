@@ -448,12 +448,15 @@ lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
 	observe_game_(disp.video(), _("Observe Game")),
 	join_game_(disp.video(), _("Join Game")),
 	create_game_(disp.video(), _("Create Game")),
+	skip_replay_(disp.video(), _("Skip Replays"), gui::button::TYPE_CHECK),
 	game_preferences_(disp.video(), _("Preferences")),
 	quit_game_(disp.video(), _("Quit")),
 	sorter_(gamelist),
 	games_menu_(disp.video()),
 	current_game_(0)
 {
+	skip_replay_.set_check(preferences::skip_mp_replay());
+	skip_replay_.set_help_string(_("Skip quickly to the active turn when observing"));
 	game_config::debug = false;
 	gamelist_updated();
 	sound::play_music_repeatedly(game_config::title_music);
@@ -467,6 +470,7 @@ void lobby::hide_children(bool hide)
 	observe_game_.hide(hide);
 	join_game_.hide(hide);
 	create_game_.hide(hide);
+	skip_replay_.hide(hide);
 	game_preferences_.hide(hide);
 	quit_game_.hide(hide);
 }
@@ -478,7 +482,8 @@ void lobby::layout_children(const SDL_Rect& rect)
 	join_game_.set_location(xscale(12),yscale(7));
 	observe_game_.set_location(join_game_.location().x + join_game_.location().w + 5,yscale(7));
 	create_game_.set_location(observe_game_.location().x + observe_game_.location().w + 5,yscale(7));
-	game_preferences_.set_location(create_game_.location().x + create_game_.location().w + 5,yscale(7));
+	skip_replay_.set_location(create_game_.location().x + 2*(create_game_.location().w),yscale(7));
+	game_preferences_.set_location(skip_replay_.location().x + skip_replay_.location().w + 5,yscale(7));
 	quit_game_.set_location(game_preferences_.location().x + game_preferences_.location().w + 5,yscale(7));
 
 	games_menu_.set_location(client_area().x, client_area().y + title().height());
@@ -508,6 +513,7 @@ void lobby::process_event()
 
 	const bool observe = (observe_game_.pressed() || (games_menu_.selected() && !games_menu_.selection_is_joinable())) && games_menu_.selection_is_observable();
 	const bool join = (join_game_.pressed() || games_menu_.selected()) && games_menu_.selection_is_joinable();
+	preferences::set_skip_mp_replay(skip_replay_.checked());
 
 	if(join || observe) {
 		const config* game = gamelist().child("gamelist");
