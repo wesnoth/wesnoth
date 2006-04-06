@@ -22,7 +22,6 @@
 #include "game_events.hpp"
 #include "log.hpp"
 #include "pathfind.hpp"
-#include "playlevel.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
@@ -191,15 +190,7 @@ void replay::set_skip(bool skip)
 
 bool replay::is_skipping() const
 {
-	//YogiHH, 03.03.2006
-	//In multiplayer, skipping is implemented through the skip_ flag.
-	//Since at_end() is always true in mp replays (process_network_data
-	//creates a new replayer for every single command), we need a separate
-	//condition for it
-	//mp replay skipped or "skip_animation" in replay mode checked
-	if (skip_) { return true; }
-	//mp replay not skipped or "skip animation" in replay mode not checked
-	return at_end() == false && skip_;
+	return skip_;
 }
 
 void replay::save_game(const std::string& label, const config& snapshot,
@@ -616,7 +607,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 		//if there is nothing more in the records
 		if(cfg == NULL) {
-			replayer.set_skip(false);
+			//replayer.set_skip(false);
 			return false;
 		}
 

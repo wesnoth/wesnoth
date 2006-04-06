@@ -20,6 +20,7 @@
 #include "dialogs.hpp"
 #include "game_config.hpp"
 #include "game_events.hpp"
+#include "menu_events.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
@@ -296,7 +297,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 		//confirm the transaction - i.e. don't undo recruitment
 		replay_guard.confirm_transaction();
 
-		sync_network();
+		info_.turn_data_.sync_network();
 		const team_data data = calculate_team_data(current_team(),info_.team_num,info_.units);
 		LOG_AI <<
 		"recruit confirmed: team=" << (info_.team_num) <<
@@ -356,24 +357,6 @@ const team& ai_interface::current_team() const
 	return info_.teams[info_.team_num-1];
 }
 
-void ai_interface::sync_network()
-{
-	if(network::nconnections() > 0) {
-
-		//receive data first, and then send data. When we sent the end of
-		//the AI's turn, we don't want there to be any chance where we
-		//could get data back pertaining to the next turn.
-		config cfg;
-		while(network::connection res = network::receive_data(cfg)) {
-			std::deque<config> backlog;
-			info_.turn_data_.process_network_data(cfg,res,backlog,false);
-			cfg.clear();
-		}
-
-		info_.turn_data_.send_data();
-	}
-}
-
 gamemap::location ai_interface::move_unit(location from, location to, std::map<location,paths>& possible_moves)
 {
 	const location loc = move_unit_partial(from,to,possible_moves);
@@ -394,7 +377,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 {
 	LOG_AI << "ai_interface::move_unit " << from << " -> " << to << '\n';
 	//stop the user from issuing any commands while the unit is moving
-	const command_disabler disable_commands;
+	const events::command_disabler disable_commands;
 
 	wassert(info_.units.find(to) == info_.units.end() || from == to);
 
@@ -510,7 +493,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 	}
 
 	info_.disp.unhighlight_reach();
-	sync_network();
+	info_.turn_data_.sync_network();
 
 	return to;
 }
@@ -1002,7 +985,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 void ai_interface::attack_enemy(const location& u, const location& target, int weapon)
 {
 	//stop the user from issuing any commands while the unit is attacking
-	const command_disabler disable_commands;
+	const events::command_disabler disable_commands;
 
 	if(info_.units.count(u) && info_.units.count(target)) {
 		if(info_.units.find(target)->second.get_state("stoned")=="yes") {
@@ -1028,7 +1011,7 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 			}
 		}
 
-		sync_network();
+		info_.turn_data_.sync_network();
 	}
 }
 

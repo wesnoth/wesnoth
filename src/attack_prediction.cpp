@@ -423,6 +423,8 @@ void prob_matrix::receive_blow_a(unsigned damage, double hit_chance,
 	}
 }
 
+};
+
 combatant::combatant(unsigned hp, unsigned max_hp, bool slowed,
 					 bool could_ever_drain)
 	: hp_dist(could_ever_drain ? max_hp+1: hp+1), hp_(hp), max_hp_(max_hp),
@@ -584,7 +586,6 @@ void combatant::fight(combatant &opp)
 	untouched = hp_dist[hp_];
 	opp.untouched = opp.hp_dist[opp.hp_];
 }
-};
 
 #if defined(BENCHMARK) || defined(CHECK)
 // We create a significant number of nasty-to-calculate units, and

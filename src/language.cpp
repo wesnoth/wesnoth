@@ -94,7 +94,7 @@ bool load_language_list()
 	try {
 		scoped_istream stream = preprocess_file("data/language.cfg");
 		read(cfg, *stream);
-	} catch(config::error &e) {
+	} catch(config::error &) {
 		return false;
 	}
 

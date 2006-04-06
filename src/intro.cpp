@@ -165,8 +165,7 @@ bool show_intro_part(display &disp, const config& part,
 	//draw title if needed
 	if(show_title) {
 		const SDL_Rect area = {0,0,video.getx(),video.gety()};
-		const SDL_Rect scenario_size =
-		      font::draw_text(NULL,area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,0,0);
+		font::draw_text(NULL,area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,0,0);
 		update_rect(font::draw_text(&video,area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,
 					    dstrect.x + 20,dstrect.y + 20));
 	}

@@ -23,6 +23,7 @@
 
 struct upload_log
 {
+public:
 	struct manager {
 		manager() { };
 		~manager();

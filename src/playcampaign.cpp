@@ -17,12 +17,12 @@
 #include <map>
 
 #include "playcampaign.hpp"
-#include "playlevel.hpp"
 #include "config.hpp"
+#include "filesystem.hpp"
 #include "gamestatus.hpp"
-//30.12.2005 YogiHH
-//please keep in for the moment, supports me in merging gameplay and replay functionality
-//#include "play_controller.hpp"
+#include "map_create.hpp"
+#include "playmp_controller.hpp"
+#include "playsingle_controller.hpp"
 #include "replay.hpp"
 #include "replay_controller.hpp"
 #include "log.hpp"
@@ -205,8 +205,52 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 			if (state.label.empty())
 				state.label = (*scenario)["name"];
 
-			LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story,log, skip_replay);
-			//LEVEL_RESULT res = play_scenario(units_data,game_config,scenario,video,state,story);
+			//if the entire scenario should be randomly generated
+			if((*scenario)["scenario_generation"] != "") {
+				LOG_G << "randomly generating scenario...\n";
+				const cursor::setter cursor_setter(cursor::WAIT);
+
+				static config scenario2;
+				scenario2 = random_generate_scenario((*scenario)["scenario_generation"], scenario->child("generator"));
+				//level_ = scenario;
+
+				state.starting_pos = scenario2;
+				scenario = &scenario2;
+			}
+
+			std::string map_data = (*scenario)["map_data"];
+			if(map_data == "" && (*scenario)["map"] != "") {
+				map_data = read_map((*scenario)["map"]);
+			}
+
+			//if the map should be randomly generated
+			if(map_data == "" && (*scenario)["map_generation"] != "") {
+				const cursor::setter cursor_setter(cursor::WAIT);
+				map_data = random_generate_map((*scenario)["map_generation"],scenario->child("generator"));
+
+				//since we've had to generate the map, make sure that when we save the game,
+				//it will not ask for the map to be generated again on reload
+				static config new_level;
+				new_level = *scenario;
+				new_level.values["map_data"] = map_data;
+				scenario = &new_level;
+
+				state.starting_pos = new_level;
+				LOG_G << "generated map\n";
+			}
+
+			//LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story,log, skip_replay);
+			LEVEL_RESULT res;
+			switch (io_type){
+			case IO_NONE:
+				res = playsingle_scenario(units_data,game_config,scenario,video,state,story,log, skip_replay);
+				break;
+			case IO_SERVER:
+			case IO_CLIENT:
+				res = playmp_scenario(units_data,game_config,scenario,video,state,story,log, skip_replay);
+				break;
+			}
+
 
 			state.snapshot = config();
 			if (res == DEFEAT) {

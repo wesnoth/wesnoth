@@ -24,8 +24,8 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
+#include "menu_events.hpp"
 #include "minimap.hpp"
-#include "playturn.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
@@ -115,7 +115,7 @@ void advance_unit(const game_data& info,
 
 bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, display& gui, size_t choice)
 {
-	const command_disabler cmd_disabler;
+	const events::command_disabler cmd_disabler;
 
 	units_map::iterator u = units.find(loc);
 	if(u == units.end() || u->second.advances() == false) {

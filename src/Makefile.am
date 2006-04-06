@@ -54,6 +54,7 @@ wesnoth_SOURCES = \
 	dialogs.cpp \
 	display.cpp \
 	events.cpp \
+	floating_textbox.cpp \
 	font.cpp \
 	game.cpp \
 	game_events.cpp \
@@ -86,7 +87,9 @@ wesnoth_SOURCES = \
 	network_worker.cpp \
 	pathfind.cpp \
 	playcampaign.cpp \
-	playlevel.cpp \
+	play_controller.cpp \
+	playmp_controller.cpp \
+	playsingle_controller.cpp \
 	playturn.cpp \
 	preferences.cpp \
 	preferences_display.cpp \
@@ -156,6 +159,7 @@ wesnoth_editor_SOURCES = \
 	display.cpp \
 	events.cpp \
 	filechooser.cpp \
+	floating_textbox.cpp \
 	font.cpp \
 	game_events.cpp \
 	gamestatus.cpp \
@@ -171,11 +175,16 @@ wesnoth_editor_SOURCES = \
 	mapgen.cpp \
 	mapgen_dialog.cpp \
 	marked-up_text.cpp \
+	menu_events.cpp \
 	minimap.cpp \
 	mouse.cpp \
+	mouse_events.cpp \
 	network.cpp \
 	network_worker.cpp \
 	pathfind.cpp \
+	play_controller.cpp \
+	playmp_controller.cpp \
+	playsingle_controller.cpp \
 	playturn.cpp \
 	preferences.cpp \
 	preferences_display.cpp \
@@ -341,7 +350,6 @@ noinst_HEADERS = \
 	loadscreen.hpp \
 	builder.hpp \
 	publish_campaign.hpp \
-	playlevel.hpp \
 	game_config.hpp \
 	terrain.hpp \
 	config.hpp \
@@ -403,6 +411,10 @@ noinst_HEADERS = \
 	preferences_display.hpp \
 	replay_controller.hpp \
 	config_adapter.hpp \
+	floating_textbox.hpp \
+	play_controller.hpp \
+	playmp_controller.hpp \
+	playsingle_controller.hpp \
 	sdl_ttf/SDL_ttf.h \
 	wesconfig.h
 

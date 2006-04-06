@@ -643,7 +643,7 @@ std::string next_filename(const std::string &dirname)
 			try {
 				num = lexical_cast<int>(*i)+1;
 				break;
-			} catch (bad_lexical_cast &c) {
+			} catch (bad_lexical_cast &) {
 			}
 		}
 	}

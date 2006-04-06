@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MD /W3 /Gm /GR /GX /ZI /Od /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVE_FRIBIDI" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /MD /W3 /Gm /GR /GX /ZI /Od /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_DEBUG" /D "DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVE_FRIBIDI" /FR /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
@@ -53,7 +53,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype.lib Ws2_32.lib fribidi.lib python24.lib /nologo /subsystem:windows /debug /machine:I386 /out:"wesnoth_work.exe" /pdbtype:sept
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype.lib Ws2_32.lib fribidi.lib python24.lib /nologo /subsystem:windows /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept
 
 !ELSEIF  "$(CFG)" == "wesnoth - Win32 Release"
 
@@ -209,6 +209,10 @@ SOURCE=.\src\filesystem.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\floating_textbox.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\font.cpp
 # End Source File
 # Begin Source File
@@ -270,6 +274,10 @@ SOURCE=.\src\language.cpp
 # Begin Source File
 
 SOURCE=.\src\leader_list.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\loadscreen.cpp
 # End Source File
 # Begin Source File
 
@@ -373,7 +381,11 @@ SOURCE=.\src\playcampaign.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\playlevel.cpp
+SOURCE=.\src\playmp_controller.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\playsingle_controller.cpp
 # End Source File
 # Begin Source File
 
@@ -466,10 +478,6 @@ SOURCE=.\src\team.cpp
 # Begin Source File
 
 SOURCE=.\src\terrain.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\test_log.cpp
 # End Source File
 # Begin Source File
 
@@ -593,6 +601,10 @@ SOURCE=.\src\astarnode.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\attack_prediction.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\serialization\binary_or_text.hpp
 # End Source File
 # Begin Source File
@@ -654,6 +666,10 @@ SOURCE=.\src\events.hpp
 # Begin Source File
 
 SOURCE=.\src\filesystem.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\floating_textbox.hpp
 # End Source File
 # Begin Source File
 
@@ -722,6 +738,10 @@ SOURCE=.\src\language.hpp
 # Begin Source File
 
 SOURCE=.\src\leader_list.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\loadscreen.hpp
 # End Source File
 # Begin Source File
 
@@ -829,7 +849,11 @@ SOURCE=.\src\playcampaign.hpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\playlevel.hpp
+SOURCE=.\src\playmp_controller.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\playsingle_controller.hpp
 # End Source File
 # Begin Source File
 
