@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-02 13:13+0200\n"
-"PO-Revision-Date: 2006-04-05 23:38+0100\n"
+"PO-Revision-Date: 2006-04-06 20:57+0100\n"
 "Last-Translator: Gauteamus <gauteamusATgmailDOTcom>\n"
 "Language-Team: None\n"
 "MIME-Version: 1.0\n"
@@ -17,12 +17,10 @@ msgstr ""
 "X-Generator: KBabel 1.9.1\n"
 
 #: data/abilities.cfg:7
-#, fuzzy
 msgid "heals +4"
-msgstr "helbreder"
+msgstr "helbreder +4"
 
 #: data/abilities.cfg:12
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -33,22 +31,20 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Helbreder:\n"
+"Helbreder +4:\n"
 "Setter enheten i stand til å helbrede vennligsinnede naboenheter i "
 "begynnelsen av hver runde.\n"
 "\n"
-"En enhet som blir hjulpet av en helbreder kan heles opp til 4 HP per runde.\n"
-"En helbreder kan hele opp til 8 HP per runde totalt.\n"
+"En enhet som blir hjulpet av en helbreder kan hver runde heles opp til 4 HP, "
+"eller få stoppet virkningen av gift.\n"
 "En forgiftet enhet kan ikke bli kurert for giften av en helbreder, og må "
 "søke hjelp i en landsby eller hos en enhet som kan kurere."
 
 #: data/abilities.cfg:26
-#, fuzzy
 msgid "heals +8"
-msgstr "helbreder"
+msgstr "helbreder +8"
 
 #: data/abilities.cfg:31
-#, fuzzy
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -60,11 +56,11 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "Helbreder:\n"
-"Setter enheten i stand til å helbrede vennligsinnede naboenheter i "
-"begynnelsen av hver runde.\n"
+"Denne enheten kombinerer rtemedisin med magi for å helbrede enheter "
+"hurtigere enn vanligvis mulig på slagmarken.\n"
 "\n"
-"En enhet som blir hjulpet av en helbreder kan heles opp til 4 HP per runde.\n"
-"En helbreder kan hele opp til 8 HP per runde totalt.\n"
+"En enhet som blir hjulpet av denne kan hver runde heles opp til 8 HP, eller "
+"få stoppet virkningen av gift.\n"
 "En forgiftet enhet kan ikke bli kurert for giften av en helbreder, og må "
 "søke hjelp i en landsby eller hos en enhet som kan kurere."
 
@@ -78,6 +74,9 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Kurerer:\n"
+"Enheten kan kurere andre for gift, men enheter nylig kurert for gift vil "
+"ikke motta ytterligere helsepoeng den runden."
 
 #: data/abilities.cfg:55
 msgid "regenerates"
@@ -225,10 +224,9 @@ msgstr ""
 
 #: data/abilities.cfg:360
 msgid "submerge"
-msgstr "underdykk"
+msgstr "neddykk"
 
 #: data/abilities.cfg:364
-#, fuzzy
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -237,11 +235,11 @@ msgid ""
 "for any turn immediately after this unit has attacked, or if there are enemy "
 "units next to this unit."
 msgstr ""
-"Underdykk:\n"
+"Neddykk:\n"
 "\n"
 "Fiendtlige enheter kan ikke se eller angripe denne enheten når den befinner "
-"seg på dypt vann, unntatt for en runde etter at enheten selv har angrepet, "
-"eller hvis den har fiendtlige enheter i noe nabofelt. "
+"seg på dypt vann, unntatt for en runde rett etter at enheten selv har "
+"angrepet, eller hvis den har fiendtlige enheter i noe nabofelt. "
 
 #: data/abilities.cfg:380 data/units/Dwarvish_Berserker.cfg:37
 #: data/units/Dwarvish_Ulfserker.cfg:36
@@ -295,9 +293,8 @@ msgstr ""
 "for vandøde eller enheter i landsbyer.)"
 
 #: data/abilities.cfg:418
-#, fuzzy
 msgid "slows"
-msgstr "forsinke"
+msgstr "forsinker"
 
 #: data/abilities.cfg:420
 msgid ""
@@ -310,9 +307,8 @@ msgstr ""
 "halvert og beveger seg med halv normal fart (rundet opp)."
 
 #: data/abilities.cfg:427
-#, fuzzy
 msgid "stones"
-msgstr "forstene"
+msgstr "forstener"
 
 #: data/abilities.cfg:429
 msgid ""
@@ -391,7 +387,6 @@ msgid "swarm"
 msgstr "sverm"
 
 #: data/abilities.cfg:458
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -402,8 +397,8 @@ msgstr ""
 "Sverm:\n"
 "Dette angrepet får nedsatt antall angrep når enheten er skadet. Antallet "
 "slag er proporsjonalt med hvor mange HP enheten har igjen. For eksempel vil "
-"en enhet med 3/4 av sine maksimale HP gjøre 3/4 så mange slag som når den "
-"var helt frisk."
+"en enhet med 3/4 av sine maksimale HP slå 3/4 så mange slag som når den var "
+"helt frisk."
 
 #: data/abilities.cfg:464
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:28
@@ -426,9 +421,8 @@ msgstr ""
 "tar dobbel skade fra målenhetens motangrep."
 
 #: data/abilities.cfg:476
-#, fuzzy
 msgid "drains"
-msgstr "utsuge"
+msgstr "utsuger"
 
 #: data/abilities.cfg:478
 msgid ""
@@ -482,7 +476,6 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
 #: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
-#, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "Grafikkdesignere"
 
@@ -597,9 +590,8 @@ msgid "Japanese Translation"
 msgstr "Japansk Oversettelse"
 
 #: data/about.cfg:363
-#, fuzzy
 msgid "Korean Translation"
-msgstr "Norsk Oversettelse"
+msgstr "Koreansk Oversettelse"
 
 #: data/about.cfg:370
 msgid "Latin Translation"
@@ -674,9 +666,8 @@ msgstr "Full Helbred"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
 #: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
 #: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
 msgid "Campaign Designer"
-msgstr "Felttog"
+msgstr "Felttogdesigner"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
@@ -1169,7 +1160,7 @@ msgstr "klør"
 #: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
 #: data/campaigns/Under_the_Burning_Suns.cfg:32
 msgid "Current Maintainer"
-msgstr ""
+msgstr "Nåværende Koordinator"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:85
@@ -1234,7 +1225,7 @@ msgstr "spyd"
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:3
 msgid "Cockatrice"
-msgstr "Cockatrice"
+msgstr "Basilisk"
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:17
 msgid ""
@@ -2123,7 +2114,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "Grunnleggende Spillteknikk"
 
 #: data/help.cfg:74
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -2131,13 +2121,11 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
-"Denne siden beskriver det du trenger å vite for å spille Kampen om Wesnoth. "
+"Disse sidene beskriver det du trenger å vite for å spille Kampen om Wesnoth. "
 "Det dekker hvordan man spiller og de grunnleggende mekanismene bak spillet. "
-"For mer informasjon om å beherske spillet kan du lese "
-"<ref>dst=basic_strategy text=Grunnleggende Strategi</ref> og "
-"<ref>dst=multiplayer_strategy text=Gruppespillerstrategi</ref>. Husk at "
-"dette bare er en kort inntroduksjon. Følg linkene for spesielle unntak og "
-"situasjoner."
+"Ettersom du spiller, vil mer informasjon bli lagt til disse sidene "
+"etterhvert som du kommer over nye aspekter ved spillet. For detaljert "
+"informasjon om spesielle situasjoner og unntak, følg lenkene underveis."
 
 #: data/help.cfg:76
 msgid ""
@@ -2176,7 +2164,6 @@ msgid "About the Game"
 msgstr "Om Spillet"
 
 #: data/help.cfg:85
-#, fuzzy
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
 "scenario pits your troops against the troops of one or more adversaries. You "
@@ -2186,12 +2173,12 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
-"Spillet finner sted over en serie enkeltsående slag, kalt scenarier. Hvert "
-"scenarion lar dine tropper bryne seg mot en eller flere motstanderes "
-"tropper. Du kan spille mot datamaskinen (AI), eller med venner som spiller "
-"etter tur ved skjermen (hotseat). Hvis maskinen din er knyttet opp mot et "
-"nettverk, kan du også spille mot mennesker knyttet opp til nettverket. Hvis "
-"du har tilgang til Internett, kan du spille mot folk over hele vide verden."
+"Spillet finner sted over en serie enkeltstående slag, kalt scenarier. Hvert "
+"scenario lar dine tropper bryne seg mot en eller flere motstanderes tropper. "
+"Du kan spille mot datamaskinen (AI), eller med venner som spiller etter tur "
+"ved skjermen (hetesete). Hvis maskinen din er knyttet opp mot et nettverk, "
+"kan du også spille mot mennesker knyttet opp til nettverket. Hvis du har "
+"tilgang til Internett, kan du spille mot folk over hele den vide verden."
 
 #: data/help.cfg:87
 msgid ""
@@ -2253,7 +2240,6 @@ msgstr ""
 "dialogruten. For å rekruttere enheten som er valgt trykker du på 'Rekruttér'."
 
 #: data/help.cfg:97
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2266,9 +2252,8 @@ msgstr ""
 "\n"
 "Hvis du høyreklikket på en borgrute og valgte 'Rekruttér', så vil den nye "
 "enheten komme frem på denne ruten. Ellers vil den komme frem på en ledig "
-"rute nær hovedtårnet. Du kan bare rekruttere så mange enheter som det er "
-"plass til i borgen, og du kan ikke bruke mere gull enn du har til "
-"rekruttering."
+"rute nær vakttårnet. Du kan bare rekruttere så mange enheter som det er "
+"plass til i borgen, og du kan ikke rekruttere mer enn du har gull til."
 
 #: data/help.cfg:99
 msgid ""
@@ -2372,7 +2357,6 @@ msgstr ""
 "inneha)."
 
 #: data/help.cfg:125
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -2382,7 +2366,7 @@ msgstr ""
 "Helsepoengene vises også ved en helsesøyle ved siden av hver enhet, med "
 "lengde og farve (grønn, gul, rød) avhengig av gjeldende helsepoeng. En enhet "
 "med minst ett erfaringspoeng har en blå erfaringssøyle, som blir hvit når "
-"enheten er i ferd med å <ref>dst=experience_and_advancement text='avansere'</"
+"enheten er i ferd med å <ref>dst=experience_and_advancement text=avansere</"
 "ref>."
 
 #: data/help.cfg:130 src/help.cpp:1256
@@ -2467,7 +2451,6 @@ msgstr ""
 "text='speidere'</ref> kan ignorere kontrollsoner."
 
 #: data/help.cfg:137
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2512,7 +2495,6 @@ msgid "Combat"
 msgstr "Kamp"
 
 #: data/help.cfg:149
-#, fuzzy
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -2525,7 +2507,7 @@ msgid ""
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
 "Kamphandlinger i Kampen om Wesnoth finner alltid sted mellom enheter i "
-"nabofelter. Klikk på din enhet, og klikk på enheten du ønsker å angripe:"
+"nabofelter. Klikk på din enhet, og klikk på enheten du ønsker å angripe: "
 "enheten din vil flytte seg mot fienden, og når de er ved siden av hverandre, "
 "tar kamphandlingene til. Angriper og forsvarer slår etter tur inntil begge "
 "har brukt alle sine tillatte angrep med den gitte angrepstypen. Angriperen "
@@ -2576,7 +2558,6 @@ msgstr ""
 "<header>text='Sjanse for å treffe'</header>"
 
 #: data/help.cfg:157
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2594,7 +2575,7 @@ msgstr ""
 "<ref>dst=terrain text=terreng</ref> den befinner seg i. Dette vises i "
 "statuspanelet på høyre side av skjermbildet, og kan også finnes ved å "
 "høyreklikke på en enhet, og så velge <italic>text='Enhetsbeskrivelse'</"
-"italic> og så se på <italic>text='Terreng Modifkatorer'</italic> for den "
+"italic> og så se på <italic>text='Terreng Modifikatorer'</italic> for den "
 "aktuelle enheten. Alver har for eksempel en forsvarsgrad på 70% i skog, det "
 "betyr at en enhet som angriper dem bare har 30% sjanse for treffe dem for "
 "hvert slag. På samme måte er alvens sjanse for å treffe angriperen i "
@@ -2793,7 +2774,6 @@ msgid "Experience and Advancement"
 msgstr "Erfaring og Avansement"
 
 #: data/help.cfg:202
-#, fuzzy
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -2801,12 +2781,11 @@ msgid ""
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
 "Hvis begge enheter overlever en kamp, vinner de et antall erfaringspoeng "
-"likt med nivået til enheten de kjemper med. Hvis en enhet på den annen side "
+"(XP) likt med nivået til enheten de kjemper med. Hvis en enhet på derimot "
 "dreper en annen i kamp vinner den mye mer erfaring - 4  for en nivå 0 enhet, "
 "8 for nivå 1, 16 for nivå 2, 24 for nivå 3, og så videre."
 
 #: data/help.cfg:204
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2817,9 +2796,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Enheter trenger en viss mengde erfaring for å avansere (Karaktertrekket "
-"Intelligent reduserer denne med 20%). Idet en enhet oppnår grensen avanserer "
-"de umiddelbart til neste nivå, og helbredes i prosessen opp til maksimalt "
+"Enheter trenger en viss mengde erfaring for å avansere (karaktertrekket "
+"Intelligent reduserer denne med 20%). Idet en enhet når grensen avanserer de "
+"umiddelbart til neste nivå, og helbredes i prosessen opp til maksimalt "
 "antall HP. I noen tilfelle vil spilleren få et valg med hensyn på "
 "avansement. "
 
@@ -2908,7 +2887,6 @@ msgstr ""
 "ved starten av hver runde"
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -2917,12 +2895,11 @@ msgid ""
 msgstr ""
 "\n"
 "Helbredende enheter: Enheter med egenskapen <ref>dst=ability_heals "
-"text=Helbreder</ref> vil helbrede opp til 8 HP skade i begynnelsen av hver "
-"runde, i tillegg til å forhindre Gift fra å gi skade. Bare vennlige enheter "
-"i nabofeltene vil bli helbredet, og bare for opp til 4 HP per enhet."
+"text=Helbreder</ref> vil helbrede hver alliert enhet i nabofeltene dens, "
+"vanligvis 4 eller 8 HP hver runde. Enheten hindrer gift i forgiftede enheter "
+"å gjøre skade inneværende runde, men fjerner ikke effekten. "
 
 #: data/help.cfg:220
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -2931,12 +2908,9 @@ msgid ""
 msgstr ""
 "\n"
 "Kurerende enheter: Enheter med egenskapen <ref>dst=ability_cures "
-"text=Kurerer</ref> vil helbrede opp til 18 HP skade i begynnelsen av hver "
-"runde, i tillegg til å fjerne Gift. Bare vennlige enheter i nabofeltene vil "
-"bli kurert, og bare for opp til 8 HP per enhet. "
+"text=Kurerer</ref> vil kurere alle alierte enheter i nabofeltene for gift."
 
 #: data/help.cfg:222
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2946,11 +2920,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hvile kan kombineres med de andre formene for helbredelse, med landsbyer, "
-"regenerasjon, helbreding, og kurering kan ikke kombineres med hverandre. En "
-"helbredende eller kurerende enhet vil være mer effektiv (i absolutt antall "
-"helbredede HP) jo færre pasienter den har å se til. Sist, men ikke minst, "
-"helbredes alle overlevende enheter helt mellom scenarier (under Felttog)."
+"Hvile kan kombineres med de andre formene for helbredelse, men landsbyer, "
+"regenerasjon, helbreding, og kurering kan ikke kombineres med hverandre: kun "
+"den beste vil gjelde. Sist men ikke minst helbredes alle overlevende enheter "
+"mellom to scenarier."
 
 #: data/help.cfg:227
 msgid "Income and Upkeep"
@@ -3189,7 +3162,6 @@ msgstr ""
 "2 HP mer enn vanlig."
 
 #: data/help.cfg:295
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3200,17 +3172,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Nyttig for nærkampsenheter. Sterk er mest effektiv for enheter som har mange "
-"antall slag, slik som Alvisk Kriger. Sterke enheter kan være svært nyttige "
-"når det skal berre litt til for å gjøre et slag som gir skade om til et "
-"dødelig slag."
+"Karaktertrekket Sterk nyttig for alle enheter med nærkampvåpen,men mest "
+"effektivt er det for enheter med et høyt antall slag, som den Alviske "
+"Krigeren. Sterke enheter kan være svært nyttige når en liten mengde ekstra "
+"skade er alt som skal til for å avgjøre en kamp."
 
 #: data/help.cfg:300
 msgid "Loyal"
 msgstr "Lojal"
 
 #: data/help.cfg:301
-#, fuzzy
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -3270,10 +3241,10 @@ msgid "Dextrous"
 msgstr "Hendig"
 
 #: data/help.cfg:317
-#, fuzzy
 msgid "Dextrous units do 1 more damage for every successful strike with a bow."
 msgstr ""
-"Hendige enheter gjør 1 mer skade for hvert suksessfullt slag på avstand."
+"Hendige enheter gjør 1 mer skade for hvert suksessfullt slag med "
+"avstandsvåpen."
 
 #: data/help.cfg:319
 msgid ""
@@ -3332,7 +3303,6 @@ msgid "Forest"
 msgstr "Skog"
 
 #: data/help.cfg:347
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3359,8 +3329,7 @@ msgstr ""
 "\n"
 "De fleste enheter har 50% forsvar i skoger, men kavalleri begrenses til 40%. "
 "Alver, på den annen side nyter godt av 60% til 70% forsvar, selv deres "
-"ridende enheter. Dverger mottar generelt kun 30% forsvar i skog.\n"
-"<img>src=terrain/great-tree-tile.png align=middle box=no</img>"
+"ridende enheter. Dverger mottar generelt kun 30% forsvar i skog."
 
 #: data/help.cfg:353 data/terrain.cfg:318
 msgid "Hills"
@@ -3972,6 +3941,9 @@ msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
+"Fe,Vass,Holt,Sol,Rev,Myr,Jarls,Gamle,Ny,Nes,Ask,Alt,Aust,Vest,Nord,Sunn,"
+"Bakke,Gran,Eike,Blek,Grå,Brun,Stor,Trang,Troll,Foss,Stygg,Fager,Kamp,Kald,"
+"Høy,Krok,Svin"
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -4233,7 +4205,6 @@ msgid "4p - Castle Hopping Isle"
 msgstr "4p - Kastelløya"
 
 #: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:11
-#, fuzzy
 msgid ""
 "Many closely placed and strategically located castles. Which one will you "
 "hop to? Small map for fast play. Recommended setting of 2 gold per village."
@@ -4319,15 +4290,14 @@ msgid "4p - Siege Castles"
 msgstr "4p - Festning Beleiret"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well 2 vs 2 or FFA. There are approximately 45 villages. "
 "Recommended setting of 2 gold per village."
 msgstr ""
-"Kartet er sentrert rundt en elv med et par vakttårn i motsatte hjørner. Et "
-"25x25 felters 2mot2 kart. Utviklet for 1&3 mot 2&4. 28 landsbyer totalt. "
-"Anbefalt innstilling: 2 gull per landsby."
+"40X30 felters kart for 4 spillere. Fire mektige festninger ansikt til ansikt "
+"ved sammenløpet av to elver. 2 mot 2 eller FFA. Omtrent 45 landsbyer. "
+"Anbefalt 2 gull per landsby. "
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -4528,9 +4498,8 @@ msgid "Cave Lit"
 msgstr "Opplyst Grotte"
 
 #: data/terrain.cfg:414
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "Fjell"
+msgstr "Ufremkommelig Fjell"
 
 #: data/terrain.cfg:445
 msgid "Great Tree"
@@ -4687,7 +4656,6 @@ msgstr ""
 "musepekeren over vises øverst i skjermens høyre hjørne."
 
 #: data/tips.cfg:5
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -4697,7 +4665,7 @@ msgstr ""
 "Forgiftede enheter taper 8 helsepoeng for hver runde, men de vil ikke dø av "
 "forgiftning. Gift vil aldri gi dem mindre enn 1 livspoeng. Forgiftede "
 "enheter kan kureres ved å flytte dem til en landsby, eller plassere dem ved "
-"siden av en enhet som kan 'kurere'"
+"siden av en enhet som kan kurere."
 
 #: data/tips.cfg:6
 msgid ""
@@ -4741,13 +4709,12 @@ msgstr ""
 "sin."
 
 #: data/tips.cfg:10
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
 msgstr ""
 "Enheter hviler hvis de ikke flytter, angriper eller blir angrepet i løpet av "
-"en runde. De får 2 helsepoeng tilbake ved begynnelsen av sin neste tur."
+"en runde. Hvilende enheter får 2 HP tilbake ved begynnelsen av sin neste tur."
 
 #: data/tips.cfg:11
 msgid ""
@@ -5002,25 +4969,24 @@ msgid "resilient"
 msgstr "seig"
 
 #: data/tutorial/units/Fighteress.cfg:5 data/tutorial/units/Fighteress.cfg:54
-#, fuzzy
 msgid "female^Fighter"
-msgstr "Magiker"
+msgstr "Stridsmøy"
 
 #: data/tutorial/units/Quintain.cfg:3
-#, fuzzy
 msgid "Quintain"
-msgstr "Fjell"
+msgstr "Stråmann"
 
 #: data/tutorial/units/Quintain.cfg:13
 msgid ""
 "Quintains are used to practice swordplay and jousting on.  It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
+"Stråmenn brukes for å trene sverdlek og lansespill. Du vil svært sjelden "
+"oppleve å bli angrepet av en.."
 
 #: data/tutorial/units/Quintain.cfg:20
-#, fuzzy
 msgid "flail"
-msgstr "hale"
+msgstr "stålpisk"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -5082,6 +5048,8 @@ msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of this is the black and white warpaint they display in battle."
 msgstr ""
+"De drakene som mestrer brken av et sverd tas opp i en egen orden. De "
+"edsvornes merke er den sorte og hvite krigsmalingen de viser i slag."
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
@@ -5145,7 +5113,7 @@ msgstr "sabel"
 
 #: data/units/Drake_Fire.cfg:3
 msgid "Fire Drake"
-msgstr "Drake Ildtunge"
+msgstr "Drake Ildebrann"
 
 #: data/units/Drake_Fire.cfg:17
 msgid ""
@@ -5512,6 +5480,12 @@ msgid ""
 "their natural grace ensures that they can best any of humanity's fresh "
 "recruits."
 msgstr ""
+"Alvene har alltid vært kjent for sin naturlige ferdighet med pil og bue. "
+"Selv de svakere av legemet kan være ytterst dødelige med en bue i hånden, og "
+"i krigstider vil mange ty til dette våpenet. Alvene har aldri vært videre "
+"tiltrukket av nærkampens gny, og er relativt sårbare. Deres naturlige ynde "
+"og fleksibilitet garanterer likevel at de kan stå seg vel mot menneskenes "
+"ferske rekrutter."
 
 #: data/units/Elvish_Archer.cfg:166
 msgid "female^Elvish Archer"
@@ -5537,6 +5511,20 @@ msgid ""
 "enemy unless they are immediately adjacent, or have revealed themselves by "
 "attacking."
 msgstr ""
+"Det noe merkelige navnet til de alviske 'Hevnerne' skriver seg fra en "
+"taktikk disse mesterjegerne ofte benytter seg av. Som en finte lar man "
+"fienden slippe gjennom det ytre forsvaret, bare for å overfalles av disse "
+"bueskytterne som hittil har ligget i skjul. De omringede motstanderne er "
+"avsondret fra sine forsyningslinjer, og sårbare som de er varer de ikke "
+"lenge i denne stillingen.\n"
+"\n"
+"Dette har undertiden blitt tolket som en form for blodhevn for alviske "
+"brødre som er falt tidligere i slaget. En slik antagelse, om enn grov, er "
+"nok ganske treffende.\n"
+"\n"
+"Spesielle Merknader: hevnernes ferdigheter som skoggangsmenn lar de forbli "
+"usynlige for fienden med mindre de er direkte nær hverandre, eller har "
+"avslørt seg gjennom å angripe. "
 
 #: data/units/Elvish_Avenger.cfg:194
 msgid "female^Elvish Avenger"
@@ -5559,6 +5547,16 @@ msgid ""
 "to deal more damage in combat, though this only applies to units of lower "
 "level."
 msgstr ""
+"I krass motsetning til andre raser, vil alver hurtig anerkjenne og følge de "
+"blandt sine likemenn som er erfarne i slag. I skarp kontrast til "
+"menneskeheten, hvor lederskap ofte er en uklar blanding av tvang og trusler. "
+"Kombinasjonen av alvenes vilje til å akseptere en leders visdom, og deres "
+"tendens til å velge ledere med fortrinnelige egenskaper er en ofte "
+"undervudert styrke.\n"
+"\n"
+"Spesielle Merknader: en Kapteins evne til lederskap inspirerer enhetene "
+"rundt ham til å gjøre mer skade, skjønt bare enheter på lavere nivå nyter "
+"denne fordelen."
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
@@ -5573,6 +5571,11 @@ msgid ""
 "a secondary pursuit, is executed with a skill that most of humanity can only "
 "stare at with wonder."
 msgstr ""
+"Noen få blandt alvene inngir seg målrettet med nærkampvåpen i krig. "
+"Dedikasjon til saken og fremragende ferdigheter finner sitt utløp i renhet i "
+"form, og resultatet er en mestring av sverdlek som grenser mot en kunstart. "
+"Selv bueskyting, en sekundær ferdighet, utføres med en presisjon og "
+"ødeleggende virkning som kun de ypperste i menneskeheten kan nærme seg."
 
 #: data/units/Elvish_Druid.cfg:3
 msgid "female^Elvish Druid"
@@ -5591,6 +5594,16 @@ msgid ""
 "movement speed and attack damage. Druids are capable of healing units around "
 "them, and curing them of poison."
 msgstr ""
+"Skogsalvenes tilløp til magi retter seg ikke direkte mot kamphandlinger, men "
+"er likevel effektive. Skogene de bor i kan oppildnes med et kommandoord, og "
+"vil gripe ut etter de som truer deres trege fred.\n"
+"\n"
+"Deres viktigste studie er knnskapen om helbredelse, og det er ikke minst for "
+"denne ferdigheten de Alviske Druidene blir hedret av sitt folk.\n"
+"\n"
+"Spesielle Merknader: En druides innfiltrende angrep saktner fienden, og "
+"halverer med det forflytningshastigheten deres så vel som skaden de gjør. "
+"Druider kan helbrede enheter rundt seg, og kurere dem for gift."
 
 #: data/units/Elvish_Druid.cfg:55 data/units/Elvish_Shyde.cfg:56
 msgid "ensnare"
@@ -5618,6 +5631,9 @@ msgid ""
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
 "magically animating roots with which they bind their enemies in place."
 msgstr ""
+"De Alviske Huldrene er mestre i offensiv magi, og slår ned på sine fiender "
+"med såvel iskalde gufs fra eteriske sfærer som magisk besjelede røtter som "
+"de stedbinder motstanderne med."
 
 #: data/units/Elvish_Enchantress.cfg:90 data/units/Elvish_Shaman.cfg:56
 #: data/units/Elvish_Sorceress.cfg:90
@@ -5635,6 +5651,10 @@ msgid ""
 "can grasp the basics of swordsmanship and archery in an uncannily short "
 "time, and put them to effective use on the battlefield."
 msgstr ""
+"Alver er ikke krigerske av naturen, men i trengte tider har de stor glede av "
+"sin naturlige ynde og kroppsbeherskelse. De fleste alver er lærenemme og kan "
+"ta til seg de grunnleggende elementer i sverdkunst og  bruk av buen på "
+"utrolig kort tid."
 
 #: data/units/Elvish_Hero.cfg:3
 msgid "Elvish Hero"
@@ -5646,6 +5666,9 @@ msgid ""
 "fighter into a master of combat. Those who are honored as heroes are strong "
 "with both sword and bow, skills that never fade for lack of practice."
 msgstr ""
+"En relativt liten mengde erfaring vil forvandle en alv fra en kompetent "
+"stridsmann til en mester i strid. De som hedres som Stridshelter er dyktige "
+"med både sverd og bue, ferdigheter som aldri svinner av mangel på trening."
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
@@ -5664,6 +5687,16 @@ msgid ""
 "Special Notes: Their marksmanship gives these elves a high chance of hitting "
 "their enemy, but only on the attack."
 msgstr ""
+"En av tingene som bidrar til ferdighetene deres med buen er alvenes vanlig "
+"skarpe syn. En alv med trening i bueskyting kan treffe mål som en mann knapt "
+"kunne se selv om natten, og kan ha en ny pil på strengen nesten før den "
+"første er sluppet.\n"
+"\n"
+"Denne vidunderlige ferdigheten er ofte vunnet på bekostning av trening med "
+"sverdet.\n"
+"\n"
+"Spesielle Merknader: skarpskyttere som disse alvene er, har en høy sjanse "
+"til å treffe målet, men bare når de selv angriper."
 
 #: data/units/Elvish_Marksman.cfg:75 data/units/Elvish_Sharpshooter.cfg:74
 msgid "longbow"
@@ -5690,6 +5723,15 @@ msgid ""
 "to deal more damage in combat, though this only applies to units of lower "
 "level"
 msgstr ""
+"Alvenes lange livsløp og naturlige intelligens er en skummel kombinasjon i "
+"militære sammenhenger, for de som kan overvinne sin avsky mot slike ting. "
+"Alver husker ting klarere enn mennesker, og kan ofte mestre av intuisjon det "
+"andre må trenes opp til. I de sjeldne tilfellene hvor en alv vier sitt sinn "
+"til krigen, er resultatet i sannhet en mesterstrateg verdig.\n"
+"\n"
+"Spesielle Merknader: en Marskalks lederskap tillater vennlige enheter rundt "
+"ham å gjøre mer skade i kamp, skjønt dette bare gjeldet enheter på lavere "
+"nivå enn ham."
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
@@ -5707,6 +5749,15 @@ msgid ""
 "choose when fighting on their home ground, a fact that has saved many of "
 "their number from death."
 msgstr ""
+"Alviske Ilryttere er trent til fyrstelige kurérer i de alviske rikene. Til "
+"tross for disse folkenes fredfulle natur, er de dødelige i slag. Ingen mann "
+"har noensinne kommet nær til deres evner i å bruke buen på hesteryggen - de "
+"fleste ville faktiss ha problemer med å være deres like stående på fast "
+"grunn.\n"
+"\n"
+"Disse soldatenes snarhet tillater alvene å kunne slå til hvor og når de vil "
+"på hjemmebane i de store skogene. Dette har reddet mange en alv fra en "
+"sikker død."
 
 #: data/units/Elvish_Ranger.cfg:2
 msgid "Elvish Ranger"
@@ -5724,6 +5775,15 @@ msgid ""
 "enemy unless they are immediately adjacent, or have revealed themselves by "
 "attacking."
 msgstr ""
+"Skjønt en mann kan tilbringe år i skgen, vil han aldri kunne riste av seg "
+"følelsen av å være en gjest i en sammenheng han kun er en fremmed del av. "
+"Med alvene er det snarere motsatt. Enhver alv som studerer skogenes sang "
+"blir en mester i kunsten, og kombinert med store evner men sverd og bue er "
+"resultatet et kraftfullt redskap i krig.\n"
+"\n"
+"Spesielle Merknader: Jegernes ferdigheter som skoggangsmenn gjør dem "
+"usynlige for fiender med mindre de står i et nabofelt eller avslører seg ved "
+"et overraskelsesangrep."
 
 #: data/units/Elvish_Ranger.cfg:191
 msgid "female^Elvish Ranger"
@@ -5743,6 +5803,13 @@ msgid ""
 "This combination of incredible mobility and potent combat strength is one of "
 "the greatest assets the elves possess in warfare."
 msgstr ""
+"Alvenes mesterryttere kan bevege seg mellom grenene i hastigheter som ville "
+"være det sikre selvmord for enhver mann. Om dette enn hensetter folk i "
+"beundring for rytteren har det også vært reist spørsmål om hestenes stamtre, "
+"for dådene de utfører kan virke nær overnaturlige.\n"
+"\n"
+"Denne kombinasjonen av utrolig mobilitet og potente kampferdigheter er en av "
+"de største verdier i den alviske krigsmaskinen."
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
@@ -5756,6 +5823,11 @@ msgid ""
 "thick of the forest with nary a scratch. They are, perhaps, some of the only "
 "cavalry in existence that fares better in the woods than on open ground."
 msgstr ""
+"Skogenalvenes ryttere er evnerike med sverd og bue, men deres sanne talent "
+"ligger i rytterkunsten. Selv andre alver tas på sengen av deres uvirkelige "
+"fart gjennom skogen, og deres evne til å pile gjennom de tetteste skogholt "
+"med knapt en skramme. De er kanhende de eneste hestebårne i hele vide "
+"Wesnoth som klarer seg bedre i skog enn i åpent lende."
 
 #: data/units/Elvish_Shaman.cfg:3
 msgid "female^Elvish Shaman"
@@ -5777,6 +5849,18 @@ msgid ""
 "healing, though they can only delay the effects of poison, not cure them "
 "entirely."
 msgstr ""
+"Alvenes tilknytning til feenes verden gir dem en medfødt magisk resonans. "
+"Dette realiseres i deres affinitet med naturens verden, som de regner som en "
+"nær alliert i kamp. Fiender som vandrer om i skogen kan fort finne seg "
+"innviklet i selve røttene de står på, med redusert mobilitet og "
+"skadepotensial.\n"
+"\n"
+"De helbredende egenskapene til alvene er også verd å merke seg, og av "
+"ytterste viktighet i slag.\n"
+"\n"
+"Spesielle Merknader: en Sjamans innfiltrende angrep saktner en fiende, og "
+"halverer forflytning og skade. Sjamaner behersker grunnleggende helbredelse, "
+"men de kan bare utsette effektene av gift, ikke kurere dem helt."
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
@@ -5792,6 +5876,14 @@ msgid ""
 "Special Notes: Their marksmanship gives these elves a high chance of hitting "
 "their enemy, but only on the attack."
 msgstr ""
+"En historie fløy engang Wesnoth rundt; en alv stoppet engang en pil i "
+"flukten ved å ramme den med en av sine. Det er et vitnesbyrd om evnene "
+"alvene har at en slik historie kunne tas alvorlig. Alvenes Skarpskyttere har "
+"ganske enkelt mestret bueskytningens kunst.\n"
+"\n"
+"Spesiell Merknader: egenskapen skarpskytter er oppkalt etter disse "
+"bekunstnerne, og gir dem en høy sjanse for å ramme målet, men bare når det "
+"er de som angriper."
 
 #: data/units/Elvish_Sharpshooter.cfg:181
 msgid "female^Elvish Sharpshooter"
@@ -5812,6 +5904,14 @@ msgid ""
 "movement speed and attack damage. Shydes are capable of healing units around "
 "them, and curing them of poison."
 msgstr ""
+"Den dypeste hengivenhet mot sin fenatur vil med tiden forvandle en alvemøy "
+"til en skapning av begge verdener. Ledet av en lite forstått natur er disse "
+"yndefulle alveskogens stadtholdere selve symbolet på deres folks gratie og "
+"mystikk.\n"
+"\n"
+"Spesielle Merknader: En Urdes innfiltrende angrep saktner fiender, og "
+"halverer slik forflytning og skade. Urder kan helbrede enheter rundt seg, og "
+"kurere dem for gift."
 
 #: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:24
 msgid "faerie touch"
@@ -5829,6 +5929,11 @@ msgid ""
 "and they can call upon bursts of chilling ethereal wind to smite those who "
 "oppose them."
 msgstr ""
+"Ved å forsømme studiet av helbredelsens kunst og fokusere på mer aggressiv "
+"bruk av magi, har Alviske Seidkvinner blitt ganske utmerkede i "
+"avstandsangrep. Deres innfiltrende angrep er merkbart mer effektive enn "
+"Sjamanens, og de kan kalle utbrudd av iskalde eteriske vinder ned over sine "
+"motstandere."
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
@@ -5840,6 +5945,9 @@ msgid ""
 "developed their faerie side, they transform into creatures of both worlds, "
 "wielding powerful magic against their enemies."
 msgstr ""
+"Alviske Nymfer er grønne skudd av ynde og skjønnhet i de dødeliges land. De "
+"har hengitt seg helt og fullt til feenes side, og kan sies å være skapninger "
+"av begge verdner, og kaster kraftig magi over sine fiender."
 
 #: data/units/Elvish_Sylph.cfg:51
 msgid "gossamer"
@@ -7318,9 +7426,8 @@ msgstr ""
 
 #: data/units/Orcish_Ruler.cfg:30 data/units/Orcish_Sovereign.cfg:32
 #: data/units/Orcish_Warlord.cfg:28 data/units/Orcish_Warrior.cfg:27
-#, fuzzy
 msgid "greatsword"
-msgstr "sverd"
+msgstr "langsverd"
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
@@ -7439,7 +7546,7 @@ msgstr ""
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
-msgstr "Varan Stifinner"
+msgstr "Varan Linjebryter"
 
 #: data/units/Saurian_Skirmisher.cfg:18
 msgid ""
@@ -7510,7 +7617,7 @@ msgstr ""
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
-msgstr "Trollklippekaster"
+msgstr "Troll Klippekaster"
 
 #: data/units/Troll_Rocklobber.cfg:20
 msgid ""
@@ -7728,9 +7835,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Undead_Necromancer.cfg:32
-#, fuzzy
 msgid "plague staff"
-msgstr "pest"
+msgstr "peststav"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
@@ -8021,14 +8127,12 @@ msgid "+Core Developers"
 msgstr "+Kjerneutviklere"
 
 #: src/about.cpp:33
-#, fuzzy
 msgid "+  Main Developer"
-msgstr "-   Hovedutvikler"
+msgstr "+  Hovedutvikler"
 
 #: src/about.cpp:36
-#, fuzzy
 msgid "+  Artwork and graphics designer"
-msgstr "-   Kunst- og grafikkutvikler"
+msgstr "+  Kunst- og grafikkutvikler"
 
 #: src/about.cpp:39
 msgid "+Developers"
@@ -8319,9 +8423,8 @@ msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
 #: src/game.cpp:625
-#, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr "Advarsel: Filen du prvde å laste er i ustand. Laster likevel."
+msgstr "Advarsel: Filen du prøvde å laste er i ustand. Laster likevel.\n"
 
 #: src/game.cpp:647 src/multiplayer_connect.cpp:1043
 msgid ""
@@ -8600,9 +8703,8 @@ msgid "Abilities: "
 msgstr "Egenskaper: "
 
 #: src/help.cpp:1143
-#, fuzzy
 msgid "Cost: "
-msgstr "Flytt: "
+msgstr "Kostnad:"
 
 #: src/help.cpp:1144
 msgid "Alignment: "
@@ -8900,7 +9002,7 @@ msgstr "Ingen gruppespillsider funnet"
 #: src/multiplayer_connect.cpp:62 src/multiplayer_connect.cpp:258
 #: src/multiplayer_connect.cpp:312
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
 #: src/multiplayer_wait.cpp:392 src/multiplayer_wait.cpp:397 src/unit.cpp:2261
@@ -9065,19 +9167,19 @@ msgstr "Tillater brukertidsfrist"
 
 #: src/multiplayer_create.cpp:115
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "Lengste tid tillatt for første trekk (i sekunder)"
 
 #: src/multiplayer_create.cpp:121
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "Lengste mulige tid for noe trekk (i sekunder)"
 
 #: src/multiplayer_create.cpp:127
 msgid "Time for general tasks each turn (seconds)"
-msgstr ""
+msgstr "Tid for generelle oppgaver hvert trekk (i sekunder)"
 
 #: src/multiplayer_create.cpp:133
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "Tid for hver av angrep, rekruttering, og erobring"
 
 #: src/multiplayer_create.cpp:138
 msgid "The amount of income each village yields per turn"
@@ -9146,24 +9248,20 @@ msgid "Unlimited Turns"
 msgstr "Ubegrenset antall Runder"
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Init. Limit: "
-msgstr "Opprinnelig Tid: "
+msgstr "Oppr. Tid: "
 
 #: src/multiplayer_create.cpp:318
-#, fuzzy
 msgid "Turn Bonus: "
-msgstr "Runder: "
+msgstr "Rundebonus: "
 
 #: src/multiplayer_create.cpp:322
-#, fuzzy
 msgid "Reservoir: "
-msgstr "Tjener: "
+msgstr "Reservoar"
 
 #: src/multiplayer_create.cpp:327
-#, fuzzy
 msgid "Action Bonus: "
-msgstr "Handlinger"
+msgstr "Handlingsbonus:"
 
 #: src/multiplayer_create.cpp:334
 msgid "Village Gold: "
@@ -9214,9 +9312,8 @@ msgid "Observe Game"
 msgstr "Se på Spill"
 
 #: src/multiplayer_lobby.cpp:451
-#, fuzzy
 msgid "Preferences"
-msgstr "Prinsesse"
+msgstr "Innstillinger"
 
 #: src/multiplayer_lobby.cpp:452
 msgid "Quit"
@@ -9541,7 +9638,6 @@ msgid "has left the game. What do you want to do?"
 msgstr "har forlatt spillet. Hva vil du gjøre?"
 
 #: src/reports.cpp:132
-#, fuzzy
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Denne enheten er usynlig. Den kan ikke sees eller bli angrepet av fiendtlige "
@@ -9769,7 +9865,7 @@ msgstr "Mer"
 
 #: src/titlescreen.cpp:249
 msgid "Help"
-msgstr ""
+msgstr "Hjelp"
 
 #: src/titlescreen.cpp:259
 msgid "-- The Tome of Wesnoth"
