@@ -854,6 +854,8 @@ void unit::read(const config& cfg)
 	}
 
 	description_ = cfg["unit_description"];
+	custom_unit_description_ = cfg["user_description"];
+	
 	if(cfg["generate_description"] == "yes") {
 		custom_unit_description_ = generate_description();
 	}
@@ -862,8 +864,6 @@ void unit::read(const config& cfg)
 		description_ = underlying_description_;
 	}
 
-	custom_unit_description_ = cfg["user_description"];
-	
 	role_ = cfg["role"];
 	overlays_ = utils::split(cfg["overlays"]);
 	if(overlays_.size() == 1 && overlays_.front() == "") {
