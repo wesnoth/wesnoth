@@ -12,6 +12,7 @@
 */
 
 #include "unit.hpp"
+#include "unit_abilities.hpp"
 
 #include "wassert.hpp"
 #include "log.hpp"
@@ -534,16 +535,16 @@ bool attack_type::get_special_bool(const std::string& special,bool force) const
 	}
 	return false;
 }
-weapon_special_list attack_type::get_specials(const std::string& special) const
+unit_ability_list attack_type::get_specials(const std::string& special) const
 {
 //	log_scope("get_specials");
-	weapon_special_list res;
+	unit_ability_list res;
 	const config* specials = cfg_.child("specials");
 	if(specials) {
 		const config::child_list& list = specials->get_children(special);
 		for(config::child_list::const_iterator i = list.begin(); i != list.end(); ++i) {
 			if(special_active(**i,true)) {
-				res.cfgs.push_back(*i);
+				res.cfgs.push_back(std::pair<config*,gamemap::location>(*i,attacker_ ? aloc_ : dloc_));
 			}
 		}
 	}
@@ -553,7 +554,7 @@ weapon_special_list attack_type::get_specials(const std::string& special) const
 			const config::child_list& list = specials->get_children(special);
 			for(config::child_list::const_iterator i = list.begin(); i != list.end(); ++i) {
 				if(other_attack_->special_active(**i,false)) {
-					res.cfgs.push_back(*i);
+					res.cfgs.push_back(std::pair<config*,gamemap::location>(*i,attacker_ ? dloc_ : aloc_));
 				}
 			}
 		}
@@ -873,37 +874,167 @@ void attack_type::set_specials_context(const gamemap::location& loc,const unit& 
 }
 
 
-bool weapon_special_list::empty() const
+
+
+
+
+namespace unit_abilities
 {
-	return cfgs.empty();
+
+
+individual_effect::individual_effect(value_modifier t,int val,config* abil,const gamemap::location& l)
+{
+	set(t,val,abil,l);
+}
+void individual_effect::set(value_modifier t,int val,config* abil,const gamemap::location& l)
+{
+	type=t;
+	value=val;
+	ability=abil;
+	loc=l;
 }
 
-int weapon_special_list::highest(const std::string& key, int def) const
+
+
+effect::effect(const unit_ability_list& list, int def, bool backstab)
 {
-	int flat = def;
-	int stack = 0;
-	for(config::child_list::const_iterator i = cfgs.begin(); i != cfgs.end(); ++i) {
-		if((**i)["cumulative"]=="yes") {
-			stack += lexical_cast_default<int>((**i)[key]);
+	int ncum_set = def; bool ncum_set_set = false;
+	int ncum_add = 0; bool ncum_add_set = false;
+	int ncum_mul = 1;
+	individual_effect ncum_set_effect(NOT_USED,0,NULL,gamemap::location());
+	individual_effect ncum_add_effect(NOT_USED,0,NULL,gamemap::location());
+	individual_effect ncum_mul_effect(NOT_USED,0,NULL,gamemap::location());
+	
+	int cum_set = def;
+	int cum_add = 0;
+	int cum_mul = 1;
+	individual_effect cum_set_effect(NOT_USED,0,NULL,gamemap::location());
+	
+	bool use_ncum = false;
+	bool use_cum = false;
+	for(std::vector<std::pair<config*,gamemap::location> >::const_iterator i = list.cfgs.begin(); i != list.cfgs.end(); ++i) {
+		if((*i->first)["backstab"]=="yes" && !backstab) {
+			continue;
+		}
+		if((*i->first)["cumulative"]=="yes") {
+			int value = lexical_cast_default<int>((*i->first)["value"]);
+			int add = lexical_cast_default<int>((*i->first)["add"]);
+			int multiply = lexical_cast_default<int>((*i->first)["multiply"]);
+			if(value > cum_set) {
+				cum_set = value;
+				cum_set_effect.set(SET,value,i->first,i->second);
+			}
+			if(add) {
+				cum_add += add;
+				effect_list_.push_back(individual_effect(ADD,add,i->first,i->second));
+			}
+			if(multiply) {
+				cum_mul *= multiply;
+				effect_list_.push_back(individual_effect(MUL,multiply,i->first,i->second));
+			}
+			use_cum = true;
 		} else {
-			flat = maximum<int>(flat,lexical_cast_default<int>((**i)[key]));
+			int value = lexical_cast_default<int>((*i->first)["value"]);
+			int add = lexical_cast_default<int>((*i->first)["add"]);
+			int multiply = lexical_cast_default<int>((*i->first)["multiply"]);
+			if(value) {
+				if(ncum_set_set) {
+					if(value > ncum_set) {
+						ncum_set = value;
+						ncum_set_effect.set(SET,value,i->first,i->second);
+					}
+				} else {
+					ncum_set = value;
+					ncum_set_effect.set(SET,value,i->first,i->second);
+					ncum_set_set = true;
+				}
+				use_ncum = true;
+			}
+			if(add) {
+				if(ncum_add_set) {
+					if(add > ncum_add) {
+						ncum_add = add;
+						ncum_add_effect.set(ADD,add,i->first,i->second);
+					}
+				} else {
+					ncum_add = add;
+					ncum_add_effect.set(ADD,add,i->first,i->second);
+					ncum_add_set = true;
+				}
+				use_ncum = true;
+			}
+			if(multiply) {
+				if(multiply > ncum_mul) {
+					ncum_mul = multiply;
+					ncum_mul_effect.set(MUL,multiply,i->first,i->second);
+				}
+				use_ncum = true;
+			}
 		}
 	}
-	return flat + stack;
-}
-int weapon_special_list::lowest(const std::string& key, int def) const
-{
-	int flat = def;
-	int stack = 0;
-	for(config::child_list::const_iterator i = cfgs.begin(); i != cfgs.end(); ++i) {
-		if((**i)["cumulative"]=="yes") {
-			stack += lexical_cast_default<int>((**i)[key]);
-		} else {
-			flat = minimum<int>(flat,lexical_cast_default<int>((**i)[key]));
+	if(use_cum) {
+		composite_value_ = maximum<int>(cum_set*cum_mul + cum_add,ncum_set + ncum_add);
+		if(cum_set_effect.type != NOT_USED) {
+			effect_list_.push_back(cum_set_effect);
 		}
+	} else if(use_ncum) {
+		composite_value_ = ncum_set*ncum_mul + ncum_add;
+		effect_list_.clear();
+		if(ncum_set_effect.type != NOT_USED) {
+			effect_list_.push_back(ncum_set_effect);
+		}
+		if(ncum_add_effect.type != NOT_USED) {
+			effect_list_.push_back(ncum_add_effect);
+		}
+		if(ncum_mul_effect.type != NOT_USED) {
+			effect_list_.push_back(ncum_mul_effect);
+		}
+	} else {
+		effect_list_.clear();
+		composite_value_ = def;
 	}
-	return flat + stack;
+	
 }
+
+
+
+int effect::get_composite_value() const
+{
+	return composite_value_;
+}
+
+effect_list::const_iterator effect::begin() const
+{
+	return effect_list_.begin();
+}
+
+effect_list::const_iterator effect::end() const
+{
+	return effect_list_.end();
+}
+
+
+
+
+
+} // end namespace unit_abilities
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

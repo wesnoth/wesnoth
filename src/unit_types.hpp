@@ -26,24 +26,11 @@
 
 class unit_type;
 class unit;
+class unit_ability_list;
 struct game_data;
 class gamestatus;
 class team;
 typedef std::map<gamemap::location,unit> unit_map;
-class weapon_special_list
-{
-	public:
-		
-		bool empty() const;
-		
-		int highest(const std::string& key, int def=0) const;
-		int lowest(const std::string& key, int def=100) const;
-		
-		config::child_list cfgs;
-	private:
-		
-};
-//the 'attack type' is the type of attack, how many times it strikes,
 //and how much damage it does.
 class attack_type
 {
@@ -63,7 +50,7 @@ public:
 	double defense_weight() const;
 	
 	bool get_special_bool(const std::string& special,bool force=false) const;
-	weapon_special_list get_specials(const std::string& special) const;
+	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::string> special_tooltips(bool force=false) const;
 	std::string weapon_specials(bool force=false) const;
 	void set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,

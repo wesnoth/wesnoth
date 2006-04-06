@@ -24,6 +24,7 @@
 #include "random.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
+#include "unit_abilities.hpp"
 #include "unit_display.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
@@ -348,10 +349,10 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 				defend.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,false,&attack);
 				int d_nattacks = defend.num_attacks();
 				
-				weapon_special_list swarm = defend.get_specials("attacks");
+				unit_ability_list swarm = defend.get_specials("attacks");
 				if(!swarm.empty()) {
-					int swarm_min_attacks = swarm.highest("attacks_min");
-					int swarm_max_attacks = swarm.highest("attacks_max",d_nattacks);
+					int swarm_min_attacks = swarm.highest("attacks_min").first;
+					int swarm_max_attacks = swarm.highest("attacks_max",d_nattacks).first;
 					int hitp = d->second.hitpoints();
 					int mhitp = d->second.max_hitpoints();
 					
@@ -364,58 +365,11 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 				
 				int base_damage = defend.damage();
 				int resistance_modifier = a->second.damage_from(defend,true,a->first);
-				
+				bool backstab = backstab_check(d->first,a->first,units,teams);
 				{ // modify damage
-					weapon_special_list dmg_specials = defend.get_specials("damage");
-					int dmg_ncum_set = base_damage; bool dmg_ncum_set_set = false;
-					int dmg_ncum_add = 0; bool dmg_ncum_add_set = false;
-					int dmg_ncum_mul = 1;
-					int dmg_cum_set = base_damage;
-					int dmg_cum_add = 0;
-					int dmg_cum_mul = 1;
-					bool use_ncum = false;
-					bool use_cum = false;
-					for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
-						if((**dmg_it)["backstab"]=="yes") {
-							if(!backstab_check(d->first,a->first,units,teams)) {
-								continue;
-							}
-						}
-						if((**dmg_it)["cumulative"]=="yes") {
-							dmg_cum_set = maximum<int>(dmg_cum_set,lexical_cast_default<int>((**dmg_it)["value"]));
-							dmg_cum_add += lexical_cast_default<int>((**dmg_it)["add"]);
-							dmg_cum_mul *= lexical_cast_default<int>((**dmg_it)["multiply"]);
-							use_cum = true;
-						} else {
-							if((**dmg_it)["value"] != "") {
-								if(dmg_ncum_set_set) {
-									dmg_ncum_set = maximum<int>(dmg_ncum_set,lexical_cast_default<int>((**dmg_it)["value"]));
-								} else {
-									dmg_ncum_set = lexical_cast_default<int>((**dmg_it)["value"]);
-									dmg_ncum_set_set = true;
-								}
-								use_ncum = true;
-							}
-							if((**dmg_it)["add"] != "") {
-								if(dmg_ncum_add_set) {
-									dmg_ncum_add = maximum<int>(dmg_ncum_add,lexical_cast_default<int>((**dmg_it)["add"]));
-								} else {
-									dmg_ncum_add = lexical_cast_default<int>((**dmg_it)["add"]);
-									dmg_ncum_add_set = true;
-								}
-								use_ncum = true;
-							}
-							if((**dmg_it)["multiply"] != "") {
-								dmg_ncum_mul = maximum<int>(dmg_ncum_mul,lexical_cast_default<int>((**dmg_it)["multiply"]));
-								use_ncum = true;
-							}
-						}
-					}
-					if(use_cum) {
-						base_damage = maximum<int>(dmg_cum_set*dmg_cum_mul + dmg_cum_add,dmg_ncum_set + dmg_ncum_add);
-					} else if(use_ncum) {
-						base_damage = dmg_ncum_set*dmg_ncum_mul + dmg_ncum_add;
-					}
+					unit_ability_list dmg_specials = defend.get_specials("damage");
+					unit_abilities::effect dmg_effect(dmg_specials,base_damage,backstab);
+					base_damage = dmg_effect.get_composite_value();
 				}
 				
 				const int tod_modifier = combat_modifier(state,units,d->first,d->second.alignment(),map);
@@ -471,10 +425,10 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	LOG_NG << "getting weapon specials...\n";
 
 	static const std::string to_the_death_string("berserk");
-	res.rounds = attack.get_specials(to_the_death_string).highest("rounds");
+	res.rounds = attack.get_specials(to_the_death_string).highest("value").first;
 	res.defender_strikes_first = false;
 
-	weapon_special_list plague = attack.get_specials("plague");
+	unit_ability_list plague = attack.get_specials("plague");
 	static const std::string plague_string("plague");
 	res.attacker_plague = d->second.get_state("not_living") != "yes" &&
 	  (!plague.empty()) &&
@@ -482,10 +436,10 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	  !map.is_village(defender);
 	
 	if(!plague.empty()) {
-		if((*plague.cfgs.front())["type"] == "") {
+		if((*plague.cfgs.front().first)["type"] == "") {
 		  res.attacker_plague_type = a->second.id();
 		} else {
-		  res.attacker_plague_type = (*plague.cfgs.front())["type"];
+		  res.attacker_plague_type = (*plague.cfgs.front().first)["type"];
 		}
 	}
 	res.defender_plague = false;
@@ -498,50 +452,17 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	res.attacker_stones = attack.get_special_bool(stones_string);
 	
 	{ // modify chance to hit
-		weapon_special_list cth_specials = attack.get_specials("chance_to_hit");
-		int cth_ncum_set = res.chance_to_hit_defender; bool cth_ncum_set_set = false;
-		int cth_ncum_add = 0; bool cth_ncum_add_set = false;
-		int cth_cum_set = res.chance_to_hit_defender;
-		int cth_cum_add = 0;
-		bool use_ncum = false;
-		bool use_cum = false;
-		for(config::child_list::const_iterator cth_it = cth_specials.cfgs.begin(); cth_it != cth_specials.cfgs.end(); ++cth_it) {
-			if((**cth_it)["cumulative"]=="yes") {
-				cth_cum_set = maximum<int>(cth_cum_set,lexical_cast_default<int>((**cth_it)["value"]));
-				cth_cum_add += lexical_cast_default<int>((**cth_it)["add"]);
-				use_cum = true;
-			} else {
-				if((**cth_it)["value"] != "") {
-					if(cth_ncum_set_set) {
-						cth_ncum_set = maximum<int>(cth_ncum_set,lexical_cast_default<int>((**cth_it)["value"]));
-					} else {
-						cth_ncum_set = lexical_cast_default<int>((**cth_it)["value"]);
-						cth_ncum_set_set = true;
-					}
-				}
-				if((**cth_it)["add"] != "") {
-					if(cth_ncum_add_set) {
-						cth_ncum_add = maximum<int>(cth_ncum_add,lexical_cast_default<int>((**cth_it)["add"]));
-					} else {
-						cth_ncum_add = lexical_cast_default<int>((**cth_it)["add"]);
-						cth_ncum_add_set = true;
-					}
-				}
-				use_ncum = true;
-			}
-		}
-		if(use_cum) {
-			res.chance_to_hit_defender = maximum<int>(cth_cum_set + cth_cum_add,cth_ncum_set + cth_ncum_add);
-		} else if(use_ncum) {
-			res.chance_to_hit_defender = cth_ncum_set + cth_ncum_add;
-		}
+		bool backstab = backstab_check(a->first,d->first,units,teams);
+		unit_ability_list cth_specials = attack.get_specials("chance_to_hit");
+		unit_abilities::effect cth_effects(cth_specials,res.chance_to_hit_defender,backstab);
+		res.chance_to_hit_defender = cth_effects.get_composite_value();
 	}
 	
 	// compute swarm attacks;
-	weapon_special_list swarm = attack.get_specials("attacks");
+	unit_ability_list swarm = attack.get_specials("attacks");
 	if(!swarm.empty()) {
-		int swarm_min_attacks = swarm.highest("attacks_min");
-		int swarm_max_attacks = swarm.highest("attacks_max",attack.num_attacks());
+		int swarm_min_attacks = swarm.highest("attacks_min").first;
+		int swarm_max_attacks = swarm.highest("attacks_max",attack.num_attacks()).first;
 		int hitp = a->second.hitpoints();
 		int mhitp = a->second.max_hitpoints();
 		
@@ -568,46 +489,13 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	res.amount_attacker_drains = 0;
 	res.amount_defender_drains = 0;
 	if (counterattack) {
-		res.rounds = maximum<int>(res.rounds,defend.get_specials(to_the_death_string).highest("rounds"));
+		res.rounds = maximum<int>(res.rounds,defend.get_specials(to_the_death_string).highest("value").first);
 
+		bool backstab = backstab_check(d->first,a->first,units,teams);
 		{ // modify chance to hit
-			weapon_special_list cth_specials = defend.get_specials("chance_to_hit");
-			int cth_ncum_set = res.chance_to_hit_attacker; bool cth_ncum_set_set = false;
-			int cth_ncum_add = 0; bool cth_ncum_add_set = false;
-			int cth_cum_set = res.chance_to_hit_attacker;
-			int cth_cum_add = 0;
-			bool use_ncum = false;
-			bool use_cum = false;
-			for(config::child_list::const_iterator cth_it = cth_specials.cfgs.begin(); cth_it != cth_specials.cfgs.end(); ++cth_it) {
-				if((**cth_it)["cumulative"]=="yes") {
-					cth_cum_set = maximum<int>(cth_cum_set,lexical_cast_default<int>((**cth_it)["value"]));
-					cth_cum_add += lexical_cast_default<int>((**cth_it)["add"]);
-					use_cum = true;
-				} else {
-					if((**cth_it)["value"] != "") {
-						if(cth_ncum_set_set) {
-							cth_ncum_set = maximum<int>(cth_ncum_set,lexical_cast_default<int>((**cth_it)["value"]));
-						} else {
-							cth_ncum_set = lexical_cast_default<int>((**cth_it)["value"]);
-							cth_ncum_set_set = true;
-						}
-					}
-					if((**cth_it)["add"] != "") {
-						if(cth_ncum_add_set) {
-							cth_ncum_add = maximum<int>(cth_ncum_add,lexical_cast_default<int>((**cth_it)["add"]));
-						} else {
-							cth_ncum_add = lexical_cast_default<int>((**cth_it)["add"]);
-							cth_ncum_add_set = true;
-						}
-					}
-					use_ncum = true;
-				}
-			}
-			if(use_cum) {
-				res.chance_to_hit_attacker = maximum<int>(cth_cum_set + cth_cum_add,cth_ncum_set + cth_ncum_add);
-			} else if(use_ncum) {
-				res.chance_to_hit_attacker = cth_ncum_set + cth_ncum_add;
-			}
+			unit_ability_list cth_specials = defend.get_specials("chance_to_hit");
+			unit_abilities::effect cth_effects(cth_specials,res.chance_to_hit_attacker,backstab);
+			res.chance_to_hit_attacker = cth_effects.get_composite_value();
 		}
 
 		int bonus = 100;
@@ -617,56 +505,9 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		int resistance_modifier = a->second.damage_from(defend,true,a->first);
 		
 		{ // modify damage
-			weapon_special_list dmg_specials = defend.get_specials("damage");
-			int dmg_ncum_set = base_damage; bool dmg_ncum_set_set = false;
-			int dmg_ncum_add = 0; bool dmg_ncum_add_set = false;
-			int dmg_ncum_mul = 1;
-			int dmg_cum_set = base_damage;
-			int dmg_cum_add = 0;
-			int dmg_cum_mul = 1;
-			bool use_ncum = false;
-			bool use_cum = false;
-			for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
-				if((**dmg_it)["backstab"]=="yes") {
-					if(!backstab_check(d->first,a->first,units,teams)) {
-						continue;
-					}
-				}
-				if((**dmg_it)["cumulative"]=="yes") {
-					dmg_cum_set = maximum<int>(dmg_cum_set,lexical_cast_default<int>((**dmg_it)["value"]));
-					dmg_cum_add += lexical_cast_default<int>((**dmg_it)["add"]);
-					dmg_cum_mul *= lexical_cast_default<int>((**dmg_it)["multiply"]);
-					use_cum = true;
-				} else {
-					if((**dmg_it)["value"] != "") {
-						if(dmg_ncum_set_set) {
-							dmg_ncum_set = maximum<int>(dmg_ncum_set,lexical_cast_default<int>((**dmg_it)["value"]));
-						} else {
-							dmg_ncum_set = lexical_cast_default<int>((**dmg_it)["value"]);
-							dmg_ncum_set_set = true;
-						}
-						use_ncum = true;
-					}
-					if((**dmg_it)["add"] != "") {
-						if(dmg_ncum_add_set) {
-							dmg_ncum_add = maximum<int>(dmg_ncum_add,lexical_cast_default<int>((**dmg_it)["add"]));
-						} else {
-							dmg_ncum_add = lexical_cast_default<int>((**dmg_it)["add"]);
-							dmg_ncum_add_set = true;
-						}
-						use_ncum = true;
-					}
-					if((**dmg_it)["multiply"] != "") {
-						dmg_ncum_mul = maximum<int>(dmg_ncum_mul,lexical_cast_default<int>((**dmg_it)["multiply"]));
-						use_ncum = true;
-					}
-				}
-			}
-			if(use_cum) {
-				base_damage = maximum<int>(dmg_cum_set*dmg_cum_mul + dmg_cum_add,dmg_ncum_set + dmg_ncum_add);
-			} else if(use_ncum) {
-				base_damage = dmg_ncum_set*dmg_ncum_mul + dmg_ncum_add;
-			}
+			unit_ability_list dmg_specials = defend.get_specials("damage");
+			unit_abilities::effect dmg_effects(dmg_specials,base_damage,backstab);
+			base_damage = dmg_effects.get_composite_value();
 		}
 		
 		if (strings) {
@@ -739,10 +580,10 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		}
 
 		// compute swarm attacks;
-		weapon_special_list swarm = defend.get_specials("attacks");
+		unit_ability_list swarm = defend.get_specials("attacks");
 		if(!swarm.empty()) {
-			int swarm_min_attacks = swarm.highest("attacks_min");
-			int swarm_max_attacks = swarm.highest("attacks_max",defend.num_attacks());
+			int swarm_min_attacks = swarm.highest("attacks_min").first;
+			int swarm_max_attacks = swarm.highest("attacks_max",defend.num_attacks()).first;
 			int hitp = d->second.hitpoints();
 			int mhitp = d->second.max_hitpoints();
 			
@@ -765,16 +606,16 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			res.amount_defender_drains = res.damage_attacker_takes/2;
 		}
 
-		weapon_special_list defend_plague = attack.get_specials("plague");
+		unit_ability_list defend_plague = attack.get_specials("plague");
 		res.defender_plague = a->second.get_state("not_living") != "yes" &&
 		  (!defend_plague.empty()) &&
 		  strcmp(a->second.undead_variation().c_str(),"null") &&
 		  !map.is_village(attacker);
 		if(!plague.empty()) {
-			if((*plague.cfgs.front())["type"] == "") {
+			if((*plague.cfgs.front().first)["type"] == "") {
 			  res.defender_plague_type = d->second.id();
 			} else {
-			  res.defender_plague_type = (*plague.cfgs.front())["type"];
+			  res.defender_plague_type = (*plague.cfgs.front().first)["type"];
 			}
 		}
 
@@ -793,55 +634,11 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	int resistance_modifier = d->second.damage_from(attack,false,d->first);
 
 	{ // modify damage
-		weapon_special_list dmg_specials = attack.get_specials("damage");
-		int dmg_ncum_set = base_damage; bool dmg_ncum_set_set = false;
-		int dmg_ncum_add = 0; bool dmg_ncum_add_set = false;
-		int dmg_ncum_mul = 1;
-		int dmg_cum_set = base_damage;
-		int dmg_cum_add = 0;
-		int dmg_cum_mul = 1;
-		bool use_ncum = false;
-		bool use_cum = false;
-		for(config::child_list::const_iterator dmg_it = dmg_specials.cfgs.begin(); dmg_it != dmg_specials.cfgs.end(); ++dmg_it) {
-			if((**dmg_it)["backstab"]=="yes") {
-				if(!backstab_check(a->first,d->first,units,teams)) {
-					continue;
-				}
-			}
-			if((**dmg_it)["cumulative"]=="yes") {
-				dmg_cum_set = maximum<int>(dmg_cum_set,lexical_cast_default<int>((**dmg_it)["value"]));
-				dmg_cum_add += lexical_cast_default<int>((**dmg_it)["add"]);
-				dmg_cum_mul *= lexical_cast_default<int>((**dmg_it)["multiply"]);
-				use_cum = true;
-			} else {
-				if((**dmg_it)["value"] != "") {
-					if(dmg_ncum_set_set) {
-						dmg_ncum_set = maximum<int>(dmg_ncum_set,lexical_cast_default<int>((**dmg_it)["value"]));
-					} else {
-						dmg_ncum_set = lexical_cast_default<int>((**dmg_it)["value"]);
-						dmg_ncum_set_set = true;
-					}
-					use_ncum = true;
-				}
-				if((**dmg_it)["add"] != "") {
-					if(dmg_ncum_add_set) {
-						dmg_ncum_add = maximum<int>(dmg_ncum_add,lexical_cast_default<int>((**dmg_it)["add"]));
-					} else {
-						dmg_ncum_add = lexical_cast_default<int>((**dmg_it)["add"]);
-						dmg_ncum_add_set = true;
-					}
-					use_ncum = true;
-				}
-				if((**dmg_it)["multiply"] != "") {
-					dmg_ncum_mul = maximum<int>(dmg_ncum_mul,lexical_cast_default<int>((**dmg_it)["multiply"]));
-					use_ncum = true;
-				}
-			}
-		}
-		if(use_cum) {
-			base_damage = maximum<int>(dmg_cum_set*dmg_cum_mul + dmg_cum_add,dmg_ncum_set + dmg_ncum_add);
-		} else if(use_ncum) {
-			base_damage = dmg_ncum_set*dmg_ncum_mul + dmg_ncum_add;
+		bool backstab = backstab_check(a->first,d->first,units,teams);
+		{ // modify damage
+			unit_ability_list dmg_specials = attack.get_specials("damage");
+			unit_abilities::effect dmg_effect(dmg_specials,base_damage,backstab);
+			base_damage = dmg_effect.get_composite_value();
 		}
 	}
 	
