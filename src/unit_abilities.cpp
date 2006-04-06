@@ -845,7 +845,7 @@ bool attack_type::special_affects_self(const config& cfg) const
 	return false;
 }
 void attack_type::set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
-                              const game_data* gamedata, unit_map* unitmap, 
+                              const game_data* gamedata, const unit_map* unitmap, 
 							  const gamemap* map, const gamestatus* game_status, 
 							  const std::vector<team>* teams, bool attacker,const attack_type* other_attack) const
 {

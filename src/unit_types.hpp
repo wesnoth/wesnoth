@@ -54,7 +54,7 @@ public:
 	std::vector<std::string> special_tooltips(bool force=false) const;
 	std::string weapon_specials(bool force=false) const;
 	void set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
-                              const game_data* gamedata, unit_map* unitmap, 
+                              const game_data* gamedata, const unit_map* unitmap, 
 							  const gamemap* map, const gamestatus* game_status, 
 							  const std::vector<team>* teams,bool attacker,const attack_type* other_attack) const;
 	void set_specials_context(const gamemap::location& loc,const unit& un) const;
