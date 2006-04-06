@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-02 13:13+0200\n"
-"PO-Revision-Date: 2006-04-05 12:12+0200\n"
+"PO-Revision-Date: 2006-04-06 08:44+0200\n"
 "Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -2985,7 +2985,6 @@ msgstr ""
 "ošetřování, má-li uzdravovatel i tuto schopnost)."
 
 #: data/help.cfg:222
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2996,9 +2995,8 @@ msgstr ""
 "\n"
 "\n"
 "Odpočinek můžete kombinovat s dalšími formami léčení, ale vesnice, "
-"regeneraci, léčení a uzdravování nelze kombinovat navzájem. Léčení nebo "
-"ošetřování rozdělené mezi více zraněných jednotek je méně efektivní. "
-"Konečně, jednotky se plně uzdraví mezi jednotlivými scénáři."
+"regeneraci, léčení a uzdravování nelze kombinovat navzájem: nejlepší volba "
+"bude zvolena. Konečně, jednotky se plně uzdraví mezi jednotlivými scénáři."
 
 #: data/help.cfg:227
 msgid "Income and Upkeep"
@@ -3375,7 +3373,6 @@ msgid "Forest"
 msgstr "Les"
 
 #: data/help.cfg:347
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3400,11 +3397,11 @@ msgstr ""
 "lesem, ale také získávají značný obranný bonus. Trpaslíci jsou také "
 "výjimkou; i když jsou schopni se pohybovat lesem bez výrazné ztráty "
 "rychlosti, jejich neobeznámenost s terénem způsobuje, že nezískávají žádný "
-"obranný bonus\n"
+"obranný bonus.\n"
 ".\n"
-"Většina jednotek získá 50% bonus, ale jízda je omezena 40%. Na druhou stranu "
-"získávají Elfové od 60 do 70% obranného bonusu a to i když jsou na koních. "
-"Trpaslíci obvykle získají v lese pouze 30% obrany."
+"Většina jednotek získá jako obranný bonus 50%, ale jízda je omezena na 40%. "
+"Na druhou stranu získávají Elfové od 60 do 70% obranného bonusu a to i když "
+"jsou na koních. Trpaslíci obvykle získají v lese pouze 30% obrany."
 
 #: data/help.cfg:353 data/terrain.cfg:318
 msgid "Hills"
@@ -4044,19 +4041,18 @@ msgid "2p - Charge"
 msgstr "2p - Výpad"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
-#, fuzzy
 msgid "2p - Cynsaun Battlefield"
 msgstr "2p - Cynsaunovo bitevní pole"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
-#, fuzzy
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
 "favor epic, large-scale duel matches. Recommended settings of 150 gold and 1 "
 "gold per village."
 msgstr ""
 "Na tomto rozlehlém bitevním poli je toho mnoho ke zkoumání pro hráče "
-"preferující obrovské epické duely. Doporučené nastavení 2 zlaté na vesnici."
+"preferující obrovské epické duely. Doporučené nastavení je 150 zlatých a 1 "
+"zlatý na vesnici."
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
@@ -4347,7 +4343,6 @@ msgid "4p - Morituri"
 msgstr "4p - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
 "settings of 2 gold per village."
@@ -4550,7 +4545,7 @@ msgstr "Hnědá"
 #: src/multiplayer_create.cpp:67 src/multiplayer_lobby.cpp:347
 #: src/multiplayer_lobby.cpp:353
 msgid "Shroud"
-msgstr "Ochrana tmy"
+msgstr "Zahalení tmou"
 
 #: data/terrain.cfg:18 data/themes/default.cfg:547
 #: src/multiplayer_lobby.cpp:343
@@ -4744,14 +4739,13 @@ msgstr ""
 "zobrazuje v pravém horním rohu obrazovky."
 
 #: data/tips.cfg:5
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
 "be cured by moving them to a village, or placing them next to a unit with "
 "the 'cures' ability."
 msgstr ""
-"Otrávené jednotky ztrácejí 8 životů za kolo, ale na otravu nezemřou. Otrava "
+"Otrávené jednotky ztrácejí 8 životů za kolo, ale na otravu nezemřou: otrava "
 "nikdy nezmenší počet životů pod jeden. Otrávené jednotky mohou být uzdraveny "
 "přesunem do vesnice nebo umístěním vedle jednotky, která má schopnost "
 "uzdravovat."
@@ -5007,12 +5001,17 @@ msgid ""
 "limited by its maximum movement. Remember this when deciding what unit is "
 "best to scout specific types of terrain."
 msgstr ""
+"Na mapách, kde je použito zahalení tmou či mlha, je pohled jednotky omezen "
+"možností jejího pohybu. Pamatuj na to při výběru nejlepšího zvěda pro ten "
+"který terén. "
 
 #: data/tips.cfg:36
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
+"Ve Wesnothu má téměř každý obrázek, ba i termín, bublinkovou nápovědu. "
+"Přesuň nad něj myš a dostaneš vyčerpávající popis."
 
 #: data/traits.cfg:6
 msgid "loyal"
@@ -5056,13 +5055,15 @@ msgstr "Bojovnice"
 
 #: data/tutorial/units/Quintain.cfg:3
 msgid "Quintain"
-msgstr ""
+msgstr "Panák"
 
 #: data/tutorial/units/Quintain.cfg:13
 msgid ""
 "Quintains are used to practice swordplay and jousting on.  It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
+"Panáci se používají k výcviku boje s mečem a k tréninku před turnaji. Bylo "
+"by extrémně neobvyklé, kdyby panák sám od sebe někoho napadl."
 
 #: data/tutorial/units/Quintain.cfg:20
 msgid "flail"
@@ -8196,7 +8197,6 @@ msgid "Orcish Slayer"
 msgstr "Skřetí mordýř"
 
 #: data/units/Orcish_Slayer.cfg:19
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -8214,8 +8214,8 @@ msgstr ""
 "který používají, je krutou zbraní a jeho běžné používání na bojišti je často "
 "důvodem převahy skřetí armády.\n"
 "\n"
-"Zvláštní údaje: Skřetí mordýři natírají jedem své házecí nože a zasažené "
-"oběti získávají poškození dokud nejsou vyléčeny ve městě a nebo léčitelem."
+"Zvláštní rysy: Skřetí mordýři natírají jedem své házecí nože a zasažené "
+"oběti získávají poškození dokud nejsou vyléčeny ve městě nebo uzdravovatelem."
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
@@ -8305,7 +8305,6 @@ msgid "Saurian Augur"
 msgstr "Ještěrácký šaman"
 
 #: data/units/Saurian_Augur.cfg:25
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Augurs are valued as healers because they can provide aid to their "
@@ -8340,7 +8339,6 @@ msgid "Saurian Oracle"
 msgstr "Ještěrácký vrhači ledu"
 
 #: data/units/Saurian_Oracle.cfg:25
-#, fuzzy
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
@@ -8349,8 +8347,8 @@ msgid ""
 msgstr ""
 "Ještěráčtí vrhači ledu zanechali jakýchkoli dalších studií umění léčivých a "
 "uzdravovacích a upřednostnili vypilování umění temných. I když mají křehkou "
-"konstituci, mohou používat magii studeného severu, a stále ovládají základní "
-"uzdravovací nauky."
+"konstituci, mohou používat magii studeného severu, a stále ovládají základy "
+"léčitelské nauky."
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
@@ -8568,7 +8566,6 @@ msgid "Ghoul"
 msgstr "Požírač mrtvých"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:20
-#, fuzzy
 msgid ""
 "Only those who have delved into the circles of necromancy know what must be "
 "done to turn a person into a ghoul, and it is a secret they are not telling. "
@@ -8594,14 +8591,14 @@ msgstr ""
 "primární nenávistí.\n"
 "\n"
 "Zvláštní rysy: Pařáty tohoto tvora jsou otrávené a oběti jedu budou "
-"kontinuálně ztrácet životy, dokud nebudou vyléčení ve městě nebo léčitelem."
+"kontinuálně ztrácet životy, dokud nebudou uzdraven ve městě nebo "
+"uzdravovatelem."
 
 #: data/units/Undead_Corpse_Necrophage.cfg:3
 msgid "Necrophage"
 msgstr "Požírač mrtvol"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -8617,8 +8614,8 @@ msgstr ""
 "masem svých obětí, veškerá jejich poškození z boje zmizí a jsou jako jako "
 "zčerstva vyvolaní, aby mohli znova začít svůj hon za dalším masem.\n"
 "\n"
-"Zvláštní údaje: Drápy Požírače jsou otrávené a oběti zasažené tímto jedem "
-"jsou poškozovány dokud nejsou vyléčeny ve městě a nebo léčitelem."
+"Zvláštní rysy: Drápy Požírače jsou otrávené a oběti zasažené tímto jedem "
+"jsou poškozovány dokud nejsou uzdraveny ve městě a nebo uzdravovatelem."
 
 #: data/units/Undead_Corpse_Soulless.cfg:4
 msgid "Soulless"
@@ -8726,6 +8723,19 @@ msgid ""
 "Special Notes: The ranged attacks of a Dark Sorcerer are magical, and always "
 "have a high chance of hitting an opponent."
 msgstr ""
+"Hrůza inspirovaná černou magií pochází hlavně z toho, jak málo se toho o "
+"černé magii mezi běžnými lidmi ví. Temní čarodějové, kterým se mezi lidem "
+"začalo říkat černokněžníci, začali odkrývat tajemství života a smrti a brzy "
+"se stali mistry v trýznění a mučení.\n"
+"\n"
+"Hlavní výhrou temného umění je úplná nadvláda nad životem a smrtí. Temní "
+"čarodějové zvládli i schopnosti znovuoživení koster a duchů. Ti "
+"nejzkaženější, kteří nejvíce touží po moci, pak skončí u pokusů o kompletní "
+"vítězství nad smrtí pomocí transformace sebe sama v Licha a získání hrůzné "
+"nesmrtelnosti.\n"
+"\n"
+"Zvláštní rysy: na dálku útočí Temní čarodějové magicky a mají tudíž vždy "
+"vysokou pravděpodobnost zásahu."
 
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
@@ -8760,16 +8770,14 @@ msgstr ""
 "ten lichuv. "
 
 #: data/units/Undead_Necromancer.cfg:32
-#, fuzzy
 msgid "plague staff"
-msgstr "nákaza"
+msgstr "hůl nákazy"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
 msgstr "Vrhač kostí"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:14
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -8778,12 +8786,12 @@ msgid ""
 "Dubbed simply 'Bone-Shooters' by their unfortunate enemies, these "
 "abominations are a terror to all who live."
 msgstr ""
-"Mnozí, kteří byli stvořeni nekromanty, začínají velmi lpět na svém falešném "
-"bytí. Moc života je dar, se kterým se musí umět pracovat. Tito lukostřelci "
-"jsou často vybaveni opravdu hanebnými zbraněmi. Jejich toulec je naplněn "
-"šípy, které nejsou vytvořeny ze dřeva, ale z kostí jejich obětí. Takže jsou "
-"svými protivníky jednoduše nazývání 'Vrhači kostí'. Tato ohavnost rozsévá "
-"strach mezi všemi živými bytostmi."
+"Mnozí, kteří byli stvořeni temnými čaroději, začínají velmi lpět na svém "
+"falešném bytí. Moc života je dar, se kterým se musí umět pracovat. Tito "
+"lukostřelci jsou často vybaveni opravdu hanebnými zbraněmi. Jejich toulec je "
+"naplněn šípy, které nejsou vytvořeny ze dřeva, ale z kostí jejich obětí. "
+"Takže jsou svými protivníky jednoduše nazývání 'Vrhači kostí'. Tato ohavnost "
+"rozsévá strach mezi všemi živými bytostmi."
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:39
 #: data/units/Undead_Skele_Soul_Shooter.cfg:29
@@ -8917,7 +8925,6 @@ msgid "Ghost"
 msgstr "Duch"
 
 #: data/units/Undead_Spirit_Ghost.cfg:19
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -9179,14 +9186,12 @@ msgid "+Core Developers"
 msgstr "+Kmenoví vývojáři"
 
 #: src/about.cpp:33
-#, fuzzy
 msgid "+  Main Developer"
-msgstr "-   Hlavní vývojář"
+msgstr "+  Hlavní vývojář"
 
 #: src/about.cpp:36
-#, fuzzy
 msgid "+  Artwork and graphics designer"
-msgstr "-   Kresby a grafický design"
+msgstr "+  Kresby a grafika"
 
 #: src/about.cpp:39
 msgid "+Developers"
@@ -9757,9 +9762,8 @@ msgid "Abilities: "
 msgstr "Schopnosti: "
 
 #: src/help.cpp:1143
-#, fuzzy
 msgid "Cost: "
-msgstr "kroků: "
+msgstr "Kroků: "
 
 #: src/help.cpp:1144
 msgid "Alignment: "
@@ -10220,19 +10224,19 @@ msgstr "Zapíná časový limit hráče"
 
 #: src/multiplayer_create.cpp:115
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "Nejdelší čas povolený pro první tah (vteřin)"
 
 #: src/multiplayer_create.cpp:121
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "Nejdelší čas povolený pro libovolný tah (vteřin)"
 
 #: src/multiplayer_create.cpp:127
 msgid "Time for general tasks each turn (seconds)"
-msgstr ""
+msgstr "Čas určený pro hlavní úkoly na každý tah (vteřin)"
 
 #: src/multiplayer_create.cpp:133
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "Čas na každý útok, verbování a obsazování"
 
 #: src/multiplayer_create.cpp:138
 msgid "The amount of income each village yields per turn"
@@ -10302,24 +10306,20 @@ msgid "Unlimited Turns"
 msgstr "Neomezeně kol"
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Init. Limit: "
-msgstr "Počáteční čas: "
+msgstr "Počáteční limit: "
 
 #: src/multiplayer_create.cpp:318
-#, fuzzy
 msgid "Turn Bonus: "
-msgstr "Počet kol: "
+msgstr "Bonus za kolo: "
 
 #: src/multiplayer_create.cpp:322
-#, fuzzy
 msgid "Reservoir: "
-msgstr "Server: "
+msgstr "Zásobárna: "
 
 #: src/multiplayer_create.cpp:327
-#, fuzzy
 msgid "Action Bonus: "
-msgstr "Akce"
+msgstr "Bonus za akce:"
 
 #: src/multiplayer_create.cpp:334
 msgid "Village Gold: "
@@ -10403,14 +10403,12 @@ msgid "Choose your side:"
 msgstr "Vyber si svoji stranu:"
 
 #: src/multiplayer_wait.cpp:254
-#, fuzzy
 msgid "Do you want to skip the replay?"
-msgstr "Přeješ si uložit hru?"
+msgstr "Přeješ si přeskočit záznam?"
 
 #: src/multiplayer_wait.cpp:254
-#, fuzzy
 msgid "Skip replay"
-msgstr " záznam"
+msgstr "Přeskočit záznam"
 
 #: src/multiplayer_wait.cpp:393 src/playturn.cpp:1960
 msgid "unit^Gold"
@@ -10736,9 +10734,8 @@ msgstr ""
 "neklesne pod 1."
 
 #: src/reports.cpp:142
-#, fuzzy
 msgid "poisoned: "
-msgstr "otrávený"
+msgstr "otrávený:"
 
 #: src/reports.cpp:149
 msgid "This unit has been turned to stone. It may not move or attack."
