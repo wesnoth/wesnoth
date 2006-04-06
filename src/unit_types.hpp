@@ -69,12 +69,12 @@ public:
 	const config& get_cfg() const;
 	mutable gamemap::location aloc_,dloc_;
 	mutable bool attacker_;
-	const game_data mutable* gamedata_;
-	const unit_map mutable* unitmap_; 
-	const gamemap mutable* map_;
-	const gamestatus mutable* game_status_;
-	const std::vector<team> mutable* teams_;
-	const attack_type mutable* other_attack_;
+	mutable const game_data* gamedata_;
+	mutable const unit_map* unitmap_; 
+	mutable const gamemap* map_;
+	mutable const gamestatus* game_status_;
+	mutable const std::vector<team>* teams_;
+	mutable const attack_type* other_attack_;
 	/*
 	 * cfg: a weapon special WML structure
 	 */
