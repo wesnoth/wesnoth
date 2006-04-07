@@ -24,7 +24,7 @@
 #include "../language.hpp"
 #include "../widgets/menu.hpp"
 #include "../pathfind.hpp"
-#include "../playlevel.hpp"
+
 #include "../preferences.hpp"
 #include "../sdl_utils.hpp"
 #include "../tooltips.hpp"
