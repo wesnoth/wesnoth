@@ -84,7 +84,7 @@ struct prob_matrix
 
 private:
 	// This gives me 10% speed improvement over std::vector<> (g++4.0.3 x86)
-	double *prob_matrix::new_arr(unsigned int size);
+	double *new_arr(unsigned int size);
 
 	double &val(unsigned plane, unsigned row, unsigned col);
 	const double &val(unsigned plane, unsigned row, unsigned col) const;

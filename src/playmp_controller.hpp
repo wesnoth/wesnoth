@@ -30,7 +30,7 @@ protected:
 	virtual void speak();
 	virtual void clear_labels();
 	virtual void user_command();
-	virtual bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const;
+	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 
 	virtual void play_side(const int team_index);
 	virtual void before_human_turn();

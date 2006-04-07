@@ -25,8 +25,8 @@ public:
 		gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack);
 	void mouse_motion(const SDL_MouseMotionEvent& event, const int player_number, const bool browse);
 	void mouse_press(const SDL_MouseButtonEvent& event, const int player_number, const bool browse);
-	void mouse_handler::cycle_units();
-	void mouse_handler::cycle_back_units();
+	void cycle_units();
+	void cycle_back_units();
 
 	int get_path_turns() const { return path_turns_; }
 	paths get_current_paths() { return current_paths_; }
