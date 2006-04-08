@@ -404,7 +404,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	}
 	
 	res.defend_with = defend_with;
-	static attack_type no_weapon(config(),"fake_attack","");
+	config tmp_config;
+	static attack_type no_weapon(tmp_config,"fake_attack","");
 	const attack_type& defend = defend_with == -1 ? no_weapon : defender_attacks[defend_with];
 	attack.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,true,&defend);
 	defend.set_specials_context(attacker,defender,&gamedata,&units,&map,&state,&teams,false,&attack);
