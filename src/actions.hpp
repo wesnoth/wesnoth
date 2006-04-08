@@ -99,16 +99,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
                                    battle_stats_strings *strings = NULL);
 
 
-/* Computes the statistics of a battle between an attacker and a
- * defender unit. It is meant as a replacement of battle_stats.
- *
- * Public interface:
- *
- * So far, you initialize the object, call set_attacker_weapon(), set
- * set_defender_weapon() and compute_battle_stats() to obtain the statistics
- * of the battle. This interface is temporary and will soon be replaced
- * with a method that automatically selects the best defender weapon with
- * an heuristic function.
+/* The battle_context class computes the statistics of a battle between an
+ * attacker and a defender unit. It is meant as a replacement of battle_stats.
  */
 class battle_context
 {
@@ -116,6 +108,7 @@ public:
 	// Structure describing the statistics of a unit involved in the battle.
 	struct unit_stats
 	{
+		const attack_type *weapon;	// The weapon used by the unit to attack the opponent, or NULL if there is none.
 		bool is_attacker;		// True if the unit is the attacker.
 		bool is_poisoned;	  	// True if the unit is poisoned at the beginning of the battle.
 		bool is_slowed;	    	// True if the unit is slowed at the beginning of the battle.
@@ -139,56 +132,41 @@ public:
 		int swarm_max;			// Maximum number of blows with swarm (equal to num_blows if swarm isn't used).
 
 		unit_stats(const unit &u, const gamemap::location& u_loc,
-				   bool attacking, const attack_type *weapon,
+				   const attack_type *u_weapon, bool attacking,
 				   const unit &opp, const gamemap::location& opp_loc,
+				   const attack_type *opp_weapon,
 				   const std::map<gamemap::location,unit>& units,
-				   const std::vector<team>& teams, const gamestatus& status,
-				   const gamemap& map);
+				   const std::vector<team>& teams,
+				   const gamestatus& status, const gamemap& map, const game_data& gamedata);
 
 		// This method dumps the statistics of a unit on stdout. Remove it eventually.
 		void dump() const;
 	};
 
 	battle_context(const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
-		       const gamestatus& status, const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
-			 : map_(map), teams_(teams), units_(units), status_(status),
-			   attacker_loc_(attacker_loc), defender_loc_(defender_loc),
-			   attacker_weapon_(NULL), defender_weapon_(NULL), attacker_stats_(NULL), defender_stats_(NULL) {}
-
-	~battle_context() { delete attacker_stats_; delete defender_stats_; }
-
-	// Set the attacker weapon.
-	void set_attacker_weapon(const attack_type& weapon) { attacker_weapon_ = &weapon; }
+				   const gamestatus& status, const game_data& gamedata,
+				   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
+				   const attack_type& attacker_weapon);
 	
-	// Set the defender weapon.
-	void set_defender_weapon(const attack_type& weapon) { defender_weapon_ = &weapon; }
-
-	// This method computes the statistics of the units for the upcoming battle.
-	std::pair<unit_stats *,unit_stats *> compute_unit_stats();
+	~battle_context() { delete attacker_stats_; delete defender_stats_; }
+	
+	// This method returns the statistics of the attacker.
+	const unit_stats& get_attacker_stats() { return *attacker_stats_; }
+	
+	// This method returns the statistics of the defender.
+	const unit_stats& get_defender_stats() { return *defender_stats_; }
 
 private:
-	// Map (used to query terrain features that affect combat).
-	const gamemap& map_;
+	// Copy constructor and operator=() disabled. Don't copy battle_context, copy unit_stats instead.
+	battle_context(const battle_context &) {}
+	battle_context& operator=(const battle_context &) { return *this; }
 
-	// Teams (used to compute backstab).
-	const std::vector<team>& teams_;
+	// This method rates the defender weapon specified in 'd_stats', possibly taking into
+	// account the statistics of the attacker in the process ('a_stats'). The rating
+	// returned by the method must be non-negative.
+	int rate_defender_weapon(const unit_stats& a_stats, const unit_stats& d_stats);
 
-	// This location-to-unit map describes the expected location of the
-	// units. The attacker and defender positions must match the ones
-	// specified in this map. It is used to compute leadership, backstab and
-	// the time of day bonus. It is expected that the caller will obtain a
-	// copy of the current location-to-unit map of the game and modify it to
-	// place the units where they should be when the battle actually takes
-	// place.
-	const std::map<gamemap::location,unit>& units_;
-
-	// The status of the game (used to compute the time of day bonus).
-	const gamestatus& status_;
-
-	const gamemap::location attacker_loc_, defender_loc_;
-	const attack_type *attacker_weapon_, *defender_weapon_;
-
-	// Statistics of the units: only valid after compute_battle_stats().
+	// Statistics of the units.
 	unit_stats *attacker_stats_, *defender_stats_;
 };
 

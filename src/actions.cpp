@@ -776,32 +776,78 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	return res;
 }
 
-std::pair<battle_context::unit_stats *, battle_context::unit_stats *> battle_context::compute_unit_stats()
+
+battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
+							   const gamestatus& status, const game_data& gamedata,
+							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
+							   const attack_type& attacker_weapon)
 {
-	// Get the statistics of each unit.
-	const unit &attacker = units_.find(attacker_loc_)->second;
-	const unit &defender = units_.find(defender_loc_)->second;
-	attacker_stats_ = new unit_stats(attacker, attacker_loc_, true, attacker_weapon_,
-									 defender, defender_loc_, units_, teams_, status_, map_);
-	defender_stats_ = new unit_stats(defender, defender_loc_, false, defender_weapon_,
-									 attacker, attacker_loc_, units_, teams_, status_, map_);
+	const unit& attacker = units.find(attacker_loc)->second;
+	const unit& defender = units.find(defender_loc)->second;
 
-#if 0 //FIXME: I don't think this is needed.
-	// Adjust berserk.
-	attacker_stats_.berserk = defender_stats_.berserk = (attacker_stats_.berserk || defender_stats_.berserk);
-#endif
+	// To choose the best defender weapon, we have to compare different
+	// weapons with an heuristic function. The heuristic function requires
+	// the statistics of the battle to be able to do a good job. Therefore,
+	// for each defender weapon, we compute the statistics and call the
+	// heuristic function to obtain its rating. We keep the weapon that
+	// has the best rating.
+	int best_rating = -1;
 
-	return std::pair<unit_stats *, unit_stats *>(attacker_stats_, defender_stats_);
+	std::vector<attack_type>::const_iterator i;
+	for (i = defender.attacks().begin(); i != defender.attacks().end(); i++) {
+		// Skip weapons that do not match the attacker weapon range.
+		if (i->range() != attacker_weapon.range())
+			continue;
+		
+		// Skip weapons that have a null defense weight.
+		if (i->defense_weight() <= 0)
+			continue;
+
+		unit_stats *current_attacker = new unit_stats(attacker, attacker_loc, &attacker_weapon, true,
+													  defender, defender_loc, &(*i),
+													  units, teams, status, map, gamedata);
+		unit_stats *current_defender = new unit_stats(defender, defender_loc, &(*i), false,
+													  attacker, attacker_loc, &attacker_weapon,
+													  units, teams, status, map, gamedata);
+		int current_rating = rate_defender_weapon(*current_attacker, *current_defender);
+		assert(current_rating >= 0);
+
+		if (current_rating > best_rating) {
+			delete attacker_stats_;
+			delete defender_stats_;
+			attacker_stats_ = current_attacker;
+			defender_stats_ = current_defender;
+			best_rating = current_rating;
+		} else {
+			delete current_attacker;
+			delete current_defender;
+		}
+	}
+
+	// If there is no defender weapon, compute the stats without a defender weapon.
+	if (attacker_stats_ == NULL) {
+		wassert(defender_stats_ == NULL);
+		attacker_stats_ = new unit_stats(attacker, attacker_loc, &attacker_weapon, true, 
+										 defender, defender_loc, NULL,
+										 units, teams, status, map, gamedata);
+		defender_stats_ = new unit_stats(defender, defender_loc, NULL, false, 
+										 attacker, attacker_loc, &attacker_weapon,
+										 units, teams, status, map, gamedata);
+	}
 }
 
 battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u_loc,
-									   bool attacking, const attack_type *weapon,
+									   const attack_type *u_weapon, bool attacking,
 									   const unit &opp, const gamemap::location& opp_loc,
+									   const attack_type *opp_weapon,
 									   const std::map<gamemap::location,unit>& units,
-									   const std::vector<team>& teams, const gamestatus& status,
-									   const gamemap& map)
+									   const std::vector<team>& teams,
+									   const gamestatus& status,
+									   const gamemap& map,
+									   const game_data& gamedata)
 {
 	// Get the current state of the unit.
+	weapon = u_weapon;
 	is_attacker = attacking;
 	is_poisoned = u.get_state("poisoned") == "yes";
 	is_slowed = u.get_state("slowed") == "yes";
@@ -810,8 +856,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 
 	// Get the weapon characteristics, if any.
 	if (weapon) {
-		// Get the specials used.  FIXME: Surely we should use the full set_specials_context?
-		weapon->set_specials_context(u_loc, u);
+		weapon->set_specials_context(u_loc, opp_loc, &gamedata, &units, &map, &status, &teams, attacking, opp_weapon);
 		slows = weapon->get_special_bool("slow");
 		drains = weapon->get_special_bool("drains") && opp.get_state("not_living") != "yes";
 		stones = weapon->get_special_bool("stones");
@@ -909,6 +954,15 @@ void battle_context::unit_stats::dump() const
 	printf("swarm_max:	%d\n", swarm_max);
 	printf("\n");
 }
+
+int battle_context::rate_defender_weapon(const unit_stats&, const unit_stats& d_stats)
+{
+	// This is the old defend heuristic needed to maintain backward
+	// compatibility with evaluate_battle_stats(). Improve it eventually
+	// when battle_context is used by attack() and friends.
+	return (int) (d_stats.damage * d_stats.num_blows * d_stats.weapon->defense_weight());
+}
+
 
 static std::string unit_dump(std::pair< gamemap::location, unit > const &u)
 {
