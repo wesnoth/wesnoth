@@ -776,6 +776,140 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	return res;
 }
 
+std::pair<battle_context::unit_stats *, battle_context::unit_stats *> battle_context::compute_unit_stats()
+{
+	// Get the statistics of each unit.
+	const unit &attacker = units_.find(attacker_loc_)->second;
+	const unit &defender = units_.find(defender_loc_)->second;
+	attacker_stats_ = new unit_stats(attacker, attacker_loc_, true, attacker_weapon_,
+									 defender, defender_loc_, units_, teams_, status_, map_);
+	defender_stats_ = new unit_stats(defender, defender_loc_, false, defender_weapon_,
+									 attacker, attacker_loc_, units_, teams_, status_, map_);
+
+#if 0 //FIXME: I don't think this is needed.
+	// Adjust berserk.
+	attacker_stats_.berserk = defender_stats_.berserk = (attacker_stats_.berserk || defender_stats_.berserk);
+#endif
+
+	return std::pair<unit_stats *, unit_stats *>(attacker_stats_, defender_stats_);
+}
+
+battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u_loc,
+									   bool attacking, const attack_type *weapon,
+									   const unit &opp, const gamemap::location& opp_loc,
+									   const std::map<gamemap::location,unit>& units,
+									   const std::vector<team>& teams, const gamestatus& status,
+									   const gamemap& map)
+{
+	// Get the current state of the unit.
+	is_attacker = attacking;
+	is_poisoned = u.get_state("poisoned") == "yes";
+	is_slowed = u.get_state("slowed") == "yes";
+	hp = u.hitpoints();
+	max_hp = u.max_hitpoints();
+
+	// Get the weapon characteristics, if any.
+	if (weapon) {
+		// Get the specials used.  FIXME: Surely we should use the full set_specials_context?
+		weapon->set_specials_context(u_loc, u);
+		slows = weapon->get_special_bool("slow");
+		drains = weapon->get_special_bool("drains") && opp.get_state("not_living") != "yes";
+		stones = weapon->get_special_bool("stones");
+		poisons = weapon->get_special_bool("poison");
+		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, teams);
+		berserk = weapon->get_special_bool("berserk");
+		firststrike = weapon->get_special_bool("firststrike");
+		
+		// Compute chance to hit.
+		chance_to_hit = opp.defense_modifier(map.get_terrain(opp_loc));
+		unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
+		unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
+		chance_to_hit = cth_effects.get_composite_value();
+		
+		// Compute base damage done with the weapon.
+		int base_damage = weapon->damage();
+		unit_ability_list dmg_specials = weapon->get_specials("damage");
+		unit_abilities::effect dmg_effect(dmg_specials, base_damage, backstab_pos);
+		base_damage = dmg_effect.get_composite_value();
+		
+		// Get the damage multiplier applied to the base damage of the weapon.
+		int damage_multiplier = 100;
+		
+		// Time of day bonus.
+		damage_multiplier += combat_modifier(status, units, u_loc, u.alignment(), map);
+	
+		// Leadership bonus.
+		int leader_bonus = 0;
+		if (under_leadership(units, u_loc, &leader_bonus).valid())
+			damage_multiplier += leader_bonus;
+		
+		// Resistance modifier.
+		damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc);
+		
+		// Compute both the normal and slowed damage. For the record,
+		// drain = normal damage / 2 and slow_drain = slow_damage / 2.
+		damage = round_damage(base_damage, damage_multiplier, 10000);
+		slow_damage = round_damage(base_damage, damage_multiplier, 20000);
+		
+		// Compute the number of blows and handle swarm.
+		unit_ability_list swarm_specials = weapon->get_specials("attacks");
+		
+		if (!swarm_specials.empty()) {
+			swarm = true;
+			swarm_min = swarm_specials.highest("attacks_min").first;
+			swarm_max = swarm_specials.highest("attacks_max", weapon->num_attacks()).first;
+			num_blows = swarm_min + (swarm_max - swarm_min) * hp / max_hp;
+		} else {
+			swarm = false;
+			num_blows = weapon->num_attacks();
+			swarm_min = num_blows;
+			swarm_max = num_blows;
+		}
+	} else {
+		slows = false;
+		drains = false;
+		stones = false;
+		poisons = false;
+		backstab_pos = false;
+		swarm = false;
+		berserk = false;
+		firststrike = false;
+		
+		chance_to_hit = 0;
+		damage = 0;
+		slow_damage = 0;
+		num_blows = 0;
+		swarm_min = 0;
+		swarm_max = 0;	
+	}
+}
+
+void battle_context::unit_stats::dump() const
+{
+	printf("==================================\n");
+	printf("is_attacker:	%d\n", (int) is_attacker);
+	printf("is_poisoned:	%d\n", (int) is_poisoned);
+	printf("is_slowed:	%d\n", (int) is_slowed);
+	printf("slows:		%d\n", (int) slows);
+	printf("drains:		%d\n", (int) drains);
+	printf("stones:		%d\n", (int) stones);
+	printf("poisons:	%d\n", (int) poisons);
+	printf("backstab_pos:	%d\n", (int) backstab_pos);
+	printf("swarm:		%d\n", (int) swarm);
+	printf("berserk:	%d\n", (int) berserk);
+	printf("firststrike:	%d\n", (int) firststrike);
+	printf("\n");	
+	printf("hp:		%d\n", hp);
+	printf("max_hp:		%d\n", max_hp);
+	printf("chance_to_hit:	%d\n", chance_to_hit);
+	printf("damage:		%d\n", damage);
+	printf("slow_damage:	%d\n", slow_damage);
+	printf("num_blows:	%d\n", num_blows);
+	printf("swarm_min:	%d\n", swarm_min);
+	printf("swarm_max:	%d\n", swarm_max);
+	printf("\n");
+}
+
 static std::string unit_dump(std::pair< gamemap::location, unit > const &u)
 {
 	std::stringstream s;
@@ -2330,7 +2464,7 @@ void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& sta
 
 bool backstab_check(const gamemap::location& attacker_loc,
 	const gamemap::location& defender_loc,
-	units_map& units, std::vector<team>& teams)
+	const units_map& units, const std::vector<team>& teams)
 {
 	const units_map::const_iterator defender =
 		units.find(defender_loc);

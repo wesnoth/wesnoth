@@ -98,6 +98,101 @@ battle_stats evaluate_battle_stats(const gamemap& map,
                                    gamemap::TERRAIN attacker_terrain_override = 0,
                                    battle_stats_strings *strings = NULL);
 
+
+/* Computes the statistics of a battle between an attacker and a
+ * defender unit. It is meant as a replacement of battle_stats.
+ *
+ * Public interface:
+ *
+ * So far, you initialize the object, call set_attacker_weapon(), set
+ * set_defender_weapon() and compute_battle_stats() to obtain the statistics
+ * of the battle. This interface is temporary and will soon be replaced
+ * with a method that automatically selects the best defender weapon with
+ * an heuristic function.
+ */
+class battle_context
+{
+public:
+	// Structure describing the statistics of a unit involved in the battle.
+	struct unit_stats
+	{
+		bool is_attacker;		// True if the unit is the attacker.
+		bool is_poisoned;	  	// True if the unit is poisoned at the beginning of the battle.
+		bool is_slowed;	    	// True if the unit is slowed at the beginning of the battle.
+		bool slows;				// Attack slows opponent when it hits.
+		bool drains;			// Attack drains opponent when it hits.
+		bool stones;			// Attack turns opponent to stone when it hits.
+		bool poisons;			// Attack poisons opponent when it hits.
+		bool backstab_pos;		// True if the attacker is in *position* to backstab the defender (this is used to
+								// determine whether to apply the backstab bonus in case the attacker has backstab).
+		bool swarm;				// Attack has swarm special.
+		bool berserk;			// Berserk special is used, either by this unit or his opponent.
+		bool firststrike;		// Attack has firststrike special.
+
+		int hp;					// Hitpoints of the unit at the beginning of the battle.
+		int max_hp;	     		// Maximum hitpoints of the unit.
+		int chance_to_hit;		// Effective chance to hit (all factors accounted for).
+		int damage;   			// Effective damage of the weapon (all factors accounted for, except slow state).
+		int slow_damage;		// Effective damage if unit is/becomes slowed.
+		int num_blows;			// Effective number of blows, takes swarm into account.
+		int swarm_min;			// Minimum number of blows with swarm (equal to num_blows if swarm isn't used).
+		int swarm_max;			// Maximum number of blows with swarm (equal to num_blows if swarm isn't used).
+
+		unit_stats(const unit &u, const gamemap::location& u_loc,
+				   bool attacking, const attack_type *weapon,
+				   const unit &opp, const gamemap::location& opp_loc,
+				   const std::map<gamemap::location,unit>& units,
+				   const std::vector<team>& teams, const gamestatus& status,
+				   const gamemap& map);
+
+		// This method dumps the statistics of a unit on stdout. Remove it eventually.
+		void dump() const;
+	};
+
+	battle_context(const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
+		       const gamestatus& status, const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
+			 : map_(map), teams_(teams), units_(units), status_(status),
+			   attacker_loc_(attacker_loc), defender_loc_(defender_loc),
+			   attacker_weapon_(NULL), defender_weapon_(NULL), attacker_stats_(NULL), defender_stats_(NULL) {}
+
+	~battle_context() { delete attacker_stats_; delete defender_stats_; }
+
+	// Set the attacker weapon.
+	void set_attacker_weapon(const attack_type& weapon) { attacker_weapon_ = &weapon; }
+	
+	// Set the defender weapon.
+	void set_defender_weapon(const attack_type& weapon) { defender_weapon_ = &weapon; }
+
+	// This method computes the statistics of the units for the upcoming battle.
+	std::pair<unit_stats *,unit_stats *> compute_unit_stats();
+
+private:
+	// Map (used to query terrain features that affect combat).
+	const gamemap& map_;
+
+	// Teams (used to compute backstab).
+	const std::vector<team>& teams_;
+
+	// This location-to-unit map describes the expected location of the
+	// units. The attacker and defender positions must match the ones
+	// specified in this map. It is used to compute leadership, backstab and
+	// the time of day bonus. It is expected that the caller will obtain a
+	// copy of the current location-to-unit map of the game and modify it to
+	// place the units where they should be when the battle actually takes
+	// place.
+	const std::map<gamemap::location,unit>& units_;
+
+	// The status of the game (used to compute the time of day bonus).
+	const gamestatus& status_;
+
+	const gamemap::location attacker_loc_, defender_loc_;
+	const attack_type *attacker_weapon_, *defender_weapon_;
+
+	// Statistics of the units: only valid after compute_battle_stats().
+	unit_stats *attacker_stats_, *defender_stats_;
+};
+
+
 //attack: executes an attack.
 void attack(display& gui, const gamemap& map,
             std::vector<team>& teams,
@@ -250,6 +345,6 @@ namespace victory_conditions {
 //be made to make sure the opposite unit isn't also the attacker.
 bool backstab_check(const gamemap::location& attacker_loc,
 	const gamemap::location& defender_loc,
-	units_map& units, std::vector<team>& teams);
+	const units_map& units, const std::vector<team>& teams);
 
 #endif
