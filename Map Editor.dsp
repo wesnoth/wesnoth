@@ -249,6 +249,10 @@ SOURCE=.\src\language.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\loadscreen.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\log.cpp
 # End Source File
 # Begin Source File
@@ -290,6 +294,10 @@ SOURCE=.\src\minimap.cpp
 # Begin Source File
 
 SOURCE=.\src\mouse.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\mouse_events.cpp
 # End Source File
 # Begin Source File
 
@@ -422,6 +430,14 @@ SOURCE=.\src\tstring.cpp
 # Begin Source File
 
 SOURCE=.\src\unit.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\unit_abilities.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\unit_animation.cpp
 # End Source File
 # Begin Source File
 

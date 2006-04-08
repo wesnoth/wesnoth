@@ -257,13 +257,11 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			}
 		}
 
-		unit_map::const_iterator un = find_unit(new_hex);
+		unit_map::iterator un = find_unit(new_hex);
 
 		if(un != units_.end() && un->second.side() != team_num_ && 
-		   current_paths_.routes.empty() && !(*gui_).fogged(un->first.x,un->first.y)) {
-			//Quick-Hack because of problems with passing a constant Reference
-			unit un2 = un->second;
-			unit_movement_resetter move_reset(un2);
+			current_paths_.routes.empty() && !(*gui_).fogged(un->first.x,un->first.y)) {
+			unit_movement_resetter move_reset(un->second);
 
 			const bool ignore_zocs = un->second.get_ability_bool("skirmisher",un->first);
 			const bool teleport = un->second.get_ability_bool("teleport",un->first);

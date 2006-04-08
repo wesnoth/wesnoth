@@ -1046,7 +1046,7 @@ void attack(display& gui, const gamemap& map,
 				game_events::fire("attacker_hits",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
-				if(a == units.end() || d == units.end() || (attack_with != -1 && size_t(attack_with) >= a->second.attacks().size()) || (stats.defend_with != -1 && size_t(stats.defend_with)) >= d->second.attacks().size()) {
+				if(a == units.end() || d == units.end() || (attack_with != -1 && size_t(attack_with) >= a->second.attacks().size()) || (stats.defend_with != -1 && size_t(stats.defend_with) >= d->second.attacks().size())) {
 					if (update_display){
 						recalculate_fog(map,state,info,units,teams,attacker_side-1);
 						recalculate_fog(map,state,info,units,teams,defender_side-1);

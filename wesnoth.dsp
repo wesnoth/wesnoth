@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MD /W3 /Gm /GR /GX /ZI /Od /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_DEBUG" /D "DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVE_FRIBIDI" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /MD /W3 /Gm /GR /GX /Zi /Od /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_DEBUG" /D "DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVE_FRIBIDI" /FR /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
@@ -70,7 +70,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /Gm /GX /ZI /Od /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVE_FRIBIDI" /D "HAVE_PYTHON" /FR /YX /FD /GZ /c
-# ADD CPP /nologo /MD /W3 /Gm /GX /ZI /Od /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVE_FRIBIDI" /D "HAVE_PYTHON" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /MD /W3 /Gm /GR /GX /ZI /Od /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "HAVE_FRIBIDI" /D "HAVE_PYTHON" /FR /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"

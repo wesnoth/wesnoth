@@ -28,12 +28,6 @@ class replay_network_sender;
 #include <map>
 #include <vector>
 
-struct command_disabler
-{
-	command_disabler();
-	~command_disabler();
-};
-
 class turn_info
 {
 public:

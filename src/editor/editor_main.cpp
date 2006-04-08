@@ -306,7 +306,7 @@ int main(int argc, char** argv)
 		catch (gamemap::incorrect_format_exception) {
 			std::cerr << "The map is not in a correct format, sorry." << std::endl;
 			return 1;
-		} catch (CVideo::quit& e) {
+		} catch (CVideo::quit&) {
 			return 0;
 		}
 	}
