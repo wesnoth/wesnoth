@@ -79,7 +79,7 @@ protected:
 	void fire_prestart(bool execute);
 	void fire_start(bool execute);
 	virtual void init_gui();
-	virtual void init_side(const int team_index);
+	virtual void init_side(const unsigned int team_index);
 	void place_sides_in_preferred_locations(gamemap& map, const config::child_list& sides);
 	bool do_replay(const bool replaying);
 	virtual void finish_side_turn();
@@ -126,8 +126,8 @@ protected:
 
 	CKey key_;
 	int first_human_team_;
-	int player_number_;
-	int first_player_;
+	unsigned int player_number_;
+	unsigned int first_player_;
 	int current_turn_;
 	bool skip_replay_;
 	bool browse_;

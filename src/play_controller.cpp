@@ -11,21 +11,20 @@
 play_controller::play_controller(const config& level, const game_data& gameinfo, game_state& state_of_game, 
 								 int ticks, int num_turns, const config& game_config, CVideo& video,
 								 bool skip_replay) : 
-	level_(level), ticks_(ticks), first_human_team_(-1), gameinfo_(gameinfo),
-	gamestate_(state_of_game), status_(level, num_turns), statistics_context_(level["name"]),
-	game_config_(game_config), map_(game_config, level["map_data"]), verify_manager_(units_),
-	labels_manager_(), help_manager_(&game_config, &gameinfo, &map_), 
-	team_manager_(teams_), xp_modifier_(atoi(level["experience_modifier"].c_str())),
-	loading_game_(level["playing_team"].empty() == false),
+	verify_manager_(units_), team_manager_(teams_),
+	labels_manager_(), help_manager_(&game_config, &gameinfo, &map_),
+	mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo, undo_stack_, redo_stack_),
 	menu_handler_(gui_, units_, teams_, level, gameinfo, map_, game_config, status_, state_of_game, undo_stack_, redo_stack_),
-	mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo, undo_stack_, redo_stack_)
+	statistics_context_(level["name"]), gameinfo_(gameinfo), level_(level), game_config_(game_config),
+	gamestate_(state_of_game), status_(level, num_turns), 
+	map_(game_config, level["map_data"]),
+	ticks_(ticks), xp_modifier_(atoi(level["experience_modifier"].c_str())),
+	loading_game_(level["playing_team"].empty() == false),
+	first_human_team_(-1)
 {
 	player_number_ = 1;
 	current_turn_ = 1;
-	first_player_ = atoi(level_["playing_team"].c_str());
-	if(first_player_ < 0 || first_player_ >= int(teams_.size())) {
-		first_player_ = 0;
-	}
+	first_player_ = lexical_cast_default<unsigned int,std::string>(level_["playing_team"]);
 	skip_replay_ = skip_replay;
 	browse_ = false;
 
@@ -290,7 +289,7 @@ void play_controller::init_gui(){
 	}
 }
 
-void play_controller::init_side(const int team_index){
+void play_controller::init_side(const unsigned int team_index){
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
 

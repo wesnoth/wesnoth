@@ -42,7 +42,7 @@ struct castle_cost_calculator : cost_calculator
 	castle_cost_calculator(const gamemap& map) : map_(map)
 	{}
 
-	virtual double cost(const gamemap::location& src, const gamemap::location& loc, const double, const bool) const
+	virtual double cost(const gamemap::location&, const gamemap::location& loc, const double, const bool) const
 	{
 		if(!map_.is_castle(loc))
 			return 10000;
@@ -1585,7 +1585,7 @@ bool get_village(const gamemap::location& loc, std::vector<team>& teams,
 	//we strip the village off all other sides, unless it is held by an ally
 	//and we don't have a leader (and thus can't occupy it)
 	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
-		const int side = i - teams.begin() + 1;
+		const unsigned int side = i - teams.begin() + 1;
 		if(team_num >= teams.size() || has_leader || teams[team_num].is_enemy(side)) {
 			i->lose_village(loc);
 			if(team_num + 1 != side && action_timebonus) {
