@@ -182,8 +182,13 @@ wesnoth_editor_SOURCES = \
 	network.cpp \
 	network_worker.cpp \
 	pathfind.cpp \
+	config_adapter.cpp \
 	play_controller.cpp \
 	playmp_controller.cpp \
+	intro.cpp \
+	ai_move.cpp \
+	ai_attack.cpp \
+	ai.cpp \
 	playsingle_controller.cpp \
 	playturn.cpp \
 	preferences.cpp \
@@ -249,6 +254,7 @@ campaignd_SOURCES = \
 	network.cpp \
 	network_worker.cpp \
 	publish_campaign.cpp \
+	loadscreen_empty.cpp \
 	serialization/parser.cpp
 
 campaignd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
@@ -265,6 +271,7 @@ exploder_SOURCES = \
 	tools/exploder_composer.cpp \
 	tools/dummy_video.cpp \
 	sdl_utils.cpp \
+	loadscreen_empty.cpp \
 	serialization/parser.cpp
 
 cutter_SOURCES = \
@@ -273,6 +280,7 @@ cutter_SOURCES = \
 	tools/exploder_cutter.cpp \
 	tools/dummy_video.cpp \
 	sdl_utils.cpp \
+	loadscreen_empty.cpp \
 	serialization/parser.cpp
 
 exploder_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL) $(PNG_LIBS)

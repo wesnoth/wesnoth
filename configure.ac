@@ -547,7 +547,7 @@ AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome2 = xyes])
 AC_PATH_PROG([LTOOL], [libtool], [])
 if test "$static" = "yes" -a -n "$LTOOL"
 then
-	LDPREFIX="$LTOOL --mode=link"
+	LDPREFIX="$LTOOL --mode=link --tag=CXX"
 else
 	LDPREFIX=""
 fi
