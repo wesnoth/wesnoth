@@ -1,6 +1,7 @@
 #include "playsingle_controller.hpp"
 
 #include "ai_interface.hpp"
+#include "game_errors.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
 #include "marked-up_text.hpp"
@@ -126,6 +127,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
+		// log before prestart events: they do weird things.
+		if (first_human_team_ != -1) {
+			log.start(gamestate_, teams_[first_human_team_], first_human_team_ + 1, units_,
+					  loading_game_ ? gamestate_.get_variable("turn_number") : "", status_.number_of_turns());
+		}
+
 		fire_prestart(!loading_game_);
 		init_gui();
 
@@ -134,13 +141,17 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		fire_start(!loading_game_);
 		gui_->recalculate_minimap();
 
-		bool replaying_ = (recorder.at_end() == false);
+		replaying_ = (recorder.at_end() == false);
 
 		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 		for(; ; first_player_ = 0) {
 			play_turn();
 		} //end for loop
 
+	} catch(game::load_game_exception&) {
+		// Loading a new game is effectively a quit.
+		log.quit(status_.turn());
+		throw;
 	} catch(end_level_exception& end_level) {
 		bool obs = team_manager_.is_observer();
 		if (end_level.result == DEFEAT || end_level.result == VICTORY) {

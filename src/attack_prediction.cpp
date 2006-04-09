@@ -15,12 +15,12 @@
    This code has lots of debugging.  It is there for a reason: this
    code is kinda tricky.  Do not remove it.
 */
+#include "attack_prediction.hpp"
+
 #include <cstring> // For memset
 #include <vector>
 
-#include "global.hpp"
 #include "wassert.hpp"
-#include "attack_prediction.hpp"
 
 // Compile with -O3 -DBENCHMARK for speed testing, -DCHECK for testing
 // correctness (run tools/wesnoth-attack-sim.c --check on output)

@@ -677,10 +677,6 @@ SOURCE=.\src\font.hpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\game.hpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\game_config.hpp
 # End Source File
 # Begin Source File
