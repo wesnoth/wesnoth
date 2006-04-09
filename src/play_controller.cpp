@@ -29,11 +29,9 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 	browse_ = false;
 
 	init(video);
-	key_events_handler_ = new hotkey::basic_handler(gui_);
 }
 
 play_controller::~play_controller(){
-	delete key_events_handler_;
 	delete halo_manager_;
 	delete prefs_disp_manager_;
 	delete tooltips_manager_;

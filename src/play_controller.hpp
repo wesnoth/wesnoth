@@ -69,7 +69,7 @@ public:
 	const int get_ticks();
 
 protected:
-	virtual void handle_event(const SDL_Event& event);
+	void handle_event(const SDL_Event& event);
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
 	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
@@ -100,7 +100,6 @@ protected:
 	halo::manager* halo_manager_;
 	font::floating_label_context labels_manager_;
 	help::help_manager help_manager_;
-	hotkey::basic_handler* key_events_handler_;
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
 
