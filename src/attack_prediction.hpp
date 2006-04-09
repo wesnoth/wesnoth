@@ -25,7 +25,7 @@ struct combatant
 
 private:
 	// We must adjust for swarm after every combat.
-	void combatant::adjust_hitchance();
+	void adjust_hitchance();
 
 	const battle_context::unit_stats &u_;
 

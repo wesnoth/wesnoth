@@ -356,7 +356,7 @@ redo_turn:
 			play_human_turn();
 			after_human_turn();
 		} catch(end_turn_exception& end_turn) {
-			if (end_turn.redo == player_number_)
+			if (end_turn.redo == (team_index + 1) )
 				player_type_changed_ = true;
 		}
 	
@@ -503,7 +503,6 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) 
 			if (i == units_.end()) return false;
 			return i->second.move_interrupted();
 		}
+		default: return play_controller::can_execute_command(command);
 	}
-
-	return play_controller::can_execute_command(command);
 }
