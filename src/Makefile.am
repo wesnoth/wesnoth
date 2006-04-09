@@ -183,13 +183,10 @@ wesnoth_editor_SOURCES = \
 	network_worker.cpp \
 	pathfind.cpp \
 	config_adapter.cpp \
-	play_controller.cpp \
-	playmp_controller.cpp \
 	intro.cpp \
 	ai_move.cpp \
 	ai_attack.cpp \
 	ai.cpp \
-	playsingle_controller.cpp \
 	playturn.cpp \
 	preferences.cpp \
 	preferences_display.cpp \
