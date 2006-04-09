@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-29 19:12+0200\n"
+"POT-Creation-Date: 2006-04-09 12:51+0200\n"
 "PO-Revision-Date: 2006-02-22 08:28+0200\n"
 "Last-Translator: Mikko Kraft <mikkokraft@gmail.com>\n"
 "Language-Team: none\n"
@@ -47,8 +47,8 @@ msgid "Random Generator Settings"
 msgstr "Satunnaisgeneraattorin asetukset"
 
 #: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/filechooser.cpp:54 src/show_dialog.cpp:430 src/show_dialog.cpp:436
-#: src/show_dialog.cpp:850 src/show_dialog.cpp:940
+#: src/filechooser.cpp:54 src/show_dialog.cpp:429 src/show_dialog.cpp:435
+#: src/show_dialog.cpp:849 src/show_dialog.cpp:939
 msgid "Cancel"
 msgstr "Peruuta"
 
@@ -62,7 +62,7 @@ msgid "Close Window"
 msgstr "Sulje ikkuna"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:74 src/preferences_display.cpp:609
+#: src/hotkeys.cpp:75 src/preferences_display.cpp:609
 msgid "Preferences"
 msgstr "Asetukset"
 
@@ -70,7 +70,7 @@ msgstr "Asetukset"
 msgid "Scroll Speed:"
 msgstr "Vieritysnopeus:"
 
-#: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:57
+#: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:58
 #: src/preferences_display.cpp:215
 msgid "Toggle Full Screen"
 msgstr "Koko ruutu / ikkunoitu"
@@ -88,12 +88,12 @@ msgid "Hotkeys"
 msgstr "Pikanäppäimet"
 
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Resize Map"
 msgstr "Muuta kartan kokoa"
 
 #: src/editor/editor_dialogs.cpp:409 src/filechooser.cpp:53
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
+#: src/show_dialog.cpp:415 src/show_dialog.cpp:428
 msgid "OK"
 msgstr "OK"
 
@@ -109,287 +109,287 @@ msgstr "Y-akseli"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Käännä (saattaa muuttaa kartan kokoa):"
 
-#: src/hotkeys.cpp:47
+#: src/hotkeys.cpp:48
 msgid "Next Unit"
 msgstr "Seuraava yksikkö"
 
-#: src/hotkeys.cpp:48
+#: src/hotkeys.cpp:49
 msgid "Previous Unit"
 msgstr "Edellinen yksikkö"
 
-#: src/hotkeys.cpp:49
+#: src/hotkeys.cpp:50
 msgid "Hold Position"
 msgstr "Pidä asema"
 
-#: src/hotkeys.cpp:50
+#: src/hotkeys.cpp:51
 msgid "End Unit Turn"
 msgstr "Lopeta yksikön vuoro"
 
-#: src/hotkeys.cpp:51
+#: src/hotkeys.cpp:52
 msgid "Leader"
 msgstr "Johtaja"
 
-#: src/hotkeys.cpp:52
+#: src/hotkeys.cpp:53
 msgid "Undo"
 msgstr "Peruuta"
 
-#: src/hotkeys.cpp:53
+#: src/hotkeys.cpp:54
 msgid "Redo"
 msgstr "Tee uudestaan"
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Zoom In"
 msgstr "Zoomaa lähemmäs"
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Zoom Out"
 msgstr "Zoomaa kauemmas"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Default Zoom"
 msgstr "Nollaa zoomaus"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Screenshot"
 msgstr "Kuvankaappaus"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Accelerated"
 msgstr "Kiihdytetty"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Unit Description"
 msgstr "Yksikön kuvaus"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Rename Unit"
 msgstr "Nimeä yksikkö uudelleen"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "Save Game"
 msgstr "Tallenna peli"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Load Game"
 msgstr "Lataa peli"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Recruit"
 msgstr "Värvää"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66
 msgid "Repeat Recruit"
 msgstr "Toista värväys"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 msgid "Recall"
 msgstr "Kutsu veteraaniyksikkö"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "End Turn"
 msgstr "Lopeta vuoro"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Toggle Grid"
 msgstr "Ruudukon näyttö"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Status Table"
 msgstr "Tilannetaulu"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Mute"
 msgstr "Hiljennä äänet"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Speak"
 msgstr "Puhu"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Create Unit (Debug!)"
 msgstr "Luo yksikkö (Debug!)"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Change Unit Side (Debug!)"
 msgstr "Muuta yksikön puolta (Debug!)"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Scenario Objectives"
 msgstr "Skenaarion tavoitteet"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Unit List"
 msgstr "Yksikkölista"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "Statistics"
 msgstr "Tilastot"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Quit Game"
 msgstr "Lopeta peli"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Set Label"
 msgstr "Lisää karttamerkintä"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Clear Labels"
 msgstr "Poista karttamerkinnät"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Show Enemy Moves"
 msgstr "Näytä vihollisen liikkeet"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Best Possible Enemy Moves"
 msgstr "Vihollisen parhaat mahdolliset liikkeet"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Play"
 msgstr "Toista"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Reset"
 msgstr "Palauta"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Stop"
 msgstr "Pysäytä"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Next Turn"
 msgstr "Seuraava vuoro"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Next Side"
 msgstr "Seuraava puoli"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Shroud"
 msgstr "Huntu"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Fog"
 msgstr "Sumu"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Skip animation"
 msgstr "Hyppää animaatioiden yli"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Set Terrain"
 msgstr "Valitse maasto"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Quit Editor"
 msgstr "Sulje editori"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "New Map"
 msgstr "Uusi kartta"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Load Map"
 msgstr "Avaa kartta"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Save Map"
 msgstr "Tallenna kartta"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Save As"
 msgstr "Tallenna nimellä"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Set Player's keep"
 msgstr "Valitse pelaajan linnoitus"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Flood Fill"
 msgstr "Täyttö"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Fill Selection"
 msgstr "Täytä valinta"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Cut"
 msgstr "Leikkaa"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Copy"
 msgstr "Kopioi"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Paste"
 msgstr "Liitä"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Revert from Disk"
 msgstr "Palauta levyltä"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Flip Map"
 msgstr "Käännä kartta"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Select All"
 msgstr "Valitse kaikki"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Draw Terrain"
 msgstr "Piirrä maasto"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Refresh Image Cache"
 msgstr "Päivitä kuvavarasto"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Delay Shroud Updates"
 msgstr "Viivytä peitteen päivitystä"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Update Shroud Now"
 msgstr "Päivitä peite nyt"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Continue Move"
 msgstr "Jatka liikettä"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Find Label or Unit"
 msgstr "Etsi karttamerkintä tai yksikkö"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Speak to Ally"
 msgstr "Puhu liittolaisille"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Speak to All"
 msgstr "Puhu kaikille"
 
-#: src/hotkeys.cpp:117 src/show_dialog.cpp:577
+#: src/hotkeys.cpp:118 src/show_dialog.cpp:576
 msgid "Help"
 msgstr "Apua"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "View Chat Log"
 msgstr "Katso keskusteluhistoria"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Enter user command"
 msgstr "Komentorivi"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Change the language"
 msgstr "Vaihda käytettävää kieltä."
 
-#: src/hotkeys.cpp:463 src/hotkeys.cpp:664
+#: src/hotkeys.cpp:464 src/hotkeys.cpp:665
 msgid "Do you really want to quit?"
 msgstr "Haluatko todella lopettaa?"
 
-#: src/hotkeys.cpp:463 src/hotkeys.cpp:664
+#: src/hotkeys.cpp:464 src/hotkeys.cpp:665
 msgid "Quit"
 msgstr "Lopeta"
 
@@ -698,23 +698,23 @@ msgstr "Uusi teema otetaan käyttöön seuraavassa uudessa tai ladatussa peliss�
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Ei teemoja. Yritä vaihtamista käynnissä olevasta pelistä."
 
-#: src/show_dialog.cpp:314
+#: src/show_dialog.cpp:313
 msgid "Error"
 msgstr "Virhe"
 
-#: src/show_dialog.cpp:422
+#: src/show_dialog.cpp:421
 msgid "Yes"
 msgstr "Kyllä"
 
-#: src/show_dialog.cpp:423
+#: src/show_dialog.cpp:422
 msgid "No"
 msgstr "Ei"
 
-#: src/show_dialog.cpp:442
+#: src/show_dialog.cpp:441
 msgid "Close"
 msgstr "Sulje"
 
-#: src/show_dialog.cpp:873
+#: src/show_dialog.cpp:872
 msgid "KB"
 msgstr "Kt"
 

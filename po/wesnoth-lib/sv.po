@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-03-29 19:12+0200\n"
+"POT-Creation-Date: 2006-04-09 12:51+0200\n"
 "PO-Revision-Date: 2006-03-13 02:58+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -49,8 +49,8 @@ msgid "Random Generator Settings"
 msgstr "Inställningar för slumpgenerator"
 
 #: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
-#: src/filechooser.cpp:54 src/show_dialog.cpp:430 src/show_dialog.cpp:436
-#: src/show_dialog.cpp:850 src/show_dialog.cpp:940
+#: src/filechooser.cpp:54 src/show_dialog.cpp:429 src/show_dialog.cpp:435
+#: src/show_dialog.cpp:849 src/show_dialog.cpp:939
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -64,7 +64,7 @@ msgid "Close Window"
 msgstr "Stäng fönster"
 
 #: src/editor/editor_dialogs.cpp:254 src/editor/editor_dialogs.cpp:321
-#: src/hotkeys.cpp:74 src/preferences_display.cpp:609
+#: src/hotkeys.cpp:75 src/preferences_display.cpp:609
 msgid "Preferences"
 msgstr "Inställningar"
 
@@ -72,7 +72,7 @@ msgstr "Inställningar"
 msgid "Scroll Speed:"
 msgstr "Rullningsfart:"
 
-#: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:57
+#: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:58
 #: src/preferences_display.cpp:215
 msgid "Toggle Full Screen"
 msgstr "Helskärm på/av"
@@ -90,12 +90,12 @@ msgid "Hotkeys"
 msgstr "Snabbtangenter"
 
 #: src/editor/editor_dialogs.cpp:389 src/editor/editor_dialogs.cpp:449
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:106
 msgid "Resize Map"
 msgstr "Ändra kartans storlek"
 
 #: src/editor/editor_dialogs.cpp:409 src/filechooser.cpp:53
-#: src/show_dialog.cpp:416 src/show_dialog.cpp:429
+#: src/show_dialog.cpp:415 src/show_dialog.cpp:428
 msgid "OK"
 msgstr "OK"
 
@@ -111,287 +111,287 @@ msgstr "Y-axel"
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Flippa (detta kan ändra kartans dimensioner):"
 
-#: src/hotkeys.cpp:47
+#: src/hotkeys.cpp:48
 msgid "Next Unit"
 msgstr "Nästa trupp"
 
-#: src/hotkeys.cpp:48
+#: src/hotkeys.cpp:49
 msgid "Previous Unit"
 msgstr "Tidigare trupp"
 
-#: src/hotkeys.cpp:49
+#: src/hotkeys.cpp:50
 msgid "Hold Position"
 msgstr "Håll position"
 
-#: src/hotkeys.cpp:50
+#: src/hotkeys.cpp:51
 msgid "End Unit Turn"
 msgstr "Avsluta truppens drag"
 
-#: src/hotkeys.cpp:51
+#: src/hotkeys.cpp:52
 msgid "Leader"
 msgstr "Ledare"
 
-#: src/hotkeys.cpp:52
+#: src/hotkeys.cpp:53
 msgid "Undo"
 msgstr "Ångra"
 
-#: src/hotkeys.cpp:53
+#: src/hotkeys.cpp:54
 msgid "Redo"
 msgstr "Gör om"
 
-#: src/hotkeys.cpp:54
+#: src/hotkeys.cpp:55
 msgid "Zoom In"
 msgstr "Zooma in"
 
-#: src/hotkeys.cpp:55
+#: src/hotkeys.cpp:56
 msgid "Zoom Out"
 msgstr "Zooma ut"
 
-#: src/hotkeys.cpp:56
+#: src/hotkeys.cpp:57
 msgid "Default Zoom"
 msgstr "Standardzoom"
 
-#: src/hotkeys.cpp:58
+#: src/hotkeys.cpp:59
 msgid "Screenshot"
 msgstr "Skärmdump"
 
-#: src/hotkeys.cpp:59
+#: src/hotkeys.cpp:60
 msgid "Accelerated"
 msgstr "Accelererad"
 
-#: src/hotkeys.cpp:60
+#: src/hotkeys.cpp:61
 msgid "Unit Description"
 msgstr "Truppbeskrivning"
 
-#: src/hotkeys.cpp:61
+#: src/hotkeys.cpp:62
 msgid "Rename Unit"
 msgstr "Döp om truppen"
 
-#: src/hotkeys.cpp:62
+#: src/hotkeys.cpp:63
 msgid "Save Game"
 msgstr "Spara spelet"
 
-#: src/hotkeys.cpp:63
+#: src/hotkeys.cpp:64
 msgid "Load Game"
 msgstr "Öppna spel"
 
-#: src/hotkeys.cpp:64
+#: src/hotkeys.cpp:65
 msgid "Recruit"
 msgstr "Rekrytera"
 
-#: src/hotkeys.cpp:65
+#: src/hotkeys.cpp:66
 msgid "Repeat Recruit"
 msgstr "Upprepa rekrytering"
 
-#: src/hotkeys.cpp:66
+#: src/hotkeys.cpp:67
 msgid "Recall"
 msgstr "Återkalla"
 
-#: src/hotkeys.cpp:67
+#: src/hotkeys.cpp:68
 msgid "End Turn"
 msgstr "Avsluta draget"
 
-#: src/hotkeys.cpp:68
+#: src/hotkeys.cpp:69
 msgid "Toggle Grid"
 msgstr "Rutnät av/på"
 
-#: src/hotkeys.cpp:69
+#: src/hotkeys.cpp:70
 msgid "Status Table"
 msgstr "Statustabell"
 
-#: src/hotkeys.cpp:70
+#: src/hotkeys.cpp:71
 msgid "Mute"
 msgstr "Tyst"
 
-#: src/hotkeys.cpp:71
+#: src/hotkeys.cpp:72
 msgid "Speak"
 msgstr "Tala"
 
-#: src/hotkeys.cpp:72
+#: src/hotkeys.cpp:73
 msgid "Create Unit (Debug!)"
 msgstr "Skapa trupp (debuggning!)"
 
-#: src/hotkeys.cpp:73
+#: src/hotkeys.cpp:74
 msgid "Change Unit Side (Debug!)"
 msgstr "Byt truppens lojalitet (debuggning!)"
 
-#: src/hotkeys.cpp:75
+#: src/hotkeys.cpp:76
 msgid "Scenario Objectives"
 msgstr "Scenariomål"
 
-#: src/hotkeys.cpp:76
+#: src/hotkeys.cpp:77
 msgid "Unit List"
 msgstr "Trupplista"
 
-#: src/hotkeys.cpp:77
+#: src/hotkeys.cpp:78
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/hotkeys.cpp:78
+#: src/hotkeys.cpp:79
 msgid "Quit Game"
 msgstr "Avsluta spelet"
 
-#: src/hotkeys.cpp:79
+#: src/hotkeys.cpp:80
 msgid "Set Label"
 msgstr "Sätt etikett"
 
-#: src/hotkeys.cpp:80
+#: src/hotkeys.cpp:81
 msgid "Clear Labels"
 msgstr "Ta bort etiketter"
 
-#: src/hotkeys.cpp:81
+#: src/hotkeys.cpp:82
 msgid "Show Enemy Moves"
 msgstr "Visa fiendedrag"
 
-#: src/hotkeys.cpp:82
+#: src/hotkeys.cpp:83
 msgid "Best Possible Enemy Moves"
 msgstr "Bästa möjliga fiendedrag"
 
-#: src/hotkeys.cpp:83
+#: src/hotkeys.cpp:84
 msgid "Play"
 msgstr "Spela"
 
-#: src/hotkeys.cpp:84
+#: src/hotkeys.cpp:85
 msgid "Reset"
 msgstr "Återställ"
 
-#: src/hotkeys.cpp:85
+#: src/hotkeys.cpp:86
 msgid "Stop"
 msgstr "Stopp"
 
-#: src/hotkeys.cpp:86
+#: src/hotkeys.cpp:87
 msgid "Next Turn"
 msgstr "Nästa drag"
 
-#: src/hotkeys.cpp:87
+#: src/hotkeys.cpp:88
 msgid "Next Side"
 msgstr "Nästa sida"
 
-#: src/hotkeys.cpp:88
+#: src/hotkeys.cpp:89
 msgid "Shroud"
 msgstr "Slöja"
 
-#: src/hotkeys.cpp:89
+#: src/hotkeys.cpp:90
 msgid "Fog"
 msgstr "Dimma"
 
-#: src/hotkeys.cpp:90
+#: src/hotkeys.cpp:91
 msgid "Skip animation"
 msgstr "Skippa animeringar"
 
-#: src/hotkeys.cpp:92
+#: src/hotkeys.cpp:93
 msgid "Set Terrain"
 msgstr "Ange terräng"
 
-#: src/hotkeys.cpp:93
+#: src/hotkeys.cpp:94
 msgid "Quit Editor"
 msgstr "Avsluta"
 
-#: src/hotkeys.cpp:94
+#: src/hotkeys.cpp:95
 msgid "New Map"
 msgstr "Ny karta"
 
-#: src/hotkeys.cpp:95
+#: src/hotkeys.cpp:96
 msgid "Load Map"
 msgstr "Öppna karta"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
 msgid "Save Map"
 msgstr "Spara"
 
-#: src/hotkeys.cpp:97
+#: src/hotkeys.cpp:98
 msgid "Save As"
 msgstr "Spara som..."
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:99
 msgid "Set Player's keep"
 msgstr "Ange spelarens kärntorn"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:100
 msgid "Flood Fill"
 msgstr "Fyll allt"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:101
 msgid "Fill Selection"
 msgstr "Fyll markerat"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:102
 msgid "Cut"
 msgstr "Klipp ut"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:103
 msgid "Copy"
 msgstr "Kopiera"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:104
 msgid "Paste"
 msgstr "Klistra in"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:105
 msgid "Revert from Disk"
 msgstr "Återställ från disk"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:107
 msgid "Flip Map"
 msgstr "Flippa kartan"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:108
 msgid "Select All"
 msgstr "Markera alla"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:109
 msgid "Draw Terrain"
 msgstr "Rita terräng"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:110
 msgid "Refresh Image Cache"
 msgstr "Uppdatera bildcache"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Delay Shroud Updates"
 msgstr "Fördröj slöjuppdateringarna"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Update Shroud Now"
 msgstr "Uppdatera slöjan nu"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Continue Move"
 msgstr "Fortsätt draget"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Find Label or Unit"
 msgstr "Sök efter etikett eller trupp"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Speak to Ally"
 msgstr "Tala med allierad"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Speak to All"
 msgstr "Tala med alla"
 
-#: src/hotkeys.cpp:117 src/show_dialog.cpp:577
+#: src/hotkeys.cpp:118 src/show_dialog.cpp:576
 msgid "Help"
 msgstr "Hjälp"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "View Chat Log"
 msgstr "Se chattloggen"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Enter user command"
 msgstr "Ange användarkommando"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Change the language"
 msgstr "Byt språk"
 
-#: src/hotkeys.cpp:463 src/hotkeys.cpp:664
+#: src/hotkeys.cpp:464 src/hotkeys.cpp:665
 msgid "Do you really want to quit?"
 msgstr "Vill du verkligen sluta?"
 
-#: src/hotkeys.cpp:463 src/hotkeys.cpp:664
+#: src/hotkeys.cpp:464 src/hotkeys.cpp:665
 msgid "Quit"
 msgstr "Avsluta"
 
@@ -704,23 +704,23 @@ msgstr "Det nya temat träder i kraft vid nästa spel."
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Inga kända teman. Försök att ändra i ett existerande spel."
 
-#: src/show_dialog.cpp:314
+#: src/show_dialog.cpp:313
 msgid "Error"
 msgstr "Fel"
 
-#: src/show_dialog.cpp:422
+#: src/show_dialog.cpp:421
 msgid "Yes"
 msgstr "Ja"
 
-#: src/show_dialog.cpp:423
+#: src/show_dialog.cpp:422
 msgid "No"
 msgstr "Nej"
 
-#: src/show_dialog.cpp:442
+#: src/show_dialog.cpp:441
 msgid "Close"
 msgstr "Stäng"
 
-#: src/show_dialog.cpp:873
+#: src/show_dialog.cpp:872
 msgid "KB"
 msgstr "KB"
 
