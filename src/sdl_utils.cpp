@@ -546,6 +546,8 @@ surface recolor_image(surface surf, const color_range& new_rgb, const std::vecto
 		new_g=(Uint8)( old_rat * new_green + (1 - old_rat) * max_green);
 		new_b=(Uint8)( old_rat * new_blue  + (1 - old_rat) * max_blue);
 	      }else{
+		      new_r=0; new_g=0; new_b=0; //supress warning
+		      wassert(false);
 		//should never get here
 		//would imply old_avg > reference_avg = 255
 	      }

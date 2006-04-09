@@ -1550,6 +1550,7 @@ void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
 
 	Uint32 blend_with = current_frame.blend_with;
 	double blend_ratio = current_frame.blend_ratio;
+	if(blend_ratio == 0) { blend_with = disp.rgb(0,0,0); }
 	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),current_frame.highlight_ratio);
 	if(invisible(map.underlying_union_terrain(map[hex.x][hex.y]),
 				disp.get_game_status().get_time_of_day().lawful_bonus,hex,

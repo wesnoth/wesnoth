@@ -24,7 +24,10 @@
 
 //a class to describe a unit's animation sequence
 struct unit_frame {
-		unit_frame() : xoffset(0), halo_x(0), halo_y(0), begin_time(0), end_time(0),highlight_ratio(ftofxp(1)){}
+		unit_frame() : xoffset(0), image(), image_diagonal(),halo(), sound(),
+			       halo_x(0), halo_y(0), begin_time(0), end_time(0),
+			       blend_with(0),blend_ratio(0),
+			       highlight_ratio(ftofxp(1)){}
 		explicit unit_frame(const std::string& str, const std::string & diag ="",
 				int begin=0,int end = 0,
 				Uint32 blend_color = 0, double blend_rate = 0.0, 

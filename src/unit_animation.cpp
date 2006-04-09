@@ -39,6 +39,8 @@ unit_frame::unit_frame(const config& cfg)
 	end_time = atoi(cfg["end"].c_str());
 	highlight_ratio = ftofxp(1);
 	halo = prepare_halo(cfg["halo"],begin_time,end_time);
+	blend_with= 0;
+	blend_ratio = 0;
 	
 }
 

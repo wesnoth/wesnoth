@@ -254,6 +254,7 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 				missile_animation.get_first_frame_time()),-200);
 	missile_animation.start_animation(start_time,acceleration);
 	defender.restart_animation(disp,start_time);
+	animation_time = defender.get_animation()->get_animation_time();
 	while(!defender.get_animation()->animation_finished()  ||
 			(leader_loc.valid() && !leader->second.get_animation()->animation_finished())) {
 		const double pos = animation_time < missile_animation.get_first_frame_time()?1.0:
