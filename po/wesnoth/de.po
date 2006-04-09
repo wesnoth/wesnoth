@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-02 13:13+0200\n"
-"PO-Revision-Date: 2006-04-09 18:02+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT   gmx D OT  net>\n"
+"PO-Revision-Date: 2006-04-09 20:58+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,6 @@ msgid "heals +4"
 msgstr "Heilen +4"
 
 #: data/abilities.cfg:12
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -32,23 +31,22 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Heilen:\n"
-"Angrenzende Einheiten werden zu Beginn Eurer Runde geheilt.\n"
+"Heilen +4:\n"
+"Angrenzende eigene oder verbündete Einheiten werden zu Beginn Eurer Runde "
+"geheilt.\n"
 "\n"
 "Eine Einheit, um die sich ein Heiler kümmert, erhält bis zu 4 LP pro Runde "
 "zurück.\n"
-"Ein Heiler kann bei allen Einheiten, um die er sich kümmert, bis zu 8 LP pro "
-"Runde heilen.\n"
-"Vergiftungen kann ein Heiler aber nicht aufheben. Dies kann nur durch eine "
-"Einheit mit der Fähigkeit »kurieren« oder durch den Aufenthalt in einem Dorf "
-"geschehen."
+"Vergiftungen kann ein Heiler zwar nicht aufheben, jedoch zumindest der "
+"Schadwirkung entgegenwirken. Vergiftungen können nur durch Einheiten mit der "
+"Fähigkeit »Kurieren« oder durch den Aufenthalt in einem Dorf aufgehoben "
+"werden."
 
 #: data/abilities.cfg:26
 msgid "heals +8"
 msgstr "Heilen +8"
 
 #: data/abilities.cfg:31
-#, fuzzy
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -59,18 +57,16 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Kurieren:\n"
-"Diese Einheit verbindet Kräuterkunde mit magischer Heilung. Dadurch ist es "
-"ihr möglich, Einheiten schneller zu heilen, als es auf dem Schlachtfeld "
-"normalerweise möglich wäre.\n"
+"Heilen +8:\n"
+"Angrenzende eigene oder verbündete Einheiten werden zu Beginn Eurer Runde "
+"geheilt.\n"
 "\n"
-"Die Einheit kümmert sich um alle benachbarten freundlichen Einheiten zu "
-"Beginn der Runde.\n"
-"Eine auf diese Art versorgte Einheit regeneriert bis zu 8 LP pro Runde.\n"
-"Ein Kurierer kann alle Einheiten, um die er sich kümmert, um insgesamt bis "
-"zu 18 LP heilen.\n"
-"Auch heilt er eine Einheit von einer Vergiftung. Allerdings kann er nicht "
-"zusätzlich die Lebenspunkte dieser Einheit zurückbringen."
+"Eine Einheit, um die sich ein Heiler kümmert, erhält bis zu 8 LP pro Runde "
+"zurück.\n"
+"Vergiftungen kann ein Heiler zwar nicht aufheben, jedoch zumindest der "
+"Schadwirkung entgegenwirken. Vergiftungen können nur durch Einheiten mit der "
+"Fähigkeit »Kurieren« oder durch den Aufenthalt in einem Dorf aufgehoben "
+"werden."
 
 #: data/abilities.cfg:40
 msgid "cures"
@@ -82,6 +78,11 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Kurieren:\n"
+"Das Wissen um die Wirkung von Kräutern und das Brauen starker Tinkturen "
+"gegen allerlei Gifte ist nicht jedem in Wesnoth bekannt. Einheiten, die über "
+"die Fertigkeit »Kurieren« verfügen, können jede benachbarte, vergiftete "
+"Einheit von ihrem Leid erlösen."
 
 #: data/abilities.cfg:55
 msgid "regenerates"
@@ -306,7 +307,6 @@ msgstr ""
 "oder Einheiten in Dörfern."
 
 #: data/abilities.cfg:418
-#, fuzzy
 msgid "slows"
 msgstr "verlangsamen"
 
@@ -322,7 +322,6 @@ msgstr ""
 "ihrer Bewegungspunkte (aufgerundet). Die Verlangsamung hält eine Runde an."
 
 #: data/abilities.cfg:427
-#, fuzzy
 msgid "stones"
 msgstr "versteinern"
 
@@ -414,7 +413,7 @@ msgstr ""
 "Schwarm:\n"
 "Die Anzahl der Angriffe verringert sich, wenn die Einheit verwundet wird. "
 "Die Anzahl der Angriffe ist proportional dem Verhältnis von aktuellen LP zu "
-"maximalen LP. Zum Bespiel verfügt eine Einheit mit 3/4 ihrer maximalen LP "
+"maximalen LP. Zum Beispiel verfügt eine Einheit mit 3/4 ihrer maximalen LP "
 "auch nur über 3/4 ihrer Angriffe."
 
 #: data/abilities.cfg:464
@@ -439,7 +438,6 @@ msgstr ""
 "ergeht es ihm bei einem Gegentreffer genauso."
 
 #: data/abilities.cfg:476
-#, fuzzy
 msgid "drains"
 msgstr "Lebensentzug"
 
@@ -2065,7 +2063,7 @@ msgstr ""
 "Anmerkung: Der Fernkampfangriff eines Totenbeschwörers ist magischer Natur "
 "und hat daher eine erhöhte Trefferwahrscheinlichkeit.\n"
 "Jeder, der von einem Totenbeschwörer mittels seines Stabes niedergestreckt "
-"wird, erhebt sich sogleich wieder als wandelnde Leiche,um an der Seite des "
+"wird, erhebt sich sogleich wieder als wandelnde Leiche, um an der Seite des "
 "Magiers zu kämpfen."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:38
@@ -3116,7 +3114,6 @@ msgstr ""
 "Trolle) heilen sich in jedem Zug automatisch um 8 Lebenspunkte selbst."
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -3126,12 +3123,11 @@ msgstr ""
 "\n"
 "Heilkundige Einheiten: Einheiten, die über die Fertigkeit "
 "<ref>dst=ability_heals text='Heilen'</ref> verfügen, heilen bei allen "
-"eigenen, in angrenzenden Feldern stehenden Einheiten 4 Lebenspunkte in jeder "
-"Runde, oder verhindern einen möglichen Schaden durch Gift. Durch »Heilen« "
-"kann eine Einheit höchstens 8 Lebenspunkte zurück gewinnen."
+"eigenen oder verbündeten, in angrenzenden Feldern stehenden, Einheiten 4 "
+"oder 8 Lebenspunkte in jeder Runde, oder verhindern einen möglichen Schaden "
+"durch Gift."
 
 #: data/help.cfg:220
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -3140,14 +3136,10 @@ msgid ""
 msgstr ""
 "\n"
 "Kurierende Einheiten: Einheiten, die über die Fertigkeit "
-"<ref>dst=ability_cures text='Kurieren'</ref> verfügen, heilen bei allen "
-"benachbarten eigenen oder verbündeten Einheiten jeweils bis zu 8 "
-"Lebenspunkte, bis maximal insgesamt 18 Lebenspunkte pro Runde. Auch können "
-"sie eine vergiftete Einheit vom Gift kurieren, heilen diese aber nicht "
-"zusätzlich."
+"<ref>dst=ability_cures text='Kurieren'</ref> verfügen, sind in der Lage, "
+"vergiftete Einheiten von ihrer Vergiftung zu kurieren."
 
 #: data/help.cfg:222
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3158,10 +3150,9 @@ msgstr ""
 "\n"
 "\n"
 "Ihr solltet beherzigen, dass nur Rasten mit anderen Heilungsformen "
-"kombiniert werden kann. Dörfer und Heiler beispielsweise ergänzen sich "
-"nicht. Eine heilende oder kurierende Einheit ist weniger effektiv, wenn sie "
-"sich um mehrere Verletzte kümmern muss. Zudem werden alle Einheiten zwischen "
-"zwei Szenarios vollständig geheilt."
+"kombiniert werden kann. Dörfer und Heiler ergänzen sich beispielsweise "
+"nicht. Zudem werden alle Einheiten zwischen zwei Szenarios vollständig "
+"geheilt."
 
 #: data/help.cfg:227
 msgid "Income and Upkeep"
@@ -4260,7 +4251,7 @@ msgstr "2S - Sturmangriff"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
-msgstr "2S - Das Schlachtfeld von Cysaun"
+msgstr "2S - Das Schlachtfeld von Cynsaun"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
@@ -4826,9 +4817,8 @@ msgid "Cave Lit"
 msgstr "Erhellte Höhle"
 
 #: data/terrain.cfg:414
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "Berge"
+msgstr "Unpassierbare Berge"
 
 #: data/terrain.cfg:445
 msgid "Great Tree"
@@ -4989,7 +4979,6 @@ msgstr ""
 "angezeigt."
 
 #: data/tips.cfg:5
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -4999,7 +4988,7 @@ msgstr ""
 "Vergiftete Einheiten verlieren pro Runde 8 Lebenspunkte. Das Gift ist jedoch "
 "nicht in der Lage, Eure Einheit zu töten. Mindestens 1 Lebenspunkt bleibt "
 "übrig. Vergiftete Einheiten können kuriert werden, wenn Ihr sie in ein Dorf "
-"führt oder Ihr sie neben eine Einheit mit der Fähigkeit »Kurieren« platziert."
+"führt oder sie neben einer Einheit mit der Fähigkeit »Kurieren« platziert."
 
 #: data/tips.cfg:6
 msgid ""
@@ -6528,7 +6517,6 @@ msgid "Direwolf Rider"
 msgstr "Schreckenswolf Reiter"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:21
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the garden variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -8780,16 +8768,14 @@ msgstr ""
 
 #: data/units/Orcish_Ruler.cfg:30 data/units/Orcish_Sovereign.cfg:32
 #: data/units/Orcish_Warlord.cfg:28 data/units/Orcish_Warrior.cfg:27
-#, fuzzy
 msgid "greatsword"
-msgstr "Schwert"
+msgstr "Krummschwert"
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
 msgstr "Orkschlächter"
 
 #: data/units/Orcish_Slayer.cfg:19
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -8950,9 +8936,9 @@ msgid ""
 msgstr ""
 "Saurianische Flänkler sind bestens im Umgang mit dem Speer vertraut. Trotz "
 "ihrer lethargischen kaltblütigen Abstammung und ihrer relativen Schwäche "
-"sind sie sehr wertvoll als Aufklärer, da sie sich in schwerem Gelände und an "
-"Feinden vorbei bewegen können. Saurianische Flänkler nutzen diese Stärke aus "
-"um effektiv kämpfen zu können.\n"
+"sind sie sehr wertvoll als Aufklärer, da sie sich in schwierigem Gelände und "
+"an Feinden vorbei bewegen können. Saurianische Flänkler nutzen diese Stärke "
+"aus um effektiv kämpfen zu können.\n"
 "\n"
 "Anmerkung: Ihre Fähigkeit als Plänkler erlaubt es den Saurianischen "
 "Flänklern direkt an ihren Feinden vorbeizuflitzen und dabei jegliche "
@@ -8992,7 +8978,7 @@ msgid ""
 msgstr ""
 "Saurianische Plänkler sind gut im Umgang mit ihrem Speer. Trotz ihrer "
 "lethargischen kaltblütigen Abstammung und ihrer relativen Schwäche sind sie "
-"sehr wertvoll als Aufklärer, da sie sich auch in schwerem Gelände und an "
+"sehr wertvoll als Aufklärer, da sie sich auch in schwierigem Gelände und an "
 "Feinden vorbei bewegen können. Die besten Plänkler werden eines Tages zu "
 "Saurianischen Hinterlistlingen.\n"
 "\n"
@@ -9224,7 +9210,6 @@ msgid "Ghoul"
 msgstr "Ghul"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:20
-#, fuzzy
 msgid ""
 "Only those who have delved into the circles of necromancy know what must be "
 "done to turn a person into a ghoul, and it is a secret they are not telling. "
@@ -9259,7 +9244,6 @@ msgid "Necrophage"
 msgstr "Leichenfresser"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -9458,9 +9442,8 @@ msgstr ""
 "übertragen."
 
 #: data/units/Undead_Necromancer.cfg:32
-#, fuzzy
 msgid "plague staff"
-msgstr "untote Plage"
+msgstr "Stab der Plagen"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
@@ -10133,7 +10116,7 @@ msgstr "%d %b"
 
 #: src/dialogs.cpp:464
 msgid "No Saved Games"
-msgstr "Keine Spielestände vorhanden"
+msgstr "Keine Spielstände vorhanden"
 
 #: src/dialogs.cpp:465
 msgid ""
@@ -10974,19 +10957,19 @@ msgstr "Aktiviert eine Zeitbegrenzung"
 
 #: src/multiplayer_create.cpp:115
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "Größtmögliche Zeit für die erste Runde (in Sekunden)"
 
 #: src/multiplayer_create.cpp:121
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "Größtmögliche Zeit für irgendeine Runde (in Sekunden)"
 
 #: src/multiplayer_create.cpp:127
 msgid "Time for general tasks each turn (seconds)"
-msgstr ""
+msgstr "Zeit für generelle Aufgaben pro Runde (in Sekunden)"
 
 #: src/multiplayer_create.cpp:133
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "Zeit für Angriff, Rekrutierung und Eroberung (in Sekunden)"
 
 #: src/multiplayer_create.cpp:138
 msgid "The amount of income each village yields per turn"
@@ -11057,24 +11040,20 @@ msgid "Unlimited Turns"
 msgstr "Unbegrenzt"
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Init. Limit: "
-msgstr "Startzeit"
+msgstr "Startzeit:"
 
 #: src/multiplayer_create.cpp:318
-#, fuzzy
 msgid "Turn Bonus: "
-msgstr "Runden:"
+msgstr "Rundenbonus:"
 
 #: src/multiplayer_create.cpp:322
-#, fuzzy
 msgid "Reservoir: "
-msgstr "Server: "
+msgstr "Reservoir: "
 
 #: src/multiplayer_create.cpp:327
-#, fuzzy
 msgid "Action Bonus: "
-msgstr "Aktionen"
+msgstr "Aktionsbonus:"
 
 #: src/multiplayer_create.cpp:334
 msgid "Village Gold: "
@@ -11493,7 +11472,7 @@ msgid ""
 msgstr ""
 "Diese Einheit ist vergiftet. Sie wird jede Runde 8 LP verlieren, bis sie "
 "entweder Heilung in einem Dorf sucht oder von einer verbündeten Einheit mit "
-"der »kurieren« Fertigkeit versorgt wird.\n"
+"der Fertigkeit »Kurieren« versorgt wird.\n"
 "\n"
 "Durch Gift allein können Einheiten allerdings nicht sterben. Eine Vergiftung "
 "wird die LP einer Einheit nicht unter 1 reduzieren."
@@ -11587,7 +11566,7 @@ msgstr "Unerwartetes Abschlusselement"
 #: src/serialization/parser.cpp:181
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr ""
-"Ungültiges Abschlusselement $tag2 für Element gefunden $tag (geöffnet in "
+"Ungültiges Abschlusselement $tag2 für Element $tag gefunden (geöffnet in "
 "$pos)"
 
 #: src/serialization/parser.cpp:206 src/serialization/parser.cpp:218
@@ -11750,171 +11729,3 @@ msgstr "Betrachtet die Ergebnisse unter "
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr "Helft uns, Wesnoth zu verbessern!"
-
-#~ msgid ""
-#~ "Loyal:\n"
-#~ "Never more than 1 upkeep."
-#~ msgstr ""
-#~ "Loyal:\n"
-#~ "Zählen nie mehr als 1 zum Unterhalt."
-
-#~ msgid ""
-#~ "Plague:\n"
-#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
-#~ "unit of the specified type on the same side as the unit with the Plague "
-#~ "attack. (This doesn't work on Undead or units in villages.)"
-#~ msgstr ""
-#~ "Untote Plage:\n"
-#~ "Wird ein Gegner durch eine Einheit mit der Fähigkeit »untote Plage« "
-#~ "vernichtet, so wird er durch eine eigene Einheit ersetzt, die jener mit "
-#~ "der Fähigkeit »untote Plage« identisch ist. (Dies funktioniert nicht "
-#~ "gegen Untote oder Einheiten in Dörfern.)"
-
-#~ msgid "Doubled"
-#~ msgstr "Verdoppelt"
-
-#~ msgid " (+steadfast)"
-#~ msgstr " (+unerschütterlich)"
-
-#~ msgid "Initial time available to players at start of game"
-#~ msgstr ""
-#~ "Startzeit, die dem Spieler bei Beginn der Partie zur Verfügung steht"
-
-#~ msgid "Time added to user's clock at the end of each turn"
-#~ msgstr "Bonuszeit die am Ende der Runde dem Nutzer hinzugerechnet wird"
-
-#~ msgid "Turn time: "
-#~ msgstr "Rundenzeit"
-
-#, fuzzy
-#~ msgid "Artwork and Graphic Designers"
-#~ msgstr "Grafik Designer"
-
-#, fuzzy
-#~ msgid ""
-#~ "It is one of the greater mercies of creation that a human soul is "
-#~ "immutable, and cannot be destroyed. However, the many things a "
-#~ "necromancer can do, despite this, are entirely horrifying.\n"
-#~ "\n"
-#~ "Trapped within a shroud of vile enchantments, a spirit likens unto the "
-#~ "wind in the sails of a ship. The contrivance that results from this "
-#~ "prison is an unfailing servant, which can be bound to whatever task their "
-#~ "master sees fit.\n"
-#~ "\n"
-#~ "Special Notes: Ghosts have very unusual resistances to damage, and move "
-#~ "quite slowly over open water."
-#~ msgstr ""
-#~ "Es ist eine der größten Gnaden der Schöpfung, dass die menschliche Seele "
-#~ "unveränderbar und unzerstörbar ist. Wird sie jedoch vor ihrem "
-#~ "Entschwinden von einem Totenbeschwörer gefangengenommen, ist sie "
-#~ "verloren. Mittels der schwarzen Magie, erschafft der Totenbeschwörer eine "
-#~ "eigene Welt für diese Seele, die seinen Gesetzen folgt und in der nur "
-#~ "Hass und Leid existieren. Irgendwann verliert sich die Seele in diesen "
-#~ "Empfindungen und fügt sich in ihre ausweglose Situation.\n"
-#~ "\n"
-#~ "Ist dieser Schritt abgeschlossen wird diese Seele zu einem Geist, einem "
-#~ "Wesen, das die Befehle seines Meisters ohne Widerspruch ausführt.\n"
-#~ "\n"
-#~ "Wird ein Geist »getötet« vergeht die Seele auf ewig im Nichts, ohne "
-#~ "jemals wieder mit dem Strom des Lebens zu verschmelzen. Nur Paladine oder "
-#~ "Weiße Magier sind in der Lage, Geister von ihrem Fluch zu erlösen, auf "
-#~ "das die befreite Seele ihren unterbrochenen Weg fortsetzen kann.\n"
-#~ "\n"
-#~ "Anmerkung: Geister haben sehr ungewöhnliche Schadensresistenzen und "
-#~ "bewegen sich sehr langsam auf offenem Wasser."
-
-#, fuzzy
-#~ msgid "Ethereal Spectre"
-#~ msgstr "Spuk"
-
-#, fuzzy
-#~ msgid "quintain"
-#~ msgstr "Berge"
-
-#, fuzzy
-#~ msgid "Cave Spider"
-#~ msgstr "Riesenspinne"
-
-#, fuzzy
-#~ msgid ""
-#~ "Cave Spiders are roam deep under the earth, devouring many victims. They "
-#~ "can bite at close range, thereby poisoning their enemies, and also can "
-#~ "attack with a web at long range, slowing their foes down."
-#~ msgstr ""
-#~ "Man erzählt sich, dass in den Tiefen von Knalga Riesenspinnen hausen, die "
-#~ "schon viele Opfer verschlungen haben. Im Nahkampf kann ihr Biss ihre "
-#~ "Opfer vergiften. Außerdem können sie ein Spinnennetz auf ihre Feinde "
-#~ "werfen. Diese werden dadurch verlangsamt.\n"
-#~ "\n"
-#~ "Anmerkung: Wenn die Spinne erfolgreich zubeißt, injiziert sie ein Gift, "
-#~ "dass das Opfer so lange schwächt, bis es in einem Dorf oder von einem "
-#~ "Heiler kuriert wird.\n"
-#~ "Zudem kann sie klebrige Spinnenfäden ausstoßen, so dass ihr ihre Opfer "
-#~ "kaum entkommen können."
-
-#, fuzzy
-#~ msgid "Wesnoth Tutorial"
-#~ msgstr "Einführung"
-
-#, fuzzy
-#~ msgid "Delfador"
-#~ msgstr "Verteidiger"
-
-#, fuzzy
-#~ msgid "Left click on an Elvish Fighter"
-#~ msgstr "Elfenkrieger"
-
-#, fuzzy
-#~ msgid "Do you want to keep practicing?"
-#~ msgstr "Möchtet Ihr den Spielverlauf überspringen?"
-
-#, fuzzy
-#~ msgid "Thrag"
-#~ msgstr "Strolch"
-
-#, fuzzy
-#~ msgid "Galdrad"
-#~ msgstr "Grasland"
-
-#, fuzzy
-#~ msgid "Eowynial"
-#~ msgstr "loyal"
-
-#, fuzzy
-#~ msgid "Shaman"
-#~ msgstr "Speerträger"
-
-#, fuzzy
-#~ msgid "Golir"
-#~ msgstr "Gold"
-
-#, fuzzy
-#~ msgid "End your turn"
-#~ msgstr "Ihr seid an der Reihe"
-
-#, fuzzy
-#~ msgid "Fighter to Here"
-#~ msgstr "Zeit der Helden"
-
-#, fuzzy
-#~ msgid "I have no more money to recruit!"
-#~ msgstr "Es gibt keine Einheiten, die Ihr ausbilden könntet."
-
-#, fuzzy
-#~ msgid "I have enough gold to recruit more units!"
-#~ msgstr "Ihr verfügt nicht über genug Gold, um diese Einheit auszubilden."
-
-#, fuzzy
-#~ msgid "Defend here"
-#~ msgstr "Verteidiger"
-
-#~ msgid ""
-#~ "Take control of this huge river delta in a team battle or in a free for "
-#~ "all."
-#~ msgstr ""
-#~ "Vier Herrscher kämpfen um die Vorherrschaft über dieses Delta des Flusses "
-#~ "Gork. Den Sieger erwartet großer Reichtum, da dieser Fluss häufig von "
-#~ "Handelsschiffen befahren wird."
-
-#~ msgid "Dummy"
-#~ msgstr "Turnierpuppe"
