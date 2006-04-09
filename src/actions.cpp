@@ -780,7 +780,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
 							   const gamestatus& status, const game_data& gamedata,
 							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-							   const attack_type& attacker_weapon)
+							   const attack_type& attacker_weapon): attacker_stats_(NULL), defender_stats_(NULL)
 {
 	const unit& attacker = units.find(attacker_loc)->second;
 	const unit& defender = units.find(defender_loc)->second;
