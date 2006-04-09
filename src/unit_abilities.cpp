@@ -140,7 +140,6 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 		for(config::child_list::const_iterator i = list.begin(); i != list.end(); ++i) {
 			if(ability_active(ability,**i,loc) && ability_affects_self(ability,**i,loc)) {
 				res.cfgs.push_back(std::pair<config*,gamemap::location>(*i,loc));
-				std::cerr << id() << " has " << ability << "\n";
 			}
 		}
 	}
