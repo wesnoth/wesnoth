@@ -425,78 +425,43 @@ void prob_matrix::receive_blow_a(unsigned damage, double hit_chance,
 
 };
 
-combatant::combatant(unsigned hp, unsigned max_hp, bool slowed,
-					 bool could_ever_drain)
-	: hp_dist(could_ever_drain ? max_hp+1: hp+1), hp_(hp), max_hp_(max_hp),
-	  slowed_(slowed)
+combatant::combatant(const battle_context::unit_stats &u)
+	: hp_dist(u.drains ? u.max_hp+1: u.hp+1),
+	  untouched(1.0),
+	  u_(u),
+	  hit_chances_(u.num_blows, u.chance_to_hit / 100.0)
 {
 }
 
-// Select a weapon.
-void combatant::set_weapon(unsigned num_attacks, bool drains, bool berserk,
-						   bool swarm, bool firststrike)
+// For swarm, whether we get an attack depends on HP distribution from
+// previous combat.  So we roll this into our P(hitting), since no
+// attack is equivalent to missing.
+void combatant::adjust_hitchance()
 {
-	base_num_attacks_ = num_attacks;
-	drains_ = drains;
-	berserk_ = berserk;
-	swarm_ = swarm;
-	firststrike_ = firststrike;
-}
+	if (summary[0].empty() || u_.swarm_min == u_.swarm_max)
+		return;
 
-unsigned combatant::num_attacks(unsigned int hp) const
-{
-	if (swarm_)
-		return base_num_attacks_ - (base_num_attacks_*(max_hp_-hp)/max_hp_);
+	hit_chances_ = std::vector<double>(u_.swarm_max);
+	double alive_prob;
+
+	if (summary[1].empty())
+		alive_prob = 1 - summary[0][0];
 	else
-		return base_num_attacks_;
-}
+		alive_prob = 1 - summary[0][0] - summary[1][0];
 
-// Set effect against this particular opponent.
-void combatant::set_effectiveness(unsigned damage, double hit_chance,
-								  bool slows)
-{
-	slows_ = slows;
-	base_hit_chance_ = hit_chance;
-	if (slowed_)
-		damage_ = damage / 2;
-	else
-		damage_ = damage;
-
-	if (!swarm_ || summary[0].empty())
-		hit_chances_ = std::vector<double>(num_attacks(hp_), hit_chance);
-	else {
-		// Whether we get an attack depends on HP distribution from previous
-		// combat.  So we roll this into our P(hitting), since no attack is
-		// equivalent to missing.
-		hit_chances_ = std::vector<double>(base_num_attacks_);
-		double alive_prob;
-
-		if (summary[1].empty())
-			alive_prob = 1 - summary[0][0];
-		else
-			alive_prob = 1 - summary[0][0] - summary[1][0];
-
-		for (unsigned int i = 1; i <= max_hp_; i++) {
-			double prob = summary[0][i];
-			if (!summary[1].empty())
-				prob += summary[1][i];
-			for (unsigned int j = 0; j < num_attacks(i); j++)
-				hit_chances_[j] += prob * hit_chance / alive_prob;
-		}
+	unsigned int i;
+	for (i = 1; i <= u_.max_hp; i++) {
+		double prob = summary[0][i];
+		if (!summary[1].empty())
+			prob += summary[1][i];
+		for (unsigned int j = 0; j < u_.swarm_min + (u_.swarm_max - (double)u_.swarm_min) * u_.hp / u_.max_hp; j++)
+			hit_chances_[j] += prob * u_.chance_to_hit / 100.0 / alive_prob;
 	}
-	debug(("\nhit_chances_ (base %u%%):", (unsigned)(hit_chance * 100.0 + 0.5)));
-	for (unsigned int i = 0; i < base_num_attacks_; i++)
-		debug((" %.2f", hit_chances_[i]));
-	debug(("\n"));
-}
 
-void combatant::reset()
-{
-	for (unsigned int i = 0; i < hp_dist.size(); i++)
-		hp_dist[i] = 0.0;
-	summary[0] = std::vector<double>();
-	summary[1] = std::vector<double>();
-	hit_chances_ = std::vector<double>(num_attacks(hp_), base_hit_chance_);
+	debug(("\nhit_chances_ (base %u%%):", u_.chance_to_hit));
+	for (i = 0; i < u_.swarm_max; i++)
+		debug((" %.2f", hit_chances_[i] * 100.0 + 0.5));
+	debug(("\n"));
 }
 
 // Two man enter.  One man leave!
@@ -505,59 +470,45 @@ void combatant::reset()
 // Um, ok, it was a stupid thing to say.
 void combatant::fight(combatant &opp)
 {
-	unsigned int i, rounds = berserk_ || opp.berserk_ ? 30 : 1;
+	// FIXME: Don't hardcode 30 here.
+	unsigned int i, rounds = u_.berserk || opp.u_.berserk ? 30 : 1;
 
 	// If defender has firststrike and we don't, reverse.
-	if (opp.firststrike_ && !firststrike_) {
+	if (opp.u_.firststrike && !u_.firststrike) {
 		opp.fight(*this);
 		return;
 	}
 
-	debug(("A: %u %u %u %2g%% ",
-		   damage_, base_num_attacks_, hp_, base_hit_chance_*100.0));
-	if (drains_)
-		debug(("drains,"));
-	if (slows_ && !opp.slowed_)
-		debug(("slows,"));
-	if (berserk_)
-		debug(("berserk,"));
-	if (swarm_)
-		debug(("swarm,"));
-	debug(("maxhp=%u\n", hp_dist.size()-1));
-	debug(("B: %u %u %u %2g%% ", opp.damage_, opp.base_num_attacks_, opp.hp_,
-		   opp.base_hit_chance_*100.0));
-	if (opp.drains_)
-		debug(("drains,"));
-	if (opp.slows_ && !slowed_)
-		debug(("slows,"));
-	if (opp.berserk_)
-		debug(("berserk,"));
-	if (opp.swarm_)
-		debug(("swarm,"));
-	debug(("maxhp=%u\n", opp.hp_dist.size()-1));
+#ifdef DEBUG
+	printf("A:\n");
+	u_.dump();
+	printf("B:\n");
+	opp.u_.dump();
+#endif
+
+	// If we've fought before and we have swarm, we must adjust cth array.
+	adjust_hitchance();
+	opp.adjust_hitchance();
 
 	prob_matrix m(hp_dist.size()-1, opp.hp_dist.size()-1,
-				  slows_ && !opp.slowed_, opp.slows_ && !slowed_, hp_, opp.hp_,
-				  summary, opp.summary);
+				  u_.slows && !opp.u_.is_slowed, opp.u_.slows && !u_.is_slowed,
+				  u_.hp, opp.u_.hp, summary, opp.summary);
 
-	unsigned max_attacks = maximum(hit_chances_.size(),
-								   opp.hit_chances_.size());
+	unsigned max_attacks = maximum(hit_chances_.size(), opp.hit_chances_.size());
 
-	debug(("A gets %u attacks, B %u\n",
-		   hit_chances_.size(),
-		   opp.hit_chances_.size()));
+	debug(("A gets %u attacks, B %u\n", hit_chances_.size(), opp.hit_chances_.size()));
 	do {
 		for (i = 0; i < max_attacks; i++) {
 			if (i < hit_chances_.size()) {
 				debug(("A strikes\n"));
-				m.receive_blow_b(damage_, hit_chances_[i],
-								 slows_ && !opp.slowed_, drains_);
+				m.receive_blow_b(u_.damage, hit_chances_[i],
+								 u_.slows && !opp.u_.is_slowed, u_.drains);
 				m.dump();
 			}
 			if (i < opp.hit_chances_.size()) {
 				debug(("B strikes\n"));
-				m.receive_blow_a(opp.damage_, opp.hit_chances_[i],
-								 opp.slows_ && !slowed_, opp.drains_);
+				m.receive_blow_a(opp.u_.damage, opp.hit_chances_[i],
+								 opp.u_.slows && !u_.is_slowed, opp.u_.drains);
 				m.dump();
 			}
 		}
@@ -583,8 +534,8 @@ void combatant::fight(combatant &opp)
 	}
 
 	// FIXME: This is approximate: we could drain, then get hit.
-	untouched = hp_dist[hp_];
-	opp.untouched = opp.hp_dist[opp.hp_];
+	untouched = hp_dist[u_.hp];
+	opp.untouched = opp.hp_dist[opp.u_.hp];
 }
 
 #if defined(BENCHMARK) || defined(CHECK)

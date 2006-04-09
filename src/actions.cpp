@@ -895,6 +895,8 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		// drain = normal damage / 2 and slow_drain = slow_damage / 2.
 		damage = round_damage(base_damage, damage_multiplier, 10000);
 		slow_damage = round_damage(base_damage, damage_multiplier, 20000);
+		if (is_slowed)
+			damage = slow_damage;
 		
 		// Compute the number of blows and handle swarm.
 		unit_ability_list swarm_specials = weapon->get_specials("attacks");

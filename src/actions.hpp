@@ -122,14 +122,14 @@ public:
 		bool berserk;			// Berserk special is used, either by this unit or his opponent.
 		bool firststrike;		// Attack has firststrike special.
 
-		int hp;					// Hitpoints of the unit at the beginning of the battle.
-		int max_hp;	     		// Maximum hitpoints of the unit.
-		int chance_to_hit;		// Effective chance to hit (all factors accounted for).
-		int damage;   			// Effective damage of the weapon (all factors accounted for, except slow state).
-		int slow_damage;		// Effective damage if unit is/becomes slowed.
-		int num_blows;			// Effective number of blows, takes swarm into account.
-		int swarm_min;			// Minimum number of blows with swarm (equal to num_blows if swarm isn't used).
-		int swarm_max;			// Maximum number of blows with swarm (equal to num_blows if swarm isn't used).
+		unsigned int hp;		// Hitpoints of the unit at the beginning of the battle.
+		unsigned int max_hp;	// Maximum hitpoints of the unit.
+		unsigned int chance_to_hit;	// Effective chance to hit as a percentage (all factors accounted for).
+		int damage;   			// Effective damage of the weapon (all factors accounted for).
+		int slow_damage;		// Effective damage if unit becomes slowed (== damage, if already slowed)
+		unsigned int num_blows;	// Effective number of blows, takes swarm into account.
+		unsigned int swarm_min;	// Minimum number of blows with swarm (equal to num_blows if swarm isn't used).
+		unsigned int swarm_max;	// Maximum number of blows with swarm (equal to num_blows if swarm isn't used).
 
 		unit_stats(const unit &u, const gamemap::location& u_loc,
 				   const attack_type *u_weapon, bool attacking,
