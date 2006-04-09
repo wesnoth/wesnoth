@@ -29,13 +29,12 @@ struct time_of_day
 	//the % bonus lawful units receive. chaotic units will
 	//receive -lawful_bonus.
 	int lawful_bonus;
+	int bonus_modified;
 
 	//the image to be displayed in the game status.
 	std::string image;
 	t_string name;
 	std::string id;
-	std::string lighter_id;
-	std::string darker_id;
 
 	//the image that is to be laid over all images while it's this
 	//time of day
@@ -54,10 +53,10 @@ public:
 	gamestatus(const config& time_cfg, int num_turns);
 	void write(config& cfg) const;
 
-	const time_of_day& get_time_of_day() const;
-	const time_of_day& get_previous_time_of_day() const;
-	const time_of_day& get_time_of_day(int illuminated, const gamemap::location& loc) const;
-	const time_of_day& get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const;
+	time_of_day get_time_of_day() const;
+	time_of_day get_previous_time_of_day() const;
+	time_of_day get_time_of_day(int illuminated, const gamemap::location& loc) const;
+	time_of_day get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const;
 	size_t turn() const;
 	int number_of_turns() const;
 	void modify_turns(const std::string& mod);
@@ -68,13 +67,13 @@ public:
 	bool next_turn();
 
 private:
-	const time_of_day& get_time_of_day_turn(int nturn) const;
+	time_of_day get_time_of_day_turn(int nturn) const;
 
-	std::vector<time_of_day> times_, illuminatedTimes_;
+	std::vector<time_of_day> times_;
 
 	struct area_time_of_day {
 		std::string xsrc, ysrc;
-		std::vector<time_of_day> times, illuminated_times;
+		std::vector<time_of_day> times;
 		std::set<gamemap::location> hexes;
 	};
 

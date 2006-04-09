@@ -1766,6 +1766,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		if (curing == "" && hitpoints_mod_pos_ncum==0 && hitpoints_mod_pos_cum==0 && hitpoints_mod_neg_ncum==0 && hitpoints_mod_neg_cum==0) {
 			continue;
 		}
+		
 		int pos_max = i->second.max_hitpoints() - i->second.hitpoints();
 		int neg_max = -(i->second.hitpoints() - 1);
 		if(total_mod > pos_max) {
@@ -1984,11 +1985,12 @@ void check_victory(units_map& units,
 	}
 }
 
-const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,const gamemap::location& loc, const gamemap& map)
+time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const gamemap::location& loc, const gamemap& map)
 {
 	int lighten = maximum<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
 	int darken = minimum<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
 	
+	time_of_day tod = status.get_time_of_day(lighten + darken,loc);
 	
 	if(loc.valid()) {
 		gamemap::location locs[7];
@@ -1999,13 +2001,20 @@ const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,c
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if(itor != units.end() &&
 			   itor->second.get_ability_bool("illuminates",itor->first) && itor->second.get_state("stoned")!="yes") {
-				lighten = maximum<int>(itor->second.get_abilities("illuminates",itor->first).highest("value").first, lighten);
-				darken = minimum<int>(itor->second.get_abilities("illuminates",itor->first).lowest("value",0).first, darken);
+				unit_ability_list illum = itor->second.get_abilities("illuminates",itor->first);
+				unit_abilities::effect illum_effect(illum,lighten,false);
+				int mod = illum_effect.get_composite_value();
+				if(mod + tod.lawful_bonus > illum.highest("max_value").first) {
+					mod = illum.highest("max_value").first - tod.lawful_bonus;
+				}
+				lighten = maximum<int>(mod, lighten);
+				darken = minimum<int>(mod, darken);
 			}
 		}
 	}
+	tod = status.get_time_of_day(lighten + darken,loc);
 
-	return status.get_time_of_day(lighten + darken,loc);
+	return tod;
 }
 
 int combat_modifier(const gamestatus& status,

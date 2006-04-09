@@ -245,7 +245,7 @@ void check_victory(units_map& units,
 //gets the time of day at a certain tile. Certain tiles may have a time of
 //day that differs from 'the' time of day, if a unit that illuminates is
 //in that tile or adjacent.
-const time_of_day&  timeofday_at(const gamestatus& status,
+time_of_day timeofday_at(const gamestatus& status,
                               const units_map& units,
                               const gamemap::location& loc,
 			      const gamemap& map);

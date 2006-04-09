@@ -1136,6 +1136,24 @@ void display::draw_report(reports::TYPE report_num)
 					area.w = minimum<int>(rect.w + rect.x - x, img->w);
 					area.h = minimum<int>(rect.h + rect.y - y, img->h);
 					draw_image_for_report(img, area);
+					
+					// draw illuminated time
+					if(report_num == reports::TIME_OF_DAY && img != NULL) {
+						time_of_day tod = timeofday_at(status_,units_,mouseoverHex_,map_);
+						// don't show illuminated time on fogged/shrouded tiles
+						if (teams_[viewing_team()].fogged(mouseoverHex_.x,mouseoverHex_.y) || teams_[viewing_team()].shrouded(mouseoverHex_.x,mouseoverHex_.y)) {
+							tod = status_.get_time_of_day(false,mouseoverHex_);
+						}
+						if(tod.bonus_modified > 0) {
+							surface tod_bright(image::get_image("misc/tod-bright.png",image::UNSCALED));
+							if(tod_bright != NULL) {
+								draw_image_for_report(tod_bright,area);
+//								std::stringstream mod_str;
+//								mod_str << "+" << tod.bonus_modified << "%";
+//								font::draw_text(&screen_,rect,item->font_size(),font::DARK_COLOUR,mod_str.str(),area.x+2,area.y+2);
+							}
+						}
+					}
 
 					image_count++;
 					if(area.h > tallest) {

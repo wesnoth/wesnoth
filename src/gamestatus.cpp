@@ -50,10 +50,11 @@ player_info* game_state::get_player(const std::string& id) {
 time_of_day::time_of_day(const config& cfg)
                  : lawful_bonus(atoi(cfg["lawful_bonus"].c_str())),
                    image(cfg["image"]), name(cfg["name"]), id(cfg["id"]),
-		   lighter_id(cfg["lighter"]),darker_id(cfg["darker"]),image_mask(cfg["mask"]),
+			       image_mask(cfg["mask"]),
                    red(atoi(cfg["red"].c_str())),
                    green(atoi(cfg["green"].c_str())),
-                   blue(atoi(cfg["blue"].c_str()))
+                   blue(atoi(cfg["blue"].c_str())),
+                   bonus_modified(0)
 {
 }
 
@@ -75,24 +76,17 @@ void time_of_day::write(config& cfg) const
 	cfg["image"] = image;
 	cfg["name"] = name;
 	cfg["id"] = id;
-	cfg["lighter"] = lighter_id;
-	cfg["darker"] = darker_id;
 	cfg["mask"] = image_mask;
 }
 
 namespace {
 
-void parse_times(const config& cfg, std::vector<time_of_day>& normal_times, std::vector<time_of_day>& illuminated_times)
+void parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
 {
 	const config::child_list& times = cfg.get_children("time");
 	config::child_list::const_iterator t;
 	for(t = times.begin(); t != times.end(); ++t) {
 		normal_times.push_back(time_of_day(**t));
-	}
-	
-	const config::child_list& illum_times = cfg.get_children("illuminated_time");
-	for(t = illum_times.begin(); t != illum_times.end(); ++t) {
-		illuminated_times.push_back(time_of_day(**t));
 	}
 	
 }
@@ -107,7 +101,7 @@ gamestatus::gamestatus(const config& time_cfg, int num_turns) :
 		turn_ = atoi(turn_at.c_str());
 	}
 
-	parse_times(time_cfg,times_,illuminatedTimes_);
+	parse_times(time_cfg,times_);
 
 	const config::child_list& times_range = time_cfg.get_children("time_area");
 	for(config::child_list::const_iterator t = times_range.begin(); t != times_range.end(); ++t) {
@@ -116,8 +110,8 @@ gamestatus::gamestatus(const config& time_cfg, int num_turns) :
 		area.xsrc = (**t)["x"];
 		area.ysrc = (**t)["y"];
 		std::copy(locs.begin(),locs.end(),std::inserter(area.hexes,area.hexes.end()));
+		parse_times(**t,area.times);
 		areas_.push_back(area);
-		parse_times(**t,areas_.back().times,areas_.back().illuminated_times);
 	}
 }
 
@@ -134,9 +128,6 @@ void gamestatus::write(config& cfg) const
 	for(t = times_.begin(); t != times_.end(); ++t) {
 		t->write(cfg.add_child("time"));
 	}
-	for(t = illuminatedTimes_.begin(); t != illuminatedTimes_.end(); ++t) {
-		t->write(cfg.add_child("illuminated_time"));
-	}
 
 
 	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
@@ -146,14 +137,11 @@ void gamestatus::write(config& cfg) const
 		for(t = i->times.begin(); t != i->times.end(); ++t) {
 			t->write(area.add_child("time"));
 		}
-		for(t = i->illuminated_times.begin(); t != i->illuminated_times.end(); ++t) {
-			t->write(area.add_child("illuminated_time"));
-		}
 
 	}
 }
 
-const time_of_day& gamestatus::get_time_of_day_turn(int nturn) const
+time_of_day gamestatus::get_time_of_day_turn(int nturn) const
 {
 	if(times_.empty() == false) {
 		return times_[(nturn-1)%times_.size()];
@@ -164,18 +152,18 @@ const time_of_day& gamestatus::get_time_of_day_turn(int nturn) const
 	}
 }
 
-const time_of_day& gamestatus::get_time_of_day() const
+time_of_day gamestatus::get_time_of_day() const
 {
 	return get_time_of_day_turn(turn());
 }
 
-const time_of_day& gamestatus::get_previous_time_of_day() const
+time_of_day gamestatus::get_previous_time_of_day() const
 {
 	return get_time_of_day_turn(turn()-1);
 }
 
 
-const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const
+time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const
 {
 	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
 		if(i->hexes.count(loc) == 1) {
@@ -184,50 +172,12 @@ const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::l
 				static time_of_day const default_time(dummy_cfg);
 				return default_time;
 			}
+			time_of_day res = i->times[(n_turn-1)%i->times.size()];
 			if(illuminated) {
-				const time_of_day* cur = &i->times[(n_turn-1)%i->times.size()];
-				while(illuminated>0) {
-					// Find pointer to lighter time of day
-					std::vector<time_of_day>::const_iterator d;
-					for(d = i->times.begin(); d != i->times.end(); ++d) {
-						if(d->id == cur->lighter_id) {
-							cur = &(*d);
-							break;
-						}
-					}
-					if(d == i->times.end()) {
-						for(d = i->illuminated_times.begin(); d != i->illuminated_times.end(); ++d) {
-							if(d->id == cur->lighter_id) {
-								cur = &(*d);
-								break;
-							}
-						}
-					}
-					illuminated--;
-				}
-				while(illuminated<0) {
-					// Find pointer to darker time of day
-					std::vector<time_of_day>::const_iterator d;
-					for(d = i->times.begin(); d != i->times.end(); ++d) {
-						if(d->id == cur->darker_id) {
-							cur = &(*d);
-							break;
-						}
-					}
-					if(d == i->times.end()) {
-						for(d = i->illuminated_times.begin(); d != i->illuminated_times.end(); ++d) {
-							if(d->id == cur->darker_id) {
-								cur = &(*d);
-								break;
-							}
-						}
-					}
-					illuminated++;
-				}
-				return *cur;
-			} else {
-				return i->times[(n_turn-1)%i->times.size()];
+				res.bonus_modified=illuminated;
+				res.lawful_bonus += illuminated;
 			}
+			return res;
 		}
 	}
 
@@ -237,53 +187,15 @@ const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::l
 	    return default_time;
 	}
 
+	time_of_day res = times_[(n_turn-1)%times_.size()];
 	if(illuminated) {
-		const time_of_day* cur = &times_[(n_turn-1)%times_.size()];
-		while(illuminated>0) {
-			// Find pointer to lighter time of day
-			std::vector<time_of_day>::const_iterator d;
-			for(d = times_.begin(); d != times_.end(); ++d) {
-				if(d->id == cur->lighter_id) {
-					cur = &(*d);
-					break;
-				}
-			}
-			if(d == times_.end()) {
-				for(d = illuminatedTimes_.begin(); d != illuminatedTimes_.end(); ++d) {
-					if(d->id == cur->lighter_id) {
-						cur = &(*d);
-						break;
-					}
-				}
-			}
-			illuminated--;
-		}
-		while(illuminated<0) {
-			// Find pointer to darker time of day
-			std::vector<time_of_day>::const_iterator d;
-			for(d = times_.begin(); d != times_.end(); ++d) {
-				if(d->id == cur->darker_id) {
-					cur = &(*d);
-					break;
-				}
-			}
-			if(d == times_.end()) {
-				for(d = illuminatedTimes_.begin(); d != illuminatedTimes_.end(); ++d) {
-					if(d->id == cur->darker_id) {
-						cur = &(*d);
-						break;
-					}
-				}
-			}
-			illuminated++;
-		}
-		return *cur;
-	} else  {
-		return times_[(n_turn-1)%times_.size()];
+		res.bonus_modified=illuminated;
+		res.lawful_bonus += illuminated;
 	}
+	return res;
 }
 
-const time_of_day& gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc) const
+time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc) const
 {
 	return get_time_of_day(illuminated,loc,turn());
 }
@@ -859,7 +771,6 @@ void game_state::clear_variable(const std::string& varname)
 			}
 			element = std::string(element.begin(),index_start);
 		}
-		const config::child_list& items = vars->get_children(element);
 		
 		if(itor == key.end()) {
 			std::string last_element(key);
@@ -912,7 +823,6 @@ void game_state::clear_variable(const std::string& varname)
 		}
 		key = std::string(key.begin(),index_start);
 	}
-	const config::child_list& items = vars->get_children(key);
 	
 	if(vars->get_children(key).size() <= index) {
 		return;
