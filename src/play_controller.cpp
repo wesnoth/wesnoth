@@ -24,7 +24,7 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 {
 	player_number_ = 1;
 	current_turn_ = 1;
-	first_player_ = lexical_cast_default<unsigned int,std::string>(level_["playing_team"]);
+	first_player_ = lexical_cast_default<unsigned int,std::string>(level_["playing_team"], 0);
 	skip_replay_ = skip_replay;
 	browse_ = false;
 
