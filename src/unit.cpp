@@ -816,11 +816,6 @@ const std::vector<std::string>& unit::overlays() const
 void unit::read(const config& cfg)
 {
 	cfg_ = cfg;
-	if(cfg["id"]=="") {
-		id_ = cfg["type"];
-	} else {
-		id_ = cfg["id"];
-	}
 	side_ = lexical_cast_default<int>(cfg["side"]);
 	if(side_ <= 0) {
 		side_ = 1;
@@ -917,6 +912,7 @@ void unit::read(const config& cfg)
 		cfg_.remove_child("modifications",0);
 	}
 	
+	id_ = "";
 	if(cfg["type"] != "") {
 		wassert(gamedata_ != NULL);
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
@@ -935,8 +931,27 @@ void unit::read(const config& cfg)
 			movement_ = 0;
 		}
 	}
+	if(cfg["id"]=="") {
+		id_ = cfg["type"];
+	} else {
+		id_ = cfg["id"];
+	}
 	if(cfg["max_hitpoints"] != "") {
 		max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"]);
+	}
+	if(cfg["max_moves"] != "") {
+		max_movement_ = lexical_cast_default<int>(cfg["max_moves"]);
+	}
+	if(cfg["max_experience"] != "") {
+		max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
+	}
+	for(config::const_child_itors range = cfg.child_range("attack");
+	    range.first != range.second; ++range.first) {
+		attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
+	}
+	if(cfg_["type"] == "") {
+		backup_state();
+		apply_modifications();
 	}
 	if(cfg["hitpoints"] != "") {
 		hit_points_ = lexical_cast_default<int>(cfg["hitpoints"]);
@@ -952,13 +967,7 @@ void unit::read(const config& cfg)
 			movement_ = 0;
 		}
 	}
-	if(cfg["max_moves"] != "") {
-		max_movement_ = lexical_cast_default<int>(cfg["max_moves"]);
-	}
 	experience_ = lexical_cast_default<int>(cfg["experience"]);
-	if(cfg["max_experience"] != "") {
-		max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
-	}
 	resting_ = (cfg["resting"] == "yes");
 	unrenamable_ = (cfg["unrenamable"] == "yes");
 	if(cfg["alignment"]=="lawful") {
@@ -969,10 +978,6 @@ void unit::read(const config& cfg)
 		alignment_ = unit_type::CHAOTIC;
 	} else if(cfg["type"]=="") {
 		alignment_ = unit_type::NEUTRAL;
-	}
-	for(config::const_child_itors range = cfg.child_range("attack");
-	    range.first != range.second; ++range.first) {
-		attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
 	}
 	const config::child_list& defends = cfg_.get_children("defend");
 	for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
@@ -1012,10 +1017,6 @@ void unit::read(const config& cfg)
 		movement_animations_.push_back(movement_animation(absolute_image()));
 		// always have a movement animation
 	}
-	if(cfg_["type"] == "") {
-		backup_state();
-	}
-	apply_modifications();
 	traits_description_ = cfg["traits_description"];
 	if(cfg["random_traits"] == "yes") {
 		generate_traits();

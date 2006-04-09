@@ -117,9 +117,9 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 			if(adj_abilities) {
 				const config::child_list& list = adj_abilities->get_children(ability);
 				for(config::child_list::const_iterator j = list.begin(); j != list.end(); ++j) {
-					if(((**j)["affect_allies"]=="yes" && !(*teams_)[side()-1].is_enemy(it->second.side())) 
-						|| ((**j)["affect_enemies"]=="yes" && (*teams_)[side()-1].is_enemy(it->second.side())) &&
-							ability_active(ability,**j,loc) && ability_affects_adjacent(ability,**j,i,loc)) {
+					if((((**j)["affect_allies"]=="yes" && !(*teams_)[side()-1].is_enemy(it->second.side())) 
+						|| ((**j)["affect_enemies"]=="yes" && (*teams_)[side()-1].is_enemy(it->second.side()))) &&
+							it->second.ability_active(ability,**j,adjacent[i]) && ability_affects_adjacent(ability,**j,i,loc)) {
 						return true;
 					}
 				}
@@ -140,6 +140,7 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 		for(config::child_list::const_iterator i = list.begin(); i != list.end(); ++i) {
 			if(ability_active(ability,**i,loc) && ability_affects_self(ability,**i,loc)) {
 				res.cfgs.push_back(std::pair<config*,gamemap::location>(*i,loc));
+				std::cerr << id() << " has " << ability << "\n";
 			}
 		}
 	}
@@ -155,9 +156,9 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 			if(adj_abilities) {
 				const config::child_list& list = adj_abilities->get_children(ability);
 				for(config::child_list::const_iterator j = list.begin(); j != list.end(); ++j) {
-					if(((**j)["affect_allies"]=="yes" && !(*teams_)[side()-1].is_enemy(it->second.side())) 
-						|| ((**j)["affect_enemies"]=="yes" && (*teams_)[side()-1].is_enemy(it->second.side())) &&
-						ability_active(ability,**j,loc) && ability_affects_adjacent(ability,**j,i,loc)) {
+					if((((**j)["affect_allies"]=="yes" && !(*teams_)[side()-1].is_enemy(it->second.side())) 
+						|| ((**j)["affect_enemies"]=="yes" && (*teams_)[side()-1].is_enemy(it->second.side()))) &&
+						it->second.ability_active(ability,**j,adjacent[i]) && ability_affects_adjacent(ability,**j,i,loc)) {
 						res.cfgs.push_back(std::pair<config*,gamemap::location>(*j,adjacent[i]));
 					}
 				}
@@ -227,9 +228,9 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 					if(((**j)["affect_allies"]=="yes" && !(*teams_)[side()-1].is_enemy(it->second.side())) 
 						|| ((**j)["affect_enemies"]=="yes" && (*teams_)[side()-1].is_enemy(it->second.side()))) {
 							const config* adj_desc = (*j)->child("adjacent_description");
-							if(ability_affects_adjacent(k->first,**j,i,loc)) {
+							if(ability_affects_adjacent(k->first,**j,i,adjacent[i])) {
 								if(!adj_desc) {
-									if(ability_active(k->first,**j,loc)) {
+									if(it->second.ability_active(k->first,**j,loc)) {
 										if((**j)["name"] != "") {
 											res.push_back((**j)["name"].str());
 											res.push_back((**j)["description"].str());
@@ -241,7 +242,7 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 										}
 									}
 								} else {
-									if(ability_active(k->first,**j,loc)) {
+									if(it->second.ability_active(k->first,**j,loc)) {
 										if((*adj_desc)["name"] != "") {
 											res.push_back((*adj_desc)["name"].str());
 											res.push_back((*adj_desc)["description"].str());
@@ -357,26 +358,18 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
  */
 bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const
 {
-//	wassert("not done" == "done");
 	wassert(dir >=0 && dir <= 5);
 	static const std::string adjacent_names[6] = {"n","ne","se","s","sw","nw"};
 	const config::child_list& affect_adj = cfg.get_children("affect_adjacent");
-	bool passed = false;
 	for(config::child_list::const_iterator i = affect_adj.begin(); i != affect_adj.end(); ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		if(std::find(dirs.begin(),dirs.end(),adjacent_names[dir]) != dirs.end()) {
-			if((*i)->child("filter") != NULL) {
-				if(matches_filter(*(*i)->child("filter"),loc,ability=="illuminates")) {
-					passed = true;
-				} else {
-					return false;
-				}
-			} else {
-				passed = true;
+			if((*i)->child("filter") != NULL && !matches_filter(*(*i)->child("filter"),loc,ability=="illuminates")) {
+				return false;
 			}
 		}
 	}
-	return passed;
+	return true;
 }
 /*
  *
