@@ -54,6 +54,7 @@ replay_controller::replay_controller(const config& level, const game_data& gamei
 	: play_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, false), 
 	gamestate_start_(state_of_game), status_start_(level, num_turns)
 {
+	current_turn_ = 1;
 	delay_ = 0;
 	is_playing_ = false;
 	init(video, story);

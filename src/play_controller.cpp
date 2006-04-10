@@ -23,7 +23,8 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 	first_human_team_(-1)
 {
 	player_number_ = 1;
-	current_turn_ = 1;
+	//current_turn_ = 1;
+	start_turn_ = status_.turn();
 	first_player_ = lexical_cast_default<unsigned int,std::string>(level_["playing_team"], 0);
 	skip_replay_ = skip_replay;
 	browse_ = false;
@@ -302,7 +303,7 @@ void play_controller::init_side(const unsigned int team_index){
 		gamestate_.set_variable("side_number",player_number_str.str());
 
 		//fire side turn event only if real side change occurs not counting changes from void to a side
-		if (team_index != first_player_ || current_turn_ > 1) {
+		if (team_index != first_player_ || status_.turn() > start_turn_) {
 			game_events::fire("side turn");
 		}
 
@@ -310,7 +311,7 @@ void play_controller::init_side(const unsigned int team_index){
 		//player should get income now. healing/income happen if it's not the first
 		//turn of processing, or if we are loading a game, and this is not the
 		//player it started with.
-		const bool turn_refresh = current_turn_ > 1 || loading_game_ && team_index != first_player_;
+		const bool turn_refresh = status_.turn() > start_turn_ || loading_game_ && team_index != first_player_;
 
 		if(turn_refresh) {
 			for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {

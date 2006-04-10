@@ -144,6 +144,16 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		replaying_ = (recorder.at_end() == false);
 
 		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
+
+		// Initialize countdown clock.
+		std::vector<team>::iterator t;
+		for(t = teams_.begin(); t != teams_.end(); ++t) {
+			std::string countd_enabled = level_["mp_countdown"].c_str();
+			if ( countd_enabled == "yes" && !loading_game_ ){
+				t->set_countdown_time(1000 * lexical_cast_default<int>(level_["mp_countdown_init_time"],0));
+			}
+		}
+
 		for(; ; first_player_ = 0) {
 			play_turn();
 		} //end for loop
@@ -307,8 +317,8 @@ void playsingle_controller::play_turn(){
 	gui_->invalidate_game_status();
 	events::raise_draw_event();
 
-	LOG_NG << "turn: " << current_turn_ << "\n";
-	current_turn_++;
+	LOG_NG << "turn: " << status_.turn() << "\n";
+	//current_turn_++;
 
 	for(player_number_ = first_player_ + 1; player_number_ <= teams_.size(); player_number_++) {
 		init_side(player_number_ - 1);

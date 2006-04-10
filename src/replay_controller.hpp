@@ -73,6 +73,7 @@ private:
 	gamestatus status_start_;
 	unit_map units_start_;
 
+	unsigned int current_turn_;
 	int delay_;
 	bool is_playing_;
 };
