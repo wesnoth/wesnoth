@@ -262,7 +262,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description,
 			sp["name"] = t_string("berserk","wesnoth");
 			sp["description"] = t_string("Berserk:\nWhether used offensively or defensively, this attack presses the engagement until one of the combatants is slain, or 30 rounds of attacks have occurred.","wesnoth");
 			sp["cumulative"] = "no";
-			sp["rounds"] = "30";
+			sp["value"] = "30";
 		} else if(set_special == "backstab") {
 			config& sp = new_specials.add_child("damage");
 			sp["name"] = t_string("backstab","wesnoth");

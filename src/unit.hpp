@@ -21,25 +21,6 @@
 #include "image.hpp"
 
 
-/*
- *	TODO:
- *	1. Add terrain and ToD filtering. DONE
- *	2. Implement abilities and weapon specials. DONE
- *	3. Write backwards compatibility. SHOULD WORK
- *	4. Fix bugs. 
- *	5. Goto step 4.
- *
- * 
- * Known Issues:
- * 1. The wesnoth help is _seriously_ messed up. FIXED
- * 2. Translations probably don't work.
- * 3. The modification 'set_special' doesn't work. FIXED
- * 4. [damage] and [backstab] should be merged. DONE
- * 
- */
-
-
-
 
 
 class unit;
@@ -322,6 +303,7 @@ class unit
 		
 		int movement_;
 		int max_movement_, max_movement_b_;
+		mutable std::map<gamemap::TERRAIN,int> movement_costs_; // movement cost cache
 		bool hold_position_;
 		bool end_turn_;
 		bool resting_;
@@ -415,7 +397,7 @@ unit_map::const_iterator find_visible_unit(const unit_map& units,
 
 struct team_data
 {
-	int units, upkeep, villages, expenses, net_income, gold;
+	int units, upkeep, villages, net_income, gold;
 };
 
 team_data calculate_team_data(const class team& tm, int side, const unit_map& units);

@@ -80,7 +80,7 @@ unit::unit(const unit& u)
 // Initilizes a unit from a config
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, 
      const gamestatus* game_status, const std::vector<team>* teams,const config& cfg) : facing_(gamemap::location::NORTH_EAST),
-	 movement_(0),resting_(false), hold_position_(false),anim_(NULL),
+	 movement_(0),resting_(false), hold_position_(false),anim_(NULL),upkeep_(0),
 	 gamedata_(gamedata),units_(unitmap),map_(map),
 	                      gamestatus_(game_status),teams_(teams)
 {
@@ -95,7 +95,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 }
 
 unit::unit(const game_data& gamedata,const config& cfg) : gamedata_(&gamedata),units_(NULL),map_(NULL),
-	                      gamestatus_(NULL),facing_(gamemap::location::NORTH_EAST),
+	                      gamestatus_(NULL),facing_(gamemap::location::NORTH_EAST),upkeep_(0),
 	                      movement_(0),resting_(false), hold_position_(false),anim_(NULL)
 {
 	read(cfg);
@@ -886,7 +886,6 @@ void unit::read(const config& cfg)
 	alpha_ = lexical_cast_default<fixed_t>(cfg["alpha"]);
 	
 	level_ = lexical_cast_default<int>(cfg["level"]);
-	upkeep_ = lexical_cast_default<int>(cfg["upkeep"],level_);
 	
 	facing_ = gamemap::location::parse_direction(cfg["facing"]);
 	if(facing_ == gamemap::location::NDIRECTIONS) facing_ = gamemap::location::NORTH_EAST;
@@ -935,6 +934,13 @@ void unit::read(const config& cfg)
 		id_ = cfg["type"];
 	} else {
 		id_ = cfg["id"];
+	}
+	if(cfg["upkeep"] == "full") {
+		upkeep_ = level_;
+	} else if (cfg["upkeep"] == "loyal") {
+		upkeep_ = 0;
+	} else {
+		upkeep_ = 0;
 	}
 	if(cfg["max_hitpoints"] != "") {
 		max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"]);
@@ -1715,10 +1721,10 @@ int unit::movement_cost(gamemap::TERRAIN terrain, int recurse_count) const
 	const int impassable = 10000000;
 	int slowed = (get_state("slowed")=="yes") ? 2 : 1;
 	
-//	const std::map<gamemap::TERRAIN,int>::const_iterator i = movement_costs_.find(terrain);
-//	if(i != movement_costs_.end()) {
-//		return i->second;
-//	}
+	const std::map<gamemap::TERRAIN,int>::const_iterator i = movement_costs_.find(terrain);
+	if(i != movement_costs_.end()) {
+		return i->second * slowed;
+	}
 	
 	wassert(map_ != NULL);
 	//if this is an alias, then select the best of all underlying terrains
@@ -1746,7 +1752,7 @@ int unit::movement_cost(gamemap::TERRAIN terrain, int recurse_count) const
 			}
 		}
 
-//		movement_costs_.insert(std::pair<gamemap::TERRAIN,int>(terrain,ret_value));
+		movement_costs_.insert(std::pair<gamemap::TERRAIN,int>(terrain,ret_value));
 
 		return ret_value*slowed;
 	}
@@ -1774,7 +1780,7 @@ int unit::movement_cost(gamemap::TERRAIN terrain, int recurse_count) const
 		res = impassable;
 	}
 
-//	movement_costs_.insert(std::pair<gamemap::TERRAIN,int>(terrain,res));
+	movement_costs_.insert(std::pair<gamemap::TERRAIN,int>(terrain,res));
 
 	return res*slowed;
 }
@@ -2720,8 +2726,7 @@ team_data calculate_team_data(const team& tm, int side, const unit_map& units)
 	res.units = team_units(units,side);
 	res.upkeep = team_upkeep(units,side);
 	res.villages = tm.villages().size();
-	res.expenses = maximum<int>(0,res.upkeep - res.villages);
-	res.net_income = tm.income() - res.expenses;
+	res.net_income = tm.income() - res.upkeep;
 	res.gold = tm.gold();
 	return res;
 }
