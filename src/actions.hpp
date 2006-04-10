@@ -148,8 +148,11 @@ public:
 				   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
 				   const attack_type& attacker_weapon);
 	
+	battle_context(const battle_context &other);
 	~battle_context() { delete attacker_stats_; delete defender_stats_; }
-	
+
+	battle_context& operator=(const battle_context &other);
+
 	// This method returns the statistics of the attacker.
 	const unit_stats& get_attacker_stats() { return *attacker_stats_; }
 	
@@ -157,9 +160,6 @@ public:
 	const unit_stats& get_defender_stats() { return *defender_stats_; }
 
 private:
-	// Copy constructor and operator=() disabled. Don't copy battle_context, copy unit_stats instead.
-	battle_context(const battle_context &) {}
-	battle_context& operator=(const battle_context &) { return *this; }
 
 	// This method rates the defender weapon specified in 'd_stats', possibly taking into
 	// account the statistics of the attacker in the process ('a_stats'). The rating

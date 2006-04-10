@@ -836,6 +836,23 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	}
 }
 
+battle_context::battle_context(const battle_context &other)
+	: attacker_stats_(NULL), defender_stats_(NULL)
+{
+	*this = other;
+}
+
+battle_context& battle_context::operator=(const battle_context &other)
+{
+	if (&other != this) {
+		delete attacker_stats_;
+		delete defender_stats_;
+		attacker_stats_ = new unit_stats(*other.attacker_stats_);
+		defender_stats_ = new unit_stats(*other.defender_stats_);
+	}
+	return *this;
+}
+
 battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u_loc,
 									   const attack_type *u_weapon, bool attacking,
 									   const unit &opp, const gamemap::location& opp_loc,
