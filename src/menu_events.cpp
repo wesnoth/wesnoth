@@ -1226,6 +1226,13 @@ namespace events{
 
 		static const std::string whisper = "/msg ";
 		static const std::string ignore = "/ignore ";
+		static const std::string help = "/help";
+
+		static const std::string add = "add";
+		static const std::string remove = "remove";
+		static const std::string list = "list";
+		static const std::string clear = "clear";
+		
 		if (is_observer() && message.size() >= whisper.size() &&
 		std::equal(whisper.begin(),whisper.end(),message.begin())) {
 			
@@ -1246,22 +1253,22 @@ namespace events{
 			network::send_data(data);
 			
 		} else if (message.size() >= ignore.size() && std::equal(ignore.begin(),ignore.end(), message.begin())) {
-			
+
 			static const std::string add = "add";
 			static const std::string remove = "remove";
 			static const std::string list = "list";
 			static const std::string clear = "clear";
-				
+
 			int pos;
 			pos = message.find(" ",ignore.size());
-				
+
 			const std::string arg = message.substr((pos+1), message.size());
-				
+
 			const std::string command = message.substr(ignore.size(),
-				(message.size()-arg.size()-ignore.size()-1));
-				
+					(message.size()-arg.size()-ignore.size()-1));
+
 			config* cignore;
-				
+
 			if (std::equal(add.begin(),add.end(),command.begin())){
 				if (!preferences::get_prefs()->child("ignore")){
 					preferences::get_prefs()->add_child("ignore");
@@ -1269,7 +1276,7 @@ namespace events{
 				cignore = preferences::get_prefs()->child("ignore");
 				(*cignore)[arg] = "yes";
 				gui_->add_chat_message("ignores list",0, "Added "+arg+" to ignore list.",display::MESSAGE_PRIVATE);
-					
+
 			} else if (std::equal(remove.begin(),remove.end(),command.begin())){
 				if ((cignore = preferences::get_prefs()->child("ignore"))){
 					(*cignore)[arg] = "no";

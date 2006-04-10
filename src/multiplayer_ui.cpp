@@ -269,6 +269,12 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 		static const std::string query = "/query ";
 		static const std::string whisper = "/msg ";
 		static const std::string ignore = "/ignore ";
+		static const std::string help = "/help";
+		
+		static const std::string add = "add";
+		static const std::string remove = "remove";
+		static const std::string list = "list";
+		static const std::string clear = "clear";
 		
 		config data;
 
@@ -298,13 +304,55 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 			
 			chat_.update_textbox(chat_textbox_);
 			
+		} else if (text.size() >= help.size() && std::equal(help.begin(), help.end(), text.begin())) {
+			
+			bool have_command;
+			bool have_subcommand;
+			
+			unsigned int pos;
+			pos = text.find(" ", help.size()+1);
+						
+			std::string subcommand;
+			std::string command;
+			
+			have_subcommand = pos != std::string::npos;
+			have_command = (help.size()+1 < text.size());
+			
+			if (have_subcommand) subcommand = text.substr(pos+1);
+			if (have_command) command = text.substr(help.size()+1,text.size()-help.size()+1-(have_subcommand? subcommand.size()+3 : 0));
+			
+			if (have_command) {
+				if (command == "whisper") {
+					chat_.add_message("help","Sends private message. You can't send messages to players that control any side in game. Usage: /whisper [nick] [message]");
+				} else if (command == "ignore") {
+					if (have_subcommand) {
+						if (subcommand == "add"){
+							chat_.add_message("help","Add player to your ignore list.");
+						} else if (subcommand == "remove") {
+							chat_.add_message("help","Remove player from your ignore list.");
+						} else if (subcommand == "clear") {
+							chat_.add_message("help","Clear your ignore list.");
+						} else if (subcommand == "list") {
+							chat_.add_message("help","Show your ignore list");
+						} else {
+							chat_.add_message("help","Ignore messages from players on this list. Usage: /ignore [subcommand] [argument](optional) Subcommands: add remove list clear. Type /help ignore [subcommand] for more info.");
+						}
+					} else {
+							chat_.add_message("help","Uknown subcommand");
+					}
+				} else {
+					chat_.add_message("help","Unknown command");
+				}
+			} else {
+				chat_.add_message("help","Commands: whisper ignore. Type /help [command] for more help.");
+			}
+			
+			chat_.update_textbox(chat_textbox_);
+			
+	
 		} else if (text.size() >= ignore.size() && std::equal(ignore.begin(),ignore.end(),text.begin())) {
 		
-			static const std::string add = "add";
-			static const std::string remove = "remove";
-			static const std::string list = "list";
-			static const std::string clear = "clear";
-			
+				
 			int pos;
 			pos = text.find(" ",ignore.size());
 			
