@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-02 13:13+0200\n"
+"POT-Creation-Date: 2006-04-10 08:17+0200\n"
 "PO-Revision-Date: 2006-04-04 15:08+0900\n"
 "Last-Translator: Claus Aranha <caranha AT gmail DOT com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -43,12 +43,18 @@ msgstr ""
 "Uma unidade envenenada não pode ser curada de seu veneno por uma unidade com "
 "tratar, e deve procurar o cuidade de uma vila, ou de uma unidade curandeira."
 
-#: data/abilities.cfg:26
+#: data/abilities.cfg:22
+msgid ""
+" These units are capable of basic healing, though they can only delay the "
+"effects of poison, not cure them entirely."
+msgstr ""
+
+#: data/abilities.cfg:29
 #, fuzzy
 msgid "heals +8"
 msgstr "tratamento"
 
-#: data/abilities.cfg:31
+#: data/abilities.cfg:34
 #, fuzzy
 msgid ""
 "Heals +8:\n"
@@ -69,11 +75,11 @@ msgstr ""
 "Uma unidade envenenada não pode ser curada de seu veneno por uma unidade com "
 "tratar, e deve procurar o cuidade de uma vila, ou de uma unidade curandeira."
 
-#: data/abilities.cfg:40
+#: data/abilities.cfg:43
 msgid "cures"
 msgstr "cura"
 
-#: data/abilities.cfg:42
+#: data/abilities.cfg:45
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
@@ -81,10 +87,16 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:55
+msgid ""
+" These units are capable of healing units around them, and curing them of "
+"poison."
+msgstr ""
+
+#: data/abilities.cfg:61
 msgid "regenerates"
 msgstr "regenera"
 
-#: data/abilities.cfg:57
+#: data/abilities.cfg:63
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
@@ -94,11 +106,17 @@ msgstr ""
 "A unidade irá se curar 8HO por turno. Se envenenada, removerá o veneno ao "
 "invés de se curar."
 
-#: data/abilities.cfg:72
+#: data/abilities.cfg:70
+msgid ""
+" These units regenerate, which allows them to heal as though always "
+"stationed in a village."
+msgstr ""
+
+#: data/abilities.cfg:81
 msgid "steadfast"
 msgstr "posição defensiva"
 
-#: data/abilities.cfg:74
+#: data/abilities.cfg:83
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
@@ -108,14 +126,20 @@ msgstr ""
 "A resistência desta unidade é dobrada, até um máximo de 50%, quando estiver "
 "defendendo. Vulnerabilidades não são afetadas."
 
-#: data/abilities.cfg:85 data/abilities.cfg:104 data/abilities.cfg:135
-#: data/abilities.cfg:178 data/abilities.cfg:233 src/actions.cpp:654
-#: src/actions.cpp:820
+#: data/abilities.cfg:90
+msgid ""
+" The steadiness of this unit reduces damage from some attacks, but only "
+"while defending."
+msgstr ""
+
+#: data/abilities.cfg:97 data/abilities.cfg:116 data/abilities.cfg:147
+#: data/abilities.cfg:190 data/abilities.cfg:245 src/actions.cpp:539
+#: src/actions.cpp:672
 msgid "leadership"
 msgstr "liderança"
 
-#: data/abilities.cfg:89 data/abilities.cfg:108 data/abilities.cfg:139
-#: data/abilities.cfg:182 data/abilities.cfg:237
+#: data/abilities.cfg:101 data/abilities.cfg:120 data/abilities.cfg:151
+#: data/abilities.cfg:194 data/abilities.cfg:249
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -134,11 +158,25 @@ msgstr ""
 "adjacente a uma unidade com liderança entra em combate, seus ataques fazem "
 "25% vezes a diferênça de nível a mais de dano."
 
-#: data/abilities.cfg:298
+#: data/abilities.cfg:309
+#, fuzzy
+msgid ""
+" The leadership of this unit enables friendly units next to it to deal more "
+"damage in combat, though this only applies to units of lower level."
+msgstr ""
+"Treinados com espadas e bestas, tenentes lideram pequenos grupos de soldados "
+"humanos, coordenando seus ataques e aumentando a capacidade de luta daqueles "
+"abaixo deles na hierarquia militar.\n"
+"\n"
+"Nota: A liderança do tenente permite que unidades aliadas adjacentes a ele "
+"causem mais dano em combate, apesar de que isso apenas se aplica a unidades "
+"de nível mais baixo."
+
+#: data/abilities.cfg:313
 msgid "skirmisher"
 msgstr "combatente"
 
-#: data/abilities.cfg:300
+#: data/abilities.cfg:315
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -150,11 +188,17 @@ msgstr ""
 "Zonas de Controle inimigas. (Excessão: se você PARAR em uma zona de controle "
 "inimiga, seu movimento restante será zerado, mesmo que seja um combatente.) "
 
-#: data/abilities.cfg:309
+#: data/abilities.cfg:321
+msgid ""
+" Their skill at skirmishing allows these units to ignore enemy units' zones "
+"of control and thus move unhindered around them."
+msgstr ""
+
+#: data/abilities.cfg:328
 msgid "illuminates"
 msgstr "ilumina"
 
-#: data/abilities.cfg:313
+#: data/abilities.cfg:332
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -171,11 +215,17 @@ msgstr ""
 "entardecer caso seja noite, e como se fosse dia caso seja o amanhecer ou "
 "entardecer."
 
-#: data/abilities.cfg:320
+#: data/abilities.cfg:338
+msgid ""
+" They also have the power of Illumination, which increases the lighting "
+"level in the area adjacent to them."
+msgstr ""
+
+#: data/abilities.cfg:342
 msgid "teleport"
 msgstr "teleporte"
 
-#: data/abilities.cfg:322
+#: data/abilities.cfg:344
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -185,11 +235,17 @@ msgstr ""
 "Esta unidade pode teleportar entre quaisquer duas vilas aliadas "
 "instantaneamente."
 
-#: data/abilities.cfg:328
+#: data/abilities.cfg:349
+msgid ""
+" They can also teleport between any two villages instantly, though the "
+"player must control both, and the destination village must be unoccupied."
+msgstr ""
+
+#: data/abilities.cfg:353
 msgid "ambush"
 msgstr "emboscada"
 
-#: data/abilities.cfg:332
+#: data/abilities.cfg:357
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -206,11 +262,17 @@ msgstr ""
 "floresta, exceto por qualquer turno imediatamente após esta unidade ter "
 "atacado, ou se houverem unidades inimigas próximas à esta unidade."
 
-#: data/abilities.cfg:344
+#: data/abilities.cfg:368
+msgid ""
+" In woodlands, their ambush skill renders them invisible to an enemy unless "
+"they are immediately adjacent, or have revealed themselves by attacking."
+msgstr ""
+
+#: data/abilities.cfg:372
 msgid "nightstalk"
 msgstr "Caçador noturno"
 
-#: data/abilities.cfg:348
+#: data/abilities.cfg:376
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -226,11 +288,15 @@ msgstr ""
 "qualquer turno imediatamente após esta unidade ter atacado, ou se houverem "
 "unidades inimigas próximas à esta unidade."
 
-#: data/abilities.cfg:360
+#: data/abilities.cfg:387
+msgid " They are able to hide at night, leaving no trace of their presence."
+msgstr ""
+
+#: data/abilities.cfg:391
 msgid "submerge"
 msgstr "submergir"
 
-#: data/abilities.cfg:364
+#: data/abilities.cfg:395
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -247,12 +313,17 @@ msgstr ""
 "águas profundas, exceto nos turnos imediatamente após esta unidade ter "
 "atacado, ou se houverem unidades inimigas próximas à esta unidade."
 
-#: data/abilities.cfg:380 data/units/Dwarvish_Berserker.cfg:37
-#: data/units/Dwarvish_Ulfserker.cfg:36
+#: data/abilities.cfg:406
+msgid ""
+" These units can move unseen in deep water, requiring no air from the "
+"surface."
+msgstr ""
+
+#: data/abilities.cfg:410
 msgid "berserk"
 msgstr "fúria"
 
-#: data/abilities.cfg:382
+#: data/abilities.cfg:412
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -263,14 +334,17 @@ msgstr ""
 "combate até que um dos combatentes morra, ou 30 rodadas de combate tenham se "
 "passado."
 
-#: data/abilities.cfg:390 data/units/Human_Outlaw_Assassin.cfg:52
-#: data/units/Human_Outlaw_Rogue.cfg:38 data/units/Human_Outlaw_Thief.cfg:90
-#: data/units/Undead_Spirit_Nightgaunt.cfg:65
-#: data/units/Undead_Spirit_Shadow.cfg:39
+#: data/abilities.cfg:419
+msgid ""
+" Whenever their berserk attack is used, these units continue to push the "
+"attack until either they or their enemy lies dead."
+msgstr ""
+
+#: data/abilities.cfg:423
 msgid "backstab"
 msgstr "golpe por trás"
 
-#: data/abilities.cfg:392
+#: data/abilities.cfg:425
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -282,12 +356,11 @@ msgstr ""
 "lado oposto deste, e se essa unidade não estiver incapacitada (p.ex. "
 "transformada em pedra)."
 
-#: data/abilities.cfg:402 data/abilities.cfg:410
-#: data/units/Undead_Corpse_Walking.cfg:52
+#: data/abilities.cfg:435 data/abilities.cfg:443
 msgid "plague"
 msgstr "peste"
 
-#: data/abilities.cfg:404 data/abilities.cfg:412
+#: data/abilities.cfg:437 data/abilities.cfg:445
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -299,12 +372,12 @@ msgstr ""
 "com uma unidade idêntica e do mesmo time que a unidade que a atacou com a "
 "praga(isto não funciona sobre Mortos-Vivos ou unidades em vilas)."
 
-#: data/abilities.cfg:418
+#: data/abilities.cfg:451
 #, fuzzy
 msgid "slows"
 msgstr "lentidão"
 
-#: data/abilities.cfg:420
+#: data/abilities.cfg:453
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
@@ -315,12 +388,12 @@ msgstr ""
 "ataques por dois, e unidades lentas se movem à metade da velocidade normal "
 "(arredondado para cima)."
 
-#: data/abilities.cfg:427
+#: data/abilities.cfg:460
 #, fuzzy
 msgid "stones"
 msgstr "petrefica"
 
-#: data/abilities.cfg:429
+#: data/abilities.cfg:462
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -330,13 +403,11 @@ msgstr ""
 "Este ataque transforma o alvo em pedra. Unidades petreficadas não podem se "
 "mover ou atacar."
 
-#: data/abilities.cfg:435
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:86
-#: data/units/Elvish_Marksman.cfg:78 data/units/Elvish_Sharpshooter.cfg:77
+#: data/abilities.cfg:468
 msgid "marksman"
 msgstr "atirador"
 
-#: data/abilities.cfg:437
+#: data/abilities.cfg:470
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -345,46 +416,11 @@ msgstr ""
 "Quando usado ofensivamente, este ataque sempre tem pelo menos 60% de chance "
 "de acertar."
 
-#: data/abilities.cfg:446 data/campaigns/Eastern_Invasion/units/Lord.cfg:228
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:151
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:219
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:62
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:63
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:62
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:51
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:125
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:229
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:105
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:29
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:45
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:106
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:95
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:81
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:125
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:57
-#: data/tutorial/units/Commander.cfg:191 data/tutorial/units/Elder_Mage.cfg:48
-#: data/tutorial/units/Fighter.cfg:94 data/tutorial/units/Fighteress.cfg:103
-#: data/tutorial/units/Lord.cfg:228 data/tutorial/units/Quintain.cfg:23
-#: data/units/Dwarvish_Runemaster.cfg:80 data/units/Elvish_Druid.cfg:85
-#: data/units/Elvish_Enchantress.cfg:147 data/units/Elvish_Shyde.cfg:32
-#: data/units/Elvish_Shyde.cfg:86 data/units/Elvish_Sorceress.cfg:152
-#: data/units/Elvish_Sylph.cfg:27 data/units/Elvish_Sylph.cfg:85
-#: data/units/Human_Mage.cfg:95 data/units/Human_Mage_Arch.cfg:95
-#: data/units/Human_Mage_Great.cfg:83 data/units/Human_Mage_Red.cfg:95
-#: data/units/Human_Mage_Silver.cfg:123 data/units/Human_Mage_White.cfg:93
-#: data/units/Human_Mage_of_Light.cfg:73 data/units/Mermaid_Diviner.cfg:60
-#: data/units/Mermaid_Enchantress.cfg:50 data/units/Mermaid_Initiate.cfg:52
-#: data/units/Mermaid_Priestess.cfg:54 data/units/Mermaid_Siren.cfg:38
-#: data/units/Mermaid_Siren.cfg:82 data/units/Saurian_Augur.cfg:54
-#: data/units/Saurian_Oracle.cfg:54 data/units/Saurian_Soothsayer.cfg:55
-#: data/units/Undead_Necro_Ancient_Lich.cfg:72
-#: data/units/Undead_Necro_Dark_Adept.cfg:34
-#: data/units/Undead_Necro_Dark_Sorcerer.cfg:58
-#: data/units/Undead_Necro_Lich.cfg:54 data/units/Undead_Necromancer.cfg:72
+#: data/abilities.cfg:479
 msgid "magical"
 msgstr "mágico"
 
-#: data/abilities.cfg:448
+#: data/abilities.cfg:481
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -392,11 +428,17 @@ msgstr ""
 "Mágico:\n"
 "Este ataque sempre tem 70% de chance de acertar."
 
-#: data/abilities.cfg:456 data/units/Monster_Cuttle_Fish.cfg:42
+#: data/abilities.cfg:488
+msgid ""
+" The ranged attacks of this unit are magical, and always have a high chance "
+"of hitting an opponent."
+msgstr ""
+
+#: data/abilities.cfg:492
 msgid "swarm"
 msgstr "enxame"
 
-#: data/abilities.cfg:458
+#: data/abilities.cfg:494
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -410,17 +452,11 @@ msgstr ""
 "relação com o máximo. Por exemplo, uma unidade com 3/4 de seu HP máximo terá "
 "3/4 do número total de golpes."
 
-#: data/abilities.cfg:464
-#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:28
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:28
-#: data/campaigns/The_South_Guard/units/Chocobone.cfg:28
-#: data/units/Human_Horse_Grand_Knight.cfg:65
-#: data/units/Human_Horse_Knight.cfg:64 data/units/Human_Horse_Lancer.cfg:27
-#: data/units/Human_Horse_Paladin.cfg:71 data/units/Human_Horseman.cfg:26
+#: data/abilities.cfg:500
 msgid "charge"
 msgstr "carga"
 
-#: data/abilities.cfg:466
+#: data/abilities.cfg:502
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -430,12 +466,12 @@ msgstr ""
 "Este ataque causa o dobro de dano ao alvo. Ele também faz com que esta "
 "unidade tome o dobro de dano do contra ataque do alvo."
 
-#: data/abilities.cfg:476
+#: data/abilities.cfg:512
 #, fuzzy
 msgid "drains"
 msgstr "dreno"
 
-#: data/abilities.cfg:478
+#: data/abilities.cfg:514
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -446,16 +482,11 @@ msgstr ""
 "pontos de vida igual a metade do dano que ela causar (arredondado para "
 "baixo)."
 
-#: data/abilities.cfg:484 data/units/Drake_Slasher.cfg:93
-#: data/units/Drake_Warden.cfg:99 data/units/Goblin_Impaler.cfg:35
-#: data/units/Human_Loyalist_Halberdier.cfg:44
-#: data/units/Human_Loyalist_Javelineer.cfg:38
-#: data/units/Human_Loyalist_Pikeman.cfg:65
-#: data/units/Human_Loyalist_Spearman.cfg:68
+#: data/abilities.cfg:520
 msgid "firststrike"
 msgstr "iniciativa"
 
-#: data/abilities.cfg:486
+#: data/abilities.cfg:522
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -464,16 +495,11 @@ msgstr ""
 "Esta unidade sempre ataca primeiro com este ataque, mesmo que ela esteja se "
 "defendendo."
 
-#: data/abilities.cfg:492 data/units/Goblin_Direwolf_Rider.cfg:80
-#: data/units/Human_Outlaw_Assassin.cfg:94
-#: data/units/Monster_Cave_Spider.cfg:45 data/units/Monster_Cuttle_Fish.cfg:91
-#: data/units/Monster_Giant_Scorpion.cfg:31 data/units/Orcish_Assassin.cfg:62
-#: data/units/Orcish_Slayer.cfg:83 data/units/Undead_Corpse_Ghoul.cfg:45
-#: data/units/Undead_Corpse_Necrophage.cfg:45
+#: data/abilities.cfg:528
 msgid "poison"
 msgstr "veneno"
 
-#: data/abilities.cfg:494
+#: data/abilities.cfg:530
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -491,174 +517,174 @@ msgstr ""
 msgid "Artwork and Graphics Designers"
 msgstr "Designers de artes e gráficos"
 
-#: data/about.cfg:51
+#: data/about.cfg:52
 msgid "Music"
 msgstr "Música"
 
-#: data/about.cfg:62
+#: data/about.cfg:63
 msgid "Scenario Designers"
 msgstr "Designers de cenário"
 
-#: data/about.cfg:79
+#: data/about.cfg:80
 msgid "Multiplayer Developers"
 msgstr "Desenvolvedores para Multijogador"
 
-#: data/about.cfg:89
+#: data/about.cfg:90
 msgid "Multiplayer Maps"
 msgstr "Mapas Multijogador"
 
-#: data/about.cfg:99
+#: data/about.cfg:100
 msgid "Packagers"
 msgstr "Criadores de pacotes"
 
-#: data/about.cfg:114 data/campaigns/The_South_Guard.cfg:39
+#: data/about.cfg:115 data/campaigns/The_South_Guard.cfg:39
 #: data/campaigns/Two_Brothers.cfg:36
 #: data/campaigns/Under_the_Burning_Suns.cfg:47
 msgid "Miscellaneous"
 msgstr "Miscelânea"
 
-#: data/about.cfg:123
+#: data/about.cfg:124
 msgid "Internationalization Managers"
 msgstr "Gerentes de Internacionalização"
 
-#: data/about.cfg:134
+#: data/about.cfg:135
 msgid "Afrikaans Translation"
 msgstr "Tradução para o Afrikaans"
 
-#: data/about.cfg:144
+#: data/about.cfg:145
 msgid "Basque Translation"
 msgstr "Tradução para o Basco"
 
-#: data/about.cfg:153
+#: data/about.cfg:154
 msgid "Bulgarian Translation"
 msgstr "Tradução para o Búlgaro"
 
-#: data/about.cfg:161
+#: data/about.cfg:162
 msgid "Catalan Translation"
 msgstr "Tradução para o Catalão"
 
-#: data/about.cfg:175
+#: data/about.cfg:176
 msgid "Chinese Translation"
 msgstr "Tradução para o Chinês"
 
-#: data/about.cfg:182
+#: data/about.cfg:183
 msgid "Czech Translation"
 msgstr "Tradução para o Checo"
 
-#: data/about.cfg:201
+#: data/about.cfg:202
 msgid "Danish Translation"
 msgstr "Tradução para o Dinamarquês"
 
-#: data/about.cfg:212
+#: data/about.cfg:213
 msgid "Dutch Translation"
 msgstr "Tradução para o Holandês"
 
-#: data/about.cfg:224
+#: data/about.cfg:225
 msgid "English (GB) Translation"
 msgstr "Tradução para o Inglês"
 
-#: data/about.cfg:231
+#: data/about.cfg:232
 msgid "Esperanto Translation"
 msgstr "Tradução para o Esperanto"
 
-#: data/about.cfg:239
+#: data/about.cfg:240
 msgid "Estonian Translation"
 msgstr "Tradução para o Estonês"
 
-#: data/about.cfg:246
+#: data/about.cfg:247
 msgid "Finnish Translation"
 msgstr "Tradução para o Finlandês"
 
-#: data/about.cfg:256
+#: data/about.cfg:257
 msgid "French Translation"
 msgstr "Tradução para o Francês"
 
-#: data/about.cfg:280
+#: data/about.cfg:281
 msgid "German Translation"
 msgstr "Tradução para o Alemão"
 
-#: data/about.cfg:297
+#: data/about.cfg:298
 msgid "Greek Translation"
 msgstr "Tradução para o Grego"
 
-#: data/about.cfg:307
+#: data/about.cfg:308
 msgid "Hebrew Translation"
 msgstr "Tradução para o Hebreu"
 
-#: data/about.cfg:315
+#: data/about.cfg:316
 msgid "Hungarian Translation"
 msgstr "Tradução para o Húngaro"
 
-#: data/about.cfg:332
+#: data/about.cfg:333
 msgid "Indonesian Translation"
 msgstr "Tradução para o Estonês"
 
-#: data/about.cfg:339
+#: data/about.cfg:340
 msgid "Italian Translation"
 msgstr "Tradução para o Italiano"
 
-#: data/about.cfg:354
+#: data/about.cfg:355
 msgid "Japanese Translation"
 msgstr "Tradução para o Japonês"
 
-#: data/about.cfg:363
+#: data/about.cfg:364
 #, fuzzy
 msgid "Korean Translation"
 msgstr "Tradução para o Norueguês"
 
-#: data/about.cfg:370
+#: data/about.cfg:371
 msgid "Latin Translation"
 msgstr "Tradução para o Latin"
 
-#: data/about.cfg:377
+#: data/about.cfg:378
 msgid "Norwegian Translation"
 msgstr "Tradução para o Norueguês"
 
-#: data/about.cfg:388
+#: data/about.cfg:389
 msgid "Polish Translation"
 msgstr "Tradução para o Polonês"
 
-#: data/about.cfg:403
+#: data/about.cfg:404
 msgid "Portuguese Translation"
 msgstr "Tradução para o Português"
 
-#: data/about.cfg:410
+#: data/about.cfg:411
 msgid "Portuguese (Brazil) Translation"
 msgstr "Tradução para o Português do Brasil"
 
-#: data/about.cfg:423
+#: data/about.cfg:424
 msgid "Russian Translation"
 msgstr "Tradução para o Russo"
 
-#: data/about.cfg:433
+#: data/about.cfg:434
 msgid "Serbian Translation"
 msgstr "Tradução para o Sérvio"
 
-#: data/about.cfg:440
+#: data/about.cfg:441
 msgid "Slovak Translation"
 msgstr "Tradução para o Eslovaco"
 
-#: data/about.cfg:447
+#: data/about.cfg:448
 msgid "Slovenian Translation"
 msgstr "Tradução para o Eslovênio"
 
-#: data/about.cfg:454
+#: data/about.cfg:455
 msgid "Spanish Translation"
 msgstr "Tradução para o Espanhol"
 
-#: data/about.cfg:467
+#: data/about.cfg:468
 msgid "Swedish Translation"
 msgstr "Tradução para o Sueco"
 
-#: data/about.cfg:479
+#: data/about.cfg:480
 msgid "Turkish Translation"
 msgstr "Tradução para o Turco"
 
-#: data/about.cfg:490 data/help.cfg:246
+#: data/about.cfg:491 data/help.cfg:246
 msgid "Contributors"
 msgstr "Contribuidores"
 
-#: data/about.cfg:504
+#: data/about.cfg:505
 msgid "Bots"
 msgstr "Robôs"
 
@@ -686,7 +712,7 @@ msgstr "Designer da Campanha"
 msgid "Horse Lord"
 msgstr "Lorde Cavaleiro"
 
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:17
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:16
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
@@ -697,32 +723,32 @@ msgstr ""
 "espada matará os adversários menores, e seu mangual cuidará daqueles que "
 "restarem."
 
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:21
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:39
-#: data/campaigns/Eastern_Invasion/units/Lord.cfg:195
+#: data/campaigns/Eastern_Invasion/units/Lord.cfg:191
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:34
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:34
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:35
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:116
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:26
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:180
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:101
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:23
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:22
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:22
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:87
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:34
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:104
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:24
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:160
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:98
+#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:21
+#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:20
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:20
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:82
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:39
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:196
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:33
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:82
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:21
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:192
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:32
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:77
+#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:20
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:44
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:30
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:45
-#: data/tutorial/units/Commander.cfg:51 data/tutorial/units/Commander.cfg:168
+#: data/tutorial/units/Commander.cfg:51 data/tutorial/units/Commander.cfg:158
 #: data/tutorial/units/Fighter.cfg:26 data/tutorial/units/Fighter.cfg:71
-#: data/tutorial/units/Fighteress.cfg:27 data/tutorial/units/Fighteress.cfg:76
-#: data/tutorial/units/Lord.cfg:39 data/tutorial/units/Lord.cfg:195
+#: data/tutorial/units/Fighteress.cfg:27 data/tutorial/units/Fighteress.cfg:75
+#: data/tutorial/units/Lord.cfg:39 data/tutorial/units/Lord.cfg:191
 #: data/units/Drake_Blademaster.cfg:73 data/units/Drake_Clasher.cfg:76
 #: data/units/Drake_Enforcer.cfg:69 data/units/Drake_Flameheart.cfg:79
 #: data/units/Drake_Flare.cfg:83 data/units/Drake_Gladiator.cfg:74
@@ -748,54 +774,54 @@ msgstr ""
 #: data/units/Human_Loyalist_Sergeant.cfg:34
 #: data/units/Human_Loyalist_Swordsman.cfg:32 data/units/Naga_Fighter.cfg:29
 #: data/units/Naga_Myrmidon.cfg:34 data/units/Naga_Warrior.cfg:33
-#: data/units/Orcish_Grunt.cfg:28 data/units/Orcish_Leader.cfg:30
-#: data/units/Undead_Skele_Deathblade.cfg:40
+#: data/units/Orcish_Grunt.cfg:28 data/units/Orcish_Leader.cfg:32
+#: data/units/Undead_Skele_Deathblade.cfg:42
 msgid "sword"
 msgstr "espada"
 
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:22
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:21
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:41
-#: data/campaigns/Eastern_Invasion/units/Lord.cfg:196
+#: data/campaigns/Eastern_Invasion/units/Lord.cfg:192
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:35
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:35
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:34
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:71
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:37
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:117
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:28
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:181
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:102
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:25
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:24
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:24
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:88
+#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:31
+#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:69
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:36
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:105
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:26
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:161
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:99
+#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:23
+#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:22
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:22
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:83
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:41
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:197
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:35
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:83
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:23
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:193
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:34
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:78
+#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:22
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:32
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:32
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:45
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:46
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:29
-#: data/tutorial/units/Commander.cfg:52 data/tutorial/units/Commander.cfg:169
+#: data/tutorial/units/Commander.cfg:52 data/tutorial/units/Commander.cfg:159
 #: data/tutorial/units/Fighter.cfg:27 data/tutorial/units/Fighter.cfg:72
-#: data/tutorial/units/Fighteress.cfg:28 data/tutorial/units/Fighteress.cfg:77
-#: data/tutorial/units/Lord.cfg:41 data/tutorial/units/Lord.cfg:196
+#: data/tutorial/units/Fighteress.cfg:28 data/tutorial/units/Fighteress.cfg:76
+#: data/tutorial/units/Lord.cfg:41 data/tutorial/units/Lord.cfg:192
 #: data/units/Drake_Blademaster.cfg:74 data/units/Drake_Burner.cfg:68
 #: data/units/Drake_Clasher.cfg:77 data/units/Drake_Enforcer.cfg:70
 #: data/units/Drake_Fighter.cfg:64 data/units/Drake_Fire.cfg:76
 #: data/units/Drake_Flameheart.cfg:80 data/units/Drake_Flare.cfg:84
 #: data/units/Drake_Gladiator.cfg:75 data/units/Drake_Inferno.cfg:77
 #: data/units/Drake_Slasher.cfg:75 data/units/Drake_Warden.cfg:81
-#: data/units/Drake_Warrior.cfg:78 data/units/Dwarvish_Berserker.cfg:36
+#: data/units/Drake_Warrior.cfg:78 data/units/Dwarvish_Berserker.cfg:38
 #: data/units/Dwarvish_Dragonguard.cfg:28 data/units/Dwarvish_Fighter.cfg:30
 #: data/units/Dwarvish_Lord.cfg:33 data/units/Dwarvish_Lord.cfg:84
 #: data/units/Dwarvish_Steelclad.cfg:33 data/units/Dwarvish_Thunderer.cfg:45
 #: data/units/Dwarvish_Thunderguard.cfg:31
-#: data/units/Dwarvish_Ulfserker.cfg:35 data/units/Elvish_Archer.cfg:24
+#: data/units/Dwarvish_Ulfserker.cfg:37 data/units/Elvish_Archer.cfg:24
 #: data/units/Elvish_Avenger.cfg:64 data/units/Elvish_Captain.cfg:46
 #: data/units/Elvish_Champion.cfg:25 data/units/Elvish_Fighter.cfg:24
 #: data/units/Elvish_Hero.cfg:24 data/units/Elvish_Marksman.cfg:51
@@ -816,7 +842,7 @@ msgstr "espada"
 #: data/units/Human_Loyalist_Fencer.cfg:82
 #: data/units/Human_Loyalist_General.cfg:50
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:44
-#: data/units/Human_Loyalist_Halberdier.cfg:83
+#: data/units/Human_Loyalist_Halberdier.cfg:85
 #: data/units/Human_Loyalist_Lieutenant.cfg:40
 #: data/units/Human_Loyalist_Longbowman.cfg:24
 #: data/units/Human_Loyalist_Master_Bowman.cfg:32
@@ -825,27 +851,27 @@ msgstr "espada"
 #: data/units/Human_Loyalist_Sergeant.cfg:36
 #: data/units/Human_Loyalist_Swordsman.cfg:34
 #: data/units/Human_Outlaw_Assassin.cfg:48
-#: data/units/Human_Outlaw_Assassin.cfg:92
+#: data/units/Human_Outlaw_Assassin.cfg:94
 #: data/units/Human_Outlaw_Poacher.cfg:37 data/units/Human_Outlaw_Rogue.cfg:34
-#: data/units/Human_Outlaw_Rogue.cfg:60 data/units/Human_Outlaw_Thief.cfg:86
+#: data/units/Human_Outlaw_Rogue.cfg:62 data/units/Human_Outlaw_Thief.cfg:86
 #: data/units/Human_Outlaw_Trapper.cfg:38 data/units/Merman_Triton.cfg:47
 #: data/units/Monster_Cave_Spider.cfg:41 data/units/Naga_Fighter.cfg:30
 #: data/units/Naga_Myrmidon.cfg:35 data/units/Naga_Warrior.cfg:34
 #: data/units/Ogre.cfg:21 data/units/Ogre_Young.cfg:20
 #: data/units/Orcish_Archer.cfg:29 data/units/Orcish_Assassin.cfg:31
 #: data/units/Orcish_Assassin.cfg:57 data/units/Orcish_Crossbowman.cfg:29
-#: data/units/Orcish_Grunt.cfg:30 data/units/Orcish_Leader.cfg:32
-#: data/units/Orcish_Ruler.cfg:32 data/units/Orcish_Slayer.cfg:32
+#: data/units/Orcish_Grunt.cfg:30 data/units/Orcish_Leader.cfg:34
+#: data/units/Orcish_Ruler.cfg:34 data/units/Orcish_Slayer.cfg:32
 #: data/units/Orcish_Slayer.cfg:78 data/units/Orcish_Slurbow.cfg:30
-#: data/units/Orcish_Sovereign.cfg:34 data/units/Orcish_Warlord.cfg:30
+#: data/units/Orcish_Sovereign.cfg:36 data/units/Orcish_Warlord.cfg:30
 #: data/units/Orcish_Warrior.cfg:29 data/units/Undead_Bat_Blood.cfg:48
 #: data/units/Undead_Bat_Vampire.cfg:72 data/units/Undead_Corpse_Ghoul.cfg:41
 #: data/units/Undead_Corpse_Necrophage.cfg:41
-#: data/units/Undead_Skele_Bone_Shooter.cfg:41
-#: data/units/Undead_Skele_Death_Knight.cfg:37
-#: data/units/Undead_Skele_Deathblade.cfg:41
-#: data/units/Undead_Skele_Draug.cfg:41
-#: data/units/Undead_Skele_Revenant.cfg:40 data/units/Undead_Skeleton.cfg:74
+#: data/units/Undead_Skele_Bone_Shooter.cfg:43
+#: data/units/Undead_Skele_Death_Knight.cfg:39
+#: data/units/Undead_Skele_Deathblade.cfg:43
+#: data/units/Undead_Skele_Draug.cfg:43
+#: data/units/Undead_Skele_Revenant.cfg:42 data/units/Undead_Skeleton.cfg:74
 #: data/units/Undead_Spirit_Nightgaunt.cfg:60
 #: data/units/Undead_Spirit_Shadow.cfg:34
 #: data/units/Undead_Spirit_Spectre.cfg:47
@@ -853,32 +879,32 @@ msgstr "espada"
 msgid "blade"
 msgstr "cortante"
 
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:59
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:58
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:54
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:54
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:26
 msgid "morning star"
 msgstr "mangual"
 
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:60
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:59
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:55
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:55
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:39
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:34
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:36
+#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:33
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:23
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:30
+#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:29
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:59
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:32
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:54
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:101
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:53
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:99
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:56
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:102
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:37
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:36
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:49
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:59
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:98
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:34
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:33
 #: data/tutorial/units/Elder_Mage.cfg:31 data/tutorial/units/Quintain.cfg:21
 #: data/tutorial/units/Youth.cfg:28 data/units/Boat_Galleon.cfg:21
 #: data/units/Drake_Enforcer.cfg:104 data/units/Drake_Gladiator.cfg:147
@@ -889,9 +915,9 @@ msgstr "mangual"
 #: data/units/Elvish_Druid.cfg:56 data/units/Elvish_Enchantress.cfg:24
 #: data/units/Elvish_Enchantress.cfg:91 data/units/Elvish_Shaman.cfg:31
 #: data/units/Elvish_Shaman.cfg:57 data/units/Elvish_Shyde.cfg:31
-#: data/units/Elvish_Shyde.cfg:57 data/units/Elvish_Sorceress.cfg:24
+#: data/units/Elvish_Shyde.cfg:59 data/units/Elvish_Sorceress.cfg:24
 #: data/units/Elvish_Sorceress.cfg:91 data/units/Elvish_Sylph.cfg:26
-#: data/units/Elvish_Sylph.cfg:52 data/units/Goblin_Pillager.cfg:76
+#: data/units/Elvish_Sylph.cfg:54 data/units/Goblin_Pillager.cfg:76
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:27
 #: data/units/Human_Loyalist_Iron_Mauler.cfg:30
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:28 data/units/Human_Mage.cfg:57
@@ -905,15 +931,15 @@ msgstr "mangual"
 #: data/units/Mermaid_Diviner.cfg:43 data/units/Mermaid_Enchantress.cfg:32
 #: data/units/Mermaid_Enchantress.cfg:48 data/units/Mermaid_Initiate.cfg:34
 #: data/units/Mermaid_Initiate.cfg:50 data/units/Mermaid_Priestess.cfg:37
-#: data/units/Mermaid_Siren.cfg:36 data/units/Mermaid_Siren.cfg:80
+#: data/units/Mermaid_Siren.cfg:36 data/units/Mermaid_Siren.cfg:82
 #: data/units/Merman_Entangler.cfg:32 data/units/Merman_Netcaster.cfg:31
-#: data/units/Monster_Cave_Spider.cfg:77 data/units/Monster_Cuttle_Fish.cfg:40
+#: data/units/Monster_Cave_Spider.cfg:79 data/units/Monster_Cuttle_Fish.cfg:40
 #: data/units/Monster_Giant_Mudcrawler.cfg:53
 #: data/units/Monster_Giant_Mudcrawler.cfg:89
-#: data/units/Monster_Giant_Scorpion.cfg:56
-#: data/units/Monster_Mudcrawler.cfg:52 data/units/Monster_Tentacle.cfg:64
-#: data/units/Monster_Yeti.cfg:40 data/units/Saurian_Augur.cfg:33
-#: data/units/Saurian_Oracle.cfg:33 data/units/Saurian_Soothsayer.cfg:34
+#: data/units/Monster_Giant_Scorpion.cfg:58
+#: data/units/Monster_Mudcrawler.cfg:52 data/units/Monster_Tentacle.cfg:66
+#: data/units/Monster_Yeti.cfg:40 data/units/Saurian_Augur.cfg:35
+#: data/units/Saurian_Oracle.cfg:35 data/units/Saurian_Soothsayer.cfg:36
 #: data/units/Troll.cfg:27 data/units/Troll_Great.cfg:28
 #: data/units/Troll_Hero.cfg:27 data/units/Troll_Rocklobber.cfg:29
 #: data/units/Troll_Rocklobber.cfg:54 data/units/Troll_Warrior.cfg:28
@@ -921,25 +947,25 @@ msgstr "mangual"
 #: data/units/Undead_Corpse_Walking.cfg:48
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:33
 #: data/units/Undead_Necromancer.cfg:34
-#: data/units/Undead_Skeleton_Archer.cfg:36 data/units/Wose.cfg:36
+#: data/units/Undead_Skeleton_Archer.cfg:38 data/units/Wose.cfg:36
 #: data/units/Wose_Ancient.cfg:30 data/units/Wose_Elder.cfg:29
 msgid "impact"
 msgstr "impacto"
 
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:3
-#: data/campaigns/Eastern_Invasion/units/Lord.cfg:166
+#: data/campaigns/Eastern_Invasion/units/Lord.cfg:162
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:167
-#: data/tutorial/units/Lord.cfg:3 data/tutorial/units/Lord.cfg:166
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:163
+#: data/tutorial/units/Lord.cfg:3 data/tutorial/units/Lord.cfg:162
 msgid "Lord"
 msgstr "Senhor"
 
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:35
-#: data/campaigns/Eastern_Invasion/units/Lord.cfg:191
+#: data/campaigns/Eastern_Invasion/units/Lord.cfg:187
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:35
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:192
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:188
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:41
-#: data/tutorial/units/Lord.cfg:35 data/tutorial/units/Lord.cfg:191
+#: data/tutorial/units/Lord.cfg:35 data/tutorial/units/Lord.cfg:187
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
 "combat, and also possess skill with the bow. Like Commanders, Lords possess "
@@ -951,12 +977,12 @@ msgstr ""
 "possuem habilidades de liderança, e melhoram a capacidade de combate de "
 "unidades de baixo nível adjacentes."
 
-#: data/campaigns/Eastern_Invasion/units/Lord.cfg:69
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:63
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:69
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:64
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:66
-#: data/tutorial/units/Commander.cfg:71 data/tutorial/units/Lord.cfg:69
+#: data/campaigns/Eastern_Invasion/units/Lord.cfg:65
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:60
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:65
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:60
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:62
+#: data/tutorial/units/Commander.cfg:71 data/tutorial/units/Lord.cfg:65
 #: data/units/Elvish_Archer.cfg:48 data/units/Elvish_Avenger.cfg:88
 #: data/units/Elvish_Captain.cfg:70 data/units/Elvish_Champion.cfg:49
 #: data/units/Elvish_Fighter.cfg:48 data/units/Elvish_Hero.cfg:48
@@ -967,42 +993,42 @@ msgstr ""
 #: data/units/Human_Loyalist_Master_Bowman.cfg:46
 #: data/units/Human_Outlaw_Poacher.cfg:51
 #: data/units/Human_Outlaw_Trapper.cfg:62 data/units/Orcish_Archer.cfg:53
-#: data/units/Orcish_Archer.cfg:112 data/units/Orcish_Leader.cfg:56
-#: data/units/Orcish_Ruler.cfg:56 data/units/Orcish_Sovereign.cfg:68
+#: data/units/Orcish_Archer.cfg:110 data/units/Orcish_Leader.cfg:58
+#: data/units/Orcish_Ruler.cfg:58 data/units/Orcish_Sovereign.cfg:70
 #: data/units/Orcish_Warlord.cfg:74
-#: data/units/Undead_Skele_Bone_Shooter.cfg:65
-#: data/units/Undead_Skele_Soul_Shooter.cfg:55
-#: data/units/Undead_Skeleton_Archer.cfg:60
+#: data/units/Undead_Skele_Bone_Shooter.cfg:67
+#: data/units/Undead_Skele_Soul_Shooter.cfg:57
+#: data/units/Undead_Skeleton_Archer.cfg:62
 msgid "bow"
 msgstr "arco"
 
-#: data/campaigns/Eastern_Invasion/units/Lord.cfg:70
-#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:26
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:64
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:71
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:26
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:65
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:67
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:46
-#: data/campaigns/The_South_Guard/units/Chocobone.cfg:26
-#: data/tutorial/units/Commander.cfg:72 data/tutorial/units/Lord.cfg:70
+#: data/campaigns/Eastern_Invasion/units/Lord.cfg:66
+#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:24
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:61
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:67
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:24
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:61
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:63
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:48
+#: data/campaigns/The_South_Guard/units/Chocobone.cfg:24
+#: data/tutorial/units/Commander.cfg:72 data/tutorial/units/Lord.cfg:66
 #: data/units/Boat_Pirate_Galleon.cfg:20
 #: data/units/Boat_Transport_Galleon.cfg:20 data/units/Drake_Clasher.cfg:103
 #: data/units/Drake_Enforcer.cfg:138 data/units/Drake_Gladiator.cfg:111
 #: data/units/Drake_Slasher.cfg:91 data/units/Drake_Warden.cfg:97
-#: data/units/Dwarvish_Dragonguard.cfg:53 data/units/Dwarvish_Guardsman.cfg:29
-#: data/units/Dwarvish_Guardsman.cfg:43 data/units/Dwarvish_Sentinel.cfg:44
-#: data/units/Dwarvish_Sentinel.cfg:79 data/units/Dwarvish_Stalwart.cfg:39
-#: data/units/Dwarvish_Stalwart.cfg:74 data/units/Dwarvish_Thunderer.cfg:80
+#: data/units/Dwarvish_Dragonguard.cfg:53 data/units/Dwarvish_Guardsman.cfg:31
+#: data/units/Dwarvish_Guardsman.cfg:45 data/units/Dwarvish_Sentinel.cfg:46
+#: data/units/Dwarvish_Sentinel.cfg:81 data/units/Dwarvish_Stalwart.cfg:41
+#: data/units/Dwarvish_Stalwart.cfg:76 data/units/Dwarvish_Thunderer.cfg:80
 #: data/units/Dwarvish_Thunderguard.cfg:66 data/units/Elvish_Archer.cfg:50
 #: data/units/Elvish_Avenger.cfg:90 data/units/Elvish_Captain.cfg:72
-#: data/units/Elvish_Champion.cfg:51 data/units/Elvish_Druid.cfg:84
+#: data/units/Elvish_Champion.cfg:51 data/units/Elvish_Druid.cfg:86
 #: data/units/Elvish_Fighter.cfg:50 data/units/Elvish_Hero.cfg:50
 #: data/units/Elvish_Marksman.cfg:77 data/units/Elvish_Marshal.cfg:57
 #: data/units/Elvish_Outrider.cfg:70 data/units/Elvish_Ranger.cfg:87
 #: data/units/Elvish_Rider.cfg:73 data/units/Elvish_Scout.cfg:70
-#: data/units/Elvish_Sharpshooter.cfg:76 data/units/Elvish_Shyde.cfg:85
-#: data/units/Goblin_Impaler.cfg:30 data/units/Goblin_Impaler.cfg:189
+#: data/units/Elvish_Sharpshooter.cfg:76 data/units/Elvish_Shyde.cfg:89
+#: data/units/Goblin_Impaler.cfg:30 data/units/Goblin_Impaler.cfg:191
 #: data/units/Goblin_Rouser.cfg:34 data/units/Goblin_Spearman.cfg:30
 #: data/units/Goblin_Spearman.cfg:56
 #: data/units/Human_Horse_Grand_Knight.cfg:64
@@ -1016,7 +1042,7 @@ msgstr "arco"
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:64
 #: data/units/Human_Loyalist_Halberdier.cfg:40
 #: data/units/Human_Loyalist_Javelineer.cfg:34
-#: data/units/Human_Loyalist_Javelineer.cfg:64
+#: data/units/Human_Loyalist_Javelineer.cfg:66
 #: data/units/Human_Loyalist_Lieutenant.cfg:57
 #: data/units/Human_Loyalist_Longbowman.cfg:39
 #: data/units/Human_Loyalist_Master_Bowman.cfg:47
@@ -1024,60 +1050,60 @@ msgstr "arco"
 #: data/units/Human_Loyalist_Pikeman.cfg:61
 #: data/units/Human_Loyalist_Sergeant.cfg:51
 #: data/units/Human_Loyalist_Spearman.cfg:63
-#: data/units/Human_Loyalist_Spearman.cfg:109
+#: data/units/Human_Loyalist_Spearman.cfg:111
 #: data/units/Human_Outlaw_Poacher.cfg:52
 #: data/units/Human_Outlaw_Trapper.cfg:63 data/units/Human_Peasant.cfg:29
 #: data/units/Human_Peasant.cfg:44 data/units/Merman_Entangler.cfg:25
-#: data/units/Merman_Fighter.cfg:32 data/units/Merman_Hoplite.cfg:48
+#: data/units/Merman_Fighter.cfg:32 data/units/Merman_Hoplite.cfg:50
 #: data/units/Merman_Hunter.cfg:29 data/units/Merman_Hunter.cfg:68
 #: data/units/Merman_Javelineer.cfg:30 data/units/Merman_Javelineer.cfg:69
 #: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:29
 #: data/units/Merman_Spearman.cfg:68 data/units/Merman_Triton.cfg:33
-#: data/units/Merman_Warrior.cfg:32 data/units/Monster_Cuttle_Fish.cfg:87
+#: data/units/Merman_Warrior.cfg:32 data/units/Monster_Cuttle_Fish.cfg:89
 #: data/units/Monster_Giant_Scorpion.cfg:29
 #: data/units/Monster_Sea_Serpent.cfg:29 data/units/Orcish_Archer.cfg:54
-#: data/units/Orcish_Crossbowman.cfg:55 data/units/Orcish_Leader.cfg:57
-#: data/units/Orcish_Ruler.cfg:57 data/units/Orcish_Slurbow.cfg:106
-#: data/units/Orcish_Sovereign.cfg:69 data/units/Orcish_Warlord.cfg:75
-#: data/units/Saurian_Ambusher.cfg:34 data/units/Saurian_Ambusher.cfg:80
-#: data/units/Saurian_Flanker.cfg:35 data/units/Saurian_Flanker.cfg:81
-#: data/units/Saurian_Skirmisher.cfg:34 data/units/Saurian_Skirmisher.cfg:80
-#: data/units/Undead_Skele_Bone_Shooter.cfg:66
-#: data/units/Undead_Skele_Death_Knight.cfg:63
-#: data/units/Undead_Skele_Soul_Shooter.cfg:31
-#: data/units/Undead_Skele_Soul_Shooter.cfg:56
-#: data/units/Undead_Skeleton_Archer.cfg:61
+#: data/units/Orcish_Crossbowman.cfg:55 data/units/Orcish_Leader.cfg:59
+#: data/units/Orcish_Ruler.cfg:59 data/units/Orcish_Slurbow.cfg:106
+#: data/units/Orcish_Sovereign.cfg:71 data/units/Orcish_Warlord.cfg:75
+#: data/units/Saurian_Ambusher.cfg:36 data/units/Saurian_Ambusher.cfg:82
+#: data/units/Saurian_Flanker.cfg:37 data/units/Saurian_Flanker.cfg:83
+#: data/units/Saurian_Skirmisher.cfg:36 data/units/Saurian_Skirmisher.cfg:82
+#: data/units/Undead_Skele_Bone_Shooter.cfg:68
+#: data/units/Undead_Skele_Death_Knight.cfg:65
+#: data/units/Undead_Skele_Soul_Shooter.cfg:33
+#: data/units/Undead_Skele_Soul_Shooter.cfg:58
+#: data/units/Undead_Skeleton_Archer.cfg:63
 msgid "pierce"
 msgstr "perfurante"
 
-#: data/campaigns/Eastern_Invasion/units/Lord.cfg:225
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:148
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:216
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:122
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:226
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:102
-#: data/tutorial/units/Commander.cfg:188 data/tutorial/units/Fighter.cfg:91
-#: data/tutorial/units/Fighteress.cfg:100 data/tutorial/units/Lord.cfg:225
+#: data/campaigns/Eastern_Invasion/units/Lord.cfg:217
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:128
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:195
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:117
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:218
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:93
+#: data/tutorial/units/Commander.cfg:178 data/tutorial/units/Fighter.cfg:91
+#: data/tutorial/units/Fighteress.cfg:98 data/tutorial/units/Lord.cfg:217
 msgid "scepter of fire"
 msgstr "cetro de fogo"
 
-#: data/campaigns/Eastern_Invasion/units/Lord.cfg:226
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:149
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:217
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:61
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:123
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:227
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:103
+#: data/campaigns/Eastern_Invasion/units/Lord.cfg:218
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:129
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:196
+#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:59
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:118
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:219
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:94
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:85
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:26
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:104
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:94
+#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:83
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:79
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:123
-#: data/tutorial/units/Commander.cfg:189 data/tutorial/units/Elder_Mage.cfg:46
-#: data/tutorial/units/Fighter.cfg:92 data/tutorial/units/Fighteress.cfg:101
-#: data/tutorial/units/Lord.cfg:226 data/units/Drake_Blademaster.cfg:121
+#: data/tutorial/units/Commander.cfg:179 data/tutorial/units/Elder_Mage.cfg:46
+#: data/tutorial/units/Fighter.cfg:92 data/tutorial/units/Fighteress.cfg:99
+#: data/tutorial/units/Lord.cfg:218 data/units/Drake_Blademaster.cfg:121
 #: data/units/Drake_Burner.cfg:105 data/units/Drake_Fighter.cfg:111
 #: data/units/Drake_Fire.cfg:103 data/units/Drake_Flameheart.cfg:127
 #: data/units/Drake_Flare.cfg:121 data/units/Drake_Glider.cfg:117
@@ -1086,7 +1112,7 @@ msgstr "cetro de fogo"
 #: data/units/Dwarvish_Runemaster.cfg:76 data/units/Goblin_Pillager.cfg:41
 #: data/units/Human_Mage.cfg:93 data/units/Human_Mage_Arch.cfg:93
 #: data/units/Human_Mage_Great.cfg:81 data/units/Human_Mage_Red.cfg:93
-#: data/units/Human_Mage_Silver.cfg:121 data/units/Orcish_Archer.cfg:113
+#: data/units/Human_Mage_Silver.cfg:121 data/units/Orcish_Archer.cfg:111
 #: data/units/Orcish_Crossbowman.cfg:114 data/units/Orcish_Slurbow.cfg:165
 msgid "fire"
 msgstr "fogo"
@@ -1127,7 +1153,7 @@ msgstr ""
 msgid "Skeletal Dragon"
 msgstr "Dragão esqueleto"
 
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:27
+#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:25
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
 "only bones and dark sinew. Long after its death, it was raised through the "
@@ -1142,23 +1168,11 @@ msgstr ""
 "de ossos, mas os poucos que pensaram dessa maneira viveram o suficiente para "
 "mudar de idéia."
 
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:32
+#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:29
 msgid "jaw"
 msgstr "mordida"
 
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:36
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:34
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:50
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:31
-#: data/units/Undead_Bat_Blood.cfg:52 data/units/Undead_Bat_Vampire.cfg:76
-#: data/units/Undead_Necro_Ancient_Lich.cfg:59
-#: data/units/Undead_Necro_Lich.cfg:41 data/units/Undead_Spirit_Ghost.cfg:36
-#: data/units/Undead_Spirit_Spectre.cfg:51
-#: data/units/Undead_Spirit_Wraith.cfg:28
-msgid "drain"
-msgstr "dreno"
-
-#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:70
+#: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:68
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
 #: data/units/Drake_Burner.cfg:67 data/units/Drake_Fire.cfg:75
 #: data/units/Drake_Inferno.cfg:76 data/units/Goblin_Direwolf_Rider.cfg:75
@@ -1178,12 +1192,12 @@ msgid "Current Maintainer"
 msgstr "Responsável Atual"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:85
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:74
 msgid "female^Battle Princess"
 msgstr "Princesa fora da lei"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:30
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:111
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:100
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
@@ -1201,9 +1215,9 @@ msgstr ""
 msgid "Chocobone"
 msgstr "Chocobone"
 
-#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:20
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:20
-#: data/campaigns/The_South_Guard/units/Chocobone.cfg:20
+#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:19
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:19
+#: data/campaigns/The_South_Guard/units/Chocobone.cfg:19
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
@@ -1213,28 +1227,28 @@ msgstr ""
 "uma civilização antiga perdida, os Chocobones podem se deslocar mais "
 "rapidamente que a maioria das unidades montadas."
 
-#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:25
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:25
-#: data/campaigns/The_South_Guard/units/Chocobone.cfg:25
+#: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:23
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:23
+#: data/campaigns/The_South_Guard/units/Chocobone.cfg:23
 #: data/units/Drake_Clasher.cfg:102 data/units/Drake_Enforcer.cfg:137
-#: data/units/Drake_Gladiator.cfg:110 data/units/Dwarvish_Guardsman.cfg:27
-#: data/units/Dwarvish_Guardsman.cfg:42 data/units/Dwarvish_Sentinel.cfg:42
-#: data/units/Dwarvish_Sentinel.cfg:78 data/units/Dwarvish_Stalwart.cfg:37
-#: data/units/Dwarvish_Stalwart.cfg:73 data/units/Goblin_Impaler.cfg:29
-#: data/units/Goblin_Impaler.cfg:188 data/units/Goblin_Rouser.cfg:33
+#: data/units/Drake_Gladiator.cfg:110 data/units/Dwarvish_Guardsman.cfg:29
+#: data/units/Dwarvish_Guardsman.cfg:44 data/units/Dwarvish_Sentinel.cfg:44
+#: data/units/Dwarvish_Sentinel.cfg:80 data/units/Dwarvish_Stalwart.cfg:39
+#: data/units/Dwarvish_Stalwart.cfg:75 data/units/Goblin_Impaler.cfg:29
+#: data/units/Goblin_Impaler.cfg:190 data/units/Goblin_Rouser.cfg:33
 #: data/units/Goblin_Spearman.cfg:29 data/units/Goblin_Spearman.cfg:55
 #: data/units/Human_Horseman.cfg:24
 #: data/units/Human_Loyalist_Javelineer.cfg:33
-#: data/units/Human_Loyalist_Javelineer.cfg:63
+#: data/units/Human_Loyalist_Javelineer.cfg:65
 #: data/units/Human_Loyalist_Spearman.cfg:62
-#: data/units/Human_Loyalist_Spearman.cfg:108
+#: data/units/Human_Loyalist_Spearman.cfg:110
 #: data/units/Merman_Entangler.cfg:24 data/units/Merman_Hunter.cfg:28
 #: data/units/Merman_Hunter.cfg:67 data/units/Merman_Javelineer.cfg:29
 #: data/units/Merman_Javelineer.cfg:68 data/units/Merman_Netcaster.cfg:23
 #: data/units/Merman_Spearman.cfg:28 data/units/Merman_Spearman.cfg:67
-#: data/units/Saurian_Ambusher.cfg:32 data/units/Saurian_Ambusher.cfg:78
-#: data/units/Saurian_Flanker.cfg:33 data/units/Saurian_Flanker.cfg:79
-#: data/units/Saurian_Skirmisher.cfg:32 data/units/Saurian_Skirmisher.cfg:78
+#: data/units/Saurian_Ambusher.cfg:34 data/units/Saurian_Ambusher.cfg:80
+#: data/units/Saurian_Flanker.cfg:35 data/units/Saurian_Flanker.cfg:81
+#: data/units/Saurian_Skirmisher.cfg:34 data/units/Saurian_Skirmisher.cfg:80
 msgid "spear"
 msgstr "lança"
 
@@ -1242,7 +1256,7 @@ msgstr "lança"
 msgid "Cockatrice"
 msgstr "Cocatriz"
 
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:17
+#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:16
 msgid ""
 "Sometimes known as 'basilisks', these mystical creatures are said to be able "
 "to turn the living to stone. Needless to say, this makes them extremely "
@@ -1252,47 +1266,42 @@ msgstr ""
 "a capacidade de tornar vida em pedra. É desnecessário dizer que isso faz "
 "elas extremamente perigosas."
 
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:22
+#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:20
 msgid "gaze"
 msgstr "olhar"
 
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:23
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:60
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:61
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:60
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:49
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:27
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:44
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:56
-#: data/units/Elvish_Enchantress.cfg:143 data/units/Elvish_Sorceress.cfg:148
-#: data/units/Elvish_Sylph.cfg:84 data/units/Saurian_Augur.cfg:53
-#: data/units/Saurian_Oracle.cfg:53 data/units/Saurian_Soothsayer.cfg:54
+#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:21
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:56
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:57
+#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:58
+#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:47
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:25
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:57
+#: data/units/Elvish_Enchantress.cfg:145 data/units/Elvish_Sorceress.cfg:150
+#: data/units/Elvish_Sylph.cfg:88 data/units/Saurian_Augur.cfg:55
+#: data/units/Saurian_Oracle.cfg:55 data/units/Saurian_Soothsayer.cfg:56
 #: data/units/Undead_Necro_Ancient_Lich.cfg:55
-#: data/units/Undead_Necro_Ancient_Lich.cfg:71
+#: data/units/Undead_Necro_Ancient_Lich.cfg:73
 #: data/units/Undead_Necro_Dark_Adept.cfg:33
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:57
-#: data/units/Undead_Necro_Lich.cfg:37 data/units/Undead_Necro_Lich.cfg:53
-#: data/units/Undead_Necromancer.cfg:71 data/units/Undead_Spirit_Ghost.cfg:32
-#: data/units/Undead_Spirit_Ghost.cfg:48
-#: data/units/Undead_Spirit_Spectre.cfg:73
-#: data/units/Undead_Spirit_Wraith.cfg:50
+#: data/units/Undead_Necro_Lich.cfg:37 data/units/Undead_Necro_Lich.cfg:55
+#: data/units/Undead_Necromancer.cfg:73 data/units/Undead_Spirit_Ghost.cfg:32
+#: data/units/Undead_Spirit_Ghost.cfg:50
+#: data/units/Undead_Spirit_Spectre.cfg:75
+#: data/units/Undead_Spirit_Wraith.cfg:52
 msgid "cold"
 msgstr "frio"
 
-#: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:27
-#: src/actions.cpp:1229 src/actions.cpp:1467
-msgid "stone"
-msgstr "petrefica"
-
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:157
-#: data/tutorial/units/Commander.cfg:3 data/tutorial/units/Commander.cfg:132
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:139
+#: data/tutorial/units/Commander.cfg:3 data/tutorial/units/Commander.cfg:122
 msgid "Commander"
 msgstr "Comandante"
 
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:21
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:175
-#: data/tutorial/units/Commander.cfg:36 data/tutorial/units/Commander.cfg:165
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:20
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:156
+#: data/tutorial/units/Commander.cfg:36 data/tutorial/units/Commander.cfg:155
 msgid ""
 "The rank of Commander is held by those who lead battle groups into combat. "
 "Possessing leadership skills, they give lower-level units in adjacent hexes "
@@ -1307,12 +1316,12 @@ msgstr ""
 "comandante morre, o exército perde a batalha."
 
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:84
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:81
 msgid "female^Dark Queen"
 msgstr "Rainha da Escuridão"
 
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:18
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:99
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:96
 msgid ""
 "The evil queen mother Asheviere has terrorized Wesnoth for many years. Her "
 "knowledge of magic makes her a worthy foe in combat, although her power is "
@@ -1322,7 +1331,7 @@ msgstr ""
 "conhecimento de magia faz dela um forte oponente em combate, embora a maior "
 "parte de sua força venha de seus vassalos."
 
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:37
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:34
 msgid "scepter"
 msgstr "cetro"
 
@@ -1331,7 +1340,7 @@ msgstr "cetro"
 msgid "Elder Mage"
 msgstr "Mago Ancião"
 
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:30
+#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:29
 #: data/tutorial/units/Elder_Mage.cfg:28
 msgid ""
 "Once great, Elder Magi have seen their power a little diminished from "
@@ -1342,14 +1351,14 @@ msgstr ""
 "dos anos. Ainda assim, eles são temidos no campo de batalha, devido a seus "
 "relâmpagos mágicos."
 
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:32
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:53
+#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:31
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:52
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:55
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:48
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:58
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:97
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:33
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:32
 #: data/tutorial/units/Elder_Mage.cfg:30 data/units/Elvish_Druid.cfg:29
 #: data/units/Elvish_Enchantress.cfg:23 data/units/Elvish_Shaman.cfg:30
 #: data/units/Elvish_Sorceress.cfg:23 data/units/Human_Mage.cfg:55
@@ -1357,13 +1366,13 @@ msgstr ""
 #: data/units/Human_Mage_Red.cfg:56 data/units/Human_Mage_Silver.cfg:93
 #: data/units/Human_Mage_White.cfg:64 data/units/Mermaid_Diviner.cfg:42
 #: data/units/Mermaid_Enchantress.cfg:31 data/units/Mermaid_Initiate.cfg:33
-#: data/units/Mermaid_Priestess.cfg:36 data/units/Saurian_Augur.cfg:32
-#: data/units/Saurian_Oracle.cfg:32 data/units/Saurian_Soothsayer.cfg:33
+#: data/units/Mermaid_Priestess.cfg:36 data/units/Saurian_Augur.cfg:34
+#: data/units/Saurian_Oracle.cfg:34 data/units/Saurian_Soothsayer.cfg:35
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:31
 msgid "staff"
 msgstr "bastão"
 
-#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:59
+#: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:57
 #: data/tutorial/units/Elder_Mage.cfg:45
 msgid "lightning"
 msgstr "raio"
@@ -1372,7 +1381,7 @@ msgstr "raio"
 msgid "Elvish High Lord"
 msgstr "Grande Senhor élfico"
 
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:18
+#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:17
 msgid ""
 "The leaders of the elves do not fall sallow and frail with age. Rather, it "
 "is then that they grow to their true potential. Quiet and contemplative in "
@@ -1384,10 +1393,10 @@ msgstr ""
 "e contemplativo em tempos de paz, um Grande Senhor élfico do topo de sua "
 "fúria é uma visão dígna de assombro."
 
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:59
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:48
-#: data/units/Elvish_Enchantress.cfg:142 data/units/Elvish_Sorceress.cfg:147
-#: data/units/Elvish_Sylph.cfg:83
+#: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:57
+#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:46
+#: data/units/Elvish_Enchantress.cfg:144 data/units/Elvish_Sorceress.cfg:149
+#: data/units/Elvish_Sylph.cfg:87
 msgid "faerie fire"
 msgstr "fogo das fadas"
 
@@ -1415,7 +1424,7 @@ msgstr "golpe"
 msgid "Elvish Lord"
 msgstr "Senhor Elfo"
 
-#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:17
+#: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:16
 msgid ""
 "The nobility of the elves are possessed of merit to match their standing in "
 "society. Elvish Lords are the wisest and strongest of their people, and are "
@@ -1426,15 +1435,15 @@ msgstr ""
 "temíveis em seu comando da magia."
 
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:69
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:65
 #: data/tutorial/units/Fighter.cfg:3 data/tutorial/units/Fighter.cfg:48
 msgid "Fighter"
 msgstr "Lutador"
 
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:17
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:83
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:16
+#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:78
 #: data/tutorial/units/Fighter.cfg:23 data/tutorial/units/Fighter.cfg:68
-#: data/tutorial/units/Fighteress.cfg:24 data/tutorial/units/Fighteress.cfg:73
+#: data/tutorial/units/Fighteress.cfg:24 data/tutorial/units/Fighteress.cfg:72
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to attack "
 "from enemies. However they have the potential to become great warriors one "
@@ -1449,7 +1458,7 @@ msgid "female^Princess"
 msgstr "Princesa"
 
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:28
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:79
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:74
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
@@ -1463,7 +1472,7 @@ msgstr ""
 "princesa lutarão melhor devido à sua presença. A princesa é também hábil, "
 "tendo habilidades como as de um ladrão."
 
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:55
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:50
 msgid "Princess"
 msgstr "Princesa"
 
@@ -1471,7 +1480,7 @@ msgstr "Princesa"
 msgid "Sea Orc"
 msgstr "Orc Marinho"
 
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:17
+#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:16
 msgid ""
 "While often viewed as inferior to their land loving counterparts, Sea Orcs "
 "represent a great leap for all goblinoids as they have adapted to aquatic "
@@ -1507,7 +1516,7 @@ msgstr ""
 "Hoje quase um garoto, mas pela sua devoção à coroa ele busca se tornar um "
 "Senhor -- e se juntar à elite dos guerreiros humanos."
 
-#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:28
+#: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:27
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:30
 #: data/tutorial/units/Youth.cfg:26
 msgid "training sword"
@@ -1632,7 +1641,7 @@ msgstr ""
 "o caminho da bandidagem. Ela em fundar seu próprio reino com fruto de seus "
 "roubos."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:100
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:98
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:101
 #: data/units/Human_Outlaw.cfg:53 data/units/Human_Outlaw_Footpad.cfg:52
 #: data/units/Troll_Rocklobber.cfg:53
@@ -1675,9 +1684,9 @@ msgstr ""
 msgid "blood kiss"
 msgstr "beijo sangrento"
 
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:44
-#: data/units/Saurian_Augur.cfg:52 data/units/Saurian_Oracle.cfg:52
-#: data/units/Saurian_Soothsayer.cfg:53
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:46
+#: data/units/Saurian_Augur.cfg:54 data/units/Saurian_Oracle.cfg:54
+#: data/units/Saurian_Soothsayer.cfg:55
 msgid "curse"
 msgstr "maldição"
 
@@ -1695,7 +1704,7 @@ msgstr ""
 "protegerem seus servos. Reis podem coordenar os ataques de unidades nível 1 "
 "e 2, aumentando sua eficiência de luta."
 
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:36
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:35
 #: data/units/Drake_Enforcer.cfg:103 data/units/Drake_Gladiator.cfg:146
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:26
 #: data/units/Human_Loyalist_Iron_Mauler.cfg:29
@@ -1708,7 +1717,7 @@ msgstr "maça"
 msgid "Demilich"
 msgstr "Demilich"
 
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:21
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:20
 msgid ""
 "After too much time dabbling with forbidden magics and dark arts, these magi "
 "have begun to pay a heavy price. Demiliches have started losing their "
@@ -1720,7 +1729,7 @@ msgstr ""
 "corpos, e se tornando mortos vivos. Logo eles se tornarão completas "
 "monstruosidades."
 
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:26
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:24
 #: data/units/Undead_Corpse_Soulless.cfg:47
 #: data/units/Undead_Corpse_Walking.cfg:46
 #: data/units/Undead_Necro_Ancient_Lich.cfg:53
@@ -1728,14 +1737,14 @@ msgstr ""
 msgid "touch"
 msgstr "toque"
 
-#: data/campaigns/The_South_Guard/units/Demilich.cfg:43
-#: data/units/Undead_Necro_Ancient_Lich.cfg:70
-#: data/units/Undead_Necro_Lich.cfg:52
+#: data/campaigns/The_South_Guard/units/Demilich.cfg:42
+#: data/units/Undead_Necro_Ancient_Lich.cfg:72
+#: data/units/Undead_Necro_Lich.cfg:54
 msgid "chill tempest"
 msgstr "onda gelada"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
-#: data/units/Human_Mage_Arch.cfg:146
+#: data/units/Human_Mage_Arch.cfg:148
 msgid "female^Arch Mage"
 msgstr "Arquimaga"
 
@@ -1772,8 +1781,8 @@ msgstr ""
 "Nota especial: as bolas de fogo do arquimago são mágicas, e sempre têm uma "
 "grande chance de acertar seu oponente!!!"
 
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:103
-#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:92
+#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:82
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:78
 #: data/units/Human_Mage_Arch.cfg:92 data/units/Human_Mage_Great.cfg:80
 #: data/units/Human_Mage_Red.cfg:92
@@ -1781,7 +1790,7 @@ msgid "fireball"
 msgstr "bola de fogo"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:4
-#: data/units/Human_Mage_Great.cfg:134
+#: data/units/Human_Mage_Great.cfg:136
 msgid "female^Great Mage"
 msgstr "Grande Maga"
 
@@ -1819,7 +1828,7 @@ msgstr ""
 "sempre têm uma grande chance de atingir o oponente."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:4
-#: data/units/Human_Mage_Red.cfg:146
+#: data/units/Human_Mage_Red.cfg:148
 msgid "female^Red Mage"
 msgstr "Maga Vermelha"
 
@@ -1859,12 +1868,11 @@ msgstr ""
 "têm uma grande chance de acertar o oponente."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:4
-#: data/units/Human_Mage_Silver.cfg:156
+#: data/units/Human_Mage_Silver.cfg:158
 msgid "female^Silver Mage"
 msgstr "Maga prateada"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:39
-#: data/units/Human_Mage_Silver.cfg:23
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -1963,15 +1971,9 @@ msgstr ""
 "marcado pela praga, e qualquer inimigo morto por ele irá voltar como um "
 "morto-vivo."
 
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:38
-#: data/units/Undead_Corpse_Soulless.cfg:53
-#: data/units/Undead_Necromancer.cfg:38
-msgid "plague(Walking Corpse)"
-msgstr "Corpo Ambulante"
-
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:55
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:56
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:56
-#: data/units/Undead_Necromancer.cfg:70
+#: data/units/Undead_Necromancer.cfg:72
 msgid "chill wave"
 msgstr "onda gelada"
 
@@ -2134,11 +2136,11 @@ msgstr "Mortos Vivos"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:31
+#: data/game.cfg:33
 msgid "Binary Saves"
 msgstr "Jogos salvos em binário"
 
-#: data/game.cfg:38
+#: data/game.cfg:40
 msgid "Show Combat"
 msgstr "Mostrar Combate"
 
@@ -2150,11 +2152,11 @@ msgstr "Introdução"
 msgid "Gameplay"
 msgstr "Regras"
 
-#: data/help.cfg:21 src/menu_events.cpp:153 src/playturn.cpp:2401
+#: data/help.cfg:21 src/menu_events.cpp:219
 msgid "Traits"
 msgstr "Características"
 
-#: data/help.cfg:30 src/menu_events.cpp:218 src/playturn.cpp:1859
+#: data/help.cfg:30 src/menu_events.cpp:284
 msgid "Units"
 msgstr "Unidades"
 
@@ -4680,13 +4682,11 @@ msgstr "Ações"
 msgid "End Turn"
 msgstr "Termina o turno"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:151 src/playturn.cpp:2399
-#: src/unit.cpp:2175
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2197
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:180 src/menu_events.cpp:152 src/playturn.cpp:2133
-#: src/playturn.cpp:2400
+#: data/themes/default.cfg:180 src/menu_events.cpp:218 src/menu_events.cpp:646
 msgid "XP"
 msgstr "XP"
 
@@ -5118,7 +5118,7 @@ msgstr "inteligente"
 msgid "resilient"
 msgstr "resistente"
 
-#: data/tutorial/units/Fighteress.cfg:5 data/tutorial/units/Fighteress.cfg:54
+#: data/tutorial/units/Fighteress.cfg:5 data/tutorial/units/Fighteress.cfg:53
 msgid "female^Fighter"
 msgstr "Lutadora"
 
@@ -5308,15 +5308,14 @@ msgid "Drake Flameheart"
 msgstr "Draconiano Coração Flamejante"
 
 #: data/units/Drake_Flameheart.cfg:21
+#, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves, have veins which course with fire rather than blood. "
 "That they can breathe fire as they do lends credence to this belief, though, "
 "for some reason, no one has tried cutting one open to find out.\n"
 "\n"
-"Special Notes: the leadership of a Flameheart enables friendly units next to "
-"it to deal more damage in combat, though this only applies to units of lower "
-"level."
+"Special Notes:"
 msgstr ""
 "É dito que as linhagens mais antigas dos draconianos - os descendents "
 "diretos dos dragões, possuem veias em que correm fogo, ao invez de sangue. O "
@@ -5333,14 +5332,13 @@ msgid "Drake Flare"
 msgstr "Labareda Draconiana"
 
 #: data/units/Drake_Flare.cfg:20
+#, fuzzy
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
 "be such leaders, both in war and in peace.\n"
 "\n"
-"Special Notes: the leadership of a Flare enables friendly units next to it "
-"to deal more damage in combat, though this only applies to units of lower "
-"level."
+"Special Notes:"
 msgstr ""
 "Draconianos são uma raça antiga, inteligentes para ouvir seus líderes "
 "naturais. Aqueles que são chamados de 'Labareda' por seus inimigos são os "
@@ -5465,7 +5463,7 @@ msgstr ""
 #: data/units/Drake_Slasher.cfg:74 data/units/Drake_Slasher.cfg:90
 #: data/units/Drake_Warden.cfg:80 data/units/Drake_Warden.cfg:96
 #: data/units/Human_Loyalist_Halberdier.cfg:38
-#: data/units/Human_Loyalist_Halberdier.cfg:81
+#: data/units/Human_Loyalist_Halberdier.cfg:83
 msgid "halberd"
 msgstr "alabarda"
 
@@ -5505,19 +5503,20 @@ msgstr ""
 msgid "Dwarvish Berserker"
 msgstr "Anão Furioso"
 
-#: data/units/Dwarvish_Berserker.cfg:16
+#: data/units/Dwarvish_Berserker.cfg:18
+#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
-"all defense in exchange for massive damage against their enemies. Once a "
-"battle is entered, Dwarvish Berserkers attack ferociously, continuing to "
-"push the attack until either they or their enemy lies dead."
+"all defense in exchange for massive damage against their enemies.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Os Anões são uma antiga raça de guereiros poderosos. Os Anões Furiosos "
 "abandonam toda e qualquer defesa em troca de um ataque insandecido contra "
 "seus inimigos. Uma vez que comecou a brigar, o anão furioso não para até que "
 "ele ou seu oponente caia morto."
 
-#: data/units/Dwarvish_Berserker.cfg:34 data/units/Dwarvish_Ulfserker.cfg:33
+#: data/units/Dwarvish_Berserker.cfg:36 data/units/Dwarvish_Ulfserker.cfg:35
 msgid "berserker frenzy"
 msgstr "fúria"
 
@@ -5574,8 +5573,8 @@ msgstr ""
 "terrenos montanhosos ou no subsolo. Apesar de lentos, isso é facilmente "
 "compensado pelo seu poder e resistência."
 
-#: data/units/Dwarvish_Fighter.cfg:29 data/units/Undead_Skele_Draug.cfg:40
-#: data/units/Undead_Skele_Revenant.cfg:39 data/units/Undead_Skeleton.cfg:73
+#: data/units/Dwarvish_Fighter.cfg:29 data/units/Undead_Skele_Draug.cfg:42
+#: data/units/Undead_Skele_Revenant.cfg:41 data/units/Undead_Skeleton.cfg:73
 msgid "axe"
 msgstr "machado"
 
@@ -5588,11 +5587,14 @@ msgstr "martelo"
 msgid "Dwarvish Guardsman"
 msgstr "Guarda Anão"
 
-#: data/units/Dwarvish_Guardsman.cfg:16
+#: data/units/Dwarvish_Guardsman.cfg:18
+#, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
-"lot of damage, and hurling heavy spears for defense."
+"lot of damage, and hurling heavy spears for defense.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Os mais resistentes anões algumas vezes se juntam à guarda do exército anão. "
 "Lentos, e sem um ataque muito poderoso, eles guardam os flancos do exército, "
@@ -5616,7 +5618,7 @@ msgstr ""
 "de sua raça."
 
 #: data/units/Dwarvish_Lord.cfg:32 data/units/Dwarvish_Steelclad.cfg:31
-#: data/units/Undead_Skele_Death_Knight.cfg:36
+#: data/units/Undead_Skele_Death_Knight.cfg:38
 msgid "battle axe"
 msgstr "machado de batalha"
 
@@ -5652,10 +5654,13 @@ msgstr "relâmpago"
 msgid "Dwarvish Sentinel"
 msgstr "Sentinela Anã"
 
-#: data/units/Dwarvish_Sentinel.cfg:17
+#: data/units/Dwarvish_Sentinel.cfg:19
+#, fuzzy
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
-"under even the strongest of enemy attacks."
+"under even the strongest of enemy attacks.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "A Sentinela, com seu escudo gigantesco e grande coragem, não cederá nem "
 "mesmo para o mais poderoso dos inimigos."
@@ -5664,11 +5669,14 @@ msgstr ""
 msgid "Dwarvish Stalwart"
 msgstr "Veterano Anão"
 
-#: data/units/Dwarvish_Stalwart.cfg:16
+#: data/units/Dwarvish_Stalwart.cfg:18
+#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
-"resilience and strength."
+"resilience and strength.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Estes guerreiros veteranos desenvolveram novos escudos e armadura dos "
 "espólios de seus inimigos. Apesar de lentos, eles são temidos por sua "
@@ -5749,11 +5757,15 @@ msgstr "bastão do dragão"
 msgid "Dwarvish Ulfserker"
 msgstr "Ulfserker"
 
-#: data/units/Dwarvish_Ulfserker.cfg:15
+#: data/units/Dwarvish_Ulfserker.cfg:17
+#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these in battle: they persist until either their enemy is dead "
-"or they themselves perish, no matter how many wounds they receive."
+"or they themselves perish, paying little heed to how many wounds they may "
+"receive.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Os anões são uma raça ancestral de guerreiros poderosos. Os Ulfserkers são "
 "os mais ferozes desses em batalha: eles continuam lutanto até derrubar seu "
@@ -5778,7 +5790,7 @@ msgstr ""
 "suas armas. Embora a falta de experiência em combate deixe eles vulneráveis, "
 "sua graça natural garante o melhor sobre recém recrutados."
 
-#: data/units/Elvish_Archer.cfg:166
+#: data/units/Elvish_Archer.cfg:154
 msgid "female^Elvish Archer"
 msgstr "Arqueira élfica"
 
@@ -5787,6 +5799,7 @@ msgid "Elvish Avenger"
 msgstr "Vingador Elfo"
 
 #: data/units/Elvish_Avenger.cfg:24
+#, fuzzy
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -5798,9 +5811,7 @@ msgid ""
 "brethren lost earlier in the battle. Although not so base in design, it is "
 "not at all inaccurate.\n"
 "\n"
-"Special Notes: the avengers' skill as woodsmen render them invisible to an "
-"enemy unless they are immediately adjacent, or have revealed themselves by "
-"attacking."
+"Special Notes:"
 msgstr ""
 "O curioso nome élfico \"Vingadores\" vêm de uma tática empregada por esses "
 "mestres mateiros. Ao inimigo é permitido penetrar nas linhas de defesa "
@@ -5815,7 +5826,7 @@ msgstr ""
 "inimigo a menos que ele esteja imediatamente adjacente, ou se revele por ele "
 "mesmo ao atacar."
 
-#: data/units/Elvish_Avenger.cfg:194
+#: data/units/Elvish_Avenger.cfg:182
 msgid "female^Elvish Avenger"
 msgstr "Vingadora Elfa"
 
@@ -5824,6 +5835,7 @@ msgid "Elvish Captain"
 msgstr "Capitão élfico"
 
 #: data/units/Elvish_Captain.cfg:21
+#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. This is quite at odds with "
@@ -5832,9 +5844,7 @@ msgid ""
 "their leaders, and the tendency to choose leaders of merit is one of the "
 "quiet strengths of the elves.\n"
 "\n"
-"Special Notes: the leadership of a Captain enables friendly units next to it "
-"to deal more damage in combat, though this only applies to units of lower "
-"level."
+"Special Notes:"
 msgstr ""
 "Elfos, ao contrário de muitas outras raças, facilmente reconhecem e seguem "
 "qualquer um dentre seus pares que demonstre experiência em combate. Isso é "
@@ -5871,6 +5881,7 @@ msgid "female^Elvish Druid"
 msgstr "Druida Elfa"
 
 #: data/units/Elvish_Druid.cfg:22
+#, fuzzy
 msgid ""
 "The magic of the wood elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they live can be quickened by a word of "
@@ -5880,8 +5891,7 @@ msgid ""
 "elvish druids are revered by their people.\n"
 "\n"
 "Special Notes: A druid's entangling attack slows enemies down, halving their "
-"movement speed and attack damage. Druids are capable of healing units around "
-"them, and curing them of poison."
+"movement speed and attack damage."
 msgstr ""
 "A magia dos elfos da floresta não é voltada para o combate, mas ainda assim "
 "tem seus usos. As matas nas quais vivem podem ser animadas com apenas uma "
@@ -5895,19 +5905,11 @@ msgstr ""
 "também são capazes de curar unidades ao seu redor, removendo os efeitos de "
 "venenos."
 
-#: data/units/Elvish_Druid.cfg:55 data/units/Elvish_Shyde.cfg:56
+#: data/units/Elvish_Druid.cfg:55 data/units/Elvish_Shyde.cfg:58
 msgid "ensnare"
 msgstr "enredear"
 
-#: data/units/Elvish_Druid.cfg:57 data/units/Elvish_Enchantress.cfg:92
-#: data/units/Elvish_Shaman.cfg:58 data/units/Elvish_Shyde.cfg:58
-#: data/units/Elvish_Sorceress.cfg:92 data/units/Elvish_Sylph.cfg:53
-#: data/units/Goblin_Pillager.cfg:77 data/units/Merman_Entangler.cfg:34
-#: data/units/Merman_Netcaster.cfg:33 data/units/Monster_Cave_Spider.cfg:81
-msgid "slow"
-msgstr "lentidão"
-
-#: data/units/Elvish_Druid.cfg:83 data/units/Elvish_Shyde.cfg:84
+#: data/units/Elvish_Druid.cfg:85 data/units/Elvish_Shyde.cfg:88
 msgid "thorns"
 msgstr "espinhos"
 
@@ -5993,7 +5995,7 @@ msgstr ""
 msgid "longbow"
 msgstr "arco longo"
 
-#: data/units/Elvish_Marksman.cfg:192
+#: data/units/Elvish_Marksman.cfg:182
 msgid "female^Elvish Marksman"
 msgstr "Atiradora Elfa"
 
@@ -6002,6 +6004,7 @@ msgid "Elvish Marshal"
 msgstr "Marechal Elfo"
 
 #: data/units/Elvish_Marshal.cfg:22
+#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -6010,9 +6013,7 @@ msgid ""
 "occasions when an elf sets his mind to war, the strategy that results is the "
 "work of a master.\n"
 "\n"
-"Special Notes: the leadership of a Marshal enables friendly units next to it "
-"to deal more damage in combat, though this only applies to units of lower "
-"level"
+"Special Notes:"
 msgstr ""
 "A longevidade e inteligência natural dos elfos traz uma ferina habilidade em "
 "assuntos militares, suficiente até mesmo para conter seu desgosto natural "
@@ -6056,6 +6057,7 @@ msgid "Elvish Ranger"
 msgstr "Mateiro Elfo"
 
 #: data/units/Elvish_Ranger.cfg:21
+#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a place he is not truly a part of. With elves, "
@@ -6063,9 +6065,7 @@ msgid ""
 "fitting master of them, and when combined with a considerable skill at "
 "archery and swordsmanship, the result is a powerful tool of war.\n"
 "\n"
-"Special Notes: the rangers' skill as woodsmen render them invisible to an "
-"enemy unless they are immediately adjacent, or have revealed themselves by "
-"attacking."
+"Special Notes:"
 msgstr ""
 "Embora um homem possa passar anos na floresta, ele nunca se sentirá em casa. "
 "Com os elfos isso é reverso. Qualquer elfo que estude os mandamentos da "
@@ -6076,7 +6076,7 @@ msgstr ""
 "inimigo a menos que ele esteja imediatamente adjacente, ou se revele por ele "
 "mesmo ao atacar."
 
-#: data/units/Elvish_Ranger.cfg:191
+#: data/units/Elvish_Ranger.cfg:181
 msgid "female^Elvish Ranger"
 msgstr "Mateira Elfa"
 
@@ -6127,6 +6127,7 @@ msgid "female^Elvish Shaman"
 msgstr "Xamã Elfa"
 
 #: data/units/Elvish_Shaman.cfg:23
+#, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -6138,9 +6139,7 @@ msgid ""
 "in battle.\n"
 "\n"
 "Special Notes: A shaman's entangling attack slows enemies down, halving "
-"their movement speed and attack damage. Shamans are capable of basic "
-"healing, though they can only delay the effects of poison, not cure them "
-"entirely."
+"their movement speed and attack damage."
 msgstr ""
 "Sendo parcialmente fada por natureza, os elfos tem uma capacidade inerente "
 "de lidar com a magia. Isso se mostra através de sua afinidade com o mundo "
@@ -6178,7 +6177,7 @@ msgstr ""
 "Nota especial: Sua perícia permite a estes elfos uma chance alta de acertar "
 "seus inimigos, mas apenas quando estão no ataque."
 
-#: data/units/Elvish_Sharpshooter.cfg:181
+#: data/units/Elvish_Sharpshooter.cfg:191
 msgid "female^Elvish Sharpshooter"
 msgstr "Atiradora de elite Elfa"
 
@@ -6187,6 +6186,7 @@ msgid "female^Elvish Shyde"
 msgstr "Shyde Élfica"
 
 #: data/units/Elvish_Shyde.cfg:22
+#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -6194,8 +6194,7 @@ msgid ""
 "mystery of their people.\n"
 "\n"
 "Special Notes: A shyde's entangling attack slows enemies down, halving their "
-"movement speed and attack damage. Shydes are capable of healing units around "
-"them, and curing them of poison."
+"movement speed and attack damage."
 msgstr ""
 "A devoção ao seu lado fada acaba por transformar uma dama élfa em uma "
 "criatura de ambos os mundos. Guiada por uma natureza pouco compreendida, "
@@ -6241,7 +6240,7 @@ msgstr ""
 "completamente ao seu lado faérico, elas se transformaram em criaturas de "
 "ambos os mundos, utilizando poderosas magias contra seus inimigos."
 
-#: data/units/Elvish_Sylph.cfg:51
+#: data/units/Elvish_Sylph.cfg:53
 msgid "gossamer"
 msgstr "feitiço"
 
@@ -6373,6 +6372,7 @@ msgid "Goblin Rouser"
 msgstr "Atiçador Goblin"
 
 #: data/units/Goblin_Rouser.cfg:19
+#, fuzzy
 msgid ""
 "Standard bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -6380,9 +6380,7 @@ msgid ""
 "Nonetheless, a rouser's frenzied goading effectively steels the younger at "
 "arms to fight harder and longer before they die.\n"
 "\n"
-"Special Notes: the leadership of a Goblin Rouser enables friendly units next "
-"to it to deal more damage in combat, though this only applies to units of "
-"lower level."
+"Special Notes:"
 msgstr ""
 "Portadores de bandeiras são uma coisa estranha entre os goblins. Um goblin "
 "que sobreviveu a várias batalhas a ponto de ser considerado um veterano já é "
@@ -6611,14 +6609,14 @@ msgstr ""
 "ferimentos de seus colegas."
 
 #: data/units/Human_Horse_Paladin.cfg:21
+#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes: the Paladin's charging lance attack doubles both damage dealt "
 "and received. This does not affect his defensive retaliation. The Paladin's "
 "holy attack with his sword deals tremendous damage to the undead, and even "
-"some to living creatures. Paladins are capable of some healing, though they "
-"can only delay the effects of poison, not cure them entirely."
+"some to living creatures."
 msgstr ""
 "\n"
 "\n"
@@ -6713,7 +6711,7 @@ msgstr ""
 #: data/units/Human_Loyalist_Sergeant.cfg:50
 #: data/units/Orcish_Crossbowman.cfg:54 data/units/Orcish_Crossbowman.cfg:113
 #: data/units/Orcish_Slurbow.cfg:105 data/units/Orcish_Slurbow.cfg:164
-#: data/units/Undead_Skele_Death_Knight.cfg:62
+#: data/units/Undead_Skele_Death_Knight.cfg:64
 msgid "crossbow"
 msgstr "besta"
 
@@ -6764,6 +6762,7 @@ msgid "Duelist"
 msgstr "Duelista"
 
 #: data/units/Human_Loyalist_Duelist.cfg:19
+#, fuzzy
 msgid ""
 "It is a peculiar fashion of Wesnoth's nobility, in that they typically "
 "enroll their sons into one of two orders of armigers, training them either "
@@ -6778,8 +6777,7 @@ msgid ""
 "enough to be veterans typically do so by making such concessions to utility "
 "and survival.\n"
 "\n"
-"Special Notes: their skill at skirmishing allows these fencers to dart right "
-"past an opponent, ignoring zones of control."
+"Special Notes:"
 msgstr ""
 "É um costume particular à nobreza de Wesnoth inscrever seus filhos em uma de "
 "duas ordens de combate, treinando-os como cavaleiros, ou esgrima. Duelistas "
@@ -6808,6 +6806,7 @@ msgid "Fencer"
 msgstr "Espadachim"
 
 #: data/units/Human_Loyalist_Fencer.cfg:20
+#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -6820,8 +6819,7 @@ msgid ""
 "disadvantage. They relish, often literally, in dancing circles around troops "
 "like heavy infantry, in mockery of the price they pay for their full plate.\n"
 "\n"
-"Special Notes: their skill at skirmishing allows fencers to dart right past "
-"an opponent, ignoring zones of control."
+"Special Notes:"
 msgstr ""
 "Espadachins pertencem a uma escola de combate cuja filosofia diz que a "
 "armadura que os soldados usam é o seu pior inimigo. Enquanto a armadura pode "
@@ -6842,14 +6840,13 @@ msgid "General"
 msgstr "General"
 
 #: data/units/Human_Loyalist_General.cfg:29
+#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms they swore fealty to. Their "
 "training and experience suffice to carry out these orders.\n"
 "\n"
-"Special Notes: the leadership of a General enables friendly units next to it "
-"to deal more damage in combat, though this only applies to units of lower "
-"level."
+"Special Notes:"
 msgstr ""
 "Como os grandes líderes dos exércitos humanos, generais são responsáveis "
 "pela proteção de grandes ou importantes áreas nos reinos humanos. Seu "
@@ -6864,15 +6861,14 @@ msgid "Grand Marshal"
 msgstr "Grande Marechal"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:23
+#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have surpassed many trials by fire, "
 "proving their tactical facility and their considerable mettle at personal "
 "combat.\n"
 "\n"
-"Special Notes: the leadership of a Grand Marshal enables friendly units next "
-"to it to deal more damage in combat, though this only applies to units of "
-"lower level."
+"Special Notes:"
 msgstr ""
 "O grau de Grande Marechal é um dos maiores nos exércitos da humanidade, e "
 "aqueles que portam este título sobrepujaram muitos testes de ferro e fogo, "
@@ -7009,13 +7005,12 @@ msgid "Lieutenant"
 msgstr "Tenente"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:24
+#, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks.\n"
 "\n"
-"Special Notes: the leadership of a Lieutenant enables friendly units next to "
-"it to deal more damage in combat, though this only applies to units of lower "
-"level."
+"Special Notes:"
 msgstr ""
 "Treinados com espadas e bestas, tenentes lideram pequenos grupos de soldados "
 "humanos, coordenando seus ataques e aumentando a capacidade de luta daqueles "
@@ -7073,6 +7068,7 @@ msgid "Master at Arms"
 msgstr "Mestre de Armas"
 
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:21
+#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -7086,8 +7082,7 @@ msgid ""
 "positions in which their flamboyant nature is not only accepted, but is "
 "perhaps even useful.\n"
 "\n"
-"Special Notes: their skill at skirmishing allows these master fencers to "
-"dart right past an opponent, ignoring zones of control."
+"Special Notes:"
 msgstr ""
 "Mestres espadachins têm uma vida invejada. Apesar de terem percorrido um "
 "caminho insensato e perigoso, chegou enfim a hora de colherem suas "
@@ -7292,7 +7287,7 @@ msgstr ""
 "Nota especial: O ataque a distância dos magos é magico, e tem uma grande "
 "chance de acertar um oponente."
 
-#: data/units/Human_Mage.cfg:135
+#: data/units/Human_Mage.cfg:137
 msgid "female^Mage"
 msgstr "Maga"
 
@@ -7312,11 +7307,66 @@ msgstr "Mago Vermelho"
 msgid "Silver Mage"
 msgstr "Mago prateado"
 
+#: data/units/Human_Mage_Silver.cfg:23
+#, fuzzy
+msgid ""
+"The many paths that a mage can take in study lead to strikingly different "
+"ends. Silver magi have devoted themselves to a study of the forces that bind "
+"reality together, and have managed, somewhat, to unravel the mysteries of a "
+"world far more vast than most would ever imagine. Often viewed as sages, or "
+"wandering mystics, silver magi act under an agenda which is obscure even to "
+"their own colleagues. Though helpful to the magisteriums which often employ "
+"them in the field, they remain somewhat aloof.\n"
+"\n"
+"They have, in fact, their own order amongst the ranks of magi, an order "
+"which withholds certain secrets from their peers. One of these is an "
+"apparent ability to cross great distances, faster than one could possibly "
+"travel on foot. Members of the silver order ardently refuse to discuss the "
+"workings of this with any of their fellow magi, and on those rare occasions "
+"when others have pried into their work, they have abandoned the endeavor, "
+"never to speak of it again.\n"
+"\n"
+"Silver magi are often more physically adept than other magi, and their "
+"skills are of undeniable use on the battlefield, if one can manage to coerce "
+"the mage into applying them.\n"
+"\n"
+"Special Notes: the ranged attack of a silver mage is magical, and always has "
+"a high chance of hitting an opponent. Silver Magi are well-attuned to their "
+"magical natures and are highly resistant to non-physical damage."
+msgstr ""
+"Os vários caminhos que um mago pode trilhar por seu estudo levam a finais "
+"completamente diferentes. Os magos prateados se devotaram ao estudo das "
+"forças que formam a realidade, e conseguiram, até certo ponto, descobrir os "
+"mistérios de um mundo muito maior que a maioria das pessoas consegue "
+"imaginar. Muitas vezes vistos como sábios, ou místicos errantes, os magos "
+"prateados agem com propósitos que mesmos os outros magos têm dificuldade em "
+"compreender. Apesar de úteis para aqueles que empregam os seus serviços, "
+"eles sempre se mantém um tanto quanto distantes.\n"
+"\n"
+"Eles têm, de fato, sua própria organização entre os magos, uma ordem que "
+"esconde certos segredos de seus pares. Um deles é a habilidade de viajar "
+"grandes distâncias mais rapidamente do que seria realisticamente possível. "
+"Membros da ordem se recusam a falar sobre esta técnica com outros magos, e "
+"nas poucas vezes em que alguém conseguiu espionar o trabalho de um mago "
+"prateado, eles abandonaram sua busca, e nunca mais falaram do assunto.\n"
+"\n"
+"Magos prateados costumam ser mais aptos fisicamente do que outros magos, e "
+"suas habilidades são de utilidade inegável no campo de batalha, uma vez que "
+"alguém consiga convencer o mago a aplicá-las.\n"
+"\n"
+"Nota especial: O ataque a distância do mago prateado é mágico, e sempre tem "
+"uma alta chance de acertar o oponente. Magos prateados estão bem atunados a "
+"sua natureza mágica, e se tornam resistentes a danos de natureza não física. "
+"Além disso, eles podem viajar entre duas vilas quaisquer instantaneamente, "
+"dado que o jogador controle ambas as vilas, e a vila de destino esteja "
+"desocupada."
+
 #: data/units/Human_Mage_White.cfg:3
 msgid "White Mage"
 msgstr "Mago Branco"
 
 #: data/units/Human_Mage_White.cfg:25
+#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -7331,8 +7381,7 @@ msgid ""
 "\n"
 "Special Notes: the light cast by a white mage is magical in nature, and "
 "always has a high chance of hitting an opponent. This light does tremendous "
-"damage to the undead, and can even damage living creatures. White magi are "
-"capable of healing units around them, and curing them of poison."
+"damage to the undead, and can even damage living creatures."
 msgstr ""
 "Alguns magos, conforme aprendem sobre o mundo ao seu redor, e sobre a o "
 "sofrimento e penúria sob os quais a humanidade muitas vezes vive, descobrem "
@@ -7355,7 +7404,7 @@ msgstr ""
 msgid "lightbeam"
 msgstr "feixe de luz"
 
-#: data/units/Human_Mage_White.cfg:123
+#: data/units/Human_Mage_White.cfg:125
 msgid "female^White Mage"
 msgstr "Maga Branca"
 
@@ -7364,6 +7413,7 @@ msgid "Mage of Light"
 msgstr "Mago da Luz"
 
 #: data/units/Human_Mage_of_Light.cfg:27
+#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi are bestowed with "
 "vast spiritual powers. By strict devotion to the path of the light, they can "
@@ -7375,10 +7425,7 @@ msgid ""
 "\n"
 "Special Notes: the light cast by a mage of light is magical in nature, and "
 "always has a high chance of hitting an opponent. This light does tremendous "
-"damage to the undead, and even does some to living creatures. Magi of Light "
-"are capable of healing units around them, and curing them of poison. They "
-"also have the power of Illumination, which increases the lighting level in "
-"the area adjacent to the mage."
+"damage to the undead, and even does some to living creatures."
 msgstr ""
 "Depois de anos de experiência, os mais devotos dos magos brancos recebem "
 "vastos poderes espirituais. Através de uma devoção severa ao caminho da luz, "
@@ -7395,7 +7442,7 @@ msgstr ""
 "veneno. Eles também possuem o poder da Iluminação, que aumenta o nível de "
 "iluminação das áreas adjacentes ao mago."
 
-#: data/units/Human_Mage_of_Light.cfg:103
+#: data/units/Human_Mage_of_Light.cfg:105
 msgid "female^Mage of Light"
 msgstr "Maga da Luz"
 
@@ -7456,12 +7503,12 @@ msgstr ""
 "dobrado, atacando por trás do inimigo. Suas facas de arremesso também são "
 "envenedas, sugando constantemente as forças do inimigo."
 
-#: data/units/Human_Outlaw_Assassin.cfg:91
-#: data/units/Human_Outlaw_Rogue.cfg:59
+#: data/units/Human_Outlaw_Assassin.cfg:93
+#: data/units/Human_Outlaw_Rogue.cfg:61
 msgid "knife"
 msgstr "faca"
 
-#: data/units/Human_Outlaw_Assassin.cfg:149
+#: data/units/Human_Outlaw_Assassin.cfg:143
 msgid "female^Assassin"
 msgstr "Assassina"
 
@@ -7552,7 +7599,7 @@ msgstr ""
 "Nota especial: enquanto uma unidade do mesmo time que o assaltante distrai "
 "um inimigo, este pode atacá-la por trás, causando o dobro do dano."
 
-#: data/units/Human_Outlaw_Rogue.cfg:106
+#: data/units/Human_Outlaw_Rogue.cfg:108
 msgid "female^Rogue"
 msgstr "Assaltante"
 
@@ -7586,7 +7633,7 @@ msgstr ""
 "Nota especial: enquanto uma unidade do mesmo time que o ladrão distrai o "
 "inimigo, este pode atacar por trás, causando o dobro de dano no oponente."
 
-#: data/units/Human_Outlaw_Thief.cfg:111
+#: data/units/Human_Outlaw_Thief.cfg:113
 msgid "female^Thief"
 msgstr "Ladra"
 
@@ -7646,6 +7693,7 @@ msgid "female^Mermaid Diviner"
 msgstr "Sereia Adivinho"
 
 #: data/units/Mermaid_Diviner.cfg:24
+#, fuzzy
 msgid ""
 "Mermaid Priestesses meet their calling with a fervor that leaves their human "
 "counterparts somewhat taken aback. This may have its roots in a legend they "
@@ -7655,10 +7703,7 @@ msgid ""
 "\n"
 "Special Notes: the light cast by a diviner is magical in nature, and always "
 "has a high chance of hitting an opponent. This light does tremendous damage "
-"to the undead, and even does some to living creatures. Diviners are capable "
-"of healing units around them, and curing them of poison. They also have the "
-"power of Illumination, which increases the lighting level in the area "
-"adjacent to the mermaid."
+"to the undead, and even does some to living creatures."
 msgstr ""
 "Sereias Madres seguem sua vocação com um fervor que deixa suas contrapartes "
 "humanas um tanto quanto estarrecidas. Isso pode ter suas raízes em uma lenda "
@@ -7701,7 +7746,7 @@ msgstr ""
 "mágica, e sempre têm uma grande chance de acertar seus oponentes."
 
 #: data/units/Mermaid_Enchantress.cfg:46 data/units/Mermaid_Initiate.cfg:48
-#: data/units/Mermaid_Siren.cfg:78
+#: data/units/Mermaid_Siren.cfg:80
 msgid "water spray"
 msgstr "jato d'água"
 
@@ -7736,6 +7781,7 @@ msgid "female^Mermaid Priestess"
 msgstr "Sereia Madre"
 
 #: data/units/Mermaid_Priestess.cfg:22
+#, fuzzy
 msgid ""
 "Mermen share the creed that much of humanity follows, though for cultural "
 "reasons, the upholding of this is left to the mermaids, who are more "
@@ -7747,8 +7793,7 @@ msgid ""
 "\n"
 "Special Notes: the light cast by a priestess is magical in nature, and "
 "always has a high chance of hitting an opponent. This light does tremendous "
-"damage to the undead, and even does some to living creatures. Priestesses "
-"are capable of healing units around them, and curing them of poison."
+"damage to the undead, and even does some to living creatures."
 msgstr ""
 "Os sereios seguem as mesmas crenças que grande parte da humanidade segue, "
 "embora, por razões culturais, a manutenção do credo é responsabilidade das "
@@ -7835,7 +7880,7 @@ msgstr ""
 "Estas hábeis criaturas do mar são poderosas e rápidas em qualquer ambiente "
 "aquático, mas tem grandes problemas de se moverem em terra."
 
-#: data/units/Merman_Fighter.cfg:31 data/units/Merman_Hoplite.cfg:47
+#: data/units/Merman_Fighter.cfg:31 data/units/Merman_Hoplite.cfg:49
 #: data/units/Merman_Triton.cfg:32 data/units/Merman_Triton.cfg:46
 #: data/units/Merman_Warrior.cfg:31
 msgid "trident"
@@ -7845,12 +7890,15 @@ msgstr "tridente"
 msgid "Merman Hoplite"
 msgstr "Sereio Hoplita"
 
-#: data/units/Merman_Hoplite.cfg:19
+#: data/units/Merman_Hoplite.cfg:21
+#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
 "steadfast line against the rages of battle. In times of desperation, they "
-"can even do so on land, though not nearly as well as a creature with legs."
+"can even do so on land, though not nearly as well as a creature with legs.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Com seus enormes escudos, os sereios hoplitas formam a guarda de elite do "
 "reino das águas. Sua armadura poderosa e sua disciplina rígida lhes permite "
@@ -7982,7 +8030,7 @@ msgstr ""
 "incautos. Elas podem morder e envenenar seus inimigos, ou podem atirar suas "
 "teias à longa distância, deixando-os lentos."
 
-#: data/units/Monster_Cave_Spider.cfg:76
+#: data/units/Monster_Cave_Spider.cfg:78
 msgid "web"
 msgstr "teia"
 
@@ -8001,11 +8049,11 @@ msgstr ""
 "oponentes com fortes tentáculos ou cuspir de longe uma tinta venenosa. O "
 "melhor jeito de sobreviver a um encontro com esses monstros é ficar em terra."
 
-#: data/units/Monster_Cuttle_Fish.cfg:39 data/units/Monster_Tentacle.cfg:62
+#: data/units/Monster_Cuttle_Fish.cfg:39 data/units/Monster_Tentacle.cfg:64
 msgid "tentacle"
 msgstr "tentáculo"
 
-#: data/units/Monster_Cuttle_Fish.cfg:86
+#: data/units/Monster_Cuttle_Fish.cfg:88
 msgid "ink"
 msgstr "tinta"
 
@@ -8025,7 +8073,7 @@ msgstr ""
 
 #: data/units/Monster_Giant_Mudcrawler.cfg:51 data/units/Monster_Yeti.cfg:39
 #: data/units/Troll_Rocklobber.cfg:27 data/units/Troll_Whelp.cfg:26
-#: data/units/Undead_Skeleton_Archer.cfg:34
+#: data/units/Undead_Skeleton_Archer.cfg:36
 msgid "fist"
 msgstr "punho"
 
@@ -8050,7 +8098,7 @@ msgstr ""
 msgid "sting"
 msgstr "ferroada"
 
-#: data/units/Monster_Giant_Scorpion.cfg:55
+#: data/units/Monster_Giant_Scorpion.cfg:57
 msgid "pincers"
 msgstr "garras"
 
@@ -8081,10 +8129,13 @@ msgstr ""
 msgid "Tentacle of the Deep"
 msgstr "Tentáculos das profundezas"
 
-#: data/units/Monster_Tentacle.cfg:16
+#: data/units/Monster_Tentacle.cfg:18
+#, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
-"below the waves."
+"below the waves.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Tentáculos das profundezas são as extremidades de um monstro ainda maior que "
 "vive embaixo das ondas."
@@ -8306,13 +8357,16 @@ msgstr ""
 msgid "Orcish Leader"
 msgstr "Líder Orc"
 
-#: data/units/Orcish_Leader.cfg:16
+#: data/units/Orcish_Leader.cfg:18
+#, fuzzy
 msgid ""
 "Orcish Leaders are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
 "necessity, but are much more skilled with the sword; all in all, they are "
 "powerful fighters. Their natural leadership skills make them very precious "
-"in battle: if the Leader is lost, so is the battle."
+"in battle: if the Leader is lost, so is the battle.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Estes são os chefes das tribos orcs. Eles fazem decisões importantes e "
 "lideram seu povo no combate. Eles carregam um arco por necessidade, mas são "
@@ -8324,13 +8378,16 @@ msgstr ""
 msgid "Orcish Ruler"
 msgstr "Regente Orc"
 
-#: data/units/Orcish_Ruler.cfg:16
+#: data/units/Orcish_Ruler.cfg:18
+#, fuzzy
 msgid ""
 "Orcish Rulers are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
 "necessity, but are much more skilled with the sword; all in all, they are "
 "powerful fighters. Their natural leadership skills make them very precious "
-"in battle: if the Ruler is lost, so is the battle."
+"in battle: if the Ruler is lost, so is the battle.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Estes são os chefes das tribos orcs. Eles fazem decisões importantes e "
 "lideram seu povo no combate. Eles carregam um arco por necessidade, mas são "
@@ -8338,7 +8395,7 @@ msgstr ""
 "liderança natural fazem deles preciosos na batalha. Se o líder cai, o "
 "exército inteiro cai."
 
-#: data/units/Orcish_Ruler.cfg:30 data/units/Orcish_Sovereign.cfg:32
+#: data/units/Orcish_Ruler.cfg:32 data/units/Orcish_Sovereign.cfg:34
 #: data/units/Orcish_Warlord.cfg:28 data/units/Orcish_Warrior.cfg:27
 #, fuzzy
 msgid "greatsword"
@@ -8394,13 +8451,16 @@ msgstr ""
 msgid "Orcish Sovereign"
 msgstr "Soberano Orc"
 
-#: data/units/Orcish_Sovereign.cfg:18
+#: data/units/Orcish_Sovereign.cfg:20
+#, fuzzy
 msgid ""
 "Orcish Sovereigns are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
 "necessity, but are much more skilled with the sword; all in all, they are "
 "powerful fighters. Their natural leadership skills make them very precious "
-"in battle: if the Sovereign is lost, so is the battle."
+"in battle: if the Sovereign is lost, so is the battle.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Soberanos orcs são os chefes de sua tribo. Eles tomam decisões importantes e "
 "levam seu povo ao combate. Eles carregam um arco, mas são bons mesmo é com a "
@@ -8439,13 +8499,16 @@ msgstr ""
 msgid "Saurian Ambusher"
 msgstr "Lagarto Emboscador"
 
-#: data/units/Saurian_Ambusher.cfg:18
+#: data/units/Saurian_Ambusher.cfg:20
+#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
 "valued as scouts as they can navigate through rough terrain and around "
 "opponents. Saurian Ambushers possess the strength to take full advantage of "
-"this fact. The best Ambushers go on to become Saurian Flankers."
+"this fact. The best Ambushers go on to become Saurian Flankers.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Os lagartos emboscadores são altamente habilidosos no uso da lança. Apesar "
 "de seu sangue frio, e de sua relativa fragilidade, eles são muito valiosos "
@@ -8458,12 +8521,15 @@ msgstr ""
 msgid "Saurian Augur"
 msgstr "Lagarto Augur"
 
-#: data/units/Saurian_Augur.cfg:25
+#: data/units/Saurian_Augur.cfg:27
+#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Augurs are valued as healers because they can provide aid to their "
 "allies regardless of terrain or opposition. In addition to healing they "
-"possess knowledge of cold magic."
+"possess knowledge of cold magic.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Apesar de seu sangue frio e de sua fragilidade, os Auguros são valiosos como "
 "curandeiros, por poderem ajudar seus aliados independentemente do terreno ou "
@@ -8474,13 +8540,16 @@ msgstr ""
 msgid "Saurian Flanker"
 msgstr "Lagarto Flanqueador"
 
-#: data/units/Saurian_Flanker.cfg:19
+#: data/units/Saurian_Flanker.cfg:21
+#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
 "valued as scouts as they can navigate through rough terrain and around "
 "opponents. Saurian Flankers possess the strength to take full advantage of "
-"this fact."
+"this fact.\n"
+"\t\n"
+"Special Notes:"
 msgstr ""
 "Os lagartos flanqueadores são altamente habilidosos no uso da lança. Apesar "
 "de seu sangue frio, e de sua relativa fragilidade, eles são muito valiosos "
@@ -8492,12 +8561,15 @@ msgstr ""
 msgid "Saurian Oracle"
 msgstr "Oráculo Lagarto"
 
-#: data/units/Saurian_Oracle.cfg:25
+#: data/units/Saurian_Oracle.cfg:27
+#, fuzzy
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
 "forth the magic of the cold north, and they do retain their basic healing "
-"ability."
+"ability.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Os lagartos denominados de Oráculos são aqueles que abandonaram seu papel "
 "como curandeiros para refinar sua habilidade com as artes negras. Apesar de "
@@ -8508,12 +8580,15 @@ msgstr ""
 msgid "Saurian Skirmisher"
 msgstr "Lagarto Combatente"
 
-#: data/units/Saurian_Skirmisher.cfg:18
+#: data/units/Saurian_Skirmisher.cfg:20
+#, fuzzy
 msgid ""
 "Saurian Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
 "valued as scouts as they can navigate through rough terrain and around "
-"opponents. The best Skirmishers go on to become Saurian Ambushers."
+"opponents. The best Skirmishers go on to become Saurian Ambushers.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Lagartos combatentes são habilidosos no uso da lança. Apesar de seu sangue "
 "frio e sua fragilidade, eles são valiosos como batedores, já que podem andar "
@@ -8524,11 +8599,14 @@ msgstr ""
 msgid "Saurian Soothsayer"
 msgstr "Lagarto Vidente"
 
-#: data/units/Saurian_Soothsayer.cfg:26
+#: data/units/Saurian_Soothsayer.cfg:28
+#, fuzzy
 msgid ""
 "Saurian Soothsayers are highly valued as healers because they can provide "
 "aid to their friends regardless of terrain or opposition. In addition to "
-"curing their allies they possess knowledge of cold magic."
+"curing their allies they possess knowledge of cold magic.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Lagartos videntes são muito valorizados como curandeiros por poderem prover "
 "ajuda a seus amigos independentemente do terreno ou da oposiçao. Além de "
@@ -8539,6 +8617,7 @@ msgid "Troll"
 msgstr "Troll"
 
 #: data/units/Troll.cfg:18
+#, fuzzy
 msgid ""
 "Trolls have been a mote to trouble the thoughts of humanity and dwarf-kind, "
 "who remain baffled at the origins of these creatures, and perhaps more "
@@ -8548,8 +8627,7 @@ msgid ""
 "extensions of their arms, used for the same purpose of mauling their prey "
 "into submission.\n"
 "\n"
-"Special Notes: Trolls possess the regeneration ability, which heals them as "
-"though they were always stationed in a village."
+"Special Notes:"
 msgstr ""
 "Os trolls sempre foram temidos pelos humanos e anões, que continuam "
 "ignorantes a respeito das origens destas criaturas e, talvez mais "
@@ -8567,6 +8645,7 @@ msgid "Great Troll"
 msgstr "Grande Troll"
 
 #: data/units/Troll_Great.cfg:19
+#, fuzzy
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
 "and wisdom, it becomes something extraordinary, a beast remembered for "
@@ -8574,8 +8653,7 @@ msgid ""
 "tales about trolls, and to see the stories made flesh does nothing to "
 "diminish their grandeur.\n"
 "\n"
-"Special Notes: Trolls possess the regeneration ability, which heals them as "
-"though they were always stationed in a village."
+"Special Notes:"
 msgstr ""
 "Quando um troll, além de sua sobrenatural força vital, consegue também idade "
 "e sabedorias equivalentes, ele se torna algo extraordinário, um monstro a "
@@ -8591,13 +8669,13 @@ msgid "Troll Hero"
 msgstr "Herói Troll"
 
 #: data/units/Troll_Hero.cfg:18
+#, fuzzy
 msgid ""
 "Some trolls are born with an undue share of the strength and vitality that "
 "characterizes their race. In a society where might makes right, those of "
 "their ilk revere them as heroes.\n"
 "\n"
-"Special Notes: Trolls possess the regeneration ability, which heals them as "
-"though they were always stationed in a village."
+"Special Notes:"
 msgstr ""
 "Alguns trolls nascem com uma quantidade ainda maior de força e vitalidade do "
 "que a característica para sua raça. Em uma sociedade onde a lei do mais "
@@ -8611,6 +8689,7 @@ msgid "Troll Rocklobber"
 msgstr "Troll Atirador de Pedra"
 
 #: data/units/Troll_Rocklobber.cfg:20
+#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
@@ -8619,9 +8698,7 @@ msgid ""
 "is formed is easily adapted to a crude sling.\n"
 "\n"
 "Special Notes: though unwieldy, a stone thrown by one of these monsters is "
-"much more deadly than any arrow, if it manages to hit. Trolls possess the "
-"regeneration ability, which heals them as though they were always stationed "
-"in a village."
+"much more deadly than any arrow, if it manages to hit."
 msgstr ""
 "A idéia de atirar uma rocha nos inimigos em combate certamente já ocorreu em "
 "muitos trolls, e alguns deles começaram a utilizá-las como suas armas "
@@ -8640,6 +8717,7 @@ msgid "Troll Warrior"
 msgstr "Guerreiro Troll"
 
 #: data/units/Troll_Warrior.cfg:20
+#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -8650,8 +8728,7 @@ msgid ""
 "metalworking of any kind. Given how dangerous a troll is in combat, the "
 "thought of a troll in full armor is entirely unsettling.\n"
 "\n"
-"Special Notes: Trolls possess the regeneration ability, which heals them as "
-"though they were always stationed in a village."
+"Special Notes:"
 msgstr ""
 "Os trolls normalmente não precisam nem preferem qualquer armamento em "
 "combate, uma vez que 'pedras e paus' são mais do que suficiente para eles. "
@@ -8670,6 +8747,7 @@ msgid "Troll Whelp"
 msgstr "Filhote Troll"
 
 #: data/units/Troll_Whelp.cfg:19
+#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -8677,8 +8755,7 @@ msgid ""
 "all fours, but any inhibition this causes them is more than made up for by "
 "the raw strength of their race.\n"
 "\n"
-"Special Notes: Trolls possess the regeneration ability, which heals them as "
-"though they were always stationed in a village."
+"Special Notes:"
 msgstr ""
 "Dizer que um troll é um filhote passa uma idéia errada, uma vez que seus "
 "corpos nessa idade já são muito mais poderosos do que o de um homem adulto. "
@@ -8863,7 +8940,7 @@ msgstr ""
 msgid "shadow wave"
 msgstr "onda sombria"
 
-#: data/units/Undead_Necro_Dark_Adept.cfg:175
+#: data/units/Undead_Necro_Dark_Adept.cfg:177
 msgid "female^Dark Adept"
 msgstr "Aprendiz da Escuridão"
 
@@ -8944,14 +9021,17 @@ msgstr "peste"
 msgid "Bone Shooter"
 msgstr "Atirador de Ossos"
 
-#: data/units/Undead_Skele_Bone_Shooter.cfg:14
+#: data/units/Undead_Skele_Bone_Shooter.cfg:16
+#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
 "particular, are often outfitted with a truly vile arsenal. Their quivers are "
 "filled with shafts made not of wood, but of the bones of their victims. "
 "Dubbed simply 'Bone-Shooters' by their unfortunate enemies, these "
-"abominations are a terror to all who live."
+"abominations are a terror to all who live.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Das criações de um feiticeiro negro, algumas se adaptam melhor à falsa vida "
 "dada a elas. À essa adaptação é dado um equipamento equivalente, e os "
@@ -8961,8 +9041,8 @@ msgstr ""
 "pelos seus inimigos desafortunados, essas abominações são um terror para "
 "todos os que vivem."
 
-#: data/units/Undead_Skele_Bone_Shooter.cfg:39
-#: data/units/Undead_Skele_Soul_Shooter.cfg:29
+#: data/units/Undead_Skele_Bone_Shooter.cfg:41
+#: data/units/Undead_Skele_Soul_Shooter.cfg:31
 msgid "stab"
 msgstr "encravar"
 
@@ -8970,12 +9050,15 @@ msgstr "encravar"
 msgid "Death Knight"
 msgstr "Cavaleiro da Morte"
 
-#: data/units/Undead_Skele_Death_Knight.cfg:17
+#: data/units/Undead_Skele_Death_Knight.cfg:19
+#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and a sense of betrayal, came back to this world as Death Knights. Wielding "
 "the same weapons as they did before, they command the Undead in their quest "
-"for revenge."
+"for revenge.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Algumas vezes os mais poderosos guerreiros e generais, amaldiçoados com ódio "
 "e vingança, voltam ao mundo como Cavaleiros da Morte. Usando as mesmas armas "
@@ -8985,13 +9068,16 @@ msgstr ""
 msgid "Deathblade"
 msgstr "Espada da Morte"
 
-#: data/units/Undead_Skele_Deathblade.cfg:16
+#: data/units/Undead_Skele_Deathblade.cfg:18
+#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters will often "
 "recognize this, and try to take advantage of it by outfitting them to match "
 "the skills they once had. Though frail, these monsters are much faster than "
-"the rest of their kind, both on foot and with their blades."
+"the rest of their kind, both on foot and with their blades.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Na vida, abominações conhecidas como \"Espadas da Morte\" eram mestres do "
 "combate, soldados que eram tanto de elite como mortais. Seus novos mestres "
@@ -9004,14 +9090,17 @@ msgstr ""
 msgid "Draug"
 msgstr "Draug"
 
-#: data/units/Undead_Skele_Draug.cfg:16
+#: data/units/Undead_Skele_Draug.cfg:18
+#, fuzzy
 msgid ""
 "Towering remains of what once were legendary warriors, the Draug strike fear "
 "in the hearts of all who oppose them. They are driven not by malice, but are "
 "forever bound within the dream of unlife, wandering through the greatest "
 "battles of their memory, and fighting desperately for release, for a peace "
 "bought only by strength of arms. The memory of their enemy, and the purpose "
-"of their struggle have long faded into oblivion."
+"of their struggle have long faded into oblivion.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Imponentes remanescentes do que uma vez foram guerreiros lendários, os Draug "
 "causam medo nos corações daqueles que se opôem a eles. Não são movidos por "
@@ -9025,13 +9114,17 @@ msgstr ""
 msgid "Revenant"
 msgstr "Revenante"
 
-#: data/units/Undead_Skele_Revenant.cfg:15
+#: data/units/Undead_Skele_Revenant.cfg:17
+#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
 "now long gone. Even the sorcerers who raised them can only speculate on "
 "their past. Such questions aside, a Revenant is a powerful tool in combat: a "
-"fearless warrior that feels no pain, and which will fight to the bitter end."
+"fearless warrior that feels no pain, and which will fight to the bitter "
+"end.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Recebendo uma vida falsa para poderem lutar novamente, as criaturas "
 "conhecidas como revenantes claramente foram grandes guerreiros em sua era, "
@@ -9044,13 +9137,16 @@ msgstr ""
 msgid "Soul Shooter"
 msgstr "Atirador de Almas"
 
-#: data/units/Undead_Skele_Soul_Shooter.cfg:16
+#: data/units/Undead_Skele_Soul_Shooter.cfg:18
+#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
 "battle, guided by the fading memory of their former skill, neither knowing, "
 "nor caring what their purpose, or foes be. They are driven only by a malice "
-"borne of the anguish of their empty and incoherent existence."
+"borne of the anguish of their empty and incoherent existence.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Os mais poderosos dos arqueiros mortos-vivos em geral são aqueles que já "
 "eram arqueiros em sua vida anterior. Eles vagam pelos campos de batalha, "
@@ -9062,12 +9158,15 @@ msgstr ""
 msgid "Skeleton"
 msgstr "Esqueleto"
 
-#: data/units/Undead_Skeleton.cfg:15
+#: data/units/Undead_Skeleton.cfg:17
+#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
 "neither pain, nor death, and their mere presence will often frighten away "
-"any who would challenge their master."
+"any who would challenge their master.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Esqueletos são guerreiros que foram mortos em batalha e trazidos de volta à "
 "vida por magia negra. Quase sem mente, e inabaláveis em seus propósitos, "
@@ -9078,13 +9177,16 @@ msgstr ""
 msgid "Skeleton Archer"
 msgstr "Esqueleto arqueiro"
 
-#: data/units/Undead_Skeleton_Archer.cfg:14
+#: data/units/Undead_Skeleton_Archer.cfg:16
+#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
 "fight once again. In their master's hands, these soldiers will do anything "
 "to achieve the tasks laid before them, for death holds no fear for one who "
-"is already dead."
+"is already dead.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Um esqueleto arqueiro não é muito diferente dos esqueletos 'normais' que "
 "costumam acompanhá-lo - é um pecado contra a natureza, um guerreiro trazido "
@@ -9121,9 +9223,9 @@ msgstr ""
 "Nota especial: fantasmas possuem resistências a dano incomuns, e moven-se "
 "bem lentamente sobre a água."
 
-#: data/units/Undead_Spirit_Ghost.cfg:47
-#: data/units/Undead_Spirit_Spectre.cfg:72
-#: data/units/Undead_Spirit_Wraith.cfg:49
+#: data/units/Undead_Spirit_Ghost.cfg:49
+#: data/units/Undead_Spirit_Spectre.cfg:74
+#: data/units/Undead_Spirit_Wraith.cfg:51
 msgid "wail"
 msgstr "lamento"
 
@@ -9132,6 +9234,7 @@ msgid "Nightgaunt"
 msgstr "Predador noturno"
 
 #: data/units/Undead_Spirit_Nightgaunt.cfg:18
+#, fuzzy
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
 "countenance that they obscure. These terrible forms are rarely seen by the "
@@ -9141,8 +9244,7 @@ msgid ""
 "Special Notes: while a unit with the same allegiance as the nightgaunt "
 "distracts an enemy, the nightgaunt may strike at the opponent's back, "
 "inflicting double damage. Nightgaunts have very unusual resistances to "
-"damage, and move quite slowly over open water. Nightgaunts are able to hide "
-"at night, leaving no trace of their presence."
+"damage, and move quite slowly over open water."
 msgstr ""
 "O propósito da máscara que cobre o rosto destas criaturas é desconhecido, "
 "assim o como é aquilo que ela esconde. Estas terríveis aparições raramente "
@@ -9160,6 +9262,7 @@ msgid "Shadow"
 msgstr "Sombra"
 
 #: data/units/Undead_Spirit_Shadow.cfg:19
+#, fuzzy
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
 "to retreat into darkness. Since that day, the shadows of the world have held "
@@ -9170,8 +9273,7 @@ msgid ""
 "Special Notes: while a unit with the same allegiance as the shadow distracts "
 "an enemy, the shadow may strike at the opponent's back, inflicting double "
 "damage. Shadows have very unusual resistances to damage, and move quite "
-"slowly over open water. Shadows are able to hide at night, leaving no trace "
-"of their presence."
+"slowly over open water."
 msgstr ""
 "Quando a luz veio ao mundo e deu forma àquilo que era desconhecido, o medo "
 "foi forçado a se esconder na escuridão. Desde esse dia, as sombras do mundo "
@@ -9258,6 +9360,7 @@ msgid "Wose"
 msgstr "Wose"
 
 #: data/units/Wose.cfg:19
+#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -9270,8 +9373,7 @@ msgid ""
 "Woses are utterly unwarlike, but possess a great strength. They are, "
 "however, neither used to, nor quick at moving around.\n"
 "\n"
-"Special Notes: Woses regenerate by using natural resources around them, "
-"without needing to huddle in villages to obtain sustenance and aid."
+"Special Notes:"
 msgstr ""
 "Raramente avistadas, mesmo pelos elfos, os Woses são criaturas sobre as "
 "quais muito pouco se sabe. Tudo o que se conhece deles soube-se através dos "
@@ -9297,6 +9399,7 @@ msgid "Ancient Wose"
 msgstr "Wose Ancestral"
 
 #: data/units/Wose_Ancient.cfg:20
+#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -9308,8 +9411,7 @@ msgid ""
 "Such encounters are all that is known of what are presumably the most "
 "ancient of woses.\n"
 "\n"
-"Special Notes: Woses regenerate by using natural resources around them, "
-"without needing to huddle in villages to obtain sustenance and aid."
+"Special Notes:"
 msgstr ""
 "Existe uma história sobre um fazendeiro que tinha um grande carvalho nas "
 "suas terras, uma árvore que existe desde que seu pai chegou a terra, e na "
@@ -9328,6 +9430,7 @@ msgid "Elder Wose"
 msgstr "Wose Ancião"
 
 #: data/units/Wose_Elder.cfg:19
+#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -9341,8 +9444,7 @@ msgid ""
 "obviously capable of violence, should someone manage to raise the ire of "
 "these creatures.\n"
 "\n"
-"Special Notes: Woses regenerate by using natural resources around them, "
-"without needing to huddle in villages to obtain sustenance and aid."
+"Special Notes:"
 msgstr ""
 "Dizem que os woses possuem muitas formas, todas semelhantes a árvores, e "
 "que, conforme envelhecem, eles ficam maiores e maiores. Lendas contam de "
@@ -9382,7 +9484,7 @@ msgid "+General Purpose Administrators"
 msgstr "+Admnistradores de propósito geral"
 
 #: src/about.cpp:81 src/about.cpp:111 src/multiplayer_connect.cpp:256
-#: src/multiplayer_connect.cpp:310 src/multiplayer_wait.cpp:399
+#: src/multiplayer_connect.cpp:310 src/multiplayer_wait.cpp:395
 msgid "+"
 msgstr "+"
 
@@ -9394,93 +9496,97 @@ msgstr "+  "
 msgid "Close"
 msgstr "Fechar"
 
-#: src/actions.cpp:107
+#: src/actions.cpp:111
 msgid "You don't have a leader to recruit with."
 msgstr "Você não tem um líder com quem recrutar"
 
-#: src/actions.cpp:114
+#: src/actions.cpp:118
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Você deve ter o seu líder em um forte para recrutar ou convocar unidades."
 
-#: src/actions.cpp:133
+#: src/actions.cpp:137
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Não há lugar vago no castelo no qual recrutar uma unidade."
 
-#: src/actions.cpp:315 src/multiplayer_lobby.cpp:357
+#: src/actions.cpp:319 src/multiplayer_lobby.cpp:357
 msgid "none"
 msgstr "nada"
 
-#: src/actions.cpp:634 src/actions.cpp:799
+#: src/actions.cpp:519 src/actions.cpp:651
 msgid "base damage"
 msgstr "dano básico"
 
-#: src/actions.cpp:673 src/actions.cpp:864
+#: src/actions.cpp:558 src/actions.cpp:716
 msgid "Halved"
 msgstr "Dividido por 2"
 
-#: src/actions.cpp:673 src/actions.cpp:864 src/actions.cpp:1219
-#: src/actions.cpp:1456
+#: src/actions.cpp:558 src/actions.cpp:716 src/actions.cpp:1278
+#: src/actions.cpp:1515
 msgid "slowed"
 msgstr "lento"
 
-#: src/actions.cpp:681
+#: src/actions.cpp:566
 msgid "attacker resistance vs"
 msgstr "resistência do atacante contra"
 
-#: src/actions.cpp:681
+#: src/actions.cpp:566
 msgid "attacker vulnerability vs"
 msgstr "vulnerabilidade do atacante contra"
 
-#: src/actions.cpp:695 src/actions.cpp:877
+#: src/actions.cpp:580 src/actions.cpp:729
 msgid "total damage"
 msgstr "dano total"
 
-#: src/actions.cpp:847
+#: src/actions.cpp:699
 msgid "defender resistance vs"
 msgstr "resistência do defensor contra"
 
-#: src/actions.cpp:847
+#: src/actions.cpp:699
 msgid "defender vulnerability vs"
 msgstr "vulnerabilidade do defensor contra"
 
-#: src/actions.cpp:913
+#: src/actions.cpp:765
 msgid "(both should survive)"
 msgstr "(ambos devem sobreviver)"
 
-#: src/actions.cpp:915
+#: src/actions.cpp:767
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% Pr[mata/foi morto/ambos sobrevivem]"
 
-#: src/actions.cpp:1212 src/actions.cpp:1449
+#: src/actions.cpp:1271 src/actions.cpp:1508
 msgid "poisoned"
 msgstr "envenenado"
 
-#: src/actions.cpp:2234
+#: src/actions.cpp:1288 src/actions.cpp:1526
+msgid "stone"
+msgstr "petrefica"
+
+#: src/actions.cpp:2373
 msgid "Ambushed!"
 msgstr "Emboscada!"
 
-#: src/actions.cpp:2269
+#: src/actions.cpp:2408
 msgid "Friendly unit sighted"
 msgstr "Unidade aliada em vista"
 
-#: src/actions.cpp:2271
+#: src/actions.cpp:2410
 msgid "Enemy unit sighted!"
 msgstr "Unidade inimiga em vista!"
 
-#: src/actions.cpp:2276
+#: src/actions.cpp:2415
 msgid "$friends Friendly units sighted"
 msgstr "$friends unidades aliadas vistas"
 
-#: src/actions.cpp:2278
+#: src/actions.cpp:2417
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies unidades inimigas vistas!"
 
-#: src/actions.cpp:2282
+#: src/actions.cpp:2421
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Unidades vistas! ($friends aliadas, $enemies inimigas)"
 
-#: src/actions.cpp:2297
+#: src/actions.cpp:2436
 msgid "(press $hotkey to continue)"
 msgstr "(aperte $hotkey para continuar)"
 
@@ -9540,8 +9646,7 @@ msgstr "Tutorial"
 msgid "replay"
 msgstr "replay"
 
-#: src/dialogs.cpp:397 src/menu_events.cpp:295 src/multiplayer_lobby.cpp:331
-#: src/playturn.cpp:1705
+#: src/dialogs.cpp:397 src/menu_events.cpp:359 src/multiplayer_lobby.cpp:331
 msgid "Turn"
 msgstr "Turno"
 
@@ -9618,8 +9723,8 @@ msgid "Date"
 msgstr "Data"
 
 #: src/dialogs.cpp:560 src/game.cpp:888 src/help.cpp:1166
-#: src/menu_events.cpp:150 src/multiplayer_lobby.cpp:32 src/playturn.cpp:2131
-#: src/playturn.cpp:2398
+#: src/menu_events.cpp:216 src/menu_events.cpp:644
+#: src/multiplayer_lobby.cpp:32
 msgid "Name"
 msgstr "Nome"
 
@@ -9808,7 +9913,7 @@ msgstr ""
 "Houve um problema criando os arquivos necessários para instalar a campanha."
 
 #: src/game.cpp:1042 src/game.cpp:1081 src/game.cpp:1106
-#: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:293
+#: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:337
 msgid "Connection timed out"
 msgstr "Time out na conexão"
 
@@ -9824,7 +9929,7 @@ msgstr "Termos"
 msgid "Sending campaign"
 msgstr "Enviando a campanha"
 
-#: src/game.cpp:1086 src/game.cpp:1111 src/multiplayer_wait.cpp:307
+#: src/game.cpp:1086 src/game.cpp:1111 src/multiplayer_wait.cpp:303
 msgid "Response"
 msgstr "Resposta"
 
@@ -9880,15 +9985,15 @@ msgstr ""
 "O nome de login que voce escolheu é longo demais. Por favor escolha um nome "
 "de login com menos de 18 caracteres"
 
-#: src/game.cpp:1190 src/playcampaign.cpp:113 src/playcampaign.cpp:272
+#: src/game.cpp:1190 src/playcampaign.cpp:113 src/playcampaign.cpp:316
 msgid "The game could not be loaded: "
 msgstr "O jogo não pôde ser carregado: "
 
-#: src/game.cpp:1192 src/playcampaign.cpp:115 src/playcampaign.cpp:275
+#: src/game.cpp:1192 src/playcampaign.cpp:115 src/playcampaign.cpp:319
 msgid "Error while playing the game: "
 msgstr "Erro durante o jogo: "
 
-#: src/game.cpp:1204 src/playcampaign.cpp:117 src/playcampaign.cpp:278
+#: src/game.cpp:1204 src/playcampaign.cpp:117 src/playcampaign.cpp:322
 msgid "The game map could not be loaded: "
 msgstr "O mapa de jogo não pôde ser carregado: "
 
@@ -9924,15 +10029,15 @@ msgstr "' (O programa vai sair agora)"
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game_events.cpp:715
+#: src/game_events.cpp:714
 msgid "Victory:"
 msgstr "Vitória:"
 
-#: src/game_events.cpp:718
+#: src/game_events.cpp:717
 msgid "Defeat:"
 msgstr "Derrota:"
 
-#: src/gamestatus.cpp:579
+#: src/gamestatus.cpp:491
 msgid "Could not write to file"
 msgstr "Não foi possível escrever no arquivo"
 
@@ -9961,8 +10066,7 @@ msgstr "XP necessário: "
 msgid "attacks"
 msgstr "ataca"
 
-#: src/help.cpp:1167 src/menu_events.cpp:149 src/playturn.cpp:2130
-#: src/playturn.cpp:2397
+#: src/help.cpp:1167 src/menu_events.cpp:215 src/menu_events.cpp:643
 msgid "Type"
 msgstr "Tipo"
 
@@ -10070,7 +10174,7 @@ msgstr "Próximo"
 msgid "Skip"
 msgstr "Pular"
 
-#: src/intro.cpp:336
+#: src/intro.cpp:335
 msgid "The End"
 msgstr "O Fim"
 
@@ -10082,96 +10186,114 @@ msgstr "Língua padrão do sistema"
 msgid "?"
 msgstr "?"
 
-#: src/menu_events.cpp:39 src/menu_events.cpp:101 src/playturn.cpp:2485
-#: src/playturn.cpp:2547
+#: src/menu_events.cpp:45
+msgid ""
+"My lord, this unit is an experienced one, having advanced levels! Do you "
+"really want to dismiss $noun?"
+msgstr ""
+"Senhor, esta unidade é experiente, e já passou alguns níveis! Você realmente "
+"quer mandar $noun embora?"
+
+#: src/menu_events.cpp:47
+msgid ""
+"My lord, this unit is close to advancing a level! Do you really want to "
+"dismiss $noun?"
+msgstr ""
+"Senhor, esta unidade está bem perto de passar de nível! Você realmente quer "
+"mandar $noun embora?"
+
+#: src/menu_events.cpp:52
+msgid "her"
+msgstr "ela"
+
+#: src/menu_events.cpp:52
+msgid "him"
+msgstr "ele"
+
+#: src/menu_events.cpp:105 src/menu_events.cpp:167
 msgid "Recruits"
 msgstr "Recrutamentos"
 
-#: src/menu_events.cpp:45 src/menu_events.cpp:105 src/playturn.cpp:2491
-#: src/playturn.cpp:2551
+#: src/menu_events.cpp:111 src/menu_events.cpp:171
 msgid "Recalls"
 msgstr "Convocações"
 
-#: src/menu_events.cpp:51 src/menu_events.cpp:109 src/playturn.cpp:2497
-#: src/playturn.cpp:2555
+#: src/menu_events.cpp:117 src/menu_events.cpp:175
 msgid "Advancements"
 msgstr "Avanços"
 
-#: src/menu_events.cpp:57 src/menu_events.cpp:113 src/playturn.cpp:2503
-#: src/playturn.cpp:2559
+#: src/menu_events.cpp:123 src/menu_events.cpp:179
 msgid "Losses"
 msgstr "Perdas"
 
-#: src/menu_events.cpp:63 src/menu_events.cpp:117 src/playturn.cpp:2509
-#: src/playturn.cpp:2563
+#: src/menu_events.cpp:129 src/menu_events.cpp:183
 msgid "Kills"
 msgstr "Mortes"
 
-#: src/menu_events.cpp:69 src/playturn.cpp:2515
+#: src/menu_events.cpp:135
 msgid "Damage Inflicted"
 msgstr "Dano infligido"
 
-#: src/menu_events.cpp:75 src/playturn.cpp:2521
+#: src/menu_events.cpp:141
 msgid "Damage Taken"
 msgstr "Dano tomado"
 
-#: src/menu_events.cpp:81 src/playturn.cpp:2527
+#: src/menu_events.cpp:147
 msgid "Damage Inflicted (EV)"
 msgstr "Dano infligido (EV)"
 
-#: src/menu_events.cpp:88 src/playturn.cpp:2534
+#: src/menu_events.cpp:154
 msgid "Damage Taken (EV)"
 msgstr "Dano tomado (EV)"
 
-#: src/menu_events.cpp:94 src/playturn.cpp:2540
+#: src/menu_events.cpp:160
 msgid "Statistics"
 msgstr "Estatísticas"
 
-#: src/menu_events.cpp:154 src/playturn.cpp:2402 src/unit.cpp:2206
+#: src/menu_events.cpp:220 src/unit.cpp:2228
 msgid "Moves"
 msgstr "Movimento"
 
-#: src/menu_events.cpp:155 src/playturn.cpp:2403
+#: src/menu_events.cpp:221
 msgid "Location"
 msgstr "Local"
 
-#: src/menu_events.cpp:201 src/playturn.cpp:2449
+#: src/menu_events.cpp:267
 msgid "Unit List"
 msgstr "Lista de unidades"
 
-#: src/menu_events.cpp:215 src/playturn.cpp:1856
+#: src/menu_events.cpp:281
 msgid "Leader"
 msgstr "Líder"
 
-#: src/menu_events.cpp:216 src/menu_events.cpp:227
-#: src/multiplayer_connect.cpp:569 src/playturn.cpp:1857 src/playturn.cpp:1868
+#: src/menu_events.cpp:282 src/menu_events.cpp:293
+#: src/multiplayer_connect.cpp:569
 msgid "Gold"
 msgstr "Ouro"
 
-#: src/menu_events.cpp:217 src/playturn.cpp:1858
+#: src/menu_events.cpp:283
 msgid "Villages"
 msgstr "Vilas"
 
-#: src/menu_events.cpp:219 src/playturn.cpp:1860
+#: src/menu_events.cpp:285
 msgid "Upkeep"
 msgstr "Gasto"
 
-#: src/menu_events.cpp:220 src/multiplayer_connect.cpp:570
-#: src/multiplayer_wait.cpp:397 src/playturn.cpp:1861
+#: src/menu_events.cpp:286 src/multiplayer_connect.cpp:570
+#: src/multiplayer_wait.cpp:393
 msgid "Income"
 msgstr "Receita"
 
-#: src/menu_events.cpp:304 src/playcampaign.cpp:243 src/playcampaign.cpp:364
-#: src/playturn.cpp:1714
+#: src/menu_events.cpp:368 src/playcampaign.cpp:287 src/playcampaign.cpp:408
 msgid "Name:"
 msgstr "Nome:"
 
-#: src/menu_events.cpp:309 src/menu_events.cpp:322
-#: src/multiplayer_create.cpp:462 src/playturn.cpp:1719 src/playturn.cpp:1732
+#: src/menu_events.cpp:373 src/menu_events.cpp:386
+#: src/multiplayer_create.cpp:462
 msgid "Error"
 msgstr "Erro"
 
-#: src/menu_events.cpp:309 src/playturn.cpp:1719
+#: src/menu_events.cpp:373
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -10179,22 +10301,145 @@ msgstr ""
 "Nomes de jogos salvos não podem ter vírgulas, barras ou barras invertidas. "
 "Por favor escolha outro nome."
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1729
+#: src/menu_events.cpp:383
 msgid "Saved"
 msgstr "Salvo"
 
-#: src/menu_events.cpp:319 src/playturn.cpp:1729
+#: src/menu_events.cpp:383
 msgid "The game has been saved"
 msgstr "O jogo foi salvo"
 
-#: src/menu_events.cpp:322 src/playcampaign.cpp:251 src/playcampaign.cpp:372
-#: src/playturn.cpp:1732
+#: src/menu_events.cpp:386 src/playcampaign.cpp:295 src/playcampaign.cpp:416
 msgid "The game could not be saved"
 msgstr "O jogo não pôde ser salvo"
 
-#: src/menu_events.cpp:403 src/playturn.cpp:2598
+#: src/menu_events.cpp:465
 msgid "Chat Log"
 msgstr "Histórico da conversa"
+
+#: src/menu_events.cpp:475
+msgid "Message:"
+msgstr "Mensagem:"
+
+#: src/menu_events.cpp:476
+msgid "Send to allies only"
+msgstr "Enviar apenas para aliados"
+
+#: src/menu_events.cpp:526 src/multiplayer_wait.cpp:389
+msgid "unit^Gold"
+msgstr "Ouro"
+
+#: src/menu_events.cpp:532
+msgid "You have no units available to recruit."
+msgstr "Você não tem unidades disponíveis para recrutar."
+
+#: src/menu_events.cpp:544
+msgid "Recruit"
+msgstr "Recrutar"
+
+#: src/menu_events.cpp:545 src/menu_events.cpp:685
+msgid "Select unit:"
+msgstr "Selecionar unidade:"
+
+#: src/menu_events.cpp:585
+msgid "You don't have enough gold to recruit that unit"
+msgstr "Você não tem ouro o suficiente para recrutar essa unidade"
+
+#: src/menu_events.cpp:635
+msgid "You are separated from your soldiers and may not recall them"
+msgstr "Você está afastado de seus soldados e não pode convocá-los"
+
+#: src/menu_events.cpp:637
+#, fuzzy
+msgid ""
+"There are no troops available to recall\n"
+"\t(You must have veteran survivors from a previous scenario)"
+msgstr ""
+"Você não tem tropas para convocar\n"
+"(É necessário tropas sobreviventes de um cenário anterior)"
+
+#: src/menu_events.cpp:645
+msgid "Level"
+msgstr "Nível"
+
+#: src/menu_events.cpp:672
+msgid "Dismiss Unit"
+msgstr "Desbandar unidade"
+
+#: src/menu_events.cpp:684
+msgid "Recall"
+msgstr "Convocar"
+
+#: src/menu_events.cpp:696
+msgid "You must have at least $cost gold pieces to recall a unit"
+msgstr "Você deve ter pelo menos $cost peças de ouro para convocar uma unidade"
+
+#: src/menu_events.cpp:961
+msgid ""
+"You have not started your turn yet. Do you really want to end your turn?"
+msgstr "Você ainda não começou o seu turno. Você realmente quer terminá-lo?"
+
+#: src/menu_events.cpp:969 src/menu_events.cpp:974
+msgid "Some units have movement left. Do you really want to end your turn?"
+msgstr ""
+"Algumas unidades ainda podem se mover. Quer realmente terminar o turno?"
+
+#: src/menu_events.cpp:988
+msgid "Auto-Save"
+msgstr "auto-salvo"
+
+#: src/menu_events.cpp:990
+msgid "Could not auto save the game. Please save the game manually."
+msgstr ""
+"Não pude salvar o jogo automaticamente. Por favor salve o jogo manualmente."
+
+#: src/menu_events.cpp:1023
+msgid "Rename Unit"
+msgstr "Renomear a unidade"
+
+#: src/menu_events.cpp:1108
+msgid "Place Label"
+msgstr "Colocar nome"
+
+#: src/menu_events.cpp:1109
+msgid "Label:"
+msgstr "Nome:"
+
+#: src/menu_events.cpp:1207
+msgid "Search"
+msgstr "Procurar"
+
+#: src/menu_events.cpp:1387
+msgid "Couldn't find label or unit containing the string '$search'."
+msgstr "Não pude encontrar nome ou unidade contendo '$search'."
+
+#: src/menu_events.cpp:1496
+msgid "prompt^Command:"
+msgstr "Comando:"
+
+#: src/mouse_events.cpp:112
+msgid "Attacker"
+msgstr "Atacante"
+
+#: src/mouse_events.cpp:114
+msgid "Defender"
+msgstr "Defensor"
+
+#: src/mouse_events.cpp:134 src/mouse_events.cpp:712
+msgid "Damage Calculations"
+msgstr "Cálculo de dano"
+
+#: src/mouse_events.cpp:690 src/reports.cpp:278
+msgid "vs"
+msgstr "contra"
+
+#: src/mouse_events.cpp:724
+msgid "Attack Enemy"
+msgstr "Atacar Inimigo"
+
+#: src/mouse_events.cpp:725
+msgid "Choose weapon:"
+msgstr "Escolha a arma:"
 
 #: src/multiplayer.cpp:94
 msgid "Connect to Host"
@@ -10248,12 +10493,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:392 src/multiplayer_wait.cpp:397 src/unit.cpp:2261
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2283
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:392 src/multiplayer_wait.cpp:400 src/unit.cpp:2268
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2290
 msgid ")"
 msgstr ")"
 
@@ -10560,12 +10805,21 @@ msgstr "Observar o jogo"
 
 #: src/multiplayer_lobby.cpp:451
 #, fuzzy
+msgid "Skip Replays"
+msgstr "Pular replay"
+
+#: src/multiplayer_lobby.cpp:452
+#, fuzzy
 msgid "Preferences"
 msgstr "Princesa"
 
-#: src/multiplayer_lobby.cpp:452
+#: src/multiplayer_lobby.cpp:453
 msgid "Quit"
 msgstr "Sair"
+
+#: src/multiplayer_lobby.cpp:459
+msgid "Skip quickly to the active turn when observing"
+msgstr ""
 
 #: src/multiplayer_ui.cpp:79
 msgid "Invalid Color"
@@ -10591,18 +10845,6 @@ msgstr "Pegando dados do jogo..."
 msgid "Choose your side:"
 msgstr "Escolha o seu time:"
 
-#: src/multiplayer_wait.cpp:254
-msgid "Do you want to skip the replay?"
-msgstr "Você quer pular o replay?"
-
-#: src/multiplayer_wait.cpp:254
-msgid "Skip replay"
-msgstr "Pular replay"
-
-#: src/multiplayer_wait.cpp:393 src/playturn.cpp:1960
-msgid "unit^Gold"
-msgstr "Ouro"
-
 #: src/network.cpp:91
 msgid "invalid network handle"
 msgstr "nome de rede inválido"
@@ -10619,271 +10861,51 @@ msgstr "Não foi possível adicionar o socket ao grupo de sockets"
 msgid "Could not send initial handshake"
 msgstr "Não pode enviar mensagem inicial"
 
-#: src/playcampaign.cpp:220
+#: src/playcampaign.cpp:264
 msgid "Defeat"
 msgstr "Derrota"
 
-#: src/playcampaign.cpp:221
+#: src/playcampaign.cpp:265
 msgid "You have been defeated!"
 msgstr "Você foi derrotado!"
 
-#: src/playcampaign.cpp:234
+#: src/playcampaign.cpp:278
 msgid " replay"
 msgstr " replay"
 
-#: src/playcampaign.cpp:242
+#: src/playcampaign.cpp:286
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Você quer salvar um replay deste cenário?"
 
-#: src/playcampaign.cpp:291
+#: src/playcampaign.cpp:335
 msgid "Downloading next level..."
 msgstr "Fazendo o download do próximo nível..."
 
-#: src/playcampaign.cpp:363
+#: src/playcampaign.cpp:407
 msgid "Do you want to save your game?"
 msgstr "Quer salvar o seu jogo?"
 
-#: src/playcampaign.cpp:388
+#: src/playcampaign.cpp:432
 msgid "Unknown scenario: '"
 msgstr "Cenário desconhecido: '"
 
-#: src/playlevel.cpp:454 src/playlevel.cpp:735 src/replay_controller.cpp:455
-msgid "The file you have tried to load is corrupt"
-msgstr "O Arquivo que você tentou carregar está corrompido"
-
-#: src/playlevel.cpp:609
-msgid "Game Over"
-msgstr "Fim do jogo"
-
-#: src/playlevel.cpp:610
-msgid "The game is over."
-msgstr "O jogo acabou"
-
-#: src/playlevel.cpp:701
-msgid "Remaining gold: "
-msgstr "Ouro restante: "
-
-#: src/playlevel.cpp:704
-msgid "Early finish bonus: "
-msgstr "Bônus por terminar cedo: "
-
-#: src/playlevel.cpp:706
-msgid "per turn"
-msgstr "por turno"
-
-#: src/playlevel.cpp:707
-msgid "Turns finished early: "
-msgstr "Quantos turnos mais cedo: "
-
-#: src/playlevel.cpp:709
-msgid "Bonus: "
-msgstr "Bonus: "
-
-#: src/playlevel.cpp:711
-msgid "Gold: "
-msgstr "Ouro: "
-
-#: src/playlevel.cpp:716
-#, no-c-format
-msgid "80% of gold is retained for the next scenario"
-msgstr "80% do ouro é mantido para o próximo cenário"
-
-#: src/playlevel.cpp:717
-msgid "Retained Gold: "
-msgstr "Ouro mantido: "
-
-#: src/playlevel.cpp:723
-msgid "Victory"
-msgstr "Vitória"
-
-#: src/playlevel.cpp:724
-msgid "You have emerged victorious!"
-msgstr "Você conseguiu vencer!"
-
-#: src/playlevel.cpp:729
-msgid "Scenario Report"
-msgstr "Relato do Cenário"
-
-#: src/playlevel.cpp:750
-msgid ""
-"A network disconnection has occurred, and the game cannot continue. Do you "
-"want to save the game?"
-msgstr ""
-"Um problema da rede ocorreu, e o jogo não pode continuar. Você quer salvar o "
-"jogo?"
-
-#: src/playturn.cpp:89
-msgid "It is now your turn"
-msgstr "É o seu turno"
-
-#: src/playturn.cpp:650
-msgid "Attacker"
-msgstr "Atacante"
-
-#: src/playturn.cpp:652
-msgid "Defender"
-msgstr "Defensor"
-
-#: src/playturn.cpp:672 src/playturn.cpp:746
-msgid "Damage Calculations"
-msgstr "Cálculo de dano"
-
-#: src/playturn.cpp:724 src/reports.cpp:278
-msgid "vs"
-msgstr "contra"
-
-#: src/playturn.cpp:758
-msgid "Attack Enemy"
-msgstr "Atacar Inimigo"
-
-#: src/playturn.cpp:759
-msgid "Choose weapon:"
-msgstr "Escolha a arma:"
-
-#: src/playturn.cpp:1386
-msgid ""
-"You have not started your turn yet. Do you really want to end your turn?"
-msgstr "Você ainda não começou o seu turno. Você realmente quer terminá-lo?"
-
-#: src/playturn.cpp:1394 src/playturn.cpp:1399
-msgid "Some units have movement left. Do you really want to end your turn?"
-msgstr ""
-"Algumas unidades ainda podem se mover. Quer realmente terminar o turno?"
-
-#: src/playturn.cpp:1414
-msgid "Auto-Save"
-msgstr "auto-salvo"
-
-#: src/playturn.cpp:1416
-msgid "Could not auto save the game. Please save the game manually."
-msgstr ""
-"Não pude salvar o jogo automaticamente. Por favor salve o jogo manualmente."
-
-#: src/playturn.cpp:1668
-msgid "Rename Unit"
-msgstr "Renomear a unidade"
-
-#: src/playturn.cpp:1966
-msgid "You have no units available to recruit."
-msgstr "Você não tem unidades disponíveis para recrutar."
-
-#: src/playturn.cpp:1978
-msgid "Recruit"
-msgstr "Recrutar"
-
-#: src/playturn.cpp:1979 src/playturn.cpp:2172
-msgid "Select unit:"
-msgstr "Selecionar unidade:"
-
-#: src/playturn.cpp:2013
-msgid "You don't have enough gold to recruit that unit"
-msgstr "Você não tem ouro o suficiente para recrutar essa unidade"
-
-#: src/playturn.cpp:2074
-msgid ""
-"My lord, this unit is an experienced one, having advanced levels! Do you "
-"really want to dismiss $noun?"
-msgstr ""
-"Senhor, esta unidade é experiente, e já passou alguns níveis! Você realmente "
-"quer mandar $noun embora?"
-
-#: src/playturn.cpp:2076
-msgid ""
-"My lord, this unit is close to advancing a level! Do you really want to "
-"dismiss $noun?"
-msgstr ""
-"Senhor, esta unidade está bem perto de passar de nível! Você realmente quer "
-"mandar $noun embora?"
-
-#: src/playturn.cpp:2081
-msgid "her"
-msgstr "ela"
-
-#: src/playturn.cpp:2081
-msgid "him"
-msgstr "ele"
-
-#: src/playturn.cpp:2122
-msgid "You are separated from your soldiers and may not recall them"
-msgstr "Você está afastado de seus soldados e não pode convocá-los"
-
-#: src/playturn.cpp:2124
-msgid ""
-"There are no troops available to recall\n"
-"(You must have veteran survivors from a previous scenario)"
-msgstr ""
-"Você não tem tropas para convocar\n"
-"(É necessário tropas sobreviventes de um cenário anterior)"
-
-#: src/playturn.cpp:2132
-msgid "Level"
-msgstr "Nível"
-
-#: src/playturn.cpp:2159
-msgid "Dismiss Unit"
-msgstr "Desbandar unidade"
-
-#: src/playturn.cpp:2171
-msgid "Recall"
-msgstr "Convocar"
-
-#: src/playturn.cpp:2183
-msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr "Você deve ter pelo menos $cost peças de ouro para convocar uma unidade"
-
-#: src/playturn.cpp:2229
-msgid "Message:"
-msgstr "Mensagem:"
-
-#: src/playturn.cpp:2229
-msgid "Send to allies only"
-msgstr "Enviar apenas para aliados"
-
-#: src/playturn.cpp:2577
-msgid "Search"
-msgstr "Procurar"
-
-#: src/playturn.cpp:2587
-msgid "prompt^Command:"
-msgstr "Comando:"
-
-#: src/playturn.cpp:2663
-msgid "Couldn't find label or unit containing the string '$search'."
-msgstr "Não pude encontrar nome ou unidade contendo '$search'."
-
-#: src/playturn.cpp:2791
-msgid "Place Label"
-msgstr "Colocar nome"
-
-#: src/playturn.cpp:2792
-msgid "Label:"
-msgstr "Nome:"
-
-#: src/playturn.cpp:2935
-msgid ""
-"The games are out of sync and will have to exit. Do you want to save an "
-"error log of your game?"
-msgstr ""
-"Os jogos estão fora de sincronica e terão de terminar. Você quer salvar um "
-"histórico de erros do seu jogo?"
-
-#: src/playturn.cpp:2988
+#: src/playturn.cpp:176
 msgid "Replace with AI"
 msgstr "Trocar por uma IA"
 
-#: src/playturn.cpp:2989
+#: src/playturn.cpp:177
 msgid "Replace with local player"
 msgstr "Trocar por um jogador local"
 
-#: src/playturn.cpp:2990
+#: src/playturn.cpp:178
 msgid "Abort game"
 msgstr "Aborat o jogo"
 
-#: src/playturn.cpp:2993
+#: src/playturn.cpp:181
 msgid "Replace with "
 msgstr "Trocar com "
 
-#: src/playturn.cpp:2997
+#: src/playturn.cpp:185
 msgid "has left the game. What do you want to do?"
 msgstr "saiu do jogo. O que você quer fazer?"
 
@@ -11123,15 +11145,15 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "-- O Livro de Wesnoth"
 
-#: src/unit.cpp:2141 src/unit.cpp:2266
+#: src/unit.cpp:2163 src/unit.cpp:2288
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2223
+#: src/unit.cpp:2245
 msgid "XP to advance"
 msgstr "XP para avançar"
 
-#: src/unit.cpp:2257
+#: src/unit.cpp:2279
 msgid ": "
 msgstr ": "
 
@@ -11174,6 +11196,77 @@ msgstr "Você pode ver os resultados em "
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr "Ajude-nos a fazer um Wesnoth melhor para você!"
+
+#~ msgid "drain"
+#~ msgstr "dreno"
+
+#~ msgid "plague(Walking Corpse)"
+#~ msgstr "Corpo Ambulante"
+
+#~ msgid "slow"
+#~ msgstr "lentidão"
+
+#~ msgid "Do you want to skip the replay?"
+#~ msgstr "Você quer pular o replay?"
+
+#~ msgid "The file you have tried to load is corrupt"
+#~ msgstr "O Arquivo que você tentou carregar está corrompido"
+
+#~ msgid "Game Over"
+#~ msgstr "Fim do jogo"
+
+#~ msgid "The game is over."
+#~ msgstr "O jogo acabou"
+
+#~ msgid "Remaining gold: "
+#~ msgstr "Ouro restante: "
+
+#~ msgid "Early finish bonus: "
+#~ msgstr "Bônus por terminar cedo: "
+
+#~ msgid "per turn"
+#~ msgstr "por turno"
+
+#~ msgid "Turns finished early: "
+#~ msgstr "Quantos turnos mais cedo: "
+
+#~ msgid "Bonus: "
+#~ msgstr "Bonus: "
+
+#~ msgid "Gold: "
+#~ msgstr "Ouro: "
+
+#~ msgid "80% of gold is retained for the next scenario"
+#~ msgstr "80% do ouro é mantido para o próximo cenário"
+
+#~ msgid "Retained Gold: "
+#~ msgstr "Ouro mantido: "
+
+#~ msgid "Victory"
+#~ msgstr "Vitória"
+
+#~ msgid "You have emerged victorious!"
+#~ msgstr "Você conseguiu vencer!"
+
+#~ msgid "Scenario Report"
+#~ msgstr "Relato do Cenário"
+
+#~ msgid ""
+#~ "A network disconnection has occurred, and the game cannot continue. Do "
+#~ "you want to save the game?"
+#~ msgstr ""
+#~ "Um problema da rede ocorreu, e o jogo não pode continuar. Você quer "
+#~ "salvar o jogo?"
+
+#~ msgid "It is now your turn"
+#~ msgstr "É o seu turno"
+
+#~ msgid ""
+#~ "The games are out of sync and will have to exit. Do you want to save an "
+#~ "error log of your game?"
+#~ msgstr ""
+#~ "Os jogos estão fora de sincronica e terão de terminar. Você quer salvar "
+#~ "um histórico de erros do seu jogo?"
 
 #~ msgid ""
 #~ "Cures:\n"
