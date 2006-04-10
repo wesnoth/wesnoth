@@ -1,24 +1,19 @@
-# #-#-#-#-#  wesnoth.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
-# Romanian translations for Battle for Wesnoth package.
-# Copyright (C) 2005 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.1-svn\n"
+"Project-Id-Version: Romana 0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-10 08:17+0200\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: romanian\n"
+"PO-Revision-Date: 2006-04-10 20:02+0100\n"
+"Last-Translator: Dex Stewart\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/abilities.cfg:7
+#, fuzzy
 msgid "heals +4"
-msgstr ""
+msgstr "restoreaza +4"
 
 #: data/abilities.cfg:12
 msgid ""
@@ -39,8 +34,9 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:29
+#, fuzzy
 msgid "heals +8"
-msgstr ""
+msgstr "restoreaza +8"
 
 #: data/abilities.cfg:34
 msgid ""
@@ -56,7 +52,7 @@ msgstr ""
 
 #: data/abilities.cfg:43
 msgid "cures"
-msgstr ""
+msgstr "insanatoseste"
 
 #: data/abilities.cfg:45
 msgid ""
@@ -73,7 +69,7 @@ msgstr ""
 
 #: data/abilities.cfg:61
 msgid "regenerates"
-msgstr ""
+msgstr "regeneraza"
 
 #: data/abilities.cfg:63
 msgid ""
@@ -81,6 +77,9 @@ msgid ""
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
+"regenereaza:\n"
+"Aceasta unitate isi ve regenera 8 VP/runda. Daca este otravita nu se va "
+"regenera, ci va neutraliza otrava"
 
 #: data/abilities.cfg:70
 msgid ""
@@ -108,8 +107,9 @@ msgstr ""
 #: data/abilities.cfg:97 data/abilities.cfg:116 data/abilities.cfg:147
 #: data/abilities.cfg:190 data/abilities.cfg:245 src/actions.cpp:539
 #: src/actions.cpp:672
+#, fuzzy
 msgid "leadership"
-msgstr ""
+msgstr "Comanda"
 
 #: data/abilities.cfg:101 data/abilities.cfg:120 data/abilities.cfg:151
 #: data/abilities.cfg:194 data/abilities.cfg:249
@@ -150,7 +150,7 @@ msgstr ""
 
 #: data/abilities.cfg:328
 msgid "illuminates"
-msgstr ""
+msgstr "ilumineaza"
 
 #: data/abilities.cfg:332
 msgid ""
@@ -170,7 +170,7 @@ msgstr ""
 
 #: data/abilities.cfg:342
 msgid "teleport"
-msgstr ""
+msgstr "teleport"
 
 #: data/abilities.cfg:344
 msgid ""
@@ -178,12 +178,18 @@ msgid ""
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
+"Teleport:\n"
+"Aceasta unitate poate sa se teleporteze intre doua sate aliate, folosind un "
+"PM"
 
 #: data/abilities.cfg:349
+#, fuzzy
 msgid ""
 " They can also teleport between any two villages instantly, though the "
 "player must control both, and the destination village must be unoccupied."
 msgstr ""
+"Poate sa se teleporteze si fara un PM, dar acelasi jucator trebuie sa ocupe "
+"si satul destinatie, care trebuie sa fie neocupat"
 
 #: data/abilities.cfg:353
 msgid "ambush"
@@ -286,18 +292,22 @@ msgstr ""
 
 #: data/abilities.cfg:451
 msgid "slows"
-msgstr ""
+msgstr "incetineste"
 
 #: data/abilities.cfg:453
+#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
+"incetineste:\n"
+"Acest atac incetineste victima. Incetinirea injumatateste daunele cauzate de "
+"atauri si viteza(aproximat in sus)"
 
 #: data/abilities.cfg:460
 msgid "stones"
-msgstr ""
+msgstr "impietreste"
 
 #: data/abilities.cfg:462
 msgid ""
@@ -305,6 +315,9 @@ msgid ""
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
+"Impietreste:\n"
+"Acest atac transforma vitima in piatra. Unitati impietrite nu pot sa atace "
+"sau sa se miste."
 
 #: data/abilities.cfg:468
 msgid "marksman"
@@ -318,19 +331,23 @@ msgstr ""
 
 #: data/abilities.cfg:479
 msgid "magical"
-msgstr ""
+msgstr "magic"
 
 #: data/abilities.cfg:481
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
+"Magic:\n"
+"Acest atac are intotdeauna o sansa de 70% de a lovi."
 
 #: data/abilities.cfg:488
 msgid ""
 " The ranged attacks of this unit are magical, and always have a high chance "
 "of hitting an opponent."
 msgstr ""
+"Atacurile de distanta ale acestei unitati sunt magice, si au intotdeauna o "
+"sansa mare de a lovi victima."
 
 #: data/abilities.cfg:492
 msgid "swarm"
@@ -369,17 +386,19 @@ msgstr ""
 
 #: data/abilities.cfg:520
 msgid "firststrike"
-msgstr ""
+msgstr "prima lovitura"
 
 #: data/abilities.cfg:522
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
+"Prima Lovitura:\n"
+"Aceasta unitate loveste intotdeauna prima cu acest atac, chiar daca se apara."
 
 #: data/abilities.cfg:528
 msgid "poison"
-msgstr ""
+msgstr "otrava"
 
 #: data/abilities.cfg:530
 msgid ""
@@ -387,30 +406,36 @@ msgid ""
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
 msgstr ""
+"Otrava:\n"
+"Acest atac otraveste victima. Unitati otravite pierd 8 PV/runda pana sunt "
+"insanatosite, sau mai au 1 PV."
 
 #: data/about.cfg:6 data/campaigns/Eastern_Invasion.cfg:26
 #: data/campaigns/Heir_To_The_Throne.cfg:33
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
 #: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
+#, fuzzy
 msgid "Artwork and Graphics Designers"
-msgstr ""
+msgstr "Designeri de Grafica si de Arta"
 
 #: data/about.cfg:52
 msgid "Music"
-msgstr ""
+msgstr "Muzica"
 
 #: data/about.cfg:63
+#, fuzzy
 msgid "Scenario Designers"
-msgstr ""
+msgstr "Designeri de scena"
 
 #: data/about.cfg:80
+#, fuzzy
 msgid "Multiplayer Developers"
-msgstr ""
+msgstr "Developeri de Multiplayer"
 
 #: data/about.cfg:90
 msgid "Multiplayer Maps"
-msgstr ""
+msgstr "Harti pentru Multiplayer"
 
 #: data/about.cfg:100
 msgid "Packagers"
@@ -424,7 +449,7 @@ msgstr ""
 
 #: data/about.cfg:124
 msgid "Internationalization Managers"
-msgstr ""
+msgstr "Manageri de internationalizare"
 
 #: data/about.cfg:135
 msgid "Afrikaans Translation"
@@ -432,147 +457,152 @@ msgstr ""
 
 #: data/about.cfg:145
 msgid "Basque Translation"
-msgstr ""
+msgstr "Translatie in limba basca"
 
 #: data/about.cfg:154
 msgid "Bulgarian Translation"
-msgstr ""
+msgstr "Translatie in limba bulgara"
 
 #: data/about.cfg:162
 msgid "Catalan Translation"
-msgstr ""
+msgstr "Translatie in limba catalana"
 
 #: data/about.cfg:176
 msgid "Chinese Translation"
-msgstr ""
+msgstr "Translatie in limba chineza"
 
 #: data/about.cfg:183
 msgid "Czech Translation"
-msgstr ""
+msgstr "Translatie in limba ceha"
 
 #: data/about.cfg:202
 msgid "Danish Translation"
-msgstr ""
+msgstr "Translatie in limba daneza"
 
 #: data/about.cfg:213
 msgid "Dutch Translation"
-msgstr ""
+msgstr "Translatie in limba olandeza"
 
 #: data/about.cfg:225
 msgid "English (GB) Translation"
-msgstr ""
+msgstr "Translatie in limba engleza(britanica)"
 
 #: data/about.cfg:232
 msgid "Esperanto Translation"
-msgstr ""
+msgstr "Translatie in limba esperanto"
 
 #: data/about.cfg:240
 msgid "Estonian Translation"
-msgstr ""
+msgstr "Translatie in limba estoniana"
 
 #: data/about.cfg:247
 msgid "Finnish Translation"
-msgstr ""
+msgstr "Translatie in limba finlandeza"
 
 #: data/about.cfg:257
 msgid "French Translation"
-msgstr ""
+msgstr "Translatie in limba franceza"
 
 #: data/about.cfg:281
 msgid "German Translation"
-msgstr ""
+msgstr "Translatie in limba germana"
 
 #: data/about.cfg:298
 msgid "Greek Translation"
-msgstr ""
+msgstr "Translatie in limba greaca"
 
 #: data/about.cfg:308
+#, fuzzy
 msgid "Hebrew Translation"
-msgstr ""
+msgstr "Translatie in limba ebreica"
 
 #: data/about.cfg:316
 msgid "Hungarian Translation"
-msgstr ""
+msgstr "Translatie in limba ungara"
 
 #: data/about.cfg:333
+#, fuzzy
 msgid "Indonesian Translation"
-msgstr ""
+msgstr "Translatie in limba indoneza"
 
 #: data/about.cfg:340
 msgid "Italian Translation"
-msgstr ""
+msgstr "Translatie in limba italiana"
 
 #: data/about.cfg:355
 msgid "Japanese Translation"
-msgstr ""
+msgstr "Translatie in limba japoneza"
 
 #: data/about.cfg:364
 msgid "Korean Translation"
-msgstr ""
+msgstr "Translatie in limba coreana"
 
 #: data/about.cfg:371
 msgid "Latin Translation"
-msgstr ""
+msgstr "Translatie in limba latina"
 
 #: data/about.cfg:378
 msgid "Norwegian Translation"
-msgstr ""
+msgstr "Translatie in limba norvegiana"
 
 #: data/about.cfg:389
 msgid "Polish Translation"
-msgstr ""
+msgstr "Translatie in limba poloneza"
 
 #: data/about.cfg:404
 msgid "Portuguese Translation"
-msgstr ""
+msgstr "Translatie in limba portugheza"
 
 #: data/about.cfg:411
 msgid "Portuguese (Brazil) Translation"
-msgstr ""
+msgstr "Translatie in limba portugheza(Brazilia)"
 
 #: data/about.cfg:424
 msgid "Russian Translation"
-msgstr ""
+msgstr "Translatie in limba rusa"
 
 #: data/about.cfg:434
+#, fuzzy
 msgid "Serbian Translation"
-msgstr ""
+msgstr "Translatie in limba sarba"
 
 #: data/about.cfg:441
 msgid "Slovak Translation"
-msgstr ""
+msgstr "Translatie in limba slovaca"
 
 #: data/about.cfg:448
+#, fuzzy
 msgid "Slovenian Translation"
-msgstr ""
+msgstr "Translatie in limba sloveniana"
 
 #: data/about.cfg:455
 msgid "Spanish Translation"
-msgstr ""
+msgstr "Translatie in limba spaniola"
 
 #: data/about.cfg:468
 msgid "Swedish Translation"
-msgstr ""
+msgstr "Translatie in limba suedeza"
 
 #: data/about.cfg:480
 msgid "Turkish Translation"
-msgstr ""
+msgstr "Translatie in limba turca"
 
 #: data/about.cfg:491 data/help.cfg:246
 msgid "Contributors"
-msgstr ""
+msgstr "Contribuitori"
 
 #: data/about.cfg:505
 msgid "Bots"
 msgstr ""
 
 #: data/amla.cfg:8
+#, fuzzy
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr ", Max PE +25%"
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +"
-msgstr ""
+msgstr "Max PV bonus +"
 
 #: data/amla.cfg:28
 msgid "Full Heal"
@@ -651,7 +681,7 @@ msgstr ""
 #: data/units/Orcish_Grunt.cfg:28 data/units/Orcish_Leader.cfg:32
 #: data/units/Undead_Skele_Deathblade.cfg:42
 msgid "sword"
-msgstr ""
+msgstr "sabie"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:21
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:41
@@ -751,7 +781,7 @@ msgstr ""
 #: data/units/Undead_Spirit_Spectre.cfg:47
 #: data/units/Undead_Spirit_Wraith.cfg:24
 msgid "blade"
-msgstr ""
+msgstr "lama"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:58
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:54
@@ -824,7 +854,7 @@ msgstr ""
 #: data/units/Undead_Skeleton_Archer.cfg:38 data/units/Wose.cfg:36
 #: data/units/Wose_Ancient.cfg:30 data/units/Wose_Elder.cfg:29
 msgid "impact"
-msgstr ""
+msgstr "impact"
 
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:3
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:162
@@ -832,7 +862,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:163
 #: data/tutorial/units/Lord.cfg:3 data/tutorial/units/Lord.cfg:162
 msgid "Lord"
-msgstr ""
+msgstr "Lord"
 
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:35
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:187
@@ -840,12 +870,17 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:188
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:41
 #: data/tutorial/units/Lord.cfg:35 data/tutorial/units/Lord.cfg:187
+#, fuzzy
 msgid ""
 "The noble leaders of many troops, Lords are especially strong in melee "
 "combat, and also possess skill with the bow. Like Commanders, Lords possess "
 "leadership skills, and improve the fighting ability of all adjacent lower-"
 "level units."
 msgstr ""
+"Liderii nobili ai multor soldati, Lorzii sunt foarte puternici in lupta corp "
+"la  corp, si pot sa foloseasca si arcul. Ca si Comandantii, Lorzii sunt "
+"lideri , si imbunatatesc abilitatile in lupta a unitatilor aliate de nivel "
+"mai mic care se afla langa el"
 
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:65
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:60
@@ -870,7 +905,7 @@ msgstr ""
 #: data/units/Undead_Skele_Soul_Shooter.cfg:57
 #: data/units/Undead_Skeleton_Archer.cfg:62
 msgid "bow"
-msgstr ""
+msgstr "arc"
 
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:66
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:24
@@ -955,7 +990,7 @@ msgstr ""
 #: data/tutorial/units/Commander.cfg:178 data/tutorial/units/Fighter.cfg:91
 #: data/tutorial/units/Fighteress.cfg:98 data/tutorial/units/Lord.cfg:217
 msgid "scepter of fire"
-msgstr ""
+msgstr "sceptru de foc"
 
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:218
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:129
@@ -985,7 +1020,7 @@ msgstr ""
 #: data/units/Human_Mage_Silver.cfg:121 data/units/Orcish_Archer.cfg:111
 #: data/units/Orcish_Crossbowman.cfg:114 data/units/Orcish_Slurbow.cfg:165
 msgid "fire"
-msgstr ""
+msgstr "foc"
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:3
 msgid "Mounted Fighter"
@@ -1171,7 +1206,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:34
 msgid "scepter"
-msgstr ""
+msgstr "sceptru"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:3
 #: data/tutorial/units/Elder_Mage.cfg:3
@@ -1210,7 +1245,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:57
 #: data/tutorial/units/Elder_Mage.cfg:45
 msgid "lightning"
-msgstr ""
+msgstr "fulger"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
@@ -1262,7 +1297,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:65
 #: data/tutorial/units/Fighter.cfg:3 data/tutorial/units/Fighter.cfg:48
 msgid "Fighter"
-msgstr ""
+msgstr "Luptator"
 
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:16
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:78
@@ -1290,11 +1325,11 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:50
 msgid "Princess"
-msgstr ""
+msgstr "Printesa"
 
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
-msgstr ""
+msgstr "Orc al marii"
 
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:16
 msgid ""
@@ -1307,7 +1342,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
-msgstr ""
+msgstr "Grifon adormit"
 
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:16
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
@@ -1316,7 +1351,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:3
 #: data/tutorial/units/Youth.cfg:3
 msgid "Youth"
-msgstr ""
+msgstr "Tanar"
 
 #: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:23
 #: data/tutorial/units/Youth.cfg:23
@@ -1329,11 +1364,11 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:30
 #: data/tutorial/units/Youth.cfg:26
 msgid "training sword"
-msgstr ""
+msgstr "Sabie de antrenament"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:3
 msgid "Fire Dragon"
-msgstr ""
+msgstr "Dragon de foc"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:26
 msgid ""
@@ -1349,12 +1384,13 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:30
+#, fuzzy
 msgid "bite"
-msgstr ""
+msgstr "muscatura"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:56
 msgid "tail"
-msgstr ""
+msgstr "coada"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:83
 #: data/units/Drake_Blademaster.cfg:119 data/units/Drake_Burner.cfg:103
@@ -1363,12 +1399,13 @@ msgstr ""
 #: data/units/Drake_Glider.cfg:115 data/units/Drake_Hurricane.cfg:106
 #: data/units/Drake_Inferno.cfg:97 data/units/Drake_Sky.cfg:107
 #: data/units/Drake_Warrior.cfg:103
+#, fuzzy
 msgid "fire breath"
-msgstr ""
+msgstr "sfuflu de foc"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:4
 msgid "Fireball"
-msgstr ""
+msgstr "Minge de foc"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:24
 msgid ""
@@ -1377,7 +1414,7 @@ msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
-msgstr ""
+msgstr "Comandant nobil"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:40
 msgid ""
@@ -1390,7 +1427,7 @@ msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
-msgstr ""
+msgstr "Luptator nobil"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:26
 msgid ""
@@ -1401,11 +1438,11 @@ msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
-msgstr ""
+msgstr "Lord nobil"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
-msgstr ""
+msgstr "Tanar nobil"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:26
 msgid ""
@@ -1430,7 +1467,7 @@ msgstr ""
 #: data/units/Human_Outlaw.cfg:53 data/units/Human_Outlaw_Footpad.cfg:52
 #: data/units/Troll_Rocklobber.cfg:53
 msgid "sling"
-msgstr ""
+msgstr "prastie"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:3
 msgid "female^Outlaw Queen"
@@ -1458,17 +1495,18 @@ msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:28
 msgid "blood kiss"
-msgstr ""
+msgstr "sarut de sange"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:46
 #: data/units/Saurian_Augur.cfg:54 data/units/Saurian_Oracle.cfg:54
 #: data/units/Saurian_Soothsayer.cfg:55
 msgid "curse"
-msgstr ""
+msgstr "blestem"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:3
+#, fuzzy
 msgid "Warrior King"
-msgstr ""
+msgstr "Rege razboinic"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:31
 msgid ""
@@ -1504,7 +1542,7 @@ msgstr ""
 #: data/units/Undead_Necro_Ancient_Lich.cfg:53
 #: data/units/Undead_Necro_Lich.cfg:35 data/units/Undead_Spirit_Ghost.cfg:30
 msgid "touch"
-msgstr ""
+msgstr "atingere"
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:42
 #: data/units/Undead_Necro_Ancient_Lich.cfg:72
@@ -1543,7 +1581,7 @@ msgstr ""
 #: data/units/Human_Mage_Arch.cfg:92 data/units/Human_Mage_Great.cfg:80
 #: data/units/Human_Mage_Red.cfg:92
 msgid "fireball"
-msgstr ""
+msgstr "minge de foc"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:4
 #: data/units/Human_Mage_Great.cfg:136
@@ -1631,7 +1669,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:122
 #: data/units/Human_Mage.cfg:91 data/units/Human_Mage_Silver.cfg:119
 msgid "missile"
-msgstr ""
+msgstr "proiectil"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
 #: data/units/Undead_Necromancer.cfg:3
@@ -1665,15 +1703,15 @@ msgstr ""
 
 #: data/english.cfg:2
 msgid "Easy"
-msgstr ""
+msgstr "Usor"
 
 #: data/english.cfg:3
 msgid "Medium"
-msgstr ""
+msgstr "Mediu"
 
 #: data/english.cfg:4
 msgid "Hard"
-msgstr ""
+msgstr "Greu"
 
 #: data/english.cfg:9
 msgid ""
@@ -1688,6 +1726,8 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
+"Unitati neutre nu sunt afectate de zi si noapte, luptand la fel de bine in "
+"ambele conditii"
 
 #: data/english.cfg:14
 msgid ""
@@ -1703,7 +1743,7 @@ msgstr ""
 
 #: data/english.cfg:18
 msgid "Humans"
-msgstr ""
+msgstr "Oameni"
 
 #: data/english.cfg:19
 msgid "Orcs"
@@ -1714,8 +1754,9 @@ msgid "race^Undead"
 msgstr ""
 
 #: data/english.cfg:23
+#, fuzzy
 msgid "$name's Bridge,$name's Crossing"
-msgstr ""
+msgstr "Podul $name,Trecerea $name"
 
 #: data/english.cfg:24
 msgid "$name's Highway,$name's Pass,Path of $name"
@@ -1731,7 +1772,7 @@ msgstr ""
 
 #: data/english.cfg:27
 msgid "$name Lake"
-msgstr ""
+msgstr "Lacul $name"
 
 #: data/english.cfg:28
 msgid "$name|bury,$name|ham,$name|ton"
@@ -1768,19 +1809,19 @@ msgstr ""
 
 #: data/english.cfg:38
 msgid "melee"
-msgstr ""
+msgstr "corp la corp"
 
 #: data/english.cfg:39
 msgid "ranged"
-msgstr ""
+msgstr "la distanta"
 
 #: data/factions/alliance_of_darkness.cfg:3
 msgid "Alliance of Darkness"
-msgstr ""
+msgstr "Alianta Intunericului"
 
 #: data/factions/alliance_of_light.cfg:3
 msgid "Alliance of Light"
-msgstr ""
+msgstr "Alianta Luminii"
 
 #: data/factions/drakes-aoh.cfg:3 data/factions/drakes-default.cfg:3
 msgid "Drakes"
@@ -1788,19 +1829,19 @@ msgstr ""
 
 #: data/factions/knalgans-aoh.cfg:3 data/factions/knalgans-default.cfg:3
 msgid "Knalgan Alliance"
-msgstr ""
+msgstr "Allianta Knalgan"
 
 #: data/factions/loyalists-aoh.cfg:3 data/factions/loyalists-default.cfg:3
 msgid "Loyalists"
-msgstr ""
+msgstr "Loialisti"
 
 #: data/factions/northerners-aoh.cfg:3 data/factions/northerners-default.cfg:3
 msgid "Northerners"
-msgstr ""
+msgstr "Nordici"
 
 #: data/factions/rebels-aoh.cfg:3 data/factions/rebels-default.cfg:3
 msgid "Rebels"
-msgstr ""
+msgstr "Rebeli"
 
 #: data/factions/undead-aoh.cfg:3 data/factions/undead-default.cfg:3
 msgid "Undead"
@@ -1816,11 +1857,11 @@ msgstr ""
 
 #: data/game.cfg:40
 msgid "Show Combat"
-msgstr ""
+msgstr "Arata lupta"
 
 #: data/help.cfg:9
 msgid "Introduction"
-msgstr ""
+msgstr "Introducere"
 
 #: data/help.cfg:15
 msgid "Gameplay"
@@ -1828,23 +1869,23 @@ msgstr ""
 
 #: data/help.cfg:21 src/menu_events.cpp:219
 msgid "Traits"
-msgstr ""
+msgstr "Trasaturi"
 
 #: data/help.cfg:30 src/menu_events.cpp:284
 msgid "Units"
-msgstr ""
+msgstr "Unitati"
 
 #: data/help.cfg:37
 msgid "Abilities"
-msgstr ""
+msgstr "Abilitati"
 
 #: data/help.cfg:45
 msgid "Weapon Specials"
-msgstr ""
+msgstr "Trasaturi ale armelor"
 
 #: data/help.cfg:52
 msgid "Terrains"
-msgstr ""
+msgstr "Terenuri"
 
 #: data/help.cfg:59 data/help.cfg:65 data/help.cfg:258
 msgid "Overview"
@@ -1856,6 +1897,9 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
+"Unele unitati au abilitati care fie afecteaza direct alte unitati, fie "
+"modifica interactiunea intre unitate si alte unitati. Aceste abilitati vor "
+"aparea aici dupe ce le veti intalni."
 
 #: data/help.cfg:68
 msgid ""
@@ -1894,16 +1938,22 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:79
+#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
 "will be shown explaining each item. This is especially useful when you "
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
+"Cat timp jucati, tineti minte ca daca miscati soarecele deasupra multor "
+"obiecte in joc, cum ar fi informatia care apare in partea dreapta a "
+"ecranuluii, o descriere scurta va aparea care explica acel obiect. Acest "
+"lucru este folositor in mod special cand intalniti <ref>dst=abilitati "
+"text=abilitati</ref> pentru prima oara."
 
 #: data/help.cfg:84
 msgid "About the Game"
-msgstr ""
+msgstr "Despre joc"
 
 #: data/help.cfg:85
 msgid ""
@@ -1998,31 +2048,31 @@ msgstr ""
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
-msgstr ""
+msgstr "Fiecare unitate are o mica sfera in dreptul ei. Aceasta sfera este:"
 
 #: data/help.cfg:110
 msgid "green if it hasn't moved this turn,"
-msgstr ""
+msgstr "verde daca unitatea nu a facut nimic in aceasta tura,"
 
 #: data/help.cfg:111
 msgid "yellow if it has moved, but could still move further or attack, or"
-msgstr ""
+msgstr "galbena daca s-a miscat, dar se poate misca mai departe sau ataca,"
 
 #: data/help.cfg:112
 msgid "red if it has used all its movement this turn."
-msgstr ""
+msgstr "rosu daca si-a folosit toate PM aceasta runda, sau"
 
 #: data/help.cfg:113
 msgid "The orb is blue if the unit is an ally you do not control."
-msgstr ""
+msgstr "albastra daca este unitatea unui aliat."
 
 #: data/help.cfg:114
 msgid "Enemy units have no orb on top of their energy bar."
-msgstr ""
+msgstr "Unitati inamice nu au nici o sfera."
 
 #: data/help.cfg:119
 msgid "Hitpoints and Experience"
-msgstr ""
+msgstr "Puncte de viata si Experienta"
 
 #: data/help.cfg:120
 msgid ""
@@ -2031,6 +2081,10 @@ msgid ""
 "experience points (XP). A freshly recruited unit starts with no experience "
 "points, and gains experience by fighting enemies."
 msgstr ""
+"Fiecare unitate are un anumit numar de puncte de viata(PV). Daca aceste "
+"puncte scad sub 1, unitatea moare. Fiecare unitate are si un anume numar de "
+"puncte de experienta (PE). O unitate abea recrutata incepe cu zero punte de "
+"experienta, dar castiga altele luptand."
 
 #: data/help.cfg:124
 msgid ""
@@ -3330,12 +3384,12 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:335
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:612
 msgid "Yes!"
-msgstr ""
+msgstr "Da!"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:357
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:634
 msgid "No"
-msgstr ""
+msgstr "Nu"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:657
 msgid "Blue team wins! Final score: $redscore-$bluescore"
@@ -3526,13 +3580,15 @@ msgstr ""
 #: data/scenarios/multiplayer/Random_Scenario.cfg:4
 #: data/scenarios/multiplayer/Random_Scenario.cfg:12
 msgid "Random map"
-msgstr ""
+msgstr "Harta generata la nimereala"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:5
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
 msgstr ""
+"Harta generata la nimereala. Atentie: Aceste harti sunt des neechilibrate "
+"insa, daca aveti timp, puteti sa generati mai multe, pana aveti una buna."
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:4
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:12
@@ -3580,39 +3636,39 @@ msgstr ""
 
 #: data/team_colors.cfg:4
 msgid "Red"
-msgstr ""
+msgstr "Rosu"
 
 #: data/team_colors.cfg:10
 msgid "Blue"
-msgstr ""
+msgstr "Albastru"
 
 #: data/team_colors.cfg:16
 msgid "Green"
-msgstr ""
+msgstr "Verde"
 
 #: data/team_colors.cfg:22
 msgid "Cyan"
-msgstr ""
+msgstr "Bleu"
 
 #: data/team_colors.cfg:28
 msgid "Purple"
-msgstr ""
+msgstr "Mov"
 
 #: data/team_colors.cfg:34
 msgid "Orange"
-msgstr ""
+msgstr "Portocaliu"
 
 #: data/team_colors.cfg:40
 msgid "Grey"
-msgstr ""
+msgstr "Gri"
 
 #: data/team_colors.cfg:46
 msgid "White"
-msgstr ""
+msgstr "Alb"
 
 #: data/team_colors.cfg:52
 msgid "Brown"
-msgstr ""
+msgstr "Maro"
 
 #: data/terrain.cfg:11 data/themes/default.cfg:535
 #: src/multiplayer_create.cpp:67 src/multiplayer_lobby.cpp:347
@@ -3623,31 +3679,32 @@ msgstr ""
 #: data/terrain.cfg:18 data/themes/default.cfg:547
 #: src/multiplayer_lobby.cpp:343
 msgid "Fog"
-msgstr ""
+msgstr "Ceata"
 
 #: data/terrain.cfg:121
 msgid "Dirt"
-msgstr ""
+msgstr "Noroi"
 
 #: data/terrain.cfg:210
 msgid "Oasis"
-msgstr ""
+msgstr "Oaza"
 
 #: data/terrain.cfg:325
 msgid "Dunes"
-msgstr ""
+msgstr "Dune"
 
 #: data/terrain.cfg:334
 msgid "Snow Hills"
-msgstr ""
+msgstr "Dealuri de zapada"
 
 #: data/terrain.cfg:381
 msgid "Tropical Forest"
-msgstr ""
+msgstr "Padure tropicala"
 
 #: data/terrain.cfg:389
+#, fuzzy
 msgid "Snow Forest"
-msgstr ""
+msgstr "Padure arctica"
 
 #: data/terrain.cfg:405
 msgid "Cave Lit"
@@ -3655,7 +3712,7 @@ msgstr ""
 
 #: data/terrain.cfg:414
 msgid "Impassable Mountains"
-msgstr ""
+msgstr "Munti impasabili"
 
 #: data/terrain.cfg:445
 msgid "Great Tree"
@@ -3675,11 +3732,11 @@ msgstr ""
 
 #: data/terrain.cfg:503
 msgid "Ruin"
-msgstr ""
+msgstr "Ruina"
 
 #: data/terrain.cfg:513
 msgid "Sunken Ruin"
-msgstr ""
+msgstr "Ruina subacvatica"
 
 #: data/terrain.cfg:524
 msgid "Swamp Ruin"
@@ -3687,11 +3744,11 @@ msgstr ""
 
 #: data/themes/default.cfg:80
 msgid "Menu"
-msgstr ""
+msgstr "Meniu"
 
 #: data/themes/default.cfg:91
 msgid "Actions"
-msgstr ""
+msgstr "Actiuni"
 
 #: data/themes/default.cfg:113
 msgid "End Turn"
@@ -3699,23 +3756,23 @@ msgstr ""
 
 #: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2197
 msgid "HP"
-msgstr ""
+msgstr "PV"
 
 #: data/themes/default.cfg:180 src/menu_events.cpp:218 src/menu_events.cpp:646
 msgid "XP"
-msgstr ""
+msgstr "PE"
 
 #: data/themes/default.cfg:190
 msgid "gold"
-msgstr ""
+msgstr "aur"
 
 #: data/themes/default.cfg:199
 msgid "villages"
-msgstr ""
+msgstr "sate"
 
 #: data/themes/default.cfg:208
 msgid "units"
-msgstr ""
+msgstr "unitati"
 
 #: data/themes/default.cfg:217
 msgid "upkeep"
@@ -3735,7 +3792,7 @@ msgstr ""
 
 #: data/themes/default.cfg:458
 msgid "Replay"
-msgstr ""
+msgstr "Reluare"
 
 #: data/themes/default.cfg:471
 msgid "Play"
@@ -3743,7 +3800,7 @@ msgstr ""
 
 #: data/themes/default.cfg:484
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: data/themes/default.cfg:497
 msgid "Reset"
@@ -3751,7 +3808,7 @@ msgstr ""
 
 #: data/themes/default.cfg:510
 msgid "Next Turn"
-msgstr ""
+msgstr "Runda urmatoare"
 
 #: data/themes/default.cfg:523
 msgid "Next Side"
@@ -3763,7 +3820,7 @@ msgstr ""
 
 #: data/themes/default.cfg:663
 msgid "Act."
-msgstr ""
+msgstr "Act."
 
 #: data/themes/default.cfg:696
 msgid "short end-turn^End"
@@ -6860,7 +6917,7 @@ msgstr ""
 
 #: data/units/Undead_Skeleton.cfg:3
 msgid "Skeleton"
-msgstr ""
+msgstr "schelet"
 
 #: data/units/Undead_Skeleton.cfg:17
 msgid ""
@@ -6871,6 +6928,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Scheletii sunt razboinici care au fost omorati si adusi inapoi de magie "
+"neagra. Aproape fara minte, si fara sa conteste deloc telul lor, nu le este "
+"frica nici de durere, nici de durere, nici de moarte, si doar prezenta lor "
+"este deseori de ajuns pentru ai speria pe cei care l-ar provoca pe liderul "
+"lor.\n"
+"\n"
+"Note Speciale:"
 
 #: data/units/Undead_Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
@@ -7121,39 +7185,40 @@ msgstr ""
 
 #: src/actions.cpp:566
 msgid "attacker resistance vs"
-msgstr ""
+msgstr "rezistenta atacatorului vs"
 
 #: src/actions.cpp:566
 msgid "attacker vulnerability vs"
-msgstr ""
+msgstr "vulnerabilitatea atacatorului vs"
 
 #: src/actions.cpp:580 src/actions.cpp:729
 msgid "total damage"
-msgstr ""
+msgstr "daune totale"
 
 #: src/actions.cpp:699
 msgid "defender resistance vs"
-msgstr ""
+msgstr "rezistenta aparatorului vs"
 
 #: src/actions.cpp:699
 msgid "defender vulnerability vs"
-msgstr ""
+msgstr "vulnerabilitatea aparatorului vs"
 
 #: src/actions.cpp:765
 msgid "(both should survive)"
-msgstr ""
+msgstr "(amandoua unitatile vor trai)"
 
 #: src/actions.cpp:767
 msgid "% Pr[kills/killed by/both survive]"
-msgstr ""
+msgstr "% Pr[omoara/este omorat de/amandoua unitatile traiesc]"
 
 #: src/actions.cpp:1271 src/actions.cpp:1508
 msgid "poisoned"
-msgstr ""
+msgstr "otravit"
 
 #: src/actions.cpp:1288 src/actions.cpp:1526
+#, fuzzy
 msgid "stone"
-msgstr ""
+msgstr "piatra"
 
 #: src/actions.cpp:2373
 msgid "Ambushed!"
@@ -7161,75 +7226,77 @@ msgstr ""
 
 #: src/actions.cpp:2408
 msgid "Friendly unit sighted"
-msgstr ""
+msgstr "Unitate aliata descoperita"
 
 #: src/actions.cpp:2410
 msgid "Enemy unit sighted!"
-msgstr ""
+msgstr "Unitate inamica descoperita"
 
 #: src/actions.cpp:2415
 msgid "$friends Friendly units sighted"
-msgstr ""
+msgstr "$friends unitati aliate descoperite"
 
 #: src/actions.cpp:2417
 msgid "$enemies Enemy units sighted!"
-msgstr ""
+msgstr "$enemies unitati inamice descoperite"
 
 #: src/actions.cpp:2421
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
-msgstr ""
+msgstr "Unitati descoperite! ($friends friendly, $enemies enemy)"
 
 #: src/actions.cpp:2436
 msgid "(press $hotkey to continue)"
-msgstr ""
+msgstr "(apasati $hotkey pentru a continua miscarea)"
 
 #: src/dialogs.cpp:105
+#, fuzzy
 msgid "Advance Unit"
-msgstr ""
+msgstr "Avansati unitatea"
 
 #: src/dialogs.cpp:106
 msgid "What should our victorious unit become?"
-msgstr ""
+msgstr "Ce sa devina unitatea noastra victorioasa?"
 
 #: src/dialogs.cpp:180
+#, fuzzy
 msgid "No objectives available"
-msgstr ""
+msgstr "Nici un objectiv valabil"
 
 #: src/dialogs.cpp:194
 msgid "Save Game"
-msgstr ""
+msgstr "Salvati jocul"
 
 #: src/dialogs.cpp:196
 msgid "Overwrite?"
-msgstr ""
+msgstr "Suprascrieti?"
 
 #: src/dialogs.cpp:197
 msgid "Save already exists. Do you want to overwrite it ?"
-msgstr ""
+msgstr "Fisierul exista deja. Suprascrieti?"
 
 #: src/dialogs.cpp:226 src/dialogs.cpp:509
 msgid "Don't ask me again!"
-msgstr ""
+msgstr "Nu mai intreba din nou!"
 
 #: src/dialogs.cpp:228
 msgid "Do you really want to delete this game?"
-msgstr ""
+msgstr "Sigur vreti sa stergeti acest joc?"
 
 #: src/dialogs.cpp:365
 msgid "%a %b %d %H:%M %Y"
-msgstr ""
+msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:378
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Invalid)"
 
 #: src/dialogs.cpp:383 src/game.cpp:755
 msgid "Campaign"
-msgstr ""
+msgstr "Campanie"
 
 #: src/dialogs.cpp:385 src/game.cpp:1152
 msgid "Multiplayer"
-msgstr ""
+msgstr "Multiplayer"
 
 #: src/dialogs.cpp:387
 msgid "Tutorial"
@@ -8438,45 +8505,49 @@ msgstr ""
 
 #: src/playcampaign.cpp:432
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Scenariu necunoscut: "
 
 #: src/playturn.cpp:176
 msgid "Replace with AI"
-msgstr ""
+msgstr "Inlocuiti cu IA"
 
 #: src/playturn.cpp:177
 msgid "Replace with local player"
-msgstr ""
+msgstr "Inlocuiti cu jucator"
 
 #: src/playturn.cpp:178
 msgid "Abort game"
-msgstr ""
+msgstr "Opriti jocul"
 
 #: src/playturn.cpp:181
 msgid "Replace with "
-msgstr ""
+msgstr "Inlocuiti cu"
 
 #: src/playturn.cpp:185
 msgid "has left the game. What do you want to do?"
-msgstr ""
+msgstr "a iesit din joc. Ce doriti sa faceti?"
 
 #: src/reports.cpp:132
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
+"Aceasta unitate este invizibila. Nu poate fi vazuta sau atacata de unitati "
+"inamice"
 
 #: src/reports.cpp:132
 msgid "invisible: "
-msgstr ""
+msgstr "invizibil:"
 
 #: src/reports.cpp:137
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
 msgstr ""
+"Aceasta unitate a fost incetinita. Cand ataca va cauza doar jumatate din "
+"daunele obisnuite."
 
 #: src/reports.cpp:137
 msgid "slowed: "
-msgstr ""
+msgstr "incetinit:"
 
 #: src/reports.cpp:142
 msgid ""
@@ -8487,22 +8558,28 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
+"Aceasta unitate este otravita. Va pierde 8PV/runda pana va fi insanatosita "
+"de un sat sau de o unitate cu abilitatea 'insanatosire'.\n"
+"\n"
+"Otrava nu poate omori nici o unitate. Otrava nu va reduce PV sub 1."
 
 #: src/reports.cpp:142
 msgid "poisoned: "
-msgstr ""
+msgstr "otravit:"
 
 #: src/reports.cpp:149
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr ""
+"Aceasta unitate a fost transformata in piatra. Nu poate sa atace sau sa se "
+"miste."
 
 #: src/reports.cpp:149
 msgid "stone: "
-msgstr ""
+msgstr "impietrit:"
 
 #: src/reports.cpp:247 src/reports.cpp:249 src/unit_types.cpp:337
 msgid "damage"
-msgstr ""
+msgstr "daune:"
 
 #: src/reports.cpp:262
 msgid "weapon range: "
@@ -8510,7 +8587,7 @@ msgstr ""
 
 #: src/reports.cpp:263
 msgid "damage type: "
-msgstr ""
+msgstr "tip de daune:"
 
 #: src/reports.cpp:321
 msgid "Lawful units: "
@@ -8518,7 +8595,7 @@ msgstr ""
 
 #: src/reports.cpp:323
 msgid "Neutral units: "
-msgstr ""
+msgstr "Unitati neutre"
 
 #: src/reports.cpp:324
 msgid "Chaotic units: "
@@ -8526,19 +8603,19 @@ msgstr ""
 
 #: src/reports.cpp:378
 msgid "Owned village"
-msgstr ""
+msgstr "Sat controlat"
 
 #: src/reports.cpp:380
 msgid "Enemy village"
-msgstr ""
+msgstr "Sat inamic"
 
 #: src/reports.cpp:382
 msgid "Allied village"
-msgstr ""
+msgstr "Sat aliat"
 
 #: src/reports.cpp:456
 msgid "Observers:"
-msgstr ""
+msgstr "Spectator"
 
 #: src/serialization/parser.cpp:99
 msgid "Unexpected characters at line start"
@@ -8626,7 +8703,7 @@ msgstr ""
 
 #: src/titlescreen.cpp:207
 msgid "About"
-msgstr ""
+msgstr "Despre"
 
 #: src/titlescreen.cpp:208
 msgid "TitleScreen button^Quit"
@@ -8634,33 +8711,35 @@ msgstr ""
 
 #: src/titlescreen.cpp:209
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
+msgstr "Incepeti un joc de initiere ca sa va familiarizati cu jocul"
 
 #: src/titlescreen.cpp:210
 msgid "Start a new single player campaign"
-msgstr ""
+msgstr "Incepeti o campanie de un singur jucator"
 
 #: src/titlescreen.cpp:211
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
+"Jucati in multiplayer(la acelasi calculator, LAN, sau Internet) sau o scena "
+"impotriva IA"
 
 #: src/titlescreen.cpp:212
 msgid "Load a single player saved game"
-msgstr ""
+msgstr "\"Incarcati un joc de un singur jucator salvat ulterior'"
 
 #: src/titlescreen.cpp:213
 msgid "Change the language"
-msgstr ""
+msgstr "Alegeti limba"
 
 #: src/titlescreen.cpp:214
 msgid "Configure the game's settings"
-msgstr ""
+msgstr "Configurati jocul"
 
 #: src/titlescreen.cpp:215
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "Ajutati Wesnoth trimitand informatii"
 
 #: src/titlescreen.cpp:216
 msgid "View the credits"
@@ -8668,35 +8747,36 @@ msgstr ""
 
 #: src/titlescreen.cpp:217
 msgid "Quit the game"
-msgstr ""
+msgstr "Iesiti din joc"
 
 #: src/titlescreen.cpp:248
 msgid "More"
-msgstr ""
+msgstr "Mai mult"
 
 #: src/titlescreen.cpp:249
 msgid "Help"
-msgstr ""
+msgstr "Ajutor"
 
 #: src/titlescreen.cpp:259
 msgid "-- The Tome of Wesnoth"
-msgstr ""
+msgstr "-- Povesti din Wesnoth"
 
 #: src/unit.cpp:2163 src/unit.cpp:2288
 msgid "; "
-msgstr ""
+msgstr ";"
 
 #: src/unit.cpp:2245
 msgid "XP to advance"
-msgstr ""
+msgstr "PE pentru nivel"
 
 #: src/unit.cpp:2279
 msgid ": "
-msgstr ""
+msgstr ":"
 
 #: src/unit_types.cpp:345
+#, fuzzy
 msgid "strikes"
-msgstr ""
+msgstr "loveste"
 
 #: src/unit_types.cpp:1154
 msgid "chaotic"
@@ -8708,7 +8788,7 @@ msgstr ""
 
 #: src/unit_types.cpp:1154
 msgid "neutral"
-msgstr ""
+msgstr "neutru"
 
 #: src/upload_log.cpp:275
 msgid ""
