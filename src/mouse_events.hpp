@@ -39,6 +39,7 @@ public:
 	void set_current_paths(paths new_paths);
 	void set_selected_hex(gamemap::location hex) { selected_hex_ = hex; }
 	void set_gui(display* gui) { gui_ = gui; }
+	void set_undo(const bool undo) { undo_ = undo; }
 
 	unit_map::iterator selected_unit();
 	const unit_map& visible_units();
