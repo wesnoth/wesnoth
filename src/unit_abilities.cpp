@@ -965,8 +965,8 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 		}
 	}
 	if(use_cum) {
-		composite_value_ = maximum<int>(cum_set*cum_mul + cum_add,ncum_set*ncum_mul + ncum_add);
-		if(ncum_set*ncum_mul + ncum_add > cum_set*cum_mul + cum_add) {
+		composite_value_ = maximum<int>((cum_set + cum_add)*cum_mul,(ncum_set + ncum_add)*ncum_mul);
+		if((ncum_set + ncum_add)*ncum_mul > (cum_set + cum_add)*cum_mul) {
 			effect_list_.clear();
 			if(ncum_set_effect.type != NOT_USED) {
 				effect_list_.push_back(ncum_set_effect);
@@ -983,7 +983,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 			}
 		}
 	} else if(use_ncum) {
-		composite_value_ = ncum_set*ncum_mul + ncum_add;
+		composite_value_ = (ncum_set + ncum_add)*ncum_mul;
 		effect_list_.clear();
 		if(ncum_set_effect.type != NOT_USED) {
 			effect_list_.push_back(ncum_set_effect);
