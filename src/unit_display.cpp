@@ -255,6 +255,7 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 	missile_animation.start_animation(start_time,acceleration);
 	defender.restart_animation(disp,start_time);
 	animation_time = defender.get_animation()->get_animation_time();
+	bool sound_played = false ;
 	while(!defender.get_animation()->animation_finished()  ||
 			(leader_loc.valid() && !leader->second.get_animation()->animation_finished())) {
 		const double pos = animation_time < missile_animation.get_first_frame_time()?1.0:
@@ -280,14 +281,15 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 			disp.draw_unit(posx, posy , img,vflip);
 
 		}
+		if(damage > 0 && !hide && animation_time > 0 && !sound_played) {
+			sound_played = true;
+			sound::play_sound(def->second.get_hit_sound());
+			disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
+		}
 		disp.update_display();
 		events::pump();
 		if(!disp.turbo()) SDL_Delay(10);
 		animation_time = defender.get_animation()->get_animation_time();
-	}
-	if(damage > 0 && !hide) {
-		sound::play_sound(def->second.get_hit_sound());
-		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
 	}
 	if(def->second.take_hit(damage)) {
 		dead = true;
