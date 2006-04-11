@@ -119,10 +119,10 @@ namespace{
 		const unit& defender_;
 		
 		// Layout constants.
-		static const int inter_line_gap_ = 3;
-		static const int inter_column_gap_ = 30;
-		static const int inter_units_gap_ = 30;
-		static const int max_hp_distrib_rows_ = 10;
+		static const int inter_line_gap_;
+		static const int inter_column_gap_;
+		static const int inter_units_gap_;
+		static const int max_hp_distrib_rows_;
 
 		// Layout computations.
 		std::string attacker_label_, defender_label_;
@@ -187,10 +187,10 @@ namespace{
 		Uint32 blend_rgb(const surface& surf, unsigned char r, unsigned char g, unsigned char b, unsigned char drop);
 	};
 
-	const int battle_prediction_pane::inter_line_gap_;
-	const int battle_prediction_pane::inter_column_gap_;
-	const int battle_prediction_pane::inter_units_gap_;
-	const int battle_prediction_pane::max_hp_distrib_rows_;
+	const int battle_prediction_pane::inter_line_gap_ = 3;
+	const int battle_prediction_pane::inter_column_gap_ = 30;
+	const int battle_prediction_pane::inter_units_gap_ = 30;
+	const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
 
 	battle_prediction_pane::battle_prediction_pane(display &disp, const battle_context& bc, const gamemap& map,
 												   const std::vector<team>& teams, const std::map<gamemap::location,unit>& units, 
@@ -280,7 +280,8 @@ namespace{
 
 			// Get the SET damage modifier, if any.
 			const unit_abilities::individual_effect *set_dmg_effect = NULL;
-			for(unit_abilities::effect_list::const_iterator i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
+			unit_abilities::effect_list::const_iterator i;
+			for(i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
 				if(i->type == unit_abilities::SET) {
 					set_dmg_effect = &*i;
 					break;
@@ -301,7 +302,7 @@ namespace{
 			}
 
 			// Process the MUL damage modifiers.
-			for(unit_abilities::effect_list::const_iterator i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
+			for(i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
 				if(i->type == unit_abilities::MUL) {
 					left_strings.push_back((*i->ability)["name"]);
 					str.str("");
@@ -353,7 +354,7 @@ namespace{
 			}
 
 			// Process the ADD damage modifiers.
-			for(unit_abilities::effect_list::const_iterator i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
+			for(i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
 				if(i->type == unit_abilities::ADD) {
 					left_strings.push_back((*i->ability)["name"]);
 					str.str("");
@@ -419,7 +420,7 @@ namespace{
 				prob_hp_vector.push_back(std::pair<double, int>(prob, i));
 		}
 
-		sort(prob_hp_vector.begin(), prob_hp_vector.end());
+		std::sort(prob_hp_vector.begin(), prob_hp_vector.end());
 
 		// We store a few of the highest probability hitpoint values.
 		int nb_elem = minimum<int>(max_hp_distrib_rows_, prob_hp_vector.size());
@@ -428,7 +429,7 @@ namespace{
 			hp_prob_vector.push_back(std::pair<int, double>(prob_hp_vector[i].second, prob_hp_vector[i].first));
 
 		// Then, we sort the hitpoint values in ascending order.
-		sort(hp_prob_vector.begin(), hp_prob_vector.end());
+		std::sort(hp_prob_vector.begin(), hp_prob_vector.end());
 	}
 
 	void battle_prediction_pane::draw_contents()
@@ -489,7 +490,7 @@ namespace{
 		y_off += damage_line_skip * (font::SIZE_NORMAL + inter_line_gap_) + 14;
 
 		// Draw total damage and unscathed probability.
-		for(int i = 0; i < 2; i++) {
+		for(i = 0; i < 2; i++) {
 			const std::string& left_string = left_strings[left_strings.size() - 2 + i];
 			const std::string& right_string = right_strings[right_strings.size() - 2 + i];
 
