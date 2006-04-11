@@ -256,6 +256,7 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 	defender.restart_animation(disp,start_time);
 	animation_time = defender.get_animation()->get_animation_time();
 	bool sound_played = false ;
+		int missile_halo =0;
 	while(!defender.get_animation()->animation_finished()  ||
 			(leader_loc.valid() && !leader->second.get_animation()->animation_finished())) {
 		const double pos = animation_time < missile_animation.get_first_frame_time()?1.0:
@@ -265,6 +266,8 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 		disp.draw_tile(b.x,b.y);
 		disp.draw_tile(a.x,a.y);
 		if(leader_loc.valid()) disp.draw_tile(leader_loc.x,leader_loc.y);
+		halo::remove(missile_halo);
+		missile_halo = 0;
 		if(pos > 0.0 && pos < 1.0 && (!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
 			const unit_frame& missile_frame = missile_animation.get_current_frame();
 			const std::string *missile_image = NULL;
@@ -277,6 +280,30 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 
 			if(hflip) {
 				img.assign(image::reverse_image(img));
+			}
+			if(!missile_frame.halo.empty()) {
+				int time = missile_frame.begin_time;
+				unsigned int sub_halo = 0;
+				while(time < animation_time && sub_halo < missile_frame.halo.size()) {
+					time += missile_frame.halo[sub_halo].second;
+					sub_halo++;
+
+				}
+				if(sub_halo >= missile_frame.halo.size()) sub_halo = missile_frame.halo.size() -1;
+
+
+				if(hflip) {
+					const int d = disp.hex_size() / 2;
+					missile_halo = halo::add(posx+d-missile_frame.halo_x,
+							posy+d+missile_frame.halo_y,
+							missile_frame.halo[sub_halo].first);
+				} else {
+					const int d = disp.hex_size() / 2;
+					missile_halo = halo::add(posx+d+missile_frame.halo_x,
+							posy+d+missile_frame.halo_y,
+							missile_frame.halo[sub_halo].first,
+							halo::REVERSE);
+				}
 			}
 			disp.draw_unit(posx, posy , img,vflip);
 
