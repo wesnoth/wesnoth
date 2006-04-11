@@ -127,7 +127,6 @@ protected:
 	int first_human_team_;
 	unsigned int player_number_;
 	unsigned int first_player_;
-	//unsigned int current_turn_;
 	unsigned int start_turn_;
 	bool skip_replay_;
 	bool browse_;

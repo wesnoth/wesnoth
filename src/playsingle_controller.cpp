@@ -318,7 +318,6 @@ void playsingle_controller::play_turn(){
 	events::raise_draw_event();
 
 	LOG_NG << "turn: " << status_.turn() << "\n";
-	//current_turn_++;
 
 	for(player_number_ = first_player_ + 1; player_number_ <= teams_.size(); player_number_++) {
 		init_side(player_number_ - 1);

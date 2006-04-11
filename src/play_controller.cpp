@@ -23,7 +23,6 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 	first_human_team_(-1)
 {
 	player_number_ = 1;
-	//current_turn_ = 1;
 	start_turn_ = status_.turn();
 	first_player_ = lexical_cast_default<unsigned int,std::string>(level_["playing_team"], 0);
 	skip_replay_ = skip_replay;
