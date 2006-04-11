@@ -879,7 +879,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		stones = weapon->get_special_bool("stones");
 		poisons = weapon->get_special_bool("poison");
 		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, teams);
-		berserk = weapon->get_special_bool("berserk");
+		rounds = weapon->get_specials("berserk").highest("value", 1).first;
 		firststrike = weapon->get_special_bool("firststrike");
 		
 		// Compute chance to hit.
@@ -936,7 +936,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		poisons = false;
 		backstab_pos = false;
 		swarm = false;
-		berserk = false;
+		rounds = 1;
 		firststrike = false;
 		
 		chance_to_hit = 0;
@@ -960,7 +960,7 @@ void battle_context::unit_stats::dump() const
 	printf("poisons:	%d\n", (int) poisons);
 	printf("backstab_pos:	%d\n", (int) backstab_pos);
 	printf("swarm:		%d\n", (int) swarm);
-	printf("berserk:	%d\n", (int) berserk);
+	printf("rounds:	%d\n", (int) rounds);
 	printf("firststrike:	%d\n", (int) firststrike);
 	printf("\n");	
 	printf("hp:		%d\n", hp);

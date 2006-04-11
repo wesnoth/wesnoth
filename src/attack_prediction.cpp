@@ -35,7 +35,7 @@
 #define minimum(a,b) ((a) < (b) ? (a) : (b))
 #endif
 
-#ifdef DEBUG
+#ifdef ATTACK_PREDICTION_DEBUG
 #define debug(x) printf x
 #else
 #define debug(x)
@@ -56,12 +56,16 @@ struct prob_matrix
 	~prob_matrix();
 
 	// A hits B.
-	void receive_blow_b(unsigned damage, double hit_chance,
+	void receive_blow_b(unsigned damage, unsigned slow_damage, double hit_chance,
 						bool a_slows, bool a_drains);
 
 	// B hits A.  Why can't they just get along?
-	void receive_blow_a(unsigned damage, double hit_chance,
+	void receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
 						bool b_slows, bool b_drains);
+
+	// We lied: actually did less damage, adjust matrix.
+	void remove_stone_distortion_a(unsigned damage, unsigned slow_damage, unsigned b_hp);
+	void remove_stone_distortion_b(unsigned damage, unsigned slow_damage, unsigned a_hp);
 
 	// Its over, and here's the bill.
 	void extract_results(std::vector<double> summary_a[2],
@@ -304,7 +308,7 @@ void prob_matrix::shift_rows(unsigned dst, unsigned src,
 
 // Shift prob_matrix to reflect probability 'hit_chance' that damage (up
 // to) 'damage' is done to 'b'.
-void prob_matrix::receive_blow_b(unsigned damage, double hit_chance,
+void prob_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double hit_chance,
 								 bool a_slows, bool a_drains)
 {
 	int src, dst;
@@ -324,7 +328,7 @@ void prob_matrix::receive_blow_b(unsigned damage, double hit_chance,
 
 		// A is slow in planes 1 and 3.
 		if (src & 1)
-			actual_damage = damage / 2;
+			actual_damage = slow_damage;
 		else
 			actual_damage = damage;
 
@@ -335,6 +339,47 @@ void prob_matrix::receive_blow_b(unsigned damage, double hit_chance,
 			min_col[dst] = min_col[src] - damage;
 		if (min_row[src] < min_row[dst])
 			min_row[dst] = min_row[src];
+	}
+}
+
+// We lied: actually did less damage, adjust matrix.
+void prob_matrix::remove_stone_distortion_a(unsigned damage, unsigned slow_damage,
+											unsigned b_hp)
+{
+	for (int p = 0; p < 4; p++) {
+		if (!plane[p])
+			continue;
+
+		// A is slow in planes 1 and 3.
+		if (p & 1) {
+			if (b_hp > slow_damage)
+				for (unsigned int row = 0; row < rows; row++)
+					xfer(p, p, row, b_hp - slow_damage, row, 0, 1.0);
+		} else {
+			if (b_hp > damage)
+				for (unsigned int row = 0; row < rows; row++)
+					xfer(p, p, row, b_hp - damage, row, 0, 1.0);
+		}
+	}
+}
+
+void prob_matrix::remove_stone_distortion_b(unsigned damage, unsigned slow_damage,
+											unsigned a_hp)
+{
+	for (int p = 0; p < 4; p++) {
+		if (!plane[p])
+			continue;
+
+		// B is slow in planes 2 and 3.
+		if (p & 2) {
+			if (a_hp > slow_damage)
+				for (unsigned int col = 0; col < cols; col++)
+					xfer(p, p, a_hp - slow_damage, col, 0, col, 1.0);
+		} else {
+			if (a_hp > damage)
+				for (unsigned int col = 0; col < cols; col++)
+					xfer(p, p, a_hp - damage, col, 0, col, 1.0);
+		}
 	}
 }
 
@@ -389,7 +434,7 @@ double prob_matrix::dead_prob() const
 
 // Shift matrix to reflect probability 'hit_chance' that damage (up
 // to) 'damage' is done to 'a'.
-void prob_matrix::receive_blow_a(unsigned damage, double hit_chance,
+void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
 								 bool b_slows, bool b_drains)
 {
 	int src, dst;
@@ -409,7 +454,7 @@ void prob_matrix::receive_blow_a(unsigned damage, double hit_chance,
 
 		// B is slow in planes 2 and 3.
 		if (src & 2)
-			actual_damage = damage/2;
+			actual_damage = slow_damage;
 		else
 			actual_damage = damage;
 
@@ -470,8 +515,7 @@ void combatant::adjust_hitchance()
 // Um, ok, it was a stupid thing to say.
 void combatant::fight(combatant &opp)
 {
-	// FIXME: Don't hardcode 30 here.
-	unsigned int i, rounds = u_.berserk || opp.u_.berserk ? 30 : 1;
+	unsigned int i, rounds = maximum(u_.rounds, opp.u_.rounds);
 
 	// If defender has firststrike and we don't, reverse.
 	if (opp.u_.firststrike && !u_.firststrike) {
@@ -479,7 +523,7 @@ void combatant::fight(combatant &opp)
 		return;
 	}
 
-#ifdef DEBUG
+#ifdef ATTACK_PREDICTION_DEBUG
 	printf("A:\n");
 	u_.dump();
 	printf("B:\n");
@@ -497,17 +541,28 @@ void combatant::fight(combatant &opp)
 	unsigned max_attacks = maximum(hit_chances_.size(), opp.hit_chances_.size());
 
 	debug(("A gets %u attacks, B %u\n", hit_chances_.size(), opp.hit_chances_.size()));
+
+	unsigned int a_damage = u_.damage, a_slow_damage = u_.slow_damage;
+	unsigned int b_damage = opp.u_.damage, b_slow_damage = opp.u_.slow_damage;
+
+	// To simulate stoning, we set to amount which kills, and re-adjust after.
+	// FIXME: This doesn't work for rolling calculations, just first battle.
+	if (u_.stones)
+		a_damage = a_slow_damage = opp.u_.max_hp;
+	if (opp.u_.stones)
+		b_damage = b_slow_damage = u_.max_hp;
+
 	do {
 		for (i = 0; i < max_attacks; i++) {
 			if (i < hit_chances_.size()) {
 				debug(("A strikes\n"));
-				m.receive_blow_b(u_.damage, hit_chances_[i],
+				m.receive_blow_b(a_damage, a_slow_damage, hit_chances_[i],
 								 u_.slows && !opp.u_.is_slowed, u_.drains);
 				m.dump();
 			}
 			if (i < opp.hit_chances_.size()) {
 				debug(("B strikes\n"));
-				m.receive_blow_a(opp.u_.damage, opp.hit_chances_[i],
+				m.receive_blow_a(b_damage, b_slow_damage, opp.hit_chances_[i],
 								 opp.u_.slows && !u_.is_slowed, opp.u_.drains);
 				m.dump();
 			}
@@ -516,6 +571,11 @@ void combatant::fight(combatant &opp)
 		debug(("Combat ends:\n"));
 		m.dump();
 	} while (--rounds && m.dead_prob() < 0.99);
+
+	if (u_.stones)
+		m.remove_stone_distortion_a(u_.damage, u_.slow_damage, opp.u_.hp);
+	if (opp.u_.stones)
+		m.remove_stone_distortion_b(opp.u_.damage, opp.u_.slow_damage, u_.hp);
 
 	// We extract results separately, then combine.
 	m.extract_results(summary, opp.summary);
