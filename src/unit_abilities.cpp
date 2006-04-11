@@ -18,6 +18,8 @@
 #include "log.hpp"
 #include "pathutils.hpp"
 
+#include <deque>
+
 typedef std::map<gamemap::location,unit> units_map;
 
 /*
@@ -892,14 +894,15 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 {
 	int ncum_set = def; bool ncum_set_set = false;
 	int ncum_add = 0; bool ncum_add_set = false;
-	int ncum_mul = 1;
+	int ncum_mul = 100;
 	individual_effect ncum_set_effect(NOT_USED,0,NULL,gamemap::location());
 	individual_effect ncum_add_effect(NOT_USED,0,NULL,gamemap::location());
 	individual_effect ncum_mul_effect(NOT_USED,0,NULL,gamemap::location());
 	
 	int cum_set = def;
 	int cum_add = 0;
-	int cum_mul = 1;
+	int cum_mul = 100000;
+	std::deque<int> cumulative_multipliers;
 	individual_effect cum_set_effect(NOT_USED,0,NULL,gamemap::location());
 	
 	bool use_ncum = false;
@@ -911,7 +914,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 		if((*i->first)["cumulative"]=="yes") {
 			int value = lexical_cast_default<int>((*i->first)["value"]);
 			int add = lexical_cast_default<int>((*i->first)["add"]);
-			int multiply = lexical_cast_default<int>((*i->first)["multiply"]);
+			int multiply = static_cast<int>(lexical_cast_default<float>((*i->first)["multiply"])*100);
 			if(value > cum_set) {
 				cum_set = value;
 				cum_set_effect.set(SET,value,i->first,i->second);
@@ -921,14 +924,14 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 				effect_list_.push_back(individual_effect(ADD,add,i->first,i->second));
 			}
 			if(multiply) {
-				cum_mul *= multiply;
 				effect_list_.push_back(individual_effect(MUL,multiply,i->first,i->second));
+				cumulative_multipliers.push_back(multiply);
 			}
 			use_cum = true;
 		} else {
 			int value = lexical_cast_default<int>((*i->first)["value"]);
 			int add = lexical_cast_default<int>((*i->first)["add"]);
-			int multiply = lexical_cast_default<int>((*i->first)["multiply"]);
+			int multiply = static_cast<int>(lexical_cast_default<float>((*i->first)["multiply"])*100);
 			if(value) {
 				if(ncum_set_set) {
 					if(value > ncum_set) {
@@ -965,8 +968,23 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 		}
 	}
 	if(use_cum) {
-		composite_value_ = maximum<int>((cum_set + cum_add)*cum_mul,(ncum_set + ncum_add)*ncum_mul);
-		if((ncum_set + ncum_add)*ncum_mul > (cum_set + cum_add)*cum_mul) {
+		
+		// compute cum_mul
+		std::sort(cumulative_multipliers.begin(),cumulative_multipliers.end());
+		while(! cumulative_multipliers.empty()) {
+			if(cum_mul >= 100000) {
+				cum_mul *= cumulative_multipliers.back();
+				cum_mul /= 100;
+				cumulative_multipliers.pop_back();
+			} else {
+				cum_mul *= cumulative_multipliers.front();
+				cum_mul /= 100;
+				cumulative_multipliers.pop_front();
+			}
+		}
+		
+		composite_value_ = maximum<int>((cum_set + cum_add)*cum_mul/100000,(ncum_set + ncum_add)*ncum_mul/100);
+		if((ncum_set + ncum_add)*ncum_mul/100 > (cum_set + cum_add)*cum_mul/100000) {
 			effect_list_.clear();
 			if(ncum_set_effect.type != NOT_USED) {
 				effect_list_.push_back(ncum_set_effect);
@@ -983,7 +1001,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 			}
 		}
 	} else if(use_ncum) {
-		composite_value_ = (ncum_set + ncum_add)*ncum_mul;
+		composite_value_ = (ncum_set + ncum_add)*ncum_mul/100;
 		effect_list_.clear();
 		if(ncum_set_effect.type != NOT_USED) {
 			effect_list_.push_back(ncum_set_effect);
