@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-10 08:17+0200\n"
+"POT-Creation-Date: 2006-04-11 08:03+0200\n"
 "PO-Revision-Date: 2005-08-07 22:54+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <sl@li.org>\n"
@@ -43,18 +43,12 @@ msgstr ""
 "Zastrupljenih enot ne more ozdraviti strupa, te morajo poiskati pomoč v vasi "
 "ali pri zdravniku."
 
-#: data/abilities.cfg:22
-msgid ""
-" These units are capable of basic healing, though they can only delay the "
-"effects of poison, not cure them entirely."
-msgstr ""
-
-#: data/abilities.cfg:29
+#: data/abilities.cfg:26
 #, fuzzy
 msgid "heals +8"
 msgstr "celi rane"
 
-#: data/abilities.cfg:34
+#: data/abilities.cfg:31
 #, fuzzy
 msgid ""
 "Heals +8:\n"
@@ -77,11 +71,11 @@ msgstr ""
 "Zdravnik lahko enote ozdravi strupa, toda tisto potezo se potem ne bodo več "
 "zdravile."
 
-#: data/abilities.cfg:43
+#: data/abilities.cfg:40
 msgid "cures"
 msgstr "zdravi"
 
-#: data/abilities.cfg:45
+#: data/abilities.cfg:42
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
@@ -89,16 +83,10 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:55
-msgid ""
-" These units are capable of healing units around them, and curing them of "
-"poison."
-msgstr ""
-
-#: data/abilities.cfg:61
 msgid "regenerates"
 msgstr "regeneracija"
 
-#: data/abilities.cfg:63
+#: data/abilities.cfg:57
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
@@ -108,17 +96,11 @@ msgstr ""
 "Enota se bo vsako potezo pozdravila za 8 HP. Če je zastrupljena, se bo "
 "namesto zdravljenja, strup izničil."
 
-#: data/abilities.cfg:70
-msgid ""
-" These units regenerate, which allows them to heal as though always "
-"stationed in a village."
-msgstr ""
-
-#: data/abilities.cfg:81
+#: data/abilities.cfg:72
 msgid "steadfast"
 msgstr "neomajen"
 
-#: data/abilities.cfg:83
+#: data/abilities.cfg:74
 #, fuzzy
 msgid ""
 "Steadfast:\n"
@@ -128,20 +110,14 @@ msgstr ""
 "Neomajen:\n"
 "Ta enota ima v obrambi podvojene odpornosti, do največ 50%."
 
-#: data/abilities.cfg:90
-msgid ""
-" The steadiness of this unit reduces damage from some attacks, but only "
-"while defending."
-msgstr ""
-
-#: data/abilities.cfg:97 data/abilities.cfg:116 data/abilities.cfg:147
-#: data/abilities.cfg:190 data/abilities.cfg:245 src/actions.cpp:539
+#: data/abilities.cfg:85 data/abilities.cfg:104 data/abilities.cfg:135
+#: data/abilities.cfg:178 data/abilities.cfg:233 src/actions.cpp:539
 #: src/actions.cpp:672
 msgid "leadership"
 msgstr "vodenje"
 
-#: data/abilities.cfg:101 data/abilities.cfg:120 data/abilities.cfg:151
-#: data/abilities.cfg:194 data/abilities.cfg:249
+#: data/abilities.cfg:89 data/abilities.cfg:108 data/abilities.cfg:139
+#: data/abilities.cfg:182 data/abilities.cfg:237
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -158,17 +134,11 @@ msgstr ""
 "Sosednje enote nižjih nivojev in iste strani bodo v boju naredile 25% več "
 "škode za vsak izkustveni nivo razlike."
 
-#: data/abilities.cfg:309
-msgid ""
-" The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
-msgstr ""
-
-#: data/abilities.cfg:313
+#: data/abilities.cfg:298
 msgid "skirmisher"
 msgstr "izogibalec"
 
-#: data/abilities.cfg:315
+#: data/abilities.cfg:300
 #, fuzzy
 msgid ""
 "Skirmisher:\n"
@@ -180,17 +150,11 @@ msgstr ""
 "Ta enota se je sposobna hitro premikati mimo sovražnih enot in ignorira "
 "sovražnikova območja nadzora."
 
-#: data/abilities.cfg:321
-msgid ""
-" Their skill at skirmishing allows these units to ignore enemy units' zones "
-"of control and thus move unhindered around them."
-msgstr ""
-
-#: data/abilities.cfg:328
+#: data/abilities.cfg:310
 msgid "illuminates"
 msgstr "osvetljuje"
 
-#: data/abilities.cfg:332
+#: data/abilities.cfg:314
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -206,17 +170,11 @@ msgstr ""
 "Vsaka sosednja enota se bo ponoči bojevala, kot da je mrak, in v mraku, kot "
 "da je dan."
 
-#: data/abilities.cfg:338
-msgid ""
-" They also have the power of Illumination, which increases the lighting "
-"level in the area adjacent to them."
-msgstr ""
-
-#: data/abilities.cfg:342
+#: data/abilities.cfg:321
 msgid "teleport"
 msgstr "teleportiranje"
 
-#: data/abilities.cfg:344
+#: data/abilities.cfg:323
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -226,17 +184,11 @@ msgstr ""
 "Ta enota se lahko teleportira med zavezniškimi vasmi, tako da porabi en "
 "premik."
 
-#: data/abilities.cfg:349
-msgid ""
-" They can also teleport between any two villages instantly, though the "
-"player must control both, and the destination village must be unoccupied."
-msgstr ""
-
-#: data/abilities.cfg:353
+#: data/abilities.cfg:329
 msgid "ambush"
 msgstr "zaseda"
 
-#: data/abilities.cfg:357
+#: data/abilities.cfg:333
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -251,17 +203,11 @@ msgstr ""
 "Sovražne enote te enote, ko je v gozdu, ne morejo niti videti niti napasti, "
 "razen takoj po njenem napadu ali če so poleg nje."
 
-#: data/abilities.cfg:368
-msgid ""
-" In woodlands, their ambush skill renders them invisible to an enemy unless "
-"they are immediately adjacent, or have revealed themselves by attacking."
-msgstr ""
-
-#: data/abilities.cfg:372
+#: data/abilities.cfg:345
 msgid "nightstalk"
 msgstr "nočni zalezovalec"
 
-#: data/abilities.cfg:376
+#: data/abilities.cfg:349
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -276,16 +222,12 @@ msgstr ""
 "Sovražne enote te enote ponoči ne vidijo in je ne morejo napasti, razen "
 "takoj po njenem napadu ali če so poleg nje."
 
-#: data/abilities.cfg:387
-msgid " They are able to hide at night, leaving no trace of their presence."
-msgstr ""
-
-#: data/abilities.cfg:391
+#: data/abilities.cfg:361
 #, fuzzy
 msgid "submerge"
 msgstr "vbod"
 
-#: data/abilities.cfg:395
+#: data/abilities.cfg:365
 #, fuzzy
 msgid ""
 "Submerge:\n"
@@ -301,17 +243,11 @@ msgstr ""
 "Sovražne enote te enote, ko je v gozdu, ne morejo niti videti niti napasti, "
 "razen takoj po njenem napadu ali če so poleg nje."
 
-#: data/abilities.cfg:406
-msgid ""
-" These units can move unseen in deep water, requiring no air from the "
-"surface."
-msgstr ""
-
-#: data/abilities.cfg:410
+#: data/abilities.cfg:377
 msgid "berserk"
 msgstr "berserk"
 
-#: data/abilities.cfg:412
+#: data/abilities.cfg:379
 #, fuzzy
 msgid ""
 "Berserk:\n"
@@ -322,17 +258,11 @@ msgstr ""
 "Ob napadu ali pri obrambi se bo boj nadaljeval, dokler eden od udeležencev "
 "ne umre."
 
-#: data/abilities.cfg:419
-msgid ""
-" Whenever their berserk attack is used, these units continue to push the "
-"attack until either they or their enemy lies dead."
-msgstr ""
-
-#: data/abilities.cfg:423
+#: data/abilities.cfg:387
 msgid "backstab"
 msgstr "vbod v hrbet"
 
-#: data/abilities.cfg:425
+#: data/abilities.cfg:389
 #, fuzzy
 msgid ""
 "Backstab:\n"
@@ -344,11 +274,11 @@ msgstr ""
 "Ta napad naredi dvojno škodo, če je na tarčini nasprotni strani prijateljska "
 "enota. (To ne dela z zavezniki.)"
 
-#: data/abilities.cfg:435 data/abilities.cfg:443
+#: data/abilities.cfg:399 data/abilities.cfg:407
 msgid "plague"
 msgstr "kuga"
 
-#: data/abilities.cfg:437 data/abilities.cfg:445
+#: data/abilities.cfg:401 data/abilities.cfg:409
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -360,24 +290,24 @@ msgstr ""
 "isti strani, kot enota, ki jo je ubila. (To ne deluje na nemrtvih in enotah "
 "v vaseh.)"
 
-#: data/abilities.cfg:451
+#: data/abilities.cfg:415
 #, fuzzy
 msgid "slows"
 msgstr "upočasni"
 
-#: data/abilities.cfg:453
+#: data/abilities.cfg:417
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
 
-#: data/abilities.cfg:460
+#: data/abilities.cfg:424
 #, fuzzy
 msgid "stones"
 msgstr "okamèni"
 
-#: data/abilities.cfg:462
+#: data/abilities.cfg:426
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -387,11 +317,11 @@ msgstr ""
 "Ta napad spremeni tarčo v kamen. Okamenele enote se ne morejo premikati in "
 "napadati."
 
-#: data/abilities.cfg:468
+#: data/abilities.cfg:432
 msgid "marksman"
 msgstr "ostrostrelec"
 
-#: data/abilities.cfg:470
+#: data/abilities.cfg:434
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -399,11 +329,11 @@ msgstr ""
 "Marksman:\n"
 "V napadu (ne v obrambi) ima enota vedno vsaj 60% možnosti da zadane."
 
-#: data/abilities.cfg:479
+#: data/abilities.cfg:443
 msgid "magical"
 msgstr "čaroben"
 
-#: data/abilities.cfg:481
+#: data/abilities.cfg:445
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -411,18 +341,12 @@ msgstr ""
 "Čaroben:\n"
 "Ta napad ima vedno 70% možnosti da zadane."
 
-#: data/abilities.cfg:488
-msgid ""
-" The ranged attacks of this unit are magical, and always have a high chance "
-"of hitting an opponent."
-msgstr ""
-
-#: data/abilities.cfg:492
+#: data/abilities.cfg:453
 #, fuzzy
 msgid "swarm"
 msgstr "trk"
 
-#: data/abilities.cfg:494
+#: data/abilities.cfg:455
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -431,11 +355,11 @@ msgid ""
 "strikes."
 msgstr ""
 
-#: data/abilities.cfg:500
+#: data/abilities.cfg:461
 msgid "charge"
 msgstr "naskok"
 
-#: data/abilities.cfg:502
+#: data/abilities.cfg:463
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -445,12 +369,12 @@ msgstr ""
 "Ta napad naredi dvojno škodo. Povzroči pa, da tudi napadalec ob protinapadu "
 "prejme dvojno škodo."
 
-#: data/abilities.cfg:512
+#: data/abilities.cfg:473
 #, fuzzy
 msgid "drains"
 msgstr "črpa"
 
-#: data/abilities.cfg:514
+#: data/abilities.cfg:475
 #, fuzzy
 msgid ""
 "Drain:\n"
@@ -461,11 +385,11 @@ msgstr ""
 "Ta enota črpa energijo živim nasprotnikom in se pri tem pozdravi za polovico "
 "storjene škode."
 
-#: data/abilities.cfg:520
+#: data/abilities.cfg:481
 msgid "firststrike"
 msgstr "prvi napad"
 
-#: data/abilities.cfg:522
+#: data/abilities.cfg:483
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -473,11 +397,11 @@ msgstr ""
 "Prvi napad:\n"
 "Ta enota vedno napade prva, tudi če se brani."
 
-#: data/abilities.cfg:528
+#: data/abilities.cfg:489
 msgid "poison"
 msgstr "strup"
 
-#: data/abilities.cfg:530
+#: data/abilities.cfg:491
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -831,7 +755,7 @@ msgstr "meč"
 #: data/units/Drake_Fighter.cfg:64 data/units/Drake_Fire.cfg:76
 #: data/units/Drake_Flameheart.cfg:80 data/units/Drake_Flare.cfg:84
 #: data/units/Drake_Gladiator.cfg:75 data/units/Drake_Inferno.cfg:77
-#: data/units/Drake_Slasher.cfg:75 data/units/Drake_Warden.cfg:81
+#: data/units/Drake_Slasher.cfg:77 data/units/Drake_Warden.cfg:83
 #: data/units/Drake_Warrior.cfg:78 data/units/Dwarvish_Berserker.cfg:38
 #: data/units/Dwarvish_Dragonguard.cfg:28 data/units/Dwarvish_Fighter.cfg:30
 #: data/units/Dwarvish_Lord.cfg:33 data/units/Dwarvish_Lord.cfg:84
@@ -871,7 +795,7 @@ msgstr "meč"
 #: data/units/Human_Outlaw_Poacher.cfg:37 data/units/Human_Outlaw_Rogue.cfg:34
 #: data/units/Human_Outlaw_Rogue.cfg:62 data/units/Human_Outlaw_Thief.cfg:86
 #: data/units/Human_Outlaw_Trapper.cfg:38 data/units/Merman_Triton.cfg:47
-#: data/units/Monster_Cave_Spider.cfg:41 data/units/Naga_Fighter.cfg:30
+#: data/units/Monster_Cave_Spider.cfg:43 data/units/Naga_Fighter.cfg:30
 #: data/units/Naga_Myrmidon.cfg:35 data/units/Naga_Warrior.cfg:34
 #: data/units/Ogre.cfg:21 data/units/Ogre_Young.cfg:20
 #: data/units/Orcish_Archer.cfg:29 data/units/Orcish_Assassin.cfg:31
@@ -880,8 +804,8 @@ msgstr "meč"
 #: data/units/Orcish_Ruler.cfg:34 data/units/Orcish_Slayer.cfg:32
 #: data/units/Orcish_Slayer.cfg:78 data/units/Orcish_Slurbow.cfg:30
 #: data/units/Orcish_Sovereign.cfg:36 data/units/Orcish_Warlord.cfg:30
-#: data/units/Orcish_Warrior.cfg:29 data/units/Undead_Bat_Blood.cfg:48
-#: data/units/Undead_Bat_Vampire.cfg:72 data/units/Undead_Corpse_Ghoul.cfg:41
+#: data/units/Orcish_Warrior.cfg:29 data/units/Undead_Bat_Blood.cfg:50
+#: data/units/Undead_Bat_Vampire.cfg:74 data/units/Undead_Corpse_Ghoul.cfg:41
 #: data/units/Undead_Corpse_Necrophage.cfg:41
 #: data/units/Undead_Skele_Bone_Shooter.cfg:43
 #: data/units/Undead_Skele_Death_Knight.cfg:39
@@ -928,12 +852,12 @@ msgstr "verižni buzdovan"
 #: data/units/Drake_Sky.cfg:87 data/units/Dwarvish_Fighter.cfg:55
 #: data/units/Dwarvish_Lord.cfg:59 data/units/Dwarvish_Runemaster.cfg:28
 #: data/units/Dwarvish_Steelclad.cfg:58 data/units/Elvish_Druid.cfg:30
-#: data/units/Elvish_Druid.cfg:56 data/units/Elvish_Enchantress.cfg:24
-#: data/units/Elvish_Enchantress.cfg:91 data/units/Elvish_Shaman.cfg:31
+#: data/units/Elvish_Druid.cfg:56 data/units/Elvish_Enchantress.cfg:26
+#: data/units/Elvish_Enchantress.cfg:93 data/units/Elvish_Shaman.cfg:31
 #: data/units/Elvish_Shaman.cfg:57 data/units/Elvish_Shyde.cfg:31
-#: data/units/Elvish_Shyde.cfg:59 data/units/Elvish_Sorceress.cfg:24
-#: data/units/Elvish_Sorceress.cfg:91 data/units/Elvish_Sylph.cfg:26
-#: data/units/Elvish_Sylph.cfg:54 data/units/Goblin_Pillager.cfg:76
+#: data/units/Elvish_Shyde.cfg:59 data/units/Elvish_Sorceress.cfg:26
+#: data/units/Elvish_Sorceress.cfg:93 data/units/Elvish_Sylph.cfg:28
+#: data/units/Elvish_Sylph.cfg:56 data/units/Goblin_Pillager.cfg:76
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:27
 #: data/units/Human_Loyalist_Iron_Mauler.cfg:30
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:28 data/units/Human_Mage.cfg:57
@@ -949,18 +873,18 @@ msgstr "verižni buzdovan"
 #: data/units/Mermaid_Initiate.cfg:50 data/units/Mermaid_Priestess.cfg:37
 #: data/units/Mermaid_Siren.cfg:36 data/units/Mermaid_Siren.cfg:82
 #: data/units/Merman_Entangler.cfg:32 data/units/Merman_Netcaster.cfg:31
-#: data/units/Monster_Cave_Spider.cfg:79 data/units/Monster_Cuttle_Fish.cfg:40
+#: data/units/Monster_Cave_Spider.cfg:81 data/units/Monster_Cuttle_Fish.cfg:42
 #: data/units/Monster_Giant_Mudcrawler.cfg:53
 #: data/units/Monster_Giant_Mudcrawler.cfg:89
-#: data/units/Monster_Giant_Scorpion.cfg:58
+#: data/units/Monster_Giant_Scorpion.cfg:60
 #: data/units/Monster_Mudcrawler.cfg:52 data/units/Monster_Tentacle.cfg:66
 #: data/units/Monster_Yeti.cfg:40 data/units/Saurian_Augur.cfg:35
 #: data/units/Saurian_Oracle.cfg:35 data/units/Saurian_Soothsayer.cfg:36
 #: data/units/Troll.cfg:27 data/units/Troll_Great.cfg:28
 #: data/units/Troll_Hero.cfg:27 data/units/Troll_Rocklobber.cfg:29
 #: data/units/Troll_Rocklobber.cfg:54 data/units/Troll_Warrior.cfg:28
-#: data/units/Troll_Whelp.cfg:28 data/units/Undead_Corpse_Soulless.cfg:49
-#: data/units/Undead_Corpse_Walking.cfg:48
+#: data/units/Troll_Whelp.cfg:28 data/units/Undead_Corpse_Soulless.cfg:51
+#: data/units/Undead_Corpse_Walking.cfg:50
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:33
 #: data/units/Undead_Necromancer.cfg:34
 #: data/units/Undead_Skeleton_Archer.cfg:38 data/units/Wose.cfg:36
@@ -1027,7 +951,7 @@ msgstr "lok"
 #: data/units/Boat_Pirate_Galleon.cfg:20
 #: data/units/Boat_Transport_Galleon.cfg:20 data/units/Drake_Clasher.cfg:103
 #: data/units/Drake_Enforcer.cfg:138 data/units/Drake_Gladiator.cfg:111
-#: data/units/Drake_Slasher.cfg:91 data/units/Drake_Warden.cfg:97
+#: data/units/Drake_Slasher.cfg:93 data/units/Drake_Warden.cfg:99
 #: data/units/Dwarvish_Dragonguard.cfg:53 data/units/Dwarvish_Guardsman.cfg:31
 #: data/units/Dwarvish_Guardsman.cfg:45 data/units/Dwarvish_Sentinel.cfg:46
 #: data/units/Dwarvish_Sentinel.cfg:81 data/units/Dwarvish_Stalwart.cfg:41
@@ -1071,8 +995,8 @@ msgstr "lok"
 #: data/units/Merman_Javelineer.cfg:30 data/units/Merman_Javelineer.cfg:69
 #: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:29
 #: data/units/Merman_Spearman.cfg:68 data/units/Merman_Triton.cfg:33
-#: data/units/Merman_Warrior.cfg:32 data/units/Monster_Cuttle_Fish.cfg:89
-#: data/units/Monster_Giant_Scorpion.cfg:29
+#: data/units/Merman_Warrior.cfg:32 data/units/Monster_Cuttle_Fish.cfg:91
+#: data/units/Monster_Giant_Scorpion.cfg:31
 #: data/units/Monster_Sea_Serpent.cfg:29 data/units/Orcish_Archer.cfg:54
 #: data/units/Orcish_Crossbowman.cfg:55 data/units/Orcish_Leader.cfg:59
 #: data/units/Orcish_Ruler.cfg:59 data/units/Orcish_Slurbow.cfg:106
@@ -1267,8 +1191,8 @@ msgstr "bolščanje"
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:25
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:57
-#: data/units/Elvish_Enchantress.cfg:145 data/units/Elvish_Sorceress.cfg:150
-#: data/units/Elvish_Sylph.cfg:88 data/units/Saurian_Augur.cfg:55
+#: data/units/Elvish_Enchantress.cfg:147 data/units/Elvish_Sorceress.cfg:152
+#: data/units/Elvish_Sylph.cfg:90 data/units/Saurian_Augur.cfg:55
 #: data/units/Saurian_Oracle.cfg:55 data/units/Saurian_Soothsayer.cfg:56
 #: data/units/Undead_Necro_Ancient_Lich.cfg:55
 #: data/units/Undead_Necro_Ancient_Lich.cfg:73
@@ -1338,8 +1262,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:97
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:32
 #: data/tutorial/units/Elder_Mage.cfg:30 data/units/Elvish_Druid.cfg:29
-#: data/units/Elvish_Enchantress.cfg:23 data/units/Elvish_Shaman.cfg:30
-#: data/units/Elvish_Sorceress.cfg:23 data/units/Human_Mage.cfg:55
+#: data/units/Elvish_Enchantress.cfg:25 data/units/Elvish_Shaman.cfg:30
+#: data/units/Elvish_Sorceress.cfg:25 data/units/Human_Mage.cfg:55
 #: data/units/Human_Mage_Arch.cfg:46 data/units/Human_Mage_Great.cfg:35
 #: data/units/Human_Mage_Red.cfg:56 data/units/Human_Mage_Silver.cfg:93
 #: data/units/Human_Mage_White.cfg:64 data/units/Mermaid_Diviner.cfg:42
@@ -1369,8 +1293,8 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:57
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:46
-#: data/units/Elvish_Enchantress.cfg:144 data/units/Elvish_Sorceress.cfg:149
-#: data/units/Elvish_Sylph.cfg:87
+#: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:151
+#: data/units/Elvish_Sylph.cfg:89
 msgid "faerie fire"
 msgstr "vilinji ogenj"
 
@@ -1646,8 +1570,8 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:24
-#: data/units/Undead_Corpse_Soulless.cfg:47
-#: data/units/Undead_Corpse_Walking.cfg:46
+#: data/units/Undead_Corpse_Soulless.cfg:49
+#: data/units/Undead_Corpse_Walking.cfg:48
 #: data/units/Undead_Necro_Ancient_Lich.cfg:53
 #: data/units/Undead_Necro_Lich.cfg:35 data/units/Undead_Spirit_Ghost.cfg:30
 msgid "touch"
@@ -1666,7 +1590,6 @@ msgid "female^Arch Mage"
 msgstr "Nadčarovnica"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:32
-#: data/units/Human_Mage_Arch.cfg:20
 msgid ""
 "The title of Arch Mage is conferred only after a lifetime of study and "
 "achievement to match. Arch Magi are often employed in positions of "
@@ -1699,7 +1622,6 @@ msgid "female^Great Mage"
 msgstr "Sijajna čarovnica"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:33
-#: data/units/Human_Mage_Great.cfg:21
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
 "nearly a legend in their own time, and town criers have forcibly learnt "
@@ -1723,7 +1645,6 @@ msgid "female^Red Mage"
 msgstr "Rdeča čarovnica"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:32
-#: data/units/Human_Mage_Red.cfg:20
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the blue robes of an apprentice, and given the red robes of a master. The "
@@ -1787,7 +1708,6 @@ msgid "Necromancer"
 msgstr "Nekromant"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:28
-#: data/units/Undead_Necromancer.cfg:21
 msgid ""
 "One of the greatest circles of what is considered 'black magic' is the art "
 "of necromancy, the terrible ability to awaken the dead with false life. It "
@@ -1972,11 +1892,11 @@ msgstr "Nemrtvi"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:33
+#: data/game.cfg:35
 msgid "Binary Saves"
 msgstr "Binarni shranjeni položaji"
 
-#: data/game.cfg:40
+#: data/game.cfg:42
 msgid "Show Combat"
 msgstr "Prikaži boj"
 
@@ -3506,7 +3426,7 @@ msgstr ""
 #: data/terrain.cfg:200 data/terrain.cfg:220 data/terrain.cfg:230
 #: data/terrain.cfg:240 data/terrain.cfg:250 data/terrain.cfg:260
 #: data/terrain.cfg:270 data/terrain.cfg:280 data/terrain.cfg:290
-#: src/reports.cpp:376
+#: src/reports.cpp:371
 msgid "Village"
 msgstr "Vas"
 
@@ -4230,6 +4150,147 @@ msgstr "Podzemlje"
 msgid "Deep Underground"
 msgstr "Podzemlje"
 
+#: data/special-notes.cfg:2
+msgid ""
+" Spirits have very unusual resistances to damage, and move quite slowly over "
+"open water."
+msgstr ""
+
+#: data/special-notes.cfg:5
+msgid ""
+" This unit's holy attack deals tremendous damage to the undead, and even "
+"some to living creatures."
+msgstr ""
+
+#: data/special-notes.cfg:8
+msgid ""
+" This unit is capable of basic healing, though it can only delay the effects "
+"of poison, not cure them entirely."
+msgstr ""
+
+#: data/special-notes.cfg:11
+msgid ""
+" This unit is capable of healing those around it, and curing them of poison."
+msgstr ""
+
+#: data/special-notes.cfg:14
+msgid ""
+" This unit regenerates, which allows it to heal as though always stationed "
+"in a village."
+msgstr ""
+
+#: data/special-notes.cfg:17
+msgid ""
+" The steadiness of this unit reduces damage from some attacks, but only "
+"while defending."
+msgstr ""
+
+#: data/special-notes.cfg:20
+msgid ""
+" The leadership of this unit enables friendly units next to it to deal more "
+"damage in combat, though this only applies to units of lower level."
+msgstr ""
+
+#: data/special-notes.cfg:23
+msgid ""
+" This unit's skill at skirmishing allows it to ignore enemies' zones of "
+"control and thus move unhindered around them."
+msgstr ""
+
+#: data/special-notes.cfg:26
+msgid " Illumination increases the lighting level in adjacent areas."
+msgstr ""
+
+#: data/special-notes.cfg:29
+msgid ""
+" This unit can teleport between any two villages instantly, though the "
+"player must control both, and the destination village must be unoccupied."
+msgstr ""
+
+#: data/special-notes.cfg:32
+msgid ""
+" In woodlands, this unit's ambush skill renders it invisible to enemies "
+"unless it is immediately adjacent or has revealed itself by attacking."
+msgstr ""
+
+#: data/special-notes.cfg:35
+msgid " This unit is able to hide at night, leaving no trace of its presence."
+msgstr ""
+
+#: data/special-notes.cfg:38
+msgid ""
+" This unit can move unseen in deep water, requiring no air from the surface."
+msgstr ""
+
+#: data/special-notes.cfg:41
+msgid ""
+" Whenever its berserk attack is used, this unit continues to push the attack "
+"until either it or its enemy lies dead."
+msgstr ""
+
+#: data/special-notes.cfg:44
+msgid ""
+"  If someone with the same allegiance distracts an enemy, this unit may "
+"backstab, inflicting double damage, by creeping around behind that enemy."
+msgstr ""
+
+#: data/special-notes.cfg:47
+msgid " Foes who lose their life to the plague will rise again in unlife."
+msgstr ""
+
+#: data/special-notes.cfg:50
+msgid ""
+" This unit is able to slow its enemies, halving their movement speed and "
+"attack damage."
+msgstr ""
+
+#: data/special-notes.cfg:53
+msgid ""
+" The ability to turn the living to stone makes this unit extremely dangerous."
+msgstr ""
+
+#: data/special-notes.cfg:56
+msgid ""
+" This unit's marksmanship gives it a high chance of hitting targeted "
+"enemies, but only on the attack."
+msgstr ""
+
+#: data/special-notes.cfg:59
+msgid ""
+" The ranged attacks of this unit are magical, and always have a high chance "
+"of hitting an opponent."
+msgstr ""
+
+#: data/special-notes.cfg:62
+msgid ""
+" The swarming attacks of this unit become less deadly whenever its members "
+"are wounded."
+msgstr ""
+
+#: data/special-notes.cfg:65
+msgid ""
+" Using a charging attack doubles both damage dealt and received; this does "
+"not affect defensive retaliation."
+msgstr ""
+
+#: data/special-notes.cfg:68
+msgid ""
+" During battle, this unit can drain life from victims to renew its own "
+"health."
+msgstr ""
+
+#: data/special-notes.cfg:71
+msgid ""
+" The length of this unit's weapon allows it to strike first in melee, even "
+"in defense."
+msgstr ""
+
+#: data/special-notes.cfg:74
+msgid ""
+" The victims of this unit's poison will continually take damage until they "
+"can be cured in town or by a unit which cures."
+msgstr ""
+
 #: data/team_colors.cfg:4
 msgid "Red"
 msgstr "Rdeča"
@@ -4353,7 +4414,7 @@ msgstr "Dejanja"
 msgid "End Turn"
 msgstr "Končaj potezo"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2197
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2203
 msgid "HP"
 msgstr "HP"
 
@@ -5027,17 +5088,19 @@ msgstr ""
 msgid "Drake Slasher"
 msgstr ""
 
-#: data/units/Drake_Slasher.cfg:18
+#: data/units/Drake_Slasher.cfg:20
 msgid ""
 "Slashers are clashers who have chosen to master the use of a Halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
 "weapon of matching scale, large enough to skewer a horse as a man would a "
 "boar. Their training has also enhanced their stamina and defensive skills, "
-"which is a major advantage over their close cousins the Gladiators."
+"which is a major advantage over their close cousins the Gladiators.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
-#: data/units/Drake_Slasher.cfg:74 data/units/Drake_Slasher.cfg:90
-#: data/units/Drake_Warden.cfg:80 data/units/Drake_Warden.cfg:96
+#: data/units/Drake_Slasher.cfg:76 data/units/Drake_Slasher.cfg:92
+#: data/units/Drake_Warden.cfg:82 data/units/Drake_Warden.cfg:98
 #: data/units/Human_Loyalist_Halberdier.cfg:38
 #: data/units/Human_Loyalist_Halberdier.cfg:83
 msgid "halberd"
@@ -5047,12 +5110,14 @@ msgstr "helebarda"
 msgid "Drake Warden"
 msgstr ""
 
-#: data/units/Drake_Warden.cfg:19
+#: data/units/Drake_Warden.cfg:21
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
 "the most able Slashers. They have forged their might such that few warriors "
 "on this earth would dare stand against them. The Wardens' weapon of choice "
-"is the halberd, which they use to great effect."
+"is the halberd, which they use to great effect.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
 #: data/units/Drake_Warrior.cfg:3
@@ -5365,8 +5430,7 @@ msgid ""
 "Their chief ability lies in healing, and it is for this skill that the "
 "elvish druids are revered by their people.\n"
 "\n"
-"Special Notes: A druid's entangling attack slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Elvish_Druid.cfg:55 data/units/Elvish_Shyde.cfg:58
@@ -5381,15 +5445,17 @@ msgstr "trni"
 msgid "female^Elvish Enchantress"
 msgstr "Vilinska čarovnica"
 
-#: data/units/Elvish_Enchantress.cfg:16
+#: data/units/Elvish_Enchantress.cfg:18
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
-"magically animating roots with which they bind their enemies in place."
+"magically animating roots with which they bind their enemies in place.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
-#: data/units/Elvish_Enchantress.cfg:90 data/units/Elvish_Shaman.cfg:56
-#: data/units/Elvish_Sorceress.cfg:90
+#: data/units/Elvish_Enchantress.cfg:92 data/units/Elvish_Shaman.cfg:56
+#: data/units/Elvish_Sorceress.cfg:92
 msgid "entangle"
 msgstr "zavozlanje"
 
@@ -5430,8 +5496,7 @@ msgid ""
 "This prodigious skill does come with one cost, that being a lack of practice "
 "with the sword.\n"
 "\n"
-"Special Notes: Their marksmanship gives these elves a high chance of hitting "
-"their enemy, but only on the attack."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Elvish_Marksman.cfg:75 data/units/Elvish_Sharpshooter.cfg:74
@@ -5537,8 +5602,7 @@ msgid ""
 "The healing abilities of the elves are also remarkable, and of capital use "
 "in battle.\n"
 "\n"
-"Special Notes: A shaman's entangling attack slows enemies down, halving "
-"their movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:3
@@ -5552,8 +5616,7 @@ msgid ""
 "elves that such a story could be taken seriously. The sharpshooters of the "
 "elves have, quite simply, mastered the art of archery.\n"
 "\n"
-"Special Notes: Their marksmanship gives these elves a high chance of hitting "
-"their enemy, but only on the attack."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:191
@@ -5571,11 +5634,10 @@ msgid ""
 "these beautiful stewards of the elven forests epitomize the grace and "
 "mystery of their people.\n"
 "\n"
-"Special Notes: A shyde's entangling attack slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 
-#: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:24
+#: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:26
 msgid "faerie touch"
 msgstr "vilin dotik"
 
@@ -5583,27 +5645,31 @@ msgstr "vilin dotik"
 msgid "female^Elvish Sorceress"
 msgstr "Vilinska čarodejka"
 
-#: data/units/Elvish_Sorceress.cfg:16
+#: data/units/Elvish_Sorceress.cfg:18
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
 "entangling attack is notably more effective than that of the Elvish Shaman, "
 "and they can call upon bursts of chilling ethereal wind to smite those who "
-"oppose them."
+"oppose them.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
 msgstr "Vilinska vešča"
 
-#: data/units/Elvish_Sylph.cfg:17
+#: data/units/Elvish_Sylph.cfg:19
 msgid ""
 "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
 "developed their faerie side, they transform into creatures of both worlds, "
-"wielding powerful magic against their enemies."
+"wielding powerful magic against their enemies.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
-#: data/units/Elvish_Sylph.cfg:53
+#: data/units/Elvish_Sylph.cfg:55
 msgid "gossamer"
 msgstr "tanka mrena"
 
@@ -5624,15 +5690,13 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts' paws into a most "
 "deadly stroke.\n"
 "\n"
-"Special Notes: anyone struck by a direwolf's claws will be poisoned, and "
-"victims of this poison will continually take damage until they can be cured "
-"in town or by a unit which cures."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Goblin_Direwolf_Rider.cfg:39 data/units/Goblin_Knight.cfg:39
-#: data/units/Goblin_Wolf_Rider.cfg:70 data/units/Monster_Cave_Spider.cfg:39
-#: data/units/Monster_Sea_Serpent.cfg:27 data/units/Undead_Bat_Blood.cfg:46
-#: data/units/Undead_Bat_Vampire.cfg:70
+#: data/units/Goblin_Wolf_Rider.cfg:70 data/units/Monster_Cave_Spider.cfg:41
+#: data/units/Monster_Sea_Serpent.cfg:27 data/units/Undead_Bat_Blood.cfg:48
+#: data/units/Undead_Bat_Vampire.cfg:72
 msgid "fangs"
 msgstr "čekani"
 
@@ -5647,8 +5711,7 @@ msgid ""
 "doing so. A much larger spear helps to compensate for their short reach, and "
 "better armor helps to shield their tiny frames.\n"
 "\n"
-"Special Notes: the length of their weapon allows an impaler to strike first "
-"in melee, even in defense."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Goblin_Knight.cfg:3
@@ -5678,8 +5741,7 @@ msgid ""
 "their foes, and also carry nets to wreak havoc against those attempting to "
 "rally a defense or reprisal.\n"
 "\n"
-"Special Notes: being caught in a net slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Goblin_Pillager.cfg:40
@@ -5787,12 +5849,14 @@ msgid ""
 msgstr ""
 
 #: data/units/Human_Horse_Grand_Knight.cfg:21
+#: data/units/Human_Horse_Knight.cfg:20 data/units/Human_Horse_Lancer.cfg:21
+#: data/units/Human_Horseman.cfg:20
+#, fuzzy
 msgid ""
 "\n"
 "\n"
-"Special Notes: the Grand Knight's charging lance attack doubles both damage "
-"dealt and received. This does not affect his defensive retaliation."
-msgstr ""
+"Special Notes:"
+msgstr "Posebnosti orožja"
 
 #: data/units/Human_Horse_Grand_Knight.cfg:63
 #: data/units/Human_Horse_Knight.cfg:62 data/units/Human_Horse_Lancer.cfg:25
@@ -5814,14 +5878,6 @@ msgid ""
 "however, and growing experience with these weapons is only to their benefit."
 msgstr ""
 
-#: data/units/Human_Horse_Knight.cfg:20
-msgid ""
-"\n"
-"\n"
-"Special Notes: the Knight's charging lance attack doubles both damage dealt "
-"and received. This does not affect his defensive retaliation."
-msgstr ""
-
 #: data/units/Human_Horse_Lancer.cfg:3
 msgid "Lancer"
 msgstr "Ulan"
@@ -5836,35 +5892,20 @@ msgid ""
 "defensive lines. However, they have limited use in defense."
 msgstr ""
 
-#: data/units/Human_Horse_Lancer.cfg:21
-msgid ""
-"\n"
-"\n"
-"Special Notes: the Lancer's charging lance attack doubles both damage dealt "
-"and received. This does not affect his defensive retaliation."
-msgstr ""
-
 #: data/units/Human_Horse_Paladin.cfg:3
 msgid "Paladin"
 msgstr "Paladin"
 
-#: data/units/Human_Horse_Paladin.cfg:19
+#: data/units/Human_Horse_Paladin.cfg:21
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to monastic "
 "orders, pledging their might to the cause of righteousness. Though not as "
 "imposing on the battlefield as a Grand Knight, a Paladin is a powerful force "
 "in combat, and their piety grants them other gifts. A Paladin is a bane to "
-"the unworldly, and has trained in ministering to the wounds of his comrades."
-msgstr ""
-
-#: data/units/Human_Horse_Paladin.cfg:21
-msgid ""
+"the unworldly, and has trained in ministering to the wounds of his "
+"comrades.\n"
 "\n"
-"\n"
-"Special Notes: the Paladin's charging lance attack doubles both damage dealt "
-"and received. This does not affect his defensive retaliation. The Paladin's "
-"holy attack with his sword deals tremendous damage to the undead, and even "
-"some to living creatures."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:91
@@ -5886,14 +5927,6 @@ msgid ""
 "against most infantry, especially those who have fallen out of line, but "
 "must take care against both spearmen and archers, for whom their large size "
 "and momentum provide inviting targets."
-msgstr ""
-
-#: data/units/Human_Horseman.cfg:20
-msgid ""
-"\n"
-"\n"
-"Special Notes: the Horseman's only attack is a charge, which doubles both "
-"damage dealt and received. This does not affect his defensive retaliation."
 msgstr ""
 
 #: data/units/Human_Loyalist_Bowman.cfg:3
@@ -6059,8 +6092,7 @@ msgid ""
 "customary only to grant these weapons to veteran pikemen, who have proven "
 "that they have the skill to employ them properly on the field of war.\n"
 "\n"
-"Special Notes: the length of their weapon allows a halberdier to strike "
-"first in melee, even in defense."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:3
@@ -6111,8 +6143,7 @@ msgid ""
 "from a distance, often without retribution, and still hold their ground in "
 "melee.\n"
 "\n"
-"Special Notes: the length of their weapon allows a javelineer to strike "
-"first in melee, even in defense."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:3
@@ -6190,8 +6221,7 @@ msgid ""
 "of pikemen is the bane of any cavalry charge, and with proper discipline and "
 "tactics, pikemen can also hold most infantry at bay.\n"
 "\n"
-"Special Notes: the length of their weapon allows a pikeman to strike first "
-"in melee, even in defense."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Human_Loyalist_Pikeman.cfg:60
@@ -6253,8 +6283,7 @@ msgid ""
 "shield and a few javelins, spearmen are the staple of most armies, often "
 "thrown into the front lines with only basic training.\n"
 "\n"
-"Special Notes: the length of their weapon allows a spearman to strike first "
-"in melee, even in defense."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Human_Loyalist_Swordsman.cfg:3
@@ -6295,8 +6324,7 @@ msgid ""
 "Physically frail, and lacking familiarity with combat, magi do possess "
 "certain arts which are of great utility in battle.\n"
 "\n"
-"Special Notes: the ranged attack of a mage is magical, and always has a high "
-"chance of hitting an opponent."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Human_Mage.cfg:137
@@ -6307,13 +6335,66 @@ msgstr "Čarovnica"
 msgid "Arch Mage"
 msgstr "Nadčarovnik"
 
+#: data/units/Human_Mage_Arch.cfg:20
+msgid ""
+"The title of Arch Mage is conferred only after a lifetime of study and "
+"achievement to match. Arch Magi are often employed in positions of "
+"education, or as advisors to those wise enough to seek the fruits of their "
+"wisdom. Many tend to wealthy patrons, a profitable enterprise for both as, "
+"outside of the occasional task or word of advice, it gives the mage leave to "
+"pursue their research undisturbed. Certain others shun civilization, "
+"spending their days as hermits, often to study something which most would "
+"tend to frown upon.\n"
+"\n"
+"Though not trained for any sort of combat, if need arises an Arch Mage can "
+"unleash the full power of their art, something which is not to be taken "
+"lightly.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+
 #: data/units/Human_Mage_Great.cfg:3
 msgid "Great Mage"
 msgstr "Sijajen čarovnik"
 
+#: data/units/Human_Mage_Great.cfg:21
+msgid ""
+"Any person who is even considered for the title of Great Mage is quite "
+"nearly a legend in their own time, and town criers have forcibly learnt "
+"discretion in applying the title. Merit for the title is carefully "
+"considered by a council of the leading magi of the age, and the conferment "
+"of the title is given only by a majority vote. Regardless, anyone who is "
+"seriously nominated for the honor of being called a Great Mage is, without "
+"question, a master of their art, and has surpassed almost any of their peers "
+"in skill.\n"
+"\n"
+"Though they are not warriors, by any means, the application of their art to "
+"combat is something that often causes other soldiers to stand aside in awe.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
 msgstr "Rdeči čarovnik"
+
+#: data/units/Human_Mage_Red.cfg:20
+msgid ""
+"Upon the successful termination of their apprenticeship, a mage is stripped "
+"of the blue robes of an apprentice, and given the red robes of a master. The "
+"significance of this change is often lost on the peasantry, who mistakenly "
+"title Master Magi as 'Red Magi'. Likewise, the symbolism of the change in "
+"colors is often mistaken to signify the mage's ability to seemingly conjure "
+"fire from nothing but thin air, a trick which, although undeniably useful, "
+"is viewed as a crass application of the knowledge which they have "
+"painstakingly accrued.\n"
+"\n"
+"Though physically frail, and untrained as warriors, the 'Red Magi' have a "
+"number of tricks up their sleeves, including the gouts of fire which may "
+"have cemented their colloquial name.\n"
+"\n"
+"Special Notes:"
+msgstr ""
 
 #: data/units/Human_Mage_Silver.cfg:3
 msgid "Silver Mage"
@@ -6341,9 +6422,8 @@ msgid ""
 "skills are of undeniable use on the battlefield, if one can manage to coerce "
 "the mage into applying them.\n"
 "\n"
-"Special Notes: the ranged attack of a silver mage is magical, and always has "
-"a high chance of hitting an opponent. Silver Magi are well-attuned to their "
-"magical natures and are highly resistant to non-physical damage."
+"Special Notes: Silver Magi are well-attuned to their magical natures and are "
+"highly resistant to non-physical damage."
 msgstr ""
 
 #: data/units/Human_Mage_White.cfg:3
@@ -6363,9 +6443,7 @@ msgid ""
 "potent ally. If need arises, they can call on the power of the Light to "
 "banish the unworldly from the mortal plane.\n"
 "\n"
-"Special Notes: the light cast by a white mage is magical in nature, and "
-"always has a high chance of hitting an opponent. This light does tremendous "
-"damage to the undead, and can even damage living creatures."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Human_Mage_White.cfg:90 data/units/Human_Mage_of_Light.cfg:70
@@ -6391,9 +6469,7 @@ msgid ""
 "tirelessly to bring life and order to the troubled world in which they "
 "live.\n"
 "\n"
-"Special Notes: the light cast by a mage of light is magical in nature, and "
-"always has a high chance of hitting an opponent. This light does tremendous "
-"damage to the undead, and even does some to living creatures."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Human_Mage_of_Light.cfg:105
@@ -6432,10 +6508,7 @@ msgid ""
 "back. Deadly at night, these assassins are somewhat uncomfortable fighting "
 "under the open sun.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the assassin "
-"distracts an enemy, the assassin may backstab, inflicting double damage, by "
-"creeping around behind that enemy. Their throwing knives are also poisoned, "
-"which will continually sap away an enemy's strength."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Human_Outlaw_Assassin.cfg:93
@@ -6506,9 +6579,7 @@ msgid ""
 "reliable accuracy, and their long hours of prowling around at night leave "
 "them more comfortable fighting in the dark.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the rogue distracts "
-"an enemy, the rogue may backstab, inflicting double damage, by creeping "
-"around behind that enemy."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Human_Outlaw_Rogue.cfg:108
@@ -6529,9 +6600,7 @@ msgid ""
 "their feet, and good with knives. They happily employ less-than-honorable "
 "tactics in combat, seeing little purpose in a 'fair fight'.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the thief distracts "
-"an enemy, the thief may backstab, inflicting double damage, by creeping "
-"around behind that enemy."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Human_Outlaw_Thief.cfg:113
@@ -6590,9 +6659,7 @@ msgid ""
 "their people. Though little is told about it, it is clear that it was the "
 "power of the light which somehow defeated it, and made their people safe.\n"
 "\n"
-"Special Notes: the light cast by a diviner is magical in nature, and always "
-"has a high chance of hitting an opponent. This light does tremendous damage "
-"to the undead, and even does some to living creatures."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Mermaid_Enchantress.cfg:3
@@ -6609,8 +6676,7 @@ msgid ""
 "forbidden against their own race - this power is the greater part of what "
 "protects their people from the monsters that wander out of the abyss.\n"
 "\n"
-"Special Notes: The blasts of water conjured by mermaids are magical in "
-"nature, and always have a high chance of hitting their opponents."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Mermaid_Enchantress.cfg:46 data/units/Mermaid_Initiate.cfg:48
@@ -6632,8 +6698,7 @@ msgid ""
 "Despite their frailty, this makes them quite formidable in combat, as they "
 "can call upon the very water about them to smite their enemies.\n"
 "\n"
-"Special Notes: the blasts of water conjured by mermaids are magical in "
-"nature, and always have a high chance of hitting their opponents."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Mermaid_Priestess.cfg:3
@@ -6651,9 +6716,7 @@ msgid ""
 "with humanity. Their diligence and piety also grant them certain spiritual "
 "powers, allowing them to guard their people against the unworldly.\n"
 "\n"
-"Special Notes: the light cast by a priestess is magical in nature, and "
-"always has a high chance of hitting an opponent. This light does tremendous "
-"damage to the undead, and even does some to living creatures."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:3
@@ -6693,8 +6756,7 @@ msgid ""
 "and makes their race a threat even to enemies who merely approach the "
 "water.\n"
 "\n"
-"Special Notes: being caught in a net slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Merman_Fighter.cfg:3
@@ -6770,8 +6832,7 @@ msgid ""
 "to level the playing field against troops on land, who would otherwise be at "
 "a great advantage.\n"
 "\n"
-"Special Notes: being caught in a net slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Merman_Spearman.cfg:3
@@ -6816,14 +6877,16 @@ msgstr ""
 msgid "Giant Spider"
 msgstr "Ogromni pajek"
 
-#: data/units/Monster_Cave_Spider.cfg:16
+#: data/units/Monster_Cave_Spider.cfg:18
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They can bite at close range, thereby poisoning their enemies, and also can "
-"attack with a web at long range, slowing their foes down."
+"attack with a web at long range, slowing their foes down.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
-#: data/units/Monster_Cave_Spider.cfg:78
+#: data/units/Monster_Cave_Spider.cfg:80
 msgid "web"
 msgstr "pajčevina"
 
@@ -6831,19 +6894,21 @@ msgstr "pajčevina"
 msgid "Cuttle Fish"
 msgstr "Ligenj"
 
-#: data/units/Monster_Cuttle_Fish.cfg:16
+#: data/units/Monster_Cuttle_Fish.cfg:18
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
 "distance. The best way to survive an encounter with these monsters is to "
-"remain ashore."
+"remain ashore.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
-#: data/units/Monster_Cuttle_Fish.cfg:39 data/units/Monster_Tentacle.cfg:64
+#: data/units/Monster_Cuttle_Fish.cfg:41 data/units/Monster_Tentacle.cfg:64
 msgid "tentacle"
 msgstr "lovka"
 
-#: data/units/Monster_Cuttle_Fish.cfg:88
+#: data/units/Monster_Cuttle_Fish.cfg:90
 msgid "ink"
 msgstr "črnilo"
 
@@ -6873,17 +6938,19 @@ msgstr "kepa blata"
 msgid "Giant Scorpion"
 msgstr "Ogromni škorpijon"
 
-#: data/units/Monster_Giant_Scorpion.cfg:17
+#: data/units/Monster_Giant_Scorpion.cfg:19
 msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
-"explanation."
+"explanation.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
-#: data/units/Monster_Giant_Scorpion.cfg:28
+#: data/units/Monster_Giant_Scorpion.cfg:30
 msgid "sting"
 msgstr "želo"
 
-#: data/units/Monster_Giant_Scorpion.cfg:57
+#: data/units/Monster_Giant_Scorpion.cfg:59
 msgid "pincers"
 msgstr "klešče"
 
@@ -7043,9 +7110,7 @@ msgid ""
 "rarely the ones who deal the killing blow, their tactics are a considerable "
 "aid to their larger and more brutal kin.\n"
 "\n"
-"Special Notes: Orcish Assassins use poison on their throwing knives, and "
-"victims of this poison will continually take damage until they can be cured "
-"in town or by a healer."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Orcish_Assassin.cfg:55 data/units/Orcish_Slayer.cfg:76
@@ -7127,9 +7192,7 @@ msgid ""
 "forgoing armor. Their weapon of choice, poison, is a vicious tool, and its "
 "common use on the battlefield is often the real cause of orcish supremacy.\n"
 "\n"
-"Special Notes: Orcish Slayers use poison on their throwing knives, and "
-"victims of this poison will continually take damage until they can be cured "
-"in town or by a unit which cures."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Orcish_Slurbow.cfg:3
@@ -7367,23 +7430,27 @@ msgstr ""
 msgid "Blood Bat"
 msgstr "Krvni netopir"
 
-#: data/units/Undead_Bat_Blood.cfg:16
+#: data/units/Undead_Bat_Blood.cfg:18
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
 "the fur of these undead flying beasts is tainted red with the blood of their "
-"victims."
+"victims.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Bat_Vampire.cfg:3
 msgid "Vampire Bat"
 msgstr "Vampirski netopir"
 
-#: data/units/Undead_Bat_Vampire.cfg:15
+#: data/units/Undead_Bat_Vampire.cfg:17
 msgid ""
 "Vampire Bats are undead flying beasts that attack by biting their victims. "
 "While their fangs are not very powerful, the health of victims is drained "
-"away along with their blood, and given to the Bats."
+"away along with their blood, and given to the Bats.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Corpse_Ghoul.cfg:3
@@ -7402,9 +7469,7 @@ msgid ""
 "It is because of such things that necromancy is condemned with an almost "
 "primal hatred.\n"
 "\n"
-"Special Notes: A ghoul's claws are covered in poison, and victims of this "
-"poison will continually take damage until they can be cured in town or by a "
-"unit which cures."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Corpse_Necrophage.cfg:3
@@ -7418,30 +7483,32 @@ msgid ""
 "of their victims, they simply shrug off all damage sustained as if they had "
 "been freshly summoned, to begin their search for flesh again.\n"
 "\n"
-"Special Notes: A Necrophage's claws are covered in poison, and victims of "
-"this poison will continually take damage until they can be cured in town or "
-"by a unit which cures."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Corpse_Soulless.cfg:4
 msgid "Soulless"
 msgstr "Brezdušnik"
 
-#: data/units/Undead_Corpse_Soulless.cfg:17
+#: data/units/Undead_Corpse_Soulless.cfg:19
 msgid ""
 "These animated walking corpses have become strong from long experience "
-"fighting the living."
+"fighting the living.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Corpse_Walking.cfg:4
 msgid "Walking Corpse"
 msgstr "Hodeče truplo"
 
-#: data/units/Undead_Corpse_Walking.cfg:16
+#: data/units/Undead_Corpse_Walking.cfg:18
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Although weak in combat, these zombies can spread their curse to those they "
-"kill, increasing the army of undead."
+"kill, increasing the army of undead.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:3
@@ -7454,9 +7521,7 @@ msgid ""
 "encounters an Ancient Lich likely has far worse things to worry about than "
 "death.\n"
 "\n"
-"Special Notes: The ranged attacks of a lich are magical, and always have a "
-"high chance of hitting an opponent. The touch of a lich drains the victim's "
-"life to renew the lich."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:4
@@ -7476,8 +7541,7 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning.\n"
 "\n"
-"Special Notes: The attacks of a dark adept are magical, and always have a "
-"high chance of hitting an opponent."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:32
@@ -7505,8 +7569,7 @@ msgid ""
 "hungry will attempt to completely conquer death through the transformation "
 "to lichdom and attainment of a dreadful immortality.\n"
 "\n"
-"Special Notes: The ranged attacks of a Dark Sorcerer are magical, and always "
-"have a high chance of hitting an opponent."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Necro_Lich.cfg:3
@@ -7525,9 +7588,23 @@ msgid ""
 "life is prolonged indefinitely or simply extended. But to even consider such "
 "a thing bears tribute to the magnitude of what they have already achieved.\n"
 "\n"
-"Special Notes: The ranged attacks of a lich are magical, and always have a "
-"high chance of hitting an opponent. The touch of a lich drains the victim's "
-"life to renew the lich."
+"Special Notes:"
+msgstr ""
+
+#: data/units/Undead_Necromancer.cfg:21
+msgid ""
+"One of the greatest circles of what is considered 'black magic' is the art "
+"of necromancy, the terrible ability to awaken the dead with false life. It "
+"was a discovery that had terrible ramifications and caused humanity's "
+"condemnation of black magic, for it has given fear a vast new arsenal.\n"
+"\n"
+"This ability, in all aspects, is the first step towards cheating death of "
+"its ultimate prize. It is the highest degree of power a dark mage can attain "
+"without losing grip on humanity itself, but pales to the lethal power "
+"wielded by Liches. Their mortal bodies are also made sturdier by their "
+"magic, in contrast to the frail decayed form of a Lich.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Necromancer.cfg:32
@@ -7677,8 +7754,7 @@ msgid ""
 "unfailing servant, which can be bound to whatever task their master sees "
 "fit.\n"
 "\n"
-"Special Notes: Ghosts have very unusual resistances to damage, and move "
-"quite slowly over open water."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Spirit_Ghost.cfg:49
@@ -7698,10 +7774,7 @@ msgid ""
 "living, and those who live to speak of them had no leisure to study their "
 "foe.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the nightgaunt "
-"distracts an enemy, the nightgaunt may strike at the opponent's back, "
-"inflicting double damage. Nightgaunts have very unusual resistances to "
-"damage, and move quite slowly over open water."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Spirit_Shadow.cfg:3
@@ -7716,10 +7789,7 @@ msgid ""
 "\n"
 "That is a question which is easily answered by a necromancer.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the shadow distracts "
-"an enemy, the shadow may strike at the opponent's back, inflicting double "
-"damage. Shadows have very unusual resistances to damage, and move quite "
-"slowly over open water."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Spirit_Spectre.cfg:3
@@ -7736,9 +7806,7 @@ msgid ""
 "is that it is likely only the harbinger of a much more dangerous force that "
 "will follow in its wake.\n"
 "\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the spectre. Spectres have very unusual resistances to damage, and "
-"move quite slowly over open water."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Spirit_Spectre.cfg:46
@@ -7762,9 +7830,7 @@ msgid ""
 "creatures could renew themselves through the very thing which threatened "
 "them.\n"
 "\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the wraith. Wraiths have very unusual resistances to damage, and move "
-"quite slowly over open water."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Wose.cfg:3
@@ -8626,7 +8692,7 @@ msgstr "Utrpela škoda (pričakovana)"
 msgid "Statistics"
 msgstr "Statistika"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2228
+#: src/menu_events.cpp:220 src/unit.cpp:2234
 msgid "Moves"
 msgstr "Premiki"
 
@@ -8783,35 +8849,73 @@ msgstr "Oznaka:"
 msgid "Search"
 msgstr "Iskanje"
 
-#: src/menu_events.cpp:1387
+#: src/menu_events.cpp:1394
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Nisem našel oznake ali enote z '$search' v imenu."
 
-#: src/menu_events.cpp:1496
+#: src/menu_events.cpp:1503
 msgid "prompt^Command:"
 msgstr "Ukaz:"
 
-#: src/mouse_events.cpp:112
+#: src/mouse_events.cpp:224 src/mouse_events.cpp:339 src/mouse_events.cpp:723
 msgid "Attacker"
 msgstr "Napadalec"
 
-#: src/mouse_events.cpp:114
+#: src/mouse_events.cpp:225 src/mouse_events.cpp:338 src/mouse_events.cpp:725
 msgid "Defender"
 msgstr "Branitelj"
 
-#: src/mouse_events.cpp:134 src/mouse_events.cpp:712
+#: src/mouse_events.cpp:243
+msgid "Expected Battle Result (hp)"
+msgstr ""
+
+#: src/mouse_events.cpp:327
+#, fuzzy
+msgid "Leadership"
+msgstr "vodenje"
+
+#: src/mouse_events.cpp:340
+#, fuzzy
+msgid " resistance vs "
+msgstr "Odpornosti"
+
+#: src/mouse_events.cpp:341
+#, fuzzy
+msgid " vulnerability vs "
+msgstr "napadalčeva šibkost proti"
+
+#: src/mouse_events.cpp:351
+#, fuzzy
+msgid "Slowed"
+msgstr "upočasnjen"
+
+#: src/mouse_events.cpp:367
+#, fuzzy
+msgid "Total damage"
+msgstr "skupna škoda"
+
+#: src/mouse_events.cpp:374
+#, fuzzy
+msgid "No usable weapon"
+msgstr "Izberite orožje:"
+
+#: src/mouse_events.cpp:379
+msgid "Chance of being unscathed"
+msgstr ""
+
+#: src/mouse_events.cpp:677 src/mouse_events.cpp:745 src/mouse_events.cpp:1327
 msgid "Damage Calculations"
 msgstr "Izračun škode"
 
-#: src/mouse_events.cpp:690 src/reports.cpp:278
+#: src/mouse_events.cpp:1305 src/reports.cpp:278
 msgid "vs"
 msgstr "proti"
 
-#: src/mouse_events.cpp:724
+#: src/mouse_events.cpp:1339
 msgid "Attack Enemy"
 msgstr "Napadi"
 
-#: src/mouse_events.cpp:725
+#: src/mouse_events.cpp:1340
 msgid "Choose weapon:"
 msgstr "Izberite orožje:"
 
@@ -8869,12 +8973,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2283
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2289
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2290
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2296
 msgid ")"
 msgstr ")"
 
@@ -9363,19 +9467,19 @@ msgstr "Nevtralne enote: "
 msgid "Chaotic units: "
 msgstr "Kaotične enote: "
 
-#: src/reports.cpp:378
+#: src/reports.cpp:373
 msgid "Owned village"
 msgstr "Naša vas"
 
-#: src/reports.cpp:380
+#: src/reports.cpp:375
 msgid "Enemy village"
 msgstr "Sovražna vas"
 
-#: src/reports.cpp:382
+#: src/reports.cpp:377
 msgid "Allied village"
 msgstr "Zavezniška vas"
 
-#: src/reports.cpp:456
+#: src/reports.cpp:451
 msgid "Observers:"
 msgstr "Opazovalci:"
 
@@ -9526,15 +9630,15 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Knjiga modrosti Wesnotha"
 
-#: src/unit.cpp:2163 src/unit.cpp:2288
+#: src/unit.cpp:2169 src/unit.cpp:2294
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2245
+#: src/unit.cpp:2251
 msgid "XP to advance"
 msgstr "XP do napredovanja"
 
-#: src/unit.cpp:2279
+#: src/unit.cpp:2285
 msgid ": "
 msgstr ": "
 

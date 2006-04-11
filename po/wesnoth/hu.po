@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-10 08:17+0200\n"
+"POT-Creation-Date: 2006-04-11 08:03+0200\n"
 "PO-Revision-Date: 2005-12-23 15:52+0100\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -46,18 +46,12 @@ msgstr ""
 "Mérgezett egységet nem képes kigyógyítani a mérgezésből, annak egy falu vagy "
 "egy gyógyításra képes egység lehet a segítségére."
 
-#: data/abilities.cfg:22
-msgid ""
-" These units are capable of basic healing, though they can only delay the "
-"effects of poison, not cure them entirely."
-msgstr ""
-
-#: data/abilities.cfg:29
+#: data/abilities.cfg:26
 #, fuzzy
 msgid "heals +8"
 msgstr "csillapítás"
 
-#: data/abilities.cfg:34
+#: data/abilities.cfg:31
 #, fuzzy
 msgid ""
 "Heals +8:\n"
@@ -81,11 +75,11 @@ msgstr ""
 "A gyógyító a mérgezést is képes elmulasztani, de a mérgezett egység a "
 "mérgezés meggyógyításának körében egyéb kezelésben nem részesülhet."
 
-#: data/abilities.cfg:43
+#: data/abilities.cfg:40
 msgid "cures"
 msgstr "gyógyítás"
 
-#: data/abilities.cfg:45
+#: data/abilities.cfg:42
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
@@ -93,16 +87,10 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:55
-msgid ""
-" These units are capable of healing units around them, and curing them of "
-"poison."
-msgstr ""
-
-#: data/abilities.cfg:61
 msgid "regenerates"
 msgstr "regenerálódás"
 
-#: data/abilities.cfg:63
+#: data/abilities.cfg:57
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
@@ -112,17 +100,11 @@ msgstr ""
 "Ez az egység minden körben 8 ÉP-t visszagyógyul. Ha megmérgezték, gyógyulás "
 "helyett elveszti mérgezettségét."
 
-#: data/abilities.cfg:70
-msgid ""
-" These units regenerate, which allows them to heal as though always "
-"stationed in a village."
-msgstr ""
-
-#: data/abilities.cfg:81
+#: data/abilities.cfg:72
 msgid "steadfast"
 msgstr "rendíthetetlen"
 
-#: data/abilities.cfg:83
+#: data/abilities.cfg:74
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
@@ -132,20 +114,14 @@ msgstr ""
 "Ennek az egységnek kétszeresek az ellenállásai, de mindig legfeljebb 50%, "
 "védekezéskor. Ez nem váltotat a sebezhetőségen."
 
-#: data/abilities.cfg:90
-msgid ""
-" The steadiness of this unit reduces damage from some attacks, but only "
-"while defending."
-msgstr ""
-
-#: data/abilities.cfg:97 data/abilities.cfg:116 data/abilities.cfg:147
-#: data/abilities.cfg:190 data/abilities.cfg:245 src/actions.cpp:539
+#: data/abilities.cfg:85 data/abilities.cfg:104 data/abilities.cfg:135
+#: data/abilities.cfg:178 data/abilities.cfg:233 src/actions.cpp:539
 #: src/actions.cpp:672
 msgid "leadership"
 msgstr "hadvezetés"
 
-#: data/abilities.cfg:101 data/abilities.cfg:120 data/abilities.cfg:151
-#: data/abilities.cfg:194 data/abilities.cfg:249
+#: data/abilities.cfg:89 data/abilities.cfg:108 data/abilities.cfg:139
+#: data/abilities.cfg:182 data/abilities.cfg:237
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -164,25 +140,11 @@ msgstr ""
 "csatában. A hadvezető melletti ilyen egységek annyiszor 25%-al többet "
 "sebeznek, ahány szinttel alacsonyabbak."
 
-#: data/abilities.cfg:309
-#, fuzzy
-msgid ""
-" The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
-msgstr ""
-"A karddal és számszeríjjal küzdő zászlóvivő kis csapatokat vezet és "
-"összehangolja hadmozdulataikat, így növelve a körülötte lévő alacsonyabb "
-"szintű egységek támadásának erejét.\n"
-"\n"
-"Megjegyzés: a zászlóvivő hadvezetése lehetővé teszi a szomszédos barátságos "
-"egységeknek, hogy eggyel többet sebezzenek a harc során, habár ez csak az "
-"alacsonyabb szintű egységekre vonatkozik."
-
-#: data/abilities.cfg:313
+#: data/abilities.cfg:298
 msgid "skirmisher"
 msgstr "portyázó"
 
-#: data/abilities.cfg:315
+#: data/abilities.cfg:300
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -195,17 +157,11 @@ msgstr ""
 "egység ellenőrzött területén áll meg, mert ekkor ő is elveszti lépési "
 "pontjait.)"
 
-#: data/abilities.cfg:321
-msgid ""
-" Their skill at skirmishing allows these units to ignore enemy units' zones "
-"of control and thus move unhindered around them."
-msgstr ""
-
-#: data/abilities.cfg:328
+#: data/abilities.cfg:310
 msgid "illuminates"
 msgstr "megvilágítás"
 
-#: data/abilities.cfg:332
+#: data/abilities.cfg:314
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -221,17 +177,11 @@ msgstr ""
 "A szomszédos egységek éj idején szürkületi, míg szürkület idején nappali "
 "viszonyok között küzdenek."
 
-#: data/abilities.cfg:338
-msgid ""
-" They also have the power of Illumination, which increases the lighting "
-"level in the area adjacent to them."
-msgstr ""
-
-#: data/abilities.cfg:342
+#: data/abilities.cfg:321
 msgid "teleport"
 msgstr "teleportáció"
 
-#: data/abilities.cfg:344
+#: data/abilities.cfg:323
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -241,17 +191,11 @@ msgstr ""
 "Ez az egység egy lépésből képes bármely két szövetséges település közti "
 "azonnali térugrásos helyváltoztatásra."
 
-#: data/abilities.cfg:349
-msgid ""
-" They can also teleport between any two villages instantly, though the "
-"player must control both, and the destination village must be unoccupied."
-msgstr ""
-
-#: data/abilities.cfg:353
+#: data/abilities.cfg:329
 msgid "ambush"
 msgstr "rajtaütés"
 
-#: data/abilities.cfg:357
+#: data/abilities.cfg:333
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -266,17 +210,11 @@ msgstr ""
 "Erdős terepen az ellenség nem látja és nem is tudja megtámadni, kivéve a "
 "rejtőzködő egység támadása után közvetlenül következő körben."
 
-#: data/abilities.cfg:368
-msgid ""
-" In woodlands, their ambush skill renders them invisible to an enemy unless "
-"they are immediately adjacent, or have revealed themselves by attacking."
-msgstr ""
-
-#: data/abilities.cfg:372
+#: data/abilities.cfg:345
 msgid "nightstalk"
 msgstr "éjszakai lopakodás"
 
-#: data/abilities.cfg:376
+#: data/abilities.cfg:349
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -292,16 +230,12 @@ msgstr ""
 "éjszak, kivéve, ha a megelőző körben harcoltak vele, vagy éppen mellette "
 "állnak."
 
-#: data/abilities.cfg:387
-msgid " They are able to hide at night, leaving no trace of their presence."
-msgstr ""
-
-#: data/abilities.cfg:391
+#: data/abilities.cfg:361
 #, fuzzy
 msgid "submerge"
 msgstr "szúrás"
 
-#: data/abilities.cfg:395
+#: data/abilities.cfg:365
 #, fuzzy
 msgid ""
 "Submerge:\n"
@@ -317,17 +251,11 @@ msgstr ""
 "Erdős terepen az ellenség nem látja és nem is tudja megtámadni, kivéve a "
 "rejtőzködő egység támadása után közvetlenül következő körben."
 
-#: data/abilities.cfg:406
-msgid ""
-" These units can move unseen in deep water, requiring no air from the "
-"surface."
-msgstr ""
-
-#: data/abilities.cfg:410
+#: data/abilities.cfg:377
 msgid "berserk"
 msgstr "dühöngés"
 
-#: data/abilities.cfg:412
+#: data/abilities.cfg:379
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -338,17 +266,11 @@ msgstr ""
 "összecsapás addig tart, amíg az egyik fél el nem esik, de legfeljebb 30 "
 "ütéscseréig."
 
-#: data/abilities.cfg:419
-msgid ""
-" Whenever their berserk attack is used, these units continue to push the "
-"attack until either they or their enemy lies dead."
-msgstr ""
-
-#: data/abilities.cfg:423
+#: data/abilities.cfg:387
 msgid "backstab"
 msgstr "orvtámadás"
 
-#: data/abilities.cfg:425
+#: data/abilities.cfg:389
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -360,11 +282,11 @@ msgstr ""
 "számára ellenséges egység áll. (Kivéve ha ez az egység nem harcképes, "
 "például kővé vált.)"
 
-#: data/abilities.cfg:435 data/abilities.cfg:443
+#: data/abilities.cfg:399 data/abilities.cfg:407
 msgid "plague"
 msgstr "dögvész"
 
-#: data/abilities.cfg:437 data/abilities.cfg:445
+#: data/abilities.cfg:401 data/abilities.cfg:409
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -376,24 +298,24 @@ msgstr ""
 "megegyező fajtájú és vele együtt harcoló új egység támad fel. (Ez nem "
 "vonatkozik az élőholtakra és a falvakban tartózkodókra.)"
 
-#: data/abilities.cfg:451
+#: data/abilities.cfg:415
 #, fuzzy
 msgid "slows"
 msgstr "lassítás"
 
-#: data/abilities.cfg:453
+#: data/abilities.cfg:417
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
 
-#: data/abilities.cfg:460
+#: data/abilities.cfg:424
 #, fuzzy
 msgid "stones"
 msgstr "kővéváltoztatás"
 
-#: data/abilities.cfg:462
+#: data/abilities.cfg:426
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -403,11 +325,11 @@ msgstr ""
 "Ez a támadás a célpont egységet kővé dermeszti. A kővé vált egységek nem "
 "mozoghatnak és nem harcolhatnak."
 
-#: data/abilities.cfg:468
+#: data/abilities.cfg:432
 msgid "marksman"
 msgstr "mesterlövész"
 
-#: data/abilities.cfg:470
+#: data/abilities.cfg:434
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -415,11 +337,11 @@ msgstr ""
 "Mesterlövész:\n"
 "Támadó hadműveleteknél 60% eséllyel szerez találatot."
 
-#: data/abilities.cfg:479
+#: data/abilities.cfg:443
 msgid "magical"
 msgstr "mágikus"
 
-#: data/abilities.cfg:481
+#: data/abilities.cfg:445
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -427,17 +349,11 @@ msgstr ""
 "Mágikus:\n"
 "Ez a támadás mindig 70% eséllyel sikeres."
 
-#: data/abilities.cfg:488
-msgid ""
-" The ranged attacks of this unit are magical, and always have a high chance "
-"of hitting an opponent."
-msgstr ""
-
-#: data/abilities.cfg:492
+#: data/abilities.cfg:453
 msgid "swarm"
 msgstr "kirajzás"
 
-#: data/abilities.cfg:494
+#: data/abilities.cfg:455
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -446,11 +362,11 @@ msgid ""
 "strikes."
 msgstr ""
 
-#: data/abilities.cfg:500
+#: data/abilities.cfg:461
 msgid "charge"
 msgstr "roham"
 
-#: data/abilities.cfg:502
+#: data/abilities.cfg:463
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -460,12 +376,12 @@ msgstr ""
 "Ez a támadás a célpontnak dupla sebzést okoz, ugyanakkor az egység által a "
 "célponttól kapott sebzés is a kétszeresére nő."
 
-#: data/abilities.cfg:512
+#: data/abilities.cfg:473
 #, fuzzy
 msgid "drains"
 msgstr "megcsapolás"
 
-#: data/abilities.cfg:514
+#: data/abilities.cfg:475
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -475,11 +391,11 @@ msgstr ""
 "Ez az egység életerőt szív el az élő célpontjaiból az okozott sebzés felével "
 "saját magát gyógyítva (lefelé kerekítve)."
 
-#: data/abilities.cfg:520
+#: data/abilities.cfg:481
 msgid "firststrike"
 msgstr "első ütés"
 
-#: data/abilities.cfg:522
+#: data/abilities.cfg:483
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -488,11 +404,11 @@ msgstr ""
 "Ez az egység ezzel a támadással mindig elsőnek üt, még akkor is, ha őt "
 "támadták meg."
 
-#: data/abilities.cfg:528
+#: data/abilities.cfg:489
 msgid "poison"
 msgstr "mérgezés"
 
-#: data/abilities.cfg:530
+#: data/abilities.cfg:491
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -852,7 +768,7 @@ msgstr "kard"
 #: data/units/Drake_Fighter.cfg:64 data/units/Drake_Fire.cfg:76
 #: data/units/Drake_Flameheart.cfg:80 data/units/Drake_Flare.cfg:84
 #: data/units/Drake_Gladiator.cfg:75 data/units/Drake_Inferno.cfg:77
-#: data/units/Drake_Slasher.cfg:75 data/units/Drake_Warden.cfg:81
+#: data/units/Drake_Slasher.cfg:77 data/units/Drake_Warden.cfg:83
 #: data/units/Drake_Warrior.cfg:78 data/units/Dwarvish_Berserker.cfg:38
 #: data/units/Dwarvish_Dragonguard.cfg:28 data/units/Dwarvish_Fighter.cfg:30
 #: data/units/Dwarvish_Lord.cfg:33 data/units/Dwarvish_Lord.cfg:84
@@ -892,7 +808,7 @@ msgstr "kard"
 #: data/units/Human_Outlaw_Poacher.cfg:37 data/units/Human_Outlaw_Rogue.cfg:34
 #: data/units/Human_Outlaw_Rogue.cfg:62 data/units/Human_Outlaw_Thief.cfg:86
 #: data/units/Human_Outlaw_Trapper.cfg:38 data/units/Merman_Triton.cfg:47
-#: data/units/Monster_Cave_Spider.cfg:41 data/units/Naga_Fighter.cfg:30
+#: data/units/Monster_Cave_Spider.cfg:43 data/units/Naga_Fighter.cfg:30
 #: data/units/Naga_Myrmidon.cfg:35 data/units/Naga_Warrior.cfg:34
 #: data/units/Ogre.cfg:21 data/units/Ogre_Young.cfg:20
 #: data/units/Orcish_Archer.cfg:29 data/units/Orcish_Assassin.cfg:31
@@ -901,8 +817,8 @@ msgstr "kard"
 #: data/units/Orcish_Ruler.cfg:34 data/units/Orcish_Slayer.cfg:32
 #: data/units/Orcish_Slayer.cfg:78 data/units/Orcish_Slurbow.cfg:30
 #: data/units/Orcish_Sovereign.cfg:36 data/units/Orcish_Warlord.cfg:30
-#: data/units/Orcish_Warrior.cfg:29 data/units/Undead_Bat_Blood.cfg:48
-#: data/units/Undead_Bat_Vampire.cfg:72 data/units/Undead_Corpse_Ghoul.cfg:41
+#: data/units/Orcish_Warrior.cfg:29 data/units/Undead_Bat_Blood.cfg:50
+#: data/units/Undead_Bat_Vampire.cfg:74 data/units/Undead_Corpse_Ghoul.cfg:41
 #: data/units/Undead_Corpse_Necrophage.cfg:41
 #: data/units/Undead_Skele_Bone_Shooter.cfg:43
 #: data/units/Undead_Skele_Death_Knight.cfg:39
@@ -949,12 +865,12 @@ msgstr "tüskés buzogány"
 #: data/units/Drake_Sky.cfg:87 data/units/Dwarvish_Fighter.cfg:55
 #: data/units/Dwarvish_Lord.cfg:59 data/units/Dwarvish_Runemaster.cfg:28
 #: data/units/Dwarvish_Steelclad.cfg:58 data/units/Elvish_Druid.cfg:30
-#: data/units/Elvish_Druid.cfg:56 data/units/Elvish_Enchantress.cfg:24
-#: data/units/Elvish_Enchantress.cfg:91 data/units/Elvish_Shaman.cfg:31
+#: data/units/Elvish_Druid.cfg:56 data/units/Elvish_Enchantress.cfg:26
+#: data/units/Elvish_Enchantress.cfg:93 data/units/Elvish_Shaman.cfg:31
 #: data/units/Elvish_Shaman.cfg:57 data/units/Elvish_Shyde.cfg:31
-#: data/units/Elvish_Shyde.cfg:59 data/units/Elvish_Sorceress.cfg:24
-#: data/units/Elvish_Sorceress.cfg:91 data/units/Elvish_Sylph.cfg:26
-#: data/units/Elvish_Sylph.cfg:54 data/units/Goblin_Pillager.cfg:76
+#: data/units/Elvish_Shyde.cfg:59 data/units/Elvish_Sorceress.cfg:26
+#: data/units/Elvish_Sorceress.cfg:93 data/units/Elvish_Sylph.cfg:28
+#: data/units/Elvish_Sylph.cfg:56 data/units/Goblin_Pillager.cfg:76
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:27
 #: data/units/Human_Loyalist_Iron_Mauler.cfg:30
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:28 data/units/Human_Mage.cfg:57
@@ -970,18 +886,18 @@ msgstr "tüskés buzogány"
 #: data/units/Mermaid_Initiate.cfg:50 data/units/Mermaid_Priestess.cfg:37
 #: data/units/Mermaid_Siren.cfg:36 data/units/Mermaid_Siren.cfg:82
 #: data/units/Merman_Entangler.cfg:32 data/units/Merman_Netcaster.cfg:31
-#: data/units/Monster_Cave_Spider.cfg:79 data/units/Monster_Cuttle_Fish.cfg:40
+#: data/units/Monster_Cave_Spider.cfg:81 data/units/Monster_Cuttle_Fish.cfg:42
 #: data/units/Monster_Giant_Mudcrawler.cfg:53
 #: data/units/Monster_Giant_Mudcrawler.cfg:89
-#: data/units/Monster_Giant_Scorpion.cfg:58
+#: data/units/Monster_Giant_Scorpion.cfg:60
 #: data/units/Monster_Mudcrawler.cfg:52 data/units/Monster_Tentacle.cfg:66
 #: data/units/Monster_Yeti.cfg:40 data/units/Saurian_Augur.cfg:35
 #: data/units/Saurian_Oracle.cfg:35 data/units/Saurian_Soothsayer.cfg:36
 #: data/units/Troll.cfg:27 data/units/Troll_Great.cfg:28
 #: data/units/Troll_Hero.cfg:27 data/units/Troll_Rocklobber.cfg:29
 #: data/units/Troll_Rocklobber.cfg:54 data/units/Troll_Warrior.cfg:28
-#: data/units/Troll_Whelp.cfg:28 data/units/Undead_Corpse_Soulless.cfg:49
-#: data/units/Undead_Corpse_Walking.cfg:48
+#: data/units/Troll_Whelp.cfg:28 data/units/Undead_Corpse_Soulless.cfg:51
+#: data/units/Undead_Corpse_Walking.cfg:50
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:33
 #: data/units/Undead_Necromancer.cfg:34
 #: data/units/Undead_Skeleton_Archer.cfg:38 data/units/Wose.cfg:36
@@ -1051,7 +967,7 @@ msgstr "íj"
 #: data/units/Boat_Pirate_Galleon.cfg:20
 #: data/units/Boat_Transport_Galleon.cfg:20 data/units/Drake_Clasher.cfg:103
 #: data/units/Drake_Enforcer.cfg:138 data/units/Drake_Gladiator.cfg:111
-#: data/units/Drake_Slasher.cfg:91 data/units/Drake_Warden.cfg:97
+#: data/units/Drake_Slasher.cfg:93 data/units/Drake_Warden.cfg:99
 #: data/units/Dwarvish_Dragonguard.cfg:53 data/units/Dwarvish_Guardsman.cfg:31
 #: data/units/Dwarvish_Guardsman.cfg:45 data/units/Dwarvish_Sentinel.cfg:46
 #: data/units/Dwarvish_Sentinel.cfg:81 data/units/Dwarvish_Stalwart.cfg:41
@@ -1095,8 +1011,8 @@ msgstr "íj"
 #: data/units/Merman_Javelineer.cfg:30 data/units/Merman_Javelineer.cfg:69
 #: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:29
 #: data/units/Merman_Spearman.cfg:68 data/units/Merman_Triton.cfg:33
-#: data/units/Merman_Warrior.cfg:32 data/units/Monster_Cuttle_Fish.cfg:89
-#: data/units/Monster_Giant_Scorpion.cfg:29
+#: data/units/Merman_Warrior.cfg:32 data/units/Monster_Cuttle_Fish.cfg:91
+#: data/units/Monster_Giant_Scorpion.cfg:31
 #: data/units/Monster_Sea_Serpent.cfg:29 data/units/Orcish_Archer.cfg:54
 #: data/units/Orcish_Crossbowman.cfg:55 data/units/Orcish_Leader.cfg:59
 #: data/units/Orcish_Ruler.cfg:59 data/units/Orcish_Slurbow.cfg:106
@@ -1315,8 +1231,8 @@ msgstr "bénítás"
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:25
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:57
-#: data/units/Elvish_Enchantress.cfg:145 data/units/Elvish_Sorceress.cfg:150
-#: data/units/Elvish_Sylph.cfg:88 data/units/Saurian_Augur.cfg:55
+#: data/units/Elvish_Enchantress.cfg:147 data/units/Elvish_Sorceress.cfg:152
+#: data/units/Elvish_Sylph.cfg:90 data/units/Saurian_Augur.cfg:55
 #: data/units/Saurian_Oracle.cfg:55 data/units/Saurian_Soothsayer.cfg:56
 #: data/units/Undead_Necro_Ancient_Lich.cfg:55
 #: data/units/Undead_Necro_Ancient_Lich.cfg:73
@@ -1396,8 +1312,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:97
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:32
 #: data/tutorial/units/Elder_Mage.cfg:30 data/units/Elvish_Druid.cfg:29
-#: data/units/Elvish_Enchantress.cfg:23 data/units/Elvish_Shaman.cfg:30
-#: data/units/Elvish_Sorceress.cfg:23 data/units/Human_Mage.cfg:55
+#: data/units/Elvish_Enchantress.cfg:25 data/units/Elvish_Shaman.cfg:30
+#: data/units/Elvish_Sorceress.cfg:25 data/units/Human_Mage.cfg:55
 #: data/units/Human_Mage_Arch.cfg:46 data/units/Human_Mage_Great.cfg:35
 #: data/units/Human_Mage_Red.cfg:56 data/units/Human_Mage_Silver.cfg:93
 #: data/units/Human_Mage_White.cfg:64 data/units/Mermaid_Diviner.cfg:42
@@ -1429,8 +1345,8 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:57
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:46
-#: data/units/Elvish_Enchantress.cfg:144 data/units/Elvish_Sorceress.cfg:149
-#: data/units/Elvish_Sylph.cfg:87
+#: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:151
+#: data/units/Elvish_Sylph.cfg:89
 msgid "faerie fire"
 msgstr "mesebeli tűz"
 
@@ -1749,8 +1665,8 @@ msgstr ""
 "rettegett, maradéktalanul átalakult élőholttá válhat."
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:24
-#: data/units/Undead_Corpse_Soulless.cfg:47
-#: data/units/Undead_Corpse_Walking.cfg:46
+#: data/units/Undead_Corpse_Soulless.cfg:49
+#: data/units/Undead_Corpse_Walking.cfg:48
 #: data/units/Undead_Necro_Ancient_Lich.cfg:53
 #: data/units/Undead_Necro_Lich.cfg:35 data/units/Undead_Spirit_Ghost.cfg:30
 msgid "touch"
@@ -1769,7 +1685,6 @@ msgid "female^Arch Mage"
 msgstr "Varázslómesternő"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:32
-#: data/units/Human_Mage_Arch.cfg:20
 msgid ""
 "The title of Arch Mage is conferred only after a lifetime of study and "
 "achievement to match. Arch Magi are often employed in positions of "
@@ -1817,7 +1732,6 @@ msgid "female^Great Mage"
 msgstr "Nagy mágusnő"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:33
-#: data/units/Human_Mage_Great.cfg:21
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
 "nearly a legend in their own time, and town criers have forcibly learnt "
@@ -1843,7 +1757,6 @@ msgid "female^Red Mage"
 msgstr "Vörös mágusnő"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:32
-#: data/units/Human_Mage_Red.cfg:20
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the blue robes of an apprentice, and given the red robes of a master. The "
@@ -1925,7 +1838,6 @@ msgid "Necromancer"
 msgstr "Holtidéző"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:28
-#: data/units/Undead_Necromancer.cfg:21
 msgid ""
 "One of the greatest circles of what is considered 'black magic' is the art "
 "of necromancy, the terrible ability to awaken the dead with false life. It "
@@ -2108,11 +2020,11 @@ msgstr "Élőholt"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:33
+#: data/game.cfg:35
 msgid "Binary Saves"
 msgstr "Tömörített mentések"
 
-#: data/game.cfg:40
+#: data/game.cfg:42
 msgid "Show Combat"
 msgstr "Küzdelem mutatása"
 
@@ -3718,7 +3630,7 @@ msgstr ""
 #: data/terrain.cfg:200 data/terrain.cfg:220 data/terrain.cfg:230
 #: data/terrain.cfg:240 data/terrain.cfg:250 data/terrain.cfg:260
 #: data/terrain.cfg:270 data/terrain.cfg:280 data/terrain.cfg:290
-#: src/reports.cpp:376
+#: src/reports.cpp:371
 msgid "Village"
 msgstr "Falu"
 
@@ -4539,6 +4451,160 @@ msgstr "Föld alatt"
 msgid "Deep Underground"
 msgstr "Föld alatt"
 
+#: data/special-notes.cfg:2
+msgid ""
+" Spirits have very unusual resistances to damage, and move quite slowly over "
+"open water."
+msgstr ""
+
+#: data/special-notes.cfg:5
+msgid ""
+" This unit's holy attack deals tremendous damage to the undead, and even "
+"some to living creatures."
+msgstr ""
+
+#: data/special-notes.cfg:8
+msgid ""
+" This unit is capable of basic healing, though it can only delay the effects "
+"of poison, not cure them entirely."
+msgstr ""
+
+#: data/special-notes.cfg:11
+msgid ""
+" This unit is capable of healing those around it, and curing them of poison."
+msgstr ""
+
+#: data/special-notes.cfg:14
+msgid ""
+" This unit regenerates, which allows it to heal as though always stationed "
+"in a village."
+msgstr ""
+
+#: data/special-notes.cfg:17
+msgid ""
+" The steadiness of this unit reduces damage from some attacks, but only "
+"while defending."
+msgstr ""
+
+#: data/special-notes.cfg:20
+#, fuzzy
+msgid ""
+" The leadership of this unit enables friendly units next to it to deal more "
+"damage in combat, though this only applies to units of lower level."
+msgstr ""
+"A karddal és számszeríjjal küzdő zászlóvivő kis csapatokat vezet és "
+"összehangolja hadmozdulataikat, így növelve a körülötte lévő alacsonyabb "
+"szintű egységek támadásának erejét.\n"
+"\n"
+"Megjegyzés: a zászlóvivő hadvezetése lehetővé teszi a szomszédos barátságos "
+"egységeknek, hogy eggyel többet sebezzenek a harc során, habár ez csak az "
+"alacsonyabb szintű egységekre vonatkozik."
+
+#: data/special-notes.cfg:23
+msgid ""
+" This unit's skill at skirmishing allows it to ignore enemies' zones of "
+"control and thus move unhindered around them."
+msgstr ""
+
+#: data/special-notes.cfg:26
+msgid " Illumination increases the lighting level in adjacent areas."
+msgstr ""
+
+#: data/special-notes.cfg:29
+msgid ""
+" This unit can teleport between any two villages instantly, though the "
+"player must control both, and the destination village must be unoccupied."
+msgstr ""
+
+#: data/special-notes.cfg:32
+msgid ""
+" In woodlands, this unit's ambush skill renders it invisible to enemies "
+"unless it is immediately adjacent or has revealed itself by attacking."
+msgstr ""
+
+#: data/special-notes.cfg:35
+msgid " This unit is able to hide at night, leaving no trace of its presence."
+msgstr ""
+
+#: data/special-notes.cfg:38
+msgid ""
+" This unit can move unseen in deep water, requiring no air from the surface."
+msgstr ""
+
+#: data/special-notes.cfg:41
+msgid ""
+" Whenever its berserk attack is used, this unit continues to push the attack "
+"until either it or its enemy lies dead."
+msgstr ""
+
+#: data/special-notes.cfg:44
+msgid ""
+"  If someone with the same allegiance distracts an enemy, this unit may "
+"backstab, inflicting double damage, by creeping around behind that enemy."
+msgstr ""
+
+#: data/special-notes.cfg:47
+msgid " Foes who lose their life to the plague will rise again in unlife."
+msgstr ""
+
+#: data/special-notes.cfg:50
+msgid ""
+" This unit is able to slow its enemies, halving their movement speed and "
+"attack damage."
+msgstr ""
+
+#: data/special-notes.cfg:53
+msgid ""
+" The ability to turn the living to stone makes this unit extremely dangerous."
+msgstr ""
+
+#: data/special-notes.cfg:56
+msgid ""
+" This unit's marksmanship gives it a high chance of hitting targeted "
+"enemies, but only on the attack."
+msgstr ""
+
+#: data/special-notes.cfg:59
+msgid ""
+" The ranged attacks of this unit are magical, and always have a high chance "
+"of hitting an opponent."
+msgstr ""
+
+#: data/special-notes.cfg:62
+msgid ""
+" The swarming attacks of this unit become less deadly whenever its members "
+"are wounded."
+msgstr ""
+
+#: data/special-notes.cfg:65
+#, fuzzy
+msgid ""
+" Using a charging attack doubles both damage dealt and received; this does "
+"not affect defensive retaliation."
+msgstr ""
+"\n"
+"\n"
+"Megjegyzés: a lovag lándzsás rohamtámadása megkétszerezi úgy az okozott, "
+"mint a kapott sebzést. Ez nem befolyásolja a védekező visszatámadást."
+
+#: data/special-notes.cfg:68
+msgid ""
+" During battle, this unit can drain life from victims to renew its own "
+"health."
+msgstr ""
+
+#: data/special-notes.cfg:71
+msgid ""
+" The length of this unit's weapon allows it to strike first in melee, even "
+"in defense."
+msgstr ""
+
+#: data/special-notes.cfg:74
+msgid ""
+" The victims of this unit's poison will continually take damage until they "
+"can be cured in town or by a unit which cures."
+msgstr ""
+
 #: data/team_colors.cfg:4
 msgid "Red"
 msgstr "Vörös"
@@ -4662,7 +4728,7 @@ msgstr "Parancsok"
 msgid "End Turn"
 msgstr "Kör vége"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2197
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2203
 msgid "HP"
 msgstr "ÉP"
 
@@ -5406,13 +5472,16 @@ msgstr ""
 msgid "Drake Slasher"
 msgstr "Perzsekény vagdalkozó"
 
-#: data/units/Drake_Slasher.cfg:18
+#: data/units/Drake_Slasher.cfg:20
+#, fuzzy
 msgid ""
 "Slashers are clashers who have chosen to master the use of a Halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
 "weapon of matching scale, large enough to skewer a horse as a man would a "
 "boar. Their training has also enhanced their stamina and defensive skills, "
-"which is a major advantage over their close cousins the Gladiators."
+"which is a major advantage over their close cousins the Gladiators.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Tuskószerű, csökevényes szárnyaik vannak, és képtelenek fegyverként "
 "használni a belső tüzüket, ez azonban nem jelenti azt, hogy ezek a "
@@ -5421,8 +5490,8 @@ msgstr ""
 "vagdalkozók által választott fegyver az alabárd, melyet hatékonyan tudnak "
 "használni."
 
-#: data/units/Drake_Slasher.cfg:74 data/units/Drake_Slasher.cfg:90
-#: data/units/Drake_Warden.cfg:80 data/units/Drake_Warden.cfg:96
+#: data/units/Drake_Slasher.cfg:76 data/units/Drake_Slasher.cfg:92
+#: data/units/Drake_Warden.cfg:82 data/units/Drake_Warden.cfg:98
 #: data/units/Human_Loyalist_Halberdier.cfg:38
 #: data/units/Human_Loyalist_Halberdier.cfg:83
 msgid "halberd"
@@ -5432,12 +5501,15 @@ msgstr "alabárd"
 msgid "Drake Warden"
 msgstr "Perzsekény felügyelő"
 
-#: data/units/Drake_Warden.cfg:19
+#: data/units/Drake_Warden.cfg:21
+#, fuzzy
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
 "the most able Slashers. They have forged their might such that few warriors "
 "on this earth would dare stand against them. The Wardens' weapon of choice "
-"is the halberd, which they use to great effect."
+"is the halberd, which they use to great effect.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Tuskószerű, csökevényes szárnyaik vannak, és képtelenek fegyverként "
 "használni a belső tüzüket, ez azonban nem jelenti azt, hogy ezek a "
@@ -5818,8 +5890,7 @@ msgid ""
 "Their chief ability lies in healing, and it is for this skill that the "
 "elvish druids are revered by their people.\n"
 "\n"
-"Special Notes: A druid's entangling attack slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 "A tünde látnok az erdők avatott ismerője. Mesterien ejti csapdába a "
 "figyelmetlen ellenséget, de az erdő gyógyfüveivel bajtársait is gyógyítja. "
@@ -5837,18 +5908,21 @@ msgstr "tövis"
 msgid "female^Elvish Enchantress"
 msgstr "Tünde varázslónő"
 
-#: data/units/Elvish_Enchantress.cfg:16
+#: data/units/Elvish_Enchantress.cfg:18
+#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
-"magically animating roots with which they bind their enemies in place."
+"magically animating roots with which they bind their enemies in place.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "A tünde varázslónők a támadó mágia mesterei, ellenfelükre zúdítva a "
 "borzasztó fagyot, mely a könnyed levegőből fakad, és a varázserővel "
 "mozgatott gyökereket, melyek földhöz kötözik ellenfelüket. "
 
-#: data/units/Elvish_Enchantress.cfg:90 data/units/Elvish_Shaman.cfg:56
-#: data/units/Elvish_Sorceress.cfg:90
+#: data/units/Elvish_Enchantress.cfg:92 data/units/Elvish_Shaman.cfg:56
+#: data/units/Elvish_Sorceress.cfg:92
 msgid "entangle"
 msgstr "behálózás"
 
@@ -5886,6 +5960,7 @@ msgid "Elvish Marksman"
 msgstr "Tünde mesterlövész"
 
 #: data/units/Elvish_Marksman.cfg:23
+#, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -5895,8 +5970,7 @@ msgid ""
 "This prodigious skill does come with one cost, that being a lack of practice "
 "with the sword.\n"
 "\n"
-"Special Notes: Their marksmanship gives these elves a high chance of hitting "
-"their enemy, but only on the attack."
+"Special Notes:"
 msgstr ""
 "Az íj mestere, képességei lehetőve teszik számára, hogy fedezéktől és "
 "domborzati viszonyoktól függetlenül mindig 60%-os eséllyel vegye célba "
@@ -6025,8 +6099,7 @@ msgid ""
 "The healing abilities of the elves are also remarkable, and of capital use "
 "in battle.\n"
 "\n"
-"Special Notes: A shaman's entangling attack slows enemies down, halving "
-"their movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 "A tünde sámánok nem folyamodnak nyílt erőszakhoz az ellenséggel szemben. "
 "Gyökerekkel fonják körbe áldozataikat, így csökkentik a támadásaiknak a "
@@ -6037,14 +6110,14 @@ msgid "Elvish Sharpshooter"
 msgstr "Tünde elit íjász"
 
 #: data/units/Elvish_Sharpshooter.cfg:22
+#, fuzzy
 msgid ""
 "A story once wandered about, of an elf who stopped an arrow by shooting it "
 "out of the air with one of his own. It is a testament to the skill of the "
 "elves that such a story could be taken seriously. The sharpshooters of the "
 "elves have, quite simply, mastered the art of archery.\n"
 "\n"
-"Special Notes: Their marksmanship gives these elves a high chance of hitting "
-"their enemy, but only on the attack."
+"Special Notes:"
 msgstr ""
 "Az elit íjászok egész Wesnoth legkiválóbb céllövői, szinte célzás nélkül is "
 "tévedhetetlenek. Bármilyen körülmények között 60% eséllyel célba talál, így "
@@ -6066,14 +6139,13 @@ msgid ""
 "these beautiful stewards of the elven forests epitomize the grace and "
 "mystery of their people.\n"
 "\n"
-"Special Notes: A shyde's entangling attack slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 "Tündekisasszonyok, akik a természetnek szentelik magukat, s így lényük "
 "lassan átalakul. Szitakötő-szárnyak nőnek ki hátukból, s gyönyörűséges "
 "teremtményekké válnak, akik súlytalanul szálldosnak a tünde-erdőkben."
 
-#: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:24
+#: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:26
 msgid "faerie touch"
 msgstr "mesebeli érintés"
 
@@ -6081,14 +6153,16 @@ msgstr "mesebeli érintés"
 msgid "female^Elvish Sorceress"
 msgstr "Tünde boszorkány"
 
-#: data/units/Elvish_Sorceress.cfg:16
+#: data/units/Elvish_Sorceress.cfg:18
 #, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
 "entangling attack is notably more effective than that of the Elvish Shaman, "
 "and they can call upon bursts of chilling ethereal wind to smite those who "
-"oppose them."
+"oppose them.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "A csillapítás elsajátítása mellett sokkal keményebb varázslatokat is "
 "tanulnak a tünde boszorkányok, akik elég erősek a távolsági harcokban. "
@@ -6099,17 +6173,20 @@ msgstr ""
 msgid "female^Elvish Sylph"
 msgstr "Jótündér"
 
-#: data/units/Elvish_Sylph.cfg:17
+#: data/units/Elvish_Sylph.cfg:19
+#, fuzzy
 msgid ""
 "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
 "developed their faerie side, they transform into creatures of both worlds, "
-"wielding powerful magic against their enemies."
+"wielding powerful magic against their enemies.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "A jótündérek a szépség és a vész megtestesítői. Teljesen megőrizték "
 "tündérségüket, képesek állatok testét felölteni, és ellenségükre erős "
 "mágiájukat szabadítani."
 
-#: data/units/Elvish_Sylph.cfg:53
+#: data/units/Elvish_Sylph.cfg:55
 msgid "gossamer"
 msgstr "ökörnyál"
 
@@ -6131,18 +6208,16 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts' paws into a most "
 "deadly stroke.\n"
 "\n"
-"Special Notes: anyone struck by a direwolf's claws will be poisoned, and "
-"victims of this poison will continually take damage until they can be cured "
-"in town or by a unit which cures."
+"Special Notes:"
 msgstr ""
 "A farkasszörny-lovasok tudják a leggyorsabban megülni a lovakat Wesnoth-ban, "
 "rettegett óriási farkasok mérgező karmokkal. Ezen koboldok rémséges és "
 "szánalmat nem ismerő ellenségek."
 
 #: data/units/Goblin_Direwolf_Rider.cfg:39 data/units/Goblin_Knight.cfg:39
-#: data/units/Goblin_Wolf_Rider.cfg:70 data/units/Monster_Cave_Spider.cfg:39
-#: data/units/Monster_Sea_Serpent.cfg:27 data/units/Undead_Bat_Blood.cfg:46
-#: data/units/Undead_Bat_Vampire.cfg:70
+#: data/units/Goblin_Wolf_Rider.cfg:70 data/units/Monster_Cave_Spider.cfg:41
+#: data/units/Monster_Sea_Serpent.cfg:27 data/units/Undead_Bat_Blood.cfg:48
+#: data/units/Undead_Bat_Vampire.cfg:72
 msgid "fangs"
 msgstr "agyar"
 
@@ -6151,14 +6226,14 @@ msgid "Goblin Impaler"
 msgstr "Kobold nyársaló"
 
 #: data/units/Goblin_Impaler.cfg:18
+#, fuzzy
 msgid ""
 "Goblins are used by the orcs as fodder for their enemy's front line. Those "
 "who have somehow managed to survive invariably equip themselves to continue "
 "doing so. A much larger spear helps to compensate for their short reach, and "
 "better armor helps to shield their tiny frames.\n"
 "\n"
-"Special Notes: the length of their weapon allows an impaler to strike first "
-"in melee, even in defense."
+"Special Notes:"
 msgstr ""
 "A koboldok affelé hajlanak, hogy pusztán számbeli fölényükkel küzdjék le "
 "általános ostobaságukból, gyengeségükből és kifinomulatlan fegyvereikből "
@@ -6197,8 +6272,7 @@ msgid ""
 "their foes, and also carry nets to wreak havoc against those attempting to "
 "rally a defense or reprisal.\n"
 "\n"
-"Special Notes: being caught in a net slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 "A koboldfarkasok egy része le tudja győzni félelmét a tűztől. A kobold "
 "fosztogatók így fáklyákkal és hálókkal felszerelkezve hoznak pusztulást "
@@ -6337,17 +6411,14 @@ msgstr ""
 "és lándzsahasználat legmagasabb fokát érték el."
 
 #: data/units/Human_Horse_Grand_Knight.cfg:21
+#: data/units/Human_Horse_Knight.cfg:20 data/units/Human_Horse_Lancer.cfg:21
+#: data/units/Human_Horseman.cfg:20
+#, fuzzy
 msgid ""
 "\n"
 "\n"
-"Special Notes: the Grand Knight's charging lance attack doubles both damage "
-"dealt and received. This does not affect his defensive retaliation."
-msgstr ""
-"\n"
-"\n"
-"Megjegyzés: a nagy lovag lándzsás rohamtámadása megkétszerezi úgy az "
-"okozott, mint a kapott sebzést. Ez nem befolyásolja a védekező "
-"visszatámadást."
+"Special Notes:"
+msgstr "Különleges"
 
 #: data/units/Human_Horse_Grand_Knight.cfg:63
 #: data/units/Human_Horse_Knight.cfg:62 data/units/Human_Horse_Lancer.cfg:25
@@ -6372,18 +6443,6 @@ msgstr ""
 "használva megrohamozza ellenségeit, akik kétszeresen sebződnek, de a lovag "
 "is hasonlóan súlyosan sérül"
 
-#: data/units/Human_Horse_Knight.cfg:20
-msgid ""
-"\n"
-"\n"
-"Special Notes: the Knight's charging lance attack doubles both damage dealt "
-"and received. This does not affect his defensive retaliation."
-msgstr ""
-"\n"
-"\n"
-"Megjegyzés: a lovag lándzsás rohamtámadása megkétszerezi úgy az okozott, "
-"mint a kapott sebzést. Ez nem befolyásolja a védekező visszatámadást."
-
 #: data/units/Human_Horse_Lancer.cfg:3
 msgid "Lancer"
 msgstr "Lándzsás"
@@ -6402,51 +6461,24 @@ msgstr ""
 "támadásra. Rohamuk nagy sebzést okoz, de ők maguk is nagy veszteségekkel "
 "végezhetik."
 
-#: data/units/Human_Horse_Lancer.cfg:21
-msgid ""
-"\n"
-"\n"
-"Special Notes: the Lancer's charging lance attack doubles both damage dealt "
-"and received. This does not affect his defensive retaliation."
-msgstr ""
-"\n"
-"\n"
-"Megjegyzés: a lándzsás rohamtámadása megkétszerezi úgy az okozott, mint a "
-"kapott sebzést. Ez nem befolyásolja a védekező visszatámadást."
-
 #: data/units/Human_Horse_Paladin.cfg:3
 msgid "Paladin"
 msgstr "Kereszteslovag"
 
-#: data/units/Human_Horse_Paladin.cfg:19
+#: data/units/Human_Horse_Paladin.cfg:21
+#, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to monastic "
 "orders, pledging their might to the cause of righteousness. Though not as "
 "imposing on the battlefield as a Grand Knight, a Paladin is a powerful force "
 "in combat, and their piety grants them other gifts. A Paladin is a bane to "
-"the unworldly, and has trained in ministering to the wounds of his comrades."
+"the unworldly, and has trained in ministering to the wounds of his "
+"comrades.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Az erkölcs bajnoka, a kereszteslovag minden lovagi tudás birtokában van, de "
 "a szomszédos egységeket is képes gyógyítani."
-
-#: data/units/Human_Horse_Paladin.cfg:21
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"Special Notes: the Paladin's charging lance attack doubles both damage dealt "
-"and received. This does not affect his defensive retaliation. The Paladin's "
-"holy attack with his sword deals tremendous damage to the undead, and even "
-"some to living creatures."
-msgstr ""
-"\n"
-"\n"
-"Megjegyzés: a kereszteslovag lándzsás rohamtámadása megkétszerezi úgy az "
-"okozott, mint a kapott sebzést. Ez nem befolyásolja a védekező "
-"visszatámadást. A kereszteslovag szent támadása a karddal félelmetes "
-"pusztítást okoz az élőholtak között, sőt még némely élő fajok között is. A "
-"kereszteslovagok képesek valamiféle csillapításra, habár a méreg hatását "
-"csak késleltetni tudják, teljesen meggyógyítani nem."
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:91
 #: data/units/Human_Mage_of_Light.cfg:71 data/units/Mermaid_Diviner.cfg:58
@@ -6472,19 +6504,6 @@ msgstr ""
 "lehengerlő. Rohamuk kétszereset sebez, de a rohamozó lovasok is hasonlóan "
 "súlyos sebeket szereznek. Az Asheviere zsarnoksága elleni lázadók gyakran "
 "használják ezeket az harcosokat."
-
-#: data/units/Human_Horseman.cfg:20
-msgid ""
-"\n"
-"\n"
-"Special Notes: the Horseman's only attack is a charge, which doubles both "
-"damage dealt and received. This does not affect his defensive retaliation."
-msgstr ""
-"\n"
-"\n"
-"Megjegyzés: a lovas egyetlen támadása rohamtámadás, ami megkétszerezi úgy az "
-"okozott, mint a kapott sebzést. Ez nem befolyásolja a védekező "
-"visszatámadást."
 
 #: data/units/Human_Loyalist_Bowman.cfg:3
 msgid "Bowman"
@@ -6676,6 +6695,7 @@ msgid "Halberdier"
 msgstr "Alabárdos"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:24
+#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -6690,8 +6710,7 @@ msgid ""
 "customary only to grant these weapons to veteran pikemen, who have proven "
 "that they have the skill to employ them properly on the field of war.\n"
 "\n"
-"Special Notes: the length of their weapon allows a halberdier to strike "
-"first in melee, even in defense."
+"Special Notes:"
 msgstr ""
 "A közkatonák legjobbjait alabárdosokká teszik meg. Habár a kardnál lassabb a "
 "fegyverük, halálos sebeket lehet vele ejteni, és ámulatba ejtő hoszuknak "
@@ -6745,6 +6764,7 @@ msgid "Javelineer"
 msgstr "Lándzsás gyalogság"
 
 #: data/units/Human_Loyalist_Javelineer.cfg:19
+#, fuzzy
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
 "not kill, enemies at range. Some, however, take to them rather well, finding "
@@ -6754,8 +6774,7 @@ msgid ""
 "from a distance, often without retribution, and still hold their ground in "
 "melee.\n"
 "\n"
-"Special Notes: the length of their weapon allows a javelineer to strike "
-"first in melee, even in defense."
+"Special Notes:"
 msgstr ""
 "A lándzsás gyalogság mesterien használja hosszú fegyverét. Életveszélyes a "
 "közelharcban, de képes fegyvereit dobni is, ezzel mindkét harcmodorban "
@@ -6857,6 +6876,7 @@ msgid "Pikeman"
 msgstr "Pikás gyalogság"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:19
+#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -6865,8 +6885,7 @@ msgid ""
 "of pikemen is the bane of any cavalry charge, and with proper discipline and "
 "tactics, pikemen can also hold most infantry at bay.\n"
 "\n"
-"Special Notes: the length of their weapon allows a pikeman to strike first "
-"in melee, even in defense."
+"Special Notes:"
 msgstr ""
 "A tapasztaltabb lándzsások fegyverüket hosszú, hegyes, vékony pikára "
 "cserélik. Fegyverük hossza megadja nekik az első ütés lehetőségét, még "
@@ -6933,6 +6952,7 @@ msgid "Spearman"
 msgstr "Dárdás"
 
 #: data/units/Human_Loyalist_Spearman.cfg:19
+#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a head, "
@@ -6940,8 +6960,7 @@ msgid ""
 "shield and a few javelins, spearmen are the staple of most armies, often "
 "thrown into the front lines with only basic training.\n"
 "\n"
-"Special Notes: the length of their weapon allows a spearman to strike first "
-"in melee, even in defense."
+"Special Notes:"
 msgstr ""
 "A dárdások jelentős részt képeznek az emberi seregekben. Alapkiképzésben "
 "részesülnek és egyből az arcvonalra kerülnek megtapasztalni a csata sűrűjét. "
@@ -6969,6 +6988,7 @@ msgid "Mage"
 msgstr "Mágus"
 
 #: data/units/Human_Mage.cfg:22
+#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -6988,8 +7008,7 @@ msgid ""
 "Physically frail, and lacking familiarity with combat, magi do possess "
 "certain arts which are of great utility in battle.\n"
 "\n"
-"Special Notes: the ranged attack of a mage is magical, and always has a high "
-"chance of hitting an opponent."
+"Special Notes:"
 msgstr ""
 "A mágus gyenge - de mégis nagy hatalommal bírhat. Lassan mozog, gyengén "
 "védekezik, ám varázslövedékekkel támad, melyek könnyedén eltalálják "
@@ -7004,13 +7023,100 @@ msgstr "Mágusnő"
 msgid "Arch Mage"
 msgstr "Varázslómester"
 
+#: data/units/Human_Mage_Arch.cfg:20
+#, fuzzy
+msgid ""
+"The title of Arch Mage is conferred only after a lifetime of study and "
+"achievement to match. Arch Magi are often employed in positions of "
+"education, or as advisors to those wise enough to seek the fruits of their "
+"wisdom. Many tend to wealthy patrons, a profitable enterprise for both as, "
+"outside of the occasional task or word of advice, it gives the mage leave to "
+"pursue their research undisturbed. Certain others shun civilization, "
+"spending their days as hermits, often to study something which most would "
+"tend to frown upon.\n"
+"\n"
+"Though not trained for any sort of combat, if need arises an Arch Mage can "
+"unleash the full power of their art, something which is not to be taken "
+"lightly.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"A varázslómester címet elérni csak az egész életen keresztül folytatott "
+"tanulmányok és eredmények segítségével lehet. A varázslómesterek sokszor "
+"tanítanak, vagy azok tanácsadói, akik elég bölcsek hozzá, hogy felismerjék "
+"tudásuk gyümölcseit. Sokuk egy gazdag mecénás oltalmát keresi, ez "
+"mindkettejük javára válhat; az esetleges feladatokon és a tanácsadáson kívül "
+"megadja a mágusnak a lehetőséget, hogy zavartalanul kutathasson. Mások "
+"elkerülik a civilizációt, remeteként tengetik napjaikat, és gyakran "
+"olyasmiket tanulnak, amit a legtöbben rosszallással fogadnának.\n"
+"\n"
+"Habár a harc semmilyen fajtájára nincsenek kiképzeve, szükség esetén a "
+"varázslómesterek teljes varázserejüket szabadon engedhetik, amit nem lehet "
+"csak úgy félvállról venni.\n"
+"\n"
+"Megjegyzés: a varázslómester tűzgolyói mágikusak, így mindig nagy eséllyel "
+"eltalálják az ellenfelet."
+
 #: data/units/Human_Mage_Great.cfg:3
 msgid "Great Mage"
 msgstr "Nagy mágus"
 
+#: data/units/Human_Mage_Great.cfg:21
+#, fuzzy
+msgid ""
+"Any person who is even considered for the title of Great Mage is quite "
+"nearly a legend in their own time, and town criers have forcibly learnt "
+"discretion in applying the title. Merit for the title is carefully "
+"considered by a council of the leading magi of the age, and the conferment "
+"of the title is given only by a majority vote. Regardless, anyone who is "
+"seriously nominated for the honor of being called a Great Mage is, without "
+"question, a master of their art, and has surpassed almost any of their peers "
+"in skill.\n"
+"\n"
+"Though they are not warriors, by any means, the application of their art to "
+"combat is something that often causes other soldiers to stand aside in awe.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Az Nagy mágus rettegett és dicsőséges harcos, hatalma túllép a "
+"Varázslómesterén is."
+
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
 msgstr "Vörös mágus"
+
+#: data/units/Human_Mage_Red.cfg:20
+#, fuzzy
+msgid ""
+"Upon the successful termination of their apprenticeship, a mage is stripped "
+"of the blue robes of an apprentice, and given the red robes of a master. The "
+"significance of this change is often lost on the peasantry, who mistakenly "
+"title Master Magi as 'Red Magi'. Likewise, the symbolism of the change in "
+"colors is often mistaken to signify the mage's ability to seemingly conjure "
+"fire from nothing but thin air, a trick which, although undeniably useful, "
+"is viewed as a crass application of the knowledge which they have "
+"painstakingly accrued.\n"
+"\n"
+"Though physically frail, and untrained as warriors, the 'Red Magi' have a "
+"number of tricks up their sleeves, including the gouts of fire which may "
+"have cemented their colloquial name.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"A jelöltidő sikeres leteltével a mágus leveti a tanoncok kék köntösét, és "
+"megkapja a mesterek vörös köntösét. A változás fontossága elvész a "
+"parasztság körében, akik ezeket a mestereket vörös mágusnak hívják. "
+"Hasonlóképpen a színek megváltozásának ezen szimbólumát gyakran "
+"összetévesztik azzal a képességgel, hogy képes a levegőből tüzet varázsolni. "
+"Ez utóbbi, habár egy rendkívül hasznos varázslat, mégis a fájdalmasan "
+"megszerzet tudásuknak egy rendkívül durva alkalmazása.\n"
+"\n"
+"Habár a tetfelépítésük gyenge, és képzetlen harcosok, a 'vörös mágusoknak' "
+"rendkívül sok varázslat van a tarsolyukban, többek között a tűzgolyó, ami "
+"segített meggyökereztetni népies nevüket is.\n"
+"\n"
+"Megjegyzés: a vörös mágus tűzgolyói mágikusak, így mindig nagy eséllyel "
+"eltalálják az ellenfelet."
 
 #: data/units/Human_Mage_Silver.cfg:3
 msgid "Silver Mage"
@@ -7039,9 +7145,8 @@ msgid ""
 "skills are of undeniable use on the battlefield, if one can manage to coerce "
 "the mage into applying them.\n"
 "\n"
-"Special Notes: the ranged attack of a silver mage is magical, and always has "
-"a high chance of hitting an opponent. Silver Magi are well-attuned to their "
-"magical natures and are highly resistant to non-physical damage."
+"Special Notes: Silver Magi are well-attuned to their magical natures and are "
+"highly resistant to non-physical damage."
 msgstr ""
 "Az ezüstmágusok a legfürgébbek, és a legnehezebben utolérhetőek minden mágus "
 "közül. Teleportálni tudnak bármely két barátságos falu közt, egy pillanat "
@@ -7065,9 +7170,7 @@ msgid ""
 "potent ally. If need arises, they can call on the power of the Light to "
 "banish the unworldly from the mortal plane.\n"
 "\n"
-"Special Notes: the light cast by a white mage is magical in nature, and "
-"always has a high chance of hitting an opponent. This light does tremendous "
-"damage to the undead, and can even damage living creatures."
+"Special Notes:"
 msgstr ""
 "A fehér mágus a harcban gyönge, de ismeri a gyógyítás titkait. A fehér mágus "
 "körülötti egységek, mintha csak faluban lennének, felépülnek sebeikből. A "
@@ -7098,9 +7201,7 @@ msgid ""
 "tirelessly to bring life and order to the troubled world in which they "
 "live.\n"
 "\n"
-"Special Notes: the light cast by a mage of light is magical in nature, and "
-"always has a high chance of hitting an opponent. This light does tremendous "
-"damage to the undead, and even does some to living creatures."
+"Special Notes:"
 msgstr ""
 "A Fény mágusa nagyszerű segítőtársa az igazságos harcosoknak, és rettegett "
 "ellensége a törvényteleneknek. Olyan erős fény sugárzik belőle, hogy a "
@@ -7136,6 +7237,7 @@ msgid "Assassin"
 msgstr "Orgyilkos"
 
 #: data/units/Human_Outlaw_Assassin.cfg:20
+#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -7144,10 +7246,7 @@ msgid ""
 "back. Deadly at night, these assassins are somewhat uncomfortable fighting "
 "under the open sun.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the assassin "
-"distracts an enemy, the assassin may backstab, inflicting double damage, by "
-"creeping around behind that enemy. Their throwing knives are also poisoned, "
-"which will continually sap away an enemy's strength."
+"Special Notes:"
 msgstr ""
 "Az orgyilkosok az éjszaka urai. Akárcsak a haramiák, körbe tudják venni és "
 "lesből megtámadni ellenségüket, így kétszeres sebzést okozva. Távolból "
@@ -7221,6 +7320,7 @@ msgid "Rogue"
 msgstr "Haramia"
 
 #: data/units/Human_Outlaw_Rogue.cfg:18
+#, fuzzy
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
 "rogues have spent many an unpleasant moment darting through crowds and "
@@ -7229,9 +7329,7 @@ msgid ""
 "reliable accuracy, and their long hours of prowling around at night leave "
 "them more comfortable fighting in the dark.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the rogue distracts "
-"an enemy, the rogue may backstab, inflicting double damage, by creeping "
-"around behind that enemy."
+"Special Notes:"
 msgstr ""
 "A haramiák a legfürgébbek közé tartoznak, bármely ellenséges csapat vonalai "
 "mellett elsurranhatnak, tekintet nélkül az ellenőrzési zónákra. Lesből, "
@@ -7247,6 +7345,7 @@ msgid "Thief"
 msgstr "Tolvaj"
 
 #: data/units/Human_Outlaw_Thief.cfg:18
+#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -7256,9 +7355,7 @@ msgid ""
 "their feet, and good with knives. They happily employ less-than-honorable "
 "tactics in combat, seeing little purpose in a 'fair fight'.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the thief distracts "
-"an enemy, the thief may backstab, inflicting double damage, by creeping "
-"around behind that enemy."
+"Special Notes:"
 msgstr ""
 "A tolvaj sebes léptű és rejtőzködő, így nehezen lehet megsebezni. Lest "
 "vetnek ellenségeiknek, ezért kétszereset sebeznek azon az ellenséges "
@@ -7333,9 +7430,7 @@ msgid ""
 "their people. Though little is told about it, it is clear that it was the "
 "power of the light which somehow defeated it, and made their people safe.\n"
 "\n"
-"Special Notes: the light cast by a diviner is magical in nature, and always "
-"has a high chance of hitting an opponent. This light does tremendous damage "
-"to the undead, and even does some to living creatures."
+"Special Notes:"
 msgstr ""
 "A sellők között a legjámborabbak és legbékésebbek meglepően a fény erejével "
 "rendelkeznek, mely megelőzi, hogy a környezetében az igaz éj eluralkodjon. "
@@ -7346,6 +7441,7 @@ msgid "female^Mermaid Enchantress"
 msgstr "Sellő varázslőnő"
 
 #: data/units/Mermaid_Enchantress.cfg:20
+#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different. Those who master this ability are held in "
@@ -7354,8 +7450,7 @@ msgid ""
 "forbidden against their own race - this power is the greater part of what "
 "protects their people from the monsters that wander out of the abyss.\n"
 "\n"
-"Special Notes: The blasts of water conjured by mermaids are magical in "
-"nature, and always have a high chance of hitting their opponents."
+"Special Notes:"
 msgstr ""
 "A sellők, csakúgy mint a tündék, erőteljes velük született képességekkel "
 "rendelkeznek a mágia terén, habár mágiájuk természete jelentősen eltér. Nagy "
@@ -7378,6 +7473,7 @@ msgid "female^Mermaid Initiate"
 msgstr "Sellő beavatott"
 
 #: data/units/Mermaid_Initiate.cfg:22
+#, fuzzy
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -7386,8 +7482,7 @@ msgid ""
 "Despite their frailty, this makes them quite formidable in combat, as they "
 "can call upon the very water about them to smite their enemies.\n"
 "\n"
-"Special Notes: the blasts of water conjured by mermaids are magical in "
-"nature, and always have a high chance of hitting their opponents."
+"Special Notes:"
 msgstr ""
 "A fiatal sellők gyakran használják vízmágiájukat. Annak ellenére, hogy "
 "törékenyek, ez félelmetessé teszi őket ellenfeleik szemében, mivel a vizet "
@@ -7408,9 +7503,7 @@ msgid ""
 "with humanity. Their diligence and piety also grant them certain spiritual "
 "powers, allowing them to guard their people against the unworldly.\n"
 "\n"
-"Special Notes: the light cast by a priestess is magical in nature, and "
-"always has a high chance of hitting an opponent. This light does tremendous "
-"damage to the undead, and even does some to living creatures."
+"Special Notes:"
 msgstr ""
 "A tapasztaltabb sellők gyakran a szent tanulmányok útjára lépnek. Ez eléggé "
 "hozzáértővé teszi őket a a társaik sérüléseinek kezelésében, mint ahogy erős "
@@ -7465,8 +7558,7 @@ msgid ""
 "and makes their race a threat even to enemies who merely approach the "
 "water.\n"
 "\n"
-"Special Notes: being caught in a net slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 "A súlyokkal ellátott hálókat, amiket a sellők használnak háború idején, "
 "bonyolult jól kezelni; az ismerőit tisztelik és nagyra becsülik bajtársaik. "
@@ -7563,8 +7655,7 @@ msgid ""
 "to level the playing field against troops on land, who would otherwise be at "
 "a great advantage.\n"
 "\n"
-"Special Notes: being caught in a net slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 "A halászat, ahogyan a sellők gyakorolják, nagyrészt abból áll, hogy a "
 "halrajokat a várakozó hálókba tereljék. Ezek önmagukban nem túlságosan "
@@ -7628,17 +7719,20 @@ msgstr ""
 msgid "Giant Spider"
 msgstr "Óriáspók"
 
-#: data/units/Monster_Cave_Spider.cfg:16
+#: data/units/Monster_Cave_Spider.cfg:18
+#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They can bite at close range, thereby poisoning their enemies, and also can "
-"attack with a web at long range, slowing their foes down."
+"attack with a web at long range, slowing their foes down.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "A szóbeszéd azt tartja, Knalga belső részein óriáspókok vadásznak "
 "áldozataikra. Közel érve harapásukkal megmérgezik, távolról pedig hálójukkal "
 "lassítják le őket."
 
-#: data/units/Monster_Cave_Spider.cfg:78
+#: data/units/Monster_Cave_Spider.cfg:80
 msgid "web"
 msgstr "háló"
 
@@ -7646,22 +7740,25 @@ msgstr "háló"
 msgid "Cuttle Fish"
 msgstr "Kalmárhal"
 
-#: data/units/Monster_Cuttle_Fish.cfg:16
+#: data/units/Monster_Cuttle_Fish.cfg:18
+#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
 "distance. The best way to survive an encounter with these monsters is to "
-"remain ashore."
+"remain ashore.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "A kalmárhalak a tenger óriásai. Erős csápjaikkal megragadják ellenfeleiket, "
 "vagy mérgező fekete tintát lövellnek rájuk távolról. A legjobb eséllyel úgy "
 "élhetjük túl a velük való találkozást, ha a parton maradunk."
 
-#: data/units/Monster_Cuttle_Fish.cfg:39 data/units/Monster_Tentacle.cfg:64
+#: data/units/Monster_Cuttle_Fish.cfg:41 data/units/Monster_Tentacle.cfg:64
 msgid "tentacle"
 msgstr "polipkar"
 
-#: data/units/Monster_Cuttle_Fish.cfg:88
+#: data/units/Monster_Cuttle_Fish.cfg:90
 msgid "ink"
 msgstr "tinta"
 
@@ -7694,20 +7791,23 @@ msgstr "sárlabdacs"
 msgid "Giant Scorpion"
 msgstr "Óriás skorpió"
 
-#: data/units/Monster_Giant_Scorpion.cfg:17
+#: data/units/Monster_Giant_Scorpion.cfg:19
+#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
-"explanation."
+"explanation.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Az óriás skorpiók gyilkos teremtmények, melyek szeretnek lesből támadni "
 "zsákmányukra. Könyörtelenek és örökké éhesek, emiatt nem ajánlott túl közel "
 "merészkedni ezekhez a túlméretezett pókfélékhez."
 
-#: data/units/Monster_Giant_Scorpion.cfg:28
+#: data/units/Monster_Giant_Scorpion.cfg:30
 msgid "sting"
 msgstr "tüske"
 
-#: data/units/Monster_Giant_Scorpion.cfg:57
+#: data/units/Monster_Giant_Scorpion.cfg:59
 msgid "pincers"
 msgstr "ollók"
 
@@ -7906,9 +8006,7 @@ msgid ""
 "rarely the ones who deal the killing blow, their tactics are a considerable "
 "aid to their larger and more brutal kin.\n"
 "\n"
-"Special Notes: Orcish Assassins use poison on their throwing knives, and "
-"victims of this poison will continually take damage until they can be cured "
-"in town or by a healer."
+"Special Notes:"
 msgstr ""
 "Noha a közelharcban nem túl erős, az orgyilkos gyors, minden terepen jól "
 "védekezik és mérgezett dobónyilakat használ. A megmérgezett áldozat idővel "
@@ -8013,9 +8111,7 @@ msgid ""
 "forgoing armor. Their weapon of choice, poison, is a vicious tool, and its "
 "common use on the battlefield is often the real cause of orcish supremacy.\n"
 "\n"
-"Special Notes: Orcish Slayers use poison on their throwing knives, and "
-"victims of this poison will continually take damage until they can be cured "
-"in town or by a unit which cures."
+"Special Notes:"
 msgstr ""
 "A nagyobb és gyakran jobban képzett ork orgyilkosokat csak 'ölőgépnek' "
 "hívják az ellenségeik, habár ez a megkülönböztetés némiképp homályos. Az "
@@ -8368,13 +8464,15 @@ msgstr ""
 msgid "Blood Bat"
 msgstr "Bőregér"
 
-#: data/units/Undead_Bat_Blood.cfg:16
+#: data/units/Undead_Bat_Blood.cfg:18
 #, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
 "the fur of these undead flying beasts is tainted red with the blood of their "
-"victims."
+"victims.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Áldozatainak vére festi vörösre a repülő élőholt bőrét. Gyorsan mozog, és "
 "ellenségeinek véréből pótolja saját életerejét. Innen ismertető jelük "
@@ -8385,11 +8483,14 @@ msgstr ""
 msgid "Vampire Bat"
 msgstr "Vérszívó denevér"
 
-#: data/units/Undead_Bat_Vampire.cfg:15
+#: data/units/Undead_Bat_Vampire.cfg:17
+#, fuzzy
 msgid ""
 "Vampire Bats are undead flying beasts that attack by biting their victims. "
 "While their fangs are not very powerful, the health of victims is drained "
-"away along with their blood, and given to the Bats."
+"away along with their blood, and given to the Bats.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Ez a szárnyas élőholt lény megharapja célpontját. Fogai nem okoznak súlyos "
 "sérülést, de elszívják az áldozat vérét, amelyből életerőjöz juthat a "
@@ -8412,9 +8513,7 @@ msgid ""
 "It is because of such things that necromancy is condemned with an almost "
 "primal hatred.\n"
 "\n"
-"Special Notes: A ghoul's claws are covered in poison, and victims of this "
-"poison will continually take damage until they can be cured in town or by a "
-"unit which cures."
+"Special Notes:"
 msgstr ""
 "Éhező, vérszomjas emberek, akik kénytelenek emberi testeket felfalni, néha "
 "haláluk után egy gyötrelmes létállapotban, hullazabálóként kell feltámadniuk."
@@ -8431,9 +8530,7 @@ msgid ""
 "of their victims, they simply shrug off all damage sustained as if they had "
 "been freshly summoned, to begin their search for flesh again.\n"
 "\n"
-"Special Notes: A Necrophage's claws are covered in poison, and victims of "
-"this poison will continually take damage until they can be cured in town or "
-"by a unit which cures."
+"Special Notes:"
 msgstr ""
 "A halvajárók mérgező karmaikkal támadják meg remélt áldozataikat, a halott "
 "hús iránti szentségtelen éhségük által indíttatva. Amikor már jóllaktak "
@@ -8448,21 +8545,27 @@ msgstr ""
 msgid "Soulless"
 msgstr "Lelketlen"
 
-#: data/units/Undead_Corpse_Soulless.cfg:17
+#: data/units/Undead_Corpse_Soulless.cfg:19
+#, fuzzy
 msgid ""
 "These animated walking corpses have become strong from long experience "
-"fighting the living."
+"fighting the living.\n"
+"\n"
+"Special Notes:"
 msgstr "A mozgó eleven testek megedződtek az életükért vívott harcban."
 
 #: data/units/Undead_Corpse_Walking.cfg:4
 msgid "Walking Corpse"
 msgstr "Eleven test"
 
-#: data/units/Undead_Corpse_Walking.cfg:16
+#: data/units/Undead_Corpse_Walking.cfg:18
+#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Although weak in combat, these zombies can spread their curse to those they "
-"kill, increasing the army of undead."
+"kill, increasing the army of undead.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Sötét varázslatokkal hozták mozgásba a hullákat. A harcban ugyan gyengék, de "
 "áldozatukat is megfertőzik átkukkal, így növelvén az élőholt seregeket."
@@ -8472,14 +8575,13 @@ msgid "Ancient Lich"
 msgstr "Ős-villi"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:21
+#, fuzzy
 msgid ""
 "A being of this order is a herald of the age long past. Anyone who "
 "encounters an Ancient Lich likely has far worse things to worry about than "
 "death.\n"
 "\n"
-"Special Notes: The ranged attacks of a lich are magical, and always have a "
-"high chance of hitting an opponent. The touch of a lich drains the victim's "
-"life to renew the lich."
+"Special Notes:"
 msgstr ""
 "A legvégső forma, amit az élőholttá vált varázsló felvehet. Már a "
 "megjelenése is félelmet kelt az ellenségei szívében - az Ős-villi nem csak a "
@@ -8492,6 +8594,7 @@ msgid "Dark Adept"
 msgstr "Árnyak tanítványa"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:21
+#, fuzzy
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -8504,8 +8607,7 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning.\n"
 "\n"
-"Special Notes: The attacks of a dark adept are magical, and always have a "
-"high chance of hitting an opponent."
+"Special Notes:"
 msgstr ""
 "Az árnyak tanítványai eszelős megszállottak, akik bár kicsi a tudásuk a "
 "fekete mágiában, de azzal is öldöklést és pusztítást okoznak. E mágia "
@@ -8536,8 +8638,7 @@ msgid ""
 "hungry will attempt to completely conquer death through the transformation "
 "to lichdom and attainment of a dreadful immortality.\n"
 "\n"
-"Special Notes: The ranged attacks of a Dark Sorcerer are magical, and always "
-"have a high chance of hitting an opponent."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Necro_Lich.cfg:3
@@ -8545,6 +8646,7 @@ msgid "Lich"
 msgstr "Villi"
 
 #: data/units/Undead_Necro_Lich.cfg:20
+#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -8556,14 +8658,28 @@ msgid ""
 "life is prolonged indefinitely or simply extended. But to even consider such "
 "a thing bears tribute to the magnitude of what they have already achieved.\n"
 "\n"
-"Special Notes: The ranged attacks of a lich are magical, and always have a "
-"high chance of hitting an opponent. The touch of a lich drains the victim's "
-"life to renew the lich."
+"Special Notes:"
 msgstr ""
 "A villi olyan mágus, aki teljesen behódolt a sötét erőknek. Hogy uralmat "
 "szerezzen az élőholtak felett, lemondott testéről és maga is élőholttá lett. "
 "Így ellenségei életerejét egy érintéssel is megcsapolhatja, de erős "
 "hidegvarázslatokat is használnak a harcban."
+
+#: data/units/Undead_Necromancer.cfg:21
+msgid ""
+"One of the greatest circles of what is considered 'black magic' is the art "
+"of necromancy, the terrible ability to awaken the dead with false life. It "
+"was a discovery that had terrible ramifications and caused humanity's "
+"condemnation of black magic, for it has given fear a vast new arsenal.\n"
+"\n"
+"This ability, in all aspects, is the first step towards cheating death of "
+"its ultimate prize. It is the highest degree of power a dark mage can attain "
+"without losing grip on humanity itself, but pales to the lethal power "
+"wielded by Liches. Their mortal bodies are also made sturdier by their "
+"magic, in contrast to the frail decayed form of a Lich.\n"
+"\n"
+"Special Notes:"
+msgstr ""
 
 #: data/units/Undead_Necromancer.cfg:32
 #, fuzzy
@@ -8752,8 +8868,7 @@ msgid ""
 "unfailing servant, which can be bound to whatever task their master sees "
 "fit.\n"
 "\n"
-"Special Notes: Ghosts have very unusual resistances to damage, and move "
-"quite slowly over open water."
+"Special Notes:"
 msgstr ""
 "A fantomok réges régen kínlódva elesett harcosok testetlen lelkei. Bár "
 "testetlen létük gyorsaságot és a fizikai támadások elleni jó védekezést ad "
@@ -8777,10 +8892,7 @@ msgid ""
 "living, and those who live to speak of them had no leisure to study their "
 "foe.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the nightgaunt "
-"distracts an enemy, the nightgaunt may strike at the opponent's back, "
-"inflicting double damage. Nightgaunts have very unusual resistances to "
-"damage, and move quite slowly over open water."
+"Special Notes:"
 msgstr ""
 "Az éjkísértetek a sötétség leple alatt bújnak elő, visszataszító arcukat "
 "maszkok mögött tartva, hogy eltakarják ördögi lelküket. Ezek a megvetett "
@@ -8799,10 +8911,7 @@ msgid ""
 "\n"
 "That is a question which is easily answered by a necromancer.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the shadow distracts "
-"an enemy, the shadow may strike at the opponent's back, inflicting double "
-"damage. Shadows have very unusual resistances to damage, and move quite "
-"slowly over open water."
+"Special Notes:"
 msgstr ""
 "A gonosz átal elfeketített lelkek, az éjszaka leple alatti árnyak suhannak "
 "gyanútlan áldozataik felé. Ezek a baljós lények nyomtalanul képesek eltűnni "
@@ -8813,6 +8922,7 @@ msgid "Spectre"
 msgstr "Kísértet"
 
 #: data/units/Undead_Spirit_Spectre.cfg:20
+#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "master's power. These abominations are a rightful terror to the living, and "
@@ -8822,9 +8932,7 @@ msgid ""
 "is that it is likely only the harbinger of a much more dangerous force that "
 "will follow in its wake.\n"
 "\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the spectre. Spectres have very unusual resistances to damage, and "
-"move quite slowly over open water."
+"Special Notes:"
 msgstr ""
 "A Kísértetek, a legerősebb lények az élőholtak sorában, sötét hatalmukkal "
 "meg tudnak idézni egy kardot amely kimeríti az ellenfél életerejét a maguk "
@@ -8840,6 +8948,7 @@ msgid "Wraith"
 msgstr "Kísértet"
 
 #: data/units/Undead_Spirit_Wraith.cfg:19
+#, fuzzy
 msgid ""
 "These tortured forms of what were once warriors are among the most "
 "terrifying things a necromancer can create, for a sword will cleave right "
@@ -8851,9 +8960,7 @@ msgid ""
 "creatures could renew themselves through the very thing which threatened "
 "them.\n"
 "\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the wraith. Wraiths have very unusual resistances to damage, and move "
-"quite slowly over open water."
+"Special Notes:"
 msgstr ""
 "Az élőholtak leghatalmasabb szellemei túlvilági pengét idéznek meg, mellyel "
 "elrabolják ellenségük életerejét, hogy aztán ők erősödjenek. Szörnyű sikolyt "
@@ -9742,7 +9849,7 @@ msgstr "Elszenvedett sebzés (EV)"
 msgid "Statistics"
 msgstr "Statisztika"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2228
+#: src/menu_events.cpp:220 src/unit.cpp:2234
 msgid "Moves"
 msgstr "lép"
 
@@ -9900,37 +10007,75 @@ msgstr "Címke:"
 msgid "Search"
 msgstr "Keresés"
 
-#: src/menu_events.cpp:1387
+#: src/menu_events.cpp:1394
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Nem találtam olyan címkét vagy egységet ami megfelelt volna a következőnek: "
 "'$search'."
 
-#: src/menu_events.cpp:1496
+#: src/menu_events.cpp:1503
 msgid "prompt^Command:"
 msgstr "Parancs:"
 
-#: src/mouse_events.cpp:112
+#: src/mouse_events.cpp:224 src/mouse_events.cpp:339 src/mouse_events.cpp:723
 msgid "Attacker"
 msgstr "Támadó"
 
-#: src/mouse_events.cpp:114
+#: src/mouse_events.cpp:225 src/mouse_events.cpp:338 src/mouse_events.cpp:725
 msgid "Defender"
 msgstr "Védekező"
 
-#: src/mouse_events.cpp:134 src/mouse_events.cpp:712
+#: src/mouse_events.cpp:243
+msgid "Expected Battle Result (hp)"
+msgstr ""
+
+#: src/mouse_events.cpp:327
+#, fuzzy
+msgid "Leadership"
+msgstr "hadvezetés"
+
+#: src/mouse_events.cpp:340
+#, fuzzy
+msgid " resistance vs "
+msgstr "Ellenállások"
+
+#: src/mouse_events.cpp:341
+#, fuzzy
+msgid " vulnerability vs "
+msgstr "támadó sebezhetőség kontra"
+
+#: src/mouse_events.cpp:351
+#, fuzzy
+msgid "Slowed"
+msgstr "lelassított"
+
+#: src/mouse_events.cpp:367
+#, fuzzy
+msgid "Total damage"
+msgstr "összsebzés"
+
+#: src/mouse_events.cpp:374
+#, fuzzy
+msgid "No usable weapon"
+msgstr "Válassz fegyvert:"
+
+#: src/mouse_events.cpp:379
+msgid "Chance of being unscathed"
+msgstr ""
+
+#: src/mouse_events.cpp:677 src/mouse_events.cpp:745 src/mouse_events.cpp:1327
 msgid "Damage Calculations"
 msgstr "Sebzés előszámítások"
 
-#: src/mouse_events.cpp:690 src/reports.cpp:278
+#: src/mouse_events.cpp:1305 src/reports.cpp:278
 msgid "vs"
 msgstr "kontra"
 
-#: src/mouse_events.cpp:724
+#: src/mouse_events.cpp:1339
 msgid "Attack Enemy"
 msgstr "Ellenség megtámadása"
 
-#: src/mouse_events.cpp:725
+#: src/mouse_events.cpp:1340
 msgid "Choose weapon:"
 msgstr "Válassz fegyvert:"
 
@@ -9988,12 +10133,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2283
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2289
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2290
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2296
 msgid ")"
 msgstr ")"
 
@@ -10482,19 +10627,19 @@ msgstr "Semleges egységek: "
 msgid "Chaotic units: "
 msgstr "Törvénytelen egységek: "
 
-#: src/reports.cpp:378
+#: src/reports.cpp:373
 msgid "Owned village"
 msgstr "Elfoglalt falu"
 
-#: src/reports.cpp:380
+#: src/reports.cpp:375
 msgid "Enemy village"
 msgstr "Ellenséges falu"
 
-#: src/reports.cpp:382
+#: src/reports.cpp:377
 msgid "Allied village"
 msgstr "Szövetséges falu"
 
-#: src/reports.cpp:456
+#: src/reports.cpp:451
 msgid "Observers:"
 msgstr "Megfigyelők:"
 
@@ -10644,15 +10789,15 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoth kódexe "
 
-#: src/unit.cpp:2163 src/unit.cpp:2288
+#: src/unit.cpp:2169 src/unit.cpp:2294
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2245
+#: src/unit.cpp:2251
 msgid "XP to advance"
 msgstr "TP a szintlépésig"
 
-#: src/unit.cpp:2279
+#: src/unit.cpp:2285
 msgid ": "
 msgstr ": "
 
@@ -10691,6 +10836,59 @@ msgstr ""
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Special Notes: the Grand Knight's charging lance attack doubles both "
+#~ "damage dealt and received. This does not affect his defensive retaliation."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Megjegyzés: a nagy lovag lándzsás rohamtámadása megkétszerezi úgy az "
+#~ "okozott, mint a kapott sebzést. Ez nem befolyásolja a védekező "
+#~ "visszatámadást."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Special Notes: the Lancer's charging lance attack doubles both damage "
+#~ "dealt and received. This does not affect his defensive retaliation."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Megjegyzés: a lándzsás rohamtámadása megkétszerezi úgy az okozott, mint a "
+#~ "kapott sebzést. Ez nem befolyásolja a védekező visszatámadást."
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Special Notes: the Paladin's charging lance attack doubles both damage "
+#~ "dealt and received. This does not affect his defensive retaliation. The "
+#~ "Paladin's holy attack with his sword deals tremendous damage to the "
+#~ "undead, and even some to living creatures."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Megjegyzés: a kereszteslovag lándzsás rohamtámadása megkétszerezi úgy az "
+#~ "okozott, mint a kapott sebzést. Ez nem befolyásolja a védekező "
+#~ "visszatámadást. A kereszteslovag szent támadása a karddal félelmetes "
+#~ "pusztítást okoz az élőholtak között, sőt még némely élő fajok között is. "
+#~ "A kereszteslovagok képesek valamiféle csillapításra, habár a méreg "
+#~ "hatását csak késleltetni tudják, teljesen meggyógyítani nem."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Special Notes: the Horseman's only attack is a charge, which doubles both "
+#~ "damage dealt and received. This does not affect his defensive retaliation."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Megjegyzés: a lovas egyetlen támadása rohamtámadás, ami megkétszerezi úgy "
+#~ "az okozott, mint a kapott sebzést. Ez nem befolyásolja a védekező "
+#~ "visszatámadást."
 
 #~ msgid "drain"
 #~ msgstr "megcsapolás"

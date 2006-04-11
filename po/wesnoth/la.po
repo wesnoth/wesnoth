@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.0.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-10 08:17+0200\n"
+"POT-Creation-Date: 2006-04-11 08:03+0200\n"
 "PO-Revision-Date: 2005-09-29 19:20+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -42,18 +42,12 @@ msgstr ""
 "Unitas venenata non a veneno a medetore sanari potest, et curam pagi aut "
 "unitatis quae sanat petere debet."
 
-#: data/abilities.cfg:22
-msgid ""
-" These units are capable of basic healing, though they can only delay the "
-"effects of poison, not cure them entirely."
-msgstr ""
-
-#: data/abilities.cfg:29
+#: data/abilities.cfg:26
 #, fuzzy
 msgid "heals +8"
 msgstr "medetur"
 
-#: data/abilities.cfg:34
+#: data/abilities.cfg:31
 #, fuzzy
 msgid ""
 "Heals +8:\n"
@@ -77,11 +71,11 @@ msgstr ""
 "Sanator unitatem venenatam sanare potest, sed haec unitas nulla puncta "
 "salutis accipiet in tractu in quo venenum tollitur."
 
-#: data/abilities.cfg:43
+#: data/abilities.cfg:40
 msgid "cures"
 msgstr "sanat"
 
-#: data/abilities.cfg:45
+#: data/abilities.cfg:42
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
@@ -89,16 +83,10 @@ msgid ""
 msgstr ""
 
 #: data/abilities.cfg:55
-msgid ""
-" These units are capable of healing units around them, and curing them of "
-"poison."
-msgstr ""
-
-#: data/abilities.cfg:61
 msgid "regenerates"
 msgstr "regenerat"
 
-#: data/abilities.cfg:63
+#: data/abilities.cfg:57
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
@@ -108,17 +96,11 @@ msgstr ""
 "Haec unitas se sanat usque ad VIII PS in tractu. Si venenata est, venenum "
 "tollet loco sanationis."
 
-#: data/abilities.cfg:70
-msgid ""
-" These units regenerate, which allows them to heal as though always "
-"stationed in a village."
-msgstr ""
-
-#: data/abilities.cfg:81
+#: data/abilities.cfg:72
 msgid "steadfast"
 msgstr "constans"
 
-#: data/abilities.cfg:83
+#: data/abilities.cfg:74
 #, fuzzy
 msgid ""
 "Steadfast:\n"
@@ -128,20 +110,14 @@ msgstr ""
 "Constans:\n"
 "Repugnantia huius unitatis duplicatur (maximum L pro cento) in defensu."
 
-#: data/abilities.cfg:90
-msgid ""
-" The steadiness of this unit reduces damage from some attacks, but only "
-"while defending."
-msgstr ""
-
-#: data/abilities.cfg:97 data/abilities.cfg:116 data/abilities.cfg:147
-#: data/abilities.cfg:190 data/abilities.cfg:245 src/actions.cpp:539
+#: data/abilities.cfg:85 data/abilities.cfg:104 data/abilities.cfg:135
+#: data/abilities.cfg:178 data/abilities.cfg:233 src/actions.cpp:539
 #: src/actions.cpp:672
 msgid "leadership"
 msgstr "ductus"
 
-#: data/abilities.cfg:101 data/abilities.cfg:120 data/abilities.cfg:151
-#: data/abilities.cfg:194 data/abilities.cfg:249
+#: data/abilities.cfg:89 data/abilities.cfg:108 data/abilities.cfg:139
+#: data/abilities.cfg:182 data/abilities.cfg:237
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -161,23 +137,11 @@ msgstr ""
 "cum Ductu proelium committit, oppugnationes eius quartam partem damni "
 "additionalem faciunt, multiplicatam a differentia graduum eorum."
 
-#: data/abilities.cfg:309
-#, fuzzy
-msgid ""
-" The leadership of this unit enables friendly units next to it to deal more "
-"damage in combat, though this only applies to units of lower level."
-msgstr ""
-"Educati cum gladio et scorpione, Centuriones greges parvas militum humanorum "
-"ducunt, Oppugnationes eorum ordinantes.\n"
-"\n"
-"Nota Praecipua: Ob ductu Centurionis oppugnationes unitatum vicinorum "
-"maiorem damnum infligere possunt, sed tantum si sunt ex gradu inferiore."
-
-#: data/abilities.cfg:313
+#: data/abilities.cfg:298
 msgid "skirmisher"
 msgstr "excursor"
 
-#: data/abilities.cfg:315
+#: data/abilities.cfg:300
 #, fuzzy
 msgid ""
 "Skirmisher:\n"
@@ -189,17 +153,11 @@ msgstr ""
 "Haec unitas perita est se ultra hostes celeriter movens et omni Zona Imperii "
 "hostium ignorat."
 
-#: data/abilities.cfg:321
-msgid ""
-" Their skill at skirmishing allows these units to ignore enemy units' zones "
-"of control and thus move unhindered around them."
-msgstr ""
-
-#: data/abilities.cfg:328
+#: data/abilities.cfg:310
 msgid "illuminates"
 msgstr "illustrat"
 
-#: data/abilities.cfg:332
+#: data/abilities.cfg:314
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -215,17 +173,11 @@ msgstr ""
 "Quisque unitas vicina huic unitati pugnabit noctu sicut vespere et vespere "
 "sicut die."
 
-#: data/abilities.cfg:338
-msgid ""
-" They also have the power of Illumination, which increases the lighting "
-"level in the area adjacent to them."
-msgstr ""
-
-#: data/abilities.cfg:342
+#: data/abilities.cfg:321
 msgid "teleport"
 msgstr "ianuae magicae"
 
-#: data/abilities.cfg:344
+#: data/abilities.cfg:323
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -235,17 +187,11 @@ msgstr ""
 "Haec unitas ianuas magicas inter duos pagos amicos aperire potest, utens uno "
 "puncto motus."
 
-#: data/abilities.cfg:349
-msgid ""
-" They can also teleport between any two villages instantly, though the "
-"player must control both, and the destination village must be unoccupied."
-msgstr ""
-
-#: data/abilities.cfg:353
+#: data/abilities.cfg:329
 msgid "ambush"
 msgstr "insidiae"
 
-#: data/abilities.cfg:357
+#: data/abilities.cfg:333
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -261,17 +207,11 @@ msgstr ""
 "silvis est, nisi in loco ordine statim post oppugnationem suam aut si "
 "unitates hostium apud unitatum hanc adsunt."
 
-#: data/abilities.cfg:368
-msgid ""
-" In woodlands, their ambush skill renders them invisible to an enemy unless "
-"they are immediately adjacent, or have revealed themselves by attacking."
-msgstr ""
-
-#: data/abilities.cfg:372
+#: data/abilities.cfg:345
 msgid "nightstalk"
 msgstr "insidiari in nocte"
 
-#: data/abilities.cfg:376
+#: data/abilities.cfg:349
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -287,16 +227,12 @@ msgstr ""
 "in tractu statim post oppugnationem suam aut si unitates hostium apud "
 "unitatum hanc adsunt."
 
-#: data/abilities.cfg:387
-msgid " They are able to hide at night, leaving no trace of their presence."
-msgstr ""
-
-#: data/abilities.cfg:391
+#: data/abilities.cfg:361
 #, fuzzy
 msgid "submerge"
 msgstr "percutere"
 
-#: data/abilities.cfg:395
+#: data/abilities.cfg:365
 #, fuzzy
 msgid ""
 "Submerge:\n"
@@ -313,17 +249,11 @@ msgstr ""
 "silvis est, nisi in loco ordine statim post oppugnationem suam aut si "
 "unitates hostium apud unitatum hanc adsunt."
 
-#: data/abilities.cfg:406
-msgid ""
-" These units can move unseen in deep water, requiring no air from the "
-"surface."
-msgstr ""
-
-#: data/abilities.cfg:410
+#: data/abilities.cfg:377
 msgid "berserk"
 msgstr "saevus"
 
-#: data/abilities.cfg:412
+#: data/abilities.cfg:379
 #, fuzzy
 msgid ""
 "Berserk:\n"
@@ -334,17 +264,11 @@ msgstr ""
 "In offensione vel defensione, haec oppugnatio certamen presset donec unus ex "
 "pugnatoribus interfectus erit."
 
-#: data/abilities.cfg:419
-msgid ""
-" Whenever their berserk attack is used, these units continue to push the "
-"attack until either they or their enemy lies dead."
-msgstr ""
-
-#: data/abilities.cfg:423
+#: data/abilities.cfg:387
 msgid "backstab"
 msgstr "in tergum percutere"
 
-#: data/abilities.cfg:425
+#: data/abilities.cfg:389
 #, fuzzy
 msgid ""
 "Backstab:\n"
@@ -356,11 +280,11 @@ msgstr ""
 "Haec oppugnatio damnum duplice facit, si unitas amica in latere adverso "
 "scopi adest. (Non movetur cum unitatibus sociis.)"
 
-#: data/abilities.cfg:435 data/abilities.cfg:443
+#: data/abilities.cfg:399 data/abilities.cfg:407
 msgid "plague"
 msgstr "pestilentia"
 
-#: data/abilities.cfg:437 data/abilities.cfg:445
+#: data/abilities.cfg:401 data/abilities.cfg:409
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -372,24 +296,24 @@ msgstr ""
 "consimili et ex eadem parte unitatis cum oppugnatione Pestilentiae "
 "substituitur."
 
-#: data/abilities.cfg:451
+#: data/abilities.cfg:415
 #, fuzzy
 msgid "slows"
 msgstr "lentifacere"
 
-#: data/abilities.cfg:453
+#: data/abilities.cfg:417
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
 
-#: data/abilities.cfg:460
+#: data/abilities.cfg:424
 #, fuzzy
 msgid "stones"
 msgstr "petrificare"
 
-#: data/abilities.cfg:462
+#: data/abilities.cfg:426
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -399,11 +323,11 @@ msgstr ""
 "Haec oppugnatio petrificavit scopum. Unitates quae in saxum mutantur neque "
 "movere neque oppugnare possunt."
 
-#: data/abilities.cfg:468
+#: data/abilities.cfg:432
 msgid "marksman"
 msgstr "peritus arcus"
 
-#: data/abilities.cfg:470
+#: data/abilities.cfg:434
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -412,11 +336,11 @@ msgstr ""
 "Si uteris huic oppugnationi in offensione, habet semper probabilitatem "
 "saltem LX pro centum feriendi."
 
-#: data/abilities.cfg:479
+#: data/abilities.cfg:443
 msgid "magical"
 msgstr "magicalis"
 
-#: data/abilities.cfg:481
+#: data/abilities.cfg:445
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -424,18 +348,12 @@ msgstr ""
 "Magicalis:\n"
 "Haec oppugnatio semper probabilitatem LXX pro cento habet feriendi."
 
-#: data/abilities.cfg:488
-msgid ""
-" The ranged attacks of this unit are magical, and always have a high chance "
-"of hitting an opponent."
-msgstr ""
-
-#: data/abilities.cfg:492
+#: data/abilities.cfg:453
 #, fuzzy
 msgid "swarm"
 msgstr "adfligere"
 
-#: data/abilities.cfg:494
+#: data/abilities.cfg:455
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -444,11 +362,11 @@ msgid ""
 "strikes."
 msgstr ""
 
-#: data/abilities.cfg:500
+#: data/abilities.cfg:461
 msgid "charge"
 msgstr "incurrere"
 
-#: data/abilities.cfg:502
+#: data/abilities.cfg:463
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -458,12 +376,12 @@ msgstr ""
 "Haec oppugnatio damnum duplice facit scopo. Atque efficit ut haec unitas "
 "damnum duplice ex oppugnatione scopi in vicem accipiat."
 
-#: data/abilities.cfg:512
+#: data/abilities.cfg:473
 #, fuzzy
 msgid "drains"
 msgstr "exhaurire"
 
-#: data/abilities.cfg:514
+#: data/abilities.cfg:475
 #, fuzzy
 msgid ""
 "Drain:\n"
@@ -474,11 +392,11 @@ msgstr ""
 "Haec unitas salutem ex unitatibus vivis exhaurit, se sanans dimidiam partem "
 "damni inflecti."
 
-#: data/abilities.cfg:520
+#: data/abilities.cfg:481
 msgid "firststrike"
 msgstr "ictus primus"
 
-#: data/abilities.cfg:522
+#: data/abilities.cfg:483
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -486,11 +404,11 @@ msgstr ""
 "Ictus Primus:\n"
 "Haec unitas semper prima percutit, etsi defendit."
 
-#: data/abilities.cfg:528
+#: data/abilities.cfg:489
 msgid "poison"
 msgstr "venenum"
 
-#: data/abilities.cfg:530
+#: data/abilities.cfg:491
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -848,7 +766,7 @@ msgstr "gladius"
 #: data/units/Drake_Fighter.cfg:64 data/units/Drake_Fire.cfg:76
 #: data/units/Drake_Flameheart.cfg:80 data/units/Drake_Flare.cfg:84
 #: data/units/Drake_Gladiator.cfg:75 data/units/Drake_Inferno.cfg:77
-#: data/units/Drake_Slasher.cfg:75 data/units/Drake_Warden.cfg:81
+#: data/units/Drake_Slasher.cfg:77 data/units/Drake_Warden.cfg:83
 #: data/units/Drake_Warrior.cfg:78 data/units/Dwarvish_Berserker.cfg:38
 #: data/units/Dwarvish_Dragonguard.cfg:28 data/units/Dwarvish_Fighter.cfg:30
 #: data/units/Dwarvish_Lord.cfg:33 data/units/Dwarvish_Lord.cfg:84
@@ -888,7 +806,7 @@ msgstr "gladius"
 #: data/units/Human_Outlaw_Poacher.cfg:37 data/units/Human_Outlaw_Rogue.cfg:34
 #: data/units/Human_Outlaw_Rogue.cfg:62 data/units/Human_Outlaw_Thief.cfg:86
 #: data/units/Human_Outlaw_Trapper.cfg:38 data/units/Merman_Triton.cfg:47
-#: data/units/Monster_Cave_Spider.cfg:41 data/units/Naga_Fighter.cfg:30
+#: data/units/Monster_Cave_Spider.cfg:43 data/units/Naga_Fighter.cfg:30
 #: data/units/Naga_Myrmidon.cfg:35 data/units/Naga_Warrior.cfg:34
 #: data/units/Ogre.cfg:21 data/units/Ogre_Young.cfg:20
 #: data/units/Orcish_Archer.cfg:29 data/units/Orcish_Assassin.cfg:31
@@ -897,8 +815,8 @@ msgstr "gladius"
 #: data/units/Orcish_Ruler.cfg:34 data/units/Orcish_Slayer.cfg:32
 #: data/units/Orcish_Slayer.cfg:78 data/units/Orcish_Slurbow.cfg:30
 #: data/units/Orcish_Sovereign.cfg:36 data/units/Orcish_Warlord.cfg:30
-#: data/units/Orcish_Warrior.cfg:29 data/units/Undead_Bat_Blood.cfg:48
-#: data/units/Undead_Bat_Vampire.cfg:72 data/units/Undead_Corpse_Ghoul.cfg:41
+#: data/units/Orcish_Warrior.cfg:29 data/units/Undead_Bat_Blood.cfg:50
+#: data/units/Undead_Bat_Vampire.cfg:74 data/units/Undead_Corpse_Ghoul.cfg:41
 #: data/units/Undead_Corpse_Necrophage.cfg:41
 #: data/units/Undead_Skele_Bone_Shooter.cfg:43
 #: data/units/Undead_Skele_Death_Knight.cfg:39
@@ -945,12 +863,12 @@ msgstr "aspergillum"
 #: data/units/Drake_Sky.cfg:87 data/units/Dwarvish_Fighter.cfg:55
 #: data/units/Dwarvish_Lord.cfg:59 data/units/Dwarvish_Runemaster.cfg:28
 #: data/units/Dwarvish_Steelclad.cfg:58 data/units/Elvish_Druid.cfg:30
-#: data/units/Elvish_Druid.cfg:56 data/units/Elvish_Enchantress.cfg:24
-#: data/units/Elvish_Enchantress.cfg:91 data/units/Elvish_Shaman.cfg:31
+#: data/units/Elvish_Druid.cfg:56 data/units/Elvish_Enchantress.cfg:26
+#: data/units/Elvish_Enchantress.cfg:93 data/units/Elvish_Shaman.cfg:31
 #: data/units/Elvish_Shaman.cfg:57 data/units/Elvish_Shyde.cfg:31
-#: data/units/Elvish_Shyde.cfg:59 data/units/Elvish_Sorceress.cfg:24
-#: data/units/Elvish_Sorceress.cfg:91 data/units/Elvish_Sylph.cfg:26
-#: data/units/Elvish_Sylph.cfg:54 data/units/Goblin_Pillager.cfg:76
+#: data/units/Elvish_Shyde.cfg:59 data/units/Elvish_Sorceress.cfg:26
+#: data/units/Elvish_Sorceress.cfg:93 data/units/Elvish_Sylph.cfg:28
+#: data/units/Elvish_Sylph.cfg:56 data/units/Goblin_Pillager.cfg:76
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:27
 #: data/units/Human_Loyalist_Iron_Mauler.cfg:30
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:28 data/units/Human_Mage.cfg:57
@@ -966,18 +884,18 @@ msgstr "aspergillum"
 #: data/units/Mermaid_Initiate.cfg:50 data/units/Mermaid_Priestess.cfg:37
 #: data/units/Mermaid_Siren.cfg:36 data/units/Mermaid_Siren.cfg:82
 #: data/units/Merman_Entangler.cfg:32 data/units/Merman_Netcaster.cfg:31
-#: data/units/Monster_Cave_Spider.cfg:79 data/units/Monster_Cuttle_Fish.cfg:40
+#: data/units/Monster_Cave_Spider.cfg:81 data/units/Monster_Cuttle_Fish.cfg:42
 #: data/units/Monster_Giant_Mudcrawler.cfg:53
 #: data/units/Monster_Giant_Mudcrawler.cfg:89
-#: data/units/Monster_Giant_Scorpion.cfg:58
+#: data/units/Monster_Giant_Scorpion.cfg:60
 #: data/units/Monster_Mudcrawler.cfg:52 data/units/Monster_Tentacle.cfg:66
 #: data/units/Monster_Yeti.cfg:40 data/units/Saurian_Augur.cfg:35
 #: data/units/Saurian_Oracle.cfg:35 data/units/Saurian_Soothsayer.cfg:36
 #: data/units/Troll.cfg:27 data/units/Troll_Great.cfg:28
 #: data/units/Troll_Hero.cfg:27 data/units/Troll_Rocklobber.cfg:29
 #: data/units/Troll_Rocklobber.cfg:54 data/units/Troll_Warrior.cfg:28
-#: data/units/Troll_Whelp.cfg:28 data/units/Undead_Corpse_Soulless.cfg:49
-#: data/units/Undead_Corpse_Walking.cfg:48
+#: data/units/Troll_Whelp.cfg:28 data/units/Undead_Corpse_Soulless.cfg:51
+#: data/units/Undead_Corpse_Walking.cfg:50
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:33
 #: data/units/Undead_Necromancer.cfg:34
 #: data/units/Undead_Skeleton_Archer.cfg:38 data/units/Wose.cfg:36
@@ -1047,7 +965,7 @@ msgstr "arcus"
 #: data/units/Boat_Pirate_Galleon.cfg:20
 #: data/units/Boat_Transport_Galleon.cfg:20 data/units/Drake_Clasher.cfg:103
 #: data/units/Drake_Enforcer.cfg:138 data/units/Drake_Gladiator.cfg:111
-#: data/units/Drake_Slasher.cfg:91 data/units/Drake_Warden.cfg:97
+#: data/units/Drake_Slasher.cfg:93 data/units/Drake_Warden.cfg:99
 #: data/units/Dwarvish_Dragonguard.cfg:53 data/units/Dwarvish_Guardsman.cfg:31
 #: data/units/Dwarvish_Guardsman.cfg:45 data/units/Dwarvish_Sentinel.cfg:46
 #: data/units/Dwarvish_Sentinel.cfg:81 data/units/Dwarvish_Stalwart.cfg:41
@@ -1091,8 +1009,8 @@ msgstr "arcus"
 #: data/units/Merman_Javelineer.cfg:30 data/units/Merman_Javelineer.cfg:69
 #: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:29
 #: data/units/Merman_Spearman.cfg:68 data/units/Merman_Triton.cfg:33
-#: data/units/Merman_Warrior.cfg:32 data/units/Monster_Cuttle_Fish.cfg:89
-#: data/units/Monster_Giant_Scorpion.cfg:29
+#: data/units/Merman_Warrior.cfg:32 data/units/Monster_Cuttle_Fish.cfg:91
+#: data/units/Monster_Giant_Scorpion.cfg:31
 #: data/units/Monster_Sea_Serpent.cfg:29 data/units/Orcish_Archer.cfg:54
 #: data/units/Orcish_Crossbowman.cfg:55 data/units/Orcish_Leader.cfg:59
 #: data/units/Orcish_Ruler.cfg:59 data/units/Orcish_Slurbow.cfg:106
@@ -1309,8 +1227,8 @@ msgstr "aspicere"
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:25
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:57
-#: data/units/Elvish_Enchantress.cfg:145 data/units/Elvish_Sorceress.cfg:150
-#: data/units/Elvish_Sylph.cfg:88 data/units/Saurian_Augur.cfg:55
+#: data/units/Elvish_Enchantress.cfg:147 data/units/Elvish_Sorceress.cfg:152
+#: data/units/Elvish_Sylph.cfg:90 data/units/Saurian_Augur.cfg:55
 #: data/units/Saurian_Oracle.cfg:55 data/units/Saurian_Soothsayer.cfg:56
 #: data/units/Undead_Necro_Ancient_Lich.cfg:55
 #: data/units/Undead_Necro_Ancient_Lich.cfg:73
@@ -1390,8 +1308,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:97
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:32
 #: data/tutorial/units/Elder_Mage.cfg:30 data/units/Elvish_Druid.cfg:29
-#: data/units/Elvish_Enchantress.cfg:23 data/units/Elvish_Shaman.cfg:30
-#: data/units/Elvish_Sorceress.cfg:23 data/units/Human_Mage.cfg:55
+#: data/units/Elvish_Enchantress.cfg:25 data/units/Elvish_Shaman.cfg:30
+#: data/units/Elvish_Sorceress.cfg:25 data/units/Human_Mage.cfg:55
 #: data/units/Human_Mage_Arch.cfg:46 data/units/Human_Mage_Great.cfg:35
 #: data/units/Human_Mage_Red.cfg:56 data/units/Human_Mage_Silver.cfg:93
 #: data/units/Human_Mage_White.cfg:64 data/units/Mermaid_Diviner.cfg:42
@@ -1424,8 +1342,8 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:57
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:46
-#: data/units/Elvish_Enchantress.cfg:144 data/units/Elvish_Sorceress.cfg:149
-#: data/units/Elvish_Sylph.cfg:87
+#: data/units/Elvish_Enchantress.cfg:146 data/units/Elvish_Sorceress.cfg:151
+#: data/units/Elvish_Sylph.cfg:89
 msgid "faerie fire"
 msgstr "ignis orealis"
 
@@ -1740,8 +1658,8 @@ msgstr ""
 "metuti ab omnibus."
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:24
-#: data/units/Undead_Corpse_Soulless.cfg:47
-#: data/units/Undead_Corpse_Walking.cfg:46
+#: data/units/Undead_Corpse_Soulless.cfg:49
+#: data/units/Undead_Corpse_Walking.cfg:48
 #: data/units/Undead_Necro_Ancient_Lich.cfg:53
 #: data/units/Undead_Necro_Lich.cfg:35 data/units/Undead_Spirit_Ghost.cfg:30
 msgid "touch"
@@ -1760,7 +1678,6 @@ msgid "female^Arch Mage"
 msgstr "Striga Princeps"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:32
-#: data/units/Human_Mage_Arch.cfg:20
 msgid ""
 "The title of Arch Mage is conferred only after a lifetime of study and "
 "achievement to match. Arch Magi are often employed in positions of "
@@ -1806,7 +1723,6 @@ msgid "female^Great Mage"
 msgstr "Striga Magna"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:33
-#: data/units/Human_Mage_Great.cfg:21
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
 "nearly a legend in their own time, and town criers have forcibly learnt "
@@ -1842,7 +1758,6 @@ msgid "female^Red Mage"
 msgstr "Striga Rubra"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:32
-#: data/units/Human_Mage_Red.cfg:20
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the blue robes of an apprentice, and given the red robes of a master. The "
@@ -1941,7 +1856,6 @@ msgid "Necromancer"
 msgstr "Mortuorum Evocator"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:28
-#: data/units/Undead_Necromancer.cfg:21
 msgid ""
 "One of the greatest circles of what is considered 'black magic' is the art "
 "of necromancy, the terrible ability to awaken the dead with false life. It "
@@ -2134,11 +2048,11 @@ msgstr "Inmortuum"
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 msgstr "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
-#: data/game.cfg:33
+#: data/game.cfg:35
 msgid "Binary Saves"
 msgstr "Servata Binaria"
 
-#: data/game.cfg:40
+#: data/game.cfg:42
 msgid "Show Combat"
 msgstr "Certamina Monstrare"
 
@@ -3690,7 +3604,7 @@ msgstr ""
 #: data/terrain.cfg:200 data/terrain.cfg:220 data/terrain.cfg:230
 #: data/terrain.cfg:240 data/terrain.cfg:250 data/terrain.cfg:260
 #: data/terrain.cfg:270 data/terrain.cfg:280 data/terrain.cfg:290
-#: src/reports.cpp:376
+#: src/reports.cpp:371
 msgid "Village"
 msgstr "Pagus"
 
@@ -4496,6 +4410,159 @@ msgstr "Sub terra"
 msgid "Deep Underground"
 msgstr "Sub terra"
 
+#: data/special-notes.cfg:2
+msgid ""
+" Spirits have very unusual resistances to damage, and move quite slowly over "
+"open water."
+msgstr ""
+
+#: data/special-notes.cfg:5
+msgid ""
+" This unit's holy attack deals tremendous damage to the undead, and even "
+"some to living creatures."
+msgstr ""
+
+#: data/special-notes.cfg:8
+msgid ""
+" This unit is capable of basic healing, though it can only delay the effects "
+"of poison, not cure them entirely."
+msgstr ""
+
+#: data/special-notes.cfg:11
+msgid ""
+" This unit is capable of healing those around it, and curing them of poison."
+msgstr ""
+
+#: data/special-notes.cfg:14
+msgid ""
+" This unit regenerates, which allows it to heal as though always stationed "
+"in a village."
+msgstr ""
+
+#: data/special-notes.cfg:17
+msgid ""
+" The steadiness of this unit reduces damage from some attacks, but only "
+"while defending."
+msgstr ""
+
+#: data/special-notes.cfg:20
+#, fuzzy
+msgid ""
+" The leadership of this unit enables friendly units next to it to deal more "
+"damage in combat, though this only applies to units of lower level."
+msgstr ""
+"Educati cum gladio et scorpione, Centuriones greges parvas militum humanorum "
+"ducunt, Oppugnationes eorum ordinantes.\n"
+"\n"
+"Nota Praecipua: Ob ductu Centurionis oppugnationes unitatum vicinorum "
+"maiorem damnum infligere possunt, sed tantum si sunt ex gradu inferiore."
+
+#: data/special-notes.cfg:23
+msgid ""
+" This unit's skill at skirmishing allows it to ignore enemies' zones of "
+"control and thus move unhindered around them."
+msgstr ""
+
+#: data/special-notes.cfg:26
+msgid " Illumination increases the lighting level in adjacent areas."
+msgstr ""
+
+#: data/special-notes.cfg:29
+msgid ""
+" This unit can teleport between any two villages instantly, though the "
+"player must control both, and the destination village must be unoccupied."
+msgstr ""
+
+#: data/special-notes.cfg:32
+msgid ""
+" In woodlands, this unit's ambush skill renders it invisible to enemies "
+"unless it is immediately adjacent or has revealed itself by attacking."
+msgstr ""
+
+#: data/special-notes.cfg:35
+msgid " This unit is able to hide at night, leaving no trace of its presence."
+msgstr ""
+
+#: data/special-notes.cfg:38
+msgid ""
+" This unit can move unseen in deep water, requiring no air from the surface."
+msgstr ""
+
+#: data/special-notes.cfg:41
+msgid ""
+" Whenever its berserk attack is used, this unit continues to push the attack "
+"until either it or its enemy lies dead."
+msgstr ""
+
+#: data/special-notes.cfg:44
+msgid ""
+"  If someone with the same allegiance distracts an enemy, this unit may "
+"backstab, inflicting double damage, by creeping around behind that enemy."
+msgstr ""
+
+#: data/special-notes.cfg:47
+msgid " Foes who lose their life to the plague will rise again in unlife."
+msgstr ""
+
+#: data/special-notes.cfg:50
+msgid ""
+" This unit is able to slow its enemies, halving their movement speed and "
+"attack damage."
+msgstr ""
+
+#: data/special-notes.cfg:53
+msgid ""
+" The ability to turn the living to stone makes this unit extremely dangerous."
+msgstr ""
+
+#: data/special-notes.cfg:56
+msgid ""
+" This unit's marksmanship gives it a high chance of hitting targeted "
+"enemies, but only on the attack."
+msgstr ""
+
+#: data/special-notes.cfg:59
+msgid ""
+" The ranged attacks of this unit are magical, and always have a high chance "
+"of hitting an opponent."
+msgstr ""
+
+#: data/special-notes.cfg:62
+msgid ""
+" The swarming attacks of this unit become less deadly whenever its members "
+"are wounded."
+msgstr ""
+
+#: data/special-notes.cfg:65
+#, fuzzy
+msgid ""
+" Using a charging attack doubles both damage dealt and received; this does "
+"not affect defensive retaliation."
+msgstr ""
+"\n"
+"\n"
+"Nota Praecipua: Oppugnatio lanceae incurrentis Equitis Ordinis infligit "
+"damnum duplice et fit ut damnum receptum duplice fiet. Hoc non accedit in "
+"ulscicione defensu."
+
+#: data/special-notes.cfg:68
+msgid ""
+" During battle, this unit can drain life from victims to renew its own "
+"health."
+msgstr ""
+
+#: data/special-notes.cfg:71
+msgid ""
+" The length of this unit's weapon allows it to strike first in melee, even "
+"in defense."
+msgstr ""
+
+#: data/special-notes.cfg:74
+msgid ""
+" The victims of this unit's poison will continually take damage until they "
+"can be cured in town or by a unit which cures."
+msgstr ""
+
 #: data/team_colors.cfg:4
 msgid "Red"
 msgstr "Ruber"
@@ -4619,7 +4686,7 @@ msgstr "Facinores"
 msgid "End Turn"
 msgstr "Tractum finire"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2197
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2203
 msgid "HP"
 msgstr "PS"
 
@@ -5363,13 +5430,16 @@ msgstr ""
 msgid "Drake Slasher"
 msgstr "Caeditor Draculorum"
 
-#: data/units/Drake_Slasher.cfg:18
+#: data/units/Drake_Slasher.cfg:20
+#, fuzzy
 msgid ""
 "Slashers are clashers who have chosen to master the use of a Halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
 "weapon of matching scale, large enough to skewer a horse as a man would a "
 "boar. Their training has also enhanced their stamina and defensive skills, "
-"which is a major advantage over their close cousins the Gladiators."
+"which is a major advantage over their close cousins the Gladiators.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Caeditores sunt concursores qui periti sunt bipennis magis quam gladio et "
 "hasta. Magnitudo eorum eis permittit telo magnitudinis paris uti, satis "
@@ -5377,8 +5447,8 @@ msgstr ""
 "auxit peritias defensivas et patientiam, praestantias super consobrinos "
 "Gladiatores."
 
-#: data/units/Drake_Slasher.cfg:74 data/units/Drake_Slasher.cfg:90
-#: data/units/Drake_Warden.cfg:80 data/units/Drake_Warden.cfg:96
+#: data/units/Drake_Slasher.cfg:76 data/units/Drake_Slasher.cfg:92
+#: data/units/Drake_Warden.cfg:82 data/units/Drake_Warden.cfg:98
 #: data/units/Human_Loyalist_Halberdier.cfg:38
 #: data/units/Human_Loyalist_Halberdier.cfg:83
 msgid "halberd"
@@ -5388,12 +5458,15 @@ msgstr "bipennis"
 msgid "Drake Warden"
 msgstr "Praefectus Draculorum"
 
-#: data/units/Drake_Warden.cfg:19
+#: data/units/Drake_Warden.cfg:21
+#, fuzzy
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
 "the most able Slashers. They have forged their might such that few warriors "
 "on this earth would dare stand against them. The Wardens' weapon of choice "
-"is the halberd, which they use to great effect."
+"is the halberd, which they use to great effect.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Praefectus est fastigium ordinis concursorum, excolatus ex Caeditoribus "
 "optimis. Fortitudinem ita fabricati sunt ut pauci milites in terra hac "
@@ -5793,8 +5866,7 @@ msgid ""
 "Their chief ability lies in healing, and it is for this skill that the "
 "elvish druids are revered by their people.\n"
 "\n"
-"Special Notes: A druid's entangling attack slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 "Magica dryadalum silvarum non bene idonea est certaminis, sed tamen valida. "
 "Silvae quas incolunt verbo imperii adcelerari possunt et eos qui pacem "
@@ -5819,19 +5891,21 @@ msgstr "spinae"
 msgid "female^Elvish Enchantress"
 msgstr "Incantatrix Oreadalis"
 
-#: data/units/Elvish_Enchantress.cfg:16
+#: data/units/Elvish_Enchantress.cfg:18
 #, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
-"magically animating roots with which they bind their enemies in place."
+"magically animating roots with which they bind their enemies in place.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Incantatrices Oreadales dominae sunt magicae odiosae, hostes et flatibus "
 "venti gelidi ex plano aetheriali et radicibus magice vivefactis pulsantes; "
 "radicibus hostes in loco adligant."
 
-#: data/units/Elvish_Enchantress.cfg:90 data/units/Elvish_Shaman.cfg:56
-#: data/units/Elvish_Sorceress.cfg:90
+#: data/units/Elvish_Enchantress.cfg:92 data/units/Elvish_Shaman.cfg:56
+#: data/units/Elvish_Sorceress.cfg:92
 msgid "entangle"
 msgstr "impedire"
 
@@ -5871,6 +5945,7 @@ msgid "Elvish Marksman"
 msgstr "Peritus Arcus Dryadales"
 
 #: data/units/Elvish_Marksman.cfg:23
+#, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -5880,8 +5955,7 @@ msgid ""
 "This prodigious skill does come with one cost, that being a lack of practice "
 "with the sword.\n"
 "\n"
-"Special Notes: Their marksmanship gives these elves a high chance of hitting "
-"their enemy, but only on the attack."
+"Special Notes:"
 msgstr ""
 "Una res quae confert ad peritiam dryadalum cum arcu est visus perclarus "
 "eorum. Dryadalis qui arte sagittariorum exercitur scopos ferire potest quos "
@@ -6034,8 +6108,7 @@ msgid ""
 "The healing abilities of the elves are also remarkable, and of capital use "
 "in battle.\n"
 "\n"
-"Special Notes: A shaman's entangling attack slows enemies down, halving "
-"their movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 "Pars naturae dryadalum est nympharum, propter quod facultatem naturalem "
 "magicae habent, quae peragitur in affinitate mundo naturali, quem socium in "
@@ -6053,14 +6126,14 @@ msgid "Elvish Sharpshooter"
 msgstr "Manuballistarius Tectus Dryadalis"
 
 #: data/units/Elvish_Sharpshooter.cfg:22
+#, fuzzy
 msgid ""
 "A story once wandered about, of an elf who stopped an arrow by shooting it "
 "out of the air with one of his own. It is a testament to the skill of the "
 "elves that such a story could be taken seriously. The sharpshooters of the "
 "elves have, quite simply, mastered the art of archery.\n"
 "\n"
-"Special Notes: Their marksmanship gives these elves a high chance of hitting "
-"their enemy, but only on the attack."
+"Special Notes:"
 msgstr ""
 "Fabula est olim dryadalis sagittam comprimit, eam ex aere una propria "
 "iaculans. Testamentum est ad peritiam dryadalum talem fabulam credibilem "
@@ -6087,8 +6160,7 @@ msgid ""
 "these beautiful stewards of the elven forests epitomize the grace and "
 "mystery of their people.\n"
 "\n"
-"Special Notes: A shyde's entangling attack slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 "Devotio ad partem nymphalem eius aliquando mutat virginem dryadalem in "
 "creatura amborum mundorum. Ductae a natura vix comprehensa, hae "
@@ -6099,7 +6171,7 @@ msgstr ""
 "minuit uno numerus oppugnationum in certamine. Hamadyades possunt unitates "
 "vicinas sanare et a veneno curare."
 
-#: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:24
+#: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:26
 msgid "faerie touch"
 msgstr "tactus nymphalis"
 
@@ -6107,14 +6179,16 @@ msgstr "tactus nymphalis"
 msgid "female^Elvish Sorceress"
 msgstr "Striga Oreadalis"
 
-#: data/units/Elvish_Sorceress.cfg:16
+#: data/units/Elvish_Sorceress.cfg:18
 #, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
 "entangling attack is notably more effective than that of the Elvish Shaman, "
 "and they can call upon bursts of chilling ethereal wind to smite those who "
-"oppose them."
+"oppose them.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Strigae Dryadales studium curationis vitant pro artibus magicis plus "
 "ferocibus. Periti sunt in pugna ex procul. Oppugnatio impeditionis insignite "
@@ -6125,17 +6199,20 @@ msgstr ""
 msgid "female^Elvish Sylph"
 msgstr "Hamaoreas"
 
-#: data/units/Elvish_Sylph.cfg:17
+#: data/units/Elvish_Sylph.cfg:19
+#, fuzzy
 msgid ""
 "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
 "developed their faerie side, they transform into creatures of both worlds, "
-"wielding powerful magic against their enemies."
+"wielding powerful magic against their enemies.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Hamaoreades sunt progenies pulchritudinis in planitie mortali. Partem "
 "nymphalem plene evolverunt, se transformantes in creaturas utrius mundi. "
 "Gestant magicam potentem contra hostes."
 
-#: data/units/Elvish_Sylph.cfg:53
+#: data/units/Elvish_Sylph.cfg:55
 msgid "gossamer"
 msgstr "araneum"
 
@@ -6157,9 +6234,7 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts' paws into a most "
 "deadly stroke.\n"
 "\n"
-"Special Notes: anyone struck by a direwolf's claws will be poisoned, and "
-"victims of this poison will continually take damage until they can be cured "
-"in town or by a unit which cures."
+"Special Notes:"
 msgstr ""
 "'Lupi diri' differunt a lupis vulgis tantum in magnitudine et colore. "
 "Altiores sunt quam umerus equi et fames habent par. Tantum insanus eis "
@@ -6175,9 +6250,9 @@ msgstr ""
 "veneni adsidue damnabuntur usque sanantur in pago vel a sanatore."
 
 #: data/units/Goblin_Direwolf_Rider.cfg:39 data/units/Goblin_Knight.cfg:39
-#: data/units/Goblin_Wolf_Rider.cfg:70 data/units/Monster_Cave_Spider.cfg:39
-#: data/units/Monster_Sea_Serpent.cfg:27 data/units/Undead_Bat_Blood.cfg:46
-#: data/units/Undead_Bat_Vampire.cfg:70
+#: data/units/Goblin_Wolf_Rider.cfg:70 data/units/Monster_Cave_Spider.cfg:41
+#: data/units/Monster_Sea_Serpent.cfg:27 data/units/Undead_Bat_Blood.cfg:48
+#: data/units/Undead_Bat_Vampire.cfg:72
 msgid "fangs"
 msgstr "dentes"
 
@@ -6186,14 +6261,14 @@ msgid "Goblin Impaler"
 msgstr "Cobalus Infigens"
 
 #: data/units/Goblin_Impaler.cfg:18
+#, fuzzy
 msgid ""
 "Goblins are used by the orcs as fodder for their enemy's front line. Those "
 "who have somehow managed to survive invariably equip themselves to continue "
 "doing so. A much larger spear helps to compensate for their short reach, and "
 "better armor helps to shield their tiny frames.\n"
 "\n"
-"Special Notes: the length of their weapon allows an impaler to strike first "
-"in melee, even in defense."
+"Special Notes:"
 msgstr ""
 "Cobalis utuntur orci ut pabulum aciei primi inimicorum. Cobali qui supersunt "
 "nescio quomodo semper se armant ut ita pergant. Hasta multo maior eos iuvat "
@@ -6238,8 +6313,7 @@ msgid ""
 "their foes, and also carry nets to wreak havoc against those attempting to "
 "rally a defense or reprisal.\n"
 "\n"
-"Special Notes: being caught in a net slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 "Nonnulli coboli lupos educant ne timeant ignem. In incusionibus hi coboli in "
 "partibus subsidiariis funguntur; cremant domus et agros hostis et retia "
@@ -6386,17 +6460,14 @@ msgstr ""
 "saepe satis est ut per aciem defensivam frangat."
 
 #: data/units/Human_Horse_Grand_Knight.cfg:21
+#: data/units/Human_Horse_Knight.cfg:20 data/units/Human_Horse_Lancer.cfg:21
+#: data/units/Human_Horseman.cfg:20
+#, fuzzy
 msgid ""
 "\n"
 "\n"
-"Special Notes: the Grand Knight's charging lance attack doubles both damage "
-"dealt and received. This does not affect his defensive retaliation."
-msgstr ""
-"\n"
-"\n"
-"Nota Praecipua: Oppugnatio lanceae incurrentis Optimati infligit damnum "
-"duplice et fit ut damnum receptum duplice fiet. Hoc non accedit in "
-"ulscicione defensu."
+"Special Notes:"
+msgstr "Praecipuum"
 
 #: data/units/Human_Horse_Grand_Knight.cfg:63
 #: data/units/Human_Horse_Knight.cfg:62 data/units/Human_Horse_Lancer.cfg:25
@@ -6424,19 +6495,6 @@ msgstr ""
 "quam incurrens. Lanceae tamen adhuc paratae sunt et peritia crecens his cum "
 "telis quoque eis benificium est."
 
-#: data/units/Human_Horse_Knight.cfg:20
-msgid ""
-"\n"
-"\n"
-"Special Notes: the Knight's charging lance attack doubles both damage dealt "
-"and received. This does not affect his defensive retaliation."
-msgstr ""
-"\n"
-"\n"
-"Nota Praecipua: Oppugnatio lanceae incurrentis Equitis Ordinis infligit "
-"damnum duplice et fit ut damnum receptum duplice fiet. Hoc non accedit in "
-"ulscicione defensu."
-
 #: data/units/Human_Horse_Lancer.cfg:3
 msgid "Lancer"
 msgstr "Lanceatus"
@@ -6457,54 +6515,27 @@ msgstr ""
 "qui ex acie errant et per acies defensivas ingrediendo. Usus eorum in "
 "defensu tamen limitatus est."
 
-#: data/units/Human_Horse_Lancer.cfg:21
-msgid ""
-"\n"
-"\n"
-"Special Notes: the Lancer's charging lance attack doubles both damage dealt "
-"and received. This does not affect his defensive retaliation."
-msgstr ""
-"\n"
-"\n"
-"Nota Praecipua: Oppugnatio lanceae incurrentis Lanceati infligit damnum "
-"duplice et fit ut damnum receptum duplice fiet. Hoc non accedit in "
-"ulscicione defensu."
-
 #: data/units/Human_Horse_Paladin.cfg:3
 msgid "Paladin"
 msgstr "Paladinus"
 
-#: data/units/Human_Horse_Paladin.cfg:19
+#: data/units/Human_Horse_Paladin.cfg:21
+#, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to monastic "
 "orders, pledging their might to the cause of righteousness. Though not as "
 "imposing on the battlefield as a Grand Knight, a Paladin is a powerful force "
 "in combat, and their piety grants them other gifts. A Paladin is a bane to "
-"the unworldly, and has trained in ministering to the wounds of his comrades."
+"the unworldly, and has trained in ministering to the wounds of his "
+"comrades.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Equites ordines virtutis maximi Paladinis se iuraverunt in ordines "
 "monasticos et fortitudine tantum in causa iustitiae utuntur. Quamquam minus "
 "magnificus est in campo proelii quam optimatus, Paladinus vis potens est in "
 "certamine et pietas eius ei dona alia praebet. Perniciosus est inmortuis et "
 "didicit mederi vulnera sociorum."
-
-#: data/units/Human_Horse_Paladin.cfg:21
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"Special Notes: the Paladin's charging lance attack doubles both damage dealt "
-"and received. This does not affect his defensive retaliation. The Paladin's "
-"holy attack with his sword deals tremendous damage to the undead, and even "
-"some to living creatures."
-msgstr ""
-"\n"
-"\n"
-"Nota Praecipua: Oppugnatio lanceae incurrentis Paladini infligit damnum "
-"duplice et fit ut damnum receptum duplice fiet. Hoc non accedit in "
-"ulscicione defensu. Oppugnatio sancta damnum permagnum infligit in inmortuis "
-"et nonnullum in viventibus. Possunt mederi, sed effectus veneni tantum "
-"demorari possunt."
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:91
 #: data/units/Human_Mage_of_Light.cfg:71 data/units/Mermaid_Diviner.cfg:58
@@ -6532,19 +6563,6 @@ msgstr ""
 "monstravit. Equites praestant plurimis peditibus, praesertim si non sunt in "
 "acie, sed debent cautiores esse ante hastatos et sagittarios, quia magnitudo "
 "et impetus scopos suaves eis praebent."
-
-#: data/units/Human_Horseman.cfg:20
-msgid ""
-"\n"
-"\n"
-"Special Notes: the Horseman's only attack is a charge, which doubles both "
-"damage dealt and received. This does not affect his defensive retaliation."
-msgstr ""
-"\n"
-"\n"
-"Nota Praecipua: Oppugnatio lanceae incurrentis Equitis infligit damnum "
-"duplice et fit ut damnum receptum duplice fiet. Hoc non accedit in "
-"ulscicione defensu."
 
 #: data/units/Human_Loyalist_Bowman.cfg:3
 msgid "Bowman"
@@ -6754,6 +6772,7 @@ msgid "Halberdier"
 msgstr "Bipennatus"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:24
+#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -6768,8 +6787,7 @@ msgid ""
 "customary only to grant these weapons to veteran pikemen, who have proven "
 "that they have the skill to employ them properly on the field of war.\n"
 "\n"
-"Special Notes: the length of their weapon allows a halberdier to strike "
-"first in melee, even in defense."
+"Special Notes:"
 msgstr ""
 "Bipennis telum difficile et valde grave est, sed potens est in manibus "
 "periti. Atque flexibilior est quam hasta ex qua descendit. Sicut scit omnis "
@@ -6841,6 +6859,7 @@ msgid "Javelineer"
 msgstr "Pilatus"
 
 #: data/units/Human_Loyalist_Javelineer.cfg:19
+#, fuzzy
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
 "not kill, enemies at range. Some, however, take to them rather well, finding "
@@ -6850,8 +6869,7 @@ msgid ""
 "from a distance, often without retribution, and still hold their ground in "
 "melee.\n"
 "\n"
-"Special Notes: the length of their weapon allows a javelineer to strike "
-"first in melee, even in defense."
+"Special Notes:"
 msgstr ""
 "Hastati quasi semper nonnullas pilas quibus hostes a procul vexant, si non "
 "occidunt. Nonnulli tamen ingenium naturale cum eis habent. Hi pilati "
@@ -6960,6 +6978,7 @@ msgid "Pikeman"
 msgstr "Dolatus"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:19
+#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -6968,8 +6987,7 @@ msgid ""
 "of pikemen is the bane of any cavalry charge, and with proper discipline and "
 "tactics, pikemen can also hold most infantry at bay.\n"
 "\n"
-"Special Notes: the length of their weapon allows a pikeman to strike first "
-"in melee, even in defense."
+"Special Notes:"
 msgstr ""
 "Hastati bonae spei in exercitibus Occidiseptentrionis saepe promoventur ad "
 "dolatos, gerentes arma multo superiora quam armatura quae reciperunt cum "
@@ -7050,6 +7068,7 @@ msgid "Spearman"
 msgstr "Hastatus"
 
 #: data/units/Human_Loyalist_Spearman.cfg:19
+#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a head, "
@@ -7057,8 +7076,7 @@ msgid ""
 "shield and a few javelins, spearmen are the staple of most armies, often "
 "thrown into the front lines with only basic training.\n"
 "\n"
-"Special Notes: the length of their weapon allows a spearman to strike first "
-"in melee, even in defense."
+"Special Notes:"
 msgstr ""
 "Gladii sunt luxuria cara pro multis, et coloni eos vix emere possunt. Sed "
 "hastae faciliores sunt factu, et etiam sine capite geri possunt, quamquam "
@@ -7093,6 +7111,7 @@ msgid "Mage"
 msgstr "Magus"
 
 #: data/units/Human_Mage.cfg:22
+#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -7112,8 +7131,7 @@ msgid ""
 "Physically frail, and lacking familiarity with combat, magi do possess "
 "certain arts which are of great utility in battle.\n"
 "\n"
-"Special Notes: the ranged attack of a mage is magical, and always has a high "
-"chance of hitting an opponent."
+"Special Notes:"
 msgstr ""
 "Saepe homines machinationes mundi in quo vivunt secum reputaverunt. Nonnulli "
 "id ultra meditationes inanes ferre conantur, id fit inceptum primum vitarum "
@@ -7142,13 +7160,107 @@ msgstr "Striga"
 msgid "Arch Mage"
 msgstr "Magus Princeps"
 
+#: data/units/Human_Mage_Arch.cfg:20
+#, fuzzy
+msgid ""
+"The title of Arch Mage is conferred only after a lifetime of study and "
+"achievement to match. Arch Magi are often employed in positions of "
+"education, or as advisors to those wise enough to seek the fruits of their "
+"wisdom. Many tend to wealthy patrons, a profitable enterprise for both as, "
+"outside of the occasional task or word of advice, it gives the mage leave to "
+"pursue their research undisturbed. Certain others shun civilization, "
+"spending their days as hermits, often to study something which most would "
+"tend to frown upon.\n"
+"\n"
+"Though not trained for any sort of combat, if need arises an Arch Mage can "
+"unleash the full power of their art, something which is not to be taken "
+"lightly.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Titulus Magi Principis tribuitur tantum post vitam studii et rerum gestarum. "
+"Fere exercentur Magi Principes ut magistri aut consilarii eorum qui satis "
+"sapientes sunt ut sapientiam magorum quaerant. Plures exercentur a patronis "
+"divitibus, quod fructuosum est ambobus, quia post facta fortituita aut verba "
+"consilii, magus liber est ad investigationes proprias. Alii excultam vitam "
+"hominum vitant, dies ut solitarii consumens, fere studiens aliquam rem cui "
+"plerique non adsentiantur.\n"
+"\n"
+"Etsi non experimenta sunt in certamini, si necesse est, Magus Princeps totam "
+"potestatem artis sui expedire potest, quod non minori aestimari debet.\n"
+"\n"
+"Nota Praecipua: magi principis globi ignis magicales sunt et semper "
+"probabilitatem bonam habent feriendi."
+
 #: data/units/Human_Mage_Great.cfg:3
 msgid "Great Mage"
 msgstr "Magus Magnus"
 
+#: data/units/Human_Mage_Great.cfg:21
+#, fuzzy
+msgid ""
+"Any person who is even considered for the title of Great Mage is quite "
+"nearly a legend in their own time, and town criers have forcibly learnt "
+"discretion in applying the title. Merit for the title is carefully "
+"considered by a council of the leading magi of the age, and the conferment "
+"of the title is given only by a majority vote. Regardless, anyone who is "
+"seriously nominated for the honor of being called a Great Mage is, without "
+"question, a master of their art, and has surpassed almost any of their peers "
+"in skill.\n"
+"\n"
+"Though they are not warriors, by any means, the application of their art to "
+"combat is something that often causes other soldiers to stand aside in awe.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Qui consideratur dignus esse titulo Magi Magni quasi legenda est in tempore "
+"proprio, et praecones in vicis didiscunt vi titulum cum discretione "
+"applicare. Consilium magorum maiorum aetatis deliberat qui titulum capere "
+"debat, et in discessione maior pars necesse est. Immemor huius, qui serie "
+"consideratur dignus huic honori sine dubio dominus artis est prae quasi "
+"omnibus paribus.\n"
+"\n"
+"Etsi bellatores omnino non sunt, applicatio artis ad proelium saepe infundit "
+"reverentiam in aliis militibus.\n"
+"\n"
+"Nota Praecipua: magi magni globi ignis magicales sunt et semper "
+"probabilitatem bonam habent feriendi."
+
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
 msgstr "Magus Ruber"
+
+#: data/units/Human_Mage_Red.cfg:20
+#, fuzzy
+msgid ""
+"Upon the successful termination of their apprenticeship, a mage is stripped "
+"of the blue robes of an apprentice, and given the red robes of a master. The "
+"significance of this change is often lost on the peasantry, who mistakenly "
+"title Master Magi as 'Red Magi'. Likewise, the symbolism of the change in "
+"colors is often mistaken to signify the mage's ability to seemingly conjure "
+"fire from nothing but thin air, a trick which, although undeniably useful, "
+"is viewed as a crass application of the knowledge which they have "
+"painstakingly accrued.\n"
+"\n"
+"Though physically frail, and untrained as warriors, the 'Red Magi' have a "
+"number of tricks up their sleeves, including the gouts of fire which may "
+"have cemented their colloquial name.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Cum tirocinium prospere terminet, magus nudatur ex vestibus caeruleis "
+"tironis et recipit vestes rubros magistri. Coloni saepe male significant "
+"hanc mutationem, et mendose appellant magistros 'Magos Rubros'. Atque "
+"mendosa est opinio qui dixit colorem vestum ex facultate elicendi ignem ex "
+"aere determinatum esse. Haec praestigiae utiles sunt, sed a magis putantur "
+"intentio crassa scientiae diligenter redundatae.\n"
+"\n"
+"Fragiles formae et indocti in rationibus belli, 'Magi Rubri' multas "
+"praestigias habent in manicis, e.g. globi ignis qui nomen vulgus eorum "
+"coagmentaverunt.\n"
+"\n"
+"Nota Praecipua: magi rubri globi ignis magicales sunt et semper "
+"probabilitatem bonam habent feriendi."
 
 #: data/units/Human_Mage_Silver.cfg:3
 msgid "Silver Mage"
@@ -7177,9 +7289,8 @@ msgid ""
 "skills are of undeniable use on the battlefield, if one can manage to coerce "
 "the mage into applying them.\n"
 "\n"
-"Special Notes: the ranged attack of a silver mage is magical, and always has "
-"a high chance of hitting an opponent. Silver Magi are well-attuned to their "
-"magical natures and are highly resistant to non-physical damage."
+"Special Notes: Silver Magi are well-attuned to their magical natures and are "
+"highly resistant to non-physical damage."
 msgstr ""
 "Viae variae studii magorum ad fines insignite diversos ducunt. Magi argentei "
 "vim studiant qui realitatem ligat, et aliquantum intelligunt de mysteriis "
@@ -7221,9 +7332,7 @@ msgid ""
 "potent ally. If need arises, they can call on the power of the Light to "
 "banish the unworldly from the mortal plane.\n"
 "\n"
-"Special Notes: the light cast by a white mage is magical in nature, and "
-"always has a high chance of hitting an opponent. This light does tremendous "
-"damage to the undead, and can even damage living creatures."
+"Special Notes:"
 msgstr ""
 "Alcuni magi, discentes de mundo circa se et videntes dolores et sordes in "
 "quibus homines nimis saepe vivunt, non possunt vitam ad studium in academiis "
@@ -7264,9 +7373,7 @@ msgid ""
 "tirelessly to bring life and order to the troubled world in which they "
 "live.\n"
 "\n"
-"Special Notes: the light cast by a mage of light is magical in nature, and "
-"always has a high chance of hitting an opponent. This light does tremendous "
-"damage to the undead, and even does some to living creatures."
+"Special Notes:"
 msgstr ""
 "Post annos experientiae piissimi magi albi potestates animi vastas "
 "accipiunt. Studio severo in via lucis auxilium eius petere possunt ut umbras "
@@ -7315,6 +7422,7 @@ msgid "Assassin"
 msgstr "Sicarius"
 
 #: data/units/Human_Outlaw_Assassin.cfg:20
+#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -7323,10 +7431,7 @@ msgid ""
 "back. Deadly at night, these assassins are somewhat uncomfortable fighting "
 "under the open sun.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the assassin "
-"distracts an enemy, the assassin may backstab, inflicting double damage, by "
-"creeping around behind that enemy. Their throwing knives are also poisoned, "
-"which will continually sap away an enemy's strength."
+"Special Notes:"
 msgstr ""
 "Fures maximi nonnumquam negotium habent multo plus quam bona victimae "
 "rapere. Periti certaminis cum sica et insolite leves pede, hi minaces "
@@ -7410,6 +7515,7 @@ msgid "Rogue"
 msgstr "Veterator"
 
 #: data/units/Human_Outlaw_Rogue.cfg:18
+#, fuzzy
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
 "rogues have spent many an unpleasant moment darting through crowds and "
@@ -7418,9 +7524,7 @@ msgid ""
 "reliable accuracy, and their long hours of prowling around at night leave "
 "them more comfortable fighting in the dark.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the rogue distracts "
-"an enemy, the rogue may backstab, inflicting double damage, by creeping "
-"around behind that enemy."
+"Special Notes:"
 msgstr ""
 "Capita circuli ullius furum statutem eorum sollertia meruunt. Hi veteratores "
 "multos momentos ingratos consumerunt emicantes per turbas et evadentes illos "
@@ -7441,6 +7545,7 @@ msgid "Thief"
 msgstr "Fur"
 
 #: data/units/Human_Outlaw_Thief.cfg:18
+#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -7450,9 +7555,7 @@ msgid ""
 "their feet, and good with knives. They happily employ less-than-honorable "
 "tactics in combat, seeing little purpose in a 'fair fight'.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the thief distracts "
-"an enemy, the thief may backstab, inflicting double damage, by creeping "
-"around behind that enemy."
+"Special Notes:"
 msgstr ""
 "Post hominum memoriam, socii 'collegiorum' diversorum captorum murum quae in "
 "omni urbe satis magna exoriuntur morem peculariam habebant: Capillum "
@@ -7532,9 +7635,7 @@ msgid ""
 "their people. Though little is told about it, it is clear that it was the "
 "power of the light which somehow defeated it, and made their people safe.\n"
 "\n"
-"Special Notes: the light cast by a diviner is magical in nature, and always "
-"has a high chance of hitting an opponent. This light does tremendous damage "
-"to the undead, and even does some to living creatures."
+"Special Notes:"
 msgstr ""
 "Sacerdotes Nereiae vocationem earum sequuntur fervore qui pares humanos "
 "nonnihil deprehensos reliquit. Fortasse radices eius sunt in legenda de "
@@ -7553,6 +7654,7 @@ msgid "female^Mermaid Enchantress"
 msgstr "Incantatrix Nereia"
 
 #: data/units/Mermaid_Enchantress.cfg:20
+#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different. Those who master this ability are held in "
@@ -7561,8 +7663,7 @@ msgid ""
 "forbidden against their own race - this power is the greater part of what "
 "protects their people from the monsters that wander out of the abyss.\n"
 "\n"
-"Special Notes: The blasts of water conjured by mermaids are magical in "
-"nature, and always have a high chance of hitting their opponents."
+"Special Notes:"
 msgstr ""
 "Nereiae, ut dryadales, facultatem potentem et nativam magicae possidunt, sed "
 "satis differt a facultate dryadalum. Qui facultatis huius dominatur gratia "
@@ -7584,6 +7685,7 @@ msgid "female^Mermaid Initiate"
 msgstr "Initiata Nereia"
 
 #: data/units/Mermaid_Initiate.cfg:22
+#, fuzzy
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -7592,8 +7694,7 @@ msgid ""
 "Despite their frailty, this makes them quite formidable in combat, as they "
 "can call upon the very water about them to smite their enemies.\n"
 "\n"
-"Special Notes: the blasts of water conjured by mermaids are magical in "
-"nature, and always have a high chance of hitting their opponents."
+"Special Notes:"
 msgstr ""
 "Nereiae juvenes saepe in magicas aquae populo earum nativas initiantur. "
 "Facultates mirabiles quae praebent singulares sunt inter stirpes et "
@@ -7620,9 +7721,7 @@ msgid ""
 "with humanity. Their diligence and piety also grant them certain spiritual "
 "powers, allowing them to guard their people against the unworldly.\n"
 "\n"
-"Special Notes: the light cast by a priestess is magical in nature, and "
-"always has a high chance of hitting an opponent. This light does tremendous "
-"damage to the undead, and even does some to living creatures."
+"Special Notes:"
 msgstr ""
 "Nereii fidem compartant quem plurimi homines sequuntur, sed ex cultura, sunt "
 "nereae quae eum servant, nam ingeniosiores sunt. Eae constituerunt pacem et "
@@ -7683,8 +7782,7 @@ msgid ""
 "and makes their race a threat even to enemies who merely approach the "
 "water.\n"
 "\n"
-"Special Notes: being caught in a net slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 "Retia pondis ornata quibus nereii in bello pugnantur telum difficile est "
 "usu; qui artis dominantur diligitur et colitur a sociis. Hoc telum spondet "
@@ -7779,8 +7877,7 @@ msgid ""
 "to level the playing field against troops on land, who would otherwise be at "
 "a great advantage.\n"
 "\n"
-"Special Notes: being caught in a net slows enemies down, halving their "
-"movement speed and attack damage."
+"Special Notes:"
 msgstr ""
 "Piscatus, ut a nereiis exercitatur, constat ex persecutione circuli piscium "
 "in retia expectantia. Etsi haec non multum damnum in se faciunt, nereii eis "
@@ -7842,17 +7939,20 @@ msgstr ""
 msgid "Giant Spider"
 msgstr "Aranea Ingens"
 
-#: data/units/Monster_Cave_Spider.cfg:16
+#: data/units/Monster_Cave_Spider.cfg:18
+#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They can bite at close range, thereby poisoning their enemies, and also can "
-"attack with a web at long range, slowing their foes down."
+"attack with a web at long range, slowing their foes down.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Araneae Ingentes vagari in profundis Knalgae dicuntur, vorantes victimas "
 "multas. Possunt mordere prope invenenantes hostes et araneo ex procul "
 "oppugnare lentifacientes eos."
 
-#: data/units/Monster_Cave_Spider.cfg:78
+#: data/units/Monster_Cave_Spider.cfg:80
 msgid "web"
 msgstr "araneum"
 
@@ -7860,22 +7960,25 @@ msgstr "araneum"
 msgid "Cuttle Fish"
 msgstr "Sepia"
 
-#: data/units/Monster_Cuttle_Fish.cfg:16
+#: data/units/Monster_Cuttle_Fish.cfg:18
+#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
 "distance. The best way to survive an encounter with these monsters is to "
-"remain ashore."
+"remain ashore.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Sepiae bestiae ingentes maris sunt. Possunt praedas brachiis fortibus "
 "adripere aut atramentum venenosum ex procul spuere. Via optima superandi "
 "occursum beluarum harum est in terra remanere."
 
-#: data/units/Monster_Cuttle_Fish.cfg:39 data/units/Monster_Tentacle.cfg:64
+#: data/units/Monster_Cuttle_Fish.cfg:41 data/units/Monster_Tentacle.cfg:64
 msgid "tentacle"
 msgstr "bracchium"
 
-#: data/units/Monster_Cuttle_Fish.cfg:88
+#: data/units/Monster_Cuttle_Fish.cfg:90
 msgid "ink"
 msgstr "atramentum"
 
@@ -7908,19 +8011,22 @@ msgstr "globus luti"
 msgid "Giant Scorpion"
 msgstr "Nepa Ingens"
 
-#: data/units/Monster_Giant_Scorpion.cfg:17
+#: data/units/Monster_Giant_Scorpion.cfg:19
+#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
-"explanation."
+"explanation.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Scorpio vulgaris satis est periculosa - scorpio cum magnitudine hominis non "
 "meret explicationem."
 
-#: data/units/Monster_Giant_Scorpion.cfg:28
+#: data/units/Monster_Giant_Scorpion.cfg:30
 msgid "sting"
 msgstr "aculeus"
 
-#: data/units/Monster_Giant_Scorpion.cfg:57
+#: data/units/Monster_Giant_Scorpion.cfg:59
 msgid "pincers"
 msgstr "forceps"
 
@@ -8118,9 +8224,7 @@ msgid ""
 "rarely the ones who deal the killing blow, their tactics are a considerable "
 "aid to their larger and more brutal kin.\n"
 "\n"
-"Special Notes: Orcish Assassins use poison on their throwing knives, and "
-"victims of this poison will continually take damage until they can be cured "
-"in town or by a healer."
+"Special Notes:"
 msgstr ""
 "Etsi nonnulli usum veneni ignavum esse putant, orci favent veneno ut telo, "
 "praesertim debiliorum formae. Sicarii orcorum, qui eo in cultris iactis "
@@ -8228,9 +8332,7 @@ msgid ""
 "forgoing armor. Their weapon of choice, poison, is a vicious tool, and its "
 "common use on the battlefield is often the real cause of orcish supremacy.\n"
 "\n"
-"Special Notes: Orcish Slayers use poison on their throwing knives, and "
-"victims of this poison will continually take damage until they can be cured "
-"in town or by a unit which cures."
+"Special Notes:"
 msgstr ""
 "Maiores et peritiores sicarii orcorum ab inimicis 'Interfectores' "
 "nominantur, quamquam distinctio nonnihil inclara est. Interfectores rapidi "
@@ -8572,13 +8674,15 @@ msgstr ""
 msgid "Blood Bat"
 msgstr "Vespertilio Sanguinis"
 
-#: data/units/Undead_Bat_Blood.cfg:16
+#: data/units/Undead_Bat_Blood.cfg:18
 #, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
 "the fur of these undead flying beasts is tainted red with the blood of their "
-"victims."
+"victims.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Vespertiliones Sanguinis celeres sunt et sanguinem ex eis quos oppugnant "
 "exhaurire possunt, ea re se medentur, et si fortiores fiunt quam in initio "
@@ -8589,11 +8693,14 @@ msgstr ""
 msgid "Vampire Bat"
 msgstr "Vespertilio Vampiricus"
 
-#: data/units/Undead_Bat_Vampire.cfg:15
+#: data/units/Undead_Bat_Vampire.cfg:17
+#, fuzzy
 msgid ""
 "Vampire Bats are undead flying beasts that attack by biting their victims. "
 "While their fangs are not very powerful, the health of victims is drained "
-"away along with their blood, and given to the Bats."
+"away along with their blood, and given to the Bats.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Vespertiliones Vampirici sunt bestiae volantes immortuae qui mordentes "
 "victimas oppugnant. Etsi dentes non potentes sunt, iis salutem victimarum "
@@ -8616,9 +8723,7 @@ msgid ""
 "It is because of such things that necromancy is condemned with an almost "
 "primal hatred.\n"
 "\n"
-"Special Notes: A ghoul's claws are covered in poison, and victims of this "
-"poison will continually take damage until they can be cured in town or by a "
-"unit which cures."
+"Special Notes:"
 msgstr ""
 "Tantum exercentes necromantium periti sciunt quomodo homo in pallidum "
 "transformandus sit, et secretum non dicendum est. Quosquos ritus infandos "
@@ -8643,9 +8748,7 @@ msgid ""
 "of their victims, they simply shrug off all damage sustained as if they had "
 "been freshly summoned, to begin their search for flesh again.\n"
 "\n"
-"Special Notes: A Necrophage's claws are covered in poison, and victims of "
-"this poison will continually take damage until they can be cured in town or "
-"by a unit which cures."
+"Special Notes:"
 msgstr ""
 "Voraces facti ab fame insancto carnis mortui Necrophagi cibum expectatum "
 "oppugnant ferocitate ut bestiae. Cum satiantur a carne victimarum, omnis "
@@ -8658,10 +8761,13 @@ msgstr ""
 msgid "Soulless"
 msgstr "Carens Anima"
 
-#: data/units/Undead_Corpse_Soulless.cfg:17
+#: data/units/Undead_Corpse_Soulless.cfg:19
+#, fuzzy
 msgid ""
 "These animated walking corpses have become strong from long experience "
-"fighting the living."
+"fighting the living.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Haec cadaveres animata ambulanita facta sunt fortia ab experientia longa in "
 "proelio contra vivos."
@@ -8670,11 +8776,14 @@ msgstr ""
 msgid "Walking Corpse"
 msgstr "Cadaver Ambulans"
 
-#: data/units/Undead_Corpse_Walking.cfg:16
+#: data/units/Undead_Corpse_Walking.cfg:18
+#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Although weak in combat, these zombies can spread their curse to those they "
-"kill, increasing the army of undead."
+"kill, increasing the army of undead.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 "Cadavera Ambulantia corpora sunt mortuorum, reanimata a magica tenebrosa. "
 "Etsi debiles sunt in proelio, hi immortui maledictionem suam ad interfectos "
@@ -8685,14 +8794,13 @@ msgid "Ancient Lich"
 msgstr "Ossa Magi Vetusta"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:21
+#, fuzzy
 msgid ""
 "A being of this order is a herald of the age long past. Anyone who "
 "encounters an Ancient Lich likely has far worse things to worry about than "
 "death.\n"
 "\n"
-"Special Notes: The ranged attacks of a lich are magical, and always have a "
-"high chance of hitting an opponent. The touch of a lich drains the victim's "
-"life to renew the lich."
+"Special Notes:"
 msgstr ""
 "Animatio huius ordinis est nuntius temporis antiqui. Qui Ossibus Magi "
 "Vetustis obviam it sane peiora temet quam mortem.\n"
@@ -8706,6 +8814,7 @@ msgid "Dark Adept"
 msgstr "Peritus Obscurus"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:21
+#, fuzzy
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -8718,8 +8827,7 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning.\n"
 "\n"
-"Special Notes: The attacks of a dark adept are magical, and always have a "
-"high chance of hitting an opponent."
+"Special Notes:"
 msgstr ""
 "Si discipuli ab ea attrahuntur, esca magicae nigrae debet esse premium satis "
 "magnum, quia ei qui exercet eam in terris excolitis supplicium capitale "
@@ -8758,8 +8866,7 @@ msgid ""
 "hungry will attempt to completely conquer death through the transformation "
 "to lichdom and attainment of a dreadful immortality.\n"
 "\n"
-"Special Notes: The ranged attacks of a Dark Sorcerer are magical, and always "
-"have a high chance of hitting an opponent."
+"Special Notes:"
 msgstr ""
 
 #: data/units/Undead_Necro_Lich.cfg:3
@@ -8767,6 +8874,7 @@ msgid "Lich"
 msgstr "Ossa Magi"
 
 #: data/units/Undead_Necro_Lich.cfg:20
+#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -8778,9 +8886,7 @@ msgid ""
 "life is prolonged indefinitely or simply extended. But to even consider such "
 "a thing bears tribute to the magnitude of what they have already achieved.\n"
 "\n"
-"Special Notes: The ranged attacks of a lich are magical, and always have a "
-"high chance of hitting an opponent. The touch of a lich drains the victim's "
-"life to renew the lich."
+"Special Notes:"
 msgstr ""
 "Repraesentatio physica finis magicae nigrae est Ossa Magi: investigatio "
 "immortalitatis. Quamquam multa sacrificantur in resurrectione, fiens ossa "
@@ -8794,6 +8900,22 @@ msgstr ""
 "Nota Praecipua: Ossium Magi oppugnationes a longe magicales sunt et semper "
 "probabilitatem bonam habent feriendi. Tactus Ossium Magi vitam victimae "
 "exhaurit et ossa renovat."
+
+#: data/units/Undead_Necromancer.cfg:21
+msgid ""
+"One of the greatest circles of what is considered 'black magic' is the art "
+"of necromancy, the terrible ability to awaken the dead with false life. It "
+"was a discovery that had terrible ramifications and caused humanity's "
+"condemnation of black magic, for it has given fear a vast new arsenal.\n"
+"\n"
+"This ability, in all aspects, is the first step towards cheating death of "
+"its ultimate prize. It is the highest degree of power a dark mage can attain "
+"without losing grip on humanity itself, but pales to the lethal power "
+"wielded by Liches. Their mortal bodies are also made sturdier by their "
+"magic, in contrast to the frail decayed form of a Lich.\n"
+"\n"
+"Special Notes:"
+msgstr ""
 
 #: data/units/Undead_Necromancer.cfg:32
 #, fuzzy
@@ -8985,8 +9107,7 @@ msgid ""
 "unfailing servant, which can be bound to whatever task their master sees "
 "fit.\n"
 "\n"
-"Special Notes: Ghosts have very unusual resistances to damage, and move "
-"quite slowly over open water."
+"Special Notes:"
 msgstr ""
 "Una ex misericoridiis maximis creatoris est anima humana immutabilis et "
 "indestructibilis. Res multae quas faciunt necromantium exercentes tamen "
@@ -9017,10 +9138,7 @@ msgid ""
 "living, and those who live to speak of them had no leisure to study their "
 "foe.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the nightgaunt "
-"distracts an enemy, the nightgaunt may strike at the opponent's back, "
-"inflicting double damage. Nightgaunts have very unusual resistances to "
-"damage, and move quite slowly over open water."
+"Special Notes:"
 msgstr ""
 "Nescitur cur hae creaturae personatae sint, et nemo vultum a persona opertum "
 "vidit et vixit. Hae formae terribiles rare a viventis videntur, et qui "
@@ -9045,10 +9163,7 @@ msgid ""
 "\n"
 "That is a question which is easily answered by a necromancer.\n"
 "\n"
-"Special Notes: while a unit with the same allegiance as the shadow distracts "
-"an enemy, the shadow may strike at the opponent's back, inflicting double "
-"damage. Shadows have very unusual resistances to damage, and move quite "
-"slowly over open water."
+"Special Notes:"
 msgstr ""
 "Cum facta est lux in mundo et forma data ignotis, pavor coactus est in "
 "tenebras. Usque ab hac die, umbrae mundi terrorem hominibus continent, etsi "
@@ -9067,6 +9182,7 @@ msgid "Spectre"
 msgstr "Spectrum"
 
 #: data/units/Undead_Spirit_Spectre.cfg:20
+#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "master's power. These abominations are a rightful terror to the living, and "
@@ -9076,9 +9192,7 @@ msgid ""
 "is that it is likely only the harbinger of a much more dangerous force that "
 "will follow in its wake.\n"
 "\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the spectre. Spectres have very unusual resistances to damage, and "
-"move quite slowly over open water."
+"Special Notes:"
 msgstr ""
 "Nonnumquam nominantur 'homines vacuuos' spectra sunt bracchium dextrum "
 "dominorum suorum. Haec nefas terrorem rectum sunt viventibus et sine somnio "
@@ -9102,6 +9216,7 @@ msgid "Wraith"
 msgstr "Idolon"
 
 #: data/units/Undead_Spirit_Wraith.cfg:19
+#, fuzzy
 msgid ""
 "These tortured forms of what were once warriors are among the most "
 "terrifying things a necromancer can create, for a sword will cleave right "
@@ -9113,9 +9228,7 @@ msgid ""
 "creatures could renew themselves through the very thing which threatened "
 "them.\n"
 "\n"
-"Special Notes: a strike from their blade will drain life from the victim, to "
-"renew the wraith. Wraiths have very unusual resistances to damage, and move "
-"quite slowly over open water."
+"Special Notes:"
 msgstr ""
 "Formae hae cruciatae quae olim erant bellatores sunt inter formidolosissima "
 "quae evocator mortuorum facere potest, quia gladius discindet per eas ut per "
@@ -10021,7 +10134,7 @@ msgstr "Damnum Passum (Exsp)"
 msgid "Statistics"
 msgstr "Census"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2228
+#: src/menu_events.cpp:220 src/unit.cpp:2234
 msgid "Moves"
 msgstr "Puncta motus"
 
@@ -10179,35 +10292,73 @@ msgstr "Titulus: "
 msgid "Search"
 msgstr "Investigatio"
 
-#: src/menu_events.cpp:1387
+#: src/menu_events.cpp:1394
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Titulus aut unitas qui litteras '$search' continet non invenitur."
 
-#: src/menu_events.cpp:1496
+#: src/menu_events.cpp:1503
 msgid "prompt^Command:"
 msgstr "Imperium:"
 
-#: src/mouse_events.cpp:112
+#: src/mouse_events.cpp:224 src/mouse_events.cpp:339 src/mouse_events.cpp:723
 msgid "Attacker"
 msgstr "Oppugnans"
 
-#: src/mouse_events.cpp:114
+#: src/mouse_events.cpp:225 src/mouse_events.cpp:338 src/mouse_events.cpp:725
 msgid "Defender"
 msgstr "Defensor"
 
-#: src/mouse_events.cpp:134 src/mouse_events.cpp:712
+#: src/mouse_events.cpp:243
+msgid "Expected Battle Result (hp)"
+msgstr ""
+
+#: src/mouse_events.cpp:327
+#, fuzzy
+msgid "Leadership"
+msgstr "ductus"
+
+#: src/mouse_events.cpp:340
+#, fuzzy
+msgid " resistance vs "
+msgstr "Repugnantiae"
+
+#: src/mouse_events.cpp:341
+#, fuzzy
+msgid " vulnerability vs "
+msgstr "nuditas oppugnantis versus"
+
+#: src/mouse_events.cpp:351
+#, fuzzy
+msgid "Slowed"
+msgstr "lentifactus"
+
+#: src/mouse_events.cpp:367
+#, fuzzy
+msgid "Total damage"
+msgstr "damnum totale"
+
+#: src/mouse_events.cpp:374
+#, fuzzy
+msgid "No usable weapon"
+msgstr "Telum eligere: "
+
+#: src/mouse_events.cpp:379
+msgid "Chance of being unscathed"
+msgstr ""
+
+#: src/mouse_events.cpp:677 src/mouse_events.cpp:745 src/mouse_events.cpp:1327
 msgid "Damage Calculations"
 msgstr "Rationes Damni"
 
-#: src/mouse_events.cpp:690 src/reports.cpp:278
+#: src/mouse_events.cpp:1305 src/reports.cpp:278
 msgid "vs"
 msgstr "contra"
 
-#: src/mouse_events.cpp:724
+#: src/mouse_events.cpp:1339
 msgid "Attack Enemy"
 msgstr "Hostem Oppugnare"
 
-#: src/mouse_events.cpp:725
+#: src/mouse_events.cpp:1340
 msgid "Choose weapon:"
 msgstr "Telum eligere: "
 
@@ -10264,12 +10415,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2283
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2289
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2290
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2296
 msgid ")"
 msgstr ")"
 
@@ -10757,19 +10908,19 @@ msgstr "Filii crepusculi: "
 msgid "Chaotic units: "
 msgstr "Filii tenebrarum: "
 
-#: src/reports.cpp:378
+#: src/reports.cpp:373
 msgid "Owned village"
 msgstr "Pagus proprius"
 
-#: src/reports.cpp:380
+#: src/reports.cpp:375
 msgid "Enemy village"
 msgstr "Pagus inimicus"
 
-#: src/reports.cpp:382
+#: src/reports.cpp:377
 msgid "Allied village"
 msgstr "Pagus socius"
 
-#: src/reports.cpp:456
+#: src/reports.cpp:451
 msgid "Observers:"
 msgstr "Spectatores: "
 
@@ -10920,15 +11071,15 @@ msgstr "Auxilium"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Liber Occidiseptentrionis"
 
-#: src/unit.cpp:2163 src/unit.cpp:2288
+#: src/unit.cpp:2169 src/unit.cpp:2294
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2245
+#: src/unit.cpp:2251
 msgid "XP to advance"
 msgstr "PE ad promotionem"
 
-#: src/unit.cpp:2279
+#: src/unit.cpp:2285
 msgid ": "
 msgstr ": "
 
@@ -10967,6 +11118,59 @@ msgstr ""
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Special Notes: the Grand Knight's charging lance attack doubles both "
+#~ "damage dealt and received. This does not affect his defensive retaliation."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Nota Praecipua: Oppugnatio lanceae incurrentis Optimati infligit damnum "
+#~ "duplice et fit ut damnum receptum duplice fiet. Hoc non accedit in "
+#~ "ulscicione defensu."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Special Notes: the Lancer's charging lance attack doubles both damage "
+#~ "dealt and received. This does not affect his defensive retaliation."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Nota Praecipua: Oppugnatio lanceae incurrentis Lanceati infligit damnum "
+#~ "duplice et fit ut damnum receptum duplice fiet. Hoc non accedit in "
+#~ "ulscicione defensu."
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Special Notes: the Paladin's charging lance attack doubles both damage "
+#~ "dealt and received. This does not affect his defensive retaliation. The "
+#~ "Paladin's holy attack with his sword deals tremendous damage to the "
+#~ "undead, and even some to living creatures."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Nota Praecipua: Oppugnatio lanceae incurrentis Paladini infligit damnum "
+#~ "duplice et fit ut damnum receptum duplice fiet. Hoc non accedit in "
+#~ "ulscicione defensu. Oppugnatio sancta damnum permagnum infligit in "
+#~ "inmortuis et nonnullum in viventibus. Possunt mederi, sed effectus veneni "
+#~ "tantum demorari possunt."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Special Notes: the Horseman's only attack is a charge, which doubles both "
+#~ "damage dealt and received. This does not affect his defensive retaliation."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Nota Praecipua: Oppugnatio lanceae incurrentis Equitis infligit damnum "
+#~ "duplice et fit ut damnum receptum duplice fiet. Hoc non accedit in "
+#~ "ulscicione defensu."
 
 #~ msgid "drain"
 #~ msgstr "exhaurire"
