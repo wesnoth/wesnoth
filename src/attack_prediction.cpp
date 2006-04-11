@@ -515,7 +515,7 @@ void combatant::adjust_hitchance()
 // Um, ok, it was a stupid thing to say.
 void combatant::fight(combatant &opp)
 {
-	unsigned int i, rounds = maximum(u_.rounds, opp.u_.rounds);
+	unsigned int i, rounds = maximum((int)u_.rounds, (int)opp.u_.rounds);
 
 	// If defender has firststrike and we don't, reverse.
 	if (opp.u_.firststrike && !u_.firststrike) {
