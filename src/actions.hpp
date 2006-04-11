@@ -154,10 +154,10 @@ public:
 	battle_context& operator=(const battle_context &other);
 
 	// This method returns the statistics of the attacker.
-	const unit_stats& get_attacker_stats() { return *attacker_stats_; }
+	const unit_stats& get_attacker_stats() const { return *attacker_stats_; }
 	
 	// This method returns the statistics of the defender.
-	const unit_stats& get_defender_stats() { return *defender_stats_; }
+	const unit_stats& get_defender_stats() const { return *defender_stats_; }
 
 private:
 

@@ -73,6 +73,10 @@ const int
 // Returns a SDL surface containing the text rendered in a given colour.
 surface get_rendered_text(const std::string& text, int size, const SDL_Color& colour, int style=0);
 
+SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
+						const SDL_Color& colour, const std::string& text,
+						int x, int y, bool use_tooltips, int style);
+
 SDL_Rect draw_text_line(CVideo* gui, const SDL_Rect& area, int size,
                         const SDL_Color& colour, const std::string& text,
                         int x, int y, bool use_tooltips, int style);
