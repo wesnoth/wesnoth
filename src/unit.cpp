@@ -518,8 +518,7 @@ void unit::set_user_end_turn(bool value)
 }
 bool unit::user_end_turn() const
 {
-//	return end_turn_;
-	return false;
+	return end_turn_;
 }
 int unit::attacks_left() const
 {
