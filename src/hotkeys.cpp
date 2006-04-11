@@ -222,7 +222,7 @@ void hotkey_item::set_description(const std::string& description)
 
 void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd)
 {
-	const std::string keyname = SDL_GetKeyName(SDLKey(keycode_));
+	const std::string keyname = SDL_GetKeyName(SDLKey(keycode));
 
 	INFO_C << "setting hotkey: char=" << lexical_cast<std::string>(character)
 		   << " keycode="  << lexical_cast<std::string>(keycode) << " "
