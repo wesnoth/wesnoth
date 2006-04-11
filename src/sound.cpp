@@ -167,7 +167,24 @@ std::string pick_one(const std::string &files)
 
 	if (names.size() == 0)
 		return "";
-	return names[rand()%names.size()];
+	if (names.size() == 1)
+		return names[0];
+
+	// We avoid returning same choice twice if we can avoid it.
+	static std::map<std::string,unsigned int> prev_choices;
+	unsigned int choice;
+
+	if (prev_choices.find(files) != prev_choices.end()) {
+		choice = rand()%(names.size()-1);
+		if (choice >= prev_choices[files])
+			choice++;
+		prev_choices[files] = choice;
+	} else {
+		choice = rand()%names.size();
+		prev_choices.insert(std::pair<std::string,unsigned int>(files,choice));
+	}
+
+	return names[choice];
 }
 };
 
