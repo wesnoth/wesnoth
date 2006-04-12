@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-11 08:03+0200\n"
-"PO-Revision-Date: 2006-03-08 20:11+0200\n"
+"PO-Revision-Date: 2006-04-12 11:06+0200\n"
 "Last-Translator: Mikko Kraft <mikkokraft@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -16,12 +16,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/abilities.cfg:7
-#, fuzzy
 msgid "heals +4"
-msgstr "hoivaa"
+msgstr "hoivaa +4"
 
 #: data/abilities.cfg:12
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -32,22 +30,19 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Hoivaus:\n"
-"Yksikkö voi hoivata viereisiä ystävällisiä yksiköitä vuoron alussa.\n"
+"Hoivaa +4:\n"
+"Yksikkö voi hoivata viereisiä ystävällisiä yksiköitä jokaisen vuoron "
+"alussa.\n"
 "\n"
-"Hoivattu yksikkö saa enintään 4 EP per vuoro.\n"
-"Hoivaaja voi parantaa yhteensä enintään 8 EP per vuoro. (Kaikki hoivatut "
-"yksiköt lasketaan!)\n"
-"Hoivaaja ei voi parantaa myrkytettyä yksikköä, vaan se täytyy lääkitä "
-"kylässä tai parantavalla yksiköllä."
+"Hoivattu yksikkö saa enintään 4 EP per vuoro, tai estää myrkyn vaikutuksen.\n"
+"Hoivaaja ei voi parantaa myrkytettyä yksikköä, sillä se onnistuu vain "
+"parantajalta tai kylässä."
 
 #: data/abilities.cfg:26
-#, fuzzy
 msgid "heals +8"
-msgstr "hoivaa"
+msgstr "hoivaa +8"
 
 #: data/abilities.cfg:31
-#, fuzzy
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -58,17 +53,13 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Parannus:\n"
-"Tämä yksikkö käyttää yrttirohtoja ja taikuutta hoitaakseen yksiköitä "
-"nopeammin kuin taistelurintamalla on yleensä mahdollista.\n"
+"Hoivaa +8:\n"
+"Tämä yksikkö yhdistää taikuutta ja luontaislääkkeitä hoivaten yksiköitä "
+"nopeammin kuin taistelurintamalla on normaalisti mahdollista.\n"
 "\n"
-"Tämä yksikkö parantaa kaikkia viereisiä ystävällisiä yksiköitä jokaisen "
-"vuoron alussa.\n"
-"Parannettu yksikkö saa enintään 8 EP per vuoro.\n"
-"Parantaja voi parantaa enintään 18 EP per vuoro. (Kaikki parannetut yksiköt "
-"lasketaan!)\n"
-"Parantaja voi hoitaa myrkytetyn yksikön, mutta tämä yksikkö ei saa samalla "
-"vuorolla muuta parannusta."
+"Hoivattu yksikkö saa enintään 8 EP per vuoro, tai estää myrkyn vaikutuksen.\n"
+"Hoivaaja ei voi parantaa myrkytettyä yksikköä, sillä se onnistuu vain "
+"parantajalta tai kylässä."
 
 #: data/abilities.cfg:40
 msgid "cures"
@@ -80,6 +71,9 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Parantaa:\n"
+"Parantaja osaa parantaa yksikön myrkytystilan. Yksikkö, jonka myrkytystila "
+"on parannettu, ei saa muuta parannusta samalla vuorolla."
 
 #: data/abilities.cfg:55
 msgid "regenerates"
@@ -289,9 +283,8 @@ msgstr ""
 "tehnyt yksikkö. (Tämä ei toimi epäkuolleisiin eikä yksiköihin kylissä.)"
 
 #: data/abilities.cfg:415
-#, fuzzy
 msgid "slows"
-msgstr "hidas"
+msgstr "hidastaa"
 
 #: data/abilities.cfg:417
 msgid ""
@@ -304,9 +297,8 @@ msgstr ""
 "(pyöristetään ylös)."
 
 #: data/abilities.cfg:424
-#, fuzzy
 msgid "stones"
-msgstr "kivetys"
+msgstr "kivettää"
 
 #: data/abilities.cfg:426
 msgid ""
@@ -347,7 +339,6 @@ msgid "swarm"
 msgstr "parvi"
 
 #: data/abilities.cfg:455
-#, fuzzy
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -355,10 +346,10 @@ msgid ""
 "For example a unit with 3/4 of its maximum HP will get 3/4 of the number of "
 "strikes."
 msgstr ""
-"Swarm:\n"
+"Parvi:\n"
 "Kun yksikkö haavoittuu vähenee sen iskujen lukumäärä. Iskujen väheneminen on "
-"suoraan verrannolista elämäpisteiden vähenemiseen. Jos yksiköllä on "
-"esimerkiksi jäljellä 75% elämäpisteistä, käyttää se iskuistaan vain75%."
+"suoraan verrannollista elämäpisteiden vähenemiseen. Jos yksiköllä on "
+"esimerkiksi jäljellä 3/4 elämäpisteistä, käyttää se iskuistaan vain 3/4."
 
 #: data/abilities.cfg:461
 msgid "charge"
@@ -375,9 +366,8 @@ msgstr ""
 "myös vastaanottaa kaksinkertaisen vahingon kohteen vastahyökkäyksestä."
 
 #: data/abilities.cfg:473
-#, fuzzy
 msgid "drains"
-msgstr "elämänimu"
+msgstr "imee elämää"
 
 #: data/abilities.cfg:475
 msgid ""
@@ -385,7 +375,7 @@ msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Elämän imu:\n"
+"Elämänimu:\n"
 "Tämä yksikkö imee elämää vihollisistaan, parantaen itseään puolella siitä "
 "vahingosta, jonka tekee (pyöristetään alas)."
 
@@ -422,7 +412,6 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
 #: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
-#, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "Taiteilijat ja graafikot"
 
@@ -537,9 +526,8 @@ msgid "Japanese Translation"
 msgstr "Japaninkielinen käännös"
 
 #: data/about.cfg:364
-#, fuzzy
 msgid "Korean Translation"
-msgstr "Norjankielinen käännös"
+msgstr "Koreankielinen käännös"
 
 #: data/about.cfg:371
 msgid "Latin Translation"
@@ -614,9 +602,8 @@ msgstr "Täysparannus"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
 #: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
 #: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
 msgid "Campaign Designer"
-msgstr "Kampanja"
+msgstr "Kampanjasuunnittelijat"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
@@ -1093,9 +1080,8 @@ msgstr "kynnet"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:25
 #: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
 #: data/campaigns/Under_the_Burning_Suns.cfg:32
-#, fuzzy
 msgid "Current Maintainer"
-msgstr "Tavoite tällä hetkellä:"
+msgstr "Tämänhetkinen ylläpitäjä"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:74
@@ -1924,19 +1910,19 @@ msgstr "Epäkuolleet"
 
 #: data/english.cfg:23
 msgid "$name's Bridge,$name's Crossing"
-msgstr "$name|in silta,$name|in ylityspaikka"
+msgstr "$name|silta,$name|ylitys"
 
 #: data/english.cfg:24
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr "$name|intie,$name|in sola,$name|in polku"
+msgstr "$name|tie,$name|sola,$name|polku"
 
 #: data/english.cfg:25
 msgid "$name River,River $name"
-msgstr "$name|joki,$name|inuoma"
+msgstr "$name|joki,$name|uoma"
 
 #: data/english.cfg:26
 msgid "$name Forest,$name's Forest"
-msgstr "$name|metsä,$name|in metsä"
+msgstr "$name|metsä,$name|lehto"
 
 #: data/english.cfg:27
 msgid "$name Lake"
@@ -1944,41 +1930,38 @@ msgstr "$name|järvi"
 
 #: data/english.cfg:28
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr "$name|kylä,$name|in kirkonkylä,$name|in pitäjä"
+msgstr "$name|kylä,$name|tupa,$name|pitäjä"
 
 #: data/english.cfg:29
 msgid "$name|harbor,$name|port"
-msgstr "$name|in satama,$name|in maihinlaskupaikka"
+msgstr "$name|satama,$name|ranta"
 
 #: data/english.cfg:30
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr ""
-"$name|kylä,$name|in kahlaamo,$name|in risteys,$river|in kahlaamo,$river|in "
-"haara"
+msgstr "$name|kylä,$name|kahlaamo,$name|puro,$river|kahlaamo,$river|koski"
 
 #: data/english.cfg:31
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr "$river|silta,$river|in silta,$river|silta,$name|in kylä,$name|in silta"
+msgstr "$river|silta,$river|ylitys,$river|raja,$name|asema,$name|silta"
 
 #: data/english.cfg:32
 msgid "$name|ham,$name|ton,$name|field"
-msgstr "$name|in kylä,$name|in pitäjä,$name|pelto"
+msgstr "$name|maa,$name|kylä,$name|pelto"
 
 #: data/english.cfg:33
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr "$name|in kylä,$name|in pitäjä,$name|metsä,$name|metsä"
+msgstr "$name|kylä,$name|kylä,$name|salo,$name|metsä"
 
 #: data/english.cfg:34
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr ""
-"$name|in kylä,$name|kylä,$name|in pitäjä,$name|in kukkula,$name|kukkulat"
+msgstr "$name|mäki,$name|kumpu,$name|harju,$name|salo,$name|kukkula"
 
 #: data/english.cfg:35
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"$name|in kylä,$name|kylä,$name|in pitäjä,$name|vuori,$name|vuori,$name|in "
-"jyrkänne,$name|jyrkänne"
+"$name|pää,$name|päät,$name|huippu,$name|vuori,$name|kallio,$name|jyrkänne,"
+"$name|salo"
 
 #: data/english.cfg:38
 msgid "melee"
@@ -2125,7 +2108,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Aluksi on paras painaa 'Harjoittelu' -nappia päävalikossa. Tämä vie sinut "
+"Aluksi on paras painaa 'Tutoriaali' -nappia päävalikossa. Tämä vie sinut "
 "vuorovaikutteiseen harjoitteluun, joka opettaa sinulle Wesnothin perusteet. "
 "Tämän jälkeen suositellaan Valtaistuimen perillinen -kampanjaa: valitse "
 "päävalikosta <italic>text=Kampanja</italic> ja <italic>text='Valtaistuimen "
@@ -2875,7 +2858,6 @@ msgstr ""
 "peikot) paranevat automaattisesti 8 elämäpistettä joka vuoro."
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -2884,13 +2866,10 @@ msgid ""
 msgstr ""
 "\n"
 "Hoivaavat yksiköt: Yksiköt, joilla on erikoistaito <ref>dst=ability_heals "
-"text=hoivaus</ref>, voivat parantaa yhteensä 8 EP:tä joka vuoro. Ne myös "
-"estävät myrkkyä vaikuttamasta. Vain ne yksiköt, jotka ovat hoivaavan yksikön "
-"viereisissä heksoissa ja samalla puolella, voivat saada hoivaa, ja vain 4 EP:"
-"tä per yksikkö."
+"text=Hoivaa</ref>, voivat hoivata viereisiään ystävällisiä yksiköitä yleensä "
+"4 tai 8 EP per vuoro, tai estää myrkyn vaikutuksen."
 
 #: data/help.cfg:220
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -2899,12 +2878,11 @@ msgid ""
 msgstr ""
 "\n"
 "Parantavat yksiköt: Yksiköt jotka osaavat <ref>dst=ability_cures "
-"text=parantaa</ref>, parantavat kaikkia vieressään olevia ystävällisiä "
-"yksiköitä enintään 8 elämäpistettä vuorossa, yhteensä enintään 18 "
-"elämäpisteen verran, tai poistavat myrkyn."
+"text=Parantaa</ref>, parantavat jokaisen vieressään olevan ystävällisen "
+"yksiköin myrkytystilan (hoivaamisen sijaan, jos yksiköllä on myös kyseinen "
+"erikoistaito)."
 
 #: data/help.cfg:222
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2915,10 +2893,9 @@ msgstr ""
 "\n"
 "\n"
 "Lepääminen voidaan yhdistää muihin paranemisen muotoihin, mutta kyliä, "
-"uusiutumista sekä parantamista ja hoivaamista ei voi yhdistää keskenään. "
-"Parantava tai hoivaava yksikkö, jolla on useita hoidettavia, joutuu jakamaan "
-"huomionsa näiden välillä, eikä voi yhtä tehokkaasti kohdistaa huomiotaan "
-"yhteen yksikköön. Skenaarioiden välillä yksiköt lisäksi paranevat täysin."
+"uusiutumista, hoivaamista ja parantamista ei voi yhdistää toistensa kanssa "
+"vaan käytetään parasta vaihtoehtoa. Lisäksi yksiköt paranevat täysin "
+"skenaarioiden välillä."
 
 #: data/help.cfg:227
 msgid "Income and Upkeep"
@@ -3264,7 +3241,7 @@ msgstr ""
 
 #: data/help.cfg:324 data/terrain.cfg:131
 msgid "Grassland"
-msgstr "tasanko"
+msgstr "Niitty"
 
 #: data/help.cfg:329
 msgid ""
@@ -3286,7 +3263,7 @@ msgstr ""
 
 #: data/help.cfg:334 data/terrain.cfg:105 data/terrain.cfg:113
 msgid "Road"
-msgstr "tie"
+msgstr "Tie"
 
 #: data/help.cfg:337
 msgid ""
@@ -3300,10 +3277,9 @@ msgstr ""
 
 #: data/help.cfg:342 data/terrain.cfg:367
 msgid "Forest"
-msgstr "metsä"
+msgstr "Metsä"
 
 #: data/help.cfg:347
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3332,12 +3308,11 @@ msgstr ""
 "Useimpien yksiköiden puolustus metsässä on 50%, mutta ratsuyksiköillä "
 "korkeintaan 40%. Haltijoiden - jopa heidän ratsastavien yksiköidensä - "
 "puolustus metsässä on 60% tai 70%. Kääpiöiden puolustus metsässä on yleensä "
-"vain 30%.\n"
-"<img>src=terrain/great-tree-tile.png align=middle box=no</img>"
+"vain 30%."
 
 #: data/help.cfg:353 data/terrain.cfg:318
 msgid "Hills"
-msgstr "kukkula"
+msgstr "Kukkula"
 
 #: data/help.cfg:358
 msgid ""
@@ -3362,7 +3337,7 @@ msgstr ""
 
 #: data/help.cfg:363 data/terrain.cfg:352 data/terrain.cfg:359
 msgid "Mountains"
-msgstr "vuori"
+msgstr "Vuori"
 
 #: data/help.cfg:368
 msgid ""
@@ -3387,7 +3362,7 @@ msgstr ""
 
 #: data/help.cfg:373 data/terrain.cfg:43
 msgid "Swamp"
-msgstr "suo"
+msgstr "Suo"
 
 #: data/help.cfg:378
 msgid ""
@@ -3411,7 +3386,7 @@ msgstr ""
 
 #: data/help.cfg:383 data/terrain.cfg:34
 msgid "Shallow Water"
-msgstr "matala vesi"
+msgstr "Matala Vesi"
 
 #: data/help.cfg:388
 msgid ""
@@ -3437,7 +3412,7 @@ msgstr ""
 
 #: data/help.cfg:393 data/terrain.cfg:25
 msgid "Deep Water"
-msgstr "syvä vesi"
+msgstr "Syvä Vesi"
 
 #: data/help.cfg:398
 msgid ""
@@ -3456,7 +3431,7 @@ msgstr ""
 
 #: data/help.cfg:403 data/terrain.cfg:302
 msgid "Snow"
-msgstr "lumi"
+msgstr "Lumi"
 
 #: data/help.cfg:408
 msgid ""
@@ -3475,7 +3450,7 @@ msgstr ""
 
 #: data/help.cfg:413 data/terrain.cfg:309
 msgid "Ice"
-msgstr "jää"
+msgstr "Jää"
 
 #: data/help.cfg:416
 msgid ""
@@ -3489,7 +3464,7 @@ msgstr ""
 
 #: data/help.cfg:421 data/terrain.cfg:455 data/terrain.cfg:542
 msgid "Castle"
-msgstr "linna"
+msgstr "Linna"
 
 #: data/help.cfg:426
 msgid ""
@@ -3512,7 +3487,7 @@ msgstr ""
 
 #: data/help.cfg:433 data/terrain.cfg:89
 msgid "Sand"
-msgstr "hiekka"
+msgstr "Hiekka"
 
 #: data/help.cfg:438
 msgid ""
@@ -3530,7 +3505,7 @@ msgstr ""
 
 #: data/help.cfg:443 data/terrain.cfg:97
 msgid "Desert"
-msgstr "aavikko"
+msgstr "Aavikko"
 
 #: data/help.cfg:446
 msgid ""
@@ -3544,7 +3519,7 @@ msgstr ""
 
 #: data/help.cfg:451 data/terrain.cfg:398
 msgid "Cave"
-msgstr "luola"
+msgstr "Lluola"
 
 #: data/help.cfg:456
 msgid ""
@@ -3568,7 +3543,7 @@ msgstr ""
 
 #: data/help.cfg:461 data/terrain.cfg:343
 msgid "Rockbound Cave"
-msgstr "louhikkoinen luola"
+msgstr "Louhikkoinen Luola"
 
 #: data/help.cfg:466
 msgid ""
@@ -3593,7 +3568,7 @@ msgstr ""
 
 #: data/help.cfg:471 data/terrain.cfg:374
 msgid "Mushroom Grove"
-msgstr "sienilehto"
+msgstr "Sienilehto"
 
 #: data/help.cfg:476
 msgid ""
@@ -3619,7 +3594,7 @@ msgstr ""
 
 #: data/help.cfg:481 data/terrain.cfg:138
 msgid "Savanna"
-msgstr "savanni"
+msgstr "Savanni"
 
 #: data/help.cfg:483
 msgid ""
@@ -3637,7 +3612,7 @@ msgstr ""
 #: data/terrain.cfg:270 data/terrain.cfg:280 data/terrain.cfg:290
 #: src/reports.cpp:371
 msgid "Village"
-msgstr "kylä"
+msgstr "Kylä"
 
 #: data/help.cfg:493
 msgid ""
@@ -3663,7 +3638,7 @@ msgstr ""
 
 #: data/help.cfg:500 data/terrain.cfg:429
 msgid "Chasm"
-msgstr "kuilu"
+msgstr "Kuilu"
 
 #: data/help.cfg:502
 msgid ""
@@ -3679,7 +3654,7 @@ msgstr ""
 
 #: data/help.cfg:507 data/terrain.cfg:436
 msgid "Lava"
-msgstr "laava"
+msgstr "Laava"
 
 #: data/help.cfg:509
 msgid ""
@@ -3712,7 +3687,7 @@ msgstr ""
 #: data/help.cfg:521 data/terrain.cfg:62 data/terrain.cfg:70
 #: data/terrain.cfg:78
 msgid "Bridge"
-msgstr "silta"
+msgstr "Silta"
 
 #: data/help.cfg:525
 msgid ""
@@ -3742,7 +3717,7 @@ msgstr ""
 
 #: data/help.cfg:530 data/terrain.cfg:422
 msgid "Cave Wall"
-msgstr "luolan seinämä"
+msgstr "Luolan Seinämä"
 
 #: data/help.cfg:532
 msgid ""
@@ -3762,7 +3737,7 @@ msgstr ""
 
 #: data/items.cfg:268
 msgid "A swift victory"
-msgstr "Nopeaa voittoa."
+msgstr "Nopea voitto"
 
 #: data/items.cfg:276
 msgid ""
@@ -3949,6 +3924,9 @@ msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
+"Seitti,Kotkan,Vanha,Uusi,Karja,Evi,Riston,Jänö,Korsa,Kenes,Mustin,Rauta,"
+"Käärme,Routa,Kulta,Musta,Repo,Vaski,Kuolon,Tietäjän,Sodan,Pyhä,Ritarin,Vehnä,"
+"Riisi,Iso,Pieni,Keski,Emä,Miekka,Tuli,Jää,Jousi,Velho,Hullu,Viini"
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -4299,15 +4277,14 @@ msgid "4p - Siege Castles"
 msgstr "4p - Piiritetyt linnat"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well 2 vs 2 or FFA. There are approximately 45 villages. "
 "Recommended setting of 2 gold per village."
 msgstr ""
-"25x25 2 vs. 2 kartta, joka keskittyy joen ympärille. Linnakeparit "
-"sijaitsevat vastakkaisissa kulmissa. Suunniteltu joukkueille 1&3 vs. 2&4. "
-"Kartassa on 28 kylää. Suositeltu asetus 2 kultapalaa/kylä."
+"40x30 4 pelaajan kartta, jossa neljä mahtavaa linnaa kohtaavat kahden joen "
+"risteyksessä. Toimii hyvin 2 vs. 2 -pelissä tai kaikkien pelatessa "
+"itsekseen. Kyliä on noin 45 kpl. Suositeltu asetus 2 kultapalaa/kylä."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -4637,11 +4614,11 @@ msgstr "Sumu"
 
 #: data/terrain.cfg:121
 msgid "Dirt"
-msgstr "soraa"
+msgstr "Muta"
 
 #: data/terrain.cfg:210
 msgid "Oasis"
-msgstr "keidas"
+msgstr "Keidas"
 
 #: data/terrain.cfg:325
 msgid "Dunes"
@@ -4649,7 +4626,7 @@ msgstr "Hiekkadyynit"
 
 #: data/terrain.cfg:334
 msgid "Snow Hills"
-msgstr "luminen kukkula"
+msgstr "Luminen Kukkula"
 
 #: data/terrain.cfg:381
 msgid "Tropical Forest"
@@ -4664,37 +4641,36 @@ msgid "Cave Lit"
 msgstr "Valoisa Luola"
 
 #: data/terrain.cfg:414
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "aavikon vuori"
+msgstr "Ylitsepääsemätön Vuori"
 
 #: data/terrain.cfg:445
 msgid "Great Tree"
-msgstr "Suuri puu"
+msgstr "Suuri Puu"
 
 #: data/terrain.cfg:464
 msgid "Encampment"
-msgstr "leiri"
+msgstr "Leiri"
 
 #: data/terrain.cfg:474
 msgid "Dwarven Castle"
-msgstr "kääpiöiden linna"
+msgstr "Kääpiölinna"
 
 #: data/terrain.cfg:484
 msgid "Keep"
-msgstr "linnake"
+msgstr "Linnake"
 
 #: data/terrain.cfg:503
 msgid "Ruin"
-msgstr "raunio"
+msgstr "Raunio"
 
 #: data/terrain.cfg:513
 msgid "Sunken Ruin"
-msgstr "uponnut raunio"
+msgstr "Uponnut Raunio"
 
 #: data/terrain.cfg:524
 msgid "Swamp Ruin"
-msgstr "soistunut raunio"
+msgstr "Soistunut Raunio"
 
 #: data/themes/default.cfg:80
 msgid "Menu"
@@ -4823,17 +4799,16 @@ msgstr ""
 "yläkulmassa."
 
 #: data/tips.cfg:5
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
 "be cured by moving them to a village, or placing them next to a unit with "
 "the 'cures' ability."
 msgstr ""
-"Myrkytetyt yksiköt menettävät 8 elämäpistettä vuorossa, mutta eivät kuole "
-"myrkytykseen. Myrkky ei milloinkaan poista viimeistä elämäpistettä. "
-"Myrkytetyn yksikön voi parantaa siirtämällä sen kylään, tai sijoittamalla "
-"sen sellaisen yksikön viereen, joka osaa parantaa."
+"Myrkytetyt yksiköt menettävät 8 elämäpistettä joka vuoro, mutta he eivät voi "
+"kuolla myrkytykseen. Myrkky ei milloinkaan poista viimeistä elämäpistettä. "
+"Myrkytetyn yksikön voi parantaa liikuttamalla sen kylään tai parantavan "
+"yksikön viereen."
 
 #: data/tips.cfg:6
 msgid ""
@@ -5139,25 +5114,25 @@ msgid "resilient"
 msgstr "kestävä"
 
 #: data/tutorial/units/Fighteress.cfg:5 data/tutorial/units/Fighteress.cfg:53
-#, fuzzy
 msgid "female^Fighter"
-msgstr "Velhotar"
+msgstr "Soturi"
 
 #: data/tutorial/units/Quintain.cfg:3
-#, fuzzy
 msgid "Quintain"
-msgstr "vuori"
+msgstr "Harjoittelunukke"
 
 #: data/tutorial/units/Quintain.cfg:13
 msgid ""
 "Quintains are used to practice swordplay and jousting on.  It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
+"Harjoittelunukkeja käytetään miekkailun ja kaksintaistelun "
+"harjoittelemiseen. Olisi erittäin epätodennäköistä, että sellainen hyökkäisi "
+"kimppuun."
 
 #: data/tutorial/units/Quintain.cfg:20
-#, fuzzy
 msgid "flail"
-msgstr "häntä"
+msgstr "huitaisu"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -6273,18 +6248,20 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Hukat eroavat susista vain koossa ja värissä. Ne ovat usein korkeampia kuin "
-"hevoset ja niiden ruokahalu on valtava. Vain hullu kohtaisi näitä "
-"vapaaehtoisesti. Hiidet, suurella hinnalla itselleen, ovat kuitenkin "
-"kesyttäeet niitä, jos nyt kesyttämisestä voi puhua. \n"
+"Hukat eroavat muista susista vain kokonsa ja värinsä puolesta. Ne ovat "
+"useimmiten korkeampia kuin hevoset ja niiden ruokahalu on valtava. Vain "
+"hullu kohtaisi näitä vapaaehtoisesti. Hiidet ovat onnistuneet kesyttämään "
+"niitä, jos nyt kesyttämisestä voi puhua, mutta he ovat maksaneet siitä kovan "
+"hinnan.\n"
 "\n"
-"Suden kynsiä ei usein pidetä vaarallisimpina osina, mutta tämän kokoisella "
-"pedolla ne ovat pitempiä ja paksumpia kuin rautanaulat. Ratsastajat pistävät "
-"myrkkyä etummaisiin kynsiin, tehden pedon kynsien viillosta kuolettavan "
-"iskun.\n"
+"Suden kynsiä ei usein pidetä niiden vaarallisimpina aseina, mutta tämän "
+"kokoisella pedolla ne ovat pidempiä ja paksumpia kuin rautanaulat. Kuten "
+"örkkisalamurhaavat vaitsiinsä, tuhrivat hukkaratsastajat petojen kynsiin "
+"myrkkyä, tehden hukkien tassun iskusta mitä kuolettavimman.\n"
 "\n"
-"Huomio: Jos kärsii iskun hukan kynsistä myrkyttyy, ja myrkytetyt "
-"vahingoittuvat, kunnes heidät parannetaan parantajalla tai kylässä."
+"Huomio: Kuka tahansa hukan kynsistä haavoittunut myrkyttyy menettää "
+"elämäpisteitä jatkuvasti kunnes hänet viedään kylään tai parantava yksikkö "
+"parantaa myrkytystilan."
 
 #: data/units/Goblin_Direwolf_Rider.cfg:39 data/units/Goblin_Knight.cfg:39
 #: data/units/Goblin_Wolf_Rider.cfg:70 data/units/Monster_Cave_Spider.cfg:41
@@ -8395,9 +8372,8 @@ msgstr ""
 
 #: data/units/Orcish_Ruler.cfg:32 data/units/Orcish_Sovereign.cfg:34
 #: data/units/Orcish_Warlord.cfg:28 data/units/Orcish_Warrior.cfg:27
-#, fuzzy
 msgid "greatsword"
-msgstr "miekka"
+msgstr "suurmiekka"
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
@@ -8414,15 +8390,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Suuremmat ja usein taitavammat örkkisalamurhaajat tunnetaan vihollistensa "
-"parissa surmaajina. Surmaajat ovat vikkeliä jaloistaan ja varsin ketteriä "
-"taistelussa, joskin tämä saavutetaan hylkäämällä panssari. Heidän "
-"asevalintansa, myrkky, on ilkeä työkalu, ja sen yleisyys taistelukentällä on "
-"usein örkkien vahvuuden todellinen syy.\n"
+"Suuremmat ja usein myös taitavammat örkkisalamurhaajat tunnetaan "
+"vihollistensa parissa surmaajina, vaikkakin näiden ero on häilyvä. Surmaajat "
+"ovat vikkeliä jaloistaan ja varsin ketteriä taistelussa, joskin tämän he "
+"saavuttavat hylkäämällä panssarinsa. Heidän myrkkynsä on ilkeä ja tappavan "
+"tehokas ase ja sen yleisyys taistelukentällä on usein örkkien vahvuuden "
+"todellinen syy.\n"
 "\n"
-"Huomio: Örkkisurmaajat käyttävät myrkytettyjä heittoveitsiä, ja  "
-"myrkyttyneet uhrit vahingoittuvat jatkuvasti, ellei niitä paranneta kylässä "
-"tai parantajalla."
+"Huomio: Örkkisurmaajat käyttävät myrkytettyjä heittoveitsiä ja  myrkyttyneet "
+"uhrit vahingoittuvat jatkuvasti, ellei niitä paranneta kylässä tai "
+"parantajalla."
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
@@ -8801,16 +8778,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Vain ne, jotka ovat pimeän taitajien sisäpiirissä, tietävät, miten ihmisestä "
-"tehdään kalmo, ja sitä salaisuutta he eivät paljasta. Mitä lausumattomia "
-"riittejä he ovat tehneetkään, tuloksena on peto, joka ei tiedä mitään "
-"ajastaan ihmisenä, olento, joka riehuu ympäriinsä alasti ja ahmii kuolleiden "
-"lihaa.\n"
+"Vain ne, jotka ovat todella syventyneet manaamisen syövereihin, tietävät "
+"miten muuttaa ihminen kalmoksi ja sitä salaisuutta he eivät paljasta. Mitä "
+"tuntemattomia riittejä lienee tehneetkään, tuloksena on peto, joka ei tiedä "
+"mitään ajastaan ihmisenä, olento, joka riehuu ympäriinsä alasti ja ahmii "
+"kuolleiden lihaa.\n"
 "\n"
-"Tälläisten asioiden takia kuolleiden herättäminen puolielämään tuomitaan "
-"lähes primitiivisellä vihalla.\n"
+"Tälläisten asioiden takia manaajat ovat ehkä kaikkein vihatuimpia olentoja.\n"
 "\n"
-"Huomio: Kalmon kynnet ovat myrkylliset."
+"Huomio: Kalmon kynnet ovat myrkylliset ja niiden uhrit menettävät "
+"elämäpisteitään jatkuvasti, kunnes heidät parannetaan kylässä tai "
+"parantajalla."
 
 #: data/units/Undead_Corpse_Necrophage.cfg:3
 msgid "Necrophage"
@@ -8826,12 +8804,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Epäpyhä himo kuolleeseen lihaan tekee kuolonsyöjistä hurjia.Kun niiden himon "
-"on hetkellisesti tyydytetty, ne yksinkertaisesti unohtavat saamansa vahingon "
-"ja alkavat etsiä lisää lihaa.\n"
+"Epäpyhä himo kuolleeseen lihaan tekee kuolonsyöjistä hurjia. Kuolonsyöjät "
+"hyökkäävät toivotun ruokansa kimppuun petomaisella vimmalla. Kun niiden "
+"lihanhimo on tyydytetty, ne yksinkertaisesti unohtavat saamansa vahingon, "
+"aivan kuin ne olisivat jälleen juuri-manattuja, ja alkavat etsiä lisää "
+"lihaa.\n"
 "\n"
-"Huomio: Kuolonsyöjän kynnet ovat myrkyn peittämät. Myrkyn uhrit menettävät "
-"joka vuoro elämäpisteitä, kunnes heidät parannetaan."
+"Huomio: Kuolonsyöjän kynnet ovat myrkyn peittämät. Myrkyn uhri menettää joka "
+"vuoro elämäpisteitä, kunnes parantava yksikkö parantaa hänet tai hän menee "
+"kylään parannettavaksi."
 
 #: data/units/Undead_Corpse_Soulless.cfg:4
 msgid "Soulless"
@@ -9017,9 +8998,8 @@ msgstr ""
 "epäelämään Pimeän herran riveissä."
 
 #: data/units/Undead_Necromancer.cfg:32
-#, fuzzy
 msgid "plague staff"
-msgstr "rutto"
+msgstr "ruttosauva"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
@@ -9452,14 +9432,12 @@ msgid "+Core Developers"
 msgstr "+Pääkehittäjät"
 
 #: src/about.cpp:33
-#, fuzzy
 msgid "+  Main Developer"
-msgstr "- Kehitysjohtaja"
+msgstr "+ Kehitysjohtaja"
 
 #: src/about.cpp:36
-#, fuzzy
 msgid "+  Artwork and graphics designer"
-msgstr "- Taide- ja grafiikkasuunnittelija"
+msgstr "+ Taiteilijat ja graafikot"
 
 #: src/about.cpp:39
 msgid "+Developers"
@@ -9627,7 +9605,7 @@ msgstr "Moninpeli"
 
 #: src/dialogs.cpp:387
 msgid "Tutorial"
-msgstr "Harjoittelu"
+msgstr "Tutoriaali"
 
 #: src/dialogs.cpp:395
 msgid "replay"
@@ -10033,9 +10011,8 @@ msgid "Abilities: "
 msgstr "Erikoistaidot: "
 
 #: src/help.cpp:1143
-#, fuzzy
 msgid "Cost: "
-msgstr "Liikepisteitä: "
+msgstr "Hinta: "
 
 #: src/help.cpp:1144
 msgid "Alignment: "
@@ -10513,7 +10490,7 @@ msgstr "Moninpelin puolia ei löytynyt."
 #: src/multiplayer_connect.cpp:62 src/multiplayer_connect.cpp:258
 #: src/multiplayer_connect.cpp:312
 msgid "Normal"
-msgstr ""
+msgstr "Normaali"
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
 #: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2289
@@ -10678,19 +10655,19 @@ msgstr "Ottaa käyttöön aikarajan"
 
 #: src/multiplayer_create.cpp:115
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "Pisin sallitta aika ensimmäiselle vuorolle (sekunneissa)"
 
 #: src/multiplayer_create.cpp:121
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "Pisin mahdollinen aika mille tahansa vuorolle (sekunneissa)"
 
 #: src/multiplayer_create.cpp:127
 msgid "Time for general tasks each turn (seconds)"
-msgstr ""
+msgstr "Aika perustoiminnoille per vuoro (sekunneissa)"
 
 #: src/multiplayer_create.cpp:133
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "Aika per hyökkäys, värväys ja kylän valloitus"
 
 #: src/multiplayer_create.cpp:138
 msgid "The amount of income each village yields per turn"
@@ -10759,24 +10736,20 @@ msgid "Unlimited Turns"
 msgstr "Ei rajoitusta."
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Init. Limit: "
-msgstr "Aikaa alussa: "
+msgstr "Alkuraja: "
 
 #: src/multiplayer_create.cpp:318
-#, fuzzy
 msgid "Turn Bonus: "
-msgstr "Vuoroja: "
+msgstr "Vuorobonus: "
 
 #: src/multiplayer_create.cpp:322
-#, fuzzy
 msgid "Reservoir: "
-msgstr "Palvelin: "
+msgstr "Yläraja:"
 
 #: src/multiplayer_create.cpp:327
-#, fuzzy
 msgid "Action Bonus: "
-msgstr "Toiminnot"
+msgstr "Toimintabonus:"
 
 #: src/multiplayer_create.cpp:334
 msgid "Village Gold: "
@@ -10832,9 +10805,8 @@ msgid "Skip Replays"
 msgstr "Ohita uusinta"
 
 #: src/multiplayer_lobby.cpp:452
-#, fuzzy
 msgid "Preferences"
-msgstr "Prinsessa"
+msgstr "Asetukset"
 
 #: src/multiplayer_lobby.cpp:453
 msgid "Quit"
@@ -11078,7 +11050,7 @@ msgstr "$error paikassa $pos"
 
 #: src/titlescreen.cpp:200
 msgid "TitleScreen button^Tutorial"
-msgstr "Harjoittelu"
+msgstr "Tutoriaali"
 
 #: src/titlescreen.cpp:201
 msgid "TitleScreen button^Campaign"
@@ -11114,7 +11086,7 @@ msgstr "Lopeta"
 
 #: src/titlescreen.cpp:209
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "Aloita harjoittelu tutustuaksesi peliin."
+msgstr "Aloita tutoriaali tutustuaksesi peliin."
 
 #: src/titlescreen.cpp:210
 msgid "Start a new single player campaign"
@@ -11158,7 +11130,7 @@ msgstr "Lisää"
 
 #: src/titlescreen.cpp:249
 msgid "Help"
-msgstr ""
+msgstr "Apua"
 
 #: src/titlescreen.cpp:259
 msgid "-- The Tome of Wesnoth"
@@ -11216,6 +11188,15 @@ msgstr "Voit selata tuloksia täällä:"
 msgid "Help us make Wesnoth better for you!"
 msgstr "Auta meitä kehittämään Wesnothista parempi sinulle!"
 
+#~ msgid "drain"
+#~ msgstr "elämänimu"
+
+#~ msgid "plague(Walking Corpse)"
+#~ msgstr "rutto (elävä kuollut)"
+
+#~ msgid "slow"
+#~ msgstr "hidas"
+
 #~ msgid ""
 #~ "\n"
 #~ "\n"
@@ -11238,14 +11219,15 @@ msgstr "Auta meitä kehittämään Wesnothista parempi sinulle!"
 #~ "Huomio: Peitsimiehen ainoa hyökkäys on rynnäkkö, joka tuplaa sekä tehdyn "
 #~ "että saadun vahingon. Tämä ei vaikuta puolustaessa."
 
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
 #~ "Special Notes: the Paladin's charging lance attack doubles both damage "
 #~ "dealt and received. This does not affect his defensive retaliation. The "
 #~ "Paladin's holy attack with his sword deals tremendous damage to the "
-#~ "undead, and even some to living creatures."
+#~ "undead, and even some to living creatures. Paladins are capable of some "
+#~ "healing, though they can only delay the effects of poison, not cure them "
+#~ "entirely."
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
@@ -11265,15 +11247,6 @@ msgstr "Auta meitä kehittämään Wesnothista parempi sinulle!"
 #~ "\n"
 #~ "Huomio: hevosmiehen ainoa hyökkäys on rynnäkkö, joka tuplaa sekä tehdyn "
 #~ "että saadun vahingon. Tämä ei vaikuta puolustaessa."
-
-#~ msgid "drain"
-#~ msgstr "elämänimu"
-
-#~ msgid "plague(Walking Corpse)"
-#~ msgstr "rutto (elävä kuollut)"
-
-#~ msgid "slow"
-#~ msgstr "hidas"
 
 #~ msgid "Do you want to skip the replay?"
 #~ msgstr "Haluatko ohittaa uusinnan?"
