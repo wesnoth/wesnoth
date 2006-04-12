@@ -119,9 +119,9 @@ public:
 		bool backstab_pos;		// True if the attacker is in *position* to backstab the defender (this is used to
 								// determine whether to apply the backstab bonus in case the attacker has backstab).
 		bool swarm;				// Attack has swarm special.
-		bool rounds;			// Berserk special can force us to fight more than one round.
 		bool firststrike;		// Attack has firststrike special.
 
+		unsigned int rounds;	// Berserk special can force us to fight more than one round.
 		unsigned int hp;		// Hitpoints of the unit at the beginning of the battle.
 		unsigned int max_hp;	// Maximum hitpoints of the unit.
 		unsigned int chance_to_hit;	// Effective chance to hit as a percentage (all factors accounted for).
