@@ -1666,16 +1666,10 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		if (i->second.get_state("healable") == "no")
 			continue;
 
-		unit_map::iterator healer = units.end();
-		unit_map::iterator anti_healer = units.end();
 		unit_map::iterator curer = units.end();
-		std::vector<unit_map::iterator> healers_cum;
-		std::vector<unit_map::iterator> anti_healers_cum;
+		std::vector<unit_map::iterator> healers;
 		
-		int hitpoints_mod_pos_ncum = 0;
-		int hitpoints_mod_neg_ncum = 0;
-		int hitpoints_mod_pos_cum = 0;
-		int hitpoints_mod_neg_cum = 0;
+		int healing = 0;
 		std::string curing;
 		
 		unit_ability_list heal = i->second.get_abilities("heals",i->first);
@@ -1690,45 +1684,32 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				++h_it;
 			}
 		}
-		healer = units.find(heal.highest("value").second);
-		anti_healer = units.find(heal.lowest("value",0).second);
 		
-		if (healer != units.end()) {
-			hitpoints_mod_pos_ncum = maximum<int>(hitpoints_mod_pos_ncum,heal.highest("value").first);
-			hitpoints_mod_neg_ncum = minimum<int>(hitpoints_mod_neg_ncum,heal.lowest("value",0).first);
-			for(std::vector<std::pair<config*,gamemap::location> >::const_iterator heal_it = heal.cfgs.begin(); heal_it != heal.cfgs.end(); ++heal_it) {
-				if((*heal_it->first)["poison"] == "cured") {
-					curer = units.find(heal_it->second);
-					curing = "cured";
-				} else if(curing != "cured" && (*heal_it->first)["poison"] == "slowed") {
-					curer = units.find(heal_it->second);
-					curing = "slowed";
-				}
-				if((*heal_it->first)["cumulative"]=="yes") {
-					if(lexical_cast_default<int>((*heal_it->first)["value"])>0) {
-						hitpoints_mod_pos_cum += lexical_cast_default<int>((*heal_it->first)["value"]);
-						healers_cum.push_back(units.find(heal_it->second));
-					} else {
-						hitpoints_mod_neg_cum += lexical_cast_default<int>((*heal_it->first)["value"]);
-						anti_healers_cum.push_back(units.find(heal_it->second));
-					}
-				}
+		unit_abilities::effect heal_effect(heal,0,false);
+		healing = heal_effect.get_composite_value();
+		
+		for(std::vector<std::pair<config*,gamemap::location> >::const_iterator heal_it = heal.cfgs.begin(); heal_it != heal.cfgs.end(); ++heal_it) {
+			if((*heal_it->first)["poison"] == "cured") {
+				curer = units.find(heal_it->second);
+				curing = "cured";
+			} else if(curing != "cured" && (*heal_it->first)["poison"] == "slowed") {
+				curer = units.find(heal_it->second);
+				curing = "slowed";
 			}
+		}
+		
+		for(std::vector<unit_abilities::individual_effect>::const_iterator heal_loc = heal_effect.begin(); heal_loc != heal_effect.end(); ++heal_loc) {
+			healers.push_back(units.find(heal_loc->loc));
 		}
 		
 		if(i->second.side() == side) {
 			unit_ability_list regen = i->second.get_abilities("regenerate",i->first);
+			unit_abilities::effect regen_effect(regen,0,false);
+			if(regen_effect.get_composite_value() > healing) {
+				healing = regen_effect.get_composite_value();
+				healers.clear();
+			}
 			if(regen.cfgs.size()) {
-				int hp_heal_before = hitpoints_mod_pos_ncum;
-				int hp_heal_neg_before = hitpoints_mod_neg_ncum;
-				hitpoints_mod_pos_ncum = maximum<int>(hitpoints_mod_pos_ncum,regen.highest("value").first);
-				hitpoints_mod_neg_ncum = minimum<int>(hitpoints_mod_neg_ncum,regen.lowest("value",0).first);
-				if(hitpoints_mod_pos_ncum >= hp_heal_before) {
-					healer = units.end();
-				}
-				if(hitpoints_mod_neg_ncum >= hp_heal_neg_before) {
-					anti_healer = units.end();
-				}
 				for(std::vector<std::pair<config*,gamemap::location> >::const_iterator regen_it = regen.cfgs.begin(); regen_it != regen.cfgs.end(); ++regen_it) {
 					if((*regen_it->first)["poison"] == "cured") {
 						curer = units.end();
@@ -1737,61 +1718,52 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 						curer = units.end();
 						curing = "slowed";
 					}
-					if((*regen_it->first)["cumulative"]=="yes") {
-						if(lexical_cast_default<int>((*regen_it->first)["value"])>0) {
-							hitpoints_mod_pos_cum += lexical_cast_default<int>((*regen_it->first)["value"]);
-						} else {
-							hitpoints_mod_neg_cum += lexical_cast_default<int>((*regen_it->first)["value"]);
-						}
-					}
 				}
 			}
 			if (map.gives_healing(i->first)) {
-				hitpoints_mod_pos_ncum = maximum<int>(hitpoints_mod_pos_ncum,map.gives_healing(i->first));
-				hitpoints_mod_neg_ncum = minimum<int>(hitpoints_mod_neg_ncum,map.gives_healing(i->first));
+				if(map.gives_healing(i->first) > healing) {
+					healing = map.gives_healing(i->first);
+					healers.clear();
+				}
 				// FIXME
 				curing = "cured";
 				curer = units.end();
 			}
 			if(i->second.resting()) {
-				hitpoints_mod_pos_ncum += game_config::rest_heal_amount;
-				hitpoints_mod_pos_cum += game_config::rest_heal_amount;
+				healing += game_config::rest_heal_amount;
 			}
 		}
 		if(i->second.get_state("poisoned")=="yes") {
 			if(curing == "cured") {
 				i->second.set_state("poisoned","");
-				hitpoints_mod_pos_ncum = 0;
-				healer=curer;
+				healing = 0;
+				healers.clear();
+				healers.push_back(curer);
 			} else if(curing == "slowed") {
-				hitpoints_mod_pos_ncum = 0;
-				healer=curer;
+				healing = 0;
+				healers.clear();
+				healers.push_back(curer);
 			} else {
-				healer=units.end();
-				hitpoints_mod_pos_ncum = 0;
+				healers.clear();
+				healing = 0;
 				if(i->second.side() == side) {
-					hitpoints_mod_neg_cum -= game_config::poison_amount;
+					healing = -game_config::poison_amount;
 				}
 			}
 		}
 		
-		bool use_noncum_healing = hitpoints_mod_pos_ncum >= hitpoints_mod_pos_cum;
-		bool use_noncum_anti_healing = hitpoints_mod_neg_ncum <= hitpoints_mod_neg_cum;
-		
-		int total_mod = maximum<int>(hitpoints_mod_pos_ncum,hitpoints_mod_pos_cum) + minimum<int>(hitpoints_mod_neg_ncum,hitpoints_mod_neg_cum);
-		
-		if (curing == "" && hitpoints_mod_pos_ncum==0 && hitpoints_mod_pos_cum==0 && hitpoints_mod_neg_ncum==0 && hitpoints_mod_neg_cum==0) {
+		if (curing == "" && healing==0) {
 			continue;
 		}
 		
 		int pos_max = i->second.max_hitpoints() - i->second.hitpoints();
 		int neg_max = -(i->second.hitpoints() - 1);
-		if(total_mod > pos_max) {
-			total_mod = pos_max;
-		} else if(total_mod < neg_max) {
-			total_mod = neg_max;
+		if(healing > pos_max) {
+			healing = pos_max;
+		} else if(healing < neg_max) {
+			healing = neg_max;
 		}
-		if(total_mod == 0) {
+		if(healing == 0) {
 			continue;
 		}
 
@@ -1802,10 +1774,10 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 							  status.get_time_of_day().lawful_bonus,i->first,units,teams) &&
 				teams[disp.viewing_team()].is_enemy(side))) {
 			// Simple path.
-			if (total_mod > 0)
-				i->second.heal(total_mod);
-			else if (total_mod < 0)
-				i->second.take_hit(-total_mod);
+			if (healing > 0)
+				i->second.heal(healing);
+			else if (healing < 0)
+				i->second.take_hit(-healing);
 			continue;
 		}
 
@@ -1815,19 +1787,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		disp.scroll_to_tile(i->first.x, i->first.y, display::ONSCREEN);
 		disp.select_hex(i->first);
 		
-		if(use_noncum_healing) {
-			healers_cum.clear();
-			if(healer != units.end()) {
-				healers_cum.push_back(healer);
-			}
-		}
-		if(use_noncum_anti_healing) {
-			anti_healers_cum.clear();
-			if(anti_healer != units.end()) {
-				anti_healers_cum.push_back(anti_healer);
-			}
-		}
-		for(std::vector<unit_map::iterator>::iterator heal_anim_it = healers_cum.begin(); heal_anim_it != healers_cum.end(); ++heal_anim_it) {
+		for(std::vector<unit_map::iterator>::iterator heal_anim_it = healers.begin(); heal_anim_it != healers.end(); ++heal_anim_it) {
 			(*heal_anim_it)->second.set_healing(disp);
 			if(start_time_set) {
 				start_time = minimum<int>(start_time,(*heal_anim_it)->second.get_animation()->get_first_frame_time());
@@ -1835,66 +1795,48 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				start_time = (*heal_anim_it)->second.get_animation()->get_first_frame_time();
 			}
 		}
-		for(std::vector<unit_map::iterator>::iterator aheal_anim_it = anti_healers_cum.begin(); aheal_anim_it != anti_healers_cum.end(); ++aheal_anim_it) {
-			(*aheal_anim_it)->second.set_healing(disp);
-			if(start_time_set) {
-				start_time = minimum<int>(start_time,(*aheal_anim_it)->second.get_animation()->get_first_frame_time());
-			} else {
-				start_time = (*aheal_anim_it)->second.get_animation()->get_first_frame_time();
-			}
-		}
-		if (total_mod < 0) {
-			i->second.set_poisoned(disp, -total_mod);
+		if (healing < 0) {
+			i->second.set_poisoned(disp, -healing);
 			start_time = minimum<int>(start_time, i->second.get_animation()->get_first_frame_time());
 			// FIXME
 			sound::play_sound("groan.wav");
-			disp.float_label(i->first, lexical_cast<std::string>(-total_mod), 255,0,0);
+			disp.float_label(i->first, lexical_cast<std::string>(-healing), 255,0,0);
 		} else {
-			i->second.set_healed(disp, total_mod);
+			i->second.set_healed(disp, healing);
 			start_time = minimum<int>(start_time, i->second.get_animation()->get_first_frame_time());
 			sound::play_sound("heal.wav");
-			disp.float_label(i->first, lexical_cast<std::string>(total_mod), 0,255,0);
+			disp.float_label(i->first, lexical_cast<std::string>(healing), 0,255,0);
 		}
 		// restart all anims in a synchronized way
 		i->second.restart_animation(disp, start_time);
-		for(std::vector<unit_map::iterator>::iterator heal_reanim_it = healers_cum.begin(); heal_reanim_it != healers_cum.end(); ++heal_reanim_it) {
+		for(std::vector<unit_map::iterator>::iterator heal_reanim_it = healers.begin(); heal_reanim_it != healers.end(); ++heal_reanim_it) {
 			(*heal_reanim_it)->second.restart_animation(disp, start_time);
-		}
-		for(std::vector<unit_map::iterator>::iterator aheal_reanim_it = anti_healers_cum.begin(); aheal_reanim_it != anti_healers_cum.end(); ++aheal_reanim_it) {
-			(*aheal_reanim_it)->second.restart_animation(disp, start_time);
 		}
 
 		bool finished;
 		do {
 			finished = (i->second.get_animation()->animation_finished());
 			disp.draw_tile(i->first.x, i->first.y);
-			for(std::vector<unit_map::iterator>::iterator heal_fanim_it = healers_cum.begin(); heal_fanim_it != healers_cum.end(); ++heal_fanim_it) {
+			for(std::vector<unit_map::iterator>::iterator heal_fanim_it = healers.begin(); heal_fanim_it != healers.end(); ++heal_fanim_it) {
 				finished &= (*heal_fanim_it)->second.get_animation()->animation_finished();
 				disp.draw_tile((*heal_fanim_it)->first.x,(*heal_fanim_it)->first.y);
 			}
-			for(std::vector<unit_map::iterator>::iterator aheal_fanim_it = anti_healers_cum.begin(); aheal_fanim_it != anti_healers_cum.end(); ++aheal_fanim_it) {
-				finished &= (*aheal_fanim_it)->second.get_animation()->animation_finished();
-				disp.draw_tile((*aheal_fanim_it)->first.x,(*aheal_fanim_it)->first.y);
-			}
-			if (total_mod > 0) {
+			if (healing > 0) {
 				i->second.heal(1);
-				--total_mod;
-			} else if (total_mod < 0) {
+				--healing;
+			} else if (healing < 0) {
 				i->second.take_hit(1);
-				++total_mod;
+				++healing;
 			}
-			finished &= (!total_mod);
+			finished &= (!healing);
 			disp.update_display();
 			events::pump();
 			SDL_Delay(10);
 		} while (!finished);
 
 		i->second.set_standing(disp);
-		for(std::vector<unit_map::iterator>::iterator heal_sanim_it = healers_cum.begin(); heal_sanim_it != healers_cum.end(); ++heal_sanim_it) {
+		for(std::vector<unit_map::iterator>::iterator heal_sanim_it = healers.begin(); heal_sanim_it != healers.end(); ++heal_sanim_it) {
 			(*heal_sanim_it)->second.set_standing(disp);
-		}
-		for(std::vector<unit_map::iterator>::iterator aheal_sanim_it = anti_healers_cum.begin(); aheal_sanim_it != anti_healers_cum.end(); ++aheal_sanim_it) {
-			(*aheal_sanim_it)->second.set_standing(disp);
 		}
 		disp.update_display();
 		events::pump();
