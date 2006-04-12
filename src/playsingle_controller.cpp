@@ -154,7 +154,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			}
 		}
 
-		for(; ; first_player_ = 0) {
+		for(; ; first_player_ = 1) {
 			play_turn();
 		} //end for loop
 
@@ -319,7 +319,7 @@ void playsingle_controller::play_turn(){
 
 	LOG_NG << "turn: " << status_.turn() << "\n";
 
-	for(player_number_ = first_player_ + 1; player_number_ <= teams_.size(); player_number_++) {
+	for(player_number_ = first_player_; player_number_ <= teams_.size(); player_number_++) {
 		init_side(player_number_ - 1);
 
 		if (replaying_){
@@ -421,6 +421,7 @@ void playsingle_controller::before_human_turn(){
 }
 
 void playsingle_controller::play_human_turn(){
+	gui_->enable_menu("endturn", true);
 	while(!end_turn_) {
 		play_slice();
 
@@ -436,14 +437,14 @@ void playsingle_controller::after_human_turn(){
 
 void playsingle_controller::play_ai_turn(){
 	LOG_NG << "is ai...\n";
+	gui_->enable_menu("endturn", false);
 	browse_ = true;
 	gui_->recalculate_minimap();
 
 	const cursor::setter cursor_setter(cursor::WAIT);
 
 	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
-						map_,teams_,player_number_,units_,
-				turn_info::BROWSE_AI,replay_sender_);
+						map_,teams_,player_number_,units_, replay_sender_);
 
 	ai_interface::info ai_info(*gui_,map_,gameinfo_,units_,teams_,player_number_,status_, turn_data);
 	util::scoped_ptr<ai_interface> ai_obj(create_ai(current_team().ai_algorithm(),ai_info));

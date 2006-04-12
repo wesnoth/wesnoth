@@ -31,12 +31,10 @@ class replay_network_sender;
 class turn_info
 {
 public:
-	enum TURN_MODE { PLAY_TURN, BROWSE_NETWORKED, BROWSE_AI };
-
 	turn_info(const game_data& gameinfo, game_state& state_of_game,
 	          const gamestatus& status, display& gui, gamemap& map,
 		  std::vector<team>& teams, unsigned int team_num, unit_map& units,
-		  TURN_MODE mode, replay_network_sender& network_sender);
+		  replay_network_sender& network_sender);
 
 	~turn_info();
 

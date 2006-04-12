@@ -199,7 +199,8 @@ void replay_controller::play_replay(){
 		is_playing_ = true;
 
 		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
-		for(; !recorder.at_end() && is_playing_; first_player_ = 0) {
+		for(; !recorder.at_end() && is_playing_; first_player_ = 1
+			) {
 			play_turn();
 			play_slice();
 		} //end for loop

@@ -113,6 +113,10 @@ SOURCE=.\src\astarnode.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\attack_prediction.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\serialization\binary_or_text.cpp
 # End Source File
 # Begin Source File

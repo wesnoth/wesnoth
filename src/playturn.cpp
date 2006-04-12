@@ -22,13 +22,11 @@
 turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
                      const gamestatus& status, display& gui, gamemap& map,
 		     std::vector<team>& teams, unsigned int team_num, unit_map& units,
-			 TURN_MODE mode, replay_network_sender& replay_sender)
+			 replay_network_sender& replay_sender)
   : gameinfo_(gameinfo), state_of_game_(state_of_game), status_(status),
     gui_(gui), map_(map), teams_(teams), team_num_(team_num),
     units_(units), replay_sender_(replay_sender)
-{
-	gui_.enable_menu("endturn", mode == PLAY_TURN);
-}
+{}
 
 turn_info::~turn_info(){
 	undo_stack_.clear();

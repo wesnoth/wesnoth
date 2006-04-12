@@ -24,7 +24,7 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 {
 	player_number_ = 1;
 	start_turn_ = status_.turn();
-	first_player_ = lexical_cast_default<unsigned int,std::string>(level_["playing_team"], 0);
+	first_player_ = lexical_cast_default<unsigned int,std::string>(level_["playing_team"], 0) + 1;
 	skip_replay_ = skip_replay;
 	browse_ = false;
 
@@ -294,7 +294,7 @@ void play_controller::init_side(const unsigned int team_index){
 	//if a side is dead, don't do their turn
 	if(!current_team.is_empty() || team_units(units_,player_number_) == 0) {
 		if(team_manager_.is_observer()) {
-			gui_->set_team(size_t(player_number_-1));
+			gui_->set_team(size_t(team_index));
 		}
 
 		std::stringstream player_number_str;
@@ -302,7 +302,7 @@ void play_controller::init_side(const unsigned int team_index){
 		gamestate_.set_variable("side_number",player_number_str.str());
 
 		//fire side turn event only if real side change occurs not counting changes from void to a side
-		if (team_index != first_player_ || status_.turn() > start_turn_) {
+		if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
 			game_events::fire("side turn");
 		}
 
@@ -310,7 +310,7 @@ void play_controller::init_side(const unsigned int team_index){
 		//player should get income now. healing/income happen if it's not the first
 		//turn of processing, or if we are loading a game, and this is not the
 		//player it started with.
-		const bool turn_refresh = status_.turn() > start_turn_ || loading_game_ && team_index != first_player_;
+		const bool turn_refresh = status_.turn() > start_turn_ || loading_game_ && team_index != (first_player_ - 1);
 
 		if(turn_refresh) {
 			for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
@@ -334,10 +334,10 @@ void play_controller::init_side(const unsigned int team_index){
 
 		current_team.set_time_of_day(int(status_.turn()),status_.get_time_of_day());
 
-		gui_->set_playing_team(size_t(player_number_-1));
+		gui_->set_playing_team(size_t(team_index));
 
 		if (!recorder.is_skipping()){
-			::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,player_number_-1);
+			::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,team_index);
 		}
 
 		if (!recorder.is_skipping()){

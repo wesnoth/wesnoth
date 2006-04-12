@@ -55,7 +55,7 @@ void playmp_controller::before_human_turn(){
 	playsingle_controller::before_human_turn();
 
 	turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
-		*gui_,map_,teams_,player_number_,units_,turn_info::PLAY_TURN,replay_sender_);
+		*gui_,map_,teams_,player_number_,units_,replay_sender_);
 }
 
 void playmp_controller::play_human_turn(){
@@ -157,10 +157,9 @@ bool playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
 
 	browse_ = true;
+	gui_->enable_menu("endturn", false);
 	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
-				map_,teams_,player_number_,units_,
-				turn_info::BROWSE_NETWORKED,
-				replay_sender_);
+				map_,teams_,player_number_,units_, replay_sender_);
 
 	for(;;) {
 
