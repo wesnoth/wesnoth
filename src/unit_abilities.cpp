@@ -283,7 +283,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 	wassert(units_ != NULL);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
-	int index=-1;
+	gamemap::location::DIRECTION index=gamemap::location::NDIRECTIONS;
 	const config::child_list& adj_filt = cfg.get_children("filter_adjacent");
 	config::child_list::const_iterator i;
 	for(i = adj_filt.begin(); i != adj_filt.end(); ++i) {
@@ -291,22 +291,8 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 		if(dirs.size()==1 && dirs.front()=="") {	
 		} else {
 			for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
-				if(*j=="n") {
-					index=0;
-				} else if(*j=="ne") {
-					index=1;
-				} else if(*j=="se") {
-					index=2;
-				} else if(*j=="s") {
-					index=3;
-				} else if(*j=="sw") {
-					index=4;
-				} else if(*j=="nw") {
-					index=5;
-				} else {
-					index=-1;
-				}
-				if(index != -1) {
+				index = gamemap::location::parse_direction(*j);
+				if(index != gamemap::location::NDIRECTIONS) {
 					units_map::const_iterator unit = units_->find(adjacent[index]);
 					if(unit == units_->end()) {
 						return false;
@@ -318,29 +304,15 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 			}
 		}
 	}
-	index=-1;
+	index=gamemap::location::NDIRECTIONS;
 	const config::child_list& adj_filt_loc = cfg.get_children("filter_adjacent_location");
 	for(i = adj_filt_loc.begin(); i != adj_filt_loc.end(); ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		if(dirs.size()==1 && dirs.front()=="") {	
 		} else {
 			for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
-				if(*j=="n") {
-					index=0;
-				} else if(*j=="ne") {
-					index=1;
-				} else if(*j=="se") {
-					index=2;
-				} else if(*j=="s") {
-					index=3;
-				} else if(*j=="sw") {
-					index=4;
-				} else if(*j=="nw") {
-					index=5;
-				} else {
-					index=-1;
-				}
-				if(index != -1) {
+				index = gamemap::location::parse_direction(*j);
+				if(index != gamemap::location::NDIRECTIONS) {
 					wassert(map_ != NULL);
 					wassert(gamestatus_ != NULL);
 					if(!map_->terrain_matches_filter(adjacent[index],**i,*gamestatus_,*units_,ability=="illuminates")) {
@@ -723,7 +695,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 	} else {
 		get_adjacent_tiles(dloc_,adjacent);
 	}
-	int index=-1;
+	gamemap::location::DIRECTION index=gamemap::location::NDIRECTIONS;
 	const config::child_list& adj_filt = cfg.get_children("filter_adjacent");
 	config::child_list::const_iterator i;
 	for(i = adj_filt.begin(); i != adj_filt.end(); ++i) {
@@ -731,22 +703,8 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 		if(dirs.size()==1 && dirs.front()=="") {	
 		} else {
 			for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
-				if(*j=="n") {
-					index=0;
-				} else if(*j=="ne") {
-					index=1;
-				} else if(*j=="se") {
-					index=2;
-				} else if(*j=="s") {
-					index=3;
-				} else if(*j=="sw") {
-					index=4;
-				} else if(*j=="nw") {
-					index=5;
-				} else {
-					index=-1;
-				}
-				if(index != -1) {
+				index = gamemap::location::parse_direction(*j);
+				if(index != gamemap::location::NDIRECTIONS) {
 					units_map::const_iterator unit = unitmap_->find(adjacent[index]);
 					if(unit == unitmap_->end()) {
 						return false;
@@ -758,29 +716,15 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 			}
 		}
 	}
-	index=-1;
+	index=gamemap::location::NDIRECTIONS;
 	const config::child_list& adj_filt_loc = cfg.get_children("filter_adjacent_location");
 	for(i = adj_filt_loc.begin(); i != adj_filt_loc.end(); ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		if(dirs.size()==1 && dirs.front()=="") {	
 		} else {
 			for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
-				if(*j=="n") {
-					index=0;
-				} else if(*j=="ne") {
-					index=1;
-				} else if(*j=="se") {
-					index=2;
-				} else if(*j=="s") {
-					index=3;
-				} else if(*j=="sw") {
-					index=4;
-				} else if(*j=="nw") {
-					index=5;
-				} else {
-					index=-1;
-				}
-				if(index != -1) {
+				index = gamemap::location::parse_direction(*j);
+				if(index != gamemap::location::NDIRECTIONS) {
 					wassert(map_ != NULL);
 					wassert(game_status_ != NULL);
 					if(!map_->terrain_matches_filter(adjacent[index],**i,*game_status_,*unitmap_)) {
@@ -870,8 +814,6 @@ void attack_type::set_specials_context(const gamemap::location& loc,const unit& 
 
 
 
-
-
 namespace unit_abilities
 {
 
@@ -892,130 +834,68 @@ void individual_effect::set(value_modifier t,int val,config* abil,const gamemap:
 
 effect::effect(const unit_ability_list& list, int def, bool backstab)
 {
-	int ncum_set = def; bool ncum_set_set = false;
-	int ncum_add = 0; bool ncum_add_set = false;
-	int ncum_mul = 100;
-	individual_effect ncum_set_effect(NOT_USED,0,NULL,gamemap::location());
-	individual_effect ncum_add_effect(NOT_USED,0,NULL,gamemap::location());
-	individual_effect ncum_mul_effect(NOT_USED,0,NULL,gamemap::location());
 	
-	int cum_set = def;
-	int cum_add = 0;
-	int cum_mul = 100000;
-	std::deque<int> cumulative_multipliers;
-	individual_effect cum_set_effect(NOT_USED,0,NULL,gamemap::location());
+	int value_set = def; bool value_is_set = false;
+	std::map<std::string,individual_effect> values_add;
+	std::map<std::string,individual_effect> values_mul;
 	
-	bool use_ncum = false;
-	bool use_cum = false;
+	individual_effect set_effect(NOT_USED,0,NULL,gamemap::location());
+	
 	for(std::vector<std::pair<config*,gamemap::location> >::const_iterator i = list.cfgs.begin(); i != list.cfgs.end(); ++i) {
-		if((*i->first)["backstab"]=="yes" && !backstab) {
+		const config& cfg = (*i->first);
+		const std::string& effect_id = cfg["id"] != "" ? cfg["id"] : cfg["name"];
+		
+		if(cfg["backstab"]=="yes" && !backstab) {
 			continue;
 		}
-		if((*i->first)["cumulative"]=="yes") {
-			int value = lexical_cast_default<int>((*i->first)["value"]);
-			int add = lexical_cast_default<int>((*i->first)["add"]);
-			int multiply = static_cast<int>(lexical_cast_default<float>((*i->first)["multiply"])*100);
-			if(value > cum_set) {
-				cum_set = value;
-				cum_set_effect.set(SET,value,i->first,i->second);
+		int value = lexical_cast_default<int>(cfg["value"]);
+		int add = lexical_cast_default<int>(cfg["add"]);
+		int multiply = static_cast<int>(lexical_cast_default<float>(cfg["multiply"])*100);
+		
+		if(!value_is_set && cfg["cumulative"]!="yes" && cfg["value"] != "") {
+			value_is_set = true;
+			value_set = value;
+			set_effect.set(SET,value,i->first,i->second);
+		} else if(cfg["value"] != "") {
+			value_is_set = true;
+			if(value > value_set) {
+				value_set = value;
+				set_effect.set(SET,value,i->first,i->second);
 			}
-			if(add) {
-				cum_add += add;
-				effect_list_.push_back(individual_effect(ADD,add,i->first,i->second));
+		}
+		if(cfg["add"] != "") {
+			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
+			if(add_effect == values_add.end() || add > add_effect->second.value) {
+				values_add[effect_id].set(ADD,add,i->first,i->second);
 			}
-			if(multiply) {
-				effect_list_.push_back(individual_effect(MUL,multiply,i->first,i->second));
-				cumulative_multipliers.push_back(multiply);
-			}
-			use_cum = true;
-		} else {
-			int value = lexical_cast_default<int>((*i->first)["value"]);
-			int add = lexical_cast_default<int>((*i->first)["add"]);
-			int multiply = static_cast<int>(lexical_cast_default<float>((*i->first)["multiply"])*100);
-			if(value) {
-				if(ncum_set_set) {
-					if(value > ncum_set) {
-						ncum_set = value;
-						ncum_set_effect.set(SET,value,i->first,i->second);
-					}
-				} else {
-					ncum_set = value;
-					ncum_set_effect.set(SET,value,i->first,i->second);
-					ncum_set_set = true;
-				}
-				use_ncum = true;
-			}
-			if(add) {
-				if(ncum_add_set) {
-					if(add > ncum_add) {
-						ncum_add = add;
-						ncum_add_effect.set(ADD,add,i->first,i->second);
-					}
-				} else {
-					ncum_add = add;
-					ncum_add_effect.set(ADD,add,i->first,i->second);
-					ncum_add_set = true;
-				}
-				use_ncum = true;
-			}
-			if(multiply) {
-				if(multiply > ncum_mul) {
-					ncum_mul = multiply;
-					ncum_mul_effect.set(MUL,multiply,i->first,i->second);
-				}
-				use_ncum = true;
+		}
+		if(cfg["multiply"] != "") {
+			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
+			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
+				values_mul[effect_id].set(MUL,multiply,i->first,i->second);
 			}
 		}
 	}
-	if(use_cum) {
-		
-		// compute cum_mul
-		std::sort(cumulative_multipliers.begin(),cumulative_multipliers.end());
-		while(! cumulative_multipliers.empty()) {
-			if(cum_mul >= 100000) {
-				cum_mul *= cumulative_multipliers.back();
-				cum_mul /= 100;
-				cumulative_multipliers.pop_back();
-			} else {
-				cum_mul *= cumulative_multipliers.front();
-				cum_mul /= 100;
-				cumulative_multipliers.pop_front();
-			}
-		}
-		
-		composite_value_ = maximum<int>((cum_set + cum_add)*cum_mul/100000,(ncum_set + ncum_add)*ncum_mul/100);
-		if((ncum_set + ncum_add)*ncum_mul/100 > (cum_set + cum_add)*cum_mul/100000) {
-			effect_list_.clear();
-			if(ncum_set_effect.type != NOT_USED) {
-				effect_list_.push_back(ncum_set_effect);
-			}
-			if(ncum_add_effect.type != NOT_USED) {
-				effect_list_.push_back(ncum_add_effect);
-			}
-			if(ncum_mul_effect.type != NOT_USED) {
-				effect_list_.push_back(ncum_mul_effect);
-			}
-		} else {
-			if(cum_set_effect.type != NOT_USED) {
-				effect_list_.push_back(cum_set_effect);
-			}
-		}
-	} else if(use_ncum) {
-		composite_value_ = (ncum_set + ncum_add)*ncum_mul/100;
-		effect_list_.clear();
-		if(ncum_set_effect.type != NOT_USED) {
-			effect_list_.push_back(ncum_set_effect);
-		}
-		if(ncum_add_effect.type != NOT_USED) {
-			effect_list_.push_back(ncum_add_effect);
-		}
-		if(ncum_mul_effect.type != NOT_USED) {
-			effect_list_.push_back(ncum_mul_effect);
-		}
-	} else {
-		effect_list_.clear();
-		composite_value_ = def;
+	
+	if(value_is_set && set_effect.type != NOT_USED) {
+		effect_list_.push_back(set_effect);
 	}
+	
+	int multiplier = 1;
+	int divisor = 1;
+	std::map<std::string,individual_effect>::const_iterator e;
+	for(e = values_mul.begin(); e != values_mul.end(); ++e) {
+		multiplier *= e->second.value;
+		divisor *= 100;
+		effect_list_.push_back(e->second);
+	}
+	int addition = 0;
+	for(e = values_add.begin(); e != values_add.end(); ++e) {
+		addition += e->second.value;
+		effect_list_.push_back(e->second);
+	}
+	
+	composite_value_ = (value_set + addition) * multiplier / divisor;
 	
 }
 

@@ -27,6 +27,7 @@ enum value_modifier {NOT_USED,SET,ADD,MUL};
 
 struct individual_effect
 {
+	individual_effect() {};
 	individual_effect(value_modifier t,int val,config* abil,const gamemap::location& l);
 	void set(value_modifier t,int val,config* abil,const gamemap::location& l);
 	value_modifier type;
