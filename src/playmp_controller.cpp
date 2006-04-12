@@ -32,10 +32,6 @@ void playmp_controller::speak(){
 	menu_handler_.speak();
 }
 
-void playmp_controller::user_command(){
-	menu_handler_.user_command();
-}
-
 void playmp_controller::play_side(const int team_index){
 //goto this label if the type of a team (human/ai/networked) has changed mid-turn
 redo_turn:

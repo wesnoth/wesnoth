@@ -111,6 +111,10 @@ void playsingle_controller::end_unit_turn(){
 		menu_handler_.end_unit_turn(mouse_handler_, player_number_);
 }
 
+void playsingle_controller::user_command(){
+	menu_handler_.user_command();
+}
+
 LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, upload_log& log, 
 												  bool skip_replay)
 {

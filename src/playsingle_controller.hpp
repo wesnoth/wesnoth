@@ -47,6 +47,7 @@ public:
 	virtual void continue_move();
 	virtual void unit_hold_position();
 	virtual void end_unit_turn();
+	virtual void user_command();
 
 	void playsingle_slice();
 
