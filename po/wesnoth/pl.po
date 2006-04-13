@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-12 17:55+0200\n"
-"PO-Revision-Date: 2006-03-17 08:19+0100\n"
+"PO-Revision-Date: 2006-04-13 15:02+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,12 +15,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/abilities.cfg:7
-#, fuzzy
 msgid "heals +4"
-msgstr "leczy"
+msgstr "leczy +4"
 
 #: data/abilities.cfg:12
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -31,23 +29,19 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Leczy:\n"
+"Leczy +4:\n"
 "Ta jednostka pomaga sąsiednim jednostkom odzyskać trochę zdrowia na początku "
 "tury.\n"
 "\n"
 "Jednostka pod opieką leczącego może odzyskać do 4 PŻ na turę.\n"
-"Leczący może rozdzielić maksymalnie 8 PŻ na turę pomiędzy wszystkich pod "
-"jego opieką.\n"
 "Zatruta jednostka nie zostanie wyleczona przez leczącego, musi szukać opieki "
 "w wiosce lub u uzdrowiciela."
 
 #: data/abilities.cfg:26
-#, fuzzy
 msgid "heals +8"
-msgstr "leczy"
+msgstr "leczy +8"
 
 #: data/abilities.cfg:31
-#, fuzzy
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -62,11 +56,8 @@ msgstr ""
 "Ta jednostka łączy ziołowe lekarstwa z magią, by w czasie bitwy pomagać "
 "innym szybciej i lepiej, niż to normalnie możliwe.\n"
 "\n"
-"Ta jednostka zajmie się na początku tury wszystkimi sąsiednimi przyjaznymi "
-"jednostkami, które są ranne.\n"
-"Jednostka pod opieką uzdrowiciela może odzyskać do 8 PŻ na turę.\n"
-"Uzdrowiciel może przywrócić w sumie maksymalnie 18 PŻ na turę wszystkim "
-"jednostkom pod swoją opieką.\n"
+"Jednostka pod opieką uzdrowiciela może odzyskać do 8 PŻ na turę lub "
+"powstrzymać efekty działania trucizny.\n"
 "Uzdrowiciel może wyleczyć z trucizny, ale wyleczona jednostka nie otrzyma "
 "poza tym żadnych punktów życia w danej turze. "
 
@@ -80,6 +71,9 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Uzdrawia:\n"
+"Uzdrowiciel może wyleczyć jednostkę z trucizny, lecz nie odzyska ona w tej "
+"samej turze żadnych punktów życia."
 
 #: data/abilities.cfg:55
 msgid "regenerates"
@@ -293,9 +287,8 @@ msgstr ""
 "(Nie działa to na nieumarłych i jednostki w wioskach.)"
 
 #: data/abilities.cfg:415
-#, fuzzy
 msgid "slows"
-msgstr "spowolnienie"
+msgstr "spowolnia"
 
 #: data/abilities.cfg:417
 msgid ""
@@ -309,9 +302,8 @@ msgstr ""
 "szybkości (zaokrąglając w górę)."
 
 #: data/abilities.cfg:424
-#, fuzzy
 msgid "stones"
-msgstr "zamiana w kamień"
+msgstr "zmienia w kamień"
 
 #: data/abilities.cfg:426
 msgid ""
@@ -380,9 +372,8 @@ msgstr ""
 "jego kontratak zadaje podwójne obrażenia."
 
 #: data/abilities.cfg:473
-#, fuzzy
 msgid "drains"
-msgstr "wyssanie"
+msgstr "wysysa"
 
 #: data/abilities.cfg:475
 msgid ""
@@ -425,7 +416,6 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
 #: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
-#, fuzzy
 msgid "Artwork and Graphics Designers"
 msgstr "Projektanci grafiki"
 
@@ -540,9 +530,8 @@ msgid "Japanese Translation"
 msgstr "Tłumaczenie japońskie"
 
 #: data/about.cfg:365
-#, fuzzy
 msgid "Korean Translation"
-msgstr "Tłumaczenie norweskie"
+msgstr "Tłumaczenie koreańskie"
 
 #: data/about.cfg:372
 msgid "Latin Translation"
@@ -617,9 +606,8 @@ msgstr "Pełne uzdrowienie"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
 #: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
 #: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
 msgid "Campaign Designer"
-msgstr "Kampania"
+msgstr "Twórca kampanii"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
@@ -1099,9 +1087,8 @@ msgstr "szpony"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:25
 #: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
 #: data/campaigns/Under_the_Burning_Suns.cfg:32
-#, fuzzy
 msgid "Current Maintainer"
-msgstr "Aktualny cel:"
+msgstr "Obecny opiekun"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:74
@@ -2904,7 +2891,6 @@ msgstr ""
 "(takie jak trolle) automatycznie odzyskują 8PŻ w każdej turze."
 
 #: data/help.cfg:219
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -2912,14 +2898,11 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Leczenie: Jednostki z umiejętnością <ref>dst=ability_heals text=leczenia</"
-"ref> leczą do 8PŻ na turę oraz potrafią zatrzymać działanie trucizny. "
-"Uleczone zostaną tylko jednostki stojące po tej samej stronie co lecząca "
-"oraz znajdujące się na przylegających polach, maksymalnie do 4PŻ na "
-"jednostkę."
+"Jednostki leczące: Jednostki z umiejętnością <ref>dst=ability_heals "
+"text=leczenia</ref> leczą przyległe sojusznicze jednostki, dodając zazwyczaj "
+"4 lub 8 PŻ na turę, lub powodują, że trucizna nie zadaje obrażeń."
 
 #: data/help.cfg:220
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -2927,15 +2910,12 @@ msgid ""
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
-"\n"
-"Uzdrawianie jednostek: jednostki z umiejętnością <ref>dst=ability_cures "
-"text=uzdrawiania</ref> mogą uleczyć do 18PŻ na turę oraz usunąć truciznę. "
-"Uleczone zostaną wyłącznie jednostki znajdujące się na sąsiednich stronach i "
-"walczące po tej samej stronie, co jednostka lecząca, i tylko do 8PŻ na "
-"jednostkę."
+"Uzdrawiające jednostki: Jednostki z umiejętnością <ref>dst=ability_cures "
+"text=uzdrawiania</ref> leczą spod wpływu trucizny wszystkie przyległe "
+"sojusznicze jednostki (ma to większy priorytet niż leczenie, jeżeli "
+"jednostka i to potrafi)."
 
 #: data/help.cfg:222
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2944,12 +2924,9 @@ msgid ""
 "option will be used. Finally, units heal fully between scenarios."
 msgstr ""
 "\n"
-"\n"
-"Pamiętaj, że choć odpoczywanie może być łączone z innymi formami leczenia, "
-"to przebywanie w wioskach, regeneracja, uzdrawianie oraz leczenie nie "
-"działają razem. Jednostki, których uwaga skoncentrowana jest na leczeniu lub "
-"uzdrawianiu wielu rannych będą robiły to mniej efektywnie. Ponadto jednostki "
-"leczą się całkowicie między scenariuszami."
+"Choć odpoczywanie może być łączone z innymi formami leczenia, to przebywanie "
+"w wioskach, regeneracja, uzdrawianie oraz leczenie nie działają razem. "
+"Ponadto jednostki leczą się całkowicie między scenariuszami."
 
 #: data/help.cfg:227
 msgid "Income and Upkeep"
@@ -3986,10 +3963,13 @@ msgid "Great War"
 msgstr "Wielka wojna"
 
 #: data/names.cfg:51
+#, fuzzy
 msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
+"Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
+"Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -4350,15 +4330,14 @@ msgid "4p - Siege Castles"
 msgstr "4g - Oblężone Zamki"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well 2 vs 2 or FFA. There are approximately 45 villages. "
 "Recommended setting of 2 gold per village."
 msgstr ""
-"Mapa o rozmiarze 25x25 do gry 2vs2, zbudowana wokół rzeki oraz pary twierdz "
-"w przeciwnych rogach. Do gry 1&3 vs 2&4. Jest na niej 28 wiosek. "
-"Rekomendowane ustawienie 2 sztuk złota na wioskę."
+"Mapa o rozmiarze 40x30, na której 4 potężne zamki stoją w miejscu, gdzie "
+"łączą się dwie rzeki. Sprawdza się w grze 2vs2 lub wolnej grze. Jest na niej "
+"około 45 wiosek. Rekomendowane ustawienie 2 sztuk złota / wioskę."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -4491,153 +4470,192 @@ msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
+" Dusze mają wyjątkową wytrzymałość na obrażenia i poruszają się dość wolno "
+"nad otwartą wodą."
 
 #: data/special-notes.cfg:5
 msgid ""
 " This unit's holy attack deals tremendous damage to the undead, and even "
 "some to living creatures."
 msgstr ""
+" Święty atak tej jednostki zadaje nieumarłym ogromne obrażenia, ale "
+"skromniejsze istotom żyjącym."
 
 #: data/special-notes.cfg:8
 msgid ""
 " This unit is capable of basic healing, though it can only delay the effects "
 "of poison, not cure them entirely."
 msgstr ""
+" Ta jednostka posiada podstawowe umiejętności leczenia, choć nie potrafi "
+"wyleczyć z zatrucia, a jedynie spowolnić jego efekty."
 
 #: data/special-notes.cfg:11
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
+" Ta jednostka posiada umiejętności leczenia otaczających ją jednostek oraz "
+"potrafi wyleczyć je z zatrucia."
 
 #: data/special-notes.cfg:14
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
+" Ta jednostka potrafi się regenerować, co pozwala jej zawsze odzyskiwać siły "
+"tak, jakby stacjonowała w wiosce."
 
 #: data/special-notes.cfg:17
 msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
+" Dzięki niezłomności jednostka ta otrzymuje zmniejszone obrażenia w wyniku "
+"niektórych ataków, ale tylko podczas obrony."
 
 #: data/special-notes.cfg:20
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
-"Porucznicy, wyćwiczeni w posługiwaniu się mieczem i kuszą, dowodzą małymi "
-"grupkami ludzi, koordynując ich ataki.\n"
-"\n"
-"Uwagi specjalne: umiejętność dowodzenia poruczników pozwala sojuszniczym "
-"jednostkom znajdującym się obok nich zadawać większe obrażenia. Odnosi się "
-"to tylko do jednostek na niższym poziomie."
+" Zdolności przywódcze tej jednostki powodują, że znajdujące się obok niej "
+"przyjazne jednostki zadają w walce większe obrażenia, choć dotyczy to tylko "
+"jednostek niższego poziomu."
 
 #: data/special-notes.cfg:23
 msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
+" Ta jednostka jest harcownikiem, dzięki czemu może ignorować strefy kontroli "
+"przeciwników i omijać ich bez przeszkód."
 
 #: data/special-notes.cfg:26
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr ""
+msgstr " Iluminacja zwiększa poziom oświetlenia na przyległych polach."
 
 #: data/special-notes.cfg:29
 msgid ""
 " This unit can teleport between any two villages instantly, though the "
 "player must control both, and the destination village must be unoccupied."
 msgstr ""
+" Ta jednostka potrafi natychmiastowo teleportować się między dwoma wioskami, "
+"z których obie muszę należeć do gracza, a punkt docelowy musi być wolny."
 
 #: data/special-notes.cfg:32
 msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
+" W leśnych terenach posiadana przez tę jednostkę zdolność dokonywania "
+"zasadzek powoduje, że jest niewidoczna dla przeciwników, chyba, że znajdują "
+"się oni obok niej lub zdradziła swoją obecność atakując."
 
 #: data/special-notes.cfg:35
 msgid " This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
+" Ta jednostka potrafi ukrywać się w nocy, nie zostawiając śladu swojej "
+"obecności."
 
 #: data/special-notes.cfg:38
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
+" Ta jednostka potrafi poruszać się w głębokiej wodzie niezauważona, gdyż nie "
+"wymaga powietrza z powierzchni."
 
 #: data/special-notes.cfg:41
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
+" Gdy ta jednostka wpadnie w berserk, będzie atakowała przeciwnika do "
+"momentu, gdy zostanie zabita lub go pokona."
 
 #: data/special-notes.cfg:44
 msgid ""
 "  If someone with the same allegiance distracts an enemy, this unit may "
 "backstab, inflicting double damage, by creeping around behind that enemy."
 msgstr ""
+"  Jeśli ktoś stojący po tej samej stronie rozprasza uwagę wroga, jednostka "
+"ta potrafi zadać cios w plecy, zadając podwójne obrażenia. Wymaga to jednak "
+"zakradnięcia się za przeciwnika."
 
 #: data/special-notes.cfg:47
 msgid " Foes who lose their life to the plague will rise again in unlife."
 msgstr ""
+" Przeciwnicy, którzy stracą życie w kontakcie z plagą powstają ponownie jako "
+"nieumarli."
 
 #: data/special-notes.cfg:50
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage."
 msgstr ""
+" Ta jednostka potrafi spowalniać przeciwników, zmniejszając o połowę ich "
+"szybkość i zadawane obrażenia."
 
 #: data/special-notes.cfg:53
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
+" Umiejętność zamieniania żywych istot w kamień czyni tę jednostkę wyjątkowo "
+"niebezpieczną."
 
 #: data/special-notes.cfg:56
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
+" Umiejętności strzeleckie tej jednostki powodują, że ma ona wysoką szansę "
+"trafienia przeciwników, ale tylko podczas ataku."
 
 #: data/special-notes.cfg:59
 msgid ""
 " The ranged attacks of this unit are magical, and always have a high chance "
 "of hitting an opponent."
 msgstr ""
+" Atak na odległość tej jednostki jest magiczny i zawsze ma wysoką szansę "
+"trafienia przeciwnika."
 
 #: data/special-notes.cfg:62
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
+" Rojny atak tej jednostki staje się mniej niebezpieczny, gdy jej część "
+"odnosi zostaje ranna."
 
 #: data/special-notes.cfg:65
-#, fuzzy
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"\n"
-"\n"
-"Uwagi specjalne: szarżując z lancą rycerze zadają i otrzymują podwójne "
-"obrażenia. Nie odnosi się to do obrony."
+" Atak szarżą podwaja zadawane i otrzymywane obrażenia. Nie odnosi się to do "
+"obrony."
 
 #: data/special-notes.cfg:68
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
+" Jednostka ta podczas walki wysya życie swych ofiar, odnawiając swoje "
+"zdrowie."
 
 #: data/special-notes.cfg:71
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
+" Długość broni tej jednostki pozwala jej na zadaanie pierwszego ciosu, nawet "
+"podczas obrony."
 
 #: data/special-notes.cfg:74
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
+" Ofiary trucizny, którą operuje ta jednostka będą ciągle odnosiły obrażenia, "
+"aż do czasu, gdy zostaną uzdrowione w mieście lub przez uzdrowiciela."
 
 #: data/team_colors.cfg:4
 msgid "Red"
@@ -4715,9 +4733,8 @@ msgid "Cave Lit"
 msgstr "Rozświetlona jaskinia"
 
 #: data/terrain.cfg:414
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "Pustynne góry"
+msgstr "Nieprzebyte góry"
 
 #: data/terrain.cfg:445
 msgid "Great Tree"
@@ -4872,17 +4889,16 @@ msgstr ""
 "terenie wyświetlony jest w prawym-górnym rogu ekranu."
 
 #: data/tips.cfg:5
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
 "be cured by moving them to a village, or placing them next to a unit with "
 "the 'cures' ability."
 msgstr ""
-"Zatrute jednostki tracą 8 punktów życia na turę, ale nie umierają od "
-"trucizny: w najgorszym wypadku pozostanie im 1 PŻ. Zatrutą jednostkę można "
-"uleczyć, wprowadzając ją do wioski, albo stawiając koło jednostki ze "
-"zdolnością \"uzdrawianie\"."
+"Zatrute jednostki tracą 8 punktów życia na turę, ale nie umrą z powodu "
+"zatrucia: w najgorszym wypadku pozostanie im 1 punkt życia. Zatrutą "
+"jednostkę można uleczyć, wprowadzając ją do wioski, albo stawiając koło "
+"jednostki ze zdolnością \"uzdrawiania\"."
 
 #: data/tips.cfg:6
 msgid ""
@@ -5129,8 +5145,8 @@ msgid ""
 "campaign difficulty."
 msgstr ""
 "Możesz przekazać Projektowi Wesnoth anonimowe zestawienie twoich postępów w "
-"grze przy pomocy przycisku Wspomóż Wesnoth. Informacje te potrzebne są nam "
-"do dopracowania poziomu trudności kampanii."
+"grze przy pomocy przycisku \"Pomóż nam\". Informacje te potrzebne są nam do "
+"dopracowania poziomu trudności kampanii."
 
 #: data/tips.cfg:35
 msgid ""
@@ -5193,12 +5209,10 @@ msgid "female^Fighter"
 msgstr "Wojowniczka"
 
 #: data/tutorial/units/Quintain.cfg:3
-#, fuzzy
 msgid "Quintain"
-msgstr "Góry"
+msgstr "Atrapa"
 
 #: data/tutorial/units/Quintain.cfg:13
-#, fuzzy
 msgid ""
 "Quintains are used to practice swordplay and jousting on.  It would be "
 "extremely unusual to be attacked by one."
@@ -5207,9 +5221,8 @@ msgstr ""
 "niezwykle dziwne, gdyby któraś sama zaatakowała."
 
 #: data/tutorial/units/Quintain.cfg:20
-#, fuzzy
 msgid "flail"
-msgstr "ogon"
+msgstr "cep"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -5379,7 +5392,6 @@ msgid "Drake Flameheart"
 msgstr "Smok ogniste serce"
 
 #: data/units/Drake_Flameheart.cfg:21
-#, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves, have veins which course with fire rather than blood. "
@@ -5392,16 +5404,13 @@ msgstr ""
 "Choć fakt, że potrafią ziać ogniem zdaje się potwierdzać ten pogląd, to z "
 "jakiegoś powodu nikt jeszcze nie próbował sprawdzić tego na żywym osobniku.\n"
 "\n"
-"Uwagi specjalne: zdolności przywódcze Ognistego serca powodują, że przyjazne "
-"jednostki na sąsiednich polach zadają podczas walki większe obrażenia, choć "
-"dotyczy to tylko żołnierzy o niższym poziomie."
+"Uwagi specjalne:"
 
 #: data/units/Drake_Flare.cfg:3
 msgid "Drake Flare"
 msgstr "Smoczy błysk"
 
 #: data/units/Drake_Flare.cfg:20
-#, fuzzy
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
@@ -5414,8 +5423,7 @@ msgstr ""
 "aspirują do miana prawdziwych przywódców, zarówno na wojnie jak i w czasie "
 "pokoju.\n"
 "\n"
-"Uwagi specjalne: zdolności przywódcze spalacza pozwalają sąsiadującym z nim "
-"jednostkom niższego poziomu walczyć skuteczniej."
+"Uwagi specjalne:"
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
@@ -5516,7 +5524,6 @@ msgid "Drake Slasher"
 msgstr "Smoczy siepacz"
 
 #: data/units/Drake_Slasher.cfg:20
-#, fuzzy
 msgid ""
 "Slashers are clashers who have chosen to master the use of a Halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
@@ -5526,12 +5533,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Siepacze to ci spośród bojowników którzy woleli opanować sztukę walki "
+"Siepacze to ci spośród bojowników, którzy woleli opanować sztukę walki "
 "halabardą zamiast noszenia miecza i włóczni. Ich wielki rozmiar pozwala im "
-"używać równie wielkiej broni, wystarczająco wielkiej by zabić konia równie "
-"łatwo jak ludzie zrobiłby to z dzikiem. Ich trening poprawił ich zdolności "
-"obronne i wytrzymałość, co jest ich główną przewagą nad ich bliskimi "
-"kuzynami, Gladiatorami."
+"używać odpowiednio dużej broni, wystarczająco dużej, by zabić konia równie "
+"łatwo, jak człowiek zrobiłby to samo z dzikiem. Trening poprawił ich "
+"zdolności obronne i wytrzymałość, co najbardziej wyróżnia ich na tle "
+"bliskich kuzynów, gladiatorów.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Drake_Slasher.cfg:76 data/units/Drake_Slasher.cfg:92
 #: data/units/Drake_Warden.cfg:82 data/units/Drake_Warden.cfg:98
@@ -5545,7 +5554,6 @@ msgid "Drake Warden"
 msgstr "Smoczy strażnik"
 
 #: data/units/Drake_Warden.cfg:21
-#, fuzzy
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
 "the most able Slashers. They have forged their might such that few warriors "
@@ -5555,9 +5563,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Strażnicy reprezentują śmietankę kasty bojowników, będąc wybranymi spośród "
-"najlepszych Siepaczy. Ich potęga jest tak wielka, że niewielu wojowników na "
-"tej ziemi ośmieliłoby się stanąć naprzeciw. Ulubioną bronią Strażników jest "
-"halabarda, którą używają z znakomitymi efektami."
+"najlepszych siepaczy. Ich potęga jest tak wielka, że niewielu wojowników na "
+"tej ziemi ośmieliłoby się stanąć im naprzeciw. Ulubioną bronią strażników "
+"jest halabarda, którą używają z znakomitymi efektami.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Drake_Warrior.cfg:3
 msgid "Drake Warrior"
@@ -5579,7 +5589,6 @@ msgid "Dwarvish Berserker"
 msgstr "Krasnoludzki berserker"
 
 #: data/units/Dwarvish_Berserker.cfg:18
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
 "all defense in exchange for massive damage against their enemies.\n"
@@ -5588,8 +5597,9 @@ msgid ""
 msgstr ""
 "Krasnoludy to pradawna rasa potężnych wojowników. Ich bersekerzy zapominają "
 "o wszelkiej obronie, w zamian starając się zadać jak największe obrażenia "
-"swoim przeciwnikom. Gdy walka się zacznie, krasnoludzcy berserkerzy dziko "
-"atakują, nie przestając dopóki ich wróg albo oni sami nie padną trupem."
+"swoim przeciwnikom.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Dwarvish_Berserker.cfg:36 data/units/Dwarvish_Ulfserker.cfg:35
 msgid "berserker frenzy"
@@ -5663,7 +5673,6 @@ msgid "Dwarvish Guardsman"
 msgstr "Krasnoludzki strażnik"
 
 #: data/units/Dwarvish_Guardsman.cfg:18
-#, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
@@ -5671,10 +5680,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Najtwardsze krasnoludy czasami zaciągają sie do armii jako strażnicy. "
-"Powolni i nie dysponujący silnym atakiem, ochraniają flanki armii, "
-"przyjmując na siebie wszelkie ataki, miotając w przeciwnika swoimi ciężkimi "
-"włóczniami."
+"Najtwardsze krasnoludy zaciągają sie czasem do armii jako strażnicy. Powolni "
+"i nie dysponujący silnym atakiem, ochraniają flanki armii, przyjmując na "
+"siebie wszelkie ataki i miotając w przeciwnika ciężkimi włóczniami.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -5730,22 +5740,22 @@ msgid "Dwarvish Sentinel"
 msgstr "Krasnoludzki wartownik"
 
 #: data/units/Dwarvish_Sentinel.cfg:19
-#, fuzzy
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks.\n"
 "\n"
 "Special Notes:"
 msgstr ""
-"Krasnoludzki wartownik wyposażony w olbrzymią tarczę i równie wielką odwagę "
-"nigdy nie ulega nawet najsilniejszym atakom wroga."
+"Krasnoludzki wartownik, wyposażony w olbrzymią tarczę i równie wielką "
+"odwagę, nigdy nie ulega, nawet najsilniejszym atakom wroga.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
 msgstr "Krasnoludzki siłacz"
 
 #: data/units/Dwarvish_Stalwart.cfg:18
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -5754,8 +5764,10 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Krasnoludzcy siłacze, zaprawieni w wielu bojach, skompletowali nowe tarcze i "
-"mocniejsze zbroje z tego, co zostało po ich wrogach. Choć powolni, ich "
-"odwaga i wytrzymałość budzi przestrach."
+"mocniejsze zbroje z tego, co zostało po ich wrogach. Choć są powolni, to ich "
+"odwaga i wytrzymałość budzi przestrach.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -5833,7 +5845,6 @@ msgid "Dwarvish Ulfserker"
 msgstr "Krasnoludzki ulfserker"
 
 #: data/units/Dwarvish_Ulfserker.cfg:17
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these in battle: they persist until either their enemy is dead "
@@ -5842,9 +5853,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Krasnoludy to starożytna rasa potężnych wojowników, a ulfsekerzy to w bitwie "
-"ich najokrutniejsi przedstawiciele: walczą do momentu, aż ich przeciwnik lub "
-"oni sami zginą, bez względu na to ile ran otrzymują."
+"Krasnoludy to starożytna rasa potężnych wojowników. Ulfserkerzy to w bitwie "
+"ich najokrutniejsi przedstawiciele: walczą do momentu, aż ich przeciwnik "
+"straci życie lub oni sami zginą, bez względu na to ile ran otrzymują.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
@@ -5875,7 +5888,6 @@ msgid "Elvish Avenger"
 msgstr "Elficki mściciel"
 
 #: data/units/Elvish_Avenger.cfg:24
-#, fuzzy
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -5897,9 +5909,8 @@ msgstr ""
 "\n"
 "Czasem uważano to za formę zemsty za zabitych wcześniej w bitwie braci i "
 "choć nie to kieruje ich ruchami, to jednak nie całkiem mija się z prawdą.\n"
-"Uwagi specjalne: umiejętności życia w lesie czynią mścicieli niewidocznymi "
-"dla przeciwników jeżeli nie znajdują się tuż koło nich, lub któryś zdradził "
-"swoją pozycję atakiem."
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Avenger.cfg:182
 msgid "female^Elvish Avenger"
@@ -5910,7 +5921,6 @@ msgid "Elvish Captain"
 msgstr "Elficki kapitan"
 
 #: data/units/Elvish_Captain.cfg:21
-#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. This is quite at odds with "
@@ -5928,9 +5938,7 @@ msgstr ""
 "kombinacja woli zaakceptowania mądrości ich przywódców oraz umiejętność ich "
 "odpowiedniego wyboru.\n"
 "\n"
-"Uwagi specjalne: umiejętność dowodzenia kapitana powoduje, że przyjacielskie "
-"jednostki na sąsiednich polach zadają w walce większe obrażenia, ale dotyczy "
-"to tylko jednostek o niższym poziomie."
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
@@ -5957,7 +5965,6 @@ msgid "female^Elvish Druid"
 msgstr "Elficka druidka"
 
 #: data/units/Elvish_Druid.cfg:22
-#, fuzzy
 msgid ""
 "The magic of the wood elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they live can be quickened by a word of "
@@ -5975,9 +5982,7 @@ msgstr ""
 "Ich główną umiejętnością jest leczenie i to za nią elficcy druidzi czczeni "
 "są przez swój lud.\n"
 "\n"
-"Uwagi specjalne: oplątujący atak druidów zmniejsza o połowę szybkość "
-"przeciwnika i zadawane przez niego obrażenia. Druidzi potrafią uzdrawiać "
-"jednostki znajdujące się obok nich oraz leczyć je spod wpływu trucizny."
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Druid.cfg:55 data/units/Elvish_Shyde.cfg:58
 msgid "ensnare"
@@ -5992,7 +5997,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Elficka zaklinaczka"
 
 #: data/units/Elvish_Enchantress.cfg:18
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
@@ -6003,7 +6007,9 @@ msgstr ""
 "Elfickie zaklinaczki są mistrzyniami magii ofensywnej, dzięki której mogą "
 "razić swoich wrogów przy pomocy podmuchów lodowatego wiatru sprowadzonego "
 "wprost z eterycznego wymiaru oraz magicznie poruszać korzeniami drzew, "
-"którymi unieruchamiają przeciwników."
+"którymi unieruchamiają przeciwników.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Enchantress.cfg:92 data/units/Elvish_Shaman.cfg:56
 #: data/units/Elvish_Sorceress.cfg:92
@@ -6046,7 +6052,6 @@ msgid "Elvish Marksman"
 msgstr "Elficki strzelec"
 
 #: data/units/Elvish_Marksman.cfg:23
-#, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -6067,8 +6072,7 @@ msgstr ""
 "Posiadanie tak cudownej umiejętności ma jednak swoją cenę, którą jest brak "
 "praktyki w walce mieczem.\n"
 "\n"
-"Uwagi specjalne: umiejętność strzelectwa daje tym elfom wysoką szansę "
-"trafienia przeciwnika, ale tylko podczas ataku."
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Marksman.cfg:75 data/units/Elvish_Sharpshooter.cfg:74
 msgid "longbow"
@@ -6083,7 +6087,6 @@ msgid "Elvish Marshal"
 msgstr "Elficki marszałek"
 
 #: data/units/Elvish_Marshal.cfg:22
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -6101,8 +6104,7 @@ msgstr ""
 "elfy zaczynają myśleć o wojnie, strategia którą wykorzystują okazuje "
 "znamiona genialnego umysłu.\n"
 "\n"
-"Uwagi specjalne: zdolności przywódcze marszałków pozwalają sąsiadującym z "
-"nimi jednostkom o niższych poziomach zadawać większe obrażenia w walce."
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
@@ -6135,7 +6137,6 @@ msgid "Elvish Ranger"
 msgstr "Elficki łowca"
 
 #: data/units/Elvish_Ranger.cfg:21
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a place he is not truly a part of. With elves, "
@@ -6152,9 +6153,7 @@ msgstr ""
 "tych umiejętności z łucznictwem lub szermierką czyi je potężnymi narzędziami "
 "wojny.\n"
 "\n"
-"Uwagi specjalne: dzięki swoim umiejętnościom łowcy pozostający w lasach "
-"stają się niewidzialni dla wroga, o ile nie znajdują się tuż obok niego lub "
-"zdradziły swoją pozycję wykonując atak."
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Ranger.cfg:181
 msgid "female^Elvish Ranger"
@@ -6203,7 +6202,6 @@ msgid "female^Elvish Shaman"
 msgstr "Elficka szamanka"
 
 #: data/units/Elvish_Shaman.cfg:23
-#, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -6224,17 +6222,13 @@ msgstr ""
 "Elfy wykazują się również wartymi uwagi umiejętnościami leczenia, które "
 "odgrywają ważną rolę w walce.\n"
 "\n"
-"Uwagi specjalne: oplątujący atak szamana zmniejsza o połowę szybkość "
-"przeciwnika i zadawane przez niego obrażenia. Szamani posiadają podstawowe "
-"umiejętności leczenia, ale potrafią tylko spowolnić działanie trucizny, a "
-"nie zneutralizować ją całkowicie."
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
 msgstr "Elficki strzelec wyborowy"
 
 #: data/units/Elvish_Sharpshooter.cfg:22
-#, fuzzy
 msgid ""
 "A story once wandered about, of an elf who stopped an arrow by shooting it "
 "out of the air with one of his own. It is a testament to the skill of the "
@@ -6248,8 +6242,7 @@ msgstr ""
 "poważnie jest świadectwem umiejętności elfów. Mówiąc wprost, wyborowi "
 "strzelcy elfów mistrzowsko opanowali sztukę łucznictwa.\n"
 "\n"
-"Uwagi specjalne: umiejętność strzelectwa daje elfom dużą szansę trafienia "
-"przeciwnika, ale tylko podczas ataku."
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Sharpshooter.cfg:191
 msgid "female^Elvish Sharpshooter"
@@ -6260,7 +6253,6 @@ msgid "female^Elvish Shyde"
 msgstr "Wróżka elfów"
 
 #: data/units/Elvish_Shyde.cfg:22
-#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -6274,9 +6266,7 @@ msgstr ""
 "światów. Prowadzone przez naturę, o której mało wiadomo, te cudowne "
 "gospodynie lasów upostaciowują wdzięk i tajemniczość swego ludu.\n"
 "\n"
-"Uwagi specjalne: oplątujący atak wróżki zmniejsza o połowę szybkość "
-"przeciwnika i zadawane przez niego obrażenia. Wróżki potrafią uzdrawiać "
-"jednostki znajdujące się obok nich oraz leczyć je spod wpływu trucizny."
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:26
 msgid "faerie touch"
@@ -6287,7 +6277,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Czarodziejka elfów"
 
 #: data/units/Elvish_Sorceress.cfg:18
-#, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
@@ -6301,14 +6290,15 @@ msgstr ""
 "magii, elfickie czarodziejki stały się dość efektywne w walce na odległość. "
 "Ich oplątujący atak jest wyraźnie bardziej skuteczny niż moce szamanek, i "
 "potrafią przyzwać porywy lodowatego, eterycznego wiatru, którym rażą tych, "
-"którzy się im przeciwstawiają."
+"którzy się im przeciwstawiają.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
 msgstr "Sylfida elfów"
 
 #: data/units/Elvish_Sylph.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
 "developed their faerie side, they transform into creatures of both worlds, "
@@ -6318,7 +6308,9 @@ msgid ""
 msgstr ""
 "Piękno elfickich sylfid jest w świecie śmiertelników niczym diament w kupie "
 "węgla. Dzięki w pełni rozwiniętym talentom typowym dla wróżek zmieniają się "
-"w istoty z obu światów, używając przeciw swoim wrogom potężnej magii."
+"w istoty z obu światów, używając przeciw swoim wrogom potężnej magii.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Elvish_Sylph.cfg:55
 msgid "gossamer"
@@ -6329,7 +6321,6 @@ msgid "Direwolf Rider"
 msgstr "Jeździeć wargów"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:21
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the garden variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -6356,9 +6347,7 @@ msgstr ""
 "do tej, którą używają orkowi zabójcy, w ten sposób zamieniając uderzenie łap "
 "tych bestii w śmiertelnie groźnie ciosy.\n"
 "\n"
-"Uwagi specjalne: każdy zraniony pazurami warga zostanie zatruty, a ofiary "
-"ich trucizny będą stale otrzymywały obrażenia, aż zostaną uleczone w mieście "
-"lub przez uzdrowiciela."
+"Uwagi specjalne:"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:39 data/units/Goblin_Knight.cfg:39
 #: data/units/Goblin_Wolf_Rider.cfg:70 data/units/Monster_Cave_Spider.cfg:41
@@ -6372,7 +6361,6 @@ msgid "Goblin Impaler"
 msgstr "Gobliński plądrownik"
 
 #: data/units/Goblin_Impaler.cfg:18
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as fodder for their enemy's front line. Those "
 "who have somehow managed to survive invariably equip themselves to continue "
@@ -6386,8 +6374,7 @@ msgstr ""
 "się tak, by móc żyć dalej. Znacznie większa włócznia pozwala zrekompensować "
 "ich mały zasięg, a lepszy pancerz pomaga ochraniać ich małe ciała.\n"
 "\n"
-"Uwagi specjalne: długość broni pozwala plądrownikowi zadawać pierwszy atak, "
-"nawet podczas obrony."
+"Uwagi specjalne:"
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -6418,7 +6405,6 @@ msgid "Goblin Pillager"
 msgstr "Goblin grabieżca"
 
 #: data/units/Goblin_Pillager.cfg:19
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -6432,8 +6418,7 @@ msgstr ""
 "swoich wrogów oraz siejąc popłoch wśród próbujących się bronić lub uciekać "
 "miotanymi przez siebie sieciami.\n"
 "\n"
-"Uwagi specjalne: złapani w sieci wrogowie zostają spowolnieni, co zmniejsza "
-"o połowę ich szybkość oraz zadawane obrażenia."
+"Uwagi specjalne:"
 
 #: data/units/Goblin_Pillager.cfg:40
 msgid "torch"
@@ -6449,7 +6434,6 @@ msgid "Goblin Rouser"
 msgstr "Gobliński buntownik"
 
 #: data/units/Goblin_Rouser.cfg:19
-#, fuzzy
 msgid ""
 "Standard bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -6465,9 +6449,7 @@ msgstr ""
 "szaleńcze wycie chorążego skutecznie umacnia wolę walki w młodszych "
 "kamratach, dzięki czemu walczą ciężej i dłużej, aż zginą.\n"
 "\n"
-"Uwagi specjalne: zdolność dowodzenia goblińskiego buntownika pozwala "
-"sąsiadującym przyjacielskim jednostkom niższego poziomu zadawać w walce "
-"większe obrażenia."
+"Uwagi specjalne:"
 
 #: data/units/Goblin_Spearman.cfg:3
 msgid "Goblin Spearman"
@@ -6583,12 +6565,14 @@ msgstr ""
 #: data/units/Human_Horse_Grand_Knight.cfg:21
 #: data/units/Human_Horse_Knight.cfg:20 data/units/Human_Horse_Lancer.cfg:21
 #: data/units/Human_Horseman.cfg:20
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
-msgstr "Specjalna"
+msgstr ""
+"\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Human_Horse_Grand_Knight.cfg:63
 #: data/units/Human_Horse_Knight.cfg:62 data/units/Human_Horse_Lancer.cfg:25
@@ -6644,7 +6628,6 @@ msgid "Paladin"
 msgstr "Paladyn"
 
 #: data/units/Human_Horse_Paladin.cfg:21
-#, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to monastic "
 "orders, pledging their might to the cause of righteousness. Though not as "
@@ -6659,7 +6642,9 @@ msgstr ""
 "sprawie dobra, poddając się zakonnym ślubom. Choć nie tak potężni na polu "
 "bitwy jak wielcy rycerze, paladyni są siłą nie do zlekceważenia w czasie "
 "walki, a ich pobożność zapewnia im inne dary. Paladyn jest zgubą istot spoza "
-"tego świata, i potrafi także zająć się ranami towarzyszy."
+"tego świata, i potrafi także zająć się ranami towarzyszy.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:91
 #: data/units/Human_Mage_of_Light.cfg:71 data/units/Mermaid_Diviner.cfg:58
@@ -6784,7 +6769,6 @@ msgid "Duelist"
 msgstr "Szpadzista"
 
 #: data/units/Human_Loyalist_Duelist.cfg:19
-#, fuzzy
 msgid ""
 "It is a peculiar fashion of Wesnoth's nobility, in that they typically "
 "enroll their sons into one of two orders of armigers, training them either "
@@ -6815,8 +6799,7 @@ msgstr ""
 "tego dzięki małym ustępstwom na rzecz użyteczności i zwiększenia szans "
 "przeżycia.\n"
 "\n"
-"Uwagi specjalne: szpadziści spełniają też rolę harcowników i jako tacy "
-"potrafią przemknąć koło przeciwnika, ignorując strefy kontroli."
+"Uwagi specjalne:"
 
 #: data/units/Human_Loyalist_Duelist.cfg:75
 #: data/units/Human_Loyalist_Fencer.cfg:80
@@ -6829,7 +6812,6 @@ msgid "Fencer"
 msgstr "Szermierz"
 
 #: data/units/Human_Loyalist_Fencer.cfg:20
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -6855,15 +6837,13 @@ msgstr ""
 "swoich przeciwników, tańcząc wokół żołnierzy takich jak ciężka piechota, "
 "drwiąc sobie z ceny, jaką płacą za noszenie pełnej zbroi płytowej.\n"
 "\n"
-"Uwagi specjalne: szermierze spełniają też rolę harcowników i jako tacy "
-"potrafią przemknąć koło przeciwnika, ignorując strefy kontroli."
+"Uwagi specjalne:"
 
 #: data/units/Human_Loyalist_General.cfg:3
 msgid "General"
 msgstr "Generał"
 
 #: data/units/Human_Loyalist_General.cfg:29
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms they swore fealty to. Their "
@@ -6876,16 +6856,13 @@ msgstr ""
 "umiejętności i doświadczenie pozwalają im na wypełnianie tego trudnego "
 "zadania.\n"
 "\n"
-"Uwagi specjalne: dzięki umiejętności dowodzenia generałowie mogą koordynować "
-"ataki sąsiednich jednostek poziomu niższego poziomu, zwiększając ich "
-"skuteczność."
+"Uwagi specjalne:"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:3
 msgid "Grand Marshal"
 msgstr "Wielki marszałek"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:23
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have surpassed many trials by fire, "
@@ -6898,16 +6875,13 @@ msgstr ""
 "ludzkości, a ci którzy noszą ten tytuł przeszli wiele prób, dowodząc swoich "
 "umiejętności taktycznych oraz sprawności w walce.\n"
 "\n"
-"Uwagi specjalne: zdolność dowodzenia wielkiego marszałka pozwala "
-"sąsiadującym przyjacielskim jednostkom niższego poziomu zadawać w walce "
-"większe obrażenia."
+"Uwagi specjalne:"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:3
 msgid "Halberdier"
 msgstr "Halabardzista"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:24
-#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -6939,8 +6913,7 @@ msgstr ""
 "udowodnili, że mają umiejętności, dzięki którym będą potrafili odpowiednio "
 "użyć tej broni w walce.\n"
 "\n"
-"Uwagi specjalne: długość broni pozwala halabardierom zadawać pierwszy atak, "
-"nawet w czasie obrony."
+"Uwagi specjalne:"
 
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
@@ -6999,7 +6972,6 @@ msgid "Javelineer"
 msgstr "Oszczepnik"
 
 #: data/units/Human_Loyalist_Javelineer.cfg:19
-#, fuzzy
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
 "not kill, enemies at range. Some, however, take to them rather well, finding "
@@ -7019,15 +6991,13 @@ msgstr ""
 "miotać oszczepami w kierunku szyków wroga oraz utrzymać pozycję w walce "
 "wręcz jeśli zajdzie taka potrzeba.\n"
 "\n"
-"Uwagi specjalne: długość broni pozwala oszczepnikom zadawać pierwszy atak w "
-"walce wręcz, także podczas obrony."
+"Uwagi specjalne:"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:3
 msgid "Lieutenant"
 msgstr "Porucznik"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:24
-#, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks.\n"
@@ -7037,9 +7007,7 @@ msgstr ""
 "Porucznicy, wyćwiczeni w posługiwaniu się mieczem i kuszą, dowodzą małymi "
 "grupkami ludzi, koordynując ich ataki.\n"
 "\n"
-"Uwagi specjalne: umiejętność dowodzenia poruczników pozwala sojuszniczym "
-"jednostkom znajdującym się obok nich zadawać większe obrażenia. Odnosi się "
-"to tylko do jednostek na niższym poziomie."
+"Uwagi specjalne:"
 
 #: data/units/Human_Loyalist_Longbowman.cfg:3
 msgid "Longbowman"
@@ -7089,7 +7057,6 @@ msgid "Master at Arms"
 msgstr "Mistrz broni"
 
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:21
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -7117,15 +7084,13 @@ msgstr ""
 "gdzie ich gorący temperament jest nie tylko akceptowany, ale wręcz mile "
 "widziany.\n"
 "\n"
-"Uwagi specjalne: mistrzowie szermierki pełnią też rolę harcowników i jako "
-"tacy mogą przemykać między wrogami, ignorując strefy kontroli."
+"Uwagi specjalne:"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:3
 msgid "Pikeman"
 msgstr "Pikinier"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:19
-#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -7143,8 +7108,7 @@ msgstr ""
 "dla szarży kawalerii, a jeśli pikinierzy są zdyscyplinowani i posługują się "
 "odpowiednią taktyką, to potrafią zatrzymać prawie każdy oddział piechoty.\n"
 "\n"
-"Uwagi specjalne: długość broni pozwala pikinierom zadawać atak jako "
-"pierwszym, nawet w czasie obrony."
+"Uwagi specjalne:"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:60
 msgid "pike"
@@ -7218,7 +7182,6 @@ msgid "Spearman"
 msgstr "Włócznik"
 
 #: data/units/Human_Loyalist_Spearman.cfg:19
-#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a head, "
@@ -7235,8 +7198,7 @@ msgstr ""
 "większości armii i często wysyłani są do boju tylko po podstawowym "
 "treningu.\n"
 "\n"
-"Uwagi specjalne: długość ich broni pozwala włócznikom zadawać w walce wręcz "
-"pierwszy cios, nawet podczas obrony."
+"Uwagi specjalne:"
 
 #: data/units/Human_Loyalist_Swordsman.cfg:3
 msgid "Swordsman"
@@ -7264,7 +7226,6 @@ msgid "Mage"
 msgstr "Mag"
 
 #: data/units/Human_Mage.cfg:22
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -7302,8 +7263,7 @@ msgstr ""
 "odpowiedni sposób ich osiągnięcia, często brakuje zapału koniecznego do "
 "osiągnięcia prawdziwego mistrzostwa.\n"
 "\n"
-"Uwagi specjalne: atak na odległość maga jest magiczny i ma zawsze wysokie "
-"szanse trafienia przeciwnika."
+"Uwagi specjalne:"
 
 #: data/units/Human_Mage.cfg:137
 msgid "female^Mage"
@@ -7314,7 +7274,6 @@ msgid "Arch Mage"
 msgstr "Arcymag"
 
 #: data/units/Human_Mage_Arch.cfg:20
-#, fuzzy
 msgid ""
 "The title of Arch Mage is conferred only after a lifetime of study and "
 "achievement to match. Arch Magi are often employed in positions of "
@@ -7345,15 +7304,13 @@ msgstr ""
 "potrzeba arcy magowie mogą uwolnić pełną potęgę swej sztuki, czego nie wolno "
 "lekceważyć.\n"
 "\n"
-"Uwagi specjalne: ogniste kule arcy magów są magiczne i zawsze mają wysoką "
-"szansę trafienia przeciwnika."
+"Uwagi specjalne:"
 
 #: data/units/Human_Mage_Great.cfg:3
 msgid "Great Mage"
 msgstr "Wielki mag"
 
 #: data/units/Human_Mage_Great.cfg:21
-#, fuzzy
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
 "nearly a legend in their own time, and town criers have forcibly learnt "
@@ -7381,15 +7338,13 @@ msgstr ""
 "Choć w żadnym wypadku nie są wojownikami, to użycie ich sztuki bitwy "
 "sprawia, że inni żołnierze mogą tylko patrzeć z podziwem.\n"
 "\n"
-"Uwagi specjalne: ogniste kule wielkich magów są magiczne i zawsze mają "
-"wysoką szansę trafienia przeciwnika."
+"Uwagi specjalne:"
 
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
 msgstr "Czerwony mag"
 
 #: data/units/Human_Mage_Red.cfg:20
-#, fuzzy
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the blue robes of an apprentice, and given the red robes of a master. The "
@@ -7419,15 +7374,13 @@ msgstr ""
 "posiadają spory zasób sztuczek w zanadrzu, włączając w to miotanie płomieni, "
 "co być może utrwaliło ich potoczną nazwę.\n"
 "\n"
-"Uwagi specjalne: ogniste kule czerwonych magów są magiczne i zawsze mają "
-"wysoką szansę trafienia przeciwnika."
+"Uwagi specjalne:"
 
 #: data/units/Human_Mage_Silver.cfg:3
 msgid "Silver Mage"
 msgstr "Srebrny mag"
 
 #: data/units/Human_Mage_Silver.cfg:23
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -7472,19 +7425,13 @@ msgstr ""
 "umiejętności bez wątpienia znajdują użycie na polu bitwy, o ile oczywiście "
 "ktoś zdoła przekonać maga, by ich użył.\n"
 "\n"
-"Uwagi specjalne: srebrni magowie atakują na odległość przy pomocy magii, "
-"która ma zawsze wysoką szansę na trafienie przeciwnika. Srebrni magowie są "
-"bardzo odporni na wiele rodzajów obrażeń zadawanych przy pomocy czarów. "
-"Potrafią również teleportować się natychmiastowo między dwoma wioskami, o "
-"ile gracz kontroluje obie z nich i docelowa wieś jest nie zajęta przez żadną "
-"inną jednostkę."
+"Uwagi specjalne:"
 
 #: data/units/Human_Mage_White.cfg:3
 msgid "White Mage"
 msgstr "Biały Mag"
 
 #: data/units/Human_Mage_White.cfg:25
-#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -7510,11 +7457,7 @@ msgstr ""
 "stają się potężnym sprzymierzeńcem. Jeżeli zachodzi taka potrzeba, mogą "
 "przywołać moc Światła by wygnać nieziemskie istoty z świata śmiertelników. \n"
 "\n"
-"Uwagi specjalne: Świetlne promienie wystrzeliwane przez białych magów są z "
-"natury magiczne i zawsze mają wysoką szansę trafienia przeciwnika. Światło "
-"zadaje olbrzymie obrażenia nieumarłym a nawet niektórym żywym istotom. "
-"Magowie światła potrafią leczyć jednostki wokół siebie i uzdrawiać ich z "
-"trucizny. "
+"Uwagi specjalne:"
 
 #: data/units/Human_Mage_White.cfg:90 data/units/Human_Mage_of_Light.cfg:70
 #: data/units/Mermaid_Diviner.cfg:57 data/units/Mermaid_Priestess.cfg:51
@@ -7530,7 +7473,6 @@ msgid "Mage of Light"
 msgstr "Mag Światła"
 
 #: data/units/Human_Mage_of_Light.cfg:27
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi are bestowed with "
 "vast spiritual powers. By strict devotion to the path of the light, they can "
@@ -7550,12 +7492,7 @@ msgstr ""
 "pracują bez wytchnienia by przynosić życie i porządek do trapionego "
 "problemami świata, w którym żyją.\n"
 "\n"
-"Uwagi specjalne: Świetlne promienie wystrzeliwane przez magów światła są z "
-"natury magiczne i zawsze mają wysoką szansę trafienia przeciwnika. Światło "
-"zadaje olbrzymie obrażenia nieumarłym a nawet niektórym żywym istotom. "
-"Magowie światła potrafią leczyć jednostki wokół siebie i uzdrawiać ich z "
-"trucizny. Posiadają również moc oświetlania, która zwiększa poziom światła w "
-"obszarze wokół mogą."
+"Uwagi specjalne:"
 
 #: data/units/Human_Mage_of_Light.cfg:105
 msgid "female^Mage of Light"
@@ -7591,7 +7528,6 @@ msgid "Assassin"
 msgstr "Zabójca"
 
 #: data/units/Human_Outlaw_Assassin.cfg:20
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -7608,10 +7544,7 @@ msgstr ""
 "rzuconego z oddali, czy wbitego w plecy sztyletu. Śmiertelnie groźni nocą, "
 "ci zabójcy czują się dość niezręcznie, gdy muszą walczyć w pełnym słońcu.\n"
 "\n"
-"Uwagi specjalne: jednostka stojąca po stronie zabójcy może dekoncentrować "
-"przeciwnika, co pozwala mu zakradnąć się za przeciwnika i zadać cios w plecy "
-"powodujący podwójne obrażenia. Trucizna, którą są pokryte używane przez nich "
-"do rzucania noże może nieustannie pozbawiać przeciwnika sił."
+"Uwagi specjalne:"
 
 #: data/units/Human_Outlaw_Assassin.cfg:93
 #: data/units/Human_Outlaw_Rogue.cfg:61
@@ -7686,7 +7619,6 @@ msgid "Rogue"
 msgstr "Łotr"
 
 #: data/units/Human_Outlaw_Rogue.cfg:18
-#, fuzzy
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
 "rogues have spent many an unpleasant moment darting through crowds and "
@@ -7705,9 +7637,7 @@ msgstr ""
 "każdej nocy zdobyli zdolności, dzięki którym nie boją się walki w "
 "ciemnościach.\n"
 "\n"
-"Uwagi specjalne: jeśli jednostka stojąca po tej samej stronie rozprasza "
-"przeciwnika, łotr może zakraść się za przeciwnika i zadać cios w plecy, "
-"powodujący podwójne obrażenia."
+"Uwagi specjalne:"
 
 #: data/units/Human_Outlaw_Rogue.cfg:108
 msgid "female^Rogue"
@@ -7718,7 +7648,6 @@ msgid "Thief"
 msgstr "Złodziej"
 
 #: data/units/Human_Outlaw_Thief.cfg:18
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -7739,9 +7668,7 @@ msgstr ""
 "nożami. Z chęcią stosują niezbyt honorowe sposoby walki, nie widząc sensu w "
 "\"równej walce\".\n"
 "\n"
-"Uwagi specjalne: jeśli jednostka stojąca po tej samej stronie rozprasza "
-"przeciwnika, złodziej może zakraść się za przeciwnika i zadać cios w plecy, "
-"powodujący podwójne obrażenia."
+"Uwagi specjalne:"
 
 #: data/units/Human_Outlaw_Thief.cfg:113
 msgid "female^Thief"
@@ -7803,7 +7730,6 @@ msgid "female^Mermaid Diviner"
 msgstr "Wróżbitka Syren"
 
 #: data/units/Mermaid_Diviner.cfg:24
-#, fuzzy
 msgid ""
 "Mermaid Priestesses meet their calling with a fervor that leaves their human "
 "counterparts somewhat taken aback. This may have its roots in a legend they "
@@ -7819,19 +7745,13 @@ msgstr ""
 "kiedyś był zmorą ich ludu. Chociaż niewiele o tym wiadomo, pewne jest że to "
 "moc światła w jakiś sposób zdołała położyć mu kres.\n"
 "\n"
-"Uwagi specjalne: Świetlne promienie rzucane przez wróżbitki mają magiczną "
-"naturę i zawsze szansa że trafią wroga jest wysoka. Światło zadaje ogromne "
-"obrażenia nieumarłym, a nawet niektórym z żywych istot. Wróżbitki potrafią "
-"uzdrawiać jednostki znajdujące się w ich otoczeniu, a także leczyć je z "
-"zatrucia. Posiadają też moc Iluminacji, dzięki czemu otoczenie wokół syreny "
-"jest lepiej oświetlone."
+"Uwagi specjalne:"
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
 msgstr "Serena zaklinaczka"
 
 #: data/units/Mermaid_Enchantress.cfg:20
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different. Those who master this ability are held in "
@@ -7850,8 +7770,7 @@ msgstr ""
 "ich moc ma wyższy cel ochrony ludu przed potworami, które wynurzą się "
 "odmętów.\n"
 "\n"
-"Uwagi specjalne: uderzenia wody przyzywane przez syreny są z natury magiczne "
-"i zawsze szansa że trafią one wroga jest wysoka."
+"Uwagi specjalne:"
 
 #: data/units/Mermaid_Enchantress.cfg:46 data/units/Mermaid_Initiate.cfg:48
 #: data/units/Mermaid_Siren.cfg:80
@@ -7863,7 +7782,6 @@ msgid "female^Mermaid Initiate"
 msgstr "Syrena Nowicjuszka"
 
 #: data/units/Mermaid_Initiate.cfg:22
-#, fuzzy
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -7881,15 +7799,13 @@ msgstr ""
 "Pomimo swej delikatności są w walce godnymi przeciwnikami, a to za sprawą "
 "posłusznej im wody, którą zmiatają przeciwników.\n"
 "\n"
-"Uwagi specjalne: uderzenia wody przyzywane przez syreny są z natury magiczne "
-"i zawsze szansa że trafią one wroga jest wysoka."
+"Uwagi specjalne:"
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
 msgstr "Kapłanka Syren"
 
 #: data/units/Mermaid_Priestess.cfg:22
-#, fuzzy
 msgid ""
 "Mermen share the creed that much of humanity follows, though for cultural "
 "reasons, the upholding of this is left to the mermaids, who are more "
@@ -7909,11 +7825,7 @@ msgstr ""
 "takim samym stopniu jak ludzi. Pracowitość i prawość zapewniają im pewne "
 "moce duchowe, pozwalające na ochronę ich ludzi przed siłami ciemności.\n"
 "\n"
-"Uwagi specjalne: Świetlne promienie rzucane przez kapłanki mają magiczną "
-"naturę i zawsze szansa że trafią wroga jest wysoka. Światło zadaje ogromne "
-"obrażenia nieumarłym, a nawet niektórym z żywych istot. Kapłanki potrafią "
-"uzdrawiać jednostki znajdujące się w ich otoczeniu, a także leczyć je z "
-"zatrucia."
+"Uwagi specjalne:"
 
 #: data/units/Mermaid_Siren.cfg:3
 msgid "Siren"
@@ -7956,7 +7868,6 @@ msgid "Merman Entangler"
 msgstr "Merman oplątywacz"
 
 #: data/units/Merman_Entangler.cfg:20
-#, fuzzy
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
 "well; those who master it are valued and revered by their comrades. This "
@@ -7972,8 +7883,7 @@ msgstr ""
 "przewagę mermana walczącego w swoim własnym środowisku i powoduje, że rasa "
 "ta stanowi zagrożenie nawet dla wrogów, którzy rzadko zbliżają się do wody.\n"
 "\n"
-"Uwagi specjalne: złapani w sieci wrogowie zostają spowolnieni, co zmniejsza "
-"o połowę ich szybkość i zadawane obrażenia."
+"Uwagi specjalne:"
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
@@ -7998,7 +7908,6 @@ msgid "Merman Hoplite"
 msgstr "Merman hoplita"
 
 #: data/units/Merman_Hoplite.cfg:21
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -8011,7 +7920,9 @@ msgstr ""
 "podwodnego królestwa. Ich potężny pancerz i żelazna dyscyplina pozwalają ich "
 "niezłomnie trzymać linię w czasie bitew. Gdy zajdzie taka rozpaczliwa "
 "potrzeba, potrafią tak czynić nawet na lądzie, choć nawet nie w przybliżeniu "
-"tak dobrze jak istoty z nogami."
+"tak dobrze jak istoty z nogami.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
@@ -8051,7 +7962,6 @@ msgid "Merman Netcaster"
 msgstr "Merman sieciarz"
 
 #: data/units/Merman_Netcaster.cfg:19
-#, fuzzy
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets. These are not very damaging in themselves, but they "
@@ -8074,8 +7984,7 @@ msgstr ""
 "ważniejsze - do wyrównania szans w walce z wrogiem na lądzie, który inaczej "
 "miałby dużą przewagę.\n"
 "\n"
-"Uwagi specjalne: oplątujący atak sieciarzy spowalnia przeciwników, "
-"zmniejszając o połowę ich szybkość i zadawane obrażenia."
+"Uwagi specjalne:"
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
@@ -8129,7 +8038,6 @@ msgid "Giant Spider"
 msgstr "Gigantyczny pająk"
 
 #: data/units/Monster_Cave_Spider.cfg:18
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They can bite at close range, thereby poisoning their enemies, and also can "
@@ -8140,7 +8048,9 @@ msgstr ""
 "Podobno w głębinach Knalgi żyją wielkie pająki, pożerające wiele ofiar. "
 "Jadowicie kąsają tych, którzy nieopatrznie się do nich zbliżą, a "
 "trzymających się na dystans przeciwników spowalniają atakując nad wyraz "
-"wytrzymałą i lepką pajęczyną."
+"wytrzymałą i lepką pajęczyną.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Monster_Cave_Spider.cfg:80
 msgid "web"
@@ -8151,7 +8061,6 @@ msgid "Cuttle Fish"
 msgstr "Kałamarnica"
 
 #: data/units/Monster_Cuttle_Fish.cfg:18
-#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
@@ -8162,7 +8071,9 @@ msgid ""
 msgstr ""
 "Kałamarnice to gigantyczne potwory morskie. Łapią swoje ofiary potężnymi "
 "mackami albo opluwają trującym atramentem. Najlepszym sposobem na uniknięcie "
-"spotkania z kałamarnicą jest pozostanie na brzegu."
+"spotkania z kałamarnicą jest pozostanie na brzegu.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Monster_Cuttle_Fish.cfg:41 data/units/Monster_Tentacle.cfg:64
 msgid "tentacle"
@@ -8202,7 +8113,6 @@ msgid "Giant Scorpion"
 msgstr "Gigantyczny skorpion"
 
 #: data/units/Monster_Giant_Scorpion.cfg:19
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
 "explanation.\n"
@@ -8210,7 +8120,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Zwykły skorpion jest wystarczająco niebezpieczny - taki wielkości człowieka "
-"nie wymaga dalszych wyjaśnień."
+"nie wymaga dalszych wyjaśnień.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Monster_Giant_Scorpion.cfg:30
 msgid "sting"
@@ -8248,7 +8160,6 @@ msgid "Tentacle of the Deep"
 msgstr "Macka z głębin"
 
 #: data/units/Monster_Tentacle.cfg:18
-#, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
 "below the waves.\n"
@@ -8256,7 +8167,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Macki z Głębin są ramionami jakiegoś olbrzymiego stwora, który kryje się w "
-"odmętach."
+"odmętach.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Monster_Yeti.cfg:3
 msgid "Yeti"
@@ -8407,7 +8320,6 @@ msgid "Orcish Assassin"
 msgstr "Ork zabójca"
 
 #: data/units/Orcish_Assassin.cfg:18
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -8423,10 +8335,7 @@ msgstr ""
 "zdumiewająco zręczni. Mimo, że rzadko zadają śmiertelny cios, to stosowana "
 "przez nich taktyka bardzo wspomaga w tym zadaniu ich większych i bardziej "
 "brutalnych pobratymców.\n"
-"\n"
-"Uwagi specjalne: zabójcy orków rzucają zatrutymi nożami, a ofiary ich "
-"trucizny będą stale otrzymywały obrażenia, aż zostaną uleczone w mieście lub "
-"przez uzdrowiciela."
+"Uwagi specjalne:"
 
 #: data/units/Orcish_Assassin.cfg:55 data/units/Orcish_Slayer.cfg:76
 msgid "throwing knives"
@@ -8470,7 +8379,6 @@ msgid "Orcish Leader"
 msgstr "Przywódca orków"
 
 #: data/units/Orcish_Leader.cfg:18
-#, fuzzy
 msgid ""
 "Orcish Leaders are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8484,14 +8392,15 @@ msgstr ""
 "na wojnę. Z konieczności noszą łuk, ale wolą posługiwać się mieczem. "
 "Generalnie są potężnymi wojownikami, a ich naturalne zdolności przywódcze "
 "czynią ich bardzo cennymi podczas bitwy. Gdy zginie przywódca, bitwa jest "
-"przegrana."
+"przegrana.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
 msgstr "Władca orków"
 
 #: data/units/Orcish_Ruler.cfg:18
-#, fuzzy
 msgid ""
 "Orcish Rulers are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8504,20 +8413,20 @@ msgstr ""
 "Władcy orków są wodzami plemion. Podejmują ważne decyzje i wiodą swój lud na "
 "wojnę. Z konieczności noszą łuk, ale wolą posługiwać się mieczem. Generalnie "
 "są potężnymi wojownikami, a ich naturalne zdolności przywódcze czynią ich "
-"bardzo cennymi podczas bitwy. Gdy zginie władca, bitwa jest przegrana."
+"bardzo cennymi podczas bitwy. Gdy zginie władca, bitwa jest przegrana.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Orcish_Ruler.cfg:32 data/units/Orcish_Sovereign.cfg:34
 #: data/units/Orcish_Warlord.cfg:28 data/units/Orcish_Warrior.cfg:27
-#, fuzzy
 msgid "greatsword"
-msgstr "miecz"
+msgstr "wielki miecz"
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
 msgstr "Ork siepacz"
 
 #: data/units/Orcish_Slayer.cfg:19
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -8533,9 +8442,7 @@ msgstr ""
 "trucizna, jest paskudnym narzędziem, a jej częste używanie na polu bitwy "
 "jest często prawdziwym powodem przewagi orków.\n"
 "\n"
-"Uwagi specjalne: siepacze rzucają zatrutymi nożami, a ofiary ich trucizny "
-"będą stale otrzymywały obrażenia, aż zostaną uleczone w mieście lub przez "
-"uzdrowiciela."
+"Uwagi specjalne:"
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
@@ -8559,7 +8466,6 @@ msgid "Orcish Sovereign"
 msgstr "Suweren orków"
 
 #: data/units/Orcish_Sovereign.cfg:20
-#, fuzzy
 msgid ""
 "Orcish Sovereigns are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8573,7 +8479,9 @@ msgstr ""
 "na wojnę. Z konieczności noszą łuk, ale wolą posługiwać się mieczem. "
 "Generalnie są potężnymi wojownikami, a ich naturalne zdolności przywódcze "
 "czynią ich bardzo cennymi podczas bitwy. Gdy zginie suweren, bitwa jest "
-"przegrana."
+"przegrana.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
@@ -8609,7 +8517,6 @@ msgid "Saurian Ambusher"
 msgstr "Jaszczurzy łowca"
 
 #: data/units/Saurian_Ambusher.cfg:20
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8624,14 +8531,15 @@ msgstr ""
 "delikatności, są wysoko cenionymi zwiadowcami, którzy potrafią poruszać się "
 "nawet w trudnym terenie oraz przemykać się koło nieprzyjaciół. Jaszczurzy "
 "łowcy posiadają też siłę, która pozwala im odpowiednio wykorzystać te "
-"umiejętności. Najlepsi łowcy zostają jaszczurzymi naganiaczami."
+"umiejętności. Najlepsi łowcy zostają jaszczurzymi naganiaczami.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Saurian_Augur.cfg:3
 msgid "Saurian Augur"
 msgstr "Jaszczurzy Augur"
 
 #: data/units/Saurian_Augur.cfg:27
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Augurs are valued as healers because they can provide aid to their "
@@ -8643,14 +8551,15 @@ msgstr ""
 "Pomimo swego zimnokrwistego dziedzictwa, skłonności do zapadania w letarg i "
 "względnej delikatności, jaszczurzy augorzy są cenionymi uzdrowicielami, "
 "potrafiącymi pomóc przyjaciołom bez względu na teren i inne przeciwności. "
-"Oprócz uzdrawiania potrafią też posługiwać się magią zimna."
+"Oprócz uzdrawiania potrafią też posługiwać się magią zimna.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
 msgstr "Jaszczurzy naganiacz"
 
 #: data/units/Saurian_Flanker.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8665,14 +8574,15 @@ msgstr ""
 "delikatności, są wysoko cenionymi zwiadowcami, którzy potrafią poruszać się "
 "nawet w trudnym terenie oraz przemykać się koło nieprzyjaciół. Jaszczurzy "
 "naganiacze posiadają też siłę, która pozwala im odpowiednio wykorzystać te "
-"umiejętności."
+"umiejętności.\n"
+"\t\n"
+"Uwagi specjalne:"
 
 #: data/units/Saurian_Oracle.cfg:3
 msgid "Saurian Oracle"
 msgstr "Jaszczurza wyrocznia"
 
 #: data/units/Saurian_Oracle.cfg:27
-#, fuzzy
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
@@ -8684,14 +8594,15 @@ msgstr ""
 "Jaszczurze wyrocznie porzuciły dalsze studia nad leczeniem celem dalszego "
 "treningu zdolności w posługiwaniu się mrocznymi sztukami. Chociaż słabe i "
 "wrażliwe na ciosy, potrafią przyzwać magię zimnej północy i zachowują swoje "
-"podstawowe umiejętności leczenia."
+"podstawowe umiejętności leczenia.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
 msgstr "Jaszczurzy harcownik"
 
 #: data/units/Saurian_Skirmisher.cfg:20
-#, fuzzy
 msgid ""
 "Saurian Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8704,14 +8615,15 @@ msgstr ""
 "zimnokrwistego dziedzictwa, skłonności do popadania w letarg i względnej "
 "delikatności, są wysoko cenionymi zwiadowcami, którzy potrafią poruszać się "
 "nawet w trudnym terenie oraz przemykać się koło nieprzyjaciół. Najlepsi "
-"harcownicy zostają jaszczurzymi łowcami."
+"harcownicy zostają jaszczurzymi łowcami.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
 msgstr "Jaszczurzy wieszcz"
 
 #: data/units/Saurian_Soothsayer.cfg:28
-#, fuzzy
 msgid ""
 "Saurian Soothsayers are highly valued as healers because they can provide "
 "aid to their friends regardless of terrain or opposition. In addition to "
@@ -8721,14 +8633,15 @@ msgid ""
 msgstr ""
 "Jaszczurzy wieszcze są wysoko cenionymi uzdrowicielami, gdyż potrafią pomóc "
 "przyjaciołom bez względu na otaczający teren i inne przeciwności. Oprócz "
-"uzdrawiania sojuszników potrafią też posługiwać się magią zimna."
+"uzdrawiania sojuszników potrafią też posługiwać się magią zimna.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
 msgstr "Troll"
 
 #: data/units/Troll.cfg:18
-#, fuzzy
 msgid ""
 "Trolls have been a mote to trouble the thoughts of humanity and dwarf-kind, "
 "who remain baffled at the origins of these creatures, and perhaps more "
@@ -8748,15 +8661,13 @@ msgstr ""
 "i używane są do tego samego celu: wymłócenia ich przeciwników aż do "
 "poddania.\n"
 "\n"
-"Uwagi specjalne: trolle posiadają zdolność regeneracji, dzięki której leczą "
-"się tak, jakby stacjonowały w wiosce."
+"Uwagi specjalne:"
 
 #: data/units/Troll_Great.cfg:3
 msgid "Great Troll"
 msgstr "Wielki troll"
 
 #: data/units/Troll_Great.cfg:19
-#, fuzzy
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
 "and wisdom, it becomes something extraordinary, a beast remembered for "
@@ -8772,15 +8683,13 @@ msgstr ""
 "trollach, a spotkanie tych stworów z legend nijak nie umniejsza ich "
 "wspaniałości.\n"
 "\n"
-"Uwagi specjalne: trolle posiadają zdolność regeneracji, która leczy je tak, "
-"jakby stacjonowały w wiosce."
+"Uwagi specjalne:"
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
 msgstr "Troll bohater"
 
 #: data/units/Troll_Hero.cfg:18
-#, fuzzy
 msgid ""
 "Some trolls are born with an undue share of the strength and vitality that "
 "characterizes their race. In a society where might makes right, those of "
@@ -8792,15 +8701,13 @@ msgstr ""
 "dla ich rasy. W społeczeństwie, w którym siła wyznacza prawo, pobratymcy "
 "czczą ich jako bohaterów.\n"
 "\n"
-"Uwagi specjalne: trolle posiadają zdolność regeneracji, dzięki której leczą "
-"się tak, jakby stacjonowały w wiosce."
+"Uwagi specjalne:"
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
 msgstr "Troll skałomiot"
 
 #: data/units/Troll_Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
@@ -8817,17 +8724,13 @@ msgstr ""
 "przerzuconych przez ramię. Skóry, z której są one zrobione, używają również "
 "do wyrobu swoich prymitywnych proc.\n"
 "\n"
-"Uwagi specjalne: choć niewygodny, kamień rzucony przez któregoś z tych "
-"potworów jest dużo bardziej zabójczy niż jakakolwiek strzała, oczywiście o "
-"ile trafi. Trolle posiadają zdolność regeneracji, dzięki której leczą się "
-"tak, jakby stacjonowały w wiosce."
+"Uwagi specjalne:"
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
 msgstr "Troll wojownik"
 
 #: data/units/Troll_Warrior.cfg:20
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -8850,15 +8753,13 @@ msgstr ""
 "niebezpieczny jest troll w walce, myśl o trollu w pełnej zbroi nie należy do "
 "uspokajających.\n"
 "\n"
-"Uwagi specjalne: trolle posiadają zdolność regeneracji, dzięki której leczą "
-"się tak, jakby stacjonowały w wiosce."
+"Uwagi specjalne:"
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
 msgstr "Troll szczenię"
 
 #: data/units/Troll_Whelp.cfg:19
-#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -8873,15 +8774,13 @@ msgstr ""
 "chodzić, więc powłóczą nogami i podpierają się rękami. Jednakże typowa dla "
 "ich rasy potężna siły z nawiązką rekompensuje te problemy.\n"
 "\n"
-"Uwagi specjalne: trolle posiadają zdolność regeneracji, dzięki której leczą "
-"się tak, jakby stacjonowały w wiosce."
+"Uwagi specjalne:"
 
 #: data/units/Undead_Bat_Blood.cfg:3
 msgid "Blood Bat"
 msgstr "Krwiopijczy nietoperz"
 
 #: data/units/Undead_Bat_Blood.cfg:18
-#, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
@@ -8892,14 +8791,15 @@ msgid ""
 msgstr ""
 "Krwiopijcze Nietoperze są szybkie i mogą wysysać krew atakowanego "
 "przeciwnika, lecząc w ten sposób siebie. Są tak zaciekłe, że futra tych "
-"nieumarłych latających bestii znaczy czerwień krewi ich ofiar."
+"nieumarłych latających bestii znaczy czerwień krewi ich ofiar.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Bat_Vampire.cfg:3
 msgid "Vampire Bat"
 msgstr "Nietoperz wampir"
 
 #: data/units/Undead_Bat_Vampire.cfg:17
-#, fuzzy
 msgid ""
 "Vampire Bats are undead flying beasts that attack by biting their victims. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -8909,14 +8809,15 @@ msgid ""
 msgstr ""
 "Nietoperze wampiry to nieumarłe bestie, które gryzą swoje ofiary. Choć ich "
 "kły nie są zbyt silne, to nietoperze te wzmacniają się wysysając wraz z "
-"krwią życie swych ofiar."
+"krwią życie swych ofiar.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:3
 msgid "Ghoul"
 msgstr "Ghul"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:20
-#, fuzzy
 msgid ""
 "Only those who have delved into the circles of necromancy know what must be "
 "done to turn a person into a ghoul, and it is a secret they are not telling. "
@@ -8939,15 +8840,13 @@ msgstr ""
 "To z powodu właśnie tego typu praktyk nekromancja jest potępiana z niemal "
 "pierwotną nienawiścią.\n"
 "\n"
-"Uwagi specjalne: Pazury ghula pokryte są trucizną, a jej ofiary będą stale "
-"otrzymywały obrażenia, aż zostaną uleczone w mieście lub przez uzdrowiciela."
+"Uwagi specjalne:"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:3
 msgid "Necrophage"
 msgstr "Trupojad"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -8962,16 +8861,13 @@ msgstr ""
 "nich znikają jak gdyby były świeżo przyzwane, tak, że mogą od nowa zacząć "
 "swoje poszukiwanie mięsa.\n"
 "\n"
-"Uwagi specjalne: Pazury trupojada pokryte są trucizną, a jej ofiary będą "
-"stale otrzymywały obrażenia, aż zostaną uleczone w mieście lub przez "
-"uzdrowiciela."
+"Uwagi specjalne:"
 
 #: data/units/Undead_Corpse_Soulless.cfg:4
 msgid "Soulless"
 msgstr "Bezduszny"
 
 #: data/units/Undead_Corpse_Soulless.cfg:19
-#, fuzzy
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living.\n"
@@ -8979,14 +8875,15 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Te ruszające się żywe trupy stały się silniejsze dzięki dużemu doświadczeniu "
-"w walce z żywymi."
+"w walce z żywymi.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Corpse_Walking.cfg:4
 msgid "Walking Corpse"
 msgstr "Chodzący Trup"
 
 #: data/units/Undead_Corpse_Walking.cfg:18
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Although weak in combat, these zombies can spread their curse to those they "
@@ -8996,14 +8893,15 @@ msgid ""
 msgstr ""
 "Chodzące trupy to ciała zmarłych, przywrócone do życia przez czarną magię. "
 "Choć słabe w walce, te zombie przenoszą klątwę na swoje ofiary, powiększając "
-"w ten sposób armię nieumarłych."
+"w ten sposób armię nieumarłych.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:3
 msgid "Ancient Lich"
 msgstr "Starożytny licz"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:21
-#, fuzzy
 msgid ""
 "A being of this order is a herald of the age long past. Anyone who "
 "encounters an Ancient Lich likely has far worse things to worry about than "
@@ -9015,16 +8913,13 @@ msgstr ""
 "natknie się na starożytnego licza ma na głowie większe zmartwienia, niż "
 "śmierć.\n"
 "\n"
-"Uwagi specjalne: licze atakują na odległość przy pomocy magii, która ma "
-"zawsze wysoką szansę na trafienie przeciwnika. Dotknięcie licza wysysa życie "
-"z ofiar i przywraca mu część sił witalnych."
+"Uwagi specjalne:"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "Mroczny adept"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:21
-#, fuzzy
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -9050,8 +8945,7 @@ msgstr ""
 "W takim stanie ich jedyną bronią jest sztuka, której nauce całkowicie się "
 "oddali.\n"
 "\n"
-"Uwagi specjalne: ataki mrocznych adeptów są magiczne i zawsze mają wysoką "
-"szansę na trafienie przeciwnika."
+"Uwagi specjalne:"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:32
 msgid "shadow wave"
@@ -9066,7 +8960,6 @@ msgid "Dark Sorcerer"
 msgstr "Mroczny czarodziej"
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:20
-#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorcerers have begun to unlock the secrets "
@@ -9091,15 +8984,13 @@ msgstr ""
 "Większość jest zepsuta, żądna władzy i stara się się całkowicie pokonać "
 "śmierć, stając się liczami i osiągając przerażającą nieśmiertelność.\n"
 "\n"
-"Uwagi specjalne: ataki na odległość Czarnoksiężników są magiczne i zawsze "
-"mają wysoką szansę trafienia przeciwnika."
+"Uwagi specjalne:"
 
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
 msgstr "Licz"
 
 #: data/units/Undead_Necro_Lich.cfg:20
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -9123,12 +9014,9 @@ msgstr ""
 "przedłuża. Trzeba jednak przyznać, że samo rozważanie tej kwestii oddaje "
 "cześć wielkości tego osiągnięcia.\n"
 "\n"
-"Uwagi specjalne: atak na odległość licza jest magiczny i zawsze ma wysoką "
-"szansę trafienia przeciwnika. Dotyk wysysa życie z ofiary regenerując siły "
-"licza."
+"Uwagi specjalne:"
 
 #: data/units/Undead_Necromancer.cfg:21
-#, fuzzy
 msgid ""
 "One of the greatest circles of what is considered 'black magic' is the art "
 "of necromancy, the terrible ability to awaken the dead with false life. It "
@@ -9156,21 +9044,17 @@ msgstr ""
 "śmiertelne ciała, w przeciwieństwie do delikatnych, rozkładającej się ciał "
 "liczy.\n"
 "\n"
-"Uwagi specjalne: zdalne ataki nekromanty są magiczne i zawsze mają wysoką "
-"szansę trafienia przeciwnika. Różdżka nekromanty przenosi plagę i każdy "
-"pokonany nią wróg powstanie z powrotem jako nieumarły."
+"Uwagi specjalne:"
 
 #: data/units/Undead_Necromancer.cfg:32
-#, fuzzy
 msgid "plague staff"
-msgstr "zaraza"
+msgstr "różdżka zarazy"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
 msgstr "Miotacz kości"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:16
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -9183,10 +9067,12 @@ msgid ""
 msgstr ""
 "Niektóre spośród istot stworzonych przez nekromantę lepiej pasują do "
 "nadanego im fałszywego życia. Mocy nadanego im życia odpowiada ich "
-"ekwipunek, w szczególności łucznicy posiadają odrażający arsenał. Ich "
-"kołczany nie są wypełnione pociskami zrobionymi z drewna, lecz z kości ich "
-"ofiar. Pechowi przeciwnicy nazywają te odrażające i terroryzujące żywych "
-"istoty \"Miotaczami kości\"."
+"ekwipunek, w szczególności łucznicy wyposażani są w wyjątkowo odrażający "
+"arsenał. Ich kołczany nie są wypełnione pociskami zrobionymi z drewna, lecz "
+"z kości ich ofiar. Pechowi przeciwnicy nazywają te odrażające i "
+"terroryzujące żywych istoty \"Miotaczami kości\".\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:41
 #: data/units/Undead_Skele_Soul_Shooter.cfg:31
@@ -9198,7 +9084,6 @@ msgid "Death Knight"
 msgstr "Rycerz śmierci"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:19
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and a sense of betrayal, came back to this world as Death Knights. Wielding "
@@ -9207,16 +9092,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Czasami najpotężniejsi wojownicy i generałowie, zawładnięci nienawiścią i "
-"uczuciem zdrady, powracają na ten świat jako rycerze śmierci. Uzbrojeni tak "
-"jak za życia, dowodzą nieumarłymi kierowani rządzą zemsty."
+"Między ludźmi krążą opowieści o najpotężniejszych wojownikach i generałach, "
+"którzy zawładnięci nienawiścią i uczuciem zdrady, powracają na ten świat "
+"jako rycerze śmierci. Uzbrojeni tak jak za życia, dowodzą nieumarłymi "
+"kierowani rządzą zemsty.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Skele_Deathblade.cfg:3
 msgid "Deathblade"
 msgstr "Ostrze śmierci"
 
 #: data/units/Undead_Skele_Deathblade.cfg:18
-#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters will often "
@@ -9228,16 +9115,17 @@ msgid ""
 msgstr ""
 "Odrażające \"ostrza śmierci\" były za życia mistrzami walki, sprawnymi i "
 "zabójczymi żołnierzami. Ich nowi władcy często to zauważają i starają się "
-"odpowiednio wykorzystać zapewniając im odpowiedni ekwipunek. Potwory te, "
+"odpowiednio wykorzystać, zapewniając im odpowiedni ekwipunek. Potwory te, "
 "choć delikatne, to poruszają się i walczą znacznie szybciej niż podobne im "
-"kreatury."
+"kreatury.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Skele_Draug.cfg:3
 msgid "Draug"
 msgstr "Przeklęty"
 
 #: data/units/Undead_Skele_Draug.cfg:18
-#, fuzzy
 msgid ""
 "Towering remains of what once were legendary warriors, the Draug strike fear "
 "in the hearts of all who oppose them. They are driven not by malice, but are "
@@ -9248,19 +9136,20 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Piętrzące się resztki niegdyś legendarnych wojowników, przeklęci sieją "
-"postrach w sercach każdego, kto się przeciwstawia. Kierują się nie "
-"złośliwością, lecz na wieki uwięzieni w śnie nieżycia, wędrując przez "
-"największe bitwy w swej pamięci, walcząc rozpaczliwie o uwolnienie, o pokój "
-"wykupiony siłą armii. Pamięć o ich wrogach, jak i cel ich walki dawno "
-"odeszły w zapomnienie."
+"Przeklęci to piętrzące się resztki tego, co niegdyś było legendarnymi "
+"wojownikami. Sieją postrach w sercach każdego, kto im się przeciwstawia. Nie "
+"kierują nimi złe intencje - zostali na zawsze uwięzieni w śnie nieżycia i "
+"pogrążeni w nim wędrują przez wspomnienia największych bitew, walcząc "
+"rozpaczliwie o uwolnienie, o pokój możliwy do osiągnięcia tylko siłą. "
+"Wspomnienia wrogów, jak i cel ich walki, dawno odeszły w zapomnienie.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Skele_Revenant.cfg:3
 msgid "Revenant"
 msgstr "Powracający"
 
 #: data/units/Undead_Skele_Revenant.cfg:17
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -9271,19 +9160,20 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Obdarzeni fałszywym życiem by walczyć raz jeszcze, kreatury znane jako "
-"Powracający byli niegdyś wielkimi wojownikami, chociaż pamięć tych czasów "
-"dawno minęła. Nawet czarownicy którzy ich wskrzesili mogą jedynie spekulować "
-"na temat ich przeszłości. Poza tymi sprawami, jeżeli chodzi o walkę "
-"Powracający jest potężnym narzędziem; nieustraszonym wojownikiem nie "
-"czującym bólu, walczącym do samego gorzkiego końca."
+"Kreatury znane jako Powracający były niegdyś wielkimi wojownikami, którzy "
+"zostali obdarzeni fałszywym życiem, by ponownie móc walczyć. Jednak pamięć "
+"tych czasów dawno minęła i nawet czarownicy, którzy ich wskrzesili mogą "
+"jedynie spekulować na temat ich przeszłości. Powracający jest w walce "
+"potężnym narzędziem, nieustraszonym wojownikiem nie czującym bólu i "
+"walczącym do samego gorzkiego końca.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:3
 msgid "Soul Shooter"
 msgstr "Miotacz dusz"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:18
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -9294,17 +9184,18 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Najpotężniejsi z nieumarłych łuczników niezmiennie rekrutują się spośród "
-"tych, którzy byli nimi w poprzednim życiu. Wędrują po polach bitew, wiedzeni "
-"przez niknące wspomnienie ich dawnych umiejętności, bez zwracania uwagi na "
-"to, kim są ich przeciwnicy, ani do jakiego celu dążą. Prowadzi ich zła wola "
-"zrodzona z ich udręczonej, pustej i niespójnej egzystencji."
+"tych, którzy byli łucznikami w poprzednim życiu. Wędrują po polach bitew, "
+"wiedzeni przez niknące wspomnienie dawnych umiejętności, bez zwracania uwagi "
+"na to kim są ich przeciwnicy, ani do jakiego celu dążą. Prowadzi ich zła "
+"wola zrodzona z udręczonej, pustej i niespójnej egzystencji.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Skeleton.cfg:3
 msgid "Skeleton"
 msgstr "Szkielet"
 
 #: data/units/Undead_Skeleton.cfg:17
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
@@ -9316,14 +9207,15 @@ msgstr ""
 "Szkielety to wojownicy, którzy polegli w bitwach i zostali wskrzeszeni "
 "poprzez czarną magię. Są niemal zupełnie pozbawione rozumu i nie rozumieją "
 "swego celu, lecz boją się ani bólu, ani śmierci, a sama ich obecność potrafi "
-"odstraszyć tych, którzy chcieliby zmierzyć się z ich panem."
+"odstraszyć tych, którzy chcieliby zmierzyć się z ich panem.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
 msgstr "Szkielet łucznik"
 
 #: data/units/Undead_Skeleton_Archer.cfg:16
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -9333,18 +9225,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Szkielet łucznik jest nieco inny od szkieletów które często my towarzyszą - "
-"jest grzechem przeciwko naturze, wojownikiem powstałym z martwych by znów "
-"walczyć. W dłoniach swoich panów, ci żołnierze zrobią wszystko by osiągnąć "
-"postawione przed sobą cele, albowiem śmierć nie jest straszna tym, którzy są "
-"już dawno martwi."
+"Szkielet łucznik jest nieco inny od szkieletów, które często mu towarzyszą - "
+"jest grzechem przeciwko naturze, wojownikiem powstałym z martwych, by znów "
+"walczyć. Ci żołnierze zrobią wszystko, by osiągnąć postawione przez ich "
+"panów cele, albowiem śmierć nie jest straszna tym, którzy są już martwi.\n"
+"\n"
+"Uwagi specjalne:"
 
 #: data/units/Undead_Spirit_Ghost.cfg:3
 msgid "Ghost"
 msgstr "Duch"
 
 #: data/units/Undead_Spirit_Ghost.cfg:19
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -9357,16 +9249,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Jest jedną z łask stworzenia, że ludzka dusza jest niezmienna i nie da się "
-"jej zniszczyć. Mimo tego wiele z rzeczy, które potrafi uczynić nekromanta, "
-"jest całkowicie przerażające.\n"
+"Jedną z łask stworzenia jest to, że ludzka dusza jest niezmienna i nie da "
+"się jej zniszczyć. Mimo tego wiele rzeczy, które potrafi uczynić nekromanta "
+"na przekór temu faktowi jest całkowicie przerażające.\n"
 "\n"
 "Opleciony zasłoną wstrętnych zaklęć, duch upodabnia się do wiatru w żaglach "
 "okrętu. Rezultatem tego uwięzienia jest niezawodny sługa, któremu można "
-"zlecić każde zadanie, którego zażyczy sobie jego pan.\n"
+"zlecić każde zadanie, jakiego zażyczy sobie jego pan.\n"
 "\n"
-"Uwagi specjalne: Duchy mają niezwykłą odporność na obrażenia i poruszają się "
-"dość wolno nad otwartą wodą.\""
+"Uwagi specjalne:"
 
 #: data/units/Undead_Spirit_Ghost.cfg:49
 #: data/units/Undead_Spirit_Spectre.cfg:74
@@ -9379,7 +9270,6 @@ msgid "Nightgaunt"
 msgstr "Zjawa"
 
 #: data/units/Undead_Spirit_Nightgaunt.cfg:18
-#, fuzzy
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
 "countenance that they obscure. These terrible forms are rarely seen by the "
@@ -9388,23 +9278,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Przeznaczenie maski, którą noszą te kreatury jest nieznane, gdyż ukrywają "
-"one rysy twarzy. Te okropne formy rzadko są widziane przez żyjących, a ci, "
-"którzy przeżyli by móc mówić o nich, nie otrzymali dość wolnego czasu do "
-"studiowania swojego wroga.\n"
+"Przeznaczenie mask, którą noszą te kreatury jest nieznane, podobnie jak "
+"wygląd ukrywanych przez nie twarzy. Te okropne formy są rzadko widywane "
+"przez żyjących, a ci, którzy przeżyli, by móc o nich opowiedzieć nie "
+"poświęcali zbyt dużo czasu przyglądaniu się.\n"
 "\n"
-"Uwagi specjalne: podczas, gdy jednostka walcząca po tej samej stronie "
-"rozprasza przeciwnika, zjawa może zakraść się za niego i zadać cios w plecy, "
-"zadający podwójne obrażenia. Zjawy mają wyjątkową odporność na obrażenia i "
-"poruszają się dość wolno nad otwartą wodą. Potrafią także ukrywać się w "
-"nocy, nie pozostawiając żadnego śladu swej obecności."
+"Uwagi specjalne:"
 
 #: data/units/Undead_Spirit_Shadow.cfg:3
 msgid "Shadow"
 msgstr "Cień"
 
 #: data/units/Undead_Spirit_Shadow.cfg:19
-#, fuzzy
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
 "to retreat into darkness. Since that day, the shadows of the world have held "
@@ -9420,18 +9305,13 @@ msgstr ""
 "\n"
 "Na to pytanie z łatwością odpowie każdy nekromanta.\n"
 "\n"
-"Uwagi specjalne: podczas, gdy jednostka walcząca po tej samej stronie "
-"rozprasza przeciwnika, cień może zakraść się za niego i zadać cios w plecy, "
-"zadający podwójne obrażenia. Cienie mają wyjątkową odporność na obrażenia i "
-"poruszają się dość wolno nad otwartą wodą. Potrafią także ukrywać się w "
-"nocy, nie pozostawiając żadnego śladu swej obecności."
+"Uwagi specjalne:"
 
 #: data/units/Undead_Spirit_Spectre.cfg:3
 msgid "Spectre"
 msgstr "Widmo"
 
 #: data/units/Undead_Spirit_Spectre.cfg:20
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "master's power. These abominations are a rightful terror to the living, and "
@@ -9450,9 +9330,7 @@ msgstr ""
 "Ich stworzenie to nie lada wyczyn. Spotkanie widma jest o tyle groźne, że "
 "często zwiastuje nadejście znacznie niebezpieczniejszych mocy.\n"
 "\n"
-"Uwagi specjalne: uderzenie ich ostrza wysysa życie z ofiary, odnawiając siły "
-"widma. Ponadto mają one niezwykłą odporność na obrażenia i dość wolno "
-"poruszają się nad otwartą wodą."
+"Uwagi specjalne:"
 
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
@@ -9464,7 +9342,6 @@ msgid "Wraith"
 msgstr "Upiór"
 
 #: data/units/Undead_Spirit_Wraith.cfg:19
-#, fuzzy
 msgid ""
 "These tortured forms of what were once warriors are among the most "
 "terrifying things a necromancer can create, for a sword will cleave right "
@@ -9478,24 +9355,23 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Te umęczone kształty, które kiedyś były wojownikami są pomiędzy najbardziej "
-"przerażającymi rzeczami w arsenale nekromantów - gdyż miecz przelatuje przez "
-"nie, jak przez powietrze. Przerażenie to powstaje z myśli, że bestie te są "
-"niezwyciężone, przekonania nie leżącego aż tak daleko od prawdy\n"
+"Te umęczone kształty, które kiedyś były wojownikami, są jednymi z "
+"najbardziej przerażającymi rzeczami w arsenale nekromantów, gdyż miecz "
+"przecina je jak powietrze, nie czyniąc żadnej szkody. Powodem ogromnej obawy "
+"przed nimi jest przeświadczenie, że bestie te są niezwyciężone, co wcale nie "
+"mija się bardzo z prawdą.\n"
 "\n"
-"Właśnie dzięki temu przerażeniu zaklęcie stojące za istnieniem tych istot "
-"potrafi czerpać siły z rzeczy, która im zagrażają.\n"
+"Z uwagi na to powstały środki, które pozwalają, by zaklęcia podtrzymujące "
+"istnienie tych istot potrafiły odnawiać się dzięki wszystkiemu, co im "
+"zagraża.\n"
 "\n"
-"Uwagi specjalne: uderzenie ich ostrza wysysa życie z ofiary, odnawiając siły "
-"upiora. Ponadto mają one niezwykłą odporność na obrażenia i dość wolno "
-"poruszają się nad otwartą wodą."
+"Uwagi specjalne:"
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
 msgstr "Drzewiec"
 
 #: data/units/Wose.cfg:19
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -9512,16 +9388,15 @@ msgid ""
 msgstr ""
 "Widywane rzadko nawet przez elfy, drzewce są stworzeniami, o których "
 "niewiele wiadomo. Większość wiedzy o nich pochodzi właśnie od elfów. "
-"Wiadomo, że mimo swego wyglądu nie są one potomkami drzew, a zbliżone są "
-"raczej do świata wróżek nawet bardziej niż elfy, choć w nieco inny sposób. "
-"Nie wiadomo, co nimi kieruje, ale dość oczywisty jest pomysł, że są one "
-"strażnikami naturalnego świata.\n"
+"Wiadomo, że mimo swego wyglądu nie są one potomkami drzew, lecz wywodzą się "
+"raczej ze świata wróżek i są do nich pod pewnymi względami nawet bardziej "
+"podobne niż elfy. Nie wiadomo jakie motywy kierują ich poczynaniami, ale "
+"dość oczywisty jest pomysł, że są one strażnikami naturalnego świata.\n"
 "\n"
 "Drzewce są zupełnie nieprzystosowane do wojny, ale dysponują wielką siłą. "
 "Nie są również przyzwyczajone do szybkiego przemieszczania się.\n"
 "\n"
-"Uwagi specjalne: drzewce regenerują się czerpiąc siłę z otaczającego je "
-"świata, bez potrzeby odwiedzania wiosek w poszukiwaniu jedzenia i pomocy."
+"Uwagi specjalne:"
 
 #: data/units/Wose.cfg:35 data/units/Wose_Ancient.cfg:29
 #: data/units/Wose_Elder.cfg:28
@@ -9533,7 +9408,6 @@ msgid "Ancient Wose"
 msgstr "Prastary drzewiec"
 
 #: data/units/Wose_Ancient.cfg:20
-#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -9558,15 +9432,13 @@ msgstr ""
 "Takie spotkania to wszystko, co wiadomo o przypuszczalnie najbardziej "
 "starożytnych drzewcach.\n"
 "\n"
-"Uwagi specjalne: drzewce regenerują się używając otaczających je sił natury "
-"bez potrzeby odwiedzania wiosek w poszukiwaniu jedzenia i pomocy."
+"Uwagi specjalne:"
 
 #: data/units/Wose_Elder.cfg:3
 msgid "Elder Wose"
 msgstr "Starszy drzewiec"
 
 #: data/units/Wose_Elder.cfg:19
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -9583,33 +9455,30 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Mówi się, że drzewce posiadają wiele kształtów, choć wszystkie przypominają "
-"rosnące w raz z wiekiem drzewa. Opowieści wspominają o drzewcach, które "
+"rosnące wraz z wiekiem drzewa. Opowieści wspominają o drzewcach, które "
 "przypominały drzewa również pod względem rozmiarów, wznosząc się ponad "
-"stworzeniami, które chodziły pod nimi. Jest to główna przyczyna, dla jakiej "
-"są tak rzadko widywane - drzemiąc w grupkach, co często czynią, drzewiec "
-"wydaje się być niczym innym, jak tylko dziwnie ukształtowanym drzewem. Nawet "
-"nieuważnym elfom zdarza się czasem pomylić.\n"
+"stworzeniami, które chodziły pod nimi. Głównie dlatego są tak rzadko "
+"widywane - często drzemią w grupkach, wyglądając jak dziwnie ukształtowane "
+"drzewa, niczym nie odróżniając się od otoczenia. Nawet nieuważnym elfom "
+"zdarza się czasem pomylić.\n"
 "\n"
 "Drzewce pod żadnym względem nie są wojownikami, ale posiadana przez nie siła "
 "może oczywiście pomóc przemocy, której nie zawahają się użyć jeśli ktoś je "
 "rozzłości.\n"
 "\n"
-"Uwagi specjalne: drzewce regenerują się pobierając siły z otaczającego je "
-"świata i nie muszą odwiedzać wiosek w poszukiwaniu jedzenia i pomocy."
+"Uwagi specjalne:"
 
 #: src/about.cpp:32
 msgid "+Core Developers"
 msgstr "+Główni programiści"
 
 #: src/about.cpp:33
-#, fuzzy
 msgid "+  Main Developer"
-msgstr "-   Główny programista"
+msgstr "+  Główny programista"
 
 #: src/about.cpp:36
-#, fuzzy
 msgid "+  Artwork and graphics designer"
-msgstr "-   Projektant grafiki"
+msgstr "+  Projektant grafiki"
 
 #: src/about.cpp:39
 msgid "+Developers"
@@ -10187,9 +10056,8 @@ msgid "Abilities: "
 msgstr "Zdolności:"
 
 #: src/help.cpp:1143
-#, fuzzy
 msgid "Cost: "
-msgstr "Ruchy:"
+msgstr "Koszt:"
 
 #: src/help.cpp:1144
 msgid "Alignment: "
@@ -10484,13 +10352,12 @@ msgid "You are separated from your soldiers and may not recall them"
 msgstr "Zostałeś oddzielony od swoich żołnierzy i nie możesz ich przywoływać"
 
 #: src/menu_events.cpp:637
-#, fuzzy
 msgid ""
 "There are no troops available to recall\n"
 "\t(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "Nie ma żołnierzy do przywołania\n"
-"(Musisz mieć weteranów, którzy przetrwali poprzedni scenariusz)"
+"\t(Musisz mieć weteranów, którzy przetrwali poprzedni scenariusz)"
 
 #: src/menu_events.cpp:645
 msgid "Level"
@@ -10560,41 +10427,35 @@ msgstr "Broniący się"
 
 #: src/mouse_events.cpp:243
 msgid "Expected Battle Result (hp)"
-msgstr ""
+msgstr "Oczekiwany Wynik Bitwy (pż)"
 
 #: src/mouse_events.cpp:328
-#, fuzzy
 msgid "Leadership"
-msgstr "dowodzenie"
+msgstr "Dowodzenie"
 
 #: src/mouse_events.cpp:341
-#, fuzzy
 msgid " resistance vs "
-msgstr "Odporności"
+msgstr "odporność na "
 
 #: src/mouse_events.cpp:342
-#, fuzzy
 msgid " vulnerability vs "
-msgstr "czułość atakującego na"
+msgstr "czułość na "
 
 #: src/mouse_events.cpp:352
-#, fuzzy
 msgid "Slowed"
-msgstr "spowolniony"
+msgstr "Spowolniony"
 
 #: src/mouse_events.cpp:368
-#, fuzzy
 msgid "Total damage"
-msgstr "suma obrażeń"
+msgstr "Całkowite obrażenia"
 
 #: src/mouse_events.cpp:375
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Wybierz broń:"
+msgstr "Brak odpowiedniej broni"
 
 #: src/mouse_events.cpp:380
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Szansa wyjścia bez szwanku"
 
 #: src/mouse_events.cpp:678 src/mouse_events.cpp:746 src/mouse_events.cpp:1328
 msgid "Damage Calculations"
@@ -10660,7 +10521,7 @@ msgstr "Brak stron do gry wieloosobowej"
 #: src/multiplayer_connect.cpp:62 src/multiplayer_connect.cpp:258
 #: src/multiplayer_connect.cpp:312
 msgid "Normal"
-msgstr ""
+msgstr "Normalny"
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
 #: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2288
@@ -10826,19 +10687,19 @@ msgstr "Ustawia limitowanie czasu gracza"
 
 #: src/multiplayer_create.cpp:115
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "Maksymalny czas pierwszej tury (sekundy)"
 
 #: src/multiplayer_create.cpp:121
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "Maksymalny czas na turę (sekundy)"
 
 #: src/multiplayer_create.cpp:127
 msgid "Time for general tasks each turn (seconds)"
-msgstr ""
+msgstr "Czas na ogólne czynności na turę (sekundy)"
 
 #: src/multiplayer_create.cpp:133
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "Czas za każdy atak, rekrutację i zdobycie"
 
 #: src/multiplayer_create.cpp:138
 msgid "The amount of income each village yields per turn"
@@ -10906,24 +10767,20 @@ msgid "Unlimited Turns"
 msgstr "Brak ograniczenia tur"
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Init. Limit: "
-msgstr "Czas początkowy: "
+msgstr "Pocz. Limit:"
 
 #: src/multiplayer_create.cpp:318
-#, fuzzy
 msgid "Turn Bonus: "
-msgstr "Tury: "
+msgstr "Bonus tury: "
 
 #: src/multiplayer_create.cpp:322
-#, fuzzy
 msgid "Reservoir: "
-msgstr "Serwer:"
+msgstr "Zapas:"
 
 #: src/multiplayer_create.cpp:327
-#, fuzzy
 msgid "Action Bonus: "
-msgstr "Akcje"
+msgstr "Premia akcji:"
 
 #: src/multiplayer_create.cpp:334
 msgid "Village Gold: "
@@ -10974,14 +10831,12 @@ msgid "Observe Game"
 msgstr "Obserwuj grę"
 
 #: src/multiplayer_lobby.cpp:451
-#, fuzzy
 msgid "Skip Replays"
-msgstr "Pomiń powtórkę"
+msgstr "Pomiń powtórki"
 
 #: src/multiplayer_lobby.cpp:452
-#, fuzzy
 msgid "Preferences"
-msgstr "Księżniczka"
+msgstr "Preferencje"
 
 #: src/multiplayer_lobby.cpp:453
 msgid "Quit"
@@ -10989,7 +10844,7 @@ msgstr "Wyjdź"
 
 #: src/multiplayer_lobby.cpp:459
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
+msgstr "Szybko przewiń powtórkę do aktualnej tury"
 
 #: src/multiplayer_ui.cpp:79
 msgid "Invalid Color"
@@ -11322,7 +11177,7 @@ msgstr "Ustawienia"
 
 #: src/titlescreen.cpp:206
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Wspomóż Wesnoth"
+msgstr "Pomóż nam"
 
 #: src/titlescreen.cpp:207
 msgid "About"
@@ -11378,7 +11233,7 @@ msgstr "Więcej"
 
 #: src/titlescreen.cpp:249
 msgid "Help"
-msgstr ""
+msgstr "Pomoc"
 
 #: src/titlescreen.cpp:259
 msgid "-- The Tome of Wesnoth"
