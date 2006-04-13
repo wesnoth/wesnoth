@@ -142,6 +142,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	anim_ = NULL;
 	getsHit_=0;
 	end_turn_ = false;
+	hold_position_ = false;
 	attacks_left_ = max_attacks_;
 }
 unit::unit(const unit_type* t,
@@ -167,6 +168,7 @@ unit::unit(const unit_type* t,
 	anim_ = NULL;
 	getsHit_=0;
 	end_turn_ = false;
+	hold_position_ = false;
 	attacks_left_ = max_attacks_;
 }
 
