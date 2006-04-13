@@ -296,7 +296,7 @@ void menu::update_size()
 	unsigned int h = heading_height();
 	for(size_t i = get_position(),
 	    i_end = minimum(items_.size(), i + max_items_onscreen());
-	    i != i_end; ++i)
+	    i < i_end; ++i)
 		h += get_item_rect(i).h;
 	h = maximum(h, height());
 	if (max_height_ > 0 && h > max_height_)
