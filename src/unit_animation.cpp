@@ -166,7 +166,7 @@ int death_animation::matches(const attack_type* attack) const
 }
 
 movement_animation::movement_animation(const config& cfg)
-:unit_animation(cfg), terrain_types(utils::split(cfg["terrain_type"]))
+:unit_animation(cfg), terrain_types(utils::split(cfg["terrain"]))
 {
 	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
 	for(std::vector<std::string>::const_iterator i = my_directions.begin(); i != my_directions.end(); ++i) {
