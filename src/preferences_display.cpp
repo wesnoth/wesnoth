@@ -216,7 +216,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
-	  show_lobby_joins_button_(disp.video(), _("Show lobby joins"), gui::button::TYPE_CHECK),
+	  show_lobby_joins_button_(disp.video(), _("Show Lobby joins"), gui::button::TYPE_CHECK),
 	  show_floating_labels_button_(disp.video(), _("Show Floating Labels"), gui::button::TYPE_CHECK),
 	  turn_dialog_button_(disp.video(), _("Turn Dialog"), gui::button::TYPE_CHECK),
 	  turn_bell_button_(disp.video(), _("Turn Bell"), gui::button::TYPE_CHECK),
