@@ -1610,7 +1610,10 @@ void display::draw_movement_info(const gamemap::location& loc, int xloc, int ylo
 
 #ifndef USE_TINY_GUI
 	const unit_map::const_iterator un = units_.find(route_.steps.front());
-	if(un != units_.end() && zoom_ >= DefaultZoom) {
+	/* YogiHH 15.04.2006
+	if this looks too ugly because fonts don't scale just reactivate the second condition
+	*/
+	if(un != units_.end() /*&& zoom_ >= DefaultZoom*/) {
 		text << (100-un->second.defense_modifier(map_.get_terrain(loc))) << "%";
 	}
 #endif
