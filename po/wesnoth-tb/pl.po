@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-03-22 20:24+0100\n"
-"PO-Revision-Date: 2006-03-20 22:44+0100\n"
+"PO-Revision-Date: 2006-04-16 21:15+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,6 @@ msgid "Knight"
 msgstr "Rycerz"
 
 #: data/campaigns/Two_Brothers.cfg:18
-#, fuzzy
 msgid ""
 "A Black Mage is threatening the local village and its inhabitants. When "
 "their leader Bjarn sends for aid from his brother Arne, he is victorious, "
@@ -44,7 +43,8 @@ msgstr ""
 "Czarnoksiężnik zagraża miejscowym wioskom i ich mieszkańcom. Gdy ich "
 "przywódca, Bjarn, wysyła po pomoc do swojego brata, Arne, odnosi zwycięstwo, "
 "lecz Bjarn sam zostaje porwany. Czy potrafisz go uratować?\n"
-"Bardzo krótka kampania przeznaczona dla początkujących."
+"Bardzo krótka kampania przeznaczona dla początkujących na poziomie łatwym i "
+"stanowiąca wyzwanie dla doświadczonych graczy na trudnym."
 
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:4
 msgid "Rooting Out A Mage"
@@ -286,6 +286,8 @@ msgid ""
 "These men had some great arguments persuading me, that you are not allowed "
 "to enter this forest. If you try to, you will die."
 msgstr ""
+"Ci ludzie przedstawili mi naprawdę dobre argumenty na to, że nie powinieneś "
+"móc wejść do tego lasu. Jeśli spróbujesz, zginiesz."
 
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:237
 msgid "A glorious combat at last, against mounted enemies!"
@@ -305,7 +307,7 @@ msgstr "Diabli! Mam nadzieję, że nadejdą posiłki, tak bym mógł szybko ucie
 
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:309
 msgid "Kill the Dark Adept before his reinforcements arrive"
-msgstr ""
+msgstr "Zabij mrocznego adepta nim przybędą posiłki"
 
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:327
 msgid "Come on, men, let's catch those kidnappers!"
@@ -330,13 +332,12 @@ msgstr ""
 "nędzne życie."
 
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:348
-#, fuzzy
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
 "guards are Sithrak and Eleben."
 msgstr ""
-"Trzy dni jazdy na wschód, w opuszczonym zamku. Hasła dla strażników brzmią "
-"Sithrak i Eleben."
+"W opuszczonym zamku, trzy dni jazdy na północny-wschód. Hasła dla strażników "
+"brzmią Sithrak i Eleben."
 
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:352
 msgid "Thank you. Leave him, men, we ride East."
@@ -353,6 +354,10 @@ msgid ""
 "late to help in this fight, I would like to aid you in your forthcoming "
 "endevours."
 msgstr ""
+"Witam, jestem Brena.  Widziałem jak walczyliście z przebrzydłymi "
+"nieumarłymi. Nic nie sprawia mi takiej radości jak miażdżenie tych "
+"obrzydliwych szkieletów i podobnego paskudztwa. Choć przybywam za późno, by "
+"pomóc w tej walce, chciałbym pomóc ci w przyszłych zadaniach."
 
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:380
 msgid "They would only slow us down!"
@@ -360,7 +365,7 @@ msgstr "Tylko by nas spowolnili!"
 
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:384
 msgid "I am the one to decide."
-msgstr ""
+msgstr "To ja zadecyduję."
 
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:388
 msgid "Oh, all right then. Come along with us."
@@ -399,20 +404,24 @@ msgid ""
 "You foolish human did kill me but you won't be able to reach the undeads. I "
 "fulfilled the pact and will be reanimated soon to be a Lord of their armies."
 msgstr ""
+"Głupi człowieku, zabiłeś mnie, ale nie dotrzesz do nieumarłych. Dopełniłem "
+"paktu i wkrótce zostanę wskrzeszony, by stać się Panem ich armii."
 
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:458
 msgid ""
 "Hurry, we have to trace them down. Maybe we can still get them. They have to "
 "be in the north!"
 msgstr ""
+"Szybko, musimy ich wyśledzić. Być może damy radę ich dogonić. Muszą być na "
+"północ stąd!"
 
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:464
 msgid "Hurry to the north and stop the kidnappers"
-msgstr ""
+msgstr "Pośpiesz na północ i zatrzymaj porywaczy"
 
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:5
 msgid "Magic Gate"
-msgstr ""
+msgstr "Magiczna Brama"
 
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:17
 msgid "Guarded Castle"
@@ -533,7 +542,7 @@ msgstr "Elbrethil."
 
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:374
 msgid "That's the wrong password! These aren't our relief! Get them!"
-msgstr ""
+msgstr "To złe hasło! To nie nasze posiłki! Brać ich!"
 
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:379
 msgid "Toras."
@@ -610,12 +619,15 @@ msgstr "Zabij czarnoksiężnika, by zdobyć klucz do celi"
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:568
 msgid "Thank you for saving me. I had almost given up hope you would free me."
 msgstr ""
+"Dziękuję za ocalenie mnie. Prawie straciłem nadzieję, że mnie uwolnisz."
 
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:573
 msgid ""
 "Oh it was nothing, a few elves, one or two dark sorcerers, a bunch of orcs "
 "and some undead. Really just a day's work for us mercenaries."
 msgstr ""
+"Och, to drobiazg. Kilka elfów, jeden albo dwóch czarnoksiężników, grupa "
+"orków i trochę nieumarłych. Naprawdę, dla nas, najemników, to codzienność."
 
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:578
 msgid "Thank you for coming to my aid. Let us return to the village."
