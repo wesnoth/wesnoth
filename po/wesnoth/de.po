@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-12 17:55+0200\n"
-"PO-Revision-Date: 2006-04-09 20:58+0100\n"
+"PO-Revision-Date: 2006-04-17 12:24+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -4550,7 +4550,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
-msgstr "6S - "
+msgstr "6S - Schlachtfeld der Kreuzritter"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
 msgid ""
@@ -4660,155 +4660,204 @@ msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
+" Geister haben sehr ungewöhnliche Schadensresistenzen und bewegen sich sehr "
+"langsam auf offenem Wasser."
 
 #: data/special-notes.cfg:5
 msgid ""
 " This unit's holy attack deals tremendous damage to the undead, and even "
 "some to living creatures."
 msgstr ""
+" Der heilige Angriff dieser Einheit fügt untoten Einheiten schweren Schaden "
+"zu und verletzt auch Lebende."
 
 #: data/special-notes.cfg:8
 msgid ""
 " This unit is capable of basic healing, though it can only delay the effects "
 "of poison, not cure them entirely."
 msgstr ""
+" Diese Einheit ist in der Lage, alle befreundeten, direkt benachbarten "
+"Einheiten von ihren Wunden zu heilen. Sie ist jedoch nicht in der Lage, die "
+"Wirkung eines Giftes aufzuheben."
 
 #: data/special-notes.cfg:11
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
+" Diese Einheit ist in der Lage, alle befreundeten, direkt benachbarten "
+"Einheiten von ihren Wunden zu heilen oder von der Wirkung eines Giftes zu "
+"kurieren."
 
 #: data/special-notes.cfg:14
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
+" Diese Einheit verfügt über die Fertigkeit der Regeneration. Dadurch erhält "
+"sie genauso viele Lebenspunkte, als würde sie sich in einem Dorf aufhalten."
 
 #: data/special-notes.cfg:17
 msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
+" Die körperliche Widerstandskraft dieser Einheit reduziert den erlittenen "
+"Schaden einige Angriffe, jedoch nur, wenn sich die Einheit verteidigt."
 
 #: data/special-notes.cfg:20
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
-"Geübt im Umgang mit Schwert und Armbrust führt der Leutnant eine kleine "
-"Gruppe von Soldaten der Menschen an und koordiniert ihren Angriff.\n"
-"\n"
-"Anmerkung: Die Führungsqualitäten des Leutnants gewähren allen benachbarten "
-"eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie eine niedrigere "
-"Stufe besitzen."
+" Die Führungsqualitäten dieser Einheit gewähren allen benachbarten eigenen "
+"Einheiten einen Schadensbonus, jedoch nur, wenn sie eine niedrigere Stufe "
+"besitzen."
 
 #: data/special-notes.cfg:23
 msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
+" Ihre Fähigkeit als Plänkler erlaubt es dieser Einheit ungesehen an ihren "
+"Feinden vorbeizukommen und dabei jegliche Kontrollzone zu ignorieren."
 
 #: data/special-notes.cfg:26
 msgid " Illumination increases the lighting level in adjacent areas."
 msgstr ""
+" Diese Einheit ist von einer gleißenden Lichtaura umgeben, die die "
+"Lichtverhältnisse in der Nähe dieser Einheit verbessert."
 
 #: data/special-notes.cfg:29
 msgid ""
 " This unit can teleport between any two villages instantly, though the "
 "player must control both, and the destination village must be unoccupied."
 msgstr ""
+" Diese Einheit kann sich zwischen zwei Dörfern hin und her teleportieren. "
+"Dafür muss der Spieler allerdings beide Dörfer kontrollieren und in den "
+"Dörfern dürfen keine anderen Einheiten stehen."
 
 #: data/special-notes.cfg:32
 msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
+" Diese Einheit kennt sich bestens in den Wäldern aus und kann sich daher vor "
+"ihren Feinden verstecken. Dies macht sie praktisch unsichtbar. Sie kann nur "
+"von Einheiten aufgespürt werden, die auf einem direkt benachbarten Feld "
+"stehen. Zudem wird sie sichtbar, sobald sie angreift."
 
 #: data/special-notes.cfg:35
 msgid " This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
+" Diese Einheit ist in der Lage, in der Nacht mit der sie umgebenden "
+"Finsternis zu verschmelzen und kann nur gesehen werden, wenn eine Einheit "
+"direkt in einem benachbarten Feld steht oder bis die Einheit durch einen "
+"Angriff wieder sichtbar wird."
 
 #: data/special-notes.cfg:38
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
+" Diese Einheit kann sich ungesehen in tiefem Wasser bewegen, da sie für "
+"lange Zeit nicht auftauchen muss."
 
 #: data/special-notes.cfg:41
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
+" Verfällt die Einheit in einen Berserkerrausch, wird sie nicht eher ruhen, "
+"bis entweder sie selbst oder ihr Gegner Tod am Boden liegt."
 
 #: data/special-notes.cfg:44
 msgid ""
 "  If someone with the same allegiance distracts an enemy, this unit may "
 "backstab, inflicting double damage, by creeping around behind that enemy."
 msgstr ""
+" Während eine befreundete Einheit einen Gegner ablenkt, kann sich diese "
+"Einheit in dessen Rücken schleichen und einen hinterhältigen Angriff "
+"ausführen, der doppelten Schaden verursacht."
 
 #: data/special-notes.cfg:47
 msgid " Foes who lose their life to the plague will rise again in unlife."
 msgstr ""
+"Jeder, der von dieser Einheit mittels der Waffe mit der Waffenfähigkeit "
+"\"Plage\" niedergestreckt wird, erhebt sich sogleich wieder als wandelnde "
+"Leiche, um an der Seite dieser Einheit zu kämpfen."
 
 #: data/special-notes.cfg:50
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage."
 msgstr ""
+"Diese Einheit kann ihre Gegner verlangsamen, so dass die Aktionen des "
+"Gegners im Kampf sowie seine Bewegungspunkte um die Hälfte reduziert werden."
 
 #: data/special-notes.cfg:53
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
+" Die Fähigkeit, ihre Gegner in Stein zu verwandeln, macht diese Einheit zu "
+"einem extrem gefährlichen Gegner."
 
 #: data/special-notes.cfg:56
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
+" Ihre hervorragende Schießkunst erlaubt es dieser Einheit jeden Feind mit "
+"hoher Wahrscheinlichkeit zu treffen. Dies gilt jedoch nur in der Offensive."
 
 #: data/special-notes.cfg:59
 msgid ""
 " The ranged attacks of this unit are magical, and always have a high chance "
 "of hitting an opponent."
 msgstr ""
+" Der Fernkampfangriff dieser Einheit ist magischer Natur und hat daher eine "
+"erhöhte Trefferwahrscheinlichkeit."
 
 #: data/special-notes.cfg:62
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
+" Mit steigender Verwundung ihrer Tentakel, wird der Angriff dieser Einheit "
+"immer weniger gefährlich."
 
 #: data/special-notes.cfg:65
-#, fuzzy
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"\n"
-"\n"
-"Anmerkung: Der Lanzenangriff des Ritters ist mit der Waffenfähigkeit "
-"»Ansturm« versehen. Hierdurch wird zwar der Schaden, den der Ritter "
-"verursacht verdoppelt, jedoch verursacht auch sein Gegner doppelten Schaden. "
-"Im Verteidigungsfall wird diese Fähigkeit nicht aktiviert."
+" Ein Angriff dieser Einheit ist mit der Waffenfähigkeit »Ansturm« versehen. "
+"Hierdurch wird zwar der Schaden, den die Einheit verursacht verdoppelt, "
+"jedoch verursacht auch ihr Gegner doppelten Schaden. Im Verteidigungsfall "
+"wird diese Fähigkeit nicht aktiviert."
 
 #: data/special-notes.cfg:68
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
+" Wird ein Gegner von dieser Einheit gebissen oder berührt, wird ein Teil von "
+"dessen Lebenskraft abgesaugt und auf die Einheit übertragen."
 
 #: data/special-notes.cfg:71
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
+" Durch die Länge ihrer Waffe führt diese Einheit den ersten Schlag, selbst "
+"wenn sie sich nur verteidigt."
 
 #: data/special-notes.cfg:74
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
+" Die Opfer, die von einer vergifteten Waffe getroffen werden, nehmen "
+"kontinuierlich Schaden, bis sie in einem Dorf oder von einem Heiler kuriert "
+"werden."
 
 #: data/team_colors.cfg:4
 msgid "Red"
@@ -5576,7 +5625,6 @@ msgid "Drake Flameheart"
 msgstr "Entflammender Drake"
 
 #: data/units/Drake_Flameheart.cfg:21
-#, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves, have veins which course with fire rather than blood. "
@@ -5591,16 +5639,13 @@ msgstr ""
 "noch niemand es wirklich versucht hat sie aufzuschneiden um es zu "
 "überprüfen.\n"
 "\n"
-"Anmerkung: Die Führungsqualitäten des entflammenden Draken gewähren allen "
-"benachbarten eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie "
-"eine niedrigere Stufe besitzen."
+"Anmerkung:"
 
 #: data/units/Drake_Flare.cfg:3
 msgid "Drake Flare"
 msgstr "Lodernder Drake"
 
 #: data/units/Drake_Flare.cfg:20
-#, fuzzy
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
@@ -5612,9 +5657,7 @@ msgstr ""
 "hören. Jene die von ihren Feinden als »lodernd« bezeichnet werden, sind "
 "diese Anführer im Frieden wie auch im Kriege.\n"
 "\n"
-"Anmerkung: Die Führungsqualitäten des lodernden Draken gewähren allen "
-"benachbarten eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie "
-"eine niedrigere Stufe besitzen."
+"Anmerkung:"
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
@@ -5715,7 +5758,6 @@ msgid "Drake Slasher"
 msgstr "Drake Schlitzer"
 
 #: data/units/Drake_Slasher.cfg:20
-#, fuzzy
 msgid ""
 "Slashers are clashers who have chosen to master the use of a Halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
@@ -5733,8 +5775,7 @@ msgstr ""
 "verbessert. Dies ist ein großer Vorteil gegenüber ihren nahen Verwandten, "
 "den Gladiatoren.\n"
 "\n"
-"Anmerkung: Durch die Länge dieser Waffe führt jeder Drake Schlitzer den "
-"ersten Schlag, auch wenn er sich nur verteidigt."
+"Anmerkung:"
 
 #: data/units/Drake_Slasher.cfg:76 data/units/Drake_Slasher.cfg:92
 #: data/units/Drake_Warden.cfg:82 data/units/Drake_Warden.cfg:98
@@ -5748,7 +5789,6 @@ msgid "Drake Warden"
 msgstr "Drake Schlächter"
 
 #: data/units/Drake_Warden.cfg:21
-#, fuzzy
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
 "the most able Slashers. They have forged their might such that few warriors "
@@ -5763,8 +5803,7 @@ msgstr ""
 "man niemals unterschätzen sollte. Die Lieblingswaffe der Schlächter ist die "
 "Hellebarde, die sie überaus effektiv einsetzen.\n"
 "\n"
-"Anmerkung: Durch die Länge dieser Waffe führt jeder Drake Schlächter den "
-"ersten Schlag, auch wenn er sich nur verteidigt."
+"Anmerkung:"
 
 #: data/units/Drake_Warrior.cfg:3
 msgid "Drake Warrior"
@@ -5786,7 +5825,6 @@ msgid "Dwarvish Berserker"
 msgstr "Zwergen Berserker"
 
 #: data/units/Dwarvish_Berserker.cfg:18
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
 "all defense in exchange for massive damage against their enemies.\n"
@@ -5797,7 +5835,9 @@ msgstr ""
 "ihnen verzichten auf jegliche Verteidigung im Austausch dafür fügen sie "
 "ihren Feinden massive Schäden zu. Wenn der Kampf erst mal begonnen hat "
 "greifen sie mit äußerster Brutalität an, solange bis sie oder ihr Gegner "
-"besiegt am Boden liegt."
+"besiegt am Boden liegt.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Dwarvish_Berserker.cfg:36 data/units/Dwarvish_Ulfserker.cfg:35
 msgid "berserker frenzy"
@@ -5872,7 +5912,6 @@ msgid "Dwarvish Guardsman"
 msgstr "Zwergen Gardist"
 
 #: data/units/Dwarvish_Guardsman.cfg:18
-#, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
@@ -5883,7 +5922,9 @@ msgstr ""
 "Die widerstandsfähigsten Zwerge treten dem Zwergenheer als Gardisten bei. "
 "Langsam sind und ohne starken Angriff, bewachen sie die Flanken des Heeres, "
 "da sie durch ihre Widerstandskraft sehr vielen Angriffen standhalten können. "
-"Außerdem schleudern sie ihre schweren Speere in die Reihen der Gegner. "
+"Außerdem schleudern sie ihre schweren Speere in die Reihen der Gegner.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -5954,7 +5995,6 @@ msgid "Dwarvish Sentinel"
 msgstr "Zwergen Schildwache"
 
 #: data/units/Dwarvish_Sentinel.cfg:19
-#, fuzzy
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks.\n"
@@ -5962,14 +6002,15 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Die Schildwachen halten, mit ihren Turmschildern und ihrer Tapferkeit, "
-"selbst denn stärksten gegnerischen Angriffen stand."
+"selbst denn stärksten gegnerischen Angriffen stand.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
 msgstr "Zwergen Wache"
 
 #: data/units/Dwarvish_Stalwart.cfg:18
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -5980,7 +6021,9 @@ msgstr ""
 "Mitglieder der Zwergen Wache haben jahrelange Kampferfahrung. Sie haben sich "
 "bessere Schilder und stärke Rüstungen von den Überresten ihrer gefallenen "
 "Gegner angeeignet. Obwohl sie langsam sind, sind sie gefürchtet für ihre "
-"Widerstandskraft und ihre Stärke."
+"Widerstandskraft und ihre Stärke.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -6058,7 +6101,6 @@ msgid "Dwarvish Ulfserker"
 msgstr "Zwergen Ulfserker"
 
 #: data/units/Dwarvish_Ulfserker.cfg:17
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these in battle: they persist until either their enemy is dead "
@@ -6070,7 +6112,9 @@ msgstr ""
 "Zwerge sind eine alte Rasse von mächtigen Kriegern. Ulfserker sind die "
 "grimmigsten unter ihnen. Sie kämpfen solange bis entweder sie oder ihr "
 "Widersacher tot am Boden liegen, egal wie schwere Wunden sie dabei zugefügt "
-"bekommen."
+"bekommen.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
@@ -6102,7 +6146,6 @@ msgid "Elvish Avenger"
 msgstr "Elfenrächer"
 
 #: data/units/Elvish_Avenger.cfg:24
-#, fuzzy
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -6128,10 +6171,7 @@ msgstr ""
 "der Rache, für die von den Elfen verlorenen Kämpfe. Für die Elfen ist es "
 "einfach nur eine Taktik, die von keinerlei Gefühlen beeinflusst ist.\n"
 "\n"
-"Anmerkung: Rächer kennen sich am besten in den Wäldern aus und können sich "
-"daher vor ihren Feinden verstecken. Dies macht sie praktisch unsichtbar. Sie "
-"können nur von Einheiten aufgespürt werden, die auf einem direkt "
-"benachbarten Feld stehen. Zudem werden sie sichtbar, sobald sie angreifen."
+"Anmerkung:"
 
 #: data/units/Elvish_Avenger.cfg:182
 msgid "female^Elvish Avenger"
@@ -6142,7 +6182,6 @@ msgid "Elvish Captain"
 msgstr "Elfenhauptmann"
 
 #: data/units/Elvish_Captain.cfg:21
-#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. This is quite at odds with "
@@ -6164,9 +6203,7 @@ msgstr ""
 "unterzuordnen, haben die elfischen Armeen schon viele Schlachten zu ihren "
 "Gunsten entscheiden können.\n"
 "\n"
-"Anmerkung: Die Führungsqualitäten des Elfenhauptmanns gewähren allen "
-"benachbarten eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie "
-"eine niedrigere Stufe besitzen."
+"Anmerkung:"
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
@@ -6196,7 +6233,6 @@ msgid "female^Elvish Druid"
 msgstr "Elfendruidin"
 
 #: data/units/Elvish_Druid.cfg:22
-#, fuzzy
 msgid ""
 "The magic of the wood elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they live can be quickened by a word of "
@@ -6216,11 +6252,7 @@ msgstr ""
 "Jedoch liegt ihre wahre Begabung darin, mächtige Heilzauber zu wirken, für "
 "die sie bei ihrem Volk in hoher Achtung steht.\n"
 "\n"
-"Anmerkung: Elfendruidinnen können den Zorn des Waldes heraufbeschwören, so "
-"dass die Aktionen des Gegners im Kampf sowie sein Bewegungspunkte um die "
-"Hälfte reduziert werden. Zudem sind sie in der Lage, alle befreundeten, "
-"direkt benachbarten Einheiten von ihren Wunden zu heilen oder von der "
-"Wirkung eines Giftes zu kurieren."
+"Anmerkung:"
 
 #: data/units/Elvish_Druid.cfg:55 data/units/Elvish_Shyde.cfg:58
 msgid "ensnare"
@@ -6235,7 +6267,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Elfenmystikerin"
 
 #: data/units/Elvish_Enchantress.cfg:18
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
@@ -6246,7 +6277,9 @@ msgstr ""
 "Elfenmystikerinnen sind Meisterinnen der offensiven Magie. Sie greifen ihre "
 "Gegner mit eisigen Sturmwinden an, die sie direkt aus der himmlischen Sphäre "
 "herbeirufen. Außerdem können sie magische Wurzeln herbeirufen, die ihre "
-"Feinde am Boden festhalten."
+"Feinde am Boden festhalten.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Elvish_Enchantress.cfg:92 data/units/Elvish_Shaman.cfg:56
 #: data/units/Elvish_Sorceress.cfg:92
@@ -6292,7 +6325,6 @@ msgid "Elvish Marksman"
 msgstr "Elfenlangbogenschütze"
 
 #: data/units/Elvish_Marksman.cfg:23
-#, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -6314,9 +6346,7 @@ msgstr ""
 "Die Konzentration auf das Bogenschießen lässt diesen Elfen kaum Zeit, sich "
 "im Schwertkampf fortzubilden.\n"
 "\n"
-"Anmerkung: Ihre hervorragende Schießkunst erlaubt es den Langbogenschützen "
-"jeden Feind mit hoher Wahrscheinlichkeit zu treffen. Dies gilt jedoch nur in "
-"der Offensive."
+"Anmerkung:"
 
 #: data/units/Elvish_Marksman.cfg:75 data/units/Elvish_Sharpshooter.cfg:74
 msgid "longbow"
@@ -6331,7 +6361,6 @@ msgid "Elvish Marshal"
 msgstr "Elfenmarschall"
 
 #: data/units/Elvish_Marshal.cfg:22
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -6350,9 +6379,7 @@ msgstr ""
 "Dies eröffnet ihm die Möglichkeit, viel schneller auf Änderungen im "
 "gegnerischen Kampfverhalten zu reagieren, als jeder andere Heerführer.\n"
 "\n"
-"Anmerkung: Die Führungsqualitäten des Elfenmarschalls gewähren allen "
-"benachbarten eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie "
-"eine niedrigere Stufe besitzen."
+"Anmerkung:"
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
@@ -6386,7 +6413,6 @@ msgid "Elvish Ranger"
 msgstr "Elfenwaldhüter"
 
 #: data/units/Elvish_Ranger.cfg:21
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a place he is not truly a part of. With elves, "
@@ -6403,11 +6429,7 @@ msgstr ""
 "bewerkstelligen, sind sie mit Schwert und Bogen bestens gewappnet, um jedem "
 "Feind entgegenzutreten.\n"
 "\n"
-"Anmerkung: Waldhüter kennen sich am besten in den Wäldern aus und können "
-"sich daher vor ihren Feinden verstecken. Dies macht sie praktisch "
-"unsichtbar. Sie können nur von Einheiten aufgespürt werden, die auf einem "
-"direkt benachbarten Feld stehen. Zudem werden sie sichtbar, sobald sie "
-"angreifen."
+"Anmerkung:"
 
 #: data/units/Elvish_Ranger.cfg:181
 msgid "female^Elvish Ranger"
@@ -6461,7 +6483,6 @@ msgid "female^Elvish Shaman"
 msgstr "Elfenschamanin"
 
 #: data/units/Elvish_Shaman.cfg:23
-#, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -6486,15 +6507,13 @@ msgstr ""
 "\n"
 "Anmerkung: Elfenschamaninen können einen Efeumantel heraufbeschwören, so "
 "dass die Aktionen des Gegners im Kampf sowie seine Bewegungspunkte um die "
-"Hälfte reduziert werden. Zudem sind sie in der Lage, alle befreundeten, "
-"direkt benachbarten Einheiten von ihren Wunden zu heilen."
+"Hälfte reduziert werden. "
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
 msgstr "Elfenscharfschütze"
 
 #: data/units/Elvish_Sharpshooter.cfg:22
-#, fuzzy
 msgid ""
 "A story once wandered about, of an elf who stopped an arrow by shooting it "
 "out of the air with one of his own. It is a testament to the skill of the "
@@ -6510,9 +6529,7 @@ msgstr ""
 "elfischen Scharfschützen die Kunst des Bogenschießens zur Perfektion "
 "gebracht haben.\n"
 "\n"
-"Anmerkung: Ihre hervorragende Schießkunst erlaubt es den Scharfschützen "
-"jeden Feind mit hoher Wahrscheinlichkeit zu treffen. Dies gilt jedoch nur in "
-"der Offensive."
+"Anmerkung:"
 
 #: data/units/Elvish_Sharpshooter.cfg:191
 msgid "female^Elvish Sharpshooter"
@@ -6523,7 +6540,6 @@ msgid "female^Elvish Shyde"
 msgstr "Waldfee"
 
 #: data/units/Elvish_Shyde.cfg:22
-#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -6537,11 +6553,7 @@ msgstr ""
 "Libellenflügel und sie verwandeln sich in wunderschöne Geschöpfe, die "
 "unbeschwert durch den Elfenwald schweben.\n"
 "\n"
-"Anmerkung: Waldfeen können den Zorn des Waldes heraufbeschwören, so dass die "
-"Aktionen des Gegners im Kampf sowie seine Bewegungspunkte um die Hälfte "
-"reduziert werden. Zudem sind sie in der Lage, alle befreundeten, direkt "
-"benachbarten Einheiten von ihren Wunden zu heilen oder von der Wirkung eines "
-"Giftes zu kurieren."
+"Anmerkung:"
 
 #: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:26
 msgid "faerie touch"
@@ -6552,7 +6564,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Elfenzauberin"
 
 #: data/units/Elvish_Sorceress.cfg:18
-#, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
@@ -6566,14 +6577,15 @@ msgstr ""
 "Verbesserung ihrer offensiven Kräfte zu widmen. Elfenzauberinnen sind sehr "
 "gut im Fernkampf, ihr Verstrickungszauber ist merklich effektiver als vorher "
 "und sie sind in der Lage eisige Winde herbeirufen um die niederzuschlagen, "
-"die es wagen sich ihnen in den Weg zu stellen."
+"die es wagen sich ihnen in den Weg zu stellen.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
 msgstr "Sylphide"
 
 #: data/units/Elvish_Sylph.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
 "developed their faerie side, they transform into creatures of both worlds, "
@@ -6584,7 +6596,9 @@ msgstr ""
 "Silphyde zählen zu den schönsten Geschöpfen auf dem Schlachtfeld. Ihre "
 "Fehenseite ist voll ausgeprägt und sie haben sich in Wesen beider Welten "
 "verwandelt. Ihnen stehen mächtige Zauber zur Verfügung um ihre Feinde zu "
-"vernichten."
+"vernichten.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Elvish_Sylph.cfg:55
 msgid "gossamer"
@@ -6595,7 +6609,6 @@ msgid "Direwolf Rider"
 msgstr "Schreckenswolf Reiter"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:21
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the garden variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -6618,8 +6631,7 @@ msgstr ""
 "fertig gebracht und wo sie auftauchen, schwindet dem Gegner schnell der Mut "
 "beim Anblick dieser Bestien.\n"
 "\n"
-"Anmerkung: Jeder, der von den Klauen eines Schreckenswolfes getroffen wird, "
-"zieht sich mit großer Wahrscheinlichkeit eine Vergiftung zu."
+"Anmerkung:"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:39 data/units/Goblin_Knight.cfg:39
 #: data/units/Goblin_Wolf_Rider.cfg:70 data/units/Monster_Cave_Spider.cfg:41
@@ -6633,7 +6645,6 @@ msgid "Goblin Impaler"
 msgstr "Kobold Pfähler"
 
 #: data/units/Goblin_Impaler.cfg:18
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as fodder for their enemy's front line. Those "
 "who have somehow managed to survive invariably equip themselves to continue "
@@ -6648,8 +6659,7 @@ msgstr ""
 "geschickt, der es ihm ermöglicht im Nahkampf immer den ersten Angriff "
 "auszuführen.\n"
 "\n"
-"Anmerkung: Durch die Länge ihrer Waffe führt jeder Pfähler den ersten "
-"Schlag, auch wenn er sich nur verteidigt."
+"Anmerkung:"
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -6678,7 +6688,6 @@ msgid "Goblin Pillager"
 msgstr "Kobold Plünderer"
 
 #: data/units/Goblin_Pillager.cfg:19
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -6694,9 +6703,7 @@ msgstr ""
 "vor allem wegen ihrem Umgang mit dem Wurfnetz eingesetzt, da sie so schon "
 "ganze Truppenverbände durcheinander brachten.\n"
 "\n"
-"Anmerkung: Wenn ein Gegner sich in einem Netz verfängt, wird er so sehr "
-"behindert, dass seine Aktionen im Kampf sowie seine Bewegungspunkte um die "
-"Hälfte reduziert werden."
+"Anmerkung:"
 
 #: data/units/Goblin_Pillager.cfg:40
 msgid "torch"
@@ -6712,7 +6719,6 @@ msgid "Goblin Rouser"
 msgstr "Kobold Standartenträger"
 
 #: data/units/Goblin_Rouser.cfg:19
-#, fuzzy
 msgid ""
 "Standard bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -6730,9 +6736,7 @@ msgstr ""
 "als ihre jüngeren Brüder, sollte man die Wirkung eines Standartenträger in "
 "den Reihen der Kobolde nicht unterschätzen.\n"
 "\n"
-"Anmerkung: Die Führungsqualitäten des Kobold Standartenträgers gewähren "
-"allen benachbarten eigenen Einheiten einen Schadensbonus, jedoch nur, wenn "
-"sie eine niedrigere Stufe besitzen."
+"Anmerkung:"
 
 #: data/units/Goblin_Spearman.cfg:3
 msgid "Goblin Spearman"
@@ -6845,12 +6849,14 @@ msgstr ""
 #: data/units/Human_Horse_Grand_Knight.cfg:21
 #: data/units/Human_Horse_Knight.cfg:20 data/units/Human_Horse_Lancer.cfg:21
 #: data/units/Human_Horseman.cfg:20
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
-msgstr "Spezialität"
+msgstr ""
+"\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Human_Horse_Grand_Knight.cfg:63
 #: data/units/Human_Horse_Knight.cfg:62 data/units/Human_Horse_Lancer.cfg:25
@@ -6910,7 +6916,6 @@ msgid "Paladin"
 msgstr "Paladin"
 
 #: data/units/Human_Horse_Paladin.cfg:21
-#, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to monastic "
 "orders, pledging their might to the cause of righteousness. Though not as "
@@ -6930,7 +6935,9 @@ msgstr ""
 "Kunst der Heilung verschrieben. Doch hält einen Paladin nichts davon ab, "
 "gegen Widernatürliches zu streiten, um die gegebene Weltordnung zu bewahren. "
 "Wenn es sein muss, ist er auch bereit, im Kampf für das Gute und die "
-"Gerechtigkeit, sein Leben zu opfern."
+"Gerechtigkeit, sein Leben zu opfern.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:91
 #: data/units/Human_Mage_of_Light.cfg:71 data/units/Mermaid_Diviner.cfg:58
@@ -7063,7 +7070,6 @@ msgid "Duelist"
 msgstr "Fechter"
 
 #: data/units/Human_Loyalist_Duelist.cfg:19
-#, fuzzy
 msgid ""
 "It is a peculiar fashion of Wesnoth's nobility, in that they typically "
 "enroll their sons into one of two orders of armigers, training them either "
@@ -7093,9 +7099,7 @@ msgstr ""
 "leben, um Veteranen zu werden, müssen nun einmal des Öfteren gewisse "
 "Zugeständnisse an ihre Werkzeuge eingehen um zu überleben.\n"
 "\n"
-"Anmerkung: Ihre Fähigkeit als Plänkler erlaubt es den Drake Kriegern direkt "
-"an ihren Feinden vorbeizuflitzen und dabei jegliche Kontrollzone zu "
-"ignorieren."
+"Anmerkung:"
 
 #: data/units/Human_Loyalist_Duelist.cfg:75
 #: data/units/Human_Loyalist_Fencer.cfg:80
@@ -7108,7 +7112,6 @@ msgid "Fencer"
 msgstr "Duellant"
 
 #: data/units/Human_Loyalist_Fencer.cfg:20
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -7136,15 +7139,13 @@ msgstr ""
 "wie die schwere Infanterie, zu tanzen und sich über ihre schwere und "
 "hinderliche Ganzkörperpanzerung lustig zu machen.\n"
 "\n"
-"Anmerkung: Ihre Fähigkeit als Plänkler erlaubt es den Duellanten direkt an "
-"ihren Feinden vorbeizuflitzen und dabei jegliche Kontrollzonen zu ignorieren."
+"Anmerkung:"
 
 #: data/units/Human_Loyalist_General.cfg:3
 msgid "General"
 msgstr "General"
 
 #: data/units/Human_Loyalist_General.cfg:29
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms they swore fealty to. Their "
@@ -7156,16 +7157,13 @@ msgstr ""
 "verantwortlich für den Schutz großer oder wichtiger Gebiete der menschlichen "
 "Königreiche.\n"
 "\n"
-"Anmerkung: Die Führungsqualitäten des Generals gewähren allen benachbarten "
-"eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie eine niedrigere "
-"Stufe besitzen."
+"Anmerkung:"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:3
 msgid "Grand Marshal"
 msgstr "Feldmarschall"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:23
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have surpassed many trials by fire, "
@@ -7181,16 +7179,13 @@ msgstr ""
 "Präsenz auf dem Schlachtfeld ist eine große Hilfe für alle die, die unter "
 "ihrem Kommando kämpfen.\n"
 "\n"
-"Anmerkung: Die Führungsqualitäten des Feldmarschalls gewähren allen "
-"benachbarten eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie "
-"eine niedrigere Stufe besitzen."
+"Anmerkung:"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:3
 msgid "Halberdier"
 msgstr "Hellebardier"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:24
-#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -7220,8 +7215,7 @@ msgstr ""
 "Speers. Zudem ist sie in den Händen eines Anfängers so gut wie nutzlos, so "
 "dass sie nur an die besten Pikenträger ausgegeben wird.\n"
 "\n"
-"Anmerkung: Durch die Länge dieser Waffe führt jeder Hellebardier den ersten "
-"Schlag, auch wenn er sich nur verteidigt."
+"Anmerkung:"
 
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
@@ -7290,7 +7284,6 @@ msgid "Javelineer"
 msgstr "Speerwerfer"
 
 #: data/units/Human_Loyalist_Javelineer.cfg:19
-#, fuzzy
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
 "not kill, enemies at range. Some, however, take to them rather well, finding "
@@ -7312,15 +7305,13 @@ msgstr ""
 "Gegenwehr befürchten zu müssen. Noch dazu sind sie ganz passabel darin ihre "
 "Position zu halten.\n"
 "\n"
-"Anmerkung: Durch die Länge ihrer Waffe führt jeder Speerwerfer den ersten "
-"Schlag, auch wenn er sich nur verteidigt."
+"Anmerkung:"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:3
 msgid "Lieutenant"
 msgstr "Leutnant"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:24
-#, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks.\n"
@@ -7330,9 +7321,7 @@ msgstr ""
 "Geübt im Umgang mit Schwert und Armbrust führt der Leutnant eine kleine "
 "Gruppe von Soldaten der Menschen an und koordiniert ihren Angriff.\n"
 "\n"
-"Anmerkung: Die Führungsqualitäten des Leutnants gewähren allen benachbarten "
-"eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie eine niedrigere "
-"Stufe besitzen."
+"Anmerkung:"
 
 #: data/units/Human_Loyalist_Longbowman.cfg:3
 msgid "Longbowman"
@@ -7388,7 +7377,6 @@ msgid "Master at Arms"
 msgstr "Fechtmeister"
 
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:21
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -7419,16 +7407,13 @@ msgstr ""
 "extravagante Art fast schon Voraussetzung, solch anspruchsvollen Dienst gut "
 "auszuführen.\n"
 "\n"
-"Anmerkung: Ihre Fähigkeit als Plänkler erlaubt es den Fechtmeistern direkt "
-"an ihren Feinden vorbeizuflitzen und dabei jegliche Kontrollzone zu "
-"ignorieren."
+"Anmerkung:"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:3
 msgid "Pikeman"
 msgstr "Pikenträger"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:19
-#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -7450,8 +7435,7 @@ msgstr ""
 "sie sich richtig formieren, können sie es sogar mit den meisten "
 "Infanteristen problemlos aufnehmen.\n"
 "\n"
-"Anmerkung: Durch die Länge ihrer Waffe führt jeder Pikenträger den ersten "
-"Schlag, auch wenn er sich nur verteidigt."
+"Anmerkung:"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:60
 msgid "pike"
@@ -7531,7 +7515,6 @@ msgid "Spearman"
 msgstr "Speerträger"
 
 #: data/units/Human_Loyalist_Spearman.cfg:19
-#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a head, "
@@ -7550,8 +7533,7 @@ msgstr ""
 "Sie werden oftmals an vorderster Front eingesetzt, auch wenn sie nicht "
 "richtig dafür ausgebildet wurden.\n"
 "\n"
-"Anmerkung: Durch die Länge ihrer Waffe führt jeder Speerträger den ersten "
-"Schlag, auch wenn er sich nur verteidigt."
+"Anmerkung:"
 
 #: data/units/Human_Loyalist_Swordsman.cfg:3
 msgid "Swordsman"
@@ -7579,7 +7561,6 @@ msgid "Mage"
 msgstr "Magier"
 
 #: data/units/Human_Mage.cfg:22
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -7618,8 +7599,7 @@ msgstr ""
 "trotzdem in der Lage sich in der Not mittels ihrer magischen Fähigkeiten zu "
 "verteidigen.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff eines Magiers ist magischer Natur und hat "
-"daher eine erhöhte Trefferwahrscheinlichkeit."
+"Anmerkung:"
 
 #: data/units/Human_Mage.cfg:137
 msgid "female^Mage"
@@ -7630,7 +7610,6 @@ msgid "Arch Mage"
 msgstr "Erzmagier"
 
 #: data/units/Human_Mage_Arch.cfg:20
-#, fuzzy
 msgid ""
 "The title of Arch Mage is conferred only after a lifetime of study and "
 "achievement to match. Arch Magi are often employed in positions of "
@@ -7662,15 +7641,13 @@ msgstr ""
 "Acht nehmen, einen Erzmagier zu erzürnen. Kaum ein anderer versteht sich so "
 "gut darauf, sich mit einem Feuerball seiner Widersacher zu entledigen.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff eines Erzmagiers ist magischer Natur und hat "
-"daher eine erhöhte Trefferwahrscheinlichkeit."
+"Anmerkung:"
 
 #: data/units/Human_Mage_Great.cfg:3
 msgid "Great Mage"
 msgstr "Großmagier"
 
 #: data/units/Human_Mage_Great.cfg:21
-#, fuzzy
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
 "nearly a legend in their own time, and town criers have forcibly learnt "
@@ -7702,15 +7679,13 @@ msgstr ""
 "für ihre Dienste fordern sie einen hohen Preis, den sich nur wenige leisten "
 "können, auch wenn sie diesen Preis meist mehr als wert sind.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff eines Großmagiers ist magischer Natur und "
-"hat daher eine erhöhte Trefferwahrscheinlichkeit."
+"Anmerkung:"
 
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
 msgstr "Roter Magier"
 
 #: data/units/Human_Mage_Red.cfg:20
-#, fuzzy
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the blue robes of an apprentice, and given the red robes of a master. The "
@@ -7741,15 +7716,13 @@ msgstr ""
 "Für einen Kampf haben auch diese Magier nie trainiert, doch können sie sich "
 "mit einem gekonnt geschleuderten Feuerball in der Not zur Wehr setzen.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff eines Roten Magiers ist magischer Natur und "
-"hat daher eine erhöhte Trefferwahrscheinlichkeit."
+"Anmerkung:"
 
 #: data/units/Human_Mage_Silver.cfg:3
 msgid "Silver Mage"
 msgstr "Silberner Magier"
 
 #: data/units/Human_Mage_Silver.cfg:23
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -7792,19 +7765,13 @@ msgstr ""
 "Straßenräuber verteidigen. Deshalb sind ihre Fähigkeiten von unschätzbarem "
 "Wert in der Schlacht, wenn man sie erstmal dazu bringt, sie einzusetzen.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff eines Silbernen Magiers ist magischer Natur "
-"und hat daher eine erhöhte Trefferwahrscheinlichkeit. Sie verfügen über "
-"große Widerstandskräfte gegen jedwede Art der Magie und können sich zwischen "
-"zwei Dörfern hin und her teleportieren. Dafür muss der Spieler allerdings "
-"beide Dörfer kontrollieren und in den Dörfern dürfen keine anderen Einheiten "
-"stehen."
+"Anmerkung:"
 
 #: data/units/Human_Mage_White.cfg:3
 msgid "White Mage"
 msgstr "Weißer Magier"
 
 #: data/units/Human_Mage_White.cfg:25
-#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -7830,11 +7797,7 @@ msgstr ""
 "weißmagischen Zaubersprüche ermöglichen es ihnen, alles Widernatürliche zu "
 "vernichten.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff eines Weißen Magiers ist magischer Natur und "
-"hat daher eine erhöhte Trefferwahrscheinlichkeit. Der Lichtstrahl fügt "
-"untoten Einheiten schweren Schaden zu und verletzt auch Lebende. Zudem sind "
-"sie in der Lage, alle befreundeten direkt benachbarten Einheiten von ihren "
-"Wunden zu heilen oder von der Wirkung eines Giftes zu kurieren."
+"Anmerkung:"
 
 #: data/units/Human_Mage_White.cfg:90 data/units/Human_Mage_of_Light.cfg:70
 #: data/units/Mermaid_Diviner.cfg:57 data/units/Mermaid_Priestess.cfg:51
@@ -7850,7 +7813,6 @@ msgid "Mage of Light"
 msgstr "Magier des Lichtes"
 
 #: data/units/Human_Mage_of_Light.cfg:27
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi are bestowed with "
 "vast spiritual powers. By strict devotion to the path of the light, they can "
@@ -7872,13 +7834,7 @@ msgstr ""
 "aufopferungsvoll um ein klein wenig Hoffnung in die arg zerrüttete Welt zu "
 "bringen, in der sie leben.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff eines Magiers des Lichts ist magischer Natur "
-"und hat daher eine erhöhte Trefferwahrscheinlichkeit. Der Lichtstrahl fügt "
-"untoten Einheiten schweren Schaden zu und verletzt auch Lebende. Zudem sind "
-"sie in der Lage alle befreundeten direkt benachbarten Einheiten von ihren "
-"Wunden zu heilen oder von der Wirkung eines Giftes zu kurieren. Noch dazu "
-"sind sie von einer gleißenden Lichtaura umgeben, die die Lichtverhältnisse "
-"in der Nähe des Magiers des Lichtes verbessert."
+"Anmerkung:"
 
 #: data/units/Human_Mage_of_Light.cfg:105
 msgid "female^Mage of Light"
@@ -7920,7 +7876,6 @@ msgid "Assassin"
 msgstr "Attentäter"
 
 #: data/units/Human_Outlaw_Assassin.cfg:20
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -7939,12 +7894,7 @@ msgstr ""
 "wie sie bei Nacht sind, fällt es ihnen am Tag bedeutend schwieriger, ihren "
 "Auftrag auszuführen.\n"
 "\n"
-"Anmerkung: Während eine befreundete Einheit einen Gegner ablenkt, schleicht "
-"sich der Attentäter in dessen Rücken und kann einen hinterhältigen Angriff "
-"ausführen, der doppelten Schaden verursacht. Sie vergiften ihre Wurfmesser, "
-"um ihren Gegner zu schwächen und ihn so leichter erledigen zu können. Ihre "
-"Fähigkeit als Plänkler erlaubt es ihnen direkt an ihren Feinden "
-"vorbeizuflitzen und dabei jegliche Kontrollzonen zu ignorieren."
+"Anmerkung:"
 
 #: data/units/Human_Outlaw_Assassin.cfg:93
 #: data/units/Human_Outlaw_Rogue.cfg:61
@@ -8027,7 +7977,6 @@ msgid "Rogue"
 msgstr "Schurke"
 
 #: data/units/Human_Outlaw_Rogue.cfg:18
-#, fuzzy
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
 "rogues have spent many an unpleasant moment darting through crowds and "
@@ -8050,11 +7999,7 @@ msgstr ""
 "nah genug herankommen kann, um ihnen Schaden zuzufügen. Ihren Tätigkeiten "
 "gehen sie am liebsten bei Nacht nach, um möglichst nicht ertappt zu werden.\n"
 "\n"
-"Anmerkung: Während eine befreundete Einheit einen Gegner ablenkt, schleicht "
-"sich der Attentäter in dessen Rücken und kann einen hinterhältigen Angriff "
-"ausführen, der doppelten Schaden verursacht. Ihre Fähigkeit als Plänkler "
-"erlaubt es ihnen direkt an ihren Feinden vorbeizuflitzen und dabei jegliche "
-"Kontrollzonen zu ignorieren."
+"Anmerkung:"
 
 #: data/units/Human_Outlaw_Rogue.cfg:108
 msgid "female^Rogue"
@@ -8065,7 +8010,6 @@ msgid "Thief"
 msgstr "Dieb"
 
 #: data/units/Human_Outlaw_Thief.cfg:18
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -8092,9 +8036,7 @@ msgstr ""
 "kommen, selbst vor unehrenhaften scheuen sie nicht zurück, solange es nur "
 "schnell genug geht.\n"
 "\n"
-"Anmerkung: Während eine befreundete Einheit einen Gegner ablenkt, schleicht "
-"sich der Dieb in dessen Rücken und kann einen hinterhältigen Angriff "
-"ausführen, der doppelten Schaden verursacht."
+"Anmerkung:"
 
 #: data/units/Human_Outlaw_Thief.cfg:113
 msgid "female^Thief"
@@ -8157,7 +8099,6 @@ msgid "female^Mermaid Diviner"
 msgstr "Meerjungfrau Wahrsagerin"
 
 #: data/units/Mermaid_Diviner.cfg:24
-#, fuzzy
 msgid ""
 "Mermaid Priestesses meet their calling with a fervor that leaves their human "
 "counterparts somewhat taken aback. This may have its roots in a legend they "
@@ -8175,20 +8116,13 @@ msgstr ""
 "die Legende, dass das Wesen durch die Macht des Lichtes in irgendeiner Art "
 "besiegt wurde, so dass das ihr Volk überlebte.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff einer Meerjungfrau Wahrsagerin ist magischer "
-"Natur und hat daher eine erhöhte Trefferwahrscheinlichkeit. Der Lichtstrahl "
-"fügt untoten Einheiten schweren Schaden zu und verletzt auch Lebewesen. "
-"Zudem sind sie in der Lage, alle befreundeten, direkt benachbarten Einheiten "
-"von ihren Wunden zu heilen oder von der Wirkung eines Giftes zu kurieren. "
-"Darüber hinaus sind sie von einer gleißenden Lichtaura umgeben, die die "
-"Lichtverhältnisse in der Nähe der Wahrsagerin verbessert."
+"Anmerkung:"
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
 msgstr "Meerjungfrau Mystikerin"
 
 #: data/units/Mermaid_Enchantress.cfg:20
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different. Those who master this ability are held in "
@@ -8206,8 +8140,7 @@ msgstr ""
 "selbst wenn sich diese bekämpfen sollte. Das Wasser bietet ihnen Schutz vor "
 "den vielen Unholden, die an Land lauern.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff einer Meerjungfrau Mystikerin ist magischer "
-"Natur und hat daher eine erhöhte Trefferwahrscheinlichkeit."
+"Anmerkung:"
 
 #: data/units/Mermaid_Enchantress.cfg:46 data/units/Mermaid_Initiate.cfg:48
 #: data/units/Mermaid_Siren.cfg:80
@@ -8219,7 +8152,6 @@ msgid "female^Mermaid Initiate"
 msgstr "Meerjungfrau"
 
 #: data/units/Mermaid_Initiate.cfg:22
-#, fuzzy
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -8241,15 +8173,13 @@ msgstr ""
 "Gegner entgegen geschleudert wird oder in Form einer mächtigen Flutwelle, "
 "die ganze Armeen ertränken kann.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff einer Meerjungfrau ist magischer Natur und "
-"hat daher eine erhöhte Trefferwahrscheinlichkeit."
+"Anmerkung:"
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
 msgstr "Meerjungfrau Priesterin"
 
 #: data/units/Mermaid_Priestess.cfg:22
-#, fuzzy
 msgid ""
 "Mermen share the creed that much of humanity follows, though for cultural "
 "reasons, the upholding of this is left to the mermaids, who are more "
@@ -8270,11 +8200,7 @@ msgstr ""
 "Ihre Frömmigkeit gewährt ihnen zudem bestimmte weißmagische Zaubersprüche, "
 "um ihr Volk vor widernatürlichen Wesenheiten zu Schützen.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff einer Meerjungfrau Priesterin ist magischer "
-"Natur und hat daher eine erhöhte Trefferwahrscheinlichkeit. Der Lichtstrahl "
-"fügt untoten Einheiten schweren Schaden zu und verletzt auch Lebewesen. "
-"Zudem sind sie in der Lage, alle befreundeten, direkt benachbarten Einheiten "
-"von ihren Wunden zu heilen oder von der Wirkung eines Giftes zu kurieren."
+"Anmerkung:"
 
 #: data/units/Mermaid_Siren.cfg:3
 msgid "Siren"
@@ -8318,7 +8244,6 @@ msgid "Merman Entangler"
 msgstr "Wassermann Netzmeister"
 
 #: data/units/Merman_Entangler.cfg:20
-#, fuzzy
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
 "well; those who master it are valued and revered by their comrades. This "
@@ -8335,9 +8260,7 @@ msgstr ""
 "sie einen geradezu unbezwingbaren Gegner für jene darstellen, die im Wasser "
 "nicht heimisch sind.\n"
 "\n"
-"Anmerkung: Wenn ein Gegner sich in einem Netz verfängt, wird er so sehr "
-"behindert, dass seine Aktionen im Kampf sowie seine Bewegungspunkte um die "
-"Hälfte reduziert werden."
+"Anmerkung:"
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
@@ -8362,7 +8285,6 @@ msgid "Merman Hoplite"
 msgstr "Wassermann Hoplit"
 
 #: data/units/Merman_Hoplite.cfg:21
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -8375,7 +8297,9 @@ msgstr ""
 "des Wasserreiches. Ihre gut gepanzerte Rüstung und ihr fester Wille zur "
 "Disziplin ermöglichen es ihnen, eine unerschütterliche Linie gegen "
 "heranstürmende Gegner zu bilden. Wenn es nicht anders geht, können sie dies "
-"auch an Land, allerdings nicht annähernd so gut wie Geschöpfe mit Beinen."
+"auch an Land, allerdings nicht annähernd so gut wie Geschöpfe mit Beinen.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
@@ -8420,7 +8344,6 @@ msgid "Merman Netcaster"
 msgstr "Wassermann Netzwerfer"
 
 #: data/units/Merman_Netcaster.cfg:19
-#, fuzzy
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets. These are not very damaging in themselves, but they "
@@ -8443,9 +8366,7 @@ msgstr ""
 "behindern, ermöglichen sie es ihren Kameraden, die Gegner nahezu gefahrlos "
 "zu beseitigen.\n"
 "\n"
-"Anmerkung: Wenn ein Gegner sich in einem Netz verfängt, wird er so sehr "
-"behindert, dass seine Aktionen im Kampf sowie seine Bewegungspunkte um die "
-"Hälfte reduziert werden."
+"Anmerkung:"
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
@@ -8499,7 +8420,6 @@ msgid "Giant Spider"
 msgstr "Riesenspinne"
 
 #: data/units/Monster_Cave_Spider.cfg:18
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They can bite at close range, thereby poisoning their enemies, and also can "
@@ -8512,11 +8432,7 @@ msgstr ""
 "vergiften. Außerdem können sie ein Spinnennetz auf ihre Feinde werfen. Diese "
 "werden dadurch verlangsamt.\n"
 "\n"
-"Anmerkung: Wenn die Spinne erfolgreich zubeißt, injiziert sie ein Gift, dass "
-"das Opfer so lange schwächt, bis es in einem Dorf oder von einem Heiler "
-"kuriert wird.\n"
-"Zudem kann sie klebrige Spinnenfäden ausstoßen, so dass ihr ihre Opfer kaum "
-"entkommen können."
+"Anmerkung:"
 
 #: data/units/Monster_Cave_Spider.cfg:80
 msgid "web"
@@ -8527,7 +8443,6 @@ msgid "Cuttle Fish"
 msgstr "Tintenfisch"
 
 #: data/units/Monster_Cuttle_Fish.cfg:18
-#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
@@ -8541,10 +8456,7 @@ msgstr ""
 "Distanz speien. Die sicherste Möglichkeit eine Begegnung mit diesen Monstern "
 "zu überleben, ist, an Land zu bleiben.\n"
 "\n"
-"Anmerkung: Die Tinte, die diese Meeresbewohner ausstoßen können, ist "
-"vergiftet, so dass jede Einheit, die damit bespritzt wird, dauerhaft "
-"geschädigt wird. Erst wenn sich das Opfer in ein Dorf begibt oder von einem "
-"Heiler betreut wird, verschwindet die Wirkung des Gifts."
+"Anmerkung:"
 
 #: data/units/Monster_Cuttle_Fish.cfg:41 data/units/Monster_Tentacle.cfg:64
 msgid "tentacle"
@@ -8585,7 +8497,6 @@ msgid "Giant Scorpion"
 msgstr "Riesenskorpion"
 
 #: data/units/Monster_Giant_Scorpion.cfg:19
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
 "explanation.\n"
@@ -8603,7 +8514,9 @@ msgstr ""
 "da man aus dem Panzer angeblich besonders stabile Rüstungen herstellen kann. "
 "Sie mussten allerdings feststellen, dass die Scheren selbst die härteste "
 "Plattenrüstung durchschneiden konnten und ein Stich ihres Stachels selbst "
-"ohne das Gift tödlich enden konnte."
+"ohne das Gift tödlich enden konnte.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Monster_Giant_Scorpion.cfg:30
 msgid "sting"
@@ -8641,7 +8554,6 @@ msgid "Tentacle of the Deep"
 msgstr "Tentakel der Tiefe"
 
 #: data/units/Monster_Tentacle.cfg:18
-#, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
 "below the waves.\n"
@@ -8651,9 +8563,7 @@ msgstr ""
 "Tentakel der Tiefe sind Auswüchse von viel größeren Monstern, die unter der "
 "Wasseroberfläche lauern.\n"
 "\n"
-"Anmerkung: Tentakel der Tiefe verfügen über die Fertigkeit der Regeneration. "
-"Dadurch erhalten sie genauso viele Lebenspunkte, als würden sie sich in "
-"einem Dorf aufhalten."
+"Anmerkung:"
 
 #: data/units/Monster_Yeti.cfg:3
 msgid "Yeti"
@@ -8811,7 +8721,6 @@ msgid "Orcish Assassin"
 msgstr "Orkmeuchler"
 
 #: data/units/Orcish_Assassin.cfg:18
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -8829,8 +8738,7 @@ msgstr ""
 "zurückziehen können. Das Gift trägt dann meist zum baldigen Ableben des "
 "Unglücklichen bei.\n"
 "\n"
-"Anmerkung: Orkmeuchler vergiften ihre Wurfmesser, um ihren Gegner zu "
-"schwächen und ihn so leichter erledigen zu können."
+"Anmerkung:"
 
 #: data/units/Orcish_Assassin.cfg:55 data/units/Orcish_Slayer.cfg:76
 msgid "throwing knives"
@@ -8884,7 +8792,6 @@ msgid "Orcish Leader"
 msgstr "Orkhäuptling"
 
 #: data/units/Orcish_Leader.cfg:18
-#, fuzzy
 msgid ""
 "Orcish Leaders are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8904,16 +8811,13 @@ msgstr ""
 "Schwert wie kein anderer. Sie tragen zusätzlich einen Bogen bei sich, dies "
 "aber mehr aus Notwendigkeit als ihn zum Angriff einzusetzen.\n"
 "\n"
-"Anmerkung: Die Führungsqualitäten des Orkhäuptlings gewähren allen "
-"benachbarten eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie "
-"eine niedrigere Stufe besitzen."
+"Anmerkung:"
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
 msgstr "Orkkriegshäuptling"
 
 #: data/units/Orcish_Ruler.cfg:18
-#, fuzzy
 msgid ""
 "Orcish Rulers are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8934,9 +8838,7 @@ msgstr ""
 "Bestandteil des Wettkampfes ist, entscheidet sich meistens hier, wer der "
 "neue Kriegshäuptling ist, seltener beim Kampf mit dem Schwert.\n"
 "\n"
-"Anmerkung: Die Führungsqualitäten des Orkkriegshäuptlings gewähren allen "
-"benachbarten eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie "
-"eine niedrigere Stufe besitzen."
+"Anmerkung:"
 
 #: data/units/Orcish_Ruler.cfg:32 data/units/Orcish_Sovereign.cfg:34
 #: data/units/Orcish_Warlord.cfg:28 data/units/Orcish_Warrior.cfg:27
@@ -8948,7 +8850,6 @@ msgid "Orcish Slayer"
 msgstr "Orkschlächter"
 
 #: data/units/Orcish_Slayer.cfg:19
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -8965,8 +8866,7 @@ msgstr ""
 "ihrem Dolch niederstrecken oder aus der Ferne mit ihren vergifteten Dolchen "
 "an den Rand des Todes bringen.\n"
 "\n"
-"Anmerkung: Orkschlächter vergiften ihre Wurfmesser, um ihren Gegner zu "
-"schwächen und ihn so leichter erledigen zu können."
+"Anmerkung:"
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
@@ -8995,7 +8895,6 @@ msgid "Orcish Sovereign"
 msgstr "Orkheerführer"
 
 #: data/units/Orcish_Sovereign.cfg:20
-#, fuzzy
 msgid ""
 "Orcish Sovereigns are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -9014,9 +8913,7 @@ msgstr ""
 "Schwarzauge alle Stämme unter seinem Banner vereint, doch der Große Rat hat "
 "einen weiteren Ork ins Auge gefasst, der sein Nachfolger werden könnte...\n"
 "\n"
-"Anmerkung: Die Führungsqualitäten des Orkheerführers gewähren allen "
-"benachbarten eigenen Einheiten einen Schadensbonus, jedoch nur, wenn sie "
-"eine niedrigere Stufe besitzen."
+"Anmerkung:"
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
@@ -9057,7 +8954,6 @@ msgid "Saurian Ambusher"
 msgstr "Saurianischer Hinterlistling"
 
 #: data/units/Saurian_Ambusher.cfg:20
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -9074,16 +8970,13 @@ msgstr ""
 "Hinterlistlinge nutzen diese Stärke aus, um effektiv kämpfen zu können. Die "
 "besten von ihnen werden zu Saurianischen Flänklern.\n"
 "\n"
-"Anmerkung: Ihre Fähigkeit als Plänkler erlaubt es den Saurianischen "
-"Hinterlistlingen direkt an ihren Feinden vorbeizuflitzen und dabei jegliche "
-"Kontrollzonen zu ignorieren."
+"Anmerkung:"
 
 #: data/units/Saurian_Augur.cfg:3
 msgid "Saurian Augur"
 msgstr "Saurianischer Seher"
 
 #: data/units/Saurian_Augur.cfg:27
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Augurs are valued as healers because they can provide aid to their "
@@ -9097,17 +8990,13 @@ msgstr ""
 "ihrer Verbündeten heilen können, unabhängig auf welchem Gelände sie sich "
 "befinden. Außerdem verfügen sie über die Kräfte der Kältemagie.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff Saurianischer Seher ist magischer Natur und "
-"hat daher eine erhöhte Trefferwahrscheinlichkeit. Zudem sind sie in der "
-"Lage, alle befreundeten, direkt benachbarten Einheiten von ihren Wunden zu "
-"heilen."
+"Anmerkung:"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
 msgstr "Saurianischer Flänkler"
 
 #: data/units/Saurian_Flanker.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -9123,16 +9012,13 @@ msgstr ""
 "an Feinden vorbei bewegen können. Saurianische Flänkler nutzen diese Stärke "
 "aus um effektiv kämpfen zu können.\n"
 "\n"
-"Anmerkung: Ihre Fähigkeit als Plänkler erlaubt es den Saurianischen "
-"Flänklern direkt an ihren Feinden vorbeizuflitzen und dabei jegliche "
-"Kontrollzonen zu ignorieren."
+"Anmerkung:"
 
 #: data/units/Saurian_Oracle.cfg:3
 msgid "Saurian Oracle"
 msgstr "Saurianischer Frostmeister"
 
 #: data/units/Saurian_Oracle.cfg:27
-#, fuzzy
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
@@ -9146,17 +9032,13 @@ msgstr ""
 "schwach sind, können sie Magie aus dem kalten Norden herbeirufen und "
 "verfügen immer noch über grundlegende Kenntnisse der Heilkunst.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff Saurianischer Frostmeister ist magischer "
-"Natur und hat daher eine erhöhte Trefferwahrscheinlichkeit. Zudem sind sie "
-"in der Lage, alle befreundeten, direkt benachbarten Einheiten von ihren "
-"Wunden zu heilen."
+"Anmerkung:"
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
 msgstr "Saurianischer Plänkler"
 
 #: data/units/Saurian_Skirmisher.cfg:20
-#, fuzzy
 msgid ""
 "Saurian Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -9171,16 +9053,13 @@ msgstr ""
 "Feinden vorbei bewegen können. Die besten Plänkler werden eines Tages zu "
 "Saurianischen Hinterlistlingen.\n"
 "\n"
-"Anmerkung: Ihre Fähigkeit als Plänkler erlaubt es den Saurianischen "
-"Plänklern direkt an ihren Feinden vorbeizuflitzen und dabei jegliche "
-"Kontrollzonen zu ignorieren."
+"Anmerkung:"
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
 msgstr "Saurianischer Herbalist"
 
 #: data/units/Saurian_Soothsayer.cfg:28
-#, fuzzy
 msgid ""
 "Saurian Soothsayers are highly valued as healers because they can provide "
 "aid to their friends regardless of terrain or opposition. In addition to "
@@ -9192,17 +9071,13 @@ msgstr ""
 "ihrer Verbündeten heilen, unabhängig vom Gelände auf dem sie sich gerade "
 "befinden. Außerdem besitzen sie Wissen über Kältemagie.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff Saurianischer Herbalisten ist magischer "
-"Natur und hat daher eine erhöhte Trefferwahrscheinlichkeit. Zudem sind sie "
-"in der Lage, alle befreundeten, direkt benachbarten Einheiten von ihren "
-"Wunden zu heilen oder von der Wirkung eines Giftes zu kurieren."
+"Anmerkung:"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
 msgstr "Troll"
 
 #: data/units/Troll.cfg:18
-#, fuzzy
 msgid ""
 "Trolls have been a mote to trouble the thoughts of humanity and dwarf-kind, "
 "who remain baffled at the origins of these creatures, and perhaps more "
@@ -9220,16 +9095,13 @@ msgstr ""
 "eigenen Reihen. Mit der Kraft der Magie und unter einem Hagel von Pfeilen "
 "sind aber schon viele Trolle in den Staub gesunken.\n"
 "\n"
-"Anmerkung: Trolle verfügen über die Fertigkeit der Regeneration. Dadurch "
-"erhalten sie genauso viele Lebenspunkte, als würden sie sich in einem Dorf "
-"aufhalten."
+"Anmerkung:"
 
 #: data/units/Troll_Great.cfg:3
 msgid "Great Troll"
 msgstr "Trollheld"
 
 #: data/units/Troll_Great.cfg:19
-#, fuzzy
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
 "and wisdom, it becomes something extraordinary, a beast remembered for "
@@ -9246,16 +9118,13 @@ msgstr ""
 "diese Sagen in ihrer Entstehung immer weiter ausgeschmückt wurden, ändert "
 "das nichts an ihrer beeindruckenden Erscheinung.\n"
 "\n"
-"Spezielle Anmerkung: Trolle verfügen über die Fertigkeit der Regeneration. "
-"Dadurch erhalten sie genauso viele Lebenspunkte, als würden sie sich in "
-"einem Dorf aufhalten."
+"Anmerkung:"
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
 msgstr "Mächtiger Troll"
 
 #: data/units/Troll_Hero.cfg:18
-#, fuzzy
 msgid ""
 "Some trolls are born with an undue share of the strength and vitality that "
 "characterizes their race. In a society where might makes right, those of "
@@ -9266,16 +9135,13 @@ msgstr ""
 "Einige Trolle werden mit unverhältnismäßig viel Stärke und Vitalität "
 "geboren, die ihrer Rasse eigen sind.\n"
 "\n"
-"Spezielle Anmerkung: Trolle verfügen über die Fertigkeit der Regeneration. "
-"Dadurch erhalten sie genauso viele Lebenspunkte, als würden sie sich in "
-"einem Dorf aufhalten."
+"Anmerkung:"
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
 msgstr "Troll-Felsenschleuderer"
 
 #: data/units/Troll_Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
@@ -9296,16 +9162,13 @@ msgstr ""
 "verschießen sie mit einer primitiven Schleuder auf ihre Gegner.\n"
 "\n"
 "Anmerkung: Obwohl die Steinbrocken unhandlicher sind als Pfeil und Bogen, "
-"verursachen sie bei einem Treffer einen wesentlich höheren Schaden. Trolle "
-"verfügen über die Fertigkeit der Regeneration. Dadurch erhalten sie genauso "
-"viele Lebenspunkte, als würden sie sich in einem Dorf aufhalten."
+"verursachen sie bei einem Treffer einen wesentlich höheren Schaden."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
 msgstr "Kriegstroll"
 
 #: data/units/Troll_Warrior.cfg:20
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -9325,16 +9188,13 @@ msgstr ""
 "bevorzugt bei Eroberungen eingesetzt, um durch ihre bloße Anwesenheit Angst "
 "und Schrecken zu verbreiten.\n"
 "\n"
-"Anmerkung: Trolle verfügen über die Fertigkeit der Regeneration. Dadurch "
-"erhalten sie genauso viele Lebenspunkte, als würden sie sich in einem Dorf "
-"aufhalten."
+"Anmerkung:"
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
 msgstr "Trollwelpe"
 
 #: data/units/Troll_Whelp.cfg:19
-#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -9354,16 +9214,13 @@ msgstr ""
 "nicht besonders gefährlich, aber ihre Rasse ist bekannt für ihr schnelles "
 "Wachstum.\n"
 "\n"
-"Anmerkung: Trolle verfügen über die Fertigkeit der Regeneration. Dadurch "
-"erhalten sie genauso viele Lebenspunkte, als würden sie sich in einem Dorf "
-"aufhalten."
+"Anmerkung:"
 
 #: data/units/Undead_Bat_Blood.cfg:3
 msgid "Blood Bat"
 msgstr "Blutfledermaus"
 
 #: data/units/Undead_Bat_Blood.cfg:18
-#, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
@@ -9378,15 +9235,13 @@ msgstr ""
 "Blutrausch, während sich das Fell dieser fliegenden Bestien vom Blut ihrer "
 "Gegner rot färbt. Sie sind der Schrecken der schutzlosen Dörfer.\n"
 "\n"
-"Anmerkung: Wird ein Gegner von einer Blutfledermaus gebissen, wird ein Teil "
-"von dessen Lebenskraft abgesaugt und auf den Geist übertragen."
+"Anmerkung:"
 
 #: data/units/Undead_Bat_Vampire.cfg:3
 msgid "Vampire Bat"
 msgstr "Vampirfledermaus"
 
 #: data/units/Undead_Bat_Vampire.cfg:17
-#, fuzzy
 msgid ""
 "Vampire Bats are undead flying beasts that attack by biting their victims. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -9399,15 +9254,13 @@ msgstr ""
 "sie saugen Lebenspunkte ab und füllen so den Lebenspunktevorrat der "
 "Fledermaus.\n"
 "\n"
-"Anmerkung: Wird ein Gegner von einer Vampirfledermaus gebissen, wird ein "
-"Teil von dessen Lebenskraft abgesaugt und auf sie übertragen."
+"Anmerkung:"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:3
 msgid "Ghoul"
 msgstr "Ghul"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:20
-#, fuzzy
 msgid ""
 "Only those who have delved into the circles of necromancy know what must be "
 "done to turn a person into a ghoul, and it is a secret they are not telling. "
@@ -9431,16 +9284,13 @@ msgstr ""
 "Nekromantie im ganzen Land verpönt und jedweder, der diese Magie ausübt und "
 "gefasst wird, wird auf der Stelle hingerichtet.\n"
 "\n"
-"Anmerkung: Wenn die Klauen eines Ghuls ein Opfer verletzen, sondern sie ein "
-"Gift ab, was den Unglücklichen dauerhaft schädigt, bis er in einem Dorf oder "
-"von einem Heiler kuriert wird."
+"Anmerkung:"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:3
 msgid "Necrophage"
 msgstr "Leichenfresser"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -9455,16 +9305,13 @@ msgstr ""
 "sind, regenerieren sie ihre Wunden und beginnen mit neuen Kräften erneut die "
 "Suche nach Fleisch.\n"
 "\n"
-"Anmerkung: Wenn die Klauen eines Leichenfressers ein Opfer verletzen, "
-"sondern sie ein Gift ab, was den Unglücklichen dauerhaft schädigt, bis in "
-"einem Dorf oder von einem Heiler kuriert wird."
+"Anmerkung:"
 
 #: data/units/Undead_Corpse_Soulless.cfg:4
 msgid "Soulless"
 msgstr "Seelenloser"
 
 #: data/units/Undead_Corpse_Soulless.cfg:19
-#, fuzzy
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living.\n"
@@ -9472,14 +9319,15 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Diese wandelnden Leichen sind durch die Erfahrungen im Kampf gegen die "
-"Lebenden stärker geworden."
+"Lebenden stärker geworden.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Undead_Corpse_Walking.cfg:4
 msgid "Walking Corpse"
 msgstr "Wandelnde Leiche"
 
 #: data/units/Undead_Corpse_Walking.cfg:18
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Although weak in combat, these zombies can spread their curse to those they "
@@ -9490,14 +9338,15 @@ msgstr ""
 "Wandelnde Leichen sind Körper von Toten, die von dunklen Magiern "
 "wiederbelebt wurden. Obwohl schlecht im Kampf, verfügen sie über die "
 "Fähigkeit, diejenigen, die sie töten, dazu zu verfluchen, im Heer der "
-"Untoten zu kämpfen."
+"Untoten zu kämpfen.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:3
 msgid "Ancient Lich"
 msgstr "Alter Lich"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:21
-#, fuzzy
 msgid ""
 "A being of this order is a herald of the age long past. Anyone who "
 "encounters an Ancient Lich likely has far worse things to worry about than "
@@ -9517,17 +9366,13 @@ msgstr ""
 "Unsterblichkeit erlangt haben und mächtiger sind, als jeder heute lebende "
 "Magier.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff eines Alten Lichs ist magischer Natur und "
-"hat daher eine erhöhte Trefferwahrscheinlichkeit.\n"
-"Wird ein Gegner von ihm berührt, wird ein Teil von dessen Lebenskraft "
-"abgesaugt und auf den Alten Lich übertragen."
+"Anmerkung:"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "Dunkler Adept"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:21
-#, fuzzy
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -9555,8 +9400,7 @@ msgstr ""
 "In diesem Zustand, in dem sie kaum mehr als eine Hülle sind, können sie sich "
 "nur mit den bisher erlernten Zaubersprüchen verteidigen.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff eines Dunklen Adepten ist magischer Natur "
-"und hat daher eine erhöhte Trefferwahrscheinlichkeit."
+"Anmerkung:"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:32
 msgid "shadow wave"
@@ -9571,7 +9415,6 @@ msgid "Dark Sorcerer"
 msgstr "Schwarzer Magier"
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:20
-#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorcerers have begun to unlock the secrets "
@@ -9601,15 +9444,13 @@ msgstr ""
 "Sie schlossen sich bald in einem eigenen Zirkel zusammen und begannen damit, "
 "im Verborgenen Zöglinge anzuwerben und auszubilden.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff eines Schwarzen Magiers ist magischer Natur "
-"und hat daher eine erhöhte Trefferwahrscheinlichkeit."
+"Anmerkung:"
 
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
 msgstr "Lich"
 
 #: data/units/Undead_Necro_Lich.cfg:20
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -9635,13 +9476,9 @@ msgstr ""
 "verlängert hat, ist nicht bekannt. Was man sicher weiß, ist, das Liche die "
 "Lebenskraft ihrer Gegner aufsaugen können, um sich selbst zu stärken.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff eines Lichs ist magischer Natur und hat "
-"daher eine erhöhte Trefferwahrscheinlichkeit. Wird ein Gegner von ihm "
-"berührt, wird ein Teil von dessen Lebenskraft abgesaugt und auf den Lich "
-"übertragen."
+"Anmerkung:"
 
 #: data/units/Undead_Necromancer.cfg:21
-#, fuzzy
 msgid ""
 "One of the greatest circles of what is considered 'black magic' is the art "
 "of necromancy, the terrible ability to awaken the dead with false life. It "
@@ -9668,11 +9505,7 @@ msgstr ""
 "doch nicht die wahre Unsterblichkeit erlangt oder dass man einen zu hohen "
 "Preis für die Verwandlung zahlen muss, um den nur sie wissen.\n"
 "\n"
-"Anmerkung: Der Fernkampfangriff eines Totenbeschwörers ist magischer Natur "
-"und hat daher eine erhöhte Trefferwahrscheinlichkeit.\n"
-"Jeder, der von einem Totenbeschwörer mittels seines Stabes niedergestreckt "
-"wird, erhebt sich sogleich wieder als wandelnde Leiche, um an der Seite des "
-"Magiers zu kämpfen."
+"Anmerkung:"
 
 #: data/units/Undead_Necromancer.cfg:32
 msgid "plague staff"
@@ -9683,7 +9516,6 @@ msgid "Bone Shooter"
 msgstr "Knochenbogenschütze"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:16
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -9698,7 +9530,9 @@ msgstr ""
 "makaberen Arsenal an Waffen ausgestattet. Anstelle normaler Pfeile tragen "
 "sie Knochen in ihren Köchern. Sie werden deshalb von ihren "
 "bemitleidenswerten Feinden auch als Knochenbogenschützen bezeichnet. Für die "
-"Lebendigen sind sie ein Alptraum."
+"Lebendigen sind sie ein Alptraum.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:41
 #: data/units/Undead_Skele_Soul_Shooter.cfg:31
@@ -9710,7 +9544,6 @@ msgid "Death Knight"
 msgstr "Todesritter"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:19
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and a sense of betrayal, came back to this world as Death Knights. Wielding "
@@ -9723,14 +9556,15 @@ msgstr ""
 "so grausame Art sterben, dass sie von Furcht und Hass erfüllt ins Reich der "
 "Lebenden als Todesritter zurückkehren. Sie streiten mit denselben Waffen, "
 "mit denen sie zu Lebzeiten kämpften, und führen die Untoten in die Schlacht, "
-"um ihren Rachedurst zu stillen."
+"um ihren Rachedurst zu stillen.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Undead_Skele_Deathblade.cfg:3
 msgid "Deathblade"
 msgstr "Unheilsbringer"
 
 #: data/units/Undead_Skele_Deathblade.cfg:18
-#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters will often "
@@ -9746,14 +9580,15 @@ msgstr ""
 "diese Wesen mitbrachten und versuchten sie mit ähnlicher Ausrüstung "
 "auszustatten. Ihre physische Schwäche gleichen die Unheilsbringer mit ihrer "
 "Geschwindigkeit aus, da sie sowohl auf den Füßen, als auch mit ihren Klingen "
-"schneller sind, als jeder andere ihrer untoten Brüder."
+"schneller sind, als jeder andere ihrer untoten Brüder.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Undead_Skele_Draug.cfg:3
 msgid "Draug"
 msgstr "Knochenschlächter"
 
 #: data/units/Undead_Skele_Draug.cfg:18
-#, fuzzy
 msgid ""
 "Towering remains of what once were legendary warriors, the Draug strike fear "
 "in the hearts of all who oppose them. They are driven not by malice, but are "
@@ -9770,14 +9605,15 @@ msgstr ""
 "Traum endlich in Frieden zu ruhen. Sie ziehen durch die größten Schlachten "
 "ihrer Zeit und kämpfen verzweifelt um Erlösung, für einen Frieden der nur "
 "mit Waffengewalt zu erreichen ist. Die Erinnerung an ihre Gegner und der "
-"Grund ihres Kampfes sind schon lange in die Vergessenheit entschwunden."
+"Grund ihres Kampfes sind schon lange in die Vergessenheit entschwunden.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Undead_Skele_Revenant.cfg:3
 msgid "Revenant"
 msgstr "Wiedergänger"
 
 #: data/units/Undead_Skele_Revenant.cfg:17
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -9793,14 +9629,15 @@ msgstr ""
 "jeden bringen, der sich ihnen in den Weg stellt. Einst waren sie tapfere "
 "Krieger, die für das Gute eintraten, doch diese Zeit ist lange vergessen. "
 "Nun dienen sie mit blindem Gehorsam jenen, die sie herbei gerufen haben, als "
-"Werkzeug des Leids und der Vernichtung."
+"Werkzeug des Leids und der Vernichtung.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:3
 msgid "Soul Shooter"
 msgstr "Seelenschütze"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:18
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -9815,14 +9652,15 @@ msgstr ""
 "sind, stellen sie eine Gefahr für die Lebenden dar. Die Seelenschützen "
 "durchstreifen die Gefilde Wesnoths, einzig und allein getrieben von dem "
 "finsteren Drang, Tod und Verderben über die Lebenden zu bringen und so ihrem "
-"untoten Dasein eine gewisse Berechtigung zu verschaffen."
+"untoten Dasein eine gewisse Berechtigung zu verschaffen.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Undead_Skeleton.cfg:3
 msgid "Skeleton"
 msgstr "Skelett"
 
 #: data/units/Undead_Skeleton.cfg:17
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
@@ -9835,14 +9673,15 @@ msgstr ""
 "durch dunkle Magie zurückgerufen wurden. Sie fürchten weder Schmerz noch Tot "
 "und werden nur durch den Willen ihres Meisters getrieben. Ihre Präsenz "
 "allein reicht oftmals aus, um die Feinde ihres Meisters in die Flucht zu "
-"schlagen."
+"schlagen.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Undead_Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
 msgstr "Skelettbogenschütze"
 
 #: data/units/Undead_Skeleton_Archer.cfg:16
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -9860,14 +9699,15 @@ msgstr ""
 "den hinteren Reihen der Armee mit einem Bogen verrotten zu lassen. Zwar sind "
 "Skelletbogenschützen nicht sonderlich schnell beim Spannen ihres Bogens, "
 "doch tun sie dies mit einer unglaublichen Kraft, allein aufgrund des Willens "
-"ihres Meisters."
+"ihres Meisters.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Undead_Spirit_Ghost.cfg:3
 msgid "Ghost"
 msgstr "Geist"
 
 #: data/units/Undead_Spirit_Ghost.cfg:19
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -9896,8 +9736,7 @@ msgstr ""
 "Magier sind in der Lage, Geister von ihrem Fluch zu erlösen, auf das die "
 "befreite Seele ihren unterbrochenen Weg fortsetzen kann.\n"
 "\n"
-"Anmerkung: Geister haben sehr ungewöhnliche Schadensresistenzen und bewegen "
-"sich sehr langsam auf offenem Wasser."
+"Anmerkung:"
 
 #: data/units/Undead_Spirit_Ghost.cfg:49
 #: data/units/Undead_Spirit_Spectre.cfg:74
@@ -9910,7 +9749,6 @@ msgid "Nightgaunt"
 msgstr "Nachtalb"
 
 #: data/units/Undead_Spirit_Nightgaunt.cfg:18
-#, fuzzy
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
 "countenance that they obscure. These terrible forms are rarely seen by the "
@@ -9926,19 +9764,13 @@ msgstr ""
 "einem Sterblichen gesehen und jene, die welche gesehen haben wollen, sind so "
 "schnell wie noch nie davon gelaufen.\n"
 "\n"
-"Anmerkung: Während eine befreundete Einheit einen Gegner ablenkt, schleicht "
-"sich der Nachtalb in dessen Rücken und kann einen hinterhältigen Angriff "
-"ausführen, der doppelten Schaden verursacht. Zudem verschmelzen sie in der "
-"Nacht mit der sie umgebenden Finsternis und können nur gesehen werden, wenn "
-"eine Einheit direkt in einem benachbarten Feld steht oder bis der Nachtalb "
-"durch einen Angriff wieder sichtbar wird."
+"Anmerkung:"
 
 #: data/units/Undead_Spirit_Shadow.cfg:3
 msgid "Shadow"
 msgstr "Schatten"
 
 #: data/units/Undead_Spirit_Shadow.cfg:19
-#, fuzzy
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
 "to retreat into darkness. Since that day, the shadows of the world have held "
@@ -9956,19 +9788,13 @@ msgstr ""
 "Würde man einen Totenbeschwörer fragen, hätte er sicher eine passende "
 "Antwort auf diese Frage.\n"
 "\n"
-"Anmerkung: Während eine befreundete Einheit einen Gegner ablenkt, schleicht "
-"sich der Schatten in dessen Rücken und kann einen hinterhältigen Angriff "
-"ausführen, der doppelten Schaden verursacht. Zudem verschmelzen sie in der "
-"Nacht mit der sie umgebenden Finsternis und können nur gesehen werden, wenn "
-"eine Einheit direkt in einem benachbarten Feld steht oder bis der Schatten "
-"durch einen Angriff wieder sichtbar wird."
+"Anmerkung:"
 
 #: data/units/Undead_Spirit_Spectre.cfg:3
 msgid "Spectre"
 msgstr "Spuk"
 
 #: data/units/Undead_Spirit_Spectre.cfg:20
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "master's power. These abominations are a rightful terror to the living, and "
@@ -9992,10 +9818,7 @@ msgstr ""
 "Sie genießen es, ihren Opfern ihre Lebenskraft mittels ihrer Spektralklingen "
 "abzusaugen, da sie so noch mächtiger werden.\n"
 "\n"
-"Anmerkung: Wird ein Gegner von der Klinge des Spuks getroffen, wird ein Teil "
-"von dessen Lebenskraft abgesaugt und auf den Geist übertragen. Spuke haben "
-"sehr ungewöhnliche Schadensresistenzen und bewegen sich sehr langsam auf "
-"offenem Wasser."
+"Anmerkung:"
 
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
@@ -10007,7 +9830,6 @@ msgid "Wraith"
 msgstr "Rachegeist"
 
 #: data/units/Undead_Spirit_Wraith.cfg:19
-#, fuzzy
 msgid ""
 "These tortured forms of what were once warriors are among the most "
 "terrifying things a necromancer can create, for a sword will cleave right "
@@ -10034,17 +9856,13 @@ msgstr ""
 "unsterblich. Zudem wird behauptet, dass ihnen aus der Furcht ihrer Opfer "
 "neue Kraft zufließt.\n"
 "\n"
-"Anmerkung: Wird ein Gegner von der Klinge des Rachegeists getroffen, wird "
-"ein Teil von dessen Lebenskraft abgesaugt und auf den Geist übertragen. "
-"Rachegeister haben sehr ungewöhnliche Schadensresistenzen und bewegen sich "
-"sehr langsam auf offenem Wasser."
+"Anmerkung:"
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
 msgstr "Waldschrat"
 
 #: data/units/Wose.cfg:19
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -10071,9 +9889,7 @@ msgstr ""
 "Waldschrate sind von Natur aus friedfertig. Man sollte sich jedoch davor "
 "hüten, etwas zu tun, was sie erzürnen könnte.\n"
 "\n"
-"Anmerkung: Waldschrate verfügen über die Fertigkeit der Regeneration. "
-"Dadurch erhalten sie genauso viele Lebenspunkte, als würden sie sich in "
-"einem Dorf aufhalten."
+"Anmerkung:"
 
 #: data/units/Wose.cfg:35 data/units/Wose_Ancient.cfg:29
 #: data/units/Wose_Elder.cfg:28
@@ -10085,7 +9901,6 @@ msgid "Ancient Wose"
 msgstr "Alter Waldschrat"
 
 #: data/units/Wose_Ancient.cfg:20
-#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -10110,16 +9925,13 @@ msgstr ""
 "Solche Geschichten sind die einzigen Hinweise darauf, dass es noch viel "
 "ältere Waldschrate gibt, als man bisher angenommen hatte.\n"
 "\n"
-"Anmerkung: Die Ältesten der Waldschrate verfügen über die Fertigkeit der "
-"Regeneration. Dadurch erhalten sie genauso viele Lebenspunkte, als würden "
-"sie sich in einem Dorf aufhalten."
+"Anmerkung:"
 
 #: data/units/Wose_Elder.cfg:3
 msgid "Elder Wose"
 msgstr "Älterer Waldschrat"
 
 #: data/units/Wose_Elder.cfg:19
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -10147,9 +9959,7 @@ msgstr ""
 "Körper als Waffe ein. Mit ihrer Kraft sind sie in der Lage ihre Gegner "
 "meterweit durch die Luft zu schleudern.\n"
 "\n"
-"Anmerkung: Ältere Waldschrate verfügen über die Fertigkeit der Regeneration. "
-"Dadurch erhalten sie genauso viele Lebenspunkte, als würden sie sich in "
-"einem Dorf aufhalten."
+"Anmerkung:"
 
 #: src/about.cpp:32
 msgid "+Core Developers"
@@ -11043,13 +10853,12 @@ msgid "You are separated from your soldiers and may not recall them"
 msgstr "Ihr seid von Euren Soldaten getrennt und könnt diese nicht einberufen."
 
 #: src/menu_events.cpp:637
-#, fuzzy
 msgid ""
 "There are no troops available to recall\n"
 "\t(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "Ihr verfügt über keine Truppen, die Ihr einberufen könntet.\n"
-"(Ihr benötigt überlebende Veteranen aus früheren Szenarien.)"
+"\t(Ihr benötigt überlebende Veteranen aus früheren Szenarien.)"
 
 #: src/menu_events.cpp:645
 msgid "Level"
@@ -11128,41 +10937,35 @@ msgstr "Verteidiger"
 
 #: src/mouse_events.cpp:243
 msgid "Expected Battle Result (hp)"
-msgstr ""
+msgstr "Erwarteter Kampfausgang (LP)"
 
 #: src/mouse_events.cpp:328
-#, fuzzy
 msgid "Leadership"
 msgstr "Führungsqualitäten"
 
 #: src/mouse_events.cpp:341
-#, fuzzy
 msgid " resistance vs "
-msgstr "Resistenztabelle"
+msgstr " resistent gegen"
 
 #: src/mouse_events.cpp:342
-#, fuzzy
 msgid " vulnerability vs "
-msgstr "Verwundbarkeit des Angreifers gegen"
+msgstr " verwundbar gegen"
 
 #: src/mouse_events.cpp:352
-#, fuzzy
 msgid "Slowed"
 msgstr "verlangsamt"
 
 #: src/mouse_events.cpp:368
-#, fuzzy
 msgid "Total damage"
 msgstr "Gesamtschaden"
 
 #: src/mouse_events.cpp:375
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Waffe auswählen:"
+msgstr "Keine verwendbare Waffe"
 
 #: src/mouse_events.cpp:380
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Chance, ungeschoren davon zu kommen"
 
 #: src/mouse_events.cpp:678 src/mouse_events.cpp:746 src/mouse_events.cpp:1328
 msgid "Damage Calculations"
@@ -11543,9 +11346,8 @@ msgid "Observe Game"
 msgstr "Spiel beobachten"
 
 #: src/multiplayer_lobby.cpp:451
-#, fuzzy
 msgid "Skip Replays"
-msgstr "Spielverlauf überspringen"
+msgstr "Spielverläufe überspringen"
 
 #: src/multiplayer_lobby.cpp:452
 msgid "Preferences"
@@ -11557,7 +11359,7 @@ msgstr "Beenden"
 
 #: src/multiplayer_lobby.cpp:459
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
+msgstr "Springt im Beobachtermodus schnellstmöglich zur aktiven Runde"
 
 #: src/multiplayer_ui.cpp:79
 msgid "Invalid Color"
