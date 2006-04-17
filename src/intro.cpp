@@ -159,8 +159,8 @@ bool show_intro_part(display &disp, const config& part,
 		draw_solid_tinted_rectangle(0,texty,video.getx(),video.gety()-texty,0,0,0,0.5,video.getSurface());
 	}
 
-	next_button.set_location(xbuttons,dstrect.y+dstrect.h-180);
-	skip_button.set_location(xbuttons,dstrect.y+dstrect.h-130);
+	next_button.set_location(xbuttons,dstrect.y+dstrect.h-70);
+	skip_button.set_location(xbuttons,dstrect.y+dstrect.h-40);
 
 	//draw title if needed
 	if(show_title) {
@@ -247,7 +247,7 @@ bool show_intro_part(display &disp, const config& part,
 
 	const SDL_Rect total_size = font::draw_text(NULL, screen_area(), font::SIZE_PLUS,
 			font::NORMAL_COLOUR, story, 0, 0);
-	if (texty + total_size.h > screen_area().h) {
+	if (texty + 20 + total_size.h > screen_area().h) {
 		texty = screen_area().h > total_size.h + 1 ? screen_area().h - total_size.h - 1 : 0;
 
 		draw_solid_tinted_rectangle(textx, texty, total_size.w, total_size.h,
@@ -257,7 +257,7 @@ bool show_intro_part(display &disp, const config& part,
 
 	if(lang_rtl)
 		textx += max_width;
-	int xpos = textx, ypos = texty;
+	int xpos = textx, ypos = texty + 20;
 
 	//the maximum position that text can reach before wrapping
 	size_t height = 0;
