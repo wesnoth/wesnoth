@@ -58,6 +58,8 @@ public:
 							  const gamemap* map, const gamestatus* game_status, 
 							  const std::vector<team>* teams,bool attacker,const attack_type* other_attack) const;
 	void set_specials_context(const gamemap::location& loc,const unit& un) const;
+	
+	bool has_special_by_id(const std::string& special) const;
 	//this function returns a random animation out of the possible
 	//animations for this attack. It will not return the same attack
 	//each time.
@@ -249,6 +251,7 @@ public:
 	bool has_zoc() const;
 
 	bool has_ability(const std::string& ability) const;
+	bool has_ability_by_id(const std::string& ability) const;
 
 	const std::vector<config*>& possible_traits() const;
 

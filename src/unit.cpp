@@ -297,6 +297,13 @@ const std::string& unit::id() const
 {
 	return id_;
 }
+const unit_type& unit::type() const
+{
+	wassert(gamedata_ != NULL);
+	std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(id());
+	wassert(i != gamedata_->unit_types.end());
+	return i->second;
+}
 // the actual name of the unit
 const std::string& unit::name() const
 {

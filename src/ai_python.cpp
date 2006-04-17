@@ -70,14 +70,22 @@ static PyObject* wrapper_unittype_get_##x( wesnoth_unittype* type, void* /*closu
 {	\
 	return Py_BuildValue("i",type->unit_type_->x());	\
 }
+#define ut_get_ability( x ) \
+static PyObject* wrapper_unittype_get_##x( wesnoth_unittype* type, void* /*closure*/ ) \
+{	\
+	return Py_BuildValue("i",type->unit_type_->has_ability("##x##"));	\
+}
 
-ut_get( heals )
-ut_get( regenerates )
-ut_get( is_leader )
-ut_get( illuminates )
-ut_get( is_skirmisher )
-ut_get( teleports )
-ut_get( steadfast )
+ut_get_ability( heals )
+ut_get_ability( regenerates )
+ut_get_ability( leadership )
+ut_get_ability( illuminates )
+ut_get_ability( skirmisher )
+ut_get_ability( teleports )
+static PyObject* wrapper_unittype_get_steadfast( wesnoth_unittype* type, void* /*closure*/ )
+{
+	return Py_BuildValue("i",type->unit_type_->has_ability_by_id("steadfast"));
+}
 ut_get( not_living )
 ut_get( can_advance )
 ut_get( has_zoc )
@@ -93,9 +101,9 @@ static PyGetSetDef unittype_getseters[] = {
 	ut_gs( name )
 	ut_gs( heals )
 	ut_gs( regenerates )
-	ut_gs( is_leader )
+	ut_gs( leadership )
 	ut_gs( illuminates )
-	ut_gs( is_skirmisher )
+	ut_gs( skirmisher )
 	ut_gs( teleports )
 	ut_gs( steadfast )
 	ut_gs( not_living )
@@ -224,12 +232,12 @@ static PyObject* attacktype_get_defense_weight(wesnoth_attacktype* type, void* /
 
 static PyObject* attacktype_get_backstab(wesnoth_attacktype* type, void* /*closure*/)
 {
-	return Py_BuildValue("i",type->attack_type_->backstab());
+	return Py_BuildValue("i",type->attack_type_->has_special_by_id("backstab"));
 }
 
 static PyObject* attacktype_get_slow(wesnoth_attacktype* type, void* /*closure*/)
 {
-	return Py_BuildValue("i",type->attack_type_->slow());
+	return Py_BuildValue("i",type->attack_type_->has_special_by_id("slow"));
 }
 
 static PyObject* attacktype_get_range(wesnoth_attacktype* type, void* /*closure*/)
@@ -368,7 +376,7 @@ static PyObject* unit_can_attack(wesnoth_unit* unit, void* /*closure*/)
 {
 	if (!running_instance->is_unit_valid(unit->unit_))
 		return NULL;
-	return Py_BuildValue("i",unit->unit_->can_attack());
+	return Py_BuildValue("i",unit->unit_->attacks_left());
 }
 
 static PyObject* unit_hitpoints(wesnoth_unit* unit, void* /*closure*/)
@@ -389,7 +397,7 @@ static PyObject* unit_poisoned(wesnoth_unit* unit, void* /*closure*/)
 {
     if (!running_instance->is_unit_valid(unit->unit_))
         return NULL;
-    return Py_BuildValue("i",unit->unit_->poisoned( ) == true ? 1 : 0);
+    return Py_BuildValue("i",unit->unit_->get_state("poisoned")=="yes" ? 1 : 0);
 }
 
 static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
@@ -442,7 +450,8 @@ static PyObject* wrapper_unit_damage_against( wesnoth_unit* unit, PyObject* args
 		return NULL;
 	if (!running_instance->is_unit_valid(unit->unit_))
 		return NULL;
-	return Py_BuildValue("i",unit->unit_->damage_against(*attack->attack_type_));
+	static gamemap::location no_loc;
+	return Py_BuildValue("i",unit->unit_->damage_from(*attack->attack_type_,true,no_loc));
 }
 
 static PyMethodDef unit_methods[] = {
@@ -853,7 +862,7 @@ static PyObject* wrapper_unit_movement_cost( wesnoth_unit* unit, PyObject* args 
 	wesnoth_location* loc;
 	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_gamemap_type, &map, &wesnoth_location_type, &loc ) )
 		return NULL;
-	return Py_BuildValue("i",unit->unit_->movement_cost(*map->map_,map->map_->get_terrain(*loc->location_)));
+	return Py_BuildValue("i",unit->unit_->movement_cost(map->map_->get_terrain(*loc->location_)));
 }
 
 static PyObject* wrapper_unit_defense_modifier( wesnoth_unit* unit, PyObject* args )
@@ -862,7 +871,7 @@ static PyObject* wrapper_unit_defense_modifier( wesnoth_unit* unit, PyObject* ar
 	wesnoth_location* loc;
 	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_gamemap_type, &map, &wesnoth_location_type, &loc ) )
 		return NULL;
-	return Py_BuildValue("i",unit->unit_->defense_modifier(*map->map_,map->map_->get_terrain(*loc->location_)));
+	return Py_BuildValue("i",unit->unit_->defense_modifier(map->map_->get_terrain(*loc->location_)));
 }
 
 

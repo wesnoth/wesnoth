@@ -72,6 +72,7 @@ class unit
 		
 		// the current type id
 		const std::string& id() const;
+		const unit_type& type() const;
 		// the actual name of the unit
 		const std::string& name() const;
 		void rename(const std::string& name);

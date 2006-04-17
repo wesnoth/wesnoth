@@ -360,6 +360,21 @@ bool attack_type::apply_modification(const config& cfg,std::string* description,
 
 	return true;
 }
+bool attack_type::has_special_by_id(const std::string& special) const
+{
+	const config* abil = cfg_.child("specials");
+	if(abil) {
+		for(config::child_map::const_iterator i = abil->all_children().begin(); i != abil->all_children().end(); ++i) {
+			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
+				if((**j)["id"] == special) {
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
 
 unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent)
              : cfg_(cfg), parent_(parent)
@@ -1194,7 +1209,25 @@ bool unit_type::has_zoc() const
 
 bool unit_type::has_ability(const std::string& ability) const
 {
-	return std::find(abilities_.begin(),abilities_.end(),ability) != abilities_.end();
+	const config* abil = cfg_.child("abilities");
+	if(abil) {
+		return abil->get_children(ability).size();
+	}
+	return false;
+}
+bool unit_type::has_ability_by_id(const std::string& ability) const
+{
+	const config* abil = cfg_.child("abilities");
+	if(abil) {
+		for(config::child_map::const_iterator i = abil->all_children().begin(); i != abil->all_children().end(); ++i) {
+			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
+				if((**j)["id"] == ability) {
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 }
 
 const std::vector<config*>& unit_type::possible_traits() const
