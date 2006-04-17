@@ -105,6 +105,7 @@ protected:
 
 	//other objects
 	display* gui_;
+	const set_random_generator generator_setter;
 	const statistics::scenario_context statistics_context_;
 	const game_data& gameinfo_;
 	const config& level_;

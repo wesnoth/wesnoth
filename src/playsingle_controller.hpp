@@ -61,7 +61,6 @@ protected:
 	virtual void init_gui();
 	void check_time_over();
 
-	const set_random_generator generator_setter;
 	const cursor::setter cursor_setter;
 	std::deque<config> data_backlog_;
 	gui::floating_textbox textbox_info_;
