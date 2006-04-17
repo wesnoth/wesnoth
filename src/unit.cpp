@@ -126,7 +126,9 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 {
 	side_ = side;
 	movement_ = 0;
+	attacks_left_ = 0;
 	experience_ = 0;
+	cfg_["upkeep"]="full";
 	advance_to(&t->get_gender_unit_type(gender_));
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
@@ -143,7 +145,6 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	getsHit_=0;
 	end_turn_ = false;
 	hold_position_ = false;
-	attacks_left_ = max_attacks_;
 }
 unit::unit(const unit_type* t,
 					 int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) : 
@@ -152,7 +153,9 @@ unit::unit(const unit_type* t,
 {
 	side_ = side;
 	movement_ = 0;
+	attacks_left_ = 0;
 	experience_ = 0;
+	cfg_["upkeep"]="full";
 	advance_to(&t->get_gender_unit_type(gender_));
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
@@ -169,7 +172,6 @@ unit::unit(const unit_type* t,
 	getsHit_=0;
 	end_turn_ = false;
 	hold_position_ = false;
-	attacks_left_ = max_attacks_;
 }
 
 unit::~unit()
@@ -252,7 +254,9 @@ void unit::advance_to(const unit_type* t)
 	emit_zoc_ = t->level();
 	attacks_ = t->attacks();
 	unit_value_ = t->cost();
-	upkeep_ = t->level();
+	if(cfg_["upkeep"] == "full") {
+		upkeep_ = t->level();
+	}
 	flying_ = t->movement_type().is_flying();
 	
 //	movement_costs_ = t->movement_type().movement_costs();
@@ -956,6 +960,15 @@ void unit::read(const config& cfg)
 	    range.first != range.second; ++range.first) {
 		attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
 	}
+	const config* status_flags = cfg.child("states");
+	if(status_flags) {
+		for(string_map::const_iterator st = status_flags->values.begin(); st != status_flags->values.end(); ++st) {
+			states_[st->first] = st->second;
+		}
+	}
+	if(cfg["ai_special"] == "guardian") {
+		set_state("guardian","yes");
+	}
 	if(cfg_["type"] == "") {
 		backup_state();
 		apply_modifications();
@@ -1087,9 +1100,13 @@ void unit::write(config& cfg) const
 
 	cfg["facing"] = gamemap::location::write_direction(facing_);
 	
-	std::stringstream upk;
-	upk << upkeep_;
-	cfg["upkeep"] = upk.str();
+	if(upkeep_ != level()) {
+		std::stringstream upk;
+		upk << upkeep_;
+		cfg["upkeep"] = upk.str();
+	} else {
+		cfg["upkeep"] = "full";
+	}
 
 	char buf[50];
 	snprintf(buf,sizeof(buf),"%d",goto_.x+1);
