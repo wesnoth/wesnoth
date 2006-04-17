@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-12 17:55+0200\n"
+"POT-Creation-Date: 2006-04-17 22:59+0200\n"
 "PO-Revision-Date: 2005-11-04 10:30+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -21,12 +21,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: KBabel 1.9\n"
 
-#: data/abilities.cfg:7
+#: data/abilities.cfg:8
 #, fuzzy
 msgid "heals +4"
 msgstr "治療"
 
-#: data/abilities.cfg:12
+#: data/abilities.cfg:13
 #, fuzzy
 msgid ""
 "Heals +4:\n"
@@ -46,12 +46,12 @@ msgstr ""
 "ユニットの解毒を行うことはできません。 村で回復させるか、 治癒ユニットを捜し"
 "て下さい。"
 
-#: data/abilities.cfg:26
+#: data/abilities.cfg:27
 #, fuzzy
 msgid "heals +8"
 msgstr "治療"
 
-#: data/abilities.cfg:31
+#: data/abilities.cfg:32
 #, fuzzy
 msgid ""
 "Heals +8:\n"
@@ -73,22 +73,22 @@ msgstr ""
 "ユニットの解毒を行うことができますが、 解毒されたユニットはそのターンはHPを回"
 "復させることはできません。 "
 
-#: data/abilities.cfg:40
+#: data/abilities.cfg:42
 msgid "cures"
 msgstr "治癒"
 
-#: data/abilities.cfg:42
+#: data/abilities.cfg:44
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 
-#: data/abilities.cfg:55
+#: data/abilities.cfg:57
 msgid "regenerates"
 msgstr "再生"
 
-#: data/abilities.cfg:57
+#: data/abilities.cfg:59
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
@@ -98,11 +98,11 @@ msgstr ""
 "このユニットはターンごとに自身のHPを8回復します。 毒を受けているなら、 回復す"
 "る代わりに毒を取り除きます。"
 
-#: data/abilities.cfg:72
+#: data/abilities.cfg:75
 msgid "steadfast"
 msgstr "装甲"
 
-#: data/abilities.cfg:74
+#: data/abilities.cfg:77
 #, fuzzy
 msgid ""
 "Steadfast:\n"
@@ -112,14 +112,14 @@ msgstr ""
 "不動:\n"
 "防御時、このユニットの抵抗力は最大で50%まで倍になります。"
 
-#: data/abilities.cfg:85 data/abilities.cfg:104 data/abilities.cfg:135
-#: data/abilities.cfg:178 data/abilities.cfg:233 src/actions.cpp:539
+#: data/abilities.cfg:89 data/abilities.cfg:110 data/abilities.cfg:144
+#: data/abilities.cfg:191 data/abilities.cfg:251 src/actions.cpp:539
 #: src/actions.cpp:672
 msgid "leadership"
 msgstr "統率"
 
-#: data/abilities.cfg:89 data/abilities.cfg:108 data/abilities.cfg:139
-#: data/abilities.cfg:182 data/abilities.cfg:237
+#: data/abilities.cfg:93 data/abilities.cfg:114 data/abilities.cfg:148
+#: data/abilities.cfg:195 data/abilities.cfg:255
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -138,11 +138,11 @@ msgstr ""
 "うになります。 このユニットとのレベルの差に応じて、 与えるダメージが25%ずつ増"
 "加します。"
 
-#: data/abilities.cfg:298
+#: data/abilities.cfg:320
 msgid "skirmisher"
 msgstr "散兵"
 
-#: data/abilities.cfg:300
+#: data/abilities.cfg:322
 #, fuzzy
 msgid ""
 "Skirmisher:\n"
@@ -154,11 +154,11 @@ msgstr ""
 "このユニットは敵のそばを素早く移動することができ、 すべての敵の支配ゾーンを無"
 "視できます。"
 
-#: data/abilities.cfg:310
+#: data/abilities.cfg:333
 msgid "illuminates"
 msgstr "照明"
 
-#: data/abilities.cfg:314
+#: data/abilities.cfg:337
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -172,11 +172,11 @@ msgstr ""
 "いにくくします。 すべての隣接ユニットは夜には夕方として、 夕方には昼として戦"
 "うようになります。"
 
-#: data/abilities.cfg:321
+#: data/abilities.cfg:344
 msgid "teleport"
 msgstr "瞬間移動"
 
-#: data/abilities.cfg:323
+#: data/abilities.cfg:346
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -186,11 +186,11 @@ msgstr ""
 "このユニットは１回の移動を使用して、 ２つの友好的な村の間を瞬間移動することが"
 "できます。"
 
-#: data/abilities.cfg:329
+#: data/abilities.cfg:352
 msgid "ambush"
 msgstr "伏兵"
 
-#: data/abilities.cfg:333
+#: data/abilities.cfg:356
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -206,11 +206,11 @@ msgstr ""
 "のユニットの隣にいる場合を除いて、 敵ユニットはこのユニットが見えないし攻撃で"
 "きません。"
 
-#: data/abilities.cfg:345
+#: data/abilities.cfg:368
 msgid "nightstalk"
 msgstr "隠密"
 
-#: data/abilities.cfg:349
+#: data/abilities.cfg:372
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -225,12 +225,12 @@ msgstr ""
 "このユニットが攻撃した直後のターンか、 敵がこのユニットの隣にいる場合を除い"
 "て、 夜には敵ユニットはこのユニットが見えないし攻撃できません。"
 
-#: data/abilities.cfg:361
+#: data/abilities.cfg:384
 #, fuzzy
 msgid "submerge"
 msgstr "突き刺し"
 
-#: data/abilities.cfg:365
+#: data/abilities.cfg:388
 #, fuzzy
 msgid ""
 "Submerge:\n"
@@ -247,11 +247,11 @@ msgstr ""
 "のユニットの隣にいる場合を除いて、 敵ユニットはこのユニットが見えないし攻撃で"
 "きません。"
 
-#: data/abilities.cfg:377
+#: data/abilities.cfg:406
 msgid "berserk"
 msgstr "狂戦"
 
-#: data/abilities.cfg:379
+#: data/abilities.cfg:408
 #, fuzzy
 msgid ""
 "Berserk:\n"
@@ -262,11 +262,11 @@ msgstr ""
 "攻撃においても防御においてもこの攻撃が戦いで使われた場合、いずれかの戦闘ユ"
 "ニットが倒されるまで交戦をやめません。"
 
-#: data/abilities.cfg:387
+#: data/abilities.cfg:416
 msgid "backstab"
 msgstr "奇襲"
 
-#: data/abilities.cfg:389
+#: data/abilities.cfg:418
 #, fuzzy
 msgid ""
 "Backstab:\n"
@@ -278,11 +278,11 @@ msgstr ""
 "もし自軍ユニットが攻撃目標の後方にもいる場合は、 この攻撃は２倍のダメージとな"
 "ります。 これは同盟ユニットでは機能しません。"
 
-#: data/abilities.cfg:399 data/abilities.cfg:407
+#: data/abilities.cfg:427 data/abilities.cfg:435
 msgid "plague"
 msgstr "疫病"
 
-#: data/abilities.cfg:401 data/abilities.cfg:409
+#: data/abilities.cfg:429 data/abilities.cfg:437
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -294,24 +294,24 @@ msgstr ""
 "ラスで同じ陣営のユニットに置き換えられます。 この攻撃はアンデッドや村にいるユ"
 "ニットには効果がありません。"
 
-#: data/abilities.cfg:415
+#: data/abilities.cfg:444
 #, fuzzy
 msgid "slows"
 msgstr "遅化"
 
-#: data/abilities.cfg:417
+#: data/abilities.cfg:446
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
 
-#: data/abilities.cfg:424
+#: data/abilities.cfg:452
 #, fuzzy
 msgid "stones"
 msgstr "石化"
 
-#: data/abilities.cfg:426
+#: data/abilities.cfg:454
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -320,11 +320,11 @@ msgstr ""
 "石化:\n"
 "この攻撃は攻撃目標を石にします。 石化したユニットは移動や攻撃はできません。"
 
-#: data/abilities.cfg:432
+#: data/abilities.cfg:461
 msgid "marksman"
 msgstr "射撃"
 
-#: data/abilities.cfg:434
+#: data/abilities.cfg:463
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -332,11 +332,11 @@ msgstr ""
 "射撃:\n"
 "攻撃時に使用され、 この攻撃は命中率が最低60%はあるようになります。"
 
-#: data/abilities.cfg:443
+#: data/abilities.cfg:473
 msgid "magical"
 msgstr "魔法"
 
-#: data/abilities.cfg:445
+#: data/abilities.cfg:475
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -344,12 +344,12 @@ msgstr ""
 "魔法:\n"
 "この攻撃は常に命中率が70%となります。"
 
-#: data/abilities.cfg:453
+#: data/abilities.cfg:483
 #, fuzzy
 msgid "swarm"
 msgstr "強打"
 
-#: data/abilities.cfg:455
+#: data/abilities.cfg:485
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -358,11 +358,11 @@ msgid ""
 "strikes."
 msgstr ""
 
-#: data/abilities.cfg:461
+#: data/abilities.cfg:492
 msgid "charge"
 msgstr "突撃"
 
-#: data/abilities.cfg:463
+#: data/abilities.cfg:494
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -372,12 +372,12 @@ msgstr ""
 "この攻撃は攻撃目標への与えるダメージが２倍となります。 攻撃目標からの反撃の与"
 "えられるダメージも２倍となります。"
 
-#: data/abilities.cfg:473
+#: data/abilities.cfg:504
 #, fuzzy
 msgid "drains"
 msgstr "生命吸収"
 
-#: data/abilities.cfg:475
+#: data/abilities.cfg:506
 #, fuzzy
 msgid ""
 "Drain:\n"
@@ -388,11 +388,11 @@ msgstr ""
 "このユニットは生者から生命力を奪って、 与えたダメージの半分だけ自分のHPを回復"
 "させます。"
 
-#: data/abilities.cfg:481
+#: data/abilities.cfg:512
 msgid "firststrike"
 msgstr "先制"
 
-#: data/abilities.cfg:483
+#: data/abilities.cfg:514
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -400,11 +400,11 @@ msgstr ""
 "先制:\n"
 "このユニットは、 たとえ防御時であっても常にこの攻撃で先に攻撃します。"
 
-#: data/abilities.cfg:489
+#: data/abilities.cfg:521
 msgid "poison"
 msgstr "毒"
 
-#: data/abilities.cfg:491
+#: data/abilities.cfg:523
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -4621,7 +4621,7 @@ msgstr "行動"
 msgid "End Turn"
 msgstr "ターン終了"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2202
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2228
 msgid "HP"
 msgstr "HP"
 
@@ -10030,7 +10030,7 @@ msgstr "受けたダメージ (EV)"
 msgid "Statistics"
 msgstr "統計情報"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2233
+#: src/menu_events.cpp:220 src/unit.cpp:2259
 msgid "Moves"
 msgstr "移動"
 
@@ -10314,12 +10314,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2288
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2314
 msgid "("
 msgstr "（"
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2295
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2321
 msgid ")"
 msgstr "）"
 
@@ -10671,24 +10671,24 @@ msgstr "ゲームデータ入手中..."
 msgid "Choose your side:"
 msgstr "あなたのつく側を選んで下さい:"
 
-#: src/network.cpp:91
+#: src/network.cpp:94
 msgid "invalid network handle"
 msgstr "不正なネットワークハンドル"
 
-#: src/network.cpp:124
+#: src/network.cpp:127
 msgid "Client disconnected"
 msgstr "リモートホストと切断しました"
 
-#: src/network.cpp:479
+#: src/network.cpp:482
 msgid "Could not add socket to socket set"
 msgstr "ホストに接続できませんでした"
 
-#: src/network.cpp:490
+#: src/network.cpp:493
 msgid "Could not send initial handshake"
 msgstr "初期応答確認を送れませんでした"
 
-#: src/play_controller.cpp:358 src/playsingle_controller.cpp:293
-#: src/playsingle_controller.cpp:332
+#: src/play_controller.cpp:358 src/playsingle_controller.cpp:297
+#: src/playsingle_controller.cpp:336
 msgid "The file you have tried to load is corrupt"
 msgstr "読み込もうとしたファイルは 壊れています。"
 
@@ -10720,60 +10720,60 @@ msgstr "このゲームを保存しますか？"
 msgid "Unknown scenario: '"
 msgstr "不明のシナリオ: '"
 
-#: src/playsingle_controller.cpp:177
+#: src/playsingle_controller.cpp:181
 msgid "Game Over"
 msgstr "ゲームオーバー"
 
-#: src/playsingle_controller.cpp:178
+#: src/playsingle_controller.cpp:182
 msgid "The game is over."
 msgstr "ゲーム終了です。"
 
-#: src/playsingle_controller.cpp:261
+#: src/playsingle_controller.cpp:265
 msgid "Remaining gold: "
 msgstr "残っているゴールド: "
 
-#: src/playsingle_controller.cpp:264
+#: src/playsingle_controller.cpp:268
 msgid "Early finish bonus: "
 msgstr "早期終了ボーナス"
 
-#: src/playsingle_controller.cpp:266
+#: src/playsingle_controller.cpp:270
 msgid "per turn"
 msgstr "ターン辺り"
 
-#: src/playsingle_controller.cpp:267
+#: src/playsingle_controller.cpp:271
 msgid "Turns finished early: "
 msgstr "早期に終わったターン: "
 
-#: src/playsingle_controller.cpp:269
+#: src/playsingle_controller.cpp:273
 msgid "Bonus: "
 msgstr "ボーナス: "
 
-#: src/playsingle_controller.cpp:271
+#: src/playsingle_controller.cpp:275
 msgid "Gold: "
 msgstr "所持金: "
 
-#: src/playsingle_controller.cpp:276
+#: src/playsingle_controller.cpp:280
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "ゴールドの80%が 次のシナリオに持ち越されます"
 
-#: src/playsingle_controller.cpp:277
+#: src/playsingle_controller.cpp:281
 msgid "Retained Gold: "
 msgstr "保有金額: "
 
-#: src/playsingle_controller.cpp:282
+#: src/playsingle_controller.cpp:286
 msgid "Victory"
 msgstr "勝利"
 
-#: src/playsingle_controller.cpp:283
+#: src/playsingle_controller.cpp:287
 msgid "You have emerged victorious!"
 msgstr "あなたの勝利が明らかになりました！"
 
-#: src/playsingle_controller.cpp:287
+#: src/playsingle_controller.cpp:291
 msgid "Scenario Report"
 msgstr "シナリオレポート"
 
-#: src/playsingle_controller.cpp:304
+#: src/playsingle_controller.cpp:308
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -10782,27 +10782,27 @@ msgstr ""
 "ネットワークが切断されたため、 ゲームを続けられません。 このゲームを保存しま"
 "すか？"
 
-#: src/playsingle_controller.cpp:398
+#: src/playsingle_controller.cpp:402
 msgid "It is now your turn"
 msgstr "あなたのターンです。"
 
-#: src/playturn.cpp:176
+#: src/playturn.cpp:174
 msgid "Replace with AI"
 msgstr "AIと交代する"
 
-#: src/playturn.cpp:177
+#: src/playturn.cpp:175
 msgid "Replace with local player"
 msgstr "ローカルプレイヤーと交代する"
 
-#: src/playturn.cpp:178
+#: src/playturn.cpp:176
 msgid "Abort game"
 msgstr "ゲームを中断する"
 
-#: src/playturn.cpp:181
+#: src/playturn.cpp:179
 msgid "Replace with "
 msgstr "交代する "
 
-#: src/playturn.cpp:185
+#: src/playturn.cpp:183
 msgid "has left the game. What do you want to do?"
 msgstr " はゲームを去りました。 どうしますか？"
 
@@ -11039,15 +11039,15 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnothの書"
 
-#: src/unit.cpp:2168 src/unit.cpp:2293
+#: src/unit.cpp:2194 src/unit.cpp:2319
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2250
+#: src/unit.cpp:2276
 msgid "XP to advance"
 msgstr "レベルアップに必要な経験値"
 
-#: src/unit.cpp:2284
+#: src/unit.cpp:2310
 msgid ": "
 msgstr ": "
 
@@ -11055,15 +11055,15 @@ msgstr ": "
 msgid "strikes"
 msgstr "回数"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "chaotic"
 msgstr "混沌"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "lawful"
 msgstr "秩序"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "neutral"
 msgstr "中立"
 

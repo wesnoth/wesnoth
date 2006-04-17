@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-12 17:55+0200\n"
+"POT-Creation-Date: 2006-04-17 22:59+0200\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/abilities.cfg:7
+#: data/abilities.cfg:8
 #, fuzzy
 msgid "heals +4"
 msgstr "治疗"
 
-#: data/abilities.cfg:12
+#: data/abilities.cfg:13
 #, fuzzy
 msgid ""
 "Heals +4:\n"
@@ -42,12 +42,12 @@ msgstr ""
 "一个治疗者在每回合治疗所有受伤单位总共8hp。\n"
 "一个中毒单位不能被治愈，必须进入村庄或靠近一个治疗者。"
 
-#: data/abilities.cfg:26
+#: data/abilities.cfg:27
 #, fuzzy
 msgid "heals +8"
 msgstr "治疗"
 
-#: data/abilities.cfg:31
+#: data/abilities.cfg:32
 #, fuzzy
 msgid ""
 "Heals +8:\n"
@@ -68,22 +68,22 @@ msgstr ""
 "一个治疗者每回合为所有单位治疗总18hp的生命值。\n"
 "一个治疗者可以治愈单位的中毒效果，但不会在本回合恢复这个单位更多的生命值。"
 
-#: data/abilities.cfg:40
+#: data/abilities.cfg:42
 msgid "cures"
 msgstr "治愈"
 
-#: data/abilities.cfg:42
+#: data/abilities.cfg:44
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 
-#: data/abilities.cfg:55
+#: data/abilities.cfg:57
 msgid "regenerates"
 msgstr "重生"
 
-#: data/abilities.cfg:57
+#: data/abilities.cfg:59
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
@@ -92,11 +92,11 @@ msgstr ""
 "重生：\n"
 "本单位可以每回合恢复8hp。如果中毒则移出中毒效果代替治疗。"
 
-#: data/abilities.cfg:72
+#: data/abilities.cfg:75
 msgid "steadfast"
 msgstr "重甲兵"
 
-#: data/abilities.cfg:74
+#: data/abilities.cfg:77
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
@@ -105,14 +105,14 @@ msgstr ""
 "重甲兵：\n"
 "本单位有双倍抗性，多达最大值的50%，当防御时，易受伤技能对他不起作用。"
 
-#: data/abilities.cfg:85 data/abilities.cfg:104 data/abilities.cfg:135
-#: data/abilities.cfg:178 data/abilities.cfg:233 src/actions.cpp:539
+#: data/abilities.cfg:89 data/abilities.cfg:110 data/abilities.cfg:144
+#: data/abilities.cfg:191 data/abilities.cfg:251 src/actions.cpp:539
 #: src/actions.cpp:672
 msgid "leadership"
 msgstr "领导能力"
 
-#: data/abilities.cfg:89 data/abilities.cfg:108 data/abilities.cfg:139
-#: data/abilities.cfg:182 data/abilities.cfg:237
+#: data/abilities.cfg:93 data/abilities.cfg:114 data/abilities.cfg:148
+#: data/abilities.cfg:195 data/abilities.cfg:255
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -129,11 +129,11 @@ msgstr ""
 "相邻的低等级友好单位获得更多的攻击伤害改善。当有领袖于低等级友好单位相邻是，"
 "这些单位在他们所处级别，可以相比平时增加25%的攻击伤害。"
 
-#: data/abilities.cfg:298
+#: data/abilities.cfg:320
 msgid "skirmisher"
 msgstr "刺客"
 
-#: data/abilities.cfg:300
+#: data/abilities.cfg:322
 #, fuzzy
 msgid ""
 "Skirmisher:\n"
@@ -145,11 +145,11 @@ msgstr ""
 "本单位有在敌人旁边迅速通过的技能，且能忽略所有敌人单位的可控制区域。(例外，如"
 "果你在敌人ZOC区域内停下来，刺客的所有剩余移动点数都将归0)"
 
-#: data/abilities.cfg:310
+#: data/abilities.cfg:333
 msgid "illuminates"
 msgstr "照明"
 
-#: data/abilities.cfg:314
+#: data/abilities.cfg:337
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -163,11 +163,11 @@ msgstr ""
 "\n"
 "任何相邻的单位战斗是都相当于在晚上时是黄昏，当黄昏时是白天。"
 
-#: data/abilities.cfg:321
+#: data/abilities.cfg:344
 msgid "teleport"
 msgstr "传送兵"
 
-#: data/abilities.cfg:323
+#: data/abilities.cfg:346
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -176,11 +176,11 @@ msgstr ""
 "传送兵：\n"
 "本单位能花费一点移动点数在任意两个村庄间移动。"
 
-#: data/abilities.cfg:329
+#: data/abilities.cfg:352
 msgid "ambush"
 msgstr "伏兵"
 
-#: data/abilities.cfg:333
+#: data/abilities.cfg:356
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -195,11 +195,11 @@ msgstr ""
 "敌人不能看见或攻击这些在森林中的单位，除非那些单位被攻击的回合，或如果有敌人"
 "单位在本单位旁边。"
 
-#: data/abilities.cfg:345
+#: data/abilities.cfg:368
 msgid "nightstalk"
 msgstr "夜行者"
 
-#: data/abilities.cfg:349
+#: data/abilities.cfg:372
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -214,12 +214,12 @@ msgstr ""
 "敌人单位在晚上不能看见或攻击本单位，除非某些回合这些单位被攻击，或有敌人单位"
 "相邻。"
 
-#: data/abilities.cfg:361
+#: data/abilities.cfg:384
 #, fuzzy
 msgid "submerge"
 msgstr "戳"
 
-#: data/abilities.cfg:365
+#: data/abilities.cfg:388
 #, fuzzy
 msgid ""
 "Submerge:\n"
@@ -235,11 +235,11 @@ msgstr ""
 "敌人不能看见或攻击这些在森林中的单位，除非那些单位被攻击的回合，或如果有敌人"
 "单位在本单位旁边。"
 
-#: data/abilities.cfg:377
+#: data/abilities.cfg:406
 msgid "berserk"
 msgstr "狂暴"
 
-#: data/abilities.cfg:379
+#: data/abilities.cfg:408
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -248,11 +248,11 @@ msgstr ""
 "狂暴：\n"
 "无论是用于攻击还是防御，这次攻击持续到一个目标单位被杀死，或持续攻击30回合。"
 
-#: data/abilities.cfg:387
+#: data/abilities.cfg:416
 msgid "backstab"
 msgstr "背刺"
 
-#: data/abilities.cfg:389
+#: data/abilities.cfg:418
 #, fuzzy
 msgid ""
 "Backstab:\n"
@@ -264,11 +264,11 @@ msgstr ""
 "本攻击造成双倍伤害，当一个友好单位是敌人单位目标是，且他以不能移动(例如，使用"
 "金钟罩)。"
 
-#: data/abilities.cfg:399 data/abilities.cfg:407
+#: data/abilities.cfg:427 data/abilities.cfg:435
 msgid "plague"
 msgstr "瘟疫"
 
-#: data/abilities.cfg:401 data/abilities.cfg:409
+#: data/abilities.cfg:429 data/abilities.cfg:437
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -279,24 +279,24 @@ msgstr ""
 "当一个单位被瘟疫攻击击毙，这个单位会成为进行瘟疫攻击单位的同盟。(这对不死或在"
 "村庄中的单位不起作用)。"
 
-#: data/abilities.cfg:415
+#: data/abilities.cfg:444
 #, fuzzy
 msgid "slows"
 msgstr "减速"
 
-#: data/abilities.cfg:417
+#: data/abilities.cfg:446
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
 
-#: data/abilities.cfg:424
+#: data/abilities.cfg:452
 #, fuzzy
 msgid "stones"
 msgstr "石化"
 
-#: data/abilities.cfg:426
+#: data/abilities.cfg:454
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -305,11 +305,11 @@ msgstr ""
 "金钟罩：\n"
 "这会让单位变得和石头一样硬。使用金钟罩后就不能移动或攻击。"
 
-#: data/abilities.cfg:432
+#: data/abilities.cfg:461
 msgid "marksman"
 msgstr "神射手"
 
-#: data/abilities.cfg:434
+#: data/abilities.cfg:463
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -317,11 +317,11 @@ msgstr ""
 "神枪手：\n"
 "当用来攻击，本攻击通常至少有60%的击中比率。"
 
-#: data/abilities.cfg:443
+#: data/abilities.cfg:473
 msgid "magical"
 msgstr "魔法攻击"
 
-#: data/abilities.cfg:445
+#: data/abilities.cfg:475
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -329,12 +329,12 @@ msgstr ""
 "魔法攻击：\n"
 "本攻击通常有70%的击中比率。"
 
-#: data/abilities.cfg:453
+#: data/abilities.cfg:483
 #, fuzzy
 msgid "swarm"
 msgstr "猛击"
 
-#: data/abilities.cfg:455
+#: data/abilities.cfg:485
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -343,11 +343,11 @@ msgid ""
 "strikes."
 msgstr ""
 
-#: data/abilities.cfg:461
+#: data/abilities.cfg:492
 msgid "charge"
 msgstr "冲锋"
 
-#: data/abilities.cfg:463
+#: data/abilities.cfg:494
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -356,12 +356,12 @@ msgstr ""
 "反噬攻击：\n"
 "本伤害造成目标双倍伤害，也会使本单位反噬双倍伤害。"
 
-#: data/abilities.cfg:473
+#: data/abilities.cfg:504
 #, fuzzy
 msgid "drains"
 msgstr "吸血"
 
-#: data/abilities.cfg:475
+#: data/abilities.cfg:506
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -370,11 +370,11 @@ msgstr ""
 "吸血：\n"
 "通过吸食敌人活着单位的生命来治疗，能治疗造成伤害一半值的生命点数(下舍入)。"
 
-#: data/abilities.cfg:481
+#: data/abilities.cfg:512
 msgid "firststrike"
 msgstr "先攻权"
 
-#: data/abilities.cfg:483
+#: data/abilities.cfg:514
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -382,11 +382,11 @@ msgstr ""
 "先攻击权：\n"
 "本单位每次攻击都能获得攻击优先权，即使是防御状态。"
 
-#: data/abilities.cfg:489
+#: data/abilities.cfg:521
 msgid "poison"
 msgstr "中毒"
 
-#: data/abilities.cfg:491
+#: data/abilities.cfg:523
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -4420,7 +4420,7 @@ msgstr "动作"
 msgid "End Turn"
 msgstr "结束回合"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2202
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2228
 msgid "HP"
 msgstr "HP"
 
@@ -9430,7 +9430,7 @@ msgstr "受到伤害 (EV)"
 msgid "Statistics"
 msgstr "统计"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2233
+#: src/menu_events.cpp:220 src/unit.cpp:2259
 msgid "Moves"
 msgstr "移动"
 
@@ -9707,12 +9707,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2288
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2314
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2295
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2321
 msgid ")"
 msgstr ")"
 
@@ -10064,24 +10064,24 @@ msgstr "读取游戏数据..."
 msgid "Choose your side:"
 msgstr "选择阵营："
 
-#: src/network.cpp:91
+#: src/network.cpp:94
 msgid "invalid network handle"
 msgstr "无效网络句柄"
 
-#: src/network.cpp:124
+#: src/network.cpp:127
 msgid "Client disconnected"
 msgstr "客户端断开连接"
 
-#: src/network.cpp:479
+#: src/network.cpp:482
 msgid "Could not add socket to socket set"
 msgstr "不能加入socket 到 socket 设置"
 
-#: src/network.cpp:490
+#: src/network.cpp:493
 msgid "Could not send initial handshake"
 msgstr "不能发送初始化信息"
 
-#: src/play_controller.cpp:358 src/playsingle_controller.cpp:293
-#: src/playsingle_controller.cpp:332
+#: src/play_controller.cpp:358 src/playsingle_controller.cpp:297
+#: src/playsingle_controller.cpp:336
 msgid "The file you have tried to load is corrupt"
 msgstr "你想载入的文件不正确"
 
@@ -10113,87 +10113,87 @@ msgstr "你想保存游戏吗？"
 msgid "Unknown scenario: '"
 msgstr "未知剧本： '"
 
-#: src/playsingle_controller.cpp:177
+#: src/playsingle_controller.cpp:181
 msgid "Game Over"
 msgstr "游戏结束"
 
-#: src/playsingle_controller.cpp:178
+#: src/playsingle_controller.cpp:182
 msgid "The game is over."
 msgstr "本游戏结束。"
 
-#: src/playsingle_controller.cpp:261
+#: src/playsingle_controller.cpp:265
 msgid "Remaining gold: "
 msgstr "所剩金币： "
 
-#: src/playsingle_controller.cpp:264
+#: src/playsingle_controller.cpp:268
 msgid "Early finish bonus: "
 msgstr "提早结束奖励： "
 
-#: src/playsingle_controller.cpp:266
+#: src/playsingle_controller.cpp:270
 msgid "per turn"
 msgstr "每回合"
 
-#: src/playsingle_controller.cpp:267
+#: src/playsingle_controller.cpp:271
 msgid "Turns finished early: "
 msgstr "回合数提早结束： "
 
-#: src/playsingle_controller.cpp:269
+#: src/playsingle_controller.cpp:273
 msgid "Bonus: "
 msgstr "奖励： "
 
-#: src/playsingle_controller.cpp:271
+#: src/playsingle_controller.cpp:275
 msgid "Gold: "
 msgstr "金币： "
 
-#: src/playsingle_controller.cpp:276
+#: src/playsingle_controller.cpp:280
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80%的金币会带入下个剧本"
 
-#: src/playsingle_controller.cpp:277
+#: src/playsingle_controller.cpp:281
 msgid "Retained Gold: "
 msgstr "所剩金币： "
 
-#: src/playsingle_controller.cpp:282
+#: src/playsingle_controller.cpp:286
 msgid "Victory"
 msgstr "胜利"
 
-#: src/playsingle_controller.cpp:283
+#: src/playsingle_controller.cpp:287
 msgid "You have emerged victorious!"
 msgstr "你已显现出胜利的姿态！"
 
-#: src/playsingle_controller.cpp:287
+#: src/playsingle_controller.cpp:291
 msgid "Scenario Report"
 msgstr "剧本报告"
 
-#: src/playsingle_controller.cpp:304
+#: src/playsingle_controller.cpp:308
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "网络断开连接，游戏将不能继续进行。你想保存游戏吗？"
 
-#: src/playsingle_controller.cpp:398
+#: src/playsingle_controller.cpp:402
 msgid "It is now your turn"
 msgstr "回合到你了"
 
-#: src/playturn.cpp:176
+#: src/playturn.cpp:174
 msgid "Replace with AI"
 msgstr "用AI替换"
 
-#: src/playturn.cpp:177
+#: src/playturn.cpp:175
 msgid "Replace with local player"
 msgstr "用本地玩家替换"
 
-#: src/playturn.cpp:178
+#: src/playturn.cpp:176
 msgid "Abort game"
 msgstr "终止游戏"
 
-#: src/playturn.cpp:181
+#: src/playturn.cpp:179
 msgid "Replace with "
 msgstr "替换为 "
 
-#: src/playturn.cpp:185
+#: src/playturn.cpp:183
 msgid "has left the game. What do you want to do?"
 msgstr "已经离开游戏，你想做些什么？"
 
@@ -10428,15 +10428,15 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "－－，韦诺手册"
 
-#: src/unit.cpp:2168 src/unit.cpp:2293
+#: src/unit.cpp:2194 src/unit.cpp:2319
 msgid "; "
 msgstr "； "
 
-#: src/unit.cpp:2250
+#: src/unit.cpp:2276
 msgid "XP to advance"
 msgstr "XP去升级"
 
-#: src/unit.cpp:2284
+#: src/unit.cpp:2310
 msgid ": "
 msgstr "： "
 
@@ -10444,15 +10444,15 @@ msgstr "： "
 msgid "strikes"
 msgstr "打击"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "chaotic"
 msgstr "混乱的"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "lawful"
 msgstr "善良的"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "neutral"
 msgstr "中立的"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-12 17:55+0200\n"
+"POT-Creation-Date: 2006-04-17 22:59+0200\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -22,12 +22,12 @@ msgstr ""
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: data/abilities.cfg:7
+#: data/abilities.cfg:8
 #, fuzzy
 msgid "heals +4"
 msgstr "sendatzen du"
 
-#: data/abilities.cfg:12
+#: data/abilities.cfg:13
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -39,12 +39,12 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 
-#: data/abilities.cfg:26
+#: data/abilities.cfg:27
 #, fuzzy
 msgid "heals +8"
 msgstr "sendatzen du"
 
-#: data/abilities.cfg:31
+#: data/abilities.cfg:32
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -56,47 +56,47 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 
-#: data/abilities.cfg:40
+#: data/abilities.cfg:42
 msgid "cures"
 msgstr "osatzen du"
 
-#: data/abilities.cfg:42
+#: data/abilities.cfg:44
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 
-#: data/abilities.cfg:55
+#: data/abilities.cfg:57
 msgid "regenerates"
 msgstr "birsortzen du"
 
-#: data/abilities.cfg:57
+#: data/abilities.cfg:59
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
 
-#: data/abilities.cfg:72
+#: data/abilities.cfg:75
 msgid "steadfast"
 msgstr ""
 
-#: data/abilities.cfg:74
+#: data/abilities.cfg:77
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
 
-#: data/abilities.cfg:85 data/abilities.cfg:104 data/abilities.cfg:135
-#: data/abilities.cfg:178 data/abilities.cfg:233 src/actions.cpp:539
+#: data/abilities.cfg:89 data/abilities.cfg:110 data/abilities.cfg:144
+#: data/abilities.cfg:191 data/abilities.cfg:251 src/actions.cpp:539
 #: src/actions.cpp:672
 msgid "leadership"
 msgstr "buruzagia"
 
-#: data/abilities.cfg:89 data/abilities.cfg:108 data/abilities.cfg:139
-#: data/abilities.cfg:182 data/abilities.cfg:237
+#: data/abilities.cfg:93 data/abilities.cfg:114 data/abilities.cfg:148
+#: data/abilities.cfg:195 data/abilities.cfg:255
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -108,12 +108,12 @@ msgid ""
 "difference in their levels."
 msgstr ""
 
-#: data/abilities.cfg:298
+#: data/abilities.cfg:320
 #, fuzzy
 msgid "skirmisher"
 msgstr "Saurio gatazkaria"
 
-#: data/abilities.cfg:300
+#: data/abilities.cfg:322
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -121,11 +121,11 @@ msgid ""
 "remaining movement will be set to 0 even if you are a skirmisher.)"
 msgstr ""
 
-#: data/abilities.cfg:310
+#: data/abilities.cfg:333
 msgid "illuminates"
 msgstr "argitzen du"
 
-#: data/abilities.cfg:314
+#: data/abilities.cfg:337
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -135,22 +135,22 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 
-#: data/abilities.cfg:321
+#: data/abilities.cfg:344
 msgid "teleport"
 msgstr "teleportatu"
 
-#: data/abilities.cfg:323
+#: data/abilities.cfg:346
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
 
-#: data/abilities.cfg:329
+#: data/abilities.cfg:352
 msgid "ambush"
 msgstr "Sarekada"
 
-#: data/abilities.cfg:333
+#: data/abilities.cfg:356
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -160,11 +160,11 @@ msgid ""
 "units next to this unit."
 msgstr ""
 
-#: data/abilities.cfg:345
+#: data/abilities.cfg:368
 msgid "nightstalk"
 msgstr ""
 
-#: data/abilities.cfg:349
+#: data/abilities.cfg:372
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -174,12 +174,12 @@ msgid ""
 "to this unit."
 msgstr ""
 
-#: data/abilities.cfg:361
+#: data/abilities.cfg:384
 #, fuzzy
 msgid "submerge"
 msgstr "makulu"
 
-#: data/abilities.cfg:365
+#: data/abilities.cfg:388
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -189,23 +189,23 @@ msgid ""
 "units next to this unit."
 msgstr ""
 
-#: data/abilities.cfg:377
+#: data/abilities.cfg:406
 #, fuzzy
 msgid "berserk"
 msgstr "Ikusleak"
 
-#: data/abilities.cfg:379
+#: data/abilities.cfg:408
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 
-#: data/abilities.cfg:387
+#: data/abilities.cfg:416
 msgid "backstab"
 msgstr ""
 
-#: data/abilities.cfg:389
+#: data/abilities.cfg:418
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -213,12 +213,12 @@ msgid ""
 "to stone)."
 msgstr ""
 
-#: data/abilities.cfg:399 data/abilities.cfg:407
+#: data/abilities.cfg:427 data/abilities.cfg:435
 #, fuzzy
 msgid "plague"
 msgstr "Jokalariak:"
 
-#: data/abilities.cfg:401 data/abilities.cfg:409
+#: data/abilities.cfg:429 data/abilities.cfg:437
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -226,45 +226,45 @@ msgid ""
 "doesn't work on Undead or units in villages.)"
 msgstr ""
 
-#: data/abilities.cfg:415
+#: data/abilities.cfg:444
 #, fuzzy
 msgid "slows"
 msgstr "mantso"
 
-#: data/abilities.cfg:417
+#: data/abilities.cfg:446
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
 
-#: data/abilities.cfg:424
+#: data/abilities.cfg:452
 #, fuzzy
 msgid "stones"
 msgstr "harria"
 
-#: data/abilities.cfg:426
+#: data/abilities.cfg:454
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
 
-#: data/abilities.cfg:432
+#: data/abilities.cfg:461
 msgid "marksman"
 msgstr "tiratzailea"
 
-#: data/abilities.cfg:434
+#: data/abilities.cfg:463
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 
-#: data/abilities.cfg:443
+#: data/abilities.cfg:473
 msgid "magical"
 msgstr "magikoa"
 
-#: data/abilities.cfg:445
+#: data/abilities.cfg:475
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -272,11 +272,11 @@ msgstr ""
 "Magikoa:\n"
 "Eraso honek jotzeko %70-ko aukera du beti."
 
-#: data/abilities.cfg:453
+#: data/abilities.cfg:483
 msgid "swarm"
 msgstr ""
 
-#: data/abilities.cfg:455
+#: data/abilities.cfg:485
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -285,45 +285,45 @@ msgid ""
 "strikes."
 msgstr ""
 
-#: data/abilities.cfg:461
+#: data/abilities.cfg:492
 msgid "charge"
 msgstr "kargatu"
 
-#: data/abilities.cfg:463
+#: data/abilities.cfg:494
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
 "take double damage from the target's counterattack."
 msgstr ""
 
-#: data/abilities.cfg:473
+#: data/abilities.cfg:504
 #, fuzzy
 msgid "drains"
 msgstr "odolxurgapena"
 
-#: data/abilities.cfg:475
+#: data/abilities.cfg:506
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
 
-#: data/abilities.cfg:481
+#: data/abilities.cfg:512
 #, fuzzy
 msgid "firststrike"
 msgstr "erasoak"
 
-#: data/abilities.cfg:483
+#: data/abilities.cfg:514
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 
-#: data/abilities.cfg:489
+#: data/abilities.cfg:521
 msgid "poison"
 msgstr "pozoia"
 
-#: data/abilities.cfg:491
+#: data/abilities.cfg:523
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -3946,7 +3946,7 @@ msgstr "Ekintzak"
 msgid "End Turn"
 msgstr "Txanda Amaitu"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2202
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2228
 msgid "HP"
 msgstr "BP"
 
@@ -8138,7 +8138,7 @@ msgstr "Hartutako kaltea (BE)"
 msgid "Statistics"
 msgstr "Estatistikak"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2233
+#: src/menu_events.cpp:220 src/unit.cpp:2259
 msgid "Moves"
 msgstr "Mugimenduak"
 
@@ -8419,12 +8419,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2288
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2314
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2295
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2321
 msgid ")"
 msgstr ")"
 
@@ -8779,26 +8779,26 @@ msgstr "Jokuaren datuak lortzen..."
 msgid "Choose your side:"
 msgstr "Aukeratu zure aldea:"
 
-#: src/network.cpp:91
+#: src/network.cpp:94
 #, fuzzy
 msgid "invalid network handle"
 msgstr "%s(e)k ezin ditu geruzak kudeatu"
 
-#: src/network.cpp:124
+#: src/network.cpp:127
 msgid "Client disconnected"
 msgstr "Bezoroak deskonektatu egin du."
 
-#: src/network.cpp:479
+#: src/network.cpp:482
 #, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "Ezin izan da ostalariari konektatu."
 
-#: src/network.cpp:490
+#: src/network.cpp:493
 msgid "Could not send initial handshake"
 msgstr ""
 
-#: src/play_controller.cpp:358 src/playsingle_controller.cpp:293
-#: src/playsingle_controller.cpp:332
+#: src/play_controller.cpp:358 src/playsingle_controller.cpp:297
+#: src/playsingle_controller.cpp:336
 msgid "The file you have tried to load is corrupt"
 msgstr "Kargatu nahi zenuen fitxategia ondatuta dago"
 
@@ -8830,61 +8830,61 @@ msgstr "Zure jokua gorde nahi duzu?"
 msgid "Unknown scenario: '"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/playsingle_controller.cpp:177
+#: src/playsingle_controller.cpp:181
 msgid "Game Over"
 msgstr "Jokua bukatu da"
 
-#: src/playsingle_controller.cpp:178
+#: src/playsingle_controller.cpp:182
 msgid "The game is over."
 msgstr "Jokua bukatu da."
 
-#: src/playsingle_controller.cpp:261
+#: src/playsingle_controller.cpp:265
 msgid "Remaining gold: "
 msgstr "Gelditzen den urrea:"
 
-#: src/playsingle_controller.cpp:264
+#: src/playsingle_controller.cpp:268
 #, fuzzy
 msgid "Early finish bonus: "
 msgstr "Txanda azkarregi amaitu da: "
 
-#: src/playsingle_controller.cpp:266
+#: src/playsingle_controller.cpp:270
 msgid "per turn"
 msgstr "txandako"
 
-#: src/playsingle_controller.cpp:267
+#: src/playsingle_controller.cpp:271
 msgid "Turns finished early: "
 msgstr "Txanda azkarregi amaitu da: "
 
-#: src/playsingle_controller.cpp:269
+#: src/playsingle_controller.cpp:273
 msgid "Bonus: "
 msgstr "Bonusa: "
 
-#: src/playsingle_controller.cpp:271
+#: src/playsingle_controller.cpp:275
 msgid "Gold: "
 msgstr "Urrea:"
 
-#: src/playsingle_controller.cpp:276
+#: src/playsingle_controller.cpp:280
 #, fuzzy, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "Urrearen %80a hurrengo gudagunerako gorde da"
 
-#: src/playsingle_controller.cpp:277
+#: src/playsingle_controller.cpp:281
 msgid "Retained Gold: "
 msgstr "Lortutako Urrea:"
 
-#: src/playsingle_controller.cpp:282
+#: src/playsingle_controller.cpp:286
 msgid "Victory"
 msgstr "Garaipena!"
 
-#: src/playsingle_controller.cpp:283
+#: src/playsingle_controller.cpp:287
 msgid "You have emerged victorious!"
 msgstr "Garaile irten zara gudatik!"
 
-#: src/playsingle_controller.cpp:287
+#: src/playsingle_controller.cpp:291
 msgid "Scenario Report"
 msgstr "Gudagunearen txostena"
 
-#: src/playsingle_controller.cpp:304
+#: src/playsingle_controller.cpp:308
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -8893,27 +8893,27 @@ msgstr ""
 "Sareko deskonexio bat gertatu da, eta jokuak ezin du jarraitu. Jokua gorde "
 "nahi duzu?"
 
-#: src/playsingle_controller.cpp:398
+#: src/playsingle_controller.cpp:402
 msgid "It is now your turn"
 msgstr "Zure txanda"
 
-#: src/playturn.cpp:176
+#: src/playturn.cpp:174
 msgid "Replace with AI"
 msgstr "AA-rekin ordeztu"
 
-#: src/playturn.cpp:177
+#: src/playturn.cpp:175
 msgid "Replace with local player"
 msgstr "Jokalari lokalarekin ordezkatu"
 
-#: src/playturn.cpp:178
+#: src/playturn.cpp:176
 msgid "Abort game"
 msgstr "Jokoa bertan behera utzi"
 
-#: src/playturn.cpp:181
+#: src/playturn.cpp:179
 msgid "Replace with "
 msgstr "Ordeztu "
 
-#: src/playturn.cpp:185
+#: src/playturn.cpp:183
 msgid "has left the game. What do you want to do?"
 msgstr "jokoa utzi du. Zer egin nahi duzu?"
 
@@ -9148,15 +9148,15 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoth-eko liburukotea"
 
-#: src/unit.cpp:2168 src/unit.cpp:2293
+#: src/unit.cpp:2194 src/unit.cpp:2319
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2250
+#: src/unit.cpp:2276
 msgid "XP to advance"
 msgstr "Aurreratzeko EP"
 
-#: src/unit.cpp:2284
+#: src/unit.cpp:2310
 msgid ": "
 msgstr ": "
 
@@ -9164,15 +9164,15 @@ msgstr ": "
 msgid "strikes"
 msgstr "erasoak"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "chaotic"
 msgstr "kaotikoa"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "lawful"
 msgstr "bidezkoa"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "neutral"
 msgstr "neutrala"
 

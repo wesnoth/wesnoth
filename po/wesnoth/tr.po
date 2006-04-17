@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-12 17:55+0200\n"
+"POT-Creation-Date: 2006-04-17 22:59+0200\n"
 "PO-Revision-Date: 2006-03-02 17:18+0200\n"
 "Last-Translator: user\n"
 "Language-Team:  <tr@li.org>\n"
@@ -24,12 +24,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: KBabel 1.11\n"
 
-#: data/abilities.cfg:7
+#: data/abilities.cfg:8
 #, fuzzy
 msgid "heals +4"
 msgstr "tedavi"
 
-#: data/abilities.cfg:12
+#: data/abilities.cfg:13
 #, fuzzy
 msgid ""
 "Heals +4:\n"
@@ -50,12 +50,12 @@ msgstr ""
 "Zehirlenmiş bir birim tedaviciden ilaç alamaz, bu iş için bir kasaba yada "
 "ilaç verebilen bir birim aramalıdır."
 
-#: data/abilities.cfg:26
+#: data/abilities.cfg:27
 #, fuzzy
 msgid "heals +8"
 msgstr "tedavi"
 
-#: data/abilities.cfg:31
+#: data/abilities.cfg:32
 #, fuzzy
 msgid ""
 "Heals +8:\n"
@@ -78,22 +78,22 @@ msgstr ""
 "İlaççı zehirleri de iyileştirebilir, ama birim zehrin iyileştiği turda "
 "fazladan iyileşme alamaz."
 
-#: data/abilities.cfg:40
+#: data/abilities.cfg:42
 msgid "cures"
 msgstr "ilaç verir"
 
-#: data/abilities.cfg:42
+#: data/abilities.cfg:44
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 
-#: data/abilities.cfg:55
+#: data/abilities.cfg:57
 msgid "regenerates"
 msgstr "İyileşir"
 
-#: data/abilities.cfg:57
+#: data/abilities.cfg:59
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
@@ -103,11 +103,11 @@ msgstr ""
 "Bu birim her sırada 8 YP ye kadar iyileşir. Eğer zehirlenmiş ise, iyileşmek "
 "sadece yerine zehri giderir."
 
-#: data/abilities.cfg:72
+#: data/abilities.cfg:75
 msgid "steadfast"
 msgstr "sabit"
 
-#: data/abilities.cfg:74
+#: data/abilities.cfg:77
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
@@ -117,14 +117,14 @@ msgstr ""
 "Bu birim savunma yaptığı zaman dirençleri %50' yi geçmemek üzere iki katına "
 "çıkar. Zaaflar bundan etkilenmez."
 
-#: data/abilities.cfg:85 data/abilities.cfg:104 data/abilities.cfg:135
-#: data/abilities.cfg:178 data/abilities.cfg:233 src/actions.cpp:539
+#: data/abilities.cfg:89 data/abilities.cfg:110 data/abilities.cfg:144
+#: data/abilities.cfg:191 data/abilities.cfg:251 src/actions.cpp:539
 #: src/actions.cpp:672
 msgid "leadership"
 msgstr "liderlik"
 
-#: data/abilities.cfg:89 data/abilities.cfg:108 data/abilities.cfg:139
-#: data/abilities.cfg:182 data/abilities.cfg:237
+#: data/abilities.cfg:93 data/abilities.cfg:114 data/abilities.cfg:148
+#: data/abilities.cfg:195 data/abilities.cfg:255
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -142,11 +142,11 @@ msgstr ""
 "birim yakında olduğu zaman, savaşta o birimin, lider ile arasındaki seviye "
 "farkı çarpı %25 kadar daha fazla hasar yapar."
 
-#: data/abilities.cfg:298
+#: data/abilities.cfg:320
 msgid "skirmisher"
 msgstr "avcı"
 
-#: data/abilities.cfg:300
+#: data/abilities.cfg:322
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -159,11 +159,11 @@ msgstr ""
 "bir düşmanın kontrol alanında durursan, avcı olsan dahi kalan hareketin 0 "
 "haline gelir.)"
 
-#: data/abilities.cfg:310
+#: data/abilities.cfg:333
 msgid "illuminates"
 msgstr "aydınlatır"
 
-#: data/abilities.cfg:314
+#: data/abilities.cfg:337
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -179,11 +179,11 @@ msgstr ""
 "Bu birimin yanındaki herhangi bir birim, gecede alacakaranlık gibi, ve "
 "alacakaranlık da gündüz gibi savaşır. "
 
-#: data/abilities.cfg:321
+#: data/abilities.cfg:344
 msgid "teleport"
 msgstr "ışınlanma"
 
-#: data/abilities.cfg:323
+#: data/abilities.cfg:346
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -192,11 +192,11 @@ msgstr ""
 "Işınlanma:\n"
 "Bu birim hareketlerinin birini kullanarak dost köyler arasında ışınlanabilir."
 
-#: data/abilities.cfg:329
+#: data/abilities.cfg:352
 msgid "ambush"
 msgstr "pusu"
 
-#: data/abilities.cfg:333
+#: data/abilities.cfg:356
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -212,11 +212,11 @@ msgstr ""
 "birimleri olması dışında, düşman birimleri bu birimi ormanda göremez ve "
 "saldıramaz."
 
-#: data/abilities.cfg:345
+#: data/abilities.cfg:368
 msgid "nightstalk"
 msgstr "Karabasan"
 
-#: data/abilities.cfg:349
+#: data/abilities.cfg:372
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -232,11 +232,11 @@ msgstr ""
 "birimleri olması dışında, düşman birimleri bu birimi gece göremez ve ona "
 "saldıramaz."
 
-#: data/abilities.cfg:361
+#: data/abilities.cfg:384
 msgid "submerge"
 msgstr "gizlenme"
 
-#: data/abilities.cfg:365
+#: data/abilities.cfg:388
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -252,11 +252,11 @@ msgstr ""
 "birimleri olması dışında, düşman birimleri bu birimi derin suda göremez ve "
 "ona saldıramaz."
 
-#: data/abilities.cfg:377
+#: data/abilities.cfg:406
 msgid "berserk"
 msgstr "çılgın"
 
-#: data/abilities.cfg:379
+#: data/abilities.cfg:408
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -266,11 +266,11 @@ msgstr ""
 "Saldırı ve savunmada, bu saldırı türü, çarpışanlardan biri yıkılana kadar "
 "veya saldırı 30 tur sürene dek devam eder."
 
-#: data/abilities.cfg:387
+#: data/abilities.cfg:416
 msgid "backstab"
 msgstr "arkadan vurma"
 
-#: data/abilities.cfg:389
+#: data/abilities.cfg:418
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -281,11 +281,11 @@ msgstr ""
 "Bu saldırı, hedef birimin arkasında düşmanı olan bir birim varsa ve bu "
 "saldıramaz durumda değilse (mesela taşa çevrilmiş), iki kat hasar verir."
 
-#: data/abilities.cfg:399 data/abilities.cfg:407
+#: data/abilities.cfg:427 data/abilities.cfg:435
 msgid "plague"
 msgstr "veba"
 
-#: data/abilities.cfg:401 data/abilities.cfg:409
+#: data/abilities.cfg:429 data/abilities.cfg:437
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -297,12 +297,12 @@ msgstr ""
 "ve aynı tarafta bir birimle değişir. (Bu ölüler ve kasabadaki birimler için "
 "çalışmaz)"
 
-#: data/abilities.cfg:415
+#: data/abilities.cfg:444
 #, fuzzy
 msgid "slows"
 msgstr "yavaş"
 
-#: data/abilities.cfg:417
+#: data/abilities.cfg:446
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
@@ -313,12 +313,12 @@ msgstr ""
 "birimleri normalin yarısı hızında (yukarı yuvarlanmış olarak) hareket "
 "ettirir. "
 
-#: data/abilities.cfg:424
+#: data/abilities.cfg:452
 #, fuzzy
 msgid "stones"
 msgstr "taş"
 
-#: data/abilities.cfg:426
+#: data/abilities.cfg:454
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -328,11 +328,11 @@ msgstr ""
 "Bu saldırı hedefi taşa çevirir. Taşa çevrilmiş birimler hareket edemez ve "
 "saldıramazlar."
 
-#: data/abilities.cfg:432
+#: data/abilities.cfg:461
 msgid "marksman"
 msgstr "nişancı"
 
-#: data/abilities.cfg:434
+#: data/abilities.cfg:463
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -341,11 +341,11 @@ msgstr ""
 "Saldırı amaçlı kullanıldığı zaman, bu saldırı her zaman %60 vurma şansına "
 "sahiptir."
 
-#: data/abilities.cfg:443
+#: data/abilities.cfg:473
 msgid "magical"
 msgstr "sihirli"
 
-#: data/abilities.cfg:445
+#: data/abilities.cfg:475
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -353,11 +353,11 @@ msgstr ""
 "Sihirli:\n"
 "Bu saldırı her zaman %70 isabet şansına sahiptir."
 
-#: data/abilities.cfg:453
+#: data/abilities.cfg:483
 msgid "swarm"
 msgstr "sürü"
 
-#: data/abilities.cfg:455
+#: data/abilities.cfg:485
 #, fuzzy
 msgid ""
 "Swarm:\n"
@@ -371,11 +371,11 @@ msgstr ""
 "yüzdesi/en fazla YP orantısındadır. Mesela en fazla YPnin 3/4üne sahip "
 "birimin, 3/4 sayıda vuruş yapabilir."
 
-#: data/abilities.cfg:461
+#: data/abilities.cfg:492
 msgid "charge"
 msgstr "yükleme"
 
-#: data/abilities.cfg:463
+#: data/abilities.cfg:494
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -385,12 +385,12 @@ msgstr ""
 "Bu saldırı hedefe çift kat hasar verir. Bununla beraber, bu birim de hedefin "
 "karşı saldırılarından çifte hasar görür."
 
-#: data/abilities.cfg:473
+#: data/abilities.cfg:504
 #, fuzzy
 msgid "drains"
 msgstr "sömürme"
 
-#: data/abilities.cfg:475
+#: data/abilities.cfg:506
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -400,11 +400,11 @@ msgstr ""
 "Bu birim yaşayan birimlerden sağlık emer, verdiği hasarın (aşağı "
 "yuvarlanmış) yarısı kadar iyileşir."
 
-#: data/abilities.cfg:481
+#: data/abilities.cfg:512
 msgid "firststrike"
 msgstr "ilk vuruş"
 
-#: data/abilities.cfg:483
+#: data/abilities.cfg:514
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -412,11 +412,11 @@ msgstr ""
 "İlk vuruş:\n"
 "Bu birim bu saldırısıyla, savunmadayken bile, her zaman ilk vuruşu yapar."
 
-#: data/abilities.cfg:489
+#: data/abilities.cfg:521
 msgid "poison"
 msgstr "zehir"
 
-#: data/abilities.cfg:491
+#: data/abilities.cfg:523
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -4667,7 +4667,7 @@ msgstr "İşler"
 msgid "End Turn"
 msgstr "Eli bitir"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2202
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2228
 msgid "HP"
 msgstr "YP"
 
@@ -10229,7 +10229,7 @@ msgstr "Alınan Hasar (EV)"
 msgid "Statistics"
 msgstr "İstatistikler"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2233
+#: src/menu_events.cpp:220 src/unit.cpp:2259
 msgid "Moves"
 msgstr "Hareketler"
 
@@ -10510,12 +10510,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2288
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2314
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2295
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2321
 msgid ")"
 msgstr ")"
 
@@ -10866,24 +10866,24 @@ msgstr "Oyun dataları alınıyor"
 msgid "Choose your side:"
 msgstr "Tarafını seç:"
 
-#: src/network.cpp:91
+#: src/network.cpp:94
 msgid "invalid network handle"
 msgstr "Geçersiz ağ bağlantısı"
 
-#: src/network.cpp:124
+#: src/network.cpp:127
 msgid "Client disconnected"
 msgstr "İstemcinin bağlantısı koptu"
 
-#: src/network.cpp:479
+#: src/network.cpp:482
 msgid "Could not add socket to socket set"
 msgstr "Soket, soket setine eklenemedi"
 
-#: src/network.cpp:490
+#: src/network.cpp:493
 msgid "Could not send initial handshake"
 msgstr "İlk el tokuşma gönderilemedi"
 
-#: src/play_controller.cpp:358 src/playsingle_controller.cpp:293
-#: src/playsingle_controller.cpp:332
+#: src/play_controller.cpp:358 src/playsingle_controller.cpp:297
+#: src/playsingle_controller.cpp:336
 msgid "The file you have tried to load is corrupt"
 msgstr "Yüklemeye çalıştığın dosya bozuk"
 
@@ -10915,60 +10915,60 @@ msgstr "Oyununu kaydetmek istiyor musun?"
 msgid "Unknown scenario: '"
 msgstr "Bilinmeyen Senaryo: '"
 
-#: src/playsingle_controller.cpp:177
+#: src/playsingle_controller.cpp:181
 msgid "Game Over"
 msgstr "Bitti"
 
-#: src/playsingle_controller.cpp:178
+#: src/playsingle_controller.cpp:182
 msgid "The game is over."
 msgstr "Oyun sona erdi."
 
-#: src/playsingle_controller.cpp:261
+#: src/playsingle_controller.cpp:265
 msgid "Remaining gold: "
 msgstr "Kalan altın: "
 
-#: src/playsingle_controller.cpp:264
+#: src/playsingle_controller.cpp:268
 msgid "Early finish bonus: "
 msgstr "Erken bitirme bonusu: "
 
-#: src/playsingle_controller.cpp:266
+#: src/playsingle_controller.cpp:270
 msgid "per turn"
 msgstr "el başına"
 
-#: src/playsingle_controller.cpp:267
+#: src/playsingle_controller.cpp:271
 msgid "Turns finished early: "
 msgstr "Erken bitirilen eller: "
 
-#: src/playsingle_controller.cpp:269
+#: src/playsingle_controller.cpp:273
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playsingle_controller.cpp:271
+#: src/playsingle_controller.cpp:275
 msgid "Gold: "
 msgstr "Altın: "
 
-#: src/playsingle_controller.cpp:276
+#: src/playsingle_controller.cpp:280
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "Altının %80 i bir sonraki senaryo için kaldı"
 
-#: src/playsingle_controller.cpp:277
+#: src/playsingle_controller.cpp:281
 msgid "Retained Gold: "
 msgstr "Kalan Altın:"
 
-#: src/playsingle_controller.cpp:282
+#: src/playsingle_controller.cpp:286
 msgid "Victory"
 msgstr "Galibiyet"
 
-#: src/playsingle_controller.cpp:283
+#: src/playsingle_controller.cpp:287
 msgid "You have emerged victorious!"
 msgstr "Galip olarak tamamladın!"
 
-#: src/playsingle_controller.cpp:287
+#: src/playsingle_controller.cpp:291
 msgid "Scenario Report"
 msgstr "Senaryo raporu"
 
-#: src/playsingle_controller.cpp:304
+#: src/playsingle_controller.cpp:308
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -10977,27 +10977,27 @@ msgstr ""
 "Bir bağlantı kesilmesi oluştu ve oyun devam edemeyecek. Oyunu kaydetmek "
 "istiyor musun?"
 
-#: src/playsingle_controller.cpp:398
+#: src/playsingle_controller.cpp:402
 msgid "It is now your turn"
 msgstr "Şimdi senin sıran"
 
-#: src/playturn.cpp:176
+#: src/playturn.cpp:174
 msgid "Replace with AI"
 msgstr "YZ ile değiştir"
 
-#: src/playturn.cpp:177
+#: src/playturn.cpp:175
 msgid "Replace with local player"
 msgstr "Mahalli oyuncu ile değiştir"
 
-#: src/playturn.cpp:178
+#: src/playturn.cpp:176
 msgid "Abort game"
 msgstr "Oyunu boz"
 
-#: src/playturn.cpp:181
+#: src/playturn.cpp:179
 msgid "Replace with "
 msgstr "Başkasıyla değiştir: "
 
-#: src/playturn.cpp:185
+#: src/playturn.cpp:183
 msgid "has left the game. What do you want to do?"
 msgstr "oyunu terketti. Ne yapmak istersin?"
 
@@ -11232,15 +11232,15 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoth Kitabı"
 
-#: src/unit.cpp:2168 src/unit.cpp:2293
+#: src/unit.cpp:2194 src/unit.cpp:2319
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2250
+#: src/unit.cpp:2276
 msgid "XP to advance"
 msgstr "terfi için gerekli TP"
 
-#: src/unit.cpp:2284
+#: src/unit.cpp:2310
 msgid ": "
 msgstr ": "
 
@@ -11248,15 +11248,15 @@ msgstr ": "
 msgid "strikes"
 msgstr "vuruş"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "chaotic"
 msgstr "kaotik"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "lawful"
 msgstr "adaletli"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "neutral"
 msgstr "tarafsız"
 

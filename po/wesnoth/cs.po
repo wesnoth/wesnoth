@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-12 17:55+0200\n"
+"POT-Creation-Date: 2006-04-17 22:59+0200\n"
 "PO-Revision-Date: 2006-04-06 08:44+0200\n"
 "Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -22,11 +22,11 @@ msgstr ""
 "X-Poedit-Language: Czech\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
 
-#: data/abilities.cfg:7
+#: data/abilities.cfg:8
 msgid "heals +4"
 msgstr "ošetření"
 
-#: data/abilities.cfg:12
+#: data/abilities.cfg:13
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -46,11 +46,11 @@ msgstr ""
 "Ošetřovatel nedokáže uzdravit otrávenou jednotku; taková jednotka musí "
 "vyhledat pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
-#: data/abilities.cfg:26
+#: data/abilities.cfg:27
 msgid "heals +8"
 msgstr "léčení"
 
-#: data/abilities.cfg:31
+#: data/abilities.cfg:32
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -72,11 +72,11 @@ msgstr ""
 "Léčitel nedokáže uzdravit otrávenou jednotku; taková jednotka musí vyhledat "
 "pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
-#: data/abilities.cfg:40
+#: data/abilities.cfg:42
 msgid "cures"
 msgstr "uzdravování"
 
-#: data/abilities.cfg:42
+#: data/abilities.cfg:44
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
@@ -86,11 +86,11 @@ msgstr ""
 "Uzdravovatel dokáže uzdravit otrávenou jednotku, ale tato jednotka už v "
 "daném tahu nebude dále léčena."
 
-#: data/abilities.cfg:55
+#: data/abilities.cfg:57
 msgid "regenerates"
 msgstr "regeneruje"
 
-#: data/abilities.cfg:57
+#: data/abilities.cfg:59
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
@@ -100,11 +100,11 @@ msgstr ""
 "Jednotka se uzdraví o 8 hp za tah. V případě otravy, místo uzdravení "
 "odstraní jed."
 
-#: data/abilities.cfg:72
+#: data/abilities.cfg:75
 msgid "steadfast"
 msgstr "vytrvalost"
 
-#: data/abilities.cfg:74
+#: data/abilities.cfg:77
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
@@ -114,14 +114,14 @@ msgstr ""
 "Odolnost této jednotky je při obraně zdvojena, až na maximum 50%. Výše "
 "zranění při zásahu ale není ovlivněna."
 
-#: data/abilities.cfg:85 data/abilities.cfg:104 data/abilities.cfg:135
-#: data/abilities.cfg:178 data/abilities.cfg:233 src/actions.cpp:539
+#: data/abilities.cfg:89 data/abilities.cfg:110 data/abilities.cfg:144
+#: data/abilities.cfg:191 data/abilities.cfg:251 src/actions.cpp:539
 #: src/actions.cpp:672
 msgid "leadership"
 msgstr "velení"
 
-#: data/abilities.cfg:89 data/abilities.cfg:108 data/abilities.cfg:139
-#: data/abilities.cfg:182 data/abilities.cfg:237
+#: data/abilities.cfg:93 data/abilities.cfg:114 data/abilities.cfg:148
+#: data/abilities.cfg:195 data/abilities.cfg:255
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -140,11 +140,11 @@ msgstr ""
 "stejné straně jako ta velící, pak její útok způsobí o 25% více poškození "
 "krát rozdíl jejich úrovní."
 
-#: data/abilities.cfg:298
+#: data/abilities.cfg:320
 msgid "skirmisher"
 msgstr "Průbojnost"
 
-#: data/abilities.cfg:300
+#: data/abilities.cfg:322
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -156,11 +156,11 @@ msgstr ""
 "oblasti kontroly. (Výjimka: pokud se jednotka při pohybu zastaví v oblasti "
 "kontroly nepřátelské jednotky, nesmí se již dále v kole pohybovat.)"
 
-#: data/abilities.cfg:310
+#: data/abilities.cfg:333
 msgid "illuminates"
 msgstr "osvětlení"
 
-#: data/abilities.cfg:314
+#: data/abilities.cfg:337
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -176,11 +176,11 @@ msgstr ""
 "Jednotky na sousedních polích budou bojovat v noci jako za soumraku a za "
 "soumraku jako ve dne."
 
-#: data/abilities.cfg:321
+#: data/abilities.cfg:344
 msgid "teleport"
 msgstr "teleportace"
 
-#: data/abilities.cfg:323
+#: data/abilities.cfg:346
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -190,11 +190,11 @@ msgstr ""
 "Tato jednotka se dokáže v okamžiku přemístit z jedné spřátelené vesnice do "
 "druhé."
 
-#: data/abilities.cfg:329
+#: data/abilities.cfg:352
 msgid "ambush"
 msgstr "přepadení"
 
-#: data/abilities.cfg:333
+#: data/abilities.cfg:356
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -210,11 +210,11 @@ msgstr ""
 "pouze v tahu bezprostředně po jejím útoku, nebo jsou-li na sousedních polích "
 "nepřátelské jednotky."
 
-#: data/abilities.cfg:345
+#: data/abilities.cfg:368
 msgid "nightstalk"
 msgstr "noční lovec"
 
-#: data/abilities.cfg:349
+#: data/abilities.cfg:372
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -230,11 +230,11 @@ msgstr ""
 "kromě tahu bezprostředně po jejím útoku nebo jsou-li na sousedních polích "
 "nepřátelské jednotky."
 
-#: data/abilities.cfg:361
+#: data/abilities.cfg:384
 msgid "submerge"
 msgstr "ponoření"
 
-#: data/abilities.cfg:365
+#: data/abilities.cfg:388
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -251,11 +251,11 @@ msgstr ""
 "vodě, pouze v tahu bezprostředně po jejím útoku, nebo jsou-li na sousedních "
 "polích nepřátelské jednotky."
 
-#: data/abilities.cfg:377
+#: data/abilities.cfg:406
 msgid "berserk"
 msgstr "na život a na smrt"
 
-#: data/abilities.cfg:379
+#: data/abilities.cfg:408
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -265,11 +265,11 @@ msgstr ""
 "Boj trvá tak dlouho, dokud jeden z protivníků nezemře, nebo do počtu 30 "
 "útoků."
 
-#: data/abilities.cfg:387
+#: data/abilities.cfg:416
 msgid "backstab"
 msgstr "zezadu"
 
-#: data/abilities.cfg:389
+#: data/abilities.cfg:418
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -281,11 +281,11 @@ msgstr ""
 "nachází bojeschopná jednotka (nebyla kupříkladu proměněna v kámen) k ní "
 "nepřátelská."
 
-#: data/abilities.cfg:399 data/abilities.cfg:407
+#: data/abilities.cfg:427 data/abilities.cfg:435
 msgid "plague"
 msgstr "nákaza"
 
-#: data/abilities.cfg:401 data/abilities.cfg:409
+#: data/abilities.cfg:429 data/abilities.cfg:437
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -297,11 +297,11 @@ msgstr ""
 "patřící na stranu jednotky, která jí zabila (Toto nefunguje u nemrtrvých či "
 "jednotek umístěných ve vesnicích.)"
 
-#: data/abilities.cfg:415
+#: data/abilities.cfg:444
 msgid "slows"
 msgstr "zpomalení"
 
-#: data/abilities.cfg:417
+#: data/abilities.cfg:446
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
@@ -311,11 +311,11 @@ msgstr ""
 "Tento útok zpomalí cíl. Zpomalení sníží na polovinu zranění způsobené "
 "jednotkou a počet pohybů (zaokrouhleno nahoru)."
 
-#: data/abilities.cfg:424
+#: data/abilities.cfg:452
 msgid "stones"
 msgstr "zkamenění"
 
-#: data/abilities.cfg:426
+#: data/abilities.cfg:454
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -325,11 +325,11 @@ msgstr ""
 "Tento útok promění protivníka v kámen. Jednotky proměněné v kámen se nemohou "
 "hýbat ani útočit."
 
-#: data/abilities.cfg:432
+#: data/abilities.cfg:461
 msgid "marksman"
 msgstr "střelec"
 
-#: data/abilities.cfg:434
+#: data/abilities.cfg:463
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -337,11 +337,11 @@ msgstr ""
 "Odstřelovač:\n"
 "Tento útok má vždy alespoň 60% šanci zásahu, je-li užit ofensivně."
 
-#: data/abilities.cfg:443
+#: data/abilities.cfg:473
 msgid "magical"
 msgstr "magické"
 
-#: data/abilities.cfg:445
+#: data/abilities.cfg:475
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -349,11 +349,11 @@ msgstr ""
 "Magický:\n"
 "Tento útok je magický a má vždy 70% šanci zásahu."
 
-#: data/abilities.cfg:453
+#: data/abilities.cfg:483
 msgid "swarm"
 msgstr "hejno"
 
-#: data/abilities.cfg:455
+#: data/abilities.cfg:485
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -366,11 +366,11 @@ msgstr ""
 "procentuálně odpovídá životům jednotky; například jednotka s 3/4 svých "
 "maximálních životů bude moci využít pouze 3/4 úderů."
 
-#: data/abilities.cfg:461
+#: data/abilities.cfg:492
 msgid "charge"
 msgstr "výpad"
 
-#: data/abilities.cfg:463
+#: data/abilities.cfg:494
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -380,11 +380,11 @@ msgstr ""
 "Tento útok působí dvojnásobné poranění protivníka. Také ale znamená "
 "dvojnásobné poranění útočníka při protivníkově odvetném útoku."
 
-#: data/abilities.cfg:473
+#: data/abilities.cfg:504
 msgid "drains"
 msgstr "vysátí"
 
-#: data/abilities.cfg:475
+#: data/abilities.cfg:506
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -394,11 +394,11 @@ msgstr ""
 "Tato jednotka vysává životní sílu z živých jednotek, čímž se sama léčí o "
 "polovinu poranění, jež útokem způsobila (zaokrouhleno dolů)."
 
-#: data/abilities.cfg:481
+#: data/abilities.cfg:512
 msgid "firststrike"
 msgstr "první úder"
 
-#: data/abilities.cfg:483
+#: data/abilities.cfg:514
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -406,11 +406,11 @@ msgstr ""
 "První úder:\n"
 "Tato jednotka v souboji vždy udeří první, i když se brání."
 
-#: data/abilities.cfg:489
+#: data/abilities.cfg:521
 msgid "poison"
 msgstr "otrava"
 
-#: data/abilities.cfg:491
+#: data/abilities.cfg:523
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -4691,7 +4691,7 @@ msgstr "Akce"
 msgid "End Turn"
 msgstr "Ukonči kolo"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2202
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2228
 msgid "HP"
 msgstr "Životů"
 
@@ -10207,7 +10207,7 @@ msgstr "Utržená poranění (odhad)"
 msgid "Statistics"
 msgstr "Statistiky"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2233
+#: src/menu_events.cpp:220 src/unit.cpp:2259
 msgid "Moves"
 msgstr "Kroků"
 
@@ -10488,12 +10488,12 @@ msgid "Normal"
 msgstr "Normální"
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2288
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2314
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2295
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2321
 msgid ")"
 msgstr ")"
 
@@ -10837,24 +10837,24 @@ msgstr "Získávám data o hře..."
 msgid "Choose your side:"
 msgstr "Vyber si svoji stranu:"
 
-#: src/network.cpp:91
+#: src/network.cpp:94
 msgid "invalid network handle"
 msgstr "neplatné síťové jméno"
 
-#: src/network.cpp:124
+#: src/network.cpp:127
 msgid "Client disconnected"
 msgstr "Klient odpojen"
 
-#: src/network.cpp:479
+#: src/network.cpp:482
 msgid "Could not add socket to socket set"
 msgstr "Nepodařilo se přidat soket do souboru soketů"
 
-#: src/network.cpp:490
+#: src/network.cpp:493
 msgid "Could not send initial handshake"
 msgstr "Nemohu poslat žádost o spojení"
 
-#: src/play_controller.cpp:358 src/playsingle_controller.cpp:293
-#: src/playsingle_controller.cpp:332
+#: src/play_controller.cpp:358 src/playsingle_controller.cpp:297
+#: src/playsingle_controller.cpp:336
 msgid "The file you have tried to load is corrupt"
 msgstr "Soubor, který se snažíš načíst, je poškozený."
 
@@ -10886,87 +10886,87 @@ msgstr "Přeješ si uložit hru?"
 msgid "Unknown scenario: '"
 msgstr "Neznámý scénář: '"
 
-#: src/playsingle_controller.cpp:177
+#: src/playsingle_controller.cpp:181
 msgid "Game Over"
 msgstr "Konec hry"
 
-#: src/playsingle_controller.cpp:178
+#: src/playsingle_controller.cpp:182
 msgid "The game is over."
 msgstr "Hra skončila."
 
-#: src/playsingle_controller.cpp:261
+#: src/playsingle_controller.cpp:265
 msgid "Remaining gold: "
 msgstr "Zbývající zlato: "
 
-#: src/playsingle_controller.cpp:264
+#: src/playsingle_controller.cpp:268
 msgid "Early finish bonus: "
 msgstr "Bonus za rychlý konec: "
 
-#: src/playsingle_controller.cpp:266
+#: src/playsingle_controller.cpp:270
 msgid "per turn"
 msgstr "na kolo"
 
-#: src/playsingle_controller.cpp:267
+#: src/playsingle_controller.cpp:271
 msgid "Turns finished early: "
 msgstr "Zbývajících kol: "
 
-#: src/playsingle_controller.cpp:269
+#: src/playsingle_controller.cpp:273
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playsingle_controller.cpp:271
+#: src/playsingle_controller.cpp:275
 msgid "Gold: "
 msgstr "Zlatých: "
 
-#: src/playsingle_controller.cpp:276
+#: src/playsingle_controller.cpp:280
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "Do dalšího scénáře ti zůstává 80% zlata"
 
-#: src/playsingle_controller.cpp:277
+#: src/playsingle_controller.cpp:281
 msgid "Retained Gold: "
 msgstr "Zůstalo zlatých: "
 
-#: src/playsingle_controller.cpp:282
+#: src/playsingle_controller.cpp:286
 msgid "Victory"
 msgstr "Vítězství"
 
-#: src/playsingle_controller.cpp:283
+#: src/playsingle_controller.cpp:287
 msgid "You have emerged victorious!"
 msgstr "Zvítězil jsi!"
 
-#: src/playsingle_controller.cpp:287
+#: src/playsingle_controller.cpp:291
 msgid "Scenario Report"
 msgstr "Shrnutí scénáře"
 
-#: src/playsingle_controller.cpp:304
+#: src/playsingle_controller.cpp:308
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Síťové spojení bylo přerušeno a hra nemůže pokračovat. Chcete ji uložit?"
 
-#: src/playsingle_controller.cpp:398
+#: src/playsingle_controller.cpp:402
 msgid "It is now your turn"
 msgstr "Jsi na tahu"
 
-#: src/playturn.cpp:176
+#: src/playturn.cpp:174
 msgid "Replace with AI"
 msgstr "Nahraď počítačovým hráčem"
 
-#: src/playturn.cpp:177
+#: src/playturn.cpp:175
 msgid "Replace with local player"
 msgstr "Nahraď místním hráčem"
 
-#: src/playturn.cpp:178
+#: src/playturn.cpp:176
 msgid "Abort game"
 msgstr "Ukončí hru"
 
-#: src/playturn.cpp:181
+#: src/playturn.cpp:179
 msgid "Replace with "
 msgstr "Nahraď"
 
-#: src/playturn.cpp:185
+#: src/playturn.cpp:183
 msgid "has left the game. What do you want to do?"
 msgstr "opustil(a) hru. Co s tím chceš dělat?"
 
@@ -11202,15 +11202,15 @@ msgstr "Nápověda"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- kroniky Wesnothu"
 
-#: src/unit.cpp:2168 src/unit.cpp:2293
+#: src/unit.cpp:2194 src/unit.cpp:2319
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2250
+#: src/unit.cpp:2276
 msgid "XP to advance"
 msgstr "zkušenostních bodů k postupu"
 
-#: src/unit.cpp:2284
+#: src/unit.cpp:2310
 msgid ": "
 msgstr ": "
 
@@ -11218,15 +11218,15 @@ msgstr ": "
 msgid "strikes"
 msgstr "úderů"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "chaotic"
 msgstr "chaotická"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "lawful"
 msgstr "zákonná"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "neutral"
 msgstr "neutrální"
 

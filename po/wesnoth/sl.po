@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-12 17:55+0200\n"
+"POT-Creation-Date: 2006-04-17 22:59+0200\n"
 "PO-Revision-Date: 2005-08-07 22:54+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <sl@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "%100==4 ? 2 : 3);\n"
 "X-Generator: KBabel 1.9\n"
 
-#: data/abilities.cfg:7
+#: data/abilities.cfg:8
 #, fuzzy
 msgid "heals +4"
 msgstr "celi rane"
 
-#: data/abilities.cfg:12
+#: data/abilities.cfg:13
 #, fuzzy
 msgid ""
 "Heals +4:\n"
@@ -43,12 +43,12 @@ msgstr ""
 "Zastrupljenih enot ne more ozdraviti strupa, te morajo poiskati pomoč v vasi "
 "ali pri zdravniku."
 
-#: data/abilities.cfg:26
+#: data/abilities.cfg:27
 #, fuzzy
 msgid "heals +8"
 msgstr "celi rane"
 
-#: data/abilities.cfg:31
+#: data/abilities.cfg:32
 #, fuzzy
 msgid ""
 "Heals +8:\n"
@@ -71,22 +71,22 @@ msgstr ""
 "Zdravnik lahko enote ozdravi strupa, toda tisto potezo se potem ne bodo več "
 "zdravile."
 
-#: data/abilities.cfg:40
+#: data/abilities.cfg:42
 msgid "cures"
 msgstr "zdravi"
 
-#: data/abilities.cfg:42
+#: data/abilities.cfg:44
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 
-#: data/abilities.cfg:55
+#: data/abilities.cfg:57
 msgid "regenerates"
 msgstr "regeneracija"
 
-#: data/abilities.cfg:57
+#: data/abilities.cfg:59
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
@@ -96,11 +96,11 @@ msgstr ""
 "Enota se bo vsako potezo pozdravila za 8 HP. Če je zastrupljena, se bo "
 "namesto zdravljenja, strup izničil."
 
-#: data/abilities.cfg:72
+#: data/abilities.cfg:75
 msgid "steadfast"
 msgstr "neomajen"
 
-#: data/abilities.cfg:74
+#: data/abilities.cfg:77
 #, fuzzy
 msgid ""
 "Steadfast:\n"
@@ -110,14 +110,14 @@ msgstr ""
 "Neomajen:\n"
 "Ta enota ima v obrambi podvojene odpornosti, do največ 50%."
 
-#: data/abilities.cfg:85 data/abilities.cfg:104 data/abilities.cfg:135
-#: data/abilities.cfg:178 data/abilities.cfg:233 src/actions.cpp:539
+#: data/abilities.cfg:89 data/abilities.cfg:110 data/abilities.cfg:144
+#: data/abilities.cfg:191 data/abilities.cfg:251 src/actions.cpp:539
 #: src/actions.cpp:672
 msgid "leadership"
 msgstr "vodenje"
 
-#: data/abilities.cfg:89 data/abilities.cfg:108 data/abilities.cfg:139
-#: data/abilities.cfg:182 data/abilities.cfg:237
+#: data/abilities.cfg:93 data/abilities.cfg:114 data/abilities.cfg:148
+#: data/abilities.cfg:195 data/abilities.cfg:255
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -134,11 +134,11 @@ msgstr ""
 "Sosednje enote nižjih nivojev in iste strani bodo v boju naredile 25% več "
 "škode za vsak izkustveni nivo razlike."
 
-#: data/abilities.cfg:298
+#: data/abilities.cfg:320
 msgid "skirmisher"
 msgstr "izogibalec"
 
-#: data/abilities.cfg:300
+#: data/abilities.cfg:322
 #, fuzzy
 msgid ""
 "Skirmisher:\n"
@@ -150,11 +150,11 @@ msgstr ""
 "Ta enota se je sposobna hitro premikati mimo sovražnih enot in ignorira "
 "sovražnikova območja nadzora."
 
-#: data/abilities.cfg:310
+#: data/abilities.cfg:333
 msgid "illuminates"
 msgstr "osvetljuje"
 
-#: data/abilities.cfg:314
+#: data/abilities.cfg:337
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -170,11 +170,11 @@ msgstr ""
 "Vsaka sosednja enota se bo ponoči bojevala, kot da je mrak, in v mraku, kot "
 "da je dan."
 
-#: data/abilities.cfg:321
+#: data/abilities.cfg:344
 msgid "teleport"
 msgstr "teleportiranje"
 
-#: data/abilities.cfg:323
+#: data/abilities.cfg:346
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -184,11 +184,11 @@ msgstr ""
 "Ta enota se lahko teleportira med zavezniškimi vasmi, tako da porabi en "
 "premik."
 
-#: data/abilities.cfg:329
+#: data/abilities.cfg:352
 msgid "ambush"
 msgstr "zaseda"
 
-#: data/abilities.cfg:333
+#: data/abilities.cfg:356
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -203,11 +203,11 @@ msgstr ""
 "Sovražne enote te enote, ko je v gozdu, ne morejo niti videti niti napasti, "
 "razen takoj po njenem napadu ali če so poleg nje."
 
-#: data/abilities.cfg:345
+#: data/abilities.cfg:368
 msgid "nightstalk"
 msgstr "nočni zalezovalec"
 
-#: data/abilities.cfg:349
+#: data/abilities.cfg:372
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -222,12 +222,12 @@ msgstr ""
 "Sovražne enote te enote ponoči ne vidijo in je ne morejo napasti, razen "
 "takoj po njenem napadu ali če so poleg nje."
 
-#: data/abilities.cfg:361
+#: data/abilities.cfg:384
 #, fuzzy
 msgid "submerge"
 msgstr "vbod"
 
-#: data/abilities.cfg:365
+#: data/abilities.cfg:388
 #, fuzzy
 msgid ""
 "Submerge:\n"
@@ -243,11 +243,11 @@ msgstr ""
 "Sovražne enote te enote, ko je v gozdu, ne morejo niti videti niti napasti, "
 "razen takoj po njenem napadu ali če so poleg nje."
 
-#: data/abilities.cfg:377
+#: data/abilities.cfg:406
 msgid "berserk"
 msgstr "berserk"
 
-#: data/abilities.cfg:379
+#: data/abilities.cfg:408
 #, fuzzy
 msgid ""
 "Berserk:\n"
@@ -258,11 +258,11 @@ msgstr ""
 "Ob napadu ali pri obrambi se bo boj nadaljeval, dokler eden od udeležencev "
 "ne umre."
 
-#: data/abilities.cfg:387
+#: data/abilities.cfg:416
 msgid "backstab"
 msgstr "vbod v hrbet"
 
-#: data/abilities.cfg:389
+#: data/abilities.cfg:418
 #, fuzzy
 msgid ""
 "Backstab:\n"
@@ -274,11 +274,11 @@ msgstr ""
 "Ta napad naredi dvojno škodo, če je na tarčini nasprotni strani prijateljska "
 "enota. (To ne dela z zavezniki.)"
 
-#: data/abilities.cfg:399 data/abilities.cfg:407
+#: data/abilities.cfg:427 data/abilities.cfg:435
 msgid "plague"
 msgstr "kuga"
 
-#: data/abilities.cfg:401 data/abilities.cfg:409
+#: data/abilities.cfg:429 data/abilities.cfg:437
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -290,24 +290,24 @@ msgstr ""
 "isti strani, kot enota, ki jo je ubila. (To ne deluje na nemrtvih in enotah "
 "v vaseh.)"
 
-#: data/abilities.cfg:415
+#: data/abilities.cfg:444
 #, fuzzy
 msgid "slows"
 msgstr "upočasni"
 
-#: data/abilities.cfg:417
+#: data/abilities.cfg:446
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
 
-#: data/abilities.cfg:424
+#: data/abilities.cfg:452
 #, fuzzy
 msgid "stones"
 msgstr "okamèni"
 
-#: data/abilities.cfg:426
+#: data/abilities.cfg:454
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -317,11 +317,11 @@ msgstr ""
 "Ta napad spremeni tarčo v kamen. Okamenele enote se ne morejo premikati in "
 "napadati."
 
-#: data/abilities.cfg:432
+#: data/abilities.cfg:461
 msgid "marksman"
 msgstr "ostrostrelec"
 
-#: data/abilities.cfg:434
+#: data/abilities.cfg:463
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -329,11 +329,11 @@ msgstr ""
 "Marksman:\n"
 "V napadu (ne v obrambi) ima enota vedno vsaj 60% možnosti da zadane."
 
-#: data/abilities.cfg:443
+#: data/abilities.cfg:473
 msgid "magical"
 msgstr "čaroben"
 
-#: data/abilities.cfg:445
+#: data/abilities.cfg:475
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -341,12 +341,12 @@ msgstr ""
 "Čaroben:\n"
 "Ta napad ima vedno 70% možnosti da zadane."
 
-#: data/abilities.cfg:453
+#: data/abilities.cfg:483
 #, fuzzy
 msgid "swarm"
 msgstr "trk"
 
-#: data/abilities.cfg:455
+#: data/abilities.cfg:485
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -355,11 +355,11 @@ msgid ""
 "strikes."
 msgstr ""
 
-#: data/abilities.cfg:461
+#: data/abilities.cfg:492
 msgid "charge"
 msgstr "naskok"
 
-#: data/abilities.cfg:463
+#: data/abilities.cfg:494
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -369,12 +369,12 @@ msgstr ""
 "Ta napad naredi dvojno škodo. Povzroči pa, da tudi napadalec ob protinapadu "
 "prejme dvojno škodo."
 
-#: data/abilities.cfg:473
+#: data/abilities.cfg:504
 #, fuzzy
 msgid "drains"
 msgstr "črpa"
 
-#: data/abilities.cfg:475
+#: data/abilities.cfg:506
 #, fuzzy
 msgid ""
 "Drain:\n"
@@ -385,11 +385,11 @@ msgstr ""
 "Ta enota črpa energijo živim nasprotnikom in se pri tem pozdravi za polovico "
 "storjene škode."
 
-#: data/abilities.cfg:481
+#: data/abilities.cfg:512
 msgid "firststrike"
 msgstr "prvi napad"
 
-#: data/abilities.cfg:483
+#: data/abilities.cfg:514
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -397,11 +397,11 @@ msgstr ""
 "Prvi napad:\n"
 "Ta enota vedno napade prva, tudi če se brani."
 
-#: data/abilities.cfg:489
+#: data/abilities.cfg:521
 msgid "poison"
 msgstr "strup"
 
-#: data/abilities.cfg:491
+#: data/abilities.cfg:523
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -4414,7 +4414,7 @@ msgstr "Dejanja"
 msgid "End Turn"
 msgstr "Končaj potezo"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2202
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2228
 msgid "HP"
 msgstr "HP"
 
@@ -8692,7 +8692,7 @@ msgstr "Utrpela škoda (pričakovana)"
 msgid "Statistics"
 msgstr "Statistika"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2233
+#: src/menu_events.cpp:220 src/unit.cpp:2259
 msgid "Moves"
 msgstr "Premiki"
 
@@ -8973,12 +8973,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2288
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2314
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2295
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2321
 msgid ")"
 msgstr ")"
 
@@ -9331,25 +9331,25 @@ msgid "Choose your side:"
 msgstr "Izberite stran:"
 
 # handle??
-#: src/network.cpp:91
+#: src/network.cpp:94
 msgid "invalid network handle"
 msgstr "nepravilna mrežna ročica"
 
-#: src/network.cpp:124
+#: src/network.cpp:127
 msgid "Client disconnected"
 msgstr "Odjemalec je prekinil povezavo."
 
 # |s
-#: src/network.cpp:479
+#: src/network.cpp:482
 msgid "Could not add socket to socket set"
 msgstr "Ni bilo mogoče dodati vtičnice"
 
-#: src/network.cpp:490
+#: src/network.cpp:493
 msgid "Could not send initial handshake"
 msgstr "Ni bilo mogoče začeti rokovanja"
 
-#: src/play_controller.cpp:358 src/playsingle_controller.cpp:293
-#: src/playsingle_controller.cpp:332
+#: src/play_controller.cpp:358 src/playsingle_controller.cpp:297
+#: src/playsingle_controller.cpp:336
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka, ki ste jo poskušali naložiti, je pokvarjena"
 
@@ -9381,60 +9381,60 @@ msgstr "Ali želite shraniti igro?"
 msgid "Unknown scenario: '"
 msgstr "Neznan scenarij: '"
 
-#: src/playsingle_controller.cpp:177
+#: src/playsingle_controller.cpp:181
 msgid "Game Over"
 msgstr "Konec igre"
 
-#: src/playsingle_controller.cpp:178
+#: src/playsingle_controller.cpp:182
 msgid "The game is over."
 msgstr "Igra je končana"
 
-#: src/playsingle_controller.cpp:261
+#: src/playsingle_controller.cpp:265
 msgid "Remaining gold: "
 msgstr "Preostalo zlato: "
 
-#: src/playsingle_controller.cpp:264
+#: src/playsingle_controller.cpp:268
 msgid "Early finish bonus: "
 msgstr "Bonus za zgodnji konec: "
 
-#: src/playsingle_controller.cpp:266
+#: src/playsingle_controller.cpp:270
 msgid "per turn"
 msgstr "na potezo"
 
-#: src/playsingle_controller.cpp:267
+#: src/playsingle_controller.cpp:271
 msgid "Turns finished early: "
 msgstr "Preostalih potez: "
 
-#: src/playsingle_controller.cpp:269
+#: src/playsingle_controller.cpp:273
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playsingle_controller.cpp:271
+#: src/playsingle_controller.cpp:275
 msgid "Gold: "
 msgstr "Zlato: "
 
-#: src/playsingle_controller.cpp:276
+#: src/playsingle_controller.cpp:280
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% zlata se bo ohranilo za naslednji scenarij"
 
-#: src/playsingle_controller.cpp:277
+#: src/playsingle_controller.cpp:281
 msgid "Retained Gold: "
 msgstr "Ohranjeno zlato: "
 
-#: src/playsingle_controller.cpp:282
+#: src/playsingle_controller.cpp:286
 msgid "Victory"
 msgstr "Zmaga"
 
-#: src/playsingle_controller.cpp:283
+#: src/playsingle_controller.cpp:287
 msgid "You have emerged victorious!"
 msgstr "Zmagali ste!"
 
-#: src/playsingle_controller.cpp:287
+#: src/playsingle_controller.cpp:291
 msgid "Scenario Report"
 msgstr "Scenarijsko poročilo"
 
-#: src/playsingle_controller.cpp:304
+#: src/playsingle_controller.cpp:308
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -9443,27 +9443,27 @@ msgstr ""
 "Zgodila se je mrežna prkinitev in igra se ne more nadaljevati. Ali želite "
 "shraniti igro?"
 
-#: src/playsingle_controller.cpp:398
+#: src/playsingle_controller.cpp:402
 msgid "It is now your turn"
 msgstr "Vaša poteza se je začela"
 
-#: src/playturn.cpp:176
+#: src/playturn.cpp:174
 msgid "Replace with AI"
 msgstr "Zamenjaj z UI"
 
-#: src/playturn.cpp:177
+#: src/playturn.cpp:175
 msgid "Replace with local player"
 msgstr "Zamenjaj z lokalnim igralcem"
 
-#: src/playturn.cpp:178
+#: src/playturn.cpp:176
 msgid "Abort game"
 msgstr "Prekini igro"
 
-#: src/playturn.cpp:181
+#: src/playturn.cpp:179
 msgid "Replace with "
 msgstr "Zamenjaj z "
 
-#: src/playturn.cpp:185
+#: src/playturn.cpp:183
 msgid "has left the game. What do you want to do?"
 msgstr "je zapustil igro. Kaj boste storili?"
 
@@ -9701,15 +9701,15 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Knjiga modrosti Wesnotha"
 
-#: src/unit.cpp:2168 src/unit.cpp:2293
+#: src/unit.cpp:2194 src/unit.cpp:2319
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2250
+#: src/unit.cpp:2276
 msgid "XP to advance"
 msgstr "XP do napredovanja"
 
-#: src/unit.cpp:2284
+#: src/unit.cpp:2310
 msgid ": "
 msgstr ": "
 
@@ -9717,15 +9717,15 @@ msgstr ": "
 msgid "strikes"
 msgstr "udarci"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "chaotic"
 msgstr "kaotičen"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "lawful"
 msgstr "zakonit"
 
-#: src/unit_types.cpp:1154
+#: src/unit_types.cpp:1169
 msgid "neutral"
 msgstr "nevtralen"
 
