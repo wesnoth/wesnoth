@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-17 23:00+0200\n"
-"PO-Revision-Date: 2006-04-16 14:34+0100\n"
+"PO-Revision-Date: 2006-04-18 12:35+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <grzywacz@sul.uni.lodz.pol>\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:39
 msgid "Wesnoth Tutorial"
-msgstr "2Samouczek"
+msgstr "Samouczek Wesnoth"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:70
 #: data/tutorial/scenarios/1_Tutorial.cfg:148
@@ -78,6 +78,7 @@ msgstr ""
 "*Witaj w Wesnoth!\n"
 "W tym samouczku występujesz jako $student i znajdujesz się w fortecy.  Twój "
 "mentor, Delfador, stoi na wschód od rzeki.\n"
+"\n"
 "*Kliknij lewym przyciskiem lub naciśnij dowolny klawisz, by kontynuować..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:188
@@ -92,6 +93,7 @@ msgid ""
 msgstr ""
 "*Zaznaczona przez ciebie jednostka to $student.\n"
 "Miejsca, w które może się udać są podświetlone.\n"
+"\n"
 "*Kliknij lewym przyciskiem, by kontynuować..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:208
@@ -99,13 +101,13 @@ msgid "HERE"
 msgstr "TUTAJ"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:214
-#, fuzzy
 msgid ""
 "Move $student next to Delfador, by clicking on the place marked 'HERE'.\n"
 "*Left click or any key to continue..."
 msgstr ""
 "Niech $student stanie obok Delfadora. Możesz tego dokonać klikając na polu "
 "oznaczonym 'TUTAJ'\n"
+"\n"
 "*Kliknij lewym przyciskiem, by kontynuować..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:218
@@ -122,6 +124,7 @@ msgstr ""
 "*Ups!\n"
 "Wykonałeś ruch w złe miejsce! Po zamknięciu tej wiadomości możesz przycisnąć "
 "'u', by cofnąć ruch i spróbować ponownie.\n"
+"\n"
 "*Kliknij lewym przyciskiem, by kontynuować..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:279
@@ -166,6 +169,7 @@ msgstr ""
 "By zaatakować atrapę, wybierz najpierw atakującego (będzie to $student), a "
 "następnie wskaż cel (atrapę). Zobaczysz opis szczegółów ataku. Gdy klikniesz "
 "OK, $student zaatakuje.\n"
+"\n"
 "*Kliknij lewym przyciskiem, by kontynuować..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:359
@@ -252,6 +256,7 @@ msgstr ""
 "flaga i za chwilę obok ikony domku na górze ekranu pojawi się \"1\". Wioski "
 "zapewniają złoto: za każdą turę otrzymujesz dwie sztuki, plus jedną za każdą "
 "wioskę, którą posiadasz.\n"
+"\n"
 "*Kliknij lewym przyciskiem, by kontynuować..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:475
@@ -301,6 +306,7 @@ msgstr ""
 "Gdy znajdujesz się w fortecy, możesz rekrutować jednostki na otaczających ją "
 "polach zamku. Kliknij prawym przyciskiem i wybierz \"Rekrutuj\". Tym razem "
 "będziemy mieli do wyboru tylko jeden rodzaj jednostki: wybierz go.\n"
+"\n"
 "*Kliknij lewym przyciskiem, by kontynuować..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:547
@@ -321,6 +327,7 @@ msgstr ""
 "Uwaga: po zamknięciu tej wiadomości będziesz mógł obejrzeć opis jednostki "
 "wyświetlający się po prawej stronie ekranu, gdy najedziesz na nią "
 "wskaźnikiem myszy.\n"
+"\n"
 "*Kliknij lewym przyciskiem, by kontynuować."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:575
@@ -440,7 +447,6 @@ msgid "Maybe you should recruit another elf?"
 msgstr "Może powinieneś rekrutować kolejnego elfa?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:765
-#, fuzzy
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
@@ -975,13 +981,12 @@ msgstr ""
 "Zaatakuj orka łucznikiem (umieść mysz nad jednostką, by zobaczyć jej opis)."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:882
-#, fuzzy
 msgid ""
 "Excellent.  Elves are well protected in the forest: there's only a 30% "
 "chance of hitting an Elven Archer when it's in forest."
 msgstr ""
-"Wspaniale. Las stanowi dla elfów znakomitą ochronę: gdy elficki łucznik "
-"znajduje się w lesie, szansa trafienia go wynosi tylko 30%."
+"Wspaniale. Las stanowi dla elfów znakomitą ochronę: gdy elficki łucznik jest "
+"w lesie, szansa trafienia go wynosi tylko 30%."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:891
 msgid ""
@@ -1002,14 +1007,12 @@ msgid "Fighter to Here"
 msgstr "Przesuń tu wojownika"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:910
-#, fuzzy
 msgid ""
 "Your other units cannot reach this turn.  Send a Fighter to that village to "
 "the far east: that will take two turns."
 msgstr ""
-"Pozostałe twoje jednostki mają za krótki zasięg, by dotrzeć do celu w tej "
-"turze. Wyślij wojownika do wioski daleko na wschodzie: dotarcie tam zajmie "
-"mu dwie tury."
+"Pozostałe jednostki mają za mały zasięg, by dotrzeć do celu w tej turze. "
+"Wyślij wojownika do wioski daleko na wschodzie: zajmie mu to dwie tury."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:911
 msgid ""
@@ -1039,9 +1042,8 @@ msgstr ""
 "fortecy."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:934
-#, fuzzy
 msgid "Recruit another Archer and a Fighter"
-msgstr "Rekrutuj kolejnego łucznika lub wojownika."
+msgstr "Rekrutuj kolejnego łucznika i wojownika"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:949
 msgid "I have no more money to recruit!"
@@ -1205,9 +1207,8 @@ msgstr ""
 "turę."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1133
-#, fuzzy
 msgid "You only need to defeat the leader to win: see Main Menu->Objectives."
-msgstr "Aby wygrać, musisz pokonać tylko przywódcę: zobacz Menu -> Cele misji"
+msgstr "Aby wygrać, musisz pokonać tylko przywódcę: zobacz Menu -> Cele misji."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1138
 msgid ""
