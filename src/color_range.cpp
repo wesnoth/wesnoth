@@ -22,25 +22,22 @@
 std::vector<Uint32> string2rgb(std::string s){
   std::vector<Uint32> out;
   std::vector<std::string> rgb_vec = utils::split(s);
+  
+  while(rgb_vec.size()%3) {
+	rgb_vec.push_back("0");
+  }
+  
   std::vector<std::string>::iterator c=rgb_vec.begin();
   int r,g,b;
 
   while(c!=rgb_vec.end()){
     r = (lexical_cast_default<int>(*c));
     c++;
-    if(c != rgb_vec.end()){
-      g = (lexical_cast_default<int>(*c));
-    }else{
-      g=0;
-    }
+    g = (lexical_cast_default<int>(*c));
     c++;
-    if(c != rgb_vec.end()){
-      b=(lexical_cast_default<int>(*c));
-    }else{
-      b=0;
-    }
+    b=(lexical_cast_default<int>(*c));
     c++;
-     out.push_back((Uint32) ((r<<16 & 0x00FF0000) + (g<<8 & 0x0000FF00) + (b & 0x000000FF)));
+    out.push_back((Uint32) ((r<<16 & 0x00FF0000) + (g<<8 & 0x0000FF00) + (b & 0x000000FF)));
    }
   return(out);
 }
