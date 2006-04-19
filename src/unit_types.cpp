@@ -1211,7 +1211,7 @@ bool unit_type::has_ability(const std::string& ability) const
 {
 	const config* abil = cfg_.child("abilities");
 	if(abil) {
-		return abil->get_children(ability).size();
+		return (abil->get_children(ability).size() > 0);
 	}
 	return false;
 }
