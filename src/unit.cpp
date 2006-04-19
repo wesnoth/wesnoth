@@ -22,6 +22,7 @@
 #include "random.hpp"
 #include "unit.hpp"
 #include "unit_types.hpp"
+#include "unit_abilities.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
@@ -1899,38 +1900,6 @@ bool unit::resistance_filter_matches(const config& cfg,const gamemap::location& 
 			}
 		}
 	}
-	int res = 100;
-	const config* const resistance = cfg_.child("resistance");
-	if(resistance != NULL) {
-		const std::string& val = (*resistance)[damage_name];
-		if(val != "") {
-			res = lexical_cast_default<int>(val);
-		}
-	}
-	res = 100 - res;
-	const config* const apply_filter = cfg.child("filter_apply");
-	if(apply_filter) {
-		if((*apply_filter)["type"] == "value") {
-			if((*apply_filter)["equals"] != "" && lexical_cast_default<int>((*apply_filter)["equals"]) != res) {
-				return false;
-			}
-			if((*apply_filter)["not_equals"] != "" && lexical_cast_default<int>((*apply_filter)["not_equals"]) == res) {
-				return false;
-			}
-			if((*apply_filter)["less_than"] != "" && lexical_cast_default<int>((*apply_filter)["less_than"]) >= res) {
-				return false;
-			}
-			if((*apply_filter)["greater_than"] != "" && lexical_cast_default<int>((*apply_filter)["greater_than"]) <= res) {
-				return false;
-			}
-			if((*apply_filter)["greater_than_equal_to"] != "" && lexical_cast_default<int>((*apply_filter)["greater_than_equal_to"]) < res) {
-				return false;
-			}
-			if((*apply_filter)["less_than_equal_to"] != "" && lexical_cast_default<int>((*apply_filter)["less_than_equal_to"]) > res) {
-				return false;
-			}
-		}
-	}
 	return true;
 }
 
@@ -1944,79 +1913,23 @@ int unit::resistance_against(const attack_type& damage_type,bool attacker,const 
 	if(resistance != NULL) {
 		const std::string& val = (*resistance)[damage_name];
 		if(val != "") {
-			res = lexical_cast_default<int>(val);
+			res = 100 - lexical_cast_default<int>(val);
 		}
 	}
-	res = 100 - res;
-	
-	int set_to = 0;
-	bool set_to_set = false;
-	int add_cum = 0;
-	int add_ncum = 0;
-	int mul_cum = 1;
-	int mul_ncum = 1;
-	int max_value = -100000;
-	int min_value = 100000;
-	bool max_set = false;
-	bool min_set = false;
 	
 	unit_ability_list resistance_abilities = get_abilities("resistance",loc);
-	for(std::vector<std::pair<config*,gamemap::location> >::iterator i = resistance_abilities.cfgs.begin(); i != resistance_abilities.cfgs.end(); ++i) {
-		if(resistance_filter_matches(*i->first,loc,attacker,damage_type)) {
-			if((*i->first)["cumulative"] == "yes") {
-				if((*i->first)["value"]!="") {
-					if(set_to_set) {
-						set_to = maximum<int>(set_to,lexical_cast_default<int>((*i->first)["value"]));
-					} else {
-						set_to = lexical_cast_default<int>((*i->first)["value"]);
-						set_to_set = true;
-					}
-				}
-				add_cum += lexical_cast_default<int>((*i->first)["add"]);
-				mul_cum *= lexical_cast_default<int>((*i->first)["multiply"],1);
-			} else {
-				if((*i->first)["value"]!="") {
-					if(set_to_set) {
-						set_to = maximum<int>(set_to,lexical_cast_default<int>((*i->first)["value"]));
-					} else {
-						set_to = lexical_cast_default<int>((*i->first)["value"]);
-						set_to_set = true;
-					}
-				}
-				add_ncum = maximum<int>(add_ncum,lexical_cast_default<int>((*i->first)["add"]));
-				mul_ncum = maximum<int>(mul_ncum,lexical_cast_default<int>((*i->first)["multiply"],1));
-			}
-			if((*i->first)["min_value"]!="") {
-				if(min_set) {
-					min_value = minimum<int>(min_value,lexical_cast_default<int>((*i->first)["min_value"]));
-				} else {
-					min_value = lexical_cast_default<int>((*i->first)["min_value"]);
-					min_set = true;
-				}
-			}
-			if((*i->first)["max_value"]!="") {
-				if(max_set) {
-					max_value = maximum<int>(max_value,lexical_cast_default<int>((*i->first)["max_value"]));
-				} else {
-					max_value = lexical_cast_default<int>((*i->first)["max_value"]);
-					max_set = true;
-				}
-			}
+	for(std::vector<std::pair<config*,gamemap::location> >::iterator i = resistance_abilities.cfgs.begin(); i != resistance_abilities.cfgs.end();) {
+		if(!resistance_filter_matches(*i->first,loc,attacker,damage_type)) {
+			i = resistance_abilities.cfgs.erase(i);
+		} else {
+			++i;
 		}
 	}
-	if(set_to_set) {
-		res = set_to;
+	if(!resistance_abilities.empty()) {
+		unit_abilities::effect resist_effect(resistance_abilities,res,false);
+		
+		res = minimum<int>(resist_effect.get_composite_value(),resistance_abilities.highest("max_value").first);
 	}
-	res *= maximum<int>(mul_cum,mul_ncum);
-	res += maximum<int>(add_cum,add_ncum);
-	
-	if(min_set) {
-		res = maximum<int>(min_value,res);
-	}
-	if(max_set) {
-		res = minimum<int>(max_value,res);
-	}
-
 	return 100 - res;
 }
 #if 0

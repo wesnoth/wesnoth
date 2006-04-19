@@ -848,6 +848,27 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 		if(cfg["backstab"]=="yes" && !backstab) {
 			continue;
 		}
+		const config* const apply_filter = cfg.child("filter_base_value");
+		if(apply_filter) {
+			if((*apply_filter)["equals"] != "" && lexical_cast_default<int>((*apply_filter)["equals"]) != def) {
+				continue;
+			}
+			if((*apply_filter)["not_equals"] != "" && lexical_cast_default<int>((*apply_filter)["not_equals"]) == def) {
+				continue;
+			}
+			if((*apply_filter)["less_than"] != "" && lexical_cast_default<int>((*apply_filter)["less_than"]) < def) {
+				continue;
+			}
+			if((*apply_filter)["greater_than"] != "" && lexical_cast_default<int>((*apply_filter)["greater_than"]) > def) {
+				continue;
+			}
+			if((*apply_filter)["greater_than_equal_to"] != "" && lexical_cast_default<int>((*apply_filter)["greater_than_equal_to"]) >= def) {
+				continue;
+			}
+			if((*apply_filter)["less_than_equal_to"] != "" && lexical_cast_default<int>((*apply_filter)["less_than_equal_to"]) <= def) {
+				continue;
+			}
+		}
 		int value = lexical_cast_default<int>(cfg["value"]);
 		int add = lexical_cast_default<int>(cfg["add"]);
 		int multiply = static_cast<int>(lexical_cast_default<float>(cfg["multiply"])*100);
@@ -858,6 +879,9 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 			set_effect.set(SET,value,i->first,i->second);
 		} else if(cfg["value"] != "") {
 			value_is_set = true;
+			if(cfg["cumulative"] == "yes") {
+				value_set = maximum<int>(value_set,def);
+			}
 			if(value > value_set) {
 				value_set = value;
 				set_effect.set(SET,value,i->first,i->second);
