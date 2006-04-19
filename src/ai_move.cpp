@@ -392,6 +392,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	paths::route best_route;
 	unit_map::iterator best = units_.end();
 	double best_rating = 0.1;
+
 	std::vector<target>::iterator best_target = targets.end();
 
 	unit_map::iterator u;
@@ -425,6 +426,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		user_interact();
 
 		wassert(map_.on_board(tg->loc));
+
 		const double locStopValue = minimum(tg->value / best_rating, 500.0);
 		paths::route cur_route = a_star_search(u->first, tg->loc, locStopValue, &cost_calc, map_.x(), map_.y());
 
@@ -479,6 +481,10 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			best_target = tg;
 			best = u;
 			best_route = cur_route;
+			if(best_rating == 0)
+			{
+				best_rating = 0.000000001; //prevent divivion by zero
+			}
 		}
 	}
 
