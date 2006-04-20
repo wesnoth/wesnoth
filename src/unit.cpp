@@ -255,9 +255,6 @@ void unit::advance_to(const unit_type* t)
 	emit_zoc_ = t->level();
 	attacks_ = t->attacks();
 	unit_value_ = t->cost();
-	if(cfg_["upkeep"] == "full") {
-		upkeep_ = t->level();
-	}
 	flying_ = t->movement_type().is_flying();
 	
 //	movement_costs_ = t->movement_type().movement_costs();
@@ -948,13 +945,6 @@ void unit::read(const config& cfg)
 	} else {
 		id_ = cfg["id"];
 	}
-	if(cfg["upkeep"] == "full") {
-		upkeep_ = level_;
-	} else if (cfg["upkeep"] == "loyal") {
-		upkeep_ = 0;
-	} else {
-		upkeep_ = 0;
-	}
 	if(cfg["max_hitpoints"] != "") {
 		max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"]);
 	}
@@ -1108,14 +1098,6 @@ void unit::write(config& cfg) const
 
 	cfg["facing"] = gamemap::location::write_direction(facing_);
 	
-	if(upkeep_ != level()) {
-		std::stringstream upk;
-		upk << upkeep_;
-		cfg["upkeep"] = upk.str();
-	} else {
-		cfg["upkeep"] = "full";
-	}
-
 	char buf[50];
 	snprintf(buf,sizeof(buf),"%d",goto_.x+1);
 	cfg["goto_x"] = buf;
@@ -1735,7 +1717,10 @@ void unit::set_goto(const gamemap::location& new_goto)
 
 int unit::upkeep() const
 {
-	return upkeep_;
+	if(cfg_["upkeep"] == "full") {
+		return level();
+	}
+	return lexical_cast_default<int>(cfg_["upkeep"]);
 }
 
 bool unit::is_flying() const
