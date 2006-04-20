@@ -2023,15 +2023,19 @@ config::child_list unit::get_modification_advances() const
 		  std::vector<std::string> temp = utils::split((**i)["require_amla"]);
 		  if(temp.size()){
 			std::sort(temp.begin(),temp.end());
-		    std::vector<std::string> uniq;
+			std::vector<std::string> uniq;
 			std::unique_copy(temp.begin(),temp.end(),std::back_inserter(uniq));
-		    for(std::vector<std::string>::const_iterator ii = uniq.begin(); ii != uniq.end(); ii++){
-			  int required_num = std::count(temp.begin(),temp.end(),*ii);
-		      int mod_num = modification_count("advance",*ii);
-		      if(required_num<=mod_num){
-			res.push_back(*i);		  
-		      }
-		    }
+			bool requirements_done=true;
+			for(std::vector<std::string>::const_iterator ii = uniq.begin(); ii != uniq.end(); ii++){
+				int required_num = std::count(temp.begin(),temp.end(),*ii);
+		      	int mod_num = modification_count("advance",*ii);
+		      	if(required_num>mod_num){
+					requirements_done=false;		  
+		      	}
+		    	}
+		    	if(requirements_done){
+				res.push_back(*i);
+			}
 		  }else{
 		    res.push_back(*i);
 		  }
