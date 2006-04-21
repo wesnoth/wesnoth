@@ -920,6 +920,7 @@ void unit::read(const config& cfg)
 	}
 	
 	id_ = "";
+	traits_description_ = cfg["traits_description"];
 	if(cfg["type"] != "") {
 		wassert(gamedata_ != NULL);
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
@@ -964,6 +965,9 @@ void unit::read(const config& cfg)
 	}
 	if(cfg["ai_special"] == "guardian") {
 		set_state("guardian","yes");
+	}
+	if(cfg["random_traits"] == "yes") {
+		generate_traits();
 	}
 	if(cfg_["type"] == "") {
 		backup_state();
@@ -1032,10 +1036,6 @@ void unit::read(const config& cfg)
 	if(movement_animations_.empty()) {
 		movement_animations_.push_back(movement_animation(absolute_image()));
 		// always have a movement animation
-	}
-	traits_description_ = cfg["traits_description"];
-	if(cfg["random_traits"] == "yes") {
-		generate_traits();
 	}
 }
 void unit::write(config& cfg) const
