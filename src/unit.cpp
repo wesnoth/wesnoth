@@ -236,6 +236,8 @@ void unit::advance_to(const unit_type* t)
 		cfg_ = cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
 	}
 	cfg_ = cfg_.merge_with(t->cfg_);
+	cfg_.clear_children("male");
+	cfg_.clear_children("female");
 	
 	advances_to_ = t->advances_to();
 	
@@ -243,22 +245,18 @@ void unit::advance_to(const unit_type* t)
 	language_name_ = t->language_name();
 	cfg_["unit_description"] = t->unit_description();
 	undead_variation_ = t->undead_variation();
-//	experience_ = t->experience_needed();
 	max_experience_ = t->experience_needed();
 	level_ = t->level();
 	alignment_ = t->alignment();
 	alpha_ = t->alpha();
 	hit_points_ = t->hitpoints();
 	max_hit_points_ = t->hitpoints();
-//	movement_ = t->movement();
 	max_movement_ = t->movement();
 	emit_zoc_ = t->level();
 	attacks_ = t->attacks();
 	unit_value_ = t->cost();
 	flying_ = t->movement_type().is_flying();
 	
-//	movement_costs_ = t->movement_type().movement_costs();
-//	defense_mods_ = t->movement_type().defense_mods();
 	max_attacks_ = lexical_cast_default<int>(t->cfg_["attacks"],1);
 	defensive_animations_ = t->defensive_animations_;
 	teleport_animations_ = t->teleport_animations_;
@@ -841,10 +839,10 @@ void unit::read(const config& cfg)
 	/* */
 	
 	const std::string& gender = cfg["gender"];
-	if(gender == "male") {
-		gender_ = unit_race::MALE;
-	} else if(gender == "female") {
+	if(gender == "female") {
 		gender_ = unit_race::FEMALE;
+	} else {
+		gender_ = unit_race::MALE;
 	}
 
 	variation_ = cfg["variation"];
@@ -926,7 +924,7 @@ void unit::read(const config& cfg)
 		wassert(gamedata_ != NULL);
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		if(i != gamedata_->unit_types.end()) {
-			advance_to(&i->second);
+			advance_to(&i->second.get_gender_unit_type(gender_));
 		} else {
 			LOG_STREAM(err, engine) << "unit of type " << cfg["type"] << " not found!\n";
 		}
@@ -1145,7 +1143,6 @@ void unit::write(config& cfg) const
 	}
 	cfg["flag_rgb"] = flg_rgb.str();
 	cfg["unrenamable"] = unrenamable_ ? "yes" : "no";
-	cfg["gender"] = gender_ == unit_race::FEMALE ? "female" : "male";
 	cfg["alpha"] = lexical_cast_default<std::string>(alpha_);
 	
 	cfg["recuits"] = utils::join(recruits_);
