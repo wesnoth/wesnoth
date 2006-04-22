@@ -572,6 +572,24 @@ void config::reset_translation() const
 	}
 }
 
+void config::debug() const{
+	static int i = 0;
+	i++;
+	std::cerr << "BEGIN config debug: Level: " << i << "\n";
+	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
+		std::cerr << val->first << ", " << val->second << "\n";
+	}
+
+	for(child_map::const_iterator list = children.begin(); list != children.end(); ++list) {
+		for(child_list::const_iterator child = list->second.begin();
+				child != list->second.end(); ++child) {
+			(*child)->debug();
+		}
+	}
+	std::cerr << "END config debug: Level: " << i << "\n";
+	i--;
+}
+
 bool operator==(const config& a, const config& b)
 {
 	if (a.values != b.values)

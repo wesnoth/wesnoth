@@ -79,6 +79,8 @@ public:
 	void clear();
 	bool empty() const;
 
+	void debug() const;
+
 	struct error {
 		error(const std::string& msg) : message(msg) {}
 		std::string message;

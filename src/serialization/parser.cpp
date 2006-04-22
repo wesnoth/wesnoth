@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
+#include "serialization/parser.hpp"
 
 #include "config.hpp"
 #include "filesystem.hpp"
@@ -25,7 +25,6 @@
 #include "wassert.hpp"
 #include "wesconfig.h"
 #include "serialization/binary_wml.hpp"
-#include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/tokenizer.hpp"
