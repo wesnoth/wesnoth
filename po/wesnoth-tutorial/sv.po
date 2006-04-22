@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-17 23:00+0200\n"
-"PO-Revision-Date: 2006-03-21 04:25+0100\n"
+"PO-Revision-Date: 2006-04-22 15:29+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.1\n"
+"X-Generator: KBabel 1.11.2\n"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:39
 msgid "Wesnoth Tutorial"
@@ -73,12 +73,12 @@ msgid ""
 "mentor Delfador is on the East side of the river.\n"
 "*Left click or any key to continue..."
 msgstr ""
-"* Välkommen till Wesnoth!\n"
+"*Välkommen till Wesnoth!\n"
 "\n"
 "I den här övningen spelar du som $student, som står i kärntornet. Din mentor "
 "Delfador är på östra sidan om floden.\n"
 "\n"
-"* Tryck en tangent för att fortsätta..."
+"*Tryck en tangent för att fortsätta..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:188
 msgid "Left click on $student"
@@ -90,25 +90,24 @@ msgid ""
 "The places $he could move to are highlighted.\n"
 "*Left click or any key to continue..."
 msgstr ""
-"* Du har valt $student.\n"
+"*Du har valt $student.\n"
 "\n"
 "De rutor som $he kan nå är upplysta.\n"
 "\n"
-"* Tryck en tangent för att fortsätta..."
+"*Tryck en tangent för att fortsätta..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:208
 msgid "HERE"
 msgstr "HÄR"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:214
-#, fuzzy
 msgid ""
 "Move $student next to Delfador, by clicking on the place marked 'HERE'.\n"
 "*Left click or any key to continue..."
 msgstr ""
 "För $student till Delfador genom att klicka på rutan markerad med 'HÄR'\n"
 "\n"
-"* Tryck en tangent för att fortsätta..."
+"*Tryck en tangent för att fortsätta..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:218
 msgid "Left click on tile labelled HERE"
@@ -121,12 +120,12 @@ msgid ""
 "Undo, then try again.\n"
 "*Left click or any key to continue..."
 msgstr ""
-"* Hoppsan!\n"
+"*Hoppsan!\n"
 "\n"
 "Du flyttade till fel ruta! Efter det här meddelandet kan du trycka 'u' för "
 "att ångra förflyttningen, och försöka igen.\n"
 "\n"
-"* Tryck en tangent för att fortsätta..."
+"*Tryck en tangent för att fortsätta..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:279
 msgid "Good morning Delfador!  Is it time to attack things?"
@@ -171,7 +170,7 @@ msgstr ""
 "visas en ruta med detaljer om attacken. När du trycker OK så anfaller "
 "$student.\n"
 "\n"
-"* Tryck en tangent för att fortsätta..."
+"*Tryck en tangent för att fortsätta..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:359
 msgid "Click on the quintain to attack it"
@@ -257,7 +256,7 @@ msgstr ""
 "drag får du två guldstycken plus ett guldstycke för varje by du "
 "kontrollerar.\n"
 "\n"
-"* Tryck en tangent för att fortsätta..."
+"*Tryck en tangent för att fortsätta..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:475
 #: data/tutorial/scenarios/1_Tutorial.cfg:572
@@ -307,7 +306,7 @@ msgstr ""
 "i borgen du står i. Detta gör du genom att högerklicka och välja "
 "'Rekrytera'. Den här gången har du bara ett truppslag att välja på.\n"
 "\n"
-"* Tryck en tangent för att fortsätta..."
+"*Tryck en tangent för att fortsätta..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:547
 msgid "Right click on one castle tile and select Recruit"
@@ -329,7 +328,7 @@ msgstr ""
 "muspekaren över en av trupperna för att få en beskrivning av den till höger "
 "i bild.\n"
 "\n"
-"* Tryck en tangent för att fortsätta..."
+"*Tryck en tangent för att fortsätta..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:575
 #: data/tutorial/scenarios/1_Tutorial.cfg:605
@@ -450,13 +449,12 @@ msgid "Maybe you should recruit another elf?"
 msgstr "Du skall kanske rekrytera en alv till?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:765
-#, fuzzy
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
 msgstr ""
-"Observera: Du kan högerklicka på en trupp för att se en detaljerad "
-"truppbeskrivning."
+"Observera:\n"
+"Du kan högerklicka på en trupp för att se en detaljerad truppbeskrivning."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:780
 msgid ""
@@ -545,12 +543,14 @@ msgid ""
 "*Remember:\n"
 "You can press 'u' to undo most things: useful to correct mistakes."
 msgstr ""
+"*Observera:\n"
+"Genom att trycka 'u' kan du ångra det mesta. Bra för att korrigera misstag."
 
 #: data/tutorial/scenarios/2_Speaking.cfg:38
 #: data/tutorial/scenarios/2_Speaking.cfg:48
 #: data/tutorial/scenarios/2_Speaking.cfg:61
 msgid "*Galdrad"
-msgstr ""
+msgstr "*Galdrad"
 
 #: data/tutorial/scenarios/2_Speaking.cfg:73
 msgid ""
@@ -558,26 +558,33 @@ msgid ""
 "unit does more damage, and intelligent means it requires less experience to "
 "advance a level."
 msgstr ""
+", din nya rekryt, har två karaktärsdrag: stark och intelligent. Om en trupp "
+"är stark vållar den mer skada, och om en trupp är intelligent så beböer den "
+"mindre erfarenhet för att befordras."
 
 #: data/tutorial/scenarios/2_Speaking.cfg:86
 msgid ""
 " has two traits: quick and resilient.  Quick means a unit can move one tile "
 "further each turn, and resilient means it has more hitpoints."
 msgstr ""
+" har två karaktärsdrag: snabb och tålig. En snabb trupp kan förflytta sig en "
+"extra ruta per drag, och en tålig trupp har fler hälsopoäng."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:25
 msgid "Patch of forest"
-msgstr ""
+msgstr "Skogsdunge"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:26
 msgid ""
 "Now put an unwounded unit, preferably a fighter, in that patch of forest on "
 "the south-east of the island: a nice, defensible spot."
 msgstr ""
+"För nu en oskadd trupp, helst en krigare, till skogsdungen på sydöstra delen "
+"av ön. Detta är ett lättförsvarat ställe."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:27
 msgid "Can one unit survive against all those enemies?"
-msgstr ""
+msgstr "Kan en trupp överleva mot alla dessa fiender?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:28
 msgid ""
@@ -585,31 +592,34 @@ msgid ""
 "unit, it will heal it by 4 hitpoints per turn.  Just be careful not to "
 "expose the Shaman to attack: is fairly weak itself."
 msgstr ""
+"Ja, med lite hjälp. Om du ställer din schaman bredvid den försvarande "
+"truppen så helas den 4 hälsopoäng per drag. Se bara till att inte utsätta "
+"schamanen för fara; den tål inte så mycket."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:36
 msgid ""
 "Advance other units onto the island or to capture villages, then End Turn"
-msgstr ""
+msgstr "För andra trupper till ön eller till andra byar. Avsluta sedan draget."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:183
 msgid "I hope I get to retreat after this!"
-msgstr ""
+msgstr "Jag hoppas att jag får slå till reträtt efter det här!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:194
 msgid "One lucky attack by an Orcish Grunt and I'm done for!"
-msgstr ""
+msgstr "Ett tursamt utfall av en orchsoldat och det är slut med mig!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:205
 msgid "Ouch!  I could use some healing in a village."
-msgstr ""
+msgstr "Aj! Jag skulle behöva lite läkekonst i en by nu."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:231
 msgid "I have $gold gold: enough to recruit!"
-msgstr ""
+msgstr "Jag har $gold guldstycken. Räcker till att rekrytera fler trupper!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:232
 msgid "Yes, keep recruiting more units: I think you might need them!"
-msgstr ""
+msgstr "Ja, fortsätt rekrytera. Jag tror du kommer att behöva dem!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:243
 msgid "Wesnoth Tutorial Part II"
@@ -617,7 +627,7 @@ msgstr "Wesnoths Träningsspel, del II"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:268
 msgid "Thrag"
-msgstr ""
+msgstr "Thrag"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:285
 msgid "Galdrad"
@@ -626,7 +636,7 @@ msgstr "Galdrad"
 #: data/tutorial/scenarios/2_Tutorial.cfg:296
 #: data/tutorial/scenarios/2_Tutorial.cfg:330
 msgid "Defeat the Orc Leader"
-msgstr ""
+msgstr "Besegra orchledaren"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:300
 msgid "Death of Konrad"
@@ -657,7 +667,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:375
 msgid "What should I do?"
-msgstr ""
+msgstr "Vad skall jag göra?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:380
 msgid ""
@@ -677,14 +687,14 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:385
 #: data/tutorial/scenarios/2_Tutorial.cfg:386
 msgid "SHALLOW"
-msgstr ""
+msgstr "GRUNT"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:387
 #: data/tutorial/scenarios/2_Tutorial.cfg:388
 #: data/tutorial/scenarios/2_Tutorial.cfg:389
 #: data/tutorial/scenarios/2_Tutorial.cfg:390
 msgid "DEEP"
-msgstr ""
+msgstr "DJUPT"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:392
 msgid ""
@@ -725,7 +735,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:482
 msgid "RECALL $recall_name1"
-msgstr ""
+msgstr "ÅTERKALLA $recall_name1"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:483
 msgid "Right click on the tile south of you and recall $recall_name1"
@@ -756,7 +766,7 @@ msgstr "Högerklicka på rutan söder om dig och rekrytera en alvkrigare"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:533
 msgid "No!  I said recruit an Elvish SHAMAN|!  Now try again..."
-msgstr ""
+msgstr "Nej! Jag sade att du skulle rekrytera en SCHAMAN! Försök igen..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:539
 msgid ""
@@ -783,71 +793,75 @@ msgstr "För $student till en ny för att överta kontrollen över den"
 #: data/tutorial/scenarios/2_Tutorial.cfg:562
 #: data/tutorial/scenarios/2_Tutorial.cfg:607
 msgid "No!  I said recruit an Elvish ARCHER|!  Now try again..."
-msgstr ""
+msgstr "Nej! Jag sade att du skulle rekrytera en BÅGSKYTT! Försök igen..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:571
 #: data/tutorial/scenarios/2_Tutorial.cfg:583
 msgid "Eowynial"
-msgstr ""
+msgstr "Eowynial"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:587
 msgid "Shaman"
-msgstr ""
+msgstr "Schaman"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:588
 msgid "Recruit an Elvish Shaman to your north"
-msgstr ""
+msgstr "Rekrytera en alvschaman till rutan norr om dig"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:616
 #: data/tutorial/scenarios/2_Tutorial.cfg:627
 msgid "Elriend"
-msgstr ""
+msgstr "Elriend"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:654
 msgid "No!  I said RECALL $recall_name2|!  Now try again..."
-msgstr ""
+msgstr "Nej! Jag sade att du skulle ÅTERKALLA  $recall_name2|! Försök igen..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:659
 #: data/tutorial/scenarios/2_Tutorial.cfg:701
 msgid "Archer #1"
-msgstr ""
+msgstr "Bågskytt #1"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:660
 #: data/tutorial/scenarios/2_Tutorial.cfg:702
 msgid "Archer #2"
-msgstr ""
+msgstr "Bågskytt #2"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:661
 #: data/tutorial/scenarios/2_Tutorial.cfg:703
 msgid "Recruit two Elvish Archers in tiles to your west"
-msgstr ""
+msgstr "Rekrytera två alvbågskyttar till rutorna väster om dig"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:677
 msgid "No!  I said recruit an Elvish FIGHTER|!  Now try again..."
-msgstr ""
+msgstr "Nej! Jag sade att du skulle rekrytera en KRIGARE! Försök igen..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:687
 #: data/tutorial/scenarios/2_Tutorial.cfg:698
 msgid "Golir"
-msgstr ""
+msgstr "Golir"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:749
 msgid "No!  I said recall $recall_name1, not $recall_name2|!  Now try again..."
 msgstr ""
+"Nej! Jag sade att du skulle rekrytera $recall_name1, inte $recall_name2|! "
+"Försök igen..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:753
 msgid ""
 "No!  I said RECALL $recall_name1 from the last battle, not recruit a new "
 "$recruit.type|!  Now try again..."
 msgstr ""
+"Nej! Jag sade att du skulle ÅTERKALLA $recall_name1 från förra striden, inte "
+"rekrytera! Försök igen..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:770
 msgid "Right click on the tile south-east of you and recall $recall_name2"
-msgstr ""
+msgstr "Högerklicka på rutan sydöst om dig och återkalla $recall_name2"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:771
 msgid "RECALL $recall_name2"
-msgstr ""
+msgstr "ÅTERKALLA $recall_name2"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:775
 #: data/tutorial/scenarios/2_Tutorial.cfg:818
@@ -859,11 +873,13 @@ msgid ""
 "No!  I said RECRUIT a new Elvish Fighter, not a $recruit.type|!  Now try "
 "again..."
 msgstr ""
+"Nej! Jag sade att du skulle rekrytera en alvkrigare, inte en $recruit.type|! "
+"Försök igen..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:805
 #: data/tutorial/scenarios/2_Tutorial.cfg:816
 msgid "Elindel"
-msgstr ""
+msgstr "Elindel"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:844
 msgid ""
@@ -891,12 +907,15 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:872
 msgid "Orcs have no ranged attack, so use your archers against it."
 msgstr ""
+"Orcher har ingen distansattack, så du bör använda dina bågskyttar mot dem."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:874
 msgid ""
 "Attack the Orc with an Archer (move mouse over units to see description on "
 "right)"
 msgstr ""
+"Anfall orchen med en bågskytt (peka på trupperna för att se en beskrivning "
+"till höger)"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:882
 msgid ""
@@ -917,7 +936,7 @@ msgstr "Anfall orchen med den andra bågskytten"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:909
 msgid "Fighter to Here"
-msgstr ""
+msgstr "För krigaren hit"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:910
 msgid ""
@@ -933,7 +952,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:912
 msgid "Tell a Fighter to move to the far east village"
-msgstr ""
+msgstr "Beordra en krigare att förflytta sig till byn längst bort i öster."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:923
 msgid ""
@@ -947,15 +966,17 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:934
 msgid "Recruit another Archer and a Fighter"
-msgstr ""
+msgstr "Rekrytera en bågskytt och en krigare till"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:949
 msgid "I have no more money to recruit!"
-msgstr ""
+msgstr "Jag har inga pengar kvar att rekrytera för!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:950
 msgid "This is often a problem, which is why owning villages is important."
 msgstr ""
+"Det är ett vanligt problem, och det är därför det är så viktigt att "
+"kontrollera byar."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:951
 msgid "Move $student to another (unowned) village"
@@ -966,10 +987,11 @@ msgid ""
 "The orc is blocking the bridge!  We must occupy that island before the wolf "
 "riders reach it."
 msgstr ""
+"Orchen blockerar bron! Vi måste ockupera ön innan vargryttarna når dit."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:977
 msgid "Can't our units just move around him?"
-msgstr ""
+msgstr "Kan inte våra trupper bara gå runt honom?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:980
 #: data/tutorial/scenarios/2_Tutorial.cfg:981
@@ -978,7 +1000,7 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:984
 #: data/tutorial/scenarios/2_Tutorial.cfg:985
 msgid "ZoC"
-msgstr ""
+msgstr "Kontrollzon"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:988
 msgid ""
@@ -990,12 +1012,12 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:989
 msgid "Attack the Orc with an Archer"
-msgstr ""
+msgstr "Anfall orchen med en bågskytt"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1011
 #: data/tutorial/scenarios/2_Tutorial.cfg:1023
 msgid "Advance other units and capture villages, then End Turn"
-msgstr ""
+msgstr "Flytta fram andra trupper och inta byar. Avsluta sedan draget."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1015
 msgid ""
@@ -1012,7 +1034,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1017
 msgid "Move Shaman onto bridge to stand behind unit"
-msgstr ""
+msgstr "Ställ schamanen på bron bakom en trupp"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1063
 msgid ""
@@ -1060,7 +1082,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1121
 msgid "Defend here"
-msgstr ""
+msgstr "Försvara dig här"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1122
 msgid ""
@@ -1077,7 +1099,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1133
 msgid "You only need to defeat the leader to win: see Main Menu->Objectives."
-msgstr ""
+msgstr "Du behöver bara besegra ledaren för att vinna. Se Scenariomål i menyn."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1138
 msgid ""
@@ -1184,4 +1206,4 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1545
 msgid "You took too long, we'll never be rid of these orcs!"
-msgstr ""
+msgstr "Du tog för lång tid på dig! Nu blir vi aldrig av med orcherna!"

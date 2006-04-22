@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-17 22:59+0200\n"
-"PO-Revision-Date: 2006-03-30 00:38+0200\n"
+"PO-Revision-Date: 2006-04-22 15:48+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -12,15 +12,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.1\n"
+"X-Generator: KBabel 1.11.2\n"
 
 #: data/abilities.cfg:8
-#, fuzzy
 msgid "heals +4"
-msgstr "helar"
+msgstr "helar +4"
 
 #: data/abilities.cfg:13
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -31,19 +29,17 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Helar:\n"
+"Helar +4:\n"
 "Truppen helar närliggande allierade trupper i början av sitt drag.\n"
 "\n"
-"Alla icke förgiftade trupper som helas återfår 4 eller 8 hälsopoäng per "
-"drag, beroende på den helarens förmåga.\n"
-"En helare stoppar giftets utbredning i en förgiftad trupp under innevarande "
-"drag, men kan inte helt bota förgiftningen. En förgiftad trupp måste söka "
-"tillflykt till en by eller få hjälp av en trupp som kan bota."
+"Alla trupper som tas om hand av en sådan här helare återfår upp till 4 "
+"hälsopoäng per drag, eller påverkas inte av en förgiftning.\n"
+"En förgiftad trupp kan inte bli botad från en förgiftning av en helare, utan "
+"måste söka tillflykt till en by eller få hjälp av en trupp som kan bota."
 
 #: data/abilities.cfg:27
-#, fuzzy
 msgid "heals +8"
-msgstr "helar"
+msgstr "helar +8"
 
 #: data/abilities.cfg:32
 msgid ""
@@ -56,6 +52,14 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Helar +8:\n"
+"Truppen kombinerar örter och magi för att hela trupper snabbare än vad som "
+"normalt är möjligt på ett slagfält.\n"
+"\n"
+"Alla trupper som tas om hand av en sådan här helare återfår upp till 8 "
+"hälsopoäng per drag, eller påverkas inte av en förgiftning.\n"
+"En förgiftad trupp kan inte bli botad från en förgiftning av en helare, utan "
+"måste söka tillflykt till en by eller få hjälp av en trupp som kan bota."
 
 #: data/abilities.cfg:42
 msgid "cures"
@@ -67,6 +71,9 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Botar:\n"
+"En botare kan bota en trupps förgiftning. När detta sker får den dock inget "
+"ytterligare helande."
 
 #: data/abilities.cfg:57
 msgid "regenerates"
@@ -282,7 +289,6 @@ msgstr ""
 "eller trupper i byar.)"
 
 #: data/abilities.cfg:444
-#, fuzzy
 msgid "slows"
 msgstr "sakta ner"
 
@@ -297,7 +303,6 @@ msgstr ""
 "den nominella skadan och har en hälften så god förflyttning (avrundat uppåt)."
 
 #: data/abilities.cfg:452
-#, fuzzy
 msgid "stones"
 msgstr "förstena"
 
@@ -368,7 +373,6 @@ msgstr ""
 "truppen mottar också dubbel skada från målets motattack."
 
 #: data/abilities.cfg:504
-#, fuzzy
 msgid "drains"
 msgstr "suga livskraft"
 
@@ -3935,13 +3939,13 @@ msgid "Great War"
 msgstr "Det stora kriget"
 
 #: data/names.cfg:51
-#, fuzzy
 msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
-"Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
-"Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
+"Ox,Hål,Ull,Del,Eld,Ask,Kvarn,Hel,Sel,Klev,Sals,Ball,Å,Sen,Sede,Hex,Box,Räve,"
+"Flat,Kärr,Greve,Frän,Kind,Tall,Gel,Nam,Sam,Ulv,Gammel,Ny,Ol,Nes,Kam,Rök,"
+"Klippe,Hög"
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -4426,152 +4430,180 @@ msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
+" Andar har ovanligt hög motståndkraft mot skador, men rör sig långsamt över "
+"öppen vatten."
 
 #: data/special-notes.cfg:5
 msgid ""
 " This unit's holy attack deals tremendous damage to the undead, and even "
 "some to living creatures."
 msgstr ""
+" Denna trupps heliga attack vållar de vandöda stor skada, men även levande "
+"bör ta sig i akt."
 
 #: data/special-notes.cfg:8
 msgid ""
 " This unit is capable of basic healing, though it can only delay the effects "
 "of poison, not cure them entirely."
 msgstr ""
+" Denna trupp kan hela trupper, men inte bota förgiftning, utan bara bromsa "
+"giftets utbredning."
 
 #: data/special-notes.cfg:11
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
-msgstr ""
+msgstr " Denna trupp kan hela intillstående trupper och bota dem från gift."
 
 #: data/special-notes.cfg:14
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
+" Denna trupp besitter förmågan att regenerera, vilket läker den som om den "
+"alltid stod under en bys beskydd."
 
 #: data/special-notes.cfg:17
 msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
+" Denna trupps ståndaktighet gör att den tar mindre skada från vissa "
+"attacker, men bara vid försvar."
 
 #: data/special-notes.cfg:20
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
-"Tränad med både svärd och armborst leder löjtnanten en liten grupp med "
-"mänskliga soldater och koordinerar styrkans utfall.\n"
-"\n"
-"Anmärkning: under en löjtnants ledarskap åsamkar allierade intillstående "
-"trupper av lägre rang sina motståndare mer skada."
+" Under denna trupps ledarskap åsamkar allierade intillstående trupper av "
+"lägre rang sina motståndare mer skada."
 
 #: data/special-notes.cfg:23
 msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
+" Denna trupp är stigfinnare och ignorerar således fiendens kontrollzoner."
 
 #: data/special-notes.cfg:26
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr ""
+msgstr " Denna trupp omgärdas av en ljuscirkel som lyser upp närområdet."
 
 #: data/special-notes.cfg:29
 msgid ""
 " This unit can teleport between any two villages instantly, though the "
 "player must control both, and the destination village must be unoccupied."
 msgstr ""
+" Denna trupp kan ögonblickligen teleportera sig mellan två byar; spelaren "
+"måste dock kontrollera båda byarna, och destinationen måste vara tom."
 
 #: data/special-notes.cfg:32
 msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
+" I skogslandskap är denna trupp osynlig för en fiende, såvida de inte står "
+"alldeles bredvid, eller har avslöjat sig genom att anfalla."
 
 #: data/special-notes.cfg:35
 msgid " This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
+" Denna trupp har förmågan att gömma sig i mörkret nattetid, utan något som "
+"helst tecken på sin existens."
 
 #: data/special-notes.cfg:38
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
+" Denna trupp kan förflytta sig osedd genom djupt vatten, och behöver inte "
+"komma upp till ytan för att andas."
 
 #: data/special-notes.cfg:41
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
+" Vid bärsärkaraseri fortsätter truppen obevekligt sina utfall tills antingen "
+"den eller dess fiende ligger död på marken."
 
 #: data/special-notes.cfg:44
 msgid ""
 "  If someone with the same allegiance distracts an enemy, this unit may "
 "backstab, inflicting double damage, by creeping around behind that enemy."
 msgstr ""
+" Om en allierad trupp distraherar en fiende kan denna trupp smyga runt och "
+"hugga fienden i ryggen och därmed göra dubbel skada. "
 
 #: data/special-notes.cfg:47
 msgid " Foes who lose their life to the plague will rise again in unlife."
-msgstr ""
+msgstr " Fiender som går under i pesten återuppväcks till ett vanliv."
 
 #: data/special-notes.cfg:50
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage."
 msgstr ""
+" Denna trupp har förmågan att sakta ner sina fiender, vilket minskar deras "
+"förflyttning och den skada de vållar med hälften."
 
 #: data/special-notes.cfg:53
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
-msgstr ""
+msgstr " Förmågan att förstena andra varelser gör denna trupp extremt farlig."
 
 #: data/special-notes.cfg:56
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
+" Denna trupp är prickskytt. Prickskyttar träffar ofta sitt mål, men bara då "
+"de är offensiva."
 
 #: data/special-notes.cfg:59
 msgid ""
 " The ranged attacks of this unit are magical, and always have a high chance "
 "of hitting an opponent."
 msgstr ""
+" Denna trupps distansattacker är magiska och träffar därför ofta sitt mål. "
 
 #: data/special-notes.cfg:62
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
+" Denna trupps svärmande attack tappar i styrka när andra som deltar i "
+"attacken är skadade."
 
 #: data/special-notes.cfg:65
-#, fuzzy
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"\n"
-"\n"
-"Anmärkning: riddarens stormande lansattack fördubblar skadorna som vållas "
-"och erhålls. Detta gäller dock inte när riddaren försvarar sig."
+" Ett stormangrepp fördubblar skadorna som vållas och erhålls. Detta gäller "
+"inte vid försvar."
 
 #: data/special-notes.cfg:68
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
+" Vid beröring berövar denna trupp offrets livskraft och stärker sin egen."
 
 #: data/special-notes.cfg:71
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
+" Genom längden på sitt vapen får denna trupp första slaget i närstrid, även "
+"vid försvar."
 
 #: data/special-notes.cfg:74
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
+" De som förgiftas av denna trupp försvagas gradvis tills de kan botas i en "
+"by eller av en trupp som kan bota."
 
 #: data/team_colors.cfg:4
 msgid "Red"
@@ -5257,7 +5289,7 @@ msgstr ""
 
 #: data/units/Drake_Enforcer.cfg:3
 msgid "Drake Enforcer"
-msgstr "Drakbetvingare"
+msgstr "Betvingardrake"
 
 #: data/units/Drake_Enforcer.cfg:20
 msgid ""
@@ -5306,7 +5338,6 @@ msgid "Drake Flameheart"
 msgstr "Eldhjärta"
 
 #: data/units/Drake_Flameheart.cfg:21
-#, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves, have veins which course with fire rather than blood. "
@@ -5321,15 +5352,13 @@ msgstr ""
 "detta, men av någon anledning har ingen försökt öppna en för att utforska "
 "saken närmare.\n"
 "\n"
-"Anmärkning: under ett eldhjärtas ledarskap åsamkar allierade intillstående "
-"trupper av lägre rang sina motståndare mer skada."
+"Anmärkning:"
 
 #: data/units/Drake_Flare.cfg:3
 msgid "Drake Flare"
 msgstr "Flamdrake"
 
 #: data/units/Drake_Flare.cfg:20
-#, fuzzy
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
@@ -5341,8 +5370,7 @@ msgstr ""
 "ledare. De som kallas 'flammor' av sina fiender är de bland drakfolket som "
 "strävar efter att bli sådana ledare, både i krig och i fred.\n"
 "\n"
-"Anmärkning: under en flamdrakes ledarskap åsamkar allierade intillstående "
-"trupper av lägre rang sina motståndare mer skada."
+"Anmärkning:"
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
@@ -5440,7 +5468,6 @@ msgid "Drake Slasher"
 msgstr "Drakveteran"
 
 #: data/units/Drake_Slasher.cfg:20
-#, fuzzy
 msgid ""
 "Slashers are clashers who have chosen to master the use of a Halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
@@ -5454,7 +5481,9 @@ msgstr ""
 "att bära svärd eller spjut. Deras storlek kräver passande vapen, och deras "
 "hillebarder är stora nog att spetsa en häst på samma sätt som en människa "
 "skulle ett vildsvin. Deras träning har också förstärkt deras uthållighet och "
-"försvar, vilket är en stor fördel jämfört med gladiatorerna."
+"försvar, vilket är en stor fördel jämfört med gladiatorerna.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Drake_Slasher.cfg:76 data/units/Drake_Slasher.cfg:92
 #: data/units/Drake_Warden.cfg:82 data/units/Drake_Warden.cfg:98
@@ -5468,7 +5497,6 @@ msgid "Drake Warden"
 msgstr "Drakväktare"
 
 #: data/units/Drake_Warden.cfg:21
-#, fuzzy
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
 "the most able Slashers. They have forged their might such that few warriors "
@@ -5477,9 +5505,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Drakväktaren har nått sin kasts höjdpunkt, och handplockas från de "
+"Drakväktaren har nått soldatkastens höjdpunkt, och handplockas från de "
 "skickligaste av veteranerna. Få krigare i denna värld skulle våga stå emot "
-"deras styrka. Väktarnas vapen är hillebarden, som de använder med bravur."
+"deras styrka. Väktarnas vapen är hillebarden, som de använder med bravur.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Drake_Warrior.cfg:3
 msgid "Drake Warrior"
@@ -5500,7 +5530,6 @@ msgid "Dwarvish Berserker"
 msgstr "Dvärgbärsärk"
 
 #: data/units/Dwarvish_Berserker.cfg:18
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
 "all defense in exchange for massive damage against their enemies.\n"
@@ -5508,9 +5537,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Dvärgarna är en urgammal ras av mäktiga krigare. Deras bärsärkar glömmer all "
-"självbevarelsedrift för att få in fler träffar på motståndaren. När de har "
-"givit sig in i striden attackerar de vildsint tills antingen de själva eller "
-"deras fiende ligger död på marken."
+"självbevarelsedrift för att få in fler träffar på motståndaren.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Dwarvish_Berserker.cfg:36 data/units/Dwarvish_Ulfserker.cfg:35
 msgid "berserker frenzy"
@@ -5580,10 +5609,9 @@ msgstr "hammare"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
 msgid "Dwarvish Guardsman"
-msgstr "Dvärgväktare"
+msgstr "Dvärgvakt"
 
 #: data/units/Dwarvish_Guardsman.cfg:18
-#, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
@@ -5593,7 +5621,9 @@ msgid ""
 msgstr ""
 "De mest tåliga dvärgarna värvas ibland som väktare. Långsamma och utan "
 "särskilt kraftiga attacker håller de stånd vid arméns flanker medan de "
-"kastar sina tunga spjut mot fienden."
+"kastar sina tunga spjut mot fienden.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -5645,25 +5675,25 @@ msgstr "åskvigg"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
 msgid "Dwarvish Sentinel"
-msgstr "Dvärgvaktpost"
+msgstr "Dvärghedersvakt"
 
 #: data/units/Dwarvish_Sentinel.cfg:19
-#, fuzzy
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks.\n"
 "\n"
 "Special Notes:"
 msgstr ""
-"Vaktposten, med sin breda sköld och stora mod, vägrar att ge vika även under "
-"de mest kraftiga attacker."
+"Hedersvakten, med sin breda sköld och stora mod, vägrar att ge vika även "
+"under de svåraste av attacker.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
-msgstr "Pansarnäve"
+msgstr "Pansarvakt"
 
 #: data/units/Dwarvish_Stalwart.cfg:18
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -5674,7 +5704,9 @@ msgstr ""
 "Under år av strider har pansarnävarna inhämtat både inspiration och "
 "råmaterial av sina besegrade fiender och kunnat skapa nya och starkare "
 "sköldar och rustningar. Även om de är långsamma, är de fruktade för sin "
-"uthållighet och styrka."
+"uthållighet och styrka.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -5751,7 +5783,6 @@ msgid "Dwarvish Ulfserker"
 msgstr "Dvärgulvhedin"
 
 #: data/units/Dwarvish_Ulfserker.cfg:17
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these in battle: they persist until either their enemy is dead "
@@ -5762,7 +5793,9 @@ msgid ""
 msgstr ""
 "Dvärgar är en uråldrig ras av mäktiga krigare. Ulvhednarna är de mest "
 "vildsinta av dessa i strid: de anfaller obönhörligt tills antingen de själva "
-"eller fienden är död, oavsett hur skadade de själva blir."
+"eller fienden är död, oavsett hur skadade de själva blir.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
@@ -5794,7 +5827,6 @@ msgid "Elvish Avenger"
 msgstr "Alvhämnare"
 
 #: data/units/Elvish_Avenger.cfg:24
-#, fuzzy
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -5818,9 +5850,7 @@ msgstr ""
 "tidigare i striden. Även om det inte är tanken, så träffar beskrivningen "
 "inte alls så illa.\n"
 "\n"
-"Anmärkning: hämnarnas skicklighet som skogsmän gör dem osynliga för en "
-"fiende, såvida de inte står alldeles bredvid, eller har avslöjat sig genom "
-"att anfalla."
+"Anmärkning:"
 
 #: data/units/Elvish_Avenger.cfg:182
 msgid "female^Elvish Avenger"
@@ -5831,7 +5861,6 @@ msgid "Elvish Captain"
 msgstr "Alvkapten"
 
 #: data/units/Elvish_Captain.cfg:21
-#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. This is quite at odds with "
@@ -5848,8 +5877,7 @@ msgstr ""
 "Kombinationen av deras förtroende för sina ledares visdom och deras sed att "
 "välja sina ledare är en av alvernas styrkor.\n"
 "\n"
-"Anmärkning: under en kaptens ledarskap åsamkar allierade intillstående "
-"trupper av lägre rang sina motståndare mer skada."
+"Anmärkning:"
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
@@ -5875,7 +5903,6 @@ msgid "female^Elvish Druid"
 msgstr "Alvdruid"
 
 #: data/units/Elvish_Druid.cfg:22
-#, fuzzy
 msgid ""
 "The magic of the wood elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they live can be quickened by a word of "
@@ -5893,9 +5920,7 @@ msgstr ""
 "Alvdruidernas huvudsakliga förmåga är helandets konst, och det är för detta "
 "utövande som de hålls i stor ära av sitt släkte.\n"
 "\n"
-"Anmärkning: druidernas insnärjningsattack sinkar fiendesoldater och minskar "
-"både deras förflyttning och vållad skada med hälften. Druider har förmågan "
-"att hela trupper i sin närhet och att bota dem från förgiftning."
+"Anmärkning:"
 
 #: data/units/Elvish_Druid.cfg:55 data/units/Elvish_Shyde.cfg:58
 msgid "ensnare"
@@ -5910,7 +5935,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Huldra"
 
 #: data/units/Elvish_Enchantress.cfg:18
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
@@ -5920,7 +5944,9 @@ msgid ""
 msgstr ""
 "Huldrorna är den offensiva magins mästarinnor. De slår mot sina fiender med "
 "isande vindstötar som de manat fram ur andevärlden, och får rötter att binda "
-"fast deras fiender. "
+"fast deras fiender.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Elvish_Enchantress.cfg:92 data/units/Elvish_Shaman.cfg:56
 #: data/units/Elvish_Sorceress.cfg:92
@@ -5964,7 +5990,6 @@ msgid "Elvish Marksman"
 msgstr "Alvprickskytt"
 
 #: data/units/Elvish_Marksman.cfg:23
-#, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -5984,7 +6009,7 @@ msgstr ""
 "Denna otroliga skicklighet har ett pris, och det är att svärdsträningen "
 "kommer i skymundan.\n"
 "\n"
-"Anmärkning: prickskyttar träffar ofta sitt mål, men bara då de är offensiva."
+"Anmärkning:"
 
 #: data/units/Elvish_Marksman.cfg:75 data/units/Elvish_Sharpshooter.cfg:74
 msgid "longbow"
@@ -5999,7 +6024,6 @@ msgid "Elvish Marshal"
 msgstr "Alvöverste"
 
 #: data/units/Elvish_Marshal.cfg:22
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -6017,8 +6041,7 @@ msgstr ""
 "de sällsynta tillfällen när en alv bestämmer sig för att det är dags att gå "
 "ut i krig, blir den resulterande strategin en mästares.\n"
 "\n"
-"Anmärkning: under en överstes ledarskap åsamkar allierade intillstående "
-"trupper av lägre rang sina motståndare mer skada."
+"Anmärkning:"
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
@@ -6051,7 +6074,6 @@ msgid "Elvish Ranger"
 msgstr "Alvjägare"
 
 #: data/units/Elvish_Ranger.cfg:21
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a place he is not truly a part of. With elves, "
@@ -6067,9 +6089,7 @@ msgstr ""
 "miljö, och i kombination med deras avsevärda skicklighet i bågskytte och "
 "svärdskonst är resultatet ett mäktig redskap i strid.\n"
 "\n"
-"Anmärkning: jägarnas skicklighet som skogsmän gör dem osynliga för en "
-"fiende, såvida de inte står alldeles bredvid, eller har avslöjat sig genom "
-"att anfalla."
+"Anmärkning:"
 
 #: data/units/Elvish_Ranger.cfg:181
 msgid "female^Elvish Ranger"
@@ -6120,7 +6140,6 @@ msgid "female^Elvish Shaman"
 msgstr "Alvschaman"
 
 #: data/units/Elvish_Shaman.cfg:23
-#, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -6141,17 +6160,13 @@ msgstr ""
 "Alvernas läkande kunskaper är också avsevärda, och kommer till stor nytta i "
 "strid.\n"
 "\n"
-"Anmärkning: schamanernas insnärjningsattack sinkar fiendesoldater och "
-"minskar både deras förflyttning och vållad skada med hälften. Schamaner har "
-"förmågan att hela trupper i sin närhet, men de kan inte bota en förgiftning "
-"helt och hållet, utan endast bromsa giftets utbredning."
+"Anmärkning:"
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
 msgstr "Alvskarpskytt"
 
 #: data/units/Elvish_Sharpshooter.cfg:22
-#, fuzzy
 msgid ""
 "A story once wandered about, of an elf who stopped an arrow by shooting it "
 "out of the air with one of his own. It is a testament to the skill of the "
@@ -6165,8 +6180,7 @@ msgstr ""
 "för alvernas stora skicklighet. Alvernas skarpskyttar har helt enkelt "
 "bemästrat bågskyttekonsten.\n"
 "\n"
-"Anmärkning: som prickskyttar träffar skarpskyttarna ofta sitt mål, men bara "
-"då de är offensiva."
+"Anmärkning:"
 
 #: data/units/Elvish_Sharpshooter.cfg:191
 msgid "female^Elvish Sharpshooter"
@@ -6177,7 +6191,6 @@ msgid "female^Elvish Shyde"
 msgstr "Älva"
 
 #: data/units/Elvish_Shyde.cfg:22
-#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -6192,9 +6205,7 @@ msgstr ""
 "förkroppsligar dessa alvskogarnas väktare sitt folks grace och "
 "översinnlighet.\n"
 "\n"
-"Anmärkning: älvornas insnärjningsattack sinkar fiendesoldater och minskar "
-"både deras förflyttning och vållad skada med hälften. Älvor har förmågan att "
-"hela trupper i sin närhet och att bota dem från förgiftning."
+"Anmärkning:"
 
 #: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:26
 msgid "faerie touch"
@@ -6205,7 +6216,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Alvbesvärjerska"
 
 #: data/units/Elvish_Sorceress.cfg:18
-#, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
@@ -6218,14 +6228,15 @@ msgstr ""
 "Alvernas besvärjerskor avviker från den helande vägen till förmån för magins "
 "mer aggressiva former, och strider bra på distans. Deras insnärjningsattack "
 "är märkbart effektivare än schamanens, och de kan mana fram isande "
-"vindstötar ur andevärlden att slå ner på deras fiender."
+"vindstötar ur andevärlden att slå ner på deras fiender.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
 msgstr "Sylfid"
 
 #: data/units/Elvish_Sylph.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
 "developed their faerie side, they transform into creatures of both worlds, "
@@ -6234,7 +6245,10 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Sylfiderna är skönheten reinkarnerad i de dödligas värld. De tillhör både "
-"feernas och de dödligas värld, och använder kraftfull magi mot sina fiender."
+"feernas och de dödligas värld, och använder kraftfull magi mot sina "
+"fiender.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Elvish_Sylph.cfg:55
 msgid "gossamer"
@@ -6245,7 +6259,6 @@ msgid "Direwolf Rider"
 msgstr "Monstervargryttare"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:21
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the garden variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -6270,8 +6283,7 @@ msgstr ""
 "stryker gift på framklorna, besläktat med det som orchernas lönnmördare "
 "använder, vilket gör en reva av dessa monsters tassar högst dödlig.\n"
 "\n"
-"Anmärkning: de som träffas av monstervargens klor förgiftas, och försvagas "
-"gradvis tills de kan botas i en by eller av en trupp som kan bota."
+"Anmärkning:"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:39 data/units/Goblin_Knight.cfg:39
 #: data/units/Goblin_Wolf_Rider.cfg:70 data/units/Monster_Cave_Spider.cfg:41
@@ -6285,7 +6297,6 @@ msgid "Goblin Impaler"
 msgstr "Spetsarvätte"
 
 #: data/units/Goblin_Impaler.cfg:18
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as fodder for their enemy's front line. Those "
 "who have somehow managed to survive invariably equip themselves to continue "
@@ -6300,8 +6311,7 @@ msgstr ""
 "bättre rustningar och använder ett mycket större spjut som kompenserar för "
 "deras korta räckvidd.\n"
 "\n"
-"Anmärkning: längden på deras vapen ger spetsarvättarna första slaget i "
-"närstrid, även i försvar."
+"Anmärkning:"
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -6331,7 +6341,6 @@ msgid "Goblin Pillager"
 msgstr "Plundrarvätte"
 
 #: data/units/Goblin_Pillager.cfg:19
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -6345,8 +6354,7 @@ msgstr ""
 "fienders bostäder och fält, och de bär också nät för att hindra sina offer "
 "att sätta i stånd ett effektivt försvar.\n"
 "\n"
-"Anmärkning: plundrarvättarnas nät sinkar fiendesoldater och minskar både "
-"deras förflyttning och vållad skada med hälften."
+"Anmärkning:"
 
 #: data/units/Goblin_Pillager.cfg:40
 msgid "torch"
@@ -6362,7 +6370,6 @@ msgid "Goblin Rouser"
 msgstr "Standarvätte"
 
 #: data/units/Goblin_Rouser.cfg:19
-#, fuzzy
 msgid ""
 "Standard bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -6378,8 +6385,7 @@ msgstr ""
 "standarbärarnas frenetiska pådrivande de mer oerfarnas moral, så att de "
 "strider både mer intensivt och längre innan de slutligen faller.\n"
 "\n"
-"Anmärkning: under en standarvättes ledarskap åsamkar allierade intillstående "
-"trupper av lägre rang sina motståndare mer skada."
+"Anmärkning:"
 
 #: data/units/Goblin_Spearman.cfg:3
 msgid "Goblin Spearman"
@@ -6494,12 +6500,14 @@ msgstr ""
 #: data/units/Human_Horse_Grand_Knight.cfg:21
 #: data/units/Human_Horse_Knight.cfg:20 data/units/Human_Horse_Lancer.cfg:21
 #: data/units/Human_Horseman.cfg:20
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
-msgstr "Specialitet"
+msgstr ""
+"\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Human_Horse_Grand_Knight.cfg:63
 #: data/units/Human_Horse_Knight.cfg:62 data/units/Human_Horse_Lancer.cfg:25
@@ -6553,7 +6561,6 @@ msgid "Paladin"
 msgstr "Tempelriddare"
 
 #: data/units/Human_Horse_Paladin.cfg:21
-#, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to monastic "
 "orders, pledging their might to the cause of righteousness. Though not as "
@@ -6568,8 +6575,10 @@ msgstr ""
 "klosterordnar och hänger sig till kampen för rättfärdighet och redbarhet. "
 "Även om de inte är en fullt så imponerande syn på slagfältet som "
 "storriddarna, så är de ändå en mäktig kraft i strid, och deras fromhet har "
-"gett dem andra gåvor. En tempelriddare är de vandödas bane, och de har "
-"tränat sig i att hela sina kamraters sår."
+"givit dem andra gåvor. En tempelriddare är de vandödas bane, och de har "
+"förmågan att hela sina kamraters sår.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:91
 #: data/units/Human_Mage_of_Light.cfg:71 data/units/Mermaid_Diviner.cfg:58
@@ -6693,7 +6702,6 @@ msgid "Duelist"
 msgstr "Duellant"
 
 #: data/units/Human_Loyalist_Duelist.cfg:19
-#, fuzzy
 msgid ""
 "It is a peculiar fashion of Wesnoth's nobility, in that they typically "
 "enroll their sons into one of two orders of armigers, training them either "
@@ -6723,8 +6731,7 @@ msgstr ""
 "som lever länge nog för att bli veteraner har oftast lyckats med detta tack "
 "vare att de nedlåtit sig till sådant bruk.\n"
 "\n"
-"Anmärkning: fäktare är stigfinnare och kan således ignorera fiendens "
-"kontrollzoner."
+"Anmärkning:"
 
 #: data/units/Human_Loyalist_Duelist.cfg:75
 #: data/units/Human_Loyalist_Fencer.cfg:80
@@ -6737,7 +6744,6 @@ msgid "Fencer"
 msgstr "Fäktare"
 
 #: data/units/Human_Loyalist_Fencer.cfg:20
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -6763,15 +6769,13 @@ msgstr ""
 "Hånfullt dansar de omkring tungt rustade fiender, såsom det tunga "
 "infanteriet.\n"
 "\n"
-"Anmärkning: fäktare är stigfinnare och kan således ignorera fiendens "
-"kontrollzoner."
+"Anmärkning:."
 
 #: data/units/Human_Loyalist_General.cfg:3
 msgid "General"
 msgstr "General"
 
 #: data/units/Human_Loyalist_General.cfg:29
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms they swore fealty to. Their "
@@ -6783,15 +6787,13 @@ msgstr ""
 "viktiga områden i de kungariken till vilka de svurit sin trohet. Deras "
 "utbildning och erfarenhet ger erforderlig tyngd bakom deras order.\n"
 "\n"
-"Anmärkning: under en generals ledarskap åsamkar allierade intillstående "
-"trupper av lägre rang sina motståndare mer skada."
+"Anmärkning:"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:3
 msgid "Grand Marshal"
 msgstr "Överstemarskalk"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:23
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have surpassed many trials by fire, "
@@ -6805,15 +6807,13 @@ msgstr ""
 "personliga styrka både i strid man mot man och i taktiska bedömningar. Deras "
 "närvaro på slagfältet är till stor hjälp för de som tjänar under dem.\n"
 "\n"
-"Anmärkning: under en överstemarskalks ledarskap åsamkar allierade "
-"intillstående trupper av lägre rang sina motståndare mer skada."
+"Anmärkning:"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:3
 msgid "Halberdier"
 msgstr "Hillebardiär"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:24
-#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -6830,7 +6830,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"En hillebard är ett svårmanövrerad och tungt vapen, men kraftfullt i "
+"En hillebard är ett svårmanövrerat och tungt vapen, men kraftfullt i "
 "händerna på en expert. Det är även mer flexibelt än spjutet från vilket det "
 "härstammar. Som alla hillebardiärer kan berätta äger vapnet fyra "
 "anslagspunkter, vilket är två mer än spjutet eller piken har; dessa är "
@@ -6843,8 +6843,7 @@ msgstr ""
 "att endast tilldela veteraner bland pikenerarna detta vapen, när de visat "
 "prov på sin skicklighet på slagfältet.\n"
 "\n"
-"Anmärkning: längden på deras vapen ger hillebardiärerna första slaget i "
-"närstrid, även i försvar."
+"Anmärkning:"
 
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
@@ -6903,7 +6902,6 @@ msgid "Javelineer"
 msgstr "Spjutkastare"
 
 #: data/units/Human_Loyalist_Javelineer.cfg:19
-#, fuzzy
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
 "not kill, enemies at range. Some, however, take to them rather well, finding "
@@ -6923,15 +6921,13 @@ msgstr ""
 "räckhåll. De kan slunga spjut mot fiendeled på avstånd, ofta utan "
 "vedergällning, och samtidigt hålla stånd i närstrid.\n"
 "\n"
-"Anmärkning: längden på deras vapen ger spjutkastarna första slaget i "
-"närstrid, även i försvar."
+"Anmärkning:"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:3
 msgid "Lieutenant"
 msgstr "Löjtnant"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:24
-#, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks.\n"
@@ -6941,8 +6937,7 @@ msgstr ""
 "Tränad med både svärd och armborst leder löjtnanten en liten grupp med "
 "mänskliga soldater och koordinerar styrkans utfall.\n"
 "\n"
-"Anmärkning: under en löjtnants ledarskap åsamkar allierade intillstående "
-"trupper av lägre rang sina motståndare mer skada."
+"Anmärkning:"
 
 #: data/units/Human_Loyalist_Longbowman.cfg:3
 msgid "Longbowman"
@@ -6992,7 +6987,6 @@ msgid "Master at Arms"
 msgstr "Väbel"
 
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:21
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -7020,15 +7014,13 @@ msgstr ""
 "akademier, ställningar där deras överdådiga natur inte bara accepteras, utan "
 "kanske till och med kommer till nytta.\n"
 "\n"
-"Anmärkning: väblar är stigfinnare och kan således ignorera fiendens "
-"kontrollzoner."
+"Anmärkning:"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:3
 msgid "Pikeman"
 msgstr "Pikenerare"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:19
-#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -7045,8 +7037,7 @@ msgstr ""
 "sätter definitivt stopp för en kavallerichock, och med god disciplin och "
 "taktik kan pikenerare även hålla infanteri i schack.\n"
 "\n"
-"Anmärkning: längden på deras vapen ger pikenerarna första slaget i närstrid, "
-"även i försvar."
+"Anmärkning:"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:60
 msgid "pike"
@@ -7119,7 +7110,6 @@ msgid "Spearman"
 msgstr "Spjutbärare"
 
 #: data/units/Human_Loyalist_Spearman.cfg:19
-#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a head, "
@@ -7136,8 +7126,7 @@ msgstr ""
 "arméer och beordras ofta till frontlinjerna med bara den mest rudimentära "
 "utbildning.\n"
 "\n"
-"Anmärkning: längden på deras vapen ger spjutbärarna första slaget i "
-"närstrid, även i försvar."
+"Anmärkning:"
 
 #: data/units/Human_Loyalist_Swordsman.cfg:3
 msgid "Swordsman"
@@ -7164,7 +7153,6 @@ msgid "Mage"
 msgstr "Magiker"
 
 #: data/units/Human_Mage.cfg:22
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -7204,8 +7192,7 @@ msgstr ""
 "Även om magiker är fysiskt bräckliga och obekanta med strid, så besitter de "
 "ändå vissa kunskaper som kommer väl till pass i sådana situationer.\n"
 "\n"
-"Anmärkning: magikerns distansattack är magisk och träffar därför ofta sitt "
-"mål. "
+"Anmärkning:"
 
 #: data/units/Human_Mage.cfg:137
 msgid "female^Mage"
@@ -7216,7 +7203,6 @@ msgid "Arch Mage"
 msgstr "Ärkemagiker"
 
 #: data/units/Human_Mage_Arch.cfg:20
-#, fuzzy
 msgid ""
 "The title of Arch Mage is conferred only after a lifetime of study and "
 "achievement to match. Arch Magi are often employed in positions of "
@@ -7245,15 +7231,13 @@ msgstr ""
 "Även om de inte är tränade för strid, så kan ärkemagiker om nöden kräver "
 "släppa lös den fulla kraften i sin konst, något som inte skall förringas.\n"
 "\n"
-"Anmärkning: ärkemagikerns eldklot är magiska och träffar därför ofta sitt "
-"mål."
+"Anmärkning:"
 
 #: data/units/Human_Mage_Great.cfg:3
 msgid "Great Mage"
 msgstr "Stormagiker"
 
 #: data/units/Human_Mage_Great.cfg:21
-#, fuzzy
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
 "nearly a legend in their own time, and town criers have forcibly learnt "
@@ -7280,15 +7264,13 @@ msgstr ""
 "Även om de inte på något vis är krigare så får tillämpandet av deras konster "
 "i strid de omgivande soldaterna att stå undan i vördnad.\n"
 "\n"
-"Anmärkning: stormagikerns eldklot är magiska, och träffar därför ofta sitt "
-"mål."
+"Anmärkning:"
 
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
 msgstr "Röd magiker"
 
 #: data/units/Human_Mage_Red.cfg:20
-#, fuzzy
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the blue robes of an apprentice, and given the red robes of a master. The "
@@ -7318,15 +7300,13 @@ msgstr ""
 "situationer, bland annat de eldklot som ännu mer befäster deras mer "
 "vardagliga namn.\n"
 "\n"
-"Anmärkning: den röda magikerns eldklot är magiska och träffar därför oftast "
-"sitt mål."
+"Anmärkning:"
 
 #: data/units/Human_Mage_Silver.cfg:3
 msgid "Silver Mage"
 msgstr "Silvermagiker"
 
 #: data/units/Human_Mage_Silver.cfg:23
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -7371,18 +7351,14 @@ msgstr ""
 "kunskaper kan onekligen komma till nytta på slagfältet, om man nu kan lyckas "
 "övertala en silvermagiker att använda dem.\n"
 "\n"
-"Anmärkning: en silvermagikers distansattack är magisk och träffar således "
-"ofta sitt mål. Silvermagiker är också mycket motståndskraftiga mot många "
-"olika sorters magi. De kan dessutom ögonblickligen teleportera sig mellan "
-"två byar; spelaren måste kontrollera båda byarna, och destinationen måste "
-"vara tom."
+"Anmärkning: Silvermagiker är mycket motståndskraftiga mot många olika "
+"sorters magi."
 
 #: data/units/Human_Mage_White.cfg:3
 msgid "White Mage"
 msgstr "Vit magiker"
 
 #: data/units/Human_Mage_White.cfg:25
-#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -7408,10 +7384,7 @@ msgstr ""
 "utgör ett stort hot. Vid behov kan de åkalla Ljusets makt för att bannlysa "
 "vandöda från de levandes värld.\n"
 "\n"
-"Anmärkning: det ljus som vita magiker lärt sig att använda är magiskt till "
-"sin natur och träffar ofta sitt mål. Detta ljus vållar de vandöda stor skada "
-"och även de levande bör ta sig i akt. Vita magiker har förmågan att läka "
-"trupper i sin närhet och att bota dem från förgiftning."
+"Anmärkning:"
 
 #: data/units/Human_Mage_White.cfg:90 data/units/Human_Mage_of_Light.cfg:70
 #: data/units/Mermaid_Diviner.cfg:57 data/units/Mermaid_Priestess.cfg:51
@@ -7427,7 +7400,6 @@ msgid "Mage of Light"
 msgstr "Ljusets magiker"
 
 #: data/units/Human_Mage_of_Light.cfg:27
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi are bestowed with "
 "vast spiritual powers. By strict devotion to the path of the light, they can "
@@ -7446,11 +7418,7 @@ msgstr ""
 "Genom att följa fromhetens och dygdens strikta regler arbetar dessa män och "
 "kvinnor outröttligt för livet och redbarheten i den värld de lever i.\n"
 "\n"
-"Anmärkning: det ljus som Ljusets magiker lärt sig att använda är magiskt "
-"till sin natur och träffar ofta sitt mål. Detta ljus vållar de vandöda stor "
-"skada och även de levande bör ta sig i akt. Ljusets magiker har förmågan att "
-"hela trupper i sin närhet och att bota dem från förgiftning. Deras kraft gör "
-"även att de omgärdas av en ljuscirkel som lyser upp området omkring dem. "
+"Anmärkning:"
 
 #: data/units/Human_Mage_of_Light.cfg:105
 msgid "female^Mage of Light"
@@ -7486,7 +7454,6 @@ msgid "Assassin"
 msgstr "Lönnmördare"
 
 #: data/units/Human_Outlaw_Assassin.cfg:20
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -7504,10 +7471,7 @@ msgstr ""
 "eller en dolk i ryggen. I nattens mörker är det få som kan klara livhanken i "
 "ett möte med dem, men de är något obekväma i dagsljus.\n"
 "\n"
-"Anmärkning: om en allierad trupp distraherar en fiende, så att lönnmördaren "
-"kan smyga in bakom ryggen på sitt offer och hugga med sin dolk, så gör denna "
-"attack dubbel skada. Dessutom är deras kastknivar förgiftade vilket gör att "
-"en träffad fiende gradvis försvagas."
+"Anmärkning:"
 
 #: data/units/Human_Outlaw_Assassin.cfg:93
 #: data/units/Human_Outlaw_Rogue.cfg:61
@@ -7582,7 +7546,6 @@ msgid "Rogue"
 msgstr "Rövare"
 
 #: data/units/Human_Outlaw_Rogue.cfg:18
-#, fuzzy
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
 "rogues have spent many an unpleasant moment darting through crowds and "
@@ -7600,9 +7563,7 @@ msgstr ""
 "de också kasta dem med god träffsäkerhet, och de många och långa timmar de "
 "har smugit runt på natten gör dem mer bekväma i mörker.\n"
 "\n"
-"Anmärkning: om en allierad trupp distraherar en fiende, så att rövaren kan "
-"smyga in bakom ryggen på sitt offer och hugga med sin dolk, så gör denna "
-"attack dubbel skada."
+"Anmärkning:"
 
 #: data/units/Human_Outlaw_Rogue.cfg:108
 msgid "female^Rogue"
@@ -7613,7 +7574,6 @@ msgid "Thief"
 msgstr "Tjuv"
 
 #: data/units/Human_Outlaw_Thief.cfg:18
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -7633,9 +7593,7 @@ msgstr ""
 "sina knivar. Deras taktik är ofta av det slag som av många skulle betraktas "
 "som vanhedrande.\n"
 "\n"
-"Anmärkning: om en allierad trupp distraherar en fiende, så att tjuven kan "
-"smyga in bakom ryggen på sitt offer och hugga med sin dolk, så gör denna "
-"attack dubbel skada."
+"Anmärkning:"
 
 #: data/units/Human_Outlaw_Thief.cfg:113
 msgid "female^Thief"
@@ -7696,7 +7654,6 @@ msgid "female^Mermaid Diviner"
 msgstr "Sjösibylla"
 
 #: data/units/Mermaid_Diviner.cfg:24
-#, fuzzy
 msgid ""
 "Mermaid Priestesses meet their calling with a fervor that leaves their human "
 "counterparts somewhat taken aback. This may have its roots in a legend they "
@@ -7711,18 +7668,14 @@ msgstr ""
 "som berättar om en mörk namnlös fasa som en gång i tiden var deras folk "
 "största skräck. Även om inte mycket är känt om vad som faktiskt inträffade, "
 "så står det klart att det var ljusets makt som besegrade denna mörka kraft.\n"
-"Anmärkning: det ljus som sjösibyllorna lärt sig att använda är magiskt till "
-"sin natur och träffar ofta sitt mål. Detta ljus vållar de vandöda stor skada "
-"och även de levande bör ta sig i akt. Sjösibyllorna har förmågan att hela "
-"trupper i sin närhet och att bota dem från förgiftning. Deras kraft gör även "
-"att de omgärdas av en ljuscirkel som lyser upp området omkring dem. "
+"\n"
+"Anmärkning:"
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
 msgstr "Sjöhuldra"
 
 #: data/units/Mermaid_Enchantress.cfg:20
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different. Those who master this ability are held in "
@@ -7740,8 +7693,7 @@ msgstr ""
 "strid mot deras eget släkte är förbjudet, men denna kraft utgör en stor del "
 "av deras försvar mot de monster som kan påträffas i avgrunderna.\n"
 "\n"
-"Anmärkning: sjöhuldrornas distansattack är magisk och träffar därför ofta "
-"sitt mål."
+"Anmärkning:"
 
 #: data/units/Mermaid_Enchantress.cfg:46 data/units/Mermaid_Initiate.cfg:48
 #: data/units/Mermaid_Siren.cfg:80
@@ -7753,7 +7705,6 @@ msgid "female^Mermaid Initiate"
 msgstr "Sjönovis"
 
 #: data/units/Mermaid_Initiate.cfg:22
-#, fuzzy
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -7771,15 +7722,13 @@ msgstr ""
 "Trots sin bräcklighet gör denna förmåga sjönoviserna storartade i strid, då "
 "de kan åkalla själva vattnet omkring dem för att slå ner på sina fiender.\n"
 "\n"
-"Anmärkning: sjönovisernas distansattack är magisk och träffar därför ofta "
-"sitt mål."
+"Anmärkning:"
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
 msgstr "Sjöprästinna"
 
 #: data/units/Mermaid_Priestess.cfg:22
-#, fuzzy
 msgid ""
 "Mermen share the creed that much of humanity follows, though for cultural "
 "reasons, the upholding of this is left to the mermaids, who are more "
@@ -7797,10 +7746,8 @@ msgstr ""
 "i världen, och studerar läkandets konst i kampen mot sjukdomar och skador. "
 "Deras flit och fromhet ger dem också vissa andliga förmågor, med vilka de "
 "kan försvara sitt folk mot krafter som inte är av den här världen.\n"
-"Anmärkning: det ljus som sjöprästinnorna lärt sig att använda är magiskt "
-"till sin natur och träffar ofta sitt mål. Detta ljus vållar de vandöda stor "
-"skada och även de levande bör ta sig i akt. Sjöprästinnorna har förmågan att "
-"läka trupper i sin närhet och att bota dem från förgiftning."
+"\n"
+"Anmärkning:"
 
 #: data/units/Mermaid_Siren.cfg:3
 msgid "Siren"
@@ -7842,7 +7789,6 @@ msgid "Merman Entangler"
 msgstr "Sjösnärjare"
 
 #: data/units/Merman_Entangler.cfg:20
-#, fuzzy
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
 "well; those who master it are valued and revered by their comrades. This "
@@ -7858,8 +7804,7 @@ msgstr ""
 "element, och gör deras släkte till ett hot mot alla fiender som vågar sig i "
 "närheten av vatten.\n"
 "\n"
-"Anmärkning: sjösnärjarnas nät sinkar fiendesoldater och minskar både deras "
-"förflyttning och vållad skada med hälften."
+"Anmärkning:"
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
@@ -7884,7 +7829,6 @@ msgid "Merman Hoplite"
 msgstr "Hoplit"
 
 #: data/units/Merman_Hoplite.cfg:21
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -7896,7 +7840,9 @@ msgstr ""
 "Med sina höga sköldar utgör hopliterna vakternas elit bland sjöfolket. Deras "
 "starka rustningar och stränga disciplin tillåter dem att bilda en stark mur "
 "mot stridernas härjningar. I desperata tider kan de till och med göra detta "
-"uppe på land, men naturligtvis inte så bra som en varelse med ben."
+"uppe på land, men naturligtvis inte så bra som en varelse med ben.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
@@ -7935,7 +7881,6 @@ msgid "Merman Netcaster"
 msgstr "Sjönätkastare"
 
 #: data/units/Merman_Netcaster.cfg:19
-#, fuzzy
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets. These are not very damaging in themselves, but they "
@@ -7957,8 +7902,7 @@ msgstr ""
 "vid strid på land, där landlevande varelser annars skulle ha för goda "
 "fördelar.\n"
 "\n"
-"Anmärkning: nätkastarnas nät sinkar fiendesoldater och minskar både deras "
-"förflyttning och vållad skada med hälften."
+"Anmärkning:"
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
@@ -8009,7 +7953,6 @@ msgid "Giant Spider"
 msgstr "Jättespindel"
 
 #: data/units/Monster_Cave_Spider.cfg:18
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They can bite at close range, thereby poisoning their enemies, and also can "
@@ -8019,7 +7962,9 @@ msgid ""
 msgstr ""
 "Jättespindlarna sägs leva i Knalgas djup och livnär sig på oförsiktiga "
 "besökare. De som kommer för nära kan de förgifta med sitt bett, och de kan "
-"sinka sina fiender genom att kasta nät över dem."
+"sinka sina fiender genom att kasta nät över dem.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Monster_Cave_Spider.cfg:80
 msgid "web"
@@ -8030,7 +7975,6 @@ msgid "Cuttle Fish"
 msgstr "Jättebläckfisk"
 
 #: data/units/Monster_Cuttle_Fish.cfg:18
-#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
@@ -8042,7 +7986,9 @@ msgstr ""
 "Jättebläckfiskar är gigantiska havslevande djur. De kan gripa tag i sina "
 "motståndare med sina starka tentakler, eller spotta ett giftigt svart bläck. "
 "Bästa sättet att överleva ett möte med dessa monster är att stanna på "
-"landbacken."
+"landbacken.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Monster_Cuttle_Fish.cfg:41 data/units/Monster_Tentacle.cfg:64
 msgid "tentacle"
@@ -8082,7 +8028,6 @@ msgid "Giant Scorpion"
 msgstr "Jätteskorpion"
 
 #: data/units/Monster_Giant_Scorpion.cfg:19
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
 "explanation.\n"
@@ -8090,7 +8035,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "En vanlig skorpion är farlig nog - en i manshöjd kräver inga vidare "
-"utläggningar."
+"utläggningar.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Monster_Giant_Scorpion.cfg:30
 msgid "sting"
@@ -8128,7 +8075,6 @@ msgid "Tentacle of the Deep"
 msgstr "Djupets tentakel"
 
 #: data/units/Monster_Tentacle.cfg:18
-#, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
 "below the waves.\n"
@@ -8136,7 +8082,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Djupets tentakler är lemmar från några av de större monster som lurar i "
-"havsdjupen."
+"havsdjupen.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Monster_Yeti.cfg:3
 msgid "Yeti"
@@ -8285,7 +8233,6 @@ msgid "Orcish Assassin"
 msgstr "Lönnmördarorch"
 
 #: data/units/Orcish_Assassin.cfg:18
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -8301,9 +8248,7 @@ msgstr ""
 "överraskande smidiga.Även om det sällan är de som utdelar nådastöten, så är "
 "deras taktik till stor nytta för deras större och brutalare släktingar.\n"
 "\n"
-"Anmärkning: orchernas lönnmördare använder förgiftade kastknivar, och deras "
-"offer försvagas gradvis tills de kan få vård i en by eller av en trupp som "
-"kan bota."
+"Anmärkning:"
 
 #: data/units/Orcish_Assassin.cfg:55 data/units/Orcish_Slayer.cfg:76
 msgid "throwing knives"
@@ -8348,7 +8293,6 @@ msgid "Orcish Leader"
 msgstr "Orchledare"
 
 #: data/units/Orcish_Leader.cfg:18
-#, fuzzy
 msgid ""
 "Orcish Leaders are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8361,14 +8305,15 @@ msgstr ""
 "Orchledarna leder stammen, fattar viktiga beslut och leder sitt folk i "
 "strid. De är svåra motståndare som är skickligast med svärdet, även om de "
 "också bär pilbåge. Deras naturliga ledarskapsförmåga gör dem värdefulla i "
-"strid, men om ledaren besegras, så förloras striden."
+"strid, men om ledaren besegras, så förloras striden.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
 msgstr "Orchhövding"
 
 #: data/units/Orcish_Ruler.cfg:18
-#, fuzzy
 msgid ""
 "Orcish Rulers are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8381,20 +8326,20 @@ msgstr ""
 "Orchhövdingarna är stammens ledare. De fattar viktiga beslut och leder sitt "
 "folk i strid. De är svåra motståndare som är skickligast med svärdet, även "
 "om de också bär pilbåge. Deras naturliga ledarskapsförmåga gör dem "
-"värdefulla i strid, men om hövdingen besegras, så förloras striden."
+"värdefulla i strid, men om hövdingen besegras, så förloras striden.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Orcish_Ruler.cfg:32 data/units/Orcish_Sovereign.cfg:34
 #: data/units/Orcish_Warlord.cfg:28 data/units/Orcish_Warrior.cfg:27
-#, fuzzy
 msgid "greatsword"
-msgstr "svärd"
+msgstr "bredsvärd"
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
 msgstr "Slaktarorch"
 
 #: data/units/Orcish_Slayer.cfg:19
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -8411,9 +8356,7 @@ msgstr ""
 "verktyg i deras händer, och dess flitiga användning i strid är ofta den "
 "verkliga orsaken till orchernas segrar.\n"
 "\n"
-"Anmärkning: slaktarorcherna använder förgiftade kastknivar, och deras offer "
-"kommer att försvagas gradvis tills de kan botas i en by eller av en trupp "
-"som kan bota."
+"Anmärkning:"
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
@@ -8437,7 +8380,6 @@ msgid "Orcish Sovereign"
 msgstr "Orchhärskare"
 
 #: data/units/Orcish_Sovereign.cfg:20
-#, fuzzy
 msgid ""
 "Orcish Sovereigns are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8450,7 +8392,9 @@ msgstr ""
 "Orchhärskarna är klanernas ledare. De fattar viktiga beslut och leder sitt "
 "folk i strid. De är svåra motståndare som är skickligast med svärdet, även "
 "om de också bär pilbåge. Deras naturliga ledarskap gör dem mycket värdefulla "
-"i strid, men om härskaren dör, så förloras striden."
+"i strid, men om härskaren dör, så förloras striden.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
@@ -8485,7 +8429,6 @@ msgid "Saurian Ambusher"
 msgstr "Bakhållstrupp"
 
 #: data/units/Saurian_Ambusher.cfg:20
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8499,14 +8442,15 @@ msgstr ""
 "kallblodiga arv och deras relativa bräcklighet är de högt värderade som "
 "spejare, då de lätt förflyttar sig i oländig terräng och förbi motståndare. "
 "Ödlefolkets bakhållstrupper har styrkan att dra full nytta av detta faktum. "
-"De bästa bland bakhållstrupperna blir flanktrupper i ödlefolkets armé."
+"De bästa bland bakhållstrupperna blir flanktrupper i ödlefolkets armé.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Saurian_Augur.cfg:3
 msgid "Saurian Augur"
-msgstr "Mystiker"
+msgstr "Siare"
 
 #: data/units/Saurian_Augur.cfg:27
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Augurs are valued as healers because they can provide aid to their "
@@ -8516,15 +8460,16 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Trots sitt kallblodiga arv och sin relativa bräcklighet, är ödlefolkets "
-"mystiker aktade som helare då de kan bistå sina allierade oavsett terräng "
-"eller motstånd. Utöver helande besitter de kunskaper om frostmagi."
+"siare aktade som helare då de kan bistå sina allierade oavsett terräng eller "
+"motstånd. Utöver helande besitter de kunskaper om frostmagi.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
 msgstr "Flanktrupp"
 
 #: data/units/Saurian_Flanker.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8537,14 +8482,15 @@ msgstr ""
 "Ödlefolkets flanktrupper är mycket skickliga med spjut. Trots sitt "
 "kallblodiga arv och deras relativa bräcklighet är de högt värderade som "
 "spejare, då de lätt förflyttar sig i oländig terräng och förbi motståndare. "
-"Ödlefolkets flanktrupper har styrkan att dra full nytta av detta faktum."
+"Ödlefolkets flanktrupper har styrkan att dra full nytta av detta faktum.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Saurian_Oracle.cfg:3
 msgid "Saurian Oracle"
 msgstr "Orakel"
 
 #: data/units/Saurian_Oracle.cfg:27
-#, fuzzy
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
@@ -8556,14 +8502,15 @@ msgstr ""
 "Ödlefolkets orakel har avstått vidare träning i läkandets konst för att "
 "kunna hänge sig åt att förfina sin skicklighet i de mörka konsterna. Trots "
 "sin bräcklighet besitter de kunskaper om frostmagi och har kvar sin "
-"grundläggande förmåga som helare."
+"grundläggande förmåga som helare.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
 msgstr "Ödlestigfinnare"
 
 #: data/units/Saurian_Skirmisher.cfg:20
-#, fuzzy
 msgid ""
 "Saurian Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8575,14 +8522,15 @@ msgstr ""
 "Ödlefolkets stigfinnare är skickliga med spjutet. Trots sitt kallblodiga arv "
 "och deras bräcklighet är de aktade som spejare då de kan förflytta sig i "
 "oländig terräng och ta sig runt fiender. De bästa stigfinnarna upptas bland "
-"ödlefolkets bakhållstrupper."
+"ödlefolkets bakhållstrupper.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
 msgstr "Sökare"
 
 #: data/units/Saurian_Soothsayer.cfg:28
-#, fuzzy
 msgid ""
 "Saurian Soothsayers are highly valued as healers because they can provide "
 "aid to their friends regardless of terrain or opposition. In addition to "
@@ -8592,14 +8540,15 @@ msgid ""
 msgstr ""
 "Ödlefolkets sökare högaktas som helare, då de kan bistå sina vänner oavsett "
 "terräng eller motstånd. Utöver att de kan hela sina allierade besitter de "
-"kunskaper om frostmagi."
+"kunskaper om frostmagi.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
 msgstr "Troll"
 
 #: data/units/Troll.cfg:18
-#, fuzzy
 msgid ""
 "Trolls have been a mote to trouble the thoughts of humanity and dwarf-kind, "
 "who remain baffled at the origins of these creatures, and perhaps more "
@@ -8618,15 +8567,13 @@ msgstr ""
 "stora klubbor som de gärna nyttjar i strid fungerar som förlängning till "
 "deras armar, och används för att slå sina byten till underkastelse.\n"
 "\n"
-"Anmärkning: troll besitter förmågan att regenerera, vilket läker dem som om "
-"de alltid stod under en bys beskydd."
+"Anmärkning:"
 
 #: data/units/Troll_Great.cfg:3
 msgid "Great Troll"
 msgstr "Stort troll"
 
 #: data/units/Troll_Great.cfg:19
-#, fuzzy
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
 "and wisdom, it becomes something extraordinary, a beast remembered for "
@@ -8641,15 +8588,13 @@ msgstr ""
 "generationer. Deras styrka och slughet är källan till de flesta sägner om "
 "troll, och att se dessa omtalade i livet minskar inte deras storhet.\n"
 "\n"
-"Anmärkning: troll besitter förmågan att regenerera, vilket läker dem som om "
-"de alltid stod under en bys beskydd."
+"Anmärkning:"
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
 msgstr "Trollhjälte"
 
 #: data/units/Troll_Hero.cfg:18
-#, fuzzy
 msgid ""
 "Some trolls are born with an undue share of the strength and vitality that "
 "characterizes their race. In a society where might makes right, those of "
@@ -8661,15 +8606,13 @@ msgstr ""
 "brukligt bland deras ras. I ett samhälle där styrka är makt hålls dessa i "
 "ära som hjältar.\n"
 "\n"
-"Anmärkning: troll besitter förmågan att regenerera, vilket läker dem som om "
-"de alltid stod under en bys beskydd."
+"Anmärkning:"
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
 msgstr "Stenkastartroll"
 
 #: data/units/Troll_Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
@@ -8686,15 +8629,13 @@ msgstr ""
 "säckarna är skurna ur görs enkelt grova slungor.\n"
 "\n"
 "Anmärkning: även om de är otympliga så är en sten slungad av ett av dessa "
-"monster mycket farligare än en pil, om den träffar. Troll besitter förmågan "
-"att regenerera, vilket läker dem som om de alltid stod under en bys beskydd."
+"monster mycket farligare än en pil, om den träffar."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
 msgstr "Trollkrigare"
 
 #: data/units/Troll_Warrior.cfg:20
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -8716,15 +8657,13 @@ msgstr ""
 "farligt ett troll är i strid, så är ett troll i full rustning mycket "
 "oroande.\n"
 "\n"
-"Anmärkning: troll besitter förmågan att regenerera, vilket läker dem som om "
-"de alltid stod under en bys beskydd."
+"Anmärkning:"
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
 msgstr "Trollvalp"
 
 #: data/units/Troll_Whelp.cfg:19
-#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -8739,15 +8678,13 @@ msgstr ""
 "klumpiga och kan ännu inte gå riktigt, utan måste lufsa omkring på alla "
 "fyra, men denna begränsning kompenseras mer än väl av deras råstyrka.\n"
 "\n"
-"Anmärkning: troll besitter förmågan att regenerera, vilket läker dem som om "
-"de alltid stod under en bys beskydd."
+"Anmärkning:"
 
 #: data/units/Undead_Bat_Blood.cfg:3
 msgid "Blood Bat"
 msgstr "Blodsugande fladdermus"
 
 #: data/units/Undead_Bat_Blood.cfg:18
-#, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
@@ -8759,14 +8696,15 @@ msgstr ""
 "Den blodsugande fladdermusen är snabb och kan suga blodet och därmed "
 "livskraften ur sina motståndare, och använder blodet för att förbättra sin "
 "egen hälsa. Deras vildsinta attacker färgar detta vandöda flygfäs päls röd "
-"av sina offers blod."
+"av sina offers blod.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Undead_Bat_Vampire.cfg:3
 msgid "Vampire Bat"
 msgstr "Vampyrfladdermus"
 
 #: data/units/Undead_Bat_Vampire.cfg:17
-#, fuzzy
 msgid ""
 "Vampire Bats are undead flying beasts that attack by biting their victims. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -8776,14 +8714,15 @@ msgid ""
 msgstr ""
 "En vandöd flygande best, som attackerar genom att bita sina fiender. Även om "
 "deras huggtänder inte är så kraftfulla, så suger de både blod och livskraft "
-"ur sina offer och utvinner styrka ur detta."
+"ur sina offer och utvinner styrka ur detta.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:3
 msgid "Ghoul"
 msgstr "Ghul"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:20
-#, fuzzy
 msgid ""
 "Only those who have delved into the circles of necromancy know what must be "
 "done to turn a person into a ghoul, and it is a secret they are not telling. "
@@ -8805,16 +8744,13 @@ msgstr ""
 "\n"
 "Det är på grund av sådana handlingar som nekromantin hatas och fördöms.\n"
 "\n"
-"Anmärkning: ghulernas klor är täckta av gift, och de som blir förgiftade i "
-"kampen mot en ghul kommer att försvagas gradvis tills de kan bli botade i en "
-"by eller av en trupp som kan bota."
+"Anmärkning:"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:3
 msgid "Necrophage"
 msgstr "Nekrofag"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -8828,16 +8764,13 @@ msgstr ""
 "skakar de helt enkelt av sig all skada de ådragit sig, och börjar ånyo sitt "
 "sökande efter föda.\n"
 "\n"
-"Anmärkning: nekrofagernas klor är täckta av gift, och de som blir förgiftade "
-"i kampen mot en nekrofag kommer att försvagas gradvis tills de kan bli "
-"botade i en by eller av en trupp som kan bota."
+"Anmärkning:"
 
 #: data/units/Undead_Corpse_Soulless.cfg:4
 msgid "Soulless"
 msgstr "Själlös"
 
 #: data/units/Undead_Corpse_Soulless.cfg:19
-#, fuzzy
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living.\n"
@@ -8845,14 +8778,15 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Dessa vandrande döda har blivit starka genom sin långa erfarenhet av att "
-"slåss mot de levande."
+"slåss mot de levande.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Undead_Corpse_Walking.cfg:4
 msgid "Walking Corpse"
 msgstr "Vandrande död"
 
 #: data/units/Undead_Corpse_Walking.cfg:18
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Although weak in combat, these zombies can spread their curse to those they "
@@ -8862,14 +8796,15 @@ msgid ""
 msgstr ""
 "Vandrande döda är de dödas kroppar som blivit återuppväckta av mörk magi. "
 "Även om de är svaga i strid, så kan de sprida sin förbannelse till dem som "
-"de dödar, så att de vandödas armé växer."
+"de dödar, så att de vandödas armé växer.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:3
 msgid "Ancient Lich"
 msgstr "Uråldrig häxmästare"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:21
-#, fuzzy
 msgid ""
 "A being of this order is a herald of the age long past. Anyone who "
 "encounters an Ancient Lich likely has far worse things to worry about than "
@@ -8881,16 +8816,13 @@ msgstr ""
 "Den som möter en uråldrig häxmästare har troligen värre saker än döden att "
 "oroa sig för.\n"
 "\n"
-"Anmärkning: häxmästarens distansattacker är magiska och träffar därför ofta "
-"sitt mål. Häxmästarens beröring berövar offrets livskraft och stärker "
-"häxmästaren."
+"Anmärkning:"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "Svartkonstnär"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:21
-#, fuzzy
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -8914,8 +8846,7 @@ msgstr ""
 "\n"
 "I ett sådant tillstånd är deras enda vapen den konst de hängivit sig till.\n"
 "\n"
-"Anmärkning: svartkonstnärens attacker är magiska och träffar därför ofta "
-"sitt mål. "
+"Anmärkning:"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:32
 msgid "shadow wave"
@@ -8930,7 +8861,6 @@ msgid "Dark Sorcerer"
 msgstr "Mörkermagiker"
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:20
-#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorcerers have begun to unlock the secrets "
@@ -8954,15 +8884,13 @@ msgstr ""
 "makthunger försöker övervinna döden fullständigt genom att genomgå "
 "omvandlingen till häxmästare och på så vis uppnå odödlighet.\n"
 "\n"
-"Anmärkning: mörkermagikerns distansattack är magisk och träffar därför ofta "
-"sitt mål. "
+"Anmärkning:"
 
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
 msgstr "Häxmästare"
 
 #: data/units/Undead_Necro_Lich.cfg:20
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -8984,12 +8912,9 @@ msgstr ""
 "odödligheten är oändlig eller om livet bara förlängs. Dock visar själva det "
 "faktum att detta diskuteras på vad de faktiskt har uppnått.\n"
 "\n"
-"Anmärkning: häxmästarens distansattacker är magiska och träffar därför ofta "
-"sitt mål. Häxmästarens beröring berövar offrets livskraft och stärker "
-"häxmästaren."
+"Anmärkning:"
 
 #: data/units/Undead_Necromancer.cfg:21
-#, fuzzy
 msgid ""
 "One of the greatest circles of what is considered 'black magic' is the art "
 "of necromancy, the terrible ability to awaken the dead with false life. It "
@@ -9016,9 +8941,7 @@ msgstr ""
 "jämförelse med häxmästarnas, som dock låtit sina kroppar förfalla till en "
 "bräcklig och eroderad form.\n"
 "\n"
-"Anmärkning: nekromantikerns distansattack är magisk och träffar därför ofta "
-"sitt mål. Nekromantikerns stav har pestens märke och en nedgjord fiende "
-"väcks till ett vanliv."
+"Anmärkning:"
 
 #: data/units/Undead_Necromancer.cfg:32
 msgid "plague staff"
@@ -9029,7 +8952,6 @@ msgid "Bone Shooter"
 msgstr "Benskjutare"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:16
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -9045,7 +8967,9 @@ msgstr ""
 "utrustas bågskyttar ofta med verkligt motbjudande vapen. Deras koger är "
 "fyllda av pilar som inte är gjorda av trä, men av benen av deras offer. "
 "Deras olyckliga fiender kallar dem endast 'Benskjutare', och dessa "
-"styggelser är en fasa för allt levande."
+"styggelser är en fasa för allt levande.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:41
 #: data/units/Undead_Skele_Soul_Shooter.cfg:31
@@ -9057,7 +8981,6 @@ msgid "Death Knight"
 msgstr "Dödsriddare"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:19
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and a sense of betrayal, came back to this world as Death Knights. Wielding "
@@ -9069,14 +8992,15 @@ msgstr ""
 "Det hörs ibland berättas att mäktiga krigare och generaler som inte har "
 "funnit frid i sin själ, utan plågas av hat och ångest, kommer tillbaka till "
 "den här världen som dödsriddare. Med samma vapen som de använde i livet för "
-"de befäl över de vandöda i sitt sökande efter hämnd."
+"de befäl över de vandöda i sitt sökande efter hämnd.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Undead_Skele_Deathblade.cfg:3
 msgid "Deathblade"
 msgstr "Svärdsande"
 
 #: data/units/Undead_Skele_Deathblade.cfg:18
-#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters will often "
@@ -9091,14 +9015,15 @@ msgstr ""
 "erkänner ofta detta, och försöker dra nytta av det genom att utrusta dem med "
 "vapen som passar deras kunskaper. Även om de är bräckliga så är dessa "
 "monster mycket kvickare än de andra av sitt släkte, både i kropp och "
-"svärdsföring."
+"svärdsföring.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Undead_Skele_Draug.cfg:3
 msgid "Draug"
 msgstr "Draug"
 
 #: data/units/Undead_Skele_Draug.cfg:18
-#, fuzzy
 msgid ""
 "Towering remains of what once were legendary warriors, the Draug strike fear "
 "in the hearts of all who oppose them. They are driven not by malice, but are "
@@ -9114,14 +9039,15 @@ msgstr ""
 "för evigt bundna i vandödens dröm, och vandrar genom de största bataljerna "
 "som de kan minnas. De kämpar desperat för förlösning, för den frid som "
 "endast armstyrka kan ge dem. Minnet av deras fiender och syftet med deras "
-"kamp har sedan länge bleknat till glömska."
+"kamp har sedan länge bleknat till glömska.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Undead_Skele_Revenant.cfg:3
 msgid "Revenant"
 msgstr "Gengångare"
 
 #: data/units/Undead_Skele_Revenant.cfg:17
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -9137,14 +9063,15 @@ msgstr ""
 "berätta deras historia. Också de som väckte dem från döden kan bara "
 "spekulera om deras förflutna. Bortsett från detta är en gengångare ett "
 "mäktigt redskap i strid: en orädd krigare som inte känner smärta, och som "
-"slåss till det bittra slutet."
+"slåss till det bittra slutet.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:3
 msgid "Soul Shooter"
 msgstr "Själaskytt"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:18
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -9157,14 +9084,15 @@ msgstr ""
 "De mäktigaste av de vandöda bågskyttarna är ofelbart de som redan som "
 "levande var bågskyttar. De strövar omkring på slagfältet utan varken mål och "
 "syfte, styrda av ett vagt minne av deras forna skicklighet. De drivs enbart "
-"av illvilja, som har sin rot i den ångest som deras tomma existens vållar."
+"av illvilja, som har sin rot i den ångest som deras tomma existens vållar.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Undead_Skeleton.cfg:3
 msgid "Skeleton"
 msgstr "Skelett"
 
 #: data/units/Undead_Skeleton.cfg:17
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
@@ -9176,14 +9104,15 @@ msgstr ""
 "Skelett är krigare som dödats i strid och återuppväckts från de döda med "
 "svart magi. Obevekliga och i huvudsak utan egen tankekraft fruktar de varken "
 "smärta eller död, och deras blotta närvaro räcker ofta för att skrämma deras "
-"herrars antagonister på flykten."
+"herrars antagonister på flykten.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Undead_Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
 msgstr "Skelettbågskytt"
 
 #: data/units/Undead_Skeleton_Archer.cfg:16
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -9197,14 +9126,15 @@ msgstr ""
 "ofta syns i sällskap med; det är en naturens styggelse, en krigare som "
 "återuppväckts från de döda för återigen känna stridens hetta. I sina "
 "mästares händer gör dessa soldater allt de kan för att utföra de uppgifter "
-"som åläggs dem, för de döda behöver inte frukta döden."
+"som åläggs dem, för de döda behöver inte frukta döden.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Undead_Spirit_Ghost.cfg:3
 msgid "Ghost"
 msgstr "Spöke"
 
 #: data/units/Undead_Spirit_Ghost.cfg:19
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -9223,8 +9153,7 @@ msgstr ""
 "besvärjelser är spöket en pålitlig tjänare, som kan bindas att genomföra de "
 "uppgifter mästaren vill ha utförda.\n"
 "\n"
-"Anmärkning: spöken är ovanligt motståndskraftiga, men rör sig långsamt över "
-"öppet vatten."
+"Anmärkning:"
 
 #: data/units/Undead_Spirit_Ghost.cfg:49
 #: data/units/Undead_Spirit_Spectre.cfg:74
@@ -9237,7 +9166,6 @@ msgid "Nightgaunt"
 msgstr "Blekman"
 
 #: data/units/Undead_Spirit_Nightgaunt.cfg:18
-#, fuzzy
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
 "countenance that they obscure. These terrible forms are rarely seen by the "
@@ -9251,18 +9179,13 @@ msgstr ""
 "som lever länge nog för att berätta om ett möte med dem lyckas aldrig finna "
 "ro att studera dem särskilt noggrant.\n"
 "\n"
-"Anmärkning: om en allierad trupp distraherar en fiende, så att blekmannen "
-"kan smyga in bakom ryggen på sitt offer och hugga med sina klor, så gör "
-"denna attack dubbel skada. Blekmän är ovanligt motståndskraftiga, men rör "
-"sig långsamt över öppet vatten. De har förmågan att gömma sig i mörkret "
-"nattetid, utan något som helst tecken på sin existens."
+"Anmärkning:"
 
 #: data/units/Undead_Spirit_Shadow.cfg:3
 msgid "Shadow"
 msgstr "Skugga"
 
 #: data/units/Undead_Spirit_Shadow.cfg:19
-#, fuzzy
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
 "to retreat into darkness. Since that day, the shadows of the world have held "
@@ -9278,18 +9201,13 @@ msgstr ""
 "\n"
 "Svaret på denna fråga är alltför uppenbart för nekromantiker.\n"
 "\n"
-"Anmärkning: om en allierad trupp distraherar en fiende, så att skuggan kan "
-"smyga in bakom ryggen på sitt offer och hugga med sina klor, så gör denna "
-"attack dubbel skada. Skuggor är ovanligt motståndskraftiga, men rör sig "
-"långsamt över öppet vatten. De har förmågan att gömma sig i mörkret "
-"nattetid, utan något som helst tecken på sin existens."
+"Anmärkning:"
 
 #: data/units/Undead_Spirit_Spectre.cfg:3
 msgid "Spectre"
 msgstr "Ond ande"
 
 #: data/units/Undead_Spirit_Spectre.cfg:20
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "master's power. These abominations are a rightful terror to the living, and "
@@ -9308,9 +9226,7 @@ msgstr ""
 "De största faran i att möta en ond ande är att den med stor sannolikhet bara "
 "varslar om en än större fara i ankommande.\n"
 "\n"
-"Anmärkning: en träff av den onda andens svärd berövar offrets livskraft och "
-"stärker anden. Onda andar är ovanligt motståndskraftiga, men rör sig "
-"långsamt över öppet vatten."
+"Anmärkning:"
 
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
@@ -9322,7 +9238,6 @@ msgid "Wraith"
 msgstr "Vålnad"
 
 #: data/units/Undead_Spirit_Wraith.cfg:19
-#, fuzzy
 msgid ""
 "These tortured forms of what were once warriors are among the most "
 "terrifying things a necromancer can create, for a sword will cleave right "
@@ -9344,16 +9259,13 @@ msgstr ""
 "besvärjelser som driver dessa varelser kan hämta ny kraft genom det som "
 "hotar dem.\n"
 "\n"
-"Anmärkning: en träff av vålnadens svärd berövar offrets livskraft och "
-"stärker vålnaden. Vålnader är ovanligt motståndskraftiga, men rör sig "
-"långsamt över öppet vatten."
+"Anmärkning:"
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
 msgstr "Wose"
 
 #: data/units/Wose.cfg:19
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -9378,8 +9290,7 @@ msgstr ""
 "Woser tar starkt avstånd från våld, men besitter stor styrka. De är dock "
 "ovana vid att röra sig, och när de gör det tar de god tid på sig.\n"
 "\n"
-"Anmärkning: woser regenererar genom att använda naturens krafter runt om "
-"dem; de behöver således inte söka skydd i en by för att återhämta sig."
+"Anmärkning:"
 
 #: data/units/Wose.cfg:35 data/units/Wose_Ancient.cfg:29
 #: data/units/Wose_Elder.cfg:28
@@ -9391,7 +9302,6 @@ msgid "Ancient Wose"
 msgstr "Uråldrig wose"
 
 #: data/units/Wose_Ancient.cfg:20
-#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -9416,15 +9326,13 @@ msgstr ""
 "Det här slaget av historier är allt som är känt om det som troligtvis är de "
 "mest uråldriga av woser.\n"
 "\n"
-"Anmärkning: woser regenererar genom att använda naturens krafter runt om "
-"dem; de behöver således inte söka skydd i en by för att återhämta sig."
+"Anmärkning:"
 
 #: data/units/Wose_Elder.cfg:3
 msgid "Elder Wose"
 msgstr "Äldre wose"
 
 #: data/units/Wose_Elder.cfg:19
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -9451,8 +9359,7 @@ msgstr ""
 "användas för våldsam handling, om någon skulle vara oförsiktig nog att väcka "
 "deras vrede.\n"
 "\n"
-"Anmärkning: woser regenererar genom att använda naturens krafter runt om "
-"dem; de behöver således inte söka skydd i en by för att återhämta sig."
+"Anmärkning:"
 
 #: src/about.cpp:32
 msgid "+Core Developers"
@@ -10343,13 +10250,12 @@ msgstr ""
 "Du är inte tillsammans med dina soldater och kan därför inte återkalla dem"
 
 #: src/menu_events.cpp:637
-#, fuzzy
 msgid ""
 "There are no troops available to recall\n"
 "\t(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "Det finns inga trupper att återkalla.\n"
-"(Du måste ha överlevande veteraner från ett tidigare scenario)"
+"\t(Du måste ha överlevande veteraner från ett tidigare scenario)"
 
 #: src/menu_events.cpp:645
 msgid "Level"
@@ -10421,41 +10327,35 @@ msgstr "Försvarare"
 
 #: src/mouse_events.cpp:243
 msgid "Expected Battle Result (hp)"
-msgstr ""
+msgstr "Förväntat stridsresultat (HP)"
 
 #: src/mouse_events.cpp:328
-#, fuzzy
 msgid "Leadership"
-msgstr "ledarskap"
+msgstr "Ledarskap"
 
 #: src/mouse_events.cpp:341
-#, fuzzy
 msgid " resistance vs "
-msgstr "Motståndskraft mot olika attacker"
+msgstr " motståndskraft mot "
 
 #: src/mouse_events.cpp:342
-#, fuzzy
 msgid " vulnerability vs "
-msgstr "anfallarens sårbarhet för"
+msgstr " sårbarhet för "
 
 #: src/mouse_events.cpp:352
-#, fuzzy
 msgid "Slowed"
-msgstr "långsam"
+msgstr "Långsam"
 
 #: src/mouse_events.cpp:368
-#, fuzzy
 msgid "Total damage"
 msgstr "Total skada"
 
 #: src/mouse_events.cpp:375
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Välj vapen: "
+msgstr "Inget användbart vapen"
 
 #: src/mouse_events.cpp:380
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Chans att komma oskadad undan"
 
 #: src/mouse_events.cpp:678 src/mouse_events.cpp:746 src/mouse_events.cpp:1328
 msgid "Damage Calculations"
@@ -10832,14 +10732,12 @@ msgid "Observe Game"
 msgstr "Iaktta spel"
 
 #: src/multiplayer_lobby.cpp:451
-#, fuzzy
 msgid "Skip Replays"
 msgstr "Hoppa över repris"
 
 #: src/multiplayer_lobby.cpp:452
-#, fuzzy
 msgid "Preferences"
-msgstr "Prinsessa"
+msgstr "Inställningar"
 
 #: src/multiplayer_lobby.cpp:453
 msgid "Quit"
@@ -10847,7 +10745,7 @@ msgstr "Avsluta"
 
 #: src/multiplayer_lobby.cpp:459
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
+msgstr "Hoppa till aktivt drag som observatör"
 
 #: src/multiplayer_ui.cpp:79
 msgid "Invalid Color"
@@ -11295,109 +11193,3 @@ msgstr "Du kan se resultaten på "
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjälp oss att förbättra Wesnoth!"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Special Notes: the Grand Knight's charging lance attack doubles both "
-#~ "damage dealt and received. This does not affect his defensive retaliation."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Anmärkning: storriddarens stormande lansattack fördubblar skadorna som "
-#~ "vållas och erhålls. Detta gäller dock inte när storriddaren försvarar sig."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Special Notes: the Lancer's charging lance attack doubles both damage "
-#~ "dealt and received. This does not affect his defensive retaliation."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Anmärkning: lansiärens stormande lansattack fördubblar skadorna som "
-#~ "vållas och erhålls. Detta gäller dock inte när lansiären försvarar sig."
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Special Notes: the Paladin's charging lance attack doubles both damage "
-#~ "dealt and received. This does not affect his defensive retaliation. The "
-#~ "Paladin's holy attack with his sword deals tremendous damage to the "
-#~ "undead, and even some to living creatures."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Anmärkning: tempelriddarens stormande lansattack fördubblar skadorna som "
-#~ "vållas och erhålls. Detta gäller dock inte när tempelriddaren försvarar "
-#~ "sig. Tempelriddarens heliga svärdsattack vållar vandöda svåra skador, och "
-#~ "även vissa levande varelser. Tempelriddare har en viss skicklighet med "
-#~ "läkekonst, men de kan bara bromsa en förgiftning, inte bota den helt och "
-#~ "hållet."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Special Notes: the Horseman's only attack is a charge, which doubles both "
-#~ "damage dealt and received. This does not affect his defensive retaliation."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Anmärkning: ryttarens enda attack är att storma, vilket fördubblar skadan "
-#~ "som vållas och erhålls. Detta gäller dock när ryttaren försvar sig."
-
-#~ msgid "drain"
-#~ msgstr "suga livskraft"
-
-#~ msgid "plague(Walking Corpse)"
-#~ msgstr "pest (Vandrande död)"
-
-#~ msgid "slow"
-#~ msgstr "sakta ner"
-
-#~ msgid "Do you want to skip the replay?"
-#~ msgstr "Vill du hoppa över reprisen?"
-
-#~ msgid ""
-#~ "The games are out of sync and will have to exit. Do you want to save an "
-#~ "error log of your game?"
-#~ msgstr ""
-#~ "Spelen är osynkroniserade och måste avslutas. Vill du spara en fellogg "
-#~ "över ditt spel?"
-
-#~ msgid ""
-#~ "Cures:\n"
-#~ "This unit combines herbal remedies with magic to cure a unit of poison.  "
-#~ "Most units with this ability also are extremely effective healers, but "
-#~ "will cure poisoned units rather than healing them."
-#~ msgstr ""
-#~ "Botar:\n"
-#~ "Denna trupp kombinerar örtläkemedel med magi för att bota en förgiftad "
-#~ "trupp från förgiftningen. De flesta trupper med denna förmåga är även "
-#~ "mycket skickliga helare, men botar förgiftade trupper istället för att "
-#~ "hela dem."
-
-#~ msgid ""
-#~ "Loyal:\n"
-#~ "Never more than 1 upkeep."
-#~ msgstr ""
-#~ "Lojal:\n"
-#~ "Aldrig mer än 1 i underhåll."
-
-#~ msgid ""
-#~ "Plague:\n"
-#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
-#~ "unit of the specified type on the same side as the unit with the Plague "
-#~ "attack. (This doesn't work on Undead or units in villages.)"
-#~ msgstr ""
-#~ "Pest:\n"
-#~ "När en trupp dödas av pestsmitta ersätts truppen av angivet truppslag "
-#~ "tillhörande sidan som pestsmittade truppen. (Detta fungerar inte mot "
-#~ "vandöda eller trupper i byar.)"
-
-#~ msgid "Doubled"
-#~ msgstr "Fördubblad"
-
-#~ msgid " (+steadfast)"
-#~ msgstr "(+ståndaktig)"
