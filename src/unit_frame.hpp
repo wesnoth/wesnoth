@@ -22,7 +22,6 @@
 #include <string>
 #include <vector>
 
-
 //a class to describe a unit's animation sequence
 struct unit_frame {
 		unit_frame() : xoffset(0), image(), image_diagonal(),halo(), sound(),
