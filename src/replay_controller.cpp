@@ -76,15 +76,6 @@ void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*
 	    gui_->get_theme().modify(replay_theme_cfg);
 	LOG_NG << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 
-	/*
-	if(recorder.is_skipping() == false) {
-		for(std::vector<config*>::const_iterator story_i = story.begin(); story_i != story.end(); ++story_i) {
-
-			show_intro(*gui_,**story_i, level_);
-		}
-	}
-	*/
-
 	fire_prestart(true);
 	init_gui();
 	
@@ -140,11 +131,17 @@ const bool replay_controller::is_loading_game(){
 void replay_controller::reset_replay(){
 	is_playing_ = false;
 	player_number_ = 1;
+	current_turn_ = 1;
 	recorder.start_replay();
 	units_ = *(new unit_map(units_start_));
 	status_ = *(new gamestatus(status_start_));
 	gamestate_ = *(new game_state(gamestate_start_));
 	teams_ = team_manager_.clone(teams_start_);
+	if (events_manager_ != NULL){
+		delete events_manager_;
+		events_manager_ = new game_events::manager(level_,*gui_,map_,units_,teams_,
+											gamestate_,status_,gameinfo_);
+	}
 	(*gui_).invalidate_all();
 	(*gui_).draw();
 }
@@ -162,7 +159,8 @@ void replay_controller::replay_next_turn(){
 void replay_controller::replay_next_side(){
 	is_playing_ = true;
 	play_side(player_number_ - 1);
-	if ((size_t)player_number_ > teams_.size()){
+
+	if ((size_t)player_number_ > teams_.size()) {
 		player_number_ = 1;
 		current_turn_++;
 	}
@@ -222,7 +220,6 @@ void replay_controller::play_turn(){
 		play_side(player_number_ - 1);
 	}
 
-	finish_turn();
 	player_number_ = 1;
 	current_turn_++;
 }
@@ -253,6 +250,7 @@ void replay_controller::play_side(const int team_index){
 
 	if ((size_t)player_number_ > teams_.size()) {
 		status_.next_turn();
+		finish_turn();
 	}
 	update_teams();
 	update_gui();
