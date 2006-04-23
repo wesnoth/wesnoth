@@ -80,10 +80,11 @@ unit::unit(const unit& u)
 
 // Initilizes a unit from a config
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, 
-     const gamestatus* game_status, const std::vector<team>* teams,const config& cfg) : facing_(gamemap::location::NORTH_EAST),
-	 movement_(0),resting_(false), hold_position_(false),anim_(NULL),upkeep_(0),
-	 gamedata_(gamedata),units_(unitmap),map_(map),
-	                      gamestatus_(game_status),teams_(teams)
+     const gamestatus* game_status, const std::vector<team>* teams,const config& cfg) : 
+	 movement_(0), hold_position_(false),resting_(false),
+	 facing_(gamemap::location::NORTH_EAST),upkeep_(0),
+	 anim_(NULL),gamedata_(gamedata), units_(unitmap), map_(map),
+	 gamestatus_(game_status),teams_(teams)
 {
 	read(cfg);
 	getsHit_=0;
@@ -95,9 +96,11 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	}
 }
 
-unit::unit(const game_data& gamedata,const config& cfg) : gamedata_(&gamedata),units_(NULL),map_(NULL),
-	                      gamestatus_(NULL),facing_(gamemap::location::NORTH_EAST),upkeep_(0),
-	                      movement_(0),resting_(false), hold_position_(false),anim_(NULL)
+unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
+			hold_position_(false), resting_(false),
+			facing_(gamemap::location::NORTH_EAST),
+			upkeep_(0),anim_(NULL), gamedata_(&gamedata),
+			units_(NULL),map_(NULL), gamestatus_(NULL)
 {
 	read(cfg);
 	getsHit_=0;
@@ -147,10 +150,9 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	end_turn_ = false;
 	hold_position_ = false;
 }
-unit::unit(const unit_type* t,
-					 int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) : 
-           gamedata_(NULL),units_(NULL),map_(NULL),gamestatus_(NULL),teams_(NULL),
-           facing_(gamemap::location::NORTH_EAST),gender_(dummy_unit ? gender : generate_gender(*t,use_traits))
+unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) : 
+           gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),facing_(gamemap::location::NORTH_EAST),
+	   gamedata_(NULL), units_(NULL),map_(NULL),gamestatus_(NULL),teams_(NULL)
 {
 	side_ = side;
 	movement_ = 0;
@@ -1532,13 +1534,13 @@ void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
 
 		if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
 			const int d = disp.hex_size() / 2;
-			unit_anim_halo_ = halo::add(x+d-(current_frame.halo_x*disp.zoom()),
-					y+d+(current_frame.halo_y*disp.zoom()),
+			unit_anim_halo_ = halo::add(x+d-static_cast<int>(current_frame.halo_x*disp.zoom()),
+					y+d+static_cast<int>(current_frame.halo_y*disp.zoom()),
 					current_frame.halo[sub_halo].first);
 		} else {
 			const int d = disp.hex_size() / 2;
-			unit_anim_halo_ = halo::add(x+d+(current_frame.halo_x*disp.zoom()),
-					y+d+(current_frame.halo_y*disp.zoom()),
+			unit_anim_halo_ = halo::add(x+d+static_cast<int>(current_frame.halo_x*disp.zoom()),
+					y+d+static_cast<int>(current_frame.halo_y*disp.zoom()),
 					current_frame.halo[sub_halo].first,
 					halo::REVERSE);
 		}
@@ -1640,7 +1642,7 @@ void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
 		if(max_hitpoints() > 0) {
 			unit_energy = double(hitpoints())/double(max_hitpoints());
 		}
-		disp.draw_bar(*energy_file,x-(5*disp.zoom()),y-height_adjust,(max_hitpoints()*2)/3,unit_energy,hp_color(),bar_alpha);
+		disp.draw_bar(*energy_file,x-static_cast<int>(5*disp.zoom()),y-height_adjust,(max_hitpoints()*2)/3,unit_energy,hp_color(),bar_alpha);
 
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
