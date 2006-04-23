@@ -1500,7 +1500,7 @@ void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
 
 	if(!anim_) set_standing(disp);
 	const gamemap::TERRAIN terrain = map.get_terrain(hex);
-	const double submerge = is_flying() ? 0.0 : map.get_terrain_info(terrain).unit_submerge();
+	const double submerge = is_flying() ? 0.0 : map.get_terrain_info(terrain).unit_submerge() * disp.zoom();
 	const int height_adjust = is_flying() ? 0 : int(map.get_terrain_info(terrain).unit_height_adjust() * disp.zoom());
 
 	std::string image_name;
@@ -1532,13 +1532,13 @@ void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
 
 		if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
 			const int d = disp.hex_size() / 2;
-			unit_anim_halo_ = halo::add(x+d-current_frame.halo_x,
-					y+d+current_frame.halo_y,
+			unit_anim_halo_ = halo::add(x+d-(current_frame.halo_x*disp.zoom()),
+					y+d+(current_frame.halo_y*disp.zoom()),
 					current_frame.halo[sub_halo].first);
 		} else {
 			const int d = disp.hex_size() / 2;
-			unit_anim_halo_ = halo::add(x+d+current_frame.halo_x,
-					y+d+current_frame.halo_y,
+			unit_anim_halo_ = halo::add(x+d+(current_frame.halo_x*disp.zoom()),
+					y+d+(current_frame.halo_y*disp.zoom()),
 					current_frame.halo[sub_halo].first,
 					halo::REVERSE);
 		}
@@ -1552,7 +1552,7 @@ void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
 	}else{
 		loc = image::locator(image_name);
 	}
-	surface image(image::get_image(loc,get_state("stoned")=="yes"?image::GREYED : image::UNSCALED));
+	surface image(image::get_image(loc,get_state("stoned")=="yes"?image::GREYED : image::SCALED));
 	if(image ==NULL) {
 		image = still_image();
 	}
@@ -1640,7 +1640,7 @@ void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
 		if(max_hitpoints() > 0) {
 			unit_energy = double(hitpoints())/double(max_hitpoints());
 		}
-		disp.draw_bar(*energy_file,x-5,y-height_adjust,(max_hitpoints()*2)/3,unit_energy,hp_color(),bar_alpha);
+		disp.draw_bar(*energy_file,x-(5*disp.zoom()),y-height_adjust,(max_hitpoints()*2)/3,unit_energy,hp_color(),bar_alpha);
 
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
