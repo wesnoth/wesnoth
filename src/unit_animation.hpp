@@ -22,36 +22,8 @@
 #include <string>
 #include <vector>
 
-//a class to describe a unit's animation sequence
-struct unit_frame {
-		unit_frame() : xoffset(0), image(), image_diagonal(),halo(), sound(),
-			       halo_x(0), halo_y(0), begin_time(0), end_time(0),
-			       blend_with(0),blend_ratio(0),
-			       highlight_ratio(ftofxp(1)){}
-		explicit unit_frame(const std::string& str, const std::string & diag ="",
-				int begin=0,int end = 0,
-				Uint32 blend_color = 0, double blend_rate = 0.0, 
-				fixed_t highlight = ftofxp(1),
-				std::string in_halo = "",int halox = 0,int haloy = 0) :
-			xoffset(0), image(str),image_diagonal(diag),
-			halo_x(halox), halo_y(haloy),
-			begin_time(begin), end_time(end),
-			blend_with(blend_color), blend_ratio(blend_rate),
-			highlight_ratio(highlight)  {halo = prepare_halo(in_halo,begin,end);};
-		explicit unit_frame(const config& cfg);
+#include "unit_frame.hpp"
 
-		int xoffset;
-		std::string image;
-		std::string image_diagonal;
-		std::vector<std::pair<std::string,int> > halo;
-		std::string sound;
-		int halo_x, halo_y;
-		int begin_time, end_time;
-		Uint32 blend_with;
-		double blend_ratio;
-		fixed_t highlight_ratio;
-		static std::vector<std::pair<std::string,int> > prepare_halo(const std::string & halo,int begin, int end);
-};
 class unit_animation:public animated<unit_frame> 
 {
 	public:

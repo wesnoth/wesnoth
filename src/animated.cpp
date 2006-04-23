@@ -283,8 +283,8 @@ int animated<T,T_void_value>::get_last_frame_time() const
 
 // Force compilation of the following template instantiations
 
+#include "unit_frame.hpp"
 #include "image.hpp"
-#include "unit_types.hpp"
 
 template class animated< image::locator >;
 template class animated< std::string >;

@@ -29,6 +29,9 @@
 #include <vector>
 
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
+#  undef INADDR_ANY
+#  undef INADDR_BROADCAST
+#  undef INADDR_NONE
 #  include <windows.h>
 #  define USE_SELECT 1
 #else
