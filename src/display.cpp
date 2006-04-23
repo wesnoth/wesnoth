@@ -1511,6 +1511,8 @@ void display::draw_tile(int x, int y)
 	update_rect(xpos,ypos,zoom_,zoom_);
 	//redrawing is done
 	redrawn.erase(loc);
+	//avoid useless redrawin
+	invalidated_.erase(loc);
 }
 
 void display::draw_enemies_reach(unsigned int num, int xloc, int yloc)
