@@ -1603,14 +1603,6 @@ void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
 		ellipse_front.assign(image::get_image(image::locator(buf,team_rgb_range(),temp_rgb)));
 	}
 
-	gamemap::location adjacent[6];
-	get_adjacent_tiles(hex, adjacent);
-	disp.draw_tile(hex.x, hex.y);
-	if(state_ != STATE_STANDING) {
-		for(int tile = 0; tile != 6; ++tile) {
-			disp.draw_tile(adjacent[tile].x, adjacent[tile].y);
-		}
-	}
 	disp.draw_unit(x, y -height_adjust, image, false, highlight_ratio, 
 			blend_with, blend_ratio, submerge,ellipse_back,ellipse_front);
 	if(!unit_halo_ && !image_halo().empty()) {

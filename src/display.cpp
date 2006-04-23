@@ -1326,9 +1326,18 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 
 void display::draw_tile(int x, int y)
 {
+	// list of tiles in the process of being redrawn (protect from recursion problems
+	static std::set<gamemap::location> redrawn;
 	reach_map::iterator reach = reach_map_.end();
 
 	const gamemap::location loc(x,y);
+
+	if(redrawn.find(loc) != redrawn.end()) {
+		//this tile has already redrawn the terrain and is waiting to redraw the "upper half" (unit)
+		return;
+	}
+
+	
 	unit_map::iterator it = units_.find(loc);
 	if(it != units_.end()) {
 		it->second.refresh();
@@ -1433,7 +1442,21 @@ void display::draw_tile(int x, int y)
 		draw_movement_info(loc,xpos,ypos);
 	}
 
+	//first half is done, mark ourselves as half refreshed
+	redrawn.insert(loc);
+	gamemap::location adjacent[6];
+	get_adjacent_tiles(loc, adjacent);
+	for(int tile = 0; tile != 6; ++tile) {
+		if(units_.find(adjacent[tile]) != units_.end()) {
+			// neighbour contains a unit, since its unit could overlap on us, we must redraw it
+			draw_tile(adjacent[tile].x, adjacent[tile].y);
+		}
+	}
 	if(it != units_.end()) {
+		// neighbours must be redrawn because we overlap on them
+		for(int tile = 0; tile != 6; ++tile) {
+			draw_tile(adjacent[tile].x, adjacent[tile].y);
+		}
 		it->second.refresh_unit(*this,loc,true);
 	}
 	
@@ -1486,6 +1509,8 @@ void display::draw_tile(int x, int y)
 	}
 
 	update_rect(xpos,ypos,zoom_,zoom_);
+	//redrawing is done
+	redrawn.erase(loc);
 }
 
 void display::draw_enemies_reach(unsigned int num, int xloc, int yloc)
