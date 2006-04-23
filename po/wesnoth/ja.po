@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-17 22:59+0200\n"
+"POT-Creation-Date: 2006-04-23 22:59+0200\n"
 "PO-Revision-Date: 2005-11-04 10:30+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -98,11 +98,11 @@ msgstr ""
 "このユニットはターンごとに自身のHPを8回復します。 毒を受けているなら、 回復す"
 "る代わりに毒を取り除きます。"
 
-#: data/abilities.cfg:75
+#: data/abilities.cfg:74
 msgid "steadfast"
 msgstr "装甲"
 
-#: data/abilities.cfg:77
+#: data/abilities.cfg:76
 #, fuzzy
 msgid ""
 "Steadfast:\n"
@@ -112,14 +112,14 @@ msgstr ""
 "不動:\n"
 "防御時、このユニットの抵抗力は最大で50%まで倍になります。"
 
-#: data/abilities.cfg:89 data/abilities.cfg:110 data/abilities.cfg:144
-#: data/abilities.cfg:191 data/abilities.cfg:251 src/actions.cpp:539
+#: data/abilities.cfg:88 data/abilities.cfg:109 data/abilities.cfg:143
+#: data/abilities.cfg:190 data/abilities.cfg:250 src/actions.cpp:539
 #: src/actions.cpp:672
 msgid "leadership"
 msgstr "統率"
 
-#: data/abilities.cfg:93 data/abilities.cfg:114 data/abilities.cfg:148
-#: data/abilities.cfg:195 data/abilities.cfg:255
+#: data/abilities.cfg:92 data/abilities.cfg:113 data/abilities.cfg:147
+#: data/abilities.cfg:194 data/abilities.cfg:254
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -138,11 +138,11 @@ msgstr ""
 "うになります。 このユニットとのレベルの差に応じて、 与えるダメージが25%ずつ増"
 "加します。"
 
-#: data/abilities.cfg:320
+#: data/abilities.cfg:319
 msgid "skirmisher"
 msgstr "散兵"
 
-#: data/abilities.cfg:322
+#: data/abilities.cfg:321
 #, fuzzy
 msgid ""
 "Skirmisher:\n"
@@ -154,11 +154,11 @@ msgstr ""
 "このユニットは敵のそばを素早く移動することができ、 すべての敵の支配ゾーンを無"
 "視できます。"
 
-#: data/abilities.cfg:333
+#: data/abilities.cfg:332
 msgid "illuminates"
 msgstr "照明"
 
-#: data/abilities.cfg:337
+#: data/abilities.cfg:336
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -172,11 +172,11 @@ msgstr ""
 "いにくくします。 すべての隣接ユニットは夜には夕方として、 夕方には昼として戦"
 "うようになります。"
 
-#: data/abilities.cfg:344
+#: data/abilities.cfg:343
 msgid "teleport"
 msgstr "瞬間移動"
 
-#: data/abilities.cfg:346
+#: data/abilities.cfg:345
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -186,11 +186,11 @@ msgstr ""
 "このユニットは１回の移動を使用して、 ２つの友好的な村の間を瞬間移動することが"
 "できます。"
 
-#: data/abilities.cfg:352
+#: data/abilities.cfg:351
 msgid "ambush"
 msgstr "伏兵"
 
-#: data/abilities.cfg:356
+#: data/abilities.cfg:355
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -206,11 +206,11 @@ msgstr ""
 "のユニットの隣にいる場合を除いて、 敵ユニットはこのユニットが見えないし攻撃で"
 "きません。"
 
-#: data/abilities.cfg:368
+#: data/abilities.cfg:367
 msgid "nightstalk"
 msgstr "隠密"
 
-#: data/abilities.cfg:372
+#: data/abilities.cfg:371
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -225,12 +225,12 @@ msgstr ""
 "このユニットが攻撃した直後のターンか、 敵がこのユニットの隣にいる場合を除い"
 "て、 夜には敵ユニットはこのユニットが見えないし攻撃できません。"
 
-#: data/abilities.cfg:384
+#: data/abilities.cfg:383
 #, fuzzy
 msgid "submerge"
 msgstr "突き刺し"
 
-#: data/abilities.cfg:388
+#: data/abilities.cfg:387
 #, fuzzy
 msgid ""
 "Submerge:\n"
@@ -247,11 +247,11 @@ msgstr ""
 "のユニットの隣にいる場合を除いて、 敵ユニットはこのユニットが見えないし攻撃で"
 "きません。"
 
-#: data/abilities.cfg:406
+#: data/abilities.cfg:405
 msgid "berserk"
 msgstr "狂戦"
 
-#: data/abilities.cfg:408
+#: data/abilities.cfg:407
 #, fuzzy
 msgid ""
 "Berserk:\n"
@@ -262,11 +262,11 @@ msgstr ""
 "攻撃においても防御においてもこの攻撃が戦いで使われた場合、いずれかの戦闘ユ"
 "ニットが倒されるまで交戦をやめません。"
 
-#: data/abilities.cfg:416
+#: data/abilities.cfg:415
 msgid "backstab"
 msgstr "奇襲"
 
-#: data/abilities.cfg:418
+#: data/abilities.cfg:417
 #, fuzzy
 msgid ""
 "Backstab:\n"
@@ -278,11 +278,11 @@ msgstr ""
 "もし自軍ユニットが攻撃目標の後方にもいる場合は、 この攻撃は２倍のダメージとな"
 "ります。 これは同盟ユニットでは機能しません。"
 
-#: data/abilities.cfg:427 data/abilities.cfg:435
+#: data/abilities.cfg:426 data/abilities.cfg:434
 msgid "plague"
 msgstr "疫病"
 
-#: data/abilities.cfg:429 data/abilities.cfg:437
+#: data/abilities.cfg:428 data/abilities.cfg:436
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -294,24 +294,24 @@ msgstr ""
 "ラスで同じ陣営のユニットに置き換えられます。 この攻撃はアンデッドや村にいるユ"
 "ニットには効果がありません。"
 
-#: data/abilities.cfg:444
+#: data/abilities.cfg:443
 #, fuzzy
 msgid "slows"
 msgstr "遅化"
 
-#: data/abilities.cfg:446
+#: data/abilities.cfg:445
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
 
-#: data/abilities.cfg:452
+#: data/abilities.cfg:451
 #, fuzzy
 msgid "stones"
 msgstr "石化"
 
-#: data/abilities.cfg:454
+#: data/abilities.cfg:453
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -320,11 +320,11 @@ msgstr ""
 "石化:\n"
 "この攻撃は攻撃目標を石にします。 石化したユニットは移動や攻撃はできません。"
 
-#: data/abilities.cfg:461
+#: data/abilities.cfg:460
 msgid "marksman"
 msgstr "射撃"
 
-#: data/abilities.cfg:463
+#: data/abilities.cfg:462
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -332,11 +332,11 @@ msgstr ""
 "射撃:\n"
 "攻撃時に使用され、 この攻撃は命中率が最低60%はあるようになります。"
 
-#: data/abilities.cfg:473
+#: data/abilities.cfg:472
 msgid "magical"
 msgstr "魔法"
 
-#: data/abilities.cfg:475
+#: data/abilities.cfg:474
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -344,12 +344,12 @@ msgstr ""
 "魔法:\n"
 "この攻撃は常に命中率が70%となります。"
 
-#: data/abilities.cfg:483
+#: data/abilities.cfg:482
 #, fuzzy
 msgid "swarm"
 msgstr "強打"
 
-#: data/abilities.cfg:485
+#: data/abilities.cfg:484
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -358,11 +358,11 @@ msgid ""
 "strikes."
 msgstr ""
 
-#: data/abilities.cfg:492
+#: data/abilities.cfg:491
 msgid "charge"
 msgstr "突撃"
 
-#: data/abilities.cfg:494
+#: data/abilities.cfg:493
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -372,12 +372,12 @@ msgstr ""
 "この攻撃は攻撃目標への与えるダメージが２倍となります。 攻撃目標からの反撃の与"
 "えられるダメージも２倍となります。"
 
-#: data/abilities.cfg:504
+#: data/abilities.cfg:503
 #, fuzzy
 msgid "drains"
 msgstr "生命吸収"
 
-#: data/abilities.cfg:506
+#: data/abilities.cfg:505
 #, fuzzy
 msgid ""
 "Drain:\n"
@@ -388,11 +388,11 @@ msgstr ""
 "このユニットは生者から生命力を奪って、 与えたダメージの半分だけ自分のHPを回復"
 "させます。"
 
-#: data/abilities.cfg:512
+#: data/abilities.cfg:511
 msgid "firststrike"
 msgstr "先制"
 
-#: data/abilities.cfg:514
+#: data/abilities.cfg:513
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -400,11 +400,11 @@ msgstr ""
 "先制:\n"
 "このユニットは、 たとえ防御時であっても常にこの攻撃で先に攻撃します。"
 
-#: data/abilities.cfg:521
+#: data/abilities.cfg:520
 msgid "poison"
 msgstr "毒"
 
-#: data/abilities.cfg:523
+#: data/abilities.cfg:522
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -423,213 +423,213 @@ msgstr ""
 msgid "Artwork and Graphics Designers"
 msgstr "+アートワークおよびグラフィクスデザイナー"
 
-#: data/about.cfg:53
+#: data/about.cfg:54
 #, fuzzy
 msgid "Music"
 msgstr "+音楽"
 
-#: data/about.cfg:64
+#: data/about.cfg:65
 #, fuzzy
 msgid "Scenario Designers"
 msgstr "+シナリオデザイナー"
 
-#: data/about.cfg:81
+#: data/about.cfg:82
 #, fuzzy
 msgid "Multiplayer Developers"
 msgstr "+マルチプレイヤーマップ"
 
-#: data/about.cfg:91
+#: data/about.cfg:92
 #, fuzzy
 msgid "Multiplayer Maps"
 msgstr "+マルチプレイヤーマップ"
 
-#: data/about.cfg:101
+#: data/about.cfg:102
 #, fuzzy
 msgid "Packagers"
 msgstr "+パッケージ"
 
-#: data/about.cfg:116 data/campaigns/The_South_Guard.cfg:39
+#: data/about.cfg:117 data/campaigns/The_South_Guard.cfg:39
 #: data/campaigns/Two_Brothers.cfg:36
 #: data/campaigns/Under_the_Burning_Suns.cfg:47
 #, fuzzy
 msgid "Miscellaneous"
 msgstr "+その他"
 
-#: data/about.cfg:125
+#: data/about.cfg:126
 #, fuzzy
 msgid "Internationalization Managers"
 msgstr "+国際化責任者"
 
-#: data/about.cfg:136
+#: data/about.cfg:137
 #, fuzzy
 msgid "Afrikaans Translation"
 msgstr "+アフリカーンス語翻訳"
 
-#: data/about.cfg:146
+#: data/about.cfg:147
 #, fuzzy
 msgid "Basque Translation"
 msgstr "+バスク語翻訳"
 
-#: data/about.cfg:155
+#: data/about.cfg:156
 #, fuzzy
 msgid "Bulgarian Translation"
 msgstr "+ブルガリア語翻訳"
 
-#: data/about.cfg:163
+#: data/about.cfg:164
 #, fuzzy
 msgid "Catalan Translation"
 msgstr "+カタロニア語翻訳"
 
-#: data/about.cfg:177
+#: data/about.cfg:178
 #, fuzzy
 msgid "Chinese Translation"
 msgstr "+中国語翻訳"
 
-#: data/about.cfg:184
+#: data/about.cfg:185
 #, fuzzy
 msgid "Czech Translation"
 msgstr "+チェコ語翻訳"
 
-#: data/about.cfg:203
+#: data/about.cfg:204
 #, fuzzy
 msgid "Danish Translation"
 msgstr "+デンマーク語翻訳"
 
-#: data/about.cfg:214
+#: data/about.cfg:215
 #, fuzzy
 msgid "Dutch Translation"
 msgstr "+オランダ語翻訳"
 
-#: data/about.cfg:226
+#: data/about.cfg:227
 #, fuzzy
 msgid "English (GB) Translation"
 msgstr "+英語（イギリス）翻訳"
 
-#: data/about.cfg:233
+#: data/about.cfg:234
 #, fuzzy
 msgid "Esperanto Translation"
 msgstr "+ドイツ語翻訳"
 
-#: data/about.cfg:241
+#: data/about.cfg:242
 #, fuzzy
 msgid "Estonian Translation"
 msgstr "+エストニア語翻訳"
 
-#: data/about.cfg:248
+#: data/about.cfg:249
 #, fuzzy
 msgid "Finnish Translation"
 msgstr "+フィンランド語翻訳"
 
-#: data/about.cfg:258
+#: data/about.cfg:259
 #, fuzzy
 msgid "French Translation"
 msgstr "+フランス語翻訳"
 
-#: data/about.cfg:282
+#: data/about.cfg:283
 #, fuzzy
 msgid "German Translation"
 msgstr "+ドイツ語翻訳"
 
-#: data/about.cfg:299
+#: data/about.cfg:300
 #, fuzzy
 msgid "Greek Translation"
 msgstr "+ギリシャ語翻訳"
 
-#: data/about.cfg:309
+#: data/about.cfg:310
 #, fuzzy
 msgid "Hebrew Translation"
 msgstr "+ヘブライ語翻訳"
 
-#: data/about.cfg:317
+#: data/about.cfg:318
 #, fuzzy
 msgid "Hungarian Translation"
 msgstr "+ハンガリー語翻訳"
 
-#: data/about.cfg:334
+#: data/about.cfg:335
 #, fuzzy
 msgid "Indonesian Translation"
 msgstr "+エストニア語翻訳"
 
-#: data/about.cfg:341
+#: data/about.cfg:342
 #, fuzzy
 msgid "Italian Translation"
 msgstr "+イタリア語翻訳"
 
-#: data/about.cfg:356
+#: data/about.cfg:357
 #, fuzzy
 msgid "Japanese Translation"
 msgstr "+日本語翻訳"
 
-#: data/about.cfg:365
+#: data/about.cfg:366
 #, fuzzy
 msgid "Korean Translation"
 msgstr "+ノルウェー語翻訳"
 
-#: data/about.cfg:372
+#: data/about.cfg:373
 #, fuzzy
 msgid "Latin Translation"
 msgstr "+ラテン語翻訳"
 
-#: data/about.cfg:379
+#: data/about.cfg:380
 #, fuzzy
 msgid "Norwegian Translation"
 msgstr "+ノルウェー語翻訳"
 
-#: data/about.cfg:390
+#: data/about.cfg:391
 #, fuzzy
 msgid "Polish Translation"
 msgstr "+ポーランド語翻訳"
 
-#: data/about.cfg:405
+#: data/about.cfg:406
 #, fuzzy
 msgid "Portuguese Translation"
 msgstr "+ポルトガル（ブラジル）語翻訳"
 
-#: data/about.cfg:412
+#: data/about.cfg:413
 #, fuzzy
 msgid "Portuguese (Brazil) Translation"
 msgstr "+ポルトガル（ブラジル）語翻訳"
 
-#: data/about.cfg:426
+#: data/about.cfg:427
 #, fuzzy
 msgid "Russian Translation"
 msgstr "+ロシア語翻訳"
 
-#: data/about.cfg:436
+#: data/about.cfg:437
 #, fuzzy
 msgid "Serbian Translation"
 msgstr "+セルビア語翻訳"
 
-#: data/about.cfg:443
+#: data/about.cfg:444
 #, fuzzy
 msgid "Slovak Translation"
 msgstr "+スロバキア語翻訳"
 
-#: data/about.cfg:450
+#: data/about.cfg:451
 #, fuzzy
 msgid "Slovenian Translation"
 msgstr "+スロベニア語翻訳"
 
-#: data/about.cfg:457
+#: data/about.cfg:458
 #, fuzzy
 msgid "Spanish Translation"
 msgstr "+スペイン語翻訳"
 
-#: data/about.cfg:470
+#: data/about.cfg:471
 #, fuzzy
 msgid "Swedish Translation"
 msgstr "+スウェーデン語翻訳"
 
-#: data/about.cfg:482
+#: data/about.cfg:483
 #, fuzzy
 msgid "Turkish Translation"
 msgstr "+トルコ語翻訳"
 
-#: data/about.cfg:493 data/help.cfg:246
+#: data/about.cfg:494 data/help.cfg:246
 msgid "Contributors"
 msgstr "貢献者"
 
-#: data/about.cfg:507
+#: data/about.cfg:508
 #, fuzzy
 msgid "Bots"
 msgstr "+ボット"
@@ -678,16 +678,16 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:34
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:104
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:24
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:160
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:98
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:148
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:114
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:21
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:20
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:20
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:82
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:39
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:192
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:194
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:32
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:77
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:87
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:20
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:44
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:30
@@ -708,10 +708,10 @@ msgstr ""
 #: data/units/Elvish_Scout.cfg:30 data/units/Elvish_Sharpshooter.cfg:48
 #: data/units/Human_Horse_Grand_Knight.cfg:25
 #: data/units/Human_Horse_Knight.cfg:24 data/units/Human_Horse_Paladin.cfg:31
-#: data/units/Human_Loyalist_Bowman.cfg:33
+#: data/units/Human_Loyalist_Bowman.cfg:34
 #: data/units/Human_Loyalist_Cavalier.cfg:53
-#: data/units/Human_Loyalist_Cavalryman.cfg:54
-#: data/units/Human_Loyalist_Dragoon.cfg:57
+#: data/units/Human_Loyalist_Cavalryman.cfg:55
+#: data/units/Human_Loyalist_Dragoon.cfg:58
 #: data/units/Human_Loyalist_General.cfg:48
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:42
 #: data/units/Human_Loyalist_Lieutenant.cfg:38
@@ -736,16 +736,16 @@ msgstr "剣"
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:36
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:105
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:26
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:161
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:99
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:149
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:115
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:23
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:22
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:22
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:83
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:41
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:193
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:195
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:34
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:78
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:88
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:22
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:32
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:32
@@ -781,10 +781,10 @@ msgstr "剣"
 #: data/units/Gryphon_Master.cfg:26 data/units/Gryphon_Rider.cfg:25
 #: data/units/Human_Horse_Grand_Knight.cfg:27
 #: data/units/Human_Horse_Knight.cfg:26
-#: data/units/Human_Loyalist_Bowman.cfg:35
+#: data/units/Human_Loyalist_Bowman.cfg:36
 #: data/units/Human_Loyalist_Cavalier.cfg:55
-#: data/units/Human_Loyalist_Cavalryman.cfg:56
-#: data/units/Human_Loyalist_Dragoon.cfg:59
+#: data/units/Human_Loyalist_Cavalryman.cfg:57
+#: data/units/Human_Loyalist_Dragoon.cfg:60
 #: data/units/Human_Loyalist_Duelist.cfg:77
 #: data/units/Human_Loyalist_Fencer.cfg:82
 #: data/units/Human_Loyalist_General.cfg:50
@@ -814,7 +814,7 @@ msgstr "剣"
 #: data/units/Orcish_Warrior.cfg:29 data/units/Undead_Bat_Blood.cfg:50
 #: data/units/Undead_Bat_Vampire.cfg:74 data/units/Undead_Corpse_Ghoul.cfg:41
 #: data/units/Undead_Corpse_Necrophage.cfg:41
-#: data/units/Undead_Skele_Bone_Shooter.cfg:43
+#: data/units/Undead_Skele_Bone_Shooter.cfg:44
 #: data/units/Undead_Skele_Death_Knight.cfg:39
 #: data/units/Undead_Skele_Deathblade.cfg:43
 #: data/units/Undead_Skele_Draug.cfg:43
@@ -902,7 +902,7 @@ msgstr "打撃"
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:3
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:162
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:163
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:165
 #: data/tutorial/units/Lord.cfg:3 data/tutorial/units/Lord.cfg:162
 msgid "Lord"
 msgstr "君主"
@@ -910,7 +910,7 @@ msgstr "君主"
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:35
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:187
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:35
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:188
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:190
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:41
 #: data/tutorial/units/Lord.cfg:35 data/tutorial/units/Lord.cfg:187
 msgid ""
@@ -925,24 +925,24 @@ msgstr ""
 
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:65
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:60
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:65
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:60
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:62
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:85
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:70
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:72
 #: data/tutorial/units/Commander.cfg:71 data/tutorial/units/Lord.cfg:65
 #: data/units/Elvish_Archer.cfg:48 data/units/Elvish_Avenger.cfg:88
 #: data/units/Elvish_Captain.cfg:70 data/units/Elvish_Champion.cfg:49
 #: data/units/Elvish_Fighter.cfg:48 data/units/Elvish_Hero.cfg:48
 #: data/units/Elvish_Marshal.cfg:55 data/units/Elvish_Outrider.cfg:68
 #: data/units/Elvish_Ranger.cfg:85 data/units/Elvish_Rider.cfg:71
-#: data/units/Elvish_Scout.cfg:68 data/units/Human_Loyalist_Bowman.cfg:59
+#: data/units/Elvish_Scout.cfg:68 data/units/Human_Loyalist_Bowman.cfg:60
 #: data/units/Human_Loyalist_Longbowman.cfg:38
 #: data/units/Human_Loyalist_Master_Bowman.cfg:46
 #: data/units/Human_Outlaw_Poacher.cfg:51
-#: data/units/Human_Outlaw_Trapper.cfg:62 data/units/Orcish_Archer.cfg:53
-#: data/units/Orcish_Archer.cfg:110 data/units/Orcish_Leader.cfg:58
+#: data/units/Human_Outlaw_Trapper.cfg:62 data/units/Orcish_Archer.cfg:213
+#: data/units/Orcish_Archer.cfg:270 data/units/Orcish_Leader.cfg:58
 #: data/units/Orcish_Ruler.cfg:58 data/units/Orcish_Sovereign.cfg:70
 #: data/units/Orcish_Warlord.cfg:74
-#: data/units/Undead_Skele_Bone_Shooter.cfg:67
+#: data/units/Undead_Skele_Bone_Shooter.cfg:68
 #: data/units/Undead_Skele_Soul_Shooter.cfg:57
 #: data/units/Undead_Skeleton_Archer.cfg:62
 msgid "bow"
@@ -951,10 +951,10 @@ msgstr "弓"
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:66
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:24
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:61
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:67
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:87
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:24
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:61
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:63
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:71
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:73
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:48
 #: data/campaigns/The_South_Guard/units/Chocobone.cfg:24
 #: data/tutorial/units/Commander.cfg:72 data/tutorial/units/Lord.cfg:66
@@ -980,9 +980,9 @@ msgstr "弓"
 #: data/units/Human_Horse_Grand_Knight.cfg:64
 #: data/units/Human_Horse_Knight.cfg:63 data/units/Human_Horse_Lancer.cfg:26
 #: data/units/Human_Horse_Paladin.cfg:70 data/units/Human_Horseman.cfg:25
-#: data/units/Human_Loyalist_Bowman.cfg:60
+#: data/units/Human_Loyalist_Bowman.cfg:61
 #: data/units/Human_Loyalist_Cavalier.cfg:75
-#: data/units/Human_Loyalist_Dragoon.cfg:79
+#: data/units/Human_Loyalist_Dragoon.cfg:80
 #: data/units/Human_Loyalist_Duelist.cfg:92
 #: data/units/Human_Loyalist_General.cfg:72
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:64
@@ -1007,14 +1007,14 @@ msgstr "弓"
 #: data/units/Merman_Spearman.cfg:68 data/units/Merman_Triton.cfg:33
 #: data/units/Merman_Warrior.cfg:32 data/units/Monster_Cuttle_Fish.cfg:91
 #: data/units/Monster_Giant_Scorpion.cfg:31
-#: data/units/Monster_Sea_Serpent.cfg:29 data/units/Orcish_Archer.cfg:54
+#: data/units/Monster_Sea_Serpent.cfg:29 data/units/Orcish_Archer.cfg:214
 #: data/units/Orcish_Crossbowman.cfg:55 data/units/Orcish_Leader.cfg:59
 #: data/units/Orcish_Ruler.cfg:59 data/units/Orcish_Slurbow.cfg:106
 #: data/units/Orcish_Sovereign.cfg:71 data/units/Orcish_Warlord.cfg:75
 #: data/units/Saurian_Ambusher.cfg:36 data/units/Saurian_Ambusher.cfg:82
 #: data/units/Saurian_Flanker.cfg:37 data/units/Saurian_Flanker.cfg:83
 #: data/units/Saurian_Skirmisher.cfg:36 data/units/Saurian_Skirmisher.cfg:82
-#: data/units/Undead_Skele_Bone_Shooter.cfg:68
+#: data/units/Undead_Skele_Bone_Shooter.cfg:69
 #: data/units/Undead_Skele_Death_Knight.cfg:65
 #: data/units/Undead_Skele_Soul_Shooter.cfg:33
 #: data/units/Undead_Skele_Soul_Shooter.cfg:58
@@ -1023,23 +1023,23 @@ msgid "pierce"
 msgstr "貫通"
 
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:217
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:128
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:195
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:129
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:183
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:117
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:218
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:93
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:240
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:113
 #: data/tutorial/units/Commander.cfg:178 data/tutorial/units/Fighter.cfg:91
 #: data/tutorial/units/Fighteress.cfg:98 data/tutorial/units/Lord.cfg:217
 msgid "scepter of fire"
 msgstr "炎の笏"
 
 #: data/campaigns/Eastern_Invasion/units/Lord.cfg:218
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:129
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:196
+#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:130
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:184
 #: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:59
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:118
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:219
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:94
+#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:241
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:114
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:85
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:26
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:27
@@ -1058,7 +1058,7 @@ msgstr "炎の笏"
 #: data/units/Dwarvish_Runemaster.cfg:76 data/units/Goblin_Pillager.cfg:41
 #: data/units/Human_Mage.cfg:93 data/units/Human_Mage_Arch.cfg:93
 #: data/units/Human_Mage_Great.cfg:81 data/units/Human_Mage_Red.cfg:93
-#: data/units/Human_Mage_Silver.cfg:121 data/units/Orcish_Archer.cfg:111
+#: data/units/Human_Mage_Silver.cfg:121 data/units/Orcish_Archer.cfg:271
 #: data/units/Orcish_Crossbowman.cfg:114 data/units/Orcish_Slurbow.cfg:165
 msgid "fire"
 msgstr "火炎"
@@ -1214,8 +1214,8 @@ msgid "gaze"
 msgstr "凝視"
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:21
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:56
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:57
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:58
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:59
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:58
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:47
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:25
@@ -1237,13 +1237,13 @@ msgid "cold"
 msgstr "冷気"
 
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:139
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:127
 #: data/tutorial/units/Commander.cfg:3 data/tutorial/units/Commander.cfg:122
 msgid "Commander"
 msgstr "司令官"
 
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:20
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:156
+#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:144
 #: data/tutorial/units/Commander.cfg:36 data/tutorial/units/Commander.cfg:155
 msgid ""
 "The rank of Commander is held by those who lead battle groups into combat. "
@@ -1258,12 +1258,12 @@ msgstr ""
 "敗北です。"
 
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:3
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:81
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:97
 msgid "female^Dark Queen"
 msgstr "ダーククイーン"
 
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:18
-#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:96
+#: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:112
 msgid ""
 "The evil queen mother Asheviere has terrorized Wesnoth for many years. Her "
 "knowledge of magic makes her a worthy foe in combat, although her power is "
@@ -1396,7 +1396,7 @@ msgid "female^Princess"
 msgstr "王女"
 
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:28
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:74
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:84
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
@@ -1409,7 +1409,7 @@ msgstr ""
 "女の存在によって うまく戦えるようになります。 また、 王女は 敏捷で 機知に富ん"
 "でおり、 盗賊のような技能も 持っています。"
 
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:50
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:60
 msgid "Princess"
 msgstr "王女"
 
@@ -3955,7 +3955,7 @@ msgstr "2P - 流星湖"
 #, fuzzy
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
-"coniferous region. Recommended settings of 2 gold per village."
+"coniferous region. Recommended setting of 2 gold per village."
 msgstr ""
 "その昔天から落ちた巨大な流星が、この針葉樹地帯に痕跡を残した。 村当たり2Gの設"
 "定を推奨。"
@@ -4036,40 +4036,40 @@ msgstr ""
 "#あなたがボールを敵の最終ゾーンに持ち込むよりも多くの回数で、敵がボールをあな"
 "たの最終ゾーンに 持ち込む。"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:195
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:472
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:194
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:471
 msgid "Red scores! Current score is $redscore-$bluescore"
 msgstr "赤の得点！ 現在のスコアは $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:243
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:520
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:242
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:519
 msgid "Blue scores! Current score is $redscore-$bluescore"
 msgstr "青の得点！ 現在のスコアは $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:333
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:610
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:332
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:609
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
 msgstr "そのボールを $passto.タイプ ($xloc,$yloc)にパスしてよいですか？"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:335
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:612
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:334
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:611
 msgid "Yes!"
 msgstr "そう！"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:357
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:634
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:356
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:633
 msgid "No"
 msgstr "いいえ"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:657
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:656
 msgid "Blue team wins! Final score: $redscore-$bluescore"
 msgstr "青の勝利！ 最終スコアは $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:669
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:668
 msgid "Red team wins! Final score: $redscore-$bluescore"
 msgstr "赤の勝利！ 最終スコアは $redscore-$bluescore"
 
-#: data/scenarios/multiplayer/2p_Wesbowl.cfg:681
+#: data/scenarios/multiplayer/2p_Wesbowl.cfg:680
 msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "引き分け！ 最終スコアは $redscore-$bluescore"
 
@@ -4113,26 +4113,27 @@ msgstr ""
 "この水で分けられた戦場で3人のプレイヤが顔を突き合わせる。 １村あたり 2Gの設定"
 "を推奨。"
 
-#: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:3
+#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:3
 msgid "4p - Blue Water Province"
 msgstr "4P - 碧海地方"
 
-#: data/scenarios/multiplayer/4p_Bluewater_Province.cfg:4
+#: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
+#, fuzzy
 msgid ""
 "It has been said that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
 "snowcapped mountains of this small province, its villagers hardly seem to "
-"take notice. Recommended settings of 2 gold per village."
+"take notice. Recommended setting of 2 gold per village."
 msgstr ""
 "碧海地方では二十何回も破壊と再建が繰り返されてきたと言われる。今、この小さな"
 "地方の岩がちな流れと雪の積もった山において再び軍隊が結集しているが、村人達は"
 "気づいていないようだ。村当たり 2Gの設定を推奨。"
 
-#: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:9
+#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:9
 msgid "4p - Castle Hopping Isle"
 msgstr "4P - 島越えの城"
 
-#: data/scenarios/multiplayer/4p_CastleHoppingIsle.cfg:11
+#: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:11
 #, fuzzy
 msgid ""
 "Many closely placed and strategically located castles. Which one will you "
@@ -4197,7 +4198,7 @@ msgstr "3P - Morituri"
 #, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
-"settings of 2 gold per village."
+"setting of 2 gold per village."
 msgstr ""
 "この水で分けられた戦場で3人のプレイヤが顔を突き合わせる。 １村あたり 2Gの設定"
 "を推奨。"
@@ -4210,7 +4211,7 @@ msgstr ""
 msgid ""
 "A 35X27 2 vs. 2 map with five separate paths of engagement.  Balanced to be "
 "played east vs west (1&3 vs 2&4), but works well with any teams or FFA.  "
-"2gpv. 28villages."
+"Recommended setting of 2 gold per village. 28 villages."
 msgstr ""
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:5
@@ -4238,11 +4239,11 @@ msgstr ""
 "自然のまま手つかずの荒野の巨大な地域、その地形に森林と洞窟と川と古代の要塞の"
 "廃墟が点在する。村当たり 1Gの設定を推奨。"
 
-#: data/scenarios/multiplayer/5p_ForestOfFear.cfg:3
+#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:3
 msgid "5p - Forest of Fear"
 msgstr "5P - 畏敬の森"
 
-#: data/scenarios/multiplayer/5p_ForestOfFear.cfg:5
+#: data/scenarios/multiplayer/5p_Forest_of_Fear.cfg:5
 msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "この混じりあった地形の中、5つの軍隊が覇権を巡って戦う。"
 
@@ -4280,12 +4281,26 @@ msgstr ""
 "6つの箱詰めにされた軍隊が危機に直面するこの死の狭い戦地では、真の戦略家のみが"
 "生き残るであろう。村当たり 2Gの設定を推奨。"
 
-#: data/scenarios/multiplayer/Random_Scenario.cfg:4
-#: data/scenarios/multiplayer/Random_Scenario.cfg:12
+#: data/scenarios/multiplayer/8p_Morituri.cfg:3
+#, fuzzy
+msgid "8p - Morituri"
+msgstr "3P - Morituri"
+
+#: data/scenarios/multiplayer/8p_Morituri.cfg:5
+#, fuzzy
+msgid ""
+"Teamwork and tactics are key to victory in this unusual battlefield, where "
+"eight armies fight to the finish. Recommended setting of 2 gold per village."
+msgstr ""
+"6つの箱詰めにされた軍隊が危機に直面するこの死の狭い戦地では、真の戦略家のみが"
+"生き残るであろう。村当たり 2Gの設定を推奨。"
+
+#: data/scenarios/multiplayer/Random_Scenario.cfg:3
+#: data/scenarios/multiplayer/Random_Scenario.cfg:8
 msgid "Random map"
 msgstr "ランダムマップ"
 
-#: data/scenarios/multiplayer/Random_Scenario.cfg:5
+#: data/scenarios/multiplayer/Random_Scenario.cfg:4
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
@@ -4294,7 +4309,7 @@ msgstr ""
 "りますが、 時間をかけて良いものができるまで 作り直してもよいでしょう。"
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:4
-#: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:12
+#: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
 msgstr "ランダムマップ(砂漠)"
 
@@ -4308,7 +4323,7 @@ msgstr ""
 "くありますが、 時間をかけて良いものができるまで 作り直してもよいでしょう。"
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:4
-#: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:12
+#: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:9
 msgid "Random map (Marsh)"
 msgstr "ランダムマップ(沼地)"
 
@@ -4322,7 +4337,7 @@ msgstr ""
 "よくありますが、 時間をかけて良いものができるまで 作り直してもよいでしょう。"
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:4
-#: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:12
+#: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:9
 msgid "Random map (Winter)"
 msgstr "ランダムマップ（冬）"
 
@@ -4511,28 +4526,30 @@ msgid "Green"
 msgstr "緑"
 
 #: data/team_colors.cfg:22
-msgid "Cyan"
-msgstr ""
-
-#: data/team_colors.cfg:28
 msgid "Purple"
 msgstr "紫"
 
-#: data/team_colors.cfg:34
+#: data/team_colors.cfg:28
 msgid "Orange"
 msgstr "橙"
 
-#: data/team_colors.cfg:40
-msgid "Grey"
-msgstr "灰"
+#: data/team_colors.cfg:34
+#, fuzzy
+msgid "Black"
+msgstr "< 戻る"
 
-#: data/team_colors.cfg:46
+#: data/team_colors.cfg:40
 msgid "White"
 msgstr "白"
 
-#: data/team_colors.cfg:52
+#: data/team_colors.cfg:46
 msgid "Brown"
 msgstr "茶"
+
+#: data/team_colors.cfg:52
+#, fuzzy
+msgid "Teal"
+msgstr "チーム"
 
 #: data/terrain.cfg:11 data/themes/default.cfg:535
 #: src/multiplayer_create.cpp:67 src/multiplayer_lobby.cpp:347
@@ -4621,7 +4638,7 @@ msgstr "行動"
 msgid "End Turn"
 msgstr "ターン終了"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2228
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2121
 msgid "HP"
 msgstr "HP"
 
@@ -6492,7 +6509,7 @@ msgstr ""
 msgid "Bowman"
 msgstr "弓兵"
 
-#: data/units/Human_Loyalist_Bowman.cfg:17
+#: data/units/Human_Loyalist_Bowman.cfg:18
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -6521,7 +6538,7 @@ msgstr ""
 "かあります。"
 
 #: data/units/Human_Loyalist_Cavalier.cfg:74
-#: data/units/Human_Loyalist_Dragoon.cfg:78
+#: data/units/Human_Loyalist_Dragoon.cfg:79
 #: data/units/Human_Loyalist_Duelist.cfg:91
 #: data/units/Human_Loyalist_General.cfg:71
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:63
@@ -6538,7 +6555,7 @@ msgstr "クロスボウ"
 msgid "Cavalryman"
 msgstr "竜騎兵"
 
-#: data/units/Human_Loyalist_Cavalryman.cfg:19
+#: data/units/Human_Loyalist_Cavalryman.cfg:20
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
 "cavalryman wears heavier armor, and carries a sword and shield, rather than "
@@ -6561,7 +6578,7 @@ msgstr ""
 msgid "Dragoon"
 msgstr "熟練竜騎士"
 
-#: data/units/Human_Loyalist_Dragoon.cfg:17
+#: data/units/Human_Loyalist_Dragoon.cfg:18
 msgid ""
 "The more talented cavalrymen in the armies of Wesnoth are trained in the use "
 "of the crossbow, and outfitted with much more powerful steeds. Well-armored, "
@@ -7331,7 +7348,7 @@ msgstr ""
 "しょうが、無法者は武器の致命的な許容量や攻撃手段の有効性をよく心得ています。"
 "無法者は昼間の戦闘にはいくらかの不安があり、日暮れに包まれるのを好みます。"
 
-#: data/units/Human_Outlaw.cfg:90
+#: data/units/Human_Outlaw.cfg:100
 msgid "female^Outlaw"
 msgstr "女無法者"
 
@@ -7413,7 +7430,7 @@ msgstr ""
 msgid "club"
 msgstr "棍棒"
 
-#: data/units/Human_Outlaw_Footpad.cfg:109
+#: data/units/Human_Outlaw_Footpad.cfg:99
 msgid "female^Footpad"
 msgstr "追いはぎ女"
 
@@ -8821,7 +8838,7 @@ msgstr "疫病"
 msgid "Bone Shooter"
 msgstr "ボーンシューター"
 
-#: data/units/Undead_Skele_Bone_Shooter.cfg:16
+#: data/units/Undead_Skele_Bone_Shooter.cfg:17
 #, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
@@ -8839,7 +8856,7 @@ msgstr ""
 "よって造られた矢が詰められています。不幸な敵によって単純に「ボーンシュー"
 "ター」と名づけられた忌まわしき者たちは生ける者すべての恐怖となります。"
 
-#: data/units/Undead_Skele_Bone_Shooter.cfg:41
+#: data/units/Undead_Skele_Bone_Shooter.cfg:42
 #: data/units/Undead_Skele_Soul_Shooter.cfg:31
 msgid "stab"
 msgstr "突き刺し"
@@ -9688,7 +9705,7 @@ msgstr ""
 "た。"
 
 #: src/game.cpp:1042 src/game.cpp:1081 src/game.cpp:1106
-#: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:337
+#: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:332
 msgid "Connection timed out"
 msgstr "接続時間切れ"
 
@@ -9759,15 +9776,15 @@ msgid ""
 "characters"
 msgstr ""
 
-#: src/game.cpp:1190 src/playcampaign.cpp:113 src/playcampaign.cpp:316
+#: src/game.cpp:1190 src/playcampaign.cpp:108 src/playcampaign.cpp:311
 msgid "The game could not be loaded: "
 msgstr "ゲームはロードできませんでした: "
 
-#: src/game.cpp:1192 src/playcampaign.cpp:115 src/playcampaign.cpp:319
+#: src/game.cpp:1192 src/playcampaign.cpp:110 src/playcampaign.cpp:314
 msgid "Error while playing the game: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game.cpp:1204 src/playcampaign.cpp:117 src/playcampaign.cpp:322
+#: src/game.cpp:1204 src/playcampaign.cpp:112 src/playcampaign.cpp:317
 msgid "The game map could not be loaded: "
 msgstr "ゲームマップを読み込めませんでした: "
 
@@ -10030,7 +10047,7 @@ msgstr "受けたダメージ (EV)"
 msgid "Statistics"
 msgstr "統計情報"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2259
+#: src/menu_events.cpp:220 src/unit.cpp:2152
 msgid "Moves"
 msgstr "移動"
 
@@ -10064,7 +10081,7 @@ msgstr "維持"
 msgid "Income"
 msgstr "収入"
 
-#: src/menu_events.cpp:368 src/playcampaign.cpp:287 src/playcampaign.cpp:408
+#: src/menu_events.cpp:368 src/playcampaign.cpp:282 src/playcampaign.cpp:403
 msgid "Name:"
 msgstr "名前:"
 
@@ -10089,7 +10106,7 @@ msgstr "保存された"
 msgid "The game has been saved"
 msgstr "ゲームを保存しました。"
 
-#: src/menu_events.cpp:386 src/playcampaign.cpp:295 src/playcampaign.cpp:416
+#: src/menu_events.cpp:386 src/playcampaign.cpp:290 src/playcampaign.cpp:411
 msgid "The game could not be saved"
 msgstr "ゲームは保存できませんでした"
 
@@ -10314,12 +10331,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2314
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2207
 msgid "("
 msgstr "（"
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2321
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2214
 msgid ")"
 msgstr "）"
 
@@ -10692,31 +10709,31 @@ msgstr "初期応答確認を送れませんでした"
 msgid "The file you have tried to load is corrupt"
 msgstr "読み込もうとしたファイルは 壊れています。"
 
-#: src/playcampaign.cpp:264
+#: src/playcampaign.cpp:259
 msgid "Defeat"
 msgstr "敗北"
 
-#: src/playcampaign.cpp:265
+#: src/playcampaign.cpp:260
 msgid "You have been defeated!"
 msgstr "あなたは敗れました！"
 
-#: src/playcampaign.cpp:278
+#: src/playcampaign.cpp:273
 msgid " replay"
 msgstr "リプレイ"
 
-#: src/playcampaign.cpp:286
+#: src/playcampaign.cpp:281
 msgid "Do you want to save a replay of this scenario?"
 msgstr "このシナリオのリプレイを保存しますか？"
 
-#: src/playcampaign.cpp:335
+#: src/playcampaign.cpp:330
 msgid "Downloading next level..."
 msgstr "次のレベルをダウンロード中..."
 
-#: src/playcampaign.cpp:407
+#: src/playcampaign.cpp:402
 msgid "Do you want to save your game?"
 msgstr "このゲームを保存しますか？"
 
-#: src/playcampaign.cpp:432
+#: src/playcampaign.cpp:427
 msgid "Unknown scenario: '"
 msgstr "不明のシナリオ: '"
 
@@ -10894,59 +10911,59 @@ msgstr "同盟所有の村"
 msgid "Observers:"
 msgstr "観戦者:"
 
-#: src/serialization/parser.cpp:99
+#: src/serialization/parser.cpp:98
 msgid "Unexpected characters at line start"
 msgstr "行頭に予期せぬ文字"
 
-#: src/serialization/parser.cpp:126
+#: src/serialization/parser.cpp:125
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr "$pos の位置のタグ $tag に対する閉じタグがない"
 
-#: src/serialization/parser.cpp:141
+#: src/serialization/parser.cpp:140
 msgid "Unterminated [element] tag"
 msgstr "予期せぬ [element] タグ"
 
-#: src/serialization/parser.cpp:151 src/serialization/parser.cpp:187
+#: src/serialization/parser.cpp:150 src/serialization/parser.cpp:186
 msgid "Invalid tag name"
 msgstr "無効なタグ名"
 
-#: src/serialization/parser.cpp:154
+#: src/serialization/parser.cpp:153
 msgid "Unterminated [+element] tag"
 msgstr "予期せぬ [+element] タグ"
 
-#: src/serialization/parser.cpp:170
+#: src/serialization/parser.cpp:169
 msgid "Invalid closing tag name"
 msgstr "不正な閉じタグ名"
 
-#: src/serialization/parser.cpp:173
+#: src/serialization/parser.cpp:172
 msgid "Unterminated closing tag"
 msgstr "終わっていない閉じタグ"
 
-#: src/serialization/parser.cpp:175
+#: src/serialization/parser.cpp:174
 msgid "Unexpected closing tag"
 msgstr "予期せぬ閉じタグ"
 
-#: src/serialization/parser.cpp:181
+#: src/serialization/parser.cpp:180
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr "($pos にて開かれた)タグ $tag に対するタグ $tag2 の不正な閉じタグを発見"
 
-#: src/serialization/parser.cpp:206 src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:205 src/serialization/parser.cpp:217
 msgid "Empty variable name"
 msgstr "空の変数名"
 
-#: src/serialization/parser.cpp:212
+#: src/serialization/parser.cpp:211
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "変数名の後に予期せぬ文字 ( , あるいは = を期待)"
 
-#: src/serialization/parser.cpp:247 src/serialization/parser.cpp:271
+#: src/serialization/parser.cpp:246 src/serialization/parser.cpp:270
 msgid "Unterminated quoted string"
 msgstr "引用符が閉じられていない文字列"
 
-#: src/serialization/parser.cpp:294
+#: src/serialization/parser.cpp:293
 msgid " included from "
 msgstr "は以下に含まれる:"
 
-#: src/serialization/parser.cpp:315
+#: src/serialization/parser.cpp:314
 msgid "$error at $pos"
 msgstr "$pos の $error"
 
@@ -11039,15 +11056,15 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnothの書"
 
-#: src/unit.cpp:2194 src/unit.cpp:2319
+#: src/unit.cpp:2087 src/unit.cpp:2212
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2276
+#: src/unit.cpp:2169
 msgid "XP to advance"
 msgstr "レベルアップに必要な経験値"
 
-#: src/unit.cpp:2310
+#: src/unit.cpp:2203
 msgid ": "
 msgstr ": "
 
@@ -11086,6 +11103,9 @@ msgstr ""
 #: src/upload_log.cpp:283
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#~ msgid "Grey"
+#~ msgstr "灰"
 
 #~ msgid ""
 #~ "\n"
