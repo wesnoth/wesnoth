@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-04-17 23:00+0200\n"
-"PO-Revision-Date: 2006-04-22 18:05+0100\n"
+"PO-Revision-Date: 2006-04-23 17:03+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -81,6 +81,7 @@ msgstr "*Pressez le bouton gauche sur $student"
 
 # $he n'est pas traduit !
 # Piou2fois : oui mais il faut tout de même le mettre, ça portera l'attention.
+# Piou2fois : pour la traduction, Jehan a raison, il vaut mieux mettre $student, mais il faudra penser à mettre $he quand on pourra le traduire (il elle)
 #: data/tutorial/scenarios/1_Tutorial.cfg:205
 msgid ""
 "*You have selected $student.\n"
@@ -88,7 +89,7 @@ msgid ""
 "*Left click or any key to continue..."
 msgstr ""
 "*Vous avez sélectionné $student.\n"
-"La zone dans laquelle $he peut se déplacer est en surbrillance.\n"
+"La zone dans laquelle $student peut se déplacer est en surbrillance.\n"
 "*Pressez le bouton gauche ou sur n'importe quelle touche pour continuer..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:208
@@ -179,7 +180,7 @@ msgstr "Eh ! Cette quintaine se défend !"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:396
 msgid "Hmm, maybe we should have started with a doll."
-msgstr "Hmm, peut-être aurions nous dû commencer avec une poupée."
+msgstr "Hmm, peut-être aurions-nous dû commencer avec une poupée."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:401
 msgid "Should I retreat?"
@@ -286,7 +287,7 @@ msgid ""
 "You have plenty of gold for that."
 msgstr ""
 "Une idée brillante. Si vous retournez dans votre donjon, vous pouvez "
-"recruter deux unités. Tu as plein d'or à cette intention."
+"recruter deux unités. Vous avez plein d'or à cette intention."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:525
 msgid "Move $student to the keep"
@@ -534,8 +535,8 @@ msgstr ""
 "En effet, vous gagnez de l'expérience en vous battant, en particulier "
 "lorsque vous tuez un ennemi : gagnez suffisamment d'expérience et vous "
 "devenez plus puissant.\n"
-"Maintenant $student, je te laisse avec davantage de mannequins pour "
-"t'entraîner ! Après cela, nous aurons du vrai travail..."
+"Maintenant $student, je vous laisse avec davantage de mannequins pour vous "
+"entraîner ! Après cela, nous aurons du vrai travail..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:914
 msgid "Do you want to keep practicing?"
@@ -656,7 +657,7 @@ msgstr "Galdrad"
 #: data/tutorial/scenarios/2_Tutorial.cfg:296
 #: data/tutorial/scenarios/2_Tutorial.cfg:330
 msgid "Defeat the Orc Leader"
-msgstr "Battez le Meneur orc"
+msgstr "Éliminez le Meneur orc"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:300
 msgid "Death of Konrad"
@@ -690,7 +691,7 @@ msgstr ""
 "côté de la rivière. Nous sommes en pays elfe : nous autres Elfes sommes "
 "rapides et durs à atteindre en forêt. Ce sont des fous pour être venus ici ! "
 "Vous devez éliminer leur meneur, de sorte qu'ils ne nous dérangent plus "
-"jamais. Je vous conseillerez."
+"jamais. Je vous conseillerai."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:375
 msgid "What should I do?"
@@ -823,7 +824,7 @@ msgstr "Guerrier elfe"
 #: data/tutorial/scenarios/2_Tutorial.cfg:499
 msgid "Right click on the tile south of you and recruit an Elvish Fighter"
 msgstr ""
-"Pressez le bouton droit sur la case au sud de vous puis recruter un guerrier "
+"Pressez le bouton droit sur la case au sud de vous puis recrutez un guerrier "
 "elfe"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:533
@@ -854,7 +855,7 @@ msgstr ""
 "Il est vrai qu'aucune des unités que vous avez recrutées ne peut bouger, "
 "mais vous, vous le pouvez encore. Vos 5 unités vous coûtent 5 pièces d'or, "
 "vous appauvrissant de 3 pièces d'or à chaque tour. Vous avez besoin "
-"d'avantage de revenu."
+"davantage de revenu."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:543
 msgid "Move $student to capture a village"
