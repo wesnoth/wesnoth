@@ -291,58 +291,55 @@ void play_controller::init_side(const unsigned int team_index){
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
 
-	//if a side is dead, don't do their turn
-	if(!current_team.is_empty() || team_units(units_,player_number_) == 0) {
-		if(team_manager_.is_observer()) {
-			gui_->set_team(size_t(team_index));
-		}
+	if(team_manager_.is_observer()) {
+		gui_->set_team(size_t(team_index));
+	}
 
-		std::stringstream player_number_str;
-		player_number_str << player_number_;
-		gamestate_.set_variable("side_number",player_number_str.str());
+	std::stringstream player_number_str;
+	player_number_str << player_number_;
+	gamestate_.set_variable("side_number",player_number_str.str());
 
-		//fire side turn event only if real side change occurs not counting changes from void to a side
-		if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
-			game_events::fire("side turn");
-		}
+	//fire side turn event only if real side change occurs not counting changes from void to a side
+	if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
+		game_events::fire("side turn");
+	}
 
-		//we want to work out if units for this player should get healed, and the
-		//player should get income now. healing/income happen if it's not the first
-		//turn of processing, or if we are loading a game, and this is not the
-		//player it started with.
-		const bool turn_refresh = status_.turn() > start_turn_ || loading_game_ && team_index != (first_player_ - 1);
+	//we want to work out if units for this player should get healed, and the
+	//player should get income now. healing/income happen if it's not the first
+	//turn of processing, or if we are loading a game, and this is not the
+	//player it started with.
+	const bool turn_refresh = status_.turn() > start_turn_ || loading_game_ && team_index != (first_player_ - 1);
 
-		if(turn_refresh) {
-			for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
-				if(i->second.side() == (size_t)player_number_) {
-					i->second.new_turn(i->first);
-				}
+	if(turn_refresh) {
+		for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
+			if(i->second.side() == (size_t)player_number_) {
+				i->second.new_turn(i->first);
 			}
-
-			current_team.new_turn();
-
-			//if the expense is less than the number of villages owned,
-			//then we don't have to pay anything at all
-			const int expense = team_upkeep(units_,player_number_);
-			if(expense > 0) {
-				current_team.spend_gold(expense);
-			}
-
-			calculate_healing((*gui_),status_,map_,units_,player_number_,teams_, !recorder.is_skipping());
-			reset_resting(units_, player_number_);
 		}
 
-		current_team.set_time_of_day(int(status_.turn()),status_.get_time_of_day());
+		current_team.new_turn();
 
-		gui_->set_playing_team(size_t(team_index));
-
-		if (!recorder.is_skipping()){
-			::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,team_index);
+		//if the expense is less than the number of villages owned,
+		//then we don't have to pay anything at all
+		const int expense = team_upkeep(units_,player_number_);
+		if(expense > 0) {
+			current_team.spend_gold(expense);
 		}
 
-		if (!recorder.is_skipping()){
-			gui_->scroll_to_leader(units_, player_number_);
-		}
+		calculate_healing((*gui_),status_,map_,units_,player_number_,teams_, !recorder.is_skipping());
+		reset_resting(units_, player_number_);
+	}
+
+	current_team.set_time_of_day(int(status_.turn()),status_.get_time_of_day());
+
+	gui_->set_playing_team(size_t(team_index));
+
+	if (!recorder.is_skipping()){
+		::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,team_index);
+	}
+
+	if (!recorder.is_skipping()){
+		gui_->scroll_to_leader(units_, player_number_);
 	}
 }
 

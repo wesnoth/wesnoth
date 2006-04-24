@@ -324,28 +324,31 @@ void playsingle_controller::play_turn(){
 	LOG_NG << "turn: " << status_.turn() << "\n";
 
 	for(player_number_ = first_player_; player_number_ <= teams_.size(); player_number_++) {
-		init_side(player_number_ - 1);
+		//if a side is dead, don't do their turn
+		if(!teams_[player_number_ - 1].is_empty() && team_units(units_,player_number_) > 0) {
+			init_side(player_number_ - 1);
 
-		if (replaying_){
-			const hotkey::basic_handler key_events_handler(gui_);
-			LOG_NG << "doing replay " << player_number_ << "\n";
-			try {
-				replaying_ = ::do_replay(*gui_,map_,gameinfo_,units_,teams_,
-						              player_number_,status_,gamestate_);
-			} catch(replay::error&) {
-				gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_ONLY);
+			if (replaying_){
+				const hotkey::basic_handler key_events_handler(gui_);
+				LOG_NG << "doing replay " << player_number_ << "\n";
+				try {
+					replaying_ = ::do_replay(*gui_,map_,gameinfo_,units_,teams_,
+										  player_number_,status_,gamestate_);
+				} catch(replay::error&) {
+					gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_ONLY);
 
-				replaying_ = false;
+					replaying_ = false;
+				}
+				LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 			}
-			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
-		}
 
-		if (!replaying_){
-			play_side(player_number_);
-		}
+			if (!replaying_){
+				play_side(player_number_);
+			}
 
-		finish_side_turn();
-		check_victory(units_,teams_);
+			finish_side_turn();
+			check_victory(units_,teams_);
+		}
 	}
 
 	//time has run out
