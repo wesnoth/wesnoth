@@ -91,6 +91,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	end_turn_ = false;
 	refreshing_  = false;
 	hidden_ = false;
+	offset_ = 0;
 	if(race_->not_living()) {
 		set_state("not_living","yes");
 	}
@@ -107,6 +108,7 @@ unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
 	end_turn_ = false;
 	refreshing_  = false;
 	hidden_ = false;
+	offset_ = 0;
 	if(race_->not_living()) {
 		set_state("not_living","yes");
 	}
@@ -149,6 +151,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	getsHit_=0;
 	end_turn_ = false;
 	hold_position_ = false;
+	offset_ = 0;
 }
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) : 
            gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),facing_(gamemap::location::NORTH_EAST),
@@ -175,6 +178,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	getsHit_=0;
 	end_turn_ = false;
 	hold_position_ = false;
+	offset_ = 0;
 }
 
 unit::~unit()

@@ -841,8 +841,15 @@ void display::draw(bool update,bool force)
 			changed = true;
 		}
 
+		std::set<gamemap::location> invalidated_temp = invalidated_;
+		/*
+		for (std::set<gamemap::location>::const_iterator it =
+			invalidated_.begin(); it != invalidated_.end(); ++it){
+			invalidated_temp.insert(it);
+		}
+		*/
 		for(std::set<gamemap::location>::const_iterator it =
-		    invalidated_.begin(); it != invalidated_.end(); ++it) {
+		    invalidated_temp.begin(); it != invalidated_temp.end(); ++it) {
 			draw_tile(it->x,it->y);
 		}
 
@@ -1327,12 +1334,13 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 void display::draw_tile(int x, int y)
 {
 	// list of tiles in the process of being redrawn (protect from recursion problems
+	static int recursion_level = 0;
 	static std::set<gamemap::location> redrawn;
 	reach_map::iterator reach = reach_map_.end();
 
 	const gamemap::location loc(x,y);
 
-	if(redrawn.find(loc) != redrawn.end()) {
+	if (redrawn.find(loc) != redrawn.end()) {
 		//this tile has already redrawn the terrain and is waiting to redraw the "upper half" (unit)
 		return;
 	}
@@ -1443,22 +1451,35 @@ void display::draw_tile(int x, int y)
 	}
 
 	//first half is done, mark ourselves as half refreshed
-	redrawn.insert(loc);
+	//redrawn.insert(loc);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc, adjacent);
 	for(int tile = 0; tile != 6; ++tile) {
-		if(units_.find(adjacent[tile]) != units_.end()) {
+		if ((units_.find(adjacent[tile]) != units_.end()) && (recursion_level < 2)) {
 			// neighbour contains a unit, since its unit could overlap on us, we must redraw it
+			recursion_level++;
+			//std::cerr << "recursion_level: " << recursion_level << "\n";
 			draw_tile(adjacent[tile].x, adjacent[tile].y);
+			recursion_level--;
 		}
 	}
+	
 	if(it != units_.end()) {
+		//Is this really necessary? If we overlap on an adjacent tile, there should be nothing
+		//essential to be redrawn i guess
+		/*
 		// neighbours must be redrawn because we overlap on them
 		for(int tile = 0; tile != 6; ++tile) {
-			draw_tile(adjacent[tile].x, adjacent[tile].y);
+			recursion_level++;
+			if (recursion_level < 2){
+				draw_tile(adjacent[tile].x, adjacent[tile].y);
+			}
+			recursion_level--;
 		}
+		*/
 		it->second.refresh_unit(*this,loc,true);
 	}
+	
 	
 	if(fogged(x,y) && shrouded(x,y) == false) {
 		const surface fog_surface(image::get_image("terrain/fog.png"));
@@ -1511,9 +1532,8 @@ void display::draw_tile(int x, int y)
 	update_rect(xpos,ypos,zoom_,zoom_);
 	//redrawing is done
 	redrawn.erase(loc);
-	//FIXME: avoid useless redrawin
-	//YogiHH: this corrupts the iterator in display::draw so i removed it
-	//invalidated_.erase(loc);
+	//avoid useless redrawin
+	invalidated_.erase(loc);
 }
 
 void display::draw_enemies_reach(unsigned int num, int xloc, int yloc)
