@@ -1491,7 +1491,7 @@ void attack(display& gui, const gamemap& map,
 				break;
 			} else if(hits) {
 				if (d_stats.poisons &&
-				   !utils::string_bool(a->second.get_state("poisoned")) {
+				   !utils::string_bool(a->second.get_state("poisoned"))) {
 					if (update_display){
 						gui.float_label(a->first,_("poisoned"),255,0,0);
 					}

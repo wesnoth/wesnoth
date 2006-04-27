@@ -1181,12 +1181,13 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 				best_weapon_rating = weapon_rating;
 			}
 
-			const battle_context::unit_stats &att(bc.get_attacker_stats()), &def(bc.get_defender_stats());
+			const battle_context::unit_stats& att = battle_context::unit_stats(bc.get_attacker_stats());
+			const battle_context::unit_stats& def = battle_context::unit_stats(bc.get_defender_stats());
 
 			config tmp_config;
 			attack_type no_weapon(tmp_config, "fake_attack", "");
-			const attack_type &attw(*att.weapon);
-			const attack_type &defw(def.weapon ? *def.weapon : no_weapon);
+			const attack_type& attw = attack_type(*att.weapon);
+			const attack_type& defw = attack_type(def.weapon ? *def.weapon : no_weapon);
 
 			//if there is an attack special or defend special, we output a single space for the other unit, to make sure
 			//that the attacks line up nicely.

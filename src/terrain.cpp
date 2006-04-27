@@ -17,7 +17,7 @@
 #include "log.hpp"
 #include "util.hpp"
 #include "terrain.hpp"
-#include "string_utils.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <algorithm>
 #include <cstdlib>
