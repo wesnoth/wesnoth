@@ -399,7 +399,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 	//find the first eligible unit
 	for(u = units_.begin(); u != units_.end(); ++u) {
-		if(!(u->second.side() != team_num_ || u->second.can_recruit() || u->second.movement_left() <= 0 || u->second.get_state("stoned")=="yes")) {
+		if(!(u->second.side() != team_num_ || u->second.can_recruit() || u->second.movement_left() <= 0 || utils::string_bool(u->second.get_state("stoned")))) {
 			break;
 		}
 	}
@@ -410,7 +410,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	}
 
 	//guardian units stay put
-	if(u->second.get_state("guardian")=="yes") {
+	if(utils::string_bool(u->second.get_state("guardian"))) {
 		LOG_AI << u->second.id() << " is guardian, staying still\n";
 		return std::pair<location,location>(u->first,u->first);
 	}
@@ -498,14 +498,14 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 	//if we have the 'simple_targetting' flag set, then we don't see if any other
 	//units can put a better bid forward for this target
-	const bool dumb_ai = current_team().ai_parameters()["simple_targetting"] == "yes";
+	const bool dumb_ai = utils::string_bool(current_team().ai_parameters()["simple_targetting"]);
 
 	if(dumb_ai == false) {
 		LOG_AI << "complex targetting...\n";
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
 			if(u->second.side() != team_num_ || u->second.can_recruit() ||
-			   u->second.movement_left() <= 0 || u->second.get_state("guardian")=="yes" || u->second.get_state("stoned")=="yes") {
+			   u->second.movement_left() <= 0 || utils::string_bool(u->second.get_state("guardian")) || utils::string_bool(u->second.get_state("stoned"))) {
 				continue;
 			}
 

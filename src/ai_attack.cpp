@@ -414,7 +414,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 
 		int defenderxp = 0;
 
-		bool defender_slowed= defend_it->second.get_state("slowed")=="yes";
+		bool defender_slowed = utils::string_bool(defend_it->second.get_state("slowed"));
 
 		int defhp = target_hp;
 		for(size_t i = 0; i != movements.size() && defhp; ++i) {
@@ -432,7 +432,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 			}
 
 			const bool on_village = map.is_village(movements[i].second);
-			bool attacker_slowed= att->second.get_state("slowed")=="yes";
+			bool attacker_slowed = utils::string_bool(att->second.get_state("slowed"));
 
 			//up to double the value of a unit based on experience
 			cost += (double(att->second.experience())/
@@ -691,7 +691,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 	for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 
 		//attack anyone who is on the enemy side, and who is not invisible or turned to stone
-		if(current_team().is_enemy(j->second.side()) && j->second.get_state("stoned")!="yes" &&
+		if(current_team().is_enemy(j->second.side()) && !utils::string_bool(j->second.get_state("stoned")) &&
 		   j->second.invisible(map_.underlying_union_terrain(map_[j->first.x][j->first.y]),
 				state_.get_time_of_day().lawful_bonus,j->first,
 				units_,teams_) == false) {

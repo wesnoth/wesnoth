@@ -717,7 +717,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		                                     attack_from.valid())) {
 			if(mouseover_unit == units_.end()) {
 				cursor::set(cursor::MOVE);
-			} else if(viewing_team().is_enemy(mouseover_unit->second.side()) && mouseover_unit->second.get_state("stoned")!="yes") {
+			} else if(viewing_team().is_enemy(mouseover_unit->second.side()) && !utils::string_bool(mouseover_unit->second.get_state("stoned"))) {
 				cursor::set(cursor::ATTACK);
 			} else {
 				cursor::set(cursor::NORMAL);
@@ -742,7 +742,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 
 			unit_map::const_iterator un = find_unit(selected_hex_);
 
-			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && un->second.get_state("stoned")!="yes") {
+			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && !utils::string_bool(un->second.get_state("stoned"))) {
 				const shortest_path_calculator calc(un->second,current_team(), visible_units(),teams_,map_,status_);
 				const bool can_teleport = un->second.get_ability_bool("teleport",un->first);
 
@@ -1006,7 +1006,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 				u = find_unit(attack_from);
 				// enemy = find_unit(hex);
 				if(u != units_.end() && u->second.side() == team_num_ &&
-					enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && enemy->second.get_state("stoned")!="yes") {
+					enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !utils::string_bool(enemy->second.get_state("stoned"))) {
 					if(attack_enemy(u,enemy) == false) {
 						undo_ = true;
 						selected_hex_ = src;
@@ -1297,7 +1297,7 @@ void mouse_handler::show_attack_options(unit_map::const_iterator u)
 
 	for(unit_map::const_iterator target = units_.begin(); target != units_.end(); ++target) {
 		if(current_team.is_enemy(target->second.side()) &&
-			distance_between(target->first,u->first) == 1 && target->second.get_state("stoned")!="yes") {
+			distance_between(target->first,u->first) == 1 && utils::string_bool(target->second.get_state("stoned"))) {
 			current_paths_.routes[target->first] = paths::route();
 		}
 	}

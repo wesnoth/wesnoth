@@ -582,7 +582,7 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 			for(adjacent_tiles_array::const_iterator adj_i = locs.begin(); adj_i != locs.end(); ++adj_i) {
 				const unit_map::const_iterator itor = units_.find(*adj_i);
 				if(itor != units_.end() && current_team().is_enemy(itor->second.side()) &&
-				   itor->second.get_state("stoned") != "yes") {
+				   !utils::string_bool(itor->second.get_state("stoned"))) {
 					battle_stats stats;
 					const int weapon = choose_weapon(res,itor->first,stats,0);
 					attack_enemy(res,itor->first,weapon);
@@ -627,7 +627,7 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 		}
 
 		//discount incapacitated units
-		if(un_it->second.get_state("stoned")=="yes") {
+		if(utils::string_bool(un_it->second.get_state("stoned"))) {
 			continue;
 		}
 
@@ -795,7 +795,7 @@ void ai::do_move()
 	calculate_possible_moves(possible_moves,srcdst,dstsrc,false,false,&avoided_locations());
 	calculate_possible_moves(enemy_possible_moves,enemy_srcdst,enemy_dstsrc,true);
 
-	const bool passive_leader = current_team().ai_parameters()["passive_leader"] == "yes";
+	const bool passive_leader = utils::string_bool(current_team().ai_parameters()["passive_leader"]);
 
 	unit_map::iterator leader = find_leader(units_,team_num_);
 	if(leader != units_.end() && passive_leader) {
@@ -988,7 +988,7 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 	const events::command_disabler disable_commands;
 
 	if(info_.units.count(u) && info_.units.count(target)) {
-		if(info_.units.find(target)->second.get_state("stoned")=="yes") {
+		if(utils::string_bool(info_.units.find(target)->second.get_state("stoned"))) {
 			LOG_STREAM(err, ai) << "attempt to attack unit that is turned to stone\n";
 			return;
 		}
@@ -1124,7 +1124,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 		}
 
 		const unit_map::const_iterator u = units_.find(j->second);
-		if(u == units_.end() || u->second.get_state("guardian")=="yes") {
+		if(u == units_.end() || utils::string_bool(u->second.get_state("guardian"))) {
 			continue;
 		}
 
@@ -1377,7 +1377,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 					teams_,current_team());
 
 			if(enemy != units_.end() &&
-			   current_team().is_enemy(enemy->second.side()) && enemy->second.get_state("stoned") != "yes") {
+			   current_team().is_enemy(enemy->second.side()) && !utils::string_bool(enemy->second.get_state("stoned"))) {
 				const int res = choose_weapon(move.first,adj[n],bat_stats,
 				                       map_[move.second.x][move.second.y]);
 
@@ -1404,7 +1404,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		const unit_map::const_iterator un_it = units_.find(arrived_at);
 
 		//if we're going to attack someone
-		if(u_it != units_.end() && u_it->second.get_state("stoned") != "yes" && weapon != -1) {
+		if(u_it != units_.end() && !utils::string_bool(u_it->second.get_state("stoned")) && weapon != -1) {
 			attack_enemy(move.second,target,weapon);
 		}
 
@@ -1464,7 +1464,7 @@ int ai::compare_unit_types(const unit_type& a, const unit_type& b) const
 
 void ai::analyze_potential_recruit_combat()
 {
-	if(unit_combat_scores_.empty() == false || current_team().ai_parameters()["recruitment_ignore_bad_combat"] == "yes") {
+	if(unit_combat_scores_.empty() == false || utils::string_bool(current_team().ai_parameters()["recruitment_ignore_bad_combat"])) {
 		return;
 	}
 
@@ -1537,7 +1537,7 @@ private:
 
 void ai::analyze_potential_recruit_movements()
 {
-	if(unit_movement_scores_.empty() == false || current_team().ai_parameters()["recruitment_ignore_bad_movement"] == "yes") {
+	if(unit_movement_scores_.empty() == false || utils::string_bool(current_team().ai_parameters()["recruitment_ignore_bad_movement"])) {
 		return;
 	}
 
@@ -1727,7 +1727,7 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 	}
 
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.get_state("stoned")=="yes") {
+	if(leader == units_.end() || utils::string_bool(leader->second.get_state("stoned"))) {
 		WRN_AI << "Leader not found\n";
 		return;
 	}
@@ -1764,7 +1764,7 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 {
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.get_state("stoned")=="yes") {
+	if(leader == units_.end() || utils::string_bool(leader->second.get_state("stoned"))) {
 		return;
 	}
 
@@ -1813,7 +1813,7 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 	LOG_AI << "moving leader after recruit...\n";
 
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.get_state("stoned")=="yes") {
+	if(leader == units_.end() || utils::string_bool(leader->second.get_state("stoned"))) {
 		return;
 	}
 
@@ -1901,7 +1901,7 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 bool ai::leader_can_reach_keep() const
 {
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.get_state("stoned")=="yes") {
+	if(leader == units_.end() || utils::string_bool(leader->second.get_state("stoned"))) {
 		return false;
 	}
 

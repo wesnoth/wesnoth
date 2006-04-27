@@ -113,8 +113,8 @@ unit_race::unit_race() : ntraits_(0), chain_size_(0), not_living_(false), traits
 }
 
 unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg["num_traits"].c_str())),
-                                          not_living_(cfg["not_living"] == "yes"),
-										  traits_(&cfg.get_children("trait")), global_traits_(cfg["ignore_global_traits"] != "yes")
+                                          not_living_(utils::string_bool(cfg["not_living"])),
+										  traits_(&cfg.get_children("trait")), global_traits_(!utils::string_bool(cfg["ignore_global_traits"]))
 {
 	names_[MALE] = utils::split(cfg["male_names"]);
 	names_[FEMALE] = utils::split(cfg["female_names"]);

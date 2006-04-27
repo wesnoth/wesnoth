@@ -238,7 +238,7 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 			object_filter = object->child("filter");
 		}
 
-		if(cfg["same_location_as_previous"] != "yes") {
+		if(!utils::string_bool(cfg["same_location_as_previous"])) {
 			index = rand()%c.locs.size();
 		}
 
@@ -267,7 +267,7 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 		}
 
 		//if this is a side, place a castle for the side
-		if(key == "side" && cfg["no_castle"] != "yes") {
+		if(key == "side" && !utils::string_bool(cfg["no_castle"])) {
 			place_castle(cfg["side"],*loc);
 		}
 

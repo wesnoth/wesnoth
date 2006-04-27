@@ -196,7 +196,7 @@ class event_handler
 public:
 	event_handler(const config& cfg) :
 		name_(cfg["name"]),
-		first_time_only_(cfg["first_time_only"] != "no"),
+		first_time_only_(utils::string_bool(cfg["first_time_only"],true)),
 		disabled_(false),
 		cfg_(&cfg)
 	{}
@@ -335,7 +335,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 						get_village(vacant_dst,*teams,side,*units);
 					}
 
-					if(cfg["clear_shroud"] != "no") {
+					if(utils::string_bool(cfg["clear_shroud"],true)) {
 						clear_shroud(*screen,*status_ptr,*game_map,*game_data_ptr,*units,*teams,side-1);
 					}
 				}
@@ -347,7 +347,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "unstone") {
 		const vconfig filter = cfg.child("filter");
 		for(unit_map::iterator i = units->begin(); i != units->end(); ++i) {
-			if(i->second.get_state("stoned")=="yes") {
+			if(utils::string_bool(i->second.get_state("stoned"))) {
 				if(!filter.null()) {
 					if(game_events::unit_matches_filter(i, filter))
 						i->second.set_state("stoned","");
@@ -699,7 +699,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const t_string& summary = cfg["summary"];
 		const t_string& note = cfg["note"];
 		std::string side = cfg["side"];
-		bool silent = cfg["silent"] == "yes";
+		bool silent = utils::string_bool(cfg["silent"]);
 		wassert(state_of_game != NULL);
 		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		const size_t side_num = lexical_cast_default<size_t>(side,0);
@@ -1159,7 +1159,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				u->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 				if(game_events::unit_matches_filter(*u, cfg,gamemap::location())) {
 					gamemap::location loc = cfg_to_loc(cfg);
-					recruit_unit(*game_map,index+1,*units,*u,loc,cfg["show"] == "no" ? NULL : screen,false,true);
+					recruit_unit(*game_map,index+1,*units,*u,loc,utils::string_bool(cfg["show"],true) ? NULL : screen,false,true);
 					avail.erase(u);
 					break;
 				}
@@ -1213,7 +1213,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			command_type = "else";
 		}
 
-		if(cfg["silent"] != "yes") {
+		if(!utils::string_bool(cfg["silent"])) {
 			surface surface(NULL);
 
 			if(image.empty() == false) {
@@ -1384,12 +1384,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		unit_map::iterator un = units->begin();
 		while(un != units->end()) {
 			if(game_events::unit_matches_filter(un,cfg)) {
-				if(cfg["animate"] == "yes") {
+				if(utils::string_bool(cfg["animate"])) {
 					screen->scroll_to_tile(un->first.x,un->first.y);
 					unit_display::unit_die(*screen,*game_map,un->first,un->second);
 				}
 
-				if(cfg["fire_event"] == "yes") {
+				if(utils::string_bool(cfg["fire_event"])) {
 					gamemap::location loc = un->first;
 					game_events::fire("die",loc,un->first);
 					un = units->find(loc);
@@ -1447,7 +1447,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			vars.clear_children(variable);
 		}
 
-		const bool kill_units = cfg["kill"] == "yes";
+		const bool kill_units = utils::string_bool(cfg["kill"]);
 
 		for(unit_map::iterator i = units->begin(); i != units->end();) {
 			if(game_events::unit_matches_filter(i,filter) == false) {
@@ -1517,7 +1517,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			const unit u(game_data_ptr,units,game_map,status_ptr,teams,var);
 			gamemap::location loc(var);
 			if(loc.valid()) {
-				if(cfg["find_vacant"] == "yes") {
+				if(utils::string_bool(cfg["find_vacant"])) {
 					loc = find_vacant_tile(*game_map,*units,loc);
 				}
 
@@ -1625,7 +1625,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		const std::string& result = cfg["result"];
 		if(result.empty() || result == "victory") {
-			const bool bonus = cfg["bonus"] == "yes";
+			const bool bonus = utils::string_bool(cfg["bonus"]);
 			throw end_level_exception(VICTORY,bonus);
 		} else if(result == "continue") {
 			throw end_level_exception(LEVEL_CONTINUE);

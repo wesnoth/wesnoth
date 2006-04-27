@@ -582,7 +582,7 @@ void unit::new_turn(const gamemap::location& loc)
 	} else {
 		set_state("hides","");
 	}
-	if(get_state("stoned")=="yes") {
+	if(utils::string_bool(get_state("stoned"))) {
 		set_attacks(0);
 	}
 	if (hold_position_) {
@@ -592,7 +592,7 @@ void unit::new_turn(const gamemap::location& loc)
 void unit::end_turn()
 {
 	set_state("slowed","");
-	if((movement_ != total_movement()) && get_state("not_moved")!="yes") {
+	if((movement_ != total_movement()) && !utils::string_bool(get_state("not_moved"))) {
 		resting_ = false;
 	}
 	set_state("not_moved","");
@@ -873,7 +873,7 @@ void unit::read(const config& cfg)
 	description_ = cfg["unit_description"];
 	custom_unit_description_ = cfg["user_description"];
 	
-	if(cfg["generate_description"] == "yes") {
+	if(utils::string_bool(cfg["generate_description"])) {
 		custom_unit_description_ = generate_description();
 	}
 	underlying_description_ = cfg["description"];
@@ -971,16 +971,21 @@ void unit::read(const config& cfg)
 	    range.first != range.second; ++range.first) {
 		attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
 	}
-	const config* status_flags = cfg.child("states");
+	const config* status_flags = cfg.child("status");
 	if(status_flags) {
 		for(string_map::const_iterator st = status_flags->values.begin(); st != status_flags->values.end(); ++st) {
 			states_[st->first] = st->second;
+			
+			// backwards compatibility
+			if(st->first == "stone") {
+				states_["stoned"] = st->second;
+			}
 		}
 	}
 	if(cfg["ai_special"] == "guardian") {
 		set_state("guardian","yes");
 	}
-	if(cfg["random_traits"] == "yes") {
+	if(utils::string_bool(cfg["random_traits"])) {
 		generate_traits();
 	}
 	if(cfg_["type"] == "") {
@@ -1002,8 +1007,8 @@ void unit::read(const config& cfg)
 		}
 	}
 	experience_ = lexical_cast_default<int>(cfg["experience"]);
-	resting_ = (cfg["resting"] == "yes");
-	unrenamable_ = (cfg["unrenamable"] == "yes");
+	resting_ = utils::string_bool(cfg["resting"]);
+	unrenamable_ = utils::string_bool(cfg["unrenamable"]);
 	if(cfg["alignment"]=="lawful") {
 		alignment_ = unit_type::LAWFUL;
 	} else if(cfg["alignment"]=="neutral") {
@@ -1094,8 +1099,8 @@ void unit::write(config& cfg) const
 	
 	cfg.clear_children("variables");
 	cfg.add_child("variables",variables_);
-	cfg.clear_children("states");
-	cfg.add_child("states",status_flags);
+	cfg.clear_children("status");
+	cfg.add_child("status",status_flags);
 
 	cfg["overlays"] = utils::join(overlays_);
 
@@ -1566,7 +1571,7 @@ void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
 	}else{
 		loc = image::locator(image_name);
 	}
-	surface image(image::get_image(loc,get_state("stoned")=="yes"?image::GREYED : image::SCALED));
+	surface image(image::get_image(loc,utils::string_bool(get_state("stoned"))?image::GREYED : image::SCALED));
 	if(image ==NULL) {
 		image = still_image();
 	}
@@ -1588,7 +1593,7 @@ void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
 		highlight_ratio = ftofxp(1.5);
 	}
 
-	if (get_state("poisoned")=="yes" && blend_ratio == 0){
+	if (utils::string_bool(get_state("poisoned")) && blend_ratio == 0){
 		blend_with = disp.rgb(0,255,0);
 		blend_ratio = 0.25;
 	}
@@ -1733,7 +1738,7 @@ bool unit::is_flying() const
 int unit::movement_cost(gamemap::TERRAIN terrain, int recurse_count) const
 {
 	const int impassable = 10000000;
-	int slowed = (get_state("slowed")=="yes") ? 2 : 1;
+	int slowed = utils::string_bool(get_state("slowed")) ? 2 : 1;
 	
 	const std::map<gamemap::TERRAIN,int>::const_iterator i = movement_costs_.find(terrain);
 	if(i != movement_costs_.end()) {
@@ -2139,7 +2144,7 @@ void unit::add_modification(const std::string& type, const config& mod,
 			if(max_hit_points_ < 1)
 				max_hit_points_ = 1;
 
-			if(heal_full.empty() == false && heal_full != "no") {
+			if(heal_full.empty() == false && utils::string_bool(heal_full,true)) {
 				heal_all();
 			}
 

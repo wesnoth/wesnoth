@@ -17,6 +17,7 @@
 #include "log.hpp"
 #include "util.hpp"
 #include "terrain.hpp"
+#include "string_utils.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -70,15 +71,15 @@ terrain_type::terrain_type(const config& cfg)
 
 	light_modification_ = atoi(cfg["light"].c_str());
 
-	if (cfg["heals"] == "true") {
+	if (utils::string_bool(cfg["heals"])) {
 		LOG_STREAM(err, config) << "terrain " << id() << " uses heals=true which is deprecated (use number)\n";
 		heals_ = 8;
 	} else {
 		heals_ = lexical_cast_default<int>(cfg["heals"], 0);
 	}
-	village_ = cfg["gives_income"] == "true";
-	castle_ = cfg["recruit_onto"] == "true";
-	keep_ = cfg["recruit_from"] == "true";
+	village_ = utils::string_bool(cfg["gives_income"]);
+	castle_ = utils::string_bool(cfg["recruit_onto"]);
+	keep_ = utils::string_bool(cfg["recruit_from"]);
 }
 
 const std::string& terrain_type::symbol_image() const

@@ -631,7 +631,7 @@ namespace events{
 
 		gui_->draw(); //clear the old menu
 
-		if(level_["disallow_recall"] == "yes") {
+		if(utils::string_bool(level_["disallow_recall"])) {
 			gui::show_dialog(*gui_,NULL,"",_("You are separated from your soldiers and may not recall them"));
 		} else if(recall_list.empty()) {
 			gui::show_dialog(*gui_,NULL,"",_("There are no troops available to recall\n\
@@ -912,7 +912,7 @@ namespace events{
 												 .lawful_bonus,
 												 u->first, units_, teams_);
 
-			if(teams_[team_num - 1].is_enemy(u->second.side()) && !gui_->fogged(u->first.x,u->first.y) && u->second.get_state("stoned")!="yes" && !invisible) {
+			if(teams_[team_num - 1].is_enemy(u->second.side()) && !gui_->fogged(u->first.x,u->first.y) && !utils::string_bool(u->second.get_state("stoned")) && !invisible) {
 				const unit_movement_resetter move_reset(u->second);
 				const bool is_skirmisher = u->second.get_ability_bool("skirmisher",u->first);
 				const bool teleports = u->second.get_ability_bool("teleport",u->first);

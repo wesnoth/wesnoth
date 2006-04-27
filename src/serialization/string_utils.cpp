@@ -283,6 +283,17 @@ std::string &unescape(std::string &str)
 	return str;
 }
 
+bool string_bool(const std::string& str,bool def)
+{
+	if(str == "yes" || str == "on" || str == "true" || lexical_cast_default<int>(str)) {
+		return true;
+	}
+	if(str == "no" || str == "off" || str == "false" || !lexical_cast_default<int>(str)) {
+		return false;
+	}
+	return def;
+}
+
 std::string join(std::vector< std::string > const &v, char c)
 {
 	std::stringstream str;

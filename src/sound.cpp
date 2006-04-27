@@ -365,7 +365,7 @@ void play_music_config(const config &music)
 							 music["ms_after"]);
 
 	// If they say play once, we don't alter playlist.
-	if (music["play_once"] == "yes") {
+	if (utils::string_bool(music["play_once"])) {
 		current_track = track;
 		current_track.once = true;
 		play_music();
@@ -373,14 +373,14 @@ void play_music_config(const config &music)
 	}
 
 	// Clear play list unless they specify append.
-	if (music["append"] != "yes") {
+	if (!utils::string_bool(music["append"])) {
 		current_track_list = std::vector<music_track>();
 	}
 
 	current_track_list.push_back(track);
 
 	// They can tell us to start playing this list immediately.
-	if (music["immediate"] == "yes") {
+	if (utils::string_bool(music["immediate"])) {
 		current_track = track;
 		play_music();
 	}

@@ -261,16 +261,16 @@ bool attack_type::apply_modification(const config& cfg,std::string* description,
 			config& sp = new_specials.add_child("berserk");
 			sp["name"] = t_string("berserk","wesnoth");
 			sp["description"] = t_string("Berserk:\nWhether used offensively or defensively, this attack presses the engagement until one of the combatants is slain, or 30 rounds of attacks have occurred.","wesnoth");
-			sp["cumulative"] = "no";
 			sp["value"] = "30";
+			sp["id"] = "berserk";
 		} else if(set_special == "backstab") {
 			config& sp = new_specials.add_child("damage");
 			sp["name"] = t_string("backstab","wesnoth");
 			sp["description"] = t_string("Backstab:\nThis attack deals double damage if there is an enemy of the target on the opposite side of the target, and that unit is not incapacitated (e.g. turned to stone).","wesnoth");
-			sp["cumulative"] = "no";
 			sp["backstab"] = "yes";
 			sp["multiply"] = "2";
 			sp["active_on"] = "offense";
+			sp["id"] = "backstab";
 		} else if(set_special == "plague") {
 			config& sp = new_specials.add_child("plague");
 			sp["name"] = t_string("plague","wesnoth");
@@ -284,11 +284,11 @@ bool attack_type::apply_modification(const config& cfg,std::string* description,
 			config& sp = new_specials.add_child("attacks");
 			sp["name"] = t_string("swarm","wesnoth");
 			sp["description"] = t_string("Swarm:\nThe number of strikes of this attack decreases when the unit is wounded. The number of strikes is proportional to the % of HP/maximum HP the unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the number of strikes.","wesnoth");
+			sp["id"] = "swarm";
 		} else if(set_special == "slow") {
 			config& sp = new_specials.add_child("slow");
 			sp["name"] = t_string("slows","wesnoth");
 			sp["description"] = t_string("Slow:\nThis attack slows the target. Slow halves the damage caused by attacks and slowed units move at half the normal speed (rounded up).","wesnoth");
-			sp["cumulative"] = "no";
 		} else if(set_special == "stone") {
 			config& sp = new_specials.add_child("stones");
 			sp["name"] = t_string("stones","wesnoth");
@@ -300,20 +300,22 @@ bool attack_type::apply_modification(const config& cfg,std::string* description,
 			sp["value"] = "60";
 			sp["cumulative"] = "yes";
 			sp["active_on"] = "offense";
+			sp["id"] = "marksman";
 		} else if(set_special == "magical") {
 			config& sp = new_specials.add_child("chance_to_hit");
 			sp["name"] = t_string("magical","wesnoth");
 			sp["description"] = t_string("Magical:\nThis attack always has a 70% chance to hit.","wesnoth");
 			sp["value"] = "70";
 			sp["cumulative"] = "no";
+			sp["id"] = "magical";
 		} else if(set_special == "charge") {
 			config& sp = new_specials.add_child("damage");
 			sp["name"] = t_string("charge","wesnoth");
 			sp["description"] = t_string("Charge:\nThis attack deals double damage to the target. It also causes this unit to take double damage from the target's counterattack.","wesnoth");
-			sp["cumulative"] = "no";
 			sp["multiply"] = "2";
 			sp["active_on"] = "offense";
 			sp["apply_to"] = "both";
+			sp["id"] = "charge";
 		} else if(set_special == "drain") {
 			config& sp = new_specials.add_child("drains");
 			sp["name"] = t_string("drains","wesnoth");
@@ -579,7 +581,7 @@ bool unit_movement_type::is_flying() const
 	if(flies == "" && parent_ != NULL)
 		return parent_->is_flying();
 
-	return flies == "true";
+	return utils::string_bool(flies);
 }
 
 const config& unit_movement_type::get_cfg() const
@@ -789,7 +791,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				possibleTraits_.clear();
 			}
 			
-			if(cfg["ignore_race_traits"] == "yes") {
+			if(utils::string_bool(cfg["ignore_race_traits"])) {
 				possibleTraits_.clear();
 			} else {
 				const config::child_list& traits = race_->additional_traits();
@@ -834,7 +836,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		zoc_ = lexical_cast_default<int>(cfg_["level"]) > 0;
 	} else {
 		zoc_ = false;
-		if(cfg_["zoc"] == "yes") {
+		if(utils::string_bool(cfg_["zoc"])) {
 			zoc_ = true;
 		}
 	}

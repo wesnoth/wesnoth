@@ -72,7 +72,7 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 		teams.back().set_objectives(level["objectives"]);
 
 	//if this side tag describes the leader of the side
-	if(cfg["no_leader"] != "yes" && cfg["controller"] != "null") {
+	if(!utils::string_bool(cfg["no_leader"]) && cfg["controller"] != "null") {
 		unit new_unit(&gameinfo, &units, &map, &game_status, &teams,cfg);
 		
 		//search the recall list for leader units, and if there is

@@ -132,19 +132,19 @@ report generate_report(TYPE type, const gamemap& map, unit_map& units,
 			tooltip << _("invisible: ") << _("This unit is invisible. It cannot be seen or attacked by enemy units.");
 			res.add_image(unit_status,tooltip);
 		}
-		if(u->second.get_state("slowed")=="yes") {
+		if(utils::string_bool(u->second.get_state("slowed"))) {
 			unit_status << "misc/slowed.png";
 			tooltip << _("slowed: ") << _("This unit has been slowed. It will only deal half its normal damage when attacking.");
 			res.add_image(unit_status,tooltip);
 		}
-		if(u->second.get_state("poisoned")=="yes") {
+		if(utils::string_bool(u->second.get_state("poisoned"))) {
 			unit_status << "misc/poisoned.png";
 			tooltip << _("poisoned: ") << _("This unit is poisoned. It will lose 8 HP every turn until it can seek a cure to the poison in a village or from a friendly unit with the 'cures' ability.\n\
 \n\
 Units cannot be killed by poison alone. The poison will not reduce it below 1 HP.");
 			res.add_image(unit_status,tooltip);
 		}
-		if(u->second.get_state("stoned")=="yes") {
+		if(utils::string_bool(u->second.get_state("stoned"))) {
 			unit_status << "misc/stone.png";
 			tooltip << _("stone: ") << _("This unit has been turned to stone. It may not move or attack.");
 			res.add_image(unit_status,tooltip);
@@ -195,7 +195,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	}
 	case UNIT_MOVES: {
 	  int x = 180;
-	  if(u->second.get_state("stoned")=="yes"){
+	  if(utils::string_bool(u->second.get_state("stoned"))){
 	    x = 128;
 	  }else{
 	    x = (int)(128 + (255-128)*((float)u->second.movement_left()/u->second.total_movement()));
@@ -221,7 +221,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			const std::string& lang_type = gettext(at_it->type().c_str());
 			str.str("");
 			str << "<245,230,193>";
-			if(u->second.get_state("slowed")=="yes") {
+			if(utils::string_bool(u->second.get_state("slowed"))) {
 				str << round_damage(at_it->damage(),1,2) << "-" ;
 			} else {
 				str << at_it->damage() << "-" ;
@@ -243,7 +243,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			str << nattacks;
 			str << " " << at_it->name();
 			tooltip << at_it->name() << "\n";
-			if(u->second.get_state("slowed")=="yes") {
+			if(utils::string_bool(u->second.get_state("slowed"))) {
 				tooltip << round_damage(at_it->damage(),1,2) << " " << _("damage") << ", ";
 			} else {
 				tooltip << at_it->damage() << " " << _("damage") << ", ";

@@ -61,6 +61,8 @@ std::string &unescape(std::string &str);
 std::string &strip(std::string &str);
 bool has_value(std::string const &values, std::string const &val);
 
+bool string_bool(const std::string& str,bool def=false);
+
 typedef std::map< std::string, t_string > string_map;
 // function which will interpolate variables, starting with '$' in the string 'str' with
 // the equivalent symbols in the given symbol table. If 'symbols' is NULL, then game event

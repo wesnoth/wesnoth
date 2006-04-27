@@ -397,7 +397,7 @@ static PyObject* unit_poisoned(wesnoth_unit* unit, void* /*closure*/)
 {
     if (!running_instance->is_unit_valid(unit->unit_))
         return NULL;
-    return Py_BuildValue("i",unit->unit_->get_state("poisoned")=="yes" ? 1 : 0);
+    return Py_BuildValue("i",utils::string_bool(unit->unit_->get_state("poisoned")));
 }
 
 static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)

@@ -114,13 +114,13 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
 		if(it != units_->end() && 
-					it->second.get_state("stoned") != "yes") {
+					!utils::string_bool(it->second.get_state("stoned"))) {
 			const config* adj_abilities = it->second.cfg_.child("abilities");
 			if(adj_abilities) {
 				const config::child_list& list = adj_abilities->get_children(ability);
 				for(config::child_list::const_iterator j = list.begin(); j != list.end(); ++j) {
-					if((((**j)["affect_allies"]=="yes" && !(*teams_)[side()-1].is_enemy(it->second.side())) 
-						|| ((**j)["affect_enemies"]=="yes" && (*teams_)[side()-1].is_enemy(it->second.side()))) &&
+					if((((**j)["affect_allies"] == "" || (utils::string_bool((**j)["affect_allies"]) && !(*teams_)[side()-1].is_enemy(it->second.side())))
+						|| (utils::string_bool((**j)["affect_enemies"]) && (*teams_)[side()-1].is_enemy(it->second.side()))) &&
 							it->second.ability_active(ability,**j,adjacent[i]) && ability_affects_adjacent(ability,**j,i,loc)) {
 						return true;
 					}
@@ -152,13 +152,13 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
 		if(it != units_->end() && 
-		it->second.get_state("stoned") != "yes") {
+		!utils::string_bool(it->second.get_state("stoned"))) {
 			const config* adj_abilities = it->second.cfg_.child("abilities");
 			if(adj_abilities) {
 				const config::child_list& list = adj_abilities->get_children(ability);
 				for(config::child_list::const_iterator j = list.begin(); j != list.end(); ++j) {
-					if((((**j)["affect_allies"]=="yes" && !(*teams_)[side()-1].is_enemy(it->second.side())) 
-						|| ((**j)["affect_enemies"]=="yes" && (*teams_)[side()-1].is_enemy(it->second.side()))) &&
+					if((((**j)["affect_allies"] == "" || (utils::string_bool((**j)["affect_allies"]) && !(*teams_)[side()-1].is_enemy(it->second.side())))
+						|| (utils::string_bool((**j)["affect_enemies"]) && (*teams_)[side()-1].is_enemy(it->second.side()))) &&
 						it->second.ability_active(ability,**j,adjacent[i]) && ability_affects_adjacent(ability,**j,i,loc)) {
 						res.cfgs.push_back(std::pair<config*,gamemap::location>(*j,adjacent[i]));
 					}
@@ -220,14 +220,14 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
 		if(it != units_->end() && 0 &&
-		it->second.get_state("stoned") != "yes") {
+		!utils::string_bool(it->second.get_state("stoned"))) {
 			const config* adj_abilities = it->second.cfg_.child("abilities");
 			if(adj_abilities) {
 				const config::child_map& adj_list_map = adj_abilities->all_children();
 				for(config::child_map::const_iterator k = adj_list_map.begin(); k != adj_list_map.end(); ++k) {
 					for(config::child_list::const_iterator j = k->second.begin(); j != k->second.end(); ++j) {
-					if(((**j)["affect_allies"]=="yes" && !(*teams_)[side()-1].is_enemy(it->second.side())) 
-						|| ((**j)["affect_enemies"]=="yes" && (*teams_)[side()-1].is_enemy(it->second.side()))) {
+					if((((**j)["affect_allies"] == "" || (utils::string_bool((**j)["affect_allies"]) && !(*teams_)[side()-1].is_enemy(it->second.side())))
+						|| (utils::string_bool((**j)["affect_enemies"]) && (*teams_)[side()-1].is_enemy(it->second.side())))) {
 							const config* adj_desc = (*j)->child("adjacent_description");
 							if(ability_affects_adjacent(k->first,**j,i,adjacent[i])) {
 								if(!adj_desc) {
@@ -352,13 +352,13 @@ bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const
 {
 	if(cfg.child("filter")==NULL) {
-		if(cfg["affect_self"] == "yes" || cfg["affect_self"] == "") {
+		if(utils::string_bool(cfg["affect_self"],true)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	if(cfg["affect_self"] == "yes" || cfg["affect_self"] == "") {
+	if(utils::string_bool(cfg["affect_self"],true)) {
 		return matches_filter(*cfg.child("filter"),loc,ability=="illuminates");
 	} else {
 		return false;
@@ -380,7 +380,7 @@ std::pair<int,gamemap::location> unit_ability_list::highest(const std::string& k
 	int flat = def;
 	int stack = 0;
 	for(std::vector<std::pair<config*,gamemap::location> >::const_iterator i = cfgs.begin(); i != cfgs.end(); ++i) {
-		if((*i->first)["cumulative"]=="yes") {
+		if(utils::string_bool((*i->first)["cumulative"])) {
 			stack += lexical_cast_default<int>((*i->first)[key]);
 			if(lexical_cast_default<int>((*i->first)[key]) > abs_max) {
 				abs_max = lexical_cast_default<int>((*i->first)[key]);
@@ -403,7 +403,7 @@ std::pair<int,gamemap::location> unit_ability_list::lowest(const std::string& ke
 	int flat = def;
 	int stack = 0;
 	for(std::vector<std::pair<config*,gamemap::location> >::const_iterator i = cfgs.begin(); i != cfgs.end(); ++i) {
-		if((*i->first)["cumulative"]=="yes") {
+		if(utils::string_bool((*i->first)["cumulative"])) {
 			stack += lexical_cast_default<int>((*i->first)[key]);
 			if(lexical_cast_default<int>((*i->first)[key]) < abs_max) {
 				abs_max = lexical_cast_default<int>((*i->first)[key]);
@@ -845,7 +845,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 		const config& cfg = (*i->first);
 		const std::string& effect_id = cfg["id"] != "" ? cfg["id"] : cfg["name"];
 		
-		if(cfg["backstab"]=="yes" && !backstab) {
+		if(utils::string_bool(cfg["backstab"]) && !backstab) {
 			continue;
 		}
 		const config* const apply_filter = cfg.child("filter_base_value");
@@ -873,13 +873,13 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 		int add = lexical_cast_default<int>(cfg["add"]);
 		int multiply = static_cast<int>(lexical_cast_default<float>(cfg["multiply"])*100);
 		
-		if(!value_is_set && cfg["cumulative"]!="yes" && cfg["value"] != "") {
+		if(!value_is_set && !utils::string_bool(cfg["cumulative"]) && cfg["value"] != "") {
 			value_is_set = true;
 			value_set = value;
 			set_effect.set(SET,value,i->first,i->second);
 		} else if(cfg["value"] != "") {
 			value_is_set = true;
-			if(cfg["cumulative"] == "yes") {
+			if(utils::string_bool(cfg["cumulative"])) {
 				value_set = maximum<int>(value_set,def);
 			}
 			if(value > value_set) {

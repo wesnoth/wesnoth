@@ -130,7 +130,7 @@ team::team_info::team_info(const config& cfg)
 
 	description = cfg["description"];
 	objectives = cfg["objectives"];
-	objectives_changed = (cfg["objectives_changed"] == "yes");
+	objectives_changed = utils::string_bool(cfg["objectives_changed"]);
 
 	const std::string& village_income = cfg["village_gold"];
 	if(village_income.empty())
@@ -232,8 +232,8 @@ team::team_info::team_info(const config& cfg)
 	}
 
 	//share_view and share_maps can't both be enabled, so share_view overrides share_maps.
-	share_view = (cfg["share_view"] == "yes");
-	share_maps = !share_view && (cfg["share_maps"] != "no");
+	share_view = utils::string_bool(cfg["share_view"]);
+	share_maps = !share_view && utils::string_bool(cfg["share_maps"],true);
 
 	LOG_NG << "team_info::team_info(...): team_name: " << team_name
 	       << ", share_maps: " << share_maps << ", share_view: " << share_view << ".\n";
