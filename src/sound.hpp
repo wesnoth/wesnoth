@@ -39,6 +39,8 @@ void commit_music_changes();
 void play_music_repeatedly(const std::string &name);
 // Play this particular music file once, then silence.
 void play_music_once(const std::string &name);
+// Empty the playlist.
+void play_no_music();
 // Start playing current music.
 void play_music();
 

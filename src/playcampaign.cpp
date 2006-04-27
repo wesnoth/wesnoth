@@ -30,6 +30,7 @@
 #include "dialogs.hpp"
 #include "gettext.hpp"
 #include "game_errors.hpp"
+#include "sound.hpp"
 #include "wassert.hpp"
 
 #define LOG_G LOG_STREAM(info, general)
@@ -233,6 +234,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				state.starting_pos = new_level;
 				LOG_G << "generated map\n";
 			}
+
+			sound::play_no_music();
 
 			//LEVEL_RESULT res = play_level(units_data,game_config,scenario,video,state,story,log, skip_replay);
 			LEVEL_RESULT res;

@@ -297,11 +297,21 @@ void play_music_once(const std::string &file)
 	play_music();
 }
 
+void play_no_music()
+{
+	current_track_list = std::vector<music_track>();
+	current_track = music_track("");
+
+	if (preferences::music_on() && mix_ok && Mix_PlayingMusic()) {
+		Mix_FadeOutMusic(500);
+	}
+}
+
 void play_music()
 {
 	music_start_time = 0;
 
-	if(!preferences::music_on() || !mix_ok || current_track_list.empty())
+	if(!preferences::music_on() || !mix_ok || current_track.name.empty())
 		return;
 
 	std::map<std::string,Mix_Music*>::const_iterator itor = music_cache.find(current_track.name);
