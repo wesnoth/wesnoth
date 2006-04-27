@@ -38,53 +38,6 @@ bool command_active()
 }
 
 namespace{
-	//which attack is the better one to select for the player by default
-	//(the player can change the selected weapon if desired)
-	class simple_attack_rating
-	{
-	public:
-		simple_attack_rating() {}
-		simple_attack_rating(const battle_stats& stats) : stats_(stats) {}
-
-		bool operator<(const simple_attack_rating& a) const
-		{
-			//if our weapon can kill the enemy in one blow, the enemy does not
-			//drain back and our weapon has more blows, prefer our weapon
-			if(stats_.damage_defender_takes >= stats_.defender_hp &&
-			   stats_.amount_defender_drains == 0 &&
-			   stats_.nattacks > a.stats_.nattacks)
-				{
-				return false;
-				}
-
-			int this_avg_damage_dealt = stats_.chance_to_hit_defender *
-					stats_.damage_defender_takes * stats_.nattacks;
-			int this_avg_damage_taken = stats_.chance_to_hit_attacker *
-					stats_.damage_attacker_takes * stats_.ndefends;
-
-			int other_avg_damage_dealt = a.stats_.chance_to_hit_defender *
-					a.stats_.damage_defender_takes * a.stats_.nattacks;
-			int other_avg_damage_taken = a.stats_.chance_to_hit_attacker *
-					a.stats_.damage_attacker_takes * a.stats_.ndefends;
-
-			//if our weapon does less damage, it's worse
-			if(this_avg_damage_dealt < other_avg_damage_dealt)
-				return true;
-
-			//if both weapons are the same but
-			//ours makes the enemy retaliate for more damage, it's worse
-			else if(this_avg_damage_dealt == other_avg_damage_dealt &&
-				this_avg_damage_taken > other_avg_damage_taken)
-				return true;
-
-			//otherwise, ours is at least as good a default weapon
-			return false;
-		}
-	private:
-		battle_stats stats_;
-	};
-
-
 	// This preview pane is shown in the "Damage Calculations" dialog.
 	class battle_prediction_pane : public gui::preview_pane
 	{
@@ -692,62 +645,6 @@ namespace{
 		const gamemap::location& attacker_loc_;
 		const gamemap::location& defender_loc_;
 	};
-	
-
-	class attack_calculations_displayer : public gui::dialog_button_action
-	{
-	public:
-		typedef std::vector< battle_stats_strings > stats_vector;
-		attack_calculations_displayer(display &disp, stats_vector const &stats)
-			: disp_(disp), stats_(stats)
-		{}
-
-		RESULT button_pressed(int selection);
-	private:
-		display &disp_;
-		stats_vector const &stats_;
-	};
-
-	gui::dialog_button_action::RESULT attack_calculations_displayer::button_pressed(int selection)
-	{
-		const size_t index = size_t(selection);
-		if(index < stats_.size()) {
-			battle_stats_strings const &sts = stats_[index];
-			std::vector< std::string > sts_att = sts.attack_calculations,
-									   sts_def = sts.defend_calculations,
-									   calcs;
-			unsigned sts_att_sz = sts_att.size(),
-					 sts_def_sz = sts_def.size(),
-					 sts_sz = maximum< unsigned >(sts_att_sz, sts_def_sz);
-
-			std::stringstream str;
-			str << _("Attacker") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR;
-			if (sts_def_sz > 0)
-				str << _("Defender");
-			calcs.push_back(str.str());
-
-			for(unsigned i = 0; i < sts_sz; ++i) {
-				std::stringstream str;
-				if (i < sts_att_sz)
-					str << sts_att[i];
-				else
-					str << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR << ' ';
-
-				str << COLUMN_SEPARATOR;
-
-				if (i < sts_def_sz)
-					str << sts_def[i];
-				else
-					str << ' ' << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR << ' ';
-
-				calcs.push_back(str.str());
-			}
-
-			gui::show_dialog(disp_, NULL, "", _("Damage Calculations"), gui::OK_ONLY, &calcs);
-		}
-
-		return NO_EFFECT;
-	}
 } //end anonymous namespace
 
 mouse_handler::mouse_handler(display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
@@ -1266,50 +1163,49 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 	std::vector<int> weapons;
 
 	int best_weapon_index = -1;
-	simple_attack_rating best_weapon_rating;
+	unsigned int best_weapon_rating;
 
-	attack_calculations_displayer::stats_vector stats;
 	std::vector<battle_context> bc_vector;
 
 	for(size_t a = 0; a != attacks.size(); ++a) {
 		// skip weapons with attack_weight=0
 		if (attacks[a].attack_weight() > 0){
 			weapons.push_back(a);
-			battle_stats_strings sts;
-			battle_stats st = evaluate_battle_stats(map_, teams_, attacker_loc, defender_loc,
-		                                        a, units_, status_, gameinfo_, 0, &sts);
-			stats.push_back(sts);
 			
 			battle_context bc(map_, teams_, units_, status_, gameinfo_, attacker_loc, defender_loc, attacks[a]);
 			bc_vector.push_back(bc);
+			unsigned int weapon_rating = bc.rate_attacker_weapon(attacks[a].attack_weight());
 			
-			simple_attack_rating weapon_rating(st);
-
 			if (best_weapon_index < 0 || best_weapon_rating < weapon_rating) {
 				best_weapon_index = items.size();
 				best_weapon_rating = weapon_rating;
 			}
 
+			const battle_context::unit_stats &att(bc.get_attacker_stats()), &def(bc.get_defender_stats());
+
+			config tmp_config;
+			attack_type no_weapon(tmp_config, "fake_attack", "");
+			const attack_type &attw(*att.weapon);
+			const attack_type &defw(def.weapon ? *def.weapon : no_weapon);
+
 			//if there is an attack special or defend special, we output a single space for the other unit, to make sure
 			//that the attacks line up nicely.
-			std::string special_pad = (sts.attack_special.empty() && sts.defend_special.empty()) ? "" : " ";
+			std::string special_pad = "";
+			if (!attw.weapon_specials().empty() || !defw.weapon_specials().empty())
+				special_pad = " ";
 
-			int damage_defender_takes;
-			damage_defender_takes = st.damage_defender_takes;
-			int damage_attacker_takes;
-			damage_attacker_takes = st.damage_attacker_takes;
-			std::stringstream att;
-			att << IMAGE_PREFIX << sts.attack_icon << COLUMN_SEPARATOR
-			    << font::BOLD_TEXT << sts.attack_name << "\n" << damage_defender_takes << "-"
-			    << st.nattacks << " " << sts.range << " (" << st.chance_to_hit_defender << "%)\n"
-			    << sts.attack_special << special_pad
-			    << COLUMN_SEPARATOR << _("vs") << COLUMN_SEPARATOR
-			    << font::BOLD_TEXT << sts.defend_name << "\n" << damage_attacker_takes << "-"
-			    << st.ndefends << " " << sts.range << " (" << st.chance_to_hit_attacker << "%)\n"
-			    << sts.defend_special << special_pad << COLUMN_SEPARATOR
-			    << IMAGE_PREFIX << sts.defend_icon;
+			std::stringstream atts;
+			atts << IMAGE_PREFIX << attw.icon() << COLUMN_SEPARATOR
+				 << font::BOLD_TEXT << attw.name() << "\n" << att.damage << "-"
+				 << att.num_blows << " " << attw.range() << " (" << att.chance_to_hit << "%)\n"
+				 << attw.weapon_specials() << special_pad
+				 << COLUMN_SEPARATOR << _("vs") << COLUMN_SEPARATOR
+				 << font::BOLD_TEXT << defw.name() << "\n" << def.damage << "-"
+				 << def.num_blows << " " << defw.range() << " (" << def.chance_to_hit << "%)\n"
+				 << defw.weapon_specials() << special_pad << COLUMN_SEPARATOR
+				 << IMAGE_PREFIX << defw.icon();
 
-			items.push_back(att.str());
+			items.push_back(atts.str());
 		}
 	}
 

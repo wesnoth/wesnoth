@@ -987,6 +987,22 @@ void battle_context::unit_stats::dump() const
 	printf("\n");
 }
 
+// How good is this weapon attacking?  Higher is better.  WML controls weighting factor.
+unsigned int battle_context::rate_attacker_weapon(double attack_weight) const
+{
+	// Weapon can kill the enemy in one blow: good
+	if (attacker_stats_->damage >= (int)defender_stats_->hp)
+		attack_weight *= 2;
+
+	// Opponent drains: bad.
+	if (defender_stats_->drains)
+		attack_weight /= 2;
+
+	attack_weight *= attacker_stats_->num_blows * attacker_stats_->damage;
+	attack_weight /= defender_stats_->num_blows * defender_stats_->damage;
+	return (unsigned int)(attack_weight * 100);
+}
+
 int battle_context::rate_defender_weapon(const unit_stats&, const unit_stats& d_stats)
 {
 	// This is the old defend heuristic needed to maintain backward

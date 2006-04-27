@@ -162,6 +162,9 @@ public:
 	// This method returns the statistics of the defender.
 	const unit_stats& get_defender_stats() const { return *defender_stats_; }
 
+	// How good is this weapon attacking?  Higher is better.  WML controls weighting factor.
+	unsigned int rate_attacker_weapon(double attack_weight) const;
+
 private:
 
 	// This method rates the defender weapon specified in 'd_stats', possibly taking into
