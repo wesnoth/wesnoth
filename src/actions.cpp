@@ -877,10 +877,22 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		slows = weapon->get_special_bool("slow");
 		drains = weapon->get_special_bool("drains") && opp.get_state("not_living") != "yes";
 		stones = weapon->get_special_bool("stones");
-		poisons = weapon->get_special_bool("poison");
+		poisons = weapon->get_special_bool("poison") && opp.get_state("not_living") != "yes" && opp.get_state("poisoned") != "yes";
 		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, teams);
 		rounds = weapon->get_specials("berserk").highest("value", 1).first;
 		firststrike = weapon->get_special_bool("firststrike");
+		
+		// Handle plague.
+		unit_ability_list plague_specials = weapon->get_specials("plague");
+		plagues = !plague_specials.empty() && opp.get_state("not_living") != "yes" &&
+				  strcmp(opp.undead_variation().c_str(), "null") && !map.is_village(opp_loc);
+		
+		if (!plague_specials.empty()) {
+			if((*plague_specials.cfgs.front().first)["type"] == "")
+				plague_type = u.id();
+			else
+				plague_type = (*plague_specials.cfgs.front().first)["type"];
+		}
 		
 		// Compute chance to hit.
 		chance_to_hit = opp.defense_modifier(map.get_terrain(opp_loc));
@@ -933,6 +945,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		slows = false;
 		drains = false;
 		stones = false;
+		plagues = false;
 		poisons = false;
 		backstab_pos = false;
 		swarm = false;
@@ -1022,45 +1035,52 @@ void attack(display& gui, const gamemap& map,
 	static const std::string hides("hides");
 	a->second.set_state(hides,"");
 
-	battle_stats stats = evaluate_battle_stats(map, teams, attacker,
-                                                   defender, attack_with,
-                                                   units, state, info);
+	battle_context bc(map, teams, units, state, info, attacker, defender, a->second.attacks()[attack_with]);
+	const battle_context::unit_stats& a_stats = bc.get_attacker_stats();
+	const battle_context::unit_stats& d_stats = bc.get_defender_stats();
+
 	LOG_NG << "getting attack statistics\n";
 
-	statistics::attack_context attack_stats(a->second,d->second,stats);
+	statistics::attack_context attack_stats(a->second, d->second, a_stats.chance_to_hit, d_stats.chance_to_hit);
 	
 	LOG_NG << "firing attack event\n";
 	config dat;
 	dat.add_child("first");
 	dat.add_child("second");
-	(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
-	(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
+	(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
+	(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
 	game_events::fire("attack",attacker,defender,dat);
 	//the event could have killed either the attacker or
 	//defender, so we have to make sure they still exist
 	a = units.find(attacker);
 	d = units.find(defender);
-	if(a == units.end() || d == units.end() || (attack_with != -1 && size_t(attack_with) >= a->second.attacks().size()) || (stats.defend_with != -1 && size_t(stats.defend_with) >= d->second.attacks().size())) {
+	if(a == units.end() || d == units.end()) {
 		return;
 	}
 	
-	int orig_attacks = stats.nattacks;
-	int orig_defends = stats.ndefends;
-
-	int to_the_death = stats.rounds ? stats.rounds : 0;
+	int orig_attacks = a_stats.num_blows;
+	int orig_defends = d_stats.num_blows;
+	int n_attacks = orig_attacks;
+	int n_defends = orig_defends;
+	int attacker_cth = a_stats.chance_to_hit;
+	int defender_cth = d_stats.chance_to_hit;
+	int attacker_damage = a_stats.damage;
+	int defender_damage = d_stats.damage;
+	bool defender_strikes_first = (d_stats.firststrike && ! a_stats.firststrike);
+	unsigned int rounds = maximum<unsigned int>(a_stats.rounds, d_stats.rounds) - 1;
 
 	static const std::string poison_string("poison");
 
-	while(stats.nattacks > 0 || stats.ndefends > 0) {
+	while(n_attacks > 0 || n_defends > 0) {
 		LOG_NG << "start of attack loop...\n";
 
-		if(stats.nattacks > 0 && stats.defender_strikes_first == false) {
+		if(n_attacks > 0 && defender_strikes_first == false) {
 			const int ran_num = get_random();
-			bool hits = (ran_num%100) < stats.chance_to_hit_defender;
+			bool hits = (ran_num%100) < attacker_cth;
 
 			int damage_defender_takes;
 			if(hits) {
-				damage_defender_takes = stats.damage_defender_takes;
+				damage_defender_takes = attacker_damage;
 			} else {
 				damage_defender_takes = 0;
 			}
@@ -1072,12 +1092,12 @@ void attack(display& gui, const gamemap& map,
 				const bool results_hits = (*ran_results)["hits"] == "yes";
 				const int results_damage = atoi((*ran_results)["damage"].c_str());
 
-				if(results_chance != stats.chance_to_hit_defender) {
+				if(results_chance != attacker_cth) {
 					ERR_NW << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": chance to hit defender is inconsistent. Data source: "
-						<< results_chance << "; Calculation: " << stats.chance_to_hit_defender
+						<< results_chance << "; Calculation: " << attacker_cth
 						<< " (over-riding game calculations with data source results)\n";
-					stats.chance_to_hit_defender = results_chance;
+					attacker_cth = results_chance;
 					OOS_error = true;
 				}
 				if(hits != results_hits) {
@@ -1105,7 +1125,7 @@ void attack(display& gui, const gamemap& map,
 			
 			bool dies = unit_display::unit_attack(gui,units,map,attacker,defender,
 				            damage_defender_takes,
-							a->second.attacks()[attack_with], 
+							*a_stats.weapon, 
 							update_display);
 			if(hits) {
 				const int defender_side = d->second.side();
@@ -1114,12 +1134,12 @@ void attack(display& gui, const gamemap& map,
 				config dat;
 				dat.add_child("first");
 				dat.add_child("second");
-				(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
-				(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
+				(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
+				(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
 				game_events::fire("attacker_hits",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
-				if(a == units.end() || d == units.end() || (attack_with != -1 && size_t(attack_with) >= a->second.attacks().size()) || (stats.defend_with != -1 && size_t(stats.defend_with) >= d->second.attacks().size())) {
+				if(a == units.end() || d == units.end()) {
 					if (update_display){
 						recalculate_fog(map,state,info,units,teams,attacker_side-1);
 						recalculate_fog(map,state,info,units,teams,defender_side-1);
@@ -1139,12 +1159,12 @@ void attack(display& gui, const gamemap& map,
 				config dat;
 				dat.add_child("first");
 				dat.add_child("second");
-				(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
-				(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
+				(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
+				(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
 				game_events::fire("attacker_misses",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
-				if(a == units.end() || d == units.end() || (attack_with != -1 && size_t(attack_with) >= a->second.attacks().size()) || (stats.defend_with != -1 && size_t(stats.defend_with) >= d->second.attacks().size())) {
+				if(a == units.end() || d == units.end()) {
 					if (update_display){
 						recalculate_fog(map,state,info,units,teams,attacker_side-1);
 						recalculate_fog(map,state,info,units,teams,defender_side-1);
@@ -1162,7 +1182,7 @@ void attack(display& gui, const gamemap& map,
 			LOG_NG << "done attacking\n";
 
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
-			                           : statistics::attack_context::MISSES);
+			                           : statistics::attack_context::MISSES, attacker_damage);
 
 			if(ran_results == NULL) {
 				log_scope2(engine, "setting random results");
@@ -1171,7 +1191,7 @@ void attack(display& gui, const gamemap& map,
 				cfg["dies"] = (dies ? "yes" : "no");
 
 				cfg["damage"] = lexical_cast<std::string>(damage_defender_takes);
-				cfg["chance"] = lexical_cast<std::string>(stats.chance_to_hit_defender);
+				cfg["chance"] = lexical_cast<std::string>(attacker_cth);
 
 				set_random_results(cfg);
 			} else {
@@ -1189,9 +1209,9 @@ void attack(display& gui, const gamemap& map,
 			}
 
 			if(dies || hits) {
-				if(stats.amount_attacker_drains > 0) {
-					int amount_drained;
-					amount_drained = stats.amount_attacker_drains;
+				int amount_drained = a_stats.drains ? attacker_damage / 2 : 0;
+			
+				if(amount_drained > 0) {
 					char buf[50];
 					snprintf(buf,sizeof(buf),"%d",amount_drained);
 					if (update_display){
@@ -1228,11 +1248,11 @@ void attack(display& gui, const gamemap& map,
 				}
 
 				//plague units make new units on the target hex
-				if(stats.attacker_plague) {
+				if(a_stats.plagues) {
 				        a = units.find(attacker_loc);
 				        game_data::unit_type_map::const_iterator reanimitor;
-				        LOG_NG<<"trying to reanimate "<<stats.attacker_plague_type<<std::endl;
-				        reanimitor = info.unit_types.find(stats.attacker_plague_type);
+				        LOG_NG<<"trying to reanimate "<<a_stats.plague_type<<std::endl;
+				        reanimitor = info.unit_types.find(a_stats.plague_type);
 				        LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
 
 					if(reanimitor != info.unit_types.end()) {
@@ -1264,51 +1284,50 @@ void attack(display& gui, const gamemap& map,
 				}
 				break;
 			} else if(hits) {
-				if (stats.attacker_poisons &&
-				   d->second.get_state("poisoned") != "yes" &&
-				   d->second.get_state("not_living") != "yes") {
+				if (a_stats.poisons &&
+				   d->second.get_state("poisoned") != "yes") {
 					if (update_display){
 						gui.float_label(d->first,_("poisoned"),255,0,0);
 					}
 					d->second.set_state("poisoned","yes");
 				}
 
-				if(stats.attacker_slows && d->second.get_state("slowed") != "yes") {
+				if(a_stats.slows && d->second.get_state("slowed") != "yes") {
 					if (update_display){
 						gui.float_label(d->first,_("slowed"),255,0,0);
 					}
 					d->second.set_state("slowed","yes");
-					stats.damage_attacker_takes = round_damage(stats.damage_attacker_takes,1,2);
+					defender_damage = d_stats.slow_damage;
 				}
 
 				//if the defender is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
-				if (stats.attacker_stones) {
+				if (a_stats.stones) {
 					if (update_display){
 						gui.float_label(d->first,_("stone"),255,0,0);
 					}
 					d->second.set_state("stoned","yes");
-					stats.ndefends = 0;
-					stats.nattacks = 0;
+					n_defends = 0;
+					n_attacks = 0;
 					game_events::fire(stone_string,d->first,a->first);
 				}
 			}
 
-			--stats.nattacks;
+			--n_attacks;
 		}
 
 		//if the defender got to strike first, they use it up here.
-		stats.defender_strikes_first = false;
+		defender_strikes_first = false;
 
-		if(stats.ndefends > 0 ) {
+		if(n_defends > 0) {
 			LOG_NG << "doing defender attack...\n";
 
 			const int ran_num = get_random();
-			bool hits = (ran_num%100) < stats.chance_to_hit_attacker;
+			bool hits = (ran_num%100) < defender_cth;
 
 			int damage_attacker_takes;
 			if(hits) {
-				damage_attacker_takes = stats.damage_attacker_takes;
+				damage_attacker_takes = defender_damage;
 			} else {
 				damage_attacker_takes = 0;
 			}
@@ -1320,12 +1339,12 @@ void attack(display& gui, const gamemap& map,
 				const bool results_hits = (*ran_results)["hits"] == "yes";
 				const int results_damage = atoi((*ran_results)["damage"].c_str());
 
-				if(results_chance != stats.chance_to_hit_attacker) {
+				if(results_chance != defender_cth) {
 					ERR_NW << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": chance to hit attacker is inconsistent. Data source: "
-						<< results_chance << "; Calculation: " << stats.chance_to_hit_attacker
+						<< results_chance << "; Calculation: " << defender_cth
 						<< " (over-riding game calculations with data source results)\n";
-					stats.chance_to_hit_attacker = results_chance;
+					defender_cth = results_chance;
 					OOS_error = true;
 				}
 				if(hits != results_hits) {
@@ -1353,7 +1372,7 @@ void attack(display& gui, const gamemap& map,
 
 			bool dies = unit_display::unit_attack(gui,units,map,defender,attacker,
 			               damage_attacker_takes,
-						   d->second.attacks()[stats.defend_with], 
+						   *d_stats.weapon, 
 						   update_display);
 			if(hits) {
 				const int defender_side = d->second.side();
@@ -1362,12 +1381,17 @@ void attack(display& gui, const gamemap& map,
 				config dat;
 				dat.add_child("first");
 				dat.add_child("second");
-				(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
-				(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
+				(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
+				(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
 				game_events::fire("defender_hits",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
-				if(a == units.end() || d == units.end() || (attack_with != -1 && size_t(attack_with) >= a->second.attacks().size()) || (stats.defend_with != -1 && size_t(stats.defend_with) >= d->second.attacks().size())) {
+				
+				// FIXME: If the event removes this attack, we should stop attacking.
+				// The previous code checked if 'attack_with' and 'defend_with' were still within the bounds of
+				// the attack arrays, or -1, but it was incorrect. The attack used could be removed and '*_with'
+				// variables could still be in bounds but point to a different attack.
+				if(a == units.end() || d == units.end()) {
 					if (update_display){
 						recalculate_fog(map,state,info,units,teams,attacker_side-1);
 						recalculate_fog(map,state,info,units,teams,defender_side-1);
@@ -1385,12 +1409,12 @@ void attack(display& gui, const gamemap& map,
 				config dat;
 				dat.add_child("first");
 				dat.add_child("second");
-				(*(dat.child("first")))["weapon"]=a->second.attacks()[attack_with].name();
-				(*(dat.child("second")))["weapon"]=stats.defend_with != -1 ? d->second.attacks()[stats.defend_with].name() : "none";
+				(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
+				(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
 				game_events::fire("defender_misses",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
-				if(a == units.end() || d == units.end() || (attack_with != -1 && size_t(attack_with) >= a->second.attacks().size()) || (stats.defend_with != -1 && size_t(stats.defend_with) >= d->second.attacks().size())) {
+				if(a == units.end() || d == units.end()) {
 					if (update_display){
 						recalculate_fog(map,state,info,units,teams,attacker_side-1);
 						recalculate_fog(map,state,info,units,teams,defender_side-1);
@@ -1404,14 +1428,14 @@ void attack(display& gui, const gamemap& map,
 			}
 
 			attack_stats.defend_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
-			                           : statistics::attack_context::MISSES);
+			                           : statistics::attack_context::MISSES, defender_damage);
 
 			if(ran_results == NULL) {
 				config cfg;
 				cfg["hits"] = (hits ? "yes" : "no");
 				cfg["dies"] = (dies ? "yes" : "no");
 				cfg["damage"] = lexical_cast<std::string>(damage_attacker_takes);
-				cfg["chance"] = lexical_cast<std::string>(stats.chance_to_hit_attacker);
+				cfg["chance"] = lexical_cast<std::string>(defender_cth);
 
 				set_random_results(cfg);
 			} else {
@@ -1429,9 +1453,9 @@ void attack(display& gui, const gamemap& map,
 			}
 
 			if(hits || dies){
-				if(stats.amount_defender_drains > 0) {
-					int amount_drained;
-					amount_drained = stats.amount_defender_drains;
+				int amount_drained = d_stats.drains ? defender_damage / 2 : 0;
+			
+				if(amount_drained > 0) {
 					char buf[50];
 					snprintf(buf,sizeof(buf),"%d",amount_drained);
 					if (update_display){
@@ -1468,11 +1492,11 @@ void attack(display& gui, const gamemap& map,
 				}
 
 				//plague units make new units on the target hex.
-				if(stats.defender_plague) {
+				if(d_stats.plagues) {
 				        d = units.find(defender_loc);
 				        game_data::unit_type_map::const_iterator reanimitor;
-				        LOG_NG<<"trying to reanimate "<<stats.defender_plague_type<<std::endl;
-				        reanimitor = info.unit_types.find(stats.defender_plague_type);
+				        LOG_NG<<"trying to reanimate "<<d_stats.plague_type<<std::endl;
+				        reanimitor = info.unit_types.find(d_stats.plague_type);
 				        LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
 
 					if(reanimitor != info.unit_types.end()) {
@@ -1501,48 +1525,48 @@ void attack(display& gui, const gamemap& map,
 				}
 				break;
 			} else if(hits) {
-				if (stats.defender_poisons &&
-				   a->second.get_state("poisoned") != "yes" &&
-				   a->second.get_state("not_living") != "yes") {
+				if (d_stats.poisons &&
+				   a->second.get_state("poisoned") != "yes") {
 					if (update_display){
 						gui.float_label(a->first,_("poisoned"),255,0,0);
 					}
 					a->second.set_state("poisoned","yes");
 				}
 
-				if(stats.defender_slows && a->second.get_state("slowed") != "yes") {
+				if(d_stats.slows && a->second.get_state("slowed") != "yes") {
 					if (update_display){
 						gui.float_label(a->first,_("slowed"),255,0,0);
 					}
 					a->second.set_state("slowed","yes");
-					stats.damage_defender_takes = round_damage(stats.damage_defender_takes,1,2);
+					attacker_damage = a_stats.slow_damage;
 				}
 
 
 				//if the attacker is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
-				if (stats.defender_stones) {
+				if (d_stats.stones) {
 					if (update_display){
 						gui.float_label(a->first,_("stone"),255,0,0);
 					}
 					a->second.set_state("stoned","yes");
-					stats.ndefends = 0;
-					stats.nattacks = 0;
+					n_defends = 0;
+					n_attacks = 0;
 					game_events::fire(stone_string,a->first,d->first);
 				}
 			}
 
-			--stats.ndefends;
+			--n_defends;
 		}
 
 		// continue the fight to death; if one of the units got stoned,
-		// either nattacks or ndefends is -1
-		if(to_the_death > 0 && stats.ndefends == 0 && stats.nattacks == 0) {
-			stats.nattacks = orig_attacks;
-			stats.ndefends = orig_defends;
-			--to_the_death;
+		// either n_attacks or n_defends is -1
+		if(rounds > 0 && n_defends == 0 && n_attacks == 0) {
+			n_attacks = orig_attacks;
+			n_defends = orig_defends;
+			--rounds;
+			defender_strikes_first = (d_stats.firststrike && ! a_stats.firststrike);
 		}
-		if(stats.nattacks <= 0 && stats.ndefends <= 0) {
+		if(n_attacks <= 0 && n_defends <= 0) {
 			LOG_NG << "firing attack_end event\n";
 			game_events::fire("attack_end",attacker,defender,dat);
 			a = units.find(attacker);

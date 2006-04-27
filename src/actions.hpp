@@ -115,6 +115,7 @@ public:
 		bool slows;				// Attack slows opponent when it hits.
 		bool drains;			// Attack drains opponent when it hits.
 		bool stones;			// Attack turns opponent to stone when it hits.
+		bool plagues;			// Attack turns opponent into a zombie when fatal.
 		bool poisons;			// Attack poisons opponent when it hits.
 		bool backstab_pos;		// True if the attacker is in *position* to backstab the defender (this is used to
 								// determine whether to apply the backstab bonus in case the attacker has backstab).
@@ -130,6 +131,8 @@ public:
 		unsigned int num_blows;	// Effective number of blows, takes swarm into account.
 		unsigned int swarm_min;	// Minimum number of blows with swarm (equal to num_blows if swarm isn't used).
 		unsigned int swarm_max;	// Maximum number of blows with swarm (equal to num_blows if swarm isn't used).
+		
+		std::string plague_type; // The plague type used by the attack, if any.
 
 		unit_stats(const unit &u, const gamemap::location& u_loc,
 				   const attack_type *u_weapon, bool attacking,

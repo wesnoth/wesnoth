@@ -44,6 +44,9 @@ namespace statistics
 
 		//expected value for damage inflicted/taken * 100, based on probability
 		//to hit, Use this long term to see how lucky a side is
+		// FIXME: Since integers are used, rounding errors accumulate. Also,
+		// slow isn't accounted for properly. Rusty's simulator could be used
+		// obtain valid values.
 		int expected_damage_inflicted, expected_damage_taken;
 	};
 
@@ -64,19 +67,19 @@ namespace statistics
 
 	struct attack_context
 	{
-		attack_context(const unit& a, const unit& d, const battle_stats& stats);
+		attack_context(const unit& a, const unit& d, int a_cth, int d_cth);
 		~attack_context();
 
 		enum ATTACK_RESULT { MISSES, HITS, KILLS };
 
-		void attack_result(ATTACK_RESULT res);
-		void defend_result(ATTACK_RESULT res);
+		void attack_result(ATTACK_RESULT res, int damage);
+		void defend_result(ATTACK_RESULT res, int damage);
 
 	private:
 
 		std::string attacker_type, defender_type;
-		battle_stats bat_stats;
 		int attacker_side, defender_side;
+		int chance_to_hit_defender, chance_to_hit_attacker;
 		std::string attacker_res, defender_res;
 
 		stats& attacker_stats();
