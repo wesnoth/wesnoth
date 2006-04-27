@@ -238,6 +238,14 @@ void unit::advance_to(const unit_type* t)
 {
 	
 	reset_modifications();
+	// remove old animations
+	cfg_.clear_children("defend");
+	cfg_.clear_children("teleport_anim");
+	cfg_.clear_children("extra_anim");
+	cfg_.clear_children("death");
+	cfg_.clear_children("movement_anim");
+	cfg_.clear_children("attack");
+	
 	if(t->movement_type().get_parent()) {
 		cfg_ = cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
 	}
