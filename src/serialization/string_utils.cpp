@@ -288,7 +288,7 @@ bool string_bool(const std::string& str,bool def)
 	if(str == "yes" || str == "on" || str == "true" || lexical_cast_default<int>(str)) {
 		return true;
 	}
-	if(str == "no" || str == "off" || str == "false" || !lexical_cast_default<int>(str)) {
+	if(str == "no" || str == "off" || str == "false" || (str != "" && !lexical_cast_default<int>(str))) {
 		return false;
 	}
 	return def;
