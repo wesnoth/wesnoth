@@ -1298,7 +1298,7 @@ void mouse_handler::show_attack_options(unit_map::const_iterator u)
 
 	for(unit_map::const_iterator target = units_.begin(); target != units_.end(); ++target) {
 		if(current_team.is_enemy(target->second.side()) &&
-			distance_between(target->first,u->first) == 1 && utils::string_bool(target->second.get_state("stoned"))) {
+			distance_between(target->first,u->first) == 1 && !utils::string_bool(target->second.get_state("stoned"))) {
 			current_paths_.routes[target->first] = paths::route();
 		}
 	}
