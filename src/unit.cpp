@@ -691,6 +691,9 @@ bool unit::has_goto() const
 }
 int unit::emits_zoc() const
 {
+	if(utils::string_bool(get_state("stoned"))) {
+		return false;
+	}
 	return emit_zoc_;
 }
 bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool use_flat_tod) const
