@@ -114,7 +114,7 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
 		if(it != units_->end() && 
-					!utils::string_bool(it->second.get_state("stoned"))) {
+					!it->second.incapacitated()) {
 			const config* adj_abilities = it->second.cfg_.child("abilities");
 			if(adj_abilities) {
 				const config::child_list& list = adj_abilities->get_children(ability);
@@ -152,7 +152,7 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
 		if(it != units_->end() && 
-		!utils::string_bool(it->second.get_state("stoned"))) {
+		!it->second.incapacitated()) {
 			const config* adj_abilities = it->second.cfg_.child("abilities");
 			if(adj_abilities) {
 				const config::child_list& list = adj_abilities->get_children(ability);
@@ -220,7 +220,7 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
 		if(it != units_->end() && 0 &&
-		!utils::string_bool(it->second.get_state("stoned"))) {
+		!it->second.incapacitated()) {
 			const config* adj_abilities = it->second.cfg_.child("abilities");
 			if(adj_abilities) {
 				const config::child_map& adj_list_map = adj_abilities->all_children();

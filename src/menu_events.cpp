@@ -912,7 +912,7 @@ namespace events{
 												 .lawful_bonus,
 												 u->first, units_, teams_);
 
-			if(teams_[team_num - 1].is_enemy(u->second.side()) && !gui_->fogged(u->first.x,u->first.y) && !utils::string_bool(u->second.get_state("stoned")) && !invisible) {
+			if(teams_[team_num - 1].is_enemy(u->second.side()) && !gui_->fogged(u->first.x,u->first.y) && !u->second.incapacitated() && !invisible) {
 				const unit_movement_resetter move_reset(u->second);
 				const bool is_skirmisher = u->second.get_ability_bool("skirmisher",u->first);
 				const bool teleports = u->second.get_ability_bool("teleport",u->first);

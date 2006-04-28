@@ -1948,7 +1948,7 @@ time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const ga
 		for(int i = 0; i != 7; ++i) {
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if(itor != units.end() &&
-			   itor->second.get_ability_bool("illuminates",itor->first) && !utils::string_bool(itor->second.get_state("stoned"))) {
+			   itor->second.get_ability_bool("illuminates",itor->first) && !itor->second.incapacitated()) {
 				unit_ability_list illum = itor->second.get_abilities("illuminates",itor->first);
 				unit_abilities::effect illum_effect(illum,lighten,false);
 				int mod = illum_effect.get_composite_value();
@@ -2407,7 +2407,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 		if(map.on_board(locs[n])) {
 			const unit_map::const_iterator i = units.find(locs[n]);
 			if(i != units.end()) {
-				if(!utils::string_bool(i->second.get_state("stoned")) && current_team.is_enemy(i->second.side())) {
+				if(!i->second.incapacitated() && current_team.is_enemy(i->second.side())) {
 					return true;
 				}
 			}
@@ -2495,7 +2495,7 @@ bool backstab_check(const gamemap::location& attacker_loc,
 	const units_map::const_iterator opp =
 		units.find(adj[(i+3)%6]);
 	if(opp == units.end()) return false; // No opposite unit
-	if(utils::string_bool(opp->second.get_state("stoned"))) return false;
+	if(opp->second.incapacitated()) return false;
 	if(size_t(defender->second.side()-1) >= teams.size() ||
 		size_t(opp->second.side()-1) >= teams.size())
 		return true; // If sides aren't valid teams, then they are enemies

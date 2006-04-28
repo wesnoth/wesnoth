@@ -513,7 +513,11 @@ fixed_t unit::alpha() const
 
 bool unit::can_recruit() const
 {
-	return !recruits_.empty() || cfg_["canrecruit"]=="1";
+	return !recruits_.empty() || utils::string_bool(cfg_["canrecruit"]);
+}
+bool unit::incapacitated() const
+{
+	return utils::string_bool(get_state("stoned"),false);
 }
 const std::vector<std::string>& unit::recruits() const
 {
@@ -582,7 +586,7 @@ void unit::new_turn(const gamemap::location& loc)
 	} else {
 		set_state("hides","");
 	}
-	if(utils::string_bool(get_state("stoned"))) {
+	if(incapacitated()) {
 		set_attacks(0);
 	}
 	if (hold_position_) {
@@ -691,7 +695,7 @@ bool unit::has_goto() const
 }
 int unit::emits_zoc() const
 {
-	if(utils::string_bool(get_state("stoned"))) {
+	if(incapacitated()) {
 		return false;
 	}
 	return emit_zoc_;

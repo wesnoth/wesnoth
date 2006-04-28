@@ -107,6 +107,7 @@ class unit
 		fixed_t alpha() const;
 		
 		bool can_recruit() const;
+		bool incapacitated() const;
 		const std::vector<std::string>& recruits() const;
 		int total_movement() const;
 		int movement_left() const;
