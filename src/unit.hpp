@@ -158,7 +158,7 @@ class unit
 		
 		// a sdl surface, ready for display for place where we need a fix image of the unit
 		const surface still_image() const;
-		void redraw_unit(display& disp,gamemap::location hex, bool with_status =false);
+		void redraw_unit(display& disp,gamemap::location hex);
 		
 		void set_standing(const display& disp);
 		void set_defending(const display& disp, int damage, std::string range);
@@ -350,6 +350,7 @@ class unit
 		bool getsHit_;
 		bool refreshing_; // avoid infinite recursion
 		bool hidden_;
+		bool draw_bars_;
 		
 		config modifications_;
 		

@@ -1224,6 +1224,7 @@ const surface unit::still_image() const
 void unit::set_standing(const display &disp)
 {
 	state_ = STATE_STANDING;
+	draw_bars_ = true;
 	offset_=0;
 	if(anim_) {
 		delete anim_;
@@ -1237,6 +1238,7 @@ void unit::set_standing(const display &disp)
 void unit::set_defending(const display &disp, int damage, std::string range)
 {
 	state_ =  STATE_DEFENDING;
+	draw_bars_ = true;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
@@ -1263,6 +1265,7 @@ void unit::set_defending(const display &disp, int damage, std::string range)
 void unit::set_extra_anim(const display &disp, std::string flag)
 {
 	state_ =  STATE_EXTRA;
+	draw_bars_ = false;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
@@ -1280,6 +1283,7 @@ void unit::set_extra_anim(const display &disp, std::string flag)
 const unit_animation & unit::set_attacking(const display &disp,bool hit,const attack_type& type)
 {
 	state_ =  STATE_ATTACKING;
+	draw_bars_ = false;
  	if(anim_) {
  		delete anim_;
  		anim_ = NULL;
@@ -1294,6 +1298,7 @@ const unit_animation & unit::set_attacking(const display &disp,bool hit,const at
 void unit::set_leading(const display &disp)
 {
 	state_ = STATE_LEADING;
+	draw_bars_ = false;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
@@ -1306,6 +1311,7 @@ void unit::set_leading(const display &disp)
 void unit::set_leveling_in(const display &disp)
 {
 	state_ = STATE_LEVELIN;
+	draw_bars_ = false;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
@@ -1329,6 +1335,7 @@ void unit::set_leveling_in(const display &disp)
 void unit::set_leveling_out(const display &disp)
 {
 	state_ = STATE_LEVELOUT;
+	draw_bars_ = false;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
@@ -1352,6 +1359,7 @@ void unit::set_leveling_out(const display &disp)
 void unit::set_recruited(const display &disp)
 {
 	state_ = STATE_RECRUITED;
+	draw_bars_ = false;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
@@ -1372,6 +1380,7 @@ void unit::set_recruited(const display &disp)
 void unit::set_healed(const display &disp, int healing)
 {
 	state_ = STATE_HEALED;
+	draw_bars_ = true;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
@@ -1396,6 +1405,7 @@ void unit::set_healed(const display &disp, int healing)
 void unit::set_poisoned(const display &disp, int damage)
 {
 	state_ = STATE_POISONED;
+	draw_bars_ = true;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
@@ -1421,6 +1431,7 @@ void unit::set_poisoned(const display &disp, int damage)
 void unit::set_teleporting(const display &disp)
 {
 	state_ = STATE_TELEPORT;
+	draw_bars_ = false;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
@@ -1434,6 +1445,7 @@ void unit::set_teleporting(const display &disp)
 void unit::set_dying(const display &disp, const attack_type* attack)
 {
 	state_ = STATE_DYING;
+	draw_bars_ = false;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
@@ -1454,6 +1466,7 @@ void unit::set_dying(const display &disp, const attack_type* attack)
 void unit::set_healing(const display &disp)
 {
 	state_ = STATE_HEALING;
+	draw_bars_ = true;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
@@ -1478,6 +1491,7 @@ void unit::set_walking(const display &disp, const std::string terrain)
 		return; // finish current animation, don't start a new one
 	}
 	state_ = STATE_WALKING;
+	draw_bars_ = false;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
@@ -1496,7 +1510,7 @@ void unit::restart_animation(const display& disp,int start_time) {
 	frame_begin_time = start_time -1;
 }
 
-void unit::redraw_unit(display& disp,gamemap::location hex,bool with_status)
+void unit::redraw_unit(display& disp,gamemap::location hex)
 {
 	const gamemap & map = disp.get_map();
 	if(hidden_) { 
@@ -1610,7 +1624,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex,bool with_status)
 	
 	surface ellipse_front(NULL);
 	surface ellipse_back(NULL);
-	if(preferences::show_side_colours() && with_status) {
+	if(preferences::show_side_colours() && draw_bars_) {
 		const char* const selected = disp.selected_hex() == hex ? "selected-" : "";
 		std::vector<Uint32> temp_rgb;
 		//ellipse not pure red=255!
@@ -1639,7 +1653,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex,bool with_status)
 		halo::set_location(unit_halo_, x+ d, y -height_adjust+ d);
 	}
 
-	if(with_status) {
+	if(draw_bars_) {
 		const std::string* movement_file = NULL;
 		const std::string* energy_file = &game_config::energy_image;
 		const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (hex == disp.mouseover_hex() ? ftofxp(1.0): ftofxp(0.7));

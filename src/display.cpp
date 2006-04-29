@@ -867,11 +867,11 @@ void display::draw(bool update,bool force)
 		for(it = unit_invals.begin(); it != unit_invals.end(); ++it) {
 			unit &u = units_.find(*it)->second;
 			u.refresh();
-			u.redraw_unit(*this, *it, true);
+			u.redraw_unit(*this, *it);
 		}
 		if (temp_unit_ && invalidated_.find(temp_unit_loc_) != invalidated_.end()) {
 			temp_unit_->refresh();
-			temp_unit_->redraw_unit(*this, temp_unit_loc_, false);
+			temp_unit_->redraw_unit(*this, temp_unit_loc_);
 		}
 		invalidated_.clear();
 	}
