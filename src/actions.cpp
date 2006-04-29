@@ -161,8 +161,8 @@ std::string recruit_unit(const gamemap& map, int side,
 			un->second.set_hidden(false);
 			un->second.set_recruited(*disp);
 			while(!un->second.get_animation()->animation_finished()) {
-				disp->draw_tile(recruit_location.x,recruit_location.y);
-				disp->update_display();
+				disp->invalidate(recruit_location);
+				disp->draw();
 				events::pump();
 				if(!disp->turbo()) SDL_Delay(10);
 
@@ -1238,7 +1238,7 @@ void attack(display& gui, const gamemap& map,
 
 					       units.insert(std::pair<gamemap::location,unit>(loc,newunit));
 						   if (update_display){
-						       gui.draw_tile(loc.x,loc.y);
+						       gui.invalidate(loc);
 						   }
 					}else{
 					       LOG_NG<<"unit not reanimated"<<std::endl;
@@ -1247,7 +1247,7 @@ void attack(display& gui, const gamemap& map,
 				if (update_display){
 					recalculate_fog(map,state,info,units,teams,defender_side-1);
 					gui.recalculate_minimap();
-					gui.update_display();
+					gui.draw();
 				}
 				break;
 			} else if(hits) {
@@ -1479,7 +1479,7 @@ void attack(display& gui, const gamemap& map,
 
 					       units.insert(std::pair<gamemap::location,unit>(loc,newunit));
 						   if (update_display){
-						       gui.draw_tile(loc.x,loc.y);
+						       gui.invalidate(loc);
 						   }
 					}else{
 					       LOG_NG<<"unit not reanimated"<<std::endl;
@@ -1487,7 +1487,7 @@ void attack(display& gui, const gamemap& map,
 				}
 				if (update_display){
 					gui.recalculate_minimap();
-					gui.update_display();
+					gui.draw();
 					recalculate_fog(map,state,info,units,teams,attacker_side-1);
 				}
 				break;
@@ -1807,10 +1807,10 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		bool finished;
 		do {
 			finished = (i->second.get_animation()->animation_finished());
-			disp.draw_tile(i->first.x, i->first.y);
+			disp.invalidate(i->first);
 			for(std::vector<unit_map::iterator>::iterator heal_fanim_it = healers.begin(); heal_fanim_it != healers.end(); ++heal_fanim_it) {
 				finished &= (*heal_fanim_it)->second.get_animation()->animation_finished();
-				disp.draw_tile((*heal_fanim_it)->first.x,(*heal_fanim_it)->first.y);
+				disp.invalidate((*heal_fanim_it)->first);
 			}
 			if (healing > 0) {
 				i->second.heal(1);
@@ -1820,7 +1820,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				++healing;
 			}
 			finished &= (!healing);
-			disp.update_display();
+			disp.draw();
 			events::pump();
 			SDL_Delay(10);
 		} while (!finished);
@@ -2250,7 +2250,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	//still display the correct number of units.
 	if(disp != NULL) {
 		ui->second.set_hidden(true);
-		disp->draw_tile(ui->first.x,ui->first.y);
+		disp->invalidate(ui->first);
 		unit_display::move_unit(*disp,map,steps,u,status.get_time_of_day(),units,teams);
 		ui->second.set_hidden(false);
 	}
@@ -2263,6 +2263,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	if(disp != NULL) {
 		disp->invalidate_unit();
 		disp->invalidate(steps.back());
+		disp->draw();
 	}
 
 	if(move_recorder != NULL) {

@@ -45,8 +45,9 @@ void teleport_unit_between(display& disp, const gamemap& map, const gamemap::loc
 	if (!disp.fogged(a.x, a.y)) { // teleport
 		disp.scroll_to_tile(a.x,a.y,display::ONSCREEN);
 		while(!u.get_animation()->animation_finished()  && u.get_animation()->get_animation_time() < 0) {
-			disp.draw_tile(a.x,a.y);
-			disp.update_display();
+			disp.invalidate(a);
+			disp.place_temporary_unit(u, a);
+			disp.draw();
 			events::pump();
 			if(!disp.turbo()) SDL_Delay(10);
 
@@ -56,13 +57,15 @@ void teleport_unit_between(display& disp, const gamemap& map, const gamemap::loc
 		u.restart_animation(disp,0);
 		disp.scroll_to_tile(b.x,b.y,display::ONSCREEN);
 		while(!u.get_animation()->animation_finished()) {
-			disp.draw_tile(b.x,b.y);
-			disp.update_display();
+			disp.invalidate(b);
+			disp.place_temporary_unit(u, b);
+			disp.draw();
 			events::pump();
 			if(!disp.turbo()) SDL_Delay(10);
 		}
 	}
 	u.set_standing(disp);
+	disp.remove_temporary_unit();
 	disp.update_display();
 	events::pump();
 }
@@ -93,15 +96,16 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	while(mvt_time < total_mvt_time) {
 		u.set_walking(disp,map.underlying_mvt_terrain(src_terrain));
 		const double pos =double(mvt_time)/total_mvt_time;
-		disp.draw_tile(a.x,a.y);
+		disp.invalidate(a);
+		disp.place_temporary_unit(u,a);
 		u.set_offset(pos);
-		u.refresh_unit(disp,a);
-		disp.update_display();
+		disp.draw();
 		events::pump();
 		if(!disp.turbo()) SDL_Delay(10);
 
 		mvt_time = SDL_GetTicks() -start_time;
 	}
+	disp.remove_temporary_unit();
 }
 
 }
@@ -149,14 +153,15 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 			}
 			previous_visible = true;
 		} else if(previous_visible) {
-			disp.draw_tile(path[i].x,path[i].y);
+			disp.invalidate(path[i]);
+			disp.draw();
 		}
 	}
 	u.set_standing(disp);
 
 	//make sure the entire path is cleaned properly
 	for(std::vector<gamemap::location>::const_iterator it = path.begin(); it != path.end(); ++it) {
-		disp.draw_tile(it->x,it->y);
+		disp.invalidate(*it);
 	}
 }
 
@@ -175,8 +180,8 @@ void unit_die(display& disp, const gamemap &map,const gamemap::location& loc, un
 
 	while(!u.get_animation()->animation_finished()) {
 
-		disp.draw_tile(loc.x,loc.y);
-		disp.update_display();
+		disp.invalidate(loc);
+		disp.draw();
 		events::pump();
 		if(!disp.turbo()) SDL_Delay(10);
 	}
@@ -234,9 +239,9 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 		leader->second.set_leading(disp);
 	}
 	while(!attacker.get_animation()->animation_finished() ) {
-		disp.draw_tile(a.x,a.y);
-		if(leader_loc.valid()) disp.draw_tile(leader_loc.x,leader_loc.y);
-		disp.update_display();
+		disp.invalidate(a);
+		if(leader_loc.valid()) disp.invalidate(leader_loc);
+		disp.draw();
 		events::pump();
 		if(!disp.turbo()) SDL_Delay(10);
 	}
@@ -263,9 +268,9 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 			double(animation_time)/double(missile_animation.get_first_frame_time());
 		const int posx = int(pos*xsrc + (1.0-pos)*xdst);
 		const int posy = int(pos*ysrc + (1.0-pos)*ydst);
-		disp.draw_tile(b.x,b.y);
-		disp.draw_tile(a.x,a.y);
-		if(leader_loc.valid()) disp.draw_tile(leader_loc.x,leader_loc.y);
+		disp.invalidate(b);
+		disp.invalidate(a);
+		if(leader_loc.valid()) disp.invalidate(leader_loc);
 		halo::remove(missile_halo);
 		missile_halo = 0;
 		if(pos > 0.0 && pos < 1.0 && (!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
@@ -313,7 +318,7 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 			sound::play_sound(def->second.get_hit_sound());
 			disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
 		}
-		disp.update_display();
+		disp.draw();
 		events::pump();
 		if(!disp.turbo()) SDL_Delay(10);
 		animation_time = defender.get_animation()->get_animation_time();
@@ -413,10 +418,10 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		const double pos = animation_time < attacker.get_animation()->get_first_frame_time()?0.0:
 			(1.0 - double(animation_time)/double(attacker.get_animation()->get_first_frame_time()));
 		attacker.set_offset(pos*0.6);
-		disp.draw_tile(b.x,b.y);
-		disp.draw_tile(a.x,a.y);
-		if(leader_loc.valid()) disp.draw_tile(leader_loc.x,leader_loc.y);
-		disp.update_display();
+		disp.invalidate(b);
+		disp.invalidate(a);
+		if(leader_loc.valid()) disp.invalidate(leader_loc);
+		disp.draw();
 		events::pump();
 		if(!disp.turbo()) SDL_Delay(10);
 
@@ -434,10 +439,10 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 			(leader_loc.valid() && !leader->second.get_animation()->animation_finished() )) {
 		const double pos = (1.0-double(animation_time)/double(end_time));
 		attacker.set_offset(pos*0.6);
-		disp.draw_tile(b.x,b.y);
-		disp.draw_tile(a.x,a.y);
-		if(leader_loc.valid()) disp.draw_tile(leader_loc.x,leader_loc.y);
-		disp.update_display();
+		disp.invalidate(b);
+		disp.invalidate(a);
+		if(leader_loc.valid()) disp.invalidate(leader_loc);
+		disp.draw();
 		events::pump();
 		if(!disp.turbo()) SDL_Delay(10);
 

@@ -748,7 +748,8 @@ namespace events{
 				std::vector<unit>& recall_list = player->available_units;
 				recall_list.insert(recall_list.begin()+action.recall_pos,un);
 				units_.erase(action.recall_loc);
-				gui_->draw_tile(action.recall_loc.x,action.recall_loc.y);
+				gui_->invalidate(action.recall_loc);
+				gui_->draw();
 			}
 		} else {
 			// Undo a move action
@@ -783,8 +784,8 @@ namespace events{
 			units_.erase(u);
 			un.set_movement(starting_moves);
 			units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
-			gui_->draw_tile(route.back().x,route.back().y);
-			gui_->update_display();
+			gui_->invalidate(route.back());
+			gui_->draw();
 		}
 
 		gui_->invalidate_unit();
@@ -837,7 +838,8 @@ namespace events{
 					teams_[team_num - 1].spend_gold(game_config::recall_cost);
 					recall_list.erase(recall_list.begin()+action.recall_pos);
 
-					gui_->draw_tile(action.recall_loc.x,action.recall_loc.y);
+					gui_->invalidate(action.recall_loc);
+					gui_->draw();
 				} else {
 					recorder.undo();
 					gui::show_dialog(*gui_,NULL,"",msg,gui::OK_ONLY);
@@ -875,7 +877,8 @@ namespace events{
 				}
 			}
 
-			gui_->draw_tile(route.back().x,route.back().y);
+			gui_->invalidate(route.back());
+			gui_->draw();
 
 			recorder.add_movement(route.front(),route.back());
 		}
@@ -1170,7 +1173,7 @@ namespace events{
 		const unit_map::iterator un = units_.find(mousehandler.get_selected_hex());
 		if(un != units_.end() && un->second.side() == team_num && un->second.movement_left() >= 0) {
 			un->second.set_hold_position(!un->second.hold_position());
-			gui_->draw_tile(mousehandler.get_selected_hex().x, mousehandler.get_selected_hex().y);
+			gui_->invalidate(mousehandler.get_selected_hex());
 
 			mousehandler.set_current_paths(paths());
 			gui_->draw();
@@ -1190,7 +1193,7 @@ namespace events{
 			if(un->second.hold_position() && !un->second.user_end_turn()){
 			  un->second.set_hold_position(false);
 			}
-			gui_->draw_tile(mousehandler.get_selected_hex().x, mousehandler.get_selected_hex().y);
+			gui_->invalidate(mousehandler.get_selected_hex());
 
 			mousehandler.set_current_paths(paths());
 			gui_->draw();

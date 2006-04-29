@@ -80,6 +80,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 		const config& theme_cfg, const config& cfg, const config& level) :
 	screen_(video), xpos_(0), ypos_(0),
 	zoom_(DefaultZoom), map_(map), units_(units),
+	temp_unit_(NULL),
 	minimap_(NULL), redrawMinimap_(false),
 	status_(status),
 	teams_(t), lastDraw_(0), drawSkips_(0),
@@ -831,28 +832,43 @@ void display::draw(bool update,bool force)
 		get_visible_hex_bounds(topleft, bottomright);
 		for(int x = topleft.x; x <= bottomright.x; ++x)
 			for(int y = topleft.y; y <= bottomright.y; ++y)
-				draw_tile(x,y);
+				invalidated_.insert(gamemap::location(x,y));
 		invalidateAll_ = false;
 
 		redrawMinimap_ = true;
+	}
+
+	if(!map_.empty() && !invalidated_.empty()) {
 		changed = true;
-	} else if(!map_.empty()) {
-		if(!invalidated_.empty()) {
-			changed = true;
+
+		// Units can overlap multiple hexes, so we need to (1) redraw
+		// them last, and (2) redraw them if they are adjacent existing hexes.
+		std::set<gamemap::location> unit_invals;
+
+		std::set<gamemap::location>::const_iterator it;
+		for(it = invalidated_.begin(); it != invalidated_.end(); ++it) {
+			if (units_.find(*it) != units_.end()) {
+				unit_invals.insert(*it);
+			}
+			draw_tile(*it);
+
+			gamemap::location adjacent[6];
+			get_adjacent_tiles(*it, adjacent);
+			for (int i = 0; i < 6; i++) {
+				if (units_.find(adjacent[i]) != units_.end())
+					unit_invals.insert(adjacent[i]);
+			}
 		}
 
-		std::set<gamemap::location> invalidated_temp = invalidated_;
-		/*
-		for (std::set<gamemap::location>::const_iterator it =
-			invalidated_.begin(); it != invalidated_.end(); ++it){
-			invalidated_temp.insert(it);
+		for(it = unit_invals.begin(); it != unit_invals.end(); ++it) {
+			unit &u = units_.find(*it)->second;
+			u.refresh();
+			u.refresh_unit(*this, *it, true);
 		}
-		*/
-		for(std::set<gamemap::location>::const_iterator it =
-		    invalidated_temp.begin(); it != invalidated_temp.end(); ++it) {
-			draw_tile(it->x,it->y);
+		if (temp_unit_ && invalidated_.find(temp_unit_loc_) != invalidated_.end()) {
+			temp_unit_->refresh();
+			temp_unit_->refresh_unit(*this, temp_unit_loc_, false);
 		}
-
 		invalidated_.clear();
 	}
 
@@ -1331,25 +1347,10 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 	}
 }
 
-void display::draw_tile(int x, int y)
+void display::draw_tile(const gamemap::location &loc)
 {
-	// list of tiles in the process of being redrawn (protect from recursion problems
-	static int recursion_level = 0;
-	static std::set<gamemap::location> redrawn;
 	reach_map::iterator reach = reach_map_.end();
 
-	const gamemap::location loc(x,y);
-
-	if (redrawn.find(loc) != redrawn.end()) {
-		//this tile has already redrawn the terrain and is waiting to redraw the "upper half" (unit)
-		return;
-	}
-
-	
-	unit_map::iterator it = units_.find(loc);
-	if(it != units_.end()) {
-		it->second.refresh();
-	}
 	if(screen_.update_locked()) {
 		return;
 	}
@@ -1369,7 +1370,7 @@ void display::draw_tile(int x, int y)
 
 	clip_rect_setter set_clip_rect(dst,clip_rect);
 
-	const bool is_shrouded = shrouded(x,y);
+	const bool is_shrouded = shrouded(loc.x, loc.y);
 	gamemap::TERRAIN terrain = gamemap::VOID_TERRAIN;
 
 	if(!is_shrouded) {
@@ -1388,7 +1389,7 @@ void display::draw_tile(int x, int y)
 
 	//find if this tile should be darkened or bightened (reach of a unit)
 	if (!reach_map_.empty()) {
-		reach = reach_map_.find(gamemap::location(x,y));
+		reach = reach_map_.find(loc);
 		if (reach == reach_map_.end()) {
 			image_type = image::DARKENED;
 		} else {
@@ -1407,9 +1408,9 @@ void display::draw_tile(int x, int y)
 	}
 
 	if(!is_shrouded) {
-		draw_terrain_on_tile(x,y,image_type,ADJACENT_BACKGROUND);
+		draw_terrain_on_tile(loc.x,loc.y,image_type,ADJACENT_BACKGROUND);
 
-		surface flag(get_flag(terrain,x,y));
+		surface flag(get_flag(terrain,loc.x,loc.y));
 		if(flag != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 			SDL_BlitSurface(flag,NULL,dst,&dstrect);
@@ -1446,42 +1447,11 @@ void display::draw_tile(int x, int y)
 	draw_footstep(loc,xpos,ypos);
 
 	if(!is_shrouded) {
-		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOREGROUND);
+		draw_terrain_on_tile(loc.x,loc.y,image_type,ADJACENT_FOREGROUND);
 		draw_movement_info(loc,xpos,ypos);
 	}
 
-	//first half is done, mark ourselves as half refreshed
-	//redrawn.insert(loc);
-	gamemap::location adjacent[6];
-	get_adjacent_tiles(loc, adjacent);
-	for(int tile = 0; tile != 6; ++tile) {
-		if ((units_.find(adjacent[tile]) != units_.end()) && (recursion_level < 2)) {
-			// neighbour contains a unit, since its unit could overlap on us, we must redraw it
-			recursion_level++;
-			//std::cerr << "recursion_level: " << recursion_level << "\n";
-			draw_tile(adjacent[tile].x, adjacent[tile].y);
-			recursion_level--;
-		}
-	}
-	
-	if(it != units_.end()) {
-		//Is this really necessary? If we overlap on an adjacent tile, there should be nothing
-		//essential to be redrawn i guess
-		/*
-		// neighbours must be redrawn because we overlap on them
-		for(int tile = 0; tile != 6; ++tile) {
-			recursion_level++;
-			if (recursion_level < 2){
-				draw_tile(adjacent[tile].x, adjacent[tile].y);
-			}
-			recursion_level--;
-		}
-		*/
-		it->second.refresh_unit(*this,loc,true);
-	}
-	
-	
-	if(fogged(x,y) && shrouded(x,y) == false) {
+	if(fogged(loc.x,loc.y) && shrouded(loc.x,loc.y) == false) {
 		const surface fog_surface(image::get_image("terrain/fog.png"));
 		if(fog_surface != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
@@ -1489,8 +1459,8 @@ void display::draw_tile(int x, int y)
 		}
 	}
 
-	if(!shrouded(x,y)) {
-		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOGSHROUD);
+	if(!shrouded(loc.x,loc.y)) {
+		draw_terrain_on_tile(loc.x,loc.y,image_type,ADJACENT_FOGSHROUD);
 		if (reach != reach_map_.end())
 			draw_enemies_reach(reach->second,xpos,ypos);
 	}
@@ -1522,7 +1492,7 @@ void display::draw_tile(int x, int y)
 		}
 	}
 
-	if(game_config::debug && debugHighlights_.count(gamemap::location(x,y))) {
+	if(game_config::debug && debugHighlights_.count(loc)) {
 		const surface cross(image::get_image(game_config::cross_image));
 		if(cross != NULL) {
 			draw_unit(xpos,ypos,cross,false,debugHighlights_[loc],0);
@@ -1530,10 +1500,6 @@ void display::draw_tile(int x, int y)
 	}
 
 	update_rect(xpos,ypos,zoom_,zoom_);
-	//redrawing is done
-	redrawn.erase(loc);
-	//avoid useless redrawin
-	invalidated_.erase(loc);
 }
 
 void display::draw_enemies_reach(unsigned int num, int xloc, int yloc)
@@ -2035,7 +2001,16 @@ const SDL_Rect& display::calculate_energy_bar(surface surf)
 void display::invalidate(const gamemap::location& loc)
 {
 	if(!invalidateAll_) {
-		invalidated_.insert(loc);
+		if (invalidated_.insert(loc).second) {
+			// Units can overlap adjacent tiles.
+			if (units_.find(loc) != units_.end()) {
+				gamemap::location adjacent[6];
+				get_adjacent_tiles(loc, adjacent);
+				for (int i = 0; i < 6; i++) {
+					invalidated_.insert(adjacent[i]);
+				}
+			}
+		}
 	}
 }
 
@@ -2089,6 +2064,29 @@ void display::recalculate_minimap()
 void display::redraw_minimap()
 {
 	redrawMinimap_ = true;
+}
+
+void display::place_temporary_unit(unit &u, const gamemap::location& loc)
+{
+	temp_unit_ = &u;
+	temp_unit_loc_ = loc;
+
+	gamemap::location adjacent[6];
+	get_adjacent_tiles(loc, adjacent);
+	for (int i = 0; i < 6; i++) {
+		invalidated_.insert(adjacent[i]);
+	}
+}
+
+void display::remove_temporary_unit()
+{
+	temp_unit_ = NULL;
+
+	gamemap::location adjacent[6];
+	get_adjacent_tiles(temp_unit_loc_, adjacent);
+	for (int i = 0; i < 6; i++) {
+		invalidated_.insert(adjacent[i]);
+	}
 }
 
 void display::invalidate_game_status()

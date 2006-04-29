@@ -191,12 +191,6 @@ public:
 	//function to remove a footstep from a specific location
 	void remove_footstep(const gamemap::location& loc);
 
-	//function to draw the tile at location (x,y). If unit_image is not NULL,
-	//then it will be used, otherwise the unit's default image will be used.
-	//alpha controls how faded the unit is. If blend_to is not 0, then the
-	//unit will be alpha-blended to blend_to instead of the background colour
-	void draw_tile(int x, int y);
-
 	//function to float a label above a tile
 	void float_label(const gamemap::location& loc, const std::string& text,
 	                 int red, int green, int blue);
@@ -232,7 +226,7 @@ public:
 	//function to invalidate all tiles.
 	void invalidate_all();
 
-	//function to invalidate a specific tile
+	//function to invalidate a specific tile for redrawing
 	void invalidate(const gamemap::location& loc);
 
 	//function to invalidate the game status displayed on the sidebar.
@@ -252,6 +246,10 @@ public:
 	//function to schedule the minimap to be redrawn. Useful if units
 	//have moved about on the map
 	void redraw_minimap();
+
+	//temporarily place a unit on map (moving: can overlap others)
+	void place_temporary_unit(unit &u, const gamemap::location& loc);
+	void remove_temporary_unit();
 
 	//functions to add and remove overlays from locations. An overlay is an
 	//image that is displayed on top of the tile. One tile may have multiple
@@ -378,6 +376,7 @@ private:
 	display(const display&);
 	void operator=(const display&);
 
+	void draw_tile(const gamemap::location &loc);
 	void draw_sidebar();
 	void draw_minimap(int x, int y, int w, int h);
 	void draw_game_status();
@@ -410,6 +409,8 @@ private:
 
 	unit_map& units_;
 
+	unit *temp_unit_;
+	gamemap::location temp_unit_loc_;
 
 	//function which finds the start and end rows on the energy bar image
 	//where white pixels are substituted for the colour of the energy

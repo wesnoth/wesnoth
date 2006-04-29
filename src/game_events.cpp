@@ -1016,7 +1016,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		unit_map::iterator u = units->find(loc);
 		if(u != units->end()) {
 			u->second.set_hidden(true);
-			screen->draw_tile(loc.x,loc.y);
+			screen->invalidate(loc);
+			screen->draw();
 		}
 	}
 
@@ -1026,7 +1027,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		// unhide all for backward compatibility
 		for(u =  units->begin(); u != units->end() ; u++) {
 			u->second.set_hidden(false);
-			screen->draw_tile(loc.x,loc.y);
+			screen->invalidate(loc);
+			screen->draw();
 		}
 	}
 
@@ -1037,7 +1039,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string& halo = cfg["halo"];
 		if(!img.empty() || !halo.empty()) {
 			screen->add_overlay(loc,img,cfg["halo"]);
-			screen->draw_tile(loc.x,loc.y);
+			screen->invalidate(loc);
+			screen->draw();
 		}
 	}
 
@@ -1119,8 +1122,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				un->second.set_hidden(false);
 				un->second.set_recruited(*screen);
 				while(!un->second.get_animation()->animation_finished()) {
-					screen->draw_tile(loc.x,loc.y);
-					screen->update_display();
+					screen->invalidate(loc);
+					screen->draw();
 					events::pump();
 					if(!screen->turbo()) SDL_Delay(10);
 
@@ -1662,15 +1665,15 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			u->second.set_extra_anim(*screen,cfg["flag"]);
 			while(!u->second.get_animation()->animation_finished()) {
-				screen->draw_tile(u->first.x,u->first.y);
-				screen->update_display();
+				screen->invalidate(u->first);
+				screen->draw();
 				events::pump();
 				if(!screen->turbo()) SDL_Delay(10);
 
 			}
 			u->second.set_standing(*screen);
-			screen->draw_tile(u->first.x,u->first.y);
-			screen->update_display();
+			screen->invalidate(u->first);
+			screen->draw();
 			events::pump();
 		}
 	} else if(cmd == "label") {

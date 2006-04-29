@@ -854,8 +854,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 
 			if(!replayer.is_skipping()) {
-				disp.draw_tile(dst.x,dst.y);
-				disp.update_display();
+				disp.invalidate(dst);
+				disp.draw();
 			}
 
 			game_events::fire("moveto",dst);

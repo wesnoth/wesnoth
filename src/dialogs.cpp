@@ -135,8 +135,8 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	if(!gui.update_locked()) {
 		u->second.set_leveling_out(gui);
 		while(!u->second.get_animation()->animation_finished()) {
-			gui.draw_tile(loc.x,loc.y);
-			gui.update_display();
+			gui.invalidate(loc);
+			gui.draw();
 			events::pump();
 			if(!gui.turbo()) SDL_Delay(10);
 		}
@@ -158,14 +158,14 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	if(!gui.update_locked()) {
 		u->second.set_leveling_in(gui);
 		while(!u->second.get_animation()->animation_finished()) {
-			gui.draw_tile(loc.x,loc.y);
-			gui.update_display();
+			gui.invalidate(loc);
+			gui.draw();
 			events::pump();
 			if(!gui.turbo()) SDL_Delay(10);
 		}
 		u->second.set_standing(gui);
-		gui.draw_tile(loc.x,loc.y);
-		gui.update_display();
+		gui.invalidate(loc);
+		gui.draw();
 		events::pump();
 	}
 

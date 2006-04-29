@@ -480,7 +480,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 	}
 
 	if(show_move) {
-		info_.disp.draw_tile(to.x,to.y);
+		info_.disp.invalidate(to);
 		info_.disp.draw();
 	}
 
