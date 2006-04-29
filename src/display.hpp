@@ -376,7 +376,7 @@ private:
 	display(const display&);
 	void operator=(const display&);
 
-	void draw_tile(const gamemap::location &loc);
+	void draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect);
 	void draw_sidebar();
 	void draw_minimap(int x, int y, int w, int h);
 	void draw_game_status();

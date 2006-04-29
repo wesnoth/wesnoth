@@ -1496,7 +1496,7 @@ void unit::restart_animation(const display& disp,int start_time) {
 	frame_begin_time = start_time -1;
 }
 
-void unit::refresh_unit(display& disp,gamemap::location hex,bool with_status)
+void unit::redraw_unit(display& disp,gamemap::location hex,bool with_status)
 {
 	const gamemap & map = disp.get_map();
 	if(hidden_) { 

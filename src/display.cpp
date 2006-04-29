@@ -845,12 +845,16 @@ void display::draw(bool update,bool force)
 		// them last, and (2) redraw them if they are adjacent existing hexes.
 		std::set<gamemap::location> unit_invals;
 
+		SDL_Rect clip_rect = map_area();
+		surface const dst(screen_.getSurface());
+		clip_rect_setter set_clip_rect(dst, clip_rect);
+
 		std::set<gamemap::location>::const_iterator it;
 		for(it = invalidated_.begin(); it != invalidated_.end(); ++it) {
 			if (units_.find(*it) != units_.end()) {
 				unit_invals.insert(*it);
 			}
-			draw_tile(*it);
+			draw_tile(*it, clip_rect);
 
 			gamemap::location adjacent[6];
 			get_adjacent_tiles(*it, adjacent);
@@ -863,11 +867,11 @@ void display::draw(bool update,bool force)
 		for(it = unit_invals.begin(); it != unit_invals.end(); ++it) {
 			unit &u = units_.find(*it)->second;
 			u.refresh();
-			u.refresh_unit(*this, *it, true);
+			u.redraw_unit(*this, *it, true);
 		}
 		if (temp_unit_ && invalidated_.find(temp_unit_loc_) != invalidated_.end()) {
 			temp_unit_->refresh();
-			temp_unit_->refresh_unit(*this, temp_unit_loc_, false);
+			temp_unit_->redraw_unit(*this, temp_unit_loc_, false);
 		}
 		invalidated_.clear();
 	}
@@ -1347,7 +1351,7 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 	}
 }
 
-void display::draw_tile(const gamemap::location &loc)
+void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 {
 	reach_map::iterator reach = reach_map_.end();
 
@@ -1359,16 +1363,12 @@ void display::draw_tile(const gamemap::location &loc)
 	int xpos = int(get_location_x(loc));
 	int ypos = int(get_location_y(loc));
 
-	SDL_Rect clip_rect = map_area();
-
 	if(xpos >= clip_rect.x + clip_rect.w || ypos >= clip_rect.y + clip_rect.h ||
 	   xpos + zoom_ < clip_rect.x || ypos + zoom_ < clip_rect.y) {
 		return;
 	}
 
 	surface const dst(screen_.getSurface());
-
-	clip_rect_setter set_clip_rect(dst,clip_rect);
 
 	const bool is_shrouded = shrouded(loc.x, loc.y);
 	gamemap::TERRAIN terrain = gamemap::VOID_TERRAIN;
