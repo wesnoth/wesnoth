@@ -948,7 +948,9 @@ unsigned int battle_context::rate_attacker_weapon(double attack_weight) const
 		attack_weight /= 2;
 
 	attack_weight *= attacker_stats_->num_blows * attacker_stats_->damage;
-	attack_weight /= defender_stats_->num_blows * defender_stats_->damage;
+	if (defender_stats_->num_blows * defender_stats_->damage)
+		attack_weight /= defender_stats_->num_blows * defender_stats_->damage;
+
 	return (unsigned int)(attack_weight * 100);
 }
 
