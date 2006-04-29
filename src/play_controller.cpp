@@ -96,11 +96,6 @@ void play_controller::init(CVideo& video){
 
 	LOG_NG << "start music... " << (SDL_GetTicks() - ticks_) << "\n";
 
-	const std::string& music = level_["music"];
-	if(music != "") {
-		sound::play_music_repeatedly(music);
-	}
-
 	//find a list of 'items' (i.e. overlays) on the level, and add them
 	const config::child_list& overlays = level_.get_children("item");
 	for(config::child_list::const_iterator overlay = overlays.begin(); overlay != overlays.end(); ++overlay) {

@@ -147,6 +147,14 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 		replaying_ = (recorder.at_end() == false);
 
+		// Start music (intro music might be playing already).
+		const config::child_list& m = level_.get_children("music");
+		config::const_child_iterator i;
+		for (i = m.begin(); i != m.end(); i++) {
+			sound::play_music_config(**i);
+		}
+		sound::commit_music_changes();
+
 		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 
 		// Initialize countdown clock.
