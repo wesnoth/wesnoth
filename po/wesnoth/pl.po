@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-23 22:59+0200\n"
+"POT-Creation-Date: 2006-04-29 15:32+0200\n"
 "PO-Revision-Date: 2006-04-28 20:13+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <grzywacz@sul.uni.lodz.pl>\n"
@@ -105,14 +105,14 @@ msgstr ""
 "Odporność tej jednostki podczas obrony jest podwojona, do maksimum 50%. Nie "
 "ma to wpływu na jej słabości."
 
-#: data/abilities.cfg:88 data/abilities.cfg:109 data/abilities.cfg:143
-#: data/abilities.cfg:190 data/abilities.cfg:250 src/actions.cpp:539
-#: src/actions.cpp:672
+#: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
+#: data/abilities.cfg:183 data/abilities.cfg:239 src/actions.cpp:511
+#: src/actions.cpp:644
 msgid "leadership"
 msgstr "dowodzenie"
 
-#: data/abilities.cfg:92 data/abilities.cfg:113 data/abilities.cfg:147
-#: data/abilities.cfg:194 data/abilities.cfg:254
+#: data/abilities.cfg:91 data/abilities.cfg:111 data/abilities.cfg:143
+#: data/abilities.cfg:187 data/abilities.cfg:243
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -132,11 +132,11 @@ msgstr ""
 "rozpoczyna walkę, jej ataki zadają 25% więcej obrażeń na każdą różnicę "
 "poziomów."
 
-#: data/abilities.cfg:319
+#: data/abilities.cfg:304
 msgid "skirmisher"
 msgstr "harcownik"
 
-#: data/abilities.cfg:321
+#: data/abilities.cfg:306
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -148,11 +148,11 @@ msgstr ""
 "(Wyjątek: jeśli zatrzymasz się we wrogiej strefie kontroli, liczba punktów "
 "ruchu zawsze spada do 0)."
 
-#: data/abilities.cfg:332
+#: data/abilities.cfg:317
 msgid "illuminates"
 msgstr "oświetla"
 
-#: data/abilities.cfg:336
+#: data/abilities.cfg:321
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -168,11 +168,11 @@ msgstr ""
 "Jednostki w jej sąsiedztwie będą nocą walczyły jakby był wieczór, a "
 "wieczorem jakby był dzień."
 
-#: data/abilities.cfg:343
+#: data/abilities.cfg:328
 msgid "teleport"
 msgstr "teleportacja"
 
-#: data/abilities.cfg:345
+#: data/abilities.cfg:330
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -182,11 +182,11 @@ msgstr ""
 "Ta jednostka może w jednym ruchu teleportować się między przyjaznymi "
 "wioskami."
 
-#: data/abilities.cfg:351
+#: data/abilities.cfg:336
 msgid "ambush"
 msgstr "zasadzka"
 
-#: data/abilities.cfg:355
+#: data/abilities.cfg:340
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -201,11 +201,11 @@ msgstr ""
 "Jednostki nieprzyjaciela nie mogą zaatakować tej jednostki w lesie, chyba, "
 "że atakowała w poprzedniej turze albo sąsiaduje z nią jednostka wroga."
 
-#: data/abilities.cfg:367
+#: data/abilities.cfg:352
 msgid "nightstalk"
 msgstr "skradanie się"
 
-#: data/abilities.cfg:371
+#: data/abilities.cfg:356
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -221,11 +221,11 @@ msgstr ""
 "wyjątkiem tury następującej po jej ataku lub gdy sąsiadują z nią wrogie "
 "jednostki."
 
-#: data/abilities.cfg:383
+#: data/abilities.cfg:368
 msgid "submerge"
 msgstr "zanurzenie"
 
-#: data/abilities.cfg:387
+#: data/abilities.cfg:372
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -242,11 +242,11 @@ msgstr ""
 "się ona w głębokiej wodzie, z wyjątkiem tury następującej po jej ataku lub "
 "gdy koło niej znajdują się inne nieprzyjacielskie jednostki."
 
-#: data/abilities.cfg:405
+#: data/abilities.cfg:390
 msgid "berserk"
 msgstr "berserk"
 
-#: data/abilities.cfg:407
+#: data/abilities.cfg:392
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -256,11 +256,11 @@ msgstr ""
 "Użyty ofensywnie, powoduje trwanie walki aż do śmierci jednego z uczestników "
 "lub wymiany 30 ciosów."
 
-#: data/abilities.cfg:415
+#: data/abilities.cfg:400
 msgid "backstab"
 msgstr "cios w plecy"
 
-#: data/abilities.cfg:417
+#: data/abilities.cfg:402
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -272,11 +272,11 @@ msgstr ""
 "się wroga mu jednostka, która jest w pełni sprawna (np. nie jest zamieniona "
 "w kamień)."
 
-#: data/abilities.cfg:426 data/abilities.cfg:434
+#: data/abilities.cfg:411 data/abilities.cfg:419
 msgid "plague"
 msgstr "zaraza"
 
-#: data/abilities.cfg:428 data/abilities.cfg:436
+#: data/abilities.cfg:413 data/abilities.cfg:421
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -288,11 +288,11 @@ msgstr ""
 "jednostką stojącą po tej samej stronie i identyczną do tej, która ją zabiła. "
 "(Nie działa to na nieumarłych i jednostki w wioskach.)"
 
-#: data/abilities.cfg:443
+#: data/abilities.cfg:428
 msgid "slows"
 msgstr "spowolnia"
 
-#: data/abilities.cfg:445
+#: data/abilities.cfg:430
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
@@ -303,11 +303,11 @@ msgstr ""
 "przez ataki, a spowolniona jednostka porusza się z połową swojej normalnej "
 "szybkości (zaokrąglając w górę)."
 
-#: data/abilities.cfg:451
+#: data/abilities.cfg:436
 msgid "stones"
 msgstr "zmienia w kamień"
 
-#: data/abilities.cfg:453
+#: data/abilities.cfg:438
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -317,11 +317,11 @@ msgstr ""
 "Ten atak obraca przeciwnika w kamień. Skamieniałe jednostki nie mogą się "
 "ruszać ani atakować."
 
-#: data/abilities.cfg:460
+#: data/abilities.cfg:445
 msgid "marksman"
 msgstr "strzelec"
 
-#: data/abilities.cfg:462
+#: data/abilities.cfg:447
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -329,11 +329,11 @@ msgstr ""
 "Strzelec wyborowy:\n"
 "Ten atak, jeśli użyty ofensywnie, ma zawsze 60% szansy na trafienie."
 
-#: data/abilities.cfg:472
+#: data/abilities.cfg:457
 msgid "magical"
 msgstr "magiczna"
 
-#: data/abilities.cfg:474
+#: data/abilities.cfg:459
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -341,11 +341,11 @@ msgstr ""
 "Magiczny:\n"
 "Ten atak ma zawsze 70% szansy na trafienie."
 
-#: data/abilities.cfg:482
+#: data/abilities.cfg:467
 msgid "swarm"
 msgstr "rój"
 
-#: data/abilities.cfg:484
+#: data/abilities.cfg:469
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -359,11 +359,11 @@ msgstr ""
 "przez jednostkę. Na przykład jednostka z 3/4 swoich maksymalnych PŻ zadaje "
 "3/4 ataków."
 
-#: data/abilities.cfg:491
+#: data/abilities.cfg:476
 msgid "charge"
 msgstr "szarża"
 
-#: data/abilities.cfg:493
+#: data/abilities.cfg:478
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -373,11 +373,11 @@ msgstr ""
 "Ten atak powoduje podwójne obrażenia u przeciwnika, ale również sprawia, że "
 "jego kontratak zadaje podwójne obrażenia."
 
-#: data/abilities.cfg:503
+#: data/abilities.cfg:488
 msgid "drains"
 msgstr "wysysa"
 
-#: data/abilities.cfg:505
+#: data/abilities.cfg:490
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -387,11 +387,11 @@ msgstr ""
 "Ta jednostka wysysa zdrowie z żywych przeciwników, uzdrawiając się za połowę "
 "zadanych obrażeń (zaokrąglając w dół)."
 
-#: data/abilities.cfg:511
+#: data/abilities.cfg:496
 msgid "firststrike"
 msgstr "pierwsze uderzenie"
 
-#: data/abilities.cfg:513
+#: data/abilities.cfg:498
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -399,11 +399,11 @@ msgstr ""
 "Pierwszy cios:\n"
 "Ta jednostka zawsze pierwsza atakuje, nawet gdy się broni."
 
-#: data/abilities.cfg:520
+#: data/abilities.cfg:505
 msgid "poison"
 msgstr "trucizna"
 
-#: data/abilities.cfg:522
+#: data/abilities.cfg:507
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -547,47 +547,47 @@ msgstr "Tłumaczenie norweskie"
 msgid "Polish Translation"
 msgstr "Tłumaczenie polskie"
 
-#: data/about.cfg:406
+#: data/about.cfg:407
 msgid "Portuguese Translation"
 msgstr "Tłumaczenie portugalskie"
 
-#: data/about.cfg:413
+#: data/about.cfg:414
 msgid "Portuguese (Brazil) Translation"
 msgstr "Tłumaczenie portugalskie(brazyliskie)"
 
-#: data/about.cfg:427
+#: data/about.cfg:428
 msgid "Russian Translation"
 msgstr "Tłumaczenie rosyjskie"
 
-#: data/about.cfg:437
+#: data/about.cfg:438
 msgid "Serbian Translation"
 msgstr "Tłumaczenie serbskie"
 
-#: data/about.cfg:444
+#: data/about.cfg:445
 msgid "Slovak Translation"
 msgstr "Tłumaczenie słowackie"
 
-#: data/about.cfg:451
+#: data/about.cfg:452
 msgid "Slovenian Translation"
 msgstr "Tłumaczenie słoweńskie"
 
-#: data/about.cfg:458
+#: data/about.cfg:459
 msgid "Spanish Translation"
 msgstr "Tłumaczenie hiszpańskie"
 
-#: data/about.cfg:471
+#: data/about.cfg:472
 msgid "Swedish Translation"
 msgstr "Tłumaczenie szwedzkie"
 
-#: data/about.cfg:483
+#: data/about.cfg:484
 msgid "Turkish Translation"
 msgstr "Tłumaczenie tureckie"
 
-#: data/about.cfg:494 data/help.cfg:246
+#: data/about.cfg:495 data/help.cfg:246
 msgid "Contributors"
 msgstr "Pomagający"
 
-#: data/about.cfg:508
+#: data/about.cfg:509
 msgid "Bots"
 msgstr "Boty"
 
@@ -831,9 +831,9 @@ msgstr "morganstern"
 #: data/units/Human_Outlaw_Bandit.cfg:41
 #: data/units/Human_Outlaw_Footpad.cfg:28
 #: data/units/Human_Outlaw_Footpad.cfg:53 data/units/Human_Outlaw_Thug.cfg:28
-#: data/units/Mermaid_Diviner.cfg:43 data/units/Mermaid_Enchantress.cfg:32
+#: data/units/Mermaid_Diviner.cfg:46 data/units/Mermaid_Enchantress.cfg:32
 #: data/units/Mermaid_Enchantress.cfg:48 data/units/Mermaid_Initiate.cfg:34
-#: data/units/Mermaid_Initiate.cfg:50 data/units/Mermaid_Priestess.cfg:37
+#: data/units/Mermaid_Initiate.cfg:50 data/units/Mermaid_Priestess.cfg:40
 #: data/units/Mermaid_Siren.cfg:36 data/units/Mermaid_Siren.cfg:82
 #: data/units/Merman_Entangler.cfg:32 data/units/Merman_Netcaster.cfg:31
 #: data/units/Monster_Cave_Spider.cfg:81 data/units/Monster_Cuttle_Fish.cfg:42
@@ -1016,7 +1016,7 @@ msgstr "berło ognia"
 #: data/units/Human_Mage.cfg:93 data/units/Human_Mage_Arch.cfg:93
 #: data/units/Human_Mage_Great.cfg:81 data/units/Human_Mage_Red.cfg:93
 #: data/units/Human_Mage_Silver.cfg:121 data/units/Orcish_Archer.cfg:271
-#: data/units/Orcish_Crossbowman.cfg:114 data/units/Orcish_Slurbow.cfg:165
+#: data/units/Orcish_Crossbowman.cfg:92 data/units/Orcish_Slurbow.cfg:163
 msgid "fire"
 msgstr "ogień"
 
@@ -1263,9 +1263,9 @@ msgstr ""
 #: data/units/Elvish_Sorceress.cfg:25 data/units/Human_Mage.cfg:55
 #: data/units/Human_Mage_Arch.cfg:46 data/units/Human_Mage_Great.cfg:35
 #: data/units/Human_Mage_Red.cfg:56 data/units/Human_Mage_Silver.cfg:93
-#: data/units/Human_Mage_White.cfg:64 data/units/Mermaid_Diviner.cfg:42
+#: data/units/Human_Mage_White.cfg:64 data/units/Mermaid_Diviner.cfg:45
 #: data/units/Mermaid_Enchantress.cfg:31 data/units/Mermaid_Initiate.cfg:33
-#: data/units/Mermaid_Priestess.cfg:36 data/units/Saurian_Augur.cfg:34
+#: data/units/Mermaid_Priestess.cfg:39 data/units/Saurian_Augur.cfg:34
 #: data/units/Saurian_Oracle.cfg:34 data/units/Saurian_Soothsayer.cfg:35
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:31
 msgid "staff"
@@ -4793,7 +4793,7 @@ msgstr "Akcje"
 msgid "End Turn"
 msgstr "Zakończ turę"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2121
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2145
 msgid "HP"
 msgstr "PŻ"
 
@@ -6664,8 +6664,8 @@ msgstr ""
 "Uwagi specjalne:"
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:91
-#: data/units/Human_Mage_of_Light.cfg:71 data/units/Mermaid_Diviner.cfg:58
-#: data/units/Mermaid_Priestess.cfg:52
+#: data/units/Human_Mage_of_Light.cfg:71 data/units/Mermaid_Diviner.cfg:61
+#: data/units/Mermaid_Priestess.cfg:55
 msgid "holy"
 msgstr "święty"
 
@@ -6734,8 +6734,8 @@ msgstr ""
 #: data/units/Human_Loyalist_Lieutenant.cfg:56
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:56
 #: data/units/Human_Loyalist_Sergeant.cfg:50
-#: data/units/Orcish_Crossbowman.cfg:54 data/units/Orcish_Crossbowman.cfg:113
-#: data/units/Orcish_Slurbow.cfg:105 data/units/Orcish_Slurbow.cfg:164
+#: data/units/Orcish_Crossbowman.cfg:54 data/units/Orcish_Crossbowman.cfg:91
+#: data/units/Orcish_Slurbow.cfg:105 data/units/Orcish_Slurbow.cfg:162
 #: data/units/Undead_Skele_Death_Knight.cfg:64
 msgid "crossbow"
 msgstr "kusza"
@@ -7477,7 +7477,7 @@ msgstr ""
 "Uwagi specjalne:"
 
 #: data/units/Human_Mage_White.cfg:90 data/units/Human_Mage_of_Light.cfg:70
-#: data/units/Mermaid_Diviner.cfg:57 data/units/Mermaid_Priestess.cfg:51
+#: data/units/Mermaid_Diviner.cfg:60 data/units/Mermaid_Priestess.cfg:54
 msgid "lightbeam"
 msgstr "promień światła"
 
@@ -7746,7 +7746,7 @@ msgstr "widły"
 msgid "female^Mermaid Diviner"
 msgstr "Wróżbitka Syren"
 
-#: data/units/Mermaid_Diviner.cfg:24
+#: data/units/Mermaid_Diviner.cfg:27
 msgid ""
 "Mermaid Priestesses meet their calling with a fervor that leaves their human "
 "counterparts somewhat taken aback. This may have its roots in a legend they "
@@ -7822,7 +7822,7 @@ msgstr ""
 msgid "female^Mermaid Priestess"
 msgstr "Kapłanka Syren"
 
-#: data/units/Mermaid_Priestess.cfg:22
+#: data/units/Mermaid_Priestess.cfg:25
 msgid ""
 "Mermen share the creed that much of humanity follows, though for cultural "
 "reasons, the upholding of this is left to the mermaids, who are more "
@@ -9532,84 +9532,84 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nie ma pustych pól zamku, na które można by rekrutować."
 
-#: src/actions.cpp:319 src/multiplayer_lobby.cpp:357
+#: src/actions.cpp:291 src/multiplayer_lobby.cpp:357
 msgid "none"
 msgstr "brak"
 
-#: src/actions.cpp:519 src/actions.cpp:651
+#: src/actions.cpp:491 src/actions.cpp:623
 msgid "base damage"
 msgstr "obrażenia podstawowe"
 
-#: src/actions.cpp:558 src/actions.cpp:716
+#: src/actions.cpp:530 src/actions.cpp:665
 msgid "Halved"
 msgstr "Połowę mniejszy"
 
-#: src/actions.cpp:558 src/actions.cpp:716 src/actions.cpp:1278
-#: src/actions.cpp:1515
+#: src/actions.cpp:530 src/actions.cpp:665 src/actions.cpp:1264
+#: src/actions.cpp:1505
 msgid "slowed"
 msgstr "spowolniony"
 
-#: src/actions.cpp:566
+#: src/actions.cpp:538
 msgid "attacker resistance vs"
 msgstr "odporność atakującego na"
 
-#: src/actions.cpp:566
+#: src/actions.cpp:538
 msgid "attacker vulnerability vs"
 msgstr "czułość atakującego na"
 
-#: src/actions.cpp:580 src/actions.cpp:729
+#: src/actions.cpp:552 src/actions.cpp:678
 msgid "total damage"
 msgstr "suma obrażeń"
 
-#: src/actions.cpp:699
+#: src/actions.cpp:651
 msgid "defender resistance vs"
 msgstr "odporność obrońcy na"
 
-#: src/actions.cpp:699
+#: src/actions.cpp:651
 msgid "defender vulnerability vs"
 msgstr "czułość obrońcy na"
 
-#: src/actions.cpp:765
+#: src/actions.cpp:714
 msgid "(both should survive)"
 msgstr "(obie powinny przetrwać)"
 
-#: src/actions.cpp:767
+#: src/actions.cpp:716
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% Pr[zabija/zabity przez/obie przetrwają]"
 
-#: src/actions.cpp:1271 src/actions.cpp:1508
+#: src/actions.cpp:1257 src/actions.cpp:1498
 msgid "poisoned"
 msgstr "zatruty"
 
-#: src/actions.cpp:1288 src/actions.cpp:1526
+#: src/actions.cpp:1274 src/actions.cpp:1516
 msgid "stone"
 msgstr "zamiana w kamień"
 
-#: src/actions.cpp:2315
+#: src/actions.cpp:2306
 msgid "Ambushed!"
 msgstr "Zasadzka!"
 
-#: src/actions.cpp:2350
+#: src/actions.cpp:2341
 msgid "Friendly unit sighted"
 msgstr "Zauważono przyjazną jednostkę"
 
-#: src/actions.cpp:2352
+#: src/actions.cpp:2343
 msgid "Enemy unit sighted!"
 msgstr "Zauważono jednostkę wroga!"
 
-#: src/actions.cpp:2357
+#: src/actions.cpp:2348
 msgid "$friends Friendly units sighted"
 msgstr "Zauważono przyjazne jednostki: $friends"
 
-#: src/actions.cpp:2359
+#: src/actions.cpp:2350
 msgid "$enemies Enemy units sighted!"
 msgstr "Zauważono wrogie jednostki: $enemies"
 
-#: src/actions.cpp:2363
+#: src/actions.cpp:2354
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Zauważono jednostki! ($friends przyjaznych, $enemies wrogich)"
 
-#: src/actions.cpp:2378
+#: src/actions.cpp:2369
 msgid "(press $hotkey to continue)"
 msgstr "(wciśnij $hotkey aby kontynuować)"
 
@@ -9935,7 +9935,7 @@ msgstr ""
 "kampanii."
 
 #: src/game.cpp:1042 src/game.cpp:1081 src/game.cpp:1106
-#: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:332
+#: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:335
 msgid "Connection timed out"
 msgstr "Minął czas oczekiwania na połączenie"
 
@@ -10007,15 +10007,15 @@ msgstr ""
 "Login, który wybrałeś jest zbyt długi. Proszę użyć loginu krótszego niż 18 "
 "znaków"
 
-#: src/game.cpp:1190 src/playcampaign.cpp:108 src/playcampaign.cpp:311
+#: src/game.cpp:1190 src/playcampaign.cpp:109 src/playcampaign.cpp:314
 msgid "The game could not be loaded: "
 msgstr "Gra nie może zostać wczytana:"
 
-#: src/game.cpp:1192 src/playcampaign.cpp:110 src/playcampaign.cpp:314
+#: src/game.cpp:1192 src/playcampaign.cpp:111 src/playcampaign.cpp:317
 msgid "Error while playing the game: "
 msgstr "Błąd w czasie gry:"
 
-#: src/game.cpp:1204 src/playcampaign.cpp:112 src/playcampaign.cpp:317
+#: src/game.cpp:1204 src/playcampaign.cpp:113 src/playcampaign.cpp:320
 msgid "The game map could not be loaded: "
 msgstr "Mapa gry nie może zostać wczytana:"
 
@@ -10269,7 +10269,7 @@ msgstr "Otrzymane obrażenia (EV)"
 msgid "Statistics"
 msgstr "Statystyki"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2152
+#: src/menu_events.cpp:220 src/unit.cpp:2176
 msgid "Moves"
 msgstr "Liczba ruchów"
 
@@ -10303,7 +10303,7 @@ msgstr "Utrzymanie"
 msgid "Income"
 msgstr "Dochód"
 
-#: src/menu_events.cpp:368 src/playcampaign.cpp:282 src/playcampaign.cpp:403
+#: src/menu_events.cpp:368 src/playcampaign.cpp:285 src/playcampaign.cpp:406
 msgid "Name:"
 msgstr "Nazwa:"
 
@@ -10328,7 +10328,7 @@ msgstr "Zapisano"
 msgid "The game has been saved"
 msgstr "Gra została zapisana"
 
-#: src/menu_events.cpp:386 src/playcampaign.cpp:290 src/playcampaign.cpp:411
+#: src/menu_events.cpp:386 src/playcampaign.cpp:293 src/playcampaign.cpp:414
 msgid "The game could not be saved"
 msgstr "Gra nie może zostać zapisana"
 
@@ -10434,59 +10434,59 @@ msgstr "Nie znaleziono etykiety ani jednostki zawierającej '$search'."
 msgid "prompt^Command:"
 msgstr "Polecenie:"
 
-#: src/mouse_events.cpp:224 src/mouse_events.cpp:340 src/mouse_events.cpp:724
+#: src/mouse_events.cpp:177 src/mouse_events.cpp:293
 msgid "Attacker"
 msgstr "Atakujący"
 
-#: src/mouse_events.cpp:225 src/mouse_events.cpp:339 src/mouse_events.cpp:726
+#: src/mouse_events.cpp:178 src/mouse_events.cpp:292
 msgid "Defender"
 msgstr "Broniący się"
 
-#: src/mouse_events.cpp:243
+#: src/mouse_events.cpp:196
 msgid "Expected Battle Result (hp)"
 msgstr "Oczekiwany Wynik Bitwy (pż)"
 
-#: src/mouse_events.cpp:328
+#: src/mouse_events.cpp:281
 msgid "Leadership"
 msgstr "Dowodzenie"
 
-#: src/mouse_events.cpp:341
+#: src/mouse_events.cpp:294
 msgid " resistance vs "
 msgstr "odporność na "
 
-#: src/mouse_events.cpp:342
+#: src/mouse_events.cpp:295
 msgid " vulnerability vs "
 msgstr "czułość na "
 
-#: src/mouse_events.cpp:352
+#: src/mouse_events.cpp:305
 msgid "Slowed"
 msgstr "Spowolniony"
 
-#: src/mouse_events.cpp:368
+#: src/mouse_events.cpp:321
 msgid "Total damage"
 msgstr "Całkowite obrażenia"
 
-#: src/mouse_events.cpp:375
+#: src/mouse_events.cpp:328
 msgid "No usable weapon"
 msgstr "Brak odpowiedniej broni"
 
-#: src/mouse_events.cpp:380
+#: src/mouse_events.cpp:333
 msgid "Chance of being unscathed"
 msgstr "Szansa wyjścia bez szwanku"
 
-#: src/mouse_events.cpp:678 src/mouse_events.cpp:746 src/mouse_events.cpp:1328
+#: src/mouse_events.cpp:631 src/mouse_events.cpp:1225
 msgid "Damage Calculations"
 msgstr "Wyliczenia obrażeń"
 
-#: src/mouse_events.cpp:1306 src/reports.cpp:278
+#: src/mouse_events.cpp:1203 src/reports.cpp:278
 msgid "vs"
 msgstr "vs"
 
-#: src/mouse_events.cpp:1340
+#: src/mouse_events.cpp:1237
 msgid "Attack Enemy"
 msgstr "Atakowanie nieprzyjaciela"
 
-#: src/mouse_events.cpp:1341
+#: src/mouse_events.cpp:1238
 msgid "Choose weapon:"
 msgstr "Wybierz broń:"
 
@@ -10541,12 +10541,12 @@ msgid "Normal"
 msgstr "Normalny"
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2207
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2231
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2214
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2238
 msgid ")"
 msgstr ")"
 
@@ -10903,100 +10903,100 @@ msgstr "Nie udało się dodać gniazda do zbioru"
 msgid "Could not send initial handshake"
 msgstr "Nie udało się wysłać prośby o połączenie"
 
-#: src/play_controller.cpp:358 src/playsingle_controller.cpp:297
-#: src/playsingle_controller.cpp:336
+#: src/play_controller.cpp:350 src/playsingle_controller.cpp:305
+#: src/playsingle_controller.cpp:346
 msgid "The file you have tried to load is corrupt"
 msgstr "Plik nie może zostać wczytany - jest uszkodzony"
 
-#: src/playcampaign.cpp:259
+#: src/playcampaign.cpp:262
 msgid "Defeat"
 msgstr "Porażka"
 
-#: src/playcampaign.cpp:260
+#: src/playcampaign.cpp:263
 msgid "You have been defeated!"
 msgstr "Zostałeś pokonany!"
 
-#: src/playcampaign.cpp:273
+#: src/playcampaign.cpp:276
 msgid " replay"
 msgstr " powtórka"
 
-#: src/playcampaign.cpp:281
+#: src/playcampaign.cpp:284
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Czy zapisać powtórkę tego scenariusza?"
 
-#: src/playcampaign.cpp:330
+#: src/playcampaign.cpp:333
 msgid "Downloading next level..."
 msgstr "Pobieranie kolejnego poziomu..."
 
-#: src/playcampaign.cpp:402
+#: src/playcampaign.cpp:405
 msgid "Do you want to save your game?"
 msgstr "Czy zapisać grę?"
 
-#: src/playcampaign.cpp:427
+#: src/playcampaign.cpp:430
 msgid "Unknown scenario: '"
 msgstr "Nieznany scenariusz: '"
 
-#: src/playsingle_controller.cpp:181
+#: src/playsingle_controller.cpp:189
 msgid "Game Over"
 msgstr "Koniec gry"
 
-#: src/playsingle_controller.cpp:182
+#: src/playsingle_controller.cpp:190
 msgid "The game is over."
 msgstr "Gra się skończyła."
 
-#: src/playsingle_controller.cpp:265
+#: src/playsingle_controller.cpp:273
 msgid "Remaining gold: "
 msgstr "Pozostałe złoto: "
 
-#: src/playsingle_controller.cpp:268
+#: src/playsingle_controller.cpp:276
 msgid "Early finish bonus: "
 msgstr "Nagroda za wczesne zakończenie:"
 
-#: src/playsingle_controller.cpp:270
+#: src/playsingle_controller.cpp:278
 msgid "per turn"
 msgstr "na turę"
 
-#: src/playsingle_controller.cpp:271
+#: src/playsingle_controller.cpp:279
 msgid "Turns finished early: "
 msgstr "Tur przed czasem: "
 
-#: src/playsingle_controller.cpp:273
+#: src/playsingle_controller.cpp:281
 msgid "Bonus: "
 msgstr "Nagroda:"
 
-#: src/playsingle_controller.cpp:275
+#: src/playsingle_controller.cpp:283
 msgid "Gold: "
 msgstr "Złoto:"
 
-#: src/playsingle_controller.cpp:280
+#: src/playsingle_controller.cpp:288
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% złota zostaje zachowane do następnego scenariusza"
 
-#: src/playsingle_controller.cpp:281
+#: src/playsingle_controller.cpp:289
 msgid "Retained Gold: "
 msgstr "Zachowane złoto: "
 
-#: src/playsingle_controller.cpp:286
+#: src/playsingle_controller.cpp:294
 msgid "Victory"
 msgstr "Zwycięstwo"
 
-#: src/playsingle_controller.cpp:287
+#: src/playsingle_controller.cpp:295
 msgid "You have emerged victorious!"
 msgstr "Zwyciężyłeś!"
 
-#: src/playsingle_controller.cpp:291
+#: src/playsingle_controller.cpp:299
 msgid "Scenario Report"
 msgstr "Raport"
 
-#: src/playsingle_controller.cpp:308
+#: src/playsingle_controller.cpp:316
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Nastąpiło rozłączenie sieci i gra nie może być kontynuowana. Czy zapisać grę?"
 
-#: src/playsingle_controller.cpp:402
+#: src/playsingle_controller.cpp:413
 msgid "It is now your turn"
 msgstr "Nadeszła twoja tura"
 
@@ -11070,7 +11070,7 @@ msgstr ""
 msgid "stone: "
 msgstr "skamieniała: "
 
-#: src/reports.cpp:247 src/reports.cpp:249 src/unit_types.cpp:337
+#: src/reports.cpp:247 src/reports.cpp:249 src/unit_types.cpp:339
 msgid "damage"
 msgstr "obrażenia"
 
@@ -11256,31 +11256,31 @@ msgstr "Pomoc"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Księga Wesnoth"
 
-#: src/unit.cpp:2087 src/unit.cpp:2212
+#: src/unit.cpp:2111 src/unit.cpp:2236
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2169
+#: src/unit.cpp:2193
 msgid "XP to advance"
 msgstr "PD do awansu"
 
-#: src/unit.cpp:2203
+#: src/unit.cpp:2227
 msgid ": "
 msgstr ":"
 
-#: src/unit_types.cpp:345
+#: src/unit_types.cpp:347
 msgid "strikes"
 msgstr "ciosy"
 
-#: src/unit_types.cpp:1169
+#: src/unit_types.cpp:1171
 msgid "chaotic"
 msgstr "chaotyczny"
 
-#: src/unit_types.cpp:1169
+#: src/unit_types.cpp:1171
 msgid "lawful"
 msgstr "praworządny"
 
-#: src/unit_types.cpp:1169
+#: src/unit_types.cpp:1171
 msgid "neutral"
 msgstr "neutralny"
 

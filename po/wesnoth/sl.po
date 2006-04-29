@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-23 22:59+0200\n"
+"POT-Creation-Date: 2006-04-29 15:32+0200\n"
 "PO-Revision-Date: 2005-08-07 22:54+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <sl@li.org>\n"
@@ -110,14 +110,14 @@ msgstr ""
 "Neomajen:\n"
 "Ta enota ima v obrambi podvojene odpornosti, do največ 50%."
 
-#: data/abilities.cfg:88 data/abilities.cfg:109 data/abilities.cfg:143
-#: data/abilities.cfg:190 data/abilities.cfg:250 src/actions.cpp:539
-#: src/actions.cpp:672
+#: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
+#: data/abilities.cfg:183 data/abilities.cfg:239 src/actions.cpp:511
+#: src/actions.cpp:644
 msgid "leadership"
 msgstr "vodenje"
 
-#: data/abilities.cfg:92 data/abilities.cfg:113 data/abilities.cfg:147
-#: data/abilities.cfg:194 data/abilities.cfg:254
+#: data/abilities.cfg:91 data/abilities.cfg:111 data/abilities.cfg:143
+#: data/abilities.cfg:187 data/abilities.cfg:243
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -134,11 +134,11 @@ msgstr ""
 "Sosednje enote nižjih nivojev in iste strani bodo v boju naredile 25% več "
 "škode za vsak izkustveni nivo razlike."
 
-#: data/abilities.cfg:319
+#: data/abilities.cfg:304
 msgid "skirmisher"
 msgstr "izogibalec"
 
-#: data/abilities.cfg:321
+#: data/abilities.cfg:306
 #, fuzzy
 msgid ""
 "Skirmisher:\n"
@@ -150,11 +150,11 @@ msgstr ""
 "Ta enota se je sposobna hitro premikati mimo sovražnih enot in ignorira "
 "sovražnikova območja nadzora."
 
-#: data/abilities.cfg:332
+#: data/abilities.cfg:317
 msgid "illuminates"
 msgstr "osvetljuje"
 
-#: data/abilities.cfg:336
+#: data/abilities.cfg:321
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -170,11 +170,11 @@ msgstr ""
 "Vsaka sosednja enota se bo ponoči bojevala, kot da je mrak, in v mraku, kot "
 "da je dan."
 
-#: data/abilities.cfg:343
+#: data/abilities.cfg:328
 msgid "teleport"
 msgstr "teleportiranje"
 
-#: data/abilities.cfg:345
+#: data/abilities.cfg:330
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -184,11 +184,11 @@ msgstr ""
 "Ta enota se lahko teleportira med zavezniškimi vasmi, tako da porabi en "
 "premik."
 
-#: data/abilities.cfg:351
+#: data/abilities.cfg:336
 msgid "ambush"
 msgstr "zaseda"
 
-#: data/abilities.cfg:355
+#: data/abilities.cfg:340
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -203,11 +203,11 @@ msgstr ""
 "Sovražne enote te enote, ko je v gozdu, ne morejo niti videti niti napasti, "
 "razen takoj po njenem napadu ali če so poleg nje."
 
-#: data/abilities.cfg:367
+#: data/abilities.cfg:352
 msgid "nightstalk"
 msgstr "nočni zalezovalec"
 
-#: data/abilities.cfg:371
+#: data/abilities.cfg:356
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -222,12 +222,12 @@ msgstr ""
 "Sovražne enote te enote ponoči ne vidijo in je ne morejo napasti, razen "
 "takoj po njenem napadu ali če so poleg nje."
 
-#: data/abilities.cfg:383
+#: data/abilities.cfg:368
 #, fuzzy
 msgid "submerge"
 msgstr "vbod"
 
-#: data/abilities.cfg:387
+#: data/abilities.cfg:372
 #, fuzzy
 msgid ""
 "Submerge:\n"
@@ -243,11 +243,11 @@ msgstr ""
 "Sovražne enote te enote, ko je v gozdu, ne morejo niti videti niti napasti, "
 "razen takoj po njenem napadu ali če so poleg nje."
 
-#: data/abilities.cfg:405
+#: data/abilities.cfg:390
 msgid "berserk"
 msgstr "berserk"
 
-#: data/abilities.cfg:407
+#: data/abilities.cfg:392
 #, fuzzy
 msgid ""
 "Berserk:\n"
@@ -258,11 +258,11 @@ msgstr ""
 "Ob napadu ali pri obrambi se bo boj nadaljeval, dokler eden od udeležencev "
 "ne umre."
 
-#: data/abilities.cfg:415
+#: data/abilities.cfg:400
 msgid "backstab"
 msgstr "vbod v hrbet"
 
-#: data/abilities.cfg:417
+#: data/abilities.cfg:402
 #, fuzzy
 msgid ""
 "Backstab:\n"
@@ -274,11 +274,11 @@ msgstr ""
 "Ta napad naredi dvojno škodo, če je na tarčini nasprotni strani prijateljska "
 "enota. (To ne dela z zavezniki.)"
 
-#: data/abilities.cfg:426 data/abilities.cfg:434
+#: data/abilities.cfg:411 data/abilities.cfg:419
 msgid "plague"
 msgstr "kuga"
 
-#: data/abilities.cfg:428 data/abilities.cfg:436
+#: data/abilities.cfg:413 data/abilities.cfg:421
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -290,24 +290,24 @@ msgstr ""
 "isti strani, kot enota, ki jo je ubila. (To ne deluje na nemrtvih in enotah "
 "v vaseh.)"
 
-#: data/abilities.cfg:443
+#: data/abilities.cfg:428
 #, fuzzy
 msgid "slows"
 msgstr "upočasni"
 
-#: data/abilities.cfg:445
+#: data/abilities.cfg:430
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
 
-#: data/abilities.cfg:451
+#: data/abilities.cfg:436
 #, fuzzy
 msgid "stones"
 msgstr "okamèni"
 
-#: data/abilities.cfg:453
+#: data/abilities.cfg:438
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -317,11 +317,11 @@ msgstr ""
 "Ta napad spremeni tarčo v kamen. Okamenele enote se ne morejo premikati in "
 "napadati."
 
-#: data/abilities.cfg:460
+#: data/abilities.cfg:445
 msgid "marksman"
 msgstr "ostrostrelec"
 
-#: data/abilities.cfg:462
+#: data/abilities.cfg:447
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -329,11 +329,11 @@ msgstr ""
 "Marksman:\n"
 "V napadu (ne v obrambi) ima enota vedno vsaj 60% možnosti da zadane."
 
-#: data/abilities.cfg:472
+#: data/abilities.cfg:457
 msgid "magical"
 msgstr "čaroben"
 
-#: data/abilities.cfg:474
+#: data/abilities.cfg:459
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -341,12 +341,12 @@ msgstr ""
 "Čaroben:\n"
 "Ta napad ima vedno 70% možnosti da zadane."
 
-#: data/abilities.cfg:482
+#: data/abilities.cfg:467
 #, fuzzy
 msgid "swarm"
 msgstr "trk"
 
-#: data/abilities.cfg:484
+#: data/abilities.cfg:469
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -355,11 +355,11 @@ msgid ""
 "strikes."
 msgstr ""
 
-#: data/abilities.cfg:491
+#: data/abilities.cfg:476
 msgid "charge"
 msgstr "naskok"
 
-#: data/abilities.cfg:493
+#: data/abilities.cfg:478
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -369,12 +369,12 @@ msgstr ""
 "Ta napad naredi dvojno škodo. Povzroči pa, da tudi napadalec ob protinapadu "
 "prejme dvojno škodo."
 
-#: data/abilities.cfg:503
+#: data/abilities.cfg:488
 #, fuzzy
 msgid "drains"
 msgstr "črpa"
 
-#: data/abilities.cfg:505
+#: data/abilities.cfg:490
 #, fuzzy
 msgid ""
 "Drain:\n"
@@ -385,11 +385,11 @@ msgstr ""
 "Ta enota črpa energijo živim nasprotnikom in se pri tem pozdravi za polovico "
 "storjene škode."
 
-#: data/abilities.cfg:511
+#: data/abilities.cfg:496
 msgid "firststrike"
 msgstr "prvi napad"
 
-#: data/abilities.cfg:513
+#: data/abilities.cfg:498
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -397,11 +397,11 @@ msgstr ""
 "Prvi napad:\n"
 "Ta enota vedno napade prva, tudi če se brani."
 
-#: data/abilities.cfg:520
+#: data/abilities.cfg:505
 msgid "poison"
 msgstr "strup"
 
-#: data/abilities.cfg:522
+#: data/abilities.cfg:507
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -577,56 +577,56 @@ msgstr "+Norveški prevod"
 msgid "Polish Translation"
 msgstr "+Poljski prevod"
 
-#: data/about.cfg:406
+#: data/about.cfg:407
 #, fuzzy
 msgid "Portuguese Translation"
 msgstr "+Portugalski prevod"
 
-#: data/about.cfg:413
+#: data/about.cfg:414
 #, fuzzy
 msgid "Portuguese (Brazil) Translation"
 msgstr "+Portugalski prevod"
 
-#: data/about.cfg:427
+#: data/about.cfg:428
 #, fuzzy
 msgid "Russian Translation"
 msgstr "+Ruski prevod"
 
-#: data/about.cfg:437
+#: data/about.cfg:438
 #, fuzzy
 msgid "Serbian Translation"
 msgstr "+Srbski prevod"
 
-#: data/about.cfg:444
+#: data/about.cfg:445
 #, fuzzy
 msgid "Slovak Translation"
 msgstr "+Slovaški prevod"
 
-#: data/about.cfg:451
+#: data/about.cfg:452
 #, fuzzy
 msgid "Slovenian Translation"
 msgstr "+Slovenski prevod"
 
-#: data/about.cfg:458
+#: data/about.cfg:459
 #, fuzzy
 msgid "Spanish Translation"
 msgstr "+Španski prevod"
 
-#: data/about.cfg:471
+#: data/about.cfg:472
 #, fuzzy
 msgid "Swedish Translation"
 msgstr "+Švedski prevod"
 
-#: data/about.cfg:483
+#: data/about.cfg:484
 #, fuzzy
 msgid "Turkish Translation"
 msgstr "+Turški prevod"
 
-#: data/about.cfg:494 data/help.cfg:246
+#: data/about.cfg:495 data/help.cfg:246
 msgid "Contributors"
 msgstr "Avtorji"
 
-#: data/about.cfg:508
+#: data/about.cfg:509
 #, fuzzy
 msgid "Bots"
 msgstr "+IRC roboti"
@@ -868,9 +868,9 @@ msgstr "verižni buzdovan"
 #: data/units/Human_Outlaw_Bandit.cfg:41
 #: data/units/Human_Outlaw_Footpad.cfg:28
 #: data/units/Human_Outlaw_Footpad.cfg:53 data/units/Human_Outlaw_Thug.cfg:28
-#: data/units/Mermaid_Diviner.cfg:43 data/units/Mermaid_Enchantress.cfg:32
+#: data/units/Mermaid_Diviner.cfg:46 data/units/Mermaid_Enchantress.cfg:32
 #: data/units/Mermaid_Enchantress.cfg:48 data/units/Mermaid_Initiate.cfg:34
-#: data/units/Mermaid_Initiate.cfg:50 data/units/Mermaid_Priestess.cfg:37
+#: data/units/Mermaid_Initiate.cfg:50 data/units/Mermaid_Priestess.cfg:40
 #: data/units/Mermaid_Siren.cfg:36 data/units/Mermaid_Siren.cfg:82
 #: data/units/Merman_Entangler.cfg:32 data/units/Merman_Netcaster.cfg:31
 #: data/units/Monster_Cave_Spider.cfg:81 data/units/Monster_Cuttle_Fish.cfg:42
@@ -1049,7 +1049,7 @@ msgstr "ognjeno žezlo "
 #: data/units/Human_Mage.cfg:93 data/units/Human_Mage_Arch.cfg:93
 #: data/units/Human_Mage_Great.cfg:81 data/units/Human_Mage_Red.cfg:93
 #: data/units/Human_Mage_Silver.cfg:121 data/units/Orcish_Archer.cfg:271
-#: data/units/Orcish_Crossbowman.cfg:114 data/units/Orcish_Slurbow.cfg:165
+#: data/units/Orcish_Crossbowman.cfg:92 data/units/Orcish_Slurbow.cfg:163
 msgid "fire"
 msgstr "ognjen"
 
@@ -1266,9 +1266,9 @@ msgstr ""
 #: data/units/Elvish_Sorceress.cfg:25 data/units/Human_Mage.cfg:55
 #: data/units/Human_Mage_Arch.cfg:46 data/units/Human_Mage_Great.cfg:35
 #: data/units/Human_Mage_Red.cfg:56 data/units/Human_Mage_Silver.cfg:93
-#: data/units/Human_Mage_White.cfg:64 data/units/Mermaid_Diviner.cfg:42
+#: data/units/Human_Mage_White.cfg:64 data/units/Mermaid_Diviner.cfg:45
 #: data/units/Mermaid_Enchantress.cfg:31 data/units/Mermaid_Initiate.cfg:33
-#: data/units/Mermaid_Priestess.cfg:36 data/units/Saurian_Augur.cfg:34
+#: data/units/Mermaid_Priestess.cfg:39 data/units/Saurian_Augur.cfg:34
 #: data/units/Saurian_Oracle.cfg:34 data/units/Saurian_Soothsayer.cfg:35
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:31
 msgid "staff"
@@ -4427,7 +4427,7 @@ msgstr "Dejanja"
 msgid "End Turn"
 msgstr "Končaj potezo"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2121
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2145
 msgid "HP"
 msgstr "HP"
 
@@ -5922,8 +5922,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:91
-#: data/units/Human_Mage_of_Light.cfg:71 data/units/Mermaid_Diviner.cfg:58
-#: data/units/Mermaid_Priestess.cfg:52
+#: data/units/Human_Mage_of_Light.cfg:71 data/units/Mermaid_Diviner.cfg:61
+#: data/units/Mermaid_Priestess.cfg:55
 msgid "holy"
 msgstr "svet"
 
@@ -5975,8 +5975,8 @@ msgstr ""
 #: data/units/Human_Loyalist_Lieutenant.cfg:56
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:56
 #: data/units/Human_Loyalist_Sergeant.cfg:50
-#: data/units/Orcish_Crossbowman.cfg:54 data/units/Orcish_Crossbowman.cfg:113
-#: data/units/Orcish_Slurbow.cfg:105 data/units/Orcish_Slurbow.cfg:164
+#: data/units/Orcish_Crossbowman.cfg:54 data/units/Orcish_Crossbowman.cfg:91
+#: data/units/Orcish_Slurbow.cfg:105 data/units/Orcish_Slurbow.cfg:162
 #: data/units/Undead_Skele_Death_Knight.cfg:64
 msgid "crossbow"
 msgstr "samostrel"
@@ -6460,7 +6460,7 @@ msgid ""
 msgstr ""
 
 #: data/units/Human_Mage_White.cfg:90 data/units/Human_Mage_of_Light.cfg:70
-#: data/units/Mermaid_Diviner.cfg:57 data/units/Mermaid_Priestess.cfg:51
+#: data/units/Mermaid_Diviner.cfg:60 data/units/Mermaid_Priestess.cfg:54
 msgid "lightbeam"
 msgstr "žarek svetlobe"
 
@@ -6664,7 +6664,7 @@ msgstr "vile"
 msgid "female^Mermaid Diviner"
 msgstr "Čarovnica"
 
-#: data/units/Mermaid_Diviner.cfg:24
+#: data/units/Mermaid_Diviner.cfg:27
 msgid ""
 "Mermaid Priestesses meet their calling with a fervor that leaves their human "
 "counterparts somewhat taken aback. This may have its roots in a legend they "
@@ -6719,7 +6719,7 @@ msgstr ""
 msgid "female^Mermaid Priestess"
 msgstr "Princesa"
 
-#: data/units/Mermaid_Priestess.cfg:22
+#: data/units/Mermaid_Priestess.cfg:25
 msgid ""
 "Mermen share the creed that much of humanity follows, though for cultural "
 "reasons, the upholding of this is left to the mermaids, who are more "
@@ -7959,85 +7959,85 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Na voljo ni nič prostih gradov, kjer bi lahko novačili."
 
-#: src/actions.cpp:319 src/multiplayer_lobby.cpp:357
+#: src/actions.cpp:291 src/multiplayer_lobby.cpp:357
 msgid "none"
 msgstr "brez"
 
-#: src/actions.cpp:519 src/actions.cpp:651
+#: src/actions.cpp:491 src/actions.cpp:623
 msgid "base damage"
 msgstr "osnovna škoda"
 
-#: src/actions.cpp:558 src/actions.cpp:716
+#: src/actions.cpp:530 src/actions.cpp:665
 #, fuzzy
 msgid "Halved"
 msgstr "Shranjeno"
 
-#: src/actions.cpp:558 src/actions.cpp:716 src/actions.cpp:1278
-#: src/actions.cpp:1515
+#: src/actions.cpp:530 src/actions.cpp:665 src/actions.cpp:1264
+#: src/actions.cpp:1505
 msgid "slowed"
 msgstr "upočasnjen"
 
-#: src/actions.cpp:566
+#: src/actions.cpp:538
 msgid "attacker resistance vs"
 msgstr "napadalčeva odpornost proti"
 
-#: src/actions.cpp:566
+#: src/actions.cpp:538
 msgid "attacker vulnerability vs"
 msgstr "napadalčeva šibkost proti"
 
-#: src/actions.cpp:580 src/actions.cpp:729
+#: src/actions.cpp:552 src/actions.cpp:678
 msgid "total damage"
 msgstr "skupna škoda"
 
-#: src/actions.cpp:699
+#: src/actions.cpp:651
 msgid "defender resistance vs"
 msgstr "braniteljeva odpornost proti"
 
-#: src/actions.cpp:699
+#: src/actions.cpp:651
 msgid "defender vulnerability vs"
 msgstr "braniteljeva šibkost proti"
 
-#: src/actions.cpp:765
+#: src/actions.cpp:714
 msgid "(both should survive)"
 msgstr "(oba bosta preživela)"
 
-#: src/actions.cpp:767
+#: src/actions.cpp:716
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% P[ubije/je ubit/oba preživita]"
 
-#: src/actions.cpp:1271 src/actions.cpp:1508
+#: src/actions.cpp:1257 src/actions.cpp:1498
 msgid "poisoned"
 msgstr "zastrupljen"
 
-#: src/actions.cpp:1288 src/actions.cpp:1526
+#: src/actions.cpp:1274 src/actions.cpp:1516
 msgid "stone"
 msgstr "okamèni"
 
-#: src/actions.cpp:2315
+#: src/actions.cpp:2306
 msgid "Ambushed!"
 msgstr "Zaseda!"
 
-#: src/actions.cpp:2350
+#: src/actions.cpp:2341
 msgid "Friendly unit sighted"
 msgstr "Zavezniške enote opažene!"
 
-#: src/actions.cpp:2352
+#: src/actions.cpp:2343
 msgid "Enemy unit sighted!"
 msgstr "Sovražne enote opažene!"
 
-#: src/actions.cpp:2357
+#: src/actions.cpp:2348
 msgid "$friends Friendly units sighted"
 msgstr "Opaženih $friends zavezniških enot!"
 
-#: src/actions.cpp:2359
+#: src/actions.cpp:2350
 msgid "$enemies Enemy units sighted!"
 msgstr "Opaženih $enemies sovražnih enot!"
 
-#: src/actions.cpp:2363
+#: src/actions.cpp:2354
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Enote opažene! ($friends zavezniških, $enemies sovražnih)"
 
-#: src/actions.cpp:2378
+#: src/actions.cpp:2369
 msgid "(press $hotkey to continue)"
 msgstr "(za nadaljevanje pritisnite $hotkey)"
 
@@ -8365,7 +8365,7 @@ msgid ""
 msgstr "Namestitev kampanje ni uspela; nekaj datotek ni bilo mogoče ustvariti."
 
 #: src/game.cpp:1042 src/game.cpp:1081 src/game.cpp:1106
-#: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:332
+#: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:335
 msgid "Connection timed out"
 msgstr "Povezava je potekla"
 
@@ -8436,15 +8436,15 @@ msgid ""
 "characters"
 msgstr ""
 
-#: src/game.cpp:1190 src/playcampaign.cpp:108 src/playcampaign.cpp:311
+#: src/game.cpp:1190 src/playcampaign.cpp:109 src/playcampaign.cpp:314
 msgid "The game could not be loaded: "
 msgstr "Igre ni bilo možno naložiti: "
 
-#: src/game.cpp:1192 src/playcampaign.cpp:110 src/playcampaign.cpp:314
+#: src/game.cpp:1192 src/playcampaign.cpp:111 src/playcampaign.cpp:317
 msgid "Error while playing the game: "
 msgstr "Napaka med igranjem: "
 
-#: src/game.cpp:1204 src/playcampaign.cpp:112 src/playcampaign.cpp:317
+#: src/game.cpp:1204 src/playcampaign.cpp:113 src/playcampaign.cpp:320
 msgid "The game map could not be loaded: "
 msgstr "Karte ni bilo možno naložiti: "
 
@@ -8705,7 +8705,7 @@ msgstr "Utrpela škoda (pričakovana)"
 msgid "Statistics"
 msgstr "Statistika"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2152
+#: src/menu_events.cpp:220 src/unit.cpp:2176
 msgid "Moves"
 msgstr "Premiki"
 
@@ -8739,7 +8739,7 @@ msgstr "Plače"
 msgid "Income"
 msgstr "Prihodki"
 
-#: src/menu_events.cpp:368 src/playcampaign.cpp:282 src/playcampaign.cpp:403
+#: src/menu_events.cpp:368 src/playcampaign.cpp:285 src/playcampaign.cpp:406
 msgid "Name:"
 msgstr "Ime:"
 
@@ -8764,7 +8764,7 @@ msgstr "Shranjeno"
 msgid "The game has been saved"
 msgstr "Igra je bila shranjena"
 
-#: src/menu_events.cpp:386 src/playcampaign.cpp:290 src/playcampaign.cpp:411
+#: src/menu_events.cpp:386 src/playcampaign.cpp:293 src/playcampaign.cpp:414
 msgid "The game could not be saved"
 msgstr "Igre ni bilo možno shraniti"
 
@@ -8870,65 +8870,65 @@ msgstr "Nisem našel oznake ali enote z '$search' v imenu."
 msgid "prompt^Command:"
 msgstr "Ukaz:"
 
-#: src/mouse_events.cpp:224 src/mouse_events.cpp:340 src/mouse_events.cpp:724
+#: src/mouse_events.cpp:177 src/mouse_events.cpp:293
 msgid "Attacker"
 msgstr "Napadalec"
 
-#: src/mouse_events.cpp:225 src/mouse_events.cpp:339 src/mouse_events.cpp:726
+#: src/mouse_events.cpp:178 src/mouse_events.cpp:292
 msgid "Defender"
 msgstr "Branitelj"
 
-#: src/mouse_events.cpp:243
+#: src/mouse_events.cpp:196
 msgid "Expected Battle Result (hp)"
 msgstr ""
 
-#: src/mouse_events.cpp:328
+#: src/mouse_events.cpp:281
 #, fuzzy
 msgid "Leadership"
 msgstr "vodenje"
 
-#: src/mouse_events.cpp:341
+#: src/mouse_events.cpp:294
 #, fuzzy
 msgid " resistance vs "
 msgstr "Odpornosti"
 
-#: src/mouse_events.cpp:342
+#: src/mouse_events.cpp:295
 #, fuzzy
 msgid " vulnerability vs "
 msgstr "napadalčeva šibkost proti"
 
-#: src/mouse_events.cpp:352
+#: src/mouse_events.cpp:305
 #, fuzzy
 msgid "Slowed"
 msgstr "upočasnjen"
 
-#: src/mouse_events.cpp:368
+#: src/mouse_events.cpp:321
 #, fuzzy
 msgid "Total damage"
 msgstr "skupna škoda"
 
-#: src/mouse_events.cpp:375
+#: src/mouse_events.cpp:328
 #, fuzzy
 msgid "No usable weapon"
 msgstr "Izberite orožje:"
 
-#: src/mouse_events.cpp:380
+#: src/mouse_events.cpp:333
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:678 src/mouse_events.cpp:746 src/mouse_events.cpp:1328
+#: src/mouse_events.cpp:631 src/mouse_events.cpp:1225
 msgid "Damage Calculations"
 msgstr "Izračun škode"
 
-#: src/mouse_events.cpp:1306 src/reports.cpp:278
+#: src/mouse_events.cpp:1203 src/reports.cpp:278
 msgid "vs"
 msgstr "proti"
 
-#: src/mouse_events.cpp:1340
+#: src/mouse_events.cpp:1237
 msgid "Attack Enemy"
 msgstr "Napadi"
 
-#: src/mouse_events.cpp:1341
+#: src/mouse_events.cpp:1238
 msgid "Choose weapon:"
 msgstr "Izberite orožje:"
 
@@ -8986,12 +8986,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2207
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2231
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2214
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2238
 msgid ")"
 msgstr ")"
 
@@ -9361,93 +9361,93 @@ msgstr "Ni bilo mogoče dodati vtičnice"
 msgid "Could not send initial handshake"
 msgstr "Ni bilo mogoče začeti rokovanja"
 
-#: src/play_controller.cpp:358 src/playsingle_controller.cpp:297
-#: src/playsingle_controller.cpp:336
+#: src/play_controller.cpp:350 src/playsingle_controller.cpp:305
+#: src/playsingle_controller.cpp:346
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka, ki ste jo poskušali naložiti, je pokvarjena"
 
-#: src/playcampaign.cpp:259
+#: src/playcampaign.cpp:262
 msgid "Defeat"
 msgstr "Poraz"
 
-#: src/playcampaign.cpp:260
+#: src/playcampaign.cpp:263
 msgid "You have been defeated!"
 msgstr "Bili ste poraženi!"
 
-#: src/playcampaign.cpp:273
+#: src/playcampaign.cpp:276
 msgid " replay"
 msgstr "vnovično predvajanje"
 
-#: src/playcampaign.cpp:281
+#: src/playcampaign.cpp:284
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Ali želite shraniti posnetek igranja scenarija?"
 
-#: src/playcampaign.cpp:330
+#: src/playcampaign.cpp:333
 msgid "Downloading next level..."
 msgstr "Prenašam naslednjo stopnjo..."
 
-#: src/playcampaign.cpp:402
+#: src/playcampaign.cpp:405
 msgid "Do you want to save your game?"
 msgstr "Ali želite shraniti igro?"
 
-#: src/playcampaign.cpp:427
+#: src/playcampaign.cpp:430
 msgid "Unknown scenario: '"
 msgstr "Neznan scenarij: '"
 
-#: src/playsingle_controller.cpp:181
+#: src/playsingle_controller.cpp:189
 msgid "Game Over"
 msgstr "Konec igre"
 
-#: src/playsingle_controller.cpp:182
+#: src/playsingle_controller.cpp:190
 msgid "The game is over."
 msgstr "Igra je končana"
 
-#: src/playsingle_controller.cpp:265
+#: src/playsingle_controller.cpp:273
 msgid "Remaining gold: "
 msgstr "Preostalo zlato: "
 
-#: src/playsingle_controller.cpp:268
+#: src/playsingle_controller.cpp:276
 msgid "Early finish bonus: "
 msgstr "Bonus za zgodnji konec: "
 
-#: src/playsingle_controller.cpp:270
+#: src/playsingle_controller.cpp:278
 msgid "per turn"
 msgstr "na potezo"
 
-#: src/playsingle_controller.cpp:271
+#: src/playsingle_controller.cpp:279
 msgid "Turns finished early: "
 msgstr "Preostalih potez: "
 
-#: src/playsingle_controller.cpp:273
+#: src/playsingle_controller.cpp:281
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playsingle_controller.cpp:275
+#: src/playsingle_controller.cpp:283
 msgid "Gold: "
 msgstr "Zlato: "
 
-#: src/playsingle_controller.cpp:280
+#: src/playsingle_controller.cpp:288
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% zlata se bo ohranilo za naslednji scenarij"
 
-#: src/playsingle_controller.cpp:281
+#: src/playsingle_controller.cpp:289
 msgid "Retained Gold: "
 msgstr "Ohranjeno zlato: "
 
-#: src/playsingle_controller.cpp:286
+#: src/playsingle_controller.cpp:294
 msgid "Victory"
 msgstr "Zmaga"
 
-#: src/playsingle_controller.cpp:287
+#: src/playsingle_controller.cpp:295
 msgid "You have emerged victorious!"
 msgstr "Zmagali ste!"
 
-#: src/playsingle_controller.cpp:291
+#: src/playsingle_controller.cpp:299
 msgid "Scenario Report"
 msgstr "Scenarijsko poročilo"
 
-#: src/playsingle_controller.cpp:308
+#: src/playsingle_controller.cpp:316
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -9456,7 +9456,7 @@ msgstr ""
 "Zgodila se je mrežna prkinitev in igra se ne more nadaljevati. Ali želite "
 "shraniti igro?"
 
-#: src/playsingle_controller.cpp:402
+#: src/playsingle_controller.cpp:413
 msgid "It is now your turn"
 msgstr "Vaša poteza se je začela"
 
@@ -9526,7 +9526,7 @@ msgstr "Ta enota je okamenela. Ne more se ne premikati ne napadati."
 msgid "stone: "
 msgstr "okamenela: "
 
-#: src/reports.cpp:247 src/reports.cpp:249 src/unit_types.cpp:337
+#: src/reports.cpp:247 src/reports.cpp:249 src/unit_types.cpp:339
 msgid "damage"
 msgstr "škoda"
 
@@ -9714,31 +9714,31 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Knjiga modrosti Wesnotha"
 
-#: src/unit.cpp:2087 src/unit.cpp:2212
+#: src/unit.cpp:2111 src/unit.cpp:2236
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2169
+#: src/unit.cpp:2193
 msgid "XP to advance"
 msgstr "XP do napredovanja"
 
-#: src/unit.cpp:2203
+#: src/unit.cpp:2227
 msgid ": "
 msgstr ": "
 
-#: src/unit_types.cpp:345
+#: src/unit_types.cpp:347
 msgid "strikes"
 msgstr "udarci"
 
-#: src/unit_types.cpp:1169
+#: src/unit_types.cpp:1171
 msgid "chaotic"
 msgstr "kaotičen"
 
-#: src/unit_types.cpp:1169
+#: src/unit_types.cpp:1171
 msgid "lawful"
 msgstr "zakonit"
 
-#: src/unit_types.cpp:1169
+#: src/unit_types.cpp:1171
 msgid "neutral"
 msgstr "nevtralen"
 

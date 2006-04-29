@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-23 22:59+0200\n"
+"POT-Creation-Date: 2006-04-29 15:32+0200\n"
 "PO-Revision-Date: 2006-02-13 01:20+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -112,14 +112,14 @@ msgstr ""
 "העמידות של יחידה זו מוכפלת, עד למקסימום של 50%, כאשר היא מתגוננת. חולשות לא "
 "מושפעות."
 
-#: data/abilities.cfg:88 data/abilities.cfg:109 data/abilities.cfg:143
-#: data/abilities.cfg:190 data/abilities.cfg:250 src/actions.cpp:539
-#: src/actions.cpp:672
+#: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
+#: data/abilities.cfg:183 data/abilities.cfg:239 src/actions.cpp:511
+#: src/actions.cpp:644
 msgid "leadership"
 msgstr "מנהיגות"
 
-#: data/abilities.cfg:92 data/abilities.cfg:113 data/abilities.cfg:147
-#: data/abilities.cfg:194 data/abilities.cfg:254
+#: data/abilities.cfg:91 data/abilities.cfg:111 data/abilities.cfg:143
+#: data/abilities.cfg:187 data/abilities.cfg:243
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -137,11 +137,11 @@ msgstr ""
 "נמוכה יוצר ובאותו צד כמו היחידה עם המנהיגות, התקפותיה עושות 25% יותר נזק "
 "כפול ההפרש בדרגות."
 
-#: data/abilities.cfg:319
+#: data/abilities.cfg:304
 msgid "skirmisher"
 msgstr "מסתננת"
 
-#: data/abilities.cfg:321
+#: data/abilities.cfg:306
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -153,11 +153,11 @@ msgstr ""
 "האוייב. (יוצא מהכלל: אם היחידה עוצרת בתוך אזור שליטה של האוייב נקודות התנועה "
 "הנותרות שלה יאופסו אפילו אם היא מסתננת). "
 
-#: data/abilities.cfg:332
+#: data/abilities.cfg:317
 msgid "illuminates"
 msgstr "מאירה"
 
-#: data/abilities.cfg:336
+#: data/abilities.cfg:321
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -172,11 +172,11 @@ msgstr ""
 "\n"
 "כל יחידה סמוכה תלחם בלילה כמו בזמן השקיעה ובשקיעה כמו בזמן היום."
 
-#: data/abilities.cfg:343
+#: data/abilities.cfg:328
 msgid "teleport"
 msgstr "העתקה"
 
-#: data/abilities.cfg:345
+#: data/abilities.cfg:330
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -186,11 +186,11 @@ msgstr ""
 "יחידה זו יכולה להעתיק את עצמה בין כל שני כפרים ידידותיים תוך שימוש באחת "
 "מנקודות התנועה שלה."
 
-#: data/abilities.cfg:351
+#: data/abilities.cfg:336
 msgid "ambush"
 msgstr "מארב"
 
-#: data/abilities.cfg:355
+#: data/abilities.cfg:340
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -205,11 +205,11 @@ msgstr ""
 "יחידות אוייב לא יכולות לראות או להתקיף יחידה זו כשהיא ביער, חוץ מאשר בתור "
 "שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אוייב ליד יחידה זו."
 
-#: data/abilities.cfg:367
+#: data/abilities.cfg:352
 msgid "nightstalk"
 msgstr "התגנבות לילה"
 
-#: data/abilities.cfg:371
+#: data/abilities.cfg:356
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -224,11 +224,11 @@ msgstr ""
 "יחידות אוייב לא יכולות לראות או להתקיף יחידה זו במשך הלילה, חוץ מאשר בתור "
 "שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אוייב ליד יחידה זו."
 
-#: data/abilities.cfg:383
+#: data/abilities.cfg:368
 msgid "submerge"
 msgstr "צלילה"
 
-#: data/abilities.cfg:387
+#: data/abilities.cfg:372
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -243,11 +243,11 @@ msgstr ""
 "יחידות אוייב לא יכולות לראות או להתקיף יחידה זו כשהיא במים עמוקים, חוץ מאשר "
 "בתור שמיד אחרי שיחידה זו התקיפה, או אם יש יחידות אוייב ליד יחידה זו."
 
-#: data/abilities.cfg:405
+#: data/abilities.cfg:390
 msgid "berserk"
 msgstr "משוגע"
 
-#: data/abilities.cfg:407
+#: data/abilities.cfg:392
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -257,11 +257,11 @@ msgstr ""
 "בלי קשר לאם היחידה השתמשה בהתקפה זו להגנה או לתקיפה, היא תמשיך את הקרב עד "
 "שאחד מהנלחמים ימות, או עד שיעברו 30 סיבובי התקפות."
 
-#: data/abilities.cfg:415
+#: data/abilities.cfg:400
 msgid "backstab"
 msgstr "דקירה מאחור"
 
-#: data/abilities.cfg:417
+#: data/abilities.cfg:402
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -272,11 +272,11 @@ msgstr ""
 "התקפה זו גורמת לנזק כפול אם יש יחידה אוייבת למטרה בצידה השני של המטרה, "
 "ויחידה זו לא מנוטרלת (לדוגמה הפכה לאבן)."
 
-#: data/abilities.cfg:426 data/abilities.cfg:434
+#: data/abilities.cfg:411 data/abilities.cfg:419
 msgid "plague"
 msgstr "מגיפה"
 
-#: data/abilities.cfg:428 data/abilities.cfg:436
+#: data/abilities.cfg:413 data/abilities.cfg:421
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -287,12 +287,12 @@ msgstr ""
 "כאשר יחידה מתה מהתקפת מגפה, יחידה זו מוחלפת על ידי יחידה מאותו סוג ששייכת "
 "לצד של היחידה עם התקפת המגפה. (הדבר לא עובד על אל-מתים או יחידות בכפרים)."
 
-#: data/abilities.cfg:443
+#: data/abilities.cfg:428
 #, fuzzy
 msgid "slows"
 msgstr "איטיות"
 
-#: data/abilities.cfg:445
+#: data/abilities.cfg:430
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
@@ -302,12 +302,12 @@ msgstr ""
 "התקפה זאת מאיטה את המטרה. האטה מפחיתה בחצי את הנזק שנגרם על ידי ההתקפות "
 "ויחידות מואטות נעות בחצי מהמהירות (מעוגל למעלה)."
 
-#: data/abilities.cfg:451
+#: data/abilities.cfg:436
 #, fuzzy
 msgid "stones"
 msgstr "איבון"
 
-#: data/abilities.cfg:453
+#: data/abilities.cfg:438
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -316,11 +316,11 @@ msgstr ""
 "אבן:\n"
 "התקפה זאת הופכת את הקורבן לאבן. יחידות שהפכו לאבן לא יכולות לזוז או לתקוף."
 
-#: data/abilities.cfg:460
+#: data/abilities.cfg:445
 msgid "marksman"
 msgstr "צליפה"
 
-#: data/abilities.cfg:462
+#: data/abilities.cfg:447
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -328,11 +328,11 @@ msgstr ""
 "צלף:\n"
 "כאשר משומשת לתקיפה, להתקפה זו יש תמיד לפחות 60% לפגוע."
 
-#: data/abilities.cfg:472
+#: data/abilities.cfg:457
 msgid "magical"
 msgstr "קסום"
 
-#: data/abilities.cfg:474
+#: data/abilities.cfg:459
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -340,11 +340,11 @@ msgstr ""
 "קסומה:\n"
 "להתקפה זו יש תמיד סיכוי של 70% לפגוע."
 
-#: data/abilities.cfg:482
+#: data/abilities.cfg:467
 msgid "swarm"
 msgstr "נחיל"
 
-#: data/abilities.cfg:484
+#: data/abilities.cfg:469
 #, fuzzy
 msgid ""
 "Swarm:\n"
@@ -358,11 +358,11 @@ msgstr ""
 "הפגיעה בתור הוא באותו יחס כמו הנק\"פ הנוכחי \\ הנק\"פ המירבי של היחידה. "
 "לדוגמא יחידה שיש לה 3/4 מהנק\"פ המירבי תקבל 3/4 ממספר נסיונות הפגיעה בתור."
 
-#: data/abilities.cfg:491
+#: data/abilities.cfg:476
 msgid "charge"
 msgstr "הסתערות"
 
-#: data/abilities.cfg:493
+#: data/abilities.cfg:478
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -372,12 +372,12 @@ msgstr ""
 "התקפה זו גורמת נזק כפול למטרה. היא גם גורמת ליחידה זו לקבל נזק כפול מהתקפת "
 "הנגד של המטרה."
 
-#: data/abilities.cfg:503
+#: data/abilities.cfg:488
 #, fuzzy
 msgid "drains"
 msgstr "ניקוז"
 
-#: data/abilities.cfg:505
+#: data/abilities.cfg:490
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -387,11 +387,11 @@ msgstr ""
 "יחידה זו מנקזת את כח החיים מיחידות חיות, ומרפא את עצמה בחצי מהנזק אותה היא "
 "גרמה (מעוגל למטה)."
 
-#: data/abilities.cfg:511
+#: data/abilities.cfg:496
 msgid "firststrike"
 msgstr "תקיפה ראשונה"
 
-#: data/abilities.cfg:513
+#: data/abilities.cfg:498
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -400,11 +400,11 @@ msgstr ""
 "יחידה זו תמיד מקבלת את ניסיון הפגיעה הראשון עם התקפה זו, אפילו בזמן שהיא "
 "מגנה."
 
-#: data/abilities.cfg:520
+#: data/abilities.cfg:505
 msgid "poison"
 msgstr "רעל"
 
-#: data/abilities.cfg:522
+#: data/abilities.cfg:507
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -550,47 +550,47 @@ msgstr "תרגום לנורווגית"
 msgid "Polish Translation"
 msgstr "תרגום לפולנית"
 
-#: data/about.cfg:406
+#: data/about.cfg:407
 msgid "Portuguese Translation"
 msgstr "תרגום לפורטוגזית"
 
-#: data/about.cfg:413
+#: data/about.cfg:414
 msgid "Portuguese (Brazil) Translation"
 msgstr "תרגום לפורטוגזית (ברזיל)"
 
-#: data/about.cfg:427
+#: data/about.cfg:428
 msgid "Russian Translation"
 msgstr "תרגום לרוסית"
 
-#: data/about.cfg:437
+#: data/about.cfg:438
 msgid "Serbian Translation"
 msgstr "תרגום לסרבית"
 
-#: data/about.cfg:444
+#: data/about.cfg:445
 msgid "Slovak Translation"
 msgstr "תרגום לסלובקית"
 
-#: data/about.cfg:451
+#: data/about.cfg:452
 msgid "Slovenian Translation"
 msgstr "תרגום לסלובנית"
 
-#: data/about.cfg:458
+#: data/about.cfg:459
 msgid "Spanish Translation"
 msgstr "תרגום לספרדית"
 
-#: data/about.cfg:471
+#: data/about.cfg:472
 msgid "Swedish Translation"
 msgstr "תרגום לשוודית"
 
-#: data/about.cfg:483
+#: data/about.cfg:484
 msgid "Turkish Translation"
 msgstr "תרגום לתורכית"
 
-#: data/about.cfg:494 data/help.cfg:246
+#: data/about.cfg:495 data/help.cfg:246
 msgid "Contributors"
 msgstr "תורמים"
 
-#: data/about.cfg:508
+#: data/about.cfg:509
 msgid "Bots"
 msgstr "בוטים"
 
@@ -834,9 +834,9 @@ msgstr "כוכב בוקר"
 #: data/units/Human_Outlaw_Bandit.cfg:41
 #: data/units/Human_Outlaw_Footpad.cfg:28
 #: data/units/Human_Outlaw_Footpad.cfg:53 data/units/Human_Outlaw_Thug.cfg:28
-#: data/units/Mermaid_Diviner.cfg:43 data/units/Mermaid_Enchantress.cfg:32
+#: data/units/Mermaid_Diviner.cfg:46 data/units/Mermaid_Enchantress.cfg:32
 #: data/units/Mermaid_Enchantress.cfg:48 data/units/Mermaid_Initiate.cfg:34
-#: data/units/Mermaid_Initiate.cfg:50 data/units/Mermaid_Priestess.cfg:37
+#: data/units/Mermaid_Initiate.cfg:50 data/units/Mermaid_Priestess.cfg:40
 #: data/units/Mermaid_Siren.cfg:36 data/units/Mermaid_Siren.cfg:82
 #: data/units/Merman_Entangler.cfg:32 data/units/Merman_Netcaster.cfg:31
 #: data/units/Monster_Cave_Spider.cfg:81 data/units/Monster_Cuttle_Fish.cfg:42
@@ -1018,7 +1018,7 @@ msgstr "שרביט אש"
 #: data/units/Human_Mage.cfg:93 data/units/Human_Mage_Arch.cfg:93
 #: data/units/Human_Mage_Great.cfg:81 data/units/Human_Mage_Red.cfg:93
 #: data/units/Human_Mage_Silver.cfg:121 data/units/Orcish_Archer.cfg:271
-#: data/units/Orcish_Crossbowman.cfg:114 data/units/Orcish_Slurbow.cfg:165
+#: data/units/Orcish_Crossbowman.cfg:92 data/units/Orcish_Slurbow.cfg:163
 msgid "fire"
 msgstr "אש"
 
@@ -1259,9 +1259,9 @@ msgstr ""
 #: data/units/Elvish_Sorceress.cfg:25 data/units/Human_Mage.cfg:55
 #: data/units/Human_Mage_Arch.cfg:46 data/units/Human_Mage_Great.cfg:35
 #: data/units/Human_Mage_Red.cfg:56 data/units/Human_Mage_Silver.cfg:93
-#: data/units/Human_Mage_White.cfg:64 data/units/Mermaid_Diviner.cfg:42
+#: data/units/Human_Mage_White.cfg:64 data/units/Mermaid_Diviner.cfg:45
 #: data/units/Mermaid_Enchantress.cfg:31 data/units/Mermaid_Initiate.cfg:33
-#: data/units/Mermaid_Priestess.cfg:36 data/units/Saurian_Augur.cfg:34
+#: data/units/Mermaid_Priestess.cfg:39 data/units/Saurian_Augur.cfg:34
 #: data/units/Saurian_Oracle.cfg:34 data/units/Saurian_Soothsayer.cfg:35
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:31
 msgid "staff"
@@ -4513,7 +4513,7 @@ msgstr "פעולות"
 msgid "End Turn"
 msgstr "סוף תור"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2121
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2145
 msgid "HP"
 msgstr "נק\"פ"
 
@@ -5983,8 +5983,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:91
-#: data/units/Human_Mage_of_Light.cfg:71 data/units/Mermaid_Diviner.cfg:58
-#: data/units/Mermaid_Priestess.cfg:52
+#: data/units/Human_Mage_of_Light.cfg:71 data/units/Mermaid_Diviner.cfg:61
+#: data/units/Mermaid_Priestess.cfg:55
 msgid "holy"
 msgstr "קדוש"
 
@@ -6036,8 +6036,8 @@ msgstr ""
 #: data/units/Human_Loyalist_Lieutenant.cfg:56
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:56
 #: data/units/Human_Loyalist_Sergeant.cfg:50
-#: data/units/Orcish_Crossbowman.cfg:54 data/units/Orcish_Crossbowman.cfg:113
-#: data/units/Orcish_Slurbow.cfg:105 data/units/Orcish_Slurbow.cfg:164
+#: data/units/Orcish_Crossbowman.cfg:54 data/units/Orcish_Crossbowman.cfg:91
+#: data/units/Orcish_Slurbow.cfg:105 data/units/Orcish_Slurbow.cfg:162
 #: data/units/Undead_Skele_Death_Knight.cfg:64
 msgid "crossbow"
 msgstr "קשת מצולבת"
@@ -6533,7 +6533,7 @@ msgid ""
 msgstr ""
 
 #: data/units/Human_Mage_White.cfg:90 data/units/Human_Mage_of_Light.cfg:70
-#: data/units/Mermaid_Diviner.cfg:57 data/units/Mermaid_Priestess.cfg:51
+#: data/units/Mermaid_Diviner.cfg:60 data/units/Mermaid_Priestess.cfg:54
 msgid "lightbeam"
 msgstr "קרן אור"
 
@@ -6750,7 +6750,7 @@ msgstr "קילשון"
 msgid "female^Mermaid Diviner"
 msgstr "מנחשת בת-ימית"
 
-#: data/units/Mermaid_Diviner.cfg:24
+#: data/units/Mermaid_Diviner.cfg:27
 msgid ""
 "Mermaid Priestesses meet their calling with a fervor that leaves their human "
 "counterparts somewhat taken aback. This may have its roots in a legend they "
@@ -6802,7 +6802,7 @@ msgstr ""
 msgid "female^Mermaid Priestess"
 msgstr "כוהנת בת-ימית"
 
-#: data/units/Mermaid_Priestess.cfg:22
+#: data/units/Mermaid_Priestess.cfg:25
 msgid ""
 "Mermen share the creed that much of humanity follows, though for cultural "
 "reasons, the upholding of this is left to the mermaids, who are more "
@@ -8090,84 +8090,84 @@ msgstr "המנהיג שלך חייב להיות על מצודה כדי לגיי�
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "אין אריח טירה פנוי שניתן לגייס אליו את היחידה."
 
-#: src/actions.cpp:319 src/multiplayer_lobby.cpp:357
+#: src/actions.cpp:291 src/multiplayer_lobby.cpp:357
 msgid "none"
 msgstr "אין"
 
-#: src/actions.cpp:519 src/actions.cpp:651
+#: src/actions.cpp:491 src/actions.cpp:623
 msgid "base damage"
 msgstr "נזק בסיסי"
 
-#: src/actions.cpp:558 src/actions.cpp:716
+#: src/actions.cpp:530 src/actions.cpp:665
 msgid "Halved"
 msgstr "הופחת בחצי"
 
-#: src/actions.cpp:558 src/actions.cpp:716 src/actions.cpp:1278
-#: src/actions.cpp:1515
+#: src/actions.cpp:530 src/actions.cpp:665 src/actions.cpp:1264
+#: src/actions.cpp:1505
 msgid "slowed"
 msgstr "מואט"
 
-#: src/actions.cpp:566
+#: src/actions.cpp:538
 msgid "attacker resistance vs"
 msgstr "עמידות התוקף כנגד"
 
-#: src/actions.cpp:566
+#: src/actions.cpp:538
 msgid "attacker vulnerability vs"
 msgstr "פגיעות התוקף מצד"
 
-#: src/actions.cpp:580 src/actions.cpp:729
+#: src/actions.cpp:552 src/actions.cpp:678
 msgid "total damage"
 msgstr "נזק כולל"
 
-#: src/actions.cpp:699
+#: src/actions.cpp:651
 msgid "defender resistance vs"
 msgstr "עמידות המגן כנגד"
 
-#: src/actions.cpp:699
+#: src/actions.cpp:651
 msgid "defender vulnerability vs"
 msgstr "פגיעות המגן מצד"
 
-#: src/actions.cpp:765
+#: src/actions.cpp:714
 msgid "(both should survive)"
 msgstr "(שניהן צריכות לשרוד)"
 
-#: src/actions.cpp:767
+#: src/actions.cpp:716
 msgid "% Pr[kills/killed by/both survive]"
 msgstr "% אח[תהרוג/תהרג/שניהן ישרדו]"
 
-#: src/actions.cpp:1271 src/actions.cpp:1508
+#: src/actions.cpp:1257 src/actions.cpp:1498
 msgid "poisoned"
 msgstr "מורעל"
 
-#: src/actions.cpp:1288 src/actions.cpp:1526
+#: src/actions.cpp:1274 src/actions.cpp:1516
 msgid "stone"
 msgstr "איבון"
 
-#: src/actions.cpp:2315
+#: src/actions.cpp:2306
 msgid "Ambushed!"
 msgstr "נכנסנו למארב!"
 
-#: src/actions.cpp:2350
+#: src/actions.cpp:2341
 msgid "Friendly unit sighted"
 msgstr "יחידה ידידותית נראתה"
 
-#: src/actions.cpp:2352
+#: src/actions.cpp:2343
 msgid "Enemy unit sighted!"
 msgstr "יחידת אויב נראתה!"
 
-#: src/actions.cpp:2357
+#: src/actions.cpp:2348
 msgid "$friends Friendly units sighted"
 msgstr "$friends יחידות ידידותיות נראו"
 
-#: src/actions.cpp:2359
+#: src/actions.cpp:2350
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies יחידות אוייב נראו!"
 
-#: src/actions.cpp:2363
+#: src/actions.cpp:2354
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "יחידות נראו! ($friends ידידותיות, $enemies  אוייבות)"
 
-#: src/actions.cpp:2378
+#: src/actions.cpp:2369
 msgid "(press $hotkey to continue)"
 msgstr "(להמשיך לחץ על $hotkey)"
 
@@ -8487,7 +8487,7 @@ msgid ""
 msgstr "הייתה בעיה ביצירת הקבצים הדרושים להתקנת המערכה."
 
 #: src/game.cpp:1042 src/game.cpp:1081 src/game.cpp:1106
-#: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:332
+#: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:335
 msgid "Connection timed out"
 msgstr "תם זמן ההמתנה לחיבור"
 
@@ -8557,15 +8557,15 @@ msgid ""
 "characters"
 msgstr "שם המשתמש שבחרת ארוך מידי, בחר בבקשה שם משתמש עם פחות מ 18 תווים"
 
-#: src/game.cpp:1190 src/playcampaign.cpp:108 src/playcampaign.cpp:311
+#: src/game.cpp:1190 src/playcampaign.cpp:109 src/playcampaign.cpp:314
 msgid "The game could not be loaded: "
 msgstr "לא ניתן לטעון את המשחק: "
 
-#: src/game.cpp:1192 src/playcampaign.cpp:110 src/playcampaign.cpp:314
+#: src/game.cpp:1192 src/playcampaign.cpp:111 src/playcampaign.cpp:317
 msgid "Error while playing the game: "
 msgstr "שגיאה בזמן המשחק: "
 
-#: src/game.cpp:1204 src/playcampaign.cpp:112 src/playcampaign.cpp:317
+#: src/game.cpp:1204 src/playcampaign.cpp:113 src/playcampaign.cpp:320
 msgid "The game map could not be loaded: "
 msgstr "נכשלה טעינת מפת המשחק: "
 
@@ -8822,7 +8822,7 @@ msgstr "נזק שנספג (ע\"צ)"
 msgid "Statistics"
 msgstr "סטטיסטיקות"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2152
+#: src/menu_events.cpp:220 src/unit.cpp:2176
 msgid "Moves"
 msgstr "מהלכים"
 
@@ -8856,7 +8856,7 @@ msgstr "מחיר אחזקה"
 msgid "Income"
 msgstr "הכנסה"
 
-#: src/menu_events.cpp:368 src/playcampaign.cpp:282 src/playcampaign.cpp:403
+#: src/menu_events.cpp:368 src/playcampaign.cpp:285 src/playcampaign.cpp:406
 msgid "Name:"
 msgstr "שם:"
 
@@ -8879,7 +8879,7 @@ msgstr "נשמר"
 msgid "The game has been saved"
 msgstr "המשחק נשמר"
 
-#: src/menu_events.cpp:386 src/playcampaign.cpp:290 src/playcampaign.cpp:411
+#: src/menu_events.cpp:386 src/playcampaign.cpp:293 src/playcampaign.cpp:414
 msgid "The game could not be saved"
 msgstr "שמירת המשחק נכשלה"
 
@@ -8985,65 +8985,65 @@ msgstr "לא ניתן למצוא תגית או יחידה שמכילים את ה
 msgid "prompt^Command:"
 msgstr "פקודה:"
 
-#: src/mouse_events.cpp:224 src/mouse_events.cpp:340 src/mouse_events.cpp:724
+#: src/mouse_events.cpp:177 src/mouse_events.cpp:293
 msgid "Attacker"
 msgstr "תוקפת"
 
-#: src/mouse_events.cpp:225 src/mouse_events.cpp:339 src/mouse_events.cpp:726
+#: src/mouse_events.cpp:178 src/mouse_events.cpp:292
 msgid "Defender"
 msgstr "מגנה"
 
-#: src/mouse_events.cpp:243
+#: src/mouse_events.cpp:196
 msgid "Expected Battle Result (hp)"
 msgstr ""
 
-#: src/mouse_events.cpp:328
+#: src/mouse_events.cpp:281
 #, fuzzy
 msgid "Leadership"
 msgstr "מנהיגות"
 
-#: src/mouse_events.cpp:341
+#: src/mouse_events.cpp:294
 #, fuzzy
 msgid " resistance vs "
 msgstr "עמידויות"
 
-#: src/mouse_events.cpp:342
+#: src/mouse_events.cpp:295
 #, fuzzy
 msgid " vulnerability vs "
 msgstr "פגיעות התוקף מצד"
 
-#: src/mouse_events.cpp:352
+#: src/mouse_events.cpp:305
 #, fuzzy
 msgid "Slowed"
 msgstr "מואט"
 
-#: src/mouse_events.cpp:368
+#: src/mouse_events.cpp:321
 #, fuzzy
 msgid "Total damage"
 msgstr "נזק כולל"
 
-#: src/mouse_events.cpp:375
+#: src/mouse_events.cpp:328
 #, fuzzy
 msgid "No usable weapon"
 msgstr "בחירת נשק:"
 
-#: src/mouse_events.cpp:380
+#: src/mouse_events.cpp:333
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:678 src/mouse_events.cpp:746 src/mouse_events.cpp:1328
+#: src/mouse_events.cpp:631 src/mouse_events.cpp:1225
 msgid "Damage Calculations"
 msgstr "חישובי נזק"
 
-#: src/mouse_events.cpp:1306 src/reports.cpp:278
+#: src/mouse_events.cpp:1203 src/reports.cpp:278
 msgid "vs"
 msgstr "לעומת"
 
-#: src/mouse_events.cpp:1340
+#: src/mouse_events.cpp:1237
 msgid "Attack Enemy"
 msgstr "יש לתקוף את האויב"
 
-#: src/mouse_events.cpp:1341
+#: src/mouse_events.cpp:1238
 msgid "Choose weapon:"
 msgstr "בחירת נשק:"
 
@@ -9098,12 +9098,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2207
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2231
 msgid "("
 msgstr ")"
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2214
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2238
 msgid ")"
 msgstr "("
 
@@ -9464,99 +9464,99 @@ msgstr "הוספת נקודת חיבור (socket) לנקודות הקיימות 
 msgid "Could not send initial handshake"
 msgstr "שליחת לחיצת יד ראשונית נכשלה"
 
-#: src/play_controller.cpp:358 src/playsingle_controller.cpp:297
-#: src/playsingle_controller.cpp:336
+#: src/play_controller.cpp:350 src/playsingle_controller.cpp:305
+#: src/playsingle_controller.cpp:346
 msgid "The file you have tried to load is corrupt"
 msgstr "הקובץ, אותו ניסית לטעון, פגום"
 
-#: src/playcampaign.cpp:259
+#: src/playcampaign.cpp:262
 msgid "Defeat"
 msgstr "תבוסה"
 
-#: src/playcampaign.cpp:260
+#: src/playcampaign.cpp:263
 msgid "You have been defeated!"
 msgstr "הובסת!"
 
-#: src/playcampaign.cpp:273
+#: src/playcampaign.cpp:276
 msgid " replay"
 msgstr " מהתחלה"
 
-#: src/playcampaign.cpp:281
+#: src/playcampaign.cpp:284
 msgid "Do you want to save a replay of this scenario?"
 msgstr "האם אתה רוצה לשמור הקלטה של התרחיש?"
 
-#: src/playcampaign.cpp:330
+#: src/playcampaign.cpp:333
 msgid "Downloading next level..."
 msgstr "מוריד את השלב הבא..."
 
-#: src/playcampaign.cpp:402
+#: src/playcampaign.cpp:405
 msgid "Do you want to save your game?"
 msgstr "האם אתה רוצה לשמור את המשחק שלך?"
 
-#: src/playcampaign.cpp:427
+#: src/playcampaign.cpp:430
 msgid "Unknown scenario: '"
 msgstr "תרחיש לא ידוע: "
 
-#: src/playsingle_controller.cpp:181
+#: src/playsingle_controller.cpp:189
 msgid "Game Over"
 msgstr "המשחק נגמר"
 
-#: src/playsingle_controller.cpp:182
+#: src/playsingle_controller.cpp:190
 msgid "The game is over."
 msgstr "המשחק הסתיים."
 
-#: src/playsingle_controller.cpp:265
+#: src/playsingle_controller.cpp:273
 msgid "Remaining gold: "
 msgstr "זהב נותר: "
 
-#: src/playsingle_controller.cpp:268
+#: src/playsingle_controller.cpp:276
 msgid "Early finish bonus: "
 msgstr "בונוס גמירה מוקדמת: "
 
-#: src/playsingle_controller.cpp:270
+#: src/playsingle_controller.cpp:278
 msgid "per turn"
 msgstr "לכל תור"
 
-#: src/playsingle_controller.cpp:271
+#: src/playsingle_controller.cpp:279
 msgid "Turns finished early: "
 msgstr "תורות שנגמרו מוקדם: "
 
-#: src/playsingle_controller.cpp:273
+#: src/playsingle_controller.cpp:281
 msgid "Bonus: "
 msgstr "בונוס: "
 
-#: src/playsingle_controller.cpp:275
+#: src/playsingle_controller.cpp:283
 msgid "Gold: "
 msgstr "זהב: "
 
-#: src/playsingle_controller.cpp:280
+#: src/playsingle_controller.cpp:288
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% מהזהב נשמר לתרחיש הבא"
 
-#: src/playsingle_controller.cpp:281
+#: src/playsingle_controller.cpp:289
 msgid "Retained Gold: "
 msgstr "זהב שנשמר: "
 
-#: src/playsingle_controller.cpp:286
+#: src/playsingle_controller.cpp:294
 msgid "Victory"
 msgstr "נצחון"
 
-#: src/playsingle_controller.cpp:287
+#: src/playsingle_controller.cpp:295
 msgid "You have emerged victorious!"
 msgstr "יצאת מנצח!"
 
-#: src/playsingle_controller.cpp:291
+#: src/playsingle_controller.cpp:299
 msgid "Scenario Report"
 msgstr "דו\"ח תרחיש"
 
-#: src/playsingle_controller.cpp:308
+#: src/playsingle_controller.cpp:316
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "התרחש ניתוק מהרשת, והמשחק אינו יכול להמשך. האם ברצונך לשמור את המשחק?"
 
-#: src/playsingle_controller.cpp:402
+#: src/playsingle_controller.cpp:413
 msgid "It is now your turn"
 msgstr "עכשיו תורך"
 
@@ -9625,7 +9625,7 @@ msgstr "היחידה הזו הפכה לאבן. היא לא יכולה לזוז �
 msgid "stone: "
 msgstr "אבן: "
 
-#: src/reports.cpp:247 src/reports.cpp:249 src/unit_types.cpp:337
+#: src/reports.cpp:247 src/reports.cpp:249 src/unit_types.cpp:339
 msgid "damage"
 msgstr "נזק"
 
@@ -9809,31 +9809,31 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "-- הספר של ווסנות'"
 
-#: src/unit.cpp:2087 src/unit.cpp:2212
+#: src/unit.cpp:2111 src/unit.cpp:2236
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2169
+#: src/unit.cpp:2193
 msgid "XP to advance"
 msgstr "נק\"נ לרמה הבאה"
 
-#: src/unit.cpp:2203
+#: src/unit.cpp:2227
 msgid ": "
 msgstr ": "
 
-#: src/unit_types.cpp:345
+#: src/unit_types.cpp:347
 msgid "strikes"
 msgstr "מס' התקפות לתור"
 
-#: src/unit_types.cpp:1169
+#: src/unit_types.cpp:1171
 msgid "chaotic"
 msgstr "תוהו"
 
-#: src/unit_types.cpp:1169
+#: src/unit_types.cpp:1171
 msgid "lawful"
 msgstr "סדר"
 
-#: src/unit_types.cpp:1169
+#: src/unit_types.cpp:1171
 msgid "neutral"
 msgstr "ניטרלי"
 

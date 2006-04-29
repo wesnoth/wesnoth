@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-23 22:59+0200\n"
+"POT-Creation-Date: 2006-04-29 15:32+0200\n"
 "PO-Revision-Date: 2005-09-17 00:07+0300\n"
 "Last-Translator: \n"
 "Language-Team:  <el@li.org>\n"
@@ -229,14 +229,14 @@ msgstr ""
 "απτόητος\n"
 "η  αντοχή τής μονάδας αυτής διπλασιάζεται μέχρι 50%  σέ άμυνα"
 
-#: data/abilities.cfg:88 data/abilities.cfg:109 data/abilities.cfg:143
-#: data/abilities.cfg:190 data/abilities.cfg:250 src/actions.cpp:539
-#: src/actions.cpp:672
+#: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
+#: data/abilities.cfg:183 data/abilities.cfg:239 src/actions.cpp:511
+#: src/actions.cpp:644
 msgid "leadership"
 msgstr "ηγεσία"
 
-#: data/abilities.cfg:92 data/abilities.cfg:113 data/abilities.cfg:147
-#: data/abilities.cfg:194 data/abilities.cfg:254
+#: data/abilities.cfg:91 data/abilities.cfg:111 data/abilities.cfg:143
+#: data/abilities.cfg:187 data/abilities.cfg:243
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -248,11 +248,11 @@ msgid ""
 "difference in their levels."
 msgstr ""
 
-#: data/abilities.cfg:319
+#: data/abilities.cfg:304
 msgid "skirmisher"
 msgstr "ακροβολιστής"
 
-#: data/abilities.cfg:321
+#: data/abilities.cfg:306
 #, fuzzy
 msgid ""
 "Skirmisher:\n"
@@ -264,11 +264,11 @@ msgstr ""
 "η μονάδα αυτή μπορεί νά προσπεράειγρήγορα  τούς εχθρούς καί αγνοεί τις  "
 "Ζώνες Ελέγχου"
 
-#: data/abilities.cfg:332
+#: data/abilities.cfg:317
 msgid "illuminates"
 msgstr "φωτίζει"
 
-#: data/abilities.cfg:336
+#: data/abilities.cfg:321
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -278,22 +278,22 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 
-#: data/abilities.cfg:343
+#: data/abilities.cfg:328
 msgid "teleport"
 msgstr "τηλεμεταφορά"
 
-#: data/abilities.cfg:345
+#: data/abilities.cfg:330
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
 
-#: data/abilities.cfg:351
+#: data/abilities.cfg:336
 msgid "ambush"
 msgstr "ενέδρα"
 
-#: data/abilities.cfg:355
+#: data/abilities.cfg:340
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -310,11 +310,11 @@ msgstr ""
 "είναι σε δάσος εκτός αν η μονάδα επιτεθεί όπου εμφανίζεται ή αν υπάρχουν "
 "εχθρικές μονάδες δίπλα από αυτή τη μονάδα."
 
-#: data/abilities.cfg:367
+#: data/abilities.cfg:352
 msgid "nightstalk"
 msgstr "νυχτοκυνηγός"
 
-#: data/abilities.cfg:371
+#: data/abilities.cfg:356
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -330,12 +330,12 @@ msgstr ""
 "νύχτα εκτός αν η μονάδα επιτεθεί όπου εμφανίζεται ή αν υπάρχουν εχθρικές "
 "μονάδες δίπλα από αυτή τη μονάδα."
 
-#: data/abilities.cfg:383
+#: data/abilities.cfg:368
 #, fuzzy
 msgid "submerge"
 msgstr "ραβδί"
 
-#: data/abilities.cfg:387
+#: data/abilities.cfg:372
 #, fuzzy
 msgid ""
 "Submerge:\n"
@@ -353,23 +353,23 @@ msgstr ""
 "είναι σε δάσος εκτός αν η μονάδα επιτεθεί όπου εμφανίζεται ή αν υπάρχουν "
 "εχθρικές μονάδες δίπλα από αυτή τη μονάδα."
 
-#: data/abilities.cfg:405
+#: data/abilities.cfg:390
 #, fuzzy
 msgid "berserk"
 msgstr "Παρατηρητές"
 
-#: data/abilities.cfg:407
+#: data/abilities.cfg:392
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 
-#: data/abilities.cfg:415
+#: data/abilities.cfg:400
 msgid "backstab"
 msgstr "πισώπλατο μαχαίρωμα"
 
-#: data/abilities.cfg:417
+#: data/abilities.cfg:402
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -377,11 +377,11 @@ msgid ""
 "to stone)."
 msgstr ""
 
-#: data/abilities.cfg:426 data/abilities.cfg:434
+#: data/abilities.cfg:411 data/abilities.cfg:419
 msgid "plague"
 msgstr "πανούκλα"
 
-#: data/abilities.cfg:428 data/abilities.cfg:436
+#: data/abilities.cfg:413 data/abilities.cfg:421
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -389,55 +389,55 @@ msgid ""
 "doesn't work on Undead or units in villages.)"
 msgstr ""
 
-#: data/abilities.cfg:443
+#: data/abilities.cfg:428
 #, fuzzy
 msgid "slows"
 msgstr "επιβραδυμένος"
 
-#: data/abilities.cfg:445
+#: data/abilities.cfg:430
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
 
-#: data/abilities.cfg:451
+#: data/abilities.cfg:436
 #, fuzzy
 msgid "stones"
 msgstr "πέτρα"
 
-#: data/abilities.cfg:453
+#: data/abilities.cfg:438
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
 
-#: data/abilities.cfg:460
+#: data/abilities.cfg:445
 msgid "marksman"
 msgstr "δεινός σκοπευτής"
 
-#: data/abilities.cfg:462
+#: data/abilities.cfg:447
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 
-#: data/abilities.cfg:472
+#: data/abilities.cfg:457
 msgid "magical"
 msgstr "μαγική"
 
-#: data/abilities.cfg:474
+#: data/abilities.cfg:459
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
 
-#: data/abilities.cfg:482
+#: data/abilities.cfg:467
 msgid "swarm"
 msgstr ""
 
-#: data/abilities.cfg:484
+#: data/abilities.cfg:469
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -446,45 +446,45 @@ msgid ""
 "strikes."
 msgstr ""
 
-#: data/abilities.cfg:491
+#: data/abilities.cfg:476
 msgid "charge"
 msgstr ""
 
-#: data/abilities.cfg:493
+#: data/abilities.cfg:478
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
 "take double damage from the target's counterattack."
 msgstr ""
 
-#: data/abilities.cfg:503
+#: data/abilities.cfg:488
 #, fuzzy
 msgid "drains"
 msgstr "ρούφηγμα ζωής"
 
-#: data/abilities.cfg:505
+#: data/abilities.cfg:490
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
 
-#: data/abilities.cfg:511
+#: data/abilities.cfg:496
 #, fuzzy
 msgid "firststrike"
 msgstr "χτυπήματα"
 
-#: data/abilities.cfg:513
+#: data/abilities.cfg:498
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 
-#: data/abilities.cfg:520
+#: data/abilities.cfg:505
 msgid "poison"
 msgstr "δηλητήριο"
 
-#: data/abilities.cfg:522
+#: data/abilities.cfg:507
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -657,56 +657,56 @@ msgstr "+Νορβηγική Μετάφραση"
 msgid "Polish Translation"
 msgstr "+Πολωνική Μετάφραση"
 
-#: data/about.cfg:406
+#: data/about.cfg:407
 #, fuzzy
 msgid "Portuguese Translation"
 msgstr "+Πορτογαλλική Μετάφραση (Βραζιλιάνικα)"
 
-#: data/about.cfg:413
+#: data/about.cfg:414
 #, fuzzy
 msgid "Portuguese (Brazil) Translation"
 msgstr "+Πορτογαλλική Μετάφραση (Βραζιλιάνικα)"
 
-#: data/about.cfg:427
+#: data/about.cfg:428
 #, fuzzy
 msgid "Russian Translation"
 msgstr "+Ρώσικη Μετάφραση"
 
-#: data/about.cfg:437
+#: data/about.cfg:438
 #, fuzzy
 msgid "Serbian Translation"
 msgstr "+Σερβική Μετάφραση"
 
-#: data/about.cfg:444
+#: data/about.cfg:445
 #, fuzzy
 msgid "Slovak Translation"
 msgstr "+Σλοβακική Μετάφραση"
 
-#: data/about.cfg:451
+#: data/about.cfg:452
 #, fuzzy
 msgid "Slovenian Translation"
 msgstr "+Σλοβενική Μετάφραση"
 
-#: data/about.cfg:458
+#: data/about.cfg:459
 #, fuzzy
 msgid "Spanish Translation"
 msgstr "+Ισπανική Μετάφραση"
 
-#: data/about.cfg:471
+#: data/about.cfg:472
 #, fuzzy
 msgid "Swedish Translation"
 msgstr "+Σουηδική Μετάφραση"
 
-#: data/about.cfg:483
+#: data/about.cfg:484
 #, fuzzy
 msgid "Turkish Translation"
 msgstr "+Τουρκική Μετάφραση"
 
-#: data/about.cfg:494 data/help.cfg:246
+#: data/about.cfg:495 data/help.cfg:246
 msgid "Contributors"
 msgstr " Συντελεστές"
 
-#: data/about.cfg:508
+#: data/about.cfg:509
 #, fuzzy
 msgid "Bots"
 msgstr "+Μπότς(Bots)"
@@ -953,9 +953,9 @@ msgstr "αγκυλωτή σφύρα"
 #: data/units/Human_Outlaw_Bandit.cfg:41
 #: data/units/Human_Outlaw_Footpad.cfg:28
 #: data/units/Human_Outlaw_Footpad.cfg:53 data/units/Human_Outlaw_Thug.cfg:28
-#: data/units/Mermaid_Diviner.cfg:43 data/units/Mermaid_Enchantress.cfg:32
+#: data/units/Mermaid_Diviner.cfg:46 data/units/Mermaid_Enchantress.cfg:32
 #: data/units/Mermaid_Enchantress.cfg:48 data/units/Mermaid_Initiate.cfg:34
-#: data/units/Mermaid_Initiate.cfg:50 data/units/Mermaid_Priestess.cfg:37
+#: data/units/Mermaid_Initiate.cfg:50 data/units/Mermaid_Priestess.cfg:40
 #: data/units/Mermaid_Siren.cfg:36 data/units/Mermaid_Siren.cfg:82
 #: data/units/Merman_Entangler.cfg:32 data/units/Merman_Netcaster.cfg:31
 #: data/units/Monster_Cave_Spider.cfg:81 data/units/Monster_Cuttle_Fish.cfg:42
@@ -1134,7 +1134,7 @@ msgstr "σκήπτρο της φωτιάς"
 #: data/units/Human_Mage.cfg:93 data/units/Human_Mage_Arch.cfg:93
 #: data/units/Human_Mage_Great.cfg:81 data/units/Human_Mage_Red.cfg:93
 #: data/units/Human_Mage_Silver.cfg:121 data/units/Orcish_Archer.cfg:271
-#: data/units/Orcish_Crossbowman.cfg:114 data/units/Orcish_Slurbow.cfg:165
+#: data/units/Orcish_Crossbowman.cfg:92 data/units/Orcish_Slurbow.cfg:163
 msgid "fire"
 msgstr "φωτιά"
 
@@ -1359,9 +1359,9 @@ msgstr ""
 #: data/units/Elvish_Sorceress.cfg:25 data/units/Human_Mage.cfg:55
 #: data/units/Human_Mage_Arch.cfg:46 data/units/Human_Mage_Great.cfg:35
 #: data/units/Human_Mage_Red.cfg:56 data/units/Human_Mage_Silver.cfg:93
-#: data/units/Human_Mage_White.cfg:64 data/units/Mermaid_Diviner.cfg:42
+#: data/units/Human_Mage_White.cfg:64 data/units/Mermaid_Diviner.cfg:45
 #: data/units/Mermaid_Enchantress.cfg:31 data/units/Mermaid_Initiate.cfg:33
-#: data/units/Mermaid_Priestess.cfg:36 data/units/Saurian_Augur.cfg:34
+#: data/units/Mermaid_Priestess.cfg:39 data/units/Saurian_Augur.cfg:34
 #: data/units/Saurian_Oracle.cfg:34 data/units/Saurian_Soothsayer.cfg:35
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:31
 msgid "staff"
@@ -4533,7 +4533,7 @@ msgstr "Ενέργειες"
 msgid "End Turn"
 msgstr "Τέλος Γύρου"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2121
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2145
 msgid "HP"
 msgstr "Βαθμοί Υγείας"
 
@@ -6250,8 +6250,8 @@ msgstr ""
 "καί έχει εκπαιδευτεί να θεραπεύει τς πληγές των συντρόφων του."
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:91
-#: data/units/Human_Mage_of_Light.cfg:71 data/units/Mermaid_Diviner.cfg:58
-#: data/units/Mermaid_Priestess.cfg:52
+#: data/units/Human_Mage_of_Light.cfg:71 data/units/Mermaid_Diviner.cfg:61
+#: data/units/Mermaid_Priestess.cfg:55
 msgid "holy"
 msgstr "Αγιο"
 
@@ -6312,8 +6312,8 @@ msgstr ""
 #: data/units/Human_Loyalist_Lieutenant.cfg:56
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:56
 #: data/units/Human_Loyalist_Sergeant.cfg:50
-#: data/units/Orcish_Crossbowman.cfg:54 data/units/Orcish_Crossbowman.cfg:113
-#: data/units/Orcish_Slurbow.cfg:105 data/units/Orcish_Slurbow.cfg:164
+#: data/units/Orcish_Crossbowman.cfg:54 data/units/Orcish_Crossbowman.cfg:91
+#: data/units/Orcish_Slurbow.cfg:105 data/units/Orcish_Slurbow.cfg:162
 #: data/units/Undead_Skele_Death_Knight.cfg:64
 msgid "crossbow"
 msgstr "βαλλίστρα"
@@ -6974,7 +6974,7 @@ msgstr ""
 "γύρω τους καί να τούς θεραπεύουν από δηλητήρια. "
 
 #: data/units/Human_Mage_White.cfg:90 data/units/Human_Mage_of_Light.cfg:70
-#: data/units/Mermaid_Diviner.cfg:57 data/units/Mermaid_Priestess.cfg:51
+#: data/units/Mermaid_Diviner.cfg:60 data/units/Mermaid_Priestess.cfg:54
 #, fuzzy
 msgid "lightbeam"
 msgstr "Πολεμιστής"
@@ -7217,7 +7217,7 @@ msgstr "δικράνι"
 msgid "female^Mermaid Diviner"
 msgstr "Ξωτικό-Εκδικήτρια"
 
-#: data/units/Mermaid_Diviner.cfg:24
+#: data/units/Mermaid_Diviner.cfg:27
 msgid ""
 "Mermaid Priestesses meet their calling with a fervor that leaves their human "
 "counterparts somewhat taken aback. This may have its roots in a legend they "
@@ -7292,7 +7292,7 @@ msgstr ""
 msgid "female^Mermaid Priestess"
 msgstr "Πριγκήπισσα"
 
-#: data/units/Mermaid_Priestess.cfg:22
+#: data/units/Mermaid_Priestess.cfg:25
 #, fuzzy
 msgid ""
 "Mermen share the creed that much of humanity follows, though for cultural "
@@ -8743,85 +8743,85 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Δέν υπάρχουν κενές θέσεις στό κάστρο γιά να στρατολογήσεις μονάδες"
 
-#: src/actions.cpp:319 src/multiplayer_lobby.cpp:357
+#: src/actions.cpp:291 src/multiplayer_lobby.cpp:357
 msgid "none"
 msgstr "καμμία"
 
-#: src/actions.cpp:519 src/actions.cpp:651
+#: src/actions.cpp:491 src/actions.cpp:623
 msgid "base damage"
 msgstr "βασική ζημιά "
 
-#: src/actions.cpp:558 src/actions.cpp:716
+#: src/actions.cpp:530 src/actions.cpp:665
 #, fuzzy
 msgid "Halved"
 msgstr "Σώθηκε"
 
-#: src/actions.cpp:558 src/actions.cpp:716 src/actions.cpp:1278
-#: src/actions.cpp:1515
+#: src/actions.cpp:530 src/actions.cpp:665 src/actions.cpp:1264
+#: src/actions.cpp:1505
 msgid "slowed"
 msgstr "επιβραδυμένος"
 
-#: src/actions.cpp:566
+#: src/actions.cpp:538
 msgid "attacker resistance vs"
 msgstr "αντίσταση επιτιθέμενου εναντίον"
 
-#: src/actions.cpp:566
+#: src/actions.cpp:538
 msgid "attacker vulnerability vs"
 msgstr "αδυναμία επιτιθέμενου εναντίον"
 
-#: src/actions.cpp:580 src/actions.cpp:729
+#: src/actions.cpp:552 src/actions.cpp:678
 msgid "total damage"
 msgstr "συνολική ζημιά"
 
-#: src/actions.cpp:699
+#: src/actions.cpp:651
 msgid "defender resistance vs"
 msgstr "αντίσταση αμυνόμενου εναντίον"
 
-#: src/actions.cpp:699
+#: src/actions.cpp:651
 msgid "defender vulnerability vs"
 msgstr "αδυναμία αμυνόμενου εναντίον"
 
-#: src/actions.cpp:765
+#: src/actions.cpp:714
 msgid "(both should survive)"
 msgstr "(καί οι δύο πρέπει να επιζήσουν)"
 
-#: src/actions.cpp:767
+#: src/actions.cpp:716
 msgid "% Pr[kills/killed by/both survive]"
 msgstr ""
 
-#: src/actions.cpp:1271 src/actions.cpp:1508
+#: src/actions.cpp:1257 src/actions.cpp:1498
 msgid "poisoned"
 msgstr "δηλητηριασμένος"
 
-#: src/actions.cpp:1288 src/actions.cpp:1526
+#: src/actions.cpp:1274 src/actions.cpp:1516
 msgid "stone"
 msgstr ""
 
-#: src/actions.cpp:2315
+#: src/actions.cpp:2306
 msgid "Ambushed!"
 msgstr "Επεσες σέ ενέδρα "
 
-#: src/actions.cpp:2350
+#: src/actions.cpp:2341
 msgid "Friendly unit sighted"
 msgstr "Εθεάθη φιλική μονάδα"
 
-#: src/actions.cpp:2352
+#: src/actions.cpp:2343
 msgid "Enemy unit sighted!"
 msgstr "Εθεάθη εχθρική μονάδα!"
 
-#: src/actions.cpp:2357
+#: src/actions.cpp:2348
 msgid "$friends Friendly units sighted"
 msgstr "Εθεάθησαν $friends φιλικές μονάδες"
 
-#: src/actions.cpp:2359
+#: src/actions.cpp:2350
 msgid "$enemies Enemy units sighted!"
 msgstr "Εθεάθησαν $friends εχθρικές μονάδες"
 
-#: src/actions.cpp:2363
+#: src/actions.cpp:2354
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Εθεάθησαν μονάδες! ($friends φιλικές, $enemies εχθρικές)"
 
-#: src/actions.cpp:2378
+#: src/actions.cpp:2369
 msgid "(press $hotkey to continue)"
 msgstr "(πάτα  $hotkey γιά νά συνεχίσεις) "
 
@@ -9145,7 +9145,7 @@ msgstr ""
 "εγκατάσταση της εκστρατείας"
 
 #: src/game.cpp:1042 src/game.cpp:1081 src/game.cpp:1106
-#: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:332
+#: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:335
 msgid "Connection timed out"
 msgstr "Τό χρονικό περιθώριο της σύνδεσης έληξε"
 
@@ -9217,15 +9217,15 @@ msgid ""
 "characters"
 msgstr ""
 
-#: src/game.cpp:1190 src/playcampaign.cpp:108 src/playcampaign.cpp:311
+#: src/game.cpp:1190 src/playcampaign.cpp:109 src/playcampaign.cpp:314
 msgid "The game could not be loaded: "
 msgstr "Η φόρτωση του παιχνιδιού ήταν αδύνατη: "
 
-#: src/game.cpp:1192 src/playcampaign.cpp:110 src/playcampaign.cpp:314
+#: src/game.cpp:1192 src/playcampaign.cpp:111 src/playcampaign.cpp:317
 msgid "Error while playing the game: "
 msgstr "Σφάλμα ενώ έπαιζες τό παιχνίδι:"
 
-#: src/game.cpp:1204 src/playcampaign.cpp:112 src/playcampaign.cpp:317
+#: src/game.cpp:1204 src/playcampaign.cpp:113 src/playcampaign.cpp:320
 msgid "The game map could not be loaded: "
 msgstr "Η φόρτωση του χάρτη ήταν αδύνατη: "
 
@@ -9484,7 +9484,7 @@ msgstr ""
 msgid "Statistics"
 msgstr "Στατιστικά"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2152
+#: src/menu_events.cpp:220 src/unit.cpp:2176
 msgid "Moves"
 msgstr "Κινήσεις"
 
@@ -9518,7 +9518,7 @@ msgstr "Συντήρηση"
 msgid "Income"
 msgstr "Εισόδημα"
 
-#: src/menu_events.cpp:368 src/playcampaign.cpp:282 src/playcampaign.cpp:403
+#: src/menu_events.cpp:368 src/playcampaign.cpp:285 src/playcampaign.cpp:406
 msgid "Name:"
 msgstr "Όνομα:"
 
@@ -9541,7 +9541,7 @@ msgstr "Σώθηκε"
 msgid "The game has been saved"
 msgstr "Το παιχνίδι αποθηκεύτηκε"
 
-#: src/menu_events.cpp:386 src/playcampaign.cpp:290 src/playcampaign.cpp:411
+#: src/menu_events.cpp:386 src/playcampaign.cpp:293 src/playcampaign.cpp:414
 msgid "The game could not be saved"
 msgstr "Η αποθήκευση του παιχνιδιού ήταν αδύνατη"
 
@@ -9648,65 +9648,65 @@ msgstr ""
 msgid "prompt^Command:"
 msgstr ""
 
-#: src/mouse_events.cpp:224 src/mouse_events.cpp:340 src/mouse_events.cpp:724
+#: src/mouse_events.cpp:177 src/mouse_events.cpp:293
 msgid "Attacker"
 msgstr "Επιτιθέμενος"
 
-#: src/mouse_events.cpp:225 src/mouse_events.cpp:339 src/mouse_events.cpp:726
+#: src/mouse_events.cpp:178 src/mouse_events.cpp:292
 msgid "Defender"
 msgstr "Αμυνόμενος"
 
-#: src/mouse_events.cpp:243
+#: src/mouse_events.cpp:196
 msgid "Expected Battle Result (hp)"
 msgstr ""
 
-#: src/mouse_events.cpp:328
+#: src/mouse_events.cpp:281
 #, fuzzy
 msgid "Leadership"
 msgstr "ηγεσία"
 
-#: src/mouse_events.cpp:341
+#: src/mouse_events.cpp:294
 #, fuzzy
 msgid " resistance vs "
 msgstr "Αντιστάσεις"
 
-#: src/mouse_events.cpp:342
+#: src/mouse_events.cpp:295
 #, fuzzy
 msgid " vulnerability vs "
 msgstr "αδυναμία επιτιθέμενου εναντίον"
 
-#: src/mouse_events.cpp:352
+#: src/mouse_events.cpp:305
 #, fuzzy
 msgid "Slowed"
 msgstr "επιβραδυμένος"
 
-#: src/mouse_events.cpp:368
+#: src/mouse_events.cpp:321
 #, fuzzy
 msgid "Total damage"
 msgstr "συνολική ζημιά"
 
-#: src/mouse_events.cpp:375
+#: src/mouse_events.cpp:328
 #, fuzzy
 msgid "No usable weapon"
 msgstr "Επιλέξτε όπλο:"
 
-#: src/mouse_events.cpp:380
+#: src/mouse_events.cpp:333
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:678 src/mouse_events.cpp:746 src/mouse_events.cpp:1328
+#: src/mouse_events.cpp:631 src/mouse_events.cpp:1225
 msgid "Damage Calculations"
 msgstr "Υπολογισμοί Ζημιάς"
 
-#: src/mouse_events.cpp:1306 src/reports.cpp:278
+#: src/mouse_events.cpp:1203 src/reports.cpp:278
 msgid "vs"
 msgstr "εναντίων"
 
-#: src/mouse_events.cpp:1340
+#: src/mouse_events.cpp:1237
 msgid "Attack Enemy"
 msgstr ""
 
-#: src/mouse_events.cpp:1341
+#: src/mouse_events.cpp:1238
 msgid "Choose weapon:"
 msgstr "Επιλέξτε όπλο:"
 
@@ -9762,12 +9762,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2207
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2231
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2214
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2238
 msgid ")"
 msgstr ")"
 
@@ -10132,96 +10132,96 @@ msgstr "Δέν μπορώ να προσθέσω τό σόκετ στην ομά�
 msgid "Could not send initial handshake"
 msgstr ""
 
-#: src/play_controller.cpp:358 src/playsingle_controller.cpp:297
-#: src/playsingle_controller.cpp:336
+#: src/play_controller.cpp:350 src/playsingle_controller.cpp:305
+#: src/playsingle_controller.cpp:346
 #, fuzzy
 msgid "The file you have tried to load is corrupt"
 msgstr "Τό αρχείο πού προσπαθείσατε να φορτώσετε είναι διαβρωμένο"
 
-#: src/playcampaign.cpp:259
+#: src/playcampaign.cpp:262
 msgid "Defeat"
 msgstr "Ηττα"
 
-#: src/playcampaign.cpp:260
+#: src/playcampaign.cpp:263
 msgid "You have been defeated!"
 msgstr ""
 
-#: src/playcampaign.cpp:273
+#: src/playcampaign.cpp:276
 msgid " replay"
 msgstr "Δείτε το  replay"
 
-#: src/playcampaign.cpp:281
+#: src/playcampaign.cpp:284
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Θέλετε να αποθηκεύσετε ένα replay αυτού του σεναρίου;"
 
-#: src/playcampaign.cpp:330
+#: src/playcampaign.cpp:333
 msgid "Downloading next level..."
 msgstr ""
 
-#: src/playcampaign.cpp:402
+#: src/playcampaign.cpp:405
 msgid "Do you want to save your game?"
 msgstr "Θέλετε να αποθηκεύσετε το παιχνίδι σας;"
 
-#: src/playcampaign.cpp:427
+#: src/playcampaign.cpp:430
 msgid "Unknown scenario: '"
 msgstr ""
 
-#: src/playsingle_controller.cpp:181
+#: src/playsingle_controller.cpp:189
 msgid "Game Over"
 msgstr "Τέλος Παιχνιδιού"
 
-#: src/playsingle_controller.cpp:182
+#: src/playsingle_controller.cpp:190
 msgid "The game is over."
 msgstr "Το παιχνίδι τελείωσε."
 
-#: src/playsingle_controller.cpp:265
+#: src/playsingle_controller.cpp:273
 msgid "Remaining gold: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:268
+#: src/playsingle_controller.cpp:276
 msgid "Early finish bonus: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:270
+#: src/playsingle_controller.cpp:278
 msgid "per turn"
 msgstr ""
 
-#: src/playsingle_controller.cpp:271
+#: src/playsingle_controller.cpp:279
 msgid "Turns finished early: "
-msgstr ""
-
-#: src/playsingle_controller.cpp:273
-#, fuzzy
-msgid "Bonus: "
-msgstr "Γύροι: "
-
-#: src/playsingle_controller.cpp:275
-msgid "Gold: "
-msgstr "Χρυσά:"
-
-#: src/playsingle_controller.cpp:280
-#, no-c-format
-msgid "80% of gold is retained for the next scenario"
 msgstr ""
 
 #: src/playsingle_controller.cpp:281
 #, fuzzy
+msgid "Bonus: "
+msgstr "Γύροι: "
+
+#: src/playsingle_controller.cpp:283
+msgid "Gold: "
+msgstr "Χρυσά:"
+
+#: src/playsingle_controller.cpp:288
+#, no-c-format
+msgid "80% of gold is retained for the next scenario"
+msgstr ""
+
+#: src/playsingle_controller.cpp:289
+#, fuzzy
 msgid "Retained Gold: "
 msgstr "Χρυσάφι Χωριού: "
 
-#: src/playsingle_controller.cpp:286
+#: src/playsingle_controller.cpp:294
 msgid "Victory"
 msgstr "Νίκη"
 
-#: src/playsingle_controller.cpp:287
+#: src/playsingle_controller.cpp:295
 msgid "You have emerged victorious!"
 msgstr "Αναδειχθήκατε νικητής!"
 
-#: src/playsingle_controller.cpp:291
+#: src/playsingle_controller.cpp:299
 msgid "Scenario Report"
 msgstr "Αναφορά σεναρίου"
 
-#: src/playsingle_controller.cpp:308
+#: src/playsingle_controller.cpp:316
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -10230,7 +10230,7 @@ msgstr ""
 "Η σύνδεσή σας με το δίκτυο διακόπηκε και το παιχνίδι δε μπορεί να "
 "συνεχιστεί. Θέλετε να αποθηκεύσετε το παιχνίδι;"
 
-#: src/playsingle_controller.cpp:402
+#: src/playsingle_controller.cpp:413
 msgid "It is now your turn"
 msgstr "Είναι η σειρά σας να παίξετε"
 
@@ -10299,7 +10299,7 @@ msgstr ""
 msgid "stone: "
 msgstr "πέτρα"
 
-#: src/reports.cpp:247 src/reports.cpp:249 src/unit_types.cpp:337
+#: src/reports.cpp:247 src/reports.cpp:249 src/unit_types.cpp:339
 msgid "damage"
 msgstr "ζημιά"
 
@@ -10485,31 +10485,31 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr " Η βίβλος του Γουέσνοθ "
 
-#: src/unit.cpp:2087 src/unit.cpp:2212
+#: src/unit.cpp:2111 src/unit.cpp:2236
 msgid "; "
 msgstr ""
 
-#: src/unit.cpp:2169
+#: src/unit.cpp:2193
 msgid "XP to advance"
 msgstr "απαιτούμενες μονάδες εμπειρίας γιά εξέλιξη"
 
-#: src/unit.cpp:2203
+#: src/unit.cpp:2227
 msgid ": "
 msgstr " :"
 
-#: src/unit_types.cpp:345
+#: src/unit_types.cpp:347
 msgid "strikes"
 msgstr "χτυπήματα"
 
-#: src/unit_types.cpp:1169
+#: src/unit_types.cpp:1171
 msgid "chaotic"
 msgstr "χαοτικός"
 
-#: src/unit_types.cpp:1169
+#: src/unit_types.cpp:1171
 msgid "lawful"
 msgstr " νομοταγής"
 
-#: src/unit_types.cpp:1169
+#: src/unit_types.cpp:1171
 msgid "neutral"
 msgstr "ουδέτερος "
 
