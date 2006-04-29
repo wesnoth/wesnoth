@@ -569,7 +569,7 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 		}
 	}
 	if(!tod_type.empty()) {
-		const std::vector<std::string>& vals = utils::split(terrain);
+		const std::vector<std::string>& vals = utils::split(tod_type);
 		if(tod.lawful_bonus<0) {
 			if(std::find(vals.begin(),vals.end(),"chaotic") == vals.end()) {
 				return false;

@@ -283,8 +283,9 @@ void unit::advance_to(const unit_type* t)
 	//apply modifications etc, refresh the unit
 	apply_modifications();
 	if(id()!=t->id()) {
-	  heal_all();
+		heal_all();
 		id_ = t->id();
+		cfg_["id"] = id_;
 	}
 	
 	set_state("poisoned","");
@@ -940,13 +941,15 @@ void unit::read(const config& cfg)
 		cfg_.remove_child("modifications",0);
 	}
 	
+	bool type_set = false;
 	id_ = "";
 	traits_description_ = cfg["traits_description"];
-	if(cfg["type"] != "") {
+	if(cfg["type"] != "" && cfg["type"] != cfg["id"]) {
 		wassert(gamedata_ != NULL);
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		if(i != gamedata_->unit_types.end()) {
 			advance_to(&i->second.get_gender_unit_type(gender_));
+			type_set = true;
 		} else {
 			LOG_STREAM(err, engine) << "unit of type " << cfg["type"] << " not found!\n";
 		}
@@ -960,10 +963,10 @@ void unit::read(const config& cfg)
 			movement_ = 0;
 		}
 	}
-	if(cfg["id"]=="") {
-		id_ = cfg["type"];
+	if(cfg_["id"]=="") {
+		id_ = cfg_["type"];
 	} else {
-		id_ = cfg["id"];
+		id_ = cfg_["id"];
 	}
 	if(cfg["max_hitpoints"] != "") {
 		max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"]);
@@ -974,9 +977,11 @@ void unit::read(const config& cfg)
 	if(cfg["max_experience"] != "") {
 		max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
 	}
-	for(config::const_child_itors range = cfg.child_range("attack");
-	    range.first != range.second; ++range.first) {
-		attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
+	if(!type_set) {
+		for(config::const_child_itors range = cfg.child_range("attack");
+		    range.first != range.second; ++range.first) {
+			attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
+		}
 	}
 	const config* status_flags = cfg.child("status");
 	if(status_flags) {
@@ -1025,43 +1030,45 @@ void unit::read(const config& cfg)
 	} else if(cfg["type"]=="") {
 		alignment_ = unit_type::NEUTRAL;
 	}
-	const config::child_list& defends = cfg_.get_children("defend");
-	for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
-		defensive_animations_.push_back(defensive_animation(**d));
-	}
-	if(defensive_animations_.empty()) {
-		defensive_animations_.push_back(defensive_animation(absolute_image()));
-		// always have a defensive animation
-	}
-	const config::child_list& teleports = cfg_.get_children("teleport_anim");
-	for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
-		teleport_animations_.push_back(unit_animation(**t));
-	}
-	if(teleport_animations_.empty()) {
-		teleport_animations_.push_back(unit_animation(absolute_image(),-20,20));
-		// always have a teleport animation
-	}
-	const config::child_list& extra_anims = cfg_.get_children("extra_anim");
-	{
-		for(config::child_list::const_iterator t = extra_anims.begin(); t != extra_anims.end(); ++t) {
-			extra_animations_.insert(std::pair<std::string,unit_animation>((**t)["flag"],unit_animation(**t)));
+	if(!type_set) {
+		const config::child_list& defends = cfg_.get_children("defend");
+		for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
+			defensive_animations_.push_back(defensive_animation(**d));
 		}
-	}
-	const config::child_list& deaths = cfg_.get_children("death");
-	for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
-		death_animations_.push_back(death_animation(**death));
-	}
-	if(death_animations_.empty()) {
-		death_animations_.push_back(death_animation(absolute_image()));
-		// always have a death animation
-	}
-	const config::child_list& movement_anims = cfg_.get_children("movement_anim");
-	for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
-		movement_animations_.push_back(movement_animation(**movement_anim));
-	}
-	if(movement_animations_.empty()) {
-		movement_animations_.push_back(movement_animation(absolute_image()));
-		// always have a movement animation
+		if(defensive_animations_.empty()) {
+			defensive_animations_.push_back(defensive_animation(absolute_image()));
+			// always have a defensive animation
+		}
+		const config::child_list& teleports = cfg_.get_children("teleport_anim");
+		for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
+			teleport_animations_.push_back(unit_animation(**t));
+		}
+		if(teleport_animations_.empty()) {
+			teleport_animations_.push_back(unit_animation(absolute_image(),-20,20));
+			// always have a teleport animation
+		}
+		const config::child_list& extra_anims = cfg_.get_children("extra_anim");
+		{
+			for(config::child_list::const_iterator t = extra_anims.begin(); t != extra_anims.end(); ++t) {
+				extra_animations_.insert(std::pair<std::string,unit_animation>((**t)["flag"],unit_animation(**t)));
+			}
+		}
+		const config::child_list& deaths = cfg_.get_children("death");
+		for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
+			death_animations_.push_back(death_animation(**death));
+		}
+		if(death_animations_.empty()) {
+			death_animations_.push_back(death_animation(absolute_image()));
+			// always have a death animation
+		}
+		const config::child_list& movement_anims = cfg_.get_children("movement_anim");
+		for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
+			movement_animations_.push_back(movement_animation(**movement_anim));
+		}
+		if(movement_animations_.empty()) {
+			movement_animations_.push_back(movement_animation(absolute_image()));
+			// always have a movement animation
+		}
 	}
 }
 void unit::write(config& cfg) const
@@ -1072,8 +1079,8 @@ void unit::write(config& cfg) const
 	cfg.append(cfg_);
 	cfg["x"] = x;
 	cfg["y"] = y;
-	cfg["type"] = "";
 	cfg["id"] = id();
+	cfg["type"] = id();
 
 	std::stringstream hp;
 	hp << hit_points_;
@@ -2554,7 +2561,7 @@ bool unit::invisible(const std::string& terrain, int lawful_bonus,
 	bool is_inv = false;
 
 	static const std::string hides("hides");
-	if (get_state(hides)=="yes") {
+	if (utils::string_bool(get_state(hides))) {
 		is_inv = this->get_ability_bool("hides",loc);
 	}
 

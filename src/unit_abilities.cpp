@@ -337,12 +337,12 @@ bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg
 	for(config::child_list::const_iterator i = affect_adj.begin(); i != affect_adj.end(); ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		if(std::find(dirs.begin(),dirs.end(),adjacent_names[dir]) != dirs.end()) {
-			if((*i)->child("filter") != NULL && !matches_filter(*(*i)->child("filter"),loc,ability=="illuminates")) {
-				return false;
+			if((*i)->child("filter") == NULL || matches_filter(*(*i)->child("filter"),loc,ability=="illuminates")) {
+				return true;
 			}
 		}
 	}
-	return true;
+	return false;
 }
 /*
  *
