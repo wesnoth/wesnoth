@@ -26,6 +26,8 @@ class CVideo;
 
 namespace gui {
 
+enum ALIGN { LEFT_ALIGN, CENTER_ALIGN, RIGHT_ALIGN };
+
 class widget : public events::handler
 {
 public:
@@ -64,6 +66,7 @@ public:
 
 	virtual void process_help_string(int mousex, int mousey);
 
+	ALIGN align; //limited support, use position
 protected:
 	widget(widget const &o);
 	widget(CVideo& video);

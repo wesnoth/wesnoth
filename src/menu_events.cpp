@@ -634,8 +634,7 @@ namespace events{
 		if(utils::string_bool(level_["disallow_recall"])) {
 			gui::show_dialog(*gui_,NULL,"",_("You are separated from your soldiers and may not recall them"));
 		} else if(recall_list.empty()) {
-			gui::show_dialog(*gui_,NULL,"",_("There are no troops available to recall\n\
-	(You must have veteran survivors from a previous scenario)"));
+			gui::show_dialog(*gui_,NULL,"",_("There are no troops available to recall\n(You must have veteran survivors from a previous scenario)"));
 		} else {
 			std::vector<std::string> options;
 

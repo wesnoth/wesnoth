@@ -268,15 +268,16 @@ void upload_log::quit(int turn)
 void upload_log_dialog::show_beg_dialog(display& disp)
 {
 	std::vector<gui::check_item> options;
-
-	options.push_back(gui::check_item("Enable summary uploads",
-									  preferences::upload_log()));
+	gui::check_item beg_check = gui::check_item("Enable summary uploads",
+									  preferences::upload_log());
+	beg_check.align = gui::LEFT_ALIGN;
+	options.push_back(beg_check);
 
 	std::string msg = std::string(_("Wesnoth relies on volunteers like yourself for feedback, especially beginners and new players.  Wesnoth keeps summaries of your games: you can help us improve game play by giving permission to send these summaries (anonymously) to wesnoth.org.\n"))
-		+ _("You can see the summaries to be sent in ")
-		+ get_upload_dir() + "\n"
-		+ _("You can view the results at ")
-		+ "http://stats.wesnoth.org/?" + preferences::upload_id() + "\n";
+		+ " \n`" + _("Summaries are stored here:")
+		+ " \n`~" + get_upload_dir() + "\n \n`"
+		+ _("You can view the results at:") + "\n`~"
+		+ "http://stats.wesnoth.org/?" + preferences::upload_id() + "\n \n";
 
 
 	gui::show_dialog(disp, NULL,
