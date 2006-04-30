@@ -15,7 +15,7 @@
 #include "font.hpp"
 #include "marked-up_text.hpp"
 
-//#include <iostream>
+#include <iostream>
 
 #define MIN_PERCENTAGE   0
 #define MAX_PERCENTAGE 100
@@ -35,10 +35,27 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 	int scry = screen_.gety() - 2*(bw+bispw); /* Available height. */
 	int pbw = scrx/2; /* Used width. */
 	int pbh = scry/16; /* Used heigth. */
-	int pbx = (scrx - pbw)/2; /* Horizontal location. */
-	int pby = (scry - pbh)/2; /* Vertical location. */
 	surface const gdis = screen_.getSurface();
 	SDL_Rect area;
+	/* Draw logo if it was succesfully loaded. */
+	if (logo_surface_ && !logo_drawn_) {
+		area.x = (screen_.getx () - logo_surface_->w) / 2;
+		area.y = ((scry - logo_surface_->h) / 2) - pbh;
+		area.w = logo_surface_->w;
+		area.h = logo_surface_->h;
+		/* Check if we have enough pixels to display it. */
+		if (area.x > 0 && area.y > 0) {
+			pby_offset_ = (pbh + area.h)/2;
+			SDL_BlitSurface (logo_surface_, 0, gdis, &area);
+		}
+		else {
+			std::cerr << "loadscreen: Logo image is too big." << std::endl;
+		}
+		logo_drawn_ = true;
+	}
+	int pbx = (scrx - pbw)/2; /* Horizontal location. */
+	int pby = (scry - pbh)/2 + pby_offset_; /* Vertical location. */
+
 	/* Draw top border. */
 	area.x = pbx; area.y = pby;
 	area.w = pbw + 2*(bw+bispw); area.h = bw;

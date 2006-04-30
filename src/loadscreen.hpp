@@ -14,6 +14,7 @@
 */
 
 #include "SDL.h"
+#include "SDL_image.h"
 
 #include "font.hpp"
 #include "video.hpp"
@@ -29,9 +30,26 @@ class loadscreen {
 		binarywml_counter(0),
 		setconfig_counter(0),
 		parser_counter(0),
-		screen_(screen), prcnt_(percent)
+		screen_(screen),
+		logo_drawn_(false),
+		pby_offset_(0),
+		prcnt_(percent)
 		{
-			/* Nothing. */
+#ifdef WESNOTH_PATH
+			const char *path = WESNOTH_PATH;
+#else
+			const char *path = ".";
+#endif
+			size_t sl = strlen (path);
+			char *sp = new char [sl + 21u + 1u];
+			sp [0] = '\0'; 
+			strncat (sp, path, sl);
+			strncat (sp, "/images/misc/logo.png", 21u);
+			logo_surface_ = IMG_Load (sp);
+			if (!logo_surface_) {
+				std::cerr << "loadscreen: Failed to load the logo: " << sp << std::endl;
+			}
+			delete sp;
 		}
 		// Keep default copy constructor
 		// Keep default copy assignment
@@ -42,6 +60,9 @@ class loadscreen {
 			std::cerr << "loadscreen: binarywml counter = " << binarywml_counter << std::endl;
 			std::cerr << "loadscreen: setconfig counter = " << setconfig_counter << std::endl;
 			std::cerr << "loadscreen: parser counter = " << parser_counter << std::endl;
+			if (logo_surface_) {
+				SDL_FreeSurface (logo_surface_);
+			}
 		}
 
 		// Function to display a load progress bar.
@@ -67,6 +88,9 @@ class loadscreen {
 		// Data members
 		CVideo &screen_;
 		SDL_Rect textarea_;
+		SDL_Surface *logo_surface_;
+		bool logo_drawn_;
+		int pby_offset_;
 		int prcnt_;
 };
 
