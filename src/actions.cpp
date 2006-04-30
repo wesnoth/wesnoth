@@ -823,6 +823,8 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 	// Get the weapon characteristics, if any.
 	if (weapon) {
 		weapon->set_specials_context(u_loc, opp_loc, &gamedata, &units, &map, &status, &teams, attacking, opp_weapon);
+		if (opp_weapon)
+			opp_weapon->set_specials_context(u_loc, opp_loc, &gamedata, &units, &map, &status, &teams, !attacking, weapon);
 		slows = weapon->get_special_bool("slow");
 		drains = weapon->get_special_bool("drains") && !utils::string_bool(opp.get_state("not_living"));
 		stones = weapon->get_special_bool("stones");
