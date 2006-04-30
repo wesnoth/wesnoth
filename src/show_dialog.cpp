@@ -465,7 +465,7 @@ int show_dialog(display& disp, surface image,
 	if(options != NULL) {
 		for(std::vector<check_item>::const_iterator i = options->begin(); i != options->end(); ++i) {
 			button check_button(screen,i->label,button::TYPE_CHECK);
-			check_button.align = i->align;
+			check_button.set_align(i->align);
 			check_button_height += check_button.height() + button_height_padding;
 			check_button_width = maximum<int>(check_button.width(),check_button_width);
 
@@ -658,8 +658,7 @@ int show_dialog(display& disp, surface image,
 	if(check_buttons.empty() == false) {
 		int options_y = text_widget_y + text_widget_height + menu_.height() + button_height_padding + menu_hpadding;
 		for(size_t i = 0; i != check_buttons.size(); ++i) {
-			ALIGN debug = LEFT_ALIGN;
-			if(check_buttons[i].align == LEFT_ALIGN) {
+			if(check_buttons[i].align() == LEFT_ALIGN) {
 				check_buttons[i].set_location(xloc + ButtonHPadding,options_y);
 			} else {
 				check_buttons[i].set_location(xloc + total_width - check_buttons[i].width() - ButtonHPadding,options_y);

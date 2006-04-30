@@ -448,7 +448,7 @@ lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
 	observe_game_(disp.video(), _("Observe Game")),
 	join_game_(disp.video(), _("Join Game")),
 	create_game_(disp.video(), _("Create Game")),
-	skip_replay_(disp.video(), _("Skip Replays"), gui::button::TYPE_CHECK),
+	skip_replay_(disp.video(), _("Quick Replays"), gui::button::TYPE_CHECK),
 	game_preferences_(disp.video(), _("Preferences")),
 	quit_game_(disp.video(), _("Quit")),
 	sorter_(gamelist),

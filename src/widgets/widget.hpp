@@ -37,9 +37,11 @@ public:
 	void set_width(unsigned w);
 	void set_height(unsigned h);
 	void set_measurements(unsigned w, unsigned h);
+	void set_align(ALIGN a);
 
 	unsigned width() const;
 	unsigned height() const;
+	ALIGN align() const;
 
 	virtual bool focus() const;
 	void set_focus(bool focus);
@@ -66,7 +68,6 @@ public:
 
 	virtual void process_help_string(int mousex, int mousey);
 
-	ALIGN align; //limited support, use position
 protected:
 	widget(widget const &o);
 	widget(CVideo& video);
@@ -108,6 +109,7 @@ private:
 
 	std::string help_text_;
 	int help_string_;
+	ALIGN align_; //limited support, use position
 };
 
 }
