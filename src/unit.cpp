@@ -1000,7 +1000,7 @@ void unit::read(const config& cfg)
 	if(utils::string_bool(cfg["random_traits"])) {
 		generate_traits();
 	}
-	if(cfg_["type"] == "") {
+	if(!type_set) {
 		backup_state();
 		apply_modifications();
 	}
