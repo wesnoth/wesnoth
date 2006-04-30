@@ -253,36 +253,30 @@ namespace{
 				str << set_dmg_effect->value;
 				right_strings.push_back(str.str());
 			}
+			
+			// Process the ADD damage modifiers.
+			for(i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
+				if(i->type == unit_abilities::ADD) {
+					left_strings.push_back((*i->ability)["name"]);
+					str.str("");
+					if(i->value >= 0) str << "+" << i->value;
+					else str << i->value;
+					right_strings.push_back(str.str());
+				}
+			}
 
 			// Process the MUL damage modifiers.
 			for(i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
 				if(i->type == unit_abilities::MUL) {
 					left_strings.push_back((*i->ability)["name"]);
 					str.str("");
-					str << "* " << i->value;
+					str << "* " << (i->value / 100);
+					if(i->value % 100) {
+						str << "." << ((i->value % 100) / 10);
+						if(i->value % 10) str << (i->value % 10);
+					}
 					right_strings.push_back(str.str());
 				}
-			}
-
-			// Time of day modifier.
-			int tod_modifier = combat_modifier(status_, units_, u_loc, u.alignment(), map_);
-			if(tod_modifier != 0) {
-				left_strings.push_back(timeofday_at(status_, units_, u_loc, map_).name);
-				int multiplier = 100 + tod_modifier;
-				str.str("");
-				str << "* " << (multiplier / 100) << "." << (multiplier % 100);
-				right_strings.push_back(str.str());
-			}
-
-        	// Leadership bonus.
-        	int leadership_bonus = 0;
-        	under_leadership(units_, u_loc, &leadership_bonus);
-			if(leadership_bonus != 0) {
-				left_strings.push_back(_("Leadership"));
-				int multiplier = 100 + leadership_bonus;
-				str.str("");
-				str << "* " << (multiplier / 100) << "." << (multiplier % 100);
-				right_strings.push_back(str.str());
 			}
 
 			// Resistance modifier.
@@ -305,16 +299,24 @@ namespace{
 				left_strings.push_back(_("Slowed"));
 				right_strings.push_back("* 0.5");
 			}
+			
+			// Time of day modifier.
+			int tod_modifier = combat_modifier(status_, units_, u_loc, u.alignment(), map_);
+			if(tod_modifier != 0) {
+				left_strings.push_back(_("Time of day"));
+				str.str("");
+				str << (tod_modifier > 0 ? "+" : "") << tod_modifier << "%";
+				right_strings.push_back(str.str());
+			}
 
-			// Process the ADD damage modifiers.
-			for(i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
-				if(i->type == unit_abilities::ADD) {
-					left_strings.push_back((*i->ability)["name"]);
-					str.str("");
-					if(i->value >= 0) str << "+" << i->value;
-					else str << i->value;
-					right_strings.push_back(str.str());
-				}
+        	// Leadership bonus.
+        	int leadership_bonus = 0;
+        	under_leadership(units_, u_loc, &leadership_bonus);
+			if(leadership_bonus != 0) {
+				left_strings.push_back(_("Leadership"));
+				str.str("");
+				str << "+" << leadership_bonus << "%";
+				right_strings.push_back(str.str());
 			}
 
 			// Total damage.
