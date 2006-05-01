@@ -200,17 +200,10 @@ public:
 	//where name() is always the user-visible, translated, name.
 	//language_name should eventually be renamed name()
 	// const std::string& name() const;
+	
 	const std::string& image() const;
-	const std::string& image_ellipse() const;
-	const std::string& image_halo() const;
 	const std::string& image_profile() const;
-	const std::string& image_fighting(attack_type::RANGE range) const;
-	const std::string& image_leading() const;
-	const std::string& image_healing() const;
-	const std::string& image_halo_healing() const;
 	const std::string& unit_description() const;
-	const std::string& get_hit_sound() const;
-	const std::string& die_sound() const;
 
     const std::vector<Uint32>& flag_rgb() const;
 
@@ -259,14 +252,9 @@ public:
 
 	const std::string& race() const;
 
-	const defensive_animation& defend_animation(bool hits, std::string range) const;
-	const unit_animation& teleport_animation() const;
-	const unit_animation* extra_animation(std::string flag) const;
-	const death_animation& die_animation(const attack_type* attack) const;
-	const movement_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
-
 private:
 	void operator=(const unit_type& o);
+	const std::string& image_fighting(attack_type::RANGE range) const;
 
 	unit_type* gender_types_[2];
 

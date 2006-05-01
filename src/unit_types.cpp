@@ -998,16 +998,6 @@ const std::string& unit_type::image() const
 	return cfg_["image"];
 }
 
-const std::string& unit_type::image_ellipse() const
-{
-	return cfg_["ellipse"];
-}
-
-const std::string& unit_type::image_halo() const
-{
-	return cfg_["halo"];
-}
-
 const std::string& unit_type::image_fighting(attack_type::RANGE range) const
 {
 	static const std::string short_range("image_short");
@@ -1023,34 +1013,6 @@ const std::string& unit_type::image_fighting(attack_type::RANGE range) const
 		return image();
 }
 
-
-const std::string& unit_type::image_leading() const
-{
-	const std::string& val = cfg_["image_leading"];
-	if(val.empty()) {
-		return image();
-	} else {
-		return val;
-	}
-}
-
-const std::string& unit_type::image_healing() const
-{
-	const std::string& val = cfg_["image_healing"];
-	static const std::string empty = "misc/blank.png";
-	if(val.empty()) {
-		return image();
-	} else if (val == "null"){
-		return empty;
-	} else {
-		return val;
-	}
-}
-
-const std::string& unit_type::image_halo_healing() const
-{
-	return cfg_["image_halo_healing"];
-}
 
 const std::string& unit_type::image_profile() const
 {
@@ -1070,16 +1032,6 @@ const std::string& unit_type::unit_description() const
 		return default_val;
 	else
 		return desc;
-}
-
-const std::string& unit_type::get_hit_sound() const
-{
-	return cfg_["get_hit_sound"];
-}
-
-const std::string& unit_type::die_sound() const
-{
-	return cfg_["die_sound"];
 }
 
 int unit_type::hitpoints() const
@@ -1253,80 +1205,6 @@ const std::string& unit_type::race() const
 }
 
 
-const defensive_animation& unit_type::defend_animation(bool hits, std::string range) const
-{
-	//select one of the matching animations at random
-	std::vector<const defensive_animation*> options;
-	int max_val = -1;
-	for(std::vector<defensive_animation>::const_iterator i = defensive_animations_.begin(); i != defensive_animations_.end(); ++i) {
-		int matching = i->matches(hits,range);
-		if(matching == max_val) {
-			options.push_back(&*i);
-		} else if(matching > max_val) {
-			max_val = matching;
-			options.erase(options.begin(),options.end());
-			options.push_back(&*i);
-		}
-	}
-
-	assert(!options.empty());
-	return *options[rand()%options.size()];
-}
-
-const unit_animation& unit_type::teleport_animation( ) const
-{
-	return teleport_animations_[rand() % teleport_animations_.size()];
-}
-
-const unit_animation* unit_type::extra_animation(std::string flag ) const
-{
-	if (extra_animations_.count(flag) == 0) return NULL;
-	std::multimap<std::string,unit_animation>::const_iterator index = extra_animations_.lower_bound(flag);
-	int i = (rand()% extra_animations_.count(flag));
-	for(int j = 0 ; j < i ; j++) {
-		index++; // damn iterators
-	}
-	return &index->second;
-}
-
-const death_animation& unit_type::die_animation(const attack_type* attack) const
-{
-	//select one of the matching animations at random
-	std::vector<const death_animation*> options;
-	int max_val = -1;
-	for(std::vector<death_animation>::const_iterator i = death_animations_.begin(); i != death_animations_.end(); ++i) {
-		int matching = i->matches(attack);
-		if(matching == max_val) {
-			options.push_back(&*i);
-		} else if(matching > max_val) {
-			max_val = matching;
-			options.erase(options.begin(),options.end());
-			options.push_back(&*i);
-		}
-	}
-
-	assert(!options.empty());
-	return *options[rand()%options.size()];
-}
-const movement_animation& unit_type::move_animation(const std::string terrain,gamemap::location::DIRECTION dir) const
-{
-	//select one of the matching animations at random
-	std::vector<const movement_animation*> options;
-	int max_val = -1;
-	for(std::vector<movement_animation>::const_iterator i = movement_animations_.begin(); i != movement_animations_.end(); ++i) {
-		int matching = i->matches(terrain,dir);
-		if(matching == max_val) {
-			options.push_back(&*i);
-		} else if(matching > max_val) {
-			max_val = matching;
-			options.erase(options.begin(),options.end());
-			options.push_back(&*i);
-		}
-	}
-
-	assert(!options.empty());
-	return *options[rand()%options.size()];
-}
 
 void unit_type::add_advancement(const unit_type &to_unit,int xp)
 {
