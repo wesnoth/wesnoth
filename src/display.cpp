@@ -2003,11 +2003,19 @@ void display::invalidate(const gamemap::location& loc)
 	if(!invalidateAll_) {
 		if (invalidated_.insert(loc).second) {
 			// Units can overlap adjacent tiles.
+			gamemap::location adjacent[6];
+			get_adjacent_tiles(loc, adjacent);
+			// if we have a unit, invalidate the neighbours
 			if (units_.find(loc) != units_.end()) {
-				gamemap::location adjacent[6];
-				get_adjacent_tiles(loc, adjacent);
 				for (int i = 0; i < 6; i++) {
-					invalidated_.insert(adjacent[i]);
+					invalidate(adjacent[i]);
+				}
+			}
+			// if neighbour has a unit, invalidate him
+			// because he could overlap on us
+			for (int i = 0; i < 6; i++) {
+				if (units_.find(adjacent[i]) != units_.end()) {
+					invalidate(adjacent[i]);
 				}
 			}
 		}
