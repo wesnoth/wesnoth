@@ -94,6 +94,17 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
  *
  */
 
+ 
+namespace unit_abilities {
+
+bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side, size_t other_side)
+{
+	return ((cfg["affect_allies"] == "" || utils::string_bool(cfg["affect_allies"])) && !teams[side-1].is_enemy(other_side))
+			|| (utils::string_bool(cfg["affect_enemies"]) && teams[side-1].is_enemy(other_side));
+}
+
+}
+
 
 bool unit::get_ability_bool(const std::string& ability, const gamemap::location& loc) const
 {
@@ -119,9 +130,8 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 			if(adj_abilities) {
 				const config::child_list& list = adj_abilities->get_children(ability);
 				for(config::child_list::const_iterator j = list.begin(); j != list.end(); ++j) {
-					if((((**j)["affect_allies"] == "" || (utils::string_bool((**j)["affect_allies"]) && !(*teams_)[side()-1].is_enemy(it->second.side())))
-						|| (utils::string_bool((**j)["affect_enemies"]) && (*teams_)[side()-1].is_enemy(it->second.side()))) &&
-							it->second.ability_active(ability,**j,adjacent[i]) && ability_affects_adjacent(ability,**j,i,loc)) {
+					if(unit_abilities::affects_side(**j,*teams_,side(),it->second.side())
+						&& it->second.ability_active(ability,**j,adjacent[i]) && ability_affects_adjacent(ability,**j,i,loc)) {
 						return true;
 					}
 				}
@@ -157,9 +167,8 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 			if(adj_abilities) {
 				const config::child_list& list = adj_abilities->get_children(ability);
 				for(config::child_list::const_iterator j = list.begin(); j != list.end(); ++j) {
-					if((((**j)["affect_allies"] == "" || (utils::string_bool((**j)["affect_allies"]) && !(*teams_)[side()-1].is_enemy(it->second.side())))
-						|| (utils::string_bool((**j)["affect_enemies"]) && (*teams_)[side()-1].is_enemy(it->second.side()))) &&
-						it->second.ability_active(ability,**j,adjacent[i]) && ability_affects_adjacent(ability,**j,i,loc)) {
+					if(unit_abilities::affects_side(**j,*teams_,side(),it->second.side())
+						&& it->second.ability_active(ability,**j,adjacent[i]) && ability_affects_adjacent(ability,**j,i,loc)) {
 						res.cfgs.push_back(std::pair<config*,gamemap::location>(*j,adjacent[i]));
 					}
 				}
@@ -226,8 +235,7 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 				const config::child_map& adj_list_map = adj_abilities->all_children();
 				for(config::child_map::const_iterator k = adj_list_map.begin(); k != adj_list_map.end(); ++k) {
 					for(config::child_list::const_iterator j = k->second.begin(); j != k->second.end(); ++j) {
-					if((((**j)["affect_allies"] == "" || (utils::string_bool((**j)["affect_allies"]) && !(*teams_)[side()-1].is_enemy(it->second.side())))
-						|| (utils::string_bool((**j)["affect_enemies"]) && (*teams_)[side()-1].is_enemy(it->second.side())))) {
+						if(unit_abilities::affects_side(**j,*teams_,side(),it->second.side())) {
 							const config* adj_desc = (*j)->child("adjacent_description");
 							if(ability_affects_adjacent(k->first,**j,i,adjacent[i])) {
 								if(!adj_desc) {
