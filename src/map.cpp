@@ -130,6 +130,14 @@ bool gamemap::filter_location(const gamemap::location &loc,const config & /*con*
   return on_board(loc);
 }
 
+void gamemap::write_terrain(const gamemap::location &loc, config& cfg) const
+{
+	//will need to be updated for multi-letter terrain --Sapient
+	char *loc_terrain = " ";
+	*loc_terrain = get_terrain(loc);
+	cfg["terrain"] = loc_terrain;
+}
+
 gamemap::location::DIRECTION gamemap::location::parse_direction(const std::string& str)
 {
 	if(str == "n") {

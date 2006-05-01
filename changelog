@@ -40,6 +40,7 @@ SVN trunk (1.1.2+svn):
      greatsword, orcish sword, pincers, plaguestaff, string, thorns, torch, 
      touch, wail, zombie touch
    * hitpoint distribution graphs under Damage Calculations
+   * stylistic improvements to loadscreen progressbar
  * multiplayer maps:
    * added multiplayer maps: 8p Morituri
    * revised multiplayer maps: Blitz, Charge, Cynsaun Battlefield, Den of Onis,
@@ -69,6 +70,7 @@ SVN trunk (1.1.2+svn):
    * interpret the variables/arrays in a few more tags
    * floating damage/heal or status can be printed over a modified unit using
      the 'text', 'red', 'blue', and 'green' keys in [unstore_unit]
+   * store_locations now stores terrain as well as x,y
  * multiplayer settings:
    * two additional MP timer settings, time reservoir limit and action bonus:
      * Reservoir prevents the turn timer from exceeding an upper limit.

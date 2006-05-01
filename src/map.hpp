@@ -146,6 +146,10 @@ public:
 	//this allows proper drawing of the edges of the map
 	TERRAIN get_terrain(const location& loc) const;
 
+	//writes the terrain at loc to cfg
+	void gamemap::write_terrain(const gamemap::location &loc, config& cfg) const;
+
+
 	//functions to manipulate starting positions of the different sides.
 	const location& starting_position(int side) const;
 	int is_starting_position(const location& loc) const;

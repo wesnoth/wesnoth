@@ -1559,7 +1559,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		static const t_string default_store = "location";
 		const t_string& store = cfg["variable"].empty() ? default_store : cfg["variable"];
 		wassert(state_of_game != NULL);
-		loc.write(state_of_game->get_variable_cfg(store));
+		config &loc_store = state_of_game->get_variable_cfg(store);
+		loc.write(loc_store);
+		game_map->write_terrain(loc, loc_store);
 	}
 
 	else if(cmd == "store_locations") {
@@ -1591,7 +1593,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				if (u == units->end() || !game_events::unit_matches_filter(u, unit_filter))
 					continue;
 			}
-			j->write(state_of_game->variables.add_child(variable));
+			config &loc_store = state_of_game->variables.add_child(variable);
+			j->write(loc_store);
+			game_map->write_terrain(*j, loc_store);
 			++added;
 		}
 	}

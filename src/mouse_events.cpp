@@ -334,6 +334,7 @@ namespace{
 		// Unscathed probability.
 		left_strings.push_back(_("Chance of being unscathed"));
 		snprintf(str_buf, 10, "%.1f%%", (float) (u_unscathed * 100.0));
+		str_buf[9] = '\0';  //prevents _snprintf error
 		right_strings.push_back(str_buf);
 
 #if 0 // might not be en English!
@@ -562,6 +563,7 @@ namespace{
 
 			// Print HP, aligned right.
 			snprintf(str_buf, 10, "%d", hp);
+			str_buf[9] = '\0';  //prevents _snprintf error
 			int hp_width = font::line_width(str_buf, fs);
 
 			// Draw bars.
@@ -590,6 +592,7 @@ namespace{
 			else prob_str_format = " %3.1f %%";
 
 			snprintf(str_buf, 10, prob_str_format, (float) (100.0 * (prob + 0.0005)));
+			str_buf[9] = '\0';  //prevents _snprintf error
 			int prob_width = font::line_width(str_buf, fs);
 			font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOUR, str_buf,
 				    			 width - prob_width - 4, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
