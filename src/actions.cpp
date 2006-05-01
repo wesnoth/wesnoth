@@ -2335,7 +2335,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				teams[team_num].see(u->second.side()-1);
 			}
 
-			char* msg_id;
+			const char* msg_id;
 
 			//the message we display is different depending on whether units sighted
 			//were enemies or friends, and whether there is one or more

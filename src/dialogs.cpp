@@ -496,8 +496,8 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 		} else if(preferences::cache_saves() == preferences::CACHE_SAVES_ALWAYS) {
 			generate_summaries = true;
 		} else {
-			char* caption = N_("Import Saved Games");
-			char* message = N_("Your saves directory contains some files from an old version of Battle for Wesnoth. Would you like to update these to the latest version? This may take some time.");
+			const char* caption = N_("Import Saved Games");
+			const char* message = N_("Your saves directory contains some files from an old version of Battle for Wesnoth. Would you like to update these to the latest version? This may take some time.");
 
 			//if there are already some cached games, then we assume that the user is importing new
 			//games, and it's not a total import, so tailor the message accordingly

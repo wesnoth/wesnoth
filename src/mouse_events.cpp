@@ -583,7 +583,7 @@ namespace{
 			SDL_FillRect(surf, &bar_rect_4, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 0));
 
 			// Draw probability percentage, aligned right.
-			char *prob_str_format = NULL;
+			const char *prob_str_format = NULL;
 
 			if(prob > 0.9995) prob_str_format = "100 %%";
 			else if(prob >= 0.1) prob_str_format = "%4.1f %%";
