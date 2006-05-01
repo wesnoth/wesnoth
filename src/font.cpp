@@ -634,7 +634,10 @@ SDL_Rect measure_ucs2_text_line(ucs2_string::const_iterator first, ucs2_string::
 
 			font_style_setter const style_setter(ttfont, style);
 
-			TTF_SizeUNICODE(ttfont, (Uint16 const *)&chunk.front(), (int*)&rect.x, (int*)&rect.y);
+			int x, y;
+			TTF_SizeUNICODE(ttfont, (Uint16 const *)&chunk.front(), &x, &y);
+			rect.x = x;
+			rect.y = y;
 
 			rect.w += rect.x;
 			rect.h = maximum<Sint16>(rect.h, rect.y);
@@ -656,7 +659,10 @@ SDL_Rect measure_ucs2_text_line(ucs2_string::const_iterator first, ucs2_string::
 
 		font_style_setter const style_setter(ttfont, style);
 
-		TTF_SizeUNICODE(ttfont, (Uint16 const *)&chunk.front(), (int*)&rect.x, (int*)&rect.y);
+		int x, y;
+		TTF_SizeUNICODE(ttfont, (Uint16 const *)&chunk.front(), &x, &y);
+		rect.x = x;
+		rect.y = y;
 
 		rect.w += rect.x;
 		rect.h = maximum<Sint16>(rect.h, rect.y);
