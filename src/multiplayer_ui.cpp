@@ -309,7 +309,7 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 			bool have_command;
 			bool have_subcommand;
 			
-			unsigned int pos;
+			std::string::size_type pos;
 			pos = text.find(" ", help.size()+1);
 						
 			std::string subcommand;
