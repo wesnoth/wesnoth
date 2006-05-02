@@ -147,7 +147,7 @@ public:
 	TERRAIN get_terrain(const location& loc) const;
 
 	//writes the terrain at loc to cfg
-	void gamemap::write_terrain(const gamemap::location &loc, config& cfg) const;
+	void write_terrain(const gamemap::location &loc, config& cfg) const;
 
 
 	//functions to manipulate starting positions of the different sides.
