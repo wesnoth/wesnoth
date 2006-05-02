@@ -453,8 +453,7 @@ void server::run()
 						e.socket = 0;
 						break;
 					} else {
-						bool observer = i->is_observer(e.socket);
-						if(! observer && pl_name != "" && i->is_member(e.socket)) {
+						if(pl_name != "" && i->is_player(e.socket)) {
 							i->send_data(construct_server_message(pl_name + " has disconnected",*i));
 						}
 						i->remove_player(e.socket);
@@ -485,18 +484,19 @@ void server::run()
 
 void server::process_data(const network::connection sock, config& data, config& gamelist)
 {
+	//std::cerr << "in server::process_data...\n";
 	if(proxy::is_proxy(sock)) {
 		proxy::received_data(sock,data);
 	}
 	//if someone who is not yet logged in is sending
 	//login details
-	else if(not_logged_in_.is_member(sock)) {
+	else if(not_logged_in_.is_observer(sock)) {
 		process_login(sock,data,gamelist);
 	} else if(const config* query = data.child("query")) {
 		process_query(sock,*query,gamelist);
 	} else if(const config* whisper = data.child("whisper")) {
 		process_whisper(sock,*whisper);
-	} else if(lobby_players_.is_member(sock)) {
+	} else if(lobby_players_.is_observer(sock)) {
 		process_data_from_player_in_lobby(sock,data,gamelist);
 	} else {
 		process_data_from_player_in_game(sock,data,gamelist);
@@ -699,7 +699,14 @@ void server::process_whisper(const network::connection sock, const config& whisp
 
 void server::process_data_from_player_in_lobby(const network::connection sock, config& data, config& gamelist)
 {
+	//std::cerr << "in process_data_from_player_in_lobby...\n";
 	const config* const create_game = data.child("create_game");
+
+	const player_map::iterator pl = players_.find(sock);
+	if(pl == players_.end()) {
+		std::cerr << "ERROR: Could not find player in map\n";
+	}
+	
 	if(create_game != NULL) {
 
 		//std::cerr << "creating game...\n";
@@ -707,23 +714,20 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 		//create the new game, remove the player from the
 		//lobby and put him/her in the game they have created
 		games_.push_back(game(players_));
+		games_.back().level() = *create_game;
 		lobby_players_.remove_player(sock);
 		games_.back().add_player(sock);
 
 		//store the game data here at the moment
-		games_.back().level() = *create_game;
 		std::stringstream converter;
 		converter << games_.back().id();
 		games_.back().level()["id"] = converter.str();
 
 		//mark the player as unavailable in the lobby
-		const player_map::iterator pl = players_.find(sock);
 		if(pl != players_.end()) {
 			pl->second.mark_available(false,games_.back().level()["name"]);
 
 			lobby_players_.send_data(sync_initial_response());
-		} else {
-			std::cerr << "ERROR: Could not find player in map\n";
 		}
 
 		return;
@@ -795,6 +799,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 
 void server::process_data_from_player_in_game(const network::connection sock, config& data, config& gamelist)
 {
+	//std::cerr << "in process_data_from_player_in_game...\n";
 	std::vector<game>::iterator g;
 	for(g = games_.begin(); g != games_.end(); ++g) {
 		if(g->is_member(sock))
@@ -840,6 +845,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		} else if (data.child("kick") != NULL) {
 			const config& u = *data.child("kick");
 			name = u["username"];
+			std::cerr << "kick: " << u["username"] << "\n";
 			ban = false;
 		}
 
@@ -977,23 +983,30 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 	const string_map::const_iterator side = data.values.find("side");
 	if(side != data.values.end()) {
-		const bool res = g->take_side(sock,data);
-		config response;
-		if(res) {
-			std::cerr << "player joined side\n";
-			response["side_secured"] = side->second;
-
-			//update the number of available slots
-			const bool res = g->describe_slots();
-			if(res) {
-				lobby_players_.send_data(sync_initial_response());
-			}
-		} else {
-			response["failed"] = "yes";
+		if (g->is_observer(sock)){
+			const config& p_msg = construct_server_message("Sorry " + g->find_player(sock)->name() + ", someone else entered before you.",*g);
+			network::send_data(p_msg, sock);
+			return;
 		}
+		else{
+			const bool res = g->take_side(sock,data);
+			config response;
+			if(res) {
+				std::cerr << "player joined side\n";
+				response["side_secured"] = side->second;
 
-		network::send_data(response,sock);
-		return;
+				//update the number of available slots
+				const bool res = g->describe_slots();
+				if(res) {
+					lobby_players_.send_data(sync_initial_response());
+				}
+			} else {
+				response["failed"] = "yes";
+			}
+
+			network::send_data(response,sock);
+			return;
+		}
 	}
 
 	if(data.child("start_game")) {

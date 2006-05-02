@@ -32,7 +32,7 @@ bool game::is_owner(network::connection player) const
 
 bool game::is_member(network::connection player) const
 {
-	return std::find(players_.begin(),players_.end(),player) != players_.end();
+	return is_player(player) || is_observer(player);
 }
 
 bool game::is_needed(network::connection player) const
@@ -43,11 +43,12 @@ bool game::is_needed(network::connection player) const
 
 bool game::is_observer(network::connection player) const
 {
-	if(is_member(player) == false) {
-		return false;
-	}
+	return std::find(observers_.begin(),observers_.end(),player) != observers_.end();
+}
 
-	return is_needed(player) == false && sides_.count(player) == 0;
+bool game::is_player(network::connection player) const
+{
+	return std::find(players_.begin(),players_.end(),player) != players_.end();
 }
 
 bool game::observers_can_label() const
@@ -127,7 +128,7 @@ void game::start_game()
 	//send [observer] tags for all observers that have already joined.
 	//we can do this by re-joining all players that don't have sides, and aren't
 	//the first player (game creator)
-	for(std::vector<network::connection>::const_iterator pl = players_.begin()+1; pl != players_.end(); ++pl) {
+	for(std::vector<network::connection>::const_iterator pl = observers_.begin(); pl != observers_.end(); ++pl) {
 		if(sides_.count(*pl) == 0) {
 			add_player(*pl);
 		}
@@ -146,7 +147,7 @@ bool game::take_side(network::connection player, const config& cfg)
 		if(side_num < 1 || side_num > 9)
 			return false;
 	}
-	catch(bad_lexical_cast& bad_lexical) {
+	catch(bad_lexical_cast&) {
 		return false;
 	}
 
@@ -164,7 +165,7 @@ bool game::take_side(network::connection player, const config& cfg)
 					if(side_num < 1 || side_num > 9)
 						return false;
 				}
-				catch(bad_lexical_cast& bad_lexical) {
+				catch(bad_lexical_cast&) {
 					return false;
 				}
 				// check if the side is taken if not take it
@@ -220,7 +221,7 @@ void game::update_side_data()
 				if(side_num < 1 || side_num > 9)
 					continue;
 			}
-			catch(bad_lexical_cast& bad_lexical) {
+			catch(bad_lexical_cast&) {
 				continue;
 			}
 			side_index = static_cast<size_t>(side_num - 1);
@@ -252,16 +253,16 @@ const std::string& game::transfer_side_control(const config& cfg)
 {
 	const std::string& player = cfg["player"];
 
-	std::vector<network::connection>::const_iterator i;
-	for(i = players_.begin(); i != players_.end(); ++i) {
+	std::vector<network::connection>::iterator i;
+	for(i = observers_.begin(); i != observers_.end(); ++i) {
 		const player_map::const_iterator pl = player_info_->find(*i);
 		if(pl != player_info_->end() && pl->second.name() == player) {
 			break;
 		}
 	}
 
-	if(i == players_.end()) {
-		static const std::string notfound = "Player not found";
+	if(i == observers_.end()) {
+		static const std::string notfound = "Observer not found";
 		return notfound;
 	}
 	const std::string& side = cfg["side"];
@@ -272,7 +273,7 @@ const std::string& game::transfer_side_control(const config& cfg)
 		if(side_num < 1 || side_num > 9)
 			return invalid;
 	}
-	catch(bad_lexical_cast& bad_lexical) {
+	catch(bad_lexical_cast&) {
 		return invalid;
 	}
 	const size_t nsides = level_.get_children("side").size();
@@ -316,6 +317,8 @@ const std::string& game::transfer_side_control(const config& cfg)
 		observer_quit.add_child("observer_quit").values["name"] = player;
 		send_data(observer_quit);
 	}
+	players_.push_back(*i);
+	observers_.erase(i);
 	static const std::string success = "";
 	return success;
 }
@@ -326,6 +329,7 @@ size_t game::available_slots() const
 	const config::child_list& sides = level_.get_children("side");
 	for(config::child_list::const_iterator i = sides.begin(); i != sides.end(); ++i) {
 		//std::cerr << "side controller: '" << (**i)["controller"] << "'\n";
+		//std::cerr << "description: '" << (**i)["description"] << "'\n";
 		if((**i)["controller"] == "network" && (**i)["description"].empty()) {
 			++available_slots;
 		}
@@ -457,12 +461,40 @@ void game::add_player(network::connection player)
 	}
 
 	//if the player is already in the game, don't add them.
-	if(std::find(players_.begin(),players_.end(),player) != players_.end()) {
+	user_vector users = all_game_users();
+	if(std::find(users.begin(),users.end(),player) != users.end()) {
 		return;
 	}
 
-	players_.push_back(player);
-
+	//Check first if there are available sides
+	//If not, add the player as observer
+	unsigned int human_sides = 0;
+	if (level_.get_children("side").size() > 0){
+		config::child_list sides = level_.get_children("side");
+		for (config::child_list::const_iterator side = sides.begin(); side != sides.end(); side++){
+			if (((**side)["controller"] == "human") || ((**side)["controller"] == "network")){
+				human_sides++;
+			}
+		}
+	}
+	else{
+		if (level_.get_attribute("human_sides") != ""){
+			human_sides = lexical_cast<unsigned int>(level_["human_sides"]);
+		}
+	}
+	if (_DEBUG) { debug_player_info(); }
+	if (human_sides > players_.size()){
+		if (_DEBUG){
+			std::cerr << "adding player...\n";
+		}
+		players_.push_back(player);
+	} else{
+		if (_DEBUG){
+			std::cerr << "adding observer...\n";
+		}
+		observers_.push_back(player);
+	}
+	if (_DEBUG) { debug_player_info(); }
 	send_user_list();
 	player_map::const_iterator info = player_info_->find(player);
 	if(info != player_info_->end()) {
@@ -478,12 +510,24 @@ void game::add_player(network::connection player)
 
 void game::remove_player(network::connection player, bool notify_creator)
 {
-	const std::vector<network::connection>::iterator itor =
-	             std::find(players_.begin(),players_.end(),player);
+	if (_DEBUG){
+		std::cerr << "removing player...\n";
+	}
+	{
+		const user_vector::iterator itor = std::find(players_.begin(),players_.end(),player);
 
-	if(itor != players_.end())
-		players_.erase(itor);
+		if(itor != players_.end())
+			players_.erase(itor);
+	}
 
+	{
+		const user_vector::iterator itor = std::find(observers_.begin(),observers_.end(),player);
+
+		if(itor != observers_.end())
+			observers_.erase(itor);
+	}
+
+	if (_DEBUG) { debug_player_info(); }
 	bool observer = true;
 	std::pair<std::multimap<network::connection,size_t>::const_iterator,
 	          std::multimap<network::connection,size_t>::const_iterator> sides = sides_.equal_range(player);
@@ -521,8 +565,8 @@ void game::send_user_list()
 	if(started_ == false && description() != NULL) {
 		config cfg;
 		cfg.add_child("gamelist");
-		for(std::vector<network::connection>::const_iterator p = players_.begin(); p != players_.end(); ++p) {
-
+		user_vector users = all_game_users();
+		for(user_vector::const_iterator p = users.begin(); p != users.end(); ++p) {
 			const player_map::const_iterator info = player_info_->find(*p);
 			if(info != player_info_->end()) {
 				config& user = cfg.add_child("user");
@@ -542,8 +586,8 @@ int game::id() const
 
 void game::send_data(const config& data, network::connection exclude)
 {
-	for(std::vector<network::connection>::const_iterator
-	    i = players_.begin(); i != players_.end(); ++i) {
+	const user_vector users = all_game_users();
+	for(user_vector::const_iterator i = users.begin(); i != users.end(); ++i) {
 		if(*i != exclude && (allow_observers_ || is_needed(*i) || sides_.count(*i) == 1)) {
 			network::queue_data(data,*i);
 		}
@@ -576,10 +620,8 @@ void game::send_data_team(const config& data, const std::string& team, network::
 
 void game::send_data_observers(const config& data)
 {
-	for(std::vector<network::connection>::const_iterator i = players_.begin(); i != players_.end(); ++i) {
-		if(is_observer(*i)) {
-			network::queue_data(data,*i);
-		}
+	for(std::vector<network::connection>::const_iterator i = observers_.begin(); i != observers_.end(); ++i) {
+		network::queue_data(data,*i);
 	}
 }
 
@@ -605,17 +647,19 @@ config& game::level()
 
 bool game::empty() const
 {
-	return players_.empty();
+	return players_.empty() && observers_.empty();
 }
 
 void game::disconnect()
 {
-	for(std::vector<network::connection>::iterator i = players_.begin();
-	    i != players_.end(); ++i) {
+	const user_vector users = all_game_users();
+	for(user_vector::const_iterator i = users.begin();
+	    i != users.end(); ++i) {
 		network::queue_disconnect(*i);
 	}
 
 	players_.clear();
+	observers_.clear();
 }
 
 void game::set_description(config* desc)
@@ -628,13 +672,71 @@ config* game::description()
 	return description_;
 }
 
-void game::add_players(const game& other_game)
+void game::add_players(const game& other_game, bool observer)
 {
-	players_.insert(players_.end(),
-	                other_game.players_.begin(),other_game.players_.end());
+	user_vector users = other_game.all_game_users();
+	if (observer){
+		observers_.insert(observers_.end(), users.begin(), users.end());
+	}
+	else{
+		players_.insert(players_.end(), users.begin(), users.end());
+	}
 }
 
 bool game::started() const
 {
 	return started_;
+}
+
+const user_vector game::all_game_users() const{
+	user_vector res;
+
+	res.insert(res.end(), players_.begin(), players_.end());
+	res.insert(res.end(), observers_.begin(), observers_.end());
+
+	return res;
+}
+
+#ifdef _DEBUG
+	void game::debug_player_info() const{
+		std::cerr << "---------------------------------------\n";
+		std::cerr << "players_.size: " << players_.size() << "\n";
+		for (user_vector::const_iterator p = players_.begin(); p != players_.end(); p++){
+			const player_map::const_iterator user = player_info_->find(*p);
+			if (user != player_info_->end()){
+				std::cerr << "player: " << user->second.name() << "\n";
+			}
+			else{
+				std::cerr << "player not found\n";
+			}
+		}
+		std::cerr << "observers_.size: " << observers_.size() << "\n";
+		for (user_vector::const_iterator o = observers_.begin(); o != observers_.end(); o++){
+			const player_map::const_iterator user = player_info_->find(*o);
+			if (user != player_info_->end()){
+				std::cerr << "observer: " << user->second.name() << "\n";
+			}
+			else{
+				std::cerr << "observer not found\n";
+			}
+		}
+		{
+			std::cerr << "player_info_: begin\n";
+			for (player_map::const_iterator info = player_info_->begin(); info != player_info_->end(); info++){
+				std::cerr << info->second.name() << "\n";
+			}
+			std::cerr << "player_info_: end\n";
+		}
+		std::cerr << "---------------------------------------\n";
+	}
+#endif
+
+const player* game::find_player(network::connection sock) const{
+	const player* result = NULL;
+	for (player_map::const_iterator info = player_info_->begin(); info != player_info_->end(); info++){
+		if (info->first == sock){
+			result = &info->second;
+		}
+	}
+	return result;
 }

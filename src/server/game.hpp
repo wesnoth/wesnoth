@@ -24,6 +24,7 @@
 #include <set>
 #include <vector>
 
+typedef std::vector<network::connection> user_vector;
 typedef std::map<network::connection,player> player_map;
 
 class game
@@ -35,6 +36,7 @@ public:
 	bool is_member(network::connection player) const;
 	bool is_needed(network::connection player) const;
 	bool is_observer(network::connection player) const;
+	bool is_player(network::connection player) const;
 
 	bool observers_can_label() const;
 	bool observers_can_chat() const;
@@ -84,7 +86,11 @@ public:
 	void set_description(config* desc);
 	config* description();
 
-	void add_players(const game& other_game);
+	//adds players from one game to another. This is used to add players and
+	//observers from a game to the lobby (which is also implemented as a game),
+	//if that game ends. The second parameter controls, wether the players are
+	//added to the players_ or observers_ vector (default observers_).
+	void add_players(const game& other_game, bool observer = true);
 
 	//function which will process game commands and update the state of the
 	//game accordingly. Will return true iff the game's description changes.
@@ -103,7 +109,17 @@ public:
 		if(termination_.empty()) { termination_ = reason; }
 	}
 
+	//adds players and observers into one vector and returns that
+	const user_vector all_game_users() const;
+
+	const player* find_player(network::connection sock) const;
+
 private:
+
+	#ifdef _DEBUG
+		//helps debugging player and observer lists
+		void debug_player_info() const;
+	#endif
 
 	//function which returns true iff 'player' is on 'team'.
 	bool player_on_team(const std::string& team, network::connection player) const;
@@ -123,6 +139,7 @@ private:
 	static int id_num;
 	int id_;
 	std::vector<network::connection> players_;
+	std::vector<network::connection> observers_;
 	std::multimap<network::connection,size_t> sides_;
 	std::vector<bool> sides_taken_;
 	std::vector<std::string> side_controllers_;

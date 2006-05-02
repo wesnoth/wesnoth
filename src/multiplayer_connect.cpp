@@ -577,9 +577,20 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 	config response;
 	config& create_game = response.add_child("create_game");
 	create_game["name"] = params.name;
-	network::send_data(response);
 
 	load_game();
+	//The number of human-controlled sides is important to know to let the server decide,
+	//how many players can join this game
+	int human_sides = 0;
+	const config::child_list cfg_sides = level_.get_children("side");
+	for (config::child_list::const_iterator side = cfg_sides.begin(); side != cfg_sides.end(); side++){
+		if ((**side)["controller"] == "human"){
+			human_sides++;
+		}
+	}
+	create_game["human_sides"] = lexical_cast<std::string>(human_sides);
+	network::send_data(response);
+
 	if(get_result() == QUIT)
 		return;
 	lists_init();
