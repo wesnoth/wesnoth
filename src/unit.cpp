@@ -1130,16 +1130,11 @@ void unit::write(config& cfg) const
 
 	cfg["facing"] = gamemap::location::write_direction(facing_);
 	
-	char buf[50];
-	snprintf(buf,sizeof(buf),"%d",goto_.x+1);
-	cfg["goto_x"] = buf;
-	snprintf(buf,sizeof(buf),"%d",goto_.y+1);
-	cfg["goto_y"] = buf;
+	cfg["goto_x"] = lexical_cast_default<std::string>(goto_.x+1);
+	cfg["goto_y"] = lexical_cast_default<std::string>(goto_.y+1);
 
-	snprintf(buf,sizeof(buf),"%d",movement_);
-	cfg["moves"] = buf;
-	snprintf(buf,sizeof(buf),"%d",max_movement_b_);
-	cfg["max_moves"] = buf;
+	cfg["moves"] = lexical_cast_default<std::string>(movement_);
+	cfg["max_moves"] = lexical_cast_default<std::string>(max_movement_b_);
 
 	cfg["resting"] = resting_ ? "yes" : "no";
 	

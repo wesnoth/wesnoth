@@ -737,7 +737,15 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 {
 	const config::child_list& variations = cfg.get_children("variation");
 	for(config::child_list::const_iterator var = variations.begin(); var != variations.end(); ++var) {
-		variations_.insert(std::pair<std::string,unit_type*>((**var)["variation_name"],new unit_type(**var,mv_types,races,traits)));
+		const config& var_cfg = **var;
+		if(var_cfg["inherit"] == "yes") {
+			config nvar_cfg = cfg;
+			nvar_cfg = nvar_cfg.merge_with(var_cfg);
+			nvar_cfg.clear_children("variation");
+			variations_.insert(std::pair<std::string,unit_type*>(nvar_cfg["variation_name"],new unit_type(nvar_cfg,mv_types,races,traits)));
+		} else {
+			variations_.insert(std::pair<std::string,unit_type*>((**var)["variation_name"],new unit_type(**var,mv_types,races,traits)));
+		}
 	}
 
 	gender_types_[0] = NULL;
