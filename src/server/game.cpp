@@ -19,7 +19,7 @@
 #include "../wassert.hpp"
 
 #include <iostream>
-#include <strstrea.h>
+#include <sstream>
 
 #define LOG_SERVER LOG_STREAM(info, general)
 
@@ -696,7 +696,7 @@ const user_vector game::all_game_users() const{
 }
 
 std::string game::debug_player_info() const{
-	strstream result;
+	std::stringstream result;
 	result << "---------------------------------------\n";
 	result << "players_.size: " << players_.size() << "\n";
 	for (user_vector::const_iterator p = players_.begin(); p != players_.end(); p++){
