@@ -583,10 +583,8 @@ void unit::new_turn(const gamemap::location& loc)
 	end_turn_ = false;
 	movement_ = total_movement();
 	attacks_left_ = max_attacks_;
-	if(get_ability_bool("hides",loc)) {
+	if(has_ability_type("hides")) {
 		set_state("hides","yes");
-	} else {
-		set_state("hides","");
 	}
 	if(incapacitated()) {
 		set_attacks(0);

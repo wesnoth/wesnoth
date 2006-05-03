@@ -249,6 +249,7 @@ class unit
 		unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;
 		std::vector<std::string> ability_tooltips(const gamemap::location& loc) const;
 		std::vector<std::string> unit_ability_tooltips() const;
+		bool has_ability_type(const std::string& ability) const;
 		
 		void reset_modifications();
 		void backup_state();

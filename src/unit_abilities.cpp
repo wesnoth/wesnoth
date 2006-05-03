@@ -373,7 +373,14 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	}
 }
 
-
+bool unit::has_ability_type(const std::string& ability) const
+{
+	const config* list = cfg_.child("abilities");
+	if(list) {
+		return !list->get_children(ability).empty();
+	}
+	return false;
+}
 
 
 bool unit_ability_list::empty() const
