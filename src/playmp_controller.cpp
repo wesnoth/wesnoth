@@ -116,12 +116,12 @@ void playmp_controller::play_human_turn(){
 
 		}
 
-		menu_handler_.clear_undo_stack(player_number_);
 		gui_->invalidate_animations();
 		gui_->draw();
 
 		turn_data_->send_data();
 	}
+	menu_handler_.clear_undo_stack(player_number_);
 }
 
 void playmp_controller::after_human_turn(){
