@@ -133,7 +133,7 @@ bool gamemap::filter_location(const gamemap::location &loc,const config & /*con*
 void gamemap::write_terrain(const gamemap::location &loc, config& cfg) const
 {
 	//will need to be updated for multi-letter terrain --Sapient
-	char *loc_terrain = " ";
+	char loc_terrain[] = " ";
 	*loc_terrain = get_terrain(loc);
 	cfg["terrain"] = loc_terrain;
 }
