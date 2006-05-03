@@ -197,7 +197,7 @@ public:
 	event_handler(const config& cfg) :
 		name_(cfg["name"]),
 		first_time_only_(utils::string_bool(cfg["first_time_only"],true)),
-		disabled_(false),
+		disabled_(false),rebuild_screen_(false),
 		cfg_(&cfg)
 	{}
 
@@ -236,13 +236,16 @@ public:
 
 	bool handle_event(const queued_event& event_info,
 			const vconfig cfg = vconfig());
-
+	
+	bool& rebuild_screen() {return rebuild_screen_;}
+	
 private:
 	bool handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg, bool& mutated);
 
 	std::string name_;
 	bool first_time_only_;
 	bool disabled_;
+	bool rebuild_screen_;
 	vconfig cfg_;
 };
 
@@ -268,7 +271,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 {
 	log_scope2(engine, "handle_event_command");
 	LOG_NG << "handling command: '" << cmd << "'\n";
-
+	
 	bool rval = true;
 	//sub commands that need to be handled in a guaranteed ordering
 	if(cmd == "command") {
@@ -1065,9 +1068,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				game_map->set_terrain(*loc,terrain_type[0]);
 			}
 		}
-		screen->recalculate_minimap();
-		screen->invalidate_all();
-		screen->rebuild_all();
+		rebuild_screen_ = true;
 	}
 
 	//creating a mask of the terrain
@@ -1685,8 +1686,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string& text = cfg["text"];
 		screen->labels().set_label(loc,text);
 	}
-
-
+	
 	LOG_NG << "done handling command...\n";
 
 	return rval;
@@ -1848,7 +1848,14 @@ bool process_event(event_handler& handler, const queued_event& ev)
 
 	//the event hasn't been filtered out, so execute the handler
 	const bool res = handler.handle_event(ev);
-
+	
+	if(handler.rebuild_screen()) {
+		handler.rebuild_screen() = false;
+		screen->recalculate_minimap();
+		screen->invalidate_all();
+		screen->rebuild_all();
+	}
+	
 	if(handler.first_time_only()) {
 		handler.disable();
 	}
