@@ -46,6 +46,8 @@
 #include <unistd.h>
 #endif
 
+#define LOG_SERVER LOG_STREAM(info, general)
+
 namespace {
 
 config construct_error(const std::string& msg)
@@ -1020,7 +1022,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		return;
 	} else if(data.child("leave_game")) {
 		const bool needed = g->is_needed(sock);
-
+/*
 		if(needed) {
 
 			//tell all other players the game is over,
@@ -1061,7 +1063,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			//now sync players in the lobby again, to remove the game
 			lobby_players_.send_data(sync_initial_response());
 		} else {
-
+*/
 			bool obs = g->is_observer(sock);
 			g->remove_player(sock);
 			g->describe_slots();
@@ -1078,13 +1080,20 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			} else {
 				std::cerr << "ERROR: Could not find player in map\n";
 			}
+
+			if (needed){
+				//transfer game control to another player
+				const player* player = g->transfer_game_control();
+				const config& msg = construct_server_message(player->name() + " has been chosen as new host", *g);
+				g->send_data(msg);
+			}
 			
 			//send the player who has quit the game list
 			network::send_data(initial_response_,sock);
 
 			//send all other players in the lobby the update to the lobby
 			lobby_players_.send_data(sync_initial_response(),sock);
-		}
+//		}
 
 		return;
 	} else if(data["side_secured"].empty() == false) {

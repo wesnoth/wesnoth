@@ -114,12 +114,12 @@ public:
 
 	const player* find_player(network::connection sock) const;
 
+	const player* transfer_game_control();
+
 private:
 
-	#ifdef _DEBUG
-		//helps debugging player and observer lists
-		void debug_player_info() const;
-	#endif
+	//helps debugging player and observer lists
+	std::string debug_player_info() const;
 
 	//function which returns true iff 'player' is on 'team'.
 	bool player_on_team(const std::string& team, network::connection player) const;
