@@ -230,24 +230,26 @@ void game::update_side_data()
 			}
 			side_index = static_cast<size_t>(side_num - 1);
 
-			if((**sd)["controller"] == "network") {
-				side_controllers_[side_index] = "network";
-				if((**sd)["user_description"] == info->second.name()) {
-					sides_.insert(std::pair<network::connection, size_t>(*player, side_index));
+			if (! sides_taken_[side_index]){
+				if((**sd)["controller"] == "network") {
+					side_controllers_[side_index] = "network";
+					if((**sd)["user_description"] == info->second.name()) {
+						sides_.insert(std::pair<network::connection, size_t>(*player, side_index));
+						sides_taken_[side_index] = true;
+					}
+					else {
+						sides_taken_[side_index] = false;
+					}
+				}
+				else if((**sd)["controller"] == "ai") {
+					side_controllers_[side_index] = "ai";
 					sides_taken_[side_index] = true;
 				}
-				else {
-					sides_taken_[side_index] = false;
+				else if((**sd)["controller"] == "human") {
+					sides_.insert(std::pair<network::connection,size_t>(players_.front(),side_index));
+					sides_taken_[side_index] = true;
+					side_controllers_[side_index] = "human";
 				}
-			}
-			else if((**sd)["controller"] == "ai") {
-				side_controllers_[side_index] = "ai";
-				sides_taken_[side_index] = true;
-			}
-			else if((**sd)["controller"] == "human") {
-				sides_.insert(std::pair<network::connection,size_t>(players_.front(),side_index));
-				sides_taken_[side_index] = true;
-				side_controllers_[side_index] = "human";
 			}
 		}
 	}
