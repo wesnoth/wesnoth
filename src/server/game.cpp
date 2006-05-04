@@ -384,6 +384,16 @@ bool game::player_is_banned(network::connection sock) const
 	return false;
 }
 
+bool game::observer_is_muted(network::connection observer) const{
+	const player_map::const_iterator itor = player_info_->find(observer);
+	if(itor == player_info_->end()) {
+		return false;
+	}
+
+	const player& info = itor->second;
+	return info.is_muted();
+}
+
 void game::ban_player(network::connection sock)
 {
 	const player_map::const_iterator itor = player_info_->find(sock);

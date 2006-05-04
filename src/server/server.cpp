@@ -837,6 +837,27 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		return;
 	}
 
+	//if an observer is muted
+	if(g->is_owner(sock) && (data.child("mute") != NULL)) {
+		const config& u = *data.child("mute");
+		std::string name = u["username"];
+
+		player_map::iterator pl;
+		for(pl = players_.begin(); pl != players_.end(); ++pl) {
+			if(pl->second.name() == name) {
+				break;
+			}
+		}
+		if(pl->first != sock && pl != players_.end() && g->is_observer(pl->first)) {
+			pl->second.set_muted(true);
+			const config& msg = construct_server_message("You have been muted",*g);
+			network::send_data(msg, pl->first);
+			
+			const config& p_msg = construct_server_message(pl->second.name() + " has been muted",*g);
+			g->send_data(p_msg, pl->first);
+		}
+	}
+
 	//if the owner is banning someone from the game
 	if(g->is_owner(sock) && (data.child("ban") != NULL || data.child("kick") != NULL)) {
 		std::string name;
@@ -1136,6 +1157,11 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			//spoofing of messages
 			const player_map::const_iterator pl = players_.find(sock);
 			wassert(pl != players_.end());
+			if (pl->second.is_muted()){
+				const config& msg = construct_server_message("You have been muted, others can't see your message!",*g);
+				network::send_data(msg, pl->first);
+				return;
+			}
 			(*speak)["description"] = pl->second.name();
 
 			if((*speak)["team_name"] == "") {

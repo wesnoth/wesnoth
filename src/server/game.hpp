@@ -61,6 +61,7 @@ public:
 	bool describe_slots();
 
 	bool player_is_banned(network::connection player) const;
+	bool observer_is_muted(network::connection observer) const;
 	void ban_player(network::connection player);
 
 	void add_player(network::connection player, bool observer = false);

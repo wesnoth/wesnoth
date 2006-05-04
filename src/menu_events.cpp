@@ -1429,6 +1429,14 @@ namespace events{
 			ban["username"] = data;
 
 			network::send_data(cfg);
+		} else if (cmd == "mute") {
+			config cfg;
+			config& mute = cfg.add_child(cmd);
+			if (! (data == str.end())){
+				mute["username"] = data;
+			}
+
+			network::send_data(cfg);
 		} else if(cmd == "control") {
 			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
 			if(j != data.end()) {

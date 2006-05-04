@@ -33,6 +33,8 @@ public:
 
 	bool silenced() const;
 	bool is_message_flooding();
+	bool is_muted() const;
+	void set_muted(bool muted);
 
 private:
 	std::string name_;
@@ -40,6 +42,7 @@ private:
 
 	time_t flood_start_;
 	int messages_since_flood_start_;
+	bool muted_;
 	size_t MaxMessages;
 	size_t TimePeriod;
 };
