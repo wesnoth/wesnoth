@@ -1023,11 +1023,14 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		return;
 	} else if(data.child("leave_game")) {
 		const bool needed = g->is_needed(sock);
-/*
-		if(needed) {
+		bool obs = g->is_observer(sock);
+		g->remove_player(sock);
+		g->describe_slots();
+
+		if(g->nplayers() == 0) {
 
 			//tell all other players the game is over,
-			//because a needed player has left
+			//because the last player has left
 			config cfg;
 			cfg.add_child("leave_game");
 			g->send_data(cfg);
@@ -1063,40 +1066,36 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 			//now sync players in the lobby again, to remove the game
 			lobby_players_.send_data(sync_initial_response());
+		}
+
+		lobby_players_.add_player(sock);
+
+		//mark the player as available in the lobby
+		const player_map::iterator pl = players_.find(sock);
+		if(pl != players_.end()) {
+			if(!obs) {
+				const config& msg = construct_server_message(pl->second.name() + " has left the game",*g);
+				g->send_data(msg);
+			}
+			pl->second.mark_available(true,"");
 		} else {
-*/
-			bool obs = g->is_observer(sock);
-			g->remove_player(sock);
-			g->describe_slots();
-			lobby_players_.add_player(sock);
+			std::cerr << "ERROR: Could not find player in map\n";
+		}
 
-			//mark the player as available in the lobby
-			const player_map::iterator pl = players_.find(sock);
-			if(pl != players_.end()) {
-				if(!obs) {
-					const config& msg = construct_server_message(pl->second.name() + " has left the game",*g);
-					g->send_data(msg);
-				}
-				pl->second.mark_available(true,"");
-			} else {
-				std::cerr << "ERROR: Could not find player in map\n";
+		if (needed){
+			//transfer game control to another player
+			const player* player = g->transfer_game_control();
+			if (player != NULL){
+				const config& msg = construct_server_message(player->name() + " has been chosen as new host", *g);
+				g->send_data(msg);
 			}
+		}
+		
+		//send the player who has quit the game list
+		network::send_data(initial_response_,sock);
 
-			if (needed){
-				//transfer game control to another player
-				const player* player = g->transfer_game_control();
-				if (player != NULL){
-					const config& msg = construct_server_message(player->name() + " has been chosen as new host", *g);
-					g->send_data(msg);
-				}
-			}
-			
-			//send the player who has quit the game list
-			network::send_data(initial_response_,sock);
-
-			//send all other players in the lobby the update to the lobby
-			lobby_players_.send_data(sync_initial_response(),sock);
-//		}
+		//send all other players in the lobby the update to the lobby
+		lobby_players_.send_data(sync_initial_response(),sock);
 
 		return;
 	} else if(data["side_secured"].empty() == false) {
