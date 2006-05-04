@@ -430,7 +430,7 @@ bool game::end_turn()
 	return true;
 }
 
-void game::add_player(network::connection player)
+void game::add_player(network::connection player, bool observer)
 {
 	//if the game has already started, we add the player as an observer
 	if(started_) {
@@ -473,7 +473,7 @@ void game::add_player(network::connection player)
 	//Check first if there are available sides
 	//If not, add the player as observer
 	unsigned int human_sides = 0;
-	if (level_.get_children("side").size() > 0){
+	if (level_.get_children("side").size() > 0 && !observer){
 		config::child_list sides = level_.get_children("side");
 		for (config::child_list::const_iterator side = sides.begin(); side != sides.end(); side++){
 			if (((**side)["controller"] == "human") || ((**side)["controller"] == "network")){

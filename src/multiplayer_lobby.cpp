@@ -529,6 +529,12 @@ void lobby::process_event()
 			config response;
 			config& join = response.add_child("join");
 			join["id"] = id;
+			if (observe){
+				join["observe"] = "yes";
+			}
+			else{
+				join["observe"] = "no";
+			}
 			network::send_data(response);
 
 			if(observe) {

@@ -739,6 +739,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 	const config* const join = data.child("join");
 	if(join != NULL) {
 		const std::string& id = (*join)["id"];
+		const std::string& str_observer = (*join)["observe"];
 		const int nid = atoi(id.c_str());
 		const std::vector<game>::iterator it =
 		             std::find_if(games_.begin(),games_.end(),
@@ -763,7 +764,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 		//send them the game data
 		network::send_data(it->level(),sock);
 
-		it->add_player(sock);
+		it->add_player(sock, str_observer == "yes");
 
 		//mark the player as unavailable in the lobby
 		const player_map::iterator pl = players_.find(sock);
@@ -1084,8 +1085,10 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			if (needed){
 				//transfer game control to another player
 				const player* player = g->transfer_game_control();
-				const config& msg = construct_server_message(player->name() + " has been chosen as new host", *g);
-				g->send_data(msg);
+				if (player != NULL){
+					const config& msg = construct_server_message(player->name() + " has been chosen as new host", *g);
+					g->send_data(msg);
+				}
 			}
 			
 			//send the player who has quit the game list

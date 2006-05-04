@@ -63,7 +63,7 @@ public:
 	bool player_is_banned(network::connection player) const;
 	void ban_player(network::connection player);
 
-	void add_player(network::connection player);
+	void add_player(network::connection player, bool observer = false);
 	void remove_player(network::connection player, bool notify_creator=true);
 
 	int id() const;
