@@ -985,6 +985,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			//is located at
 			config& desc = gamelist.add_child("game",g->level());
 			g->set_description(&desc);
+			desc["hash"] = data["hash"];
 
 			//record the full description of the scenario in g->level()
 			g->level() = data;

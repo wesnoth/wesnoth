@@ -80,6 +80,7 @@ public:
 	bool empty() const;
 
 	void debug() const;
+	std::string hash() const;
 
 	struct error {
 		error(const std::string& msg) : message(msg) {}

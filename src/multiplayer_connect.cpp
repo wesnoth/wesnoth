@@ -1075,6 +1075,8 @@ void connect::load_game()
 
 	} else {
 		level_ = params_.scenario_data;
+		
+		level_["hash"] = level_.hash();
 		level_["turns"] = lexical_cast_default<std::string>(params_.num_turns, "20");
 		level_["mp_countdown"] = params_.mp_countdown ? "yes" : "no";
 		level_["mp_countdown_init_time"] = lexical_cast_default<std::string>(params_.mp_countdown_init_time, "270");

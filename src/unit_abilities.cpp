@@ -390,7 +390,7 @@ bool unit_ability_list::empty() const
 
 std::pair<int,gamemap::location> unit_ability_list::highest(const std::string& key, int def) const
 {
-	gamemap::location best_loc;
+	gamemap::location best_loc = gamemap::location::null_location;
 	int abs_max = def;
 	int flat = def;
 	int stack = 0;

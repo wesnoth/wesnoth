@@ -43,7 +43,7 @@ public:
 		bool observers;
 		bool use_map_settings;
 	};
-	gamebrowser(CVideo& video);
+	gamebrowser(CVideo& video,const config* map_hashes);
 	void scroll(unsigned int pos);
 	void handle_event(const SDL_Event& event);
 	void set_inner_location(const SDL_Rect& rect);
@@ -65,6 +65,8 @@ private:
 	image::locator vision_icon_locator_;
 	image::locator time_limit_icon_locator_;
 	image::locator observer_icon_locator_;
+	
+	const config* map_hashes_;
 
 	unsigned int item_height_;
 	int margin_;

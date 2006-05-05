@@ -216,11 +216,12 @@ gamemap::location under_leadership(const units_map& units,
 	if(un == units.end()) {
 		return gamemap::location::null_location;
 	}
-	int best_bonus = un->second.get_abilities("leadership",loc).highest("value").first;
+	unit_ability_list abil = un->second.get_abilities("leadership",loc);
+	int best_bonus = abil.highest("value").first;
 	if(bonus) {
 		*bonus = best_bonus;
 	}
-	return un->second.get_abilities("leadership",loc).highest("value").second;
+	return abil.highest("value").second;
 }
 
 double pr_atleast(int m, double p, int n, int d)

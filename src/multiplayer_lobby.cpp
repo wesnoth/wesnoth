@@ -37,12 +37,12 @@ std::string games_menu_heading()
 }
 
 namespace mp {
-gamebrowser::gamebrowser(CVideo& video) : scrollarea(video),
+gamebrowser::gamebrowser(CVideo& video, const config* map_hashes) : scrollarea(video),
 	gold_icon_locator_("misc/gold.png"),
 	xp_icon_locator_("misc/units.png"),
 	vision_icon_locator_("misc/invisible.png"),
 	time_limit_icon_locator_("misc/sand-clock.png"),
-	observer_icon_locator_("misc/eye.png"), 
+	observer_icon_locator_("misc/eye.png"), map_hashes_(map_hashes),
 	item_height_(100), margin_(5), h_padding_(5),
 	v_padding_(5), header_height_(20), selected_(0), visible_range_(std::pair<size_t,size_t>(0,0)),
 	double_clicked_(false), ignore_next_doubleclick_(false), last_was_doubleclick_(false)
@@ -315,11 +315,25 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			games_.back().map_info += " - ??x??";
 		}
 		games_.back().map_info += " ";
-		if((**game)["mp_scenario"] != "") {
+		if((**game)["mp_scenario"] != "" && map_hashes_) {
 			const config* level_cfg = game_config.find_child("generic_multiplayer", "id", (**game)["mp_scenario"]);
 			if(level_cfg == NULL)
 				level_cfg = game_config.find_child("multiplayer", "id", (**game)["mp_scenario"]);
 			games_.back().map_info += level_cfg != NULL ? level_cfg->get_attribute("name") : _("Unknown scenario");
+			if(level_cfg) {
+				const std::string& hash = (**game)["hash"];
+				bool hash_found = false;
+				for(string_map::const_iterator i = map_hashes_->values.begin(); i != map_hashes_->values.end(); ++i) {
+					if(i->first == (**game)["mp_scenario"] && i->second == hash) {
+						hash_found = true;
+						break;
+					}
+				}
+				if(!hash_found) {
+					games_.back().map_info += " - ";
+					games_.back().map_info += _("Remote scenario");
+				}
+			}
 		} else {
 			games_.back().map_info += _("Unknown scenario");
 		}
@@ -452,7 +466,7 @@ lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
 	game_preferences_(disp.video(), _("Preferences")),
 	quit_game_(disp.video(), _("Quit")),
 	sorter_(gamelist),
-	games_menu_(disp.video()),
+	games_menu_(disp.video(),cfg.child("multiplayer_hashes")),
 	current_game_(0)
 {
 	skip_replay_.set_check(preferences::skip_mp_replay());

@@ -1379,6 +1379,11 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 				}
 
 				cfg.merge_children("units");
+				
+				config& hashes = cfg.add_child("multiplayer_hashes");
+				for(config::child_list::const_iterator ch = cfg.get_children("multiplayer").begin(); ch != cfg.get_children("multiplayer").end(); ++ch) {
+					hashes[(**ch)["id"]] = (*ch)->hash();
+				}
 
 				if(!error_log.empty()) {
 					gui::show_error_message(disp(),

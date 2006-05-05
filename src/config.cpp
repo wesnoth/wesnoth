@@ -592,6 +592,58 @@ void config::debug() const{
 	i--;
 }
 
+std::string config::hash() const
+{
+	static const int hash_length = 128;
+	static const char hash_string[] = 
+		"+-,.<>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	static const int hash_string_length = strlen(hash_string);
+	char hash_str[hash_length + 1];
+	size_t i;
+	for(i = 0; i != hash_length; ++i) {
+		hash_str[i] = 'a';
+	}
+	hash_str[hash_length] = 0;
+	
+	i = 0;
+	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
+		if(val->first.size() && val->second.size()) {
+			for(std::string::const_iterator c = val->first.begin(); c != val->first.end(); ++c) {
+				hash_str[i] ^= *c;
+				++i;
+				if(i == hash_length) {
+					i = 0;
+				}
+			}
+			for(std::string::const_iterator c = val->second.value().begin(); c != val->second.value().end(); ++c) {
+				hash_str[i] ^= *c;
+				++i;
+				if(i == hash_length) {
+					i = 0;
+				}
+			}
+		}
+	}
+	for(child_map::const_iterator list = children.begin(); list != children.end(); ++list) {
+		for(child_list::const_iterator child = list->second.begin(); child != list->second.end(); ++child) {
+			std::string child_hash = (*child)->hash();
+			for(std::string::const_iterator c = child_hash.begin(); c != child_hash.end(); ++c) {
+				hash_str[i] ^= *c;
+				++i;
+				if(i == hash_length) {
+					i = 0;
+				}
+			}
+		}
+	}
+	
+	for(i = 0; i != hash_length; ++i) {
+		hash_str[i] = hash_string[hash_str[i]%hash_string_length];
+	}
+	
+	return std::string(hash_str);
+}
+
 bool operator==(const config& a, const config& b)
 {
 	if (a.values != b.values)
