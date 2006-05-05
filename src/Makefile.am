@@ -214,6 +214,7 @@ wesnoth_editor_SOURCES = \
 	widgets/file_chooser.cpp \
 	widgets/label.cpp \
 	widgets/menu.cpp \
+	widgets/menu_style.cpp \
 	widgets/progressbar.cpp \
 	widgets/textbox.cpp \
 	widgets/scrollarea.cpp \
