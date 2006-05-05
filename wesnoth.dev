@@ -1,7 +1,7 @@
 [Project]
 FileName=wesnoth.dev
 Name=wesnoth
-UnitCount=235
+UnitCount=236
 Type=1
 Ver=1
 ObjFiles=
@@ -11,7 +11,7 @@ PrivateResource=
 ResourceIncludes=
 MakeIncludes=
 Compiler=
-CppCompiler=
+CppCompiler=-DHAVE_PYTHON -Wall_@@_
 Linker=-lmingw32_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lws2_32 _@@_-lwinmm _@@_-lfreetype _@@_-lintl _@@_-mwindows _@@_-lpython24 _@@_-lpng13_@@_
 IsCpp=1
 Icon=
@@ -1827,7 +1827,7 @@ Compile=1
 Link=1
 Priority=1000
 OverrideBuildCmd=0
-BuildCmd=
+BuildCmd=$(CPP) -c SDL_ttf.c -o SDL_ttf.o $(CXXFLAGS)
 
 [Unit183]
 FileName=src\serialization\tokenizer.hpp
@@ -2388,7 +2388,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit236]
-FileName=src\playsingle_controller.hpp
+FileName=src\widgets\menu_style.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
@@ -2399,6 +2399,16 @@ BuildCmd=
 
 [Unit230]
 FileName=src\play_controller.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit237]
+FileName=src\ai_xan.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
