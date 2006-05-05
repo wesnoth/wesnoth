@@ -608,18 +608,22 @@ std::string config::hash() const
 	i = 0;
 	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
 		if(val->first.size() && val->second.size()) {
-			for(std::string::const_iterator c = val->first.begin(); c != val->first.end(); ++c) {
-				hash_str[i] ^= *c;
-				++i;
-				if(i == hash_length) {
-					i = 0;
+			{
+				for(std::string::const_iterator c = val->first.begin(); c != val->first.end(); ++c) {
+					hash_str[i] ^= *c;
+					++i;
+					if(i == hash_length) {
+						i = 0;
+					}
 				}
 			}
-			for(std::string::const_iterator c = val->second.value().begin(); c != val->second.value().end(); ++c) {
-				hash_str[i] ^= *c;
-				++i;
-				if(i == hash_length) {
-					i = 0;
+			{
+				for(std::string::const_iterator c = val->second.value().begin(); c != val->second.value().end(); ++c) {
+					hash_str[i] ^= *c;
+					++i;
+					if(i == hash_length) {
+						i = 0;
+					}
 				}
 			}
 		}
