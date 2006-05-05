@@ -841,20 +841,37 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	if(g->is_owner(sock) && (data.child("mute") != NULL)) {
 		const config& u = *data.child("mute");
 		std::string name = u["username"];
+		std::string lower_name;
+		lower_name.resize(name.size());
+		std::transform(name.begin(), name.end(), lower_name.begin(), tolower);
 
-		player_map::iterator pl;
-		for(pl = players_.begin(); pl != players_.end(); ++pl) {
-			if(pl->second.name() == name) {
-				break;
-			}
+		if (lower_name == "on"){
+			g->mute_all_observers(true);
+			const config& p_msg = construct_server_message("all observers have been muted",*g);
+			g->send_data(p_msg);
 		}
-		if(pl->first != sock && pl != players_.end() && g->is_observer(pl->first)) {
-			pl->second.set_muted(true);
-			const config& msg = construct_server_message("You have been muted",*g);
-			network::send_data(msg, pl->first);
-			
-			const config& p_msg = construct_server_message(pl->second.name() + " has been muted",*g);
-			g->send_data(p_msg, pl->first);
+		else if (lower_name == "off"){
+			g->mute_all_observers(false);
+			const config& p_msg = construct_server_message("mute of all observers is removed",*g);
+			g->send_data(p_msg);
+		}
+		else{
+			player_map::iterator pl;
+			for(pl = players_.begin(); pl != players_.end(); ++pl) {
+				if(pl->second.name() == name) {
+					break;
+				}
+			}
+			if(pl->first != sock && pl != players_.end() && g->is_observer(pl->first)) {
+				const player* player = g->mute_observer(pl->first);
+				if (player != NULL){
+					const config& msg = construct_server_message("You have been muted",*g);
+					network::send_data(msg, pl->first);
+					
+					const config& p_msg = construct_server_message(pl->second.name() + " has been muted",*g);
+					g->send_data(p_msg, pl->first);
+				}
+			}
 		}
 	}
 
@@ -1157,7 +1174,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			//spoofing of messages
 			const player_map::const_iterator pl = players_.find(sock);
 			wassert(pl != players_.end());
-			if (pl->second.is_muted()){
+			if (g->all_observers_muted() || g->is_muted_observer(sock)){
 				const config& msg = construct_server_message("You have been muted, others can't see your message!",*g);
 				network::send_data(msg, pl->first);
 				return;

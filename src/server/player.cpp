@@ -15,7 +15,7 @@
 
 #include "player.hpp"
 
-player::player(const std::string& n, config& cfg,size_t max_messages,size_t time_period) : name_(n), cfg_(cfg), flood_start_(0), messages_since_flood_start_(0), MaxMessages(max_messages), TimePeriod(time_period), muted_(false)
+player::player(const std::string& n, config& cfg,size_t max_messages,size_t time_period) : name_(n), cfg_(cfg), flood_start_(0), messages_since_flood_start_(0), MaxMessages(max_messages), TimePeriod(time_period)
 {
 	cfg_["name"] = n;
 	mark_available(true,"");
@@ -61,12 +61,4 @@ bool player::is_message_flooding()
 	}
 
 	return false;
-}
-
-bool player::is_muted() const{
-	return muted_;
-}
-
-void player::set_muted(bool muted){
-	muted_ = muted;
 }

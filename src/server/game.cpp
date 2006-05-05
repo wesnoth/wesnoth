@@ -25,7 +25,7 @@
 
 int game::id_num = 1;
 
-game::game(const player_map& info) : player_info_(&info), id_(id_num++), sides_taken_(9), side_controllers_(9), started_(false), description_(NULL), end_turn_(0), allow_observers_(true)
+game::game(const player_map& info) : player_info_(&info), id_(id_num++), sides_taken_(9), side_controllers_(9), started_(false), description_(NULL), end_turn_(0), allow_observers_(true), all_observers_muted_(false)
 {}
 
 bool game::is_owner(network::connection player) const
@@ -50,9 +50,18 @@ bool game::is_observer(network::connection player) const
 	return std::find(observers_.begin(),observers_.end(),player) != observers_.end();
 }
 
+bool game::is_muted_observer(network::connection player) const
+{
+	return std::find(muted_observers_.begin(), muted_observers_.end(), player) != muted_observers_.end();
+}
+
 bool game::is_player(network::connection player) const
 {
 	return std::find(players_.begin(),players_.end(),player) != players_.end();
+}
+
+bool game::all_observers_muted() const{
+	return all_observers_muted_;
 }
 
 bool game::observers_can_label() const
@@ -384,14 +393,19 @@ bool game::player_is_banned(network::connection sock) const
 	return false;
 }
 
-bool game::observer_is_muted(network::connection observer) const{
-	const player_map::const_iterator itor = player_info_->find(observer);
-	if(itor == player_info_->end()) {
-		return false;
+const player* game::mute_observer(network::connection sock){
+	const player* muted_observer = NULL;
+	player_map::const_iterator it = player_info_->find(sock);
+	if (it != player_info_->end() && ! is_muted_observer(sock)){
+		muted_observers_.push_back(sock);
+		muted_observer = &it->second;
 	}
 
-	const player& info = itor->second;
-	return info.is_muted();
+	return muted_observer;
+}
+
+void game::mute_all_observers(bool mute){
+	all_observers_muted_ = mute;
 }
 
 void game::ban_player(network::connection sock)

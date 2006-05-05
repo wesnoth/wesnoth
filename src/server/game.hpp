@@ -36,7 +36,9 @@ public:
 	bool is_member(network::connection player) const;
 	bool is_needed(network::connection player) const;
 	bool is_observer(network::connection player) const;
+	bool is_muted_observer(network::connection player) const;
 	bool is_player(network::connection player) const;
+	bool all_observers_muted() const;
 
 	bool observers_can_label() const;
 	bool observers_can_chat() const;
@@ -61,8 +63,9 @@ public:
 	bool describe_slots();
 
 	bool player_is_banned(network::connection player) const;
-	bool observer_is_muted(network::connection observer) const;
 	void ban_player(network::connection player);
+	const player* mute_observer(network::connection player);
+	void mute_all_observers(bool mute);
 
 	void add_player(network::connection player, bool observer = false);
 	void remove_player(network::connection player, bool notify_creator=true);
@@ -139,8 +142,9 @@ private:
 
 	static int id_num;
 	int id_;
-	std::vector<network::connection> players_;
-	std::vector<network::connection> observers_;
+	user_vector players_;
+	user_vector observers_;
+	user_vector muted_observers_;
 	std::multimap<network::connection,size_t> sides_;
 	std::vector<bool> sides_taken_;
 	std::vector<std::string> side_controllers_;
@@ -155,6 +159,7 @@ private:
 	int end_turn_;
 
 	bool allow_observers_;
+	bool all_observers_muted_;
 
 	struct ban {
 		ban(const std::string& name, const std::string& address)
