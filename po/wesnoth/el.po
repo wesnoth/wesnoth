@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-29 15:32+0200\n"
+"POT-Creation-Date: 2006-05-05 16:30+0200\n"
 "PO-Revision-Date: 2005-09-17 00:07+0300\n"
 "Last-Translator: \n"
 "Language-Team:  <el@li.org>\n"
@@ -289,11 +289,11 @@ msgid ""
 "moves."
 msgstr ""
 
-#: data/abilities.cfg:336
+#: data/abilities.cfg:336 data/abilities.cfg:337
 msgid "ambush"
 msgstr "ενέδρα"
 
-#: data/abilities.cfg:340
+#: data/abilities.cfg:341 data/abilities.cfg:345
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -310,11 +310,11 @@ msgstr ""
 "είναι σε δάσος εκτός αν η μονάδα επιτεθεί όπου εμφανίζεται ή αν υπάρχουν "
 "εχθρικές μονάδες δίπλα από αυτή τη μονάδα."
 
-#: data/abilities.cfg:352
+#: data/abilities.cfg:357 data/abilities.cfg:362
 msgid "nightstalk"
 msgstr "νυχτοκυνηγός"
 
-#: data/abilities.cfg:356
+#: data/abilities.cfg:361 data/abilities.cfg:366
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -330,12 +330,12 @@ msgstr ""
 "νύχτα εκτός αν η μονάδα επιτεθεί όπου εμφανίζεται ή αν υπάρχουν εχθρικές "
 "μονάδες δίπλα από αυτή τη μονάδα."
 
-#: data/abilities.cfg:368
+#: data/abilities.cfg:378 data/abilities.cfg:383
 #, fuzzy
 msgid "submerge"
 msgstr "ραβδί"
 
-#: data/abilities.cfg:372
+#: data/abilities.cfg:382 data/abilities.cfg:387
 #, fuzzy
 msgid ""
 "Submerge:\n"
@@ -353,23 +353,23 @@ msgstr ""
 "είναι σε δάσος εκτός αν η μονάδα επιτεθεί όπου εμφανίζεται ή αν υπάρχουν "
 "εχθρικές μονάδες δίπλα από αυτή τη μονάδα."
 
-#: data/abilities.cfg:390
+#: data/abilities.cfg:405
 #, fuzzy
 msgid "berserk"
 msgstr "Παρατηρητές"
 
-#: data/abilities.cfg:392
+#: data/abilities.cfg:407
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 
-#: data/abilities.cfg:400
+#: data/abilities.cfg:415
 msgid "backstab"
 msgstr "πισώπλατο μαχαίρωμα"
 
-#: data/abilities.cfg:402
+#: data/abilities.cfg:417
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -377,11 +377,11 @@ msgid ""
 "to stone)."
 msgstr ""
 
-#: data/abilities.cfg:411 data/abilities.cfg:419
+#: data/abilities.cfg:426 data/abilities.cfg:434
 msgid "plague"
 msgstr "πανούκλα"
 
-#: data/abilities.cfg:413 data/abilities.cfg:421
+#: data/abilities.cfg:428 data/abilities.cfg:436
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -389,55 +389,55 @@ msgid ""
 "doesn't work on Undead or units in villages.)"
 msgstr ""
 
-#: data/abilities.cfg:428
+#: data/abilities.cfg:443
 #, fuzzy
 msgid "slows"
 msgstr "επιβραδυμένος"
 
-#: data/abilities.cfg:430
+#: data/abilities.cfg:445
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
 
-#: data/abilities.cfg:436
+#: data/abilities.cfg:451
 #, fuzzy
 msgid "stones"
 msgstr "πέτρα"
 
-#: data/abilities.cfg:438
+#: data/abilities.cfg:453
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
 
-#: data/abilities.cfg:445
+#: data/abilities.cfg:460
 msgid "marksman"
 msgstr "δεινός σκοπευτής"
 
-#: data/abilities.cfg:447
+#: data/abilities.cfg:462
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 
-#: data/abilities.cfg:457
+#: data/abilities.cfg:472
 msgid "magical"
 msgstr "μαγική"
 
-#: data/abilities.cfg:459
+#: data/abilities.cfg:474
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
 
-#: data/abilities.cfg:467
+#: data/abilities.cfg:482
 msgid "swarm"
 msgstr ""
 
-#: data/abilities.cfg:469
+#: data/abilities.cfg:484
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -446,45 +446,45 @@ msgid ""
 "strikes."
 msgstr ""
 
-#: data/abilities.cfg:476
+#: data/abilities.cfg:491
 msgid "charge"
 msgstr ""
 
-#: data/abilities.cfg:478
+#: data/abilities.cfg:493
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
 "take double damage from the target's counterattack."
 msgstr ""
 
-#: data/abilities.cfg:488
+#: data/abilities.cfg:503
 #, fuzzy
 msgid "drains"
 msgstr "ρούφηγμα ζωής"
 
-#: data/abilities.cfg:490
+#: data/abilities.cfg:505
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
 
-#: data/abilities.cfg:496
+#: data/abilities.cfg:511
 #, fuzzy
 msgid "firststrike"
 msgstr "χτυπήματα"
 
-#: data/abilities.cfg:498
+#: data/abilities.cfg:513
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 
-#: data/abilities.cfg:505
+#: data/abilities.cfg:520
 msgid "poison"
 msgstr "δηλητήριο"
 
-#: data/abilities.cfg:507
+#: data/abilities.cfg:522
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -706,7 +706,7 @@ msgstr "+Τουρκική Μετάφραση"
 msgid "Contributors"
 msgstr " Συντελεστές"
 
-#: data/about.cfg:509
+#: data/about.cfg:508
 #, fuzzy
 msgid "Bots"
 msgstr "+Μπότς(Bots)"
@@ -867,7 +867,7 @@ msgstr "σπαθί"
 #: data/units/Human_Loyalist_Fencer.cfg:82
 #: data/units/Human_Loyalist_General.cfg:50
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:44
-#: data/units/Human_Loyalist_Halberdier.cfg:85
+#: data/units/Human_Loyalist_Halberdier.cfg:89
 #: data/units/Human_Loyalist_Lieutenant.cfg:40
 #: data/units/Human_Loyalist_Longbowman.cfg:24
 #: data/units/Human_Loyalist_Master_Bowman.cfg:32
@@ -905,15 +905,15 @@ msgid "blade"
 msgstr "λεπίδα"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:58
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:54
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:54
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:71
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:71
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:26
 msgid "morning star"
 msgstr "αγκυλωτή σφύρα"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:59
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:55
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:55
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:72
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:72
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:36
 #: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:33
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:23
@@ -932,7 +932,7 @@ msgstr "αγκυλωτή σφύρα"
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:33
 #: data/tutorial/units/Elder_Mage.cfg:31 data/tutorial/units/Quintain.cfg:21
 #: data/tutorial/units/Youth.cfg:28 data/units/Boat_Galleon.cfg:21
-#: data/units/Drake_Enforcer.cfg:104 data/units/Drake_Gladiator.cfg:147
+#: data/units/Drake_Enforcer.cfg:106 data/units/Drake_Gladiator.cfg:147
 #: data/units/Drake_Glider.cfg:80 data/units/Drake_Hurricane.cfg:86
 #: data/units/Drake_Sky.cfg:87 data/units/Dwarvish_Fighter.cfg:55
 #: data/units/Dwarvish_Lord.cfg:59 data/units/Dwarvish_Runemaster.cfg:28
@@ -942,7 +942,7 @@ msgstr "αγκυλωτή σφύρα"
 #: data/units/Elvish_Shaman.cfg:57 data/units/Elvish_Shyde.cfg:31
 #: data/units/Elvish_Shyde.cfg:59 data/units/Elvish_Sorceress.cfg:26
 #: data/units/Elvish_Sorceress.cfg:93 data/units/Elvish_Sylph.cfg:28
-#: data/units/Elvish_Sylph.cfg:56 data/units/Goblin_Pillager.cfg:76
+#: data/units/Elvish_Sylph.cfg:56 data/units/Goblin_Pillager.cfg:86
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:27
 #: data/units/Human_Loyalist_Iron_Mauler.cfg:30
 #: data/units/Human_Loyalist_Shock_Trooper.cfg:28 data/units/Human_Mage.cfg:57
@@ -1010,8 +1010,8 @@ msgstr ""
 #: data/units/Elvish_Marshal.cfg:55 data/units/Elvish_Outrider.cfg:68
 #: data/units/Elvish_Ranger.cfg:85 data/units/Elvish_Rider.cfg:71
 #: data/units/Elvish_Scout.cfg:68 data/units/Human_Loyalist_Bowman.cfg:60
-#: data/units/Human_Loyalist_Longbowman.cfg:38
-#: data/units/Human_Loyalist_Master_Bowman.cfg:46
+#: data/units/Human_Loyalist_Longbowman.cfg:48
+#: data/units/Human_Loyalist_Master_Bowman.cfg:56
 #: data/units/Human_Outlaw_Poacher.cfg:51
 #: data/units/Human_Outlaw_Trapper.cfg:62 data/units/Orcish_Archer.cfg:213
 #: data/units/Orcish_Archer.cfg:270 data/units/Orcish_Leader.cfg:58
@@ -1035,8 +1035,8 @@ msgstr "τόξο"
 #: data/tutorial/units/Commander.cfg:72 data/tutorial/units/Lord.cfg:66
 #: data/units/Boat_Pirate_Galleon.cfg:20
 #: data/units/Boat_Transport_Galleon.cfg:20 data/units/Drake_Clasher.cfg:103
-#: data/units/Drake_Enforcer.cfg:138 data/units/Drake_Gladiator.cfg:111
-#: data/units/Drake_Slasher.cfg:93 data/units/Drake_Warden.cfg:99
+#: data/units/Drake_Enforcer.cfg:142 data/units/Drake_Gladiator.cfg:111
+#: data/units/Drake_Slasher.cfg:123 data/units/Drake_Warden.cfg:129
 #: data/units/Dwarvish_Dragonguard.cfg:53 data/units/Dwarvish_Guardsman.cfg:31
 #: data/units/Dwarvish_Guardsman.cfg:45 data/units/Dwarvish_Sentinel.cfg:46
 #: data/units/Dwarvish_Sentinel.cfg:81 data/units/Dwarvish_Stalwart.cfg:41
@@ -1056,20 +1056,20 @@ msgstr "τόξο"
 #: data/units/Human_Horse_Knight.cfg:63 data/units/Human_Horse_Lancer.cfg:26
 #: data/units/Human_Horse_Paladin.cfg:70 data/units/Human_Horseman.cfg:25
 #: data/units/Human_Loyalist_Bowman.cfg:61
-#: data/units/Human_Loyalist_Cavalier.cfg:75
-#: data/units/Human_Loyalist_Dragoon.cfg:80
-#: data/units/Human_Loyalist_Duelist.cfg:92
-#: data/units/Human_Loyalist_General.cfg:72
-#: data/units/Human_Loyalist_Grand_Marshal.cfg:64
+#: data/units/Human_Loyalist_Cavalier.cfg:92
+#: data/units/Human_Loyalist_Dragoon.cfg:97
+#: data/units/Human_Loyalist_Duelist.cfg:102
+#: data/units/Human_Loyalist_General.cfg:87
+#: data/units/Human_Loyalist_Grand_Marshal.cfg:79
 #: data/units/Human_Loyalist_Halberdier.cfg:40
 #: data/units/Human_Loyalist_Javelineer.cfg:34
-#: data/units/Human_Loyalist_Javelineer.cfg:66
+#: data/units/Human_Loyalist_Javelineer.cfg:67
 #: data/units/Human_Loyalist_Lieutenant.cfg:57
-#: data/units/Human_Loyalist_Longbowman.cfg:39
-#: data/units/Human_Loyalist_Master_Bowman.cfg:47
-#: data/units/Human_Loyalist_Master_at_Arms.cfg:57
+#: data/units/Human_Loyalist_Longbowman.cfg:49
+#: data/units/Human_Loyalist_Master_Bowman.cfg:57
+#: data/units/Human_Loyalist_Master_at_Arms.cfg:67
 #: data/units/Human_Loyalist_Pikeman.cfg:61
-#: data/units/Human_Loyalist_Sergeant.cfg:51
+#: data/units/Human_Loyalist_Sergeant.cfg:61
 #: data/units/Human_Loyalist_Spearman.cfg:63
 #: data/units/Human_Loyalist_Spearman.cfg:111
 #: data/units/Human_Outlaw_Poacher.cfg:52
@@ -1129,7 +1129,7 @@ msgstr "σκήπτρο της φωτιάς"
 #: data/units/Drake_Fire.cfg:103 data/units/Drake_Flameheart.cfg:127
 #: data/units/Drake_Flare.cfg:121 data/units/Drake_Glider.cfg:117
 #: data/units/Drake_Hurricane.cfg:108 data/units/Drake_Inferno.cfg:114
-#: data/units/Drake_Sky.cfg:109 data/units/Drake_Warrior.cfg:105
+#: data/units/Drake_Sky.cfg:109 data/units/Drake_Warrior.cfg:125
 #: data/units/Dwarvish_Runemaster.cfg:76 data/units/Goblin_Pillager.cfg:41
 #: data/units/Human_Mage.cfg:93 data/units/Human_Mage_Arch.cfg:93
 #: data/units/Human_Mage_Great.cfg:81 data/units/Human_Mage_Red.cfg:93
@@ -1239,7 +1239,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:23
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:23
 #: data/campaigns/The_South_Guard/units/Chocobone.cfg:23
-#: data/units/Drake_Clasher.cfg:102 data/units/Drake_Enforcer.cfg:137
+#: data/units/Drake_Clasher.cfg:102 data/units/Drake_Enforcer.cfg:141
 #: data/units/Drake_Gladiator.cfg:110 data/units/Dwarvish_Guardsman.cfg:29
 #: data/units/Dwarvish_Guardsman.cfg:44 data/units/Dwarvish_Sentinel.cfg:44
 #: data/units/Dwarvish_Sentinel.cfg:80 data/units/Dwarvish_Stalwart.cfg:39
@@ -1248,7 +1248,7 @@ msgstr ""
 #: data/units/Goblin_Spearman.cfg:29 data/units/Goblin_Spearman.cfg:55
 #: data/units/Human_Horseman.cfg:24
 #: data/units/Human_Loyalist_Javelineer.cfg:33
-#: data/units/Human_Loyalist_Javelineer.cfg:65
+#: data/units/Human_Loyalist_Javelineer.cfg:66
 #: data/units/Human_Loyalist_Spearman.cfg:62
 #: data/units/Human_Loyalist_Spearman.cfg:110
 #: data/units/Merman_Entangler.cfg:24 data/units/Merman_Hunter.cfg:28
@@ -1539,7 +1539,7 @@ msgstr "ουρά"
 #: data/units/Drake_Flameheart.cfg:125 data/units/Drake_Flare.cfg:119
 #: data/units/Drake_Glider.cfg:115 data/units/Drake_Hurricane.cfg:106
 #: data/units/Drake_Inferno.cfg:112 data/units/Drake_Sky.cfg:107
-#: data/units/Drake_Warrior.cfg:103
+#: data/units/Drake_Warrior.cfg:123
 msgid "fire breath"
 msgstr "ανάσα Φωτιάς"
 
@@ -1667,7 +1667,7 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:35
-#: data/units/Drake_Enforcer.cfg:103 data/units/Drake_Gladiator.cfg:146
+#: data/units/Drake_Enforcer.cfg:105 data/units/Drake_Gladiator.cfg:146
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:26
 #: data/units/Human_Loyalist_Iron_Mauler.cfg:29
 #: data/units/Human_Mage_of_Light.cfg:45 data/units/Human_Outlaw.cfg:28
@@ -4533,11 +4533,11 @@ msgstr "Ενέργειες"
 msgid "End Turn"
 msgstr "Τέλος Γύρου"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2145
+#: data/themes/default.cfg:171 src/menu_events.cpp:217 src/unit.cpp:2160
 msgid "HP"
 msgstr "Βαθμοί Υγείας"
 
-#: data/themes/default.cfg:180 src/menu_events.cpp:218 src/menu_events.cpp:646
+#: data/themes/default.cfg:180 src/menu_events.cpp:218 src/menu_events.cpp:645
 msgid "XP"
 msgstr "Εμπειρία"
 
@@ -5255,10 +5255,10 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/units/Drake_Slasher.cfg:76 data/units/Drake_Slasher.cfg:92
-#: data/units/Drake_Warden.cfg:82 data/units/Drake_Warden.cfg:98
+#: data/units/Drake_Slasher.cfg:76 data/units/Drake_Slasher.cfg:122
+#: data/units/Drake_Warden.cfg:82 data/units/Drake_Warden.cfg:128
 #: data/units/Human_Loyalist_Halberdier.cfg:38
-#: data/units/Human_Loyalist_Halberdier.cfg:83
+#: data/units/Human_Loyalist_Halberdier.cfg:87
 msgid "halberd"
 msgstr "λογχοπέλεκυς"
 
@@ -6025,7 +6025,7 @@ msgstr ""
 msgid "torch"
 msgstr "δαυλός"
 
-#: data/units/Goblin_Pillager.cfg:75 data/units/Merman_Entangler.cfg:31
+#: data/units/Goblin_Pillager.cfg:85 data/units/Merman_Entangler.cfg:31
 #: data/units/Merman_Netcaster.cfg:30
 msgid "net"
 msgstr "δίχτυ"
@@ -6304,14 +6304,14 @@ msgid ""
 "turned the tide of some of the greatest battles in known history."
 msgstr ""
 
-#: data/units/Human_Loyalist_Cavalier.cfg:74
-#: data/units/Human_Loyalist_Dragoon.cfg:79
-#: data/units/Human_Loyalist_Duelist.cfg:91
-#: data/units/Human_Loyalist_General.cfg:71
-#: data/units/Human_Loyalist_Grand_Marshal.cfg:63
+#: data/units/Human_Loyalist_Cavalier.cfg:91
+#: data/units/Human_Loyalist_Dragoon.cfg:96
+#: data/units/Human_Loyalist_Duelist.cfg:101
+#: data/units/Human_Loyalist_General.cfg:86
+#: data/units/Human_Loyalist_Grand_Marshal.cfg:78
 #: data/units/Human_Loyalist_Lieutenant.cfg:56
-#: data/units/Human_Loyalist_Master_at_Arms.cfg:56
-#: data/units/Human_Loyalist_Sergeant.cfg:50
+#: data/units/Human_Loyalist_Master_at_Arms.cfg:66
+#: data/units/Human_Loyalist_Sergeant.cfg:60
 #: data/units/Orcish_Crossbowman.cfg:54 data/units/Orcish_Crossbowman.cfg:91
 #: data/units/Orcish_Slurbow.cfg:105 data/units/Orcish_Slurbow.cfg:162
 #: data/units/Undead_Skele_Death_Knight.cfg:64
@@ -8712,20 +8712,20 @@ msgstr "-   Σχεδιαστής γραφικών καί εικόνων"
 msgid "+Developers"
 msgstr "+Προγραμματιστές"
 
-#: src/about.cpp:65
+#: src/about.cpp:66
 msgid "+General Purpose Administrators"
 msgstr "+Διαχειριστές γενικών καθηκόντων"
 
-#: src/about.cpp:81 src/about.cpp:111 src/multiplayer_connect.cpp:256
+#: src/about.cpp:82 src/about.cpp:112 src/multiplayer_connect.cpp:256
 #: src/multiplayer_connect.cpp:310 src/multiplayer_wait.cpp:395
 msgid "+"
 msgstr ""
 
-#: src/about.cpp:88 src/about.cpp:118
+#: src/about.cpp:89 src/about.cpp:119
 msgid "+  "
 msgstr ""
 
-#: src/about.cpp:215 src/help.cpp:2745
+#: src/about.cpp:216 src/help.cpp:2745
 msgid "Close"
 msgstr "Κλείσιμο"
 
@@ -8756,8 +8756,8 @@ msgstr "βασική ζημιά "
 msgid "Halved"
 msgstr "Σώθηκε"
 
-#: src/actions.cpp:530 src/actions.cpp:665 src/actions.cpp:1264
-#: src/actions.cpp:1505
+#: src/actions.cpp:530 src/actions.cpp:665 src/actions.cpp:1266
+#: src/actions.cpp:1507
 msgid "slowed"
 msgstr "επιβραδυμένος"
 
@@ -8789,39 +8789,39 @@ msgstr "(καί οι δύο πρέπει να επιζήσουν)"
 msgid "% Pr[kills/killed by/both survive]"
 msgstr ""
 
-#: src/actions.cpp:1257 src/actions.cpp:1498
+#: src/actions.cpp:1259 src/actions.cpp:1500
 msgid "poisoned"
 msgstr "δηλητηριασμένος"
 
-#: src/actions.cpp:1274 src/actions.cpp:1516
+#: src/actions.cpp:1276 src/actions.cpp:1518
 msgid "stone"
 msgstr ""
 
-#: src/actions.cpp:2306
+#: src/actions.cpp:2309
 msgid "Ambushed!"
 msgstr "Επεσες σέ ενέδρα "
 
-#: src/actions.cpp:2341
+#: src/actions.cpp:2344
 msgid "Friendly unit sighted"
 msgstr "Εθεάθη φιλική μονάδα"
 
-#: src/actions.cpp:2343
+#: src/actions.cpp:2346
 msgid "Enemy unit sighted!"
 msgstr "Εθεάθη εχθρική μονάδα!"
 
-#: src/actions.cpp:2348
+#: src/actions.cpp:2351
 msgid "$friends Friendly units sighted"
 msgstr "Εθεάθησαν $friends φιλικές μονάδες"
 
-#: src/actions.cpp:2350
+#: src/actions.cpp:2353
 msgid "$enemies Enemy units sighted!"
 msgstr "Εθεάθησαν $friends εχθρικές μονάδες"
 
-#: src/actions.cpp:2354
+#: src/actions.cpp:2357
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Εθεάθησαν μονάδες! ($friends φιλικές, $enemies εχθρικές)"
 
-#: src/actions.cpp:2369
+#: src/actions.cpp:2372
 msgid "(press $hotkey to continue)"
 msgstr "(πάτα  $hotkey γιά νά συνεχίσεις) "
 
@@ -8869,7 +8869,7 @@ msgstr "#(μή έγκυρο)"
 msgid "Campaign"
 msgstr "Εκστρατεία"
 
-#: src/dialogs.cpp:385 src/game.cpp:1152
+#: src/dialogs.cpp:385 src/game.cpp:1153
 msgid "Multiplayer"
 msgstr "Δικτυακό Παιχνίδι"
 
@@ -8949,8 +8949,8 @@ msgstr ""
 msgid "Date"
 msgstr "ημερομηνία"
 
-#: src/dialogs.cpp:560 src/game.cpp:888 src/help.cpp:1166
-#: src/menu_events.cpp:216 src/menu_events.cpp:644
+#: src/dialogs.cpp:560 src/game.cpp:889 src/help.cpp:1166
+#: src/menu_events.cpp:216 src/menu_events.cpp:643
 #: src/multiplayer_lobby.cpp:32
 msgid "Name"
 msgstr "Όνομα"
@@ -8987,7 +8987,7 @@ msgstr "βαθμοί εμπειρίας"
 msgid "Moves: "
 msgstr "Κινήσεις: "
 
-#: src/display.cpp:529
+#: src/display.cpp:530
 msgid "Screenshot"
 msgstr ""
 
@@ -9001,7 +9001,7 @@ msgstr ""
 "Τό αρχείο πού προσπαθείσατε να φορτώσετε είναι διαβρωμένο. Παρόλα "
 "αυτάφορτώνω \n"
 
-#: src/game.cpp:647 src/multiplayer_connect.cpp:1043
+#: src/game.cpp:647 src/multiplayer_connect.cpp:1054
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -9009,7 +9009,7 @@ msgstr ""
 "Αυτό το αρχείο είναι από διαφορετική έκδοση του παιχνιδιού. Θέλετε να "
 "επιχειρήσω να το φορτώσω;"
 
-#: src/game.cpp:655 src/game.cpp:658 src/multiplayer_connect.cpp:1028
+#: src/game.cpp:655 src/game.cpp:658 src/multiplayer_connect.cpp:1039
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Τό αρχείο πού προσπαθείσατε να φορτώσετε είναι διαβρωμένο"
 
@@ -9030,244 +9030,244 @@ msgstr "Κατέβασε περισσότερες εκστρατείες από 
 msgid "Choose the campaign you want to play:"
 msgstr "Επιλέξτε την εκστρατεία που θέλετε να παίξετε:"
 
-#: src/game.cpp:784
+#: src/game.cpp:785
 msgid "Difficulty"
 msgstr "Δυσκολία"
 
-#: src/game.cpp:785
+#: src/game.cpp:786
 msgid "Select difficulty level:"
 msgstr "Επιλέξτε επίπεδο δυσκολίας:"
 
-#: src/game.cpp:810
+#: src/game.cpp:811
 msgid "B"
 msgstr "Β(bytes)"
 
-#: src/game.cpp:813
+#: src/game.cpp:814
 msgid "KB"
 msgstr "KB(kilobytes)"
 
-#: src/game.cpp:816
+#: src/game.cpp:817
 msgid "MB"
 msgstr "MB(Megabytes)"
 
-#: src/game.cpp:843
+#: src/game.cpp:844
 msgid "Connect to Server"
 msgstr "Συνδεθείτε με έναν Εξυπηρέτη"
 
-#: src/game.cpp:844
+#: src/game.cpp:845
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 "Τώρα θά συνδεθείτε με έναν εξυπηρέτη εκστρατειών γιά να κατεβάσετε "
 "εκστρατείες"
 
-#: src/game.cpp:845
+#: src/game.cpp:846
 msgid "Server: "
 msgstr "Εξυπηρέτης: "
 
-#: src/game.cpp:858
+#: src/game.cpp:859
 msgid "Could not connect to host."
 msgstr "Η σύνδεση με τον απομακρυσμένο Η/Υ απέτυχε"
 
-#: src/game.cpp:866
+#: src/game.cpp:867
 msgid "Asking for campaign list"
 msgstr ""
 
-#: src/game.cpp:879
+#: src/game.cpp:880
 msgid "Error communicating with the server."
 msgstr "Σφάλμα επικοινωνίας με τον εξυπηρέτη"
 
-#: src/game.cpp:888 src/titlescreen.cpp:183
+#: src/game.cpp:889 src/titlescreen.cpp:183
 msgid "Version"
 msgstr "Έκδοση"
 
-#: src/game.cpp:889
+#: src/game.cpp:890
 msgid "Author"
 msgstr "Δημιουργός"
 
-#: src/game.cpp:889
+#: src/game.cpp:890
 msgid "Downloads"
 msgstr "κατεβάσματα"
 
-#: src/game.cpp:889
+#: src/game.cpp:890
 msgid "Size"
 msgstr "Μέγεθος"
 
-#: src/game.cpp:950
+#: src/game.cpp:951
 msgid "Publish campaign: "
 msgstr "Δημοσίευσε Εκστρατεία"
 
-#: src/game.cpp:954
+#: src/game.cpp:955
 msgid "Delete campaign: "
 msgstr "Διέγραψε Εκστρατεία"
 
-#: src/game.cpp:958
+#: src/game.cpp:959
 msgid "There are no campaigns available for download from this server."
 msgstr ""
 "Δεν υπάρχουν διαθέσιμες εκστρατείες γιά κατέβασμα από αυτόν τόν εξυπηρέτη"
 
-#: src/game.cpp:965
+#: src/game.cpp:966
 msgid "Choose the campaign to download."
 msgstr "Επέλεξε την εκστρατεία πού θές να κατεβάσεις"
 
-#: src/game.cpp:965
+#: src/game.cpp:966
 msgid "Get Campaign"
 msgstr "Κατέβασε Εκστρατεία"
 
-#: src/game.cpp:985
+#: src/game.cpp:986
 msgid "Downloading campaign..."
 msgstr "Κατεβάζω την εκστρατεία..."
 
-#: src/game.cpp:1009
+#: src/game.cpp:1010
 msgid "Cannot rescan the filesystem"
 msgstr "Δέν μπορώ να ξανασκανάρω τό σύστημα αρχείων"
 
-#: src/game.cpp:1024
+#: src/game.cpp:1025
 msgid "Campaign Installed"
 msgstr "Εκστρατεία εγκαταστάθηκε"
 
-#: src/game.cpp:1024
+#: src/game.cpp:1025
 msgid "The campaign has been installed."
 msgstr "Η εκστρατεία έχει εγκατασταθεί"
 
-#: src/game.cpp:1026
+#: src/game.cpp:1027
 msgid "Network communication error."
 msgstr "Σφάλμα επικοινωνίας δικτύου"
 
-#: src/game.cpp:1028
+#: src/game.cpp:1029
 msgid "Remote host disconnected."
 msgstr "Ο μακρινός υπολογιστής έχει αποσυνδεθεί"
 
-#: src/game.cpp:1030
+#: src/game.cpp:1031
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Υπήρξε πρόβλημα κατά την δημιουργία των αρχείων πού χρειάζονται γιά "
 "εγκατάσταση της εκστρατείας"
 
-#: src/game.cpp:1042 src/game.cpp:1081 src/game.cpp:1106
+#: src/game.cpp:1043 src/game.cpp:1082 src/game.cpp:1107
 #: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:335
 msgid "Connection timed out"
 msgstr "Τό χρονικό περιθώριο της σύνδεσης έληξε"
 
-#: src/game.cpp:1045 src/game.cpp:1083 src/game.cpp:1108
+#: src/game.cpp:1046 src/game.cpp:1084 src/game.cpp:1109
 msgid "The server responded with an error: \""
 msgstr "Ο εξυπηρέτης απάντησε μέ λάθος: \""
 
-#: src/game.cpp:1049
+#: src/game.cpp:1050
 msgid "Terms"
 msgstr "Οροι"
 
-#: src/game.cpp:1079
+#: src/game.cpp:1080
 #, fuzzy
 msgid "Sending campaign"
 msgstr "Κατεβάζω την εκστρατεία..."
 
-#: src/game.cpp:1086 src/game.cpp:1111 src/multiplayer_wait.cpp:303
+#: src/game.cpp:1087 src/game.cpp:1112 src/multiplayer_wait.cpp:303
 msgid "Response"
 msgstr "Απάντηση"
 
-#: src/game.cpp:1133
+#: src/game.cpp:1134
 msgid "Join Official Server"
 msgstr "Συνδεθείτε με τον Επίσημο Εξυπηρέτη"
 
-#: src/game.cpp:1134
+#: src/game.cpp:1135
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Μπές στόν επίσημο εξυπηρέτη του παιχνιδιού γιά πολλούς παίχτες"
 
-#: src/game.cpp:1136 src/multiplayer_lobby.cpp:449
+#: src/game.cpp:1137 src/multiplayer_lobby.cpp:449
 msgid "Join Game"
 msgstr "Συνδεθείτε σε Δικτυακό Παιχνίδι"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1138
 msgid "Join a server or hosted game"
 msgstr "Συνδεθείτε με έναν εξυπηρέτη ή με απομακρυσμένο Η/Υ"
 
-#: src/game.cpp:1139
+#: src/game.cpp:1140
 msgid "Host Networked Game"
 msgstr "Ξεκινήστε Δικτυακό Παιχνίδι"
 
-#: src/game.cpp:1140
+#: src/game.cpp:1141
 msgid "Host a game without using a server"
 msgstr "Φιλοξένησε ένα παιχνίδι χωρίς να χρησιμοποιήσεις εξυπηρέτη"
 
-#: src/game.cpp:1142
+#: src/game.cpp:1143
 msgid "Hotseat Game"
 msgstr "Παιχνίδι καυτής καρέκλας"
 
-#: src/game.cpp:1143
+#: src/game.cpp:1144
 msgid "Play a multiplayer game sharing the same machine"
 msgstr ""
 "Παίξε ένα παιχνίδι με πολλούς αντιπάλους πού μοιράζονται τό ίδιο μηχάνημα"
 
-#: src/game.cpp:1145
+#: src/game.cpp:1146
 msgid "Human vs AI"
 msgstr "Ανθρωπος εναντίον υπολογιστή"
 
-#: src/game.cpp:1146
+#: src/game.cpp:1147
 msgid "Play a game against AI opponents"
 msgstr "Παίξε ένα παιχνίδι εναντίον αντιπάλων πού χειρίζεται ο υπολογιστής"
 
-#: src/game.cpp:1154 src/multiplayer.cpp:189
+#: src/game.cpp:1155 src/multiplayer.cpp:189
 msgid "Login: "
 msgstr "Ονομα Εισόδου(Login):"
 
-#: src/game.cpp:1156
+#: src/game.cpp:1157
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
 
-#: src/game.cpp:1190 src/playcampaign.cpp:109 src/playcampaign.cpp:314
+#: src/game.cpp:1191 src/playcampaign.cpp:109 src/playcampaign.cpp:314
 msgid "The game could not be loaded: "
 msgstr "Η φόρτωση του παιχνιδιού ήταν αδύνατη: "
 
-#: src/game.cpp:1192 src/playcampaign.cpp:111 src/playcampaign.cpp:317
+#: src/game.cpp:1193 src/playcampaign.cpp:111 src/playcampaign.cpp:317
 msgid "Error while playing the game: "
 msgstr "Σφάλμα ενώ έπαιζες τό παιχνίδι:"
 
-#: src/game.cpp:1204 src/playcampaign.cpp:113 src/playcampaign.cpp:320
+#: src/game.cpp:1205 src/playcampaign.cpp:113 src/playcampaign.cpp:320
 msgid "The game map could not be loaded: "
 msgstr "Η φόρτωση του χάρτη ήταν αδύνατη: "
 
-#: src/game.cpp:1228
+#: src/game.cpp:1229
 msgid "Language"
 msgstr "Γλώσσα"
 
-#: src/game.cpp:1229
+#: src/game.cpp:1230
 msgid "Choose your preferred language:"
 msgstr "Επιλέξτε τη γλώσσα που προτιμάτε:"
 
-#: src/game.cpp:1370
+#: src/game.cpp:1371
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr ""
 "Οι παρακάτω πρόσθετες εκστρατείες είχαν πρόβλημα καί δέν έγινε δυνατόν να "
 "φορτωθούν: "
 
-#: src/game.cpp:1375
+#: src/game.cpp:1376
 msgid "ERROR DETAILS:"
 msgstr "ΛΕΠΤΟΜΕΡΕΙΣ ΠΛΗΡΟΦΟΡΙΕΣ ΣΦΑΛΜΑΤΩΝ"
 
-#: src/game.cpp:1384
+#: src/game.cpp:1385
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Προειδοποίση: Προέκυψαν σφάλματα κατά τη φόρτωση αρχείων διάρθρωσης"
 
-#: src/game.cpp:1434
+#: src/game.cpp:1435
 msgid "Error loading game configuration files: '"
 msgstr "Σφάλμα κατά τη φόρτωση αρχείων διάρθρωσης"
 
-#: src/game.cpp:1435
+#: src/game.cpp:1436
 msgid "' (The game will now exit)"
 msgstr "(Τό παιχνίδι τώρα θά κλείσει)"
 
-#: src/game.cpp:1548
+#: src/game.cpp:1549
 msgid "Battle for Wesnoth"
 msgstr "Η Μάχη για το Wesnoth"
 
-#: src/game_events.cpp:714
+#: src/game_events.cpp:717
 msgid "Victory:"
 msgstr "Νίκη:"
 
-#: src/game_events.cpp:717
+#: src/game_events.cpp:720
 msgid "Defeat:"
 msgstr "Ηττα:"
 
@@ -9300,7 +9300,7 @@ msgstr "Απαιτούμενη εμπειρία: "
 msgid "attacks"
 msgstr "επιθέσεις"
 
-#: src/help.cpp:1167 src/menu_events.cpp:215 src/menu_events.cpp:643
+#: src/help.cpp:1167 src/menu_events.cpp:215 src/menu_events.cpp:642
 msgid "Type"
 msgstr "Τύπος"
 
@@ -9484,7 +9484,7 @@ msgstr ""
 msgid "Statistics"
 msgstr "Στατιστικά"
 
-#: src/menu_events.cpp:220 src/unit.cpp:2176
+#: src/menu_events.cpp:220 src/unit.cpp:2191
 msgid "Moves"
 msgstr "Κινήσεις"
 
@@ -9569,7 +9569,7 @@ msgstr "Δέν έχεις διαθέσιμες μονάδες γιά στρατ�
 msgid "Recruit"
 msgstr "Στρατολόγηση"
 
-#: src/menu_events.cpp:545 src/menu_events.cpp:685
+#: src/menu_events.cpp:545 src/menu_events.cpp:684
 msgid "Select unit:"
 msgstr "Επιλέξτε μονάδα:"
 
@@ -9586,73 +9586,73 @@ msgstr ""
 #, fuzzy
 msgid ""
 "There are no troops available to recall\n"
-"\t(You must have veteran survivors from a previous scenario)"
+"(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "Δεν υπάρχουν μονάδες γιά ανάκληση (Πρέπει νά έχεις βετεράνους πού επέζησαν "
 "από προηγούμενα σενάρια)"
 
-#: src/menu_events.cpp:645
+#: src/menu_events.cpp:644
 msgid "Level"
 msgstr "Επίπεδο"
 
-#: src/menu_events.cpp:672
+#: src/menu_events.cpp:671
 msgid "Dismiss Unit"
 msgstr "Απέλυσε την μονάδα "
 
-#: src/menu_events.cpp:684
+#: src/menu_events.cpp:683
 msgid "Recall"
 msgstr "Ανάκληση"
 
-#: src/menu_events.cpp:696
+#: src/menu_events.cpp:695
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr ""
 
-#: src/menu_events.cpp:961
+#: src/menu_events.cpp:963
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 
-#: src/menu_events.cpp:969 src/menu_events.cpp:974
+#: src/menu_events.cpp:971 src/menu_events.cpp:976
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
-#: src/menu_events.cpp:988
+#: src/menu_events.cpp:990
 msgid "Auto-Save"
 msgstr ""
 
-#: src/menu_events.cpp:990
+#: src/menu_events.cpp:992
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 
-#: src/menu_events.cpp:1023
+#: src/menu_events.cpp:1025
 msgid "Rename Unit"
 msgstr ""
 
-#: src/menu_events.cpp:1108
+#: src/menu_events.cpp:1110
 msgid "Place Label"
 msgstr "Δώσε Ονομα"
 
-#: src/menu_events.cpp:1109
+#: src/menu_events.cpp:1111
 msgid "Label:"
 msgstr "Ονομα:"
 
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1209
 msgid "Search"
 msgstr "Ερευνα"
 
-#: src/menu_events.cpp:1394
+#: src/menu_events.cpp:1396
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/menu_events.cpp:1503
+#: src/menu_events.cpp:1513
 msgid "prompt^Command:"
 msgstr ""
 
-#: src/mouse_events.cpp:177 src/mouse_events.cpp:293
+#: src/mouse_events.cpp:177 src/mouse_events.cpp:287
 msgid "Attacker"
 msgstr "Επιτιθέμενος"
 
-#: src/mouse_events.cpp:178 src/mouse_events.cpp:292
+#: src/mouse_events.cpp:178 src/mouse_events.cpp:286
 msgid "Defender"
 msgstr "Αμυνόμενος"
 
@@ -9660,53 +9660,58 @@ msgstr "Αμυνόμενος"
 msgid "Expected Battle Result (hp)"
 msgstr ""
 
-#: src/mouse_events.cpp:281
-#, fuzzy
-msgid "Leadership"
-msgstr "ηγεσία"
-
-#: src/mouse_events.cpp:294
+#: src/mouse_events.cpp:288
 #, fuzzy
 msgid " resistance vs "
 msgstr "Αντιστάσεις"
 
-#: src/mouse_events.cpp:295
+#: src/mouse_events.cpp:289
 #, fuzzy
 msgid " vulnerability vs "
 msgstr "αδυναμία επιτιθέμενου εναντίον"
 
-#: src/mouse_events.cpp:305
+#: src/mouse_events.cpp:299
 #, fuzzy
 msgid "Slowed"
 msgstr "επιβραδυμένος"
 
-#: src/mouse_events.cpp:321
+#: src/mouse_events.cpp:306
+#, fuzzy
+msgid "Time of day"
+msgstr "Ωρα της ημέρας"
+
+#: src/mouse_events.cpp:316
+#, fuzzy
+msgid "Leadership"
+msgstr "ηγεσία"
+
+#: src/mouse_events.cpp:323
 #, fuzzy
 msgid "Total damage"
 msgstr "συνολική ζημιά"
 
-#: src/mouse_events.cpp:328
+#: src/mouse_events.cpp:330
 #, fuzzy
 msgid "No usable weapon"
 msgstr "Επιλέξτε όπλο:"
 
-#: src/mouse_events.cpp:333
+#: src/mouse_events.cpp:335
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:631 src/mouse_events.cpp:1225
+#: src/mouse_events.cpp:636 src/mouse_events.cpp:1230
 msgid "Damage Calculations"
 msgstr "Υπολογισμοί Ζημιάς"
 
-#: src/mouse_events.cpp:1203 src/reports.cpp:278
+#: src/mouse_events.cpp:1208 src/reports.cpp:278
 msgid "vs"
 msgstr "εναντίων"
 
-#: src/mouse_events.cpp:1237
+#: src/mouse_events.cpp:1242
 msgid "Attack Enemy"
 msgstr ""
 
-#: src/mouse_events.cpp:1238
+#: src/mouse_events.cpp:1243
 msgid "Choose weapon:"
 msgstr "Επιλέξτε όπλο:"
 
@@ -9762,12 +9767,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2231
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:393 src/unit.cpp:2246
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2238
+#: src/multiplayer_wait.cpp:388 src/multiplayer_wait.cpp:396 src/unit.cpp:2253
 msgid ")"
 msgstr ")"
 
@@ -9829,41 +9834,41 @@ msgstr ""
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: src/multiplayer_connect.cpp:591
+#: src/multiplayer_connect.cpp:602
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:935
+#: src/multiplayer_connect.cpp:946
 msgid "Network Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:936
+#: src/multiplayer_connect.cpp:947
 msgid "Local Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:937
+#: src/multiplayer_connect.cpp:948
 msgid "Computer Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:938
+#: src/multiplayer_connect.cpp:949
 msgid "Empty"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1035
+#: src/multiplayer_connect.cpp:1046
 msgid "This is not a multiplayer save"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1083
+#: src/multiplayer_connect.cpp:1094
 msgid "Cannot find era $era"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1101
+#: src/multiplayer_connect.cpp:1112
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1137
+#: src/multiplayer_connect.cpp:1148
 msgid "Waiting for players to join..."
 msgstr "Περιμένοντας τους άλλους παίκτες να συνδεθούν..."
 
@@ -10075,7 +10080,7 @@ msgstr "Παρακολούθησε τό παιχνίδι"
 
 #: src/multiplayer_lobby.cpp:451
 #, fuzzy
-msgid "Skip Replays"
+msgid "Quick Replays"
 msgstr "Δείτε το  replay"
 
 #: src/multiplayer_lobby.cpp:452
@@ -10485,15 +10490,15 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr " Η βίβλος του Γουέσνοθ "
 
-#: src/unit.cpp:2111 src/unit.cpp:2236
+#: src/unit.cpp:2126 src/unit.cpp:2251
 msgid "; "
 msgstr ""
 
-#: src/unit.cpp:2193
+#: src/unit.cpp:2208
 msgid "XP to advance"
 msgstr "απαιτούμενες μονάδες εμπειρίας γιά εξέλιξη"
 
-#: src/unit.cpp:2227
+#: src/unit.cpp:2242
 msgid ": "
 msgstr " :"
 
@@ -10501,19 +10506,19 @@ msgstr " :"
 msgid "strikes"
 msgstr "χτυπήματα"
 
-#: src/unit_types.cpp:1171
+#: src/unit_types.cpp:1131
 msgid "chaotic"
 msgstr "χαοτικός"
 
-#: src/unit_types.cpp:1171
+#: src/unit_types.cpp:1131
 msgid "lawful"
 msgstr " νομοταγής"
 
-#: src/unit_types.cpp:1171
+#: src/unit_types.cpp:1131
 msgid "neutral"
 msgstr "ουδέτερος "
 
-#: src/upload_log.cpp:275
+#: src/upload_log.cpp:276
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
@@ -10521,15 +10526,15 @@ msgid ""
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
 
-#: src/upload_log.cpp:276
-msgid "You can see the summaries to be sent in "
+#: src/upload_log.cpp:277
+msgid "Summaries are stored here:"
 msgstr ""
 
-#: src/upload_log.cpp:278
-msgid "You can view the results at "
+#: src/upload_log.cpp:279
+msgid "You can view the results at:"
 msgstr ""
 
-#: src/upload_log.cpp:283
+#: src/upload_log.cpp:284
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
 
