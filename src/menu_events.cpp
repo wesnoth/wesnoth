@@ -1437,6 +1437,11 @@ namespace events{
 			}
 
 			network::send_data(cfg);
+		} else if (cmd == "muteall") {
+			config cfg;
+			config& mute = cfg.add_child(cmd);
+
+			network::send_data(cfg);
 		} else if(cmd == "control") {
 			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
 			if(j != data.end()) {

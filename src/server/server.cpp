@@ -837,25 +837,29 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		return;
 	}
 
+	//if all observers are muted
+	if (g->is_owner(sock) && data.child("muteall") != NULL){
+		if (!g->all_observers_muted()){
+			g->mute_all_observers(true);
+			const config& p_msg = construct_server_message("all observers have been muted",*g);
+			g->send_data(p_msg);
+		}
+		else{
+			g->mute_all_observers(false);
+			const config& p_msg = construct_server_message("mute of all observers is removed",*g);
+			g->send_data(p_msg);
+		}
+	}
+
 	//if an observer is muted
-	if(g->is_owner(sock) && (data.child("mute") != NULL)) {
+	if(g->is_owner(sock) && data.child("mute") != NULL) {
 		const config& u = *data.child("mute");
 		std::string name = u["username"];
 		std::string lower_name;
 		lower_name.resize(name.size());
 		std::transform(name.begin(), name.end(), lower_name.begin(), tolower);
 
-		if (lower_name == "on"){
-			g->mute_all_observers(true);
-			const config& p_msg = construct_server_message("all observers have been muted",*g);
-			g->send_data(p_msg);
-		}
-		else if (lower_name == "off"){
-			g->mute_all_observers(false);
-			const config& p_msg = construct_server_message("mute of all observers is removed",*g);
-			g->send_data(p_msg);
-		}
-		else{
+		if (!name.empty()){
 			player_map::iterator pl;
 			for(pl = players_.begin(); pl != players_.end(); ++pl) {
 				if(pl->second.name() == name) {
@@ -872,6 +876,25 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 					g->send_data(p_msg, pl->first);
 				}
 			}
+		}
+		else{
+			std::string muted_nicks = "";
+			user_vector users = g->all_game_users();
+			const player* player;
+
+			for (user_vector::const_iterator user = users.begin(); user != users.end(); user++){
+				if ((g->all_observers_muted() && g->is_observer(*user))
+					|| (!g->all_observers_muted() && g->is_muted_observer(*user))){
+					player = g->find_player(*user);
+					if (player != NULL){
+						if (muted_nicks != "") { muted_nicks += ", "; }
+						muted_nicks += player->name();
+					}
+				}
+			}
+
+			const config& p_msg = construct_server_message("muted observers: " + muted_nicks,*g);
+			g->send_data(p_msg);
 		}
 	}
 
@@ -1175,7 +1198,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			//spoofing of messages
 			const player_map::const_iterator pl = players_.find(sock);
 			wassert(pl != players_.end());
-			if (g->all_observers_muted() || g->is_muted_observer(sock)){
+			if ((g->all_observers_muted() && g->is_observer(sock)) || g->is_muted_observer(sock)){
 				const config& msg = construct_server_message("You have been muted, others can't see your message!",*g);
 				network::send_data(msg, pl->first);
 				return;
