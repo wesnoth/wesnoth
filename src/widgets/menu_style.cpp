@@ -43,7 +43,7 @@ namespace gui {
 	//static initializations
 menu::style gui::menu::default_style;
 #ifdef WESNOTH_PATH
-menu::imgsel_style gui::menu::slateborder_style( WESNOTH_PATH + "/images/misc/selection");
+menu::imgsel_style gui::menu::slateborder_style( WESNOTH_PATH "/images/misc/selection");
 #else
 menu::imgsel_style gui::menu::slateborder_style("./images/misc/selection");
 #endif

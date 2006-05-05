@@ -120,6 +120,7 @@ wesnoth_SOURCES = \
 	widgets/combo.cpp \
 	widgets/label.cpp \
 	widgets/menu.cpp \
+	widgets/menu_style.cpp \
 	widgets/image_button.cpp \
 	widgets/progressbar.cpp \
 	widgets/scrollarea.cpp \

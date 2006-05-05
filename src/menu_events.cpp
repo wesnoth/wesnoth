@@ -1432,7 +1432,7 @@ namespace events{
 		} else if (cmd == "mute") {
 			config cfg;
 			config& mute = cfg.add_child(cmd);
-			if (! (data == str.end())){
+			if (!data.empty()) {
 				mute["username"] = data;
 			}
 
