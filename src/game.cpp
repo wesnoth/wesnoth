@@ -754,7 +754,8 @@ bool game_controller::new_campaign()
 	wassert(campaign_names.size() > 0);
 	res = gui::show_dialog(disp(),NULL,_("Campaign"),
 			_("Choose the campaign you want to play:"),
-			gui::OK_CANCEL,&campaign_names,&preview_panes);
+			gui::OK_CANCEL,&campaign_names,&preview_panes,
+			"",NULL,256,NULL,NULL,-1,-1,NULL,NULL,"",NULL,&gui::menu::slateborder_style);
 
 	if(res == -1) {
 		return false;
@@ -963,7 +964,7 @@ void game_controller::download_campaigns()
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_numeric_sort(4).set_position_sort(5,sizes);
 
 		const int index = gui::show_dialog(disp(),NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&options,
-			                               NULL,"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter);
+			                               NULL,"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter,&gui::menu::slateborder_style);
 		if(index < 0) {
 			return;
 		}

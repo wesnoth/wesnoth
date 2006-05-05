@@ -136,7 +136,8 @@ int show_dialog(display &screen, surface image,
 				const std::string* dialog_style=NULL,
 				std::vector<dialog_button>* buttons=NULL,
 				const std::string& help_topic="",
-				const menu::sorter* sorter=NULL
+				const menu::sorter* sorter=NULL,
+				menu::style* menu_style=NULL
 			 );
 
 void show_error_message(display &disp, std::string const &message);

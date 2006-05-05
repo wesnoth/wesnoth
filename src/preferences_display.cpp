@@ -606,7 +606,8 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 			std::vector<gui::preview_pane*> panes;
 			panes.push_back(&dialog);
 
-			gui::show_dialog(disp,NULL,_("Preferences"),"",gui::CLOSE_ONLY,&items,&panes);
+			gui::show_dialog(disp,NULL,_("Preferences"),"",gui::CLOSE_ONLY,&items,&panes,
+						"",NULL,256,NULL,NULL,-1,-1,NULL,NULL,"",NULL,&gui::menu::slateborder_style);
 			return;
 		} catch(preferences_dialog::video_mode_change_exception& e) {
 			switch(e.type) {

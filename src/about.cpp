@@ -58,6 +58,7 @@ std::vector<std::string> get_text(std::string campaign) {
 		"-   Kristoffer Erlandsson (erl)",
 		"-   Maksim Orlovich (SadEagle)",
 		"-   Nicolas Weeger (Ryo)",
+		"-   Patrick Parker (Sapient)",
 		"-   Philippe Plantier (Ayin)",
 		"-   Rusty Russell (rusty)",
 		"-   Yann Dirson",

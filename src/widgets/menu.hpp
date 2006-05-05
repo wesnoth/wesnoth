@@ -33,6 +33,55 @@ class menu : public scrollarea
 {
 public:
 
+	enum ROW_TYPE { NORMAL_ROW, SELECTED_ROW, HEADING_ROW };
+	//basic menu style
+	class style
+	{
+	public:
+		style();
+
+		virtual SDL_Rect item_size(const std::string& item) const;
+		virtual void draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
+
+		size_t get_font_size() const;
+		virtual size_t get_cell_padding();
+
+	protected:
+		size_t font_size_;
+		size_t cell_padding_;
+
+		int normal_rgb_, selected_rgb_, heading_rgb_;
+		double normal_alpha_, selected_alpha_, heading_alpha_;
+	};
+
+	//image-border selction style
+	class imgsel_style : public style
+	{
+	public:
+		imgsel_style(const std::string &img_base);
+
+		virtual SDL_Rect item_size(const std::string& item) const;
+		virtual void draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
+		virtual size_t get_cell_padding();
+
+		bool load_images();
+
+	protected:
+		size_t thickness_; //image-border width/height
+		const std::string img_base_;
+
+		std::map<std::string,surface> img_map_;
+	private:
+		bool load_image(const std::string &img_sub);
+		bool initialized_;
+		bool load_failed_;
+
+	};
+	friend class style;
+	friend class imgsel_style;
+	static style default_style;
+	static imgsel_style slateborder_style;
+
 	struct item
 	{
 		item() : id(0)
@@ -78,7 +127,7 @@ public:
 
 	menu(CVideo& video, const std::vector<std::string>& items,
 	     bool click_selects=false, int max_height=-1, int max_width=-1,
-		 const sorter* sorter_obj=NULL);
+		 const sorter* sorter_obj=NULL, style *menu_style=NULL);
 
 	int selection() const;
 
@@ -125,6 +174,7 @@ protected:
 
 	bool requires_event_focus() const { return true; };
 
+	style *style_;
 private:
 	size_t max_items_onscreen() const;
 
@@ -162,7 +212,6 @@ private:
 	const std::vector<int>& column_widths() const;
 	void column_widths_item(const std::vector<std::string>& row, std::vector<int>& widths) const;
 
-	enum ROW_TYPE { NORMAL_ROW, SELECTED_ROW, HEADING_ROW };
 	void draw_row(const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
 	void clear_item(int item);
 	void draw_contents();
@@ -220,6 +269,8 @@ private:
 
 	std::set<int> invalid_;
 };
+
+
 
 }
 
