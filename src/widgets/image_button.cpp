@@ -64,13 +64,7 @@ image_button::image_button(CVideo& video, std::string button_image_name, SPACE_C
 void image_button::calculate_size()
 {
 	SDL_Rect const &loc = location();
-	bool change_size = loc.h == 0 || loc.w == 0;
-
-	if (!change_size) {
-		unsigned w = loc.w - horizontal_padding;
-	}
-
-	if (!change_size)
+	if (loc.h != 0 && loc.w != 0)
 		return;
 
 #ifdef USE_TINY_GUI
@@ -125,9 +119,7 @@ void image_button::draw_contents()
 		break;
 	}
 
-	SDL_Rect const &clipArea = screen_area();
 	SDL_Rect const &loc = location();
-	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
 	int textx;
 
 	textx = loc.x + image_w + checkbox_horizontal_padding / 2;

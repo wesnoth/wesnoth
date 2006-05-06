@@ -223,7 +223,7 @@ private:
 	int hit(int x, int y) const;
 
 	std::pair<int,int> hit_cell(int x, int y) const;
-	int hit_column(int x, int y) const;
+	int hit_column(int x) const;
 
 	int hit_heading(int x, int y) const;
 

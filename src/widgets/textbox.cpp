@@ -390,7 +390,7 @@ void textbox::handle_event(const SDL_Event& event)
 		int distance = x;
 
 		for(unsigned int i = 1; i < char_x_.size(); ++i) {
-			if(yscroll_ + y < char_y_[i]) {
+			if((int)yscroll_ + y < char_y_[i]) {
 				break;
 			}
 
@@ -446,7 +446,7 @@ void textbox::handle_event(const SDL_Event& event)
 	if(c == SDLK_LEFT && cursor_ > 0)
 		--cursor_;
 
-	if(c == SDLK_RIGHT && cursor_ < text_.size())
+	if(c == SDLK_RIGHT && cursor_ < (int)text_.size())
 		++cursor_;
 
 	// ctrl-a, ctrl-e and ctrl-u are readline style shortcuts, even on Macs
@@ -483,7 +483,7 @@ void textbox::handle_event(const SDL_Event& event)
 		if(is_selection()) {
 			erase_selection();
 		} else {
-			if(cursor_ == text_.size()) {
+			if(cursor_ == (int)text_.size()) {
 				text_.resize(text_.size()-1);
 				--cursor_;
 			} else {

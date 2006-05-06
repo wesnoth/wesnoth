@@ -93,7 +93,7 @@ void scrollpane::remove_widget(widget* w)
 	update_content_size();
 }
 
-void scrollpane::set_inner_location(const SDL_Rect& rect)
+void scrollpane::set_inner_location(const SDL_Rect& /*rect*/)
 {
 	for(widget_map::iterator itor = content_.begin(); itor != content_.end(); ++itor) {
 		itor->second.w->set_clip_rect(client_area());
@@ -158,8 +158,8 @@ SDL_Rect scrollpane::client_area() const
 
 void scrollpane::update_content_size()
 {
-	int maxx = 0;
-	int maxy = 0;
+	unsigned int maxx = 0;
+	unsigned int maxy = 0;
 
 	for(widget_map::iterator itor = content_.begin(); itor != content_.end(); ++itor) {
 		if(itor->second.x + itor->second.w->width() > maxx) {
