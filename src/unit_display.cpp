@@ -33,7 +33,7 @@
 namespace
 {
 
-void teleport_unit_between(display& disp, const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& u)
+void teleport_unit_between(display& disp, const gamemap::location& a, const gamemap::location& b, unit& u)
 {
 	if(disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)) {
 		return;
@@ -147,7 +147,7 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 
 		if(!invisible) {
 			if( !tiles_adjacent(path[i], path[i+1])) {
-				teleport_unit_between(disp,map,path[i],path[i+1],u);
+				teleport_unit_between(disp,path[i],path[i+1],u);
 			} else {
 				move_unit_between(disp,map,path[i],path[i+1],u);
 			}
@@ -165,7 +165,7 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 	}
 }
 
-void unit_die(display& disp, const gamemap &map,const gamemap::location& loc, unit& u, const attack_type* attack)
+void unit_die(display& disp,const gamemap::location& loc, unit& u, const attack_type* attack)
 {
 	if(disp.update_locked() || disp.fogged(loc.x,loc.y) || preferences::show_combat() == false) {
 		return;
@@ -193,7 +193,7 @@ void unit_die(display& disp, const gamemap &map,const gamemap::location& loc, un
 
 namespace {
 
-bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
+bool unit_attack_ranged(display& disp, unit_map& units,
                         const gamemap::location& a, const gamemap::location& b,
 			int damage, const attack_type& attack, bool update_display)
 
@@ -329,7 +329,7 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 
 
 	if(dead) {
-		unit_display::unit_die(disp,map,def->first,def->second,&attack);
+		unit_display::unit_die(disp,def->first,def->second,&attack);
 	} else {
 		def->second.set_standing(disp);
 	}
@@ -344,7 +344,7 @@ bool unit_attack_ranged(display& disp,const gamemap& map, unit_map& units,
 
 } //end anon namespace
 
-bool unit_attack(display& disp, unit_map& units, const gamemap& map,
+bool unit_attack(display& disp, unit_map& units,
                  const gamemap::location& a, const gamemap::location& b, int damage,
                  const attack_type& attack, bool update_display)
 {
@@ -371,7 +371,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	att->second.set_facing(a.get_relative_dir(b));
 	def->second.set_facing(b.get_relative_dir(a));
 	if(attack.range_type() == attack_type::LONG_RANGE) {
-		return unit_attack_ranged(disp, map,units, a, b, damage, attack, update_display);
+		return unit_attack_ranged(disp, units, a, b, damage, attack, update_display);
 	}
 
 	const bool hits = damage > 0;
@@ -451,7 +451,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 
 	if(dead) {
-		unit_display::unit_die(disp,map,def->first,def->second,&attack);
+		unit_display::unit_die(disp,def->first,def->second,&attack);
 	} else {
 		def->second.set_standing(disp);
 	}

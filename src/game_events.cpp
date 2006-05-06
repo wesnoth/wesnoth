@@ -1386,7 +1386,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			if(game_events::unit_matches_filter(un,cfg)) {
 				if(utils::string_bool(cfg["animate"])) {
 					screen->scroll_to_tile(un->first.x,un->first.y);
-					unit_display::unit_die(*screen,*game_map,un->first,un->second);
+					unit_display::unit_die(*screen,un->first,un->second);
 				}
 
 				if(utils::string_bool(cfg["fire_event"])) {

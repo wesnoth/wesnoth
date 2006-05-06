@@ -1093,7 +1093,7 @@ void attack(display& gui, const gamemap& map,
 				}
 			}
 			
-			bool dies = unit_display::unit_attack(gui,units,map,attacker,defender,
+			bool dies = unit_display::unit_attack(gui,units,attacker,defender,
 				            damage_defender_takes,
 							*a_stats.weapon, 
 							update_display);
@@ -1340,7 +1340,7 @@ void attack(display& gui, const gamemap& map,
 				}
 			}
 
-			bool dies = unit_display::unit_attack(gui,units,map,defender,attacker,
+			bool dies = unit_display::unit_attack(gui,units,defender,attacker,
 			               damage_attacker_takes,
 						   *d_stats.weapon, 
 						   update_display);
