@@ -1037,10 +1037,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	//adding new items
 	else if(cmd == "item") {
 		gamemap::location loc = cfg_to_loc(cfg);
-		const std::string& img = cfg["image"];
-		const std::string& halo = cfg["halo"];
+		std::string img = cfg["image"];
+		std::string halo = cfg["halo"];
+		wassert(state_of_game != NULL);
+		img = utils::interpolate_variables_into_string(img, *state_of_game);
+		halo = utils::interpolate_variables_into_string(halo, *state_of_game);
 		if(!img.empty() || !halo.empty()) {
-			screen->add_overlay(loc,img,cfg["halo"]);
+			screen->add_overlay(loc,img,halo);
 			screen->invalidate(loc);
 			screen->draw();
 		}
