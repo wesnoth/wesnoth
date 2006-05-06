@@ -185,9 +185,6 @@ wesnoth_editor_SOURCES = \
 	pathfind.cpp \
 	config_adapter.cpp \
 	intro.cpp \
-	ai_move.cpp \
-	ai_attack.cpp \
-	ai.cpp \
 	attack_prediction.cpp \
 	playturn.cpp \
 	preferences.cpp \
