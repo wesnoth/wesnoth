@@ -199,7 +199,7 @@ bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) cons
 		case hotkey::HOTKEY_SPEAK_ALL:
 		case hotkey::HOTKEY_CLEAR_LABELS:
 			return network::nconnections() > 0;
+	    default:
+			return playsingle_controller::can_execute_command(command);
 	}
-
-	return playsingle_controller::can_execute_command(command);
 }
