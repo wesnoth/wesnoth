@@ -41,12 +41,16 @@ menu::imgsel_style gui::menu::slateborder_style("misc/selection");
 	//constructors
 menu::style::style() : font_size_(font::SIZE_NORMAL),
 		cell_padding_(font::SIZE_NORMAL * 3/5), thickness_(0),
-		normal_rgb_(0x000000), normal_alpha_(0.2),
-		selected_rgb_(0x990000), selected_alpha_(0.6),
-		heading_rgb_(0x333333), heading_alpha_(0.3)
+		normal_rgb_(0x000000), selected_rgb_(0x990000), heading_rgb_(0x333333),
+		normal_alpha_(0.2),  selected_alpha_(0.6), heading_alpha_(0.3)
+{}
+
+menu::style::~style()
 {}
 menu::imgsel_style::imgsel_style(const std::string &img_base) : img_base_(img_base),
 			initialized_(false), load_failed_(false)
+{}
+menu::imgsel_style::~imgsel_style()
 {}
 
 size_t menu::style::get_font_size() const { return font_size_; }

@@ -39,7 +39,7 @@ public:
 	{
 	public:
 		style();
-
+		virtual ~style();
 		virtual void init() {}
 
 		virtual SDL_Rect item_size(const std::string& item) const;
@@ -63,6 +63,7 @@ public:
 	{
 	public:
 		imgsel_style(const std::string &img_base);
+		virtual ~imgsel_style();
 
 		virtual SDL_Rect item_size(const std::string& item) const;
 		virtual void draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
