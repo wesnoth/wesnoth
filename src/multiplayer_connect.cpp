@@ -156,8 +156,8 @@ connect::side::side(const side& a) :
 	orig_controller_(a.orig_controller_),
 	combo_faction_(a.combo_faction_), combo_leader_(a.combo_leader_),
 	combo_team_(a.combo_team_), combo_colour_(a.combo_colour_),
-	slider_gold_(a.slider_gold_), label_gold_(a.label_gold_),
-	slider_income_(a.slider_income_), label_income_(a.label_income_),
+	slider_gold_(a.slider_gold_), slider_income_(a.slider_income_),
+	label_gold_(a.label_gold_), label_income_(a.label_income_),
 	enabled_(a.enabled_), changed_(a.changed_), llm_(a.llm_)
 {
 	llm_.set_combo(enabled_ ? &combo_leader_ : NULL);
