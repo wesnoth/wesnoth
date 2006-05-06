@@ -1363,10 +1363,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				throw replay::error();
 			}
 
-			if(size_t(option_chosen) >= options.size()) {
-				option_chosen = 0;
-			}
-
 			const std::string& val = (*(action->get_children("choose").front()))["value"];
 			option_chosen = atol(val.c_str());
 		}
