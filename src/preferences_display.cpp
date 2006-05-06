@@ -234,7 +234,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  chat_timestamp_button_(disp.video(), _("Chat Timestamping"), gui::button::TYPE_CHECK),
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
 	  scroll_label_(disp.video(), _("Scroll Speed:")), gamma_label_(disp.video(), _("Gamma:")), chat_lines_label_(disp.video(), ""),
-	  slider_label_width_(0), advanced_(disp.video(),std::vector<std::string>()), advanced_selection_(-1),
+	  slider_label_width_(0), advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::slateborder_style), advanced_selection_(-1),
 	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg)
 {
 	// FIXME: this box should be vertically centered on the screen, but is not
@@ -606,8 +606,7 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 			std::vector<gui::preview_pane*> panes;
 			panes.push_back(&dialog);
 
-			gui::show_dialog(disp,NULL,_("Preferences"),"",gui::CLOSE_ONLY,&items,&panes,
-						"",NULL,256,NULL,NULL,-1,-1,NULL,NULL,"",NULL,&gui::menu::slateborder_style);
+			gui::show_dialog2(disp,NULL,_("Preferences"),"",gui::CLOSE_ONLY,&items,&panes);
 			return;
 		} catch(preferences_dialog::video_mode_change_exception& e) {
 			switch(e.type) {
@@ -676,7 +675,7 @@ bool show_video_mode_dialog(display& disp)
 		options.push_back(option.str());
 	}
 
-	const int result = gui::show_dialog(disp,NULL,"",
+	const int result = gui::show_dialog2(disp,NULL,"",
 	                                    _("Choose Resolution"),
 	                                    gui::OK_CANCEL,&options);
 	if(size_t(result) < resolutions.size() && resolutions[result] != current_res) {
@@ -738,7 +737,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(0).set_alpha_sort(1);
 
-	gui::menu menu_(disp.video(), menu_items, false, height, -1, &sorter);
+	gui::menu menu_(disp.video(), menu_items, false, height, -1, &sorter, &gui::menu::slateborder_style);
 	menu_.sort_by(0);
 	menu_.reset_selection();
 	menu_.set_width(font::relative_size(400));
@@ -828,7 +827,7 @@ bool show_theme_dialog(display& disp)
   std::vector<std::string> options = disp.get_theme().get_known_themes();
   if(options.size()){
     std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
-    action = gui::show_dialog(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
+    action = gui::show_dialog2(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
     if(action >= 0){
       preferences::set_theme(options[action]);
       //it would be preferable for the new theme to take effect

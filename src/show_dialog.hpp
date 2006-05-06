@@ -140,6 +140,25 @@ int show_dialog(display &screen, surface image,
 				menu::style* menu_style=NULL
 			 );
 
+
+/*	show_dialog2: same as show_dialog, but uses the slateborder style
+	provided as a convenience to use default parameters */
+int show_dialog2(display &screen, surface image,
+				const std::string& caption, const std::string& message,
+				DIALOG_TYPE type=MESSAGE,
+				const std::vector<std::string>* menu_items=NULL,
+				const std::vector<preview_pane*>* preview_panes=NULL,
+				const std::string& text_widget_label="",
+				std::string* text_widget_text=NULL,
+				const int text_widget_max_chars = 256,
+				dialog_action* action=NULL,
+				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1,
+				const std::string* dialog_style=NULL,
+				std::vector<dialog_button>* buttons=NULL,
+				const std::string& help_topic="",
+				const menu::sorter* sorter=NULL
+			 );
+
 void show_error_message(display &disp, std::string const &message);
 
 network::connection network_send_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);

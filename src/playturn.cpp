@@ -181,7 +181,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			}
 
 			const std::string msg = leader->second.description() + " " + _("has left the game. What do you want to do?");
-			action = gui::show_dialog(gui_,NULL,"",msg,gui::OK_ONLY,&options);
+			action = gui::show_dialog2(gui_,NULL,"",msg,gui::OK_ONLY,&options);
 		}
 
 		//make the player an AI, and redo this turn, in case

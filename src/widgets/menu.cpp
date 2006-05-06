@@ -161,6 +161,7 @@ menu::menu(CVideo& video, const std::vector<std::string>& items,
 	  sorter_(sorter_obj), sortby_(-1), sortreversed_(false), highlight_heading_(-1)
 {
 	style_ = (menu_style) ? menu_style : &default_style;
+	style_->init();
 	fill_items(items, true);
 }
 
@@ -707,15 +708,20 @@ void menu::style::draw_row(const menu& menu_ref, const std::vector<std::string>&
 
 	SDL_Rect const &area = screen_area();
 	SDL_Rect const &loc = menu_ref.inner_location();
+	SDL_Rect minirect = rect;
+	minirect.x += thickness_;
+	minirect.y += thickness_;
+	minirect.w -= 2*thickness_;
+	minirect.h -= 2*thickness_;
 
 	const std::vector<int>& widths = menu_ref.column_widths();
 	bool lang_rtl = current_language_rtl();
 	int dir = (lang_rtl) ? -1 : 1;
 	SDL_Rect column = loc;
 
-	int xpos = rect.x;
+	int xpos = minirect.x;
 	if(lang_rtl)
-		xpos += rect.w;
+		xpos += minirect.w;
 	for(size_t i = 0; i != row.size(); ++i) {
 
 		if(lang_rtl)
@@ -736,9 +742,9 @@ void menu::style::draw_row(const menu& menu_ref, const std::vector<std::string>&
 				const surface img = image::get_image(image_name,image::UNSCALED);
 				const int max_width = menu_ref.max_width_ < 0 ? area.w :
 					minimum<int>(menu_ref.max_width_, area.w - xpos);
-				if(img != NULL && (xpos - rect.x) + img->w < max_width
-				   && rect.y + img->h < area.h) {
-					const size_t y = rect.y + (rect.h - img->h)/2;
+				if(img != NULL && (xpos - minirect.x) + img->w < max_width
+				   && minirect.y + img->h < area.h) {
+					const size_t y = minirect.y + (minirect.h - img->h)/2;
 					const size_t w = img->w + 5;
 					const size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
 					menu_ref.video().blit_surface(x,y,img);
@@ -749,17 +755,17 @@ void menu::style::draw_row(const menu& menu_ref, const std::vector<std::string>&
 			} else {
 				column.x = xpos;
 				const std::string to_show = menu_ref.max_width_ > -1 ?
-					font::make_text_ellipsis(str, get_font_size(), loc.w - (xpos - rect.x)) : str;
+					font::make_text_ellipsis(str, get_font_size(), loc.w - (xpos - minirect.x)) : str;
 				const SDL_Rect& text_size = font::text_area(str,get_font_size());
-				const size_t y = rect.y + (rect.h - text_size.h)/2;
+				const size_t y = minirect.y + (minirect.h - text_size.h)/2;
 				font::draw_text(&menu_ref.video(),column,get_font_size(),font::NORMAL_COLOUR,to_show,xpos,y);
 
 				if(type == HEADING_ROW && menu_ref.sortby_ == int(i)) {
 					const surface sort_img = image::get_image(menu_ref.sortreversed_ ? "misc/sort-arrow.png" :
 					                                   "misc/sort-arrow-reverse.png", image::UNSCALED);
-					if(sort_img != NULL && sort_img->w <= widths[i] && sort_img->h <= rect.h) {
+					if(sort_img != NULL && sort_img->w <= widths[i] && sort_img->h <= minirect.h) {
 						const size_t sort_x = xpos + widths[i] - sort_img->w;
-						const size_t sort_y = rect.y + rect.h/2 - sort_img->h/2;
+						const size_t sort_y = minirect.y + minirect.h/2 - sort_img->h/2;
 						menu_ref.video().blit_surface(sort_x,sort_y,sort_img);
 					}
 				}

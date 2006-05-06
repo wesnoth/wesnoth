@@ -837,6 +837,37 @@ int show_dialog(display& disp, surface image,
 	return -1;
 }
 
+/*	show_dialog2: same as show_dialog, but uses the slateborder style
+	provided as a convenience to use default parameters */
+//inline
+int show_dialog2(display &screen, surface image,
+				const std::string& caption, const std::string& message,
+				DIALOG_TYPE type,
+				const std::vector<std::string>* menu_items,
+				const std::vector<preview_pane*>* preview_panes,
+				const std::string& text_widget_label,
+				std::string* text_widget_text,
+				const int text_widget_max_chars,
+				dialog_action* action,
+				std::vector<check_item>* options, int xloc, int yloc,
+				const std::string* dialog_style,
+				std::vector<dialog_button>* buttons,
+				const std::string& help_topic,
+				const menu::sorter* sorter
+			 )
+{
+	return show_dialog(screen, image,
+				caption, message,
+				type, menu_items,
+				preview_panes,
+				text_widget_label,
+				text_widget_text,
+				text_widget_max_chars,
+				action, options, xloc, yloc,
+				dialog_style, buttons,
+				help_topic, sorter, &menu::slateborder_style);
+}
+
 }
 
 namespace gui {

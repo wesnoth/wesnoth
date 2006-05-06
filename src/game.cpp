@@ -752,10 +752,9 @@ bool game_controller::new_campaign()
 	preview_panes.push_back(&campaign_preview);
 
 	wassert(campaign_names.size() > 0);
-	res = gui::show_dialog(disp(),NULL,_("Campaign"),
+	res = gui::show_dialog2(disp(),NULL,_("Campaign"),
 			_("Choose the campaign you want to play:"),
-			gui::OK_CANCEL,&campaign_names,&preview_panes,
-			"",NULL,256,NULL,NULL,-1,-1,NULL,NULL,"",NULL,&gui::menu::slateborder_style);
+			gui::OK_CANCEL,&campaign_names,&preview_panes);
 
 	if(res == -1) {
 		return false;
@@ -782,7 +781,7 @@ bool game_controller::new_campaign()
 			std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
 		}
 
-		const int res = gui::show_dialog(disp(),NULL,_("Difficulty"),
+		const int res = gui::show_dialog2(disp(),NULL,_("Difficulty"),
 		                            _("Select difficulty level:"),
 		                            gui::OK_CANCEL,&difficulty_options);
 		if(res == -1) {
@@ -963,8 +962,7 @@ void game_controller::download_campaigns()
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_numeric_sort(4).set_position_sort(5,sizes);
 
-		const int index = gui::show_dialog(disp(),NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&options,
-			                               NULL,"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter,&gui::menu::slateborder_style);
+		const int index = gui::show_dialog2(disp(),NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&options);
 		if(index < 0) {
 			return;
 		}
@@ -1150,7 +1148,7 @@ bool game_controller::play_multiplayer()
 
 	int res;
 	do {
-		res = gui::show_dialog(disp(), NULL, _("Multiplayer"), "",
+		res = gui::show_dialog2(disp(), NULL, _("Multiplayer"), "",
 					   gui::OK_CANCEL, &host_or_join, NULL,
 					   _("Login: "), &login);
 		if(login.size() > 18) {
@@ -1226,7 +1224,7 @@ bool game_controller::change_language()
 		}
 	}
 
-	const int res = gui::show_dialog(disp(),NULL,_("Language"),
+	const int res = gui::show_dialog2(disp(),NULL,_("Language"),
 	                         _("Choose your preferred language:"),
 	                         gui::OK_CANCEL,&langs);
 	if(size_t(res) < langs.size()) {

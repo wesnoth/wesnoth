@@ -40,15 +40,19 @@ public:
 	public:
 		style();
 
+		virtual void init() {}
+
 		virtual SDL_Rect item_size(const std::string& item) const;
 		virtual void draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
 
 		size_t get_font_size() const;
-		virtual size_t get_cell_padding();
+		size_t get_cell_padding() const;
+		size_t get_thickness() const;
 
 	protected:
 		size_t font_size_;
 		size_t cell_padding_;
+		size_t thickness_;  //additional cell padding for style use only
 
 		int normal_rgb_, selected_rgb_, heading_rgb_;
 		double normal_alpha_, selected_alpha_, heading_alpha_;
@@ -62,15 +66,14 @@ public:
 
 		virtual SDL_Rect item_size(const std::string& item) const;
 		virtual void draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
-		virtual size_t get_cell_padding();
 
+		virtual void init() { load_images(); }
 		bool load_images();
 
 	protected:
-		size_t thickness_; //image-border width/height
 		const std::string img_base_;
-
 		std::map<std::string,surface> img_map_;
+
 	private:
 		bool load_image(const std::string &img_sub);
 		bool initialized_;

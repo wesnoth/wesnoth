@@ -1339,7 +1339,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(get_replay_source().at_end() || options.empty()) {
 			const std::string msg = utils::interpolate_variables_into_string(cfg["message"], *state_of_game);
 			const SDL_Rect& map_area = screen->map_area();
-			option_chosen = gui::show_dialog(*screen,surface,caption,msg,
+			option_chosen = gui::show_dialog2(*screen,surface,caption,msg,
 		                        options.empty() ? gui::MESSAGE : gui::OK_ONLY,
 		                        options.empty() ? NULL : &options,
 								NULL, "", NULL, 256, NULL, NULL, -1, map_area.y+4);

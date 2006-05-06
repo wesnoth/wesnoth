@@ -102,7 +102,7 @@ void advance_unit(const game_data& info,
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
-		res = gui::show_dialog(gui,NULL,_("Advance Unit"),
+		res = gui::show_dialog2(gui,NULL,_("Advance Unit"),
 		                       _("What should our victorious unit become?"),
 		                       gui::OK_ONLY, &lang_options, &preview_panes);
 	}
