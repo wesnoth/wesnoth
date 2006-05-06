@@ -2010,12 +2010,13 @@ void display::invalidate(const gamemap::location& loc)
 				for (int i = 0; i < 6; i++) {
 					invalidate(adjacent[i]);
 				}
-			}
-			// if neighbour has a unit, invalidate him
-			// because he could overlap on us
-			for (int i = 0; i < 6; i++) {
-				if (units_.find(adjacent[i]) != units_.end()) {
-					invalidate(adjacent[i]);
+			} else {
+				// if neighbour has a unit, invalidate him
+				// because he could overlap on us
+				for (int i = 0; i < 6; i++) {
+					if (units_.find(adjacent[i]) != units_.end()) {
+						invalidate(adjacent[i]);
+					}
 				}
 			}
 		}
