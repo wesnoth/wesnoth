@@ -38,8 +38,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 
 void play_replay(display& disp, game_state& state, const config& game_config,
-		const game_data& units_data, CVideo& video,
-		io_type_t io_type=IO_NONE);
+		const game_data& units_data, CVideo& video);
 
 #endif // PLAYCAMPAIGN_H_INCLUDED
 

@@ -89,12 +89,10 @@ report generate_report(TYPE type, const gamemap& map, unit_map& units,
 
 		u = find_visible_unit(units,mouseover,
 							  map,
-							  status.get_time_of_day().lawful_bonus,
 							  teams,current_team);
 		if(u == units.end()) {
 			u = find_visible_unit(units,loc,
 								  map,
-								  status.get_time_of_day().lawful_bonus,
 								  teams,current_team);
 			if(u == units.end() && type != POSITION) {
 				return report();
@@ -127,7 +125,7 @@ report generate_report(TYPE type, const gamemap& map, unit_map& units,
 		std::stringstream tooltip;
 		report res;
 
-		if(map.on_board(loc) && u->second.invisible(map.underlying_union_terrain(map[loc.x][loc.y]),status.get_time_of_day().lawful_bonus,loc,units,teams)) {
+		if(map.on_board(loc) && u->second.invisible(loc,units,teams)) {
 			unit_status << "misc/invisible.png";
 			tooltip << _("invisible: ") << _("This unit is invisible. It cannot be seen or attacked by enemy units.");
 			res.add_image(unit_status,tooltip);

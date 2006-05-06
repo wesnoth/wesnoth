@@ -24,14 +24,13 @@
 #define LOG_NG LOG_STREAM(info, engine)
 
 LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_config,
-		const config* level, CVideo& video, game_state& state_of_game,
-		const std::vector<config*>& story)
+		const config* level, CVideo& video, game_state& state_of_game)
 {
 	try{
 		const int ticks = SDL_GetTicks();
 		const int num_turns = atoi((*level)["turns"].c_str());
 		LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
-		replay_controller replaycontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video, story);
+		replay_controller replaycontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video);
 		LOG_NG << "created objects... " << (SDL_GetTicks() - replaycontroller.get_ticks()) << "\n";
 
 		const unit_type::experience_accelerator xp_mod(replaycontroller.get_xp_modifier() > 0 ? replaycontroller.get_xp_modifier() : 100);
@@ -50,20 +49,20 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 
 replay_controller::replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 						   const int ticks, const int num_turns, const config& game_config,
-						   CVideo& video, const std::vector<config*>& story)
+						   CVideo& video)
 	: play_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, false), 
 	gamestate_start_(state_of_game), status_start_(level, num_turns)
 {
 	current_turn_ = 1;
 	delay_ = 0;
 	is_playing_ = false;
-	init(video, story);
+	init();
 }
 
 replay_controller::~replay_controller(){
 }
 
-void replay_controller::init(CVideo& video, const std::vector<config*>& /*story*/){
+void replay_controller::init(){
 	LOG_NG << "in replay_controller::init()...\n";
 
 	//guarantee the cursor goes back to 'normal' at the end of the level
@@ -241,7 +240,7 @@ void replay_controller::play_side(const int team_index){
 		for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
 			if(uit->second.side() != (size_t)player_number_){
 				//this is necessary for replays in order to show possible movements
-				uit->second.new_turn(uit->first);
+				uit->second.new_turn();
 			}
 		}
 	}

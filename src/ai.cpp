@@ -435,9 +435,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 						const unit_map::const_iterator u = info_.units.find(adj[n]);
 						if (u != info_.units.end() && u->second.emits_zoc()
 							&& current_team().is_enemy(u->second.side())) {
-							if (u->second.invisible(info_.map.underlying_union_terrain(adj[n]),
-													info_.state.get_time_of_day().lawful_bonus,
-													adj[n], info_.units, info_.teams)) {
+							if (u->second.invisible(adj[n], info_.units, info_.teams)) {
 								to = *i;
 								steps.erase(i,steps.end());
 								break;
@@ -457,12 +455,12 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 
 			steps.push_back(to); //add the destination to the steps
 
-			if(show_move && unit_display::unit_visible_on_path(info_.disp,info_.map,steps,u_it->second,info_.state.get_time_of_day(),info_.units,info_.teams)) {
+			if(show_move && unit_display::unit_visible_on_path(info_.disp,steps,u_it->second,info_.units,info_.teams)) {
 
 				info_.disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
 
 				u_it->second.set_hidden(true);
-				unit_display::move_unit(info_.disp,info_.map,steps,current_unit,info_.state.get_time_of_day(),info_.units,info_.teams);
+				unit_display::move_unit(info_.disp,info_.map,steps,current_unit,info_.units,info_.teams);
 				u_it->second.set_hidden(false);
 				info_.units.erase(u_it);
 				u_it = info_.units.end();
@@ -632,8 +630,7 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 		}
 
 		//we can't see where invisible enemy units might move
-		if(enemy && un_it->second.invisible(info_.map.underlying_union_terrain(info_.map.get_terrain(un_it->first)),
-		   info_.state.get_time_of_day().lawful_bonus,un_it->first,info_.units,info_.teams)) {
+		if(enemy && un_it->second.invisible(un_it->first,info_.units,info_.teams)) {
 			continue;
 		}
 
@@ -1373,7 +1370,6 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		for(int n = 0; n != 6; ++n) {
 			const unit_map::iterator enemy = find_visible_unit(units_,adj[n],
 					map_,
-					state_.get_time_of_day().lawful_bonus,
 					teams_,current_team());
 
 			if(enemy != units_.end() &&
@@ -1582,7 +1578,7 @@ void ai::analyze_potential_recruit_movements()
 		int targets_reached = 0;
 		int targets_missed = 0;
 
-		const shortest_path_calculator calc(temp_unit,current_team(),units,teams_,map_,state_);
+		const shortest_path_calculator calc(temp_unit,current_team(),units,teams_,map_);
 		for(std::vector<target>::const_iterator t = targets.begin(); t != targets.end(); ++t) {
 			LOG_AI << "analyzing '" << *i << "' getting to target...\n";
 			const paths::route& route = a_star_search(start, t->loc, 100.0, &calc, get_info().map.x(), get_info().map.y());
@@ -1736,7 +1732,7 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 
 	do_recruitment();
 
-	shortest_path_calculator calc(leader->second, current_team(), units_, teams_, map_, state_);
+	shortest_path_calculator calc(leader->second, current_team(), units_, teams_, map_);
 	const paths::route route = a_star_search(leader->first, dst, 1000.0, &calc, get_info().map.x(), get_info().map.y());
 	if(route.steps.empty()) {
 		LOG_AI << "route empty";

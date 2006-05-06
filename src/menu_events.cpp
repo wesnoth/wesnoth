@@ -777,7 +777,7 @@ namespace events{
 			un.set_goto(gamemap::location());
 
 			u->second.set_hidden(true);
-			unit_display::move_unit(*gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
+			unit_display::move_unit(*gui_,map_,route,un,units_,teams_);
 			u->second.set_hidden(false);
 
 			units_.erase(u);
@@ -860,7 +860,7 @@ namespace events{
 			un.set_goto(gamemap::location());
 
 			u->second.set_hidden(true);
-			unit_display::move_unit(*gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
+			unit_display::move_unit(*gui_,map_,route,un,units_,teams_);
 			u->second.set_hidden(false);
 
 			units_.erase(u);
@@ -909,10 +909,7 @@ namespace events{
 
 		// Compute enemy movement positions
 		for(unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
-			bool invisible = u->second.invisible(map_.underlying_union_terrain(u->first),
-												 status_.get_time_of_day()
-												 .lawful_bonus,
-												 u->first, units_, teams_);
+			bool invisible = u->second.invisible(u->first, units_, teams_);
 
 			if(teams_[team_num - 1].is_enemy(u->second.side()) && !gui_->fogged(u->first.x,u->first.y) && !u->second.incapacitated() && !invisible) {
 				const unit_movement_resetter move_reset(u->second);
@@ -1033,24 +1030,24 @@ namespace events{
 	unit_map::iterator menu_handler::current_unit(mouse_handler& mousehandler)
 	{
 		unit_map::iterator res = find_visible_unit(units_, mousehandler.get_last_hex(),
-			map_, status_.get_time_of_day().lawful_bonus, teams_, teams_[gui_->viewing_team()]);
+			map_, teams_, teams_[gui_->viewing_team()]);
 		if(res != units_.end()) {
 			return res;
 		} else {
 			return find_visible_unit(units_, mousehandler.get_selected_hex(),
-			map_, status_.get_time_of_day().lawful_bonus, teams_, teams_[gui_->viewing_team()]);
+			map_, teams_, teams_[gui_->viewing_team()]);
 		}
 	}
 
 	unit_map::const_iterator menu_handler::current_unit(const mouse_handler& mousehandler) const
 	{
 		unit_map::const_iterator res = find_visible_unit(units_, mousehandler.get_last_hex(),
-			map_, status_.get_time_of_day().lawful_bonus, teams_, teams_[gui_->viewing_team()]);
+			map_, teams_, teams_[gui_->viewing_team()]);
 		if(res != units_.end()) {
 			return res;
 		} else {
 			return find_visible_unit(units_, mousehandler.get_selected_hex(),
-			map_, status_.get_time_of_day().lawful_bonus, teams_, teams_[gui_->viewing_team()]);
+			map_, teams_, teams_[gui_->viewing_team()]);
 		}
 	}
 
@@ -1061,7 +1058,7 @@ namespace events{
 		for(game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.begin(); i != gameinfo_.unit_types.end(); ++i) {
 			options.push_back(i->second.language_name());
 			unit_choices.push_back(unit(&gameinfo_,&units_,&map_,&status_,&teams_,&i->second,1,false));
-			unit_choices.back().new_turn(gamemap::location());
+			unit_choices.back().new_turn();
 		}
 
 		int choice = 0;
@@ -1137,7 +1134,7 @@ namespace events{
 		wassert(ui != units_.end());
 
 		unit u = ui->second;
-		const shortest_path_calculator calc(u,teams_[team_num - 1],mousehandler.visible_units(),teams_,map_,status_);
+		const shortest_path_calculator calc(u,teams_[team_num - 1],mousehandler.visible_units(),teams_,map_);
 
 		const std::set<gamemap::location>* teleports = NULL;
 
@@ -1439,7 +1436,7 @@ namespace events{
 			network::send_data(cfg);
 		} else if (cmd == "muteall") {
 			config cfg;
-			config& mute = cfg.add_child(cmd);
+			cfg.add_child(cmd);
 
 			network::send_data(cfg);
 		} else if(cmd == "control") {

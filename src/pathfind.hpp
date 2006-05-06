@@ -52,7 +52,7 @@ gamemap::location find_vacant_tile(const gamemap& map,
                                    VACANT_TILE_TYPE vacancy=VACANT_ANY);
 
 //function which determines if a given location is an enemy zone of control
-bool enemy_zoc(gamemap const &map, gamestatus const &status,
+bool enemy_zoc(gamemap const &map,
                std::map<gamemap::location, unit> const &units,
                std::vector<team> const &teams, gamemap::location const &loc,
                team const &viewing_team, unsigned int side);
@@ -110,7 +110,7 @@ struct shortest_path_calculator : cost_calculator
 {
 	shortest_path_calculator(const unit& u, const team& t,
 	                         const unit_map& units, const std::vector<team>& teams,
-	                         const gamemap& map, const gamestatus& status);
+	                         const gamemap& map);
 	virtual double cost(const gamemap::location& src, const gamemap::location& loc, const double so_far, const bool isDst) const;
 
 private:
@@ -119,7 +119,6 @@ private:
 	unit_map const &units_;
 	std::vector<team> const &teams_;
 	gamemap const &map_;
-	int const lawful_bonus_;
 	int const movement_left_;
 	int const total_movement_;
 };

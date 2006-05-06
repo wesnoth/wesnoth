@@ -291,7 +291,7 @@ private:
 	size_t windiness_;
 };
 
-double passage_path_calculator::cost(const gamemap::location& src,const gamemap::location& loc, const double, const bool) const
+double passage_path_calculator::cost(const gamemap::location& /*src*/,const gamemap::location& loc, const double, const bool) const
 {
 	wassert(loc.x >= 0 && loc.y >= 0 && size_t(loc.x) < map_.size() &&
 	        !map_.empty() && size_t(loc.y) < map_.front().size());

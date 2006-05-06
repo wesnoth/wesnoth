@@ -55,8 +55,7 @@ typedef std::map<std::string, player_controller> controller_map;
 }
 
 void play_replay(display& disp, game_state& state, const config& game_config,
-		const game_data& units_data, CVideo& video,
-		io_type_t io_type)
+		const game_data& units_data, CVideo& video)
 {
 	std::string type = state.campaign_type;
 	if(type.empty())
@@ -89,17 +88,14 @@ void play_replay(display& disp, game_state& state, const config& game_config,
 
 	controller_map controllers;
 
-	const config::child_list& story = scenario->get_children("story");
 	const std::string current_scenario = state.scenario;
-
-	bool save_game_after_scenario = true;
 
 	try {
 		// preserve old label eg. replay
 		if (state.label.empty())
 			state.label = (*scenario)["name"];
 
-		LEVEL_RESULT res = play_replay_level(units_data,game_config,scenario,video,state,story);
+		play_replay_level(units_data,game_config,scenario,video,state);
 
 		state.snapshot = config();
 		recorder.clear();

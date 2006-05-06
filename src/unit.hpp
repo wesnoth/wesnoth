@@ -120,7 +120,7 @@ class unit
 		void set_attacks(int left);
 		void unit_hold_position();
 		void end_unit_turn();
-		void new_turn(const gamemap::location& loc);
+		void new_turn();
 		void end_turn();
 		void new_level();
 		void refresh() {if(anim_ && !refreshing_) anim_->update_current_frame(); }
@@ -259,8 +259,7 @@ class unit
 		void generate_traits_description();
 		std::string generate_description() const;
 		
-		bool invisible(const std::string& terrain, int lawful_bonus,
-			const gamemap::location& loc,
+		bool invisible(const gamemap::location& loc,
 			const unit_map& units,const std::vector<team>& teams) const;
 		
 		unit_race::GENDER generate_gender(const unit_type& type, bool gen);
@@ -273,7 +272,7 @@ class unit
 		bool ability_active(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
 		bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const;
 		bool ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
-		bool resistance_filter_matches(const config& cfg,const gamemap::location& loc,bool attacker,const attack_type& damage_type) const;
+		bool resistance_filter_matches(const config& cfg,bool attacker,const attack_type& damage_type) const;
 		
 		config cfg_;
 		
@@ -392,11 +391,11 @@ unit_map::const_iterator team_leader(unsigned int side, const unit_map& units);
 std::string team_name(int side, const unit_map& units);
 unit_map::iterator find_visible_unit(unit_map& units,
 		const gamemap::location loc,
-		const gamemap& map, int lawful_bonus,
+		const gamemap& map,
 		const std::vector<team>& teams, const team& current_team);
 unit_map::const_iterator find_visible_unit(const unit_map& units,
 		const gamemap::location loc,
-		const gamemap& map, int lawful_bonus,
+		const gamemap& map,
 		const std::vector<team>& teams, const team& current_team);
 
 struct team_data

@@ -83,7 +83,7 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 		config new_specials;
 		
 		new_specials["set_special"] = set_special;
-		apply_modification(new_specials,NULL,0);
+		apply_modification(new_specials,NULL);
 	}
 }
 
@@ -208,7 +208,7 @@ int attack_type::attack_animation::matches(bool hit,gamemap::location::DIRECTION
 
 	return result;
 }
-bool attack_type::matches_filter(const config& cfg,int set_,bool self) const
+bool attack_type::matches_filter(const config& cfg,bool self) const
 {
 	const std::string& filter_range = cfg["range"];
 	const t_string& filter_name = cfg["name"];
@@ -230,7 +230,7 @@ bool attack_type::matches_filter(const config& cfg,int set_,bool self) const
 	return true;
 }
 
-bool attack_type::apply_modification(const config& cfg,std::string* description,int set_)
+bool attack_type::apply_modification(const config& cfg,std::string* description)
 {
 	if(!matches_filter(cfg,0))
 		return false;

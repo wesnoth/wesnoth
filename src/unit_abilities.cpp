@@ -627,7 +627,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 				return false;
 			}
 			if(cfg.child("filter_self")->child("filter_weapon") != NULL) {
-				if(!matches_filter(*cfg.child("filter_self")->child("filter_weapon"),0,true)) {
+				if(!matches_filter(*cfg.child("filter_self")->child("filter_weapon"),true)) {
 					return false;
 				}
 			}
@@ -638,7 +638,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 			}
 			
 			if(cfg.child("filter_opponent")->child("filter_weapon") != NULL) {
-				if(!other_attack_ || !other_attack_->matches_filter(*cfg.child("filter_opponent")->child("filter_weapon"),0,true)) {
+				if(!other_attack_ || !other_attack_->matches_filter(*cfg.child("filter_opponent")->child("filter_weapon"),true)) {
 					return false;
 				}
 			}
@@ -652,7 +652,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 				return false;
 			}
 			if(cfg.child("filter_self")->child("filter_weapon") != NULL) {
-				if(!matches_filter(*cfg.child("filter_self")->child("filter_weapon"),0,true)) {
+				if(!matches_filter(*cfg.child("filter_self")->child("filter_weapon"),true)) {
 					return false;
 				}
 			}
@@ -662,7 +662,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 				return false;
 			}
 			if(cfg.child("filter_opponent")->child("filter_weapon") != NULL) {
-				if(!other_attack_ || !other_attack_->matches_filter(*cfg.child("filter_opponent")->child("filter_weapon"),0,true)) {
+				if(!other_attack_ || !other_attack_->matches_filter(*cfg.child("filter_opponent")->child("filter_weapon"),true)) {
 					return false;
 				}
 			}
@@ -674,13 +674,13 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 		}
 		if(attacker_) {
 			if(cfg.child("filter_attacker")->child("filter_weapon") != NULL) {
-				if(!matches_filter(*cfg.child("filter_attacker")->child("filter_weapon"),0,true)) {
+				if(!matches_filter(*cfg.child("filter_attacker")->child("filter_weapon"),true)) {
 					return false;
 				}
 			}
 		} else {
 			if(cfg.child("filter_attacker")->child("filter_weapon") != NULL) {
-				if(!other_attack_ || !other_attack_->matches_filter(*cfg.child("filter_attacker")->child("filter_weapon"),0,true)) {
+				if(!other_attack_ || !other_attack_->matches_filter(*cfg.child("filter_attacker")->child("filter_weapon"),true)) {
 					return false;
 				}
 			}
@@ -692,13 +692,13 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 		}
 		if(!attacker_) {
 			if(cfg.child("filter_defender")->child("filter_weapon") != NULL) {
-				if(!matches_filter(*cfg.child("filter_defender")->child("filter_weapon"),0,true)) {
+				if(!matches_filter(*cfg.child("filter_defender")->child("filter_weapon"),true)) {
 					return false;
 				}
 			}
 		} else {
 			if(cfg.child("filter_defender")->child("filter_weapon") != NULL) {
-				if(!other_attack_ || !other_attack_->matches_filter(*cfg.child("filter_defender")->child("filter_weapon"),0,true)) {
+				if(!other_attack_ || !other_attack_->matches_filter(*cfg.child("filter_defender")->child("filter_weapon"),true)) {
 					return false;
 				}
 			}

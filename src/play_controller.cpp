@@ -308,7 +308,7 @@ void play_controller::init_side(const unsigned int team_index){
 	if(turn_refresh) {
 		for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
 			if(i->second.side() == (size_t)player_number_) {
-				i->second.new_turn(i->first);
+				i->second.new_turn();
 			}
 		}
 
@@ -321,7 +321,7 @@ void play_controller::init_side(const unsigned int team_index){
 			current_team.spend_gold(expense);
 		}
 
-		calculate_healing((*gui_),status_,map_,units_,player_number_,teams_, !recorder.is_skipping());
+		calculate_healing((*gui_),map_,units_,player_number_,teams_, !recorder.is_skipping());
 		reset_resting(units_, player_number_);
 	}
 

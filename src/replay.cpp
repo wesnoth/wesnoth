@@ -828,7 +828,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			rt->second.steps.push_back(dst);
 
-			if(!replayer.is_skipping() && unit_display::unit_visible_on_path(disp,map,rt->second.steps,current_unit,state.get_time_of_day(),units,teams)) {
+			if(!replayer.is_skipping() && unit_display::unit_visible_on_path(disp,rt->second.steps,current_unit,units,teams)) {
 
 				disp.scroll_to_tiles(src.x,src.y,dst.x,dst.y);
 			}
@@ -836,7 +836,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			units.erase(u);
 
 			if(!replayer.is_skipping()) {
-				unit_display::move_unit(disp,map,rt->second.steps,current_unit,state.get_time_of_day(),units,teams);
+				unit_display::move_unit(disp,map,rt->second.steps,current_unit,units,teams);
 			}
 			else{
 				//unit location needs to be updated

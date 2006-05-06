@@ -223,7 +223,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				player_info *player=gamestate_.get_player(teams_[un->second.side()-1].save_id());
 
 				if(player) {
-					un->second.new_turn(un->first);
+					un->second.new_turn();
 					un->second.new_level();
 					player->available_units.push_back(un->second);
 				}

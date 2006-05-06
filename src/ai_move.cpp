@@ -776,7 +776,7 @@ void ai::access_points(const move_map& srcdst, const location& u, const location
 	for(move_map::const_iterator i = locs.first; i != locs.second; ++i) {
 		const location& loc = i->second;
 		if (int(distance_between(loc,dst)) <= u_it->second.total_movement()) {
-			shortest_path_calculator calc(u_it->second, current_team(), units_, teams_, map_, state_);
+			shortest_path_calculator calc(u_it->second, current_team(), units_, teams_, map_);
 			const paths::route& rt = a_star_search(loc, dst, u_it->second.total_movement(), &calc, map_.x(), map_.y());
 			if(rt.steps.empty() == false) {
 				out.push_back(loc);

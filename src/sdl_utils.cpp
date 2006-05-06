@@ -497,13 +497,6 @@ surface recolor_image(surface surf, const color_range& new_rgb, const std::vecto
         }
 
 	Uint16 reference_avg=0;
-	const Uint16 new_grey = (Uint16)((77*(Uint16) new_red +
-	                                  150*(Uint16)new_green +
-	                                  29*(Uint16)new_blue) / 256);
-	const Uint16 new_avg = (Uint16)(((Uint16) new_red +
-					 (Uint16) new_green +
-					 (Uint16) new_blue) / 3);
-
 	//map first color in vector to exact new color
 	Uint32 temp_rgb=old_rgb[0];
 	int old_r=(temp_rgb & 0X00FF0000)>>16;

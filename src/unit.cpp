@@ -578,7 +578,7 @@ void unit::end_unit_turn()
 		movement_ = 0;
 	}
 }
-void unit::new_turn(const gamemap::location& loc)
+void unit::new_turn()
 {
 	end_turn_ = false;
 	movement_ = total_movement();
@@ -1523,9 +1523,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	}
 	if(refreshing_) return;
 	if(disp.fogged(hex.x,hex.y)) { return;}
-	if(invisible(map.underlying_union_terrain(map[hex.x][hex.y]),
-				disp.get_game_status().get_time_of_day().lawful_bonus,hex,
-				disp.get_units(),disp.get_teams()) &&
+	if(invisible(hex,disp.get_units(),disp.get_teams()) &&
 			disp.get_teams()[disp.playing_team()].is_enemy(side())) {
 		return;
 	}
@@ -1605,9 +1603,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	double blend_ratio = current_frame.blend_ratio;
 	if(blend_ratio == 0) { blend_with = disp.rgb(0,0,0); }
 	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),current_frame.highlight_ratio);
-	if(invisible(map.underlying_union_terrain(map[hex.x][hex.y]),
-				disp.get_game_status().get_time_of_day().lawful_bonus,hex,
-				disp.get_units(),disp.get_teams()) &&
+	if(invisible(hex,disp.get_units(),disp.get_teams()) &&
 			highlight_ratio > ftofxp(0.5)) {
 		highlight_ratio = ftofxp(0.5);
 	}
@@ -1894,7 +1890,7 @@ int unit::defense_modifier(gamemap::TERRAIN terrain, int recurse_count) const
 	return res;
 }
 
-bool unit::resistance_filter_matches(const config& cfg,const gamemap::location& loc,bool attacker,const attack_type& damage_type) const
+bool unit::resistance_filter_matches(const config& cfg,bool attacker,const attack_type& damage_type) const
 {
 	if(!(cfg["active_on"]=="" || (attacker && cfg["active_on"]=="offense") || (!attacker && cfg["active_on"]=="defense"))) {
 		return false;
@@ -1934,7 +1930,7 @@ int unit::resistance_against(const attack_type& damage_type,bool attacker,const 
 	
 	unit_ability_list resistance_abilities = get_abilities("resistance",loc);
 	for(std::vector<std::pair<config*,gamemap::location> >::iterator i = resistance_abilities.cfgs.begin(); i != resistance_abilities.cfgs.end();) {
-		if(!resistance_filter_matches(*i->first,loc,attacker,damage_type)) {
+		if(!resistance_filter_matches(*i->first,attacker,damage_type)) {
 			i = resistance_abilities.cfgs.erase(i);
 		} else {
 			++i;
@@ -2118,7 +2114,7 @@ void unit::add_modification(const std::string& type, const config& mod,
 			for(std::vector<attack_type>::iterator a = attacks_.begin();
 			    a != attacks_.end(); ++a) {
 				std::string desc;
-				const bool affected = a->apply_modification(**i.first,&desc,0);
+				const bool affected = a->apply_modification(**i.first,&desc);
 				if(affected && desc != "") {
 					if(first_attack) {
 						first_attack = false;
@@ -2548,8 +2544,7 @@ void unit::apply_modifications()
 
 
 
-bool unit::invisible(const std::string& terrain, int lawful_bonus,
-		const gamemap::location& loc,
+bool unit::invisible(const gamemap::location& loc,
 		const unit_map& units,const std::vector<team>& teams) const
 {
 	bool is_inv = false;
@@ -2635,7 +2630,7 @@ std::string team_name(int side, const unit_map& units)
 
 unit_map::iterator find_visible_unit(unit_map& units,
 		const gamemap::location loc,
-		const gamemap& map, int lawful_bonus,
+		const gamemap& map,
 		const std::vector<team>& teams, const team& current_team)
 {
 	unit_map::iterator u = units.find(loc);
@@ -2645,9 +2640,7 @@ unit_map::iterator find_visible_unit(unit_map& units,
 				return units.end();
 			}
 			if(current_team.is_enemy(u->second.side()) &&
-					u->second.invisible(
-						map.underlying_union_terrain(map[loc.x][loc.y]),lawful_bonus,
-						loc,units,teams)) {
+					u->second.invisible(loc,units,teams)) {
 				return units.end();
 			}
 		}
@@ -2657,7 +2650,7 @@ unit_map::iterator find_visible_unit(unit_map& units,
 
 unit_map::const_iterator find_visible_unit(const unit_map& units,
 		const gamemap::location loc,
-		const gamemap& map, int lawful_bonus,
+		const gamemap& map,
 		const std::vector<team>& teams, const team& current_team)
 {
 	unit_map::const_iterator u = units.find(loc);
@@ -2667,9 +2660,7 @@ unit_map::const_iterator find_visible_unit(const unit_map& units,
 				return units.end();
 			}
 			if(current_team.is_enemy(u->second.side()) &&
-					u->second.invisible(
-						map.underlying_union_terrain(map[loc.x][loc.y]),lawful_bonus,
-						loc,units,teams)) {
+					u->second.invisible(loc,units,teams)) {
 				return units.end();
 			}
 		}

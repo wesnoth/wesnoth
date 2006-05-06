@@ -326,7 +326,7 @@ void get_tiles_radius(gamemap const &map, std::vector<gamemap::location> const &
 	}
 }
 
-bool enemy_zoc(gamemap const &map, gamestatus const &status,
+bool enemy_zoc(gamemap const &map,
                std::map<gamemap::location, unit> const &units,
                std::vector<team> const &teams,
                gamemap::location const &loc, team const &viewing_team, unsigned int side)
@@ -336,10 +336,7 @@ bool enemy_zoc(gamemap const &map, gamestatus const &status,
 	get_adjacent_tiles(loc,locs);
 	for(int i = 0; i != 6; ++i) {
 		const units_map::const_iterator it
-			= find_visible_unit(units,locs[i],
-			map,
-			status.get_time_of_day().lawful_bonus,
-			teams, viewing_team);
+			= find_visible_unit(units, locs[i], map, teams, viewing_team);
 		if (it != units.end() && it->second.side() != side &&
 		    current_team.is_enemy(it->second.side()) && it->second.emits_zoc()) {
 			return true;
@@ -377,7 +374,6 @@ namespace {
 		if (allow_teleport && map.is_village(loc) &&
 		    current_team.owns_village(loc) &&
 			(starting_pos || find_visible_unit(units, loc, map,
-											   status.get_time_of_day().lawful_bonus,
 											   teams, viewing_team) == units.end())) {
 			const std::vector<gamemap::location>& villages = map.villages();
 
@@ -403,9 +399,7 @@ namespace {
 
 			//see if the tile is on top of an enemy unit
 			const units_map::const_iterator unit_it =
-				find_visible_unit(units, locs[i], map,
-				                  status.get_time_of_day().lawful_bonus,
-				                  teams, viewing_team);
+				find_visible_unit(units, locs[i], map, teams, viewing_team);
 
 			if (unit_it != units.end() &&
 			    current_team.is_enemy(unit_it->second.side()))
@@ -434,7 +428,7 @@ namespace {
 				if(rtit != routes.end() && rtit->second.move_left >= total_movement)
 					continue;
 
-				const bool zoc = !ignore_zocs && enemy_zoc(map,status,units,teams,currentloc,
+				const bool zoc = !ignore_zocs && enemy_zoc(map,units,teams,currentloc,
 														   viewing_team,u.side());
 				paths::route new_route = routes[loc];
 				new_route.steps.push_back(loc);
@@ -499,10 +493,8 @@ int route_turns_to_complete(unit const &u, gamemap const &map, paths::route cons
 
 
 shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t, unit_map const &units,
-                                                   std::vector<team> const &teams, gamemap const &map,
-                                                   gamestatus const &status)
+                                                   std::vector<team> const &teams, gamemap const &map)
 	: unit_(u), team_(t), units_(units), teams_(teams), map_(map),
-	  lawful_bonus_(status.get_time_of_day().lawful_bonus),
 	  movement_left_(unit_.movement_left()),
 	  total_movement_(unit_.total_movement())
 {
@@ -528,7 +520,7 @@ double shortest_path_calculator::cost(const gamemap::location& src,const gamemap
 		return getNoPathValue();
 
 	unit_map::const_iterator
-		enemy_unit = find_visible_unit(units_, loc, map_, lawful_bonus_, teams_, team_),
+		enemy_unit = find_visible_unit(units_, loc, map_, teams_, team_),
 		units_end = units_.end();
 
 	if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()))
@@ -539,7 +531,7 @@ double shortest_path_calculator::cost(const gamemap::location& src,const gamemap
 		get_adjacent_tiles(loc, adj);
 
 		for (size_t i = 0; i != 6; ++i) {
-			enemy_unit = find_visible_unit(units_, adj[i], map_, lawful_bonus_, teams_, team_);
+			enemy_unit = find_visible_unit(units_, adj[i], map_, teams_, team_);
 
 			if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()) &&
 			    enemy_unit->second.emits_zoc())

@@ -962,13 +962,11 @@ void display::draw_sidebar()
 		units_map::const_iterator i =
 			find_visible_unit(units_,mouseoverHex_,
 					map_,
-					status_.get_time_of_day().lawful_bonus,
 					teams_,teams_[viewing_team()]);
 
 		if(i == units_.end()) {
 			i = find_visible_unit(units_,selectedHex_,
 					map_,
-					status_.get_time_of_day().lawful_bonus,
 					teams_,teams_[viewing_team()]);
 		}
 
@@ -1233,9 +1231,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 		if(fogged(u->first.x,u->first.y) ||
 				(teams_[currentTeam_].is_enemy(u->second.side()) &&
-				u->second.invisible(map_.underlying_union_terrain(map_[u->first.x][u->first.y]),
-				status_.get_time_of_day().lawful_bonus,u->first,
-				units_,teams_))) {
+				u->second.invisible(u->first,units_,teams_))) {
 			continue;
 		}
 
@@ -1397,7 +1393,7 @@ void display::draw_tile(const gamemap::location &loc, const SDL_Rect &clip_rect)
 		}
 	}
 	unit_map::iterator un = find_visible_unit(units_, loc, map_,
-		status_.get_time_of_day().lawful_bonus,teams_,teams_[currentTeam_]);
+											  teams_,teams_[currentTeam_]);
 
 	if(loc == mouseoverHex_ && map_.on_board(mouseoverHex_) ||
 	   loc == selectedHex_ && (un != units_.end())) {

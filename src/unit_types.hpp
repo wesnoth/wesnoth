@@ -63,8 +63,8 @@ public:
 	//this function returns a random animation out of the possible
 	//animations for this attack. It will not return the same attack
 	//each time.
-	bool matches_filter(const config& cfg,int set_,bool self=false) const;
-	bool apply_modification(const config& cfg,std::string* description,int set_);
+	bool matches_filter(const config& cfg,bool self=false) const;
+	bool apply_modification(const config& cfg,std::string* description);
 	
 	int movement_used() const;
 	

@@ -108,7 +108,7 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 				lexical_cast<std::string>(side) + ".");
 		}
 
-		new_unit.new_turn(map.starting_position(new_unit.side()));
+		new_unit.new_turn();
 		units.insert(std::pair<gamemap::location,unit>(
 				map.starting_position(new_unit.side()), new_unit));
 		LOG_NG << "initializing side '" << cfg["side"] << "' at "

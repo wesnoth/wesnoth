@@ -1650,7 +1650,7 @@ void reset_resting(std::map<gamemap::location,unit>& units, unsigned int side)
 	}
 }
 
-void calculate_healing(display& disp, const gamestatus& status, const gamemap& map,
+void calculate_healing(display& disp, const gamemap& map,
                        units_map& units, unsigned int side,
 					   const std::vector<team>& teams, bool update_display)
 {
@@ -1764,8 +1764,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		if (disp.turbo() || recorder.is_skipping()
 			|| disp.fogged(i->first.x, i->first.y)
 			|| !update_display 
-			|| (i->second.invisible(map.underlying_union_terrain(map[i->first.x][i->first.y]),
-							  status.get_time_of_day().lawful_bonus,i->first,units,teams) &&
+			|| (i->second.invisible(i->first,units,teams) &&
 				teams[disp.viewing_team()].is_enemy(side))) {
 			// Simple path.
 			if (healing > 0)
@@ -2052,7 +2051,7 @@ bool clear_shroud_unit(const gamemap& map,
 
 		const unit_map::const_iterator sighted = units.find(*it);
 		if(sighted != units.end() &&
-		  (sighted->second.invisible(map.underlying_union_terrain(map[it->x][it->y]),status.get_time_of_day().lawful_bonus,*it,units,teams) == false
+		  (sighted->second.invisible(*it,units,teams) == false
 		  || teams[team].is_enemy(sighted->second.side()) == false)) {
 			if(seen_units == NULL || known_units == NULL) {
 				static const std::string sighted("sighted");
@@ -2169,7 +2168,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			moves_left -= mv;
 		}
 
-		if(!skirmisher && enemy_zoc(map,status,units,teams,*step,team,u.side())) {
+		if(!skirmisher && enemy_zoc(map,units,teams,*step,team,u.side())) {
 			moves_left = 0;
 		}
 
@@ -2206,8 +2205,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 			const units_map::const_iterator it = units.find(adjacent[i]);
 			if(it != units.end() && teams[u.side()-1].is_enemy(it->second.side()) &&
-			   it->second.invisible(map.underlying_union_terrain(map[it->first.x][it->first.y]),
-			   status.get_time_of_day().lawful_bonus,it->first,units,teams)) {
+			   it->second.invisible(it->first,units,teams)) {
 				discovered_unit = true;
 				should_clear_stack = true;
 				moves_left = 0;
@@ -2254,7 +2252,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	if(disp != NULL) {
 		ui->second.set_hidden(true);
 		disp->invalidate(ui->first);
-		unit_display::move_unit(*disp,map,steps,u,status.get_time_of_day(),units,teams);
+		unit_display::move_unit(*disp,map,steps,u,units,teams);
 		ui->second.set_hidden(false);
 	}
 

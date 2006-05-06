@@ -33,8 +33,7 @@ class replay_controller : public play_controller
 {
 public:
 	replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
-		const int ticks, const int num_turns, const config& game_config, CVideo& video,
-		const std::vector<config*>& story);
+		const int ticks, const int num_turns, const config& game_config, CVideo& video);
 	~replay_controller();
 
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
@@ -63,7 +62,7 @@ protected:
 	virtual void init_gui();
 
 private:
-	void init(CVideo& video, const std::vector<config*>& story);
+	void init();
 	virtual void play_turn();
 	virtual void play_side(const int team_index);
 	void update_teams();
@@ -81,7 +80,6 @@ private:
 
 LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& terrain_config,
 		const config* level, CVideo& video,
-		game_state& state_of_game,
-		const std::vector<config*>& story);
+		game_state& state_of_game);
 
 #endif

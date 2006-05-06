@@ -341,7 +341,7 @@ private:
 	mutable std::map<char,double> cache_;
 };
 
-double road_path_calculator::cost(const location& src, const location& loc, const double /*so_far*/, const bool /*isDst*/) const
+double road_path_calculator::cost(const location& /*src*/, const location& loc, const double /*so_far*/, const bool /*isDst*/) const
 {
 	++calls;
 	if (loc.x < 0 || loc.y < 0 || loc.x >= (long)map_.size() || loc.y >= (long)map_.front().size())

@@ -93,10 +93,10 @@ public:
 private:
 	void process_data(network::connection sock, config& data, config& gamelist);
 
-	void process_login(network::connection sock, const config& data, config& gamelist);
-	void process_query(network::connection sock, const config& query, config& gamelist);
+	void process_login(network::connection sock, const config& data);
+	void process_query(network::connection sock, const config& query);
 	void process_whisper(const network::connection sock, const config& whisper);
-	void process_data_from_player_in_lobby(network::connection sock, config& data, config& gamelist);
+	void process_data_from_player_in_lobby(network::connection sock, config& data);
 	void process_data_from_player_in_game(network::connection sock, config& data, config& gamelist);
 
 	std::string process_command(const std::string& cmd);
@@ -493,20 +493,20 @@ void server::process_data(const network::connection sock, config& data, config& 
 	//if someone who is not yet logged in is sending
 	//login details
 	else if(not_logged_in_.is_observer(sock)) {
-		process_login(sock,data,gamelist);
+		process_login(sock,data);
 	} else if(const config* query = data.child("query")) {
-		process_query(sock,*query,gamelist);
+		process_query(sock,*query);
 	} else if(const config* whisper = data.child("whisper")) {
 		process_whisper(sock,*whisper);
 	} else if(lobby_players_.is_observer(sock)) {
-		process_data_from_player_in_lobby(sock,data,gamelist);
+		process_data_from_player_in_lobby(sock,data);
 	} else {
 		process_data_from_player_in_game(sock,data,gamelist);
 	}
 }
 
 
-void server::process_login(const network::connection sock, const config& data, config& gamelist)
+void server::process_login(const network::connection sock, const config& data)
 {
 	//see if client is sending their version number
 	const config* const version = data.child("version");
@@ -628,7 +628,7 @@ void server::process_login(const network::connection sock, const config& data, c
 	}
 }
 
-void server::process_query(const network::connection sock, const config& query, config& gamelist)
+void server::process_query(const network::connection sock, const config& query)
 {
 	//process queries from clients in here
 	std::ostringstream response;
@@ -699,7 +699,7 @@ void server::process_whisper(const network::connection sock, const config& whisp
 	}
 }
 
-void server::process_data_from_player_in_lobby(const network::connection sock, config& data, config& gamelist)
+void server::process_data_from_player_in_lobby(const network::connection sock, config& data)
 {
 	//std::cerr << "in process_data_from_player_in_lobby...\n";
 	const config* const create_game = data.child("create_game");

@@ -748,7 +748,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			unit_map::const_iterator un = find_unit(selected_hex_);
 
 			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && !un->second.incapacitated()) {
-				const shortest_path_calculator calc(un->second,current_team(), visible_units(),teams_,map_,status_);
+				const shortest_path_calculator calc(un->second,current_team(), visible_units(),teams_,map_);
 				const bool can_teleport = un->second.get_ability_bool("teleport",un->first);
 
 				const std::set<gamemap::location>* teleports = NULL;
@@ -803,12 +803,12 @@ unit_map::iterator mouse_handler::selected_unit()
 
 unit_map::iterator mouse_handler::find_unit(const gamemap::location& hex)
 {
-	return find_visible_unit(units_,hex,map_,status_.get_time_of_day().lawful_bonus,teams_,viewing_team());
+	return find_visible_unit(units_,hex,map_,teams_,viewing_team());
 }
 
 unit_map::const_iterator mouse_handler::find_unit(const gamemap::location& hex) const
 {
-	return find_visible_unit(units_,hex,map_,status_.get_time_of_day().lawful_bonus,teams_,viewing_team());
+	return find_visible_unit(units_,hex,map_,teams_,viewing_team());
 }
 
 gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::location& loc, const gamemap::location::DIRECTION preferred, const gamemap::location::DIRECTION second_preferred)
@@ -1075,7 +1075,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 			const gamemap::location go_to = u.get_goto();
 			if(map_.on_board(go_to)) {
 				const shortest_path_calculator calc(u,current_team(),
-				                                    visible_units(),teams_,map_,status_);
+				                                    visible_units(),teams_,map_);
 
 				const std::set<gamemap::location>* teleports = NULL;
 
@@ -1313,7 +1313,7 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 {
 	if(it->second.side() == team_num_ && unit_can_move(it->first,units_,map_,teams_) && it->second.user_end_turn() == false && !gui_->fogged(it->first.x,it->first.y)) {
 		bool is_enemy = current_team().is_enemy(int(gui_->viewing_team()+1));
-		return is_enemy == false || it->second.invisible(map_.underlying_union_terrain(it->first),status_.get_time_of_day().lawful_bonus,it->first,units_,teams_) == false;
+		return is_enemy == false || it->second.invisible(it->first,units_,teams_) == false;
 	}
 
 	return false;

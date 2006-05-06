@@ -643,8 +643,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 						(*teams)[side_num],
 						*units,
 						*teams,
-						*game_map,
-						*status_ptr);
+						*game_map);
 
 				dst.x = atoi(xvals[i].c_str())-1;
 				dst.y = atoi(yvals[i].c_str())-1;
@@ -656,7 +655,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				paths::route route = a_star_search(src, dst, 10000, &calc,
 				                                   game_map->x(), game_map->y());
 				unit_display::move_unit(*screen, *game_map, route.steps, dummy_unit,
-				                        status_ptr->get_time_of_day(), *units, *teams);
+				                        *units, *teams);
 
 				src = dst;
 			}
