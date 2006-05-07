@@ -36,20 +36,15 @@ class loadscreen {
 		prcnt_(percent)
 		{
 #ifdef WESNOTH_PATH
-			const char *path = WESNOTH_PATH;
+			std::string path(WESNOTH_PATH);
 #else
-			const char *path = ".";
+			std::string path(".");
 #endif
-			size_t sl = strlen (path);
-			char *sp = new char [sl + 21u + 1u];
-			sp [0] = '\0'; 
-			strncat (sp, path, sl);
-			strncat (sp, "/images/misc/logo.png", 21u);
-			logo_surface_ = IMG_Load (sp);
+			path += "/images/misc/logo.png";
+			logo_surface_ = IMG_Load(path.c_str());
 			if (!logo_surface_) {
-				std::cerr << "loadscreen: Failed to load the logo: " << sp << std::endl;
+				std::cerr << "loadscreen: Failed to load the logo: " << path << std::endl;
 			}
-			delete sp;
 		}
 		// Keep default copy constructor
 		// Keep default copy assignment
