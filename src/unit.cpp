@@ -100,7 +100,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
 			hold_position_(false), resting_(false),
 			facing_(gamemap::location::NORTH_EAST),
-			upkeep_(0),anim_(NULL), gamedata_(&gamedata),
+			upkeep_(0),anim_(NULL),unit_halo_(0),unit_anim_halo_(0),gamedata_(&gamedata),
 			units_(NULL),map_(NULL), gamestatus_(NULL)
 {
 	read(cfg);
