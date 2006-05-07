@@ -71,7 +71,7 @@ terrain_type::terrain_type(const config& cfg)
 
 	light_modification_ = atoi(cfg["light"].c_str());
 
-	if (utils::string_bool(cfg["heals"])) {
+	if (cfg["heals"] == "true") {
 		LOG_STREAM(err, config) << "terrain " << id() << " uses heals=true which is deprecated (use number)\n";
 		heals_ = 8;
 	} else {
