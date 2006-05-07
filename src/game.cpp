@@ -439,6 +439,7 @@ bool game_controller::play_multiplayer_mode()
 	std::string scenario = "multiplayer_Charge";
 	std::map<int,std::string> side_types, side_controllers, side_algorithms;
 	std::map<int,string_map> side_parameters;
+	std::string turns = "50";
 
 	size_t sides_counted = 0;
 
@@ -468,6 +469,8 @@ bool game_controller::play_multiplayer_mode()
 
 			if(name == "--scenario") {
 				scenario = value;
+			} else if(name == "--turns") {
+				turns = value;
 			} else if(name == "--era") {
 				era = value;
 			} else if(last_digit && name_head == "--controller") {
@@ -509,6 +512,8 @@ bool game_controller::play_multiplayer_mode()
 		std::cerr << "Could not find era '" << era << "'\n";
 		return false;
 	}
+	
+	level["turns"] = turns;
 
 	const config* const side = era_cfg->child("multiplayer_side");
 	if(side == NULL) {
@@ -1528,24 +1533,44 @@ int play_game(int argc, char** argv)
 
 		if(val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
-		    << " [options] [data-directory]\n"
-			<< "  -d, --debug       Shows debugging information in-game\n"
-			<< "  -f, --fullscreen  Runs the game in full-screen\n"
-			<< "  -h, --help        Prints this message and exits\n"
-			<< "  --path            Prints the name of the game data directory and exits\n"
-			<< "  -t, --test        Runs the game in a small example scenario\n"
-			<< "  --load FILE       Runs the game, loading FILE\n"
-			<< "  -w, --windowed    Runs the game in windowed mode\n"
-			<< "  -v, --version     Prints the game's version number and exits\n"
+			<< " [OPTIONS] [DATA-DIRECTORY]\n"
+			<< "  --bpp number                 sets BitsPerPixel value. Example: --bpp 32\n"
+			<< "  --compress INFILE OUTFILE    compresses a savefile (INFILE) that is in text WML\n"
+			<< "                               format into binary WML format (OUTFILE).\n"
+			<< "  -d, --debug                  shows extra debugging information and enables\n"
+			<< "                               additional command mode options in-game.\n"
+			<< "  --decompress INFILE OUTFILE  decompresses a savefile (INFILE) that is in binary\n"
+			<< "                               WML format into text WML format (OUTFILE).\n"
+			<< "  -f, --fullscreen             runs the game in full screen mode.\n"
+			<< "  --fps                        displays the number of frames per second the game\n"
+			<< "                               is currently running at, in a corner of the screen.\n"
+			<< "  -h, --help                   prints this message and exits.\n"
+			<< "  --load SAVEGAME              loads the file SAVEGAME from the standard save\n"
+			<< "                               game directory.\n"
 			<< "  --log-error=\"domain1,domain2,...\", --log-warning=..., --log-info=...\n"
-			<< "                    Set the severity level of the debug domains\n"
-			<< "                    \"all\" can be used to match any debug domain\n"
-			<< "  --nocache         Disables caching of game data\n"
-			<< "  --nosound         Disables sounds\n"
-			<< "  --compress file1 file2 Compresses the text-WML file file1 into the\n"
-			<< "                    binary-WML file file2\n"
-			<< "  --decompress file1 file2 Uncompresses the binary-WML file file1 into\n"
-			<< "                    the text-WML file file2\n"
+			<< "                               sets the severity level of the debug domains.\n"
+			<< "                               \"all\" can be used to match any debug domain.\n"
+			<< "  --nocache                    disables caching of game data.\n"
+			<< "  --nosound                    runs the game without sounds and music.\n"
+			<< "  --path                       prints the name of the game data directory and exits.\n"
+			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
+			<< "  -t, --test                   runs the game in a small test scenario.\n"
+			<< "  -v, --version                prints the game's version number and exits.\n"
+			<< "  -w, --windowed               runs the game in windowed mode.\n"
+			<< "  --multiplayer                runs a multiplayer game. There are additional\n"
+			<< "                               options that can be used as explained below:\n"
+			<< "  --algorithm<number>=value    selects a non-standard algorithm to be used by the\n"
+			<< "                               AI controller for this side.\n"
+			<< "  --controller<number>=value   selects the controller for this side.\n"
+			<< "  --era=value                  selects the era to be played in by its id.\n"
+			<< "  --nogui                      runs the game without the GUI. Must appear before\n"
+			<< "                               --multiplayer to have the desired effect.\n"
+			<< "  --parm<number>=name:value    sets additional parameters for this side.\n"
+			<< "  --scenario=value             selects a multiplayer scenario. The default\n"
+			<< "                               scenario is \"multiplayer_Charge\".\n"
+			<< "  --side<number>=value         selects a faction of the current era for this side\n"
+			<< "                               by id.\n"
+			<< "  --turns=value                sets the number of turns. The default is \"50\".\n"
 			;
 			return 0;
 		} else if(val == "--version" || val == "-v") {
