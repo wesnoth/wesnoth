@@ -1631,7 +1631,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		const std::string& result = cfg["result"];
 		if(result.empty() || result == "victory") {
-			const bool bonus = utils::string_bool(cfg["bonus"]);
+			const bool bonus = utils::string_bool(cfg["bonus"],true);
 			throw end_level_exception(VICTORY,bonus);
 		} else if(result == "continue") {
 			throw end_level_exception(LEVEL_CONTINUE);
