@@ -7,7 +7,7 @@ use strict;
 my $command = 'ls';
 my $download = '';
 my $download_to = '';
-my ($host,$port) = ("campaigns.wesnoth.org",15002);
+my ($host,$port) = ("campaigns.wesnoth.org",15003);
 my @fields = ('name','title','author','size','version','filename','downloads');
 
 while(@ARGV) {
