@@ -45,6 +45,7 @@ class loadscreen {
 			if (!logo_surface_) {
 				std::cerr << "loadscreen: Failed to load the logo: " << path << std::endl;
 			}
+			textarea_.x = textarea_.y = textarea_.w = textarea_.h = 0;
 		}
 		// Keep default copy constructor
 		// Keep default copy assignment
