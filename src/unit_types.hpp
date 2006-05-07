@@ -153,21 +153,6 @@ private:
 
 typedef std::map<std::string,unit_movement_type> movement_type_map;
 
-class ability_filter
-{
-public:
-	ability_filter();
-	bool matches_filter(const std::string& terrain, int lawful_bonus) const;
-	void add_filters(const config* cfg);
-	void add_terrain_filter(const std::string& terrains);
-	void add_tod_filter(const std::string& times);
-	void unfilter();
-private:
-	std::vector<std::string> terrain_filter_chaotic;
-	std::vector<std::string> terrain_filter_neutral;
-	std::vector<std::string> terrain_filter_lawful;
-};
-
 class unit_type
 {
 public:
@@ -211,7 +196,7 @@ public:
 	std::vector<attack_type> attacks() const;
 	const unit_movement_type& movement_type() const;
 
-	int experience_needed() const;
+	int experience_needed(bool with_acceleration=true) const;
 	std::vector<std::string> advances_to() const;
 	const config::child_list& modification_advancements() const;
 	const std::string& usage() const;
@@ -219,6 +204,7 @@ public:
 	struct experience_accelerator {
 		experience_accelerator(int modifier);
 		~experience_accelerator();
+		static int get_acceleration();
 	private:
 		int old_value_;
 	};

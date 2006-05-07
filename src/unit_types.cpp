@@ -608,109 +608,6 @@ const std::map<gamemap::TERRAIN,int>& unit_movement_type::defense_mods() const
 }
 
 
-ability_filter::ability_filter()
-{
-	// we add a null string to prevent the filter to be empty
-	terrain_filter_chaotic.push_back("");
-	terrain_filter_neutral.push_back("");
-	terrain_filter_lawful.push_back("");
-}
-
-bool ability_filter::matches_filter(const std::string& terrain, int lawful_bonus) const
-{		
-	const std::vector<std::string>* terrain_filter;
-	if (lawful_bonus < 0) {
-		terrain_filter = &terrain_filter_chaotic;
-	} else if (lawful_bonus == 0) {
-		terrain_filter = &terrain_filter_neutral;
-	} else {
-		terrain_filter = &terrain_filter_lawful;
-	}		
-		
-	if (terrain_filter->empty()) {
-		return true;
-	} else {
-		for (std::string::const_iterator i = terrain.begin(); i != terrain.end(); ++i) {
-			std::string t(1,*i);
-			if (std::find(terrain_filter->begin(),terrain_filter->end(),t) != terrain_filter->end())
-				return true;
-		}
-		return false;
-	}
-}
-
-void ability_filter::unfilter()
-{
-	terrain_filter_chaotic.clear();
-	terrain_filter_neutral.clear();
-	terrain_filter_lawful.clear();		
-}
-
-void ability_filter::add_terrain_filter(const std::string& terrains)
-{
-	std::vector<std::string> add_to_filter = utils::split(terrains);
-	for (std::vector<std::string>::const_iterator t = add_to_filter.begin(); t != add_to_filter.end(); ++t) {
-		terrain_filter_chaotic.push_back(*t);
-		terrain_filter_neutral.push_back(*t);
-		terrain_filter_lawful.push_back(*t);
-	}
-}
-
-void ability_filter::add_tod_filter(const std::string& times)
-{
-	std::vector<std::string> add_to_filter = utils::split(times);
-	for (std::vector<std::string>::const_iterator t = add_to_filter.begin(); t != add_to_filter.end(); ++t) {
-		if (*t == "chaotic") {
-			terrain_filter_chaotic.clear();
-		} else if (*t == "neutral") {
-			terrain_filter_neutral.clear();
-		} else if (*t == "lawful") {
-			terrain_filter_lawful.clear();		
-		} else {
-			LOG_STREAM(err, config) << "Unknown time of day type : " << *t << "\n";
-		}
-	}
-}
-	
-void ability_filter::add_filters(const config* cfg)
-{
-	if (cfg) {
-		std::string tods =(*cfg)["tod"];
-		std::string terrains =(*cfg)["terrains"];
-		if (tods == "" && terrains == "") {
-			unfilter();
-			return;
-		} else if (tods == "") {
-			add_terrain_filter(terrains);
-			return;
-		} else if (terrains == "") {
-			add_tod_filter(tods);
-			return;
-		} else {
-			std::vector<std::string> tod_slices = utils::split(tods);
-			for (std::vector<std::string>::const_iterator td = tod_slices.begin(); td != tod_slices.end(); ++td) {
-				std::vector<std::string>* terrain_filter;
-				if (*td == "chaotic") {
-					terrain_filter= &terrain_filter_chaotic;
-				} else if (*td == "neutral") {
-					terrain_filter= &terrain_filter_neutral;
-				} else if (*td == "lawful") {
-					terrain_filter= &terrain_filter_lawful;
-				} else {
-					LOG_STREAM(err, config) << "Unknown time of day type : " << *td << "\n";
-					continue;
-				}
-				std::vector<std::string> terrain_slices = utils::split(terrains);
-				for (std::vector<std::string>::const_iterator te = terrain_slices.begin(); te != terrain_slices.end(); ++te) {
-					terrain_filter->push_back(*te);
-				}
-			}
-		}
-	} else {
-		unfilter();
-	}
-}
-
 unit_type::unit_type(const unit_type& o)
     : variations_(o.variations_), cfg_(o.cfg_), race_(o.race_),
       alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
@@ -1082,11 +979,19 @@ unit_type::experience_accelerator::~experience_accelerator()
 	experience_modifier = old_value_;
 }
 
-int unit_type::experience_needed() const
+int unit_type::experience_accelerator::get_acceleration()
 {
-	int exp = (experience_needed_ * experience_modifier + 50) /100;
-	if(exp < 1) exp = 1;
-	return exp;
+	return experience_modifier;
+}
+
+int unit_type::experience_needed(bool with_acceleration) const
+{
+	if(with_acceleration) {
+		int exp = (experience_needed_ * experience_modifier + 50) /100;
+		if(exp < 1) exp = 1;
+		return exp;
+	}
+	return experience_needed_;
 }
 
 std::vector<std::string> unit_type::advances_to() const

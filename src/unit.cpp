@@ -82,7 +82,7 @@ unit::unit(const unit& u)
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, 
      const gamestatus* game_status, const std::vector<team>* teams,const config& cfg) : 
 	 movement_(0), hold_position_(false),resting_(false),
-	 facing_(gamemap::location::NORTH_EAST),upkeep_(0),
+	 facing_(gamemap::location::NORTH_EAST),
 	 anim_(NULL),gamedata_(gamedata), units_(unitmap), map_(map),
 	 gamestatus_(game_status),teams_(teams)
 {
@@ -100,7 +100,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
 			hold_position_(false), resting_(false),
 			facing_(gamemap::location::NORTH_EAST),
-			upkeep_(0),anim_(NULL),unit_halo_(0),unit_anim_halo_(0),gamedata_(&gamedata),
+			anim_(NULL),unit_halo_(0),unit_anim_halo_(0),gamedata_(&gamedata),
 			units_(NULL),map_(NULL), gamestatus_(NULL)
 {
 	read(cfg);
@@ -260,7 +260,7 @@ void unit::advance_to(const unit_type* t)
 	language_name_ = t->language_name();
 	cfg_["unit_description"] = t->unit_description();
 	undead_variation_ = t->undead_variation();
-	max_experience_ = t->experience_needed();
+	max_experience_ = t->experience_needed(false);
 	level_ = t->level();
 	alignment_ = t->alignment();
 	alpha_ = t->alpha();
@@ -386,7 +386,7 @@ int unit::experience() const
 }
 int unit::max_experience() const
 {
-	return max_experience_;
+	return maximum<int>(1,(max_experience_*unit_type::experience_accelerator::get_acceleration() + 50) / 100);
 }
 int unit::level() const
 {
@@ -869,20 +869,9 @@ void unit::read(const config& cfg)
 	variation_ = cfg["variation"];
 	
 	wassert(gamedata_ != NULL);
-	const race_map::const_iterator race_it = gamedata_->races.find(cfg["race"]);
-	if(race_it != gamedata_->races.end()) {
-		race_ = &race_it->second;
-	} else {
-		static const unit_race dummy_race;
-		race_ = &dummy_race;
-	}
-
 	description_ = cfg["unit_description"];
 	custom_unit_description_ = cfg["user_description"];
 	
-	if(utils::string_bool(cfg["generate_description"])) {
-		custom_unit_description_ = generate_description();
-	}
 	underlying_description_ = cfg["description"];
 	if(description_.empty()) {
 		description_ = underlying_description_;
@@ -909,12 +898,12 @@ void unit::read(const config& cfg)
 	name_ = cfg["name"];
 	language_name_ = cfg["language_name"];
 	undead_variation_ = cfg["undead_variation"];
-	variation_ = cfg["variation"];
 	
 	flag_rgb_ = string2rgb(cfg["flag_rgb"]);
 	alpha_ = lexical_cast_default<fixed_t>(cfg["alpha"]);
 	
 	level_ = lexical_cast_default<int>(cfg["level"]);
+	unit_value_ = lexical_cast_default<int>(cfg["value"]);
 	
 	facing_ = gamemap::location::parse_direction(cfg["facing"]);
 	if(facing_ == gamemap::location::NDIRECTIONS) facing_ = gamemap::location::NORTH_EAST;
@@ -924,9 +913,6 @@ void unit::read(const config& cfg)
 		recruits_.clear();
 	}
 	attacks_left_ = lexical_cast_default<int>(cfg["attacks_left"]);
-	max_attacks_ = lexical_cast_default<int>(cfg["max_attacks"],1);
-	emit_zoc_ = lexical_cast_default<int>(cfg["zoc"]);
-	unit_value_ = lexical_cast_default<int>(cfg["value"]);
 	const config* mod_desc = cfg.child("modifications_description");
 	if(mod_desc) {
 		for(string_map::const_iterator k = mod_desc->values.begin(); k != mod_desc->values.end(); ++k) {
@@ -952,8 +938,7 @@ void unit::read(const config& cfg)
 		} else {
 			LOG_STREAM(err, engine) << "unit of type " << cfg["type"] << " not found!\n";
 		}
-		attacks_left_ = 1;
-		max_attacks_ = 1;
+		attacks_left_ = max_attacks_;
 		if(cfg["moves"]=="") {
 			movement_ = max_movement_;
 		}
@@ -966,6 +951,22 @@ void unit::read(const config& cfg)
 		id_ = cfg_["type"];
 	} else {
 		id_ = cfg_["id"];
+	}
+	if(!type_set || cfg["race"] != "") {
+		const race_map::const_iterator race_it = gamedata_->races.find(cfg["race"]);
+		if(race_it != gamedata_->races.end()) {
+			race_ = &race_it->second;
+		} else {
+			static const unit_race dummy_race;
+			race_ = &dummy_race;
+		}
+	}
+	variation_ = cfg["variation"];
+	if(!type_set || cfg["max_attacks"] != "") {
+		max_attacks_ = minimum<int>(1,lexical_cast_default<int>(cfg["max_attacks"]));
+	}
+	if(!type_set || cfg["zoc"] != "") {
+		emit_zoc_ = lexical_cast_default<int>(cfg["zoc"]);
 	}
 	if(cfg["max_hitpoints"] != "") {
 		max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"]);
@@ -1029,6 +1030,10 @@ void unit::read(const config& cfg)
 	} else if(cfg["type"]=="") {
 		alignment_ = unit_type::NEUTRAL;
 	}
+	if(utils::string_bool(cfg["generate_description"])) {
+		custom_unit_description_ = generate_description();
+	}
+	
 	if(!type_set) {
 		const config::child_list& defends = cfg_.get_children("defend");
 		for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
@@ -2100,11 +2105,7 @@ void unit::add_modification(const std::string& type, const config& mod,
 			variation_ = (**i.first)["name"];
 			wassert(gamedata_ != NULL);
 			const game_data::unit_type_map::const_iterator var = gamedata_->unit_types.find(id());
-			advance_to(&var->second);
-//			type_ = &type_->get_variation(variation_);
-//			reset_modifications();
-//			apply_modifications();
-//			wassert("not done" == "done");
+			advance_to(&var->second.get_variation(variation_));
 		} else if(apply_to == "new_attack") {
 			attacks_.push_back(attack_type(**i.first,id(),image_fighting((**i.first)["range"]=="ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
 		} else if(apply_to == "attack") {
@@ -2210,8 +2211,7 @@ void unit::add_modification(const std::string& type, const config& mod,
 				max_experience_ = 1;
 			}
 		} else if(apply_to == "loyal") {
-			if(upkeep_ > 0)
-				upkeep_ = 0;
+			cfg_["upkeep"] = "loyal";
 		} else if(apply_to == "status") {
 			const std::string& add = (**i.first)["add"];
 			const std::string& remove = (**i.first)["remove"];

@@ -326,7 +326,6 @@ class unit
 		t_string traits_description_;
 		int unit_value_;
 		gamemap::location goto_, interrupted_move_;
-		int upkeep_;
 		bool flying_;
 		
 //		std::map<gamemap::TERRAIN,int> movement_costs_, movement_costs_b_;
