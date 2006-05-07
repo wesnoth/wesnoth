@@ -14,6 +14,8 @@
 
 #include "font.hpp"
 #include "marked-up_text.hpp"
+#include "gettext.hpp"
+
 
 #include <iostream>
 
@@ -131,7 +133,7 @@ void increment_filesystem_progress () {
 	// I am assuming non parallel access here!
 	if (loadscreen::global_loadscreen != 0) {
 		if (loadscreen::global_loadscreen->filesystem_counter == 0) {
-			loadscreen::global_loadscreen->increment_progress(0, "Verifying cache.");
+			loadscreen::global_loadscreen->increment_progress(0, _("Verifying cache."));
 		}
 		oldpct = (PRCNT_BY_FILESYSTEM * loadscreen::global_loadscreen->filesystem_counter) / CALLS_TO_FILESYSTEM;
 		newpct = (PRCNT_BY_FILESYSTEM * ++(loadscreen::global_loadscreen->filesystem_counter)) / CALLS_TO_FILESYSTEM;
@@ -150,7 +152,7 @@ void increment_binary_wml_progress () {
 	// I am assuming non parallel access here!
 	if (loadscreen::global_loadscreen != 0) {
 		if (loadscreen::global_loadscreen->binarywml_counter == 0) {
-			loadscreen::global_loadscreen->increment_progress(0, "Reading cache.");
+			loadscreen::global_loadscreen->increment_progress(0, _("Reading cache."));
 		}
 		oldpct = (PRCNT_BY_BINARYWML * loadscreen::global_loadscreen->binarywml_counter) / CALLS_TO_BINARYWML;
 		newpct = (PRCNT_BY_BINARYWML * ++(loadscreen::global_loadscreen->binarywml_counter)) / CALLS_TO_BINARYWML;
@@ -169,7 +171,7 @@ void increment_set_config_progress () {
 	// I am assuming non parallel access here!
 	if (loadscreen::global_loadscreen != 0) {
 		if (loadscreen::global_loadscreen->setconfig_counter == 0) {
-			loadscreen::global_loadscreen->increment_progress(0, "Reading unit files.");
+			loadscreen::global_loadscreen->increment_progress(0, _("Reading unit files."));
 		}
 		oldpct = (PRCNT_BY_SETCONFIG * loadscreen::global_loadscreen->setconfig_counter) / CALLS_TO_SETCONFIG;
 		newpct = (PRCNT_BY_SETCONFIG * ++(loadscreen::global_loadscreen->setconfig_counter)) / CALLS_TO_SETCONFIG;
@@ -188,7 +190,7 @@ void increment_parser_progress () {
 	// I am assuming non parallel access here!
 	if (loadscreen::global_loadscreen != 0) {
 		if (loadscreen::global_loadscreen->parser_counter == 0) {
-			loadscreen::global_loadscreen->increment_progress(0, "Reading files and creating cache.");
+			loadscreen::global_loadscreen->increment_progress(0, _("Reading files and creating cache."));
 		}
 		oldpct = (PRCNT_BY_PARSER * loadscreen::global_loadscreen->parser_counter) / CALLS_TO_PARSER;
 		newpct = (PRCNT_BY_PARSER * ++(loadscreen::global_loadscreen->parser_counter)) / CALLS_TO_PARSER;
