@@ -25,7 +25,7 @@ Commands:
 	download <campaign name> [<path>]: downloads the given campaign into the directory given by the path. The files and directories created in the process will be printed to standard out.
 Options:
 	--host: the host to connect to (defaults to campaigns.wesnoth.org)
-	--port: the port to connect to (defaults to 15002)
+	--port: the port to connect to (defaults to 15003, the dev version campaign server)
 	--help: displays this text and exits
 ";
 	exit;
