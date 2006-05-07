@@ -39,9 +39,9 @@ private:
 	config& cfg_;
 
 	time_t flood_start_;
-	int messages_since_flood_start_;
+	unsigned int messages_since_flood_start_;
 	size_t MaxMessages;
-	size_t TimePeriod;
+	time_t TimePeriod;
 };
 
 #endif

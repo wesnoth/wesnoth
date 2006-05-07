@@ -89,7 +89,7 @@ namespace events{
 		return textbox_info_;
 	}
 
-	void menu_handler::objectives(const int team_num)
+	void menu_handler::objectives(const unsigned int team_num)
 	{
 		dialogs::show_objectives(*gui_, level_, teams_[team_num - 1].objectives());
 		teams_[team_num - 1].reset_objectives_changed();
@@ -491,7 +491,7 @@ namespace events{
 		return false;
 	}
 
-	void menu_handler::recruit(const bool browse, const int team_num, const gamemap::location& last_hex)
+	void menu_handler::recruit(const bool browse, const unsigned int team_num, const gamemap::location& last_hex)
 	{
 		if(browse)
 			return;
@@ -552,13 +552,13 @@ namespace events{
 		}
 	}
 
-	void menu_handler::repeat_recruit(const int team_num, const gamemap::location& last_hex)
+	void menu_handler::repeat_recruit(const unsigned int team_num, const gamemap::location& last_hex)
 	{
 		if(last_recruit_.empty() == false)
 			do_recruit(last_recruit_, team_num, last_hex);
 	}
 
-	void menu_handler::do_recruit(const std::string& name, const int team_num, const gamemap::location& last_hex)
+	void menu_handler::do_recruit(const std::string& name, const int unsigned team_num, const gamemap::location& last_hex)
 	{
 		team& current_team = teams_[team_num-1];
 
@@ -613,7 +613,7 @@ namespace events{
 		}
 	}
 
-	void menu_handler::recall(const int team_num, const gamemap::location& last_hex)
+	void menu_handler::recall(const unsigned int team_num, const gamemap::location& last_hex)
 	{
 		player_info *player = gamestate_.get_player(teams_[team_num-1].save_id());
 		if(!player) {
@@ -720,7 +720,7 @@ namespace events{
 			}
 		}
 	}
-	void menu_handler::undo(const int team_num, mouse_handler& mousehandler)
+	void menu_handler::undo(const unsigned int team_num, mouse_handler& mousehandler)
 	{
 		if(undo_stack_.empty())
 			return;
@@ -807,7 +807,7 @@ namespace events{
 		}
 	}
 
-	void menu_handler::redo(const int team_num, mouse_handler& mousehandler)
+	void menu_handler::redo(const unsigned int team_num, mouse_handler& mousehandler)
 	{
 		if(redo_stack_.empty())
 			return;
@@ -888,14 +888,14 @@ namespace events{
 		redo_stack_.pop_back();
 	}
 
-	bool menu_handler::clear_shroud(const int team_num)
+	bool menu_handler::clear_shroud(const unsigned int team_num)
 	{
 		bool cleared = teams_[team_num - 1].auto_shroud_updates() &&
 			::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,team_num-1);
 		return cleared;
 	}
 
-	void menu_handler::clear_undo_stack(const int team_num)
+	void menu_handler::clear_undo_stack(const unsigned int team_num)
 	{
 		if(teams_[team_num - 1].auto_shroud_updates() == false)
 			apply_shroud_changes(undo_stack_,gui_,status_,map_,gameinfo_,units_,teams_,team_num-1);
@@ -903,7 +903,7 @@ namespace events{
 	}
 
 	// Highlights squares that an enemy could move to on their turn, showing how many can reach each square.
-	void menu_handler::show_enemy_moves(bool ignore_units, const int team_num)
+	void menu_handler::show_enemy_moves(bool ignore_units, const unsigned int team_num)
 	{
 		gui_->unhighlight_reach();
 
@@ -925,19 +925,19 @@ namespace events{
 		}
 	}
 
-	void menu_handler::toggle_shroud_updates(const int team_num) {
+	void menu_handler::toggle_shroud_updates(const unsigned int team_num) {
 		bool auto_shroud = teams_[team_num - 1].auto_shroud_updates();
 		// If we're turning automatic shroud updates on, then commit all moves
 		if(auto_shroud == false) update_shroud_now(team_num);
 		teams_[team_num - 1].set_auto_shroud_updates(!auto_shroud);
 	}
 
-	void menu_handler::update_shroud_now(const int team_num)
+	void menu_handler::update_shroud_now(const unsigned int team_num)
 	{
 		clear_undo_stack(team_num);
 	}
 
-	void menu_handler::end_turn(const int team_num)
+	void menu_handler::end_turn(const unsigned int team_num)
 	{
 		bool unmoved_units = false, partmoved_units = false, some_units_have_moved = false;
 		for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
@@ -993,7 +993,7 @@ namespace events{
 		recorder.end_turn();
 	}
 
-	void menu_handler::goto_leader(const int team_num)
+	void menu_handler::goto_leader(const unsigned int team_num)
 	{
 		const unit_map::const_iterator i = team_leader(team_num,units_);
 		if(i != units_.end()) {
@@ -1119,7 +1119,7 @@ namespace events{
 		recorder.clear_labels();
 	}
 
-	void menu_handler::continue_move(mouse_handler& mousehandler, const int team_num)
+	void menu_handler::continue_move(mouse_handler& mousehandler, const unsigned int team_num)
 	{
 		unit_map::iterator i = current_unit(mousehandler);
 		if(i == units_.end() || i->second.move_interrupted() == false) {
@@ -1129,7 +1129,7 @@ namespace events{
 		move_unit_to_loc(i,i->second.get_interrupted_move(),true, team_num, mousehandler);
 	}
 
-	void menu_handler::move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target, bool continue_move, const int team_num, mouse_handler& mousehandler)
+	void menu_handler::move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target, bool continue_move, const unsigned int team_num, mouse_handler& mousehandler)
 	{
 		wassert(ui != units_.end());
 
@@ -1164,7 +1164,7 @@ namespace events{
 		gui_->invalidate_all();
 	}
 
-	void menu_handler::unit_hold_position(mouse_handler& mousehandler, const int team_num)
+	void menu_handler::unit_hold_position(mouse_handler& mousehandler, const unsigned int team_num)
 	{
 		const unit_map::iterator un = units_.find(mousehandler.get_selected_hex());
 		if(un != units_.end() && un->second.side() == team_num && un->second.movement_left() >= 0) {
@@ -1181,7 +1181,7 @@ namespace events{
 		}
 	}
 
-	void menu_handler::end_unit_turn(mouse_handler& mousehandler, const int team_num)
+	void menu_handler::end_unit_turn(mouse_handler& mousehandler, const unsigned int team_num)
 	{
 		const unit_map::iterator un = units_.find(mousehandler.get_selected_hex());
 		if(un != units_.end() && un->second.side() == team_num && un->second.movement_left() >= 0) {
@@ -1395,7 +1395,7 @@ namespace events{
 		}
 	}
 
-	void menu_handler::do_command(const std::string& str, const int team_num, mouse_handler& mousehandler)
+	void menu_handler::do_command(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler)
 	{
 		const std::string::const_iterator i = std::find(str.begin(),str.end(),' ');
 		const std::string cmd(str.begin(),i);

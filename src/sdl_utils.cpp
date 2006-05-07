@@ -883,10 +883,10 @@ surface flip_surface(surface const &surf)
 		surface_lock lock(nsurf);
 		Uint32* const pixels = lock.pixels();
 
-		for(size_t y = 0; y != nsurf->h; ++y) {
-			for(size_t x = 0; x != nsurf->w/2; ++x) {
-				const size_t index1 = y*nsurf->w + x;
-				const size_t index2 = (y+1)*nsurf->w - x - 1;
+		for(int y = 0; y != nsurf->h; ++y) {
+			for(int x = 0; x != nsurf->w/2; ++x) {
+				const int index1 = y*nsurf->w + x;
+				const int index2 = (y+1)*nsurf->w - x - 1;
 				std::swap(pixels[index1],pixels[index2]);
 			}
 		}
@@ -912,10 +912,10 @@ surface flop_surface(surface const &surf)
 		surface_lock lock(nsurf);
 		Uint32* const pixels = lock.pixels();
 
-		for(size_t x = 0; x != nsurf->w; ++x) {
-			for(size_t y = 0; y != nsurf->h/2; ++y) {
-				const size_t index1 = y*nsurf->w + x;
-				const size_t index2 = (nsurf->h-y-1)*surf->w + x;
+		for(int x = 0; x != nsurf->w; ++x) {
+			for(int y = 0; y != nsurf->h/2; ++y) {
+				const int index1 = y*nsurf->w + x;
+				const int index2 = (nsurf->h-y-1)*surf->w + x;
 				std::swap(pixels[index1],pixels[index2]);
 			}
 		}
@@ -1020,7 +1020,7 @@ SDL_Rect get_non_transperant_portion(surface const &surf)
 	surface_lock lock(nsurf);
 	const Uint32* const pixels = lock.pixels();
 
-	size_t n;
+	int n;
 	for(n = 0; n != nsurf->h; ++n) {
 		const Uint32* const start_row = pixels + n*nsurf->w;
 		const Uint32* const end_row = start_row + nsurf->w;
@@ -1044,7 +1044,7 @@ SDL_Rect get_non_transperant_portion(surface const &surf)
 	res.h = nsurf->h - res.y - n;
 
 	for(n = 0; n != nsurf->w; ++n) {
-		size_t y;
+		int y;
 		for(y = 0; y != nsurf->h; ++y) {
 			const Uint32 pixel = pixels[y*nsurf->w + n];
 			if(calc(pixel))
@@ -1058,7 +1058,7 @@ SDL_Rect get_non_transperant_portion(surface const &surf)
 	res.x = n;
 
 	for(n = 0; n != nsurf->w-res.x; ++n) {
-		size_t y;
+		int y;
 		for(y = 0; y != nsurf->h; ++y) {
 			const Uint32 pixel = pixels[y*nsurf->w + surf->w - n - 1];
 			if(calc(pixel))

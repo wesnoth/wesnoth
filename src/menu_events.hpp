@@ -39,7 +39,7 @@ public:
 	gui::floating_textbox& get_textbox();
 	void set_gui(display* gui) { gui_ = gui; }
 
-	void objectives(const int team_num);
+	void objectives(const unsigned int team_num);
 	void show_statistics();
 	void unit_list();
 	void status_table();
@@ -49,44 +49,44 @@ public:
 	void show_chat_log();
 	void show_help();
 	void speak();
-	void recruit(const bool browse, const int team_num, const gamemap::location& last_hex);
-	void repeat_recruit(const int team_num, const gamemap::location& last_hex);
-	void recall(const int team_num, const gamemap::location& last_hex);
-	void undo(const int team_num, mouse_handler& mousehandler);
-	void redo(const int team_num, mouse_handler& mousehandler);
-	void show_enemy_moves(bool ignore_units, const int team_num);
-	void toggle_shroud_updates(const int team_num);
-	void update_shroud_now(const int team_num);
-	void end_turn(const int team_num);
-	void goto_leader(const int team_num);
+	void recruit(const bool browse, const unsigned int team_num, const gamemap::location& last_hex);
+	void repeat_recruit(const unsigned int team_num, const gamemap::location& last_hex);
+	void recall(const unsigned int team_num, const gamemap::location& last_hex);
+	void undo(const unsigned int team_num, mouse_handler& mousehandler);
+	void redo(const unsigned int team_num, mouse_handler& mousehandler);
+	void show_enemy_moves(bool ignore_units, const unsigned int team_num);
+	void toggle_shroud_updates(const unsigned int team_num);
+	void update_shroud_now(const unsigned int team_num);
+	void end_turn(const unsigned int team_num);
+	void goto_leader(const unsigned int team_num);
 	void unit_description(mouse_handler& mousehandler);
 	void rename_unit(mouse_handler& mousehandler);
 	void create_unit(mouse_handler& mousehandler);
 	void change_unit_side(mouse_handler& mousehandler);
 	void label_terrain(mouse_handler& mousehandler);
 	void clear_labels();
-	void continue_move(mouse_handler& mousehandler, const int team_num);
+	void continue_move(mouse_handler& mousehandler, const unsigned int team_num);
 	void toggle_grid();
-	void unit_hold_position(mouse_handler& mousehandler, const int team_num);
-	void end_unit_turn(mouse_handler& mousehandler, const int team_num);
+	void unit_hold_position(mouse_handler& mousehandler, const unsigned int team_num);
+	void end_unit_turn(mouse_handler& mousehandler, const unsigned int team_num);
 	void search();
 	void user_command();
 
 	unit_map::iterator current_unit(mouse_handler& mousehandler);
 	unit_map::const_iterator current_unit(const mouse_handler& mousehandler) const;
 	void move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target, 
-		bool continue_move, const int team_num, mouse_handler& mousehandler);
+		bool continue_move, const unsigned int team_num, mouse_handler& mousehandler);
 	void do_speak();
 	void do_search(const std::string& new_search);
-	void do_command(const std::string& str, const int team_num, mouse_handler& mousehandler);
-	void clear_undo_stack(const int team_num);
+	void do_command(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
+	void clear_undo_stack(const unsigned int team_num);
 private:
 	void do_speak(const std::string& message, bool allies_only);
-	void do_recruit(const std::string& name, const int team_num, const gamemap::location& last_hex);
+	void do_recruit(const std::string& name, const unsigned int team_num, const gamemap::location& last_hex);
 	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m);
 	void write_game_snapshot(config& start) const;
 	bool has_friends() const;
-	bool clear_shroud(const int team_num);
+	bool clear_shroud(const unsigned int team_num);
 	void change_side_controller(const std::string& side, const std::string& player, bool orphan_side=false);
 
 	display* gui_;
