@@ -1716,7 +1716,7 @@ int play_game(int argc, char** argv)
 	int ntip = -1;
 	config tips_of_day;
 
-	loadscreen::global_loadscreen->set_progress(100, "Loading title screen.");
+	loadscreen::global_loadscreen->set_progress(100, _("Loading title screen."));
 	delete loadscreen::global_loadscreen;
 	loadscreen::global_loadscreen = 0;
 

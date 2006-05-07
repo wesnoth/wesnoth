@@ -1205,8 +1205,7 @@ PyObject* python_ai::wrapper_unit_find_path( wesnoth_unit* unit, PyObject* args 
 		running_instance->current_team(),
 		running_instance->get_info().units,
 		running_instance->get_info().teams,
-		running_instance->get_info().map,
-		running_instance->get_info().state);
+		running_instance->get_info().map);
 	const paths::route& route = a_star_search(*from->location_, *to->location_, percent, &calc, running_instance->get_info().map.x(), running_instance->get_info().map.y());
 
 	PyObject* steps = PyList_New(route.steps.size());
