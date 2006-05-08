@@ -277,6 +277,9 @@ class unit
 		bool resistance_filter_matches(const config& cfg,bool attacker,const attack_type& damage_type) const;
 		
 		config cfg_;
+		config movement_b_;
+		config defense_b_;
+		config resistance_b_;
 		
 		std::vector<std::string> advances_to_;
 		std::string id_;

@@ -1083,6 +1083,12 @@ void unit::write(config& cfg) const
 	std::string x = cfg["x"];
 	std::string y = cfg["y"];
 	cfg.append(cfg_);
+	cfg.clear_children("movement_costs");
+	cfg.clear_children("defense");
+	cfg.clear_children("resistance");
+	cfg.add_child("movement_costs",movement_b_);
+	cfg.add_child("defense",defense_b_);
+	cfg.add_child("resistance",defense_b_);
 	cfg["x"] = x;
 	cfg["y"] = y;
 	cfg["id"] = id();
@@ -2026,6 +2032,12 @@ void unit::reset_modifications()
 	max_experience_ = max_experience_b_;
 	max_movement_ = max_movement_b_;
 	attacks_ = attacks_b_;
+	cfg_.clear_children("movement_costs");
+	cfg_.clear_children("defense");
+	cfg_.clear_children("resistance");
+	cfg_.add_child("movement_costs",movement_b_);
+	cfg_.add_child("defense",defense_b_);
+	cfg_.add_child("resistance",resistance_b_);
 }
 void unit::backup_state()
 {
@@ -2033,6 +2045,15 @@ void unit::backup_state()
 	max_experience_b_ = max_experience_;
 	max_movement_b_ = max_movement_;
 	attacks_b_ = attacks_;
+	if(cfg_.child("movement_costs")) {
+		movement_b_ = *cfg_.child("movement_costs");
+	}
+	if(cfg_.child("defense")) {
+		defense_b_ = *cfg_.child("defense");
+	}
+	if(cfg_.child("resistance")) {
+		resistance_b_ = *cfg_.child("resistance");
+	}
 }
 
 const config::child_list& unit::modification_advancements() const
@@ -2082,6 +2103,22 @@ size_t unit::modification_count(const std::string& type, const std::string& id) 
 	}
 
 	return res;
+}
+
+namespace {
+/* Helper function for add_modifications */
+void mod_mdr_merge(config& dst, const config& mod, bool delta)
+{
+	string_map::const_iterator iter = mod.values.begin();
+	string_map::const_iterator end = mod.values.end();
+	for (; iter != end; iter++) {
+		dst[iter->first] = 
+				lexical_cast_default<std::string>(
+				(delta == true)*lexical_cast_default<int>(dst[iter->first]) 
+				+ lexical_cast_default<int>(iter->second)
+				);
+	}
+}
 }
 
 void unit::add_modification(const std::string& type, const config& mod,
@@ -2232,6 +2269,36 @@ void unit::add_modification(const std::string& type, const config& mod,
 
 			if(remove.empty() == false) {
 				set_state(remove,"");
+			}
+		} else if (apply_to == "movement_costs") {
+			config *mv = cfg_.child("movement_costs");
+			config *ap = (**i.first).child("movement_costs");
+			const std::string& replace = (**i.first)["replace"];
+			if(!mv) {
+				mv = &cfg_.add_child("movement_costs");
+			}
+			if (ap) {
+				mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
+			}
+		} else if (apply_to == "defense") {
+			config *mv = cfg_.child("defense");
+			config *ap = (**i.first).child("defense");
+			const std::string& replace = (**i.first)["replace"];
+			if(!mv) {
+				mv = &cfg_.add_child("defense");
+			}
+			if (ap) {
+				mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
+			}
+		} else if (apply_to == "resistance") {
+			config *mv = cfg_.child("resistance");
+			config *ap = (**i.first).child("resistance");
+			const std::string& replace = (**i.first)["replace"];
+			if(!mv) {
+				mv = &cfg_.add_child("resistance");
+			}
+			if (ap) {
+				mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
 			}
 		}
 

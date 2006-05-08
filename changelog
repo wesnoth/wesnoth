@@ -16,8 +16,6 @@ SVN trunk (1.1.2+svn):
      * Blackwater Port: secret bonus for beating the leader on hard
      * Scepter of Fire: major rebalance to relax the pace of the level
      * Home of the North Elves: army camps are invincible, elves defend you better
-     * Swamp of Dread: fixed bug 5873
-     * Plains of Snow: flipped map horizontally
    * The Rise of Wesnoth
      * Fixed portrait paths
      * Fixed map image paths
@@ -44,8 +42,6 @@ SVN trunk (1.1.2+svn):
    * hitpoint distribution graphs under Damage Calculations
    * improvements to loadscreen progressbar
    * new selection stlye for menu listboxes
-   * all flags are not synchrone anymore
-   * show intermediate distance when selecting multi-turn destinations
  * multiplayer maps:
    * added multiplayer maps: 8p Morituri
    * revised multiplayer maps: Blitz, Charge, Cynsaun Battlefield, Den of Onis,
@@ -76,7 +72,7 @@ SVN trunk (1.1.2+svn):
    * floating damage/heal or status can be printed over a modified unit using
      the 'text', 'red', 'blue', and 'green' keys in [unstore_unit]
    * store_locations now stores terrain as well as x,y
-   * more filtering criterias for animations
+   * [effect] can now apply_to movement_costs, defense and resistance
  * multiplayer settings:
    * two additional MP timer settings, time reservoir limit and action bonus:
      * Reservoir prevents the turn timer from exceeding an upper limit.
@@ -90,11 +86,9 @@ SVN trunk (1.1.2+svn):
    * simplified upkeep: Each controlled village gives 2 GP per turn, and 
      each unit costs 1*(# of Levels) GP per turn, unless loyal.
    * new /help command in mp lobby to get info on available commands
-   * undo allowed when recruiting units without random traits
    * :mute command to silent observers
    * host changes automatically if game creator leaves => no disconnections
    * new --turns= commandline parameter
-   * changed campaign client perl script to use port 15003
 
 Version 1.1.2:
  * campaigns
