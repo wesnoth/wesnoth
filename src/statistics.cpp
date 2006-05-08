@@ -367,6 +367,17 @@ void un_recall_unit(const unit& u)
 	s.recall_cost -= u.cost();
 }
 
+void un_recruit_unit(const unit& u)
+{
+	if(stats_disabled > 0)
+		return;
+
+	stats& s = get_stats(u.side());
+	s.recruits[u.type().id()]--;
+	s.recruit_cost -= u.type().cost();
+}
+
+
 void advance_unit(const unit& u)
 {
 	if(stats_disabled > 0)

@@ -598,8 +598,12 @@ namespace events{
 				//MP_COUNTDOWN grant time bonus for recruiting
 				current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
-				clear_undo_stack(team_num);
 				redo_stack_.clear();
+				if(new_unit.type().genders().size() > 1 || new_unit.type().has_random_traits()) {
+					clear_undo_stack(team_num);
+				} else {
+					undo_stack_.push_back(undo_action(new_unit,loc,RECRUIT_POS));
+				}
 
 				clear_shroud(team_num);
 
@@ -750,6 +754,26 @@ namespace events{
 				gui_->invalidate(action.recall_loc);
 				gui_->draw();
 			}
+		} else if(action.is_recruit()) {
+			// Undo a recruit action
+			team& current_team = teams_[team_num-1];
+			if(units_.count(action.recall_loc) == 0) {
+				return;
+			}
+
+			const unit& un = units_.find(action.recall_loc)->second;
+			statistics::un_recruit_unit(un);
+			current_team.spend_gold(-un.type().cost());
+
+			//MP_COUNTDOWN take away recruit bonus
+			if(action.countdown_time_bonus)
+			{
+				teams_[team_num-1].set_action_bonus_count(teams_[team_num-1].action_bonus_count() - 1);
+			}
+
+			units_.erase(action.recall_loc);
+			gui_->invalidate(action.recall_loc);
+			gui_->draw();
 		} else {
 			// Undo a move action
 			const int starting_moves = action.starting_moves;
@@ -764,7 +788,7 @@ namespace events{
 
 			if(map_.is_village(route.front())) {
 				get_village(route.front(),teams_,action.original_village_owner,units_);
-				//MP_COUNTDOWN take away bonus
+				//MP_COUNTDOWN take away capture bonus
 				if(action.countdown_time_bonus)
 				{
 					teams_[team_num-1].set_action_bonus_count(teams_[team_num-1].action_bonus_count() - 1);
@@ -844,6 +868,46 @@ namespace events{
 					gui::show_dialog(*gui_,NULL,"",msg,gui::OK_ONLY);
 				}
 			}
+		} else if(action.is_recruit()) {
+			// Redo recruit action
+			team& current_team = teams_[team_num-1];
+			gamemap::location loc = action.recall_loc;
+			const std::string name = action.affected_unit.id();
+
+			//search for the unit to be recruited in recruits
+			int recruit_num = 0;
+			const std::set<std::string>& recruits = current_team.recruits();
+			for(std::set<std::string>::const_iterator r = recruits.begin(); ; ++r) {
+				if (r == recruits.end()) {
+					LOG_STREAM(err, engine) << "trying to redo a recruit for side " << team_num
+						<< ", which does not recruit type \"" << name << "\"\n";
+					wassert(0);
+				}
+				if (name == *r) {
+					break;
+				}
+				++recruit_num;
+			}
+			last_recruit_ = name;
+			recorder.add_recruit(recruit_num,loc);
+			unit new_unit = action.affected_unit;
+			//unit new_unit(action.affected_unit.type(),team_num_,true);
+			const std::string& msg = recruit_unit(map_,team_num,units_,new_unit,loc,gui_);
+			if(msg.empty()) {
+				current_team.spend_gold(new_unit.type().cost());
+				statistics::recruit_unit(new_unit);
+
+				//MP_COUNTDOWN: restore recruitment bonus
+				current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
+
+				gui_->invalidate(action.recall_loc);
+				gui_->draw();
+				//gui_.invalidate_game_status();
+				//gui_.invalidate_all();
+			} else {
+				recorder.undo();
+				gui::show_dialog(*gui_,NULL,"",msg,gui::OK_ONLY);
+			}
 		} else {
 			// Redo movement action
 			const int starting_moves = action.starting_moves;
@@ -869,7 +933,7 @@ namespace events{
 
 			if(map_.is_village(route.back())) {
 				get_village(route.back(),teams_,un.side()-1,units_);
-				//MP_COUNTDOWN restore bonus
+				//MP_COUNTDOWN restore capture bonus
 				if(action.countdown_time_bonus)
 				{
 					teams_[team_num-1].set_action_bonus_count(1 + teams_[team_num-1].action_bonus_count());

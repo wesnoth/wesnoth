@@ -2443,7 +2443,7 @@ void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& sta
 	*/
 	for(undo_list::iterator un = undos.begin(); un != undos.end(); ++un) {
 		std::cout << "Turning an undo...\n";
-		if(un->is_recall()) continue;
+		if(un->is_recall() || un->is_recruit()) continue;
 		//we're not really going to mutate the unit, just temporarily
 		//set its moves to maximum, but then switch them back
 		const unit_movement_resetter move_resetter(un->affected_unit);

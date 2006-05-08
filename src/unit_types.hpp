@@ -233,6 +233,7 @@ public:
 	bool has_ability_by_id(const std::string& ability) const;
 
 	const std::vector<config*>& possible_traits() const;
+	bool has_random_traits() const;
 
 	const std::vector<unit_race::GENDER>& genders() const;
 

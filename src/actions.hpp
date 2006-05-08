@@ -26,6 +26,8 @@ class replay;
 #include <deque>
 typedef std::map<gamemap::location,unit> units_map;
 
+#define RECRUIT_POS -2
+
 //this file defines various functions which implement different in-game
 //events and commands.
 bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const gamemap::location loc);
@@ -269,15 +271,16 @@ struct undo_action {
 	undo_action(unit u,const std::vector<gamemap::location>& rt,int sm,int timebonus=0,int orig=-1)
 		: route(rt), starting_moves(sm), original_village_owner(orig), recall_pos(-1), affected_unit(u), countdown_time_bonus(timebonus) {}
 	undo_action(unit u,const gamemap::location& loc, int pos)
-		: recall_loc(loc), recall_pos(pos), affected_unit(u) {}
+		: recall_loc(loc), recall_pos(pos), affected_unit(u), countdown_time_bonus(1) {}
 	std::vector<gamemap::location> route;
 	int starting_moves;
 	int original_village_owner;
 	gamemap::location recall_loc;
-	int recall_pos;
+	int recall_pos; // set to RECRUIT_POS for an undo-able recruit
 	unit affected_unit;
 	int countdown_time_bonus;
 	bool is_recall() const { return recall_pos >= 0; }
+	bool is_recruit() const { return recall_pos == RECRUIT_POS; }
 };
 
 typedef std::deque<undo_action> undo_list;
