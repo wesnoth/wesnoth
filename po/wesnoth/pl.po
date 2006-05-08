@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-07 19:23+0200\n"
-"PO-Revision-Date: 2006-05-07 14:06+0100\n"
+"PO-Revision-Date: 2006-05-07 21:16+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <grzywacz@sul.uni.lodz.pl>\n"
 "MIME-Version: 1.0\n"
@@ -2074,9 +2074,8 @@ msgid "Terrains"
 msgstr "Teren"
 
 #: data/help.cfg:59
-#, fuzzy
 msgid "Commands"
-msgstr "Dowódca"
+msgstr "Komendy"
 
 #: data/help.cfg:65 data/help.cfg:71 data/help.cfg:264
 msgid "Overview"
@@ -3022,7 +3021,6 @@ msgid "Wrap Up"
 msgstr "Podsumowanie"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -3778,33 +3776,40 @@ msgstr ""
 "zatrzymywania nawet najbardziej zdeterminowanych podróżnych."
 
 #: data/help.cfg:543
-#, fuzzy
 msgid "General commands"
-msgstr "Generał"
+msgstr "Komendy ogólne"
 
 #: data/help.cfg:545
 msgid ""
 "\n"
 "Quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Zakończ scenariusz (bez potwierdzenia)."
 
 #: data/help.cfg:548
 msgid ""
 "\n"
 "Save the game (without prompting)."
 msgstr ""
+"\n"
+"Zapisz grę (bez potwierdzenia)."
 
 #: data/help.cfg:551
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Zapisz grę i zakończ scenariusz (bez potwierdzenia)."
 
 #: data/help.cfg:554
 msgid ""
 "\n"
 "Redraw the screen."
 msgstr ""
+"\n"
+"Odrysuj zawartość ekranu."
 
 #: data/help.cfg:557
 msgid ""
@@ -3812,17 +3817,21 @@ msgid ""
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
 "off by quitting the game."
 msgstr ""
+"\n"
+"Przełącz na tryb odpluskwiania (nie działa w grze wieloosobowej). Wyłączyć "
+"go można tylko wychodząc z gry."
 
 #: data/help.cfg:560
 msgid ""
 "\n"
 "Bring up theme selection menu."
 msgstr ""
+"\n"
+"Pokaż menu wyboru motywu graficznego."
 
 #: data/help.cfg:565
-#, fuzzy
 msgid "Multiplayer commands"
-msgstr "Mapy do gry wieloosobowej"
+msgstr "Komendy gry wieloosobowej"
 
 #: data/help.cfg:567
 msgid ""
@@ -3831,12 +3840,18 @@ msgid ""
 "controls that side needs to issue this command. If you don't provide side, "
 "'1' is assumed."
 msgstr ""
+"\n"
+"Zmień kontrolera gracza strony \"side\" z człowieka na komputer. Komendę tę "
+"musi wygrać gracz kontrolujący daną stronę. Jeżeli nie podasz strony, "
+"wartością domyślną jest \"1\"."
 
 #: data/help.cfg:570
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
+"\n"
+"Odbierz/daj głos obserwatorom."
 
 #: data/help.cfg:573
 msgid ""
@@ -3844,6 +3859,9 @@ msgid ""
 "Mute a specific observer. If no username is supplied the muted usernames are "
 "displayed."
 msgstr ""
+"\n"
+"Odbierz głos konkretnemu obserwatorowi (\"username\"). Jeżeli nie podano "
+"nazwy użytkownika wyświetlana jest lista pozbawionych głosu."
 
 #: data/help.cfg:576
 msgid ""
@@ -3852,12 +3870,19 @@ msgid ""
 "a friendly way to remove someone who is having connection or other "
 "difficulties."
 msgstr ""
+"\n"
+"Wyrzuć użytkownika \"user\" z gry wieloosobowej. Będzie mógł ponownie "
+"przyłączyć się do gry. Jest to generalnie przyjazny sposób usunięcia kogoś, "
+"kto ma problemy z połączeniem lub podobne."
 
 #: data/help.cfg:579
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that username."
 msgstr ""
+"\n"
+"Wyrzuć na stałe użytkownika \"user\" z gry wieloosobowej oraz zablokuj "
+"dostęp z adresu IP mu odpowiadającego."
 
 #: data/help.cfg:582
 msgid ""
@@ -3865,12 +3890,17 @@ msgid ""
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nick of the player or observer)."
 msgstr ""
+"\n"
+"Zmień kontrolera danej strony \"side\" (podając jej numer) na \"username"
+"\" (podaj ksywkę obserwującego gracza)."
 
 #: data/help.cfg:585
 msgid ""
 "\n"
 "Clear chat messages."
 msgstr ""
+"\n"
+"Usuń widoczne wiadomości."
 
 #: data/items.cfg:264
 msgid ""
@@ -10309,19 +10339,19 @@ msgstr "?"
 
 #: src/loadscreen.cpp:136
 msgid "Verifying cache."
-msgstr ""
+msgstr "Sprawdzanie pamięci podręcznej."
 
 #: src/loadscreen.cpp:155
 msgid "Reading cache."
-msgstr ""
+msgstr "Odczytywanie pamięci podręcznej."
 
 #: src/loadscreen.cpp:174
 msgid "Reading unit files."
-msgstr ""
+msgstr "Odczytywanie plików jednostek."
 
 #: src/loadscreen.cpp:193
 msgid "Reading files and creating cache."
-msgstr ""
+msgstr "Odczytywanie plików i tworzenie pamięci podręcznej."
 
 #: src/menu_events.cpp:45
 msgid ""
@@ -10956,9 +10986,8 @@ msgid "Unknown scenario"
 msgstr "Nieznany scenariusz"
 
 #: src/multiplayer_lobby.cpp:334
-#, fuzzy
 msgid "Remote scenario"
-msgstr "Nieznany scenariusz"
+msgstr "Zdalny scenariusz"
 
 #: src/multiplayer_lobby.cpp:347
 msgid "Vacant Slot:"
