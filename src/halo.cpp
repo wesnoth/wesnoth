@@ -52,7 +52,7 @@ private:
 
 	std::string current_image_;
 
-	bool reverse_;
+	ORIENTATION orientation_;
 
 	int origx_, origy_, x_, y_;
 	double origzoom_, zoom_;
@@ -68,7 +68,7 @@ bool hide_halo = false;
 static const SDL_Rect empty_rect = {0,0,0,0};
 
 effect::effect(int xpos, int ypos, const std::string& img, ORIENTATION orientation, int lifetime)
-: images_(img), reverse_(orientation == REVERSE), origx_(xpos), origy_(ypos), x_(xpos), y_(ypos),
+: images_(img), orientation_(orientation), origx_(xpos), origy_(ypos), x_(xpos), y_(ypos),
   origzoom_(disp->zoom()), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
 {
 	wassert(disp != NULL);
@@ -115,8 +115,11 @@ void effect::rezoom()
 	y_ = int((origy_*zoom_)/origzoom_);
 
 	surf_.assign(image::get_image(current_image_,image::UNSCALED));
-	if(surf_ != NULL && reverse_) {
+	if(surf_ != NULL && (orientation_ == HREVERSE || orientation_ == HVREVERSE)) {
 		surf_.assign(image::reverse_image(surf_));
+	}
+	if(surf_ != NULL && (orientation_ == VREVERSE || orientation_ == HVREVERSE)) {
+		surf_.assign(flop_surface(surf_));
 	}
 
 	if(surf_ != NULL && zoom_ != 1.0) {

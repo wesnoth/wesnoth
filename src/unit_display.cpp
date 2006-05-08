@@ -250,6 +250,20 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 	const bool vflip = b.y > a.y || b.y == a.y && is_even(a.x);
 	const bool hflip = b.x < a.x;
+	halo::ORIENTATION orientation;
+	if(hflip) {
+		if(vflip) {
+			orientation = halo::HVREVERSE;
+		} else {
+			orientation = halo::HREVERSE;
+		}
+	} else {
+		if(vflip) {
+			orientation = halo::VREVERSE;
+		} else {
+			orientation = halo::NORMAL;
+		}
+	}
 	const unit_animation::FRAME_DIRECTION dir = (a.x == b.x) ? unit_animation::VERTICAL:unit_animation::DIAGONAL;
 
 	defender.set_defending(disp,b,damage,&attack);
@@ -259,7 +273,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	defender.restart_animation(disp,start_time);
 	animation_time = defender.get_animation()->get_animation_time();
 	bool sound_played = false ;
-		int missile_halo =0;
+	int missile_frame_halo =0;
+	int missile_halo =0;
 	while(!defender.get_animation()->animation_finished()  ||
 			(leader_loc.valid() && !leader->second.get_animation()->animation_finished())) {
 		const double pos = animation_time < missile_animation.get_first_frame_time()?1.0:
@@ -270,19 +285,17 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		disp.invalidate(a);
 		if(leader_loc.valid()) disp.invalidate(leader_loc);
 		halo::remove(missile_halo);
+		halo::remove(missile_frame_halo);
 		missile_halo = 0;
+		missile_frame_halo = 0;
 		if(pos > 0.0 && pos < 1.0 && (!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
 			const unit_frame& missile_frame = missile_animation.get_current_frame();
-			const std::string *missile_image = NULL;
+			std::string missile_image= missile_frame.image;
+			const int d = disp.hex_size() / 2;
 			if(dir == unit_animation::VERTICAL) {
-				missile_image = &missile_frame.image;
+				missile_image = missile_frame.image;
 			} else {
-				missile_image = &missile_frame.image_diagonal;
-			}
-			surface img(image::get_image(image::locator(*missile_image)));
-
-			if(hflip) {
-				img.assign(image::reverse_image(img));
+				missile_image = missile_frame.image_diagonal;
 			}
 			if(!missile_frame.halo.empty()) {
 				int time = missile_frame.begin_time;
@@ -295,20 +308,15 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 				if(sub_halo >= missile_frame.halo.size()) sub_halo = missile_frame.halo.size() -1;
 
 
-				if(hflip) {
-					const int d = disp.hex_size() / 2;
-					missile_halo = halo::add(posx+d-missile_frame.halo_x,
-							posy+d+missile_frame.halo_y,
-							missile_frame.halo[sub_halo].first);
-				} else {
-					const int d = disp.hex_size() / 2;
 					missile_halo = halo::add(posx+d+missile_frame.halo_x,
 							posy+d+missile_frame.halo_y,
 							missile_frame.halo[sub_halo].first,
-							halo::REVERSE);
-				}
+							orientation);
 			}
-			disp.draw_unit(posx, posy , img,vflip);
+			missile_frame_halo = halo::add(posx+d,
+					posy+d,
+					missile_image,
+					orientation);
 
 		}
 		if(damage > 0 && !hide && animation_time > 0 && !sound_played) {
@@ -323,6 +331,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	}
 	halo::remove(missile_halo);
 	missile_halo = 0;
+	halo::remove(missile_frame_halo);
+	missile_frame_halo = 0;
 	if(def->second.take_hit(damage)) {
 		dead = true;
 	}

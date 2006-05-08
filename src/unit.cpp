@@ -1594,7 +1594,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 			unit_anim_halo_ = halo::add(x+d+static_cast<int>(current_frame.halo_x*disp.zoom()),
 					y+d+static_cast<int>(current_frame.halo_y*disp.zoom()),
 					current_frame.halo[sub_halo].first,
-					halo::REVERSE);
+					halo::HREVERSE);
 		}
 	}
 	if(image_name.empty()) {

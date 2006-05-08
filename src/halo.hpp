@@ -39,7 +39,7 @@ private:
 	bool old;
 };
 
-enum ORIENTATION { NORMAL, REVERSE };
+enum ORIENTATION { NORMAL, HREVERSE, VREVERSE, HVREVERSE };
 
 ///function to add a haloing effect using 'image'
 ///centered on (x,y)
