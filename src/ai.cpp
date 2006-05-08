@@ -21,7 +21,6 @@
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "menu_events.hpp"
-#include "playturn.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "statistics.hpp"
@@ -216,7 +215,7 @@ ai::ai(ai_interface::info& info)
 
 bool ai::recruit_usage(const std::string& usage)
 {
-	user_interact();
+	raise_user_interact();
 
 	const int min_gold = 0;
 
@@ -297,7 +296,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 		//confirm the transaction - i.e. don't undo recruitment
 		replay_guard.confirm_transaction();
 
-		info_.turn_data_.sync_network();
+		raise_unit_recruited();
 		const team_data data = calculate_team_data(current_team(),info_.team_num,info_.units);
 		LOG_AI <<
 		"recruit confirmed: team=" << (info_.team_num) <<
@@ -318,7 +317,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	}
 }
 
-void ai_interface::user_interact()
+void ai_interface::raise_user_interact()
 {
 	const int interact_time = 30;
 	const int time_since_interact = SDL_GetTicks() - last_interact_;
@@ -326,11 +325,21 @@ void ai_interface::user_interact()
 		return;
 	}
 
-	info_.turn_data_.turn_slice();
-	info_.turn_data_.send_data();
-	info_.disp.draw();
+	user_interact_.notify_observers();
 
 	last_interact_ = SDL_GetTicks();
+}
+
+void ai_interface::raise_unit_recruited(){
+	unit_recruited_.notify_observers();
+}
+
+void ai_interface::raise_unit_moved(){
+	unit_moved_.notify_observers();
+}
+
+void ai_interface::raise_enemy_attacked(){
+	enemy_attacked_.notify_observers();
 }
 
 void ai_interface::diagnostic(const std::string& msg)
@@ -494,7 +503,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 	}
 
 	info_.disp.unhighlight_reach();
-	info_.turn_data_.sync_network();
+	raise_unit_moved();
 
 	return to;
 }
@@ -783,7 +792,7 @@ void ai::do_move()
 
 	invalidate_defensive_position_cache();
 
-	user_interact();
+	raise_user_interact();
 
 	typedef paths::route route;
 
@@ -1011,7 +1020,7 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 			}
 		}
 
-		info_.turn_data_.sync_network();
+		raise_enemy_attacked();
 	}
 }
 

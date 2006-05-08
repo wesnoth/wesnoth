@@ -463,6 +463,10 @@ void playsingle_controller::play_ai_turn(){
 
 	ai_interface::info ai_info(*gui_,map_,gameinfo_,units_,teams_,player_number_,status_, turn_data);
 	util::scoped_ptr<ai_interface> ai_obj(create_ai(current_team().ai_algorithm(),ai_info));
+	ai_obj->user_interact().attach_handler(this);
+	ai_obj->unit_recruited().attach_handler(this);
+	ai_obj->unit_moved().attach_handler(this);
+	ai_obj->enemy_attacked().attach_handler(this);
 	ai_obj->play_turn();
 	recorder.end_turn();
 	turn_data.sync_network();
@@ -474,6 +478,13 @@ void playsingle_controller::play_ai_turn(){
 	gui_->invalidate_all();
 	gui_->draw();
 	SDL_Delay(500);
+}
+
+void playsingle_controller::handle_generic_event(const std::string& name){
+	if (name == "ai_user_interact"){
+		play_slice();
+		gui_->draw();
+	}
 }
 
 void playsingle_controller::check_time_over(){

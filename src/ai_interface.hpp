@@ -15,6 +15,8 @@
 
 class display;
 class gamemap;
+
+#include "generic_event.hpp"
 #include "pathfind.hpp"
 
 class ai_interface {
@@ -64,7 +66,9 @@ public:
 
 	///the constructor. All derived classes should take an argument of type info& which
 	///they should pass to this constructor
-	ai_interface(info& arg) : info_(arg), last_interact_(0) {}
+	ai_interface(info& arg) : info_(arg), last_interact_(0), user_interact_("ai_user_interact"),
+		unit_recruited_("ai_unit_recruited"), unit_moved_("ai_unit_moved"),
+		enemy_attacked_("ai_enemy_attacked") {}
 	virtual ~ai_interface() {}
 
 	///the function that is called when the AI must play its turn. Derived classes should
@@ -80,6 +84,12 @@ public:
 
 	///function to display a debug message as a chat message is displayed
 	void log_message(const std::string& msg);
+
+	//exposes events to allow for attaching/detaching handlers
+	events::generic_event& user_interact() { return user_interact_; }
+	events::generic_event& unit_recruited() { return unit_recruited_; }
+	events::generic_event& unit_moved() { return unit_moved_; }
+	events::generic_event& enemy_attacked() { return enemy_attacked_; }
 
 protected:
 	///this function should be called to attack an enemy.
@@ -132,11 +142,19 @@ protected:
 	///function which should be called frequently to allow the user to interact with
 	///the interface. This function will make sure that interaction doesn't occur
 	///too often, so there is no problem with calling it very regularly
-	void user_interact();
+	void raise_user_interact();
 
+	///notifies all interested observers of the event respectively
+	void raise_unit_recruited();
+	void raise_unit_moved();
+	void raise_enemy_attacked();
 private:
 	info info_;
 	int last_interact_;
+	events::generic_event user_interact_;
+	events::generic_event unit_recruited_;
+	events::generic_event unit_moved_;
+	events::generic_event enemy_attacked_;
 };
 
 ///this function is used to create a new AI object with the specified algorithm name

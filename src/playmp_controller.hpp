@@ -27,6 +27,8 @@ public:
 		const int ticks, const int num_turns, const config& game_config, CVideo& video, bool skip_replay);
 
 protected:
+	virtual void handle_generic_event(const std::string& name);
+
 	virtual void speak();
 	virtual void clear_labels();
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;

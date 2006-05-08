@@ -191,6 +191,20 @@ bool playmp_controller::play_network_turn(){
 	return false;
 }
 
+void playmp_controller::handle_generic_event(const std::string& name){
+	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
+						map_,teams_,player_number_,units_, replay_sender_);
+
+	if (name == "ai_user_interact"){
+		playsingle_controller::handle_generic_event(name);
+		turn_data.send_data();
+	}
+	else if ((name == "ai_unit_recruited") || (name == "ai_unit_moved") 
+		|| (name == "ai_enemy_attacked")){
+		turn_data.sync_network();
+	}
+}
+
 bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 {
 	switch (command){

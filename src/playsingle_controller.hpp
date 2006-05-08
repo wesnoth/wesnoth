@@ -33,6 +33,8 @@ public:
 
 	LEVEL_RESULT play_scenario(const std::vector<config*>& story, upload_log& log, bool skip_replay);
 
+	virtual void handle_generic_event(const std::string& name);
+
 	virtual void recruit();
 	virtual void repeat_recruit();
 	virtual void recall();

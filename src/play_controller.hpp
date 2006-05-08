@@ -19,6 +19,7 @@
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"
+#include "generic_event.hpp"
 #include "halo.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
@@ -34,7 +35,7 @@
 
 #include <vector>
 
-class play_controller : public hotkey::command_executor, public events::handler
+class play_controller : public hotkey::command_executor, public events::handler, public events::observer
 {
 public:
 	play_controller(const config& level, const game_data& gameinfo, game_state& state_of_game, 
@@ -42,6 +43,10 @@ public:
 	~play_controller();
 
 	virtual void play_slice();
+
+	//event handler, overriden from observer
+	//there is nothing to handle in this class actually but that might change in the future
+	virtual void handle_generic_event(const std::string& name) {}
 
 	//event handlers, overriden from command_executor
 	virtual void objectives();

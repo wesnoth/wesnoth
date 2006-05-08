@@ -35,7 +35,7 @@ void ai::do_attack_analysis(
 	                )
 {
 	//this function is called fairly frequently, so interact with the user here.
-	user_interact();
+	raise_user_interact();
 
 	if(cur_analysis.movements.size() >= size_t(attack_depth()))
 		return;

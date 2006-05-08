@@ -623,7 +623,7 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_RECRUIT:
 	case hotkey::HOTKEY_REPEAT_RECRUIT:
 	case hotkey::HOTKEY_RECALL: {
-		// last_hex_ is set by turn_info::mouse_motion
+		// last_hex_ is set by mouse_events::mouse_motion
 		// Enable recruit/recall on castle/keep tiles
 		const unit_map::const_iterator leader = team_leader(player_number_,units_);
 		if (leader != units_.end()) {

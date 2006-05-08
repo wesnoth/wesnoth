@@ -59,6 +59,7 @@ wesnoth_SOURCES = \
 	game.cpp \
 	game_events.cpp \
 	gamestatus.cpp \
+	generic_event.cpp \
 	halo.cpp \
 	help.cpp \
 	hotkeys.cpp \
@@ -186,7 +187,6 @@ wesnoth_editor_SOURCES = \
 	config_adapter.cpp \
 	intro.cpp \
 	attack_prediction.cpp \
-	playturn.cpp \
 	preferences.cpp \
 	preferences_display.cpp \
 	replay.cpp \
@@ -420,6 +420,7 @@ noinst_HEADERS = \
 	play_controller.hpp \
 	playmp_controller.hpp \
 	playsingle_controller.hpp \
+	generic_event.hpp \
 	sdl_ttf/SDL_ttf.h \
 	wesconfig.h
 

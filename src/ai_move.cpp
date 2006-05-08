@@ -382,7 +382,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 {
 	log_scope2(ai, "choosing move");
 
-	user_interact();
+	raise_user_interact();
 
 	std::vector<target>::const_iterator ittg;
 	for(ittg = targets.begin(); ittg != targets.end(); ++ittg) {
@@ -423,7 +423,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			continue;
 		}
 
-		user_interact();
+		raise_user_interact();
 
 		wassert(map_.on_board(tg->loc));
 
@@ -509,7 +509,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				continue;
 			}
 
-			user_interact();
+			raise_user_interact();
 
 			const move_cost_calculator calc(u->second, map_, gameinfo_, units_, u->first, dstsrc, enemy_dstsrc);
 			const double locStopValue = minimum(best_target->value / best_rating, 100.0);
