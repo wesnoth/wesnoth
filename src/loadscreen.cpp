@@ -15,7 +15,7 @@
 #include "font.hpp"
 #include "marked-up_text.hpp"
 #include "gettext.hpp"
-#include "game_config.cpp"
+#include "game_config.hpp"
 
 
 #include <iostream>
