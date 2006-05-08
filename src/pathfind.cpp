@@ -468,7 +468,7 @@ paths::paths(gamemap const &map, gamestatus const &status,
 		ignore_zocs,allow_teleport,additional_turns,true,viewing_team);
 }
 
-int route_turns_to_complete(unit const &u, gamemap const &map, paths::route const &rt)
+int route_turns_to_complete(unit const &u, gamemap const &map, paths::route &rt)
 {
 	if(rt.steps.empty())
 		return 0;
@@ -481,11 +481,20 @@ int route_turns_to_complete(unit const &u, gamemap const &map, paths::route cons
 		movement -= move_cost;
 		if (movement < 0) {
 			++turns;
+			rt.turn_waypoints.insert(std::make_pair(*(i-1), turns));
 			movement = u.total_movement() - move_cost;
 			if(movement < 0) {
 				return -1;
 			}
 		}
+	}
+
+	//add "end-of-path" to waypoints.
+	if (turns > 0) {
+		rt.turn_waypoints.insert(std::make_pair(*(rt.steps.end()-1), turns+1));
+	}
+	else {
+		rt.turn_waypoints.insert(std::make_pair(*(rt.steps.end()-1), 0));
 	}
 
 	return turns;

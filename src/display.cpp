@@ -1611,9 +1611,11 @@ void display::draw_movement_info(const gamemap::location& loc, int xloc, int ylo
 {
 	std::vector<gamemap::location>::const_iterator i =
 	         std::find(route_.steps.begin(),route_.steps.end(),loc);
-	const bool show_time = (i+1 == route_.steps.end());
 
-	if(show_time == false) {
+	//if there isn't a match for "loc" in "route_.turn_waypoints", return.
+	std::map<gamemap::location, int>::iterator turn_waypoint_iter;
+	turn_waypoint_iter = route_.turn_waypoints.find(loc);
+	if(turn_waypoint_iter == route_.turn_waypoints.end()) {
 		return;
 	}
 
@@ -1629,9 +1631,9 @@ void display::draw_movement_info(const gamemap::location& loc, int xloc, int ylo
 	}
 #endif
 
-	if(route_.move_left > 0 && route_.move_left < 10) {
-
-		text << " (" << char('1' + route_.move_left) << ")";
+	int turns_to_reach = turn_waypoint_iter->second;
+	if(turns_to_reach > 0 && turns_to_reach < 10) {
+		text << " (" << char('0' + turns_to_reach) << ")";
 	}
 
 	const std::string& str = text.str();
@@ -1872,6 +1874,7 @@ void display::set_route(const paths::route* route)
 		route_ = *route;
 	} else {
 		route_.steps.clear();
+		route_.turn_waypoints.clear();
 	}
 
 	invalidate_route();

@@ -90,6 +90,7 @@ struct paths
 		route() : move_left(0) {}
 		std::vector<gamemap::location> steps;
 		int move_left; //movement unit will have left at end of the route.
+		std::map<gamemap::location, int> turn_waypoints;
 	};
 
 	typedef std::map<gamemap::location,route> routes_map;
@@ -103,8 +104,9 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 
 //function which, given a unit and a route the unit can move on, will
 //return the number of turns it will take the unit to traverse the route.
+//adds "turn waypoints" to rt.turn_waypoints. note that "end of path" is also added.
 int route_turns_to_complete(const unit& u, const gamemap& map,
-                            const paths::route& rt);
+                            paths::route& rt);
 
 struct shortest_path_calculator : cost_calculator
 {
