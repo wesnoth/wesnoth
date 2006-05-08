@@ -623,7 +623,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			wassert(units != NULL);
 			wassert(game_map != NULL);
 			wassert(status_ptr != NULL);
-			unit dummy_unit(game_data_ptr,units,game_map,status_ptr,teams,&itor->second,0,false,true,gender);
+			unit dummy_unit(game_data_ptr,units,game_map,status_ptr,teams,&itor->second,side_num+1,false,true,gender);
 			const std::vector<std::string> xvals = utils::split(x);
 			const std::vector<std::string> yvals = utils::split(y);
 			std::vector<gamemap::location> path;
