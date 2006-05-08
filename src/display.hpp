@@ -195,7 +195,7 @@ public:
 	void float_label(const gamemap::location& loc, const std::string& text,
 	                 int red, int green, int blue);
 
-	const gamemap& get_map() { return map_;}
+	const gamemap& get_map()const { return map_;}
 private:
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 

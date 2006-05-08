@@ -133,7 +133,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	//new unit, then fades back to the normal colour
 
 	if(!gui.update_locked()) {
-		u->second.set_leveling_out(gui);
+		u->second.set_leveling_out(gui,u->first);
 		while(!u->second.get_animation()->animation_finished()) {
 			gui.invalidate(loc);
 			gui.draw();
@@ -156,14 +156,14 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	gui.invalidate_unit();
 
 	if(!gui.update_locked()) {
-		u->second.set_leveling_in(gui);
+		u->second.set_leveling_in(gui,u->first);
 		while(!u->second.get_animation()->animation_finished()) {
 			gui.invalidate(loc);
 			gui.draw();
 			events::pump();
 			if(!gui.turbo()) SDL_Delay(10);
 		}
-		u->second.set_standing(gui);
+		u->second.set_standing(gui,u->first);
 		gui.invalidate(loc);
 		gui.draw();
 		events::pump();

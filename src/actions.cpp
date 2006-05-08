@@ -159,7 +159,7 @@ std::string recruit_unit(const gamemap& map, int side,
 			un->second.set_hidden(true);
 			disp->scroll_to_tile(recruit_location.x,recruit_location.y,display::ONSCREEN);
 			un->second.set_hidden(false);
-			un->second.set_recruited(*disp);
+			un->second.set_recruited(*disp,recruit_location);
 			while(!un->second.get_animation()->animation_finished()) {
 				disp->invalidate(recruit_location);
 				disp->draw();
@@ -167,7 +167,7 @@ std::string recruit_unit(const gamemap& map, int side,
 				if(!disp->turbo()) SDL_Delay(10);
 
 			}
-			un->second.set_standing(*disp);
+			un->second.set_standing(*disp,recruit_location);
 		}
 	}
 	LOG_NG << "firing recruit event\n";
@@ -1781,7 +1781,7 @@ void calculate_healing(display& disp, const gamemap& map,
 		disp.select_hex(i->first);
 		
 		for(std::vector<unit_map::iterator>::iterator heal_anim_it = healers.begin(); heal_anim_it != healers.end(); ++heal_anim_it) {
-			(*heal_anim_it)->second.set_healing(disp);
+			(*heal_anim_it)->second.set_healing(disp,(*heal_anim_it)->first);
 			if(start_time_set) {
 				start_time = minimum<int>(start_time,(*heal_anim_it)->second.get_animation()->get_first_frame_time());
 			} else {
@@ -1789,13 +1789,13 @@ void calculate_healing(display& disp, const gamemap& map,
 			}
 		}
 		if (healing < 0) {
-			i->second.set_poisoned(disp, -healing);
+			i->second.set_poisoned(disp,i->first, -healing);
 			start_time = minimum<int>(start_time, i->second.get_animation()->get_first_frame_time());
 			// FIXME
 			sound::play_sound("groan.wav");
 			disp.float_label(i->first, lexical_cast<std::string>(-healing), 255,0,0);
 		} else {
-			i->second.set_healed(disp, healing);
+			i->second.set_healed(disp,i->first, healing);
 			start_time = minimum<int>(start_time, i->second.get_animation()->get_first_frame_time());
 			sound::play_sound("heal.wav");
 			disp.float_label(i->first, lexical_cast<std::string>(healing), 0,255,0);
@@ -1827,9 +1827,9 @@ void calculate_healing(display& disp, const gamemap& map,
 			SDL_Delay(10);
 		} while (!finished);
 
-		i->second.set_standing(disp);
+		i->second.set_standing(disp,i->first);
 		for(std::vector<unit_map::iterator>::iterator heal_sanim_it = healers.begin(); heal_sanim_it != healers.end(); ++heal_sanim_it) {
-			(*heal_sanim_it)->second.set_standing(disp);
+			(*heal_sanim_it)->second.set_standing(disp,(*heal_sanim_it)->first);
 		}
 		disp.update_display();
 		events::pump();

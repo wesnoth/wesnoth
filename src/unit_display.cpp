@@ -41,7 +41,7 @@ void teleport_unit_between(display& disp, const gamemap::location& a, const game
 
 
 
-	u.set_teleporting(disp);
+	u.set_teleporting(disp,a);
 	if (!disp.fogged(a.x, a.y)) { // teleport
 		disp.scroll_to_tile(a.x,a.y,display::ONSCREEN);
 		while(!u.get_animation()->animation_finished()  && u.get_animation()->get_animation_time() < 0) {
@@ -64,7 +64,7 @@ void teleport_unit_between(display& disp, const gamemap::location& a, const game
 			if(!disp.turbo()) SDL_Delay(10);
 		}
 	}
-	u.set_standing(disp);
+	u.set_standing(disp,b);
 	disp.remove_temporary_unit();
 	disp.update_display();
 	events::pump();
@@ -78,7 +78,6 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		return;
 	}
 
-	const gamemap::TERRAIN src_terrain = map.get_terrain(a);
 	const gamemap::TERRAIN dst_terrain = map.get_terrain(b);
 
 	const int acceleration = disp.turbo() ? 5:1;
@@ -94,7 +93,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	int mvt_time = SDL_GetTicks() -start_time;
 	disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
 	while(mvt_time < total_mvt_time) {
-		u.set_walking(disp,map.underlying_mvt_terrain(src_terrain));
+		u.set_walking(disp,a);
 		const double pos =double(mvt_time)/total_mvt_time;
 		disp.invalidate(a);
 		disp.place_temporary_unit(u,a);
@@ -157,7 +156,7 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 			disp.draw();
 		}
 	}
-	u.set_standing(disp);
+	u.set_standing(disp,path[path.size()-1]);
 
 	//make sure the entire path is cleaned properly
 	for(std::vector<gamemap::location>::const_iterator it = path.begin(); it != path.end(); ++it) {
@@ -175,7 +174,7 @@ void unit_die(display& disp,const gamemap::location& loc, unit& u, const attack_
 	if(die_sound != "" && die_sound != "null") {
 		sound::play_sound(die_sound);
 	}
-	u.set_dying(disp,attack);
+	u.set_dying(disp,loc,attack);
 
 
 	while(!u.get_animation()->animation_finished()) {
@@ -185,10 +184,9 @@ void unit_die(display& disp,const gamemap::location& loc, unit& u, const attack_
 		events::pump();
 		if(!disp.turbo()) SDL_Delay(10);
 	}
-	u.set_standing(disp);
+	u.set_standing(disp,loc);
 	disp.update_display();
 	events::pump();
-
 }
 
 namespace {
@@ -229,14 +227,14 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 
 	// start leader and attacker animation, wait for attacker animation to end
-	unit_animation missile_animation = attacker.set_attacking(disp,hits,attack);
+	unit_animation missile_animation = attacker.set_attacking(disp,a,hits,attack);
 	const gamemap::location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
 	if(leader_loc.valid()){
 		LOG_DP << "found leader at " << leader_loc << '\n';
 		leader = units.find(leader_loc);
 		wassert(leader != units.end());
-		leader->second.set_leading(disp);
+		leader->second.set_leading(disp,leader_loc);
 	}
 	while(!attacker.get_animation()->animation_finished() ) {
 		disp.invalidate(a);
@@ -254,7 +252,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	const bool hflip = b.x < a.x;
 	const unit_animation::FRAME_DIRECTION dir = (a.x == b.x) ? unit_animation::VERTICAL:unit_animation::DIAGONAL;
 
-	defender.set_defending(disp,damage,attack.range());
+	defender.set_defending(disp,b,damage,&attack);
 	const int start_time = minimum<int>(minimum<int>(defender.get_animation()->get_first_frame_time(),
 				missile_animation.get_first_frame_time()),-200);
 	missile_animation.start_animation(start_time,acceleration);
@@ -331,10 +329,10 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	if(dead) {
 		unit_display::unit_die(disp,def->first,def->second,&attack);
 	} else {
-		def->second.set_standing(disp);
+		def->second.set_standing(disp,b);
 	}
-	if(leader_loc.valid()) leader->second.set_standing(disp);
-	att->second.set_standing(disp);
+	if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
+	att->second.set_standing(disp,a);
 	disp.update_display();
 	events::pump();
 
@@ -379,11 +377,11 @@ bool unit_attack(display& disp, unit_map& units,
 	int end_time = 0;
 	
 	
-	attacker.set_attacking(disp,hits,attack);
+	attacker.set_attacking(disp,a,hits,attack);
 	start_time=minimum<int>(start_time,attacker.get_animation()->get_first_frame_time());
 	end_time=maximum<int>(end_time,attacker.get_animation()->get_last_frame_time());
 
-	defender.set_defending(disp,damage,attack.range());
+	defender.set_defending(disp,b,damage,&attack);
 	start_time=minimum<int>(start_time,defender.get_animation()->get_first_frame_time());
 	end_time=maximum<int>(end_time,defender.get_animation()->get_last_frame_time());
 
@@ -394,7 +392,7 @@ bool unit_attack(display& disp, unit_map& units,
 		LOG_DP << "found leader at " << leader_loc << '\n';
 		leader = units.find(leader_loc);
 		wassert(leader != units.end());
-		leader->second.set_leading(disp);
+		leader->second.set_leading(disp,leader_loc);
 		start_time=minimum<int>(start_time,leader->second.get_animation()->get_first_frame_time());
 		end_time=maximum<int>(end_time,leader->second.get_animation()->get_last_frame_time());
 	}
@@ -453,10 +451,10 @@ bool unit_attack(display& disp, unit_map& units,
 	if(dead) {
 		unit_display::unit_die(disp,def->first,def->second,&attack);
 	} else {
-		def->second.set_standing(disp);
+		def->second.set_standing(disp,b);
 	}
-	if(leader_loc.valid()) leader->second.set_standing(disp);
-	att->second.set_standing(disp);
+	if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
+	att->second.set_standing(disp,a);
 	disp.update_display();
 	events::pump();
 

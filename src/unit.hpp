@@ -160,20 +160,20 @@ class unit
 		const surface still_image() const;
 		void redraw_unit(display& disp,gamemap::location hex);
 		
-		void set_standing(const display& disp);
-		void set_defending(const display& disp, int damage, std::string range);
-		void set_leading(const display& disp);
-		void set_healing(const display& disp);
-		void set_leveling_in(const display& disp);
-		void set_leveling_out(const display& disp);
-		void set_teleporting (const display& disp);
-		void set_extra_anim(const display& disp, std::string flag);
-		void set_dying( const display& disp,const attack_type *attack);
-		void set_walking(const display& disp,const std::string terrain);
-		const unit_animation & set_attacking(const display& disp,bool hit,const attack_type& type);
-		void set_recruited(const display& disp);
-		void set_healed(const display& disp,int healing);
-		void set_poisoned(const display& disp,int damage);
+		void set_standing(const display& disp,const gamemap::location& loc);
+		void set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack);
+		void set_leading(const display& disp,const gamemap::location& loc);
+		void set_healing(const display& disp,const gamemap::location& loc);
+		void set_leveling_in(const display& disp,const gamemap::location& loc);
+		void set_leveling_out(const display& disp,const gamemap::location& loc);
+		void set_teleporting (const display& disp,const gamemap::location& loc);
+		void set_extra_anim(const display& disp,const gamemap::location& loc, std::string flag);
+		void set_dying(const display &disp,const gamemap::location& loc,const attack_type* attack);
+		void set_walking(const display& disp,const gamemap::location& loc);
+		const unit_animation & set_attacking(const display& disp,const gamemap::location& loc,bool hit,const attack_type& type);
+		void set_recruited(const display& disp,const gamemap::location& loc);
+		void set_healed(const display& disp,const gamemap::location& loc,int healing);
+		void set_poisoned(const display& disp,const gamemap::location& loc,int damage);
 		void restart_animation(const display& disp,int start_time);
 		const unit_animation* get_animation() const {  return anim_;};
 		void set_offset(double offset){offset_ = offset;}
@@ -239,10 +239,12 @@ class unit
 		unit_type::ALIGNMENT alignment() const;
 		const std::string& race() const;
 		
-		const defensive_animation& defend_animation(bool hits, std::string range) const;
+		const defensive_animation& defend_animation(const std::string &terrain,
+				fighting_animation::hit_type hits,const attack_type* attack) const;
 		const unit_animation& teleport_animation() const;
-		const unit_animation* extra_animation(std::string flag) const;
-		const death_animation& die_animation(const attack_type* attack) const;
+		const unit_animation* extra_animation(const std::string &terrain,const std::string &flag) const;
+		const death_animation& die_animation(const std::string &terrain,
+				fighting_animation::hit_type hits,const attack_type* attack) const;
 		const movement_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		
 		bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
