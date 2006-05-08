@@ -70,6 +70,7 @@ public:
 	const T& get_current_frame() const;
 	const T& get_first_frame() const;
 	const T& get_last_frame() const;
+	int get_frames_count() const;
 
 
 

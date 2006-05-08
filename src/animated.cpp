@@ -262,6 +262,12 @@ const T& animated<T,T_void_value>::get_last_frame() const
 	return void_value_;
 }
 
+template<typename T, typename T_void_value>
+int animated<T,T_void_value>::get_frames_count() const
+{
+	return frames_.size();
+}
+
 template<typename T,  typename T_void_value>
 int animated<T,T_void_value>::get_first_frame_time() const
 {
