@@ -321,6 +321,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		if(!disp.turbo()) SDL_Delay(10);
 		animation_time = defender.get_animation()->get_animation_time();
 	}
+	halo::remove(missile_halo);
+	missile_halo = 0;
 	if(def->second.take_hit(damage)) {
 		dead = true;
 	}
