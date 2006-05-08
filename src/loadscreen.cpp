@@ -15,6 +15,7 @@
 #include "font.hpp"
 #include "marked-up_text.hpp"
 #include "gettext.hpp"
+#include "game_config.cpp"
 
 
 #include <iostream>
@@ -22,6 +23,24 @@
 #define MIN_PERCENTAGE   0
 #define MAX_PERCENTAGE 100
 
+loadscreen::loadscreen(CVideo &screen, const int &percent):
+	filesystem_counter(0),
+	binarywml_counter(0),
+	setconfig_counter(0),
+	parser_counter(0),
+	screen_(screen),
+	logo_drawn_(false),
+	pby_offset_(0),
+	prcnt_(percent)
+{
+	std::string path(game_config::path);
+	path += "/images/misc/logo.png";
+	logo_surface_ = IMG_Load(path.c_str());
+		if (!logo_surface_) {
+			std::cerr << "loadscreen: Failed to load the logo: " << path << std::endl;
+		}
+	textarea_.x = textarea_.y = textarea_.w = textarea_.h = 0;
+}
 void loadscreen::set_progress(const int percentage, const std::string &text, const bool commit)
 {
 	/* Saturate percentage. */

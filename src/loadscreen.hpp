@@ -25,28 +25,7 @@
 class loadscreen {
 	public:
 		// Preferred constructor
-		loadscreen(CVideo &screen, const int &percent = 0) :
-		filesystem_counter(0),
-		binarywml_counter(0),
-		setconfig_counter(0),
-		parser_counter(0),
-		screen_(screen),
-		logo_drawn_(false),
-		pby_offset_(0),
-		prcnt_(percent)
-		{
-#ifdef WESNOTH_PATH
-			std::string path(WESNOTH_PATH);
-#else
-			std::string path(".");
-#endif
-			path += "/images/misc/logo.png";
-			logo_surface_ = IMG_Load(path.c_str());
-			if (!logo_surface_) {
-				std::cerr << "loadscreen: Failed to load the logo: " << path << std::endl;
-			}
-			textarea_.x = textarea_.y = textarea_.w = textarea_.h = 0;
-		}
+		loadscreen(CVideo &screen, const int &percent = 0);
 		// Keep default copy constructor
 		// Keep default copy assignment
 		// Destructor, dumps the counter values to stderr
