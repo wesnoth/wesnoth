@@ -17,8 +17,8 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 	menu_handler_(gui_, units_, teams_, level, gameinfo, map_, game_config, status_, state_of_game, undo_stack_, redo_stack_),
 	generator_setter(&recorder), statistics_context_(level["name"]), gameinfo_(gameinfo), level_(level), game_config_(game_config),
 	gamestate_(state_of_game), status_(level, num_turns), 
-	map_(game_config, level["map_data"]),
-	ticks_(ticks), xp_modifier_(atoi(level["experience_modifier"].c_str())),
+	map_(game_config, level["map_data"]), ticks_(ticks),
+	xp_mod_(atoi(level["experience_modifier"].c_str()) > 0 ? atoi(level["experience_modifier"].c_str()) : 100),
 	loading_game_(level["playing_team"].empty() == false),
 	first_human_team_(-1)
 {
@@ -247,10 +247,6 @@ void play_controller::toggle_grid(){
 
 void play_controller::search(){
 	menu_handler_.search();
-}
-
-const int play_controller::get_xp_modifier(){
-	return xp_modifier_;
 }
 
 const int play_controller::get_ticks(){

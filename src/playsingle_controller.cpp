@@ -18,7 +18,6 @@ LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_c
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 	playsingle_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
-	const unit_type::experience_accelerator xp_mod(playcontroller.get_xp_modifier() > 0 ? playcontroller.get_xp_modifier() : 100);
 	
 	return playcontroller.play_scenario(story, log, skip_replay);
 }

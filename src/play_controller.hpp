@@ -70,7 +70,6 @@ public:
 
 	virtual void play_side(const int team_num) = 0;
 
-	const int get_xp_modifier();
 	const int get_ticks();
 
 protected:
@@ -124,7 +123,7 @@ protected:
 	undo_list redo_stack_;
 
 	const int ticks_;
-	const int xp_modifier_;
+	const unit_type::experience_accelerator xp_mod_;
 	//if a team is specified whose turn it is, it means we're loading a game
 	//instead of starting a fresh one
 	const bool loading_game_;
