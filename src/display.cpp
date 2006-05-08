@@ -857,12 +857,6 @@ void display::draw(bool update,bool force)
 			}
 			draw_tile(*it, clip_rect);
 
-			gamemap::location adjacent[6];
-			get_adjacent_tiles(*it, adjacent);
-			for (int i = 0; i < 6; i++) {
-				if (units_.find(adjacent[i]) != units_.end())
-					unit_invals.insert(adjacent[i]);
-			}
 		}
 
 		for(it = unit_invals.begin(); it != unit_invals.end(); ++it) {
