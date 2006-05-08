@@ -83,7 +83,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
      const gamestatus* game_status, const std::vector<team>* teams,const config& cfg) : 
 	 movement_(0), hold_position_(false),resting_(false),
 	 facing_(gamemap::location::NORTH_EAST),
-	 anim_(NULL),gamedata_(gamedata), units_(unitmap), map_(map),
+	 anim_(NULL),unit_halo_(0),unit_anim_halo_(0),gamedata_(gamedata), units_(unitmap), map_(map),
 	 gamestatus_(game_status),teams_(teams)
 {
 	read(cfg);
@@ -100,7 +100,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
 			hold_position_(false), resting_(false),
 			facing_(gamemap::location::NORTH_EAST),
-			anim_(NULL),unit_halo_(0),unit_anim_halo_(0),gamedata_(&gamedata),
+			flying_(false),anim_(NULL),unit_halo_(0),unit_anim_halo_(0),gamedata_(&gamedata),
 			units_(NULL),map_(NULL), gamestatus_(NULL)
 {
 	read(cfg);
@@ -152,6 +152,8 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	end_turn_ = false;
 	hold_position_ = false;
 	offset_ = 0;
+	unit_halo_ = 0;
+	unit_anim_halo_ = 0;
 }
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) : 
            gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),facing_(gamemap::location::NORTH_EAST),
