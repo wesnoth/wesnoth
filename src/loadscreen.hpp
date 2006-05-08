@@ -16,6 +16,8 @@
 #include "SDL.h"
 #include "SDL_image.h"
 
+#include "global.hpp"
+
 #include "font.hpp"
 #include "video.hpp"
 
