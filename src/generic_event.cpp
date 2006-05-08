@@ -37,7 +37,7 @@ namespace events{
 					handler_attached = true;
 				}
 			}
-			catch (exception&){
+			catch (std::exception&){
 				change_handler_ = false;
 				throw;
 			}
@@ -63,7 +63,7 @@ namespace events{
 					handler_detached = true;
 				}
 			}
-			catch (exception&){
+			catch (std::exception&){
 				change_handler_ = false;
 				throw;
 			}
@@ -82,7 +82,7 @@ namespace events{
 					(*it)->handle_generic_event(name_);
 				}
 			}
-			catch (exception&){
+			catch (std::exception&){
 				//reset the flag if event handlers throw exceptions and don't catch them
 				notify_active_ = false;
 				throw;
