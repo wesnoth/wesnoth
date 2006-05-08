@@ -1088,7 +1088,7 @@ void unit::write(config& cfg) const
 	cfg.clear_children("resistance");
 	cfg.add_child("movement_costs",movement_b_);
 	cfg.add_child("defense",defense_b_);
-	cfg.add_child("resistance",defense_b_);
+	cfg.add_child("resistance",resistance_b_);
 	cfg["x"] = x;
 	cfg["y"] = y;
 	cfg["id"] = id();
