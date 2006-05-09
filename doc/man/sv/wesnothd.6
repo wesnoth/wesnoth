@@ -41,26 +41,26 @@ anger var wesnothd skall leta efter konfigurationsfilen. Se avsnittet om
 .B SERVERKONFIGURATION
 nedan f\[:o]r syntaxen.
 .TP
-.BR -d , \ --daemon
+.BR -d, \ --daemon
 k\[:o]r wesnothd som en daemon.
 .TP
-.BR -h , \ --help
+.BR -h, \ --help
 visar en sammanfattning av m\[:o]jliga kommandoradsflaggor.
 .TP
-.BI -m , \ --max_packet_size \ storlek
-anger maximal paketstorlek
+.BI -m,\ --max_packet_size \ storlek
+anger maximal paketstorlek.
 .TP
-.BI -p , \ --port \ port
+.BI -p,\ --port \ port
 knyter servern till den specificerade porten. Om ingen port anges s\[oa] 
 anv\[:a]nds port 15000. 
 .TP
-.BI -t , \ --thread \ antal
-anger antalet tr\[oa]dar f\[:o]r n\[:a]tverkstrafik (standardv\[:a]rde: 5)
+.BI -t,\ --threads \ antal
+anger antalet tr\[oa]dar f\[:o]r n\[:a]tverkstrafik (standardv\[:a]rde: 5; max: 30)
 .TP
-.BR -V , \ --version
+.BR -V,\ --version
 visar versionen.
 .TP
-.BR -v , \ --verbose
+.BR -v,\ --verbose
 ger mer utf\[:o]rlig information.
 .
 .SH SERVERKONFIGURATION
@@ -83,8 +83,8 @@ nyckel="\fIv\[:a]rde\fR,\fIv\[:a]rde\fR,..."
 Antal till\[oa]tna anslutningar fr\[oa]n samma v\[:a]rd (IP).
 .TP
 .B disallow_names
-Namn/smeknamn som ej accepteras av servern. Standardv\[:a]rden (som anv\[:a]nds om 
-inget anges) \[:a]r 'server,ai,player,network,human,admin,computer'.
+Spelarnamn som ej accepteras av servern. Standardv\[:a]rden (som 
+anv\[:a]nds om inget anges) \[:a]r 'server,ai,player,network,human,admin,computer'.
 .TP
 .B max_messages
 Antal till\[oa]tna meddelanden inom \fBmessages_time_period\fR.
@@ -105,11 +105,11 @@ En komma-separerad lista med versionsstr\[:a]ngar som accepteras av servern.
 .
 .P
 .B [redirect]
-En tag som anger vart en server skall omdirigera vissa klienterversion.
+En tag som anger vart en server skall omdirigera vissa klientversioner.
 .RS
 .TP
 .B host
-V\[:a]rdadressen att omdirigera till,
+V\[:a]rdadressen att omdirigera till.
 .TP
 .B port
 Porten att ansluta till.
@@ -119,14 +119,18 @@ En komma-separerad lista av versioner att omdirigera.
 .RE
 .P
 .B [proxy]
-En tag som anger att servern skall agera som proxy och vidarebefordra klientf\[:o]rfr\[oa]gningar till den angiva servern. Accepterar samma nycklar som [redirect].
+En tag som anger att servern skall agera som proxy och vidarebefordra 
+klientf\[:o]rfr\[oa]gningar till den angiva servern. Accepterar samma nycklar som 
+[redirect].
 .
 .SH F\[:O]RFATTARE
 Skriven av David White <davidnwhite@verizon.net>.
 .br
-Redigerad av Nils Kneuper <crazy-ivanovic@gmx.net> och ott <ott@gaon.net>.
+Redigerad av Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> och 
+Soliton <soliton@sonnenkinder.org>.
 .br
-\[:O]versatt till svenska av Stefan Bergstr\[:o]m <stefan PUNKT bergstrom HOS gmail PUNKT com>.
+\[:O]versatt till svenska av Stefan Bergstr\[:o]m <stefan PUNKT bergstrom HOS 
+gmail PUNKT com>. 
 .br
 Denna manualsida skrevs ursprungligen av Cyril Bouthors <cyril@bouthors.org>.
 .br
