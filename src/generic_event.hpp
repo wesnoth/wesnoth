@@ -34,6 +34,7 @@ namespace events{
 	class observer{
 	public:
 		virtual void handle_generic_event(const std::string& event_name) = 0;
+		virtual ~observer();
 	};
 
 	/*
@@ -42,7 +43,7 @@ namespace events{
 	class generic_event{
 	public:
 		generic_event(std::string name);
-
+		virtual ~generic_event();
 		virtual bool attach_handler(observer* obs);
 		virtual bool detach_handler(observer* obs);
 		virtual void notify_observers();

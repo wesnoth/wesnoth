@@ -15,12 +15,15 @@
 #include <algorithm>
 
 namespace events{
+	observer::~observer() {
+	}
 	generic_event::generic_event(std::string name){
 		name_ = name;
 		change_handler_ = false;
 		notify_active_ = false;
 	}
-
+	generic_event::~generic_event() {
+	}
 	bool generic_event::attach_handler(observer* obs){
 		bool handler_attached = false;
 
