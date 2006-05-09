@@ -75,8 +75,7 @@ void playsingle_controller::update_shroud_now(){
 
 void playsingle_controller::end_turn(){
 	if (!browse_){
-		menu_handler_.end_turn(player_number_);
-		end_turn_ = true;
+		end_turn_ = menu_handler_.end_turn(player_number_);
 	}
 }
 

@@ -57,7 +57,7 @@ public:
 	void show_enemy_moves(bool ignore_units, const unsigned int team_num);
 	void toggle_shroud_updates(const unsigned int team_num);
 	void update_shroud_now(const unsigned int team_num);
-	void end_turn(const unsigned int team_num);
+	bool end_turn(const unsigned int team_num);
 	void goto_leader(const unsigned int team_num);
 	void unit_description(mouse_handler& mousehandler);
 	void rename_unit(mouse_handler& mousehandler);

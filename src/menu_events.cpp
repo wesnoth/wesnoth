@@ -1001,7 +1001,7 @@ namespace events{
 		clear_undo_stack(team_num);
 	}
 
-	void menu_handler::end_turn(const unsigned int team_num)
+	bool menu_handler::end_turn(const unsigned int team_num)
 	{
 		bool unmoved_units = false, partmoved_units = false, some_units_have_moved = false;
 		for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
@@ -1023,7 +1023,7 @@ namespace events{
 		if(preferences::confirm_no_moves() && ! some_units_have_moved) {
 			const int res = gui::show_dialog(*gui_,NULL,"",_("You have not started your turn yet. Do you really want to end your turn?"), gui::YES_NO);
 			if(res != 0) {
-				return;
+				return false;
 			}
 		}
 
@@ -1031,12 +1031,12 @@ namespace events{
 		if(preferences::yellow_confirm() && partmoved_units) {
 			const int res = gui::show_dialog(*gui_,NULL,"",_("Some units have movement left. Do you really want to end your turn?"),gui::YES_NO);
 			if (res != 0) {
-				return;
+				return false;
 			}
 		} else if (preferences::green_confirm() && unmoved_units) {
 			const int res = gui::show_dialog(*gui_,NULL,"",_("Some units have movement left. Do you really want to end your turn?"),gui::YES_NO);
 			if (res != 0) {
-				return;
+				return false;
 			}
 		}
 
@@ -1055,6 +1055,8 @@ namespace events{
 		}
 
 		recorder.end_turn();
+
+		return true;
 	}
 
 	void menu_handler::goto_leader(const unsigned int team_num)
