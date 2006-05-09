@@ -472,7 +472,7 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 
 combatant::combatant(const battle_context::unit_stats &u)
 	: hp_dist(u.drains ? u.max_hp+1: u.hp+1),
-	  untouched(1.0),
+	  untouched(1.0), poisoned(u.is_poisoned ? 1.0 : 0.0), slowed(u.is_slowed ? 1.0 : 0.0),
 	  u_(u),
 	  hit_chances_(u.num_blows, u.chance_to_hit / 100.0)
 {
@@ -593,9 +593,30 @@ void combatant::fight(combatant &opp)
 			opp.hp_dist[i] = opp.summary[0][i] + opp.summary[1][i];
 	}
 
+	if (opp.u_.poisons && !u_.is_poisoned)
+		poisoned += untouched - hp_dist[u_.hp];
+	if (u_.poisons && !opp.u_.is_poisoned)
+		opp.poisoned += opp.untouched - opp.hp_dist[opp.u_.hp];
+
+	if (opp.u_.slows && !u_.is_slowed)
+		slowed += untouched - hp_dist[u_.hp];
+	if (u_.slows && !opp.u_.is_slowed)
+		opp.slowed += opp.untouched - opp.hp_dist[opp.u_.hp];
+
 	// FIXME: This is approximate: we could drain, then get hit.
 	untouched = hp_dist[u_.hp];
 	opp.untouched = opp.hp_dist[opp.u_.hp];
+}
+
+unsigned int combatant::average_hp() const
+{
+	double total = 0, sum = 0;
+
+	for (unsigned int i = 0; i < hp_dist.size(); i++) {
+		sum += hp_dist[i];
+		total += hp_dist[i] * i;
+	}
+	return (unsigned int)((total / sum) + 0.5);
 }
 
 #if defined(BENCHMARK) || defined(CHECK)

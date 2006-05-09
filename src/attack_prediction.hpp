@@ -23,6 +23,15 @@ struct combatant
 	// Resulting chance we were not hit by this opponent (important if it poisons)
 	double untouched;
 
+	// Resulting chance we are poisoned.
+	double poisoned;
+
+	// Resulting chance we are slowed.
+	double slowed;
+
+	// What's the average hp (weighted average of hp_dist).
+	unsigned int average_hp() const;
+
 private:
 	// We must adjust for swarm after every combat.
 	void adjust_hitchance();
