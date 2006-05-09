@@ -46,7 +46,7 @@ public:
 
 	//event handler, overriden from observer
 	//there is nothing to handle in this class actually but that might change in the future
-	virtual void handle_generic_event(const std::string& name) {}
+	virtual void handle_generic_event(const std::string& /*name*/) {}
 
 	//event handlers, overriden from command_executor
 	virtual void objectives();
