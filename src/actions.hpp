@@ -111,6 +111,7 @@ public:
 	struct unit_stats
 	{
 		const attack_type *weapon;	// The weapon used by the unit to attack the opponent, or NULL if there is none.
+		int attack_num;			// Index into unit->attacks() or -1 for none.
 		bool is_attacker;		// True if the unit is the attacker.
 		bool is_poisoned;	  	// True if the unit is poisoned at the beginning of the battle.
 		bool is_slowed;	    	// True if the unit is slowed at the beginning of the battle.
@@ -137,7 +138,7 @@ public:
 		std::string plague_type; // The plague type used by the attack, if any.
 
 		unit_stats(const unit &u, const gamemap::location& u_loc,
-				   const attack_type *u_weapon, bool attacking,
+				   int u_attack_num, bool attacking,
 				   const unit &opp, const gamemap::location& opp_loc,
 				   const attack_type *opp_weapon,
 				   const std::map<gamemap::location,unit>& units,
@@ -151,7 +152,7 @@ public:
 	battle_context(const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
 				   const gamestatus& status, const game_data& gamedata,
 				   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-				   const attack_type& attacker_weapon);
+				   unsigned int attacker_weapon);
 	
 	battle_context(const battle_context &other);
 	~battle_context() { delete attacker_stats_; delete defender_stats_; }
@@ -178,6 +179,12 @@ private:
 	unit_stats *attacker_stats_, *defender_stats_;
 };
 
+int best_attack_weapon(const gamemap& map, const std::vector<team>& teams,
+					   const std::map<gamemap::location,unit>& units,
+					   const gamestatus& status, const game_data& gamedata,
+					   const gamemap::location& attacker_loc,
+					   const gamemap::location& defender_loc,
+					   std::vector<battle_context> &bc_vector);
 
 //attack: executes an attack.
 void attack(display& gui, const gamemap& map,

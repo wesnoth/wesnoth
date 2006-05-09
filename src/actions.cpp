@@ -730,10 +730,11 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
 							   const gamestatus& status, const game_data& gamedata,
 							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-							   const attack_type& attacker_weapon): attacker_stats_(NULL), defender_stats_(NULL)
+							   unsigned int attacker_weapon): attacker_stats_(NULL), defender_stats_(NULL)
 {
 	const unit& attacker = units.find(attacker_loc)->second;
 	const unit& defender = units.find(defender_loc)->second;
+	const attack_type &att = attacker.attacks()[attacker_weapon];
 
 	// To choose the best defender weapon, we have to compare different
 	// weapons with an heuristic function. The heuristic function requires
@@ -743,21 +744,21 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	// has the best rating.
 	int best_rating = -1;
 
-	std::vector<attack_type>::const_iterator i;
-	for (i = defender.attacks().begin(); i != defender.attacks().end(); i++) {
+	for (unsigned int i = 0; i < defender.attacks().size(); i++) {
+		const attack_type &def = defender.attacks()[i];
 		// Skip weapons that do not match the attacker weapon range.
-		if (i->range() != attacker_weapon.range())
+		if (def.range() != att.range())
 			continue;
 		
 		// Skip weapons that have a null defense weight.
-		if (i->defense_weight() <= 0)
+		if (def.defense_weight() <= 0)
 			continue;
 
-		unit_stats *current_attacker = new unit_stats(attacker, attacker_loc, &attacker_weapon, true,
-													  defender, defender_loc, &(*i),
+		unit_stats *current_attacker = new unit_stats(attacker, attacker_loc, attacker_weapon,
+													  true, defender, defender_loc, &def,
 													  units, teams, status, map, gamedata);
-		unit_stats *current_defender = new unit_stats(defender, defender_loc, &(*i), false,
-													  attacker, attacker_loc, &attacker_weapon,
+		unit_stats *current_defender = new unit_stats(defender, defender_loc, i, false,
+													  attacker, attacker_loc, &att,
 													  units, teams, status, map, gamedata);
 		int current_rating = rate_defender_weapon(*current_attacker, *current_defender);
 		assert(current_rating >= 0);
@@ -777,11 +778,11 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	// If there is no defender weapon, compute the stats without a defender weapon.
 	if (attacker_stats_ == NULL) {
 		wassert(defender_stats_ == NULL);
-		attacker_stats_ = new unit_stats(attacker, attacker_loc, &attacker_weapon, true, 
+		attacker_stats_ = new unit_stats(attacker, attacker_loc, attacker_weapon, true, 
 										 defender, defender_loc, NULL,
 										 units, teams, status, map, gamedata);
-		defender_stats_ = new unit_stats(defender, defender_loc, NULL, false, 
-										 attacker, attacker_loc, &attacker_weapon,
+		defender_stats_ = new unit_stats(defender, defender_loc, -1, false, 
+										 attacker, attacker_loc, &att,
 										 units, teams, status, map, gamedata);
 	}
 }
@@ -804,7 +805,7 @@ battle_context& battle_context::operator=(const battle_context &other)
 }
 
 battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u_loc,
-									   const attack_type *u_weapon, bool attacking,
+									   int u_attack_num, bool attacking,
 									   const unit &opp, const gamemap::location& opp_loc,
 									   const attack_type *opp_weapon,
 									   const std::map<gamemap::location,unit>& units,
@@ -814,7 +815,12 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 									   const game_data& gamedata)
 {
 	// Get the current state of the unit.
-	weapon = u_weapon;
+	attack_num = u_attack_num;
+	if (attack_num >= 0) {
+		weapon = &u.attacks()[attack_num];
+	} else {
+		weapon = NULL;
+	}
 	is_attacker = attacking;
 	is_poisoned = utils::string_bool(u.get_state("poisoned"));
 	is_slowed = utils::string_bool(u.get_state("slowed"));
@@ -950,6 +956,9 @@ unsigned int battle_context::rate_attacker_weapon(double attack_weight) const
 	if (defender_stats_->drains)
 		attack_weight /= 2;
 
+	// Bias towards more damaging attacks.
+	attack_weight += attacker_stats_->num_blows * attacker_stats_->damage;
+
 	attack_weight *= attacker_stats_->num_blows * attacker_stats_->damage;
 	if (defender_stats_->num_blows * defender_stats_->damage)
 		attack_weight /= defender_stats_->num_blows * defender_stats_->damage;
@@ -965,6 +974,32 @@ int battle_context::rate_defender_weapon(const unit_stats&, const unit_stats& d_
 	return (int) (d_stats.damage * d_stats.num_blows * d_stats.weapon->defense_weight());
 }
 
+int best_attack_weapon(const gamemap& map, const std::vector<team>& teams,
+					   const std::map<gamemap::location,unit>& units,
+					   const gamestatus& status, const game_data& gamedata,
+					   const gamemap::location& attacker_loc,
+					   const gamemap::location& defender_loc,
+					   std::vector<battle_context> &bc_vector)
+{
+	int best_weapon_index = -1;
+	unsigned int best_weapon_rating;
+	const std::vector<attack_type>& attacks = units.find(attacker_loc)->second.attacks();
+
+	for (unsigned int i = 0; i != attacks.size(); ++i) {
+		// skip weapons with attack_weight=0
+		if (attacks[i].attack_weight() > 0) {
+			battle_context bc(map, teams, units, status, gamedata, attacker_loc, defender_loc, i);
+			bc_vector.push_back(bc);
+			unsigned int weapon_rating = bc.rate_attacker_weapon(attacks[i].attack_weight());
+
+			if (best_weapon_index < 0 || best_weapon_rating < weapon_rating) {
+				best_weapon_index = i;
+				best_weapon_rating = weapon_rating;
+			}
+		}
+	}
+	return best_weapon_index;
+}
 
 static std::string unit_dump(std::pair< gamemap::location, unit > const &u)
 {
@@ -1005,7 +1040,7 @@ void attack(display& gui, const gamemap& map,
 	static const std::string hides("hides");
 	a->second.set_state(hides,"");
 
-	battle_context bc(map, teams, units, state, info, attacker, defender, a->second.attacks()[attack_with]);
+	battle_context bc(map, teams, units, state, info, attacker, defender, attack_with);
 	const battle_context::unit_stats& a_stats = bc.get_attacker_stats();
 	const battle_context::unit_stats& d_stats = bc.get_defender_stats();
 

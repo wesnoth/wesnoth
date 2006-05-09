@@ -1163,60 +1163,41 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 	const gamemap::location attacker_loc = attacker->first;
 	const gamemap::location defender_loc = defender->first;
 
-	const std::vector<attack_type>& attacks = attacker->second.attacks();
 	std::vector<std::string> items;
-	std::vector<int> weapons;
 
-	int best_weapon_index = -1;
-	unsigned int best_weapon_rating;
-
+	// Not every weapon gets included in bc_vector (attack_weight must be non-zero)
 	std::vector<battle_context> bc_vector;
+	int best = best_attack_weapon(map_, teams_, units_, status_, gameinfo_, attacker->first, defender->first, bc_vector);
 
-	for(size_t a = 0; a != attacks.size(); ++a) {
-		// skip weapons with attack_weight=0
-		if (attacks[a].attack_weight() > 0){
-			weapons.push_back(a);
-			
-			battle_context bc(map_, teams_, units_, status_, gameinfo_, attacker_loc, defender_loc, attacks[a]);
-			bc_vector.push_back(bc);
-			unsigned int weapon_rating = bc.rate_attacker_weapon(attacks[a].attack_weight());
-			
-			if (best_weapon_index < 0 || best_weapon_rating < weapon_rating) {
-				best_weapon_index = items.size();
-				best_weapon_rating = weapon_rating;
-			}
+	for (unsigned int i = 0; i < bc_vector.size(); i++) {
+		const battle_context::unit_stats& att = battle_context::unit_stats(bc_vector[i].get_attacker_stats());
+		const battle_context::unit_stats& def = battle_context::unit_stats(bc_vector[i].get_defender_stats());
+		config tmp_config;
+		attack_type no_weapon(tmp_config, "fake_attack", "");
+		const attack_type& attw = attack_type(*att.weapon);
+		const attack_type& defw = attack_type(def.weapon ? *def.weapon : no_weapon);
 
-			const battle_context::unit_stats& att = battle_context::unit_stats(bc.get_attacker_stats());
-			const battle_context::unit_stats& def = battle_context::unit_stats(bc.get_defender_stats());
+		//if there is an attack special or defend special, we output a single space for the other unit, to make sure
+		//that the attacks line up nicely.
+		std::string special_pad = "";
+		if (!attw.weapon_specials().empty() || !defw.weapon_specials().empty())
+			special_pad = " ";
 
-			config tmp_config;
-			attack_type no_weapon(tmp_config, "fake_attack", "");
-			const attack_type& attw = attack_type(*att.weapon);
-			const attack_type& defw = attack_type(def.weapon ? *def.weapon : no_weapon);
-
-			//if there is an attack special or defend special, we output a single space for the other unit, to make sure
-			//that the attacks line up nicely.
-			std::string special_pad = "";
-			if (!attw.weapon_specials().empty() || !defw.weapon_specials().empty())
-				special_pad = " ";
-
-			std::stringstream atts;
-			atts << IMAGE_PREFIX << attw.icon() << COLUMN_SEPARATOR
-				 << font::BOLD_TEXT << attw.name() << "\n" << att.damage << "-"
-				 << att.num_blows << " " << attw.range() << " (" << att.chance_to_hit << "%)\n"
-				 << attw.weapon_specials() << special_pad
-				 << COLUMN_SEPARATOR << _("vs") << COLUMN_SEPARATOR
-				 << font::BOLD_TEXT << defw.name() << "\n" << def.damage << "-"
-				 << def.num_blows << " " << defw.range() << " (" << def.chance_to_hit << "%)\n"
-				 << defw.weapon_specials() << special_pad << COLUMN_SEPARATOR
-				 << IMAGE_PREFIX << defw.icon();
-
-			items.push_back(atts.str());
+		std::stringstream atts;
+		if ((int)i == best) {
+			atts << DEFAULT_ITEM;
 		}
-	}
+		atts << IMAGE_PREFIX << attw.icon() << COLUMN_SEPARATOR
+			 << font::BOLD_TEXT << attw.name() << "\n" << att.damage << "-"
+			 << att.num_blows << " " << attw.range() << " (" << att.chance_to_hit << "%)\n"
+			 << attw.weapon_specials() << special_pad
+			 << COLUMN_SEPARATOR << _("vs") << COLUMN_SEPARATOR
+			 << font::BOLD_TEXT << defw.name() << "\n" << def.damage << "-"
+			 << def.num_blows << " " << defw.range() << " (" << def.chance_to_hit << "%)\n"
+			 << defw.weapon_specials() << special_pad << COLUMN_SEPARATOR
+			 << IMAGE_PREFIX << defw.icon();
 
-	if (best_weapon_index >= 0) {
-		items[best_weapon_index] = DEFAULT_ITEM + items[best_weapon_index];
+		items.push_back(atts.str());
 	}
 
 	//make it so that when we attack an enemy, the attacking unit
@@ -1245,9 +1226,9 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 				NULL,&buttons);
 	}
 
-	cursor::set(cursor::NORMAL)
-;
-	if(size_t(res) < weapons.size()) {
+	cursor::set(cursor::NORMAL);
+	if(size_t(res) < bc_vector.size()) {
+		const battle_context::unit_stats &att = bc_vector[res].get_attacker_stats();
 
 		attacker->second.set_goto(gamemap::location());
 		clear_undo_stack();
@@ -1261,13 +1242,13 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 
 		const bool defender_human = teams_[defender->second.side()-1].is_human();
 
-		recorder.add_attack(attacker_loc,defender_loc,weapons[res]);
+		recorder.add_attack(attacker_loc,defender_loc,att.attack_num);
 
 		//MP_COUNTDOWN grant time bonus for attacking
 		current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
 
 		try {
-			attack(*gui_,map_,teams_,attacker_loc,defender_loc,weapons[res],units_,status_,gameinfo_);
+			attack(*gui_,map_,teams_,attacker_loc,defender_loc,att.attack_num,units_,status_,gameinfo_);
 		} catch(end_level_exception&) {
 			//if the level ends due to a unit being killed, still see if
 			//either the attacker or defender should advance
