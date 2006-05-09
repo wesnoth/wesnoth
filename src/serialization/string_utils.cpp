@@ -653,6 +653,46 @@ utf8_string lowercase(const utf8_string& s)
 	return s;
 }
 
+bool wildcard_string_match(const std::string& str, const std::string& match)
+{
+	// match using '*' as any number of characters, and '?' as any one character
+	// some matching cases will be missed, but this should be sufficient
+	std::string::const_iterator c = str.begin();
+	std::string::const_iterator m = match.begin();
+	while(c != str.end() && m != match.end()) {
+		if(*m == '?') {
+			++c;
+			++m;
+		} else if(*m == '*') {
+			++c;
+			while(c != str.end() && *c != *(m+1)) {
+				++c;
+			}
+			++m;
+		} else {
+			if(*c != *m) {
+				return false;
+			}
+			++c;
+			++m;
+		}
+	}
+	if(m == match.end()) {
+		if(c == str.end()) {
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		if(c == str.end()) {
+			return false;
+		} else {
+			return false;
+		}
+	}
+}
+
+
 }
 
 std::string vgettext(const char *msgid, const utils::string_map& symbols)

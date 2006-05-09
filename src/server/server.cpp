@@ -219,12 +219,10 @@ bool server::is_ip_banned(const std::string& ip)
 {
 	for(std::vector<std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
 		std::cerr << "comparing for ban '" << *i << "' vs '" << ip << "'\n";
-		const std::string::const_iterator itor = std::mismatch(i->begin(),i->end(),ip.c_str()).first;
-		if(itor == i->end() && i->size() == ip.size() || itor != i->end() && *itor == '*') {
+		if(utils::wildcard_string_match(ip,*i)) {
 			std::cerr << "is banned\n";
 			return true;
 		}
-
 		std::cerr << "not banned\n";
 	}
 
@@ -233,11 +231,6 @@ bool server::is_ip_banned(const std::string& ip)
 
 std::string server::ban_ip(const std::string& mask)
 {
-	const std::string::const_iterator asterisk = std::find(mask.begin(),mask.end(),'*');
-	if(asterisk != mask.end() && asterisk != mask.end()-1) {
-		return "'*' may only appear at the end of the mask";
-	}
-
 	bans_.push_back(mask);
 
 	return "";
@@ -512,26 +505,45 @@ void server::process_login(const network::connection sock, const config& data)
 	const config* const version = data.child("version");
 	if(version != NULL) {
 		const std::string& version_str = (*version)["version"];
-
-		if(accepted_versions_.count(version_str)) {
+		
+		bool accepted = false;
+		for(std::set<std::string>::const_iterator ver_it = accepted_versions_.begin(); ver_it != accepted_versions_.end(); ++ver_it) {
+			if(utils::wildcard_string_match(version_str,*ver_it)) {
+				accepted = true;
+				break;
+			}
+		}
+		if(accepted) {
 			std::cerr << "player joined using accepted version " << version_str << ": telling them to log in\n";
 			network::send_data(login_response_,sock);
 		} else {
-			const std::map<std::string,config>::const_iterator i = redirected_versions_.find(version_str);
-			if(i != redirected_versions_.end()) {
+			std::map<std::string,config>::const_iterator redirect = redirected_versions_.end();
+			for(std::map<std::string,config>::const_iterator red_it = redirected_versions_.begin(); red_it != redirected_versions_.end(); ++red_it) {
+				if(utils::wildcard_string_match(version_str,red_it->first)) {
+					redirect = red_it;
+					break;
+				}
+			}
+			if(redirect != redirected_versions_.end()) {
 				std::cerr << "player joined using version " << version_str << ": redirecting them to "
-				          << i->second["host"] << ":" << i->second["port"] << "\n";
+				          << redirect->second["host"] << ":" << redirect->second["port"] << "\n";
 				config response;
-				response.add_child("redirect",i->second);
+				response.add_child("redirect",redirect->second);
 				network::send_data(response,sock);
 			} else {
-				const std::map<std::string,config>::const_iterator i = proxy_versions_.find(version_str);
+				std::map<std::string,config>::const_iterator proxy = proxy_versions_.end();
+				for(std::map<std::string,config>::const_iterator prox_it = proxy_versions_.begin(); prox_it != proxy_versions_.end(); ++prox_it) {
+					if(utils::wildcard_string_match(version_str,prox_it->first)) {
+						proxy = prox_it;
+						break;
+					}
+				}
 
-				if(i != proxy_versions_.end()) {
+				if(proxy != proxy_versions_.end()) {
 					std::cerr << "player joined using version " << version_str << ": connecting them by proxy to "
-					          << i->second["host"] << ":" << i->second["port"] << "\n";
+					          << proxy->second["host"] << ":" << proxy->second["port"] << "\n";
 
-					proxy::create_proxy(sock,i->second["host"],lexical_cast_default<int>(i->second["port"],15000));
+					proxy::create_proxy(sock,proxy->second["host"],lexical_cast_default<int>(proxy->second["port"],15000));
 				} else {
 
 					std::cerr << "player joined using unknown version " << version_str << ": rejecting them\n";
@@ -577,11 +589,13 @@ void server::process_login(const network::connection sock, const config& data)
 		                   "This username is too long"),sock);
 		return;
 	}
-
-	if(std::find(disallowed_names_.begin(),disallowed_names_.end(),username) != disallowed_names_.end()) {
-		network::send_data(construct_error(
-		                   "The nick '" + username + "' is reserved and can not be used by players"),sock);
-		return;
+	
+	for(std::vector<std::string>::const_iterator d_it = disallowed_names_.begin(); d_it != disallowed_names_.end(); ++d_it) {
+		if(utils::wildcard_string_match(username,*d_it)) {
+			network::send_data(construct_error(
+							"The nick '" + username + "' is reserved and can not be used by players"),sock);
+			return;
+		}
 	}
 
 	//check the username isn't already taken
