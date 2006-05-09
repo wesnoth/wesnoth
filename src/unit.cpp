@@ -1034,6 +1034,7 @@ void unit::read(const config& cfg)
 	}
 	if(utils::string_bool(cfg["generate_description"])) {
 		custom_unit_description_ = generate_description();
+		cfg_["generate_description"] = "";
 	}
 	
 	if(!type_set) {
