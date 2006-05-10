@@ -81,6 +81,9 @@ namespace events{
 	{
 	}
 
+	menu_handler::~menu_handler()
+	{
+	}
 	const undo_list& menu_handler::get_undo_list() const{
 		 return undo_stack_;
 	}
