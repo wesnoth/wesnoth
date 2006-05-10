@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-29 15:32+0200\n"
+"POT-Creation-Date: 2006-05-10 18:48+0200\n"
 "PO-Revision-Date: 2006-04-04 20:55+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -249,10 +249,11 @@ msgid "Click on the village to move $student"
 msgstr "Klikni na vesnici por přesun jednotky $student"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:473
+#, fuzzy
 msgid ""
 "You now 'own' this village: you can see it flies your flag, and soon a '1' "
 "will appear next to the house icon at the top of screen.  Villages give "
-"gold: every turn you gain two gold, plus one for every village you own.\n"
+"gold: every turn you gain two gold, plus two for every village you own.\n"
 "*Left click or any key to continue..."
 msgstr ""
 "Teď „vlastníš“ tuto vesnici: můžeš si všimnout, že je na ní tvá vlajka a "
@@ -486,16 +487,6 @@ msgstr ""
 #: data/tutorial/scenarios/1_Tutorial.cfg:817
 msgid ""
 "Note:\n"
-"Each village you own can support a single unit for free.  After that, each "
-"unit costs you one gold per turn."
-msgstr ""
-"Poznámka:\n"
-"Každá vesnice, kterou vlastníš, může podporovat zdarma jednu jednotku. Pokud "
-"máš více jednotek než vesnic, stojí tě každá jednotka jeden zlatý za kolo."
-
-#: data/tutorial/scenarios/1_Tutorial.cfg:826
-msgid ""
-"Note:\n"
 "Once you select a unit, you see percentages for different places: higher "
 "means more defensible.  For example, defence is good in castles and "
 "villages, bad inside rivers.  The dummies' attacks are magical, however, so "
@@ -508,11 +499,11 @@ msgstr ""
 "jsou „magické“, takže mají vždy šanci na zásah 70% ať stojíš kde chceš."
 
 # pův.: cenné
-#: data/tutorial/scenarios/1_Tutorial.cfg:848
+#: data/tutorial/scenarios/1_Tutorial.cfg:839
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "Pane, panák je mrtvý, a získal jsem další zkušenosti!"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:853
+#: data/tutorial/scenarios/1_Tutorial.cfg:844
 msgid ""
 "Yes, you gain more experience through battle, especially killing an "
 "opponent: gain enough experience and you become more powerful.\n"
@@ -524,15 +515,15 @@ msgstr ""
 "Teď tě opustím a nechám ti tu více panáků k procvičování! Poté se pustíme do "
 "opravdouvé práce..."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:914
+#: data/tutorial/scenarios/1_Tutorial.cfg:905
 msgid "Do you want to keep practicing?"
 msgstr "Chceš pokračovat v tréninku?"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:916
+#: data/tutorial/scenarios/1_Tutorial.cfg:907
 msgid "Yes, I'm still figuring it out."
 msgstr "Ano, stále mi to není úplně jasné."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:919
+#: data/tutorial/scenarios/1_Tutorial.cfg:910
 msgid "No, I think I've got it."
 msgstr "Ne, myslím že už to chápu."
 
@@ -936,8 +927,8 @@ msgstr "Elindel"
 #: data/tutorial/scenarios/2_Tutorial.cfg:844
 #, fuzzy
 msgid ""
-"You've learned well, $student|!  The village supports one unit, and pays one "
-"gold per turn: you're only losing 1 gold per turn now."
+"You've learned well, $student|!  The village pays two gold per turn: you're "
+"only losing 1 gold per turn now."
 msgstr ""
 "Vidím, že jsi ! Vesnice zásobuje jednu jednotku a přidává jeden zlatý za "
 "kolo. Teď přicházíš pouze o 1 zlatý za kolo."
@@ -1352,6 +1343,16 @@ msgstr ""
 #, fuzzy
 msgid "You took too long, we'll never be rid of these orcs!"
 msgstr "Trvalo ti to příliš dlouho, takhle se těch skřetů nikdy nezbavíme!"
+
+#~ msgid ""
+#~ "Note:\n"
+#~ "Each village you own can support a single unit for free.  After that, "
+#~ "each unit costs you one gold per turn."
+#~ msgstr ""
+#~ "Poznámka:\n"
+#~ "Každá vesnice, kterou vlastníš, může podporovat zdarma jednu jednotku. "
+#~ "Pokud máš více jednotek než vesnic, stojí tě každá jednotka jeden zlatý "
+#~ "za kolo."
 
 #~ msgid "Dummy"
 #~ msgstr "Panák"

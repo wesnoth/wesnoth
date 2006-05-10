@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-29 15:32+0200\n"
+"POT-Creation-Date: 2006-05-10 18:48+0200\n"
 "PO-Revision-Date: 2006-04-12 09:11+0200\n"
 "Last-Translator: Mikko Kraft <mikkokraft@gmail.com>\n"
 "Language-Team: none\n"
@@ -249,10 +249,11 @@ msgid "Click on the village to move $student"
 msgstr "Paina kylän kohdalla liikuttaaksesi $student|ia"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:473
+#, fuzzy
 msgid ""
 "You now 'own' this village: you can see it flies your flag, and soon a '1' "
 "will appear next to the house icon at the top of screen.  Villages give "
-"gold: every turn you gain two gold, plus one for every village you own.\n"
+"gold: every turn you gain two gold, plus two for every village you own.\n"
 "*Left click or any key to continue..."
 msgstr ""
 "Nyt sinä 'omistat' tämän kylän: kuten voit nähdä, siellä liehuu sinun "
@@ -502,16 +503,6 @@ msgstr ""
 #: data/tutorial/scenarios/1_Tutorial.cfg:817
 msgid ""
 "Note:\n"
-"Each village you own can support a single unit for free.  After that, each "
-"unit costs you one gold per turn."
-msgstr ""
-"Huomio:\n"
-"Jokainen omistamasi kylä ylläpitää yhden yksikön ilmaiseksi. Loput yksiköt "
-"maksavat sinulle yhden kultapalan per vuoro."
-
-#: data/tutorial/scenarios/1_Tutorial.cfg:826
-msgid ""
-"Note:\n"
 "Once you select a unit, you see percentages for different places: higher "
 "means more defensible.  For example, defence is good in castles and "
 "villages, bad inside rivers.  The dummies' attacks are magical, however, so "
@@ -524,11 +515,11 @@ msgstr ""
 "maagisia, joten niillä on 70% mahdollisuus osua sinuun riippumatta siitä "
 "missä maastossa olet."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:848
+#: data/tutorial/scenarios/1_Tutorial.cfg:839
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "Harjoittelunukke kuoli ja minä sain lisää kokemusta!"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:853
+#: data/tutorial/scenarios/1_Tutorial.cfg:844
 msgid ""
 "Yes, you gain more experience through battle, especially killing an "
 "opponent: gain enough experience and you become more powerful.\n"
@@ -540,15 +531,15 @@ msgstr ""
 "Jätän sinut harjoittelemaan lisää nukkejen kanssa! Sen jälkeen meillä on "
 "oikeita töitä tehtävänä..."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:914
+#: data/tutorial/scenarios/1_Tutorial.cfg:905
 msgid "Do you want to keep practicing?"
 msgstr "Haluatko jatkaa harjoittelua?"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:916
+#: data/tutorial/scenarios/1_Tutorial.cfg:907
 msgid "Yes, I'm still figuring it out."
 msgstr "Kyllä, tarvitsen lisäharjoitusta."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:919
+#: data/tutorial/scenarios/1_Tutorial.cfg:910
 msgid "No, I think I've got it."
 msgstr "En, luulen jo osaavani."
 
@@ -950,9 +941,10 @@ msgid "Elindel"
 msgstr "Elindel"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:844
+#, fuzzy
 msgid ""
-"You've learned well, $student|!  The village supports one unit, and pays one "
-"gold per turn: you're only losing 1 gold per turn now."
+"You've learned well, $student|!  The village pays two gold per turn: you're "
+"only losing 1 gold per turn now."
 msgstr ""
 "Olet oppinut nopeasti $student|! Kylä ylläpitää yhden yksikön ja antaa "
 "lisäksi yhden kultapalan tuloja per vuoro: Menetät nyt vain 1 kultapalan per "
@@ -1380,6 +1372,15 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:1545
 msgid "You took too long, we'll never be rid of these orcs!"
 msgstr "Sinulla kesti liian pitkään. Emme pääse koskaan eroon näistä Örkeistä!"
+
+#~ msgid ""
+#~ "Note:\n"
+#~ "Each village you own can support a single unit for free.  After that, "
+#~ "each unit costs you one gold per turn."
+#~ msgstr ""
+#~ "Huomio:\n"
+#~ "Jokainen omistamasi kylä ylläpitää yhden yksikön ilmaiseksi. Loput "
+#~ "yksiköt maksavat sinulle yhden kultapalan per vuoro."
 
 #~ msgid "Basic Training"
 #~ msgstr "Perusharjoittelu"

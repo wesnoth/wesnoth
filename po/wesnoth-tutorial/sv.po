@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-29 15:32+0200\n"
+"POT-Creation-Date: 2006-05-10 18:48+0200\n"
 "PO-Revision-Date: 2006-04-22 15:29+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -253,10 +253,11 @@ msgid "Click on the village to move $student"
 msgstr "Klicka på byn för att föra $student dit"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:473
+#, fuzzy
 msgid ""
 "You now 'own' this village: you can see it flies your flag, and soon a '1' "
 "will appear next to the house icon at the top of screen.  Villages give "
-"gold: every turn you gain two gold, plus one for every village you own.\n"
+"gold: every turn you gain two gold, plus two for every village you own.\n"
 "*Left click or any key to continue..."
 msgstr ""
 "Nu 'äger' du den här byn: du kan se att den har hissat din flagga, och snart "
@@ -497,15 +498,6 @@ msgstr ""
 #: data/tutorial/scenarios/1_Tutorial.cfg:817
 msgid ""
 "Note:\n"
-"Each village you own can support a single unit for free.  After that, each "
-"unit costs you one gold per turn."
-msgstr ""
-"Observera: Varje by du kontrollerar understödjer en trupp. Har du fler "
-"trupper än byar, så kostar varje extra trupp ett guldstycke per drag."
-
-#: data/tutorial/scenarios/1_Tutorial.cfg:826
-msgid ""
-"Note:\n"
 "Once you select a unit, you see percentages for different places: higher "
 "means more defensible.  For example, defence is good in castles and "
 "villages, bad inside rivers.  The dummies' attacks are magical, however, so "
@@ -516,11 +508,11 @@ msgstr ""
 "ger borgar och byar bra försvar, men inte floder. Kvintanernas attack är "
 "dock magisk, så de har alltid 70% chans att träffa, var du än står."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:848
+#: data/tutorial/scenarios/1_Tutorial.cfg:839
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "Kvintanen är död, och jag har fått mer erfarenhet!"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:853
+#: data/tutorial/scenarios/1_Tutorial.cfg:844
 msgid ""
 "Yes, you gain more experience through battle, especially killing an "
 "opponent: gain enough experience and you become more powerful.\n"
@@ -533,16 +525,16 @@ msgstr ""
 "Nu, $student, får du öva på några fler kvintaner! När vi är klara med det så "
 "skall du få bita i ett riktigt problem..."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:914
+#: data/tutorial/scenarios/1_Tutorial.cfg:905
 msgid "Do you want to keep practicing?"
 msgstr "Vill du fortsätta öva?"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:916
+#: data/tutorial/scenarios/1_Tutorial.cfg:907
 msgid "Yes, I'm still figuring it out."
 msgstr ""
 "Ja, jag håller på att komma underfund med hur man gör. Lite till, bara."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:919
+#: data/tutorial/scenarios/1_Tutorial.cfg:910
 msgid "No, I think I've got it."
 msgstr "Nej, jag tror jag vet hur det fungerar."
 
@@ -891,8 +883,8 @@ msgstr "Elindel"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:844
 msgid ""
-"You've learned well, $student|!  The village supports one unit, and pays one "
-"gold per turn: you're only losing 1 gold per turn now."
+"You've learned well, $student|!  The village pays two gold per turn: you're "
+"only losing 1 gold per turn now."
 msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:845
@@ -1215,3 +1207,11 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:1545
 msgid "You took too long, we'll never be rid of these orcs!"
 msgstr "Du tog för lång tid på dig! Nu blir vi aldrig av med orcherna!"
+
+#~ msgid ""
+#~ "Note:\n"
+#~ "Each village you own can support a single unit for free.  After that, "
+#~ "each unit costs you one gold per turn."
+#~ msgstr ""
+#~ "Observera: Varje by du kontrollerar understödjer en trupp. Har du fler "
+#~ "trupper än byar, så kostar varje extra trupp ett guldstycke per drag."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-29 15:32+0200\n"
+"POT-Creation-Date: 2006-05-10 18:48+0200\n"
 "PO-Revision-Date: 2006-04-23 17:03+0100\n"
 "Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: none\n"
@@ -251,10 +251,11 @@ msgid "Click on the village to move $student"
 msgstr "Cliquez sur le village pour y déplacer $student"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:473
+#, fuzzy
 msgid ""
 "You now 'own' this village: you can see it flies your flag, and soon a '1' "
 "will appear next to the house icon at the top of screen.  Villages give "
-"gold: every turn you gain two gold, plus one for every village you own.\n"
+"gold: every turn you gain two gold, plus two for every village you own.\n"
 "*Left click or any key to continue..."
 msgstr ""
 "Maintenant vous 'possédez' ce village : vous pouvez y voir votre drapeau "
@@ -506,17 +507,6 @@ msgstr ""
 #: data/tutorial/scenarios/1_Tutorial.cfg:817
 msgid ""
 "Note:\n"
-"Each village you own can support a single unit for free.  After that, each "
-"unit costs you one gold per turn."
-msgstr ""
-"Remarque :\n"
-"chacun de vos villages permet d'entretenir une de vos unités. Si vous avez "
-"plus d'unités que de villages, chaque unité en trop vous coûtera une pièce "
-"d'or par tour."
-
-#: data/tutorial/scenarios/1_Tutorial.cfg:826
-msgid ""
-"Note:\n"
 "Once you select a unit, you see percentages for different places: higher "
 "means more defensible.  For example, defence is good in castles and "
 "villages, bad inside rivers.  The dummies' attacks are magical, however, so "
@@ -529,11 +519,11 @@ msgstr ""
 "mauvaise dans les rivières. Cependant les attaques des mannequins sont "
 "magiques, ainsi ils ont 70% de chance de vous toucher où que vous soyiez."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:848
+#: data/tutorial/scenarios/1_Tutorial.cfg:839
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "Le mannequin est mort Messire, et j'ai gagné davantage d'expérience !"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:853
+#: data/tutorial/scenarios/1_Tutorial.cfg:844
 msgid ""
 "Yes, you gain more experience through battle, especially killing an "
 "opponent: gain enough experience and you become more powerful.\n"
@@ -546,15 +536,15 @@ msgstr ""
 "Maintenant $student, je vous laisse avec davantage de mannequins pour vous "
 "entraîner ! Après cela, nous aurons du vrai travail..."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:914
+#: data/tutorial/scenarios/1_Tutorial.cfg:905
 msgid "Do you want to keep practicing?"
 msgstr "Voulez-vous continuer à vous entraîner ?"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:916
+#: data/tutorial/scenarios/1_Tutorial.cfg:907
 msgid "Yes, I'm still figuring it out."
 msgstr "Oui, je n'ai pas encore tout compris."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:919
+#: data/tutorial/scenarios/1_Tutorial.cfg:910
 msgid "No, I think I've got it."
 msgstr "Non, je pense que j'ai compris."
 
@@ -969,9 +959,10 @@ msgid "Elindel"
 msgstr "Elindel"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:844
+#, fuzzy
 msgid ""
-"You've learned well, $student|!  The village supports one unit, and pays one "
-"gold per turn: you're only losing 1 gold per turn now."
+"You've learned well, $student|!  The village pays two gold per turn: you're "
+"only losing 1 gold per turn now."
 msgstr ""
 "Vous avez bien appris, $student| ! Le village entretient une unité, et vous "
 "rapporte une pièce d'or par tour : vous perdez seulement une pièce d'or par "
@@ -1409,6 +1400,16 @@ msgid "You took too long, we'll never be rid of these orcs!"
 msgstr ""
 "Vous avez pris trop de temps, vous ne pourrez jamais vous débarrasser de ces "
 "orcs !"
+
+#~ msgid ""
+#~ "Note:\n"
+#~ "Each village you own can support a single unit for free.  After that, "
+#~ "each unit costs you one gold per turn."
+#~ msgstr ""
+#~ "Remarque :\n"
+#~ "chacun de vos villages permet d'entretenir une de vos unités. Si vous "
+#~ "avez plus d'unités que de villages, chaque unité en trop vous coûtera une "
+#~ "pièce d'or par tour."
 
 #~ msgid "Basic Training"
 #~ msgstr "Entraînement de base"

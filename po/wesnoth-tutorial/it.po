@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-04-29 15:32+0200\n"
+"POT-Creation-Date: 2006-05-10 18:48+0200\n"
 "PO-Revision-Date: 2006-04-03 16:56+0100\n"
 "Last-Translator: Americo Iacovizzi <darkamex@gmail.com>\n"
 "Language-Team: none\n"
@@ -249,10 +249,11 @@ msgid "Click on the village to move $student"
 msgstr "Clicca sul villaggio per muovere $student"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:473
+#, fuzzy
 msgid ""
 "You now 'own' this village: you can see it flies your flag, and soon a '1' "
 "will appear next to the house icon at the top of screen.  Villages give "
-"gold: every turn you gain two gold, plus one for every village you own.\n"
+"gold: every turn you gain two gold, plus two for every village you own.\n"
 "*Left click or any key to continue..."
 msgstr ""
 "Ora 'possiedi' questo villaggio: puoi vedervi sventolare la tua bandiera, e "
@@ -496,16 +497,6 @@ msgstr ""
 #: data/tutorial/scenarios/1_Tutorial.cfg:817
 msgid ""
 "Note:\n"
-"Each village you own can support a single unit for free.  After that, each "
-"unit costs you one gold per turn."
-msgstr ""
-"Note:\n"
-"Ogni villaggio che possiedi può supportare una singola unità gratis. Oltre, "
-"ogni unità ti costerà una moneta d'oro per turno."
-
-#: data/tutorial/scenarios/1_Tutorial.cfg:826
-msgid ""
-"Note:\n"
 "Once you select a unit, you see percentages for different places: higher "
 "means more defensible.  For example, defence is good in castles and "
 "villages, bad inside rivers.  The dummies' attacks are magical, however, so "
@@ -518,11 +509,11 @@ msgstr ""
 "gli attacchi dei fantocci sono magici, pertanto hanno una possibilità di "
 "colpire del 70%, dovunque tu sia."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:848
+#: data/tutorial/scenarios/1_Tutorial.cfg:839
 msgid "The quintain is dead, sirs, and I have gained more experience!"
 msgstr "La quintana è morta, signori, e ho guadagnato esperienza!"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:853
+#: data/tutorial/scenarios/1_Tutorial.cfg:844
 msgid ""
 "Yes, you gain more experience through battle, especially killing an "
 "opponent: gain enough experience and you become more powerful.\n"
@@ -533,15 +524,15 @@ msgstr ""
 "avversario: acquisisci abbastanza esperienza e diventerai più potente.\n"
 "Now, $student, ti darò più quintane con cui far pratica!"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:914
+#: data/tutorial/scenarios/1_Tutorial.cfg:905
 msgid "Do you want to keep practicing?"
 msgstr "Vuoi continuare ad esercitarti?"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:916
+#: data/tutorial/scenarios/1_Tutorial.cfg:907
 msgid "Yes, I'm still figuring it out."
 msgstr "Sì, sto ancora cercando di capire."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:919
+#: data/tutorial/scenarios/1_Tutorial.cfg:910
 msgid "No, I think I've got it."
 msgstr "No, penso che abbia capito."
 
@@ -890,8 +881,8 @@ msgstr "Elindel"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:844
 msgid ""
-"You've learned well, $student|!  The village supports one unit, and pays one "
-"gold per turn: you're only losing 1 gold per turn now."
+"You've learned well, $student|!  The village pays two gold per turn: you're "
+"only losing 1 gold per turn now."
 msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:845
@@ -1217,6 +1208,15 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:1545
 msgid "You took too long, we'll never be rid of these orcs!"
 msgstr ""
+
+#~ msgid ""
+#~ "Note:\n"
+#~ "Each village you own can support a single unit for free.  After that, "
+#~ "each unit costs you one gold per turn."
+#~ msgstr ""
+#~ "Note:\n"
+#~ "Ogni villaggio che possiedi può supportare una singola unità gratis. "
+#~ "Oltre, ogni unità ti costerà una moneta d'oro per turno."
 
 #~ msgid "I have enough gold to recruit more units!"
 #~ msgstr "Non hai abbastanza monete d'oro per reclutare altre unità!"
