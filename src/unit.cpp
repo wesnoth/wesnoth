@@ -238,7 +238,7 @@ void unit::generate_traits()
 // Advances this unit to another type
 void unit::advance_to(const unit_type* t)
 {
-	
+	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 	reset_modifications();
 	// remove old animations
 	cfg_.clear_children("defend");
