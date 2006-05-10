@@ -861,7 +861,7 @@ const unit_type& unit_type::get_variation(const std::string& name) const
 	}
 }
 
-int unit_type::num_traits() const {
+unsigned int unit_type::num_traits() const {
   return (cfg_["num_traits"].size() ? atoi(cfg_["num_traits"].c_str()) : race_->num_traits());
 }
 
@@ -1104,7 +1104,7 @@ const std::vector<config*>& unit_type::possible_traits() const
 
 bool unit_type::has_random_traits() const
 {
-	const int n = num_traits();
+	const unsigned int n = num_traits();
 	return (n > 0 && n < possibleTraits_.size());
 }
 

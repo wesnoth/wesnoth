@@ -38,13 +38,13 @@ public:
 	bool uses_global_traits() const;
 
 	const config::child_list& additional_traits() const;
-	int num_traits() const;
+	unsigned int num_traits() const;
 
 	bool not_living() const;
 
 private:
 	t_string name_;
-	int ntraits_;
+	unsigned int ntraits_;
 	std::vector<std::string> names_[NUM_GENDERS];
 	markov_prefix_map next_[NUM_GENDERS];
 	int chain_size_;

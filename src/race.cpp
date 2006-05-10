@@ -144,6 +144,6 @@ const config::child_list& unit_race::additional_traits() const
 	return *traits_;
 }
 
-int unit_race::num_traits() const { return ntraits_; }
+unsigned int unit_race::num_traits() const { return ntraits_; }
 
 bool unit_race::not_living() const { return not_living_; }

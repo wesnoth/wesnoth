@@ -173,7 +173,7 @@ public:
     //info on the type of unit that the unit reanimates as
     const std::string& undead_variation() const;
 
-	int num_traits() const;
+	unsigned int num_traits() const;
 
 	std::string generate_description() const;
 
