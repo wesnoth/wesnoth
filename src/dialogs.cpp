@@ -149,7 +149,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 
 	u = units.find(loc);
 	if(u != units.end() && choice >= options.size()) {
-		u->second.get_experience(-u->second.experience()); //reset xp to 0
+		u->second.get_experience(-u->second.max_experience()); //subtract xp required
 		u->second.add_modification("advance",*mod_options[choice - options.size()]);
 	}
 
