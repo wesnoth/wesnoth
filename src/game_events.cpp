@@ -1248,12 +1248,26 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//displaying a message on-screen
 	else if(cmd == "print") {
-		const std::string& text = cfg["text"];
-		const int size = lexical_cast_default<int>(cfg["size"],font::SIZE_SMALL);
-		const int lifetime = lexical_cast_default<int>(cfg["duration"],50);
-		const int red = lexical_cast_default<int>(cfg["red"],0);
-		const int green = lexical_cast_default<int>(cfg["green"],0);
-		const int blue = lexical_cast_default<int>(cfg["blue"],0);
+		std::string text = cfg["text"];
+		std::string size_str = cfg["size"];
+		std::string duration_str = cfg["duration"];
+		std::string red_str = cfg["red"];
+		std::string green_str = cfg["green"];
+		std::string blue_str = cfg["blue"];
+		
+		wassert(state_of_game != NULL);
+		text = utils::interpolate_variables_into_string(text, *state_of_game);
+		size_str = utils::interpolate_variables_into_string(size_str, *state_of_game);
+		duration_str = utils::interpolate_variables_into_string(duration_str, *state_of_game);
+		red_str = utils::interpolate_variables_into_string(red_str, *state_of_game);
+		green_str = utils::interpolate_variables_into_string(green_str, *state_of_game);
+		blue_str = utils::interpolate_variables_into_string(blue_str, *state_of_game);
+		
+		const int size = lexical_cast_default<int>(size_str,font::SIZE_SMALL);
+		const int lifetime = lexical_cast_default<int>(duration_str,50);
+		const int red = lexical_cast_default<int>(red_str,0);
+		const int green = lexical_cast_default<int>(green_str,0);
+		const int blue = lexical_cast_default<int>(blue_str,0);
 
 		SDL_Color colour = {red,green,blue,255};
 
