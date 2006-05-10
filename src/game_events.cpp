@@ -1174,14 +1174,19 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	} else if(cmd == "object") {
 		const vconfig filter = cfg.child("filter");
 
-		const std::string& id = cfg["id"];
+		std::string id = cfg["id"];
+		wassert(state_of_game != NULL);
+		id = utils::interpolate_variables_into_string(id, *state_of_game);
 
 		//if this item has already been used
 		if(id != "" && used_items.count(id))
 			return rval;
 
-		const std::string image = cfg["image"];
+		std::string image = cfg["image"];
 		std::string caption = cfg["name"];
+
+		image = utils::interpolate_variables_into_string(image, *state_of_game);
+		caption = utils::interpolate_variables_into_string(caption, *state_of_game);
 
 		std::string text;
 
@@ -1205,6 +1210,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		if(u != units->end() && (filter.null() || game_events::unit_matches_filter(u, filter))) {
 			text = cfg["description"];
+			text = utils::interpolate_variables_into_string(text, *state_of_game);
 
 			u->second.add_modification("object", cfg.get_parsed_config());
 
@@ -1215,6 +1221,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			used_items.insert(id);
 		} else {
 			text = cfg["cannot_use_message"];
+			text = utils::interpolate_variables_into_string(text, *state_of_game);
 
 			command_type = "else";
 		}
