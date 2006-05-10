@@ -1352,28 +1352,28 @@ namespace events{
 			
 			if (have_command) {
 				if (command == "whisper") {
-					add_chat_message("help",0,"Sends private message. You can't send messages to players that control any side in game. Usage: /whisper [nick] [message]");
+					add_chat_message("help",0,_("Sends private message. You can't send messages to players that control any side in game. Usage: /whisper [nick] [message]"));
 				} else if (command == "ignore") {
 					if (have_subcommand) {
 						if (subcommand == "add"){
-							add_chat_message("help",0,"Add player to your ignore list. Usage: /ignore add [argument]");
+							add_chat_message("help",0,_("Add player to your ignore list. Usage: /ignore add [argument]"));
 						} else if (subcommand == "remove") {
-							add_chat_message("help",0,"Remove player from your ignore list. Usage: /ignore remove [argument]");
+							add_chat_message("help",0,_("Remove player from your ignore list. Usage: /ignore remove [argument]"));
 						} else if (subcommand == "clear") {
-							add_chat_message("help",0,"Clear your ignore list. Usage: /ignore clear");
+							add_chat_message("help",0,_("Clear your ignore list. Usage: /ignore clear"));
 						} else if (subcommand == "list") {
-							add_chat_message("help",0,"Show your ignore list. Usage: /ignore list");
+							add_chat_message("help",0,_("Show your ignore list. Usage: /ignore list"));
 						} else {
-							add_chat_message("help",0,"Unknown subcommand");
+							add_chat_message("help",0,_("Unknown subcommand"));
 						}
 					} else {
-						add_chat_message("help",0,"Ignore messages from players on this list. Usage: /ignore [subcommand] [argument](optional) Subcommands: add remove list clear. Type /help ignore [subcommand] for more info.");
+						add_chat_message("help",0,_("Ignore messages from players on this list. Usage: /ignore [subcommand] [argument](optional) Subcommands: add remove list clear. Type /help ignore [subcommand] for more info."));
 					}
 				} else {
-					add_chat_message("help",0,"Unknown command");
+					add_chat_message("help",0,_("Unknown command"));
 				}
 			} else {
-				add_chat_message("help",0,"Commands: whisper ignore. Type /help [command] for more help.");
+				add_chat_message("help",0,_("Commands: whisper ignore. Type /help [command] for more help."));
 			}
 		} else if (message.size() >= ignore.size() && std::equal(ignore.begin(),ignore.end(), message.begin())) {
 
@@ -1400,9 +1400,9 @@ namespace events{
 				if(utils::isvalid_username(arg))
 				{
 					(*cignore)[arg] = "yes";
-					add_chat_message("ignores list",0, "Added "+arg+" to ignore list.",display::MESSAGE_PRIVATE);
+					add_chat_message("ignores list",0, _("Added to ignore list: ")+arg,display::MESSAGE_PRIVATE);
 				} else {
-					add_chat_message("ignores list",0, "Invalid username: "+arg,display::MESSAGE_PRIVATE);
+					add_chat_message("ignores list",0, _("Invalid username: ")+arg,display::MESSAGE_PRIVATE);
 				}
 
 			} else if (std::equal(remove.begin(),remove.end(),command.begin())){
@@ -1410,9 +1410,9 @@ namespace events{
 					if(utils::isvalid_username(arg))
 					{
 						(*cignore)[arg] = "no";
-						add_chat_message("ignores list",0, "Removed "+arg+" from ignore list.",display::MESSAGE_PRIVATE);
+						add_chat_message("ignores list",0, _("Removed from ignore list: ")+arg,display::MESSAGE_PRIVATE);
 					} else {
-						add_chat_message("ignores list",0, "Invalid username: "+arg,display::MESSAGE_PRIVATE);
+						add_chat_message("ignores list",0, _("Invalid username: ")+arg,display::MESSAGE_PRIVATE);
 					}
 				}	
 			} else if (std::equal(list.begin(),list.end(),command.begin())){
@@ -1433,11 +1433,11 @@ namespace events{
 					string_map::iterator nick;
 					for(nick= cignore->values.begin() ; nick!= cignore->values.end(); nick++) {
 						(*cignore)[nick->first] = "no";
-						add_chat_message("ignores list",0, "Removed "+nick->first+" from ignore list.",display::MESSAGE_PRIVATE);
+						add_chat_message("ignores list",0, _("Removed from ignore list: ")+nick->first,display::MESSAGE_PRIVATE);
 					}
 				}	
 			} else {			
-				add_chat_message("ignores list",0,"unknown command "+command+".",display::MESSAGE_PRIVATE);	
+				add_chat_message("ignores list",0,_("Unknown command: ")+command,display::MESSAGE_PRIVATE);	
 			}
 		} else {
 			//not a command, send as normal
