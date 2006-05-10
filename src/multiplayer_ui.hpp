@@ -21,6 +21,7 @@
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/textbox.hpp"
+#include "menu_events.hpp"
 
 #include <deque>
 #include <string>
@@ -67,7 +68,7 @@ private:
 
 //a base class for the different multiplayer base dialogs: game list, create
 //game, wait game, game setup
-class ui : public gui::widget
+class ui : public gui::widget, private events::chat_handler
 {
 public:
 	enum result { CONTINUE, JOIN, OBSERVE, CREATE, PREFERENCES, PLAY, QUIT };
@@ -110,6 +111,12 @@ protected:
 
 	virtual void handle_event(const SDL_Event& event);
 	virtual void handle_key_event(const SDL_KeyboardEvent& event);
+
+	// Override chat_handler
+	void send_chat_query(const std::string& args);
+	void add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type=display::MESSAGE_PRIVATE);
+	void send_chat_message(const std::string& message, bool allies_only=false);
+
 
 	// Processes any pending network data. Called by the public
 	// process_network() method. Overridden by subclasses who add more
@@ -182,4 +189,4 @@ private:
 
 }
 
-#endif
+#endif(

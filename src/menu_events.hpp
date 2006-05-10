@@ -28,7 +28,20 @@ struct end_turn_exception {
 
 namespace events{
 
-class menu_handler{
+class chat_handler {
+public:
+	chat_handler() {}
+
+protected:
+	void do_speak(const std::string& message, bool allies_only=false);
+
+	//called from do_speak
+	virtual void add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type=display::MESSAGE_PRIVATE)=0;
+	virtual void send_chat_message(const std::string& message, bool allies_only=false)=0;
+	virtual void send_chat_query(const std::string& args) {}
+};
+
+class menu_handler : private chat_handler {
 public:
 	menu_handler(display* gui, unit_map& units, std::vector<team>& teams,
 		const config& level, const game_data& gameinfo, const gamemap& map,
@@ -80,8 +93,11 @@ public:
 	void do_search(const std::string& new_search);
 	void do_command(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
 	void clear_undo_stack(const unsigned int team_num);
+protected:
+	void add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type=display::MESSAGE_PRIVATE);
+	void send_chat_message(const std::string& message, bool allies_only=false);
 private:
-	void do_speak(const std::string& message, bool allies_only);
+	//void do_speak(const std::string& message, bool allies_only);
 	void do_recruit(const std::string& name, const unsigned int team_num, const gamemap::location& last_hex);
 	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m);
 	void write_game_snapshot(config& start) const;

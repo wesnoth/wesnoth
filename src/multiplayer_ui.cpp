@@ -257,165 +257,39 @@ void ui::handle_event(const SDL_Event& event)
 	}
 }
 
+void ui::send_chat_query(const std::string& args)
+{
+	config data;
+	data.add_child("query")["type"] = args;
+	network::send_data(data);
+}
+
+void ui::add_chat_message(const std::string& speaker, int /*side*/, const std::string& message, display::MESSAGE_TYPE /*type*/)
+{
+	chat_.add_message(speaker,message);	
+	chat_.update_textbox(chat_textbox_);
+}
+
+void ui::send_chat_message(const std::string& message, bool /*allies_only*/)
+{
+	config data, msg;
+	msg["message"] = message;
+	msg["sender"] = preferences::login();
+	data.add_child("message", msg);
+
+	add_chat_message(preferences::login(),0, message);	//local echo
+	network::send_data(data);
+}
+
+
 void ui::handle_key_event(const SDL_KeyboardEvent& event)
 {
 	//On enter, adds the current chat message to the chat textbox.
 	if(event.keysym.sym == SDLK_RETURN && !entry_textbox_.text().empty()) {
 
-		const std::string& text = entry_textbox_.text();
-
-		//if the text starts with '/query' it's a query to the server.
-		//otherwise it's just a chat message
-		static const std::string query = "/query ";
-		static const std::string whisper = "/msg ";
-		static const std::string ignore = "/ignore ";
-		static const std::string help = "/help";
-		
-		static const std::string add = "add";
-		static const std::string remove = "remove";
-		static const std::string list = "list";
-		static const std::string clear = "clear";
-		
-		config data;
-
-		if(text.size() >= query.size() && std::equal(query.begin(),query.end(),text.begin())) {
-			const std::string args = text.substr(query.size());
-
-			data.add_child("query")["type"] = args;
-			
-		} else if (text.size() >= whisper.size() && std::equal(whisper.begin(),whisper.end(),text.begin())) {
-		
-			int pos;
-			pos = text.find(" ",whisper.size());
-			
-			const std::string message = text.substr((pos+1),text.size());
-			
-			const std::string receiver = text.substr(whisper.size(),
-			(text.size()-message.size()-whisper.size()-1));
-			
-			config cwhisper;
-			cwhisper["message"] = message;
-			cwhisper["sender"] = preferences::login();
-			cwhisper["receiver"] = receiver;
-			data.add_child("whisper", cwhisper);
-
-			chat_.add_message(("whisper to "+cwhisper["receiver"]),
-			(entry_textbox_.text().substr(whisper.size()+receiver.size()+1)));
-			
-			chat_.update_textbox(chat_textbox_);
-			
-		} else if (text.size() >= help.size() && std::equal(help.begin(), help.end(), text.begin())) {
-			
-			bool have_command;
-			bool have_subcommand;
-			
-			std::string::size_type pos;
-			pos = text.find(" ", help.size()+1);
-						
-			std::string subcommand;
-			std::string command;
-			
-			have_subcommand = pos != std::string::npos;
-			have_command = (help.size()+1 < text.size());
-			
-			if (have_subcommand) subcommand = text.substr(pos+1);
-			if (have_command) command = text.substr(help.size()+1,text.size()-help.size()+1-(have_subcommand? subcommand.size()+3 : 0));
-			
-			if (have_command) {
-				if (command == "whisper") {
-					chat_.add_message("help","Sends private message. You can't send messages to players that control any side in game. Usage: /whisper [nick] [message]");
-				} else if (command == "ignore") {
-					if (have_subcommand) {
-						if (subcommand == "add"){
-							chat_.add_message("help","Add player to your ignore list.");
-						} else if (subcommand == "remove") {
-							chat_.add_message("help","Remove player from your ignore list.");
-						} else if (subcommand == "clear") {
-							chat_.add_message("help","Clear your ignore list.");
-						} else if (subcommand == "list") {
-							chat_.add_message("help","Show your ignore list");
-						} else {
-							chat_.add_message("help","Ignore messages from players on this list. Usage: /ignore [subcommand] [argument](optional) Subcommands: add remove list clear. Type /help ignore [subcommand] for more info.");
-						}
-					} else {
-							chat_.add_message("help","Uknown subcommand");
-					}
-				} else {
-					chat_.add_message("help","Unknown command");
-				}
-			} else {
-				chat_.add_message("help","Commands: whisper ignore. Type /help [command] for more help.");
-			}
-			
-			chat_.update_textbox(chat_textbox_);
-			
-	
-		} else if (text.size() >= ignore.size() && std::equal(ignore.begin(),ignore.end(),text.begin())) {
-		
-				
-			int pos;
-			pos = text.find(" ",ignore.size());
-			
-			const std::string arg = text.substr((pos+1),text.find_first_of(' '));
-			
-			const std::string command = text.substr(ignore.size(),
-			(text.size()-arg.size()-ignore.size()-1));
-			
-			config* cignore;
-			
-			if (std::equal(add.begin(),add.end(),command.begin())){
-				if (!preferences::get_prefs()->child("ignore")){
-					preferences::get_prefs()->add_child("ignore");
-				}
-				cignore = preferences::get_prefs()->child("ignore");
-				(*cignore)[arg] = "yes";
-				chat_.add_message("ignores list", "Added "+arg+" to ignore list.");
-				
-			} else if (std::equal(remove.begin(),remove.end(),command.begin())){
-				if ((cignore = preferences::get_prefs()->child("ignore"))){
-					(*cignore)[arg] = "no";
-					chat_.add_message("ignores list", "Removed "+arg+" from ignore list.");
-				}	
-			} else if (std::equal(list.begin(),list.end(),command.begin())){
-				std::string message = " ";
-				if ((cignore = preferences::get_prefs()->child("ignore"))){
-					std::map<std::string,t_string>::const_iterator i ;
-					for( i = cignore->values.begin(); i != cignore->values.end(); ++i){
-						if (i->second == "yes"){
-							message+=i->first+",";
-						}
-					}
-					message.erase(message.length()-1,1);
-				}	
-				chat_.add_message("ignores list", message);
-			} else if (std::equal(clear.begin(),clear.end(),command.begin())){
-
-				if ((cignore = preferences::get_prefs()->child("ignore"))){
-					string_map::iterator nick;
-					for(nick= cignore->values.begin() ; nick!= cignore->values.end(); nick++) {
-						(*cignore)[nick->first] = "no";
-						chat_.add_message("ignores list", "Removed "+nick->first+" from ignore list.");
-					}
-				}	
-			} else {				
-				chat_.add_message("ignores list", "unknown command "+command+".");	
-			}
-			chat_.update_textbox(chat_textbox_);
-		} else {
-
-			// Sends the message to the network
-			config msg;
-			msg["message"] = text;
-			msg["sender"] = preferences::login();
-			data.add_child("message", msg);
-
-			chat_.add_message(preferences::login(), entry_textbox_.text());
-			chat_.update_textbox(chat_textbox_);
-
-		}
-
-		network::send_data(data);
+		chat_handler::do_speak(entry_textbox_.text());
 		entry_textbox_.clear();
+
 	} else if(event.keysym.sym == SDLK_TAB ) {
 		std::string text = entry_textbox_.text();
 		std::string semiword;

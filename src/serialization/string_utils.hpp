@@ -53,15 +53,17 @@ std::string join(std::vector< std::string > const &v, char c = ',');
 std::vector< std::string > quoted_split(std::string const &val, char c= ',',
                                         int flags = REMOVE_EMPTY | STRIP_SPACES, char quote = '\\');
 std::pair< int, int > parse_range(std::string const &str);
-bool notspace(char c);
 int apply_modifier( const int number, const std::string &amount, const int minimum = 0 );
 std::string &escape(std::string &str, const std::string& special_chars);
 std::string &escape(std::string &str);
 std::string &unescape(std::string &str);
 std::string &strip(std::string &str);
 bool has_value(std::string const &values, std::string const &val);
-
 bool string_bool(const std::string& str,bool def=false);
+
+/*	checks the username is valid (all alpha-numeric or space (but no space at ends))
+	does not check length, disallow-list, or already in use */
+bool isvalid_username(const std::string &login);
 
 typedef std::map< std::string, t_string > string_map;
 // function which will interpolate variables, starting with '$' in the string 'str' with

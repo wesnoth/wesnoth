@@ -1280,15 +1280,21 @@ namespace events{
 	void menu_handler::do_speak(){
 		//None of the two parameters really needs to be passed since the informations belong to members of the class.
 		//But since it makes the called method more generic, it is done anyway.
-		do_speak(textbox_info_.box()->text(),textbox_info_.check() != NULL ? textbox_info_.check()->checked() : false);
+		chat_handler::do_speak(textbox_info_.box()->text(),textbox_info_.check() != NULL ? textbox_info_.check()->checked() : false);
 	}
 
-	void menu_handler::do_speak(const std::string& message, bool allies_only)
+	void menu_handler::add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type)
+	{
+		gui_->add_chat_message(speaker,side,message,type);
+	}
+
+	void chat_handler::do_speak(const std::string& message, bool allies_only)
 	{
 		if(message == "") {
 			return;
 		}
 
+		static const std::string query = "/query ";
 		static const std::string whisper = "/msg ";
 		static const std::string ignore = "/ignore ";
 		static const std::string help = "/help";
@@ -1298,7 +1304,10 @@ namespace events{
 		static const std::string list = "list";
 		static const std::string clear = "clear";
 		
-		if (is_observer() && message.size() >= whisper.size() &&
+		if(message.size() >= query.size() && std::equal(query.begin(),query.end(),message.begin())) {
+			const std::string args = message.substr(query.size());
+			send_chat_query(args);
+		} else if (is_observer() && message.size() >= whisper.size() &&
 		std::equal(whisper.begin(),whisper.end(),message.begin())) {
 			
 			int pos;
@@ -1314,9 +1323,51 @@ namespace events{
 			cwhisper["sender"] = preferences::login();
 			cwhisper["receiver"] = receiver;
 			data.add_child("whisper", cwhisper);
-			gui_->add_chat_message("whisper to "+cwhisper["receiver"],0,cwhisper["message"], display::MESSAGE_PRIVATE);
+			add_chat_message("whisper to "+cwhisper["receiver"],0,cwhisper["message"], display::MESSAGE_PRIVATE);
 			network::send_data(data);
+
+		} else if (message.size() >= help.size() && std::equal(help.begin(), help.end(), message.begin())) {
 			
+			bool have_command;
+			bool have_subcommand;
+			
+			std::string::size_type pos;
+			pos = message.find(" ", help.size()+1);
+						
+			std::string subcommand;
+			std::string command;
+			
+			have_subcommand = pos != std::string::npos;
+			have_command = (help.size()+1 < message.size());
+			
+			if (have_subcommand) subcommand = message.substr(pos+1);
+			if (have_command) command = message.substr(help.size()+1,message.size()-help.size()+1-(have_subcommand? subcommand.size()+3 : 0));
+			
+			if (have_command) {
+				if (command == "whisper") {
+					add_chat_message("help",0,"Sends private message. You can't send messages to players that control any side in game. Usage: /whisper [nick] [message]");
+				} else if (command == "ignore") {
+					if (have_subcommand) {
+						if (subcommand == "add"){
+							add_chat_message("help",0,"Add player to your ignore list. Usage: /ignore add [argument]");
+						} else if (subcommand == "remove") {
+							add_chat_message("help",0,"Remove player from your ignore list. Usage: /ignore remove [argument]");
+						} else if (subcommand == "clear") {
+							add_chat_message("help",0,"Clear your ignore list. Usage: /ignore clear");
+						} else if (subcommand == "list") {
+							add_chat_message("help",0,"Show your ignore list. Usage: /ignore list");
+						} else {
+							add_chat_message("help",0,"Unknown subcommand");
+						}
+					} else {
+						add_chat_message("help",0,"Ignore messages from players on this list. Usage: /ignore [subcommand] [argument](optional) Subcommands: add remove list clear. Type /help ignore [subcommand] for more info.");
+					}
+				} else {
+					add_chat_message("help",0,"Unknown command");
+				}
+			} else {
+				add_chat_message("help",0,"Commands: whisper ignore. Type /help [command] for more help.");
+			}
 		} else if (message.size() >= ignore.size() && std::equal(ignore.begin(),ignore.end(), message.begin())) {
 
 			static const std::string add = "add";
@@ -1339,13 +1390,23 @@ namespace events{
 					preferences::get_prefs()->add_child("ignore");
 				}
 				cignore = preferences::get_prefs()->child("ignore");
-				(*cignore)[arg] = "yes";
-				gui_->add_chat_message("ignores list",0, "Added "+arg+" to ignore list.",display::MESSAGE_PRIVATE);
+				if(utils::isvalid_username(arg))
+				{
+					(*cignore)[arg] = "yes";
+					add_chat_message("ignores list",0, "Added "+arg+" to ignore list.",display::MESSAGE_PRIVATE);
+				} else {
+					add_chat_message("ignores list",0, "Invalid username: "+arg,display::MESSAGE_PRIVATE);
+				}
 
 			} else if (std::equal(remove.begin(),remove.end(),command.begin())){
 				if ((cignore = preferences::get_prefs()->child("ignore"))){
-					(*cignore)[arg] = "no";
-					gui_->add_chat_message("ignores list",0, "Removed "+arg+" from ignore list.",display::MESSAGE_PRIVATE);
+					if(utils::isvalid_username(arg))
+					{
+						(*cignore)[arg] = "no";
+						add_chat_message("ignores list",0, "Removed "+arg+" from ignore list.",display::MESSAGE_PRIVATE);
+					} else {
+						add_chat_message("ignores list",0, "Invalid username: "+arg,display::MESSAGE_PRIVATE);
+					}
 				}	
 			} else if (std::equal(list.begin(),list.end(),command.begin())){
 				std::string text = " ";
@@ -1358,21 +1419,28 @@ namespace events{
 					}
 					text.erase(text.length()-1,1);
 				}	
-				gui_->add_chat_message("ignores list",0, text,display::MESSAGE_PRIVATE);
+				add_chat_message("ignores list",0, text,display::MESSAGE_PRIVATE);
 			} else if (std::equal(clear.begin(),clear.end(),command.begin())){
 
 				if ((cignore = preferences::get_prefs()->child("ignore"))){
 					string_map::iterator nick;
 					for(nick= cignore->values.begin() ; nick!= cignore->values.end(); nick++) {
 						(*cignore)[nick->first] = "no";
-						gui_->add_chat_message("ignores list",0, "Removed "+nick->first+" from ignore list.",display::MESSAGE_PRIVATE);
+						add_chat_message("ignores list",0, "Removed "+nick->first+" from ignore list.",display::MESSAGE_PRIVATE);
 					}
 				}	
-			} else {				
-				gui_->add_chat_message("ignores list",0,"unknown command "+command+".",display::MESSAGE_PRIVATE);	
+			} else {			
+				add_chat_message("ignores list",0,"unknown command "+command+".",display::MESSAGE_PRIVATE);	
 			}
 		} else {
-		
+			//not a command, send as normal
+			send_chat_message(message, allies_only);
+		}
+	}
+
+
+	void menu_handler::send_chat_message(const std::string& message, bool allies_only)
+	{
 		config cfg;
 		cfg["description"] = preferences::login();
 		cfg["message"] = message;
@@ -1389,10 +1457,11 @@ namespace events{
 		}
 
 		recorder.speak(cfg);
-		gui_->add_chat_message(cfg["description"],side,message,
+		add_chat_message(cfg["description"],side,message,
 							  private_message ? display::MESSAGE_PRIVATE : display::MESSAGE_PUBLIC);
-		}
+
 	}
+
 
 	void menu_handler::do_search(const std::string& new_search)
 	{
