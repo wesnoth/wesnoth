@@ -31,6 +31,7 @@ namespace events{
 class chat_handler {
 public:
 	chat_handler() {}
+	virtual ~chat_handler();
 
 protected:
 	void do_speak(const std::string& message, bool allies_only=false);
@@ -38,7 +39,7 @@ protected:
 	//called from do_speak
 	virtual void add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type=display::MESSAGE_PRIVATE)=0;
 	virtual void send_chat_message(const std::string& message, bool allies_only=false)=0;
-	virtual void send_chat_query(const std::string& args) {}
+	virtual void send_chat_query(const std::string& /*args*/) {}
 };
 
 class menu_handler : private chat_handler {
@@ -47,6 +48,7 @@ public:
 		const config& level, const game_data& gameinfo, const gamemap& map,
 		const config& game_config, const gamestatus& status, game_state& gamestate,
 		undo_list& undo_stack, undo_list& redo_stack);
+	virtual ~menu_handler();
 
 	const undo_list& get_undo_list() const;
 	gui::floating_textbox& get_textbox();

@@ -1288,6 +1288,10 @@ namespace events{
 		gui_->add_chat_message(speaker,side,message,type);
 	}
 
+	chat_handler::~chat_handler()
+	{
+	}
+
 	void chat_handler::do_speak(const std::string& message, bool allies_only)
 	{
 		if(message == "") {
