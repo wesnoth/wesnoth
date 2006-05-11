@@ -66,7 +66,8 @@ namespace {
 		if(map.x()<4 || !map.y() ) return DefaultZoom;
 		const int min_zoom1 = viewport.w/((map.x()*3)/4);
 		const int min_zoom2 = viewport.h/map.y();
-		return maximum<int>(min_zoom1,min_zoom2);
+		int zoom = maximum<int>(min_zoom1,min_zoom2);
+		return minimum<int>(zoom,DefaultZoom);
 	}
 
 	const size_t SideBarGameStatus_x = 16;
