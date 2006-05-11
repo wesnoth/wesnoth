@@ -666,8 +666,7 @@ utf8_string lowercase(const utf8_string& s)
 
 bool wildcard_string_match(const std::string& str, const std::string& match)
 {
-	// match using '*' as any number of characters, and '?' as any one character
-	// some matching cases will be missed, but this should be sufficient
+	// match using '*' as any number of characters (including none), and '?' as any one character
 	std::string::const_iterator c = str.begin();
 	std::string::const_iterator m = match.begin();
 	while(c != str.end() && m != match.end()) {
@@ -675,8 +674,19 @@ bool wildcard_string_match(const std::string& str, const std::string& match)
 			++c;
 			++m;
 		} else if(*m == '*') {
-			++c;
-			while(c != str.end() && *c != *(m+1)) {
+			while(c != str.end()) {
+				if(*c == *(m+1)) {
+					std::string ns,nm;
+					ns.assign(c+1,str.end());
+					nm.assign(m,match.end());
+					if(ns.find(*(m+1)) != std::string::npos) {
+						if(wildcard_string_match(ns,nm)) {
+							return true;
+						}
+					} else {
+						break;
+					}
+				}
 				++c;
 			}
 			++m;
@@ -696,6 +706,9 @@ bool wildcard_string_match(const std::string& str, const std::string& match)
 		}
 	} else {
 		if(c == str.end()) {
+			if(*m == '*') {
+				return true;
+			}
 			return false;
 		} else {
 			return false;
