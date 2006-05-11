@@ -59,6 +59,10 @@ void python_ai::set_error(const char *fmt, ...)
 }
 
 static PyObject* wrap_unittype(const unit_type& type);
+static PyObject* wrap_attacktype(const attack_type& type);
+static PyObject* wrapper_unittype_movement_cost(wesnoth_unittype* unit, PyObject* args);
+static PyObject* wrapper_unittype_defense_modifier(wesnoth_unittype* unit, PyObject* args);
+static PyObject* wrapper_unittype_resistance_against(wesnoth_unittype* unit, PyObject* args );
 
 static PyObject* wrapper_unittype_get_name(wesnoth_unittype* unit, void* /*closure*/)
 {
@@ -132,8 +136,23 @@ PyObject* python_ai::unittype_advances_to( wesnoth_unittype* type, PyObject* arg
 	return list;
 }
 
+static PyObject* wrapper_unittype_attacks( wesnoth_unittype* type, PyObject* args )
+{
+	if ( !PyArg_ParseTuple( args, "" ) )
+		return NULL;
+
+	PyObject* list = PyList_New(type->unit_type_->attacks().size());
+	for ( size_t attack = 0; attack < type->unit_type_->attacks().size(); attack++)
+		PyList_SetItem(list,attack,wrap_attacktype(type->unit_type_->attacks()[attack]));
+	return (PyObject*)list;
+}
+
 static PyMethodDef unittype_methods[] = {
 	{ "advances_to",	(PyCFunction)python_ai::unittype_advances_to,	METH_VARARGS, NULL }, 
+	{ "attacks",		(PyCFunction)wrapper_unittype_attacks,			METH_VARARGS, NULL},
+	{ "movement_cost",		(PyCFunction)wrapper_unittype_movement_cost,			METH_VARARGS, NULL},
+	{ "defense_modifier",		(PyCFunction)wrapper_unittype_defense_modifier,			METH_VARARGS, NULL},
+	{ "resistance_against",		(PyCFunction)wrapper_unittype_resistance_against,			METH_VARARGS, NULL},
 	{ NULL, NULL, 0, NULL }
 };
 
@@ -393,6 +412,20 @@ static PyObject* unit_max_hitpoints(wesnoth_unit* unit, void* /*closure*/)
        return Py_BuildValue("i",(int)unit->unit_->max_hitpoints());
 }
 
+static PyObject* unit_experience(wesnoth_unit* unit, void* /*closure*/)
+{
+	if (!running_instance->is_unit_valid(unit->unit_))
+		return NULL;
+	return Py_BuildValue("i",(int)unit->unit_->experience());
+}
+
+static PyObject* unit_max_experience(wesnoth_unit* unit, void* /*closure*/)
+{
+       if (!running_instance->is_unit_valid(unit->unit_))
+               return NULL;
+       return Py_BuildValue("i",(int)unit->unit_->max_experience());
+}
+
 static PyObject* unit_poisoned(wesnoth_unit* unit, void* /*closure*/)
 {
     if (!running_instance->is_unit_valid(unit->unit_))
@@ -411,6 +444,8 @@ static PyGetSetDef unit_getseters[] = {
 	{ "can_recruit",	(getter)unit_can_recruit,	NULL,	NULL,	NULL },
 	{ "hitpoints",		(getter)unit_hitpoints,	NULL,	NULL,	NULL },
 	{ "max_hitpoints",	(getter)unit_max_hitpoints,	NULL,	NULL,	NULL },
+	{ "experience",		(getter)unit_experience,	NULL,	NULL,	NULL },
+	{ "max_experience",	(getter)unit_max_experience,	NULL,	NULL,	NULL },
 	{ "is_valid",		(getter)unit_query_valid,	NULL,	NULL,	NULL },
 	{ "side",			(getter)unit_side,	NULL,	NULL,	NULL },
 	{ "movement_left",	(getter)unit_movement_left,	NULL,	NULL,	NULL },
@@ -452,6 +487,14 @@ static PyObject* wrapper_unit_damage_against( wesnoth_unit* unit, PyObject* args
 		return NULL;
 	static gamemap::location no_loc;
 	return Py_BuildValue("i",unit->unit_->damage_from(*attack->attack_type_,true,no_loc));
+}
+
+static PyObject* wrapper_unittype_resistance_against( wesnoth_unittype* type, PyObject* args )
+{
+	wesnoth_attacktype* attack;
+	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_attacktype_type, &attack ) )
+		return NULL;
+	return Py_BuildValue("i",type->unit_type_->movement_type().resistance_against(*attack->attack_type_));
 }
 
 static PyMethodDef unit_methods[] = {
@@ -549,7 +592,12 @@ static int location_internal_compare(wesnoth_location* left, wesnoth_location* r
 
 static long location_internal_hash(wesnoth_location* obj)
 {
-	return obj->location_->x * 1000 + obj->location_->y;
+    // Never return -1, which is reserved for raising an exception. Note that
+    // both x and y can get values < 0, e.g. when checking all positions in
+    // a certain radius at the map border.
+    unsigned char x = (unsigned)obj->location_->x;
+    unsigned char y = (unsigned)obj->location_->y;
+	return x << 8 + y;
 }
 
 static PyGetSetDef location_getseters[] = {
@@ -874,6 +922,25 @@ static PyObject* wrapper_unit_defense_modifier( wesnoth_unit* unit, PyObject* ar
 	return Py_BuildValue("i",unit->unit_->defense_modifier(map->map_->get_terrain(*loc->location_)));
 }
 
+static PyObject* wrapper_unittype_movement_cost( wesnoth_unittype* type, PyObject* args )
+{
+	wesnoth_gamemap* map;
+	wesnoth_location* loc;
+	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_gamemap_type, &map, &wesnoth_location_type, &loc ) )
+		return NULL;
+	return Py_BuildValue("i",type->unit_type_->movement_type().movement_cost(
+		*map->map_, map->map_->get_terrain(*loc->location_)));
+}
+
+static PyObject* wrapper_unittype_defense_modifier( wesnoth_unittype* type, PyObject* args )
+{
+	wesnoth_gamemap* map;
+	wesnoth_location* loc;
+	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_gamemap_type, &map, &wesnoth_location_type, &loc ) )
+		return NULL;
+	return Py_BuildValue("i",type->unit_type_->movement_type().defense_modifier(
+		*map->map_, map->map_->get_terrain(*loc->location_)));
+}
 
 static PyObject* wrap_location(const gamemap::location& loc)
 {
@@ -1279,6 +1346,7 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
 		init_ = true;
 	}
 	calculate_possible_moves(possible_moves_,src_dst_,dst_src_,false);
+	calculate_possible_moves(enemy_possible_moves_,enemy_src_dst_,enemy_dst_src_,true);
 }
 
 python_ai::~python_ai()
