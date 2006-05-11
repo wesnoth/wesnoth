@@ -89,7 +89,9 @@ key="\fIvalue\fR,\fIvalue\fR,..."
 The number of allowed connections from the same IP.
 .TP
 .B disallow_names
-Names/nicks that are not accepted by the server.
+Names/nicks that are not accepted by the server. `*' and `?' from wildcard patterns are supported. See 
+.BR glob (7) 
+for more details.
 Default values (used if nothing is specified) are: `server,ai,player,network,human,admin,computer'.
 .TP
 .B max_messages
@@ -107,7 +109,7 @@ The password used to gain admin privileges. Usually it starts with "admin ".
 .B versions_accepted
 A comma seperated list of version strings to be accepted by the server. `*' and `?' from wildcard patterns are supported.
 .br
-Example: versions_accepted="*" accepts any version string. See glob(7) for more details.
+Example: versions_accepted="*" accepts any version string.
 .
 .SS "Global tags:"
 .
@@ -149,5 +151,5 @@ There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR P
 .
 .SH SEE ALSO
 .
-.BR wesnoth(6), 
-.BR wesnoth_editor(6)
+.BR wesnoth (6), 
+.BR wesnoth_editor (6)
