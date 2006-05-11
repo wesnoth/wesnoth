@@ -1287,18 +1287,23 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	//displaying a message dialog
 	else if(cmd == "message") {
 		units_map::iterator speaker = units->end();
-		if(cfg["speaker"] == "unit") {
+		
+		std::string speaker_str = cfg["speaker"];
+		wassert(state_of_game != NULL);
+		speaker_str = utils::interpolate_variables_into_string(speaker_str, *state_of_game);
+		
+		if(speaker_str == "unit") {
 			speaker = units->find(event_info.loc1);
-		} else if(cfg["speaker"] == "second_unit") {
+		} else if(speaker_str == "second_unit") {
 			speaker = units->find(event_info.loc2);
-		} else if(cfg["speaker"] != "narrator") {
+		} else if(speaker_str != "narrator") {
 			for(speaker = units->begin(); speaker != units->end(); ++speaker){
 				if(game_events::unit_matches_filter(speaker,cfg))
 					break;
 			}
 		}
 
-		if(speaker == units->end() && cfg["speaker"] != "narrator") {
+		if(speaker == units->end() && speaker_str != "narrator") {
 			//no matching unit found, so the dialog can't come up
 			//continue onto the next message
 			WRN_NG << "cannot show message\n";
@@ -1311,13 +1316,16 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			LOG_NG << "no speaker\n";
 		}
 
-		const std::string& sfx = cfg["sound"];
+		std::string sfx = cfg["sound"];
+		sfx = utils::interpolate_variables_into_string(sfx, *state_of_game);
 		if(sfx != "") {
 			sound::play_sound(sfx);
 		}
 
 		std::string image = cfg["image"];
 		std::string caption = cfg["caption"];
+		image = utils::interpolate_variables_into_string(image, *state_of_game);
+		caption = utils::interpolate_variables_into_string(caption, *state_of_game);
 
 		if(speaker != units->end()) {
 			LOG_DP << "scrolling to speaker..\n";
@@ -1344,7 +1352,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		for(vconfig::child_list::const_iterator mi = menu_items.begin();
 				mi != menu_items.end(); ++mi) {
 
-			options.push_back((*mi)["message"]);
+			std::string msg_str = (*mi)["message"];
+			msg_str = utils::interpolate_variables_into_string(msg_str, *state_of_game);
+			
+			options.push_back(msg_str);
 			option_events.push_back((*mi).get_children("command"));
 		}
 
