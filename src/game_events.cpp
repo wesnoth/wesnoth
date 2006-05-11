@@ -1558,13 +1558,21 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				units->erase(loc);
 				units->insert(std::pair<gamemap::location,unit>(loc,u));
 				
-				const std::string& text = cfg["text"];
+				std::string text = cfg["text"];
+				text = utils::interpolate_variables_into_string(text, *state_of_game);
+				
 				if(!text.empty())
 				{
 					//Print floating label
-					const int red = lexical_cast_default<int>(cfg["red"],0);
-					const int green = lexical_cast_default<int>(cfg["green"],0);
-					const int blue = lexical_cast_default<int>(cfg["blue"],0);
+					std::string red_str = cfg["red"];
+					std::string green_str = cfg["green"];
+					std::string blue_str = cfg["blue"];
+					red_str = utils::interpolate_variables_into_string(red_str, *state_of_game);
+					green_str = utils::interpolate_variables_into_string(green_str, *state_of_game);
+					blue_str = utils::interpolate_variables_into_string(blue_str, *state_of_game);
+					const int red = lexical_cast_default<int>(red_str,0);
+					const int green = lexical_cast_default<int>(green_str,0);
+					const int blue = lexical_cast_default<int>(blue_str,0);
 					{
 						screen->float_label(loc,text,red,green,blue);
 					}
