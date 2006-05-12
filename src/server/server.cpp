@@ -680,16 +680,26 @@ void server::process_query(const network::connection sock, const config& query)
 void server::process_whisper(const network::connection sock, const config& whisper)
 {
 	bool sent = false;
+	bool do_send = true;
+	std::vector<game>::iterator g;
 	if ((whisper["receiver"]!="") && (whisper["message"]!="") && (whisper["sender"]!="")){
 		for(player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
-			if(i->second.name() == whisper["receiver"])
-				{			
-					config cwhisper;
-					cwhisper.add_child("whisper",whisper);
-					network::send_data(cwhisper,i->first);
-					sent = true;
+			if(i->second.name() == whisper["receiver"]) {			
+				for(g = games_.begin(); g != games_.end(); ++g) {
+					if(g->is_member(i->first)) {
+						do_send = false;
+						break;
+					}
+				}
+				if(do_send == false) {
 					break;
 				}
+				config cwhisper;
+				cwhisper.add_child("whisper",whisper);
+				network::send_data(cwhisper,i->first);
+				sent = true;
+				break;
+			}
 		}
 	} else { 
 		config msg;
@@ -704,7 +714,11 @@ void server::process_whisper(const network::connection sock, const config& whisp
 	if (sent == false){
 		config msg;
 		config data;
-		msg["message"] = "Can't find player "+whisper["receiver"];
+		if(do_send == false) {
+			msg["message"] = "You cannot send private messages to players in a game.";
+		} else {
+			msg["message"] = "Can't find player "+whisper["receiver"];
+		}
 		msg["sender"] = "server";
 		data.add_child("message", msg);
 		network::send_data(data,sock);	
