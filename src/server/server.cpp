@@ -589,7 +589,7 @@ void server::process_login(const network::connection sock, const config& data)
 	}
 	
 	for(std::vector<std::string>::const_iterator d_it = disallowed_names_.begin(); d_it != disallowed_names_.end(); ++d_it) {
-		if(utils::wildcard_string_match(username,*d_it)) {
+		if(utils::wildcard_string_match(utils::lowercase(username),utils::lowercase(*d_it))) {
 			network::send_data(construct_error(
 							"The nick '" + username + "' is reserved and can not be used by players"),sock);
 			return;
