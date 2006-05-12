@@ -195,8 +195,9 @@ void show_about(display &disp, std::string campaign)
 	draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,
 	                                 0,0,0,1.0,video.getSurface());
 	update_whole_screen();
+
 	std::vector<std::string> image_list;
-	if(campaign.size()){
+	if(campaign.size() && !images[campaign].empty()){
 		image_list=utils::split(images[campaign]);
 	}else{
 		image_list=utils::split(images_default,',',utils::STRIP_SPACES);
