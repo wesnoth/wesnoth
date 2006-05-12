@@ -21,8 +21,8 @@ Steuerung
     * m               Eine Nachricht an die Mitspieler schreiben (Multiplayer)
     * M               Eine Nachricht an die Verbündeten schreiben (Multiplayer)
     * Alt-m           Eine Nachricht an alle im Spiel schreiben (Multiplayer)
-    * n               nächste Einheite mit verblieben BP auswählen
-    * N               nächste Einheite mit verblieben BP auswählen (umgekehrte
+    * n               nächste Einheit mit verbliebenen BP auswählen
+    * N               nächste Einheit mit verbliebenen BP auswählen (umgekehrte
                       Reihenfolge)
     * Space           Zug der Einheit beenden und nächste Einheit auswählen, die
                       noch bewegt werden kann
@@ -34,7 +34,7 @@ Steuerung
     * Strg-b          Mögliche gegnerische Züge anzeigen (bei Nichtbeachtung
                       jeglicher ZOCs)
     * Strg-f          Zwischen Vollbild- und Fenstermodus wechseln
-    * Strg-a          Beschleunigten Spiel-Modus ein/ausschalten
+    * Strg-a          Beschleunigten Spielmodus ein-/ausschalten
     * Strg-s          Spiel speichern
     * Strg-o          Spiel laden
 
@@ -52,11 +52,11 @@ Steuerung
     * Strg-g          Gitternetz an-/abschalten
     * Alt-k           Schleier der Finsternis ein-/ausschalten
     * Strg-k          Schleier der Finsternis aktualisieren
-    * Alt-s           Status-Tabelle anzeigen
+    * Alt-s           Statustabelle anzeigen
     * Strg-t          Geländeeinfluss auf die gewählte Einheit anzeigen
-    * :               Kommando-Modus, siehe http://www.wesnoth.org/wiki/CommandMode
+    * :               Kommandomodus, siehe http://www.wesnoth.org/wiki/CommandMode
 
-Mac OS X Benutzer drücken statt der Strg-Taste die Cmd-Taste. Omd wird statt Alt
+Mac OS X Benutzer drücken statt der Strg-Taste die Cmd-Taste. Opt wird statt Alt
 benutzt.
 
 
@@ -196,7 +196,7 @@ beispielsweise weniger häufig getroffen.
 Tag-/Nachteinfluss
 
 Jede Einheit wird von den vorherrschenden Lichtverhältnissen unterschiedlich
-beeinflusst. Es gibt drei Lichtverhältniskategorien: redlich, neutral oder
+beeinflusst. Es gibt drei Lichtverhältniskategorien: redlich, neutral und
 lichtscheu. Die folgende Tabelle illustriert die verschiedenen Tageszeiten:
 
  |  Zug  | Tageszeit             |  redlich | lichtscheu |
@@ -209,7 +209,7 @@ lichtscheu. Die folgende Tabelle illustriert die verschiedenen Tageszeiten:
  |   6   | Nacht (Zweite Wache)  |   -25%   |    +25%    |
 
 Redliche Einheiten verursachen bei Tag 25% mehr, bei Nacht 25% weniger Schaden.
-Lichtscheue Einheiten verursachen 25% mehr Schaden bei Nacht, und 25% weniger
+Lichtscheue Einheiten verursachen 25% mehr Schaden bei Nacht und 25% weniger
 Schaden bei Tag. Neutrale Einheiten werden von der Tageszeit nicht beeinflusst.
 
 
@@ -219,8 +219,8 @@ In Dörfern postierte, verwundete Einheiten regenerieren pro Runde 8
 Lebenspunkte. Verwundete Einheiten, die neben Einheiten stehen, die über die
 Fähigkeit »Heilen« oder »Kurieren« verfügen, werden ebenfalls geheilt. Eine
 Einheit, um die sich kein Heiler befindet, gewinnen bis zu 4 Lebenspunkte pro
-Runde zurück. Eine, mit der Fähigkeit »Kurieren« behandelte Einheiten
-regenerieren bis zu 8 Lebenspunkte. Die Heilwirkung nimmt jedoch mit zunehmender
+Runde zurück. Eine mit der Fähigkeit »Kurieren« behandelte Einheit
+regeneriert bis zu 8 Lebenspunkte. Die Heilwirkung nimmt jedoch mit zunehmender
 Anzahl verwundeter Einheiten ab.
 
 »Heilen« verhindert zwar, dass die Einheit weiteren Schaden durch eine
@@ -252,19 +252,20 @@ Erfahrungspunkt pro Stufe des Gegners. Mit anderen Worten:
 
 Mehrspieler
 
-Sie können ein eigene Mehrspielerpartie starten, in dem Sie Ihren PC als
+Sie können eine eigene Mehrspielerpartie starten, indem Sie Ihren PC als
 Spielserver benutzen oder sich mit dem Wesnoth-Spielserver verbinden und Ihr
-Spiel dort starten. Falls Sie Ihren PC benutzen benötigen Mitspieler die
+Spiel dort starten. Falls Sie Ihren PC benutzen, benötigen Mitspieler die
 Möglichkeit sich mit Ihrem Port 15000 zu verbinden. Wenn Sie sich hinter einer
 Firewall befinden, müssen Sie die Einstellungen so ändern, dass eingehende
-Verbindungen auf Port 15000 erlaubt sind und diese Daten zu dem Rechner, auf dem
+Verbindungen auf Port 15000 erlaubt sind, und diese Daten zu dem Rechner, auf dem
 der Server läuft, weitergeleitet werden sollen.
 
 
 Öffentliche Server:
 
  server.wesnoth.org        für stabile Versionen des Spiels
- server.wesnoth.org:14999  für CVS-Versionen des Spiels
+ devsrv.wesnoth.org        für Subversion-Versionen des Spiels
+
  Weitere Server sind unter http://www.wesnoth.org/wiki/MultiplayerServers
  aufgeführt
 
@@ -274,12 +275,12 @@ Schritt 1: Wählen Sie Mehrspieler im Hauptmenü, anschließend entweder
 »Offiziellen Server betreten« oder »Netzwerkpartie eröffnen« und eröffnen Sie
 eine neue Partie.
 
-Schritt 2: Wählen sie eine Karte und legen Sie die Spieleinstellungen fest
+Schritt 2: Wählen Sie eine Karte und legen Sie die Spieleinstellungen fest
 (Nebel des Krieges, Schleier der Finsternis, Steuereinnahmen pro Dorf)
 
 Schritt 3: Konfigurieren Sie die Spieler (Teams/Allianzen, Startgold, Rassen)
-und warten Sie anschließend darauf, das alle anderen Spieler dem Spiel
-beitreten.  Teilnehmende Spieler werden mit ihren Nicknames aufgeführt.
+und warten Sie anschließend darauf, dass alle anderen Spieler dem Spiel
+beitreten. Teilnehmende Spieler werden mit ihren Nicknames aufgeführt.
 
 Schritt 4: Klicken Sie »Ich bin bereit« an, um die Partie zu starten
 
@@ -293,14 +294,14 @@ aktuellen Version von Wesnoth funktionieren. Fragen Sie bei Problemen im Forum
 nach.
 
 Andere Ressourcen:
-Die Ingame-Hilfe ist während des Spielens durch Drücken der Hilfe-Taste, oder
-entsprechende Auswahl im Menue erreichbar.
+Die Hilfe ist während des Spielens durch Drücken der Hilfe-Taste oder
+die entsprechende Auswahl im Menü erreichbar.
 Die Homepage des Projekts findet sich unter http://www.wesnoth.org/. Dort finden
 sich auch weiterführende Links zu diesem Spiel, unter anderem zu unserer Wiki
-http://www.wesnoth.org/wiki/ wo sich unteranderem Komplettlösungen für einzelne
-Kampagnen oder allgemeine Tips zur Spielstrategie finden lassen, ausserdem ein
+http://www.wesnoth.org/wiki/ wo sich unter anderem Komplettlösungen für einzelne
+Kampagnen oder allgemeine Tipps zur Spielstrategie finden lassen, außerdem ein
 Baum, der alle in Wesnoth vorkommenden Einheiten aufschlüsselt.
-Des weiteren finden sie Informationen, wie sie an der Entwicklung von Battle
+Des Weiteren finden Sie Informationen, wie Sie an der Entwicklung von Battle
 for Wesnoth teilhaben können z.B. als Programmierer, Künstler oder Übersetzer.
 Und dann wären da noch der IRC-Kanal #wesnoth auf irc.wesnoth.org und das Forum,
 das unter http://forum.wesnoth.org/ zu finden ist.
