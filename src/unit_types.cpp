@@ -1104,8 +1104,7 @@ const std::vector<config*>& unit_type::possible_traits() const
 
 bool unit_type::has_random_traits() const
 {
-	const unsigned int n = num_traits();
-	return (n > 0 && n < possibleTraits_.size());
+	return (num_traits() > 0 && possibleTraits_.size() > 1);
 }
 
 const std::vector<unit_race::GENDER>& unit_type::genders() const
