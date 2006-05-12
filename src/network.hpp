@@ -107,25 +107,9 @@ void queue_disconnect(connection connection_num);
 connection receive_data(config& cfg, connection connection_num=0);
 connection receive_data(config& cfg, connection connection_num, int timeout);
 
-//sets the default maximum number of bytes to send to a client at a time
-void set_default_send_size(size_t send_size);
-
-enum SEND_TYPE { SEND_DATA, QUEUE_ONLY };
-
 //function to send data down a given connection, or broadcast
 //to all peers if connection_num is 0. throws error.
-//it will send a maximum of 'max_size' bytes. If cfg when serialized is more than
-//'max_size' bytes, then any remaining bytes will be appended to the connection's
-//send queue. Also if there is data already in the send queue, then it will be
-//appended to the send queue, and max_size bytes in the send queue will be sent.
-//if 'max_size' is 0, then the entire contents of the send_queue as well as 'cfg'
-//will be sent.
-//if 'mode' is set to 'QUEUE_ONLY', then no data will be sent at all: only placed
-//in the send queue. This will guarantee that this function never throws
-//network::error exceptions
-//
-//data in the send queue can be sent using process_send_queue
-void send_data(const config& cfg, connection connection_num=0, size_t max_size=0, SEND_TYPE mode=SEND_DATA);
+void send_data(const config& cfg, connection connection_num=0);
 
 //function to queue data to be sent. queue_data(cfg,sock) is equivalent to send_data(cfg,sock,0,QUEUE_ONLY)
 void queue_data(const config& cfg, connection connection_num=0);
@@ -135,7 +119,7 @@ void queue_data(const config& cfg, connection connection_num=0);
 void process_send_queue(connection connection_num=0, size_t max_size=0);
 
 //function to send data to all peers except 'connection_num'
-void send_data_all_except(const config& cfg, connection connection_num, size_t max_size=0);
+void send_data_all_except(const config& cfg, connection connection_num);
 
 //function to get the remote ip address of a socket
 std::string ip_address(connection connection_num);

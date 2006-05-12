@@ -1270,8 +1270,6 @@ int main(int argc, char** argv)
 	int port = 15000;
 	size_t nthreads = 5;
 
-	network::set_default_send_size(4096);
-
 	config configuration;
 
 #ifndef FIFODIR
@@ -1298,8 +1296,6 @@ int main(int argc, char** argv)
 				std::cerr << "ERROR: could not read configuration file: '" << e.message << "'\n";
 				return -1;
 			}
-		} else if((val == "--max_packet_size" || val == "-m") && arg+1 != argc) {
-			network::set_default_send_size(size_t(atoi(argv[++arg])));
 		} else if(val == "--verbose" || val == "-v") {
 			lg::set_log_domain_severity("all",2);
 		} else if((val == "--port" || val == "-p") && arg+1 != argc) {
@@ -1310,7 +1306,6 @@ int main(int argc, char** argv)
 				<< "  -c  --config path          Tells wesnothd where to find the config file to use.\n"
 				<< "  -d  --daemon               Runs wesnothd as a daemon.\n"
 				<< "  -h  --help                 Shows this usage message.\n"
-				<< "  -m, --max_packet_size n    Sets the maximal packet size to n.\n"
 				<< "  -p, --port port            Binds the server to the specified port.\n"
 				<< "  -t, --threads n            Uses n worker threads for network I/O (default: 5).\n"
 				<< "  -v  --verbose              Turns on more verbose logging.\n"

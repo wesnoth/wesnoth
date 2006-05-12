@@ -663,16 +663,7 @@ connection receive_data(config& cfg, connection connection_num)
 	return result;
 }
 
-namespace {
-	size_t default_max_send_size = 0;
-}
-
-void set_default_send_size(size_t max_size)
-{
-	default_max_send_size = max_size;
-}
-
-void send_data(const config& cfg, connection connection_num, size_t max_size, SEND_TYPE mode)
+void send_data(const config& cfg, connection connection_num)
 {
 	LOG_NW << "in send_data()...\n";
 	if(cfg.empty()) {
@@ -681,14 +672,6 @@ void send_data(const config& cfg, connection connection_num, size_t max_size, SE
 
 	if(bad_sockets.count(connection_num) || bad_sockets.count(0)) {
 		return;
-	}
-
-	if(max_size == 0) {
-		max_size = default_max_send_size;
-	}
-
-	if(max_size > 0 && max_size < 8) {
-		max_size = 8;
 	}
 
 	log_scope2(network, "sending data");
@@ -726,7 +709,7 @@ void send_data(const config& cfg, connection connection_num, size_t max_size, SE
 
 void queue_data(const config& cfg, connection connection_num)
 {
-	send_data(cfg,connection_num,0,QUEUE_ONLY);
+	send_data(cfg,connection_num);
 }
 
 void process_send_queue(connection, size_t)
@@ -734,14 +717,14 @@ void process_send_queue(connection, size_t)
 	check_error();
 }
 
-void send_data_all_except(const config& cfg, connection connection_num, size_t max_size)
+void send_data_all_except(const config& cfg, connection connection_num)
 {
 	for(sockets_list::const_iterator i = sockets.begin(); i != sockets.end(); ++i) {
 		if(*i == connection_num) {
 			continue;
 		}
 
-		send_data(cfg,*i,max_size);
+		send_data(cfg,*i);
 	}
 }
 
