@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-10 18:46+0200\n"
-"PO-Revision-Date: 2006-05-03 01:12+0900\n"
+"PO-Revision-Date: 2006-05-12 23:15+0900\n"
 "Last-Translator: Claus Aranha <caranha AT gmail DOT com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "MIME-Version: 1.0\n"
@@ -508,9 +508,8 @@ msgid "Estonian Translation"
 msgstr "Tradução para o Estonês"
 
 #: data/about.cfg:249
-#, fuzzy
 msgid "Filipino Translation"
-msgstr "Tradução para o Finlandês"
+msgstr "Tradução para o Filipino"
 
 #: data/about.cfg:256
 msgid "Finnish Translation"
@@ -2095,9 +2094,8 @@ msgid "Terrains"
 msgstr "Terrenos"
 
 #: data/help.cfg:59
-#, fuzzy
 msgid "Commands"
-msgstr "Comandante"
+msgstr "Comandos"
 
 #: data/help.cfg:65 data/help.cfg:71 data/help.cfg:264
 msgid "Overview"
@@ -2987,7 +2985,6 @@ msgstr ""
 "envolvidos nisto: Receita e Gastos."
 
 #: data/help.cfg:236
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2999,10 +2996,10 @@ msgstr ""
 "\n"
 "\n"
 "Receita é simples. Você tem uma receita básica de 2 peças de ouro por turno. "
-"para cada vila que controlar, ganhará mais uma peça de ouro a cada turno. "
-"Assim, se você tiver 10 vilas, normalmente você receberia 12 peças de ouro "
-"por turno. Seus gastos são subtraídos desta receita, conforme descrito "
-"abaixo."
+"para cada aldeia que controlar, ganhará mais duas peças de ouro a cada "
+"turno. Assim, se você tiver 5 aldeias, normalmente você receberia 12 peças "
+"de ouro por turno. A manutenção existente é subtraída desta receita, "
+"conforme descrito abaixo."
 
 #: data/help.cfg:238
 msgid ""
@@ -3012,9 +3009,14 @@ msgid ""
 "to its level. For example, if you have five level one units and one level "
 "two unit, all your upkeep would cost 7 gold each turn."
 msgstr ""
+"\n"
+"\n"
+"Gastos também são calculados de maneira bem simples. Cada unidade requer uma "
+"quantidade de manutenção igual ao seu nível. Por exemplo, se você tem 5 "
+"unidades de nível 1, e uma unidade de nível 2, então a manutenção delas "
+"totaliza 7 peças de ouro por turno."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3023,9 +3025,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Os gastos são subtraídos da sua receita, de maneira que no caso de 12 níveis "
-"de unidades e 10 vilas, a receita líquida seria de 10 peças de ouro por "
-"turno."
+"Os gastos com a manutenção de unidades são subtraídos da sua receita, de "
+"maneira que se você tiver, por exemplo, 7 níveis de unidades e 5 aldeias, a "
+"receita líquida seria de 3 peças de ouro por turno."
 
 #: data/help.cfg:241
 msgid ""
@@ -3047,7 +3049,6 @@ msgid "Wrap Up"
 msgstr "Conclusão"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -3057,7 +3058,7 @@ msgid ""
 msgstr ""
 "Assim concluímos os fundamentos de Wesnoth. Você talvez queira ler mais "
 "sobre estratégia básica, ou se familiarizar com <ref>dst=traits "
-"text=Características</ref> <ref>dst=abilities text=Habilidades</ref>, mas "
+"text=Características</ref> e <ref>dst=abilities text=Habilidades</ref>, mas "
 "você já sabe tudo o que precisa para jogar a campanha Herdeiro do Trono. "
 "Divirta-se, e boa sorte!"
 
@@ -3787,33 +3788,40 @@ msgstr ""
 "impedir o mais determinado viajante."
 
 #: data/help.cfg:543
-#, fuzzy
 msgid "General commands"
-msgstr "General"
+msgstr "Comandos gerais"
 
 #: data/help.cfg:545
 msgid ""
 "\n"
 "Quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Sair do cenário (sem confirmar)."
 
 #: data/help.cfg:548
 msgid ""
 "\n"
 "Save the game (without prompting)."
 msgstr ""
+"\n"
+"Salvar o jogo (sem confirmar)."
 
 #: data/help.cfg:551
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Salvar o jogo e sair do cenário (sem confirmar)."
 
 #: data/help.cfg:554
 msgid ""
 "\n"
 "Redraw the screen."
 msgstr ""
+"\n"
+"Redesenhar a tela."
 
 #: data/help.cfg:557
 msgid ""
@@ -3821,17 +3829,21 @@ msgid ""
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
 "off by quitting the game."
 msgstr ""
+"\n"
+"Ligar o modo de debug (não funciona em modo multijogador). O modo de debug é "
+"desligado ao sair do jogo."
 
 #: data/help.cfg:560
 msgid ""
 "\n"
 "Bring up theme selection menu."
 msgstr ""
+"\n"
+"Abre o menu de seleção de temas."
 
 #: data/help.cfg:565
-#, fuzzy
 msgid "Multiplayer commands"
-msgstr "Mapas Multijogador"
+msgstr "Comandos para multijogador"
 
 #: data/help.cfg:567
 msgid ""
@@ -3840,12 +3852,18 @@ msgid ""
 "controls that side needs to issue this command. If you don't provide side, "
 "'1' is assumed."
 msgstr ""
+"\n"
+"Alterna o controlador do time entre Humano e Computador. O jogador/cliente "
+"que controla o lado em questão tem que escolher este comando. Se voce não "
+"indicar o time, assume-se que se trata do time '1'."
 
 #: data/help.cfg:570
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
+"\n"
+"Alterna silenciar todos os observadores entre ligar e desligar."
 
 #: data/help.cfg:573
 msgid ""
@@ -3853,6 +3871,9 @@ msgid ""
 "Mute a specific observer. If no username is supplied the muted usernames are "
 "displayed."
 msgstr ""
+"\n"
+"Silencia um observador específico. Se não for dado nenhum nome, os nomes já "
+"silenciados são exibidos."
 
 #: data/help.cfg:576
 msgid ""
@@ -3861,12 +3882,19 @@ msgid ""
 "a friendly way to remove someone who is having connection or other "
 "difficulties."
 msgstr ""
+"\n"
+"Expulsa um jogador de um jogo multijogador. Ele poderá se reunir a um jogo. "
+"Em geral, é um modo amigável de remover alguém que esta tendo problemas de "
+"conexão ou outras dificuldades."
 
 #: data/help.cfg:579
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that username."
 msgstr ""
+"\n"
+"Expulsa e bane um jogador em um jogo multijogador, assim como o endereço de "
+"IP usado por esse jogador."
 
 #: data/help.cfg:582
 msgid ""
@@ -3874,12 +3902,17 @@ msgid ""
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nick of the player or observer)."
 msgstr ""
+"\n"
+"Dá o controle do time (coloque o numero do time aqui) para o jogador "
+"(escreva aqui o nome do jogador ou observador)."
 
 #: data/help.cfg:585
 msgid ""
 "\n"
 "Clear chat messages."
 msgstr ""
+"\n"
+"Limpar o histórico das mensagens."
 
 #: data/items.cfg:264
 msgid ""
@@ -10174,7 +10207,7 @@ msgstr "Battle for Wesnoth"
 
 #: src/game.cpp:1723
 msgid "Loading title screen."
-msgstr ""
+msgstr "Carregando a tela inicial."
 
 #: src/game_events.cpp:716
 msgid "Victory:"
@@ -10334,19 +10367,19 @@ msgstr "?"
 
 #: src/loadscreen.cpp:155
 msgid "Verifying cache."
-msgstr ""
+msgstr "Verificando o cache."
 
 #: src/loadscreen.cpp:174
 msgid "Reading cache."
-msgstr ""
+msgstr "Lendo o cache."
 
 #: src/loadscreen.cpp:193
 msgid "Reading unit files."
-msgstr ""
+msgstr "Lendo os arquivos de unidades."
 
 #: src/loadscreen.cpp:212
 msgid "Reading files and creating cache."
-msgstr ""
+msgstr "Lendo os arquivos e criando o cache."
 
 #: src/menu_events.cpp:45
 msgid ""
@@ -10512,13 +10545,12 @@ msgid "You are separated from your soldiers and may not recall them"
 msgstr "Você está afastado de seus soldados e não pode convocá-los"
 
 #: src/menu_events.cpp:644
-#, fuzzy
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "Você não tem tropas para convocar\n"
-"\\t(É necessário que tropas sobrevivam a um cenário anterior)"
+"(É necessário que tropas tenham sobrevivido a um cenário anterior)"
 
 #: src/menu_events.cpp:651
 msgid "Level"
@@ -10576,27 +10608,30 @@ msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
+"Envia uma mensagem privada. Você não pode enviar mensagens para jogadores "
+"que controlem quaisquer times em jogo. Uso: /whisper [nome] [mensagem]"
 
 #: src/menu_events.cpp:1359
 msgid "Add player to your ignore list. Usage: /ignore add [argument]"
 msgstr ""
+"Adiciona um jogador a sua lista de ignorados. Uso: /ignore add [argumento]"
 
 #: src/menu_events.cpp:1361
 msgid "Remove player from your ignore list. Usage: /ignore remove [argument]"
 msgstr ""
+"Remove um jogador de sua lista de ignorados. Uso: /ignore remove [argumento]"
 
 #: src/menu_events.cpp:1363
 msgid "Clear your ignore list. Usage: /ignore clear"
-msgstr ""
+msgstr "Limpa sua lista de ignorados. Uso: /ignore clear"
 
 #: src/menu_events.cpp:1365
 msgid "Show your ignore list. Usage: /ignore list"
-msgstr ""
+msgstr "Mostra sua lista de ignorados. Uso: /ignore list"
 
 #: src/menu_events.cpp:1367
-#, fuzzy
 msgid "Unknown subcommand"
-msgstr "Cenário desconhecido"
+msgstr "Subcomando desconhecido"
 
 #: src/menu_events.cpp:1370
 msgid ""
@@ -10604,33 +10639,34 @@ msgid ""
 "[argument](optional) Subcommands: add remove list clear. Type /help ignore "
 "[subcommand] for more info."
 msgstr ""
+"Ignora mensagens de jogadores nesta lista. Uso: /ignora [subcomando] \n"
+"[argumento](opcional) Subcomandos: add remove list clear. Escreva /help "
+"ignore [subcomando] para maiores informações."
 
 #: src/menu_events.cpp:1373
-#, fuzzy
 msgid "Unknown command"
-msgstr "Era desconhecida"
+msgstr "Comando desconhecido"
 
 #: src/menu_events.cpp:1376
 msgid "Commands: whisper ignore. Type /help [command] for more help."
 msgstr ""
+"Comandos: whisper ignore. Escreva /help [comando] para maiores informações."
 
 #: src/menu_events.cpp:1403
 msgid "Added to ignore list: "
-msgstr ""
+msgstr "Adicionados à lista de ignorados: "
 
 #: src/menu_events.cpp:1405 src/menu_events.cpp:1415
-#, fuzzy
 msgid "Invalid username: "
-msgstr "Nome de tag inválido"
+msgstr "Nome de usuário inválido:"
 
 #: src/menu_events.cpp:1413 src/menu_events.cpp:1436
 msgid "Removed from ignore list: "
-msgstr ""
+msgstr "Removidos da lista de ignorados: "
 
 #: src/menu_events.cpp:1440
-#, fuzzy
 msgid "Unknown command: "
-msgstr "Cenário desconhecido: '"
+msgstr "Comando desconhecido: "
 
 #: src/menu_events.cpp:1535
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -10665,9 +10701,8 @@ msgid "Slowed"
 msgstr "Lento"
 
 #: src/mouse_events.cpp:306
-#, fuzzy
 msgid "Time of day"
-msgstr "Hora do Dia"
+msgstr "Hora do dia"
 
 #: src/mouse_events.cpp:316
 msgid "Leadership"
@@ -11048,9 +11083,8 @@ msgid "Unknown scenario"
 msgstr "Cenário desconhecido"
 
 #: src/multiplayer_lobby.cpp:334
-#, fuzzy
 msgid "Remote scenario"
-msgstr "Cenário desconhecido"
+msgstr "Cenário remoto"
 
 #: src/multiplayer_lobby.cpp:347
 msgid "Vacant Slot:"
@@ -11065,9 +11099,8 @@ msgid "Observe Game"
 msgstr "Observar o jogo"
 
 #: src/multiplayer_lobby.cpp:465
-#, fuzzy
 msgid "Quick Replays"
-msgstr "Pular Replays"
+msgstr "Replays Rápidos"
 
 #: src/multiplayer_lobby.cpp:466
 msgid "Preferences"
@@ -11517,37 +11550,12 @@ msgstr ""
 
 #: src/upload_log.cpp:277
 msgid "Summaries are stored here:"
-msgstr ""
+msgstr "Resumos são armazenados aqui:"
 
 #: src/upload_log.cpp:279
-#, fuzzy
 msgid "You can view the results at:"
-msgstr "Você pode ver os resultados em "
+msgstr "Você pode ver os resultados em:"
 
 #: src/upload_log.cpp:284
 msgid "Help us make Wesnoth better for you!"
 msgstr "Ajude-nos a fazer um Wesnoth melhor para você!"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Upkeep is also fairly simple. Each unit requires an amount of Upkeep "
-#~ "equal to its level. You can support as many levels <italic>text=worth</"
-#~ "italic> of units as you have villages, without paying any upkeep. "
-#~ "However, for each level of unit beyond the number of villages you have, "
-#~ "you must pay one gold per turn. For example, if you have twelve level one "
-#~ "units and ten villages, you would have to pay two gold each turn in "
-#~ "upkeep."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Os gastos também são razoavelmente simples. Cada unidade requer um gasto "
-#~ "igual ao seu nível. Você pode manter de graça um número de níveis igual "
-#~ "ao número de vilas, antes de começar a ter que pagar dinheiro. Porém, "
-#~ "para cada nível acima do número de vilas que você tiver, você deve pagar "
-#~ "uma peça de ouro por turno. Por exemplo, se você tiver 12 unidades de "
-#~ "nível um, e 10 vilas, você precisaria pagar duas peças de ouro por turno "
-#~ "em gastos."
-
-#~ msgid "You can see the summaries to be sent in "
-#~ msgstr "Você pode ver os resumos que serão enviados em "
