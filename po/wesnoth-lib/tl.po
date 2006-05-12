@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-07 19:26+0200\n"
-"PO-Revision-Date: 2006-05-08 08:04-0000\n"
+"PO-Revision-Date: 2006-05-13 05:43-0000\n"
 "Last-Translator: Joset Anthony Zamora <eradicus_kee@yahoo.ca>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -218,7 +218,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:77
 msgid "Unit List"
-msgstr ""
+msgstr "Lista ng mga Yunit"
 
 #: src/hotkeys.cpp:78
 msgid "Statistics"
@@ -226,27 +226,27 @@ msgstr ""
 
 #: src/hotkeys.cpp:79
 msgid "Quit Game"
-msgstr ""
+msgstr "Umalis sa Laro"
 
 #: src/hotkeys.cpp:80
 msgid "Set Label"
-msgstr ""
+msgstr "I-set ang Tanda"
 
 #: src/hotkeys.cpp:81
 msgid "Clear Labels"
-msgstr ""
+msgstr "Tanggalin ang mga Tanda"
 
 #: src/hotkeys.cpp:82
 msgid "Show Enemy Moves"
-msgstr ""
+msgstr "Ipakita ang Galaw ng Kalaban"
 
 #: src/hotkeys.cpp:83
 msgid "Best Possible Enemy Moves"
-msgstr ""
+msgstr "Ang posibleng Pinakamahusay na Galaw ng Kalaban"
 
 #: src/hotkeys.cpp:84
 msgid "Play"
-msgstr ""
+msgstr "Laro"
 
 #: src/hotkeys.cpp:85
 msgid "Reset"
@@ -254,15 +254,15 @@ msgstr ""
 
 #: src/hotkeys.cpp:86
 msgid "Stop"
-msgstr ""
+msgstr "Hinto"
 
 #: src/hotkeys.cpp:87
 msgid "Next Turn"
-msgstr ""
+msgstr "Ang kasunod na Turno"
 
 #: src/hotkeys.cpp:88
 msgid "Next Side"
-msgstr ""
+msgstr "Ang kasunod na Dako"
 
 #: src/hotkeys.cpp:89
 msgid "Shroud"
@@ -270,11 +270,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:90
 msgid "Fog"
-msgstr ""
+msgstr "Ulap na hamog"
 
 #: src/hotkeys.cpp:91
 msgid "Skip animation"
-msgstr ""
+msgstr "Laktawan ang mga pinapakitang gumagalaw"
 
 #: src/hotkeys.cpp:93
 msgid "Set Terrain"
@@ -282,23 +282,23 @@ msgstr ""
 
 #: src/hotkeys.cpp:94
 msgid "Quit Editor"
-msgstr ""
+msgstr "Umalis sa Editor"
 
 #: src/hotkeys.cpp:95
 msgid "New Map"
-msgstr ""
+msgstr "Bagong Mapa"
 
 #: src/hotkeys.cpp:96
 msgid "Load Map"
-msgstr ""
+msgstr "Buksan ang Mapa"
 
 #: src/hotkeys.cpp:97
 msgid "Save Map"
-msgstr ""
+msgstr "I-seyb ang Mapa"
 
 #: src/hotkeys.cpp:98
 msgid "Save As"
-msgstr ""
+msgstr "I-seyb As"
 
 #: src/hotkeys.cpp:99
 msgid "Set Player's keep"
@@ -306,23 +306,23 @@ msgstr ""
 
 #: src/hotkeys.cpp:100
 msgid "Flood Fill"
-msgstr ""
+msgstr "Dagsahang Pagpupuno"
 
 #: src/hotkeys.cpp:101
 msgid "Fill Selection"
-msgstr ""
+msgstr "Punuin ang Napili"
 
 #: src/hotkeys.cpp:102
 msgid "Cut"
-msgstr ""
+msgstr "Putulin"
 
 #: src/hotkeys.cpp:103
 msgid "Copy"
-msgstr ""
+msgstr "Kopyahin"
 
 #: src/hotkeys.cpp:104
 msgid "Paste"
-msgstr ""
+msgstr "Idikit"
 
 #: src/hotkeys.cpp:105
 msgid "Revert from Disk"
@@ -338,11 +338,11 @@ msgstr "Piliin Lahat"
 
 #: src/hotkeys.cpp:109
 msgid "Draw Terrain"
-msgstr ""
+msgstr "Gumuhit ng Tereyn"
 
 #: src/hotkeys.cpp:110
 msgid "Refresh Image Cache"
-msgstr ""
+msgstr "I-refresh ang Larawan"
 
 #: src/hotkeys.cpp:112
 msgid "Delay Shroud Updates"
@@ -378,7 +378,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:120
 msgid "Enter user command"
-msgstr ""
+msgstr "Ilagay ang utos"
 
 #: src/hotkeys.cpp:122
 msgid "Change the language"
@@ -386,15 +386,15 @@ msgstr "Palitan ang wika"
 
 #: src/hotkeys.cpp:464 src/hotkeys.cpp:665
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Gusto niyo ba talagang umalis?"
 
 #: src/hotkeys.cpp:464 src/hotkeys.cpp:665
 msgid "Quit"
-msgstr ""
+msgstr "Umalis"
 
 #: src/mapgen_dialog.cpp:100
 msgid "Map Generator"
-msgstr ""
+msgstr "Tagatubo ng Mapa"
 
 #: src/mapgen_dialog.cpp:105
 msgid "Players:"
@@ -406,11 +406,11 @@ msgstr "Numero ng mga Burol:"
 
 #: src/mapgen_dialog.cpp:109
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Ang pinakamalaking sukat ng Burol:"
 
 #: src/mapgen_dialog.cpp:110
 msgid "Villages:"
-msgstr ""
+msgstr "Mga Nayon:"
 
 #: src/mapgen_dialog.cpp:111
 msgid "Landform:"
@@ -446,18 +446,22 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
+"Ang pagali ng video ay hindi maaaring palitan. Ang window maneyger ay dapt "
+"nakatakda sa 16-bits per pixel upang ang iyong laro ay makakatakbo sa pagali "
+"na windowed. Ang iyong pakita ay dapat may suporta sa pagali na 1024x768x16 "
+"upang makakatakbo ang laro sa fullscreen."
 
 #: src/preferences_display.cpp:216
 msgid "Accelerated Speed"
-msgstr ""
+msgstr "Pinabilis na Tulin"
 
 #: src/preferences_display.cpp:217
 msgid "Skip AI Moves"
-msgstr ""
+msgstr "Laktawan ang Galaw ng AI"
 
 #: src/preferences_display.cpp:219
 msgid "Show Lobby Joins"
-msgstr ""
+msgstr "Ipakita ang sumasali sa patayuan"
 
 #: src/preferences_display.cpp:220
 msgid "Show Floating Labels"
@@ -465,11 +469,11 @@ msgstr ""
 
 #: src/preferences_display.cpp:221
 msgid "Turn Dialog"
-msgstr ""
+msgstr "Dayalog ng Turno"
 
 #: src/preferences_display.cpp:222
 msgid "Turn Bell"
-msgstr ""
+msgstr "Batingaw ng turno"
 
 #: src/preferences_display.cpp:223
 msgid "Show Team Colors"
@@ -497,7 +501,7 @@ msgstr ""
 
 #: src/preferences_display.cpp:232
 msgid "Sound effects"
-msgstr ""
+msgstr "Epeks ng ingay"
 
 #: src/preferences_display.cpp:233
 msgid "Music"
@@ -513,23 +517,23 @@ msgstr "Lakas ng Musika:"
 
 #: src/preferences_display.cpp:235
 msgid "SFX Volume:"
-msgstr ""
+msgstr "Lakas ng SFX:"
 
 #: src/preferences_display.cpp:236
 msgid "Gamma:"
-msgstr ""
+msgstr "Gamma:"
 
 #: src/preferences_display.cpp:249
 msgid "Sound effects on/off"
-msgstr ""
+msgstr "Epeks ng ingay on/of"
 
 #: src/preferences_display.cpp:253
 msgid "Change the sound effects volume"
-msgstr ""
+msgstr "Palitan ang lakas ng epeks ng ingay"
 
 #: src/preferences_display.cpp:256
 msgid "Music on/off"
-msgstr ""
+msgstr "Musika on/of"
 
 #: src/preferences_display.cpp:260
 msgid "Change the music volume"
@@ -685,7 +689,7 @@ msgstr ""
 
 #: src/preferences_display.cpp:829
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Ang naka-seyb na Piniling Tema:"
 
 #: src/preferences_display.cpp:835
 msgid "New theme will take effect on next new or loaded game."
