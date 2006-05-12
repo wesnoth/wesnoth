@@ -846,6 +846,9 @@ const std::vector<std::string>& unit::overlays() const
 */
 void unit::read(const config& cfg)
 {
+	if(cfg["id"]=="" && cfg["type"]=="") {
+		throw game::load_game_failed("Attempt to de-serialize an empty unit");
+	}
 	cfg_ = cfg;
 	side_ = lexical_cast_default<int>(cfg["side"]);
 	if(side_ <= 0) {
