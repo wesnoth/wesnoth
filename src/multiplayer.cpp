@@ -253,8 +253,14 @@ void enter_wait_mode(display& disp, const config& game_config, game_data& data, 
 
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
-
-			state = ui.get_state();
+			if (preferences::skip_mp_replay()){
+				//FIXME implement true skip replay
+				//state = ui.request_snapshot();
+				state = ui.get_state();
+			}
+			else{
+				state = ui.get_state();
+			}
 		}
 	}
 
@@ -330,6 +336,10 @@ void enter_create_mode(display& disp, const config& game_config, game_data& data
 		break;
 	case mp::ui::QUIT:
 	default:
+		//update lobby content
+		config request;
+		request.add_child("refresh_lobby");
+		network::send_data(request);
 		break;
 	}
 }

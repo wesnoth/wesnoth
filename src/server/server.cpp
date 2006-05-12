@@ -810,6 +810,16 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 
 		lobby_players_.send_data(data,sock);
 	}
+
+	//player requests update of lobby content, for example when cancelling
+	//the create game dialog
+	config* const refresh = data.child("refresh_lobby");
+	if (refresh != NULL){
+		const player_map::iterator p = players_.find(sock);
+		wassert(p != players_.end());
+
+		network::send_data(initial_response_, sock);
+	}
 }
 
 void server::process_data_from_player_in_game(const network::connection sock, config& data, config& gamelist)
