@@ -1301,57 +1301,64 @@ namespace events{
 			return;
 		}
 
-		static const std::string query = "/query ";
-		static const std::string whisper = "/msg ";
-		static const std::string ignore = "/ignore ";
+		static const std::string query = "/query";
+		static const std::string whisper = "/whisper";
+		static const std::string whisper2 = "/msg";
+		static const std::string ignore = "/ignore";
 		static const std::string help = "/help";
 
 		static const std::string add = "add";
 		static const std::string remove = "remove";
 		static const std::string list = "list";
 		static const std::string clear = "clear";
+
+		bool is_command = (message.at(0) == '/');
+		unsigned int argc = 0;
+		std::string cmd, arg1, arg2;
+
+		if(is_command){
+			std::string::size_type sp1 = message.find_first_of(' ');
+			cmd = message.substr(0,sp1);
+			if(sp1 != std::string::npos) {
+				std::string::size_type arg1_start = message.find_first_not_of(' ',sp1);
+				if(arg1_start != std::string::npos) {
+					++argc;
+					std::string::size_type substr_len, sp2;
+					sp2 = message.find(' ',arg1_start);
+					substr_len = (sp2 == std::string::npos) ? std::string::npos : sp2 - arg1_start;
+					arg1 = message.substr(arg1_start,substr_len);
+					if(sp2 != std::string::npos
+					&& message.find_first_not_of(' ',sp2) != std::string::npos) {
+						++argc;
+						arg2 = message.substr(sp2+1);
+					}
+				}
+			}
+		}
+
 		
-		if(message.size() >= query.size() && std::equal(query.begin(),query.end(),message.begin())) {
+		if(cmd == query && argc > 0) {
 			const std::string args = message.substr(query.size());
 			send_chat_query(args);
-		} else if (is_observer() && message.size() >= whisper.size() &&
-		std::equal(whisper.begin(),whisper.end(),message.begin())) {
-			
-			int pos;
-			pos = message.find(" ",whisper.size());
-				
-			const std::string text = message.substr((pos+1),message.size());
-				
-			const std::string receiver = message.substr(whisper.size(),
-			(message.size()-text.size()-whisper.size()-1));
-				
+		} else if ((cmd == whisper || cmd == whisper2) && argc > 1 /*&& is_observer()*/) {
 			config cwhisper,data;
-			cwhisper["message"] = text;
+			cwhisper["message"] = arg2;
 			cwhisper["sender"] = preferences::login();
-			cwhisper["receiver"] = receiver;
+			cwhisper["receiver"] = arg1;
 			data.add_child("whisper", cwhisper);
 			add_chat_message("whisper to "+cwhisper["receiver"],0,cwhisper["message"], display::MESSAGE_PRIVATE);
 			network::send_data(data);
 
-		} else if (message.size() >= help.size() && std::equal(help.begin(), help.end(), message.begin())) {
+		} else if (cmd == help) {
+															
+			bool have_command = (argc > 0);
+			bool have_subcommand = (argc > 1);
 			
-			bool have_command;
-			bool have_subcommand;
-			
-			std::string::size_type pos;
-			pos = message.find(" ", help.size()+1);
-						
-			std::string subcommand;
-			std::string command;
-			
-			have_subcommand = pos != std::string::npos;
-			have_command = (help.size()+1 < message.size());
-			
-			if (have_subcommand) subcommand = message.substr(pos+1);
-			if (have_command) command = message.substr(help.size()+1,message.size()-help.size()+1-(have_subcommand? subcommand.size()+3 : 0));
-			
+			const std::string command = arg1;
+			const std::string subcommand = arg2;
+
 			if (have_command) {
-				if (command == "whisper") {
+				if (command == "whisper" || command == "msg") {
 					add_chat_message("help",0,_("Sends private message. You can't send messages to players that control any side in game. Usage: /whisper [nick] [message]"));
 				} else if (command == "ignore") {
 					if (have_subcommand) {
@@ -1375,48 +1382,35 @@ namespace events{
 			} else {
 				add_chat_message("help",0,_("Commands: whisper ignore. Type /help [command] for more help."));
 			}
-		} else if (message.size() >= ignore.size() && std::equal(ignore.begin(),ignore.end(), message.begin())) {
-
-			static const std::string add = "add";
-			static const std::string remove = "remove";
-			static const std::string list = "list";
-			static const std::string clear = "clear";
-
-			int pos;
-			pos = message.find(" ",ignore.size());
-
-			const std::string arg = message.substr((pos+1), message.size());
-
-			const std::string command = message.substr(ignore.size(),
-					(message.size()-arg.size()-ignore.size()-1));
+		} else if (message.size() > ignore.size() && std::equal(ignore.begin(),ignore.end(), message.begin())) {
 
 			config* cignore;
 
-			if (std::equal(add.begin(),add.end(),command.begin())){
+			if (arg1 == add){
 				if (!preferences::get_prefs()->child("ignore")){
 					preferences::get_prefs()->add_child("ignore");
 				}
 				cignore = preferences::get_prefs()->child("ignore");
-				if(utils::isvalid_username(arg))
+				if(utils::isvalid_username(arg2))
 				{
-					(*cignore)[arg] = "yes";
-					add_chat_message("ignores list",0, _("Added to ignore list: ")+arg,display::MESSAGE_PRIVATE);
+					(*cignore)[arg2] = "yes";
+					add_chat_message("ignores list",0, _("Added to ignore list: ")+arg2,display::MESSAGE_PRIVATE);
 				} else {
-					add_chat_message("ignores list",0, _("Invalid username: ")+arg,display::MESSAGE_PRIVATE);
+					add_chat_message("ignores list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
 				}
 
-			} else if (std::equal(remove.begin(),remove.end(),command.begin())){
+			} else if (arg1 == remove){
 				if ((cignore = preferences::get_prefs()->child("ignore"))){
-					if(utils::isvalid_username(arg))
+					if(utils::isvalid_username(arg2))
 					{
-						(*cignore)[arg] = "no";
-						add_chat_message("ignores list",0, _("Removed from ignore list: ")+arg,display::MESSAGE_PRIVATE);
+						(*cignore)[arg2] = "no";
+						add_chat_message("ignores list",0, _("Removed from ignore list: ")+arg2,display::MESSAGE_PRIVATE);
 					} else {
-						add_chat_message("ignores list",0, _("Invalid username: ")+arg,display::MESSAGE_PRIVATE);
+						add_chat_message("ignores list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
 					}
 				}	
-			} else if (std::equal(list.begin(),list.end(),command.begin())){
-				std::string text = " ";
+			} else if (arg1 == list){
+				std::string text;
 				if ((cignore = preferences::get_prefs()->child("ignore"))){
 					for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
 							i != cignore->values.end(); ++i){
@@ -1424,21 +1418,28 @@ namespace events{
 							text+=i->first+",";
 						}
 					}
-					text.erase(text.length()-1,1);
+					if(!text.empty()){
+						text.erase(text.length()-1,1);
+					}
 				}	
 				add_chat_message("ignores list",0, text,display::MESSAGE_PRIVATE);
-			} else if (std::equal(clear.begin(),clear.end(),command.begin())){
+			} else if (arg1 == clear){
 
 				if ((cignore = preferences::get_prefs()->child("ignore"))){
 					string_map::iterator nick;
 					for(nick= cignore->values.begin() ; nick!= cignore->values.end(); nick++) {
-						(*cignore)[nick->first] = "no";
-						add_chat_message("ignores list",0, _("Removed from ignore list: ")+nick->first,display::MESSAGE_PRIVATE);
+						if((*cignore)[nick->first] != "no") {
+							(*cignore)[nick->first] = "no";
+							add_chat_message("ignores list",0, _("Removed from ignore list: ")+nick->first,display::MESSAGE_PRIVATE);
+						}
 					}
 				}	
 			} else {			
-				add_chat_message("ignores list",0,_("Unknown command: ")+command,display::MESSAGE_PRIVATE);	
+				add_chat_message("ignores list",0,_("Unknown command: ")+arg1,display::MESSAGE_PRIVATE);	
 			}
+		} else if (is_command) {
+			//command not accepted, show help
+			add_chat_message("help",0,_("Commands: whisper ignore. Type /help [command] for more help."));
 		} else {
 			//not a command, send as normal
 			send_chat_message(message, allies_only);
