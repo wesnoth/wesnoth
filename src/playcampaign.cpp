@@ -67,7 +67,9 @@ void play_replay(display& disp, game_state& state, const config& game_config,
 	config starting_pos;
 
 	recorder.set_save_info(state);
-	state = read_game(units_data, &state.snapshot);
+	if (state.snapshot.child("side") != NULL){
+		state = read_game(units_data, &state.snapshot);
+	}
 
 	//see if we load the scenario from the scenario data -- if there is
 	//no snapshot data available from a save, or if the user has selected
