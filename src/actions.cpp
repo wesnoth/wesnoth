@@ -1039,29 +1039,39 @@ void attack(display& gui, const gamemap& map,
 	//if the attacker was invisible, she isn't anymore!
 	static const std::string hides("hides");
 	a->second.set_state(hides,"");
-
+	
+	config dat;
+	{
+		battle_context bc(map, teams, units, state, info, attacker, defender, attack_with);
+		const battle_context::unit_stats& a_stats = bc.get_attacker_stats();
+		const battle_context::unit_stats& d_stats = bc.get_defender_stats();
+		LOG_NG << "firing attack event\n";
+		dat.add_child("first");
+		dat.add_child("second");
+		(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
+		(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
+		game_events::fire("attack",attacker,defender,dat);
+		//the event could have killed either the attacker or
+		//defender, so we have to make sure they still exist
+		a = units.find(attacker);
+		d = units.find(defender);
+		if(a == units.end() || d == units.end()) {
+			return;
+		}
+	}
 	battle_context bc(map, teams, units, state, info, attacker, defender, attack_with);
 	const battle_context::unit_stats& a_stats = bc.get_attacker_stats();
 	const battle_context::unit_stats& d_stats = bc.get_defender_stats();
-
-	LOG_NG << "getting attack statistics\n";
-
-	statistics::attack_context attack_stats(a->second, d->second, a_stats.chance_to_hit, d_stats.chance_to_hit);
 	
-	LOG_NG << "firing attack event\n";
-	config dat;
+	dat.clear();
 	dat.add_child("first");
 	dat.add_child("second");
 	(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
 	(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
-	game_events::fire("attack",attacker,defender,dat);
-	//the event could have killed either the attacker or
-	//defender, so we have to make sure they still exist
-	a = units.find(attacker);
-	d = units.find(defender);
-	if(a == units.end() || d == units.end()) {
-		return;
-	}
+	
+	LOG_NG << "getting attack statistics\n";
+
+	statistics::attack_context attack_stats(a->second, d->second, a_stats.chance_to_hit, d_stats.chance_to_hit);
 	
 	int orig_attacks = a_stats.num_blows;
 	int orig_defends = d_stats.num_blows;
@@ -1136,11 +1146,6 @@ void attack(display& gui, const gamemap& map,
 				const int defender_side = d->second.side();
 				const int attacker_side = a->second.side();
 				LOG_NG << "firing attacker_hits event\n";
-				config dat;
-				dat.add_child("first");
-				dat.add_child("second");
-				(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
-				(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
 				game_events::fire("attacker_hits",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
@@ -1161,11 +1166,6 @@ void attack(display& gui, const gamemap& map,
 				const int defender_side = d->second.side();
 				const int attacker_side = a->second.side();
 				LOG_NG << "firing attacker_misses event\n";
-				config dat;
-				dat.add_child("first");
-				dat.add_child("second");
-				(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
-				(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
 				game_events::fire("attacker_misses",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
@@ -1383,11 +1383,6 @@ void attack(display& gui, const gamemap& map,
 				const int defender_side = d->second.side();
 				const int attacker_side = a->second.side();
 				LOG_NG << "firing defender_hits event\n";
-				config dat;
-				dat.add_child("first");
-				dat.add_child("second");
-				(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
-				(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
 				game_events::fire("defender_hits",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
@@ -1411,11 +1406,6 @@ void attack(display& gui, const gamemap& map,
 				const int defender_side = d->second.side();
 				const int attacker_side = a->second.side();
 				LOG_NG << "firing defender_misses event\n";
-				config dat;
-				dat.add_child("first");
-				dat.add_child("second");
-				(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
-				(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
 				game_events::fire("defender_misses",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
