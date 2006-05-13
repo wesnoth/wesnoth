@@ -1148,7 +1148,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	//if we should recall units that match a certain description
 	else if(cmd == "recall") {
 		LOG_NG << "recalling unit...\n";
-		for(int index = 0; index < int(teams->size()); ++index) {
+		bool unit_recalled = false;
+		for(int index = 0; !unit_recalled && index < int(teams->size()); ++index) {
 			LOG_NG << "for side " << index << "...\n";
 			player_info* const player = state_of_game->get_player((*teams)[index].save_id());
 
@@ -1167,6 +1168,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					gamemap::location loc = cfg_to_loc(cfg);
 					recruit_unit(*game_map,index+1,*units,*u,loc,utils::string_bool(cfg["show"],true) ? NULL : screen,false,true);
 					avail.erase(u);
+					unit_recalled = true;
 					break;
 				}
 			}
