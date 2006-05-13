@@ -82,7 +82,7 @@ unit::unit(const unit& u)
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, 
      const gamestatus* game_status, const std::vector<team>* teams,const config& cfg) : 
 	 movement_(0), hold_position_(false),resting_(false),
-	 facing_(gamemap::location::NORTH_EAST),
+	 facing_(gamemap::location::NORTH_EAST),flying_(false),
 	 anim_(NULL),unit_halo_(0),unit_anim_halo_(0),gamedata_(gamedata), units_(unitmap), map_(map),
 	 gamestatus_(game_status),teams_(teams)
 {
@@ -982,6 +982,9 @@ void unit::read(const config& cfg)
 	if(cfg["max_experience"] != "") {
 		max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
 	}
+	if(cfg["flying"] != "") {
+		flying_ = utils::string_bool(cfg["flying"]);
+	}
 	if(!type_set) {
 		for(config::const_child_itors range = cfg.child_range("attack");
 		    range.first != range.second; ++range.first) {
@@ -1121,6 +1124,7 @@ void unit::write(config& cfg) const
 	cfg["variation"] = variation_;
 
 	cfg["role"] = role_;
+	cfg["flying"] = flying_ ? "yes" : "no";
 
 	config status_flags;
 	for(std::map<std::string,std::string>::const_iterator st = states_.begin(); st != states_.end(); ++st) {
