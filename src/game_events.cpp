@@ -1595,10 +1595,16 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "store_starting_location") {
-		const int side = lexical_cast_default<int>(cfg["side"]);
-		const gamemap::location& loc = game_map->starting_position(side);
+		std::string side = cfg["side"];
+		t_string variable = cfg["variable"];
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		variable = utils::interpolate_variables_into_string(variable, *state_of_game);
+		const int side_num = lexical_cast_default<int>(side,1);
+
+		const gamemap::location& loc = game_map->starting_position(side_num);
 		static const t_string default_store = "location";
-		const t_string& store = cfg["variable"].empty() ? default_store : cfg["variable"];
+		const t_string& store = variable.empty() ? default_store : variable;
 		wassert(state_of_game != NULL);
 		config &loc_store = state_of_game->get_variable_cfg(store);
 		loc.write(loc_store);
@@ -1607,18 +1613,27 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "store_locations") {
 		log_scope("store_locations");
-		const std::string& variable = cfg["variable"];
-		const std::string& terrain = cfg["terrain"];
+		std::string variable = cfg["variable"];
+		std::string terrain = cfg["terrain"];
+		std::string x = cfg["x"];
+		std::string y = cfg["y"];
+		std::string radius_str = cfg["radius"];
+		wassert(state_of_game != NULL);
+		variable = utils::interpolate_variables_into_string(variable, *state_of_game);
+		terrain = utils::interpolate_variables_into_string(terrain, *state_of_game);
+		x = utils::interpolate_variables_into_string(x, *state_of_game);
+		y = utils::interpolate_variables_into_string(y, *state_of_game);
+		radius_str = utils::interpolate_variables_into_string(radius_str, *state_of_game);
 		const vconfig unit_filter = cfg.child("filter");
 
 		state_of_game->variables.clear_children(variable);
 
-		std::vector<gamemap::location> locs = parse_location_range(cfg["x"],cfg["y"]);
+		std::vector<gamemap::location> locs = parse_location_range(x,y);
 		if(locs.size() > MaxLoop) {
 			locs.resize(MaxLoop);
 		}
 
-		const size_t radius = minimum<size_t>(MaxLoop,lexical_cast_default<size_t>(cfg["radius"]));
+		const size_t radius = minimum<size_t>(MaxLoop,lexical_cast_default<size_t>(radius_str));
 		std::set<gamemap::location> res;
 		get_tiles_radius(*game_map, locs, radius, res);
 
@@ -1643,11 +1658,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//command to take control of a village for a certain side
 	else if(cmd == "capture_village") {
-		const int side = lexical_cast_default<int>(cfg["side"]);
-
+		std::string side = cfg["side"];
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		const int side_num = lexical_cast_default<int>(side);
 		//if 'side' is 0, then it will become an invalid index, and so
 		//the village will become neutral.
-		const size_t team_num = size_t(side-1);
+		const size_t team_num = size_t(side_num-1);
 
 		const std::vector<gamemap::location> locs(multiple_locs(cfg));
 
