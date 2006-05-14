@@ -877,6 +877,7 @@ void unit::read(const config& cfg)
 	wassert(gamedata_ != NULL);
 	description_ = cfg["unit_description"];
 	custom_unit_description_ = cfg["user_description"];
+	std::string custom_unit_desc = cfg["unit_description"];
 	
 	underlying_description_ = cfg["description"];
 	if(description_.empty()) {
@@ -985,6 +986,9 @@ void unit::read(const config& cfg)
 	}
 	if(cfg["flying"] != "") {
 		flying_ = utils::string_bool(cfg["flying"]);
+	}
+	if(custom_unit_desc != "") {
+		cfg_["unit_description"] = custom_unit_desc;
 	}
 	if(!type_set) {
 		for(config::const_child_itors range = cfg.child_range("attack");
