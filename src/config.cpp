@@ -537,22 +537,31 @@ config config::merge_with(const config& c) const
 	child_map::const_iterator i;
 	for(i = child_changes.begin(); i != child_changes.end(); ++i) {
 		
+		child_map::iterator itor = n.children.find(i->first);
 		size_t index = 0;
-		for(const_child_iterator j = i->second.begin(); j != i->second.end(); ++j) {
+		size_t last_index = itor != n.children.end() ? itor->second.size() : 0;
+		for(const_child_iterator j = i->second.begin(); j != i->second.end();) {
 			const config* item = *j;
 			
 			if(i->first.empty()) {
+				++j;
 				continue;
 			}
 
-			const child_map::iterator itor = n.children.find(i->first);
 			if(itor != n.children.end() && index < itor->second.size()) {
 				*(itor->second[index]) = itor->second[index]->merge_with(*item);
 			} else {
+				if(j + 1 == i->second.end() && index >= last_index) {
+					break;
+				}
 				n.add_child(i->first,*item);
+				itor = n.children.find(i->first);
 			}
 
 			index++;
+			if(j + 1 != i->second.end()) {
+				++j;
+			}
 		}
 	}
 	return n;
