@@ -1306,11 +1306,15 @@ namespace events{
 		static const std::string whisper2 = "/msg";
 		static const std::string ignore = "/ignore";
 		static const std::string help = "/help";
+		static const std::string emote = "/emote";
+		static const std::string emote2 = "/me";
 
 		static const std::string add = "add";
 		static const std::string remove = "remove";
 		static const std::string list = "list";
 		static const std::string clear = "clear";
+
+		static const std::string help_chat_help = _("Commands: whisper ignore emote. Type /help [command] for more help.");
 
 		bool is_command = (message.at(0) == '/');
 		unsigned int argc = 0;
@@ -1325,12 +1329,14 @@ namespace events{
 					++argc;
 					std::string::size_type substr_len, sp2;
 					sp2 = message.find(' ',arg1_start);
-					substr_len = (sp2 == std::string::npos) ? std::string::npos : sp2 - arg1_start;
+					substr_len = (sp2 == std::string::npos) ? sp2 : sp2 - arg1_start;
 					arg1 = message.substr(arg1_start,substr_len);
-					if(sp2 != std::string::npos
-					&& message.find_first_not_of(' ',sp2) != std::string::npos) {
-						++argc;
-						arg2 = message.substr(sp2+1);
+					if(sp2 != std::string::npos) {
+						std::string::size_type arg2_end = message.find_last_not_of(' ');
+						if(arg2_end > sp2) {
+							++argc;
+							arg2 = message.substr(sp2+1, arg2_end - sp2);
+						}
 					}
 				}
 			}
@@ -1338,7 +1344,7 @@ namespace events{
 
 		
 		if(cmd == query && argc > 0) {
-			const std::string args = message.substr(query.size());
+			const std::string args = (argc < 2) ? arg1 : arg1 + " " + arg2;
 			send_chat_query(args);
 		} else if ((cmd == whisper || cmd == whisper2) && argc > 1 /*&& is_observer()*/) {
 			config cwhisper,data;
@@ -1376,11 +1382,13 @@ namespace events{
 					} else {
 						add_chat_message("help",0,_("Ignore messages from players on this list. Usage: /ignore [subcommand] [argument](optional) Subcommands: add remove list clear. Type /help ignore [subcommand] for more info."));
 					}
+				} else if (command == "emote" || command == "me") {
+					add_chat_message("help",0,_("Send an emotion or personal action in chat. Usage: /emote [message]"));
 				} else {
 					add_chat_message("help",0,_("Unknown command"));
 				}
 			} else {
-				add_chat_message("help",0,_("Commands: whisper ignore. Type /help [command] for more help."));
+				add_chat_message("help",0,help_chat_help);
 			}
 		} else if (message.size() > ignore.size() && std::equal(ignore.begin(),ignore.end(), message.begin())) {
 
@@ -1437,9 +1445,12 @@ namespace events{
 			} else {			
 				add_chat_message("ignores list",0,_("Unknown command: ")+arg1,display::MESSAGE_PRIVATE);	
 			}
+		} else if ((cmd == emote || cmd == emote2) && argc > 0) {
+			//emote message
+			send_chat_message("/me" + message.substr(cmd.size()), allies_only);
 		} else if (is_command) {
-			//command not accepted, show help
-			add_chat_message("help",0,_("Commands: whisper ignore. Type /help [command] for more help."));
+			//command not accepted, show help chat help
+			add_chat_message("help",0,help_chat_help);
 		} else {
 			//not a command, send as normal
 			send_chat_message(message, allies_only);
