@@ -1016,7 +1016,7 @@ namespace events{
 
 					partmoved_units = true;
 				}
-				if(un->second.has_moved() && ! un->second.has_goto()) {
+				if(un->second.has_moved()) {
 					some_units_have_moved = true;
 				}
 			}
