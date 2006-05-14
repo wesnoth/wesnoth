@@ -57,6 +57,7 @@ void playmp_controller::before_human_turn(){
 void playmp_controller::play_human_turn(){
 	int cur_ticks = SDL_GetTicks();
 
+	gui_->enable_menu("endturn", true);
 	while(!end_turn_) {
 
 		try {
