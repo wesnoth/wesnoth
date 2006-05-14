@@ -280,6 +280,7 @@ void unit::advance_to(const unit_type* t)
 	extra_animations_ = t->extra_animations_;
 	death_animations_ = t->death_animations_;
 	movement_animations_ = t->movement_animations_;
+	standing_animations_ = t->standing_animations_;
 	flag_rgb_ = t->flag_rgb();
 	
 	backup_state();
@@ -1082,6 +1083,14 @@ void unit::read(const config& cfg)
 			movement_animations_.push_back(movement_animation(absolute_image()));
 			// always have a movement animation
 		}
+		const config::child_list& standing_anims = cfg_.get_children("standing_anim");
+		for(config::child_list::const_iterator standing_anim = standing_anims.begin(); standing_anim != standing_anims.end(); ++standing_anim) {
+			standing_animations_.push_back(standing_animation(**standing_anim));
+		}
+		if(standing_animations_.empty()) {
+			standing_animations_.push_back(standing_animation(absolute_image()));
+			// always have a standing animation
+		}
 	}
 }
 void unit::write(config& cfg) const
@@ -1252,7 +1261,7 @@ void unit::set_standing(const display &disp,const gamemap::location& loc)
 		delete anim_;
 		anim_ = NULL;
 	}
-	anim_ = new unit_animation(absolute_image());
+	anim_ = new standing_animation(stand_animation(disp.get_map().underlying_union_terrain(loc),facing_));
 	anim_->start_animation(anim_->get_first_frame_time(),unit_animation::INFINITE_CYCLES,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
@@ -2515,6 +2524,26 @@ const movement_animation& unit::move_animation(const std::string terrain,gamemap
 	std::vector<const movement_animation*> options;
 	int max_val = -1;
 	for(std::vector<movement_animation>::const_iterator i = movement_animations_.begin(); i != movement_animations_.end(); ++i) {
+		int matching = i->matches(terrain,dir);
+		if(matching == max_val) {
+			options.push_back(&*i);
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(&*i);
+		}
+	}
+
+	wassert(!options.empty());
+	return *options[rand()%options.size()];
+}
+
+const standing_animation& unit::stand_animation(const std::string terrain,gamemap::location::DIRECTION dir) const
+{
+	//select one of the matching animations at random
+	std::vector<const standing_animation*> options;
+	int max_val = -1;
+	for(std::vector<standing_animation>::const_iterator i = standing_animations_.begin(); i != standing_animations_.end(); ++i) {
 		int matching = i->matches(terrain,dir);
 		if(matching == max_val) {
 			options.push_back(&*i);
