@@ -75,6 +75,15 @@ public:
 	///implement their AI algorithm in this function
 	virtual void play_turn() = 0;
 
+	struct defensive_position {
+		location loc;
+		int chance_to_hit;
+		double vulnerability, support;
+	};
+
+	virtual defensive_position const& best_defensive_position(const location& unit,
+		const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const { static defensive_position dummy_dp; return dummy_dp; }
+
 	///functions which return a reference to the 'team' object for the AI
 	team& current_team();
 	const team& current_team() const;

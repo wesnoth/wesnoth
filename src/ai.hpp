@@ -37,13 +37,7 @@ public:
 		TYPE type;
 	};
 
-	struct defensive_position {
-		location loc;
-		int chance_to_hit;
-		double vulnerability, support;
-	};
-
-	const defensive_position& best_defensive_position(const location& unit,
+	defensive_position const& best_defensive_position(const location& unit,
 			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const;
 	void invalidate_defensive_position_cache();
 
@@ -106,9 +100,9 @@ protected:
 		void analyze(const gamemap& map, unit_map& units, 
 					 const std::vector<team>& teams,
 					 const gamestatus& status, const game_data& gamedata,
-					 ai& ai_obj,
-					 const ai::move_map& dstsrc, const ai::move_map& srcdst,
-					 const ai::move_map& enemy_dstsrc);
+					 ai_interface& ai_obj,
+					 const ai_interface::move_map& dstsrc, const ai_interface::move_map& srcdst,
+					 const ai_interface::move_map& enemy_dstsrc);
 
 		double rating(double aggression, class ai& ai_obj) const;
 
