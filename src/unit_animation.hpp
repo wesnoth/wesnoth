@@ -88,15 +88,5 @@ class movement_animation:public unit_animation
 	private:
 };
 
-class standing_animation:public unit_animation
-{
-	public:
-		explicit standing_animation(const config& cfg):unit_animation(cfg){};
-		explicit standing_animation(const std::string& image):
-			unit_animation(image,0,150){};
-
-	private:
-};
-
 
 #endif

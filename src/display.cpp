@@ -2048,13 +2048,9 @@ void display::invalidate_animations()
 		for(int y = topleft.y; y <= bottomright.y; ++y) {
 			gamemap::location loc(x,y);
 			if(builder_.update_animation(loc) || (map_.is_village(loc) && animate_flags)) {
-				invalidate(loc);
+				invalidated_.insert(loc);
 			}
 		}
-	}
-	unit_map::iterator unit;
-	for(unit=units_.begin() ; unit != units_.end() ; unit++) {
-		invalidate(unit->first);
 	}
 
 
