@@ -47,62 +47,8 @@ std::string recruit_unit(const gamemap& map, int team, unit_map& units,
 		unit u, gamemap::location& recruit_location,
 		display *disp=NULL, bool need_castle=true, bool full_movement=false);
 
-//a structure which defines all the statistics for a potential
-//battle that could take place.
-struct battle_stats
-{
-	int attacker_hp, defender_hp;
-	int chance_to_hit_attacker, chance_to_hit_defender;
-	int damage_attacker_takes, damage_defender_takes;
-	int amount_attacker_drains, amount_defender_drains;
-	int ndefends, nattacks;
-	int attack_with, defend_with;
-	bool attacker_plague, defender_plague;
-        std::string attacker_plague_type, defender_plague_type;
-	bool attacker_slows, defender_slows;
-	int rounds;
-	bool defender_strikes_first;
-	bool attacker_poisons, defender_poisons;
-	bool attacker_stones, defender_stones;
-};
-
-struct battle_stats_strings
-{
-	std::string attack_name, defend_name;
-	std::string attack_type, defend_type;
-	std::string attack_special, defend_special;
-	std::string range;
-	std::string attack_icon, defend_icon;
-	std::vector<std::string> attack_calculations, defend_calculations;
-};
-
-//evaluate_battle_stats: a function which, if given an attacker
-//and defender, and the number of a weapon to use, will report
-//the statistics if that battle were to take place.
-//
-//attacker_terrain_override allows a different terrain to the
-//one currently stood on by the attacker to be used in calculating
-//the statistics. This is useful if one wants to look at the
-//statistics if an attacker were to attack from one of several
-//different locations.
-//
-//if include_strings is false, then none of the strings in
-//battle_stats will be populated, and the function will run
-//substantially faster.
-battle_stats evaluate_battle_stats(const gamemap& map,
-                                   std::vector<team>& teams,
-                                   const gamemap::location& attacker,
-                                   const gamemap::location& defender,
-                                   int attack_with,
-                                   units_map& units,
-                                   const gamestatus& state,
-                                   const game_data& gamedata,
-                                   gamemap::TERRAIN attacker_terrain_override = 0,
-                                   battle_stats_strings *strings = NULL);
-
-
 /* The battle_context class computes the statistics of a battle between an
- * attacker and a defender unit. It is meant as a replacement of battle_stats.
+ * attacker and a defender unit.
  */
 class battle_context
 {

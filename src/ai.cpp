@@ -96,26 +96,10 @@ protected:
 	}
 
 	int choose_weapon(const location& attacker, const location& defender) {
-		const unit_map::const_iterator att = get_info().units.find(attacker);
-        wassert(att != get_info().units.end());
-
-        const std::vector<attack_type>& attacks = att->second.attacks();
-
-        double best_attack_rating = 0.0;
-        int best_attack = -1;
-        for(size_t n = 0; n != attacks.size(); ++n) {
-		if (attacks[n].attack_weight() > 0){
-			const battle_stats stats = evaluate_battle_stats(get_info().map, get_info().teams, attacker, defender, n, get_info().units, get_info().state, get_info().gameinfo);
-			const double attack_rating = stats.damage_defender_takes
-				*stats.nattacks*stats.chance_to_hit_defender*attacks[n].attack_weight();
-			if(best_attack == -1 || attack_rating > best_attack_rating) {
-		best_attack = n;
-		best_attack_rating = attack_rating;
-		}
-		   }
-		}
-
-		return best_attack;
+		std::vector<battle_context> bc_vector;
+		return best_attack_weapon(get_info().map, get_info().teams,
+								  get_info().units, get_info().state,
+								  get_info().gameinfo, attacker, defender, bc_vector);
 	}
 
 	void get_villages() {
@@ -593,8 +577,9 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 				const unit_map::const_iterator itor = units_.find(*adj_i);
 				if(itor != units_.end() && current_team().is_enemy(itor->second.side()) &&
 				   !itor->second.incapacitated()) {
-					battle_stats stats;
-					const int weapon = choose_weapon(res,itor->first,stats,0);
+					std::vector<battle_context> bc_vector;
+					const int weapon = best_attack_weapon(map_, teams_, units_, state_,
+														  gameinfo_, res, *adj_i, bc_vector);
 					attack_enemy(res,itor->first,weapon);
 					break;
 				}
@@ -1373,34 +1358,6 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 
 		LOG_AI << "move: " << move.first << " -> " << move.second << '\n';
 
-		//search to see if there are any enemy units next
-		//to the tile which really should be attacked once the move is done.
-		gamemap::location adj[6];
-		get_adjacent_tiles(move.second,adj);
-		battle_stats bat_stats;
-		gamemap::location target;
-		int weapon = -1;
-
-		for(int n = 0; n != 6; ++n) {
-			const unit_map::iterator enemy = find_visible_unit(units_,adj[n],
-					map_,
-					teams_,current_team());
-
-			if(enemy != units_.end() &&
-			   current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
-				const int res = choose_weapon(move.first,adj[n],bat_stats,
-				                       map_[move.second.x][move.second.y]);
-
-				//current behavior is to only make risk-free attacks
-				if(bat_stats.damage_attacker_takes == 0) {
-					weapon = res;
-					target = adj[n];
-					break;
-				}
-			}
-		}
-
-
 		const location arrived_at = move_unit(move.first,move.second,possible_moves);
 
 		//we didn't arrive at our intended destination. We return true, meaning that
@@ -1410,12 +1367,35 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 			return true;
 		}
 
-		const unit_map::const_iterator u_it = units_.find(move.second);
-		const unit_map::const_iterator un_it = units_.find(arrived_at);
+		const unit_map::const_iterator u_it = units_.find(arrived_at);
+		// Event could have done anything: check
+		if (u_it == units_.end() || u_it->second.incapacitated()) {
+			LOG_STREAM(warn, ai) << "stolen or incapacitated\n";
+		} else {
+			//search to see if there are any enemy units next
+			//to the tile which really should be attacked now the move is done.
+			gamemap::location adj[6];
+			get_adjacent_tiles(arrived_at,adj);
+			gamemap::location target;
 
-		//if we're going to attack someone
-		if(u_it != units_.end() && !u_it->second.incapacitated() && weapon != -1) {
-			attack_enemy(move.second,target,weapon);
+			for(int n = 0; n != 6; ++n) {
+				const unit_map::iterator enemy = find_visible_unit(units_,adj[n],
+																   map_,
+																   teams_,current_team());
+
+				if(enemy != units_.end() &&
+				   current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
+					std::vector<battle_context> bc_vector;
+					// FIXME: Must inform this we are cautious for weapon selection.
+					const int res = best_attack_weapon(map_, teams_, units_, state_, gameinfo_,
+													   arrived_at, adj[n], bc_vector);
+					//current behavior is to only make risk-free attacks
+					if (bc_vector[res].get_defender_stats().damage == 0) {
+						attack_enemy(arrived_at,adj[n],res);
+						break;
+					}
+				}
+			}
 		}
 
 		//don't allow any other units to move onto the tile our unit

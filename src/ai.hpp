@@ -26,9 +26,6 @@ public:
 
 	virtual void play_turn();
 
-	virtual int choose_weapon(const location& att, const location& def,
-	                          battle_stats& cur_stats, gamemap::TERRAIN terrain, bool use_cache=false);
-
 	struct target {
 		enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS, SUPPORT };
 
@@ -106,9 +103,12 @@ protected:
 
 	struct attack_analysis
 	{
-		void analyze(const gamemap& map, std::map<location,unit>& units, int sims,
-		             class ai& ai_obj, const move_map& dstsrc, const move_map& srcdst,
-		             const move_map& enemy_dstsrc);
+		void analyze(const gamemap& map, unit_map& units, 
+					 const std::vector<team>& teams,
+					 const gamestatus& status, const game_data& gamedata,
+					 ai& ai_obj,
+					 const ai::move_map& dstsrc, const ai::move_map& srcdst,
+					 const ai::move_map& enemy_dstsrc);
 
 		double rating(double aggression, class ai& ai_obj) const;
 

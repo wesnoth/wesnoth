@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "ai.hpp"
+#include "attack_prediction.hpp"
 #include "game_config.hpp"
 #include "gamestatus.hpp"
 #include "wassert.hpp"
@@ -227,7 +228,7 @@ void ai::do_attack_analysis(
 
 			cur_analysis.is_surrounded = is_surrounded;
 
-			cur_analysis.analyze(map_, units_, 50, *this, dstsrc, srcdst, enemy_dstsrc);
+			cur_analysis.analyze(map_, units_, teams_, state_, gameinfo_, *this, dstsrc, srcdst, enemy_dstsrc);
 
 			if(cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
 
@@ -260,7 +261,6 @@ struct battle_type {
 	const gamemap::location defender;
 	const gamemap::TERRAIN terrain;
 	int weapon;
-	battle_stats stats;
 };
 
 bool operator<(const battle_type& a, const battle_type& b)
@@ -279,83 +279,10 @@ bool operator==(const battle_type& a, const battle_type& b)
 
 std::set<battle_type> weapon_choice_cache;
 
-int ai::choose_weapon(const location& att, const location& def,
-					  battle_stats& cur_stats, gamemap::TERRAIN terrain, bool use_cache)
-{
-	const std::map<location,unit>::const_iterator itor = units_.find(att);
-	if(itor == units_.end())
-		return -1;
-
-	static int cache_hits = 0;
-	static int cache_misses = 0;
-
-	if(use_cache == false) {
-		weapon_choice_cache.clear();
-	}
-
-	battle_type battle(att,def,terrain);
-	const std::set<battle_type>::const_iterator cache_itor = weapon_choice_cache.find(battle);
-
-	if(cache_itor != weapon_choice_cache.end()) {
-		wassert(*cache_itor == battle);
-
-		++cache_hits;
-		cur_stats = cache_itor->stats;
-
-		if(!(size_t(cache_itor->weapon) < itor->second.attacks().size())) {
-			LOG_STREAM(err, ai) << "cached illegal weapon: " << cache_itor->weapon
-			          << "/" << itor->second.attacks().size() << "\n";
-		}
-
-		wassert(size_t(cache_itor->weapon) < itor->second.attacks().size());
-		return cache_itor->weapon;
-	}
-
-	++cache_misses;
-
-	if((cache_misses%100) == 0) {
-		LOG_AI << "cache_stats: " << cache_hits << ":" << cache_misses << " " << weapon_choice_cache.size() << "\n";
-	}
-
-	int current_choice = -1;
-	double current_rating = 0.0;
-	const std::vector<attack_type>& attacks = itor->second.attacks();
-	wassert(!attacks.empty());
-
-	const unit_map::const_iterator d_itor = units_.find(def);
-	int d_hitpoints = d_itor->second.hitpoints();
-	int a_hitpoints = itor->second.hitpoints();
-
-	for(size_t a = 0; a != attacks.size(); ++a) {
-		if (attacks[a].attack_weight() > 0){
-			const battle_stats stats = evaluate_battle_stats(map_, teams_, att, def, a, units_,
-		                                                 state_, gameinfo_, terrain);
-
-			//TODO: improve this rating formula!
-			const double rating =
-			   (double(stats.chance_to_hit_defender)/100.0)*
-			       minimum<int>(stats.damage_defender_takes,d_hitpoints)*stats.nattacks *
-				       attacks[a].attack_weight() -
-			   (double(stats.chance_to_hit_attacker)/100.0)*
-			               minimum<int>(stats.damage_attacker_takes,a_hitpoints)*stats.ndefends;
-			if(rating > current_rating || current_choice == -1) {
-				current_choice = a;
-				current_rating = rating;
-				cur_stats = stats;
-			}
-		}
-	}
-
-	wassert(size_t(current_choice) < attacks.size());
-
-	battle.stats = cur_stats;
-	battle.weapon = current_choice;
-	weapon_choice_cache.insert(battle);
-
-	return current_choice;
-}
-
-void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_sims, ai& ai_obj,
+void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, 
+								  const std::vector<team>& teams,
+								  const gamestatus& status, const game_data& gamedata,
+								  ai& ai_obj,
                                   const ai::move_map& dstsrc, const ai::move_map& srcdst,
                                   const ai::move_map& enemy_dstsrc)
 {
@@ -381,210 +308,125 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 	                 double(defend_it->second.max_experience()))*target_value;
 	target_starting_damage = defend_it->second.max_hitpoints() -
 	                         defend_it->second.hitpoints();
-	chance_to_kill = 0.0;
-	avg_damage_inflicted = 0.0;
-	avg_damage_taken = 0.0;
-	resources_used = 0.0;
-	terrain_quality = 0.0;
-	avg_losses = 0.0;
-
-	const int target_max_hp = defend_it->second.max_hitpoints();
-	const int target_hp = defend_it->second.hitpoints();
-	static std::vector<int> hitpoints;
-	static std::vector<battle_stats> stats;
-
-	hitpoints.clear();
-	stats.clear();
-	weapons.clear();
-
-	std::vector<std::pair<location,location> >::const_iterator m;
-	for(m = movements.begin(); m != movements.end(); ++m) {
-		battle_stats bat_stats;
-		const int weapon = ai_obj.choose_weapon(m->first,target, bat_stats, map[m->second.x][m->second.y],true);
-
-		wassert(weapon != -1);
-		weapons.push_back(weapon);
-
-		stats.push_back(bat_stats);
-		hitpoints.push_back(units.find(m->first)->second.hitpoints());
-	}
-
-	for(int j = 0; j != num_sims; ++j) {
-
-		int defenderxp = 0;
-
-		bool defender_slowed = utils::string_bool(defend_it->second.get_state("slowed"));
-
-		int defhp = target_hp;
-		for(size_t i = 0; i != movements.size() && defhp; ++i) {
-			battle_stats& stat = stats[i];
-			int atthp = hitpoints[i];
-
-			int attacks = stat.nattacks;
-			int defends = stat.ndefends;
-
-			unit_map::const_iterator att = units.find(movements[i].first);
-			double cost = att->second.cost();
-
-			if(att->second.can_recruit()) {
-				uses_leader = true;
-			}
-
-			const bool on_village = map.is_village(movements[i].second);
-			bool attacker_slowed = utils::string_bool(att->second.get_state("slowed"));
-
-			//up to double the value of a unit based on experience
-			cost += (double(att->second.experience())/
-			         double(att->second.max_experience()))*cost;
-
-			terrain_quality += (double(stat.chance_to_hit_attacker)/100.0)*cost * (on_village ? 0.5 : 1.0);
-			resources_used += cost;
-
-			bool defender_strikes_first = stat.defender_strikes_first;
-
-			while(attacks || defends) {
-				if(attacks && !defender_strikes_first) {
-					const int roll = rand()%100;
-					if(roll < stat.chance_to_hit_defender) {
-						defhp -= stat.damage_defender_takes;
-						atthp += stat.amount_attacker_drains;
-						if(defhp <= 0) {
-							defhp = 0;
-							break;
-						}
-
-						if(atthp > hitpoints[i]) {
-							atthp = hitpoints[i];
-						}
-
-						if(stat.attacker_slows  && !defender_slowed) {
-							defender_slowed = true;
-							stat.damage_defender_takes = round_damage(stat.damage_defender_takes,1,2);
-							stat.amount_attacker_drains = round_damage(stat.amount_attacker_drains,1,2);
-						}
-
-					}
-
-					--attacks;
-				}
-
-				defender_strikes_first = false;
-
-				if(defends) {
-					const int roll = rand()%100;
-					if(roll < stat.chance_to_hit_attacker) {
-						atthp -= stat.damage_attacker_takes;
-						defhp += stat.amount_defender_drains;
-						if(atthp <= 0) {
-							atthp = 0;
-
-							//penalty for allowing plague is a 'negative' kill
-							if(stat.defender_plague) {
-								chance_to_kill -= 1.0;
-							}
-							break;
-						}
-
-						if(defhp > target_max_hp) {
-							defhp = target_max_hp;
-						}
-						if(stat.defender_slows && !attacker_slowed) {
-							attacker_slowed = true;
-							stat.damage_attacker_takes = round_damage(stat.damage_attacker_takes,1,2);
-							stat.amount_defender_drains = round_damage(stat.amount_defender_drains,1,2);
-						}
-					}
-
-					--defends;
-				}
-			}
-
-			const int xp = defend_it->second.level() * (defhp <= 0 ? game_config::kill_experience : 1);
-
-			const int xp_for_advance = att->second.max_experience() - att->second.experience();
-
-			//the reward for advancing a unit is to get a 'negative' loss of that unit
-			if(att->second.advances_to().empty() == false) {
-				if(xp >= xp_for_advance) {
-					avg_losses -= att->second.cost();
-
-					//ignore any damage done to this unit
-					atthp = hitpoints[i];
-				} else {
-					//the reward for getting a unit closer to advancement is to get
-					//the proportion of remaining experience needed, and multiply
-					//it by a quarter of the unit cost. This will cause the AI
-					//to heavily favor getting xp for close-to-advance units.
-					avg_losses -= (att->second.cost()*xp)/(xp_for_advance*4);
-				}
-			}
-
-			if(defhp <= 0) {
-				//the reward for killing with a unit that
-				//plagues is to get a 'negative' loss of that unit
-				if(stat.attacker_plague) {
-					avg_losses -= att->second.cost();
-				}
-
-				break;
-			} else if(atthp == 0) {
-				avg_losses += cost;
-			}
-
-			//if the attacker moved onto a village, reward it for doing so
-			else if(on_village) {
-				atthp += game_config::poison_amount*2; //double reward to emphasize getting onto villages
-			}
-
-			defenderxp += (atthp == 0 ? game_config::kill_experience:1)*att->second.level();
-
-			avg_damage_taken += hitpoints[i] - atthp;
-		}
-
-		//penalty for allowing advancement is a 'negative' kill, and
-		//defender's hitpoints get restored to maximum
-		if(defend_it->second.advances_to().empty() == false &&
-		   defend_it->second.experience() < defend_it->second.max_experience() &&
-		   defend_it->second.experience() + defenderxp >=
-		   defend_it->second.max_experience()) {
-			chance_to_kill -= 1.0;
-			defhp = defend_it->second.hitpoints();
-		} else if(defhp == 0) {
-			chance_to_kill += 1.0;
-		} else if(map.gives_healing(defend_it->first)) {
-			defhp += map.gives_healing(defend_it->first);
-			if(defhp > target_hp)
-				defhp = target_hp;
-		}
-
-		avg_damage_inflicted += target_hp - defhp;
-	}
+	combatant *prev_def = NULL;
 
 	//calculate the 'alternative_terrain_quality' -- the best possible defensive values
 	//the attacking units could hope to achieve if they didn't attack and moved somewhere.
 	//this is could for comparative purposes to see just how vulnerable the AI is
 	//making itself
-
 	alternative_terrain_quality = 0.0;
 	double cost_sum = 0.0;
 	for(size_t i = 0; i != movements.size(); ++i) {
 		const unit_map::const_iterator att = units.find(movements[i].first);
 		const double cost = att->second.cost();
 		cost_sum += cost;
-		alternative_terrain_quality += cost*ai_obj.best_defensive_position(att->first,dstsrc,srcdst,enemy_dstsrc).chance_to_hit;
+		alternative_terrain_quality += cost*ai_obj.best_defensive_position(movements[i].first,dstsrc,srcdst,enemy_dstsrc).chance_to_hit;
 	}
-
 	alternative_terrain_quality /= cost_sum*100;
 
-	chance_to_kill /= num_sims;
-	avg_damage_inflicted /= num_sims;
-	avg_damage_taken /= num_sims;
-	terrain_quality /= resources_used;
-	resources_used /= num_sims;
-	avg_losses /= num_sims;
+	avg_damage_inflicted = 0.0;
+	avg_damage_taken = 0.0;
+	resources_used = 0.0;
+	terrain_quality = 0.0;
+	avg_losses = 0.0;
+	chance_to_kill = 0.0;
+	weapons.clear();
 
-	if(uses_leader) {
-		leader_threat = false;
+	double def_avg_experience = 0.0;
+	double first_chance_kill = 0.0;
+
+	double prob_dead_already = 0.0;
+	wassert(!movements.empty());
+	std::vector<std::pair<location,location> >::const_iterator m;
+	for (m = movements.begin(); m != movements.end(); ++m) {
+		// We fix up units map to reflect what this would look like.
+		unit_map::iterator att_it = units.find(m->first);
+		unit att_u = att_it->second;
+		units.erase(att_it);
+		units.insert(std::pair<location,unit>(m->second, att_u));
+
+		if (att_u.can_recruit()) {
+			uses_leader = true;
+			leader_threat = false;
+		}
+		std::vector<battle_context> bc_vector;
+		int weapon = best_attack_weapon(map, teams, units, status, gamedata, m->second,
+										target, bc_vector);
+
+		wassert(weapon != -1);
+		weapons.push_back(weapon);
+		combatant att(bc_vector[weapon].get_attacker_stats());
+		combatant *def = new combatant(bc_vector[weapon].get_defender_stats(), prev_def);
+		delete prev_def;
+		prev_def = def;
+
+		att.fight(*def);
+		double prob_killed = def->hp_dist[0] - prob_dead_already;
+		prob_dead_already = def->hp_dist[0];
+
+		avg_damage_taken += att_u.hitpoints() - att.average_hp();
+
+		double cost = att_u.cost();
+		const bool on_village = map.is_village(m->second);
+		//up to double the value of a unit based on experience
+		cost += (double(att_u.experience())/double(att_u.max_experience()))*cost;
+		resources_used += cost;
+		avg_losses += cost * att.hp_dist[0];
+
+		//double reward to emphasize getting onto villages
+		if (on_village) {
+			avg_damage_taken -= game_config::poison_amount*2;
+		}
+
+		terrain_quality += (double(bc_vector[weapon].get_defender_stats().chance_to_hit)/100.0)*cost * (on_village ? 0.5 : 1.0);
+
+		//the reward for advancing a unit is to get a 'negative' loss of that unit
+		if (!att_u.advances_to().empty()) {
+			int xp_for_advance = att_u.max_experience() - att_u.experience();
+			if (defend_it->second.level() > xp_for_advance)
+				avg_losses -= att_u.cost() * (1.0 - prob_dead_already);
+			else if (defend_it->second.level() * game_config::kill_experience > xp_for_advance)
+				avg_losses -= att_u.cost() * prob_killed;
+
+			//the reward for getting a unit closer to advancement is to get
+			//the proportion of remaining experience needed, and multiply
+			//it by a quarter of the unit cost. This will cause the AI
+			//to heavily favor getting xp for close-to-advance units.
+			avg_losses -= (att_u.cost()*defend_it->second.level())/(xp_for_advance*4);
+
+			//the reward for killing with a unit that
+			//plagues is to get a 'negative' loss of that unit
+			if (bc_vector[weapon].get_attacker_stats().plagues) {
+				avg_losses -= prob_killed * att_u.cost();
+			}
+		}
+
+		// FIXME: attack_prediction.cpp should understand advancement directly.
+		// For each level of attacker def gets 1 xp or kill_experience.
+		def_avg_experience += att_u.level() *
+			(1.0 - att.hp_dist[0] + game_config::kill_experience * att.hp_dist[0]);
+		if (m == movements.begin()) {
+			first_chance_kill = def->hp_dist[0];
+		}
+	}
+
+	if (!defend_it->second.advances_to().empty() &&
+		def_avg_experience >= defend_it->second.max_experience() - defend_it->second.experience()) {
+		// It's likely to advance: only if we can kill with first blow.
+		chance_to_kill = first_chance_kill;
+		// Negative average damage (it will advance).
+		avg_damage_inflicted = defend_it->second.hitpoints() - defend_it->second.max_hitpoints();
+	} else {
+		chance_to_kill = prev_def->hp_dist[0];
+		avg_damage_inflicted = defend_it->second.hitpoints() - prev_def->average_hp();
+	}
+
+	// Restore the units to their original positions.
+	for (m = movements.begin(); m != movements.end(); ++m) {
+		unit_map::iterator att_it = units.find(m->second);
+		unit att_u = att_it->second;
+		units.erase(att_it);
+		units.insert(std::pair<location,unit>(m->first, att_u));
 	}
 }
 
