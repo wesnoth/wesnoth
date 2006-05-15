@@ -12,7 +12,7 @@
 struct combatant
 {
 	// Construct a combatant.
-	combatant(const battle_context::unit_stats &u);
+	combatant(const battle_context::unit_stats &u, combatant *prev = NULL);
 
 	// Simulate a fight!  Can be called multiple times for cumulative calculations.
 	void fight(combatant &opponent);
@@ -30,7 +30,7 @@ struct combatant
 	double slowed;
 
 	// What's the average hp (weighted average of hp_dist).
-	unsigned int average_hp() const;
+	double average_hp() const;
 
 private:
 	// We must adjust for swarm after every combat.
