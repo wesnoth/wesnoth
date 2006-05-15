@@ -250,15 +250,15 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				player_info *player=gamestate_.get_player(i->save_id());
 
 				const int remaining_gold = i->gold();
-				const int finishing_bonus_per_turn =
+				const int finishing_bonus_per_turn =(
 				             map_.villages().size() * game_config::village_income +
-				             game_config::base_income;
+				             game_config::base_income) - i->get_max_upkeep();
 				const int turns_left = maximum<int>(0,status_.number_of_turns() - status_.turn());
 				const int finishing_bonus = end_level.gold_bonus ?
 				             (finishing_bonus_per_turn * turns_left) : 0;
 
 				if(player) {
-					player->gold = ((remaining_gold + finishing_bonus) * 80) / 100;
+					player->gold = ((remaining_gold + finishing_bonus * 115 / 100) * 80) / 100;
 
 					if(gamestate_.players.size()>1) {
 						if(i!=teams_.begin()) {

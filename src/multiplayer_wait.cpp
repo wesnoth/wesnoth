@@ -346,7 +346,11 @@ void wait::generate_menu()
 	const config::child_list& sides = level_.get_children("side");
 	for(config::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		const config& sd = **s;
-
+		
+		if(sd["allow_player"] == "no") {
+			continue;
+		}
+		
 		std::string description = sd["user_description"];
 		const std::string faction_id = sd["id"];
 

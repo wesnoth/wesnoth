@@ -64,7 +64,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	changed_(false),
 	llm_(parent.era_sides_, &parent.game_data_, enabled_ ? &combo_leader_ : NULL)
 {
-	if(enabled_) {
+	if(cfg_["allow_player"] != "no" && enabled_) {
 		controller_ = parent_->default_controller_;
 	} else {
 		for(size_t i = CNTR_NETWORK; i != CNTR_LAST; ++i) {

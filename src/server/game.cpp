@@ -360,7 +360,13 @@ bool game::describe_slots()
 
 	const int val = int(available_slots());
 	char buf[50];
-	snprintf(buf,sizeof(buf),"%d/%d",val,level_.get_children("side").size());
+	int num_sides = level_.get_children("side").size();
+	for(config::child_list::const_iterator it = level_.get_children("side").begin(); it != level_.get_children("side").end(); ++it) {
+		if((**it)["allow_player"] == "no") {
+			num_sides--;
+		}
+	}
+	snprintf(buf,sizeof(buf),"%d/%d",val,num_sides);
 
 	if(buf != (*description())["slots"]) {
 		description()->values["slots"] = buf;

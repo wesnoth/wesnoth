@@ -315,6 +315,7 @@ void play_controller::init_side(const unsigned int team_index){
 		const int expense = team_upkeep(units_,player_number_);
 		if(expense > 0) {
 			current_team.spend_gold(expense);
+			current_team.max_upkeep(expense);
 		}
 
 		calculate_healing((*gui_),map_,units_,player_number_,teams_, !recorder.is_skipping());
