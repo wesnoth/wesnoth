@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-15 09:28+0200\n"
-"PO-Revision-Date: 2006-05-05 22:30+0100\n"
+"PO-Revision-Date: 2006-05-12 15:29+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -515,9 +515,8 @@ msgid "Estonian Translation"
 msgstr "Estländische Übersetzung"
 
 #: data/about.cfg:249
-#, fuzzy
 msgid "Filipino Translation"
-msgstr "Finnische Übersetzung"
+msgstr "Philippinische Übersetzung"
 
 #: data/about.cfg:256
 msgid "Finnish Translation"
@@ -2200,9 +2199,8 @@ msgid "Terrains"
 msgstr "Geländearten"
 
 #: data/help.cfg:59
-#, fuzzy
 msgid "Commands"
-msgstr "Feldherr"
+msgstr "Kommandos"
 
 #: data/help.cfg:65 data/help.cfg:71 data/help.cfg:264
 msgid "Overview"
@@ -3101,7 +3099,6 @@ msgstr ""
 "zwei Dinge zu beachten: Einkommen und Unterhalt."
 
 #: data/help.cfg:236
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3114,8 +3111,8 @@ msgstr ""
 "\n"
 "Mit dem Einkommen verhält es sich einfach: Grundsätzlich erhaltet Ihr 2 "
 "Goldstücke pro Zug. Für jedes Dorf, das Ihr zusätzlich kontrolliert, "
-"erhaltet Ihr ein weiteres Goldstück. Angenommen, Ihr würdet 10 Dörfer "
-"kontrollieren, so würdet Ihr 10 Goldstücke erhalten. Die Unterhaltskosten "
+"erhaltet Ihr zwei weitere Goldstück. Angenommen, Ihr würdet 5 Dörfer "
+"kontrollieren, so würdet Ihr 12 Goldstücke erhalten. Die Unterhaltskosten "
 "für Eure Truppen werden von Eurem Einkommen abgezogen."
 
 #: data/help.cfg:238
@@ -3128,7 +3125,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3137,8 +3133,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Diese Kosten werden von Eurem Einkommen abgezogen. Bei insgesamt zwölf "
-"Einheitenstufen und zehn Dörfern beträge Euer Einkommen also 8 Goldstücke "
+"Diese Kosten werden von Eurem Einkommen abgezogen. Bei insgesamt sieben "
+"Einheitenstufen und fünf Dörfern beträge Euer Einkommen also 3 Goldstücke "
 "pro Zug."
 
 #: data/help.cfg:241
@@ -3161,7 +3157,6 @@ msgid "Wrap Up"
 msgstr "Fazit"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -3936,9 +3931,8 @@ msgstr ""
 "Wanderer aufhalten."
 
 #: data/help.cfg:543
-#, fuzzy
 msgid "General commands"
-msgstr "General"
+msgstr "Generelle Kommandos"
 
 #: data/help.cfg:545
 msgid ""
@@ -3978,9 +3972,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:565
-#, fuzzy
 msgid "Multiplayer commands"
-msgstr "Mehrspielerkarten"
+msgstr "Mehrspieler Kommandos"
 
 #: data/help.cfg:567
 msgid ""
@@ -4029,6 +4022,8 @@ msgid ""
 "\n"
 "Clear chat messages."
 msgstr ""
+"\n"
+"Löschen der Unterhaltungsnachrichten"
 
 #: data/items.cfg:264
 msgid ""
@@ -10666,7 +10661,7 @@ msgstr "Battle for Wesnoth"
 
 #: src/game.cpp:1723
 msgid "Loading title screen."
-msgstr ""
+msgstr "Laden des Startbildschirms."
 
 #: src/game_events.cpp:716
 msgid "Victory:"
@@ -10830,19 +10825,19 @@ msgstr "?"
 
 #: src/loadscreen.cpp:155
 msgid "Verifying cache."
-msgstr ""
+msgstr "Prüfen des Caches."
 
 #: src/loadscreen.cpp:174
 msgid "Reading cache."
-msgstr ""
+msgstr "Lesen des Caches."
 
 #: src/loadscreen.cpp:193
 msgid "Reading unit files."
-msgstr ""
+msgstr "Lesen der Einheitendaten."
 
 #: src/loadscreen.cpp:212
 msgid "Reading files and creating cache."
-msgstr ""
+msgstr "Lesen der Daten und erstellen des Caches."
 
 #: src/menu_events.cpp:45
 msgid ""
@@ -11099,9 +11094,8 @@ msgid "Show your ignore list. Usage: /ignore list"
 msgstr ""
 
 #: src/menu_events.cpp:1380
-#, fuzzy
 msgid "Unknown subcommand"
-msgstr "Unbekanntes Szenario"
+msgstr "Unbekanntes Unterkommando"
 
 #: src/menu_events.cpp:1383
 msgid ""
@@ -11115,27 +11109,24 @@ msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
 #: src/menu_events.cpp:1388
-#, fuzzy
 msgid "Unknown command"
-msgstr "Unbekannte Ära"
+msgstr "Unbekanntes Kommando"
 
 #: src/menu_events.cpp:1405
 msgid "Added to ignore list: "
 msgstr ""
 
 #: src/menu_events.cpp:1407 src/menu_events.cpp:1417
-#, fuzzy
 msgid "Invalid username: "
-msgstr "Ungültiger Elementname"
+msgstr "Ungültiger Benutzername:"
 
 #: src/menu_events.cpp:1415 src/menu_events.cpp:1441
 msgid "Removed from ignore list: "
 msgstr ""
 
 #: src/menu_events.cpp:1446
-#, fuzzy
 msgid "Unknown command: "
-msgstr "Unbekanntes Szenario: '"
+msgstr "Unbekanntes Kommando: "
 
 #: src/menu_events.cpp:1547
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -11558,9 +11549,8 @@ msgid "Unknown scenario"
 msgstr "Unbekanntes Szenario"
 
 #: src/multiplayer_lobby.cpp:334
-#, fuzzy
 msgid "Remote scenario"
-msgstr "Unbekanntes Szenario"
+msgstr "Entferntes Szenario"
 
 #: src/multiplayer_lobby.cpp:347
 msgid "Vacant Slot:"
