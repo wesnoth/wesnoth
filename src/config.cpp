@@ -551,7 +551,7 @@ config config::merge_with(const config& c) const
 			if(itor != n.children.end() && index < itor->second.size()) {
 				*(itor->second[index]) = itor->second[index]->merge_with(*item);
 			} else {
-				if(j + 1 == i->second.end() && index >= last_index) {
+				if(j + 1 == i->second.end() && itor != n.children.end() && index >= last_index) {
 					break;
 				}
 				n.add_child(i->first,*item);

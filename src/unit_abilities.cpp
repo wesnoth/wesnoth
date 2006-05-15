@@ -99,7 +99,8 @@ namespace unit_abilities {
 
 bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side, size_t other_side)
 {
-	return ((cfg["affect_allies"] == "" || utils::string_bool(cfg["affect_allies"])) && !teams[side-1].is_enemy(other_side))
+	return ((cfg["affect_allies"] == "" || utils::string_bool(cfg["affect_allies"])) && side == other_side) 
+			|| (utils::string_bool(cfg["affect_allies"]) && !teams[side-1].is_enemy(other_side))
 			|| (utils::string_bool(cfg["affect_enemies"]) && teams[side-1].is_enemy(other_side));
 }
 
