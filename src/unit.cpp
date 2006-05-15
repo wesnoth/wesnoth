@@ -127,7 +127,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, 
            const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, 
 					 int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) : 
-					 gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), facing_(gamemap::location::NORTH_EAST),
+	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), resting_(false), facing_(gamemap::location::NORTH_EAST),
            gamedata_(gamedata),units_(unitmap),map_(map),gamestatus_(game_status),teams_(teams)
 {
 	side_ = side;
