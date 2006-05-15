@@ -62,7 +62,7 @@ protected:
 	virtual void do_move();
 
 	virtual bool do_combat(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
-	virtual bool get_villages(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
+	virtual bool get_villages(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::iterator &leader);
 	virtual bool get_healing(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& enemy_dstsrc);
 	virtual bool retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
 	virtual bool move_to_targets(std::map<gamemap::location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
@@ -143,10 +143,6 @@ protected:
 		//that the attacking units could reach this turn, without attacking
 		//(good for comparison to see just how good/bad 'terrain_quality' is)
 		double alternative_terrain_quality;
-
-		//the ratio of the attacks the unit being attacked will get to
-		//the strength of its most powerful attack
-		double counter_strength_ratio;
 
 		//the vulnerability is the power projection of enemy units onto the hex
 		//we're standing on. support is the power projection of friendly units.

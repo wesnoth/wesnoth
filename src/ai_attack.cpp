@@ -386,7 +386,6 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 	avg_damage_taken = 0.0;
 	resources_used = 0.0;
 	terrain_quality = 0.0;
-	counter_strength_ratio = 0.0;
 	avg_losses = 0.0;
 
 	const int target_max_hp = defend_it->second.max_hitpoints();

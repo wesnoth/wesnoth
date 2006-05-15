@@ -1073,7 +1073,7 @@ std::vector<std::pair<gamemap::location,gamemap::location> > ai::get_village_com
 }
 
 
-bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
+bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::iterator &leader)
 {
 	LOG_AI << "deciding which villages we want...\n";
 
@@ -1181,8 +1181,10 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 
 	if(leader_move.second.valid()) {
 		if(units_.count(leader_move.first) == 0) {
-			move_unit(leader_move.second,leader_move.first,possible_moves);
+			gamemap::location loc = move_unit(leader_move.second,leader_move.first,possible_moves);
 			++moves_made;
+			// Update leader iterator, since we moved it.
+			leader = units_.find(loc);
 		}
 	}
 
