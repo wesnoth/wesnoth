@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-05-10 18:48+0200\n"
+"POT-Creation-Date: 2006-05-16 11:42-0500\n"
 "PO-Revision-Date: 2006-05-16 01:36-0500\n"
 "Last-Translator: Gerfried Fuchs <alfie@ist.org>\n"
 "Language-Team: none\n"
@@ -76,10 +76,11 @@ msgid "she"
 msgstr "sie"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:185
+#, fuzzy
 msgid ""
 "*Welcome to Wesnoth!\n"
-"For this tutorial, you are playing $student, standing in the keep.  Your "
-"mentor Delfador is on the East side of the river.\n"
+"For this tutorial, you are playing $student.  You are standing in the keep, "
+"and your mentor Delfador is on the East side of the river.\n"
 "*Left click or any key to continue..."
 msgstr ""
 "*Willkommen in Wesnoth!\n"
@@ -528,15 +529,15 @@ msgstr ""
 "Nun, $student, ich werde dich mit weiteren Puppen zum Üben zurück lassen! "
 "Anschließend haben wir echte Arbeit zu erledigen..."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:905
+#: data/tutorial/scenarios/1_Tutorial.cfg:891
 msgid "Do you want to keep practicing?"
 msgstr "Wollt Ihr weiter üben?"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:907
+#: data/tutorial/scenarios/1_Tutorial.cfg:893
 msgid "Yes, I'm still figuring it out."
 msgstr "Ja, ich versuche noch es zu durchschauen."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:910
+#: data/tutorial/scenarios/1_Tutorial.cfg:896
 msgid "No, I think I've got it."
 msgstr "Nein, ich denke, ich hab es verstanden."
 
@@ -810,7 +811,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:533
 #, fuzzy
-msgid "No!  I said recruit an Elvish SHAMAN|!  Now try again..."
+msgid "No!  I said recruit an Elvish SHAMAN!  Now try again..."
 msgstr "Nein! Ich sagte bildet eine Elfen-SCHAMANIN aus! Versuche es erneut..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:539
@@ -844,7 +845,7 @@ msgstr "Bewegt $student, um ein Dorf einzunehmen"
 #: data/tutorial/scenarios/2_Tutorial.cfg:562
 #: data/tutorial/scenarios/2_Tutorial.cfg:607
 #, fuzzy
-msgid "No!  I said recruit an Elvish ARCHER|!  Now try again..."
+msgid "No!  I said recruit an Elvish ARCHER!  Now try again..."
 msgstr ""
 "Nein! Ich sagte bildet einen Elfen-BOGENSCHÜTZEN aus! Versuche es erneut..."
 
@@ -887,7 +888,7 @@ msgstr "Bildet zwei Elfenbogenschützen in den Feldern westlich von euch aus"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:677
 #, fuzzy
-msgid "No!  I said recruit an Elvish FIGHTER|!  Now try again..."
+msgid "No!  I said recruit an Elvish FIGHTER!  Now try again..."
 msgstr "Nein! Ich sagte bildet einen Elfen-KÄMPFER aus! Versuche es erneut..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:687
@@ -927,12 +928,9 @@ msgstr ""
 "ein"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:791
-msgid ""
-"No!  I said RECRUIT a new Elvish Fighter, not a $recruit.type|!  Now try "
-"again..."
-msgstr ""
-"Nein! Ich sagte BILDET einen neuen Elfenkämpfer AUS, nicht einen $recruit."
-"type|! Versuche es erneut..."
+#, fuzzy
+msgid "$recruit.type|?  I said RECRUIT a new ELVISH FIGHTER.  Now try again..."
+msgstr "Nein! Ich sagte bildet einen Elfen-KÄMPFER aus! Versuche es erneut..."
 
 # XXX - female shaman -- two strings needed
 #: data/tutorial/scenarios/2_Tutorial.cfg:805
@@ -962,8 +960,9 @@ msgstr ""
 "damit du weitere Einheiten rekrutieren kannst."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:866
+#, fuzzy
 msgid ""
-"You should leave the villages near your keep for $student to capture: $he "
+"You should leave the villages near your keep for $student to capture, as $he "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
 "Du solltest die Dörfer nahe dem Bergfried für $student zum einnehmen übrig "
@@ -994,9 +993,10 @@ msgstr ""
 "Wald befindet."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:891
+#, fuzzy
 msgid ""
 "It's very dangerous to stand in water when there are enemies about!  Your "
-"unit would have an 80% chance of being hit when the orc counter-attacks!  "
+"unit would have an 80% chance of being hit when the Orc counter-attacks!  "
 "Cancel!"
 msgstr ""
 "Es ist sehr gefährlich, im Wasser zu stehen, wenn Feinde in der Nähe sind! "
@@ -1012,9 +1012,10 @@ msgid "Fighter to Here"
 msgstr "Kämpfer hier her"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:910
+#, fuzzy
 msgid ""
-"Your other units cannot reach this turn.  Send a Fighter to that village to "
-"the far east: that will take two turns."
+"Your other units cannot reach that Orc this turn.  Send a Fighter to that "
+"village to the far east: that will take two turns."
 msgstr ""
 "Deine anderen Einheiten können ihn diesen Zug nicht erreichen. Schick einen "
 "Kämpfer in das Dorf weit im Osten: Das wird zwei Züge dauern."
@@ -1064,8 +1065,9 @@ msgid "Move $student to another (unowned) village"
 msgstr "Bewegt $student in eine weiteres (unbesetztes) Dorf"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:976
+#, fuzzy
 msgid ""
-"The orc is blocking the bridge!  We must occupy that island before the wolf "
+"The Orc is blocking the bridge!  We must occupy that island before the wolf "
 "riders reach it."
 msgstr ""
 "Der Ork blockiert die Brücke! Wir müssen diese Insel einnehmen, bevor die "
@@ -1155,9 +1157,10 @@ msgstr ""
 "Dorf nahe dem Kanal bewegen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1093
+#, fuzzy
 msgid ""
 "We need to take that village, otherwise they will take it next turn!  Move "
-"your wounded unit to take it so it can heal, then kill that orc!"
+"your wounded unit to take it so it can heal, then kill that Orc!"
 msgstr ""
 "Wir müssen dieses Dorf einnehmen, sonst werden es die anderen im nächsten "
 "Zug tun! Bewege deine verwundete Einheit hinein, damit sie geheilt wird, und "
@@ -1195,8 +1198,9 @@ msgid "Defend here"
 msgstr "Verteidigt hier"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1122
+#, fuzzy
 msgid ""
-"Beware those orcs crossing the river!  If they get into the forest they'll "
+"Beware those Orcs crossing the river!  If they get into the forest they'll "
 "be hard to dislodge!"
 msgstr ""
 "Hütet euch vor diese Orks, die den Fluss überqueren! Falls sie in den Wald "
@@ -1310,8 +1314,8 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:1313
 #, fuzzy
 msgid ""
-"$student, level 2 units are powerful, but not invulnerable.  Goodbye, "
-"$deadguy.user_description."
+"Level 2 units are powerful, but not invulnerable $student!  Goodbye, "
+"$deadguy.user_description|."
 msgstr ""
 "$student, Einheiten der Stufe 2 sind mächtig, aber nicht unverwundbar. Lebe "
 "wohl, $deadguy.user_description|."
@@ -1369,5 +1373,13 @@ msgstr ""
 "Schaden."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1545
-msgid "You took too long, we'll never be rid of these orcs!"
+#, fuzzy
+msgid "You took too long, we'll never be rid of these Orcs!"
 msgstr "Du hast zu lange gebraucht, wir werden diese Orks nie los werden!"
+
+#~ msgid ""
+#~ "No!  I said RECRUIT a new Elvish Fighter, not a $recruit.type|!  Now try "
+#~ "again..."
+#~ msgstr ""
+#~ "Nein! Ich sagte BILDET einen neuen Elfenkämpfer AUS, nicht einen $recruit."
+#~ "type|! Versuche es erneut..."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-05-10 18:48+0200\n"
+"POT-Creation-Date: 2006-05-16 11:42-0500\n"
 "PO-Revision-Date: 2006-04-12 09:11+0200\n"
 "Last-Translator: Mikko Kraft <mikkokraft@gmail.com>\n"
 "Language-Team: none\n"
@@ -72,10 +72,11 @@ msgid "she"
 msgstr ""
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:185
+#, fuzzy
 msgid ""
 "*Welcome to Wesnoth!\n"
-"For this tutorial, you are playing $student, standing in the keep.  Your "
-"mentor Delfador is on the East side of the river.\n"
+"For this tutorial, you are playing $student.  You are standing in the keep, "
+"and your mentor Delfador is on the East side of the river.\n"
 "*Left click or any key to continue..."
 msgstr ""
 "*Tervetuloa Wesnothiin!\n"
@@ -531,15 +532,15 @@ msgstr ""
 "Jätän sinut harjoittelemaan lisää nukkejen kanssa! Sen jälkeen meillä on "
 "oikeita töitä tehtävänä..."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:905
+#: data/tutorial/scenarios/1_Tutorial.cfg:891
 msgid "Do you want to keep practicing?"
 msgstr "Haluatko jatkaa harjoittelua?"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:907
+#: data/tutorial/scenarios/1_Tutorial.cfg:893
 msgid "Yes, I'm still figuring it out."
 msgstr "Kyllä, tarvitsen lisäharjoitusta."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:910
+#: data/tutorial/scenarios/1_Tutorial.cfg:896
 msgid "No, I think I've got it."
 msgstr "En, luulen jo osaavani."
 
@@ -814,7 +815,8 @@ msgstr ""
 "Haltiasoturi"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:533
-msgid "No!  I said recruit an Elvish SHAMAN|!  Now try again..."
+#, fuzzy
+msgid "No!  I said recruit an Elvish SHAMAN!  Now try again..."
 msgstr "Ei Minä käskin sinua värväämään HaltiaSHAMAANIN! Yritä uudelleen..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:539
@@ -847,7 +849,8 @@ msgstr "Liikuta $student kylään vallataksesi sen"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:562
 #: data/tutorial/scenarios/2_Tutorial.cfg:607
-msgid "No!  I said recruit an Elvish ARCHER|!  Now try again..."
+#, fuzzy
+msgid "No!  I said recruit an Elvish ARCHER!  Now try again..."
 msgstr "Ei! Käskin sinua värväämään JOUSIhaltian! Yritä uudestaan..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:571
@@ -888,7 +891,8 @@ msgid "Recruit two Elvish Archers in tiles to your west"
 msgstr "Värvää kaksi Jousihaltiaa sinusta päin länteen oleviin heksoihin"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:677
-msgid "No!  I said recruit an Elvish FIGHTER|!  Now try again..."
+#, fuzzy
+msgid "No!  I said recruit an Elvish FIGHTER!  Now try again..."
 msgstr "Ei! Käskin sinua värväämään HaltiaSOTURIN! Yritä uudestaan..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:687
@@ -928,12 +932,9 @@ msgstr ""
 "Haltiasoturi"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:791
-msgid ""
-"No!  I said RECRUIT a new Elvish Fighter, not a $recruit.type|!  Now try "
-"again..."
-msgstr ""
-"Ei! Käskin sinun VÄRVÄTÄ Haltiasoturin, en $recruit.type|a! Yritä "
-"uudestaan..."
+#, fuzzy
+msgid "$recruit.type|?  I said RECRUIT a new ELVISH FIGHTER.  Now try again..."
+msgstr "Ei! Käskin sinua värväämään HaltiaSOTURIN! Yritä uudestaan..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:805
 #: data/tutorial/scenarios/2_Tutorial.cfg:816
@@ -964,8 +965,9 @@ msgstr ""
 "lähistöllä, jotta voit värvätä lisää yksiköitä."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:866
+#, fuzzy
 msgid ""
-"You should leave the villages near your keep for $student to capture: $he "
+"You should leave the villages near your keep for $student to capture, as $he "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
 "Sinun kannattaisi jättää linnakkeen lähellä olevat kylät $student|in "
@@ -996,9 +998,10 @@ msgstr ""
 "mahdollisuus osua, jos se on metsässä"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:891
+#, fuzzy
 msgid ""
 "It's very dangerous to stand in water when there are enemies about!  Your "
-"unit would have an 80% chance of being hit when the orc counter-attacks!  "
+"unit would have an 80% chance of being hit when the Orc counter-attacks!  "
 "Cancel!"
 msgstr ""
 "On erittäin vaarallista seisoa vedessä, kun vihollisen yksiköitä on "
@@ -1016,8 +1019,8 @@ msgstr "Soturi Tänne"
 #: data/tutorial/scenarios/2_Tutorial.cfg:910
 #, fuzzy
 msgid ""
-"Your other units cannot reach this turn.  Send a Fighter to that village to "
-"the far east: that will take two turns."
+"Your other units cannot reach that Orc this turn.  Send a Fighter to that "
+"village to the far east: that will take two turns."
 msgstr ""
 "Muut yksikkösi ovat liian kaukana. Lähetä yksi Soturi valtaamaan kylä kaukaa "
 "idästä: siihen menee kaksi vuoroa"
@@ -1067,8 +1070,9 @@ msgid "Move $student to another (unowned) village"
 msgstr "Liikuta $student seuraavaan (omistamattomaan) kylään)"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:976
+#, fuzzy
 msgid ""
-"The orc is blocking the bridge!  We must occupy that island before the wolf "
+"The Orc is blocking the bridge!  We must occupy that island before the wolf "
 "riders reach it."
 msgstr ""
 "Örkki tukkii sillan! Meidän täytyy päästä saarelle ennen kuin "
@@ -1157,9 +1161,10 @@ msgstr ""
 "kylään kahlaamon lähellä."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1093
+#, fuzzy
 msgid ""
 "We need to take that village, otherwise they will take it next turn!  Move "
-"your wounded unit to take it so it can heal, then kill that orc!"
+"your wounded unit to take it so it can heal, then kill that Orc!"
 msgstr ""
 "Meidän täytyy ottaa tuo kylä, muuten he ottavat sen ensi vuorolla! Liikuta "
 "haavoittunut yksikkösi sinne niin se voi parantua samalla ja tapa sitten tuo "
@@ -1198,8 +1203,9 @@ msgid "Defend here"
 msgstr "Puolusta tässä"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1122
+#, fuzzy
 msgid ""
-"Beware those orcs crossing the river!  If they get into the forest they'll "
+"Beware those Orcs crossing the river!  If they get into the forest they'll "
 "be hard to dislodge!"
 msgstr ""
 "Varo noita örkkejä, jotka ylittävät jokea! Jos he pääsevät metsään, niitä on "
@@ -1310,9 +1316,10 @@ msgstr ""
 "toiminnosta 'Näytä Vihollisen Liikkeet'."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1313
+#, fuzzy
 msgid ""
-"$student, level 2 units are powerful, but not invulnerable.  Goodbye, "
-"$deadguy.user_description."
+"Level 2 units are powerful, but not invulnerable $student!  Goodbye, "
+"$deadguy.user_description|."
 msgstr ""
 "2. tason yksiköt ovat mahtavia, mutta eivät voittamattomia. Hyvästi, "
 "$deadguy.user_description."
@@ -1370,8 +1377,16 @@ msgstr ""
 "joista kukin tekee 8 vahinkoa."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1545
-msgid "You took too long, we'll never be rid of these orcs!"
+#, fuzzy
+msgid "You took too long, we'll never be rid of these Orcs!"
 msgstr "Sinulla kesti liian pitkään. Emme pääse koskaan eroon näistä Örkeistä!"
+
+#~ msgid ""
+#~ "No!  I said RECRUIT a new Elvish Fighter, not a $recruit.type|!  Now try "
+#~ "again..."
+#~ msgstr ""
+#~ "Ei! Käskin sinun VÄRVÄTÄ Haltiasoturin, en $recruit.type|a! Yritä "
+#~ "uudestaan..."
 
 #~ msgid ""
 #~ "Note:\n"

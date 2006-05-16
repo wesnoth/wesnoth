@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-05-10 18:48+0200\n"
+"POT-Creation-Date: 2006-05-16 11:42-0500\n"
 "PO-Revision-Date: 2006-04-30 19:32+0200\n"
 "Last-Translator: Maarten Albrecht <maartenalbrecht@gmail.com>\n"
 "Language-Team: Dutch <onne@grammex.com>\n"
@@ -75,10 +75,11 @@ msgid "she"
 msgstr ""
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:185
+#, fuzzy
 msgid ""
 "*Welcome to Wesnoth!\n"
-"For this tutorial, you are playing $student, standing in the keep.  Your "
-"mentor Delfador is on the East side of the river.\n"
+"For this tutorial, you are playing $student.  You are standing in the keep, "
+"and your mentor Delfador is on the East side of the river.\n"
 "*Left click or any key to continue..."
 msgstr ""
 "Welkom bij Wesnoth!\n"
@@ -514,15 +515,15 @@ msgstr ""
 "Welnu $student, ik zal je nog wat poppen geven om op te oefenen. Daarna is "
 "er echt werk te doen..."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:905
+#: data/tutorial/scenarios/1_Tutorial.cfg:891
 msgid "Do you want to keep practicing?"
 msgstr "Wil je doorgaan met oefenen?"
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:907
+#: data/tutorial/scenarios/1_Tutorial.cfg:893
 msgid "Yes, I'm still figuring it out."
 msgstr "Ja, ik heb het nog niet helemaal onder de knie."
 
-#: data/tutorial/scenarios/1_Tutorial.cfg:910
+#: data/tutorial/scenarios/1_Tutorial.cfg:896
 msgid "No, I think I've got it."
 msgstr "Nee, ik begrijp het nu wel."
 
@@ -787,7 +788,8 @@ msgstr ""
 "Rechtsklik op het vakje ten zuiden van je en rekruteer een Elfenkrijger."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:533
-msgid "No!  I said recruit an Elvish SHAMAN|!  Now try again..."
+#, fuzzy
+msgid "No!  I said recruit an Elvish SHAMAN!  Now try again..."
 msgstr "Nee! Ik zei: \"Rekruteer een elfensjamaan|!\" Probeer het nog eens..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:539
@@ -820,7 +822,8 @@ msgstr "Laat $student een dorp innemen"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:562
 #: data/tutorial/scenarios/2_Tutorial.cfg:607
-msgid "No!  I said recruit an Elvish ARCHER|!  Now try again..."
+#, fuzzy
+msgid "No!  I said recruit an Elvish ARCHER!  Now try again..."
 msgstr ""
 "Nee! Ik zei: \"Rekruteer een elfenboogschutter!\" Probeer het nog eens..."
 
@@ -862,7 +865,8 @@ msgid "Recruit two Elvish Archers in tiles to your west"
 msgstr "Rekruteer twee elfenboogschutters op de vakjes ten westen van je"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:677
-msgid "No!  I said recruit an Elvish FIGHTER|!  Now try again..."
+#, fuzzy
+msgid "No!  I said recruit an Elvish FIGHTER!  Now try again..."
 msgstr "Nee! Ik zei: \"Rekruteer een elfenkrijger!\" Probeer het nog eens..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:687
@@ -899,12 +903,9 @@ msgstr ""
 "Rechtsklik op het vakje ten zuidwesten van je, en rekruteer een Elfenkrijger."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:791
-msgid ""
-"No!  I said RECRUIT a new Elvish Fighter, not a $recruit.type|!  Now try "
-"again..."
-msgstr ""
-"Nee! Ik zei: \"Rekruteer een nieuwe elfenkrijger!\", niet een $recruit."
-"type|! Probeer het nog eens..."
+#, fuzzy
+msgid "$recruit.type|?  I said RECRUIT a new ELVISH FIGHTER.  Now try again..."
+msgstr "Nee! Ik zei: \"Rekruteer een elfenkrijger!\" Probeer het nog eens..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:805
 #: data/tutorial/scenarios/2_Tutorial.cfg:816
@@ -934,8 +935,9 @@ msgstr ""
 "meer troepen te kunnen rekruteren."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:866
+#, fuzzy
 msgid ""
-"You should leave the villages near your keep for $student to capture: $he "
+"You should leave the villages near your keep for $student to capture, as $he "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
 "Je moet de dorpen rond de donjon innemen met $student, die moet toch in de "
@@ -962,9 +964,10 @@ msgstr ""
 "kans van 30% om een elfenboogschutter in het bos te raken."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:891
+#, fuzzy
 msgid ""
 "It's very dangerous to stand in water when there are enemies about!  Your "
-"unit would have an 80% chance of being hit when the orc counter-attacks!  "
+"unit would have an 80% chance of being hit when the Orc counter-attacks!  "
 "Cancel!"
 msgstr ""
 "Het is erg gevaarlijk je in het water te begeven wanneer er vijanden in de "
@@ -979,9 +982,10 @@ msgid "Fighter to Here"
 msgstr "Krijger hierheen"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:910
+#, fuzzy
 msgid ""
-"Your other units cannot reach this turn.  Send a Fighter to that village to "
-"the far east: that will take two turns."
+"Your other units cannot reach that Orc this turn.  Send a Fighter to that "
+"village to the far east: that will take two turns."
 msgstr ""
 "Je andere eenheden kunnen er deze beurt niet komen. Stuur een krijger naad "
 "het dorp ver in het oosten: dat kost hem twee beurten."
@@ -1031,8 +1035,9 @@ msgid "Move $student to another (unowned) village"
 msgstr "Neem nog een dorp in met $student"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:976
+#, fuzzy
 msgid ""
-"The orc is blocking the bridge!  We must occupy that island before the wolf "
+"The Orc is blocking the bridge!  We must occupy that island before the wolf "
 "riders reach it."
 msgstr ""
 "De ork blokkeert de brug! We moeten dat eiland bezetten voor de wolfruiters "
@@ -1122,9 +1127,10 @@ msgstr ""
 "verplaatsen, naar het dorp bij het kanaal."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1093
+#, fuzzy
 msgid ""
 "We need to take that village, otherwise they will take it next turn!  Move "
-"your wounded unit to take it so it can heal, then kill that orc!"
+"your wounded unit to take it so it can heal, then kill that Orc!"
 msgstr ""
 "We moeten dat dorp innemen, anders doen zij het de volgende beurt! Zet je "
 "gewonde eenheid erin zodat hij kan bijkomen, doodt dan de org!"
@@ -1160,8 +1166,9 @@ msgid "Defend here"
 msgstr "Verdedig hier"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1122
+#, fuzzy
 msgid ""
-"Beware those orcs crossing the river!  If they get into the forest they'll "
+"Beware those Orcs crossing the river!  If they get into the forest they'll "
 "be hard to dislodge!"
 msgstr ""
 "Pas op voor de orks die de rivier oversteken! Als ze het bos bereiken zullen "
@@ -1270,9 +1277,10 @@ msgstr ""
 "het Actie-menu te kiezen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1313
+#, fuzzy
 msgid ""
-"$student, level 2 units are powerful, but not invulnerable.  Goodbye, "
-"$deadguy.user_description."
+"Level 2 units are powerful, but not invulnerable $student!  Goodbye, "
+"$deadguy.user_description|."
 msgstr ""
 "$student, eenheden van rang 2 zijn sterk, maar niet onkwetsbaar. Vaarwel, "
 "$deadguy.user_description."
@@ -1330,9 +1338,17 @@ msgstr ""
 "toebrengen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1545
-msgid "You took too long, we'll never be rid of these orcs!"
+#, fuzzy
+msgid "You took too long, we'll never be rid of these Orcs!"
 msgstr ""
 "Je hebt er te lang over gedaan. We zullen nooit van de orks verlost zijn!"
+
+#~ msgid ""
+#~ "No!  I said RECRUIT a new Elvish Fighter, not a $recruit.type|!  Now try "
+#~ "again..."
+#~ msgstr ""
+#~ "Nee! Ik zei: \"Rekruteer een nieuwe elfenkrijger!\", niet een $recruit."
+#~ "type|! Probeer het nog eens..."
 
 #~ msgid ""
 #~ "Note:\n"
