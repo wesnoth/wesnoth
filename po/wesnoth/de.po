@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-16 11:36-0500\n"
-"PO-Revision-Date: 2006-05-12 15:29+0100\n"
+"PO-Revision-Date: 2006-05-16 19:55+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -3938,24 +3938,32 @@ msgid ""
 "\n"
 "Quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Beendet das Szenario (ohne Rückfrage)."
 
 #: data/help.cfg:548
 msgid ""
 "\n"
 "Save the game (without prompting)."
 msgstr ""
+"\n"
+"Speichert das Spiel (ohne Rückfrage)."
 
 #: data/help.cfg:551
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Speichert das Spiel und beendet das Szenario (ohne Rückfrage)."
 
 #: data/help.cfg:554
 msgid ""
 "\n"
 "Redraw the screen."
 msgstr ""
+"\n"
+"Zeichnet den Inhalt des Bildschirms neu."
 
 #: data/help.cfg:557
 msgid ""
@@ -3963,12 +3971,17 @@ msgid ""
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
 "off by quitting the game."
 msgstr ""
+"\n"
+"Schaltet den Debugmodus an (funktioniert nicht im Mehrspielermodus). Der "
+"Debugmodus wird abgeschaltet, sobald das Spiel beendet wird."
 
 #: data/help.cfg:560
 msgid ""
 "\n"
 "Bring up theme selection menu."
 msgstr ""
+"\n"
+"Zeigt das Grafikthemen Auswahlmenü an."
 
 #: data/help.cfg:565
 msgid "Multiplayer commands"
@@ -3987,6 +4000,8 @@ msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
+"\n"
+"Redefreiheit für alle Beobachter aus- und einschalten."
 
 #: data/help.cfg:573
 msgid ""
@@ -3994,6 +4009,10 @@ msgid ""
 "Mute a specific observer. If no username is supplied the muted usernames are "
 "displayed."
 msgstr ""
+"\n"
+"Entzieht einem bestimmten Beobachter Redefreiheit. Wenn kein Benutzername "
+"angegeben wird, wird eine Liste aller Beobachter angezeigt, denen die "
+"Redefreiheit entzogen wurde."
 
 #: data/help.cfg:576
 msgid ""
@@ -4002,6 +4021,10 @@ msgid ""
 "a friendly way to remove someone who is having connection or other "
 "difficulties."
 msgstr ""
+"\n"
+"Wirft einen Spieler im Mehrspielermodus aus dem Spiel. Es ist diesem Spieler "
+"jedoch möglich, erneut dem Spiel beizutreten. Sollte verwendet werden, wenn "
+"jemand Verbindungsprobleme hat oder andere Schwierigkeiten auftreten."
 
 #: data/help.cfg:579
 msgid ""
@@ -4182,6 +4205,14 @@ msgid ""
 "pick it up, yet the grass at your feet bursts into flame as you test the "
 "heft of this mighty weapon."
 msgstr ""
+"Diese schwere Klinge wurde vor vielen Jahren von den legendären "
+"Elfenschmieden geschaffen. Ihnen gelang es in den Blaustahl mit einem "
+"magischen Feuer, zu versehen, dass darin eingeschlossen ist. Dadurch tanzen "
+"Flammenzungen über die Klinge des Schwertes, sobald es von einem würdigen "
+"Träger geführt wird. Als ihr eure Hand um den glitzernden Ledergriff "
+"schließt, erwacht das Schwert zum Leben. Seltsamerweise spürt ihr keine "
+"Hitze von der Waffe ausgehen, obwohl das Gras zu euren Füßen zu brennen "
+"beginnt, als ihr die Waffe kurz absetzt."
 
 #: data/items.cfg:714
 msgid "Only the leader of an army can wield this sword!"
@@ -8460,9 +8491,8 @@ msgstr ""
 "Anmerkung:"
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Mermaid Siren"
-msgstr "Wassermann Speerträger"
+msgstr "Sirene"
 
 #: data/units/Mermaid_Siren.cfg:23
 msgid ""
@@ -9255,7 +9285,6 @@ msgid "Saurian Flanker"
 msgstr "Saurianischer Flänkler"
 
 #: data/units/Saurian_Flanker.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
