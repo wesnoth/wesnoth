@@ -1,10 +1,13 @@
+# Translators:
+#  Nils Kneuper <crazy-ivanovic  AT   gmx D OT  net>, 2005
+#  Gerfried Fuchs <alfie@ist.org>, 2006
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-10 18:48+0200\n"
-"PO-Revision-Date: 2006-02-03 19:39+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT   gmx D OT  net>\n"
+"PO-Revision-Date: 2006-05-16 01:36-0500\n"
+"Last-Translator: Gerfried Fuchs <alfie@ist.org>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,7 +17,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:39
 msgid "Wesnoth Tutorial"
-msgstr ""
+msgstr "Wesnoth Einführung"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:257
 #: data/tutorial/scenarios/1_Tutorial.cfg:70
@@ -26,7 +29,7 @@ msgstr "Konrad"
 #: data/tutorial/scenarios/1_Tutorial.cfg:80
 #: data/tutorial/scenarios/1_Tutorial.cfg:329
 msgid "Quintain"
-msgstr ""
+msgstr "Turnierpuppe"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:101
 msgid "Delfador"
@@ -40,32 +43,37 @@ msgid ""
 " healing\n"
 " recruiting"
 msgstr ""
+"Ihr werdet folgende Grundzüge lernen:\n"
+" Bewegung\n"
+" Angreifen\n"
+" Heilen\n"
+" Ausbilden"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:126
 msgid "Destroy a fierce enemy"
-msgstr ""
+msgstr "Vernichtet einen erbitterten Gegner"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:130
 msgid "Get yourself killed"
-msgstr ""
+msgstr "Werdet selbst getötet"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:146
 msgid "Who would you like to play?"
-msgstr ""
+msgstr "Wen wollt Ihr spielen?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:152
 msgid "he"
-msgstr ""
+msgstr "er"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:156
 #: data/tutorial/scenarios/1_Tutorial.cfg:159
 #: data/tutorial/scenarios/1_Tutorial.cfg:169
 msgid "Li'sar"
-msgstr ""
+msgstr "Li'sar"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:160
 msgid "she"
-msgstr ""
+msgstr "sie"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:185
 msgid ""
@@ -74,10 +82,15 @@ msgid ""
 "mentor Delfador is on the East side of the river.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"*Willkommen in Wesnoth!\n"
+"In dieser Einführung spielt ihr $student, derzeit im Bergfried stehend. Euer "
+"Mentor Delfador befindet sich östlich des Flusses.\n"
+"*Klickt mit Links oder drückt eine Taste um fortzufahren..."
 
+# XXX - male/female character, not fully happy
 #: data/tutorial/scenarios/1_Tutorial.cfg:188
 msgid "Left click on $student"
-msgstr ""
+msgstr "Klickt mit Links auf $student"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:205
 msgid ""
@@ -85,20 +98,26 @@ msgid ""
 "The places $he could move to are highlighted.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"*Ihr habt $student ausgewählt.\n"
+"Die Orte, wohin $he sich bewegen kann, sind hervorgehoben.\n"
+"*Klickt mit Links oder drückt eine Taste um fortzufahren..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:208
 msgid "HERE"
-msgstr ""
+msgstr "HIER"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:214
 msgid ""
 "Move $student next to Delfador, by clicking on the place marked 'HERE'.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"Bewegt $student neben Delfador, indem Ihr auf den Ort klickt, der mit »HIER« "
+"markiert ist.\n"
+"*Klickt mit Links oder drückt eine Taste um fortzufahren..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:218
 msgid "Left click on tile labelled HERE"
-msgstr ""
+msgstr "Klickt mit Links auf den Ort, der mit HIER beschrieben ist"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:256
 msgid ""
@@ -107,35 +126,42 @@ msgid ""
 "Undo, then try again.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"*Oops!\n"
+"Ihr habt euch zum falschen Ziel bewegt! Nach dieser Meldung könnt ihr »u« "
+"drücken, um den Zug zurück zu nehmen, und versucht es dann erneut.\n"
+"*Klickt mit Links oder drückt eine Taste um fortzufahren..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:279
 msgid "Good morning Delfador!  Is it time to attack things?"
-msgstr ""
+msgstr "Guten Morgen, Delfador! Ist es an der Zeit, etwas anzugreifen?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:284
 msgid "Um, well..."
-msgstr ""
+msgstr "Uhm, nun..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:289
 msgid "Have you found an orc for me to fight, huh?  A troll?"
-msgstr ""
+msgstr "Ihr habt einen Ork für mich zum Kämpfen gefunden? Einen Troll?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:294
 msgid "Quiet!  I will summon an enemy for you..."
-msgstr ""
+msgstr "Still! Ich werde einen Gegner für dich beschwören..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:334
 msgid "... this quintain!"
-msgstr ""
+msgstr "... diese Turnierpuppe!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:339
 msgid "A quintain?  You want me to pretend to fight a dummy??"
 msgstr ""
+"Eine Turnierpuppe? Ihr wollt, dass ich vorgebe, mit einer Puppe zu kämpfen??"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:344
 msgid ""
 "Child, you have 32 hitpoints and a sword.    I'm fairly sure you'll win."
 msgstr ""
+"Kind, du hast 32 Lebenspunkte und ein Schwert. Ich bin mir ziemlich sicher, "
+"dass du gewinnen wirst."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:350
 msgid ""
@@ -144,41 +170,48 @@ msgid ""
 "of the attack.  When you click OK, $student will attack.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"Um die Turnierpuppe anzugreifen, müsst ihr zuerst den Angreifer ($student) "
+"auswählen und anschließend das Ziel (die Turnierpuppe). Ihr werdet eine "
+"Beschreibung der Details des Angriffs sehen. Wenn ihr auf Okay klickt, wird "
+"$student angreifen.\n"
+"*Klickt mit Links oder drückt eine Taste um fortzufahren..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:359
 msgid "Click on the quintain to attack it"
-msgstr ""
+msgstr "Klickt auf die Turnierpuppe, um sie anzugreifen"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:362
 #: data/tutorial/scenarios/1_Tutorial.cfg:448
 msgid "Click on $student"
-msgstr ""
+msgstr "Klickt auf $student"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:391
 msgid "Hey! This quintain fights back!"
-msgstr ""
+msgstr "Hey! Diese Turnierpuppe wehrt sich!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:396
 msgid "Hmm, maybe we should have started with a doll."
-msgstr ""
+msgstr "Hmm, vielleicht hätten wir mit einer echten Puppe anfangen sollen."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:401
 msgid "Should I retreat?"
-msgstr ""
+msgstr "Soll ich mich zurückziehen?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:406
 msgid "Good idea!"
-msgstr ""
+msgstr "Gute Idee!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:415
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain.  The "
 "quintain will now get a turn."
 msgstr ""
+"Unglücklicherweise hast du deinen Zug dafür verwendet, die Turnierpuppe "
+"anzugreifen. Die Turnierpuppe ist nun an der Reihe."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:419
 msgid "The DUMMY gets a turn?"
-msgstr ""
+msgstr "Die PUPPE erhält einen Zug?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:424
 msgid ""
@@ -186,19 +219,23 @@ msgid ""
 "Now, this quintain gets five chances to hit you, and if it hits every time, "
 "you'll drop from $student_hp to $future_hp hit points.  Brace yourself!"
 msgstr ""
+"Ja: Es ist eine magische Turnierpuppe.\n"
+"Diese Turnierpuppe erhält nun fünf Versuche, dich zu treffen, und wenn sie "
+"jedesmal trifft, wirst du von $student_hp auf $future_hp Lebenspunkte "
+"sinken. Seid vorsichtig!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:426
 msgid "Click on the End Turn button on the bottom right"
-msgstr ""
+msgstr "Klickt auf den Zug beenden Knopf unten rechts"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:438
 msgid "Ouch!  I need to heal!  Only $student_hp hp left!"
-msgstr ""
+msgstr "Ouch! Ich muss mich heilen! Nur $student_hp LP übrig!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:402
 #: data/tutorial/scenarios/1_Tutorial.cfg:441
 msgid "Village"
-msgstr ""
+msgstr "Dorf"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:445
 msgid ""
@@ -206,10 +243,13 @@ msgid ""
 "good idea, and ending your turn in one will heal you: you should retreat to "
 "there."
 msgstr ""
+"Es gibt auf der anderen Seite des Flusses ein Dorf. Dörfer zu besuchen ist "
+"eine gute Idee, und deinen Zug in einem zu beenden wird dich heilen: Du "
+"solltest dich dorthin zurück ziehen."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:456
 msgid "Click on the village to move $student"
-msgstr ""
+msgstr "Klickt auf das Dorf, um $student zu bewegen"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:473
 msgid ""
@@ -218,39 +258,49 @@ msgid ""
 "gold: every turn you gain two gold, plus two for every village you own.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"Ihr »besitzt« nun dieses Dorf: Ihr seht eure Flagge wehen, und gleich wird "
+"eine »1« neben dem Haus-Symbol oben am Schirm auftauchen. Dörfer bringen "
+"Gold: Jeden Zug erhaltet Ihr zwei Gold, plus zwei für jedes Dorf, das ihr "
+"besitzt.\n"
+"*Klickt mit Links oder drückt eine Taste um fortzufahren..."
 
+# XXX - 2 per village?! Not one? At least the tutorial tells otherwise...
 #: data/tutorial/scenarios/1_Tutorial.cfg:475
 #: data/tutorial/scenarios/1_Tutorial.cfg:572
 #: data/tutorial/scenarios/1_Tutorial.cfg:602
 #: data/tutorial/scenarios/1_Tutorial.cfg:679
 #: data/tutorial/scenarios/1_Tutorial.cfg:728
 msgid "Click on the End Turn button"
-msgstr ""
+msgstr "Klickt auf den Zug beenden Knopf"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:509
 msgid ""
 "You're about to be healed by 8 hitpoints.   But I think you're going to need "
 "some help against that quintain."
 msgstr ""
+"Dir werden nun 8 Lebenspunkte geheilt. Aber ich glaube, dass du Hilfe gegen "
+"die Turnierpuppe benötigst."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:514
 msgid "I'll recruit some elves!"
-msgstr ""
+msgstr "Ich werde einige Elfen rekrutieren!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:922
 #: data/tutorial/scenarios/1_Tutorial.cfg:517
 msgid "Keep"
-msgstr ""
+msgstr "Bergfried"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:521
 msgid ""
 "A splendid idea.  If you return to your keep, you can recruit two units.  "
 "You have plenty of gold for that."
 msgstr ""
+"Eine großartige Idee. Wenn du in deinen Bergfried zurückkehrst, kannst du "
+"zwei Einheiten ausbilden. Du hast Gold im Überfluss dafür."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:525
 msgid "Move $student to the keep"
-msgstr ""
+msgstr "Bewegt $student in den Bergfried"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:544
 msgid ""
@@ -259,10 +309,14 @@ msgid ""
 "one type of unit to choose: select it.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"Wann immer Ihr in einem Bergfried seid, könnt Ihr auf den Burg-Feldern rund "
+"um ihn ausbilden, indem Ihr mit Rechts darauf klickt und »Ausbilden« "
+"auswählt. Zur Zeit könnt Ihr nur eine Art von Einheit auswählen: Wählt sie.\n"
+"*Klickt mit Links oder drückt eine Taste um fortzufahren..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:547
 msgid "Right click on one castle tile and select Recruit"
-msgstr ""
+msgstr "Rechtsklickt auf ein Burgfeld und wählt Ausbilden"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:568
 #: data/tutorial/scenarios/1_Tutorial.cfg:598
@@ -273,17 +327,25 @@ msgid ""
 "description on the right of the screen.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"Diese neu ausgebildeten Einheiten können diese Runde nichts mehr tun: Ihr "
+"werdet sie in der nächsten Runde kontrollieren.\n"
+"Anmerkung: Nach diesem Dialog könnt Ihr den Mauszeiger über eine Einheit "
+"bewegen, um rechts am Schirm eine Beschreibung zu erhalten.\n"
+"*Klickt mit Links oder drückt eine Taste um fortzufahren..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:575
 #: data/tutorial/scenarios/1_Tutorial.cfg:605
 msgid "Right click on the other castle tile and Recruit another unit"
 msgstr ""
+"Rechtsklickt auf das andere Burgfeld und bildet eine weitere Einheit aus"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:618
 msgid ""
 "Hey, the quintain just healed by two hitpoints!  I'd better attack it at "
 "once!"
 msgstr ""
+"Hey, die Turnierpuppe hat gerade zwei Lebenspunkte geheilt! Ich greif sie "
+"lieber gleich an!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:623
 msgid ""
@@ -291,37 +353,46 @@ msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
+"Ja, falls eine Einheit eine ganze Runde nichts tut, heilt sie langsam.\n"
+"Aber bevor du deine Kämpfer gegen die Turnierpuppe aussendest, solltest du "
+"wissen, dass sie zwei Arten von Angriffen haben..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:627
 msgid "I'll tell them to use the one which does most damage!"
 msgstr ""
+"Ich werde ihnen sagen, jenen zu verwenden, der am meisten Schaden macht!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:631
 msgid ""
 "And which would that be?  The sword (5-4) or the bow (3-3)?  I guess you'll "
 "find out..."
 msgstr ""
+"Und welcher wäre das? Das Schwert (5-4) oder der Bogen (3-3)? Ich denke, du "
+"wirst es herausfinden..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:633
-#, fuzzy
 msgid "Left click on an Elvish Fighter"
-msgstr "Wie weit kann sich mein Elfenkrieger bewegen?"
+msgstr "Linksklickt auf einen Elfenkrieger"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:634
-#, fuzzy
 msgid "End your turn, then attack again."
-msgstr "Beendet Euren Zug und wartet auf den Angriff Merles."
+msgstr "Beendet Euren Zug, dann greift erneut an."
 
+# XXX - trailing dot (inconsistency)
 #: data/tutorial/scenarios/1_Tutorial.cfg:641
 msgid "Left click on the Quintain to attack it."
-msgstr ""
+msgstr "Linksklickt auf die Turnierpuppe um sie anzugreifen."
 
+# XXX - trailing dot (inconsistency)
 #: data/tutorial/scenarios/1_Tutorial.cfg:670
 msgid ""
 "Your elf used a sword (5-4, or 5 damage, 4 attacks), which is a melee "
 "attack, so the quintain defended with its melee attack (3-5).  The ranged "
 "attack was safer."
 msgstr ""
+"Dein Elf hat ein Schwert verwendet (5-4, oder 5 Schaden, 4 Angriffe), was "
+"ein Nahkampfangriff ist, daher verteidigt sich die Turnierpuppe mit ihrem "
+"Nahkampfangriff (3-5). Der Fernkampfangriff wäre sicherer."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:677
 msgid ""
@@ -330,6 +401,10 @@ msgid ""
 "attack was safer.\n"
 "End your turn, then attack again."
 msgstr ""
+"Dein Elf hat ein Schwert verwendet (5-4, oder 5 Schaden, 4 Angriffe), was "
+"ein Nahkampfangriff ist, daher verteidigt sich die Turnierpuppe mit ihrem "
+"Nahkampfangriff (3-5). Der Fernkampfangriff wäre sicherer.\n"
+"Beende deien Zug, dann greif erneut an."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:687
 msgid ""
@@ -337,11 +412,15 @@ msgid ""
 "attack, so the quintain defended with its melee attack (3-5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
+"Dein Elf hat ein Schwert verwendet (5-4, oder 5 Schaden, 4 Angriffe), was "
+"ein Nahkampfangriff ist, daher verteidigt sich die Turnierpuppe mit ihrem "
+"Nahkampfangriff (3-5).\n"
+"Du solltest dem anderem Elfen mitteilen, dass er den Bogen verwenden soll."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:689
 #: data/tutorial/scenarios/1_Tutorial.cfg:737
 msgid "Attack with the other Elf"
-msgstr ""
+msgstr "Greift mit dem anderem Elfen an"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:719
 #: data/tutorial/scenarios/1_Tutorial.cfg:735
@@ -350,6 +429,9 @@ msgid ""
 "attacks).  The quintain has no ranged attack, only a melee attack, so it "
 "could not defend itself."
 msgstr ""
+"Euer Elf hat einen Bogen verwendet, was ein Fernkampfangriff war (3-3, oder "
+"3 Schaden, 3 Angriffe). Die Turnierpuppe hat keinen Fernkampfangriff, nur "
+"einen Nahkampfangriff, daher konnte sie sich nicht wehren."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:726
 msgid ""
@@ -358,20 +440,27 @@ msgid ""
 "could not defend itself.\n"
 "End your turn, then attack again."
 msgstr ""
+"Dein Elf hat einen Bogen verwendet, was ein Fernkampfangriff war (3-3, oder "
+"3 Schaden, 3 Angriffe). Die Turnierpuppe hat keinen Fernkampfangriff, nur "
+"einen Nahkampfangriff, daher konnte sie sich nicht wehren.\n"
+"Beende deinen Zug, dann greif erneut an."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:752
 msgid "Keep attacking, with both elves, until the quintain is finished!"
-msgstr ""
+msgstr "Greif weiter an, mit beiden Elfen, bis die Turnierpuppe erledigt ist!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:760
 msgid "Maybe you should recruit another elf?"
-msgstr ""
+msgstr "Vielleicht solltest du einen weiteren Elfen ausbilden?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:765
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
 msgstr ""
+"Anmerkung:\n"
+"Ihr könnt auf eine Einheit rechtsklicken, um eine detailierte Beschreibung "
+"zu erhalten."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:780
 msgid ""
@@ -379,6 +468,10 @@ msgid ""
 "Remember to pull back wounded units into villages, and recruit more if you "
 "need.  Take special care of units with the highest experience points (XP)."
 msgstr ""
+"Anmerkung:\n"
+"Vergesst nicht, verwundete Einheiten in die Dörfer zurückzuziehen, und "
+"weitere auszubilden, falls es notwendig scheint. Seid besonders vorsichtig "
+"mit Einheiten mit vielen Erfahrungspunkten (EP)."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:797
 msgid ""
@@ -386,6 +479,10 @@ msgid ""
 "These dummies only attack if you are a single tile away.  With care, you "
 "should be able to kill them one at a time."
 msgstr ""
+"Anmerkung:\n"
+"Diese Puppen greifen nur an, wenn Ihr ein einzelnes Feld entfernt seid. Mit "
+"etwas Vorsicht sollte es Euch möglich sein, sie eine nach der anderen zu "
+"beseitigen."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:808
 msgid ""
@@ -394,6 +491,11 @@ msgid ""
 "the right), it will go up a level.  Elvish Fighters have two options, and "
 "you will get to choose which one you want."
 msgstr ""
+"Anmerkung:\n"
+"Wenn eine Einheit genügend Erfahrung gesammelt hat (der Erfahrungsbalken ist "
+"der kleinere auf der rechten Seite), wird sie eine Stufe aufsteigen. "
+"Elfenkämpfer haben zwei Möglichkeiten, und Ihr könnt wählen, welche ihr "
+"wünscht."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:817
 msgid ""
@@ -403,10 +505,16 @@ msgid ""
 "villages, bad inside rivers.  The dummies' attacks are magical, however, so "
 "they have a 70% chance of hitting you wherever you stand."
 msgstr ""
+"Anmerkung:\n"
+"Wenn Ihr eine Einheit ausgewählt hab, seht Ihr Prozentzahlen an "
+"verschiedenen Orten: Höhere bedeuten bessere Verteidungung. Zum Beispiel ist "
+"die Verteidigung in Burgen und Dörfern gut, in Flüssen hingegen schlecht. "
+"Die Angriffe der Puppen sind jedoch magisch, daher haben sie unabhängig von "
+"Eurem Standort eine 70% Wahrscheinlichkeit, euch zu treffen."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:839
 msgid "The quintain is dead, sirs, and I have gained more experience!"
-msgstr ""
+msgstr "Die Turnierpuppe ist tot, Sirs, und ich habe mehr Erfahrung erhalten!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:844
 msgid ""
@@ -415,30 +523,37 @@ msgid ""
 "Now $student, I will leave you with more dummies to practice on!  After "
 "that, we have real work to do..."
 msgstr ""
+"Ja, Ihr erhaltet mehr Erfahrung durch Kämpfe, speziell durch das Töten Töten "
+"eines Gegners: Werdet erfahren genug und ihr werdet mächtiger.\n"
+"Nun, $student, ich werde dich mit weiteren Puppen zum Üben zurück lassen! "
+"Anschließend haben wir echte Arbeit zu erledigen..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:905
 msgid "Do you want to keep practicing?"
-msgstr ""
+msgstr "Wollt Ihr weiter üben?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:907
 msgid "Yes, I'm still figuring it out."
-msgstr ""
+msgstr "Ja, ich versuche noch es zu durchschauen."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:910
 msgid "No, I think I've got it."
-msgstr ""
+msgstr "Nein, ich denke, ich hab es verstanden."
 
 #: data/tutorial/scenarios/2_Speaking.cfg:26
 msgid ""
 "*Remember:\n"
 "You can press 'u' to undo most things: useful to correct mistakes."
 msgstr ""
+"*Vergesst nicht:\n"
+"Ihr könnt meistens »u« zum Zurücknehmen der Handlung drücken: Dies ist "
+"nützlich, um Fehler zu korrigieren."
 
 #: data/tutorial/scenarios/2_Speaking.cfg:38
 #: data/tutorial/scenarios/2_Speaking.cfg:48
 #: data/tutorial/scenarios/2_Speaking.cfg:61
 msgid "*Galdrad"
-msgstr ""
+msgstr "*Galdrad"
 
 #: data/tutorial/scenarios/2_Speaking.cfg:73
 msgid ""
@@ -446,27 +561,34 @@ msgid ""
 "unit does more damage, and intelligent means it requires less experience to "
 "advance a level."
 msgstr ""
+", euer neuer Rekrut, hat zwei Charakteristiken: kräftig und intelligent. "
+"Kräftig bedeutet, dass eine Einheit mehr Schaden verursacht, und "
+"intelligent, dass sie weniger Erfahrung benötigt, um eine Stufe aufzusteigen."
 
 #: data/tutorial/scenarios/2_Speaking.cfg:86
 msgid ""
 " has two traits: quick and resilient.  Quick means a unit can move one tile "
 "further each turn, and resilient means it has more hitpoints."
 msgstr ""
+" hat zwei Charakteristiken: schnell und robust. Schnell bedeutet, dass sich "
+"die Einheit jede Runde ein Feld weiter bewegen kann, und robust bedeutet, "
+"dass sie mehr Lebenspunkte hat."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:25
-#, fuzzy
 msgid "Patch of forest"
-msgstr "Delfador fällt in der Schlacht"
+msgstr "Stück Wald"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:26
 msgid ""
 "Now put an unwounded unit, preferably a fighter, in that patch of forest on "
 "the south-east of the island: a nice, defensible spot."
 msgstr ""
+"Bewegt nun eine unverletzte Einheit, vorzugsweise einen Kämpfer, in das "
+"Stück Wald im Südosten der Insel: Ein netter, verteidigbarer Platz."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:27
 msgid "Can one unit survive against all those enemies?"
-msgstr ""
+msgstr "Kann eine Einheit gegen all diese Gegner überleben?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:28
 msgid ""
@@ -474,49 +596,54 @@ msgid ""
 "unit, it will heal it by 4 hitpoints per turn.  Just be careful not to "
 "expose the Shaman to attack: is fairly weak itself."
 msgstr ""
+"Mit ein wenig Hilfe, ja. Wenn du deine Schamanin neben die verteidigende "
+"Einheit bewegst, wird sie um 4 Lebenspunkte pro Zug geheilt werden. Sei nur "
+"Vorsichtig, die Schamanin keinem Angriff auszusetzen: Sie selbst ist sehr "
+"schwach."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:36
 msgid ""
 "Advance other units onto the island or to capture villages, then End Turn"
 msgstr ""
+"Bewegt andere Einheiten auf die Insel oder um Dörfer einzunehmen, dann "
+"beendet Euren Zug"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:183
 msgid "I hope I get to retreat after this!"
-msgstr ""
+msgstr "Ich hoffe, ich kann mich anschließend zurückziehen!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:194
 msgid "One lucky attack by an Orcish Grunt and I'm done for!"
-msgstr ""
+msgstr "Ein glücklicher Angriff von einem Orkgrunzer und ich bin besiegt!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:205
 msgid "Ouch!  I could use some healing in a village."
-msgstr ""
+msgstr "Autsch! Ich könnte etwas Heilung in einem Dorf gebrauchen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:231
 msgid "I have $gold gold: enough to recruit!"
-msgstr ""
+msgstr "Ich habe $gold Gold: Genug zum Ausbilden!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:232
 msgid "Yes, keep recruiting more units: I think you might need them!"
-msgstr ""
+msgstr "Ja, bilde weitere Einheiten aus: Ich glaube, du wirst sie brauchen!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:243
 msgid "Wesnoth Tutorial Part II"
-msgstr ""
+msgstr "Wesnoth Einführung Teil II"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:268
 msgid "Thrag"
-msgstr ""
+msgstr "Thrag"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:285
 msgid "Galdrad"
-msgstr ""
+msgstr "Galdrad"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:296
 #: data/tutorial/scenarios/2_Tutorial.cfg:330
-#, fuzzy
 msgid "Defeat the Orc Leader"
-msgstr "Besiegt Delfador"
+msgstr "Besiegt den Orkhäuptling"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:300
 msgid "Death of Konrad"
@@ -528,15 +655,16 @@ msgid "Turns run out"
 msgstr "Rundenlimit überschritten"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:334
-#, fuzzy
 msgid "Death of Li'sar"
-msgstr "Delfador fällt in der Schlacht"
+msgstr "Li'sar fällt in der Schlacht"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:373
 msgid ""
 "Ho Galdrad!  Has Delfador conjured something else to beat me with?  A flock "
 "of scarecrows, perhaps?"
 msgstr ""
+"Ho Galdrad! Hat Delfador was anderes beschworen, um mich zu schlagen? "
+"Vielleicht eine Schar von Vogelkrähen?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:374
 msgid ""
@@ -545,23 +673,30 @@ msgid ""
 "to enter here.  You must defeat their leader, so they never bother us "
 "again.  I will advise you."
 msgstr ""
+"Dies ist kein Spiel, $student|. Orks haben auf der anderen Seite des Flusses "
+"kampiert. Dies ist Elfen-Land: Wir Elfen sind im Wald schnell und schwer zu "
+"treffen. Sie sind Narren, hier einzufallen. Du musst ihren Häuptling "
+"besiegen, damit sie uns nie wieder behelligen. Ich werde dich beraten."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:375
-#, fuzzy
 msgid "What should I do?"
-msgstr "Was soll ich als nächstes tun?"
+msgstr "Was soll ich tun?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:380
 msgid ""
 "First, we will have to deal with the Orcish Grunt stationed in the middle of "
 "the river.  He should be little trouble."
 msgstr ""
+"Zuerst müssen wir uns um den Orkgrunzer in der Mitte des Flusses kümmern. Er "
+"sollte uns keine Sorgen bereiten."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:381
 msgid ""
 "By then, their leader will have recruited units to send against us, and the "
 "real fight will begin."
 msgstr ""
+"Zu diesem Zeitpunkt wird ihr Häuptling Einheiten rekrutiert und uns entgegen "
+"geschickt haben, und der echte Kampf wird beginnen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:382
 #: data/tutorial/scenarios/2_Tutorial.cfg:383
@@ -569,14 +704,14 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:385
 #: data/tutorial/scenarios/2_Tutorial.cfg:386
 msgid "SHALLOW"
-msgstr ""
+msgstr "SEICHT"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:387
 #: data/tutorial/scenarios/2_Tutorial.cfg:388
 #: data/tutorial/scenarios/2_Tutorial.cfg:389
 #: data/tutorial/scenarios/2_Tutorial.cfg:390
 msgid "DEEP"
-msgstr ""
+msgstr "TIEF"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:392
 msgid ""
@@ -585,6 +720,11 @@ msgid ""
 "the east, but we would stand on the shore and force them to fight us from "
 "the water, where they are exposed and we are protected by the forest."
 msgstr ""
+"Betrachte dieses dunkelblaue Wasser: Es ist zu tief für beide Seiten, um es "
+"zu passieren. Sie können langsam durch die enge Bank von seichterem "
+"hellblauem Wasser im Osten waten, aber wir würden am Ufer warten und sie "
+"dazu zwingen, uns aus dem Wasser anzugreifen, wo sie offen sind und wir vom "
+"Wald geschützt."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:403
 msgid ""
@@ -592,6 +732,9 @@ msgid ""
 "the key: it has a village, for healing injured units, and forest in which we "
 "fight so well."
 msgstr ""
+"Der wahrscheinlichere Angriff ist daher über die Brücke. Die mittlere Insel "
+"ist der Schlüssel: Sie hat ein Dorf, in dem sich verletze Einheiten heilen "
+"können, und Wald, in dem wir so gut kämpfen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:408
 msgid ""
@@ -600,6 +743,10 @@ msgid ""
 "Two Elvish Archers\n"
 "One Elvish Shaman"
 msgstr ""
+"Für den Anfang brauchen wir einige Einheiten:\n"
+"Zwei Elfenkrieger\n"
+"Zwei Elfenbogenschützen\n"
+"Eine Elfenschamanin"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:475
 msgid ""
@@ -607,6 +754,9 @@ msgid ""
 "and $recall_name2 gained $recall_xp2.  You should recall them now so they "
 "can gain more experience, rather than recruiting new ones."
 msgstr ""
+"Während deiner Einführung hat $recall_name1 $recall_xp1 und $recall_name2 "
+"$recall_xp2 Erfahrungspunkte erhalten. Du solltest sie nun einberufen, damit "
+"sie mehr Erfahrung sammeln können, statt neue auszubilden."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:479
 msgid ""
@@ -614,14 +764,19 @@ msgid ""
 "You should recall that unit now, and recruit a second one (which is cheaper "
 "than recalling, anyway)."
 msgstr ""
+"Während deiner Einführung hat $recall_name1 $recall_xp1 Erfahrungspunkte "
+"erhalten. Du solltest diese Einheit nun einberufen, und eine zweite "
+"ausbilden (was sowieso billiger als einberufen ist)."
 
+# XXX - a leveled unit with 0 XP isn't considered worthy recalling?
 #: data/tutorial/scenarios/2_Tutorial.cfg:482
 msgid "RECALL $recall_name1"
-msgstr ""
+msgstr "$recall_name1 EINBERUFEN"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:483
 msgid "Right click on the tile south of you and recall $recall_name1"
 msgstr ""
+"Rechtsklickt auf das Feld südlich von Euch und beruft $recall_name1 ein"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:492
 msgid ""
@@ -629,28 +784,34 @@ msgid ""
 "them: as they don't, it's cheaper to recruit new ones.  So recruit an Elvish "
 "Fighter."
 msgstr ""
+"Falls ein Elfenkämpfer aus eurem letzten Kampf Erfahrung hätte, würden wir "
+"ihn einberufen: Da sie keine haben, ist es billiger, neue auszubilden. Daher "
+"bildet einen Elfenkämpfer aus."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:495
 msgid ""
 "If you had any experienced units alive from your last battle we would recall "
 "them, instead we must recruit a new Elvish Fighter."
 msgstr ""
+"Falls du irgend eine lebendige erfahrene Einheit aus dem letzten Kampf "
+"hättest, würden wir sie einberufen, stattdessen müssen wir einen neuen "
+"Elfenkämpfer ausbilden."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:498
 #: data/tutorial/scenarios/2_Tutorial.cfg:774
 #: data/tutorial/scenarios/2_Tutorial.cfg:817
-#, fuzzy
 msgid "Elvish Fighter"
-msgstr "Wie weit kann sich mein Elfenkrieger bewegen?"
+msgstr "Elfenkrieger"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:499
-#, fuzzy
 msgid "Right click on the tile south of you and recruit an Elvish Fighter"
-msgstr "Ausgezeichnet! Ihr habt einen Elfenkrieger ausgebildet."
+msgstr ""
+"Rechtsklickt auf das Feld südlich von euch und bildet einen Elfenkrieger aus"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:533
+#, fuzzy
 msgid "No!  I said recruit an Elvish SHAMAN|!  Now try again..."
-msgstr ""
+msgstr "Nein! Ich sagte bildet eine Elfen-SCHAMANIN aus! Versuche es erneut..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:539
 msgid ""
@@ -658,11 +819,13 @@ msgid ""
 "it.  It also has a special attack which slows enemies, halving the damage "
 "they do!"
 msgstr ""
+"Die Schamanin ist eine ziemlich schwache Einheit, aber hat die Fähigkeit, "
+"Einheiten um sie herum zu heilen. Sie hat auch einen speziellen Angriff, der "
+"Feinde verlangsamt und den Schaden, den sie verursachen, halbiert!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:540
-#, fuzzy
 msgid "So, should I end my turn now?"
-msgstr "Wie beende ich meinen Zug?"
+msgstr "Soll ich also nun meinen Zug beenden?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:542
 msgid ""
@@ -670,102 +833,120 @@ msgid ""
 "five units cost you 5 gold, leaving you 3 gold pieces poorer per turn.  You "
 "need more income."
 msgstr ""
+"Es ist wahr, dass sich keine deiner rekrutierten Einheiten bewegen kann, "
+"aber du kannst es immer noch. Deine fünf Einheiten kosten dich 5 Gold, was "
+"dich nach jedem Zug 3 Goldstücke kosten würde. Du brauchst mehr Einkommen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:543
 msgid "Move $student to capture a village"
-msgstr ""
+msgstr "Bewegt $student, um ein Dorf einzunehmen"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:562
 #: data/tutorial/scenarios/2_Tutorial.cfg:607
+#, fuzzy
 msgid "No!  I said recruit an Elvish ARCHER|!  Now try again..."
 msgstr ""
+"Nein! Ich sagte bildet einen Elfen-BOGENSCHÜTZEN aus! Versuche es erneut..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:571
 #: data/tutorial/scenarios/2_Tutorial.cfg:583
 msgid "Eowynial"
-msgstr ""
+msgstr "Eowynial"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:587
 msgid "Shaman"
-msgstr ""
+msgstr "Schamanin"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:588
 msgid "Recruit an Elvish Shaman to your north"
-msgstr ""
+msgstr "Bildet eine Elfenschamanin nördlich von Euch aus"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:616
 #: data/tutorial/scenarios/2_Tutorial.cfg:627
 msgid "Elriend"
-msgstr ""
+msgstr "Elriend"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:654
 msgid "No!  I said RECALL $recall_name2|!  Now try again..."
-msgstr ""
+msgstr "Nein! Ich sagte, BERUFT $recall_name2 EIN! Versuche es erneut..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:659
 #: data/tutorial/scenarios/2_Tutorial.cfg:701
 msgid "Archer #1"
-msgstr ""
+msgstr "Bogenschütze #1"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:660
 #: data/tutorial/scenarios/2_Tutorial.cfg:702
 msgid "Archer #2"
-msgstr ""
+msgstr "Bogenschütze #2"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:661
 #: data/tutorial/scenarios/2_Tutorial.cfg:703
 msgid "Recruit two Elvish Archers in tiles to your west"
-msgstr ""
+msgstr "Bildet zwei Elfenbogenschützen in den Feldern westlich von euch aus"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:677
+#, fuzzy
 msgid "No!  I said recruit an Elvish FIGHTER|!  Now try again..."
-msgstr ""
+msgstr "Nein! Ich sagte bildet einen Elfen-KÄMPFER aus! Versuche es erneut..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:687
 #: data/tutorial/scenarios/2_Tutorial.cfg:698
 msgid "Golir"
-msgstr ""
+msgstr "Golir"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:749
 msgid "No!  I said recall $recall_name1, not $recall_name2|!  Now try again..."
 msgstr ""
+"Nein! Ich sagte beruft $recall_name1 ein, nicht $recall_name2|! Versuche es "
+"erneut..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:753
 msgid ""
 "No!  I said RECALL $recall_name1 from the last battle, not recruit a new "
 "$recruit.type|!  Now try again..."
 msgstr ""
+"Nein! ich sagte BERUFT $recall_name1 aus dem letzten Kampf EIN, nicht bildet "
+"eine neuen $recruit.type aus! Versuche es erneut..."
 
+# XXX - female shaman -- two strings needed
 #: data/tutorial/scenarios/2_Tutorial.cfg:770
 msgid "Right click on the tile south-east of you and recall $recall_name2"
 msgstr ""
+"Rechtsklickt auf das Feld südöstlich von Euch und beruft $recall_name2 ein"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:771
 msgid "RECALL $recall_name2"
-msgstr ""
+msgstr "$recall_name2 EINBERUFEN"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:775
 #: data/tutorial/scenarios/2_Tutorial.cfg:818
-#, fuzzy
 msgid "Right click on the tile south-east of you and recruit an Elvish Fighter"
-msgstr "Ausgezeichnet! Ihr habt einen Elfenkrieger ausgebildet."
+msgstr ""
+"Rechtsklickt auf das Feld südöstlich von Euch und beruft einen Elfenkämpfer "
+"ein"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:791
 msgid ""
 "No!  I said RECRUIT a new Elvish Fighter, not a $recruit.type|!  Now try "
 "again..."
 msgstr ""
+"Nein! Ich sagte BILDET einen neuen Elfenkämpfer AUS, nicht einen $recruit."
+"type|! Versuche es erneut..."
 
+# XXX - female shaman -- two strings needed
 #: data/tutorial/scenarios/2_Tutorial.cfg:805
 #: data/tutorial/scenarios/2_Tutorial.cfg:816
 msgid "Elindel"
-msgstr ""
+msgstr "Elindel"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:844
 msgid ""
 "You've learned well, $student|!  The village pays two gold per turn: you're "
 "only losing 1 gold per turn now."
 msgstr ""
+"Du hast gut gelernt, $student|! Das Dorf zahlt zwei Gold pro Zug: Du "
+"verlierst jetzt nur noch 1 Gold pro Zug."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:845
 #: data/tutorial/scenarios/2_Tutorial.cfg:962
@@ -777,28 +958,40 @@ msgid ""
 "You've captured all the villages around the keep, but stay near so you can "
 "recruit more units."
 msgstr ""
+"Du hast alle Dörfer nahe dem Bergfried eingenommen, aber bleib ihm nahe, "
+"damit du weitere Einheiten rekrutieren kannst."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:866
 msgid ""
 "You should leave the villages near your keep for $student to capture: $he "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
+"Du solltest die Dörfer nahe dem Bergfried für $student zum einnehmen übrig "
+"lassen: $he muss sowieso in der Nähe bleiben, um weitere Einheiten zu "
+"rekrutieren."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:872
 msgid "Orcs have no ranged attack, so use your archers against it."
 msgstr ""
+"Orks haben keinen Fernkampfangriff, verwende also deine Bogenschützen gegen "
+"ihn."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:874
 msgid ""
 "Attack the Orc with an Archer (move mouse over units to see description on "
 "right)"
 msgstr ""
+"Greift den Ork mit einem Bogenschützen an (bewegt den Mauszeiger über "
+"Einheiten, um eine rechts eine Beschreibung zu erhalten)"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:882
 msgid ""
 "Excellent.  Elves are well protected in the forest: there's only a 30% "
 "chance of hitting an Elven Archer when it's in forest."
 msgstr ""
+"Ausgezeichnet. Elfen sind im Wald gut geschützt: Es gibt nur eine 30% "
+"Wahrscheinlichkeit, einen Elfenbogenschützen zu treffen, wenn er sich im "
+"Wald befindet."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:891
 msgid ""
@@ -806,66 +999,81 @@ msgid ""
 "unit would have an 80% chance of being hit when the orc counter-attacks!  "
 "Cancel!"
 msgstr ""
+"Es ist sehr gefährlich, im Wasser zu stehen, wenn Feinde in der Nähe sind! "
+"Deine Einheit hätte eine 80% Wahrscheinlichkeit getroffen zu werden, wenn "
+"der Ork zurück angreift! Abbrechen!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:897
 msgid "Attack the Orc with the other Archer"
-msgstr ""
+msgstr "Greift den Ork mit dem anderem Bogenschützen an"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:909
 msgid "Fighter to Here"
-msgstr ""
+msgstr "Kämpfer hier her"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:910
 msgid ""
 "Your other units cannot reach this turn.  Send a Fighter to that village to "
 "the far east: that will take two turns."
 msgstr ""
+"Deine anderen Einheiten können ihn diesen Zug nicht erreichen. Schick einen "
+"Kämpfer in das Dorf weit im Osten: Das wird zwei Züge dauern."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:911
 msgid ""
 "You can make a unit keep moving for multiple turns: select the unit, then "
 "click on the target.  You will see (2) if it will take two turns to reach it."
 msgstr ""
+"Ihr könnt eine Einheit für mehrere Züge auf die Reise schicken: Wählt die "
+"Einheit aus, dann klickt auf das Ziel. Ihr werdet (2) sehen, wenn es zwei "
+"Züge dauert, es zu erreichen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:912
 msgid "Tell a Fighter to move to the far east village"
-msgstr ""
+msgstr "Befehligt einen Kämpfer, das Dorf weit im Osten aufzusuchen"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:923
 msgid ""
 "Send the other Fighter and the Shaman south so they can attack next turn, "
 "then return to the keep to recruit more units!"
 msgstr ""
+"Schickt den anderen Kämpfer und die Schamanin nach SÜden, damit sie nächste "
+"Runde angreifen können, und bewege dich zum Bergfried, um weitere Einheiten "
+"auszubilden!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:924
 msgid "Move Fighter and Shaman south, then return $student to the Keep"
 msgstr ""
+"Bewegt den Kämpfer und die Schamanin nach Süden, dann bringt $student heim "
+"zum Bergfried"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:934
 msgid "Recruit another Archer and a Fighter"
-msgstr ""
+msgstr "Bildet einen weiteren Bogenschützen und einen Kämpfer aus"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:949
 msgid "I have no more money to recruit!"
-msgstr ""
+msgstr "Ich habe kein Gold mehr übrig, um auszubilden!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:950
 msgid "This is often a problem, which is why owning villages is important."
-msgstr ""
+msgstr "Dies ist oft ein Problem, weshalb es wichtig ist, Dörfer einzunehmen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:951
 msgid "Move $student to another (unowned) village"
-msgstr ""
+msgstr "Bewegt $student in eine weiteres (unbesetztes) Dorf"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:976
 msgid ""
 "The orc is blocking the bridge!  We must occupy that island before the wolf "
 "riders reach it."
 msgstr ""
+"Der Ork blockiert die Brücke! Wir müssen diese Insel einnehmen, bevor die "
+"Wolfsreiter sie erreichen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:977
 msgid "Can't our units just move around him?"
-msgstr ""
+msgstr "Können meine Einheiten nicht an ihm vorbei ziehen?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:980
 #: data/tutorial/scenarios/2_Tutorial.cfg:981
@@ -874,7 +1082,7 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:984
 #: data/tutorial/scenarios/2_Tutorial.cfg:985
 msgid "ZoC"
-msgstr ""
+msgstr "KonZ"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:988
 msgid ""
@@ -883,15 +1091,20 @@ msgid ""
 "To move your troops onto that island without wading slowly through the "
 "water, you'll have to kill him."
 msgstr ""
+"Nein: Wenn du dich nahe zu einer feindlichen Einheit bewegst, befindest du "
+"dich in seiner »Kontrollzone«, und kannst dich diesen Zug nicht weiter "
+"bewegen.\n"
+"Um deine Einheiten auf die Insel zu bewegen, ohne durch das seichte Wasser "
+"zu waten, musst du ihn töten."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:989
 msgid "Attack the Orc with an Archer"
-msgstr ""
+msgstr "Greift den Ork mit einem Bogenschützen an"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1011
 #: data/tutorial/scenarios/2_Tutorial.cfg:1023
 msgid "Advance other units and capture villages, then End Turn"
-msgstr ""
+msgstr "Bewegt andere Einheiten und nehmt Dörfer ein, dann beendet den Zug"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1015
 msgid ""
@@ -899,22 +1112,29 @@ msgid ""
 "attack!  I'd better grab more villages, and move everyone closer for next "
 "turn."
 msgstr ""
+"Keine anderen Einheiten können den Ork erreichen: Ich hoffe, mein "
+"Bogenschütze überlegt den Gegenangriff! Ich nehme besser weitere Dörfer ein, "
+"und bewegen jeden näher hin für den nächsten Zug."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1016
 msgid ""
 "Yes.  If your Shaman stands just behind that unit on the bridge, it will "
 "heal it at the beginning of next turn, too."
 msgstr ""
+"Ja. Wenn deine Schamanin gleich hinter der Einheit auf der Brücke steht, "
+"wird sie am Anfang des nächsten Zuges ebenfalls geheilt."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1017
 msgid "Move Shaman onto bridge to stand behind unit"
-msgstr ""
+msgstr "Bewegt die Schamanin auf die Brücke hinter Eure Einheit"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1063
 msgid ""
 "Be careful: if you stand on the bridge you are exposed to attack from "
 "multiple directions!"
 msgstr ""
+"Seid vorsichtig: Wenn ihr auf der Brücke steht, seid ihr Angriffen aus "
+"mehreren Richtungen ausgesetzt!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1076
 msgid ""
@@ -922,18 +1142,26 @@ msgid ""
 "unit would have an 80% chance of being hit!  Cancel, and wait for them to "
 "attack you!"
 msgstr ""
+"Es ist sehr gefährlich, sich im Wasser zu befinden, wenn Feinde in der Nähe "
+"sind! Eure Einheiten hätten eine 80% Wahrscheinlichkeit, getroffen zu "
+"werden! Brich ab, und warte darauf, dass sie dich angreifen!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1086
 msgid ""
 "Don't forget about your fighter in the east: you can move him south to that "
 "last village near the channel."
 msgstr ""
+"Vergiss nicht deinen Kämpfer im Osten: Du kannst ihn nach Süden zum letzten "
+"Dorf nahe dem Kanal bewegen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1093
 msgid ""
 "We need to take that village, otherwise they will take it next turn!  Move "
 "your wounded unit to take it so it can heal, then kill that orc!"
 msgstr ""
+"Wir müssen dieses Dorf einnehmen, sonst werden es die anderen im nächsten "
+"Zug tun! Bewege deine verwundete Einheit hinein, damit sie geheilt wird, und "
+"töte den Ork anschließend!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1106
 msgid ""
@@ -941,29 +1169,38 @@ msgid ""
 "stronger at night, 25% weaker in the day.  You are lawful: stronger by day.  "
 "Elves are neutral: we are unaffected by night and day."
 msgstr ""
+"Vorsicht! Es ist nun Nacht. Orks sind lichtscheu: Ihre Angriffe sind des "
+"Nachts um 25% stärker, 25% schwächer zu Tage. Du bist redlich: Stärker zu "
+"Tage. Elfen sind neutral: Wir sind von Tag und Nacht nicht beeinflusst."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1107
 msgid ""
 "After this dialog, hold the mouse over the image below the map on the right, "
 "to see a description of the time of day."
 msgstr ""
+"Nach diesem Dialog bringt den Mauszeiger über das Bild unterhalb der Karte "
+"rechts, um eine Beschreibung der Tageszeit zu sehen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1114
 msgid ""
 "Remember to retreat your wounded units to villages.  Healers can only heal 4 "
 "hitpoints at a time, villages can heal 8 (the maximum for any unit)."
 msgstr ""
+"Vergiss nicht, deine verwundeten Einheiten in Dörfer zurückzuziehen. Heiler "
+"können nur 4 Lebenspunkte auf einmal heilen, Dörfer heilen 8 (das Maximum "
+"für jede Einheit)."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1121
-#, fuzzy
 msgid "Defend here"
-msgstr "Besiege Merle"
+msgstr "Verteidigt hier"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1122
 msgid ""
 "Beware those orcs crossing the river!  If they get into the forest they'll "
 "be hard to dislodge!"
 msgstr ""
+"Hütet euch vor diese Orks, die den Fluss überqueren! Falls sie in den Wald "
+"gelangen, werden sie schwer zu vertreiben sein!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1128
 msgid ""
@@ -971,40 +1208,58 @@ msgid ""
 "the next unit, SPACE to indicate it's finished.\n"
 "When 'n' no longer selects a new unit, you can end your turn."
 msgstr ""
+"Ihr könnt sicher gehen, dass ihr alle Einheiten für diese Runde verwendet "
+"habt: Drückt »n« für die nächste Einheit, die Leertaste, wenn sie fertig "
+"ist.\n"
+"Wenn »n« keine weitere Einheit auswählt, könnt Ihr Euren Zug beenden."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1133
 msgid "You only need to defeat the leader to win: see Main Menu->Objectives."
 msgstr ""
+"Ihr müsst nur den Anführer besiegen, um zu gewinnen: Seht auch Menü-"
+">Missionsziele."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1138
 msgid ""
 "Remember to recruit more troops as you need them: Archers are particularly "
 "effective against Grunts, Wolf Riders and their leader."
 msgstr ""
+"Vergesst nicht, bei Bedarf weitere Einheiten auszubilden: Bogenschützen sind "
+"besonders effektiv gegen Grunzer, Wolfreiter und deren Häuptling."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1156
 msgid ""
 "Stay near the keep: you need to be on a keep to recruit more units, and I "
 "doubt the Orc leader will let you use his!"
 msgstr ""
+"Bleib nahe beim Bergfried: Du musst in ihm stehen, um weitere Einheiten "
+"auszubilden, und ich bezweifle, dass es dir der Orkhäuptling erlaubt, seinen "
+"zu verwenden!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1170
 msgid ""
 "Their leader has moved into that village!  He's not as stupid as I thought: "
 "it heals him each turn and provides good defense."
 msgstr ""
+"Deren Anführer hat sich in dieses Dorf bewegt! Er ist nicht so dumm wie ich "
+"dachte: Es heilt ihn jede Runde und bietet eine gute Verteidigung."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1181
 msgid ""
 "That unit has captured our village!  You'd better get him out: it heals him "
 "each turn and provides good defense."
 msgstr ""
+"Diese Einheit hat unser Dorf eingenommen! Du vertreibst sie besser: Es heilt "
+"ihn jeden Zug und bietet gute Verteidung."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1193
 msgid ""
 "Using me to attack is risky!  I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
 msgstr ""
+"Mich für einen Angriff zu verwenden ist riskant! Ich kann den Gegner mit "
+"meinem Fernkampfangriff verlangsamen, aber ich hoffe, dass Ihr einen guten "
+"Plan habt, falls ich nicht treffe!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1229
 #: data/tutorial/scenarios/2_Tutorial.cfg:1245
@@ -1013,23 +1268,33 @@ msgid ""
 "gain 16 experience points, because he is level 2.  Choose your unit "
 "carefully!"
 msgstr ""
+"Du bist kurz davor, den Anführer zu töten! Die Einheit, die ihn erledigt, "
+"wird 16 Erfahrungspunkte erhalten, da er auf Stufe 2 ist. Wähle deine "
+"Einheit sorgfältig!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1286
 msgid ""
 "We will miss $deadguy.user_description|, and he had $deadguy.experience "
 "experience points, meaning he would have advanced to level 2 soon."
 msgstr ""
+"Wir werden $deadguy.user_description vermissen, und er hatte $deadguy."
+"experience Erfahrungspunkte, was bedeutet, dass er bald auf Stufe 2 "
+"aufgestiegen wäre."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1295
 msgid ""
 "We will miss $deadguy.user_description|, but better than one of our "
 "experienced troops dying!"
 msgstr ""
+"Wir werden $deadguy.user_description vermissen, aber besser diese als eine "
+"unserer erfahreneren Truppen!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1308
 msgid ""
 "Losing a healer hurts all the troops!  Keep them out of the enemy's reach!"
 msgstr ""
+"Der Verlust eines Heilers schmerzt die gesamte Truppe! Halte sie außerhalb "
+"der Reichweite des Feindes!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1309
 msgid ""
@@ -1037,18 +1302,27 @@ msgid ""
 "can see all the possible enemy moves at once with 'Show Enemy Moves' from "
 "the 'Actions' menu."
 msgstr ""
+"Ihr könnt sehen, wohin ein Feind gelangt, indem ihr den Mauszeiger auf ihn "
+"bewegt. Ihr könnt allerdings auch alle möglichen feindlichen Bewegungen "
+"gleichzeitig betrachten, indem ihr »Gegn. Bewegungen zeigen« aus dem "
+"»Aktionen«-Menü auswählt."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1313
+#, fuzzy
 msgid ""
 "$student, level 2 units are powerful, but not invulnerable.  Goodbye, "
 "$deadguy.user_description."
 msgstr ""
+"$student, Einheiten der Stufe 2 sind mächtig, aber nicht unverwundbar. Lebe "
+"wohl, $deadguy.user_description|."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1328
 msgid ""
 "Beware the leader: he can do 36 hitpoints damage at night!  Attack with many "
 "units at once, during the day."
 msgstr ""
+"Hütet euch vor dem Anführer: Er kann des Nachtens 36 Lebenspunkte Schaden "
+"verursachen! Greift ihn mit vielen Einheiten gleichzeitig an, unter Tags."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1341
 msgid ""
@@ -1056,6 +1330,10 @@ msgid ""
 "I always have a 60% chance of hitting with my bow, and 9 hitpoints damage on "
 "each of the four attacks.  Use me to dislodge hard-to-hit units."
 msgstr ""
+"Eine Stufe aufzusteigen hat mich komplett geheilt!\n"
+"Ich habe immer eine 60% Wahrscheinlichkeit, mit meinem Bogen zu treffen, und "
+"mache mit jedem meiner vier Angriffe 9 Lebenspunkte Schaden. Verwendet mich, "
+"um schwer zu treffende Einheiten zu vertreiben."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1353
 msgid ""
@@ -1064,6 +1342,10 @@ msgid ""
 "can hide in forests, and enemies can only see me if they are right next to "
 "me."
 msgstr ""
+"Eine Stufe aufzusteigen hat mich komplett geheilt!\n"
+"Ich bin sowohl mit dem Bogen als auch dem Schwert gut, aber ich hab eine "
+"spezielle Fertigkeit: Hinterhalt. Ich kann mich im Wald verstecken, und "
+"Feinde sehen mich nur, wenn sie direkt neben mir stehen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1365
 msgid ""
@@ -1072,1066 +1354,20 @@ msgid ""
 "leadership.  Level 1 units around me do 25% more damage, so position me "
 "carefully."
 msgstr ""
+"Eine Stufe aufzusteigen hat mich komplett geheilt!\n"
+"Ich bin sowohl mit dem Bogen als auch dem Schwert gut, aber ich hab eine "
+"spezielle Fertigkeit: Führungsqualitäten. Einheiten der Stufe 1 um mich "
+"herum machen 25% mehr Schaden, platziert mich daher gut."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1378
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am particularly good with the sword: four attacks doing 8 damage each."
 msgstr ""
+"Eine Stufe aufzusteigen hat mich komplett geheilt!\n"
+"Ich bin besonders gut mit dem Schwert: Vier Angriffe mit jeweils 8 Punkte "
+"Schaden."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1545
 msgid "You took too long, we'll never be rid of these orcs!"
-msgstr ""
-
-#~ msgid "Basic Training"
-#~ msgstr "Grundausbildung"
-
-#, fuzzy
-#~ msgid "Hello, Konrad."
-#~ msgstr "Konrad fällt in der Schlacht"
-
-#~ msgid ""
-#~ "I am here to learn how to fight in a battle. As an experienced elder "
-#~ "mage, surely you can explain the art of combat to me..."
-#~ msgstr ""
-#~ "Ich bin gekommen, um kämpfen zu lernen. Ihr seid ein erfahrener und "
-#~ "weiser Magier. Erlaubt mir, Euch um die Gunst zu bitten, mich in der "
-#~ "Kunst des Kampfes zu unterweisen."
-
-#, fuzzy
-#~ msgid ""
-#~ "*Basic Training\n"
-#~ "Skills covered:\n"
-#~ "- Recruiting units\n"
-#~ "- Moving units\n"
-#~ "- Attacking enemy units\n"
-#~ "- Gaining experience\n"
-#~ "- Winning scenarios"
-#~ msgstr ""
-#~ "Behandelte Kenntnisse:\n"
-#~ "Einheiten ausbilden\n"
-#~ "Einheiten bewegen\n"
-#~ "Gegnerische Einheiten angreifen\n"
-#~ "Erfahrungspunkte sammeln\n"
-#~ "Szenarien gewinnen"
-
-#~ msgid ""
-#~ "Before entering any battle, you need to recruit units. To recruit a unit, "
-#~ "right click on the castle tile on which you wish to recruit the unit. "
-#~ "Then select Recruit, and select 'OK'. You can only recruit units on "
-#~ "castle tiles connected to the keep your leader is on."
-#~ msgstr ""
-#~ "Vor jeder Schlacht müsst Ihr Einheiten ausbilden. Dazu müsst Ihr auf das "
-#~ "Burgfeld, auf dem sie ausgebildet werden sollen, rechtsklicken. Danach "
-#~ "wählt »Ausbilden« und »Okay«. Ihr könnt Einheiten nur in Burgfeldern "
-#~ "direkt neben dem Bergfried, in dem Euer Anführer steht, ausbilden."
-
-#~ msgid "Recruit a unit"
-#~ msgstr "Einheit ausbilden"
-
-#~ msgid ""
-#~ "Since units cannot move on the turn they are recruited, you must end your "
-#~ "turn. To do this, simply click the 'End Turn' button in the lower-right "
-#~ "hand corner."
-#~ msgstr ""
-#~ "Da sich Einheiten in dem Zug, in dem sie ausgebildet wurden, nicht "
-#~ "bewegen oder angreifen können, müsst Ihr Euren Zug jetzt beenden. Dazu "
-#~ "klickt einfach auf den »Zug beenden«-Knopf ganz unten rechts."
-
-#~ msgid "You have successfully ended your turn."
-#~ msgstr "Ihr habt Euren Zug erfolgreich beendet."
-
-#~ msgid ""
-#~ "Your next task is to move your Elvish Fighter. To move a unit, first "
-#~ "select it, then select his destination. In this case, his destination is "
-#~ "the forest next to the Elvish Shaman, Merle."
-#~ msgstr ""
-#~ "Als nächstes müsst Ihr Euren Elfenkrieger bewegen. Um eine Einheit zu "
-#~ "bewegen, wählt Ihr sie zuerst aus und klickt dann auf das Zielfeld. In "
-#~ "diesem Fall ist dies der Wald neben der Elfenschamanin Merle."
-
-#~ msgid "Move your Elvish Fighter next to Merle"
-#~ msgstr "Zieht Euren Kämpfer auf ein Merle benachbartes Feld"
-
-#~ msgid ""
-#~ "Excellent! You have successfully moved your Elvish Fighter. However, "
-#~ "since he moved next to an enemy unit, he has lost all his movement for "
-#~ "this turn; this is called the 'zone of control'."
-#~ msgstr ""
-#~ "Ausgezeichnet! Ihr habt Euren Elfenkrieger erfolgreich gezogen. Da er "
-#~ "allerdings neben eine gegnerische Einheit gezogen ist, hat er alle "
-#~ "Bewegungspunkte für den Rest des Zuges verloren. Die Ursache dafür liegt "
-#~ "in den so genannten »Kontrollzonen«."
-
-#~ msgid ""
-#~ "Now, you need to attack with your fighter. To attack, first select a "
-#~ "unit, then select its target, which must be next to the attacking unit. "
-#~ "You will then see the attack options box, where you must select an attack "
-#~ "to use."
-#~ msgstr ""
-#~ "Jetzt müsst Ihr mit Eurem Kämpfer angreifen. Dazu müsst Ihr zuerst eine "
-#~ "Einheit auswählen. Dann wählt das Ziel, welches neben dem Angreifer "
-#~ "stehen muss. Es erscheint eine Angriffsauswahlbox, in der Ihr die "
-#~ "Angriffsart auswählen könnt."
-
-#~ msgid "Attack Merle"
-#~ msgstr "Greift Merle an"
-
-#, fuzzy
-#~ msgid ""
-#~ "Your fighter has survived Merle's attack. Whenever a unit survives a "
-#~ "battle, it receives experience from the combat. Once a unit gains enough "
-#~ "experience, it advances to the next level and becomes more powerful."
-#~ msgstr ""
-#~ "Euer Kämpfer hat den Angriff Merles überlebt. Wenn eine Einheit einen "
-#~ "Kampf überlebt, bekommt sie Erfahrungspunkte. Sobald sie genug davon "
-#~ "gesammelt hat, steigt sie um eine Stufe auf und wird stärker."
-
-#~ msgid "Move your fighter onto a village."
-#~ msgstr "Zieht Euren Kämpfer auf ein Dorf."
-
-#~ msgid "Villages heal the units on them."
-#~ msgstr "In Dörfern werden Einheiten von den ortsansässigen Heilern geheilt."
-
-#~ msgid ""
-#~ "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
-#~ "repeatedly."
-#~ msgstr ""
-#~ "Nun müsst Ihr Merle besiegen, indem Ihr ihre Lebenspunkte auf 0 oder "
-#~ "weniger bringt. Greift einfach oft genug an."
-
-#~ msgid ""
-#~ "Oops! You moved your leader off of the keep. Remember, when your leader "
-#~ "is not on a keep, you cannot recruit. Also remember that if your leader "
-#~ "dies, you lose. In order to continue the tutorial, I will have to "
-#~ "teleport you back onto your keep."
-#~ msgstr ""
-#~ "Ups! Ihr habt Euren Anführer vom Bergfried weg bewegt. Erinnert Euch, "
-#~ "wenn Euer Anführer nicht im Bergfried ist, könnt Ihr nicht ausbilden. "
-#~ "Wenn euer Anführer stirbt, verliert Ihr das Spiel. Um das Tutorial "
-#~ "fortzusetzen, werde ich Euch zum Bergfried zurück teleportieren."
-
-#~ msgid ""
-#~ "Unfortunately, you lost, because your leader was defeated. Hopefully you "
-#~ "have gained wisdom from my teachings anyway."
-#~ msgstr ""
-#~ "Ihr habt leider verloren, weil euer Anführer besiegt wurde. Hoffentlich "
-#~ "habt Ihrtrotzdem Nutzen aus meinen Lehren gezogen."
-
-#~ msgid ""
-#~ "Unfortunately, you lost, because you ran out of time. Hopefully you have "
-#~ "gained wisdom from my teachings anyway."
-#~ msgstr ""
-#~ "Ihr habt leider verloren, weil die Zeit abgelaufen ist. Hoffentlich habt "
-#~ "Ihr trotzdem Nutzen aus meinen Lehren gezogen."
-
-#~ msgid "You have successfully completed the first training scenario."
-#~ msgstr "Ihr habt Euer erstes Übungsszenario erfolgreich abgeschlossen."
-
-#~ msgid "Hooray!"
-#~ msgstr "Hurra!"
-
-#~ msgid "Do you want to review any of the skills learned in this scenario?"
-#~ msgstr ""
-#~ "Möchtet Ihr die Kenntnisse betrachten, die in diesem Szenario vermittelt "
-#~ "wurden?"
-
-#~ msgid "Yes"
-#~ msgstr "Ja"
-
-#~ msgid "I'm done reviewing skills!"
-#~ msgstr "Ich habe mir die Fähigkeiten alle angesehen."
-
-#~ msgid "No"
-#~ msgstr "Nein"
-
-#~ msgid ""
-#~ "Although you have completed your first scenario, your training is not yet "
-#~ "over. We will now proceed to the next scenario, in which you will fight "
-#~ "me in a mock battle."
-#~ msgstr ""
-#~ "Ihr habt zwar das erste Szenario beendet, aber euer Training ist noch "
-#~ "nicht vorbei. Wir gehen nun zum nächsten Szenario, wo Ihr mit mir in "
-#~ "einem Übungskampf bestehen müsst."
-
-#~ msgid "Traits and Specialties"
-#~ msgstr "Charakteristiken und Spezialitäten"
-
-#, fuzzy
-#~ msgid ""
-#~ "*Basic Training Part II:\n"
-#~ "Recalling\n"
-#~ "Traits\n"
-#~ "Gold\n"
-#~ "Time of day\n"
-#~ "Terrains\n"
-#~ "Resistance\n"
-#~ "Specialties\n"
-#~ "Objects"
-#~ msgstr ""
-#~ "Behandelte Kenntnisse:\n"
-#~ "Einberufen\n"
-#~ "Charakteristiken\n"
-#~ "Gold\n"
-#~ "Tageszeiten\n"
-#~ "Geländearten\n"
-#~ "Resistenzen\n"
-#~ "Besonderheiten\n"
-#~ "Objekte"
-
-#~ msgid ""
-#~ "Now you will be subject to a more difficult test. You must defeat me in "
-#~ "mock battle."
-#~ msgstr ""
-#~ "Nun müsst Ihr eine schwierigere Prüfung bestehen. Ihr müsst mich in einem "
-#~ "Testkampf besiegen."
-
-#~ msgid ""
-#~ "You can win most scenarios simply by defeating all enemy leaders. Win "
-#~ "this scenario by defeating me. Your fighter from the previous scenario "
-#~ "can help you in this battle. To recall him, right-click on a castle tile, "
-#~ "select Recall, select your fighter, then select 'OK'. You should also "
-#~ "recruit Elvish Fighters and Elvish Archers."
-#~ msgstr ""
-#~ "Die meisten Szenarien könnt Ihr gewinnen, indem Ihr alle gegnerischen "
-#~ "Anführer besiegt. Jetzt müsst Ihr mich besiegen! Euer Kämpfer aus dem "
-#~ "vorigen Szenario kann Euch dabei helfen. Um ihn einzuberufen, müsst Ihr "
-#~ "auf ein Burgfeld rechts-klicken, »Einberufen« auswählen, den Kämpfer "
-#~ "auswählen und dann »OK« drücken. Ihr solltet auch Elfenkrieger und Elfen-"
-#~ "Schützen ausbilden."
-
-#~ msgid "You have successfully recalled your Elvish Fighter."
-#~ msgstr "Ihr habt Euren Elfenkrieger erfolgreich einberufen."
-
-#~ msgid "En garde!"
-#~ msgstr "En garde!"
-
-#, fuzzy
-#~ msgid ""
-#~ "You may notice that your units have slightly different statistics from "
-#~ "the statistics shown before you recruited them. This is because all units "
-#~ "naturally have 2 traits that are determined when you recruit the unit."
-#~ msgstr ""
-#~ "Vielleicht ist Euch aufgefallen, dass die Werte Eurer Einheiten etwas von "
-#~ "jenen abweichen, die Ihr vor der Ausbildung angezeigt bekommen habt. Das "
-#~ "kommt daher, dass ihnen bestimmte Charakteristika zugewiesen wurden."
-
-#, fuzzy
-#~ msgid ""
-#~ "When you recruit and recall units, you spend gold. If this would cause "
-#~ "you to have less than 0 gold, you cannot recruit or recall."
-#~ msgstr ""
-#~ "Wenn Ihr Einheiten ausbildet oder einberuft, dann kostet das Gold. Ihr "
-#~ "könnt nur Ausbilden oder Einberufen, wenn Ihr genug Gold dafür habt."
-
-#~ msgid ""
-#~ "The sun is setting over Wesnoth. The time of day affects how much damage "
-#~ "units of different alignments can inflict upon each other."
-#~ msgstr ""
-#~ "Der Abend bricht in Wesnoth an. Die Tageszeit beeinflusst die Höhe des "
-#~ "Schadens, den Einheiten unterschiedlicher Gesinnung sich gegenseitig "
-#~ "zufügen können."
-
-#~ msgid "Each hex has a terrain, which gives the hex distinctive properties."
-#~ msgstr ""
-#~ "Jedes Hexfeld hat einen bestimmten Geländetyp, der dem Hexfeld "
-#~ "verschiedene Eigenschaften verleiht."
-
-#~ msgid ""
-#~ "Each attack has a damage type which affects how much damage different "
-#~ "units take from that attack."
-#~ msgstr ""
-#~ "Jeder Angriff hat einen Schadenstyp. Dieser beeinflusst die Größe des "
-#~ "Schadens, den verschiedene Einheiten erleiden."
-
-#~ msgid ""
-#~ "Many units have a specialty which changes the rules of play in some way."
-#~ msgstr ""
-#~ "Viele Einheiten haben Besonderheiten, die die Spielregeln in einer "
-#~ "bestimmten Weise verändert."
-
-#, fuzzy
-#~ msgid ""
-#~ "Some objects change the capabilities or status of the unit that triggered "
-#~ "them. One of your units found a potion which will make him do more damage "
-#~ "on his attack. To see his new combat statistics, look at the Status Table."
-#~ msgstr ""
-#~ "Manche Objekte verändern die Eigenschaften der Einheit, die sie aufhebt, "
-#~ "indem sie auf das Objekt zieht. Eine Eurer Einheiten hat einen Trank "
-#~ "gefunden, der ihren Angriffsschaden erhöht. Schaut Euch die Statusseite "
-#~ "an, um ihre neuen Kampfeigenschaften zu sehen."
-
-#~ msgid ""
-#~ "This potion increases the damage of all the drinker's attacks by four."
-#~ msgstr "Dieser Trank erhöht den Schaden jeder Attacke um vier Punkte."
-
-#~ msgid "Potion of Strength"
-#~ msgstr "Trank der Stärke"
-
-#~ msgid ""
-#~ "Remember to try to prevent the enemy from capturing villages, and to "
-#~ "recapture the ones that they already have. This will cut off their gold "
-#~ "supply and make them unable to recruit."
-#~ msgstr ""
-#~ "Vergesst nicht, den Gegner davon abzuhalten, Dörfer einzunehmen. "
-#~ "Diejenigen, die er schon in Besitz genommen hat, solltet Ihr "
-#~ "zurückerobern. So beraubt Ihr ihm seiner Goldeinnahmen und somit seiner "
-#~ "Ausbildungsmöglichkeiten."
-
-#, fuzzy
-#~ msgid ""
-#~ "Yes, congratulations. Do you want to review any of the skills learned in "
-#~ "this scenario?"
-#~ msgstr ""
-#~ "Möchtet Ihr die Kenntnisse betrachten, die in diesem Szenario vermittelt "
-#~ "wurden?"
-
-#, fuzzy
-#~ msgid "Next, you may want to begin a campaign or play a multiplayer game."
-#~ msgstr ""
-#~ "Als nächstes könntet Ihr eine Kampagne beginnen oder eine "
-#~ "Mehrspielerpartie ausprobieren."
-
-#~ msgid "Current objective:"
-#~ msgstr "Aktuelles Ziel:"
-
-#~ msgid ""
-#~ "To recruit a unit, right click on the castle tile on which you wish to "
-#~ "recruit the unit. Then select Recruit, or just hold your cursor over the "
-#~ "tile and press 'Ctrl-R'. Next, select the type of unit that you want to "
-#~ "recruit, and select 'OK'. In order to recruit faster, you can use 'Ctrl-"
-#~ "Shift-R' to re-recruit the last type of unit you recruited."
-#~ msgstr ""
-#~ "Um eine Einheit auszubilden, müsst Ihr auf das Burgfeld, auf dem sie "
-#~ "ausgebildet werden sollen, rechtsklicken. Danach wählt »Ausbilden« und "
-#~ "»Okay« oder einfach »Strg-R«. Als nächstes wählt den Typ der Einheit, die "
-#~ "Ihr ausbilden wollt und drückt »Okay«. Um schneller auszubilden, könnt "
-#~ "Ihr mit »Strg-Shift-R« eine weitere Einheit des letzten Einheitentyps "
-#~ "ausbilden."
-
-#, fuzzy
-#~ msgid "How do I recruit units again?"
-#~ msgstr "Wie bilde ich Einheiten aus?"
-
-#~ msgid "What's a leader?"
-#~ msgstr "Was ist ein Anführer?"
-
-#, fuzzy
-#~ msgid ""
-#~ "A leader is a unit that can recruit. This means that when the leader is "
-#~ "on a keep, units can be recruited on the surrounding castle tiles. "
-#~ "Leaders are usually powerful units that each side only controls one of. "
-#~ "Also, your leader is usually the first unit that your side controls, and "
-#~ "starts on a keep. You can select your leader quickly by pressing 'l' (the "
-#~ "lowercase letter L). If your leader dies, you lose the game. You can win "
-#~ "most scenarios by defeating all enemy leaders."
-#~ msgstr ""
-#~ "Ein Anführer ist in der Lage, Einheiten auszubilden. Befindet er sich in "
-#~ "einem Bergfried, so vermag er sie in den umliegenden Burgfeldern "
-#~ "auszubilden. Jede Seite verfügt üblicherweise über einen solchen "
-#~ "Befehlshaber. Normalerweise ist Euer Anführer auch die erste Einheit auf "
-#~ "Eurer Seite. Sie erscheint auf einem Burgfeld. Ihr könnt Euren Anführer "
-#~ "schnell auswählen, indem Ihr »l« drückt. Stirbt Euer Anführer, so habt "
-#~ "Ihr das Spiel verloren. Umgekehrt könnt Ihr die meisten Szenarien "
-#~ "gewinnen, in dem Ihr alle gegnerischen Anführer besiegt."
-
-#~ msgid ""
-#~ "You have to carefully review their skills, which are displayed to the "
-#~ "left of the unit selection box, and cost, which is displayed after the "
-#~ "name of the unit. You will learn more about these statistics throughout "
-#~ "the tutorial."
-#~ msgstr ""
-#~ "Ihr müsst sorgfältig die Fähigkeiten der Einheiten studieren, die links "
-#~ "von der Einheitenauswahlbox stehen, sowie die Kosten der Einheit abwägen "
-#~ "(sie stehen hinter dem Einheitennamen). Ihr werdet im Verlauf der "
-#~ "Einführung noch mehr darüber erfahren."
-
-#~ msgid "How should I choose what kind of units to recruit?"
-#~ msgstr "Welche Arten von Einheiten sollte ich ausbilden?"
-
-#~ msgid "What happens when I recruit a unit?"
-#~ msgstr "Was geschieht, wenn ich eine Einheit ausbilde?"
-
-#~ msgid ""
-#~ "When you recruit a unit, it appears at full health on a castle tile of "
-#~ "your choice. It also receives two traits, which will be discussed later. "
-#~ "It cannot move or attack until you end your turn."
-#~ msgstr ""
-#~ "Wenn Ihr eine Einheit ausbildet, erscheint sie bei bester Gesundheit auf "
-#~ "einem Burgfeld Eurer Wahl. Außerdem erhält sie zwei Charakteristika. Doch "
-#~ "davon erzähle ich Euch später mehr. Eine frisch ausgebildete Einheit kann "
-#~ "sich bis zum Ende des Zuges nicht bewegen oder angreifen."
-
-#~ msgid ""
-#~ "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
-#~ "right-click and select End Turn, or select the End Turn button in the "
-#~ "lower right hand corner."
-#~ msgstr ""
-#~ "Es gibt drei Möglichkeiten: Ihr könnt »Alt-Leertaste« drücken, oder nach "
-#~ "einem Rechtsklick »Zug beenden« auswählen, oder den »Zug beenden«-Knopf "
-#~ "ganz rechts unten drücken."
-
-#~ msgid ""
-#~ "When you end your turn, it becomes another side's turn and only that side "
-#~ "has the right to move, until that side ends its turn. After all sides end "
-#~ "their turns, the next turn begins. This has various effects, including "
-#~ "causing all units to regain their full movement potential. The number of "
-#~ "the current turn is displayed on the status bar next to the image of a "
-#~ "flag. When this number exceeds the maximum number of turns, you lose the "
-#~ "game."
-#~ msgstr ""
-#~ "Wenn Ihr Euren Zug beendet habt, kommt die nächste Partei an die Reihe, "
-#~ "nach ihr wiederum die nächste, und so weiter, bis alle Parteien an der "
-#~ "Reihe waren. Danach beginnt Euer nächster Zug. Das hat verschiedene "
-#~ "Auswirkungen. Unter anderem erhalten Eure Einheiten ihre vollen "
-#~ "Bewegungspunkte zurück. Außerdem rückt der Zugzähler um eine Zahl weiter. "
-#~ "Die aktuelle Zugnummer wird auf der Statusleiste neben einer Flagge "
-#~ "angezeigt. Wenn die Zugnummer die maximale Zuganzahl überschreitet, "
-#~ "verliert Ihr das Spiel."
-
-#~ msgid "What happens when I end my turn?"
-#~ msgstr "Was geschieht, wenn ich meinen Zug beende?"
-
-#, fuzzy
-#~ msgid "How did I move my unit again?"
-#~ msgstr "Wie beende ich meinen Zug?"
-
-#, fuzzy
-#~ msgid ""
-#~ "When you select a unit, all hexes it can't move onto within one turn will "
-#~ "be shaded. If the destination is far enough away that more than one turn "
-#~ "is needed to reach it, a number will appear showing how many turns it "
-#~ "will take. Clicking on a far-away space will set the unit on a course for "
-#~ "that space, which means it automatically moves as far as it can towards "
-#~ "that space every turn. If you accidentally set a unit on a course, select "
-#~ "it twice to remove the course."
-#~ msgstr ""
-#~ "Euer Elfenkrieger hat am Anfang jeden Zuges eine bestimmte Anzahl an "
-#~ "Bewegungspunkten, auch »Geschwindigkeit« genannt. Wenn Ihr den "
-#~ "Elfenkrieger bewegt, kostet ihn jedes Hexfeld, das er betritt, "
-#~ "Bewegungspunkte. Wählt Ihr Euren Elfenkrieger aus, so werden alle Felder "
-#~ "verdunkelt, die er in diesem Zug nicht erreichen kann. Liegt das Zielfeld "
-#~ "weiter als eine Runde entfernt, erscheint eine Zahl, die anzeigt, wie "
-#~ "viele Runden die jeweilige Einheit bis zu ihrem Ziel benötigt. Wenn Ihr "
-#~ "ein weit entferntes Feld anklickt, wird ein Kurs gesetzt - ich möchte "
-#~ "sagen: die Einheit bewegt sich in den folgenden Runden so schnell sie "
-#~ "kann auf dieses Feld zu. Solltet Ihr versehentlich einen Kurs setzen, so "
-#~ "wählt die Einheit zweimal hintereinanderaus, um den Kurs wieder zu "
-#~ "löschen."
-
-#, fuzzy
-#~ msgid ""
-#~ "A unit's zone of control is the location consisting of all hexes adjacent "
-#~ "to the unit. Units cannot move through opponent's zones of control; they "
-#~ "can only move into it. When they do this, they lose all their remaining "
-#~ "movement. Zones of control are very useful and can be used to block "
-#~ "enemies from reaching your weak and wounded units."
-#~ msgstr ""
-#~ "Die Kontrollzone einer Einheit besteht aus den sie umgebenden Hexfeldern. "
-#~ "Einheiten können sich nicht durch gegnerische Kontrollzonen bewegen, "
-#~ "sondern sie lediglich betreten. Dabei verlieren sie alle verbleibenden "
-#~ "Bewegungspunkte. Ihr könnt Kontrollzonen nutzen, um schwache oder "
-#~ "verwundete Einheiten zu schützen."
-
-#~ msgid "What's the zone of control?"
-#~ msgstr "Was ist die Kontrollzone?"
-
-#, fuzzy
-#~ msgid "What happens when I move next to an enemy unit?"
-#~ msgstr "Was geschieht, wenn ich meinen Zug beende?"
-
-#, fuzzy
-#~ msgid "How did I attack again?"
-#~ msgstr "Wie spiele ich eine Kampagne?"
-
-#~ msgid "Can Merle retaliate from my attack?"
-#~ msgstr "Kann Merle zurückschlagen, wenn ich angreife?"
-
-#~ msgid ""
-#~ "Whenever a unit is attacked, it retaliates with one of their own weapons. "
-#~ "This means that after each blow from the attacker, the defender "
-#~ "retaliates with one blow. This continues until one side runs out of "
-#~ "blows, in which case the other unit continues attacking until its blows "
-#~ "are depleted as well. However, any unit can only retaliate by using a "
-#~ "weapon of the same range as the one used to attack. This means that a "
-#~ "ranged attack can only be countered by a ranged attack and a melee attack "
-#~ "can only be countered by a melee attack. Most units have more powerful "
-#~ "melee attacks than ranged attacks. Units with strong ranged attacks are "
-#~ "useful in retaliation against melee oriented units. Some melee units "
-#~ "without ranged attacks won't be able to retaliate at all. However, ranged "
-#~ "units cannot shoot across multiple hexes; this is one of the distinctive "
-#~ "features of Wesnoth."
-#~ msgstr ""
-#~ "Eine angegriffene Einheit schlägt mit einer ihrer Waffen zurück. Nach "
-#~ "jedem Hieb des Angreifers schlägt der Verteidiger zu. Das geht so lange, "
-#~ "bis eine Einheit keine Angriffe mehr übrig hat. Danach führt die andere "
-#~ "Einheit ihre restlichen Schläge aus. Ein Angriff mit einer Fernkampfwaffe "
-#~ "kann allerdings nur mit einer Fernkampfwaffe beantwortet werden, der "
-#~ "einer Nahkampfwaffe nur mit einer Nahkampfwaffe. Oft haben Einheiten "
-#~ "einen stärkeren Nah- als Fernkampfangriff. Einheiten mit guten "
-#~ "Fernkampfattacken sind dann nützlich, weil der Gegenschlag schwächer "
-#~ "ausfällt, oder sich die angegriffene Einheit überhaupt nicht wehren kann. "
-#~ "Allerdings können Fernkampfeinheiten nicht über mehrere Felder hinweg "
-#~ "angreifen, was eine besondere Eigenschaft von Wesnoth ist."
-
-#~ msgid ""
-#~ "Every attack does a certain amount of damage per hit, and can be used a "
-#~ "certain number of times per battle. These numbers, called the attack's "
-#~ "damage and strike numbers, are displayed in order under the name of the "
-#~ "attack on the unit's status table and next to it on the attack options "
-#~ "menu. To quickly find the maximum damage an attack can inflict, multiply "
-#~ "the damage by the number of strikes. For example, my lightning attack "
-#~ "does 14 damage per blow and has 4 blows, so it can deal up to 56 damage "
-#~ "in a single combat."
-#~ msgstr ""
-#~ "Jeder Angriff verursacht eine bestimmte Menge an Schadenspunkten und kann "
-#~ "in einer bestimmten Anzahl durchgeführt werden. Diese Werte heißen "
-#~ "Schaden und Schlaganzahl. Sie werden in dieser Reihenfolge unter dem "
-#~ "Namen der Attacke in der Statustabelle der Einheit und neben dem Namen im "
-#~ "Angriffsmenü gezeigt. Um herauszufinden, wie viel Schaden ein Angriff "
-#~ "maximal anrichten kann, multipliziert Ihr einfach die zwei Zahlen. Mein "
-#~ "Blitzschlag-Angriff zum Beispiel verursacht 14 Schadenspunkte und hat 4 "
-#~ "Schläge, so dass ich maximal 56 Schadenspunkte in einem Kampf anrichten "
-#~ "kann."
-
-#~ msgid "How can you tell how powerful a unit's attacks are?"
-#~ msgstr "Wo sehe ich, wie stark der Angriff einer Einheit ist?"
-
-#~ msgid "Will my fighter hit every time when it attacks?"
-#~ msgstr "Trifft mein Kämpfer bei jedem Schlag, wenn er angreift?"
-
-#~ msgid ""
-#~ "Units have the ability to block blows. The chance that a unit has to hit "
-#~ "is based on the defender's skill at defending blows, and is listed on the "
-#~ "attack options menu after the damage and strike numbers for the bow "
-#~ "attack."
-#~ msgstr ""
-#~ "Einheiten können einen Schlag auch abwehren. Die Trefferchance einer "
-#~ "Einheit basiert auf der Fähigkeit des Verteidigers, Schlägen "
-#~ "auszuweichen. Im Angriffsmenü erscheint sie nach den Schadens- und "
-#~ "Schlaganzahl-Werten."
-
-#, fuzzy
-#~ msgid ""
-#~ "As you know, your units will have a green, yellow, or red energy orb. "
-#~ "Allied units you do not control, like me, have a blue energy circle. "
-#~ "Units controlled by the enemy do not have an orb at all. Also, the option "
-#~ "'Show Team Colors', in Preferences, causes the color of a unit's "
-#~ "controller to be displayed as a disc below the unit. This helps tell you "
-#~ "what side each unit is on."
-#~ msgstr ""
-#~ "Einheiten, die Ihr kontrolliert, haben einen grünen, gelben oder roten "
-#~ "Energiekreis über ihrem Gesundheitsbalken (der grüne, senkrechte Balken "
-#~ "direkt neben der Einheit). Einheiten, die noch keine Bewegungspunkte "
-#~ "verbraucht haben, besitzen einen grünen Kreis. Einheiten mit einem Rest "
-#~ "an Bewegungspunkten haben einen gelben. Bei Einheiten, die sich nicht "
-#~ "mehr bewegen können, ist er rot. Gegnerische Einheiten haben keinen "
-#~ "Energiekreis. Alliierte Einheiten wie ich, die nicht von Euch "
-#~ "kontrolliert werden, haben immer einen blauen Energiekreis. Weiterhin "
-#~ "könnt Ihr in den Einstellungen »Teamfarben anzeigen« auswählen. Dann wird "
-#~ "unter jeder Einheit eine Scheibe in der Farbe der Partei angezeigt."
-
-#~ msgid "How do I tell who is allied and who is an enemy?"
-#~ msgstr "Woher weiß ich, wer ein Verbündeter und wer ein Feind ist?"
-
-#~ msgid "What's experience?"
-#~ msgstr "Was ist Erfahrung?"
-
-#~ msgid ""
-#~ "When a unit fights another unit, it gains experience, denoted 'XP', from "
-#~ "the combat. The amount of experience gained is equal to the opponent's "
-#~ "level, which is usually a representation of that unit's power. However, "
-#~ "much more experience is gained from defeating an enemy unit. The amount "
-#~ "of XP gained from killing an enemy is equal to 8 times the enemy's level."
-#~ msgstr ""
-#~ "Wenn eine Einheit gegen eine andere kämpft, erhält sie Erfahrungspunkte "
-#~ "(Abk. EP). Die Menge an EP korrespondiert mit der Stufe des Gegners, "
-#~ "welche für gewöhnlich die Stärke repräsentiert. Wenn der Gegner getötet "
-#~ "wird, erhält die Einheit das 8-fache der Stufe des Gegners in EP."
-
-#~ msgid ""
-#~ "When a unit advances, it transforms into a different unit type. This unit "
-#~ "type is dependent on what the unit was originally, but occasionally there "
-#~ "will be more than one choice of what to advance into. Advanced units are "
-#~ "usually more powerful and 1 level higher than they were originally. Also, "
-#~ "when a unit advances, it is healed completely and any handicaps that have "
-#~ "been cast on it are removed. This is known as 'advance-heal'."
-#~ msgstr ""
-#~ "Steigt eine Einheit auf, entwickelt sie sich zu einem neuen Einheitentyp. "
-#~ "Der neue Typ hängt vom alten ab. Manchmal stehen auch mehrere "
-#~ "Entwicklungsmöglichkeiten zur Wahl. Aufgestiegene Einheiten sind für "
-#~ "gewöhnlich stärker und gewinnen eine Stufe. Weiterhin wird eine Einheit "
-#~ "bei einem Aufstieg geheilt und alle negativen Effekten werden beseitigt. "
-#~ "Das wird »Aufstiegsheilung« genannt."
-
-#~ msgid "What happens when a unit advances?"
-#~ msgstr "Was passiert, wenn eine Einheit eine Stufe aufsteigt?"
-
-#, fuzzy
-#~ msgid "What happens when a unit reaches its max level?"
-#~ msgstr "Was passiert, wenn eine Einheit auf ein Dorf zieht?"
-
-#, fuzzy
-#~ msgid ""
-#~ "Whenever a unit captures a village, it flags the village for its side. "
-#~ "This action takes all the unit's remaining movement. Villages flagged for "
-#~ "a side give the side several benefits, including giving the side extra "
-#~ "gold every turn, and reducing the total upkeep cost of that side's units "
-#~ "by one. The total number of villages you control is also displayed on the "
-#~ "status bar after the picture of a house. In addition to the economic "
-#~ "benefit of villages, villages can be used in battle. Villages heal the "
-#~ "units on them 8 HP per turn."
-#~ msgstr ""
-#~ "Wenn sich eine Einheit auf ein fremdes oder neutrales Dorf bewegt, wird "
-#~ "dieses Dorf ab sofort von der Partei kontrolliert, zu der diese Einheit "
-#~ "gehört. Dies wird durch eine Flagge in der entsprechenden Farbe "
-#~ "verdeutlicht. Diese Aktion verbraucht alle verbleibenden Bewegungspunkte "
-#~ "der Einheit. Jedes kontrollierte Dorf bringt Vorteile: Zum einen die "
-#~ "Einnahmen von einem Goldstück pro Zug, zum anderen verringern sich die "
-#~ "Unterhaltskosten um eins. Die Gesamtzahl der kontrollierten Dörfer wird "
-#~ "auf der Statusleiste durch das Bild eines Hauses angezeigt. Zusätzlich zu "
-#~ "den wirtschaftlichen Vorteilen eines Dorfes können sie auch im Kampf "
-#~ "genutzt werden: Eine Einheit, die auf einem Dorf steht, wird am Anfang "
-#~ "des nächsten Zuges um 8 LP geheilt."
-
-#~ msgid "What happens when a unit moves onto a village?"
-#~ msgstr "Was passiert, wenn eine Einheit auf ein Dorf zieht?"
-
-#~ msgid "How do I heal when there aren't any villages nearby?"
-#~ msgstr ""
-#~ "Wie können meine Einheiten geheilt werden, wenn keine Dörfer in der Nähe "
-#~ "sind?"
-
-#~ msgid ""
-#~ "There are ways to heal even without villages. If a unit does not move or "
-#~ "attack for 1 turn, it heals 2 HP from resting. However, if an enemy "
-#~ "attacks it, the unit cannot receive rest-heal. Also, there are some units "
-#~ "which heal the units surrounding them. The Elvish Shaman is one such "
-#~ "unit; units next to an Elvish Shaman are healed 4 HP per turn. Finally, "
-#~ "whenever you win a scenario all your units are healed fully."
-#~ msgstr ""
-#~ "Man kann Einheiten auch ohne Dörfer heilen. Wenn sich eine Einheit einen "
-#~ "Zug lang nicht bewegt, nicht angreift und nicht angegriffen wird, heilt "
-#~ "sie zwei LP. Weiterhin gibt es bestimmte heilkundige Einheiten. Sie "
-#~ "heilen die Einheiten auf den direkt angrenzenden Feldern. Die "
-#~ "Elfenschamanin ist eine solche heilkundige Einheit. Alle Einheiten neben "
-#~ "einer Elfenschamanin werden um 4 LP pro Zug geheilt. Und schließlich "
-#~ "werden all Eure Einheiten vollständig geheilt, wenn Ihr ein Szenario "
-#~ "beendet."
-
-#~ msgid "How do I know how to complete a scenario? Will you always tell me?"
-#~ msgstr ""
-#~ "Wie weiß ich, wie ich ein Szenario abschließen kann? Werdet Ihr mir das "
-#~ "immer mitteilen?"
-
-#~ msgid ""
-#~ "Sometimes it is not clear how to win a scenario just by listening to the "
-#~ "dialog. In this case you need to look at the scenario objectives, which "
-#~ "appear after the opening dialog. The objectives can also be accessed by "
-#~ "clicking 'Objectives' on the menu. The scenario objectives list victory "
-#~ "conditions and defeat conditions, and when any of the conditions are met, "
-#~ "the scenario is over. Hopefully, it was a victory condition that was met."
-#~ msgstr ""
-#~ "Manchmal ist aus dem Einführungsdialog nicht ganz ersichtlich, wie man "
-#~ "ein bestimmtes Szenario gewinnen kann. In einem solchen Fall solltet Ihr "
-#~ "Euch die Missionsziele anschauen, die im Anschluss an den "
-#~ "Einführungsdialog erscheinen. Ihr könnt sie erneut anzeigen lassen, indem "
-#~ "Ihr »Missionsziele« aus dem Hauptmenü wählt. Die Missionsziele sind eine "
-#~ "Liste von Bedingungen, die erfüllt oder verhindert werden müssen, um das "
-#~ "Szenario erfolgreich zu beenden."
-
-#~ msgid "What happens when I win a scenario?"
-#~ msgstr "Was geschieht, wenn ich ein Szenario gewinne?"
-
-#, fuzzy
-#~ msgid ""
-#~ "When you win a scenario, all your units survive and are revived to full "
-#~ "health, and you do not have to pay them for the remaining turns. Also, if "
-#~ "your army remains in the area after you win, all villages surrender to "
-#~ "you immediately after you win. However, between scenarios 20% of your "
-#~ "gold is lost to provide for feeding, clothing, sheltering, and moving "
-#~ "your army."
-#~ msgstr ""
-#~ "Wenn Ihr ein Szenario gewinnt, werden automatisch all Eure Einheiten "
-#~ "vollständig geheilt. Für die theoretisch verbleibenden Züge müsst Ihr "
-#~ "keinen Unterhalt mehr zahlen. Wenn Eure Armee nach Eurem Sieg in dem "
-#~ "Gebiet verbleibt, schließen sich Euch automatisch alle Dörfer an. Wie "
-#~ "sonst auch, verliert Ihr zwischen den Szenarien allerdings 20% Eures "
-#~ "Goldes."
-
-#, fuzzy
-#~ msgid "How did I recall a unit again?"
-#~ msgstr "Wie bilde ich Einheiten aus?"
-
-#~ msgid "What happens when I recall a unit?"
-#~ msgstr "Was geschieht, wenn ich eine Einheit einberufe?"
-
-#~ msgid ""
-#~ "First, you must pay 20 pieces of gold for each unit you recall, "
-#~ "regardless of the type of unit. Other than that, recalled units are "
-#~ "basically like recruited units, except that instead of a new unit "
-#~ "appearing, a unit from a previous scenario will appear."
-#~ msgstr ""
-#~ "Ihr müsst 20 Goldstücke pro einberufener Einheit bezahlen, ganz gleich "
-#~ "welcher Art. Ansonsten verhalten sich einberufene Einheiten ähnlich wie "
-#~ "ausgebildete Einheiten, außer dass anstelle einer neue Einheiteine "
-#~ "erfahrene aus einem vorigen Szenario erscheint."
-
-#, fuzzy
-#~ msgid "Why should I recall my units?"
-#~ msgstr "Was geschieht, wenn ich eine Einheit einberufe?"
-
-#~ msgid "How should I decide which units to recall?"
-#~ msgstr "Wie soll ich entscheiden, welche Einheiten ich einberufe?"
-
-#~ msgid ""
-#~ "You should usually recall units that have already advanced to the next "
-#~ "level. However, you may also want to recall units that have high "
-#~ "experience, and are thus likely to advance. You should recall units that "
-#~ "will be useful for the scenario you are in; for example in a forest "
-#~ "scenario, recall elves."
-#~ msgstr ""
-#~ "Normalerweise solltet Ihr Einheiten einberufen, die schon die nächste "
-#~ "Stufe erreicht haben. Vielleicht wollt Ihr auch Einheiten einberufen, "
-#~ "denen nur noch wenige Erfahrungspunkte bis zur nächsten Stufe fehlen, "
-#~ "damit diese bald aufsteigen werden. Vor allem aber solltet Ihr Einheiten "
-#~ "einberufen, die in dem Szenario, das Ihr spielt, hilfreich sind. Bei "
-#~ "großen Waldflächen sind z.B. Elfen sehr nützlich. Manche Einheiten kosten "
-#~ "in der Ausbildung mehr als 20 Gold. Wenn Ihr diese Einheiten braucht, ist "
-#~ "es normalerweise sinnvoller, sie soweit möglich einzuberufen, anstatt sie "
-#~ "neu auszubilden."
-
-#, fuzzy
-#~ msgid ""
-#~ "Each unit you recruit is an individual person, Konrad. Units of the same "
-#~ "type have slight variations in how strong or how skilled they are. The "
-#~ "function of traits is to add variety to your army. A unit's traits are "
-#~ "displayed in the Status Table, and the function of a specific trait can "
-#~ "be found by putting your cursor over that trait."
-#~ msgstr ""
-#~ "Charakteristika haben die Aufgabe, das Spiel etwas variantenreicher zu "
-#~ "gestalten, da Einheiten des gleichen Typs untereinander leichte "
-#~ "Unterschiede aufweisen. Jeder Einheit werden bei ihrer Ausbildung "
-#~ "zufällig zwei Charakteristika zugeordnet. Diese werden in der "
-#~ "Statustabelle der Einheit angezeigt. Die Auswirkungen einer "
-#~ "Charakteristik kann eingesehen werden, in dem man den Cursor über sie "
-#~ "bewegt."
-
-#~ msgid "What do traits do?"
-#~ msgstr "Was bewirken Charakteristika?"
-
-#~ msgid ""
-#~ "There are four distinct traits, which have effects ranging from "
-#~ "increasing a unit's hit points to decreasing the amount of XP required to "
-#~ "advance. However, all traits are designed to improve a unit's power; "
-#~ "there are no 'negative' traits. Most units have an equal chance to obtain "
-#~ "any two different traits when they are recruited. Also, some races and "
-#~ "units may have traits that are unique to them."
-#~ msgstr ""
-#~ "Es gibt vier verschiedene Charakteristika, deren Effekte von der Erhöhung "
-#~ "der Lebenspunkte einer Einheit bis zum Verringern der zum Aufstieg "
-#~ "benötigten EP reichen. Jede Charakteristik verbessert die Eigenschaften "
-#~ "einer Einheit. Es gibt keine »schlechten Charakteristika«. Die meisten "
-#~ "Einheiten haben die gleichen Chancen für jede Charakteristik. Doch mag es "
-#~ "auch einige Rassen und Einheiten geben, die Charakteristika haben, über "
-#~ "die niemand sonst verfügt."
-
-#~ msgid "What kind of traits can my units get?"
-#~ msgstr "Welche verschiedenen Charakteristika kann meine Einheit besitzen?"
-
-#~ msgid ""
-#~ "You need to pay each unit you recruit or recall gold when you recruit it. "
-#~ "The cost of recruiting a unit is displayed under the unit's name. The "
-#~ "cost of recalling a unit is always 20 gold. A unit also costs gold for "
-#~ "each turn it is under your control. This cost, called 'upkeep', is equal "
-#~ "to the level of the unit. However, units you do not recruit or recall "
-#~ "such as your leader do not cost any gold at all. The total upkeep cost of "
-#~ "your units is displayed on the status bar at the top after a picture of "
-#~ "gold and then a red arrow."
-#~ msgstr ""
-#~ "Ihr müsst für jede Einheit, die Ihr ausbildet oder einberuft, Gold "
-#~ "zahlen. Die Ausbildungskosten werden unter dem Namen der Einheit "
-#~ "angezeigt. Die Einberufungskosten betragen immer 20 Goldstücke. Eine "
-#~ "Einheit kostet außerdem einen gewissen Unterhalt pro Zug. Die "
-#~ "Unterhaltskosten entsprechen der Stufe der Einheit. Einheiten, die Ihr "
-#~ "nicht ausgebildet oder einberufen habt, wie z.B. euer Anführer, kosten "
-#~ "keinen Unterhalt. Die Gesamt-Unterhaltskosten werden in der Statusleiste "
-#~ "angezeigt, markiert durch einen roten Pfeil."
-
-#~ msgid "How much gold do my units cost?"
-#~ msgstr "Wie viel Gold kosten meine Einheiten?"
-
-#~ msgid ""
-#~ "You begin each scenario with a percentage of gold from the previous "
-#~ "scenario. If this is less than 100 gold, you begin with 100 gold instead. "
-#~ "The amount of gold you have is displayed on the status bar after the "
-#~ "picture of gold. After the start of a scenario, you receive 2 gold every "
-#~ "turn. Since you usually need more gold than that, you should flag "
-#~ "villages, which give you 1 gold per turn."
-#~ msgstr ""
-#~ "Jedes Szenario beginnt Ihr mit einem gewissen Prozentsatz des Goldes, mit "
-#~ "dem Ihr das vorige Szenario abgeschlossen habt. Ihr beginnt mit "
-#~ "mindestens 100 Gold. Wie viel Gold Ihr besitzt, wird neben dem Gold-Icon "
-#~ "in der Statusleiste angezeigt. Am Anfang eines Szenarios bekommt Ihr zwei "
-#~ "Goldstücke pro Zug. Da Ihr gewöhnlich mehr Gold benötigt, solltet Ihr "
-#~ "Dörfer unter Eure Kontrolle bringen. Jedes Dorf bringt Euch ein weiteres "
-#~ "Goldstück pro Zug."
-
-#~ msgid "How do I get gold?"
-#~ msgstr "Wie komme ich zu Gold?"
-
-#~ msgid ""
-#~ "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 "
-#~ "times of day: day, twilight, and night. During the day, units of the "
-#~ "alignment Lawful, such as humans, do 25% more damage, while Chaotic units "
-#~ "such as undead do 25% less. At night this is reversed. During twilight, "
-#~ "all units do their normal damage. Neutral units such as elves are "
-#~ "unaffected by day and night."
-#~ msgstr ""
-#~ "Es gibt drei Gesinnungen: Redlich, Neutral und Lichtscheu. Der Tag "
-#~ "besteht aus drei Tageszeiten: Tag, Dämmerung und Nacht. Am Tag "
-#~ "verursachen redliche Einheiten, beispielsweise Menschen, 25% mehr "
-#~ "Schaden, und lichtscheue Einheiten, wie Untote, 25% weniger. Nachts gilt "
-#~ "das Gegenteil. In der Dämmerung verursachen alle Einheiten normalen "
-#~ "Schaden. Neutrale Einheiten werden von Tageszeiten gar nicht beeinflusst."
-
-#~ msgid "What are the different alignments and times of day?"
-#~ msgstr "Was sind die verschiedenen Gesinnungen und Tageszeiten?"
-
-#~ msgid "How do I know what time of day it is?"
-#~ msgstr "Wie erkenne ich, welche Tageszeit wir gerade haben?"
-
-#, fuzzy
-#~ msgid ""
-#~ "The times of day progress in sequence: dawn (twilight), morning and "
-#~ "afternoon (day), dusk (twilight), first watch and second watch (night), "
-#~ "then repeat. This is represented by the sun and moon which each rise in "
-#~ "the east and set in the west. However, some scenarios have a different "
-#~ "sequence, such as underground where it is perpetual night. You can find "
-#~ "out the current time of day by looking at the Status Table."
-#~ msgstr ""
-#~ "Die Tageszeiten durchlaufen normalerweise den Zyklus Morgendämmerung "
-#~ "(Dämmerung), Vormittag (Tag) - Nachmittag (Tag) - Abenddämmerung "
-#~ "(Dämmerung) - Erste Wache (Nacht) - Zweite Wache (Nacht). Symbolisiert "
-#~ "wird dies durch durch Sonne und Mond, die im Osten aufgehen und im Westen "
-#~ "untergehen. Manche Szenarios haben allerdings einen eigenen Zyklus. Im "
-#~ "Untergrund ist es zum Beispiel immer Nacht. Die aktuelle Tageszeit wird "
-#~ "in der Statustabelle angezeigt."
-
-#, fuzzy
-#~ msgid ""
-#~ "The first property of a terrain is the number of move points it takes "
-#~ "each unit to move through the hex. The second property is the defense "
-#~ "that the terrain gives units standing on it. This is a percentage which "
-#~ "determines the unit's chance to be hit on that terrain. For example, many "
-#~ "elves have 70% defense in forest, and are therefore hit on average 30% of "
-#~ "the time."
-#~ msgstr ""
-#~ "Die Eigenschaften zweier Geländearten wurden schon beschrieben, nämlich "
-#~ "»Dorf« und »Burg«. Es gibt außerdem allgemeine Eigenschaften, die jedes "
-#~ "Gelände besitzt. Das ist einmal die Anzahl an Bewegungspunkten, die eine "
-#~ "Einheit verbraucht, wenn sie sich auf ein Feld eines Geländetyps bewegt, "
-#~ "und zum anderen der Verteidigungswert einer Einheit, wenn sie auf einem "
-#~ "Feld eines Geländetyps steht. Der Verteidigungswert ist ein Prozentsatz, "
-#~ "der die Trefferwahrscheinlichkeit für angreifende Einheiten festlegt. "
-#~ "Viele Elfen haben zum Beispiel in Wäldern einen Verteidigungswert von "
-#~ "70%, und somit treffen Angreifer nur in 30% aller Fälle."
-
-#~ msgid "What are the different properties that terrains have?"
-#~ msgstr ""
-#~ "Was sind die verschiedenen Eigenschaften, die ein Gelände haben kann?"
-
-#~ msgid ""
-#~ "To find out the properties of a terrain with respect to a specific unit, "
-#~ "right-click on the unit, select Unit Description, then look at Terrain "
-#~ "Modifiers. To find out which terrain is on a particular hex, move your "
-#~ "cursor over that hex and look in the upper right hand corner of the "
-#~ "screen. This will display, in order, the name of the terrain, then the "
-#~ "coordinates of the hex, then the selected unit's defense, then the number "
-#~ "of move points it will cost the selected unit to move through that hex."
-#~ msgstr ""
-#~ "Um die Eigenschaften eines Geländes für eine bestimmte Einheit "
-#~ "herauszufinden, klickt Ihr mit der rechten Maustaste auf die Einheit, "
-#~ "wählt »Einheitenbeschreibung« und seht Euch dann den Abschnitt "
-#~ "»Geländemodifikatoren« an. Wenn Ihr wissen wollt, welches Gelände ein "
-#~ "bestimmtes Feld besitzt, bewegt den Cursor dorthin und schaut in die "
-#~ "obere linke Bildschirmecke. Dort steht (in dieser Reihenfolge): Die Art "
-#~ "des Geländes, die Koordinaten des Feldes, der Verteidigungswert der "
-#~ "ausgewählten Einheit und die Anzahl der Bewegungspunkte, die es kostet, "
-#~ "um dorthin zu gelangen."
-
-#~ msgid "How do I find out the properties of a specific terrain?"
-#~ msgstr ""
-#~ "Wie kann ich die Eigenschaften eines bestimmten Geländes herausfinden?"
-
-#~ msgid "How does resistance affect attack damage?"
-#~ msgstr "Wie beeinflussen Resistenzen den Angriffsschaden?"
-
-#, fuzzy
-#~ msgid ""
-#~ "Each unit has a certain resistance against each attack type. For example, "
-#~ "if an Elvish Scout is attacked by an Elvish Archer, the archer does 20% "
-#~ "more damage than normal, since Elvish Scouts have -20% resistance to "
-#~ "pierce."
-#~ msgstr ""
-#~ "Die Resistenz einer Einheit gegen eine Schadensart wird in Form einer "
-#~ "Prozentzahl angezeigt. Dieser Prozentsatz wird vom Schaden der "
-#~ "betreffenden Waffe abgezogen. Wenn zum Beispiel ein Elfenspäher von einem "
-#~ "Elfenbogenschützen angegriffen wird, ist der Schaden um 20% höher als "
-#~ "gewöhnlich, da Elfenspäher gegen Stich eine um 20% verringerte Resistenz "
-#~ "('-20%') haben. Der Resistenzbonus bzw. die Resistenzstrafe addiert sich "
-#~ "zu anderen Boni oder Strafen, wie sie durch Tageszeiten zustande kommen. "
-#~ "Zwei Strafen von jeweils -50% ergeben also eine Gesamtstrafe von -100%."
-
-#, fuzzy
-#~ msgid ""
-#~ "There are 6 different damage types: blade, pierce, impact, fire, cold, "
-#~ "and holy. Heavily armored units have high resistance to the physical "
-#~ "types: blade, pierce, and impact, but low resistance to the magical "
-#~ "types: fire and cold. All living units have resistance to holy while "
-#~ "undead are extremely weak to it."
-#~ msgstr ""
-#~ "Es gibt sechs verschiedene Schadensarten: Klinge, Stich, Wucht, Feuer, "
-#~ "Kälte und Heilig. Einheiten mit schwerer Rüstung haben eine hohe "
-#~ "Resistenz gegen physische Angriffe (Klinge, Stich, Wucht), aber dafür "
-#~ "eine geringere Resistenz gegen magischen Schaden (Feuer und Kälte). Alle "
-#~ "lebenden Einheiten sind resistent gegen heiligen Schaden, Untote dagegen "
-#~ "aber extrem anfällig. Um die Resistenzen einer Einheit einzusehen, klickt "
-#~ "Ihr mit der rechten Maustaste auf die Einheit, wählt die "
-#~ "Einheitenbeschreibung aus, und seht Euch den Bereich »Resistenztabelle« "
-#~ "an."
-
-#~ msgid "What are the different damage types?"
-#~ msgstr "Was sind die verschiedenen Schadensarten?"
-
-#, fuzzy
-#~ msgid "How do I learn a unit's resistances?"
-#~ msgstr "Wie bilde ich Einheiten aus?"
-
-#~ msgid ""
-#~ "Each specialty does something different; that's the whole point of a "
-#~ "specialty. To find a description of a unit's specialty, put your cursor "
-#~ "over the name of the specialty."
-#~ msgstr ""
-#~ "Jede Besonderheit hat eine andere Auswirkung, das ist schließlich ihr "
-#~ "Zweck. Bewegt Euren Cursor auf den Namen einer Besonderheit, um eine "
-#~ "Beschreibung zu bekommen."
-
-#~ msgid "What do specialties do?"
-#~ msgstr "Was bewirken Besonderheiten?"
-
-#, fuzzy
-#~ msgid ""
-#~ "The specialties a unit gets are determined by the unit type; for example "
-#~ "all Lieutenants and Generals have the specialty leadership. Some are "
-#~ "abilities that the unit has. Others are weapon abilities such as poison "
-#~ "on a dagger blade."
-#~ msgstr ""
-#~ "Die Besonderheiten einer Einheit hängen von ihrem Typ ab. Beispielsweise "
-#~ "haben alle Generäle Führungsqualitäten. Es gibt zwei Arten von "
-#~ "Besonderheiten: Fertigkeiten und Waffenbesonderheiten. Fertigkeiten "
-#~ "beeinflussen Einheiten, wohingegen Waffenbesonderheiten nur die Attacken "
-#~ "einer Einheit beeinflussen."
-
-#~ msgid "Which units get specialties?"
-#~ msgstr "Welche Einheiten bekommen Besonderheiten?"
-
-#~ msgid ""
-#~ "There are many different specialties, and learning about them is one of "
-#~ "the interesting parts of playing Wesnoth. The two most common specialties "
-#~ "are called 'magical' and 'leadership'. Magical attacks have a 70% chance "
-#~ "of hitting enemies regardless of what terrain they are on. Units do more "
-#~ "damage while next to a unit of higher level with leadership."
-#~ msgstr ""
-#~ "Es gibt viele Besonderheiten. Sie alle kennen zu lernen, ist das Salz in "
-#~ "der Suppe. Die verbreitetsten Besonderheiten sind »magisch« und "
-#~ "»Führungsqualitäten«. Magische Attacken haben eine 70%ige "
-#~ "Trefferwahrscheinlichkeit, unabhängig von dem Gelände, auf dem der "
-#~ "Verteidiger steht. Einheiten, die neben einer höherstufigen Einheit mit "
-#~ "Führungsqualitäten stehen, verursachen mehr Schaden."
-
-#~ msgid "What kinds of specialties can my units get?"
-#~ msgstr "Welche Arten von Besonderheiten gibt es?"
-
-#~ msgid "How do I use specialties?"
-#~ msgstr "Wie benutze ich Besonderheiten?"
-
-#~ msgid ""
-#~ "To use a specialty, you just have to move and/or attack with your units "
-#~ "in a way which triggers the specialty. For example, in order to use "
-#~ "leadership, you must move a unit with leadership next to another unit, "
-#~ "then attack with the other unit."
-#~ msgstr ""
-#~ "Um eine Besonderheit zu benutzen, müsst Ihr lediglich Eure Einheiten so "
-#~ "bewegen oder angreifen lassen, dass die Besonderheit aktiviert wird. Um "
-#~ "»Führungsqualitäten« zu benutzen, müsst Ihr mit einer Einheit angreifen, "
-#~ "die neben einer Einheit mit dieser Besonderheit steht."
-
-#, fuzzy
-#~ msgid "How did I get this object again?"
-#~ msgstr "Wie lange wirken diese Objekte?"
-
-#~ msgid "What kind of objects am I likely to encounter?"
-#~ msgstr "Welche Objekte werde ich finden?"
-
-#, fuzzy
-#~ msgid ""
-#~ "The objects you encounter are put in by the scenario designer, so they "
-#~ "vary from campaign to campaign. In 'Heir to the Throne', all objects are "
-#~ "beneficial, and most give the unit who picks them up a new weapon. "
-#~ "However, there are usually not that many objects in a campaign."
-#~ msgstr ""
-#~ "Die Objekte, die Ihr findet, werden von den jeweiligen Szenario-Designern "
-#~ "gewählt, deshalb variieren sie von Kampagne zu Kampagne. In »Der "
-#~ "Thronerbe« bekommt der Finder eines Objekts meistens eine neue Waffe. "
-#~ "Allerdings existieren für gewöhnlich nicht sehr viele Objekte in einer "
-#~ "Kampagne."
-
-#~ msgid ""
-#~ "Most objects are permanent changes to the unit that receives them. "
-#~ "However, a few objects, such as holy water, last only until the end of "
-#~ "the scenario."
-#~ msgstr ""
-#~ "Die meisten Objekte haben einen permanenten Effekt auf die Einheit, die "
-#~ "sie findet. Manche dagegen, wie zum Beispiel geweihtes Wasser, wirken nur "
-#~ "bis zum Ende eines Szenarios."
-
-#~ msgid "How long do these objects last?"
-#~ msgstr "Wie lange wirken diese Objekte?"
-
-#~ msgid "How do I play a campaign?"
-#~ msgstr "Wie spiele ich eine Kampagne?"
-
-#, fuzzy
-#~ msgid ""
-#~ "To begin a campaign, run Wesnoth, select 'Campaign', select which "
-#~ "campaign to play, then select Easy, Normal, or Hard. New players, even "
-#~ "those who are no stranger to war, should try playing on Easy until they "
-#~ "get a feel for combat in the world of Wesnoth. However, they never "
-#~ "listen. Do not say I didn't warn you, Konrad."
-#~ msgstr ""
-#~ "Um eine Kampagne zu beginnen, startet Ihr Wesnoth, klickt auf »Kampagne« "
-#~ "und wählt die Kampagne aus, die Ihr spielen wollt. Anschließend legt Ihr "
-#~ "den Schwierigkeitsgrad fest: Leicht, mittel oder schwierig. Wesnoth-"
-#~ "Einsteiger sollten mit der Kampagne »Der Thronerbe« beginnen."
-
-#~ msgid "How do I play multiplayer?"
-#~ msgstr "Wie kann ich ein Mehrspieler-Spiel spielen?"
-
-#~ msgid ""
-#~ "To play Wesnoth against other people, select 'Multiplayer'. Then select "
-#~ "'Join Official Server'. This will connect you to the official Wesnoth "
-#~ "server, where you can join a game by selecting it, then selecting 'Join "
-#~ "Game'."
-#~ msgstr ""
-#~ "Um Wesnoth gegen andere Spieler zu spielen, wählt Ihr »Mehrspieler«. "
-#~ "Wählt nun »Offiziellem Server beitreten«, um Euch mit dem offiziellen "
-#~ "Wesnoth-Server zu verbinden. Hier könnt Ihr an einem Spiel teilnehmen, "
-#~ "indem Ihr das gewünschte Spiel auswählt und dann auf die Schaltfläche "
-#~ "»Spiel beitreten« drückt."
-
-#~ msgid "You have successfully attacked Merle."
-#~ msgstr "Ihr habt Merle erfolgreich angegriffen."
-
-#~ msgid "That was explained well! But.."
-#~ msgstr "Das habe ich verstanden. Aber ..."
+msgstr "Du hast zu lange gebraucht, wir werden diese Orks nie los werden!"
