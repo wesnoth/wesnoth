@@ -1,3 +1,16 @@
+/*
+   Copyright (C) 2006 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   wesnoth playlevel Copyright (C) 2003 by David White <davidnwhite@verizon.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
 #include "play_controller.hpp"
 
 #include "config_adapter.hpp"
@@ -421,8 +434,10 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_SEARCH:
 	case hotkey::HOTKEY_HELP:
 	case hotkey::HOTKEY_USER_CMD:
-	case hotkey::HOTKEY_SAVE_GAME:
 		return true;
+
+	case hotkey::HOTKEY_SAVE_GAME:
+		return !events::commands_disabled;
 
 	case hotkey::HOTKEY_SHOW_ENEMY_MOVES:
 	case hotkey::HOTKEY_BEST_ENEMY_MOVES:

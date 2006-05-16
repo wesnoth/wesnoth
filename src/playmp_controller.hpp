@@ -1,5 +1,6 @@
 /*
-   Copyright (C) 2003 by David White <davidnwhite@verizon.net>
+   Copyright (C) 2006 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   wesnoth playlevel Copyright (C) 2003 by David White <davidnwhite@verizon.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

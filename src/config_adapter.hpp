@@ -1,6 +1,7 @@
 /* $Id: config.hpp 8785 2005-11-08 22:23:03Z jhinrichs $ */
 /*
-   Copyright (C) 2003 by David White <davidnwhite@verizon.net>
+   Copyright (C) 2005 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   wesnoth playlevel Copyright (C) 2003 by David White <davidnwhite@verizon.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -10,6 +11,7 @@
 
    See the COPYING file for more details.
 */
+
 #ifndef CONFIG_ADAPTER_HPP_INCLUDED
 #define CONFIG_ADAPTER_HPP_INCLUDED
 
