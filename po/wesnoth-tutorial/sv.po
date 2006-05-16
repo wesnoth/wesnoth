@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-16 11:42-0500\n"
-"PO-Revision-Date: 2006-05-15 16:25+0200\n"
+"PO-Revision-Date: 2006-05-16 20:58+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -75,7 +75,6 @@ msgid "she"
 msgstr "hon"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:185
-#, fuzzy
 msgid ""
 "*Welcome to Wesnoth!\n"
 "For this tutorial, you are playing $student.  You are standing in the keep, "
@@ -83,10 +82,8 @@ msgid ""
 "*Left click or any key to continue..."
 msgstr ""
 "*Välkommen till Wesnoth!\n"
-"\n"
 "I den här övningen spelar du som $student, som står i kärntornet. Din mentor "
 "Delfador är på östra sidan om floden.\n"
-"\n"
 "*Tryck en tangent för att fortsätta..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:188
@@ -796,7 +793,6 @@ msgid "Right click on the tile south of you and recruit an Elvish Fighter"
 msgstr "Högerklicka på rutan söder om dig och rekrytera en alvkrigare"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:533
-#, fuzzy
 msgid "No!  I said recruit an Elvish SHAMAN!  Now try again..."
 msgstr "Nej! Jag sade att du skulle rekrytera en SCHAMAN! Försök igen..."
 
@@ -830,7 +826,6 @@ msgstr "För $student till en ny för att överta kontrollen över den"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:562
 #: data/tutorial/scenarios/2_Tutorial.cfg:607
-#, fuzzy
 msgid "No!  I said recruit an Elvish ARCHER!  Now try again..."
 msgstr "Nej! Jag sade att du skulle rekrytera en BÅGSKYTT! Försök igen..."
 
@@ -872,7 +867,6 @@ msgid "Recruit two Elvish Archers in tiles to your west"
 msgstr "Rekrytera två alvbågskyttar till rutorna väster om dig"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:677
-#, fuzzy
 msgid "No!  I said recruit an Elvish FIGHTER!  Now try again..."
 msgstr "Nej! Jag sade att du skulle rekrytera en KRIGARE! Försök igen..."
 
@@ -909,9 +903,9 @@ msgid "Right click on the tile south-east of you and recruit an Elvish Fighter"
 msgstr "Högerklicka på rutan sydost om dig och rekrytera en alvkrigare"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:791
-#, fuzzy
 msgid "$recruit.type|?  I said RECRUIT a new ELVISH FIGHTER.  Now try again..."
-msgstr "Nej! Jag sade att du skulle rekrytera en KRIGARE! Försök igen..."
+msgstr ""
+"$recruit.type|? Jag sade att du skulle REKRYTERA en KRIGARE! Försök igen..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:805
 #: data/tutorial/scenarios/2_Tutorial.cfg:816
@@ -940,7 +934,6 @@ msgstr ""
 "närheten så att du kan rekrytera fler trupper."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:866
-#, fuzzy
 msgid ""
 "You should leave the villages near your keep for $student to capture, as $he "
 "needs to stay nearby to recruit more units anyway."
@@ -970,7 +963,6 @@ msgstr ""
 "alvbågskytt i skogen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:891
-#, fuzzy
 msgid ""
 "It's very dangerous to stand in water when there are enemies about!  Your "
 "unit would have an 80% chance of being hit when the Orc counter-attacks!  "
@@ -988,13 +980,12 @@ msgid "Fighter to Here"
 msgstr "För krigaren hit"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:910
-#, fuzzy
 msgid ""
 "Your other units cannot reach that Orc this turn.  Send a Fighter to that "
 "village to the far east: that will take two turns."
 msgstr ""
-"Dina andra trupper kan inte nå fram detta drag. Skicka en krigare till byn "
-"där borta i öst. Det tar två drag."
+"Dina andra trupper kan inte nå till orchen fram detta drag. Skicka en "
+"krigare till byn där borta i öst. Det tar två drag."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:911
 msgid ""
@@ -1041,7 +1032,6 @@ msgid "Move $student to another (unowned) village"
 msgstr "För $student till en annan icke-kontrollerad by"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:976
-#, fuzzy
 msgid ""
 "The Orc is blocking the bridge!  We must occupy that island before the wolf "
 "riders reach it."
@@ -1130,7 +1120,6 @@ msgstr ""
 "byn vid kanalen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1093
-#, fuzzy
 msgid ""
 "We need to take that village, otherwise they will take it next turn!  Move "
 "your wounded unit to take it so it can heal, then kill that Orc!"
@@ -1171,7 +1160,6 @@ msgid "Defend here"
 msgstr "Försvara dig här"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1122
-#, fuzzy
 msgid ""
 "Beware those Orcs crossing the river!  If they get into the forest they'll "
 "be hard to dislodge!"
@@ -1278,13 +1266,12 @@ msgstr ""
 "'Visa fiendedrag' i menyn 'Handlingar'."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1313
-#, fuzzy
 msgid ""
 "Level 2 units are powerful, but not invulnerable $student!  Goodbye, "
 "$deadguy.user_description|."
 msgstr ""
 "$student, trupper på nivå 2 är mäktiga, men inte osårbara. Farväl, $deadguy."
-"user_description."
+"user_description|."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1328
 msgid ""
@@ -1339,13 +1326,5 @@ msgstr ""
 "hälsopoäng i skada vardera"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1545
-#, fuzzy
 msgid "You took too long, we'll never be rid of these Orcs!"
 msgstr "Du tog för lång tid på dig! Nu blir vi aldrig av med orcherna!"
-
-#~ msgid ""
-#~ "No!  I said RECRUIT a new Elvish Fighter, not a $recruit.type|!  Now try "
-#~ "again..."
-#~ msgstr ""
-#~ "Nej! Jag sade att du skulle rekrytera en alvkrigare, inte en $recruit."
-#~ "type|! Försök igen..."
