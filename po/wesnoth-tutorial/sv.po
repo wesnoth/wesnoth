@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-16 11:42-0500\n"
-"PO-Revision-Date: 2006-04-22 15:29+0200\n"
+"PO-Revision-Date: 2006-05-15 16:25+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -62,7 +62,7 @@ msgstr "Vem vill du spela som?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:152
 msgid "he"
-msgstr ""
+msgstr "han"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:156
 #: data/tutorial/scenarios/1_Tutorial.cfg:159
@@ -72,7 +72,7 @@ msgstr "Li'sar"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:160
 msgid "she"
-msgstr ""
+msgstr "hon"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:185
 #, fuzzy
@@ -254,7 +254,6 @@ msgid "Click on the village to move $student"
 msgstr "Klicka på byn för att föra $student dit"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:473
-#, fuzzy
 msgid ""
 "You now 'own' this village: you can see it flies your flag, and soon a '1' "
 "will appear next to the house icon at the top of screen.  Villages give "
@@ -263,7 +262,7 @@ msgid ""
 msgstr ""
 "Nu 'äger' du den här byn: du kan se att den har hissat din flagga, och snart "
 "står det en 1:a bredvid husikonen längst upp i bild. Byar ger guld: varje "
-"drag får du två guldstycken plus ett guldstycke för varje by du "
+"drag får du två guldstycken plus två guldstycken för varje by du "
 "kontrollerar.\n"
 "\n"
 "*Tryck en tangent för att fortsätta..."
@@ -560,7 +559,7 @@ msgid ""
 "advance a level."
 msgstr ""
 ", din nya rekryt, har två karaktärsdrag: stark och intelligent. Om en trupp "
-"är stark vållar den mer skada, och om en trupp är intelligent så beböer den "
+"är stark vållar den mer skada, och om en trupp är intelligent så behöver den "
 "mindre erfarenhet för att befordras."
 
 #: data/tutorial/scenarios/2_Speaking.cfg:86
@@ -657,6 +656,8 @@ msgid ""
 "Ho Galdrad!  Has Delfador conjured something else to beat me with?  A flock "
 "of scarecrows, perhaps?"
 msgstr ""
+"Hallå Gladrad! Har Delfador lyckats få fram nåt annat att slå mig med? En "
+"skock fågelskrämmor, kanske?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:374
 msgid ""
@@ -665,6 +666,10 @@ msgid ""
 "to enter here.  You must defeat their leader, so they never bother us "
 "again.  I will advise you."
 msgstr ""
+"Det här är ingen lek, $student|. Orcher har slagit läger vid floden. Det här "
+"är alvland: vi alver är snabba och svåra att träffa i skogar. De är dårar "
+"som träder in i vårt land. Du måste besegra deras ledare, så att de aldrig "
+"kommer och besvärar oss igen. Jag hjälper dig."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:375
 msgid "What should I do?"
@@ -675,12 +680,16 @@ msgid ""
 "First, we will have to deal with the Orcish Grunt stationed in the middle of "
 "the river.  He should be little trouble."
 msgstr ""
+"Först måste vi ta hand om orchsoldaten som står mitt i floden. Han borde "
+"inte innebära några problem."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:381
 msgid ""
 "By then, their leader will have recruited units to send against us, and the "
 "real fight will begin."
 msgstr ""
+"Vid det laget kommer deras ledare att ha rekryterat några trupper han kan "
+"skicka mot oss, och den riktiga striden kan börja."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:382
 #: data/tutorial/scenarios/2_Tutorial.cfg:383
@@ -704,6 +713,10 @@ msgid ""
 "the east, but we would stand on the shore and force them to fight us from "
 "the water, where they are exposed and we are protected by the forest."
 msgstr ""
+"Ser du det här mörkblå vattnet? Det är för djupt för någon av oss att "
+"passera. De skulle kunna ta sig över det smala vadet i öst - det ljusblå "
+"vattnet - men vi skulle stå på stranden och tvinga dem att slåss mot oss i "
+"vattnet, där de är öppna för attack och vi står skyddade i skogen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:403
 msgid ""
@@ -711,6 +724,8 @@ msgid ""
 "the key: it has a village, for healing injured units, and forest in which we "
 "fight so well."
 msgstr ""
+"Det mest sannolika är då över bron. Ön i mitten är nyckeln: den har en by, "
+"där skadade trupper kan läka, och skog, som vi slåss väl i."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:408
 msgid ""
@@ -719,6 +734,10 @@ msgid ""
 "Two Elvish Archers\n"
 "One Elvish Shaman"
 msgstr ""
+"Till att börja med behöver vi några trupper:\n"
+"Två alvkrigare\n"
+"Två alvbågskyttar\n"
+"En alvschaman"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:475
 msgid ""
@@ -726,6 +745,9 @@ msgid ""
 "and $recall_name2 gained $recall_xp2.  You should recall them now so they "
 "can gain more experience, rather than recruiting new ones."
 msgstr ""
+"Under din träning fick $recall_name1 $recall_xp1 och $recall_name2 "
+"$recall_xp2 erfarenhetspoäng var. Du bör återkalla dem så att de kan få mer "
+"erfarenhet, hellre än att rekrytera nya trupper."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:479
 msgid ""
@@ -733,6 +755,9 @@ msgid ""
 "You should recall that unit now, and recruit a second one (which is cheaper "
 "than recalling, anyway)."
 msgstr ""
+"Under din träning fick $recall_name1 $recall_xp1 erfarenhetspoäng. Du bör "
+"återkalla den truppen och dessutom rekrytera en annan (vilket i alla fall är "
+"billigare än att återkalla)."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:482
 msgid "RECALL $recall_name1"
@@ -740,7 +765,7 @@ msgstr "ÅTERKALLA $recall_name1"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:483
 msgid "Right click on the tile south of you and recall $recall_name1"
-msgstr ""
+msgstr "Högerklicka på rutan söder om dig och återkalla $recall_name1"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:492
 msgid ""
@@ -748,12 +773,17 @@ msgid ""
 "them: as they don't, it's cheaper to recruit new ones.  So recruit an Elvish "
 "Fighter."
 msgstr ""
+"Om några alvkrigare från din tidigare strid hade några erfarenhetspoäng "
+"skulle vi rekrytera dem, men då de inte har det är det billigare att "
+"rekrytera nya. Så, rekrytera en alvkrigare."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:495
 msgid ""
 "If you had any experienced units alive from your last battle we would recall "
 "them, instead we must recruit a new Elvish Fighter."
 msgstr ""
+"Om du hade några erfarna trupper kvar från din tidigare strid, skulle vi "
+"rekrytera dem, men nu måste vi istället rekrytera en ny alvkrigare."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:498
 #: data/tutorial/scenarios/2_Tutorial.cfg:774
@@ -776,10 +806,13 @@ msgid ""
 "it.  It also has a special attack which slows enemies, halving the damage "
 "they do!"
 msgstr ""
+"Schamanen är en ganska svag trupp, men har förmågan att hela trupper i dess "
+"närhet. Den har även en speciell attack som saktar ner fienden, vilket "
+"halverar skadan de vållar!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:540
 msgid "So, should I end my turn now?"
-msgstr ""
+msgstr "Så, skall jag avsluta mitt drag nu?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:542
 msgid ""
@@ -787,6 +820,9 @@ msgid ""
 "five units cost you 5 gold, leaving you 3 gold pieces poorer per turn.  You "
 "need more income."
 msgstr ""
+"Sant, ingen av dina trupper kan förflytta sig, men det kan du. Dina fem "
+"trupper kostar 5 guld, vilket gör dig 3 guldstycken fattigare varje drag. Du "
+"behöver mer inkomst."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:543
 msgid "Move $student to capture a village"
@@ -887,6 +923,8 @@ msgid ""
 "You've learned well, $student|!  The village pays two gold per turn: you're "
 "only losing 1 gold per turn now."
 msgstr ""
+"Du har lärt dig väl, $student|! Byn ger dig två guld per drag: du förlorar "
+"bara ett guld per drag nu."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:845
 #: data/tutorial/scenarios/2_Tutorial.cfg:962
@@ -898,12 +936,17 @@ msgid ""
 "You've captured all the villages around the keep, but stay near so you can "
 "recruit more units."
 msgstr ""
+"Du har tagit över kontrollen över alla byar runt fästet, men stanna i "
+"närheten så att du kan rekrytera fler trupper."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:866
+#, fuzzy
 msgid ""
 "You should leave the villages near your keep for $student to capture, as $he "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
+"Du bör låta $student ta kontrollen över byarna nära fästet. $he måste ändå "
+"stanna i närheten för att rekrytera fler trupper."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:872
 msgid "Orcs have no ranged attack, so use your archers against it."
@@ -923,13 +966,18 @@ msgid ""
 "Excellent.  Elves are well protected in the forest: there's only a 30% "
 "chance of hitting an Elven Archer when it's in forest."
 msgstr ""
+"Utmärkt. Alver är väl skyddade i skogen: det är bara 30% chans att träffa en "
+"alvbågskytt i skogen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:891
+#, fuzzy
 msgid ""
 "It's very dangerous to stand in water when there are enemies about!  Your "
 "unit would have an 80% chance of being hit when the Orc counter-attacks!  "
 "Cancel!"
 msgstr ""
+"Det är väldigt farligt att stå i vatten när det är fiender i faggorna! Din "
+"trupp träffas i 80% av fallen när orchen slår tillbaka! Avbryt!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:897
 msgid "Attack the Orc with the other Archer"
@@ -940,16 +988,21 @@ msgid "Fighter to Here"
 msgstr "För krigaren hit"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:910
+#, fuzzy
 msgid ""
 "Your other units cannot reach that Orc this turn.  Send a Fighter to that "
 "village to the far east: that will take two turns."
 msgstr ""
+"Dina andra trupper kan inte nå fram detta drag. Skicka en krigare till byn "
+"där borta i öst. Det tar två drag."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:911
 msgid ""
 "You can make a unit keep moving for multiple turns: select the unit, then "
 "click on the target.  You will see (2) if it will take two turns to reach it."
 msgstr ""
+"Du kan få en trupp att förflytta sig över flera drag: välj truppen och "
+"klicka på målet. Du kommer att se (2) om det tar två drag att nå dit."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:912
 msgid "Tell a Fighter to move to the far east village"
@@ -960,10 +1013,14 @@ msgid ""
 "Send the other Fighter and the Shaman south so they can attack next turn, "
 "then return to the keep to recruit more units!"
 msgstr ""
+"Skicka den andra krigaren och schamanen söderut så att de kan anfalla nästa "
+"drag, och återvänd sedan till kärntornet för att rekrytera fler trupper!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:924
 msgid "Move Fighter and Shaman south, then return $student to the Keep"
 msgstr ""
+"För krigaren och schamanen söderut. För sedan $student tillbaka till "
+"kärntornet"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:934
 msgid "Recruit another Archer and a Fighter"
@@ -1011,6 +1068,10 @@ msgid ""
 "To move your troops onto that island without wading slowly through the "
 "water, you'll have to kill him."
 msgstr ""
+"Nej, när du förflyttar dig nära en fiendetrupp så hamnar du i dess "
+"'kontrollzon', och kan inte gå vidare samma drag.\n"
+"För att flytta dina trupper till ön utan att vada långsamt genom vattnet, "
+"måste du döda honom."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:989
 msgid "Attack the Orc with an Archer"
@@ -1027,12 +1088,17 @@ msgid ""
 "attack!  I'd better grab more villages, and move everyone closer for next "
 "turn."
 msgstr ""
+"Inga andra trupper kan nå fram till orchen. Jag hoppas att min bågskytt "
+"överlever hans motattack! Det är bäst att jag tar kontrollen över fler byar "
+"och för alla andra närmare till nästa drag."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1016
 msgid ""
 "Yes.  If your Shaman stands just behind that unit on the bridge, it will "
 "heal it at the beginning of next turn, too."
 msgstr ""
+"Ja. Om din schaman står alldeles bakom truppen på bron så helar den den "
+"truppen vid början av nästa drag också."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1017
 msgid "Move Shaman onto bridge to stand behind unit"
@@ -1043,6 +1109,8 @@ msgid ""
 "Be careful: if you stand on the bridge you are exposed to attack from "
 "multiple directions!"
 msgstr ""
+"Var försiktig: om du står på bron är du utsatt för attacker ur flera "
+"riktningar!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1076
 msgid ""
@@ -1050,18 +1118,25 @@ msgid ""
 "unit would have an 80% chance of being hit!  Cancel, and wait for them to "
 "attack you!"
 msgstr ""
+"Det är mycket farligt att stå i vatten när det är fienden å färde! Din trupp "
+"har 80% risk att träffas! Avbryt, och vänta på att de anfaller dig!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1086
 msgid ""
 "Don't forget about your fighter in the east: you can move him south to that "
 "last village near the channel."
 msgstr ""
+"Glöm inte din krigare i öst: du kan flytta honom söderut till den där sista "
+"byn vid kanalen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1093
+#, fuzzy
 msgid ""
 "We need to take that village, otherwise they will take it next turn!  Move "
 "your wounded unit to take it so it can heal, then kill that Orc!"
 msgstr ""
+"Vi måste ta den byn, annars tar fienden den nästa drag! Flytta din sårade "
+"trupp till byn så att den kan läkas, och döda sedan den där orchen!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1106
 msgid ""
@@ -1069,28 +1144,40 @@ msgid ""
 "stronger at night, 25% weaker in the day.  You are lawful: stronger by day.  "
 "Elves are neutral: we are unaffected by night and day."
 msgstr ""
+"Försiktigt! Det är natt nu. Orcher är ljusskygga: deras attacker är 25% mer "
+"kraftfulla på natten och 25% svagare på dagen. Du är redbar, vilket betyder "
+"att du är starkare på dagen. Alver är neutrala: de påverkas inte av att det "
+"är natt eller dag."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1107
 msgid ""
 "After this dialog, hold the mouse over the image below the map on the right, "
 "to see a description of the time of day."
 msgstr ""
+"Efter den här dialogrutan, håll muspekaren över bilden nedanför kartan till "
+"höger. Då ser du en beskrivning över tiden på dygnet."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1114
 msgid ""
 "Remember to retreat your wounded units to villages.  Healers can only heal 4 "
 "hitpoints at a time, villages can heal 8 (the maximum for any unit)."
 msgstr ""
+"Kom ihåg att dra tillbaka dina sårade truppen till byar. Helare kan bara "
+"hela 4 hälsopoäng på en gång, medan byar kan hela 8 (vilket är max för en "
+"trupp)."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1121
 msgid "Defend here"
 msgstr "Försvara dig här"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1122
+#, fuzzy
 msgid ""
 "Beware those Orcs crossing the river!  If they get into the forest they'll "
 "be hard to dislodge!"
 msgstr ""
+"Se upp för orcherna som korsar floden! Om de kommer in i skogen blir de "
+"svåra att bli av med!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1128
 msgid ""
@@ -1098,6 +1185,9 @@ msgid ""
 "the next unit, SPACE to indicate it's finished.\n"
 "When 'n' no longer selects a new unit, you can end your turn."
 msgstr ""
+"Du kan försäkra dig om att du beaktat alla trupper under draget: tryck 'n' "
+"för nästa trupp, och sedan mellanslag för att visa att du är klar med den.\n"
+"När 'n' inte längre hoppar till en ny trupp så kan du avsluta draget."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1133
 msgid "You only need to defeat the leader to win: see Main Menu->Objectives."
@@ -1108,30 +1198,40 @@ msgid ""
 "Remember to recruit more troops as you need them: Archers are particularly "
 "effective against Grunts, Wolf Riders and their leader."
 msgstr ""
+"Kom ihåg att rekrytera fler trupper när du behöver. Bågskyttar är särskilt "
+"effektiva mot orchsoldater, vargryttare och deras ledare."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1156
 msgid ""
 "Stay near the keep: you need to be on a keep to recruit more units, and I "
 "doubt the Orc leader will let you use his!"
 msgstr ""
+"Stanna när kärntornet: du måste vara i ett kärntorn för att rekrytera fler "
+"trupper, och jag tvivlar på att orchledaren låter dig använda hans!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1170
 msgid ""
 "Their leader has moved into that village!  He's not as stupid as I thought: "
 "it heals him each turn and provides good defense."
 msgstr ""
+"Deras ledare har flyttat till byn där borta! Han är inte så dum som jag "
+"trodde: där läker han varje drag och får gott försvar."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1181
 msgid ""
 "That unit has captured our village!  You'd better get him out: it heals him "
 "each turn and provides good defense."
 msgstr ""
+"Den där truppen har tagit vår by! Du får se till att få ut honom: den helar "
+"honom varje drag och ger gott försvar."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1193
 msgid ""
 "Using me to attack is risky!  I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
 msgstr ""
+"Att använda mig för anfall är riskabelt! Jag kan sakta ner fienden med min "
+"distansattack, men jag hoppas att du vet vad du gör om jag missar!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1229
 #: data/tutorial/scenarios/2_Tutorial.cfg:1245
@@ -1140,23 +1240,32 @@ msgid ""
 "gain 16 experience points, because he is level 2.  Choose your unit "
 "carefully!"
 msgstr ""
+"Du är nära att döda deras ledare! Truppen som utdelar dödsstöten får 16 "
+"erfarenhetspoäng, eftersom han är på nivå 2. Välj trupp med eftertanke!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1286
 msgid ""
 "We will miss $deadguy.user_description|, and he had $deadguy.experience "
 "experience points, meaning he would have advanced to level 2 soon."
 msgstr ""
+"Vi kommer att sakna $deadguy.user_description|. Han hade $deadguy.experience "
+"erfarenhetspoäng, vilket betyder att han skulle ha befordrats till nivå 2 "
+"snart."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1295
 msgid ""
 "We will miss $deadguy.user_description|, but better than one of our "
 "experienced troops dying!"
 msgstr ""
+"Vi kommer att sakna $deadguy.user_description|, men det är bättre än att "
+"någon av våra erfarna trupper dör!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1308
 msgid ""
 "Losing a healer hurts all the troops!  Keep them out of the enemy's reach!"
 msgstr ""
+"Att förlora en helare är dåligt för alla trupper! Håll dem utom fiendens "
+"räckhåll!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1309
 msgid ""
@@ -1164,18 +1273,26 @@ msgid ""
 "can see all the possible enemy moves at once with 'Show Enemy Moves' from "
 "the 'Actions' menu."
 msgstr ""
+"Du kan se vart en fiende skulle kunna nå genom att hålla muspekaren över "
+"dem. Du kan se alla möjliga fiendeförflyttningar på en gång, genom att välja "
+"'Visa fiendedrag' i menyn 'Handlingar'."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1313
+#, fuzzy
 msgid ""
 "Level 2 units are powerful, but not invulnerable $student!  Goodbye, "
 "$deadguy.user_description|."
 msgstr ""
+"$student, trupper på nivå 2 är mäktiga, men inte osårbara. Farväl, $deadguy."
+"user_description."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1328
 msgid ""
 "Beware the leader: he can do 36 hitpoints damage at night!  Attack with many "
 "units at once, during the day."
 msgstr ""
+"Se upp för ledaren: han kan vålla 36 hälsopoäng i skada nattetid! Anfall med "
+"flera trupper på en gång, under dagen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1341
 msgid ""
@@ -1183,6 +1300,10 @@ msgid ""
 "I always have a 60% chance of hitting with my bow, and 9 hitpoints damage on "
 "each of the four attacks.  Use me to dislodge hard-to-hit units."
 msgstr ""
+"När jag befordrades helades jag helt och hållet!\n"
+"Jag har alltid 60% chans att träffa med min pilbåge, och ger 9 hälsopoäng i "
+"skada för varje skott som träffar. Använd mig för att bli av med trupper som "
+"är svåra att träffa."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1353
 msgid ""
@@ -1191,6 +1312,10 @@ msgid ""
 "can hide in forests, and enemies can only see me if they are right next to "
 "me."
 msgstr ""
+"När jag befordrades helades jag helt och hållet!\n"
+"Jag är bra med både pilbåge och svärd, men jag har även en speciell förmåga: "
+"bakhåll. Jag kan gömma mig i skogen, och fienden kan bara se mig om de står "
+"alldeles intill."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1365
 msgid ""
@@ -1199,12 +1324,19 @@ msgid ""
 "leadership.  Level 1 units around me do 25% more damage, so position me "
 "carefully."
 msgstr ""
+"När jag befordrades helades jag helt och hållet!\n"
+"Jag är bra med både pilbåge och svärd, men jag har även en speciell förmåga: "
+"ledarskap. Trupper på nivå 1 som står omkring mig vållar 25% mer i skada, så "
+"ställ mig där jag gör bäst nytta."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1378
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am particularly good with the sword: four attacks doing 8 damage each."
 msgstr ""
+"När jag befordrades helades jag helt och hållet!\n"
+"Jag är särskilt bra på att hantera svärd: jag har fyra utfall som vållar 8 "
+"hälsopoäng i skada vardera"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1545
 #, fuzzy
@@ -1217,11 +1349,3 @@ msgstr "Du tog för lång tid på dig! Nu blir vi aldrig av med orcherna!"
 #~ msgstr ""
 #~ "Nej! Jag sade att du skulle rekrytera en alvkrigare, inte en $recruit."
 #~ "type|! Försök igen..."
-
-#~ msgid ""
-#~ "Note:\n"
-#~ "Each village you own can support a single unit for free.  After that, "
-#~ "each unit costs you one gold per turn."
-#~ msgstr ""
-#~ "Observera: Varje by du kontrollerar understödjer en trupp. Har du fler "
-#~ "trupper än byar, så kostar varje extra trupp ett guldstycke per drag."

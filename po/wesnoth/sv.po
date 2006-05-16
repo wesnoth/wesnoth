@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-16 11:36-0500\n"
-"PO-Revision-Date: 2006-05-09 21:29+0200\n"
+"PO-Revision-Date: 2006-05-15 15:50+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -495,9 +495,8 @@ msgid "Estonian Translation"
 msgstr "Estnisk översättning"
 
 #: data/about.cfg:249
-#, fuzzy
 msgid "Filipino Translation"
-msgstr "Finsk översättning"
+msgstr "Filippinsk översättning"
 
 #: data/about.cfg:256
 msgid "Finnish Translation"
@@ -2956,7 +2955,6 @@ msgstr ""
 "underhåll."
 
 #: data/help.cfg:236
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2968,8 +2966,8 @@ msgstr ""
 "\n"
 "\n"
 "Inkomst är enkelt. Du har två guldstycken per drag i grundinkomst. För varje "
-"by du kontrollerar får du ytterligare ett guldstycke per drag. Alltså, om du "
-"har tio byar, får du vanligtvis också tolv guldstycken. Din kostnad för "
+"by du kontrollerar får du ytterligare två guldstycken per drag. Alltså, om "
+"du har fem byar, får du vanligtvis tolv guldstycken. Din kostnad för "
 "underhåll dras från denna inkomst, såsom beskrivs nedan."
 
 #: data/help.cfg:238
@@ -2980,9 +2978,13 @@ msgid ""
 "to its level. For example, if you have five level one units and one level "
 "two unit, all your upkeep would cost 7 gold each turn."
 msgstr ""
+"\n"
+"\n"
+"Underhåll är också ganska lätt att förstå. Varje trupp kräver ett underhåll "
+"som är lika med truppens nivå. Om du till exempel har fem trupper på nivå 1 "
+"och en trupp på nivå 2, så blir din underhållskostnad 7 guld per drag."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2992,8 +2994,8 @@ msgstr ""
 "\n"
 "\n"
 "De kostnader som underhållet utgör dras från din inkomst, vilket innebär att "
-"i exemplet med tolv trupper och tio byar så blir din inkomst tio guldstycken "
-"per drag."
+"om du har trupper med sammanlagt sju nivåer samt fem byar så blir din "
+"inkomst 5 guldstycken per drag."
 
 #: data/help.cfg:241
 msgid ""
@@ -4026,6 +4028,12 @@ msgid ""
 "pick it up, yet the grass at your feet bursts into flame as you test the "
 "heft of this mighty weapon."
 msgstr ""
+"Detta mäktiga svärd skapades för många hundra år sedan av sedan länge "
+"bortglömda alvsmeder, som lyckades ge det blåaktiga stålet en inre magisk "
+"eld. Eldstungor dansar på ytan, vilket ger stålet en spegels glans. När du "
+"tar upp svärdet, kommer det till liv! Underligt nog känner du ingen hetta "
+"när du tar i det, men gräset vid dina fötter tar eld när du känner på detta "
+"mäktiga vapens balans och styrka. "
 
 #: data/items.cfg:714
 msgid "Only the leader of an army can wield this sword!"
@@ -4631,7 +4639,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
-msgstr ""
+msgstr "6s - Solnedgång i Waterloo"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
 msgid ""
@@ -4640,6 +4648,11 @@ msgid ""
 "(north vs. south), but having players 136 or 146 as a team is also "
 "interesting.  Designed for 150gp, 44 villages."
 msgstr ""
+"En karta med 40x30 rutor för spel 3 mot 3. Flexibelt koordinerande "
+"tillsammans med dina allierade krävs för att behålla övertaget. "
+"Standardlagen är spelare 135 mot 246, alltså nord mot syd, men 136 eller 146 "
+"ger också intressant spel. Det rekommenderas att man startar med 150 guld. "
+"Kartan innehåller 44 byar."
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
 msgid "8p - Morituri"
@@ -8038,9 +8051,8 @@ msgstr ""
 "Anmärkning:"
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Mermaid Siren"
-msgstr "Sjöspjutbärare"
+msgstr "Siren"
 
 #: data/units/Mermaid_Siren.cfg:23
 msgid ""
@@ -8737,7 +8749,7 @@ msgstr ""
 
 #: data/units/Saurian_Augur.cfg:3
 msgid "Saurian Augur"
-msgstr "Siare"
+msgstr "Spåödla"
 
 #: data/units/Saurian_Augur.cfg:27
 msgid ""
@@ -8749,8 +8761,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Trots sitt kallblodiga arv och sin relativa bräcklighet, är ödlefolkets "
-"siare aktade som helare då de kan bistå sina allierade oavsett terräng eller "
-"motstånd. Utöver helande besitter de kunskaper om frostmagi.\n"
+"spåmän aktade som helare då de kan bistå sina allierade oavsett terräng "
+"eller motstånd. Utöver helande besitter de kunskaper om frostmagi.\n"
 "\n"
 "Anmärkning:"
 
@@ -8759,7 +8771,6 @@ msgid "Saurian Flanker"
 msgstr "Flanktrupp"
 
 #: data/units/Saurian_Flanker.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -10180,7 +10191,7 @@ msgstr "Kampen om Wesnoth"
 
 #: src/game.cpp:1723
 msgid "Loading title screen."
-msgstr ""
+msgstr "Laddar titelsidan."
 
 #: src/game_events.cpp:716
 msgid "Victory:"
@@ -10579,34 +10590,37 @@ msgstr "Sök"
 
 #: src/menu_events.cpp:1317
 msgid "Commands: whisper ignore emote. Type /help [command] for more help."
-msgstr ""
+msgstr "Kommandon: whisper ignore emote. Skriv /help [kommando] för mer hjälp."
 
 #: src/menu_events.cpp:1368
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
+"Skicka ett privat meddelande. Du kan inte skicka meddelanden till spelare "
+"som kontrollerar en sida i spelet. Syntax: /whisper [spelare] [meddelande]"
 
 #: src/menu_events.cpp:1372
 msgid "Add player to your ignore list. Usage: /ignore add [argument]"
 msgstr ""
+"Lägg till en spelare till din ignoreralista. Syntax: /ignore add [argument]"
 
 #: src/menu_events.cpp:1374
 msgid "Remove player from your ignore list. Usage: /ignore remove [argument]"
 msgstr ""
+"Ta bort en spelare från din ignoreralista. Syntax: /ignore remove [argument]"
 
 #: src/menu_events.cpp:1376
 msgid "Clear your ignore list. Usage: /ignore clear"
-msgstr ""
+msgstr "Rensa din ignorera lista. Syntax: /ignore clear"
 
 #: src/menu_events.cpp:1378
 msgid "Show your ignore list. Usage: /ignore list"
-msgstr ""
+msgstr "Visa din ignoreralista. Syntax: /ignore list"
 
 #: src/menu_events.cpp:1380
-#, fuzzy
 msgid "Unknown subcommand"
-msgstr "Okänt scenario"
+msgstr "Okänt underkommando"
 
 #: src/menu_events.cpp:1383
 msgid ""
@@ -10614,33 +10628,33 @@ msgid ""
 "[argument](optional) Subcommands: add remove list clear. Type /help ignore "
 "[subcommand] for more info."
 msgstr ""
+"Ignorera meddelanden från spelare på denna lista. Syntax: /ignore "
+"[underkommando] [argument (valfritt)]. Underkommandon: add remove list "
+"clear. Skriv /help ignore [underkommando] för mer information."
 
 #: src/menu_events.cpp:1386
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
-msgstr ""
+msgstr "Skicka en smiley. Syntax: /emote [message]"
 
 #: src/menu_events.cpp:1388
-#, fuzzy
 msgid "Unknown command"
-msgstr "Okänd era"
+msgstr "Okänt kommando"
 
 #: src/menu_events.cpp:1405
 msgid "Added to ignore list: "
-msgstr ""
+msgstr "Lagd i ignoreralistan: "
 
 #: src/menu_events.cpp:1407 src/menu_events.cpp:1417
-#, fuzzy
 msgid "Invalid username: "
-msgstr "Ogiltigt tag-namn"
+msgstr "Ogiltigt användarnamn: "
 
 #: src/menu_events.cpp:1415 src/menu_events.cpp:1441
 msgid "Removed from ignore list: "
-msgstr ""
+msgstr "Borttagen från ignoreralistan: "
 
 #: src/menu_events.cpp:1446
-#, fuzzy
 msgid "Unknown command: "
-msgstr "Okänt scenario: '"
+msgstr "Okänt kommando: "
 
 #: src/menu_events.cpp:1547
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -11011,7 +11025,7 @@ msgstr "Begynnelsetidsgräns: "
 
 #: src/multiplayer_create.cpp:318
 msgid "Turn Bonus: "
-msgstr "Dragbonux: "
+msgstr "Dragbonus: "
 
 #: src/multiplayer_create.cpp:322
 msgid "Reservoir: "
@@ -11447,7 +11461,7 @@ msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
-"Starta ett gruppspel (heta stolen, LAN eller internet), eller ett separat "
+"Starta ett gruppspel (heta stolen, LAN eller Internet), eller ett separat "
 "scenario mot datorn"
 
 #: src/titlescreen.cpp:212
@@ -11576,27 +11590,3 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 
 #~ msgid "% Pr[kills/killed by/both survive]"
 #~ msgstr "% P[dödar/dödas/båda överlever]"
-
-#~ msgid "Siren"
-#~ msgstr "Siren"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Upkeep is also fairly simple. Each unit requires an amount of Upkeep "
-#~ "equal to its level. You can support as many levels <italic>text=worth</"
-#~ "italic> of units as you have villages, without paying any upkeep. "
-#~ "However, for each level of unit beyond the number of villages you have, "
-#~ "you must pay one gold per turn. For example, if you have twelve level one "
-#~ "units and ten villages, you would have to pay two gold each turn in "
-#~ "upkeep."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Underhåll är också ganska enkelt. Varje trupp kräver ett underhåll som är "
-#~ "lika med truppens erfarenhetsnivå. Det är gratis att underhålla trupper "
-#~ "så länge deras <italic>text='sammanlagda erfarenhetsnivå'</italic> är "
-#~ "mindre än eller lika med antalet byar. Om den sammanlagda "
-#~ "erfarenhetsnivån är högre, måste mellanskillnaden betalas ur din egen "
-#~ "kassakista. Om du till exempel har tolv trupper på nivå ett och tio byar "
-#~ "så måste du betala två guldstycken per drag i underhåll."

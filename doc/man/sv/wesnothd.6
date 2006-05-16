@@ -16,22 +16,22 @@
 .TH WESNOTHD 6 "2006" "wesnothd" "Kampen om Wesnoths n\[:a]tverksdaemon"
 .
 .SH NAMN
-wesnothd \- Kampen om Wesnoths n\[:a]tverksdaemon
+wesnothd \- Kampen om \fBWesnoth\fRs n\[:a]tverksdaemon
 .
 .SH SYNOPSIS
 .B wesnothd 
 .RB [\| \-dvV \|]
 .RB [\| \-c
 .IR s\[:o]kv\[:a]g \|]
-.RB [\| \-m
-.IR storlek \|]
 .RB [\| \-p
 .IR port \|]
 .RB [\| \-t
 .IR antal \|]
 .
 .SH BESKRIVNING
-Kampen om \fBWesnoth\fRs n\[:a]tverksdaemon f\[:o]r gruppspel.
+Kampen om \fBWesnoth\fRs n\[:a]tverksdaemon f\[:o]r gruppspel. Se 
+http://www.wesnoth.org/wiki/ServerAdministration f\[:o]r information om vilka 
+kommandon servern accepterar via wesnoth-klienten eller sockeln.
 .
 .SH FLAGGOR
 .
@@ -46,9 +46,6 @@ k\[:o]r wesnothd som en daemon.
 .TP
 .BR -h, \ --help
 visar en sammanfattning av m\[:o]jliga kommandoradsflaggor.
-.TP
-.BI -m,\ --max_packet_size \ storlek
-anger maximal paketstorlek.
 .TP
 .BI -p,\ --port \ port
 knyter servern till den specificerade porten. Om ingen port anges s\[oa] 
@@ -83,8 +80,11 @@ nyckel="\fIv\[:a]rde\fR,\fIv\[:a]rde\fR,..."
 Antal till\[oa]tna anslutningar fr\[oa]n samma v\[:a]rd (IP).
 .TP
 .B disallow_names
-Spelarnamn som ej accepteras av servern. Standardv\[:a]rden (som 
-anv\[:a]nds om inget anges) \[:a]r 'server,ai,player,network,human,admin,computer'.
+Spelarnamn som ej accepteras av servern. '*' och '?' \[:a]r 
+till\[oa]tna f\[:o]r att matcha flera tecken. Se 
+.BR glob (7) 
+f\[:o]r detaljer. Standardv\[:a]rden (som anv\[:a]nds om inget 
+anges) \[:a]r 'server,ai,player,network,human,admin,computer'. 
 .TP
 .B max_messages
 Antal till\[oa]tna meddelanden inom \fBmessages_time_period\fR.
@@ -99,7 +99,10 @@ Meddelandet f\[:o]r dagen.
 L\[:o]senordet f\[:o]r administrationsr\[:a]ttigheter. B\[:o]rjar ofta med "admin ".
 .TP
 .B versions_accepted
-En komma-separerad lista med versionsstr\[:a]ngar som accepteras av servern.
+En komma-separerad lista med versionsstr\[:a]ngar som accepteras av servern. '*' 
+och '?' \[:a]r till\[oa]tna f\[:o]r att matcha flera tecken. 
+.br
+Exempel: versions_accepted="*" accepterar alla versionsstr\[:a]ngar.
 .
 .SS "Globala tag:ar:"
 .
@@ -115,7 +118,8 @@ V\[:a]rdadressen att omdirigera till.
 Porten att ansluta till.
 .TP
 .B version
-En komma-separerad lista av versioner att omdirigera.
+En komma-separerad lista av versioner att omdirigera. Fungerar p\[oa] samma 
+s\[:a]tt som \fBversions_accepted\fR.
 .RE
 .P
 .B [proxy]
@@ -144,4 +148,5 @@ s\[oa]som publicerad av Free Software Foundation. INGEN garanti ges; inte ens
 f\[:o]r S\[:A]LJBARHET eller L\[:A]MPLIGHET F\[:O]R ETT VISST SYFTE.
 .
 .SH SE \[:A]VEN
-wesnoth(6), wesnoth_editor(6)
+.BR wesnoth (6), 
+.BR wesnoth_editor (6)
