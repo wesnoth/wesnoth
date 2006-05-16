@@ -37,8 +37,15 @@ public:
 		TYPE type;
 	};
 
+	struct defensive_position {
+		location loc;
+		int chance_to_hit;
+		double vulnerability, support;
+	};
+
 	defensive_position const& best_defensive_position(const location& unit,
 			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const;
+
 	void invalidate_defensive_position_cache();
 
 	bool leader_can_reach_keep() const;
@@ -100,9 +107,9 @@ protected:
 		void analyze(const gamemap& map, unit_map& units, 
 					 const std::vector<team>& teams,
 					 const gamestatus& status, const game_data& gamedata,
-					 ai_interface& ai_obj,
-					 const ai_interface::move_map& dstsrc, const ai_interface::move_map& srcdst,
-					 const ai_interface::move_map& enemy_dstsrc);
+					 class ai& ai_obj,
+					 const move_map& dstsrc, const move_map& srcdst,
+					 const move_map& enemy_dstsrc);
 
 		double rating(double aggression, class ai& ai_obj) const;
 

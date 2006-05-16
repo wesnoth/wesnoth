@@ -282,9 +282,9 @@ std::set<battle_type> weapon_choice_cache;
 void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, 
 								  const std::vector<team>& teams,
 								  const gamestatus& status, const game_data& gamedata,
-								  ai_interface& ai_obj,
-                                  const ai_interface::move_map& dstsrc, const ai_interface::move_map& srcdst,
-                                  const ai_interface::move_map& enemy_dstsrc)
+								  class ai& ai_obj,
+                                  const move_map& dstsrc, const move_map& srcdst,
+                                  const move_map& enemy_dstsrc)
 {
 	const unit_map::const_iterator defend_it = units.find(target);
 	wassert(defend_it != units.end());
