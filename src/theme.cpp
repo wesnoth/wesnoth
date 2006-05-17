@@ -268,11 +268,13 @@ theme::object::object(const config& cfg)
 				     last_screen_(empty_rect),
                      xanchor_(read_anchor(cfg["xanchor"])),
 					 yanchor_(read_anchor(cfg["yanchor"]))
-{}
+{
+	location_modified_ = false;
+}
 
 SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 {
-	if(last_screen_ == screen)
+	if(last_screen_ == screen && !location_modified_)
 		return relative_loc_;
 
 	last_screen_ = screen;
@@ -356,6 +358,7 @@ void theme::object::modify_location(const _rect rect){
 	loc_.y = rect.y1;
 	loc_.w = rect.x2 - rect.x1;
 	loc_.h = rect.y2 - rect.y1;
+	location_modified_ = true;
 }
 
 void theme::object::modify_location(std::string rect_str, SDL_Rect ref_rect){
