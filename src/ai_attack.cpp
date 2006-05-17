@@ -421,6 +421,8 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		avg_damage_inflicted = defend_it->second.hitpoints() - prev_def->average_hp();
 	}
 
+	terrain_quality /= resources_used;
+
 	// Restore the units to their original positions.
 	for (m = movements.begin(); m != movements.end(); ++m) {
 		unit_map::iterator att_it = units.find(m->second);
