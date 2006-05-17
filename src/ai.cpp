@@ -899,7 +899,7 @@ void ai::do_move()
 		do_recruitment();
 
 		if(!passive_leader) {
-			move_leader_after_recruit(enemy_dstsrc);
+			move_leader_after_recruit(srcdst,dstsrc,enemy_dstsrc);
 		}
 	}
 }
@@ -1226,9 +1226,8 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 	return false;
 }
 
-bool ai::should_retreat(const gamemap::location& loc, const unit_map::const_iterator un, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc) const
+bool ai::should_retreat(const gamemap::location& loc, const unit_map::const_iterator un, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc, double caution) const
 {
-	const double caution = current_team().caution();
 	if(caution <= 0.0) {
 		return false;
 	}
@@ -1262,7 +1261,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 
 			//this unit still has movement left, and is a candidate to retreat. We see the amount
 			//of power of each side on the situation, and decide whether it should retreat.
-			if(should_retreat(i->first,i,fullmove_srcdst,fullmove_dstsrc,enemy_dstsrc)) {
+			if(should_retreat(i->first,i,fullmove_srcdst,fullmove_dstsrc,enemy_dstsrc,current_team().caution())) {
 
 				bool can_reach_leader = false;
 
@@ -1271,9 +1270,10 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 				//get to the best defensive hex
 				typedef move_map::const_iterator Itor;
 				std::pair<Itor,Itor> itors = srcdst.equal_range(i->first);
-				gamemap::location best_pos, best_defensive;
+				gamemap::location best_pos, best_defensive(i->first);
 				double best_rating = 0.0;
-				int best_defensive_rating = 100;
+				int best_defensive_rating = i->second.defense_modifier(map_.get_terrain(i->first))
+					- (map_.is_village(i->first) ? 10 : 0);
 				while(itors.first != itors.second) {
 
 					if(leader != units_.end() && std::count(leader_adj,leader_adj+6,itors.first->second)) {
@@ -1313,6 +1313,11 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 
 				if(!best_pos.valid()) {
 					best_pos = best_defensive;
+				}
+
+				// If we can't move, we should be more aggressive in lashing out.
+				if (best_pos == i->first) {
+					return desperate_attack(i->first);
 				}
 
 				if(best_pos.valid()) {
@@ -1765,10 +1770,8 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 	std::map<gamemap::location,paths> possible_moves;
 	possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
 
-	bool leader_moved = false;
 	//if the leader is not on his starting location, move him there.
 	if(leader->first != start_pos) {
-		leader_moved = true;
 		const paths::routes_map::const_iterator itor = leader_paths.routes.find(start_pos);
 		if(itor != leader_paths.routes.end() && units_.count(start_pos) == 0) {
 			move_unit(leader->first,start_pos,possible_moves);
@@ -1798,11 +1801,11 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 	}
 }
 
-void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
+void ai::move_leader_after_recruit(const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc)
 {
 	LOG_AI << "moving leader after recruit...\n";
 
-	const unit_map::iterator leader = find_leader(units_,team_num_);
+	unit_map::iterator leader = find_leader(units_,team_num_);
 	if(leader == units_.end() || leader->second.incapacitated()) {
 		return;
 	}
@@ -1885,6 +1888,12 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 				}
 			}
 		}
+	}
+
+	// We didn't move: are we in trouble?
+	leader = find_leader(units_,team_num_);
+	if (leader->second.attacks_left() && should_retreat(leader->first, leader, srcdst, dstsrc, enemy_dstsrc, 0.5)) {
+		desperate_attack(leader->first);
 	}
 }
 

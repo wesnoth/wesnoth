@@ -65,15 +65,17 @@ protected:
 	virtual bool retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
 	virtual bool move_to_targets(std::map<gamemap::location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
 
-	virtual bool should_retreat(const gamemap::location& loc, unit_map::const_iterator un, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc) const;
+	virtual bool should_retreat(const gamemap::location& loc, const unit_map::const_iterator un, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc, double caution) const;
 
 	virtual void do_recruitment();
 
 	virtual void move_leader_to_keep(const move_map& enemy_dstsrc);
-	virtual void move_leader_after_recruit(const move_map& enemy_dstsrc);
+	virtual void move_leader_after_recruit(const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc);
 	virtual void move_leader_to_goals(const move_map& enemy_dstsrc);
 
 	virtual bool recruit_usage(const std::string& usage);
+
+	virtual bool desperate_attack(const gamemap::location &loc);
 
 	void remove_unit_from_moves(const gamemap::location& u, move_map& srcdst, move_map& dstsrc);
 

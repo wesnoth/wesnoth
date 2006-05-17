@@ -667,3 +667,80 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 
 	return res;
 }
+
+// There is no real hope for us: we should try to do some damage to the enemy.
+// We can spend some cycles here, since it's rare.
+bool ai::desperate_attack(const gamemap::location &loc)
+{
+	const unit &u = units_.find(loc)->second;
+	std::cerr << "desperate attack by '" << u.id() << "' " << loc << "\n";
+
+	gamemap::location adj[6];
+	get_adjacent_tiles(loc, adj);
+
+	double best_kill_prob = 0.0;
+	unsigned int best_weapon = 0;
+	unsigned best_dir = 0;
+
+	for(unsigned int n = 0; n != 6; ++n) {
+		const unit_map::iterator enemy = find_visible_unit(units_,adj[n], map_, teams_, current_team());
+		if (enemy != units_.end() &&
+		   current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
+			const std::vector<attack_type>& attacks = u.attacks();
+			for (unsigned int i = 0; i != attacks.size(); ++i) {
+				// skip weapons with attack_weight=0
+				if (attacks[i].attack_weight() > 0) {
+					battle_context bc(map_, teams_, units_, state_, gameinfo_, loc, adj[n], i);
+					combatant att(bc.get_attacker_stats());
+					combatant def(bc.get_defender_stats());
+					att.fight(def);
+					if (def.hp_dist[0] > best_kill_prob) {
+						best_kill_prob = def.hp_dist[0];
+						best_weapon = i;
+						best_dir = n;
+					}
+				}
+			}
+		}
+	}
+
+	if (best_kill_prob > 0.0) {
+		attack_enemy(loc, adj[best_dir], best_weapon);
+		return true;
+	}
+
+	double least_hp = u.hitpoints() + 1;
+
+	// Who would do most damage to us when they attack?  (approximate: may be different ToD)
+	for (unsigned int n = 0; n != 6; ++n) {
+		const unit_map::iterator enemy = find_visible_unit(units_,adj[n], map_, teams_, current_team());
+		if (enemy != units_.end() &&
+		   current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
+
+			const std::vector<attack_type>& attacks = units_.find(adj[n])->second.attacks();
+			for (unsigned int i = 0; i != attacks.size(); ++i) {
+				// skip weapons with attack_weight=0
+				if (attacks[i].attack_weight() > 0) {
+					battle_context bc(map_, teams_, units_, state_, gameinfo_, adj[n], loc, i);
+					combatant att(bc.get_attacker_stats());
+					combatant def(bc.get_defender_stats());
+					att.fight(def);
+					if (def.average_hp() < least_hp) {
+						least_hp = def.average_hp();
+						best_dir = n;
+					}
+				}
+			}
+		}
+	}
+
+	// It's possible that there were no adjacent units to attack...
+	if (least_hp != u.hitpoints() + 1) {
+		std::vector<battle_context> bc_vector;
+		best_weapon = best_attack_weapon(map_, teams_, units_, state_, gameinfo_,
+										 loc, adj[best_dir], bc_vector);
+		attack_enemy(loc, adj[best_dir], best_weapon);
+		return true;
+	}
+	return false;
+}

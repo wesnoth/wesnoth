@@ -721,7 +721,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		std::pair<Itor,Itor> its = dstsrc.equal_range(*ri);
 		while(its.first != its.second) {
 			if(its.first->second == best->first) {
-				if(!should_retreat(its.first->first,best,fullmove_srcdst,fullmove_dstsrc,enemy_dstsrc)) {
+				if(!should_retreat(its.first->first,best,fullmove_srcdst,fullmove_dstsrc,enemy_dstsrc,
+								   current_team().caution())) {
 					const double value = best_target->value - best->second.cost()/20.0;
 
 					if(value > 0.0 && best_target->type != target::MASS) {
