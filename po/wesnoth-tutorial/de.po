@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-16 11:42-0500\n"
-"PO-Revision-Date: 2006-05-16 01:36-0500\n"
+"PO-Revision-Date: 2006-05-16 13:16-0500\n"
 "Last-Translator: Gerfried Fuchs <alfie@ist.org>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -76,7 +76,6 @@ msgid "she"
 msgstr "sie"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:185
-#, fuzzy
 msgid ""
 "*Welcome to Wesnoth!\n"
 "For this tutorial, you are playing $student.  You are standing in the keep, "
@@ -84,11 +83,10 @@ msgid ""
 "*Left click or any key to continue..."
 msgstr ""
 "*Willkommen in Wesnoth!\n"
-"In dieser Einführung spielt ihr $student, derzeit im Bergfried stehend. Euer "
+"In dieser Einführung spielt ihr $student. Ihr steht im Bergfried, und Euer "
 "Mentor Delfador befindet sich östlich des Flusses.\n"
 "*Klickt mit Links oder drückt eine Taste um fortzufahren..."
 
-# XXX - male/female character, not fully happy
 #: data/tutorial/scenarios/1_Tutorial.cfg:188
 msgid "Left click on $student"
 msgstr "Klickt mit Links auf $student"
@@ -265,7 +263,6 @@ msgstr ""
 "besitzt.\n"
 "*Klickt mit Links oder drückt eine Taste um fortzufahren..."
 
-# XXX - 2 per village?! Not one? At least the tutorial tells otherwise...
 #: data/tutorial/scenarios/1_Tutorial.cfg:475
 #: data/tutorial/scenarios/1_Tutorial.cfg:572
 #: data/tutorial/scenarios/1_Tutorial.cfg:602
@@ -375,6 +372,7 @@ msgstr ""
 msgid "Left click on an Elvish Fighter"
 msgstr "Linksklickt auf einen Elfenkrieger"
 
+# XXX - trailing dot (inconsistency)
 #: data/tutorial/scenarios/1_Tutorial.cfg:634
 msgid "End your turn, then attack again."
 msgstr "Beendet Euren Zug, dann greift erneut an."
@@ -384,7 +382,6 @@ msgstr "Beendet Euren Zug, dann greift erneut an."
 msgid "Left click on the Quintain to attack it."
 msgstr "Linksklickt auf die Turnierpuppe um sie anzugreifen."
 
-# XXX - trailing dot (inconsistency)
 #: data/tutorial/scenarios/1_Tutorial.cfg:670
 msgid ""
 "Your elf used a sword (5-4, or 5 damage, 4 attacks), which is a melee "
@@ -524,7 +521,7 @@ msgid ""
 "Now $student, I will leave you with more dummies to practice on!  After "
 "that, we have real work to do..."
 msgstr ""
-"Ja, Ihr erhaltet mehr Erfahrung durch Kämpfe, speziell durch das Töten Töten "
+"Ja, Ihr erhaltet mehr Erfahrung durch Kämpfe, speziell durch das Töten "
 "eines Gegners: Werdet erfahren genug und ihr werdet mächtiger.\n"
 "Nun, $student, ich werde dich mit weiteren Puppen zum Üben zurück lassen! "
 "Anschließend haben wir echte Arbeit zu erledigen..."
@@ -769,7 +766,6 @@ msgstr ""
 "erhalten. Du solltest diese Einheit nun einberufen, und eine zweite "
 "ausbilden (was sowieso billiger als einberufen ist)."
 
-# XXX - a leveled unit with 0 XP isn't considered worthy recalling?
 #: data/tutorial/scenarios/2_Tutorial.cfg:482
 msgid "RECALL $recall_name1"
 msgstr "$recall_name1 EINBERUFEN"
@@ -810,7 +806,6 @@ msgstr ""
 "Rechtsklickt auf das Feld südlich von euch und bildet einen Elfenkrieger aus"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:533
-#, fuzzy
 msgid "No!  I said recruit an Elvish SHAMAN!  Now try again..."
 msgstr "Nein! Ich sagte bildet eine Elfen-SCHAMANIN aus! Versuche es erneut..."
 
@@ -844,7 +839,6 @@ msgstr "Bewegt $student, um ein Dorf einzunehmen"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:562
 #: data/tutorial/scenarios/2_Tutorial.cfg:607
-#, fuzzy
 msgid "No!  I said recruit an Elvish ARCHER!  Now try again..."
 msgstr ""
 "Nein! Ich sagte bildet einen Elfen-BOGENSCHÜTZEN aus! Versuche es erneut..."
@@ -887,7 +881,6 @@ msgid "Recruit two Elvish Archers in tiles to your west"
 msgstr "Bildet zwei Elfenbogenschützen in den Feldern westlich von euch aus"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:677
-#, fuzzy
 msgid "No!  I said recruit an Elvish FIGHTER!  Now try again..."
 msgstr "Nein! Ich sagte bildet einen Elfen-KÄMPFER aus! Versuche es erneut..."
 
@@ -902,6 +895,7 @@ msgstr ""
 "Nein! Ich sagte beruft $recall_name1 ein, nicht $recall_name2|! Versuche es "
 "erneut..."
 
+# XXX - female shaman -- two strings needed
 #: data/tutorial/scenarios/2_Tutorial.cfg:753
 msgid ""
 "No!  I said RECALL $recall_name1 from the last battle, not recruit a new "
@@ -910,7 +904,6 @@ msgstr ""
 "Nein! ich sagte BERUFT $recall_name1 aus dem letzten Kampf EIN, nicht bildet "
 "eine neuen $recruit.type aus! Versuche es erneut..."
 
-# XXX - female shaman -- two strings needed
 #: data/tutorial/scenarios/2_Tutorial.cfg:770
 msgid "Right click on the tile south-east of you and recall $recall_name2"
 msgstr ""
@@ -928,11 +921,9 @@ msgstr ""
 "ein"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:791
-#, fuzzy
 msgid "$recruit.type|?  I said RECRUIT a new ELVISH FIGHTER.  Now try again..."
-msgstr "Nein! Ich sagte bildet einen Elfen-KÄMPFER aus! Versuche es erneut..."
+msgstr "$recruit.type|? Ich sagte BILDET einen neuen ELFENKÄMPFER AUS. Versuche es erneut..."
 
-# XXX - female shaman -- two strings needed
 #: data/tutorial/scenarios/2_Tutorial.cfg:805
 #: data/tutorial/scenarios/2_Tutorial.cfg:816
 msgid "Elindel"
@@ -960,13 +951,12 @@ msgstr ""
 "damit du weitere Einheiten rekrutieren kannst."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:866
-#, fuzzy
 msgid ""
 "You should leave the villages near your keep for $student to capture, as $he "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
-"Du solltest die Dörfer nahe dem Bergfried für $student zum einnehmen übrig "
-"lassen: $he muss sowieso in der Nähe bleiben, um weitere Einheiten zu "
+"Du solltest die Dörfer nahe dem Bergfried für $student zum Einnehmen übrig "
+"lassen, da $he sowieso in der Nähe bleiben muss, um weitere Einheiten zu "
 "rekrutieren."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:872
@@ -993,14 +983,13 @@ msgstr ""
 "Wald befindet."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:891
-#, fuzzy
 msgid ""
 "It's very dangerous to stand in water when there are enemies about!  Your "
 "unit would have an 80% chance of being hit when the Orc counter-attacks!  "
 "Cancel!"
 msgstr ""
 "Es ist sehr gefährlich, im Wasser zu stehen, wenn Feinde in der Nähe sind! "
-"Deine Einheit hätte eine 80% Wahrscheinlichkeit getroffen zu werden, wenn "
+"Deine Einheit hätte eine 80% Wahrscheinlichkeit, getroffen zu werden, wenn "
 "der Ork zurück angreift! Abbrechen!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:897
@@ -1012,13 +1001,12 @@ msgid "Fighter to Here"
 msgstr "Kämpfer hier her"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:910
-#, fuzzy
 msgid ""
 "Your other units cannot reach that Orc this turn.  Send a Fighter to that "
 "village to the far east: that will take two turns."
 msgstr ""
-"Deine anderen Einheiten können ihn diesen Zug nicht erreichen. Schick einen "
-"Kämpfer in das Dorf weit im Osten: Das wird zwei Züge dauern."
+"Deine anderen Einheiten können den Ork in diesen Zug nicht erreichen. Schicke "
+"einen Kämpfer in das Dorf weit im Osten: Das wird zwei Züge dauern."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:911
 msgid ""
@@ -1065,7 +1053,6 @@ msgid "Move $student to another (unowned) village"
 msgstr "Bewegt $student in eine weiteres (unbesetztes) Dorf"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:976
-#, fuzzy
 msgid ""
 "The Orc is blocking the bridge!  We must occupy that island before the wolf "
 "riders reach it."
@@ -1157,7 +1144,6 @@ msgstr ""
 "Dorf nahe dem Kanal bewegen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1093
-#, fuzzy
 msgid ""
 "We need to take that village, otherwise they will take it next turn!  Move "
 "your wounded unit to take it so it can heal, then kill that Orc!"
@@ -1198,7 +1184,6 @@ msgid "Defend here"
 msgstr "Verteidigt hier"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1122
-#, fuzzy
 msgid ""
 "Beware those Orcs crossing the river!  If they get into the forest they'll "
 "be hard to dislodge!"
@@ -1312,12 +1297,11 @@ msgstr ""
 "»Aktionen«-Menü auswählt."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1313
-#, fuzzy
 msgid ""
 "Level 2 units are powerful, but not invulnerable $student!  Goodbye, "
 "$deadguy.user_description|."
 msgstr ""
-"$student, Einheiten der Stufe 2 sind mächtig, aber nicht unverwundbar. Lebe "
+"Einheiten der Stufe 2 sind mächtig, aber nicht unverwundbar, $student! Lebe "
 "wohl, $deadguy.user_description|."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1328
@@ -1373,13 +1357,6 @@ msgstr ""
 "Schaden."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1545
-#, fuzzy
 msgid "You took too long, we'll never be rid of these Orcs!"
 msgstr "Du hast zu lange gebraucht, wir werden diese Orks nie los werden!"
 
-#~ msgid ""
-#~ "No!  I said RECRUIT a new Elvish Fighter, not a $recruit.type|!  Now try "
-#~ "again..."
-#~ msgstr ""
-#~ "Nein! Ich sagte BILDET einen neuen Elfenkämpfer AUS, nicht einen $recruit."
-#~ "type|! Versuche es erneut..."
