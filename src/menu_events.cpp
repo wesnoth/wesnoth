@@ -24,6 +24,7 @@
 #include "menu_events.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
+#include "sound.hpp"
 #include "unit_display.hpp"
 #include "unit_types.hpp"
 #include "wassert.hpp"
@@ -444,6 +445,8 @@ namespace events{
 
 			start.add_child("terrain_graphics", **tg);
 		}
+
+		sound::write_music_play_list(start);
 
 		write_game(gamestate_, start /*,WRITE_SNAPSHOT_ONLY*/);
 
