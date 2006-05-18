@@ -17,6 +17,7 @@
 class config;
 class gamestatus;
 class unit;
+class vconfig;
 
 #include "terrain.hpp"
 
@@ -71,6 +72,7 @@ public:
 		location() : x(-1), y(-1) {}
 		location(int x, int y) : x(x), y(y) {}
 		explicit location(const config& cfg);
+		explicit location(const vconfig& cfg);
 
 		void write(config& cfg) const;
 
@@ -99,6 +101,8 @@ public:
 		DIRECTION get_relative_dir(location loc) const;
 
 		static location null_location;
+	private:
+		void init(const std::string &x, const std::string &y);
 	};
 	typedef std::map<location,unit> unit_map;
 

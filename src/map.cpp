@@ -13,15 +13,16 @@
 
 #include "global.hpp"
 
+#include "actions.hpp"
 #include "config.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "pathutils.hpp"
 #include "util.hpp"
+#include "variable.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
-#include "actions.hpp"
 
 #include <algorithm>
 #include <cctype>
@@ -177,11 +178,8 @@ std::string gamemap::location::write_direction(gamemap::location::DIRECTION dir)
 	}
 }
 
-gamemap::location::location(const config& cfg) : x(-1), y(-1)
+void gamemap::location::init(const std::string &xstr, const std::string &ystr)
 {
-	const std::string& xstr = cfg["x"];
-	const std::string& ystr = cfg["y"];
-
 	//the co-ordinates in config files will be 1-based, while we
 	//want them as 0-based
 	if(xstr.empty() == false)
@@ -189,6 +187,16 @@ gamemap::location::location(const config& cfg) : x(-1), y(-1)
 
 	if(ystr.empty() == false)
 		y = atoi(ystr.c_str()) - 1;
+}
+
+gamemap::location::location(const config& cfg) : x(-1), y(-1)
+{
+	init(cfg["x"], cfg["y"]);
+}
+
+gamemap::location::location(const vconfig& cfg) : x(-1), y(-1)
+{
+	init(cfg["x"], cfg["y"]);
 }
 
 void gamemap::location::write(config& cfg) const

@@ -1739,7 +1739,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			events::pump();
 		}
 	} else if(cmd == "label") {
-		const gamemap::location loc(lexical_cast_default<int>(cfg["x"],-1),lexical_cast_default<int>(cfg["y"],-1));
+		const gamemap::location loc(cfg);
 		const std::string& text = cfg["text"];
 		screen->labels().set_label(loc,text);
 	}
