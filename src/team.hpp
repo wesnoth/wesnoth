@@ -75,7 +75,6 @@ public:
 		std::string save_id;
 		std::string countdown_time;
 		int action_bonus_count;
-		mutable int max_upkeep;
 
 		std::string flag;
 
@@ -121,8 +120,6 @@ public:
 
 	int gold() const;
 	int income() const;
-	void max_upkeep(int amount) const;
-	int get_max_upkeep() const;
 	void new_turn();
 	void set_time_of_day(int turn, const struct time_of_day& tod);
 	void get_shared_maps();

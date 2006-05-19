@@ -34,7 +34,7 @@ namespace {
 		"unit_alignment","unit_abilities","unit_hp","unit_xp",
 		"unit_advancement_options","unit_moves","unit_weapons",
 		"unit_image","unit_profile","time_of_day",
-		"turn","gold","villages","num_units","upkeep",
+		"turn","gold","villages","num_units","upkeep", "expenses",
 		"income", "terrain", "position", "side_playing", "observers",
 		"report_countdown", "report_clock",
 		"selected_terrain","edit_left_button_function"
@@ -348,7 +348,12 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	}
 	case UPKEEP: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
-		str << data.upkeep;
+		str << data.expenses << " (" << data.upkeep << ")";
+		break;
+	}
+	case EXPENSES: {
+		const team_data data = calculate_team_data(current_team,current_side,units);
+		str << data.expenses;
 		break;
 	}
 	case INCOME: {

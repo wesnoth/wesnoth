@@ -94,7 +94,6 @@ team::team_info::team_info(const config& cfg)
 	income = cfg["income"];
 	name = cfg["name"];
 	team_name = cfg["team_name"];
-	max_upkeep = lexical_cast_default<int>(cfg["max_upkeep"]);
 	if(team_name.empty()) {
 		team_name = cfg["side"];
 	}
@@ -242,15 +241,6 @@ team::team_info::team_info(const config& cfg)
 	music = cfg["music"];
 }
 
-void team::max_upkeep(int amount) const
-{
-	info_.max_upkeep = maximum<int>(info_.max_upkeep,amount);
-}
-int team::get_max_upkeep() const
-{
-	return info_.max_upkeep;
-}
-
 void team::team_info::write(config& cfg) const
 {
 	for(std::vector<config>::const_iterator ai = ai_params.begin(); ai != ai_params.end(); ++ai) {
@@ -261,7 +251,6 @@ void team::team_info::write(config& cfg) const
 
 	cfg["gold"] = gold;
 	cfg["income"] = income;
-	cfg["max_upkeep"] = lexical_cast_default<std::string>(max_upkeep);
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
 	cfg["save_id"] = save_id;

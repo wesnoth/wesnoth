@@ -404,7 +404,7 @@ unit_map::const_iterator find_visible_unit(const unit_map& units,
 
 struct team_data
 {
-	int units, upkeep, villages, net_income, gold;
+	int units, upkeep, villages, expenses, net_income, gold;
 };
 
 team_data calculate_team_data(const class team& tm, int side, const unit_map& units);
