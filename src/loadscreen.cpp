@@ -15,8 +15,7 @@
 #include "font.hpp"
 #include "marked-up_text.hpp"
 #include "gettext.hpp"
-#include "game_config.hpp"
-
+#include "filesystem.hpp"
 
 #include <iostream>
 
@@ -33,8 +32,7 @@ loadscreen::loadscreen(CVideo &screen, const int &percent):
 	pby_offset_(0),
 	prcnt_(percent)
 {
-	std::string path(game_config::path);
-	path += "/images/misc/logo.png";
+	std::string path = get_binary_file_location("images","misc/logo.png");
 	logo_surface_ = IMG_Load(path.c_str());
 		if (!logo_surface_) {
 			std::cerr << "loadscreen: Failed to load the logo: " << path << std::endl;
