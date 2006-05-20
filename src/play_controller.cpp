@@ -608,11 +608,44 @@ void play_controller::play_slice()
 	}
 }
 
+std::vector<std::string> play_controller::expand_menu(std::vector<std::string>& items)
+{
+	std::vector<std::string> savenames;
+	for (unsigned int i = 0; i < items.size(); i++) {
+		if (items[i] == "AUTOSAVES") {
+			items.erase(items.begin() + i);
+			std::vector<std::string> newitems;
+
+			for (unsigned int turn = status_.turn(); turn != 0; turn--) {
+				std::string name = _("Auto-Save") + lexical_cast<std::string>(turn);
+				if (save_game_exists(name)) {
+					savenames.push_back(name);
+					if (turn == 1) {
+						newitems.push_back(_("Back to start"));
+					} else {
+						newitems.push_back(_("Back to turn ") + lexical_cast<std::string>(turn));
+					}
+					if (newitems.size() == 5)
+						break;
+				}
+			}
+			items.insert(items.begin()+i, newitems.begin(), newitems.end());
+			break;
+		}
+		savenames.push_back("");
+	}
+	return savenames;
+}
+
 void play_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
 {
 	std::vector<std::string> items = items_arg;
 	hotkey::HOTKEY_COMMAND command;
 	for(std::vector<std::string>::iterator i = items.begin(); i != items.end();){
+		if (*i == "AUTOSAVES") {
+			i++;
+			continue;
+		}
 		command = hotkey::get_hotkey(*i).get_id();
 		if (!can_execute_command(command) || (context_menu && !in_context_menu(command))){
 			i = items.erase(i);
@@ -620,10 +653,11 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 		else{ i++; }
 	}
 
+	std::vector<std::string> savenames = expand_menu(items);
 	if(items.empty())
 		return;
 
-	command_executor::show_menu(items, xloc, yloc, context_menu, *gui_);
+	command_executor::show_menu(items, xloc, yloc, context_menu, *gui_, savenames);
 }
 
 // Indicates whether the command should be in the context menu or not.

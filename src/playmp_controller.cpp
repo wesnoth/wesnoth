@@ -13,6 +13,8 @@
 
 #include "playmp_controller.hpp"
 
+#include "game_errors.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "sound.hpp"
 
@@ -65,6 +67,8 @@ void playmp_controller::before_human_turn(){
 
 	turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
 		*gui_,map_,teams_,player_number_,units_,replay_sender_);
+
+	menu_handler_.autosave(status_.turn(), gamestate_.starting_pos);
 }
 
 void playmp_controller::play_human_turn(){

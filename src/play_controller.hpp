@@ -136,6 +136,10 @@ protected:
 	unsigned int start_turn_;
 	bool skip_replay_;
 	bool browse_;
+
+private:
+	// Expand AUTOSAVES in the menu items, returning real names.
+	std::vector<std::string> expand_menu(std::vector<std::string>& items);
 };
 
 

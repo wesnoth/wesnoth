@@ -108,6 +108,8 @@ public:
 	void do_search(const std::string& new_search);
 	void do_command(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler);
 	void clear_undo_stack(const unsigned int team_num);
+	void autosave(unsigned turn, const config &starting_pos) const;
+
 protected:
 	void add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type=display::MESSAGE_PRIVATE);
 	void send_chat_message(const std::string& message, bool allies_only=false);

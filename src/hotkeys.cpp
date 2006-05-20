@@ -20,6 +20,7 @@
 #include "events.hpp"
 #include "hotkeys.hpp"
 #include "game_config.hpp"
+#include "game_errors.hpp"
 #include "gettext.hpp"
 #include "menu_events.hpp"
 #include "preferences_display.hpp"
@@ -800,7 +801,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 	}
 }
 
-void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool /*context_menu*/, display& gui)
+void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool /*context_menu*/, display& gui, const std::vector<std::string>& savenames)
 {
 	std::vector<std::string> items = items_arg;
 	if (can_execute_command(hotkey::get_hotkey(items.front()).get_id())){
@@ -819,6 +820,11 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 			return;
 
 		const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();
+		// Fake entries: they want us to load a specific autosave.
+		if (cmd == hotkey::HOTKEY_NULL && res < savenames.size() && !savenames[(unsigned)res].empty()) {
+			throw game::load_game_exception(savenames[(unsigned)res],false);
+		}
+
 		hotkey::execute_command(gui,cmd,this);
 	}
 }
@@ -846,7 +852,11 @@ std::vector<std::string> command_executor::get_menu_images(const std::vector<std
 			str << IMAGE_PREFIX << img << COLUMN_SEPARATOR;
 		}
 
-		str << hk.get_description() << COLUMN_SEPARATOR << hk.get_name();
+		if (hk.get_id() == hotkey::HOTKEY_NULL) {
+			str << *i << COLUMN_SEPARATOR;
+		} else {
+			str << hk.get_description() << COLUMN_SEPARATOR << hk.get_name();
+		}
 
 		result.push_back(str.str());
 	}
