@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-19 17:43+0200\n"
-"PO-Revision-Date: 2006-05-16 20:54+0200\n"
+"PO-Revision-Date: 2006-05-20 00:52+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -134,7 +134,6 @@ msgid "skirmisher"
 msgstr "stigfinnare"
 
 #: data/abilities.cfg:306
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -142,8 +141,7 @@ msgid ""
 msgstr ""
 "Stigfinnare:\n"
 "Denna trupp finner vägar förbi fienden, och hindras därmed inte av fiendens "
-"kontrollzoner. (Undantag: om en stigfinnande trupp placeras i en fiendes "
-"kontrollzon så förlorar den sin återstående förflyttning.)"
+"kontrollzoner."
 
 #: data/abilities.cfg:317
 msgid "illuminates"
@@ -2955,7 +2953,6 @@ msgstr ""
 "underhåll."
 
 #: data/help.cfg:236
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2967,9 +2964,9 @@ msgstr ""
 "\n"
 "\n"
 "Inkomst är enkelt. Du har två guldstycken per drag i grundinkomst. För varje "
-"by du kontrollerar får du ytterligare två guldstycken per drag. Alltså, om "
-"du har fem byar, får du vanligtvis tolv guldstycken. Din kostnad för "
-"underhåll dras från denna inkomst, såsom beskrivs nedan."
+"by du kontrollerar får du ytterligare ett guldstycke per drag. Alltså, om du "
+"har tio byar, får du vanligtvis tolv guldstycken. Din kostnad för underhåll "
+"dras från denna inkomst, såsom beskrivs nedan."
 
 #: data/help.cfg:238
 msgid ""
@@ -2982,9 +2979,17 @@ msgid ""
 "per turn. For example, if you have twelve level one units and ten villages, "
 "you would have to pay two gold each turn in upkeep."
 msgstr ""
+"\n"
+"\n"
+"Underhåll är också ganska lätt att förstå. Varje trupp kräver ett underhåll "
+"som är lika med truppens nivå. Så länge dina egna trupper har en sammanlagd "
+"nivå som är lägre än eller lika med antalet byar du kontrollerar, så dras "
+"ingen underhållskostnad. För varje nivå utöver antalet kontrollerade byar "
+"utkrävs dock en underhållskostnad på ett guldstycke per drag. Exempel: om du "
+"har ett antal trupper som tillsammans har 12 erfarenhetsnivåer, och om du "
+"kontrollerar 10 byar, så utkrävs två guldstycken per drag i underhåll."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2995,8 +3000,8 @@ msgstr ""
 "\n"
 "\n"
 "De kostnader som underhållet utgör dras från din inkomst, vilket innebär att "
-"om du har trupper med sammanlagt sju nivåer samt fem byar så blir din "
-"inkomst 5 guldstycken per drag."
+"om du har trupper med sammanlagt tolv nivåer samt tio byar så blir din "
+"inkomst 10 guldstycken per drag."
 
 #: data/help.cfg:241
 msgid ""
@@ -3141,9 +3146,8 @@ msgid "Resilient"
 msgstr "Tålig"
 
 #: data/help.cfg:291
-#, fuzzy
 msgid "Resilient units have 10% +3 more HP than usual."
-msgstr "Tåliga trupper har 7 hälsopoäng mer än vanligt."
+msgstr "Tåliga trupper har 10% +3 mer hälsopoäng än vanligt."
 
 #: data/help.cfg:293
 msgid ""
@@ -3168,12 +3172,11 @@ msgid "Strong"
 msgstr "Stark"
 
 #: data/help.cfg:299
-#, fuzzy
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
-"Starka trupper vållar 1 mer skada per träff i närstrid och har 2 mer "
+"Starka trupper vållar 1 mer skada per träff i närstrid och har 1 mer "
 "hälsopoäng."
 
 #: data/help.cfg:301
@@ -4367,7 +4370,7 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:36
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:37
 msgid "Sulla's statue"
-msgstr ""
+msgstr "Sullas staty"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -11565,17 +11568,3 @@ msgstr "Du kan se resultaten på:"
 #: src/upload_log.cpp:284
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjälp oss att förbättra Wesnoth!"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Upkeep is also fairly simple. Each unit requires an amount of Upkeep "
-#~ "equal to its level. For example, if you have five level one units and one "
-#~ "level two unit, all your upkeep would cost 7 gold each turn."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Underhåll är också ganska lätt att förstå. Varje trupp kräver ett "
-#~ "underhåll som är lika med truppens nivå. Om du till exempel har fem "
-#~ "trupper på nivå 1 och en trupp på nivå 2, så blir din underhållskostnad 7 "
-#~ "guld per drag."
