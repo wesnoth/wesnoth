@@ -71,6 +71,7 @@ public:
 	const T& get_first_frame() const;
 	const T& get_last_frame() const;
 	int get_frames_count() const;
+	const bool does_not_change() const {return does_not_change_;}
 
 
 

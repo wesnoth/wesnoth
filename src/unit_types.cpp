@@ -617,6 +617,7 @@ unit_type::unit_type(const unit_type& o)
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
       death_animations_(o.death_animations_), movement_animations_(o.movement_animations_),
+      standing_animations_(o.standing_animations_),
       flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
@@ -825,6 +826,15 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	if(movement_animations_.empty()) {
 		movement_animations_.push_back(movement_animation(image()));
 		// always have a movement animation
+	}
+
+	const config::child_list& standing_anims = cfg_.get_children("standing_anim");
+	for(config::child_list::const_iterator standing_anim = standing_anims.begin(); standing_anim != standing_anims.end(); ++standing_anim) {
+		standing_animations_.push_back(standing_animation(**standing_anim));
+	}
+	if(standing_animations_.empty()) {
+		standing_animations_.push_back(standing_animation(image()));
+		// always have a standing animation
 	}
 
 	flag_rgb_ = string2rgb(cfg["flag_rgb"]);

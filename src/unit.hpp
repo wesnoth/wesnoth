@@ -246,6 +246,7 @@ class unit
 		const death_animation& die_animation(const std::string &terrain,
 				fighting_animation::hit_type hits,const attack_type* attack) const;
 		const movement_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
+		const standing_animation& stand_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		
 		bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
 		unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;
@@ -346,6 +347,8 @@ class unit
 		std::vector<death_animation> death_animations_;
 		
 		std::vector<movement_animation> movement_animations_;
+		
+		std::vector<standing_animation> standing_animations_;
 		unit_animation *anim_;
 		int frame_begin_time;
 		double offset_;

@@ -283,6 +283,7 @@ private:
 
 	std::vector<movement_animation> movement_animations_;
 
+	std::vector<standing_animation> standing_animations_;
     std::vector<Uint32> flag_rgb_;
 };
 
