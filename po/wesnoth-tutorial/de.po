@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-19 17:44+0200\n"
-"PO-Revision-Date: 2006-05-16 13:16-0500\n"
+"PO-Revision-Date: 2006-05-20 11:08-0500\n"
 "Last-Translator: Gerfried Fuchs <alfie@ist.org>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -251,7 +251,6 @@ msgid "Click on the village to move $student"
 msgstr "Klickt auf das Dorf, um $student zu bewegen"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:472
-#, fuzzy
 msgid ""
 "You now 'own' this village: you can see it flies your flag, and soon a '1' "
 "will appear next to the house icon at the top of screen.  Villages give "
@@ -260,7 +259,7 @@ msgid ""
 msgstr ""
 "Ihr »besitzt« nun dieses Dorf: Ihr seht eure Flagge wehen, und gleich wird "
 "eine »1« neben dem Haus-Symbol oben am Schirm auftauchen. Dörfer bringen "
-"Gold: Jeden Zug erhaltet Ihr zwei Gold, plus zwei für jedes Dorf, das ihr "
+"Gold: Jeden Zug erhaltet Ihr zwei Gold, plus eines für jedes Dorf, das ihr "
 "besitzt.\n"
 "*Klickt mit Links oder drückt eine Taste um fortzufahren..."
 
@@ -489,6 +488,9 @@ msgid ""
 "Each village you own can support a single unit for free.  After that, each "
 "unit costs you one gold per turn."
 msgstr ""
+"Anmerkung:\n"
+"Jedes Dorf, das Ihr besitzt, kann eine einzelne Einheit umsonst unterhalten. "
+"Jede weitere Einheit darüber hinaus kostet Euch ein Gold pro Zug."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:816
 msgid ""
@@ -940,12 +942,11 @@ msgid "Elindel"
 msgstr "Elindel"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:844
-#, fuzzy
 msgid ""
 "You've learned well, $student|!  The village supports one unit, and pays one "
 "gold per turn: you're only losing 1 gold per turn now."
 msgstr ""
-"Du hast gut gelernt, $student|! Das Dorf zahlt zwei Gold pro Zug: Du "
+"Du hast gut gelernt, $student|! Das Dorf unterhält eine Einheit und zahlt ein Gold pro Zug: Du "
 "verlierst jetzt nur noch 1 Gold pro Zug."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:845
