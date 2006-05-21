@@ -161,6 +161,20 @@ protected:
 	}
 };
 
+std::vector<std::string> get_available_ais()
+{
+    std::vector<std::string> ais;
+    ais.push_back("default");
+    ais.push_back("sample_ai");
+    //ais.push_back("idle_ai");
+    //ais.push_back("dfool_ai");
+#ifdef HAVE_PYTHON
+    std::vector<std::string> scripts = python_ai::get_available_scripts();
+    ais.insert(ais.end(), scripts.begin(), scripts.end());
+#endif
+    return ais;
+}
+
 ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 {
 	//to add an AI of your own, put
@@ -182,7 +196,10 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 #ifdef HAVE_PYTHON
 		return new python_ai(info);
 #else
+    {
+		LOG_STREAM(err, ai) << "Python AI is not available!\n";
 		return new ai2(info);
+    }
 #endif
 	else if(name != "")
 		LOG_STREAM(err, ai) << "AI not found: '" << name << "'\n";

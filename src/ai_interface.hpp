@@ -157,6 +157,8 @@ private:
 	events::generic_event enemy_attacked_;
 };
 
+///this function returns all currently available AIs
+std::vector<std::string> get_available_ais();
 ///this function is used to create a new AI object with the specified algorithm name
 ai_interface* create_ai(const std::string& algorithm_name, ai_interface::info& info);
 

@@ -51,6 +51,7 @@ public:
 
 	static bool is_unit_valid(const unit* unit, bool do_set_error = true);
 	std::vector<team>& get_teams() { return get_info().teams; }
+    static std::vector<std::string> get_available_scripts();
 protected:
 	static bool init_;
 	static PyObject* python_error_;

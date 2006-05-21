@@ -89,6 +89,7 @@ public:
 	private:
 		void update_controller_ui();
 		void update_ui();
+		void update_ai_algorithm_combo();
 
 		// The mp::connect widget owning this mp::connect::side. Used
 		// in the constructor, must be first.
@@ -107,12 +108,14 @@ public:
 		int gold_;
 		int income_;
 		std::string leader_;
+		std::string ai_algorithm_;
 		//bool taken_;
 
 		// Widgets for this side
 		gui::label player_number_;
 		gui::combo combo_controller_;
 		gui::label orig_controller_;
+		gui::combo combo_ai_algorithm_;
 		gui::combo combo_faction_;
 		gui::combo combo_leader_;
 		gui::combo combo_team_;
@@ -208,6 +211,7 @@ private:
 	std::vector<std::string> player_factions_;
 	std::vector<std::string> player_teams_;
 	std::vector<std::string> player_colours_;
+	std::vector<std::string> ai_algorithms_;
 
 	// team_name list and "Team" prefix
 	std::vector<std::string> team_names_;

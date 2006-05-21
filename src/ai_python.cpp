@@ -42,6 +42,8 @@ Additionally, useful utility functions such as those found in pathutils.hpp shou
 #include "gamestatus.hpp"
 #include "filesystem.hpp"
 
+#include <fstream>
+
 static python_ai* running_instance;
 bool python_ai::init_ = false;
 PyObject* python_ai::python_error_ = NULL;
@@ -1387,6 +1389,30 @@ void python_ai::play_turn()
     Py_XDECREF(ret);
     Py_DECREF(dict);
 	Py_DECREF(file);
+}
+
+// Finds all python AI scripts available in the current binary path.
+// They have to end with .py, and have #!WPY as first line.
+std::vector<std::string> python_ai::get_available_scripts()
+{
+    std::vector<std::string> scripts;
+    const std::vector<std::string>& paths = get_binary_paths("data");
+    for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
+        std::vector<std::string> files;
+        get_files_in_dir(*i + "ais", &files, NULL, ENTIRE_FILE_PATH);
+        for(std::vector<std::string>::const_iterator j = files.begin(); j != files.end(); ++j) {
+            // file ends with .py
+            if (j->substr(j->length() - 3) == ".py") {
+                std::string name(j->substr(j->rfind("/") + 1)); // extract name
+                // read first line
+                std::ifstream s(j->c_str()); std::string mark; s >> mark; s.close();
+                if (mark == "#!WPY" &&
+                    std::find(scripts.begin(), scripts.end(), name) == scripts.end())
+                    scripts.push_back(name);
+            }
+        }
+    }
+    return scripts;
 }
 
 #endif // HAVE_PYTHON

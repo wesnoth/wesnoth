@@ -24,6 +24,7 @@
 #include "show_dialog.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
+#include "ai.hpp"
 
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
@@ -52,6 +53,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	               font::SIZE_LARGE, font::LOBBY_COLOUR),
 	combo_controller_(parent.disp(), parent.player_types_),
 	orig_controller_(parent.video(), cfg["description"], font::SIZE_SMALL),
+	combo_ai_algorithm_(parent.disp(), std::vector<std::string>()),
 	combo_faction_(parent.disp(), parent.player_factions_),
 	combo_leader_(parent.disp(), std::vector<std::string>()),
 	combo_team_(parent.disp(), parent.player_teams_),
@@ -107,6 +109,11 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	colour_ = lexical_cast_default<int>(cfg_["colour"], index_ + 1) - 1;
 	gold_ = lexical_cast_default<int>(cfg_["gold"], 100);
 	income_ = lexical_cast_default<int>(cfg_["income"], 0);
+	config *ai = cfg_.child("ai");
+	if (ai)
+        ai_algorithm_ = lexical_cast_default<std::string>((*ai)["ai_algorithm"], "default");
+    else
+        ai_algorithm_ = "default";
 
 	// "Faction name" hack
 	if (!enabled_) {
@@ -152,8 +159,10 @@ connect::side::side(const side& a) :
 	controller_(a.controller_),
 	faction_(a.faction_), team_(a.team_), colour_(a.colour_),
 	gold_(a.gold_), income_(a.income_), leader_(a.leader_), /* taken_(a.taken_), */
+	ai_algorithm_(a.ai_algorithm_),
 	player_number_(a.player_number_), combo_controller_(a.combo_controller_),
 	orig_controller_(a.orig_controller_),
+	combo_ai_algorithm_(a.combo_ai_algorithm_),
 	combo_faction_(a.combo_faction_), combo_leader_(a.combo_leader_),
 	combo_team_(a.combo_team_), combo_colour_(a.combo_colour_),
 	slider_gold_(a.slider_gold_), slider_income_(a.slider_income_),
@@ -168,6 +177,7 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 	pane.add_widget(&player_number_, 0, 5 + pos);
 	pane.add_widget(&combo_controller_, 20, 5 + pos);
 	pane.add_widget(&orig_controller_, 20 + (combo_controller_.width() - orig_controller_.width()) / 2, 35 + pos + (combo_leader_.height() - orig_controller_.height()) / 2);
+	pane.add_widget(&combo_ai_algorithm_, 20, 35 + pos);
 	pane.add_widget(&combo_faction_, 135, 5 + pos);
 	pane.add_widget(&combo_leader_, 135, 35 + pos);
 	pane.add_widget(&combo_team_, 250, 5 + pos);
@@ -220,6 +230,7 @@ void connect::side::process_event()
 				changed_ = true;
 			}
 		}
+		update_ai_algorithm_combo();
 	}
 
 	if(!enabled_)
@@ -228,6 +239,10 @@ void connect::side::process_event()
 	if (combo_faction_.changed() && combo_faction_.selected() >= 0) {
 		faction_ = combo_faction_.selected();
 		llm_.update_leader_list(faction_);
+		changed_ = true;
+	}
+	if (combo_ai_algorithm_.changed() && combo_ai_algorithm_.selected() >= 0) {
+		ai_algorithm_ = parent_->ai_algorithms_[combo_ai_algorithm_.selected()];
 		changed_ = true;
 	}
 	if (combo_leader_.changed() && combo_leader_.selected() >= 0) {
@@ -288,6 +303,28 @@ void connect::side::update_controller_ui()
 		}
 	}
 
+    update_ai_algorithm_combo();
+}
+
+void connect::side::update_ai_algorithm_combo()
+{
+    combo_ai_algorithm_.enable(controller_ == CNTR_COMPUTER);
+    if (combo_ai_algorithm_.enabled()) {
+        combo_ai_algorithm_.set_items(parent_->ai_algorithms_);
+
+        for (unsigned int i = 0; i < parent_->ai_algorithms_.size(); i++) {
+            if (parent_->ai_algorithms_[i] == ai_algorithm_) {
+                combo_ai_algorithm_.set_selected(i);
+                break;
+            }
+        }
+    }
+    else {
+        std::vector<std::string> emptylist;
+        emptylist.push_back("-");
+        combo_ai_algorithm_.set_items(emptylist);
+        combo_ai_algorithm_.set_selected(0);
+    }
 }
 
 void connect::side::update_ui()
@@ -345,6 +382,21 @@ config connect::side::get_config() const
 		case CNTR_COMPUTER:
 			if(enabled_ && cfg_["save_id"].empty()) {
 				res["save_id"] = "ai" + res["side"].str();
+			}
+			{
+                config *ai = res.child("ai");
+                if (!ai) ai = &res.add_child("ai");
+#ifdef HAVE_PYTHON
+                if (ai_algorithm_.substr(ai_algorithm_.length() - 3) == ".py") {
+                    (*ai)["ai_algorithm"] = "python_ai";
+                    (*ai)["python_script"] = ai_algorithm_;
+                }
+                else
+#endif
+                {
+                    if (ai_algorithm_ != "default")
+                        (*ai)["ai_algorithm"] = ai_algorithm_;
+                }
 			}
 			description = N_("Computer player");
 			break;
@@ -951,6 +1003,9 @@ void connect::lists_init()
 	for(std::vector<config*>::const_iterator faction = era_sides_.begin(); faction != era_sides_.end(); ++faction) {
 		player_factions_.push_back((**faction)["name"]);
 	}
+
+	//AI algorithms
+    ai_algorithms_ = get_available_ais();
 
 	//Factions
 	const config::child_itors sides = level_.child_range("side");
