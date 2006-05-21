@@ -27,6 +27,47 @@
 #include <cstdlib>
 #include <iostream>
 
+config unit_animation::prepare_animation(const config &cfg,const std::string animation_tag)
+{
+	config expanded_animations;
+	config::const_child_itors all_anims = cfg.child_range(animation_tag);
+	config::const_child_iterator current_anim;
+	for(current_anim = all_anims.first; current_anim != all_anims.second ; current_anim++) {
+		std::vector<config> new_animation;
+		new_animation.push_back(**current_anim);
+		while(!new_animation.empty()) {
+			const config analyzed_anim = new_animation.back();
+			new_animation.pop_back();
+			config::all_children_iterator child = analyzed_anim.ordered_begin();
+			config expanded_anim;
+			config stored_anim;
+			expanded_anim.values =  analyzed_anim.values;
+			stored_anim.values =  analyzed_anim.values;
+			for(/*nothing*/; child != analyzed_anim.ordered_end() ; child++) {
+				if(*(*child).first == "if") {
+					// add the content of if
+					expanded_anim.append(*(*child).second);
+					config to_add = analyzed_anim;
+					config::all_children_iterator sub_child = child;
+					sub_child++;
+					if(*(*sub_child).first == "else") {
+						// add the content of else to the stored one
+						stored_anim.add_child(*(*sub_child).first,*(*sub_child).second);
+						// store the partially expanded string for later analyzis
+						new_animation.push_back(stored_anim);
+					}
+
+				} else {
+					// add the current node
+					expanded_anim.add_child(*(*child).first,*(*child).second);
+					stored_anim.add_child(*(*child).first,*(*child).second);
+				}
+			}
+			expanded_animations.add_child(animation_tag,expanded_anim);
+		}
+	}
+	return expanded_animations;
+}
 unit_frame::unit_frame(const config& cfg)
 {
 	xoffset = atoi(cfg["xoffset"].c_str());

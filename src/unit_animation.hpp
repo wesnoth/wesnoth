@@ -24,9 +24,12 @@
 
 #include "unit_frame.hpp"
 
+
+
 class unit_animation:public animated<unit_frame> 
 {
 	public:
+		static config prepare_animation(const config &cfg,const std::string animation_tag);
 
 		unit_animation(){};
 		explicit unit_animation(const config& cfg,const std::string frame_string ="frame");

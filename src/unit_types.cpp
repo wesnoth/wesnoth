@@ -36,7 +36,8 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 	} else {
 		range_type_ = SHORT_RANGE;
 	}
-	const config::child_list& animations = cfg.get_children("animation");
+	const config expanded_cfg = unit_animation::prepare_animation(cfg,"animation");
+	const config::child_list& animations = expanded_cfg.get_children("animation");
 	for(config::child_list::const_iterator d = animations.begin(); d != animations.end(); ++d) {
 		animation_.push_back(attack_animation(**d));
 	}
@@ -767,7 +768,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	experience_needed_=lexical_cast_default<int>(cfg_["experience"],500);
 
-	const config::child_list& defends = cfg_.get_children("defend");
+	config expanded_cfg = unit_animation::prepare_animation(cfg,"defend");
+	const config::child_list& defends = expanded_cfg.get_children("defend");
 	for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
 		defensive_animations_.push_back(defensive_animation(**d));
 	}
@@ -791,7 +793,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 
 
-	const config::child_list& teleports = cfg_.get_children("teleport_anim");
+	expanded_cfg = unit_animation::prepare_animation(cfg,"teleport_anim");
+	const config::child_list& teleports = expanded_cfg.get_children("teleport_anim");
 	for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
 		teleport_animations_.push_back(unit_animation(**t));
 	}
@@ -799,14 +802,16 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		teleport_animations_.push_back(unit_animation(image(),-20,20));
 		// always have a defensive animation
 	}
-	const config::child_list& extra_anims = cfg_.get_children("extra_anim");
+	expanded_cfg = unit_animation::prepare_animation(cfg,"extra_anim");
+	const config::child_list& extra_anims = expanded_cfg.get_children("extra_anim");
 	{
 		for(config::child_list::const_iterator t = extra_anims.begin(); t != extra_anims.end(); ++t) {
 			extra_animations_.insert(std::pair<std::string,unit_animation>((**t)["flag"],unit_animation(**t)));
 		}
 	}
 
-	const config::child_list& deaths = cfg_.get_children("death");
+	expanded_cfg = unit_animation::prepare_animation(cfg,"death");
+	const config::child_list& deaths = expanded_cfg.get_children("death");
 	for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
 		death_animations_.push_back(death_animation(**death));
 	}
@@ -815,7 +820,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		// always have a defensive animation
 	}
 
-	const config::child_list& movement_anims = cfg_.get_children("movement_anim");
+	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
+	const config::child_list& movement_anims = expanded_cfg.get_children("movement_anim");
 	for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
 		movement_animations_.push_back(movement_animation(**movement_anim));
 	}
@@ -828,7 +834,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		// always have a movement animation
 	}
 
-	const config::child_list& standing_anims = cfg_.get_children("standing_anim");
+	expanded_cfg = unit_animation::prepare_animation(cfg,"standing_anim");
+	const config::child_list& standing_anims = expanded_cfg.get_children("standing_anim");
 	for(config::child_list::const_iterator standing_anim = standing_anims.begin(); standing_anim != standing_anims.end(); ++standing_anim) {
 		standing_animations_.push_back(standing_animation(**standing_anim));
 	}
