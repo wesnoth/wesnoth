@@ -1760,6 +1760,27 @@ void unit::set_facing(gamemap::location::DIRECTION dir)
 	facing_ = dir;
 }
 
+std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
+{
+	std::set<gamemap::location> over;
+
+	switch (state()) {
+	case STATE_STANDING:
+		if (draw_bars_) {
+			over.insert(loc.get_direction(gamemap::location::NORTH_WEST));
+		}
+		break;
+	default:
+		gamemap::location arr[6];
+		get_adjacent_tiles(loc, arr);
+		for (unsigned int i = 0; i < 6; i++) {
+			over.insert(arr[i]);
+		}
+	}
+
+	return over;
+}
+
 const t_string& unit::traits_description() const
 {
 	return traits_description_;
