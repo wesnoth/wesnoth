@@ -497,7 +497,7 @@ int main (int argc, char **argv)
     [AC_MSG_RESULT(yes)],
     [AC_MSG_RESULT(no)]
     [AC_MSG_ERROR([*** Please upgrade your SDL version])],
-    [AC_MSG_RESULT[not tested in cross-compiling]])
+    [AC_MSG_RESULT([not tested in cross-compiling])])
     rm -f conf.sdltest
 
     CFLAGS="$ac_save_CFLAGS"
@@ -775,7 +775,7 @@ int main(int argc, char **argv)
 	[AC_MSG_RESULT(yes)],
 	[AC_MSG_RESULT(no)] 
 	[AC_MSG_ERROR([*** SDL_image has no PNG support! You need SDL_image with PNG support])],
-	[AC_MSG_RESULT[not tested in cross-compiling]])
+	[AC_MSG_RESULT([not tested in cross-compiling])])
 
 CPPFLAGS=$OLD_CPPFLAGS
 CFLAGS=$OLD_CFLAGS
@@ -816,7 +816,7 @@ if test "x$lite" = "xno"; then
 	[AC_MSG_RESULT(yes)],
 	[AC_MSG_RESULT(no)]
 	[AC_MSG_ERROR([*** SDL_mixer has no OGG support! You need SDL_mixer with OGG support])],
-	[AC_MSG_RESULT[not tested in cross-compiling]])
+	[AC_MSG_RESULT([not tested in cross-compiling])])
 
 
         CPPFLAGS=$OLD_CPPFLAGS
