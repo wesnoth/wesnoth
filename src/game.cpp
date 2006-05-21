@@ -1821,6 +1821,12 @@ int play_game(int argc, char** argv)
 
 int main(int argc, char** argv)
 {
+#ifdef OS2 /* required for SDL_GetTicks to work on OS/2 */
+        if ( SDL_Init(SDL_INIT_TIMER) < 0 ) {
+		fprintf(stderr, "Couldn't initialize SDL: %s\n",SDL_GetError());
+		return(1);
+	}
+#endif
 	try {
 		std::cerr << "Battle for Wesnoth v" << VERSION << "\n";
 		time_t t = time(NULL);
@@ -1829,6 +1835,9 @@ int main(int argc, char** argv)
 		std::cerr << "started game: " << SDL_GetTicks() << "\n";
 		const int res = play_game(argc,argv);
 		std::cerr << "exiting with code " << res << "\n";
+#ifdef OS2 /* required to correctly shutdown SDL on OS/2 */
+	        SDL_Quit();
+#endif
 		return res;
 	} catch(CVideo::error&) {
 		std::cerr << "Could not initialize video. Exiting.\n";
