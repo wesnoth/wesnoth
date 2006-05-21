@@ -1178,13 +1178,22 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 
 	std::vector<std::string> items;
 
-	// Not every weapon gets included in bc_vector (attack_weight must be non-zero)
 	std::vector<battle_context> bc_vector;
-	int best = best_attack_weapon(map_, teams_, units_, status_, gameinfo_, attacker->first, defender->first, bc_vector);
+	unsigned int i, best = 0;
+	for (i = 0; i < attacker->second.attacks().size(); i++) {
+		// skip weapons with attack_weight=0
+		if (attacker->second.attacks()[i].attack_weight() > 0) {
+			battle_context bc(map_, teams_, units_, status_, gameinfo_, attacker->first, defender->first, i);
+			bc_vector.push_back(bc);
+			if (bc.better_attack(bc_vector[best], 0.5)) {
+				best = i;
+			}
+		}
+	}
 
 	for (unsigned int i = 0; i < bc_vector.size(); i++) {
-		const battle_context::unit_stats& att = battle_context::unit_stats(bc_vector[i].get_attacker_stats());
-		const battle_context::unit_stats& def = battle_context::unit_stats(bc_vector[i].get_defender_stats());
+		const battle_context::unit_stats& att = bc_vector[i].get_attacker_stats();
+		const battle_context::unit_stats& def = bc_vector[i].get_defender_stats();
 		config tmp_config;
 		attack_type no_weapon(tmp_config, "fake_attack", "");
 		const attack_type& attw = attack_type(*att.weapon);
@@ -1197,7 +1206,7 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 			special_pad = " ";
 
 		std::stringstream atts;
-		if ((int)i == best) {
+		if (i == best) {
 			atts << DEFAULT_ITEM;
 		}
 		atts << IMAGE_PREFIX << attw.icon() << COLUMN_SEPARATOR

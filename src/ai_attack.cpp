@@ -228,7 +228,7 @@ void ai::do_attack_analysis(
 
 			cur_analysis.is_surrounded = is_surrounded;
 
-			cur_analysis.analyze(map_, units_, teams_, state_, gameinfo_, *this, dstsrc, srcdst, enemy_dstsrc);
+			cur_analysis.analyze(map_, units_, teams_, state_, gameinfo_, *this, dstsrc, srcdst, enemy_dstsrc, current_team().aggression());
 
 			if(cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
 
@@ -284,7 +284,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 								  const gamestatus& status, const game_data& gamedata,
 								  class ai& ai_obj,
                                   const move_map& dstsrc, const move_map& srcdst,
-                                  const move_map& enemy_dstsrc)
+                                  const move_map& enemy_dstsrc, double aggression)
 {
 	const unit_map::const_iterator defend_it = units.find(target);
 	wassert(defend_it != units.end());
@@ -349,20 +349,18 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 			uses_leader = true;
 			leader_threat = false;
 		}
-		std::vector<battle_context> bc_vector;
-		int weapon = best_attack_weapon(map, teams, units, status, gamedata, m->second,
-										target, bc_vector);
+		battle_context bc(map, teams, units, status, gamedata, m->second, target, -1, 1.0 - aggression, prev_def);
+		const combatant &att = bc.get_attacker_combatant();
+		const combatant &def = bc.get_defender_combatant();
 
-		wassert(weapon != -1);
-		weapons.push_back(weapon);
-		combatant att(bc_vector[weapon].get_attacker_stats());
-		combatant *def = new combatant(bc_vector[weapon].get_defender_stats(), prev_def);
 		delete prev_def;
-		prev_def = def;
+		prev_def = new combatant(def);
 
-		att.fight(*def);
-		double prob_killed = def->hp_dist[0] - prob_dead_already;
-		prob_dead_already = def->hp_dist[0];
+		weapons.push_back(bc.get_attacker_stats().attack_num);
+
+		// FIXME: add combatant.prob_killed
+		double prob_killed = def.hp_dist[0] - prob_dead_already;
+		prob_dead_already = def.hp_dist[0];
 
 		avg_damage_taken += att_u.hitpoints() - att.average_hp();
 
@@ -378,7 +376,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 			avg_damage_taken -= game_config::poison_amount*2;
 		}
 
-		terrain_quality += (double(bc_vector[weapon].get_defender_stats().chance_to_hit)/100.0)*cost * (on_village ? 0.5 : 1.0);
+		terrain_quality += (double(bc.get_defender_stats().chance_to_hit)/100.0)*cost * (on_village ? 0.5 : 1.0);
 
 		//the reward for advancing a unit is to get a 'negative' loss of that unit
 		if (!att_u.advances_to().empty()) {
@@ -396,7 +394,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 			//the reward for killing with a unit that
 			//plagues is to get a 'negative' loss of that unit
-			if (bc_vector[weapon].get_attacker_stats().plagues) {
+			if (bc.get_attacker_stats().plagues) {
 				avg_losses -= prob_killed * att_u.cost();
 			}
 		}
@@ -406,7 +404,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		def_avg_experience += att_u.level() *
 			(1.0 - att.hp_dist[0] + game_config::kill_experience * att.hp_dist[0]);
 		if (m == movements.begin()) {
-			first_chance_kill = def->hp_dist[0];
+			first_chance_kill = def.hp_dist[0];
 		}
 	}
 
@@ -421,6 +419,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		avg_damage_inflicted = defend_it->second.hitpoints() - prev_def->average_hp();
 	}
 
+	delete prev_def;
 	terrain_quality /= resources_used;
 
 	// Restore the units to their original positions.
@@ -740,10 +739,8 @@ bool ai::desperate_attack(const gamemap::location &loc)
 
 	// It's possible that there were no adjacent units to attack...
 	if (least_hp != u.hitpoints() + 1) {
-		std::vector<battle_context> bc_vector;
-		best_weapon = best_attack_weapon(map_, teams_, units_, state_, gameinfo_,
-										 loc, adj[best_dir], bc_vector);
-		attack_enemy(loc, adj[best_dir], best_weapon);
+		battle_context bc(map_, teams_, units_, state_, gameinfo_, loc, adj[best_dir], -1, 0.5);
+		attack_enemy(loc, adj[best_dir], bc.get_attacker_stats().attack_num);
 		return true;
 	}
 	return false;

@@ -821,7 +821,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 
 		const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();
 		// Fake entries: they want us to load a specific autosave.
-		if (cmd == hotkey::HOTKEY_NULL && res < savenames.size() && !savenames[(unsigned)res].empty()) {
+		if (cmd == hotkey::HOTKEY_NULL && (unsigned)res < savenames.size() && !savenames[(unsigned)res].empty()) {
 			throw game::load_game_exception(savenames[(unsigned)res],false);
 		}
 

@@ -17,6 +17,7 @@
 class display;
 class gamestatus;
 class replay;
+class combatant;
 
 #include "global.hpp"
 
@@ -95,10 +96,13 @@ public:
 		void dump() const;
 	};
 
+	// If no attacker_weapon is given, we select best one, based on
+	// harm_weight (1.0 means 1 hp lost counters 1 hp damage, 0.0
+	// means we ignore harm weight).  prev_def is for predicting multiple attacks against a defender.
 	battle_context(const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
 				   const gamestatus& status, const game_data& gamedata,
 				   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-				   unsigned int attacker_weapon);
+				   int attacker_weapon = -1, double harm_weight = 1.0, const combatant *prev_def = NULL);
 	
 	battle_context(const battle_context &other);
 	~battle_context() { delete attacker_stats_; delete defender_stats_; }
@@ -111,26 +115,35 @@ public:
 	// This method returns the statistics of the defender.
 	const unit_stats& get_defender_stats() const { return *defender_stats_; }
 
-	// How good is this weapon attacking?  Higher is better.  WML controls weighting factor.
-	unsigned int rate_attacker_weapon(double attack_weight) const;
+	// Get the simulation results.
+	const combatant &get_attacker_combatant(const combatant *prev_def = NULL);
+	const combatant &get_defender_combatant(const combatant *prev_def = NULL);
+
+	// Given this harm_weight, is this attack betteer than that?
+	bool better_attack(class battle_context &that, double harm_weight);
 
 private:
+	bool better_combat(const combatant &us_a, const combatant &them_a,
+					   const combatant &us_b, const combatant &them_b,
+					   double harm_weight);
 
-	// This method rates the defender weapon specified in 'd_stats', possibly taking into
-	// account the statistics of the attacker in the process ('a_stats'). The rating
-	// returned by the method must be non-negative.
-	int rate_defender_weapon(const unit_stats& a_stats, const unit_stats& d_stats);
+	unsigned int choose_attacker_weapon(const unit &attacker, const unit &defender,
+										const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
+										const gamestatus& status, const game_data& gamedata,
+										const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
+										double harm_weight, int *defender_weapon, const combatant *prev_def);
+
+	int choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
+							   const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
+							   const gamestatus& status, const game_data& gamedata,
+							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc, const combatant *prev_def);
 
 	// Statistics of the units.
 	unit_stats *attacker_stats_, *defender_stats_;
-};
 
-int best_attack_weapon(const gamemap& map, const std::vector<team>& teams,
-					   const std::map<gamemap::location,unit>& units,
-					   const gamestatus& status, const game_data& gamedata,
-					   const gamemap::location& attacker_loc,
-					   const gamemap::location& defender_loc,
-					   std::vector<battle_context> &bc_vector);
+	// Outcome of simulated fight.
+	combatant *attacker_combatant_, *defender_combatant_;
+};
 
 //attack: executes an attack.
 void attack(display& gui, const gamemap& map,

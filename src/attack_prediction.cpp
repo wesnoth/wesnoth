@@ -470,7 +470,7 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 
 };
 
-combatant::combatant(const battle_context::unit_stats &u, combatant *prev)
+combatant::combatant(const battle_context::unit_stats &u, const combatant *prev)
 	: hp_dist(u.drains ? u.max_hp+1: u.hp+1),
 	  u_(u),
 	  hit_chances_(u.num_blows, u.chance_to_hit / 100.0)

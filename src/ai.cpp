@@ -96,10 +96,10 @@ protected:
 	}
 
 	int choose_weapon(const location& attacker, const location& defender) {
-		std::vector<battle_context> bc_vector;
-		return best_attack_weapon(get_info().map, get_info().teams,
-								  get_info().units, get_info().state,
-								  get_info().gameinfo, attacker, defender, bc_vector);
+		battle_context bc(get_info().map, get_info().teams,
+						  get_info().units, get_info().state,
+						  get_info().gameinfo, attacker, defender, -1, current_team().aggression());
+		return bc.get_attacker_stats().attack_num;
 	}
 
 	void get_villages() {
@@ -577,10 +577,9 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 				const unit_map::const_iterator itor = units_.find(*adj_i);
 				if(itor != units_.end() && current_team().is_enemy(itor->second.side()) &&
 				   !itor->second.incapacitated()) {
-					std::vector<battle_context> bc_vector;
-					const int weapon = best_attack_weapon(map_, teams_, units_, state_,
-														  gameinfo_, res, *adj_i, bc_vector);
-					attack_enemy(res,itor->first,weapon);
+					battle_context bc(map_, teams_, units_, state_,
+									  gameinfo_, res, *adj_i, -1, current_team().aggression());
+					attack_enemy(res,itor->first,bc.get_attacker_stats().attack_num);
 					break;
 				}
 			}
@@ -1390,13 +1389,10 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 
 				if(enemy != units_.end() &&
 				   current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
-					std::vector<battle_context> bc_vector;
-					// FIXME: Must inform this we are cautious for weapon selection.
-					const int res = best_attack_weapon(map_, teams_, units_, state_, gameinfo_,
-													   arrived_at, adj[n], bc_vector);
 					//current behavior is to only make risk-free attacks
-					if (bc_vector[res].get_defender_stats().damage == 0) {
-						attack_enemy(arrived_at,adj[n],res);
+					battle_context bc(map_, teams_, units_, state_, gameinfo_, arrived_at, adj[n], -1, 100.0);
+					if (bc.get_defender_stats().damage == 0) {
+						attack_enemy(arrived_at,adj[n],bc.get_attacker_stats().attack_num);
 						break;
 					}
 				}

@@ -111,7 +111,7 @@ protected:
 					 const gamestatus& status, const game_data& gamedata,
 					 class ai& ai_obj,
 					 const move_map& dstsrc, const move_map& srcdst,
-					 const move_map& enemy_dstsrc);
+					 const move_map& enemy_dstsrc, double aggression);
 
 		double rating(double aggression, class ai& ai_obj) const;
 

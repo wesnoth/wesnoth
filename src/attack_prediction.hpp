@@ -12,7 +12,7 @@
 struct combatant
 {
 	// Construct a combatant.
-	combatant(const battle_context::unit_stats &u, combatant *prev = NULL);
+	combatant(const battle_context::unit_stats &u, const combatant *prev = NULL);
 
 	// Simulate a fight!  Can be called multiple times for cumulative calculations.
 	void fight(combatant &opponent);
