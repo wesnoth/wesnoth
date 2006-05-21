@@ -289,6 +289,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		missile_halo = 0;
 		missile_frame_halo = 0;
 		if(pos > 0.0 && pos < 1.0 && (!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
+			missile_animation.update_current_frame();
 			const unit_frame& missile_frame = missile_animation.get_current_frame();
 			std::string missile_image= missile_frame.image;
 			const int d = disp.hex_size() / 2;
@@ -305,6 +306,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 					sub_halo++;
 
 				}
+				sub_halo--; //correct frame is the previous one
+
 				if(sub_halo >= missile_frame.halo.size()) sub_halo = missile_frame.halo.size() -1;
 
 
