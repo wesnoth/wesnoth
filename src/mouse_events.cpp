@@ -1191,7 +1191,7 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 		}
 	}
 
-	for (unsigned int i = 0; i < bc_vector.size(); i++) {
+	for (i = 0; i < bc_vector.size(); i++) {
 		const battle_context::unit_stats& att = bc_vector[i].get_attacker_stats();
 		const battle_context::unit_stats& def = bc_vector[i].get_defender_stats();
 		config tmp_config;
