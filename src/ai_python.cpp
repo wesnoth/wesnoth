@@ -40,6 +40,7 @@ Additionally, useful utility functions such as those found in pathutils.hpp shou
 #include "ai_python.hpp"
 #include "wassert.hpp"
 #include "gamestatus.hpp"
+#include "filesystem.hpp"
 
 static python_ai* running_instance;
 bool python_ai::init_ = false;
@@ -1359,15 +1360,30 @@ python_ai::~python_ai()
 
 void python_ai::play_turn()
 {
-	std::string script = current_team().ai_parameters()["python_script"];
+	std::string script_name = current_team().ai_parameters()["python_script"];
+	std::string script = get_binary_file_location("data", "ais/" + script_name);
 	PyObject* file = PyFile_FromString((char*)script.c_str(),"rt");
 
     PyObject* dict = PyDict_New();
     PyDict_SetItemString(dict, "__builtins__", PyEval_GetBuiltins());
+
+	// Always execute an import statement including all the current binary
+	// pathes, so the python script can import any other python modules.
+	// e.g. sys.path.extend(['~/.wesnoth/data/ais', '/usr/share/wesnoth/data/ais', ])
+	std::string import_modules("import sys; sys.path.extend([");
+	const std::vector<std::string>& paths = get_binary_paths("data");
+	for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
+		import_modules += "'" + *i + "ais', ";
+	}
+	import_modules += "])\n";
+	PyObject* pre = PyRun_String(import_modules.c_str(), Py_file_input, dict, dict);
+
+    // Now execute the actual python AI.
     PyObject* ret = PyRun_File(PyFile_AsFile(file), script.c_str(), Py_file_input, dict, dict);
     if (PyErr_Occurred()) {
         PyErr_Print();
     }
+    Py_XDECREF(pre);
     Py_XDECREF(ret);
     Py_DECREF(dict);
 	Py_DECREF(file);
