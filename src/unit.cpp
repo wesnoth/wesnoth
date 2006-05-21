@@ -1764,11 +1764,13 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 {
 	std::set<gamemap::location> over;
 
+	if (draw_bars_) {
+		over.insert(loc.get_direction(gamemap::location::NORTH_WEST));
+	}
+
 	switch (state()) {
 	case STATE_STANDING:
-		if (draw_bars_) {
-			over.insert(loc.get_direction(gamemap::location::NORTH_WEST));
-		}
+		// Standing units don't overlap anything.
 		break;
 	default:
 		gamemap::location arr[6];
