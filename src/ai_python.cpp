@@ -101,25 +101,25 @@ ut_get( movement )
 ut_get( cost )
 ut_get( alignment )
 
-#define ut_gs( x ) \
-	{ #x,	(getter)wrapper_unittype_get_##x,	NULL,	NULL,	NULL },
+#define ut_gs( x, doc ) \
+	{ #x,	(getter)wrapper_unittype_get_##x,	NULL,	doc,	NULL },
 
 static PyGetSetDef unittype_getseters[] = {
-	ut_gs( name )
-	ut_gs( heals )
-	ut_gs( regenerates )
-	ut_gs( leadership )
-	ut_gs( illuminates )
-	ut_gs( skirmisher )
-	ut_gs( teleports )
-	ut_gs( steadfast )
-	ut_gs( not_living )
-	ut_gs( can_advance )
-	ut_gs( has_zoc )
-	ut_gs( level )
-	ut_gs( movement )
-	ut_gs( cost )
-	ut_gs( alignment )
+	ut_gs( name, "Name of the unit type." )
+	ut_gs( heals, "If type has the ability." )
+	ut_gs( regenerates, "If type has the ability." )
+	ut_gs( leadership, "If type has the ability." )
+	ut_gs( illuminates, "If type has the ability." )
+	ut_gs( skirmisher, "If type has the ability." )
+	ut_gs( teleports, "If type has the ability." )
+	ut_gs( steadfast, "If type has the ability." )
+	ut_gs( not_living, "If type has the ability." )
+	ut_gs( can_advance, "If type can advance." )
+	ut_gs( has_zoc, "If type has a ZOC." )
+	ut_gs( level, "Level of the type." )
+	ut_gs( movement, "Movement points of the type." )
+	ut_gs( cost, "Cost of the type." )
+	ut_gs( alignment, "Alignment of the type: 0=lawful, 1=neutral, 2=chaotic." )
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
@@ -151,11 +151,25 @@ static PyObject* wrapper_unittype_attacks( wesnoth_unittype* type, PyObject* arg
 }
 
 static PyMethodDef unittype_methods[] = {
-	{ "advances_to",	(PyCFunction)python_ai::unittype_advances_to,	METH_VARARGS, NULL }, 
-	{ "attacks",		(PyCFunction)wrapper_unittype_attacks,			METH_VARARGS, NULL},
-	{ "movement_cost",		(PyCFunction)wrapper_unittype_movement_cost,			METH_VARARGS, NULL},
-	{ "defense_modifier",		(PyCFunction)wrapper_unittype_defense_modifier,			METH_VARARGS, NULL},
-	{ "resistance_against",		(PyCFunction)wrapper_unittype_resistance_against,			METH_VARARGS, NULL},
+	{ "advances_to",	(PyCFunction)python_ai::unittype_advances_to,	METH_VARARGS,
+        "Returns: unittype[]\n"
+        "Returns a list of wesnoth.unittype of possible advancements."}, 
+	{ "attacks",		(PyCFunction)wrapper_unittype_attacks,			METH_VARARGS,
+        "Returns: attacktype[]\n"
+        "Returns list of possible attack types.\n"},
+	{ "movement_cost",		(PyCFunction)wrapper_unittype_movement_cost,			METH_VARARGS,
+        "Parameters: gamemap, location\n"
+        "Returns: cost\n"
+        "Returns the cost of moving over the given location."},
+	{ "defense_modifier",		(PyCFunction)wrapper_unittype_defense_modifier,			METH_VARARGS,
+        "Parameters: gamemap, location\n"
+        "Returns: percent\n"
+        "Returns the defense modifier in % (probability the unit will be hit) on the given location."},
+	{ "resistance_against",		(PyCFunction)wrapper_unittype_resistance_against,			METH_VARARGS,
+        "Parameters: attacktype\n"
+        "Returns: percent\n"
+        "Returns the resistance against the given attack type. (0 means, unit has full resistance, "
+        "100 means, unit has no resistance, 200 means, double vulnerability."},
 	{ NULL, NULL, 0, NULL }
 };
 
@@ -186,7 +200,7 @@ static PyTypeObject wesnoth_unittype_type = {
 	0,										/* tp_setattro*/
 	0,										/* tp_as_buffer*/
 	Py_TPFLAGS_DEFAULT,						/* tp_flags*/
-	"Wesnoth unit types",					/* tp_doc */
+	"Describes a unit type.",					/* tp_doc */
 	0,										/* tp_traverse */
 	0,										/* tp_clear */
 	0,										/* tp_richcompare */
@@ -268,14 +282,22 @@ static PyObject* attacktype_get_range(wesnoth_attacktype* type, void* /*closure*
 }
 
 static PyGetSetDef attacktype_getseters[] = {
-	{ "name",			(getter)attacktype_get_name,			NULL,	NULL,	NULL },
-	{ "damage",			(getter)attacktype_get_damage,			NULL,	NULL,	NULL },
-	{ "num_attacks",    (getter)attacktype_get_num_attacks,		NULL,	NULL,	NULL },
-	{ "attack_weight",  (getter)attacktype_get_attack_weight,	NULL,	NULL,	NULL },
-	{ "defense_weight",	(getter)attacktype_get_defense_weight,	NULL,	NULL,	NULL },
-	{ "backstab",		(getter)attacktype_get_backstab,		NULL,	NULL,	NULL },
-	{ "slow",			(getter)attacktype_get_slow,			NULL,	NULL,	NULL },
-	{ "range",			(getter)attacktype_get_range,			NULL,	NULL,	NULL },
+	{ "name",			(getter)attacktype_get_name,			NULL,
+        "Name of the attack.",	NULL },
+	{ "damage",			(getter)attacktype_get_damage,			NULL,
+        "Attack damage.",	NULL },
+	{ "num_attacks",    (getter)attacktype_get_num_attacks,		NULL,
+        "Number of hits.",	NULL },
+	{ "attack_weight",  (getter)attacktype_get_attack_weight,	NULL,
+        "AI setting, floating point number.",	NULL },
+	{ "defense_weight",	(getter)attacktype_get_defense_weight,	NULL,
+        "AI setting, floating point number.",	NULL },
+	{ "backstab",		(getter)attacktype_get_backstab,		NULL,
+        "This attack has backstab.",	NULL },
+	{ "slow",			(getter)attacktype_get_slow,			NULL,
+        "This attack causes slow.",	NULL },
+	{ "range",			(getter)attacktype_get_range,			NULL,
+        "String with the name of the attack range.",	NULL },
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
@@ -305,7 +327,7 @@ static PyTypeObject wesnoth_attacktype_type = {
 	0,   /* tp_setattro*/
 	0,                         /* tp_as_buffer*/
 	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
-	"Wesnoth attack type",       /* tp_doc */
+	"Describes an attack type.",       /* tp_doc */
 	0,                         /* tp_traverse */
 	0,                         /* tp_clear */
 	0,                         /* tp_richcompare */
@@ -442,18 +464,31 @@ static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 }
 
 static PyGetSetDef unit_getseters[] = {
-	{ "name",			(getter)unit_get_name,		NULL,	NULL,	NULL },
-	{ "is_enemy",		(getter)unit_is_enemy,		NULL,	NULL,	NULL },
-	{ "can_recruit",	(getter)unit_can_recruit,	NULL,	NULL,	NULL },
-	{ "hitpoints",		(getter)unit_hitpoints,	NULL,	NULL,	NULL },
-	{ "max_hitpoints",	(getter)unit_max_hitpoints,	NULL,	NULL,	NULL },
-	{ "experience",		(getter)unit_experience,	NULL,	NULL,	NULL },
-	{ "max_experience",	(getter)unit_max_experience,	NULL,	NULL,	NULL },
-	{ "is_valid",		(getter)unit_query_valid,	NULL,	NULL,	NULL },
-	{ "side",			(getter)unit_side,	NULL,	NULL,	NULL },
-	{ "movement_left",	(getter)unit_movement_left,	NULL,	NULL,	NULL },
-	{ "can_attack",         (getter)unit_can_attack,	NULL,	NULL,	NULL },
-	{ "poisoned",		(getter)unit_poisoned,	NULL,	NULL,	NULL },
+	{ "name",			(getter)unit_get_name,		NULL,
+        "Name of the unit.",	NULL },
+	{ "is_enemy",		(getter)unit_is_enemy,		NULL,
+        "True if this is an enemy unit, False if it is allied.",	NULL },
+	{ "can_recruit",	(getter)unit_can_recruit,	NULL,
+        "If the unit can recruit.",	NULL },
+	{ "hitpoints",		(getter)unit_hitpoints,	NULL,
+        "Current hitpoints of the unit.",	NULL },
+	{ "max_hitpoints",	(getter)unit_max_hitpoints,	NULL,
+        "Maximum hitpoints of the unit.",	NULL },
+	{ "experience",		(getter)unit_experience,	NULL,
+        "Current experience of the unit.",	NULL },
+	{ "max_experience",	(getter)unit_max_experience,	NULL,
+        "Maximum experience of the unit.",	NULL },
+	{ "is_valid",		(getter)unit_query_valid,	NULL,
+        "Indicates if the unit is still valid in the game. This is the only accessible "
+        "field of an invalid unit, all others trigger an exception.",	NULL },
+	{ "side",			(getter)unit_side,	NULL,
+        "The side of the unit, starting with 1.",	NULL },
+	{ "movement_left",	(getter)unit_movement_left, NULL,
+        "How many movement points the unit has left.",	NULL },
+	{ "can_attack",         (getter)unit_can_attack, NULL,
+        "If the unit can still attack.",	NULL},
+	{ "poisoned",		(getter)unit_poisoned,	NULL,
+        "If the unit is poisoned.",	NULL },
 	{ NULL,				NULL,						NULL,	NULL,	NULL }
 };
 
@@ -501,12 +536,31 @@ static PyObject* wrapper_unittype_resistance_against( wesnoth_unittype* type, Py
 }
 
 static PyMethodDef unit_methods[] = {
-	{ "type",				(PyCFunction)wrapper_unit_type,				METH_VARARGS, NULL},
-	{ "attacks",			(PyCFunction)wrapper_unit_attacks,			METH_VARARGS, NULL},
-	{ "movement_cost",		(PyCFunction)wrapper_unit_movement_cost,	METH_VARARGS, NULL},
-	{ "defense_modifier",	(PyCFunction)wrapper_unit_defense_modifier,	METH_VARARGS, NULL},
-	{ "damage_against",		(PyCFunction)wrapper_unit_damage_against,	METH_VARARGS, NULL},
-	{ "find_path",			(PyCFunction)python_ai::wrapper_unit_find_path,		METH_VARARGS, NULL},
+	{ "type",				(PyCFunction)wrapper_unit_type,				METH_VARARGS,
+        "Returns: unittype\n"
+        "Returns the type of the unit."},
+	{ "attacks",			(PyCFunction)wrapper_unit_attacks,			METH_VARARGS,
+        "Returns: attacktype[]\n"
+        "Returns list of possible attack types.\n"},
+	{ "movement_cost",		(PyCFunction)wrapper_unit_movement_cost,	METH_VARARGS,
+        "Parameters: gamemap, location\n"
+        "Returns: cost\n"
+        "Returns the cost of moving over the given location."},
+	{ "defense_modifier",	(PyCFunction)wrapper_unit_defense_modifier,	METH_VARARGS,
+        "Parameters: gamemap, location\n"
+        "Returns: percent\n"
+        "Returns the defense modifier in % (probability the unit will be hit) on the given location."},
+	{ "damage_against",		(PyCFunction)wrapper_unit_damage_against,	METH_VARARGS,
+        "Parameters: attacktype\n"
+        "Returns: percent\n"
+        "Returns the damage against the given attack type. (0 means, no damage at all, "
+        "100 means, full damage, 200 means, double damage."},
+	{ "find_path",			(PyCFunction)python_ai::wrapper_unit_find_path,		METH_VARARGS,
+        "Parameters: location from, location to, float stop_at = 100\n"
+        "Returns: location[] path\n"
+        "Finds a path from 'from' to 'to', and returns it as a list of locations. "
+        "path[0] will be 'from', path[-1] will be 'to' or the nearest location costing "
+        "less than 'stop_at' movement points to reach."},
 	{ NULL,					NULL,										0, NULL }
 };
 
@@ -537,7 +591,10 @@ static PyTypeObject wesnoth_unit_type = {
 	0,   /* tp_setattro*/
 	0,                         /* tp_as_buffer*/
 	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
-	"Wesnoth units",       /* tp_doc */
+	"Represents a single unit. Trying to use a method or access a property, "
+    "with the exception of is_valid, will result in an exception if the unit "
+    "is invalid (was destroyed last move, and so on). That way you can safely "
+    "keep unit pointers between turns.",       /* tp_doc */
 	0,                         /* tp_traverse */
 	0,                         /* tp_clear */
 	0,                         /* tp_richcompare */
@@ -604,16 +661,22 @@ static long location_internal_hash(wesnoth_location* obj)
 }
 
 static PyGetSetDef location_getseters[] = {
-	{ "x",       (getter)location_get_x,     NULL, NULL, NULL },
-	{ "y",       (getter)location_get_y,     NULL, NULL, NULL },
+	{ "x",       (getter)location_get_x,     NULL, "X position, starting with 0 for leftmost column.", NULL },
+	{ "y",       (getter)location_get_y,     NULL, "Y position, starting with 0 for topmost row.", NULL },
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
 static PyObject* wrapper_location_adjacent_to( wesnoth_location* left, PyObject* args );
 static PyObject* wrapper_location_distance_to( wesnoth_location* left, PyObject* args );
 static PyMethodDef location_methods[] = {
-	{ "adjacent_to",         (PyCFunction)wrapper_location_adjacent_to,       METH_VARARGS, NULL},
-	{ "distance_to",         (PyCFunction)wrapper_location_distance_to,       METH_VARARGS, NULL},
+	{ "adjacent_to",         (PyCFunction)wrapper_location_adjacent_to,       METH_VARARGS,
+        "Parameters: location\n"
+        "Returns: result\n"
+        "Returns True if the location is adjacent to this one, False otherwise."},
+	{ "distance_to",         (PyCFunction)wrapper_location_distance_to,       METH_VARARGS,
+        "Parameters: location\n"
+        "Returns: int distance\n"
+        "Returns the distance in hexes to the other location."},
     { NULL, NULL, 0, NULL }
 };
 
@@ -639,7 +702,7 @@ static PyTypeObject wesnoth_location_type = {
 	0,   /* tp_setattro*/
 	0,                         /* tp_as_buffer*/
 	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
-	"Wesnoth location",       /* tp_doc */
+	"Represents a single location on the map.",       /* tp_doc */
 	0,                         /* tp_traverse */
 	0,                         /* tp_clear */
 	0,                         /* tp_richcompare */
@@ -700,8 +763,8 @@ static PyObject* gamemap_get_y(wesnoth_gamemap* map, void* /*closure*/)
 }
 
 static PyGetSetDef gamemap_getseters[] = {
-	{ "x",	(getter)gamemap_get_x,	NULL,	NULL,	NULL },
-	{ "y",	(getter)gamemap_get_y,	NULL,	NULL,	NULL },
+	{ "x",	(getter)gamemap_get_x,	NULL,	"Width of the map in hexes.",	NULL },
+	{ "y",	(getter)gamemap_get_y,	NULL,	"Height of the map in hexes.",	NULL },
 	{ NULL,	NULL,					NULL,	NULL,	NULL },
 };
 
@@ -730,9 +793,20 @@ static PyObject* wrapper_getmap_is_castle( wesnoth_gamemap* map, PyObject* args 
 }
 
 static PyMethodDef gamemap_methods[] = {
-	{ "is_village",	(PyCFunction)wrapper_getmap_is_village,	METH_VARARGS, NULL},
-	{ "is_keep",	(PyCFunction)wrapper_getmap_is_keep,	METH_VARARGS, NULL},
-	{ "is_castle",	(PyCFunction)wrapper_getmap_is_castle,	METH_VARARGS, NULL},
+	{ "is_village",	(PyCFunction)wrapper_getmap_is_village,	METH_VARARGS,
+        "Parameters: location\n"
+        "Returns: result\n"
+        "Returns True if a village is at the given location, False otherwise."},
+	{ "is_keep",	(PyCFunction)wrapper_getmap_is_keep,	METH_VARARGS,
+        "Parameters: location\n"
+        "Returns: result\n"
+        "Returns True if a keep (where a leader must stand to recruit) is at "
+        "the given location, False otherwise."},
+	{ "is_castle",	(PyCFunction)wrapper_getmap_is_castle,	METH_VARARGS,
+        "Parameters: location\n"
+        "Returns: result\n"
+        "Returns True if the given location is a castle tile (where units are "
+        "recruited to), False otherwise."},
 	{ NULL, NULL, 0, NULL }
 };
 
@@ -758,7 +832,7 @@ static PyTypeObject wesnoth_gamemap_type = {
 	0,							/* tp_setattro*/
 	0,                         /* tp_as_buffer*/
 	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
-	"Wesnoth map information",       /* tp_doc */
+	"Represents the current map.",       /* tp_doc */
 	0,                         /* tp_traverse */
 	0,                         /* tp_clear */
 	0,                         /* tp_richcompare */
@@ -844,16 +918,21 @@ PyObject* python_ai::wrapper_team_recruits( wesnoth_team* team, PyObject* args )
 }
 
 static PyMethodDef team_methods[] = {
-	{ "owns_village",         (PyCFunction)wrapper_team_owns_village,       METH_VARARGS, NULL},
-	{ "recruits",         (PyCFunction)python_ai::wrapper_team_recruits,       METH_VARARGS, NULL},
+	{ "owns_village",         (PyCFunction)wrapper_team_owns_village,       METH_VARARGS,
+        "Parameters: location\n"
+        "Returns: result\n"
+        "True if the team owns a village at the given location."},
+	{ "recruits",         (PyCFunction)python_ai::wrapper_team_recruits,       METH_VARARGS,
+        "Returns: recruits\n"
+        "Returns a list of wesnoth.unittype objects of all possible recruits for this team."},
     { NULL, NULL, 0, NULL }
 };
 
 static PyGetSetDef team_getseters[] = {
-	{ "name",	(getter)wrapper_team_name,		NULL,	NULL,	NULL },
-	{ "gold",	(getter)wrapper_team_gold,		NULL,	NULL,	NULL },
-	{ "income",	(getter)wrapper_team_income,	NULL,	NULL,	NULL },
-	{ "side",       (getter)wrapper_team_side,              NULL,   NULL,   NULL},
+	{ "name",	(getter)wrapper_team_name,		NULL,	"The name of this team.",	NULL },
+	{ "gold",	(getter)wrapper_team_gold,		NULL,	"The current amount of gold this team has.",	NULL },
+	{ "income",	(getter)wrapper_team_income,	NULL,	"The current per-turn income if this team.",	NULL },
+	{ "side",       (getter)wrapper_team_side,              NULL,   "Side number of this team, starting with 1.",   NULL},
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
@@ -879,7 +958,7 @@ static PyTypeObject wesnoth_team_type = {
 	0,   /* tp_setattro*/
 	0,                         /* tp_as_buffer*/
 	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
-	"Wesnoth team",       /* tp_doc */
+	"Represents one team/player/side.",       /* tp_doc */
 	0,                         /* tp_traverse */
 	0,                         /* tp_clear */
 	0,                         /* tp_richcompare */
@@ -983,10 +1062,15 @@ static PyObject* wrapper_gamestatus_previous_lawful_bonus(wesnoth_gamestatus* st
 }
 
 static PyGetSetDef gamestatus_getseters[] = {
-	{ "turn",					(getter)wrapper_gamestatus_turn,					NULL,	NULL,	NULL },
-	{ "number_of_turns",		(getter)wrapper_gamestatus_number_of_turns,			NULL,	NULL,	NULL },
-	{ "lawful_bonus",			(getter)wrapper_gamestatus_lawful_bonus,			NULL,	NULL,	NULL },
-	{ "previous_lawful_bonus",	(getter)wrapper_gamestatus_previous_lawful_bonus,	NULL,	NULL,	NULL },
+	{ "turn",					(getter)wrapper_gamestatus_turn,					NULL,	"The current turn.",	NULL },
+	{ "number_of_turns",		(getter)wrapper_gamestatus_number_of_turns,			NULL,
+        "The maximum number of turns of the whole game.",	NULL },
+	{ "lawful_bonus",			(getter)wrapper_gamestatus_lawful_bonus,			NULL,
+        "The bonus for lawful units in the current turn. This is the percentage to add to "
+        "the attack damage of lawful units (alignment = 0), and to subtract from chaotic "
+        "units (alignment = 2). Neutral units (alignment = 1) are not affected.", NULL },
+	{ "previous_lawful_bonus",	(getter)wrapper_gamestatus_previous_lawful_bonus,	NULL,
+        "The value of lawful_bonus in the previous turn.",	NULL },
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
@@ -1012,7 +1096,7 @@ static PyTypeObject wesnoth_gamestatus_type = {
 	0,   /* tp_setattro*/
 	0,                         /* tp_as_buffer*/
 	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
-	"Wesnoth game status",       /* tp_doc */
+	"This class has information about the game status.",       /* tp_doc */
 	0,                         /* tp_traverse */
 	0,                         /* tp_clear */
 	0,                         /* tp_richcompare */
@@ -1304,22 +1388,66 @@ PyObject* python_ai::wrapper_script_data(PyObject* /*self*/, PyObject* args)
 
 
 static PyMethodDef wesnoth_python_methods[] = {
-	{ "log_message",				python_ai::wrapper_log_message,			METH_VARARGS, NULL},
-	{ "get_units",					python_ai::wrapper_get_units,			METH_VARARGS, NULL},
-	{ "get_location",				python_ai::wrapper_get_location,		METH_VARARGS, NULL},
-	{ "get_map",					python_ai::wrapper_get_map,			METH_VARARGS, NULL},
-	{ "get_teams",					python_ai::wrapper_get_teams,			METH_VARARGS, NULL},
-	{ "get_current_team",				python_ai::wrapper_get_current_team,		METH_VARARGS, NULL},
-	{ "get_destinations_by_unit",			python_ai::wrapper_get_src_dst,			METH_VARARGS, NULL},
-	{ "get_units_by_destination",			python_ai::wrapper_get_dst_src,			METH_VARARGS, NULL},
-	{ "get_enemy_destinations_by_unit",			python_ai::wrapper_get_enemy_src_dst,			METH_VARARGS, NULL},
-	{ "get_enemy_units_by_destination",			python_ai::wrapper_get_enemy_dst_src,			METH_VARARGS, NULL},
-	{ "move_unit",					python_ai::wrapper_move_unit,			METH_VARARGS, NULL},
-	{ "attack_unit",				python_ai::wrapper_attack_unit,			METH_VARARGS, NULL},
-	{ "get_adjacent_tiles",				python_ai::wrapper_get_adjacent_tiles,		METH_VARARGS, NULL},
-	{ "recruit_unit",				python_ai::wrapper_recruit_unit,		METH_VARARGS, NULL},
-	{ "get_gamestatus",				python_ai::wrapper_get_gamestatus,		METH_VARARGS, NULL},
-	{ "script_data",				python_ai::wrapper_script_data,			METH_VARARGS, NULL},
+    { "log_message",				python_ai::wrapper_log_message,			METH_VARARGS,
+        "Parameters: string\n"
+        "Logs a message, displayed as a chat message, if debug is enabled." },
+    { "get_units", python_ai::wrapper_get_units, METH_VARARGS,
+        "Returns: units\n"
+        "Returns a dictionary containing (location, unit) pairs."},
+    { "get_location", python_ai::wrapper_get_location, METH_VARARGS,
+        "Parameters: x, y\n"
+        "Returns: location\n"
+        "Returns a wesnoth.location object pointing to position (x, y) on the map."},
+    { "get_map", python_ai::wrapper_get_map, METH_VARARGS,
+        "Returns: map\n"
+        "Returns a wesnoth.gamemap object representing the current map."},
+    { "get_teams", python_ai::wrapper_get_teams, METH_VARARGS,
+        "Returns: teams\n"
+        "Returns a list containing wesnoth.team objects, representing the current teams in the game."},
+    { "get_current_team", python_ai::wrapper_get_current_team, METH_VARARGS,
+        "Returns: team\n"
+        "Returns a wesnoth.team object representing the current team."},
+    { "get_destinations_by_unit", python_ai::wrapper_get_src_dst, METH_VARARGS,
+        "Returns: moves\n"
+        "Returns a dictionary. Keys are wesnoth.location objects pointing to player's units, "
+        "values are lists of possible destinations for this unit."},
+    { "get_units_by_destination", python_ai::wrapper_get_dst_src, METH_VARARGS,
+        "Returns: moves\n"
+        "Returns a dictionary. Keys are wesnoth.location objects pointing to positions the "
+        "player's units can reach, values are lists of locations where units that can reach "
+        "this position are."},
+    { "get_enemy_destinations_by_unit", python_ai::wrapper_get_enemy_src_dst, METH_VARARGS,
+        "Returns: moves\n"
+        "Returns a dictionary. Keys are wesnoth.location objects pointing to player's units, "
+        "values are lists of possible destinations for this unit."},
+    { "get_enemy_units_by_destination", python_ai::wrapper_get_enemy_dst_src, METH_VARARGS,
+        "Returns: moves\n"
+        "Returns a dictionary. Keys are wesnoth.location objects pointing to positions the "
+        "enemie's units can reach, values are lists of locations where units that can reach "
+        "this position are."},
+    { "move_unit", python_ai::wrapper_move_unit, METH_VARARGS,
+        "Parameters: location from, location to\n"
+        "Returns: new_position\n"
+        "Moves the unit on 'from' to the location specified by 'to', and "
+        "returns a wesnoth.location object representing the position the unit was moved to."},
+    { "attack_unit", python_ai::wrapper_attack_unit, METH_VARARGS,
+        "Parameters: location attacker, location defender, int weapon\n"
+        "Unit at position 'attacker' attacks unit at position 'defender' with weapon 'weapon'."},
+    { "get_adjacent_tiles", python_ai::wrapper_get_adjacent_tiles, METH_VARARGS,
+        "Parameters: location\n"
+        "Returns: positions\n"
+        "Returns a list of wesnoth.location representing tiles adjacent to the specified location."},
+    { "recruit_unit", python_ai::wrapper_recruit_unit, METH_VARARGS,
+        "Parameters: string name, location where\n"
+        "Returns: result\n"
+        "Recruits the unit of type 'name', at the location 'where'. Returns 1 on success, 0 on failure."},
+    { "get_gamestatus", python_ai::wrapper_get_gamestatus, METH_VARARGS,
+        "Returns: status\n"
+        "Returns a wesnoth.gamestatus object representing the current game status."},
+    { "script_data", python_ai::wrapper_script_data, METH_VARARGS,
+        "Returns: dictionary\n"
+        "Returns a private dictionary object, in which the script can store values that "
+        "will persist between runs. This data is private to a script."},
 	{ NULL,						NULL,						0, NULL}
 };
 
@@ -1335,7 +1463,10 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
 	if ( !init_ )
 	{
 		Py_Initialize( );
-		PyObject* module = Py_InitModule("wesnoth", wesnoth_python_methods);
+		PyObject* module = Py_InitModule3("wesnoth", wesnoth_python_methods,
+            "A script must call 'import wesnoth' to import all Wesnoth-related objects. "
+            "The python script will be executed once for each turn of the side with a "
+            "python AI using the script.");
 		Py_Register(wesnoth_unit_type, "unit");
 		Py_Register(wesnoth_location_type, "location");
 		Py_Register(wesnoth_gamemap_type, "gamemap");
