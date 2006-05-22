@@ -21,6 +21,7 @@ class replay_network_sender;
 #include "config.hpp"
 #include "display.hpp"
 #include "gamestatus.hpp"
+#include "generic_event.hpp"
 #include "network.hpp"
 #include "team.hpp"
 #include "unit.hpp"
@@ -34,7 +35,7 @@ public:
 	turn_info(const game_data& gameinfo, game_state& state_of_game,
 	          const gamestatus& status, display& gui, gamemap& map,
 		  std::vector<team>& teams, unsigned int team_num, unit_map& units,
-		  replay_network_sender& network_sender);
+		  replay_network_sender& network_sender, undo_list& undo_stack);
 
 	~turn_info();
 
@@ -54,6 +55,7 @@ public:
 	//which case data will not be forwarded
 	PROCESS_DATA_RESULT process_network_data(const config& cfg,network::connection from,std::deque<config>& backlog, bool skip_replay);
 
+	events::generic_event& replay_error() { return replay_error_; }
 private:
 	void change_side_controller(const std::string& side, const std::string& player, bool orphan_side=false);
 
@@ -66,9 +68,11 @@ private:
 	unsigned int team_num_;
 	unit_map& units_;
 
-	undo_list undo_stack_;
+	undo_list& undo_stack_;
 
 	replay_network_sender& replay_sender_;
+
+	events::generic_event replay_error_;
 };
 
 #endif

@@ -45,6 +45,7 @@ protected:
 
 	int beep_warning_time_;
 private:
+	void process_oos();
 };
 
 

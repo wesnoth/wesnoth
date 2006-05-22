@@ -66,7 +66,8 @@ void playmp_controller::before_human_turn(){
 	playsingle_controller::before_human_turn();
 
 	turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
-		*gui_,map_,teams_,player_number_,units_,replay_sender_);
+		*gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);
+	turn_data_->replay_error().attach_handler(this);
 
 	menu_handler_.autosave(status_.turn(), gamestate_.starting_pos);
 }
@@ -83,7 +84,13 @@ void playmp_controller::play_human_turn(){
 			std::deque<config> backlog;
 
 			if(res != network::null_connection) {
-				turn_data_->process_network_data(cfg,res,backlog,skip_replay_);
+				try{
+					turn_data_->process_network_data(cfg,res,backlog,skip_replay_);
+				}
+				catch (replay::error& e){
+					process_oos();
+					throw e;
+				}
 			}
 
 			play_slice();
@@ -151,6 +158,7 @@ void playmp_controller::after_human_turn(){
 	//send one more time to make sure network is up-to-date.
 	turn_data_->send_data();
 	if (turn_data_ != NULL){
+		turn_data_->replay_error().detach_handler(this);
 		delete turn_data_;
 		turn_data_ = NULL;
 	}
@@ -173,7 +181,8 @@ bool playmp_controller::play_network_turn(){
 	browse_ = true;
 	gui_->enable_menu("endturn", false);
 	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
-				map_,teams_,player_number_,units_, replay_sender_);
+				map_,teams_,player_number_,units_, replay_sender_, undo_stack_);
+	turn_data.replay_error().attach_handler(this);
 
 	for(;;) {
 
@@ -192,12 +201,19 @@ bool playmp_controller::play_network_turn(){
 		}
 
 		if(have_data) {
-			const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg,from,data_backlog_,skip_replay_);
-			if(result == turn_info::PROCESS_RESTART_TURN) {
-				return true;
-			} else if(result == turn_info::PROCESS_END_TURN) {
-				break;
+			try{
+				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg,from,data_backlog_,skip_replay_);
+				if(result == turn_info::PROCESS_RESTART_TURN) {
+					return true;
+				} else if(result == turn_info::PROCESS_END_TURN) {
+					break;
+				}
 			}
+			catch (replay::error e){
+				process_oos();
+				throw e;
+			}
+
 		}
 
 		play_slice();
@@ -205,13 +221,18 @@ bool playmp_controller::play_network_turn(){
 		gui_->draw();
 	}
 
+	turn_data.replay_error().detach_handler(this);
 	LOG_NG << "finished networked...\n";
 	return false;
 }
 
+void playmp_controller::process_oos(){
+	menu_handler_.save_game(_("The games are out of sync and will have to exit. Do you want to save an error log of your game?"),gui::YES_NO);
+}
+
 void playmp_controller::handle_generic_event(const std::string& name){
 	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
-						map_,teams_,player_number_,units_, replay_sender_);
+						map_,teams_,player_number_,units_, replay_sender_, undo_stack_);
 
 	if (name == "ai_user_interact"){
 		playsingle_controller::handle_generic_event(name);
@@ -220,6 +241,9 @@ void playmp_controller::handle_generic_event(const std::string& name){
 	else if ((name == "ai_unit_recruited") || (name == "ai_unit_moved") 
 		|| (name == "ai_enemy_attacked")){
 		turn_data.sync_network();
+	}
+	else if (name == "network_replay_error"){
+		process_oos();
 	}
 }
 

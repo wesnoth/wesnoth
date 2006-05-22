@@ -472,7 +472,7 @@ void playsingle_controller::play_ai_turn(){
 	const cursor::setter cursor_setter(cursor::WAIT);
 
 	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
-						map_,teams_,player_number_,units_, replay_sender_);
+						map_,teams_,player_number_,units_, replay_sender_, undo_stack_);
 
 	ai_interface::info ai_info(*gui_,map_,gameinfo_,units_,teams_,player_number_,status_, turn_data);
 	util::scoped_ptr<ai_interface> ai_obj(create_ai(current_team().ai_algorithm(),ai_info));
