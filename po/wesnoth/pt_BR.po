@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-19 17:43+0200\n"
-"PO-Revision-Date: 2006-05-12 23:15+0900\n"
+"PO-Revision-Date: 2006-05-23 00:32+0900\n"
 "Last-Translator: Claus Aranha <caranha AT gmail DOT com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "MIME-Version: 1.0\n"
@@ -141,16 +141,14 @@ msgid "skirmisher"
 msgstr "combatente"
 
 #: data/abilities.cfg:306
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
 "Combatente:\n"
-"Esta unidade é capaz de passar pelos inimigos rapidamente, e ignora todas as "
-"Zonas de Controle inimigas. (Excessão: se você PARAR em uma zona de controle "
-"inimiga, seu movimento restante será zerado, mesmo que seja um combatente.) "
+"Esta unidade é capaz de passar por entre adversários facilmente, e ignora "
+"todas as Zonas de Controle inimigas."
 
 #: data/abilities.cfg:317
 msgid "illuminates"
@@ -2984,7 +2982,6 @@ msgstr ""
 "envolvidos nisto: Receita e Gastos."
 
 #: data/help.cfg:236
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2996,10 +2993,10 @@ msgstr ""
 "\n"
 "\n"
 "Receita é simples. Você tem uma receita básica de 2 peças de ouro por turno. "
-"para cada aldeia que controlar, ganhará mais duas peças de ouro a cada "
-"turno. Assim, se você tiver 5 aldeias, normalmente você receberia 12 peças "
-"de ouro por turno. A manutenção existente é subtraída desta receita, "
-"conforme descrito abaixo."
+"para cada aldeia que controlar, ganhará mais 1 peça de ouro a cada turno. "
+"Assim, se você tiver 10 aldeias, normalmente você receberia 12 peças de ouro "
+"por turno. A manutenção existente é subtraída desta receita, conforme "
+"descrito abaixo."
 
 #: data/help.cfg:238
 msgid ""
@@ -3012,9 +3009,17 @@ msgid ""
 "per turn. For example, if you have twelve level one units and ten villages, "
 "you would have to pay two gold each turn in upkeep."
 msgstr ""
+"\n"
+"\n"
+"O cálculo do custo de  manutenção também é bem simples. Cada unidade requer "
+"uma quantidade de peças de ouro igual ao seu nível. Além disso, você não "
+"precisa pagar uma quantidade de níveis de unidades equivalente ao número de "
+"aldeias que você possui. Em outras palavras, para cada nível de unidade além "
+"do número de vilas que possuir, deverá pagar uma peça de ouro por turno. Por "
+"exemplo, se você possuir 12 unidades de nível um, e 10 aldeias, você terá "
+"que pagar 2 peças de ouro por turno em manutenção."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3025,8 +3030,8 @@ msgstr ""
 "\n"
 "\n"
 "Os gastos com a manutenção de unidades são subtraídos da sua receita, de "
-"maneira que se você tiver, por exemplo, 7 níveis de unidades e 5 aldeias, a "
-"receita líquida seria de 3 peças de ouro por turno."
+"maneira que se você tiver, por exemplo, 12 níveis de unidades e 10 aldeias, "
+"a receita líquida seria de 10 peças de ouro por turno."
 
 #: data/help.cfg:241
 msgid ""
@@ -3167,9 +3172,8 @@ msgid "Resilient"
 msgstr "Resistente"
 
 #: data/help.cfg:291
-#, fuzzy
 msgid "Resilient units have 10% +3 more HP than usual."
-msgstr "Unidades \"Resistentes\" têm 7 pontos a mais de Hp do que o normal."
+msgstr "Unidades Resistentes têm 10% + 3 pontos a mais de Hp do que o normal."
 
 #: data/help.cfg:293
 msgid ""
@@ -3194,13 +3198,12 @@ msgid "Strong"
 msgstr "Forte"
 
 #: data/help.cfg:299
-#, fuzzy
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
-"Unidades \"Fortes\" fazem 1 ponto de dano a mais para cada ataque feito com "
-"sucesso no combate corpo a corpo e têm 2 HP a mais."
+"Unidades Fortes causam 1 ponto de dano a mais para cada golpe que acertar em "
+"combate corpo a corpo e têm 1 HP a mais."
 
 #: data/help.cfg:301
 msgid ""
@@ -4067,6 +4070,14 @@ msgid ""
 "pick it up, yet the grass at your feet bursts into flame as you test the "
 "heft of this mighty weapon."
 msgstr ""
+"Esta lâmina massiva foi criada há séculos atrás por mestres armeiros "
+"élficos, já há muito esquecidos. Eles conseguiram imbuir o aço azulado com "
+"um fogo mágico interno. Línguas de fogo dançam pela sua superfície, dando a "
+"esse aço azulado um retoque espelhado perfeito. Quando você coloca sua mão "
+"ao redor da empunhadeira de couro, a espada volta à vida em chamas! De uma "
+"maneira estranha, você não sente nenhum calor ao pegar a espada, embora o "
+"mato aos seus pés se desfaça em cinzas quando você balança esta poderosa "
+"arma."
 
 #: data/items.cfg:714
 msgid "Only the leader of an army can wield this sword!"
@@ -4150,9 +4161,8 @@ msgstr ""
 "Uma mapa de duelo para partidas super rápidas. Recomendado 2 ouros por vila."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:31
-#, fuzzy
 msgid "2p - Caves of the Basilisk"
-msgstr "3p - Ilha dos Horatii"
+msgstr "2p - Caverna do Basilisco"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:33
 msgid ""
@@ -4161,6 +4171,10 @@ msgid ""
 "victory is punctuated by the petrified forms of some of Wesnoth's greatest "
 "heroes."
 msgstr ""
+"Os jogadores devem manobrar suas unidades pelo terreno dividido desta região "
+"temida, que outrora fora o lar de um basilisco ancestral. A estrada para a "
+"vitória está acompanhada das formas petreficadas de alguns dos maiores "
+"heróis de Wesnoth."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:84
 msgid ""
@@ -4185,6 +4199,26 @@ msgid ""
 "His home to steal the Basilisk's gold.\n"
 "(inscribed by Flametrooper)"
 msgstr ""
+"Sob o vento frio, do inverno a preçe,\n"
+"Sob a lua cheia, da noite o agouro,\n"
+"Bravo draconiano seu lar esqueçe,\n"
+"Para roubar do Basilisco o tesouro.\n"
+"\n"
+"E naquela noite, brumas e frio,\n"
+"A experiência cala, o sangue chama,\n"
+"Tolo e bravio, foi ele para o covil,\n"
+"Em pleno vôo, seu coraçao inflama.\n"
+"\n"
+"Mas hoje o queimar da chama cessou,\n"
+"Pois o basilisco, com seu ataque inclemente,\n"
+"O bravo draconiano, em pedra transformou,\n"
+"E assim permanecerá eternamente.\n"
+"\n"
+"Sob o vento frio, do inverno a preçe,\n"
+"Os anos passam, e lembram o agouro,\n"
+"Do bravo draconiano que seu lar esqueçe,\n"
+"Para roubar do basilisco o tesouro.\n"
+"(inscrito por Flametrooper)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:99
 msgid ""
@@ -4197,6 +4231,14 @@ msgid ""
 "- - Seven Stones - and the Elven \n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"De corpo esguio e mãos leves \n"
+"- - Sete Pedras e Onze (*)\n"
+"Deixou seus inimigos a menor das chances \n"
+"- - Sete Pedras e Onze \n"
+"Mestre arqueito, Dragonbane\n"
+"entre as Estátuas encontrou seu fim \n"
+"- - Sete Pedras - e os Elfos \n"
+"(inscrito por Gauteamus)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:110
 msgid ""
@@ -4215,6 +4257,21 @@ msgid ""
 "words: Good Gog, dog, are yer legs made of stone?!? \n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Blum Duk era conhecido em seu clã goblin por ter domado um dos lobos "
+"gigantes das montanhas, e ele tinha coragem merecedora da fama. Sua "
+"liderança e habilidades eram o que mantinham os goblins do local vivos, "
+"apesar das ameaças dos elfos e humanos. A lenda diz que seu lobo matou "
+"cinquenta homens e cem elfos. \n"
+"Assim, quando ele ouviu falar do malígno monstro que habitava a área, era "
+"natural que ele decidisse enfrentá-lo sozinho. Todos os outros goblins "
+"esperavam que ele derrotasse a criatura facilmente, e trouxesse de volta sua "
+"carcaça para que se fizesse um banquete. \n"
+"Mas uma surpresa esperava por ele. Assim que viu o Basilisco, Blum Duk "
+"sentiu-se coberto pelo medo. Ele tentou dar a volta em seu lobo para fugir, "
+"mas o lobo não se mexia. Enquanto a criatura se aproximava de ambos, ele "
+"proferiu suas últimas palavras: Gog, meu lobo, suas pernas são feitas de "
+"pedra?!? \n"
+"(inscrito por Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:119
 msgid ""
@@ -4226,6 +4283,12 @@ msgid ""
 "arrived. \n"
 "(inscribed by Turin)"
 msgstr ""
+"Ele lá viveu por eras e eras, nas profundezas das águas, atacando os vários "
+"peixes e sapos e sereias que entravam em seus domínios. Era seu lago, e de "
+"mais ninguém, e apesar de não muito grande, ele era seu senhor. Então, o "
+"Basilisco veio, e olhou nos olhos da Serpente. E a Serpente não morreu, mas "
+"também não estava mais viva. Assim chegou o novo senhor do lago. \n"
+"(inscrito por Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:128
 msgid ""
@@ -4237,6 +4300,14 @@ msgid ""
 "of his once great bearing and strength. \n"
 "(inscribed by Fynmiir)"
 msgstr ""
+"Um bravo herói da era dourada de Wesnoth, o grande cavaleiro e comandante de "
+"homens veio para este lugar malígno durante um ataque contra os orcs. Pego "
+"desprevenido pelas criatúras vis, muitos de seus companheiros pereceram, mas "
+"ele lutou bravamente, derrotando vários dos inimigos. Mas ai! O vil "
+"Basilisco o transformou em pedra, no momento em que ele derrotou o último "
+"orc. Agora tudo o que resta é uma lembrança dura de sua força e beleza de "
+"outrora. \n"
+"(inscrito por Fynmiir)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:139
 msgid ""
@@ -4256,6 +4327,23 @@ msgid ""
 "granted. \n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Bramwythl, o Wose, sempre foi conhecido por ser um camarada devagar e sério, "
+"mesmo para um Wose. Mais do que qualquer outro Wose, ele gostava de "
+"simplesmente ficar parado, sozinho, debaixo do sol, com seus braços "
+"levantados, admirando a beleza do céu sem nuvens. Uma vez ele chegou até a "
+"dizer a um amigo que seu maior desejo era ser capaz de ficar para sembre a "
+"se banhar na luz do sol. \n"
+"Porém, pouco tempo depois, a comunidade dos woses do local ouviu falar da "
+"chegada de um monstro horrível, poderoso o suficiente para destruir "
+"facilmente os poucos woses que moravam na área. Eles rapidamente deixaram o "
+"local (bom, tão rápido quanto possível para woses), mas Bramwythl foi "
+"deixado para trás - em sua pressa, nenhum deles se lembrou de encontrá-lo e "
+"lhe avisar do perigo. \n"
+"Assim, ele foi pego de surpresa pelo Basilisco, e foi transformado em pedra "
+"antes mesmo de ver o monstro. Sua forma petreficada ainda está lá até os "
+"dias de hoje, aquecido pelos raios do sol, sob o céu aberto. Seu maior "
+"desejo foi realizado. \n"
+"(inscrito por Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:148
 msgid ""
@@ -4271,6 +4359,17 @@ msgid ""
 "enough, in possession of all of his teeth. \n"
 "(inscribed by Paterson)"
 msgstr ""
+"Este bravo guerreiro, conhecido como Rilhon entre as Nagas, ouviu contar de "
+"um tesouro fabuloso que foi perdido nestas cavernas aquáticas - uma lança, "
+"de cujo topo é dito que fora feito do dente de Chak'kso Ney'yks, um "
+"Basilisco Ancestral morto há muito tempo atrás pelo herói élfico, "
+"Eloralduil. De acordo com a lenda, a arma descansa em algum lugar no fundo "
+"deste lago (Lago Ruaskkolin, nome de uma bem conhecida serpente do mar que "
+"morava aqui). Se preparando para lutar contra a serpente, Rilhon se "
+"encontrou com duas surpresas bem grandes. A primeira foi a forma petreficada "
+"da serpente Ruaskkolin. A segunda foi um Chak'kso Ney'yks bem vivo, que, "
+"aparentemente, ainda tinha todos os seus dentes consigo. \n"
+"(inscrito por Paterson)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:170
 msgid ""
@@ -4290,6 +4389,21 @@ msgid ""
 "\n"
 "(inscribed by MJQ)"
 msgstr ""
+"Por ondas e canais rochosos \n"
+"Azul e branco \n"
+"Ela puxou e empurrou as ondas \n"
+"E ensinou aos peixes como falar com os planetas \n"
+"Verde prateado\n"
+"E magia\n"
+"Correndo por seu espírito para as peles dos corais, e conchas dos caramujos\n"
+"O rebolar de sua cauda e mãos \n"
+"Ela enviou suas canções a correr em pequeninas pernas pelas areias \n"
+"E agora\n"
+"E agora a mais estranha pausa \n"
+"Por séculos\n"
+"Ela não moveu seus olhos\n"
+"\n"
+"(inscrito por MJQ)"
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
 msgid "2p - Charge"
@@ -4400,7 +4514,7 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:36
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:37
 msgid "Sulla's statue"
-msgstr ""
+msgstr "Estátua de Sulla"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -4686,7 +4800,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
-msgstr ""
+msgstr "6p - Pôr do Sol em Waterloo"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
 msgid ""
@@ -4695,6 +4809,11 @@ msgid ""
 "(north vs. south), but having players 136 or 146 as a team is also "
 "interesting.  Designed for 150gp, 44 villages."
 msgstr ""
+"Um mapa grande de 40X30 hexágonos para 3 contra 3 jogadores. Uma coordenação "
+"flexível de sua aliança é necessária para evitar ser sobrepujado. Os times "
+"devem ser os jogadores 1,3, e 5 contra 2, 4 e 6 (norte contra sul), mas "
+"montar um time com os jogadores 1, 3 e 6 ou 1, 4 e 6 também é interessante. "
+"Recomenda-se 150 ouros iniciais, 44 aldeias."
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
 msgid "8p - Morituri"
@@ -8154,9 +8273,8 @@ msgstr ""
 "Notas especiais:"
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Mermaid Siren"
-msgstr "Lanceiro Sereio"
+msgstr "Sirene"
 
 #: data/units/Mermaid_Siren.cfg:23
 msgid ""
@@ -8893,7 +9011,6 @@ msgid "Saurian Flanker"
 msgstr "Lagarto Flanqueador"
 
 #: data/units/Saurian_Flanker.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -10725,10 +10842,10 @@ msgid "Search"
 msgstr "Procurar"
 
 #: src/menu_events.cpp:1334
-#, fuzzy
 msgid "Commands: whisper ignore emote. Type /help [command] for more help."
 msgstr ""
-"Comandos: whisper ignore. Escreva /help [comando] para maiores informações."
+"Comandos: whisper ignore emote. Escreva /help [comando] para maiores "
+"informações."
 
 #: src/menu_events.cpp:1385
 msgid ""
@@ -10772,7 +10889,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1403
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
-msgstr ""
+msgstr "Envie uma emoção ou ação pessoal no chat. Uso: /emote [mensagem]"
 
 #: src/menu_events.cpp:1405
 msgid "Unknown command"
@@ -11689,57 +11806,3 @@ msgstr "Você pode ver os resultados em:"
 #: src/upload_log.cpp:284
 msgid "Help us make Wesnoth better for you!"
 msgstr "Ajude-nos a fazer um Wesnoth melhor para você!"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Upkeep is also fairly simple. Each unit requires an amount of Upkeep "
-#~ "equal to its level. For example, if you have five level one units and one "
-#~ "level two unit, all your upkeep would cost 7 gold each turn."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Gastos também são calculados de maneira bem simples. Cada unidade requer "
-#~ "uma quantidade de manutenção igual ao seu nível. Por exemplo, se você tem "
-#~ "5 unidades de nível 1, e uma unidade de nível 2, então a manutenção delas "
-#~ "totaliza 7 peças de ouro por turno."
-
-#~ msgid "2p - Divide and Conquer"
-#~ msgstr "2p - Dividir e Conquistar"
-
-#~ msgid ""
-#~ "This small duel map divides the field of battle into three segments. "
-#~ "Recommended setting of 2 gold per village."
-#~ msgstr ""
-#~ "Este pequeno mapa divide o campo de batalha em três segmentos. Recomenda-"
-#~ "se 2 ouros por vila."
-
-#~ msgid "base damage"
-#~ msgstr "dano básico"
-
-#~ msgid "Halved"
-#~ msgstr "Dividido por 2"
-
-#~ msgid "attacker resistance vs"
-#~ msgstr "resistência do atacante contra"
-
-#~ msgid "attacker vulnerability vs"
-#~ msgstr "vulnerabilidade do atacante contra"
-
-#~ msgid "total damage"
-#~ msgstr "dano total"
-
-#~ msgid "defender resistance vs"
-#~ msgstr "resistência do defensor contra"
-
-#~ msgid "defender vulnerability vs"
-#~ msgstr "vulnerabilidade do defensor contra"
-
-#~ msgid "(both should survive)"
-#~ msgstr "(ambos devem sobreviver)"
-
-#~ msgid "% Pr[kills/killed by/both survive]"
-#~ msgstr "% Pr[mata/foi morto/ambos sobrevivem]"
-
-#~ msgid "Siren"
-#~ msgstr "Sirene"
