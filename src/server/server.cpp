@@ -1164,21 +1164,32 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 			//now sync players in the lobby again, to remove the game
 			lobby_players_.send_data(sync_initial_response());
+		} else {
+			const player_map::iterator pl = players_.find(sock);
+			if(pl != players_.end() && !obs) {
+				const config& msg = construct_server_message(pl->second.name() + " has left the game",*g);
+				g->send_data(msg);
+			} else {
+				std::cerr << "ERROR: Could not find player in map\n";
+			}
+	
+			if (needed){
+				//transfer game control to another player
+				const player* player = g->transfer_game_control();
+				if (player != NULL){
+					const config& msg = construct_server_message(player->name() + " has been chosen as new host", *g);
+					g->send_data(msg);
+				}
+			}
 		}
-
-		lobby_players_.add_player(sock);
-
 		//mark the player as available in the lobby
 		const player_map::iterator pl = players_.find(sock);
 		if(pl != players_.end()) {
-			if(!obs) {
-				const config& msg = construct_server_message(pl->second.name() + " has left the game",*g);
-				g->send_data(msg);
-			}
 			pl->second.mark_available(true,"");
 		} else {
 			std::cerr << "ERROR: Could not find player in map\n";
 		}
+		lobby_players_.add_player(sock);
 
 		if (needed){
 			//transfer game control to another player
