@@ -155,7 +155,7 @@ struct save_info {
 };
 
 //function to get a list of available saves.
-std::vector<save_info> get_saves_list();
+std::vector<save_info> get_saves_list(const std::string *dir = NULL);
 
 //enum WRITE_GAME_MODE { WRITE_SNAPSHOT_ONLY, WRITE_FULL_GAME };
 

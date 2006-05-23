@@ -17,7 +17,7 @@
 class display;
 class gamestatus;
 class replay;
-class combatant;
+struct combatant;
 
 #include "global.hpp"
 

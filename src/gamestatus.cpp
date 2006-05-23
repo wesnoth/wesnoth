@@ -405,9 +405,9 @@ struct save_info_less_time {
 	}
 };
 
-std::vector<save_info> get_saves_list()
+std::vector<save_info> get_saves_list(const std::string *dir)
 {
-	const std::string& saves_dir = get_saves_dir();
+	const std::string& saves_dir = (dir) ? *dir : get_saves_dir();
 
 	std::vector<std::string> saves;
 	get_files_in_dir(saves_dir,&saves);
