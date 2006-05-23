@@ -799,7 +799,8 @@ void menu::column_widths_item(const std::vector<std::string>& row, std::vector<i
 bool menu::item_ends_with_image(const std::string& item) const
 {
 	std::string::size_type pos = item.find_last_of(IMG_TEXT_SEPARATOR);
-	return(item.at((pos == std::string::npos) ? 0 : pos+1) == IMAGE_PREFIX);
+	pos = (pos == std::string::npos) ? 0 : pos+1;
+	return(item.size() > pos && item.at(pos) == IMAGE_PREFIX);
 }
 
 const std::vector<int>& menu::column_widths() const
