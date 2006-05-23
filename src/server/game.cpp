@@ -30,8 +30,7 @@ game::game(const player_map& info) : player_info_(&info), id_(id_num++), sides_t
 
 bool game::is_owner(network::connection player) const
 {
-	wassert(!players_.empty());
-	return player == players_.front();
+	return (!players_.empty() && player == players_.front());
 }
 
 bool game::is_member(network::connection player) const
@@ -41,8 +40,7 @@ bool game::is_member(network::connection player) const
 
 bool game::is_needed(network::connection player) const
 {
-	wassert(!players_.empty());
-	return player == players_.front();
+	return (!players_.empty() && player == players_.front());
 }
 
 bool game::is_observer(network::connection player) const
