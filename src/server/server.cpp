@@ -1190,15 +1190,6 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			std::cerr << "ERROR: Could not find player in map\n";
 		}
 		lobby_players_.add_player(sock);
-
-		if (needed){
-			//transfer game control to another player
-			const player* player = g->transfer_game_control();
-			if (player != NULL){
-				const config& msg = construct_server_message(player->name() + " has been chosen as new host", *g);
-				g->send_data(msg);
-			}
-		}
 		
 		//send the player who has quit the game list
 		network::send_data(initial_response_,sock);
