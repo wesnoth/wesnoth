@@ -25,8 +25,8 @@ turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
 			 replay_network_sender& replay_sender, undo_list& undo_stack)
   : gameinfo_(gameinfo), state_of_game_(state_of_game), status_(status),
     gui_(gui), map_(map), teams_(teams), team_num_(team_num),
-    units_(units), replay_sender_(replay_sender), replay_error_("network_replay_error"),
-	undo_stack_(undo_stack)
+    units_(units), undo_stack_(undo_stack),
+	replay_sender_(replay_sender), replay_error_("network_replay_error")
 {}
 
 turn_info::~turn_info(){
