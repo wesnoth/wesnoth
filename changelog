@@ -35,7 +35,10 @@ SVN trunk (1.1.2+svn):
    * impassable mountain terrain
    * portraits: troll, assassin, dwarf-guard from old UtBS
    * death animations: vampire bat, goblin impaler, sea serpent, skeleton
-   * new attack animations: goblin impaler, orcish slurbow & archer, elder mage
+   * new attack animations: goblin impaler, orcish slurbow & archer, elder mage,
+     master-at-arms, white mage
+   * timing in most animations changed to make them look smoother
+   * minor changes or filler frames added to several animations
    * new attack icons: bow, club, dark missile, druid staff, elven sword,
      entangle, flaming sword, frenzy, lance, human sabre, human throwing
      dagger, mace, morning star, mud glob, orcish dagger, orcish greatsword,
@@ -43,9 +46,9 @@ SVN trunk (1.1.2+svn):
      wail, zombie touch
    * hitpoint distribution graphs under Damage Calculations
    * improvements to loadscreen progressbar
-   * new selection stlye for menu listboxes
+   * new selection style for menu listboxes
    * many units and animations updated for team color support
-   * units now have standing animations that are used when standing
+   * units can now have standing animations that are used when standing
  * multiplayer maps:
    * added multiplayer maps: 8p Morituri, Waterloo Sunset, Caves of the Basilisk,
      Isar's Cross, Merkwuerdigliebe
@@ -57,10 +60,11 @@ SVN trunk (1.1.2+svn):
      Siege Castles, Waterloo Sunset
  * music & sound
    * new or improved sounds: thunderstick and dragonstick, fist, club, hatchet,
-     throwing knives, walking corpse hit, bow, orcish bow, fire bow, wolf bite,
-     claws, wose attack, wose hit, wose death, dwarf hit, dwarf death, sling,
-     crossbow, fire crossbow, sword, drake hit, naga hit, naga die, axe, torch,
-     big dark magic, gryphon hit, gryphon die
+     throwing knives, zombie hit, bow, orcish bow + fire bow, wolf bite, claws,
+     wose attack & hit & die, dwarf hit & die, sling, big sling, crossbow +
+     fire crossbow, sword, drake hit, naga hit & die, axe, torch, big dark magic,
+     gryphon hit & die, human hit & die & female versions & old male versions,
+     goblin hit & die, horse hit & die
    * minor edits to several sounds
    * support for randomly chosen variations of sounds
  * language and i18n:
