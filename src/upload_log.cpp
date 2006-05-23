@@ -133,6 +133,7 @@ upload_log::~upload_log()
 		config_["version"] = VERSION;
 		config_["format_version"] = "1";
 		config_["id"] = preferences::upload_id();
+		config_["serial"] = lexical_cast<std::string>(time(NULL)) + filename_;
 		std::ostream *out = ostream_file(filename_);
 		write(*out, config_);
 		delete out;

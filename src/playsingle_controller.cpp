@@ -204,8 +204,10 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		}
 
 		if(end_level.result == QUIT) {
+			log.quit(status_.turn());
 			return end_level.result;
 		} else if(end_level.result == DEFEAT) {
+			log.defeat(status_.turn());
 			try {
 				game_events::fire("defeat");
 			} catch(end_level_exception&) {
@@ -221,6 +223,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				game_events::fire("victory");
 			} catch(end_level_exception&) {
 			}
+			if (first_human_team_ != -1)
+				log.victory(status_.turn(), teams_[first_human_team_].gold());
 
 			if(gamestate_.scenario == (level_)["id"]) {
 				gamestate_.scenario = (level_)["next_scenario"];
