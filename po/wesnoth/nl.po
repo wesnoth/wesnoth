@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-05-19 17:43+0200\n"
+"POT-Creation-Date: 2006-05-23 20:43+0200\n"
 "PO-Revision-Date: 2006-04-30 20:01+0200\n"
 "Last-Translator: Maarten Albrecht <maartenalbrecht@gmail.com>\n"
 "Language-Team: Dutch translation <maartenalbrecht@gmail.com>\n"
@@ -583,7 +583,7 @@ msgstr "Turkse Vertaling"
 msgid "Contributors"
 msgstr "Bijdragen"
 
-#: data/about.cfg:516
+#: data/about.cfg:517
 msgid "Bots"
 msgstr "Bots"
 
@@ -670,7 +670,7 @@ msgstr ""
 #: data/units/Human_Loyalist_Swordsman.cfg:32 data/units/Naga_Fighter.cfg:29
 #: data/units/Naga_Myrmidon.cfg:34 data/units/Naga_Warrior.cfg:33
 #: data/units/Orcish_Grunt.cfg:38 data/units/Orcish_Leader.cfg:33
-#: data/units/Undead_Skele_Deathblade.cfg:42
+#: data/units/Undead_Skele_Deathblade.cfg:43
 msgid "sword"
 msgstr "zwaard"
 
@@ -733,7 +733,7 @@ msgstr "zwaard"
 #: data/units/Human_Loyalist_Cavalier.cfg:55
 #: data/units/Human_Loyalist_Cavalryman.cfg:57
 #: data/units/Human_Loyalist_Dragoon.cfg:60
-#: data/units/Human_Loyalist_Duelist.cfg:78
+#: data/units/Human_Loyalist_Duelist.cfg:91
 #: data/units/Human_Loyalist_Fencer.cfg:82
 #: data/units/Human_Loyalist_General.cfg:48
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:44
@@ -764,8 +764,8 @@ msgstr "zwaard"
 #: data/units/Undead_Corpse_Necrophage.cfg:41
 #: data/units/Undead_Skele_Bone_Shooter.cfg:44
 #: data/units/Undead_Skele_Death_Knight.cfg:40
-#: data/units/Undead_Skele_Deathblade.cfg:43
-#: data/units/Undead_Skele_Draug.cfg:43
+#: data/units/Undead_Skele_Deathblade.cfg:44
+#: data/units/Undead_Skele_Draug.cfg:44
 #: data/units/Undead_Skele_Revenant.cfg:42 data/units/Undead_Skeleton.cfg:74
 #: data/units/Undead_Spirit_Nightgaunt.cfg:60
 #: data/units/Undead_Spirit_Shadow.cfg:34
@@ -886,7 +886,7 @@ msgstr ""
 #: data/units/Elvish_Ranger.cfg:125 data/units/Elvish_Rider.cfg:101
 #: data/units/Elvish_Scout.cfg:98 data/units/Human_Loyalist_Bowman.cfg:88
 #: data/units/Human_Loyalist_Longbowman.cfg:88
-#: data/units/Human_Loyalist_Master_Bowman.cfg:96
+#: data/units/Human_Loyalist_Master_Bowman.cfg:78
 #: data/units/Human_Outlaw_Poacher.cfg:81
 #: data/units/Human_Outlaw_Trapper.cfg:82 data/units/Orcish_Archer.cfg:261
 #: data/units/Orcish_Archer.cfg:348 data/units/Orcish_Leader.cfg:59
@@ -933,7 +933,7 @@ msgstr "boog"
 #: data/units/Human_Loyalist_Bowman.cfg:89
 #: data/units/Human_Loyalist_Cavalier.cfg:122
 #: data/units/Human_Loyalist_Dragoon.cfg:127
-#: data/units/Human_Loyalist_Duelist.cfg:123
+#: data/units/Human_Loyalist_Duelist.cfg:136
 #: data/units/Human_Loyalist_General.cfg:123
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:99
 #: data/units/Human_Loyalist_Halberdier.cfg:38
@@ -941,7 +941,7 @@ msgstr "boog"
 #: data/units/Human_Loyalist_Javelineer.cfg:112
 #: data/units/Human_Loyalist_Lieutenant.cfg:53
 #: data/units/Human_Loyalist_Longbowman.cfg:89
-#: data/units/Human_Loyalist_Master_Bowman.cfg:97
+#: data/units/Human_Loyalist_Master_Bowman.cfg:79
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:240
 #: data/units/Human_Loyalist_Pikeman.cfg:61
 #: data/units/Human_Loyalist_Sergeant.cfg:101
@@ -1109,7 +1109,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:104
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:32
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:88
-#: data/units/Human_Loyalist_Duelist.cfg:76
+#: data/units/Human_Loyalist_Duelist.cfg:89
 #: data/units/Human_Loyalist_Fencer.cfg:80
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:27
 msgid "sabre"
@@ -4101,7 +4101,7 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:99
 msgid ""
 "Slim of Stature, dexterous Hands \n"
-"- - Seven Stones and Eleven (*) \n"
+"- - Seven Stones and Eleven \n"
 "Left his Foes so slim a Chance \n"
 "- - Seven Stones and Eleven \n"
 "Marksman known as Dragonbane \n"
@@ -4463,15 +4463,27 @@ msgstr ""
 "Kleine kaart voor twee tegen twee. Aanbevolen wordt 2 goud per dorp in te "
 "stellen."
 
+#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
+msgid "4p - Isar's Cross"
+msgstr ""
+
+#: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
+msgid ""
+"A very small 2v2 map.  Close quarters fighting means the successful rotation "
+"of units and planning of moves is important.  Teams set for players 1&4 v "
+"2&3 (northeast vs. southwest).  Designed for 75gp, 20 villages."
+msgstr ""
+
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 msgid "4p - King of the Hill"
 msgstr "4p - Koning van de Heuvel"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
+#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
-"4 player free for all map. Can be played with teams as well. There are 36 "
-"villages. Recommended setting of 2 gold per village."
+"4 player FFA map. Works fine 2v2 as well. There are 36 villages. Recommended "
+"setting of 2gpv."
 msgstr ""
 "De beheersing over het gebied rond de centrale donjon is zeer winstgevend op "
 "deze kaart. Kan ook met teams gespeeld worden. Aanbevolen wordt 2 goud per "
@@ -4494,10 +4506,10 @@ msgid "4p - Loris River"
 msgstr "4p - Lorisrivier"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
+#, fuzzy
 msgid ""
-"A 25x25 2v2 map centered around a river with a pair of keeps in opposite "
-"corners. Designed for 1&3 vs 2&4. There are 28 villages. Recommended setting "
-"of 2 gold per village."
+"A 25x25 2v2 map centered around a river with keeps in opposite corners. "
+"Designed for 1&4 vs 2&3. There are 28 villages. Recommended setting of 2gpv."
 msgstr ""
 "Een twee tegen twee kaart met tweemaal twee donjons in tegenovergestelde "
 "hoeken, gescheiden door een rivier. Aanbevolen wordt 2 goud per dorp in te "
@@ -4520,10 +4532,11 @@ msgid "4p - Paths of Daggers"
 msgstr "4p - Dolkwegen"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
+#, fuzzy
 msgid ""
-"A 35X27 2 vs. 2 map with five separate paths of engagement.  Balanced to be "
-"played east vs west (1&3 vs 2&4), but works well with any teams or FFA.  "
-"Recommended setting of 2 gold per village. 28 villages."
+"A 35X27 2v2 map with 5 separate paths of engagement.  Balanced to be played "
+"east vs west (1&4 vs 2&3), but works well with any teams or FFA.  2gpv. "
+"28villages."
 msgstr ""
 "Een kaart met vijf verschillende wegen naar de confrontatie. Gemaakt om met "
 "oost tegen west te spelen (1&3 vs 2&4). Aanbevolen wordt 2 goud per dorp in "
@@ -4534,10 +4547,11 @@ msgid "4p - Siege Castles"
 msgstr "4p - Belegeringen"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
+#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
-"rivers. Works well 2 vs 2 or FFA. There are approximately 45 villages. "
-"Recommended setting of 2 gold per village."
+"rivers. Works well 2v2 or FFA. There are approximately 45 villages. "
+"Recommended setting of 2gpv."
 msgstr ""
 "Vier machtige kastelen bij het samenkomen van twee rivieren. Aanbevolen "
 "wordt 2 goud per dorp in te stellen."
@@ -4607,10 +4621,10 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
 msgid ""
-"A 40X30 hexes big 3 vs 3 map.  Flexible coordination of your alliance is "
-"required to avoid being outnumbered.  Teams set for players 135 vs. 246 "
-"(north vs. south), but having players 136 or 146 as a team is also "
-"interesting.  Designed for 150gp, 44 villages."
+"A 40X30 3v3.  Flexible coordination of your alliance is required to avoid "
+"being outnumbered.  Teams set for players 145vs236 (north vs south), but "
+"having players 146 or 136 as a side also is interesting.  Designed for "
+"150gp, has 44 villages."
 msgstr ""
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
@@ -4625,6 +4639,18 @@ msgstr ""
 "Teamplay en taktiek zijn de sleutel tot de overwinning in dit opmerkelijke "
 "strijdperk waar acht legers elkaar bevechten. Aanbevolen wordt 2 goud per "
 "dorp in te stellen."
+
+#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
+msgid "9p - Merkwuerdigliebe"
+msgstr ""
+
+#: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
+msgid ""
+"A very small 3v3v3map.  A 60sec timer is recommended due to the large number "
+"of players.  The teams are players 159 v 267 v 348 (north v southeast v "
+"southwest).  There are very few vilages per player, so 3gpv is also "
+"recommended."
+msgstr ""
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:8
@@ -4996,11 +5022,11 @@ msgstr "Acties"
 msgid "End Turn"
 msgstr "Einde Beurt"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2216
+#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2248
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:180 src/menu_events.cpp:235 src/menu_events.cpp:668
+#: data/themes/default.cfg:180 src/menu_events.cpp:235 src/menu_events.cpp:683
 msgid "XP"
 msgstr "XP"
 
@@ -5855,7 +5881,7 @@ msgstr ""
 "hun best in bergrijke gebieden en ondergronds. Hun gebrek aan snelheid wordt "
 "ruimschoots gecompenseerd door hun kracht en uithoudingsvermogen."
 
-#: data/units/Dwarvish_Fighter.cfg:29 data/units/Undead_Skele_Draug.cfg:42
+#: data/units/Dwarvish_Fighter.cfg:29 data/units/Undead_Skele_Draug.cfg:43
 #: data/units/Undead_Skele_Revenant.cfg:41 data/units/Undead_Skeleton.cfg:73
 msgid "axe"
 msgstr "bijl"
@@ -6846,7 +6872,7 @@ msgstr ""
 
 #: data/units/Human_Loyalist_Cavalier.cfg:121
 #: data/units/Human_Loyalist_Dragoon.cfg:126
-#: data/units/Human_Loyalist_Duelist.cfg:122
+#: data/units/Human_Loyalist_Duelist.cfg:135
 #: data/units/Human_Loyalist_General.cfg:122
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:98
 #: data/units/Human_Loyalist_Lieutenant.cfg:52
@@ -8980,7 +9006,7 @@ msgstr ""
 msgid "Deathblade"
 msgstr "Doodskling"
 
-#: data/units/Undead_Skele_Deathblade.cfg:18
+#: data/units/Undead_Skele_Deathblade.cfg:19
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters will often "
@@ -8999,7 +9025,7 @@ msgstr ""
 msgid "Draug"
 msgstr "Draug"
 
-#: data/units/Undead_Skele_Draug.cfg:18
+#: data/units/Undead_Skele_Draug.cfg:19
 msgid ""
 "Towering remains of what once were legendary warriors, the Draug strike fear "
 "in the hearts of all who oppose them. They are driven not by malice, but are "
@@ -9317,8 +9343,8 @@ msgstr "+Ontwikkelaars"
 msgid "+General Purpose Administrators"
 msgstr "+Algemene Administratie"
 
-#: src/about.cpp:82 src/about.cpp:112 src/multiplayer_connect.cpp:256
-#: src/multiplayer_connect.cpp:310 src/multiplayer_wait.cpp:407
+#: src/about.cpp:82 src/about.cpp:112 src/multiplayer_connect.cpp:271
+#: src/multiplayer_connect.cpp:347 src/multiplayer_wait.cpp:407
 msgid "+"
 msgstr "+"
 
@@ -9330,56 +9356,56 @@ msgstr "+  "
 msgid "Close"
 msgstr "Sluiten"
 
-#: src/actions.cpp:111
+#: src/actions.cpp:112
 msgid "You don't have a leader to recruit with."
 msgstr "Je hebt geen leider om mee te rekruteren."
 
-#: src/actions.cpp:118
+#: src/actions.cpp:119
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Je leider moet op een donjon staan om eenheden te rekruteren of op te roepen."
 
-#: src/actions.cpp:137
+#: src/actions.cpp:138
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Er zijn geen lege velden waarop een eenheid kan worden gerekruteerd."
 
-#: src/actions.cpp:798 src/actions.cpp:1029
+#: src/actions.cpp:917 src/actions.cpp:1148
 msgid "poisoned"
 msgstr "vergiftigd"
 
-#: src/actions.cpp:805 src/actions.cpp:1036
+#: src/actions.cpp:924 src/actions.cpp:1155
 msgid "slowed"
 msgstr "vertraagd"
 
-#: src/actions.cpp:815 src/actions.cpp:1047
+#: src/actions.cpp:934 src/actions.cpp:1166
 msgid "stone"
 msgstr "versteen"
 
-#: src/actions.cpp:1836
+#: src/actions.cpp:1955
 msgid "Ambushed!"
 msgstr "Hinderlaag!"
 
-#: src/actions.cpp:1871
+#: src/actions.cpp:1990
 msgid "Friendly unit sighted"
 msgstr "Bevriende eenheid in zicht!"
 
-#: src/actions.cpp:1873
+#: src/actions.cpp:1992
 msgid "Enemy unit sighted!"
 msgstr "Vijandelijke eenheid in zicht!"
 
-#: src/actions.cpp:1878
+#: src/actions.cpp:1997
 msgid "$friends Friendly units sighted"
 msgstr "$friends Bevriende troepen gesignaleerd"
 
-#: src/actions.cpp:1880
+#: src/actions.cpp:1999
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies Vijandelijke troepen gesignaleerd!"
 
-#: src/actions.cpp:1884
+#: src/actions.cpp:2003
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Troepen gesignaleerd! (($friends bevriende, $enemies vijandelijke)"
 
-#: src/actions.cpp:1899
+#: src/actions.cpp:2018
 msgid "(press $hotkey to continue)"
 msgstr "(druk $hotkey om door te gaan)"
 
@@ -9423,11 +9449,11 @@ msgstr "%a %d %b %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(ongeldig)"
 
-#: src/dialogs.cpp:383 src/game.cpp:760
+#: src/dialogs.cpp:383 src/game.cpp:770
 msgid "Campaign"
 msgstr "Veldtocht"
 
-#: src/dialogs.cpp:385 src/game.cpp:1156
+#: src/dialogs.cpp:385 src/game.cpp:1166
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
@@ -9513,8 +9539,8 @@ msgstr ""
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:560 src/game.cpp:893 src/help.cpp:1166
-#: src/menu_events.cpp:233 src/menu_events.cpp:666
+#: src/dialogs.cpp:560 src/game.cpp:903 src/help.cpp:1166
+#: src/menu_events.cpp:233 src/menu_events.cpp:681
 #: src/multiplayer_lobby.cpp:32
 msgid "Name"
 msgstr "Naam"
@@ -9555,7 +9581,7 @@ msgstr "Zetten: "
 msgid "Screenshot"
 msgstr "Schermafdruk"
 
-#: src/game.cpp:394 src/game.cpp:1240
+#: src/game.cpp:394 src/game.cpp:1250
 msgid "The Battle for Wesnoth"
 msgstr "Strijd om Wesnoth"
 
@@ -9565,7 +9591,7 @@ msgstr ""
 "Waarschuwing: Het bestand dat je hebt proberen laden is corrupt. Het wordt "
 "toch geladen.\n"
 
-#: src/game.cpp:652 src/multiplayer_connect.cpp:1054
+#: src/game.cpp:652 src/multiplayer_connect.cpp:1109
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -9573,7 +9599,7 @@ msgstr ""
 "Dit opgeslagen spel is van een andere versie van Strijd om Wesnoth. Wil je "
 "proberen het te laden?"
 
-#: src/game.cpp:660 src/game.cpp:663 src/multiplayer_connect.cpp:1039
+#: src/game.cpp:660 src/game.cpp:663 src/multiplayer_connect.cpp:1094
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Het bestand dat je hebt proberen laden is corrupt: '"
 
@@ -9581,246 +9607,251 @@ msgstr "Het bestand dat je hebt proberen laden is corrupt: '"
 msgid "File I/O Error while reading the game"
 msgstr "Bestand I/O fout."
 
-#: src/game.cpp:750
+#: src/game.cpp:709 src/game.cpp:713 src/menu_events.cpp:474
+#: src/play_controller.cpp:620
+msgid "Auto-Save"
+msgstr "Auto-Save"
+
+#: src/game.cpp:760
 msgid "Get More Campaigns..."
 msgstr "Meer veldtochten..."
 
-#: src/game.cpp:751
+#: src/game.cpp:761
 msgid "Download more campaigns from an Internet server."
 msgstr "Download meer veldtochen van een server op het internet."
 
-#: src/game.cpp:761
+#: src/game.cpp:771
 msgid "Choose the campaign you want to play:"
 msgstr "Kies de veldtocht die je wilt spelen:"
 
-#: src/game.cpp:789
+#: src/game.cpp:799
 msgid "Difficulty"
 msgstr "Niveau"
 
-#: src/game.cpp:790
+#: src/game.cpp:800
 msgid "Select difficulty level:"
 msgstr "Kies een niveau:"
 
-#: src/game.cpp:815
+#: src/game.cpp:825
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:818
+#: src/game.cpp:828
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:821
+#: src/game.cpp:831
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:848
+#: src/game.cpp:858
 msgid "Connect to Server"
 msgstr "Met server verbinden"
 
-#: src/game.cpp:849
+#: src/game.cpp:859
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr "Maak verbinding met een veldtocht-server."
 
-#: src/game.cpp:850
+#: src/game.cpp:860
 msgid "Server: "
 msgstr "Server:"
 
-#: src/game.cpp:863
+#: src/game.cpp:873
 msgid "Could not connect to host."
 msgstr "Kon geen verbinding maken met 'host'"
 
-#: src/game.cpp:871
+#: src/game.cpp:881
 msgid "Asking for campaign list"
 msgstr "Bezig een lijst met veldtochten op te vragen"
 
-#: src/game.cpp:884
+#: src/game.cpp:894
 msgid "Error communicating with the server."
 msgstr "Fout bij communiceren met server."
 
-#: src/game.cpp:893 src/titlescreen.cpp:183
+#: src/game.cpp:903 src/titlescreen.cpp:183
 msgid "Version"
 msgstr "Versie"
 
-#: src/game.cpp:894
+#: src/game.cpp:904
 msgid "Author"
 msgstr "Auteur"
 
-#: src/game.cpp:894
+#: src/game.cpp:904
 msgid "Downloads"
 msgstr "Downloads"
 
-#: src/game.cpp:894
+#: src/game.cpp:904
 msgid "Size"
 msgstr "Grootte"
 
-#: src/game.cpp:955
+#: src/game.cpp:965
 msgid "Publish campaign: "
 msgstr "Veldtocht publiceren:"
 
-#: src/game.cpp:959
+#: src/game.cpp:969
 msgid "Delete campaign: "
 msgstr "Veldtocht verwijderen:"
 
-#: src/game.cpp:963
+#: src/game.cpp:973
 msgid "There are no campaigns available for download from this server."
 msgstr "Er zijn geen veldtochten beschikbaar om te downloaden van deze server."
 
-#: src/game.cpp:970
+#: src/game.cpp:980
 msgid "Choose the campaign to download."
 msgstr "Kies een veldtocht om te downloaden."
 
-#: src/game.cpp:970
+#: src/game.cpp:980
 msgid "Get Campaign"
 msgstr "Veldtocht downloaden"
 
-#: src/game.cpp:989
+#: src/game.cpp:999
 msgid "Downloading campaign..."
 msgstr "Veldtocht aan het downloaden..."
 
-#: src/game.cpp:1013
+#: src/game.cpp:1023
 msgid "Cannot rescan the filesystem"
 msgstr "Kan het bestandsysteem niet opnieuw scannen"
 
-#: src/game.cpp:1028
+#: src/game.cpp:1038
 msgid "Campaign Installed"
 msgstr "Veldtocht geïnstalleerd."
 
-#: src/game.cpp:1028
+#: src/game.cpp:1038
 msgid "The campaign has been installed."
 msgstr "De veldtocht is geïnstalleerd."
 
-#: src/game.cpp:1030
+#: src/game.cpp:1040
 msgid "Network communication error."
 msgstr "Netwerk communicatie fout."
 
-#: src/game.cpp:1032
+#: src/game.cpp:1042
 msgid "Remote host disconnected."
 msgstr "'Remote host' brak verbinding af."
 
-#: src/game.cpp:1034
+#: src/game.cpp:1044
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Er was een probleem om de bestanden te genereren die nodig zijn voor deze "
 "veldtocht."
 
-#: src/game.cpp:1046 src/game.cpp:1085 src/game.cpp:1110
+#: src/game.cpp:1056 src/game.cpp:1095 src/game.cpp:1120
 #: src/multiplayer.cpp:205 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:333
 msgid "Connection timed out"
 msgstr "Connectie timed out"
 
-#: src/game.cpp:1049 src/game.cpp:1087 src/game.cpp:1112
+#: src/game.cpp:1059 src/game.cpp:1097 src/game.cpp:1122
 msgid "The server responded with an error: \""
 msgstr "De server antwoordde met een fout: \""
 
-#: src/game.cpp:1053
+#: src/game.cpp:1063
 msgid "Terms"
 msgstr "Afspraken"
 
-#: src/game.cpp:1083
+#: src/game.cpp:1093
 msgid "Sending campaign"
 msgstr "Veldtocht wordt verstuurd"
 
-#: src/game.cpp:1090 src/game.cpp:1115 src/multiplayer_wait.cpp:311
+#: src/game.cpp:1100 src/game.cpp:1125 src/multiplayer_wait.cpp:311
 msgid "Response"
 msgstr "Antwoord"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1147
 msgid "Join Official Server"
 msgstr "Inloggen op de officiële server"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1148
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Log in op de officiële Wesnoth multiplayerserver"
 
-#: src/game.cpp:1140 src/multiplayer_lobby.cpp:463
+#: src/game.cpp:1150 src/multiplayer_lobby.cpp:463
 msgid "Join Game"
 msgstr "Meedoen met een netwerkspel"
 
-#: src/game.cpp:1141
+#: src/game.cpp:1151
 msgid "Join a server or hosted game"
 msgstr "Log in op server of host een Spel"
 
-#: src/game.cpp:1143
+#: src/game.cpp:1153
 msgid "Host Networked Game"
 msgstr "Een netwerkspel beginnen"
 
-#: src/game.cpp:1144
+#: src/game.cpp:1154
 msgid "Host a game without using a server"
 msgstr "Host een spel zonder een server te gebruiken"
 
-#: src/game.cpp:1146
+#: src/game.cpp:1156
 msgid "Hotseat Game"
 msgstr "Een hotseat-spel beginnen"
 
-#: src/game.cpp:1147
+#: src/game.cpp:1157
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Speel een multiplayer-spel op één computer."
 
-#: src/game.cpp:1149
+#: src/game.cpp:1159
 msgid "Human vs AI"
 msgstr "Tegen de computer spelen"
 
-#: src/game.cpp:1150
+#: src/game.cpp:1160
 msgid "Play a game against AI opponents"
 msgstr "Speel een spel tegen de computer."
 
-#: src/game.cpp:1158 src/multiplayer.cpp:189
+#: src/game.cpp:1168 src/multiplayer.cpp:189
 msgid "Login: "
 msgstr "Login: "
 
-#: src/game.cpp:1160
+#: src/game.cpp:1170
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr "Je inlognaam is te lang. Gebruik maximaal 18 tekens."
 
-#: src/game.cpp:1194 src/playcampaign.cpp:107 src/playcampaign.cpp:312
+#: src/game.cpp:1204 src/playcampaign.cpp:107 src/playcampaign.cpp:312
 msgid "The game could not be loaded: "
 msgstr "Het spel kon niet worden geladen: "
 
-#: src/game.cpp:1196 src/playcampaign.cpp:109 src/playcampaign.cpp:315
+#: src/game.cpp:1206 src/playcampaign.cpp:109 src/playcampaign.cpp:315
 msgid "Error while playing the game: "
 msgstr "Fout tijdens spelen van het spel: "
 
-#: src/game.cpp:1208 src/playcampaign.cpp:111 src/playcampaign.cpp:318
+#: src/game.cpp:1218 src/playcampaign.cpp:111 src/playcampaign.cpp:318
 msgid "The game map could not be loaded: "
 msgstr "De kaart kon niet worden geladen: "
 
-#: src/game.cpp:1232
+#: src/game.cpp:1242
 msgid "Language"
 msgstr "Taal"
 
-#: src/game.cpp:1233
+#: src/game.cpp:1243
 msgid "Choose your preferred language:"
 msgstr "Kies een taal:"
 
-#: src/game.cpp:1378
+#: src/game.cpp:1388
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr ""
 "De volgende add-on veldtochten bevatten fouten en konden niet worden geladen:"
 
-#: src/game.cpp:1383
+#: src/game.cpp:1393
 msgid "ERROR DETAILS:"
 msgstr "DETAILS VAN DE FOUT:"
 
-#: src/game.cpp:1397
+#: src/game.cpp:1407
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Waarschuwing: Fout bij het inlezen van de configuratiebestanden: '"
 
-#: src/game.cpp:1447
+#: src/game.cpp:1457
 msgid "Error loading game configuration files: '"
 msgstr "Fout bij het inlezen van de configuratiebestanden: '"
 
-#: src/game.cpp:1448
+#: src/game.cpp:1458
 msgid "' (The game will now exit)"
 msgstr "' (Het spel wordt nu gesloten)"
 
-#: src/game.cpp:1581
+#: src/game.cpp:1591
 msgid "Battle for Wesnoth"
 msgstr "Strijd om Wesnoth"
 
-#: src/game.cpp:1723
+#: src/game.cpp:1733
 msgid "Loading title screen."
 msgstr ""
 
@@ -9860,7 +9891,7 @@ msgstr "Benodigde XP: "
 msgid "attacks"
 msgstr "aanvallen"
 
-#: src/help.cpp:1167 src/menu_events.cpp:232 src/menu_events.cpp:665
+#: src/help.cpp:1167 src/menu_events.cpp:232 src/menu_events.cpp:680
 msgid "Type"
 msgstr "Type"
 
@@ -9982,19 +10013,19 @@ msgstr "Standaardtaal Systeem"
 msgid "?"
 msgstr "?"
 
-#: src/loadscreen.cpp:155
+#: src/loadscreen.cpp:153
 msgid "Verifying cache."
 msgstr ""
 
-#: src/loadscreen.cpp:174
+#: src/loadscreen.cpp:172
 msgid "Reading cache."
 msgstr ""
 
-#: src/loadscreen.cpp:193
+#: src/loadscreen.cpp:191
 msgid "Reading unit files."
 msgstr ""
 
-#: src/loadscreen.cpp:212
+#: src/loadscreen.cpp:210
 msgid "Reading files and creating cache."
 msgstr ""
 
@@ -10060,7 +10091,7 @@ msgstr "Ontvangen schade (VW)"
 msgid "Statistics"
 msgstr "Statistieken"
 
-#: src/menu_events.cpp:237 src/unit.cpp:2247
+#: src/menu_events.cpp:237 src/unit.cpp:2279
 msgid "Moves"
 msgstr "Zetten"
 
@@ -10077,7 +10108,7 @@ msgid "Leader"
 msgstr "Leider"
 
 #: src/menu_events.cpp:299 src/menu_events.cpp:310
-#: src/multiplayer_connect.cpp:569
+#: src/multiplayer_connect.cpp:621
 msgid "Gold"
 msgstr "Goud"
 
@@ -10089,7 +10120,7 @@ msgstr "Dorpen"
 msgid "Upkeep"
 msgstr "Onderhoud"
 
-#: src/menu_events.cpp:303 src/multiplayer_connect.cpp:570
+#: src/menu_events.cpp:303 src/multiplayer_connect.cpp:622
 #: src/multiplayer_wait.cpp:405
 msgid "Income"
 msgstr "Inkomen"
@@ -10123,43 +10154,49 @@ msgstr "Het spel is opgeslagen"
 msgid "The game could not be saved"
 msgstr "Het spel kon niet worden opgeslagen"
 
-#: src/menu_events.cpp:484
+#: src/menu_events.cpp:476
+msgid "Could not auto save the game. Please save the game manually."
+msgstr ""
+"Kon het spel niet automatisch opslaan. Gelieve het spel handmatig op te "
+"slaan."
+
+#: src/menu_events.cpp:499
 msgid "Chat Log"
 msgstr "Chat-log"
 
-#: src/menu_events.cpp:494
+#: src/menu_events.cpp:509
 msgid "Message:"
 msgstr "Bericht:"
 
-#: src/menu_events.cpp:495
+#: src/menu_events.cpp:510
 msgid "Send to allies only"
 msgstr "Alleen naar bondgenoten sturen"
 
-#: src/menu_events.cpp:545 src/multiplayer_wait.cpp:401
+#: src/menu_events.cpp:560 src/multiplayer_wait.cpp:401
 msgid "unit^Gold"
 msgstr "Goud"
 
-#: src/menu_events.cpp:551
+#: src/menu_events.cpp:566
 msgid "You have no units available to recruit."
 msgstr "Er zijn geen eenheden beschikbaar om te rekruteren."
 
-#: src/menu_events.cpp:563
+#: src/menu_events.cpp:578
 msgid "Recruit"
 msgstr "Rekruteren"
 
-#: src/menu_events.cpp:564 src/menu_events.cpp:707
+#: src/menu_events.cpp:579 src/menu_events.cpp:722
 msgid "Select unit:"
 msgstr "Selecteer een eenheid:"
 
-#: src/menu_events.cpp:604
+#: src/menu_events.cpp:619
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Je hebt niet genoeg goud om die eenheid te rekruteren"
 
-#: src/menu_events.cpp:658
+#: src/menu_events.cpp:673
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Je bent van je troepen gescheiden en dus kun je hen niet oproepen."
 
-#: src/menu_events.cpp:660
+#: src/menu_events.cpp:675
 #, fuzzy
 msgid ""
 "There are no troops available to recall\n"
@@ -10168,129 +10205,119 @@ msgstr ""
 "Er zijn geen troepen beschikbaar om op te roepen\n"
 "(Je moet overlevende veteranen uit vorige scenario's hebben)"
 
-#: src/menu_events.cpp:667
+#: src/menu_events.cpp:682
 msgid "Level"
 msgstr "Rang"
 
-#: src/menu_events.cpp:694
+#: src/menu_events.cpp:709
 msgid "Dismiss Unit"
 msgstr "Eenheid ontslaan"
 
-#: src/menu_events.cpp:706
+#: src/menu_events.cpp:721
 msgid "Recall"
 msgstr "Oproepen"
 
-#: src/menu_events.cpp:718
+#: src/menu_events.cpp:733
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Je moet tenminste $cost goudstukken hebben om een eenheid op te roepen"
 
-#: src/menu_events.cpp:1044
+#: src/menu_events.cpp:1059
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Je hebt deze beurt nog niets gedaan. Weet je zeker dat je de beurt wilt "
 "beëindigen?"
 
-#: src/menu_events.cpp:1052 src/menu_events.cpp:1057
+#: src/menu_events.cpp:1067 src/menu_events.cpp:1072
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Sommige eenheden kunnen nog bewegen. Wil je echt je beurt beëindigen?"
 
-#: src/menu_events.cpp:1071
-msgid "Auto-Save"
-msgstr "Auto-Save"
-
-#: src/menu_events.cpp:1073
-msgid "Could not auto save the game. Please save the game manually."
-msgstr ""
-"Kon het spel niet automatisch opslaan. Gelieve het spel handmatig op te "
-"slaan."
-
-#: src/menu_events.cpp:1108
+#: src/menu_events.cpp:1113
 msgid "Rename Unit"
 msgstr "Eenheid hernoemen"
 
-#: src/menu_events.cpp:1193
+#: src/menu_events.cpp:1198
 msgid "Place Label"
 msgstr "Label plaatsen"
 
-#: src/menu_events.cpp:1194
+#: src/menu_events.cpp:1199
 msgid "Label:"
 msgstr "Label:"
 
-#: src/menu_events.cpp:1292
+#: src/menu_events.cpp:1297
 msgid "Search"
 msgstr "Zoeken"
 
-#: src/menu_events.cpp:1334
+#: src/menu_events.cpp:1339
 msgid "Commands: whisper ignore emote. Type /help [command] for more help."
 msgstr ""
 
-#: src/menu_events.cpp:1385
+#: src/menu_events.cpp:1390
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1389
+#: src/menu_events.cpp:1394
 msgid "Add player to your ignore list. Usage: /ignore add [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1391
+#: src/menu_events.cpp:1396
 msgid "Remove player from your ignore list. Usage: /ignore remove [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1393
+#: src/menu_events.cpp:1398
 msgid "Clear your ignore list. Usage: /ignore clear"
 msgstr ""
 
-#: src/menu_events.cpp:1395
+#: src/menu_events.cpp:1400
 msgid "Show your ignore list. Usage: /ignore list"
 msgstr ""
 
-#: src/menu_events.cpp:1397
+#: src/menu_events.cpp:1402
 #, fuzzy
 msgid "Unknown subcommand"
 msgstr "Scenario niet gevonden"
 
-#: src/menu_events.cpp:1400
+#: src/menu_events.cpp:1405
 msgid ""
 "Ignore messages from players on this list. Usage: /ignore [subcommand] "
 "[argument](optional) Subcommands: add remove list clear. Type /help ignore "
 "[subcommand] for more info."
 msgstr ""
 
-#: src/menu_events.cpp:1403
+#: src/menu_events.cpp:1408
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1405
+#: src/menu_events.cpp:1410
 #, fuzzy
 msgid "Unknown command"
 msgstr "Tijdperk niet gevonden"
 
-#: src/menu_events.cpp:1422
+#: src/menu_events.cpp:1427
 msgid "Added to ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1424 src/menu_events.cpp:1434
+#: src/menu_events.cpp:1429 src/menu_events.cpp:1439
 #, fuzzy
 msgid "Invalid username: "
 msgstr "Ongeldige naam van tag"
 
-#: src/menu_events.cpp:1432 src/menu_events.cpp:1458
+#: src/menu_events.cpp:1437 src/menu_events.cpp:1463
 msgid "Removed from ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1463
+#: src/menu_events.cpp:1468
 #, fuzzy
 msgid "Unknown command: "
 msgstr "Scenario niet gevonden: '"
 
-#: src/menu_events.cpp:1564
+#: src/menu_events.cpp:1569
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kon geen label of eenheid vinden met '$search'."
 
-#: src/menu_events.cpp:1686
+#: src/menu_events.cpp:1691
 msgid "prompt^Command:"
 msgstr "Commando:"
 
@@ -10339,19 +10366,19 @@ msgstr "Geen bruikbaar wapen"
 msgid "Chance of being unscathed"
 msgstr "Kans ongedeerd te blijven"
 
-#: src/mouse_events.cpp:649 src/mouse_events.cpp:1224
+#: src/mouse_events.cpp:649 src/mouse_events.cpp:1233
 msgid "Damage Calculations"
 msgstr "Schadeberekeningen"
 
-#: src/mouse_events.cpp:1207 src/reports.cpp:276
+#: src/mouse_events.cpp:1216 src/reports.cpp:276
 msgid "vs"
 msgstr "vs"
 
-#: src/mouse_events.cpp:1236
+#: src/mouse_events.cpp:1245
 msgid "Attack Enemy"
 msgstr "Vijand aanvallen"
 
-#: src/mouse_events.cpp:1237
+#: src/mouse_events.cpp:1246
 msgid "Choose weapon:"
 msgstr "Kies wapen: "
 
@@ -10400,108 +10427,108 @@ msgstr "Tijdperk niet beschikbaar."
 msgid "No multiplayer sides found"
 msgstr "Er werden geen multiplayer kanten gevonden"
 
-#: src/multiplayer_connect.cpp:62 src/multiplayer_connect.cpp:258
-#: src/multiplayer_connect.cpp:312
+#: src/multiplayer_connect.cpp:64 src/multiplayer_connect.cpp:273
+#: src/multiplayer_connect.cpp:349
 msgid "Normal"
 msgstr "Normaal"
 
-#: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:400 src/multiplayer_wait.cpp:405 src/unit.cpp:2331
+#: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:345
+#: src/multiplayer_wait.cpp:400 src/multiplayer_wait.cpp:405 src/unit.cpp:2363
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:254 src/multiplayer_connect.cpp:308
-#: src/multiplayer_wait.cpp:400 src/multiplayer_wait.cpp:408 src/unit.cpp:2338
+#: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:345
+#: src/multiplayer_wait.cpp:400 src/multiplayer_wait.cpp:408 src/unit.cpp:2370
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:337
+#: src/multiplayer_connect.cpp:374
 msgid "(Vacant slot)"
 msgstr "(Vrije plaats)"
 
-#: src/multiplayer_connect.cpp:343
+#: src/multiplayer_connect.cpp:380
 msgid "Anonymous local player"
 msgstr "Anonieme lokale speler"
 
-#: src/multiplayer_connect.cpp:349
+#: src/multiplayer_connect.cpp:401
 msgid "Computer player"
 msgstr "Computerspeler"
 
-#: src/multiplayer_connect.cpp:352
+#: src/multiplayer_connect.cpp:404
 msgid "(Empty slot)"
 msgstr "(Vacante plaats)"
 
-#: src/multiplayer_connect.cpp:521
+#: src/multiplayer_connect.cpp:573
 msgid "No non-random sides in the current era"
 msgstr "Er zijn geen niet-willekeurige partijen in het huidige tijdperk"
 
-#: src/multiplayer_connect.cpp:543
+#: src/multiplayer_connect.cpp:595
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Geen leider gevonden voor de factie $faction"
 
-#: src/multiplayer_connect.cpp:552 src/multiplayer_lobby.cpp:460
+#: src/multiplayer_connect.cpp:604 src/multiplayer_lobby.cpp:460
 #: src/multiplayer_wait.cpp:148
 msgid "Game Lobby"
 msgstr "Lobby"
 
-#: src/multiplayer_connect.cpp:558 src/multiplayer_connect.cpp:567
+#: src/multiplayer_connect.cpp:610 src/multiplayer_connect.cpp:619
 msgid "Team"
 msgstr "Team"
 
-#: src/multiplayer_connect.cpp:565
+#: src/multiplayer_connect.cpp:617
 msgid "Player/Type"
 msgstr "Speler"
 
-#: src/multiplayer_connect.cpp:566
+#: src/multiplayer_connect.cpp:618
 msgid "Faction"
 msgstr "Factie"
 
-#: src/multiplayer_connect.cpp:568
+#: src/multiplayer_connect.cpp:620
 msgid "Color"
 msgstr "Kleur"
 
-#: src/multiplayer_connect.cpp:572
+#: src/multiplayer_connect.cpp:624
 msgid "Computer vs Computer"
 msgstr "Computer vs Computer"
 
-#: src/multiplayer_connect.cpp:573
+#: src/multiplayer_connect.cpp:625
 msgid "I'm Ready"
 msgstr "Klaar!"
 
-#: src/multiplayer_connect.cpp:574 src/multiplayer_create.cpp:69
+#: src/multiplayer_connect.cpp:626 src/multiplayer_create.cpp:69
 #: src/multiplayer_wait.cpp:150
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/multiplayer_connect.cpp:602
+#: src/multiplayer_connect.cpp:654
 msgid "The scenario is invalid because it has no sides."
 msgstr "Dit scenario is ongeldig vermits het geen kanten bevat"
 
-#: src/multiplayer_connect.cpp:946
+#: src/multiplayer_connect.cpp:998
 msgid "Network Player"
 msgstr "Netwerkspeler"
 
-#: src/multiplayer_connect.cpp:947
+#: src/multiplayer_connect.cpp:999
 msgid "Local Player"
 msgstr "Lokale speler"
 
-#: src/multiplayer_connect.cpp:948
+#: src/multiplayer_connect.cpp:1000
 msgid "Computer Player"
 msgstr "Computerspeler"
 
-#: src/multiplayer_connect.cpp:949
+#: src/multiplayer_connect.cpp:1001
 msgid "Empty"
 msgstr "Niemand"
 
-#: src/multiplayer_connect.cpp:1046
+#: src/multiplayer_connect.cpp:1101
 msgid "This is not a multiplayer save"
 msgstr "Dit is geen multiplayer opgeslagen spel."
 
-#: src/multiplayer_connect.cpp:1096
+#: src/multiplayer_connect.cpp:1151
 msgid "Cannot find era $era"
 msgstr "Kan tijdperk $era niet vinden"
 
-#: src/multiplayer_connect.cpp:1114
+#: src/multiplayer_connect.cpp:1169
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -10509,7 +10536,7 @@ msgstr ""
 "Overwinning\n"
 "@Dood de vijandelijke leider(s)"
 
-#: src/multiplayer_connect.cpp:1150
+#: src/multiplayer_connect.cpp:1205
 msgid "Waiting for players to join..."
 msgstr "Aan het wachten op netwerkspelers..."
 
@@ -10777,10 +10804,18 @@ msgstr "Kon socket niet aan socketset toevoegen"
 msgid "Could not send initial handshake"
 msgstr "Kon initiele handdruk niet verzenden"
 
-#: src/play_controller.cpp:360 src/playsingle_controller.cpp:316
-#: src/playsingle_controller.cpp:357
+#: src/play_controller.cpp:360 src/playsingle_controller.cpp:320
+#: src/playsingle_controller.cpp:361
 msgid "The file you have tried to load is corrupt"
 msgstr "Het bestand dat je hebt proberen laden is corrupt"
+
+#: src/play_controller.cpp:624
+msgid "Back to start"
+msgstr ""
+
+#: src/play_controller.cpp:626
+msgid "Back to turn "
+msgstr ""
 
 #: src/playcampaign.cpp:260
 msgid "Defeat"
@@ -10810,6 +10845,14 @@ msgstr "Wil je je spel opslaan?"
 msgid "Unknown scenario: '"
 msgstr "Scenario niet gevonden: '"
 
+#: src/playmp_controller.cpp:230
+msgid ""
+"The games are out of sync and will have to exit. Do you want to save an "
+"error log of your game?"
+msgstr ""
+"De spellen verlopen niet meer synchroon en zullen moeten afsluiten. Wil je "
+"een error log opslaan van dit spel?"
+
 #: src/playsingle_controller.cpp:200
 msgid "Game Over"
 msgstr "Game over"
@@ -10818,52 +10861,52 @@ msgstr "Game over"
 msgid "The game is over."
 msgstr "Het spel is over."
 
-#: src/playsingle_controller.cpp:284
+#: src/playsingle_controller.cpp:288
 msgid "Remaining gold: "
 msgstr "Resterend goud: "
 
-#: src/playsingle_controller.cpp:287
+#: src/playsingle_controller.cpp:291
 msgid "Early finish bonus: "
 msgstr "Bonus per beurt: "
 
-#: src/playsingle_controller.cpp:289
+#: src/playsingle_controller.cpp:293
 msgid "per turn"
 msgstr "goudstukken"
 
-#: src/playsingle_controller.cpp:290
+#: src/playsingle_controller.cpp:294
 msgid "Turns finished early: "
 msgstr "Resterend aantal beurten: "
 
-#: src/playsingle_controller.cpp:292
+#: src/playsingle_controller.cpp:296
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playsingle_controller.cpp:294
+#: src/playsingle_controller.cpp:298
 msgid "Gold: "
 msgstr "Goud: "
 
-#: src/playsingle_controller.cpp:299
+#: src/playsingle_controller.cpp:303
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% van het goud wordt behouden voor het volgende scenario"
 
-#: src/playsingle_controller.cpp:300
+#: src/playsingle_controller.cpp:304
 msgid "Retained Gold: "
 msgstr "Behouden Goud: "
 
-#: src/playsingle_controller.cpp:305
+#: src/playsingle_controller.cpp:309
 msgid "Victory"
 msgstr "Overwinning"
 
-#: src/playsingle_controller.cpp:306
+#: src/playsingle_controller.cpp:310
 msgid "You have emerged victorious!"
 msgstr "Je hebt de overwinning behaald!"
 
-#: src/playsingle_controller.cpp:310
+#: src/playsingle_controller.cpp:314
 msgid "Scenario Report"
 msgstr "Scenariorapport"
 
-#: src/playsingle_controller.cpp:327
+#: src/playsingle_controller.cpp:331
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -10871,7 +10914,7 @@ msgstr ""
 "Door een verbreking van de netwerkvebinding kan het spel niet voortgezet "
 "worden. Wil je het spel opslaan?"
 
-#: src/playsingle_controller.cpp:424
+#: src/playsingle_controller.cpp:430
 msgid "It is now your turn"
 msgstr "Het is nu jouw beurt"
 
@@ -11125,15 +11168,15 @@ msgstr "Help"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- De Geschriften van Wesnoth"
 
-#: src/unit.cpp:2182 src/unit.cpp:2336
+#: src/unit.cpp:2214 src/unit.cpp:2368
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2264
+#: src/unit.cpp:2296
 msgid "XP to advance"
 msgstr "XP om te promoveren"
 
-#: src/unit.cpp:2327
+#: src/unit.cpp:2359
 msgid ": "
 msgstr ": "
 
@@ -11141,19 +11184,19 @@ msgstr ": "
 msgid "strikes"
 msgstr "aanvallen"
 
-#: src/unit_types.cpp:1036
+#: src/unit_types.cpp:1052
 msgid "chaotic"
 msgstr "ongebonden"
 
-#: src/unit_types.cpp:1036
+#: src/unit_types.cpp:1052
 msgid "lawful"
 msgstr "plichtsgetrouw"
 
-#: src/unit_types.cpp:1036
+#: src/unit_types.cpp:1052
 msgid "neutral"
 msgstr "neutraal"
 
-#: src/upload_log.cpp:276
+#: src/upload_log.cpp:277
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
@@ -11165,16 +11208,16 @@ msgstr ""
 "van gespeelde spellen: je kunt ons helpen het spel te verbeteren door "
 "toestemming te geven deze overzichten (anoniem) naar wesnoth.org te sturen.\n"
 
-#: src/upload_log.cpp:277
+#: src/upload_log.cpp:278
 msgid "Summaries are stored here:"
 msgstr ""
 
-#: src/upload_log.cpp:279
+#: src/upload_log.cpp:280
 #, fuzzy
 msgid "You can view the results at:"
 msgstr "Hier kun je de resultaten zien "
 
-#: src/upload_log.cpp:284
+#: src/upload_log.cpp:285
 msgid "Help us make Wesnoth better for you!"
 msgstr "Help ons Wesnoth te verbeteren!"
 
@@ -11528,13 +11571,6 @@ msgstr "Help ons Wesnoth te verbeteren!"
 
 #~ msgid "Turn time: "
 #~ msgstr "Tijd per beurt: "
-
-#~ msgid ""
-#~ "The games are out of sync and will have to exit. Do you want to save an "
-#~ "error log of your game?"
-#~ msgstr ""
-#~ "De spellen verlopen niet meer synchroon en zullen moeten afsluiten. Wil "
-#~ "je een error log opslaan van dit spel?"
 
 #~ msgid ""
 #~ "Slow:\n"
