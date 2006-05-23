@@ -178,13 +178,12 @@ attack_type::attack_animation::attack_animation(const config& cfg):animation(cfg
 	}
 	if(missile_animation.get_first_frame_time() == 0 && missile_animation.get_last_frame_time() == 0) {
 		// create animation ourself
-		missile_animation = unit_animation(game_config::missile_n_image,-100,0,game_config::missile_ne_image);
+		missile_animation = unit_animation(game_config::missile_n_image,0,0,game_config::missile_ne_image);
 	}
 	const std::string& hits_str = cfg["hits"];
 	if(hits_str.empty() == false) {
 		hits = (hits_str == "yes") ? HIT : MISS;
 	}
-	assert(missile_animation.get_first_frame_time() != 0 || missile_animation.get_last_frame_time() != 0);
 }
 int attack_type::attack_animation::matches(bool hit,gamemap::location::DIRECTION dir) const
 {

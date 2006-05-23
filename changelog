@@ -92,6 +92,7 @@ SVN trunk (1.1.2+svn):
      the 'text', 'red', 'blue', and 'green' keys in [unstore_unit]
    * store_locations now stores terrain as well as x,y
    * [effect] can now apply_to movement_costs, defense and resistance
+   * when no missile frame is specified, we don't use a default arrow anymore
  * multiplayer settings:
    * two additional MP timer settings, time reservoir limit and action bonus:
      * Reservoir prevents the turn timer from exceeding an upper limit.
