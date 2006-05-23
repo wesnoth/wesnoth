@@ -173,6 +173,7 @@ public:
 	void sort_by(int column);
 
 protected:
+	bool item_ends_with_image(const std::string& item) const;
 	void handle_event(const SDL_Event& event);
 	void set_inner_location(const SDL_Rect& rect);
 

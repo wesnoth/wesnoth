@@ -49,10 +49,7 @@ menu::style::~style()
 {}
 menu::imgsel_style::imgsel_style(const std::string &img_base) : img_base_(img_base),
 			initialized_(false), load_failed_(false)
-{
-	cell_padding_ = 0; //FIXME: why was it needed in the parent class?
-}
-
+{}
 menu::imgsel_style::~imgsel_style()
 {}
 
@@ -86,7 +83,6 @@ bool menu::imgsel_style::load_images()
 			thickness_ = minimum(
 					img_map_["border-top"]->h,
 					img_map_["border-left"]->w);
-			//cell_padding_ = maximum(cell_padding_, thickness_);
 
 			selected_rgb_ = 0x000000;
 			selected_alpha_ = 0.9;

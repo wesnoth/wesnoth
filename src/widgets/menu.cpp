@@ -786,13 +786,20 @@ void menu::column_widths_item(const std::vector<std::string>& row, std::vector<i
 {
 	for(size_t col = 0; col != row.size(); ++col) {
 		const SDL_Rect res = style_->item_size(row[col]);
+		size_t text_trailing_space = (item_ends_with_image(row[col])) ? 0 : style_->get_cell_padding();
 
 		if(col == widths.size()) {
-			widths.push_back(res.w + style_->get_cell_padding());
-		} else if(res.w > widths[col] - style_->get_cell_padding()) {
-			widths[col] = res.w + style_->get_cell_padding();
+			widths.push_back(res.w + text_trailing_space);
+		} else if(res.w > widths[col] - text_trailing_space) {
+			widths[col] = res.w + text_trailing_space;
 		}
 	}
+}
+
+bool menu::item_ends_with_image(const std::string& item) const
+{
+	std::string::size_type pos = item.find_last_of(IMG_TEXT_SEPARATOR);
+	return(item.at((pos == std::string::npos) ? 0 : pos+1) == IMAGE_PREFIX);
 }
 
 const std::vector<int>& menu::column_widths() const
