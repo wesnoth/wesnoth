@@ -26,6 +26,11 @@ public:
 	virtual ~python_ai();
 	virtual void play_turn();
 
+    static PyObject* wrapper_unit_movement_cost(wesnoth_unit*, PyObject* args);
+    static PyObject* wrapper_unit_defense_modifier(wesnoth_unit*, PyObject* args);
+    static PyObject* wrapper_unittype_movement_cost(wesnoth_unittype*, PyObject* args);
+    static PyObject* wrapper_unittype_defense_modifier(wesnoth_unittype*, PyObject* args);
+
 	static PyObject* wrapper_get_units(PyObject* self, PyObject* args);
 	static PyObject* wrapper_log_message(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_location(PyObject* self, PyObject* args);
