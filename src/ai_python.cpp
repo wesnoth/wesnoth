@@ -63,9 +63,7 @@ void python_ai::set_error(const char *fmt, ...)
 
 static PyObject* wrap_unittype(const unit_type& type);
 static PyObject* wrap_attacktype(const attack_type& type);
-static PyObject* wrapper_unittype_movement_cost(wesnoth_unittype* unit, PyObject* args);
-static PyObject* wrapper_unittype_defense_modifier(wesnoth_unittype* unit, PyObject* args);
-static PyObject* wrapper_unittype_resistance_against(wesnoth_unittype* unit, PyObject* args );
+static PyObject* wrapper_unittype_resistance_against(wesnoth_unittype* type, PyObject* args);
 
 static PyObject* wrapper_unittype_get_name(wesnoth_unittype* unit, void* /*closure*/)
 {
@@ -100,6 +98,10 @@ ut_get( level )
 ut_get( movement )
 ut_get( cost )
 ut_get( alignment )
+static PyObject* wrapper_unittype_get_usage( wesnoth_unittype* type, void* /*closure*/ )
+{
+	return Py_BuildValue("s",type->unit_type_->usage().c_str());
+}
 
 #define ut_gs( x, doc ) \
 	{ #x,	(getter)wrapper_unittype_get_##x,	NULL,	doc,	NULL },
@@ -117,6 +119,8 @@ static PyGetSetDef unittype_getseters[] = {
 	ut_gs( can_advance, "If type can advance." )
 	ut_gs( has_zoc, "If type has a ZOC." )
 	ut_gs( level, "Level of the type." )
+	ut_gs( usage, "AI's usage hint of the type, one of: 'archer', 'fighter', "
+        "'healer', 'mixed figher', 'scout'." )
 	ut_gs( movement, "Movement points of the type." )
 	ut_gs( cost, "Cost of the type." )
 	ut_gs( alignment, "Alignment of the type: 0=lawful, 1=neutral, 2=chaotic." )
@@ -157,12 +161,12 @@ static PyMethodDef unittype_methods[] = {
 	{ "attacks",		(PyCFunction)wrapper_unittype_attacks,			METH_VARARGS,
         "Returns: attacktype[]\n"
         "Returns list of possible attack types.\n"},
-	{ "movement_cost",		(PyCFunction)wrapper_unittype_movement_cost,			METH_VARARGS,
-        "Parameters: gamemap, location\n"
+	{ "movement_cost",		(PyCFunction)python_ai::wrapper_unittype_movement_cost,			METH_VARARGS,
+        "Parameters: location\n"
         "Returns: cost\n"
         "Returns the cost of moving over the given location."},
-	{ "defense_modifier",		(PyCFunction)wrapper_unittype_defense_modifier,			METH_VARARGS,
-        "Parameters: gamemap, location\n"
+	{ "defense_modifier",		(PyCFunction)python_ai::wrapper_unittype_defense_modifier,			METH_VARARGS,
+        "Parameters: location\n"
         "Returns: percent\n"
         "Returns the defense modifier in % (probability the unit will be hit) on the given location."},
 	{ "resistance_against",		(PyCFunction)wrapper_unittype_resistance_against,			METH_VARARGS,
@@ -513,9 +517,6 @@ static PyObject* wrapper_unit_attacks( wesnoth_unit* unit, PyObject* args )
 	return (PyObject*)list;
 }
 
-static PyObject* wrapper_unit_movement_cost( wesnoth_unit* unit, PyObject* args );
-static PyObject* wrapper_unit_defense_modifier( wesnoth_unit* unit, PyObject* args );
-
 static PyObject* wrapper_unit_damage_against( wesnoth_unit* unit, PyObject* args )
 {
 	wesnoth_attacktype* attack;
@@ -542,12 +543,12 @@ static PyMethodDef unit_methods[] = {
 	{ "attacks",			(PyCFunction)wrapper_unit_attacks,			METH_VARARGS,
         "Returns: attacktype[]\n"
         "Returns list of possible attack types.\n"},
-	{ "movement_cost",		(PyCFunction)wrapper_unit_movement_cost,	METH_VARARGS,
-        "Parameters: gamemap, location\n"
+	{ "movement_cost",		(PyCFunction)python_ai::wrapper_unit_movement_cost,	METH_VARARGS,
+        "Parameters: location\n"
         "Returns: cost\n"
         "Returns the cost of moving over the given location."},
-	{ "defense_modifier",	(PyCFunction)wrapper_unit_defense_modifier,	METH_VARARGS,
-        "Parameters: gamemap, location\n"
+	{ "defense_modifier",	(PyCFunction)python_ai::wrapper_unit_defense_modifier,	METH_VARARGS,
+        "Parameters: location\n"
         "Returns: percent\n"
         "Returns the defense modifier in % (probability the unit will be hit) on the given location."},
 	{ "damage_against",		(PyCFunction)wrapper_unit_damage_against,	METH_VARARGS,
@@ -986,42 +987,42 @@ static PyTypeObject wesnoth_team_type = {
 	NULL
 };
 
-static PyObject* wrapper_unit_movement_cost( wesnoth_unit* unit, PyObject* args )
+PyObject* python_ai::wrapper_unit_movement_cost( wesnoth_unit* unit, PyObject* args )
 {
-	wesnoth_gamemap* map;
+	gamemap const &map = running_instance->get_info().map;
 	wesnoth_location* loc;
-	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_gamemap_type, &map, &wesnoth_location_type, &loc ) )
+	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &loc ) )
 		return NULL;
-	return Py_BuildValue("i",unit->unit_->movement_cost(map->map_->get_terrain(*loc->location_)));
+	return Py_BuildValue("i",unit->unit_->movement_cost(map.get_terrain(*loc->location_)));
 }
 
-static PyObject* wrapper_unit_defense_modifier( wesnoth_unit* unit, PyObject* args )
+PyObject* python_ai::wrapper_unit_defense_modifier( wesnoth_unit* unit, PyObject* args )
 {
-	wesnoth_gamemap* map;
+	gamemap const &map = running_instance->get_info().map;
 	wesnoth_location* loc;
-	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_gamemap_type, &map, &wesnoth_location_type, &loc ) )
+	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &loc ) )
 		return NULL;
-	return Py_BuildValue("i",unit->unit_->defense_modifier(map->map_->get_terrain(*loc->location_)));
+	return Py_BuildValue("i",unit->unit_->defense_modifier(map.get_terrain(*loc->location_)));
 }
 
-static PyObject* wrapper_unittype_movement_cost( wesnoth_unittype* type, PyObject* args )
+PyObject* python_ai::wrapper_unittype_movement_cost( wesnoth_unittype* type, PyObject* args )
 {
-	wesnoth_gamemap* map;
+    gamemap const &map = running_instance->get_info().map;
 	wesnoth_location* loc;
-	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_gamemap_type, &map, &wesnoth_location_type, &loc ) )
+	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &loc ) )
 		return NULL;
 	return Py_BuildValue("i",type->unit_type_->movement_type().movement_cost(
-		*map->map_, map->map_->get_terrain(*loc->location_)));
+		map, map.get_terrain(*loc->location_)));
 }
 
-static PyObject* wrapper_unittype_defense_modifier( wesnoth_unittype* type, PyObject* args )
+PyObject* python_ai::wrapper_unittype_defense_modifier( wesnoth_unittype* type, PyObject* args )
 {
-	wesnoth_gamemap* map;
+    gamemap const &map = running_instance->get_info().map;
 	wesnoth_location* loc;
-	if ( !PyArg_ParseTuple( args, "O!O!", &wesnoth_gamemap_type, &map, &wesnoth_location_type, &loc ) )
+	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &loc ) )
 		return NULL;
 	return Py_BuildValue("i",type->unit_type_->movement_type().defense_modifier(
-		*map->map_, map->map_->get_terrain(*loc->location_)));
+		map, map.get_terrain(*loc->location_)));
 }
 
 static PyObject* wrap_location(const gamemap::location& loc)
