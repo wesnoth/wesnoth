@@ -46,7 +46,8 @@ public:
 	static PyObject* wrapper_get_adjacent_tiles(PyObject* self, PyObject* args);
 	static PyObject* wrapper_recruit_unit(PyObject* self, PyObject* args);
 	static PyObject* wrapper_get_gamestatus(PyObject* self, PyObject* args);
-	static PyObject* wrapper_script_data(PyObject* self, PyObject* args);
+	static PyObject* wrapper_set_variable(PyObject*, PyObject* args);
+	static PyObject* wrapper_get_variable(PyObject*, PyObject* args);
 
 	static PyObject* unittype_advances_to( wesnoth_unittype* type, PyObject* args );
 	static PyObject* wrapper_team_recruits( wesnoth_team* team, PyObject* args );
@@ -60,7 +61,6 @@ public:
 protected:
 	static bool init_;
 	static PyObject* python_error_;
-	static PyObject* script_data_;
 	ai_interface::move_map src_dst_;
 	ai_interface::move_map dst_src_;
 	std::map<location,paths> possible_moves_;

@@ -11,27 +11,6 @@
    See the COPYING file for more details.
 */
 
-/*
- TODO (from the forum):
-* display, which I don't think has to be exposed to Python. This is used by C++ AIs mostly for
-  debugging purposes. We might want to allow Python scripts to write messages to the display for
-  debugging purposes also, but they would only need very limited access.
-* gamemap, defined in map.hpp, which contains the definition of the map. Definitely needs to be
- exposed to Python.
-* game_data, defined in unit_types.hpp, which contains definitions of the available unit types,
- attacks, races, and so forth. Needs to be exposed to Python.
-* unit_map, a map<gamemap::location,unit>. gamemap::location is defined in map.hpp and unit is
- defined in unit.hpp. This contains all the units currently in the game. Will need to be exposed.
-* vector<team>, a listing of the teams (i.e. sides) in the game. Defined in team.hpp. Will
- need to be exposed.
-* gamestatus, the current turn and time of day, etc. Defined in gamestatus.hpp. Will need to
- be exposed.
-- turn_info, does not need to be exposed.
-
-Additionally, useful utility functions such as those found in pathutils.hpp should be exposed.
-
-*/
-
 #ifdef HAVE_PYTHON
 
 #include "global.hpp"
@@ -47,7 +26,6 @@ Additionally, useful utility functions such as those found in pathutils.hpp shou
 static python_ai* running_instance;
 bool python_ai::init_ = false;
 PyObject* python_ai::python_error_ = NULL;
-PyObject* python_ai::script_data_ = NULL;
 
 void python_ai::set_error(const char *fmt, ...)
 {
@@ -1370,23 +1348,28 @@ PyObject* python_ai::wrapper_unit_find_path( wesnoth_unit* unit, PyObject* args 
 	return steps;
 }
 
-PyObject* python_ai::wrapper_script_data(PyObject* /*self*/, PyObject* args)
+PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
 {
-    PyObject* data;
-
-    if (!PyArg_ParseTuple(args, "", NULL))
+    char const *variable, *value;
+    if (!PyArg_ParseTuple(args, "ss", &variable, &value))
         return NULL;
+    config const &old_memory = running_instance->current_team().ai_memory();
+    config new_memory(old_memory);
+    new_memory[variable] = value;
+    running_instance->current_team().set_ai_memory(new_memory);
 
-    data = PyDict_GetItemString(python_ai::script_data_, running_instance->current_team().ai_parameters()["python_script"].c_str());
-    if (!data) {
-        data = PyDict_New();
-        PyDict_SetItemString(python_ai::script_data_, running_instance->current_team().ai_parameters()["python_script"].c_str(), data);
-        Py_DECREF(data);
-    }
-    Py_INCREF(data);
-    return data;
+    Py_INCREF(Py_None);
+	return Py_None;
 }
 
+PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
+{
+    char const *variable;
+    if (!PyArg_ParseTuple(args, "s", &variable))
+        return NULL;
+    config const &memory = running_instance->current_team().ai_memory();
+    return Py_BuildValue("s", memory[variable].c_str());
+}
 
 static PyMethodDef wesnoth_python_methods[] = {
     { "log_message",				python_ai::wrapper_log_message,			METH_VARARGS,
@@ -1445,10 +1428,15 @@ static PyMethodDef wesnoth_python_methods[] = {
     { "get_gamestatus", python_ai::wrapper_get_gamestatus, METH_VARARGS,
         "Returns: status\n"
         "Returns a wesnoth.gamestatus object representing the current game status."},
-    { "script_data", python_ai::wrapper_script_data, METH_VARARGS,
-        "Returns: dictionary\n"
-        "Returns a private dictionary object, in which the script can store values that "
-        "will persist between runs. This data is private to a script."},
+    { "set_variable", python_ai::wrapper_set_variable, METH_VARARGS,
+        "Parameters: variable, value\n"
+        "Sets a persistent variable 'variable' to 'value'. This can be "
+        "used to make the AI save strings over multiple turns."},
+    { "get_variable", python_ai::wrapper_get_variable, METH_VARARGS,
+        "Parameters: variable\n"
+        "Returns: value\n"
+        "Retrieves a persistent variable 'variable' from the AI, which has "
+        "previously been set with set_variable."},
 	{ NULL,						NULL,						0, NULL}
 };
 
@@ -1477,7 +1465,6 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
 		Py_Register(wesnoth_gamestatus_type, "gamestatus");
 		python_error_ = PyErr_NewException("wesnoth.error",NULL,NULL);
 		PyDict_SetItemString(PyModule_GetDict(module),"error",python_error_);
-		script_data_ = PyDict_New();
 		init_ = true;
 	}
 	calculate_possible_moves(possible_moves_,src_dst_,dst_src_,false);
