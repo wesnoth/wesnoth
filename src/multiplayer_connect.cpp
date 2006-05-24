@@ -187,7 +187,6 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 	pane.add_widget(&label_gold_, 475, 35 + pos);
 	pane.add_widget(&slider_income_, 480 + slider_gold_.width(), 5 + pos);
 	pane.add_widget(&label_income_, 480 + slider_gold_.width(), 35 + pos);
-
 }
 
 void connect::side::process_event()
@@ -306,24 +305,34 @@ void connect::side::update_controller_ui()
     update_ai_algorithm_combo();
 }
 
+void connect::side::hide_ai_algorithm_combo(bool invis)
+{
+	combo_ai_algorithm_.hide(invis || controller_ != CNTR_COMPUTER);
+}
+
 void connect::side::update_ai_algorithm_combo()
 {
-    combo_ai_algorithm_.enable(controller_ == CNTR_COMPUTER);
-    if (combo_ai_algorithm_.enabled()) {
-        combo_ai_algorithm_.set_items(parent_->ai_algorithms_);
-
-        for (unsigned int i = 0; i < parent_->ai_algorithms_.size(); i++) {
-            if (parent_->ai_algorithms_[i] == ai_algorithm_) {
-                combo_ai_algorithm_.set_selected(i);
-                break;
+    if (controller_ == CNTR_COMPUTER) {
+		std::vector<std::string> ais = parent_->ai_algorithms_;
+		int sel = 0;
+        for (unsigned int i = 0; i < ais.size(); i++) {
+            if (ais[i] == ai_algorithm_) {
+				sel = i;
             }
+			if (ais[i] == "default") {
+				ais[i] = _("Default AI");
+			}
         }
-    }
-    else {
+		combo_ai_algorithm_.set_items(ais);
+		combo_ai_algorithm_.set_selected(sel);
+		combo_ai_algorithm_.hide(false);
+    } else {
         std::vector<std::string> emptylist;
         emptylist.push_back("-");
         combo_ai_algorithm_.set_items(emptylist);
         combo_ai_algorithm_.set_selected(0);
+		combo_ai_algorithm_.hide(true);
+		combo_ai_algorithm_.set_dirty(true);
     }
 }
 
@@ -751,7 +760,9 @@ void connect::hide_children(bool hide)
 	waiting_label_.hide(hide);
 	// Hiding the scrollpane automatically hides its contents
 	scroll_pane_.hide(hide);
-	type_title_label_.hide(hide);
+	for (side_list::iterator itor = sides_.begin(); itor != sides_.end(); ++itor) {
+		itor->hide_ai_algorithm_combo(hide);
+	}
 	faction_title_label_.hide(hide);
 	team_title_label_.hide(hide);
 	colour_title_label_.hide(hide);

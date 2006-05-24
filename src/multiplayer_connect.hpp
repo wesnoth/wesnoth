@@ -85,11 +85,11 @@ public:
 
 		// Resolves the random leader / factions.
 		void resolve_random();
-
+		void hide_ai_algorithm_combo(bool invis);
 	private:
+		void update_ai_algorithm_combo();
 		void update_controller_ui();
 		void update_ui();
-		void update_ai_algorithm_combo();
 
 		// The mp::connect widget owning this mp::connect::side. Used
 		// in the constructor, must be first.
