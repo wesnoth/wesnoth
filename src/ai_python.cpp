@@ -147,11 +147,12 @@ static PyMethodDef unittype_methods[] = {
         "Parameters: location\n"
         "Returns: percent\n"
         "Returns the defense modifier in % (probability the unit will be hit) on the given location."},
-	{ "resistance_against",		(PyCFunction)wrapper_unittype_resistance_against,			METH_VARARGS,
+	{ "damage_from",		(PyCFunction)wrapper_unittype_resistance_against,			METH_VARARGS,
         "Parameters: attacktype\n"
         "Returns: percent\n"
-        "Returns the resistance against the given attack type. (0 means, unit has full resistance, "
-        "100 means, unit has no resistance, 200 means, double vulnerability."},
+        "Returns the damage in percent a unit of this type receives when "
+        "attacked with the given attack type. (0 means no damage at all, 100 "
+        "means full damage, 200 means double damage.)"},
 	{ NULL, NULL, 0, NULL }
 };
 
@@ -495,7 +496,7 @@ static PyObject* wrapper_unit_attacks( wesnoth_unit* unit, PyObject* args )
 	return (PyObject*)list;
 }
 
-static PyObject* wrapper_unit_damage_against( wesnoth_unit* unit, PyObject* args )
+static PyObject* wrapper_unit_damage_from( wesnoth_unit* unit, PyObject* args )
 {
 	wesnoth_attacktype* attack;
 	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_attacktype_type, &attack ) )
@@ -529,11 +530,12 @@ static PyMethodDef unit_methods[] = {
         "Parameters: location\n"
         "Returns: percent\n"
         "Returns the defense modifier in % (probability the unit will be hit) on the given location."},
-	{ "damage_against",		(PyCFunction)wrapper_unit_damage_against,	METH_VARARGS,
+	{ "damage_from",		(PyCFunction)wrapper_unit_damage_from,	METH_VARARGS,
         "Parameters: attacktype\n"
         "Returns: percent\n"
-        "Returns the damage against the given attack type. (0 means, no damage at all, "
-        "100 means, full damage, 200 means, double damage."},
+        "Returns the damage in percent the unit receives when attacked with "
+        "the given attack type. (0 means no damage at all, 100 means full "
+        "damage, 200 means double damage.)"},
 	{ "find_path",			(PyCFunction)python_ai::wrapper_unit_find_path,		METH_VARARGS,
         "Parameters: location from, location to, float stop_at = 100\n"
         "Returns: location[] path\n"
@@ -572,8 +574,7 @@ static PyTypeObject wesnoth_unit_type = {
 	Py_TPFLAGS_DEFAULT,        /* tp_flags*/
 	"Represents a single unit. Trying to use a method or access a property, "
     "with the exception of is_valid, will result in an exception if the unit "
-    "is invalid (was destroyed last move, and so on). That way you can safely "
-    "keep unit pointers between turns.",       /* tp_doc */
+    "is invalid (was destroyed last move, and so on).",       /* tp_doc */
 	0,                         /* tp_traverse */
 	0,                         /* tp_clear */
 	0,                         /* tp_richcompare */
@@ -1454,7 +1455,7 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
 		Py_Initialize( );
 		PyObject* module = Py_InitModule3("wesnoth", wesnoth_python_methods,
             "A script must call 'import wesnoth' to import all Wesnoth-related objects. "
-            "The python script will be executed once for each turn of the side with a "
+            "The python script will be executed once for each turn of the side with the "
             "python AI using the script.");
 		Py_Register(wesnoth_unit_type, "unit");
 		Py_Register(wesnoth_location_type, "location");
