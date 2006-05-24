@@ -329,6 +329,7 @@ noinst_HEADERS = \
 	network.hpp \
 	ai2.hpp \
 	ai_python.hpp \
+	attack_prediction.hpp \
 	cursor.hpp \
 	tooltips.hpp \
 	halo.hpp \
@@ -401,6 +402,8 @@ noinst_HEADERS = \
 	preferences.hpp \
 	unit_types.hpp \
 	unit_animation.hpp \
+	unit_abilities.hpp \
+	unit_frame.hpp \
 	upload_log.hpp \
 	display.hpp \
 	leader_list.hpp \
