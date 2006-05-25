@@ -1905,7 +1905,7 @@ void ai::move_leader_after_recruit(const move_map& srcdst, const move_map& dstsr
 
 	// We didn't move: are we in trouble?
 	leader = find_leader(units_,team_num_);
-	if (leader->second.attacks_left() && should_retreat(leader->first, leader, srcdst, dstsrc, enemy_dstsrc, 0.5)) {
+	if (!leader->second.has_moved() && leader->second.attacks_left() && should_retreat(leader->first, leader, srcdst, dstsrc, enemy_dstsrc, 0.5)) {
 		desperate_attack(leader->first);
 	}
 }
