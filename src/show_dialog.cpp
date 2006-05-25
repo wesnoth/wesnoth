@@ -330,10 +330,8 @@ int show_dialog(display& disp, surface image,
 
 	LOG_DP << "showing dialog '" << caption << "' '" << msg << "'\n";
 
-	//create the event context, but only activate it if we don't have preview panes.
-	//the presence of preview panes indicates that the caller will create the context,
-	//so that their preview panes may fall inside it.
-	const events::event_context dialog_events_context(preview_panes == NULL);
+	//create the event context, remember to instruct any passed-in widgets to join it
+	const events::event_context dialog_events_context();
 	const dialog_manager manager;
 
 	const events::resize_lock prevent_resizing;
@@ -487,6 +485,7 @@ int show_dialog(display& disp, surface image,
 	size_t preview_pane_height = 0, left_preview_pane_width = 0, right_preview_pane_width = 0;
 	if(preview_panes != NULL) {
 		for(std::vector<preview_pane*>::const_iterator i = preview_panes->begin(); i != preview_panes->end(); ++i) {
+			(**i).join(); //join the event context now, since it was created outside this scope
 			const SDL_Rect& rect = (**i).location();
 
 			if((**i).show_above() == false) {

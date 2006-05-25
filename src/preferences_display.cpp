@@ -181,6 +181,8 @@ public:
 		TYPE type;
 	};
 
+	void join();
+
 private:
 
 	void process_event();
@@ -325,6 +327,45 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	hotkeys_button_.set_help_string(_("View and configure keyboard shortcuts"));
 
 	set_advanced_menu();
+}
+
+void preferences_dialog::join()
+{
+	//join the current event_context
+	widget::join();
+
+	//instruct all member widgets to join the current event_context
+	music_slider_.join();
+	sound_slider_.join();
+	scroll_slider_.join();
+	gamma_slider_.join();
+	chat_lines_slider_.join();
+	fullscreen_button_.join();
+	turbo_button_.join();
+	show_ai_moves_button_.join();
+	show_grid_button_.join();
+	show_lobby_joins_button_.join();
+	show_floating_labels_button_.join();
+	turn_dialog_button_.join();
+	turn_bell_button_.join();
+	show_team_colours_button_.join();
+	show_colour_cursors_button_.join();
+	show_haloing_button_.join();
+	video_mode_button_.join();
+	theme_button_.join();
+	hotkeys_button_.join();
+	gamma_button_.join();
+	flip_time_button_.join();
+	advanced_button_.join();
+	sound_button_.join();
+	music_button_.join();
+	chat_timestamp_button_.join();
+	music_label_.join();
+	sound_label_.join();
+	scroll_label_.join();
+	gamma_label_.join();
+	chat_lines_label_.join();		
+	advanced_.join();
 }
 
 void preferences_dialog::update_location(SDL_Rect const &rect)
@@ -600,8 +641,8 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 
 	for(;;) {
 		try {
-			const events::event_context dialog_events_context;
-
+			//shield the current context from preference dialog members
+			const events::event_context shield_context;
 			preferences_dialog dialog(disp,game_cfg);
 			std::vector<gui::preview_pane*> panes;
 			panes.push_back(&dialog);

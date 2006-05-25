@@ -641,7 +641,6 @@ namespace{
 			const size_t index = size_t(selection);
 
 			if(index < bc_vector_.size()) {
-				const events::event_context dialog_event_context;
 				battle_prediction_pane battle_pane(disp_, bc_vector_[index], map_, teams_, units_, status_,
 												   gamedata_, attacker_loc_, defender_loc_);
 				std::vector<gui::preview_pane*> preview_panes;
@@ -1235,7 +1234,6 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 	int res = 0;
 
 	{
-		const events::event_context dialog_events_context;
 		dialogs::unit_preview_pane attacker_preview(*gui_,&map_,attacker->second,dialogs::unit_preview_pane::SHOW_BASIC,true);
 		dialogs::unit_preview_pane defender_preview(*gui_,&map_,defender->second,dialogs::unit_preview_pane::SHOW_BASIC,false);
 		std::vector<gui::preview_pane*> preview_panes;

@@ -145,39 +145,49 @@ std::deque<context> event_contexts;
 
 } //end anon namespace
 
-event_context::event_context(bool create) : create_(create)
+event_context::event_context()
 {
-	if(create_) {
-		event_contexts.push_back(context());
-	}
+	event_contexts.push_back(context());
 }
 
 event_context::~event_context()
 {
-	if(create_) {
-		wassert(event_contexts.empty() == false);
-
-		event_contexts.pop_back();
-	}
+	wassert(event_contexts.empty() == false);
+	event_contexts.pop_back();
 }
 
-handler::handler() : unicode_(SDL_EnableUNICODE(1))
+handler::handler(bool auto_join) : unicode_(SDL_EnableUNICODE(1)), has_joined_(false)
 {
 	SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
-	event_contexts.back().add_handler(this);
+	if(auto_join) {
+		join();
+	}
 }
 
 handler::~handler()
 {
-	wassert(event_contexts.empty() == false);
+	leave();
+	SDL_EnableUNICODE(unicode_);
+}
 
+void handler::join()
+{
+	if(has_joined_) {
+		leave(); // should not be in multiple event contexts
+	}
+	event_contexts.back().add_handler(this);
+	has_joined_ = true;
+}
+
+void handler::leave()
+{
+	wassert(event_contexts.empty() == false);
 	for(std::deque<context>::reverse_iterator i = event_contexts.rbegin(); i != event_contexts.rend(); ++i) {
 		if(i->remove_handler(this)) {
 			break;
 		}
 	}
-
-	SDL_EnableUNICODE(unicode_);
+	//has_joined_ = false;
 }
 
 void focus_handler(const handler* ptr)

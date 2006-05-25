@@ -276,7 +276,6 @@ namespace events{
 		int selected = 0;
 
 		{
-			const events::event_context dialog_events_context;
 			dialogs::unit_preview_pane unit_preview(*gui_, &map_, units_list);
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
@@ -570,7 +569,6 @@ namespace events{
 		int recruit_res = 0;
 
 		{
-			const events::event_context dialog_events_context;
 			dialogs::unit_preview_pane unit_preview(*gui_,&map_,sample_units);
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
@@ -713,7 +711,6 @@ namespace events{
 			int res = 0;
 
 			{
-				const events::event_context dialog_events_context;
 				dialogs::unit_preview_pane unit_preview(*gui_,&map_,recall_list);
 				std::vector<gui::preview_pane*> preview_panes;
 				preview_panes.push_back(&unit_preview);
@@ -1155,7 +1152,6 @@ namespace events{
 		int choice = 0;
 
 		{
-			const events::event_context dialog_events_context;
 			dialogs::unit_preview_pane unit_preview(*gui_,&map_,unit_choices);
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);

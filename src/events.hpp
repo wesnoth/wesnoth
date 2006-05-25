@@ -50,12 +50,17 @@ public:
 
 	virtual void process_help_string(int /*mousex*/, int /*mousey*/) {}
 
+	virtual void join(); /*joins the current event context*/
+
 protected:
-	handler();
+	handler(bool auto_join=true);
 	virtual ~handler();
 
 private:
+	void leave(); /*leave the event context*/
+
 	int unicode_;
+	bool has_joined_;
 };
 
 void focus_handler(const handler* ptr);
@@ -74,11 +79,8 @@ bool has_focus(const handler* ptr);
 //before their context is destroyed
 struct event_context
 {
-	event_context(bool create=true);
+	event_context();
 	~event_context();
-
-private:
-	bool create_;
 };
 
 //causes events to be dispatched to all handler objects.

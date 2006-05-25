@@ -97,7 +97,6 @@ void advance_unit(const game_data& info,
 		res = rand()%lang_options.size();
 	} else if(lang_options.size() > 1) {
 
-		const events::event_context dialog_events_context;
 		unit_preview_pane unit_preview(gui,&map,sample_units);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
@@ -516,8 +515,6 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 			}
 		}
 	}
-
-	const events::event_context context;
 
 	if(generate_summaries) {
 		gui::progress_bar bar(disp.video());

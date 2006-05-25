@@ -112,7 +112,7 @@ struct check_item {
 //by 'show_dialog' and shows information about the selection.
 class preview_pane : public widget {
 public:
-	preview_pane(CVideo &video) : widget(video) {}
+	preview_pane(CVideo &video) : widget(video, false) {}
 	virtual ~preview_pane() { tooltips::clear_tooltips(location()); }
 
 	virtual bool show_above() const { return false; }

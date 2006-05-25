@@ -313,7 +313,7 @@ void connect::side::hide_ai_algorithm_combo(bool invis)
 
 void connect::side::init_ai_algorithm_combo()
 {
-	wassert(!parent_->ai_algorithms_.empty());
+	wassert(parent_->ai_algorithms_.empty() == false);
 
 	int sel = 0;
 	std::vector<std::string> ais = parent_->ai_algorithms_;

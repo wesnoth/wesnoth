@@ -78,9 +78,10 @@ The program maintains a stack of event_context objects,
 the top of the stack being the active event_context.
 
 When an object of a type inheriting from handler is
-instantiated, it will be associated with the active event_context.
-As long as its event_context remains active, and only then, it will recieve
-all system events.
+instantiated, it will be associated with the active event_context
+(unless auto_join has been set false, in which case it can manually
+be instructed to join a later context). As long as its event_context
+remains active, and only then, it will recieve all system events.
 
 \note Multiple handler objects will recieve the same events, including key events.
 
