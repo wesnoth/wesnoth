@@ -30,7 +30,7 @@ struct combatant
 	double slowed;
 
 	// What's the average hp (weighted average of hp_dist).
-	double average_hp() const;
+	double average_hp(unsigned int healing = 0) const;
 
 private:
 	// We must adjust for swarm after every combat.

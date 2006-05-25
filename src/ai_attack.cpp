@@ -416,7 +416,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		avg_damage_inflicted = defend_it->second.hitpoints() - defend_it->second.max_hitpoints();
 	} else {
 		chance_to_kill = prev_def->hp_dist[0];
-		avg_damage_inflicted = defend_it->second.hitpoints() - prev_def->average_hp();
+		avg_damage_inflicted = defend_it->second.hitpoints() - prev_def->average_hp(map.gives_healing(defend_it->first));
 	}
 
 	delete prev_def;
