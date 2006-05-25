@@ -87,7 +87,8 @@ public:
 		void resolve_random();
 		void hide_ai_algorithm_combo(bool invis);
 	private:
-		void update_ai_algorithm_combo();
+		void init_ai_algorithm_combo();
+		void update_ai_algorithm_combo() {hide_ai_algorithm_combo(parent_->hidden());}
 		void update_controller_ui();
 		void update_ui();
 

@@ -114,6 +114,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
         ai_algorithm_ = lexical_cast_default<std::string>((*ai)["ai_algorithm"], "default");
     else
         ai_algorithm_ = "default";
+	init_ai_algorithm_combo();
 
 	// "Faction name" hack
 	if (!enabled_) {
@@ -310,30 +311,22 @@ void connect::side::hide_ai_algorithm_combo(bool invis)
 	combo_ai_algorithm_.hide(invis || controller_ != CNTR_COMPUTER);
 }
 
-void connect::side::update_ai_algorithm_combo()
+void connect::side::init_ai_algorithm_combo()
 {
-    if (controller_ == CNTR_COMPUTER) {
-		std::vector<std::string> ais = parent_->ai_algorithms_;
-		int sel = 0;
-        for (unsigned int i = 0; i < ais.size(); i++) {
-            if (ais[i] == ai_algorithm_) {
-				sel = i;
-            }
-			if (ais[i] == "default") {
-				ais[i] = _("Default AI");
-			}
-        }
-		combo_ai_algorithm_.set_items(ais);
-		combo_ai_algorithm_.set_selected(sel);
-		combo_ai_algorithm_.hide(false);
-    } else {
-        std::vector<std::string> emptylist;
-        emptylist.push_back("-");
-        combo_ai_algorithm_.set_items(emptylist);
-        combo_ai_algorithm_.set_selected(0);
-		combo_ai_algorithm_.hide(true);
-		combo_ai_algorithm_.set_dirty(true);
-    }
+	wassert(!parent_->ai_algorithms_.empty());
+
+	int sel = 0;
+	std::vector<std::string> ais = parent_->ai_algorithms_;
+	for (unsigned int i = 0; i < ais.size(); i++) {
+		if (ais[i] == ai_algorithm_) {
+			sel = i;
+		}
+		if (ais[i] == "default") {
+			ais[i] = _("Default AI");
+		}
+	}
+	combo_ai_algorithm_.set_items(ais);
+	combo_ai_algorithm_.set_selected(sel);
 }
 
 void connect::side::update_ui()
