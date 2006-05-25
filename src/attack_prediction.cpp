@@ -624,10 +624,10 @@ void combatant::fight(combatant &opp)
 
 double combatant::average_hp(unsigned int healing) const
 {
-	double total = hp_dist[0];
+	double total = 0;
 
 	// Since sum of probabilities is 1.0, we can just tally weights.
-	for (unsigned int i = 0; i < hp_dist.size(); i++) {
+	for (unsigned int i = 1; i < hp_dist.size(); i++) {
 		total += hp_dist[i] * minimum<unsigned int>(i + healing, u_.max_hp);
 	}
 	return total;
