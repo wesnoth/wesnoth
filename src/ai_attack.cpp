@@ -350,8 +350,8 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 			leader_threat = false;
 		}
 		battle_context bc(map, teams, units, status, gamedata, m->second, target, -1, 1.0 - aggression, prev_def);
-		const combatant &att = bc.get_attacker_combatant();
-		const combatant &def = bc.get_defender_combatant();
+		const combatant &att = bc.get_attacker_combatant(prev_def);
+		const combatant &def = bc.get_defender_combatant(prev_def);
 
 		delete prev_def;
 		prev_def = new combatant(def);
