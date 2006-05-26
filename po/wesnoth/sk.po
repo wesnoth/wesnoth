@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-23 20:43+0200\n"
-"PO-Revision-Date: 2006-04-17 13:40+0100\n"
+"PO-Revision-Date: 2006-05-25 21:06+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -19,12 +19,10 @@ msgstr ""
 "X-Poedit-Country: SLOVAKIA\n"
 
 #: data/abilities.cfg:8
-#, fuzzy
 msgid "heals +4"
-msgstr "uzdravuje"
+msgstr "uzdravuje +4"
 
 #: data/abilities.cfg:13
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -35,24 +33,20 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Uzdravuje:\n"
+"Uzdravuje +4:\n"
 "Jednotka dokáže uzdravovať spriatelené jednotky na vedľajších políčkach "
 "začiatkom ťahu.\n"
 "\n"
-"Jednotka v opatere uzdravovateľa sa môže za jeden ťah uzdraviť až o 4 "
-"životy.\n"
-"Uzdravovateľ môže v jednom ťahu obnoviť všetkým opatrovaným jednotkám spolu "
-"8 životov.\n"
+"Jednotka v opatere tohoto uzdravovateľa sa môže za jeden ťah uzdraviť až o 4 "
+"životy, alebo jej tento ťah nebude jed uberať životy.\n"
 "Uzdravovateľ nedokáže vyliečiť otrávenú jednotku; taká jednotka musí "
 "vyhľadať pomoc v dedine, alebo u jednotky, ktorá dokáže liečiť."
 
 #: data/abilities.cfg:27
-#, fuzzy
 msgid "heals +8"
-msgstr "uzdravuje"
+msgstr "uzdravuje +8"
 
 #: data/abilities.cfg:32
-#, fuzzy
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -63,14 +57,12 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Uzdravuje:\n"
-"Jednotka dokáže uzdravovať spriatelené jednotky na vedľajších políčkach "
-"začiatkom ťahu.\n"
+"Uzdravuje +8:\n"
+"Jednotka kombinuje rastlinné liečivá s mágiou, aby uzdravovala rýchlejšie, "
+"ako je bežne možné na bojisku.\n"
 "\n"
-"Jednotka v opatere uzdravovateľa sa môže za jeden ťah uzdraviť až o 4 "
-"životy.\n"
-"Uzdravovateľ môže v jednom ťahu obnoviť všetkým opatrovaným jednotkám spolu "
-"8 životov.\n"
+"Jednotka v opatere tohoto uzdravovateľa sa môže za jeden ťah uzdraviť až o 8 "
+"životov, alebo jej tento ťah nebude jed uberať životy.\n"
 "Uzdravovateľ nedokáže vyliečiť otrávenú jednotku; taká jednotka musí "
 "vyhľadať pomoc v dedine, alebo u jednotky, ktorá dokáže liečiť."
 
@@ -84,6 +76,9 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Lieči:\n"
+"Liečiteľ môže vyliečiť otrávenú jednotku, no táto jednotka už v danom kole "
+"nezíska žiadne dodatočné liečenie."
 
 #: data/abilities.cfg:57
 msgid "regenerates"
@@ -143,16 +138,14 @@ msgid "skirmisher"
 msgstr "priebojný"
 
 #: data/abilities.cfg:306
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
 "Priebojný:\n"
-"Táto jednotka je zvyknutá pohybovať sa medzi nepriateľmi a ignoruje ich "
-"oblasť kontroly. (Výnimka: ak jednotka zastane v súperovej oblasti kontroly, "
-"stratí zvyšok pohybových bodov, aj keď je priebojná.)"
+"Táto jednotka je zvyknutá pohybovať sa rýchlo medzi nepriateľmi a ignoruje "
+"ich oblasť kontroly."
 
 #: data/abilities.cfg:317
 msgid "illuminates"
@@ -230,10 +223,9 @@ msgstr ""
 
 #: data/abilities.cfg:378 data/abilities.cfg:383
 msgid "submerge"
-msgstr ""
+msgstr "ponorenie"
 
 #: data/abilities.cfg:382 data/abilities.cfg:387
-#, fuzzy
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -242,12 +234,12 @@ msgid ""
 "for any turn immediately after this unit has attacked, or if there are enemy "
 "units next to this unit."
 msgstr ""
-"Prepad:\n"
-"Jednotka sa dokáže ukryť v lese, kde ju nepriateľ neuvidí.\n"
+"Ponorenie:\n"
+"Táto jednotka sa dokáže ukryť v hlbokej vode, kde ju nepriateľ neuvidí.\n"
 "\n"
-"Nepriateľské jednotky nemôžu vidieť ani napadnúť túto jednotku v lese, iba v "
-"ťahu bezprostredne nasledujúcom po jej útoku, alebo ak sú na vedľajšom "
-"políčku."
+"Nepriateľské jednotky nemôžu vidieť ani napadnúť túto jednotku v hlbokej "
+"vode, iba v ťahu bezprostredne nasledujúcom po jej útoku, alebo ak sú na "
+"vedľajšom políčku."
 
 #: data/abilities.cfg:405
 msgid "berserk"
@@ -268,7 +260,6 @@ msgid "backstab"
 msgstr "zákerný"
 
 #: data/abilities.cfg:417
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -276,8 +267,9 @@ msgid ""
 "to stone)."
 msgstr ""
 "Zákerný:\n"
-"Zákerný útok dá dvojnásobné zranenie, ak sa na opačnej strane od obete "
-"nachádza jednotka rovnakej strany. (Jednotka priateľského hráča nestačí.)"
+"Tento útok dá dvojnásobné zranenie, ak sa na opačnej strane od obete "
+"nachádza bojaschopná (čiže nie napríklad skamenená) jednotka nepriateľská k "
+"obeti."
 
 #: data/abilities.cfg:426 data/abilities.cfg:434
 msgid "plague"
@@ -296,9 +288,8 @@ msgstr ""
 "(Toto neplatí na nemŕtvych a na jednotky v dedine.)"
 
 #: data/abilities.cfg:443
-#, fuzzy
 msgid "slows"
-msgstr "spomaľujúci"
+msgstr "spomaľuje"
 
 #: data/abilities.cfg:445
 msgid ""
@@ -306,11 +297,13 @@ msgid ""
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
+"Spomalenie:\n"
+"Tento útok spomalí terč. Spomalená jednotka spôsobuje pri útoku polovičné "
+"zranenie a pohybuje sa len polovicou bežnej rýchlosti (zaokrúhlené nahor)."
 
 #: data/abilities.cfg:451
-#, fuzzy
 msgid "stones"
-msgstr "kameň"
+msgstr "skamenie"
 
 #: data/abilities.cfg:453
 msgid ""
@@ -347,9 +340,8 @@ msgstr ""
 "Tento útok má vždy šancu 70% na zásah."
 
 #: data/abilities.cfg:482
-#, fuzzy
 msgid "swarm"
-msgstr "úder"
+msgstr "húf"
 
 #: data/abilities.cfg:484
 msgid ""
@@ -359,6 +351,10 @@ msgid ""
 "For example a unit with 3/4 of its maximum HP will get 3/4 of the number of "
 "strikes."
 msgstr ""
+"Húf:\n"
+"Počet útokov tejto jednotky klesá, keď je zranená. Počet útokov je priamo "
+"úmerný zdraviu jednotky. Napríklad ak má jednotka 3/4 maximálneho zdravia, "
+"bude mať 3/4 počtu útokov."
 
 #: data/abilities.cfg:491
 msgid "charge"
@@ -375,9 +371,8 @@ msgstr ""
 "utrpí dvojnásobné zranenie v prípade protiútoku."
 
 #: data/abilities.cfg:503
-#, fuzzy
 msgid "drains"
-msgstr "vysatie"
+msgstr "vysaje"
 
 #: data/abilities.cfg:505
 msgid ""
@@ -420,229 +415,186 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
 #: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
-#, fuzzy
 msgid "Artwork and Graphics Designers"
-msgstr "+Umeleckí a grafickí dizajnéri"
+msgstr "Umeleckí a grafickí dizajnéri"
 
 #: data/about.cfg:54
-#, fuzzy
 msgid "Music"
-msgstr "+Hudba"
+msgstr "Hudba"
 
 #: data/about.cfg:65
-#, fuzzy
 msgid "Scenario Designers"
-msgstr "+Dizajn scenárov"
+msgstr "Dizajnéri scén"
 
 #: data/about.cfg:82
-#, fuzzy
 msgid "Multiplayer Developers"
-msgstr "+Mapy na zápas"
+msgstr "Vývojári zápasu"
 
 #: data/about.cfg:92
-#, fuzzy
 msgid "Multiplayer Maps"
-msgstr "+Mapy na zápas"
+msgstr "Mapy na zápas"
 
 #: data/about.cfg:102
-#, fuzzy
 msgid "Packagers"
-msgstr "+Výroba balíkov"
+msgstr "Výrobcovia balíkov"
 
 #: data/about.cfg:117 data/campaigns/The_South_Guard.cfg:39
 #: data/campaigns/Two_Brothers.cfg:36
 #: data/campaigns/Under_the_Burning_Suns.cfg:47
-#, fuzzy
 msgid "Miscellaneous"
-msgstr "+Rôzne"
+msgstr "Rôzne"
 
 #: data/about.cfg:126
-#, fuzzy
 msgid "Internationalization Managers"
-msgstr "+Manažéri prekladu"
+msgstr "Správcovia prekladu"
 
 #: data/about.cfg:137
-#, fuzzy
 msgid "Afrikaans Translation"
-msgstr "+Afrikánsky preklad"
+msgstr "Afrikánsky preklad"
 
 #: data/about.cfg:147
-#, fuzzy
 msgid "Basque Translation"
-msgstr "+Baskický preklad"
+msgstr "Baskický preklad"
 
 #: data/about.cfg:156
-#, fuzzy
 msgid "Bulgarian Translation"
-msgstr "+Bulharský preklad"
+msgstr "Bulharský preklad"
 
 #: data/about.cfg:164
-#, fuzzy
 msgid "Catalan Translation"
-msgstr "+Katalánsky preklad"
+msgstr "Katalánsky preklad"
 
 #: data/about.cfg:178
-#, fuzzy
 msgid "Chinese Translation"
-msgstr "+Čínsky preklad"
+msgstr "Čínsky preklad"
 
 #: data/about.cfg:185
-#, fuzzy
 msgid "Czech Translation"
-msgstr "+Český preklad"
+msgstr "Český preklad"
 
 #: data/about.cfg:204
-#, fuzzy
 msgid "Danish Translation"
-msgstr "+Dánsky preklad"
+msgstr "Dánsky preklad"
 
 #: data/about.cfg:215
-#, fuzzy
 msgid "Dutch Translation"
-msgstr "+Nizozemský preklad"
+msgstr "Nizozemský preklad"
 
 #: data/about.cfg:227
-#, fuzzy
 msgid "English (GB) Translation"
-msgstr "+Anglický (britský) preklad"
+msgstr "Anglický (britský) preklad"
 
 #: data/about.cfg:234
-#, fuzzy
 msgid "Esperanto Translation"
-msgstr "+Nemecký preklad"
+msgstr "Esperantský preklad"
 
 #: data/about.cfg:242
-#, fuzzy
 msgid "Estonian Translation"
-msgstr "+Estónsky preklad"
+msgstr "Estónsky preklad"
 
 #: data/about.cfg:249
-#, fuzzy
 msgid "Filipino Translation"
-msgstr "+Fínsky preklad"
+msgstr "Filipínsky preklad"
 
 #: data/about.cfg:256
-#, fuzzy
 msgid "Finnish Translation"
-msgstr "+Fínsky preklad"
+msgstr "Fínsky preklad"
 
 #: data/about.cfg:266
-#, fuzzy
 msgid "French Translation"
-msgstr "+Francúzsky preklad"
+msgstr "Francúzsky preklad"
 
 #: data/about.cfg:290
-#, fuzzy
 msgid "German Translation"
-msgstr "+Nemecký preklad"
+msgstr "Nemecký preklad"
 
 #: data/about.cfg:307
-#, fuzzy
 msgid "Greek Translation"
-msgstr "+Grécky preklad"
+msgstr "Grécky preklad"
 
 #: data/about.cfg:317
-#, fuzzy
 msgid "Hebrew Translation"
-msgstr "+Grécky preklad"
+msgstr "Hebrejský preklad"
 
 #: data/about.cfg:325
-#, fuzzy
 msgid "Hungarian Translation"
-msgstr "+Maďarský preklad"
+msgstr "Maďarský preklad"
 
 #: data/about.cfg:342
-#, fuzzy
 msgid "Indonesian Translation"
-msgstr "+Estónsky preklad"
+msgstr "Indonézsky preklad"
 
 #: data/about.cfg:349
-#, fuzzy
 msgid "Italian Translation"
-msgstr "+Taliansky preklad"
+msgstr "Taliansky preklad"
 
 #: data/about.cfg:364
-#, fuzzy
 msgid "Japanese Translation"
-msgstr "+Japonský preklad"
+msgstr "Japonský preklad"
 
 #: data/about.cfg:373
-#, fuzzy
 msgid "Korean Translation"
-msgstr "+Nórsky preklad"
+msgstr "Kórejský preklad"
 
 #: data/about.cfg:380
-#, fuzzy
 msgid "Latin Translation"
-msgstr "+Latinský preklad"
+msgstr "Latinský preklad"
 
 #: data/about.cfg:387
-#, fuzzy
 msgid "Norwegian Translation"
-msgstr "+Nórsky preklad"
+msgstr "Nórsky preklad"
 
 #: data/about.cfg:398
-#, fuzzy
 msgid "Polish Translation"
-msgstr "+Poľský preklad"
+msgstr "Poľský preklad"
 
 #: data/about.cfg:414
-#, fuzzy
 msgid "Portuguese Translation"
-msgstr "+Portugalský preklad (Brazília)"
+msgstr "Portugalský preklad"
 
 #: data/about.cfg:421
-#, fuzzy
 msgid "Portuguese (Brazil) Translation"
-msgstr "+Portugalský preklad (Brazília)"
+msgstr "Portugalský preklad (Brazília)"
 
 #: data/about.cfg:435
-#, fuzzy
 msgid "Russian Translation"
-msgstr "+Ruský preklad"
+msgstr "Ruský preklad"
 
 #: data/about.cfg:445
-#, fuzzy
 msgid "Serbian Translation"
-msgstr "+Srbský preklad"
+msgstr "Srbský preklad"
 
 #: data/about.cfg:452
-#, fuzzy
 msgid "Slovak Translation"
-msgstr "+Slovenský preklad"
+msgstr "Slovenský preklad"
 
 #: data/about.cfg:459
-#, fuzzy
 msgid "Slovenian Translation"
-msgstr "+Slovinský preklad"
+msgstr "Slovinský preklad"
 
 #: data/about.cfg:466
-#, fuzzy
 msgid "Spanish Translation"
-msgstr "+Španielsky preklad"
+msgstr "Španielsky preklad"
 
 #: data/about.cfg:479
-#, fuzzy
 msgid "Swedish Translation"
-msgstr "+Švédsky preklad"
+msgstr "Švédsky preklad"
 
 #: data/about.cfg:491
-#, fuzzy
 msgid "Turkish Translation"
-msgstr "+Turecký preklad"
+msgstr "Turecký preklad"
 
 #: data/about.cfg:502 data/help.cfg:252
 msgid "Contributors"
 msgstr "Prispievatelia"
 
 #: data/about.cfg:517
-#, fuzzy
 msgid "Bots"
-msgstr "+Roboti"
+msgstr "Roboti"
 
 #: data/amla.cfg:8
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr ", MAX SKÚS +25%"
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +"
@@ -657,9 +609,8 @@ msgstr "Vylieč všetko"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
 #: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
 #: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
 msgid "Campaign Designer"
-msgstr "Výprava"
+msgstr "Dizajnér výprav"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
@@ -1133,9 +1084,8 @@ msgstr "pazúry"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:25
 #: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
 #: data/campaigns/Under_the_Burning_Suns.cfg:32
-#, fuzzy
 msgid "Current Maintainer"
-msgstr "Momentálny cieľ:"
+msgstr "Momentálny správca"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:74
@@ -1162,9 +1112,8 @@ msgstr ""
 #: data/units/Human_Loyalist_Duelist.cfg:89
 #: data/units/Human_Loyalist_Fencer.cfg:80
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:27
-#, fuzzy
 msgid "sabre"
-msgstr "lapenie"
+msgstr "šabľa"
 
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:3
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:3
@@ -2087,9 +2036,8 @@ msgid "Terrains"
 msgstr "Terén"
 
 #: data/help.cfg:59
-#, fuzzy
 msgid "Commands"
-msgstr "Veliteľ"
+msgstr "Príkazy"
 
 #: data/help.cfg:65 data/help.cfg:71 data/help.cfg:264
 msgid "Overview"
@@ -3732,33 +3680,40 @@ msgstr ""
 "najodhodlanejšieho pútnika."
 
 #: data/help.cfg:543
-#, fuzzy
 msgid "General commands"
-msgstr "Generál"
+msgstr "Všeobecné príkazy"
 
 #: data/help.cfg:545
 msgid ""
 "\n"
 "Quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Ukončí scénu (bez upozornenia)."
 
 #: data/help.cfg:548
 msgid ""
 "\n"
 "Save the game (without prompting)."
 msgstr ""
+"\n"
+"Uloží hru (bez upozornenia)."
 
 #: data/help.cfg:551
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Uloží hru a ukončí scénu (bez upozornenia)."
 
 #: data/help.cfg:554
 msgid ""
 "\n"
 "Redraw the screen."
 msgstr ""
+"\n"
+"Prekreslí obrazovku."
 
 #: data/help.cfg:557
 msgid ""
@@ -3766,17 +3721,21 @@ msgid ""
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
 "off by quitting the game."
 msgstr ""
+"\n"
+"Prepne sa do režimu ladenia (nefunguje pri hre viacerých hráčov). Režim "
+"ladenia sa vypne ukončením hry."
 
 #: data/help.cfg:560
 msgid ""
 "\n"
 "Bring up theme selection menu."
 msgstr ""
+"\n"
+"Zobrazí menu výberu témy."
 
 #: data/help.cfg:565
-#, fuzzy
 msgid "Multiplayer commands"
-msgstr "+Mapy na zápas"
+msgstr "Príkazy na zápas"
 
 #: data/help.cfg:567
 msgid ""
@@ -4454,9 +4413,8 @@ msgid "4p - Clash"
 msgstr "(4) - Zrážka"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
-#, fuzzy
 msgid "Small map for 2 vs 2. Recommended setting of 2 gold per village."
-msgstr "Superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
+msgstr "Malá mapa pre 2 proti 2. Odporúča sa nastaviť 2 zlatky za dedinu."
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
@@ -4485,18 +4443,16 @@ msgid "4p - Lagoon"
 msgstr "(4) - Zátoka"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
-#, fuzzy
 msgid ""
 "Four factions contend for dominance over this watery settlement. Recommended "
 "setting of 1 gold per village."
 msgstr ""
-"Štyri frakcie bojujú o nadvládu nad touto vodnatou usadlosťou. Odporúča sa "
+"Štyri frakcie súperia o nadvládu nad touto vodnatou usadlosťou. Odporúča sa "
 "nastaviť 1 zlatku za dedinu."
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:5
-#, fuzzy
 msgid "4p - Loris River"
-msgstr "(2) - Cez rieku"
+msgstr "(4) - Rieka Loris"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
 msgid ""
@@ -4505,9 +4461,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
-#, fuzzy
 msgid "4p - Morituri"
-msgstr "(3) - Morituri"
+msgstr "(4) - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
 #, fuzzy
@@ -4609,9 +4564,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
-#, fuzzy
 msgid "8p - Morituri"
-msgstr "(3) - Morituri"
+msgstr "(8) - Morituri"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
 #, fuzzy
@@ -4873,9 +4827,8 @@ msgid "Orange"
 msgstr "Oranžový"
 
 #: data/team_colors.cfg:34
-#, fuzzy
 msgid "Black"
-msgstr "< Naspäť"
+msgstr "Čierna"
 
 #: data/team_colors.cfg:40
 msgid "White"
@@ -4910,9 +4863,8 @@ msgid "Oasis"
 msgstr "Oáza"
 
 #: data/terrain.cfg:325
-#, fuzzy
 msgid "Dunes"
-msgstr "Duelista"
+msgstr "Duny"
 
 #: data/terrain.cfg:334
 msgid "Snow Hills"
@@ -4932,14 +4884,12 @@ msgid "Cave Lit"
 msgstr "Jaskyňa"
 
 #: data/terrain.cfg:414
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "Púštne hory"
+msgstr "Neprekonateľné hory"
 
 #: data/terrain.cfg:445
-#, fuzzy
 msgid "Great Tree"
-msgstr "Veľký troll"
+msgstr "Veľký strom"
 
 #: data/terrain.cfg:464
 msgid "Encampment"
@@ -5014,39 +4964,32 @@ msgid "statuspanel^movement"
 msgstr "pohyb"
 
 #: data/themes/default.cfg:458
-#, fuzzy
 msgid "Replay"
-msgstr "záznam"
+msgstr "Záznam"
 
 #: data/themes/default.cfg:471
-#, fuzzy
 msgid "Play"
-msgstr "Hráči:"
+msgstr "Hraj"
 
 #: data/themes/default.cfg:484
-#, fuzzy
 msgid "Stop"
-msgstr "Silný"
+msgstr "Stop"
 
 #: data/themes/default.cfg:497
-#, fuzzy
 msgid "Reset"
-msgstr "Púšť"
+msgstr "Reštart"
 
 #: data/themes/default.cfg:510
-#, fuzzy
 msgid "Next Turn"
-msgstr "Kolo"
+msgstr "Nasledujúce kolo"
 
 #: data/themes/default.cfg:523
-#, fuzzy
 msgid "Next Side"
-msgstr "Ďalej"
+msgstr "Nasledujúca strana"
 
 #: data/themes/default.cfg:559
-#, fuzzy
 msgid "Skip animation"
-msgstr "+Slovenský preklad"
+msgstr "Preskoč animáciu"
 
 # Skratka z "Actions" = "Akcie".
 #: data/themes/default.cfg:663
@@ -5406,9 +5349,8 @@ msgid "resilient"
 msgstr "odolný"
 
 #: data/tutorial/units/Fighteress.cfg:5 data/tutorial/units/Fighteress.cfg:53
-#, fuzzy
 msgid "female^Fighter"
-msgstr "Mágyňa"
+msgstr "Vojačka"
 
 #: data/tutorial/units/Quintain.cfg:3
 #, fuzzy
@@ -6733,12 +6675,14 @@ msgstr ""
 #: data/units/Human_Horse_Grand_Knight.cfg:21
 #: data/units/Human_Horse_Knight.cfg:20 data/units/Human_Horse_Lancer.cfg:21
 #: data/units/Human_Horseman.cfg:20
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
-msgstr "Špeciálne"
+msgstr ""
+"\n"
+"\n"
+"Poznámky:"
 
 #: data/units/Human_Horse_Grand_Knight.cfg:73
 #: data/units/Human_Horse_Knight.cfg:72 data/units/Human_Horse_Lancer.cfg:25
@@ -9127,9 +9071,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Undead_Necromancer.cfg:32
-#, fuzzy
 msgid "plague staff"
-msgstr "choroba"
+msgstr "morová palica"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
@@ -9550,14 +9493,12 @@ msgid "+Core Developers"
 msgstr "+Jadro vývoja"
 
 #: src/about.cpp:33
-#, fuzzy
 msgid "+  Main Developer"
-msgstr "-   Hlavný vývojár"
+msgstr "+  Hlavný vývojár"
 
 #: src/about.cpp:36
-#, fuzzy
 msgid "+  Artwork and graphics designer"
-msgstr "-   Umelecký a grafický dizajnér"
+msgstr "+  Umelecký a grafický dizajnér"
 
 #: src/about.cpp:39
 msgid "+Developers"
@@ -9570,11 +9511,11 @@ msgstr "+Všeobecní správcovia"
 #: src/about.cpp:82 src/about.cpp:112 src/multiplayer_connect.cpp:271
 #: src/multiplayer_connect.cpp:347 src/multiplayer_wait.cpp:407
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: src/about.cpp:89 src/about.cpp:119
 msgid "+  "
-msgstr ""
+msgstr "+  "
 
 #: src/about.cpp:217 src/help.cpp:2745
 msgid "Close"
@@ -9885,7 +9826,7 @@ msgstr "Neviem sa pripojiť na server."
 
 #: src/game.cpp:881
 msgid "Asking for campaign list"
-msgstr ""
+msgstr "Požiadavka na zoznam výprav"
 
 #: src/game.cpp:894
 msgid "Error communicating with the server."
@@ -9970,9 +9911,8 @@ msgid "Terms"
 msgstr "Podmienky"
 
 #: src/game.cpp:1093
-#, fuzzy
 msgid "Sending campaign"
-msgstr "Sťahujem výpravu..."
+msgstr "Posielam výpravu"
 
 #: src/game.cpp:1100 src/game.cpp:1125 src/multiplayer_wait.cpp:311
 msgid "Response"
@@ -10027,6 +9967,8 @@ msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
+"Vybral si si príliš dlhé prihlasovacie meno, prosím použi prihlasovacie meno "
+"s menej ako 18 znakmi"
 
 #: src/game.cpp:1204 src/playcampaign.cpp:107 src/playcampaign.cpp:312
 msgid "The game could not be loaded: "
@@ -10074,7 +10016,7 @@ msgstr "Bitka o Wesnoth"
 
 #: src/game.cpp:1733
 msgid "Loading title screen."
-msgstr ""
+msgstr "Načítava sa úvodná obrazovka."
 
 #: src/game_events.cpp:716
 msgid "Victory:"
@@ -10097,9 +10039,8 @@ msgid "Abilities: "
 msgstr "Schopnosti:"
 
 #: src/help.cpp:1143
-#, fuzzy
 msgid "Cost: "
-msgstr "Kroky:"
+msgstr "Cena: "
 
 #: src/help.cpp:1144
 msgid "Alignment: "
@@ -10158,23 +10099,20 @@ msgid "or"
 msgstr "alebo"
 
 #: src/help.cpp:1368
-#, fuzzy
 msgid "This terrain acts as $terrains for movement purposes."
-msgstr "Tento terén sa z hľadiska pohybu a obrany ráta ako $terrains."
+msgstr "Tento terén sa z hľadiska pohybu ráta ako $terrains."
 
 #: src/help.cpp:1370 src/help.cpp:1394
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Automaticky sa vyberie terén s najlepšími hodnotami."
 
 #: src/help.cpp:1372 src/help.cpp:1396
-#, fuzzy
 msgid "The terrain with the worst modifier is chosen automatically."
-msgstr "Automaticky sa vyberie terén s najlepšími hodnotami."
+msgstr "Automaticky sa vyberie terén s najhoršími hodnotami."
 
 #: src/help.cpp:1392
-#, fuzzy
 msgid "This terrain acts as $terrains for defense purposes."
-msgstr "Tento terén sa z hľadiska pohybu a obrany ráta ako $terrains."
+msgstr "Tento terén sa z hľadiska obrany ráta ako $terrains."
 
 #: src/help.cpp:1400
 msgid ""
@@ -10195,9 +10133,8 @@ msgid "This terrain gives healing."
 msgstr "Tento terén lieči."
 
 #: src/help.cpp:2260
-#, fuzzy
 msgid " < Back"
-msgstr "< Naspäť"
+msgstr " < Naspäť"
 
 #: src/help.cpp:2261
 msgid "Forward >"
@@ -10237,19 +10174,19 @@ msgstr "?"
 
 #: src/loadscreen.cpp:153
 msgid "Verifying cache."
-msgstr ""
+msgstr "Kontroluje sa vyrovnávacia pamäť."
 
 #: src/loadscreen.cpp:172
 msgid "Reading cache."
-msgstr ""
+msgstr "Načítava sa vyrovnávacia pamäť."
 
 #: src/loadscreen.cpp:191
 msgid "Reading unit files."
-msgstr ""
+msgstr "Načítavajú sa súbory jednotiek."
 
 #: src/loadscreen.cpp:210
 msgid "Reading files and creating cache."
-msgstr ""
+msgstr "Načítavajú sa súbory a vytvára vyrovnávacia pamäť."
 
 #: src/menu_events.cpp:59
 msgid ""
@@ -10495,7 +10432,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1402
 msgid "Unknown subcommand"
-msgstr ""
+msgstr "Neznámy podpríkaz"
 
 #: src/menu_events.cpp:1405
 msgid ""
@@ -10510,25 +10447,23 @@ msgstr ""
 
 #: src/menu_events.cpp:1410
 msgid "Unknown command"
-msgstr ""
+msgstr "Neznámy príkaz"
 
 #: src/menu_events.cpp:1427
 msgid "Added to ignore list: "
 msgstr ""
 
 #: src/menu_events.cpp:1429 src/menu_events.cpp:1439
-#, fuzzy
 msgid "Invalid username: "
-msgstr "Neplatný názov značky"
+msgstr "Neplatné používateľské meno: "
 
 #: src/menu_events.cpp:1437 src/menu_events.cpp:1463
 msgid "Removed from ignore list: "
 msgstr ""
 
 #: src/menu_events.cpp:1468
-#, fuzzy
 msgid "Unknown command: "
-msgstr "Neznáma scéna: '"
+msgstr "Neznámy príkaz: "
 
 #: src/menu_events.cpp:1569
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -10551,39 +10486,32 @@ msgid "Expected Battle Result (hp)"
 msgstr ""
 
 #: src/mouse_events.cpp:301
-#, fuzzy
 msgid " resistance vs "
-msgstr "Odolnosti"
+msgstr " odolnosť voči "
 
 #: src/mouse_events.cpp:302
-#, fuzzy
 msgid " vulnerability vs "
-msgstr "zraniteľnosť obrancu voči"
+msgstr " zraniteľnosť voči "
 
 #: src/mouse_events.cpp:312
-#, fuzzy
 msgid "Slowed"
-msgstr "spomalený"
+msgstr "Spomalený"
 
 #: src/mouse_events.cpp:319
-#, fuzzy
 msgid "Time of day"
 msgstr "Denná doba"
 
 #: src/mouse_events.cpp:329
-#, fuzzy
 msgid "Leadership"
-msgstr "velenie"
+msgstr "Velenie"
 
 #: src/mouse_events.cpp:336
-#, fuzzy
 msgid "Total damage"
-msgstr "celkové zranenie"
+msgstr "Celkové zranenie"
 
 #: src/mouse_events.cpp:343
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Vyber si zbraň:"
+msgstr "Žiadna vhodná zbraň"
 
 #: src/mouse_events.cpp:348
 msgid "Chance of being unscathed"
@@ -10771,7 +10699,7 @@ msgstr "Vytvor hru"
 
 #: src/multiplayer_create.cpp:48
 msgid "Time limit"
-msgstr ""
+msgstr "Časový limit"
 
 #: src/multiplayer_create.cpp:61
 msgid "Name of game:"
@@ -10943,33 +10871,28 @@ msgid "Status"
 msgstr "Stav"
 
 #: src/multiplayer_lobby.cpp:102
-#, fuzzy
 msgid "--no games open--"
-msgstr "<nie je otvorená žiadna hra>"
+msgstr "--nie je otvorená žiadna hra--"
 
 #: src/multiplayer_lobby.cpp:297 src/multiplayer_lobby.cpp:300
-#, fuzzy
 msgid "Unknown era"
-msgstr "Neznáma scéna: '"
+msgstr "Neznáma éra"
 
 #: src/multiplayer_lobby.cpp:322 src/multiplayer_lobby.cpp:338
-#, fuzzy
 msgid "Unknown scenario"
-msgstr "Neznáma scéna: '"
+msgstr "Neznáma scéna"
 
 #: src/multiplayer_lobby.cpp:334
 msgid "Remote scenario"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:347
-#, fuzzy
 msgid "Vacant Slot:"
-msgstr "Voľné miesto"
+msgstr "Voľné miesto:"
 
 #: src/multiplayer_lobby.cpp:347
-#, fuzzy
 msgid "Vacant Slots:"
-msgstr "Voľné miesta"
+msgstr "Voľné miesta:"
 
 #: src/multiplayer_lobby.cpp:371
 msgid "none"
@@ -10980,14 +10903,12 @@ msgid "Observe Game"
 msgstr "Pozoruj hru"
 
 #: src/multiplayer_lobby.cpp:465
-#, fuzzy
 msgid "Quick Replays"
-msgstr " záznam"
+msgstr "Rýchle záznamy"
 
 #: src/multiplayer_lobby.cpp:466
-#, fuzzy
 msgid "Preferences"
-msgstr "Princezná"
+msgstr "Nastavenia"
 
 #: src/multiplayer_lobby.cpp:467
 msgid "Quit"
@@ -10998,7 +10919,6 @@ msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
 #: src/multiplayer_ui.cpp:79
-#, fuzzy
 msgid "Invalid Color"
 msgstr "Neplatná farba"
 
@@ -11180,13 +11100,11 @@ msgid "invisible: "
 msgstr "neviditeľný: "
 
 #: src/reports.cpp:135
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
 msgstr ""
-"Táto jednotka bola spomalená. Pohybuje sa polovičnou rýchlosťou a v boji má "
-"o jeden útok menej."
+"Táto jednotka bola spomalená. Pri útoku bude dávať iba polovičné zranenie."
 
 #: src/reports.cpp:135
 msgid "slowed: "
@@ -11227,9 +11145,8 @@ msgid "weapon range: "
 msgstr ""
 
 #: src/reports.cpp:261
-#, fuzzy
 msgid "damage type: "
-msgstr "zranenia"
+msgstr "typ zranenia:"
 
 #: src/reports.cpp:319
 msgid "Lawful units: "
@@ -11340,9 +11257,8 @@ msgid "TitleScreen button^Preferences"
 msgstr "Nastavenia"
 
 #: src/titlescreen.cpp:206
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Koniec"
+msgstr "Podporte Wesnoth"
 
 #: src/titlescreen.cpp:207
 msgid "About"
@@ -11382,7 +11298,7 @@ msgstr "Nastav rôzne možnosti hry"
 
 #: src/titlescreen.cpp:215
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "Podporte Wesnoth tým, že nám pošlete informácie"
 
 #: src/titlescreen.cpp:216
 msgid "View the credits"
@@ -11398,7 +11314,7 @@ msgstr "Ďalej"
 
 #: src/titlescreen.cpp:249
 msgid "Help"
-msgstr ""
+msgstr "Pomoc"
 
 #: src/titlescreen.cpp:259
 msgid "-- The Tome of Wesnoth"
@@ -11439,18 +11355,22 @@ msgid ""
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
+"Wesnoth závisí na dobrovoľníkoch, ako si ty, aby poskytli spätnú väzbu. Týka "
+"sa to najmä nových hráčov. Wesnoth si udržiava záznam o tvojom hraní; môžeš "
+"nám pomôcť lepšie vyladiť hru, ak dovolíš, aby sa tieto (anonymné) záznamy "
+"odoslali na stránku wesnoth.org.\n"
 
 #: src/upload_log.cpp:278
 msgid "Summaries are stored here:"
-msgstr ""
+msgstr "Záznamy sú uložené tu:"
 
 #: src/upload_log.cpp:280
 msgid "You can view the results at:"
-msgstr ""
+msgstr "Výsledky si môžeš zobraziť na:"
 
 #: src/upload_log.cpp:285
 msgid "Help us make Wesnoth better for you!"
-msgstr ""
+msgstr "Pomôž nám urobiť Wesnoth lepším pre teba!"
 
 #~ msgid "Canyon"
 #~ msgstr "Kaňon"
