@@ -83,7 +83,7 @@ bool fade_logo(display& screen, int xpos, int ypos)
 
 			screen.update_display();
 
-			SDL_Delay(10);
+			screen.delay(10);
 
 			events::pump();
 			if(screen.video().modeChanged()) {
@@ -335,7 +335,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 			return TITLE_CONTINUE;
 		}
 
-		SDL_Delay(20);
+		screen.delay(20);
 	}
 
 	return QUIT_GAME;

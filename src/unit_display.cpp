@@ -49,8 +49,7 @@ void teleport_unit_between(display& disp, const gamemap::location& a, const game
 			disp.place_temporary_unit(u, a);
 			disp.draw();
 			events::pump();
-			if(!disp.turbo()) SDL_Delay(10);
-
+			disp.non_turbo_delay();
 		}
 	}
 	if (!disp.fogged(b.x, b.y)) { // teleport
@@ -61,7 +60,7 @@ void teleport_unit_between(display& disp, const gamemap::location& a, const game
 			disp.place_temporary_unit(u, b);
 			disp.draw();
 			events::pump();
-			if(!disp.turbo()) SDL_Delay(10);
+			disp.non_turbo_delay();
 		}
 	}
 	u.set_standing(disp,b);
@@ -100,7 +99,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		u.set_offset(pos);
 		disp.draw();
 		events::pump();
-		if(!disp.turbo()) SDL_Delay(10);
+		disp.non_turbo_delay();
 
 		mvt_time = SDL_GetTicks() -start_time;
 	}
@@ -182,7 +181,7 @@ void unit_die(display& disp,const gamemap::location& loc, unit& u, const attack_
 		disp.invalidate(loc);
 		disp.draw();
 		events::pump();
-		if(!disp.turbo()) SDL_Delay(10);
+		disp.non_turbo_delay();
 	}
 	u.set_standing(disp,loc);
 	disp.update_display();
@@ -241,7 +240,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		if(leader_loc.valid()) disp.invalidate(leader_loc);
 		disp.draw();
 		events::pump();
-		if(!disp.turbo()) SDL_Delay(10);
+		disp.non_turbo_delay();
 	}
 
 
@@ -329,7 +328,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		}
 		disp.draw();
 		events::pump();
-		if(!disp.turbo()) SDL_Delay(10);
+		disp.non_turbo_delay();
 		animation_time = defender.get_animation()->get_animation_time();
 	}
 	halo::remove(missile_halo);
@@ -436,7 +435,7 @@ bool unit_attack(display& disp, unit_map& units,
 		if(leader_loc.valid()) disp.invalidate(leader_loc);
 		disp.draw();
 		events::pump();
-		if(!disp.turbo()) SDL_Delay(10);
+		disp.non_turbo_delay();
 
 		animation_time = attacker.get_animation()->get_animation_time();
 	}
@@ -457,7 +456,7 @@ bool unit_attack(display& disp, unit_map& units,
 		if(leader_loc.valid()) disp.invalidate(leader_loc);
 		disp.draw();
 		events::pump();
-		if(!disp.turbo()) SDL_Delay(10);
+		disp.non_turbo_delay();
 
 		animation_time = attacker.get_animation()->get_animation_time();
 	}

@@ -296,6 +296,10 @@ public:
 	bool turbo() const;
 	void set_turbo(bool turbo);
 
+	//Delay routines: use these not SDL_Delay (for --nogui).
+	void non_turbo_delay() const;
+	void delay(unsigned int milliseconds) const;
+
 	//function which determines whether a grid should be overlayed on the
 	//game board to more clearly show where hexes are.
 	void set_grid(bool grid);

@@ -494,7 +494,7 @@ void playsingle_controller::play_ai_turn(){
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();
 	gui_->draw();
-	SDL_Delay(500);
+	gui_->delay(500);
 }
 
 void playsingle_controller::handle_generic_event(const std::string& name){

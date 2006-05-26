@@ -894,7 +894,7 @@ void display::draw(bool update,bool force)
 
 	//force a wait for 10 ms every frame.
 	//TODO: review whether this is the correct thing to do
-	SDL_Delay(maximum<int>(10,wait_time));
+	delay(maximum<int>(10,wait_time));
 
 	if(update) {
 		lastDraw_ = SDL_GetTicks();
@@ -2159,12 +2159,25 @@ bool display::turbo() const
 		res = !res;
 	}
 
-	return res;
+	return res || screen_.faked();
 }
 
 void display::set_turbo(bool turbo)
 {
 	turbo_ = turbo;
+}
+
+//Delay routines: use these not SDL_Delay (for --nogui).
+void display::non_turbo_delay() const
+{
+	if (!turbo())
+		delay(10);
+}
+
+void display::delay(unsigned int milliseconds) const
+{
+	if (!screen_.faked())
+		SDL_Delay(milliseconds);
 }
 
 void display::set_grid(bool grid)

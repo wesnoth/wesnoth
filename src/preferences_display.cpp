@@ -824,7 +824,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 				};
 				SDL_PollEvent(&event);
 				disp.flip();
-				SDL_Delay(10);
+				disp.delay(10);
 			} while (event.type!=SDL_KEYUP);
 			restorer.restore();
 			disp.update_display();
@@ -858,7 +858,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 		disp.update_display();
 
-		SDL_Delay(10);
+		disp.delay(10);
 	}
 }
 

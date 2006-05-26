@@ -823,7 +823,7 @@ int show_dialog(display& disp, surface image,
 		}
 
 		disp.flip();
-		SDL_Delay(10);
+		disp.delay(10);
 
 		if(action != NULL) {
 			const int act = action->do_action();

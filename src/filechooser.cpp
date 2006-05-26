@@ -89,7 +89,7 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 			}
 		}
 		disp.flip();
-		SDL_Delay(10);
+		disp.delay(10);
 	}
 }
 } //end namespace dialogs

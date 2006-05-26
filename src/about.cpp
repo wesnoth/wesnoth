@@ -325,7 +325,7 @@ void show_about(display &disp, std::string campaign)
 		update_rect(map_rect);
 		close.set_dirty(true);
 		disp.flip();
-		SDL_Delay(20);
+		disp.delay(20);
 
 	} while(!close.pressed() && (last_escape || !key[SDLK_ESCAPE]));
 

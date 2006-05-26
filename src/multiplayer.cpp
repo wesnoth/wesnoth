@@ -75,7 +75,7 @@ void run_lobby_loop(display& disp, mp::ui& ui)
 		ui.process_network();
 
 		disp.flip();
-		SDL_Delay(20);
+		disp.delay(20);
 	}
 }
 

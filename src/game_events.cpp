@@ -462,7 +462,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		wassert(state_of_game != NULL);
 		delay_string = utils::interpolate_variables_into_string(delay_string, *state_of_game);
 		const int delay_time = atoi(delay_string.c_str());
-		::SDL_Delay(delay_time);
+		screen->delay(delay_time);
 	}
 
 	else if(cmd == "scroll") {
@@ -1128,8 +1128,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					screen->invalidate(loc);
 					screen->draw();
 					events::pump();
-					if(!screen->turbo()) SDL_Delay(10);
-
+					screen->non_turbo_delay();
 				}
 				un->second.set_standing(*screen,un->first);
 			}
@@ -1730,8 +1729,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				screen->invalidate(u->first);
 				screen->draw();
 				events::pump();
-				if(!screen->turbo()) SDL_Delay(10);
-
+				screen->non_turbo_delay();
 			}
 			u->second.set_standing(*screen,u->first);
 			screen->invalidate(u->first);

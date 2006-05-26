@@ -165,8 +165,7 @@ std::string recruit_unit(const gamemap& map, int side,
 				disp->invalidate(recruit_location);
 				disp->draw();
 				events::pump();
-				if(!disp->turbo()) SDL_Delay(10);
-
+				disp->non_turbo_delay();
 			}
 			un->second.set_standing(*disp,recruit_location);
 		}
@@ -1471,7 +1470,7 @@ void calculate_healing(display& disp, const gamemap& map,
 			finished &= (!healing);
 			disp.draw();
 			events::pump();
-			SDL_Delay(10);
+			disp.delay(10);
 		} while (!finished);
 
 		i->second.set_standing(disp,i->first);
