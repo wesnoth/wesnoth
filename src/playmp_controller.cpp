@@ -215,6 +215,9 @@ bool playmp_controller::play_network_turn(){
 			}
 
 		}
+		else{
+			skip_replay_ = false;
+		}
 
 		play_slice();
 		turn_data.send_data();

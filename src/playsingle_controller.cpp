@@ -363,9 +363,8 @@ void playsingle_controller::play_turn(){
 					replaying_ = false;
 				}
 				LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
-			}
-
-			if (!replaying_){
+			} 
+			else{
 				play_side(player_number_);
 			}
 
