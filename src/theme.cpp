@@ -258,7 +258,7 @@ namespace {
 	}
 }
 
-theme::object::object() : loc_(empty_rect), relative_loc_(empty_rect),
+theme::object::object() : location_modified_(false), loc_(empty_rect), relative_loc_(empty_rect),
                           last_screen_(empty_rect), xanchor_(object::FIXED), yanchor_(object::FIXED)
 {}
 
