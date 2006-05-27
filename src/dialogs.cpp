@@ -516,6 +516,8 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 		}
 	}
 
+	const events::event_context context;
+
 	if(generate_summaries) {
 		gui::progress_bar bar(disp.video());
 		const SDL_Rect bar_area = {disp.x()/2 - 100, disp.y()/2 - 20, 200, 40};

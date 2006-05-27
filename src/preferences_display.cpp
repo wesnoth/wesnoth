@@ -641,8 +641,6 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 
 	for(;;) {
 		try {
-			//shield the current context from preference dialog members
-			const events::event_context shield_context;
 			preferences_dialog dialog(disp,game_cfg);
 			std::vector<gui::preview_pane*> panes;
 			panes.push_back(&dialog);
