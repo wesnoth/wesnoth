@@ -269,6 +269,15 @@ const std::string& game::transfer_side_control(const config& cfg)
 
 	const std::string& player = cfg["player"];
 
+	user_vector users = all_game_users();
+	user_vector::iterator j;
+	for(j = users.begin(); j != users.end(); ++j) {
+		const player_map::const_iterator pl = player_info_->find(*j);
+		if(pl != player_info_->end() && pl->second.name() == player) {
+			break;
+		}
+	}
+
 	user_vector::iterator i;
 	for(i = observers_.begin(); i != observers_.end(); ++i) {
 		const player_map::const_iterator pl = player_info_->find(*i);
@@ -278,13 +287,7 @@ const std::string& game::transfer_side_control(const config& cfg)
 		}
 	}
 
-	for(i = players_.begin(); i != players_.end(); ++i) {
-		const player_map::const_iterator pl = player_info_->find(*i);
-		if(pl != player_info_->end() && pl->second.name() == player) {
-			player_found = true;
-			break;
-		}
-	}
+	player_found = !observer_found;
 
 	if(!observer_found && !player_found) {
 		static const std::string notfound = "Player/Observer not found";
