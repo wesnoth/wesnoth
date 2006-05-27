@@ -183,6 +183,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 				if((**side)["controller"] == "network" &&
 						(**side)["description"] == preferences::login()) {
 					(**side)["controller"] = preferences::client_type();
+				} else if((**side)["controller"] != "null") {
+					(**side)["controller"] = "network";
 				}
 			}
 		}
