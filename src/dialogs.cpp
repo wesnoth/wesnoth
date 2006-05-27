@@ -642,6 +642,12 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, std::vec
 	set_measurements(font::relative_size(200), font::relative_size(370));
 }
 
+void unit_preview_pane::join()
+{
+	widget::join();
+	details_button_.join();
+}
+
 bool unit_preview_pane::show_above() const
 {
 	return !weapons_;

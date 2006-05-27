@@ -71,7 +71,7 @@ public:
 	bool show_above() const;
 	bool left_side() const;
 	void set_selection(int index);
-
+	void join();
 private:
 	display& disp_;
 

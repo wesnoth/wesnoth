@@ -144,6 +144,12 @@ std::string wait::leader_preview_pane::get_selected_leader()
 	return leaders_.get_leader();
 }
 
+void wait::leader_preview_pane::join()
+{
+	widget::join();
+	leader_combo_.join();
+}
+
 wait::wait(display& disp, const config& cfg, const game_data& data, mp::chat& c, config& gamelist) :
 	ui(disp, _("Game Lobby"), cfg, c, gamelist),
 
@@ -205,6 +211,8 @@ void wait::join_game(bool observe)
 		size_t faction_choice = 0;
 
 		if(allow_changes) {
+			events::event_context context;
+
 			const config* era = level_.child("era");
 			if(era == NULL)
 				throw network::error(_("Era not available"));
