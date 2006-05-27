@@ -137,7 +137,9 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 unit_animation::unit_animation(const std::string image, int begin_at, int end_at, const std::string image_diagonal,const std::string halo,int halo_x,int halo_y)
 {
 	add_frame(begin_at, unit_frame(image,image_diagonal,begin_at,end_at,0,0.0,ftofxp(1),halo,halo_x,halo_y));
-	add_frame(end_at);
+	if (end_at != begin_at) {
+		add_frame(end_at);
+	}
 }
 
 int unit_animation::matches(const std::string &terrain,const gamemap::location::DIRECTION dir) const
