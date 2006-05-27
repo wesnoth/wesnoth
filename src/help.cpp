@@ -1038,7 +1038,6 @@ std::vector<topic> generate_ability_topics()
 					if(desc_it != descriptions.end())
 					{
 						description = *desc_it;
-						++desc_it;
 					} else {
 						description = string_table[*it + "_description"];
 					}
@@ -1051,6 +1050,8 @@ std::vector<topic> generate_ability_topics()
 					topics.push_back(t);
 					checked_abilities.insert(*it);
 				}
+				// Description ptr needs to pace ability ptr
+				++desc_it;
 			}
 		}
 
