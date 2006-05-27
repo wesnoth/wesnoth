@@ -264,18 +264,30 @@ void game::update_side_data()
 
 const std::string& game::transfer_side_control(const config& cfg)
 {
+	bool observer_found = false;
+	bool player_found = false;
+
 	const std::string& player = cfg["player"];
 
-	std::vector<network::connection>::iterator i;
+	user_vector::iterator i;
 	for(i = observers_.begin(); i != observers_.end(); ++i) {
 		const player_map::const_iterator pl = player_info_->find(*i);
 		if(pl != player_info_->end() && pl->second.name() == player) {
+			observer_found = true;
 			break;
 		}
 	}
 
-	if(i == observers_.end()) {
-		static const std::string notfound = "Observer not found";
+	for(i = players_.begin(); i != players_.end(); ++i) {
+		const player_map::const_iterator pl = player_info_->find(*i);
+		if(pl != player_info_->end() && pl->second.name() == player) {
+			player_found = true;
+			break;
+		}
+	}
+
+	if(!observer_found && !player_found) {
+		static const std::string notfound = "Player/Observer not found";
 		return notfound;
 	}
 	const std::string& side = cfg["side"];
@@ -330,8 +342,10 @@ const std::string& game::transfer_side_control(const config& cfg)
 		observer_quit.add_child("observer_quit").values["name"] = player;
 		send_data(observer_quit);
 	}
-	observers_.erase(i);
-	players_.push_back(*i);
+	if (observer_found){
+		observers_.erase(i);
+		players_.push_back(*i);
+	}
 	static const std::string success = "";
 	return success;
 }
