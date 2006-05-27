@@ -853,7 +853,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			}
 		}
 		
-		const std::vector<topic> generated_topics =
+		std::vector<topic> generated_topics =
 		  generate_topics(sort_topics,(*section_cfg)["generator"]);
 		
 		if (sort_topics) {		  
@@ -864,9 +864,10 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			     ,std::back_inserter(sec.topics),title_less());
 		}
 		else {
-		  std::copy(generated_topics.begin(), generated_topics.end(),
-			  std::back_inserter(sec.topics));
+		  std::sort(generated_topics.begin(),generated_topics.end(), title_less());
 		  std::copy(topics.begin(), topics.end(),
+			  std::back_inserter(sec.topics));
+		  std::copy(generated_topics.begin(), generated_topics.end(),
 			  std::back_inserter(sec.topics));
 		}
 	}
