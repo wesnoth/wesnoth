@@ -358,39 +358,52 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 		weapons.push_back(bc.get_attacker_stats().attack_num);
 
+		// Note we didn't fight at all if defender already dead.
+		double prob_fought = (1.0 - prob_dead_already);
+
 		// FIXME: add combatant.prob_killed
 		double prob_killed = def.hp_dist[0] - prob_dead_already;
 		prob_dead_already = def.hp_dist[0];
 
-		avg_damage_taken += att_u.hitpoints() - att.average_hp();
+		double prob_died = att.hp_dist[0];
+		double prob_survived = (1.0 - prob_died) * prob_fought;
 
 		double cost = att_u.cost();
 		const bool on_village = map.is_village(m->second);
 		//up to double the value of a unit based on experience
 		cost += (double(att_u.experience())/double(att_u.max_experience()))*cost;
 		resources_used += cost;
-		avg_losses += cost * att.hp_dist[0];
+		avg_losses += cost * prob_died;
 
-		//double reward to emphasize getting onto villages
+		//double reward to emphasize getting onto villages if they survive
 		if (on_village) {
-			avg_damage_taken -= game_config::poison_amount*2;
+			avg_damage_taken -= game_config::poison_amount*2 * prob_survived;
 		}
 
 		terrain_quality += (double(bc.get_defender_stats().chance_to_hit)/100.0)*cost * (on_village ? 0.5 : 1.0);
 
+		double advance_prob = 0.0;
 		//the reward for advancing a unit is to get a 'negative' loss of that unit
 		if (!att_u.advances_to().empty()) {
 			int xp_for_advance = att_u.max_experience() - att_u.experience();
-			if (defend_it->second.level() > xp_for_advance)
-				avg_losses -= att_u.cost() * (1.0 - prob_dead_already);
-			else if (defend_it->second.level() * game_config::kill_experience > xp_for_advance)
-				avg_losses -= att_u.cost() * prob_killed;
+			int kill_xp, fight_xp;
 
-			//the reward for getting a unit closer to advancement is to get
-			//the proportion of remaining experience needed, and multiply
-			//it by a quarter of the unit cost. This will cause the AI
-			//to heavily favor getting xp for close-to-advance units.
-			avg_losses -= (att_u.cost()*defend_it->second.level())/(xp_for_advance*4);
+			fight_xp = defend_it->second.level();
+			kill_xp = fight_xp * game_config::kill_experience;
+
+			if (fight_xp >= xp_for_advance)
+				advance_prob = prob_fought;
+			else if (kill_xp >= xp_for_advance)
+				advance_prob = prob_killed;
+			avg_losses -= att_u.cost() * advance_prob;
+
+			//the reward for getting a unit closer to advancement (if
+			//it didn't advance) is to get the proportion of remaining
+			//experience needed, and multiply it by a quarter of the
+			//unit cost. This will cause the AI to heavily favor
+			//getting xp for close-to-advance units.
+			avg_losses -= (att_u.cost()*fight_xp)/(xp_for_advance*4) * (prob_fought - prob_killed);
+			avg_losses -= (att_u.cost()*kill_xp)/(xp_for_advance*4) * prob_killed;
 
 			//the reward for killing with a unit that
 			//plagues is to get a 'negative' loss of that unit
@@ -398,6 +411,9 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 				avg_losses -= prob_killed * att_u.cost();
 			}
 		}
+
+		// If we didn't advance, we took this damage.
+		avg_damage_taken += (att_u.hitpoints() - att.average_hp()) * (1.0 - advance_prob);
 
 		// FIXME: attack_prediction.cpp should understand advancement directly.
 		// For each level of attacker def gets 1 xp or kill_experience.
@@ -479,10 +495,6 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
                //aiding our allies who are also attacking, then don't do it
                if(vulnerability > 50.0 && vulnerability > support*2.0 && chance_to_kill < 0.02 && aggression < 0.75 && !ai_obj.attack_close(target)) {
                        return -1.0;
-               }
-
-               if(!leader_threat && vulnerability*terrain_quality > 0.0) {
-                       value *= support/(vulnerability*terrain_quality);
                }
         }
 
