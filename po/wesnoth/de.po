@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-23 20:43+0200\n"
-"PO-Revision-Date: 2006-05-19 17:39+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2006-05-27 16:43+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -142,7 +142,6 @@ msgid "skirmisher"
 msgstr "Plänkler"
 
 #: data/abilities.cfg:306
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -3098,7 +3097,6 @@ msgstr ""
 "zwei Dinge zu beachten: Einkommen und Unterhalt."
 
 #: data/help.cfg:236
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3111,7 +3109,7 @@ msgstr ""
 "\n"
 "Mit dem Einkommen verhält es sich einfach: Grundsätzlich erhaltet Ihr 2 "
 "Goldstücke pro Zug. Für jedes Dorf, das Ihr zusätzlich kontrolliert, "
-"erhaltet Ihr zwei weitere Goldstück. Angenommen, Ihr würdet 5 Dörfer "
+"erhaltet Ihr ein weiteres Goldstück. Angenommen, Ihr würdet 10 Dörfer "
 "kontrollieren, so würdet Ihr 12 Goldstücke erhalten. Die Unterhaltskosten "
 "für Eure Truppen werden von Eurem Einkommen abgezogen."
 
@@ -3136,7 +3134,6 @@ msgstr ""
 "Goldstücke pro Zug bezahlen."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3146,8 +3143,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Diese Kosten werden von Eurem Einkommen abgezogen. Bei insgesamt sieben "
-"Einheitenstufen und fünf Dörfern beträge Euer Einkommen also 3 Goldstücke "
+"Diese Kosten werden von Eurem Einkommen abgezogen. Bei insgesamt zwölf "
+"Einheitenstufen und zehn Dörfern beträge Euer Einkommen also 10 Goldstücke "
 "pro Zug."
 
 #: data/help.cfg:241
@@ -3295,9 +3292,8 @@ msgid "Resilient"
 msgstr "Robust"
 
 #: data/help.cfg:291
-#, fuzzy
 msgid "Resilient units have 10% +3 more HP than usual."
-msgstr "Robuste Einheiten erhalten einen Bonus von 7 LP."
+msgstr "Robuste Einheiten erhalten  10% + 3 LP zusätzlich."
 
 #: data/help.cfg:293
 msgid ""
@@ -3322,13 +3318,12 @@ msgid "Strong"
 msgstr "Kräftig"
 
 #: data/help.cfg:299
-#, fuzzy
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
 "Kräftige Einheiten verursachen pro Nahkampfattacke einen Schadenspunkt mehr "
-"und haben zwei zusätzliche LP."
+"und haben einen zusätzlichen LP."
 
 #: data/help.cfg:301
 msgid ""
@@ -4324,6 +4319,10 @@ msgid ""
 "victory is punctuated by the petrified forms of some of Wesnoth's greatest "
 "heroes."
 msgstr ""
+"Auf dem Weg zum Sieg müsst Ihr Eure Einheiten durch das Gelände dieser seit "
+"langem gefürchteten Region führen, das einst die Heimstatt eines Basilisken "
+"war. Ihr werdet an einigen der größten Helden von Wesnoth vorbei schreiten, "
+"die alle einst von dem Ungeheuer zu Stein verwandelt wurden."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:84
 msgid ""
@@ -4348,8 +4347,29 @@ msgid ""
 "His home to steal the Basilisk's gold.\n"
 "(inscribed by Flametrooper)"
 msgstr ""
+"Am dunklen Himmel, der Wind blies kalt,\n"
+"Der Mond stand hoch, die Nacht war alt,\n"
+"Doch die Nacht, sie konnte nicht verhehlen,\n"
+"Den Draken, der das Gold wollt' stehlen.\n"
+"\n"
+"In dunkler Nacht, der Mond verklärt,\n"
+"Alles vergaß, was er gelernt\n"
+"Zur Höhle des Lisken, der Drake flog,\n"
+"Das Gold, das zog ihn, wie ein Sog.\n"
+"\n"
+"Doch nun das Feuer brennt nicht mehr,\n"
+"Denn hervor trat nun der Höhlenherr,\n"
+"Ein Blick, und er erstarrte zu Stein,\n"
+"Und steinern seither des Draken Gebein.\n"
+"\n"
+"Die Himmelswinde blassen so kalt,\n"
+"Die Jahre gehen, die Tage alt,\n"
+"Des Draken Statue noch immer hier,\n"
+"Sein Schicksal besiegelt von eigener Gier.\n"
+"(Geschrieben von Flametrooper)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:99
+#, fuzzy
 msgid ""
 "Slim of Stature, dexterous Hands \n"
 "- - Seven Stones and Eleven \n"
@@ -4360,6 +4380,14 @@ msgid ""
 "- - Seven Stones - and the Elven \n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"Von schlanker Gestalt und geschickter Hand \n"
+"- - Sieben Steine und Elf (*)\n"
+"\n"
+"- - Sieben Steine und Elf \n"
+"Bogenschütze bekannt als Drachenbann \n"
+"\n"
+"- - Sieben Steine und Elf \n"
+"(Geschrieben von Gauteamus)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:110
 msgid ""
@@ -4389,6 +4417,14 @@ msgid ""
 "arrived. \n"
 "(inscribed by Turin)"
 msgstr ""
+"Von Zeitalter zu Zeitalter hatte sie hier, in den Tiefen des Wassers, "
+"gelebt. Jedwede Kreatur, ob Fisch, Frosch oder Angehöre des Meervolkes, "
+"wurde zu ihrer Beute. Es war ihr See, niemand anderes. Und obwohl der See "
+"nicht groß war, war sie die Herrscherin. Dann jedoch, kam der Basilisk und "
+"blickte in die Augen der Seeschlange. Und obwohl die Seeschlange nicht "
+"gestorben war, so war sie doch auch nicht länger am Leben. So nahm der neue "
+"Herrscher des Sees seinen Platz ein.\n"
+"(Geschrieben von Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:128
 msgid ""
@@ -4400,6 +4436,15 @@ msgid ""
 "of his once great bearing and strength. \n"
 "(inscribed by Fynmiir)"
 msgstr ""
+"Als mutiger Held aus Wesnoths Goldenem Zeitalter, kam dieser mächtige "
+"Anführer der Menschen an diesen Ort, um die Orks zu jagen. Doch die "
+"schurkischen Kreaturen lockten ihn in einen Hinterhalt, indem viele seiner "
+"Begleiter ihr Leben ließen, doch er kämpfte mit grimmiger Entschlossenheit "
+"und streckte Ork um Ork nieder. Doch dann trat der garstige Basilisk aus "
+"seinem Versteck und verwandelte den tapferen Krieger zu Stein, als dieser "
+"gerade den letzten Ork erschlug. Doch der kalte Stein ist weiterhin ein "
+"Symbol für große Stärke und Tapferkeit.\n"
+"(Geschrieben von Fynmiir)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:139
 msgid ""
@@ -4575,7 +4620,7 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:36
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:37
 msgid "Sulla's statue"
-msgstr ""
+msgstr "Sulla Statue"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -4895,12 +4940,18 @@ msgid "6p - Waterloo Sunset"
 msgstr ""
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
+#, fuzzy
 msgid ""
 "A 40X30 3v3.  Flexible coordination of your alliance is required to avoid "
 "being outnumbered.  Teams set for players 145vs236 (north vs south), but "
 "having players 146 or 136 as a side also is interesting.  Designed for "
 "150gp, has 44 villages."
 msgstr ""
+"Eine 40x40 Felder große 3 gegen 3 Karte. Eine flexible Koordination Eurer "
+"Bündnisse ist nötig, damit der Feind euch nicht überrennt. Um Nord gegen Süd "
+"zu spielen, solltet ihr 1, 3 und 5 gegen 2, 4, 6 antreten lassen. Es mag "
+"jedoch interessant sein, es einmal mit 1, 3, 6 oder 1, 4, 6 zu probieren.\n"
+"Empfohlene Einstellung: 150 Gold als Startkapital"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
 msgid "8p - Morituri"
@@ -11235,6 +11286,8 @@ msgstr "Suchen"
 #: src/menu_events.cpp:1339
 msgid "Commands: whisper ignore emote. Type /help [command] for more help."
 msgstr ""
+"Kommandos: whisper ignore emote. Gebt /help [Kommando] ein, um weiter "
+"Informationen zu erhalten."
 
 #: src/menu_events.cpp:1390
 msgid ""
@@ -11245,18 +11298,25 @@ msgstr ""
 #: src/menu_events.cpp:1394
 msgid "Add player to your ignore list. Usage: /ignore add [argument]"
 msgstr ""
+"Fügt einen Benutzer zur Liste der Benutzer hinzu, die Ihr ignoriert. "
+"Verwendung: /ignore add [Argument]"
 
 #: src/menu_events.cpp:1396
 msgid "Remove player from your ignore list. Usage: /ignore remove [argument]"
 msgstr ""
+"Entfernt einen Benutzer aus der Liste der Benutzer, die Ihr ignoriert. "
+"Verwendung: /ignore remove [Argument]"
 
 #: src/menu_events.cpp:1398
 msgid "Clear your ignore list. Usage: /ignore clear"
 msgstr ""
+"Setzt die Liste der Benutzer, die Ihr ignoriert, zurück. Verwendung: /ignore "
+"clear"
 
 #: src/menu_events.cpp:1400
 msgid "Show your ignore list. Usage: /ignore list"
 msgstr ""
+"Zeigt die Benutzer, die von Euch ignoriert werden. Verwendung: /ignore list"
 
 #: src/menu_events.cpp:1402
 msgid "Unknown subcommand"
@@ -11268,10 +11328,16 @@ msgid ""
 "[argument](optional) Subcommands: add remove list clear. Type /help ignore "
 "[subcommand] for more info."
 msgstr ""
+"Nachrichten von Spielern in dieser Liste werden ignoriert. Verwendung: /"
+"ignore [Unterkommando] [Argument] (optional) Unterkommandos: add remove list "
+"clear. Gebt /help ignore [Unterkommando] ein, um weitere Informationen zu "
+"erhalten."
 
 #: src/menu_events.cpp:1408
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
+"Sendet eine Emotion oder eine persönliche Handlung im Gespräch. Verwendung: /"
+"emote [Nachricht]"
 
 #: src/menu_events.cpp:1410
 msgid "Unknown command"
@@ -11279,7 +11345,7 @@ msgstr "Unbekanntes Kommando"
 
 #: src/menu_events.cpp:1427
 msgid "Added to ignore list: "
-msgstr ""
+msgstr "Zur Liste der zu ignorierenden Benutzer hinzugefügt:"
 
 #: src/menu_events.cpp:1429 src/menu_events.cpp:1439
 msgid "Invalid username: "
@@ -11287,7 +11353,7 @@ msgstr "Ungültiger Benutzername:"
 
 #: src/menu_events.cpp:1437 src/menu_events.cpp:1463
 msgid "Removed from ignore list: "
-msgstr ""
+msgstr "Von der Liste der zu ignorierenden Benutzer entfernt:"
 
 #: src/menu_events.cpp:1468
 msgid "Unknown command: "
