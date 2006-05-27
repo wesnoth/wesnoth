@@ -140,6 +140,8 @@ public:
 
 		const std::string& title() const;
 
+		const std::string& tooltip() const;
+
 		const std::string& type() const;
 
 		const std::string& image() const;
@@ -147,7 +149,7 @@ public:
 		const std::vector<std::string>& items() const;
 	private:
 		bool context_;
-		std::string title_, image_, type_;
+		std::string title_, tooltip_, image_, type_;
 		std::vector<std::string> items_;
 	};
 

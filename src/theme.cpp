@@ -528,13 +528,16 @@ theme::menu::menu() : context_(false)
 
 theme::menu::menu(const config& cfg) : object(cfg), context_(cfg["is_context_menu"] == "true"),
                                        title_(cfg["title"].str() + cfg["title_literal"].str()),
-				       image_(cfg["image"]), type_(cfg["type"]),
-				       items_(utils::split(cfg["items"]))
+									   tooltip_(cfg["tooltip"]), 
+						image_(cfg["image"]), type_(cfg["type"]),
+						items_(utils::split(cfg["items"]))
 {}
 
 bool theme::menu::is_context() const { return context_; }
 
 const std::string& theme::menu::title() const { return title_; }
+
+const std::string& theme::menu::tooltip() const { return tooltip_; }
 
 const std::string& theme::menu::type() const { return type_; }
 

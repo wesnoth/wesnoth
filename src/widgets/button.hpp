@@ -44,6 +44,7 @@ public:
 	void set_label(const std::string& val);
 
 	bool pressed();
+	bool hit(int x, int y) const;
 
 	void enable(bool new_val);
 	bool enabled() const;
@@ -78,7 +79,6 @@ private:
 
 	int base_height_, base_width_;
 
-	bool hit(int x, int y) const;
 }; //end class button
 
 }

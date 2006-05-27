@@ -747,9 +747,19 @@ void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::butto
 		update_rect(loc);
 	}
 
+	static bool first_time = true;
 	for(std::vector<gui::button>::iterator b = buttons.begin(); b != buttons.end(); ++b) {
 		if(rects_overlap(b->location(),loc)) {
 			b->set_dirty(true);
+			if (first_time){
+				//FixMe
+				//YogiHH: This is only made to have the buttons store their background information,
+				//otherwise the background will appear completely black. It would more
+				//straightforward to call bg_update, but that is not public and there seems to be
+				//no other way atm to call it. I will check if bg_update can be made public.
+				b->hide(true);
+				b->hide(false);
+			}
 		}
 	}
 }
@@ -2296,7 +2306,9 @@ void display::create_buttons()
 		gui::button b(screen_,i->title(),string_to_button_type(i->type()),i->image());
 		const SDL_Rect& loc = i->location(screen_area());
 		b.set_location(loc.x,loc.y);
-
+		if (!i->tooltip().empty()){
+			tooltips::add_tooltip(loc, i->tooltip());
+		}
 		if(rects_overlap(b.location(),map_area())) {
 			b.set_volatile(true);
 		}
