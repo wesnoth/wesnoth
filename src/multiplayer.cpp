@@ -191,7 +191,7 @@ server_type open_connection(display& disp, const std::string& original_host)
 						return ABORT_SERVER;
 					}
 					if(login.size() > 18) {
-						gui::show_error_message(disp(), _("The login name you chose is too long, please use a login with less than 18 characters"));
+						gui::show_error_message(disp, _("The login name you chose is too long, please use a login with less than 18 characters"));
 						return ABORT_SERVER;
 					}
 
