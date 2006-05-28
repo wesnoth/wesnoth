@@ -52,11 +52,11 @@ namespace dialogs
 
 void advance_unit(const game_data& info,
 				  const gamemap& map,
-                  units_map& units,
+                  unit_map& units,
                   gamemap::location loc,
                   display& gui, bool random_choice)
 {
-	units_map::iterator u = units.find(loc);
+	unit_map::iterator u = units.find(loc);
 	if(u == units.end() || u->second.advances() == false)
 		return;
 
@@ -116,7 +116,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 {
 	const events::command_disabler cmd_disabler;
 
-	units_map::iterator u = units.find(loc);
+	unit_map::iterator u = units.find(loc);
 	if(u == units.end() || u->second.advances() == false) {
 		return false;
 	}

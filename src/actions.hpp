@@ -25,7 +25,6 @@ struct combatant;
 #include "unit.hpp"
 
 #include <deque>
-typedef std::map<gamemap::location,unit> units_map;
 
 #define RECRUIT_POS -2
 
@@ -88,7 +87,7 @@ public:
 				   int u_attack_num, bool attacking,
 				   const unit &opp, const gamemap::location& opp_loc,
 				   const attack_type *opp_weapon,
-				   const std::map<gamemap::location,unit>& units,
+				   const unit_map& units,
 				   const std::vector<team>& teams,
 				   const gamestatus& status, const gamemap& map, const game_data& gamedata);
 
@@ -99,7 +98,7 @@ public:
 	// If no attacker_weapon is given, we select best one, based on
 	// harm_weight (1.0 means 1 hp lost counters 1 hp damage, 0.0
 	// means we ignore harm weight).  prev_def is for predicting multiple attacks against a defender.
-	battle_context(const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
+	battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 				   const gamestatus& status, const game_data& gamedata,
 				   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
 				   int attacker_weapon = -1, double harm_weight = 1.0, const combatant *prev_def = NULL);
@@ -128,13 +127,13 @@ private:
 					   double harm_weight);
 
 	unsigned int choose_attacker_weapon(const unit &attacker, const unit &defender,
-										const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
+										const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 										const gamestatus& status, const game_data& gamedata,
 										const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
 										double harm_weight, int *defender_weapon, const combatant *prev_def);
 
 	int choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
-							   const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
+							   const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 							   const gamestatus& status, const game_data& gamedata,
 							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc, const combatant *prev_def);
 
@@ -151,7 +150,7 @@ void attack(display& gui, const gamemap& map,
             gamemap::location attacker,
             gamemap::location defender,
             int attack_with,
-            units_map& units,
+            unit_map& units,
             const gamestatus& state,
             const game_data& info,
 			bool update_display = true);
@@ -176,23 +175,19 @@ unit_map::const_iterator find_leader(const unit_map& units, int side);
 
 // Resets resting for all units on this side: should be called after calculate_healing().
 // FIXME: Try moving this to unit::new_turn, then move it above calculate_healing().
-void reset_resting(std::map<gamemap::location,unit>& units, unsigned int side);
+void reset_resting(unit_map& units, unsigned int side);
 
 //calculates healing for all units for the given side. Should be called
 //at the beginning of a side's turn.
 void calculate_healing(display& disp, const gamemap& map,
-                       units_map& units, unsigned int side,
+                       unit_map& units, unsigned int side,
 					   const std::vector<team>& teams, bool update_display);
-
-// Resets resting for all units on this side: should be called after calculate_healing().
-// FIXME: Try moving this to unit::new_turn, then move it above calculate_healing().
-void reset_resting(std::map<gamemap::location,unit>& units, unsigned int side);
 
 //function which, given the location of a unit that is advancing, and the
 //name of the unit it is advancing to, will return the advanced version of
 //this unit. (with traits and items retained).
 unit get_advanced_unit(const game_data& info,
-                  units_map& units,
+                  unit_map& units,
                   const gamemap::location& loc, const std::string& advance_to);
 
 //function which will advance the unit at loc to 'advance_to'.
@@ -200,7 +195,7 @@ unit get_advanced_unit(const game_data& info,
 //safely pass in a reference to the item in the map that we're going to delete,
 //since deletion would invalidate the reference.
 void advance_unit(const game_data& info,
-                  units_map& units,
+                  unit_map& units,
                   gamemap::location loc, const std::string& advance_to);
 
 //function which tests if the unit at loc is currently affected
@@ -208,26 +203,26 @@ void advance_unit(const game_data& info,
 //if it does, then the location of the leader unit will be returned, otherwise
 //gamemap::location::null_location will be returned
 //if 'bonus' is not NULL, the % bonus will be stored in it
-gamemap::location under_leadership(const units_map& units,
+gamemap::location under_leadership(const unit_map& units,
                                    const gamemap::location& loc, int* bonus=NULL);
 
 //checks to see if a side has won, and will throw an end_level_exception
 //if one has. Will also remove control of villages from sides  with dead leaders
-void check_victory(units_map& units,
+void check_victory(unit_map& units,
                    std::vector<team>& teams);
 
 //gets the time of day at a certain tile. Certain tiles may have a time of
 //day that differs from 'the' time of day, if a unit that illuminates is
 //in that tile or adjacent.
 time_of_day timeofday_at(const gamestatus& status,
-                              const units_map& units,
+                              const unit_map& units,
                               const gamemap::location& loc,
 			      const gamemap& map);
 
 //returns the amount that a unit's damage should be multiplied by due to
 //the current time of day.
 int combat_modifier(const gamestatus& status,
-			const units_map& units,
+			const unit_map& units,
 			const gamemap::location& loc,
 			unit_type::ALIGNMENT alignment,
 			const gamemap& map);
@@ -298,6 +293,6 @@ namespace victory_conditions {
 //be made to make sure the opposite unit isn't also the attacker.
 bool backstab_check(const gamemap::location& attacker_loc,
 	const gamemap::location& defender_loc,
-	const units_map& units, const std::vector<team>& teams);
+	const unit_map& units, const std::vector<team>& teams);
 
 #endif

@@ -29,7 +29,6 @@ class gamestatus;
 
 //a convenient type for storing a list of tiles adjacent to a certain tile
 typedef util::array<gamemap::location,6> adjacent_tiles_array;
-typedef std::map<gamemap::location,unit> units_map;
 
 //function which, given a location, will find all tiles within 'radius' of that tile
 void get_tiles_radius(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res);
@@ -47,13 +46,13 @@ enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 //
 //if no valid location can be found, it will return a null location.
 gamemap::location find_vacant_tile(const gamemap& map,
-                                   const units_map& un,
+                                   const unit_map& un,
                                    const gamemap::location& loc,
                                    VACANT_TILE_TYPE vacancy=VACANT_ANY);
 
 //function which determines if a given location is an enemy zone of control
 bool enemy_zoc(gamemap const &map,
-               std::map<gamemap::location, unit> const &units,
+               unit_map const &units,
                std::vector<team> const &teams, gamemap::location const &loc,
                team const &viewing_team, unsigned int side);
 
@@ -79,7 +78,7 @@ struct paths
 	//viewing_team is usually current team, except for Show Enemy Moves etc.
 	paths(gamemap const &map, gamestatus const &status,
 	      game_data const &gamedata,
-	      std::map<gamemap::location, unit> const &units,
+	      unit_map const &units,
 	      gamemap::location const &loc, std::vector<team> const &teams,
 	      bool ignore_zocs, bool allow_teleport,
 		  const team &viewing_team, int additional_turns = 0);

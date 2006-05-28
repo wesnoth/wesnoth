@@ -31,6 +31,7 @@ struct game_data;
 class gamestatus;
 class team;
 typedef std::map<gamemap::location,unit> unit_map;
+
 //and how much damage it does.
 class attack_type
 {

@@ -243,7 +243,7 @@ display& game_controller::disp()
 			throw CVideo::error();
 		}
 
-		static display::unit_map dummy_umap;
+		static unit_map dummy_umap;
 		static config dummy_cfg;
 		static gamemap dummy_map(dummy_cfg, "1");
 		static gamestatus dummy_status(dummy_cfg, 0);

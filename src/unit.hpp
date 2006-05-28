@@ -31,10 +31,6 @@ class gamestatus;
 #include <string>
 #include <vector>
 
-
-typedef std::map<gamemap::location,unit> unit_map;
-
-
 class unit_ability_list
 {
 	public:

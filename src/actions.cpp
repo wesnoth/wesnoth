@@ -97,10 +97,9 @@ std::string recruit_unit(const gamemap& map, int side,
 	const events::command_disabler disable_commands;
 
 	LOG_NG << "recruiting unit for side " << side << "\n";
-	typedef std::map<gamemap::location,unit> units_map;
 
 	//find the unit that can recruit
-	units_map::const_iterator u = units.begin();
+	unit_map::const_iterator u = units.begin();
 
 	for(; u != units.end(); ++u) {
 		if(u->second.can_recruit() && (int)u->second.side() == side) {
@@ -208,7 +207,7 @@ void validate_recruit_unit()
 
 }
 
-gamemap::location under_leadership(const units_map& units,
+gamemap::location under_leadership(const unit_map& units,
                                    const gamemap::location& loc, int* bonus)
 {
 	
@@ -226,7 +225,7 @@ gamemap::location under_leadership(const units_map& units,
 
 unsigned int num_battle_contexts;
 
-battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
+battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 							   const gamestatus& status, const game_data& gamedata,
 							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
 							   int attacker_weapon, double harm_weight, const combatant *prev_def)
@@ -288,7 +287,7 @@ battle_context& battle_context::operator=(const battle_context &other)
 
 // FIXME: Hand previous defender unit in here...
 int battle_context::choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
-										   const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
+										   const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 										   const gamestatus& status, const game_data& gamedata,
 										   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
 										   const combatant *prev_def)
@@ -344,7 +343,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 }
 
 unsigned battle_context::choose_attacker_weapon(const unit &attacker, const unit &defender,
-												const gamemap& map, const std::vector<team>& teams, const std::map<gamemap::location,unit>& units,
+												const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 												const gamestatus& status, const game_data& gamedata,
 												const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
 												double harm_weight, int *defender_weapon, const combatant *prev_def)
@@ -478,7 +477,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 									   int u_attack_num, bool attacking,
 									   const unit &opp, const gamemap::location& opp_loc,
 									   const attack_type *opp_weapon,
-									   const std::map<gamemap::location,unit>& units,
+									   const unit_map& units,
 									   const std::vector<team>& teams,
 									   const gamestatus& status,
 									   const gamemap& map,
@@ -634,7 +633,7 @@ void attack(display& gui, const gamemap& map,
             gamemap::location attacker,
             gamemap::location defender,
             int attack_with,
-            units_map& units,
+            unit_map& units,
             const gamestatus& state,
             const game_data& info,
 			bool update_display)
@@ -642,8 +641,8 @@ void attack(display& gui, const gamemap& map,
 	//stop the user from issuing any commands while the units are fighting
 	const events::command_disabler disable_commands;
 	
-	units_map::iterator a = units.find(attacker);
-	units_map::iterator d = units.find(defender);
+	unit_map::iterator a = units.find(attacker);
+	unit_map::iterator d = units.find(defender);
 
 	if(a == units.end() || d == units.end()) {
 		return;
@@ -1288,7 +1287,7 @@ unit_map::const_iterator find_leader(const unit_map& units, int side)
 }
 
 // Simple algorithm: no maximum number of patients per healer.
-void reset_resting(std::map<gamemap::location,unit>& units, unsigned int side)
+void reset_resting(unit_map& units, unsigned int side)
 {
 	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
 		if (i->second.side() == side)
@@ -1297,7 +1296,7 @@ void reset_resting(std::map<gamemap::location,unit>& units, unsigned int side)
 }
 
 void calculate_healing(display& disp, const gamemap& map,
-                       units_map& units, unsigned int side,
+                       unit_map& units, unsigned int side,
 					   const std::vector<team>& teams, bool update_display)
 {
 	// We look for all allied units, then we see if our healer is near them.
@@ -1484,11 +1483,11 @@ void calculate_healing(display& disp, const gamemap& map,
 
 
 unit get_advanced_unit(const game_data& info,
-                  units_map& units,
+                  unit_map& units,
                   const gamemap::location& loc, const std::string& advance_to)
 {
 	const std::map<std::string,unit_type>::const_iterator new_type = info.unit_types.find(advance_to);
-	const units_map::iterator un = units.find(loc);
+	const unit_map::iterator un = units.find(loc);
 	if(new_type != info.unit_types.end() && un != units.end()) {
 		unit new_unit(un->second);
 		new_unit.get_experience(-new_unit.max_experience());
@@ -1501,7 +1500,7 @@ unit get_advanced_unit(const game_data& info,
 }
 
 void advance_unit(const game_data& info,
-                  units_map& units,
+                  unit_map& units,
                   gamemap::location loc, const std::string& advance_to)
 {
 	if(units.count(loc) == 0) {
@@ -1521,11 +1520,11 @@ void advance_unit(const game_data& info,
 	game_events::fire("post_advance",loc);
 }
 
-void check_victory(units_map& units,
+void check_victory(unit_map& units,
                    std::vector<team>& teams)
 {
 	std::vector<int> seen_leaders;
-	for(units_map::const_iterator i = units.begin();
+	for(unit_map::const_iterator i = units.begin();
 	    i != units.end(); ++i) {
 		if(i->second.can_recruit()) {
 			LOG_NG << "seen leader for side " << i->second.side() << "\n";
@@ -1616,7 +1615,7 @@ time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const ga
 }
 
 int combat_modifier(const gamestatus& status,
-			const units_map& units,
+			const unit_map& units,
 			const gamemap::location& loc,
 			 unit_type::ALIGNMENT alignment,
 			const gamemap& map)
@@ -1849,7 +1848,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			if(adjacent[i] == ui->first)
 				continue;
 
-			const units_map::const_iterator it = units.find(adjacent[i]);
+			const unit_map::const_iterator it = units.find(adjacent[i]);
 			if(it != units.end() && teams[u.side()-1].is_enemy(it->second.side()) &&
 			   it->second.invisible(it->first,units,teams)) {
 				discovered_unit = true;
@@ -2127,9 +2126,9 @@ void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& sta
 
 bool backstab_check(const gamemap::location& attacker_loc,
 	const gamemap::location& defender_loc,
-	const units_map& units, const std::vector<team>& teams)
+	const unit_map& units, const std::vector<team>& teams)
 {
-	const units_map::const_iterator defender =
+	const unit_map::const_iterator defender =
 		units.find(defender_loc);
 	if(defender == units.end()) return false; // No defender
 
@@ -2142,7 +2141,7 @@ bool backstab_check(const gamemap::location& attacker_loc,
 	}
 	if(i >= 6) return false;  // Attack not from adjacent location
 
-	const units_map::const_iterator opp =
+	const unit_map::const_iterator opp =
 		units.find(adj[(i+3)%6]);
 	if(opp == units.end()) return false; // No opposite unit
 	if(opp->second.incapacitated()) return false;

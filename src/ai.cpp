@@ -627,7 +627,7 @@ void ai::attack_enemy(const location& attacking_unit, const location& target, in
 
 void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement, const std::set<gamemap::location>* remove_destinations)
 {
-	for(units_map::iterator un_it = info_.units.begin(); un_it != info_.units.end(); ++un_it) {
+	for(unit_map::iterator un_it = info_.units.begin(); un_it != info_.units.end(); ++un_it) {
 		//if we are looking for the movement of enemies, then this unit must be an enemy unit
 		//if we are looking for movement of our own units, it must be on our side.
 		//if we are assuming full movement, then it may be a unit on our side, or allied

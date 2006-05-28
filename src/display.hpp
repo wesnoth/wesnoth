@@ -50,8 +50,6 @@ class gamestatus;
 class display
 {
 public:
-	typedef std::map<gamemap::location,unit> unit_map;
-
 	display(unit_map& units, CVideo& video,
 			const gamemap& map, const gamestatus& status,
 			const std::vector<team>& t, const config& theme_cfg,

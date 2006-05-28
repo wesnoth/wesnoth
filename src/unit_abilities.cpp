@@ -20,8 +20,6 @@
 
 #include <deque>
 
-typedef std::map<gamemap::location,unit> units_map;
-
 /*
  *
  * [abilities]
@@ -302,7 +300,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 			for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
 				index = gamemap::location::parse_direction(*j);
 				if(index != gamemap::location::NDIRECTIONS) {
-					units_map::const_iterator unit = units_->find(adjacent[index]);
+					unit_map::const_iterator unit = units_->find(adjacent[index]);
 					if(unit == units_->end()) {
 						return false;
 					}
@@ -721,7 +719,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 			for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
 				index = gamemap::location::parse_direction(*j);
 				if(index != gamemap::location::NDIRECTIONS) {
-					units_map::const_iterator unit = unitmap_->find(adjacent[index]);
+					unit_map::const_iterator unit = unitmap_->find(adjacent[index]);
 					if(unit == unitmap_->end()) {
 						return false;
 					}

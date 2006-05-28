@@ -965,7 +965,7 @@ void display::draw_sidebar()
 	if(invalidateUnit_) {
 		//we display the unit the mouse is over if it is over a unit
 		//otherwise we display the unit that is selected
-		units_map::const_iterator i =
+		unit_map::const_iterator i =
 			find_visible_unit(units_,mouseoverHex_,
 					map_,
 					teams_,teams_[viewing_team()]);

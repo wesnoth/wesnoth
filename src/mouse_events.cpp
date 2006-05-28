@@ -58,7 +58,7 @@ namespace{
 		
 		// Lengthy constructor.
 		battle_prediction_pane(display &disp, const battle_context& bc, const gamemap& map,
-							   const std::vector<team>& teams, const std::map<gamemap::location,unit>& units, 
+							   const std::vector<team>& teams, const unit_map& units, 
 							   const gamestatus& status, const game_data& gamedata,
 							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc);
 		
@@ -159,7 +159,7 @@ namespace{
 	const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
 
 	battle_prediction_pane::battle_prediction_pane(display &disp, const battle_context& bc, const gamemap& map,
-												   const std::vector<team>& teams, const std::map<gamemap::location,unit>& units, 
+												   const std::vector<team>& teams, const unit_map& units, 
 												   const gamestatus& status, const game_data& gamedata,
 								   				   const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
 				: gui::preview_pane(disp.video()), disp_(disp), bc_(bc), map_(map), teams_(teams), units_(units), status_(status),
@@ -628,7 +628,7 @@ namespace{
 	{
 	public:
 		attack_prediction_displayer(display& disp, const std::vector<battle_context>& bc_vector, const gamemap& map,
-								    const std::vector<team>& teams, const std::map<gamemap::location,unit>& units, 
+								    const std::vector<team>& teams, const unit_map& units, 
 								    const gamestatus& status, const game_data& gamedata,
 								   	const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
 				: disp_(disp), bc_vector_(bc_vector), map_(map), teams_(teams), units_(units), status_(status),

@@ -49,7 +49,7 @@ namespace {
 
 display* screen = NULL;
 gamemap* game_map = NULL;
-units_map* units = NULL;
+unit_map* units = NULL;
 std::vector<team>* teams = NULL;
 game_state* state_of_game = NULL;
 const game_data* game_data_ptr = NULL;
@@ -59,7 +59,7 @@ int floating_label = 0;
 
 namespace game_events {
 
-bool conditional_passed(const units_map* units,
+bool conditional_passed(const unit_map* units,
                         const vconfig cond)
 {
 	//an 'and' statement means that if the contained statements are false,
@@ -91,7 +91,7 @@ bool conditional_passed(const units_map* units,
 		if(units == NULL)
 			return false;
 
-		units_map::const_iterator itor;
+		unit_map::const_iterator itor;
 		for(itor = units->begin(); itor != units->end(); ++itor) {
 			if(itor->second.hitpoints() > 0 && game_events::unit_matches_filter(itor, *u)) {
 				break;
@@ -924,7 +924,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			item["role"] = "";
 			vconfig filter(&item);
 
-			units_map::iterator itor;
+			unit_map::iterator itor;
 			for(itor = units->begin(); itor != units->end(); ++itor) {
 				if(game_events::unit_matches_filter(itor, filter)) {
 					itor->second.assign_role(cfg["role"]);
@@ -995,7 +995,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "unit_overlay") {
-		for(units_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
+		for(unit_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
 			if(game_events::unit_matches_filter(itor,cfg)) {
 				itor->second.add_overlay(cfg["image"]);
 				break;
@@ -1004,7 +1004,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "remove_unit_overlay") {
-		for(units_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
+		for(unit_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
 			if(game_events::unit_matches_filter(itor,cfg)) {
 				itor->second.remove_overlay(cfg["image"]);
 				break;
@@ -1287,7 +1287,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//displaying a message dialog
 	else if(cmd == "message") {
-		units_map::iterator speaker = units->end();
+		unit_map::iterator speaker = units->end();
 		
 		std::string speaker_str = cfg["speaker"];
 		wassert(state_of_game != NULL);
@@ -1976,7 +1976,7 @@ config::child_list unit_wml_configs;
 std::set<std::string> unit_wml_ids;
 
 manager::manager(const config& cfg, display& gui_, gamemap& map_,
-                 units_map& units_,
+                 unit_map& units_,
                  std::vector<team>& teams_,
                  game_state& state_of_game_, gamestatus& status,
 		 const game_data& game_data_) :
@@ -2089,7 +2089,7 @@ bool pump()
 	bool result = false;
 	
 	if(units != NULL) {
-		for(units_map::const_iterator u_it = units->begin(); u_it != units->end(); ++u_it) {
+		for(unit_map::const_iterator u_it = units->begin(); u_it != units->end(); ++u_it) {
 			if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),u_it->second.id()) == unit_wml_ids.end()) {
 				unit_wml_ids.insert(u_it->second.id());
 				config::child_list ev_list = u_it->second.wml_events();

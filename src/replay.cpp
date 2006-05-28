@@ -653,7 +653,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const gamemap::location loc(*child);
 			const std::string& name = (*child)["name"];
 
-			units_map::iterator u = units.find(loc);
+			unit_map::iterator u = units.find(loc);
 
 			if(u->second.unrenamable()) {
 				ERR_NW << "renaming unrenamable unit " << u->second.name() << "\n";
@@ -794,7 +794,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const gamemap::location src(*source);
 			const gamemap::location dst(*destination);
 
-			units_map::iterator u = units.find(dst);
+			unit_map::iterator u = units.find(dst);
 			if(u != units.end()) {
 				ERR_NW << "destination already occupied: "
 				       << dst << '\n';
@@ -888,7 +888,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const std::string& weapon = (*child)["weapon"];
 			const int weapon_num = atoi(weapon.c_str());
 
-			units_map::iterator u = units.find(src);
+			unit_map::iterator u = units.find(src);
 			if(u == units.end()) {
 				ERR_NW << "unfound location for source of attack\n";
 				throw replay::error();
@@ -899,7 +899,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
 
-			units_map::const_iterator tgt = units.find(dst);
+			unit_map::const_iterator tgt = units.find(dst);
 
 			if(tgt == units.end()) {
 				ERR_NW << "unfound defender for attack: " << src << " -> " << dst << '\n';

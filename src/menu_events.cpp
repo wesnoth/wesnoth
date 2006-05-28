@@ -425,7 +425,7 @@ namespace events{
 			buf << side_num;
 			side["side"] = buf.str();
 
-			for(units_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
+			for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 				if(i->second.side() == side_num) {
 					config& u = side.add_child("unit");
 					i->first.write(u);

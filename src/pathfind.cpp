@@ -218,7 +218,7 @@ label_AStarSearch_end:
 
 namespace {
 	gamemap::location find_vacant(const gamemap& map,
-		const units_map& units,
+		const unit_map& units,
 		const gamemap::location& loc, int depth,
 		VACANT_TILE_TYPE vacancy,
 		std::set<gamemap::location>& touched)
@@ -254,7 +254,7 @@ namespace {
 }
 
 gamemap::location find_vacant_tile(const gamemap& map,
-																	 const units_map& units,
+																	 const unit_map& units,
 																	 const gamemap::location& loc,
 																	 VACANT_TILE_TYPE vacancy)
 {
@@ -327,7 +327,7 @@ void get_tiles_radius(gamemap const &map, std::vector<gamemap::location> const &
 }
 
 bool enemy_zoc(gamemap const &map,
-               std::map<gamemap::location, unit> const &units,
+               unit_map const &units,
                std::vector<team> const &teams,
                gamemap::location const &loc, team const &viewing_team, unsigned int side)
 {
@@ -335,7 +335,7 @@ bool enemy_zoc(gamemap const &map,
 	const team &current_team = teams[side-1];
 	get_adjacent_tiles(loc,locs);
 	for(int i = 0; i != 6; ++i) {
-		const units_map::const_iterator it
+		const unit_map::const_iterator it
 			= find_visible_unit(units, locs[i], map, teams, viewing_team);
 		if (it != units.end() && it->second.side() != side &&
 		    current_team.is_enemy(it->second.side()) && it->second.emits_zoc()) {
@@ -350,7 +350,7 @@ namespace {
 
 	void find_routes(const gamemap& map, const gamestatus& status,
 		const game_data& gamedata,
-		const units_map& units,
+		const unit_map& units,
 		const unit& u,
 		const gamemap::location& loc,
 		int move_left,
@@ -398,7 +398,7 @@ namespace {
 				continue;
 
 			//see if the tile is on top of an enemy unit
-			const units_map::const_iterator unit_it =
+			const unit_map::const_iterator unit_it =
 				find_visible_unit(units, locs[i], map, teams, viewing_team);
 
 			if (unit_it != units.end() &&
@@ -450,13 +450,13 @@ namespace {
 
 paths::paths(gamemap const &map, gamestatus const &status,
              game_data const &gamedata,
-             std::map<gamemap::location, unit> const &units,
+             unit_map const &units,
              gamemap::location const &loc,
              std::vector<team> const &teams,
              bool ignore_zocs, bool allow_teleport, const team &viewing_team,
 			 int additional_turns)
 {
-	const units_map::const_iterator i = units.find(loc);
+	const unit_map::const_iterator i = units.find(loc);
 	if(i == units.end()) {
 		std::cerr << "unit not found\n";
 		return;

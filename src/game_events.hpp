@@ -37,7 +37,6 @@ class display;
 //movement, keyboard events, etc. See events.hpp for how they are handled.
 namespace game_events
 {
-typedef std::map<gamemap::location,unit> units_map;
 //the game event manager loads the scenario configuration object, and
 //ensures that events are handled according to the scenario configuration
 //for its lifetime.
@@ -48,7 +47,7 @@ struct manager {
 	//note that references will be maintained, and must remain valid
 	//for the life of the object.
 	manager(const config& scenario_cfg, display& disp, gamemap& map,
-			units_map& units, std::vector<team>& teams,
+			unit_map& units, std::vector<team>& teams,
 			game_state& state_of_game, gamestatus& status, const game_data& data);
 	~manager();
 
@@ -73,7 +72,7 @@ void raise(const std::string& event,
           const gamemap::location& loc2=gamemap::location::null_location,
 		  const config& data=config());
 
-bool conditional_passed(const units_map* units,
+bool conditional_passed(const unit_map* units,
                         const vconfig cond);
 bool pump();
 
