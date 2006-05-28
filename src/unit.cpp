@@ -1272,7 +1272,7 @@ void unit::set_standing(const display &disp,const gamemap::location& loc)
 void unit::set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack)
 {
 	state_ =  STATE_DEFENDING;
-	draw_bars_ = true;
+	draw_bars_ = false;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
