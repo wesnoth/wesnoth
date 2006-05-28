@@ -875,7 +875,7 @@ void unit::read(const config& cfg)
 	variation_ = cfg["variation"];
 	
 	wassert(gamedata_ != NULL);
-	description_ = cfg["unit_description"];
+	description_ = cfg["description"];
 	custom_unit_description_ = cfg["user_description"];
 	std::string custom_unit_desc = cfg["unit_description"];
 	
@@ -1152,7 +1152,6 @@ void unit::write(config& cfg) const
 	cfg["overlays"] = utils::join(overlays_);
 
 	cfg["user_description"] = custom_unit_description_;
-	cfg["unit_description"] = description_;
 	cfg["description"] = underlying_description_;
 
 	cfg["traits_description"] = traits_description_;
