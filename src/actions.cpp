@@ -1770,11 +1770,9 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 	ui->second.set_goto(gamemap::location());
 
-	unit u = ui->second;
+	const size_t team_num = ui->second.side()-1;
 
-	const size_t team_num = u.side()-1;
-
-	const bool skirmisher = u.get_ability_bool("skirmisher",ui->first);
+	const bool skirmisher = ui->second.get_ability_bool("skirmisher",ui->first);
 
 	team& team = teams[team_num];
 	const bool check_shroud = should_clear_shroud && team.auto_shroud_updates() &&
@@ -1792,7 +1790,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	}
 
 	//see how far along the given path we can move
-	const int starting_moves = u.movement_left();
+	const int starting_moves = ui->second.movement_left();
 	int moves_left = starting_moves;
 	std::set<gamemap::location> seen_units;
 	bool discovered_unit = false;
@@ -1803,7 +1801,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 
-		const int mv = u.movement_cost(terrain);
+		const int mv = ui->second.movement_cost(terrain);
 		if(discovered_unit || continue_move == false && seen_units.empty() == false ||
 		   mv > moves_left || enemy_unit != units.end() && team.is_enemy(enemy_unit->second.side())) {
 			break;
@@ -1811,7 +1809,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			moves_left -= mv;
 		}
 
-		if(!skirmisher && enemy_zoc(map,units,teams,*step,team,u.side())) {
+		if(!skirmisher && enemy_zoc(map,units,teams,*step,team,ui->second.side())) {
 			moves_left = 0;
 		}
 
@@ -1847,7 +1845,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				continue;
 
 			const unit_map::const_iterator it = units.find(adjacent[i]);
-			if(it != units.end() && teams[u.side()-1].is_enemy(it->second.side()) &&
+			if(it != units.end() && teams[ui->second.side()-1].is_enemy(it->second.side()) &&
 			   it->second.invisible(it->first,units,teams)) {
 				discovered_unit = true;
 				should_clear_stack = true;
@@ -1865,7 +1863,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		gamemap::location const &loc = steps.back();
 		if (units.count(loc) == 0)
 			break;
-		moves_left += u.movement_cost(map[loc.x][loc.y]);
+		moves_left += ui->second.movement_cost(map[loc.x][loc.y]);
 		steps.pop_back();
 	}
 
@@ -1877,12 +1875,12 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	//if we can't get all the way there and have to set a go-to.
 	if(steps.size() != route.size() && discovered_unit == false) {
 		if(seen_units.empty() == false) {
-			u.set_interrupted_move(route.back());
+			ui->second.set_interrupted_move(route.back());
 		} else {
-			u.set_goto(route.back());
+			ui->second.set_goto(route.back());
 		}
 	} else {
-		u.set_interrupted_move(gamemap::location());
+		ui->second.set_interrupted_move(gamemap::location());
 	}
 
 	if(steps.size() < 2) {
@@ -1895,11 +1893,11 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	if(disp != NULL) {
 		ui->second.set_hidden(true);
 		disp->invalidate(ui->first);
-		unit_display::move_unit(*disp,map,steps,u,units,teams);
+		unit_display::move_unit(*disp,map,steps,ui->second,units,teams);
 		ui->second.set_hidden(false);
 	}
 
-	u.set_movement(moves_left);
+	ui->second.set_movement(moves_left);
 
 	std::pair<gamemap::location,unit> *p = units.extract(ui->first);
 	p->first = steps.back();
@@ -1939,7 +1937,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			undo_stack->clear();
 		} else {
 			//MP_COUNTDOWN: added param
-			undo_stack->push_back(undo_action(u,steps,starting_moves,action_time_bonus,orig_village_owner));
+			undo_stack->push_back(undo_action(ui->second,steps,starting_moves,action_time_bonus,orig_village_owner));
 		}
 	}
 
