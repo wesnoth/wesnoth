@@ -201,9 +201,10 @@ wesnoth_editor_SOURCES = \
 	tooltips.cpp \
 	unit.cpp \
 	unit_abilities.cpp \
-	unit_display.cpp \
-	unit_types.cpp \
 	unit_animation.cpp \
+	unit_display.cpp \
+	unit_map.cpp \
+	unit_types.cpp \
 	variable.cpp \
 	video.cpp \
 	serialization/binary_or_text.cpp \
