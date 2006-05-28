@@ -18,6 +18,7 @@ class config;
 class gamestatus;
 class unit;
 class vconfig;
+class unit_map;
 
 #include "terrain.hpp"
 
@@ -104,7 +105,6 @@ public:
 	private:
 		void init(const std::string &x, const std::string &y);
 	};
-	typedef std::map<location,unit> unit_map;
 
 	const std::string& underlying_mvt_terrain(const location& loc) const
 	{ return underlying_mvt_terrain(get_terrain(loc)); }

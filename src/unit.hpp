@@ -19,9 +19,7 @@
 #include "team.hpp"
 #include "unit_types.hpp"
 #include "image.hpp"
-
-
-
+#include "unit_map.hpp"
 
 class unit;
 class display;
@@ -423,8 +421,7 @@ struct temporary_unit_placer
 private:
 	unit_map& m_;
 	const gamemap::location& loc_;
-	const unit temp_;
-	bool use_temp_;
+	std::pair<gamemap::location,unit> *temp_;
 };
 
 #endif

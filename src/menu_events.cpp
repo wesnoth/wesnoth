@@ -829,16 +829,12 @@ namespace events{
 
 			action.starting_moves = u->second.movement_left();
 
-			unit un = u->second;
-			un.set_goto(gamemap::location());
-
-			u->second.set_hidden(true);
-			unit_display::move_unit(*gui_,map_,route,un,units_,teams_);
-			u->second.set_hidden(false);
-
-			units_.erase(u);
-			un.set_movement(starting_moves);
-			units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
+			std::pair<gamemap::location,unit> *up = units_.extract(u->first);
+			unit_display::move_unit(*gui_,map_,route,up->second,units_,teams_);
+			up->second.set_goto(gamemap::location());
+			up->second.set_movement(starting_moves);
+			up->first = route.back();
+			units_.add(up);
 			gui_->invalidate(route.back());
 			gui_->draw();
 		}
@@ -952,19 +948,15 @@ namespace events{
 
 			action.starting_moves = u->second.movement_left();
 
-			unit un = u->second;
-			un.set_goto(gamemap::location());
-
-			u->second.set_hidden(true);
-			unit_display::move_unit(*gui_,map_,route,un,units_,teams_);
-			u->second.set_hidden(false);
-
-			units_.erase(u);
-			un.set_movement(starting_moves);
-			units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
+			std::pair<gamemap::location,unit> *up = units_.extract(u->first);
+			unit_display::move_unit(*gui_,map_,route,up->second,units_,teams_);
+			up->second.set_goto(gamemap::location());
+			up->second.set_movement(starting_moves);
+			up->first = route.back();
+			units_.add(up);
 
 			if(map_.is_village(route.back())) {
-				get_village(route.back(),teams_,un.side()-1,units_);
+				get_village(route.back(),teams_,up->second.side()-1,units_);
 				//MP_COUNTDOWN restore capture bonus
 				if(action.countdown_time_bonus)
 				{
@@ -1011,8 +1003,7 @@ namespace events{
 				const unit_movement_resetter move_reset(u->second);
 				const bool is_skirmisher = u->second.get_ability_bool("skirmisher",u->first);
 				const bool teleports = u->second.get_ability_bool("teleport",u->first);
-				unit_map units;
-				units.insert(*u);
+				unit_map units(u->first, u->second);
 				const paths& path = paths(map_,status_,gameinfo_,ignore_units?units:units_,
 										  u->first,teams_,is_skirmisher,teleports,teams_[gui_->viewing_team()]);
 
@@ -1162,7 +1153,7 @@ namespace events{
 
 		if (size_t(choice) < unit_choices.size()) {
 			units_.erase(mousehandler.get_last_hex());
-			units_.insert(std::pair<gamemap::location,unit>(mousehandler.get_last_hex(),unit_choices[choice]));
+			units_.add(new std::pair<gamemap::location,unit>(mousehandler.get_last_hex(),unit_choices[choice]));
 			gui_->invalidate(mousehandler.get_last_hex());
 			gui_->invalidate_unit();
 		}
@@ -1673,7 +1664,7 @@ namespace events{
 			}
 
 			units_.erase(mousehandler.get_last_hex());
-			units_.insert(std::pair<gamemap::location,unit>(mousehandler.get_last_hex(),unit(&gameinfo_,&units_,&map_,&status_,&teams_,&i->second,1,false)));
+			units_.add(new std::pair<gamemap::location,unit>(mousehandler.get_last_hex(),unit(&gameinfo_,&units_,&map_,&status_,&teams_,&i->second,1,false)));
 			gui_->invalidate(mousehandler.get_last_hex());
 			gui_->invalidate_unit();
 		} else if(game_config::debug && cmd == "gold") {

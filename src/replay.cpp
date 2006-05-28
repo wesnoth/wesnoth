@@ -812,8 +812,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			paths paths_list(map,state,gameinfo,units,src,teams,ignore_zocs,teleport,current_team);
 
-			unit current_unit = u->second;
-
 			std::map<gamemap::location,paths::route>::iterator rt = paths_list.routes.find(dst);
 			if(rt == paths_list.routes.end()) {
 
@@ -821,30 +819,31 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 					ERR_NW << "can get to: " << rt->first << '\n';
 				}
 
-				ERR_NW << "src cannot get to dst: " << current_unit.movement_left() << ' '
+				ERR_NW << "src cannot get to dst: " << u->second.movement_left() << ' '
 				       << paths_list.routes.size() << ' ' << src << " -> " << dst << '\n';
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
 
 			rt->second.steps.push_back(dst);
 
-			if(!replayer.is_skipping() && unit_display::unit_visible_on_path(disp,rt->second.steps,current_unit,units,teams)) {
+			if(!replayer.is_skipping() && unit_display::unit_visible_on_path(disp,rt->second.steps,u->second,units,teams)) {
 
 				disp.scroll_to_tiles(src.x,src.y,dst.x,dst.y);
 			}
 
-			units.erase(u);
+			std::pair<gamemap::location,unit> *up = units.extract(u->first);
 
 			if(!replayer.is_skipping()) {
-				unit_display::move_unit(disp,map,rt->second.steps,current_unit,units,teams);
+				unit_display::move_unit(disp,map,rt->second.steps,up->second,units,teams);
 			}
 			else{
 				//unit location needs to be updated
-				current_unit.set_goto(*(rt->second.steps.end() - 1));
+				up->second.set_goto(*(rt->second.steps.end() - 1));
 			}
 
-			current_unit.set_movement(rt->second.move_left);
-			u = units.insert(std::pair<gamemap::location,unit>(dst,current_unit)).first;
+			up->second.set_movement(rt->second.move_left);
+			up->first = dst;
+			units.add(up);
 			if(map.is_village(dst)) {
 				const int orig_owner = village_owner(dst,teams) + 1;
 				if(orig_owner != team_num) {

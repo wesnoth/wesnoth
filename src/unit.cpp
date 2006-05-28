@@ -2844,19 +2844,15 @@ std::string get_team_name(unsigned int side, const unit_map& units)
 }
 
 temporary_unit_placer::temporary_unit_placer(unit_map& m, const gamemap::location& loc, const unit& u)
-  : m_(m), loc_(loc), temp_(m.count(loc) == 1 ? m.find(loc)->second : u), use_temp_(m.count(loc) == 1)
+	: m_(m), loc_(loc), temp_(m.extract(loc))
 {
-	if(use_temp_) {
-		m.erase(loc);
-	}
-
-	m.insert(std::pair<gamemap::location,unit>(loc,u));
+	m.add(new std::pair<gamemap::location,unit>(loc,u));
 }
 
 temporary_unit_placer::~temporary_unit_placer()
 {
 	m_.erase(loc_);
-	if(use_temp_) {
-		m_.insert(std::pair<gamemap::location,unit>(loc_,temp_));
+	if(temp_) {
+		m_.add(temp_);
 	}
 }

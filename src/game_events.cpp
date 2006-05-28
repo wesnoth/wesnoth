@@ -329,10 +329,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				if(game_map->on_board(vacant_dst)) {
 					const int side = u->second.side();
 
-					//note that inserting into a map does not invalidate iterators
-					//into the map, so this sequence is fine.
-					units->insert(std::pair<gamemap::location,unit>(vacant_dst,u->second));
-					units->erase(u);
+					std::pair<gamemap::location,unit> *up = units->extract(u->first);
+					up->first = dst;
+					units->add(up);
 
 					if(game_map->is_village(vacant_dst)) {
 						get_village(vacant_dst,*teams,side,*units);
@@ -1110,7 +1109,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				screen->draw(true,true);
 			}
 
-			units->insert(std::pair<gamemap::location,unit>(loc,new_unit));
+			units->add(new std::pair<gamemap::location,unit>(loc,new_unit));
 			if(game_map->is_village(loc)) {
 				get_village(loc,*teams,new_unit.side()-1,*units);
 			}
@@ -1557,7 +1556,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				}
 
 				units->erase(loc);
-				units->insert(std::pair<gamemap::location,unit>(loc,u));
+				units->add(new std::pair<gamemap::location,unit>(loc,u));
 				
 				std::string text = cfg["text"];
 				text = utils::interpolate_variables_into_string(text, *state_of_game);

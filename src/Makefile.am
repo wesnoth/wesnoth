@@ -108,9 +108,10 @@ wesnoth_SOURCES = \
 	tooltips.cpp \
 	unit.cpp \
 	unit_abilities.cpp \
-	unit_display.cpp \
-	unit_types.cpp \
 	unit_animation.cpp \
+	unit_display.cpp \
+	unit_map.cpp \
+	unit_types.cpp \
 	upload_log.cpp \
 	variable.cpp \
 	video.cpp \
@@ -401,6 +402,7 @@ noinst_HEADERS = \
 	intro.hpp \
 	preferences.hpp \
 	unit_types.hpp \
+	unit_map.hpp \
 	unit_animation.hpp \
 	unit_abilities.hpp \
 	unit_frame.hpp \

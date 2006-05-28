@@ -151,7 +151,7 @@ std::string recruit_unit(const gamemap& map, int side,
 		disp->draw(true,true);
 	}
 
-	units.insert(std::pair<gamemap::location,unit>( recruit_location,new_unit));
+	units.add(new std::pair<gamemap::location,unit>(recruit_location,new_unit));
 
 	if(show) {
 	    unit_map::iterator un = disp->get_units().find(recruit_location);
@@ -894,7 +894,7 @@ void attack(display& gui, const gamemap& map,
 						 newunit.heal_all();
 					       }
 
-					       units.insert(std::pair<gamemap::location,unit>(loc,newunit));
+					       units.replace(new std::pair<gamemap::location,unit>(loc,newunit));
 						   if (update_display){
 						       gui.invalidate(loc);
 						   }
@@ -1125,7 +1125,7 @@ void attack(display& gui, const gamemap& map,
 						 newunit.add_modification("variation",mod);
 					       }
 
-					       units.insert(std::pair<gamemap::location,unit>(loc,newunit));
+					       units.replace(new std::pair<gamemap::location,unit>(loc,newunit));
 						   if (update_display){
 						       gui.invalidate(loc);
 						   }
@@ -1514,8 +1514,7 @@ void advance_unit(const game_data& info,
 	preferences::encountered_units().insert(new_unit.id());
 	LOG_STREAM(info, config) << "Added '" << new_unit.id() << "' to encountered units\n";
 
-	units.erase(loc);
-	units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
+	units.replace(new std::pair<gamemap::location,unit>(loc,new_unit));
 	LOG_NG << "firing post_advance event\n";
 	game_events::fire("post_advance",loc);
 }
@@ -1679,8 +1678,7 @@ bool clear_shroud_unit(const gamemap& map,
 		return false;
 	}
 
-	unit_map temp_units;
-	temp_units.insert(*u);
+	unit_map temp_units(u->first, u->second);
 
 	paths p(map,status,gamedata,temp_units,loc,teams,true,false,teams[team]);
 	for(paths::routes_map::const_iterator i = p.routes.begin();
@@ -1903,9 +1901,10 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 	u.set_movement(moves_left);
 
-
-	units.erase(ui);
-	ui = units.insert(std::pair<gamemap::location,unit>(steps.back(),u)).first;
+	std::pair<gamemap::location,unit> *p = units.extract(ui->first);
+	p->first = steps.back();
+	units.add(p);
+	ui = units.find(p->first);
 	if(disp != NULL) {
 		disp->invalidate_unit();
 		disp->invalidate(steps.back());

@@ -340,12 +340,11 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 	std::vector<std::pair<location,location> >::const_iterator m;
 	for (m = movements.begin(); m != movements.end(); ++m) {
 		// We fix up units map to reflect what this would look like.
-		unit_map::iterator att_it = units.find(m->first);
-		unit att_u = att_it->second;
-		units.erase(att_it);
-		units.insert(std::pair<location,unit>(m->second, att_u));
+		std::pair<gamemap::location,unit> *up = units.extract(m->first);
+		up->first = m->second;
+		units.add(up);
 
-		if (att_u.can_recruit()) {
+		if (up->second.can_recruit()) {
 			uses_leader = true;
 			leader_threat = false;
 		}
@@ -368,10 +367,10 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		double prob_died = att.hp_dist[0];
 		double prob_survived = (1.0 - prob_died) * prob_fought;
 
-		double cost = att_u.cost();
+		double cost = up->second.cost();
 		const bool on_village = map.is_village(m->second);
 		//up to double the value of a unit based on experience
-		cost += (double(att_u.experience())/double(att_u.max_experience()))*cost;
+		cost += (double(up->second.experience())/double(up->second.max_experience()))*cost;
 		resources_used += cost;
 		avg_losses += cost * prob_died;
 
@@ -384,8 +383,8 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 		double advance_prob = 0.0;
 		//the reward for advancing a unit is to get a 'negative' loss of that unit
-		if (!att_u.advances_to().empty()) {
-			int xp_for_advance = att_u.max_experience() - att_u.experience();
+		if (!up->second.advances_to().empty()) {
+			int xp_for_advance = up->second.max_experience() - up->second.experience();
 			int kill_xp, fight_xp;
 
 			fight_xp = defend_it->second.level();
@@ -395,29 +394,29 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 				advance_prob = prob_fought;
 			else if (kill_xp >= xp_for_advance)
 				advance_prob = prob_killed;
-			avg_losses -= att_u.cost() * advance_prob;
+			avg_losses -= up->second.cost() * advance_prob;
 
 			//the reward for getting a unit closer to advancement (if
 			//it didn't advance) is to get the proportion of remaining
 			//experience needed, and multiply it by a quarter of the
 			//unit cost. This will cause the AI to heavily favor
 			//getting xp for close-to-advance units.
-			avg_losses -= (att_u.cost()*fight_xp)/(xp_for_advance*4) * (prob_fought - prob_killed);
-			avg_losses -= (att_u.cost()*kill_xp)/(xp_for_advance*4) * prob_killed;
+			avg_losses -= (up->second.cost()*fight_xp)/(xp_for_advance*4) * (prob_fought - prob_killed);
+			avg_losses -= (up->second.cost()*kill_xp)/(xp_for_advance*4) * prob_killed;
 
 			//the reward for killing with a unit that
 			//plagues is to get a 'negative' loss of that unit
 			if (bc.get_attacker_stats().plagues) {
-				avg_losses -= prob_killed * att_u.cost();
+				avg_losses -= prob_killed * up->second.cost();
 			}
 		}
 
 		// If we didn't advance, we took this damage.
-		avg_damage_taken += (att_u.hitpoints() - att.average_hp()) * (1.0 - advance_prob);
+		avg_damage_taken += (up->second.hitpoints() - att.average_hp()) * (1.0 - advance_prob);
 
 		// FIXME: attack_prediction.cpp should understand advancement directly.
 		// For each level of attacker def gets 1 xp or kill_experience.
-		def_avg_experience += att_u.level() *
+		def_avg_experience += up->second.level() *
 			(1.0 - att.hp_dist[0] + game_config::kill_experience * att.hp_dist[0]);
 		if (m == movements.begin()) {
 			first_chance_kill = def.hp_dist[0];
@@ -440,10 +439,9 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 	// Restore the units to their original positions.
 	for (m = movements.begin(); m != movements.end(); ++m) {
-		unit_map::iterator att_it = units.find(m->second);
-		unit att_u = att_it->second;
-		units.erase(att_it);
-		units.insert(std::pair<location,unit>(m->first, att_u));
+		std::pair<gamemap::location,unit> *up = units.extract(m->second);
+		up->first = m->first;
+		units.add(up);
 	}
 }
 

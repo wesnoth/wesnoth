@@ -873,6 +873,7 @@ gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::locati
 	return res;
 }
 
+// FIXME: Should borrow unit pointers, not copy units.
 const unit_map& mouse_handler::visible_units()
 {
 	if(viewing_team().uses_shroud() == false && viewing_team().uses_fog() == false) {
@@ -883,7 +884,7 @@ const unit_map& mouse_handler::visible_units()
 	visible_units_.clear();
 	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 		if((*gui_).fogged(i->first.x,i->first.y) == false) {
-			visible_units_.insert(*i);
+			visible_units_.add(new std::pair<gamemap::location,unit>(*i));
 		}
 	}
 

@@ -414,8 +414,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 	paths current_paths(info_.map,info_.state,info_.gameinfo,info_.units,from,info_.teams,ignore_zocs,teleport,current_team());
 
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
-
-	unit current_unit = u_it->second;
+	std::pair<gamemap::location,unit> *up = NULL;
 
 	if(p_it != possible_moves.end()) {
 		paths& p = p_it->second;
@@ -427,7 +426,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 		}
 
 		if(rt != p.routes.end()) {
-			current_unit.set_movement(rt->second.move_left);
+			u_it->second.set_movement(rt->second.move_left);
 
 			std::vector<location> steps = rt->second.steps;
 
@@ -457,7 +456,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 					}
 
 					if(n != 6) {
-						current_unit.set_movement(0); //enter enemy ZoC, no movement left
+						u_it->second.set_movement(0); //enter enemy ZoC, no movement left
 						break;
 					}
 				}
@@ -469,20 +468,18 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 
 				info_.disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
 
-				u_it->second.set_hidden(true);
-				unit_display::move_unit(info_.disp,info_.map,steps,current_unit,info_.units,info_.teams);
-				u_it->second.set_hidden(false);
-				info_.units.erase(u_it);
-				u_it = info_.units.end();
+				up = info_.units.extract(u_it->first);
+				unit_display::move_unit(info_.disp,info_.map,steps,up->second,info_.units,info_.teams);
 			}
 		}
 	}
 
-	if(u_it != info_.units.end()) {
-		info_.units.erase(u_it);
+	if (!up) {
+		up = info_.units.extract(u_it->first);
 	}
 
-	info_.units.insert(std::pair<location,unit>(to,current_unit));
+	up->first = to;
+	info_.units.add(up);
 	if(info_.map.is_village(to)) {
 		// if a new village is captured, disallow any future movement
 		if (!info_.teams[info_.team_num-1].owns_village(to))
@@ -1852,8 +1849,7 @@ void ai::move_leader_after_recruit(const move_map& srcdst, const move_map& dstsr
 				if(current_loc.valid()) {
 					LOG_AI << "considering movement to " << str_cast(current_loc.x + 1)
 						<< "," << str_cast(current_loc.y+1);
-					unit_map temp_units;
-					temp_units.insert(std::pair<location,unit>(current_loc,leader->second));
+					unit_map temp_units(current_loc,leader->second);
 					const paths p(map_,state_,gameinfo_,temp_units,current_loc,teams_,false,false,current_team());
 
 					if(p.routes.count(i->first)) {
@@ -1869,8 +1865,9 @@ void ai::move_leader_after_recruit(const move_map& srcdst, const move_map& dstsr
 	//can recruit if they want.
 	if(nearest_keep(leader->first) == leader->first) {
 		const location keep = leader->first;
-		const std::pair<location,unit> temp_leader = *leader;
-		units_.erase(leader);
+		std::pair<gamemap::location,unit> *temp_leader;
+
+		temp_leader = units_.extract(keep);
 
 		bool friend_can_reach_keep = false;
 
@@ -1887,7 +1884,7 @@ void ai::move_leader_after_recruit(const move_map& srcdst, const move_map& dstsr
 			}
 		}
 
-		units_.insert(temp_leader);
+		units_.add(temp_leader);
 
 		if(friend_can_reach_keep) {
 			//find a location for our leader to vacate the keep to

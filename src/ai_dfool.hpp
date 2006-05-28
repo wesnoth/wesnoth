@@ -97,7 +97,6 @@ namespace dfool {
 	unit_map matching_units;
 	unit_map assigned_units;
 
-	assigned_units.clear();
 	//find units assigned to this order;
 	for(config::child_list::const_iterator at = order_assignments.begin(); at != order_assignments.end(); ++at) {
 	  LOG_STREAM(info, ai)<<"\tchecking for assignments\n";
@@ -110,7 +109,7 @@ namespace dfool {
 		if(clear_assignment(i->first,clear_assign,info_.map)){
 		  LOG_STREAM(info, ai)<<"\tclear existing assignments\n";
 		}else{
-		  assigned_units.insert(*i);
+		  assigned_units.add(new std::pair<gamemap::location,unit>(*i));
 		  LOG_STREAM(info, ai)<<"\t\tAssignment: "<<(**at)["unit_id"]<<" to order: "<<id<<std::endl;
 		}
 	      }
@@ -118,7 +117,6 @@ namespace dfool {
 	  }
 	}
 
-	matching_units.clear();
 	//find units that match any filter. If no filters then accept all units.
 	if(filter.size()){
 	  for(config::child_list::const_iterator f = filter.begin(); f != filter.end(); ++f) {
@@ -137,7 +135,7 @@ namespace dfool {
 	      if(found){
 		LOG_STREAM(info, ai)<<"\t\talready assigned: "<<i->second.underlying_description()<<std::endl;
 	      }else{
-		matching_units.insert(*i);
+		matching_units.add(new std::pair<gamemap::location,unit>(*i));
 		LOG_STREAM(info, ai)<<"\t\tmatching: "<<i->second.underlying_description()<<" to order: "<<id<<std::endl;
 	      }
 	    }
@@ -149,7 +147,7 @@ namespace dfool {
 	//should add sorting functionality here in future
 	//bring assigned units up to maximum number
 	for(unit_map::const_iterator mu = matching_units.begin(); mu != matching_units.end() && order_assignments.size()<num; ++mu) {
-	  assigned_units.insert(*mu);
+	  assigned_units.add(new std::pair<gamemap::location,unit>(*mu));
 	  LOG_STREAM(info, ai)<<"\tassigned unit:\t"<<mu->second.underlying_description()<<"\n";
 	}
 
@@ -211,7 +209,7 @@ namespace dfool {
       }else{
 	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 	  if(current_team().fogged(i->first.x,i->first.y) == false) {
-	    visible_units_.insert(*i);
+		visible_units_.add(new std::pair<gamemap::location,unit>(*i));
 	  }
 	}
       }
@@ -226,7 +224,7 @@ namespace dfool {
       unit_map filtered_units_;
       for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 	if(i->second.matches_filter(filter,i->first)) {
-	  filtered_units_.insert(*i);
+	  filtered_units_.add(new std::pair<gamemap::location,unit>(*i));
 	}
       }
       return filtered_units_;
