@@ -582,7 +582,7 @@ void server::process_login(const network::connection sock, const config& data)
 		return;
 	}
 
-	if(username.size() > 32) {
+	if(username.size() > 18) {
 		network::send_data(construct_error(
 		                   "This username is too long"),sock);
 		return;
