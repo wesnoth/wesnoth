@@ -235,7 +235,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		wassert(leader != units.end());
 		leader->second.set_leading(disp,leader_loc);
 	}
-	while(!attacker.get_animation()->animation_finished() ) {
+/*	while(!attacker.get_animation()->animation_finished() ) {
 		disp.invalidate(a);
 		if(leader_loc.valid()) disp.invalidate(leader_loc);
 		disp.draw();
@@ -243,7 +243,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		disp.non_turbo_delay();
 	}
 
-
+*/
 	int animation_time;
 
 
@@ -266,15 +266,23 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	const unit_animation::FRAME_DIRECTION dir = (a.x == b.x) ? unit_animation::VERTICAL:unit_animation::DIAGONAL;
 
 	defender.set_defending(disp,b,damage,&attack);
-	const int start_time = minimum<int>(minimum<int>(defender.get_animation()->get_first_frame_time(),
-				missile_animation.get_first_frame_time()),-200);
+	// min of attacker, defender, missile and -200
+	const int start_time = minimum<int>(
+			minimum<int>(
+				minimum<int>(defender.get_animation()->get_first_frame_time(),
+				missile_animation.get_first_frame_time()),
+				attacker.get_animation()->get_first_frame_time()),
+			-200);
 	missile_animation.start_animation(start_time,acceleration);
 	defender.restart_animation(disp,start_time);
+	attacker.restart_animation(disp,start_time);
 	animation_time = defender.get_animation()->get_animation_time();
 	bool sound_played = false ;
 	int missile_frame_halo =0;
 	int missile_halo =0;
 	while(!defender.get_animation()->animation_finished()  ||
+			!attacker.get_animation()->animation_finished()  ||
+			!missile_animation.animation_finished()  ||
 			(leader_loc.valid() && !leader->second.get_animation()->animation_finished())) {
 		const double pos = animation_time < missile_animation.get_first_frame_time()?1.0:
 			double(animation_time)/double(missile_animation.get_first_frame_time());
