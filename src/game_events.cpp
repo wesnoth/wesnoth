@@ -324,7 +324,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		//we have found a unit that matches the filter
 		if(u != units->end()) {
 			const gamemap::location dst = cfg_to_loc(cfg);
-			if(game_map->on_board(dst)) {
+			if(dst != u->first && game_map->on_board(dst)) {
 				const gamemap::location vacant_dst = find_vacant_tile(*game_map,*units,dst);
 				if(game_map->on_board(vacant_dst)) {
 					const int side = u->second.side();
