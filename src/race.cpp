@@ -90,7 +90,7 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 		if (i == prefixes.end() || i->second.empty()) {
 			return res;
 		}
-		if (std::find(i->second.begin(), i->second.end(), static_cast<size_t>(0))
+		if (std::find(i->second.begin(), i->second.end(), static_cast<wchar_t>(0))
 				!= i->second.end()) {
 			// This ending is valid.
 			return res;
