@@ -1255,7 +1255,7 @@ public:
 			table_spec table;
 			push_header(first_row, _("Terrain"));
 			push_header(first_row, _("Defense"));
-			push_header(first_row, _("Movement"));
+			push_header(first_row, _("Movement Cost"));
 
 			table.push_back(first_row);
 			for (std::set<std::string>::const_iterator terrain_it =
