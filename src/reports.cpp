@@ -286,12 +286,12 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			res.add_text(str,tooltip);
 
-			str << "<166,146,117>  ";
 			
 			const std::vector<std::string>& specials = at_it->special_tooltips();
 			
 			if(! specials.empty()) {
 				for(std::vector<std::string>::const_iterator sp_it = specials.begin(); sp_it != specials.end(); ++sp_it) {
+					str << "<166,146,117>  ";
 					str << gettext(sp_it->c_str());
 					str<<"\n";
 					++sp_it;
