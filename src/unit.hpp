@@ -364,7 +364,7 @@ class unit
 		
 		friend void attack_type::set_specials_context(const gamemap::location& loc,const unit& un) const;
 		const game_data* gamedata_;
-		mutable unit_map* units_;
+		const unit_map* units_;
 		const gamemap* map_;
 		const gamestatus* gamestatus_;
 		const std::vector<team>* teams_;
