@@ -134,6 +134,7 @@ bool unit_visible_on_path(display& disp, const std::vector<gamemap::location>& p
 
 void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::location>& path, unit& u, const unit_map& units, const std::vector<team>& teams)
 {
+	wassert(!path.empty());
 	bool previous_visible = false;
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 		u.set_facing(path[i].get_relative_dir(path[i+1]));
