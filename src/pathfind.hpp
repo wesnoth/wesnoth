@@ -124,4 +124,16 @@ private:
 	int const total_movement_;
 };
 
+//function which only uses terrain, ignoring shroud, enemies, etc.
+//required by move_unit_fake if the normal path fails.
+struct emergency_path_calculator : cost_calculator
+{
+	emergency_path_calculator(const unit& u, const gamemap& map);
+	virtual double cost(const gamemap::location& src, const gamemap::location& loc, const double so_far, const bool isDst) const;
+
+private:
+	unit const &unit_;
+	gamemap const &map_;
+};
+
 #endif

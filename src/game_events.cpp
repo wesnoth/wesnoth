@@ -653,6 +653,15 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 				paths::route route = a_star_search(src, dst, 10000, &calc,
 				                                   game_map->x(), game_map->y());
+
+				if (route.steps.size() == 0) {
+					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities\n";
+					emergency_path_calculator calc(dummy_unit, *game_map);
+
+					route = a_star_search(src, dst, 10000, &calc,
+										  game_map->x(), game_map->y());
+					wassert(route.steps.size() > 0);
+				}
 				unit_display::move_unit(*screen, *game_map, route.steps, dummy_unit,
 				                        *units, *teams);
 

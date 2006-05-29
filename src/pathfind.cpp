@@ -561,3 +561,15 @@ double shortest_path_calculator::cost(const gamemap::location& src,const gamemap
 	int additional_cost = base_cost > remaining_movement ? remaining_movement : 0;
 	return base_cost + additional_cost;
 }
+
+emergency_path_calculator::emergency_path_calculator(const unit& u, const gamemap& map)
+	: unit_(u), map_(map)
+{
+}
+
+double emergency_path_calculator::cost(const gamemap::location&,const gamemap::location& loc, const double, const bool) const
+{
+	wassert(map_.on_board(loc));
+
+	return unit_.movement_cost(map_[loc.x][loc.y]);
+}
