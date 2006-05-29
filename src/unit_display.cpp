@@ -292,7 +292,6 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 			!attacker.get_animation()->animation_finished()  ||
 			!missile_animation.animation_finished()  ||
 			(leader_loc.valid() && !leader->second.get_animation()->animation_finished())) {
-		printf("%d %d %d\n",animation_time,missile_animation.get_last_frame_time(),missile_animation.get_animation_time());
 		const double pos = animation_time < missile_animation.get_first_frame_time()?1.0:
 			double(animation_time)/double(missile_animation.get_first_frame_time());
 		const int posx = int(pos*xsrc + (1.0-pos)*xdst);
