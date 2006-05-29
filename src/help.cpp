@@ -817,12 +817,18 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		std::transform(generated_sections.begin(), generated_sections.end(),
 			       std::back_inserter(sec.sections), create_section());
 		bool sort_topics = false;
+		bool sort_generated = true;
  
-		if ((*section_cfg)["sort_topics"] == "yes") 
+		if ((*section_cfg)["sort_topics"] == "yes") {
 		  sort_topics = true;
-		else if ((*section_cfg)["sort_topics"] == "no")
+		  sort_generated = true; // Used for merge so not redundant
+		} else if ((*section_cfg)["sort_topics"] == "no") {
 		  sort_topics = false;
-		else if ((*section_cfg)["sort_topics"] != "") {
+		  sort_generated = false;
+		} else if ((*section_cfg)["sort_topics"] == "generated") {
+		  sort_topics = false;
+		  sort_generated = true;
+		} else if ((*section_cfg)["sort_topics"] != "") {
 		  std::stringstream ss;
 		  ss << "Invalid sort option: '" << (*section_cfg)["sort_topics"] << "'";
 		  throw parse_error(ss.str());
@@ -853,8 +859,8 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			}
 		}
 		
-		std::vector<topic> generated_topics =
-		  generate_topics(sort_topics,(*section_cfg)["generator"]);
+		const std::vector<topic> generated_topics =
+		  generate_topics(sort_generated,(*section_cfg)["generator"]);
 		
 		if (sort_topics) {		  
 		  std::sort(topics.begin(),topics.end(), title_less());
@@ -864,7 +870,6 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			     ,std::back_inserter(sec.topics),title_less());
 		}
 		else {
-		  std::sort(generated_topics.begin(),generated_topics.end(), title_less());
 		  std::copy(topics.begin(), topics.end(),
 			  std::back_inserter(sec.topics));
 		  std::copy(generated_topics.begin(), generated_topics.end(),

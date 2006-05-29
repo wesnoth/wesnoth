@@ -2,9 +2,9 @@ Trunk (1.1.3+svn):
  * language and i18n:
    * updated translations: Czech, German, Slovak
  * help menu
-   * Generated topics are always sorted by topic name. When sort is set to no
-     for a section, the topics from the config file come first in that order
-     and are followed by a sorted list of generated topics.
+   * It is now possible to specify generated topic sorting by title separate
+     from sorting all of the topics. This allows a sorted list of generated
+     topics to be placed after a fixed list of topics.
    * The Abilities and Traits sections were changed so that the overviews come
      first
    * Fixed a bug where the wrong ability description could be extracted from
@@ -13,8 +13,11 @@ Trunk (1.1.3+svn):
  * WML engine
    * modify ranged animation timing, all animations (attack, defend, missile
    have the same clock)
-* multiplayer maps:
+ * multiplayer maps:
    * revised multiplayer maps: Charge
+ * units
+   * fixed a problem with unit type description being overwritten by the unit
+     description (name) when saving and reloading.
 
 Version 1.1.3:
  * campaigns
