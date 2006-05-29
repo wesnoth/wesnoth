@@ -844,6 +844,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			up->second.set_movement(rt->second.move_left);
 			up->first = dst;
 			units.add(up);
+			u = units.find(dst);
 			if(map.is_village(dst)) {
 				const int orig_owner = village_owner(dst,teams) + 1;
 				if(orig_owner != team_num) {
