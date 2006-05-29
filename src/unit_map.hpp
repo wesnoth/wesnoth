@@ -48,14 +48,14 @@ public:
 
 		std::pair<gamemap::location,unit> operator*() const;
 
-		const_iterator &operator++()
-			{ ++i_; return *this; }
+		const_iterator operator++()
+			{ return const_iterator(++i_); }
 
-		const_iterator &operator++(int)
-			{ i_++; return *this; }
+		const_iterator operator++(int)
+			{ return const_iterator(i_++); }
 
-		const_iterator &operator--()
-			{ --i_; return *this; }
+		const_iterator operator--()
+			{ return const_iterator(--i_); }
 
 		bool operator==(const const_iterator &that) const
 			{ return that.i_ == this->i_; }
@@ -77,11 +77,11 @@ public:
 
 		std::pair<gamemap::location,unit> operator*() const;
 
-		iterator &operator++()
-			{ ++i_; return *this; }
+		iterator operator++()
+			{ return iterator(++i_); }
 
-		iterator &operator++(int)
-			{ i_++; return *this; }
+		iterator operator++(int)
+			{ return iterator(i_++); }
 
 		bool operator==(const iterator &that) const
 			{ return that.i_ == this->i_; }
