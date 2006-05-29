@@ -722,9 +722,6 @@ bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool us
 	if(description.empty() == false && description != this->underlying_description()) {
 		return false;
 	}
-	if(profile.empty() == false && profile != cfg_["profile"]) {
-		return false;
-	}
 
 	//allow 'speaker' as an alternative to description, since people use it so often
 	if(speaker.empty() == false && speaker != this->underlying_description()) {
