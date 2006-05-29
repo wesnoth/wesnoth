@@ -223,7 +223,6 @@ class unit
 		const std::string& image_halo() const;
 		const std::string& image_profile() const;
 		const std::string& image_fighting(attack_type::RANGE range) const;
-		const std::string& image_leading() const;
 		const std::string& image_healing() const;
 		const std::string& image_halo_healing() const;
 		const std::string& get_hit_sound() const;
@@ -242,6 +241,7 @@ class unit
 				fighting_animation::hit_type hits,const attack_type* attack) const;
 		const movement_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		const standing_animation& stand_animation(const std::string terrain,gamemap::location::DIRECTION) const;
+		const leading_animation& lead_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		
 		bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
 		unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;
@@ -344,6 +344,8 @@ class unit
 		std::vector<movement_animation> movement_animations_;
 		
 		std::vector<standing_animation> standing_animations_;
+		
+		std::vector<leading_animation> leading_animations_;
 		unit_animation *anim_;
 		int frame_begin_time;
 		double offset_;

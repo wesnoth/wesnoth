@@ -617,7 +617,7 @@ unit_type::unit_type(const unit_type& o)
       genders_(o.genders_), defensive_animations_(o.defensive_animations_),
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
       death_animations_(o.death_animations_), movement_animations_(o.movement_animations_),
-      standing_animations_(o.standing_animations_),
+      standing_animations_(o.standing_animations_),leading_animations_(o.leading_animations_),
       flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
@@ -841,6 +841,16 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	if(standing_animations_.empty()) {
 		standing_animations_.push_back(standing_animation(image()));
 		// always have a standing animation
+	}
+
+	expanded_cfg = unit_animation::prepare_animation(cfg,"leading_anim");
+	const config::child_list& leading_anims = expanded_cfg.get_children("leading_anim");
+	for(config::child_list::const_iterator leading_anim = leading_anims.begin(); leading_anim != leading_anims.end(); ++leading_anim) {
+		leading_animations_.push_back(leading_animation(**leading_anim));
+	}
+	if(leading_animations_.empty()) {
+		leading_animations_.push_back(leading_animation(image()));
+		// always have a leading animation
 	}
 
 	flag_rgb_ = string2rgb(cfg["flag_rgb"]);

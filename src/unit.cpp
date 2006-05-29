@@ -281,6 +281,7 @@ void unit::advance_to(const unit_type* t)
 	death_animations_ = t->death_animations_;
 	movement_animations_ = t->movement_animations_;
 	standing_animations_ = t->standing_animations_;
+	leading_animations_ = t->leading_animations_;
 	flag_rgb_ = t->flag_rgb();
 	
 	backup_state();
@@ -1095,6 +1096,14 @@ void unit::read(const config& cfg)
 			standing_animations_.push_back(standing_animation(absolute_image()));
 			// always have a standing animation
 		}
+		const config::child_list& leading_anims = cfg_.get_children("leading_anim");
+		for(config::child_list::const_iterator leading_anim = leading_anims.begin(); leading_anim != leading_anims.end(); ++leading_anim) {
+			leading_animations_.push_back(leading_animation(**leading_anim));
+		}
+		if(leading_animations_.empty()) {
+			leading_animations_.push_back(leading_animation(absolute_image()));
+			// always have a leading animation
+		}
 	}
 }
 void unit::write(config& cfg) const
@@ -1340,12 +1349,12 @@ const unit_animation & unit::set_attacking(const display &disp,const gamemap::lo
 void unit::set_leading(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_LEADING;
-	draw_bars_ = false;
+	draw_bars_ = true;
 	if(anim_) {
 		delete anim_;
 		anim_ = NULL;
 	}
-	anim_ = new unit_animation(image_leading());
+	anim_ = new leading_animation(lead_animation(disp.get_map().underlying_union_terrain(loc),facing_));
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
@@ -2437,15 +2446,8 @@ const std::string& unit::image_fighting(attack_type::RANGE range) const
 		return absolute_image();
 	}
 }
-const std::string& unit::image_leading() const
-{
-	const std::string& val = cfg_["image_leading"];
-	if(val.empty()) {
-		return absolute_image();
-	} else {
-		return val;
-	}
-}
+
+
 const std::string& unit::image_healing() const
 {
 	const std::string& val = cfg_["image_healing"];
@@ -2585,6 +2587,25 @@ const standing_animation& unit::stand_animation(const std::string terrain,gamema
 	return *options[rand()%options.size()];
 }
 
+const leading_animation& unit::lead_animation(const std::string terrain,gamemap::location::DIRECTION dir) const
+{
+	//select one of the matching animations at random
+	std::vector<const leading_animation*> options;
+	int max_val = -1;
+	for(std::vector<leading_animation>::const_iterator i = leading_animations_.begin(); i != leading_animations_.end(); ++i) {
+		int matching = i->matches(terrain,dir);
+		if(matching == max_val) {
+			options.push_back(&*i);
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(&*i);
+		}
+	}
+
+	wassert(!options.empty());
+	return *options[rand()%options.size()];
+}
 
 
 void unit::apply_modifications()
@@ -2625,77 +2646,6 @@ void unit::apply_modifications()
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 bool unit::invisible(const gamemap::location& loc,
 		const unit_map& units,const std::vector<team>& teams) const

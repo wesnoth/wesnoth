@@ -101,5 +101,15 @@ class standing_animation:public unit_animation
 	private:
 };
 
+class leading_animation:public unit_animation
+{
+	public:
+		explicit leading_animation(const config& cfg):unit_animation(cfg){};
+		explicit leading_animation(const std::string& image):
+			unit_animation(image,0,150){};
+
+	private:
+};
+
 
 #endif
