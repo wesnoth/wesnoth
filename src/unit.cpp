@@ -81,9 +81,9 @@ unit::unit(const unit& u)
 // Initilizes a unit from a config
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, 
      const gamestatus* game_status, const std::vector<team>* teams,const config& cfg) : 
-	 movement_(0), hold_position_(false),resting_(false),
+	movement_(0), hold_position_(false),resting_(false),state_(STATE_STANDING),
 	 facing_(gamemap::location::NORTH_EAST),flying_(false),
-	 anim_(NULL),unit_halo_(0),unit_anim_halo_(0),gamedata_(gamedata), units_(unitmap), map_(map),
+	 anim_(NULL),unit_halo_(0),unit_anim_halo_(0),draw_bars_(false),gamedata_(gamedata), units_(unitmap), map_(map),
 	 gamestatus_(game_status),teams_(teams)
 {
 	read(cfg);
@@ -100,7 +100,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
 			hold_position_(false), resting_(false),
 			facing_(gamemap::location::NORTH_EAST),
-			flying_(false),anim_(NULL),unit_halo_(0),unit_anim_halo_(0),gamedata_(&gamedata),
+			flying_(false),anim_(NULL),unit_halo_(0),unit_anim_halo_(0),draw_bars_(false),gamedata_(&gamedata),
 			units_(NULL),map_(NULL), gamestatus_(NULL)
 {
 	read(cfg);
@@ -127,7 +127,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, 
            const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, 
 					 int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) : 
-	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), resting_(false), facing_(gamemap::location::NORTH_EAST),
+	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), resting_(false), state_(STATE_STANDING), facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
            gamedata_(gamedata),units_(unitmap),map_(map),gamestatus_(game_status),teams_(teams)
 {
 	side_ = side;
@@ -156,7 +156,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	unit_anim_halo_ = 0;
 }
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) : 
-           gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),facing_(gamemap::location::NORTH_EAST),
+           gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),state_(STATE_STANDING),facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
 	   gamedata_(NULL), units_(NULL),map_(NULL),gamestatus_(NULL),teams_(NULL)
 {
 	side_ = side;
