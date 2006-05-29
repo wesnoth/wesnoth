@@ -2151,7 +2151,6 @@ void display::set_team(size_t team)
 	wassert(team < teams_.size());
 	currentTeam_ = team;
 
-	std::cerr << "Setting current team to " << team << "\n";
 	labels().recalculate_shroud();
 }
 

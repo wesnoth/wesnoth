@@ -1565,7 +1565,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	if(refreshing_) return;
 	if(disp.fogged(hex.x,hex.y)) { return;}
 	if(invisible(hex,disp.get_units(),disp.get_teams()) &&
-			disp.get_teams()[disp.playing_team()].is_enemy(side())) {
+			disp.get_teams()[disp.viewing_team()].is_enemy(side())) {
 		return;
 	}
 	refreshing_ = true;
@@ -1696,20 +1696,21 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		const std::string* energy_file = &game_config::energy_image;
 		const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (hex == disp.mouseover_hex() ? ftofxp(1.0): ftofxp(0.7));
 
-		if(size_t(side()) != disp.playing_team()+1) {
+		if(size_t(side()) != disp.viewing_team()+1) {
 			if(disp.team_valid() &&
-			   disp.get_teams()[disp.playing_team()].is_enemy(side())) {
+			   disp.get_teams()[disp.viewing_team()].is_enemy(side())) {
 				movement_file = &game_config::enemy_ball_image;
 			} else {
 				movement_file = &game_config::ally_ball_image;
 			}
 		} else {
-			if(disp.playing_team() == disp.playing_team() && movement_left() == total_movement() && !user_end_turn()) {
-				movement_file = &game_config::unmoved_ball_image;
-			} else if(disp.playing_team() == disp.playing_team() && unit_can_move(hex,disp.get_units(),map,disp.get_teams()) && !user_end_turn()) {
-				movement_file = &game_config::partmoved_ball_image;
-			} else {
-				movement_file = &game_config::moved_ball_image;
+			movement_file = &game_config::moved_ball_image;
+			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
+				if (movement_left() == total_movement()) {
+					movement_file = &game_config::unmoved_ball_image;
+				} else if(unit_can_move(hex,disp.get_units(),map,disp.get_teams())) {
+					movement_file = &game_config::partmoved_ball_image;
+				}
 			}
 		}
 		disp.draw_bar(*movement_file,x,y-height_adjust,0,0,hp_color(),bar_alpha);
