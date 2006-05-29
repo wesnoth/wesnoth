@@ -420,20 +420,20 @@ private:
 
 /// Dispatch generators to their appropriate functions.
 std::vector<section> generate_sections(const std::string &generator);
-std::vector<topic> generate_topics(bool sort_topics,const std::string &generator);
+std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
 std::string generate_topic_text(const std::string &generator);
 std::string generate_about_text();
 std::string generate_traits_text();
-std::vector<topic> generate_unit_topics();
+std::vector<topic> generate_unit_topics(const bool);
 enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESCRIPTION};
 /// Return the type of description that should be shown for a unit of
 /// the given kind. This method is intended to filter out information
 /// about units that should not be shown, for example due to not being
 /// encountered.
 UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
-std::vector<topic> generate_ability_topics();
-std::vector<topic> generate_weapon_special_topics();
-std::vector<topic> generate_terrains_topics();
+std::vector<topic> generate_ability_topics(const bool);
+std::vector<topic> generate_weapon_special_topics(const bool);
+std::vector<topic> generate_terrains_topics(const bool);
 
 /// Parse a help config, return the top level section. Return an empty
 /// section if cfg is NULL.
@@ -898,24 +898,22 @@ std::vector<section> generate_sections(const std::string &generator)
 	return empty_vec;
 }
 
-std::vector<topic> generate_topics(bool sort_topics,const std::string &generator)
+std::vector<topic> generate_topics(const bool sort_generated,const std::string &generator)
 {
 	std::vector<topic> res;
 	if (generator == "units") {
-		res = generate_unit_topics();
+		res = generate_unit_topics(sort_generated);
 	}
 	else if (generator == "abilities") {
-		res = generate_ability_topics();
+		res = generate_ability_topics(sort_generated);
 	}
 	else if (generator == "weapon_specials") {
-		res = generate_weapon_special_topics();
+		res = generate_weapon_special_topics(sort_generated);
 	}
 //  terrain topics removed for now, since they aren't release-quality
 //	else if (generator == "terrains") {
-//		res = generate_terrains_topics();
+//		res = generate_terrains_topics(sort_generated);
 //	}
-	if (sort_topics)
-	  std::sort(res.begin(), res.end(), title_less());
 
 	return res;
 }
@@ -967,7 +965,7 @@ topic_text::operator std::vector< std::string > const &() const
 	return parsed_text_;
 }
 
-std::vector<topic> generate_weapon_special_topics()
+std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 {
 
 	std::vector<topic> topics;
@@ -1015,10 +1013,12 @@ std::vector<topic> generate_weapon_special_topics()
 			}
 		}
 	}
+	if (sort_generated)
+		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
 }
 
-std::vector<topic> generate_ability_topics()
+std::vector<topic> generate_ability_topics(const bool sort_generated)
 {
 	std::vector<topic> topics;
 	if (game_info == NULL) {
@@ -1062,6 +1062,8 @@ std::vector<topic> generate_ability_topics()
 		}
 
 	}
+	if (sort_generated)
+		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
 }
 
@@ -1308,7 +1310,7 @@ public:
 	}
 };
 
-std::vector<topic> generate_unit_topics()
+std::vector<topic> generate_unit_topics(const bool sort_generated)
 {
 	std::vector<topic> topics;
 	if (game_info == NULL) {
@@ -1332,6 +1334,8 @@ std::vector<topic> generate_unit_topics()
 		}
 		topics.push_back(unit_topic);
 	}
+	if (sort_generated)
+		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
 }
 
@@ -1413,7 +1417,7 @@ struct terrain_topic_generator: topic_generator
 	}
 };
 
-std::vector<topic> generate_terrains_topics()
+std::vector<topic> generate_terrains_topics(const bool sort_generated)
 {
 	std::vector<topic> res;
 	std::vector<gamemap::TERRAIN> show_info_about;
@@ -1441,6 +1445,8 @@ std::vector<topic> generate_terrains_topics()
 		topic t(name, std::string("terrain_") + *terrain_it, new terrain_topic_generator(info));
 		res.push_back(t);
 	}
+	if (sort_generated)
+		std::sort(res.begin(), res.end(), title_less());
 	return res;
 }
 
