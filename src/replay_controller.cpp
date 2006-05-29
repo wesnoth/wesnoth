@@ -45,6 +45,7 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 		LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 		replay_controller replaycontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video);
 		LOG_NG << "created objects... " << (SDL_GetTicks() - replaycontroller.get_ticks()) << "\n";
+		const events::command_disabler disable_commands;
 
 		//replay event-loop
 		for (;;){
