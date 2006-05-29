@@ -283,7 +283,7 @@ int main(int argc, char** argv)
 	}
 
 	std::cerr << "entering while...\n";
-	std::map<gamemap::location,unit> units;
+	unit_map units;
 	events::event_context ec;
 	while (! done) {
 		try {
