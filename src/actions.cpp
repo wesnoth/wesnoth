@@ -894,7 +894,7 @@ void attack(display& gui, const gamemap& map,
 						 newunit.heal_all();
 					       }
 
-					       units.replace(new std::pair<gamemap::location,unit>(loc,newunit));
+					       units.add(new std::pair<gamemap::location,unit>(loc,newunit));
 						   if (update_display){
 						       gui.invalidate(loc);
 						   }
@@ -1125,7 +1125,7 @@ void attack(display& gui, const gamemap& map,
 						 newunit.add_modification("variation",mod);
 					       }
 
-					       units.replace(new std::pair<gamemap::location,unit>(loc,newunit));
+					       units.add(new std::pair<gamemap::location,unit>(loc,newunit));
 						   if (update_display){
 						       gui.invalidate(loc);
 						   }
