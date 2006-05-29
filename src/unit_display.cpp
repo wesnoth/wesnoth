@@ -39,31 +39,33 @@ void teleport_unit_between(display& disp, const gamemap::location& a, const game
 		return;
 	}
 
+	// Original unit is usually hidden (but still on map, so count is correct)
+	unit temp_unit = u;
+	temp_unit.set_hidden(false);
 
-
-	u.set_teleporting(disp,a);
+	temp_unit.set_teleporting(disp,a);
 	if (!disp.fogged(a.x, a.y)) { // teleport
 		disp.scroll_to_tile(a.x,a.y,display::ONSCREEN);
-		while(!u.get_animation()->animation_finished()  && u.get_animation()->get_animation_time() < 0) {
+		while(!temp_unit.get_animation()->animation_finished()  && temp_unit.get_animation()->get_animation_time() < 0) {
 			disp.invalidate(a);
-			disp.place_temporary_unit(u, a);
+			disp.place_temporary_unit(temp_unit, a);
 			disp.draw();
 			events::pump();
 			disp.non_turbo_delay();
 		}
 	}
 	if (!disp.fogged(b.x, b.y)) { // teleport
-		u.restart_animation(disp,0);
+		temp_unit.restart_animation(disp,0);
 		disp.scroll_to_tile(b.x,b.y,display::ONSCREEN);
-		while(!u.get_animation()->animation_finished()) {
+		while(!temp_unit.get_animation()->animation_finished()) {
 			disp.invalidate(b);
-			disp.place_temporary_unit(u, b);
+			disp.place_temporary_unit(temp_unit, b);
 			disp.draw();
 			events::pump();
 			disp.non_turbo_delay();
 		}
 	}
-	u.set_standing(disp,b);
+	temp_unit.set_standing(disp,b);
 	disp.remove_temporary_unit();
 	disp.update_display();
 	events::pump();
@@ -91,12 +93,17 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = SDL_GetTicks() -start_time;
 	disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
+
+	// Original unit is usually hidden (but still on map, so count is correct)
+	unit temp_unit = u;
+	temp_unit.set_hidden(false);
+
 	while(mvt_time < total_mvt_time) {
-		u.set_walking(disp,a);
+		temp_unit.set_walking(disp,a);
 		const double pos =double(mvt_time)/total_mvt_time;
 		disp.invalidate(a);
-		disp.place_temporary_unit(u,a);
-		u.set_offset(pos);
+		disp.place_temporary_unit(temp_unit,a);
+		temp_unit.set_offset(pos);
 		disp.draw();
 		events::pump();
 		disp.non_turbo_delay();

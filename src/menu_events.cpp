@@ -829,8 +829,10 @@ namespace events{
 
 			action.starting_moves = u->second.movement_left();
 
+			u->second.set_hidden(true);
+			unit_display::move_unit(*gui_,map_,route,u->second,units_,teams_);
+			u->second.set_hidden(false);
 			std::pair<gamemap::location,unit> *up = units_.extract(u->first);
-			unit_display::move_unit(*gui_,map_,route,up->second,units_,teams_);
 			up->second.set_goto(gamemap::location());
 			up->second.set_movement(starting_moves);
 			up->first = route.back();
@@ -948,8 +950,10 @@ namespace events{
 
 			action.starting_moves = u->second.movement_left();
 
+			u->second.set_hidden(true);
+			unit_display::move_unit(*gui_,map_,route,u->second,units_,teams_);
+			u->second.set_hidden(false);
 			std::pair<gamemap::location,unit> *up = units_.extract(u->first);
-			unit_display::move_unit(*gui_,map_,route,up->second,units_,teams_);
 			up->second.set_goto(gamemap::location());
 			up->second.set_movement(starting_moves);
 			up->first = route.back();

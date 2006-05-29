@@ -831,17 +831,18 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				disp.scroll_to_tiles(src.x,src.y,dst.x,dst.y);
 			}
 
-			std::pair<gamemap::location,unit> *up = units.extract(u->first);
-
 			if(!replayer.is_skipping()) {
-				unit_display::move_unit(disp,map,rt->second.steps,up->second,units,teams);
+				u->second.set_hidden(true);
+				unit_display::move_unit(disp,map,rt->second.steps,u->second,units,teams);
+				u->second.set_hidden(false);
 			}
 			else{
 				//unit location needs to be updated
-				up->second.set_goto(*(rt->second.steps.end() - 1));
+				u->second.set_goto(*(rt->second.steps.end() - 1));
 			}
+			u->second.set_movement(rt->second.move_left);
 
-			up->second.set_movement(rt->second.move_left);
+			std::pair<gamemap::location,unit> *up = units.extract(u->first);
 			up->first = dst;
 			units.add(up);
 			u = units.find(dst);
