@@ -156,7 +156,7 @@ const struct music_track &choose_track()
 		} while (!track_ok(current_track_list[track].name));
 	}
 
-	LOG_AUDIO << "Next track will be " << current_track_list[track].name << "\n";
+	//LOG_AUDIO << "Next track will be " << current_track_list[track].name << "\n";
 	played_before.push_back(current_track_list[track].name);
 	return current_track_list[track];
 }
