@@ -23,7 +23,7 @@
 // move units for accurate simulation with the new, more powerful
 // filtering.  This class eases the transition, by providing a wrapper
 // which acts like a map of units, not unit pointers, except
-// implemented with pointers and hence providing a cheap a move
+// implemented with pointers and hence providing a cheap move
 // function.
 
 class unit_map

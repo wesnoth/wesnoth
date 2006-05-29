@@ -308,7 +308,6 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 	                 double(defend_it->second.max_experience()))*target_value;
 	target_starting_damage = defend_it->second.max_hitpoints() -
 	                         defend_it->second.hitpoints();
-	combatant *prev_def = NULL;
 
 	//calculate the 'alternative_terrain_quality' -- the best possible defensive values
 	//the attacking units could hope to achieve if they didn't attack and moved somewhere.
@@ -338,6 +337,10 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 	double prob_dead_already = 0.0;
 	wassert(!movements.empty());
 	std::vector<std::pair<location,location> >::const_iterator m;
+
+	battle_context *prev_bc = NULL;
+	const combatant *prev_def = NULL;
+
 	for (m = movements.begin(); m != movements.end(); ++m) {
 		// We fix up units map to reflect what this would look like.
 		std::pair<gamemap::location,unit> *up = units.extract(m->first);
@@ -348,14 +351,16 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 			uses_leader = true;
 			leader_threat = false;
 		}
-		battle_context bc(map, teams, units, status, gamedata, m->second, target, -1, 1.0 - aggression, prev_def);
-		const combatant &att = bc.get_attacker_combatant(prev_def);
-		const combatant &def = bc.get_defender_combatant(prev_def);
 
-		delete prev_def;
-		prev_def = new combatant(def);
+		battle_context *bc = new battle_context(map, teams, units, status, gamedata, m->second, target, -1, 1.0 - aggression, prev_def);
+		const combatant &att = bc->get_attacker_combatant(prev_def);
+		const combatant &def = bc->get_defender_combatant(prev_def);
 
-		weapons.push_back(bc.get_attacker_stats().attack_num);
+		delete prev_bc;
+		prev_bc = bc;
+		prev_def = &bc->get_defender_combatant(prev_def);
+
+		weapons.push_back(bc->get_attacker_stats().attack_num);
 
 		// Note we didn't fight at all if defender already dead.
 		double prob_fought = (1.0 - prob_dead_already);
@@ -379,7 +384,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 			avg_damage_taken -= game_config::poison_amount*2 * prob_survived;
 		}
 
-		terrain_quality += (double(bc.get_defender_stats().chance_to_hit)/100.0)*cost * (on_village ? 0.5 : 1.0);
+		terrain_quality += (double(bc->get_defender_stats().chance_to_hit)/100.0)*cost * (on_village ? 0.5 : 1.0);
 
 		double advance_prob = 0.0;
 		//the reward for advancing a unit is to get a 'negative' loss of that unit
@@ -406,7 +411,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 			//the reward for killing with a unit that
 			//plagues is to get a 'negative' loss of that unit
-			if (bc.get_attacker_stats().plagues) {
+			if (bc->get_attacker_stats().plagues) {
 				avg_losses -= prob_killed * up->second.cost();
 			}
 		}
@@ -434,7 +439,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		avg_damage_inflicted = defend_it->second.hitpoints() - prev_def->average_hp(map.gives_healing(defend_it->first));
 	}
 
-	delete prev_def;
+	delete prev_bc;
 	terrain_quality /= resources_used;
 
 	// Restore the units to their original positions.
