@@ -281,7 +281,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 				missile_animation.get_first_frame_time()),
 				attacker.get_animation()->get_first_frame_time()),
 			-200);
-	missile_animation.start_animation(start_time,acceleration);
+	missile_animation.start_animation(start_time,1,acceleration);
 	defender.restart_animation(disp,start_time);
 	attacker.restart_animation(disp,start_time);
 	animation_time = defender.get_animation()->get_animation_time();
