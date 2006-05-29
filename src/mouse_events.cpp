@@ -981,9 +981,7 @@ bool mouse_handler::is_right_click(const SDL_MouseButtonEvent& event)
 void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool browse)
 {
 	undo_ = false;
-	if(commands_disabled) {
-		return;
-	}
+	bool check_shroud = teams_[team_num_ - 1].auto_shroud_updates();
 
 	// clicked on a hex on the minimap? then initiate minimap scrolling
 	const gamemap::location& loc = gui_->minimap_location_on(event.x,event.y);
@@ -1025,7 +1023,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 				// enemy = find_unit(hex);
 				if(u != units_.end() && u->second.side() == team_num_ &&
 					enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
-					if(attack_enemy(u,enemy) == false) {
+					if(!commands_disabled && attack_enemy(u,enemy) == false) {
 						undo_ = true;
 						selected_hex_ = src;
 						gui_->select_hex(src);
@@ -1036,7 +1034,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 				}
 			}
 
-			if(clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)) {
+			if(check_shroud && clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)) {
 				clear_undo_stack();
 			}
 
@@ -1045,7 +1043,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	}
 
 	//see if we're trying to attack an enemy
-	if(u != units_.end() && route != current_paths_.routes.end() && enemy != units_.end() &&
+	if(!commands_disabled && u != units_.end() && route != current_paths_.routes.end() && enemy != units_.end() &&
 	   hex != selected_hex_ && !browse &&
 	   enemy->second.side() != u->second.side() &&
 	   current_team().is_enemy(enemy->second.side())) {
@@ -1053,12 +1051,12 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	}
 
 	//otherwise we're trying to move to a hex
-	else if(!browse && selected_hex_.valid() && selected_hex_ != hex &&
+	else if(!commands_disabled && !browse && selected_hex_.valid() && selected_hex_ != hex &&
 		     units_.count(selected_hex_) && !enemy_paths_ &&
 		     enemy == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
-		move_unit_along_current_route();
-		if(clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)) {
+		move_unit_along_current_route(check_shroud);
+		if(check_shroud && clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)) {
 			clear_undo_stack();
 		}
 	} else {
