@@ -684,3 +684,12 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 	}
 }
 
+hotkey::ACTION_STATE play_controller::get_action_state(hotkey::HOTKEY_COMMAND command) const
+{
+	switch(command) {
+	case hotkey::HOTKEY_DELAY_SHROUD:
+		return current_team().auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
+	default:
+		return hotkey::ACTION_STATELESS;
+	}
+}
