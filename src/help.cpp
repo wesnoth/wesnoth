@@ -1573,7 +1573,7 @@ void section::clear()
 }
 
 help_menu::help_menu(CVideo &video, section const &toplevel, int max_height)
-: gui::menu(video, empty_string_vector, true, max_height, -1, NULL, &gui::menu::slateborder_style),
+: gui::menu(video, empty_string_vector, true, max_height, -1, NULL, &gui::menu::bluebg_style),
 	  toplevel_(toplevel), chosen_topic_(NULL), selected_item_(&toplevel, "")
 {
 	update_visible_items(toplevel_);

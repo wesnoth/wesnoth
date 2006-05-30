@@ -676,12 +676,8 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 	return res;
 }
 
-void menu::style::draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type)
+void menu::style::draw_row_bg(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type)
 {
-	if(rect.w == 0 || rect.h == 0) {
-		return;
-	}
-
 	menu_ref.bg_restore(rect);
 
 	int rgb = 0;
@@ -705,6 +701,14 @@ void menu::style::draw_row(const menu& menu_ref, const std::vector<std::string>&
 	draw_solid_tinted_rectangle(rect.x, rect.y, rect.w, rect.h,
 				    (rgb&0xff0000) >> 16,(rgb&0xff00) >> 8,rgb&0xff,alpha,
 				    menu_ref.video().getSurface());
+}
+
+void menu::style::draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type)
+{
+	if(rect.w == 0 || rect.h == 0) {
+		return;
+	}
+	draw_row_bg(menu_ref, row, rect, type);
 
 	SDL_Rect const &area = screen_area();
 	SDL_Rect const &loc = menu_ref.inner_location();

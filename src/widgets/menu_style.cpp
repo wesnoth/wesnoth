@@ -35,8 +35,13 @@
 namespace gui {
 
 	//static initializations
-menu::style gui::menu::default_style;
-menu::imgsel_style gui::menu::slateborder_style("misc/selection");
+menu::style menu::default_style;
+menu::imgsel_style menu::slateborder_style("misc/selection", false,
+										   0x4a4440, 0x000000, 0x999999,
+										   0.2, 0.9, 0.2);
+menu::imgsel_style menu::bluebg_style("misc/selection2", true,
+										   0x000000, 0x000000, 0x333333,
+										   0.2, 0.0, 0.3);
 
 	//constructors
 menu::style::style() : font_size_(font::SIZE_NORMAL),
@@ -47,8 +52,12 @@ menu::style::style() : font_size_(font::SIZE_NORMAL),
 
 menu::style::~style()
 {}
-menu::imgsel_style::imgsel_style(const std::string &img_base) : img_base_(img_base),
-			initialized_(false), load_failed_(false)
+menu::imgsel_style::imgsel_style(const std::string &img_base, bool has_bg,
+								 int normal_rgb, int selected_rgb, int heading_rgb,
+								 double normal_alpha, double selected_alpha, double heading_alpha)
+								 : img_base_(img_base), initialized_(false), load_failed_(false), has_background_(has_bg),
+								 normal_rgb2_(normal_rgb), selected_rgb2_(selected_rgb), heading_rgb2_(heading_rgb),
+								 normal_alpha2_(normal_alpha), selected_alpha2_(selected_alpha), heading_alpha2_(heading_alpha)
 {}
 menu::imgsel_style::~imgsel_style()
 {}
@@ -84,15 +93,22 @@ bool menu::imgsel_style::load_images()
 					img_map_["border-top"]->h,
 					img_map_["border-left"]->w);
 
-			selected_rgb_ = 0x000000;
-			selected_alpha_ = 0.9;
-			normal_rgb_ = 0x4a4440;
-			normal_alpha_ = 0.2;
-			heading_rgb_ = 0x999999;
-			heading_alpha_ = 0.2;
+			if(has_background_ && !load_image("background"))
+			{
+				load_failed_ = true;
+			}
+			else
+			{
+				normal_rgb_ = normal_rgb2_;
+				normal_alpha_ = normal_alpha2_;
+				selected_rgb_ = selected_rgb2_;
+				selected_alpha_ = selected_alpha2_;
+				heading_rgb_ = heading_rgb2_;
+				heading_alpha_ = heading_alpha2_;
 
+				load_failed_ = false;
+			}
 			initialized_ = true;
-			load_failed_ = false;
 		}
 		else
 		{
@@ -102,6 +118,20 @@ bool menu::imgsel_style::load_images()
 		}
 	}
 	return (!load_failed_);
+}
+
+void menu::imgsel_style::draw_row_bg(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type)
+{
+	if(type == SELECTED_ROW && has_background_ && !load_failed_) {
+		//draw scaled background image
+		//scale image each time (to prevent loss of quality)
+		surface image = scale_surface(img_map_["background"], rect.w, rect.h);
+		SDL_Rect clip = rect;
+		menu_ref.video().blit_surface(rect.x,rect.y,image,NULL,&clip);
+	}
+	else {
+		style::draw_row_bg(menu_ref, row, rect, type);
+	}
 }
 
 void menu::imgsel_style::draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type)

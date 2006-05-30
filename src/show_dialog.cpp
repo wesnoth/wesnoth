@@ -838,7 +838,7 @@ int show_dialog(display& disp, surface image,
 	return -1;
 }
 
-/*	show_dialog2: same as show_dialog, but uses the slateborder style
+/*	show_dialog2: same as show_dialog, but uses the image-select style
 	provided as a convenience to use default parameters */
 //inline
 int show_dialog2(display &screen, surface image,
@@ -866,7 +866,7 @@ int show_dialog2(display &screen, surface image,
 				text_widget_max_chars,
 				action, options, xloc, yloc,
 				dialog_style, buttons,
-				help_topic, sorter, &menu::slateborder_style);
+				help_topic, sorter, &menu::bluebg_style);
 }
 
 }

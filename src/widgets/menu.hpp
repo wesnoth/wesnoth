@@ -43,6 +43,7 @@ public:
 		virtual void init() {}
 
 		virtual SDL_Rect item_size(const std::string& item) const;
+		virtual void draw_row_bg(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
 		virtual void draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
 
 		size_t get_font_size() const;
@@ -62,10 +63,13 @@ public:
 	class imgsel_style : public style
 	{
 	public:
-		imgsel_style(const std::string &img_base);
+		imgsel_style(const std::string &img_base, bool has_bg,
+								 int normal_rgb, int selected_rgb, int heading_rgb,
+								 double normal_alpha, double selected_alpha, double heading_alpha);
 		virtual ~imgsel_style();
 
 		virtual SDL_Rect item_size(const std::string& item) const;
+		virtual void draw_row_bg(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
 		virtual void draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
 
 		virtual void init() { load_images(); }
@@ -77,14 +81,17 @@ public:
 
 	private:
 		bool load_image(const std::string &img_sub);
+		bool has_background_;
 		bool initialized_;
 		bool load_failed_;
-
+		int normal_rgb2_, selected_rgb2_, heading_rgb2_;
+		double normal_alpha2_, selected_alpha2_, heading_alpha2_;
 	};
 	friend class style;
 	friend class imgsel_style;
 	static style default_style;
 	static imgsel_style slateborder_style;
+	static imgsel_style bluebg_style;
 
 	struct item
 	{

@@ -236,7 +236,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  chat_timestamp_button_(disp.video(), _("Chat Timestamping"), gui::button::TYPE_CHECK),
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
 	  scroll_label_(disp.video(), _("Scroll Speed:")), gamma_label_(disp.video(), _("Gamma:")), chat_lines_label_(disp.video(), ""),
-	  slider_label_width_(0), advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::slateborder_style), advanced_selection_(-1),
+	  slider_label_width_(0), advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style), advanced_selection_(-1),
 	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg)
 {
 	// FIXME: this box should be vertically centered on the screen, but is not
@@ -776,7 +776,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(0).set_alpha_sort(1);
 
-	gui::menu menu_(disp.video(), menu_items, false, height, -1, &sorter, &gui::menu::slateborder_style);
+	gui::menu menu_(disp.video(), menu_items, false, height, -1, &sorter, &gui::menu::bluebg_style);
 	menu_.sort_by(0);
 	menu_.reset_selection();
 	menu_.set_width(font::relative_size(400));
