@@ -371,7 +371,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(index >= teams->size())
 			return rval;
 
-		const std::string& type = cfg["type"];
+		const std::string& type = utils::interpolate_variables_into_string(
+			cfg.get_attribute("type"), *state_of_game);
 
 		const std::vector<std::string>& types = utils::split(type);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
@@ -396,7 +397,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(index >= teams->size())
 			return rval;
 
-		const std::string& type = cfg["type"];
+		const std::string& type = utils::interpolate_variables_into_string(
+			cfg.get_attribute("type"), *state_of_game);
 		const std::vector<std::string>& types = utils::split(type);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
 			(*teams)[index].recruits().erase(*i);
@@ -418,7 +420,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(index >= teams->size())
 			return rval;
 
-		std::vector<std::string> recruit = utils::split(cfg["recruit"]);
+		std::vector<std::string> recruit = utils::split(utils::interpolate_variables_into_string(
+			cfg.get_attribute("recruit"), *state_of_game));
 		if(recruit.size() == 1 && recruit.back() == "")
 			recruit.clear();
 
@@ -437,7 +440,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "sound") {
-		sound::play_sound(cfg["name"]);
+		std::string sound = cfg["name"];
+		wassert(state_of_game != NULL);
+		sound = utils::interpolate_variables_into_string(sound, *state_of_game);
+		sound::play_sound(sound);
 	}
 
 	else if(cmd == "colour_adjust") {
@@ -706,11 +712,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string win_str = "@";
 		const std::string lose_str = "#";
 
-		const t_string& summary = cfg["summary"];
-		const t_string& note = cfg["note"];
+		wassert(state_of_game != NULL);
+		const t_string& summary = utils::interpolate_variables_into_string(
+			cfg.get_attribute("summary"), *state_of_game);
+		const t_string& note = utils::interpolate_variables_into_string(
+			cfg.get_attribute("note"), *state_of_game);
 		std::string side = cfg["side"];
 		bool silent = utils::string_bool(cfg["silent"]);
-		wassert(state_of_game != NULL);
 		side = utils::interpolate_variables_into_string(side, *state_of_game);
 		const size_t side_num = lexical_cast_default<size_t>(side,0);
 
@@ -719,10 +727,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			return rval;
 		}
 
-		t_string win_string = cfg["victory_string"];
+		t_string win_string = utils::interpolate_variables_into_string(
+			cfg.get_attribute("victory_string"), *state_of_game);
 		if(win_string.empty())
 			win_string = t_string(N_("Victory:"), "wesnoth");
-		t_string lose_string = cfg["defeat_string"];
+		t_string lose_string = utils::interpolate_variables_into_string(
+			cfg.get_attribute("defeat_string"), *state_of_game);
 		if(lose_string.empty())
 			lose_string = t_string(N_("Defeat:"), "wesnoth");
 
@@ -733,8 +743,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		for(vconfig::child_list::const_iterator obj_it = objectives.begin();
 				obj_it != objectives.end(); ++obj_it) {
 
-			const t_string description = (*obj_it)["description"];
-			const std::string& condition = (*obj_it)["condition"];
+			t_string description = (*obj_it)["description"];
+			std::string condition = (*obj_it)["condition"];
+			description = utils::interpolate_variables_into_string(description, *state_of_game);
+			condition = utils::interpolate_variables_into_string(condition, *state_of_game);
 			LOG_NG << condition << " objective: " << description << "\n";
 			if(condition == "win") {
 				win_objectives += "\n";
@@ -1003,18 +1015,26 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "unit_overlay") {
+		std::string img = cfg["image"];
+		wassert(state_of_game != NULL);
+		img = utils::interpolate_variables_into_string(img, *state_of_game);
+		
 		for(unit_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
 			if(game_events::unit_matches_filter(itor,cfg)) {
-				itor->second.add_overlay(cfg["image"]);
+				itor->second.add_overlay(img);
 				break;
 			}
 		}
 	}
 
 	else if(cmd == "remove_unit_overlay") {
+		std::string img = cfg["image"];
+		wassert(state_of_game != NULL);
+		img = utils::interpolate_variables_into_string(img, *state_of_game);
+
 		for(unit_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
 			if(game_events::unit_matches_filter(itor,cfg)) {
-				itor->second.remove_overlay(cfg["image"]);
+				itor->second.remove_overlay(img);
 				break;
 			}
 		}
@@ -1061,8 +1081,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "terrain") {
 		const std::vector<gamemap::location> locs = multiple_locs(cfg);
 
+		std::string terrain_type = cfg["letter"];
+		wassert(state_of_game != NULL);
+		terrain_type = utils::interpolate_variables_into_string(terrain_type, *state_of_game);
+		
 		for(std::vector<gamemap::location>::const_iterator loc = locs.begin(); loc != locs.end(); ++loc) {
-			const std::string& terrain_type = cfg["letter"];
 			preferences::encountered_terrains().insert(terrain_type);
 			if(terrain_type.size() > 0) {
 				const bool old_village = game_map->is_village(*loc);
