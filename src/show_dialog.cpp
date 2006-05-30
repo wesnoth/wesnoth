@@ -331,7 +331,9 @@ int show_dialog(display& disp, surface image,
 	LOG_DP << "showing dialog '" << caption << "' '" << msg << "'\n";
 
 	//create the event context, remember to instruct any passed-in widgets to join it
-	const events::event_context dialog_events_context();
+	//FIXME outer_context is needed to prevent delayed event_context instantiation(?)
+	const events::event_context outer_context;
+	const events::event_context dialog_events_context;
 	const dialog_manager manager;
 
 	const events::resize_lock prevent_resizing;

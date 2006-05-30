@@ -645,6 +645,7 @@ namespace{
 												   gamedata_, attacker_loc_, defender_loc_);
 				std::vector<gui::preview_pane*> preview_panes;
 				preview_panes.push_back(&battle_pane);
+
 				gui::show_dialog(disp_, NULL, _("Damage Calculations"), "", gui::OK_ONLY, NULL, &preview_panes);
 			}
 
