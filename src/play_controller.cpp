@@ -643,10 +643,11 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 	hotkey::HOTKEY_COMMAND command;
 	for(std::vector<std::string>::iterator i = items.begin(); i != items.end();){
 		if (*i == "AUTOSAVES") {
-			i++;
-			continue;
+			// If load is inactive, don't show these.
+			command = hotkey::HOTKEY_LOAD_GAME;
+		} else {
+			command = hotkey::get_hotkey(*i).get_id();
 		}
-		command = hotkey::get_hotkey(*i).get_id();
 		if (!can_execute_command(command) || (context_menu && !in_context_menu(command))){
 			i = items.erase(i);
 		}
