@@ -121,7 +121,7 @@ void scrollpane::update_widget_positions()
 	std::vector<bool> hidden(content_.size());
 	int i = 0;
 	for(itor = content_.begin(); itor != content_.end(); ++itor) {
-		hidden[i++] = itor->second.w->hidden();
+		hidden[i++] = (itor->second.w->state_ == HIDDEN);
 		itor->second.w->hide();
 	}
 

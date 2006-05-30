@@ -110,6 +110,8 @@ private:
 	std::string help_text_;
 	int help_string_;
 	ALIGN align_; //limited support, use position
+
+	friend class scrollpane;
 };
 
 }
