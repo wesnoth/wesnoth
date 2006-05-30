@@ -1346,9 +1346,9 @@ std::vector<topic> generate_unit_topics(const bool sort_generated)
 	}
 	if (sort_generated)
 		std::sort(unit_topics.begin(), unit_topics.end(), unit_topic_less());
-	for(std::vector<std::pair<const unit_type*,topic> >::const_iterator i = unit_topics.begin();
-	    i != unit_topics.end(); i++) {
-		topics.push_back((*i).second);
+	for(std::vector<std::pair<const unit_type*,topic> >::const_iterator j = unit_topics.begin();
+	    j != unit_topics.end(); j++) {
+		topics.push_back((*j).second);
 	}
 	return topics;
 }
