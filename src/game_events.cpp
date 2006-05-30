@@ -1690,12 +1690,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "endlevel") {
-		const std::string& next_scenario = cfg["next_scenario"];
+		const std::string& next_scenario = utils::interpolate_variables_into_string(
+			cfg.get_attribute("next_scenario"), *state_of_game);
 		if(next_scenario.empty() == false) {
 			state_of_game->scenario = next_scenario;
 		}
 
-		const std::string& result = cfg["result"];
+		const std::string& result = utils::interpolate_variables_into_string(
+			cfg.get_attribute("result"), *state_of_game);
 		if(result.empty() || result == "victory") {
 			const bool bonus = utils::string_bool(cfg["bonus"],true);
 			throw end_level_exception(VICTORY,bonus);
@@ -1746,7 +1748,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	} else if(cmd == "label") {
 		const gamemap::location loc(cfg);
-		const std::string& text = cfg["text"];
+		const std::string& text = utils::interpolate_variables_into_string(
+			cfg.get_attribute("text"), *state_of_game);
 		screen->labels().set_label(loc,text);
 	}
 	
