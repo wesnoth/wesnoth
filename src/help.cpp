@@ -1310,8 +1310,18 @@ public:
 	}
 };
 
+struct unit_topic_less {
+	bool operator() (std::pair<const unit_type*,topic> a,
+	    std::pair<const unit_type*,topic> b) {
+		if (a.first->race() == b.first->race())
+			return a.second.title < b.second.title;
+		return a.first->race() < b.first->race();
+	}
+};
+
 std::vector<topic> generate_unit_topics(const bool sort_generated)
 {
+	std::vector<std::pair<const unit_type*,topic> > unit_topics;
 	std::vector<topic> topics;
 	if (game_info == NULL) {
 		return topics;
@@ -1332,10 +1342,14 @@ std::vector<topic> generate_unit_topics(const bool sort_generated)
 		} else {
 			wassert(false);
 		}
-		topics.push_back(unit_topic);
+		unit_topics.push_back(std::pair<const unit_type*,topic>(&type,unit_topic));
 	}
 	if (sort_generated)
-		std::sort(topics.begin(), topics.end(), title_less());
+		std::sort(unit_topics.begin(), unit_topics.end(), unit_topic_less());
+	for(std::vector<std::pair<const unit_type*,topic> >::const_iterator i = unit_topics.begin();
+	    i != unit_topics.end(); i++) {
+		topics.push_back((*i).second);
+	}
 	return topics;
 }
 
