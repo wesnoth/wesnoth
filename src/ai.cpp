@@ -1270,7 +1270,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 	}
 
 	for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
-		if(i->second.side() == team_num_ && i->second.movement_left() == i->second.total_movement() && unit_map::const_iterator(i) != leader) {
+		if(i->second.side() == team_num_ && i->second.movement_left() == i->second.total_movement() && unit_map::const_iterator(i) != leader && !i->second.incapacitated()) {
 
 			//this unit still has movement left, and is a candidate to retreat. We see the amount
 			//of power of each side on the situation, and decide whether it should retreat.
