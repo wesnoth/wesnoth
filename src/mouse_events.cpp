@@ -1379,7 +1379,8 @@ void mouse_handler::cycle_back_units()
 	}
 
 	if(it == units_.begin()) {
-		for(it = units_.end(); it != units_.begin(); --it) {
+		it = units_.end();
+		for(--it; it != units_.begin(); --it) {
 			if(unit_in_cycle(it)) {
 				break;
 			}
