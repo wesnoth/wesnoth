@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-30 08:08+0200\n"
-"PO-Revision-Date: 2006-05-23 00:32+0900\n"
+"PO-Revision-Date: 2006-06-01 00:32+0900\n"
 "Last-Translator: Claus Aranha <caranha AT gmail DOT com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "MIME-Version: 1.0\n"
@@ -3098,7 +3098,6 @@ msgstr ""
 "text=Resistente</ref>, and <ref>dst=traits_strong text=Forte</ref>."
 
 #: data/help.cfg:269
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3108,9 +3107,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Outras características que podem ser escolhidas para unidades são "
-"<ref>dst=traits_loyal text=Leal</ref>, <ref>dst=traits_undead text=Undead</"
-"ref>, e <ref>dst=traits_dextrous text=Hábil</ref>."
+"Outras características que podem ser recebidas pelas unidades são "
+"<ref>dst=traits_dextrous text=Hábil</ref>, <ref>dst=traits_loyal text=Leal</"
+"ref>, e <ref>dst=traits_undead text=Morto-vivo</ref>."
 
 #: data/help.cfg:274
 msgid "Intelligent"
@@ -4221,7 +4220,6 @@ msgstr ""
 "(inscrito por Flametrooper)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:99
-#, fuzzy
 msgid ""
 "Slim of Stature, dexterous Hands \n"
 "- - Seven Stones and Eleven \n"
@@ -4233,10 +4231,10 @@ msgid ""
 "(inscribed by Gauteamus)"
 msgstr ""
 "De corpo esguio e mãos leves \n"
-"- - Sete Pedras e Onze (*)\n"
+"- - Sete Pedras e Onze \n"
 "Deixou seus inimigos a menor das chances \n"
 "- - Sete Pedras e Onze \n"
-"Mestre arqueito, Dragonbane\n"
+"Mestre arqueiro, Dragonbane\n"
 "entre as Estátuas encontrou seu fim \n"
 "- - Sete Pedras - e os Elfos \n"
 "(inscrito por Gauteamus)"
@@ -4663,7 +4661,7 @@ msgstr "Uma mapa pequeno para 2 contra 2. Recomendado 2 ouros por vila."
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
-msgstr ""
+msgstr "4p - A travessia de Isar"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
 msgid ""
@@ -4671,21 +4669,24 @@ msgid ""
 "of units and planning of moves is important.  Teams set for players 1&4 v "
 "2&3 (northeast vs. southwest).  Designed for 75gp, 20 villages."
 msgstr ""
+"Um mapa 2 contra 2 muito pequeno. Lutar em um lugar apertado significa que "
+"um bom rodízio de unidades e planejamento de jogadas são importantes. "
+"Configure os times para jogadores 1 e 4 contra 2 e 3 (nordeste contra "
+"sudoeste). Recomendado 75 ouros iniciais, 20 vilas."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 msgid "4p - King of the Hill"
 msgstr "4p - O Rei da Montanha"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2v2 as well. There are 36 villages. Recommended "
 "setting of 2gpv."
 msgstr ""
 "Controlar a área ao redor do forte central é muito lucrativo neste mapa de "
-"36x36 hexágonos, 4 jogadores todos contra todos. Pode ser jogado em times "
-"também. Há 36 vilas. Recomenda-se 2 ouros por vila."
+"36x36 hexágonos, 4 jogadores todos contra todos. Pode ser jogado em 2 contra "
+"2 também. Recomenda-se 2 ouros por vila."
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
@@ -4704,14 +4705,13 @@ msgid "4p - Loris River"
 msgstr "4p - Rio Loris"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
-#, fuzzy
 msgid ""
 "A 25x25 2v2 map centered around a river with keeps in opposite corners. "
 "Designed for 1&4 vs 2&3. There are 28 villages. Recommended setting of 2gpv."
 msgstr ""
 "Um mapa de 2 contra 2 com 25 hexágonos de lado, centrado ao redor de um rio "
 "com um par de fortes em cantos opostos. Jogadores 1 e 3 jogam contra 2 e 4. "
-"Há 28 vilas, recomenda-se 2 outros por vila."
+"Recomenda-se 2 outros por vila."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
 msgid "4p - Morituri"
@@ -4730,7 +4730,6 @@ msgid "4p - Paths of Daggers"
 msgstr "4p - Caminhos das adagas"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid ""
 "A 35X27 2v2 map with 5 separate paths of engagement.  Balanced to be played "
 "east vs west (1&4 vs 2&3), but works well with any teams or FFA.  2gpv. "
@@ -4746,7 +4745,6 @@ msgid "4p - Siege Castles"
 msgstr "4p - Castelos em cerco"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well 2v2 or FFA. There are approximately 45 villages. "
@@ -4818,7 +4816,6 @@ msgid "6p - Waterloo Sunset"
 msgstr "6p - Pôr do Sol em Waterloo"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
-#, fuzzy
 msgid ""
 "A 40X30 3v3.  Flexible coordination of your alliance is required to avoid "
 "being outnumbered.  Teams set for players 145vs236 (north vs south), but "
@@ -4846,7 +4843,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
-msgstr ""
+msgstr "9p - Merkwuerdigliebe"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
 msgid ""
@@ -4855,6 +4852,11 @@ msgid ""
 "southwest).  There are very few vilages per player, so 3gpv is also "
 "recommended."
 msgstr ""
+"Um mapa muito pequeno, para 3 contra 3 contra 3. Recomenda-se um limite de "
+"60 segundos por jogada devido ao grande número de jogadores. Os times são "
+"compostos dos jogadores 159 contra 267 contra 348 (norte contra sudeste "
+"contra sudoeste). Há bem poucas aldeias por jogador, então também recomenda-"
+"se 3 ouros por aldeia."
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:8
@@ -5282,9 +5284,8 @@ msgid "Play"
 msgstr "Reproduzir"
 
 #: data/themes/default.cfg:474
-#, fuzzy
 msgid "continous replay"
-msgstr " replay"
+msgstr "replay contínuo"
 
 #: data/themes/default.cfg:487
 msgid "Stop"
@@ -5292,7 +5293,7 @@ msgstr "Parar"
 
 #: data/themes/default.cfg:488
 msgid "pause at end of turn"
-msgstr ""
+msgstr "pausa no fim do turno"
 
 #: data/themes/default.cfg:501
 msgid "Reset"
@@ -5300,25 +5301,23 @@ msgstr "Reiniciar"
 
 #: data/themes/default.cfg:502
 msgid "reset to beginning"
-msgstr ""
+msgstr "volta ao início"
 
 #: data/themes/default.cfg:515
 msgid "Next Turn"
 msgstr "Próximo Turno"
 
 #: data/themes/default.cfg:516
-#, fuzzy
 msgid "play turn"
-msgstr "por turno"
+msgstr "jogar turno"
 
 #: data/themes/default.cfg:529
 msgid "Next Side"
 msgstr "Próximo Time"
 
 #: data/themes/default.cfg:530
-#, fuzzy
 msgid "play side turn"
-msgstr "por turno"
+msgstr "joga o turno do time"
 
 #: data/themes/default.cfg:566
 msgid "Skip animation"
@@ -10582,9 +10581,8 @@ msgid "Defense"
 msgstr "Defesa"
 
 #: src/help.cpp:1265
-#, fuzzy
 msgid "Movement Cost"
-msgstr "Movimento"
+msgstr "Custo de Movimento"
 
 #: src/help.cpp:1386 src/help.cpp:1410
 msgid "or"
@@ -11100,9 +11098,8 @@ msgid ")"
 msgstr ")"
 
 #: src/multiplayer_connect.cpp:325
-#, fuzzy
 msgid "Default AI"
-msgstr "Padrão"
+msgstr "IA Padrão"
 
 #: src/multiplayer_connect.cpp:376
 msgid "(Vacant slot)"
@@ -11472,11 +11469,11 @@ msgstr "O Arquivo que você tentou carregar está corrompido"
 
 #: src/play_controller.cpp:624
 msgid "Back to start"
-msgstr ""
+msgstr "Voltar ao início"
 
 #: src/play_controller.cpp:626
 msgid "Back to turn "
-msgstr ""
+msgstr "Voltar ao turno "
 
 #: src/playcampaign.cpp:260
 msgid "Defeat"
@@ -11511,6 +11508,8 @@ msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
+"Os jogos estão fora de sincronia, e precisarão ser terminados. Você quer "
+"salvar uma lista dos erros no seu jogo?"
 
 #: src/playsingle_controller.cpp:200
 msgid "Game Over"
