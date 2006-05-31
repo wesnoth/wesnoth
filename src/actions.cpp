@@ -1869,9 +1869,6 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 	wassert(steps.size() <= route.size());
 
-	if (next_unit != NULL)
-		*next_unit = steps.back();
-
 	//if we can't get all the way there and have to set a go-to.
 	if(steps.size() != route.size() && discovered_unit == false) {
 		if(seen_units.empty() == false) {
@@ -1886,6 +1883,9 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	if(steps.size() < 2) {
 		return 0;
 	}
+
+	if (next_unit != NULL)
+		*next_unit = steps.back();
 
 	//move the unit on the screen. Hide the unit in its current location, but don't actually
 	//remove it until the move is done, so that while the unit is moving status etc will
