@@ -489,6 +489,16 @@ combatant::combatant(const battle_context::unit_stats &u, const combatant *prev)
 	}
 }
 
+// Copy constructor (except use this copy of unit_stats)
+combatant::combatant(const combatant &that, const battle_context::unit_stats &u)
+	: hp_dist(that.hp_dist), untouched(that.untouched), poisoned(that.poisoned), slowed(that.slowed), u_(u), hit_chances_(that.hit_chances_)
+{
+		summary[0] = that.summary[0];
+		summary[1] = that.summary[1];
+}
+	
+
+
 // For swarm, whether we get an attack depends on HP distribution from
 // previous combat.  So we roll this into our P(hitting), since no
 // attack is equivalent to missing.

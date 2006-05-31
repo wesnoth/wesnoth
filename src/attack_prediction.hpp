@@ -14,6 +14,9 @@ struct combatant
 	// Construct a combatant.
 	combatant(const battle_context::unit_stats &u, const combatant *prev = NULL);
 
+	// Copy constructor
+	combatant(const combatant &that, const battle_context::unit_stats &u);
+
 	// Simulate a fight!  Can be called multiple times for cumulative calculations.
 	void fight(combatant &opponent);
 
@@ -33,6 +36,9 @@ struct combatant
 	double average_hp(unsigned int healing = 0) const;
 
 private:
+	combatant(const combatant &that);
+	combatant& operator=(const combatant &);
+
 	// We must adjust for swarm after every combat.
 	void adjust_hitchance();
 

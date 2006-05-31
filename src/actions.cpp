@@ -279,8 +279,8 @@ battle_context& battle_context::operator=(const battle_context &other)
 		delete defender_combatant_;
 		attacker_stats_ = new unit_stats(*other.attacker_stats_);
 		defender_stats_ = new unit_stats(*other.defender_stats_);
-		attacker_combatant_ = other.attacker_combatant_ ? new combatant(*other.attacker_combatant_) : NULL;
-		defender_combatant_ = other.defender_combatant_ ? new combatant(*other.defender_combatant_) : NULL;
+		attacker_combatant_ = other.attacker_combatant_ ? new combatant(*other.attacker_combatant_, *attacker_stats_) : NULL;
+		defender_combatant_ = other.defender_combatant_ ? new combatant(*other.defender_combatant_, *defender_stats_) : NULL;
 	}
 	return *this;
 }
