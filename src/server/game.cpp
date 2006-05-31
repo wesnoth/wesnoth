@@ -287,7 +287,10 @@ const std::string& game::transfer_side_control(const config& cfg)
 		}
 	}
 
-	player_found = !observer_found;
+	player_found = !observer_found && j != users.end();
+	if(player_found) {
+		i = j;
+	}
 
 	if(!observer_found && !player_found) {
 		static const std::string notfound = "Player/Observer not found";
