@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-30 08:08+0200\n"
-"PO-Revision-Date: 2006-05-20 00:52+0200\n"
+"PO-Revision-Date: 2006-05-31 01:17+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: data/abilities.cfg:8
 msgid "heals +4"
-msgstr "helar +4"
+msgstr "hela +4"
 
 #: data/abilities.cfg:13
 msgid ""
@@ -29,7 +29,7 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Helar +4:\n"
+"Hela +4:\n"
 "Truppen helar närliggande allierade trupper i början av sitt drag.\n"
 "\n"
 "Alla trupper som tas om hand av en sådan här helare återfår upp till 4 "
@@ -39,7 +39,7 @@ msgstr ""
 
 #: data/abilities.cfg:27
 msgid "heals +8"
-msgstr "helar +8"
+msgstr "hela +8"
 
 #: data/abilities.cfg:32
 msgid ""
@@ -52,7 +52,7 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Helar +8:\n"
+"Hela +8:\n"
 "Truppen kombinerar örter och magi för att hela trupper snabbare än vad som "
 "normalt är möjligt på ett slagfält.\n"
 "\n"
@@ -63,7 +63,7 @@ msgstr ""
 
 #: data/abilities.cfg:42
 msgid "cures"
-msgstr "botar"
+msgstr "bota"
 
 #: data/abilities.cfg:44
 msgid ""
@@ -71,13 +71,13 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Botar:\n"
+"Bota:\n"
 "En botare kan bota en trupps förgiftning. När detta sker får den dock inget "
 "ytterligare helande."
 
 #: data/abilities.cfg:57
 msgid "regenerates"
-msgstr "regenererar"
+msgstr "regenerera"
 
 #: data/abilities.cfg:59
 msgid ""
@@ -85,7 +85,7 @@ msgid ""
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Regenererar:\n"
+"Regenerera:\n"
 "Truppen läker sig själv med 8 HP per drag. Om den blir förgiftad botar den "
 "sig från förgiftningen först."
 
@@ -145,7 +145,7 @@ msgstr ""
 
 #: data/abilities.cfg:317
 msgid "illuminates"
-msgstr "lyser upp"
+msgstr "lysa upp"
 
 #: data/abilities.cfg:321
 msgid ""
@@ -156,7 +156,7 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
-"Lyser upp:\n"
+"Lysa upp:\n"
 "Den här truppen lyser upp närområdet, så att redbara trupper slåss bättre "
 "och ljusskygga sämre.\n"
 "\n"
@@ -231,7 +231,6 @@ msgid ""
 "for any turn immediately after this unit has attacked, or if there are enemy "
 "units next to this unit."
 msgstr ""
-"Dyka\n"
 "Den här truppen kan gömma sig på djupt vatten, och blir inte upptäckt av "
 "sina fiender.\n"
 "\n"
@@ -339,7 +338,7 @@ msgstr ""
 
 #: data/abilities.cfg:482
 msgid "swarm"
-msgstr "omringa"
+msgstr "svärma"
 
 #: data/abilities.cfg:484
 msgid ""
@@ -3048,7 +3047,7 @@ msgid ""
 "randomly assigned to a unit when it is recruited."
 msgstr ""
 "De flesta trupper har två karaktärsdrag. Undantaget är de vandöda, som får "
-"karaktärsdraget 'vandöd', och woser, som inte får några alls. Karaktärsdrag "
+"karaktärsdraget 'vandöd', och enter, som inte får några alls. Karaktärsdrag "
 "inför små ändringar av truppernas egenskaper. Trupperna tilldelas "
 "karaktärsdrag slumpmässigt när de rekryteras."
 
@@ -3069,7 +3068,6 @@ msgstr ""
 "<ref>dst=traits_strong text=Stark</ref>."
 
 #: data/help.cfg:269
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3079,9 +3077,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Andra karaktärsdrag är <ref>dst=traits_loyal text=Lojal</ref>, "
-"<ref>dst=traits_undead text=Vandöd</ref> och <ref>dst=traits_dextrous "
-"text=Träffsäker</ref>."
+"Andra karaktärsdrag som trupper kan tilldelas är <ref>dst=traits_loyal "
+"text=Lojal</ref>, <ref>dst=traits_dextrous text=Träffsäker</ref> och "
+"<ref>dst=traits_undead text=Vandöd</ref>."
 
 #: data/help.cfg:274
 msgid "Intelligent"
@@ -4097,8 +4095,8 @@ msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
-"Ox,Hål,Ull,Del,Eld,Ask,Kvarn,Hel,Sel,Klev,Sals,Ball,Å,Sen,Sede,Hex,Box,Räve,"
-"Flat,Kärr,Greve,Frän,Kind,Tall,Gel,Nam,Sam,Ulv,Gammel,Ny,Ol,Nes,Kam,Rök,"
+"Ox,Hål,Ull,Del,Eld,Ask,Kvarn,Hel,Sel,Klev,Sal,Bål,Å,Sen,Sede,Svart,Box,Räve,"
+"Flat,Kärr,Greve,Frän,Kind,Tal,Gel,Nam,Sam,Ulv,Gammel,Ny,Ol,Nes,Kam,Rök,"
 "Klippe,Hög"
 
 #: data/scenario-test.cfg:37
@@ -4156,6 +4154,26 @@ msgid ""
 "His home to steal the Basilisk's gold.\n"
 "(inscribed by Flametrooper)"
 msgstr ""
+"Över den mörka himlen vindarna drev kallt,\n"
+"Månen stod högt, natten var allt,\n"
+"Modig var draken som sitt hem övergav,\n"
+"Och mot basiliskens guld tog av.\n"
+"\n"
+"Den mörka natten, himlarna sig vred,\n"
+"Utan tanke på  lärdomar och sed,\n"
+"Den modiga draken i basiliskens grotta flög ned,\n"
+"Han flög, och elden i honom sved.\n"
+"\n"
+"Ack, den elden brinner aldrig mer,\n"
+"Basilisken tog hans högmod ner,\n"
+"Kylde hans märg, stenarna blev fler,\n"
+"Den draken flyger aldrig mer.\n"
+"\n"
+"Över den mörka himlen driver vindarna kallt,\n"
+"Åren har gått över en ensam gestalt,\n"
+"Här står draken som sitt hem övergav,\n"
+"Och mot basiliskens guld tog av.\n"
+"(Inristat av Flametrooper) "
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:99
 msgid ""
@@ -4168,6 +4186,14 @@ msgid ""
 "- - Seven Stones - and the Elven \n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"Av slank figur, händer flinka\n"
+"- - Sju stenar och elva\n"
+"Fienderna fick aldrig blinka\n"
+"- - Sju stenar och elva\n"
+"Bågskytten drakens liv förjaga'\n"
+"Bland statyerna han togs av daga\n"
+"- - Sju stenar och en älva\n"
+"(Inristat av Gauteamus)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:110
 msgid ""
@@ -4186,6 +4212,18 @@ msgid ""
 "words: Good Gog, dog, are yer legs made of stone?!? \n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Blum Duk var vitt känd i sin vätteklan, då han tämjt en av monstervargarna "
+"från bergen. Hans mod och ledarskap var det enda som höll vättarna vid liv "
+"trots hoten från människorna och alverna. Ryktena gjorde gällande att hans "
+"varg hade dräpt femtio människor och hundra alver.\n"
+"När han hörde att ett ondskefullt monster flyttat in i området, föll det sig "
+"alltså naturligt att han red ut ensam för att möta det. Alla andra vättar "
+"förväntade sig att han skulle förgöra monstret och ta med sig kadavret "
+"tillbaka för klanen att festa på.\n"
+"Han blev mäkta förvånad när han såg basilisken, och kröp ihop i skräck. Han "
+"försökte vända sin varg och fly, men den rörde sig inte. När besten närmade "
+"sig skrek han sina sista ord: Gode Gog, hund, är dina ben gjorda av sten?!?\n"
+"(Inristat av Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:119
 msgid ""
@@ -4197,6 +4235,12 @@ msgid ""
 "arrived. \n"
 "(inscribed by Turin)"
 msgstr ""
+"Han hade levt där i evärdeliga tider, i vattnets djup, och levt på de fiskar "
+"och grodor och sjöfolk som trädde in på hans domäner. Det var hans sjö, "
+"ingen annans, och även om den inte var stor, så var han dess herre. Så kom "
+"basilisken, och såg in i ormens ögon. Och ormen var inte död, men den var "
+"inte heller vid liv. Så fick sjön sin nye härskare.\n"
+"(Inristat av Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:128
 msgid ""
@@ -4208,6 +4252,13 @@ msgid ""
 "of his once great bearing and strength. \n"
 "(inscribed by Fynmiir)"
 msgstr ""
+"En modig krigare från Wesnoth gyllene ålder, en mäktig riddare och "
+"befälhavare bland människorna, kom till denna onda plats för en räd mot "
+"orcherna. De hamnade i bakhåll av de onda varelserna, och många av hans "
+"mannar dödades, men han slogs tappert och dräpte många fiender. Men ack! Den "
+"vidriga basilisken förstenade honom när han stack ned den sista orchen. Allt "
+"som finns kvar är en påminnelse om hans forna styrka och glans.\n"
+"(Inristat av Fynmiir)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:139
 msgid ""
@@ -4518,7 +4569,7 @@ msgstr "En liten karta för snabbt spel 2 mot 2. Två guld per by rekommenderas.
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
-msgstr ""
+msgstr "4s - Isars kors"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
 msgid ""
@@ -4526,21 +4577,24 @@ msgid ""
 "of units and planning of moves is important.  Teams set for players 1&4 v "
 "2&3 (northeast vs. southwest).  Designed for 75gp, 20 villages."
 msgstr ""
+"En liten 2 mot 2-karta. I så trängda situationer är det viktigt att rotera "
+"sina trupper och planera sina drag på rätt sätt. Det är lämpligt att spela 1 "
+"och 4 mot 2 och 3 (nordöst mot sydväst). Det rekommenderas att man börjar "
+"med 75 guld. Kartan innehåller 20 byar."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 msgid "4p - King of the Hill"
 msgstr "4s - Herre på täppan"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2v2 as well. There are 36 villages. Recommended "
 "setting of 2gpv."
 msgstr ""
 "Kontroll över området runt den centrala fästningen är mycket fördelaktigt på "
-"denna 36x36-rutors karta för 4 spelare. Den har 36 byar och lämpar sig även "
-"för lagspel. 2 guld per by rekommenderas."
+"denna 36x36-rutors alla mot alla-karta för 4 spelare. Den har 36 byar. 2 "
+"guld per by rekommenderas."
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
@@ -4557,13 +4611,12 @@ msgid "4p - Loris River"
 msgstr "4s - Lorisfloden"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
-#, fuzzy
 msgid ""
 "A 25x25 2v2 map centered around a river with keeps in opposite corners. "
 "Designed for 1&4 vs 2&3. There are 28 villages. Recommended setting of 2gpv."
 msgstr ""
-"En 25x25-rutors karta för spel två mot två vid en flod med par av fästningar "
-"i motsatta hörn. Gruppera enligt 1 och 3 mot 2 och 4. Två guld per by "
+"En 25x25-rutors karta för spel två mot två vid en flod med fästningar i "
+"motsatta hörn. Gruppera enligt 1 och 4 mot 2 och 3. Två guld per by "
 "rekommenderas."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
@@ -4583,23 +4636,21 @@ msgid "4p - Paths of Daggers"
 msgstr "4s - Knivarnas väg"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid ""
 "A 35X27 2v2 map with 5 separate paths of engagement.  Balanced to be played "
 "east vs west (1&4 vs 2&3), but works well with any teams or FFA.  2gpv. "
 "28villages."
 msgstr ""
-"En 35x27-rutors karta för spel 2 mot 2 med fem olika attackrutter. "
-"Balanserad för att spelas öst mot väst (1 och 3 mot 2 och 4), men fungerar "
-"även väl för andra indelningar och alla mot alla. 2 guld per ny "
-"rekommenderas. Kartan har 28 byar."
+"En 35x27-rutors karta med fem olika attackrutter. Balanserad för att spelas "
+"öst mot väst (1 och 4 mot 2 och 3), men fungerar även väl för andra "
+"indelningar och alla mot alla. 2 guld per by rekommenderas. Kartan har 28 "
+"byar."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:5
 msgid "4p - Siege Castles"
 msgstr "4s - Belägring"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well 2v2 or FFA. There are approximately 45 villages. "
@@ -4671,7 +4722,6 @@ msgid "6p - Waterloo Sunset"
 msgstr "6s - Solnedgång i Waterloo"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
-#, fuzzy
 msgid ""
 "A 40X30 3v3.  Flexible coordination of your alliance is required to avoid "
 "being outnumbered.  Teams set for players 145vs236 (north vs south), but "
@@ -4680,9 +4730,9 @@ msgid ""
 msgstr ""
 "En karta med 40x30 rutor för spel 3 mot 3. Flexibelt koordinerande "
 "tillsammans med dina allierade krävs för att behålla övertaget. "
-"Standardlagen är spelare 135 mot 246, alltså nord mot syd, men 136 eller 146 "
-"ger också intressant spel. Det rekommenderas att man startar med 150 guld. "
-"Kartan innehåller 44 byar."
+"Standardlagen är spelare 145 mot 236 (nord mot syd), men 146 eller 136 "
+"tillsammans ger också intressant spel. Det rekommenderas att man startar med "
+"150 guld. Kartan innehåller 44 byar."
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
 msgid "8p - Morituri"
@@ -4698,7 +4748,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
-msgstr ""
+msgstr "9s - Merkwuerdigliebe"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
 msgid ""
@@ -4707,6 +4757,9 @@ msgid ""
 "southwest).  There are very few vilages per player, so 3gpv is also "
 "recommended."
 msgstr ""
+"En liten 3 mot 3 mot 3-karta. 60-sekundersdrag rekommenderas pga det stora "
+"antalet spelare. Lagen är 159 mot 267 mot 348 (nord mot sydöst mot sydväst). "
+"Det finns mycket få byar, så 3 guld per by rekommenderas."
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:8
@@ -5118,9 +5171,8 @@ msgid "Play"
 msgstr "Spela upp"
 
 #: data/themes/default.cfg:474
-#, fuzzy
 msgid "continous replay"
-msgstr " repris"
+msgstr "löpande repris"
 
 #: data/themes/default.cfg:487
 msgid "Stop"
@@ -5128,7 +5180,7 @@ msgstr "Stopp"
 
 #: data/themes/default.cfg:488
 msgid "pause at end of turn"
-msgstr ""
+msgstr "pausa vid dragslut"
 
 #: data/themes/default.cfg:501
 msgid "Reset"
@@ -5136,25 +5188,23 @@ msgstr "Återställ"
 
 #: data/themes/default.cfg:502
 msgid "reset to beginning"
-msgstr ""
+msgstr "tillbaka till början"
 
 #: data/themes/default.cfg:515
 msgid "Next Turn"
 msgstr "Nästa drag"
 
 #: data/themes/default.cfg:516
-#, fuzzy
 msgid "play turn"
-msgstr "per drag"
+msgstr "spela upp drag"
 
 #: data/themes/default.cfg:529
 msgid "Next Side"
 msgstr "Nästa sida"
 
 #: data/themes/default.cfg:530
-#, fuzzy
 msgid "play side turn"
-msgstr "per drag"
+msgstr "spela upp sidans drag"
 
 #: data/themes/default.cfg:566
 msgid "Skip animation"
@@ -9631,7 +9681,7 @@ msgstr ""
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
-msgstr "Wose"
+msgstr "Ent"
 
 #: data/units/Wose.cfg:19
 msgid ""
@@ -9648,14 +9698,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Sällan skådad även av alver är wosen en obekant varelse för de allra flesta. "
-"Alverna är de som känner till mest om dem, och de vet att woserna inte "
-"härstammar från träden, trots deras likhet med dem, och de vet att woserna "
-"är starkare och annorlunda knutna till fevärlden än alverna själva. Wosernas "
+"Sällan skådad även av alver är enten en obekant varelse för de allra flesta. "
+"Alverna är de som känner till mest om dem, och de vet att enterna inte "
+"härstammar från träden, trots deras likhet med dem, och de vet att enterna "
+"är starkare och annorlunda knutna till fevärlden än alverna själva. Enternas "
 "göranden och låtanden är i stora drag okända, även om de flesta stödjer den "
 "mest uppenbara tanken att de är naturens herdar.\n"
 "\n"
-"Woser tar starkt avstånd från våld, men besitter stor styrka. De är dock "
+"Enter tar starkt avstånd från våld, men besitter stor styrka. De är dock "
 "ovana vid att röra sig, och när de gör det tar de god tid på sig.\n"
 "\n"
 "Anmärkning:"
@@ -9667,7 +9717,7 @@ msgstr "krossa"
 
 #: data/units/Wose_Ancient.cfg:3
 msgid "Ancient Wose"
-msgstr "Uråldrig wose"
+msgstr "Uråldrig ent"
 
 #: data/units/Wose_Ancient.cfg:20
 msgid ""
@@ -9692,13 +9742,13 @@ msgstr ""
 "igen.\n"
 "\n"
 "Det här slaget av historier är allt som är känt om det som troligtvis är de "
-"mest uråldriga av woser.\n"
+"mest uråldriga av enter.\n"
 "\n"
 "Anmärkning:"
 
 #: data/units/Wose_Elder.cfg:3
 msgid "Elder Wose"
-msgstr "Äldre wose"
+msgstr "Äldre ent"
 
 #: data/units/Wose_Elder.cfg:19
 msgid ""
@@ -9716,14 +9766,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Woser sägs kunna ha många olika former, alla trädlika, och allt eftersom de "
-"åldras, så växer de i storlek. Det berättas om woser som liknas träd som "
+"Enter sägs kunna ha många olika former, alla trädlika, och allt eftersom de "
+"åldras, så växer de i storlek. Det berättas om enter som liknas träd som "
 "tornas upp sig över de som går under dem. Detta är huvudanledningen till att "
 "de så sällan syns till; där de står i sin slummer, som de så ofta gör, så "
-"förväxlas woserna oftast som träd i egendomliga former. Även en ouppmärksam "
+"förväxlas enterna oftast som träd i egendomliga former. Även en ouppmärksam "
 "alv kan ta miste.\n"
 "\n"
-"Woser är inte på något sätt krigare, men kraften de besitter kan tydligt "
+"Enter är inte på något sätt krigare, men kraften de besitter kan tydligt "
 "användas för våldsam handling, om någon skulle vara oförsiktig nog att väcka "
 "deras vrede.\n"
 "\n"
@@ -10342,9 +10392,8 @@ msgid "Defense"
 msgstr "Försvar"
 
 #: src/help.cpp:1265
-#, fuzzy
 msgid "Movement Cost"
-msgstr "Förflyttning"
+msgstr "Förflyttningskostnad"
 
 #: src/help.cpp:1386 src/help.cpp:1410
 msgid "or"
@@ -10861,9 +10910,8 @@ msgid ")"
 msgstr ")"
 
 #: src/multiplayer_connect.cpp:325
-#, fuzzy
 msgid "Default AI"
-msgstr "Standard"
+msgstr "Standard-AI"
 
 #: src/multiplayer_connect.cpp:376
 msgid "(Vacant slot)"
@@ -11232,11 +11280,11 @@ msgstr "Filen du försöker öppna är felaktig"
 
 #: src/play_controller.cpp:624
 msgid "Back to start"
-msgstr ""
+msgstr "Tillbaka till början"
 
 #: src/play_controller.cpp:626
 msgid "Back to turn "
-msgstr ""
+msgstr "Tillbaka till drag "
 
 #: src/playcampaign.cpp:260
 msgid "Defeat"
@@ -11271,6 +11319,8 @@ msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
+"Spelen är osynkroniserade och måste avslutas. Vill du spara en fellogg för "
+"ditt spel?"
 
 #: src/playsingle_controller.cpp:200
 msgid "Game Over"

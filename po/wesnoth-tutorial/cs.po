@@ -1,18 +1,18 @@
-# translation of tutorial-cs.po to Czech
-# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005.
+# translation of tutorial-cs.vs-edit.po to Czech
+# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005, 2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-30 08:23+0200\n"
-"PO-Revision-Date: 2006-04-04 20:55+0100\n"
-"Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
+"PO-Revision-Date: 2006-05-31 09:40+0200\n"
+"Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: KBabel 1.10\n"
+"X-Generator: KBabel 1.11.2\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
 
@@ -25,7 +25,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:39
 msgid "Wesnoth Tutorial"
-msgstr ""
+msgstr "Wesnoth Tutoriál"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:257
 #: data/tutorial/scenarios/1_Tutorial.cfg:70
@@ -58,7 +58,6 @@ msgstr ""
 " verbování"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:126
-#, fuzzy
 msgid "Destroy a fierce enemy"
 msgstr "Znič zuřivého nepřítele"
 
@@ -74,7 +73,7 @@ msgstr "Za koho bys chtěl hrát?"
 #: data/tutorial/scenarios/1_Tutorial.cfg:158
 #: data/tutorial/scenarios/1_Tutorial.cfg:167
 msgid "Li'sar"
-msgstr "Li'sar"
+msgstr "Lisar"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:182
 #: data/tutorial/scenarios/1_Tutorial.cfg:190
@@ -95,7 +94,7 @@ msgid ""
 "of the river."
 msgstr ""
 "*Vítej ve Wesnothu!\n"
-"V tomto výcviku jsi $student, stojící v tvrzi. Tvůj mentor Delfador  je na "
+"V tomto výcviku jsi $student, stojící v tvrzi. Tvůj mentor Delfador je na "
 "východní straně řeky.\n"
 "*Pro pokračování klikni levým tlačítkem nebo zmáčkni jakoukoliv klávesu..."
 
@@ -123,14 +122,14 @@ msgstr ""
 #: data/tutorial/scenarios/1_Tutorial.cfg:479
 #, fuzzy
 msgid "Left click on Konrad"
-msgstr "Klikni levým tlačítkem na jednotku $student"
+msgstr "Klikni levým tlačítkem na sebe"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:199
 #: data/tutorial/scenarios/1_Tutorial.cfg:393
 #: data/tutorial/scenarios/1_Tutorial.cfg:480
 #, fuzzy
 msgid "Left click on Li'sar"
-msgstr "Klikni levým tlačítkem na jednotku $student"
+msgstr "Klikni levým tlačítkem na sebe"
 
 # myslím, že proměnná končí buď whitespace nebo rourou |, a ta tečka se mi nezdá
 #: data/tutorial/scenarios/1_Tutorial.cfg:215
@@ -139,8 +138,8 @@ msgid ""
 "*You have selected Konrad.\n"
 "The places he could move to are highlighted."
 msgstr ""
-"*Vybral jsi jednotku $student|.\n"
-"Místa, kam může jít, jsou vyznačena.\n"
+"*Vybral jsi jednotku $student (sebe).\n"
+"Místa, kam můžeš jít, jsou vyznačena.\n"
 "*Pro pokračování klikni levým tlačítkem nebo zmáčkni jakoukoliv klávesu..."
 
 # myslím, že proměnná končí buď whitespace nebo rourou |, a ta tečka se mi nezdá
@@ -150,8 +149,8 @@ msgid ""
 "*You have selected Li'sar.\n"
 "The places she could move to are highlighted."
 msgstr ""
-"*Vybral jsi jednotku $student|.\n"
-"Místa, kam může jít, jsou vyznačena.\n"
+"*Vybral jsi jednotku $student (sebe).\n"
+"Místa, kam můžeš jít, jsou vyznačena.\n"
 "*Pro pokračování klikni levým tlačítkem nebo zmáčkni jakoukoliv klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:226
@@ -162,14 +161,14 @@ msgstr "TADY"
 #, fuzzy
 msgid "Move Konrad next to Delfador, by clicking on the place marked 'HERE'."
 msgstr ""
-"Přesuň jednotku $student vedle Delfadora kliknutím na místo označené 'TADY'\n"
+"Přesuň se vedle Delfadora kliknutím na místo označené 'TADY'\n"
 "*Pro pokračování klikni levým tlačítkem nebo zmáčkni jakoukoliv klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:236
 #, fuzzy
 msgid "Move Li'sar next to Delfador, by clicking on the place marked 'HERE'."
 msgstr ""
-"Přesuň jednotku $student vedle Delfadora kliknutím na místo označené 'TADY'\n"
+"Přesuň se vedle Delfadora kliknutím na místo označené 'TADY'\n"
 "*Pro pokračování klikni levým tlačítkem nebo zmáčkni jakoukoliv klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:242
@@ -201,23 +200,21 @@ msgid "Have you found an orc for me to fight, huh?  A troll?"
 msgstr "Máš pro mě nějakého skřeta, s kterým bych mohl bojovat, ha? Trolla?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:318
-#, fuzzy
 msgid "Quiet!  I will summon an enemy for you..."
-msgstr "Mlč!  Vyvolám pro tebe nepřítele..."
+msgstr "Dost! Vyvolám ti nepřítele..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:358
 msgid "... this quintain!"
 msgstr "... tohoto panáka!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:363
-#, fuzzy
 msgid "A quintain?  You want me to pretend to fight a dummy??"
-msgstr "Panáka? Mám přestírat, že bojuji s ??"
+msgstr "Panáka? Mám přestírat, že bojuji s panákem?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:368
 msgid ""
 "Child, you have 32 hitpoints and a sword.    I'm fairly sure you'll win."
-msgstr "Dítě, máš 32 životů a meč.    Jsem si docela jistý, že zvítězíš."
+msgstr "Dítě, máš 32 životů a meč. Jsem si docela jistý, že zvítězíš."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:373
 #, fuzzy
@@ -250,7 +247,6 @@ msgid "Hey! This quintain fights back!"
 msgstr "Hej! Tenhle panák se brání!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:427
-#, fuzzy
 msgid "Hmm, maybe we should have started with a doll."
 msgstr "Hmm, možná jsme měli začít s panenkou."
 
@@ -308,15 +304,14 @@ msgstr ""
 #: data/tutorial/scenarios/1_Tutorial.cfg:488
 #, fuzzy
 msgid "Click on the village to move Konrad"
-msgstr "Klikni na vesnici por přesun jednotky $student"
+msgstr "Klikni na vesnici pro přesun jednotky $student"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:489
 #, fuzzy
 msgid "Click on the village to move Li'sar"
-msgstr "Klikni na vesnici por přesun jednotky $student"
+msgstr "Klikni na vesnici pro přesun jednotky $student"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:506
-#, fuzzy
 msgid ""
 "You now 'own' this village: you can see it flies your flag, and soon a '1' "
 "will appear next to the house icon at the top of screen.  Villages give "
@@ -325,8 +320,8 @@ msgid ""
 msgstr ""
 "Teď „vlastníš“ tuto vesnici: můžeš si všimnout, že je na ní tvá vlajka a "
 "brzy se na horním okraji obrazovky objeví vedle ikony domečku číslice 1. "
-"Vesnice dávají peníze: každý tah získáš dva zlaté plus jeden za každou "
-"obsazenou vesnici.\n"
+"Vesnice dávají peníze: každý tah získáš dva zlaté jako základ plus jeden za "
+"každou obsazenou vesnici.\n"
 "*Pro pokračování klikni levým tlačítkem nebo zmáčkni jakoukoliv klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:508
@@ -516,14 +511,13 @@ msgid "Maybe you should recruit another elf?"
 msgstr "Možná by jsi měl naverbovat dalšího elfa?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:800
-#, fuzzy
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
 msgstr ""
 "Poznámka:\n"
 "Můžeš klepnout pravým tlačítkem na jednotku a vybrat „Popis jednotky“ pro "
-"podrobnější informace"
+"podrobnější informace."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:815
 msgid ""
@@ -656,7 +650,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:25
 msgid "Patch of forest"
-msgstr ""
+msgstr "Kousek lesa"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:26
 msgid ""
@@ -667,9 +661,8 @@ msgstr ""
 "jihovýchodě ostrova: pěkné místo, vhodné k obraně."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:27
-#, fuzzy
 msgid "Can one unit survive against all those enemies?"
-msgstr "Může jedna jednotka přežít proti všem těm nepřátelům?"
+msgstr "Může jedna jednotka obstát proti všem těm nepřátelům?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:28
 msgid ""
@@ -689,7 +682,6 @@ msgstr ""
 "kolo."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:183
-#, fuzzy
 msgid "I hope I get to retreat after this!"
 msgstr "Doufám, že se po tomto budu moci stáhnout!"
 
@@ -712,7 +704,7 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:243
 msgid "Wesnoth Tutorial Part II"
-msgstr ""
+msgstr "Wesnoth Tutoriál, kapitola IIdruhá část"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:268
 msgid "Thrag"
@@ -741,7 +733,6 @@ msgid "Death of Li'sar"
 msgstr "Lisar zemře"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:373
-#, fuzzy
 msgid ""
 "Ho Galdrad!  Has Delfador conjured something else to beat me with?  A flock "
 "of scarecrows, perhaps?"
@@ -899,9 +890,8 @@ msgstr ""
 "Klikni pravým tlačítkem na políčko jižně od tebe a naverbuj elfího bojovníka"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:535
-#, fuzzy
 msgid "No!  I said recruit an Elvish SHAMAN!  Now try again..."
-msgstr "Ne! Říkal jsem aby jsi naverboval elfí ŠAMANKU|! Zkus to znovu..."
+msgstr "Ne! Říkal jsem aby jsi naverboval elfí ŠAMANKU! Zkus to znovu..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:541
 msgid ""
@@ -939,9 +929,8 @@ msgstr "Přesuň jednotku $student pro obsazení vesnice"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:565
 #: data/tutorial/scenarios/2_Tutorial.cfg:610
-#, fuzzy
 msgid "No!  I said recruit an Elvish ARCHER!  Now try again..."
-msgstr "Ne! Říkal jsem aby jsi naverboval elfího LUČIŠTNÍKA|! Zkus to znovu..."
+msgstr "Ne! Říkal jsem aby jsi naverboval elfího LUČIŠTNÍKA! Zkus to znovu..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:574
 #: data/tutorial/scenarios/2_Tutorial.cfg:586
@@ -953,7 +942,6 @@ msgid "Shaman"
 msgstr "Šamanka"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:591
-#, fuzzy
 msgid "Recruit an Elvish Shaman to your north"
 msgstr "Naverbuj elfí šamanku na sever od tebe"
 
@@ -982,9 +970,8 @@ msgid "Recruit two Elvish Archers in tiles to your west"
 msgstr "Naverbuj dva elfí lučištníky do políček na západ od tebe"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:680
-#, fuzzy
 msgid "No!  I said recruit an Elvish FIGHTER!  Now try again..."
-msgstr "Ne! Říkal jsem aby jsi naverboval elfího BOJOVNÍKA|! Zkus to znovu..."
+msgstr "Ne! Říkal jsem aby jsi naverboval elfího BOJOVNÍKA! Zkus to znovu..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:690
 #: data/tutorial/scenarios/2_Tutorial.cfg:701
@@ -1023,9 +1010,10 @@ msgstr ""
 "bojovníka"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:794
-#, fuzzy
 msgid "$recruit.type|?  I said RECRUIT a new ELVISH FIGHTER.  Now try again..."
-msgstr "Ne! Říkal jsem aby jsi naverboval elfího BOJOVNÍKA|! Zkus to znovu..."
+msgstr ""
+"Cože, $recruit.type|? Říkal jsem aby jsi naverboval elfího BOJOVNÍKA! Zkus "
+"to znovu..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:808
 #: data/tutorial/scenarios/2_Tutorial.cfg:819
@@ -1043,8 +1031,8 @@ msgid ""
 "The village supports one unit, and pays one gold per turn: you're only "
 "losing 1 gold per turn now."
 msgstr ""
-"Vidím, že jsi ! Vesnice zásobuje jednu jednotku a přidává jeden zlatý za "
-"kolo. Teď přicházíš pouze o 1 zlatý za kolo."
+"Vidím, že už jsi se něco naučil! Vesnice zásobuje jednu jednotku a přidává "
+"jeden zlatý za kolo. Teď přicházíš pouze o 1 zlatý za kolo."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:849
 msgid "You've learned well, Li'sar! "
@@ -1069,8 +1057,8 @@ msgid ""
 "You should leave the villages near your keep for Konrad to capture, as he "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
-"Obsadil jsi všechny vesnice okolo tvrze, nicméně zůstaň poblíž, aby jsi mohl "
-"verbovat další jednotky."
+"Měl bys nechat vesnice okolo tvrze, aby je obsadil $student, protože $he "
+"stejně bude muset zůstat poblíž tvrze pro verbování dalších jednotek."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:873
 #, fuzzy
@@ -1078,8 +1066,8 @@ msgid ""
 "You should leave the villages near your keep for Li'sar to capture, as she "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
-"Obsadil jsi všechny vesnice okolo tvrze, nicméně zůstaň poblíž, aby jsi mohl "
-"verbovat další jednotky."
+"Měl bys nechat vesnice okolo tvrze, aby je obsadil $student, protože $he "
+"stejně bude muset zůstat poblíž tvrze pro verbování dalších jednotek."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:879
 msgid "Orcs have no ranged attack, so use your archers against it."
@@ -1094,7 +1082,6 @@ msgstr ""
 "popisu na pravém panelu)"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:889
-#, fuzzy
 msgid ""
 "Excellent.  Elves are well protected in the forest: there's only a 30% "
 "chance of hitting an Elven Archer when it's in forest."
@@ -1103,7 +1090,6 @@ msgstr ""
 "zasáhnou elfího lučištníka v lese je pouze 30%."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:898
-#, fuzzy
 msgid ""
 "It's very dangerous to stand in water when there are enemies about!  Your "
 "unit would have an 80% chance of being hit when the Orc counter-attacks!  "
@@ -1117,18 +1103,17 @@ msgid "Attack the Orc with the other Archer"
 msgstr "Zaútoč na skřeta dalším lučištníkem"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:916
-#, fuzzy
 msgid "Fighter to Here"
 msgstr "Bojovník sem"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:917
-#, fuzzy
 msgid ""
 "Your other units cannot reach that Orc this turn.  Send a Fighter to that "
 "village to the far east: that will take two turns."
 msgstr ""
-"Tvé další jednotky se nedostanou v tomto kole dostatečně blízko na útok. "
-"Pošli jednoho bojovníka do vesnice daleko na východě, bude to trvat dva tahy."
+"Tvé další jednotky se nedostanou v tomto kole dostatečně blízko k tomu "
+"skřetovi na útok. Pošli jednoho bojovníka do vesnice daleko na východě, bude "
+"to trvat dva tahy."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:918
 msgid ""
@@ -1161,7 +1146,6 @@ msgid "Move Fighter and Shaman south, then return Li'sar to the Keep"
 msgstr "Přesuň bojovníka a šamanku na jih, pak se vrať do tvrze."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:942
-#, fuzzy
 msgid "Recruit another Archer and a Fighter"
 msgstr "Naverbuj dalšího lučištníka a bojovníka."
 
@@ -1184,7 +1168,6 @@ msgid "Move Li'sar to another (unowned) village"
 msgstr "Přesuň jednotku $student do další (neobsazené) vesnice"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:985
-#, fuzzy
 msgid ""
 "The Orc is blocking the bridge!  We must occupy that island before the wolf "
 "riders reach it."
@@ -1272,7 +1255,6 @@ msgstr ""
 "poslední vesnici u vody."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1102
-#, fuzzy
 msgid ""
 "We need to take that village, otherwise they will take it next turn!  Move "
 "your wounded unit to take it so it can heal, then kill that Orc!"
@@ -1312,7 +1294,6 @@ msgid "Defend here"
 msgstr "Braň se zde"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1131
-#, fuzzy
 msgid ""
 "Beware those Orcs crossing the river!  If they get into the forest they'll "
 "be hard to dislodge!"
@@ -1331,7 +1312,6 @@ msgstr ""
 "jednotky. Když už 'n' nevybírá další jednotku, můžeš ukončit svůj tah."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1143
-#, fuzzy
 msgid "You only need to defeat the leader to win: see Main Menu->Objectives."
 msgstr "Pro výhru stačí porazit jen vůdce: podívej se do Menu -> Úkoly scénáře"
 
@@ -1378,15 +1358,14 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1239
 #: data/tutorial/scenarios/2_Tutorial.cfg:1255
-#, fuzzy
 msgid ""
 "You are close to killing their leader!  The unit which finishes him will "
 "gain 16 experience points, because he is level 2.  Choose your unit "
 "carefully!"
 msgstr ""
-"Brzo zabiješ jejich vůdce! Jednotka, která jej sejme, dostane 16 "
+"Brzo se zbavíš jejich vůdce! Jednotka, která jej zabije, dostane 16 "
 "zkušenostních bodů, protože vůdce je jednotka druhé úrovně. Vyber svou "
-"zabijáckou jednotku pozorně!"
+"jednotku pozorně!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1296
 msgid ""
@@ -1405,7 +1384,6 @@ msgstr ""
 "některou zkušenou jednotku!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1318
-#, fuzzy
 msgid ""
 "Losing a healer hurts all the troops!  Keep them out of the enemy's reach!"
 msgstr ""
@@ -1421,15 +1399,15 @@ msgstr ""
 "pohyby všech nepřátelských jednotek můžeš zobrazit najednou volbou 'Ukaž "
 "tahy nepřítele' z menu 'Akce'."
 
-# znova ten předpoklad o elfích jménech...
+# Sbohem,
 #: data/tutorial/scenarios/2_Tutorial.cfg:1323
 #, fuzzy
 msgid ""
 "Level 2 units are powerful, but not invulnerable!  Goodbye, $deadguy."
 "user_description|."
 msgstr ""
-"Jednotky druhé úrovně jsou sice silné, ale ne nezranitelné. Sbohem, $deadguy."
-"user_description|a."
+"Chudák $deadguy.user_description|. Jednotky druhé úrovně jsou sice silné, "
+"ale ne nezranitelné."
 
 # Co takhle přidat tam na vlastní pěst ještě něco jako "nejdřív lučištníci"? Docela se divím, že to tam není.
 #: data/tutorial/scenarios/2_Tutorial.cfg:1338
@@ -1464,7 +1442,6 @@ msgstr ""
 "postaví na políčko vedle mne."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1375
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am good with both bow and sword, but I have a special ability: "
@@ -1477,7 +1454,6 @@ msgstr ""
 "umísťuj."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1388
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am particularly good with the sword: four attacks doing 8 damage each."
@@ -1486,1014 +1462,14 @@ msgstr ""
 "Jsem dost dobrý s mečem: čtyři útoky po osmi životech."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1555
-#, fuzzy
 msgid "You took too long, we'll never be rid of these Orcs!"
 msgstr "Trvalo ti to příliš dlouho, takhle se těch skřetů nikdy nezbavíme!"
 
+#~ msgid "he"
+#~ msgstr "on"
+
+#~ msgid "she"
+#~ msgstr "ona"
+
 #~ msgid "Click on $student"
-#~ msgstr "Klikni na jednotku $student"
-
-#~ msgid ""
-#~ "No!  I said RECRUIT a new Elvish Fighter, not a $recruit.type|!  Now try "
-#~ "again..."
-#~ msgstr ""
-#~ "Ne! Říkal jsem aby jsi naverboval nového elfího bojovníka, ne jednotku "
-#~ "typu $recruit.type|! Zkus to znovu..."
-
-#~ msgid "Dummy"
-#~ msgstr "Panák"
-
-#~ msgid "Basic Training"
-#~ msgstr "Základní trénink"
-
-#, fuzzy
-#~ msgid "Hello, Konrad."
-#~ msgstr "Konrád zemře"
-
-#~ msgid ""
-#~ "I am here to learn how to fight in a battle. As an experienced elder "
-#~ "mage, surely you can explain the art of combat to me..."
-#~ msgstr ""
-#~ "Jsem tu, abych se naučil bojovat v bitvě. Jako zkušený starý mág mi jistě "
-#~ "dokážeš umění boje vysvětlit..."
-
-#, fuzzy
-#~ msgid ""
-#~ "*Basic Training\n"
-#~ "Skills covered:\n"
-#~ "- Recruiting units\n"
-#~ "- Moving units\n"
-#~ "- Attacking enemy units\n"
-#~ "- Gaining experience\n"
-#~ "- Winning scenarios"
-#~ msgstr ""
-#~ "Probírané dovednosti:\n"
-#~ "Verbování jednotek\n"
-#~ "Pohyb s jednotkami\n"
-#~ "Útočení na nepřátelské jednotky\n"
-#~ "Získávání zkušeností\n"
-#~ "Vyhrávání scénářů"
-
-#~ msgid ""
-#~ "Before entering any battle, you need to recruit units. To recruit a unit, "
-#~ "right click on the castle tile on which you wish to recruit the unit. "
-#~ "Then select Recruit, and select 'OK'. You can only recruit units on "
-#~ "castle tiles connected to the keep your leader is on."
-#~ msgstr ""
-#~ "Než vstoupíš do bitvy, potřebuješ naverbovat jednotky. Jednotku "
-#~ "naverbuješ tak, že klikneš pravým tlačítkem myši na políčko hradu, kde "
-#~ "chceš, aby se objevila. Potom zvolíš „Naverbuj“ a klikneš na „OK“. Můžeš "
-#~ "verbovat jednotky jen na políčka hradu spojená s tvrzí, ve které se "
-#~ "nachází tvůj vůdce."
-
-#~ msgid "Recruit a unit"
-#~ msgstr "Naverbuj nějakou jednotku"
-
-#~ msgid "Excellent! You have recruited an Elvish Fighter."
-#~ msgstr "Výborně! Naverboval jsi elfího bojovníka."
-
-#~ msgid ""
-#~ "Since units cannot move on the turn they are recruited, you must end your "
-#~ "turn. To do this, simply click the 'End Turn' button in the lower-right "
-#~ "hand corner."
-#~ msgstr ""
-#~ "Protože se jednotky nemohou pohybovat v kole, v němž byly naverbovány, "
-#~ "musíš teď ukončit své kolo. To uděláš jednoduše kliknutím na tlačítko "
-#~ "„Ukonči kolo“ v pravém dolním rohu."
-
-#~ msgid "You have successfully ended your turn."
-#~ msgstr "Úspěšně jsi ukončil své kolo."
-
-#~ msgid ""
-#~ "Your next task is to move your Elvish Fighter. To move a unit, first "
-#~ "select it, then select his destination. In this case, his destination is "
-#~ "the forest next to the Elvish Shaman, Merle."
-#~ msgstr ""
-#~ "Tvým dalším úkolem bude přesunout svého elfího bojovníka. Jednotku "
-#~ "přesuneš tak, že nejprve vybereš ji, pak klikneš, kam má dojít. V tomto "
-#~ "případě je jejím cílem les vedle elfí šamanky Merly."
-
-#~ msgid "Move your Elvish Fighter next to Merle"
-#~ msgstr "Přesuň svého elfího bojovníka k Merle"
-
-#~ msgid ""
-#~ "Excellent! You have successfully moved your Elvish Fighter. However, "
-#~ "since he moved next to an enemy unit, he has lost all his movement for "
-#~ "this turn; this is called the 'zone of control'."
-#~ msgstr ""
-#~ "Výborně! Podařilo se ti přesunout svého elfího bojovníka. Avšak protože "
-#~ "se přesunul přímo k nepřátelské jednotce, nemůže už se v tomto kole dále "
-#~ "pohybovat. Tomuto se říká 'oblast kontroly'."
-
-#~ msgid ""
-#~ "Now, you need to attack with your fighter. To attack, first select a "
-#~ "unit, then select its target, which must be next to the attacking unit. "
-#~ "You will then see the attack options box, where you must select an attack "
-#~ "to use."
-#~ msgstr ""
-#~ "Nyní se svým bojovníkem potřebuješ zaútočit. Zaútočíš tak, že nejprve "
-#~ "vybereš jednotku, potom vybereš cíl útoku, což musí být jednotka na "
-#~ "některém sousedním políčku. Poté se ti zobrazí dialog s volbami útoku, "
-#~ "kde zvolíš, jak má jednotka zaútočit."
-
-#~ msgid "Attack Merle"
-#~ msgstr "Zaútoč na Merlu"
-
-#, fuzzy
-#~ msgid ""
-#~ "Your fighter has survived Merle's attack. Whenever a unit survives a "
-#~ "battle, it receives experience from the combat. Once a unit gains enough "
-#~ "experience, it advances to the next level and becomes more powerful."
-#~ msgstr ""
-#~ "Tvůj bojovník přežil útok Merly. Kdykoli jednotka přežije souboj, získá z "
-#~ "něj zkušenosti. Jakmile nasbírá dost zkušeností, povyšuje na vyšší úroveň "
-#~ "a stává se mocnější."
-
-#~ msgid "Move your fighter onto a village."
-#~ msgstr "Přesuň svého bojovníka do vesnice."
-
-#~ msgid "Villages heal the units on them."
-#~ msgstr "Vesnice léči jednotky, které v nich pobývají."
-
-#~ msgid ""
-#~ "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
-#~ "repeatedly."
-#~ msgstr ""
-#~ "Nyní musíš porazit Merlu zmenšením počtu jejích životu na 0 či méně. "
-#~ "Prostě opakovaně útoč."
-
-#~ msgid ""
-#~ "Oops! You moved your leader off of the keep. Remember, when your leader "
-#~ "is not on a keep, you cannot recruit. Also remember that if your leader "
-#~ "dies, you lose. In order to continue the tutorial, I will have to "
-#~ "teleport you back onto your keep."
-#~ msgstr ""
-#~ "Jéje! Pohnul jsi svým vůdcem z tvrze. Pamatuj, pokud tvůj vůdce není v "
-#~ "tvrzi, nemůžeš verbovat. Také pamatuj, že když zemře, prohráváš. Abychom "
-#~ "mohli pokračovat ve výcviku, teleportuji tě teď zpět do tvrze."
-
-#~ msgid ""
-#~ "Unfortunately, you lost, because your leader was defeated. Hopefully you "
-#~ "have gained wisdom from my teachings anyway."
-#~ msgstr ""
-#~ "Bohužel jsi prohrál, protože tvůj vůdce byl poražen. Snad sis z mých "
-#~ "lekcí i tak něco odnesl."
-
-#~ msgid ""
-#~ "Unfortunately, you lost, because you ran out of time. Hopefully you have "
-#~ "gained wisdom from my teachings anyway."
-#~ msgstr ""
-#~ "Bohužel jsi prohrál, protože ti došel vymezený čas. Snad sis z mých lekcí "
-#~ "i tak něco odnesl."
-
-#~ msgid "You have successfully completed the first training scenario."
-#~ msgstr "Úspěšně jsi dokončil první scénář výcviku."
-
-#~ msgid "Hooray!"
-#~ msgstr "Hurá!"
-
-#~ msgid "Do you want to review any of the skills learned in this scenario?"
-#~ msgstr ""
-#~ "Chceš si znovu vyzkoušet některé z dovedností, jež ses naučil v této "
-#~ "úrovni?"
-
-#~ msgid "Yes"
-#~ msgstr "Ano"
-
-#~ msgid "I'm done reviewing skills!"
-#~ msgstr "Skončil jsem s přezkušováním dovedností!"
-
-#~ msgid "No"
-#~ msgstr "Ne"
-
-#~ msgid ""
-#~ "Although you have completed your first scenario, your training is not yet "
-#~ "over. We will now proceed to the next scenario, in which you will fight "
-#~ "me in a mock battle."
-#~ msgstr ""
-#~ "Přestože jsi dokončil svůj první scénář, tvůj výcvik ještě není u konce. "
-#~ "Budeme pokračovat v dalším scénáři, kde budeš bojovat proti mně v "
-#~ "simulované bitvě."
-
-#~ msgid "Traits and Specialties"
-#~ msgstr "Vlastnosti a schopnosti"
-
-#, fuzzy
-#~ msgid ""
-#~ "*Basic Training Part II:\n"
-#~ "Recalling\n"
-#~ "Traits\n"
-#~ "Gold\n"
-#~ "Time of day\n"
-#~ "Terrains\n"
-#~ "Resistance\n"
-#~ "Specialties\n"
-#~ "Objects"
-#~ msgstr ""
-#~ "Probírané dovednosti:\n"
-#~ "Přivolávání\n"
-#~ "Vlastnosti\n"
-#~ "Zlato\n"
-#~ "Denní doba\n"
-#~ "Terén\n"
-#~ "Odolnost\n"
-#~ "Zvláštnosti\n"
-#~ "Předměty"
-
-#~ msgid ""
-#~ "Now you will be subject to a more difficult test. You must defeat me in "
-#~ "mock battle."
-#~ msgstr ""
-#~ "Nyní budeš podroben obtížnější zkoušce. Musíš mě porazit v simulované "
-#~ "bitvě."
-
-#~ msgid ""
-#~ "You can win most scenarios simply by defeating all enemy leaders. Win "
-#~ "this scenario by defeating me. Your fighter from the previous scenario "
-#~ "can help you in this battle. To recall him, right-click on a castle tile, "
-#~ "select Recall, select your fighter, then select 'OK'. You should also "
-#~ "recruit Elvish Fighters and Elvish Archers."
-#~ msgstr ""
-#~ "Většinu scénářů můžeš vyhrát jednoduše poražením všech nepřátelských "
-#~ "vůdců. Zvítěz v tomto scénáři nade mnou. Tvůj bojovník z přechozího "
-#~ "scénáře ti v této bitvě může pomoci. Abys ho přivolal, klikni pravým "
-#~ "tlačítkem myši na políčko hradu, vyber „Přivolej“, vyber svého bojovníka "
-#~ "a zvol „OK“. Měl bys také naverbovat elfí bojovníky a lučištníky."
-
-#~ msgid "You have successfully recalled your Elvish Fighter."
-#~ msgstr "Úspěšně jsi přivolal svého elfího bojovníka."
-
-#~ msgid "En garde!"
-#~ msgstr "Do střehu!"
-
-#, fuzzy
-#~ msgid ""
-#~ "You may notice that your units have slightly different statistics from "
-#~ "the statistics shown before you recruited them. This is because all units "
-#~ "naturally have 2 traits that are determined when you recruit the unit."
-#~ msgstr ""
-#~ "Možná sis všiml, že některé jednotky mají poněkud odlišné statistiky, než "
-#~ "jaké se ti zobrazily, než jsi je naverboval. To je proto, že při "
-#~ "naverbování získaly vlastnosti. "
-
-#, fuzzy
-#~ msgid ""
-#~ "When you recruit and recall units, you spend gold. If this would cause "
-#~ "you to have less than 0 gold, you cannot recruit or recall."
-#~ msgstr ""
-#~ "Když verbuješ a přivoláváš jednotky, ztrácíš zlato. Pokud by ses dostal "
-#~ "na nulu či méně, nemohl bys verbovat ani přivolávat."
-
-#~ msgid ""
-#~ "The sun is setting over Wesnoth. The time of day affects how much damage "
-#~ "units of different alignments can inflict upon each other."
-#~ msgstr ""
-#~ "Nad Wesnothem zapadá slunce. Denní doba ovlivňuje, jak velké poškození "
-#~ "způsobí různé jednotky. Záleží na tom, které denní době jsou přizpůsobeny."
-
-#~ msgid "Each hex has a terrain, which gives the hex distinctive properties."
-#~ msgstr ""
-#~ "Na každém políčku je určitý terén, který mu dává odlišné vlastnosti."
-
-#~ msgid ""
-#~ "Each attack has a damage type which affects how much damage different "
-#~ "units take from that attack."
-#~ msgstr ""
-#~ "Každý útok má svůj typ poškození, který určuje, jaké poranění tímto "
-#~ "útokem utrpí jednotlivé jednotky."
-
-#~ msgid ""
-#~ "Many units have a specialty which changes the rules of play in some way."
-#~ msgstr ""
-#~ "Mnoho jednotek má zvláštnosti, které nějakým způsobem pozměňují pravidla."
-
-#, fuzzy
-#~ msgid ""
-#~ "Some objects change the capabilities or status of the unit that triggered "
-#~ "them. One of your units found a potion which will make him do more damage "
-#~ "on his attack. To see his new combat statistics, look at the Status Table."
-#~ msgstr ""
-#~ "Některé předměty mění statistiky jednotek, jež je sebraly. Jedna z tvých "
-#~ "jednotek našla lektvar, který jí umožňuje způsobovat svými útoky větší "
-#~ "poranění. Její nové bojové statistiky si můžeš prohlédnout v Přehledové "
-#~ "tabulce."
-
-#~ msgid ""
-#~ "This potion increases the damage of all the drinker's attacks by four."
-#~ msgstr ""
-#~ "Tento lektvar zvyšuje poškození způsobované všemi útoky konzumenta o "
-#~ "čtyři. "
-
-#~ msgid "Potion of Strength"
-#~ msgstr "Lektvar síly"
-
-#~ msgid ""
-#~ "Remember to try to prevent the enemy from capturing villages, and to "
-#~ "recapture the ones that they already have. This will cut off their gold "
-#~ "supply and make them unable to recruit."
-#~ msgstr ""
-#~ "Nezapomínej bránit nepříteli v obsazování vesnic a obsazovat ty, které "
-#~ "již vlastní. To ho odřízne od zdrojů zlata, a znemožní mu tím verbovat."
-
-#, fuzzy
-#~ msgid ""
-#~ "Yes, congratulations. Do you want to review any of the skills learned in "
-#~ "this scenario?"
-#~ msgstr ""
-#~ "Chceš si znovu vyzkoušet některé z dovedností, jež ses naučil v této "
-#~ "úrovni?"
-
-#, fuzzy
-#~ msgid "Next, you may want to begin a campaign or play a multiplayer game."
-#~ msgstr "Nyní budeš možná chtít začít tažení, nebo hrát multiplayer."
-
-#~ msgid "Current objective:"
-#~ msgstr "Současný úkol:"
-
-#~ msgid ""
-#~ "To recruit a unit, right click on the castle tile on which you wish to "
-#~ "recruit the unit. Then select Recruit, or just hold your cursor over the "
-#~ "tile and press 'Ctrl-R'. Next, select the type of unit that you want to "
-#~ "recruit, and select 'OK'. In order to recruit faster, you can use 'Ctrl-"
-#~ "Shift-R' to re-recruit the last type of unit you recruited."
-#~ msgstr ""
-#~ "Jednotku naverbuješ tak, že klikneš pravým tlačítkem myši na políčko "
-#~ "hradu, kde chceš jednotku naverbovat. Potom vyber 'Naverbuj'; nebo prostě "
-#~ "podrž kursor nad políčkem a stiskni 'Ctrl-R'. Pak vyber typ jednotky, "
-#~ "který chceš naverbovat, a klikni na 'OK'. Stiskem 'Shift-Ctrl-R' můžeš "
-#~ "rychle naverbovat další jednotku stejného typu jako posledně."
-
-#, fuzzy
-#~ msgid "How do I recruit units again?"
-#~ msgstr "Jak naverbuji jednotku?"
-
-#~ msgid "What's a leader?"
-#~ msgstr "Co je to vůdce?"
-
-#, fuzzy
-#~ msgid ""
-#~ "A leader is a unit that can recruit. This means that when the leader is "
-#~ "on a keep, units can be recruited on the surrounding castle tiles. "
-#~ "Leaders are usually powerful units that each side only controls one of. "
-#~ "Also, your leader is usually the first unit that your side controls, and "
-#~ "starts on a keep. You can select your leader quickly by pressing 'l' (the "
-#~ "lowercase letter L). If your leader dies, you lose the game. You can win "
-#~ "most scenarios by defeating all enemy leaders."
-#~ msgstr ""
-#~ "Vůdce je jednotka, která může verbovat. To znamená, že je-li velitel v "
-#~ "tvrzi, může verbovat jednotky na okolní políčka hradu. Vůdci jsou obvykle "
-#~ "silné jednotky, jakou každá strana ovládá jen jedinou. Tvůj vůdce je také "
-#~ "obvykle první jednotkou, kterou tvá strana ovládá, a začíná v tvrzi. "
-#~ "Vůdce můžeš snadno vybrat stiskem 'L'. Zemře-li tvůj vůdce, prohráváš "
-#~ "hru. Většinu scénářů můžeš vyhrát poražením všech nepřátelských vůdců."
-
-#~ msgid ""
-#~ "You have to carefully review their skills, which are displayed to the "
-#~ "left of the unit selection box, and cost, which is displayed after the "
-#~ "name of the unit. You will learn more about these statistics throughout "
-#~ "the tutorial."
-#~ msgstr ""
-#~ "Musíš důkladně posoudit její schopnosti, jež se zobrazují nalevo od "
-#~ "výběru jednotek, a cenu, která se zobrazuje napravo od jména jednotky. V "
-#~ "průběhu výcviku se o těchto statistikách dozvíš více."
-
-#~ msgid "How should I choose what kind of units to recruit?"
-#~ msgstr "Čím bych se měl při verbování jednotek řídit?"
-
-#~ msgid "What happens when I recruit a unit?"
-#~ msgstr "Co se stane, když naverbuji jednotku?"
-
-#~ msgid ""
-#~ "When you recruit a unit, it appears at full health on a castle tile of "
-#~ "your choice. It also receives two traits, which will be discussed later. "
-#~ "It cannot move or attack until you end your turn."
-#~ msgstr ""
-#~ "Když naverbuješ jednotku, objeví se s plným počtem životů na příslušném "
-#~ "políčku hradu. Také získá dvě vlastnosti, které probereme později. V "
-#~ "témže kole se už nemůže pohnout ani útočit."
-
-#~ msgid ""
-#~ "One way to end your turn is to press 'Alt-Space'. Alternatively, you can "
-#~ "right-click and select End Turn, or select the End Turn button in the "
-#~ "lower right hand corner."
-#~ msgstr ""
-#~ "Jeden ze způsobů, jak ukončit kolo, je stisknout 'Alt-Mezera'. Také můžeš "
-#~ "kliknout pravým tlačítkem myši a zvolit „Ukonči kolo“ nebo kliknout na "
-#~ "tlačítko 'Ukonči kolo' v pravém dolním rohu."
-
-#~ msgid ""
-#~ "When you end your turn, it becomes another side's turn and only that side "
-#~ "has the right to move, until that side ends its turn. After all sides end "
-#~ "their turns, the next turn begins. This has various effects, including "
-#~ "causing all units to regain their full movement potential. The number of "
-#~ "the current turn is displayed on the status bar next to the image of a "
-#~ "flag. When this number exceeds the maximum number of turns, you lose the "
-#~ "game."
-#~ msgstr ""
-#~ "Když ukončíš své kolo, je na tahu další strana a jen ona může tahat, "
-#~ "dokud neukončí své kolo. Poté, co všechny strany ukončí své kolo, začne "
-#~ "nové kolo. To má různé následky, včetně toho, že všechny jednotky opět "
-#~ "získají plný počet pohybů. Číslo současného kola se zobrazuje nahoře ve "
-#~ "stavovém řádku vedle obrázku vlajky. Když číslo kola překročí maximální "
-#~ "počet kol, prohráváš (obvykle)."
-
-#~ msgid "What happens when I end my turn?"
-#~ msgstr "Co se stane, když skončím svoje kolo?"
-
-#, fuzzy
-#~ msgid "How did I move my unit again?"
-#~ msgstr "Jak ukončím kolo?"
-
-#, fuzzy
-#~ msgid ""
-#~ "When you select a unit, all hexes it can't move onto within one turn will "
-#~ "be shaded. If the destination is far enough away that more than one turn "
-#~ "is needed to reach it, a number will appear showing how many turns it "
-#~ "will take. Clicking on a far-away space will set the unit on a course for "
-#~ "that space, which means it automatically moves as far as it can towards "
-#~ "that space every turn. If you accidentally set a unit on a course, select "
-#~ "it twice to remove the course."
-#~ msgstr ""
-#~ "Tvůj elfí bojovník začíná každé kolo s určitým počtem pohybových bodů. "
-#~ "Když se pohybuje po nějaké trase, každé políčko, přes které projde, ho "
-#~ "stojí nějaké body; včetně cílového políčka. Když vybereš svého elfího "
-#~ "bojovníka, všechna políčka, kam v tomto kole nedokáže dojít, ztmavnou. "
-#~ "Jestliže pro dosažení cíle potřebuješ více kol, pak se ukáže počet kol "
-#~ "nutný pro jeho dosažení. Klikneš-li na vzdálené místo, jednotka se vydá "
-#~ "na cestu k němu, což znamená, že se k němu v každém kole sama přiblíží "
-#~ "jak jen může, dokud tam nedojde. Pokud vyšleš jednotku na cestu omylem, "
-#~ "zvol tentýž cíl znovu, čímž ho zrušíš."
-
-#, fuzzy
-#~ msgid ""
-#~ "A unit's zone of control is the location consisting of all hexes adjacent "
-#~ "to the unit. Units cannot move through opponent's zones of control; they "
-#~ "can only move into it. When they do this, they lose all their remaining "
-#~ "movement. Zones of control are very useful and can be used to block "
-#~ "enemies from reaching your weak and wounded units."
-#~ msgstr ""
-#~ "Oblast kontroly určité jednotky se skládá ze všech přiléhajících políček. "
-#~ "Jednotky se nemohou pohybovat skrz protivníkovu oblast kontroly; mohou se "
-#~ "přesunout pouze do ní. Když to udělají, ztratí všechny zbývající pohyby. "
-#~ "Oblasti kontroly lze využít k zabránění nepříteli dostat se k tvým slabým "
-#~ "a zraněným jednotkám."
-
-#~ msgid "What's the zone of control?"
-#~ msgstr "Co je to oblast kontroly?"
-
-#, fuzzy
-#~ msgid "What happens when I move next to an enemy unit?"
-#~ msgstr "Co se stane, když skončím svoje kolo?"
-
-#, fuzzy
-#~ msgid "How did I attack again?"
-#~ msgstr "Jak začnu tažení?"
-
-#~ msgid "Can Merle retaliate from my attack?"
-#~ msgstr "Může mi Merla oplatit můj útok?"
-
-#~ msgid ""
-#~ "Whenever a unit is attacked, it retaliates with one of their own weapons. "
-#~ "This means that after each blow from the attacker, the defender "
-#~ "retaliates with one blow. This continues until one side runs out of "
-#~ "blows, in which case the other unit continues attacking until its blows "
-#~ "are depleted as well. However, any unit can only retaliate by using a "
-#~ "weapon of the same range as the one used to attack. This means that a "
-#~ "ranged attack can only be countered by a ranged attack and a melee attack "
-#~ "can only be countered by a melee attack. Most units have more powerful "
-#~ "melee attacks than ranged attacks. Units with strong ranged attacks are "
-#~ "useful in retaliation against melee oriented units. Some melee units "
-#~ "without ranged attacks won't be able to retaliate at all. However, ranged "
-#~ "units cannot shoot across multiple hexes; this is one of the distinctive "
-#~ "features of Wesnoth."
-#~ msgstr ""
-#~ "Když je jednotka napadena, oplácí útok jednou ze svých zbraní. To "
-#~ "znamená, že po každém útočníkově úderu udeří jednou i obránce. Tak to "
-#~ "pokračuje, dokud jedna ze stran nevyčerpá svůj počet útoků, potom útočí "
-#~ "už jen druhá jednotka, dokud i ona nevyčerpá své útoky. Avšak každá "
-#~ "jednotka může oplácet útok jen zbraní na stejnou vzdálenost, jako zbraň, "
-#~ "jíž je napadena. To znamená, že útok zbraní na dálku může lze oplatit "
-#~ "opět jen zbraněmi na dálku; a útok zbraní pro boj zblízka lze oplatit "
-#~ "zase jen takovýmito zbraněmi. Většina jednotek má silnější útok zblízka "
-#~ "než na dálku. Jednotky s útokem na dálku jsou proto užitečné v tom, že "
-#~ "napadené jednotky vracejí útok menší silou, často vůbec. Avšak ani "
-#~ "jednotky s útokem na dálku nemohou střílet přes více políček; to je jedna "
-#~ "ze zvláštností Wesnothu."
-
-#~ msgid ""
-#~ "Every attack does a certain amount of damage per hit, and can be used a "
-#~ "certain number of times per battle. These numbers, called the attack's "
-#~ "damage and strike numbers, are displayed in order under the name of the "
-#~ "attack on the unit's status table and next to it on the attack options "
-#~ "menu. To quickly find the maximum damage an attack can inflict, multiply "
-#~ "the damage by the number of strikes. For example, my lightning attack "
-#~ "does 14 damage per blow and has 4 blows, so it can deal up to 56 damage "
-#~ "in a single combat."
-#~ msgstr ""
-#~ "Každý útok, který zasáhne, způsobí určité poranění, a každý útok má "
-#~ "stanoven počet opakování v každém souboji. Tato čísla, nazývaná poškození "
-#~ "(poranění) a počet úderů, se zobrazují v tomto pořadí pod jménem útoku v "
-#~ "přehledové tabulce jednotky; a poblíž něj v menu s volbami útoku. "
-#~ "Největší možné poranění, jaké může útok způsobit získáš vynásobením počtu "
-#~ "úderů poškozením. Například každý můj útok blesky způsobuje poškození 14 "
-#~ "a mám 4 údery, takže mohu způsobit poranění až 56 životů v jediném "
-#~ "souboji."
-
-#~ msgid "How can you tell how powerful a unit's attacks are?"
-#~ msgstr "Jak poznám, jak silné jsou útoky nějaké jednotky?"
-
-#~ msgid "Will my fighter hit every time when it attacks?"
-#~ msgstr "Zasáhne můj bojovník pokaždé, když zaútočí?"
-
-#~ msgid ""
-#~ "Units have the ability to block blows. The chance that a unit has to hit "
-#~ "is based on the defender's skill at defending blows, and is listed on the "
-#~ "attack options menu after the damage and strike numbers for the bow "
-#~ "attack."
-#~ msgstr ""
-#~ "Jednotky se dokáží bránit. Šance, že jednotka zasáhne, závisí na "
-#~ "obráncově schopnosti bránit se. V menu volby útoku je uvedena po "
-#~ "poškození a počtu úderů."
-
-#, fuzzy
-#~ msgid ""
-#~ "As you know, your units will have a green, yellow, or red energy orb. "
-#~ "Allied units you do not control, like me, have a blue energy circle. "
-#~ "Units controlled by the enemy do not have an orb at all. Also, the option "
-#~ "'Show Team Colors', in Preferences, causes the color of a unit's "
-#~ "controller to be displayed as a disc below the unit. This helps tell you "
-#~ "what side each unit is on."
-#~ msgstr ""
-#~ "Jednotky mají nad svým ukazatelem životů (ten zelený pruh vedle jednotky) "
-#~ "zelený, žlutý nebo červený kroužek. Jednotky s plným počtem pohybů ho "
-#~ "mají zelený; ty, které ještě mají nějaké pohyby, mají žlutý; a jednotky, "
-#~ "které už se nemohou pohnout, mají červený. Jednotky ovládané nepřítelem "
-#~ "žádné kroužky nemají. Jednotky spojenců, které neovládáš, jako kupříkladu "
-#~ "já, mají modrý kroužek. Volba 'Zobrazuj barvy týmů' v nastavení způsobí, "
-#~ "že se pod každou jednotkou bude zobrazovat kružnice v barvě jejího týmu."
-
-#~ msgid "How do I tell who is allied and who is an enemy?"
-#~ msgstr "Jak poznám kdo je spojenec a kdo nepřítel?"
-
-#~ msgid "What's experience?"
-#~ msgstr "Co jsou to zkušenosti?"
-
-#~ msgid ""
-#~ "When a unit fights another unit, it gains experience, denoted 'XP', from "
-#~ "the combat. The amount of experience gained is equal to the opponent's "
-#~ "level, which is usually a representation of that unit's power. However, "
-#~ "much more experience is gained from defeating an enemy unit. The amount "
-#~ "of XP gained from killing an enemy is equal to 8 times the enemy's level."
-#~ msgstr ""
-#~ "Když jednotka bojuje s jinou jednotkou, získává soubojem zkušenosti, "
-#~ "označované „Zkušenost“. Množství získaných zkušeností je rovno úrovni "
-#~ "protivníka, která obvykle representuje jeho sílu. Avšak mnohem více "
-#~ "zkušeností získá poražením nepřátelské jednotky. Množství zkušeností "
-#~ "získaných zabitím nepřítele je rovno osminásobku jeho úrovně."
-
-#~ msgid ""
-#~ "When a unit advances, it transforms into a different unit type. This unit "
-#~ "type is dependent on what the unit was originally, but occasionally there "
-#~ "will be more than one choice of what to advance into. Advanced units are "
-#~ "usually more powerful and 1 level higher than they were originally. Also, "
-#~ "when a unit advances, it is healed completely and any handicaps that have "
-#~ "been cast on it are removed. This is known as 'advance-heal'."
-#~ msgstr ""
-#~ "Když je jednotka povýšena, přemění se v jednotku jiného typu, o jednu "
-#~ "úroveň vyššího. Tento typ závisí na tom, čím byla původně, ale občas je "
-#~ "na výběr více možností, na co může být povýšena. Jednotky vyšší úrovně "
-#~ "jsou obvykle silnější. Při povýšení je jednotka také zcela vyléčena a "
-#~ "všechna její postižení jsou odstraněna. Říká se tomu povýšení-uzdravení."
-
-#~ msgid "What happens when a unit advances?"
-#~ msgstr "Co se stane, když je jednotka povýšena?"
-
-#, fuzzy
-#~ msgid "What happens when a unit reaches its max level?"
-#~ msgstr "Co se stane, když se jednotka přesune do vesnice?"
-
-#, fuzzy
-#~ msgid ""
-#~ "Whenever a unit captures a village, it flags the village for its side. "
-#~ "This action takes all the unit's remaining movement. Villages flagged for "
-#~ "a side give the side several benefits, including giving the side extra "
-#~ "gold every turn, and reducing the total upkeep cost of that side's units "
-#~ "by one. The total number of villages you control is also displayed on the "
-#~ "status bar after the picture of a house. In addition to the economic "
-#~ "benefit of villages, villages can be used in battle. Villages heal the "
-#~ "units on them 8 HP per turn."
-#~ msgstr ""
-#~ "Kdykoli se jednotka přesune do vesnice, zabere ji pro svou stranu. Tato "
-#~ "činnost zabere všechny její zbývající pohyby. Vesnice přinášejí straně, "
-#~ "které patří, řadu výhod, včetně příjmu jednoho zlatého za kolo a zmenšení "
-#~ "celkových výdajů na vydržování jednotek o jeden zlatý za kolo. Celkový "
-#~ "počet vesnic, jež ovládáš, se také zobrazuje nahoře ve stavovém řádku, "
-#~ "vedle obrázku domu. Vesnice kromě ekonomických výhod mohou být využity i "
-#~ "v bitvě. Vesnice léčí v nich umístěné jednotky o 8 životů za kolo."
-
-#~ msgid "What happens when a unit moves onto a village?"
-#~ msgstr "Co se stane, když se jednotka přesune do vesnice?"
-
-#~ msgid "How do I heal when there aren't any villages nearby?"
-#~ msgstr "Jak se mám léčit, když poblíž nejsou žádné vesnice?"
-
-#~ msgid ""
-#~ "There are ways to heal even without villages. If a unit does not move or "
-#~ "attack for 1 turn, it heals 2 HP from resting. However, if an enemy "
-#~ "attacks it, the unit cannot receive rest-heal. Also, there are some units "
-#~ "which heal the units surrounding them. The Elvish Shaman is one such "
-#~ "unit; units next to an Elvish Shaman are healed 4 HP per turn. Finally, "
-#~ "whenever you win a scenario all your units are healed fully."
-#~ msgstr ""
-#~ "Jsou způsoby, jak léčit i bez vesnic. Jednotka, která se během kola "
-#~ "nepohne ani neútočí, se vyléčí o dva životy díky odpočinku. Avšak pokud "
-#~ "na ni zaútočí nepřátelská jednotka, nemůže se vyléčit odpočinkem. Kromě "
-#~ "toho některé jednotky léčí jednotky, jež je obklopují. Elfí šaman je "
-#~ "jednou z těchto jednotek; jednotky těsně vedle elfího šamana se lečí o 4 "
-#~ "životy za kolo. A konečně, když úspěšně dokončíš scénář, všechny tvé "
-#~ "jednotky se zcela vyléčí."
-
-#~ msgid "How do I know how to complete a scenario? Will you always tell me?"
-#~ msgstr "Jak zjistím, jak dokončit nějaký scénář? Povíš mi to pokaždé?"
-
-#~ msgid ""
-#~ "Sometimes it is not clear how to win a scenario just by listening to the "
-#~ "dialog. In this case you need to look at the scenario objectives, which "
-#~ "appear after the opening dialog. The objectives can also be accessed by "
-#~ "clicking 'Objectives' on the menu. The scenario objectives list victory "
-#~ "conditions and defeat conditions, and when any of the conditions are met, "
-#~ "the scenario is over. Hopefully, it was a victory condition that was met."
-#~ msgstr ""
-#~ "Někdy není zřejmé, jak dokončit scénář, jen z vyslechnutých rozhovorů. V "
-#~ "takovém případě je třeba se podívat na úkoly scénáře, které se zobrazí po "
-#~ "úvodním rozhovoru. Dostaneš se k němu i kliknutím na „Úkoly scénáře“ v "
-#~ "menu. Úkoly scénáře je seznam podmínek vítězství a podmínek porážky. Je-"
-#~ "li některá z nich splněna, scénář skončil. Doufejme, že to bude podmínka "
-#~ "vítězství, jež byla splněna."
-
-#~ msgid "What happens when I win a scenario?"
-#~ msgstr "Co se stane, když vyhraji scénář?"
-
-#, fuzzy
-#~ msgid ""
-#~ "When you win a scenario, all your units survive and are revived to full "
-#~ "health, and you do not have to pay them for the remaining turns. Also, if "
-#~ "your army remains in the area after you win, all villages surrender to "
-#~ "you immediately after you win. However, between scenarios 20% of your "
-#~ "gold is lost to provide for feeding, clothing, sheltering, and moving "
-#~ "your army."
-#~ msgstr ""
-#~ "Když zvítězíš ve scénáři, všechny tvé jednotky přežijí a jsou oživeny na "
-#~ "plný počet životů a nemusíš za ně zbývající kola platit. Pokud navíc tvá "
-#~ "armáda zůstává v oblasti, kde jsi zvítězil, všechny vesnice se ti hned "
-#~ "poté vzdají. Avšak mezi scénáři ztrácíš 20% svého zlata."
-
-#, fuzzy
-#~ msgid "How did I recall a unit again?"
-#~ msgstr "Jak naverbuji jednotku?"
-
-#~ msgid "What happens when I recall a unit?"
-#~ msgstr "Co se stane, když přivolám jednotku?"
-
-#~ msgid ""
-#~ "First, you must pay 20 pieces of gold for each unit you recall, "
-#~ "regardless of the type of unit. Other than that, recalled units are "
-#~ "basically like recruited units, except that instead of a new unit "
-#~ "appearing, a unit from a previous scenario will appear."
-#~ msgstr ""
-#~ "Předně musíš za každou přivolanou jednotku zaplatit 20 zlatých, nezávisle "
-#~ "na jejím typu. Jinak se přivolané jednotky neliší od naverbovaných, kromě "
-#~ "toho, že se namísto nové jednotky objeví jednotka z předchozího scénáře."
-
-#, fuzzy
-#~ msgid "Why should I recall my units?"
-#~ msgstr "Co se stane, když přivolám jednotku?"
-
-#~ msgid "How should I decide which units to recall?"
-#~ msgstr "Čím bych se měl řídit při přivolávání jednotek?"
-
-#~ msgid ""
-#~ "You should usually recall units that have already advanced to the next "
-#~ "level. However, you may also want to recall units that have high "
-#~ "experience, and are thus likely to advance. You should recall units that "
-#~ "will be useful for the scenario you are in; for example in a forest "
-#~ "scenario, recall elves."
-#~ msgstr ""
-#~ "Měl bys v zásadě přivolávat jednotky, které již povýšily na vyšší úroveň. "
-#~ "Také však můžeš chtít přivolat jednotky, které mají hodně zkušeností, a "
-#~ "proto s velkou pravděpodobností povýší. Měl bys přivolávat jednotky, "
-#~ "které jsou užitečné pro daný scénář: například v lesním scénáři přivolej "
-#~ "elfy."
-
-#, fuzzy
-#~ msgid ""
-#~ "Each unit you recruit is an individual person, Konrad. Units of the same "
-#~ "type have slight variations in how strong or how skilled they are. The "
-#~ "function of traits is to add variety to your army. A unit's traits are "
-#~ "displayed in the Status Table, and the function of a specific trait can "
-#~ "be found by putting your cursor over that trait."
-#~ msgstr ""
-#~ "Vlastnosti slouží k dosažení různorodosti tím, že od sebe odliší jednotky "
-#~ "stejného typu. Děje se to náhodným přiřazením vlastností jednotce, když "
-#~ "je naverbována. Vlastnosti jednotky se zobrazují v přehledové tabulce "
-#~ "jednotky, a jejich funkci můžeš zjistit, když podržíš kurzor nad danou "
-#~ "vlastností."
-
-#~ msgid "What do traits do?"
-#~ msgstr "K čemu jsou vlastnosti?"
-
-#~ msgid ""
-#~ "There are four distinct traits, which have effects ranging from "
-#~ "increasing a unit's hit points to decreasing the amount of XP required to "
-#~ "advance. However, all traits are designed to improve a unit's power; "
-#~ "there are no 'negative' traits. Most units have an equal chance to obtain "
-#~ "any two different traits when they are recruited. Also, some races and "
-#~ "units may have traits that are unique to them."
-#~ msgstr ""
-#~ "Existuje pět odlišných vlastností, jejichž vliv sahá od zvětšení počtu "
-#~ "životů po snížení množství zkušeností potřebných k povýšení. Všechny "
-#~ "vlastnosti jsou nicméně určeny k vylepšení jednotky, neexistují žádné "
-#~ "'negativní' vlastnosti. Většina jednotek má stejnou šanci získat při "
-#~ "naverbování kteroukoli dvojici vlastnosti."
-
-#~ msgid "What kind of traits can my units get?"
-#~ msgstr "Jaké vlastnosti mohou mé jednotky získat?"
-
-#~ msgid ""
-#~ "You need to pay each unit you recruit or recall gold when you recruit it. "
-#~ "The cost of recruiting a unit is displayed under the unit's name. The "
-#~ "cost of recalling a unit is always 20 gold. A unit also costs gold for "
-#~ "each turn it is under your control. This cost, called 'upkeep', is equal "
-#~ "to the level of the unit. However, units you do not recruit or recall "
-#~ "such as your leader do not cost any gold at all. The total upkeep cost of "
-#~ "your units is displayed on the status bar at the top after a picture of "
-#~ "gold and then a red arrow."
-#~ msgstr ""
-#~ "Za každou jednotku musíš zaplatit při jejím naverbování či přivolání. "
-#~ "Cena naverbování se zobrazuje pod jménem jednotky. Cena přivolání je vždy "
-#~ "20 zlatých. Jednotka tě také stojí zlato každé kolo, které ji ovládáš. "
-#~ "Tato cena, které se říká vydržování, je rovna úrovni jednotky. Avšak "
-#~ "jednotky, které jsi nenaverboval ani nepřivolal, jako třeba tvůj vůdce, "
-#~ "tě nic nestojí. Celkové výdaje na vydržování jednotek se zobrazují nahoře "
-#~ "ve stavovém řádku po obrázku zlaťáku a červené šipce."
-
-#~ msgid "How much gold do my units cost?"
-#~ msgstr "Kolik zlatých mě moje jednotky stojí?"
-
-#~ msgid ""
-#~ "You begin each scenario with a percentage of gold from the previous "
-#~ "scenario. If this is less than 100 gold, you begin with 100 gold instead. "
-#~ "The amount of gold you have is displayed on the status bar after the "
-#~ "picture of gold. After the start of a scenario, you receive 2 gold every "
-#~ "turn. Since you usually need more gold than that, you should flag "
-#~ "villages, which give you 1 gold per turn."
-#~ msgstr ""
-#~ "Každou hru začínáš s určitou částí zlata z předchozích úrovní. Je-li to "
-#~ "méně než 100 zlatých, začínáš namísto toho se 100 zlatými. Množství tvého "
-#~ "zlata se zobrazuje nahoře ve stavovém řádku vedle obrázku zlaťáku. Když "
-#~ "začínáš hrát scénář, dostáváš dva zlaté za kolo. Protože obvykle "
-#~ "potřebuješ víc než jen je, měl bys obsazovat vesnice, které ti přinesou "
-#~ "jeden zlatý za kolo."
-
-#~ msgid "How do I get gold?"
-#~ msgstr "Jak získám zlato?"
-
-#~ msgid ""
-#~ "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 "
-#~ "times of day: day, twilight, and night. During the day, units of the "
-#~ "alignment Lawful, such as humans, do 25% more damage, while Chaotic units "
-#~ "such as undead do 25% less. At night this is reversed. During twilight, "
-#~ "all units do their normal damage. Neutral units such as elves are "
-#~ "unaffected by day and night."
-#~ msgstr ""
-#~ "Existují 3 druhy jednotek: Zákonné, neutrální a chaotické. Také existují "
-#~ "tři denní doby: den, šero a noc. Ve dne působí zákonné jednotky, jako "
-#~ "např. lidé, o 25% větší poranění; zatímco chaotické jednotky, jako např. "
-#~ "nemrtví, o 25% menší. V noci je to právě naopak. Za šera způsobují "
-#~ "všechny jednotky normální poranění. Neutrální jednotky, jako např. elfy, "
-#~ "střídání dne a noci nijak neovlivňuje."
-
-#~ msgid "What are the different alignments and times of day?"
-#~ msgstr "Jaké jsou denní doby a jak jim mohou být jednotky přizpůsobeny?"
-
-#~ msgid "How do I know what time of day it is?"
-#~ msgstr "Jak zjistím, jaká je právě denní doba?"
-
-#, fuzzy
-#~ msgid ""
-#~ "The times of day progress in sequence: dawn (twilight), morning and "
-#~ "afternoon (day), dusk (twilight), first watch and second watch (night), "
-#~ "then repeat. This is represented by the sun and moon which each rise in "
-#~ "the east and set in the west. However, some scenarios have a different "
-#~ "sequence, such as underground where it is perpetual night. You can find "
-#~ "out the current time of day by looking at the Status Table."
-#~ msgstr ""
-#~ "Denní doby obvykle následují v pořadí: svítání (šero), dopoledne (den), "
-#~ "odpoledne (den), soumrak (šero), první hlídka (noc), druhá hlídka (noc), "
-#~ "a pak se to opakuje. To je reprezentováno sluncem a měsícem, které "
-#~ "vychází na východě a zapadá na západě. Některé scénáře však mají tuto "
-#~ "posloupnost odlišnou -- např. podzemí, kde je stále tma. Denní dobu "
-#~ "zjistíš pohledem na tabulku stavu napravo."
-
-#, fuzzy
-#~ msgid ""
-#~ "The first property of a terrain is the number of move points it takes "
-#~ "each unit to move through the hex. The second property is the defense "
-#~ "that the terrain gives units standing on it. This is a percentage which "
-#~ "determines the unit's chance to be hit on that terrain. For example, many "
-#~ "elves have 70% defense in forest, and are therefore hit on average 30% of "
-#~ "the time."
-#~ msgstr ""
-#~ "Dva terény mají vlastnosti, které jsme již probrali: vesnice a hrady. "
-#~ "Vlastnosti většiny terénů jsou však jemnější a souvisejí s výhodami a "
-#~ "nevýhodami různých jednotek, když se do nich přesunou. První vlastnost je "
-#~ "počet pohybů, které jednotka potřebuje, aby prošla skrz políčko. Druhá "
-#~ "vlastnost je možnost obrany, kterou terén jednotce skýtá. Ta je vyjádřena "
-#~ "šancí, že bude jednotka v tomto terénu zasažena. Kupříkladu elfové mají v "
-#~ "lese 70% obranu, takže šance je zasáhnout je jen 30%."
-
-#~ msgid "What are the different properties that terrains have?"
-#~ msgstr "Co jsou to ty vlastnosti terénů?"
-
-#~ msgid ""
-#~ "To find out the properties of a terrain with respect to a specific unit, "
-#~ "right-click on the unit, select Unit Description, then look at Terrain "
-#~ "Modifiers. To find out which terrain is on a particular hex, move your "
-#~ "cursor over that hex and look in the upper right hand corner of the "
-#~ "screen. This will display, in order, the name of the terrain, then the "
-#~ "coordinates of the hex, then the selected unit's defense, then the number "
-#~ "of move points it will cost the selected unit to move through that hex."
-#~ msgstr ""
-#~ "Vlastnosti terénu s ohledem na konkrétní jednotku zjistíš tak, že na ni "
-#~ "klikneš pravým tlačítkem myši, vybereš „Popis jednotky“, a tam Terénní "
-#~ "činitelé. Jaký je terén na daném políčku zjistíš tak, že nad něj přesuneš "
-#~ "kurzor myši a podíváš se do pravého horního rohu obrazovky. Tam se ukáže "
-#~ "(v tomto pořadí): jméno terénu, souřadnice políčka, obrana vybrané "
-#~ "jednotky a počet pohybů, které by ji stál přesun skrz toto políčko."
-
-#~ msgid "How do I find out the properties of a specific terrain?"
-#~ msgstr "Jak zjistím vlastnosti určitého terénu?"
-
-#~ msgid "How does resistance affect attack damage?"
-#~ msgstr "Jak odolnost ovlivňuje poranění způsobené útokem?"
-
-#, fuzzy
-#~ msgid ""
-#~ "Each unit has a certain resistance against each attack type. For example, "
-#~ "if an Elvish Scout is attacked by an Elvish Archer, the archer does 20% "
-#~ "more damage than normal, since Elvish Scouts have -20% resistance to "
-#~ "pierce."
-#~ msgstr ""
-#~ "Každá jednotka má určité odolnosti proti různým typům útoku. Tato "
-#~ "odolnost je poměrná část, která se odečítá z poškození způsobené "
-#~ "protivníkovou zbraní daného typu. Když je kupříkladu elfí průzkumník "
-#~ "napaden elfím lučištníkem, způsobí lučištník o 20% větší poranění než "
-#~ "obvykle, protože elfí průzkumníci mají odolnost -20% proti bodání. Tato "
-#~ "dodatečná hodnota se sčítá s ostatními (jako za denní dobu), takže dvě -"
-#~ "50% sankce dají dohromady -100%."
-
-#, fuzzy
-#~ msgid ""
-#~ "There are 6 different damage types: blade, pierce, impact, fire, cold, "
-#~ "and holy. Heavily armored units have high resistance to the physical "
-#~ "types: blade, pierce, and impact, but low resistance to the magical "
-#~ "types: fire and cold. All living units have resistance to holy while "
-#~ "undead are extremely weak to it."
-#~ msgstr ""
-#~ "Existuje šest typů útoku (poranění): čepelí, bodáním, úderem, ohněm, "
-#~ "chladem a svatý útok. Těžce obrněné jednotky mívají velkou odolnost proti "
-#~ "fyzickým útokům: čepelí, bodáním a proti úderům; ale nízkou odolnost "
-#~ "proti magickým útokům: ohněm a chladem. Všechny živé jednotky jsou odolné "
-#~ "proti svatému útoku, zatímco nemrtví jsou jím velmi snadno zranitelní. "
-#~ "Odolnosti konkrétní jednotky zjistíš tak, že na ni klineš pravým "
-#~ "tlačítkem myši, vybereš „Popis jednotky“, a tam Odolnosti."
-
-#~ msgid "What are the different damage types?"
-#~ msgstr "Jaké jsou druhy poranění?"
-
-#, fuzzy
-#~ msgid "How do I learn a unit's resistances?"
-#~ msgstr "Jak naverbuji jednotku?"
-
-#~ msgid ""
-#~ "Each specialty does something different; that's the whole point of a "
-#~ "specialty. To find a description of a unit's specialty, put your cursor "
-#~ "over the name of the specialty."
-#~ msgstr ""
-#~ "Každá zvláštnost dělá něco jiného; to je jejich hlavní smysl. Popis "
-#~ "zvláštnosti jednotky se ti ukáže, když podržíš kursor myši nad jejím "
-#~ "jménem."
-
-#~ msgid "What do specialties do?"
-#~ msgstr "Co dělají zvláštnosti?"
-
-#, fuzzy
-#~ msgid ""
-#~ "The specialties a unit gets are determined by the unit type; for example "
-#~ "all Lieutenants and Generals have the specialty leadership. Some are "
-#~ "abilities that the unit has. Others are weapon abilities such as poison "
-#~ "on a dagger blade."
-#~ msgstr ""
-#~ "Zvláštnosti jednotek jsou určeny jejich typem; kupříkladu všichni "
-#~ "generálové dokáží velet. Existují dva druhy zvláštností: schopnosti a "
-#~ "zvláštnosti útoků. Schopnosti se týkají jednotky, zatímco zvláštnosti "
-#~ "útoku jen některého z jejich útoků."
-
-#~ msgid "Which units get specialties?"
-#~ msgstr "Které jednotky mají zvláštnosti?"
-
-#~ msgid ""
-#~ "There are many different specialties, and learning about them is one of "
-#~ "the interesting parts of playing Wesnoth. The two most common specialties "
-#~ "are called 'magical' and 'leadership'. Magical attacks have a 70% chance "
-#~ "of hitting enemies regardless of what terrain they are on. Units do more "
-#~ "damage while next to a unit of higher level with leadership."
-#~ msgstr ""
-#~ "Je mnoho různých zvláštností, a jejich poznávání je jedna ze zajímavých "
-#~ "součástí hraní Wesnothu. Dvěma nejběžnějšími zvláštnostmi jsou magický "
-#~ "útok a velení. Magické útoky mají vždy 70% šanci zásahu protivníka, "
-#~ "nezávisle na tom, v jakém je terénu. Jednotky se schopností velet "
-#~ "umožňují jednotkám na sousedních polích způsobovat větší poškození."
-
-#~ msgid "What kinds of specialties can my units get?"
-#~ msgstr "Jaké zvláštnosti mohou mé jednotky získat?"
-
-#~ msgid "How do I use specialties?"
-#~ msgstr "Jak mám používat zvláštnosti?"
-
-#~ msgid ""
-#~ "To use a specialty, you just have to move and/or attack with your units "
-#~ "in a way which triggers the specialty. For example, in order to use "
-#~ "leadership, you must move a unit with leadership next to another unit, "
-#~ "then attack with the other unit."
-#~ msgstr ""
-#~ "Zvláštnosti využiješ tak, že jednotkou táhneš nebo útočíš takovým "
-#~ "způsobem, aby se zvláštnost projevila. Jednotku se schopností velet "
-#~ "kupříkladu využiješ tak, že přisuneš k nějaké jiné jednotce, a tou pak "
-#~ "zaútočíš."
-
-#, fuzzy
-#~ msgid "How did I get this object again?"
-#~ msgstr "Jak dlouho tyto předměty vydrží?"
-
-#~ msgid "What kind of objects am I likely to encounter?"
-#~ msgstr "Na jaké druhy předmětů mohu narazit?"
-
-#, fuzzy
-#~ msgid ""
-#~ "The objects you encounter are put in by the scenario designer, so they "
-#~ "vary from campaign to campaign. In 'Heir to the Throne', all objects are "
-#~ "beneficial, and most give the unit who picks them up a new weapon. "
-#~ "However, there are usually not that many objects in a campaign."
-#~ msgstr ""
-#~ "Předměty, s nimiž se ve scénářích setkáváš, tam umísťuje tvůrce scénáře, "
-#~ "a proto se mohou mezi taženími lišit. V Dědici trůnu většina předmětů "
-#~ "přidává jejich nositeli novou zbraň. V tažení, ale zase tak mnoho "
-#~ "předmětů nebývá."
-
-#~ msgid ""
-#~ "Most objects are permanent changes to the unit that receives them. "
-#~ "However, a few objects, such as holy water, last only until the end of "
-#~ "the scenario."
-#~ msgstr ""
-#~ "Většina předmětů způsobí jednotce, která je sebrala, trvalé změny. "
-#~ "Několik předmětů, jako například posvěcená voda, však vydrží jen do konce "
-#~ "scénáře."
-
-#~ msgid "How long do these objects last?"
-#~ msgstr "Jak dlouho tyto předměty vydrží?"
-
-#~ msgid "How do I play a campaign?"
-#~ msgstr "Jak začnu tažení?"
-
-#, fuzzy
-#~ msgid ""
-#~ "To begin a campaign, run Wesnoth, select 'Campaign', select which "
-#~ "campaign to play, then select Easy, Normal, or Hard. New players, even "
-#~ "those who are no stranger to war, should try playing on Easy until they "
-#~ "get a feel for combat in the world of Wesnoth. However, they never "
-#~ "listen. Do not say I didn't warn you, Konrad."
-#~ msgstr ""
-#~ "Tažení začneš tak, že spustíš Wesnoth, zvolíš 'Tažení' a vybereš si, "
-#~ "které tažení chceš hrát; potom zvolíš obtížnost: snadnou, střední nebo "
-#~ "těžkou. Nováčkům doporučuji začít hrát Dědice trůnu."
-
-#~ msgid "How do I play multiplayer?"
-#~ msgstr "Jak se hraje hra více hráčů?"
-
-#~ msgid ""
-#~ "To play Wesnoth against other people, select 'Multiplayer'. Then select "
-#~ "'Join Official Server'. This will connect you to the official Wesnoth "
-#~ "server, where you can join a game by selecting it, then selecting 'Join "
-#~ "Game'."
-#~ msgstr ""
-#~ "Chceš-li hrát Wesnoth proti jiným lidem, zvol 'Hra více hráčů'. Potom "
-#~ "zvol 'Připoj se na oficiální server'. Tím se připojíš na oficiální herní "
-#~ "server Wesnothu, kde se můžeš přidat ke hře tak, že ji vybereš a klikneš "
-#~ "na 'Přidej se ke hře'."
-
-#~ msgid "You have successfully attacked Merle."
-#~ msgstr "Úspěšně jsi zaútočil na Merlu."
-
-#~ msgid "That was explained well! But.."
-#~ msgstr "Pěkně jsi to vysvětlil! Ale..."
+#~ msgstr "Klikni na sebe (jednotka $student)"
