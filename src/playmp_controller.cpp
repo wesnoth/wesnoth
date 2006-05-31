@@ -121,10 +121,6 @@ void playmp_controller::play_human_turn(){
 					// because remote players only notice network disconnection
 					// Current solution end remaining turns automatically
 					current_team().set_countdown_time(10);
-					recorder.add_countdown_update(current_team().countdown_time(),player_number_);
-					recorder.end_turn();
-					turn_data_->send_data();
-					throw end_turn_exception();
 				} else {
 					const int maxtime = lexical_cast_default<int>(level_["mp_countdown_reservoir_time"],0);
 					int secs = lexical_cast_default<int>(level_["mp_countdown_turn_bonus"],0);
@@ -132,11 +128,11 @@ void playmp_controller::play_human_turn(){
 					current_team().set_action_bonus_count(0);
 					secs = (secs > maxtime) ? maxtime : secs;
 					current_team().set_countdown_time(1000 * secs);
-					recorder.add_countdown_update(current_team().countdown_time(),player_number_);
-					recorder.end_turn();
-					turn_data_->send_data();
-					throw end_turn_exception();
 				}
+				recorder.add_countdown_update(current_team().countdown_time(),player_number_);
+				recorder.end_turn();
+				turn_data_->send_data();
+				throw end_turn_exception();
 			}
 
 		}
@@ -176,6 +172,10 @@ void playmp_controller::finish_side_turn(){
 }
 
 bool playmp_controller::play_network_turn(){
+	if(teams_[player_number_ - 1].is_empty() && team_units(units_,player_number_) == 0) {
+		return false;
+	}
+
 	LOG_NG << "is networked...\n";
 
 	browse_ = true;
