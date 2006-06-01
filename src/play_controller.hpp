@@ -69,7 +69,7 @@ public:
 	virtual void toggle_grid();
 	virtual void search();
 
-	virtual void play_side(const int team_num) = 0;
+	virtual void play_side(const unsigned int team_num) = 0;
 
 	const int get_ticks();
 

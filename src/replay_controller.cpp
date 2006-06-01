@@ -235,7 +235,7 @@ void replay_controller::play_turn(){
 	current_turn_++;
 }
 
-void replay_controller::play_side(const int team_index){
+void replay_controller::play_side(const unsigned int team_index){
 	if (recorder.at_end()){
 		return;
 	}

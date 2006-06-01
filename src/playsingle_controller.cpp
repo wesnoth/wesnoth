@@ -379,7 +379,7 @@ void playsingle_controller::play_turn(){
 	finish_turn();
 }
 
-void playsingle_controller::play_side(const int team_index){
+void playsingle_controller::play_side(const unsigned int team_index){
 //goto this label if the type of a team (human/ai/networked) has changed mid-turn
 redo_turn:
 	//although this flag is used only in this method it has to be a class member
