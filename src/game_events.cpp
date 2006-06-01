@@ -330,7 +330,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					const int side = u->second.side();
 
 					std::pair<gamemap::location,unit> *up = units->extract(u->first);
-					up->first = dst;
+					up->first = vacant_dst;
 					units->add(up);
 
 					if(game_map->is_village(vacant_dst)) {
