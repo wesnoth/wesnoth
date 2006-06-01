@@ -59,6 +59,7 @@ public:
 	bool selected() const { return double_clicked_ && !empty(); }
 	int selection() const { return selected_; }
 protected:
+	unsigned int row_height() const { return item_height_ + (2 * style_->get_thickness()); }
 private:
 	image::locator gold_icon_locator_;
 	image::locator xp_icon_locator_;

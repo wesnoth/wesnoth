@@ -53,7 +53,7 @@ namespace mp {
 void gamebrowser::set_inner_location(const SDL_Rect& rect)
 {
 	set_full_size(games_.size());
-	set_shown_size(rect.h / item_height_);
+	set_shown_size(rect.h / row_height());
 	bg_register(rect);
 	scroll(get_position());
 }
@@ -62,7 +62,7 @@ void gamebrowser::scroll(unsigned int pos)
 {
 	if(pos < games_.size()) {
 		visible_range_.first = pos;
-		visible_range_.second = minimum<size_t>(pos + inner_location().h / item_height_, games_.size());
+		visible_range_.second = minimum<size_t>(pos + inner_location().h / row_height(), games_.size());
 		set_dirty();
 	}
 }
@@ -73,8 +73,7 @@ SDL_Rect gamebrowser::get_item_rect(size_t index) const {
 		return res;
 	}
 	const SDL_Rect& loc = inner_location();
-	const unsigned int height = item_height_ + 2 * style_->get_thickness();
-	const SDL_Rect res = { loc.x, loc.y + (index - visible_range_.first) * height, loc.w, height};
+	const SDL_Rect res = { loc.x, loc.y + (index - visible_range_.first) * row_height(), loc.w, row_height()};
 	return res;
 }
 
@@ -384,7 +383,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		games_.back().observers = (**game)["observer"] != "no" ? true : false;
 	}
 	set_full_size(games_.size());
-	set_shown_size(inner_location().h / item_height_);
+	set_shown_size(inner_location().h / row_height());
 	scroll(get_position());
 	if(selected_ >= games_.size())
 		selected_ = maximum<long>(static_cast<long>(games_.size()) - 1, 0);
