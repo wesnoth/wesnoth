@@ -6,10 +6,10 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth Latin 1.0.0\n"
+"Project-Id-Version: Wesnoth Latin 1.1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-30 08:08+0200\n"
-"PO-Revision-Date: 2005-09-29 19:20+0200\n"
+"PO-Revision-Date: 2006-06-01 08:55+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
@@ -17,12 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/abilities.cfg:8
-#, fuzzy
 msgid "heals +4"
-msgstr "medetur"
+msgstr "medetur IV"
 
 #: data/abilities.cfg:13
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -33,22 +31,19 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Medetur:\n"
+"Medetur IV:\n"
 "Permittit ut unitas unitatibus amicis vicinis in initio tractus medeatur.\n"
 "\n"
-"Unitas curata a medetore sanari potest usque ad IV PS in tractu.\n"
-"Medetor sanare potest totalem VIII PS in tractu, pro omnibus unitatibus quas "
-"curat.\n"
+"Unitas curata ab hoc medetore sanari potest usque ad IV PS in tractu aut "
+"vetariut venenum in hoc tractu efficace sit.\n"
 "Unitas venenata non a veneno a medetore sanari potest, et curam pagi aut "
 "unitatis quae sanat petere debet."
 
 #: data/abilities.cfg:27
-#, fuzzy
 msgid "heals +8"
-msgstr "medetur"
+msgstr "medetur VIII"
 
 #: data/abilities.cfg:32
-#, fuzzy
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -59,17 +54,14 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Sanat:\n"
+"Medetur VIII:\n"
 "Haec unitas remedia hebalia cum magica coniungunt ut unitates celerius "
 "sanent quam plerumque possibile est in acie.\n"
 "\n"
-"Haec unitas omnes unitates amicos vicinos curabit qui vulnerati sunt in "
-"initio tractus.\n"
-"Unitas curata a sanator sanari potest usque ad VIII PS in tractu.\n"
-"Sanator totalem XVIII PS in tractu sanare potest pro omnibus unitatibus quas "
-"curat.\n"
-"Sanator unitatem venenatam sanare potest, sed haec unitas nulla puncta "
-"salutis accipiet in tractu in quo venenum tollitur."
+"Unitas curata ab hoc medetore sanari potest usque ad VIII PS in tractu aut "
+"vetariut venenum in hoc tractu efficace sit.\n"
+"Unitas venenata non a veneno a medetore sanari potest, et curam pagi aut "
+"unitatis quae sanat petere debet."
 
 #: data/abilities.cfg:42
 msgid "cures"
@@ -81,6 +73,9 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Sanat:\n"
+"Sanator unitas a veneno sanare potest, quamquam haec unitas nullam "
+"sanationem adiunctam accipiet in tractu in quo a veneno sanata erit."
 
 #: data/abilities.cfg:57
 msgid "regenerates"
@@ -101,14 +96,14 @@ msgid "steadfast"
 msgstr "constans"
 
 #: data/abilities.cfg:76
-#, fuzzy
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
 "Constans:\n"
-"Repugnantia huius unitatis duplicatur (maximum L pro cento) in defensu."
+"Repugnantia huius unitatis duplicatur (maximum L pro cento) in defensu. Non "
+"commoventur nuditates."
 
 #: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
 #: data/abilities.cfg:183 data/abilities.cfg:239
@@ -141,15 +136,14 @@ msgid "skirmisher"
 msgstr "excursor"
 
 #: data/abilities.cfg:306
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
 "Excursor:\n"
-"Haec unitas perita est se ultra hostes celeriter movens et omni Zona Imperii "
-"hostium ignorat."
+"Haec unitas perita est se ultra hostes celeriter movens et omnia Zona "
+"Imperii hostium ignorat."
 
 #: data/abilities.cfg:317
 msgid "illuminates"
@@ -226,12 +220,10 @@ msgstr ""
 "unitatum hanc adsunt."
 
 #: data/abilities.cfg:378 data/abilities.cfg:383
-#, fuzzy
 msgid "submerge"
-msgstr "percutere"
+msgstr "demergere"
 
 #: data/abilities.cfg:382 data/abilities.cfg:387
-#, fuzzy
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -240,19 +232,19 @@ msgid ""
 "for any turn immediately after this unit has attacked, or if there are enemy "
 "units next to this unit."
 msgstr ""
-"Insidiae:\n"
-"Unitas haec se in silvis occultare potest et ab hostibus suis invisa manet.\n"
+"Demergere:\n"
+"Haec unitas se in gurgite occultare potest et invisa ab hostibus suis "
+"manere.\n"
 "\n"
 "Unitates hostium unitatem hanc non videre aut oppugnare postest, si in "
-"silvis est, nisi in loco ordine statim post oppugnationem suam aut si "
-"unitates hostium apud unitatum hanc adsunt."
+"gurgite est, nisi in tractu statim post oppugnationem eius aut si unitates "
+"hostium apud unitatum hanc adsunt."
 
 #: data/abilities.cfg:405
 msgid "berserk"
 msgstr "saevus"
 
 #: data/abilities.cfg:407
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -260,14 +252,13 @@ msgid ""
 msgstr ""
 "Saevitia:\n"
 "In offensione vel defensione, haec oppugnatio certamen presset donec unus ex "
-"pugnatoribus interfectus erit."
+"pugnatoribus interfectus erit aut XXX tractus oppugnationis evenerint."
 
 #: data/abilities.cfg:415
 msgid "backstab"
 msgstr "in tergum percutere"
 
 #: data/abilities.cfg:417
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -275,8 +266,8 @@ msgid ""
 "to stone)."
 msgstr ""
 "In tergum percutere:\n"
-"Haec oppugnatio damnum duplice facit, si unitas amica in latere adverso "
-"scopi adest. (Non movetur cum unitatibus sociis.)"
+"Haec oppugnatio damnum duplice facit, si unitas inimica scopi in latere "
+"adverso scopi adest et haec unitas non debilitata est (e.g. petrificata)."
 
 #: data/abilities.cfg:426 data/abilities.cfg:434
 msgid "plague"
@@ -295,9 +286,8 @@ msgstr ""
 "substituitur."
 
 #: data/abilities.cfg:443
-#, fuzzy
 msgid "slows"
-msgstr "lentifacere"
+msgstr "lentifacit"
 
 #: data/abilities.cfg:445
 msgid ""
@@ -305,11 +295,14 @@ msgid ""
 "This attack slows the target. Slow halves the damage caused by attacks and "
 "slowed units move at half the normal speed (rounded up)."
 msgstr ""
+"Lentifacere:\n"
+"Haec oppugnatio lentifacit scopum. Hoc minuit damnum oppugnationum dimidia "
+"parte et unitates lentifactae se movent cum celeritate dimidia (si adest "
+"fractio numero superiori utitur)."
 
 #: data/abilities.cfg:451
-#, fuzzy
 msgid "stones"
-msgstr "petrificare"
+msgstr "petrificat"
 
 #: data/abilities.cfg:453
 msgid ""
@@ -347,9 +340,8 @@ msgstr ""
 "Haec oppugnatio semper probabilitatem LXX pro cento habet feriendi."
 
 #: data/abilities.cfg:482
-#, fuzzy
 msgid "swarm"
-msgstr "adfligere"
+msgstr "examen"
 
 #: data/abilities.cfg:484
 msgid ""
@@ -359,6 +351,11 @@ msgid ""
 "For example a unit with 3/4 of its maximum HP will get 3/4 of the number of "
 "strikes."
 msgstr ""
+"Examen:\n"
+"Numerus oppugnationum modi huius oppugnationis minuit cum vulneratur unitas. "
+"Numerus oppugnationum pro rata parte est fractionis SP ex maximis. Exempli "
+"gratia, unitas quae tres partes SP possidit tres partes oppugnationes "
+"accipiet."
 
 #: data/abilities.cfg:491
 msgid "charge"
@@ -375,12 +372,10 @@ msgstr ""
 "damnum duplice ex oppugnatione scopi in vicem accipiat."
 
 #: data/abilities.cfg:503
-#, fuzzy
 msgid "drains"
-msgstr "exhaurire"
+msgstr "exhaurit"
 
 #: data/abilities.cfg:505
-#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -388,7 +383,7 @@ msgid ""
 msgstr ""
 "Exhaurire:\n"
 "Haec unitas salutem ex unitatibus vivis exhaurit, se sanans dimidiam partem "
-"damni inflecti."
+"damni inflecti (ignorans fractiones)."
 
 #: data/abilities.cfg:511
 msgid "firststrike"
@@ -421,229 +416,186 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
 #: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
-#, fuzzy
 msgid "Artwork and Graphics Designers"
-msgstr "+Inventores artium ingenuarum"
+msgstr "Inventores artium ingenuarum et digitarum"
 
 #: data/about.cfg:54
-#, fuzzy
 msgid "Music"
-msgstr "+Musica"
+msgstr "Musica"
 
 #: data/about.cfg:65
-#, fuzzy
 msgid "Scenario Designers"
-msgstr "+Inventores Missionum"
+msgstr "Inventores Missionum"
 
 #: data/about.cfg:82
-#, fuzzy
 msgid "Multiplayer Developers"
-msgstr "+Chartae Plurum Lusorum"
+msgstr "Inventores Plurum Lusorum"
 
 #: data/about.cfg:92
-#, fuzzy
 msgid "Multiplayer Maps"
-msgstr "+Chartae Plurum Lusorum"
+msgstr "Chartae Plurum Lusorum"
 
 #: data/about.cfg:102
-#, fuzzy
 msgid "Packagers"
-msgstr "+Factores Fasciculorum"
+msgstr "Factores Fasciculorum"
 
 #: data/about.cfg:117 data/campaigns/The_South_Guard.cfg:39
 #: data/campaigns/Two_Brothers.cfg:36
 #: data/campaigns/Under_the_Burning_Suns.cfg:47
-#, fuzzy
 msgid "Miscellaneous"
-msgstr "+Varii"
+msgstr "Varii"
 
 #: data/about.cfg:126
-#, fuzzy
 msgid "Internationalization Managers"
-msgstr "+Moderatores Redditorum"
+msgstr "Moderatores Redditorum"
 
 #: data/about.cfg:137
-#, fuzzy
 msgid "Afrikaans Translation"
-msgstr "+Reditio africana australis"
+msgstr "Reditio africana australis"
 
 #: data/about.cfg:147
-#, fuzzy
 msgid "Basque Translation"
-msgstr "+Reditio basca"
+msgstr "Reditio basca"
 
 #: data/about.cfg:156
-#, fuzzy
 msgid "Bulgarian Translation"
-msgstr "+Reditio bulgara"
+msgstr "Reditio bulgara"
 
 #: data/about.cfg:164
-#, fuzzy
 msgid "Catalan Translation"
-msgstr "+Reditio cataluniensis"
+msgstr "Reditio cataluniensis"
 
 #: data/about.cfg:178
-#, fuzzy
 msgid "Chinese Translation"
-msgstr "+Reditio serica"
+msgstr "Reditio serica"
 
 #: data/about.cfg:185
-#, fuzzy
 msgid "Czech Translation"
-msgstr "+Reditio ceca"
+msgstr "Reditio ceca"
 
 #: data/about.cfg:204
-#, fuzzy
 msgid "Danish Translation"
-msgstr "+Reditio danica"
+msgstr "Reditio danica"
 
 #: data/about.cfg:215
-#, fuzzy
 msgid "Dutch Translation"
-msgstr "+Reditio batava"
+msgstr "Reditio batava"
 
 #: data/about.cfg:227
-#, fuzzy
 msgid "English (GB) Translation"
-msgstr "+Reditio anglica (brittanica)"
+msgstr "Reditio anglica (brittanica)"
 
 #: data/about.cfg:234
-#, fuzzy
 msgid "Esperanto Translation"
-msgstr "+Reditio germanica"
+msgstr "Reditio esperanta"
 
 #: data/about.cfg:242
-#, fuzzy
 msgid "Estonian Translation"
-msgstr "+Reditio estonica"
+msgstr "Reditio estonica"
 
 #: data/about.cfg:249
-#, fuzzy
 msgid "Filipino Translation"
-msgstr "+Reditio finnica"
+msgstr "Reditio tagaloga"
 
 #: data/about.cfg:256
-#, fuzzy
 msgid "Finnish Translation"
-msgstr "+Reditio finnica"
+msgstr "Reditio finnica"
 
 #: data/about.cfg:266
-#, fuzzy
 msgid "French Translation"
-msgstr "+Reditio gallica"
+msgstr "Reditio gallica"
 
 #: data/about.cfg:290
-#, fuzzy
 msgid "German Translation"
-msgstr "+Reditio germanica"
+msgstr "Reditio germanica"
 
 #: data/about.cfg:307
-#, fuzzy
 msgid "Greek Translation"
-msgstr "+Reditio graeca"
+msgstr "Reditio graeca"
 
 #: data/about.cfg:317
-#, fuzzy
 msgid "Hebrew Translation"
-msgstr "+Reditio graeca"
+msgstr "Reditio hebraica"
 
 #: data/about.cfg:325
-#, fuzzy
 msgid "Hungarian Translation"
-msgstr "+Reditio magiarensis"
+msgstr "Reditio magiarensis"
 
 #: data/about.cfg:342
-#, fuzzy
 msgid "Indonesian Translation"
-msgstr "+Reditio estonica"
+msgstr "Reditio indonesica"
 
 #: data/about.cfg:349
-#, fuzzy
 msgid "Italian Translation"
-msgstr "+Reditio italica"
+msgstr "Reditio italica"
 
 #: data/about.cfg:364
-#, fuzzy
 msgid "Japanese Translation"
-msgstr "+Reditio iaponica"
+msgstr "Reditio iaponica"
 
 #: data/about.cfg:373
-#, fuzzy
 msgid "Korean Translation"
-msgstr "+Reditio norvegiana"
+msgstr "Reditio coreana"
 
 #: data/about.cfg:380
-#, fuzzy
 msgid "Latin Translation"
-msgstr "+Reditio Latina"
+msgstr "Reditio Latina"
 
 #: data/about.cfg:387
-#, fuzzy
 msgid "Norwegian Translation"
-msgstr "+Reditio norvegiana"
+msgstr "Reditio norvegiana"
 
 #: data/about.cfg:398
-#, fuzzy
 msgid "Polish Translation"
-msgstr "+Reditio polonica"
+msgstr "Reditio polonica"
 
 #: data/about.cfg:414
-#, fuzzy
 msgid "Portuguese Translation"
-msgstr "+Reditio lusitana (brasiliana)"
+msgstr "Reditio lusitana"
 
 #: data/about.cfg:421
-#, fuzzy
 msgid "Portuguese (Brazil) Translation"
-msgstr "+Reditio lusitana (brasiliana)"
+msgstr "Reditio lusitana (brasiliana)"
 
 #: data/about.cfg:435
-#, fuzzy
 msgid "Russian Translation"
-msgstr "+Reditio russica"
+msgstr "Reditio ruthena"
 
 #: data/about.cfg:445
-#, fuzzy
 msgid "Serbian Translation"
-msgstr "+Reditio serba"
+msgstr "Reditio serba"
 
 #: data/about.cfg:452
-#, fuzzy
 msgid "Slovak Translation"
-msgstr "+Reditio slovaca"
+msgstr "Reditio slovaca"
 
 #: data/about.cfg:459
-#, fuzzy
 msgid "Slovenian Translation"
-msgstr "+Reditio slovena"
+msgstr "Reditio slovena"
 
 #: data/about.cfg:466
-#, fuzzy
 msgid "Spanish Translation"
-msgstr "+Reditio hispanica"
+msgstr "Reditio hispanica"
 
 #: data/about.cfg:479
-#, fuzzy
 msgid "Swedish Translation"
-msgstr "+Reditio Suecica"
+msgstr "Reditio Suecica"
 
 #: data/about.cfg:491
-#, fuzzy
 msgid "Turkish Translation"
-msgstr "+Reditio turca"
+msgstr "Reditio turca"
 
 #: data/about.cfg:502 data/help.cfg:252
 msgid "Contributors"
 msgstr "+Qui confert"
 
 #: data/about.cfg:517
-#, fuzzy
 msgid "Bots"
-msgstr "+Automata"
+msgstr "Automata"
 
 #: data/amla.cfg:8
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr ", PE MAX + XXV pro cento"
 
 #: data/amla.cfg:8
 msgid "Max HP bonus +"
@@ -658,23 +610,21 @@ msgstr "Curatio Plena"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
 #: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
 #: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
 msgid "Campaign Designer"
-msgstr "Stipendium"
+msgstr "Inventor Stipendii"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
 msgstr "Dominus Equorum"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:16
-#, fuzzy
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
 "enemies, and their morning star crushes those who are left."
 msgstr ""
-"Optimus hominum camporum, hi Domini Equorum patrifamilias sunt et verentur "
-"ab omnibus, amicis et hostibus. Gladius eorum inimicos solitos interficere "
+"Optimus hominum camporum, Domini Equorum patrifamilias sunt et verentur ab "
+"omnibus, amicis et hostibus. Gladius eorum inimicos solitos interficere "
 "potest et aspergillum ceteros contundit."
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
@@ -1070,7 +1020,6 @@ msgid "Mounted Fighter"
 msgstr "Pugnator Equester"
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:30
-#, fuzzy
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -1078,7 +1027,7 @@ msgid ""
 "armies of the Clans."
 msgstr ""
 "Nobiles virorum camporum educantur cum ceteris equitibus ad essendum "
-"bellatores magnos. Tamen et educantur in ductu contubernalium, ii fiunt "
+"bellatores magnos. Tamen et educantur in ductu contubernalium, et ii fiunt "
 "Tribuni exercituum Gentium."
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:3
@@ -1134,9 +1083,8 @@ msgstr "ungues"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:25
 #: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
 #: data/campaigns/Under_the_Burning_Suns.cfg:32
-#, fuzzy
 msgid "Current Maintainer"
-msgstr "Propositum hic est:"
+msgstr "Sustentor in hoc tempore"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:74
@@ -1163,9 +1111,8 @@ msgstr ""
 #: data/units/Human_Loyalist_Duelist.cfg:89
 #: data/units/Human_Loyalist_Fencer.cfg:80
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:27
-#, fuzzy
 msgid "sabre"
-msgstr "percutere"
+msgstr "acinaces"
 
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:3
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:3
@@ -1490,6 +1437,14 @@ msgid ""
 "ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
 "often take underlings whom they lead to victory."
 msgstr ""
+"Draco Ardens est ens antiquus et terribilis qui de solito tantum in fabulis "
+"fantasticis et rumoribus tacitis vivit. Solitum est si saecula transiunt et "
+"nemo draconem in Occidiseptentrione vidit. Fere visus est tantum ut formam "
+"tenebrosam quae procul volat. Historiae certae sunt de vastationibus "
+"draconum ardentium: celerrime volantes alibus lentis pedum C, involant in "
+"praedam et eam ventis infernalibus ignis oppugnant. Quod halitum igneum "
+"effugit morsum saevum et caudam contundentem vereri debet. Dracones ardentes "
+"arguti sunt et crudeles. Saepe habent satelles quos ad victoriam ducunt."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:30
 msgid "bite"
@@ -1677,9 +1632,8 @@ msgstr "tactus"
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:42
 #: data/units/Undead_Necro_Ancient_Lich.cfg:102
 #: data/units/Undead_Necro_Lich.cfg:84
-#, fuzzy
 msgid "chill tempest"
-msgstr "unda gelida"
+msgstr "tempestas gelida"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:167
@@ -1804,7 +1758,6 @@ msgid "female^Silver Mage"
 msgstr "Striga Argentea"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:39
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -1846,13 +1799,14 @@ msgstr ""
 "scrutatus est, semper conatus dereliquerunt et numquam rursus de eo locutus "
 "es.\n"
 "\n"
-"Magi argentei physice solleriores sunt quam alii magi, et peritiae eorum "
-"certae sunt in proelio, si dux magum cogere potest eis uti.\n"
+"Magi argentei nonnumquam physice solleriores sunt quam alii magi, et "
+"peritiae eorum certae sunt in proelio, si dux magum cogere potest eis uti.\n"
 "\n"
 "Nota Praecipua: magi argentei oppugnationes a procul magicales sunt et "
-"semper probabilitatem bonam habent feriendi. Possunt quoque ianuas magicas "
-"inter duos pagos ilico conficere, etsi necesse est pagos esse de parte magi "
-"et ambos pagos vacuos."
+"semper probabilitatem bonam habent feriendi. Magi Argenti se modulantur ad "
+"naturam magicam et repugnant optime damnum physicale. Possunt quoque ianuas "
+"magicas inter duos pagos ilico conficere, etsi necesse est pagos esse de "
+"parte magi et ambos pagos vacuos."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:122
 #: data/units/Human_Mage.cfg:121 data/units/Human_Mage_Silver.cfg:151
@@ -1881,6 +1835,22 @@ msgid ""
 "a high chance of hitting an opponent. The staff of a necromancer is marked "
 "with the plague, and any foe struck down by it will rise again in unlife."
 msgstr ""
+"Unus ex circulis maximis illius quod appellatur 'magica negra' est ars "
+"necromantiae, facultas terribilis reanimandi mortuos cum vita ficta. "
+"Inventum erat cum ramis terribilibus et causa fuit condemnationis "
+"humanitatis magicae negrae, quia armamentarium novum immane dedit metui.\n"
+"\n"
+"Haec facultas, in omni aspectu, gradus primus est fraudens mortem a pretio "
+"ultimo. Est gradus maximus potestatis quem magus tenebrarum attingere potest "
+"priusquam comprensionem humanitatis ipsius perserit, sed pallescet ante "
+"potestatem funestam qua utuntur Ossa Magorum. Atque corpora mortalia eorum "
+"fortiora facta sunt a magica discrepans a forma putrificans et debilis "
+"Ossium Magi.\n"
+"\n"
+"Nota Praecipua: Oppugnationes evocatoris mortuorum a procul magicae sunt et "
+"semper probabilitatem bonam habent ferendi. Virga evocatoris mortuorum "
+"pestilentia signatur, et omnis inimicus qui ab ea interficitur reanimabitur "
+"ut inmortuus."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:56
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:57
@@ -1901,7 +1871,6 @@ msgid "Hard"
 msgstr "Difficilis"
 
 #: data/english.cfg:9
-#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -1922,7 +1891,6 @@ msgstr ""
 "condicione."
 
 #: data/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -1947,7 +1915,6 @@ msgid "Orcs"
 msgstr "Orci"
 
 #: data/english.cfg:20
-#, fuzzy
 msgid "race^Undead"
 msgstr "Inmortuum"
 
@@ -2094,9 +2061,8 @@ msgid "Terrains"
 msgstr "Agri"
 
 #: data/help.cfg:59
-#, fuzzy
 msgid "Commands"
-msgstr "Dux"
+msgstr "Imperii"
 
 #: data/help.cfg:65 data/help.cfg:71 data/help.cfg:264
 msgid "Overview"
@@ -2172,7 +2138,6 @@ msgstr ""
 "<italic>text=Facilis</italic> incipere velis."
 
 #: data/help.cfg:85
-#, fuzzy
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -2396,7 +2361,6 @@ msgid "Movement"
 msgstr "Motus"
 
 #: data/help.cfg:137
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -2418,7 +2382,11 @@ msgstr ""
 "defensus quem unitas in eo hexagone habeat. Si murem super hexagonem "
 "obscuratem movetur, etiam numerus tractuum necessarius ad hoc hexagone "
 "attingendum monstratur, cliccum hoc efficit ut unitas in directione huis "
-"hexagonis movetur in itinere celerrimo in hoc et tractibus subsequentibus."
+"hexagonis movetur in itinere celerrimo in hoc et tractibus subsequentibus. "
+"Si non omni motu unitatis utitur in primo motu, rursum moveri potest. Hoc "
+"utile est, si duae unitates locum mutare debent. Omni motu utabitur si "
+"oppugnat unitas. Si motus in pago alieno terminat, unitas non potest plus se "
+"movere, sed oppugnare potest."
 
 #: data/help.cfg:139
 msgid ""
@@ -2481,7 +2449,7 @@ msgstr ""
 
 #: data/help.cfg:148
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "Integumentum et Caligo Belli"
 
 #: data/help.cfg:149
 msgid ""
@@ -2495,6 +2463,15 @@ msgid ""
 "locations adjacent to those within one turn's move (ignoring zones of "
 "control and enemy units)."
 msgstr ""
+"In nonnullis missionibus, partes chartae occultabantur. Duae sunt "
+"machinationes, et possunt simul aut separatim apparere. Integumentum "
+"occultat et agros et unitates in quodam loco. Postquam sublatum est, semper "
+"visibilis est locus. Caligo Belli occultat tantum unitates et possessionem "
+"pagorum (nisi a te aut sociis tuis). Caligo Belli tollitur ad tempus cum "
+"unitates tuae prope sunt, sed regreditur cum procul sunt. Et Integumentum et "
+"Caligo Belli ab unitatibus tolluntur. Quaeque unitas tollit eos in locis qui "
+"vicini sunt ad eos quos attingere potest unitas in uno tractu "
+"(praetermittens zona imperii et unitates hostium)."
 
 #: data/help.cfg:154
 msgid "Combat"
@@ -2719,7 +2696,6 @@ msgid "Time of Day"
 msgstr "Tempus Diei"
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -2811,7 +2787,6 @@ msgstr ""
 "eligere ex elencho optionum promotionis."
 
 #: data/help.cfg:214
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2837,9 +2812,12 @@ msgstr ""
 "maximum attingit, potest habere Promotionem Post Maximum Gradum (PPMG).\n"
 "PPMG unitatem mutat cum metam experientiae obtinuit, sed manet in gradu "
 "eodem. Effectus solitus PPMG est incrementare puncta salutis maxima III "
-"punctis quotiens C PE consequuntur. Nota bene: paucae unitates, ut "
-"Necrophagus, curantur ex effectibus PPMG. Unitates complures tantum bonum in "
-"punctis salutis maximis accipiunt."
+"punctis. Prima PPMG attingitur com C PE (LXXX pro unitatibus argutis). Omnis "
+"PPMG post primam difficilior erit, et utilius est conari unitatum ex "
+"gradibus inferioribus promovere.\n"
+"\n"
+"Nota bene: paucae unitates, ut Necrophagus, curantur ex effectibus PPMG. "
+"Unitates complures tantum bonum in punctis salutis maximis accipiunt."
 
 #: data/help.cfg:219
 msgid "Healing"
@@ -2890,7 +2868,6 @@ msgstr ""
 "troglodytae) medentur VIII PS omni tractu."
 
 #: data/help.cfg:225
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -2899,12 +2876,10 @@ msgid ""
 msgstr ""
 "\n"
 "Unitates medentes: Unitates cum lineamento <ref>dst=ability_heals "
-"text=Medetur</ref> VIII PS damni omni tractu medebuntur, et damnum Veneni "
-"impediunt. Tantum unitates ex parte propia possunt mederi si in hexagonibus "
-"vicinis sunt. Non possunt mederi plus quam IV PS pro unitate."
+"text=Medetur</ref> quemque unitatem sociam in hexagonis vicinis medebuntur, "
+"fere IV vel VIII PS pro tractu, aut damnum Veneni unitatis illiusimpediunt. "
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -2913,12 +2888,10 @@ msgid ""
 msgstr ""
 "\n"
 "Unitates sanantes: Unitates cum lineamento <ref>dst=ability_cures "
-"text=Sanat</ref> sanabunt maxime XVIII PS damni omni tractu, et Venenum "
-"curant. Tantum unitates vicinas et ex parte propia sanabuntur, usque ad VIII "
-"PS pro unitate."
+"text=Sanat</ref> Venenum curant in omnibus unitatibus vicinis sociis (loco "
+"medetionis, si etiam hanc facultatem habet)."
 
 #: data/help.cfg:228
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2929,9 +2902,8 @@ msgstr ""
 "\n"
 "\n"
 "Sanatio requiescendi combinat cum aliis formis sanationis, sed pagi, "
-"regeneratio, sanatio et medetio non combinant. Unitas quae sanat aut medetur "
-"plures unitates sanationem facit minus efficienter. Demum omnis unitas qui "
-"supervivit missionem plene sanabitur."
+"regeneratio, sanatio et medetio non combinant. Optione meliori utatur. Demum "
+"omnis unitas qui supervivit missionem plene sanabitur."
 
 #: data/help.cfg:233
 msgid "Income and Upkeep"
@@ -2950,7 +2922,6 @@ msgstr ""
 "Mercedes Impensamque."
 
 #: data/help.cfg:236
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2961,10 +2932,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Merces facilis est. Merces fundamentalis II nummi aurei pro tractu est. Omni "
-"pago cui imperas, unum nummum adiuncturm accipis. Ergo si decem pagos habes, "
-"accipies XII nummos auri omni tractu. Impensae minuent mercedem, ut infra "
-"descripturum est."
+"Merces facilis est. Merces fundamentalis II nummi aurei pro tractu est. "
+"Quoque pago cui imperas, unum nummum adiuncturm accipis. Ergo si decem pagos "
+"habes, accipies XII nummos auri omni tractu. Impensae minuent mercedem, ut "
+"infra descripturum est."
 
 #: data/help.cfg:238
 msgid ""
@@ -2986,7 +2957,6 @@ msgstr ""
 "primo et decem pagos, solvere debes II nummos omni tractu ut impensas."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3018,7 +2988,6 @@ msgid "Wrap Up"
 msgstr "Conclusio"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -3142,9 +3111,8 @@ msgid "Resilient"
 msgstr "Mollis"
 
 #: data/help.cfg:291
-#, fuzzy
 msgid "Resilient units have 10% +3 more HP than usual."
-msgstr "Unitates molles VII PS plures quam solita habent."
+msgstr "Unitates molles decem pro cento et tres PS plures quam solita habent."
 
 #: data/help.cfg:293
 msgid ""
@@ -3169,13 +3137,12 @@ msgid "Strong"
 msgstr "Fortis"
 
 #: data/help.cfg:299
-#, fuzzy
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
 "Unitates fortes I punctum plus damni efficiunt cuique oppugnationi felici in "
-"concursu, et II PS adiuncta habent."
+"concursu, et I PS adiunctum habent."
 
 #: data/help.cfg:301
 msgid ""
@@ -3228,7 +3195,6 @@ msgstr ""
 "tales unitates dimittere aut in mortem stultem mittere."
 
 #: data/help.cfg:314
-#, fuzzy
 msgid "trait^Undead"
 msgstr "Inmortuum"
 
@@ -3317,7 +3283,6 @@ msgid "Forest"
 msgstr "Silva"
 
 #: data/help.cfg:353
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3574,7 +3539,7 @@ msgstr ""
 
 #: data/help.cfg:467 data/terrain.cfg:343
 msgid "Rockbound Cave"
-msgstr ""
+msgstr "Caverna Saxosa"
 
 #: data/help.cfg:472
 msgid ""
@@ -3588,10 +3553,18 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
+"Ager cavernae a saxosae formatur ab aqua et vento, qui elementa erosiva "
+"trahunt quae saxum sculpunt. Est ut caverna subterranea saxosa quae impedit "
+"plurimas unitates sed defensum auget. Nani et Troglodytae, incolentes "
+"cavernarum, facile navigant hunc agrum in comparatione ceteris. Nani ob "
+"magnitudinem parvam usum plenum motus habent in hoc agro.\n"
+"\n"
+"Plurimae unitates habent circa L pro cento defensus in cavernis saxosis, sed "
+"equitates tantum XL. Nani habent XL pro cento defensum in his cavernis."
 
 #: data/help.cfg:477 data/terrain.cfg:374
 msgid "Mushroom Grove"
-msgstr ""
+msgstr "Nemus Fungorum"
 
 #: data/help.cfg:482
 msgid ""
@@ -3605,6 +3578,15 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"Nemi fungorum sunt silvae subterraneae fungorum immanum quae vigent in "
+"obscuritate humida.  Plurimae unitates difficultatem habent navigandi in "
+"solo molli fungorum parvorum, sed bene obtectantur a stipitibus magnis.  "
+"Equites tamen egent libertate motus in proelio ut in luto.  Unitates "
+"inmortuorum affinitatem habent putrescentibus et bene agunt in silvis "
+"fungorum.\n"
+"\n"
+"Plurimae unitates habent L vel LX pro cento defensus in nemis fungorum, sed "
+"equites tantum XX."
 
 #: data/help.cfg:487 data/terrain.cfg:138
 msgid "Savanna"
@@ -3650,10 +3632,9 @@ msgstr ""
 
 #: data/help.cfg:506 data/terrain.cfg:429
 msgid "Chasm"
-msgstr ""
+msgstr "Fauces"
 
 #: data/help.cfg:508
-#, fuzzy
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -3738,33 +3719,40 @@ msgstr ""
 "obstinatissimum bene conoscitur."
 
 #: data/help.cfg:543
-#, fuzzy
 msgid "General commands"
-msgstr "Legatus"
+msgstr "Imperia Vulgaria"
 
 #: data/help.cfg:545
 msgid ""
 "\n"
 "Quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Missionem finire (sine incitationibus)"
 
 #: data/help.cfg:548
 msgid ""
 "\n"
 "Save the game (without prompting)."
 msgstr ""
+"\n"
+"Lusum servare (sine incitationibus)."
 
 #: data/help.cfg:551
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Lusum servare et missionem finire (sine incitationibus)."
 
 #: data/help.cfg:554
 msgid ""
 "\n"
 "Redraw the screen."
 msgstr ""
+"\n"
+"Scrinium remonstrare."
 
 #: data/help.cfg:557
 msgid ""
@@ -3772,17 +3760,21 @@ msgid ""
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
 "off by quitting the game."
 msgstr ""
+"\n"
+"Initiare rationem tuendi (non possibile in lusione cum pluribus lusoribus). "
+"Ratio finita est cum lusum finitum est."
 
 #: data/help.cfg:560
 msgid ""
 "\n"
 "Bring up theme selection menu."
 msgstr ""
+"\n"
+"Monstrare elenchum electionis adumbrationum."
 
 #: data/help.cfg:565
-#, fuzzy
 msgid "Multiplayer commands"
-msgstr "+Chartae Plurum Lusorum"
+msgstr "Imperia plurum lusorum"
 
 #: data/help.cfg:567
 msgid ""
@@ -3791,12 +3783,17 @@ msgid ""
 "controls that side needs to issue this command. If you don't provide side, "
 "'1' is assumed."
 msgstr ""
+"\n"
+"Mutare lusorem in parte inter lusorem humanum et IA. Lusor/cliens qui partem "
+"illam imperat hoc imperium dare debet. Si pars non datur, 'i' adsumitur."
 
 #: data/help.cfg:570
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
+"\n"
+"Facere mutos spectatores vel permittere sermonem."
 
 #: data/help.cfg:573
 msgid ""
@@ -3804,6 +3801,9 @@ msgid ""
 "Mute a specific observer. If no username is supplied the muted usernames are "
 "displayed."
 msgstr ""
+"\n"
+"Facere mutum spectatorem quendam. Si nomen utentis non datur, monstrantur "
+"nomina utentum mutorum."
 
 #: data/help.cfg:576
 msgid ""
@@ -3812,12 +3812,19 @@ msgid ""
 "a friendly way to remove someone who is having connection or other "
 "difficulties."
 msgstr ""
+"\n"
+"Removere lusorem in ludo cum pluribus lusoribus. Possunt rursum se ad lusum "
+"adiungere. Praesertim est via benigna removendi aliquem qui difficultates "
+"cum connexione vel aliis habet."
 
 #: data/help.cfg:579
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that username."
 msgstr ""
+"\n"
+"Removere et interdicere lusorem in lusione cum pluribus lusoribus, atque "
+"inscriptio PI qua utitur illud nomen utentis."
 
 #: data/help.cfg:582
 msgid ""
@@ -3825,12 +3832,17 @@ msgid ""
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nick of the player or observer)."
 msgstr ""
+"\n"
+"Mutare moderatorem partis (scribe hic numerum partis) ad nomen utentis "
+"(scribe hic cognomen lusoris ver spectatoris)."
 
 #: data/help.cfg:585
 msgid ""
 "\n"
 "Clear chat messages."
 msgstr ""
+"\n"
+"Tollere nuntios sermonis."
 
 #: data/items.cfg:264
 msgid ""
@@ -3981,6 +3993,13 @@ msgid ""
 "pick it up, yet the grass at your feet bursts into flame as you test the "
 "heft of this mighty weapon."
 msgstr ""
+"Haec lamina immanis facta est ante saecula a magistris fornacis dryadalum "
+"diu oblitis, qui adamantum caeruleum igne interiori magico imbuere "
+"potuerunt. Linguae flammae saltant in superficie, dantes adamanto caeruleo "
+"nitorem perfectum ut speculum. Cum manum in manubrium corieum sublucens "
+"pones, animat se gladius magno cum strepitu! Insolite non sentis calorem "
+"postquam eum carsit, sed herba circum pedes tuos accendit cum telum magnum "
+"librare conor."
 
 #: data/items.cfg:714
 msgid "Only the leader of an army can wield this sword!"
@@ -4013,9 +4032,8 @@ msgstr ""
 "id capere!"
 
 #: data/items.cfg:816
-#, fuzzy
 msgid "Zap"
-msgstr "Zap~"
+msgstr "Zap"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -4042,6 +4060,9 @@ msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
+"Bovis ,Fossa ,Vallis ,Angulum ,Iugum ,Frumentum ,Vulpes ,Lupus ,Saxum ,"
+"Vetus ,Comes ,Familia ,Collis ,Nomen ,Novus ,Corvus ,Aqua ,Striga ,Humidus ,"
+"Pons "
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -4055,16 +4076,14 @@ msgstr "II l - Fulgur"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
-#, fuzzy
 msgid ""
 "A duel map for super fast play. Recommended setting of 2 gold per village."
 msgstr ""
 "Charta duellis pro lusione celerrima. Impostatio suasa: II auri pro pago."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:31
-#, fuzzy
 msgid "2p - Caves of the Basilisk"
-msgstr "IV l - Rex Collis"
+msgstr "II l - Cavernae Basilisci"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:33
 msgid ""
@@ -4073,6 +4092,9 @@ msgid ""
 "victory is punctuated by the petrified forms of some of Wesnoth's greatest "
 "heroes."
 msgstr ""
+"Oportet unitates per agros divisivos regionis huius veritae movere, olim "
+"domus fabulosi Basilisci Antiqui. Via victoriae punctuatur a formis "
+"petrificatis heroum maximorum nonnullorum Occidiseptentrionis."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:84
 msgid ""
@@ -4097,6 +4119,27 @@ msgid ""
 "His home to steal the Basilisk's gold.\n"
 "(inscribed by Flametrooper)"
 msgstr ""
+"Venti caeli obscuri gelide flaverunt\n"
+"Excelsa luna, senex nox apparuerunt\n"
+"Acer draculus qui ausus domum\n"
+"Deserere ut Basilisci raperet aurum.\n"
+"\n"
+"Nocte obscura caelum ferbuit\n"
+"Omnem ignovit quod didicit\n"
+"Stultus sed acer ad cavernam volavit\n"
+"In ventris eius valde ignis arsit.\n"
+"\n"
+"Heu ardet numquam postea illa flamma,\n"
+"Quia Basiliscus clamavit voce magna\n"
+"congelitque draculum usque ad ossa \n"
+"et petrificatus manebit in saecula.\n"
+"\n"
+"Gelide flant hodie venti caeli,\n"
+"Dies sunt veteres, transiunt anni. \n"
+"Hic stat draculus qui ausus domum\n"
+"Deserere ut Basilisci raperet aurum.\n"
+"\n"
+"(a Equite Flammae inscriptum)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:99
 msgid ""
@@ -4109,6 +4152,14 @@ msgid ""
 "- - Seven Stones - and the Elven \n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"Gracilis figurae, manus sollertes\n"
+"- - Saxa Septem pendet et Undecim\n"
+"Hostes vix relinquit spes \n"
+"- - Saxa Septem pendet et Undecim\n"
+"Peritus arcus, Pernicies Draconum\n"
+"Occiditur hic inter Signa Saxorum\n"
+"- - Saxa Septem manent - et In-dryadalis\n"
+"(a Gauteamo inscriptum)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:110
 msgid ""
@@ -4127,6 +4178,18 @@ msgid ""
 "words: Good Gog, dog, are yer legs made of stone?!? \n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Blumus Ducus celebratus est inter familia cobolorum quia unus Luporum "
+"Dirorum montium domaverit, et virtutem habuit singularem. Tantum ductus et "
+"peritiae eius vitas cobolorum in regione hac servavit a minis hominum et "
+"dryadalum. Fama erat lupum eius L homines et C dryadales interfecisse. \n"
+"Ergo cum audivit de monstro quod in regione incoluit, naturale erat cum is "
+"solus lupitaret ad eo obviam eundem. Omnes coboli alii exspectaverunt ut is "
+"faciliter creaturam interfecisset et cadaver traxisset ad epulas.\n"
+"Res inopinata eum exspectavit. Cum primum Basiliscum vidit, Blumus Ducus "
+"metu subsidit. Conatur lupum vertere et effugere, sed non voluit movere. "
+"Appropinquante creatura clamavit voce magna verba ultima: Dei boni, canis, "
+"suntne crura tua saxa?!?\n"
+"(a Expilatore Dryadalum inscriptum)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:119
 msgid ""
@@ -4138,6 +4201,12 @@ msgid ""
 "arrived. \n"
 "(inscribed by Turin)"
 msgstr ""
+"Ab aeternis saeculis illic habitaverat in gurgite insectans pisces ranasque "
+"diversos atque nereios qui in dominium suum intraverunt. Lacus eius erat et "
+"nullius alterius, etsi non magnus, dominus erat. Tunc venit Basiliscus "
+"adspectans in oculos Serpentis. Et non mortuus erat Serpens et nondum "
+"vixerat. Ita venit novus dominus lacus.\n"
+"(a Turine inscriptum)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:128
 msgid ""
@@ -4149,6 +4218,13 @@ msgid ""
 "of his once great bearing and strength. \n"
 "(inscribed by Fynmiir)"
 msgstr ""
+"Heros acer ex Aetate Aurea Occidiseptentrionis eques magnus hic et dux "
+"hominum ad hoc locum sceleratum advenit in excursione contra orcos. Ignari "
+"rapti a creaturis foedis socii multi interfecti sunt, sed hic acriter "
+"pugnavit hostes multos interficiens. Sed heu! Basiliscus foedus eum "
+"petrificavit cum ultimum orcum occidit. Nunc tantum admonitum forte manet "
+"quod loquitur de fortitudine et magnitudine eius. \n"
+"(a Fynmiro inscriptum)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:139
 msgid ""
@@ -4168,6 +4244,19 @@ msgid ""
 "granted. \n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Bramvythlium Vosium semper considerabatur lentus taciturnusque etiam a "
+"Vosiis aliis. Plus quam alia Vosia fructum est stando solo in sole brachiis "
+"levatis, admirans pulchritudinem caeli vacui. Semel et confessus est "
+"desiderium suum maximum esse semper in gloria solis apricari.\n"
+"Paulo post tamen communitas localis Vosiorum audivit de aditu monstri "
+"terribilis, qui satis potens erat ut faciliter omnia paucorum Vosiorum quae "
+"regionem incoluerunt. Celeriter se moverunt ad aliam regionem (id est, "
+"celeriter Vosiis), sed Bramvythlium relictus est - in festinatione eorum "
+"nullum Vosium meminit eius et non ei de periculo nuntiaverunt.\n"
+"Deprehensum est a Basilisco et petrificatum priusquam bestiam noverat. Forma "
+"eius petrificata stat adhuc illic, calefacta a radiis solis sub caelo "
+"aperto. Desiderium maximum eius concessum est.\n"
+"(a Expilatore Dryadalum inscriptum)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:148
 msgid ""
@@ -4183,6 +4272,16 @@ msgid ""
 "enough, in possession of all of his teeth. \n"
 "(inscribed by Paterson)"
 msgstr ""
+"Hic bellator acer qui a Nagis Rilhonus nominatur, audivit de thesauro "
+"mirabili qui persus erat in his cavernis aquosis - hasta cuius apex ex dente "
+"Chakiksi Neyiyksi Basilisci Antiqui factus est qui iamdudum a heroe dryadli "
+"Eloralduile interfectus est. Secundum fabulam telum alicubi in fundo lacus "
+"huius iecit (Lacus Ruascolinus ex nomine Serpentis Maris qui illic "
+"habitavit). Se preparavit ad proelium cum Serpente sed bis valde deprensus "
+"est Rilhonus. Primum invenit formam petrificatam Ruascolini Serpentis. "
+"Postea valde viventem Chakiksum Neyiyksum invenit, qui mirum in modo omnes "
+"dentes possidebat.\n"
+"(a Filio Pateri inscriptum)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:170
 msgid ""
@@ -4202,6 +4301,21 @@ msgid ""
 "\n"
 "(inscribed by MJQ)"
 msgstr ""
+"Per unda et freta saxosa \n"
+"caerulea et alba \n"
+"traxit et trusit aestus \n"
+"et pisces cum planetis loqui didicit \n"
+"argente viridis \n"
+"magica \n"
+"currente ex anima eius in pelles algarum et conchas cochlearum \n"
+"cum caudam et manus torquevit \n"
+"carmina sua misit cucursum pedibus acinatis in harinis \n"
+"et nunc \n"
+"et nunc pausa insolitissima \n"
+"a saeculis \n"
+"oculos non movebit \n"
+"\n"
+"(a MJQ inscriptum)"
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
 msgid "2p - Charge"
@@ -4209,7 +4323,7 @@ msgstr "II l - Incurrere"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
-msgstr ""
+msgstr "II l - Ager Proelii Cynsauni"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
@@ -4217,13 +4331,15 @@ msgid ""
 "favor epic, large-scale duel matches. Recommended settings of 150 gold and 1 "
 "gold per village."
 msgstr ""
+"Multum est quod explorandum est in hoc agro immani pro lusoribus qui duelles "
+"epicas et permagnas favent. Impostationes suasae: CL auri et I aurum pro "
+"pago."
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
 msgstr "II l - Labitulum Onis"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
-#, fuzzy
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet. Recommended setting of 2 gold per village."
@@ -4237,7 +4353,6 @@ msgid "2p - Hamlets"
 msgstr "II l - Vici"
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:4
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Recommended setting of 2 gold per village."
@@ -4250,7 +4365,6 @@ msgid "2p - Hornshark Island"
 msgstr "II p - Insula Pristis Cornatae"
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
-#, fuzzy
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island. Recommended setting of 2 gold per village."
@@ -4263,7 +4377,6 @@ msgid "2p - Meteor Lake"
 msgstr "II p - Lacus Meteorolithi"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
-#, fuzzy
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region. Recommended setting of 2 gold per village."
@@ -4276,7 +4389,6 @@ msgid "2p - Sablestone Delta"
 msgstr "II l - Delta Saxorum Atrorum"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
-#, fuzzy
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers. Recommended setting of 2 gold per village."
@@ -4289,7 +4401,6 @@ msgid "2p - Silverhead Crossing"
 msgstr "II l - Transitus Caputis Argentei"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
-#, fuzzy
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map. Recommended setting of 2 gold per village."
@@ -4302,7 +4413,6 @@ msgid "2p - Sullas Ruins"
 msgstr "II l - Ruinae Sullae"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
-#, fuzzy
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire. Recommended "
@@ -4316,14 +4426,13 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:36
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:37
 msgid "Sulla's statue"
-msgstr ""
+msgstr "Signum Sullae"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
 msgstr "II l - Occidicratera"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:5
-#, fuzzy
 msgid ""
 "In Wesbowl, a player has to get any of the balls to the other player's end "
 "zone as often as possible. However, the other player can attack your units. "
@@ -4336,7 +4445,6 @@ msgstr ""
 "huius lusoris cum damno."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:10
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -4392,30 +4500,28 @@ msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "Exitus incertus! Puncta stant in fine: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:5
-#, fuzzy
 msgid "3p - Island of the Horatii"
-msgstr "IV l - Rex Collis"
+msgstr "III l - Insula Horatiorum"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
-#, fuzzy
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map. Recommended setting of 2 gold per village."
 msgstr ""
-"Necesse est lusoribus transire omne genus agri victoriam quaerentibus in hac "
-"charta multiplicum frontum duellis. Impostatio suasa: II auri pro pago."
+"Imperium super insula centrali fere clavis est victoriae in hac charta XXI x "
+"XXI tribus lusoribus (quisque contra quemque). Impostatio suasa: II auri pro "
+"pago."
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
 msgstr "III l - Morituri"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
-#, fuzzy
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map. Recommended setting of 2 gold per village."
 msgstr ""
-"Pars unica ex charta hac anguste definita vincens egredietur trium lusorum. "
+"Pars unica ex charta hac anguste definita trium lusorum vincens egredietur. "
 "Impostatio suasa: II auri pro pago."
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
@@ -4423,7 +4529,6 @@ msgid "3p - Triple Blitz"
 msgstr "III l - Fulgur Triplice"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
-#, fuzzy
 msgid ""
 "Three players come head to head on this water-cut battlefield. Recommended "
 "setting of 2 gold per village."
@@ -4436,7 +4541,6 @@ msgid "4p - Blue Water Province"
 msgstr "IV l - Provincia Aquae Caeruleae"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
-#, fuzzy
 msgid ""
 "It has been said that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
@@ -4453,28 +4557,24 @@ msgid "4p - Castle Hopping Isle"
 msgstr "IV l - Insula Saliendi ad Castella"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:11
-#, fuzzy
 msgid ""
 "Many closely placed and strategically located castles. Which one will you "
 "hop to? Small map for fast play. Recommended setting of 2 gold per village."
 msgstr ""
-"Multa castella prope collocata et idonee sita. Charta parva ad lusionem "
-"celerem. Imposita suasa: II auri pro pago, et lusores I et III contra "
-"lusores II et IV in II vs II."
+"Multa castella prope collocata et idonee sita. Ad quem saltabis? Charta "
+"parva ad lusionem celerem. Imposita suasa: II auri pro pago."
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
 msgstr "IV l - Concursus"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
-#, fuzzy
 msgid "Small map for 2 vs 2. Recommended setting of 2 gold per village."
-msgstr ""
-"Charta duellis pro lusione celerrima. Impostatio suasa: II auri pro pago."
+msgstr "Charta II contra II Impostatio suasa: II auri pro pago."
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
-msgstr ""
+msgstr "IV l - Crux Isari"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
 msgid ""
@@ -4482,27 +4582,30 @@ msgid ""
 "of units and planning of moves is important.  Teams set for players 1&4 v "
 "2&3 (northeast vs. southwest).  Designed for 75gp, 20 villages."
 msgstr ""
+"Charta valde parva II vs II.  Pugnum in campis angustis significat "
+"importantiam rotationis unitatum et meditationem motuum.  Partes sunt I et "
+"IV contra II et III (inter septentriones et orientem contra inter meridiem "
+"et occidentem). Impostationes suasae: LXXV auri, XX pagi."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 msgid "4p - King of the Hill"
 msgstr "IV l - Rex Collis"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2v2 as well. There are 36 villages. Recommended "
 "setting of 2gpv."
 msgstr ""
-"Necesse est lusoribus transire omne genus agri victoriam quaerentibus in hac "
-"charta multiplicum frontum duellis. Impostatio suasa: II auri pro pago."
+"Imperium super locum circa arcem centralem quaestuosum est in hac charta "
+"XXXVI x XXXVI quattuor lusoribus (quisque contra quemque). Idonea est etiam "
+"pro II contra II. XXXVI pagi adsunt. Impostatio suasa: II auri pro pago."
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
 msgstr "IV l - Stagnum"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
-#, fuzzy
 msgid ""
 "Four factions contend for dominance over this watery settlement. Recommended "
 "setting of 1 gold per village."
@@ -4511,33 +4614,33 @@ msgstr ""
 "Impostatio suasa: I aurum pro pago."
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:5
-#, fuzzy
 msgid "4p - Loris River"
-msgstr "II l - Trans Flumen"
+msgstr "IV l - Flumen Loris"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
 msgid ""
 "A 25x25 2v2 map centered around a river with keeps in opposite corners. "
 "Designed for 1&4 vs 2&3. There are 28 villages. Recommended setting of 2gpv."
 msgstr ""
+"Charta XXV x XXv, II vs II cum flumine in media parte et arces in angulis "
+"contrariis. Adumbrata ut I & IV pugnent contra II & III. XXVIII pagi adsunt. "
+"Impostatio suasa: II auri pro pago."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
-#, fuzzy
 msgid "4p - Morituri"
-msgstr "III l - Morituri"
+msgstr "IV l - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
 "setting of 2 gold per village."
 msgstr ""
-"Tres lusores conveniunt in hoc agro certaminis aqua secato. Impostatio "
-"suasa: II auri pro pago."
+"Quis emergebit ex finibus huius agri proelii periculosi? Impostatio suasa: "
+"II auri pro pago."
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:5
 msgid "4p - Paths of Daggers"
-msgstr ""
+msgstr "IV l - Viae Sicarum"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
 msgid ""
@@ -4545,6 +4648,10 @@ msgid ""
 "east vs west (1&4 vs 2&3), but works well with any teams or FFA.  2gpv. "
 "28villages."
 msgstr ""
+"Charta XXXV x XXVII cum V viis pugnae.  Adumbrata ut occidens contra "
+"orientem pugnet (I & IV vs II & III), sed etiam cum partibus aliis aut "
+"omnibus contra omnes valet. Impostationes suasae: II auri pro pago, XXVIII "
+"pagi."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:5
 msgid "4p - Siege Castles"
@@ -4556,13 +4663,15 @@ msgid ""
 "rivers. Works well 2v2 or FFA. There are approximately 45 villages. "
 "Recommended setting of 2gpv."
 msgstr ""
+"Charta IV lusorum XL x XXX ubi quattuor castelli magni stant coram locum in "
+"quo duo flumina in medium vergunt. Adsunt circiter XLV pagi. Impostationes "
+"suasae: partes II lusorum vel omnes contra omnes; II auri pro pago."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
 msgstr "IV l - Loca Deserta"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
-#, fuzzy
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses. Recommended setting of 1 "
@@ -4582,7 +4691,7 @@ msgstr "In hoc agro mixto contendunt quinque exercitus ut vincant."
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
-msgstr ""
+msgstr "VI l - Campus Crusatorum"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
 msgid ""
@@ -4591,6 +4700,9 @@ msgid ""
 "through the mountains, trees and rivers. Recommended setting of 1 gold per "
 "village."
 msgstr ""
+"Clamores hostiandi proelii iterum in hoc campo belli trito a tempore audiri "
+"possunt, ubi larvae miliorum bellatorum acrorum invisilbiliter per montes, "
+"arbores fluminaque volant. Impostatio suasa: I auri pro pago."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
@@ -4605,7 +4717,6 @@ msgid "6p - Smallolof"
 msgstr "VI l - Olovus Parvus"
 
 #: data/scenarios/multiplayer/6p_Smallolof.cfg:4
-#, fuzzy
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head. Recommended setting of 2 gold per "
@@ -4617,7 +4728,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
-msgstr ""
+msgstr "VI l - Sole Occidente Vaterluense"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
 msgid ""
@@ -4626,25 +4737,27 @@ msgid ""
 "having players 146 or 136 as a side also is interesting.  Designed for "
 "150gp, has 44 villages."
 msgstr ""
+"Charta LX x XXX pro III vs III.  Consilia flexibilia inter socios necesse "
+"est ne supernumeretur.  Partes sunt I, IV et V versus II, III et VI "
+"(septentriones versus meridiem), sed iucunda est etiam cum partibus I IV VI "
+"aut I III VI. Impostationes suasae: CL auri; XLIV pagi."
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
-#, fuzzy
 msgid "8p - Morituri"
-msgstr "III l - Morituri"
+msgstr "VIII l - Morituri"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish. Recommended setting of 2 gold per village."
 msgstr ""
-"Solus rei militaris peritus supererit in hoc campo proelii pernici et "
-"cohibenti, ubi sex exercitus inclusi pugnant. Impostatio suasa: II auri pro "
-"pago."
+"Lusio in partibus et rationes belli clavis sunt victoriae in hoc agro "
+"proelii insolito, ubi octo exercitus usque ad finem certant. Impostatio "
+"suasa: II auri pro pago."
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
-msgstr ""
+msgstr "IX l - Amor Memorabilis"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
 msgid ""
@@ -4653,6 +4766,11 @@ msgid ""
 "southwest).  There are very few vilages per player, so 3gpv is also "
 "recommended."
 msgstr ""
+"Valde parva charta III vs III vs III.  Horologium LX momentorum suasum ob "
+"numerum magnum lusorum.  Partes sunt I V IX vs II VI VII vs III IV VIII, id "
+"est septentriones vs inter meridiem et occidentem vs inter meridiem et "
+"orientem).  Pauci sunt pagi pro lusore, itaque suasa est impostatio III auri "
+"pro pago."
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:8
@@ -4717,7 +4835,6 @@ msgid "Underground"
 msgstr "Sub terra"
 
 #: data/schedules.cfg:98 data/schedules.cfg:109
-#, fuzzy
 msgid "Deep Underground"
 msgstr "Sub terra"
 
@@ -4726,153 +4843,182 @@ msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
+" Spiritus repugnantia insolita a damno habent et admodum lente se movent "
+"super aquas."
 
 #: data/special-notes.cfg:5
 msgid ""
 " This unit's holy attack deals tremendous damage to the undead, and even "
 "some to living creatures."
 msgstr ""
+" Oppugnatio sancta huius unitatis damnum vastum infligit in inmortuis, etiam "
+"nonnulli vivis."
 
 #: data/special-notes.cfg:8
 msgid ""
 " This unit is capable of basic healing, though it can only delay the effects "
 "of poison, not cure them entirely."
 msgstr ""
+" Haec unitas mederi potest, sed tantum eventus veneni retardare potest, non "
+"omnino curare."
 
 #: data/special-notes.cfg:11
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
-msgstr ""
+msgstr " Haec unitas unitates vicinas mederi potest et eas a veneno curare."
 
 #: data/special-notes.cfg:14
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
-msgstr ""
+msgstr " Haec unitas regenerat et semper se curat ut in villa."
 
 #: data/special-notes.cfg:17
 msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
+" Constantia huius unitatis damnum a nonnullis oppugnationibus minut, sed "
+"tantum in defensu."
 
 #: data/special-notes.cfg:20
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
-"Educati cum gladio et scorpione, Centuriones greges parvas militum humanorum "
-"ducunt, Oppugnationes eorum ordinantes.\n"
-"\n"
-"Nota Praecipua: Ob ductu Centurionis oppugnationes unitatum vicinorum "
-"maiorem damnum infligere possunt, sed tantum si sunt ex gradu inferiore."
+" Ob ductu huius unitatis oppugnationes unitatum vicinorum maiorem damnum "
+"infligere possunt, sed tantum si sunt ex gradu inferiore."
 
 #: data/special-notes.cfg:23
 msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
+" Peritiae ut excursor huius unitatis se permitit ignorare zona imperii "
+"hostium et ergo inimpedita circum eos se movere."
 
 #: data/special-notes.cfg:26
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr ""
+msgstr " Illustratio augeat lucem in hexagonis vicinis."
 
 #: data/special-notes.cfg:29
 msgid ""
 " This unit can teleport between any two villages instantly, though the "
 "player must control both, and the destination village must be unoccupied."
 msgstr ""
+" Haec unitas potest portam magicam inter duos pagos aperire potest, sed ambo "
+"a lusore controlatae esse debent, et pagus finalis non occupatus."
 
 #: data/special-notes.cfg:32
 msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
+" In silvis, peritiae huius unitatis insidiarum eam facit inivisibilem a "
+"hostiis, nisi vicina est inimico aut in hoc tractu oppugnavit."
 
 #: data/special-notes.cfg:35
 msgid " This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
+" Haec unitas noctu se occultare potest, relinquans vestigium nullum "
+"praesentiae."
 
 #: data/special-notes.cfg:38
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
+" Haec unitas in gurgite invisibiliter se movere potest, quia non eget aera a "
+"superficie."
 
 #: data/special-notes.cfg:41
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
+" Cum oppugnatione saeva utitur, haec unitas pugnat usque ad mortem sui vel "
+"hostis."
 
 #: data/special-notes.cfg:44
 msgid ""
 "  If someone with the same allegiance distracts an enemy, this unit may "
 "backstab, inflicting double damage, by creeping around behind that enemy."
 msgstr ""
+"  Si quis ex sociis inimicum distrahit, haec unitas in tergum percutere "
+"potest damnum duplice infligens, quia post inimicum repere potest."
 
 #: data/special-notes.cfg:47
 msgid " Foes who lose their life to the plague will rise again in unlife."
-msgstr ""
+msgstr " Inimicos qui a pestilenitia mortui erunt inmortui surgent."
 
 #: data/special-notes.cfg:50
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage."
 msgstr ""
+" Haec oppugnatio inimicos lentificare potest. Hoc minuit motum dimidia parte "
+"atque damnum oppugnationum."
 
 #: data/special-notes.cfg:53
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
+" Quia vivos in saxa convertere potest, haec unitas valde periculosa est."
 
 #: data/special-notes.cfg:56
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
+" Peritiae arcus huius unitatis probabilitatem bonam ei dat scopos ferendi, "
+"sed tantum in oppugnatione, non in defensu."
 
 #: data/special-notes.cfg:59
 msgid ""
 " The ranged attacks of this unit are magical, and always have a high chance "
 "of hitting an opponent."
 msgstr ""
+" Oppugnationes a procul huius unitatis magicae sunt et semper probabilitatem "
+"bonam habent ferendi adversarios."
 
 #: data/special-notes.cfg:62
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
+"Oppugnationes examinis huius unitatis minus funestae fiunt si socii examinis "
+"feriuntur."
 
 #: data/special-notes.cfg:65
-#, fuzzy
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"\n"
-"\n"
-"Nota Praecipua: Oppugnatio lanceae incurrentis Equitis Ordinis infligit "
-"damnum duplice et fit ut damnum receptum duplice fiet. Hoc non accedit in "
-"ulscicione defensu."
+" Oppugnatio incurrens infligit damnum duplice et fit ut damnum receptum "
+"duplice fiet. Hoc non accedit in ulscicione defensu."
 
 #: data/special-notes.cfg:68
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
+"In proelio haec unitas vitam ex victimis exhaurire potest ut salutem "
+"propriam renovet."
 
 #: data/special-notes.cfg:71
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
+"Longitudo teli huius unitatis permittit ut primus pulset in concursu, etiam "
+"in defensu."
 
 #: data/special-notes.cfg:74
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
+"Victimae veneni huius unitatis damnum perpetuo damnum patientur usque in "
+"pago aut a sanatore curantur."
 
 #: data/team_colors.cfg:4
 msgid "Red"
@@ -4895,9 +5041,8 @@ msgid "Orange"
 msgstr "Luteus"
 
 #: data/team_colors.cfg:34
-#, fuzzy
 msgid "Black"
-msgstr "< Rursus"
+msgstr "Niger"
 
 #: data/team_colors.cfg:40
 msgid "White"
@@ -4908,9 +5053,8 @@ msgid "Brown"
 msgstr "Fulvus"
 
 #: data/team_colors.cfg:52
-#, fuzzy
 msgid "Teal"
-msgstr "Pars"
+msgstr "Caeruleus illustris"
 
 #: data/terrain.cfg:11 data/themes/default.cfg:542
 #: src/multiplayer_create.cpp:67 src/multiplayer_lobby.cpp:361
@@ -4932,9 +5076,8 @@ msgid "Oasis"
 msgstr "Oasis"
 
 #: data/terrain.cfg:325
-#, fuzzy
 msgid "Dunes"
-msgstr "Vesper"
+msgstr "Tumuli"
 
 #: data/terrain.cfg:334
 msgid "Snow Hills"
@@ -4949,19 +5092,16 @@ msgid "Snow Forest"
 msgstr "Silva Nivis"
 
 #: data/terrain.cfg:405
-#, fuzzy
 msgid "Cave Lit"
-msgstr "Caverna"
+msgstr "Caverna Illustrata"
 
 #: data/terrain.cfg:414
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "Montes Deserti"
+msgstr "Montes Inexsuperabiles"
 
 #: data/terrain.cfg:445
-#, fuzzy
 msgid "Great Tree"
-msgstr "Troglodyta Magnus"
+msgstr "Arbor Magnus"
 
 #: data/terrain.cfg:464
 msgid "Encampment"
@@ -5036,14 +5176,12 @@ msgid "statuspanel^movement"
 msgstr "motus"
 
 #: data/themes/default.cfg:458
-#, fuzzy
 msgid "Replay"
-msgstr "remonstrare"
+msgstr "Remonstrare"
 
 #: data/themes/default.cfg:473
-#, fuzzy
 msgid "Play"
-msgstr "Lusores"
+msgstr "Ludere"
 
 #: data/themes/default.cfg:474
 #, fuzzy
@@ -5052,25 +5190,23 @@ msgstr " remonstratum"
 
 #: data/themes/default.cfg:487
 msgid "Stop"
-msgstr ""
+msgstr "Sistere"
 
 #: data/themes/default.cfg:488
 msgid "pause at end of turn"
 msgstr ""
 
 #: data/themes/default.cfg:501
-#, fuzzy
 msgid "Reset"
-msgstr "Desertum"
+msgstr "Rursum Initium Facere"
 
 #: data/themes/default.cfg:502
 msgid "reset to beginning"
 msgstr ""
 
 #: data/themes/default.cfg:515
-#, fuzzy
 msgid "Next Turn"
-msgstr "Tractus"
+msgstr "Tractus Insequens"
 
 #: data/themes/default.cfg:516
 #, fuzzy
@@ -5078,9 +5214,8 @@ msgid "play turn"
 msgstr "pro tractu"
 
 #: data/themes/default.cfg:529
-#, fuzzy
 msgid "Next Side"
-msgstr "Insequens"
+msgstr "Pars Insequens"
 
 #: data/themes/default.cfg:530
 #, fuzzy
@@ -5088,9 +5223,8 @@ msgid "play side turn"
 msgstr "pro tractu"
 
 #: data/themes/default.cfg:566
-#, fuzzy
 msgid "Skip animation"
-msgstr "+Reditio slovaca"
+msgstr "Animationem praeterire"
 
 #: data/themes/default.cfg:670
 msgid "Act."
@@ -5131,7 +5265,6 @@ msgstr ""
 "repugnantiam unitas habet contra oppugnantibus diversorum generum."
 
 #: data/tips.cfg:4
-#, fuzzy
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -5143,7 +5276,6 @@ msgstr ""
 "iam electo in angulo summo dextro scrinii monstratur."
 
 #: data/tips.cfg:5
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -5152,17 +5284,16 @@ msgid ""
 msgstr ""
 "Unitates venenatae VIII puncta salutis omni tractu amittunt, sed non ex "
 "veneno morientur: venenum eas numquam sub I punctum salutis minuet. Unitates "
-"venenatae sanari possunt si moventur ad pagum aut ponuntur in vicinia "
-"unitatis cum facultate 'sanare'."
+"venenatae sanari possunt si moventur ad pagum aut ponuntur in vicinis "
+"unitatis cum facultate 'sanat'."
 
 #: data/tips.cfg:6
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
-"Unitates ex missione praeterita uti potes si 'Revocare' ex tabula lusi "
+"Unitatibus ex missione praeterita uti potes si 'Revocare' ex tabula lusi "
 "elegis. Unitates easdem revocans iterum atque iterum, potes exercitum "
 "potentem et doctum aedificare."
 
@@ -5179,7 +5310,6 @@ msgstr ""
 "satis peritae ut zonas has praetermittant."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -5199,7 +5329,6 @@ msgstr ""
 "sanantur."
 
 #: data/tips.cfg:10
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
@@ -5262,13 +5391,11 @@ msgstr ""
 "expendibiles in partes nonnullos mittere unitates hostium detentum."
 
 #: data/tips.cfg:17
-#, fuzzy
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr "Noli timere regredi et redisponere, saepe clavis victoriae est."
 
 #: data/tips.cfg:18
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -5293,7 +5420,6 @@ msgstr ""
 "eorum volunt ut illic conscibere possis."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
@@ -5361,14 +5487,12 @@ msgstr ""
 "necessitate oppugnationis propriae."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also halves "
 "the damage they do on all attacks."
 msgstr ""
 "Facultas oppugnationis 'lentifacere' efficit ut unitates inimicae lentius "
-"movuntur atque unam oppugnationem tollit, quae aliter recipiant. Ergo valde "
-"valens est contra unitates quae paucas oppugnationes fortes habent."
+"movuntur atque damnum omnium oppugnationum bipartit."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -5397,6 +5521,10 @@ msgid ""
 "progressively harder for each AMLA the unit receives, however. Thus, it is "
 "often more useful to try to advance your lower level units."
 msgstr ""
+"Unitates possunt habere Promotiones Post Maximum Gradum (PPMG), quae de "
+"solito incrementant puncta salutis maxima III punctis. Omnis PPMG post "
+"primam difficilior erit, et saepe utilius est conari unitatum ex gradibus "
+"inferioribus promovere."
 
 #: data/tips.cfg:34
 msgid ""
@@ -5404,6 +5532,9 @@ msgid ""
 "the Help Wesnoth button.  This information is vital so we can adjust "
 "campaign difficulty."
 msgstr ""
+"Potes Circulo Occidiseptentrionis summarium incerti auctoris progressus tui "
+"mittere si in bullam cliccas 'Occidiseptentrionem Adiuvare'. Hi nuntii "
+"maximi momenti sunt ut difficultatem stipendiorum accomodemus."
 
 #: data/tips.cfg:35
 msgid ""
@@ -5411,12 +5542,18 @@ msgid ""
 "limited by its maximum movement. Remember this when deciding what unit is "
 "best to scout specific types of terrain."
 msgstr ""
+"In chartis cum caligine belli vel integumento, conspectus unitatis a motu "
+"maximo limitatur. Huius meministi cum decidas quae unitas optima est "
+"explorationi in agris diversis."
 
 #: data/tips.cfg:36
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
+"Prope omnem iconem et omne verbum in scrinio lusionis Occidiseptentrionis "
+"habet apicem implementi. Si murem super unum moveris, nuntios descriptioneve "
+"de eo accipies."
 
 #: data/traits.cfg:6
 msgid "loyal"
@@ -5455,32 +5592,30 @@ msgid "resilient"
 msgstr "mollis"
 
 #: data/tutorial/units/Fighteress.cfg:5 data/tutorial/units/Fighteress.cfg:53
-#, fuzzy
 msgid "female^Fighter"
-msgstr "Striga"
+msgstr "Pugnatrix"
 
 #: data/tutorial/units/Quintain.cfg:3
-#, fuzzy
 msgid "Quintain"
-msgstr "Montes"
+msgstr "Pupa Exercitationis"
 
 #: data/tutorial/units/Quintain.cfg:13
 msgid ""
 "Quintains are used to practice swordplay and jousting on.  It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
+"Pupibus utitur in exercitatione artis gladii aut lanceae.  Valde insolitum "
+"sit, si oppugnarent."
 
 #: data/tutorial/units/Quintain.cfg:20
-#, fuzzy
 msgid "flail"
-msgstr "cauda"
+msgstr "fustis"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
 msgstr "Navis Veligera"
 
 #: data/units/Boat_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Even people happily living in their homes eventually need some kind of "
 "transport through the seas, even if only to go fishing or to trade goods. "
@@ -5636,7 +5771,6 @@ msgid "Drake Flameheart"
 msgstr "Cor Flammae Draculorum"
 
 #: data/units/Drake_Flameheart.cfg:27
-#, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves, have veins which course with fire rather than blood. "
@@ -5650,15 +5784,13 @@ msgstr ""
 "ignis eorum fidem dat huic rationi, sed ratione ulla nemo contatus est unum "
 "eorum secare ut id demonstet.\n"
 "\n"
-"Nota Praecipua: Ob ductu Cordis Flammae oppugnationes unitatum vicinorum "
-"maiorem damnum infligere possunt, sed tantum si sunt ex gradu inferiore."
+"Nota Praecipua: "
 
 #: data/units/Drake_Flare.cfg:3
 msgid "Drake Flare"
 msgstr "Flamma Draculorum"
 
 #: data/units/Drake_Flare.cfg:26
-#, fuzzy
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
@@ -5670,8 +5802,7 @@ msgstr ""
 "Qui dicuntur 'flammae' ab hostibus sunt draculi qui sperant hos duces et in "
 "bello et in pace esse.\n"
 "\n"
-"Nota Praecipua: Ob ductu Flammae oppugnationes unitatum vicinorum maiorem "
-"damnum infligere possunt, sed tantum si sunt ex gradu inferiore."
+"Nota Praecipua: "
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
@@ -5767,7 +5898,6 @@ msgid "Drake Slasher"
 msgstr "Caeditor Draculorum"
 
 #: data/units/Drake_Slasher.cfg:20
-#, fuzzy
 msgid ""
 "Slashers are clashers who have chosen to master the use of a Halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
@@ -5781,7 +5911,9 @@ msgstr ""
 "hasta. Magnitudo eorum eis permittit telo magnitudinis paris uti, satis "
 "magnum ut equum transfigere possint ut homo aperem. Exercitio eorum atque "
 "auxit peritias defensivas et patientiam, praestantias super consobrinos "
-"Gladiatores."
+"Gladiatores.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Drake_Slasher.cfg:76 data/units/Drake_Slasher.cfg:152
 #: data/units/Drake_Warden.cfg:82 data/units/Drake_Warden.cfg:138
@@ -5795,7 +5927,6 @@ msgid "Drake Warden"
 msgstr "Praefectus Draculorum"
 
 #: data/units/Drake_Warden.cfg:21
-#, fuzzy
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
 "the most able Slashers. They have forged their might such that few warriors "
@@ -5807,7 +5938,9 @@ msgstr ""
 "Praefectus est fastigium ordinis concursorum, excolatus ex Caeditoribus "
 "optimis. Fortitudinem ita fabricati sunt ut pauci milites in terra hac "
 "contra eos stare audent. Tela electionis eorum est bipennis, qua ad effectum "
-"magnum utuntur."
+"magnum utuntur.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Drake_Warrior.cfg:3
 msgid "Drake Warrior"
@@ -5828,7 +5961,6 @@ msgid "Dwarvish Berserker"
 msgstr "Nanus Saevissimus"
 
 #: data/units/Dwarvish_Berserker.cfg:19
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
 "all defense in exchange for massive damage against their enemies.\n"
@@ -5836,8 +5968,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Nani genus sunt pugnatorum potentum. Nani Saevissimi obliviscuntur tutelae "
-"omnis pro damno magno contra hostes suos. Proelio intrato oppugnant Nani "
-"Saevissimi ferociter, pergentes usque ad mortem suum aut mortem hostis."
+"omnis pro damno magno contra hostes suos.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Dwarvish_Berserker.cfg:37 data/units/Dwarvish_Ulfserker.cfg:36
 msgid "berserker frenzy"
@@ -5911,7 +6044,6 @@ msgid "Dwarvish Guardsman"
 msgstr "Custos Nanorum"
 
 #: data/units/Dwarvish_Guardsman.cfg:18
-#, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
@@ -5921,7 +6053,9 @@ msgid ""
 msgstr ""
 "Nani mollissimi nonnumquam in exercitu Nanorum Custodes ingrediuntur. Lenti "
 "et oppugnatione forti carentes, custodiunt cornua Exercitus, damnum magnum "
-"ferentes et hastas graves in hostes iactantes in defensione."
+"ferentes et hastas graves in hostes iactantes in defensione.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -5976,7 +6110,6 @@ msgid "Dwarvish Sentinel"
 msgstr "Vigil Nanorum"
 
 #: data/units/Dwarvish_Sentinel.cfg:19
-#, fuzzy
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks.\n"
@@ -5984,14 +6117,15 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Vigil, cum scuto ingente et magna virtu, non dedere vult sub etiam "
-"oppugnationibus fortissimis hostium."
+"oppugnationibus fortissimis hostium.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
 msgstr "Nanus Robustus"
 
 #: data/units/Dwarvish_Stalwart.cfg:18
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -6001,7 +6135,9 @@ msgid ""
 msgstr ""
 "Robusti post multos annos in proelio scuta nova et arma fortia ex relictis "
 "ab hostibus fabricati sunt. Etsi lenti sunt, ob mollitiam et fortitudinem "
-"metuti sunt."
+"metuti sunt.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -6075,7 +6211,6 @@ msgid "Dwarvish Ulfserker"
 msgstr "Nanus Saevus"
 
 #: data/units/Dwarvish_Ulfserker.cfg:18
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these in battle: they persist until either their enemy is dead "
@@ -6086,7 +6221,9 @@ msgid ""
 msgstr ""
 "Nani genus vetustum pugnatorum potentum sunt. Nani Saevi ferocissimi eorum "
 "sunt in pugna: oppugnant sine mora usque ad mortem proprium aut mortem "
-"hostis, neglegentes vulnera propria."
+"hostis, neglegentes vulnera propria.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
@@ -6116,7 +6253,6 @@ msgid "Elvish Avenger"
 msgstr "Vindex Dryadalis"
 
 #: data/units/Elvish_Avenger.cfg:24
-#, fuzzy
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -6139,8 +6275,7 @@ msgstr ""
 "Hoc nonnumquam dictum est ultio pro fratribus mortuis in proelio. Etsi ratio "
 "non sic inventa est, descriptio haec non parum diligens est.\n"
 "\n"
-"Nota Praecipua: peritia vindicum in silvis eos facit inivisibiles hostibus "
-"nisi iuxta eos stant aut vindex se revelat oppugnans."
+"Nota Praecipua:"
 
 #: data/units/Elvish_Avenger.cfg:222
 msgid "female^Elvish Avenger"
@@ -6151,7 +6286,6 @@ msgid "Elvish Captain"
 msgstr "Praefectus Dryadalis"
 
 #: data/units/Elvish_Captain.cfg:27
-#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. This is quite at odds with "
@@ -6168,8 +6302,7 @@ msgstr ""
 "voluntatis accipere sapientiam ducum et inclinationis eligere duces dignos "
 "est vis tacitus dryadalum.\n"
 "\n"
-"Nota Praecipua: Ob ductu Praefecti oppugnationes unitatum vicinorum maiorem "
-"damnum infligere possunt, sed tantum si sunt ex gradu inferiore."
+"Nota Praecipua: "
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
@@ -6195,7 +6328,6 @@ msgid "female^Elvish Druid"
 msgstr "Druida Dryadalis"
 
 #: data/units/Elvish_Druid.cfg:22
-#, fuzzy
 msgid ""
 "The magic of the wood elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they live can be quickened by a word of "
@@ -6213,9 +6345,7 @@ msgstr ""
 "Ingenium principale eorum est sanatio, et propter hanc facultatum druidae "
 "dryadalum a populo venerantur.\n"
 "\n"
-"Nota Praecipua: Oppugnatio inlaqueans druidae inimicos lentificat et minuit "
-"uno numerus oppugnationum in certamine. Druidae possunt unitates vicinas "
-"sanare et a veneno curare."
+"Nota Praecipua:"
 
 #: data/units/Elvish_Druid.cfg:55 data/units/Elvish_Shyde.cfg:58
 msgid "ensnare"
@@ -6230,7 +6360,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Incantatrix Oreadalis"
 
 #: data/units/Elvish_Enchantress.cfg:18
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
@@ -6240,7 +6369,9 @@ msgid ""
 msgstr ""
 "Incantatrices Oreadales dominae sunt magicae odiosae, hostes et flatibus "
 "venti gelidi ex plano aetheriali et radicibus magice vivefactis pulsantes; "
-"radicibus hostes in loco adligant."
+"radicibus hostes in loco adligant.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Elvish_Enchantress.cfg:92 data/units/Elvish_Shaman.cfg:56
 #: data/units/Elvish_Sorceress.cfg:92
@@ -6283,7 +6414,6 @@ msgid "Elvish Marksman"
 msgstr "Peritus Arcus Dryadales"
 
 #: data/units/Elvish_Marksman.cfg:23
-#, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -6302,8 +6432,7 @@ msgstr ""
 "\n"
 "Peritia pretium unicum habet: carentia exercitationis cum gladio.\n"
 "\n"
-"Nota Praecipua: ut periti arcus hi dryadales probabilitatem feriendi bonam "
-"habent, sed tantum si oppugnant."
+"Nota Praecipua:"
 
 #: data/units/Elvish_Marksman.cfg:115 data/units/Elvish_Sharpshooter.cfg:114
 msgid "longbow"
@@ -6318,7 +6447,6 @@ msgid "Elvish Marshal"
 msgstr "Imperator Dryadalis"
 
 #: data/units/Elvish_Marshal.cfg:28
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -6335,8 +6463,7 @@ msgstr ""
 "est alios docere. Certe in occasionibus infrequentibus in quibus dryadalis "
 "mentem in bellum intendit, ratio belli eventa est opus domini.\n"
 "\n"
-"Nota Praecipua: ob ductu Imperatoris oppugnationes unitatum vicinorum "
-"maiorem damnum infligere possunt, sed tantum si sunt ex gradu inferiore."
+"Nota Praecipua:"
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
@@ -6367,7 +6494,6 @@ msgid "Elvish Ranger"
 msgstr "Vagus Dryadalis"
 
 #: data/units/Elvish_Ranger.cfg:21
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a place he is not truly a part of. With elves, "
@@ -6383,7 +6509,6 @@ msgstr ""
 "peritiae arcus et gladii fiunt implementa potentia belli.\n"
 "\n"
 "Nota·Praecipua:"
-"·peritia·vagorum·in·silvis·eos·facit·inivisibiles·hostibus·nisi·iuxta·eos·stant·aut·vagus·se·revelat·oppugnans."
 
 #: data/units/Elvish_Ranger.cfg:219
 msgid "female^Elvish Ranger"
@@ -6394,7 +6519,6 @@ msgid "Elvish Rider"
 msgstr "Eques Dryadalis"
 
 #: data/units/Elvish_Rider.cfg:22
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal to any man. Though this certainly leaves people in "
@@ -6435,7 +6559,6 @@ msgid "female^Elvish Shaman"
 msgstr "Flamen Dryadalis"
 
 #: data/units/Elvish_Shaman.cfg:23
-#, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -6455,16 +6578,13 @@ msgstr ""
 "\n"
 "Facultates medicinales dryadalum sunt quoque notae, et utiles in proelio.\n"
 "\n"
-"Nota Praecipua: Oppugnatio inlaqueans flaminis inimicos lentificat et minuit "
-"uno numerus oppugnationum in certamine. Possunt mederi, sed effectus veneni "
-"tantum demorari possunt."
+"Nota Praecipua:"
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
 msgstr "Manuballistarius Tectus Dryadalis"
 
 #: data/units/Elvish_Sharpshooter.cfg:22
-#, fuzzy
 msgid ""
 "A story once wandered about, of an elf who stopped an arrow by shooting it "
 "out of the air with one of his own. It is a testament to the skill of the "
@@ -6478,9 +6598,7 @@ msgstr ""
 "esse. Manuballistarii Tecti Dryadales artis sagittariorum simpliciter "
 "dominantur.\n"
 "\n"
-"Nota Praecipua: "
-"ut·periti·arcus·hi·dryadales·probabilitatem·feriendi·bonam·habent,"
-"·sed·tantum·si·oppugnant."
+"Nota Praecipua:"
 
 #: data/units/Elvish_Sharpshooter.cfg:231
 msgid "female^Elvish Sharpshooter"
@@ -6491,7 +6609,6 @@ msgid "female^Elvish Shyde"
 msgstr "Hamadryas"
 
 #: data/units/Elvish_Shyde.cfg:22
-#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -6505,9 +6622,7 @@ msgstr ""
 "procuratrices formosae silvarum dryadalum exemplum maximum sunt gratiae et "
 "mysteriae populi earum.\n"
 "\n"
-"Nota Praecipua: Oppugnatio inlaqueans hamadryadis inimicos lentificat et "
-"minuit uno numerus oppugnationum in certamine. Hamadyades possunt unitates "
-"vicinas sanare et a veneno curare."
+"Nota Praecipua:"
 
 #: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:26
 msgid "faerie touch"
@@ -6518,7 +6633,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Striga Oreadalis"
 
 #: data/units/Elvish_Sorceress.cfg:18
-#, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
@@ -6528,17 +6642,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Strigae Dryadales studium curationis vitant pro artibus magicis plus "
+"Strigae Oreadales studium curationis vitant pro artibus magicis plus "
 "ferocibus. Periti sunt in pugna ex procul. Oppugnatio impeditionis insignite "
 "validior quam prius, et flatos venti aetherialis frigidi evocare possunt ut "
-"adversantes percutant."
+"adversantes percutant.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
 msgstr "Hamaoreas"
 
 #: data/units/Elvish_Sylph.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
 "developed their faerie side, they transform into creatures of both worlds, "
@@ -6548,7 +6663,9 @@ msgid ""
 msgstr ""
 "Hamaoreades sunt progenies pulchritudinis in planitie mortali. Partem "
 "nymphalem plene evolverunt, se transformantes in creaturas utrius mundi. "
-"Gestant magicam potentem contra hostes."
+"Gestant magicam potentem contra hostes.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Elvish_Sylph.cfg:55
 msgid "gossamer"
@@ -6559,7 +6676,6 @@ msgid "Direwolf Rider"
 msgstr "Lupes Dirus"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:21
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the garden variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -6584,8 +6700,7 @@ msgstr ""
 "ungues anteriores ungunt, non dissimile veneno sicariorum orcorum, ergo "
 "laceratio unguibus eorum ictus acerbissimus est.\n"
 "\n"
-"Nota Praecipua: qui unguibus lupi diri laceratur venenabitur; victimae huius "
-"veneni adsidue damnabuntur usque sanantur in pago vel a sanatore."
+"Nota Praecipua:"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:39 data/units/Goblin_Knight.cfg:39
 #: data/units/Goblin_Wolf_Rider.cfg:70 data/units/Monster_Cave_Spider.cfg:41
@@ -6599,7 +6714,6 @@ msgid "Goblin Impaler"
 msgstr "Cobalus Infigens"
 
 #: data/units/Goblin_Impaler.cfg:18
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as fodder for their enemy's front line. Those "
 "who have somehow managed to survive invariably equip themselves to continue "
@@ -6613,8 +6727,7 @@ msgstr ""
 "compensare brachiis brevibus, et armatura melior iuvat protegere formas "
 "exiguas eorum.\n"
 "\n"
-"Nota Praecipua: longitudo teli permittit ut infigens primum oppugnet in "
-"certamine, etsi defensor est."
+"Nota Praecipua:"
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -6644,7 +6757,6 @@ msgid "Goblin Pillager"
 msgstr "Expilator Cobalorum"
 
 #: data/units/Goblin_Pillager.cfg:19
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -6657,8 +6769,7 @@ msgstr ""
 "partibus subsidiariis funguntur; cremant domus et agros hostis et retia "
 "gerunt quae vastationem efficiunt in defensoribus aut ulciscoribus.\n"
 "\n"
-"Nota Praecipua: qui in reti inlaqueatus est lentificatur et minuitur uno "
-"numerus oppugnationum in certamine."
+"Nota Praecipua:"
 
 #: data/units/Goblin_Pillager.cfg:40
 msgid "torch"
@@ -6670,12 +6781,10 @@ msgid "net"
 msgstr "rete"
 
 #: data/units/Goblin_Rouser.cfg:3
-#, fuzzy
 msgid "Goblin Rouser"
-msgstr "Cobalus Infigens"
+msgstr "Cobalus Adrigens"
 
 #: data/units/Goblin_Rouser.cfg:25
-#, fuzzy
 msgid ""
 "Standard bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -6685,12 +6794,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Gradus Imperatoris inter aestimatissimos in exercitu humanitatis est, et qui "
-"eum fert multas probationes ignis superavit, virtutem nonnullum monstrans in "
-"proelio et facultatem rationis belli.\n"
+"Portatores vexilli insoliti sunt inter cobalos. Cobalus qui proelia satis "
+"supervivit ut veteranus nominatur iam rarus est, sed etiam rarius est si "
+"cobali alii hunc statutem veterani verentur. Stimuli furiosi Adrigentis "
+"iuniores in proelio durat ut ante mortum saevius et longius pugnent.\n"
 "\n"
-"Nota Praecipua: Ob ductu Imperatoris oppugnationes unitatum vicinorum "
-"maiorem damnum infligere possunt, sed tantum si sunt ex gradu inferiore."
+"Nota Praecipua:"
 
 #: data/units/Goblin_Spearman.cfg:3
 msgid "Goblin Spearman"
@@ -6800,12 +6909,14 @@ msgstr ""
 #: data/units/Human_Horse_Grand_Knight.cfg:21
 #: data/units/Human_Horse_Knight.cfg:20 data/units/Human_Horse_Lancer.cfg:21
 #: data/units/Human_Horseman.cfg:20
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
-msgstr "Praecipuum"
+msgstr ""
+"\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Human_Horse_Grand_Knight.cfg:73
 #: data/units/Human_Horse_Knight.cfg:72 data/units/Human_Horse_Lancer.cfg:25
@@ -6858,7 +6969,6 @@ msgid "Paladin"
 msgstr "Paladinus"
 
 #: data/units/Human_Horse_Paladin.cfg:21
-#, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to monastic "
 "orders, pledging their might to the cause of righteousness. Though not as "
@@ -6873,7 +6983,9 @@ msgstr ""
 "monasticos et fortitudine tantum in causa iustitiae utuntur. Quamquam minus "
 "magnificus est in campo proelii quam optimatus, Paladinus vis potens est in "
 "certamine et pietas eius ei dona alia praebet. Perniciosus est inmortuis et "
-"didicit mederi vulnera sociorum."
+"didicit mederi vulnera sociorum.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:151
 #: data/units/Human_Mage_of_Light.cfg:111 data/units/Mermaid_Diviner.cfg:92
@@ -6994,7 +7106,6 @@ msgid "Duelist"
 msgstr "Certatior"
 
 #: data/units/Human_Loyalist_Duelist.cfg:20
-#, fuzzy
 msgid ""
 "It is a peculiar fashion of Wesnoth's nobility, in that they typically "
 "enroll their sons into one of two orders of armigers, training them either "
@@ -7021,15 +7132,13 @@ msgstr ""
 "oneraturae et dictae ignominiosae, valde utiles sunt. Qui longe in ordinibus "
 "vivere vult saepe tribuit concessiones ad utilitatem et superessendam.\n"
 "\n"
-"Nota Praecipua: peritia in excurrendo permittit hi lanistae ultra inimicos "
-"emicare neglegentes zonas imperii."
+"Nota Praecipua:"
 
 #: data/units/Human_Loyalist_Fencer.cfg:3
 msgid "Fencer"
 msgstr "Lanista"
 
 #: data/units/Human_Loyalist_Fencer.cfg:20
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -7054,15 +7163,13 @@ msgstr ""
 "verbum, saltando in circulos circum milites ut pedites armatos, irridentes "
 "pretium solutum armatura gravi eorum.\n"
 "\n"
-"Nota Praecipua: peritia in excurrendo permittit lanistae ultra inimicos "
-"emicare neglegentes zonas imperii."
+"Nota Praecipua:"
 
 #: data/units/Human_Loyalist_General.cfg:3
 msgid "General"
 msgstr "Legatus"
 
 #: data/units/Human_Loyalist_General.cfg:33
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms they swore fealty to. Their "
@@ -7074,15 +7181,13 @@ msgstr ""
 "protegere debent in regnis humanis quibus serviunt. Peritia et experientia "
 "eorum satis est ut hae ordina egerant.\n"
 "\n"
-"Nota Praecipua: Ob ductu Legati oppugnationes unitatum vicinorum maiorem "
-"damnum infligere possunt, sed tantum si sunt ex gradu inferiore."
+"Nota Praecipua:"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:3
 msgid "Grand Marshal"
 msgstr "Imperator"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:29
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have surpassed many trials by fire, "
@@ -7095,15 +7200,13 @@ msgstr ""
 "eum fert multas probationes ignis superavit, virtutem nonnullum monstrans in "
 "proelio et facultatem rationis belli.\n"
 "\n"
-"Nota Praecipua: Ob ductu Imperatoris oppugnationes unitatum vicinorum "
-"maiorem damnum infligere possunt, sed tantum si sunt ex gradu inferiore."
+"Nota Praecipua:"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:3
 msgid "Halberdier"
 msgstr "Bipennatus"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:22
-#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -7132,8 +7235,7 @@ msgstr ""
 "tantum dolatis veteranis dare, qui se demonstraverunt peritiam habere ut eis "
 "recte utantur in campo belli.\n"
 "\n"
-"Nota Praecipua: longitudo teli permittit ut bipennatus primum oppugnet in "
-"certamine, etsi defensor est."
+"Nota Praecipua:"
 
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
@@ -7190,7 +7292,6 @@ msgid "Javelineer"
 msgstr "Pilatus"
 
 #: data/units/Human_Loyalist_Javelineer.cfg:19
-#, fuzzy
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
 "not kill, enemies at range. Some, however, take to them rather well, finding "
@@ -7208,15 +7309,13 @@ msgstr ""
 "facultatem proelii a longe. Saepe pilas in hostes iacere possunt sine metu "
 "ultionis, et nihilo minus terram in concursu tenere.\n"
 "\n"
-"Nota Praecipua: longitudo teli permittit ut pilati primum oppugnet in "
-"certamine, etsi defensor est."
+"Nota Praecipua:"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:3
 msgid "Lieutenant"
 msgstr "Centurio"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:28
-#, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks.\n"
@@ -7226,8 +7325,7 @@ msgstr ""
 "Educati cum gladio et scorpione, Centuriones greges parvas militum humanorum "
 "ducunt, Oppugnationes eorum ordinantes.\n"
 "\n"
-"Nota Praecipua: Ob ductu Centurionis oppugnationes unitatum vicinorum "
-"maiorem damnum infligere possunt, sed tantum si sunt ex gradu inferiore."
+"Nota Praecipua:"
 
 #: data/units/Human_Loyalist_Longbowman.cfg:3
 msgid "Longbowman"
@@ -7275,7 +7373,6 @@ msgid "Master at Arms"
 msgstr "Magister Telorum"
 
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:20
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -7301,15 +7398,13 @@ msgstr ""
 "magistri academiae militaris, honores ubi natura eorum immodesta non tantum "
 "accipitur sed etiam fortasse utilis est.\n"
 "\n"
-"Nota Praecipua: peritia in excurrendo permittit hi lanistae periti ultra "
-"inimicos emicare neglegentes zonas imperii."
+"Nota Praecipua:"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:3
 msgid "Pikeman"
 msgstr "Dolatus"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:19
-#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -7326,8 +7421,7 @@ msgstr ""
 "eget. Acies dolatorum perniciosa est equitibus incurrentibus, et cum "
 "disciplina idonea dolati plurimis peditibus praestare possunt.\n"
 "\n"
-"Nota Praecipua: longitudo teli permittit ut dolatus primum oppugnet in "
-"certamine, etsi defensor est."
+"Nota Praecipua:"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:60
 msgid "pike"
@@ -7399,7 +7493,6 @@ msgid "Spearman"
 msgstr "Hastatus"
 
 #: data/units/Human_Loyalist_Spearman.cfg:19
-#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a head, "
@@ -7415,8 +7508,7 @@ msgstr ""
 "scutum et nonnullas pilas, pars magna formant in plurimis exercitibus. Saepe "
 "in acie priori collocantur quasi sine exercitatione.\n"
 "\n"
-"Nota Praecipua: longitudo teli permittit ut hastatus primum oppugnet in "
-"certamine, etsi defensor est."
+"Nota Praecipua:"
 
 #: data/units/Human_Loyalist_Swordsman.cfg:3
 msgid "Swordsman"
@@ -7442,7 +7534,6 @@ msgid "Mage"
 msgstr "Magus"
 
 #: data/units/Human_Mage.cfg:22
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -7480,8 +7571,7 @@ msgstr ""
 "Fragiles corporis et carens omni consuetudine in certamine, artes magorum "
 "tamen valde utiles in proelio.\n"
 "\n"
-"Nota Praecipua: magi oppugnationes a procul magicales sunt et semper "
-"probabilitatem bonam habent feriendi."
+"Nota Praecipua:"
 
 #: data/units/Human_Mage.cfg:165
 msgid "female^Mage"
@@ -7492,7 +7582,6 @@ msgid "Arch Mage"
 msgstr "Magus Princeps"
 
 #: data/units/Human_Mage_Arch.cfg:20
-#, fuzzy
 msgid ""
 "The title of Arch Mage is conferred only after a lifetime of study and "
 "achievement to match. Arch Magi are often employed in positions of "
@@ -7520,15 +7609,13 @@ msgstr ""
 "Etsi non experimenta sunt in certamini, si necesse est, Magus Princeps totam "
 "potestatem artis sui expedire potest, quod non minori aestimari debet.\n"
 "\n"
-"Nota Praecipua: magi principis globi ignis magicales sunt et semper "
-"probabilitatem bonam habent feriendi."
+"Nota Praecipua:"
 
 #: data/units/Human_Mage_Great.cfg:3
 msgid "Great Mage"
 msgstr "Magus Magnus"
 
 #: data/units/Human_Mage_Great.cfg:21
-#, fuzzy
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
 "nearly a legend in their own time, and town criers have forcibly learnt "
@@ -7554,15 +7641,13 @@ msgstr ""
 "Etsi bellatores omnino non sunt, applicatio artis ad proelium saepe infundit "
 "reverentiam in aliis militibus.\n"
 "\n"
-"Nota Praecipua: magi magni globi ignis magicales sunt et semper "
-"probabilitatem bonam habent feriendi."
+"Nota Praecipua:"
 
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
 msgstr "Magus Ruber"
 
 #: data/units/Human_Mage_Red.cfg:20
-#, fuzzy
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the blue robes of an apprentice, and given the red robes of a master. The "
@@ -7590,15 +7675,13 @@ msgstr ""
 "praestigias habent in manicis, e.g. globi ignis qui nomen vulgus eorum "
 "coagmentaverunt.\n"
 "\n"
-"Nota Praecipua: magi rubri globi ignis magicales sunt et semper "
-"probabilitatem bonam habent feriendi."
+"Nota Praecipua:"
 
 #: data/units/Human_Mage_Silver.cfg:3
 msgid "Silver Mage"
 msgstr "Magus Argenteus"
 
 #: data/units/Human_Mage_Silver.cfg:23
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -7640,17 +7723,14 @@ msgstr ""
 "Magi argentei physice solleriores sunt quam alii magi, et peritiae eorum "
 "certae sunt in proelio, si dux magum cogere potest eis uti.\n"
 "\n"
-"Nota Praecipua: magi argentei oppugnationes a procul magicales sunt et "
-"semper probabilitatem bonam habent feriendi. Possunt quoque ianuas magicas "
-"inter duos pagos ilico conficere, etsi necesse est pagos esse de parte magi "
-"et ambos pagos vacuos."
+"Nota Praecipua: Magi Argenti se modulantur ad naturam magicam et repugnant "
+"optime damnum physicale."
 
 #: data/units/Human_Mage_White.cfg:3
 msgid "White Mage"
 msgstr "Magus Albus"
 
 #: data/units/Human_Mage_White.cfg:25
-#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -7675,10 +7755,7 @@ msgstr ""
 "necesse est, possunt advocare potentiam lucis ut inmortuos ex mundo "
 "expellat.\n"
 "\n"
-"Nota Praecipua: magi albi oppugnationes lucis magicales sunt et semper "
-"probabilitatem bonam habent feriendi. Haec lux damnum immane facit in "
-"immortuos et quoque in vivos aliquantulum. Magi albi possunt unitates "
-"vicinas sanare et a veneno curare."
+"Nota Praecipua:"
 
 #: data/units/Human_Mage_White.cfg:150 data/units/Human_Mage_of_Light.cfg:110
 #: data/units/Mermaid_Diviner.cfg:91 data/units/Mermaid_Priestess.cfg:55
@@ -7694,7 +7771,6 @@ msgid "Mage of Light"
 msgstr "Magus Luminis"
 
 #: data/units/Human_Mage_of_Light.cfg:27
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi are bestowed with "
 "vast spiritual powers. By strict devotion to the path of the light, they can "
@@ -7713,11 +7789,7 @@ msgstr ""
 "Sequentes regulas severas pietatis et honoris, hi homines assidue laborant "
 "ut vitam et ordinem mundo turbato in quo vivunt praebant.\n"
 "\n"
-"Nota Praecipua: magi luminis oppugnationes lucis magicales sunt et semper "
-"probabilitatem bonam habent feriendi. Haec lux damnum immane facit in "
-"immortuos et quoque in vivos aliquantulum. Magi Luminis possunt unitates "
-"vicinas sanare et a veneno curare. Atque potestatem possidunt illuminationis "
-"quae potestatem lucis in areis vicinis auget."
+"Nota Praecipua:"
 
 #: data/units/Human_Mage_of_Light.cfg:145
 msgid "female^Mage of Light"
@@ -7753,7 +7825,6 @@ msgid "Assassin"
 msgstr "Sicarius"
 
 #: data/units/Human_Outlaw_Assassin.cfg:20
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -7770,10 +7841,7 @@ msgstr ""
 "a procul vel sica in tergo. Funesti noctu, aliquantulum incommodi sunt in "
 "proeliis diurnis sub sole.\n"
 "\n"
-"Nota Praecipua: si unitas ex parte sicarii inimicum alienat, sicarius potest "
-"in tergum percutere, damnum duplice infligens, si post inimicum situs est. "
-"Cultri iacti eius atque venenosi sunt, quod fortitudinem inimici adsidue "
-"subruet."
+"Nota Praecipua:"
 
 #: data/units/Human_Outlaw_Assassin.cfg:153
 #: data/units/Human_Outlaw_Rogue.cfg:81
@@ -7846,7 +7914,6 @@ msgid "Rogue"
 msgstr "Veterator"
 
 #: data/units/Human_Outlaw_Rogue.cfg:18
-#, fuzzy
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
 "rogues have spent many an unpleasant moment darting through crowds and "
@@ -7863,9 +7930,7 @@ msgstr ""
 "cultro, atque cultros ad amussim iacere possunt. Horae longae pergrassatae "
 "noctu eos relinquunt commodiores pugnantes in tenebris.\n"
 "\n"
-"Nota·Praecipua:·si·unitas·ex·parte·veteratoris·inimicum·alienat,"
-"·sicarius·potest·in·tergum·percutere,·damnum·duplice·infligens,"
-"·si·post·inimicum·situm·est."
+"Nota·Praecipua:"
 
 #: data/units/Human_Outlaw_Rogue.cfg:129
 msgid "female^Rogue"
@@ -7876,7 +7941,6 @@ msgid "Thief"
 msgstr "Fur"
 
 #: data/units/Human_Outlaw_Thief.cfg:18
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -7896,9 +7960,7 @@ msgstr ""
 "cultrum. Beate utuntur rationibus belli minus honestis in certamine, quia "
 "'pugnam iustam' non aestimant.\n"
 "\n"
-"Nota·Praecipua:·si·unitas·ex·parte·furis·inimicum·alienat,"
-"·fur·potest·in·tergum·percutere,·damnum·duplice·infligens,"
-"·si·post·inimicum·situs·est."
+"Nota·Praecipua:"
 
 #: data/units/Human_Outlaw_Thief.cfg:133
 msgid "female^Thief"
@@ -7958,7 +8020,6 @@ msgid "female^Mermaid Diviner"
 msgstr "Augur Nereia"
 
 #: data/units/Mermaid_Diviner.cfg:27
-#, fuzzy
 msgid ""
 "Mermaid Priestesses meet their calling with a fervor that leaves their human "
 "counterparts somewhat taken aback. This may have its roots in a legend they "
@@ -7974,18 +8035,13 @@ msgstr ""
 "paulum de eo dicitur, clarum est potestatem lucis id nescio quomodo vincisse "
 "et populum servavisse.\n"
 "\n"
-"Nota Praecipua: Nota Praecipua: auguris oppugnationes lucis magicales sunt "
-"et semper probabilitatem bonam habent feriendi. Haec lux damnum immane facit "
-"in immortuos et quoque in vivos aliquantulum. Augures possunt unitates "
-"vicinas sanare et a veneno curare. Atque potestatem possidunt illuminationis "
-"quae potestatem lucis in areis vicinis auget."
+"Nota Praecipua:"
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
 msgstr "Incantatrix Nereia"
 
 #: data/units/Mermaid_Enchantress.cfg:20
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different. Those who master this ability are held in "
@@ -8003,8 +8059,7 @@ msgstr ""
 "proeliis contra genus earum - haec potestas pars maior est protectionis "
 "populi contra monstra ex gurgite natantia.\n"
 "\n"
-"Nota Praecipua: nereiae aspergines aquae magicales sunt et semper "
-"probabilitatem bonam habent feriendi."
+"Nota Praecipua:"
 
 #: data/units/Mermaid_Enchantress.cfg:76 data/units/Mermaid_Initiate.cfg:79
 #: data/units/Mermaid_Siren.cfg:80
@@ -8016,7 +8071,6 @@ msgid "female^Mermaid Initiate"
 msgstr "Initiata Nereia"
 
 #: data/units/Mermaid_Initiate.cfg:22
-#, fuzzy
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -8034,15 +8088,13 @@ msgstr ""
 "Quamquam fragiles sunt, potestas aquae eas formidolosas efficit in "
 "certamine, nam aquam ipsam vocare possunt ut inimicos percutiat.\n"
 "\n"
-"Nota Praecipua: nereiae aspergines aquae magicales sunt et semper "
-"probabilitatem bonam habent feriendi."
+"Nota Praecipua:"
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
 msgstr "Sacerdos Nereia"
 
 #: data/units/Mermaid_Priestess.cfg:25
-#, fuzzy
 msgid ""
 "Mermen share the creed that much of humanity follows, though for cultural "
 "reasons, the upholding of this is left to the mermaids, who are more "
@@ -8060,15 +8112,11 @@ msgstr ""
 "pietas facultates animi eis praebent, quibus populum a monstris "
 "supernaturalibus protegunt.\n"
 "\n"
-"Nota Praecipua: Nota Praecipua: sacerdotis oppugnationes lucis magicales "
-"sunt et semper probabilitatem bonam habent feriendi. Haec lux damnum immane "
-"facit in immortuos et quoque in vivos aliquantulum. Sacerdotes possunt "
-"unitates vicinas sanare et a veneno curare. "
+"Nota Praecipua:"
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Mermaid Siren"
-msgstr "Hastatus Nereius"
+msgstr "Siren Nereia"
 
 #: data/units/Mermaid_Siren.cfg:23
 msgid ""
@@ -8106,7 +8154,6 @@ msgid "Merman Entangler"
 msgstr "Impeditor Nereius"
 
 #: data/units/Merman_Entangler.cfg:20
-#, fuzzy
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
 "well; those who master it are valued and revered by their comrades. This "
@@ -8121,8 +8168,7 @@ msgstr ""
 "valde praestantiam nereiorum in elemento proprio et efficit ut stirps atquae "
 "minae sint inimicis qui tantum approperant aquam.\n"
 "\n"
-"Nota Praecipua: qui in reti inlaqueatus est lentificatur et minuitur uno "
-"numerus oppugnationum in certamine."
+"Nota Praecipua:"
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
@@ -8147,7 +8193,6 @@ msgid "Merman Hoplite"
 msgstr "Hoplomachus Nereius"
 
 #: data/units/Merman_Hoplite.cfg:21
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -8159,7 +8204,9 @@ msgstr ""
 "Scutis eminentibus Hoplomachi Nerei florem custodum regni aquosi formant. "
 "Arma potentia et disciplina rigida eos aciem stabilem tenere contra furores "
 "proelii permittunt. Tempore desperationis et in terra hoc facere possunt, "
-"sedminus bene longe quam creatura cum cruribus."
+"sedminus bene longe quam creatura cum cruribus.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
@@ -8198,7 +8245,6 @@ msgid "Merman Netcaster"
 msgstr "Retiarius Nereius"
 
 #: data/units/Merman_Netcaster.cfg:19
-#, fuzzy
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets. These are not very damaging in themselves, but they "
@@ -8219,8 +8265,7 @@ msgstr ""
 "immobiles faciunt, et maiori momenti planunt campus lusionis contra milites "
 "in terra, qui aliter eis illic praestant.\n"
 "\n"
-"Nota Praecipua: qui in reti inlaqueatus est lentificatur et minuitur uno "
-"numerus oppugnationum in certamine."
+"Nota Praecipua:"
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
@@ -8272,7 +8317,6 @@ msgid "Giant Spider"
 msgstr "Aranea Ingens"
 
 #: data/units/Monster_Cave_Spider.cfg:18
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They can bite at close range, thereby poisoning their enemies, and also can "
@@ -8282,7 +8326,9 @@ msgid ""
 msgstr ""
 "Araneae Ingentes vagari in profundis Knalgae dicuntur, vorantes victimas "
 "multas. Possunt mordere prope invenenantes hostes et araneo ex procul "
-"oppugnare lentifacientes eos."
+"oppugnare lentifacientes eos.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Monster_Cave_Spider.cfg:80
 msgid "web"
@@ -8293,7 +8339,6 @@ msgid "Cuttle Fish"
 msgstr "Sepia"
 
 #: data/units/Monster_Cuttle_Fish.cfg:18
-#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
@@ -8304,7 +8349,9 @@ msgid ""
 msgstr ""
 "Sepiae bestiae ingentes maris sunt. Possunt praedas brachiis fortibus "
 "adripere aut atramentum venenosum ex procul spuere. Via optima superandi "
-"occursum beluarum harum est in terra remanere."
+"occursum beluarum harum est in terra remanere.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Monster_Cuttle_Fish.cfg:41 data/units/Monster_Tentacle.cfg:64
 msgid "tentacle"
@@ -8344,7 +8391,6 @@ msgid "Giant Scorpion"
 msgstr "Nepa Ingens"
 
 #: data/units/Monster_Giant_Scorpion.cfg:19
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
 "explanation.\n"
@@ -8352,7 +8398,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Scorpio vulgaris satis est periculosa - scorpio cum magnitudine hominis non "
-"meret explicationem."
+"meret explicationem.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Monster_Giant_Scorpion.cfg:30
 msgid "sting"
@@ -8388,7 +8436,6 @@ msgid "Tentacle of the Deep"
 msgstr "Bracchium ex Gurgite"
 
 #: data/units/Monster_Tentacle.cfg:18
-#, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
 "below the waves.\n"
@@ -8396,7 +8443,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Bracchia ex Gurgite membra sunt aliquod monstrum maiorem quod sub undis "
-"latet."
+"latet.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Monster_Yeti.cfg:3
 msgid "Yeti"
@@ -8499,7 +8548,6 @@ msgid "Ogre"
 msgstr "Immane"
 
 #: data/units/Ogre.cfg:17
-#, fuzzy
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
@@ -8548,7 +8596,6 @@ msgid "Orcish Assassin"
 msgstr "Sicarius Orcarum"
 
 #: data/units/Orcish_Assassin.cfg:18
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -8564,8 +8611,7 @@ msgstr ""
 "occidunt inimicos, sed rationes belli eorum subsidium magnum sunt fratribus "
 "eorum saevioribus et maioribus.\n"
 "\n"
-"Nota Praecipua: Sicarii Orcorum veneno in cultris iactis utuntur, quorum "
-"victimae adsidue damnantur usque curantur in pago vel a sanatore."
+"Nota Praecipua:"
 
 #: data/units/Orcish_Assassin.cfg:55 data/units/Orcish_Slayer.cfg:76
 msgid "throwing knives"
@@ -8610,7 +8656,6 @@ msgid "Orcish Leader"
 msgstr "Dux Orcorum"
 
 #: data/units/Orcish_Leader.cfg:19
-#, fuzzy
 msgid ""
 "Orcish Leaders are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8623,14 +8668,15 @@ msgstr ""
 "Duces Orcorum principes sunt tribus eorum. Sententias magni momenti faciunt "
 "et populum in proelium ducunt. Arcum gerunt ex necessitate, sed peritiores "
 "sunt gladio; pugnatores potentes omnino sunt. Peritiae ductus naturales eos "
-"faciunt pretiosos valde in proelio:si perditur Dux, ita proelium."
+"faciunt pretiosos valde in proelio:si perditur Dux, ita proelium.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
 msgstr "Dominus Orcorum"
 
 #: data/units/Orcish_Ruler.cfg:19
-#, fuzzy
 msgid ""
 "Orcish Rulers are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8643,20 +8689,20 @@ msgstr ""
 "Domini Orcorum principes sunt tribus eorum. Sententias magni momenti faciunt "
 "et populum in proelium ducunt. Arcum gerunt ex necessitate, sed peritiores "
 "sunt gladio; pugnatores potentes omnino sunt. Peritiae ductus naturales eos "
-"faciunt pretiosos valde in proelio:si perditur Dominus, ita proelium."
+"faciunt pretiosos valde in proelio:si perditur Dominus, ita proelium.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Orcish_Ruler.cfg:33 data/units/Orcish_Sovereign.cfg:34
 #: data/units/Orcish_Warlord.cfg:28 data/units/Orcish_Warrior.cfg:28
-#, fuzzy
 msgid "greatsword"
-msgstr "gladius"
+msgstr "gladius magnus"
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
 msgstr "Interfector Orcorum"
 
 #: data/units/Orcish_Slayer.cfg:19
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -8672,8 +8718,7 @@ msgstr ""
 "eorum, venenum, implementum saevum est, et usus eius in campo proelio causa "
 "vera est dominationis orcorum.\n"
 "\n"
-"Nota Praecipua: Interfectores Orcorum veneno in cultris iactis utuntur, "
-"quorum victimae adsidue damnantur usque curantur in pago vel a sanatore."
+"Nota Praecipua:"
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
@@ -8697,7 +8742,6 @@ msgid "Orcish Sovereign"
 msgstr "Rex Orcorum"
 
 #: data/units/Orcish_Sovereign.cfg:20
-#, fuzzy
 msgid ""
 "Orcish Sovereigns are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8710,7 +8754,9 @@ msgstr ""
 "Reges Orcorum principes sunt tribus eorum. Sententias magni momenti faciunt "
 "et populum in proelium ducunt. Arcum gerunt ex necessitate, sed peritiores "
 "sunt gladio; pugnatores potentes omnino sunt. Peritiae ductus naturales eos "
-"faciunt pretiosos valde in proelio:si perditur Rex, ita proelium."
+"faciunt pretiosos valde in proelio:si perditur Rex, ita proelium.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
@@ -8745,7 +8791,6 @@ msgid "Saurian Ambusher"
 msgstr "Insidiator Lacertarum"
 
 #: data/units/Saurian_Ambusher.cfg:20
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8759,15 +8804,16 @@ msgstr ""
 "veternosa et sanguinis frigidi est et fragiles sunt ex comparatione, magni "
 "aestimantur exploratores, quia per agros asperos navigare possunt et circum "
 "adversarios. Insidiatores Lacertarum potestatem necessarium habent ut hoc "
-"plene utantur. Insidiatores Lacertarum optimi fiunt Circumeuntes Lacertarum."
+"plene utantur. Insidiatores Lacertarum optimi fiunt Circumeuntes "
+"Lacertarum.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Saurian_Augur.cfg:3
-#, fuzzy
 msgid "Saurian Augur"
-msgstr "Insidiator Lacertarum"
+msgstr "Augur Lacertarum"
 
 #: data/units/Saurian_Augur.cfg:27
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Augurs are valued as healers because they can provide aid to their "
@@ -8777,16 +8823,17 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Quamquam hereditas earum veternosa et sanguinis frigidi est et fragiles sunt "
-"ex comparatione, Tribuarii Lacertarum magni aestimantur sanatores quia "
+"ex comparatione, Augures Lacertarum magni aestimantur medetores quia "
 "auxilium sociis praebere possunt neglegentes agros et adversarios. Praeter "
-"facultates sanandi scientes sunt magicae frigidae."
+"facultates medendi scientes sunt magicae frigidae.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
 msgstr "Circumeuns Lacertarum"
 
 #: data/units/Saurian_Flanker.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8800,15 +8847,15 @@ msgstr ""
 "veternosa et sanguinis frigidi est et fragiles sunt ex comparatione, magni "
 "aestimantur exploratores, quia per agros asperos navigare possunt et circum "
 "adversarios. Circumeuntes Lacertarum potestatem necessarium habent ut hoc "
-"plene utantur."
+"plene utantur.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Saurian_Oracle.cfg:3
-#, fuzzy
 msgid "Saurian Oracle"
-msgstr "Tribuarius Lacertarum"
+msgstr "Oraculum Lacertarum"
 
 #: data/units/Saurian_Oracle.cfg:27
-#, fuzzy
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
@@ -8817,17 +8864,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Glaciatores Lacertarum exercitationem ulteriorem medendi et sanandi "
-"vitaverunt ut facultates artium obscurorum excolant. Fragiles sunt, sed "
-"magicam septentrionum frigidorum advocare possunt et potestatem primam "
-"medendi retinent."
+"Oracula Lacertarum exercitationem ulteriorem medendi et sanandi vitaverunt "
+"ut facultates artium obscurorum excolant. Fragiles sunt, sed magicam "
+"septentrionum frigidorum advocare possunt et potestatem primam medendi "
+"retinent.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
 msgstr "Excursor Lacertarum"
 
 #: data/units/Saurian_Skirmisher.cfg:20
-#, fuzzy
 msgid ""
 "Saurian Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8839,14 +8887,15 @@ msgstr ""
 "Excursores Lacertarum periti sunt hasta. Quamquam hereditas earum veternosa "
 "et sanguinis frigidi est et fragiles sunt ex comparatione, magni aestimantur "
 "exploratores, quia per agros asperos navigare possunt et circum adversarios. "
-"Excursores Lacertarum optimi fiunt Insidiatores Lacertarum."
+"Excursores Lacertarum optimi fiunt Insidiatores Lacertarum.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
 msgstr "Vates Lacertarum"
 
 #: data/units/Saurian_Soothsayer.cfg:28
-#, fuzzy
 msgid ""
 "Saurian Soothsayers are highly valued as healers because they can provide "
 "aid to their friends regardless of terrain or opposition. In addition to "
@@ -8856,14 +8905,15 @@ msgid ""
 msgstr ""
 "Vates Lacertarum magni aestimantur sanatores quia auxilium sociis praebere "
 "possunt neglegentes agros et adversarios. Praeter facultates sanandi "
-"scientes sunt magicae frigidae."
+"scientes sunt magicae frigidae.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
 msgstr "Troglodyta"
 
 #: data/units/Troll.cfg:18
-#, fuzzy
 msgid ""
 "Trolls have been a mote to trouble the thoughts of humanity and dwarf-kind, "
 "who remain baffled at the origins of these creatures, and perhaps more "
@@ -8881,15 +8931,13 @@ msgstr ""
 "Fustes magni quibus in pugnis utuntur agunt ut extensiones bracchiorum "
 "eorum; troglodytae eis utuntur ad praedam in obsequium cogere.\n"
 "\n"
-"Nota Praecipua: Troglodytae possunt regenerare, et se sanant semper ut in "
-"pago."
+"Nota Praecipua:"
 
 #: data/units/Troll_Great.cfg:3
 msgid "Great Troll"
 msgstr "Troglodyta Magnus"
 
 #: data/units/Troll_Great.cfg:19
-#, fuzzy
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
 "and wisdom, it becomes something extraordinary, a beast remembered for "
@@ -8904,15 +8952,13 @@ msgstr ""
 "eorum potentiae et astutiae fons sunt plurimarum fabularum de troglodytae; "
 "spectaculum fabularum caro factarum non diminuit magnificentiam eorum.\n"
 "\n"
-"Nota Praecipua: Troglodytae possunt regenerare, et se sanant semper ut in "
-"pago."
+"Nota Praecipua:"
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
 msgstr "Heros Troglodytarum"
 
 #: data/units/Troll_Hero.cfg:18
-#, fuzzy
 msgid ""
 "Some trolls are born with an undue share of the strength and vitality that "
 "characterizes their race. In a society where might makes right, those of "
@@ -8923,15 +8969,13 @@ msgstr ""
 "Nonnulli troglodytae nati sunt cum nimio vi et fortitudine generis sui. In "
 "societate in qua potentia rectum facit, socii stirpis eos heroes appellant.\n"
 "\n"
-"Nota Praecipua: Troglodytae possunt regenerare, et se sanant semper ut in "
-"pago."
+"Nota Praecipua:"
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
 msgstr "Iactor Saxorum Troglodytarum"
 
 #: data/units/Troll_Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
@@ -8948,15 +8992,13 @@ msgstr ""
 "sacci quoque fundus fiat.\n"
 "\n"
 "Nota Praecipua: etsi incommoda sunt, saxa iacta ab iis monstris multo "
-"funestiora sunt quam ulla sagitta, si possunt ferire. Troglodytae possunt "
-"regenerare, et se sanant semper ut in pago."
+"funestiora sunt quam ulla sagitta, si possunt ferire."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
 msgstr "Bellator Troglodytarum"
 
 #: data/units/Troll_Warrior.cfg:20
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -8976,15 +9018,13 @@ msgstr ""
 "evidentiam inveniunt utendi implementa, nec certe fabrorum. Si troglodytae "
 "iam pericolosi sunt in certamine, troglodyta armata plene terrens est.\n"
 "\n"
-"Nota Praecipua: Troglodytae possunt regenerare, et se sanant semper ut in "
-"pago."
+"Nota Praecipua:"
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
 msgstr "Catulus Troglodytarum"
 
 #: data/units/Troll_Whelp.cfg:19
-#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -8999,15 +9039,13 @@ msgstr ""
 "repunt in quattuor membris, sed vis crudus stirpis omnibus incommodis "
 "compensat.\n"
 "\n"
-"Nota Praecipua: Troglodytae possunt regenerare, et se sanant semper ut in "
-"pago."
+"Nota Praecipua:"
 
 #: data/units/Undead_Bat_Blood.cfg:3
 msgid "Blood Bat"
 msgstr "Vespertilio Sanguinis"
 
 #: data/units/Undead_Bat_Blood.cfg:18
-#, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
@@ -9019,14 +9057,15 @@ msgstr ""
 "Vespertiliones Sanguinis celeres sunt et sanguinem ex eis quos oppugnant "
 "exhaurire possunt, ea re se medentur, et si fortiores fiunt quam in initio "
 "proelii. Saevitia harum bestiarum inmortuarum tanta est quam pellis earum "
-"sanguine victimarum rutilat."
+"sanguine victimarum rutilat.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Undead_Bat_Vampire.cfg:3
 msgid "Vampire Bat"
 msgstr "Vespertilio Vampiricus"
 
 #: data/units/Undead_Bat_Vampire.cfg:17
-#, fuzzy
 msgid ""
 "Vampire Bats are undead flying beasts that attack by biting their victims. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -9036,14 +9075,15 @@ msgid ""
 msgstr ""
 "Vespertiliones Vampirici sunt bestiae volantes immortuae qui mordentes "
 "victimas oppugnant. Etsi dentes non potentes sunt, iis salutem victimarum "
-"exhauriunt cum sanguine et salus Vespertilionibus datur."
+"exhauriunt cum sanguine et salus Vespertilionibus datur.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:3
 msgid "Ghoul"
 msgstr "Pallidus"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:20
-#, fuzzy
 msgid ""
 "Only those who have delved into the circles of necromancy know what must be "
 "done to turn a person into a ghoul, and it is a secret they are not telling. "
@@ -9065,15 +9105,13 @@ msgstr ""
 "\n"
 "Propter talia facta necromantium condemnatum est maximo cum odio.\n"
 "\n"
-"Nota praecipua: ungues pallidi operiuntur veneno cuius victimae adsidue "
-"damnabuntur usque sanantur in pago vel a sanatore."
+"Nota praecipua:"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:3
 msgid "Necrophage"
 msgstr "Necrophagus"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -9086,15 +9124,13 @@ msgstr ""
 "oppugnant ferocitate ut bestiae. Cum satiantur a carne victimarum, omnis "
 "damni sanantur ut nuper vocati et reincipiant investigationem carnis.\n"
 "\n"
-"Nota praecipua: ungues necrophagi operiuntur veneno cuius victimae adsidue "
-"damnabuntur usque sanantur in pago vel a sanatore."
+"Nota praecipua:"
 
 #: data/units/Undead_Corpse_Soulless.cfg:4
 msgid "Soulless"
 msgstr "Carens Anima"
 
 #: data/units/Undead_Corpse_Soulless.cfg:19
-#, fuzzy
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living.\n"
@@ -9102,14 +9138,15 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Haec cadaveres animata ambulanita facta sunt fortia ab experientia longa in "
-"proelio contra vivos."
+"proelio contra vivos.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Undead_Corpse_Walking.cfg:4
 msgid "Walking Corpse"
 msgstr "Cadaver Ambulans"
 
 #: data/units/Undead_Corpse_Walking.cfg:18
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Although weak in combat, these zombies can spread their curse to those they "
@@ -9119,14 +9156,15 @@ msgid ""
 msgstr ""
 "Cadavera Ambulantia corpora sunt mortuorum, reanimata a magica tenebrosa. "
 "Etsi debiles sunt in proelio, hi immortui maledictionem suam ad interfectos "
-"extendere possunt, exercitum immortuorum augentes."
+"extendere possunt, exercitum immortuorum augentes.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:3
 msgid "Ancient Lich"
 msgstr "Ossa Magi Vetusta"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:21
-#, fuzzy
 msgid ""
 "A being of this order is a herald of the age long past. Anyone who "
 "encounters an Ancient Lich likely has far worse things to worry about than "
@@ -9137,16 +9175,13 @@ msgstr ""
 "Animatio huius ordinis est nuntius temporis antiqui. Qui Ossibus Magi "
 "Vetustis obviam it sane peiora temet quam mortem.\n"
 "\n"
-"Nota Praecipua: Oppugnationes a procul Ossium Magi magicales sunt, et semper "
-"probabilitatem bonam habent feriendi. Tactus Ossium Magi vitam victimae "
-"exhaurit et ossa renovat."
+"Nota Praecipua:"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "Peritus Obscurus"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:21
-#, fuzzy
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -9170,13 +9205,11 @@ msgstr ""
 "\n"
 "In hac conditione, telum unicum eorum est ars quam se obstringunt discere.\n"
 "\n"
-"Nota Praecipua: periti obscuri oppugnationes magicales sunt et semper "
-"probabilitatem bonam habent .feriendi."
+"Nota Praecipua:"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:32
-#, fuzzy
 msgid "shadow wave"
-msgstr "trudere"
+msgstr "unda tenebrarum"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:177
 msgid "female^Dark Adept"
@@ -9200,13 +9233,23 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Magica Nigra horrorem instinguit in primis quia paulum de ea a vulgo scitur. "
+"Venefici Tenebrosi secreta vitae et mortis recludere inceperunt fientes "
+"celeriter domini infligentes dolorem et angorem.\n"
+"\n"
+"Premium ultimum artium tenebrosarum est dominatio tota mortis et vitae. "
+"Venefici Tenebrosi tandem discunt vitam et mortem manipulare reanimantes "
+"cadaveres, ossa et larvas. Pravissimi et avidissimi potentiae conabuntur "
+"mortem omnino vincere per transformationem in ossibus magi et consecutio "
+"immortalitatis funestae.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
 msgstr "Ossa Magi"
 
 #: data/units/Undead_Necro_Lich.cfg:20
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -9225,13 +9268,11 @@ msgstr ""
 "magna mortem fraudat terroris eius. Quia mens remanet et spiritus sequitur, "
 "etsi corpus perditur.\n"
 "\n"
-"Nescitur (nisi in circulos secretos necromantiae) si haec vita ducitur in "
+"Nescitur (nisi in circulis secretis necromantiae) si haec vita ducitur in "
 "incertum aut tandum diu. Sed consideratio ipsa tributum fert magnitudini "
 "eventus consecuti.\n"
 "\n"
-"Nota Praecipua: Ossium Magi oppugnationes a longe magicales sunt et semper "
-"probabilitatem bonam habent feriendi. Tactus Ossium Magi vitam victimae "
-"exhaurit et ossa renovat."
+"Nota Praecipua:"
 
 #: data/units/Undead_Necromancer.cfg:21
 msgid ""
@@ -9248,18 +9289,28 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Unus·ex·circulis·maximis·illius·quod·appellatur·'magica·negra'·est·ars·necromantiae,"
+"·facultas·terribilis·reanimandi·mortuos·cum·vita·ficta."
+"·Inventum·erat·cum·ramis·terribilibus·et·causa·fuit·condemnationis·humanitatis·magicae·negrae,"
+"·quia·armamentarium·novum·immane·dedit·metui.\n"
+"\n"
+"Haec·facultas,·in·omni·aspectu,"
+"·gradus·primus·est·fraudens·mortem·a·pretio·ultimo."
+"·Est·gradus·maximus·potestatis·quem·magus·tenebrarum·attingere·potest·priusquam·comprensionem·humanitatis·ipsius·perserit,"
+"·sed·pallescet·ante·potestatem·funestam·qua·utuntur·Ossa·Magorum."
+"·Atque·corpora·mortalia·eorum·fortiora·facta·sunt·a·magica·discrepans·a·forma·putrificans·et·debilis·Ossium·Magi.\n"
+"\n"
+"Nota·Praecipua:"
 
 #: data/units/Undead_Necromancer.cfg:32
-#, fuzzy
 msgid "plague staff"
-msgstr "pestilentia"
+msgstr "virga pestilentiae"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
 msgstr "Coniector Ossium"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:17
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -9274,7 +9325,9 @@ msgstr ""
 "prendunt. Arma idonea haec potentiae vitae datur; coniectores praesertim "
 "saepe armamentarium vere turpe praebiti sunt. Pharetrae eorum non sagittis "
 "ligneis implentur, sed ossibus victimarum earum. Nominati simpliciter "
-"'Coniectores Ossium' ab hostibus infelicibus, hi nefas terrent omnes vivos."
+"'Coniectores Ossium' ab hostibus infelicibus, hi nefas terrent omnes vivos.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:42
 #: data/units/Undead_Skele_Soul_Shooter.cfg:31
@@ -9286,7 +9339,6 @@ msgid "Death Knight"
 msgstr "Dux Ossium"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:26
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and a sense of betrayal, came back to this world as Death Knights. Wielding "
@@ -9298,14 +9350,15 @@ msgstr ""
 "Fabulae narrantur ut nonnumquam pugnatores et imperatores fortissimi qui "
 "odio et sensu proditionis maledicti sunt in hunc mundum Duces Ossium "
 "regressi essent. Gerunt ipsa arma quae vivens gerebant et imperant Inmortuis "
-"in investigatione ultionis."
+"in investigatione ultionis.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Undead_Skele_Deathblade.cfg:3
 msgid "Deathblade"
 msgstr "Lamina Mortis"
 
 #: data/units/Undead_Skele_Deathblade.cfg:19
-#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters will often "
@@ -9318,14 +9371,15 @@ msgstr ""
 "In vita nefas quae 'Laminae Mortis' dicuntur periti erant certaminis, miles "
 "sollers et funesti. Domini novi fere hoc animadvertant et eis tela dant "
 "idonea peritiae eorum. Quamquam fragiles sunt, hae bestiae multo celeriores "
-"sunt quam reliqui generis sui et pede et lamina."
+"sunt quam reliqui generis sui et pede et lamina.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Undead_Skele_Draug.cfg:3
 msgid "Draug"
 msgstr "Draugrus"
 
 #: data/units/Undead_Skele_Draug.cfg:19
-#, fuzzy
 msgid ""
 "Towering remains of what once were legendary warriors, the Draug strike fear "
 "in the hearts of all who oppose them. They are driven not by malice, but are "
@@ -9340,14 +9394,15 @@ msgstr ""
 "terrent. Non moventur malevolentia sed semper in somno inmortuitatis "
 "devinciuntur, perambulantes proelia memoriae suae et propter liberationem "
 "desperate pugnant, propter pacem quae tantum vi armis fertur. Memoria "
-"hostium et causa pugnae eorum iampridem in oblivione deflorescuntur."
+"hostium et causa pugnae eorum iampridem in oblivione deflorescuntur.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Undead_Skele_Revenant.cfg:3
 msgid "Revenant"
 msgstr "Reveniens"
 
 #: data/units/Undead_Skele_Revenant.cfg:17
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -9362,14 +9417,15 @@ msgstr ""
 "pugnent. Memoria temporis vitae eorum iam perditur. Atque venefici qui eos "
 "excitaverunt tantum coniecturas facere possunt de historia eorum. Neglectis "
 "talibus interrogationibus Reveniens instrumentum potens est in proelio: "
-"bellator sine metu qui dolorem non sentit et usque ad finem pugnabit."
+"bellator sine metu qui dolorem non sentit et usque ad finem pugnabit.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:3
 msgid "Soul Shooter"
 msgstr "Coniector Animarum"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:18
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -9382,14 +9438,15 @@ msgstr ""
 "Potentissimi sagittariorum inmortuorum sunt qui ipsi sagittarii in vita "
 "erunt. Errant per campos proelii, ducti a memoria peritiae prioris suae, "
 "nescientes et nil morentes quod prositum, qui hostes sint. Coguntur tantum a "
-"malitia natu ex angore existentiae suae vacuae et interruptae."
+"malitia natu ex angore existentiae suae vacuae et interruptae.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Undead_Skeleton.cfg:3
 msgid "Skeleton"
 msgstr "Ossa"
 
 #: data/units/Undead_Skeleton.cfg:18
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
@@ -9401,14 +9458,15 @@ msgstr ""
 "Ossa sunt pungnatores qui in proelio interfecti et artibus tenebrosis relati "
 "sunt. Quasi sine mente et immoti in propositis, non timent nec dolorem nec "
 "mortem, et praesentia eorum ispa saepe absterret eos qui dominum eorum "
-"provocare volunt."
+"provocare volunt.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Undead_Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
 msgstr "Sagittarius Osseus"
 
 #: data/units/Undead_Skeleton_Archer.cfg:17
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -9421,14 +9479,15 @@ msgstr ""
 "Sagittarius osseus differt paulum ab 'ossibus' quae eum saepe comitantur - "
 "peccatum est contra naturam: bellator excitatus ex mortuis ad rursus "
 "pugnandum. In manibus domini eorum, hi milites quidlibet facient ut opera "
-"eorum attingant, nam mors mortuis nullum pavorem continet."
+"eorum attingant, nam mors mortuis nullum pavorem continet.\n"
+"\n"
+"Nota Praecipua:"
 
 #: data/units/Undead_Spirit_Ghost.cfg:3
 msgid "Ghost"
 msgstr "Larva"
 
 #: data/units/Undead_Spirit_Ghost.cfg:19
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -9449,8 +9508,7 @@ msgstr ""
 "velis navis. Machinatio quae ex hoc carcere resultat est servus fidelis, qui "
 "ad omne opus ligari potest quod dominus vult.\n"
 "\n"
-"Nota Praecipua: Repugnatiae ad damnum larvarum insolitae sunt. Moventur "
-"satis lente trans aquam."
+"Nota Praecipua:"
 
 #: data/units/Undead_Spirit_Ghost.cfg:99
 #: data/units/Undead_Spirit_Spectre.cfg:114
@@ -9463,7 +9521,6 @@ msgid "Nightgaunt"
 msgstr "Macer Noctis"
 
 #: data/units/Undead_Spirit_Nightgaunt.cfg:18
-#, fuzzy
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
 "countenance that they obscure. These terrible forms are rarely seen by the "
@@ -9476,18 +9533,13 @@ msgstr ""
 "vidit et vixit. Hae formae terribiles rare a viventis videntur, et qui "
 "superest et de eis loquitur, otio carebat ad studiandum hostem.\n"
 "\n"
-"Nota·Praecipua:·si·unitas·ex·parte·macris noctis·inimicum·alienat,"
-"·macer·potestin tergum·percutere,·damnum·duplice·infligens,"
-"·si·post·inimicum·situm·est. Repugnatiae·ad·damnum·macrum·insolitae·sunt."
-"·Moventur satis·lente·trans aquam. Noctu latere possunt, nullum vestigium "
-"praesentiae suae relinquens."
+"Nota·Praecipua:"
 
 #: data/units/Undead_Spirit_Shadow.cfg:3
 msgid "Shadow"
 msgstr "Umbra"
 
 #: data/units/Undead_Spirit_Shadow.cfg:19
-#, fuzzy
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
 "to retreat into darkness. Since that day, the shadows of the world have held "
@@ -9503,18 +9555,13 @@ msgstr ""
 "\n"
 "Mortuorum evocatur facile respondere potest ad hac interrogationem.\n"
 "\n"
-"Nota·Praecipua:·si·unitas·ex·parte·umbrae·inimicum·alienat,"
-"·umbra·potest·in·tergum·percutere,·damnum·duplice·infligens,"
-"·si·post·inimicum·sita·est. Repugnatiae·ad·damnum·umbrarum·insolitae·sunt."
-"·Moventur·satis·lente·trans·aquam.·Noctu latere possunt, nullum vestigium "
-"praesentiae suae relinquens."
+"Nota·Praecipua:"
 
 #: data/units/Undead_Spirit_Spectre.cfg:3
 msgid "Spectre"
 msgstr "Spectrum"
 
 #: data/units/Undead_Spirit_Spectre.cfg:20
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "master's power. These abominations are a rightful terror to the living, and "
@@ -9534,9 +9581,7 @@ msgstr ""
 "adest: saepe sunt tantum praenuntii potentia periculosioris quae eos "
 "sequentur.\n"
 "\n"
-"Nota Praecipua: ictus a lamina eorum vitam ex victima exhauriet et spectrum "
-"renovabit. Repugnatiae ad damnum spectrorum insolitae sunt. Moventur "
-"satis·lente trans aquam."
+"Nota Praecipua:"
 
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
@@ -9548,7 +9593,6 @@ msgid "Wraith"
 msgstr "Idolon"
 
 #: data/units/Undead_Spirit_Wraith.cfg:19
-#, fuzzy
 msgid ""
 "These tortured forms of what were once warriors are among the most "
 "terrifying things a necromancer can create, for a sword will cleave right "
@@ -9570,16 +9614,13 @@ msgstr ""
 "Propterea domini idolonorum dant eis instrumentum per quod magicae "
 "renovantur quae eos animant ex vita minarum eorum.\n"
 "\n"
-"Nota Praecipua: ictus a lamina idoloni vitam ex victima exhauriet et eum "
-"renovabit. Repugnatiae·ad·damnum·idolonorum·insolitae·sunt."
-"·Moventur·satis·lente·trans·aquam."
+"Nota Praecipua:"
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
 msgstr "Vosium"
 
 #: data/units/Wose.cfg:19
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -9604,8 +9645,7 @@ msgstr ""
 "Vosia non sunt omnino bellicosa, sed vim magnam possidunt. Sed non habent "
 "consuetudinem motu, et lenta sunt.\n"
 "\n"
-"Nota Praecipua: Vosia regenerant ex rebus naturae circa ea et non necesse "
-"est ea in pagis ire receptum alimentum et adiutorium."
+"Nota Praecipua:"
 
 #: data/units/Wose.cfg:35 data/units/Wose_Ancient.cfg:29
 #: data/units/Wose_Elder.cfg:28
@@ -9617,7 +9657,6 @@ msgid "Ancient Wose"
 msgstr "Vosium Vetustum"
 
 #: data/units/Wose_Ancient.cfg:20
-#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -9639,15 +9678,13 @@ msgstr ""
 "\n"
 "Occursi tales sunt nuntia unica de Vosiis Vetustis.\n"
 "\n"
-"Nota Praecipua: Vosia regenerant ex rebus naturae circa ea et non necesse "
-"est ea in pagis ire receptum alimentum et adiutorium."
+"Nota Praecipua:"
 
 #: data/units/Wose_Elder.cfg:3
 msgid "Elder Wose"
 msgstr "Vosium Senex"
 
 #: data/units/Wose_Elder.cfg:19
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -9672,22 +9709,19 @@ msgstr ""
 "Vosia non sunt omnino bellatores, sed potentia eorum capax est violentiae, "
 "si quis iram eorum excitat.\n"
 "\n"
-"Nota Praecipua: Vosia regenerant ex rebus naturae circa ea et non necesse "
-"est ea in pagis ire receptum alimentum et adiutorium."
+"Nota Praecipua:"
 
 #: src/about.cpp:32
 msgid "+Core Developers"
 msgstr "+Implementores Nuclei"
 
 #: src/about.cpp:33
-#, fuzzy
 msgid "+  Main Developer"
-msgstr "-   Implementor Princeps"
+msgstr "+  Implementor Princeps"
 
 #: src/about.cpp:36
-#, fuzzy
 msgid "+  Artwork and graphics designer"
-msgstr "-   Inventor artium ingenuarum"
+msgstr "+  Inventor artium ingenuarum et digitarum"
 
 #: src/about.cpp:39
 msgid "+Developers"
@@ -9700,11 +9734,11 @@ msgstr "+Administratores Communes"
 #: src/about.cpp:82 src/about.cpp:112 src/multiplayer_connect.cpp:271
 #: src/multiplayer_connect.cpp:349 src/multiplayer_wait.cpp:413
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: src/about.cpp:89 src/about.cpp:119
 msgid "+  "
-msgstr ""
+msgstr "+  "
 
 #: src/about.cpp:217 src/help.cpp:2772
 msgid "Close"
@@ -9970,7 +10004,6 @@ msgid "Get More Campaigns..."
 msgstr "Stipendia Plura Cape..."
 
 #: src/game.cpp:761
-#, fuzzy
 msgid "Download more campaigns from an Internet server."
 msgstr "Plura stipendia ex moderatro in Interrete trahere."
 
@@ -10016,7 +10049,7 @@ msgstr "Non poteram cum hospite coniungere."
 
 #: src/game.cpp:881
 msgid "Asking for campaign list"
-msgstr ""
+msgstr "Petiens elenchum stipendiorum"
 
 #: src/game.cpp:894
 msgid "Error communicating with the server."
@@ -10102,9 +10135,8 @@ msgid "Terms"
 msgstr "Condicio"
 
 #: src/game.cpp:1093
-#, fuzzy
 msgid "Sending campaign"
-msgstr "Stipendium trahitur..."
+msgstr "Stipendium mittitur"
 
 #: src/game.cpp:1100 src/game.cpp:1125 src/multiplayer_wait.cpp:317
 msgid "Response"
@@ -10159,6 +10191,8 @@ msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
+"Nomen usuarii electum nimis longum est. Amabo, nomine utere cum minus quam "
+"XVIII litteris."
 
 #: src/game.cpp:1204 src/playcampaign.cpp:107 src/playcampaign.cpp:312
 msgid "The game could not be loaded: "
@@ -10206,7 +10240,7 @@ msgstr "Proelium pro Occidiseptentrione"
 
 #: src/game.cpp:1733
 msgid "Loading title screen."
-msgstr ""
+msgstr "Revocans scrinium tituli."
 
 #: src/game_events.cpp:724
 msgid "Victory:"
@@ -10229,9 +10263,8 @@ msgid "Abilities: "
 msgstr "Facultates: "
 
 #: src/help.cpp:1152
-#, fuzzy
 msgid "Cost: "
-msgstr "Puncta motus: "
+msgstr "Pretium: "
 
 #: src/help.cpp:1153
 msgid "Alignment: "
@@ -10295,7 +10328,6 @@ msgid "or"
 msgstr "vel"
 
 #: src/help.cpp:1393
-#, fuzzy
 msgid "This terrain acts as $terrains for movement purposes."
 msgstr "Ager haec ut $terrains est motus et defensus causa."
 
@@ -10304,17 +10336,14 @@ msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Ager cum immutatione meliore automatice eligitur."
 
 #: src/help.cpp:1397 src/help.cpp:1421
-#, fuzzy
 msgid "The terrain with the worst modifier is chosen automatically."
-msgstr "Ager cum immutatione meliore automatice eligitur."
+msgstr "Ager cum immutatione peiore automatice eligitur."
 
 #: src/help.cpp:1417
-#, fuzzy
 msgid "This terrain acts as $terrains for defense purposes."
 msgstr "Ager haec ut $terrains est motus et defensus causa."
 
 #: src/help.cpp:1425
-#, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
@@ -10323,7 +10352,6 @@ msgstr ""
 "est."
 
 #: src/help.cpp:1427
-#, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -10335,9 +10363,8 @@ msgid "This terrain gives healing."
 msgstr "Hic ager sanat."
 
 #: src/help.cpp:2287
-#, fuzzy
 msgid " < Back"
-msgstr "< Rursus"
+msgstr " < Rursus"
 
 #: src/help.cpp:2288
 msgid "Forward >"
@@ -10377,19 +10404,19 @@ msgstr "?"
 
 #: src/loadscreen.cpp:153
 msgid "Verifying cache."
-msgstr ""
+msgstr "Verificans thesaurum."
 
 #: src/loadscreen.cpp:172
 msgid "Reading cache."
-msgstr ""
+msgstr "Legens thesaurum."
 
 #: src/loadscreen.cpp:191
 msgid "Reading unit files."
-msgstr ""
+msgstr "Legens data unitatum."
 
 #: src/loadscreen.cpp:210
 msgid "Reading files and creating cache."
-msgstr ""
+msgstr "Legens data et creans thesaurum."
 
 #: src/menu_events.cpp:59
 msgid ""
@@ -10559,13 +10586,12 @@ msgid "You are separated from your soldiers and may not recall them"
 msgstr "Separatus es a militibus tuis et eos non revocare potes"
 
 #: src/menu_events.cpp:673
-#, fuzzy
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "Non sunt milites revocandi\n"
-"(Opus est veteranos habere qui supersunt ex missione praeterito)"
+"(Opus est veteranos habere qui supersunt ex missione praeterita)"
 
 #: src/menu_events.cpp:680
 msgid "Level"
@@ -10612,33 +10638,39 @@ msgstr "Investigatio"
 #: src/menu_events.cpp:1330
 msgid "Commands: whisper ignore emote. Type /help [command] for more help."
 msgstr ""
+"Imperia: whisper ignore emote. Scribe /help [imperium] si plus aditorium vis."
 
 #: src/menu_events.cpp:1381
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
+"Nuntium privatum mittit. Non potes mittere nuntios lusoribus qui partes in "
+"lusione imperant. Syntaxis: /whisper [cognomini] [nuntium]"
 
 #: src/menu_events.cpp:1385
 msgid "Add player to your ignore list. Usage: /ignore add [argument]"
 msgstr ""
+"Lusorem ad elenchum tuum utentium ignoratorum. Syntaxis: /ignore add "
+"[argumentum]"
 
 #: src/menu_events.cpp:1387
 msgid "Remove player from your ignore list. Usage: /ignore remove [argument]"
 msgstr ""
+"Lusorem ex elencho tuo utentium ignoratorum. Syntaxis: /ignore remove "
+"[argumentum]"
 
 #: src/menu_events.cpp:1389
 msgid "Clear your ignore list. Usage: /ignore clear"
-msgstr ""
+msgstr "Elenchum tuum utentium ignoratorum dele. Syntaxis: /ignore clear"
 
 #: src/menu_events.cpp:1391
 msgid "Show your ignore list. Usage: /ignore list"
-msgstr ""
+msgstr "Elenchum utentium ignoratorum monstrare. Syntaxis: /ignore list"
 
 #: src/menu_events.cpp:1393
-#, fuzzy
 msgid "Unknown subcommand"
-msgstr "Missio incognita: '"
+msgstr "Imperium subordinatum incognitum"
 
 #: src/menu_events.cpp:1396
 msgid ""
@@ -10646,33 +10678,35 @@ msgid ""
 "[argument](optional) Subcommands: add remove list clear. Type /help ignore "
 "[subcommand] for more info."
 msgstr ""
+"Nuntia a lusoribus in elencho ignorare. Syntaxis: /ignore [subimperium] "
+"[argumentum (optionale)]. Subimperia: add remove list clear. Scribe /help "
+"ignore [subimperium] si vis plus sapere."
 
 #: src/menu_events.cpp:1399
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
+"Commotionem animi vel actionem personalem in sermone mittere. Syntaxis: /"
+"emote [nuntium]"
 
 #: src/menu_events.cpp:1401
-#, fuzzy
 msgid "Unknown command"
-msgstr "Missio incognita: '"
+msgstr "Imperium incognitum"
 
 #: src/menu_events.cpp:1418
 msgid "Added to ignore list: "
-msgstr ""
+msgstr "Ad elenchum utentium ignoratorum adiunctus: "
 
 #: src/menu_events.cpp:1420 src/menu_events.cpp:1430
-#, fuzzy
 msgid "Invalid username: "
-msgstr "Nomen elementi invalidum"
+msgstr "Nomen utentis invalidum: "
 
 #: src/menu_events.cpp:1428 src/menu_events.cpp:1454
 msgid "Removed from ignore list: "
-msgstr ""
+msgstr "Ex elencho utentium ignoratorum sublatus: "
 
 #: src/menu_events.cpp:1459
-#, fuzzy
 msgid "Unknown command: "
-msgstr "Missio incognita: '"
+msgstr "Imperium incognitum: "
 
 #: src/menu_events.cpp:1560
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -10692,46 +10726,39 @@ msgstr "Defensor"
 
 #: src/mouse_events.cpp:209
 msgid "Expected Battle Result (hp)"
-msgstr ""
+msgstr "Eventus Expectatus Proelii (ps)"
 
 #: src/mouse_events.cpp:301
-#, fuzzy
 msgid " resistance vs "
-msgstr "Repugnantiae"
+msgstr " repugnantia versus "
 
 #: src/mouse_events.cpp:302
-#, fuzzy
 msgid " vulnerability vs "
-msgstr "nuditas oppugnantis versus"
+msgstr " nuditas versus "
 
 #: src/mouse_events.cpp:312
-#, fuzzy
 msgid "Slowed"
-msgstr "lentifactus"
+msgstr "Lentifactus"
 
 #: src/mouse_events.cpp:319
-#, fuzzy
 msgid "Time of day"
-msgstr "Tempus Diei"
+msgstr "Tempus diei"
 
 #: src/mouse_events.cpp:329
-#, fuzzy
 msgid "Leadership"
-msgstr "ductus"
+msgstr "Ductus"
 
 #: src/mouse_events.cpp:336
-#, fuzzy
 msgid "Total damage"
-msgstr "damnum totale"
+msgstr "Damnum Totale"
 
 #: src/mouse_events.cpp:343
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Telum eligere: "
+msgstr "Nullum telum utibile"
 
 #: src/mouse_events.cpp:348
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Probabilitas damnum effugendi"
 
 #: src/mouse_events.cpp:649 src/mouse_events.cpp:1232
 msgid "Damage Calculations"
@@ -10762,9 +10789,8 @@ msgid "Connecting to Server..."
 msgstr "Ad Moderatrum Coniungens..."
 
 #: src/multiplayer.cpp:135
-#, fuzzy
 msgid "Reading from Server..."
-msgstr "Ad Moderatrum Coniungens..."
+msgstr "A Moderatro Legens..."
 
 #: src/multiplayer.cpp:144
 msgid ""
@@ -10799,7 +10825,7 @@ msgstr "Partes pro pluribus lusoribus non inventae"
 #: src/multiplayer_connect.cpp:64 src/multiplayer_connect.cpp:273
 #: src/multiplayer_connect.cpp:351
 msgid "Normal"
-msgstr ""
+msgstr "Normalis"
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:347
 #: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2369
@@ -10812,9 +10838,8 @@ msgid ")"
 msgstr ")"
 
 #: src/multiplayer_connect.cpp:325
-#, fuzzy
 msgid "Default AI"
-msgstr "Solita"
+msgstr "IA Solita"
 
 #: src/multiplayer_connect.cpp:376
 msgid "(Vacant slot)"
@@ -10920,7 +10945,7 @@ msgstr "Lusum Creare"
 
 #: src/multiplayer_create.cpp:48
 msgid "Time limit"
-msgstr ""
+msgstr "Terminus temporis"
 
 #: src/multiplayer_create.cpp:61
 msgid "Name of game:"
@@ -10960,29 +10985,28 @@ msgid "Settings..."
 msgstr "Impostationes..."
 
 #: src/multiplayer_create.cpp:106
-#, fuzzy
 msgid "The maximum number of turns the game can last"
 msgstr "Tractus maximi ludus"
 
 #: src/multiplayer_create.cpp:109
 msgid "Enables user time limit"
-msgstr ""
+msgstr "Ponit terminum temporis utentum"
 
 #: src/multiplayer_create.cpp:115
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "Tempus maximus permissus pro tractu primo (momenta)"
 
 #: src/multiplayer_create.cpp:121
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "Tempus maximus possibilis pro tractu ullo (momenta)"
 
 #: src/multiplayer_create.cpp:127
 msgid "Time for general tasks each turn (seconds)"
-msgstr ""
+msgstr "Tempus pro actionibus generalibus in tractu (momenta)"
 
 #: src/multiplayer_create.cpp:133
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "Tempus omnis oppugnationis, consciptionis et expugnationis"
 
 #: src/multiplayer_create.cpp:138
 msgid "The amount of income each village yields per turn"
@@ -11050,24 +11074,20 @@ msgid "Unlimited Turns"
 msgstr "Tractus Infiniti"
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Init. Limit: "
-msgstr "Initiatus"
+msgstr "Limes Init.: "
 
 #: src/multiplayer_create.cpp:318
-#, fuzzy
 msgid "Turn Bonus: "
-msgstr "Tractus: "
+msgstr "Bonum Tractus: "
 
 #: src/multiplayer_create.cpp:322
-#, fuzzy
 msgid "Reservoir: "
-msgstr "Moderatrum: "
+msgstr "Stagnum: "
 
 #: src/multiplayer_create.cpp:327
-#, fuzzy
 msgid "Action Bonus: "
-msgstr "Facinores"
+msgstr "Bonum Actionis: "
 
 #: src/multiplayer_create.cpp:334
 msgid "Village Gold: "
@@ -11094,34 +11114,28 @@ msgid "Status"
 msgstr "Modus"
 
 #: src/multiplayer_lobby.cpp:102
-#, fuzzy
 msgid "--no games open--"
-msgstr "<nullus ludus apertus>"
+msgstr "--nullus ludus apertus--"
 
 #: src/multiplayer_lobby.cpp:297 src/multiplayer_lobby.cpp:300
-#, fuzzy
 msgid "Unknown era"
-msgstr "Missio incognita: '"
+msgstr "Aetas incognita"
 
 #: src/multiplayer_lobby.cpp:322 src/multiplayer_lobby.cpp:338
-#, fuzzy
 msgid "Unknown scenario"
-msgstr "Missio incognita: '"
+msgstr "Missio incognita"
 
 #: src/multiplayer_lobby.cpp:334
-#, fuzzy
 msgid "Remote scenario"
-msgstr "Missio incognita: '"
+msgstr "Missio remota"
 
 #: src/multiplayer_lobby.cpp:347
-#, fuzzy
 msgid "Vacant Slot:"
-msgstr "Rima Vacua"
+msgstr "Rima Vacua:"
 
 #: src/multiplayer_lobby.cpp:347
-#, fuzzy
 msgid "Vacant Slots:"
-msgstr "Rimae Vacuae"
+msgstr "Rimae Vacuae:"
 
 #: src/multiplayer_lobby.cpp:371
 msgid "none"
@@ -11132,14 +11146,12 @@ msgid "Observe Game"
 msgstr "Lusum Aspectare"
 
 #: src/multiplayer_lobby.cpp:465
-#, fuzzy
 msgid "Quick Replays"
-msgstr " remonstratum"
+msgstr "Remonstrata Celera"
 
 #: src/multiplayer_lobby.cpp:466
-#, fuzzy
 msgid "Preferences"
-msgstr "Filia Reginae"
+msgstr "Impostationes"
 
 #: src/multiplayer_lobby.cpp:467
 msgid "Quit"
@@ -11147,10 +11159,9 @@ msgstr "Finire"
 
 #: src/multiplayer_lobby.cpp:473
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
+msgstr "Celeriter ad tractum currentem in observatio saltare"
 
 #: src/multiplayer_ui.cpp:79
-#, fuzzy
 msgid "Invalid Color"
 msgstr "Color invalidus"
 
@@ -11197,11 +11208,11 @@ msgstr "Pliga quam restituere conaris corrupta est"
 
 #: src/play_controller.cpp:624
 msgid "Back to start"
-msgstr ""
+msgstr "Rursus ad initium"
 
 #: src/play_controller.cpp:626
 msgid "Back to turn "
-msgstr ""
+msgstr "Rursus ad tractum "
 
 #: src/playcampaign.cpp:260
 msgid "Defeat"
@@ -11293,7 +11304,6 @@ msgid "Scenario Report"
 msgstr "Renuntiatio Missionis"
 
 #: src/playsingle_controller.cpp:331
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -11333,11 +11343,10 @@ msgid "invisible: "
 msgstr "invisibilis: "
 
 #: src/reports.cpp:135
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
-msgstr "Unitas haec petrificatus est. Non potest movere aut oppugnare."
+msgstr "Unitas haec lentificatus est. Damnum bipartetur cum oppugnat."
 
 #: src/reports.cpp:135
 msgid "slowed: "
@@ -11375,12 +11384,11 @@ msgstr "damnum"
 
 #: src/reports.cpp:260
 msgid "weapon range: "
-msgstr ""
+msgstr "iactus teli: "
 
 #: src/reports.cpp:261
-#, fuzzy
 msgid "damage type: "
-msgstr "damnum"
+msgstr "genus damni:"
 
 #: src/reports.cpp:319
 msgid "Lawful units: "
@@ -11493,9 +11501,8 @@ msgid "TitleScreen button^Preferences"
 msgstr "Impostationes"
 
 #: src/titlescreen.cpp:206
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Restituere"
+msgstr "Occidiseptentrionem Adiuvare"
 
 #: src/titlescreen.cpp:207
 msgid "About"
@@ -11535,7 +11542,7 @@ msgstr "Impostationes lusus ponere"
 
 #: src/titlescreen.cpp:215
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "Occidiseptentrionem adiuvare mittans nuntios"
 
 #: src/titlescreen.cpp:216
 msgid "View the credits"
@@ -11592,18 +11599,22 @@ msgid ""
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
+"Occidiseptentrio voluntariis ut tibi fidit nuntios mittere, specialiter "
+"incipientibus lusoribus.  Summaria lusorum ab Occidiseptentrione servantur: "
+"nos adiuvare potest lusionem emendare si permissionem das mittere haec "
+"summaria (incerti auctoris) ad wesnoth.org.\n"
 
 #: src/upload_log.cpp:278
 msgid "Summaries are stored here:"
-msgstr ""
+msgstr "Summaria hic reconduntur:"
 
 #: src/upload_log.cpp:280
 msgid "You can view the results at:"
-msgstr ""
+msgstr "Eventa videre potes sub: "
 
 #: src/upload_log.cpp:285
 msgid "Help us make Wesnoth better for you!"
-msgstr ""
+msgstr "Nos adiuva facientes Occidiseptentrionem meliorem tibi!"
 
 #~ msgid "2p - Divide and Conquer"
 #~ msgstr "II l - Diducere et Vincere"
