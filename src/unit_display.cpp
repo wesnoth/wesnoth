@@ -33,15 +33,11 @@
 namespace
 {
 
-void teleport_unit_between(display& disp, const gamemap::location& a, const gamemap::location& b, unit& u)
+void teleport_unit_between(display& disp, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
 	if(disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)) {
 		return;
 	}
-
-	// Original unit is usually hidden (but still on map, so count is correct)
-	unit temp_unit = u;
-	temp_unit.set_hidden(false);
 
 	temp_unit.set_teleporting(disp,a);
 	if (!disp.fogged(a.x, a.y)) { // teleport
@@ -66,14 +62,11 @@ void teleport_unit_between(display& disp, const gamemap::location& a, const game
 		}
 	}
 	temp_unit.set_standing(disp,b);
-	disp.remove_temporary_unit();
 	disp.update_display();
 	events::pump();
 }
 
-
-
-void move_unit_between(display& disp, const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& u)
+void move_unit_between(display& disp, const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
 	if(disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)) {
 		return;
@@ -89,14 +82,10 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	gamemap::location dst_adjacent[6];
 	get_adjacent_tiles(b, dst_adjacent);
 
-	const int total_mvt_time = 150 * u.movement_cost(dst_terrain)/acceleration;
+	const int total_mvt_time = 150 * temp_unit.movement_cost(dst_terrain)/acceleration;
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = SDL_GetTicks() -start_time;
 	disp.scroll_to_tiles(a.x,a.y,b.x,b.y,display::ONSCREEN);
-
-	// Original unit is usually hidden (but still on map, so count is correct)
-	unit temp_unit = u;
-	temp_unit.set_hidden(false);
 
 	while(mvt_time < total_mvt_time) {
 		temp_unit.set_walking(disp,a);
@@ -110,7 +99,6 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 		mvt_time = SDL_GetTicks() -start_time;
 	}
-	disp.remove_temporary_unit();
 }
 
 }
@@ -118,7 +106,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 namespace unit_display
 {
 
-bool unit_visible_on_path(display& disp, const std::vector<gamemap::location>& path, unit& u, const unit_map& units, const std::vector<team>& teams)
+bool unit_visible_on_path(display& disp, const std::vector<gamemap::location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams)
 {
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 		const bool invisible = teams[u.side()-1].is_enemy(int(disp.viewing_team()+1)) &&
@@ -132,30 +120,35 @@ bool unit_visible_on_path(display& disp, const std::vector<gamemap::location>& p
 	return false;
 }
 
-void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::location>& path, unit& u, const unit_map& units, const std::vector<team>& teams)
+void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams)
 {
 	wassert(!path.empty());
+
 	bool previous_visible = false;
+	// Original unit is usually hidden (but still on map, so count is correct)
+	unit temp_unit = u;
+	temp_unit.set_hidden(false);
+
 	for(size_t i = 0; i+1 < path.size(); ++i) {
-		u.set_facing(path[i].get_relative_dir(path[i+1]));
+		temp_unit.set_facing(path[i].get_relative_dir(path[i+1]));
 
 		disp.remove_footstep(path[i]);
 
 		bool invisible;
 
-		if(u.side() == 0) {
+		if(temp_unit.side() == 0) {
 			invisible = false;
 		} else {
-			invisible = teams[u.side()-1].is_enemy(int(disp.viewing_team()+1)) &&
-				u.invisible(path[i],units,teams) &&
-				u.invisible(path[i+1],units,teams);
+			invisible = teams[temp_unit.side()-1].is_enemy(int(disp.viewing_team()+1)) &&
+				temp_unit.invisible(path[i],units,teams) &&
+				temp_unit.invisible(path[i+1],units,teams);
 		}
 
 		if(!invisible) {
 			if( !tiles_adjacent(path[i], path[i+1])) {
-				teleport_unit_between(disp,path[i],path[i+1],u);
+				teleport_unit_between(disp,path[i],path[i+1],temp_unit);
 			} else {
-				move_unit_between(disp,map,path[i],path[i+1],u);
+				move_unit_between(disp,map,path[i],path[i+1],temp_unit);
 			}
 			previous_visible = true;
 		} else if(previous_visible) {
@@ -163,7 +156,7 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 			disp.draw();
 		}
 	}
-	u.set_standing(disp,path[path.size()-1]);
+	disp.remove_temporary_unit();
 
 	//make sure the entire path is cleaned properly
 	for(std::vector<gamemap::location>::const_iterator it = path.begin(); it != path.end(); ++it) {
