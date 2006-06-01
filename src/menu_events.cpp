@@ -465,16 +465,18 @@ namespace events{
 
 	void menu_handler::autosave(unsigned turn, const config &starting_pos) const
 	{
-		// We save at the start of every third turn.
-		if (turn % 3 == 1) {
-			config snapshot;
-			write_game_snapshot(snapshot);
-			try {
+		config snapshot;
+		write_game_snapshot(snapshot);
+		try {
+			// We save a "go back to" autosave the start of every third turn.
+			if (turn % 3 == 1) {
 				recorder.save_game(_("Auto-Save") + lexical_cast<std::string>(turn), snapshot, starting_pos);
-			} catch(game::save_game_failed&) {
-				gui::show_dialog(*gui_,NULL,"",_("Could not auto save the game. Please save the game manually."),gui::MESSAGE);
-				//do not bother retrying, since the user can just save the game
+			} else {
+				recorder.save_game(_("Auto-Save"), snapshot, starting_pos);
 			}
+		} catch(game::save_game_failed&) {
+			gui::show_dialog(*gui_,NULL,"",_("Could not auto save the game. Please save the game manually."),gui::MESSAGE);
+			//do not bother retrying, since the user can just save the game
 		}
 	}
 
