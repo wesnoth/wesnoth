@@ -394,7 +394,7 @@ redo_turn:
 			play_human_turn();
 			after_human_turn();
 		} catch(end_turn_exception& end_turn) {
-			if (end_turn.redo == (team_index + 1U) )
+			if (end_turn.redo == team_index)
 				player_type_changed_ = true;
 		}
 	

@@ -1579,9 +1579,12 @@ namespace events{
 			if (index >= teams_.size() || teams_[index].is_network()) {
 				//do nothing
 			} else if (teams_[index].is_human()) {
+				//this is our side, so give it to AI
 				teams_[index].make_ai();
 				textbox_info_.close(*gui_);
 				if(team_num == side) {
+					//if it is our turn at the moment, we have to indicate to the
+					//play_controller, that we are no longer in control
 					throw end_turn_exception(side);
 				}
 			} else if (teams_[index].is_ai()) {
@@ -1621,13 +1624,18 @@ namespace events{
 				}
 				if(side_num > 0 && side_num <= teams_.size()) {
 					if(teams_[static_cast<size_t>(side_num - 1)].is_human()) {
+						//if this is our side we are always allowed to change the controller
 						change_side_controller(side,player,true);
+						teams_[static_cast<size_t>(side_num - 1)].make_network();
+						textbox_info_.close(*gui_);
 						if(team_num == side_num) {
-							teams_[static_cast<size_t>(side_num - 1)].make_network();
-							textbox_info_.close(*gui_);
+							//if it is our turn at the moment, we have to indicate to the
+							//play_controller, that we are no longer in control
 							throw end_turn_exception(side_num);
 						}
 					} else {
+						//it is not our side, the server will decide if we can change the
+						//controller (that is if we are host of the game)
 						change_side_controller(side,player);
 					}
 				}
