@@ -709,7 +709,6 @@ bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool us
 	const std::string& description = cfg["description"];
 	const std::string& speaker = cfg["speaker"];
 	const std::string& type = cfg["type"];
-	const std::string& profile = cfg["profile"];
 	const std::string& ability = cfg["ability"];
 	const std::string& side = cfg["side"];
 	const std::string& weapon = cfg["has_weapon"];
