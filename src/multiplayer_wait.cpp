@@ -155,8 +155,7 @@ wait::wait(display& disp, const config& cfg, const game_data& data, mp::chat& c,
 
 	cancel_button_(disp.video(), _("Cancel")),
 	start_label_(disp.video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOUR),
-	game_menu_(disp.video(), std::vector<std::string>()),
-
+	game_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::bluebg_style),
 	game_data_(data),
 	stop_updates_(false)
 {
@@ -296,6 +295,7 @@ void wait::layout_children(const SDL_Rect& rect)
 	game_menu_.set_location(ca.x, ca.y + title().height());
 	game_menu_.set_measurements(ca.w, y - ca.y - title().height()
 			- gui::ButtonVPadding);
+	game_menu_.set_max_width(ca.w);
 	game_menu_.set_max_height(y - ca.y - title().height() - gui::ButtonVPadding);
 	cancel_button_.set_location(ca.x + ca.w - cancel_button_.width(), y);
 	start_label_.set_location(ca.x, y + 4);
