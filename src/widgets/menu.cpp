@@ -668,7 +668,7 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 		} else {
 			const SDL_Rect area = {0,0,10000,10000};
 			const SDL_Rect font_size =
-				font::draw_text(NULL,area,default_style.get_font_size(),font::NORMAL_COLOUR,str,0,0);
+				font::draw_text(NULL,area,get_font_size(),font::NORMAL_COLOUR,str,0,0);
 			res.w += font_size.w;
 			res.h = maximum<int>(font_size.h, res.h);
 		}
@@ -676,7 +676,7 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 	return res;
 }
 
-void menu::style::draw_row_bg(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type)
+void menu::style::draw_row_bg(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
 	menu_ref.bg_restore(rect);
 
@@ -703,85 +703,21 @@ void menu::style::draw_row_bg(const menu& menu_ref, const std::vector<std::strin
 				    menu_ref.video().getSurface());
 }
 
-void menu::style::draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type)
+void menu::style::draw_row(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
 	if(rect.w == 0 || rect.h == 0) {
 		return;
 	}
-	draw_row_bg(menu_ref, row, rect, type);
+	draw_row_bg(menu_ref, row_index, rect, type);
 
-	SDL_Rect const &area = screen_area();
-	SDL_Rect const &loc = menu_ref.inner_location();
 	SDL_Rect minirect = rect;
-	minirect.x += thickness_;
-	minirect.y += thickness_;
-	minirect.w -= 2*thickness_;
-	minirect.h -= 2*thickness_;
-
-	const std::vector<int>& widths = menu_ref.column_widths();
-	bool lang_rtl = current_language_rtl();
-	int dir = (lang_rtl) ? -1 : 1;
-	SDL_Rect column = loc;
-
-	int xpos = minirect.x;
-	if(lang_rtl)
-		xpos += minirect.w;
-	for(size_t i = 0; i != row.size(); ++i) {
-
-		if(lang_rtl)
-			xpos -= widths[i];
-		if(type == HEADING_ROW && menu_ref.highlight_heading_ == int(i)) {
-			draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.3,menu_ref.video().getSurface());
-		}
-
-		const int last_x = xpos;
-		column.w = widths[i];
-		std::string str = row[i];
-		std::vector<std::string> img_text_items = utils::split(str, IMG_TEXT_SEPARATOR);
-		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
-			 it != img_text_items.end(); it++) {
-			str = *it;
-			if (!str.empty() && str[0] == IMAGE_PREFIX) {
-				const std::string image_name(str.begin()+1,str.end());
-				const surface img = image::get_image(image_name,image::UNSCALED);
-				const int max_width = menu_ref.max_width_ < 0 ? area.w :
-					minimum<int>(menu_ref.max_width_, area.w - xpos);
-				if(img != NULL && (xpos - minirect.x) + img->w < max_width
-				   && minirect.y + img->h < area.h) {
-					const size_t y = minirect.y + (minirect.h - img->h)/2;
-					const size_t w = img->w + 5;
-					const size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
-					menu_ref.video().blit_surface(x,y,img);
-					if(!lang_rtl)
-						xpos += w;
-					column.w -= w;
-				}
-			} else {
-				column.x = xpos;
-				const std::string to_show = menu_ref.max_width_ > -1 ?
-					font::make_text_ellipsis(str, get_font_size(), loc.w - (xpos - minirect.x)) : str;
-				const SDL_Rect& text_size = font::text_area(str,get_font_size());
-				const size_t y = minirect.y + (minirect.h - text_size.h)/2;
-				font::draw_text(&menu_ref.video(),column,get_font_size(),font::NORMAL_COLOUR,to_show,xpos,y);
-
-				if(type == HEADING_ROW && menu_ref.sortby_ == int(i)) {
-					const surface sort_img = image::get_image(menu_ref.sortreversed_ ? "misc/sort-arrow.png" :
-					                                   "misc/sort-arrow-reverse.png", image::UNSCALED);
-					if(sort_img != NULL && sort_img->w <= widths[i] && sort_img->h <= minirect.h) {
-						const size_t sort_x = xpos + widths[i] - sort_img->w;
-						const size_t sort_y = minirect.y + minirect.h/2 - sort_img->h/2;
-						menu_ref.video().blit_surface(sort_x,sort_y,sort_img);
-					}
-				}
-
-				xpos += dir * (text_size.w + 5);
-			}
-		}
-		if(lang_rtl)
-			xpos = last_x;
-		else
-			xpos = last_x + widths[i];
+	if(type != HEADING_ROW) {
+		minirect.x += thickness_;
+		minirect.y += thickness_;
+		minirect.w -= 2*thickness_;
+		minirect.h -= 2*thickness_;
 	}
+	menu_ref.draw_row(row_index, minirect, type);
 }
 
 
@@ -827,19 +763,86 @@ void menu::clear_item(int item)
 	bg_restore(rect);
 }
 
-void menu::draw_row(const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type)
+void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
-	style_->draw_row(*this, row, rect, type);
+	//called from style, draws one row's contents in a generic and adaptable way
+	const std::vector<std::string>& row = (type == HEADING_ROW) ? heading_ : items_[row_index].fields;
+	SDL_Rect const &area = screen_area();
+	SDL_Rect const &loc = inner_location();
+	const std::vector<int>& widths = column_widths();
+	bool lang_rtl = current_language_rtl();
+	int dir = (lang_rtl) ? -1 : 1;
+	SDL_Rect column = loc;
+
+	int xpos = rect.x;
+	if(lang_rtl)
+		xpos += rect.w;
+	for(size_t i = 0; i != row.size(); ++i) {
+
+		if(lang_rtl)
+			xpos -= widths[i];
+		if(type == HEADING_ROW && highlight_heading_ == int(i)) {
+			draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.3,video().getSurface());
+		}
+
+		const int last_x = xpos;
+		column.w = widths[i];
+		std::string str = row[i];
+		std::vector<std::string> img_text_items = utils::split(str, IMG_TEXT_SEPARATOR);
+		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
+			 it != img_text_items.end(); it++) {
+			str = *it;
+			if (!str.empty() && str[0] == IMAGE_PREFIX) {
+				const std::string image_name(str.begin()+1,str.end());
+				const surface img = image::get_image(image_name,image::UNSCALED);
+				const int max_width = max_width_ < 0 ? area.w :
+					minimum<int>(max_width_, area.w - xpos);
+				if(img != NULL && (xpos - rect.x) + img->w < max_width
+				   && rect.y + img->h < area.h) {
+					const size_t y = rect.y + (rect.h - img->h)/2;
+					const size_t w = img->w + 5;
+					const size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
+					video().blit_surface(x,y,img);
+					if(!lang_rtl)
+						xpos += w;
+					column.w -= w;
+				}
+			} else {
+				column.x = xpos;
+				const std::string to_show = max_width_ > -1 ?
+					font::make_text_ellipsis(str, style_->get_font_size(), loc.w - (xpos - rect.x)) : str;
+				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
+				const size_t y = rect.y + (rect.h - text_size.h)/2;
+				font::draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOUR,to_show,xpos,y);
+
+				if(type == HEADING_ROW && sortby_ == int(i)) {
+					const surface sort_img = image::get_image(sortreversed_ ? "misc/sort-arrow.png" :
+					                                   "misc/sort-arrow-reverse.png", image::UNSCALED);
+					if(sort_img != NULL && sort_img->w <= widths[i] && sort_img->h <= rect.h) {
+						const size_t sort_x = xpos + widths[i] - sort_img->w;
+						const size_t sort_y = rect.y + rect.h/2 - sort_img->h/2;
+						video().blit_surface(sort_x,sort_y,sort_img);
+					}
+				}
+
+				xpos += dir * (text_size.w + 5);
+			}
+		}
+		if(lang_rtl)
+			xpos = last_x;
+		else
+			xpos = last_x + widths[i];
+	}
 }
 
 void menu::draw_contents()
 {
 	SDL_Rect heading_rect = inner_location();
 	heading_rect.h = heading_height();
-	draw_row(heading_,heading_rect,HEADING_ROW);
+	style_->draw_row(*this,0,heading_rect,HEADING_ROW);
 
 	for(size_t i = 0; i != item_pos_.size(); ++i) {
-		draw_row(items_[item_pos_[i]].fields,get_item_rect(i),item_pos_[i] == selected_ ? SELECTED_ROW : NORMAL_ROW);
+		style_->draw_row(*this,item_pos_[i],get_item_rect(i),item_pos_[i] == selected_ ? SELECTED_ROW : NORMAL_ROW);
 	}
 }
 
@@ -856,13 +859,13 @@ void menu::draw()
 				SDL_Rect heading_rect = inner_location();
 				heading_rect.h = heading_height();
 				bg_restore(heading_rect);
-				draw_row(heading_,heading_rect,HEADING_ROW);
+				style_->draw_row(*this,0,heading_rect,HEADING_ROW);
 				update_rect(heading_rect);
 			} else if(*i >= 0 && *i < int(item_pos_.size())) {
 				const unsigned int pos = item_pos_[*i];
 				const SDL_Rect& rect = get_item_rect(*i);
 				bg_restore(rect);
-				draw_row(items_[pos].fields,rect,pos == selected_ ? SELECTED_ROW : NORMAL_ROW);
+				style_->draw_row(*this,pos,rect,pos == selected_ ? SELECTED_ROW : NORMAL_ROW);
 				update_rect(rect);
 			}
 		}

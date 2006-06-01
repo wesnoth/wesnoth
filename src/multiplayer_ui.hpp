@@ -29,6 +29,10 @@
 class display;
 struct game_state;
 
+namespace {
+static std::vector<std::string> empty_string_vector;
+}
+
 namespace mp {
 
 enum controller { CNTR_NETWORK = 0, CNTR_LOCAL, CNTR_COMPUTER, CNTR_EMPTY, CNTR_LAST };

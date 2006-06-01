@@ -37,7 +37,8 @@ std::string games_menu_heading()
 }
 
 namespace mp {
-gamebrowser::gamebrowser(CVideo& video, const config* map_hashes) : scrollarea(video),
+	gamebrowser::gamebrowser(CVideo& video, const config* map_hashes) :
+	menu(video, empty_string_vector, false, -1, -1, NULL, &menu::bluebg_style),
 	gold_icon_locator_("misc/gold.png"),
 	xp_icon_locator_("misc/units.png"),
 	vision_icon_locator_("misc/invisible.png"),
@@ -72,7 +73,8 @@ SDL_Rect gamebrowser::get_item_rect(size_t index) const {
 		return res;
 	}
 	const SDL_Rect& loc = inner_location();
-	const SDL_Rect res = { loc.x, loc.y + (index - visible_range_.first) * item_height_, loc.w, item_height_ };
+	const unsigned int height = item_height_ + 2 * style_->get_thickness();
+	const SDL_Rect res = { loc.x, loc.y + (index - visible_range_.first) * height, loc.w, height};
 	return res;
 }
 
@@ -91,11 +93,11 @@ void gamebrowser::draw()
 	}
 }
 
-void gamebrowser::draw_contents() const
+void gamebrowser::draw_contents()
 {
 	if(!games_.empty()) {
 		for(size_t i = visible_range_.first; i != visible_range_.second; ++i) {
-			draw_item(i);
+			style_->draw_row(*this,i,get_item_rect(i),(i==selected_)? SELECTED_ROW : NORMAL_ROW);
 		}
 	} else {
 		const SDL_Rect rect = inner_location();
@@ -103,14 +105,13 @@ void gamebrowser::draw_contents() const
 	}
 }
 
-void gamebrowser::draw_item(size_t index) const {
+void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TYPE type) {
 	const game_item& game = games_[index];
-	SDL_Rect item_rect = get_item_rect(index);
 	int xpos = item_rect.x + margin_;
 	int ypos = item_rect.y + margin_;
 
-	bg_restore(item_rect);
-	draw_solid_tinted_rectangle(item_rect.x, item_rect.y, item_rect.w, item_rect.h, 0, 0, 0, 0.2, video().getSurface());
+	//bg_restore(item_rect);
+	//draw_solid_tinted_rectangle(item_rect.x, item_rect.y, item_rect.w, item_rect.h, 0, 0, 0, 0.2, video().getSurface());
 
 	// draw mini map
 	video().blit_surface(xpos, ypos, game.mini_map);
@@ -185,8 +186,8 @@ void gamebrowser::draw_item(size_t index) const {
 	xpos = item_rect.x + item_rect.w - margin_ - status_text->w;
 	video().blit_surface(xpos, ypos, status_text);
 
-	if(selected_ == index)
-		draw_solid_tinted_rectangle(item_rect.x, item_rect.y, item_rect.w, item_rect.h, 153, 0, 0, 0.3, video().getSurface());
+	//if(selected_ == index)
+	//	draw_solid_tinted_rectangle(item_rect.x, item_rect.y, item_rect.w, item_rect.h, 153, 0, 0, 0.3, video().getSurface());
 }
 
 void gamebrowser::handle_event(const SDL_Event& event)

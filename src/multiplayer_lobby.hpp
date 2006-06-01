@@ -25,7 +25,7 @@
 // This module controls the multiplayer lobby. A section on the server which
 // allows players to chat, create games, and join games.
 namespace mp {
-class gamebrowser : public gui::scrollarea {
+class gamebrowser : public gui::menu {
 public:
 	struct game_item {
 		surface mini_map;
@@ -50,8 +50,8 @@ public:
 	void set_item_height(unsigned int height);
 	void set_game_items(const config& cfg, const config& game_config);
 	void draw();
-	void draw_contents() const;
-	void draw_item(size_t index) const;
+	void draw_contents();
+	void draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 	SDL_Rect get_item_rect(size_t index) const;
 	bool empty() const { return games_.empty(); }
 	bool selection_is_joinable() const { return empty() ? false : games_[selected_].vacant_slots > 0; }
@@ -77,6 +77,7 @@ private:
 	std::pair<size_t, size_t> visible_range_;
 	std::vector<game_item> games_;
 	std::vector<size_t> redraw_items_;
+	mutable std::vector<int> widths_;
 	bool double_clicked_;
 	bool ignore_next_doubleclick_;
 	bool last_was_doubleclick_;

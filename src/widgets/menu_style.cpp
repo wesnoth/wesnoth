@@ -120,7 +120,7 @@ bool menu::imgsel_style::load_images()
 	return (!load_failed_);
 }
 
-void menu::imgsel_style::draw_row_bg(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type)
+void menu::imgsel_style::draw_row_bg(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
 	if(type == SELECTED_ROW && has_background_ && !load_failed_) {
 		//draw scaled background image
@@ -130,24 +130,17 @@ void menu::imgsel_style::draw_row_bg(const menu& menu_ref, const std::vector<std
 		menu_ref.video().blit_surface(rect.x,rect.y,image,NULL,&clip);
 	}
 	else {
-		style::draw_row_bg(menu_ref, row, rect, type);
+		style::draw_row_bg(menu_ref, row_index, rect, type);
 	}
 }
 
-void menu::imgsel_style::draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type)
+void menu::imgsel_style::draw_row(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
 	if(!load_failed_) {
-		SDL_Rect item_rect = rect;
-		//item_rect.x += thickness_;
-		//item_rect.y += thickness_;
-		//item_rect.w -= 2*thickness_;
-		//item_rect.h -= 2*thickness_;
-
 		//draw item inside
-		style::draw_row(menu_ref, row, item_rect, type);
+		style::draw_row(menu_ref, row_index, rect, type);
 
 		if(type == SELECTED_ROW) {
-
 			// draw border
 			surface image;
 			SDL_Rect area;
@@ -209,7 +202,7 @@ void menu::imgsel_style::draw_row(const menu& menu_ref, const std::vector<std::s
 		}
 	} else {
 		//default drawing
-		style::draw_row(menu_ref, row, rect, type);
+		style::draw_row(menu_ref, row_index, rect, type);
 	}
 }
 

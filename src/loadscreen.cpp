@@ -44,8 +44,8 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 	/* Saturate percentage. */
 	prcnt_ = percentage < MIN_PERCENTAGE ? MIN_PERCENTAGE: percentage > MAX_PERCENTAGE ? MAX_PERCENTAGE: percentage;	
 	/* Set progress bar parameters. */
-	int fcr =   103, fcg =   11, fcb = 10; /* Finished piece. */
-	int lcr =   24, lcg =   22, lcb =  21; /* Leftover piece. */
+	int fcr =   21, fcg =   53, fcb = 80; /* Finished piece. */
+	int lcr =   21, lcg =   22, lcb =  24; /* Leftover piece. */
 	int bcr = 188, bcg = 176, bcb = 136; /* Border color. */
 	int bw = 1; /* Border width. */
 	int bispw = 1; /* Border inner spacing width. */

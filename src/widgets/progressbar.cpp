@@ -48,7 +48,7 @@ void progress_bar::draw_contents()
 		SDL_FillRect(surf,&inner_area,SDL_MapRGB(surf->format,255,255,255));
 
 		inner_area.w = (inner_area.w*progress_)/100;
-		SDL_FillRect(surf,&inner_area,SDL_MapRGB(surf->format,150,0,0));
+		SDL_FillRect(surf,&inner_area,SDL_MapRGB(surf->format,21,53,80));
 
 		const std::string text = text_.empty() ? str_cast(progress_) + "%" :
 		                         text_ + " (" + str_cast(progress_) + "%)";

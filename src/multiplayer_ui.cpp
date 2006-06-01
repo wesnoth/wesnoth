@@ -149,7 +149,7 @@ ui::ui(display& disp, const std::string& title, const config& cfg, chat& c, conf
 	title_(disp.video(), title, font::SIZE_LARGE, font::TITLE_COLOUR),
 	chat_textbox_(disp.video(), 100, "", false),
 	entry_textbox_(disp.video(), 100),
-	users_menu_(disp.video(), std::vector<std::string>()),
+	users_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::slateborder_style),
 
 	result_(CONTINUE)
 {

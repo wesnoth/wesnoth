@@ -43,8 +43,8 @@ public:
 		virtual void init() {}
 
 		virtual SDL_Rect item_size(const std::string& item) const;
-		virtual void draw_row_bg(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
-		virtual void draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
+		virtual void draw_row_bg(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
+		virtual void draw_row(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 
 		size_t get_font_size() const;
 		size_t get_cell_padding() const;
@@ -69,8 +69,8 @@ public:
 		virtual ~imgsel_style();
 
 		virtual SDL_Rect item_size(const std::string& item) const;
-		virtual void draw_row_bg(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
-		virtual void draw_row(const menu& menu_ref, const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
+		virtual void draw_row_bg(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
+		virtual void draw_row(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 
 		virtual void init() { load_images(); }
 		bool load_images();
@@ -185,6 +185,8 @@ protected:
 	void set_inner_location(const SDL_Rect& rect);
 
 	bool requires_event_focus() const { return true; };
+	const std::vector<int>& column_widths() const;
+	virtual void draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type);
 
 	style *style_;
 private:
@@ -221,10 +223,8 @@ private:
 
 	bool double_clicked_;
 
-	const std::vector<int>& column_widths() const;
 	void column_widths_item(const std::vector<std::string>& row, std::vector<int>& widths) const;
 
-	void draw_row(const std::vector<std::string>& row, const SDL_Rect& rect, ROW_TYPE type);
 	void clear_item(int item);
 	void draw_contents();
 	void draw();

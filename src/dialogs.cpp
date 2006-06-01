@@ -584,7 +584,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	if(show_replay != NULL)
 		options.push_back(gui::check_item(_("Show replay"),false));
 
-	const int res = gui::show_dialog(disp,NULL,
+	const int res = gui::show_dialog2(disp,NULL,
 					 _("Load Game"),
 					 _("Choose the game to load"),
 			         gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,&options,-1,-1,NULL,&buttons,"",&sorter);
