@@ -269,7 +269,7 @@ void upload_log::quit(int turn)
 void upload_log_dialog::show_beg_dialog(display& disp)
 {
 	std::vector<gui::check_item> options;
-	gui::check_item beg_check = gui::check_item("Enable summary uploads",
+	gui::check_item beg_check = gui::check_item(_("Enable summary uploads"),
 									  preferences::upload_log());
 	beg_check.align = gui::LEFT_ALIGN;
 	options.push_back(beg_check);
