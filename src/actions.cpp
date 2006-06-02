@@ -1929,6 +1929,12 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		}
 	}
 
+	if(disp != NULL) {
+		// clear display helpers before firing events
+		disp->unhighlight_reach();
+		disp->set_route(NULL);
+		disp->draw();
+	}
 	if(game_events::fire("moveto",steps.back())) {
 		event_mutated = true;
 	}
@@ -1944,7 +1950,6 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	}
 
 	if(disp != NULL) {
-		disp->set_route(NULL);
 
 		//show messages on the screen here
 		if(discovered_unit) {
