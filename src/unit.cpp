@@ -1771,6 +1771,7 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 
 	if (draw_bars_) {
 		over.insert(loc.get_direction(gamemap::location::NORTH_WEST));
+		over.insert(loc.get_direction(gamemap::location::NORTH));
 	}
 
 	switch (state()) {
