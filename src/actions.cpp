@@ -1190,10 +1190,12 @@ void attack(display& gui, const gamemap& map,
 	}
 
 	if(attackerxp && a != units.end()) {
+		a->second.set_standing(gui,attacker);
 		a->second.get_experience(attackerxp);
 	}
 
 	if(defenderxp && d != units.end()) {
+		d->second.set_standing(gui,defender);
 		d->second.get_experience(defenderxp);
 	}
 
