@@ -104,16 +104,6 @@ void play_controller::init(CVideo& video){
 	}
 
 	init_managers();
-
-	gui_->labels().read(level_);
-
-	LOG_NG << "start music... " << (SDL_GetTicks() - ticks_) << "\n";
-
-	//find a list of 'items' (i.e. overlays) on the level, and add them
-	const config::child_list& overlays = level_.get_children("item");
-	for(config::child_list::const_iterator overlay = overlays.begin(); overlay != overlays.end(); ++overlay) {
-		gui_->add_overlay(gamemap::location(**overlay),(**overlay)["image"], (**overlay)["halo"]);
-	}
 }
 
 void play_controller::init_managers(){
