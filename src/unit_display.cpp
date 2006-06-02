@@ -317,12 +317,17 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 				sub_halo--; //correct frame is the previous one
 
 				if(sub_halo >= missile_frame.halo.size()) sub_halo = missile_frame.halo.size() -1;
-
-
+				if(!vflip) {
 					missile_halo = halo::add(posx+d+missile_frame.halo_x,
 							posy+d+missile_frame.halo_y,
 							missile_frame.halo[sub_halo].first,
 							orientation);
+				} else {
+					missile_halo = halo::add(posx+d-missile_frame.halo_x,
+							posy+d+missile_frame.halo_y,
+							missile_frame.halo[sub_halo].first,
+							orientation);
+				}
 			}
 			missile_frame_halo = halo::add(posx+d,
 					posy+d,
