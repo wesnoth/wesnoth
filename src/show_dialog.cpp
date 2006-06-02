@@ -388,7 +388,7 @@ int show_dialog(display& disp, surface image,
 	const size_t top_padding = font::relative_size(10);
 	const size_t bottom_padding = font::relative_size(10);
 
-	const std::string message = "";
+	std::string message = "";
 	try {
 		message = font::word_wrap_text(msg, message_font_size, screen.getx() / 2, screen.gety() / 2);
 	} catch(utils::invalid_utf8_exception&) {
