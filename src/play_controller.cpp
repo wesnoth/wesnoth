@@ -269,6 +269,9 @@ void play_controller::fire_start(bool execute){
 	if(execute) {
 		game_events::fire("start");
 		gamestate_.set_variable("turn_number", "1");
+		first_turn_ = true;
+	} else {
+		first_turn_ = false;
 	}
 }
 
@@ -292,10 +295,30 @@ void play_controller::init_side(const unsigned int team_index){
 	std::stringstream player_number_str;
 	player_number_str << player_number_;
 	gamestate_.set_variable("side_number",player_number_str.str());
-
+	
+	if(first_turn_) {
+		if(gui_->viewing_team() == team_index && !team_manager_.is_observer()) {
+			recorder.add_event("turn 1");
+			recorder.add_event("new turn");
+			recorder.add_event("side turn");
+			game_events::fire("turn 1");
+			game_events::fire("new turn");
+			game_events::fire("side turn");
+		} else if(current_team.is_ai()) {
+			game_events::fire("turn 1");
+			game_events::fire("new turn");
+			game_events::fire("side turn");
+		}
+		first_turn_ = false;
+	} else
 	//fire side turn event only if real side change occurs not counting changes from void to a side
 	if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
-		game_events::fire("side turn");
+		if(gui_->viewing_team() == team_index && !team_manager_.is_observer()) {
+			recorder.add_event("side turn");
+			game_events::fire("side turn");
+		} else if(current_team.is_ai()) {
+			game_events::fire("side turn");
+		}
 	}
 
 	//we want to work out if units for this player should get healed, and the

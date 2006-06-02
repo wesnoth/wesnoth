@@ -57,6 +57,7 @@ public:
 	void clear_labels();
 	void add_rename(const std::string& name, const gamemap::location& loc);
 	void end_turn();
+	void add_event(const std::string& name);
 
 	void speak(const config& cfg);
 	std::string build_chat_log(const std::string& team) const;

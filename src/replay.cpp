@@ -359,7 +359,13 @@ void replay::end_turn()
 	config* const cmd = add_command();
 	cmd->add_child("end_turn");
 }
-
+void replay::add_event(const std::string& name)
+{
+	config* const cmd = add_command();
+	config& ev = cmd->add_child("fire_event");
+	ev["raise"] = name;
+	(*cmd)["undo"] = "no";
+}
 void replay::speak(const config& cfg)
 {
 	config* const cmd = add_command(false);
@@ -926,6 +932,11 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				check_victory(units,teams);
 			}
 			fix_shroud = !replayer.is_skipping();
+		} else if((child = cfg->child("fire_event")) != NULL) {
+			for(config::child_list::const_iterator v = child->get_children("set_variable").begin(); v != child->get_children("set_variable").end(); ++v) {
+				state_of_game.set_variable((**v)["name"],(**v)["value"]);
+			}
+			game_events::fire((*child)["raise"]);
 		} else {
 			ERR_NW << "unrecognized action\n";
 			if (!game_config::ignore_replay_errors) throw replay::error();
