@@ -532,6 +532,11 @@ int show_dialog(display& disp, surface image,
 
 	if(text_widget_width+left_padding+right_padding > total_width)
 		total_width = text_widget_width+left_padding+right_padding;
+	//Prevent the menu from being too skinny
+	if(menu_.width() > 0 && preview_panes == NULL &&
+		total_width > menu_.width() + image_width + padding_width) {
+		menu_.set_width(total_width - image_width - padding_width);
+	}
 
 	const size_t text_and_image_height = image_height > total_text_height ? image_height : total_text_height;
 
