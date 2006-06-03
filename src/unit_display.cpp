@@ -90,7 +90,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	while(mvt_time < total_mvt_time) {
 		double pos =double(mvt_time)/total_mvt_time;
 		const gamemap::location& ref_loc =pos<0.5?a:b;
-		if(pos > 0.5) pos = pos -1;
+		if(pos >= 0.5) pos = pos -1;
 		temp_unit.set_walking(disp,ref_loc);
 		disp.invalidate(ref_loc);
 		disp.place_temporary_unit(temp_unit,ref_loc);
