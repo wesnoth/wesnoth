@@ -1294,15 +1294,12 @@ void unit::set_defending(const display &disp,const gamemap::location& loc, int d
 	
 	// add a blink on damage effect
 	int anim_time = anim_->get_last_frame_time();
-	int damage_left = damage;
 	const std::string my_image = anim_->get_last_frame().image;
-	while(anim_time < 1000 && damage_left > 0 ) {
+	if(damage) {
 		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),0.5));
 		anim_time += 30;
-		damage_left --;
 		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),0.0));
 		anim_time += 30;
-		damage_left --;
 	}
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
@@ -1438,7 +1435,7 @@ void unit::set_healed(const display &disp,const gamemap::location& loc, int heal
 	int heal_left = healing;
 	const std::string my_image = anim_->get_last_frame().image;
 	while(anim_time < 1000 && heal_left > 0 ) {
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),1.0));
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),0.5));
 		anim_time += 30;
 		heal_left --;
 		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),0.0));
@@ -1463,7 +1460,7 @@ void unit::set_poisoned(const display &disp,const gamemap::location& loc, int da
 	int damage_left = damage;
 	const std::string my_image = anim_->get_last_frame().image;
 	while(anim_time < 1000 && damage_left > 0 ) {
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(0,255,0),1.0));
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(0,255,0),0.5));
 		anim_time += 30;
 		damage_left --;
 		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(0,255,0),0.0));
