@@ -214,6 +214,21 @@ void replay::save_game(const std::string& label, const config& snapshot,
 	saveInfo_.snapshot = config();
 }
 
+void replay::add_unit_checksum(const gamemap::location& loc,config* const cfg)
+{
+	if(! game_config::mp_debug) {
+		return;
+	}
+	wassert(unit_map_ref);
+	config& cc = cfg->add_child("checksum");
+	loc.write(cc);
+	unit_map::const_iterator u = unit_map_ref->find(loc);
+	wassert(u != unit_map_ref->end());
+	std::string chk_value;
+	u->second.write_checksum(chk_value);
+	cc["value"] = chk_value;
+}
+
 void replay::add_start()
 {
 	config* const cmd = add_command(true);
@@ -286,6 +301,8 @@ void replay::add_attack(const gamemap::location& a, const gamemap::location& b, 
 	char buf[100];
 	snprintf(buf,sizeof(buf),"%d",weapon);
 	current_->child("attack")->values["weapon"] = buf;
+	add_unit_checksum(a,current_);
+	add_unit_checksum(b,current_);
 }
 
 void replay::add_pos(const std::string& type,
@@ -365,6 +382,14 @@ void replay::add_event(const std::string& name)
 	config& ev = cmd->add_child("fire_event");
 	ev["raise"] = name;
 	(*cmd)["undo"] = "no";
+}
+void replay::add_checksum_check(const gamemap::location& loc)
+{
+	if(! game_config::mp_debug) {
+		return;
+	}
+	config* const cmd = add_command();
+	add_unit_checksum(loc,cmd);
 }
 void replay::speak(const config& cfg)
 {
@@ -560,6 +585,32 @@ replay& get_replay_source()
 	}
 }
 
+namespace {
+void check_checksums(display& disp,const unit_map& units,const config& cfg)
+{
+	if(! game_config::mp_debug) {
+		return;
+	}
+	for(config::child_list::const_iterator ci = cfg.get_children("checksum").begin(); ci != cfg.get_children("checksum").end(); ++ci) {
+		gamemap::location loc(**ci);
+		unit_map::const_iterator u = units.find(loc);
+		if(u == units.end()) {
+			std::stringstream message;
+			message << "non existant unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
+			disp.add_chat_message("verification",1,message.str(),display::MESSAGE_PRIVATE);
+			continue;
+		}
+		std::string check;
+		u->second.write_checksum(check);
+		if(check != (**ci)["value"]) {
+			std::stringstream message;
+			message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
+			disp.add_chat_message("verification",1,message.str(),display::MESSAGE_PRIVATE);
+		}
+	}
+}
+}
+
 bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
                unit_map& units,
 	       std::vector<team>& teams, int team_num, const gamestatus& state,
@@ -618,7 +669,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				continue;
 			}
 		}
-
+		
+		
 		//if there is nothing more in the records
 		if(cfg == NULL) {
 			//replayer.set_skip(false);
@@ -728,6 +780,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			current_team.spend_gold(u_type->second.cost());
 			LOG_NW << "-> " << (current_team.gold()) << "\n";
 			fix_shroud = !replayer.is_skipping();
+			check_checksums(disp,units,*cfg);
 }
 
 		else if((child = cfg->child("recall")) != NULL) {
@@ -755,6 +808,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
 			fix_shroud = !replayer.is_skipping();
+			check_checksums(disp,units,*cfg);
 		}
 
 		else if((child = cfg->child("disband")) != NULL) {
@@ -852,6 +906,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			up->first = dst;
 			units.add(up);
 			u = units.find(dst);
+			check_checksums(disp,units,*cfg);
 			if(map.is_village(dst)) {
 				const int orig_owner = village_owner(dst,teams) + 1;
 				if(orig_owner != team_num) {
@@ -883,6 +938,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		else if((child = cfg->child("attack")) != NULL) {
 			const config* const destination = child->child("destination");
 			const config* const source = child->child("source");
+			check_checksums(disp,units,*cfg);
 
 			if(destination == NULL || source == NULL) {
 				ERR_NW << "no destination/source found in attack\n";
@@ -938,8 +994,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 			game_events::fire((*child)["raise"]);
 		} else {
-			ERR_NW << "unrecognized action\n";
-			if (!game_config::ignore_replay_errors) throw replay::error();
+			if(! cfg->child("checksum")) {
+				ERR_NW << "unrecognized action\n";
+				if (!game_config::ignore_replay_errors) throw replay::error();
+			} else {
+				check_checksums(disp,units,*cfg);
+			}
 		}
 
 		//Check if we should refresh the shroud, and redraw the minimap/map tiles.

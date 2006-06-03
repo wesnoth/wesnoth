@@ -58,6 +58,8 @@ public:
 	void add_rename(const std::string& name, const gamemap::location& loc);
 	void end_turn();
 	void add_event(const std::string& name);
+	void add_unit_checksum(const gamemap::location& loc,config* const cfg);
+	void add_checksum_check(const gamemap::location& loc);
 
 	void speak(const config& cfg);
 	std::string build_chat_log(const std::string& team) const;

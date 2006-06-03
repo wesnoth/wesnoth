@@ -188,7 +188,7 @@ public:
 	
 	const std::string& image() const;
 	const std::string& image_profile() const;
-	const std::string& unit_description() const;
+	const t_string& unit_description() const;
 
     const std::vector<Uint32>& flag_rgb() const;
 

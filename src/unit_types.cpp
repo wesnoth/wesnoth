@@ -954,11 +954,11 @@ const std::string& unit_type::image_profile() const
 		return val;
 }
 
-const std::string& unit_type::unit_description() const
+const t_string& unit_type::unit_description() const
 {
-	static const std::string default_val("No description available");
+	static const t_string default_val("No description available");
 
-	const std::string& desc = cfg_["unit_description"];
+	const t_string& desc = cfg_["unit_description"];
 	if(desc.empty())
 		return default_val;
 	else

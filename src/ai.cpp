@@ -305,6 +305,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 		" gold=" << data.gold <<
 		((data.net_income < 0) ? "" : "+") <<
 		data.net_income << "\n";
+		recorder.add_checksum_check(loc);
 		return true;
 	} else {
 		const team_data data = calculate_team_data(current_team(),info_.team_num,info_.units);

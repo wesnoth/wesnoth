@@ -59,6 +59,7 @@ class unit
 		virtual ~unit();
 		
 		void set_game_context(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams);
+		void write_checksum(std::string& str) const;
 		
 		// Advances this unit to another type
 		void advance_to(const unit_type* t);

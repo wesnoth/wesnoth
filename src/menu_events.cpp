@@ -644,6 +644,7 @@ namespace events{
 				gui_->recalculate_minimap();
 				gui_->invalidate_game_status();
 				gui_->invalidate_all();
+				recorder.add_checksum_check(loc);
 			} else {
 				recorder.undo();
 				gui::show_dialog(*gui_,NULL,"",msg,gui::OK_ONLY);
@@ -753,6 +754,7 @@ namespace events{
 						recall_list.erase(recall_list.begin()+res);
 						gui_->invalidate_game_status();
 						gui_->invalidate_all();
+						recorder.add_checksum_check(loc);
 					}
 				}
 			}
@@ -895,6 +897,7 @@ namespace events{
 
 					gui_->invalidate(action.recall_loc);
 					gui_->draw();
+					recorder.add_checksum_check(action.recall_loc);
 				} else {
 					recorder.undo();
 					gui::show_dialog(*gui_,NULL,"",msg,gui::OK_ONLY);
@@ -936,6 +939,7 @@ namespace events{
 				gui_->draw();
 				//gui_.invalidate_game_status();
 				//gui_.invalidate_all();
+				recorder.add_checksum_check(loc);
 			} else {
 				recorder.undo();
 				gui::show_dialog(*gui_,NULL,"",msg,gui::OK_ONLY);

@@ -203,6 +203,7 @@ game_controller::game_controller(int argc, char** argv)
 			test_mode_ = true;
 		} else if(val == "--debug" || val == "-d") {
 			game_config::debug = true;
+			game_config::mp_debug = true;
 		} else if (val.substr(0, 6) == "--log-") {
 		} else if(val == "--nosound") {
 			preferences::set_sound(false);

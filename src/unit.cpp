@@ -203,7 +203,13 @@ void unit::set_game_context(const game_data* gamedata, unit_map* unitmap, const 
 	gamestatus_ = game_status;
 	teams_ = teams;
 }
-
+void unit::write_checksum(std::string& str) const
+{
+	config unit_config;
+	write(unit_config);
+	unit_config["controller"] = "";
+	str = unit_config.hash();
+}
 
 std::string unit::generate_description() const
 {
@@ -932,7 +938,6 @@ void unit::read(const config& cfg)
 	
 	bool type_set = false;
 	id_ = "";
-	traits_description_ = cfg["traits_description"];
 	if(cfg["type"] != "" && cfg["type"] != cfg["id"]) {
 		wassert(gamedata_ != NULL);
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
@@ -1158,8 +1163,6 @@ void unit::write(config& cfg) const
 
 	cfg["user_description"] = custom_unit_description_;
 	cfg["description"] = underlying_description_;
-
-	cfg["traits_description"] = traits_description_;
 
 	if(can_recruit())
 		cfg["canrecruit"] = "1";
