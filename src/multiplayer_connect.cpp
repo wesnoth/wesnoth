@@ -186,8 +186,8 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 	pane.add_widget(&slider_gold_, 475, 5 + pos);
 	//pane.add_widget(&label_gold_, 490 + slider_gold_.width(), 8 + pos);
 	pane.add_widget(&label_gold_, 475, 35 + pos);
-	pane.add_widget(&slider_income_, 480 + slider_gold_.width(), 5 + pos);
-	pane.add_widget(&label_income_, 480 + slider_gold_.width(), 35 + pos);
+	pane.add_widget(&slider_income_, 475 + slider_gold_.width(), 5 + pos);
+	pane.add_widget(&label_income_, 475 + slider_gold_.width(), 35 + pos);
 }
 
 void connect::side::process_event()
@@ -308,7 +308,21 @@ void connect::side::update_controller_ui()
 
 void connect::side::hide_ai_algorithm_combo(bool invis)
 {
-	combo_ai_algorithm_.hide(invis || controller_ != CNTR_COMPUTER);
+	if(!invis)
+	{
+		if(controller_ == CNTR_COMPUTER)
+		{
+			//computer selected, show AI combo
+			orig_controller_.hide(true);
+			combo_ai_algorithm_.hide(false);
+		} else {
+			//computer de-selected, hide AI combo
+			combo_ai_algorithm_.hide(true);
+			orig_controller_.hide(false);
+		}
+	} else {
+		combo_ai_algorithm_.hide(true);
+	}
 }
 
 void connect::side::init_ai_algorithm_combo()
