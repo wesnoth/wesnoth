@@ -1430,6 +1430,7 @@ void calculate_healing(display& disp, const gamemap& map,
 		disp.select_hex(i->first);
 		
 		for(std::vector<unit_map::iterator>::iterator heal_anim_it = healers.begin(); heal_anim_it != healers.end(); ++heal_anim_it) {
+			(*heal_anim_it)->second.set_facing((*heal_anim_it)->first.get_relative_dir(i->first));
 			(*heal_anim_it)->second.set_healing(disp,(*heal_anim_it)->first);
 			if(start_time_set) {
 				start_time = minimum<int>(start_time,(*heal_anim_it)->second.get_animation()->get_first_frame_time());
