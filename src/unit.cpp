@@ -1297,7 +1297,7 @@ void unit::set_defending(const display &disp,const gamemap::location& loc, int d
 	int damage_left = damage;
 	const std::string my_image = anim_->get_last_frame().image;
 	while(anim_time < 1000 && damage_left > 0 ) {
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),1.0));
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),0.5));
 		anim_time += 30;
 		damage_left --;
 		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),0.0));

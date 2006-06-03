@@ -234,7 +234,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		LOG_DP << "found leader at " << leader_loc << '\n';
 		leader = units.find(leader_loc);
 		wassert(leader != units.end());
-		leader->second.set_facing(leader_loc.set_relative_dir(a));
+		leader->second.set_facing(leader_loc.get_relative_dir(a));
 		leader->second.set_leading(disp,leader_loc);
 	}
 	int animation_time;
@@ -411,7 +411,7 @@ bool unit_attack(display& disp, unit_map& units,
 		LOG_DP << "found leader at " << leader_loc << '\n';
 		leader = units.find(leader_loc);
 		wassert(leader != units.end());
-		leader->second.set_facing(leader_loc.set_relative_dir(a));
+		leader->second.set_facing(leader_loc.get_relative_dir(a));
 		leader->second.set_leading(disp,leader_loc);
 		start_time=minimum<int>(start_time,leader->second.get_animation()->get_first_frame_time());
 		end_time=maximum<int>(end_time,leader->second.get_animation()->get_last_frame_time());
