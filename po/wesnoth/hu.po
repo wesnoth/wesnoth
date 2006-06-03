@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-30 08:08+0200\n"
-"PO-Revision-Date: 2006-05-06 15:34+0200\n"
+"PO-Revision-Date: 2006-06-03 18:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,10 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;X-Generator: KBabel 1.3X-Generator:\n"
 
 #: data/abilities.cfg:8
-#, fuzzy
 msgid "heals +4"
-msgstr "csillapítás"
+msgstr "csillapítás +4"
 
 #: data/abilities.cfg:13
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -36,23 +34,20 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Csillapítás:\n"
+"Csillapítás +4:\n"
 "Az egység képes a szomszédos szövetséges egységeket gyógyítani a kör "
 "kezdetén.\n"
 "\n"
 "A csillapító által kezelt egység legfeljebb 4 életerőpontot gyógyulhat "
-"körönként,\n"
-"egy gyógyító egy körben legfeljebb 8 életerőpontot gyógyíthat. \n"
+"körönként.\n"
 "Mérgezett egységet nem képes kigyógyítani a mérgezésből, annak egy falu vagy "
 "egy gyógyításra képes egység lehet a segítségére."
 
 #: data/abilities.cfg:27
-#, fuzzy
 msgid "heals +8"
-msgstr "csillapítás"
+msgstr "csillapítás +8"
 
 #: data/abilities.cfg:32
-#, fuzzy
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -63,13 +58,12 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Csillapítás:\n"
+"Csillapítás +8:\n"
 "Az egység képes a szomszédos szövetséges egységeket gyógyítani a kör "
 "kezdetén.\n"
 "\n"
-"A csillapító által kezelt egység legfeljebb 4 életerőpontot gyógyulhat "
-"körönként,\n"
-"egy gyógyító egy körben legfeljebb 8 életerőpontot gyógyíthat. \n"
+"A csillapító által kezelt egység legfeljebb 8 életerőpontot gyógyulhat "
+"körönként.\n"
 "Mérgezett egységet nem képes kigyógyítani a mérgezésből, annak egy falu vagy "
 "egy gyógyításra képes egység lehet a segítségére."
 
@@ -83,6 +77,10 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Gyógyítás:\n"
+"Egy gyógyító képes megszüntetni egy egység mérgezettségét, de az az egység, "
+"amelyik ily módon gyógyul abban a körben nem fog növekedni az életerőpontja "
+"is."
 
 #: data/abilities.cfg:57
 msgid "regenerates"
@@ -142,7 +140,6 @@ msgid "skirmisher"
 msgstr "portyázó"
 
 #: data/abilities.cfg:306
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -150,9 +147,7 @@ msgid ""
 msgstr ""
 "Portyázó:\n"
 "Ez az egység képzetten és gyorsan tör az ellenséges vonalak mögé, az "
-"ellenség ellenőrizte terület határáról tudomást sem véve. (Kivéve ha egy "
-"egység ellenőrzött területén áll meg, mert ekkor ő is elveszti lépési "
-"pontjait.)"
+"ellenség ellenőrizte terület határáról tudomást sem véve."
 
 #: data/abilities.cfg:317
 msgid "illuminates"
@@ -241,11 +236,11 @@ msgid ""
 "units next to this unit."
 msgstr ""
 "Alámerülés:\n"
-"Ez az·egység·képes·elrejtőzni·ellenségei·elől·a·mélyvízben.\n"
+"Ez az egység képes elrejtőzni ellenségei elől a mélyvízben.\n"
 "\n"
-"Mélyvízben·az·ellenség·nem·látja·és·nem·is·tudja·megtámadni,"
-"·kivéve·a·rejtőzködő·egység·támadása·után·közvetlenül·következő·körben, vagy "
-"ha·közvetlenül·mellé·lépnek."
+"Mélyvízben az ellenség nem látja és nem is tudja megtámadni, kivéve a "
+"rejtőzködő egység támadása után közvetlenül következő körben, vagy ha "
+"közvetlenül mellé lépnek."
 
 #: data/abilities.cfg:405
 msgid "berserk"
@@ -295,7 +290,6 @@ msgstr ""
 "vonatkozik az élőholtakra és a falvakban tartózkodókra.)"
 
 #: data/abilities.cfg:443
-#, fuzzy
 msgid "slows"
 msgstr "lassítás"
 
@@ -311,7 +305,6 @@ msgstr ""
 "(felfelé kerekítve) képesek csak haladni."
 
 #: data/abilities.cfg:451
-#, fuzzy
 msgid "stones"
 msgstr "kővéváltoztatás"
 
@@ -382,7 +375,6 @@ msgstr ""
 "célponttól kapott sebzés is a kétszeresére nő."
 
 #: data/abilities.cfg:503
-#, fuzzy
 msgid "drains"
 msgstr "megcsapolás"
 
@@ -429,9 +421,8 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:29
 #: data/campaigns/The_South_Guard.cfg:33 data/campaigns/Two_Brothers.cfg:31
 #: data/campaigns/Under_the_Burning_Suns.cfg:36
-#, fuzzy
 msgid "Artwork and Graphics Designers"
-msgstr "Művészi és Grafikai Tervezők"
+msgstr "Művészeti és Grafikai Tervezők"
 
 #: data/about.cfg:54
 msgid "Music"
@@ -508,9 +499,8 @@ msgid "Estonian Translation"
 msgstr "Észt Fordítás"
 
 #: data/about.cfg:249
-#, fuzzy
 msgid "Filipino Translation"
-msgstr "Finn Fordítás"
+msgstr "Filipino Fordítás"
 
 #: data/about.cfg:256
 msgid "Finnish Translation"
@@ -549,9 +539,8 @@ msgid "Japanese Translation"
 msgstr "Japán Fordítás"
 
 #: data/about.cfg:373
-#, fuzzy
 msgid "Korean Translation"
-msgstr "Norvég Fordítás"
+msgstr "Koreai Fordítás"
 
 #: data/about.cfg:380
 msgid "Latin Translation"
@@ -626,9 +615,8 @@ msgstr "Teljes felgyógyulás"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:21
 #: data/campaigns/The_South_Guard.cfg:25 data/campaigns/Two_Brothers.cfg:22
 #: data/campaigns/Under_the_Burning_Suns.cfg:28
-#, fuzzy
 msgid "Campaign Designer"
-msgstr "Hadjárat"
+msgstr "Hadjárat Tervező"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
@@ -1102,7 +1090,7 @@ msgstr "karmok"
 #: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
 #: data/campaigns/Under_the_Burning_Suns.cfg:32
 msgid "Current Maintainer"
-msgstr ""
+msgstr "Jelenlegi Karbantartó"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:74
@@ -2045,9 +2033,8 @@ msgid "Terrains"
 msgstr "Terepek"
 
 #: data/help.cfg:59
-#, fuzzy
 msgid "Commands"
-msgstr "Vezér"
+msgstr "Parancsok"
 
 #: data/help.cfg:65 data/help.cfg:71 data/help.cfg:264
 msgid "Overview"
@@ -2345,7 +2332,7 @@ msgstr ""
 "Az életerőpontok az egységek mellett látható energiacsíkon is megjelennek, "
 "ami zöld, sárga vagy piros. Egy legalább 1 tapasztalati ponttal rendelkező "
 "egységnek van egy kék színű tapasztalati csíkja, ami fehérré válik, ahogy az "
-"egység megközelíti a <ref>dst=experience_and_advancement·text=szintlépés</"
+"egység megközelíti a <ref>dst=experience_and_advancement text=szintlépés</"
 "ref>t."
 
 #: data/help.cfg:136
@@ -2811,16 +2798,16 @@ msgstr ""
 "\n"
 "\n"
 "Míg a legtöbb egységnek három szintje van, nem mindegyiknek. Esetenként az "
-"egységeknek lehet négy szintje is (mint például a "
-"<ref>dst=unit_Mage·text=mágusoknak</ref>). Miután egy egység elérte a "
-"legfelső szintjét, képes lesz a Legfelső Szint Utáni Szintlépésre (LSzUSz). "
-"Az LSzUSz módosítja az egységet, akárhányszor az eléri a szintlépési "
-"szintet, de az egység megmarad az adott szinten. Az LSzUSz tipikus hatása az "
-"egység számára, hogy megnöveli hárommal ÉP-jainak maximális számát.Az első "
-"LSzUSz tipikusan 100 összegyűjtött TP után következik. Ugyanakkor az LSzUSz "
-"megszerzése egyre nehezebbé válik minden egyes megszerzett LSzUSz után. "
-"Ezért általában hasznosabb lehet, ha az alacsonyabb szintű egységeidet "
-"próbálod szintet léptetni.\n"
+"egységeknek lehet négy szintje is (mint például a <ref>dst=unit_Mage "
+"text=mágusoknak</ref>). Miután egy egység elérte a legfelső szintjét, képes "
+"lesz a Legfelső Szint Utáni Szintlépésre (LSzUSz). Az LSzUSz módosítja az "
+"egységet, akárhányszor az eléri a szintlépési szintet, de az egység megmarad "
+"az adott szinten. Az LSzUSz tipikus hatása az egység számára, hogy megnöveli "
+"hárommal ÉP-jainak maximális számát.Az első LSzUSz tipikusan 100 "
+"összegyűjtött TP után következik. Ugyanakkor az LSzUSz megszerzése egyre "
+"nehezebbé válik minden egyes megszerzett LSzUSz után. Ezért általában "
+"hasznosabb lehet, ha az alacsonyabb szintű egységeidet próbálod szintet "
+"léptetni.\n"
 "\n"
 "Megjegyzés: eltérés a szokványos szintlépéstől, hogy az egységeknek csak kis "
 "része (például a hullazabálók) gyógyul fel az LSzUSz során. A legtöbb "
@@ -2876,7 +2863,6 @@ msgstr ""
 "a trollok), minden körben automatikusan 8 ÉP-t gyógyulnak."
 
 #: data/help.cfg:225
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -2886,11 +2872,10 @@ msgstr ""
 "\n"
 "Csillapító egységek: a <ref>dst=ability_heals text=Csillapítás</ref> "
 "képességével rendelkező egységek minden, a közvetlen közelükben tartózkodó "
-"baráti egységet gyógyítani fognak 4 ÉP-vel körönként (maximum összesen 8 ÉP "
-"osztható szét), vagy akadályozni fogják a mérgek sebzését."
+"baráti egységet gyógyítani fognak 4, illetve 8 ÉP-vel körönként, vagy "
+"megakadályozzák a mérgek sebzését."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -2900,11 +2885,10 @@ msgstr ""
 "\n"
 "Gyógyító egységek: A <ref>dst=ability_cures text=Gyógyítás</ref> "
 "képességével rendelkező egységek minden, a közvetlen közelükben tartózkodó "
-"baráti egységet gyógyítani fognak 8 ÉP-vel körönként (legeljebb összesen 18 "
-"ÉP osztható szét) vagy meg fogják akadályozni a mérgek sebzését."
+"baráti egységet meg tudnak gyógyítani mérgezéstől (a gyógyításon felül, ha "
+"ezt a képességet is birtokolják)."
 
 #: data/help.cfg:228
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2936,7 +2920,6 @@ msgstr ""
 "Fenntartási költségek alapján kezeled."
 
 #: data/help.cfg:236
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2974,7 +2957,6 @@ msgstr ""
 "és tíz falvad, akkor 2 aranyat kell fizetned körönként kiadásként."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2985,7 +2967,7 @@ msgstr ""
 "\n"
 "\n"
 "A Fenntartási költségek levonódnak a Bevételeidből, így 12 szintnek "
-"megfelelő egység és 10 város esetén a Bevételeid maradéka 10 arany lesz "
+"megfelelő egység és 10 falu esetén a Bevételeid maradéka 10 arany lesz "
 "körönként."
 
 #: data/help.cfg:241
@@ -3009,7 +2991,6 @@ msgid "Wrap Up"
 msgstr "Utószó"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -3057,7 +3038,6 @@ msgstr ""
 "<ref>dst=traits_strong text=erős</ref>."
 
 #: data/help.cfg:269
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3067,9 +3047,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Más jellemvonások, amelyekkel az egységek bírhatnak, a következőek: a "
-"<ref>dst=traits_loyal text=hűséges</ref>, az <ref>dst=traits_undead "
-"text=élőholt</ref>, és az <ref>dst=traits_dextrous text=ügyeskezű</ref>."
+"Más jellemvonások, amelyekkel az egységek bírhatnak, a következőek: az "
+"<ref>dst=traits_undead text=élőholt</ref>, a <ref>dst=traits_loyal "
+"text=hűséges</ref> és az <ref>dst=traits_dextrous text=ügyeskezű</ref>."
 
 #: data/help.cfg:274
 msgid "Intelligent"
@@ -3135,9 +3115,9 @@ msgid "Resilient"
 msgstr "Ellenálló"
 
 #: data/help.cfg:291
-#, fuzzy
 msgid "Resilient units have 10% +3 more HP than usual."
-msgstr "Az ellenálló egységeknek a szokásosnál 7-tel több ÉP-jük van."
+msgstr ""
+"Az ellenálló egységeknek a szokásosnál 10%-al és 3 egésszel több ÉP-jük van."
 
 #: data/help.cfg:293
 msgid ""
@@ -3162,13 +3142,12 @@ msgid "Strong"
 msgstr "Erős"
 
 #: data/help.cfg:299
-#, fuzzy
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
 "Az erős egységek 1-el többet sebeznek minden sikeres támadáskor a "
-"közelharcban, és 2-vel több ÉP-jük van."
+"közelharcban, és 1-el több ÉP-jük van."
 
 #: data/help.cfg:301
 msgid ""
@@ -3493,7 +3472,7 @@ msgid ""
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
 "A jég mindenféle befagyott vizet jelölhet. A játékmenet szempontjából "
-"teljesen azonos a <ref>dst=terrain_tundra·text=Hóval</ref>. Megjegyzendő, "
+"teljesen azonos a <ref>dst=terrain_tundra text=Hóval</ref>. Megjegyzendő, "
 "hogy az úszni képes egységek, még ha a víz alatt is élnek, a jég alatt nem "
 "tudnak úszni."
 
@@ -3552,7 +3531,7 @@ msgid ""
 msgstr ""
 "A sivatagok valamennyiben különböznek a kis homokbuckáktól és a lapos "
 "partoktól, de a játékmenet szempontjából azonosak. Lásd a "
-"<ref>dst=terrain_sand·text=Homokot</ref>."
+"<ref>dst=terrain_sand text=Homokot</ref>."
 
 #: data/help.cfg:457 data/terrain.cfg:398
 msgid "Cave"
@@ -3645,7 +3624,7 @@ msgid ""
 msgstr ""
 "A szavannák magas fűvel benőtt rétek, melyek melegebb éghajlati körülmények "
 "közt alakulnak ki. A játékmenet szempontjából megegyeznek a "
-"<ref>dst=terrain_grassland·text=Mezőséggel</ref>."
+"<ref>dst=terrain_grassland text=Mezőséggel</ref>."
 
 #: data/help.cfg:494 data/terrain.cfg:148 data/terrain.cfg:157
 #: data/terrain.cfg:169 data/terrain.cfg:179 data/terrain.cfg:190
@@ -3772,33 +3751,40 @@ msgstr ""
 "legeltökéltebb utazót is feltartóztatni."
 
 #: data/help.cfg:543
-#, fuzzy
 msgid "General commands"
-msgstr "Tábornok"
+msgstr "Általános parancsok"
 
 #: data/help.cfg:545
 msgid ""
 "\n"
 "Quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Kilpés a csatatérről (megerősítés kérésének elhagyásával)."
 
 #: data/help.cfg:548
 msgid ""
 "\n"
 "Save the game (without prompting)."
 msgstr ""
+"\n"
+"Játék mentése (megerősítés kérésének elhagyásával)."
 
 #: data/help.cfg:551
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Játék mentése és kilépés a csatatérről (megerősítés kérésének elhagyásával)."
 
 #: data/help.cfg:554
 msgid ""
 "\n"
 "Redraw the screen."
 msgstr ""
+"\n"
+"Képernyő újrarajzolása."
 
 #: data/help.cfg:557
 msgid ""
@@ -3806,17 +3792,21 @@ msgid ""
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
 "off by quitting the game."
 msgstr ""
+"\n"
+"Hibakereső üzemmód bekapcsolása (többjátékos játéknál nem működik). Ebből a "
+"módból való kilépés megtörténik az adott játék befejezésével."
 
 #: data/help.cfg:560
 msgid ""
 "\n"
 "Bring up theme selection menu."
 msgstr ""
+"\n"
+"A témaválasztó menü feldobása."
 
 #: data/help.cfg:565
-#, fuzzy
 msgid "Multiplayer commands"
-msgstr "Többjátékos Pályák"
+msgstr "Többjátékos parancsok"
 
 #: data/help.cfg:567
 msgid ""
@@ -3825,12 +3815,18 @@ msgid ""
 "controls that side needs to issue this command. If you don't provide side, "
 "'1' is assumed."
 msgstr ""
+"\n"
+"Az adott csapat irányítójának átváltása ember és MI játékos között. Az adott "
+"csapatot irányító játékosnak/kliensnek kell ezt a parancsot kiadnia. Ha "
+"nincsen csapat megadva, akkor az '1'-es számú lesz kiválasztva."
 
 #: data/help.cfg:570
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
+"\n"
+"Be- illetve kikapcsolása a megfigyelők elnémításának."
 
 #: data/help.cfg:573
 msgid ""
@@ -3838,6 +3834,9 @@ msgid ""
 "Mute a specific observer. If no username is supplied the muted usernames are "
 "displayed."
 msgstr ""
+"\n"
+"Meghatározott megfigyelő elnémítása. Ha nincsen felhasználónév megadva, "
+"akkor az elnémított nevek meg lesznek jelenítve."
 
 #: data/help.cfg:576
 msgid ""
@@ -3846,12 +3845,18 @@ msgid ""
 "a friendly way to remove someone who is having connection or other "
 "difficulties."
 msgstr ""
+"\n"
+"Egy felhasználó kirúgása többjátékos játékból. Ezután még lehetőségük van "
+"újra csatlakozni a játékhoz. Általában ez egy barátságos módja egy olyan "
+"játékos eltávolításának, akinek a hálózatával vagy mással problémái adódtak."
 
 #: data/help.cfg:579
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that username."
 msgstr ""
+"\n"
+"Egy felhasználó kirúgása és kitiltása (IP-cím alapján) többjátékos játékból."
 
 #: data/help.cfg:582
 msgid ""
@@ -3859,12 +3864,17 @@ msgid ""
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nick of the player or observer)."
 msgstr ""
+"\n"
+"Egy csapat (szám alapján megadva) irányításának átadása egy felhasználónak "
+"(egy játékos vagy egy megfigyelő neve alapján)."
 
 #: data/help.cfg:585
 msgid ""
 "\n"
 "Clear chat messages."
 msgstr ""
+"\n"
+"Csevegés sorainak kiürítése."
 
 #: data/items.cfg:264
 msgid ""
@@ -4096,9 +4106,8 @@ msgstr ""
 "aranyat beállítani."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:31
-#, fuzzy
 msgid "2p - Caves of the Basilisk"
-msgstr "3j - A Horatiak szigete"
+msgstr "2j - A Baziliszkusz tárnái"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:33
 msgid ""
@@ -4107,6 +4116,10 @@ msgid ""
 "victory is punctuated by the petrified forms of some of Wesnoth's greatest "
 "heroes."
 msgstr ""
+"A játékosoknak ezen a félelmetességéről és felosztottságáról messzeföldön "
+"híres területen kell csapataikkal manőverezni, ahol réges régen a legendás "
+"Baziliszkusz élt. A győzelemhez vezető utat Wesnoth legdicsőb hőseinek "
+"faragott képmásai kövezik ki."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:84
 msgid ""
@@ -4243,7 +4256,7 @@ msgstr "2j - Roham"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
-msgstr "2j·-·Cynsaun·csatamezeje"
+msgstr "2j - Cynsaun csatamezeje"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
@@ -4298,7 +4311,6 @@ msgid "2p - Meteor Lake"
 msgstr "2j - Meteor-tó"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
-#, fuzzy
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region. Recommended setting of 2 gold per village."
@@ -4349,7 +4361,7 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:36
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:37
 msgid "Sulla's statue"
-msgstr ""
+msgstr "Sulla szobra"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -4465,7 +4477,6 @@ msgid "4p - Blue Water Province"
 msgstr "4j - Kékvízű vidék"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
-#, fuzzy
 msgid ""
 "It has been said that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
@@ -4502,7 +4513,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
-msgstr ""
+msgstr "4j - Isar keresztútja"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
 msgid ""
@@ -4510,13 +4521,16 @@ msgid ""
 "of units and planning of moves is important.  Teams set for players 1&4 v "
 "2&3 (northeast vs. southwest).  Designed for 75gp, 20 villages."
 msgstr ""
+"Egy nagyon szűkös 2-2 elleni pálya. A közeli szállások miatt minden hiba az "
+"egységek toborzásában vagy lépésében végzetes lehet. Ajánlott falvanként 75 "
+"arany beállítása, és az 1, 4 a 2, 3 játékos ellen játszott (északkelet "
+"kontra délnyugat) játék. A pályán 20 falu található."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 msgid "4p - King of the Hill"
 msgstr "4j - A domb királya"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2v2 as well. There are 36 villages. Recommended "
@@ -4544,7 +4558,6 @@ msgid "4p - Loris River"
 msgstr "4j - Loris-folyó"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
-#, fuzzy
 msgid ""
 "A 25x25 2v2 map centered around a river with keeps in opposite corners. "
 "Designed for 1&4 vs 2&3. There are 28 villages. Recommended setting of 2gpv."
@@ -4559,7 +4572,6 @@ msgid "4p - Morituri"
 msgstr "4j - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
 "setting of 2 gold per village."
@@ -4569,26 +4581,24 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:5
 msgid "4p - Paths of Daggers"
-msgstr "4j·-·A·tőrök·útja"
+msgstr "4j - A tőrök útja"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid ""
 "A 35X27 2v2 map with 5 separate paths of engagement.  Balanced to be played "
 "east vs west (1&4 vs 2&3), but works well with any teams or FFA.  2gpv. "
 "28villages."
 msgstr ""
-"35x27·méretű 2-2·elleni·pálya,·öt·különböző·lehetőséggel·az·összecsapásra."
-"A·kelet-nyugati·irányba·kiegyensúlyozott·(1&3·kontra·2&4),"
-"·de·bármely·csapattaljól·működik,·akár·mindenki·mindenki·ellen·is."
-"·Két·arany·falvanként,·28·falu."
+"35x27 méretű 2-2 elleni pálya, öt különböző lehetőséggel az összecsapásra.A "
+"kelet-nyugati irányba kiegyensúlyozott (1&3 kontra 2&4), de bármely "
+"csapattal jól működik, akár mindenki mindenki ellen is. Két arany "
+"falvanként, 28 falu."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:5
 msgid "4p - Siege Castles"
 msgstr "4j - Ostromlott várak"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well 2v2 or FFA. There are approximately 45 villages. "
@@ -4660,7 +4670,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
-msgstr ""
+msgstr "6j - Waterloo-i naplemente"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
 msgid ""
@@ -4669,25 +4679,28 @@ msgid ""
 "having players 146 or 136 as a side also is interesting.  Designed for "
 "150gp, has 44 villages."
 msgstr ""
+"Egy 40x40-es méretű 3 kontra 3 pálya. A szövetségeknek rugalmasan kell "
+"működniük, kölünben egyiküket elsöpörheti a túlerővel érkező támadás. "
+"Ajánlott falvanként 150 arany beállítása, és az 1,4,5 a 2,3,6 játékos ellen "
+"játszott (észak kontra dél) játék, de az 1,4,6 és az 1,3,6 is jó csapatot "
+"alkothat. A pályán 44 falu található."
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
-#, fuzzy
 msgid "8p - Morituri"
-msgstr "3j - Morituri"
+msgstr "8j - Morituri"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish. Recommended setting of 2 gold per village."
 msgstr ""
-"Csak egy igazi stratéga kerülhet ki győztesen ebből a halálos és szűk "
-"csatatérről, ahol hat összezárt sereg küzd meg egymással. Ajánlott "
+"A csapatjáték és a taktika kulcsfontosságú lehet ezen a rendhagyó "
+"csatatéren, ahol nyolc összezárt sereg küzd meg egymással. Ajánlott "
 "falvanként két aranyat beállítani."
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
-msgstr ""
+msgstr "9j - Merkwuerdigliebe"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
 msgid ""
@@ -4696,6 +4709,10 @@ msgid ""
 "southwest).  There are very few vilages per player, so 3gpv is also "
 "recommended."
 msgstr ""
+"Egy nagyon szűkös 3-3-3 elleni pálya. Egy 60 másodperces időzítő segítheti "
+"ilyen sok játékos játékát. Ajánlott falvanként 3 arany beállítása, és az "
+"1,5,9 a 2,6,7 a 3,4,8 játékos ellen játszott (észak kontra délkelet kontra "
+"délnyugat) játék. A pályán elég kevés falvat találhatunk."
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:8
@@ -4891,15 +4908,12 @@ msgid ""
 msgstr ""
 
 #: data/special-notes.cfg:65
-#, fuzzy
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"\n"
-"\n"
-"Megjegyzés: a lovag lándzsás rohamtámadása megkétszerezi úgy az okozott, "
-"mint a kapott sebzést. Ez nem befolyásolja a védekező visszatámadást."
+"A rohamtámadás használata megkétszerezi úgy az okozott, mint a kapott "
+"sebzést. Ez nem befolyásolja a védekező visszatámadást."
 
 #: data/special-notes.cfg:68
 msgid ""
@@ -4940,9 +4954,8 @@ msgid "Orange"
 msgstr "Narancs"
 
 #: data/team_colors.cfg:34
-#, fuzzy
 msgid "Black"
-msgstr " < Vissza"
+msgstr "Fekete"
 
 #: data/team_colors.cfg:40
 msgid "White"
@@ -4953,9 +4966,8 @@ msgid "Brown"
 msgstr "Barna"
 
 #: data/team_colors.cfg:52
-#, fuzzy
 msgid "Teal"
-msgstr "Csapat"
+msgstr "Kékezöld"
 
 #: data/terrain.cfg:11 data/themes/default.cfg:542
 #: src/multiplayer_create.cpp:67 src/multiplayer_lobby.cpp:361
@@ -4997,9 +5009,8 @@ msgid "Cave Lit"
 msgstr "Megvilágított barlang"
 
 #: data/terrain.cfg:414
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "Hegyvidék"
+msgstr "Megmászhatatlan hegyvidék"
 
 #: data/terrain.cfg:445
 msgid "Great Tree"
@@ -5086,9 +5097,8 @@ msgid "Play"
 msgstr "Lejátszás"
 
 #: data/themes/default.cfg:474
-#, fuzzy
 msgid "continous replay"
-msgstr " visszajátszás"
+msgstr "folyamatos visszajátszás"
 
 #: data/themes/default.cfg:487
 msgid "Stop"
@@ -5096,7 +5106,7 @@ msgstr "Leállít"
 
 #: data/themes/default.cfg:488
 msgid "pause at end of turn"
-msgstr ""
+msgstr "kör végén leállítás"
 
 #: data/themes/default.cfg:501
 msgid "Reset"
@@ -5104,25 +5114,23 @@ msgstr "Újrakezd"
 
 #: data/themes/default.cfg:502
 msgid "reset to beginning"
-msgstr ""
+msgstr "vissza a kezdéshez"
 
 #: data/themes/default.cfg:515
 msgid "Next Turn"
 msgstr "Következő kör"
 
 #: data/themes/default.cfg:516
-#, fuzzy
 msgid "play turn"
-msgstr "körönként"
+msgstr "kör lejátszása"
 
 #: data/themes/default.cfg:529
 msgid "Next Side"
 msgstr "Következő oldal"
 
 #: data/themes/default.cfg:530
-#, fuzzy
 msgid "play side turn"
-msgstr "körönként"
+msgstr "csapat körének lejátszása"
 
 #: data/themes/default.cfg:566
 msgid "Skip animation"
@@ -5179,7 +5187,6 @@ msgstr ""
 "sarkában jelenik meg."
 
 #: data/tips.cfg:5
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -5442,9 +5449,8 @@ msgid ""
 "campaign difficulty."
 msgstr ""
 "Lehetőség van arra, hogy névtelenül elküldd a Wesnoth fejlesztőinek a játék "
-"használatáról készült statisztikákat a Segítsd a Wesnoth-ot gomb "
-"segítségével. Ezek a statisztikák segítenek a hadjáratok nehézségének "
-"beállításában."
+"használatáról készült statisztikákat a Segíts te is! gomb segítségével. Ezek "
+"a statisztikák segítenek a hadjáratok nehézségének beállításában."
 
 #: data/tips.cfg:35
 msgid ""
@@ -5505,12 +5511,10 @@ msgid "female^Fighter"
 msgstr "Harcosnő"
 
 #: data/tutorial/units/Quintain.cfg:3
-#, fuzzy
 msgid "Quintain"
-msgstr "Hegyvidék"
+msgstr "Bábu"
 
 #: data/tutorial/units/Quintain.cfg:13
-#, fuzzy
 msgid ""
 "Quintains are used to practice swordplay and jousting on.  It would be "
 "extremely unusual to be attacked by one."
@@ -5519,9 +5523,8 @@ msgstr ""
 "készülés során. Rendkívül különös lenne, ha valamelyik megtámadna közülük."
 
 #: data/tutorial/units/Quintain.cfg:20
-#, fuzzy
 msgid "flail"
-msgstr "farok"
+msgstr "cséphadaró"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -7849,9 +7852,8 @@ msgstr ""
 "védelemmel is rendelkeznek a másik oldallal szemben."
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Mermaid Siren"
-msgstr "Sellő dárdás"
+msgstr "Sellő szirén"
 
 #: data/units/Mermaid_Siren.cfg:23
 msgid ""
@@ -8433,9 +8435,8 @@ msgstr ""
 
 #: data/units/Orcish_Ruler.cfg:33 data/units/Orcish_Sovereign.cfg:34
 #: data/units/Orcish_Warlord.cfg:28 data/units/Orcish_Warrior.cfg:28
-#, fuzzy
 msgid "greatsword"
-msgstr "kard"
+msgstr "kétkezes kard"
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
@@ -9040,9 +9041,8 @@ msgstr ""
 "Minden tekintetben ez a képesség tekinthető az első lépésnek a"
 
 #: data/units/Undead_Necromancer.cfg:32
-#, fuzzy
 msgid "plague staff"
-msgstr "dögvész"
+msgstr "dögvészes bot"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:3
 msgid "Bone Shooter"
@@ -9427,14 +9427,12 @@ msgid "+Core Developers"
 msgstr "+Belső Fejlesztők"
 
 #: src/about.cpp:33
-#, fuzzy
 msgid "+  Main Developer"
-msgstr "-   Fő Fejlesztő"
+msgstr "+  Fő Fejlesztő"
 
 #: src/about.cpp:36
-#, fuzzy
 msgid "+  Artwork and graphics designer"
-msgstr "-   Művészeti és Grafikai Tervező"
+msgstr "+  Művészeti és Grafikai Tervező"
 
 #: src/about.cpp:39
 msgid "+Developers"
@@ -9904,8 +9902,8 @@ msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
-"A·bejelentkezési·név,·amit·választottál,·túl·hosszú.·Kérünk,"
-"·hogy·ne·használj·18·karakternél·hosszabb·bejelentkezési·neveket."
+"A bejelentkezési név, amit választottál, túl hosszú. Kérünk, hogy ne "
+"használj 18 karakternél hosszabb bejelentkezési neveket."
 
 #: src/game.cpp:1204 src/playcampaign.cpp:107 src/playcampaign.cpp:312
 msgid "The game could not be loaded: "
@@ -9955,7 +9953,7 @@ msgstr "Harc Wesnoth-ért"
 
 #: src/game.cpp:1733
 msgid "Loading title screen."
-msgstr ""
+msgstr "Kezdőképernyő betöltése"
 
 #: src/game_events.cpp:724
 msgid "Victory:"
@@ -9978,9 +9976,8 @@ msgid "Abilities: "
 msgstr "Képességek: "
 
 #: src/help.cpp:1152
-#, fuzzy
 msgid "Cost: "
-msgstr "Lépés: "
+msgstr "Ár: "
 
 #: src/help.cpp:1153
 msgid "Alignment: "
@@ -10035,9 +10032,8 @@ msgid "Defense"
 msgstr "Védekezés"
 
 #: src/help.cpp:1265
-#, fuzzy
 msgid "Movement Cost"
-msgstr "Lépés"
+msgstr "Lépéspont költség"
 
 #: src/help.cpp:1386 src/help.cpp:1410
 msgid "or"
@@ -10121,19 +10117,19 @@ msgstr "?"
 
 #: src/loadscreen.cpp:153
 msgid "Verifying cache."
-msgstr ""
+msgstr "Gyorsítótár ellenőzése"
 
 #: src/loadscreen.cpp:172
 msgid "Reading cache."
-msgstr ""
+msgstr "Gyorsítótár beolvasása"
 
 #: src/loadscreen.cpp:191
 msgid "Reading unit files."
-msgstr ""
+msgstr "Egységek fájljainak beolvasása"
 
 #: src/loadscreen.cpp:210
 msgid "Reading files and creating cache."
-msgstr ""
+msgstr "Fájlok beolvasása és a gyorsítótár létrehozása"
 
 #: src/menu_events.cpp:59
 msgid ""
@@ -10355,33 +10351,38 @@ msgstr "Keresés"
 #: src/menu_events.cpp:1330
 msgid "Commands: whisper ignore emote. Type /help [command] for more help."
 msgstr ""
+"Parancsok: suttogás (whisper), mellőzés (ignore), hangulat (emote). Add ki "
+"a /help [parancs neve] parancsot segítségért."
 
 #: src/menu_events.cpp:1381
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
+"Privát üzenet küldése. A játékban résztvevő játékosoknak nem küldhetsz ilyen "
+"üzeneteket. Használat: /whisper [becenév] [üzenet]"
 
 #: src/menu_events.cpp:1385
 msgid "Add player to your ignore list. Usage: /ignore add [argument]"
 msgstr ""
+"Játékos hozzáadása a mellőzési listádhoz. Használat: /ignore add [változó]"
 
 #: src/menu_events.cpp:1387
 msgid "Remove player from your ignore list. Usage: /ignore remove [argument]"
 msgstr ""
+"Játékos levétele a mellőzési listádról. Használat: /ignore remove [változó]"
 
 #: src/menu_events.cpp:1389
 msgid "Clear your ignore list. Usage: /ignore clear"
-msgstr ""
+msgstr "Mellőzési listád kiürtése. Használat: /ignore clear"
 
 #: src/menu_events.cpp:1391
 msgid "Show your ignore list. Usage: /ignore list"
-msgstr ""
+msgstr "Mellőzési listád kilistázása. Használat: /ignore list"
 
 #: src/menu_events.cpp:1393
-#, fuzzy
 msgid "Unknown subcommand"
-msgstr "Ismeretlen pálya"
+msgstr "Ismeretlen alparancs"
 
 #: src/menu_events.cpp:1396
 msgid ""
@@ -10389,33 +10390,35 @@ msgid ""
 "[argument](optional) Subcommands: add remove list clear. Type /help ignore "
 "[subcommand] for more info."
 msgstr ""
+"A mellőzési listán lévők nem tudnak üzenetet küldeni neked. Használat: /"
+"ignore [alparancs] [változó](nem kötelező). Alparancsok: add, remove, list, "
+"clear. Add ki a /help ignore [subcommand] parancsot további információkért."
 
 #: src/menu_events.cpp:1399
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
+"Hangulat, vagy személyes cselekedet küldése a csevegésben. Használat: /emote "
+"[üzenet]"
 
 #: src/menu_events.cpp:1401
-#, fuzzy
 msgid "Unknown command"
-msgstr "Ismeretlen korszak"
+msgstr "Ismeretlen parancs"
 
 #: src/menu_events.cpp:1418
 msgid "Added to ignore list: "
-msgstr ""
+msgstr "Hozzáadva a mellőzési listádhoz: "
 
 #: src/menu_events.cpp:1420 src/menu_events.cpp:1430
-#, fuzzy
 msgid "Invalid username: "
-msgstr "Érvénytelen nevű tag"
+msgstr "Érvénytelen felhasználónév: "
 
 #: src/menu_events.cpp:1428 src/menu_events.cpp:1454
 msgid "Removed from ignore list: "
-msgstr ""
+msgstr "Kitörölve a mellőzési listádról: "
 
 #: src/menu_events.cpp:1459
-#, fuzzy
 msgid "Unknown command: "
-msgstr "Ismeretlen pálya: '"
+msgstr "Ismeretlen parancs: "
 
 #: src/menu_events.cpp:1560
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -10437,46 +10440,39 @@ msgstr "Védekező"
 
 #: src/mouse_events.cpp:209
 msgid "Expected Battle Result (hp)"
-msgstr ""
+msgstr "Összecsapás várt kimenetele (ÉP)"
 
 #: src/mouse_events.cpp:301
-#, fuzzy
 msgid " resistance vs "
-msgstr "Ellenállások"
+msgstr " ellenállás kontra "
 
 #: src/mouse_events.cpp:302
-#, fuzzy
 msgid " vulnerability vs "
-msgstr "támadó sebezhetőség kontra"
+msgstr " sebezhetőség kontra "
 
 #: src/mouse_events.cpp:312
-#, fuzzy
 msgid "Slowed"
-msgstr "lelassított"
+msgstr "Lelassított"
 
 #: src/mouse_events.cpp:319
-#, fuzzy
 msgid "Time of day"
 msgstr "Napszak"
 
 #: src/mouse_events.cpp:329
-#, fuzzy
 msgid "Leadership"
-msgstr "hadvezetés"
+msgstr "Hadvezetés"
 
 #: src/mouse_events.cpp:336
-#, fuzzy
 msgid "Total damage"
-msgstr "összsebzés"
+msgstr "Összsebzés"
 
 #: src/mouse_events.cpp:343
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Válassz fegyvert:"
+msgstr "Nincsen használható fegyver"
 
 #: src/mouse_events.cpp:348
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Sértetlenül maradás esélye"
 
 #: src/mouse_events.cpp:649 src/mouse_events.cpp:1232
 msgid "Damage Calculations"
@@ -10544,7 +10540,7 @@ msgstr "Nincs többjátékos oldal"
 #: src/multiplayer_connect.cpp:64 src/multiplayer_connect.cpp:273
 #: src/multiplayer_connect.cpp:351
 msgid "Normal"
-msgstr ""
+msgstr "Sima"
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:347
 #: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2369
@@ -10557,9 +10553,8 @@ msgid ")"
 msgstr ")"
 
 #: src/multiplayer_connect.cpp:325
-#, fuzzy
 msgid "Default AI"
-msgstr "Alapértelmezés"
+msgstr "Alapértelmezett MI"
 
 #: src/multiplayer_connect.cpp:376
 msgid "(Vacant slot)"
@@ -10714,19 +10709,20 @@ msgstr "Játékos egy körre kapott idejének lekorlátozása"
 
 #: src/multiplayer_create.cpp:115
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "Az első körre kapott felhasználható idő (másodpercben)"
 
 #: src/multiplayer_create.cpp:121
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "Egy körben felhasználható idő (másodpercben)"
 
 #: src/multiplayer_create.cpp:127
 msgid "Time for general tasks each turn (seconds)"
-msgstr ""
+msgstr "Általános feladatokra felhasználható idő minden körben (másodpercben)"
 
 #: src/multiplayer_create.cpp:133
 msgid "Time for each attack, recruit, and capture"
 msgstr ""
+"Egy-egy támadásra, toborzásra illetve falufoglalásra felhasználható idő."
 
 #: src/multiplayer_create.cpp:138
 msgid "The amount of income each village yields per turn"
@@ -10793,24 +10789,20 @@ msgid "Unlimited Turns"
 msgstr "Korlátlan kör"
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Init. Limit: "
-msgstr "Kezdés ideje:"
+msgstr "Kezdési idő: "
 
 #: src/multiplayer_create.cpp:318
-#, fuzzy
 msgid "Turn Bonus: "
-msgstr "Kör: "
+msgstr "Kör bónusz: "
 
 #: src/multiplayer_create.cpp:322
-#, fuzzy
 msgid "Reservoir: "
 msgstr "Kiszolgáló: "
 
 #: src/multiplayer_create.cpp:327
-#, fuzzy
 msgid "Action Bonus: "
-msgstr "Parancsok"
+msgstr "Cselekvés bónusz: "
 
 #: src/multiplayer_create.cpp:334
 msgid "Village Gold: "
@@ -10849,9 +10841,8 @@ msgid "Unknown scenario"
 msgstr "Ismeretlen pálya"
 
 #: src/multiplayer_lobby.cpp:334
-#, fuzzy
 msgid "Remote scenario"
-msgstr "Ismeretlen pálya"
+msgstr "Távoli pálya"
 
 #: src/multiplayer_lobby.cpp:347
 msgid "Vacant Slot:"
@@ -10870,14 +10861,12 @@ msgid "Observe Game"
 msgstr "Játék megfigyelése"
 
 #: src/multiplayer_lobby.cpp:465
-#, fuzzy
 msgid "Quick Replays"
-msgstr "Visszajátszás"
+msgstr "Gyorsított visszajátszások"
 
 #: src/multiplayer_lobby.cpp:466
-#, fuzzy
 msgid "Preferences"
-msgstr "Hercegnő"
+msgstr "Beállítások"
 
 #: src/multiplayer_lobby.cpp:467
 msgid "Quit"
@@ -10886,6 +10875,7 @@ msgstr "Kilépés"
 #: src/multiplayer_lobby.cpp:473
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
+"Gyorsan átugrani a visszajátszást, egészen a jelenlegi körhöz megfigyeléskor"
 
 #: src/multiplayer_ui.cpp:79
 msgid "Invalid Color"
@@ -10934,11 +10924,11 @@ msgstr "A fájl amit be próbáltál tölteni hibás"
 
 #: src/play_controller.cpp:624
 msgid "Back to start"
-msgstr ""
+msgstr "Vissza a kezdéshez"
 
 #: src/play_controller.cpp:626
 msgid "Back to turn "
-msgstr ""
+msgstr "Vissza a körhöz"
 
 #: src/playcampaign.cpp:260
 msgid "Defeat"
@@ -11233,7 +11223,7 @@ msgstr "Beállítások"
 
 #: src/titlescreen.cpp:206
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Segítsd a Wesnoth-ot"
+msgstr "Segíts te is!"
 
 #: src/titlescreen.cpp:207
 msgid "About"
@@ -11288,7 +11278,7 @@ msgstr "Tovább"
 
 #: src/titlescreen.cpp:249
 msgid "Help"
-msgstr ""
+msgstr "Súgó"
 
 #: src/titlescreen.cpp:259
 msgid "-- The Tome of Wesnoth"
@@ -11336,12 +11326,11 @@ msgstr ""
 
 #: src/upload_log.cpp:278
 msgid "Summaries are stored here:"
-msgstr ""
+msgstr "Az összegzések ide mentődnek: "
 
 #: src/upload_log.cpp:280
-#, fuzzy
 msgid "You can view the results at:"
-msgstr "Az eredményeket megnézheted itt: "
+msgstr "Az eredményeket megnézheted itt:"
 
 #: src/upload_log.cpp:285
 msgid "Help us make Wesnoth better for you!"
