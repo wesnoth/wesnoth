@@ -27,7 +27,7 @@ unit_map::unit_map(const unit_map &that)
 
 unit_map &unit_map::operator =(const unit_map &that)
 {
-	delete_all();
+	clear();
 	for (pmap::const_iterator i = that.map_.begin(); i != that.map_.end(); i++) {
 		add(new std::pair<gamemap::location,unit>(*i->second));
 	}
