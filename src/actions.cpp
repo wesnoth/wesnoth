@@ -706,6 +706,8 @@ void attack(display& gui, const gamemap& map,
 
 	static const std::string poison_string("poison");
 
+	LOG_NG << "Fight: (" << attacker << ") vs (" << defender << ") ATT: " << a_stats.weapon->name() << " " << a_stats.damage << "-" << a_stats.num_blows << "(" << a_stats.chance_to_hit << "%) vs DEF: " << (d_stats.weapon ? d_stats.weapon->name() : "none") << " " << d_stats.damage << "-" << d_stats.num_blows << "(" << d_stats.chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
+
 	while(n_attacks > 0 || n_defends > 0) {
 		LOG_NG << "start of attack loop...\n";
 
@@ -762,6 +764,7 @@ void attack(display& gui, const gamemap& map,
 				            damage_defender_takes,
 							*a_stats.weapon, 
 							update_display);
+			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
 			if(hits) {
 				const int defender_side = d->second.side();
 				const int attacker_side = a->second.side();
@@ -915,6 +918,7 @@ void attack(display& gui, const gamemap& map,
 						gui.float_label(d->first,_("poisoned"),255,0,0);
 					}
 					d->second.set_state("poisoned","yes");
+					LOG_NG << "defender poisoned\n";
 				}
 
 				if(a_stats.slows && !utils::string_bool(d->second.get_state("slowed"))) {
@@ -923,6 +927,7 @@ void attack(display& gui, const gamemap& map,
 					}
 					d->second.set_state("slowed","yes");
 					defender_damage = d_stats.slow_damage;
+					LOG_NG << "defender slowed\n";
 				}
 
 				//if the defender is turned to stone, the fight stops immediately
@@ -999,6 +1004,7 @@ void attack(display& gui, const gamemap& map,
 			               damage_attacker_takes,
 						   *d_stats.weapon, 
 						   update_display);
+			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
 			if(hits) {
 				const int defender_side = d->second.side();
 				const int attacker_side = a->second.side();
@@ -1146,6 +1152,7 @@ void attack(display& gui, const gamemap& map,
 						gui.float_label(a->first,_("poisoned"),255,0,0);
 					}
 					a->second.set_state("poisoned","yes");
+					LOG_NG << "attacker poisoned\n";
 				}
 
 				if(d_stats.slows && !utils::string_bool(a->second.get_state("slowed"))) {
@@ -1154,6 +1161,7 @@ void attack(display& gui, const gamemap& map,
 					}
 					a->second.set_state("slowed","yes");
 					attacker_damage = a_stats.slow_damage;
+					LOG_NG << "attacker slowed\n";
 				}
 
 
