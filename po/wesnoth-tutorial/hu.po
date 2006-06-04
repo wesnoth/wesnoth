@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-05-30 08:23+0200\n"
-"PO-Revision-Date: 2006-06-03 14:25+0200\n"
+"PO-Revision-Date: 2006-06-04 15:55+0200\n"
 "Last-Translator: Automatically generated <>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,9 @@ msgid ""
 "welcoming new players.  Please keep friendly fun feeling!  Any questions "
 "email rusty@rustcorp.com.au!"
 msgstr ""
+"Hello translators!  Tutorial is meant to be a little funny at the start, "
+"welcoming new players.  Please keep friendly fun feeling!  Any questions "
+"email rusty@rustcorp.com.au!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:39
 msgid "Wesnoth Tutorial"
@@ -74,25 +77,23 @@ msgstr "Li'sar"
 #: data/tutorial/scenarios/1_Tutorial.cfg:182
 #: data/tutorial/scenarios/1_Tutorial.cfg:190
 msgid "*Welcome to Wesnoth!"
-msgstr ""
+msgstr "*Üdvözlet a Wesnoth játékban!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:184
 msgid ""
 "\n"
 "For this tutorial, you are playing Konrad. "
 msgstr ""
+"\n"
+"A gyakorlás folyamán Konrad karakterét fogod irányítani. "
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:185
 #: data/tutorial/scenarios/1_Tutorial.cfg:193
-#, fuzzy
 msgid ""
 "You are standing in the keep, and your mentor Delfador is on the East side "
 "of the river."
 msgstr ""
-"*Üdvözlet a Wesnoth játékban!\n"
-"A gyakorlás folyamán $student karakterét fogod irányítani, aki a várban "
-"áll.  Delfador, a mentorod, a folyó keleti oldalán áll.\n"
-"*Bal kattintás vagy bármelyik billentyű a folytatáshoz..."
+"Te a várkastélyban állsz, Delfador, a mentorod pedig a folyó keleti oldalán."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:187
 #: data/tutorial/scenarios/1_Tutorial.cfg:195
@@ -106,70 +107,64 @@ msgid ""
 "\n"
 "*Left click or any key to continue..."
 msgstr ""
+"\n"
+"*Bal kattintás vagy bármelyik billentyű a folytatáshoz..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:192
 msgid ""
 "\n"
 "For this tutorial, you are playing Li'sar. "
 msgstr ""
+"\n"
+"A gyakorlás folyamán Li'sar karakterét fogod irányítani. "
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:198
 #: data/tutorial/scenarios/1_Tutorial.cfg:392
 #: data/tutorial/scenarios/1_Tutorial.cfg:479
-#, fuzzy
 msgid "Left click on Konrad"
-msgstr "Kattints a bal egérgombbal $studentra"
+msgstr "Kattints a bal egérgombbal Konradra"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:199
 #: data/tutorial/scenarios/1_Tutorial.cfg:393
 #: data/tutorial/scenarios/1_Tutorial.cfg:480
-#, fuzzy
 msgid "Left click on Li'sar"
-msgstr "Kattints a bal egérgombbal $studentra"
+msgstr "Kattints a bal egérgombbal Li'sarra"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:215
-#, fuzzy
 msgid ""
 "*You have selected Konrad.\n"
 "The places he could move to are highlighted."
 msgstr ""
-"*$student ki lett választva.\n"
-"A mezők, ahová $student léphet, világosabbak.\n"
-"*Bal kattintás vagy bármelyik billentyű a folytatáshoz..."
+"*Kijelölted Konradot.\n"
+"A mezők, ahová Konraddal léphetsz világosabbak."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:221
-#, fuzzy
 msgid ""
 "*You have selected Li'sar.\n"
 "The places she could move to are highlighted."
 msgstr ""
-"*$student ki lett választva.\n"
-"A mezők, ahová $student léphet, világosabbak.\n"
-"*Bal kattintás vagy bármelyik billentyű a folytatáshoz..."
+"*Kijelölted Li'sart.\n"
+"A mezők, ahová Li'sarral léphetsz világosabbak."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:226
 msgid "HERE"
 msgstr "IDE"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:231
-#, fuzzy
 msgid "Move Konrad next to Delfador, by clicking on the place marked 'HERE'."
 msgstr ""
-"Lépjen $student közvetlenül Delfador mellé, ehhez kattints az 'IDE' feliratú "
-"mezőre!\n"
-"*Bal kattintás vagy bármelyik billentyű a folytatáshoz..."
+"Lépj Konraddal közvetlenül Delfador mellé, ehhez kattints az 'IDE' feliratú "
+"mezőre!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:236
-#, fuzzy
 msgid "Move Li'sar next to Delfador, by clicking on the place marked 'HERE'."
 msgstr ""
-"Lépjen $student közvetlenül Delfador mellé, ehhez kattints az 'IDE' feliratú "
-"mezőre!\n"
-"*Bal kattintás vagy bármelyik billentyű a folytatáshoz..."
+"Lépj Li'sarral közvetlenül Delfador mellé, ehhez kattints az 'IDE' feliratú "
+"mezőre!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:242
 msgid "Left click on tile labelled HERE"
-msgstr "Kattints bal egérgombbal az 'IDE' címkézésű mezőre"
+msgstr "Kattints bal egérgombbal az 'IDE' címkéjű mezőre"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:280
 msgid ""
@@ -217,28 +212,24 @@ msgstr ""
 "vagyok benne, hogy nyersz."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:373
-#, fuzzy
 msgid ""
 "To attack the quintain, you will first select the attacker (Konrad) and then "
 "the target (the quintain).  You will see a description of the details of the "
 "attack.  When you click OK, Konrad will attack."
 msgstr ""
-"Ahhoz, hogy megtámadd a homokzsákot, először válaszd ki a támadót ($student) "
+"Ahhoz, hogy megtámadd a homokzsákot, először válaszd ki a támadót (Konrad) "
 "és utána a célpontot (homokzsák). Egy leírást fogsz látni a támadás "
-"részleteiről.  Amikor az 'Oké'-ra kattintasz, $student támadni fog.\n"
-"*Bal kattintás vagy bármelyik billentyű a folytatáshoz..."
+"részleteiről.  Amikor az 'Oké'-ra kattintasz, Konrad támadni fog."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:378
-#, fuzzy
 msgid ""
 "To attack the quintain, you will first select the attacker (Li'sar) and then "
 "the target (the quintain).  You will see a description of the details of the "
 "attack.  When you click OK, Li'sar will attack."
 msgstr ""
-"Ahhoz, hogy megtámadd a homokzsákot, először válaszd ki a támadót ($student) "
+"Ahhoz, hogy megtámadd a homokzsákot, először válaszd ki a támadót (Li'sar) "
 "és utána a célpontot (homokzsák). Egy leírást fogsz látni a támadás "
-"részleteiről.  Amikor az 'Oké'-ra kattintasz, $student támadni fog.\n"
-"*Bal kattintás vagy bármelyik billentyű a folytatáshoz..."
+"részleteiről.  Amikor az 'Oké'-ra kattintasz, Li'sar támadni fog."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:389
 msgid "Click on the quintain to attack it"
@@ -305,14 +296,12 @@ msgstr ""
 "ha a körödet ott fejezed be, akkor gyógyulsz. Oda kéne visszavonulnod."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:488
-#, fuzzy
 msgid "Click on the village to move Konrad"
-msgstr "Kattints a falura, hogy $student oda lépjen"
+msgstr "Kattints a falura, hogy Konraddal oda lépj"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:489
-#, fuzzy
 msgid "Click on the village to move Li'sar"
-msgstr "Kattints a falura, hogy $student oda lépjen"
+msgstr "Kattints a falura, hogy Li'sarral oda lépj"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:506
 msgid ""
@@ -361,14 +350,12 @@ msgstr ""
 "Bőségesen elég aranyad van hozzá."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:558
-#, fuzzy
 msgid "Move Konrad to the keep"
-msgstr "Lépjen $student a várkastélyba"
+msgstr "Lépj Konraddal a várkastélyba"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:559
-#, fuzzy
 msgid "Move Li'sar to the keep"
-msgstr "Lépjen $student a várkastélyba"
+msgstr "Lépj Li'sarral a várkastélyba"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:579
 msgid ""
@@ -518,13 +505,12 @@ msgid "Maybe you should recruit another elf?"
 msgstr "Talán toboroznod kéne még egy tündét?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:800
-#, fuzzy
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
 msgstr ""
 "Jó tudni:\n"
-"Jobb gombbal kattintva az egységen megtekitheted az Egység leírását"
+"Jobb gombbal kattintva az egységre megtekitheted az Egység leírását"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:815
 msgid ""
@@ -589,27 +575,28 @@ msgstr "A homokzsák halott, uraim, és tapasztalati pontokat is szereztem!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:887
 #: data/tutorial/scenarios/1_Tutorial.cfg:891
-#, fuzzy
 msgid ""
 "Yes, you gain more experience through battle, especially killing an "
 "opponent: gain enough experience and you become more powerful."
 msgstr ""
 "Igen, a csatákban tapasztalati pontokat szerezhetsz, főleg ha megölsz egy "
-"ellenséget: gyűjts elég TP-t és még erősebb leszel.\n"
-"Akkor most $student, itthagylak néhány bábuval, hogy gyakorolj rajtuk! Utána "
-"majd igazi feladatunk is lesz..."
+"ellenséget: gyűjts elég TP-t és még erősebb leszel."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:888
 msgid ""
 "Now Konrad, I will leave you with more dummies to practice on!  After that, "
 "we have real work to do..."
 msgstr ""
+"Akkor most Konrad, itt hagylak néhány bábuval, hogy gyakorolj rajtuk! Utána "
+"majd igazi feladatunk is lesz..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:892
 msgid ""
 "Now Li'sar, I will leave you with more dummies to practice on!  After that, "
 "we have real work to do..."
 msgstr ""
+"Akkor most Li'sar, itt hagylak néhány bábuval, hogy gyakorolj rajtuk! Utána "
+"majd igazi feladatunk is lesz..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:939
 msgid "Do you want to keep practicing?"
@@ -703,13 +690,12 @@ msgid "Ouch!  I could use some healing in a village."
 msgstr "Aú!  Kicsit gyógyulhatnék már egy faluban."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:231
-#, fuzzy
 msgid "I have $gold gold: enough to recruit!"
-msgstr "Nincs több pénzem toborzáshoz!"
+msgstr "Van $gold aranyam: ez még elég a toborzáshoz!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:232
 msgid "Yes, keep recruiting more units: I think you might need them!"
-msgstr ""
+msgstr "Valóban, csak folytasd a toborzást: szükséged lehet még csapatokra."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:243
 msgid "Wesnoth Tutorial Part II"
@@ -751,24 +737,23 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:374
 msgid "This is no game, Konrad! "
-msgstr ""
+msgstr "Ez nem játék, Konrad!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:375
 #: data/tutorial/scenarios/2_Tutorial.cfg:376
-#, fuzzy
 msgid ""
 "Orcs have encamped across the river.  This is elven country: we Elves are "
 "fast and hard to hit in forests.  They are fools to enter here.  You must "
 "defeat their leader, so they never bother us again.  I will advise you."
 msgstr ""
-"Ez nem játék $student|.  Orkok táboroztak le a folyó túlpartján.  Ez a "
-"tündék földje: mi tündék gyorsak és erősek vagyunk az erdőkben.  Bolondok, "
-"hogy ide mertek jönni. Le kell győznöd a vezérüket, nehogy ezután is galibát "
-"okozzon nekünk.  Majd a tanácsaimmal segítelek."
+"Orkok táboroztak le a folyó túlpartján.  Ez a tündék földje: mi tündék "
+"gyorsak és erősek vagyunk az erdőkben.  Bolondok, hogy ide mertek jönni. Le "
+"kell győznöd a vezérüket, nehogy ezután is galibát okozzon nekünk.  Majd a "
+"tanácsaimmal segítelek."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:375
 msgid "This is no game, Li'sar! "
-msgstr ""
+msgstr "Ez nem játék, Li'sar!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:377
 msgid "What should I do?"
@@ -900,10 +885,9 @@ msgstr ""
 "Kattints jobb gombbal a tőled délre levő mezőre és toborozz egy tünde harcost"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:535
-#, fuzzy
 msgid "No!  I said recruit an Elvish SHAMAN!  Now try again..."
 msgstr ""
-"Nem! Azt mondtam, hogy toborozz egy tünde SÁMÁNNŐT|!  Próbáldd meg újra..."
+"Nem! Azt mondtam, hogy toborozz egy tünde SÁMÁNNŐT!  Próbáldd meg újra..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:541
 msgid ""
@@ -930,21 +914,18 @@ msgstr ""
 "kevesebbed lesz minden kör után.  Szükséged lesz egy kis bevételre."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:545
-#, fuzzy
 msgid "Move Konrad to capture a village"
-msgstr "Lépjen $student és foglalj el egy falut"
+msgstr "Lépj Konraddal egy faluba és foglald el"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:546
-#, fuzzy
 msgid "Move Li'sar to capture a village"
-msgstr "Lépjen $student és foglalj el egy falut"
+msgstr "Lépj Li'sarral egy faluba és foglald el"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:565
 #: data/tutorial/scenarios/2_Tutorial.cfg:610
-#, fuzzy
 msgid "No!  I said recruit an Elvish ARCHER!  Now try again..."
 msgstr ""
-"Nem! Azt mondtam, hogy toborozz egy tünde ÍJÁSZT|!  Próbáldd meg újra..."
+"Nem! Azt mondtam, hogy toborozz egy tünde ÍJÁSZT!  Próbáldd meg újra..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:574
 #: data/tutorial/scenarios/2_Tutorial.cfg:586
@@ -986,10 +967,9 @@ msgid "Recruit two Elvish Archers in tiles to your west"
 msgstr "Toborozz két tünde íjászt a melletted nyugatra fekvő mezőkre"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:680
-#, fuzzy
 msgid "No!  I said recruit an Elvish FIGHTER!  Now try again..."
 msgstr ""
-"Nem! Azt mondtam, hogy toborozz egy tünde HARCOST|!  Próbáldd meg újra..."
+"Nem! Azt mondtam, hogy toborozz egy tünde HARCOST!  Próbáldd meg újra..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:690
 #: data/tutorial/scenarios/2_Tutorial.cfg:701
@@ -1029,10 +1009,9 @@ msgstr ""
 "harcost"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:794
-#, fuzzy
 msgid "$recruit.type|?  I said RECRUIT a new ELVISH FIGHTER.  Now try again..."
 msgstr ""
-"Nem! Azt mondtam, hogy toborozz egy tünde HARCOST|!  Próbáldd meg újra..."
+"Nem! Azt mondtam, hogy TOBOROZZ egy tünde HARCOST!  Próbáldd meg újra..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:808
 #: data/tutorial/scenarios/2_Tutorial.cfg:819
@@ -1041,21 +1020,20 @@ msgstr "Elindel"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:847
 msgid "You've learned well, Konrad! "
-msgstr ""
+msgstr "Gyorsan tanulsz, Konrad!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:848
 #: data/tutorial/scenarios/2_Tutorial.cfg:850
-#, fuzzy
 msgid ""
 "The village supports one unit, and pays one gold per turn: you're only "
 "losing 1 gold per turn now."
 msgstr ""
-"Jól tanultál, $student|!  A falu egy egységet tart fenn, és ad még egy "
-"aranyat is körönként: mostmár csak egy aranyat vesztessz körönként."
+"A falu egy egységet fenntart, és ad még egy aranyat is minden körben: "
+"mostmár csak egy aranyat vesztesz körönként."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:849
 msgid "You've learned well, Li'sar! "
-msgstr ""
+msgstr "Gyorsan tanulsz, Li'sar!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:851
 #: data/tutorial/scenarios/2_Tutorial.cfg:971
@@ -1071,21 +1049,19 @@ msgstr ""
 "egységeket tudjál toborozni."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:872
-#, fuzzy
 msgid ""
 "You should leave the villages near your keep for Konrad to capture, as he "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
-"Hagynod kéne a vár melletti falvakat $student számára, hogy elfoglalja őket: "
+"Hagynod kéne a vár melletti falvakat Konradnak, hogy ő foglalja el őket: "
 "neki mindenképpen a közelben kell maradnia, hogy új egységeket toborozhasson."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:873
-#, fuzzy
 msgid ""
 "You should leave the villages near your keep for Li'sar to capture, as she "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
-"Hagynod kéne a vár melletti falvakat $student számára, hogy elfoglalja őket: "
+"Hagynod kéne a vár melletti falvakat Li'sarnak, hogy ő foglalja el őket: "
 "neki mindenképpen a közelben kell maradnia, hogy új egységeket toborozhasson."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:879
@@ -1103,23 +1079,21 @@ msgstr ""
 "leírását)"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:889
-#, fuzzy
 msgid ""
 "Excellent.  Elves are well protected in the forest: there's only a 30% "
 "chance of hitting an Elven Archer when it's in forest."
 msgstr ""
-"Kitűnő!  A tündék védve vannak az erdőben: csak 30% esély van arra, hogy a "
-"tünde íjászokat megüssék, amikor az erdőben vannak."
+"Kitűnő!  A tündék védve vannak az erdőben: csak 30% esély van arra, hogy egy "
+"tünde íjászot megüssenek, amikor az az erdőben van."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:898
-#, fuzzy
 msgid ""
 "It's very dangerous to stand in water when there are enemies about!  Your "
 "unit would have an 80% chance of being hit when the Orc counter-attacks!  "
 "Cancel!"
 msgstr ""
-"Nagyon veszélyes vízben állni, amikor ellenség van a közelben!  80% az "
-"esélye, hogy az ork eltalál téged, amikor visszatámad!  Lépj vissza!"
+"Nagyon veszélyes vízben állni, amikor ellenség van a közelben!  Amikor egy "
+"ork visszatámad, 80% az esélye, hogy az megsebez!  Lépj vissza!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:904
 msgid "Attack the Orc with the other Archer"
@@ -1130,13 +1104,12 @@ msgid "Fighter to Here"
 msgstr "A harcost ide"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:917
-#, fuzzy
 msgid ""
 "Your other units cannot reach that Orc this turn.  Send a Fighter to that "
 "village to the far east: that will take two turns."
 msgstr ""
-"A többi egységed nem érhet célba ebben a körben.  Küldj egy harcost ahhoz a "
-"keleten lévő távoli faluba: ez két körig is el fog tartani"
+"A többi egységed nem érhet oda az orkhoz ebben a körben.  Küldj egy harcost "
+"ahhoz a keleten lévő távoli faluba: ez két körig is el fog tartani."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:918
 msgid ""
@@ -1160,21 +1133,18 @@ msgstr ""
 "támadhassanak, utána térj vissza a várba hogy még több egységet toborozhass!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:931
-#, fuzzy
 msgid "Move Fighter and Shaman south, then return Konrad to the Keep"
 msgstr ""
-"Lépj a harcossal és a sámánnővel délre, majd térjen vissza $student a várba"
+"Lépj a harcossal és a sámánnővel délre, majd térj vissza Konraddal a várba"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:932
-#, fuzzy
 msgid "Move Fighter and Shaman south, then return Li'sar to the Keep"
 msgstr ""
-"Lépj a harcossal és a sámánnővel délre, majd térjen vissza $student a várba"
+"Lépj a harcossal és a sámánnővel délre, majd térj vissza Li'sarral a várba"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:942
-#, fuzzy
 msgid "Recruit another Archer and a Fighter"
-msgstr "Toborozz még egy harcost és egy íjászt."
+msgstr "Toborozz még egy harcost és egy íjászt"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:957
 msgid "I have no more money to recruit!"
@@ -1185,23 +1155,20 @@ msgid "This is often a problem, which is why owning villages is important."
 msgstr "Ez gyakran probléma, ezért olyan fontos, hogy sok falvad legyen."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:959
-#, fuzzy
 msgid "Move Konrad to another (unowned) village"
-msgstr "Lépjen $student egy újabb (még nem elfoglalt) faluba"
+msgstr "Lépj Konraddal egy újabb (még nem elfoglalt) faluba"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:960
-#, fuzzy
 msgid "Move Li'sar to another (unowned) village"
-msgstr "Lépjen $student egy újabb (még nem elfoglalt) faluba"
+msgstr "Lépj Li'sarral egy újabb (még nem elfoglalt) faluba"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:985
-#, fuzzy
 msgid ""
 "The Orc is blocking the bridge!  We must occupy that island before the wolf "
 "riders reach it."
 msgstr ""
 "Az ork elzárja a hidat!  Muszáj a szigetet elfoglalnunk mielőtt a "
-"Farkaslovasok elérik azt."
+"farkaslovasok elérik azt."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:986
 msgid "Can't our units just move around him?"
@@ -1287,14 +1254,13 @@ msgstr ""
 "melletti utolsó faluhoz."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1102
-#, fuzzy
 msgid ""
 "We need to take that village, otherwise they will take it next turn!  Move "
 "your wounded unit to take it so it can heal, then kill that Orc!"
 msgstr ""
 "El kell foglalnunk azt a falut, különben ők fogják megszerezni a következő "
-"körben! Lépj a sérült egységeddel, hogy elfoglald, így felgyógyulhat, majd "
-"elintézheti az orkot!"
+"körben! Lépj a sérült egységeddel oda, hogy elfoglald, így felgyógyulhat, "
+"majd elintézheti az orkot!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1115
 msgid ""
@@ -1315,26 +1281,24 @@ msgstr ""
 "hogy megtekinthesd az adott napszakokról leírását."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1123
-#, fuzzy
 msgid ""
 "Remember to retreat your wounded units to villages.  Healers can only heal 4 "
 "hitpoints at a time, villages can heal 8 (the maximum for any unit)."
 msgstr ""
-"Azt hiszem szükséged lesz néhányra, és ne felejtsd el visszavonni a sérült "
-"egységeket a falvakba.  A csillapítók csak 4 életpontot tudnak gyógyítani, a "
-"falvak viszont 8-at (ez a legtöbb egy egységnél)."
+"Ne felejtsd el visszavonni a sérült egységeidet a falvakba.  A csillapítók "
+"csak 4 életpontot tudnak gyógyítani, a falvak viszont 8-at (ez a legtöbb egy "
+"egységnél)."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1130
 msgid "Defend here"
 msgstr "Itt védekezz"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1131
-#, fuzzy
 msgid ""
 "Beware those Orcs crossing the river!  If they get into the forest they'll "
 "be hard to dislodge!"
 msgstr ""
-"Vigyázz, azok az orkok átkelnek a folyón! Ha beérnek az erdőbe, nehéz lesz "
+"Vigyázz, azok az orkok átkelnek a folyón!  Ha beérnek az erdőbe, nehéz lesz "
 "őket kiűznöd!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1138
@@ -1349,11 +1313,10 @@ msgstr ""
 "Amikor az 'n'-et lenyomva nem választ ki egységet, befejezheted a köröd."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1143
-#, fuzzy
 msgid "You only need to defeat the leader to win: see Main Menu->Objectives."
 msgstr ""
-"Csak a vezért kell legyőznöd a győzelemhez: nézd meg a 'Menü->Pálya Céljai' "
-"opciót"
+"Csak a vezért kell legyőznöd a győzelemhez: nézd meg a Menü->Pálya Céljai "
+"opciót."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1148
 msgid ""
@@ -1442,13 +1405,12 @@ msgstr ""
 "'Parancsok' menü 'Ellenséges lépések mutatása' opcióját választod."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1323
-#, fuzzy
 msgid ""
 "Level 2 units are powerful, but not invulnerable!  Goodbye, $deadguy."
 "user_description|."
 msgstr ""
-"$student, a 2. szintű egységek sokkal erősebbek, de nem sérthetetlenek.  "
-"Nyugodj békében $deadguy.user_description."
+"A 2. szintű egységek sokkal erősebbek, de nem sérthetetlenek.  Nyugodj "
+"békében $deadguy.user_description|!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1338
 msgid ""
@@ -1502,7 +1464,6 @@ msgstr ""
 "Kiváltképp a kardforgatásban jeleskedem: négy támadás, mind 8 sebzést okoz."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1555
-#, fuzzy
 msgid "You took too long, we'll never be rid of these Orcs!"
 msgstr "Túl régóta hadakozunk, már sosem szabadulunk meg az orkoktól!"
 
