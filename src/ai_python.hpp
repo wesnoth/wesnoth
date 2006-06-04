@@ -52,6 +52,7 @@ public:
 	static PyObject* unittype_advances_to( wesnoth_unittype* type, PyObject* args );
 	static PyObject* wrapper_team_recruits( wesnoth_team* team, PyObject* args );
 	static PyObject* wrapper_unit_find_path( wesnoth_unit* unit, PyObject* args );
+	static PyObject* wrapper_unit_attack_statistics(wesnoth_unit* unit, PyObject* args);
 
 	static void set_error(const char *fmt, ...);
 

@@ -17,6 +17,7 @@
 
 #include "ai.hpp"
 #include "ai_python.hpp"
+#include "attack_prediction.hpp"
 #include "wassert.hpp"
 #include "gamestatus.hpp"
 #include "filesystem.hpp"
@@ -542,6 +543,18 @@ static PyMethodDef unit_methods[] = {
         "Finds a path from 'from' to 'to', and returns it as a list of locations. "
         "path[0] will be 'from', path[-1] will be 'to' or the nearest location costing "
         "less than 'stop_at' movement points to reach."},
+    { "attack_statistics", (PyCFunction)python_ai::wrapper_unit_attack_statistics, METH_VARARGS,
+        "Parameters: location from, location to\n"
+        "Returns: own_hp, enemy_hp\n"
+        "Returns two dictionaries with the expected battle results when the "
+        "unit attacks from 'from' to the unit at 'to'. The dictionaries "
+        "contain the expected hitpoints after the fight, as a mapping from "
+        "hitpoints to percent, where percent are specified as floating point "
+        "value from 0 to 1. For example, a return of: "
+        "{0:1}, {50:0.5, 40:0.5} would mean, the attacking unit "
+        "is certaion to die (probability for 0 hitpoints is 1), and the enemy "
+        "unit will either remain at 50 or 40 HP after the fight, with equal "
+        "probability of 0.5."},
 	{ NULL,					NULL,										0, NULL }
 };
 
@@ -855,6 +868,23 @@ static PyObject* wrapper_team_gold(wesnoth_team* team, void* /*closure*/)
 	return Py_BuildValue("i", team->team_->gold());
 }
 
+static PyObject* wrapper_team_is_enemy(wesnoth_team* team, void* /*closure*/)
+{
+    int result;
+
+    // find side number of team
+    int side = 0;
+    for (size_t t = 0; t < running_instance->get_teams().size(); t++) {
+        if (team->team_ == &running_instance->get_teams()[t]) {
+            side = 1 + t;
+            break;
+        }
+    }
+
+    result = running_instance->current_team().is_enemy(side) == true ? 1 : 0;
+    return Py_BuildValue("i", result);
+}
+
 static PyObject* wrapper_team_side(wesnoth_team* team, void* /*closure*/)
 {
     int side = 0;
@@ -913,6 +943,7 @@ static PyGetSetDef team_getseters[] = {
 	{ "gold",	(getter)wrapper_team_gold,		NULL,	"The current amount of gold this team has.",	NULL },
 	{ "income",	(getter)wrapper_team_income,	NULL,	"The current per-turn income if this team.",	NULL },
 	{ "side",       (getter)wrapper_team_side,              NULL,   "Side number of this team, starting with 1.",   NULL},
+	{ "is_enemy", (getter)wrapper_team_is_enemy, NULL, "Whether this team is an enemy.", NULL },
 	{ NULL, NULL, NULL, NULL, NULL }
 };
 
@@ -1347,6 +1378,62 @@ PyObject* python_ai::wrapper_unit_find_path( wesnoth_unit* unit, PyObject* args 
 		PyList_SetItem(steps,step,wrap_location(route.steps[step]));
 
 	return steps;
+}
+
+PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject* args)
+{
+	wesnoth_location* from;
+	wesnoth_location* to;
+	int weapon;
+
+	if ( !PyArg_ParseTuple( args, "O!O!i", &wesnoth_location_type, &from,
+        &wesnoth_location_type, &to, &weapon) )
+		return NULL;
+	if (!running_instance->is_unit_valid(self->unit_))
+		return NULL;
+		
+    info& inf = running_instance->get_info();
+
+    // We need to temporarily move our unit to where the attack calculation is
+    // supposed to take place.
+    std::pair<gamemap::location,unit> *temp = inf.units.extract(*from->location_);
+    std::pair<gamemap::location,unit> *backup = temp;
+    std::pair<gamemap::location,unit> replace(*from->location_,*self->unit_);
+    inf.units.add(&replace);
+
+    battle_context bc(
+        inf.map,
+        inf.teams,
+        inf.units,
+        inf.state,
+        inf.gameinfo,
+        *from->location_,
+        *to->location_,
+        weapon);
+
+    unsigned int i;
+    std::vector<double>attacker = bc.get_attacker_combatant().hp_dist;
+	PyObject* adict = PyDict_New();
+	for (i = 0; i < attacker.size(); i++) {
+	    if (attacker[i] > 0)
+            PyDict_SetItem(adict, PyInt_FromLong(i), PyFloat_FromDouble(attacker[i]));
+	}
+	
+	std::vector<double>defender = bc.get_defender_combatant().hp_dist;
+	PyObject* ddict = PyDict_New();
+	for (i = 0; i < defender.size(); i++) {
+	    if (defender[i] > 0)
+            PyDict_SetItem(ddict, PyInt_FromLong(i), PyFloat_FromDouble(defender[i]));
+	}
+	
+	// restore old position again
+	temp = inf.units.extract(*from->location_);
+	if (backup)
+        inf.units.add(backup);
+	
+	PyObject *ret = Py_BuildValue("(OO)", adict, ddict);
+
+	return ret;
 }
 
 PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
