@@ -1951,8 +1951,9 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		event_mutated = true;
 	}
 
+	ui = units.find(steps.back());
 	if(undo_stack != NULL) {
-		if(event_mutated || should_clear_stack) {
+		if(event_mutated || should_clear_stack || ui == units.end()) {
 			apply_shroud_changes(*undo_stack,disp,status,map,gamedata,units,teams,team_num);
 			undo_stack->clear();
 		} else {
