@@ -907,6 +907,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			units.add(up);
 			u = units.find(dst);
 			check_checksums(disp,units,*cfg);
+			// Get side now, in case game events change the unit.
+			int u_team = u->second.side()-1;
 			if(map.is_village(dst)) {
 				const int orig_owner = village_owner(dst,teams) + 1;
 				if(orig_owner != team_num) {
@@ -920,8 +922,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				disp.draw();
 			}
 
-			// Get side now, in case moveto changes unit.
-			int u_team = u->second.side()-1;
 			game_events::fire("moveto",dst);
 			//FIXME: what's special about team 1? regroup it with next block
 			if(team_num != 1 && (teams.front().uses_shroud() || teams.front().uses_fog()) && !teams.front().fogged(dst.x,dst.y)) {
