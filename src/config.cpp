@@ -21,6 +21,7 @@
 #include "log.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <iostream>
 
@@ -606,7 +607,7 @@ std::string config::hash() const
 	static const unsigned int hash_length = 128;
 	static const char hash_string[] = 
 		"+-,.<>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	static const int hash_string_length = strlen(hash_string);
+	static const int hash_string_length = strlen(hash_string)-1;
 	char hash_str[hash_length + 1];
 	std::string::const_iterator c;
 
@@ -620,6 +621,9 @@ std::string config::hash() const
 	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
 		if(val->first.size() && val->second.size()) {
 			for(c = val->first.begin(); c != val->first.end(); ++c) {
+				if(utils::portable_isspace(*c)) {
+					continue;
+				}
 				hash_str[i] ^= *c;
 				++i;
 				if(i == hash_length) {
@@ -627,6 +631,9 @@ std::string config::hash() const
 				}
 			}
 			for(c = val->second.value().begin(); c != val->second.value().end(); ++c) {
+				if(utils::portable_isspace(*c)) {
+					continue;
+				}
 				hash_str[i] ^= *c;
 				++i;
 				if(i == hash_length) {
