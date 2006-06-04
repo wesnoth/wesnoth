@@ -920,6 +920,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				disp.draw();
 			}
 
+			// Get side now, in case moveto changes unit.
+			int u_team = u->second.side()-1;
 			game_events::fire("moveto",dst);
 			//FIXME: what's special about team 1? regroup it with next block
 			if(team_num != 1 && (teams.front().uses_shroud() || teams.front().uses_fog()) && !teams.front().fogged(dst.x,dst.y)) {
@@ -927,7 +929,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 			for(std::vector<team>::iterator my_team = teams.begin() ; my_team != teams.end() ; my_team++) {
 				if((my_team->uses_shroud() || my_team->uses_fog()) && !my_team->fogged(dst.x,dst.y)) {
-					my_team->see(u->second.side()-1);
+					my_team->see(u_team);
 				}
 			}
 
