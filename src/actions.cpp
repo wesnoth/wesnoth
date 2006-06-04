@@ -654,6 +654,7 @@ void attack(display& gui, const gamemap& map,
 	
 	a->second.set_attacks(a->second.attacks_left()-1);
 	a->second.set_movement(a->second.movement_left()-a->second.attacks()[attack_with].movement_used());
+	a->second.set_resting(false);
 	d->second.set_resting(false);
 	
 	//if the attacker was invisible, she isn't anymore!
