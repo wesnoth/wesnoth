@@ -607,7 +607,6 @@ std::string config::hash() const
 	static const unsigned int hash_length = 128;
 	static const char hash_string[] = 
 		"+-,.<>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	static const int hash_string_length = strlen(hash_string)-1;
 	char hash_str[hash_length + 1];
 	std::string::const_iterator c;
 
@@ -656,7 +655,7 @@ std::string config::hash() const
 	}
 	
 	for(i = 0; i != hash_length; ++i) {
-		hash_str[i] = hash_string[hash_str[i]%hash_string_length];
+		hash_str[i] = hash_string[(unsigned)hash_str[i]%strlen(hash_string)];
 	}
 	
 	return std::string(hash_str);
