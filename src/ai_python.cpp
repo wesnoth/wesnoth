@@ -552,7 +552,7 @@ static PyMethodDef unit_methods[] = {
         "hitpoints to percent, where percent are specified as floating point "
         "value from 0 to 1. For example, a return of: "
         "{0:1}, {50:0.5, 40:0.5} would mean, the attacking unit "
-        "is certaion to die (probability for 0 hitpoints is 1), and the enemy "
+        "is certain to die (probability for 0 hitpoints is 1), and the enemy "
         "unit will either remain at 50 or 40 HP after the fight, with equal "
         "probability of 0.5."},
 	{ NULL,					NULL,										0, NULL }
