@@ -260,6 +260,16 @@ static PyObject* attacktype_get_slow(wesnoth_attacktype* type, void* /*closure*/
 	return Py_BuildValue("i",type->attack_type_->has_special_by_id("slow"));
 }
 
+static PyObject* attacktype_get_berserk(wesnoth_attacktype* type, void* /*closure*/)
+{
+	return Py_BuildValue("i",type->attack_type_->has_special_by_id("berserk"));
+}
+
+static PyObject* attacktype_get_stones(wesnoth_attacktype* type, void* /*closure*/)
+{
+	return Py_BuildValue("i",type->attack_type_->has_special_by_id("stones"));
+}
+
 static PyObject* attacktype_get_range(wesnoth_attacktype* type, void* /*closure*/)
 {
 	return Py_BuildValue("s",type->attack_type_->range().c_str());
@@ -280,6 +290,10 @@ static PyGetSetDef attacktype_getseters[] = {
         "This attack has backstab.",	NULL },
 	{ "slow",			(getter)attacktype_get_slow,			NULL,
         "This attack causes slow.",	NULL },
+    { "berserk",			(getter)attacktype_get_berserk,			NULL,
+        "This attack uses berserk.",	NULL },
+    { "stones",			(getter)attacktype_get_stones,			NULL,
+        "This attack has 'stones' ability.",	NULL },
 	{ "range",			(getter)attacktype_get_range,			NULL,
         "String with the name of the attack range.",	NULL },
 	{ NULL, NULL, NULL, NULL, NULL }
