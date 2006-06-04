@@ -147,7 +147,13 @@ void playmp_controller::play_human_turn(){
 
 void playmp_controller::after_human_turn(){
 	if ( level_["mp_countdown"] == "yes" ){
-		current_team().set_countdown_time(current_team().countdown_time() + 1000 * lexical_cast_default<int>(level_["mp_countdown_turn_bonus"],0));
+		const int action_increment = lexical_cast_default<int>(level_["mp_countdown_action_bonus"],0);
+		const int maxtime = lexical_cast_default<int>(level_["mp_countdown_reservoir_time"],0);
+		int secs = (current_team().countdown_time() / 1000) + lexical_cast_default<int>(level_["mp_countdown_turn_bonus"],0);
+		secs += action_increment  * current_team().action_bonus_count();
+		current_team().set_action_bonus_count(0);
+		secs = (secs > maxtime) ? maxtime : secs;
+		current_team().set_countdown_time(1000 * secs);
 		recorder.add_countdown_update(current_team().countdown_time(),player_number_);
 	}
 
