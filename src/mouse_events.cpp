@@ -1002,7 +1002,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	//if the unit is selected and then itself clicked on,
 	//any goto command is cancelled
 	if(u != units_.end() && !browse && selected_hex_ == hex && u->second.side() == team_num_) {
-		((unit) u->second).set_goto(gamemap::location());
+		u->second.set_goto(gamemap::location());
 	}
 
 	//if we can move to that tile
