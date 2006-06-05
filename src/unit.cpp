@@ -948,6 +948,7 @@ void unit::read(const config& cfg)
 			type_set = true;
 		} else {
 			LOG_STREAM(err, engine) << "unit of type " << cfg["type"] << " not found!\n";
+			throw game::game_error("Unknown unit type '" + cfg["type"] + "'");
 		}
 		attacks_left_ = max_attacks_;
 		if(cfg["moves"]=="") {
