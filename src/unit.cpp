@@ -254,6 +254,8 @@ void unit::advance_to(const unit_type* t)
 	cfg_.clear_children("movement_anim");
 	cfg_.clear_children("attack");
 	cfg_.clear_children("abilities");
+	// clear cache of movement costs
+	movement_costs_.clear();
 	
 	if(t->movement_type().get_parent()) {
 		cfg_ = cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
