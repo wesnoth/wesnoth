@@ -9,7 +9,7 @@ AC_PREREQ([2.57])
 define([WESNOTH_VERSION],[1.0.2])
 
 define([DEFAULT_SERVER],[server.wesnoth.org])
-dnl define([DEFAULT_SERVER],[devsrv.wesnoth.org:14999])
+dnl define([DEFAULT_SERVER],[devsrv.wesnoth.org:14998])
 
 AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, [davidnwhite@verizon.net], [wesnoth])
 AC_DEFINE([WESNOTH_DEFAULT_SERVER], ["]DEFAULT_SERVER["], [The default server for this version])
@@ -45,9 +45,10 @@ AC_CONFIG_HEADER([config.h])
 AC_CANONICAL_BUILD
 AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
-AM_INIT_AUTOMAKE([foreign 1.5])
+AM_INIT_AUTOMAKE([1.9 tar-ustar foreign])
 AM_MAINTAINER_MODE
 AM_GNU_GETTEXT([external])
+AC_PROG_RANLIB
 
 #######################################################################
 # Configuration options                                               #
@@ -55,9 +56,15 @@ AM_GNU_GETTEXT([external])
 
 AC_ARG_ENABLE([debug],
 	      AS_HELP_STRING([--enable-debug], [enable debug in wesnoth]),
-	      [if test "x${enableval}" = "xyes" ; then
-                   CXXFLAGS="$CXXFLAGS -DDEBUG -O0 -ggdb3"
-	       fi])
+	      [debug=$enableval],
+	      [debug=no])
+
+if test "x$debug" = "xyes"
+then
+	CXXFLAGS="$CXXFLAGS -DDEBUG -O0 -ggdb3 -W -Wall -ansi " 
+else
+	CXXFLAGS="$CXXFLAGS  -W -Wall -ansi " 
+fi
 
 AC_ARG_ENABLE([static],
               AS_HELP_STRING([--enable-static], [enable static building of wesnoth]),
@@ -274,7 +281,7 @@ AM_CONDITIONAL([X11], [test "$have_libx11" = 'yes'])
 AC_PATH_PROGS([SDL_CONFIG], [sdl-config sdl11-config], [none])
 
 if test "x$SDL_CONFIG" = "xnone"; then
-	
+
 	AC_MSG_ERROR([*** SDL not found! Get SDL from www.libsdl.org.
 If you already installed it, check it's in the path. If problem remains,
 please send a mail to the address that appears in ./configure --version
@@ -315,7 +322,7 @@ AC_ARG_ENABLE([sdltest],
 
 min_sdl_version=1.2.7
 AC_MSG_CHECKING(for SDL - version >= $min_sdl_version)
-    
+
 SDL_CFLAGS=`$SDL_CONFIG --cflags`
 SDL_LIBS=`$SDL_CONFIG --libs`
 sdl_major_version=`$SDL_CONFIG --version | \
@@ -333,7 +340,7 @@ if test "x$enable_sdltest" = "xyes" ; then
 
     # Now check if the installed SDL is sufficiently new. (Also sanity
     # checks the results of sdl-config to some extent
-      
+
     rm -f conf.sdltest
     AC_RUN_IFELSE([AC_LANG_SOURCE([
 #include <stdio.h>
@@ -345,7 +352,7 @@ char*
 my_strdup (char *str)
 {
   char *new_str;
-  
+
   if (str)
     {
       new_str = (char *)malloc ((strlen (str) + 1) * sizeof(char));
@@ -353,7 +360,7 @@ my_strdup (char *str)
     }
   else
     new_str = NULL;
-  
+
   return new_str;
 }
 
@@ -395,7 +402,7 @@ int main (int argc, char **argv)
     [AC_MSG_RESULT(yes)],
     [AC_MSG_RESULT(no)]
     [AC_MSG_ERROR([*** Please upgrade your SDL version])],
-    [AC_MSG_RESULT[not tested in cross-compiling]])
+    [AC_MSG_RESULT([not tested in cross-compiling])])
     rm -f conf.sdltest
 
     CFLAGS="$ac_save_CFLAGS"
@@ -437,22 +444,6 @@ AM_CONDITIONAL([GNOME1], [test x$gnome = xyes && test x$gnome1found = xyes && te
 AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome2 = xyes])
 
 #######################################################################
-# Checks for types.                                                   #
-#######################################################################
-
-# No need to check anymore    
-#AC_LANG([C++])
-#AC_MSG_CHECKING([if char is signed])
-
-#AC_COMPILE_IFELSE(
-#	[[static int test_array [1 - 2 * !(((char) -1) < 0)];]],
-#	[AC_MSG_RESULT(yes)],
-#	[AC_MSG_RESULT(no)] 
-#	[AC_MSG_ERROR([*** char is unsigned. Wesnoth cannot work with unsigned 
-#chars. Try with another compiler (specify it using CXX environment variable.)
-#If you use GCC, you can force signed chars with CXXFLAGS=-fsigned-char])])
-
-#######################################################################
 # Checks for libraries.                                               #
 #######################################################################
 
@@ -461,7 +452,7 @@ AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome2 = xyes])
 AC_PATH_PROG([LTOOL], [libtool], [])
 if test "$static" = "yes" -a -n "$LTOOL"
 then
-	LDPREFIX="$LTOOL --mode=link"
+	LDPREFIX="$LTOOL --mode=link --tag=CXX"
 else
 	LDPREFIX=""
 fi
@@ -508,7 +499,7 @@ else SDL_MIXER_LIBS=-lSDL_mixer
 fi],
 	     [AC_MSG_ERROR([*** SDL_mixer lib not found! Get SDL_mixer from
 http://www.libsdl.org/projects/SDL_mixer/index.html])])
-	     
+
 AC_CHECK_LIB([SDL_net],
 	     [SDLNet_Init],
 	     [if test -n "$LDPREFIX" -a -r `$SDL_CONFIG --prefix`/lib/libSDL_net.la
@@ -518,22 +509,12 @@ fi],
 	     [AC_MSG_ERROR([*** SDL_net lib not found! Get SDL_net from
 http://www.libsdl.org/projects/SDL_net/index.html])])
 
-#AC_CHECK_LIB([SDL_ttf],
-#	     [TTF_OpenFont],
-#	     [if test -n "$LDPREFIX" -a -r /usr/lib/libSDL_ttf.la
-#then SDL_TTF_LIBS=/usr/lib/libSDL_ttf.la
-#else SDL_TTF_LIBS=-lSDL_ttf
-#fi],
-#	     [AC_MSG_ERROR([*** SDL_ttf lib not found! Get SDL_ttf from
-#http://www.libsdl.org/projects/SDL_ttf/index.html])])
-
 LIBS=$OLD_LIBS
 
 AC_SUBST([SDL_LIBS])
 AC_SUBST([SDL_IMAGE_LIBS])
 AC_SUBST([SDL_MIXER_LIBS])
 AC_SUBST([SDL_NET_LIBS])
-#AC_SUBST([SDL_TTF_LIBS])
 
 # Checking for the freetype library. This was copied from the
 # config script of SDL_ttf, modified for CPPFLAGS
@@ -575,24 +556,33 @@ fi
 
 AC_SUBST([FREETYPE_LIBS])
 
+AC_ARG_WITH([zipios],
+	AS_HELP_STRING([--without-zipios], [Do not use zipios++ even if installed]),
+	[checkzipios="$withval"],
+	[checkzipios="yes"])
+
 AC_LANG(C++)
-AC_MSG_CHECKING([for libzipios++])
-OLD_LIBS="$LIBS"
-LIBS="-lzipios -lz"
 LIBZIPIOS=
-AC_LINK_IFELSE([AC_LANG_SOURCE([
-#include <zipios++/dircoll.h>
-int main(int argc, char **argv)
-{
-	zipios::DirectoryCollection z("src");
-}
-	])],
-	[AC_MSG_RESULT(yes)
-	LIBZIPIOS="-lzipios -lz"
-	AC_DEFINE([USE_ZIPIOS],[1],[Make use of the zipios++ library to read data in zip files])],
-	[AC_MSG_RESULT(no)
-	AC_MSG_WARN([*** libzipios++ not found - support for ZIP files is disabled])])
-LIBS="$OLD_LIBS"
+if test $checkzipios = yes; then
+	AC_MSG_CHECKING([for libzipios++])
+	OLD_LIBS="$LIBS"
+	LIBS="-lzipios -lz"
+	AC_LINK_IFELSE([AC_LANG_SOURCE([
+	#include <zipios++/dircoll.h>
+	int main(int argc, char **argv)
+	{
+		zipios::DirectoryCollection z("src");
+	}
+		])],
+		[AC_MSG_RESULT(yes)
+		LIBZIPIOS="-lzipios -lz"
+		AC_DEFINE([USE_ZIPIOS],[1],[Make use of the zipios++ library to read data in zip files])],
+		[AC_MSG_RESULT(no)
+		AC_MSG_WARN([*** libzipios++ not found - support for ZIP files is disabled])])
+	LIBS="$OLD_LIBS"
+else
+	AC_MSG_NOTICE([skipping check for libzipios++])
+fi
 AC_SUBST([LIBZIPIOS])
 
 #######################################################################
@@ -620,21 +610,16 @@ AC_CHECK_HEADER([SDL_image.h],
 		[],
 		[AC_MSG_ERROR([*** SDL_image include files not found!
 You should install development package.])])
-		
+
 AC_CHECK_HEADER([SDL_mixer.h],
 		[],
 		[AC_MSG_ERROR([*** SDL_mixer include files not found!
 You should install development package.])])
-		
+
 AC_CHECK_HEADER([SDL_net.h],
 		[],
 		[AC_MSG_ERROR([*** SDL_net include files not found!
 You should install development package.])])
-		
-#AC_CHECK_HEADER([SDL_ttf.h],
-#		[],
-#		[AC_MSG_ERROR([*** SDL_ttf include files not found!
-#You should install development package.])])
 
 CPPFLAGS=$OLD_CPPFLAGS
 CXXFLAGS=$OLD_CXXFLAGS
@@ -695,7 +680,7 @@ int main(int argc, char **argv)
 	[AC_MSG_RESULT(yes)],
 	[AC_MSG_RESULT(no)] 
 	[AC_MSG_ERROR([*** SDL_image has no PNG support! You need SDL_image with PNG support])],
-	[AC_MSG_RESULT[not tested in cross-compiling]])
+	[AC_MSG_RESULT([not tested in cross-compiling])])
 
 CPPFLAGS=$OLD_CPPFLAGS
 CFLAGS=$OLD_CFLAGS
@@ -736,7 +721,7 @@ if test "x$lite" = "xno"; then
 	[AC_MSG_RESULT(yes)],
 	[AC_MSG_RESULT(no)]
 	[AC_MSG_ERROR([*** SDL_mixer has no OGG support! You need SDL_mixer with OGG support])],
-	[AC_MSG_RESULT[not tested in cross-compiling]])
+	[AC_MSG_RESULT([not tested in cross-compiling])])
 
 
         CPPFLAGS=$OLD_CPPFLAGS
