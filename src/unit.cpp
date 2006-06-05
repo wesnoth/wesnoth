@@ -2333,6 +2333,7 @@ void unit::add_modification(const std::string& type, const config& mod,
 			if (ap) {
 				mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
 			}
+			movement_costs_.clear();
 		} else if (apply_to == "defense") {
 			config *mv = cfg_.child("defense");
 			config *ap = (**i.first).child("defense");
