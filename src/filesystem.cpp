@@ -627,7 +627,7 @@ time_t file_create_time(const std::string& fname)
 }
 
 //return the next ordered full filename within this directory
-std::string next_filename(const std::string &dirname)
+std::string next_filename(const std::string &dirname, unsigned int max)
 {
 	std::vector<std::string> files;
 	std::stringstream fname;
@@ -645,6 +645,13 @@ std::string next_filename(const std::string &dirname)
 				break;
 			} catch (bad_lexical_cast &) {
 			}
+		}
+	}
+
+	// Erase oldest files if we have too many
+	if (max) {
+		for (unsigned int j = 0; j + max < files.size(); j++) {
+			delete_directory(dirname + "/" + files[j]);
 		}
 	}
 

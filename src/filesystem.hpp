@@ -80,7 +80,7 @@ bool file_exists(const std::string& name);
 time_t file_create_time(const std::string& fname);
 
 //return the next ordered full filename within this directory
-std::string next_filename(const std::string &dirname);
+std::string next_filename(const std::string &dirname, unsigned int max = 0);
 
 struct file_tree_checksum
 {

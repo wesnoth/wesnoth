@@ -114,7 +114,7 @@ static int upload_logs(void *_ti)
 // Currently only enabled when playing campaigns.
 upload_log::upload_log(bool enable) : game_(NULL), enabled_(enable)
 {
-	filename_ = next_filename(get_upload_dir());
+	filename_ = next_filename(get_upload_dir(), 100);
 	if (preferences::upload_log() && !thread_.t) {
 		// Thread can outlive us; it uploads everything up to the next
 		// filename, and unsets thread_.t when it's finished.
@@ -140,7 +140,7 @@ upload_log::~upload_log()
 
 		// Try to upload latest log before exit.
 		if (preferences::upload_log() && !thread_.t) {
-			thread_.lastfile = next_filename(get_upload_dir());
+			thread_.lastfile = next_filename(get_upload_dir(), 1000);
 			thread_.t = new threading::thread(upload_logs, &thread_);
 		}
 	}
