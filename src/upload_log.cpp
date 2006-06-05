@@ -246,13 +246,19 @@ void upload_log::start(game_state &state, const team &team,
 // User finishes a scenario.
 void upload_log::defeat(int turn)
 {
-	add_game_result("defeat", turn);
+	// game_ can be NULL if user takes over partway through MP game.
+	if (game_) {
+		add_game_result("defeat", turn);
+	}
 }
 
 void upload_log::victory(int turn, int gold)
 {
-	config &e = add_game_result("victory", turn);
-	e["gold"] = lexical_cast<std::string>(gold);
+	// game_ can be NULL if user takes over partway through MP game.
+	if (game_) {
+		config &e = add_game_result("victory", turn);
+		e["gold"] = lexical_cast<std::string>(gold);
+	}
 }
 
 void upload_log::quit(int turn)
