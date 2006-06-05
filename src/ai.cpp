@@ -1906,8 +1906,15 @@ void ai::move_leader_after_recruit(const move_map& srcdst, const move_map& dstsr
 
 	// We didn't move: are we in trouble?
 	leader = find_leader(units_,team_num_);
-	if (!leader->second.has_moved() && leader->second.attacks_left() && should_retreat(leader->first, leader, srcdst, dstsrc, enemy_dstsrc, 0.5)) {
-		desperate_attack(leader->first);
+	if (!leader->second.has_moved() && leader->second.attacks_left()) {
+		std::map<gamemap::location,paths> dummy_possible_moves;
+		move_map fullmove_srcdst;
+		move_map fullmove_dstsrc;
+		calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true,&avoided_locations());
+
+		if (should_retreat(leader->first, leader, fullmove_srcdst, fullmove_dstsrc, enemy_dstsrc, 0.5)) {
+			desperate_attack(leader->first);
+		}
 	}
 }
 
