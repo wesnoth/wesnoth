@@ -31,14 +31,14 @@ LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_c
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 	playsingle_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
-	
+
 	return playcontroller.play_scenario(story, log, skip_replay);
 }
 
-playsingle_controller::playsingle_controller(const config& level, const game_data& gameinfo, game_state& state_of_game, 
+playsingle_controller::playsingle_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 											 const int ticks, const int num_turns, const config& game_config, CVideo& video,
 											 bool skip_replay)
-	: play_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay), 
+	: play_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay),
 	cursor_setter(cursor::NORMAL), replay_sender_(recorder)
 {
 	end_turn_ = false;
@@ -126,7 +126,7 @@ void playsingle_controller::user_command(){
 	menu_handler_.user_command();
 }
 
-LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, upload_log& log, 
+LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, upload_log& log,
 												  bool skip_replay)
 {
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
@@ -371,7 +371,7 @@ void playsingle_controller::play_turn(){
 					replaying_ = false;
 				}
 				LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
-			} 
+			}
 			else{
 				play_side(player_number_);
 			}
@@ -405,7 +405,7 @@ redo_turn:
 			if (end_turn.redo == team_index)
 				player_type_changed_ = true;
 		}
-	
+
 		if(game_config::debug)
 			display::clear_debug_highlights();
 
@@ -548,15 +548,15 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) 
 			return !events::commands_disabled && game_config::debug && map_.on_board(mouse_handler_.get_last_hex());
 
 		case hotkey::HOTKEY_LABEL_TERRAIN:
-			return !events::commands_disabled && map_.on_board(mouse_handler_.get_last_hex()) 
-				&& !gui_->shrouded(mouse_handler_.get_last_hex().x, mouse_handler_.get_last_hex().y) 
+			return !events::commands_disabled && map_.on_board(mouse_handler_.get_last_hex())
+				&& !gui_->shrouded(mouse_handler_.get_last_hex().x, mouse_handler_.get_last_hex().y)
 				&& !is_observer();
 
 		case hotkey::HOTKEY_CONTINUE_MOVE: {
 			if(browse_ || events::commands_disabled)
 				return false;
 
-			if( (menu_handler_.current_unit(mouse_handler_) != units_.end()) 
+			if( (menu_handler_.current_unit(mouse_handler_) != units_.end())
 				&& (menu_handler_.current_unit(mouse_handler_)->second.move_interrupted()))
 				return true;
 			const unit_map::const_iterator i = units_.find(mouse_handler_.get_selected_hex());

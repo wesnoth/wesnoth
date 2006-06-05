@@ -42,7 +42,7 @@ loadscreen::loadscreen(CVideo &screen, const int &percent):
 void loadscreen::set_progress(const int percentage, const std::string &text, const bool commit)
 {
 	/* Saturate percentage. */
-	prcnt_ = percentage < MIN_PERCENTAGE ? MIN_PERCENTAGE: percentage > MAX_PERCENTAGE ? MAX_PERCENTAGE: percentage;	
+	prcnt_ = percentage < MIN_PERCENTAGE ? MIN_PERCENTAGE: percentage > MAX_PERCENTAGE ? MAX_PERCENTAGE: percentage;
 	/* Set progress bar parameters. */
 	int fcr =   21, fcg =   53, fcb = 80; /* Finished piece. */
 	int lcr =   21, lcg =   22, lcb =  24; /* Leftover piece. */
@@ -108,7 +108,7 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 		textarea_.y = pby + pbh + 4*(bw + bispw);
 		textarea_ = font::draw_text(&screen_,textarea_,font::SIZE_NORMAL,font::NORMAL_COLOUR,text,textarea_.x,textarea_.y);
 	}
- 	/* Flip the double buffering so the change becomes visible */
+	/* Flip the double buffering so the change becomes visible */
 	if(commit)
 	{
 		SDL_Flip(gdis);

@@ -41,7 +41,7 @@
 #define debug(x)
 #endif
 
-namespace 
+namespace
 {
 // A matrix of A's hitpoints vs B's hitpoints.
 struct prob_matrix
@@ -102,7 +102,7 @@ private:
 	// Shift columns on this plane (b taking damage).  Returns min col.
 	void shift_cols(unsigned dst, unsigned src,
 					unsigned damage, double prob, bool drain);
-	
+
 	// Shift rows on this plane (a taking damage).  Returns new min row.
 	void shift_rows(unsigned dst, unsigned src,
 					unsigned damage, double prob, bool drain);
@@ -214,7 +214,7 @@ const double &prob_matrix::val(unsigned p, unsigned row, unsigned col) const
 void prob_matrix::dump() const
 {
 	unsigned int row, col, m;
-	const char *names[] 
+	const char *names[]
 		= { "NEITHER_SLOWED", "A_SLOWED", "B_SLOWED", "BOTH_SLOWED" };
 
 	for (m = 0; m < 4; m++) {
@@ -259,7 +259,7 @@ void prob_matrix::xfer(unsigned dst_plane, unsigned src_plane,
 			   : src_plane == A_SLOWED ? "[A_SLOWED]"
 			   : src_plane == B_SLOWED ? "[B_SLOWED]"
 			   : src_plane == BOTH_SLOWED ? "[BOTH_SLOWED]" : "INVALID",
-			   row_src, col_src, 
+			   row_src, col_src,
 			   dst_plane == NEITHER_SLOWED ? ""
 			   : dst_plane == A_SLOWED ? "[A_SLOWED]"
 			   : dst_plane == B_SLOWED ? "[B_SLOWED]"
@@ -320,7 +320,7 @@ void prob_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double h
 		if (!plane[src])
 			continue;
 
-		// If a slows us we go from 0=>2, 1=>3, 2=>2 3=>3. 
+		// If a slows us we go from 0=>2, 1=>3, 2=>2 3=>3.
 		if (a_slows)
 			dst = (src|2);
 		else
@@ -404,7 +404,7 @@ void prob_matrix::extract_results(std::vector<double> summary_a[2],
 		// A is slow in planes 1 and 3.
 		dst_a = (p & 1);
 		// B is slow in planes 2 and 3.
-		dst_b = !!(p & 2); 
+		dst_b = !!(p & 2);
 		for (row = 0; row < rows; row++) {
 			for (col = 0; col < cols; col++) {
 				summary_a[dst_a][row] += val(p, row, col);
@@ -496,7 +496,7 @@ combatant::combatant(const combatant &that, const battle_context::unit_stats &u)
 		summary[0] = that.summary[0];
 		summary[1] = that.summary[1];
 }
-	
+
 
 
 // For swarm, whether we get an attack depends on HP distribution from
@@ -648,7 +648,7 @@ double combatant::average_hp(unsigned int healing) const
 // test each one against the others.
 #define NUM_UNITS 50
 
-// Stolen from glibc headers sys/time.h 
+// Stolen from glibc headers sys/time.h
 #define timer_sub(a, b, result)						      \
   do {									      \
     (result)->tv_sec = (a)->tv_sec - (b)->tv_sec;			      \
@@ -736,7 +736,7 @@ static void run(unsigned specific_battle)
 #ifdef BENCHMARK
 	printf("Total time for %i combats was %lu.%06lu\n",
 	       NUM_UNITS*(NUM_UNITS-1)*(NUM_UNITS-2), total.tv_sec, total.tv_usec);
-	printf("Time per calc = %li us\n", 
+	printf("Time per calc = %li us\n",
 	       ((end.tv_sec-start.tv_sec)*1000000 + (end.tv_usec-start.tv_usec))
 		   / (NUM_UNITS*(NUM_UNITS-1)*(NUM_UNITS-2)));
 #else

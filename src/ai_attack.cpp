@@ -279,7 +279,7 @@ bool operator==(const battle_type& a, const battle_type& b)
 
 std::set<battle_type> weapon_choice_cache;
 
-void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, 
+void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 								  const std::vector<team>& teams,
 								  const gamestatus& status, const game_data& gamedata,
 								  class ai& ai_obj,

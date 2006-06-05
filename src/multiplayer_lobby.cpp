@@ -569,7 +569,7 @@ void lobby::process_event()
 		set_result(PREFERENCES);
 		return;
 	}
-	
+
 	if(quit_game_.pressed()) {
 		recorder.set_skip(false);
 		set_result(QUIT);

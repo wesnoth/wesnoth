@@ -88,7 +88,7 @@ void parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
 	for(t = times.begin(); t != times.end(); ++t) {
 		normal_times.push_back(time_of_day(**t));
 	}
-	
+
 }
 
 }
@@ -752,7 +752,7 @@ void game_state::clear_variable(const std::string& varname)
 	while(itor != key.end()) { // subvar access
 		std::string element=key.substr(0,dot_index);
 		key = key.substr(dot_index+1);
-		
+
 		size_t index = 0;
 		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
 		const bool explicit_index = index_start != element.end();
@@ -767,7 +767,7 @@ void game_state::clear_variable(const std::string& varname)
 			}
 			element = std::string(element.begin(),index_start);
 		}
-		
+
 		if(itor == key.end()) {
 			std::string last_element(key);
 
@@ -819,7 +819,7 @@ void game_state::clear_variable(const std::string& varname)
 		}
 		key = std::string(key.begin(),index_start);
 	}
-	
+
 	if(vars->get_children(key).size() <= index) {
 		return;
 	}

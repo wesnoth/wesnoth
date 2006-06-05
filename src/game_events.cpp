@@ -236,9 +236,9 @@ public:
 
 	bool handle_event(const queued_event& event_info,
 			const vconfig cfg = vconfig());
-	
+
 	bool& rebuild_screen() {return rebuild_screen_;}
-	
+
 private:
 	bool handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg, bool& mutated);
 
@@ -271,7 +271,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 {
 	log_scope2(engine, "handle_event_command");
 	LOG_NG << "handling command: '" << cmd << "'\n";
-	
+
 	bool rval = true;
 	//sub commands that need to be handled in a guaranteed ordering
 	if(cmd == "command") {
@@ -573,14 +573,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		wassert(state_of_game != NULL);
 		value = utils::interpolate_variables_into_string(value, *state_of_game);
 		add = utils::interpolate_variables_into_string(add, *state_of_game);
-		
+
 		wassert(status_ptr != NULL);
 		if(add != "") {
 			status_ptr->modify_turns(add);
 		} else {
 			status_ptr->add_turns(lexical_cast_default<int>(value,0));
 		}
-		
+
 	}
 	//command to store gold into a variable
 	else if(cmd == "store_gold") {
@@ -617,7 +617,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		gender_string = utils::interpolate_variables_into_string(gender_string, *state_of_game);
 		x = utils::interpolate_variables_into_string(x, *state_of_game);
 		y = utils::interpolate_variables_into_string(y, *state_of_game);
-		
+
 		size_t side_num = lexical_cast_default<int>(side,1)-1;
 		if (side_num >= teams->size()) side_num = 0;
 
@@ -1018,7 +1018,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string img = cfg["image"];
 		wassert(state_of_game != NULL);
 		img = utils::interpolate_variables_into_string(img, *state_of_game);
-		
+
 		for(unit_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
 			if(game_events::unit_matches_filter(itor,cfg)) {
 				itor->second.add_overlay(img);
@@ -1084,7 +1084,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string terrain_type = cfg["letter"];
 		wassert(state_of_game != NULL);
 		terrain_type = utils::interpolate_variables_into_string(terrain_type, *state_of_game);
-		
+
 		for(std::vector<gamemap::location>::const_iterator loc = locs.begin(); loc != locs.end(); ++loc) {
 			preferences::encountered_terrains().insert(terrain_type);
 			if(terrain_type.size() > 0) {
@@ -1286,7 +1286,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string red_str = cfg["red"];
 		std::string green_str = cfg["green"];
 		std::string blue_str = cfg["blue"];
-		
+
 		wassert(state_of_game != NULL);
 		text = utils::interpolate_variables_into_string(text, *state_of_game);
 		size_str = utils::interpolate_variables_into_string(size_str, *state_of_game);
@@ -1294,7 +1294,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		red_str = utils::interpolate_variables_into_string(red_str, *state_of_game);
 		green_str = utils::interpolate_variables_into_string(green_str, *state_of_game);
 		blue_str = utils::interpolate_variables_into_string(blue_str, *state_of_game);
-		
+
 		const int size = lexical_cast_default<int>(size_str,font::SIZE_SMALL);
 		const int lifetime = lexical_cast_default<int>(duration_str,50);
 		const int red = lexical_cast_default<int>(red_str,0);
@@ -1319,11 +1319,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	//displaying a message dialog
 	else if(cmd == "message") {
 		unit_map::iterator speaker = units->end();
-		
+
 		std::string speaker_str = cfg["speaker"];
 		wassert(state_of_game != NULL);
 		speaker_str = utils::interpolate_variables_into_string(speaker_str, *state_of_game);
-		
+
 		if(speaker_str == "unit") {
 			speaker = units->find(event_info.loc1);
 		} else if(speaker_str == "second_unit") {
@@ -1386,7 +1386,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			std::string msg_str = (*mi)["message"];
 			msg_str = utils::interpolate_variables_into_string(msg_str, *state_of_game);
-			
+
 			options.push_back(msg_str);
 			option_events.push_back((*mi).get_children("command"));
 		}
@@ -1589,10 +1589,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 				units->erase(loc);
 				units->add(new std::pair<gamemap::location,unit>(loc,u));
-				
+
 				std::string text = cfg["text"];
 				text = utils::interpolate_variables_into_string(text, *state_of_game);
-				
+
 				if(!text.empty())
 				{
 					//Print floating label
@@ -1775,7 +1775,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			cfg.get_attribute("text"), *state_of_game);
 		screen->labels().set_label(loc,text);
 	}
-	
+
 	LOG_NG << "done handling command...\n";
 
 	return rval;
@@ -1937,14 +1937,14 @@ bool process_event(event_handler& handler, const queued_event& ev)
 
 	//the event hasn't been filtered out, so execute the handler
 	const bool res = handler.handle_event(ev);
-	
+
 	if(handler.rebuild_screen()) {
 		handler.rebuild_screen() = false;
 		screen->recalculate_minimap();
 		screen->invalidate_all();
 		screen->rebuild_all();
 	}
-	
+
 	if(handler.first_time_only()) {
 		handler.disable();
 	}
@@ -1966,7 +1966,7 @@ bool matches_special_filter(const config* cfg, const vconfig filter)
 			return false;
 		}
 	}
-	
+
 	const vconfig::child_list& nots = filter.get_children("not");
 	for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
 		if(matches_special_filter(cfg,*i)) {
@@ -2037,7 +2037,7 @@ manager::manager(const config& cfg, display& gui_, gamemap& map_,
 	status_ptr = &status;
 
 	used_items.clear();
-	
+
 	const std::string& used = cfg["used_items"];
 	if(!used.empty()) {
 		const std::vector<std::string>& v = utils::split(used);
@@ -2121,7 +2121,7 @@ bool pump()
 		return false;
 
 	bool result = false;
-	
+
 	if(units != NULL) {
 		for(unit_map::const_iterator u_it = units->begin(); u_it != units->end(); ++u_it) {
 			if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),u_it->second.id()) == unit_wml_ids.end()) {

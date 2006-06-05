@@ -48,31 +48,31 @@ public:
 	int num_attacks() const;
 	double attack_weight() const;
 	double defense_weight() const;
-	
+
 	bool get_special_bool(const std::string& special,bool force=false) const;
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::string> special_tooltips(bool force=false) const;
 	std::string weapon_specials(bool force=false) const;
 	void set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
-                              const game_data* gamedata, const unit_map* unitmap, 
-							  const gamemap* map, const gamestatus* game_status, 
+                              const game_data* gamedata, const unit_map* unitmap,
+							  const gamemap* map, const gamestatus* game_status,
 							  const std::vector<team>* teams,bool attacker,const attack_type* other_attack) const;
 	void set_specials_context(const gamemap::location& loc,const unit& un) const;
-	
+
 	bool has_special_by_id(const std::string& special) const;
 	//this function returns a random animation out of the possible
 	//animations for this attack. It will not return the same attack
 	//each time.
 	bool matches_filter(const config& cfg,bool self=false) const;
 	bool apply_modification(const config& cfg,std::string* description);
-	
+
 	int movement_used() const;
-	
+
 	const config& get_cfg() const;
 	mutable gamemap::location aloc_,dloc_;
 	mutable bool attacker_;
 	mutable const game_data* gamedata_;
-	mutable const unit_map* unitmap_; 
+	mutable const unit_map* unitmap_;
 	mutable const gamemap* map_;
 	mutable const gamestatus* game_status_;
 	mutable const std::vector<team>* teams_;
@@ -83,7 +83,7 @@ public:
 	bool special_active(const config& cfg,bool self,bool report=false) const;
 	bool special_affects_opponent(const config& cfg) const;
 	bool special_affects_self(const config& cfg) const;
-	
+
 	struct attack_animation
 	{
 		typedef enum { HIT, MISS, HIT_OR_MISS } hit_type;
@@ -139,7 +139,7 @@ public:
 	bool is_flying() const;
 	const std::map<gamemap::TERRAIN,int>& movement_costs() const;
 	const std::map<gamemap::TERRAIN,int>& defense_mods() const;
-	
+
 	const config& get_cfg() const;
 	const unit_movement_type* get_parent() const;
 private:
@@ -185,7 +185,7 @@ public:
 	//where name() is always the user-visible, translated, name.
 	//language_name should eventually be renamed name()
 	// const std::string& name() const;
-	
+
 	const std::string& image() const;
 	const std::string& image_profile() const;
 	const t_string& unit_description() const;
@@ -263,7 +263,7 @@ private:
 
     std::vector<std::string> advances_to_;
     int experience_needed_;
-	
+
 
 	ALIGNMENT alignment_;
 

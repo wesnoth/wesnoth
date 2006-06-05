@@ -69,20 +69,20 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 
 	attack_weight_ = lexical_cast_default<double>(cfg["attack_weight"],1.0);
 	defense_weight_ = lexical_cast_default<double>(cfg["defense_weight"],1.0);
-	
+
 	gamedata_=NULL;
-	unitmap_=NULL; 
+	unitmap_=NULL;
 	map_=NULL;
 	game_status_=NULL;
 	teams_=NULL;
 	other_attack_=NULL;
-	
+
 	// BACKWARDS COMPATIBILITY
 	const std::string& set_special = cfg["special"];
 	if(set_special != "") {
 		LOG_STREAM(err, config) << "[attack] uses special=" << set_special <<", which is now deprecated. Use the macros provided in abilities.cfg.\n";
 		config new_specials;
-		
+
 		new_specials["set_special"] = set_special;
 		apply_modification(new_specials,NULL);
 	}
@@ -696,7 +696,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 			if(race_->uses_global_traits() == false) {
 				possibleTraits_.clear();
 			}
-			
+
 			if(utils::string_bool(cfg["ignore_race_traits"])) {
 				possibleTraits_.clear();
 			} else {
@@ -737,7 +737,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		LOG_STREAM(err, config) << "Invalid alignment found for " << id() << ": '" << align << "'\n";
 		alignment_ = NEUTRAL;
 	}
-	
+
 	if(cfg_["zoc"] == "") {
 		zoc_ = lexical_cast_default<int>(cfg_["level"]) > 0;
 	} else {
@@ -746,7 +746,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 			zoc_ = true;
 		}
 	}
-	
+
 
 	const std::string& alpha_blend = cfg_["alpha"];
 	if(alpha_blend.empty() == false) {

@@ -55,8 +55,8 @@ class loadscreen {
 		int setconfig_counter;
 		int parser_counter;
 
-		// A global loadscreen instance that can be used to avoid 
-		// passing it on to functions that are many levels deep.		
+		// A global loadscreen instance that can be used to avoid
+		// passing it on to functions that are many levels deep.
 		static loadscreen *global_loadscreen;
 	private:
 		// Prohibit default constructor

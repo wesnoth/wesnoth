@@ -28,7 +28,7 @@ specific events but rather defines a generic framework.
 namespace events{
 	/*
 	This is the observer that gets notified, if a generic event takes place
-	Use this as base class for every class that is supposed to react on a 
+	Use this as base class for every class that is supposed to react on a
 	generic event.
 	*/
 	class observer{

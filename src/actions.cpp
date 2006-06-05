@@ -210,7 +210,7 @@ void validate_recruit_unit()
 gamemap::location under_leadership(const unit_map& units,
                                    const gamemap::location& loc, int* bonus)
 {
-	
+
 	const unit_map::const_iterator un = units.find(loc);
 	if(un == units.end()) {
 		return gamemap::location::null_location;
@@ -508,55 +508,55 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, teams);
 		rounds = weapon->get_specials("berserk").highest("value", 1).first;
 		firststrike = weapon->get_special_bool("firststrike");
-		
+
 		// Handle plague.
 		unit_ability_list plague_specials = weapon->get_specials("plague");
 		plagues = !plague_specials.empty() && opp.get_state("not_living") != "yes" &&
 				  strcmp(opp.undead_variation().c_str(), "null") && !map.is_village(opp_loc);
-		
+
 		if (!plague_specials.empty()) {
 			if((*plague_specials.cfgs.front().first)["type"] == "")
 				plague_type = u.id();
 			else
 				plague_type = (*plague_specials.cfgs.front().first)["type"];
 		}
-		
+
 		// Compute chance to hit.
 		chance_to_hit = opp.defense_modifier(map.get_terrain(opp_loc));
 		unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
 		unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
 		chance_to_hit = cth_effects.get_composite_value();
-		
+
 		// Compute base damage done with the weapon.
 		int base_damage = weapon->damage();
 		unit_ability_list dmg_specials = weapon->get_specials("damage");
 		unit_abilities::effect dmg_effect(dmg_specials, base_damage, backstab_pos);
 		base_damage = dmg_effect.get_composite_value();
-		
+
 		// Get the damage multiplier applied to the base damage of the weapon.
 		int damage_multiplier = 100;
-		
+
 		// Time of day bonus.
 		damage_multiplier += combat_modifier(status, units, u_loc, u.alignment(), map);
-	
+
 		// Leadership bonus.
 		int leader_bonus = 0;
 		if (under_leadership(units, u_loc, &leader_bonus).valid())
 			damage_multiplier += leader_bonus;
-		
+
 		// Resistance modifier.
 		damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc);
-		
+
 		// Compute both the normal and slowed damage. For the record,
 		// drain = normal damage / 2 and slow_drain = slow_damage / 2.
 		damage = round_damage(base_damage, damage_multiplier, 10000);
 		slow_damage = round_damage(base_damage, damage_multiplier, 20000);
 		if (is_slowed)
 			damage = slow_damage;
-		
+
 		// Compute the number of blows and handle swarm.
 		unit_ability_list swarm_specials = weapon->get_specials("attacks");
-		
+
 		if (!swarm_specials.empty()) {
 			swarm = true;
 			swarm_min = swarm_specials.highest("attacks_min").first;
@@ -578,13 +578,13 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		swarm = false;
 		rounds = 1;
 		firststrike = false;
-		
+
 		chance_to_hit = 0;
 		damage = 0;
 		slow_damage = 0;
 		num_blows = 0;
 		swarm_min = 0;
-		swarm_max = 0;	
+		swarm_max = 0;
 	}
 }
 
@@ -602,7 +602,7 @@ void battle_context::unit_stats::dump() const
 	printf("swarm:		%d\n", (int) swarm);
 	printf("rounds:	%d\n", (int) rounds);
 	printf("firststrike:	%d\n", (int) firststrike);
-	printf("\n");	
+	printf("\n");
 	printf("hp:		%d\n", hp);
 	printf("max_hp:		%d\n", max_hp);
 	printf("chance_to_hit:	%d\n", chance_to_hit);
@@ -640,7 +640,7 @@ void attack(display& gui, const gamemap& map,
 {
 	//stop the user from issuing any commands while the units are fighting
 	const events::command_disabler disable_commands;
-	
+
 	unit_map::iterator a = units.find(attacker);
 	unit_map::iterator d = units.find(defender);
 
@@ -651,16 +651,16 @@ void attack(display& gui, const gamemap& map,
 
 	int attackerxp = d->second.level();
 	int defenderxp = a->second.level();
-	
+
 	a->second.set_attacks(a->second.attacks_left()-1);
 	a->second.set_movement(a->second.movement_left()-a->second.attacks()[attack_with].movement_used());
 	a->second.set_resting(false);
 	d->second.set_resting(false);
-	
+
 	//if the attacker was invisible, she isn't anymore!
 	static const std::string hides("hides");
 	a->second.set_state(hides,"");
-	
+
 	config dat;
 	{
 		battle_context bc(map, teams, units, state, info, attacker, defender, attack_with);
@@ -683,17 +683,17 @@ void attack(display& gui, const gamemap& map,
 	battle_context bc(map, teams, units, state, info, attacker, defender, attack_with);
 	const battle_context::unit_stats& a_stats = bc.get_attacker_stats();
 	const battle_context::unit_stats& d_stats = bc.get_defender_stats();
-	
+
 	dat.clear();
 	dat.add_child("first");
 	dat.add_child("second");
 	(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
 	(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
-	
+
 	LOG_NG << "getting attack statistics\n";
 
 	statistics::attack_context attack_stats(a->second, d->second, a_stats.chance_to_hit, d_stats.chance_to_hit);
-	
+
 	int orig_attacks = a_stats.num_blows;
 	int orig_defends = d_stats.num_blows;
 	int n_attacks = orig_attacks;
@@ -760,10 +760,10 @@ void attack(display& gui, const gamemap& map,
 					OOS_error = true;
 				}
 			}
-			
+
 			bool dies = unit_display::unit_attack(gui,units,attacker,defender,
 				            damage_defender_takes,
-							*a_stats.weapon, 
+							*a_stats.weapon,
 							update_display);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
 			if(hits) {
@@ -839,7 +839,7 @@ void attack(display& gui, const gamemap& map,
 
 			if(dies || hits) {
 				int amount_drained = a_stats.drains ? attacker_damage / 2 : 0;
-			
+
 				if(amount_drained > 0) {
 					char buf[50];
 					snprintf(buf,sizeof(buf),"%d",amount_drained);
@@ -1003,7 +1003,7 @@ void attack(display& gui, const gamemap& map,
 
 			bool dies = unit_display::unit_attack(gui,units,defender,attacker,
 			               damage_attacker_takes,
-						   *d_stats.weapon, 
+						   *d_stats.weapon,
 						   update_display);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
 			if(hits) {
@@ -1013,7 +1013,7 @@ void attack(display& gui, const gamemap& map,
 				game_events::fire("defender_hits",attacker,defender,dat);
 				a = units.find(attacker);
 				d = units.find(defender);
-				
+
 				// FIXME: If the event removes this attack, we should stop attacking.
 				// The previous code checked if 'attack_with' and 'defend_with' were still within the bounds of
 				// the attack arrays, or -1, but it was incorrect. The attack used could be removed and '*_with'
@@ -1076,7 +1076,7 @@ void attack(display& gui, const gamemap& map,
 
 			if(hits || dies){
 				int amount_drained = d_stats.drains ? defender_damage / 2 : 0;
-			
+
 				if(amount_drained > 0) {
 					char buf[50];
 					snprintf(buf,sizeof(buf),"%d",amount_drained);
@@ -1216,13 +1216,13 @@ void attack(display& gui, const gamemap& map,
 		gui.invalidate(defender);
 		gui.draw(true,true);
 	}
-	
+
 	if(OOS_error) {
 		if (!game_config::ignore_replay_errors) {
 			throw replay::error();
 		}
 	}
-	
+
 }
 
 int village_owner(const gamemap::location& loc, const std::vector<team>& teams)
@@ -1320,10 +1320,10 @@ void calculate_healing(display& disp, const gamemap& map,
 
 		unit_map::iterator curer = units.end();
 		std::vector<unit_map::iterator> healers;
-		
+
 		int healing = 0;
 		std::string curing;
-		
+
 		unit_ability_list heal = i->second.get_abilities("heals",i->first);
 		// Only consider healers on side which is starting now
 		// remove all healers not on this side
@@ -1336,10 +1336,10 @@ void calculate_healing(display& disp, const gamemap& map,
 				++h_it;
 			}
 		}
-		
+
 		unit_abilities::effect heal_effect(heal,0,false);
 		healing = heal_effect.get_composite_value();
-		
+
 		for(std::vector<std::pair<config*,gamemap::location> >::const_iterator heal_it = heal.cfgs.begin(); heal_it != heal.cfgs.end(); ++heal_it) {
 			if((*heal_it->first)["poison"] == "cured") {
 				curer = units.find(heal_it->second);
@@ -1349,11 +1349,11 @@ void calculate_healing(display& disp, const gamemap& map,
 				curing = "slowed";
 			}
 		}
-		
+
 		for(std::vector<unit_abilities::individual_effect>::const_iterator heal_loc = heal_effect.begin(); heal_loc != heal_effect.end(); ++heal_loc) {
 			healers.push_back(units.find(heal_loc->loc));
 		}
-		
+
 		if(i->second.side() == side) {
 			unit_ability_list regen = i->second.get_abilities("regenerate",i->first);
 			unit_abilities::effect regen_effect(regen,0,false);
@@ -1403,11 +1403,11 @@ void calculate_healing(display& disp, const gamemap& map,
 				}
 			}
 		}
-		
+
 		if (curing == "" && healing==0) {
 			continue;
 		}
-		
+
 		int pos_max = i->second.max_hitpoints() - i->second.hitpoints();
 		int neg_max = -(i->second.hitpoints() - 1);
 		if(healing > pos_max) {
@@ -1421,7 +1421,7 @@ void calculate_healing(display& disp, const gamemap& map,
 
 		if (disp.turbo() || recorder.is_skipping()
 			|| disp.fogged(i->first.x, i->first.y)
-			|| !update_display 
+			|| !update_display
 			|| (i->second.invisible(i->first,units,teams) &&
 				teams[disp.viewing_team()].is_enemy(side))) {
 			// Simple path.
@@ -1437,7 +1437,7 @@ void calculate_healing(display& disp, const gamemap& map,
 		int start_time = 0;
 		disp.scroll_to_tile(i->first.x, i->first.y, display::ONSCREEN);
 		disp.select_hex(i->first);
-		
+
 		for(std::vector<unit_map::iterator>::iterator heal_anim_it = healers.begin(); heal_anim_it != healers.end(); ++heal_anim_it) {
 			(*heal_anim_it)->second.set_facing((*heal_anim_it)->first.get_relative_dir(i->first));
 			(*heal_anim_it)->second.set_healing(disp,(*heal_anim_it)->first);
@@ -1599,9 +1599,9 @@ time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const ga
 {
 	int lighten = maximum<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
 	int darken = minimum<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
-	
+
 	time_of_day tod = status.get_time_of_day(lighten + darken,loc);
-	
+
 	if(loc.valid()) {
 		gamemap::location locs[7];
 		locs[0] = loc;

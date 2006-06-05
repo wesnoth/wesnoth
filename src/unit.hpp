@@ -32,15 +32,15 @@ class gamestatus;
 class unit_ability_list
 {
 	public:
-		
+
 		bool empty() const;
-		
+
 		std::pair<int,gamemap::location> highest(const std::string& key, int def=0) const;
 		std::pair<int,gamemap::location> lowest(const std::string& key, int def=100) const;
-		
+
 		std::vector<std::pair<config*,gamemap::location> > cfgs;
 	private:
-		
+
 };
 
 
@@ -57,14 +57,14 @@ class unit
 		unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE);
 		unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE);
 		virtual ~unit();
-		
+
 		void set_game_context(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams);
 		void write_checksum(std::string& str) const;
-		
+
 		// Advances this unit to another type
 		void advance_to(const unit_type* t);
 		const std::vector<std::string> advances_to() const;
-		
+
 		// the current type id
 		const std::string& id() const;
 		const unit_type& type() const;
@@ -80,9 +80,9 @@ class unit
 		const std::string& profile() const;
 		//information about the unit -- a detailed description of it
 		const std::string& unit_description() const;
-		
+
 		const config::child_list wml_events() const;
-		
+
 		int hitpoints() const;
 		int max_hitpoints() const;
 		int experience() const;
@@ -100,7 +100,7 @@ class unit
 		unit_race::GENDER gender() const;
 		void set_side(unsigned int new_side);
 		fixed_t alpha() const;
-		
+
 		bool can_recruit() const;
 		bool incapacitated() const;
 		const std::vector<std::string>& recruits() const;
@@ -119,16 +119,16 @@ class unit
 		void end_turn();
 		void new_level();
 		void refresh() {if(anim_ && !refreshing_) anim_->update_current_frame(); }
-		
+
 		bool take_hit(int damage);
 		void heal(int amount);
 		void heal_all();
 		bool resting() const;
 		void set_resting(bool rest);
-		
+
 		const std::string get_state(const std::string& state) const;
 		void set_state(const std::string& state, const std::string& value);
-		
+
 		bool has_moved() const;
 		bool has_goto() const;
 		int emits_zoc() const;
@@ -144,17 +144,17 @@ class unit
 		*/
 		void read(const config& cfg);
 		void write(config& cfg) const;
-		
+
 		void assign_role(const std::string& role);
 		const std::vector<attack_type>& attacks() const;
 		std::vector<attack_type>& attacks();
-		
+
 		int damage_from(const attack_type& attack,bool attacker,const gamemap::location& loc) const;
-		
+
 		// a sdl surface, ready for display for place where we need a fix image of the unit
 		const surface still_image() const;
 		void redraw_unit(display& disp,gamemap::location hex);
-		
+
 		void set_standing(const display& disp,const gamemap::location& loc);
 		void set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack);
 		void set_leading(const display& disp,const gamemap::location& loc);
@@ -177,48 +177,48 @@ class unit
 
 		std::set<gamemap::location> overlaps(const gamemap::location &loc) const;
 		const t_string& traits_description() const;
-		
+
 		int value() const;
 		int cost() const;
-		
+
 		const gamemap::location& get_goto() const;
 		void set_goto(const gamemap::location& new_goto);
-		
+
 		int upkeep() const;
-		
+
 		void set_hidden(bool state) {hidden_ = state;};
 		bool is_flying() const;
 		int movement_cost(gamemap::TERRAIN terrain, int recurse_count=0) const;
 		int defense_modifier(gamemap::TERRAIN terrain, int recurse_count=0) const;
 		int resistance_against(const attack_type& damage_type,bool attacker,const gamemap::location& loc) const;
 //		std::map<gamemap::TERRAIN,int> movement_type() const;
-		
+
 		bool can_advance() const;
 		bool advances() const;
-		
+
         std::map<std::string,std::string> advancement_icons() const;
         std::vector<std::pair<std::string,std::string> > amla_icons() const;
-		
+
 		config::child_list get_modification_advances() const;
 		const config::child_list& modification_advancements() const;
-		
+
 		size_t modification_count(const std::string& type, const std::string& id) const;
-		
+
 		void add_modification(const std::string& type, const config& modification,
 	                      bool no_add=false);
-		
+
 		const t_string& modification_description(const std::string& type) const;
-		
+
 		bool move_interrupted() const;
 		const gamemap::location& get_interrupted_move() const;
 		void set_interrupted_move(const gamemap::location& interrupted_move);
-		
+
 		enum STATE { STATE_STANDING, STATE_ATTACKING, STATE_DEFENDING,
 		STATE_LEADING, STATE_HEALING, STATE_WALKING, STATE_LEVELIN,
 		STATE_LEVELOUT, STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
 		STATE_RECRUITED, STATE_HEALED, STATE_POISONED};
 		STATE state() const;
-		
+
 		//the name of the file to display (used in menus
 		const std::string& absolute_image() const;
 		const std::string& image_halo() const;
@@ -229,11 +229,11 @@ class unit
 		const std::string& get_hit_sound() const;
 		const std::string& die_sound() const;
 		const std::string& image_ellipse() const;
-		
+
 		const std::string& usage() const;
 		unit_type::ALIGNMENT alignment() const;
 		const std::string& race() const;
-		
+
 		const defensive_animation& defend_animation(const std::string &terrain,
 				fighting_animation::hit_type hits,const attack_type* attack) const;
 		const unit_animation& teleport_animation() const;
@@ -243,13 +243,13 @@ class unit
 		const movement_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		const standing_animation& stand_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		const leading_animation& lead_animation(const std::string terrain,gamemap::location::DIRECTION) const;
-		
+
 		bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
 		unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;
 		std::vector<std::string> ability_tooltips(const gamemap::location& loc) const;
 		std::vector<std::string> unit_ability_tooltips() const;
 		bool has_ability_type(const std::string& ability) const;
-		
+
 		void reset_modifications();
 		void backup_state();
 		void apply_modifications();
@@ -257,14 +257,14 @@ class unit
 		void generate_traits();
 		void generate_traits_description();
 		std::string generate_description() const;
-		
+
 		bool invisible(const gamemap::location& loc,
 			const unit_map& units,const std::vector<team>& teams) const;
-		
+
 		unit_race::GENDER generate_gender(const unit_type& type, bool gen);
-		
+
 	private:
-		
+
 		/*
 		 * cfg: an ability WML structure
 		 */
@@ -272,12 +272,12 @@ class unit
 		bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const;
 		bool ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
 		bool resistance_filter_matches(const config& cfg,bool attacker,const attack_type& damage_type) const;
-		
+
 		config cfg_;
 		config movement_b_;
 		config defense_b_;
 		config resistance_b_;
-		
+
 		std::vector<std::string> advances_to_;
 		std::string id_;
 		const unit_race* race_;
@@ -288,7 +288,7 @@ class unit
 		t_string language_name_;
 		std::string undead_variation_;
 		std::string variation_;
-		
+
 		int hit_points_;
 		int max_hit_points_, max_hit_points_b_;
 		int experience_;
@@ -296,15 +296,15 @@ class unit
 		int level_;
 		unit_type::ALIGNMENT alignment_;
 		std::vector<Uint32> flag_rgb_;
-		
+
 		bool unrenamable_;
 		unsigned int side_;
 		unit_race::GENDER gender_;
-		
+
 		fixed_t alpha_;
-		
+
 		std::vector<std::string> recruits_;
-		
+
 		int movement_;
 		int max_movement_, max_movement_b_;
 		mutable std::map<gamemap::TERRAIN,int> movement_costs_; // movement cost cache
@@ -313,39 +313,39 @@ class unit
 		bool resting_;
 		int attacks_left_;
 		int max_attacks_;
-		
+
 		std::map<std::string,std::string> states_;
 		config variables_;
 		int emit_zoc_;
 		STATE state_;
-		
+
 		std::vector<std::string> overlays_;
-		
+
 		std::string role_;
 		std::vector<attack_type> attacks_, attacks_b_;
 		gamemap::location::DIRECTION facing_;
-		
+
 		t_string traits_description_;
 		int unit_value_;
 		gamemap::location goto_, interrupted_move_;
 		bool flying_;
-		
+
 //		std::map<gamemap::TERRAIN,int> movement_costs_, movement_costs_b_;
 //		std::map<gamemap::TERRAIN,int> defense_mods_, defense_mods_b_;
-		
+
 		string_map modification_descriptions_;
 		std::vector<defensive_animation> defensive_animations_;
-		
+
 		std::vector<unit_animation> teleport_animations_;
-		
+
 		std::multimap<std::string,unit_animation> extra_animations_;
-		
+
 		std::vector<death_animation> death_animations_;
-		
+
 		std::vector<movement_animation> movement_animations_;
-		
+
 		std::vector<standing_animation> standing_animations_;
-		
+
 		std::vector<leading_animation> leading_animations_;
 		unit_animation *anim_;
 		int frame_begin_time;
@@ -356,16 +356,16 @@ class unit
 		bool refreshing_; // avoid infinite recursion
 		bool hidden_;
 		bool draw_bars_;
-		
+
 		config modifications_;
-		
+
 		friend void attack_type::set_specials_context(const gamemap::location& loc,const unit& un) const;
 		const game_data* gamedata_;
 		const unit_map* units_;
 		const gamemap* map_;
 		const gamestatus* gamestatus_;
 		const std::vector<team>* teams_;
-		
+
 };
 
 //object which temporarily resets a unit's movement

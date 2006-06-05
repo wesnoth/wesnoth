@@ -24,7 +24,7 @@
 class playmp_controller : public playsingle_controller
 {
 public:
-	playmp_controller(const config& level, const game_data& gameinfo, game_state& state_of_game, 
+	playmp_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 		const int ticks, const int num_turns, const config& game_config, CVideo& video, bool skip_replay);
 
 protected:

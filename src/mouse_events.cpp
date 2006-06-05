@@ -55,23 +55,23 @@ namespace{
 	class battle_prediction_pane : public gui::preview_pane
 	{
 	public:
-		
+
 		// Lengthy constructor.
 		battle_prediction_pane(display &disp, const battle_context& bc, const gamemap& map,
-							   const std::vector<team>& teams, const unit_map& units, 
+							   const std::vector<team>& teams, const unit_map& units,
 							   const gamestatus& status, const game_data& gamedata,
 							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc);
-		
+
 		// This method is called to draw the dialog contents.
 		void draw_contents();
-	
+
 		// Hack: pretend the preview pane goes to the left.
 		bool left_side() const { return 1; }
-	
+
 		// Unused.
 		void set_selection(int) {}
 
-	private:		
+	private:
 		display &disp_;
 		const battle_context& bc_;
 		const gamemap& map_;
@@ -83,7 +83,7 @@ namespace{
 		const gamemap::location& defender_loc_;
 		const unit& attacker_;
 		const unit& defender_;
-		
+
 		// Layout constants.
 		static const int inter_line_gap_;
 		static const int inter_column_gap_;
@@ -108,14 +108,14 @@ namespace{
 
 		int attacker_width_, defender_width_, units_width_;
 		int dialog_width_, dialog_height_;
-		
+
 		// This method builds the strings describing the unit damage modifiers.
 		// Read the code to understand the arguments.
 		void get_unit_strings(const battle_context::unit_stats& stats,
-				    	   	  const unit& u, const gamemap::location& u_loc, float u_unscathed,
-				    	   	  const unit& opp, const gamemap::location& opp_loc, const attack_type *opp_weapon,
-				    	   	  std::vector<std::string>& left_strings, std::vector<std::string>& right_strings,
-				    	      int& left_strings_width, int& right_strings_width, int& strings_width);
+						  const unit& u, const gamemap::location& u_loc, float u_unscathed,
+						  const unit& opp, const gamemap::location& opp_loc, const attack_type *opp_weapon,
+						  std::vector<std::string>& left_strings, std::vector<std::string>& right_strings,
+					      int& left_strings_width, int& right_strings_width, int& strings_width);
 
 		// Utility method that returns the length of the longest string in a vector of strings.
 		int get_strings_max_length(const std::vector<std::string>& strings);
@@ -138,18 +138,18 @@ namespace{
 		// This method draws the image of the hitpoints distribution of a
 		// combatant after a fight. The method takes as input the
 		// "hp_prob_vector" computed above and the stats of the combatants.
-		// It draws the image in the surface 'surf' and set the width and 
+		// It draws the image in the surface 'surf' and set the width and
 		// height of the image in the fields specified.
-		void get_hp_distrib_surface(const std::vector<std::pair<int, double> >& hp_prob_vector, 
-				    				const battle_context::unit_stats& stats, 
+		void get_hp_distrib_surface(const std::vector<std::pair<int, double> >& hp_prob_vector,
+								const battle_context::unit_stats& stats,
 									const battle_context::unit_stats& opp_stats,
 									surface& surf, int& width, int& height);
 
 		// This method blends a RGB color. The method takes as input a surface,
 		// the RGB color to blend and a value specifying how much blending to
- 		// apply. The blended color is returned. Caution: if you use a
+		// apply. The blended color is returned. Caution: if you use a
 		// transparent color, make sure the resulting color is not equal to the
- 		// transparent color.
+		// transparent color.
 		Uint32 blend_rgb(const surface& surf, unsigned char r, unsigned char g, unsigned char b, unsigned char drop);
 	};
 
@@ -159,9 +159,9 @@ namespace{
 	const int battle_prediction_pane::max_hp_distrib_rows_ = 10;
 
 	battle_prediction_pane::battle_prediction_pane(display &disp, const battle_context& bc, const gamemap& map,
-												   const std::vector<team>& teams, const unit_map& units, 
+												   const std::vector<team>& teams, const unit_map& units,
 												   const gamestatus& status, const game_data& gamedata,
-								   				   const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
+												   const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
 				: gui::preview_pane(disp.video()), disp_(disp), bc_(bc), map_(map), teams_(teams), units_(units), status_(status),
 				  gamedata_(gamedata), attacker_loc_(attacker_loc), defender_loc_(defender_loc),
 				  attacker_(units.find(attacker_loc)->second), defender_(units.find(defender_loc)->second)
@@ -181,8 +181,8 @@ namespace{
 							   attacker_hp_distrib_width_, attacker_hp_distrib_height_);
 		get_hp_prob_vector(defender_combatant.hp_dist, hp_prob_vector);
 		get_hp_distrib_surface(hp_prob_vector, defender_stats, attacker_stats, defender_hp_distrib_,
-			    		   	   defender_hp_distrib_width_, defender_hp_distrib_height_);
-		hp_distribs_height_ = maximum<int>(attacker_hp_distrib_height_, defender_hp_distrib_height_); 
+						   defender_hp_distrib_width_, defender_hp_distrib_height_);
+		hp_distribs_height_ = maximum<int>(attacker_hp_distrib_height_, defender_hp_distrib_height_);
 
 		// Build the strings and compute the layout.
 		std::stringstream str;
@@ -194,9 +194,9 @@ namespace{
 
 		// Get the units strings.
 		get_unit_strings(attacker_stats, attacker_, attacker_loc_, attacker_combatant.untouched,
-				 		 defender_, defender_loc_, defender_stats.weapon,
-				 		 attacker_left_strings_, attacker_right_strings_,
-				 		 attacker_left_strings_width_, attacker_right_strings_width_, attacker_strings_width_);
+						 defender_, defender_loc_, defender_stats.weapon,
+						 attacker_left_strings_, attacker_right_strings_,
+						 attacker_left_strings_width_, attacker_right_strings_width_, attacker_strings_width_);
 
 		get_unit_strings(defender_stats, defender_, defender_loc_, defender_combatant.untouched,
 						 attacker_, attacker_loc_, attacker_stats.weapon,
@@ -225,15 +225,15 @@ namespace{
 	}
 
 	void battle_prediction_pane::get_unit_strings(const battle_context::unit_stats& stats,
-				    	  		 				  const unit& u, const gamemap::location& u_loc, float u_unscathed,
-				    	 				   		  const unit& opp, const gamemap::location& opp_loc, const attack_type *opp_weapon,
+											  const unit& u, const gamemap::location& u_loc, float u_unscathed,
+											  const unit& opp, const gamemap::location& opp_loc, const attack_type *opp_weapon,
 												  std::vector<std::string>& left_strings, std::vector<std::string>& right_strings,
-								    	   	      int& left_strings_width, int& right_strings_width, int& strings_width)
+										      int& left_strings_width, int& right_strings_width, int& strings_width)
 	{
 		std::stringstream str;
 		char str_buf[10];
 
-		// With a weapon.	
+		// With a weapon.
 		if(stats.weapon != NULL) {
 
 			// Set specials context (for safety, it should not have changed normally).
@@ -266,7 +266,7 @@ namespace{
 				str << set_dmg_effect->value;
 				right_strings.push_back(str.str());
 			}
-			
+
 			// Process the ADD damage modifiers.
 			for(i = dmg_effect.begin(); i != dmg_effect.end(); ++i) {
 				if(i->type == unit_abilities::ADD) {
@@ -312,7 +312,7 @@ namespace{
 				left_strings.push_back(_("Slowed"));
 				right_strings.push_back("* 0.5");
 			}
-			
+
 			// Time of day modifier.
 			int tod_modifier = combat_modifier(status_, units_, u_loc, u.alignment(), map_);
 			if(tod_modifier != 0) {
@@ -322,9 +322,9 @@ namespace{
 				right_strings.push_back(str.str());
 			}
 
-        	// Leadership bonus.
-        	int leadership_bonus = 0;
-        	under_leadership(units_, u_loc, &leadership_bonus);
+	// Leadership bonus.
+	int leadership_bonus = 0;
+	under_leadership(units_, u_loc, &leadership_bonus);
 			if(leadership_bonus != 0) {
 				left_strings.push_back(_("Leadership"));
 				str.str("");
@@ -405,13 +405,13 @@ namespace{
 	{
 		// We must align both damage lines.
 		int damage_line_skip = maximum<int>(attacker_left_strings_.size(), defender_left_strings_.size()) - 2;
-		
-		draw_unit(0, damage_line_skip, 
-			  	  attacker_left_strings_width_, attacker_left_strings_, attacker_right_strings_, 
-			  	  attacker_label_, attacker_label_width_, attacker_hp_distrib_, attacker_hp_distrib_width_);
+
+		draw_unit(0, damage_line_skip,
+				  attacker_left_strings_width_, attacker_left_strings_, attacker_right_strings_,
+				  attacker_label_, attacker_label_width_, attacker_hp_distrib_, attacker_hp_distrib_width_);
 
 		draw_unit(units_width_ + inter_units_gap_, damage_line_skip,
-			  	  defender_left_strings_width_, defender_left_strings_, defender_right_strings_,
+				  defender_left_strings_width_, defender_left_strings_, defender_right_strings_,
 				  defender_label_, defender_label_width_, defender_hp_distrib_, defender_hp_distrib_width_);
 	}
 
@@ -424,11 +424,11 @@ namespace{
 		CVideo& screen = disp_.video();
 		int i;
 
-		// NOTE. A preview pane is not made to be used alone and it is not 
+		// NOTE. A preview pane is not made to be used alone and it is not
 		// centered in the middle of the dialog. We "fix" this problem by moving
 		// the clip rectangle 10 pixels to the right. This is a kludge and it
 		// should be removed by 1) writing a custom dialog handler, or
-		// 2) modify preview_pane so that it accepts {left, middle, right} as 
+		// 2) modify preview_pane so that it accepts {left, middle, right} as
 		// layout possibilities.
 
 		// Get clip rectangle and center it
@@ -454,7 +454,7 @@ namespace{
 								 clip_rect.x + x_off + left_strings_width + inter_column_gap_,
 								 clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i, 0, TTF_STYLE_NORMAL);
 		}
-		
+
 		// Ensure both damage lines are aligned.
 		y_off += damage_line_skip * (font::SIZE_NORMAL + inter_line_gap_) + 14;
 
@@ -471,7 +471,7 @@ namespace{
 								 clip_rect.x + x_off + left_strings_width + inter_column_gap_,
 								 clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i, 0, TTF_STYLE_NORMAL);
 		}
-		
+
 		y_off += 2 * (font::SIZE_NORMAL + inter_line_gap_) + 14;
 
 		// Draw hitpoints distribution string.
@@ -484,7 +484,7 @@ namespace{
 		video().blit_surface(clip_rect.x + x_off + (units_width_ - hp_distrib_width) / 2, clip_rect.y + y_off, hp_distrib);
 	}
 
-	void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<int, double> >& hp_prob_vector, 
+	void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<int, double> >& hp_prob_vector,
 														const battle_context::unit_stats& stats,
 														const battle_context::unit_stats& opp_stats,
 														surface& surf, int& width, int& height)
@@ -507,11 +507,11 @@ namespace{
 
 		// Create the surface.
 		surf = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height,
-				 					image::pixel_format->BitsPerPixel,
-				    				image::pixel_format->Rmask,
-				    				image::pixel_format->Gmask,
-				    				image::pixel_format->Bmask,
-				    				image::pixel_format->Amask);
+									image::pixel_format->BitsPerPixel,
+								image::pixel_format->Rmask,
+								image::pixel_format->Gmask,
+								image::pixel_format->Bmask,
+								image::pixel_format->Amask);
 
 		SDL_Rect clip_rect = {0, 0, width, height};
 		Uint32 grey_color = SDL_MapRGB(surf->format, 0xb7, 0xc1, 0xc1);
@@ -549,7 +549,7 @@ namespace{
 			double prob = hp_prob_vector[hp_prob_vector.size() - i - 1].second;
 
 			SDL_Color row_color;
-			
+
 			// Death line is red.
 			if(hp == 0) {
 				SDL_Color color = {0xe5, 0, 0, 0};
@@ -608,10 +608,10 @@ namespace{
 			str_buf[9] = '\0';  //prevents _snprintf error
 			int prob_width = font::line_width(str_buf, fs);
 			font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOUR, str_buf,
-				    			 width - prob_width - 4, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
+							 width - prob_width - 4, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
 		}
 	}
-	
+
 	Uint32 battle_prediction_pane::blend_rgb(const surface& surf, unsigned char r, unsigned char g, unsigned char b, unsigned char drop)
 	{
 		// We simply decrement each component.
@@ -621,16 +621,16 @@ namespace{
 
 		return SDL_MapRGB(surf->format, r, g, b);
 	}
-	
+
 	// This class is used when the user clicks on the button
 	// to show the "Damage Calculations" dialog.
 	class attack_prediction_displayer : public gui::dialog_button_action
 	{
 	public:
 		attack_prediction_displayer(display& disp, const std::vector<battle_context>& bc_vector, const gamemap& map,
-								    const std::vector<team>& teams, const unit_map& units, 
+								    const std::vector<team>& teams, const unit_map& units,
 								    const gamestatus& status, const game_data& gamedata,
-								   	const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
+									const gamemap::location& attacker_loc, const gamemap::location& defender_loc)
 				: disp_(disp), bc_vector_(bc_vector), map_(map), teams_(teams), units_(units), status_(status),
 				  gamedata_(gamedata), attacker_loc_(attacker_loc), defender_loc_(defender_loc) {}
 
@@ -656,7 +656,7 @@ namespace{
 		display &disp_;
 		const std::vector<battle_context>& bc_vector_;
 		const gamemap& map_;
-    	const std::vector<team>& teams_;
+	const std::vector<team>& teams_;
 		const unit_map& units_;
 		const gamestatus& status_;
 		const game_data& gamedata_;
@@ -786,7 +786,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 
 		unit_map::iterator un = find_unit(new_hex);
 
-		if(un != units_.end() && un->second.side() != team_num_ && 
+		if(un != units_.end() && un->second.side() != team_num_ &&
 			current_paths_.routes.empty() && !(*gui_).fogged(un->first.x,un->first.y)) {
 			unit_movement_resetter move_reset(un->second);
 
@@ -1230,7 +1230,7 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 	attack_prediction_displayer ap_displayer(*gui_, bc_vector, map_, teams_, units_, status_, gameinfo_, attacker_loc, defender_loc);
 	std::vector<gui::dialog_button> buttons;
 	buttons.push_back(gui::dialog_button(&ap_displayer, _("Damage Calculations")));
-	
+
 	int res = 0;
 
 	{
@@ -1409,9 +1409,9 @@ void mouse_handler::cycle_back_units()
 	}
 }
 
-void mouse_handler::set_current_paths(paths new_paths) { 
+void mouse_handler::set_current_paths(paths new_paths) {
 	gui_->unhighlight_reach();
-	current_paths_ = new_paths; 
+	current_paths_ = new_paths;
 	current_route_.steps.clear();
 	gui_->set_route(NULL);
 }

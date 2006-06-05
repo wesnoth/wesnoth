@@ -136,7 +136,7 @@ static PyObject* wrapper_unittype_attacks( wesnoth_unittype* type, PyObject* arg
 static PyMethodDef unittype_methods[] = {
 	{ "advances_to",	(PyCFunction)python_ai::unittype_advances_to,	METH_VARARGS,
         "Returns: unittype[]\n"
-        "Returns a list of wesnoth.unittype of possible advancements."}, 
+        "Returns a list of wesnoth.unittype of possible advancements."},
 	{ "attacks",		(PyCFunction)wrapper_unittype_attacks,			METH_VARARGS,
         "Returns: attacktype[]\n"
         "Returns list of possible attack types.\n"},
@@ -910,7 +910,7 @@ static PyObject* wrapper_team_side(wesnoth_team* team, void* /*closure*/)
     }
     return Py_BuildValue("i", side);
 }
-				
+
 static int wrapper_team_internal_compare(wesnoth_team* left, wesnoth_team* right)
 {
 	return (long)left->team_ - (long)right->team_;
@@ -1405,7 +1405,7 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 		return NULL;
 	if (!running_instance->is_unit_valid(self->unit_))
 		return NULL;
-		
+
     info& inf = running_instance->get_info();
 
     // We need to temporarily move our unit to where the attack calculation is
@@ -1432,19 +1432,19 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 	    if (attacker[i] > 0)
             PyDict_SetItem(adict, PyInt_FromLong(i), PyFloat_FromDouble(attacker[i]));
 	}
-	
+
 	std::vector<double>defender = bc.get_defender_combatant().hp_dist;
 	PyObject* ddict = PyDict_New();
 	for (i = 0; i < defender.size(); i++) {
 	    if (defender[i] > 0)
             PyDict_SetItem(ddict, PyInt_FromLong(i), PyFloat_FromDouble(defender[i]));
 	}
-	
+
 	// restore old position again
 	temp = inf.units.extract(*from->location_);
 	if (backup)
         inf.units.add(backup);
-	
+
 	PyObject *ret = Py_BuildValue("(OO)", adict, ddict);
 
 	return ret;

@@ -528,7 +528,7 @@ theme::menu::menu() : context_(false)
 
 theme::menu::menu(const config& cfg) : object(cfg), context_(cfg["is_context_menu"] == "true"),
                                        title_(cfg["title"].str() + cfg["title_literal"].str()),
-									   tooltip_(cfg["tooltip"]), 
+									   tooltip_(cfg["tooltip"]),
 						image_(cfg["image"]), type_(cfg["type"]),
 						items_(utils::split(cfg["items"]))
 {}

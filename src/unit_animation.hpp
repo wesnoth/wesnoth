@@ -26,7 +26,7 @@
 
 
 
-class unit_animation:public animated<unit_frame> 
+class unit_animation:public animated<unit_frame>
 {
 	public:
 		static config prepare_animation(const config &cfg,const std::string animation_tag);
@@ -64,7 +64,7 @@ class fighting_animation:public unit_animation
 		std::vector<std::string> damage_type, special;
 };
 
-class defensive_animation:public fighting_animation 
+class defensive_animation:public fighting_animation
 {
 	public:
 		explicit defensive_animation(const config& cfg):fighting_animation(cfg){};

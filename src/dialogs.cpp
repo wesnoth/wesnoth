@@ -768,7 +768,7 @@ void unit_preview_pane::draw_contents()
 
 			details << "\n" << at_it->name()
 			        << " (" << gettext(at_it->type().c_str()) << ")\n";
-			
+
 			details << at_it->weapon_specials(true);
 			details << "\n"
 			        << at_it->damage() << "-" << at_it->num_attacks() << " -- "

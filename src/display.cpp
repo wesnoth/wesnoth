@@ -87,7 +87,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	teams_(t), lastDraw_(0), drawSkips_(0),
 	invalidateAll_(true), invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
-	currentTeam_(0), activeTeam_(0), 
+	currentTeam_(0), activeTeam_(0),
 	turbo_(false), grid_(false), sidebarScaling_(1.0),
 	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map),
@@ -1167,7 +1167,7 @@ void display::draw_report(reports::TYPE report_num)
 					area.w = minimum<int>(rect.w + rect.x - x, img->w);
 					area.h = minimum<int>(rect.h + rect.y - y, img->h);
 					draw_image_for_report(img, area);
-					
+
 					// draw illuminated time
 					if(report_num == reports::TIME_OF_DAY && img != NULL) {
 						time_of_day tod = timeofday_at(status_,units_,mouseoverHex_,map_);
@@ -2356,7 +2356,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 			}
 		}
 	}
-	
+
 	if (!ignored){
 		bool action;
 		std::string msg;
@@ -2369,7 +2369,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 			action = false;
 		}
 		msg = font::word_wrap_text(msg,font::SIZE_SMALL,mapx()*3/4);
-	
+
 		int ypos = chat_message_x;
 		for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
 			ypos += font::get_floating_label_rect(m->handle).h;
@@ -2409,7 +2409,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 			message_complete << timestring() << " ";
 		}
 		message_complete << str.str();
-	
+
 		const SDL_Rect rect = map_area();
 		const int speaker_handle = font::add_floating_label(message_complete.str(),font::SIZE_SMALL,speaker_colour,
 			rect.x+chat_message_x,rect.y+ypos,

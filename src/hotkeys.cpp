@@ -171,7 +171,7 @@ void hotkey_item::load_from_config(const config& cfg)
 					keycode_ = num + SDLK_F1 - 1;
 				}
 			}
-		} else if (key == " " || shift_ 
+		} else if (key == " " || shift_
 #ifdef __APPLE__
 			   || alt_
 #endif

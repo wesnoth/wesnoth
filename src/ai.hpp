@@ -106,7 +106,7 @@ protected:
 
 	struct attack_analysis
 	{
-		void analyze(const gamemap& map, unit_map& units, 
+		void analyze(const gamemap& map, unit_map& units,
 					 const std::vector<team>& teams,
 					 const gamestatus& status, const game_data& gamedata,
 					 class ai& ai_obj,

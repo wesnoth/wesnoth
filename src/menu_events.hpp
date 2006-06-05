@@ -102,7 +102,7 @@ public:
 
 	unit_map::iterator current_unit(mouse_handler& mousehandler);
 	unit_map::const_iterator current_unit(const mouse_handler& mousehandler) const;
-	void move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target, 
+	void move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target,
 		bool continue_move, const unsigned int team_num, mouse_handler& mousehandler);
 	void do_speak();
 	void do_search(const std::string& new_search);

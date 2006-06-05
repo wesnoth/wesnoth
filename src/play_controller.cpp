@@ -21,15 +21,15 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-play_controller::play_controller(const config& level, const game_data& gameinfo, game_state& state_of_game, 
+play_controller::play_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 								 int ticks, int num_turns, const config& game_config, CVideo& video,
-								 bool skip_replay) : 
+								 bool skip_replay) :
 	verify_manager_(units_), team_manager_(teams_), labels_manager_(),
 	help_manager_(&game_config, &gameinfo, &map_),
 	mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo, undo_stack_, redo_stack_),
 	menu_handler_(gui_, units_, teams_, level, gameinfo, map_, game_config, status_, state_of_game, undo_stack_, redo_stack_),
 	generator_setter(&recorder), statistics_context_(level["name"]), gameinfo_(gameinfo), level_(level), game_config_(game_config),
-	gamestate_(state_of_game), status_(level, num_turns), 
+	gamestate_(state_of_game), status_(level, num_turns),
 	map_(game_config, level["map_data"]), ticks_(ticks),
 	xp_mod_(atoi(level["experience_modifier"].c_str()) > 0 ? atoi(level["experience_modifier"].c_str()) : 100),
 	loading_game_(level["playing_team"].empty() == false),
@@ -295,7 +295,7 @@ void play_controller::init_side(const unsigned int team_index){
 	std::stringstream player_number_str;
 	player_number_str << player_number_;
 	gamestate_.set_variable("side_number",player_number_str.str());
-	
+
 	if(first_turn_) {
 		if(gui_->viewing_team() == team_index && !team_manager_.is_observer()) {
 			recorder.add_event("turn 1");
@@ -526,7 +526,7 @@ void play_controller::handle_event(const SDL_Event& event)
 
 		//intentionally fall-through
 	case SDL_KEYUP:
-		
+
 		//if the user has pressed 1 through 9, we want to show how far
 		//the unit can move in that many turns
 		if(event.key.keysym.sym >= '1' && event.key.keysym.sym <= '7') {
@@ -548,7 +548,7 @@ void play_controller::handle_event(const SDL_Event& event)
 				}
 			}
 		}
-		
+
 		break;
 	case SDL_MOUSEMOTION:
 		// ignore old mouse motion events in the event queue

@@ -22,11 +22,11 @@
 std::vector<Uint32> string2rgb(std::string s){
   std::vector<Uint32> out;
   std::vector<std::string> rgb_vec = utils::split(s);
-  
+
   while(rgb_vec.size()%3) {
 	rgb_vec.push_back("0");
   }
-  
+
   std::vector<std::string>::iterator c=rgb_vec.begin();
   int r,g,b;
 

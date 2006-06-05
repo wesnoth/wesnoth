@@ -669,8 +669,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				continue;
 			}
 		}
-		
-		
+
+
 		//if there is nothing more in the records
 		if(cfg == NULL) {
 			//replayer.set_skip(false);
@@ -734,7 +734,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		else if((child = cfg->child("recruit")) != NULL) {
 			const std::string& recruit_num = (*child)["value"];
 			const int val = atoi(recruit_num.c_str());
-			
+
 			gamemap::location loc(*child);
 
 			const std::set<std::string>& recruits = current_team.recruits();

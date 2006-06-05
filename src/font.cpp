@@ -379,7 +379,7 @@ void text_surface::bidi_cvt()
 	int		len = str_.length();
 	FriBidiChar	*bidi_logical = new FriBidiChar[len + 2];
 	FriBidiChar	*bidi_visual = new FriBidiChar[len + 2];
-	char		*utf8str = new char[4*len + 1]; 	//assume worst case here (all 4 Byte characters)
+	char		*utf8str = new char[4*len + 1];	//assume worst case here (all 4 Byte characters)
 	FriBidiCharType	base_dir = FRIBIDI_TYPE_ON;
 	int n;
 

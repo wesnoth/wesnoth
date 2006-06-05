@@ -117,7 +117,7 @@ public:
 	const user_vector all_game_users() const;
 
 	const player* find_player(network::connection sock) const;
-	
+
 	const player* transfer_game_control();
 
 private:
@@ -149,7 +149,7 @@ private:
 	std::vector<bool> sides_taken_;
 	std::vector<std::string> side_controllers_;
 	bool started_;
-	
+
 	config level_;
 
 	config history_;

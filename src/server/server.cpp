@@ -130,11 +130,11 @@ private:
 	metrics metrics_;
 
 	const config& cfg_;
-	
+
 	size_t default_max_messages_;
 	size_t default_time_period_;
 	size_t concurrent_connections_;
-	
+
 	std::set<std::string> accepted_versions_;
 	std::map<std::string,config> redirected_versions_;
 	std::map<std::string,config> proxy_versions_;
@@ -158,7 +158,7 @@ server::server(int port, input_stream& input, const config& cfg, size_t nthreads
 	version_query_response_.add_child("version");
 
 	login_response_.add_child("mustlogin");
-	
+
 	if(cfg_["disallow_names"] == "") {
 		disallowed_names_.push_back("server");
 		disallowed_names_.push_back("ai");
@@ -173,7 +173,7 @@ server::server(int port, input_stream& input, const config& cfg, size_t nthreads
 	default_max_messages_ = lexical_cast_default<int>(cfg_["max_messages"],4);
 	default_time_period_ = lexical_cast_default<int>(cfg_["messages_time_period"],10);
 	concurrent_connections_ = lexical_cast_default<int>(cfg_["connections_allowed"],5);
-	
+
 	const std::string& versions = cfg_["versions_accepted"];
 	if(versions.empty() == false) {
 		const std::vector<std::string> accepted(utils::split(versions));
@@ -505,7 +505,7 @@ void server::process_login(const network::connection sock, const config& data)
 	const config* const version = data.child("version");
 	if(version != NULL) {
 		const std::string& version_str = (*version)["version"];
-		
+
 		bool accepted = false;
 		for(std::set<std::string>::const_iterator ver_it = accepted_versions_.begin(); ver_it != accepted_versions_.end(); ++ver_it) {
 			if(utils::wildcard_string_match(version_str,*ver_it)) {
@@ -587,7 +587,7 @@ void server::process_login(const network::connection sock, const config& data)
 		                   "This username is too long"),sock);
 		return;
 	}
-	
+
 	for(std::vector<std::string>::const_iterator d_it = disallowed_names_.begin(); d_it != disallowed_names_.end(); ++d_it) {
 		if(utils::wildcard_string_match(utils::lowercase(username),utils::lowercase(*d_it))) {
 			network::send_data(construct_error(
@@ -684,7 +684,7 @@ void server::process_whisper(const network::connection sock, const config& whisp
 	std::vector<game>::iterator g;
 	if ((whisper["receiver"]!="") && (whisper["message"]!="") && (whisper["sender"]!="")){
 		for(player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
-			if(i->second.name() == whisper["receiver"]) {			
+			if(i->second.name() == whisper["receiver"]) {
 				for(g = games_.begin(); g != games_.end(); ++g) {
 					if(g->is_member(i->first)) {
 						do_send = false;
@@ -701,16 +701,16 @@ void server::process_whisper(const network::connection sock, const config& whisp
 				break;
 			}
 		}
-	} else { 
+	} else {
 		config msg;
 		config data;
 		msg["message"] = "Invalid number of arguments";
 		msg["sender"] = "server";
 		data.add_child("message", msg);
-		network::send_data(data,sock);	
+		network::send_data(data,sock);
 		sent = true;
 	}
-		
+
 	if (sent == false){
 		config msg;
 		config data;
@@ -721,7 +721,7 @@ void server::process_whisper(const network::connection sock, const config& whisp
 		}
 		msg["sender"] = "server";
 		data.add_child("message", msg);
-		network::send_data(data,sock);	
+		network::send_data(data,sock);
 	}
 }
 
@@ -734,7 +734,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 	if(pl == players_.end()) {
 		std::cerr << "ERROR: Could not find player in map\n";
 	}
-	
+
 	if(create_game != NULL) {
 
 		//std::cerr << "creating game...\n";
@@ -907,7 +907,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				if (player != NULL){
 					const config& msg = construct_server_message("You have been muted",*g);
 					network::send_data(msg, pl->first);
-					
+
 					const config& p_msg = construct_server_message(pl->second.name() + " has been muted",*g);
 					g->send_data(p_msg, pl->first);
 				}
@@ -961,7 +961,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				g->ban_player(pl->first);
 				const config& msg = construct_server_message("You have been banned",*g);
 				network::send_data(msg, pl->first);
-				
+
 				const config& p_msg = construct_server_message(pl->second.name() + " has been banned",*g);
 				g->send_data(p_msg);
 			} else {
@@ -1172,7 +1172,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			} else {
 				std::cerr << "ERROR: Could not find player in map\n";
 			}
-	
+
 			if (needed){
 				//transfer game control to another player
 				const player* player = g->transfer_game_control();
@@ -1190,7 +1190,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			std::cerr << "ERROR: Could not find player in map\n";
 		}
 		lobby_players_.add_player(sock);
-		
+
 		//send the player who has quit the game list
 		network::send_data(initial_response_,sock);
 

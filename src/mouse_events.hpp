@@ -34,7 +34,7 @@ struct command_disabler
 
 class mouse_handler{
 public:
-	mouse_handler(display* gui, std::vector<team>& teams, unit_map& units, gamemap& map, 
+	mouse_handler(display* gui, std::vector<team>& teams, unit_map& units, gamemap& map,
 		gamestatus& status, const game_data& gameinfo, undo_list& undo_stack, undo_list& redo_stack);
 	void mouse_motion(const SDL_MouseMotionEvent& event, const int player_number, const bool browse);
 	void mouse_press(const SDL_MouseButtonEvent& event, const int player_number, const bool browse);

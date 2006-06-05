@@ -266,7 +266,7 @@ void ui::send_chat_query(const std::string& args)
 
 void ui::add_chat_message(const std::string& speaker, int /*side*/, const std::string& message, display::MESSAGE_TYPE /*type*/)
 {
-	chat_.add_message(speaker,message);	
+	chat_.add_message(speaker,message);
 	chat_.update_textbox(chat_textbox_);
 }
 
@@ -316,7 +316,7 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 		std::vector<std::string>& users = user_list_;
 		std::sort<std::vector<std::string>::iterator>(users.begin(), users.end());
 		for(std::vector<std::string>::const_iterator i = users.begin(); i != users.end(); ++i) {
-			if( i->size() >= semiword.size() && 
+			if( i->size() >= semiword.size() &&
 					std::equal(semiword.begin(),semiword.end(),i->begin(),chars_equal_insensitive)) {
 				if(matches.empty()) {
 					best_match = *i;
@@ -369,18 +369,18 @@ void ui::process_network_data(const config& data, const network::connection /*so
 					}
 				}
 			}
-			
+
 			if (!ignored){
 				sound::play_sound(game_config::sounds::receive_message);
-			
+
 				chat_.add_message(msg["sender"], msg["message"]);
 				chat_.update_textbox(chat_textbox_);
 			}
 		}
-		
+
 		if(data.child("whisper")){
 			sound::play_sound(game_config::sounds::receive_message);
-			
+
 			const config& cwhisper = *data.child("whisper");
 			chat_.add_message("whisper: "+cwhisper["sender"], cwhisper["message"]);
 			chat_.update_textbox(chat_textbox_);

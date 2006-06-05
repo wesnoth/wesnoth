@@ -364,7 +364,7 @@ void preferences_dialog::join()
 	sound_label_.join();
 	scroll_label_.join();
 	gamma_label_.join();
-	chat_lines_label_.join();		
+	chat_lines_label_.join();
 	advanced_.join();
 }
 

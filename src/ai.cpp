@@ -840,8 +840,8 @@ void ai::do_move()
 			move_unit(ui->first,closest_move.first,possible_moves);
 		}
 	}
-	
-	
+
+
 	std::vector<attack_analysis> analysis;
 
 	LOG_AI << "combat phase\n";

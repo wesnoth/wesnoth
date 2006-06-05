@@ -62,7 +62,7 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 replay_controller::replay_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 						   const int ticks, const int num_turns, const config& game_config,
 						   CVideo& video)
-	: play_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, false), 
+	: play_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, false),
 	gamestate_start_(state_of_game), status_start_(level, num_turns)
 {
 	current_turn_ = 1;
@@ -89,7 +89,7 @@ void replay_controller::init(){
 
 	fire_prestart(true);
 	init_gui();
-	
+
 	LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
 
 	fire_start(!loading_game_);

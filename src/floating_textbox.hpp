@@ -36,7 +36,7 @@ namespace gui{
 
 		void close(display& gui);
 		void update_location(display& gui);
-		void show(gui::TEXTBOX_MODE mode, const std::string& label, 
+		void show(gui::TEXTBOX_MODE mode, const std::string& label,
 			const std::string& check_label, bool checked, display& gui);
 		void tab(std::vector<team>& teams, const unit_map& units, display& gui);
 		bool active() const { return box_.get() != NULL; }

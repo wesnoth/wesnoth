@@ -254,7 +254,7 @@ void wait::join_game(bool observe)
 		response["leader"] = leader_choice;
 
 		network::send_data(response);
-	} 
+	}
 
 	generate_menu();
 }
@@ -279,7 +279,7 @@ void wait::start_game()
 
 game_state& wait::request_snapshot(){
 	config cfg;
-	
+
 	cfg.add_child("snapshot_request");
 
 	return state_;
@@ -352,11 +352,11 @@ void wait::generate_menu()
 	const config::child_list& sides = level_.get_children("side");
 	for(config::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		const config& sd = **s;
-		
+
 		if(sd["allow_player"] == "no") {
 			continue;
 		}
-		
+
 		std::string description = sd["user_description"];
 		const std::string faction_id = sd["id"];
 

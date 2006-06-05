@@ -232,9 +232,9 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 				int swarm_min_attacks = swarm.highest("attacks_min").first;
 				int hitp = u->second.hitpoints();
 				int mhitp = u->second.max_hitpoints();
-				
+
 				nattacks = swarm_min_attacks + swarm_max_attacks * hitp / mhitp;
-				
+
 			} else {
 				nattacks = at_it->num_attacks();
 			}
@@ -286,9 +286,9 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			res.add_text(str,tooltip);
 
-			
+
 			const std::vector<std::string>& specials = at_it->special_tooltips();
-			
+
 			if(! specials.empty()) {
 				for(std::vector<std::string>::const_iterator sp_it = specials.begin(); sp_it != specials.end(); ++sp_it) {
 					str << "<166,146,117>  ";

@@ -396,8 +396,8 @@ bool unit_attack(display& disp, unit_map& units,
 	const bool hits = damage > 0;
 	int start_time = 500;
 	int end_time = 0;
-	
-	
+
+
 	attacker.set_attacking(disp,a,hits,attack);
 	start_time=minimum<int>(start_time,attacker.get_animation()->get_first_frame_time());
 	end_time=maximum<int>(end_time,attacker.get_animation()->get_last_frame_time());

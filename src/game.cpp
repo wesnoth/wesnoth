@@ -513,7 +513,7 @@ bool game_controller::play_multiplayer_mode()
 		std::cerr << "Could not find era '" << era << "'\n";
 		return false;
 	}
-	
+
 	level["turns"] = turns;
 
 	const config* const side = era_cfg->child("multiplayer_side");
@@ -1398,7 +1398,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 				}
 
 				cfg.merge_children("units");
-				
+
 				config& hashes = cfg.add_child("multiplayer_hashes");
 				for(config::child_list::const_iterator ch = cfg.get_children("multiplayer").begin(); ch != cfg.get_children("multiplayer").end(); ++ch) {
 					hashes[(**ch)["id"]] = (*ch)->hash();
@@ -1703,13 +1703,13 @@ int play_game(int argc, char** argv)
 
 	loadscreen::global_loadscreen = new loadscreen(game.disp().video());
 	loadscreen::global_loadscreen->clear_screen();
-	
+
 	res = game.init_language();
 	if(res == false) {
 		std::cerr << "could not initialize the language\n";
 		return 0;
 	}
-		
+
 	loadscreen::global_loadscreen->increment_progress(5, "Loading game configuration.");
 	res = game.init_config();
 	if(res == false) {

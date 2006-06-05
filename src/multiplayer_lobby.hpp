@@ -66,7 +66,7 @@ private:
 	image::locator vision_icon_locator_;
 	image::locator time_limit_icon_locator_;
 	image::locator observer_icon_locator_;
-	
+
 	const config* map_hashes_;
 
 	unsigned int item_height_;

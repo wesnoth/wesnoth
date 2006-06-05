@@ -537,13 +537,13 @@ config config::merge_with(const config& c) const
 	const child_map& child_changes = c.all_children();
 	child_map::const_iterator i;
 	for(i = child_changes.begin(); i != child_changes.end(); ++i) {
-		
+
 		child_map::iterator itor = n.children.find(i->first);
 		size_t index = 0;
 		size_t last_index = itor != n.children.end() ? itor->second.size() : 0;
 		for(const_child_iterator j = i->second.begin(); j != i->second.end();) {
 			const config* item = *j;
-			
+
 			if(i->first.empty()) {
 				++j;
 				continue;
@@ -605,7 +605,7 @@ void config::debug() const{
 std::string config::hash() const
 {
 	static const unsigned int hash_length = 128;
-	static const char hash_string[] = 
+	static const char hash_string[] =
 		"+-,.<>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char hash_str[hash_length + 1];
 	std::string::const_iterator c;
@@ -615,7 +615,7 @@ std::string config::hash() const
 		hash_str[i] = 'a';
 	}
 	hash_str[hash_length] = 0;
-	
+
 	i = 0;
 	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
 		if(val->first.size() && val->second.size()) {
@@ -656,11 +656,11 @@ std::string config::hash() const
 			}
 		}
 	}
-	
+
 	for(i = 0; i != hash_length; ++i) {
 		hash_str[i] = hash_string[(unsigned)hash_str[i]%strlen(hash_string)];
 	}
-	
+
 	return std::string(hash_str);
 }
 

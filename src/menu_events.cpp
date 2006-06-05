@@ -88,7 +88,7 @@ namespace events{
 	menu_handler::menu_handler(display* gui, unit_map& units, std::vector<team>& teams,
 		const config& level, const game_data& gameinfo, const gamemap& map,
 		const config& game_config, const gamestatus& status, game_state& gamestate,
-		undo_list& undo_stack, undo_list& redo_stack) : 
+		undo_list& undo_stack, undo_list& redo_stack) :
 	gui_(gui), units_(units), teams_(teams), level_(level), gameinfo_(gameinfo), map_(map),
 		game_config_(game_config), status_(status), gamestate_(gamestate), undo_stack_(undo_stack),
 		redo_stack_(redo_stack)
@@ -507,7 +507,7 @@ namespace events{
 
 	void menu_handler::speak()
 	{
-		textbox_info_.show(gui::TEXTBOX_MESSAGE,_("Message:"), 
+		textbox_info_.show(gui::TEXTBOX_MESSAGE,_("Message:"),
 			has_friends() ? _("Send to allies only") : "", preferences::message_private(), *gui_);
 	}
 
@@ -1361,7 +1361,7 @@ namespace events{
 			}
 		}
 
-		
+
 		if(cmd == query && argc > 0) {
 			const std::string args = (argc < 2) ? arg1 : arg1 + " " + arg2;
 			send_chat_query(args);
@@ -1375,10 +1375,10 @@ namespace events{
 			network::send_data(data);
 
 		} else if (cmd == help) {
-															
+
 			bool have_command = (argc > 0);
 			bool have_subcommand = (argc > 1);
-			
+
 			const std::string command = arg1;
 			const std::string subcommand = arg2;
 
@@ -1435,7 +1435,7 @@ namespace events{
 					} else {
 						add_chat_message("ignores list",0, _("Invalid username: ")+arg2,display::MESSAGE_PRIVATE);
 					}
-				}	
+				}
 			} else if (arg1 == list){
 				std::string text;
 				if ((cignore = preferences::get_prefs()->child("ignore"))){
@@ -1448,7 +1448,7 @@ namespace events{
 					if(!text.empty()){
 						text.erase(text.length()-1,1);
 					}
-				}	
+				}
 				add_chat_message("ignores list",0, text,display::MESSAGE_PRIVATE);
 			} else if (arg1 == clear){
 
@@ -1460,9 +1460,9 @@ namespace events{
 							add_chat_message("ignores list",0, _("Removed from ignore list: ")+nick->first,display::MESSAGE_PRIVATE);
 						}
 					}
-				}	
-			} else {			
-				add_chat_message("ignores list",0,_("Unknown command: ")+arg1,display::MESSAGE_PRIVATE);	
+				}
+			} else {
+				add_chat_message("ignores list",0,_("Unknown command: ")+arg1,display::MESSAGE_PRIVATE);
 			}
 		} else if ((cmd == emote || cmd == emote2) && argc > 0) {
 			//emote message
@@ -1647,7 +1647,7 @@ namespace events{
 		} else if(cmd == "clear") {
 			gui_->clear_chat_messages();
 		} else if(cmd == "w") {
-   			save_game(data,gui::NULL_DIALOG);
+			save_game(data,gui::NULL_DIALOG);
 		} else if(cmd == "wq") {
 			save_game(data,gui::NULL_DIALOG);
 			throw end_level_exception(QUIT);

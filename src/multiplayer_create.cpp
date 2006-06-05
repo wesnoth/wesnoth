@@ -454,7 +454,7 @@ void create::process_event()
 				nsides--;
 			}
 		}
-		
+
 		std::stringstream players;
 		if(map.get() != NULL) {
 			players << _("Players: ") << nsides;

@@ -387,7 +387,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 				((xpos & 1) && (x1 & 1) ? 1 : 0);
 			if (y2 < 0 || y2 >= y()) {
 				continue;
-			}   
+			}
 			const TERRAIN t = m[x1][y1];
 			const TERRAIN current = (*this)[x2][y2];
 
@@ -573,7 +573,7 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 			}
 		}
 	}
-	
+
 	static config const dummy_cfg;
 	time_of_day tod(dummy_cfg);
 	if(!tod_type.empty() || !tod_id.empty()) {
@@ -613,7 +613,7 @@ bool gamemap::terrain_matches_filter(const gamemap::location& loc, const config&
 			}
 		}
 	}
-	
+
 	return true;
 }
 

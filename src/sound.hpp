@@ -44,7 +44,7 @@ void play_no_music();
 // Start playing current music.
 void play_music();
 
-// Play sound, or random one of comma-separated sounds. 
+// Play sound, or random one of comma-separated sounds.
 void play_sound(const std::string& files);
 
 // Called from event loop to see if we need new music track.

@@ -80,7 +80,7 @@ namespace gui{
 		}
 	}
 
-	void floating_textbox::show(gui::TEXTBOX_MODE mode, const std::string& label, 
+	void floating_textbox::show(gui::TEXTBOX_MODE mode, const std::string& label,
 		const std::string& check_label, bool checked, display& gui)
 	{
 		close(gui);
@@ -137,7 +137,7 @@ namespace gui{
 				const unit_map::const_iterator leader = team_leader(n+1,units);
 				if(leader != units.end()) {
 					const std::string& name = leader->second.description();
-					if( name.size() >= semiword.size() && 
+					if( name.size() >= semiword.size() &&
 							std::equal(semiword.begin(),semiword.end(),name.begin(),chars_equal_insensitive)) {
 						if(matches.empty()) {
 							best_match = name;
@@ -154,7 +154,7 @@ namespace gui{
 			if(matches.empty()) {
 				const std::set<std::string>& observers = gui.observers();
 				for(std::set<std::string>::const_iterator i = observers.begin(); i != observers.end(); ++i) {
-					if( i->size() >= semiword.size() && 
+					if( i->size() >= semiword.size() &&
 							std::equal(semiword.begin(),semiword.end(),i->begin(),chars_equal_insensitive)) {
 						if(matches.empty()) {
 							best_match = *i;

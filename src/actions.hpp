@@ -59,8 +59,8 @@ public:
 		const attack_type *weapon;	// The weapon used by the unit to attack the opponent, or NULL if there is none.
 		int attack_num;			// Index into unit->attacks() or -1 for none.
 		bool is_attacker;		// True if the unit is the attacker.
-		bool is_poisoned;	  	// True if the unit is poisoned at the beginning of the battle.
-		bool is_slowed;	    	// True if the unit is slowed at the beginning of the battle.
+		bool is_poisoned;		// True if the unit is poisoned at the beginning of the battle.
+		bool is_slowed;		// True if the unit is slowed at the beginning of the battle.
 		bool slows;				// Attack slows opponent when it hits.
 		bool drains;			// Attack drains opponent when it hits.
 		bool stones;			// Attack turns opponent to stone when it hits.
@@ -75,12 +75,12 @@ public:
 		unsigned int hp;		// Hitpoints of the unit at the beginning of the battle.
 		unsigned int max_hp;	// Maximum hitpoints of the unit.
 		unsigned int chance_to_hit;	// Effective chance to hit as a percentage (all factors accounted for).
-		int damage;   			// Effective damage of the weapon (all factors accounted for).
+		int damage;			// Effective damage of the weapon (all factors accounted for).
 		int slow_damage;		// Effective damage if unit becomes slowed (== damage, if already slowed)
 		unsigned int num_blows;	// Effective number of blows, takes swarm into account.
 		unsigned int swarm_min;	// Minimum number of blows with swarm (equal to num_blows if swarm isn't used).
 		unsigned int swarm_max;	// Maximum number of blows with swarm (equal to num_blows if swarm isn't used).
-		
+
 		std::string plague_type; // The plague type used by the attack, if any.
 
 		unit_stats(const unit &u, const gamemap::location& u_loc,
@@ -102,7 +102,7 @@ public:
 				   const gamestatus& status, const game_data& gamedata,
 				   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
 				   int attacker_weapon = -1, double harm_weight = 1.0, const combatant *prev_def = NULL);
-	
+
 	battle_context(const battle_context &other);
 	~battle_context() { delete attacker_stats_; delete defender_stats_; }
 
@@ -110,7 +110,7 @@ public:
 
 	// This method returns the statistics of the attacker.
 	const unit_stats& get_attacker_stats() const { return *attacker_stats_; }
-	
+
 	// This method returns the statistics of the defender.
 	const unit_stats& get_defender_stats() const { return *defender_stats_; }
 

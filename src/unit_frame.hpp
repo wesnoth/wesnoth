@@ -30,7 +30,7 @@ struct unit_frame {
 			       highlight_ratio(ftofxp(1)){}
 		explicit unit_frame(const std::string& str, const std::string & diag ="",
 				int begin=0,int end = 0,
-				Uint32 blend_color = 0, double blend_rate = 0.0, 
+				Uint32 blend_color = 0, double blend_rate = 0.0,
 				fixed_t highlight = ftofxp(1),
 				std::string in_halo = "",int halox = 0,int haloy = 0) :
 			xoffset(0), image(str),image_diagonal(diag),

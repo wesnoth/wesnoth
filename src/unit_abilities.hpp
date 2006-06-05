@@ -42,9 +42,9 @@ class effect
 {
 	public:
 		effect(const unit_ability_list& list, int def, bool backstab);
-		
+
 		int get_composite_value() const;
-		
+
 		effect_list::const_iterator begin() const;
 		effect_list::const_iterator end() const;
 	private:

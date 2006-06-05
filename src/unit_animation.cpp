@@ -82,7 +82,7 @@ unit_frame::unit_frame(const config& cfg)
 	halo = prepare_halo(cfg["halo"],begin_time,end_time);
 	blend_with= 0;
 	blend_ratio = 0;
-	
+
 }
 
 std::vector<std::pair<std::string,int> > unit_frame::prepare_halo(const std::string & halo,int begin, int end)

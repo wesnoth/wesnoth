@@ -80,7 +80,7 @@ namespace events{
 		if (!change_handler_){
 			notify_active_ = true;
 			try{
-				for (std::vector<observer*>::const_iterator it = observers_.begin(); 
+				for (std::vector<observer*>::const_iterator it = observers_.begin();
 					it != observers_.end(); it++){
 					(*it)->handle_generic_event(name_);
 				}

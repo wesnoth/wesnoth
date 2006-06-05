@@ -160,7 +160,7 @@ void list_directory(const std::string& directory,
 			}
 		}
 	closedir(dir);
-	
+
 	if(files != NULL)
 		std::sort(files->begin(),files->end());
 
@@ -173,7 +173,7 @@ void list_directory(const std::string& directory,
 struct Level {
 	Level(const std::string& itag,Level* p) {tag=itag;parent=p;is_tag=false;};
 	~Level() {for(child_list::iterator i = data.begin(); i != data.end(); ++i) {delete *i;}};
-	
+
 	Level* add_child(Level* l)
 	{
 		data.push_back(l);
@@ -181,7 +181,7 @@ struct Level {
 		is_tag = true;
 		return l;
 	}
-	
+
 	Level* set(Level& l)
 	{
 		tag=l.tag;
@@ -192,7 +192,7 @@ struct Level {
 		}
 		return this;
 	}
-	
+
 	Level* child(const std::string& key)
 	{
 		for(child_list::iterator i = data.begin(); i != data.end(); ++i) {
@@ -222,7 +222,7 @@ struct Level {
 			}
 		}
 	}
-	
+
 	Level* insert(int index,const std::string& key,Level* l)
 	{
 		for(child_list::iterator i = data.begin(); i != data.end(); ++i) {
@@ -238,7 +238,7 @@ struct Level {
 		add_child(l);
 		return l;
 	}
-	
+
 	std::string operator [](const std::string& key)
 	{
 		for(child_list::iterator i = data.begin(); i != data.end(); ++i) {
@@ -257,7 +257,7 @@ struct Level {
 			}
 		}
 	}
-	
+
 	child_list get_children(const std::string& key)
 	{
 		child_list ret;
@@ -268,7 +268,7 @@ struct Level {
 		}
 		return ret;
 	}
-	
+
 	std::string tag;
 	bool is_tag;
 	child_list data;
@@ -307,7 +307,7 @@ void output_level(Level& l,std::ofstream& outfile,int tabs,bool comments)
 		std::cerr << "Error! Could not open file for writing!\n";
 		return;
 	}
-	
+
 	if(!l.is_tag && l.data.empty()) { // key
 		if(l.tag[0] != '#') {
 			TABS(outfile,tabs);
@@ -517,7 +517,7 @@ void resolve_tree(Level& l,bool verbose)
 				resolve_tree(l,verbose);
 			}
 		}
-		
+
 		for(int w=0;w<l.data.size();w++) {
 			resolve_tree(*l.data[w],verbose);
 		}
@@ -534,7 +534,7 @@ bool pre_update(Level& l,bool verbose) // split things here
 			child_list sound_tags = l.get_children("sound");
 			Level* miss_anim = (new Level(l.tag,l.parent))->set(l);
 			Level* hit_anim = (new Level(l.tag,l.parent))->set(l);
-			
+
 			bool use_miss = false;
 			bool use_hit = false;
 			for(child_list::iterator i = sound_tags.begin(); i != sound_tags.end(); ++i) {
@@ -548,28 +548,28 @@ bool pre_update(Level& l,bool verbose) // split things here
 			if(use_miss && use_hit) { // needs splitting; maybe always split if sound_miss exists?
 				miss_anim->data.push_front(new Level("hits=no",miss_anim));
 				hit_anim->data.push_front(new Level("hits=yes",hit_anim));
-				
+
 				Level* p = l.parent;
 				child_list::iterator f = std::find(p->data.begin(),p->data.end(),&l);
 				delete &l;
 				p->data.erase(f);
-				
+
 				update_tree(*miss_anim,verbose);
 				update_tree(*hit_anim,verbose);
-				
+
 				miss_anim->parent = p;
 				hit_anim->parent = p;
 				p->add_child(miss_anim);
 				p->add_child(hit_anim);
-				
+
 				if(verbose)
 					std::cerr << "splitting sound_miss and sound\n";
 				return true;
 			}
-			
+
 			bool hits = l.child("hits=no") == NULL;
 			std::string sound_suffix((hits ? "" : "_miss"));
-			
+
 			while(l.child("sound")) {
 				// needs to find/make a frame with sound=
 				Level* i = l.child("sound");
@@ -617,7 +617,7 @@ bool pre_update(Level& l,bool verbose) // split things here
 								}
 							}
 							l.insert(index,"frame",nframe);
-							
+
 							if(j != frame_tags.begin()) { // not beginning
 								if(j+1 != frame_tags.end()) { // middle
 //									(*(j-1))->replace_child("end",(*i)["time"]);
@@ -642,7 +642,7 @@ bool pre_update(Level& l,bool verbose) // split things here
 									create = false;
 									break;
 							}
-							
+
 						}
 						index++;
 					}
@@ -828,15 +828,15 @@ void update_file(const std::string& path,bool do_update,bool comments,bool verbo
 			idata += c;
 		}
 	}
-	
+
 	idata=idata.substr(0,idata.size()-1);
 	if(idata[idata.size()-1] != '\n' && idata[idata.size()-2] != '\n') {
 		idata += "\n";
 	}
-	
+
 	Level* p_data = new Level("]]]{MAIN}[[[",NULL);
 	Level* current_level=p_data;
-	
+
 	int t=0;
 	while(t < idata.size()-1) {
 		if(idata[t] == '#') {
@@ -947,7 +947,7 @@ void update_file(const std::string& path,bool do_update,bool comments,bool verbo
 		}
 	}
 	finish:
-	
+
 	if(do_update) {
 		while(pre_update(*p_data,verbose));
 		update_tree(*p_data,verbose);
@@ -960,9 +960,9 @@ void update_file(const std::string& path,bool do_update,bool comments,bool verbo
 		std::ofstream outfile(path.c_str());
 		output_level(*p_data,outfile,0,comments);
 	}
-	
+
 	delete p_data;
-	
+
 }
 
 int main(int argc, char *argv[])
@@ -971,9 +971,9 @@ int main(int argc, char *argv[])
 		std::cerr << "Usage: filenames [options]\n\t -u : Update the WML syntax from 1.0 to 1.1.2\n\t -r : Process all .cfg files recursively\n\t -v : verbose output\n\t -rem : Remove comments\n\t --reorder : reorder keys/tags in ascii order\n";
 		return 0;
 	}
-	
+
 	init_preproc_actions();
-	
+
 	std::string update_path = argv[1];
 	std::deque<std::string> files;
 	std::deque<std::string> dirs;
@@ -982,7 +982,7 @@ int main(int argc, char *argv[])
 	bool comments = true;
 	bool verbose = false;
 	bool reorder = false;
-	
+
 	for(int t=1;t<argc;t++) {
 		if(argv[t][0]=='-') {
 			if(strcmp(argv[t],"-u")==0) {
@@ -1002,9 +1002,9 @@ int main(int argc, char *argv[])
 			files.push_back(argv[t]);
 		}
 	}
-	
+
 	int found = 0;
-	
+
 	if(recurse) {
 		list_directory(getcwd(NULL,1024),&files,&dirs,ENTIRE_FILE_PATH,".cfg");
 		while(dirs.size() && recurse) {
@@ -1016,12 +1016,12 @@ int main(int argc, char *argv[])
 			}
 		}
 	}
-	
+
 	while(files.size()) {
 		update_file(files[0],do_update,comments,verbose,reorder);
 		files.pop_front();
 	}
-	
-	
+
+
   return 0;
 }

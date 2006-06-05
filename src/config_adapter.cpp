@@ -87,7 +87,7 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 	//if this side tag describes the leader of the side
 	if(!utils::string_bool(cfg["no_leader"]) && cfg["controller"] != "null") {
 		unit new_unit(&gameinfo, &units, &map, &game_status, &teams,cfg);
-		
+
 		//search the recall list for leader units, and if there is
 		//one, use it in place of the config-described unit
 		if(player != NULL) {

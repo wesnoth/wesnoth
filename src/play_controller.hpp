@@ -39,7 +39,7 @@
 class play_controller : public hotkey::command_executor, public events::handler, public events::observer
 {
 public:
-	play_controller(const config& level, const game_data& gameinfo, game_state& state_of_game, 
+	play_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 		int ticks, int num_turns, const config& game_config, CVideo& video, bool skip_replay);
 	~play_controller();
 

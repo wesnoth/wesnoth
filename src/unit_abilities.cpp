@@ -24,80 +24,80 @@
  *
  * [abilities]
  * ...
- * 
+ *
  * [heals]
- * 	value=4
- * 	max_value=8
- * 	cumulative=no
- * 	affect_allies=yes
- * 	name= _ "heals"
-// * 	name_inactive=null
- * 	description=  _ "Heals:
+ *	value=4
+ *	max_value=8
+ *	cumulative=no
+ *	affect_allies=yes
+ *	name= _ "heals"
+// *	name_inactive=null
+ *	description=  _ "Heals:
 Allows the unit to heal adjacent friendly units at the beginning of each turn.
 
 A unit cared for by a healer may heal up to 4 HP per turn.
 A poisoned unit cannot be cured of its poison by a healer, and must seek the care of a village or a unit that can cure."
-// * 	description_inactive=null
- * 	icon="misc/..."
-// * 	icon_inactive=null
- * 	[adjacent_description]
- * 		name= _ "heals"
-// * 		name_inactive=null
- * 		description=  _ "Heals:
+// *	description_inactive=null
+ *	icon="misc/..."
+// *	icon_inactive=null
+ *	[adjacent_description]
+ *		name= _ "heals"
+// *		name_inactive=null
+ *		description=  _ "Heals:
 Allows the unit to heal adjacent friendly units at the beginning of each turn.
 
 A unit cared for by a healer may heal up to 4 HP per turn.
 A poisoned unit cannot be cured of its poison by a healer, and must seek the care of a village or a unit that can cure."
-// * 		description_inactive=null
- * 		icon="misc/..."
-// * 		icon_inactive=null
- * 	[/adjacent_description]
- * 	
- * 	affect_self=yes
- * 	[filter] // SUF
- * 		...
- * 	[/filter]
- * 	[filter_location]
- * 		terrain=f
- * 		tod=lawful
- * 	[/filter_location]
- * 	[filter_self] // SUF
- * 		...
- * 	[/filter_self]
- * 	[filter_adjacent] // SUF
- * 		adjacent=n,ne,nw
- * 		...
- * 	[/filter_adjacent]
- * 	[filter_adjacent_location]
- * 		adjacent=n,ne,nw
- * 		...
- * 	[/filter_adjacent]
- * 	[affect_adjacent]
- * 		adjacent=n,ne,nw
- * 		[filter] // SUF
- * 			...
- * 		[/filter]
- * 	[/affect_adjacent]
- * 	[affect_adjacent]
- * 		adjacent=s,se,sw
- * 		[filter] // SUF
- * 			...
- * 		[/filter]
- * 	[/affect_adjacent]
- * 	
+// *		description_inactive=null
+ *		icon="misc/..."
+// *		icon_inactive=null
+ *	[/adjacent_description]
+ *
+ *	affect_self=yes
+ *	[filter] // SUF
+ *		...
+ *	[/filter]
+ *	[filter_location]
+ *		terrain=f
+ *		tod=lawful
+ *	[/filter_location]
+ *	[filter_self] // SUF
+ *		...
+ *	[/filter_self]
+ *	[filter_adjacent] // SUF
+ *		adjacent=n,ne,nw
+ *		...
+ *	[/filter_adjacent]
+ *	[filter_adjacent_location]
+ *		adjacent=n,ne,nw
+ *		...
+ *	[/filter_adjacent]
+ *	[affect_adjacent]
+ *		adjacent=n,ne,nw
+ *		[filter] // SUF
+ *			...
+ *		[/filter]
+ *	[/affect_adjacent]
+ *	[affect_adjacent]
+ *		adjacent=s,se,sw
+ *		[filter] // SUF
+ *			...
+ *		[/filter]
+ *	[/affect_adjacent]
+ *
  * [/heals]
- * 
+ *
  * ...
  * [/abilities]
  *
  */
 
- 
+
 namespace unit_abilities {
 
 bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side, size_t other_side)
 {
-	return ((cfg["affect_allies"] == "" || utils::string_bool(cfg["affect_allies"])) && side == other_side) 
+	return ((cfg["affect_allies"] == "" || utils::string_bool(cfg["affect_allies"])) && side == other_side)
 			|| (utils::string_bool(cfg["affect_allies"]) && !teams[side-1].is_enemy(other_side))
 			|| (utils::string_bool(cfg["affect_enemies"]) && teams[side-1].is_enemy(other_side));
 }
@@ -116,14 +116,14 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 			}
 		}
 	}
-	
+
 	wassert(units_ != NULL);
 	wassert(teams_ != NULL);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
-		if(it != units_->end() && 
+		if(it != units_->end() &&
 					!it->second.incapacitated()) {
 			const config* adj_abilities = it->second.cfg_.child("abilities");
 			if(adj_abilities) {
@@ -138,13 +138,13 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 		}
 	}
 
-	
+
 	return false;
 }
 unit_ability_list unit::get_abilities(const std::string& ability, const gamemap::location& loc) const
 {
 	unit_ability_list res;
-	
+
 	const config* abilities = cfg_.child("abilities");
 	if(abilities) {
 		const config::child_list& list = abilities->get_children(ability);
@@ -154,13 +154,13 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 			}
 		}
 	}
-	
+
 	wassert(units_ != NULL);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units_->find(adjacent[i]);
-		if(it != units_->end() && 
+		if(it != units_->end() &&
 		!it->second.incapacitated()) {
 			const config* adj_abilities = it->second.cfg_.child("abilities");
 			if(adj_abilities) {
@@ -175,14 +175,14 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 		}
 	}
 
-	
+
 	return res;
 }
 
 std::vector<std::string> unit::unit_ability_tooltips() const
 {
 	std::vector<std::string> res;
-	
+
 	const config* abilities = cfg_.child("abilities");
 	if(abilities) {
 		const config::child_map& list_map = abilities->all_children();
@@ -201,7 +201,7 @@ std::vector<std::string> unit::unit_ability_tooltips() const
 std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) const
 {
 	std::vector<std::string> res;
-	
+
 	const config* abilities = cfg_.child("abilities");
 	if(abilities) {
 		const config::child_map& list_map = abilities->all_children();
@@ -221,7 +221,7 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 			}
 		}
 	}
-	
+
 	wassert(units_ != NULL);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
@@ -269,8 +269,8 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 			}
 		}
 	}
-	
-	
+
+
 	return res;
 }
 
@@ -295,7 +295,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 	config::child_list::const_iterator i;
 	for(i = adj_filt.begin(); i != adj_filt.end(); ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
-		if(dirs.size()==1 && dirs.front()=="") {	
+		if(dirs.size()==1 && dirs.front()=="") {
 		} else {
 			for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
 				index = gamemap::location::parse_direction(*j);
@@ -315,7 +315,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 	const config::child_list& adj_filt_loc = cfg.get_children("filter_adjacent_location");
 	for(i = adj_filt_loc.begin(); i != adj_filt_loc.end(); ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
-		if(dirs.size()==1 && dirs.front()=="") {	
+		if(dirs.size()==1 && dirs.front()=="") {
 		} else {
 			for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
 				index = gamemap::location::parse_direction(*j);
@@ -457,32 +457,32 @@ std::pair<int,gamemap::location> unit_ability_list::lowest(const std::string& ke
 
 
 
-/* 
- * 
+/*
+ *
  * [special]
  * [swarm]
- * 	name= _ "swarm"
- * 	name_inactive= _ ""
- * 	description= _ ""
- * 	description_inactive= _ ""
- * 	cumulative=no
- * 	apply_to=self  #self,opponent,defender,attacker
- * 	#active_on=defend  .. offense
- * 	
- * 	attacks_max=4
- * 	attacks_min=2
- * 	
- * 	[filter_self] // SUF
- * 		...
- * 	[/filter_self]
- * 	[filter_opponent] // SUF
- * 	[filter_attacker] // SUF
- * 	[filter_defender] // SUF
- * 	[filter_adjacent] // SAUF
- * 	[filter_adjacent_location] // SAUF + locs
+ *	name= _ "swarm"
+ *	name_inactive= _ ""
+ *	description= _ ""
+ *	description_inactive= _ ""
+ *	cumulative=no
+ *	apply_to=self  #self,opponent,defender,attacker
+ *	#active_on=defend  .. offense
+ *
+ *	attacks_max=4
+ *	attacks_min=2
+ *
+ *	[filter_self] // SUF
+ *		...
+ *	[/filter_self]
+ *	[filter_opponent] // SUF
+ *	[filter_attacker] // SUF
+ *	[filter_defender] // SUF
+ *	[filter_adjacent] // SAUF
+ *	[filter_adjacent_location] // SAUF + locs
  * [/swarm]
  * [/special]
- * 
+ *
  */
 
 
@@ -589,7 +589,7 @@ std::string attack_type::weapon_specials(bool force) const
 			}
 		}
 	}
-	
+
 	return res.substr(0,res.size()-1);
 }
 
@@ -606,7 +606,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 	wassert(unitmap_ != NULL);
 	unit_map::const_iterator att = unitmap_->find(aloc_);
 	unit_map::const_iterator def = unitmap_->find(dloc_);
-	
+
 	if(self) {
 		if(!special_affects_self(cfg)) {
 			return false;
@@ -616,7 +616,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 			return false;
 		}
 	}
-	
+
 	if(attacker_) {
 		if(!report && cfg["active_on"] != "" && cfg["active_on"] != "offense") {
 			return false;
@@ -635,7 +635,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 			if(def == unitmap_->end() || !def->second.matches_filter(*cfg.child("filter_opponent"),dloc_)) {
 				return false;
 			}
-			
+
 			if(cfg.child("filter_opponent")->child("filter_weapon") != NULL) {
 				if(!other_attack_ || !other_attack_->matches_filter(*cfg.child("filter_opponent")->child("filter_weapon"),true)) {
 					return false;
@@ -714,7 +714,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 	config::child_list::const_iterator i;
 	for(i = adj_filt.begin(); i != adj_filt.end(); ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
-		if(dirs.size()==1 && dirs.front()=="") {	
+		if(dirs.size()==1 && dirs.front()=="") {
 		} else {
 			for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
 				index = gamemap::location::parse_direction(*j);
@@ -734,7 +734,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 	const config::child_list& adj_filt_loc = cfg.get_children("filter_adjacent_location");
 	for(i = adj_filt_loc.begin(); i != adj_filt_loc.end(); ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
-		if(dirs.size()==1 && dirs.front()=="") {	
+		if(dirs.size()==1 && dirs.front()=="") {
 		} else {
 			for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
 				index = gamemap::location::parse_direction(*j);
@@ -767,7 +767,7 @@ bool attack_type::special_affects_opponent(const config& cfg) const
 	if(cfg["apply_to"]!="") {
 		if(attacker_ && cfg["apply_to"] == "defender") {
 			return true;
-		} 
+		}
 		if(!attacker_ && cfg["apply_to"] == "attacker") {
 			return true;
 		}
@@ -790,15 +790,15 @@ bool attack_type::special_affects_self(const config& cfg) const
 	}
 	if(attacker_ && cfg["apply_to"] == "attacker") {
 		return true;
-	} 
+	}
 	if(!attacker_ && cfg["apply_to"] == "defender") {
 		return true;
 	}
 	return false;
 }
 void attack_type::set_specials_context(const gamemap::location& aloc,const gamemap::location& dloc,
-                              const game_data* gamedata, const unit_map* unitmap, 
-							  const gamemap* map, const gamestatus* game_status, 
+                              const game_data* gamedata, const unit_map* unitmap,
+							  const gamemap* map, const gamestatus* game_status,
 							  const std::vector<team>* teams, bool attacker,const attack_type* other_attack) const
 {
 	aloc_ = aloc;
@@ -848,17 +848,17 @@ void individual_effect::set(value_modifier t,int val,config* abil,const gamemap:
 
 effect::effect(const unit_ability_list& list, int def, bool backstab)
 {
-	
+
 	int value_set = def; bool value_is_set = false;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_mul;
-	
+
 	individual_effect set_effect(NOT_USED,0,NULL,gamemap::location());
-	
+
 	for(std::vector<std::pair<config*,gamemap::location> >::const_iterator i = list.cfgs.begin(); i != list.cfgs.end(); ++i) {
 		const config& cfg = (*i->first);
 		const std::string& effect_id = cfg["id"] != "" ? cfg["id"] : cfg["name"];
-		
+
 		if(utils::string_bool(cfg["backstab"]) && !backstab) {
 			continue;
 		}
@@ -886,7 +886,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 		int value = lexical_cast_default<int>(cfg["value"]);
 		int add = lexical_cast_default<int>(cfg["add"]);
 		int multiply = static_cast<int>(lexical_cast_default<float>(cfg["multiply"])*100);
-		
+
 		if(!value_is_set && !utils::string_bool(cfg["cumulative"]) && cfg["value"] != "") {
 			value_is_set = true;
 			value_set = value;
@@ -914,11 +914,11 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 			}
 		}
 	}
-	
+
 	if(value_is_set && set_effect.type != NOT_USED) {
 		effect_list_.push_back(set_effect);
 	}
-	
+
 	int multiplier = 1;
 	int divisor = 1;
 	std::map<std::string,individual_effect>::const_iterator e;
@@ -932,9 +932,9 @@ effect::effect(const unit_ability_list& list, int def, bool backstab)
 		addition += e->second.value;
 		effect_list_.push_back(e->second);
 	}
-	
+
 	composite_value_ = (value_set + addition) * multiplier / divisor;
-	
+
 }
 
 

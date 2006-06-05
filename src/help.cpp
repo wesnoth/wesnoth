@@ -818,7 +818,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			       std::back_inserter(sec.sections), create_section());
 		bool sort_topics = false;
 		bool sort_generated = true;
- 
+
 		if ((*section_cfg)["sort_topics"] == "yes") {
 		  sort_topics = true;
 		  sort_generated = true; // Used for merge so not redundant
@@ -833,10 +833,10 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		  ss << "Invalid sort option: '" << (*section_cfg)["sort_topics"] << "'";
 		  throw parse_error(ss.str());
 		}
-		  
+
 		const std::vector<std::string> topics_id = utils::quoted_split((*section_cfg)["topics"]);
 		std::vector<topic> topics;
- 		
+
 		// Find all topics in this section.
 		for (it = topics_id.begin(); it != topics_id.end(); it++) {
 			config const *topic_cfg = help_cfg->find_child("topic", "id", *it);
@@ -858,13 +858,13 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 				throw parse_error(ss.str());
 			}
 		}
-		
+
 		const std::vector<topic> generated_topics =
 		  generate_topics(sort_generated,(*section_cfg)["generator"]);
-		
-		if (sort_topics) {		  
+
+		if (sort_topics) {
 		  std::sort(topics.begin(),topics.end(), title_less());
-		  
+
 		  std::merge(generated_topics.begin(),generated_topics.end()
 			     ,topics.begin(),topics.end()
 			     ,std::back_inserter(sec.topics),title_less());

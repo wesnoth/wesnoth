@@ -408,7 +408,7 @@ void enter_lobby_mode(display& disp, const config& game_config, game_data& data,
 				preferences::show_preferences_dialog(disp,game_config);
 				disp.redraw_everything();
 			}
-			break;			
+			break;
 		default:
 			return;
 		}

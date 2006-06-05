@@ -30,7 +30,7 @@ LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_confi
 	return playcontroller.play_scenario(story, log, skip_replay);
 }
 
-playmp_controller::playmp_controller(const config& level, const game_data& gameinfo, game_state& state_of_game, 
+playmp_controller::playmp_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 									 const int ticks, const int num_turns, const config& game_config, CVideo& video,
 									 bool skip_replay)
 	: playsingle_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay)
@@ -115,7 +115,7 @@ void playmp_controller::play_human_turn(){
 				// Clock time ended
 				// If no turn bonus or action bonus -> defeat
 				const int action_increment = lexical_cast_default<int>(level_["mp_countdown_action_bonus"],0);
-				if ( lexical_cast_default<int>(level_["mp_countdown_turn_bonus"],0) == 0 
+				if ( lexical_cast_default<int>(level_["mp_countdown_turn_bonus"],0) == 0
 					&& (action_increment == 0 || current_team().action_bonus_count() == 0)) {
 					// Not possible to end level in MP with throw end_level_exception(DEFEAT);
 					// because remote players only notice network disconnection
@@ -247,7 +247,7 @@ void playmp_controller::handle_generic_event(const std::string& name){
 		playsingle_controller::handle_generic_event(name);
 		turn_data.send_data();
 	}
-	else if ((name == "ai_unit_recruited") || (name == "ai_unit_moved") 
+	else if ((name == "ai_unit_recruited") || (name == "ai_unit_moved")
 		|| (name == "ai_enemy_attacked")){
 		turn_data.sync_network();
 	}

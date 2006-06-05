@@ -100,7 +100,7 @@ bool track_ok(const std::string &name)
 	// Timothy Pinkham says:
 	// 1) can't be repeated without 2 other pieces have already played
 	// since A was played.
-	// 2) cannot play more than 2 times without every other piece 
+	// 2) cannot play more than 2 times without every other piece
 	// having played at least 1 time.
 
 	// Dammit, if our musicians keep coming up with algorithms, I'll
@@ -423,7 +423,7 @@ void write_music_play_list(config& snapshot)
 		append = true;
 	}
 }
-	
+
 void play_sound(const std::string& files)
 {
 	if(preferences::sound_on() && mix_ok) {
