@@ -288,7 +288,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		} else if(set_special == "slow") {
 			config& sp = new_specials.add_child("slow");
 			sp["name"] = t_string("slows","wesnoth");
-			sp["description"] = t_string("Slow:\nThis attack slows the target. Slow halves the damage caused by attacks and slowed units move at half the normal speed (rounded up).","wesnoth");
+			sp["description"] = t_string("Slow:\nThis attack slows the target until it ends a turn. Slow halves the damage caused by attacks and slowed units move at half the normal speed (rounded up).","wesnoth");
 		} else if(set_special == "stone") {
 			config& sp = new_specials.add_child("stones");
 			sp["name"] = t_string("stones","wesnoth");
