@@ -97,7 +97,7 @@ all-no:
 
 # stamp-po is a timestamp denoting the last time at which the CATALOGS have
 # been loosely updated. Its purpose is that when a developer or translator
-# checks out the package via CVS, and the $(DOMAIN).pot file is not in CVS,
+# checks out the package via SVN, and the $(DOMAIN).pot file is not in SVN,
 # "make" will update the $(DOMAIN).pot and the $(CATALOGS), but subsequent
 # invocations of "make" will do nothing. This timestamp would not be necessary
 # if updating the $(CATALOGS) would always touch them; however, the rule for
