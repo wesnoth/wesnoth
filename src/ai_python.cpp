@@ -77,6 +77,7 @@ ut_get( level )
 ut_get( movement )
 ut_get( cost )
 ut_get( alignment )
+ut_get( hitpoints )
 static PyObject* wrapper_unittype_get_usage( wesnoth_unittype* type, void* /*closure*/ )
 {
 	return Py_BuildValue("s",type->unit_type_->usage().c_str());
@@ -98,6 +99,7 @@ static PyGetSetDef unittype_getseters[] = {
 	ut_gs( can_advance, "If type can advance." )
 	ut_gs( has_zoc, "If type has a ZOC." )
 	ut_gs( level, "Level of the type." )
+	ut_gs( hitpoints, "Hitpoints of the type." )
 	ut_gs( usage, "AI's usage hint of the type, one of: 'archer', 'fighter', "
         "'healer', 'mixed figher', 'scout'." )
 	ut_gs( movement, "Movement points of the type." )
@@ -555,16 +557,18 @@ static PyMethodDef unit_methods[] = {
         "Parameters: location from, location to, float stop_at = 100\n"
         "Returns: location[] path\n"
         "Finds a path from 'from' to 'to', and returns it as a list of locations. "
-        "path[0] will be 'from', path[-1] will be 'to' or the nearest location costing "
-        "less than 'stop_at' movement points to reach."},
+        "path[0] will be 'from', path[-1] will be 'to' or the nearest location "
+        "costing less than 'stop_at' movement points to reach. "
+        "If no path can be found (for example, if the target is occupied by "
+        "another unit), an empty list is returned."},
     { "attack_statistics", (PyCFunction)python_ai::wrapper_unit_attack_statistics, METH_VARARGS,
-        "Parameters: location from, location to\n"
+        "Parameters: location from, location to, attack\n"
         "Returns: own_hp, enemy_hp\n"
         "Returns two dictionaries with the expected battle results when the "
-        "unit attacks from 'from' to the unit at 'to'. The dictionaries "
-        "contain the expected hitpoints after the fight, as a mapping from "
-        "hitpoints to percent, where percent are specified as floating point "
-        "value from 0 to 1. For example, a return of: "
+        "unit attacks from 'from' to the unit at 'to', using the attack with "
+        "index 'attack'. The dictionaries contain the expected hitpoints after "
+        "the fight, as a mapping from hitpoints to percent, where percent are "
+        "specified as floating point value from 0 to 1. For example, a return of: "
         "{0:1}, {50:0.5, 40:0.5} would mean, the attacking unit "
         "is certain to die (probability for 0 hitpoints is 1), and the enemy "
         "unit will either remain at 50 or 40 HP after the fight, with equal "
