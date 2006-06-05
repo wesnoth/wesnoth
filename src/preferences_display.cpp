@@ -372,7 +372,8 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 {
 	bg_register(rect);
 
-	const int border = font::relative_size(10);
+	const int top_border = 28;
+	const int right_border = font::relative_size(10);
 #if USE_TINY_GUI
 	const int item_interline = 20;
 #else
@@ -380,10 +381,10 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 #endif
 
 	// General tab
-	int ypos = rect.y;
+	int ypos = rect.y + top_border;
 	scroll_label_.set_location(rect.x, ypos);
 	SDL_Rect scroll_rect = { rect.x + scroll_label_.width(), ypos,
-	                         rect.w - scroll_label_.width() - border, 0 };
+	                         rect.w - scroll_label_.width() - right_border, 0 };
 	scroll_slider_.set_location(scroll_rect);
 	ypos += item_interline; turbo_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_ai_moves_button_.set_location(rect.x, ypos);
@@ -394,12 +395,12 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; hotkeys_button_.set_location(rect.x, ypos);
 
 	// Display tab
-	ypos = rect.y;
+	ypos = rect.y + top_border;
 	gamma_button_.set_location(rect.x, ypos);
 	ypos += item_interline;
 	gamma_label_.set_location(rect.x, ypos);
 	SDL_Rect gamma_rect = { rect.x + gamma_label_.width(), ypos,
-	                        rect.w - gamma_label_.width() - border, 0 };
+	                        rect.w - gamma_label_.width() - right_border, 0 };
 	gamma_slider_.set_location(gamma_rect);
 	ypos += item_interline; flip_time_button_.set_location(rect.x,ypos);
 	ypos += item_interline; show_floating_labels_button_.set_location(rect.x, ypos);
@@ -411,13 +412,13 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	// Sound tab
 	slider_label_width_ = maximum<unsigned>(music_label_.width(), sound_label_.width());
-	ypos = rect.y;
+	ypos = rect.y + top_border;
 	sound_button_.set_location(rect.x, ypos);
 
 	ypos += item_interline;
 	sound_label_.set_location(rect.x, ypos);
 	const SDL_Rect sound_rect = { rect.x + slider_label_width_, ypos,
-	                        rect.w - slider_label_width_ - border, 0 };
+	                        rect.w - slider_label_width_ - right_border, 0 };
 	sound_slider_.set_location(sound_rect);
 
 	ypos += item_interline;
@@ -426,24 +427,24 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline;
 	music_label_.set_location(rect.x, ypos);
 	const SDL_Rect music_rect = { rect.x + slider_label_width_, ypos,
-	                        rect.w - slider_label_width_ - border, 0 };
+	                        rect.w - slider_label_width_ - right_border, 0 };
 	music_slider_.set_location(music_rect);
 
         // Multiplayer tab
-        ypos = rect.y;
+        ypos = rect.y + top_border;
         chat_lines_label_.set_location(rect.x, ypos);
         SDL_Rect chat_lines_rect = { rect.x + slider_label_width_, ypos,
-                                     rect.w - slider_label_width_ - border, 0 };
+                                     rect.w - slider_label_width_ - right_border, 0 };
         chat_lines_slider_.set_location(chat_lines_rect);
         ypos += item_interline; chat_timestamp_button_.set_location(rect.x, ypos);
 	ypos += item_interline;	show_lobby_joins_button_.set_location(rect.x, ypos);
 
 	//Advanced tab
-	ypos = rect.y;
+	ypos = rect.y + top_border;
 	advanced_.set_location(rect.x,ypos);
 	advanced_.set_max_height(height()-100);
 
-	ypos += advanced_.height() + border;
+	ypos += advanced_.height() + font::relative_size(14);
 
 	advanced_button_.set_location(rect.x,ypos);
 
