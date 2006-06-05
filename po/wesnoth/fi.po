@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-04 18:26+0200\n"
+"POT-Creation-Date: 2006-06-05 12:49+0200\n"
 "PO-Revision-Date: 2006-04-12 11:06+0200\n"
 "Last-Translator: Mikko Kraft <mikkokraft@gmail.com>\n"
 "Language-Team: none\n"
@@ -286,10 +286,12 @@ msgid "slows"
 msgstr "hidastaa"
 
 #: data/abilities.cfg:445
+#, fuzzy
 msgid ""
 "Slow:\n"
-"This attack slows the target. Slow halves the damage caused by attacks and "
-"slowed units move at half the normal speed (rounded up)."
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and slowed units move at half the normal speed (rounded "
+"up)."
 msgstr ""
 "Hidastus:\n"
 "Hidastushyökkäys puolittaa uhrin tekemän vahingon ja liikkumisen "
@@ -3272,7 +3274,7 @@ msgstr "taitava"
 #: data/help.cfg:323
 #, fuzzy
 msgid ""
-"Dextrous units do 1 more damage for every successful strike in range combat."
+"Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Taitavat yksiköt tekevät 1 vahingon enemmän jokaisella osumalla ampuessaan "
 "jousella."
@@ -4861,7 +4863,7 @@ msgstr ""
 #: data/special-notes.cfg:50
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
-"attack damage."
+"attack damage until they end a turn."
 msgstr ""
 
 #: data/special-notes.cfg:53
@@ -5037,7 +5039,7 @@ msgstr "Toiminnot"
 msgid "End Turn"
 msgstr "Lopeta vuoro"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2254
+#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2257
 msgid "HP"
 msgstr "EP"
 
@@ -5386,9 +5388,10 @@ msgstr ""
 "niitä hyökkäävien yksiköiden tukemiseen."
 
 #: data/tips.cfg:29
+#, fuzzy
 msgid ""
-"The 'slow' attack ability makes enemy units move slower, but it also halves "
-"the damage they do on all attacks."
+"The 'slow' attack ability makes enemy units move slower and halves the "
+"damage they do on all attacks until they end a turn."
 msgstr ""
 "'Hidas' -hyökkäystaito saa vihollisen liikkumaan hitaammin, mutta puolittaa "
 "lisäksi tämän tekemän vahingon."
@@ -9851,31 +9854,31 @@ msgstr "hidastettu"
 msgid "stone"
 msgstr "kivetys"
 
-#: src/actions.cpp:1969
+#: src/actions.cpp:1970
 msgid "Ambushed!"
 msgstr "Väijytys!"
 
-#: src/actions.cpp:2004
+#: src/actions.cpp:2005
 msgid "Friendly unit sighted"
 msgstr "Ystävä havaittu"
 
-#: src/actions.cpp:2006
+#: src/actions.cpp:2007
 msgid "Enemy unit sighted!"
 msgstr "Vihollinen havaittu!"
 
-#: src/actions.cpp:2011
+#: src/actions.cpp:2012
 msgid "$friends Friendly units sighted"
 msgstr "$friends ystävää havaittu"
 
-#: src/actions.cpp:2013
+#: src/actions.cpp:2014
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies vihollista havaittu!"
 
-#: src/actions.cpp:2017
+#: src/actions.cpp:2018
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Yksiköitä näköpiirissä! ($friends ystävää, $enemies vihollista)"
 
-#: src/actions.cpp:2032
+#: src/actions.cpp:2033
 msgid "(press $hotkey to continue)"
 msgstr "(paina $hotkey jatkaaksesi)"
 
@@ -10563,7 +10566,7 @@ msgstr "Otettu vahinko (odotusarvo)"
 msgid "Statistics"
 msgstr "Tilastot"
 
-#: src/menu_events.cpp:237 src/unit.cpp:2285
+#: src/menu_events.cpp:237 src/unit.cpp:2288
 msgid "Moves"
 msgstr "Liike"
 
@@ -10913,12 +10916,12 @@ msgid "Normal"
 msgstr "Normaali"
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2369
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2372
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2376
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2379
 msgid ")"
 msgstr ")"
 
@@ -11655,15 +11658,15 @@ msgstr "Apua"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnothin kirja"
 
-#: src/unit.cpp:2220 src/unit.cpp:2374
+#: src/unit.cpp:2223 src/unit.cpp:2377
 msgid "; "
 msgstr "."
 
-#: src/unit.cpp:2302
+#: src/unit.cpp:2305
 msgid "XP to advance"
 msgstr "KP:tä ylenemiseen:"
 
-#: src/unit.cpp:2365
+#: src/unit.cpp:2368
 msgid ": "
 msgstr ":"
 
@@ -11683,11 +11686,11 @@ msgstr "lainkuuliainen"
 msgid "neutral"
 msgstr "neutraali"
 
-#: src/upload_log.cpp:272
+#: src/upload_log.cpp:278
 msgid "Enable summary uploads"
 msgstr ""
 
-#: src/upload_log.cpp:277
+#: src/upload_log.cpp:283
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
@@ -11699,16 +11702,16 @@ msgstr ""
 "peleistäsi: voit auttaa meitä parantamaan Wesnothia antamalla luvan lähettää "
 "tietoja peleistäsi (nimettömästi) wesnoth.org-sivustolle.\n"
 
-#: src/upload_log.cpp:278
+#: src/upload_log.cpp:284
 msgid "Summaries are stored here:"
 msgstr ""
 
-#: src/upload_log.cpp:280
+#: src/upload_log.cpp:286
 #, fuzzy
 msgid "You can view the results at:"
 msgstr "Voit selata tuloksia täällä:"
 
-#: src/upload_log.cpp:285
+#: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
 msgstr "Auta meitä kehittämään Wesnothista parempi sinulle!"
 

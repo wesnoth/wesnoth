@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-04 18:26+0200\n"
+"POT-Creation-Date: 2006-06-05 12:49+0200\n"
 "PO-Revision-Date: 2006-04-10 20:22+0100\n"
 "Last-Translator: Rastislav Šarišský <rsarissky@post.sk>\n"
 "Language-Team: \n"
@@ -309,8 +309,9 @@ msgstr "malrapido"
 #: data/abilities.cfg:445
 msgid ""
 "Slow:\n"
-"This attack slows the target. Slow halves the damage caused by attacks and "
-"slowed units move at half the normal speed (rounded up)."
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and slowed units move at half the normal speed (rounded "
+"up)."
 msgstr ""
 
 #: data/abilities.cfg:451
@@ -3445,7 +3446,7 @@ msgstr "Lerta"
 #: data/help.cfg:323
 #, fuzzy
 msgid ""
-"Dextrous units do 1 more damage for every successful strike in range combat."
+"Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Lerta milit-unuo kaŭzas je 1 punkto pli grandan damaĝon ĉe ĉiu sukcesa "
 "pafarka  trafo."
@@ -4993,7 +4994,7 @@ msgstr ""
 #: data/special-notes.cfg:50
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
-"attack damage."
+"attack damage until they end a turn."
 msgstr ""
 
 #: data/special-notes.cfg:53
@@ -5177,7 +5178,7 @@ msgstr "Ago"
 msgid "End Turn"
 msgstr "Fino de turno"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2254
+#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2257
 msgid "HP"
 msgstr "Vivoj"
 
@@ -5538,8 +5539,8 @@ msgstr ""
 #: data/tips.cfg:29
 #, fuzzy
 msgid ""
-"The 'slow' attack ability makes enemy units move slower, but it also halves "
-"the damage they do on all attacks."
+"The 'slow' attack ability makes enemy units move slower and halves the "
+"damage they do on all attacks until they end a turn."
 msgstr ""
 "Malrapidiga atako kaŭzas, ke malakmika milit-unuo moviĝos malplirapide kaj "
 "ankaŭ havos je 1 atako malpli ol kutime. Tio efikas precipe kontraŭ milit-"
@@ -9998,31 +9999,31 @@ msgstr "malrapidiga"
 msgid "stone"
 msgstr "ŝtono"
 
-#: src/actions.cpp:1969
+#: src/actions.cpp:1970
 msgid "Ambushed!"
 msgstr "Atako!"
 
-#: src/actions.cpp:2004
+#: src/actions.cpp:2005
 msgid "Friendly unit sighted"
 msgstr "Mi vidas amikan milit-unuon"
 
-#: src/actions.cpp:2006
+#: src/actions.cpp:2007
 msgid "Enemy unit sighted!"
 msgstr "Mi vidas malamikan milit-unuon!"
 
-#: src/actions.cpp:2011
+#: src/actions.cpp:2012
 msgid "$friends Friendly units sighted"
 msgstr "Mi vidas $friends da amikajn milit-unuojn"
 
-#: src/actions.cpp:2013
+#: src/actions.cpp:2014
 msgid "$enemies Enemy units sighted!"
 msgstr "Mi vidas $enemies da malamikajn milit-unuojn!"
 
-#: src/actions.cpp:2017
+#: src/actions.cpp:2018
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Mi vidas milit-unuojn! (amikoj: $friends, malamioj: $enemies)"
 
-#: src/actions.cpp:2032
+#: src/actions.cpp:2033
 msgid "(press $hotkey to continue)"
 msgstr "(premu $hotkey por daŭrigi)"
 
@@ -10717,7 +10718,7 @@ msgstr "Akiritaj vundoj (pritakso)"
 msgid "Statistics"
 msgstr "Statistiko"
 
-#: src/menu_events.cpp:237 src/unit.cpp:2285
+#: src/menu_events.cpp:237 src/unit.cpp:2288
 msgid "Moves"
 msgstr "Movoj"
 
@@ -11060,12 +11061,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2369
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2372
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2376
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2379
 msgid ")"
 msgstr ")"
 
@@ -11813,15 +11814,15 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "- Kroniko de Vesnot"
 
-#: src/unit.cpp:2220 src/unit.cpp:2374
+#: src/unit.cpp:2223 src/unit.cpp:2377
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2302
+#: src/unit.cpp:2305
 msgid "XP to advance"
 msgstr "Spertoj por avanco"
 
-#: src/unit.cpp:2365
+#: src/unit.cpp:2368
 msgid ": "
 msgstr ":"
 
@@ -11841,11 +11842,11 @@ msgstr "Ordema"
 msgid "neutral"
 msgstr "Neŭtrala"
 
-#: src/upload_log.cpp:272
+#: src/upload_log.cpp:278
 msgid "Enable summary uploads"
 msgstr ""
 
-#: src/upload_log.cpp:277
+#: src/upload_log.cpp:283
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
@@ -11853,15 +11854,15 @@ msgid ""
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
 
-#: src/upload_log.cpp:278
+#: src/upload_log.cpp:284
 msgid "Summaries are stored here:"
 msgstr ""
 
-#: src/upload_log.cpp:280
+#: src/upload_log.cpp:286
 msgid "You can view the results at:"
 msgstr ""
 
-#: src/upload_log.cpp:285
+#: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-04 18:26+0200\n"
+"POT-Creation-Date: 2006-06-05 12:49+0200\n"
 "PO-Revision-Date: 2006-06-03 18:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -294,10 +294,12 @@ msgid "slows"
 msgstr "lassítás"
 
 #: data/abilities.cfg:445
+#, fuzzy
 msgid ""
 "Slow:\n"
-"This attack slows the target. Slow halves the damage caused by attacks and "
-"slowed units move at half the normal speed (rounded up)."
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and slowed units move at half the normal speed (rounded "
+"up)."
 msgstr ""
 "Lassítás:\n"
 "Ez a támadás lelassítja a célpontot. A lassítás megfelezi a támadások által "
@@ -3257,7 +3259,7 @@ msgstr "Ügyeskezű"
 #: data/help.cfg:323
 #, fuzzy
 msgid ""
-"Dextrous units do 1 more damage for every successful strike in range combat."
+"Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Az ügyeskezű egységek eggyel többet sebeznek minden sikeres távolsági "
 "támadás során."
@@ -4909,7 +4911,7 @@ msgstr ""
 #: data/special-notes.cfg:50
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
-"attack damage."
+"attack damage until they end a turn."
 msgstr ""
 
 #: data/special-notes.cfg:53
@@ -5080,7 +5082,7 @@ msgstr "Parancsok"
 msgid "End Turn"
 msgstr "Kör vége"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2254
+#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2257
 msgid "HP"
 msgstr "ÉP"
 
@@ -5430,9 +5432,10 @@ msgstr ""
 "anélkül hogy bárkit is maguk kellene megtámadniuk."
 
 #: data/tips.cfg:29
+#, fuzzy
 msgid ""
-"The 'slow' attack ability makes enemy units move slower, but it also halves "
-"the damage they do on all attacks."
+"The 'slow' attack ability makes enemy units move slower and halves the "
+"damage they do on all attacks until they end a turn."
 msgstr ""
 "A \"lassító\" támadás képessége lelassítja az ellenséget és megfelezi az "
 "általa kifejthető sebzést is."
@@ -9500,31 +9503,31 @@ msgstr "lelassított"
 msgid "stone"
 msgstr "kővéváltoztatás"
 
-#: src/actions.cpp:1969
+#: src/actions.cpp:1970
 msgid "Ambushed!"
 msgstr "Rajtaütés!"
 
-#: src/actions.cpp:2004
+#: src/actions.cpp:2005
 msgid "Friendly unit sighted"
 msgstr "Szövetséges egység a láthatáron"
 
-#: src/actions.cpp:2006
+#: src/actions.cpp:2007
 msgid "Enemy unit sighted!"
 msgstr "Ellenséges egység a láthatáron!"
 
-#: src/actions.cpp:2011
+#: src/actions.cpp:2012
 msgid "$friends Friendly units sighted"
 msgstr "$friends szövetséges egység a láthatáron"
 
-#: src/actions.cpp:2013
+#: src/actions.cpp:2014
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies ellenséges egység a láthatáron!"
 
-#: src/actions.cpp:2017
+#: src/actions.cpp:2018
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Egységek a láthatáron! ($friends szövetséges, $enemies ellenséges)"
 
-#: src/actions.cpp:2032
+#: src/actions.cpp:2033
 msgid "(press $hotkey to continue)"
 msgstr "(a folytatáshoz nyomd le ezt: $hotkey)"
 
@@ -10215,7 +10218,7 @@ msgstr "Elszenvedett sebzés (EV)"
 msgid "Statistics"
 msgstr "Statisztika"
 
-#: src/menu_events.cpp:237 src/unit.cpp:2285
+#: src/menu_events.cpp:237 src/unit.cpp:2288
 msgid "Moves"
 msgstr "lép"
 
@@ -10563,12 +10566,12 @@ msgid "Normal"
 msgstr "Sima"
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2369
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2372
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2376
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2379
 msgid ")"
 msgstr ")"
 
@@ -11304,15 +11307,15 @@ msgstr "Súgó"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoth kódexe "
 
-#: src/unit.cpp:2220 src/unit.cpp:2374
+#: src/unit.cpp:2223 src/unit.cpp:2377
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2302
+#: src/unit.cpp:2305
 msgid "XP to advance"
 msgstr "TP a szintlépésig"
 
-#: src/unit.cpp:2365
+#: src/unit.cpp:2368
 msgid ": "
 msgstr ": "
 
@@ -11332,11 +11335,11 @@ msgstr "igazságos"
 msgid "neutral"
 msgstr "semleges"
 
-#: src/upload_log.cpp:272
+#: src/upload_log.cpp:278
 msgid "Enable summary uploads"
 msgstr ""
 
-#: src/upload_log.cpp:277
+#: src/upload_log.cpp:283
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
@@ -11348,15 +11351,15 @@ msgstr ""
 "játékaid összesítéseit. Azzal, hogy megenged a játéknak, hogy elküldje "
 "ezeket (névtelenül) a wesnoth.org-ra, segítheted a fejlesztést.\n"
 
-#: src/upload_log.cpp:278
+#: src/upload_log.cpp:284
 msgid "Summaries are stored here:"
 msgstr "Az összegzések ide mentődnek: "
 
-#: src/upload_log.cpp:280
+#: src/upload_log.cpp:286
 msgid "You can view the results at:"
 msgstr "Az eredményeket megnézheted itt:"
 
-#: src/upload_log.cpp:285
+#: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
 msgstr "Segíts a Wesnoth tökéletesítésében!"
 

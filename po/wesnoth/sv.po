@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-04 18:26+0200\n"
+"POT-Creation-Date: 2006-06-05 12:49+0200\n"
 "PO-Revision-Date: 2006-05-31 01:17+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -289,10 +289,12 @@ msgid "slows"
 msgstr "sakta ner"
 
 #: data/abilities.cfg:445
+#, fuzzy
 msgid ""
 "Slow:\n"
-"This attack slows the target. Slow halves the damage caused by attacks and "
-"slowed units move at half the normal speed (rounded up)."
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and slowed units move at half the normal speed (rounded "
+"up)."
 msgstr ""
 "Sakta ner\n"
 "Denna attack saktar ner motståndaren. En nersaktad trupp vållar hälften av "
@@ -3288,7 +3290,7 @@ msgstr "Träffsäker"
 #: data/help.cfg:323
 #, fuzzy
 msgid ""
-"Dextrous units do 1 more damage for every successful strike in range combat."
+"Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Träffsäkra trupper åsamkar 1 extra poäng i skada för varje pil som träffar."
 
@@ -4973,9 +4975,10 @@ msgid " Foes who lose their life to the plague will rise again in unlife."
 msgstr " Fiender som går under i pesten återuppväcks till ett vanliv."
 
 #: data/special-notes.cfg:50
+#, fuzzy
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
-"attack damage."
+"attack damage until they end a turn."
 msgstr ""
 " Denna trupp har förmågan att sakta ner sina fiender, vilket minskar deras "
 "förflyttning och den skada de vållar med hälften."
@@ -5158,7 +5161,7 @@ msgstr "Handlingar"
 msgid "End Turn"
 msgstr "Avsluta draget"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2254
+#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2257
 msgid "HP"
 msgstr "HP"
 
@@ -5504,9 +5507,10 @@ msgstr ""
 "dina slag för dig utan att själva attackera."
 
 #: data/tips.cfg:29
+#, fuzzy
 msgid ""
-"The 'slow' attack ability makes enemy units move slower, but it also halves "
-"the damage they do on all attacks."
+"The 'slow' attack ability makes enemy units move slower and halves the "
+"damage they do on all attacks until they end a turn."
 msgstr ""
 "Fiender som träffats av en attack med egenskapen att 'sakta ner' rör sig "
 "långsammare, och skadan de åsamkar halveras för alla deras attacker."
@@ -9862,32 +9866,32 @@ msgstr "långsam"
 msgid "stone"
 msgstr "förstena"
 
-#: src/actions.cpp:1969
+#: src/actions.cpp:1970
 msgid "Ambushed!"
 msgstr "Bakhåll!"
 
-#: src/actions.cpp:2004
+#: src/actions.cpp:2005
 msgid "Friendly unit sighted"
 msgstr "Allierad trupp inom synhåll"
 
-#: src/actions.cpp:2006
+#: src/actions.cpp:2007
 msgid "Enemy unit sighted!"
 msgstr "Fiendetrupp inom synhåll!"
 
-#: src/actions.cpp:2011
+#: src/actions.cpp:2012
 msgid "$friends Friendly units sighted"
 msgstr "$friends allierade trupper inom synhåll"
 
-#: src/actions.cpp:2013
+#: src/actions.cpp:2014
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies fiendetrupper inom synhåll!"
 
-#: src/actions.cpp:2017
+#: src/actions.cpp:2018
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr ""
 "Trupper inom synhåll! ($friends allierade trupper, $enemies fiendetrupper)"
 
-#: src/actions.cpp:2032
+#: src/actions.cpp:2033
 msgid "(press $hotkey to continue)"
 msgstr "(Tryck på $hotkey för att fortsätta)"
 
@@ -10579,7 +10583,7 @@ msgstr "Mottagen skada (VV)"
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/menu_events.cpp:237 src/unit.cpp:2285
+#: src/menu_events.cpp:237 src/unit.cpp:2288
 msgid "Moves"
 msgstr "Förflyttning"
 
@@ -10924,12 +10928,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2369
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2372
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2376
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2379
 msgid ")"
 msgstr ")"
 
@@ -11666,15 +11670,15 @@ msgstr "Hjälp"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoths krönika"
 
-#: src/unit.cpp:2220 src/unit.cpp:2374
+#: src/unit.cpp:2223 src/unit.cpp:2377
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2302
+#: src/unit.cpp:2305
 msgid "XP to advance"
 msgstr "EP till befordran"
 
-#: src/unit.cpp:2365
+#: src/unit.cpp:2368
 msgid ": "
 msgstr ": "
 
@@ -11694,11 +11698,11 @@ msgstr "redbar"
 msgid "neutral"
 msgstr "neutral"
 
-#: src/upload_log.cpp:272
+#: src/upload_log.cpp:278
 msgid "Enable summary uploads"
 msgstr ""
 
-#: src/upload_log.cpp:277
+#: src/upload_log.cpp:283
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
@@ -11712,15 +11716,15 @@ msgstr ""
 "till wesnoth.org.\n"
 "\n"
 
-#: src/upload_log.cpp:278
+#: src/upload_log.cpp:284
 msgid "Summaries are stored here:"
 msgstr "Sammanställningar sparas här:"
 
-#: src/upload_log.cpp:280
+#: src/upload_log.cpp:286
 msgid "You can view the results at:"
 msgstr "Du kan se resultaten på:"
 
-#: src/upload_log.cpp:285
+#: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjälp oss att förbättra Wesnoth!"
 

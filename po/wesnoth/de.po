@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-04 18:26+0200\n"
+"POT-Creation-Date: 2006-06-05 12:49+0200\n"
 "PO-Revision-Date: 2006-05-28 14:03+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
@@ -304,10 +304,12 @@ msgid "slows"
 msgstr "verlangsamen"
 
 #: data/abilities.cfg:445
+#, fuzzy
 msgid ""
 "Slow:\n"
-"This attack slows the target. Slow halves the damage caused by attacks and "
-"slowed units move at half the normal speed (rounded up)."
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and slowed units move at half the normal speed (rounded "
+"up)."
 msgstr ""
 "Verlangsamen:\n"
 "Unsichtbare Fäden scheinen das Opfer zu behindern und festzuhalten. "
@@ -3438,7 +3440,7 @@ msgstr "Treffsicher"
 #: data/help.cfg:323
 #, fuzzy
 msgid ""
-"Dextrous units do 1 more damage for every successful strike in range combat."
+"Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Treffsichere Einheiten richten einen Punkt mehr Schaden an, wenn sie mit dem "
 "Bogen angreifen."
@@ -5235,9 +5237,10 @@ msgstr ""
 "Leiche, um an der Seite dieser Einheit zu kämpfen."
 
 #: data/special-notes.cfg:50
+#, fuzzy
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
-"attack damage."
+"attack damage until they end a turn."
 msgstr ""
 "Diese Einheit kann ihre Gegner verlangsamen, so dass die Aktionen des "
 "Gegners im Kampf sowie seine Bewegungspunkte um die Hälfte reduziert werden."
@@ -5427,7 +5430,7 @@ msgstr "Aktionen"
 msgid "End Turn"
 msgstr "Zug beenden"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2254
+#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2257
 msgid "HP"
 msgstr "LP"
 
@@ -5794,9 +5797,10 @@ msgstr ""
 "Kampf zu Euren Gunsten wenden, ohne selbst anzugreifen."
 
 #: data/tips.cfg:29
+#, fuzzy
 msgid ""
-"The 'slow' attack ability makes enemy units move slower, but it also halves "
-"the damage they do on all attacks."
+"The 'slow' attack ability makes enemy units move slower and halves the "
+"damage they do on all attacks until they end a turn."
 msgstr ""
 "Der »Verlangsamungs«-Angriff verringert die Anzahl gegnerischer BP und "
 "halbiert außerdem den angerichteten Schaden bei jeder gegnerischen Attacke."
@@ -10480,31 +10484,31 @@ msgstr "verlangsamt"
 msgid "stone"
 msgstr "versteinern"
 
-#: src/actions.cpp:1969
+#: src/actions.cpp:1970
 msgid "Ambushed!"
 msgstr "Hinterhalt!"
 
-#: src/actions.cpp:2004
+#: src/actions.cpp:2005
 msgid "Friendly unit sighted"
 msgstr "Verbündete Einheit gesichtet!"
 
-#: src/actions.cpp:2006
+#: src/actions.cpp:2007
 msgid "Enemy unit sighted!"
 msgstr "Gegnerische Einheit gesichtet!"
 
-#: src/actions.cpp:2011
+#: src/actions.cpp:2012
 msgid "$friends Friendly units sighted"
 msgstr "$friends verbündete Einheiten gesichtet!"
 
-#: src/actions.cpp:2013
+#: src/actions.cpp:2014
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies gegnerische Einheiten gesichtet!"
 
-#: src/actions.cpp:2017
+#: src/actions.cpp:2018
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Einheiten gesichtet! ($friends verbündete, $enemies gegnerische)"
 
-#: src/actions.cpp:2032
+#: src/actions.cpp:2033
 msgid "(press $hotkey to continue)"
 msgstr "(Drückt $hotkey um fortzufahren)"
 
@@ -11202,7 +11206,7 @@ msgstr "Erlittener Schaden (EV)"
 msgid "Statistics"
 msgstr "Statistiken"
 
-#: src/menu_events.cpp:237 src/unit.cpp:2285
+#: src/menu_events.cpp:237 src/unit.cpp:2288
 msgid "Moves"
 msgstr "BP"
 
@@ -11561,12 +11565,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2369
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2372
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2376
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2379
 msgid ")"
 msgstr ")"
 
@@ -12311,15 +12315,15 @@ msgstr "Hilfe"
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Das Buch von Wesnoth"
 
-#: src/unit.cpp:2220 src/unit.cpp:2374
+#: src/unit.cpp:2223 src/unit.cpp:2377
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2302
+#: src/unit.cpp:2305
 msgid "XP to advance"
 msgstr "EP pro Stufenanstieg"
 
-#: src/unit.cpp:2365
+#: src/unit.cpp:2368
 msgid ": "
 msgstr ": "
 
@@ -12339,11 +12343,11 @@ msgstr "redlich"
 msgid "neutral"
 msgstr "neutral"
 
-#: src/upload_log.cpp:272
+#: src/upload_log.cpp:278
 msgid "Enable summary uploads"
 msgstr ""
 
-#: src/upload_log.cpp:277
+#: src/upload_log.cpp:283
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
@@ -12355,15 +12359,15 @@ msgstr ""
 "könnt uns dabei helfen, die Spielbarkeit zu erhöhen, indem Ihr die "
 "Übertragung dieser Zusammenfassungen (anonym) an wesnoth.org erlaubt.\n"
 
-#: src/upload_log.cpp:278
+#: src/upload_log.cpp:284
 msgid "Summaries are stored here:"
 msgstr "Zusammenfassungen werden hier gespeichert:"
 
-#: src/upload_log.cpp:280
+#: src/upload_log.cpp:286
 msgid "You can view the results at:"
 msgstr "Betrachtet die Ergebnisse unter:"
 
-#: src/upload_log.cpp:285
+#: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
 msgstr "Helft uns, Wesnoth zu verbessern!"
 
