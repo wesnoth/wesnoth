@@ -1302,10 +1302,10 @@ void unit::set_defending(const display &disp,const gamemap::location& loc, int d
 	int anim_time = anim_->get_last_frame_time();
 	const std::string my_image = anim_->get_last_frame().image;
 	if(damage) {
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),0.5));
-		anim_time += 30;
-		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),0.0));
-		anim_time += 30;
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,0,0),0.5));
+		anim_time += 50;
+		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,0,0),0.0));
+		anim_time += 50;
 	}
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
