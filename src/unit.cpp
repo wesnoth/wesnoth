@@ -208,6 +208,8 @@ void unit::write_checksum(std::string& str) const
 	config unit_config;
 	write(unit_config);
 	unit_config["controller"] = "";
+	// since the ai messes up the 'moves' attribute, ignore that for the checksum
+	unit_config["moves"] = "";
 	str = unit_config.hash();
 }
 
