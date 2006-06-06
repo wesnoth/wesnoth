@@ -447,7 +447,7 @@ void server::run()
 						delete_game(i);
 						e.socket = 0;
 						break;
-					} else {
+					} else if(i->is_member(e.socket)) {
 						if(pl_name != "" && i->is_player(e.socket)) {
 							i->send_data(construct_server_message(pl_name + " has disconnected",*i));
 						}
