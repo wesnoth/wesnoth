@@ -33,7 +33,7 @@ namespace game_config
 	extern int leadership_bonus;
 	extern const std::string version;
 
-	extern bool debug, editor, ignore_replay_errors, mp_debug;
+	extern bool debug, editor, ignore_replay_errors, mp_debug, exit_at_end, no_delay;
 
 	extern std::string path;
 

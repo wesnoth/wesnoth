@@ -204,6 +204,8 @@ game_controller::game_controller(int argc, char** argv)
 		} else if(val == "--debug" || val == "-d") {
 			game_config::debug = true;
 			game_config::mp_debug = true;
+		} else if(val == "--no-delay") {
+			game_config::no_delay = true;
 		} else if (val.substr(0, 6) == "--log-") {
 		} else if(val == "--nosound") {
 			preferences::set_sound(false);
@@ -264,6 +266,7 @@ bool game_controller::init_video()
 			return false;
 		}
 		video_.make_fake();
+		game_config::no_delay = true;
 		return true;
 	}
 
@@ -491,6 +494,10 @@ bool game_controller::play_multiplayer_mode()
 			} else {
 				std::cerr << "unrecognized option: '" << name << "'\n";
 				return false;
+			}
+		} else {
+			if (val == "--exit-at-end") {
+				game_config::exit_at_end = true;
 			}
 		}
 	}
@@ -1573,6 +1580,7 @@ int play_game(int argc, char** argv)
 			<< "  -t, --test                   runs the game in a small test scenario.\n"
 			<< "  -v, --version                prints the game's version number and exits.\n"
 			<< "  -w, --windowed               runs the game in windowed mode.\n"
+			<< "  --no-delay                   run the game without any delays.\n"
 			<< "  --multiplayer                runs a multiplayer game. There are additional\n"
 			<< "                               options that can be used as explained below:\n"
 			<< "  --algorithm<number>=value    selects a non-standard algorithm to be used by the\n"
@@ -1587,6 +1595,7 @@ int play_game(int argc, char** argv)
 			<< "  --side<number>=value         selects a faction of the current era for this side\n"
 			<< "                               by id.\n"
 			<< "  --turns=value                sets the number of turns. The default is \"50\".\n"
+			<< "  --exit-at-end                exit Wesnoth at end of scenario.\n"
 			;
 			return 0;
 		} else if(val == "--version" || val == "-v") {

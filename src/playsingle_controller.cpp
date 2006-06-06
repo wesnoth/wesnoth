@@ -195,6 +195,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		throw;
 	} catch(end_level_exception& end_level) {
 		bool obs = team_manager_.is_observer();
+		if (game_config::exit_at_end) {
+			exit(0);
+		}
 		if (end_level.result == DEFEAT || end_level.result == VICTORY) {
 			// if we're a player, and the result is victory/defeat, then send a message to notify
 			// the server of the reason for the game ending

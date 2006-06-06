@@ -2186,7 +2186,7 @@ void display::non_turbo_delay() const
 
 void display::delay(unsigned int milliseconds) const
 {
-	if (!screen_.faked())
+	if (!game_config::no_delay)
 		SDL_Delay(milliseconds);
 }
 
