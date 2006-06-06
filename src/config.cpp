@@ -619,7 +619,6 @@ std::string config::hash() const
 	i = 0;
 	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
 		if(val->first.size() && val->second.size()) {
-			std::cerr << "Hashing '" << val->first << "'='" << val->second << "'\n";
 			for(c = val->first.begin(); c != val->first.end(); ++c) {
 				if(utils::portable_isspace(*c)) {
 					continue;
@@ -644,9 +643,7 @@ std::string config::hash() const
 	}
 	for(child_map::const_iterator list = children.begin(); list != children.end(); ++list) {
 		for(child_list::const_iterator child = list->second.begin(); child != list->second.end(); ++child) {
-			std::cerr << "Hashing child '" << list->first << "'\n";
 			std::string child_hash = (*child)->hash();
-			std::cerr << "child '" << list->first << "' done\n";
 			for(c = child_hash.begin(); c != child_hash.end(); ++c) {
 				hash_str[i] ^= *c;
 				++i;
