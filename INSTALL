@@ -1,6 +1,6 @@
 Prerequisites:
 
-You'll need to have these libraries (with equivalent devel versions) to build Wesnoth: 
+You'll need to have these libraries (with equivalent devel versions) to build Wesnoth:
 
  libsdl1.2
  libsdl-image1.2
@@ -28,15 +28,15 @@ You can get it here:
 Compiling:
 
 First untar the package:
-  	
- $ tar xfzv wesnoth-x.y.z.tar.gz 
+
+ $ tar xfzv wesnoth-x.y.z.tar.gz
 
 then
-  	
+
  $ cd wesnoth-x.y.z
 
 The usual
-  	
+
  $ ./configure
  $ make
  $ make install
@@ -52,9 +52,9 @@ In case you want wesnothd to be built you should add:
 --with-server-gid=group
 
 $localstatedir/run is the location where a wesnothd subdirectory will be
-created owned by user:group. This is relevant if you want to be able 
+created owned by user:group. This is relevant if you want to be able
 to communicate with wesnothd through a fifo file named socket.
-You have to run wesnothd with the user specified while configuring in 
+You have to run wesnothd with the user specified while configuring in
 order for it to work.
 You most likely want to change the default localstatedir since it will
 probably default to PREFIX/var.

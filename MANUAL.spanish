@@ -5,28 +5,28 @@ Si eres nuevo en La Batalla por Wesnoth, puede que te interese leer la guía de 
 Controles
 
  Cursores:			Desplazamiento de la pantalla
- Botón izquierdo del ratón: 	Seleccionar o mover unidad
- Botón derecho del ratón: 	Menu principal, cancelar acción
+ Botón izquierdo del ratón:	Seleccionar o mover unidad
+ Botón derecho del ratón:	Menu principal, cancelar acción
  Botón medio del ratón:		Centrar en la localización del puntero
- Escape: 			Salir del juego o del menú
- z: 				Aumentar zoom
- x: 				Disminuir zoom
- c: 				Nivel de zoom predeterminado
- u: 				Deshacer el último movimiento (sólo se pueden deshacer los movimientos deterministas)
- r: 				Rehacer movimiento
- n: 				Alternar entre las unidades que aún tienen movimiento disponible.
+ Escape:			Salir del juego o del menú
+ z:				Aumentar zoom
+ x:				Disminuir zoom
+ c:				Nivel de zoom predeterminado
+ u:				Deshacer el último movimiento (sólo se pueden deshacer los movimientos deterministas)
+ r:				Rehacer movimiento
+ n:				Alternar entre las unidades que aún tienen movimiento disponible.
  1-7:				Muestra la distancia a la que la unidad seleccionada puede mover en ese número de turnos
  espacio:			Acaba el turno de la unidad y activa la siguiente unidad que aún tenga movimiento disponible.
- l: 				Moverse hasta la unidad líder
- ctrl-f: 			Conmutar entre modo pantalla completa/ventana
- ctrl-r: 			Reclutar unidad
+ l:				Moverse hasta la unidad líder
+ ctrl-f:			Conmutar entre modo pantalla completa/ventana
+ ctrl-r:			Reclutar unidad
  ctrl-shift-r:			Repetir el último reclutamiento
- ctrl-c: 			Llamar unidad
- ctrl-a: 			Conmutar modo de juego acelerado
- d: 				Describir la unidad selecionada
- ctrl-d: 			Ver valores defensivos de la unidad selecionada contra ataques
- ctrl-t: 			Ver como la unidad selecionada se comporta en cada tipo de terreno
- ctrl-s: 			Salvar juego
+ ctrl-c:			Llamar unidad
+ ctrl-a:			Conmutar modo de juego acelerado
+ d:				Describir la unidad selecionada
+ ctrl-d:			Ver valores defensivos de la unidad selecionada contra ataques
+ ctrl-t:			Ver como la unidad selecionada se comporta en cada tipo de terreno
+ ctrl-s:			Salvar juego
 
 
 
@@ -47,7 +47,7 @@ El juego se desarrolla en una serie de batallas o escenarios. Cada escenario enf
 
 Oro
 
-Cada bando recibe una cierta cantidad de oro al comienzo y 2 piezas de oro por turno, más 1 pieza de oro por cada aldea que ese bando controle. 
+Cada bando recibe una cierta cantidad de oro al comienzo y 2 piezas de oro por turno, más 1 pieza de oro por cada aldea que ese bando controle.
 
 Cada unidad tiene también un coste de mantenimiento. El coste de mantenimiento es generalmente igual al nivel de esa unidad (ver rasgo 'Leal' más abajo). Las unidades que no se llaman ni se reclutan, es decir que lideran un bando o se unen voluntariamente, no tienen coste de mantenimiento asociado con ellas. El mantenimiento solamente se paga si el mantenimiento total de las unidades de un bando es mayor que el número de aldeas que ese bando controla. El mantenimiento pagado es la diferencia entre el número de aldeas y el coste de mantenimiento. Por tanto, la fórmula para determinar los ingresos por turno es,
 
@@ -77,7 +77,7 @@ Las unidades tienen rasgos que reflejan aspectos de su carácter. Los rasgos se 
  Fuerte:		La unidad hace daño extra en combate cerrado, y tiene algunos puntos de vida más.
  Rápido:		La unidad tiene un punto de movimiento extra, pero algunos puntos de vida menos.
  Resistente:		La unidad tiene más puntos de vida.
- Inteligente:   	La unidad requiere menos experiencia para avanzar un nivel.
+ Inteligente:	La unidad requiere menos experiencia para avanzar un nivel.
 
 Moviendo
 

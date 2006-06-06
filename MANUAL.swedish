@@ -23,16 +23,16 @@ m		Skicka meddelande till annan spelare (i gruppspel)
 M		Skicka meddelande till allierade spelare (i gruppspel)
 alt-m		Skicka meddelande till samtliga i spelet (i gruppspel)
 n		Stega igenom de trupper som kan förflyttas
-N		Stega igenom de trupper som kan förflyttas, i bakvänd 
+N		Stega igenom de trupper som kan förflyttas, i bakvänd
 		ordning
-mellanslag	Avsluta vald trupps drag och gå vidare till nästa trupp 
+mellanslag	Avsluta vald trupps drag och gå vidare till nästa trupp
 		som kan förflyttas
 alt-mellanslag	Avsluta aktuell spelares drag
-ctrl-mellanslag	Håll truppens position; truppen hoppas över när trupperna 
+ctrl-mellanslag	Håll truppens position; truppen hoppas över när trupperna
 		stegas igenom
-ctrl-v 		Visa fiendens förflyttning (vart fienden kan nå nästa drag)
-ctrl-b		Visa de förflyttningsmöjligheter som fienden har om det 
-		inte finns några andra trupper i vägen 
+ctrl-v		Visa fiendens förflyttning (vart fienden kan nå nästa drag)
+ctrl-b		Visa de förflyttningsmöjligheter som fienden har om det
+		inte finns några andra trupper i vägen
 ctrl-f		Växla mellan helskärm och fönsterläge
 ctrl-a		Växla mellan accelererad och normal spelhastighet
 ctrl-s		Spara spel
@@ -137,18 +137,18 @@ Trupperna har karaktärsdrag som avspeglar vissa aspekter av dem.
 Karaktärsdragen tilldelas slumpmässigt när trupperna skapas. De flesta
 trupper får två karaktärsdrag. De olika karaktärsdragen är följande:
 
-  Stark		Truppen vållar 1 extra skada i närstrid och har 2 
+  Stark		Truppen vållar 1 extra skada i närstrid och har 2
 		extra hälsopoäng
-  Snabb		Truppen har ett extra förflyttningspoäng, men 10% 
+  Snabb		Truppen har ett extra förflyttningspoäng, men 10%
 		mindre hälsopoäng
   Tålig		Truppen har 7 mer hälsopoäng än vanligt
-  Intelligent	Truppen kräver 20% mindre erfarenhetspoäng för att 
+  Intelligent	Truppen kräver 20% mindre erfarenhetspoäng för att
 		befordras (ej troll)
 
 Det finns även några karaktärsdrag som inte tilldelas slumpmässigt:
 
   Lojal		Truppen kräver inget underhåll
-  Träffsäker	Truppen vållar 1 extra skada per träff i 
+  Träffsäker	Truppen vållar 1 extra skada per träff i
 		distansstrid (endast alver)
   Vandöd	Truppen är immun mot gift (endast vandöda)
 
@@ -238,11 +238,11 @@ också att bli friskare. En trupp som inte flyttar eller strider under ett
 drag "vilar", och återfår två hälsopoäng.
 
 En trupp som har förmågan att "vårda" läker intillstående allierade
-trupper vid början av den vårdande truppens drag. Hos förgiftade trupper 
+trupper vid början av den vårdande truppens drag. Hos förgiftade trupper
 stoppas giftets utbredning.
 
-En trupp som har förmågan att "hela" botar förgiftade trupper. En helande 
-trupp har även förmågan att "vårda", men en förgiftad trupp botas från 
+En trupp som har förmågan att "hela" botar förgiftade trupper. En helande
+trupp har även förmågan att "vårda", men en förgiftad trupp botas från
 giftet, istället för att endast giftets utbredning stoppas.
 
 Ingen trupp kan läkas av mer än en läkande effekt samtidigt, effekterna är
@@ -294,26 +294,26 @@ Publika spelservrar:
   server.wesnoth.org	för senaste versionen av spelet
   devsrv.wesnoth.org	för aktuell SVN-version av spelet
 
-Alternativa servrar finns angivna på 
+Alternativa servrar finns angivna på
 
 	http://www.wesnoth.org/wiki/MultiplayerServers
 
 Att starta ett gruppspel
 
-  Steg 1: välj "Gruppspel" i huvudmenyn och därefter antingen: 
+  Steg 1: välj "Gruppspel" i huvudmenyn och därefter antingen:
     a) "Anslut till den officiella servern" och skapa spel där
     b) "Anslut till spel" för att ansluta till en annan värddator
-    c) "Var värd för nätverksspel", för att själv vara spelvärd med din 
+    c) "Var värd för nätverksspel", för att själv vara spelvärd med din
        klient
     d) "Heta stolen-spel", alltså ett gruppspel lokalt på din dator
     e) "Människa mot dator" för att spela mot datorn
 
-  Steg 2: välj karta och gör inställningar för spelet (stridsdimma, slöja, 
-    guld per by, osv) 
+  Steg 2: välj karta och gör inställningar för spelet (stridsdimma, slöja,
+    guld per by, osv)
 
-  Steg 3: gör inställningar för spelarna (lag/allianser, guld att starta 
-    med, fraktioner) och vänta sedan tills alla nätverksspelare har 
-    anslutit till spelet. Du ser ordet "Nätverksspelare" utbytt mot 
+  Steg 3: gör inställningar för spelarna (lag/allianser, guld att starta
+    med, fraktioner) och vänta sedan tills alla nätverksspelare har
+    anslutit till spelet. Du ser ordet "Nätverksspelare" utbytt mot
     spelarnas namn allt eftersom som de ansluter.
 
   Steg 4: klicka [Klar!].

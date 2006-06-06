@@ -1,4 +1,4 @@
-/* $Id: MANUAL.indonesia #### 2:22 PM 1/31/2006Z bennylin $ */ 
+/* $Id: MANUAL.indonesia #### 2:22 PM 1/31/2006Z bennylin $ */
 
 Manual PEPERANGAN UNTUK WESNOTH (PUW)
 
@@ -85,7 +85,7 @@ Setiap pihak diberikan sejumlah uang emas pada permulaannya, dan menerima 2 koin
 
 Setiap unit memiliki biaya pemeliharaan. Biasanya biayanya setara dengan tingkat / level unit tersebut, kecuali si unit memiliki sifat Setia (lihat dibawah). Unit yang tidak perlu dipanggil kembali atau dikerahkan (direkrut) - misalnya pemimpin atau mereka yang bergabung secara sukarela - biasanya memiliki sifat Loyal. Biaya pemeliharaan hanya dibayarkan jika total biayanya lebih besar dari jumlah desa yang dikuasai. Biaya yang dibayarkan adalah selisih dari pendapatan dan total biaya pemeliharaan.
 
-Jadi, rumus untuk menentukan jumlah pendapatan setiap giliran adalah 
+Jadi, rumus untuk menentukan jumlah pendapatan setiap giliran adalah
 
   2 + jumlah desa - maksimum(0,biaya pemeliharaan - jumlah desa)
 
@@ -175,13 +175,13 @@ Jika kedua unit yang bertempur sama-sama Netral, mereka akan selalu melakukan lu
 MENYEMBUHKAN
 
 Unit yang terluka dan berada di desa akan menyembuhkan diri 8 luka di setiap awal gilirannya. Unit yang terluka dan berada di sebelah unit yang memiliki keahlian 'sembuhkan' atau 'obati' juga akan disembuhkan. Jika sebuah unit tidak bergerak maupun menyerang, maka dikatakan sedang 'istirahat' dan akan menyembukan diri 2 luka. Tenaga yang disembuhkan dengan cara ini akan ditambahkan di atas tenaga yang disembuhkan melalui 'penyembuhan' maupun 'pemulihan'
-Injured units in villages will recover 8 hitpoints every turn.  Injured units that are adjacent to units with the 'heal' or 'cure' abilities will also heal.  A unit that does not move or fight during a turn is 'resting' and will recover 2 hitpoints.  Hitpoints recovered through 'resting' are added on top of hitpoints recovered through healing or regenerating. 
+Injured units in villages will recover 8 hitpoints every turn.  Injured units that are adjacent to units with the 'heal' or 'cure' abilities will also heal.  A unit that does not move or fight during a turn is 'resting' and will recover 2 hitpoints.  Hitpoints recovered through 'resting' are added on top of hitpoints recovered through healing or regenerating.
 
 Unit yang memiliki keahlian 'sembuhkan' dapat menyembuhkan total 8 luka per giliran. Unit yang memiliki keahlian 'obati' dapat mengobat total 18 luka per giliran.
 
 Unit yang berada di sebelah unit lain yang ahli menyembuhkan akan disembuhkan maksimal 4 luka per giliran. Unit yang berada di sebelah unit yang ahli mengobati akan diobati maksimal 8 luka per giliran. Semakin banyak unit yang berada di sekitar penyembuh, semakin sedikit jumlah luka yang disembuhkan per unit.
 
-Sebuah contoh kasus penyembuhan dengan banyak orang: 
+Sebuah contoh kasus penyembuhan dengan banyak orang:
 
   Dua unit berada di sebelah penyembuh akan disembuhkan masing-masing 4 luka.
 
@@ -222,7 +222,7 @@ Penyedia umum:
   devsrv.wesnoth.org        gem versi SVN yang diperbarui versinya
 
 
-Penyedia tambahan dapat dilihat di http://www.wesnoth.org/wiki/MultiplayerServers 
+Penyedia tambahan dapat dilihat di http://www.wesnoth.org/wiki/MultiplayerServers
 
 Memasang gem multi-pemain
 
@@ -234,7 +234,7 @@ Memasang gem multi-pemain
     e) bermain melawan komputer.
 
 
-  Langkah 2: pilih peta dan konfigurasi gem (kabut perang, selubung, 
+  Langkah 2: pilih peta dan konfigurasi gem (kabut perang, selubung,
   uang emas tiap desa).
 
 
