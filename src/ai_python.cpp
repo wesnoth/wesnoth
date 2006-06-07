@@ -61,11 +61,15 @@ static PyObject* wrapper_unittype_get_##x( wesnoth_unittype* type, void* /*closu
 }
 
 ut_get_ability( heals )
-ut_get_ability( regenerates )
+ut_get_ability( regenerate )
 ut_get_ability( leadership )
 ut_get_ability( illuminates )
 ut_get_ability( skirmisher )
-ut_get_ability( teleports )
+ut_get_ability( teleport )
+static PyObject* wrapper_unittype_get_curing( wesnoth_unittype* type, void* /*closure*/ )
+{
+	return Py_BuildValue("i",type->unit_type_->has_ability_by_id("curing"));
+}
 static PyObject* wrapper_unittype_get_steadfast( wesnoth_unittype* type, void* /*closure*/ )
 {
 	return Py_BuildValue("i",type->unit_type_->has_ability_by_id("steadfast"));
@@ -88,14 +92,15 @@ static PyObject* wrapper_unittype_get_usage( wesnoth_unittype* type, void* /*clo
 
 static PyGetSetDef unittype_getseters[] = {
 	ut_gs( name, "Name of the unit type." )
-	ut_gs( heals, "If type has the ability." )
-	ut_gs( regenerates, "If type has the ability." )
-	ut_gs( leadership, "If type has the ability." )
-	ut_gs( illuminates, "If type has the ability." )
-	ut_gs( skirmisher, "If type has the ability." )
-	ut_gs( teleports, "If type has the ability." )
-	ut_gs( steadfast, "If type has the ability." )
-	ut_gs( not_living, "If type has the ability." )
+	ut_gs( heals, "If type can heal others (either healing or curing ability)." )
+	ut_gs( curing, "If type has curing ability (remove poison from others)." )
+	ut_gs( regenerate, "If type has regenerate ability." )
+	ut_gs( leadership, "If type has leadership ability." )
+	ut_gs( illuminates, "If type has illuminates ability." )
+	ut_gs( skirmisher, "If type has skirmisher ability." )
+	ut_gs( teleport, "If type has teleport ability." )
+	ut_gs( steadfast, "If type has steadfast ability." )
+	ut_gs( not_living, "If type has not-living ability." )
 	ut_gs( can_advance, "If type can advance." )
 	ut_gs( has_zoc, "If type has a ZOC." )
 	ut_gs( level, "Level of the type." )
