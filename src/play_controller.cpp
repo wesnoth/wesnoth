@@ -599,7 +599,7 @@ void play_controller::play_slice()
 	SDL_GetMouseState(&mousex,&mousey);
 	tooltips::process(mousex, mousey);
 
-	const int scroll_threshold = 5;
+	const int scroll_threshold = (preferences::mouse_scroll_disabled()) ? 0 : 5;
 
 	if(key[SDLK_UP] || mousey < scroll_threshold)
 		gui_->scroll(0,-preferences::scroll_speed());
