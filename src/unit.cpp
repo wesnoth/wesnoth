@@ -1013,6 +1013,7 @@ void unit::read(const config& cfg)
 				states_["stoned"] = st->second;
 			}
 		}
+		cfg_.remove_child("status",0);
 	}
 	if(cfg["ai_special"] == "guardian") {
 		set_state("guardian","yes");
