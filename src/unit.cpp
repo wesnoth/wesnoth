@@ -927,13 +927,6 @@ void unit::read(const config& cfg)
 		recruits_.clear();
 	}
 	attacks_left_ = lexical_cast_default<int>(cfg["attacks_left"]);
-	const config* mod_desc = cfg.child("modifications_description");
-	if(mod_desc) {
-		for(string_map::const_iterator k = mod_desc->values.begin(); k != mod_desc->values.end(); ++k) {
-			modification_descriptions_[k->first] = k->second;
-		}
-		cfg_.remove_child("modifications_description",0);
-	}
 	const config* mods = cfg.child("modifications");
 	if(mods) {
 		modifications_ = *mods;
@@ -1006,11 +999,11 @@ void unit::read(const config& cfg)
 	const config* status_flags = cfg.child("status");
 	if(status_flags) {
 		for(string_map::const_iterator st = status_flags->values.begin(); st != status_flags->values.end(); ++st) {
-			states_[st->first] = st->second;
-
 			// backwards compatibility
 			if(st->first == "stone") {
 				states_["stoned"] = st->second;
+			} else {
+				states_[st->first] = st->second;
 			}
 		}
 		cfg_.remove_child("status",0);
@@ -1229,12 +1222,6 @@ void unit::write(config& cfg) const
 	}
 	cfg["value"] = lexical_cast_default<std::string>(unit_value_);
 	cfg["cost"] = lexical_cast_default<std::string>(unit_value_);
-	config mod_desc;
-	for(string_map::const_iterator k = modification_descriptions_.begin(); k != modification_descriptions_.end(); ++k) {
-		mod_desc[k->first] = k->second;
-	}
-	cfg.clear_children("modifications_description");
-	cfg.add_child("modifications_description",mod_desc);
 	cfg.clear_children("modifications");
 	cfg.add_child("modifications",modifications_);
 
