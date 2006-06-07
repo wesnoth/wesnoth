@@ -49,7 +49,7 @@ sets BitsPerPixel value. Example: --bpp 32
 .BI --compress \ <infile> \  <outfile>
 compresses a savefile (infile) that is in text WML format into binary WML format (outfile).
 .TP
-.B -d, \ --debug
+.BR -d ", " --debug
 shows extra debugging information and enables additional command mode
 options in-game (see the Wiki at http://www.wesnoth.org/ for more
 information about command mode).
@@ -58,20 +58,20 @@ information about command mode).
 decompresses a savefile (infile) that is in binary WML format into text
 WML format (outfile).
 .TP
-.B -f, \ --fullscreen
+.BR -f ", " --fullscreen
 runs the game in full screen mode.
 .TP
 .B --fps
 displays the number of frames per second the game is currently running
 at, in a corner of the screen.
 .TP
-.B -h, \ --help
+.BR -h ", " --help
 displays a summary of command line options to standard output, and exits.
 .TP
 .BI --load \ savegame
 loads the file savegame from the standard save game directory.
 .TP
-.BR --log-error="domain1,domain2,..." , \ --log-warning=... , \ --log-info=...
+.BR --log-error="domain1,domain2,..." ", " --log-warning="..." ", " --log-info="..."
 sets the severity level of the debug domains. "all" can be used to match
 any debug domain.
 .B --log-info
@@ -93,19 +93,19 @@ disables caching of game data.
 .B --nosound
 runs the game without sounds and music.
 .TP
-.BR --path
+.B --path
 prints the name of the game data directory and exits.
 .TP
-.BI -r, \ --resolution \ XxY
+.BR -r ", " --resolution \ \fIXxY\fR
 sets the screen resolution. Example: -r 800x600
 .TP
-.B -t, \ --test
+.BR -t ", " --test
 runs the game in a small test scenario.
 .TP
-.B -v, \ --version
+.BR -v ", " --version
 shows the version number and exits.
 .TP
-.B -w, \ --windowed
+.BR -w ", " --windowed
 runs the game in windowed mode.
 .
 .SH Options for --multiplayer
@@ -155,6 +155,7 @@ Example to test your own AI:
 wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py --side2=Rebels
 .
 .SH AUTHOR
+.
 Written by David White <davidnwhite@verizon.net>.
 .br
 Edited by Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> and Soliton <soliton@sonnenkinder.org>.
@@ -164,11 +165,13 @@ This manual page was originally written by Cyril Bouthors <cyril@bouthors.org>.
 Visit the official homepage: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
+.
 Copyright \(co 2003-2006 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as published by the Free Software Foundation.
 There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 .
 .SH SEE ALSO
+.
 .BR wesnoth_editor (6), 
 .BR wesnothd (6)

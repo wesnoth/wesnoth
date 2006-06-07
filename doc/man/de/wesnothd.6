@@ -52,9 +52,6 @@ Startet das Programm als Dämon.
 .B -h,\ --help
 Gibt die möglichen Kommandozeilenoptionen aus.
 .TP
-.BI -m,\ --max_packet_size \ Zahl
-Bestimmt die maximale Größe eine Packetes.
-.TP
 .BR -p,\ --port
 Weist dem Server einen bestimmten Port zu. Wenn kein Port angegeben wird, wird Port 15000 verwendet.
 .TP
@@ -76,7 +73,7 @@ Zeigt die Versionsnummer an und beendet das Programm.
 .IP
 Schlüssel="\fIWert\fR"
 .IP
-Schlüssel=...
+Schlüssel="\fIWert\fR,\fIWert\fR,..."
 .P
 [/\fIElement\fR]
 .
@@ -85,6 +82,12 @@ Schlüssel=...
 .TP
 .B connections_allowed
 Die Anzahl der erlaubten Verbindungen von der selben IP.
+.TP
+.B disallow_names
+Namen/Nicks, die nicht vom server zugelassen werden. `*' und `?' sind erlaubt. Siehe 
+.BR glob (7) 
+fuer mehr Informationen zu Wildcards.
+Standardwerte (werden benutzt, wenn dieser Schluessel nicht gesetzt wurde) sind: `server,ai,player,network,human,admin,computer'.
 .TP
 .B max_messages
 Die Anzahl der erlaubten Nachrichten in \fBmessages_time_period\fR.
@@ -99,7 +102,7 @@ Die "Nachricht des Tages".
 Das Passwort um auf dem Server Administratorrechte zu erhalten. Es beginnt per Konvention mit "admin ".
 .TP
 .B versions_accepted
-Eine durch Komma getrennte Liste der Programmversionen, die der Server zulässt.
+Eine durch Komma getrennte Liste der Programmversionen, die der Server zulässt. `*' und `?' sind erlaubt.
 .
 .SS "Globale Elemente:"
 .
@@ -115,7 +118,9 @@ Die Adresse des Rechners, zu dem umgeleitet wird.
 Der dabei zu verwendende Port.
 .TP
 .B version
-Eine durch Komma getrennte Liste der Versionen, die umgeleitet werden sollen.
+Eine durch Komma getrennte Liste der Versionen, die umgeleitet werden sollen. Verhaelt sich genauso wie
+.B versions_accepted
+in Bezug auf Wildcards.
 .RE
 .P
 .B [proxy]
