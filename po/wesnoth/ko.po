@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-05 12:49+0200\n"
+"POT-Creation-Date: 2006-06-07 23:41+0200\n"
 "PO-Revision-Date: 2006-03-21 21:06-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -608,11 +608,11 @@ msgstr "소드"
 #: data/tutorial/units/Fighter.cfg:27 data/tutorial/units/Fighter.cfg:72
 #: data/tutorial/units/Fighteress.cfg:28 data/tutorial/units/Fighteress.cfg:76
 #: data/tutorial/units/Lord.cfg:41 data/tutorial/units/Lord.cfg:206
-#: data/units/Drake_Blademaster.cfg:74 data/units/Drake_Burner.cfg:69
+#: data/units/Drake_Blademaster.cfg:74 data/units/Drake_Burner.cfg:70
 #: data/units/Drake_Clasher.cfg:78 data/units/Drake_Enforcer.cfg:70
-#: data/units/Drake_Fighter.cfg:65 data/units/Drake_Fire.cfg:76
+#: data/units/Drake_Fighter.cfg:65 data/units/Drake_Fire.cfg:77
 #: data/units/Drake_Flameheart.cfg:86 data/units/Drake_Flare.cfg:90
-#: data/units/Drake_Gladiator.cfg:75 data/units/Drake_Inferno.cfg:77
+#: data/units/Drake_Gladiator.cfg:75 data/units/Drake_Inferno.cfg:78
 #: data/units/Drake_Slasher.cfg:77 data/units/Drake_Warden.cfg:83
 #: data/units/Drake_Warrior.cfg:78 data/units/Dwarvish_Berserker.cfg:39
 #: data/units/Dwarvish_Dragonguard.cfg:30 data/units/Dwarvish_Fighter.cfg:31
@@ -669,7 +669,9 @@ msgstr "소드"
 #: data/units/Undead_Skele_Death_Knight.cfg:46
 #: data/units/Undead_Skele_Deathblade.cfg:44
 #: data/units/Undead_Skele_Draug.cfg:45
-#: data/units/Undead_Skele_Revenant.cfg:42 data/units/Undead_Skeleton.cfg:76
+#: data/units/Undead_Skele_Revenant.cfg:42
+#: data/units/Undead_Skele_Soul_Shooter.cfg:34
+#: data/units/Undead_Skeleton.cfg:76
 #: data/units/Undead_Spirit_Nightgaunt.cfg:60
 #: data/units/Undead_Spirit_Shadow.cfg:34
 #: data/units/Undead_Spirit_Spectre.cfg:47
@@ -707,8 +709,8 @@ msgstr "모닝 스타"
 #: data/tutorial/units/Elder_Mage.cfg:31 data/tutorial/units/Quintain.cfg:21
 #: data/tutorial/units/Youth.cfg:28 data/units/Boat_Galleon.cfg:22
 #: data/units/Drake_Enforcer.cfg:96 data/units/Drake_Gladiator.cfg:207
-#: data/units/Drake_Glider.cfg:81 data/units/Drake_Hurricane.cfg:86
-#: data/units/Drake_Sky.cfg:87 data/units/Dwarvish_Fighter.cfg:76
+#: data/units/Drake_Glider.cfg:84 data/units/Drake_Hurricane.cfg:99
+#: data/units/Drake_Sky.cfg:98 data/units/Dwarvish_Fighter.cfg:76
 #: data/units/Dwarvish_Lord.cfg:79 data/units/Dwarvish_Runemaster.cfg:29
 #: data/units/Dwarvish_Steelclad.cfg:78 data/units/Elvish_Druid.cfg:30
 #: data/units/Elvish_Druid.cfg:56 data/units/Elvish_Enchantress.cfg:26
@@ -864,14 +866,14 @@ msgstr ""
 #: data/tutorial/units/Lord.cfg:252 data/units/Drake_Blademaster.cfg:161
 #: data/units/Drake_Burner.cfg:156 data/units/Drake_Fighter.cfg:152
 #: data/units/Drake_Fire.cfg:163 data/units/Drake_Flameheart.cfg:173
-#: data/units/Drake_Flare.cfg:177 data/units/Drake_Glider.cfg:158
-#: data/units/Drake_Hurricane.cfg:163 data/units/Drake_Inferno.cfg:164
-#: data/units/Drake_Sky.cfg:164 data/units/Drake_Warrior.cfg:165
+#: data/units/Drake_Flare.cfg:177 data/units/Drake_Glider.cfg:161
+#: data/units/Drake_Hurricane.cfg:176 data/units/Drake_Inferno.cfg:164
+#: data/units/Drake_Sky.cfg:175 data/units/Drake_Warrior.cfg:165
 #: data/units/Dwarvish_Runemaster.cfg:77 data/units/Goblin_Pillager.cfg:42
 #: data/units/Human_Mage.cfg:124 data/units/Human_Mage_Arch.cfg:113
 #: data/units/Human_Mage_Great.cfg:102 data/units/Human_Mage_Red.cfg:123
-#: data/units/Human_Mage_Silver.cfg:153 data/units/Orcish_Archer.cfg:350
-#: data/units/Orcish_Crossbowman.cfg:92 data/units/Orcish_Slurbow.cfg:163
+#: data/units/Human_Mage_Silver.cfg:153 data/units/Orcish_Archer.cfg:351
+#: data/units/Orcish_Crossbowman.cfg:93 data/units/Orcish_Slurbow.cfg:164
 msgid "fire"
 msgstr "불"
 
@@ -904,7 +906,7 @@ msgstr ""
 #: data/units/Human_Loyalist_Javelineer.cfg:33
 #: data/units/Human_Loyalist_Javelineer.cfg:111
 #: data/units/Human_Loyalist_Spearman.cfg:63
-#: data/units/Human_Loyalist_Spearman.cfg:239
+#: data/units/Human_Loyalist_Spearman.cfg:244
 #: data/units/Merman_Entangler.cfg:24 data/units/Merman_Hunter.cfg:29
 #: data/units/Merman_Hunter.cfg:236 data/units/Merman_Javelineer.cfg:29
 #: data/units/Merman_Javelineer.cfg:156 data/units/Merman_Netcaster.cfg:23
@@ -941,28 +943,28 @@ msgstr "스피어"
 #: data/units/Elvish_Rider.cfg:103 data/units/Elvish_Scout.cfg:101
 #: data/units/Elvish_Sharpshooter.cfg:116 data/units/Elvish_Shyde.cfg:89
 #: data/units/Goblin_Impaler.cfg:31 data/units/Goblin_Impaler.cfg:192
-#: data/units/Goblin_Rouser.cfg:41 data/units/Goblin_Spearman.cfg:30
+#: data/units/Goblin_Rouser.cfg:42 data/units/Goblin_Spearman.cfg:30
 #: data/units/Goblin_Spearman.cfg:76
 #: data/units/Human_Horse_Grand_Knight.cfg:74
 #: data/units/Human_Horse_Knight.cfg:73 data/units/Human_Horse_Lancer.cfg:26
 #: data/units/Human_Horse_Paladin.cfg:80 data/units/Human_Horseman.cfg:26
 #: data/units/Human_Loyalist_Bowman.cfg:90
-#: data/units/Human_Loyalist_Cavalier.cfg:122
-#: data/units/Human_Loyalist_Dragoon.cfg:127
-#: data/units/Human_Loyalist_Duelist.cfg:123
-#: data/units/Human_Loyalist_General.cfg:129
-#: data/units/Human_Loyalist_Grand_Marshal.cfg:105
+#: data/units/Human_Loyalist_Cavalier.cfg:123
+#: data/units/Human_Loyalist_Dragoon.cfg:128
+#: data/units/Human_Loyalist_Duelist.cfg:124
+#: data/units/Human_Loyalist_General.cfg:130
+#: data/units/Human_Loyalist_Grand_Marshal.cfg:106
 #: data/units/Human_Loyalist_Halberdier.cfg:38
 #: data/units/Human_Loyalist_Javelineer.cfg:34
 #: data/units/Human_Loyalist_Javelineer.cfg:112
-#: data/units/Human_Loyalist_Lieutenant.cfg:99
+#: data/units/Human_Loyalist_Lieutenant.cfg:100
 #: data/units/Human_Loyalist_Longbowman.cfg:89
 #: data/units/Human_Loyalist_Master_Bowman.cfg:79
-#: data/units/Human_Loyalist_Master_at_Arms.cfg:240
+#: data/units/Human_Loyalist_Master_at_Arms.cfg:241
 #: data/units/Human_Loyalist_Pikeman.cfg:61
-#: data/units/Human_Loyalist_Sergeant.cfg:108
+#: data/units/Human_Loyalist_Sergeant.cfg:109
 #: data/units/Human_Loyalist_Spearman.cfg:64
-#: data/units/Human_Loyalist_Spearman.cfg:240
+#: data/units/Human_Loyalist_Spearman.cfg:245
 #: data/units/Human_Outlaw_Poacher.cfg:83
 #: data/units/Human_Outlaw_Trapper.cfg:83 data/units/Human_Peasant.cfg:31
 #: data/units/Human_Peasant.cfg:87 data/units/Merman_Entangler.cfg:25
@@ -973,16 +975,15 @@ msgstr "스피어"
 #: data/units/Merman_Spearman.cfg:236 data/units/Merman_Triton.cfg:33
 #: data/units/Merman_Warrior.cfg:32 data/units/Monster_Cuttle_Fish.cfg:204
 #: data/units/Monster_Giant_Scorpion.cfg:32
-#: data/units/Monster_Sea_Serpent.cfg:29 data/units/Orcish_Archer.cfg:263
-#: data/units/Orcish_Crossbowman.cfg:55 data/units/Orcish_Leader.cfg:61
-#: data/units/Orcish_Ruler.cfg:60 data/units/Orcish_Slurbow.cfg:106
-#: data/units/Orcish_Sovereign.cfg:71 data/units/Orcish_Warlord.cfg:76
+#: data/units/Monster_Sea_Serpent.cfg:29 data/units/Orcish_Archer.cfg:264
+#: data/units/Orcish_Crossbowman.cfg:56 data/units/Orcish_Leader.cfg:62
+#: data/units/Orcish_Ruler.cfg:61 data/units/Orcish_Slurbow.cfg:107
+#: data/units/Orcish_Sovereign.cfg:72 data/units/Orcish_Warlord.cfg:77
 #: data/units/Saurian_Ambusher.cfg:36 data/units/Saurian_Ambusher.cfg:82
 #: data/units/Saurian_Flanker.cfg:37 data/units/Saurian_Flanker.cfg:83
 #: data/units/Saurian_Skirmisher.cfg:37 data/units/Saurian_Skirmisher.cfg:83
 #: data/units/Undead_Skele_Bone_Shooter.cfg:69
-#: data/units/Undead_Skele_Death_Knight.cfg:72
-#: data/units/Undead_Skele_Soul_Shooter.cfg:34
+#: data/units/Undead_Skele_Death_Knight.cfg:73
 #: data/units/Undead_Skele_Soul_Shooter.cfg:59
 #: data/units/Undead_Skeleton_Archer.cfg:65
 msgid "pierce"
@@ -1058,7 +1059,7 @@ msgstr ""
 #: data/units/Human_Loyalist_Master_Bowman.cfg:78
 #: data/units/Human_Outlaw_Poacher.cfg:82
 #: data/units/Human_Outlaw_Trapper.cfg:82 data/units/Orcish_Archer.cfg:262
-#: data/units/Orcish_Archer.cfg:349 data/units/Orcish_Leader.cfg:60
+#: data/units/Orcish_Archer.cfg:350 data/units/Orcish_Leader.cfg:60
 #: data/units/Orcish_Ruler.cfg:59 data/units/Orcish_Sovereign.cfg:70
 #: data/units/Orcish_Warlord.cfg:75
 #: data/units/Undead_Skele_Bone_Shooter.cfg:68
@@ -1288,8 +1289,8 @@ msgstr ""
 #: data/units/Drake_Blademaster.cfg:159 data/units/Drake_Burner.cfg:154
 #: data/units/Drake_Fighter.cfg:150 data/units/Drake_Fire.cfg:161
 #: data/units/Drake_Flameheart.cfg:171 data/units/Drake_Flare.cfg:175
-#: data/units/Drake_Glider.cfg:156 data/units/Drake_Hurricane.cfg:161
-#: data/units/Drake_Inferno.cfg:162 data/units/Drake_Sky.cfg:162
+#: data/units/Drake_Glider.cfg:159 data/units/Drake_Hurricane.cfg:174
+#: data/units/Drake_Inferno.cfg:162 data/units/Drake_Sky.cfg:173
 #: data/units/Drake_Warrior.cfg:163
 msgid "fire breath"
 msgstr "파이어 브레스"
@@ -3298,7 +3299,7 @@ msgid ""
 "Foolish but brave, to the Basilisk's cave,\n"
 "He flew, and the fire within him burned.\n"
 "\n"
-"Alas, that fire burns no more, \n"
+"Alas, that fire burns no more,\n"
 "For the Basilisk, with one mighty roar,\n"
 "Chilled him to the bone, and he turned to stone,\n"
 "And so he stays forevermore.\n"
@@ -3312,13 +3313,13 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:99
 msgid ""
-"Slim of Stature, dexterous Hands \n"
-"- - Seven Stones and Eleven \n"
-"Left his Foes so slim a Chance \n"
-"- - Seven Stones and Eleven \n"
-"Marksman known as Dragonbane \n"
-"'mongst the Statues here was slain \n"
-"- - Seven Stones - and the Elven \n"
+"Slim of Stature, dexterous Hands\n"
+"- - Seven Stones and Eleven\n"
+"Left his Foes so slim a Chance\n"
+"- - Seven Stones and Eleven\n"
+"Marksman known as Dragonbane\n"
+"'mongst the Statues here was slain\n"
+"- - Seven Stones - and the Elven\n"
 "(inscribed by Gauteamus)"
 msgstr ""
 
@@ -3328,15 +3329,15 @@ msgid ""
 "Wolves of the mountains, and he had the courage to match. His leadership and "
 "skills alone were what kept the area's goblins alive despite human and "
 "elvish menaces. Rumor had it that his wolf had slain fifty men and a hundred "
-"Elves. \n"
+"Elves.\n"
 "Thus, when he heard of the awful monster that was inhabiting the area, it "
 "was only natural that he ride out alone to face it. All the other goblins "
 "expected him to slay the creature easily and drag back its carcass to feast "
-"on. \n"
+"on.\n"
 "He was in for quite a shock. As soon as he saw the Basilisk, Blum Duk "
 "cowered in fright. He tried to wheel his wolf around to run away, but it "
 "wouldn't move. As the creature stalked towards him, he screamed his last "
-"words: Good Gog, dog, are yer legs made of stone?!? \n"
+"words: Good Gog, dog, are yer legs made of stone?!?\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
 
@@ -3347,7 +3348,7 @@ msgid ""
 "his lake, no other's, and though it was not large, he was its master. Then, "
 "the Basilisk came, and looked into the Serpent's eyes. And the Serpent had "
 "not died, but it was no longer alive. Thus the new lord of the lake had "
-"arrived. \n"
+"arrived.\n"
 "(inscribed by Turin)"
 msgstr ""
 
@@ -3358,7 +3359,7 @@ msgid ""
 "the foul creatures, many of his fellows were killed, but he fought "
 "valiantly, slaying many a foe. But alas! The foul Basilik turned him to "
 "stone even as he slew the last orc. Now all that is left is a stark reminder "
-"of his once great bearing and strength. \n"
+"of his once great bearing and strength.\n"
 "(inscribed by Fynmiir)"
 msgstr ""
 
@@ -3368,16 +3369,16 @@ msgid ""
 "other Woses. More than any other Wose, he enjoyed simply standing alone in "
 "the sun, arms upraised, admiring the beauty of the empty sky. Once, even, he "
 "confided in a fellow that his greatest wish was to be able to bask forever "
-"in the sun's glory. \n"
+"in the sun's glory.\n"
 "However, not long after, the local wose community heard of the approach of a "
 "horrible monster, powerful enough to easily destroy the few woses that lived "
 "in the area. They quickly moved off (quickly for Woses, anyway), but "
 "Bramwythl was left behind - in their haste, no one had remembered to find "
-"him and tell him of the danger. \n"
+"him and tell him of the danger.\n"
 "He was taken quite unawares by the Basilisk, and turned to stone before he "
 "even recognized the beast. His petrified form still stands there today, "
 "warmed by the sun's rays, under an open sky. His greatest wish has been "
-"granted. \n"
+"granted.\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
 
@@ -3392,25 +3393,25 @@ msgid ""
 "Having prepared himself for battle with the Serpent, Rilhon met with two "
 "rather large surprises. The first was the petrified form of Ruaskkolin the "
 "Serpent. The second was the very-much-alive Chak'kso Ney'yks, who was, oddly "
-"enough, in possession of all of his teeth. \n"
+"enough, in possession of all of his teeth.\n"
 "(inscribed by Paterson)"
 msgstr ""
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:170
 msgid ""
-"Through waves and rocky channels \n"
-"blue and white \n"
-"she pulled and pushed the tides \n"
-"and taught the fishes how to speak to planets \n"
-"silver green \n"
-"with magic \n"
-"running from her spirit into skins of kelp and shells of snails \n"
-"a twisting of her tail and hands \n"
-"she sent her songs to run on pin-tipped legs about the sands \n"
-"and now \n"
-"and now the strangest pause \n"
-"for centuries \n"
-"she hasn't moved her eyes \n"
+"Through waves and rocky channels\n"
+"blue and white\n"
+"she pulled and pushed the tides\n"
+"and taught the fishes how to speak to planets\n"
+"silver green\n"
+"with magic\n"
+"running from her spirit into skins of kelp and shells of snails\n"
+"a twisting of her tail and hands\n"
+"she sent her songs to run on pin-tipped legs about the sands\n"
+"and now\n"
+"and now the strangest pause\n"
+"for centuries\n"
+"she hasn't moved her eyes\n"
 "\n"
 "(inscribed by MJQ)"
 msgstr ""
@@ -4105,7 +4106,7 @@ msgstr "행동"
 msgid "End Turn"
 msgstr "턴 끝내기"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2257
+#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2247
 msgid "HP"
 msgstr "체력"
 
@@ -4680,18 +4681,22 @@ msgstr ""
 msgid "Drake Glider"
 msgstr "드레이크 글라이더"
 
-#: data/units/Drake_Glider.cfg:20
+#: data/units/Drake_Glider.cfg:21
 msgid ""
 "Drake Gliders wear as little armor as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
 "possessing the internal fire common to many of their kin. Gliders can also "
 "effectively use their speed to viciously slam their opponents into "
 "submission. The best gliders can look forward to being accepted into the "
-"ranks of the high flying Sky Drakes."
+"ranks of the high flying Sky Drakes. From their aerial vantage point, these "
+"drakes can see past most defensive cover. Their skill at flying allows them "
+"the precision to target enemies under such cover.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
-#: data/units/Drake_Glider.cfg:80 data/units/Drake_Hurricane.cfg:85
-#: data/units/Drake_Sky.cfg:86
+#: data/units/Drake_Glider.cfg:83 data/units/Drake_Hurricane.cfg:98
+#: data/units/Drake_Sky.cfg:97
 msgid "slam"
 msgstr "강타"
 
@@ -4699,11 +4704,13 @@ msgstr "강타"
 msgid "Hurricane Drake"
 msgstr "허리케인 드레이크"
 
-#: data/units/Drake_Hurricane.cfg:18
+#: data/units/Drake_Hurricane.cfg:30
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite amongst "
 "those drakes which are gifted with flight. Soaring high in the air, they can "
-"see past most defensive cover and spit fire at their foes with impunity."
+"see past most defensive cover and spit fire at their foes with impunity.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
 #: data/units/Drake_Inferno.cfg:3
@@ -4723,11 +4730,16 @@ msgstr ""
 msgid "Sky Drake"
 msgstr "스카이 드레이크"
 
-#: data/units/Drake_Sky.cfg:19
+#: data/units/Drake_Sky.cfg:29
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
-"down on prey, and are usually long gone before anyone can stop them."
+"down on prey, and are usually long gone before anyone can stop them. By "
+"attacking from the air, they can spit fire with great precision into "
+"positions which would otherwise afford a great defensive advantage to their "
+"foes.\n"
+"\n"
+"Special Notes:"
 msgstr ""
 
 #: data/units/Drake_Slasher.cfg:3
@@ -4815,7 +4827,8 @@ msgstr ""
 #: data/units/Human_Outlaw_Poacher.cfg:36 data/units/Human_Outlaw_Rogue.cfg:32
 #: data/units/Human_Outlaw_Thief.cfg:85 data/units/Human_Outlaw_Trapper.cfg:36
 #: data/units/Orcish_Archer.cfg:76 data/units/Orcish_Assassin.cfg:30
-#: data/units/Orcish_Slayer.cfg:30
+#: data/units/Orcish_Slayer.cfg:30 data/units/Undead_Skele_Bone_Shooter.cfg:42
+#: data/units/Undead_Skele_Soul_Shooter.cfg:32
 msgid "dagger"
 msgstr "대거"
 
@@ -5603,8 +5616,8 @@ msgstr ""
 #: data/units/Human_Loyalist_Lieutenant.cfg:98
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:239
 #: data/units/Human_Loyalist_Sergeant.cfg:107
-#: data/units/Orcish_Crossbowman.cfg:54 data/units/Orcish_Crossbowman.cfg:91
-#: data/units/Orcish_Slurbow.cfg:105 data/units/Orcish_Slurbow.cfg:162
+#: data/units/Orcish_Crossbowman.cfg:54 data/units/Orcish_Crossbowman.cfg:92
+#: data/units/Orcish_Slurbow.cfg:105 data/units/Orcish_Slurbow.cfg:163
 #: data/units/Undead_Skele_Death_Knight.cfg:71
 msgid "crossbow"
 msgstr "크로스보우"
@@ -7167,7 +7180,7 @@ msgstr ""
 msgid "shadow wave"
 msgstr "섀도우 웨이브"
 
-#: data/units/Undead_Necro_Dark_Adept.cfg:178
+#: data/units/Undead_Necro_Dark_Adept.cfg:177
 msgid "female^Dark Adept"
 msgstr "다크 어댑트"
 
@@ -7244,11 +7257,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-
-#: data/units/Undead_Skele_Bone_Shooter.cfg:42
-#: data/units/Undead_Skele_Soul_Shooter.cfg:32
-msgid "stab"
-msgstr "스탭"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:3
 msgid "Death Knight"
@@ -7636,11 +7644,11 @@ msgstr ""
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:382 src/game.cpp:771
+#: src/dialogs.cpp:382 src/game.cpp:778
 msgid "Campaign"
 msgstr "캠페인"
 
-#: src/dialogs.cpp:384 src/game.cpp:1168
+#: src/dialogs.cpp:384 src/game.cpp:1175
 msgid "Multiplayer"
 msgstr "멀티플레이"
 
@@ -7720,7 +7728,7 @@ msgstr ""
 msgid "Date"
 msgstr "날짜"
 
-#: src/dialogs.cpp:559 src/game.cpp:904 src/help.cpp:1175
+#: src/dialogs.cpp:559 src/game.cpp:911 src/help.cpp:1175
 #: src/menu_events.cpp:233 src/menu_events.cpp:682
 #: src/multiplayer_lobby.cpp:32
 msgid "Name"
@@ -7762,270 +7770,270 @@ msgstr "이동력:"
 msgid "Screenshot"
 msgstr ""
 
-#: src/game.cpp:395 src/game.cpp:1252
+#: src/game.cpp:398 src/game.cpp:1259
 msgid "The Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:631
+#: src/game.cpp:638
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 
-#: src/game.cpp:653 src/multiplayer_connect.cpp:1127
+#: src/game.cpp:660 src/multiplayer_connect.cpp:1127
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 
-#: src/game.cpp:661 src/game.cpp:664 src/multiplayer_connect.cpp:1112
+#: src/game.cpp:668 src/game.cpp:671 src/multiplayer_connect.cpp:1112
 msgid "The file you have tried to load is corrupt: '"
 msgstr ""
 
-#: src/game.cpp:667
+#: src/game.cpp:674
 msgid "File I/O Error while reading the game"
 msgstr ""
 
-#: src/game.cpp:710 src/game.cpp:714 src/menu_events.cpp:473
+#: src/game.cpp:717 src/game.cpp:721 src/menu_events.cpp:473
 #: src/menu_events.cpp:475 src/play_controller.cpp:633
 msgid "Auto-Save"
 msgstr ""
 
-#: src/game.cpp:761
+#: src/game.cpp:768
 msgid "Get More Campaigns..."
 msgstr "더 많은 캠페인..."
 
-#: src/game.cpp:762
+#: src/game.cpp:769
 msgid "Download more campaigns from an Internet server."
 msgstr "인터넷 서버로부터 더 많은 캠페인 받습니다."
 
-#: src/game.cpp:772
+#: src/game.cpp:779
 msgid "Choose the campaign you want to play:"
 msgstr "플레이 할 캠페인을 고르십시오:"
 
-#: src/game.cpp:800
+#: src/game.cpp:807
 msgid "Difficulty"
 msgstr ""
 
-#: src/game.cpp:801
+#: src/game.cpp:808
 msgid "Select difficulty level:"
 msgstr ""
 
-#: src/game.cpp:826
+#: src/game.cpp:833
 msgid "B"
 msgstr ""
 
-#: src/game.cpp:829
+#: src/game.cpp:836
 msgid "KB"
 msgstr ""
 
-#: src/game.cpp:832
+#: src/game.cpp:839
 msgid "MB"
 msgstr ""
 
-#: src/game.cpp:859
+#: src/game.cpp:866
 msgid "Connect to Server"
 msgstr "서버 접속"
 
-#: src/game.cpp:860
+#: src/game.cpp:867
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr "당신은 캠페인을 다운 받기 위해 캠페인 서버에 접속 할 것 입니다."
 
-#: src/game.cpp:861
+#: src/game.cpp:868
 msgid "Server: "
 msgstr "서버:"
 
-#: src/game.cpp:874
+#: src/game.cpp:881
 msgid "Could not connect to host."
 msgstr ""
 
-#: src/game.cpp:882
+#: src/game.cpp:889
 msgid "Asking for campaign list"
 msgstr ""
 
-#: src/game.cpp:895
+#: src/game.cpp:902
 msgid "Error communicating with the server."
 msgstr ""
 
-#: src/game.cpp:904 src/titlescreen.cpp:183
+#: src/game.cpp:911 src/titlescreen.cpp:183
 msgid "Version"
 msgstr ""
 
-#: src/game.cpp:905
+#: src/game.cpp:912
 msgid "Author"
 msgstr ""
 
-#: src/game.cpp:905
+#: src/game.cpp:912
 msgid "Downloads"
 msgstr ""
 
-#: src/game.cpp:905
+#: src/game.cpp:912
 msgid "Size"
 msgstr ""
 
-#: src/game.cpp:966
+#: src/game.cpp:973
 msgid "Publish campaign: "
 msgstr ""
 
-#: src/game.cpp:970
+#: src/game.cpp:977
 msgid "Delete campaign: "
 msgstr ""
 
-#: src/game.cpp:974
+#: src/game.cpp:981
 msgid "There are no campaigns available for download from this server."
 msgstr ""
 
-#: src/game.cpp:981
+#: src/game.cpp:988
 msgid "Choose the campaign to download."
 msgstr "다운로드 할 캠페인을 고르십시오."
 
-#: src/game.cpp:981
+#: src/game.cpp:988
 msgid "Get Campaign"
 msgstr "캠페인 얻기"
 
-#: src/game.cpp:1001
+#: src/game.cpp:1008
 msgid "Downloading campaign..."
 msgstr "캠페인 다운 로드 중..."
 
-#: src/game.cpp:1025
+#: src/game.cpp:1032
 msgid "Cannot rescan the filesystem"
 msgstr ""
 
-#: src/game.cpp:1040
+#: src/game.cpp:1047
 msgid "Campaign Installed"
 msgstr "캠패인 설치됨"
 
-#: src/game.cpp:1040
+#: src/game.cpp:1047
 msgid "The campaign has been installed."
 msgstr "캠페인이 설치되었습니다."
 
-#: src/game.cpp:1042
+#: src/game.cpp:1049
 msgid "Network communication error."
 msgstr ""
 
-#: src/game.cpp:1044
+#: src/game.cpp:1051
 msgid "Remote host disconnected."
 msgstr ""
 
-#: src/game.cpp:1046
+#: src/game.cpp:1053
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 
-#: src/game.cpp:1058 src/game.cpp:1097 src/game.cpp:1122
+#: src/game.cpp:1065 src/game.cpp:1104 src/game.cpp:1129
 #: src/multiplayer.cpp:209 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:333
 msgid "Connection timed out"
 msgstr ""
 
-#: src/game.cpp:1061 src/game.cpp:1099 src/game.cpp:1124
+#: src/game.cpp:1068 src/game.cpp:1106 src/game.cpp:1131
 msgid "The server responded with an error: \""
 msgstr ""
 
-#: src/game.cpp:1065
+#: src/game.cpp:1072
 msgid "Terms"
 msgstr ""
 
-#: src/game.cpp:1095
+#: src/game.cpp:1102
 msgid "Sending campaign"
 msgstr ""
 
-#: src/game.cpp:1102 src/game.cpp:1127 src/multiplayer_wait.cpp:317
+#: src/game.cpp:1109 src/game.cpp:1134 src/multiplayer_wait.cpp:317
 msgid "Response"
 msgstr ""
 
-#: src/game.cpp:1149
+#: src/game.cpp:1156
 msgid "Join Official Server"
 msgstr "공식 서버 접속"
 
-#: src/game.cpp:1150
+#: src/game.cpp:1157
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
-#: src/game.cpp:1152 src/multiplayer_lobby.cpp:463
+#: src/game.cpp:1159 src/multiplayer_lobby.cpp:463
 msgid "Join Game"
 msgstr "방 접속하기"
 
-#: src/game.cpp:1153
+#: src/game.cpp:1160
 msgid "Join a server or hosted game"
 msgstr "서버 혹은 만들어진 게임 접속"
 
-#: src/game.cpp:1155
+#: src/game.cpp:1162
 msgid "Host Networked Game"
 msgstr "방 만들기"
 
-#: src/game.cpp:1156
+#: src/game.cpp:1163
 msgid "Host a game without using a server"
 msgstr "서버 없이 방 만들기"
 
-#: src/game.cpp:1158
+#: src/game.cpp:1165
 msgid "Hotseat Game"
 msgstr "핫시트 게임"
 
-#: src/game.cpp:1159
+#: src/game.cpp:1166
 msgid "Play a multiplayer game sharing the same machine"
 msgstr ""
 
-#: src/game.cpp:1161
+#: src/game.cpp:1168
 msgid "Human vs AI"
 msgstr "플레이어 vs AI"
 
-#: src/game.cpp:1162
+#: src/game.cpp:1169
 msgid "Play a game against AI opponents"
 msgstr ""
 
-#: src/game.cpp:1170 src/multiplayer.cpp:189
+#: src/game.cpp:1177 src/multiplayer.cpp:189
 msgid "Login: "
 msgstr "아이디:"
 
-#: src/game.cpp:1172 src/multiplayer.cpp:194
+#: src/game.cpp:1179 src/multiplayer.cpp:194
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
 
-#: src/game.cpp:1206 src/playcampaign.cpp:107 src/playcampaign.cpp:312
+#: src/game.cpp:1213 src/playcampaign.cpp:107 src/playcampaign.cpp:312
 msgid "The game could not be loaded: "
 msgstr ""
 
-#: src/game.cpp:1208 src/playcampaign.cpp:109 src/playcampaign.cpp:315
+#: src/game.cpp:1215 src/playcampaign.cpp:109 src/playcampaign.cpp:315
 msgid "Error while playing the game: "
 msgstr ""
 
-#: src/game.cpp:1220 src/playcampaign.cpp:111 src/playcampaign.cpp:318
+#: src/game.cpp:1227 src/playcampaign.cpp:111 src/playcampaign.cpp:318
 msgid "The game map could not be loaded: "
 msgstr ""
 
-#: src/game.cpp:1244
+#: src/game.cpp:1251
 msgid "Language"
 msgstr "언어"
 
-#: src/game.cpp:1245
+#: src/game.cpp:1252
 msgid "Choose your preferred language:"
 msgstr "원하는 언어를 고르십시오:"
 
-#: src/game.cpp:1390
+#: src/game.cpp:1397
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr ""
 
-#: src/game.cpp:1395
+#: src/game.cpp:1402
 msgid "ERROR DETAILS:"
 msgstr ""
 
-#: src/game.cpp:1409
+#: src/game.cpp:1416
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1459
+#: src/game.cpp:1466
 msgid "Error loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1460
+#: src/game.cpp:1467
 msgid "' (The game will now exit)"
 msgstr ""
 
-#: src/game.cpp:1593
+#: src/game.cpp:1602
 msgid "Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:1735
+#: src/game.cpp:1744
 msgid "Loading title screen."
 msgstr ""
 
@@ -8263,7 +8271,7 @@ msgstr ""
 msgid "Statistics"
 msgstr "통계"
 
-#: src/menu_events.cpp:237 src/unit.cpp:2288
+#: src/menu_events.cpp:237 src/unit.cpp:2278
 msgid "Moves"
 msgstr ""
 
@@ -8597,12 +8605,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2372
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2363
 msgid "("
 msgstr ""
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2379
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2370
 msgid ")"
 msgstr ""
 
@@ -8975,8 +8983,8 @@ msgstr ""
 msgid "Could not send initial handshake"
 msgstr ""
 
-#: src/play_controller.cpp:373 src/playsingle_controller.cpp:328
-#: src/playsingle_controller.cpp:369
+#: src/play_controller.cpp:373 src/playsingle_controller.cpp:331
+#: src/playsingle_controller.cpp:372
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
@@ -9022,70 +9030,70 @@ msgid ""
 "error log of your game?"
 msgstr ""
 
-#: src/playsingle_controller.cpp:208
+#: src/playsingle_controller.cpp:211
 msgid "Game Over"
 msgstr "게임 오버"
 
-#: src/playsingle_controller.cpp:209
+#: src/playsingle_controller.cpp:212
 msgid "The game is over."
 msgstr ""
 
-#: src/playsingle_controller.cpp:296
+#: src/playsingle_controller.cpp:299
 msgid "Remaining gold: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:299
+#: src/playsingle_controller.cpp:302
 msgid "Early finish bonus: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:301
+#: src/playsingle_controller.cpp:304
 msgid "per turn"
 msgstr ""
 
-#: src/playsingle_controller.cpp:302
+#: src/playsingle_controller.cpp:305
 msgid "Turns finished early: "
 msgstr ""
 
-#: src/playsingle_controller.cpp:304
+#: src/playsingle_controller.cpp:307
 #, fuzzy
 msgid "Bonus: "
 msgstr "턴 수:"
 
-#: src/playsingle_controller.cpp:306
+#: src/playsingle_controller.cpp:309
 #, fuzzy
 msgid "Gold: "
 msgstr "금"
 
-#: src/playsingle_controller.cpp:311
+#: src/playsingle_controller.cpp:314
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr ""
 
-#: src/playsingle_controller.cpp:312
+#: src/playsingle_controller.cpp:315
 #, fuzzy
 msgid "Retained Gold: "
 msgstr "마을 금:"
 
-#: src/playsingle_controller.cpp:317
+#: src/playsingle_controller.cpp:320
 msgid "Victory"
 msgstr ""
 
-#: src/playsingle_controller.cpp:318
+#: src/playsingle_controller.cpp:321
 msgid "You have emerged victorious!"
 msgstr ""
 
-#: src/playsingle_controller.cpp:322
+#: src/playsingle_controller.cpp:325
 #, fuzzy
 msgid "Scenario Report"
 msgstr "시나리오 시작"
 
-#: src/playsingle_controller.cpp:339
+#: src/playsingle_controller.cpp:342
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 
-#: src/playsingle_controller.cpp:437
+#: src/playsingle_controller.cpp:440
 msgid "It is now your turn"
 msgstr ""
 
@@ -9333,15 +9341,15 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnoth의 책"
 
-#: src/unit.cpp:2223 src/unit.cpp:2377
+#: src/unit.cpp:2213 src/unit.cpp:2368
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2305
+#: src/unit.cpp:2295
 msgid "XP to advance"
 msgstr ""
 
-#: src/unit.cpp:2368
+#: src/unit.cpp:2359
 msgid ": "
 msgstr ":"
 
@@ -9389,6 +9397,9 @@ msgstr "당신의 결과는 이 곳에서 볼 수 있습니다"
 #: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
 msgstr "더 좋은 Wesnoth를 만들기 위해 도와주십시오!"
+
+#~ msgid "stab"
+#~ msgstr "스탭"
 
 #~ msgid "base damage"
 #~ msgstr "기본 데미지"
