@@ -859,18 +859,21 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	}
 
 	//if the owner is changing the controller for a side
-	if(g->is_owner(sock) && data.child("change_controller") != NULL) {
+	if (data.child("change_controller") != NULL){
 		const config& change = *data.child("change_controller");
-		const std::string& result = g->transfer_side_control(change);
-		if(result == "") {
-			const config& msg = construct_server_message(change["player"] + " takes control of side " + change["side"],*g);
-			g->send_data(msg);
-		} else {
-			const config& msg = construct_server_message(result,*g);
-			network::send_data(msg,sock);
-		}
+		//the player is either host of the game or gives away his own side
+		if(g->is_owner(sock) || change["own_side"] == "yes") {
+			const std::string& result = g->transfer_side_control(change);
+			if(result == "") {
+				const config& msg = construct_server_message(change["player"] + " takes control of side " + change["side"],*g);
+				g->send_data(msg);
+			} else {
+				const config& msg = construct_server_message(result,*g);
+				network::send_data(msg,sock);
+			}
 
-		return;
+			return;
+		}
 	}
 
 	//if all observers are muted

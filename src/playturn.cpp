@@ -199,7 +199,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 					const size_t index = static_cast<size_t>(action - 3);
 					if (index < observers.size()) {
 						teams_[side].make_network();
-						change_side_controller(cfg["side_drop"], observers[index], true /*is orphaned side*/);
+						change_side_controller(cfg["side_drop"], observers[index], false /*not our own side*/);
 					} else {
 						teams_[side].make_ai();
 					}
@@ -213,15 +213,15 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	return turn_end ? PROCESS_END_TURN : PROCESS_CONTINUE;
 }
 
-void turn_info::change_side_controller(const std::string& side, const std::string& player, bool orphan_side)
+void turn_info::change_side_controller(const std::string& side, const std::string& player, bool own_side)
 {
 	config cfg;
 	config& change = cfg.add_child("change_controller");
 	change["side"] = side;
 	change["player"] = player;
 
-	if(orphan_side) {
-		change["orphan_side"] = "yes";
+	if(own_side) {
+		change["own_side"] = "yes";
 	}
 
 	network::send_data(cfg);

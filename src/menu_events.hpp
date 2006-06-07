@@ -120,7 +120,7 @@ private:
 	void write_game_snapshot(config& start) const;
 	bool has_friends() const;
 	bool clear_shroud(const unsigned int team_num);
-	void change_side_controller(const std::string& side, const std::string& player, bool orphan_side=false);
+	void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
 
 	display* gui_;
 	unit_map& units_;

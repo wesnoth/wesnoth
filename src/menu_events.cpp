@@ -1696,15 +1696,15 @@ namespace events{
 		textbox_info_.show(gui::TEXTBOX_COMMAND,sgettext("prompt^Command:"), "", false, *gui_);
 	}
 
-	void menu_handler::change_side_controller(const std::string& side, const std::string& player, bool orphan_side)
+	void menu_handler::change_side_controller(const std::string& side, const std::string& player, bool own_side)
 	{
 		config cfg;
 		config& change = cfg.add_child("change_controller");
 		change["side"] = side;
 		change["player"] = player;
 
-		if(orphan_side) {
-			change["orphan_side"] = "yes";
+		if(own_side) {
+			change["own_side"] = "yes";
 		}
 
 		network::send_data(cfg);

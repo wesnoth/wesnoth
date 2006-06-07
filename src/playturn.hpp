@@ -57,7 +57,7 @@ public:
 
 	events::generic_event& replay_error() { return replay_error_; }
 private:
-	void change_side_controller(const std::string& side, const std::string& player, bool orphan_side=false);
+	void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
 
 	const game_data& gameinfo_;
 	game_state& state_of_game_;

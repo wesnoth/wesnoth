@@ -264,38 +264,30 @@ void game::update_side_data()
 
 const std::string& game::transfer_side_control(const config& cfg)
 {
-	bool observer_found = false;
-	bool player_found = false;
-
 	const std::string& player = cfg["player"];
 
-	user_vector users = all_game_users();
-	user_vector::iterator j;
-	for(j = users.begin(); j != users.end(); ++j) {
-		const player_map::const_iterator pl = player_info_->find(*j);
-		if(pl != player_info_->end() && pl->second.name() == player) {
+	//find the socket for the player that is passed control
+	network::connection sock_entering = NULL;
+	for (player_map::const_iterator pl = player_info_->begin(); pl != player_info_->end(); pl++){
+		if (pl->second.name() == player){
+			sock_entering = pl->first;
 			break;
 		}
 	}
 
-	user_vector::iterator i;
-	for(i = observers_.begin(); i != observers_.end(); ++i) {
-		const player_map::const_iterator pl = player_info_->find(*i);
-		if(pl != player_info_->end() && pl->second.name() == player) {
-			observer_found = true;
-			break;
-		}
-	}
-
-	player_found = !observer_found && j != users.end();
-	if(player_found) {
-		i = j;
-	}
-
-	if(!observer_found && !player_found) {
+	if (sock_entering == NULL){
 		static const std::string notfound = "Player/Observer not found";
 		return notfound;
 	}
+
+	user_vector::iterator i = find_in_observers(sock_entering);
+	user_vector::iterator j = find_in_players(sock_entering);
+
+	if (i == observers_.end() && j == players_.end()){
+		static const std::string notfound = "Player/Observer not found";
+		return notfound;
+	}
+
 	const std::string& side = cfg["side"];
 	static const std::string invalid = "Invalid side number";
 	size_t side_num;
@@ -313,22 +305,69 @@ const std::string& game::transfer_side_control(const config& cfg)
 
 	const size_t side_index = static_cast<size_t>(side_num - 1);
 
-	if(side_controllers_[side_index] == "network" && sides_taken_[side_index]) {
+	if(side_controllers_[side_index] == "network" && sides_taken_[side_index] && cfg["own_side"] != "yes") {
 		static const std::string already = "This side is already controlled by a player";
 		return already;
 	}
 
-	if(cfg["orphan_side"] != "yes") {
-		const size_t active_side = end_turn_/nsides + 1;
-
-		if(lexical_cast_default<size_t>(side,0) == active_side) {
-			static const std::string not_during_turn = "You cannot change a side's controller during its turn";
-			return not_during_turn;
+	//The player owns this side
+	if(cfg["own_side"] == "yes") {
+		//get the socket of the player that issued the command
+		network::connection sock = NULL;
+		for (std::multimap<network::connection, size_t>::iterator s = sides_.begin(); s != sides_.end(); s++){
+			if (s->second == side_index){
+				sock = s->first;
+				break;
+			}
 		}
+
+		if (sock == NULL){
+			static const std::string player_not_found = "This side is not listed for the game";
+			return player_not_found;
+		}
+
+		//check, if this socket belongs to a player
+		user_vector::iterator p = find_in_players(sock);
+		if (p == players_.end()){
+			static const std::string no_player = "The player for this side could not be found";
+			return no_player;
+		}
+
+		//if this player controls only one side, make him an observer
+		if (sides_.count(sock) == 1){
+			//we need to save this information before the player is erased
+			bool host = is_needed(sock);
+
+			observers_.push_back(*p);
+			players_.erase(p);
+
+			//tell others that the player becomes an observer
+			config cfg_observer = construct_server_message(find_player(sock)->name() + " becomes observer");
+			send_data(cfg_observer);
+
+			//update the client observer list for everyone except player
+			config observer_join;
+			observer_join.add_child("observer").values["name"] = find_player(sock)->name();
+			send_data(observer_join, sock);
+
+			//if this player was the host of the game, transfer game control to another player
+			if (host && transfer_game_control() != NULL){
+				const config& msg = construct_server_message(transfer_game_control()->name() + " has been chosen as new host");
+				send_data(msg);
+			}
+
+			//reiterate because iterators became invalid
+			i = find_in_observers(sock_entering);
+			j = find_in_players(sock_entering);
+		}
+
+		//clear the sides_ entry
+		sides_.erase(s);
 	}
+
 	side_controllers_[side_index] = "network";
 	sides_taken_[side_index] = true;
-	sides_.insert(std::pair<const network::connection,size_t>(*i, side_index));
+	sides_.insert(std::pair<const network::connection,size_t>(sock_entering, side_index));
 
 	// send a response to the host and to the new controller
 	config response;
@@ -340,17 +379,17 @@ const std::string& game::transfer_side_control(const config& cfg)
 	network::queue_data(response,players_.front());
 
 	change["controller"] = "human";
-	network::queue_data(response,*i);
+	network::queue_data(response, sock_entering);
 
-	if(sides_.count(*i) < 2) {
+	if(sides_.count(sock_entering) < 2) {
 		//send everyone a message saying that the observer who is taking the side has quit
 		config observer_quit;
 		observer_quit.add_child("observer_quit").values["name"] = player;
 		send_data(observer_quit);
 	}
-	if (observer_found){
-		observers_.erase(i);
+	if (i != observers_.end()){
 		players_.push_back(*i);
+		observers_.erase(i);
 	}
 	static const std::string success = "";
 	return success;
@@ -797,4 +836,42 @@ const player* game::transfer_game_control(){
 		result = find_player(players_[0]);
 	}
 	return result;
+}
+
+user_vector::iterator game::find_in_players(network::connection sock){
+	user_vector::iterator p;
+	for (p = players_.begin(); p != players_.end(); p++){
+		if ((*p) == sock){
+			return p;
+		}
+	}
+	return players_.end();
+}
+
+user_vector::iterator game::find_in_observers(network::connection sock){
+	user_vector::iterator o;
+	for (o = observers_.begin(); o != observers_.end(); o++){
+		if ((*o) == sock){
+			return o;
+		}
+	}
+	return observers_.end();
+}
+
+config game::construct_server_message(const std::string& message)
+{
+	config turn;
+	if(started()) {
+		config& cmd = turn.add_child("turn");
+		config& cfg = cmd.add_child("command");
+		config& msg = cfg.add_child("speak");
+		msg["description"] = "server";
+		msg["message"] = message;
+	} else {
+		config& msg = turn.add_child("message");
+		msg["sender"] = "server";
+		msg["message"] = message;
+	}
+
+	return turn;
 }

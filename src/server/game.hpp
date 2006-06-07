@@ -72,6 +72,7 @@ public:
 
 	int id() const;
 
+	config construct_server_message(const std::string& message);
 	void send_data(const config& data, network::connection exclude=0);
 	void send_data_team(const config& data, const std::string& team, network::connection exclude=0);
 	void send_data_observers(const config& data);
@@ -121,6 +122,11 @@ public:
 	const player* transfer_game_control();
 
 private:
+	//returns an iterator on the player_ vector if sock is found
+	user_vector::iterator find_in_players(network::connection sock);
+
+	//returns an iterator on the observer_ vector if sock is found
+	user_vector::iterator find_in_observers(network::connection sock);
 
 	//helps debugging player and observer lists
 	std::string debug_player_info() const;
