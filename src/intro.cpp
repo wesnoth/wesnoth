@@ -248,7 +248,7 @@ bool show_intro_part(display &disp, const config& part,
 	const SDL_Rect total_size = font::draw_text(NULL, screen_area(), font::SIZE_PLUS,
 			font::NORMAL_COLOUR, story, 0, 0);
 	if (texty + 20 + total_size.h > screen_area().h) {
-		texty = screen_area().h > total_size.h + 1 ? screen_area().h - total_size.h - 1 : 0;
+		texty = screen_area().h > total_size.h + 1 ? screen_area().h - total_size.h - 21 : 0;
 
 		draw_solid_tinted_rectangle(textx, texty, total_size.w, total_size.h,
 				0, 0, 0, 128, video.getSurface());
