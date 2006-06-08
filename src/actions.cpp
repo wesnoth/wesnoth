@@ -249,7 +249,7 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	if (!attacker_stats_) {
 		const attack_type *def = NULL;
 		if (defender_weapon >= 0) {
-			wassert(defender_weapon < defender.attacks().size());
+			wassert(defender_weapon < (int)defender.attacks().size());
 			def = &defender.attacks()[defender_weapon];
 		}
 		wassert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);

@@ -343,7 +343,8 @@ void pump()
 		resize_dimensions.second = 0;
 	}
 
-	sound::think_about_music();
+	if (preferences::music_on())
+		sound::think_about_music();
 }
 
 void raise_process_event()
