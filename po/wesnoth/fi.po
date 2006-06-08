@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-07 23:41+0200\n"
-"PO-Revision-Date: 2006-04-12 11:06+0200\n"
-"Last-Translator: Mikko Kraft <mikkokraft@gmail.com>\n"
+"PO-Revision-Date: 2006-06-08 00:46+0200\n"
+"Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -286,7 +286,6 @@ msgid "slows"
 msgstr "hidastaa"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -295,7 +294,8 @@ msgid ""
 msgstr ""
 "Hidastus:\n"
 "Hidastushyökkäys puolittaa uhrin tekemän vahingon ja liikkumisen "
-"(pyöristetään ylös)."
+"(pyöristetään ylös). Hidastus kestää hidastetun yksikön oman vuoron loppuun "
+"asti."
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -1601,9 +1601,8 @@ msgid "mace"
 msgstr "helanuija"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:3
-#, fuzzy
 msgid "Wose Sapling"
-msgstr "Parantaminen"
+msgstr "Puupaimenentaimi"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:31
 #, fuzzy
@@ -2088,9 +2087,8 @@ msgid "Terrains"
 msgstr "Maastot"
 
 #: data/help.cfg:59
-#, fuzzy
 msgid "Commands"
-msgstr "Komentaja"
+msgstr "Komennot"
 
 #: data/help.cfg:65 data/help.cfg:71 data/help.cfg:264
 msgid "Overview"
@@ -2728,7 +2726,7 @@ msgstr ""
 
 #: data/help.cfg:188
 msgid "Time of Day"
-msgstr "Vuorokausirytmi"
+msgstr "Vuorokaudenaika"
 
 #: data/help.cfg:192
 msgid ""
@@ -3159,9 +3157,8 @@ msgid "Resilient"
 msgstr "kestävä"
 
 #: data/help.cfg:291
-#, fuzzy
 msgid "Resilient units have 10% +3 more HP than usual."
-msgstr "Kestävillä yksiköillä on 7 EP:tä enemmän kuin muilla."
+msgstr "Kestävillä yksiköillä on 10% + 3 tavallista enemmän EP:tä."
 
 #: data/help.cfg:293
 msgid ""
@@ -3186,13 +3183,12 @@ msgid "Strong"
 msgstr "vahva"
 
 #: data/help.cfg:299
-#, fuzzy
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
 "Vahvat yksiköt tekevät 1 vahingon enemmän jokaisella osumalla "
-"lähitaistelussa, ja niillä on 2 EP:tä enemmän kuin muilla."
+"lähitaistelussa, ja niillä on 1 EP enemmän kuin muilla."
 
 #: data/help.cfg:301
 msgid ""
@@ -3273,12 +3269,10 @@ msgid "Dextrous"
 msgstr "taitava"
 
 #: data/help.cfg:323
-#, fuzzy
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
-"Taitavat yksiköt tekevät 1 vahingon enemmän jokaisella osumalla ampuessaan "
-"jousella."
+"Taitavat yksiköt tekevät 1 vahingon enemmän jokaisella kaukotaisteluosumalla."
 
 #: data/help.cfg:325
 msgid ""
@@ -3785,33 +3779,40 @@ msgstr ""
 "pääse."
 
 #: data/help.cfg:543
-#, fuzzy
 msgid "General commands"
-msgstr "Kenraali"
+msgstr "Yleiset komennot"
 
 #: data/help.cfg:545
 msgid ""
 "\n"
 "Quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Poistu tehtävästä (suoraan)."
 
 #: data/help.cfg:548
 msgid ""
 "\n"
 "Save the game (without prompting)."
 msgstr ""
+"\n"
+"Tallenna peli (suoraan)."
 
 #: data/help.cfg:551
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Tallenna peli ja poistu tehtävästä (suoraan)."
 
 #: data/help.cfg:554
 msgid ""
 "\n"
 "Redraw the screen."
 msgstr ""
+"\n"
+"Piirrä ruutu uudelleen."
 
 #: data/help.cfg:557
 msgid ""
@@ -3819,17 +3820,21 @@ msgid ""
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
 "off by quitting the game."
 msgstr ""
+"\n"
+"Siirry testaustilaan (ei toimi moninpelissä). Testaustilasta pääsee pois "
+"poistumalla pelistä."
 
 #: data/help.cfg:560
 msgid ""
 "\n"
 "Bring up theme selection menu."
 msgstr ""
+"\n"
+"Näytä teemanvalintavalikko."
 
 #: data/help.cfg:565
-#, fuzzy
 msgid "Multiplayer commands"
-msgstr "Moninpelikartat"
+msgstr "Moninpelikomennot"
 
 #: data/help.cfg:567
 msgid ""
@@ -3838,12 +3843,17 @@ msgid ""
 "controls that side needs to issue this command. If you don't provide side, "
 "'1' is assumed."
 msgstr ""
+"\n"
+"Vaihda armeijan komentajuutta ihmisen ja tietokonepelaajan välillä. Tämän "
+"komennon voi antaa vain pelaaja, joka kontrolloi armeijaa. Oletusarvona on 1."
 
 #: data/help.cfg:570
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
+"\n"
+"Hlijennä tai poista hiljennys kaikilta tarkkailijoilta."
 
 #: data/help.cfg:573
 msgid ""
@@ -3851,6 +3861,9 @@ msgid ""
 "Mute a specific observer. If no username is supplied the muted usernames are "
 "displayed."
 msgstr ""
+"\n"
+"Hiljennä nimeltämainittu tarkkailija. Jos nimeä ei anneta, näyttää "
+"hiljennetyt pelaajatunnukset."
 
 #: data/help.cfg:576
 msgid ""
@@ -3859,12 +3872,18 @@ msgid ""
 "a friendly way to remove someone who is having connection or other "
 "difficulties."
 msgstr ""
+"\n"
+"Potki pelaaja pois moninpelistä. Pelaaja pystyy palaamaan peliin. Tätä "
+"käytetään tavallisesti poistamaan pelaaja, jolla on yhteys- tai muita "
+"ongelmia."
 
 #: data/help.cfg:579
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that username."
 msgstr ""
+"\n"
+"Potki pelaaja moninpelistä, ja estä hänen IP-osoitteensa."
 
 #: data/help.cfg:582
 msgid ""
@@ -3872,12 +3891,17 @@ msgid ""
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nick of the player or observer)."
 msgstr ""
+"\n"
+"Vaihda armeijaa kontrolloiva pelaaja (kirjoita tähän armeijan numero) "
+"käyttäjänimeksi (kirjoita tähän pelaajan tai tarkkailijan käyttäjänimi)"
 
 #: data/help.cfg:585
 msgid ""
 "\n"
 "Clear chat messages."
 msgstr ""
+"\n"
+"Tyhjennä keskusteluikkuna."
 
 #: data/items.cfg:264
 msgid ""
@@ -3977,7 +4001,7 @@ msgstr "Tämä sormus parantaa kantajaa vähän joka vuoro."
 
 #: data/items.cfg:555
 msgid "Can't set abilities yet, sorry."
-msgstr "Ei voi säätää erikoistaitoja vielä, anteeksi."
+msgstr "Pahoittelen, erikoistaitoja ei voi vielä säätää."
 
 #: data/items.cfg:576
 msgid "Ring of Slowness"
@@ -4110,9 +4134,8 @@ msgstr ""
 "kultapalaa/kylä."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:31
-#, fuzzy
 msgid "2p - Caves of the Basilisk"
-msgstr "3p - Horatiisaari"
+msgstr "2p - Basiliskiluolat"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:33
 msgid ""
@@ -4360,7 +4383,7 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:36
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:37
 msgid "Sulla's statue"
-msgstr ""
+msgstr "Sullan patsas"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
@@ -4509,7 +4532,7 @@ msgstr "Pieni 2 vs 2 kartta. Suositeltu asetus 2 kultapalaa/kylä."
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
-msgstr ""
+msgstr "4p - Isarin risti"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
 msgid ""
@@ -4517,6 +4540,10 @@ msgid ""
 "of units and planning of moves is important.  Teams set for players 1&4 v "
 "2&3 (northeast vs. southwest).  Designed for 75gp, 20 villages."
 msgstr ""
+"Hyvin pieni kartta kahdelle 2 hengen joukkueelle. Lyhyet etäisyydet "
+"tarkoittavat, että siirtojärjestys ja siirtojen suunnittelu on tärkeää. "
+"Pelaajat 1 ja 4 pelaavat joukkueessa pelaajia 2 ja 3 vastaan. Suunniteltu 75 "
+"kultapalalle, 20 kylälle."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 msgid "4p - King of the Hill"
@@ -4664,7 +4691,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
-msgstr ""
+msgstr "6p - Auringonlasku Waterloossa"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
 msgid ""
@@ -4675,22 +4702,21 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
-#, fuzzy
 msgid "8p - Morituri"
-msgstr "3p - Morituri"
+msgstr "8p - Morituri"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish. Recommended setting of 2 gold per village."
 msgstr ""
-"Vain todellinen taktikko selviytyy tässä rajatussa kartassa, jossa kuusi "
-"armeijaa kohtaa. Suositeltu asetus 2 kultapalaa/kylä."
+"Vain todellinen diplomaatti ja taktikko selviytyy tässä erikoisessa "
+"kartassa, jossa kahdeksan armeijaa kohtaa. Suositeltu asetus 2 kultapalaa/"
+"kylä."
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
-msgstr ""
+msgstr "9p - Erikoista rakkautta"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
 msgid ""
@@ -4940,9 +4966,8 @@ msgid "Orange"
 msgstr "Oranssi"
 
 #: data/team_colors.cfg:34
-#, fuzzy
 msgid "Black"
-msgstr "< Takaisin"
+msgstr "Musta"
 
 #: data/team_colors.cfg:40
 msgid "White"
@@ -4953,9 +4978,8 @@ msgid "Brown"
 msgstr "Ruskea"
 
 #: data/team_colors.cfg:52
-#, fuzzy
 msgid "Teal"
-msgstr "Joukkue"
+msgstr "Sinivihreä"
 
 #: data/terrain.cfg:11 data/themes/default.cfg:542
 #: src/multiplayer_create.cpp:67 src/multiplayer_lobby.cpp:361
@@ -5085,9 +5109,8 @@ msgid "Play"
 msgstr "Pelaa"
 
 #: data/themes/default.cfg:474
-#, fuzzy
 msgid "continous replay"
-msgstr " - uusinta"
+msgstr "jatkuva toisto"
 
 #: data/themes/default.cfg:487
 msgid "Stop"
@@ -5110,7 +5133,6 @@ msgid "Next Turn"
 msgstr "Sueraava vuoro"
 
 #: data/themes/default.cfg:516
-#, fuzzy
 msgid "play turn"
 msgstr "vuorossa"
 
@@ -5119,7 +5141,6 @@ msgid "Next Side"
 msgstr "Seuraava puoli"
 
 #: data/themes/default.cfg:530
-#, fuzzy
 msgid "play side turn"
 msgstr "vuorossa"
 
@@ -6877,12 +6898,14 @@ msgstr ""
 #: data/units/Human_Horse_Grand_Knight.cfg:21
 #: data/units/Human_Horse_Knight.cfg:20 data/units/Human_Horse_Lancer.cfg:21
 #: data/units/Human_Horseman.cfg:21
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
-msgstr "erikoisuus"
+msgstr ""
+"\n"
+"\n"
+"Erikoishuomautus:"
 
 #: data/units/Human_Horse_Grand_Knight.cfg:73
 #: data/units/Human_Horse_Knight.cfg:72 data/units/Human_Horse_Lancer.cfg:25
@@ -8171,9 +8194,8 @@ msgstr ""
 "kykenevät parantamaan yksiköitä ympärillään ja poistamaan myrkkyä."
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Mermaid Siren"
-msgstr "Merenmieskeihästäjä"
+msgstr "Merenneitoseireeni"
 
 #: data/units/Mermaid_Siren.cfg:23
 msgid ""
@@ -10335,7 +10357,7 @@ msgstr "Taistelu Wesnothista"
 
 #: src/game.cpp:1744
 msgid "Loading title screen."
-msgstr ""
+msgstr "Ladataan aloitusikkunaa."
 
 #: src/game_events.cpp:733
 msgid "Victory:"
@@ -10414,9 +10436,8 @@ msgid "Defense"
 msgstr "Puolustus"
 
 #: src/help.cpp:1265
-#, fuzzy
 msgid "Movement Cost"
-msgstr "Liikkuminen"
+msgstr "Liikkumiskustannus"
 
 #: src/help.cpp:1386 src/help.cpp:1410
 msgid "or"
@@ -10682,13 +10703,12 @@ msgid "You are separated from your soldiers and may not recall them"
 msgstr "Olet erossa sotilaistasi, etkä voi kutsua heitä."
 
 #: src/menu_events.cpp:676
-#, fuzzy
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
-"Sinulla ei ole aiempien skenaarioiden veteraaneja, jotka voisit kutsua "
-"palvelukseen."
+"Palvelukseen kutsuminen ei onnistu, koska sinulla ei ole jäljellä aiemmista "
+"tehtävistä henkiinjääneitä yksiköitä."
 
 #: src/menu_events.cpp:683
 msgid "Level"
@@ -10762,9 +10782,8 @@ msgid "Show your ignore list. Usage: /ignore list"
 msgstr ""
 
 #: src/menu_events.cpp:1399
-#, fuzzy
 msgid "Unknown subcommand"
-msgstr "Tuntematon skenaario"
+msgstr "Tuntematon alikomento"
 
 #: src/menu_events.cpp:1402
 msgid ""
@@ -10778,27 +10797,24 @@ msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
 #: src/menu_events.cpp:1407
-#, fuzzy
 msgid "Unknown command"
-msgstr "Tuntematon aikakausi '"
+msgstr "Tuntematon komento"
 
 #: src/menu_events.cpp:1424
 msgid "Added to ignore list: "
 msgstr ""
 
 #: src/menu_events.cpp:1426 src/menu_events.cpp:1436
-#, fuzzy
 msgid "Invalid username: "
-msgstr "Virheellinen tagin nimi"
+msgstr "Virheellinen käyttäjänimi"
 
 #: src/menu_events.cpp:1434 src/menu_events.cpp:1460
 msgid "Removed from ignore list: "
 msgstr ""
 
 #: src/menu_events.cpp:1465
-#, fuzzy
 msgid "Unknown command: "
-msgstr "Tuntematon skenaario: '"
+msgstr "Tuntematon komento:"
 
 #: src/menu_events.cpp:1566
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -10821,39 +10837,32 @@ msgid "Expected Battle Result (hp)"
 msgstr ""
 
 #: src/mouse_events.cpp:301
-#, fuzzy
 msgid " resistance vs "
-msgstr "Vastustukset"
+msgstr "vastustuskyky vastaan"
 
 #: src/mouse_events.cpp:302
-#, fuzzy
 msgid " vulnerability vs "
-msgstr "hyökkääjän haavoittuvuus: "
+msgstr "haavoittuvuus vastaan"
 
 #: src/mouse_events.cpp:312
-#, fuzzy
 msgid "Slowed"
 msgstr "hidastettu"
 
 #: src/mouse_events.cpp:319
-#, fuzzy
 msgid "Time of day"
-msgstr "Vuorokausirytmi"
+msgstr "Vuorokaudenaika"
 
 #: src/mouse_events.cpp:329
-#, fuzzy
 msgid "Leadership"
-msgstr "johtaja"
+msgstr "johtamiskyky"
 
 #: src/mouse_events.cpp:336
-#, fuzzy
 msgid "Total damage"
 msgstr "kokonaisvahinko"
 
 #: src/mouse_events.cpp:343
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Valitse ase:"
+msgstr "Ei käyttökelpoista asetta"
 
 #: src/mouse_events.cpp:348
 msgid "Chance of being unscathed"
@@ -10937,9 +10946,8 @@ msgid ")"
 msgstr ")"
 
 #: src/multiplayer_connect.cpp:339
-#, fuzzy
 msgid "Default AI"
-msgstr "Taistelu Wesnothista"
+msgstr "Tavallinen tietokonepelaaja"
 
 #: src/multiplayer_connect.cpp:390
 msgid "(Vacant slot)"
@@ -11094,7 +11102,7 @@ msgstr "Ottaa käyttöön aikarajan"
 
 #: src/multiplayer_create.cpp:115
 msgid "Longest time allowed for first turn (seconds)"
-msgstr "Pisin sallitta aika ensimmäiselle vuorolle (sekunneissa)"
+msgstr "Pisin sallittu kesto ensimmäiselle vuorolle (sekunteja)"
 
 #: src/multiplayer_create.cpp:121
 msgid "Longest time possible for any turn (seconds)"
@@ -11220,16 +11228,15 @@ msgstr "--ei avoimia pelejä--"
 
 #: src/multiplayer_lobby.cpp:297 src/multiplayer_lobby.cpp:300
 msgid "Unknown era"
-msgstr "Tuntematon aikakausi '"
+msgstr "Tuntematon aikakausi"
 
 #: src/multiplayer_lobby.cpp:322 src/multiplayer_lobby.cpp:338
 msgid "Unknown scenario"
 msgstr "Tuntematon skenaario"
 
 #: src/multiplayer_lobby.cpp:334
-#, fuzzy
 msgid "Remote scenario"
-msgstr "Tuntematon skenaario"
+msgstr "Toisella koneella oleva skenaario"
 
 #: src/multiplayer_lobby.cpp:347
 msgid "Vacant Slot:"
@@ -11248,9 +11255,8 @@ msgid "Observe Game"
 msgstr "Tarkkaile"
 
 #: src/multiplayer_lobby.cpp:465
-#, fuzzy
 msgid "Quick Replays"
-msgstr "Ohita uusinta"
+msgstr "Pikauusinnat"
 
 #: src/multiplayer_lobby.cpp:466
 msgid "Preferences"
@@ -11718,7 +11724,6 @@ msgid "Summaries are stored here:"
 msgstr ""
 
 #: src/upload_log.cpp:286
-#, fuzzy
 msgid "You can view the results at:"
 msgstr "Voit selata tuloksia täällä:"
 
