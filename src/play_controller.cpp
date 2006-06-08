@@ -437,6 +437,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_SCREENSHOT:
 	case hotkey::HOTKEY_ACCELERATED:
 	case hotkey::HOTKEY_TOGGLE_GRID:
+	case hotkey::HOTKEY_MOUSE_SCROLL:
 	case hotkey::HOTKEY_STATUS_TABLE:
 	case hotkey::HOTKEY_MUTE:
 	case hotkey::HOTKEY_PREFERENCES:
@@ -599,7 +600,7 @@ void play_controller::play_slice()
 	SDL_GetMouseState(&mousex,&mousey);
 	tooltips::process(mousex, mousey);
 
-	const int scroll_threshold = (preferences::mouse_scroll_disabled()) ? 0 : 5;
+	const int scroll_threshold = (preferences::mouse_scroll_enabled()) ? 5 : 0;
 
 	if(key[SDLK_UP] || mousey < scroll_threshold)
 		gui_->scroll(0,-preferences::scroll_speed());

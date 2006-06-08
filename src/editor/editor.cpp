@@ -728,6 +728,7 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	case hotkey::HOTKEY_FULLSCREEN:
 	case hotkey::HOTKEY_SCREENSHOT:
 	case hotkey::HOTKEY_TOGGLE_GRID:
+	case hotkey::HOTKEY_MOUSE_SCROLL:
 	case hotkey::HOTKEY_PREFERENCES:
 	case hotkey::HOTKEY_EDIT_SAVE_MAP:
 	case hotkey::HOTKEY_EDIT_SAVE_AS:

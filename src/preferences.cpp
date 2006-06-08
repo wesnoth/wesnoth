@@ -762,12 +762,15 @@ bool show_floating_labels()
 	return prefs["floating_labels"] != "no";
 }
 
-bool mouse_scroll_disabled()
+bool mouse_scroll_enabled()
 {
-	//enabled by default
-	return prefs["mouse_scrolling"] == "no";
+	return prefs["mouse_scrolling"] != "no";
 }
 
+void enable_mouse_scroll(bool value)
+{
+	prefs["mouse_scrolling"] = value ? "yes" : "no";
+}
 
 void set_show_floating_labels(bool value)
 {

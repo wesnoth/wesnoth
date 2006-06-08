@@ -101,6 +101,8 @@ namespace preferences {
 
 	int scroll_speed();
 	void set_scroll_speed(int scroll);
+	bool mouse_scroll_enabled();
+	void enable_mouse_scroll(bool value);
 
 	bool turn_bell();
 	void set_turn_bell(bool ison);
@@ -199,7 +201,6 @@ namespace preferences {
 	void set_chat_lines(int lines);
 
 	bool compress_saves();
-	bool mouse_scroll_disabled();
 
 	std::set<std::string> &encountered_units();
 	std::set<std::string> &encountered_terrains();

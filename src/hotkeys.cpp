@@ -68,6 +68,7 @@ const struct {
 	{ hotkey::HOTKEY_RECALL, "recall", N_("Recall"), false },
 	{ hotkey::HOTKEY_ENDTURN, "endturn", N_("End Turn"), false },
 	{ hotkey::HOTKEY_TOGGLE_GRID, "togglegrid", N_("Toggle Grid"), false },
+	{ hotkey::HOTKEY_MOUSE_SCROLL, "mousescroll", N_("Mouse Scrolling"), false },
 	{ hotkey::HOTKEY_STATUS_TABLE, "statustable", N_("Status Table"), false },
 	{ hotkey::HOTKEY_MUTE, "mute", N_("Mute"), false },
 	{ hotkey::HOTKEY_SPEAK, "speak", N_("Speak"), false },
@@ -571,6 +572,9 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_TOGGLE_GRID:
 			if(executor)
 				executor->toggle_grid();
+			break;
+		case HOTKEY_MOUSE_SCROLL:
+			preferences::enable_mouse_scroll(!preferences::mouse_scroll_enabled());
 			break;
 		case HOTKEY_STATUS_TABLE:
 			if(executor)
