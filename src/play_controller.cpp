@@ -298,9 +298,11 @@ void play_controller::init_side(const unsigned int team_index){
 
 	if(first_turn_) {
 		if(gui_->viewing_team() == team_index && !team_manager_.is_observer()) {
-			recorder.add_event("turn 1");
-			recorder.add_event("new turn");
-			recorder.add_event("side turn");
+			if (recorder.at_end()){
+				recorder.add_event("turn 1");
+				recorder.add_event("new turn");
+				recorder.add_event("side turn");
+			}
 			game_events::fire("turn 1");
 			game_events::fire("new turn");
 			game_events::fire("side turn");
@@ -314,7 +316,9 @@ void play_controller::init_side(const unsigned int team_index){
 	//fire side turn event only if real side change occurs not counting changes from void to a side
 	if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
 		if(gui_->viewing_team() == team_index && !team_manager_.is_observer()) {
-			recorder.add_event("side turn");
+			if (recorder.at_end()){
+				recorder.add_event("side turn");
+			}
 			game_events::fire("side turn");
 		} else if(current_team.is_ai()) {
 			game_events::fire("side turn");
