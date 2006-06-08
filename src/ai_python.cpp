@@ -277,6 +277,31 @@ static PyObject* attacktype_get_stones(wesnoth_attacktype* type, void* /*closure
 	return Py_BuildValue("i",type->attack_type_->has_special_by_id("stones"));
 }
 
+static PyObject* attacktype_get_plague(wesnoth_attacktype* type, void* /*closure*/)
+{
+	return Py_BuildValue("i",type->attack_type_->has_special_by_id("stones"));
+}
+
+static PyObject* attacktype_get_marksman(wesnoth_attacktype* type, void* /*closure*/)
+{
+	return Py_BuildValue("i",type->attack_type_->has_special_by_id("marksman"));
+}
+
+static PyObject* attacktype_get_magical(wesnoth_attacktype* type, void* /*closure*/)
+{
+	return Py_BuildValue("i",type->attack_type_->has_special_by_id("magical"));
+}
+
+static PyObject* attacktype_get_charge(wesnoth_attacktype* type, void* /*closure*/)
+{
+	return Py_BuildValue("i",type->attack_type_->has_special_by_id("charge"));
+}
+
+static PyObject* attacktype_get_drains(wesnoth_attacktype* type, void* /*closure*/)
+{
+	return Py_BuildValue("i",type->attack_type_->has_special_by_id("drains"));
+}
+
 static PyObject* attacktype_get_range(wesnoth_attacktype* type, void* /*closure*/)
 {
 	return Py_BuildValue("s",type->attack_type_->range().c_str());
@@ -300,7 +325,17 @@ static PyGetSetDef attacktype_getseters[] = {
     { "berserk",			(getter)attacktype_get_berserk,			NULL,
         "This attack uses berserk.",	NULL },
     { "stones",			(getter)attacktype_get_stones,			NULL,
-        "This attack has 'stones' ability.",	NULL },
+        "This attack has 'stones' special.",	NULL },
+    { "plague",			(getter)attacktype_get_plague,			NULL,
+        "This attack has 'plague' special.",	NULL },
+    { "marksman",			(getter)attacktype_get_marksman,			NULL,
+        "This attack has 'marksman' special.",	NULL },
+    { "magical",			(getter)attacktype_get_magical,			NULL,
+        "This attack is magical.",	NULL },
+    { "charge",			(getter)attacktype_get_charge,			NULL,
+        "This attack has the 'charge' special.",	NULL },
+    { "drains",			(getter)attacktype_get_drains,			NULL,
+        "This attack has the 'drains' special.",	NULL },
 	{ "range",			(getter)attacktype_get_range,			NULL,
         "String with the name of the attack range.",	NULL },
 	{ NULL, NULL, NULL, NULL, NULL }
@@ -1225,7 +1260,8 @@ PyObject* python_ai::wrapper_get_location(PyObject* /*self*/, PyObject* args)
     if ( !PyArg_ParseTuple( args, "ii", &x, &y ) )
         return NULL;
 
-	return wrap_location(gamemap::location(x,y));
+    gamemap::location loc(x,y);
+	return wrap_location(loc);
 }
 
 PyObject* python_ai::wrapper_get_map(PyObject* /*self*/, PyObject* args)
@@ -1328,11 +1364,25 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 {
 	wesnoth_location* from;
 	wesnoth_location* to;
-	int weapon;
-	if ( !PyArg_ParseTuple( args, "O!O!i", &wesnoth_location_type, &from, &wesnoth_location_type, &to, &weapon ) )
+	int weapon = -1; // auto-choose
+	if ( !PyArg_ParseTuple( args, "O!O!|i", &wesnoth_location_type, &from, &wesnoth_location_type, &to, &weapon ) )
 		return NULL;
+		
+    info& inf = running_instance->get_info();
 
-	running_instance->attack_enemy(*from->location_,*to->location_,weapon);
+    battle_context bc(
+        inf.map,
+        inf.teams,
+        inf.units,
+        inf.state,
+        inf.gameinfo,
+        *from->location_,
+        *to->location_,
+        weapon);
+
+	running_instance->attack_enemy(*from->location_,*to->location_,
+        bc.get_attacker_stats().attack_num,
+        bc.get_defender_stats().attack_num);
 	running_instance->src_dst_.clear();
 	running_instance->dst_src_.clear();
 	running_instance->possible_moves_.clear();
@@ -1526,8 +1576,10 @@ static PyMethodDef wesnoth_python_methods[] = {
         "Moves the unit on 'from' to the location specified by 'to', and "
         "returns a wesnoth.location object representing the position the unit was moved to."},
     { "attack_unit", python_ai::wrapper_attack_unit, METH_VARARGS,
-        "Parameters: location attacker, location defender, int weapon\n"
-        "Unit at position 'attacker' attacks unit at position 'defender' with weapon 'weapon'."},
+        "Parameters: location attacker, location defender, int weapon = -1\n"
+        "Unit at position 'attacker' attacks unit at position 'defender' with weapon 'weapon'. "
+        "The weapon parameter is optional, and the same weapon which would be "
+        "highlighted for a human player is used if it is omitted."},
     { "get_adjacent_tiles", python_ai::wrapper_get_adjacent_tiles, METH_VARARGS,
         "Parameters: location\n"
         "Returns: positions\n"
