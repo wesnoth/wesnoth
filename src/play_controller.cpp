@@ -631,7 +631,7 @@ std::vector<std::string> play_controller::expand_menu(std::vector<std::string>& 
 			std::vector<std::string> newitems;
 
 			for (unsigned int turn = status_.turn(); turn != 0; turn--) {
-				std::string name = _("Auto-Save") + lexical_cast<std::string>(turn);
+				std::string name = gamestate_.label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
 				if (save_game_exists(name)) {
 					savenames.push_back(name);
 					if (turn == 1) {
@@ -639,10 +639,21 @@ std::vector<std::string> play_controller::expand_menu(std::vector<std::string>& 
 					} else {
 						newitems.push_back(_("Back to turn ") + lexical_cast<std::string>(turn));
 					}
-					if (newitems.size() == 5)
-						break;
 				}
 			}
+
+			// Make sure list doesn't get too long: keep top two,
+			// midpoint and bottom.
+			if (newitems.size() > 5) {
+				std::vector<std::string> subitems;
+				subitems.push_back(newitems[0]);
+				subitems.push_back(newitems[1]);
+				subitems.push_back(newitems[newitems.size() / 3]);
+				subitems.push_back(newitems[newitems.size() * 2 / 3]);
+				subitems.push_back(newitems.back());
+				newitems = subitems;
+			}
+
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());
 			break;
 		}

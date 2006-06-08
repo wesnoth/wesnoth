@@ -430,7 +430,7 @@ void playsingle_controller::before_human_turn(){
 	gui_->draw();
 	gui_->update_display();
 
-	menu_handler_.autosave(status_.turn(), gamestate_.starting_pos);
+	menu_handler_.autosave(gamestate_.label, status_.turn(), gamestate_.starting_pos);
 
 	if(preferences::turn_bell()) {
 		sound::play_sound(game_config::sounds::turn_bell);

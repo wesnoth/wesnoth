@@ -714,16 +714,6 @@ bool game_controller::load_game()
 		}
 	}
 
-	if (game.compare(0,strlen(_("Auto-Save")),_("Auto-Save")) != 0) {
-		// Not loading an Auto-Save?  Delete all auto-saves.
-		std::vector<save_info> games = get_saves_list();
-		for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
-			if (i->name.compare(0,strlen(_("Auto-Save")),_("Auto-Save")) == 0) {
-				delete_game(i->name);
-			}
-		}
-	}
-
 	return true;
 }
 

@@ -112,6 +112,19 @@ void play_replay(display& disp, game_state& state, const config& game_config,
 	}
 }
 
+void clean_autosaves(const std::string &label)
+{
+	std::vector<save_info> games = get_saves_list();
+	std::string prefix = label + "-" + _("Auto-Save");
+	std::cerr << "Cleaning autosaves with prefix '" << prefix << "'\n";
+	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
+		if (i->name.compare(0,prefix.length(),prefix) == 0) {
+			std::cerr << "Deleting autosave '" << i->name << "'\n";
+			delete_game(i->name);
+		}
+	}
+}
+
 LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_config,
 		const game_data& units_data, CVideo& video,
 		upload_log &log,
@@ -388,6 +401,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 
 		if(scenario != NULL) {
 			// update the label
+			std::string oldlabel = state.label;
 			state.label = (*scenario)["name"];
 
 			//if this isn't the last scenario, then save the game
@@ -400,7 +414,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 					retry = false;
 
 					const int should_save = dialogs::get_save_name(disp,
-						_("Do you want to save your game?"),
+						_("Do you want to save your game? (Also erases Auto-Save files)"),
 						_("Name:"),
 						&state.label);
 
@@ -408,6 +422,8 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 					if(should_save == 0) {
 						try {
 							save_game(state);
+							if (!oldlabel.empty())
+								clean_autosaves(oldlabel);
 						} catch(game::save_game_failed&) {
 							gui::show_error_message(disp, _("The game could not be saved"));
 							retry = true;
