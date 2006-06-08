@@ -765,7 +765,7 @@ int main(int argc, char **argv)
 {
 	SDL_RWops *src;
 
-	src = SDL_RWFromFile("images/mage.png", "rb");
+	src = SDL_RWFromFile("images/units/human-magi/mage.png", "rb");
 	if (src == NULL)
 		exit(0);
 	exit(!IMG_isPNG(src));
