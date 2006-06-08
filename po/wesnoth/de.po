@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-07 23:41+0200\n"
-"PO-Revision-Date: 2006-05-28 14:03+0100\n"
+"PO-Revision-Date: 2006-06-08 19:46+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -304,7 +304,6 @@ msgid "slows"
 msgstr "verlangsamen"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -313,8 +312,9 @@ msgid ""
 msgstr ""
 "Verlangsamen:\n"
 "Unsichtbare Fäden scheinen das Opfer zu behindern und festzuhalten. "
-"Verlangsamte Einheiten verlieren die Hälfte ihrer Aktionen im Kampf sowie "
-"ihrer Bewegungspunkte (aufgerundet). Die Verlangsamung hält eine Runde an."
+"Verlangsamte Einheiten verursachen bei einem Angriff nur die Hälfte ihrer "
+"Schadenspunkte und verfügen nur noch über die Hälfte ihrer Bewegungspunkte "
+"(aufgerundet). Die Verlangsamung hält eine Runde an."
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -1718,12 +1718,10 @@ msgid "mace"
 msgstr "Streitkolben"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:3
-#, fuzzy
 msgid "Wose Sapling"
-msgstr "Heilung"
+msgstr "Junger Waldschrat"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:31
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -3439,12 +3437,11 @@ msgid "Dextrous"
 msgstr "Treffsicher"
 
 #: data/help.cfg:323
-#, fuzzy
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
-"Treffsichere Einheiten richten einen Punkt mehr Schaden an, wenn sie mit dem "
-"Bogen angreifen."
+"Treffsichere Einheiten richten einen Punkt mehr Schaden an, wenn sie mit "
+"ihrer Fernkampfwaffe angreifen."
 
 #: data/help.cfg:325
 msgid ""
@@ -4041,6 +4038,11 @@ msgid ""
 "controls that side needs to issue this command. If you don't provide side, "
 "'1' is assumed."
 msgstr ""
+"\n"
+"Wechselt die Kontrolle einer Fraktion zwischen KI und einem normalen Spieler "
+"hin und her. Der Spieler, der die zu ändernde Seite kontrolliert muss dieses "
+"Kommando ausführen. Wenn keine Seite angegeben wird, wir »1« als Wert "
+"verwendet."
 
 #: data/help.cfg:570
 msgid ""
@@ -4418,7 +4420,7 @@ msgid ""
 "(inscribed by Gauteamus)"
 msgstr ""
 "Von schlanker Gestalt und geschickter Hand \n"
-"- - Sieben Steine und Elf (*)\n"
+"- - Sieben Steine und Elf \n"
 "\n"
 "- - Sieben Steine und Elf \n"
 "Bogenschütze bekannt als Drachenbann \n"
@@ -4427,6 +4429,7 @@ msgstr ""
 "(Geschrieben von Gauteamus)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:110
+#, fuzzy
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
 "Wolves of the mountains, and he had the courage to match. His leadership and "
@@ -4443,6 +4446,21 @@ msgid ""
 "words: Good Gog, dog, are yer legs made of stone?!?\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Blum Duk wurde von seinem Stamm geachtet, da er einen der mächtigen "
+"Schreckenswölfe des Gebirges gezähmt hatte. Seine Führungsqualitäten allein "
+"war es zu verdanken, dass der Stamm der Kobolde die Bedrohung durch Mensch "
+"und Elf überstehen konnte. Es ging das Gerücht, dass sein Reittier fünfzig "
+"Menschen und hundert Elfen getötet habe. \n"
+"Als er die Kunde von einem schrecklichen Monster vernahm, dass in der Nähe "
+"seines Stammes hauste, ritt er allein hinaus, um sich dem Ungetüm entgegen "
+"zu stellen. Die anderen Kobolde harten freudig seiner Rückkehr, da sie "
+"wussten, dass Blum Duk die Kreatur erschlagen und mit dem Kadaver "
+"zurückkehren würde. \n"
+"Als er jedoch den Basilisken erblickte, wurde er von Furcht ergriffen. Er "
+"versuchte seinen Wolf zum Rückzug zu bewegen, doch er wollte sich nicht "
+"bewegen. Als die Kreatur auf ihn zu kam, schrie er seine letzten Worte gen "
+"Himmel: Verdammt, Gog, sind deine Beine aus Stein?!? \n"
+"(Niedergeschrieben von Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:119
 #, fuzzy
@@ -5242,13 +5260,13 @@ msgstr ""
 "Leiche, um an der Seite dieser Einheit zu kämpfen."
 
 #: data/special-notes.cfg:50
-#, fuzzy
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-"Diese Einheit kann ihre Gegner verlangsamen, so dass die Aktionen des "
-"Gegners im Kampf sowie seine Bewegungspunkte um die Hälfte reduziert werden."
+" Diese Einheit kann ihre Gegner verlangsamen, so dass der verursachte "
+"Schaden des Gegners im Kampf sowie seine Bewegungspunkte um die Hälfte "
+"reduziert werden."
 
 #: data/special-notes.cfg:53
 msgid ""
@@ -5480,9 +5498,8 @@ msgid "Play"
 msgstr "Abspielen"
 
 #: data/themes/default.cfg:474
-#, fuzzy
 msgid "continous replay"
-msgstr " Spielverlauf"
+msgstr "Spielverlauf ohne Unterbrechung wiedergeben"
 
 #: data/themes/default.cfg:487
 msgid "Stop"
@@ -5490,7 +5507,7 @@ msgstr "Stopp"
 
 #: data/themes/default.cfg:488
 msgid "pause at end of turn"
-msgstr ""
+msgstr "Am Ende der Runde pausieren"
 
 #: data/themes/default.cfg:501
 msgid "Reset"
@@ -5498,25 +5515,23 @@ msgstr "Zurücksetzen"
 
 #: data/themes/default.cfg:502
 msgid "reset to beginning"
-msgstr ""
+msgstr "Spielverlauf zurücksetzen"
 
 #: data/themes/default.cfg:515
 msgid "Next Turn"
 msgstr "Nächste Runde"
 
 #: data/themes/default.cfg:516
-#, fuzzy
 msgid "play turn"
-msgstr "pro Runde"
+msgstr "Runde abspielen"
 
 #: data/themes/default.cfg:529
 msgid "Next Side"
 msgstr "Nächste Fraktion"
 
 #: data/themes/default.cfg:530
-#, fuzzy
 msgid "play side turn"
-msgstr "pro Runde"
+msgstr "Fraktionsrunde abspielen"
 
 #: data/themes/default.cfg:566
 msgid "Skip animation"
@@ -5802,7 +5817,6 @@ msgstr ""
 "Kampf zu Euren Gunsten wenden, ohne selbst anzugreifen."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
@@ -11053,7 +11067,6 @@ msgid "Defense"
 msgstr "Verteidigung"
 
 #: src/help.cpp:1265
-#, fuzzy
 msgid "Movement Cost"
 msgstr "Bewegungskosten"
 
@@ -11964,11 +11977,11 @@ msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt."
 
 #: src/play_controller.cpp:637
 msgid "Back to start"
-msgstr ""
+msgstr "Zurück zum Anfang"
 
 #: src/play_controller.cpp:639
 msgid "Back to turn "
-msgstr ""
+msgstr "Zurück zu Runde "
 
 #: src/playcampaign.cpp:260
 msgid "Defeat"
@@ -12360,7 +12373,7 @@ msgstr "neutral"
 
 #: src/upload_log.cpp:278
 msgid "Enable summary uploads"
-msgstr ""
+msgstr "Erlauben, dass Zusammenfassungen übertragen werden dürfen"
 
 #: src/upload_log.cpp:283
 msgid ""
