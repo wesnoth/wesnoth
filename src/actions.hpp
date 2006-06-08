@@ -101,7 +101,7 @@ public:
 	battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 				   const gamestatus& status, const game_data& gamedata,
 				   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-				   int attacker_weapon = -1, double harm_weight = 1.0, const combatant *prev_def = NULL);
+				   int attacker_weapon = -1, int defender_weapon = -1, double harm_weight = 1.0, const combatant *prev_def = NULL);
 
 	battle_context(const battle_context &other);
 	~battle_context() { delete attacker_stats_; delete defender_stats_; }
@@ -150,6 +150,7 @@ void attack(display& gui, const gamemap& map,
             gamemap::location attacker,
             gamemap::location defender,
             int attack_with,
+            int defend_with,
             unit_map& units,
             const gamestatus& state,
             const game_data& info,

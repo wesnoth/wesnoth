@@ -97,7 +97,7 @@ protected:
 	location move_unit(location from, location to, std::map<location,paths>& possible_moves);
 
 	//our own version of 'attack_enemy'. We record all attacks to support group attacking
-	void attack_enemy(const location& attacking_unit, const location& target, int weapon);
+	void attack_enemy(const location& attacking_unit, const location& target, int att_weapon, int def_weapon);
 
 	std::set<location> attacks_;
 
@@ -118,6 +118,7 @@ protected:
 		gamemap::location target;
 		std::vector<std::pair<gamemap::location,gamemap::location> > movements;
 		std::vector<int> weapons;
+		std::vector<int> def_weapons;
 
 		//the value of the unit being targeted
 		double target_value;

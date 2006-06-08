@@ -51,7 +51,7 @@ public:
 	void add_countdown_update(int value,int team);
 	void add_movement(const gamemap::location& a, const gamemap::location& b);
 	void add_attack(const gamemap::location& a, const gamemap::location& b,
-	                int weapon);
+	                int att_weapon, int def_weapon);
 	void choose_option(int index);
 	void add_label(const std::string& text, const gamemap::location& loc);
 	void clear_labels();

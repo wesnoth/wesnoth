@@ -86,20 +86,18 @@ protected:
 
 				if(best_defense != -1) {
 					move_unit(best_movement.second,best_movement.first,possible_moves);
-					const int weapon = choose_weapon(best_movement.first,i->first);
-					attack_enemy(best_movement.first,i->first,weapon);
+					battle_context bc(get_info().map, get_info().teams,
+									  get_info().units, get_info().state,
+									  get_info().gameinfo, best_movement.first,
+									  i->first, -1, -1, current_team().aggression());
+					attack_enemy(best_movement.first,i->first,
+								 bc.get_attacker_stats().attack_num,
+								 bc.get_defender_stats().attack_num);
 					do_attacks();
 					return;
 				}
 			}
 		}
-	}
-
-	int choose_weapon(const location& attacker, const location& defender) {
-		battle_context bc(get_info().map, get_info().teams,
-						  get_info().units, get_info().state,
-						  get_info().gameinfo, attacker, defender, -1, current_team().aggression());
-		return bc.get_attacker_stats().attack_num;
 	}
 
 	void get_villages() {
@@ -593,8 +591,8 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 				if(itor != units_.end() && current_team().is_enemy(itor->second.side()) &&
 				   !itor->second.incapacitated()) {
 					battle_context bc(map_, teams_, units_, state_,
-									  gameinfo_, res, *adj_i, -1, current_team().aggression());
-					attack_enemy(res,itor->first,bc.get_attacker_stats().attack_num);
+									  gameinfo_, res, *adj_i, -1, -1, current_team().aggression());
+					attack_enemy(res,itor->first,bc.get_attacker_stats().attack_num,bc.get_defender_stats().attack_num);
 					break;
 				}
 			}
@@ -617,10 +615,10 @@ bool ai::attack_close(const gamemap::location& loc) const
 	return false;
 }
 
-void ai::attack_enemy(const location& attacking_unit, const location& target, int weapon)
+void ai::attack_enemy(const location& attacking_unit, const location& target, int att_weapon, int def_weapon)
 {
 	attacks_.insert(attacking_unit);
-	ai_interface::attack_enemy(attacking_unit,target,weapon);
+	ai_interface::attack_enemy(attacking_unit,target,att_weapon,def_weapon);
 }
 
 void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement, const std::set<gamemap::location>* remove_destinations)
@@ -978,7 +976,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 			return true;
 		}
 
-		attack_enemy(to,target_loc,weapon);
+		attack_enemy(to,target_loc,weapon,choice_it->def_weapons[0]);
 
 		//if this is the only unit in the attack, and the target
 		//is still alive, then also summon reinforcements
@@ -993,7 +991,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 	}
 }
 
-void ai_interface::attack_enemy(const location& u, const location& target, int weapon)
+void ai_interface::attack_enemy(const location& u, const location& target, int weapon, int def_weapon)
 {
 	//stop the user from issuing any commands while the unit is attacking
 	const events::command_disabler disable_commands;
@@ -1008,9 +1006,9 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 			return;
 		}
 
-		recorder.add_attack(u,target,weapon);
+		recorder.add_attack(u,target,weapon,def_weapon);
 
-		attack(info_.disp, info_.map, info_.teams, u, target, weapon, info_.units, info_.state, info_.gameinfo);
+		attack(info_.disp, info_.map, info_.teams, u, target, weapon, def_weapon, info_.units, info_.state, info_.gameinfo);
 		check_victory(info_.units,info_.teams);
 		dialogs::advance_unit(info_.gameinfo,info_.map,info_.units,u,info_.disp,true);
 
@@ -1408,9 +1406,9 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 				if(enemy != units_.end() &&
 				   current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
 					//current behavior is to only make risk-free attacks
-					battle_context bc(map_, teams_, units_, state_, gameinfo_, arrived_at, adj[n], -1, 100.0);
+					battle_context bc(map_, teams_, units_, state_, gameinfo_, arrived_at, adj[n], -1, -1, 100.0);
 					if (bc.get_defender_stats().damage == 0) {
-						attack_enemy(arrived_at,adj[n],bc.get_attacker_stats().attack_num);
+						attack_enemy(arrived_at,adj[n],bc.get_attacker_stats().attack_num,bc.get_defender_stats().attack_num);
 						break;
 					}
 				}

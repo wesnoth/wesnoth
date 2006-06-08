@@ -1249,6 +1249,7 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 	cursor::set(cursor::NORMAL);
 	if(size_t(res) < bc_vector.size()) {
 		const battle_context::unit_stats &att = bc_vector[res].get_attacker_stats();
+		const battle_context::unit_stats &def = bc_vector[res].get_defender_stats();
 
 		attacker->second.set_goto(gamemap::location());
 		clear_undo_stack();
@@ -1262,13 +1263,13 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 
 		const bool defender_human = teams_[defender->second.side()-1].is_human();
 
-		recorder.add_attack(attacker_loc,defender_loc,att.attack_num);
+		recorder.add_attack(attacker_loc,defender_loc,att.attack_num,def.attack_num);
 
 		//MP_COUNTDOWN grant time bonus for attacking
 		current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
 
 		try {
-			attack(*gui_,map_,teams_,attacker_loc,defender_loc,att.attack_num,units_,status_,gameinfo_);
+			attack(*gui_,map_,teams_,attacker_loc,defender_loc,att.attack_num,def.attack_num,units_,status_,gameinfo_);
 		} catch(end_level_exception&) {
 			//if the level ends due to a unit being killed, still see if
 			//either the attacker or defender should advance

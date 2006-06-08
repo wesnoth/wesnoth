@@ -330,6 +330,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 	avg_losses = 0.0;
 	chance_to_kill = 0.0;
 	weapons.clear();
+	def_weapons.clear();
 
 	double def_avg_experience = 0.0;
 	double first_chance_kill = 0.0;
@@ -352,7 +353,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 			leader_threat = false;
 		}
 
-		battle_context *bc = new battle_context(map, teams, units, status, gamedata, m->second, target, -1, 1.0 - aggression, prev_def);
+		battle_context *bc = new battle_context(map, teams, units, status, gamedata, m->second, target, -1, -1, 1.0 - aggression, prev_def);
 		const combatant &att = bc->get_attacker_combatant(prev_def);
 		const combatant &def = bc->get_defender_combatant(prev_def);
 
@@ -361,6 +362,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		prev_def = &bc->get_defender_combatant(prev_def);
 
 		weapons.push_back(bc->get_attacker_stats().attack_num);
+		def_weapons.push_back(bc->get_defender_stats().attack_num);
 
 		// Note we didn't fight at all if defender already dead.
 		double prob_fought = (1.0 - prob_dead_already);
@@ -485,6 +487,11 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 	//the value to reflect the leader's lost recruitment opportunity in the case of an attack
 	if(uses_leader && ai_obj.leader_can_reach_keep() && ai_obj.current_team().gold() > 20) {
 		value -= double(ai_obj.current_team().gold())*0.5;
+	}
+
+	//must be more cautious with leader
+	if (uses_leader) {
+		value -= vulnerability / support;
 	}
 
 	//prefer to attack already damaged targets
@@ -694,6 +701,7 @@ bool ai::desperate_attack(const gamemap::location &loc)
 
 	double best_kill_prob = 0.0;
 	unsigned int best_weapon = 0;
+	int best_def_weapon = -1;
 	unsigned best_dir = 0;
 
 	{
@@ -712,6 +720,7 @@ bool ai::desperate_attack(const gamemap::location &loc)
 						if (def.hp_dist[0] > best_kill_prob) {
 							best_kill_prob = def.hp_dist[0];
 							best_weapon = i;
+							best_def_weapon = bc.get_defender_stats().attack_num;
 							best_dir = n;
 						}
 					}
@@ -721,7 +730,7 @@ bool ai::desperate_attack(const gamemap::location &loc)
 	}
 
 	if (best_kill_prob > 0.0) {
-		attack_enemy(loc, adj[best_dir], best_weapon);
+		attack_enemy(loc, adj[best_dir], best_weapon, best_def_weapon);
 		return true;
 	}
 
@@ -754,8 +763,9 @@ bool ai::desperate_attack(const gamemap::location &loc)
 
 	// It's possible that there were no adjacent units to attack...
 	if (least_hp != u.hitpoints() + 1) {
-		battle_context bc(map_, teams_, units_, state_, gameinfo_, loc, adj[best_dir], -1, 0.5);
-		attack_enemy(loc, adj[best_dir], bc.get_attacker_stats().attack_num);
+		battle_context bc(map_, teams_, units_, state_, gameinfo_, loc, adj[best_dir], -1, -1, 0.5);
+		attack_enemy(loc, adj[best_dir], bc.get_attacker_stats().attack_num,
+					 bc.get_defender_stats().attack_num);
 		return true;
 	}
 	return false;

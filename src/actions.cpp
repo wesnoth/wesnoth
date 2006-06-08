@@ -223,27 +223,24 @@ gamemap::location under_leadership(const unit_map& units,
 	return abil.highest("value").second;
 }
 
-unsigned int num_battle_contexts;
-
 battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 							   const gamestatus& status, const game_data& gamedata,
 							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-							   int attacker_weapon, double harm_weight, const combatant *prev_def)
+							   int attacker_weapon, int defender_weapon, double harm_weight, const combatant *prev_def)
 	: attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
 {
-	num_battle_contexts++;
 	const unit& attacker = units.find(attacker_loc)->second;
 	const unit& defender = units.find(defender_loc)->second;
 
 	if (attacker_weapon == -1 && attacker.attacks().size() == 1)
 		attacker_weapon = 0;
 
-	int defender_weapon;
 	if (attacker_weapon == -1) {
+		wassert(defender_weapon == -1);
 		attacker_weapon = choose_attacker_weapon(attacker, defender, map, teams, units,
 												 status, gamedata, attacker_loc, defender_loc,
 												 harm_weight, &defender_weapon, prev_def);
-	} else {
+	} else if (defender_weapon == -1) {
 		defender_weapon = choose_defender_weapon(attacker, defender, attacker_weapon, map, teams,
 												 units, status, gamedata, attacker_loc, defender_loc, prev_def);
 	}
@@ -252,6 +249,7 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	if (!attacker_stats_) {
 		const attack_type *def = NULL;
 		if (defender_weapon >= 0) {
+			wassert(defender_weapon < defender.attacks().size());
 			def = &defender.attacks()[defender_weapon];
 		}
 		wassert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
@@ -633,6 +631,7 @@ void attack(display& gui, const gamemap& map,
             gamemap::location attacker,
             gamemap::location defender,
             int attack_with,
+			int defend_with,
             unit_map& units,
             const gamestatus& state,
             const game_data& info,
@@ -663,7 +662,7 @@ void attack(display& gui, const gamemap& map,
 
 	config dat;
 	{
-		battle_context bc(map, teams, units, state, info, attacker, defender, attack_with);
+		battle_context bc(map, teams, units, state, info, attacker, defender, attack_with, defend_with);
 		const battle_context::unit_stats& a_stats = bc.get_attacker_stats();
 		const battle_context::unit_stats& d_stats = bc.get_defender_stats();
 		LOG_NG << "firing attack event\n";
@@ -680,7 +679,7 @@ void attack(display& gui, const gamemap& map,
 			return;
 		}
 	}
-	battle_context bc(map, teams, units, state, info, attacker, defender, attack_with);
+	battle_context bc(map, teams, units, state, info, attacker, defender, attack_with, defend_with);
 	const battle_context::unit_stats& a_stats = bc.get_attacker_stats();
 	const battle_context::unit_stats& d_stats = bc.get_defender_stats();
 

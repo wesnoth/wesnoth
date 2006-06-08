@@ -96,9 +96,9 @@ protected:
 	///'attacking_unit': the location of the attacking unit
 	///'target': the location of the target unit. This unit must be in range of the
 	///attacking unit's weapon
-	///'weapon': the number of the weapon (0-based) which should be used in the attack.
+	///'att_weapon': the number of the weapon (0-based) which should be used in the attack.
 	///must be a valid weapon of the attacking unit
-	void attack_enemy(const location& attacking_unit, const location& target, int weapon);
+	void attack_enemy(const location& attacking_unit, const location& target, int att_weapon, int def_weapon);
 
 	///this function should be called to move a unit. Once the unit has been moved, its
 	///movement allowance is set to 0.

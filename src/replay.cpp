@@ -295,12 +295,14 @@ void replay::add_movement(const gamemap::location& a,const gamemap::location& b)
 	add_pos("move",a,b);
 }
 
-void replay::add_attack(const gamemap::location& a, const gamemap::location& b, int weapon)
+void replay::add_attack(const gamemap::location& a, const gamemap::location& b, int att_weapon, int def_weapon)
 {
 	add_pos("attack",a,b);
 	char buf[100];
-	snprintf(buf,sizeof(buf),"%d",weapon);
+	snprintf(buf,sizeof(buf),"%d",att_weapon);
 	current_->child("attack")->values["weapon"] = buf;
+	snprintf(buf,sizeof(buf),"%d",def_weapon);
+	current_->child("attack")->values["defender_weapon"] = buf;
 	add_unit_checksum(a,current_);
 	add_unit_checksum(b,current_);
 }
@@ -953,6 +955,15 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const std::string& weapon = (*child)["weapon"];
 			const int weapon_num = atoi(weapon.c_str());
 
+			const std::string& def_weapon = (*child)["defender_weapon"];
+			int def_weapon_num = -1;
+			if (def_weapon.empty()) {
+				// Let's not gratuitously destroy backwards compat.
+				ERR_NW << "Old data, having to guess weapon\n";
+			} else {
+				def_weapon_num = atoi(def_weapon.c_str());
+			}
+
 			unit_map::iterator u = units.find(src);
 			if(u == units.end()) {
 				ERR_NW << "unfound location for source of attack\n";
@@ -971,7 +982,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}
 
-			attack(disp, map, teams, src, dst, weapon_num, units, state, gameinfo, !replayer.is_skipping());
+			attack(disp, map, teams, src, dst, weapon_num, def_weapon_num, units, state, gameinfo, !replayer.is_skipping());
 
 			u = units.find(src);
 			tgt = units.find(dst);
