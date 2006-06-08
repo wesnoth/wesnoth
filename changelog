@@ -1,6 +1,8 @@
 Version 1.1.4+svn:
  * WML engine
    * all [event] tags shall perform complex substitution
+   * new key in [advancement] to to prevent amla if the unit can advance to
+     another unit. 
  * language and i18n:
    * updated translations: Czech, Finnish, Hungarian, Italian, Latin,
      Norwegian, Portuguese (Brazil), Spanish, Swedish
@@ -19,6 +21,7 @@ Version 1.1.4+svn:
    * revised multiplayer maps: Charge, Meteor Lake, King of the Hill, Loris
      River, Paths of Daggers, Siege Castles, Waterloo Sunset
  * units
+   * fixed zoc/no zoc ellipses
    * balancing changes:
      * Increased HP of the Footpad from 28 to 30
      * Increased melee and ranged damage of the Footpad from 4-2 to 5-2

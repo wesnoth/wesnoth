@@ -2109,26 +2109,28 @@ config::child_list unit::get_modification_advances() const
 	config::child_list res;
 	const config::child_list& advances = modification_advancements();
 	for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
-		if(modification_count("advance",(**i)["id"]) < lexical_cast_default<size_t>((**i)["max_times"],1)) {
-		  std::vector<std::string> temp = utils::split((**i)["require_amla"]);
-		  if(temp.size()){
-			std::sort(temp.begin(),temp.end());
-			std::vector<std::string> uniq;
-			std::unique_copy(temp.begin(),temp.end(),std::back_inserter(uniq));
-			bool requirements_done=true;
-			for(std::vector<std::string>::const_iterator ii = uniq.begin(); ii != uniq.end(); ii++){
-				int required_num = std::count(temp.begin(),temp.end(),*ii);
-			int mod_num = modification_count("advance",*ii);
-			if(required_num>mod_num){
-					requirements_done=false;
-			}
-			}
-			if(requirements_done){
-				res.push_back(*i);
-			}
-		  }else{
-		    res.push_back(*i);
-		  }
+		if (!utils::string_bool((**i)["strict_amla"]) || advances_to_.empty()) {
+			if(modification_count("advance",(**i)["id"]) < lexical_cast_default<size_t>((**i)["max_times"],1)) {
+			   std::vector<std::string> temp = utils::split((**i)["require_amla"]);
+			   if(temp.size()){
+			      std::sort(temp.begin(),temp.end());
+			      std::vector<std::string> uniq;
+			      std::unique_copy(temp.begin(),temp.end(),std::back_inserter(uniq));
+			      bool requirements_done=true;
+			      for(std::vector<std::string>::const_iterator ii = uniq.begin(); ii != uniq.end(); ii++){
+					int required_num = std::count(temp.begin(),temp.end(),*ii);
+					int mod_num = modification_count("advance",*ii);
+				  	if(required_num>mod_num){
+						requirements_done=false;
+				 	}
+			      }
+			     if(requirements_done){
+					res.push_back(*i);
+			      }
+		          }else{
+		       		res.push_back(*i);
+		          }
+		        }
 		}
 	}
 
