@@ -267,15 +267,17 @@ const std::string& game::transfer_side_control(const config& cfg)
 	const std::string& player = cfg["player"];
 
 	//find the socket for the player that is passed control
-	network::connection sock_entering = NULL;
+	network::connection sock_entering;
+	bool found = false;
 	for (player_map::const_iterator pl = player_info_->begin(); pl != player_info_->end(); pl++){
 		if (pl->second.name() == player){
 			sock_entering = pl->first;
+			found = true;
 			break;
 		}
 	}
 
-	if (sock_entering == NULL){
+	if (!found){
 		static const std::string notfound = "Player/Observer not found";
 		return notfound;
 	}
@@ -313,15 +315,19 @@ const std::string& game::transfer_side_control(const config& cfg)
 	//The player owns this side
 	if(cfg["own_side"] == "yes") {
 		//get the socket of the player that issued the command
-		network::connection sock = NULL;
+		network::connection sock;
+		bool found = false;
+		std::multimap<network::connection, size_t>::iterator oldside;
 		for (std::multimap<network::connection, size_t>::iterator s = sides_.begin(); s != sides_.end(); s++){
 			if (s->second == side_index){
 				sock = s->first;
+				found = true;
+				oldside = s;
 				break;
 			}
 		}
 
-		if (sock == NULL){
+		if (!found){
 			static const std::string player_not_found = "This side is not listed for the game";
 			return player_not_found;
 		}
@@ -333,7 +339,7 @@ const std::string& game::transfer_side_control(const config& cfg)
 			return no_player;
 		}
 
-		//if this player controls only one side, make him an observer
+		//if a player gives up their last side, make them an observer
 		if (sides_.count(sock) == 1){
 			//we need to save this information before the player is erased
 			bool host = is_needed(sock);
@@ -362,7 +368,7 @@ const std::string& game::transfer_side_control(const config& cfg)
 		}
 
 		//clear the sides_ entry
-		sides_.erase(s);
+		sides_.erase(oldside);
 	}
 
 	side_controllers_[side_index] = "network";
