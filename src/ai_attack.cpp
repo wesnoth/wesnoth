@@ -489,11 +489,6 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 		value -= double(ai_obj.current_team().gold())*0.5;
 	}
 
-	//must be more cautious with leader
-	if (uses_leader) {
-		value -= vulnerability / support;
-	}
-
 	//prefer to attack already damaged targets
 	value += ((target_starting_damage/3 + avg_damage_inflicted) - (1.0-aggression)*avg_damage_taken)/10.0;
 
