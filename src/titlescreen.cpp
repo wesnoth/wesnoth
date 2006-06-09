@@ -247,7 +247,9 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	gui::button next_tip_button(screen.video(),_("More"),button::TYPE_PRESS,"lite_small");
 	gui::button help_tip_button(screen.video(),_("Help"),button::TYPE_PRESS,"lite_small");
-	gui::button beg_button(screen.video(),"",button::TYPE_IMAGE,"menu-button",button::MINIMUM_SPACE);
+	// FIXME: Translatable string is here because we WILL put text in before 1.2!
+	gui::button beg_button(screen.video(),("Help Wesnoth"),button::TYPE_IMAGE,"menu-button",button::MINIMUM_SPACE);
+	beg_button.set_help_string(_("Help Wesnoth by sending us information"));
 
 	if(tips_of_day.empty()) {
 		tips_of_day = get_tips_of_day();

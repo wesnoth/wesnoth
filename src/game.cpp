@@ -755,9 +755,6 @@ bool game_controller::new_campaign()
 		campaign_desc.push_back(std::pair<std::string,std::string>(desc,image));
 	}
 
-	campaign_names.push_back(std::string(1, COLUMN_SEPARATOR) + _("Get More Campaigns..."));
-	campaign_desc.push_back(std::pair<std::string,std::string>(_("Download more campaigns from an Internet server."),game_config::download_campaign_image));
-
 	int res = 0;
 
 	dialogs::campaign_preview_pane campaign_preview(disp().video(),&campaign_desc);
@@ -773,11 +770,6 @@ bool game_controller::new_campaign()
 		return false;
 	}
 
-	//get more campaigns from server
-	if(res == int(campaign_names.size()-1)) {
-		download_campaigns();
-		return new_campaign();
-	}
 	const config& campaign = *campaigns[res];
 
 	state_.campaign = campaign["id"];
@@ -854,7 +846,7 @@ void game_controller::download_campaigns()
 	std::string host = preferences::campaign_server();
 
 	const int res = gui::show_dialog(disp(),NULL,_("Connect to Server"),
-	        _("You will now connect to a campaign server to download campaigns."),
+	        _("You will now connect to a server to download add-ons."),
 	        gui::OK_CANCEL,NULL,NULL,_("Server: "),&host);
 	if(res != 0) {
 		return;
