@@ -855,6 +855,20 @@ bool pre_update_1_2(Level& l,bool verbose)
 }
 
 
+char * str_upr (char *a)
+{
+  char *ret = a;
+
+  while (*a != '\0')
+    {
+      if (islower (*a))
+	*a = toupper (*a);
+      ++a;
+    }
+
+  return ret;
+}
+
 void update_tree_1_2(Level& l,bool verbose)
 {
 	if(l.data.empty()) { // key
@@ -867,7 +881,7 @@ void update_tree_1_2(Level& l,bool verbose)
 				special_macro = "{WEAPON_SPECIAL_" + spec.substr(0,6) + "_TYPE " + spec.substr(6) + "}";
 			}
 			l.tag = "specials";
-			strupr(const_cast<char*>(special_macro.c_str()));
+			str_upr(const_cast<char*>(special_macro.c_str()));
 			l.add_child(new Level(special_macro,&l));
 			if(verbose) {
 				std::cerr << "updating special...\n";
