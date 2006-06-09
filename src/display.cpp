@@ -25,7 +25,6 @@
 #include "halo.hpp"
 #include "hotkeys.hpp"
 #include "image.hpp"
-#include "widgets/image_button.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
