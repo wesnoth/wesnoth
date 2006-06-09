@@ -881,7 +881,9 @@ void update_tree_1_2(Level& l,bool verbose)
 				special_macro = "{WEAPON_SPECIAL_" + spec.substr(0,6) + "_TYPE " + spec.substr(6) + "}";
 			}
 			l.tag = "specials";
-			str_upr(const_cast<char*>(special_macro.c_str()));
+			for(int c = 0; c < special_macro.size(); ++c) {
+				special_macro[c] = toupper(special_macro[c]);
+			}
 			l.add_child(new Level(special_macro,&l));
 			if(verbose) {
 				std::cerr << "updating special...\n";
