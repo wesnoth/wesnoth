@@ -123,7 +123,6 @@ wesnoth_SOURCES = \
 	widgets/label.cpp \
 	widgets/menu.cpp \
 	widgets/menu_style.cpp \
-	widgets/image_button.cpp \
 	widgets/progressbar.cpp \
 	widgets/scrollarea.cpp \
 	widgets/scrollbar.cpp \
@@ -313,7 +312,6 @@ noinst_HEADERS = \
 	widgets/scrollbar.hpp \
 	widgets/widget.hpp \
 	widgets/scrollarea.hpp \
-	widgets/image_button.hpp \
 	zipios++/xcoll.hpp \
 	server/player.hpp \
 	server/game.hpp \
