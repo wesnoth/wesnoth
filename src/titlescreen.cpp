@@ -247,7 +247,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	gui::button next_tip_button(screen.video(),_("More"),button::TYPE_PRESS,"lite_small");
 	gui::button help_tip_button(screen.video(),_("Help"),button::TYPE_PRESS,"lite_small");
-	gui::button beg_button(screen.video(),_("Help Wesnoth"),button::TYPE_IMAGE,"menu-button",button::MINIMUM_SPACE);
+	gui::button beg_button(screen.video(),"",button::TYPE_IMAGE,"menu-button",button::MINIMUM_SPACE);
 
 	if(tips_of_day.empty()) {
 		tips_of_day = get_tips_of_day();
