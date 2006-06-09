@@ -2120,15 +2120,15 @@ config::child_list unit::get_modification_advances() const
 			      for(std::vector<std::string>::const_iterator ii = uniq.begin(); ii != uniq.end(); ii++){
 					int required_num = std::count(temp.begin(),temp.end(),*ii);
 					int mod_num = modification_count("advance",*ii);
-				  	if(required_num>mod_num){
+					if(required_num>mod_num){
 						requirements_done=false;
-				 	}
+					}
 			      }
 			     if(requirements_done){
 					res.push_back(*i);
 			      }
 		          }else{
-		       		res.push_back(*i);
+				res.push_back(*i);
 		          }
 		        }
 		}

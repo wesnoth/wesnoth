@@ -1367,7 +1367,7 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 	int weapon = -1; // auto-choose
 	if ( !PyArg_ParseTuple( args, "O!O!|i", &wesnoth_location_type, &from, &wesnoth_location_type, &to, &weapon ) )
 		return NULL;
-		
+
     info& inf = running_instance->get_info();
 
     battle_context bc(
