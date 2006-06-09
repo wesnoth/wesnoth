@@ -201,18 +201,18 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 					       N_("TitleScreen button^Campaign"),
 					       N_("TitleScreen button^Multiplayer"),
 					       N_("TitleScreen button^Load"),
+					       N_("TitleScreen button^Get Add-ons"),
 					       N_("TitleScreen button^Language"),
 					       N_("TitleScreen button^Preferences"),
-						   N_("TitleScreen button^Help Wesnoth"),
 					       N_("About"),
 						   N_("TitleScreen button^Quit") };
 	static const char* help_button_labels[] = { N_("Start a tutorial to familiarize yourself with the game"),
 						    N_("Start a new single player campaign"),
 						    N_("Play multiplayer (hotseat, LAN, or Internet), or a single scenario against the AI"),
 						    N_("Load a single player saved game"),
+						    N_("Download usermade campaigns, eras, or map packs"),
 						    N_("Change the language"),
 						    N_("Configure the game's settings"),
-							N_("Help Wesnoth by sending us information"),
 						    N_("View the credits"),
 						    N_("Quit the game") };
 
@@ -247,6 +247,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	gui::button next_tip_button(screen.video(),_("More"),button::TYPE_PRESS,"lite_small");
 	gui::button help_tip_button(screen.video(),_("Help"),button::TYPE_PRESS,"lite_small");
+	gui::button beg_button(screen.video(),_("Help Wesnoth"),button::TYPE_IMAGE,"menu-button",button::MINIMUM_SPACE);
 
 	if(tips_of_day.empty()) {
 		tips_of_day = get_tips_of_day();
@@ -278,6 +279,8 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 		help_tip_button.set_location(area.x + pad,
 		                             area.y + area.h - pad - next_tip_button.location().h);
 
+		beg_button.set_location(screen.x() - pad - beg_button.location().w,
+		                             screen.y() - pad - beg_button.location().h);
 
 		font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
 		                tip_of_day, area.x + pad, area.y + pad);
@@ -315,6 +318,10 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 		if(help_tip_button.pressed()) {
 			return SHOW_HELP;
+		}
+
+		if(beg_button.pressed()) {
+			return BEG_FOR_UPLOAD;
 		}
 
 		events::raise_process_event();

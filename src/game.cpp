@@ -90,6 +90,7 @@ public:
 
 	bool new_campaign();
 	bool play_multiplayer();
+	void download_campaigns();
 	bool change_language();
 
 	void show_help();
@@ -109,7 +110,6 @@ private:
 	void read_game_cfg(const preproc_map& defines, config& cfg, bool use_cache);
 	void refresh_game_cfg(bool reset_translations=false);
 
-	void download_campaigns();
 	void upload_campaign(const std::string& campaign, network::connection sock);
 	void delete_campaign(const std::string& campaign, network::connection sock);
 	void remove_campaign(const std::string& campaign);
@@ -1802,6 +1802,9 @@ int play_game(int argc, char** argv)
 			gamemap dummy_help_map(dummy_help_cfg, "1");
 			help::help_manager help_manager(&game.game_config(), &game.units_data(), &dummy_help_map);
 			help::show_help(game.disp());
+			continue;
+		} else if(res == gui::GET_ADDONS) {
+			game.download_campaigns();
 			continue;
 		} else if(res == gui::BEG_FOR_UPLOAD) {
 			game.show_upload_begging();
