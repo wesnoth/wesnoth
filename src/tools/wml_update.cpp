@@ -855,20 +855,6 @@ bool pre_update_1_2(Level& l,bool verbose)
 }
 
 
-char * str_upr (char *a)
-{
-  char *ret = a;
-
-  while (*a != '\0')
-    {
-      if (islower (*a))
-	*a = toupper (*a);
-      ++a;
-    }
-
-  return ret;
-}
-
 void update_tree_1_2(Level& l,bool verbose)
 {
 	if(l.data.empty()) { // key
