@@ -34,7 +34,7 @@ ctrl-a         Toggle accelerated game mode
 ctrl-s         Save game
 ctrl-o         Load game
 
-/              Search
+/              Search for a label or unit
 t              Continue interrupted unit move
 z              Zoom in
 x              Zoom out
@@ -43,15 +43,17 @@ ctrl-n         Rename unit
 1-7            Show how far currently selected unit can move in that many turns
 l              Move to leader unit
 d              Describe current unit
-ctrl-d         View defensive ratings of current unit against attacks
 ctrl-g         Toggle grid
-alt-k          Toggle shroud
-ctrl-k         Update shroud
+S              Update shroud now
+D              Delay shroud updates
 alt-l          Attach a text label to a terrain hex
+ctrl-c         Clear labels
 alt-s          Show status table
-ctrl-t         Show terrain table
 ctrl-m         Toggle muting of game sounds
 ctrl-j         Show scenario objectives
+s              Show statistics
+alt-u          Show unit list
+alt-c          View chat log
 :              Command mode, see http://www.wesnoth.org/wiki/CommandMode
 
 For Mac OS X, the Cmd key is used instead of Ctrl, and Opt is used
@@ -306,15 +308,14 @@ Setting up a multiplayer game
   Step 4: click [I'm Ready].
 
 
-CAMPAIGN SERVER
+ADD-ON SERVER
 
-You can fetch additional campaigns by selecting Campaign from the title
-screen, and in the campaign menu, selecting Get More Campaigns.  This
-will attempt to make a TCP connection to port 15002 of the campaign
-server (campaigns.wesnoth.org) so you need to ensure your firewall
-allows this.  The campaigns are contributed by users and not all will
-work properly on the current release of the game -- check the forums at
-if you are having problems.
+You can fetch additional add-ons (user made campaigns, eras, etc.) by
+selecting 'Get Add-ons' from the title screen.  This will attempt to make a
+TCP connection to port 15003 of the add-on server (campaigns.wesnoth.org)
+so you need to ensure your firewall allows this.  The add-ons are contributed
+by users and not all will work properly on the current release of the game --
+check the forums at http://forum.wesnoth.org if you are having problems.
 
 
 OTHER RESOURCES
@@ -328,7 +329,7 @@ advancement tree, information about making your own scenarios and
 campaigns, how to contribute as a developer or a translator, and much
 more.  You can also join us to chat on IRC at irc.wesnoth.org in channel
 #wesnoth or join our forum community at http://forum.wesnoth.org/ where
-you can discuss the game with over 2000 forum members.  The forums also
+you can discuss the game with over 4000 forum members.  The forums also
 contain a searchable archive of tens of thousands of posts, spanning
-over two years -- an invaluable source of information.
+over several years -- an invaluable source of information.
 
