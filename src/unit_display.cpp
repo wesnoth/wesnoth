@@ -122,7 +122,7 @@ bool unit_visible_on_path(display& disp, const std::vector<gamemap::location>& p
 	return false;
 }
 
-void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams)
+void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::location>& path, unit& u, const unit_map& units, const std::vector<team>& teams)
 {
 	wassert(!path.empty());
 
@@ -159,6 +159,7 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 		}
 	}
 	disp.remove_temporary_unit();
+	u.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
 
 	//make sure the entire path is cleaned properly
 	for(std::vector<gamemap::location>::const_iterator it = path.begin(); it != path.end(); ++it) {
