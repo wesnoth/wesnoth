@@ -283,7 +283,7 @@ void campaign_server::run()
 
 }
 
-int main(int argc, char** argv)
+int main(int, char**)
 {
 	lg::timestamps(true);
 	try {

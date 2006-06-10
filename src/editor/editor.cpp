@@ -92,8 +92,8 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	: gui_(gui), map_(map), abort_(DONT_ABORT),
 	  theme_(theme), game_config_(game_config), map_dirty_(false), l_button_palette_dirty_(true),
 	  everything_dirty_(false), palette_(gui, size_specs_, map), brush_(gui, size_specs_),
-	  l_button_held_func_(NONE), highlighted_locs_cleared_(false), prefs_disp_manager_(&gui_),
-	  all_hexes_selected_(false), tooltip_manager_(gui_.video()), floating_label_manager_() {
+	  l_button_held_func_(NONE), tooltip_manager_(gui_.video()), floating_label_manager_(),
+	  highlighted_locs_cleared_(false), prefs_disp_manager_(&gui_), all_hexes_selected_(false) {
 
 	// Set size specs.
 	adjust_sizes(gui_, size_specs_);
@@ -1113,8 +1113,8 @@ void map_editor::invalidate_all_and_adjacent(const std::set<gamemap::location> &
 	invalidate_all_and_adjacent(v);
 }
 
-void map_editor::right_button_down(const int mousex, const int mousey) {
-	// Draw with the bacground terrain on rightclick, no matter what
+void map_editor::right_button_down(const int /*mousex*/, const int /*mousey*/) {
+	// Draw with the background terrain on rightclick, no matter what
 	// operations are wanted with the left button.
 	// TODO evaluate if this is what is the smartest thing to do.
 	draw_on_mouseover_hexes(palette_.selected_bg_terrain());

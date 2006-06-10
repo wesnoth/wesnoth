@@ -18,11 +18,11 @@ surface CVideo::getSurface()
 	return NULL;
 }
 
-void update_rect(const SDL_Rect& rect)
+void update_rect(const SDL_Rect&)
 {
 }
 
-surface display_format_alpha(surface surf)
+surface display_format_alpha(surface)
 {
 	return NULL;
 }

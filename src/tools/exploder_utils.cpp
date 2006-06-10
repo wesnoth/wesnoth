@@ -106,11 +106,11 @@ void masked_overwrite_surface(surface dest, surface src, surface mask, int x, in
 
 	dest_shift = dest->w - src_width;
 
-	for(int j = 0; j < src_height; ++j) {
+	for(size_t j = 0; j < src_height; ++j) {
 		src_beg += small_shift_before;
 		mask_beg += small_shift_before;
 
-		for(int i = 0; i < src_width; ++i) {
+		for(size_t i = 0; i < src_width; ++i) {
 			//Assuming here alpha mask is 0xff000000
 			if((*mask_beg & 0x00ffffff) != 0x00ffffff) {
 				*dest_beg = *src_beg;
