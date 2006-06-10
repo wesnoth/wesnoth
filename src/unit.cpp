@@ -297,10 +297,11 @@ void unit::advance_to(const unit_type* t)
 	backup_state();
 	//apply modifications etc, refresh the unit
 	apply_modifications();
-	if(id()!=t->id()) {
+	if(id()!=t->id() || cfg_["gender"] != cfg_["gender_id"]) {
 		heal_all();
 		id_ = t->id();
 		cfg_["id"] = id_;
+		cfg_["gender_id"] = cfg_["gender"];
 	}
 
 	set_state("poisoned","");
@@ -935,7 +936,7 @@ void unit::read(const config& cfg)
 
 	bool type_set = false;
 	id_ = "";
-	if(cfg["type"] != "" && cfg["type"] != cfg["id"]) {
+	if(cfg["type"] != "" && cfg["type"] != cfg["id"] || cfg["gender"] != cfg["gender_id"]) {
 		wassert(gamedata_ != NULL);
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		if(i != gamedata_->unit_types.end()) {
@@ -1013,7 +1014,7 @@ void unit::read(const config& cfg)
 	}
 	if(utils::string_bool(cfg["random_traits"])) {
 		generate_traits();
-		cfg["random_traits"] = "";
+		cfg_["random_traits"] = "";
 	}
 	if(!type_set) {
 		backup_state();
@@ -1143,6 +1144,7 @@ void unit::write(config& cfg) const
 	cfg["side"] = sd.str();
 
 	cfg["gender"] = gender_ == unit_race::MALE ? "male" : "female";
+	cfg["gender_id"] = gender_ == unit_race::MALE ? "male" : "female";
 
 	cfg["variation"] = variation_;
 
