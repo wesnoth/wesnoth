@@ -20,6 +20,7 @@
 #include "preferences.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
+#define ERR_NG LOG_STREAM(err, engine)
 
 std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids){
 	std::string save_id = cfg["save_id"];
@@ -167,8 +168,12 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 				") for a unit on side " +
 				lexical_cast<std::string>(side) + ".");
 		} else {
-			units.add(new std::pair<gamemap::location,unit>(loc,new_unit));
-			LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
+			if (units.find(loc) != units.end()) {
+				ERR_NG << "[unit] trying to overwrite existing unit at " << loc << "\n";
+			} else {
+				units.add(new std::pair<gamemap::location,unit>(loc,new_unit));
+				LOG_NG << "inserting unit for side " << new_unit.side() << "\n";
+			}
 		}
 	}
 }
