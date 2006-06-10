@@ -545,7 +545,6 @@ bool game_controller::play_multiplayer_mode()
 			era_cfg->find_child("multiplayer_side", "id", type->second);
 
 		if (side == NULL) {
-			unknown_side_id:
 			std::string side_name = (type == side_types.end() ? "default" : type->second);
 			std::cerr << "Could not find side '" << side_name << "' for side " << side_num << "\n";
 			return false;
@@ -553,11 +552,19 @@ bool game_controller::play_multiplayer_mode()
 
 		if ((*side)["random_faction"] == "yes") {
 			const config::child_list& eras = era_cfg->get_children("multiplayer_side");
-			for(int i = 0; i != 100 && (*side)["random_faction"] == "yes"; ++i) {
-				side = eras[rand()%eras.size()];
+			for(unsigned int i = 0, j = 0; i < eras.size(); ++i) {
+				if ((*eras[i])["random_faction"] != "yes") {
+					j++;
+					if (rand()%j == 0) {
+						side = eras[i];
+					}
+				}
 			}
-			if ((*side)["random_faction"] == "yes")
-				goto unknown_side_id;
+			if ((*side)["random_faction"] == "yes") {
+				std::string side_name = (type == side_types.end() ? "default" : type->second);
+				std::cerr << "Could not find any non-random faction for side " << side_num << "\n";
+				return false;
+			}
 		}
 
 		char buf[20];
