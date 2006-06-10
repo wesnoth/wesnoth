@@ -571,8 +571,6 @@ bool game_controller::play_multiplayer_mode()
 		snprintf(buf,sizeof(buf),"%d",side_num);
 		(*itors.first)->values["side"] = buf;
 
-		(*itors.first)->values["canrecruit"] = "1";
-
 		for(string_map::const_iterator i = side->values.begin(); i != side->values.end(); ++i) {
 			(*itors.first)->values[i->first] = i->second;
 		}
