@@ -353,6 +353,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
 		att->second.set_standing(disp,a);
 		unit_display::unit_die(disp,def->first,def->second,&attack);
+	} else {
+		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
 	}
 	disp.update_display();
 	events::pump();
@@ -475,6 +477,7 @@ bool unit_attack(display& disp, unit_map& units,
 		att->second.set_standing(disp,a);
 		unit_display::unit_die(disp,def->first,def->second,&attack);
 	} else {
+		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
 	}
 	disp.update_display();
 	events::pump();
