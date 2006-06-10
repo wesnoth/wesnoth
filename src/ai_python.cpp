@@ -106,7 +106,7 @@ static PyGetSetDef unittype_getseters[] = {
 	ut_gs( level, "Level of the type." )
 	ut_gs( hitpoints, "Hitpoints of the type." )
 	ut_gs( usage, "AI's usage hint of the type, one of: 'archer', 'fighter', "
-        "'healer', 'mixed figher', 'scout'." )
+        "'healer', 'mixed fighter', 'scout'." )
 	ut_gs( movement, "Movement points of the type." )
 	ut_gs( cost, "Cost of the type." )
 	ut_gs( alignment, "Alignment of the type: 0=lawful, 1=neutral, 2=chaotic." )
@@ -279,7 +279,7 @@ static PyObject* attacktype_get_stones(wesnoth_attacktype* type, void* /*closure
 
 static PyObject* attacktype_get_plague(wesnoth_attacktype* type, void* /*closure*/)
 {
-	return Py_BuildValue("i",type->attack_type_->has_special_by_id("stones"));
+	return Py_BuildValue("i",type->attack_type_->has_special_by_id("plague"));
 }
 
 static PyObject* attacktype_get_marksman(wesnoth_attacktype* type, void* /*closure*/)
@@ -602,11 +602,13 @@ static PyMethodDef unit_methods[] = {
         "If no path can be found (for example, if the target is occupied by "
         "another unit), an empty list is returned."},
     { "attack_statistics", (PyCFunction)python_ai::wrapper_unit_attack_statistics, METH_VARARGS,
-        "Parameters: location from, location to, attack\n"
+        "Parameters: location from, location to, int attack = -1\n"
         "Returns: own_hp, enemy_hp\n"
         "Returns two dictionaries with the expected battle results when the "
-        "unit attacks from 'from' to the unit at 'to', using the attack with "
-        "index 'attack'. The dictionaries contain the expected hitpoints after "
+        "unit attacks from 'from' to the unit at 'to', optionally using the "
+        "attack with index 'attack', or if no attack is given the attack which "
+        "would be presented to the playe in the attack dialog. The "
+        "dictionaries contain the expected hitpoints after "
         "the fight, as a mapping from hitpoints to percent, where percent are "
         "specified as floating point value from 0 to 1. For example, a return of: "
         "{0:1}, {50:0.5, 40:0.5} would mean, the attacking unit "
@@ -1457,9 +1459,9 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 {
 	wesnoth_location* from;
 	wesnoth_location* to;
-	int weapon;
+	int weapon = -1;
 
-	if ( !PyArg_ParseTuple( args, "O!O!i", &wesnoth_location_type, &from,
+	if ( !PyArg_ParseTuple( args, "O!O!|i", &wesnoth_location_type, &from,
         &wesnoth_location_type, &to, &weapon) )
 		return NULL;
 	if (!running_instance->is_unit_valid(self->unit_))
