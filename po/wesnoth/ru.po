@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-07 23:41+0200\n"
+"POT-Creation-Date: 2006-06-10 15:45+0200\n"
 "PO-Revision-Date: 2006-01-03 20:27+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
@@ -536,129 +536,129 @@ msgstr "+Финский перевод"
 msgid "Finnish Translation"
 msgstr "+Финский перевод"
 
-#: data/about.cfg:266
+#: data/about.cfg:267
 #, fuzzy
 msgid "French Translation"
 msgstr "+Французский перевод"
 
-#: data/about.cfg:290
+#: data/about.cfg:291
 #, fuzzy
 msgid "German Translation"
 msgstr "+Немецкий перевод"
 
-#: data/about.cfg:307
+#: data/about.cfg:308
 #, fuzzy
 msgid "Greek Translation"
 msgstr "+Греческий перевод"
 
-#: data/about.cfg:317
+#: data/about.cfg:318
 #, fuzzy
 msgid "Hebrew Translation"
 msgstr "+Перевод на иврит"
 
-#: data/about.cfg:325
+#: data/about.cfg:326
 #, fuzzy
 msgid "Hungarian Translation"
 msgstr "+Венгерский перевод"
 
-#: data/about.cfg:342
+#: data/about.cfg:343
 #, fuzzy
 msgid "Indonesian Translation"
 msgstr "+Эстонский перевод"
 
-#: data/about.cfg:349
+#: data/about.cfg:350
 #, fuzzy
 msgid "Italian Translation"
 msgstr "+Итальянский перевод"
 
-#: data/about.cfg:364
+#: data/about.cfg:365
 #, fuzzy
 msgid "Japanese Translation"
 msgstr "+Японский перевод"
 
-#: data/about.cfg:373
+#: data/about.cfg:374
 #, fuzzy
 msgid "Korean Translation"
 msgstr "+Норвежский перевод"
 
-#: data/about.cfg:380
+#: data/about.cfg:381
 #, fuzzy
 msgid "Latin Translation"
 msgstr "+Латинский перевод"
 
-#: data/about.cfg:387
+#: data/about.cfg:388
 #, fuzzy
 msgid "Norwegian Translation"
 msgstr "+Норвежский перевод"
 
-#: data/about.cfg:398
+#: data/about.cfg:399
 #, fuzzy
 msgid "Polish Translation"
 msgstr "+Польский перевод"
 
-#: data/about.cfg:414
+#: data/about.cfg:415
 #, fuzzy
 msgid "Portuguese Translation"
 msgstr "+Португальский перевод"
 
-#: data/about.cfg:421
+#: data/about.cfg:422
 #, fuzzy
 msgid "Portuguese (Brazil) Translation"
 msgstr "+Португальский перевод"
 
-#: data/about.cfg:435
+#: data/about.cfg:436
 #, fuzzy
 msgid "Russian Translation"
 msgstr "+Русский перевод"
 
-#: data/about.cfg:445
+#: data/about.cfg:446
 #, fuzzy
 msgid "Serbian Translation"
 msgstr "+Сербский перевод"
 
-#: data/about.cfg:452
+#: data/about.cfg:453
 #, fuzzy
 msgid "Slovak Translation"
 msgstr "+Словакский перевод"
 
-#: data/about.cfg:459
+#: data/about.cfg:460
 #, fuzzy
 msgid "Slovenian Translation"
 msgstr "+Словенский перевод"
 
-#: data/about.cfg:466
+#: data/about.cfg:467
 #, fuzzy
 msgid "Spanish Translation"
 msgstr "+Испанский перевод"
 
-#: data/about.cfg:479
+#: data/about.cfg:480
 #, fuzzy
 msgid "Swedish Translation"
 msgstr "+Шведский перевод"
 
-#: data/about.cfg:491
+#: data/about.cfg:492
 #, fuzzy
 msgid "Turkish Translation"
 msgstr "+Турецкий перевод"
 
-#: data/about.cfg:502 data/help.cfg:252
+#: data/about.cfg:503 data/help.cfg:252
 msgid "Contributors"
 msgstr "Участники проекта"
 
-#: data/about.cfg:517
+#: data/about.cfg:518
 #, fuzzy
 msgid "Bots"
 msgstr "+Боты"
 
-#: data/amla.cfg:8
+#: data/amla.cfg:9
 msgid ", MAX XP +25%"
 msgstr ""
 
-#: data/amla.cfg:8
+#: data/amla.cfg:9
 msgid "Max HP bonus +"
 msgstr "Максимальный бонус ЗД +"
 
-#: data/amla.cfg:28
+#: data/amla.cfg:30
 msgid "Full Heal"
 msgstr "Полное исцеление"
 
@@ -2103,6 +2103,11 @@ msgstr "Бинарные сохранения"
 #: data/game.cfg:42
 msgid "Show Combat"
 msgstr "Показать битву"
+
+#: data/game.cfg:49
+#, fuzzy
+msgid "Mouse Scrolling"
+msgstr "Исцеление"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -5090,11 +5095,11 @@ msgstr "Действия"
 msgid "End Turn"
 msgstr "Закончить ход"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2247
+#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2249
 msgid "HP"
 msgstr "ЗД"
 
-#: data/themes/default.cfg:180 src/menu_events.cpp:235 src/menu_events.cpp:684
+#: data/themes/default.cfg:180 src/menu_events.cpp:235 src/menu_events.cpp:683
 msgid "XP"
 msgstr "ОП"
 
@@ -9864,43 +9869,43 @@ msgstr ""
 "Нет свободных квадратов в замке, куда можно было бы поставить новое "
 "соединение."
 
-#: src/actions.cpp:919 src/actions.cpp:1153
+#: src/actions.cpp:918 src/actions.cpp:1152
 msgid "poisoned"
 msgstr "отравлен"
 
-#: src/actions.cpp:927 src/actions.cpp:1161
+#: src/actions.cpp:926 src/actions.cpp:1160
 msgid "slowed"
 msgstr "замедлен"
 
-#: src/actions.cpp:938 src/actions.cpp:1173
+#: src/actions.cpp:937 src/actions.cpp:1172
 msgid "stone"
 msgstr "камень"
 
-#: src/actions.cpp:1970
+#: src/actions.cpp:1969
 msgid "Ambushed!"
 msgstr "Попал в засаду!"
 
-#: src/actions.cpp:2005
+#: src/actions.cpp:2004
 msgid "Friendly unit sighted"
 msgstr "Замечено дружественное соединение!"
 
-#: src/actions.cpp:2007
+#: src/actions.cpp:2006
 msgid "Enemy unit sighted!"
 msgstr "Замечено вражеское соединение!"
 
-#: src/actions.cpp:2012
+#: src/actions.cpp:2011
 msgid "$friends Friendly units sighted"
 msgstr "$friends видим дружественные соединения"
 
-#: src/actions.cpp:2014
+#: src/actions.cpp:2013
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies видим соединения противника!"
 
-#: src/actions.cpp:2018
+#: src/actions.cpp:2017
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Видим соединения! ($friends дружественные, $enemies враждебные)"
 
-#: src/actions.cpp:2033
+#: src/actions.cpp:2032
 msgid "(press $hotkey to continue)"
 msgstr "(нажмите $hotkey для продолжения)"
 
@@ -9944,11 +9949,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Неверно)"
 
-#: src/dialogs.cpp:382 src/game.cpp:778
+#: src/dialogs.cpp:382 src/game.cpp:765
 msgid "Campaign"
 msgstr "Кампания"
 
-#: src/dialogs.cpp:384 src/game.cpp:1175
+#: src/dialogs.cpp:384 src/game.cpp:1157
 msgid "Multiplayer"
 msgstr "Сетевая игра"
 
@@ -10034,8 +10039,8 @@ msgstr ""
 msgid "Date"
 msgstr "Дата"
 
-#: src/dialogs.cpp:559 src/game.cpp:911 src/help.cpp:1175
-#: src/menu_events.cpp:233 src/menu_events.cpp:682
+#: src/dialogs.cpp:559 src/game.cpp:893 src/help.cpp:1175
+#: src/menu_events.cpp:233 src/menu_events.cpp:681
 #: src/multiplayer_lobby.cpp:32
 msgid "Name"
 msgstr "Название"
@@ -10072,11 +10077,11 @@ msgstr "ОП: "
 msgid "Moves: "
 msgstr "Ходов: "
 
-#: src/display.cpp:532
+#: src/display.cpp:531
 msgid "Screenshot"
 msgstr "Скриншот"
 
-#: src/game.cpp:398 src/game.cpp:1259
+#: src/game.cpp:398 src/game.cpp:1241
 msgid "The Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
@@ -10102,251 +10107,246 @@ msgstr "Файл, который Вы пытались загрузить, по�
 msgid "File I/O Error while reading the game"
 msgstr "Ошибка ввода/вывода при чтении файла с игрой"
 
-#: src/game.cpp:717 src/game.cpp:721 src/menu_events.cpp:473
-#: src/menu_events.cpp:475 src/play_controller.cpp:633
-msgid "Auto-Save"
-msgstr "Авто-Сохранение"
-
-#: src/game.cpp:768
-msgid "Get More Campaigns..."
-msgstr "Загрузить другие кампании..."
-
-#: src/game.cpp:769
-msgid "Download more campaigns from an Internet server."
-msgstr "Загрузить больше кампаний из интернета."
-
-#: src/game.cpp:779
+#: src/game.cpp:766
 msgid "Choose the campaign you want to play:"
 msgstr "Выберите кампанию, в которую Вы хотите сыграть:"
 
-#: src/game.cpp:807
+#: src/game.cpp:789
 msgid "Difficulty"
 msgstr "Сложность"
 
-#: src/game.cpp:808
+#: src/game.cpp:790
 msgid "Select difficulty level:"
 msgstr "Выберите уровень сложности:"
 
-#: src/game.cpp:833
+#: src/game.cpp:815
 msgid "B"
 msgstr "Байт"
 
-#: src/game.cpp:836
+#: src/game.cpp:818
 msgid "KB"
 msgstr "КБайт"
 
-#: src/game.cpp:839
+#: src/game.cpp:821
 msgid "MB"
 msgstr "МБайт"
 
-#: src/game.cpp:866
+#: src/game.cpp:848
 msgid "Connect to Server"
 msgstr "Подключиться к серверу"
 
-#: src/game.cpp:867
-msgid "You will now connect to a campaign server to download campaigns."
+#: src/game.cpp:849
+#, fuzzy
+msgid "You will now connect to a server to download add-ons."
 msgstr "Вы должны подключиться к серверу чтобы скачать кампании."
 
-#: src/game.cpp:868
+#: src/game.cpp:850
 msgid "Server: "
 msgstr "Сервер: "
 
-#: src/game.cpp:881
+#: src/game.cpp:863
 msgid "Could not connect to host."
 msgstr "Не могу подключиться к серверу."
 
-#: src/game.cpp:889
-msgid "Asking for campaign list"
+#: src/game.cpp:871
+msgid "Asking for list of add-ons"
 msgstr ""
 
-#: src/game.cpp:902
+#: src/game.cpp:884
 msgid "Error communicating with the server."
 msgstr "Ошибка при подключении к серверу."
 
-#: src/game.cpp:911 src/titlescreen.cpp:183
+#: src/game.cpp:893 src/titlescreen.cpp:236
 msgid "Version"
 msgstr "Версия"
 
-#: src/game.cpp:912
+#: src/game.cpp:894
 msgid "Author"
 msgstr "Автор"
 
-#: src/game.cpp:912
+#: src/game.cpp:894
 msgid "Downloads"
 msgstr "Загрузки"
 
-#: src/game.cpp:912
+#: src/game.cpp:894
 msgid "Size"
 msgstr "Размер"
 
-#: src/game.cpp:973
-msgid "Publish campaign: "
+#: src/game.cpp:955
+#, fuzzy
+msgid "Publish add-on: "
 msgstr "Опубликовать кампанию: "
 
-#: src/game.cpp:977
-msgid "Delete campaign: "
+#: src/game.cpp:959
+#, fuzzy
+msgid "Delete add-on: "
 msgstr "Удалить кампанию: "
 
-#: src/game.cpp:981
-msgid "There are no campaigns available for download from this server."
+#: src/game.cpp:963
+#, fuzzy
+msgid "There are no add-ons available for download from this server."
 msgstr "На этом сервере нет доступных для загрузки кампаний."
 
-#: src/game.cpp:988
-msgid "Choose the campaign to download."
+#: src/game.cpp:970
+#, fuzzy
+msgid "Choose the add-on to download."
 msgstr "Выберите кампанию для загрузки."
 
-#: src/game.cpp:988
-msgid "Get Campaign"
-msgstr "Загрузить кампанию"
+#: src/game.cpp:970
+msgid "Get Add-ons"
+msgstr ""
 
-#: src/game.cpp:1008
-msgid "Downloading campaign..."
+#: src/game.cpp:990
+#, fuzzy
+msgid "Downloading add-on..."
 msgstr "Загружаем кампанию..."
 
-#: src/game.cpp:1032
+#: src/game.cpp:1014
 msgid "Cannot rescan the filesystem"
 msgstr "Не могу перечитать файловую систему"
 
-#: src/game.cpp:1047
-msgid "Campaign Installed"
+#: src/game.cpp:1029
+#, fuzzy
+msgid "Add-on Installed"
 msgstr "Установленные кампании"
 
-#: src/game.cpp:1047
-msgid "The campaign has been installed."
+#: src/game.cpp:1029
+#, fuzzy
+msgid "The add-on has been installed."
 msgstr "Кампания успешно установлена."
 
-#: src/game.cpp:1049
+#: src/game.cpp:1031
 msgid "Network communication error."
 msgstr "Ошибка при соединении к серверу."
 
-#: src/game.cpp:1051
+#: src/game.cpp:1033
 msgid "Remote host disconnected."
 msgstr "Не могу подключиться к серверу."
 
-#: src/game.cpp:1053
+#: src/game.cpp:1035
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Возникла проблема с созданием файлов, необходимых для полной установки "
 "кампании."
 
-#: src/game.cpp:1065 src/game.cpp:1104 src/game.cpp:1129
-#: src/multiplayer.cpp:209 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:333
+#: src/game.cpp:1047 src/game.cpp:1086 src/game.cpp:1111
+#: src/multiplayer.cpp:209 src/multiplayer_ui.cpp:35 src/playcampaign.cpp:346
 msgid "Connection timed out"
 msgstr "Превышен лимит времени подключения"
 
-#: src/game.cpp:1068 src/game.cpp:1106 src/game.cpp:1131
+#: src/game.cpp:1050 src/game.cpp:1088 src/game.cpp:1113
 msgid "The server responded with an error: \""
 msgstr "Сервер ответил с ошибкой: \""
 
-#: src/game.cpp:1072
+#: src/game.cpp:1054
 msgid "Terms"
 msgstr "Условия"
 
-#: src/game.cpp:1102
+#: src/game.cpp:1084
 #, fuzzy
-msgid "Sending campaign"
+msgid "Sending add-on"
 msgstr "Загружаем кампанию..."
 
-#: src/game.cpp:1109 src/game.cpp:1134 src/multiplayer_wait.cpp:317
+#: src/game.cpp:1091 src/game.cpp:1116 src/multiplayer_wait.cpp:317
 msgid "Response"
 msgstr "Ответ"
 
-#: src/game.cpp:1156
+#: src/game.cpp:1138
 msgid "Join Official Server"
 msgstr "Подключиться к официальному серверу"
 
-#: src/game.cpp:1157
+#: src/game.cpp:1139
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Войти на официальный игровой сервер Веснот"
 
-#: src/game.cpp:1159 src/multiplayer_lobby.cpp:463
+#: src/game.cpp:1141 src/multiplayer_lobby.cpp:463
 msgid "Join Game"
 msgstr "Подключиться к игре"
 
-#: src/game.cpp:1160
+#: src/game.cpp:1142
 msgid "Join a server or hosted game"
 msgstr "Подключиться к серверу или игре"
 
-#: src/game.cpp:1162
+#: src/game.cpp:1144
 msgid "Host Networked Game"
 msgstr "Создать игру"
 
-#: src/game.cpp:1163
+#: src/game.cpp:1145
 msgid "Host a game without using a server"
 msgstr "Создать локальную игру"
 
-#: src/game.cpp:1165
+#: src/game.cpp:1147
 msgid "Hotseat Game"
 msgstr "За одним компьютером"
 
-#: src/game.cpp:1166
+#: src/game.cpp:1148
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Играть в сетевую игру на этой же машине"
 
-#: src/game.cpp:1168
+#: src/game.cpp:1150
 msgid "Human vs AI"
 msgstr "Человек против Компьютера"
 
-#: src/game.cpp:1169
+#: src/game.cpp:1151
 msgid "Play a game against AI opponents"
 msgstr "Игра против компьютера"
 
-#: src/game.cpp:1177 src/multiplayer.cpp:189
+#: src/game.cpp:1159 src/multiplayer.cpp:189
 msgid "Login: "
 msgstr "Логин: "
 
-#: src/game.cpp:1179 src/multiplayer.cpp:194
+#: src/game.cpp:1161 src/multiplayer.cpp:194
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
 
-#: src/game.cpp:1213 src/playcampaign.cpp:107 src/playcampaign.cpp:312
+#: src/game.cpp:1195 src/playcampaign.cpp:107 src/playcampaign.cpp:325
 msgid "The game could not be loaded: "
 msgstr "Игра не может быть загружена: "
 
-#: src/game.cpp:1215 src/playcampaign.cpp:109 src/playcampaign.cpp:315
+#: src/game.cpp:1197 src/playcampaign.cpp:109 src/playcampaign.cpp:328
 msgid "Error while playing the game: "
 msgstr "Возникла ошибка во время игры: "
 
-#: src/game.cpp:1227 src/playcampaign.cpp:111 src/playcampaign.cpp:318
+#: src/game.cpp:1209 src/playcampaign.cpp:111 src/playcampaign.cpp:331
 msgid "The game map could not be loaded: "
 msgstr "Игровая карта не может быть загружена: "
 
-#: src/game.cpp:1251
+#: src/game.cpp:1233
 msgid "Language"
 msgstr "Язык"
 
-#: src/game.cpp:1252
+#: src/game.cpp:1234
 msgid "Choose your preferred language:"
 msgstr "Выберите предпочтительный язык:"
 
-#: src/game.cpp:1397
+#: src/game.cpp:1379
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "Следующие кампании имеют ошибки и не могут быть загружены:"
 
-#: src/game.cpp:1402
+#: src/game.cpp:1384
 msgid "ERROR DETAILS:"
 msgstr "ПОДРОБНОСТИ ОШИБКИ:"
 
-#: src/game.cpp:1416
+#: src/game.cpp:1398
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Внимание: Ошибка при загрузке файлов с настройками игры: '"
 
-#: src/game.cpp:1466
+#: src/game.cpp:1448
 msgid "Error loading game configuration files: '"
 msgstr "Ошибка при загрузке файлов с настройками игры: '"
 
-#: src/game.cpp:1467
+#: src/game.cpp:1449
 msgid "' (The game will now exit)"
 msgstr "' (Сейчас игра будет завершена)"
 
-#: src/game.cpp:1602
+#: src/game.cpp:1584
 msgid "Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
-#: src/game.cpp:1744
+#: src/game.cpp:1726
 msgid "Loading title screen."
 msgstr ""
 
@@ -10387,7 +10387,7 @@ msgstr "Необходимый ОП: "
 msgid "attacks"
 msgstr "атаки"
 
-#: src/help.cpp:1176 src/menu_events.cpp:232 src/menu_events.cpp:681
+#: src/help.cpp:1176 src/menu_events.cpp:232 src/menu_events.cpp:680
 msgid "Type"
 msgstr "Тип"
 
@@ -10596,7 +10596,7 @@ msgstr "Получено ущерба (В среднем)"
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/menu_events.cpp:237 src/unit.cpp:2278
+#: src/menu_events.cpp:237 src/unit.cpp:2280
 msgid "Moves"
 msgstr "Ходы"
 
@@ -10630,7 +10630,7 @@ msgstr "Содержание"
 msgid "Income"
 msgstr "Доход"
 
-#: src/menu_events.cpp:384 src/playcampaign.cpp:283 src/playcampaign.cpp:404
+#: src/menu_events.cpp:384 src/playcampaign.cpp:296 src/playcampaign.cpp:418
 msgid "Name:"
 msgstr "Название:"
 
@@ -10655,51 +10655,56 @@ msgstr "Сохранено"
 msgid "The game has been saved"
 msgstr "Игра успешно сохранена"
 
-#: src/menu_events.cpp:402 src/playcampaign.cpp:291 src/playcampaign.cpp:412
+#: src/menu_events.cpp:402 src/playcampaign.cpp:304 src/playcampaign.cpp:428
 msgid "The game could not be saved"
 msgstr "Игра не может быть сохранена"
 
-#: src/menu_events.cpp:478
+#: src/menu_events.cpp:472 src/menu_events.cpp:474 src/play_controller.cpp:638
+#: src/playcampaign.cpp:118
+msgid "Auto-Save"
+msgstr "Авто-Сохранение"
+
+#: src/menu_events.cpp:477
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Авто-сохранение игры невозможно. Сохраните игру вручную."
 
-#: src/menu_events.cpp:500
+#: src/menu_events.cpp:499
 msgid "Chat Log"
 msgstr "Лог чата"
 
-#: src/menu_events.cpp:510
+#: src/menu_events.cpp:509
 msgid "Message:"
 msgstr "Сообщение:"
 
-#: src/menu_events.cpp:511
+#: src/menu_events.cpp:510
 msgid "Send to allies only"
 msgstr "Отправить только союзникам"
 
-#: src/menu_events.cpp:561 src/multiplayer_wait.cpp:407
+#: src/menu_events.cpp:560 src/multiplayer_wait.cpp:407
 msgid "unit^Gold"
 msgstr "Золото"
 
-#: src/menu_events.cpp:567
+#: src/menu_events.cpp:566
 msgid "You have no units available to recruit."
 msgstr "Нет соединений для вербовки."
 
-#: src/menu_events.cpp:578
+#: src/menu_events.cpp:577
 msgid "Recruit"
 msgstr "Завербовать"
 
-#: src/menu_events.cpp:579 src/menu_events.cpp:722
+#: src/menu_events.cpp:578 src/menu_events.cpp:721
 msgid "Select unit:"
 msgstr "Выберите соединение:"
 
-#: src/menu_events.cpp:619
+#: src/menu_events.cpp:618
 msgid "You don't have enough gold to recruit that unit"
 msgstr "У Вас недостаточно золота для покупки данного соединения"
 
-#: src/menu_events.cpp:674
+#: src/menu_events.cpp:673
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Вы изолированы от Ваших солдат и не можете призвать их"
 
-#: src/menu_events.cpp:676
+#: src/menu_events.cpp:675
 #, fuzzy
 msgid ""
 "There are no troops available to recall\n"
@@ -10708,121 +10713,121 @@ msgstr ""
 "Нет соединений для призыва\n"
 "(У Вас должны быть уцелевшие с прошлого сценария соединения)"
 
-#: src/menu_events.cpp:683
+#: src/menu_events.cpp:682
 msgid "Level"
 msgstr "Уровень"
 
-#: src/menu_events.cpp:710
+#: src/menu_events.cpp:709
 msgid "Dismiss Unit"
 msgstr "Распустить соединение"
 
-#: src/menu_events.cpp:721
+#: src/menu_events.cpp:720
 msgid "Recall"
 msgstr "Призвать"
 
-#: src/menu_events.cpp:733
+#: src/menu_events.cpp:732
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr ""
 "У Вас должно быть по крайней мере $cost единиц золота для вербовки соединения"
 
-#: src/menu_events.cpp:1057
+#: src/menu_events.cpp:1056
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Вы ещё не начинали свой ход. Вы действительно хотите завершить свой ход?"
 
-#: src/menu_events.cpp:1065 src/menu_events.cpp:1070
+#: src/menu_events.cpp:1064 src/menu_events.cpp:1069
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Некоторые соединения ещё не сделали ход. Вы действительно хотите завершить "
 "свой ход?"
 
-#: src/menu_events.cpp:1111
+#: src/menu_events.cpp:1110
 msgid "Rename Unit"
 msgstr "Переименовать соединение"
 
-#: src/menu_events.cpp:1195
+#: src/menu_events.cpp:1194
 msgid "Place Label"
 msgstr "Поставить метку"
 
-#: src/menu_events.cpp:1196
+#: src/menu_events.cpp:1195
 msgid "Label:"
 msgstr "Метка:"
 
-#: src/menu_events.cpp:1294
+#: src/menu_events.cpp:1293
 msgid "Search"
 msgstr "Поиск"
 
-#: src/menu_events.cpp:1336
+#: src/menu_events.cpp:1335
 msgid "Commands: whisper ignore emote. Type /help [command] for more help."
 msgstr ""
 
-#: src/menu_events.cpp:1387
+#: src/menu_events.cpp:1386
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1391
+#: src/menu_events.cpp:1390
 msgid "Add player to your ignore list. Usage: /ignore add [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1393
+#: src/menu_events.cpp:1392
 msgid "Remove player from your ignore list. Usage: /ignore remove [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1395
+#: src/menu_events.cpp:1394
 msgid "Clear your ignore list. Usage: /ignore clear"
 msgstr ""
 
-#: src/menu_events.cpp:1397
+#: src/menu_events.cpp:1396
 msgid "Show your ignore list. Usage: /ignore list"
 msgstr ""
 
-#: src/menu_events.cpp:1399
+#: src/menu_events.cpp:1398
 #, fuzzy
 msgid "Unknown subcommand"
 msgstr "Неизвестный сценарий: '"
 
-#: src/menu_events.cpp:1402
+#: src/menu_events.cpp:1401
 msgid ""
 "Ignore messages from players on this list. Usage: /ignore [subcommand] "
 "[argument](optional) Subcommands: add remove list clear. Type /help ignore "
 "[subcommand] for more info."
 msgstr ""
 
-#: src/menu_events.cpp:1405
+#: src/menu_events.cpp:1404
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1407
+#: src/menu_events.cpp:1406
 #, fuzzy
 msgid "Unknown command"
 msgstr "Неизвестный сценарий: '"
 
-#: src/menu_events.cpp:1424
+#: src/menu_events.cpp:1423
 msgid "Added to ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1426 src/menu_events.cpp:1436
+#: src/menu_events.cpp:1425 src/menu_events.cpp:1435
 #, fuzzy
 msgid "Invalid username: "
 msgstr "Неправильное название тэга"
 
-#: src/menu_events.cpp:1434 src/menu_events.cpp:1460
+#: src/menu_events.cpp:1433 src/menu_events.cpp:1459
 msgid "Removed from ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1465
+#: src/menu_events.cpp:1464
 #, fuzzy
 msgid "Unknown command: "
 msgstr "Неизвестный сценарий: '"
 
-#: src/menu_events.cpp:1566
+#: src/menu_events.cpp:1565
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Не могу найти метку или соединение, содержащую текст '$search'."
 
-#: src/menu_events.cpp:1696
+#: src/menu_events.cpp:1695
 msgid "prompt^Command:"
 msgstr "Команда:"
 
@@ -10947,12 +10952,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2363
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2365
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2370
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2372
 msgid ")"
 msgstr ")"
 
@@ -11335,44 +11340,45 @@ msgstr "Не могу добавить сокет к набору сокетов
 msgid "Could not send initial handshake"
 msgstr "Не могу отправить данные для инициализации"
 
-#: src/play_controller.cpp:373 src/playsingle_controller.cpp:331
+#: src/play_controller.cpp:377 src/playsingle_controller.cpp:331
 #: src/playsingle_controller.cpp:372
 msgid "The file you have tried to load is corrupt"
 msgstr "Файл, который Вы пытались загрузить, повреждён"
 
-#: src/play_controller.cpp:637
+#: src/play_controller.cpp:642
 msgid "Back to start"
 msgstr ""
 
-#: src/play_controller.cpp:639
+#: src/play_controller.cpp:644
 msgid "Back to turn "
 msgstr ""
 
-#: src/playcampaign.cpp:260
+#: src/playcampaign.cpp:273
 msgid "Defeat"
 msgstr "Поражение"
 
-#: src/playcampaign.cpp:261
+#: src/playcampaign.cpp:274
 msgid "You have been defeated!"
 msgstr "Вы проиграли!"
 
-#: src/playcampaign.cpp:274
+#: src/playcampaign.cpp:287
 msgid " replay"
 msgstr " повтор"
 
-#: src/playcampaign.cpp:282
+#: src/playcampaign.cpp:295
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Вы хотите сохранить повтор данного сценария?"
 
-#: src/playcampaign.cpp:331
+#: src/playcampaign.cpp:344
 msgid "Downloading next level..."
 msgstr "Загружаем следующий уровень..."
 
-#: src/playcampaign.cpp:403
-msgid "Do you want to save your game?"
+#: src/playcampaign.cpp:417
+#, fuzzy
+msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr "Вы хотите сохранить свою игру?"
 
-#: src/playcampaign.cpp:428
+#: src/playcampaign.cpp:444
 msgid "Unknown scenario: '"
 msgstr "Неизвестный сценарий: '"
 
@@ -11616,52 +11622,56 @@ msgstr "подключена из "
 msgid "$error at $pos"
 msgstr "$error в $pos"
 
-#: src/titlescreen.cpp:200
+#: src/titlescreen.cpp:166
+msgid "-- The Tome of Wesnoth"
+msgstr "-- Великая книга Веснота"
+
+#: src/titlescreen.cpp:253
 msgid "TitleScreen button^Tutorial"
 msgstr "Обучение"
 
-#: src/titlescreen.cpp:201
+#: src/titlescreen.cpp:254
 msgid "TitleScreen button^Campaign"
 msgstr "Кампания"
 
-#: src/titlescreen.cpp:202
+#: src/titlescreen.cpp:255
 msgid "TitleScreen button^Multiplayer"
 msgstr "Сетевая игра"
 
-#: src/titlescreen.cpp:203
+#: src/titlescreen.cpp:256
 msgid "TitleScreen button^Load"
 msgstr "Загрузить"
 
-#: src/titlescreen.cpp:204
+#: src/titlescreen.cpp:257
+#, fuzzy
+msgid "TitleScreen button^Get Add-ons"
+msgstr "Загрузить"
+
+#: src/titlescreen.cpp:258
 msgid "TitleScreen button^Language"
 msgstr "Язык"
 
-#: src/titlescreen.cpp:205
+#: src/titlescreen.cpp:259
 msgid "TitleScreen button^Preferences"
 msgstr "Настройки"
 
-#: src/titlescreen.cpp:206
-#, fuzzy
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Загрузить"
-
-#: src/titlescreen.cpp:207
+#: src/titlescreen.cpp:260
 msgid "About"
 msgstr "Об игре"
 
-#: src/titlescreen.cpp:208
+#: src/titlescreen.cpp:261
 msgid "TitleScreen button^Quit"
 msgstr "Выход"
 
-#: src/titlescreen.cpp:209
+#: src/titlescreen.cpp:262
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Начать обучение для знакомства с игрой"
 
-#: src/titlescreen.cpp:210
+#: src/titlescreen.cpp:263
 msgid "Start a new single player campaign"
 msgstr "Начать новую кампанию"
 
-#: src/titlescreen.cpp:211
+#: src/titlescreen.cpp:264
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -11669,51 +11679,51 @@ msgstr ""
 "Сетевая игра (на одном компьютере, локальная сеть либо через интернет) или "
 "игра против компьютера"
 
-#: src/titlescreen.cpp:212
+#: src/titlescreen.cpp:265
 msgid "Load a single player saved game"
 msgstr "Загрузить сохранённую локальную игру"
 
-#: src/titlescreen.cpp:213
+#: src/titlescreen.cpp:266
+msgid "Download usermade campaigns, eras, or map packs"
+msgstr ""
+
+#: src/titlescreen.cpp:267
 msgid "Change the language"
 msgstr "Изменить язык игры"
 
-#: src/titlescreen.cpp:214
+#: src/titlescreen.cpp:268
 msgid "Configure the game's settings"
 msgstr "Настройки игры"
 
-#: src/titlescreen.cpp:215
-msgid "Help Wesnoth by sending us information"
-msgstr ""
-
-#: src/titlescreen.cpp:216
+#: src/titlescreen.cpp:269
 msgid "View the credits"
 msgstr "Авторы игры"
 
-#: src/titlescreen.cpp:217
+#: src/titlescreen.cpp:270
 msgid "Quit the game"
 msgstr "Выйти из игры"
 
-#: src/titlescreen.cpp:248
+#: src/titlescreen.cpp:302
 msgid "More"
 msgstr "Ещё"
 
-#: src/titlescreen.cpp:249
+#: src/titlescreen.cpp:303
 msgid "Help"
 msgstr ""
 
-#: src/titlescreen.cpp:259
-msgid "-- The Tome of Wesnoth"
-msgstr "-- Великая книга Веснота"
+#: src/titlescreen.cpp:306
+msgid "Help Wesnoth by sending us information"
+msgstr ""
 
-#: src/unit.cpp:2213 src/unit.cpp:2368
+#: src/unit.cpp:2215 src/unit.cpp:2370
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2295
+#: src/unit.cpp:2297
 msgid "XP to advance"
 msgstr "ОП для улучшения"
 
-#: src/unit.cpp:2359
+#: src/unit.cpp:2361
 msgid ": "
 msgstr ": "
 
@@ -11756,6 +11766,19 @@ msgstr ""
 #: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#~ msgid "Get More Campaigns..."
+#~ msgstr "Загрузить другие кампании..."
+
+#~ msgid "Download more campaigns from an Internet server."
+#~ msgstr "Загрузить больше кампаний из интернета."
+
+#~ msgid "Get Campaign"
+#~ msgstr "Загрузить кампанию"
+
+#, fuzzy
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Загрузить"
 
 #~ msgid "stab"
 #~ msgstr "удар"
