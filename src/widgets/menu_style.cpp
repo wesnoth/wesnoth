@@ -55,7 +55,7 @@ menu::style::~style()
 menu::imgsel_style::imgsel_style(const std::string &img_base, bool has_bg,
 								 int normal_rgb, int selected_rgb, int heading_rgb,
 								 double normal_alpha, double selected_alpha, double heading_alpha)
-								 : img_base_(img_base), initialized_(false), load_failed_(false), has_background_(has_bg),
+								 : img_base_(img_base), has_background_(has_bg),  initialized_(false), load_failed_(false),
 								 normal_rgb2_(normal_rgb), selected_rgb2_(selected_rgb), heading_rgb2_(heading_rgb),
 								 normal_alpha2_(normal_alpha), selected_alpha2_(selected_alpha), heading_alpha2_(heading_alpha)
 {}

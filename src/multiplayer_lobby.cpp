@@ -104,7 +104,7 @@ void gamebrowser::draw_contents()
 	}
 }
 
-void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TYPE type) {
+void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TYPE /*type*/) {
 	const game_item& game = games_[index];
 	int xpos = item_rect.x + margin_;
 	int ypos = item_rect.y + margin_;

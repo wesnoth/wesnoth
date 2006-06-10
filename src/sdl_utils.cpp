@@ -1097,6 +1097,7 @@ SDL_Color inverse(const SDL_Color& colour) {
 	inverse.r = 255 - colour.r;
 	inverse.g = 255 - colour.g;
 	inverse.b = 255 - colour.b;
+	inverse.unused = 0;
 	return inverse;
 }
 

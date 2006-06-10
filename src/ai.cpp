@@ -1813,7 +1813,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 	}
 }
 
-void ai::move_leader_after_recruit(const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc)
+void ai::move_leader_after_recruit(const move_map& /*srcdst*/, const move_map& /*dstsrc*/, const move_map& enemy_dstsrc)
 {
 	LOG_AI << "moving leader after recruit...\n";
 

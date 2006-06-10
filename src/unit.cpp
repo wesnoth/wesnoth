@@ -1320,7 +1320,7 @@ void unit::set_extra_anim(const display &disp,const gamemap::location& loc, std:
 	anim_->update_current_frame();
 }
 
-const unit_animation & unit::set_attacking(const display &disp,const gamemap::location& loc,bool hit,const attack_type& type)
+const unit_animation & unit::set_attacking(const display &disp,const gamemap::location& /*loc*/,bool hit,const attack_type& type)
 {
 	state_ =  STATE_ATTACKING;
 	draw_bars_ = false;
@@ -1348,7 +1348,7 @@ void unit::set_leading(const display &disp,const gamemap::location& loc)
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
-void unit::set_leveling_in(const display &disp,const gamemap::location& loc)
+void unit::set_leveling_in(const display &disp,const gamemap::location& /*loc*/)
 {
 	state_ = STATE_LEVELIN;
 	draw_bars_ = false;
@@ -1372,7 +1372,7 @@ void unit::set_leveling_in(const display &disp,const gamemap::location& loc)
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
-void unit::set_leveling_out(const display &disp,const gamemap::location& loc)
+void unit::set_leveling_out(const display &disp,const gamemap::location& /*loc*/)
 {
 	state_ = STATE_LEVELOUT;
 	draw_bars_ = false;
@@ -1396,7 +1396,7 @@ void unit::set_leveling_out(const display &disp,const gamemap::location& loc)
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
-void unit::set_recruited(const display &disp,const gamemap::location& loc)
+void unit::set_recruited(const display &disp,const gamemap::location& /*loc*/)
 {
 	state_ = STATE_RECRUITED;
 	draw_bars_ = false;
@@ -1417,7 +1417,7 @@ void unit::set_recruited(const display &disp,const gamemap::location& loc)
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
-void unit::set_healed(const display &disp,const gamemap::location& loc, int healing)
+void unit::set_healed(const display &disp,const gamemap::location& /*loc*/, int healing)
 {
 	state_ = STATE_HEALED;
 	draw_bars_ = true;
@@ -1442,7 +1442,7 @@ void unit::set_healed(const display &disp,const gamemap::location& loc, int heal
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
-void unit::set_poisoned(const display &disp,const gamemap::location& loc, int damage)
+void unit::set_poisoned(const display &disp,const gamemap::location& /*loc*/, int damage)
 {
 	state_ = STATE_POISONED;
 	draw_bars_ = true;
@@ -1468,7 +1468,7 @@ void unit::set_poisoned(const display &disp,const gamemap::location& loc, int da
 	anim_->update_current_frame();
 }
 
-void unit::set_teleporting(const display &disp,const gamemap::location& loc)
+void unit::set_teleporting(const display &disp,const gamemap::location& /*loc*/)
 {
 	state_ = STATE_TELEPORT;
 	draw_bars_ = false;
@@ -1503,7 +1503,7 @@ void unit::set_dying(const display &disp,const gamemap::location& loc,const atta
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
-void unit::set_healing(const display &disp,const gamemap::location& loc)
+void unit::set_healing(const display &disp,const gamemap::location& /*loc*/)
 {
 	state_ = STATE_HEALING;
 	draw_bars_ = true;

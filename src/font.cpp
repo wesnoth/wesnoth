@@ -796,6 +796,7 @@ SDL_Rect line_size(const std::string& line, int font_size, int style)
 
 	res.w = s.width();
 	res.h = s.height();
+	res.x = res.y = 0;
 
 	if(line.size() < max_cache_size) {
 		cache.insert(std::pair<std::string,SDL_Rect>(line,res));
