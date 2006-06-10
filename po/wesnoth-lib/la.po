@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the Wesnoth package.
 # January, 2005.
 # <>, 2005.
-#
-#
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth 1.0.0\n"
+"Project-Id-Version: Wesnoth 1.1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-09 15:19+0200\n"
-"PO-Revision-Date: 2005-08-25 20:54+0200\n"
+"PO-Revision-Date: 2006-06-01 09:44+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
@@ -111,12 +111,10 @@ msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Volvi (hoc dimensiones chartae mutare potest)"
 
 #: src/hotkeys.cpp:49
-#, fuzzy
 msgid "Next Unit"
 msgstr "Unitas proxima"
 
 #: src/hotkeys.cpp:50
-#, fuzzy
 msgid "Previous Unit"
 msgstr "Unitas previa"
 
@@ -241,9 +239,8 @@ msgid "Set Label"
 msgstr "Titulum Ponere"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Clear Labels"
-msgstr "Titulum Ponere"
+msgstr "Titula Tollere"
 
 #: src/hotkeys.cpp:84
 msgid "Show Enemy Moves"
@@ -254,39 +251,36 @@ msgid "Best Possible Enemy Moves"
 msgstr "Motus Optimos Hostium Monstrare"
 
 #: src/hotkeys.cpp:86
-#, fuzzy
 msgid "Play"
-msgstr "Lusores:"
+msgstr "Ludere"
 
 #: src/hotkeys.cpp:87
 msgid "Reset"
-msgstr ""
+msgstr "Reponere"
 
 #: src/hotkeys.cpp:88
 msgid "Stop"
-msgstr ""
+msgstr "Sistere"
 
 #: src/hotkeys.cpp:89
-#, fuzzy
 msgid "Next Turn"
-msgstr "Unitas proxima"
+msgstr "Tractus Insequens"
 
 #: src/hotkeys.cpp:90
-#, fuzzy
 msgid "Next Side"
-msgstr "Unitas proxima"
+msgstr "Pars proxima"
 
 #: src/hotkeys.cpp:91
 msgid "Shroud"
-msgstr ""
+msgstr "Integumentum"
 
 #: src/hotkeys.cpp:92
 msgid "Fog"
-msgstr ""
+msgstr "Caligo"
 
 #: src/hotkeys.cpp:93
 msgid "Skip animation"
-msgstr ""
+msgstr "Animationem saltare"
 
 #: src/hotkeys.cpp:95
 msgid "Set Terrain"
@@ -473,7 +467,7 @@ msgstr "Tractus IA Praetermittere"
 
 #: src/preferences_display.cpp:221
 msgid "Show Lobby Joins"
-msgstr ""
+msgstr "Monstrare Adiunctos in Vestibulo"
 
 #: src/preferences_display.cpp:222
 msgid "Show Floating Labels"
@@ -501,7 +495,7 @@ msgstr "Iactationes Aureolae Monstrare"
 
 #: src/preferences_display.cpp:229
 msgid "Theme"
-msgstr ""
+msgstr "Modus Visivus"
 
 #: src/preferences_display.cpp:231
 msgid "Adjust Gamma"
@@ -521,7 +515,7 @@ msgstr "Musica"
 
 #: src/preferences_display.cpp:236
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "Signa Temporis in Sermone"
 
 #: src/preferences_display.cpp:237
 msgid "Music Volume:"
@@ -557,11 +551,11 @@ msgstr "Velocitatem gyri in charta mutare"
 
 #: src/preferences_display.cpp:273 src/preferences_display.cpp:275
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "Eligere numerum linearum sermonis monstratum"
 
 #: src/preferences_display.cpp:278
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Signum temporis ad nuntios adiungere"
 
 #: src/preferences_display.cpp:281 src/preferences_display.cpp:286
 msgid "Change the brightness of the display"
@@ -586,6 +580,7 @@ msgstr "Rete monstrare super charta"
 #: src/preferences_display.cpp:301
 msgid "Show messages about players joining the multiplayer lobby"
 msgstr ""
+"Nuntios de lusoribus qui in vestibulum plurum lusorum intrant monstrare."
 
 #: src/preferences_display.cpp:304
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -597,7 +592,6 @@ msgid "Change the resolution the game runs at"
 msgstr "Modum visivum lusi mutare"
 
 #: src/preferences_display.cpp:307
-#, fuzzy
 msgid "Change the theme the game runs with"
 msgstr "Modum visivum lusi mutare"
 
@@ -636,7 +630,7 @@ msgstr "Aspicere et imponere claves notarum"
 
 #: src/preferences_display.cpp:517
 msgid "Chat Lines: "
-msgstr ""
+msgstr "Lineae Sermonis: "
 
 #: src/preferences_display.cpp:569
 msgid "yes"
@@ -659,9 +653,8 @@ msgid "Prefs section^Sound"
 msgstr "Sonitus"
 
 #: src/preferences_display.cpp:640
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "Scrinium"
+msgstr "Plurum Lusorum"
 
 #: src/preferences_display.cpp:641
 msgid "Advanced section^Advanced"
@@ -680,7 +673,6 @@ msgid "Hotkey Settings"
 msgstr "Impostationes Clavium Notarum"
 
 #: src/preferences_display.cpp:756 src/preferences_display.cpp:809
-#, fuzzy
 msgid "Press desired Hotkey"
 msgstr "Premere Clavem Notarum volutam"
 
@@ -701,21 +693,21 @@ msgid "Save Hotkeys"
 msgstr "Claves Notarum Servare"
 
 #: src/preferences_display.cpp:836
-#, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "Haec Clavis Notarum iam usum habet."
 
 #: src/preferences_display.cpp:869
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Impostatio Modi Visivi Servata:"
 
 #: src/preferences_display.cpp:875
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
+"Novum modum visivum effectum habebit cum primum lusum restues vel incipies."
 
 #: src/preferences_display.cpp:879
 msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
+msgstr "Nulli modi visivi noti.  Forsitan potes mutare inter lusum existens."
 
 #: src/show_dialog.cpp:313
 msgid "Error"
