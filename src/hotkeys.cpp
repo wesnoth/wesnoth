@@ -519,7 +519,9 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			preferences::set_turbo(!preferences::turbo());
 			break;
 		case HOTKEY_MUTE:
-			preferences::mute(!preferences::is_muted());
+			// Toggle both sound & music, based on music (the more obvious cue)
+			preferences::set_sound(!preferences::music_on());
+			preferences::set_music(!preferences::music_on());
 			break;
 		case HOTKEY_CYCLE_UNITS:
 			if(executor)

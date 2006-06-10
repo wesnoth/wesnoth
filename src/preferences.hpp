@@ -73,9 +73,6 @@ namespace preferences {
 	int music_volume();
 	void set_music_volume(int vol);
 
-	void mute(bool muted);
-	bool is_muted();
-
 	bool adjust_gamma();
 	void _set_adjust_gamma(bool val);
 

@@ -38,7 +38,6 @@ namespace {
 
 config prefs;
 
-bool muted_ = false;
 bool colour_cursors = false;
 
 bool message_private_on = true;
@@ -193,13 +192,6 @@ void set_sound_volume(int vol)
 	sound::set_sound_volume(sound_volume());
 }
 
-void mute(bool muted)
-{
-	sound::set_music_volume(muted ? 0 : music_volume());
-	sound::set_sound_volume(muted ? 0 : sound_volume());
-	muted_ = muted;
-}
-
 bool adjust_gamma()
 {
 	return prefs["adjust_gamma"] == "yes";
@@ -225,11 +217,6 @@ void _set_gamma(int gamma)
 	std::stringstream stream;
 	stream << gamma;
 	prefs["gamma"] = stream.str();
-}
-
-bool is_muted()
-{
-	return muted_;
 }
 
 bool grid()
