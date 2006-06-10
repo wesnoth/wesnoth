@@ -1013,6 +1013,7 @@ void unit::read(const config& cfg)
 	}
 	if(utils::string_bool(cfg["random_traits"])) {
 		generate_traits();
+		cfg["random_traits"] = "";
 	}
 	if(!type_set) {
 		backup_state();
