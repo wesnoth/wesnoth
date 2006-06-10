@@ -868,7 +868,7 @@ void game_controller::download_campaigns()
 		cfg.add_child("request_campaign_list");
 		network::send_data(cfg,sock);
 
-		network::connection res = gui::network_receive_dialog(disp(),_("Asking for campaign list"),cfg,sock);
+		network::connection res = gui::network_receive_dialog(disp(),_("Asking for list of add-ons"),cfg,sock);
 		if(!res) {
 			return;
 		}
@@ -952,22 +952,22 @@ void game_controller::download_campaigns()
 		options.push_back(heading.str());
 
 		for(std::vector<std::string>::const_iterator j = publish_options.begin(); j != publish_options.end(); ++j) {
-			options.push_back(sep + _("Publish campaign: ") + *j);
+			options.push_back(sep + _("Publish add-on: ") + *j);
 		}
 
 		for(std::vector<std::string>::const_iterator d = delete_options.begin(); d != delete_options.end(); ++d) {
-			options.push_back(sep + _("Delete campaign: ") + *d);
+			options.push_back(sep + _("Delete add-on: ") + *d);
 		}
 
 		if(campaigns.empty() && publish_options.empty()) {
-			gui::show_error_message(disp(), _("There are no campaigns available for download from this server."));
+			gui::show_error_message(disp(), _("There are no add-ons available for download from this server."));
 			return;
 		}
 
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_numeric_sort(4).set_position_sort(5,sizes);
 
-		const int index = gui::show_dialog2(disp(),NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&options,
+		const int index = gui::show_dialog2(disp(),NULL,_("Get Add-ons"),_("Choose the add-on to download."),gui::OK_CANCEL,&options,
 			NULL, "", NULL, 256, NULL, NULL, -1, -1, NULL, NULL, "", &sorter);
 		if(index < 0) {
 			return;
@@ -987,7 +987,7 @@ void game_controller::download_campaigns()
 		request.add_child("request_campaign")["name"] = campaigns[index];
 		network::send_data(request,sock);
 
-		res = gui::network_receive_dialog(disp(),_("Downloading campaign..."),cfg,sock);
+		res = gui::network_receive_dialog(disp(),_("Downloading add-on..."),cfg,sock);
 		if(!res) {
 			return;
 		}
@@ -998,7 +998,7 @@ void game_controller::download_campaigns()
 		}
 
 		if(!check_names_legal(cfg)) {
-			gui::show_error_message(disp(), "The campaign has an invalid file or directory name and can not be installed.");
+			gui::show_error_message(disp(), "The add-on has an invalid file or directory name and can not be installed.");
 			return;
 		}
 
@@ -1026,7 +1026,7 @@ void game_controller::download_campaigns()
 
 		clear_binary_paths_cache();
 
-		gui::show_dialog(disp(),NULL,_("Campaign Installed"),_("The campaign has been installed."),gui::OK_ONLY);
+		gui::show_dialog(disp(),NULL,_("Add-on Installed"),_("The add-on has been installed."),gui::OK_ONLY);
 	} catch(config::error&) {
 		gui::show_error_message(disp(), _("Network communication error."));
 	} catch(network::error&) {
@@ -1081,7 +1081,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	std::cerr << "uploading campaign...\n";
 	network::send_data(data,sock);
 
-	sock = gui::network_send_dialog(disp(),_("Sending campaign"),data,sock);
+	sock = gui::network_send_dialog(disp(),_("Sending add-on"),data,sock);
 	if(!sock) {
 		gui::show_error_message(disp(), _("Connection timed out"));
 	} else if(data.child("error")) {

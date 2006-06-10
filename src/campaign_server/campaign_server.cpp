@@ -163,7 +163,7 @@ void campaign_server::run()
 				} else if(const config* req = data.child("request_campaign")) {
 					config* const campaign = campaigns().find_child("campaign","name",(*req)["name"]);
 					if(campaign == NULL) {
-						network::send_data(construct_error("Campaign not found."),sock);
+						network::send_data(construct_error("Add-on not found."),sock);
 					} else {
 						config cfg;
 						scoped_istream stream = istream_file((*campaign)["filename"]);
@@ -175,18 +175,18 @@ void campaign_server::run()
 					}
 
 				} else if(data.child("request_terms") != NULL) {
-					network::send_data(construct_message("All campaigns uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."),sock);
+					network::send_data(construct_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."),sock);
 				} else if(config* upload = data.child("upload")) {
 					config* data = upload->child("data");
 					config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
 					if(data == NULL) {
-						network::send_data(construct_error("No campaign data was supplied."),sock);
+						network::send_data(construct_error("No add-on data was supplied."),sock);
 					} else if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
-						network::send_data(construct_error("The campaign already exists, and your passphrase was incorrect."),sock);
+						network::send_data(construct_error("The add-on already exists, and your passphrase was incorrect."),sock);
 					} else if(campaign_name_legal((*upload)["name"]) == false) {
-						network::send_data(construct_error("The name of the campaign is invalid"),sock);
+						network::send_data(construct_error("The name of the add-on is invalid"),sock);
 					} else if(check_names_legal(*data) == false) {
-						network::send_data(construct_error("The campaign contains an illegal file or directory name."),sock);
+						network::send_data(construct_error("The add-on contains an illegal file or directory name."),sock);
 					} else {
 						if(campaign == NULL) {
 							campaign = &campaigns().add_child("campaign");
@@ -226,12 +226,12 @@ void campaign_server::run()
 
 						scoped_ostream cfgfile = ostream_file(file_);
 						write(*cfgfile, cfg_);
-						network::send_data(construct_message("Campaign accepted."),sock);
+						network::send_data(construct_message("Add-on accepted."),sock);
 					}
 				} else if(const config* erase = data.child("delete")) {
 					config* const campaign = campaigns().find_child("campaign","name",(*erase)["name"]);
 					if(campaign == NULL) {
-						network::send_data(construct_error("The campaign does not exist."),sock);
+						network::send_data(construct_error("The add-on does not exist."),sock);
 						continue;
 					}
 
@@ -249,11 +249,11 @@ void campaign_server::run()
 					campaigns().remove_child("campaign",index);
 					scoped_ostream cfgfile = ostream_file(file_);
 					write(*cfgfile, cfg_);
-					network::send_data(construct_message("Campaign deleted."),sock);
+					network::send_data(construct_message("Add-on deleted."),sock);
 				} else if(const config* cpass = data.child("change_passphrase")) {
 					config* campaign = campaigns().find_child("campaign","name",(*cpass)["name"]);
 					if(campaign == NULL) {
-						network::send_data(construct_error("No campaign with that name exists."),sock);
+						network::send_data(construct_error("No add-on with that name exists."),sock);
 					} else if((*campaign)["passphrase"] != (*cpass)["passphrase"]) {
 						network::send_data(construct_error("Your old passphrase was incorrect."),sock);
 					} else if((const t_string)(*cpass)["new_passphrase"] == "") {
