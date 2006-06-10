@@ -149,6 +149,59 @@ const config get_tips_of_day()
 	return cfg;
 }
 
+
+
+void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, const std::string& style, gui::button* const next_tip_button, gui::button* const help_tip_button, const SDL_Rect* const main_dialog_area, surface_restorer& tip_of_day_restorer) 
+{
+
+    // Restore the previous tip of day area to its old state (section of the title image).
+    tip_of_day_restorer.restore();
+        
+    // Draw tip of the day
+    std::string tip_of_day = get_tip_of_day(tips_of_day,ntip);
+    if(tip_of_day.empty() == false) {
+        tip_of_day = font::word_wrap_text(tip_of_day,font::SIZE_NORMAL,
+                                          (game_config::title_tip_width*screen.x())/1024);
+
+        const std::string& tome = font::word_wrap_text(_("-- The Tome of Wesnoth"),
+                font::SIZE_NORMAL,
+                (game_config::title_tip_width*screen.x())/1024);
+
+        const int pad = game_config::title_tip_padding;
+
+        SDL_Rect area = font::text_area(tip_of_day,font::SIZE_NORMAL);
+        SDL_Rect tome_area = font::text_area(tome,font::SIZE_NORMAL,TTF_STYLE_ITALIC);
+        area.w = maximum<size_t>(area.w,tome_area.w) + 2*pad;
+        area.h += tome_area.h + next_tip_button->location().h + 3*pad;
+
+        area.x = main_dialog_area->x - (game_config::title_tip_x*screen.x())/1024 - area.w;
+        area.y = main_dialog_area->y + main_dialog_area->h - area.h;
+        
+        // Note: The buttons' locations need to be set before the dialog frame is drawn.
+        // Otherwise, when the buttons restore their area, they draw parts
+        // of the old dialog frame at their old locations.
+        // This way, the buttons draw a part of the title image, because the call to restore
+        // above restored the old tip of the day area to its initial state (the title image).
+        next_tip_button->set_location(area.x + area.w - next_tip_button->location().w - pad,
+                                      area.y + area.h - pad - next_tip_button->location().h);
+
+        help_tip_button->set_location(area.x + pad,
+                                      area.y + area.h - pad - next_tip_button->location().h);
+        gui::draw_dialog_frame(area.x,area.y,area.w,area.h,screen.video(),&style, &tip_of_day_restorer);
+
+        
+
+        
+        font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
+                         tip_of_day, area.x + pad, area.y + pad);
+        font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
+                         tome, area.x + area.w - tome_area.w - pad,
+                         next_tip_button->location().y - tome_area.h - pad, false, TTF_STYLE_ITALIC);
+    }
+
+    LOG_DP << "drew tip of day\n";
+}
+
 } //end anonymous namespace
 
 namespace gui {
@@ -237,7 +290,8 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	}
 
 	SDL_Rect main_dialog_area = {menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2};
-	std::string style = "mainmenu";
+	
+    const std::string style = "mainmenu";
 	draw_dialog_frame(main_dialog_area.x,main_dialog_area.y,main_dialog_area.w,main_dialog_area.h,screen.video(),&style);
 
 	for(b = 0; b != nbuttons; ++b) {
@@ -254,42 +308,11 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	if(tips_of_day.empty()) {
 		tips_of_day = get_tips_of_day();
 	}
-	std::string tip_of_day = get_tip_of_day(tips_of_day,ntip);
-	if(tip_of_day.empty() == false) {
-		tip_of_day = font::word_wrap_text(tip_of_day,font::SIZE_NORMAL,
-						  (game_config::title_tip_width*screen.x())/1024);
 
-		const std::string& tome = font::word_wrap_text(_("-- The Tome of Wesnoth"),
-							       font::SIZE_NORMAL,
-							       (game_config::title_tip_width*screen.x())/1024);
 
-		const int pad = game_config::title_tip_padding;
+	surface_restorer tip_of_day_restorer;
 
-		SDL_Rect area = font::text_area(tip_of_day,font::SIZE_NORMAL);
-		SDL_Rect tome_area = font::text_area(tome,font::SIZE_NORMAL,TTF_STYLE_ITALIC);
-		area.w = maximum<size_t>(area.w,tome_area.w) + 2*pad;
-		area.h += tome_area.h + next_tip_button.location().h + 3*pad;
-
-		area.x = main_dialog_area.x - (game_config::title_tip_x*screen.x())/1024 - area.w;
-		area.y = main_dialog_area.y + main_dialog_area.h - area.h;
-
-		draw_dialog_frame(area.x,area.y,area.w,area.h,screen.video(),&style);
-
-		next_tip_button.set_location(area.x + area.w - next_tip_button.location().w - pad,
-		                             area.y + area.h - pad - next_tip_button.location().h);
-
-		help_tip_button.set_location(area.x + pad,
-		                             area.y + area.h - pad - next_tip_button.location().h);
-
-		beg_button.set_location(screen.x() - pad - beg_button.location().w,
-		                             screen.y() - pad - beg_button.location().h);
-
-		font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
-		                tip_of_day, area.x + pad, area.y + pad);
-		font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
-		                tome, area.x + area.w - tome_area.w - pad,
-		                next_tip_button.location().y - tome_area.h - pad, false, TTF_STYLE_ITALIC);
-	}
+	draw_tip_of_day(screen, tips_of_day, ntip, style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 
 	events::raise_draw_event();
 
@@ -315,7 +338,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 				*ntip = *ntip + 1;
 			}
 
-			return TITLE_CONTINUE;
+            draw_tip_of_day(screen, tips_of_day, ntip, style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 		}
 
 		if(help_tip_button.pressed()) {
