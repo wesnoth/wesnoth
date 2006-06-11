@@ -117,8 +117,6 @@ protected:
 
 		gamemap::location target;
 		std::vector<std::pair<gamemap::location,gamemap::location> > movements;
-		std::vector<int> weapons;
-		std::vector<int> def_weapons;
 
 		//the value of the unit being targeted
 		double target_value;
@@ -264,6 +262,9 @@ protected:
 	const std::set<location>& avoided_locations() const;
 
 	mutable std::set<location> avoid_;
+
+	// Weapon choice cache, to speed simulations.
+	std::map<std::pair<location,const unit_type *>,std::pair<battle_context::unit_stats,battle_context::unit_stats> > unit_stats_cache_;
 
 	int attack_depth() const;
 	mutable int attack_depth_;

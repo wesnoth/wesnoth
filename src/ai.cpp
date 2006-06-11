@@ -963,7 +963,6 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		location from   = choice_it->movements[0].first;
 		location to     = choice_it->movements[0].second;
 		location target_loc = choice_it->target;
-		const int weapon = choice_it->weapons[0];
 
 		// never used
 		//		const unit_map::const_iterator tgt = units_.find(target_loc);
@@ -976,7 +975,10 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 			return true;
 		}
 
-		attack_enemy(to,target_loc,weapon,choice_it->def_weapons[0]);
+		// Recalc appropriate weapons here: AI uses approximations.
+		battle_context bc(map_, teams_, units_, state_,
+						  gameinfo_, to, target_loc, -1, -1, current_team().aggression());
+		attack_enemy(to,target_loc,bc.get_attacker_stats().attack_num,bc.get_defender_stats().attack_num);
 
 		//if this is the only unit in the attack, and the target
 		//is still alive, then also summon reinforcements

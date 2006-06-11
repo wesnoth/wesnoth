@@ -268,6 +268,14 @@ battle_context::battle_context(const battle_context &other)
 	*this = other;
 }
 
+battle_context::battle_context(const unit_stats &att, const unit_stats &def)
+{
+	attacker_stats_ = new unit_stats(att);
+	defender_stats_ = new unit_stats(def);
+	attacker_combatant_ = NULL;
+	defender_combatant_ = NULL;
+}
+
 battle_context& battle_context::operator=(const battle_context &other)
 {
 	if (&other != this) {

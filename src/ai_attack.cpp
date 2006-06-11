@@ -277,8 +277,6 @@ bool operator==(const battle_type& a, const battle_type& b)
 	       a.terrain == b.terrain;
 }
 
-std::set<battle_type> weapon_choice_cache;
-
 void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 								  const std::vector<team>& teams,
 								  const gamestatus& status, const game_data& gamedata,
@@ -329,8 +327,6 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 	terrain_quality = 0.0;
 	avg_losses = 0.0;
 	chance_to_kill = 0.0;
-	weapons.clear();
-	def_weapons.clear();
 
 	double def_avg_experience = 0.0;
 	double first_chance_kill = 0.0;
@@ -353,7 +349,21 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 			leader_threat = false;
 		}
 
-		battle_context *bc = new battle_context(map, teams, units, status, gamedata, m->second, target, -1, -1, 1.0 - aggression, prev_def);
+		int att_weapon = -1, def_weapon = -1;
+		bool from_cache = false;
+		battle_context *bc;
+
+		// This cache is only about 99% correct, but speeds up evaluation by about 1000 times.
+		// We recalculate when we actually attack.
+		std::map<std::pair<location, const unit_type *>,std::pair<battle_context::unit_stats,battle_context::unit_stats> >::iterator usc;
+		usc = ai_obj.unit_stats_cache_.find(std::pair<location, const unit_type *>(target, &up->second.type()));
+		// Just check this attack is valid for this attacking unit (may be modified)
+		if (usc != ai_obj.unit_stats_cache_.end() && usc->second.first.attack_num < (int)up->second.attacks().size()) {
+			from_cache = true;
+			bc = new battle_context(usc->second.first, usc->second.second);
+		} else {
+			bc = new battle_context(map, teams, units, status, gamedata, m->second, target, att_weapon, def_weapon, 1.0 - aggression, prev_def);
+		}
 		const combatant &att = bc->get_attacker_combatant(prev_def);
 		const combatant &def = bc->get_defender_combatant(prev_def);
 
@@ -361,8 +371,12 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 		prev_bc = bc;
 		prev_def = &bc->get_defender_combatant(prev_def);
 
-		weapons.push_back(bc->get_attacker_stats().attack_num);
-		def_weapons.push_back(bc->get_defender_stats().attack_num);
+		if (!from_cache) {
+			ai_obj.unit_stats_cache_.insert(std::pair<std::pair<location, const unit_type *>,std::pair<battle_context::unit_stats,battle_context::unit_stats> >
+											(std::pair<location, const unit_type *>(target, &up->second.type()),
+											 std::pair<battle_context::unit_stats,battle_context::unit_stats>(bc->get_attacker_stats(),
+																											  bc->get_defender_stats())));
+		}
 
 		// Note we didn't fight at all if defender already dead.
 		double prob_fought = (1.0 - prob_dead_already);
@@ -529,8 +543,6 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 {
 	log_scope2(ai, "analyzing targets...");
 
-	weapon_choice_cache.clear();
-
 	std::vector<attack_analysis> res;
 
 	std::vector<location> unit_locs;
@@ -546,6 +558,8 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 	std::map<location,paths> dummy_moves;
 	move_map fullmove_srcdst, fullmove_dstsrc;
 	calculate_possible_moves(dummy_moves,fullmove_srcdst,fullmove_dstsrc,false,true);
+
+	unit_stats_cache_.clear();
 
 	for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 

@@ -103,6 +103,9 @@ public:
 				   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
 				   int attacker_weapon = -1, int defender_weapon = -1, double harm_weight = 1.0, const combatant *prev_def = NULL);
 
+	// Used by the AI which caches unit_stats
+	battle_context(const unit_stats &att, const unit_stats &def);
+
 	battle_context(const battle_context &other);
 	~battle_context() { delete attacker_stats_; delete defender_stats_; }
 
