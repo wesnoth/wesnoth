@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-10 19:36+0200\n"
-"PO-Revision-Date: 2006-06-08 19:46+0100\n"
+"PO-Revision-Date: 2006-06-11 17:50+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -2202,9 +2202,8 @@ msgid "Show Combat"
 msgstr "Kampf zeigen"
 
 #: data/game.cfg:49
-#, fuzzy
 msgid "Mouse Scrolling"
-msgstr "Junger Waldschrat"
+msgstr "Mit der Maus scrollen"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -4316,7 +4315,6 @@ msgstr ""
 "die alle einst von dem Ungeheuer zu Stein verwandelt wurden."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:84
-#, fuzzy
 msgid ""
 "The winds of the dark sky blew so cold,\n"
 "The moon was high, the night was old,\n"
@@ -4350,7 +4348,7 @@ msgstr ""
 "Das Gold, das zog ihn, wie ein Sog.\n"
 "\n"
 "Doch nun das Feuer brennt nicht mehr,\n"
-"Denn hervor trat nun der Höhlenherr,\n"
+"Hervor trat nun der Höhlenherr,\n"
 "Ein Blick, und er erstarrte zu Stein,\n"
 "Und steinern seither des Draken Gebein.\n"
 "\n"
@@ -4382,7 +4380,6 @@ msgstr ""
 "(Geschrieben von Gauteamus)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:110
-#, fuzzy
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
 "Wolves of the mountains, and he had the courage to match. His leadership and "
@@ -4416,7 +4413,6 @@ msgstr ""
 "(Niedergeschrieben von Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:119
-#, fuzzy
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
 "upon the various fish and frogs and merfolk that entered his domain. It was "
@@ -4436,7 +4432,6 @@ msgstr ""
 "(Niedergeschrieben von Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:128
-#, fuzzy
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -4457,7 +4452,6 @@ msgstr ""
 "(Niedergeschrieben von Fynmiir)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:139
-#, fuzzy
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other Woses. More than any other Wose, he enjoyed simply standing alone in "
@@ -6133,7 +6127,6 @@ msgid "Drake Glider"
 msgstr "Drake Gleiter"
 
 #: data/units/Drake_Glider.cfg:21
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little armor as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
@@ -6151,7 +6144,9 @@ msgstr ""
 "Diese Draken sind kompetente Kämpfer in der Schlacht, da sie sich ihr "
 "inneres Feuer im Kampf zunutze machen können. Ihre Geschwindigkeit ist ihnen "
 "eine große Hilfe dabei, ihre Gegner zu unterwerfen. Die besten Gleiter "
-"werden möglicherweise in die Reihen der Himmelsdraken aufgenommen."
+"werden möglicherweise in die Reihen der Himmelsdraken aufgenommen.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Drake_Glider.cfg:83 data/units/Drake_Hurricane.cfg:98
 #: data/units/Drake_Sky.cfg:97
@@ -6163,7 +6158,6 @@ msgid "Hurricane Drake"
 msgstr "Sturmdrake"
 
 #: data/units/Drake_Hurricane.cfg:30
-#, fuzzy
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite amongst "
 "those drakes which are gifted with flight. Soaring high in the air, they can "
@@ -6174,7 +6168,9 @@ msgstr ""
 "Die Sturmdraken sind die wahren Herrscher des Himmels, unter den "
 "flugbegabten Draken. Aus ungeahnten Höhen erspähen sie ihre Feinde aus "
 "sicherer Distanz und lassen gleißendes Feuer auf ihre Widersacher hernieder "
-"regnen."
+"regnen.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
@@ -10721,9 +10717,8 @@ msgid "Connect to Server"
 msgstr "Mit Kampagnenserver verbinden"
 
 #: src/game.cpp:849
-#, fuzzy
 msgid "You will now connect to a server to download add-ons."
-msgstr "Gebt einen Server an, von dem Ihr Kampagnen holen wollt."
+msgstr "Gebt einen Server an, von dem Ihr Erweiterungen holen wollt."
 
 #: src/game.cpp:850
 msgid "Server: "
@@ -10735,7 +10730,7 @@ msgstr "Es konnte keine Verbindung zum Server aufgebaut werden."
 
 #: src/game.cpp:871
 msgid "Asking for list of add-ons"
-msgstr ""
+msgstr "Empfange Erweiterungsliste"
 
 #: src/game.cpp:884
 msgid "Error communicating with the server."
@@ -10758,47 +10753,40 @@ msgid "Size"
 msgstr "Größe"
 
 #: src/game.cpp:955
-#, fuzzy
 msgid "Publish add-on: "
-msgstr "Kampagne veröffentlichen: "
+msgstr "Erweiterung veröffentlichen: "
 
 #: src/game.cpp:959
-#, fuzzy
 msgid "Delete add-on: "
-msgstr "Kampagne löschen: "
+msgstr "Erweiterung löschen: "
 
 #: src/game.cpp:963
-#, fuzzy
 msgid "There are no add-ons available for download from this server."
-msgstr "Auf diesem Server sind keine Kampagnen verfügbar."
+msgstr "Auf diesem Server sind keine Erweiterungen verfügbar."
 
 #: src/game.cpp:970
-#, fuzzy
 msgid "Choose the add-on to download."
-msgstr "Wählt eine Kampagne zum Speichern aus."
+msgstr "Wählt eine Erweiterung zum Speichern aus."
 
 #: src/game.cpp:970
 msgid "Get Add-ons"
-msgstr ""
+msgstr "Erweiterungen holen"
 
 #: src/game.cpp:990
-#, fuzzy
 msgid "Downloading add-on..."
-msgstr "Kampagne wird geladen ..."
+msgstr "Erweiterung wird geladen ..."
 
 #: src/game.cpp:1014
 msgid "Cannot rescan the filesystem"
 msgstr "Kann das Dateisystem nicht erneut abtasten"
 
 #: src/game.cpp:1029
-#, fuzzy
 msgid "Add-on Installed"
-msgstr "Kampagne installiert"
+msgstr "Erweiterung installiert"
 
 #: src/game.cpp:1029
-#, fuzzy
 msgid "The add-on has been installed."
-msgstr "Die Kampagne wurde erfolgreich installiert."
+msgstr "Die Erweiterung wurde erfolgreich installiert."
 
 #: src/game.cpp:1031
 msgid "Network communication error."
@@ -10829,9 +10817,8 @@ msgid "Terms"
 msgstr "Bedingungen"
 
 #: src/game.cpp:1084
-#, fuzzy
 msgid "Sending add-on"
-msgstr "Sende Kampagne"
+msgstr "Sende Erweiterung"
 
 #: src/game.cpp:1091 src/game.cpp:1116 src/multiplayer_wait.cpp:317
 msgid "Response"
@@ -11534,7 +11521,7 @@ msgstr "Es sind keine Fraktionen in dieser Partie verfügbar."
 #: src/multiplayer.cpp:369 src/multiplayer.cpp:384
 #: src/multiplayer_wait.cpp:217
 msgid "Era not available"
-msgstr "Ära nicht verfügbar"
+msgstr "Epoche nicht verfügbar"
 
 #: src/multiplayer.cpp:370 src/multiplayer.cpp:385
 #: src/multiplayer_wait.cpp:222
@@ -11672,7 +11659,7 @@ msgstr "Name der Partie:"
 
 #: src/multiplayer_create.cpp:63
 msgid "Era:"
-msgstr "Ära:"
+msgstr "Epoche:"
 
 #: src/multiplayer_create.cpp:64
 msgid "Map to play:"
@@ -11958,9 +11945,10 @@ msgid "Downloading next level..."
 msgstr "Nächstes Szenario wird geladen..."
 
 #: src/playcampaign.cpp:417
-#, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
-msgstr "Möchtet Ihr diesen Spielstand abspeichern?"
+msgstr ""
+"Möchtet Ihr diesen Spielstand abspeichern? (Überschreibt automatisch "
+"gespeicherte Spielstände)"
 
 #: src/playcampaign.cpp:444
 msgid "Unknown scenario: '"
@@ -12231,9 +12219,8 @@ msgid "TitleScreen button^Load"
 msgstr "Laden"
 
 #: src/titlescreen.cpp:257
-#, fuzzy
 msgid "TitleScreen button^Get Add-ons"
-msgstr "Laden"
+msgstr "Erweiterungen"
 
 #: src/titlescreen.cpp:258
 msgid "TitleScreen button^Language"
@@ -12273,7 +12260,7 @@ msgstr "Gespeichertes Einzelspielerspiel laden"
 
 #: src/titlescreen.cpp:266
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "Herunterladen von Kampagnen, Epochen oder Kartensammlungen"
 
 #: src/titlescreen.cpp:267
 msgid "Change the language"
@@ -12358,64 +12345,3 @@ msgstr "Betrachtet die Ergebnisse unter:"
 #: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
 msgstr "Helft uns, Wesnoth zu verbessern!"
-
-#~ msgid "Flaming Sword"
-#~ msgstr "Flammenschwert"
-
-#~ msgid ""
-#~ "This massive blade was created centuries ago by long-forgotten elvish "
-#~ "forgemasters, who managed to imbue the bluish steel with an inner magical "
-#~ "fire. Tongues of flame dance on the surface, giving the bluish steel a "
-#~ "flawless mirrored finish. As you place your hand around the glittering "
-#~ "leather hilt, the sword roars to life! Strangely, you feel no heat once "
-#~ "you pick it up, yet the grass at your feet bursts into flame as you test "
-#~ "the heft of this mighty weapon."
-#~ msgstr ""
-#~ "Diese schwere Klinge wurde vor vielen Jahren von den legendären "
-#~ "Elfenschmieden geschaffen. Ihnen gelang es in den Blaustahl mit einem "
-#~ "magischen Feuer, zu versehen, dass darin eingeschlossen ist. Dadurch "
-#~ "tanzen Flammenzungen über die Klinge des Schwertes, sobald es von einem "
-#~ "würdigen Träger geführt wird. Als ihr eure Hand um den glitzernden "
-#~ "Ledergriff schließt, erwacht das Schwert zum Leben. Seltsamerweise spürt "
-#~ "ihr keine Hitze von der Waffe ausgehen, obwohl das Gras zu euren Füßen zu "
-#~ "brennen beginnt, als ihr die Waffe kurz absetzt."
-
-#~ msgid "Only the leader of an army can wield this sword!"
-#~ msgstr "Nur der Anführer einer Armee kann dieses Schwert handhaben!"
-
-#~ msgid "flaming sword"
-#~ msgstr "Flammenschwert"
-
-#~ msgid "Scepter of Fire"
-#~ msgstr "Zepter des Feuers"
-
-#~ msgid ""
-#~ "This ancient Scepter was forged by the Dwarves. A symbol of the kingship "
-#~ "of Wesnoth, the Scepter has the power to shoot fireballs at enemies of "
-#~ "the bearer!"
-#~ msgstr ""
-#~ "Dieses antike Zepter wurde von den Zwergen geschmiedet. Als Symbol der "
-#~ "Herrschaft über Wesnoth verleiht es dem Träger die Macht, Feuerbälle auf "
-#~ "seine Feinde zu schleudern."
-
-#~ msgid ""
-#~ "This is the Scepter of Fire. Only a true successor to the throne can "
-#~ "possibly dare to take this!"
-#~ msgstr ""
-#~ "Dies ist das Zepter des Feuers. Nur ein wahrer Anwärter auf den Thron von "
-#~ "Wesnoth kann dieses Zepter führen."
-
-#~ msgid "Get More Campaigns..."
-#~ msgstr "Weitere Kampagnen..."
-
-#~ msgid "Download more campaigns from an Internet server."
-#~ msgstr "Ladet weitere Kampagnen von den Kampagnenservern herunter."
-
-#~ msgid "Asking for campaign list"
-#~ msgstr "Warte auf Kampagnenliste"
-
-#~ msgid "Get Campaign"
-#~ msgstr "Kampagne holen"
-
-#~ msgid "TitleScreen button^Help Wesnoth"
-#~ msgstr "Wesnoth helfen"

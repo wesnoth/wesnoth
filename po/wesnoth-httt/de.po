@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-10 19:37+0200\n"
-"PO-Revision-Date: 2006-06-09 13:18+0100\n"
+"PO-Revision-Date: 2006-06-11 17:17+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -4062,6 +4062,10 @@ msgid ""
 "faint glow provided a small reprieve from the thick blackness. Volcanic "
 "fumes drifted up from cracks in the floor."
 msgstr ""
+"Jenseits der Schlucht, war die Luft erfüllt vom Knistern magischer Energie "
+"und es wurde stetig wärmer. Der Boden war glatt und stellenweise spiegelnd "
+"und ein sanftes Leuchten konnte man durch die Dunkelheit erahnen. "
+"Vulkanische Dämpfen stiegen aus Spalten im Boden."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:19
 msgid ""
@@ -4069,6 +4073,9 @@ msgid ""
 "The very earth had come alive, heaving, and ready to be relieved of its "
 "century-old burden..."
 msgstr ""
+"Entferntes Rumpeln und Beben behinderten das Fortkommen. Die Erde selbst "
+"ward lebendig, schwanked, bereit sich von einer Jahrhunderte alten Last zu "
+"befreien..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19_A_Choice_Must_Be_Made.cfg:4
 msgid "A Choice Must Be Made"
@@ -6338,9 +6345,8 @@ msgid "No! This is the end! We have been defeated!"
 msgstr "Nein! Das ist das Ende! Wir wurden besiegt!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:33
-#, fuzzy
 msgid "Do you want this unit to pick up the sword?"
-msgstr "Wünscht Ihr, dass diese Einheit die Rüstung aufhebt?"
+msgstr "Wünscht Ihr, dass diese Einheit das Schwert aufhebt?"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:35
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:107
@@ -6349,7 +6355,7 @@ msgstr "Ja"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:39
 msgid "Flaming Sword"
-msgstr ""
+msgstr "Flammenschwert"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:42
 msgid ""
@@ -6358,10 +6364,15 @@ msgid ""
 "fire. Tongues of flame dance on the surface, giving the bluish steel a "
 "flawless mirrored finish."
 msgstr ""
+"Diese schwere Klinge wurde vor vielen Jahren von den legendären "
+"Elfenschmieden geschaffen. Ihnen gelang es in den Blaustahl mit einem "
+"magischen Feuer, zu versehen, dass darin eingeschlossen ist. Dadurch tanzen "
+"Flammenzungen über die Klinge des Schwertes, sobald es von einem würdigen "
+"Träger geführt wird."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:43
 msgid "Only the leader of an army can wield this sword!"
-msgstr ""
+msgstr "Nur der Anführer einer Armee kann dieses Schwert handhaben!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:55
 msgid ""
@@ -6369,10 +6380,14 @@ msgid ""
 "to life! Strangely, you feel no heat once you pick it up, yet the grass at "
 "your feet bursts into flame as you test the heft of this mighty weapon."
 msgstr ""
+"Als ihr eure Hand um den glitzernden Ledergriff schließt, erwacht das "
+"Schwert zum Leben. Seltsamerweise spürt ihr keine Hitze von der Waffe "
+"ausgehen, obwohl das Gras zu euren Füßen zu brennen beginnt, als ihr die "
+"Waffe kurz absetzt."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:61
 msgid "flaming sword"
-msgstr ""
+msgstr "Flammenschwert"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:77
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:157
@@ -6410,9 +6425,8 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:183
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:348
-#, fuzzy
 msgid "Scepter of Fire"
-msgstr "Das Zepter des Feuers"
+msgstr "Zepter des Feuers"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:186
 msgid ""
@@ -6420,6 +6434,9 @@ msgid ""
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
 "bearer!"
 msgstr ""
+"Dieses antike Zepter wurde von den Zwergen geschmiedet. Als Symbol der "
+"Herrschaft über Wesnoth verleiht es dem Träger die Macht, Feuerbälle auf "
+"seine Feinde zu schleudern."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:187
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:352
@@ -6427,6 +6444,8 @@ msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr ""
+"Dies ist das Zepter des Feuers. Nur ein wahrer Anwärter auf den Thron von "
+"Wesnoth kann dieses Zepter führen."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:351
 msgid ""
@@ -6434,43 +6453,56 @@ msgid ""
 "A symbol of the kingship of Wesnoth, the Scepter has the power to shoot "
 "fireballs at enemies of the bearer!"
 msgstr ""
+"Dieses antike Zepter wurde von den Zwergen geschmiedet. Als Symbol der "
+"Herrschaft über Wesnoth verleiht es dem Träger die Macht, Feuerbälle auf "
+"seine Feinde zu schleudern."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:377
 msgid "Here it is at last, I have the Scepter!"
-msgstr ""
+msgstr "Hier ist es. Ich habe das Zepter gefunden!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:381
 msgid "So it is in our hands! Now let us leave this stinking pit."
 msgstr ""
+"Es ist in unseren Händen! Jetzt lasst uns diese stinkenden Höhlen "
+"schnellstmöglich verlassen."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:385
 msgid ""
 "I think that if we travel just a little north, we might be able to get out."
 msgstr ""
+"Ich denke, wenn wir ein wenig nach Norden gehen, sollte es möglich sein hier "
+"heraus zukommen."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:406
 msgid "At last! I have the Scepter!"
-msgstr ""
+msgstr "Endlich! Ich habe das Zepter!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:410
 msgid "Indeed. You managed to reach it Li'sar. I hope you shall use it wisely."
 msgstr ""
+"Tatsächlich. Ihr habt das Zepter erreicht, Li'sar. Ich hoffe ihr nutzt es "
+"weise."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:414
 msgid ""
 "Well my first use for it is going to be to help us get out of this hole! I "
 "hope you consider that wise."
 msgstr ""
+"Nun ja, als erstes nutze ich das Zepter um uns aus diesem Loch heraus zu "
+"holen. Ich hoffe ihr betrachtet dies als weise."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:418
 msgid ""
 "The Scepter makes its wielder powerful, but hardly immortal, child. Use it "
 "prudently. Now come, I believe there is an exit to the north!"
 msgstr ""
+"Das Zepter macht seinen Träger stark, aber wohl kaum unsterblich, mein Kind. "
+"Nutzt es weise. Nun kommt, ich denke im Norden ist ein Ausgang!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:422
 msgid "I think I know what I'm doing. Come, let us go!"
-msgstr ""
+msgstr "Ich glaube, dass ich weiß, was ich tue. Kommt, lasst uns gehen!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:5
 msgid ""
