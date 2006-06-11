@@ -29,6 +29,8 @@
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_CF LOG_STREAM(info, config)
 
+using std::streambuf;
+
 bool preproc_define::operator==(preproc_define const &v) const {
 	return value == v.value && arguments == v.arguments;
 }
@@ -60,7 +62,7 @@ public:
 	virtual ~preprocessor();
 };
 
-class preprocessor_streambuf: public std::streambuf
+class preprocessor_streambuf: public streambuf
 {
 	std::string out_buffer_;
 	virtual int underflow();
@@ -89,7 +91,7 @@ preprocessor_streambuf::preprocessor_streambuf(preproc_map *def)
 }
 
 preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
-	: std::streambuf(), current_(NULL), defines_(t.defines_),
+	: streambuf(), current_(NULL), defines_(t.defines_),
 	  textdomain_(PACKAGE), depth_(t.depth_), quoted_(t.quoted_)
 {
 }
