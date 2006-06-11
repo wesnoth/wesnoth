@@ -151,12 +151,12 @@ const config get_tips_of_day()
 
 
 
-void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, const std::string& style, gui::button* const next_tip_button, gui::button* const help_tip_button, const SDL_Rect* const main_dialog_area, surface_restorer& tip_of_day_restorer) 
+void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, const std::string& style, gui::button* const next_tip_button, gui::button* const help_tip_button, const SDL_Rect* const main_dialog_area, surface_restorer& tip_of_day_restorer)
 {
 
     // Restore the previous tip of day area to its old state (section of the title image).
     tip_of_day_restorer.restore();
-        
+
     // Draw tip of the day
     std::string tip_of_day = get_tip_of_day(tips_of_day,ntip);
     if(tip_of_day.empty() == false) {
@@ -176,7 +176,7 @@ void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, const std:
 
         area.x = main_dialog_area->x - (game_config::title_tip_x*screen.x())/1024 - area.w;
         area.y = main_dialog_area->y + main_dialog_area->h - area.h;
-        
+
         // Note: The buttons' locations need to be set before the dialog frame is drawn.
         // Otherwise, when the buttons restore their area, they draw parts
         // of the old dialog frame at their old locations.
@@ -189,9 +189,9 @@ void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, const std:
                                       area.y + area.h - pad - next_tip_button->location().h);
         gui::draw_dialog_frame(area.x,area.y,area.w,area.h,screen.video(),&style, &tip_of_day_restorer);
 
-        
 
-        
+
+
         font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
                          tip_of_day, area.x + pad, area.y + pad);
         font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
@@ -290,7 +290,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	}
 
 	SDL_Rect main_dialog_area = {menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2};
-	
+
     const std::string style = "mainmenu";
 	draw_dialog_frame(main_dialog_area.x,main_dialog_area.y,main_dialog_area.w,main_dialog_area.h,screen.video(),&style);
 

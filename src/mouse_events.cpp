@@ -489,7 +489,7 @@ namespace{
 														const battle_context::unit_stats& opp_stats,
 														surface& surf, int& width, int& height)
 	{
-		// Font size. If you change this, you must update the seperator space.
+		// Font size. If you change this, you must update the separator space.
 		int fs = font::SIZE_SMALL;
 
 		// Space before HP separator.
@@ -498,7 +498,7 @@ namespace{
 		// Bar space between both separators.
 		int bar_space = 150;
 
-		// Space after percentage seperator.
+		// Space after percentage separator.
 		int percent_sep = 43 + 6;
 
 		// Surface width and height.

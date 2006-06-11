@@ -20,7 +20,7 @@ while(@ARGV) {
 		print "Wesnoth Campaigns Client. Connects to the Wesnoth campaign server and performs various operations.
 Format: $0 [<options>] <command> [<parameters>]
 Commands:
-	ls (default): lists the campaigns stored on the server. The fields to be displayed for each campaign may be given as a parameter, as a list of comma-seperated values. Valid fields are name, title, author, size, version, filename, and downloads
+	ls (default): lists the campaigns stored on the server. The fields to be displayed for each campaign may be given as a parameter, as a list of comma-separated values. Valid fields are name, title, author, size, version, filename, and downloads
 	terms: queries the server for terms under which it may be used
 	download <campaign name> [<path>]: downloads the given campaign into the directory given by the path. The files and directories created in the process will be printed to standard out.
 Options:

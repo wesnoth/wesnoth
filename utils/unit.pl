@@ -38,7 +38,7 @@ while(my $arg = shift @ARGV) {
 		push @fold, $fold;
 	} elsif($arg eq '--help') {
 		print "Wesnoth Unit Analysis Tool. Usage: $0 [options] <expression>
-<expression> is a Perl expression which will be evaluated for each unit with the results output. There is a set of parentheses assumed around <expression>, so a comma-seperated list of expressions is valid.
+<expression> is a Perl expression which will be evaluated for each unit with the results output. There is a set of parentheses assumed around <expression>, so a comma-separated list of expressions is valid.
 A valid Wesnoth cache must be provided on stdin.
 	Options:
 	--sortby: sort by the given expression

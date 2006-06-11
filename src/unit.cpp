@@ -757,7 +757,7 @@ bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool us
 
 	const std::string& this_type = id();
 
-	//the type could be a comma-seperated list of types
+	//the type could be a comma separated list of types
 	if(type.empty() == false && type != this_type) {
 
 		//we only do the full CSV search if we find a comma in there,

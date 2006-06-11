@@ -16,7 +16,7 @@
 .TH WESNOTH 6 "2005" "wesnoth" "Battle for Wesnoth"
 .
 .SH NAME
-wesnoth \- Battle for Wesnoth, ein rundebasiertes Strategiespiel
+wesnoth \- Battle for Wesnoth, ein rundenbasiertes Strategiespiel
 .
 .SH ZUSAMMENFASSUNG
 .
@@ -28,27 +28,27 @@ wesnoth \- Battle for Wesnoth, ein rundebasiertes Strategiespiel
 .
 Battle for
 .B Wesnoth
-ist ein rundenbasiertes Strategiespiel in einem Fantasy Szenario.
+ist ein rundenbasiertes Strategiespiel in einem Fantasy-Szenario.
 .
-Schlüpft in die Rolle eines Herrführers und führt Eure Armee zum Sieg.
-Wählt aus verschiedenen Rassen, mit unterschiedlichen Fertigkeiten, Waffen
-und Sprüchen aus und zerschmettert Euren Gegner.
+Schlüpfen Sie in die Rolle eines Herrführers und führen Sie Ihre Armee zum Sieg.
+Wählen Sie dabei aus verschiedenen Rassen, mit unterschiedlichen Fertigkeiten, Waffen
+und Sprüchen aus und zerschmettern Sie Ihre Gegner.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
 .TP
 .BI --bpp \ number
-Bestimmt die Farbtiefe, in der das Spiel gestartet wird. Beispiel: --bpp32
+Bestimmt die Farbtiefe, in der das Spiel gestartet wird. Beispiel: --bpp 32
 .TP
-.BI --compress \ <entpackte_datei> \ <komprimierte_datei>
+.BI --compress " entpackte_datei komprimierte_datei"
 Wandelt eine normale WML-Textdatei (entpackte_datei) in einen als WML-Binärdatei
 komprimierten Spielstand (komprimierte_datei) um.
 .TP
 .BR -d ", " --debug
-Zeigt Eintwicklerinformationen im Spiel an und erlaubt zusaetzliche Kommandos 
+Zeigt Entwicklerinformationen im Spiel an und erlaubt zusätzliche Kommandos 
 in der spieleigenen Befehlszeile (siehe dazu die Wiki-Seite: http://www.wesnoth.org/).
 .TP
-.BI --decompress \ <komprimierte_datei> \ <entpackte_datei>
+.BI --decompress " komprimierte_datei entpackte_datei"
 Wandelt einen als WML-Binärdatei komprimierten Spielstand (komprimierte_datei)
 in eine normale WML-Textdatei (entpackte_datei) um.
 .TP
@@ -62,7 +62,7 @@ Aktiviert die Anzeige der Bilder pro Sekunde im Spiel.
 Gibt die möglichen Kommandozeilenoptionen aus.
 .TP
 .BI --load \ savegame
-Laedt die Datei `savegame' aus dem Standardverzeichnis fuer gespeicherte Spiele.
+Lädt die Datei `savegame' aus dem Standardverzeichnis für gespeicherte Spiele.
 .TP
 .BR --log-error="domain1,domain2,..." ", " --log-warning="..." ", " --log-info="..."
 Setzt die Stufe der Debugausgabe. Verwenden Sie "all", um sämtliche Meldungen auszugeben.
@@ -74,18 +74,18 @@ zeigt nur Warnungen und Fehler und
 nur Fehler.
 .TP
 .B --multiplayer
-Starte das Spiel im Mehrerspieler-Modus. Es gibt noch zusätzliche Optionen die zusammen mit
+Startet das Spiel im Mehrspieler-Modus. Es gibt noch zusätzliche Optionen die zusammen mit
 .B --multiplayer
  verwendet werden können. Diese werden weiter unten näher erklärt.
 .TP
 .B --nocache
-Veranlasst das Programm, keine Daten zwischen zu speichern.
+Veranlasst das Programm, keine Daten zwischenzuspeichern.
 .TP
 .B --nosound
 Deaktiviert jegliche Soundeffekte im Spiel.
 .TP
 .B --path
-Zeigt an, wo sich der Ordner mit den Spieldateien befindet.
+Zeigt an, wo sich das Verzeichnis mit den Spieldateien befindet.
 .TP
 .BR -r ", " --resolution \ \fIXxY\fR
 Ermöglicht es, die Auflösung zu bestimmen, in der das Spiel gestartet wird. 
@@ -126,7 +126,7 @@ Das Spiel startet ohne grafische Oberfläche. Muss vor
 in der Befehlszeile angegeben werden.
 .TP
 .B --parm<NUMMER>=<NAME>:<WERT>
-Gibt zusätzliche Parameter fuer diese Seite an. Die möglichen Parameter hängen
+Gibt zusätzliche Parameter für diese Seite an. Die möglichen Parameter hängen
 davon ab, welche Optionen für
 .B --controller
 und
@@ -138,7 +138,7 @@ entwickeln wollen.
 Bestimmt das Szenario, das geladen werden soll. Standard ist "multiplayer_Charge".
 .TP
 .B --side<NUMMER>=<WERT>
-Bestimmt die Rasse für die festegelegte Seite in Abhängigkeit von der gewählten
+Bestimmt die Rasse für die festgelegte Seite in Abhängigkeit von der gewählten
 Ära. Die Rasse wird per "id" bestimmt. Eine genaue Beschreibung der Rassen und
 Epochen ist in der Datei data/multiplayer.cfg zu finden.
 .TP
@@ -155,7 +155,7 @@ Bearbeitet von Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> und Sol
 Übersetzt von Jan-Heiner Laberenz <Jan-Heiner@arcor.de> und Nils Kneuper <crazy-ivanovic@gmx.net>.
 Diese Beschreibung stammt im Original von Cyril Bouthors <cyril@bouthors.org>.
 .br
-Besucht auch die offizielle Internetseite: http://www.wesnoth.org/
+Besuchen Sie auch die offizielle Internetseite: http://www.wesnoth.org/.
 .
 .SH COPYRIGHT
 .
@@ -165,7 +165,7 @@ Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU
 .br
 Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
 .br
-Sie sollten eine Kopie der GNU General Public License zusammen mit diesem Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+Sie sollten eine Kopie der GNU General Public License zusammen mit diesem Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 .
 .SH ANDERE
 .

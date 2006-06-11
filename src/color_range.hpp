@@ -18,7 +18,7 @@
 #include <vector>
 #include "SDL_types.h"
 
-//convert comma seperated string into rgb values
+//convert comma separated string into rgb values
 std::vector<Uint32> string2rgb(std::string s);
 
 class color_range
