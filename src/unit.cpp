@@ -1813,6 +1813,9 @@ int unit::upkeep() const
 	if(cfg_["upkeep"] == "full") {
 		return level();
 	}
+	if(cfg_["upkeep"] == "loyal") {
+		return 0;
+	}
 	return lexical_cast_default<int>(cfg_["upkeep"]);
 }
 
