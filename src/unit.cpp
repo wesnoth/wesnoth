@@ -144,7 +144,10 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 		generate_traits();
 		underlying_description_ = description_;
 	}else{
-	  underlying_description_ = id();
+		underlying_description_ = id();
+		if (race_->name() == "undead") {
+			generate_traits();
+		}
 	}
 	unrenamable_ = false;
 	anim_ = NULL;
@@ -173,7 +176,10 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 		generate_traits();
 		underlying_description_ = description_;
 	}else{
-	  underlying_description_ = id();
+		underlying_description_ = id();
+		if (race_->name() == "undead") {
+			generate_traits();
+		}
 	}
 	unrenamable_ = false;
 	anim_ = NULL;
@@ -1012,7 +1018,8 @@ void unit::read(const config& cfg)
 	if(cfg["ai_special"] == "guardian") {
 		set_state("guardian","yes");
 	}
-	if(utils::string_bool(cfg["random_traits"])) {
+	if(utils::string_bool(cfg["random_traits"]) ||
+	    race_->name() == "undead") {
 		generate_traits();
 		cfg_["random_traits"] = "";
 	}
