@@ -1581,6 +1581,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			wassert(game_map != NULL);
 			wassert(status_ptr != NULL);
 			const unit u(game_data_ptr,units,game_map,status_ptr,teams,var);
+			preferences::encountered_units().insert(u.id());
 			gamemap::location loc(var);
 			if(loc.valid()) {
 				if(utils::string_bool(cfg["find_vacant"])) {
