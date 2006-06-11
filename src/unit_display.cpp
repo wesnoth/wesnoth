@@ -341,6 +341,12 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		animation_time = defender.get_animation()->get_animation_time();
 		missile_animation.update_current_frame();
 	}
+	// make sure get hit sound is always played and labels always displayed
+	if(damage > 0 && !hide  && !sound_played) {
+		sound_played = true;
+		sound::play_sound(def->second.get_hit_sound());
+		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
+	}
 	halo::remove(missile_halo);
 	missile_halo = 0;
 	halo::remove(missile_frame_halo);
