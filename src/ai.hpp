@@ -268,6 +268,7 @@ protected:
 
 	int attack_depth() const;
 	mutable int attack_depth_;
+	friend struct attack_analysis;
 };
 
 #endif
