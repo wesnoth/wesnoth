@@ -530,7 +530,7 @@ fixed_t unit::alpha() const
 
 bool unit::can_recruit() const
 {
-	return !recruits_.empty() || utils::string_bool(cfg_["canrecruit"]);
+	return utils::string_bool(cfg_["canrecruit"]);
 }
 bool unit::incapacitated() const
 {
