@@ -1018,14 +1018,14 @@ void unit::read(const config& cfg)
 	if(cfg["ai_special"] == "guardian") {
 		set_state("guardian","yes");
 	}
+	if(!type_set) {
+		backup_state();
+		apply_modifications();
+	}
 	if(utils::string_bool(cfg["random_traits"]) ||
 	    race_->name() == "undead") {
 		generate_traits();
 		cfg_["random_traits"] = "";
-	}
-	if(!type_set) {
-		backup_state();
-		apply_modifications();
 	}
 	if(cfg["hitpoints"] != "") {
 		hit_points_ = lexical_cast_default<int>(cfg["hitpoints"]);
