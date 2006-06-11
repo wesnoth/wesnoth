@@ -314,6 +314,10 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	draw_tip_of_day(screen, tips_of_day, ntip, style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 
+        const int pad = game_config::title_tip_padding;
+	beg_button.set_location(screen.x() - pad - beg_button.location().w,
+			screen.y() - pad - beg_button.location().h);
+
 	events::raise_draw_event();
 
 	LOG_DP << "drew buttons dialog\n";
