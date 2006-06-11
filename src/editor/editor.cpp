@@ -48,7 +48,7 @@
 #include <cmath>
 
 namespace {
-	const int num_players = 10;
+	const int num_players = 9;
 	// Milliseconds to sleep in every iteration of the main loop.
 	const unsigned int sdl_delay = 20;
 	const std::string prefs_filename = get_dir(get_user_data_dir() + "/editor")
@@ -458,7 +458,6 @@ void map_editor::perform_set_starting_pos() {
 	                                 gui::OK_CANCEL, &players);
 	if (res >= 0) {
 		res++;
-		if (res == num_players) res = 0;
 		set_starting_position(res, selected_hex_);
 	}
 }
@@ -1241,11 +1240,11 @@ void map_editor::recalculate_starting_pos_labels() {
 	}
 	starting_positions_.clear();
 	// Set new labels.
-	for (int i = 0; i < 10; i++) {
+	for (int i = 1; i < 10; i++) {
 		gamemap::location loc = map_.starting_position(i);
 		if (loc.valid()) {
 			std::stringstream ss;
-			ss << _("Player") << i;
+			ss << _("Player") << " " << i;
 			gui_.labels().set_label(loc, ss.str());
 			starting_positions_.push_back(loc);
 		}
