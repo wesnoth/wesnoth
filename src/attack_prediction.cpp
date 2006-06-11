@@ -530,31 +530,114 @@ void combatant::adjust_hitchance()
 	debug(("\n"));
 }
 
-// Two man enter.  One man leave!
-// ... Or maybe two.  But definitely not three.  Of course, one could
-// be a woman.  Or both.  And neither could be human, too.
-// Um, ok, it was a stupid thing to say.
-void combatant::fight(combatant &opp)
+// Minimum hp we could possibly have.
+unsigned combatant::min_hp() const
 {
-	unsigned int i, rounds = maximum<unsigned int>(u_.rounds, opp.u_.rounds);
+	if (summary[0].empty())
+		return u_.hp;
 
-	// If defender has firststrike and we don't, reverse.
-	if (opp.u_.firststrike && !u_.firststrike) {
-		opp.fight(*this);
-		return;
+	// We don't handle this (yet).
+	wassert(summary[1].empty());
+
+	unsigned int i;
+	for (i = 0; summary[0][i] == 0; i++);
+	return i;
+}
+
+// Combat without chance of death, berserk, slow or drain is simple.
+void combatant::no_death_fight(combatant &opp)
+{
+	if (summary[0].empty()) {
+		// Starts with a known HP, so Pascal's triangle.
+		summary[0] = std::vector<double>(u_.hp+1);
+		summary[0][u_.hp] = 1.0;
+		for (unsigned int i = 0; i < opp.hit_chances_.size(); i++) {
+			for (int j = i; j >= 0; j--) {
+				double move = summary[0][u_.hp - j * opp.u_.damage] * opp.hit_chances_[i];
+				summary[0][u_.hp - j * opp.u_.damage] -= move;
+				summary[0][u_.hp - (j+1) * opp.u_.damage] += move;
+			}
+		}
+	} else {
+		// HP could be spread anywhere, iterate through whole thing.
+		for (unsigned int i = 0; i < opp.hit_chances_.size(); i++) {
+			for (unsigned int j = opp.u_.damage; j <= u_.hp; j++) {
+				double move = summary[0][j] * opp.hit_chances_[i];
+				summary[0][j] -= move;
+				summary[0][j - opp.u_.damage] += move;
+			}
+		}
 	}
 
-#ifdef ATTACK_PREDICTION_DEBUG
-	printf("A:\n");
-	u_.dump();
-	printf("B:\n");
-	opp.u_.dump();
-#endif
+	if (opp.summary[0].empty()) {
+		// Starts with a known HP, so Pascal's triangle.
+		opp.summary[0] = std::vector<double>(opp.u_.hp+1);
+		opp.summary[0][opp.u_.hp] = 1.0;
+		for (unsigned int i = 0; i < hit_chances_.size(); i++) {
+			for (int j = i; j >= 0; j--) {
+				double move = opp.summary[0][opp.u_.hp - j * u_.damage] * hit_chances_[i];
+				opp.summary[0][opp.u_.hp - j * u_.damage] -= move;
+				opp.summary[0][opp.u_.hp - (j+1) * u_.damage] += move;
+			}
+		}
+	} else {
+		// HP could be spread anywhere, iterate through whole thing.
+		for (unsigned int i = 0; i < hit_chances_.size(); i++) {
+			for (unsigned int j = u_.damage; j <= opp.u_.hp; j++) {
+				double move = opp.summary[0][j] * hit_chances_[i];
+				opp.summary[0][j] -= move;
+				opp.summary[0][j - u_.damage] += move;
+			}
+		}
+	}
+}
 
-	// If we've fought before and we have swarm, we must adjust cth array.
-	adjust_hitchance();
-	opp.adjust_hitchance();
+// Combat with <= 1 strike each is simple, too.
+void combatant::one_strike_fight(combatant &opp)
+{
+	if (opp.summary[0].empty()) {
+		opp.summary[0] = std::vector<double>(opp.u_.hp+1);
+		if (hit_chances_.size() == 1) {
+			opp.summary[0][opp.u_.hp] = 1.0 - hit_chances_[0];
+			opp.summary[0][maximum<int>(opp.u_.hp - u_.damage, 0)] = hit_chances_[0];
+		} else {
+			wassert(hit_chances_.size() == 0);
+			opp.summary[0][opp.u_.hp] = 1.0;
+		}
+	} else {
+		if (hit_chances_.size() == 1) {
+			for (unsigned int i = 1; i < opp.summary[0].size(); i++) {
+				double move = opp.summary[0][i] * hit_chances_[0];
+				opp.summary[0][i] -= move;
+				opp.summary[0][maximum<int>(i - u_.damage, 0)] += move;
+			}
+		}
+	}
 
+	// If we killed opponent, it won't attack us.
+	double opp_alive_prob = 1.0 - opp.summary[0][0];
+	if (summary[0].empty()) {
+		summary[0] = std::vector<double>(u_.hp+1);
+		if (opp.hit_chances_.size() == 1) {
+			summary[0][u_.hp] = 1.0 - opp.hit_chances_[0] * opp_alive_prob;
+			summary[0][maximum<int>(u_.hp - opp.u_.damage, 0)] = opp.hit_chances_[0] * opp_alive_prob;
+		} else {
+			wassert(opp.hit_chances_.size() == 0);
+			summary[0][u_.hp] = 1.0;
+		}
+	} else {
+		if (opp.hit_chances_.size() == 1) {
+			for (unsigned int i = 1; i < summary[0].size(); i++) {
+				double move = summary[0][i] * opp.hit_chances_[0] * opp_alive_prob;
+				summary[0][i] -= move;
+				summary[0][maximum<int>(i - opp.u_.damage, 0)] += move;
+			}
+		}
+	}
+}
+
+void combatant::complex_fight(combatant &opp, unsigned int rounds)
+{
 	prob_matrix m(hp_dist.size()-1, opp.hp_dist.size()-1,
 				  u_.slows && !opp.u_.is_slowed, opp.u_.slows && !u_.is_slowed,
 				  u_.hp, opp.u_.hp, summary, opp.summary);
@@ -574,7 +657,7 @@ void combatant::fight(combatant &opp)
 		b_damage = b_slow_damage = u_.max_hp;
 
 	do {
-		for (i = 0; i < max_attacks; i++) {
+		for (unsigned int i = 0; i < max_attacks; i++) {
 			if (i < hit_chances_.size()) {
 				debug(("A strikes\n"));
 				m.receive_blow_b(a_damage, a_slow_damage, hit_chances_[i],
@@ -600,17 +683,85 @@ void combatant::fight(combatant &opp)
 
 	// We extract results separately, then combine.
 	m.extract_results(summary, opp.summary);
+}
 
+// Two man enter.  One man leave!
+// ... Or maybe two.  But definitely not three.  Of course, one could
+// be a woman.  Or both.  And neither could be human, too.
+// Um, ok, it was a stupid thing to say.
+void combatant::fight(combatant &opp)
+{
+	unsigned int rounds = maximum<unsigned int>(u_.rounds, opp.u_.rounds);
+
+	// If defender has firststrike and we don't, reverse.
+	if (opp.u_.firststrike && !u_.firststrike) {
+		opp.fight(*this);
+		return;
+	}
+
+#ifdef ATTACK_PREDICTION_DEBUG
+	printf("A:\n");
+	u_.dump();
+	printf("B:\n");
+	opp.u_.dump();
+#endif
+
+	// If we've fought before and we have swarm, we must adjust cth array.
+	adjust_hitchance();
+	opp.adjust_hitchance();
+
+#if 0
+	std::vector<double> prev = summary[0], opp_prev = opp.summary[0];
+	complex_fight(opp, 1);
+	std::vector<double> res = summary[0], opp_res = opp.summary[0];
+	summary[0] = prev;
+	opp.summary[0] = opp_prev;
+#endif
+
+	// Optimize the simple cases.
+	if (rounds == 1 && !u_.slows && !opp.u_.slows &&
+		!u_.drains && !opp.u_.drains && !u_.stones && !opp.u_.stones &&
+		summary[1].empty() && opp.summary[1].empty()) {
+		if (hit_chances_.size() <= 1 && opp.hit_chances_.size() <= 1) {
+			one_strike_fight(opp);
+		} else if (hit_chances_.size() * u_.damage < opp.min_hp() &&
+			opp.hit_chances_.size() * opp.u_.damage < min_hp()) {
+			no_death_fight(opp);
+		} else {
+			complex_fight(opp, rounds);
+		}
+	} else {
+			complex_fight(opp, rounds);
+	}
+
+#if 0
+	wassert(summary[0].size() == res.size());
+	wassert(opp.summary[0].size() == opp_res.size());
+	for (unsigned int i = 0; i < summary[0].size(); i++) {
+		if (fabs(summary[0][i] - res[i]) > 0.000001) {
+			std::cerr << "Mismatch for " << i << " hp: " << summary[0][i] << " should have been " << res[i] << "\n";
+			assert(0);
+		}
+	}
+	for (unsigned int i = 0; i < opp.summary[0].size(); i++) {
+		if (fabs(opp.summary[0][i] - opp_res[i])> 0.000001) {
+			std::cerr << "Mismatch for " << i << " hp: " << opp.summary[0][i] << " should have been " << opp_res[i] << "\n";
+			assert(0);
+		}
+	}
+#endif
+
+	// Combine summary into distribution.
 	if (summary[1].empty())
 		hp_dist = summary[0];
 	else {
-		for (i = 0; i < hp_dist.size(); i++)
+		for (unsigned int i = 0; i < hp_dist.size(); i++)
 			hp_dist[i] = summary[0][i] + summary[1][i];
 	}
 	if (opp.summary[1].empty())
 		opp.hp_dist = opp.summary[0];
 	else {
-		for (i = 0; i < opp.hp_dist.size(); i++)
+		for (unsigned int i = 0; i < opp.hp_dist.size(); i++)
 			opp.hp_dist[i] = opp.summary[0][i] + opp.summary[1][i];
 	}
 

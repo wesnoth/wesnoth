@@ -39,6 +39,18 @@ private:
 	combatant(const combatant &that);
 	combatant& operator=(const combatant &);
 
+	// Minimum hp we could possibly have.
+	unsigned min_hp() const;
+
+	// Combat without chance of death, berserk, slow or drain is simple.
+	void no_death_fight(combatant &opponent);
+
+	// Combat with <= 1 strike each is simple, too.
+	void one_strike_fight(combatant &opponent);
+
+	// All other cases.
+	void complex_fight(combatant &opponent, unsigned int rounds);
+
 	// We must adjust for swarm after every combat.
 	void adjust_hitchance();
 
