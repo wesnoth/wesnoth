@@ -1425,8 +1425,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		else {
 			const config* const action = get_replay_source().get_next_action();
 			if(action == NULL || action->get_children("choose").empty()) {
-				ERR_NG << "choice expected but none found\n";
-				throw replay::error();
+				replay::throw_error("choice expected but none found\n");
 			}
 
 			const std::string& val = (*(action->get_children("choose").front()))["value"];

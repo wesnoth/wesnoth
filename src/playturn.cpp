@@ -112,7 +112,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				turn_end = do_replay(gui_,map_,gameinfo_,units_,teams_,
 				team_num_,status_,state_of_game_,&replay_obj);
 			}
-			catch (replay::error&){
+			catch (replay::error& e){
 				//notify remote hosts of out of sync error
 				config cfg;
 				config& info = cfg.add_child("info");
@@ -120,6 +120,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				info["condition"] = "out of sync";
 				network::send_data(cfg);
 
+				replay::last_replay_error = e.message; //FIXME: some better way to pass this?
 				replay_error_.notify_observers();
 			}
 

@@ -93,9 +93,14 @@ public:
 	int ncommands();
 
 	void mark_current();
+	static void throw_error(const std::string& msg);
 
-	struct error {};
+	struct error {
+		error(const std::string& msg) : message(msg) {}
+		std::string message;	
+	};
 
+	static std::string last_replay_error;
 private:
 	//generic for add_movement and add_attack
 	void add_pos(const std::string& type,

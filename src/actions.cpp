@@ -655,6 +655,7 @@ void attack(display& gui, const gamemap& map,
 		return;
 	}
 	bool OOS_error = false;
+	std::stringstream errbuf;
 
 	int attackerxp = d->second.level();
 	int defenderxp = a->second.level();
@@ -738,7 +739,7 @@ void attack(display& gui, const gamemap& map,
 				const int results_damage = atoi((*ran_results)["damage"].c_str());
 
 				if(results_chance != attacker_cth) {
-					ERR_NW << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
+					errbuf << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": chance to hit defender is inconsistent. Data source: "
 						<< results_chance << "; Calculation: " << attacker_cth
 						<< " (over-riding game calculations with data source results)\n";
@@ -746,7 +747,7 @@ void attack(display& gui, const gamemap& map,
 					OOS_error = true;
 				}
 				if(hits != results_hits) {
-					ERR_NW << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
+					errbuf << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": the data source says the hit was "
 						<< (results_hits ? "successful" : "unsuccessful")
 						<< ", while in-game calculations say the hit was "
@@ -758,7 +759,7 @@ void attack(display& gui, const gamemap& map,
 					OOS_error = true;
 				}
 				if(results_damage != damage_defender_takes) {
-					ERR_NW << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
+					errbuf << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": the data source says the hit did " << results_damage
 						<< " damage, while in-game calculations show the hit doing "
 						<< damage_defender_takes
@@ -833,7 +834,7 @@ void attack(display& gui, const gamemap& map,
 			} else {
 				const bool results_dies = (*ran_results)["dies"] == "yes";
 				if(results_dies != dies) {
-					ERR_NW << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
+					errbuf << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": the data source the unit "
 						<< (results_dies ? "perished" : "survived")
 						<< " while in-game calculations show the unit "
@@ -978,7 +979,7 @@ void attack(display& gui, const gamemap& map,
 				const int results_damage = atoi((*ran_results)["damage"].c_str());
 
 				if(results_chance != defender_cth) {
-					ERR_NW << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
+					errbuf << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": chance to hit attacker is inconsistent. Data source: "
 						<< results_chance << "; Calculation: " << defender_cth
 						<< " (over-riding game calculations with data source results)\n";
@@ -986,7 +987,7 @@ void attack(display& gui, const gamemap& map,
 					OOS_error = true;
 				}
 				if(hits != results_hits) {
-					ERR_NW << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
+					errbuf << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": the data source says the hit was "
 						<< (results_hits ? "successful" : "unsuccessful")
 						<< ", while in-game calculations say the hit was "
@@ -998,7 +999,7 @@ void attack(display& gui, const gamemap& map,
 					OOS_error = true;
 				}
 				if(results_damage != damage_attacker_takes) {
-					ERR_NW << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
+					errbuf << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": the data source says the hit did " << results_damage
 						<< " damage, while in-game calculations show the hit doing "
 						<< damage_attacker_takes
@@ -1070,7 +1071,7 @@ void attack(display& gui, const gamemap& map,
 			} else {
 				const bool results_dies = (*ran_results)["dies"] == "yes";
 				if(results_dies != dies) {
-					ERR_NW << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
+					errbuf << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
 						<< ": the data source the unit "
 						<< (results_dies ? "perished" : "survived")
 						<< " while in-game calculations show the unit "
@@ -1225,9 +1226,7 @@ void attack(display& gui, const gamemap& map,
 	}
 
 	if(OOS_error) {
-		if (!game_config::ignore_replay_errors) {
-			throw replay::error();
-		}
+		replay::throw_error(errbuf.str());
 	}
 
 }

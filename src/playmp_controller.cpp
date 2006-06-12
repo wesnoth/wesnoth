@@ -88,7 +88,7 @@ void playmp_controller::play_human_turn(){
 					turn_data_->process_network_data(cfg,res,backlog,skip_replay_);
 				}
 				catch (replay::error& e){
-					process_oos();
+					process_oos(e.message);
 					throw e;
 				}
 			}
@@ -216,7 +216,7 @@ bool playmp_controller::play_network_turn(){
 				}
 			}
 			catch (replay::error e){
-				process_oos();
+				process_oos(e.message);
 				throw e;
 			}
 
@@ -235,8 +235,19 @@ bool playmp_controller::play_network_turn(){
 	return false;
 }
 
-void playmp_controller::process_oos(){
-	menu_handler_.save_game(_("The games are out of sync and will have to exit. Do you want to save an error log of your game?"),gui::YES_NO);
+void playmp_controller::process_oos(const std::string& err_msg){
+	std::stringstream temp_buf;
+	std::vector<std::string> err_lines = utils::split(err_msg,'\n');
+	temp_buf << _("The games are out of sync and will have to exit. Do you want to save an error log of your game?");
+	if(!err_msg.empty()) {
+		temp_buf << " \n \n"; //and now the "Details:"
+		for(std::vector<std::string>::iterator i=err_lines.begin(); i!=err_lines.end(); i++)
+		{
+			temp_buf << "`#" << *i << '\n';
+		}
+		temp_buf << " \n";
+	}
+	menu_handler_.save_game(temp_buf.str(),gui::YES_NO);
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){
@@ -252,7 +263,7 @@ void playmp_controller::handle_generic_event(const std::string& name){
 		turn_data.sync_network();
 	}
 	else if (name == "network_replay_error"){
-		process_oos();
+		process_oos(replay::last_replay_error);
 	}
 }
 
