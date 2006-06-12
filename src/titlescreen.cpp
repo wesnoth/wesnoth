@@ -187,6 +187,7 @@ void draw_tip_of_day(display& screen, config& tips_of_day, int* ntip, const std:
 
         help_tip_button->set_location(area.x + pad,
                                       area.y + area.h - pad - next_tip_button->location().h);
+		help_tip_button->set_dirty(); //force redraw even if location did not change.
         gui::draw_dialog_frame(area.x,area.y,area.w,area.h,screen.video(),&style, &tip_of_day_restorer);
 
 
@@ -314,9 +315,9 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	draw_tip_of_day(screen, tips_of_day, ntip, style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 
-        const int pad = game_config::title_tip_padding;
+	const int pad = game_config::title_tip_padding;
 	beg_button.set_location(screen.x() - pad - beg_button.location().w,
-			screen.y() - pad - beg_button.location().h);
+		screen.y() - pad - beg_button.location().h);
 
 	events::raise_draw_event();
 
