@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-09 15:19+0200\n"
+"POT-Creation-Date: 2006-06-12 22:22+0200\n"
 "PO-Revision-Date: 2006-02-16 00:45+0900\n"
 "Last-Translator: Tiago \"Salvador\" Souza <ts.salvador AT gmail DOT com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -93,9 +93,9 @@ msgstr "Salvar o mapa como"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "O mapa já existe. Você quer sobreescrevê-lo?"
 
-#: src/editor/editor.cpp:453
-msgid "Player "
-msgstr "Jogador "
+#: src/editor/editor.cpp:453 src/editor/editor.cpp:1247
+msgid "Player"
+msgstr "Jogador"
 
 #: src/editor/editor.cpp:456
 msgid "Which Player?"
@@ -105,11 +105,11 @@ msgstr "Qual jogador?"
 msgid "Which player should start here?"
 msgstr "Qual jogador deve começar aqui?"
 
-#: src/editor/editor.cpp:509
+#: src/editor/editor.cpp:508
 msgid "Choose a Map to Load"
 msgstr "Escolha um mapa para carregar"
 
-#: src/editor/editor.cpp:513
+#: src/editor/editor.cpp:512
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -117,45 +117,41 @@ msgstr ""
 "Aviso: Caracteres inválidos foram encontrados no nome do mapa. Por favor, "
 "salve com um nome diferente."
 
-#: src/editor/editor.cpp:531 src/editor/editor.cpp:610
+#: src/editor/editor.cpp:530 src/editor/editor.cpp:609
 msgid "The file does not contain a valid map."
 msgstr "O arquivo não contém um mapa válido."
 
-#: src/editor/editor.cpp:672
+#: src/editor/editor.cpp:671
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' não existe, ou não pode ser lido."
 
-#: src/editor/editor.cpp:684
+#: src/editor/editor.cpp:683
 msgid "Load failed: "
 msgstr "Falha ao carregar: "
 
-#: src/editor/editor.cpp:884
+#: src/editor/editor.cpp:883
 msgid "You must have a hex selected on the board."
 msgstr "Você precisa selecionar um hexágono no mapa."
 
-#: src/editor/editor.cpp:1133
+#: src/editor/editor.cpp:1132
 msgid "Quit Editor"
 msgstr "Sair do Editor"
 
-#: src/editor/editor.cpp:1138
+#: src/editor/editor.cpp:1137
 msgid "Do you want to save the map before quitting?"
 msgstr "Você quer salvar o mapa antes de sair?"
 
-#: src/editor/editor.cpp:1170
+#: src/editor/editor.cpp:1169
 msgid "Map saved."
 msgstr "Mapa salvo."
 
-#: src/editor/editor.cpp:1177
+#: src/editor/editor.cpp:1176
 msgid "Could not save the map: $msg"
 msgstr "Não foi possível salvar o mapa: $msg"
 
-#: src/editor/editor.cpp:1192
+#: src/editor/editor.cpp:1191
 msgid "Error: Illegal character in filename."
 msgstr "Erro: Caractere inválido no nome do arquivo."
-
-#: src/editor/editor.cpp:1248
-msgid "Player"
-msgstr "Jogador"
 
 #: src/editor/editor_palettes.cpp:319
 msgid "FG"
@@ -164,3 +160,6 @@ msgstr "Frente"
 #: src/editor/editor_palettes.cpp:321
 msgid "BG"
 msgstr "Fundo"
+
+#~ msgid "Player "
+#~ msgstr "Jogador "

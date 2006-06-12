@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-09 15:19+0200\n"
+"POT-Creation-Date: 2006-06-12 22:22+0200\n"
 "PO-Revision-Date: 2006-01-01 20:13+0100\n"
 "Last-Translator: Hogne <haskjold@gmail.com>\n"
 "Language-Team: none <i18n-nb@lister.ping.uio.no>\n"
@@ -93,9 +93,9 @@ msgstr "Lagre kart som"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Lagret kart eksisterer allerede. Vil du overskrive det?"
 
-#: src/editor/editor.cpp:453
-msgid "Player "
-msgstr "Spiller "
+#: src/editor/editor.cpp:453 src/editor/editor.cpp:1247
+msgid "Player"
+msgstr "Spiller"
 
 #: src/editor/editor.cpp:456
 msgid "Which Player?"
@@ -105,55 +105,51 @@ msgstr "Hvilken spiller?"
 msgid "Which player should start here?"
 msgstr "Hvilken spiller skal starte her?"
 
-#: src/editor/editor.cpp:509
+#: src/editor/editor.cpp:508
 msgid "Choose a Map to Load"
 msgstr "Velg kart for innlasting"
 
-#: src/editor/editor.cpp:513
+#: src/editor/editor.cpp:512
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
 msgstr "Advarsel: ulovlige tegn i kartnavn. Vennligst lagre med et annet navn."
 
-#: src/editor/editor.cpp:531 src/editor/editor.cpp:610
+#: src/editor/editor.cpp:530 src/editor/editor.cpp:609
 msgid "The file does not contain a valid map."
 msgstr "Denne filen inneholder ikke et gyldig kart."
 
-#: src/editor/editor.cpp:672
+#: src/editor/editor.cpp:671
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' eksisterer ikke, eller kan ikke leses som en fil."
 
-#: src/editor/editor.cpp:684
+#: src/editor/editor.cpp:683
 msgid "Load failed: "
 msgstr "Innlasting feilet: "
 
-#: src/editor/editor.cpp:884
+#: src/editor/editor.cpp:883
 msgid "You must have a hex selected on the board."
 msgstr "Du må ha valgt en rute på brettet."
 
-#: src/editor/editor.cpp:1133
+#: src/editor/editor.cpp:1132
 msgid "Quit Editor"
 msgstr "Avslutt kartbehandler"
 
-#: src/editor/editor.cpp:1138
+#: src/editor/editor.cpp:1137
 msgid "Do you want to save the map before quitting?"
 msgstr "Vil du lagre dette kartet før du avslutter?"
 
-#: src/editor/editor.cpp:1170
+#: src/editor/editor.cpp:1169
 msgid "Map saved."
 msgstr "Kart lagret."
 
-#: src/editor/editor.cpp:1177
+#: src/editor/editor.cpp:1176
 msgid "Could not save the map: $msg"
 msgstr "Klarte ikke å lagre kartet: $msg"
 
-#: src/editor/editor.cpp:1192
+#: src/editor/editor.cpp:1191
 msgid "Error: Illegal character in filename."
 msgstr "Feil: ulovlig tegn i filnavn."
-
-#: src/editor/editor.cpp:1248
-msgid "Player"
-msgstr "Spiller"
 
 #: src/editor/editor_palettes.cpp:319
 msgid "FG"
@@ -162,6 +158,9 @@ msgstr "FG"
 #: src/editor/editor_palettes.cpp:321
 msgid "BG"
 msgstr "BG"
+
+#~ msgid "Player "
+#~ msgstr "Spiller "
 
 #~ msgid "Delete File"
 #~ msgstr "Slett fil"

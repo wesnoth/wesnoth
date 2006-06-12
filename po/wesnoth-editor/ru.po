@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-09 15:19+0200\n"
+"POT-Creation-Date: 2006-06-12 22:22+0200\n"
 "PO-Revision-Date: 2006-01-03 20:28+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: Russian\n"
@@ -101,9 +101,9 @@ msgstr "Сохранить карту как"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Карта уже существует. Вы хотите перезаписать её?"
 
-#: src/editor/editor.cpp:453
-msgid "Player "
-msgstr "Игрок "
+#: src/editor/editor.cpp:453 src/editor/editor.cpp:1247
+msgid "Player"
+msgstr "Игрок"
 
 #: src/editor/editor.cpp:456
 msgid "Which Player?"
@@ -113,11 +113,11 @@ msgstr "Какой игрок?"
 msgid "Which player should start here?"
 msgstr "Какой игрок должен начинать здесь?"
 
-#: src/editor/editor.cpp:509
+#: src/editor/editor.cpp:508
 msgid "Choose a Map to Load"
 msgstr "Выберите карту для загрузки"
 
-#: src/editor/editor.cpp:513
+#: src/editor/editor.cpp:512
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -125,45 +125,41 @@ msgstr ""
 "Внимание: Недопустимые символы в названии карты. Вы должны сохранить под "
 "другим именем."
 
-#: src/editor/editor.cpp:531 src/editor/editor.cpp:610
+#: src/editor/editor.cpp:530 src/editor/editor.cpp:609
 msgid "The file does not contain a valid map."
 msgstr "Файл не содержит карту."
 
-#: src/editor/editor.cpp:672
+#: src/editor/editor.cpp:671
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' не существует или не может быть прочитан."
 
-#: src/editor/editor.cpp:684
+#: src/editor/editor.cpp:683
 msgid "Load failed: "
 msgstr "Ошибка загрузки:"
 
-#: src/editor/editor.cpp:884
+#: src/editor/editor.cpp:883
 msgid "You must have a hex selected on the board."
 msgstr "У Вас должны быть веделенные ячейки."
 
-#: src/editor/editor.cpp:1133
+#: src/editor/editor.cpp:1132
 msgid "Quit Editor"
 msgstr "Выход из редактора"
 
-#: src/editor/editor.cpp:1138
+#: src/editor/editor.cpp:1137
 msgid "Do you want to save the map before quitting?"
 msgstr "Вы хотите сохранить карту перед выходом?"
 
-#: src/editor/editor.cpp:1170
+#: src/editor/editor.cpp:1169
 msgid "Map saved."
 msgstr "Карта сохранена."
 
-#: src/editor/editor.cpp:1177
+#: src/editor/editor.cpp:1176
 msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 
-#: src/editor/editor.cpp:1192
+#: src/editor/editor.cpp:1191
 msgid "Error: Illegal character in filename."
 msgstr "Ошибка: Недопустимые символы в названии файла."
-
-#: src/editor/editor.cpp:1248
-msgid "Player"
-msgstr "Игрок"
 
 #: src/editor/editor_palettes.cpp:319
 msgid "FG"
@@ -172,3 +168,6 @@ msgstr "Цвет"
 #: src/editor/editor_palettes.cpp:321
 msgid "BG"
 msgstr "Фон"
+
+#~ msgid "Player "
+#~ msgstr "Игрок "

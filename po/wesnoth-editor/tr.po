@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-09 15:19+0200\n"
+"POT-Creation-Date: 2006-06-12 22:22+0200\n"
 "PO-Revision-Date: 2006-01-12 19:08+0200\n"
 "Last-Translator: ihsan <ihsan_akin@yahoo.com>\n"
 "Language-Team: Turkish <farsakoglu@web.de>\n"
@@ -97,8 +97,8 @@ msgstr "Haritayı farklı kaydet"
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Bu isimle bir harita zaten var. Üzerine yazmak ister misin?"
 
-#: src/editor/editor.cpp:453
-msgid "Player "
+#: src/editor/editor.cpp:453 src/editor/editor.cpp:1247
+msgid "Player"
 msgstr "Oyuncu"
 
 #: src/editor/editor.cpp:456
@@ -109,11 +109,11 @@ msgstr "Hangi oyuncu?"
 msgid "Which player should start here?"
 msgstr "Hangi oyuncu burada başlasın?"
 
-#: src/editor/editor.cpp:509
+#: src/editor/editor.cpp:508
 msgid "Choose a Map to Load"
 msgstr "Yüklemek için bir harita seç"
 
-#: src/editor/editor.cpp:513
+#: src/editor/editor.cpp:512
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
@@ -121,45 +121,41 @@ msgstr ""
 "Uyarı: Haritanın isminde geçersiz karakter bulundu. Lütfen başka bir isimle "
 "kayıt edin."
 
-#: src/editor/editor.cpp:531 src/editor/editor.cpp:610
+#: src/editor/editor.cpp:530 src/editor/editor.cpp:609
 msgid "The file does not contain a valid map."
 msgstr "Bu dosya geçerli bir harita içermiyor."
 
-#: src/editor/editor.cpp:672
+#: src/editor/editor.cpp:671
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr "'$filename' isimli bir dosya yok veya bir dosya olarak okunur değil."
 
-#: src/editor/editor.cpp:684
+#: src/editor/editor.cpp:683
 msgid "Load failed: "
 msgstr "Yükleme başarısız oldu: "
 
-#: src/editor/editor.cpp:884
+#: src/editor/editor.cpp:883
 msgid "You must have a hex selected on the board."
 msgstr "Tahta üzerinden bir altıgen seçmiş olman gerekirdi."
 
-#: src/editor/editor.cpp:1133
+#: src/editor/editor.cpp:1132
 msgid "Quit Editor"
 msgstr "Editörden çık"
 
-#: src/editor/editor.cpp:1138
+#: src/editor/editor.cpp:1137
 msgid "Do you want to save the map before quitting?"
 msgstr "Çıkmadan önce bu haritayı kaydetmek ister misin?"
 
-#: src/editor/editor.cpp:1170
+#: src/editor/editor.cpp:1169
 msgid "Map saved."
 msgstr "Harita kaydedildi."
 
-#: src/editor/editor.cpp:1177
+#: src/editor/editor.cpp:1176
 msgid "Could not save the map: $msg"
 msgstr "Harita kayıt edilemedi: $msg"
 
-#: src/editor/editor.cpp:1192
+#: src/editor/editor.cpp:1191
 msgid "Error: Illegal character in filename."
 msgstr "Hata: Dosya isminde geçersiz karakter"
-
-#: src/editor/editor.cpp:1248
-msgid "Player"
-msgstr "Oyuncu"
 
 #: src/editor/editor_palettes.cpp:319
 msgid "FG"
@@ -168,6 +164,9 @@ msgstr "ÖP"
 #: src/editor/editor_palettes.cpp:321
 msgid "BG"
 msgstr "AP"
+
+#~ msgid "Player "
+#~ msgstr "Oyuncu"
 
 #~ msgid "Delete File"
 #~ msgstr "Dosyayı sil"
