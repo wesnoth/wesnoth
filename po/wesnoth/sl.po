@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-12 22:21+0200\n"
+"POT-Creation-Date: 2006-06-13 20:52+0200\n"
 "PO-Revision-Date: 2005-08-07 22:54+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <sl@li.org>\n"
@@ -1035,10 +1035,10 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:23
 #: data/campaigns/The_South_Guard/units/Chocobone.cfg:23
 #: data/units/Drake_Clasher.cfg:143 data/units/Drake_Enforcer.cfg:121
-#: data/units/Drake_Gladiator.cfg:140 data/units/Dwarvish_Guardsman.cfg:30
-#: data/units/Dwarvish_Guardsman.cfg:96 data/units/Dwarvish_Sentinel.cfg:44
-#: data/units/Dwarvish_Sentinel.cfg:110 data/units/Dwarvish_Stalwart.cfg:39
-#: data/units/Dwarvish_Stalwart.cfg:105 data/units/Goblin_Impaler.cfg:30
+#: data/units/Drake_Gladiator.cfg:140 data/units/Dwarvish_Guardsman.cfg:31
+#: data/units/Dwarvish_Guardsman.cfg:97 data/units/Dwarvish_Sentinel.cfg:45
+#: data/units/Dwarvish_Sentinel.cfg:111 data/units/Dwarvish_Stalwart.cfg:40
+#: data/units/Dwarvish_Stalwart.cfg:106 data/units/Goblin_Impaler.cfg:30
 #: data/units/Goblin_Impaler.cfg:191 data/units/Goblin_Rouser.cfg:40
 #: data/units/Goblin_Spearman.cfg:29 data/units/Goblin_Spearman.cfg:75
 #: data/units/Human_Horseman.cfg:25
@@ -1069,10 +1069,10 @@ msgstr "kopje"
 #: data/units/Boat_Transport_Galleon.cfg:21 data/units/Drake_Clasher.cfg:144
 #: data/units/Drake_Enforcer.cfg:122 data/units/Drake_Gladiator.cfg:141
 #: data/units/Drake_Slasher.cfg:153 data/units/Drake_Warden.cfg:139
-#: data/units/Dwarvish_Dragonguard.cfg:77 data/units/Dwarvish_Guardsman.cfg:32
-#: data/units/Dwarvish_Guardsman.cfg:97 data/units/Dwarvish_Sentinel.cfg:46
-#: data/units/Dwarvish_Sentinel.cfg:111 data/units/Dwarvish_Stalwart.cfg:41
-#: data/units/Dwarvish_Stalwart.cfg:106 data/units/Dwarvish_Thunderer.cfg:112
+#: data/units/Dwarvish_Dragonguard.cfg:77 data/units/Dwarvish_Guardsman.cfg:33
+#: data/units/Dwarvish_Guardsman.cfg:98 data/units/Dwarvish_Sentinel.cfg:47
+#: data/units/Dwarvish_Sentinel.cfg:112 data/units/Dwarvish_Stalwart.cfg:42
+#: data/units/Dwarvish_Stalwart.cfg:107 data/units/Dwarvish_Thunderer.cfg:112
 #: data/units/Dwarvish_Thunderguard.cfg:96 data/units/Elvish_Archer.cfg:91
 #: data/units/Elvish_Avenger.cfg:130 data/units/Elvish_Captain.cfg:108
 #: data/units/Elvish_Champion.cfg:71 data/units/Elvish_Druid.cfg:86
@@ -3438,11 +3438,26 @@ msgid ""
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
 
-#: data/help.cfg:477 data/terrain.cfg:374
+#: data/help.cfg:477
+#, fuzzy
+msgid "Illuminated Cave"
+msgstr "osvetljuje"
+
+#: data/help.cfg:482
+msgid ""
+"Illuminated cave is a patch of ground where light from the surface shines "
+"down into the gloomy darkness.  This provides an attack bonus for lawful "
+"units and removes the attack bonus from chaotic units. In all other regards "
+"this terrain is functionally identical to normal cave terrain.\n"
+"\n"
+"Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
+msgstr ""
+
+#: data/help.cfg:487 data/terrain.cfg:374
 msgid "Mushroom Grove"
 msgstr ""
 
-#: data/help.cfg:482
+#: data/help.cfg:492
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness.  Most units have trouble negotiating the spongy "
@@ -3455,11 +3470,11 @@ msgid ""
 "receive only 20%."
 msgstr ""
 
-#: data/help.cfg:487 data/terrain.cfg:138
+#: data/help.cfg:497 data/terrain.cfg:138
 msgid "Savanna"
 msgstr "Savana"
 
-#: data/help.cfg:489
+#: data/help.cfg:499
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -3468,7 +3483,7 @@ msgstr ""
 "Savane so ravnice z visoko travo, razširjene po bolj toplih predelih sveta. "
 "V smislu igranja so identične <ref>dst=terrain_grassland text=stepam</ref>."
 
-#: data/help.cfg:494 data/terrain.cfg:148 data/terrain.cfg:157
+#: data/help.cfg:504 data/terrain.cfg:148 data/terrain.cfg:157
 #: data/terrain.cfg:169 data/terrain.cfg:179 data/terrain.cfg:190
 #: data/terrain.cfg:200 data/terrain.cfg:220 data/terrain.cfg:230
 #: data/terrain.cfg:240 data/terrain.cfg:250 data/terrain.cfg:260
@@ -3477,7 +3492,7 @@ msgstr ""
 msgid "Village"
 msgstr "Vas"
 
-#: data/help.cfg:499
+#: data/help.cfg:509
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -3497,11 +3512,11 @@ msgstr ""
 "\n"
 "Večina enot ima 50% ali 60% obrambo v vaseh, konjenica pa le 40%."
 
-#: data/help.cfg:506 data/terrain.cfg:429
+#: data/help.cfg:516 data/terrain.cfg:429
 msgid "Chasm"
 msgstr ""
 
-#: data/help.cfg:508
+#: data/help.cfg:518
 #, fuzzy
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
@@ -3513,24 +3528,27 @@ msgstr ""
 "svojih strmih stenah, za prečkanje katerih bi potrebovali več dni. Kar se "
 "tiče igre, kanjon lahko prečkajo samo leteče enote."
 
-#: data/help.cfg:513 data/terrain.cfg:436
+#: data/help.cfg:523 data/terrain.cfg:436
 msgid "Lava"
 msgstr "Lava"
 
-#: data/help.cfg:515
+#: data/help.cfg:525
+#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
-"distance above it."
+"distance above it. The molten magma also produces a substantial glow, "
+"illuminating the area immediately above it. This provides an attack bonus "
+"for lawful units and removes the attack bonus from chaotic units."
 msgstr ""
 "Nevarnosti pri prečkanju lave so očitne. Preko gredo lahko samo enote, ki so "
 "sposobne leteti dovolj visoko nad ognjenim tokom."
 
-#: data/help.cfg:520 data/terrain.cfg:52
+#: data/help.cfg:530 data/terrain.cfg:52
 msgid "River Ford"
 msgstr "Plitvina"
 
-#: data/help.cfg:522
+#: data/help.cfg:532
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -3544,12 +3562,12 @@ msgstr ""
 "plitvina smatrana kot stepa ali pa kot plitva voda, odvisno kateri teren "
 "ponuja enoti najboljšo obrambo in gibljivost."
 
-#: data/help.cfg:527 data/terrain.cfg:62 data/terrain.cfg:70
+#: data/help.cfg:537 data/terrain.cfg:62 data/terrain.cfg:70
 #: data/terrain.cfg:78
 msgid "Bridge"
 msgstr "Most"
 
-#: data/help.cfg:531
+#: data/help.cfg:541
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -3573,11 +3591,11 @@ msgstr ""
 "voda, odvisno kateri teren ponuja enoti najboljšo obrambo in gibljivost. "
 "Vedite pa, da plavajoča in kopenska enota ne moreta biti hkrati na mostu."
 
-#: data/help.cfg:536 data/terrain.cfg:422
+#: data/help.cfg:546 data/terrain.cfg:422
 msgid "Cave Wall"
 msgstr "Jamska stena"
 
-#: data/help.cfg:538
+#: data/help.cfg:548
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -3585,54 +3603,54 @@ msgstr ""
 "Jamske stene so iz trdne skale, in so znane po tem, da ustavijo še tako "
 "zagnanega popotnika."
 
-#: data/help.cfg:543
+#: data/help.cfg:553
 #, fuzzy
 msgid "General commands"
 msgstr "General"
 
-#: data/help.cfg:545
+#: data/help.cfg:555
 msgid ""
 "\n"
 "Quit the scenario (without prompting)."
 msgstr ""
 
-#: data/help.cfg:548
+#: data/help.cfg:558
 msgid ""
 "\n"
 "Save the game (without prompting)."
 msgstr ""
 
-#: data/help.cfg:551
+#: data/help.cfg:561
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 
-#: data/help.cfg:554
+#: data/help.cfg:564
 msgid ""
 "\n"
 "Redraw the screen."
 msgstr ""
 
-#: data/help.cfg:557
+#: data/help.cfg:567
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
 "off by quitting the game."
 msgstr ""
 
-#: data/help.cfg:560
+#: data/help.cfg:570
 msgid ""
 "\n"
 "Bring up theme selection menu."
 msgstr ""
 
-#: data/help.cfg:565
+#: data/help.cfg:575
 #, fuzzy
 msgid "Multiplayer commands"
 msgstr "+Večigralske karte"
 
-#: data/help.cfg:567
+#: data/help.cfg:577
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -3640,20 +3658,20 @@ msgid ""
 "'1' is assumed."
 msgstr ""
 
-#: data/help.cfg:570
+#: data/help.cfg:580
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 
-#: data/help.cfg:573
+#: data/help.cfg:583
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
 "displayed."
 msgstr ""
 
-#: data/help.cfg:576
+#: data/help.cfg:586
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -3661,20 +3679,20 @@ msgid ""
 "difficulties."
 msgstr ""
 
-#: data/help.cfg:579
+#: data/help.cfg:589
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that username."
 msgstr ""
 
-#: data/help.cfg:582
+#: data/help.cfg:592
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nick of the player or observer)."
 msgstr ""
 
-#: data/help.cfg:585
+#: data/help.cfg:595
 msgid ""
 "\n"
 "Clear chat messages."
@@ -4652,14 +4670,12 @@ msgstr "Rjava"
 msgid "Teal"
 msgstr "Ekipa"
 
-#: data/terrain.cfg:11 data/themes/default.cfg:542
-#: src/multiplayer_create.cpp:67 src/multiplayer_lobby.cpp:361
-#: src/multiplayer_lobby.cpp:367
+#: data/terrain.cfg:11 src/multiplayer_create.cpp:67
+#: src/multiplayer_lobby.cpp:361 src/multiplayer_lobby.cpp:367
 msgid "Shroud"
 msgstr "Koprena"
 
-#: data/terrain.cfg:18 data/themes/default.cfg:554
-#: src/multiplayer_lobby.cpp:357
+#: data/terrain.cfg:18 src/multiplayer_lobby.cpp:357
 msgid "Fog"
 msgstr "Megla"
 
@@ -4775,68 +4791,11 @@ msgstr "stopnja"
 msgid "statuspanel^movement"
 msgstr "premiki"
 
-#: data/themes/default.cfg:458
-#, fuzzy
-msgid "Replay"
-msgstr "vnovično predvajanje"
-
-#: data/themes/default.cfg:473
-#, fuzzy
-msgid "Play"
-msgstr "Igralci: "
-
-#: data/themes/default.cfg:474
-#, fuzzy
-msgid "continous replay"
-msgstr "vnovično predvajanje"
-
-#: data/themes/default.cfg:487
-msgid "Stop"
-msgstr ""
-
-#: data/themes/default.cfg:488
-msgid "pause at end of turn"
-msgstr ""
-
-#: data/themes/default.cfg:501
-#, fuzzy
-msgid "Reset"
-msgstr "Puščava"
-
-#: data/themes/default.cfg:502
-msgid "reset to beginning"
-msgstr ""
-
-#: data/themes/default.cfg:515
-#, fuzzy
-msgid "Next Turn"
-msgstr "Poteza"
-
-#: data/themes/default.cfg:516
-#, fuzzy
-msgid "play turn"
-msgstr "na potezo"
-
-#: data/themes/default.cfg:529
-#, fuzzy
-msgid "Next Side"
-msgstr "Naslednji"
-
-#: data/themes/default.cfg:530
-#, fuzzy
-msgid "play side turn"
-msgstr "na potezo"
-
-#: data/themes/default.cfg:566
-#, fuzzy
-msgid "Skip animation"
-msgstr "+Slovaški prevod"
-
-#: data/themes/default.cfg:670
+#: data/themes/default.cfg:536
 msgid "Act."
 msgstr "Akc."
 
-#: data/themes/default.cfg:703
+#: data/themes/default.cfg:569
 msgid "short end-turn^End"
 msgstr "Konec"
 
@@ -5134,22 +5093,22 @@ msgstr ""
 
 #: data/tips.cfg:34
 msgid ""
-"You can send the Wesnoth Project an anonymous summary of your progress using "
-"the Help Wesnoth button.  This information is vital so we can adjust "
-"campaign difficulty."
-msgstr ""
-
-#: data/tips.cfg:35
-msgid ""
 "On maps where the shroud or fog of war has been enabled, a unit's sight is "
 "limited by its maximum movement. Remember this when deciding what unit is "
 "best to scout specific types of terrain."
 msgstr ""
 
-#: data/tips.cfg:36
+#: data/tips.cfg:35
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
+msgstr ""
+
+#: data/tips.cfg:37
+msgid ""
+"You can send the Wesnoth Project an anonymous summary of your progress using "
+"the Help Wesnoth button.  This information is vital so we can adjust "
+"campaign difficulty."
 msgstr ""
 
 #: data/traits.cfg:6
@@ -5566,7 +5525,7 @@ msgstr "kladivo"
 msgid "Dwarvish Guardsman"
 msgstr "Škratji stražar"
 
-#: data/units/Dwarvish_Guardsman.cfg:19
+#: data/units/Dwarvish_Guardsman.cfg:20
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
@@ -5620,7 +5579,7 @@ msgstr "Strela"
 msgid "Dwarvish Sentinel"
 msgstr "Škratji čuvaj"
 
-#: data/units/Dwarvish_Sentinel.cfg:19
+#: data/units/Dwarvish_Sentinel.cfg:20
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks.\n"
@@ -5632,7 +5591,7 @@ msgstr ""
 msgid "Dwarvish Stalwart"
 msgstr "Škratji korenjak"
 
-#: data/units/Dwarvish_Stalwart.cfg:18
+#: data/units/Dwarvish_Stalwart.cfg:19
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -10183,6 +10142,42 @@ msgstr ""
 #: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Replay"
+#~ msgstr "vnovično predvajanje"
+
+#, fuzzy
+#~ msgid "Play"
+#~ msgstr "Igralci: "
+
+#, fuzzy
+#~ msgid "continous replay"
+#~ msgstr "vnovično predvajanje"
+
+#, fuzzy
+#~ msgid "Reset"
+#~ msgstr "Puščava"
+
+#, fuzzy
+#~ msgid "Next Turn"
+#~ msgstr "Poteza"
+
+#, fuzzy
+#~ msgid "play turn"
+#~ msgstr "na potezo"
+
+#, fuzzy
+#~ msgid "Next Side"
+#~ msgstr "Naslednji"
+
+#, fuzzy
+#~ msgid "play side turn"
+#~ msgstr "na potezo"
+
+#, fuzzy
+#~ msgid "Skip animation"
+#~ msgstr "+Slovaški prevod"
 
 #~ msgid "6p - Smallolof"
 #~ msgstr "6p - Mali Olof"
