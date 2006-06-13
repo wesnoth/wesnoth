@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-12 22:21+0200\n"
-"PO-Revision-Date: 2006-05-31 01:17+0200\n"
+"PO-Revision-Date: 2006-06-13 01:56+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -289,7 +289,6 @@ msgid "slows"
 msgstr "sakta ner"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -297,8 +296,9 @@ msgid ""
 "up)."
 msgstr ""
 "Sakta ner\n"
-"Denna attack saktar ner motståndaren. En nersaktad trupp vållar hälften av "
-"den nominella skadan och har en hälften så god förflyttning (avrundat uppåt)."
+"Denna attack saktar ner motståndartruppen tills den avslutar sitt drag. En "
+"nersaktad trupp vållar hälften av den nominella skadan och har en hälften så "
+"god förflyttning (avrundat uppåt)."
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -1606,12 +1606,10 @@ msgid "mace"
 msgstr "spikklubba"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:3
-#, fuzzy
 msgid "Wose Sapling"
-msgstr "Läkande"
+msgstr "Ung ent"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:31
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -1637,7 +1635,8 @@ msgstr ""
 "Enter tar starkt avstånd från våld, men besitter stor styrka. De är dock "
 "ovana vid att röra sig, och när de gör det tar de god tid på sig.\n"
 "\n"
-"Anmärkning:"
+"Anmärkning: Enter regenererar genom att dra styrka från den omgivande "
+"naturen, och behöver inte uppsöka vård i byar."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:36
 #: data/units/Wose.cfg:36 data/units/Wose_Ancient.cfg:29
@@ -2070,9 +2069,8 @@ msgid "Show Combat"
 msgstr "Visa strider"
 
 #: data/game.cfg:49
-#, fuzzy
 msgid "Mouse Scrolling"
-msgstr "Läkande"
+msgstr "Musrullning"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -3294,11 +3292,11 @@ msgid "Dextrous"
 msgstr "Träffsäker"
 
 #: data/help.cfg:323
-#, fuzzy
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
-"Träffsäkra trupper åsamkar 1 extra poäng i skada för varje pil som träffar."
+"Träffsäkra trupper åsamkar 1 extra poäng i skada för varje träff med "
+"distansvapen."
 
 #: data/help.cfg:325
 msgid ""
@@ -4124,7 +4122,6 @@ msgstr ""
 "Wesnoths största hjältar."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:84
-#, fuzzy
 msgid ""
 "The winds of the dark sky blew so cold,\n"
 "The moon was high, the night was old,\n"
@@ -4169,7 +4166,6 @@ msgstr ""
 "(Inristat av Flametrooper) "
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:99
-#, fuzzy
 msgid ""
 "Slim of Stature, dexterous Hands\n"
 "- - Seven Stones and Eleven\n"
@@ -4186,11 +4182,10 @@ msgstr ""
 "- - Sju stenar och elva\n"
 "Bågskytten drakens liv förjaga'\n"
 "Bland statyerna han togs av daga\n"
-"- - Sju stenar och en älva\n"
+"- - Sju stenar - och en älva\n"
 "(Inristat av Gauteamus)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:110
-#, fuzzy
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
 "Wolves of the mountains, and he had the courage to match. His leadership and "
@@ -4221,7 +4216,6 @@ msgstr ""
 "(Inristat av Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:119
-#, fuzzy
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
 "upon the various fish and frogs and merfolk that entered his domain. It was "
@@ -4239,7 +4233,6 @@ msgstr ""
 "(Inristat av Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:128
-#, fuzzy
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -4680,7 +4673,7 @@ msgstr "Fem arméer slåss om herraväldet över detta blandade landskap."
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:3
 msgid "6p - Amohsad Caldera"
-msgstr ""
+msgstr "6s - Amohsad-kratern"
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
 msgid ""
@@ -4818,33 +4811,39 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:6
 msgid "Wesnoth Benchmark: AI"
-msgstr ""
+msgstr "Prestandamätning: AI"
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:7
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 msgstr ""
+"För denna prestandamätning, använd flaggorna --nogui --no-delay --"
+"multiplayer --scenario=wesbench_ai --exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:6
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr ""
+msgstr "Prestandamätning: skärmrullning"
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 msgstr ""
+"För denna prestandamätning, använd flaggorna --no-delay --multiplayer --"
+"scenario=wesbench_scroll --exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:6
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr ""
+msgstr "Prestandamätning: genomkorsa slöja"
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 msgstr ""
+"För denna prestandamätning, använd flaggorna --no-delay --multiplayer --"
+"scenario=wesbench_shroud_walk --exit-at-end."
 
 #: data/schedules.cfg:81 data/schedules.cfg:89
 msgid "Underground"
@@ -4968,13 +4967,13 @@ msgid " Foes who lose their life to the plague will rise again in unlife."
 msgstr " Fiender som går under i pesten återuppväcks till ett vanliv."
 
 #: data/special-notes.cfg:50
-#, fuzzy
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
 " Denna trupp har förmågan att sakta ner sina fiender, vilket minskar deras "
-"förflyttning och den skada de vållar med hälften."
+"förflyttning och den skada de vållar med hälften, tills de avslutar sitt "
+"drag."
 
 #: data/special-notes.cfg:53
 msgid ""
@@ -5500,13 +5499,13 @@ msgstr ""
 "dina slag för dig utan att själva attackera."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
 "Fiender som träffats av en attack med egenskapen att 'sakta ner' rör sig "
-"långsammare, och skadan de åsamkar halveras för alla deras attacker."
+"långsammare, och skadan de åsamkar halveras för alla deras attacker, tills "
+"de avslutar sitt drag."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -5848,7 +5847,6 @@ msgid "Drake Glider"
 msgstr "Drakseglare"
 
 #: data/units/Drake_Glider.cfg:21
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little armor as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
@@ -5866,7 +5864,11 @@ msgstr ""
 "den inre eld som är så vanlig bland drakfolket. Drakseglarna använder "
 "effektivt sin hastighet för att brutalt slå ner på sina fiender och tvinga "
 "dem till marken. De bästa bland drakseglarna kan se fram emot att bli "
-"upptagna bland de högtflygande molndrakarna."
+"upptagna bland de högtflygande molndrakarna. Från sin höjd ser de förbi de "
+"flesta försvarspositioner, och deras flygskicklighet låter dem också anfalla "
+"fiender som tagit betäckning.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Drake_Glider.cfg:83 data/units/Drake_Hurricane.cfg:98
 #: data/units/Drake_Sky.cfg:97
@@ -5878,7 +5880,6 @@ msgid "Hurricane Drake"
 msgstr "Orkandrake"
 
 #: data/units/Drake_Hurricane.cfg:30
-#, fuzzy
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite amongst "
 "those drakes which are gifted with flight. Soaring high in the air, they can "
@@ -5888,7 +5889,9 @@ msgid ""
 msgstr ""
 "Orkandrakarna, skyarnas mästare, är eliten bland de drakar som har "
 "flygandets gåva. Från sina höjder kan de se förbi fiendens försvarsverk och "
-"spruta eld mot dem utan risk."
+"spruta eld mot dem utan risk.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
@@ -5913,7 +5916,6 @@ msgid "Sky Drake"
 msgstr "Molndrake"
 
 #: data/units/Drake_Sky.cfg:29
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
@@ -5926,7 +5928,11 @@ msgid ""
 msgstr ""
 "Molndrakarna är molnens sanna herrar. Med sin fart och sin förmåga att "
 "spruta eld har de nedgjort otaliga fiender. De kan snabbt slå ner på sitt "
-"byte, och är sedan länge borta igen innan någon kan stoppa dem."
+"byte, och är sedan länge borta igen innan någon kan stoppa dem. Genom att "
+"anfalla från luften kan de spruta eld med god precision mot positioner som "
+"annars skulle utgöra mycket gott försvar för deras fiender.\n"
+"\n"
+"Anmärkning:"
 
 #: data/units/Drake_Slasher.cfg:3
 msgid "Drake Slasher"
@@ -10125,10 +10131,9 @@ msgid "Connect to Server"
 msgstr "Anslut till server"
 
 #: src/game.cpp:857
-#, fuzzy
 msgid "You will now connect to a server to download add-ons."
 msgstr ""
-"Du kommer nu att anslutas till en kampanjserver där du kan hämta kampanjer."
+"Du kommer nu att anslutas till en server där du kan hämta extramaterial."
 
 #: src/game.cpp:858
 msgid "Server: "
@@ -10140,7 +10145,7 @@ msgstr "Kunde inte ansluta till servern."
 
 #: src/game.cpp:879
 msgid "Asking for list of add-ons"
-msgstr ""
+msgstr "Hämtar lista över extramaterial"
 
 #: src/game.cpp:892
 msgid "Error communicating with the server."
@@ -10163,47 +10168,40 @@ msgid "Size"
 msgstr "Storlek"
 
 #: src/game.cpp:963
-#, fuzzy
 msgid "Publish add-on: "
-msgstr "Publicera kampanj: "
+msgstr "Publicera extramaterial: "
 
 #: src/game.cpp:967
-#, fuzzy
 msgid "Delete add-on: "
-msgstr "Ta bort kampanj: "
+msgstr "Ta bort extramaterial: "
 
 #: src/game.cpp:971
-#, fuzzy
 msgid "There are no add-ons available for download from this server."
-msgstr "Det finns inga kampanjer att hämta på den här servern."
+msgstr "Det finns inget extramaterial att hämta på den här servern."
 
 #: src/game.cpp:978
-#, fuzzy
 msgid "Choose the add-on to download."
-msgstr "Välj kampanj att hämta hem:"
+msgstr "Välj extramaterial att hämta hem:"
 
 #: src/game.cpp:978
 msgid "Get Add-ons"
-msgstr ""
+msgstr "Hämta extramaterial"
 
 #: src/game.cpp:998
-#, fuzzy
 msgid "Downloading add-on..."
-msgstr "Hämtar kampanj..."
+msgstr "Hämtar extramaterial..."
 
 #: src/game.cpp:1022
 msgid "Cannot rescan the filesystem"
 msgstr "Kan inte läsa om filsystemet"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "Add-on Installed"
-msgstr "Kampanjen har installerats"
+msgstr "Extramaterialet har installerats"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "The add-on has been installed."
-msgstr "Kampanjen har installerats."
+msgstr "Extramaterialet har installerats."
 
 #: src/game.cpp:1039
 msgid "Network communication error."
@@ -10234,9 +10232,8 @@ msgid "Terms"
 msgstr "Villkor"
 
 #: src/game.cpp:1092
-#, fuzzy
 msgid "Sending add-on"
-msgstr "Skickar kampanj"
+msgstr "Skickar extramaterial"
 
 #: src/game.cpp:1099 src/game.cpp:1124 src/multiplayer_wait.cpp:317
 msgid "Response"
@@ -11339,9 +11336,8 @@ msgid "Downloading next level..."
 msgstr "Hämtar nästa scenario..."
 
 #: src/playcampaign.cpp:413
-#, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
-msgstr "Vill du spara ditt spel?"
+msgstr "Vill du spara ditt spel? (Detta raderar autosparade spel)"
 
 #: src/playcampaign.cpp:440
 msgid "Unknown scenario: '"
@@ -11608,9 +11604,8 @@ msgid "TitleScreen button^Load"
 msgstr "Sparade spel"
 
 #: src/titlescreen.cpp:258
-#, fuzzy
 msgid "TitleScreen button^Get Add-ons"
-msgstr "Sparade spel"
+msgstr "Extramaterial"
 
 #: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
@@ -11650,7 +11645,7 @@ msgstr "Öppna ett sparat privat spel"
 
 #: src/titlescreen.cpp:267
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "Hämta hem användargjorda kampanjer, eror eller kartor"
 
 #: src/titlescreen.cpp:268
 msgid "Change the language"
@@ -11710,7 +11705,7 @@ msgstr "neutral"
 
 #: src/upload_log.cpp:278
 msgid "Enable summary uploads"
-msgstr ""
+msgstr "Aktivera uppladdning av spelsammanställningar"
 
 #: src/upload_log.cpp:283
 msgid ""
@@ -11737,68 +11732,3 @@ msgstr "Du kan se resultaten på:"
 #: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjälp oss att förbättra Wesnoth!"
-
-#~ msgid "6p - Smallolof"
-#~ msgstr "6s - Olofs lilla"
-
-#~ msgid "Flaming Sword"
-#~ msgstr "Eldsvärd"
-
-#~ msgid ""
-#~ "This massive blade was created centuries ago by long-forgotten elvish "
-#~ "forgemasters, who managed to imbue the bluish steel with an inner magical "
-#~ "fire. Tongues of flame dance on the surface, giving the bluish steel a "
-#~ "flawless mirrored finish. As you place your hand around the glittering "
-#~ "leather hilt, the sword roars to life! Strangely, you feel no heat once "
-#~ "you pick it up, yet the grass at your feet bursts into flame as you test "
-#~ "the heft of this mighty weapon."
-#~ msgstr ""
-#~ "Detta mäktiga svärd skapades för många hundra år sedan av sedan länge "
-#~ "bortglömda alvsmeder, som lyckades ge det blåaktiga stålet en inre magisk "
-#~ "eld. Eldstungor dansar på ytan, vilket ger stålet en spegels glans. När "
-#~ "du tar upp svärdet, kommer det till liv! Underligt nog känner du ingen "
-#~ "hetta när du tar i det, men gräset vid dina fötter tar eld när du känner "
-#~ "på detta mäktiga vapens balans och styrka. "
-
-#~ msgid "Only the leader of an army can wield this sword!"
-#~ msgstr "Endast en armés ledare kan svinga detta svärd!"
-
-#~ msgid "flaming sword"
-#~ msgstr "eldsvärd"
-
-#~ msgid "Scepter of Fire"
-#~ msgstr "Eldspiran"
-
-#~ msgid ""
-#~ "This ancient Scepter was forged by the Dwarves. A symbol of the kingship "
-#~ "of Wesnoth, the Scepter has the power to shoot fireballs at enemies of "
-#~ "the bearer!"
-#~ msgstr ""
-#~ "Denna uråldriga spira smiddes av dvärgarna. Som symbolen för Wesnoths "
-#~ "kungadöme har den makt att slunga eldklot mot bärarens fiender!"
-
-#~ msgid ""
-#~ "This is the Scepter of Fire. Only a true successor to the throne can "
-#~ "possibly dare to take this!"
-#~ msgstr "Detta är Eldspiran. Endast en sann tronarvinge kan våga ta den!"
-
-#~ msgid "Get More Campaigns..."
-#~ msgstr "Hämta fler kampanjer..."
-
-#~ msgid "Download more campaigns from an Internet server."
-#~ msgstr "Ladda ner fler kampanjer från en Internetserver."
-
-#~ msgid "Asking for campaign list"
-#~ msgstr "Söker efter kampanjlista"
-
-#~ msgid "Get Campaign"
-#~ msgstr "Hämta kampanj"
-
-#~ msgid "TitleScreen button^Help Wesnoth"
-#~ msgstr "Hjälp Wesnoth"
-
-#~ msgid "stab"
-#~ msgstr "hugg"
-
-#~ msgid "dragonstick"
-#~ msgstr "drakstav"
