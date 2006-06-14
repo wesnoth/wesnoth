@@ -434,7 +434,7 @@ void set_allow_observers(bool value)
 
 bool use_map_settings()
 {
-	return prefs["mp_use_map_settings"] == "yes";
+	return prefs["mp_use_map_settings"] != "no";
 }
 
 void set_use_map_settings(bool value)
