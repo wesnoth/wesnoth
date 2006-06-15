@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-13 20:52+0200\n"
-"PO-Revision-Date: 2006-06-11 17:50+0100\n"
+"PO-Revision-Date: 2006-06-15 14:33+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -150,9 +150,7 @@ msgid ""
 msgstr ""
 "Plänkler:\n"
 "Diese Fertigkeit ermöglicht es einer Einheit, durch feindliche Linien zu "
-"brechen, da sie sämtliche feindlichen Kontrollzonen ignorieren kann. "
-"(Ausnahme: Wenn die Einheit in einer gegnerischen Kontrollzone stoppt, "
-"verliert sie trotz allem all ihre restlichen BPs.)"
+"brechen, da sie sämtliche feindlichen Kontrollzonen ignorieren kann."
 
 #: data/abilities.cfg:317
 msgid "illuminates"
@@ -3330,7 +3328,7 @@ msgstr "Robust"
 
 #: data/help.cfg:291
 msgid "Resilient units have 10% +3 more HP than usual."
-msgstr "Robuste Einheiten erhalten  10% + 3 LP zusätzlich."
+msgstr "Robuste Einheiten erhalten 10% + 3 LP zusätzlich."
 
 #: data/help.cfg:293
 msgid ""
@@ -3810,9 +3808,8 @@ msgstr ""
 "wohingegen Kavallerie auf 40% begrenzt ist. Zwerge erhalten 60% Verteidigung."
 
 #: data/help.cfg:477
-#, fuzzy
 msgid "Illuminated Cave"
-msgstr "Lichtaura"
+msgstr "Erhellte Höhle"
 
 #: data/help.cfg:482
 msgid ""
@@ -3823,6 +3820,13 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"An diesen Stellen sind Teile der Höhlendecke eingestürzt, so dass von oben "
+"das Licht der Sonne herein scheinen kann. Dies gibt allen rechtschaffenen "
+"Einheiten einen Angriffsbonus und nimmt allen chaotischen Einheiten den "
+"ihrigen. Ansonsten verhält sich dieses Gelände wie normales Höhlengelände.\n"
+"\n"
+"Die meisten Einheiten haben 20 bis 40% Verteidigung in Höhlen, Zwerge haben "
+"50%."
 
 #: data/help.cfg:487 data/terrain.cfg:374
 msgid "Mushroom Grove"
@@ -3909,10 +3913,10 @@ msgid ""
 "is concerned, only units capable of flying over chasms can cross this "
 "terrain."
 msgstr ""
-"Eine Schlucht stellt einen tiefen Schlund im Boden dar, deren Tiefen ins "
+"Eine Kluft stellt einen tiefen Schlund im Boden dar, deren Tiefen ins "
 "Unbekannte reichen. Sie zeichnen sich durch ihre hohen Wände aus, die zu "
 "durchqueren viele Tagesmärsche in Anspruch nehmen. Da das Durchqueren einer "
-"Schlucht für Reiter und Fußtruppen viel zu lange dauern würde, können nur "
+"Kluft für Reiter und Fußtruppen viel zu lange dauern würde, können nur "
 "fliegende Einheiten dieses Hindernis passieren."
 
 #: data/help.cfg:523 data/terrain.cfg:436
@@ -3920,7 +3924,6 @@ msgid "Lava"
 msgstr "Lava"
 
 #: data/help.cfg:525
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -3930,7 +3933,9 @@ msgid ""
 msgstr ""
 "Die Gefahren, die mit dem Überqueren von flüssiger Lava verbunden sind, "
 "sollten offensichtlich sein. Deshalb kann dieses Gelände nur von fliegenden "
-"Einheiten passiert werden."
+"Einheiten passiert werden. Die geschmolzene Lava erhellt zudem das "
+"umliegende Gebiet, was rechtschaffenen Einheiten einen Angriffsbonus "
+"verleiht und chaotischen Einheiten den ihrigen entzieht."
 
 #: data/help.cfg:530 data/terrain.cfg:52
 msgid "River Ford"
@@ -4103,6 +4108,9 @@ msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that username."
 msgstr ""
+"\n"
+"Kickt und verbannt einen Spieler sowie dessen verwendete IP-Adresse aus dem "
+"Mehrspielermodus."
 
 #: data/help.cfg:592
 msgid ""
@@ -4110,6 +4118,9 @@ msgid ""
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nick of the player or observer)."
 msgstr ""
+"\n"
+"Übergibt die Kontrolle einer Fraktion (hier die Nummer der Fraktion "
+"eingeben) an Spieler (hier den Namen des Spielers/Beobachters eingeben)."
 
 #: data/help.cfg:595
 msgid ""
@@ -4518,6 +4529,20 @@ msgid ""
 "enough, in possession of all of his teeth.\n"
 "(inscribed by Paterson)"
 msgstr ""
+"Ein mutiger Krieger, bekannt unter den Naga als Rilhon der "
+"Unerschütterliche, hörte Gerüchte über einen Schatz, der verschollen in den "
+"Tiefen dieser Unterwasserhöhlen versteckt sein sollte. Man sagt, es handelte "
+"sich dabei um einen Speer mit einem Fangzahn des uralten Basiliken Chak'so "
+"Ney'yks, der vor langer Zeit von dem Efenkrieger Eloralduil besiegt wurde, "
+"als Spitze. Der Legende nach, lag der Speer irgendwo auf dem Grunde dieses "
+"Sees. Der Ruaskkolinsee ist nach einer gefürchteten Seeschlange benannt, "
+"welche dort hauste. Nachdem Rilhon sich auf einen schlimmen Kampf mit der "
+"Seeschlange vorbereitet hatte und zu dem See gereist war, erwarteten ihn "
+"dort zwei große Überraschungen: Die erste in der Form von Ruaskkolin, der "
+"Seeschlange, die komplett zu Stein erstarrt war und die Zweite war ein sehr "
+"lebendig wirkender Chak'kso Ney'yks, welcher zudem noch im Besitz all seiner "
+"Zähne war.\n"
+"(Niedergeschrieben von Paterson)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:170
 msgid ""
@@ -4537,6 +4562,16 @@ msgid ""
 "\n"
 "(inscribed by MJQ)"
 msgstr ""
+"Über die Wellen, blau und weiß,\n"
+"sie zog die Brandung schnell und heiß.\n"
+"Die Fische, so strahlend silbern grün,\n"
+"bekamen die Sprache von Ihr geliehen.\n"
+"Magische Muscheln und Wälder aus Tang,\n"
+"stimmten mit ein in Ihren Gesang.\n"
+"Doch dann trat ein, man wollts kaum glauben,\n"
+"seither sie bewegte nichtmal die Augen.\n"
+"\n"
+"(Niedergeschrieben von MJQ)"
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
 msgid "2p - Charge"
@@ -4743,7 +4778,7 @@ msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map. Recommended setting of 2 gold per village."
 msgstr ""
-"Die zentrale Insel zu kontrollieren, ist häufig der Schlüssel zum Sieg auf "
+"Die zentrale Insel zu kontrollieren ist häufig der Schlüssel zum Sieg auf "
 "dieser 21x21 Felder großen Karte für 3 Spieler.\n"
 "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
 
@@ -4816,7 +4851,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
-msgstr ""
+msgstr "4S - Isars Kreuz"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
 msgid ""
@@ -4840,9 +4875,9 @@ msgid ""
 "4 player FFA map. Works fine 2v2 as well. There are 36 villages. Recommended "
 "setting of 2gpv."
 msgstr ""
-"Eine 36x36 Felder große Karte für 4 Spieler mit 3. Das Gelände um die "
-"zentral gelegene Festung zu kontrollieren, ist fast schon einem garantierten "
-"Sieg gleichzusetzen.\n"
+"Eine 36x36 Felder große Karte für 4 Spieler mit 36 Dörfern. Das Gelände um "
+"die zentral gelegene Festung zu kontrollieren, ist fast schon einem "
+"garantierten Sieg gleichzusetzen.\n"
 "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
@@ -4940,7 +4975,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:3
 msgid "6p - Amohsad Caldera"
-msgstr ""
+msgstr "6S - Amohsad Caldera"
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
 msgid ""
@@ -4990,9 +5025,9 @@ msgid ""
 msgstr ""
 "Eine 40x40 Felder große 3 gegen 3 Karte mit 44 Dörfern. Eine flexible "
 "Koordination Eurer Bündnisse ist nötig, damit der Feind euch nicht "
-"überrennt. Um Nord gegen Süd zu spielen, solltet ihr 1, 3 und 5 gegen 2, 4, "
-"6 antreten lassen. Es mag jedoch interessant sein, es einmal mit 1, 3, 6 "
-"oder 1, 4, 6 zu probieren.\n"
+"überrennt. Um Nord gegen Süd zu spielen, solltet ihr 1, 3, 5 gegen 2, 4, 6 "
+"antreten lassen. Es mag jedoch interessant sein, es einmal mit 1, 3, 6 oder "
+"1, 4, 6 zu probieren.\n"
 "Empfohlene Einstellung: 150 Gold als Startkapital"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
@@ -5004,14 +5039,14 @@ msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish. Recommended setting of 2 gold per village."
 msgstr ""
-"Nur ein wahrer Taktiker wird dieses tödliche, auf kleinstem Raum begrenzte "
-"Schlachtfeld als Sieger verlassen, in dem sechs Heerführer ihre Armeen in "
-"die Schlacht schicken.\n"
+"Nur ein wahrer Taktiker wird dieses tödliche, auf kleinsten Raum begrenzte "
+"Schlachtfeld als Sieger verlassen, in dem acht Heerführer ihre Armeen in die "
+"Schlacht schicken.\n"
 "Empfohlene Einstellung: 2 Einheiten Gold pro Dorf."
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
-msgstr ""
+msgstr "9S - Merkwürdige Liebe"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
 msgid ""
@@ -5023,8 +5058,8 @@ msgstr ""
 "Eine sehr kleine 3 gegen 3 gegen 3 Karte. Aufgrund der hohen Spieleranzahl "
 "wird eine 60 Sekunden Zeitbegrenzung pro Runde empfohlen. Vorgesehene Teams "
 "sind 1,5,9 gegen 2,6,7 gegen 3,4,8 (Norden gegen Südosten gegen Südwesten). "
-"Aufgrund der wenigen Dörfer, wird eine Einstellung von 3 Goldstücke pro "
-"Runde empfohlen."
+"Aufgrund der wenigen Dörfer wird eine Einstellung von 3 Goldstücke pro Runde "
+"empfohlen."
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:8
@@ -5088,33 +5123,40 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:6
 msgid "Wesnoth Benchmark: AI"
-msgstr ""
+msgstr "Wesnoth Leistungsvergleich: KI"
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:7
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 msgstr ""
+"Ein Wesnoth Leistungsvergleich, der folgende Einstellungen verwendet: --"
+"nogui --no-delay --multiplayer --scenario=wesbench_ai --exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:6
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr ""
+msgstr "Wesnoth Leistungsvergleich: Scrollen"
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 msgstr ""
+"Ein Wesnoth Leistungsvergleich, der folgende Einstellungen verwendet: --no-"
+"delay --multiplayer --scenario=wesbench_scroll --exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:6
 msgid "Wesnoth Benchmark: Walking through Shroud"
 msgstr ""
+"Wesnoth Leistungsvergleich: Bewegung durch den »Schleier der Finsternis«"
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 msgstr ""
+"Ein Wesnoth Leistungsvergleich, der folgende Einstellungen verwendet: --no-"
+"delay --multiplayer --scenario=wesbench_shroud_walk --exit-at-end."
 
 #: data/schedules.cfg:81 data/schedules.cfg:89
 msgid "Underground"
@@ -6193,7 +6235,6 @@ msgid "Sky Drake"
 msgstr "Himmelsdrake"
 
 #: data/units/Drake_Sky.cfg:29
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
@@ -6207,7 +6248,11 @@ msgstr ""
 "Himmelsdraken gehören zu den besten Fliegern am Himmel. Mit ihrer "
 "Beweglichkeit und ihrem Feueratem bringen sie vielen Feinden ihr Verderben. "
 "Sie können sich schnell ihre Beute schnappen und sind verschwunden, bevor "
-"sie irgendjemand aufhalten kann."
+"sie irgendjemand aufhalten kann. Sie können ihren Feueratem mit "
+"unglaublicher Präzision auf ihre Feinde herabregnen lassen, so dass sie aus "
+"der Luft befestigte Stellungen des Gegners unter Beschuss nehmen können.\n"
+"\n"
+"Anmerkung:"
 
 #: data/units/Drake_Slasher.cfg:3
 msgid "Drake Slasher"
@@ -6953,7 +6998,7 @@ msgid ""
 msgstr ""
 "Da Elfen von den Feen abstammen, besitzen sie eine natürliche Begabung für "
 "das Wirken von Magie. Diese manifestiert sich in Form von "
-"Naturerscheinungen, die Schamaninen zur Unterstützung herbeirufen können. "
+"Naturerscheinungen, die Schamaninnen zur Unterstützung herbeirufen können. "
 "Feinde, die ihre Wälder betreten, sehen sich schnell von Wurzeln, die aus "
 "dem Boden wachsen, umschlungen, so dass die Kämpfe meist friedlich beigelegt "
 "werden können.\n"
@@ -6961,7 +7006,7 @@ msgstr ""
 "Jedoch liegt ihre wahre Begabung darin, starke Heilzauber zu wirken, für die "
 "sie bei ihrem Volk in hoher Achtung steht.\n"
 "\n"
-"Anmerkung: Elfenschamaninen können einen Efeumantel heraufbeschwören, so "
+"Anmerkung: Elfenschamaninnen können einen Efeumantel heraufbeschwören, so "
 "dass die Aktionen des Gegners im Kampf sowie seine Bewegungspunkte um die "
 "Hälfte reduziert werden. "
 
@@ -7845,7 +7890,7 @@ msgstr ""
 "Fechtmeister haben sich ihre Stellung hart erkämpfen müssen. In Jahren des "
 "Kampfes haben sie sich mit ihrer Kunst in den Status von Berühmtheiten "
 "erhoben. Und nun wünschen sie sich auch die Belohnung dafür zu haben. Man "
-"merkt ihnen überaus deutlich an, dass sie aus adeligem Geschlecht abstammen "
+"merkt ihnen überaus deutlich an, dass sie aus adligem Geschlecht abstammen "
 "und niemand steht dies besser zu Gesicht. Ihre aufreizende Kleidung und ihr "
 "stolzer Gang sorgen dafür, dass so manche noble Dame ihnen mehr als nur "
 "einen langen schmachtenden Blick nachwirft.\n"
@@ -8375,7 +8420,7 @@ msgstr ""
 "Geheimnis über ihre wertvollen Habseligkeiten ausgespuckt haben. Da sie "
 "diesen zwielichtigen Tätigkeiten für gewöhnlich nur Nachts nachkommen, "
 "drücken sie sich vor jedem Kampf tagsüber. Schließlich könnte ein ehemaliges "
-"Opfer sie wiedererkennen und an die Rechtssprechung melden ..."
+"Opfer sie wiedererkennen und an die Rechtsprechung melden..."
 
 #: data/units/Human_Outlaw_Footpad.cfg:3
 msgid "Footpad"
@@ -9518,8 +9563,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Saurianische Herbalisten sind sehr wertvoll als Heiler, weil sie die Wunden "
-"ihrer Verbündeten heilen, unabhängig vom Gelände auf dem sie sich gerade "
-"befinden. Außerdem besitzen sie Wissen über Kältemagie.\n"
+"ihrer Verbündeten heilen können, unabhängig vom Gelände auf dem sie sich "
+"gerade befinden. Außerdem besitzen sie Wissen über Kältemagie.\n"
 "\n"
 "Anmerkung:"
 
@@ -11344,6 +11389,9 @@ msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
+"Sendet eine private Nachricht. Ihr könnt keine Nachricht an Spieler senden, "
+"die ein Seite im Spiel kontrollieren. Verwendung: /whisper [Spitzname] "
+"[Nachricht]"
 
 #: src/menu_events.cpp:1390
 msgid "Add player to your ignore list. Usage: /ignore add [argument]"
@@ -12343,42 +12391,3 @@ msgstr "Betrachtet die Ergebnisse unter:"
 #: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
 msgstr "Helft uns, Wesnoth zu verbessern!"
-
-#~ msgid "Replay"
-#~ msgstr "Wiederholung"
-
-#~ msgid "Play"
-#~ msgstr "Abspielen"
-
-#~ msgid "continous replay"
-#~ msgstr "Spielverlauf ohne Unterbrechung wiedergeben"
-
-#~ msgid "Stop"
-#~ msgstr "Stopp"
-
-#~ msgid "pause at end of turn"
-#~ msgstr "Am Ende der Runde pausieren"
-
-#~ msgid "Reset"
-#~ msgstr "Zurücksetzen"
-
-#~ msgid "reset to beginning"
-#~ msgstr "Spielverlauf zurücksetzen"
-
-#~ msgid "Next Turn"
-#~ msgstr "Nächste Runde"
-
-#~ msgid "play turn"
-#~ msgstr "Runde abspielen"
-
-#~ msgid "Next Side"
-#~ msgstr "Nächste Fraktion"
-
-#~ msgid "play side turn"
-#~ msgstr "Fraktionsrunde abspielen"
-
-#~ msgid "Skip animation"
-#~ msgstr "Animationen überspringen"
-
-#~ msgid "6p - Smallolof"
-#~ msgstr "6S - Scharmützel"
