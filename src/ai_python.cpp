@@ -21,6 +21,7 @@
 #include "wassert.hpp"
 #include "gamestatus.hpp"
 #include "filesystem.hpp"
+#include "menu_events.hpp"
 
 #include <fstream>
 
@@ -500,7 +501,7 @@ static PyObject* unit_poisoned(wesnoth_unit* unit, void* /*closure*/)
 
 static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 {
-	return Py_BuildValue("i",running_instance->is_unit_valid(unit->unit_) == true ? 1 : 0);
+	return Py_BuildValue("i",running_instance->is_unit_valid(unit->unit_, false) == true ? 1 : 0);
 }
 
 static PyGetSetDef unit_getseters[] = {
@@ -1370,6 +1371,14 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 	if ( !PyArg_ParseTuple( args, "O!O!|i", &wesnoth_location_type, &from, &wesnoth_location_type, &to, &weapon ) )
 		return NULL;
 
+    // FIXME: Remove this check and let the C++ code do the check if the attack
+    // is valid at all (there may be ranged attacks or similar later, and then
+    // the below will horribly fail).
+    if (!tiles_adjacent(*from->location_, *to->location_)) {
+        Py_INCREF(Py_None);
+        return Py_None;
+    }
+
     info& inf = running_instance->get_info();
 
     battle_context bc(
@@ -1382,9 +1391,15 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
         *to->location_,
         weapon);
 
-	running_instance->attack_enemy(*from->location_,*to->location_,
-        bc.get_attacker_stats().attack_num,
-        bc.get_defender_stats().attack_num);
+    try {
+        running_instance->attack_enemy(*from->location_,*to->location_,
+            bc.get_attacker_stats().attack_num,
+            bc.get_defender_stats().attack_num);
+    }
+    catch(end_level_exception&) {
+        PyErr_SetString(PyExc_RuntimeError, "Game is won!");
+        return NULL;
+    }
 	running_instance->src_dst_.clear();
 	running_instance->dst_src_.clear();
 	running_instance->possible_moves_.clear();
@@ -1404,11 +1419,13 @@ PyObject* python_ai::wrapper_get_adjacent_tiles(PyObject* /*self*/, PyObject* ar
 	if ( !PyArg_ParseTuple( args, "O!", &wesnoth_location_type, &where ) )
 		return NULL;
 
-	PyObject* list = PyList_New(6);
+    gamemap const &map = running_instance->get_info().map;
+	PyObject* list = PyList_New(0);
 	gamemap::location loc[6];
 	get_adjacent_tiles(*where->location_,loc);
 	for ( int tile = 0; tile < 6; tile++ )
-		PyList_SetItem(list,tile,wrap_location(loc[tile]));
+        if (loc[tile].valid(map.x(), map.y()))
+            PyList_Append(list,wrap_location(loc[tile]));
 	return list;
 }
 
@@ -1606,10 +1623,12 @@ static PyMethodDef wesnoth_python_methods[] = {
 };
 
 
-#define Py_Register( x, n ) \
+#define Py_Register( x, n ) { \
 	PyType_Ready(&x); \
 	Py_INCREF(&x); \
-	PyModule_AddObject(module, n, (PyObject*)&x);
+	PyTypeObject *type = &x; \
+	PyObject* pyob = reinterpret_cast<PyObject *>(type); \
+	PyModule_AddObject(module, const_cast<char *>(n), pyob); }
 
 python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
 {
@@ -1666,6 +1685,7 @@ void python_ai::play_turn()
 
     // Now execute the actual python AI.
     PyObject* ret = PyRun_File(PyFile_AsFile(file), script.c_str(), Py_file_input, dict, dict);
+
     if (PyErr_Occurred()) {
         PyErr_Print();
     }
