@@ -1687,7 +1687,9 @@ void python_ai::play_turn()
     PyObject* ret = PyRun_File(PyFile_AsFile(file), script.c_str(), Py_file_input, dict, dict);
 
     if (PyErr_Occurred()) {
-        PyErr_Print();
+        // RuntimeError is the game-won exception, no need to print it
+        if (!PyErr_ExceptionMatches(PyExc_RuntimeError))
+            PyErr_Print();
     }
     Py_XDECREF(pre);
     Py_XDECREF(ret);
