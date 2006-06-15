@@ -69,6 +69,7 @@ replay_controller::replay_controller(const config& level, const game_data& gamei
 	delay_ = 0;
 	is_playing_ = false;
 	init();
+	gamestate_start_ = gamestate_;
 }
 
 replay_controller::~replay_controller(){
@@ -146,7 +147,7 @@ void replay_controller::reset_replay(){
 	recorder.start_replay();
 	units_ = *(new unit_map(units_start_));
 	status_ = *(new gamestatus(status_start_));
-	gamestate_ = *(new game_state(gamestate_start_));
+	gamestate_ = gamestate_start_;
 	teams_ = team_manager_.clone(teams_start_);
 	if (events_manager_ != NULL){
 		delete events_manager_;
