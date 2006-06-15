@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-13 20:52+0200\n"
-"PO-Revision-Date: 2006-06-10 23:55+0200\n"
+"PO-Revision-Date: 2006-06-15 17:19+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
@@ -2064,9 +2064,8 @@ msgid "Show Combat"
 msgstr "Certamina Monstrare"
 
 #: data/game.cfg:49
-#, fuzzy
 msgid "Mouse Scrolling"
-msgstr "Surculum Vosiorum"
+msgstr "Gyrum Muris"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -3599,9 +3598,8 @@ msgstr ""
 "equitates tantum XL. Nani habent XL pro cento defensum in his cavernis."
 
 #: data/help.cfg:477
-#, fuzzy
 msgid "Illuminated Cave"
-msgstr "illustrat"
+msgstr "Caverna Illustrata"
 
 #: data/help.cfg:482
 msgid ""
@@ -3612,6 +3610,11 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"Caverna illustrata est terra ubi lumen de superficie in tenebras lucet. "
+"Bonum dat filiis lucis in oppugnatione et tollat bonum filiis tenebrarum. "
+"Aliter agrum hoc aequum est cavernis normalibus.\n"
+"\n"
+"Plurimae unitates defensum XX ad XL in Cavernis habent, sed nani L."
 
 #: data/help.cfg:487 data/terrain.cfg:374
 msgid "Mushroom Grove"
@@ -3701,7 +3704,6 @@ msgid "Lava"
 msgstr "Saxa liquefacta"
 
 #: data/help.cfg:525
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -3710,7 +3712,9 @@ msgid ""
 "for lawful units and removes the attack bonus from chaotic units."
 msgstr ""
 "Pericula inherentia in conando ambulare super saxa liquefacta satis aperta "
-"sunt. Hoc agrum transitur tantum a unitates qui super ea alte volare possunt."
+"sunt. Hoc agrum transitur tantum a unitates qui super ea alte volare "
+"possunt. Saxa liquefacta lumen magnum dant et illustrat regionem suam. Hic "
+"dat bonum in oppugnatione filiis lucis et tollit bonum filiis tenebrarum."
 
 #: data/help.cfg:530 data/terrain.cfg:52
 msgid "River Ford"
@@ -4692,7 +4696,7 @@ msgstr "In hoc agro mixto contendunt quinque exercitus ut vincant."
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:3
 msgid "6p - Amohsad Caldera"
-msgstr ""
+msgstr "VI l - Cortina Amosadis"
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
 msgid ""
@@ -4833,33 +4837,39 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:6
 msgid "Wesnoth Benchmark: AI"
-msgstr ""
+msgstr "Probatio Occidiseptentrionis: IA"
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:7
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 msgstr ""
+"Probatio occidiseptentrionis, utere --nogui --no-delay --multiplayer --"
+"scenario=wesbench_ai exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:6
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr ""
+msgstr "Probatio Occidiseptentrionis: Gyrum"
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 msgstr ""
+"Probatio Occidiseptentrionis, utere ..no-delay --multiplayer --"
+"scenario=wesbench_scroll --exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:6
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr ""
+msgstr "Probatio Occidiseptentrionis: Per Integumentum Ambulans"
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 msgstr ""
+"Probatio Occidiseptentrionis, utere --no-delay --multiplayer --"
+"scenario=wesbench_shroud_walk --exit-at-end."
 
 #: data/schedules.cfg:81 data/schedules.cfg:89
 msgid "Underground"
@@ -10009,9 +10019,8 @@ msgid "Connect to Server"
 msgstr "Ad Moderatrum Coniungere"
 
 #: src/game.cpp:857
-#, fuzzy
 msgid "You will now connect to a server to download add-ons."
-msgstr "Iam ad moderatrum stipendiorum coniungeris ut stipendia trahas."
+msgstr "Iam ad moderatrum stipendiorum coniungeris ut adiuncta trahas."
 
 #: src/game.cpp:858
 msgid "Server: "
@@ -10022,9 +10031,8 @@ msgid "Could not connect to host."
 msgstr "Non poteram cum hospite coniungere."
 
 #: src/game.cpp:879
-#, fuzzy
 msgid "Asking for list of add-ons"
-msgstr "Petiens elenchum stipendiorum"
+msgstr "Petiens elenchum adiuncta"
 
 #: src/game.cpp:892
 msgid "Error communicating with the server."
@@ -10047,47 +10055,40 @@ msgid "Size"
 msgstr "Magnitudo"
 
 #: src/game.cpp:963
-#, fuzzy
 msgid "Publish add-on: "
-msgstr "Stipendium edere: "
+msgstr "Adiunctum edere: "
 
 #: src/game.cpp:967
-#, fuzzy
 msgid "Delete add-on: "
-msgstr "Stipendium delere: "
+msgstr "Adiunctum delere: "
 
 #: src/game.cpp:971
-#, fuzzy
 msgid "There are no add-ons available for download from this server."
-msgstr "Non sunt stipendia ad manum quae tractari possunt ex hoc moderatruo."
+msgstr "Non sunt adiuncta ad manum quae tractari possunt ex hoc moderatro."
 
 #: src/game.cpp:978
-#, fuzzy
 msgid "Choose the add-on to download."
-msgstr "Stipendium eligere quod trahendum est."
+msgstr "Adiunctum eligere quod trahendum est."
 
 #: src/game.cpp:978
 msgid "Get Add-ons"
-msgstr ""
+msgstr "Adiuncta Trahere"
 
 #: src/game.cpp:998
-#, fuzzy
 msgid "Downloading add-on..."
-msgstr "Stipendium trahitur..."
+msgstr "Adiunctum trahitur..."
 
 #: src/game.cpp:1022
 msgid "Cannot rescan the filesystem"
 msgstr "Non potest systema pligarum rursus scannere"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "Add-on Installed"
-msgstr "Stipendium Inauguratur"
+msgstr "Adiunctum Inauguratur"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "The add-on has been installed."
-msgstr "Stipendium inauguratum est."
+msgstr "Adiunctum inauguratum est."
 
 #: src/game.cpp:1039
 msgid "Network communication error."
@@ -10117,9 +10118,8 @@ msgid "Terms"
 msgstr "Condicio"
 
 #: src/game.cpp:1092
-#, fuzzy
 msgid "Sending add-on"
-msgstr "Stipendium mittitur"
+msgstr "Adiunctum mittitur"
 
 #: src/game.cpp:1099 src/game.cpp:1124 src/multiplayer_wait.cpp:317
 msgid "Response"
@@ -11222,9 +11222,8 @@ msgid "Downloading next level..."
 msgstr "Stipendium proximum trahitur..."
 
 #: src/playcampaign.cpp:413
-#, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
-msgstr "Visne lusum servare?"
+msgstr "Visne lusum servare? (Etiam delet archiva Servatae Automatariae)"
 
 #: src/playcampaign.cpp:440
 msgid "Unknown scenario: '"
@@ -11485,9 +11484,8 @@ msgid "TitleScreen button^Load"
 msgstr "Restituere"
 
 #: src/titlescreen.cpp:258
-#, fuzzy
 msgid "TitleScreen button^Get Add-ons"
-msgstr "Restituere"
+msgstr "Adiuncta Trahere"
 
 #: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
@@ -11527,7 +11525,7 @@ msgstr "Lusum servatum unius lusoris restituere"
 
 #: src/titlescreen.cpp:267
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "Stipendia, aetates vel chartas factae ab utentibus trahere"
 
 #: src/titlescreen.cpp:268
 msgid "Change the language"
