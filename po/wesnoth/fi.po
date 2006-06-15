@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-13 20:52+0200\n"
-"PO-Revision-Date: 2006-06-08 21:40+0200\n"
+"PO-Revision-Date: 2006-06-15 00:02+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -120,19 +120,19 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
-"Johtaminen:\n"
+"Johtaja:\n"
 "Tämä yksikkö voi johtaa viereisiä ystävällisiä yksiköitä, jolloin ne "
 "taistelevat paremmin.\n"
 "\n"
-"Alempitasoiset viereiset ystävälliset yksiköt tekevät enemmän vahinkoa "
-"taistelussa."
+"Kun tämän yksikön vieressä oleva samalla puolella oleva alempitasoinen "
+"yksikkö joutuu taisteluun, sen hyökkäykset tekevät 25% enemmän vahinkoa "
+"jokaista tasoa kohti, jonka yksikkö on johtajaa alempana."
 
 #: data/abilities.cfg:304
 msgid "skirmisher"
 msgstr "kahakointi"
 
 #: data/abilities.cfg:306
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -140,8 +140,7 @@ msgid ""
 msgstr ""
 "Kahakointi:\n"
 "Tämä yksikkö osaa liikkua nopeasti vihollisyksiköiden ohitse, eikä välitä "
-"vihollisen hallitsemista alueista. (Poikkeus: jos kahakointiyksikkö pysähtyy "
-"vihollisen viereen, se ei voi enää liikkua.)"
+"vihollisen hallitsemista alueista."
 
 #: data/abilities.cfg:317
 msgid "illuminates"
@@ -771,7 +770,7 @@ msgstr "miekka"
 #: data/units/Undead_Spirit_Spectre.cfg:47
 #: data/units/Undead_Spirit_Wraith.cfg:24
 msgid "blade"
-msgstr "teräase"
+msgstr "viilto"
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:58
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:71
@@ -846,7 +845,7 @@ msgstr "piikkinuija"
 #: data/units/Undead_Skeleton_Archer.cfg:40 data/units/Wose.cfg:37
 #: data/units/Wose_Ancient.cfg:30 data/units/Wose_Elder.cfg:29
 msgid "impact"
-msgstr "murjova isku"
+msgstr "murskaus"
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:3
 msgid "Mounted Fighter"
@@ -1098,7 +1097,7 @@ msgstr "keihäs"
 #: data/units/Undead_Skele_Soul_Shooter.cfg:59
 #: data/units/Undead_Skeleton_Archer.cfg:65
 msgid "pierce"
-msgstr "lävistys"
+msgstr "pisto"
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:3
 msgid "Cockatrice"
@@ -1604,7 +1603,6 @@ msgid "Wose Sapling"
 msgstr "Puupaimenentaimi"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:31
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -2058,9 +2056,8 @@ msgid "Show Combat"
 msgstr "Näytä taistelu"
 
 #: data/game.cfg:49
-#, fuzzy
 msgid "Mouse Scrolling"
-msgstr "Puupaimenentaimi"
+msgstr "Vieritys hiirellä"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -2761,7 +2758,7 @@ msgstr ""
 
 #: data/help.cfg:195 data/schedules.cfg:5
 msgid "Dawn"
-msgstr "aamunkoite"
+msgstr "aamu"
 
 #: data/help.cfg:196 data/schedules.cfg:18
 msgid "Morning"
@@ -2773,7 +2770,7 @@ msgstr "iltapäivä"
 
 #: data/help.cfg:198 data/schedules.cfg:40
 msgid "Dusk"
-msgstr "iltahämärä"
+msgstr "ilta"
 
 #: data/help.cfg:199 data/schedules.cfg:53
 msgid "First Watch"
@@ -2788,7 +2785,7 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
-"Muista, että jotkin taistelut käydään maan alla, jossa on jatkuvasti yö."
+"Muista, että jotkin taistelut käydään maan alla, missä on jatkuvasti yö!"
 
 #: data/help.cfg:207
 msgid "Experience and Advancement"
@@ -2965,7 +2962,6 @@ msgstr ""
 "ja ylläpito."
 
 #: data/help.cfg:236
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2977,8 +2973,8 @@ msgstr ""
 "\n"
 "\n"
 "Tulot on helppo laskea. Jokaisella vuorolla saat perustulona 2 kultapalaa. "
-"Jokaisesta kylästä saat lisäksi yhden kultapalan vuorossa. Jos sinulla on "
-"kymmenen kylää, saat normaalisti 12 kultapalaa vuorossa. "
+"Jokaisesta hallisemastasi kylästä saat lisäksi yhden kultapalan vuorossa. "
+"Jos sinulla on kymmenen kylää, saat normaalisti 12 kultapalaa vuorossa. "
 "Ylläpitokustannuksesi vähennetään tuloistasi sen mukaisesti, mitä alla "
 "kerrotaan."
 
@@ -3003,7 +2999,6 @@ msgstr ""
 "maksamaan kaksi kultaa vuorossa ylläpitoa."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3036,7 +3031,6 @@ msgid "Wrap Up"
 msgstr "Yhteenveto"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -3083,7 +3077,6 @@ msgstr ""
 "<ref>dst=traits_strong text=vahva</ref>."
 
 #: data/help.cfg:269
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3246,7 +3239,7 @@ msgstr ""
 
 #: data/help.cfg:314
 msgid "trait^Undead"
-msgstr "Epäkuollut"
+msgstr "epäkuollut"
 
 #: data/help.cfg:315
 msgid "Undead units are immune to poison."
@@ -3296,7 +3289,7 @@ msgstr ""
 
 #: data/help.cfg:330 data/terrain.cfg:131
 msgid "Grassland"
-msgstr "Niitty"
+msgstr "tasankoa"
 
 #: data/help.cfg:335
 msgid ""
@@ -3318,7 +3311,7 @@ msgstr ""
 
 #: data/help.cfg:340 data/terrain.cfg:105 data/terrain.cfg:113
 msgid "Road"
-msgstr "Tie"
+msgstr "tie"
 
 #: data/help.cfg:343
 msgid ""
@@ -3332,7 +3325,7 @@ msgstr ""
 
 #: data/help.cfg:348 data/terrain.cfg:367
 msgid "Forest"
-msgstr "Metsä"
+msgstr "metsää"
 
 #: data/help.cfg:353
 msgid ""
@@ -3367,7 +3360,7 @@ msgstr ""
 
 #: data/help.cfg:359 data/terrain.cfg:318
 msgid "Hills"
-msgstr "Kukkula"
+msgstr "mäkiä"
 
 #: data/help.cfg:364
 msgid ""
@@ -3381,18 +3374,18 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
-"Kukkulat edustavat mitä tahansa kohtuullisen hankalaa maastoa, jossa on "
+"Mäet edustavat mitä tahansa kohtuullisen hankalaa maastoa, jossa on "
 "riittävästi esteitä, joiden taakse suojautua. Useimmat yksiköt liikkuvat "
 "kukkuloilla heikommin kuin tasamaalla. Kääpiöt, peikot ja örkit kuitenkin "
-"tuntevat maaston hyvin, eikä heidän vauhtinsa hidastu kukkuloilla. "
-"Ratsuyksiköille ei ole puolustuksellista etua kukkuloista.\n"
+"tuntevat maaston hyvin, eikä heidän vauhtinsa hidastu mäen päällä. "
+"Ratsuyksiköt eivät saa lisäsuojaa kukkuloista.\n"
 "\n"
 "Useimpien yksiköiden puolustus kukkuloilla on 50%. Ratsuyksiköillä se on "
 "vain 40%. Kääpiöiden puolustus kukkuloilla on 60%."
 
 #: data/help.cfg:369 data/terrain.cfg:352 data/terrain.cfg:359
 msgid "Mountains"
-msgstr "Vuori"
+msgstr "vuoria"
 
 #: data/help.cfg:374
 msgid ""
@@ -3417,7 +3410,7 @@ msgstr ""
 
 #: data/help.cfg:379 data/terrain.cfg:43
 msgid "Swamp"
-msgstr "Suo"
+msgstr "suota"
 
 #: data/help.cfg:384
 msgid ""
@@ -3441,7 +3434,7 @@ msgstr ""
 
 #: data/help.cfg:389 data/terrain.cfg:34
 msgid "Shallow Water"
-msgstr "Matala Vesi"
+msgstr "matalaa vettä"
 
 #: data/help.cfg:394
 msgid ""
@@ -3467,7 +3460,7 @@ msgstr ""
 
 #: data/help.cfg:399 data/terrain.cfg:25
 msgid "Deep Water"
-msgstr "Syvä Vesi"
+msgstr "syvää vettä"
 
 #: data/help.cfg:404
 msgid ""
@@ -3486,7 +3479,7 @@ msgstr ""
 
 #: data/help.cfg:409 data/terrain.cfg:302
 msgid "Snow"
-msgstr "Lumi"
+msgstr "lunta"
 
 #: data/help.cfg:414
 msgid ""
@@ -3505,7 +3498,7 @@ msgstr ""
 
 #: data/help.cfg:419 data/terrain.cfg:309
 msgid "Ice"
-msgstr "Jää"
+msgstr "jäätä"
 
 #: data/help.cfg:422
 msgid ""
@@ -3519,7 +3512,7 @@ msgstr ""
 
 #: data/help.cfg:427 data/terrain.cfg:455 data/terrain.cfg:542
 msgid "Castle"
-msgstr "Linna"
+msgstr "linna"
 
 #: data/help.cfg:432
 msgid ""
@@ -3542,7 +3535,7 @@ msgstr ""
 
 #: data/help.cfg:439 data/terrain.cfg:89
 msgid "Sand"
-msgstr "Hiekka"
+msgstr "hiekkaa"
 
 #: data/help.cfg:444
 msgid ""
@@ -3556,11 +3549,11 @@ msgstr ""
 "puolustautumista. Sen sijaan liskojen leveät jalat ja käärmemäiset vartalot "
 "soveltuvat hyvin hiekalla liikkumiseen.\n"
 "\n"
-"Useimpien yksiköiden puolustus hiekalla on 20% 40%:iin."
+"Useimpien yksiköiden puolustus hiekalla on 20%:sta 40%:iin."
 
 #: data/help.cfg:449 data/terrain.cfg:97
 msgid "Desert"
-msgstr "Aavikko"
+msgstr "aavikkoa"
 
 #: data/help.cfg:452
 msgid ""
@@ -3568,13 +3561,12 @@ msgid ""
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
-"Aavikot eroavat hieman hiekkakuoppien ja rantojen muodon osalta muusta "
-"hiekasta, mutta pelaamisen kannalta ne vastaavat <ref>dst=terrain_sand "
-"text=hiekkaa</ref>."
+"Aavikot eroavat hieman hiekkakuoppien ja -rantojen hiekasta. Pelin kannalta "
+"ne kuitenkin vastaavat <ref>dst=terrain_sand text=hiekkaa</ref>."
 
 #: data/help.cfg:457 data/terrain.cfg:398
 msgid "Cave"
-msgstr "Lluola"
+msgstr "luola"
 
 #: data/help.cfg:462
 msgid ""
@@ -3598,7 +3590,7 @@ msgstr ""
 
 #: data/help.cfg:467 data/terrain.cfg:343
 msgid "Rockbound Cave"
-msgstr "Louhikkoinen Luola"
+msgstr "louhikkoluola"
 
 #: data/help.cfg:472
 msgid ""
@@ -3612,19 +3604,18 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
-"Louhikkoinen luola -maasto on syntynyt tuulen ja virtaavan veden "
-"vaikutuksesta. Louhikkoinen luola on vaikeakulkuista useimmille yksiköille, "
-"mutta louhikossa on helppo puolustautua. Peikot ja etenkin kääpiöt, jotka "
+"Louhikkoluola on syntynyt tuulen ja virtaavan veden vaikutuksesta. "
+"Louhikkoinen luola on vaikeakulkuista useimmille yksiköille, mutta "
+"louhikossa on helppo puolustautua. Peikot ja etenkin kääpiöt, jotka "
 "useimmiten asuvat luolissa, ovat tottuneet louhikkoihin ja liikkuvat siellä "
 "ongelmitta.\n"
 "\n"
-"Useimpien yksiköiden puolustus louhikkoisessa luolassa on 50%. Kääpiöillä "
-"puolustus on peräti 60% ja ratsuvyksiköillä vain 40%."
+"Useimpien yksiköiden puolustus louhikkoluolassa on 50%. Kääpiöillä puolustus "
+"on peräti 60% ja ratsuvyksiköillä vain 40%."
 
 #: data/help.cfg:477
-#, fuzzy
 msgid "Illuminated Cave"
-msgstr "valaisee"
+msgstr "valaistu luola"
 
 #: data/help.cfg:482
 msgid ""
@@ -3635,10 +3626,16 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"Valaistuun luolankohtaan pääsee hiukan valoa maanpinnalta, läpäisten "
+"pelottavan pimeyden. Valo antaa hyökkäysetua lainkuuliaisille yksiköille ja "
+"poistaa vastaavan edun kaoottisilta yksiköiltä. Muuten tämä maasto on täysin "
+"samanlainen kuin tavallinen luolamaasto.\n"
+"\n"
+"Yleensä yksiköiden puolustus luolassa on 20%-40%. Kääpiöillä se on 50%."
 
 #: data/help.cfg:487 data/terrain.cfg:374
 msgid "Mushroom Grove"
-msgstr "Sienilehto"
+msgstr "sienilehtoa"
 
 #: data/help.cfg:492
 msgid ""
@@ -3664,7 +3661,7 @@ msgstr ""
 
 #: data/help.cfg:497 data/terrain.cfg:138
 msgid "Savanna"
-msgstr "Savanni"
+msgstr "savannia"
 
 #: data/help.cfg:499
 msgid ""
@@ -3682,7 +3679,7 @@ msgstr ""
 #: data/terrain.cfg:270 data/terrain.cfg:280 data/terrain.cfg:290
 #: src/reports.cpp:374
 msgid "Village"
-msgstr "Kylä"
+msgstr "kylä"
 
 #: data/help.cfg:509
 msgid ""
@@ -3708,7 +3705,7 @@ msgstr ""
 
 #: data/help.cfg:516 data/terrain.cfg:429
 msgid "Chasm"
-msgstr "Kuilu"
+msgstr "kuilu"
 
 #: data/help.cfg:518
 msgid ""
@@ -3724,10 +3721,9 @@ msgstr ""
 
 #: data/help.cfg:523 data/terrain.cfg:436
 msgid "Lava"
-msgstr "Laava"
+msgstr "laavaa"
 
 #: data/help.cfg:525
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -3735,8 +3731,10 @@ msgid ""
 "illuminating the area immediately above it. This provides an attack bonus "
 "for lawful units and removes the attack bonus from chaotic units."
 msgstr ""
-"Laavalla käveleminen on vaarallista. Vain lentävät yksiköt voivat liikkua "
-"yli laavan."
+"Laavassa käveleminen on vaarallista. Tällaisen maaston voivat ylittää vain "
+"yksiköt, jotka pystyvät lentämään huomattavan korkealla sen yläpuolella. "
+"Lisäksi laava hohtaa valoa, joka antaa sen yläpuolella käydyissä "
+"taisteluissa etua lainkuuliaisille yksiköille ja haittaa kaoottisille."
 
 #: data/help.cfg:530 data/terrain.cfg:52
 msgid "River Ford"
@@ -3760,7 +3758,7 @@ msgstr ""
 #: data/help.cfg:537 data/terrain.cfg:62 data/terrain.cfg:70
 #: data/terrain.cfg:78
 msgid "Bridge"
-msgstr "Silta"
+msgstr "silta"
 
 #: data/help.cfg:541
 msgid ""
@@ -3790,14 +3788,14 @@ msgstr ""
 
 #: data/help.cfg:546 data/terrain.cfg:422
 msgid "Cave Wall"
-msgstr "Luolan Seinämä"
+msgstr "kiveä"
 
 #: data/help.cfg:548
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
-"Luolan seinämät ovat vahvaa kiveä, jonka läpi määrätietoisinkaan kulkija ei "
+"Luolanseinämät ovat vahvaa kiveä, jonka läpi määrätietoisinkaan kulkija ei "
 "pääse."
 
 #: data/help.cfg:553
@@ -3930,12 +3928,12 @@ msgid ""
 "You have come across a wishing well.\n"
 "What would you like to wish for?"
 msgstr ""
-"Saavut toivekaivolle.\n"
+"Saavut toivomuskaivolle.\n"
 "Mitä toivot?"
 
 #: data/items.cfg:268
 msgid "A swift victory"
-msgstr "Nopea voitto"
+msgstr "Nopeaa voittoa"
 
 #: data/items.cfg:276
 msgid ""
@@ -3955,7 +3953,7 @@ msgstr "Toivon, että tämä kultapala palautetaan minulle kymmenkertaisena."
 
 #: data/items.cfg:298
 msgid "Peace throughout Wesnoth."
-msgstr "Rauha läpi Wesnothin."
+msgstr "Rauhaa läpi Wesnothin."
 
 #: data/items.cfg:306
 msgid "The only thing worth wishing for is peace throughout the land."
@@ -3983,7 +3981,7 @@ msgstr "Myrkky"
 
 #: data/items.cfg:377
 msgid "Poison is seeping through the veins of this unit at this very moment."
-msgstr "Myrkky virtaa tälläkin hetkellä pitkin tämän yksikön suonia."
+msgstr "Myrkky virtaa tälläkin hetkellä tämän yksikön suonissa."
 
 #: data/items.cfg:412
 msgid "Holy Water"
@@ -4123,6 +4121,10 @@ msgid ""
 "victory is punctuated by the petrified forms of some of Wesnoth's greatest "
 "heroes."
 msgstr ""
+"Pelaajien yksiköt joutuvat kulkemaan vaikeassa maastossa tällä pelottavalla "
+"seudulla, joka on täynnä kivisiä patsaita. Seutu oli joskus tarunomaisen "
+"Suuren Basiliskin koti, ja patsaiksi kivettyneiden joukossa on useita "
+"Wesnothin muinaisia suuria sankareita."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:84
 msgid ""
@@ -4199,6 +4201,13 @@ msgid ""
 "of his once great bearing and strength.\n"
 "(inscribed by Fynmiir)"
 msgstr ""
+"Tämä Wesnothin kulta-ajalla elänyt suuri sankari ja sotajoukkojen komentaja "
+"tuli tähän pahuuden pesään matkalla hyökkäysretkellään örkkien maahan. "
+"Katalien olentojen yllättämänä monet hänen tovereistaan saivat surmansa, "
+"mutta hän taisteli urheasti tappaen monta vihollista. Mutta voi! Vaikka hän "
+"sai viimeisenkin örkin tapettua, hirmuinen basiliski muutti hänet kiveksi. "
+"Hänen suuresta voimastaan ja ylväästä asennostaan on jäljellä enää muisto.\n"
+"(kaivertanut Fynmiir)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:139
 msgid ""
@@ -4312,13 +4321,12 @@ msgid "2p - Meteor Lake"
 msgstr "2p - Meteorijärvi"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
-#, fuzzy
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region. Recommended setting of 2 gold per village."
 msgstr ""
-"Kauan sitten suuri meteori putosi taivaista jättäen jälkensä tälle alueelle. "
-"Suositeltu asetus 2 kultapalaa/kylä."
+"Kauan sitten suuri meteori putosi taivaista jättäen jälkensä tälle muuten "
+"havupuita täynnä olevalle seudulle. Suositeltu asetus 2 kultapalaa/kylä."
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:3
 msgid "2p - Sablestone Delta"
@@ -4477,17 +4485,16 @@ msgid "4p - Blue Water Province"
 msgstr "4p - Sinisen veden maa"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
-#, fuzzy
 msgid ""
 "It has been said that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice. Recommended setting of 2 gold per village."
 msgstr ""
-"On sanottu, että sinisen veden maa on tuhottu ja rakennettu uudelleen "
+"Kuulemma Sinisen veden maa on tuhottu ja rakennettu uudelleen "
 "parisenkymmentä kertaa. Nyt, kun armeijat jälleen kohtaavat kivisillä "
-"virroilla ja lumihuippuisten vuorten alla, kyläläiset tuskin viitsivät "
-"huomata. Suositeltu asetus 2 kultapalaa/kylä."
+"virroilla ja lumihuippuisten vuorten alla, kiviäkin kiinnostaa enemmän kuin "
+"kyläläisiä. Suositeltu asetus 2 kultapalaa/kylä."
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:9
 msgid "4p - Castle Hopping Isle"
@@ -4529,15 +4536,14 @@ msgid "4p - King of the Hill"
 msgstr "4p - Kukkulan kuningas"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2v2 as well. There are 36 villages. Recommended "
 "setting of 2gpv."
 msgstr ""
 "Keskilinnakkeen alueen hallinta on erittäin hyödyllistä tässä 36x36 neljän "
-"pelaajan kartassa (kaikki pelaavat itsekseen).  Suositeltu asetus 2 "
-"kultapalaa/kylä."
+"pelaajan kartassa. Peli toimii joko kaikki kaikkia vastaan tai kahden "
+"pelaajan joukkueissa. Kyliä on 36. Suositeltu asetus on 2 kultapalaa/kylä."
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
@@ -4556,26 +4562,24 @@ msgid "4p - Loris River"
 msgstr "4p - Lorisjoki"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
-#, fuzzy
 msgid ""
 "A 25x25 2v2 map centered around a river with keeps in opposite corners. "
 "Designed for 1&4 vs 2&3. There are 28 villages. Recommended setting of 2gpv."
 msgstr ""
-"25x25 2 vs. 2 kartta, joka keskittyy joen ympärille. Linnakeparit "
-"sijaitsevat vastakkaisissa kulmissa. Suunniteltu joukkueille 1&3 vs. 2&4. "
-"Kartassa on 28 kylää. Suositeltu asetus 2 kultapalaa/kylä."
+"25x25 kartta kahdelle 2 hengen joukkueelle. Kartan keskellä on joki, ja "
+"vastakkaisissa kulmissa linnakeparit. Suunnitellut joukkueet ovat 1,3 "
+"vastaan 2,4. Kartassa on 28 kylää. Suositeltu asetus on 2 kultapalaa/kylä."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
 msgid "4p - Morituri"
 msgstr "4p - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
 "setting of 2 gold per village."
 msgstr ""
-"Kuka selviää voittajana tältä petolliselta taistelutantereelta. Suositeltu "
+"Kuka selviää voittajana tältä petolliselta taistelutantereelta? Suositeltu "
 "asetus 2 kultapalaa/kylä."
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:5
@@ -4583,30 +4587,30 @@ msgid "4p - Paths of Daggers"
 msgstr "4p - Tikaritiet"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
-#, fuzzy
 msgid ""
 "A 35X27 2v2 map with 5 separate paths of engagement.  Balanced to be played "
 "east vs west (1&4 vs 2&3), but works well with any teams or FFA.  2gpv. "
 "28villages."
 msgstr ""
-"35x27 2 vs. 2 kartta, jossa on viisi erillistä taistelurintamaa. Suunniteltu "
-"joukkueille itä vs. länsi, mutta toimii muillakin joukkueilla tai ilman "
-"joukkueita. Kartassa on 28 kylää. Suositeltu asetus 2 kultapalaa/kylä."
+"35x27 kartta kahdelle 2 hengen joukkueelle, jossa on viisi erillistä "
+"taistelurintamaa. Suunniteltu pelattavaksi itä länttä vastaan (1,4 vastaan "
+"2,3), mutta toimii muillakin joukkueilla tai kaikki kaikkia vastaan. "
+"Kartassa on 28 kylää. Suositeltu asetus 2 kultapalaa/kylä."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:5
 msgid "4p - Siege Castles"
 msgstr "4p - Piiritetyt linnat"
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:7
-#, fuzzy
 msgid ""
 "40X30 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well 2v2 or FFA. There are approximately 45 villages. "
 "Recommended setting of 2gpv."
 msgstr ""
-"40x30 4 pelaajan kartta, jossa neljä mahtavaa linnaa kohtaavat kahden joen "
-"risteyksessä. Toimii hyvin 2 vs. 2 -pelissä tai kaikkien pelatessa "
-"itsekseen. Kyliä on noin 45 kpl. Suositeltu asetus 2 kultapalaa/kylä."
+"40x30 kartta 4 pelaajalle. Neljän mahtavan linnan sotajoukot kohtaavat "
+"kahden joen risteyksessä. Kartta toimii hyvin 2 hengen joukkueilla tai "
+"kaikki kaikkia vastaan. Kyliä on noin 45. Suositeltu asetus 2 on kultapalaa/"
+"kylä."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
@@ -4634,7 +4638,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:3
 msgid "6p - Amohsad Caldera"
-msgstr ""
+msgstr "6p - Amohsad Caldera"
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
 msgid ""
@@ -4774,33 +4778,39 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:6
 msgid "Wesnoth Benchmark: AI"
-msgstr ""
+msgstr "Wesnothin nopeustestausta: tekoäly"
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:7
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 msgstr ""
+"Wesnothin nopeustestausta, käytä parametreja --nogui --no-delay --"
+"multiplayer --scenario=wesbench_ai --exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:6
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr ""
+msgstr "Wesnothin nopeustestausta: ruudun vierittäminen"
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 msgstr ""
+"Wesnothin nopeustestausta, käytä parametreja --no-delay --multiplayer --"
+"scenario=wesbench_scroll --exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:6
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr ""
+msgstr "Wesnothin nopeustestausta: kulkeminen tuntemattomassa maastossa"
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 msgstr ""
+"Wesnothin nopeustestausta, käytä parametreja --no-delay --multiplayer --"
+"scenario=wesbench_shroud_walk --exit-at-end."
 
 #: data/schedules.cfg:81 data/schedules.cfg:89
 msgid "Underground"
@@ -4858,17 +4868,12 @@ msgstr ""
 "joistain hyökkäyksistä."
 
 #: data/special-notes.cfg:20
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
-"Luutnantit johtavat pieniä ihmisryhmiä, ja ovat aseistautuneet miekalla ja "
-"varsijousella.\n"
-"\n"
-"Huomio: Luutnantin johtajuus taistelukentällä auttaa ystävällisiä yksiköitä "
-"heidän vierellään tekemään enemmän vahinkoa taistelussa, joskin tämä pätee "
-"vain alemmantasoisiin yksiköihin."
+"Tämä yksikkö on johtaja. Sen ympärillä olevat matalampitasoiset yksiköt "
+"tekevät enemmän vahinkoa taistelussa."
 
 #: data/special-notes.cfg:23
 msgid ""
@@ -4976,15 +4981,12 @@ msgstr ""
 "hyökkäykset heikkenevät vastaavasti."
 
 #: data/special-notes.cfg:65
-#, fuzzy
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"\n"
-"\n"
-"Huomio: ritari rynnäköi peitsellään. Tämä kaksinkertaistaa vahingon "
-"molemmille osapuolille. Tämä ei vaikuta puolustaessa."
+"Tämä yksikkö tekee rynnäköidessään kaksinkertaiset vauriot, mutta myös "
+"kärsii kaksinkertaisesti. Puolustaessaan yksikkö tekee vauriota normaalisti."
 
 #: data/special-notes.cfg:68
 msgid ""
@@ -5052,67 +5054,67 @@ msgstr "Huntu"
 
 #: data/terrain.cfg:18 src/multiplayer_lobby.cpp:357
 msgid "Fog"
-msgstr "Sumu"
+msgstr "sumua"
 
 #: data/terrain.cfg:121
 msgid "Dirt"
-msgstr "Muta"
+msgstr "mutaa"
 
 #: data/terrain.cfg:210
 msgid "Oasis"
-msgstr "Keidas"
+msgstr "keidas"
 
 #: data/terrain.cfg:325
 msgid "Dunes"
-msgstr "Hiekkadyynit"
+msgstr "hiekkadyynejä"
 
 #: data/terrain.cfg:334
 msgid "Snow Hills"
-msgstr "Luminen Kukkula"
+msgstr "lumisia mäkiä"
 
 #: data/terrain.cfg:381
 msgid "Tropical Forest"
-msgstr "trooppinen metsä"
+msgstr "trooppista metsää"
 
 #: data/terrain.cfg:389
 msgid "Snow Forest"
-msgstr "luminen metsä"
+msgstr "lumista metsää"
 
 #: data/terrain.cfg:405
 msgid "Cave Lit"
-msgstr "Valoisa Luola"
+msgstr "valoisa luola"
 
 #: data/terrain.cfg:414
 msgid "Impassable Mountains"
-msgstr "Ylitsepääsemätön Vuori"
+msgstr "ylitsepääsemätön vuoristo"
 
 #: data/terrain.cfg:445
 msgid "Great Tree"
-msgstr "Suuri Puu"
+msgstr "suuri puu"
 
 #: data/terrain.cfg:464
 msgid "Encampment"
-msgstr "Leiri"
+msgstr "leiri"
 
 #: data/terrain.cfg:474
 msgid "Dwarven Castle"
-msgstr "Kääpiölinna"
+msgstr "kääpiölinna"
 
 #: data/terrain.cfg:484
 msgid "Keep"
-msgstr "Linnake"
+msgstr "linnake"
 
 #: data/terrain.cfg:503
 msgid "Ruin"
-msgstr "Raunio"
+msgstr "raunioita"
 
 #: data/terrain.cfg:513
 msgid "Sunken Ruin"
-msgstr "Uponnut Raunio"
+msgstr "uponneita raunioita"
 
 #: data/terrain.cfg:524
 msgid "Swamp Ruin"
-msgstr "Soistunut Raunio"
+msgstr "soistuneita raunioita"
 
 #: data/themes/default.cfg:80
 msgid "Menu"
@@ -5424,13 +5426,12 @@ msgstr ""
 "niitä hyökkäävien yksiköiden tukemiseen."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
-"'Hidas' -hyökkäystaito saa vihollisen liikkumaan hitaammin, mutta puolittaa "
-"lisäksi tämän tekemän vahingon."
+"Hidastus puolittaa vihollisen liikkeen ja sen tekemän vahingon sen oman "
+"vuoron loppuun asti."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -5715,7 +5716,6 @@ msgid "Drake Flameheart"
 msgstr "Draakki Liekkisydän"
 
 #: data/units/Drake_Flameheart.cfg:27
-#, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves, have veins which course with fire rather than blood. "
@@ -5724,20 +5724,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Sanotaan että draakkien muinaisimmilla suvuilla, lohikäärmeiden suorilla "
+"Kuulemma draakkien muinaisimmilla suvuilla, lohikäärmeiden suorilla "
 "perillisillä, on suonissaan tulta, ei verta. Se että he osaavat sylkeä tulta "
 "vahvistaa uskoa tähän, vaikkakaan kukaan ei jostain syystä ole yrittänyt "
-"leikata yhtä auki saadakseen tämän selville.\n"
+"leikata draakkia auki saadakseen tämän selville.\n"
 "\n"
-"Huomio: Tulisydämen johtamiskyky sallii viereisissä heksoissa olevien "
-"matalatasoisimpien yksiköiden tehdä lisää vahinkoa taistelussa."
+"Huomioita:"
 
 #: data/units/Drake_Flare.cfg:3
 msgid "Drake Flare"
 msgstr "Liekkidraakki"
 
 #: data/units/Drake_Flare.cfg:26
-#, fuzzy
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
@@ -5749,8 +5747,7 @@ msgstr ""
 "kutsuvat lieskoiksi, pyrkivät tulemaan kansansa johtajiksi sekä sodassa että "
 "rauhassa.\n"
 "\n"
-"Huomio: Lieskan johtamiskyky sallii viereisissä heksoissa olevien "
-"matalatasoisimpien yksiköiden tehdä lisää vahinkoa taistelussa."
+"Huomioita:"
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
@@ -5776,7 +5773,6 @@ msgid "Drake Glider"
 msgstr "Liitodraakki"
 
 #: data/units/Drake_Glider.cfg:21
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little armor as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
@@ -5793,7 +5789,12 @@ msgstr ""
 "hylätessään luolansa. Nämä draakit ovat taidokkaita taistejoita, ja heillä "
 "on monien sukulaistensa tavoin käytössään sisäinen tuli. Liitäjät käyttävät "
 "nopeuttaan myös taklatakseen vihollisensa tuhoon. Parhaat liitäjät toivovat, "
-"että heidät hyväksytään korkealla lentävien taivasdraakkien riveihin."
+"että heidät hyväksytään korkealla lentävien taivasdraakkien riveihin. "
+"Korkealta taivaalta nämä draakit näkevät puolustukseen tarkoitettujen "
+"suojien heikot kohdat. Heidän lentotaitonsa sallii heidän hyökätä tarkasti "
+"myös suojassa olevia vihollisia vastaan.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Drake_Glider.cfg:83 data/units/Drake_Hurricane.cfg:98
 #: data/units/Drake_Sky.cfg:97
@@ -5805,7 +5806,6 @@ msgid "Hurricane Drake"
 msgstr "Myrskydraakki"
 
 #: data/units/Drake_Hurricane.cfg:30
-#, fuzzy
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite amongst "
 "those drakes which are gifted with flight. Soaring high in the air, they can "
@@ -5815,7 +5815,9 @@ msgid ""
 msgstr ""
 "Myrskydraakit ovat ilmojen herroja, lentävien draakkien eliittiä. Lentäen "
 "korkealla ilmassa he näkevät maaston yli ja ampuvat estoitta tulta "
-"vihollisiinsa."
+"vihollisiinsa.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
@@ -6329,7 +6331,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Haltialumoojatar"
 
 #: data/units/Elvish_Enchantress.cfg:18
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
@@ -6338,8 +6339,10 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Haltialumoojattaret ovat hyökkäystaikuuden mestareita. He iskevät "
-"vihollisiaan sekä jäisellä tuulella että loitsimillaan juurilla, jotka "
-"sitovat viholliset paikoilleen."
+"vihollisiaan sekä toisesta maailmasta kutsumallaan jäisellä tuulella että "
+"loitsimillaan juurilla, jotka sitovat viholliset paikoilleen.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Elvish_Enchantress.cfg:92 data/units/Elvish_Shaman.cfg:57
 #: data/units/Elvish_Sorceress.cfg:92
@@ -6382,7 +6385,6 @@ msgid "Elvish Marksman"
 msgstr "Haltiatarkk'ampuja"
 
 #: data/units/Elvish_Marksman.cfg:23
-#, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -6394,16 +6396,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Yksi asia, mikä parantaa haltiain jousiammuntaa on heidän epätavallisen "
-"selvä näkönsä. Jousiammunnan taitava haltia kykenee osumaan kohteisiin, "
-"joita ihminen ei edes näkisi, jopa yöllä ja pystyy vetämään seuraavan nuolen "
-"heti kun ensimmäisen on annettu liitää.\n"
+"Yksi syy siihen, miksi haltiat ampuvat niin tarkasti, on heidän "
+"epätavallisen selvä näkönsä. Taitava haltiajousiampuja kykenee osumaan "
+"kohteisiin, joita ihminen ei edes näkisi, jopa yöllä, ja pystyy vetämään "
+"seuraavan nuolen heti päästettyään irti edellisestä.\n"
 "\n"
 "Tällä mahtavalla taidolla on hintansa, sillä nämä haltiat ovat taitamattomia "
 "miekan käytössä. \n"
 "\n"
-"Huomio: Näiden haltioiden tarkk'ammuntakyky sallii heille suuren "
-"mahdollisuuden osua viholliseen hyökätessä. "
+"Huomioita:"
 
 #: data/units/Elvish_Marksman.cfg:115 data/units/Elvish_Sharpshooter.cfg:114
 msgid "longbow"
@@ -6704,7 +6705,6 @@ msgid "Goblin Impaler"
 msgstr "Hiisiseivästäjä"
 
 #: data/units/Goblin_Impaler.cfg:19
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as fodder for their enemy's front line. Those "
 "who have somehow managed to survive invariably equip themselves to continue "
@@ -6714,11 +6714,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Örkit käyttävät hiisiä nuolenruokana taistelussa. Ne, jotka jotenkin "
-"selviävät, varustautuvat selviytyäkseen jatkossakin. Isompi keihäs kompensoi "
-"lyhyitä käsiä ja parempi panssari suojaa heidän heikkoja ruumiitaan. \n"
+"selviävät, varustautuvat selviytyäkseen jatkossakin. Pitkällä keihäällä voi "
+"sohia niin kauas, ettei lyhyistä käsistä ole enää niin paljon haittaa. "
+"Lisäksi näillä hiisillä on parempi panssari.\n"
 "\n"
-"Huomio: Aseen pituus sallii seivästäjän lyödä lähitaistelussa ensin, jopa "
-"puolustaessa. "
+"Huomioita:"
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -6749,7 +6749,6 @@ msgid "Goblin Pillager"
 msgstr "Hiisiryöväri"
 
 #: data/units/Goblin_Pillager.cfg:19
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -6762,8 +6761,7 @@ msgstr ""
 "hiidet ovat kantava voima: ne polttavat uhrien kodit ja viljan ja kantavat "
 "verkkoja häirtäkseen niitä jotka järjestäytyvät puolustukseen.\n"
 "\n"
-"Huomio: Verkkoon kiinni jääminen puolittaa vihollisen liikkumisen ja tämän "
-"tekemän vahingon."
+"Huomioita:"
 
 #: data/units/Goblin_Pillager.cfg:40
 msgid "torch"
@@ -6779,7 +6777,6 @@ msgid "Goblin Rouser"
 msgstr "Hiisinostattaja"
 
 #: data/units/Goblin_Rouser.cfg:26
-#, fuzzy
 msgid ""
 "Standard bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -6789,14 +6786,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Hiisi, joka on selvinnyt niin useista taisteluista että sitä voidaan pitää "
-"veteraanina, on jo kyllin harvinainen tapaus. Vielä harvinaisempaa on, että "
-"muut hiidet tunnustavat ja kunnioittavat tätä. Nostattajan palava kiihotus "
-"kannustaa vähemmän kokeneita hiisiä taistelemaan hurjemmin ja pidempään "
-"ennen kuolemaansa.\n"
+"Hiisien lipunkantajat ovat jonkinlainen omituisuus. On hyvin harvinaista, "
+"että jokin hiisi selviää hengissä useammasta taistelusta. Vielä "
+"harvinaisempaa on, että muut hiidet tunnustavat ja kunnioittavat tätä. "
+"Nostattajan palava kiihotus kannustaa vähemmän kokeneita hiisiä taistelemaan "
+"hurjemmin ja pidempään ennen kuolemaansa.\n"
 "\n"
-"Huomio: Hiisinostattajan johtamiskyky sallii viereisissä heksoissa olevien "
-"matalatasoisimpien yksiköiden tehdä lisää vahinkoa taistelussa."
+"Huomioita:"
 
 #: data/units/Goblin_Spearman.cfg:3
 msgid "Goblin Spearman"
@@ -6919,7 +6915,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Erikoishuomautus:"
+"Huomioita:"
 
 #: data/units/Human_Horse_Grand_Knight.cfg:73
 #: data/units/Human_Horse_Knight.cfg:72 data/units/Human_Horse_Lancer.cfg:25
@@ -7113,7 +7109,6 @@ msgid "Duelist"
 msgstr "Kaksintaistelija"
 
 #: data/units/Human_Loyalist_Duelist.cfg:20
-#, fuzzy
 msgid ""
 "It is a peculiar fashion of Wesnoth's nobility, in that they typically "
 "enroll their sons into one of two orders of armigers, training them either "
@@ -7143,15 +7138,13 @@ msgstr ""
 "kauan ollakseen veteraaneja, ovat usein tehneet tällaisia myönnytyksiä "
 "käytännölle ja selviämiselle. \n"
 "\n"
-"Huomio: Heidän taitonsa kahakoitsijoina sallii kaksintaistelijoiden jättää "
-"huomiotta vihollisen hallitsemat alueet."
+"Huomioita:"
 
 #: data/units/Human_Loyalist_Fencer.cfg:3
 msgid "Fencer"
 msgstr "Miekkailija"
 
 #: data/units/Human_Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -7172,9 +7165,9 @@ msgstr ""
 "Iskujen luotettava väistäminen edellyttää hyväkuntoista ruumista ja kykyä "
 "kestää kovaa koulutusta. \n"
 "\n"
-"Varusteinaan vain tikari ja rapiiri, miekkailijat ovat ketteriä jaloistaan "
-"ja hyödyllisiä monissa tilanteissa, joissa heidän panssarilla varustetut "
-"ystävänsä ovat alakynnessä. He nauttivat, jopa kirjaimellisesti, "
+"Miekkailijat ovat varustettuja vain tikarilla ja säilällä. He ovat ketteriä "
+"jaloistaan ja hyödyllisiä monissa tilanteissa, joissa heidän panssarilla "
+"varustetut ystävänsä ovat alakynnessä. He nauttivat, jopa kirjaimellisesti, "
 "tanssimisesta esimerkiksi raskaan jalkaväen ympärillä, pilkaten hintaa, "
 "jonka he maksavat täydestä levyhaarniskasta. \n"
 "\n"
@@ -7186,7 +7179,6 @@ msgid "General"
 msgstr "Kenraali"
 
 #: data/units/Human_Loyalist_General.cfg:30
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms they swore fealty to. Their "
@@ -7198,16 +7190,13 @@ msgstr ""
 "ja tärkeiden alueiden puolustus ihmisten kuningaskunnissa. Kenraalien "
 "koulutus on laajaa ja perusteellista.\n"
 "\n"
-"Huomio: Kenraalien johtajuus taistelukentällä auttaa ystävällisiä yksiköitä "
-"heidän vierellään tekemään enemmän vahinkoa taistelussa, joskin tämä pätee "
-"vain alemmantasoisiin yksiköihin."
+"Huomioita:"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:3
 msgid "Grand Marshal"
 msgstr "Suurmarsalkka"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:26
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have surpassed many trials by fire, "
@@ -7220,9 +7209,7 @@ msgstr ""
 "saavuttaneet ovat läpäisseet monia tulikokeita ja todistaneet huomattavan "
 "taitonsa sekä taistelemisessa että johtamisessa.\n"
 "\n"
-"Huomio: Suurmarsalkan johtajuus taistelukentällä auttaa ystävällisiä "
-"yksiköitä heidän vierellään tekemään enemmän vahinkoa taistelussa, joskin "
-"tämä pätee vain alemmantasoisiin yksiköihin."
+"Huomioita:"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:3
 msgid "Halberdier"
@@ -7346,7 +7333,6 @@ msgid "Lieutenant"
 msgstr "Luutnantti"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:25
-#, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks.\n"
@@ -7356,9 +7342,7 @@ msgstr ""
 "Luutnantit johtavat pieniä ihmisryhmiä, ja ovat aseistautuneet miekalla ja "
 "varsijousella.\n"
 "\n"
-"Huomio: Luutnantin johtajuus taistelukentällä auttaa ystävällisiä yksiköitä "
-"heidän vierellään tekemään enemmän vahinkoa taistelussa, joskin tämä pätee "
-"vain alemmantasoisiin yksiköihin."
+"Huomioita:"
 
 #: data/units/Human_Loyalist_Longbowman.cfg:3
 msgid "Longbowman"
@@ -8101,7 +8085,6 @@ msgid "female^Mermaid Diviner"
 msgstr "Merenneitoin ennustaja"
 
 #: data/units/Mermaid_Diviner.cfg:27
-#, fuzzy
 msgid ""
 "Mermaid Priestesses meet their calling with a fervor that leaves their human "
 "counterparts somewhat taken aback. This may have its roots in a legend they "
@@ -8118,10 +8101,7 @@ msgstr ""
 "vähän, on selvää, että valon voima auttoi jotenkin tuhoamaan sen ja loi "
 "turvan heidän kansalleen.\n"
 "\n"
-"Huomio: Ennustajan valo on taikuutta, joten sillä on aina suuri "
-"todennäköisyys osua. Tämä valo vahingoittaa epäkuolleita paljon. Ennustajat "
-"parantavat yksiköitä ympärillään ja kykenevät poistamaan myrkyn. Sen lisäksi "
-"heillä on valaistuksen taito, joka nostaa valotasoa merenneidon ympärillä."
+"Huomioita:"
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
@@ -8737,7 +8717,7 @@ msgstr ""
 
 #: data/units/Orcish_Crossbowman.cfg:28 data/units/Orcish_Slurbow.cfg:29
 msgid "short sword"
-msgstr "lyhyt miekka"
+msgstr "lyhytmiekka"
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
@@ -9244,21 +9224,22 @@ msgid "Soulless"
 msgstr "Sieluton"
 
 #: data/units/Undead_Corpse_Soulless.cfg:20
-#, fuzzy
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living.\n"
 "\n"
 "Special Notes:"
 msgstr ""
-"Nämä elävät ruumit ovat tulleet vahvoiksi taisteltuaan kauan eläviä vastaan."
+"Nämä elävät ruumit ovat tulleet vahvoiksi taisteltuaan kauan eläviä "
+"vastaan.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Undead_Corpse_Walking.cfg:4
 msgid "Walking Corpse"
 msgstr "Elävä kuollut"
 
 #: data/units/Undead_Corpse_Walking.cfg:19
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Although weak in combat, these zombies can spread their curse to those they "
@@ -9268,7 +9249,9 @@ msgid ""
 msgstr ""
 "Elävät kuolleet ovat kuolleiden ruumita, jotka on nostettu vale-elämään "
 "pimeällä taikuudella. Ne ovat heikkoja taistelussa, mutta voivat levittää "
-"kirouksensa niihin, jotka tappavat, kasvattaen epäkuolleiden armeijaa."
+"kirouksensa niihin, jotka tappavat, kasvattaen epäkuolleiden armeijaa.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:3
 msgid "Ancient Lich"
@@ -9539,7 +9522,6 @@ msgid "Soul Shooter"
 msgstr "Sielun ampuja"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:19
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -9550,10 +9532,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Parhaat luujousimiehet tulevat aina niistä, jotka olivat edellisessä "
-"elämässä jousimiheä. He vaeltavat taistelukentillä hämärä muisto vanhoista "
+"elämässä jousimiehiä. He vaeltavat taistelukentillä hämärä muisto vanhoista "
 "taidoistaan mielessään, epätietoisina ja piittamattomina tarkoituksestaan ja "
 "vihollisistaan. Heitä ajaa vain viha, joka syntyy heidän tyhjän ja "
-"hajanaisen elämänsä tuskasta."
+"hajanaisen elämänsä tuskasta.\n"
+"Huomioita:"
 
 #: data/units/Undead_Skeleton.cfg:3
 msgid "Skeleton"
@@ -9683,7 +9666,6 @@ msgid "Spectre"
 msgstr "Surmanhenki"
 
 #: data/units/Undead_Spirit_Spectre.cfg:20
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "master's power. These abominations are a rightful terror to the living, and "
@@ -9703,8 +9685,7 @@ msgstr ""
 "kohtaamisessa on luultavasti se, että ne ovat vain paljon vaarallisemman "
 "voiman airuita. \n"
 "\n"
-"Huomio: Haamun terän isku imee elämää uhrista haamulle. Haamuilla on varsin "
-"erikoiset vastustukset, ja ne liikkuvat hitaasti veden päällä."
+"Huomioita:"
 
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
@@ -9716,7 +9697,6 @@ msgid "Wraith"
 msgstr "Aave"
 
 #: data/units/Undead_Spirit_Wraith.cfg:19
-#, fuzzy
 msgid ""
 "These tortured forms of what were once warriors are among the most "
 "terrifying things a necromancer can create, for a sword will cleave right "
@@ -9739,16 +9719,13 @@ msgstr ""
 "Tämän vuoksi luotiin tapa, jonka avulla ne kiroukset, jotka ajavat näitä "
 "olentoja voisivat uudistaa itseään juuri siitä voimasta, mikä niitä uhkaa.\n"
 "\n"
-"Huomio: Isku aaveen terästä imee elämää uhrista ja uudistaa aavetta. "
-"Aaveilla on varsin erikoiset vastustukset ja ne liikkuvat hitaasti avoveden "
-"yli."
+"Huomioita:"
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
 msgstr "Puupaimen"
 
 #: data/units/Wose.cfg:20
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -9774,15 +9751,13 @@ msgstr ""
 "Puupaimenet eivät ole sotaisia, mutta ovat hyvin vahvoja. He ovat myös "
 "varsin hitaita.\n"
 "\n"
-"Huomio: Puupaimenet uusiutuvat käyttämällä luonnon rikkauksia ympärillään, "
-"joten he eivät tarvitse kyliä parantuakseen."
+"Huomioita:"
 
 #: data/units/Wose_Ancient.cfg:3
 msgid "Ancient Wose"
 msgstr "Muinainen puupaimen"
 
 #: data/units/Wose_Ancient.cfg:20
-#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -9806,15 +9781,13 @@ msgstr ""
 "Tälläisia kohtaamisia enempää ei näistä muinaisimmista puupaimenista "
 "tiedetä.\n"
 "\n"
-"Huomio: Puupaimenet uusiutuvat käyttämällä luonnon rikkauksia ympärillään, "
-"joten he eivät tarvitse kyliä parantuakseen."
+"Huomioita:"
 
 #: data/units/Wose_Elder.cfg:3
 msgid "Elder Wose"
 msgstr "Vanhempi puupaimen"
 
 #: data/units/Wose_Elder.cfg:19
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -9839,8 +9812,7 @@ msgstr ""
 "Puupaimenet eivät suinkaan ole sotureita, mutta heidän voimansa on varsin "
 "kyvykäs väkivaltaan, jos joku jotenkin suututtaa nämä olennot.\n"
 "\n"
-"Huomio: Puupaimenet uusiutuvat käyttämällä luonnon rikkauksia ympärillään, "
-"joten he eivät tarvitse kyliä parantuakseen."
+"Huomioita:"
 
 #: src/about.cpp:32
 msgid "+Core Developers"
@@ -10155,9 +10127,8 @@ msgid "Connect to Server"
 msgstr "Yhdistä palvelimeen"
 
 #: src/game.cpp:857
-#, fuzzy
 msgid "You will now connect to a server to download add-ons."
-msgstr "Yhdistetään kampanjapalvelimeen kampanjoiden lataamiseksi."
+msgstr "Yhdistetään palvelimeen lisäosien lataamiseksi."
 
 #: src/game.cpp:858
 msgid "Server: "
@@ -10169,7 +10140,7 @@ msgstr "Yhteyttä isäntäkoneeseen ei saatu."
 
 #: src/game.cpp:879
 msgid "Asking for list of add-ons"
-msgstr ""
+msgstr "Pyydetään lisäosia"
 
 #: src/game.cpp:892
 msgid "Error communicating with the server."
@@ -10192,47 +10163,40 @@ msgid "Size"
 msgstr "koko"
 
 #: src/game.cpp:963
-#, fuzzy
 msgid "Publish add-on: "
-msgstr "Julkaise kampanja: "
+msgstr "Julkaise lisäosa:"
 
 #: src/game.cpp:967
-#, fuzzy
 msgid "Delete add-on: "
-msgstr "Poista kampanja: "
+msgstr "Poista lisäosa:"
 
 #: src/game.cpp:971
-#, fuzzy
 msgid "There are no add-ons available for download from this server."
-msgstr "Yhtäkään kampanjaa ei ole haettavissa tältä palvelimelta."
+msgstr "Tällä palvelimellta ei ole yhtään lisäosaa."
 
 #: src/game.cpp:978
-#, fuzzy
 msgid "Choose the add-on to download."
-msgstr "Valitse ladattava kampanja:"
+msgstr "Valitse ladattava lisäosa:"
 
 #: src/game.cpp:978
 msgid "Get Add-ons"
-msgstr ""
+msgstr "Hanki lisäosia"
 
 #: src/game.cpp:998
-#, fuzzy
 msgid "Downloading add-on..."
-msgstr "Haetaan kampanjaa..."
+msgstr "Haetaan lisäosaa..."
 
 #: src/game.cpp:1022
 msgid "Cannot rescan the filesystem"
 msgstr "Ei voida uudelleenlukea tiedostojärjestelmää."
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "Add-on Installed"
-msgstr "Kampanja asennettu"
+msgstr "Lisäosa asennettu"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "The add-on has been installed."
-msgstr "Kampanja on asennettu."
+msgstr "Lisäosa on asennettu."
 
 #: src/game.cpp:1039
 msgid "Network communication error."
@@ -10261,9 +10225,8 @@ msgid "Terms"
 msgstr "Ehdot"
 
 #: src/game.cpp:1092
-#, fuzzy
 msgid "Sending add-on"
-msgstr "Vastaanotetaan kampanjaa..."
+msgstr "Lähetetään lisäosaa"
 
 #: src/game.cpp:1099 src/game.cpp:1124 src/multiplayer_wait.cpp:317
 msgid "Response"
@@ -10691,7 +10654,7 @@ msgstr "Viesti:"
 
 #: src/menu_events.cpp:510
 msgid "Send to allies only"
-msgstr "Lähetä vain ystäville"
+msgstr "Lähetä vain liittolaisille"
 
 #: src/menu_events.cpp:560 src/multiplayer_wait.cpp:407
 msgid "unit^Gold"
@@ -11048,7 +11011,7 @@ msgstr "Tämä ei ole moninpelin tallenne."
 
 #: src/multiplayer_connect.cpp:1169
 msgid "Cannot find era $era"
-msgstr "Ei löydetä aikakautta $era"
+msgstr "Aikakautta $era ei löydy"
 
 #: src/multiplayer_connect.cpp:1187
 msgid ""
@@ -11283,7 +11246,7 @@ msgstr "Lopeta"
 
 #: src/multiplayer_lobby.cpp:473
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
+msgstr "Hyppää tarkkaillessasi heti nykyiseen vuoroon "
 
 #: src/multiplayer_ui.cpp:79
 msgid "Invalid Color"
@@ -11359,9 +11322,9 @@ msgid "Downloading next level..."
 msgstr "Haetaan seuraavaa tasoa..."
 
 #: src/playcampaign.cpp:413
-#, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
-msgstr "Haluatko tallentaa pelisi?"
+msgstr ""
+"Haluatko tallentaa pelisi? (Tämä myös poistaa automaattitallennetut pelit)"
 
 #: src/playcampaign.cpp:440
 msgid "Unknown scenario: '"
@@ -11492,6 +11455,7 @@ msgid ""
 msgstr ""
 "Tämä yksikkö on myrkytetty. Se menettää 8 EP joka vuoro, kunnes se voi etsiä "
 "parannusta kylästä tai ystävälliseltä yksiköltä jolla on parannustaito. \n"
+"\n"
 "Myrkky ei tapa yksikköä, vaan jättää jäljelle vähintään 1 EP."
 
 #: src/reports.cpp:140
@@ -11500,7 +11464,7 @@ msgstr "myrkytetty: "
 
 #: src/reports.cpp:147
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr "Tämä yksikkö on kivetetty. Se ei voi liikkua, eikä hyökätä."
+msgstr "Tämä yksikkö on kivetetty. Se ei voi liikkua eikä hyökätä."
 
 #: src/reports.cpp:147
 msgid "stone: "
@@ -11532,15 +11496,15 @@ msgstr "Kaoottiset yksiköt: "
 
 #: src/reports.cpp:376
 msgid "Owned village"
-msgstr "Omistamasi kylä"
+msgstr "sinun kyläsi"
 
 #: src/reports.cpp:378
 msgid "Enemy village"
-msgstr "Viholliskylä"
+msgstr "viholliskylä"
 
 #: src/reports.cpp:380
 msgid "Allied village"
-msgstr "Ystävällinen kylä"
+msgstr "liittolaisen kylä"
 
 #: src/reports.cpp:454
 msgid "Observers:"
@@ -11624,7 +11588,6 @@ msgid "TitleScreen button^Load"
 msgstr "Lataa"
 
 #: src/titlescreen.cpp:258
-#, fuzzy
 msgid "TitleScreen button^Get Add-ons"
 msgstr "Lataa"
 
@@ -11666,7 +11629,7 @@ msgstr "Lataa tallennettu yksinpeli."
 
 #: src/titlescreen.cpp:267
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "Lataa käyttäjien tekemiä kampanjoita, aikakausia, tai karttapakkauksia"
 
 #: src/titlescreen.cpp:268
 msgid "Change the language"
@@ -11726,7 +11689,7 @@ msgstr "neutraali"
 
 #: src/upload_log.cpp:278
 msgid "Enable summary uploads"
-msgstr ""
+msgstr "Salli yhteenvetojen lataaminen"
 
 #: src/upload_log.cpp:283
 msgid ""
@@ -11742,7 +11705,7 @@ msgstr ""
 
 #: src/upload_log.cpp:284
 msgid "Summaries are stored here:"
-msgstr ""
+msgstr "Yhteenvetoja pidetään täällä:"
 
 #: src/upload_log.cpp:286
 msgid "You can view the results at:"
