@@ -19,6 +19,7 @@
 wesnothd \- Kampen om \fBWesnoth\fRs n\[:a]tverksdaemon
 .
 .SH SYNOPSIS
+.
 .B wesnothd 
 .RB [\| \-dvV \|]
 .RB [\| \-c
@@ -29,6 +30,7 @@ wesnothd \- Kampen om \fBWesnoth\fRs n\[:a]tverksdaemon
 .IR antal \|]
 .
 .SH BESKRIVNING
+.
 Kampen om \fBWesnoth\fRs n\[:a]tverksdaemon f\[:o]r gruppspel. Se 
 http://www.wesnoth.org/wiki/ServerAdministration f\[:o]r information om vilka 
 kommandon servern accepterar via wesnoth-klienten eller sockeln.
@@ -41,10 +43,10 @@ anger var wesnothd skall leta efter konfigurationsfilen. Se avsnittet om
 .B SERVERKONFIGURATION
 nedan f\[:o]r syntaxen.
 .TP
-.BR -d, \ --daemon
+.B -d, \ --daemon
 k\[:o]r wesnothd som en daemon.
 .TP
-.BR -h, \ --help
+.B -h, \ --help
 visar en sammanfattning av m\[:o]jliga kommandoradsflaggor.
 .TP
 .BI -p,\ --port \ port
@@ -54,10 +56,10 @@ anv\[:a]nds port 15000.
 .BI -t,\ --threads \ antal
 anger antalet tr\[oa]dar f\[:o]r n\[:a]tverkstrafik (standardv\[:a]rde: 5; max: 30)
 .TP
-.BR -V,\ --version
+.B -V,\ --version
 visar versionen.
 .TP
-.BR -v,\ --verbose
+.B -v,\ --verbose
 ger mer utf\[:o]rlig information.
 .
 .SH SERVERKONFIGURATION
@@ -67,13 +69,13 @@ ger mer utf\[:o]rlig information.
 .P
 [\fItag\fR]
 .IP
-nyckel="\fIv\[:a]rde\fR"
+parameter="\fIv\[:a]rde\fR"
 .IP
-nyckel="\fIv\[:a]rde\fR,\fIv\[:a]rde\fR,..."
+parameter="\fIv\[:a]rde\fR,\fIv\[:a]rde\fR,..."
 .P
 [/\fItag\fR]
 .
-.SS "Globala nycklar:"
+.SS "Globala parametrar:"
 .
 .TP
 .B connections_allowed
@@ -124,8 +126,8 @@ s\[:a]tt som \fBversions_accepted\fR.
 .P
 .B [proxy]
 En tag som anger att servern skall agera som proxy och vidarebefordra 
-klientf\[:o]rfr\[oa]gningar till den angiva servern. Accepterar samma nycklar som 
-[redirect].
+klientf\[:o]rfr\[oa]gningar till den angiva servern. Accepterar samma parametrar 
+som [redirect].
 .
 .SH F\[:O]RFATTARE
 Skriven av David White <davidnwhite@verizon.net>.
@@ -148,5 +150,6 @@ s\[oa]som publicerad av Free Software Foundation. INGEN garanti ges; inte ens
 f\[:o]r S\[:A]LJBARHET eller L\[:A]MPLIGHET F\[:O]R ETT VISST SYFTE.
 .
 .SH SE \[:A]VEN
+.
 .BR wesnoth (6), 
 .BR wesnoth_editor (6)

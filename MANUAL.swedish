@@ -1,5 +1,4 @@
 
-
 MANUAL FÖR KAMPEN OM WESNOTH
 
 Om du inte har spelat Kampen om Wesnoth förut, så vill du kanske läsa
@@ -38,7 +37,7 @@ ctrl-a		Växla mellan accelererad och normal spelhastighet
 ctrl-s		Spara spel
 ctrl-o		Öppna sparat spel
 
-/		Sök
+/		Sök efter etikett eller trupp
 t		Fortsätt avbruten truppförflyttning
 z		Zooma in
 x		Zooma ut
@@ -47,15 +46,17 @@ ctrl-n		Byt namn på trupp
 1-7		Visa hur långt vald trupp kan nå på givet antal drag
 l		Centrera kartan på ledaren
 d		Visa beskrivningen för vald trupp
-ctrl-d		Visa vald trupps försvar mot attacker
 ctrl-g		Sätt på/stäng av rutmönster
-alt-k		Sätt på/stäng av slöja
-ctrl-k		Uppdatera slöja
+S		Uppdatera slöjan nu
+D		Fördröj slöjuppdateringar
 alt-l		Namnge terrängruta
+ctrl-c		Ta bort etiketter
 alt-s		Visa statustabell
-ctrl-t		Visa terrängtabell
 ctrl-m		Sätt på/stäng av ljudet
 ctrl-j		Visa scenariomål
+s		Visa statistik
+alt-u		Visa trupplista
+alt-c		Visa chatlogg
 :		Kommandoradsläge, se http://www.wesnoth.org/wiki/CommandMode
 
 I Mac OS X används Cmd istället för Ctrl och Opt istället för Alt.
@@ -233,17 +234,17 @@ skadepoäng, oavsett tiden på dygnet.
 LÄKANDE
 
 Skadade trupper som står i byar återfår åtta hälsopoäng varje drag.
-Skadade trupper som står intill trupper med förmågan att "vårda" kommer
+Skadade trupper som står intill trupper med förmågan att "hela" kommer
 också att bli friskare. En trupp som inte flyttar eller strider under ett
 drag "vilar", och återfår två hälsopoäng.
 
-En trupp som har förmågan att "vårda" läker intillstående allierade
-trupper vid början av den vårdande truppens drag. Hos förgiftade trupper
-stoppas giftets utbredning.
+En trupp som har förmågan att "hela" läker intillstående allierade trupper
+vid början av den helande truppens drag. Hos förgiftade trupper stoppas
+giftets utbredning.
 
-En trupp som har förmågan att "hela" botar förgiftade trupper. En helande
-trupp har även förmågan att "vårda", men en förgiftad trupp botas från
-giftet, istället för att endast giftets utbredning stoppas.
+En trupp som har förmågan att "bota" upphäver förgiftning i trupper. En
+botande trupp har ofta även förmågan att "hela", men en förgiftad trupp
+botas först från förgiftningen.
 
 Ingen trupp kan läkas av mer än en läkande effekt samtidigt, effekterna är
 alltså inte kumulativa. Det är alltid den mest kraftfulla läkemetoden som
@@ -319,15 +320,15 @@ Att starta ett gruppspel
   Steg 4: klicka [Klar!].
 
 
-KAMPANJSERVER
+EXTRAMATERIAL
 
-Du kan ladda ner extra kampanjer genom att välja "Kampanj" i huvudmenyn,
-och därefter, i kampanjmenyn, välja "Hämta fler kampanjer". Detta
-resulterar i att klienten försöka ansluta till port 15002 på
-kampanjservern (campaigns.wesnoth.org), så du måste se till att din
-brandvägg tillåter detta. Kampanjerna är bidrag från användare och det är
-inte säkert att alla fungerar korrekt i den senaste versionen av spelet -
-ta en titt i forumet om du stöter på problem.
+Du kan ladda ner extramaterial (användares kampanjer, eror, etc) genom att
+välja "Extramaterial" i huvudmenyn. Detta resulterar i att klienten
+försöker ansluta till port 15003 på servern för extramaterial
+(campaigns.wesnoth.org), så du måste se till att din brandvägg tillåter
+detta. Extramaterialet består av bidrag från användare och det är inte
+säkert att alla fungerar korrekt i den senaste versionen av spelet - ta en
+titt i forumet (http://forum.wesnoth.org/) om du stöter på problem.
 
 
 ANDRA RESURSER

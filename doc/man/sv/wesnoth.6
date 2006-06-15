@@ -19,6 +19,7 @@
 Kampen om Wesnoth \- ett dragbaserat strategispel i fantasymilj\[:o]
 .
 .SH SYNOPSIS
+.
 .B wesnoth
 [\fIFLAGGOR\fR]
 [\fIDATAMAPP\fR]
@@ -32,11 +33,11 @@ Kampen om
 Besegra alla fiendeledare med dina handplockade trupper och hush\[oa]ll med
 dina resurser av guld och byar. Alla trupper har sina egna f\[:o]rdelar och
 nackdelar; f\[:o]r att vinna m\[oa]ste du anv\[:a]nda trupperna d\[:a]r de kommer till
-st\[:o]rst nytta, samtidigt som du tvingar dina fiender till att sl\[oa]ss p\[oa] s\[:a]mre
-villkor. Dina trupper samlar erfarenhet och f\[oa]r nya f\[:o]rm\[oa]gor och blir
-m\[:a]ktigare. Spela p\[oa] ditt eget spr\[oa]k och pr\[:o]va dina f\[:a]rdigheter mot en smart 
-datormotst\[oa]ndare, eller anslut dig till Wesnoths stora f\[:o]lje av 
-n\[:a]tverksspelare. Skapa dina egna truppslag, scenarier och kampanjer, och 
+st\[:o]rst nytta, samtidigt som du tvingar dina fiender till att sl\[oa]ss p\[oa]
+s\[:a]mre villkor. Dina trupper samlar erfarenhet och f\[oa]r nya f\[:o]rm\[oa]gor och
+blir m\[:a]ktigare. Spela p\[oa] ditt eget spr\[oa]k och pr\[:o]va dina f\[:a]rdigheter mot en
+smart datormotst\[oa]ndare, eller anslut dig till Wesnoths stora f\[:o]lje av
+n\[:a]tverksspelare. Skapa dina egna truppslag, scenarier och kampanjer, och
 dela med dig av dem till andra spelare.
 .
 .SH FLAGGOR
@@ -44,39 +45,37 @@ dela med dig av dem till andra spelare.
 .TP
 .BI --bpp \ nummer
 anger v\[:a]rdet BitsPerPixel. Exempel: --bpp 32
-.
 .TP
 .BI --compress \ infil \  utfil
 komprimerar en fil (\fIinfil\fR) med ett sparat spel i WML-textformat till 
 en fil i bin\[:a]rt WML-format (\fIutfil\fR).
 .TP
-.B -d, \ --debug
-visar extrainformation f\[:o]r debuggning och aktiverar 
-debug-kommandon f\[:o]r kommandoradsl\[:a]get i spelet (se wikin p\[oa] 
-http://www.wesnoth.org/ f\[:o]r mer information om kommandoradsl\[:a]ge).
+.BR -d ", " --debug
+visar extrainformation f\[:o]r debuggning och aktiverar debug-kommandon f\[:o]r
+kommandoradsl\[:a]get i spelet (se wikin p\[oa] http://www.wesnoth.org/ f\[:o]r mer
+information om kommandoradsl\[:a]ge).
 .TP
 .BI --decompress \ infil \  utfil
 dekomprimerar en fil (\fIinfil\fR) med ett sparat spel i bin\[:a]rt WML-format 
 till en fil i WML-textformat (\fIutfil\fR).
 .TP
-.B -f, \ --fullscreen
+.BR -f ", " --fullscreen
 k\[:o]r spelet i helsk\[:a]rm.
 .TP
 .B --fps
 visar antalet ramar per sekund som spelet k\[:o]rs i f\[:o]r n\[:a]rvarande i 
 ena h\[:o]rnet av f\[:o]nstret.
 .TP
-.B -h, \ --help
+.BR -h ", " --help
 visar en sammanfattning av m\[:o]jliga kommandoradsflaggor.
 .TP
 .BI --load \ fil
 k\[:o]r spelet som finns sparat i filen \fIfil\fR, som finns i spelets 
-standardmapp 
-f\[:o]r sparade spel.
+standardmapp f\[:o]r sparade spel.
 .TP
-.BR --log-error="dom\[:a]n1,dom\[:a]n2,..." , \ --log-warning=... , \ --log-info=...
-anger loggningsniv\[oa]n f\[:o]r debug-dom\[:a]nerna. F\[:o]r att se allt kan "all" 
-anv\[:a]ndas.
+.BR --log-error="dom\[:a]n1,dom\[:a]n2,..." ", " --log-warning="..." ", "
+--log-info="..." anger loggningsniv\[oa]n f\[:o]r debug-dom\[:a]nerna. F\[:o]r att se allt
+kan "all" anv\[:a]ndas.
 .B --log-info
 visar alla meddelanden,
 .B --log-warning
@@ -98,17 +97,28 @@ k\[:o]r spelet utan ljud och musik.
 .BR --path
 skriver ut namnet p\[oa] speldatamappen.
 .TP
-.BI -r,\ --resolution \ XxY
+.BR -r ", " --resolution \ \fIXxY\fR
 anger sk\[:a]rmuppl\[:o]sningen. Exempel: -r 800x600
 .TP
-.B -t, \ --test
+.BR -t ", " --test
 k\[:o]r spelet i ett litet testscenario.
 .TP
-.B -v, \ --version
+.BR -v ", " --version
 visar versionen.
 .TP
-.B -w, \ --windowed
+.BR -w ", " --windowed
 k\[:o]r spelet i f\[:o]nsterl\[:a]ge.
+.TP
+.BR --no-delay
+k\[:o]r spelet utan f\[:o]rdr\[:o]jningar f\[:o]r prestandatest av grafiken. Detta anv\[:a]nds
+automatiskt om 
+.B --nogui
+anv\[:a]nds.
+.TP
+.BR --exit-at-end
+avslutar spelet s\[oa] snart scenariot \[:a]r \[:o]ver, utan att visa 
+seger-/nederlagsdialogen, som kr\[:a]ver att anv\[:a]ndaren klickar OK. Detta 
+anv\[:a]nds \[:a]ven f\[:o]r scriptade prestandatest.
 .
 .SH Flaggor f\[:o]r --multiplayer
 .
@@ -179,5 +189,6 @@ s\[oa]som publicerad av Free Software Foundation. INGEN garanti ges; inte ens
 f\[:o]r S\[:A]LJBARHET eller L\[:A]MPLIGHET F\[:O]R ETT VISST SYFTE.
 .
 .SH SE \[:A]VEN
+.
 .BR wesnoth_editor (6),
 .BR wesnothd (6)
