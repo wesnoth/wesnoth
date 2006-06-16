@@ -395,6 +395,8 @@ void play_controller::finish_side_turn(){
 		gui_->invalidate_all();
 	}
 
+	gui_->set_route(NULL);
+	mouse_handler_.set_selected_hex(gamemap::location::null_location);
 	game_events::pump();
 }
 
@@ -479,7 +481,8 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 		return !events::commands_disabled &&
 			menu_handler_.current_unit(mouse_handler_) != units_.end() &&
 			!(menu_handler_.current_unit(mouse_handler_)->second.unrenamable()) &&
-			menu_handler_.current_unit(mouse_handler_)->second.side() == gui_->viewing_team()+1;
+			menu_handler_.current_unit(mouse_handler_)->second.side() == gui_->viewing_team()+1 &&
+			teams_[menu_handler_.current_unit(mouse_handler_)->second.side() - 1].is_human();
 
 	default:
 		return false;
