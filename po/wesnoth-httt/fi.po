@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-12 22:22+0200\n"
-"PO-Revision-Date: 2006-06-08 22:40+0200\n"
+"PO-Revision-Date: 2006-06-16 22:18+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -3955,6 +3955,8 @@ msgid ""
 "the denizens of these caves. We must ask our dwarven allies to help search "
 "the caves with us."
 msgstr ""
+"Emme voi tutkia näin suurta aluetta yksinämme, erityisesti jos näiden "
+"luolien asukkaita tulee "
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:133
 msgid "Yes, I feel it is near here! We must search for it carefully."
@@ -3962,17 +3964,19 @@ msgstr "Kyllä, tunnen, että se on lähellä! Meidän on etsittävä tarkasti."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:139
 msgid "An earthquake! We'll be trapped!"
-msgstr ""
+msgstr "Maanjäristys! Jäämme jumiin!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:143
 msgid ""
 "No, not an earthquake princess. I feel it too. Something is... aware... of "
 "us."
 msgstr ""
+"Ei, prinsessa, ei maanjäristys. Minäkin tunnen sen. Jokin... tarkkailee... "
+"meitä."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:147
 msgid "Aware? Who? Delfador, what does he mean?"
-msgstr ""
+msgstr "Tarkkailee? Kuka? Delfador, mitä hän tarkoittaa?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:151
 msgid ""
@@ -3981,18 +3985,22 @@ msgid ""
 "mind. It was forged here, not far north of where we now stand. The sheer "
 "power of it!"
 msgstr ""
+"Valtikka... maa... sula laava... tuli... ilma ympärillämme... kaikki. Se "
+"kutsuu perillistä - en pysty enää pitämään sitä poissa mielestäni. Se "
+"taottiin täällä, ei kovinkaan paljoa pohjoiseen siitä, missä nyt seisomme. "
+"Mikä voima!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:156
 msgid "Where? Where is it?"
-msgstr ""
+msgstr "Missä? Missä se on?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:160
 msgid "North. More than that, I cannot tell."
-msgstr ""
+msgstr "Pohjoisessa. Muuta en osaa kertoa."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:164
 msgid "Konrad, as promised, here is my purse, full of gold."
-msgstr ""
+msgstr "Konrad, kuten lupasin, tässä on kultaa täynnä oleva kukkaroni."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:172
 msgid "You receive 300 pieces of gold!"
@@ -5778,9 +5786,8 @@ msgstr ""
 "taistelua ja puhukaamme."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:436
-#, fuzzy
 msgid "Clan Members Defeated"
-msgstr "|$units_slain| klaanin jäsentä kukistettu."
+msgstr "klaanin jäsentä kukistettu"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:455
 msgid ""
@@ -6022,9 +6029,9 @@ msgid ""
 "ambition. You will now be held to account for your misdeeds. For the young "
 "prince Konrad! For WESNOTH!"
 msgstr ""
-"Oh, kurja nainen, minä olen hyvinkin todellinen. Maa palaa ahneudestasi ja "
-"kunnianhimostasi. Nyt sinut asetetaan vastuuseen teoistasi. Nuorelle Konrad "
-"prinssille! Wesnothille!"
+"Oi kurja nainen, minä olen hyvinkin todellinen. Maa palaa ahneudestasi ja "
+"kunnianhimostasi. Nyt sinut asetetaan vastuuseen teoistasi. Nuoren Konrad-"
+"prinssin puolesta! WESNOTHIN puolesta!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:342
 msgid "Konrad strikes a killing blow!"
@@ -6032,7 +6039,7 @@ msgstr "Konrad iskee kuolettavan iskun!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:371
 msgid "As I destroyed your son, I now destroy you."
-msgstr "Kuten kerran tuhosin pikasi, tuhoan nyt sinut."
+msgstr "Kuten kerran tuhosin poikasi, tuhoan nyt sinut."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:375
 msgid ""
@@ -6044,7 +6051,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:379
 msgid "I have always been the humble servant of the crown, even now."
-msgstr "Olen aina ollut kruunun nörin palvelija, jopa nyt."
+msgstr "Olen aina ollut kruunun nöyrin palvelija, jopa nyt."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:383
 msgid ""
@@ -6057,8 +6064,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:387
 msgid "How dare I? I am Delfador, High Provost of the Council of Archmagi..."
 msgstr ""
-"Kuinka kehtaan? Minä olen Delfador, Arkkivelhojen Neuvoston Korkea "
-"Pormestari..."
+"Kuinkako? Minä olen Delfador, Arkkivelhojen Neuvoston Korkea Puheenjohtaja..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:391
 msgid "... bearer of the staff of Emeric, guardian of the book of Crelanu ..."
@@ -6092,7 +6098,7 @@ msgstr "Petosta! Petturit ovat surmanneet minut!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:453
 msgid "And so passes Asheviere, the dark queen of Wesnoth."
-msgstr "Ja niin kuoli Asheviere, Wesnothin pimeä kuningatar."
+msgstr "Ja niin kuoli Asheviere, Wesnothin musta kuningatar."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/26_Battle_for_Wesnoth.cfg:457
 msgid "We have won at last! Li'sar! You will be queen!"
@@ -6188,9 +6194,8 @@ msgid "No! This is the end! We have been defeated!"
 msgstr "Ei! Tämä on loppu! Meidät on kukistettu!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:33
-#, fuzzy
 msgid "Do you want this unit to pick up the sword?"
-msgstr "Haluatko tämän yksikön poimivan panssarin?"
+msgstr "Haluatko tämän yksikön poimivan miekan?"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:35
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:107
@@ -6199,7 +6204,7 @@ msgstr "Kyllä"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:39
 msgid "Flaming Sword"
-msgstr ""
+msgstr "Liekehtivä miekka"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:42
 msgid ""
@@ -6208,10 +6213,14 @@ msgid ""
 "fire. Tongues of flame dance on the surface, giving the bluish steel a "
 "flawless mirrored finish."
 msgstr ""
+"Vuosisatoja sitten haltiaseppämestarit, joiden nimet ovat jo painuneet "
+"unholaan, takoivat tämän mahtavan miekan. Miekan terään loihdittiin vahvalla "
+"loitsulla ikuinen maaginen tuli. Lieskat lepattavat sen pinnalla ja saavat "
+"sinertävän teräksen hohtamaan kuin virheetön peili."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:43
 msgid "Only the leader of an army can wield this sword!"
-msgstr ""
+msgstr "Vain armeijan ylipäällikkö voi käyttää tätä miekkaa!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:55
 msgid ""
@@ -6219,10 +6228,13 @@ msgid ""
 "to life! Strangely, you feel no heat once you pick it up, yet the grass at "
 "your feet bursts into flame as you test the heft of this mighty weapon."
 msgstr ""
+"Kun tartut kimaltelevaan kahvaan, miekka purskahtaa liekkeihin! Outoa kyllä, "
+"et tunne minkäänlaista kuumuutta käsissäsi, vaikka ruoho jalkojesi juuressa "
+"leimahtaa liekkeihin, kun kokeilet tätä mahtavaa asetta."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:61
 msgid "flaming sword"
-msgstr ""
+msgstr "liekehtivä miekka"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:77
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:157
@@ -6264,14 +6276,13 @@ msgid "Scepter of Fire"
 msgstr "Tulinen valtikka"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:186
-#, fuzzy
 msgid ""
 "This ancient Scepter was forged by the Dwarves. A symbol of the kingship of "
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
 "bearer!"
 msgstr ""
-"Tämän ikiaikaisen valtikan takoivat kääpiöt. Tämän Wesnothin kuninkuuden "
-"symbolin kantaja voi ampua valtikalla tulipalloja kohti vastustajiaan!"
+"Tämä ikiaikainen valtikka, Wesnothin kuninkuuden symboli, on kääpiöiden "
+"tekoa. Se on myös mahtava ase, jolla voi ampua tulipalloja!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:187
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:352
@@ -6283,14 +6294,13 @@ msgstr ""
 "uskaltaa koskea tähän!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:351
-#, fuzzy
 msgid ""
 "This ancient Scepter was forged by the great Dwarves of the Deep Mountains. "
 "A symbol of the kingship of Wesnoth, the Scepter has the power to shoot "
 "fireballs at enemies of the bearer!"
 msgstr ""
-"Tämän ikiaikaisen valtikan takoivat kääpiöt. Tämän Wesnothin kuninkuuden "
-"symbolin kantaja voi ampua valtikalla tulipalloja kohti vastustajiaan!"
+"Tämä ikiaikainen valtikka, Wesnothin kuninkuuden symboli, on Syvävuorten "
+"kääpiöiden tekoa. Se on myös mahtava ase, jolla voi ampua tulipalloja!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:377
 msgid "Here it is at last, I have the Scepter!"
