@@ -70,9 +70,100 @@ void sort_units(std::vector< unit > &units)
 
 
 // Copy constructor
-unit::unit(const unit& u)
+unit::unit(const unit& o):
+		cfg_(o.cfg_),
+		movement_b_(o.movement_b_),
+		defense_b_(o.defense_b_),
+		resistance_b_(o.resistance_b_),
+
+		advances_to_(o.advances_to_),
+		id_(o.id_),
+		race_(o.race_),
+		name_(o.name_),
+		description_(o.description_),
+		custom_unit_description_(o.custom_unit_description_),
+		underlying_description_(o.underlying_description_),
+		language_name_(o.language_name_),
+		undead_variation_(o.undead_variation_),
+		variation_(o.variation_),
+
+		hit_points_(o.hit_points_),
+		max_hit_points_(o.max_hit_points_),
+		max_hit_points_b_(o.max_hit_points_b_),
+		experience_(o.experience_),
+		max_experience_(o.max_experience_),
+		max_experience_b_(o.max_experience_b_),
+		level_(o.level_),
+		alignment_(o.alignment_),
+		flag_rgb_(o.flag_rgb_),
+
+		unrenamable_(o.unrenamable_),
+		side_(o.side_),
+		gender_(o.gender_),
+
+		alpha_(o.alpha_),
+
+		recruits_(o.recruits_),
+
+		movement_(o.movement_),
+		max_movement_(o.max_movement_),
+		max_movement_b_(o.max_movement_b_),
+		movement_costs_(o.movement_costs_),
+		hold_position_(o.hold_position_),
+		end_turn_(o.end_turn_),
+		resting_(o.resting_),
+		attacks_left_(o.attacks_left_),
+		max_attacks_(o.max_attacks_),
+
+		states_(o.states_),
+		variables_(o.variables_),
+		emit_zoc_(o.emit_zoc_),
+		state_(o.state_),
+
+		overlays_(o.overlays_),
+
+		role_(o.role_),
+		attacks_(o.attacks_),
+		attacks_b_(o.attacks_),
+		facing_(o.facing_),
+
+		traits_description_(o.traits_description_),
+		unit_value_(o.unit_value_),
+		goto_(o.goto_),
+		interrupted_move_(o.interrupted_move_),
+		flying_(o.flying_),
+
+		modification_descriptions_(o.modification_descriptions_),
+		defensive_animations_(o.defensive_animations_),
+
+		teleport_animations_(o.teleport_animations_),
+
+		extra_animations_(o.extra_animations_),
+
+		death_animations_(o.death_animations_),
+
+		movement_animations_(o.movement_animations_),
+
+		standing_animations_(o.standing_animations_),
+
+		leading_animations_(o.leading_animations_),
+		anim_(o.anim_),
+		frame_begin_time(o.frame_begin_time),
+		offset_(o.offset_),
+		unit_halo_(o.unit_halo_),
+		unit_anim_halo_(o.unit_anim_halo_),
+		getsHit_(o.getsHit_),
+		refreshing_(o.refreshing_),
+		hidden_(o.hidden_),
+		draw_bars_(o.draw_bars_),
+
+		modifications_(o.modifications_),
+		gamedata_(o.gamedata_),
+		units_(o.units_),
+		map_(o.map_),
+		gamestatus_(o.gamestatus_),
+		teams_(o.teams_)
 {
-	*this = u;
 	anim_ = NULL;
 	unit_halo_ = 0;
 	unit_anim_halo_ = 0;
@@ -201,6 +292,21 @@ unit::~unit()
 		delete anim_;
 	}
 }
+
+
+
+unit& unit::operator=(const unit& u)
+{ 
+	// use copy constructor to make sure we are coherant
+	if (this != &u) { 
+		this->~unit();
+		new (this) unit(u) ; 
+	}
+	return *this ; 
+} 
+
+
+
 void unit::set_game_context(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams)
 {
 	gamedata_ = gamedata;
