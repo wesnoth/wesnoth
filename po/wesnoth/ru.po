@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-13 20:52+0200\n"
+"POT-Creation-Date: 2006-06-17 13:05+0200\n"
 "PO-Revision-Date: 2006-01-03 20:27+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
@@ -596,56 +596,56 @@ msgstr "+Норвежский перевод"
 msgid "Polish Translation"
 msgstr "+Польский перевод"
 
-#: data/about.cfg:415
+#: data/about.cfg:416
 #, fuzzy
 msgid "Portuguese Translation"
 msgstr "+Португальский перевод"
 
-#: data/about.cfg:422
+#: data/about.cfg:423
 #, fuzzy
 msgid "Portuguese (Brazil) Translation"
 msgstr "+Португальский перевод"
 
-#: data/about.cfg:436
+#: data/about.cfg:437
 #, fuzzy
 msgid "Russian Translation"
 msgstr "+Русский перевод"
 
-#: data/about.cfg:446
+#: data/about.cfg:447
 #, fuzzy
 msgid "Serbian Translation"
 msgstr "+Сербский перевод"
 
-#: data/about.cfg:453
+#: data/about.cfg:454
 #, fuzzy
 msgid "Slovak Translation"
 msgstr "+Словакский перевод"
 
-#: data/about.cfg:460
+#: data/about.cfg:461
 #, fuzzy
 msgid "Slovenian Translation"
 msgstr "+Словенский перевод"
 
-#: data/about.cfg:467
+#: data/about.cfg:468
 #, fuzzy
 msgid "Spanish Translation"
 msgstr "+Испанский перевод"
 
-#: data/about.cfg:480
+#: data/about.cfg:481
 #, fuzzy
 msgid "Swedish Translation"
 msgstr "+Шведский перевод"
 
-#: data/about.cfg:492
+#: data/about.cfg:493
 #, fuzzy
 msgid "Turkish Translation"
 msgstr "+Турецкий перевод"
 
-#: data/about.cfg:503 data/help.cfg:252
+#: data/about.cfg:504 data/help.cfg:252
 msgid "Contributors"
 msgstr "Участники проекта"
 
-#: data/about.cfg:519
+#: data/about.cfg:520
 #, fuzzy
 msgid "Bots"
 msgstr "+Боты"
@@ -5099,7 +5099,7 @@ msgstr "Действия"
 msgid "End Turn"
 msgstr "Закончить ход"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2262
+#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2368
 msgid "HP"
 msgstr "ЗД"
 
@@ -10311,7 +10311,7 @@ msgstr "Победа:"
 msgid "Defeat:"
 msgstr "Поражение:"
 
-#: src/gamestatus.cpp:491
+#: src/gamestatus.cpp:527
 msgid "Could not write to file"
 msgstr "Не могу записать в файл"
 
@@ -10549,7 +10549,7 @@ msgstr "Получено ущерба (В среднем)"
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/menu_events.cpp:237 src/unit.cpp:2293
+#: src/menu_events.cpp:237 src/unit.cpp:2399
 msgid "Moves"
 msgstr "Ходы"
 
@@ -10612,7 +10612,7 @@ msgstr "Игра успешно сохранена"
 msgid "The game could not be saved"
 msgstr "Игра не может быть сохранена"
 
-#: src/menu_events.cpp:472 src/menu_events.cpp:474 src/play_controller.cpp:638
+#: src/menu_events.cpp:472 src/menu_events.cpp:474 src/play_controller.cpp:641
 #: src/playcampaign.cpp:118
 msgid "Auto-Save"
 msgstr "Авто-Сохранение"
@@ -10905,12 +10905,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2378
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2484
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2385
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2491
 msgid ")"
 msgstr ")"
 
@@ -11298,11 +11298,11 @@ msgstr "Не могу отправить данные для инициализ�
 msgid "The file you have tried to load is corrupt"
 msgstr "Файл, который Вы пытались загрузить, повреждён"
 
-#: src/play_controller.cpp:642
+#: src/play_controller.cpp:645
 msgid "Back to start"
 msgstr ""
 
-#: src/play_controller.cpp:644
+#: src/play_controller.cpp:647
 msgid "Back to turn "
 msgstr ""
 
@@ -11668,15 +11668,15 @@ msgstr ""
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
-#: src/unit.cpp:2228 src/unit.cpp:2383
+#: src/unit.cpp:2334 src/unit.cpp:2489
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2310
+#: src/unit.cpp:2416
 msgid "XP to advance"
 msgstr "ОП для улучшения"
 
-#: src/unit.cpp:2374
+#: src/unit.cpp:2480
 msgid ": "
 msgstr ": "
 

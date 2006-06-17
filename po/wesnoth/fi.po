@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-13 20:52+0200\n"
+"POT-Creation-Date: 2006-06-17 13:05+0200\n"
 "PO-Revision-Date: 2006-06-15 00:02+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
@@ -545,47 +545,47 @@ msgstr "Norjankielinen käännös"
 msgid "Polish Translation"
 msgstr "Puolankielinen käännös"
 
-#: data/about.cfg:415
+#: data/about.cfg:416
 msgid "Portuguese Translation"
 msgstr "Rortugalinkielinen käännös"
 
-#: data/about.cfg:422
+#: data/about.cfg:423
 msgid "Portuguese (Brazil) Translation"
 msgstr "Brasilianportugalinkielinen käännös"
 
-#: data/about.cfg:436
+#: data/about.cfg:437
 msgid "Russian Translation"
 msgstr "Venäjänkielinen käännös"
 
-#: data/about.cfg:446
+#: data/about.cfg:447
 msgid "Serbian Translation"
 msgstr "Serbiankielinen käännös"
 
-#: data/about.cfg:453
+#: data/about.cfg:454
 msgid "Slovak Translation"
 msgstr "Slovakiankielinen käännös"
 
-#: data/about.cfg:460
+#: data/about.cfg:461
 msgid "Slovenian Translation"
 msgstr "Sloveniankielinen käännös"
 
-#: data/about.cfg:467
+#: data/about.cfg:468
 msgid "Spanish Translation"
 msgstr "Espanjankielinen käännös"
 
-#: data/about.cfg:480
+#: data/about.cfg:481
 msgid "Swedish Translation"
 msgstr "Ruotsinkielinen käännös"
 
-#: data/about.cfg:492
+#: data/about.cfg:493
 msgid "Turkish Translation"
 msgstr "Turkinkielinen käännös"
 
-#: data/about.cfg:503 data/help.cfg:252
+#: data/about.cfg:504 data/help.cfg:252
 msgid "Contributors"
 msgstr "Tekijät"
 
-#: data/about.cfg:519
+#: data/about.cfg:520
 msgid "Bots"
 msgstr "Botit"
 
@@ -5128,7 +5128,7 @@ msgstr "Toiminnot"
 msgid "End Turn"
 msgstr "Lopeta vuoro"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2262
+#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2368
 msgid "HP"
 msgstr "EP"
 
@@ -10340,7 +10340,7 @@ msgstr "Voitto:"
 msgid "Defeat:"
 msgstr "Tappio:"
 
-#: src/gamestatus.cpp:491
+#: src/gamestatus.cpp:527
 msgid "Could not write to file"
 msgstr "Ei voitu kirjoittaa tiedostoon"
 
@@ -10571,7 +10571,7 @@ msgstr "Otettu vahinko (odotusarvo)"
 msgid "Statistics"
 msgstr "Tilastot"
 
-#: src/menu_events.cpp:237 src/unit.cpp:2293
+#: src/menu_events.cpp:237 src/unit.cpp:2399
 msgid "Moves"
 msgstr "Liike"
 
@@ -10634,7 +10634,7 @@ msgstr "Peli on tallennettu."
 msgid "The game could not be saved"
 msgstr "Peliä ei voitu tallentaa."
 
-#: src/menu_events.cpp:472 src/menu_events.cpp:474 src/play_controller.cpp:638
+#: src/menu_events.cpp:472 src/menu_events.cpp:474 src/play_controller.cpp:641
 #: src/playcampaign.cpp:118
 msgid "Auto-Save"
 msgstr "Automaattinen tallennus"
@@ -10914,12 +10914,12 @@ msgid "Normal"
 msgstr "Normaali"
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2378
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2484
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2385
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2491
 msgid ")"
 msgstr ")"
 
@@ -11293,11 +11293,11 @@ msgstr "Ei voitu lähettää alkukättelyä."
 msgid "The file you have tried to load is corrupt"
 msgstr "Tiedosto, jonka yritit avata on korruptoitunut."
 
-#: src/play_controller.cpp:642
+#: src/play_controller.cpp:645
 msgid "Back to start"
 msgstr "Takaisin alkuun"
 
-#: src/play_controller.cpp:644
+#: src/play_controller.cpp:647
 msgid "Back to turn "
 msgstr "Takaisin vuoron alkuun"
 
@@ -11659,15 +11659,15 @@ msgstr "Apua"
 msgid "Help Wesnoth by sending us information"
 msgstr "Auta Wesnothia lähettämälla meille tietoa"
 
-#: src/unit.cpp:2228 src/unit.cpp:2383
+#: src/unit.cpp:2334 src/unit.cpp:2489
 msgid "; "
 msgstr "."
 
-#: src/unit.cpp:2310
+#: src/unit.cpp:2416
 msgid "XP to advance"
 msgstr "KP:tä ylenemiseen:"
 
-#: src/unit.cpp:2374
+#: src/unit.cpp:2480
 msgid ": "
 msgstr ":"
 

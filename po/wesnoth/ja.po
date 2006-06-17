@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-13 20:52+0200\n"
+"POT-Creation-Date: 2006-06-17 13:05+0200\n"
 "PO-Revision-Date: 2005-11-04 10:30+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -584,56 +584,56 @@ msgstr "+ノルウェー語翻訳"
 msgid "Polish Translation"
 msgstr "+ポーランド語翻訳"
 
-#: data/about.cfg:415
+#: data/about.cfg:416
 #, fuzzy
 msgid "Portuguese Translation"
 msgstr "+ポルトガル（ブラジル）語翻訳"
 
-#: data/about.cfg:422
+#: data/about.cfg:423
 #, fuzzy
 msgid "Portuguese (Brazil) Translation"
 msgstr "+ポルトガル（ブラジル）語翻訳"
 
-#: data/about.cfg:436
+#: data/about.cfg:437
 #, fuzzy
 msgid "Russian Translation"
 msgstr "+ロシア語翻訳"
 
-#: data/about.cfg:446
+#: data/about.cfg:447
 #, fuzzy
 msgid "Serbian Translation"
 msgstr "+セルビア語翻訳"
 
-#: data/about.cfg:453
+#: data/about.cfg:454
 #, fuzzy
 msgid "Slovak Translation"
 msgstr "+スロバキア語翻訳"
 
-#: data/about.cfg:460
+#: data/about.cfg:461
 #, fuzzy
 msgid "Slovenian Translation"
 msgstr "+スロベニア語翻訳"
 
-#: data/about.cfg:467
+#: data/about.cfg:468
 #, fuzzy
 msgid "Spanish Translation"
 msgstr "+スペイン語翻訳"
 
-#: data/about.cfg:480
+#: data/about.cfg:481
 #, fuzzy
 msgid "Swedish Translation"
 msgstr "+スウェーデン語翻訳"
 
-#: data/about.cfg:492
+#: data/about.cfg:493
 #, fuzzy
 msgid "Turkish Translation"
 msgstr "+トルコ語翻訳"
 
-#: data/about.cfg:503 data/help.cfg:252
+#: data/about.cfg:504 data/help.cfg:252
 msgid "Contributors"
 msgstr "貢献者"
 
-#: data/about.cfg:519
+#: data/about.cfg:520
 #, fuzzy
 msgid "Bots"
 msgstr "+ボット"
@@ -4976,7 +4976,7 @@ msgstr "行動"
 msgid "End Turn"
 msgstr "ターン終了"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2262
+#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2368
 msgid "HP"
 msgstr "HP"
 
@@ -10091,7 +10091,7 @@ msgstr "勝利条件:"
 msgid "Defeat:"
 msgstr "敗北条件:"
 
-#: src/gamestatus.cpp:491
+#: src/gamestatus.cpp:527
 msgid "Could not write to file"
 msgstr "ファイルに書き込みできませんでした。"
 
@@ -10331,7 +10331,7 @@ msgstr "受けたダメージ (EV)"
 msgid "Statistics"
 msgstr "統計情報"
 
-#: src/menu_events.cpp:237 src/unit.cpp:2293
+#: src/menu_events.cpp:237 src/unit.cpp:2399
 msgid "Moves"
 msgstr "移動"
 
@@ -10394,7 +10394,7 @@ msgstr "ゲームを保存しました。"
 msgid "The game could not be saved"
 msgstr "ゲームは保存できませんでした"
 
-#: src/menu_events.cpp:472 src/menu_events.cpp:474 src/play_controller.cpp:638
+#: src/menu_events.cpp:472 src/menu_events.cpp:474 src/play_controller.cpp:641
 #: src/playcampaign.cpp:118
 msgid "Auto-Save"
 msgstr "自動保存"
@@ -10686,12 +10686,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2378
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2484
 msgid "("
 msgstr "（"
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2385
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2491
 msgid ")"
 msgstr "）"
 
@@ -11078,11 +11078,11 @@ msgstr "初期応答確認を送れませんでした"
 msgid "The file you have tried to load is corrupt"
 msgstr "読み込もうとしたファイルは 壊れています。"
 
-#: src/play_controller.cpp:642
+#: src/play_controller.cpp:645
 msgid "Back to start"
 msgstr ""
 
-#: src/play_controller.cpp:644
+#: src/play_controller.cpp:647
 msgid "Back to turn "
 msgstr ""
 
@@ -11446,15 +11446,15 @@ msgstr ""
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
-#: src/unit.cpp:2228 src/unit.cpp:2383
+#: src/unit.cpp:2334 src/unit.cpp:2489
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2310
+#: src/unit.cpp:2416
 msgid "XP to advance"
 msgstr "レベルアップに必要な経験値"
 
-#: src/unit.cpp:2374
+#: src/unit.cpp:2480
 msgid ": "
 msgstr ": "
 

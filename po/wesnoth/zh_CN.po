@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-13 20:52+0200\n"
+"POT-Creation-Date: 2006-06-17 13:05+0200\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -565,56 +565,56 @@ msgstr "+挪威语"
 msgid "Polish Translation"
 msgstr "+波兰语"
 
-#: data/about.cfg:415
+#: data/about.cfg:416
 #, fuzzy
 msgid "Portuguese Translation"
 msgstr "+葡萄牙语"
 
-#: data/about.cfg:422
+#: data/about.cfg:423
 #, fuzzy
 msgid "Portuguese (Brazil) Translation"
 msgstr "+葡萄牙语(巴西)"
 
-#: data/about.cfg:436
+#: data/about.cfg:437
 #, fuzzy
 msgid "Russian Translation"
 msgstr "+俄语"
 
-#: data/about.cfg:446
+#: data/about.cfg:447
 #, fuzzy
 msgid "Serbian Translation"
 msgstr "+塞尔维亚语"
 
-#: data/about.cfg:453
+#: data/about.cfg:454
 #, fuzzy
 msgid "Slovak Translation"
 msgstr "+斯洛伐克语"
 
-#: data/about.cfg:460
+#: data/about.cfg:461
 #, fuzzy
 msgid "Slovenian Translation"
 msgstr "+斯洛文尼亚语"
 
-#: data/about.cfg:467
+#: data/about.cfg:468
 #, fuzzy
 msgid "Spanish Translation"
 msgstr "+西班牙语"
 
-#: data/about.cfg:480
+#: data/about.cfg:481
 #, fuzzy
 msgid "Swedish Translation"
 msgstr "+瑞典语"
 
-#: data/about.cfg:492
+#: data/about.cfg:493
 #, fuzzy
 msgid "Turkish Translation"
 msgstr "+土耳其语"
 
-#: data/about.cfg:503 data/help.cfg:252
+#: data/about.cfg:504 data/help.cfg:252
 msgid "Contributors"
 msgstr "贡献者"
 
-#: data/about.cfg:519
+#: data/about.cfg:520
 #, fuzzy
 msgid "Bots"
 msgstr "+Bots"
@@ -4774,7 +4774,7 @@ msgstr "动作"
 msgid "End Turn"
 msgstr "结束回合"
 
-#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2262
+#: data/themes/default.cfg:171 src/menu_events.cpp:234 src/unit.cpp:2368
 msgid "HP"
 msgstr "HP"
 
@@ -9498,7 +9498,7 @@ msgstr "胜利："
 msgid "Defeat:"
 msgstr "失败："
 
-#: src/gamestatus.cpp:491
+#: src/gamestatus.cpp:527
 msgid "Could not write to file"
 msgstr "不能写入文件"
 
@@ -9730,7 +9730,7 @@ msgstr "受到伤害 (EV)"
 msgid "Statistics"
 msgstr "统计"
 
-#: src/menu_events.cpp:237 src/unit.cpp:2293
+#: src/menu_events.cpp:237 src/unit.cpp:2399
 msgid "Moves"
 msgstr "移动"
 
@@ -9791,7 +9791,7 @@ msgstr "游戏以存储"
 msgid "The game could not be saved"
 msgstr "游戏不能被保存"
 
-#: src/menu_events.cpp:472 src/menu_events.cpp:474 src/play_controller.cpp:638
+#: src/menu_events.cpp:472 src/menu_events.cpp:474 src/play_controller.cpp:641
 #: src/playcampaign.cpp:118
 msgid "Auto-Save"
 msgstr "自动存档"
@@ -10078,12 +10078,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2378
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2484
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
-#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2385
+#: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:414 src/unit.cpp:2491
 msgid ")"
 msgstr ")"
 
@@ -10470,11 +10470,11 @@ msgstr "不能发送初始化信息"
 msgid "The file you have tried to load is corrupt"
 msgstr "你想载入的文件不正确"
 
-#: src/play_controller.cpp:642
+#: src/play_controller.cpp:645
 msgid "Back to start"
 msgstr ""
 
-#: src/play_controller.cpp:644
+#: src/play_controller.cpp:647
 msgid "Back to turn "
 msgstr ""
 
@@ -10832,15 +10832,15 @@ msgstr ""
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
-#: src/unit.cpp:2228 src/unit.cpp:2383
+#: src/unit.cpp:2334 src/unit.cpp:2489
 msgid "; "
 msgstr "； "
 
-#: src/unit.cpp:2310
+#: src/unit.cpp:2416
 msgid "XP to advance"
 msgstr "XP去升级"
 
-#: src/unit.cpp:2374
+#: src/unit.cpp:2480
 msgid ": "
 msgstr "： "
 
