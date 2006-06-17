@@ -243,21 +243,28 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	int animation_time;
 
 
-	const bool vflip = b.y > a.y || b.y == a.y && is_even(a.x);
-	const bool hflip = b.x < a.x;
 	halo::ORIENTATION orientation;
-	if(hflip) {
-		if(vflip) {
-			orientation = halo::HVREVERSE;
-		} else {
-			orientation = halo::HREVERSE;
-		}
-	} else {
-		if(vflip) {
-			orientation = halo::VREVERSE;
-		} else {
+	const gamemap::location::DIRECTION attack_ori = a.get_relative_dir(b);
+	switch(attack_ori)
+	{
+		case gamemap::location::NORTH:
+		case gamemap::location::NORTH_EAST:
 			orientation = halo::NORMAL;
-		}
+			break;
+		case gamemap::location::SOUTH_EAST:
+		case gamemap::location::SOUTH:
+			orientation = halo::VREVERSE;
+			break;
+		case gamemap::location::SOUTH_WEST:
+			orientation = halo::HVREVERSE;
+			break;
+		case gamemap::location::NORTH_WEST:
+			orientation = halo::HREVERSE;
+			break;
+		case gamemap::location::NDIRECTIONS:
+		default:
+			orientation = halo::NORMAL;
+			break;
 	}
 	const unit_animation::FRAME_DIRECTION dir = (a.x == b.x) ? unit_animation::VERTICAL:unit_animation::DIAGONAL;
 
@@ -312,7 +319,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 				sub_halo--; //correct frame is the previous one
 
 				if(sub_halo >= missile_frame.halo.size()) sub_halo = missile_frame.halo.size() -1;
-				if(!vflip) {
+				if(attack_ori != gamemap::location::SOUTH_WEST && attack_ori != gamemap::location::NORTH_WEST) {
 					missile_halo = halo::add(posx+d+missile_frame.halo_x,
 							posy+d+missile_frame.halo_y,
 							missile_frame.halo[sub_halo].first,
