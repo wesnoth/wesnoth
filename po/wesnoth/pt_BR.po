@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-17 13:05+0200\n"
-"PO-Revision-Date: 2006-06-04 23:56+0900\n"
+"PO-Revision-Date: 2006-06-17 21:20+0900\n"
 "Last-Translator: Claus Aranha <caranha AT gmail DOT com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "MIME-Version: 1.0\n"
@@ -299,7 +299,6 @@ msgid "slows"
 msgstr "lentidão"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -1628,12 +1627,10 @@ msgid "mace"
 msgstr "maça"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:3
-#, fuzzy
 msgid "Wose Sapling"
-msgstr "Cura"
+msgstr "Broto de Wose"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:31
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -1660,7 +1657,8 @@ msgstr ""
 "Os woses não possuem hábitos de batalha, mas são extremamente fortes. Eles "
 "não estão acostumados a se locomover, e também não são muito rápidos.\n"
 "\n"
-"Notas Especiais:"
+"Notas Especiais: Woses se regeneram usando os recursos naturais ao seu "
+"redor, sem precisar ficar em aldeias para obder tratamento e cura."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:36
 #: data/units/Wose.cfg:36 data/units/Wose_Ancient.cfg:29
@@ -2096,9 +2094,8 @@ msgid "Show Combat"
 msgstr "Mostrar Combate"
 
 #: data/game.cfg:49
-#, fuzzy
 msgid "Mouse Scrolling"
-msgstr "Cura"
+msgstr "Scrolling pelo Mouse"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -3321,10 +3318,9 @@ msgid "Dextrous"
 msgstr "Hábil"
 
 #: data/help.cfg:323
-#, fuzzy
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
-msgstr "Unidades \"Habilidosas\" fazem 1 ponto a mais com ataques com arco."
+msgstr "Unidades \"Habilidosas\" fazem 1 ponto a mais com ataques a distância."
 
 #: data/help.cfg:325
 msgid ""
@@ -3673,9 +3669,8 @@ msgstr ""
 "unidades montadas têm apenas 40%. Anões têm 60% de defesa nestes lugares."
 
 #: data/help.cfg:477
-#, fuzzy
 msgid "Illuminated Cave"
-msgstr "ilumina"
+msgstr "Caverna Iluminada"
 
 #: data/help.cfg:482
 msgid ""
@@ -3686,6 +3681,13 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"Uma caverna iluminada é um pedaço do subsolo onde a luz da superfície "
+"alcança e ilumina a escuridão. Isso provê um bônus para o ataque de unidades "
+"ordeiras, e remove o bônus das unidade caóticas. Fora isso, este terreno é "
+"identico ao terreno normal de caverna.\n"
+"\n"
+"A maioria das unidades recebem de 20 a 40% de defesa nas cavernas, enquanto "
+"os anões normalmente têm 50%."
 
 #: data/help.cfg:487 data/terrain.cfg:374
 msgid "Mushroom Grove"
@@ -3777,7 +3779,6 @@ msgid "Lava"
 msgstr "Lava"
 
 #: data/help.cfg:525
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -3787,7 +3788,9 @@ msgid ""
 msgstr ""
 "O perigo em tentar caminhar na lava são óbvios. Este terreno só pode ser "
 "atravessado por unidades capazes de voar uma distância considerável sobre "
-"elas."
+"ele. O magma derretido também produz um brilho razoável, iluminando as àreas "
+"acima dele. Isto provê um bônus de ataque para as criaturas ordeiras, e "
+"remove o bônus das criaturas caóticas."
 
 #: data/help.cfg:530 data/terrain.cfg:52
 msgid "River Ford"
@@ -4182,7 +4185,6 @@ msgstr ""
 "heróis de Wesnoth."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:84
-#, fuzzy
 msgid ""
 "The winds of the dark sky blew so cold,\n"
 "The moon was high, the night was old,\n"
@@ -4227,7 +4229,6 @@ msgstr ""
 "(inscrito por Flametrooper)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:99
-#, fuzzy
 msgid ""
 "Slim of Stature, dexterous Hands\n"
 "- - Seven Stones and Eleven\n"
@@ -4248,7 +4249,6 @@ msgstr ""
 "(inscrito por Gauteamus)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:110
-#, fuzzy
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
 "Wolves of the mountains, and he had the courage to match. His leadership and "
@@ -4282,7 +4282,6 @@ msgstr ""
 "(inscrito por Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:119
-#, fuzzy
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
 "upon the various fish and frogs and merfolk that entered his domain. It was "
@@ -4300,7 +4299,6 @@ msgstr ""
 "(inscrito por Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:128
-#, fuzzy
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -4320,7 +4318,6 @@ msgstr ""
 "(inscrito por Fynmiir)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:139
-#, fuzzy
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other Woses. More than any other Wose, he enjoyed simply standing alone in "
@@ -4357,7 +4354,6 @@ msgstr ""
 "(inscrito por Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:148
-#, fuzzy
 msgid ""
 "This brave warrior, known as Rilhon amoung the Naga, heard tell of a "
 "fabulous treasure that had been lost in these watery caves- a spear whose "
@@ -4384,7 +4380,6 @@ msgstr ""
 "(inscrito por Paterson)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:170
-#, fuzzy
 msgid ""
 "Through waves and rocky channels\n"
 "blue and white\n"
@@ -4791,7 +4786,7 @@ msgstr "Neste território mixto, cinco exércitos lutam por supremacia."
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:3
 msgid "6p - Amohsad Caldera"
-msgstr ""
+msgstr "6p - Caldera de Amohsad"
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
 msgid ""
@@ -4933,33 +4928,39 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:6
 msgid "Wesnoth Benchmark: AI"
-msgstr ""
+msgstr "Benchmark para Wesnoth: IA"
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:7
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 msgstr ""
+"Um benchmark para wesnoth, use as opções --nogui --no-delay --multiplayer --"
+"scenario=wesbench_ai --exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:6
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr ""
+msgstr "Benchmark para Wesnoth: Scrolling"
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 msgstr ""
+"Um benchmark para wesnoth, use as opções --no-delay --multiplayer --"
+"scenario=wesbench_scroll --exit-at-end"
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:6
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr ""
+msgstr "Benchmark para Wesnoth: Andando pela névoa"
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 msgstr ""
+"Um benchmark para wesnoth, use as opções --no-delay --multiplayer --"
+"scenario=wesbench_shroud_walk --exit-at-end"
 
 #: data/schedules.cfg:81 data/schedules.cfg:89
 msgid "Underground"
@@ -5093,13 +5094,12 @@ msgstr ""
 "como mortos vivos."
 
 #: data/special-notes.cfg:50
-#, fuzzy
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
 "Esta unidade é capaz de deixar seus inimigos mais lentos, cortando seu "
-"movimento e dano de ataque pela metade."
+"movimento e dano de ataque pela metade até o fim de seu turno."
 
 #: data/special-notes.cfg:53
 msgid ""
@@ -5583,13 +5583,13 @@ msgstr ""
 "sua vitória sem precisar atacar ninguém."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
-"A habilidade de ataque 'lentidão' não apenas faz um inimigo se mover mais "
-"lentamente, como também diminui o dano de todos os ataques pela metade."
+"A habilidade de ataque 'lentidão' não só faz um inimigo se mover mais "
+"lentamente, como também diminui o dano de todos os ataques pela metade até "
+"que se passe um turno para elas."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -5940,7 +5940,6 @@ msgid "Drake Glider"
 msgstr "Planador Draconiano"
 
 #: data/units/Drake_Glider.cfg:21
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little armor as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
@@ -5958,7 +5957,12 @@ msgstr ""
 "draconianos são lutadores competentes, devido ao fogo interno que é "
 "característico de sua raça. Planadores também podem usar de sua velocidade "
 "para derrubar violentamente seus inimigos. Os melhores dentre os planadores "
-"almejam entrar para o grupo dos Draconianos Celestes."
+"almejam entrar para o grupo dos Draconianos Celestes. De sua posição "
+"estratégica em meio aos céus, eles podem ver unidades se escondendo. Sua "
+"habilidade em vôo lhes dá a precisão necessária para atacar inimigos sob "
+"assim escondidos.\n"
+"\n"
+"Notas especiais:"
 
 #: data/units/Drake_Glider.cfg:83 data/units/Drake_Hurricane.cfg:98
 #: data/units/Drake_Sky.cfg:97
@@ -5970,7 +5974,6 @@ msgid "Hurricane Drake"
 msgstr "Draconiano Furacão"
 
 #: data/units/Drake_Hurricane.cfg:30
-#, fuzzy
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite amongst "
 "those drakes which are gifted with flight. Soaring high in the air, they can "
@@ -5980,7 +5983,10 @@ msgid ""
 msgstr ""
 "Mestres do reino aéreo, os Draconianos Furacões são a elite entre os "
 "draconianos que são abençoados com o vôo. Voando alto no ar, eles conseguem "
-"atravessar a maioria das defesas e cuspir fogo nos seus inimigos impunemente."
+"ver atravéz da maioria das defesas e cuspir fogo nos seus inimigos "
+"impunemente.\n"
+"\n"
+"Notas especiais:"
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
@@ -6005,7 +6011,6 @@ msgid "Sky Drake"
 msgstr "Draconiano Celeste"
 
 #: data/units/Drake_Sky.cfg:29
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
@@ -6019,7 +6024,11 @@ msgstr ""
 "Draconianos celestes são os verdadeiros reis do céu. Usando a surpresa e "
 "hálito de fogo como armas, esses draconianos são a perdição de muitos. Eles "
 "podem destroçar uma presa rapidamente, e geralmente estão longe muito antes "
-"que alguem possa para-los."
+"que alguem possa para-los. Atacando dos céus, eles podem cuspir fogo com "
+"grande precisão em posições que normalmente dariam uma grande vantagem "
+"defensiva para seus oponentes.\n"
+"\n"
+"Notas especiais:"
 
 #: data/units/Drake_Slasher.cfg:3
 msgid "Drake Slasher"
@@ -10283,9 +10292,8 @@ msgid "Connect to Server"
 msgstr "Connectar-se ao servidor"
 
 #: src/game.cpp:857
-#, fuzzy
 msgid "You will now connect to a server to download add-ons."
-msgstr "Você vai agora ser conectado a um servidor de campanhas."
+msgstr "Você vai agora se conectadar a um servidor de extras."
 
 #: src/game.cpp:858
 msgid "Server: "
@@ -10297,7 +10305,7 @@ msgstr "Não foi possível se conectar ao host remoto"
 
 #: src/game.cpp:879
 msgid "Asking for list of add-ons"
-msgstr ""
+msgstr "Pegando a lista de extras"
 
 #: src/game.cpp:892
 msgid "Error communicating with the server."
@@ -10320,47 +10328,40 @@ msgid "Size"
 msgstr "Tamanho"
 
 #: src/game.cpp:963
-#, fuzzy
 msgid "Publish add-on: "
-msgstr "Publicar campanha: "
+msgstr "Publicar extra: "
 
 #: src/game.cpp:967
-#, fuzzy
 msgid "Delete add-on: "
-msgstr "Apagar campanha: "
+msgstr "Apagar extra: "
 
 #: src/game.cpp:971
-#, fuzzy
 msgid "There are no add-ons available for download from this server."
-msgstr "Não há campanhas disponíveis"
+msgstr "Não há extras disponíveis para pegar deste servidor."
 
 #: src/game.cpp:978
-#, fuzzy
 msgid "Choose the add-on to download."
-msgstr "Escolha a campanha para fazer o download"
+msgstr "Escolha a extra para pegar."
 
 #: src/game.cpp:978
 msgid "Get Add-ons"
-msgstr ""
+msgstr "Pegar Extras"
 
 #: src/game.cpp:998
-#, fuzzy
 msgid "Downloading add-on..."
-msgstr "Fazendo o download da campanha"
+msgstr "Pegando o extra..."
 
 #: src/game.cpp:1022
 msgid "Cannot rescan the filesystem"
 msgstr "Não pode reler o sistema de arquivos"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "Add-on Installed"
-msgstr "Campanha instalada"
+msgstr "Extra instalado"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "The add-on has been installed."
-msgstr "A campanha foi instalada."
+msgstr "O extra foi instalado."
 
 #: src/game.cpp:1039
 msgid "Network communication error."
@@ -10390,9 +10391,8 @@ msgid "Terms"
 msgstr "Termos"
 
 #: src/game.cpp:1092
-#, fuzzy
 msgid "Sending add-on"
-msgstr "Enviando a campanha"
+msgstr "Enviando extra"
 
 #: src/game.cpp:1099 src/game.cpp:1124 src/multiplayer_wait.cpp:317
 msgid "Response"
@@ -10652,7 +10652,7 @@ msgstr "O Fim"
 
 #: src/language.cpp:103
 msgid "System default language"
-msgstr "Língua padrão do sistema"
+msgstr "Idioma padrão do sistema"
 
 #: src/leader_list.cpp:124 src/leader_list.cpp:130
 msgid "?"
@@ -11495,9 +11495,10 @@ msgid "Downloading next level..."
 msgstr "Fazendo o download do próximo nível..."
 
 #: src/playcampaign.cpp:413
-#, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
-msgstr "Quer salvar o seu jogo?"
+msgstr ""
+"Quer salvar o seu jogo? (automaticamente apaga arquivos Salvos "
+"Automaticamente)"
 
 #: src/playcampaign.cpp:440
 msgid "Unknown scenario: '"
@@ -11765,13 +11766,12 @@ msgid "TitleScreen button^Load"
 msgstr "Continuar"
 
 #: src/titlescreen.cpp:258
-#, fuzzy
 msgid "TitleScreen button^Get Add-ons"
-msgstr "Continuar"
+msgstr "Pegar Extras"
 
 #: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
-msgstr "Língua"
+msgstr "Idioma"
 
 #: src/titlescreen.cpp:260
 msgid "TitleScreen button^Preferences"
@@ -11807,11 +11807,11 @@ msgstr "Continua um jogo salvo"
 
 #: src/titlescreen.cpp:267
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "Pegue campanhas feitas pelos jogadores, eras, ou conjuntos de mapas"
 
 #: src/titlescreen.cpp:268
 msgid "Change the language"
-msgstr "Mudar a língua"
+msgstr "Mudar o idioma"
 
 #: src/titlescreen.cpp:269
 msgid "Configure the game's settings"
@@ -11867,7 +11867,7 @@ msgstr "neutro"
 
 #: src/upload_log.cpp:278
 msgid "Enable summary uploads"
-msgstr ""
+msgstr "Permitir o envio de resumos"
 
 #: src/upload_log.cpp:283
 msgid ""
@@ -11892,109 +11892,3 @@ msgstr "Você pode ver os resultados em:"
 #: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
 msgstr "Ajude-nos a fazer um Wesnoth melhor para você!"
-
-#~ msgid "Replay"
-#~ msgstr "Replay"
-
-#~ msgid "Play"
-#~ msgstr "Reproduzir"
-
-#~ msgid "continous replay"
-#~ msgstr "replay contínuo"
-
-#~ msgid "Stop"
-#~ msgstr "Parar"
-
-#~ msgid "pause at end of turn"
-#~ msgstr "pausa no fim do turno"
-
-#~ msgid "Reset"
-#~ msgstr "Reiniciar"
-
-#~ msgid "reset to beginning"
-#~ msgstr "volta ao início"
-
-#~ msgid "Next Turn"
-#~ msgstr "Próximo Turno"
-
-#~ msgid "play turn"
-#~ msgstr "jogar turno"
-
-#~ msgid "Next Side"
-#~ msgstr "Próximo Time"
-
-#~ msgid "play side turn"
-#~ msgstr "joga o turno do time"
-
-#~ msgid "Skip animation"
-#~ msgstr "Pular animação"
-
-#~ msgid "6p - Smallolof"
-#~ msgstr "6p - Smallolof"
-
-#~ msgid "Flaming Sword"
-#~ msgstr "Espada Flamejante"
-
-#~ msgid ""
-#~ "This massive blade was created centuries ago by long-forgotten elvish "
-#~ "forgemasters, who managed to imbue the bluish steel with an inner magical "
-#~ "fire. Tongues of flame dance on the surface, giving the bluish steel a "
-#~ "flawless mirrored finish. As you place your hand around the glittering "
-#~ "leather hilt, the sword roars to life! Strangely, you feel no heat once "
-#~ "you pick it up, yet the grass at your feet bursts into flame as you test "
-#~ "the heft of this mighty weapon."
-#~ msgstr ""
-#~ "Esta lâmina massiva foi criada há séculos atrás por mestres armeiros "
-#~ "élficos, já há muito esquecidos. Eles conseguiram imbuir o aço azulado "
-#~ "com um fogo mágico interno. Línguas de fogo dançam pela sua superfície, "
-#~ "dando a esse aço azulado um retoque espelhado perfeito. Quando você "
-#~ "coloca sua mão ao redor da empunhadeira de couro, a espada volta à vida "
-#~ "em chamas! De uma maneira estranha, você não sente nenhum calor ao pegar "
-#~ "a espada, embora o mato aos seus pés se desfaça em cinzas quando você "
-#~ "balança esta poderosa arma."
-
-#~ msgid "Only the leader of an army can wield this sword!"
-#~ msgstr "Apenas o líder de um exército pode usar esta espada!"
-
-#~ msgid "flaming sword"
-#~ msgstr "espada flamejante"
-
-#~ msgid "Scepter of Fire"
-#~ msgstr "Cetro de Fogo"
-
-#~ msgid ""
-#~ "This ancient Scepter was forged by the Dwarves. A symbol of the kingship "
-#~ "of Wesnoth, the Scepter has the power to shoot fireballs at enemies of "
-#~ "the bearer!"
-#~ msgstr ""
-#~ "Este cetro ancestral foi forjado pelos anões. Um símbolo da realeza de "
-#~ "Wesnoth, o cetro tem o poder de atirar bolas de fogo nos inimigos de seu "
-#~ "usuário!"
-
-#~ msgid ""
-#~ "This is the Scepter of Fire. Only a true successor to the throne can "
-#~ "possibly dare to take this!"
-#~ msgstr ""
-#~ "Este é o Cetro de Fogo. Apenas um verdadeiro herdeiro do trono tem o "
-#~ "direito de tocá-lo!"
-
-#~ msgid "Get More Campaigns..."
-#~ msgstr "Pegar outras campanhas..."
-
-#~ msgid "Download more campaigns from an Internet server."
-#~ msgstr "Faz o download de mais campanhas de um servidor na internet."
-
-#~ msgid "Asking for campaign list"
-#~ msgstr "Buscando a lista de campanhas"
-
-#~ msgid "Get Campaign"
-#~ msgstr "Pegar Campanha"
-
-#~ msgid "TitleScreen button^Help Wesnoth"
-#~ msgstr "Ajude Wesnoth"
-
-#~ msgid "stab"
-#~ msgstr "encravar"
-
-#~ msgid "dragonstick"
-#~ msgstr "bastão do dragão"
