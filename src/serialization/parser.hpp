@@ -20,10 +20,14 @@
 #include <vector>
 
 class config;
+class t_string;
 
 //read data in, clobbering existing data.
 void read(config &cfg, std::istream &in, std::string* error_log = NULL); //throws config::error
 
-void write(std::ostream &out, config const &cfg);
+void write(std::ostream &out, config const &cfg, unsigned int level=0);
+void write_key_val(std::ostream &out, const std::string &key, const t_string &value, unsigned int level, std::string &textdomain);
+void write_open_child(std::ostream &out, const std::string &child, unsigned int level);
+void write_close_child(std::ostream &out, const std::string &child, unsigned int level);
 
 #endif

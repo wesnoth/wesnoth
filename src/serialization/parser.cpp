@@ -348,58 +348,76 @@ static std::string escaped_string(const std::string& value) {
 	return std::string(res.begin(), res.end());
 }
 
+void write_key_val(std::ostream &out, const std::string &key, const t_string &value, unsigned int level, std::string& textdomain)
+{
+	bool first = true;
+	if (value.empty()) {
+		return;
+	}
+
+	for(t_string::walker w(value); !w.eos(); w.next()) {
+		std::string part(w.begin(), w.end());
+
+		if(w.translatable()) {
+			if(w.textdomain() != textdomain) {
+				out << TextdomainPrefix
+					<< w.textdomain()
+					<< TextdomainPostfix;
+				textdomain = w.textdomain();
+			}
+
+			if(first) {
+				out << std::string(level, '\t')
+					<< key
+					<< AttributeEquals;
+			}
+
+			out << TranslatableAttributePrefix
+				<< escaped_string(part)
+				<< AttributePostfix;
+
+		} else {
+			if(first) {
+				out << std::string(level, '\t')
+					<< key
+					<< AttributeEquals;
+			}
+
+			out << AttributePrefix
+				<< escaped_string(part)
+				<< AttributePostfix;
+		}
+
+		if(w.last()) {
+			out << AttributeEndPostfix;
+		} else {
+			out << AttributeContPostfix;
+			out << std::string(level+1, '\t');
+		}
+
+		first = false;
+	}
+}
+
+void write_open_child(std::ostream &out, const std::string &child, unsigned int level)
+{
+	out << std::string(level, '\t')
+		<< ElementPrefix << child << ElementPostfix;
+}
+
+void write_close_child(std::ostream &out, const std::string &child, unsigned int level)
+{
+	out << std::string(level, '\t')
+		<< EndElementPrefix << child << EndElementPostfix;
+}
+
 static void write_internal(config const &cfg, std::ostream &out, std::string& textdomain, size_t tab = 0)
 {
 	if (tab > max_recursion_levels)
 		throw config::error("Too many recursion levels in config write");
 
 	for(string_map::const_iterator i = cfg.values.begin(), i_end = cfg.values.end(); i != i_end; ++i) {
-		if (!i->second.empty()) {
-			bool first = true;
-
-			for(t_string::walker w(i->second); !w.eos(); w.next()) {
-				std::string part(w.begin(), w.end());
-
-				if(w.translatable()) {
-					if(w.textdomain() != textdomain) {
-						out << TextdomainPrefix
-							<< w.textdomain()
-							<< TextdomainPostfix;
-						textdomain = w.textdomain();
-					}
-
-					if(first) {
-						out << std::string(tab, '\t')
-							<< i->first
-							<< AttributeEquals;
-					}
-
-					out << TranslatableAttributePrefix
-						<< escaped_string(part)
-						<< AttributePostfix;
-
-				} else {
-					if(first) {
-						out << std::string(tab, '\t')
-							<< i->first
-							<< AttributeEquals;
-					}
-
-					out << AttributePrefix
-						<< escaped_string(part)
-						<< AttributePostfix;
-				}
-
-				if(w.last()) {
-					out << AttributeEndPostfix;
-				} else {
-					out << AttributeContPostfix;
-					out << std::string(tab+1, '\t');
-				}
-
-				first = false;
-			}
-		}
+		write_key_val(out, i->first, i->second, tab, textdomain);
 	}
 
 	for(config::all_children_iterator j = cfg.ordered_begin(), j_end = cfg.ordered_end(); j != j_end; ++j) {
@@ -407,16 +425,15 @@ static void write_internal(config const &cfg, std::ostream &out, std::string& te
 		const std::string& name = *item.first;
 		const config& cfg = *item.second;
 
-		out << std::string(tab, '\t')
-		    << ElementPrefix << name << ElementPostfix;
+		write_open_child(out, name, tab);
 		write_internal(cfg, out, textdomain, tab + 1);
-		out << std::string(tab, '\t')
-		    << EndElementPrefix << name << EndElementPostfix;
+		write_close_child(out, name, tab);
 	}
 }
 
-void write(std::ostream &out, config const &cfg)
+void write(std::ostream &out, config const &cfg, unsigned int level)
 {
 	std::string textdomain = PACKAGE;
-	write_internal(cfg, out, textdomain);
+	write_internal(cfg, out, textdomain, level);
 }
+
