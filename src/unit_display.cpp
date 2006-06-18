@@ -283,10 +283,10 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	bool sound_played = false ;
 	int missile_frame_halo =0;
 	int missile_halo =0;
-	while(!defender.get_animation()->animation_finished()  ||
+	while(!hide && (!defender.get_animation()->animation_finished()  ||
 			!attacker.get_animation()->animation_finished()  ||
 			!missile_animation.animation_finished()  ||
-			(leader_loc.valid() && !leader->second.get_animation()->animation_finished())) {
+			(leader_loc.valid() && !leader->second.get_animation()->animation_finished()))) {
 		const double pos = animation_time < missile_animation.get_first_frame_time()?1.0:
 			double(animation_time)/double(missile_animation.get_first_frame_time());
 		const int posx = int(pos*xsrc + (1.0-pos)*xdst);
@@ -337,7 +337,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 					orientation);
 
 		}
-		if(damage > 0 && !hide && animation_time > 0 && !sound_played) {
+		if(damage > 0 && animation_time > 0 && !sound_played) {
 			sound_played = true;
 			sound::play_sound(def->second.get_hit_sound());
 			disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
@@ -470,9 +470,9 @@ bool unit_attack(display& disp, unit_map& units,
 	if(def->second.take_hit(damage)) {
 		dead = true;
 	}
-	while(!attacker.get_animation()->animation_finished() ||
+	while(!hide && (!attacker.get_animation()->animation_finished() ||
 			!defender.get_animation()->animation_finished()  ||
-			(leader_loc.valid() && !leader->second.get_animation()->animation_finished() )) {
+			(leader_loc.valid() && !leader->second.get_animation()->animation_finished() ))) {
 		const double pos = (1.0-double(animation_time)/double(end_time));
 		attacker.set_offset(pos*0.6);
 		disp.invalidate(b);
