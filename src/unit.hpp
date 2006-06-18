@@ -158,7 +158,7 @@ class unit
 		const surface still_image() const;
 		void redraw_unit(display& disp,gamemap::location hex);
 
-		void set_standing(const display& disp,const gamemap::location& loc);
+		void set_standing(const display& disp,const gamemap::location& loc, bool with_bars = true);
 		void set_defending(const display &disp,const gamemap::location& loc, int damage,const attack_type* attack);
 		void set_leading(const display& disp,const gamemap::location& loc);
 		void set_healing(const display& disp,const gamemap::location& loc);

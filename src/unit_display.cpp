@@ -283,10 +283,12 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	bool sound_played = false ;
 	int missile_frame_halo =0;
 	int missile_halo =0;
-	while(!hide && (!defender.get_animation()->animation_finished()  ||
-			!attacker.get_animation()->animation_finished()  ||
-			!missile_animation.animation_finished()  ||
-			(leader_loc.valid() && !leader->second.get_animation()->animation_finished()))) {
+	while(!hide && (
+		attacker.state() != unit::STATE_STANDING ||
+		defender.state() != unit::STATE_STANDING ||
+		!missile_animation.animation_finished()  ||
+		(leader_loc.valid() && leader->second.state() != unit::STATE_STANDING)) 
+		){
 		const double pos = animation_time < missile_animation.get_first_frame_time()?1.0:
 			double(animation_time)/double(missile_animation.get_first_frame_time());
 		const int posx = int(pos*xsrc + (1.0-pos)*xdst);
@@ -344,6 +346,15 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		}
 		disp.draw();
 		events::pump();
+		if(attacker.get_animation()->animation_finished()) {
+		   attacker.set_standing(disp,a,false);	
+		}
+		if(defender.get_animation()->animation_finished()) {
+		   defender.set_standing(disp,b,false);	
+		}
+		if(leader_loc.valid() && !leader->second.get_animation()->animation_finished() ) {
+		   defender.set_standing(disp,b,false);	
+		}
 		disp.non_turbo_delay();
 		animation_time = defender.get_animation()->get_animation_time();
 		missile_animation.update_current_frame();
@@ -416,11 +427,10 @@ bool unit_attack(display& disp, unit_map& units,
 
 	attacker.set_attacking(disp,a,hits,attack);
 	start_time=minimum<int>(start_time,attacker.get_animation()->get_first_frame_time());
-	end_time=maximum<int>(end_time,attacker.get_animation()->get_last_frame_time());
+	end_time=attacker.get_animation()->get_last_frame_time();
 
 	defender.set_defending(disp,b,damage,&attack);
 	start_time=minimum<int>(start_time,defender.get_animation()->get_first_frame_time());
-	end_time=maximum<int>(end_time,defender.get_animation()->get_last_frame_time());
 
 
 	const gamemap::location leader_loc = under_leadership(units,a);
@@ -432,7 +442,6 @@ bool unit_attack(display& disp, unit_map& units,
 		leader->second.set_facing(leader_loc.get_relative_dir(a));
 		leader->second.set_leading(disp,leader_loc);
 		start_time=minimum<int>(start_time,leader->second.get_animation()->get_first_frame_time());
-		end_time=maximum<int>(end_time,leader->second.get_animation()->get_last_frame_time());
 	}
 
 
@@ -470,18 +479,33 @@ bool unit_attack(display& disp, unit_map& units,
 	if(def->second.take_hit(damage)) {
 		dead = true;
 	}
-	while(!hide && (!attacker.get_animation()->animation_finished() ||
-			!defender.get_animation()->animation_finished()  ||
-			(leader_loc.valid() && !leader->second.get_animation()->animation_finished() ))) {
+	while(!hide && (
+		attacker.state() != unit::STATE_STANDING ||
+		defender.state() != unit::STATE_STANDING ||
+		(leader_loc.valid() && leader->second.state() != unit::STATE_STANDING))
+	     ){
+		
 		const double pos = (1.0-double(animation_time)/double(end_time));
-		attacker.set_offset(pos*0.6);
+		if(attacker.state() != unit::STATE_STANDING) {
+			attacker.set_offset(pos*0.6);
+		} else {
+			attacker.set_offset(0.0);
+		}
 		disp.invalidate(b);
 		disp.invalidate(a);
 		if(leader_loc.valid()) disp.invalidate(leader_loc);
 		disp.draw();
 		events::pump();
+		if(attacker.get_animation()->animation_finished()) {
+		   attacker.set_standing(disp,a,false);	
+		}
+		if(defender.get_animation()->animation_finished()) {
+		   defender.set_standing(disp,b,false);	
+		}
+		if(leader_loc.valid() && !leader->second.get_animation()->animation_finished() ) {
+		   defender.set_standing(disp,b,false);	
+		}
 		disp.non_turbo_delay();
-
 		animation_time = attacker.get_animation()->get_animation_time();
 	}
 

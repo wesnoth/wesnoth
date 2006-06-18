@@ -1372,10 +1372,10 @@ const surface unit::still_image() const
 	surface unit_image(image::get_image(loc,image::UNSCALED));
 	return unit_image;
 }
-void unit::set_standing(const display &disp,const gamemap::location& loc)
+void unit::set_standing(const display &disp,const gamemap::location& loc, bool with_bars)
 {
 	state_ = STATE_STANDING;
-	draw_bars_ = true;
+	draw_bars_ = with_bars;
 	offset_=0;
 	if(anim_) {
 		delete anim_;
