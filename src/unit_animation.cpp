@@ -43,24 +43,25 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 			config stored_anim;
 			expanded_anim.values =  analyzed_anim.values;
 			stored_anim.values =  analyzed_anim.values;
-			for(/*nothing*/; child != analyzed_anim.ordered_end() ; child++) {
+			while(child != analyzed_anim.ordered_end()) {
 				if(*(*child).first == "if") {
 					// add the content of if
 					expanded_anim.append(*(*child).second);
 					config to_add = analyzed_anim;
-					config::all_children_iterator sub_child = child;
-					sub_child++;
-					if(*(*sub_child).first == "else") {
+					child++;
+					while(*(*child).first == "else") {
 						// add the content of else to the stored one
-						stored_anim.add_child(*(*sub_child).first,*(*sub_child).second);
+						stored_anim.append(*(*child).second);
 						// store the partially expanded string for later analyzis
 						new_animation.push_back(stored_anim);
+						child++;
 					}
 
 				} else {
 					// add the current node
 					expanded_anim.add_child(*(*child).first,*(*child).second);
 					stored_anim.add_child(*(*child).first,*(*child).second);
+					child++;
 				}
 			}
 			expanded_animations.add_child(animation_tag,expanded_anim);
