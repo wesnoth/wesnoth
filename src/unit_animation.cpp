@@ -49,12 +49,17 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 					expanded_anim.append(*(*child).second);
 					config to_add = analyzed_anim;
 					child++;
-					while(*(*child).first == "else") {
-						// add the content of else to the stored one
-						stored_anim.append(*(*child).second);
-						// store the partially expanded string for later analyzis
+					if(*(*child).first == "else") {
+						while(*(*child).first == "else") {
+							// add the content of else to the stored one
+							stored_anim.append(*(*child).second);
+							// store the partially expanded string for later analyzis
+							new_animation.push_back(stored_anim);
+							child++;
+						}
+					} else {
+						// add an animw with the if part removed
 						new_animation.push_back(stored_anim);
-						child++;
 					}
 
 				} else {
