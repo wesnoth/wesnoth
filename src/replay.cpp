@@ -30,6 +30,8 @@
 #include "unit_display.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
+#include "wesconfig.h"
+#include "serialization/binary_or_text.hpp"
 
 #include <cstdio>
 #include <cstdlib>
@@ -222,7 +224,10 @@ void replay::save_game(const std::string& label, const config& snapshot,
 
 	saveInfo_.label = label;
 
-	::save_game(saveInfo_);
+	scoped_ostream os(open_save_game(label));
+	config_writer out(*os, preferences::compress_saves(), PACKAGE);
+	::write_game(out, saveInfo_);
+	finish_save_game(out, saveInfo_, saveInfo_.label);
 
 	saveInfo_.replay_data = config();
 	saveInfo_.snapshot = config();

@@ -360,6 +360,33 @@ void write_player(const player_info& player, config& cfg)
 	cfg["can_recruit"] = can_recruit_str;
 }
 
+void write_player(config_writer &out, const player_info& player)
+{
+	char buf[50];
+	snprintf(buf,sizeof(buf),"%d",player.gold);
+
+	out.write_key_val("gold", buf);
+
+	for(std::vector<unit>::const_iterator i = player.available_units.begin();
+	    i != player.available_units.end(); ++i) {
+		config new_cfg;
+		i->write(new_cfg);
+		out.write_child("unit",new_cfg);
+	}
+
+	std::stringstream can_recruit;
+	std::copy(player.can_recruit.begin(),player.can_recruit.end(),std::ostream_iterator<std::string>(can_recruit,","));
+	std::string can_recruit_str = can_recruit.str();
+
+	//remove the trailing comma
+	if(can_recruit_str.empty() == false) {
+		can_recruit_str.resize(can_recruit_str.size()-1);
+	}
+
+	out.write_key_val("can_recruit", can_recruit_str);
+}
+
+
 // Deprecated, use other write_game below.
 void write_game(const game_state& game, config& cfg/*, WRITE_GAME_MODE mode*/)
 {
@@ -413,10 +440,10 @@ void write_game(config_writer &out, const game_state& game)
 
 	for(std::map<std::string, player_info>::const_iterator i=game.players.begin();
 	    i!=game.players.end(); ++i) {
-		config new_cfg;
-		write_player(i->second, new_cfg);
-		new_cfg["save_id"]=i->first;
-		out.write_child("player", new_cfg);
+		out.open_child("player");
+		out.write_key_val("save_id", i->first);
+		write_player(out, i->second);
+		out.close_child("player");
 	}
 
 	if(game.replay_data.child("replay") == NULL) {
@@ -425,7 +452,9 @@ void write_game(config_writer &out, const game_state& game)
 
 	out.write_child("snapshot",game.snapshot);
 	out.write_child("replay_start",game.starting_pos);
-	out.write_child("statistics",statistics::write_stats());
+	out.open_child("statistics");
+	statistics::write_stats(out);
+	out.close_child("statistics");
 }
 
 //a structure for comparing to save_info objects based on their modified time.
@@ -540,14 +569,10 @@ void finish_save_game(config_writer &out, const game_state& state, const std::st
 //throws game::save_game_failed
 void save_game(const game_state& state)
 {
-	try {
-		scoped_ostream os(open_save_game(state.label));
-		config_writer out(*os, preferences::compress_saves(), PACKAGE);
-		write_game(out, state);
-		finish_save_game(out, state, state.label);
-	} catch(io_exception& e) {
-		throw game::save_game_failed(e.what());
-	}
+	scoped_ostream os(open_save_game(state.label));
+	config_writer out(*os, preferences::compress_saves(), PACKAGE);
+	write_game(out, state);
+	finish_save_game(out, state, state.label);
 }
 
 namespace {

@@ -45,9 +45,6 @@ public:
 	void save_game(const std::string& label, const config& snapshot,
 	               const config& starting_pos, bool include_replay = true);
 
-	void write_game(config_writer &out, const std::string& label, const config& snapshot,
-					const config& starting_pos, bool include_replay);
-
 	void add_start();
 	void add_recruit(int unit_index, const gamemap::location& loc);
 	void add_recall(int unit_index, const gamemap::location& loc);

@@ -14,6 +14,7 @@
 #ifndef STATISTICS_HPP_INCLUDED
 #define STATISTICS_HPP_INCLUDED
 
+class config_writer;
 class unit;
 #include "actions.hpp"
 
@@ -25,6 +26,7 @@ namespace statistics
 		explicit stats(const config& cfg);
 
 		config write() const;
+		void write(config_writer &out) const;
 		void read(const config& cfg);
 
 		typedef std::map<std::string,int> str_int_map;
@@ -94,6 +96,7 @@ namespace statistics
 	void advance_unit(const unit& u);
 
 	config write_stats();
+	void write_stats(config_writer &out);
 	void read_stats(const config& cfg);
 	void fresh_stats();
 	void clear_current_scenario();
