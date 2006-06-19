@@ -467,8 +467,8 @@ namespace events{
 
 	void menu_handler::autosave(const std::string &label, unsigned turn, const config &starting_pos) const
 	{
-		struct timeval start, end;
-		gettimeofday(&start, NULL);
+		Uint32 start, end;
+		start = SDL_GetTicks();
 		config snapshot;
 
 		write_game_snapshot(snapshot);
@@ -482,10 +482,8 @@ namespace events{
 			gui::show_dialog(*gui_,NULL,"",_("Could not auto save the game. Please save the game manually."),gui::MESSAGE);
 			//do not bother retrying, since the user can just save the game
 		}
-		gettimeofday(&end, NULL);
-		unsigned long long s = start.tv_sec * 1000000ULL + start.tv_usec;
-		unsigned long long e = end.tv_sec * 1000000ULL + end.tv_usec;
-		std::cerr << "Microseconds to save: " << (unsigned long)(e - s) << "\n";
+		end = SDL_GetTicks();
+		std::cerr << "Milliseconds to save: " << end - start << "\n";
 	}
 
 	void menu_handler::load_game(){
