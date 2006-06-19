@@ -30,8 +30,6 @@
 #include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "wesconfig.h"
-#include <sys/time.h>
-#include <time.h>
 
 #include <sstream>
 

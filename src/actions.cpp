@@ -1580,12 +1580,13 @@ void check_victory(unit_map& units,
 	if(found_enemies == false) {
 		if (found_player) {
 			game_events::fire("enemies defeated");
-			if (victory_conditions::victory_when_enemies_defeated() == false) {
-				// this level has asked not to be ended by this condition
-				return;
-			}
 		}
 
+		if (victory_conditions::victory_when_enemies_defeated() == false
+			&& (found_player || is_observer())){
+			// this level has asked not to be ended by this condition
+			return;
+		}
 
 		if(non_interactive()) {
 			std::cout << "winner: ";
