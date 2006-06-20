@@ -1016,7 +1016,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	paths orig_paths = current_paths_;
 
 	//see if we're trying to do a move-and-attack
-	if(!browse && !commands_disabled && u != units_.end() && enemy != units_.end() && !current_route_.steps.empty()) {
+	if(!browse && !commands_disabled && u != units_.end() && u->second.attacks_left()>0 && enemy != units_.end() && !current_route_.steps.empty()) {
 		const gamemap::location& attack_from = current_unit_attacks_from(hex, nearest_hex, second_nearest_hex);
 		if(attack_from.valid()) {
 			if(move_unit_along_current_route(false)) { //move the unit without updating shroud
