@@ -275,6 +275,7 @@ class unit
 		bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const;
 		bool ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
 		bool resistance_filter_matches(const config& cfg,bool attacker,const attack_type& damage_type) const;
+		int movement_cost_internal(gamemap::TERRAIN terrain, int recurse_count=0) const;
 
 		config cfg_;
 		config movement_b_;
