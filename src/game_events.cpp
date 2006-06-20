@@ -1141,6 +1141,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				screen->draw(true,true);
 			}
 
+			units->erase(loc);
 			units->add(new std::pair<gamemap::location,unit>(loc,new_unit));
 			if(game_map->is_village(loc)) {
 				get_village(loc,*teams,new_unit.side()-1,*units);
