@@ -34,8 +34,9 @@ namespace {
 
 bool two_dots(char a, char b) { return a == '.' && b == '.'; }
 
-void do_interpolation(std::string &res, variable_set& set)
+std::string do_interpolation(const std::string &str, variable_set& set)
 {
+	std::string res = str;
 	//this needs to be able to store negative numbers to check for the while's condition
 	//(which is only false when the previous '$' was at index 0)
 	int rfind_dollars_sign_from = res.size();
@@ -96,28 +97,28 @@ void do_interpolation(std::string &res, variable_set& set)
 			--var_end;
 		}
 
+		const std::string var_name(var_name_begin, var_end);
+
 		if(*var_end == '|') {
 			//It's been used to end this variable name; now it has no more effect.
 			//This can allow use of things like "$$composite_var_name|.x"
 			//(Yes, that's a WML 'pointer' of sorts. They are sometimes useful.)
 			//If there should still be a '|' there afterwards to affect other variable names (unlikely),
 			//just put another '|' there, one matching each '$', e.g. "$$var_containing_var_name||blah"
-			res.erase(var_end);
+			var_end++;
 		}
 
-		const std::string var_name(var_name_begin, var_end);
 
 		//The variable is replaced with its value.
 		//Replace = remove original, and then insert new value, if any.
-		res.erase(var_begin, var_end);
-
-		res.insert(var_begin_loc, set.get_variable_const(var_name));
+		res.replace(var_begin, var_end, set.get_variable_const(var_name));
 	}
 
 	//Remove any remaining '|', which are used to separate variable names,
 	//so that the WML writer doesn't need to worry about whether they're really necessary.
 	//It is also occasionally useful to intentionally put them elsewhere.
 	res.erase(std::remove(res.begin(), res.end(), '|'), res.end());
+	return res;
 }
 
 }
@@ -218,19 +219,13 @@ private:
 
 std::string interpolate_variables_into_string(const std::string &str, const string_map *symbols)
 {
-	std::string res = str;
 	string_map_variable_set set(*symbols);
-	do_interpolation(res, set);
-
-	return res;
+	return do_interpolation(str, set);
 }
 
 std::string interpolate_variables_into_string(const std::string &str, variable_set& variables)
 {
-	std::string res = str;
-	do_interpolation(res, variables);
-
-	return res;
+	return do_interpolation(str, variables);
 }
 
 // modify a number by string representing integer difference, or optionally %
