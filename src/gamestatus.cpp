@@ -864,7 +864,7 @@ void game_state::clear_variable(const std::string& varname)
 		}
 		key = std::string(key.begin(),index_start);
 	}
-	
+
 	if(explicit_index) {
 		if(vars->get_children(key).size() <= index) {
 			return;

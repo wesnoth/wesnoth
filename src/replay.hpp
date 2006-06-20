@@ -98,7 +98,7 @@ public:
 
 	struct error {
 		error(const std::string& msg) : message(msg) {}
-		std::string message;	
+		std::string message;
 	};
 
 	static std::string last_replay_error;

@@ -296,14 +296,14 @@ unit::~unit()
 
 
 unit& unit::operator=(const unit& u)
-{ 
+{
 	// use copy constructor to make sure we are coherant
-	if (this != &u) { 
+	if (this != &u) {
 		this->~unit();
-		new (this) unit(u) ; 
+		new (this) unit(u) ;
 	}
-	return *this ; 
-} 
+	return *this ;
+}
 
 
 

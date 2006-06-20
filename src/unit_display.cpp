@@ -287,7 +287,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		attacker.state() != unit::STATE_STANDING ||
 		defender.state() != unit::STATE_STANDING ||
 		!missile_animation.animation_finished()  ||
-		(leader_loc.valid() && leader->second.state() != unit::STATE_STANDING)) 
+		(leader_loc.valid() && leader->second.state() != unit::STATE_STANDING))
 		){
 		const double pos = animation_time < missile_animation.get_first_frame_time()?1.0:
 			double(animation_time)/double(missile_animation.get_first_frame_time());
@@ -347,13 +347,13 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		disp.draw();
 		events::pump();
 		if(attacker.get_animation()->animation_finished()) {
-		   attacker.set_standing(disp,a,false);	
+		   attacker.set_standing(disp,a,false);
 		}
 		if(defender.get_animation()->animation_finished()) {
-		   defender.set_standing(disp,b,false);	
+		   defender.set_standing(disp,b,false);
 		}
 		if(leader_loc.valid() && !leader->second.get_animation()->animation_finished() ) {
-		   defender.set_standing(disp,b,false);	
+		   defender.set_standing(disp,b,false);
 		}
 		disp.non_turbo_delay();
 		animation_time = defender.get_animation()->get_animation_time();
@@ -484,7 +484,7 @@ bool unit_attack(display& disp, unit_map& units,
 		defender.state() != unit::STATE_STANDING ||
 		(leader_loc.valid() && leader->second.state() != unit::STATE_STANDING))
 	     ){
-		
+
 		const double pos = (1.0-double(animation_time)/double(end_time));
 		if(attacker.state() != unit::STATE_STANDING) {
 			attacker.set_offset(pos*0.6);
@@ -497,13 +497,13 @@ bool unit_attack(display& disp, unit_map& units,
 		disp.draw();
 		events::pump();
 		if(attacker.get_animation()->animation_finished()) {
-		   attacker.set_standing(disp,a,false);	
+		   attacker.set_standing(disp,a,false);
 		}
 		if(defender.get_animation()->animation_finished()) {
-		   defender.set_standing(disp,b,false);	
+		   defender.set_standing(disp,b,false);
 		}
 		if(leader_loc.valid() && !leader->second.get_animation()->animation_finished() ) {
-		   defender.set_standing(disp,b,false);	
+		   defender.set_standing(disp,b,false);
 		}
 		disp.non_turbo_delay();
 		animation_time = attacker.get_animation()->get_animation_time();
