@@ -109,15 +109,18 @@ std::string do_interpolation(const std::string &str, variable_set& set)
 		}
 
 
-		//The variable is replaced with its value.
-		//Replace = remove original, and then insert new value, if any.
-		res.replace(var_begin, var_end, set.get_variable_const(var_name));
+		if (var_name == "") {
+			// Allow for a way to have $s in a string.
+			// $| will be replaced by $.
+			res.replace(var_begin, var_end, "$");
+		}
+		else {
+			//The variable is replaced with its value.
+			res.replace(var_begin, var_end,
+			    set.get_variable_const(var_name));
+		}
 	}
 
-	//Remove any remaining '|', which are used to separate variable names,
-	//so that the WML writer doesn't need to worry about whether they're really necessary.
-	//It is also occasionally useful to intentionally put them elsewhere.
-	res.erase(std::remove(res.begin(), res.end(), '|'), res.end());
 	return res;
 }
 
