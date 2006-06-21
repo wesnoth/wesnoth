@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-20 23:34+0200\n"
-"PO-Revision-Date: 2006-06-21 08:46+0200\n"
+"PO-Revision-Date: 2006-06-21 09:39+0200\n"
 "Last-Translator: Isaac Clerencia <isaac@unizar.es>\n"
 "Language-Team:  <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2907,7 +2907,6 @@ msgstr ""
 "los trolls) automáticamente recuperarán 8 pv por turno."
 
 #: data/help.cfg:225
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -2916,14 +2915,10 @@ msgid ""
 msgstr ""
 "\n"
 "Unidades con sanación: las unidades con la habilidad de "
-"<ref>dst=ability_heals text=«sanar»</ref> harán que las unidades adyacentes "
-"amigas recuperen un máximo de 8 pv en total por turno, y prevendrán que el "
-"veneno cause daño. Sólo podrán ser afectadas las unidades que estén "
-"adyacentes y que luchen en el mismo bando que la unidad sanadora, y como "
-"máximo se sanarán 4 pv a cada unidad."
+"<ref>dst=ability_heals text=sanar</ref> curarán a las unidades adyacentes amigas, normalmente 4 u 8 pv por turno o prevendrán que el "
+"veneno cause daño a esa unidad."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -2932,14 +2927,9 @@ msgid ""
 msgstr ""
 "\n"
 "Unidades con curación: las unidades con la habilidad de "
-"<ref>dst=ability_cures text=«curar»</ref> harán que las unidades adyacentes "
-"amigas recuperen un máximo de 18 pv en total por turno, y eliminarán el "
-"veneno. Sólo podrán ser afectadas las unidades que estén adyacentes y que "
-"luchen en el mismo bando que la unidad sanadora, y como máximo se sanarán 8 "
-"pv a cada unidad."
+"<ref>dst=ability_cures text=curar</ref> podrán eliminar el veneno de las unidades amigas adyacentes (con preferencia sobre sanar en caso de que la unidad también tenga esta habilidad)"
 
 #: data/help.cfg:228
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2951,9 +2941,7 @@ msgstr ""
 "\n"
 "El descanso puede combinarse con otras formas de curación, pero los efectos "
 "de las aldeas, la regeneración, y la curación o sanación no se combinan "
-"entre ellos. Una unidad sanadora o curadora será menos efectiva si tiene que "
-"distribuir sus cuidados entre muchas unidades heridas que si tiene que "
-"atender heridas individuales. Por último, las unidades se recuperan "
+"entre ellos: se utilizará la mejor opción. Por último, las unidades se recuperan "
 "completamente entre un escenario y otro."
 
 #: data/help.cfg:233
@@ -2973,7 +2961,6 @@ msgstr ""
 "a saber: los ingresos y el coste de mantenimiento."
 
 #: data/help.cfg:236
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2984,9 +2971,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"El concepto de ingresos es simple. Tiene unos ingresos básicos de 2 piezas "
-"de oro por turno. Por cada aldea que controle, ingresará una pieza de oro "
-"por turno. Así, si tiene diez aldeas, ganará doce piezas de oro por turno. A "
+"El concepto de ingresos es simple. El ingreso básico es de 2 piezas de oro por turno. Por cada aldea que controle, ingresará una pieza de oro "
+"por turno. Así, si tiene diez aldeas, ganará 12 piezas de oro por turno. A "
 "su vez, los costes de mantenimiento de su ejército se deducen de sus "
 "ingresos, como se explica a continuación."
 
@@ -3013,7 +2999,6 @@ msgstr ""
 "mantenimiento."
 
 #: data/help.cfg:240
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3023,9 +3008,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Estos costes se deducen de sus ingresos, así que en el caso anterior de doce "
-"niveles en unidades y diez aldeas, sus ingresos por turno serían 10 piezas "
-"de oro."
+"Los costes de mantenimiento se deducen de sus ingresos, así que en el caso anterior de doce "
+"niveles en unidades y diez aldeas, sus ingresos por turno serían 10 piezas de oro."
 
 #: data/help.cfg:241
 msgid ""
@@ -3047,7 +3031,6 @@ msgid "Wrap Up"
 msgstr "Resumiendo"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -3059,7 +3042,7 @@ msgstr ""
 "quiera seguir leyendo la sección de «Estrategia básica», o familiarizarse "
 "con los <ref>dst=traits text=rasgos</ref> y <ref>dst=abilities "
 "text=habilidades</ref>, pero ahora ya sabe lo necesario para poder jugar en "
-"el escenario del «Heredero al trono». ¡Diviértase, y buena suerte!"
+"la campaña del «Heredero al trono». ¡Diviértase, y buena suerte!"
 
 #: data/help.cfg:258
 msgid "License"
@@ -3094,7 +3077,6 @@ msgstr ""
 "<ref>dst=traits_strong text=«fuerte»</ref>."
 
 #: data/help.cfg:269
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3104,9 +3086,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Los otros rasgos que pueden asignarse a las unidades son "
+"Los otros rasgos que pueden asignarse a las unidades son <ref>dst=traits_dextrous text=«diestro»</ref>,"
 "<ref>dst=traits_loyal text=«leal»</ref>, <ref>dst=traits_undead text='«no "
-"muerto»'</ref>, y <ref>dst=traits_dextrous text=«diestro»</ref>."
+"muerto»'</ref>."
 
 #: data/help.cfg:274
 msgid "Intelligent"
@@ -3172,9 +3154,8 @@ msgid "Resilient"
 msgstr "Resistente"
 
 #: data/help.cfg:291
-#, fuzzy
 msgid "Resilient units have 10% +3 more HP than usual."
-msgstr "Las unidades resistentes tienen 7 pv más de lo normal."
+msgstr "Las unidades resistentes tienen un 10% + 3 pv más de lo normal."
 
 #: data/help.cfg:293
 msgid ""
@@ -3199,13 +3180,12 @@ msgid "Strong"
 msgstr "Fuerte"
 
 #: data/help.cfg:299
-#, fuzzy
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
 "Las unidades fuertes hacen un punto más de daño en cada ataque de combate "
-"cuerpo a cuerpo, y tienen 2 pv más."
+"cuerpo a cuerpo con éxito, y tienen 1 pv más."
 
 #: data/help.cfg:301
 msgid ""
@@ -3260,9 +3240,8 @@ msgstr ""
 "segura puede ser una pésima idea."
 
 #: data/help.cfg:314
-#, fuzzy
 msgid "trait^Undead"
-msgstr "No muertos"
+msgstr "No muerto"
 
 #: data/help.cfg:315
 msgid "Undead units are immune to poison."
@@ -3290,11 +3269,8 @@ msgid "Dextrous"
 msgstr "Diestro"
 
 #: data/help.cfg:323
-#, fuzzy
 msgid "Dextrous units do 1 more damage for every successful strike in ranged combat."
-msgstr ""
-"Las unidades con el rasgo «diestro» infligen un punto adicional de daño con "
-"cada flecha."
+msgstr "Las unidades con el rasgo «diestro» infligen un punto adicional de daño por cada ataque a distancia con éxito."
 
 #: data/help.cfg:325
 msgid ""
@@ -3351,7 +3327,6 @@ msgid "Forest"
 msgstr "Bosque"
 
 #: data/help.cfg:353
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -3647,9 +3622,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:477
-#, fuzzy
 msgid "Illuminated Cave"
-msgstr "ilumina"
+msgstr "Cueva iluminada"
 
 #: data/help.cfg:482
 msgid ""
@@ -3729,7 +3703,6 @@ msgid "Chasm"
 msgstr ""
 
 #: data/help.cfg:518
-#, fuzzy
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -3746,7 +3719,6 @@ msgid "Lava"
 msgstr "Lava"
 
 #: data/help.cfg:525
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -3756,7 +3728,7 @@ msgid ""
 msgstr ""
 "Los peligros inherentes al intento de caminar sobre lava son bastante "
 "obvios. Este terreno sólo pueden cruzarlo unidades que sean capaces de volar "
-"a una distancia considerable sobre él."
+"a una distancia considerable sobre él. El magma incandescente también produce un sustancial brillo, que ilumina el área sobre él. Esto proporciona un bono al ataque a las unidades legales y elimina el bono de las unidades caóticas."
 
 #: data/help.cfg:530 data/terrain.cfg:52
 msgid "River Ford"
@@ -3821,9 +3793,8 @@ msgstr ""
 "su capacidad de impedir el paso incluso al viajero más decidido."
 
 #: data/help.cfg:553
-#, fuzzy
 msgid "General commands"
-msgstr "General"
+msgstr "Comandos generales"
 
 #: data/help.cfg:555
 msgid ""
@@ -3863,9 +3834,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:575
-#, fuzzy
 msgid "Multiplayer commands"
-msgstr "+Mapas de multijugadores"
+msgstr "Comandos de multijugador"
 
 #: data/help.cfg:577
 msgid ""
@@ -4054,9 +4024,8 @@ msgid "storm trident"
 msgstr "tridente de tormentas"
 
 #: data/items.cfg:728
-#, fuzzy
 msgid "Zap"
-msgstr "Zap~"
+msgstr "Zap"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -4098,16 +4067,12 @@ msgstr "2 Jug. - Ataque relámpago"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
-#, fuzzy
 msgid "A duel map for super fast play. Recommended setting of 2 gold per village."
-msgstr ""
-"Un mapa para duelos extremadamente rápido. Se recomienda la opción de 2 "
-"piezas de oro por aldea."
+msgstr "Un mapa para duelos extremadamente rápido. Se recomienda la opción de 2 piezas de oro por aldea."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:31
-#, fuzzy
 msgid "2p - Caves of the Basilisk"
-msgstr "4 Jug. - El rey de la colina"
+msgstr "2 Jug. - Las cuevas del basilisco"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:33
 msgid ""
@@ -4266,7 +4231,6 @@ msgid "2p - Den of Onis"
 msgstr "2 Jug. - La guarida de Onis"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
-#, fuzzy
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet. Recommended setting of 2 gold per village."
@@ -4280,21 +4244,16 @@ msgid "2p - Hamlets"
 msgstr "2 Jug. - Pueblos"
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:4
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Recommended setting of 2 gold per village."
-msgstr ""
-"La guerra transforma las sencillas granjas y aldeas de una pacífica región "
-"en un campo de batalla parcelado. Se recomienda la opción de 2 piezas de oro "
-"por aldea."
+msgstr "La guerra transforma las sencillas granjas y aldeas de una pacífica región en un campo de batalla parcelado. Se recomienda la opción de 2 piezas de oro por aldea."
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
 msgid "2p - Hornshark Island"
 msgstr "2 Jug. - La isla de los tiburones cornudos"
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
-#, fuzzy
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island. Recommended setting of 2 gold per village."
@@ -4308,7 +4267,6 @@ msgid "2p - Meteor Lake"
 msgstr "2 Jug. - Lago de meteoros"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
-#, fuzzy
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region. Recommended setting of 2 gold per village."
@@ -4322,7 +4280,6 @@ msgid "2p - Sablestone Delta"
 msgstr "2 Jug. - El delta de Piedra Sable"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
-#, fuzzy
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers. Recommended setting of 2 gold per village."
@@ -4336,27 +4293,25 @@ msgid "2p - Silverhead Crossing"
 msgstr "2 Jug. - El cruce de Cabeza de Plata"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
-#, fuzzy
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map. Recommended setting of 2 gold per village."
 msgstr ""
 "Los jugadores deben atravesar todo tipo de terreno en pos de la victoria en "
-"este mapa para duelos. Se recomienda la opción de 2 piezas de oro por aldea."
+"este mapa para duelos con distintos frentes. Se recomienda la opción de 2 piezas de oro por aldea."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
 msgid "2p - Sullas Ruins"
 msgstr "2 Jug. - Las ruinas de Sullas"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
-#, fuzzy
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire. Recommended "
 "setting of 2 gold per village."
 msgstr ""
-"Sólo agua, hielo, y ruinas inundadas por el mar y batidas por los rigores "
-"del invierno quedan en las sombras de lo que antaño fue un poderoso imperio. "
+"Inundado por el mar y azotado por los rigores "
+"del invierno, sólo ruinas, agua y hielo quedan en las sombras de lo que antaño fue un poderoso imperio. "
 "Se recomienda la opción de 2 piezas de oro por aldea."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:35
@@ -4370,7 +4325,6 @@ msgid "2p - Wesbowl"
 msgstr "2 Jug. - Wésbol"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:5
-#, fuzzy
 msgid ""
 "In Wesbowl, a player has to get any of the balls to the other player's end "
 "zone as often as possible. However, the other player can attack your units. "
@@ -4380,11 +4334,9 @@ msgstr ""
 "En un partido de Wésbol, un jugador debe llevar su balón a la zona del fondo "
 "del otro jugador. Sin embargo, el otro jugador puede atacar sus unidades. En "
 "realidad, a Wésbol se juega con armas romas, y hay sanadores, así que cuando "
-"las unidades mueren, en realidad vuelven a la zona del fondo del propietario "
-"con una herida."
+"las unidades mueren, en realidad vuelven a la zona del fondo del propietario con una lesión."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:10
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -4439,25 +4391,22 @@ msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "¡Empate! La puntuación final es: $redscore-$bluescore."
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:5
-#, fuzzy
 msgid "3p - Island of the Horatii"
-msgstr "4 Jug. - El rey de la colina"
+msgstr "3 Jug. - La isla de los Horatii"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
-#, fuzzy
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map. Recommended setting of 2 gold per village."
 msgstr ""
-"Los jugadores deben atravesar todo tipo de terreno en pos de la victoria en "
-"este mapa para duelos. Se recomienda la opción de 2 piezas de oro por aldea."
+"Controlar la isla central es normalmente la clave para la victoria en este mapa todos contra todos para 3 jugadores de 21x21 hexágonos. "
+"Se recomienda la opción de 2 piezas de oro por aldea."
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
 msgstr "3 Jug. - Morituri"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
-#, fuzzy
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map. Recommended setting of 2 gold per village."
@@ -4470,7 +4419,6 @@ msgid "3p - Triple Blitz"
 msgstr "3 Jug. - Triple ataque relámpago"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
-#, fuzzy
 msgid ""
 "Three players come head to head on this water-cut battlefield. Recommended "
 "setting of 2 gold per village."
@@ -4483,7 +4431,6 @@ msgid "4p - Blue Water Province"
 msgstr "4 Jug. - La provincia de Agua Azul"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
-#, fuzzy
 msgid ""
 "It has been said that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
@@ -4500,25 +4447,22 @@ msgid "4p - Castle Hopping Isle"
 msgstr "4 Jug. - Una isla de castillos escondidos"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:11
-#, fuzzy
 msgid ""
 "Many closely placed and strategically located castles. Which one will you "
 "hop to? Small map for fast play. Recommended setting of 2 gold per village."
 msgstr ""
-"Muchos castillos cercanos unos de otros, y estratégicamente colocados. Es un "
+"Muchos castillos cercanos unos de otros, y estratégicamente colocados. ¿A cuál saltarás? Es un "
 "mapa pequeño para partidas rápidas. Se recomienda la opción de 2 piezas de "
-"oro por aldea, y los jugadores 1 y 3 contra el 2 y el 4, de cara a un 2 "
-"contra 2."
+"oro por aldea."
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
 msgstr "4 Jug. - Choque"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
-#, fuzzy
 msgid "Small map for 2 vs 2. Recommended setting of 2 gold per village."
 msgstr ""
-"Un mapa para duelos extremadamente rápido. Se recomienda la opción de 2 "
+"Pequeño mapa para 2 contra 2. Se recomienda la opción de 2 "
 "piezas de oro por aldea."
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
@@ -4537,21 +4481,17 @@ msgid "4p - King of the Hill"
 msgstr "4 Jug. - El rey de la colina"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2v2 as well. There are 36 villages. Recommended "
 "setting of 2gpv."
-msgstr ""
-"Los jugadores deben atravesar todo tipo de terreno en pos de la victoria en "
-"este mapa para duelos. Se recomienda la opción de 2 piezas de oro por aldea."
+msgstr "Contral el área alrededor de la fortaleza central es muy lucrativo en este mapa todos contra todos de 4 jugadores y 36x36 hexágonos. También es posible jugar 2 contra 2. Hay 36 aldeas. Se recomienda la opción de 2 piezas de oro por aldea."
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
 msgstr "4 Jug. - Laguna"
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:4
-#, fuzzy
 msgid ""
 "Four factions contend for dominance over this watery settlement. Recommended "
 "setting of 1 gold per village."
@@ -4560,9 +4500,8 @@ msgstr ""
 "grandes zonas de agua. Se recomienda la opción de 1 pieza de oro por aldea."
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:5
-#, fuzzy
 msgid "4p - Loris River"
-msgstr "2 Jug. - A través del río"
+msgstr "4p - El río Loris"
 
 #: data/scenarios/multiplayer/4p_Loris_River.cfg:7
 msgid ""
@@ -4571,18 +4510,14 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
-#, fuzzy
 msgid "4p - Morituri"
-msgstr "3 Jug. - Morituri"
+msgstr "4 Jug. - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
 "setting of 2 gold per village."
-msgstr ""
-"Tres jugadores se enfrentan cara a cara en este campo de batalla hendido por "
-"cursos de agua. Se recomienda la opción de 2 piezas de oro por aldea."
+msgstr "¿Quién emergera de los confines de este peligroso campo de batalla? Se recomienda la opción de 2 piezas de oro por aldea."
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:5
 msgid "4p - Paths of Daggers"
@@ -4611,7 +4546,6 @@ msgid "4p - The Wilderlands"
 msgstr "4 Jug. - Los páramos"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
-#, fuzzy
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses. Recommended setting of 1 "
@@ -4634,14 +4568,13 @@ msgid "6p - Amohsad Caldera"
 msgstr ""
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
-#, fuzzy
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head. Recommended setting of 2 gold per "
 "village."
 msgstr ""
 "Sólo un auténtico estratega sobrevivirá en este campo de batalla mortal y "
-"acotado, donde 6 ejércitos se medirán las fuerzas. Se recomienda la opción "
+"acotado, donde 6 ejércitos encajonados se medirán las fuerzas. Se recomienda la opción "
 "de 2 piezas de oro por aldea."
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
@@ -4677,19 +4610,14 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
-#, fuzzy
 msgid "8p - Morituri"
-msgstr "3 Jug. - Morituri"
+msgstr "8 Jug. - Morituri"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish. Recommended setting of 2 gold per village."
-msgstr ""
-"Sólo un auténtico estratega sobrevivirá en este campo de batalla mortal y "
-"acotado, donde 6 ejércitos se medirán las fuerzas. Se recomienda la opción "
-"de 2 piezas de oro por aldea."
+msgstr "Trabajo en equipo y táctica son claves para la victoria en este extraño campo de batalla, donde 8 ejércitos luchan por la victoria. Se recomienda la opción de 2 piezas de oro por aldea."
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
@@ -4798,7 +4726,6 @@ msgid "Underground"
 msgstr "Bajo tierra"
 
 #: data/schedules.cfg:98 data/schedules.cfg:109
-#, fuzzy
 msgid "Deep Underground"
 msgstr "Bajo tierra"
 
@@ -4837,17 +4764,11 @@ msgid ""
 msgstr ""
 
 #: data/special-notes.cfg:20
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
-"Hábil con la espada y la ballesta, los tenientes lideran pequeños grupos de "
-"soldados, coordinando sus ataques e incrementando la habilidad en la lucha "
-"de aquellos de nivel más bajo que los rodean.\n"
-"\n"
-"Notas especiales: el liderazgo de un Teniente permite que las unidades "
-"amigas próximas a él hagan más daño en combate, aunque esto sólo se aplica a "
+"El liderazgo de esta unidad permite que las unidades amigas próximas a él hagan más daño en combate, aunque esto sólo se aplica a "
 "unidades de menor nivel."
 
 #: data/special-notes.cfg:23
@@ -4925,15 +4846,11 @@ msgid ""
 msgstr ""
 
 #: data/special-notes.cfg:65
-#, fuzzy
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"\n"
-"\n"
-"Notas especiales:el ataque de carga con lanza dobla tanto el daño infligido "
-"como el sufrido. Esto no afecta a sus ataques defensivos, en respuesta a "
+"Usar un ataque de carga dobla tanto el daño infligido como el sufrido. Esto no afecta a sus ataques defensivos, en respuesta a "
 "ataques enemigos."
 
 #: data/special-notes.cfg:68
@@ -4975,9 +4892,8 @@ msgid "Orange"
 msgstr "Naranja"
 
 #: data/team_colors.cfg:34
-#, fuzzy
 msgid "Black"
-msgstr "< Atrás"
+msgstr "Negro"
 
 #: data/team_colors.cfg:40
 msgid "White"
@@ -4988,9 +4904,8 @@ msgid "Brown"
 msgstr "Marrón"
 
 #: data/team_colors.cfg:52
-#, fuzzy
 msgid "Teal"
-msgstr "Equipo"
+msgstr "Verde azulado"
 
 #: data/terrain.cfg:11 src/multiplayer_create.cpp:67
 #: src/multiplayer_lobby.cpp:361 src/multiplayer_lobby.cpp:367
@@ -5010,9 +4925,8 @@ msgid "Oasis"
 msgstr "Oasis"
 
 #: data/terrain.cfg:325
-#, fuzzy
 msgid "Dunes"
-msgstr "Ocaso"
+msgstr "Dunas"
 
 #: data/terrain.cfg:334
 msgid "Snow Hills"
@@ -5027,19 +4941,16 @@ msgid "Snow Forest"
 msgstr "Bosque nevado"
 
 #: data/terrain.cfg:405
-#, fuzzy
 msgid "Cave Lit"
-msgstr "Cueva"
+msgstr "Cueva iluminada"
 
 #: data/terrain.cfg:414
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "Montañas desérticas"
+msgstr "Montañas infranqueables"
 
 #: data/terrain.cfg:445
-#, fuzzy
 msgid "Great Tree"
-msgstr "Gran troll"
+msgstr "Gran árbol"
 
 #: data/terrain.cfg:464
 msgid "Encampment"
@@ -5156,44 +5067,36 @@ msgstr ""
 "«Resistencia»."
 
 #: data/tips.cfg:4
-#, fuzzy
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
 "selected unit in the currently selected terrain is displayed in the top "
 "right corner of the screen."
 msgstr ""
-"La virtud de la observación:\n"
 "El terreno donde posicionéis vuestros ejércitos determina las posibilidades "
 "de que el enemigo los ataque con éxito. La capacidad defensiva de la unidad "
 "seleccionada en el terreno seleccionado se muestra en la esquina superior "
 "derecha de la pantalla."
 
 #: data/tips.cfg:5
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
 "be cured by moving them to a village, or placing them next to a unit with "
 "the 'cures' ability."
 msgstr ""
-"La virtud de la prevención:\n"
 "Una unidad envenenada perderá 8 puntos de vida por turno, pero no morirá: el "
 "veneno nunca la dejará por debajo de 1 punto de vida. Las tropas envenenadas "
-"se curan en las aldeas o si están adyacentes a una unidad con la habilidad "
-"«curar»."
+"se curan en las aldeas o si están adyacentes a una unidad con la habilidad «curar»."
 
 #: data/tips.cfg:6
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
-"La virtud de la persistencia:\n"
 "Podéis usar unidades veteranas de escenarios previos mediante "
-"«Reincorporar», en el menú del juego. Llamando a las mismas unidades "
-"conseguiréis unas tropas altamente competentes y experimentadas."
+"«Reincorporar», en el menú del juego. Llamando a las mismas unidades una y otra vez conseguiréis unas tropas altamente competentes y experimentadas."
 
 #: data/tips.cfg:7
 msgid ""
@@ -5210,14 +5113,12 @@ msgstr ""
 "entrenamiento para ignorar las zonas de control."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
 "chance to hit both when attacking and defending. Marksman attacks have at "
 "least 60% chance to hit when attacking."
 msgstr ""
-"La virtud de la ubicación:\n"
 "Las posibilidades de dañar a una unidad suelen depender de su habilidad para "
 "defenderse en el terreno en el que está. Sin embargo, existen excepciones "
 "como los ataques mágicos, que siempre tienen un 70% para acertar, o los "
@@ -5230,12 +5131,10 @@ msgstr ""
 "Una unidad situada en una aldea recuperará 8 puntos de vida cada turno."
 
 #: data/tips.cfg:10
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
 msgstr ""
-"La virtud del reposo:\n"
 "Las unidades que ni se muevan ni ataquen durante su turno, descansan, "
 "recuperando así 2 puntos de vida al principio del siguiente turno."
 
@@ -5300,25 +5199,18 @@ msgstr ""
 "prescindibles para retrasar el ataque."
 
 #: data/tips.cfg:17
-#, fuzzy
 msgid "Do not be afraid to retreat and regroup; it is often the key to victory."
-msgstr ""
-"La gloria también está en las retiradas:\n"
-"No hay que tener miedo a las retiradas, permiten reagruparse, lo que puede "
-"ser vital para la victoria."
+msgstr "No hay que tener miedo a las retiradas, permiten reagruparse, lo que puede ser vital para la victoria."
 
 #: data/tips.cfg:18
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
 "finish early. You will always earn more gold this way than through capturing "
 "villages and waiting for turns to run out."
 msgstr ""
-"El valor de la velocidad:\n"
-"En muchas batallas, si acabáis antes del límite de turnos, según el número "
-"de aldeas y de turnos restantes, recibiréis oro. Siempre saldréis ganando "
-"más oro de este modo que capturando aldeas y esperando el fin de los turnos."
+"En muchas campañas, si acabáis antes del límite de turnos, según el número "
+"de aldeas y de turnos restantes, recibiréis oro. Siempre saldréis ganando más oro de este modo que capturando aldeas y esperando el fin de los turnos."
 
 #: data/tips.cfg:19
 msgid ""
@@ -5334,14 +5226,10 @@ msgstr ""
 "el castillo para que podáis reclutar desde allí."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
-msgstr ""
-"Que la luz nunca ceda:\n"
-"Los esqueletos son resistentes a las armas de filo y que perforan, pero "
-"vulnerables a las de impacto, fuego y sagradas."
+msgstr "Los esqueletos son resistentes a las armas de filo y que perforan, pero vulnerables a las de impacto, fuego y sagradas."
 
 #: data/tips.cfg:21
 msgid ""
@@ -5412,15 +5300,10 @@ msgstr ""
 "atacar nada por sí mismos."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
-msgstr ""
-"La virtud de la picardía:\n"
-"Los ataques con la habilidad «ralentiza» no sólo hacen que el enemigo se "
-"mueva más despacio, sino que también le restan un ataque, convirtiéndola en "
-"una poderosa arma contra enemigos con pocos ataques."
+msgstr "Los ataques con la habilidad «ralentiza» no sólo hacen que el enemigo se mueva más despacio, sino que también dividen por dos el daño infligido por sus ataques hasta final de turno."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -5512,14 +5395,12 @@ msgid "resilient"
 msgstr "resistente"
 
 #: data/tutorial/units/Fighteress.cfg:5 data/tutorial/units/Fighteress.cfg:53
-#, fuzzy
 msgid "female^Fighter"
-msgstr "Maga"
+msgstr "Luchadora"
 
 #: data/tutorial/units/Quintain.cfg:3
-#, fuzzy
 msgid "Quintain"
-msgstr "Montañas"
+msgstr "Estafermo"
 
 #: data/tutorial/units/Quintain.cfg:13
 msgid ""
@@ -5528,16 +5409,14 @@ msgid ""
 msgstr ""
 
 #: data/tutorial/units/Quintain.cfg:20
-#, fuzzy
 msgid "flail"
-msgstr "cola"
+msgstr "mayal"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
 msgstr "Galeón"
 
 #: data/units/Boat_Galleon.cfg:19
-#, fuzzy
 msgid ""
 "Even people happily living in their homes eventually need some kind of "
 "transport through the seas, even if only to go fishing or to trade goods. "
@@ -5547,7 +5426,7 @@ msgstr ""
 "Incluso aquellos que viven felices en sus hogares necesitan eventualmente "
 "algún tipo de transporte a través de los mares, aunque sólo sea para ir de "
 "pesca o comerciar con mercancías. El galeón es perfecto para este cometido: "
-"es rápido y resistente, aunque no está preparado para la lucha, y es capaz "
+"es rápido y resistente y, aunque no está preparado para la lucha, es capaz "
 "de adaptarse a múltiples tareas."
 
 #: data/units/Boat_Galleon.cfg:21
@@ -5701,7 +5580,6 @@ msgid "Drake Flameheart"
 msgstr "Corazón de fuego draco"
 
 #: data/units/Drake_Flameheart.cfg:27
-#, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves, have veins which course with fire rather than blood. "
@@ -5716,16 +5594,13 @@ msgstr ""
 "pero, por alguna razón, nadie ha abierto en canal a ninguno para "
 "comprobarlo.\n"
 "\n"
-"Notas especiales: el liderazgo de un Corazón de fuego permite que las "
-"unidades amigas próximas a él hagan más daño en combate, aunque esto sólo se "
-"aplica a unidades de menor nivel."
+"Notas especiales:"
 
 #: data/units/Drake_Flare.cfg:3
 msgid "Drake Flare"
 msgstr "Fulgor draco"
 
 #: data/units/Drake_Flare.cfg:26
-#, fuzzy
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
@@ -5738,9 +5613,7 @@ msgstr ""
 "dracos que aspiran a ser tales líderes, tanto en tiempos de guerra como de "
 "paz.\n"
 "\n"
-"Notas especiales: el liderazgo de un fulgor draco permite que las unidades "
-"amigas próximas a él hagan más daño en combate, aunque esto sólo se aplica a "
-"unidades de menor nivel."
+"Notas especiales:"
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
@@ -5768,7 +5641,6 @@ msgid "Drake Glider"
 msgstr "Planeador draco"
 
 #: data/units/Drake_Glider.cfg:21
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little armor as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
@@ -5787,7 +5659,10 @@ msgstr ""
 "propio de muchos de su raza. Los planeadores también usan de forma muy "
 "efectiva su velocidad para golpear desde arriba una y otra vez a sus "
 "oponentes hasta que caen. Los mejores planeadores pueden intentar ingresar "
-"en las filas de los dracos celestes."
+"en las filas de los dracos celestes. Desde su ventajosa posición aerea, estos dracos pueden ver más allá de las posiciones defensivas del enemigo. Su habilidad en el vuelo les permite atacar con precisión a enemigos tras esas posiciones. "
+"\n"
+"\n"
+"Notas especiales:"
 
 #: data/units/Drake_Glider.cfg:83 data/units/Drake_Hurricane.cfg:98
 #: data/units/Drake_Sky.cfg:97
@@ -5799,7 +5674,6 @@ msgid "Hurricane Drake"
 msgstr "Draco de huracán"
 
 #: data/units/Drake_Hurricane.cfg:30
-#, fuzzy
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite amongst "
 "those drakes which are gifted with flight. Soaring high in the air, they can "
@@ -5807,9 +5681,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Los dracos de huracán son los maestros de su raza en el aire. Gracias a su "
-"vuelo alto, pueden atravesar la mayoría de las defensas y escupir fuego "
-"impunemente sobre el enemigo."
+"Maestros de los dominios aereos, los dracos de huracán son los maestros de los dracos voladores. Gracias a su vuelo alto, pueden atravesar la mayoría de las defensas y escupir fuego "
+"impunemente sobre el enemigo.\n"
+"\n"
+"Notas especiales:"
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
@@ -5835,7 +5710,6 @@ msgid "Sky Drake"
 msgstr "Draco celeste"
 
 #: data/units/Drake_Sky.cfg:29
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
@@ -5849,14 +5723,15 @@ msgstr ""
 "Los dracos celestes son sin duda los reyes del cielo. Usando su inercia y su "
 "aliento de fuego como armas, este tipo de dracos ha conseguido ser la "
 "pesadilla de muchos. Pueden caer sin un ruido sobre sus presas, y "
-"normalmente están ya muy lejos antes de que alguien pueda hacerles nada."
+"normalmente están ya muy lejos antes de que alguien pueda hacerles nada. Atacando desde el aire pueden escupir fuego con gran precisión a posiciones que de otra manera serían de gran ventaja defensiva para sus enemigos.\n"
+"\n"
+"Notas especiales:"
 
 #: data/units/Drake_Slasher.cfg:3
 msgid "Drake Slasher"
 msgstr "Carnicero draco"
 
 #: data/units/Drake_Slasher.cfg:20
-#, fuzzy
 msgid ""
 "Slashers are clashers who have chosen to master the use of a Halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
@@ -5872,7 +5747,9 @@ msgstr ""
 "para empalar a un caballo de la misma forma que un humano haría con un "
 "jabalí. Su entrenamiento también mejora sus habilidades defensivas y de "
 "resistencia, lo que les da una gran ventaja sobre sus primos cercanos, los "
-"gladiadores."
+"gladiadores.\n"
+"\n"
+"Notas especiales:"
 
 #: data/units/Drake_Slasher.cfg:76 data/units/Drake_Slasher.cfg:152
 #: data/units/Drake_Warden.cfg:82 data/units/Drake_Warden.cfg:138
@@ -5886,7 +5763,6 @@ msgid "Drake Warden"
 msgstr "Guardián draco"
 
 #: data/units/Drake_Warden.cfg:21
-#, fuzzy
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
 "the most able Slashers. They have forged their might such that few warriors "
@@ -5895,10 +5771,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"El guardián representa la cumbre de la casta de los retadores. Éstos se "
-"escogen de entre los mejores carniceros, y es tan grande su poder que pocos "
+"El guardián representa la cumbre de la casta de los retadores y son escogidos de entre los mejores carniceros. Es tan grande su poder que pocos "
 "guerreros sobre la tierra se atreverían a enfrentarse a ellos. El arma "
-"preferida por los guardianes es la alabarda, que usan con gran efectividad."
+"preferida por los guardianes es la alabarda, que usan con gran efectividad.\n"
+"\n"
+"Notas especiales:"
 
 #: data/units/Drake_Warrior.cfg:3
 msgid "Drake Warrior"
@@ -5919,18 +5796,16 @@ msgid "Dwarvish Berserker"
 msgstr "Enano berserker"
 
 #: data/units/Dwarvish_Berserker.cfg:19
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
 "all defense in exchange for massive damage against their enemies.\n"
 "\n"
 "Special Notes:"
 msgstr ""
-"Los enanos son una antigua raza de poderosos luchadores. Sus berserkers "
-"olvidan toda forma de defensa en combate a cambio de infligir cantidades "
-"masivas de daño con sus ataques. Una vez que entran en batalla, los "
-"berserkers enanos atacan ferozmente y sin descanso hasta que ellos o sus "
-"enemigos caen muertos."
+"Los enanos son una antigua raza de poderosos luchadores. Sus berserkers olvidan toda forma de defensa en combate a cambio de infligir cantidades "
+"masivas de daño con sus ataques.\n"
+"\n"
+"Notas especiales:"
 
 #: data/units/Dwarvish_Berserker.cfg:37 data/units/Dwarvish_Ulfserker.cfg:37
 msgid "berserker frenzy"
@@ -6008,7 +5883,6 @@ msgid "Dwarvish Guardsman"
 msgstr "Guardia enano"
 
 #: data/units/Dwarvish_Guardsman.cfg:20
-#, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
@@ -6017,9 +5891,10 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Los enanos más resistentes a veces se unen al ejército enano como guardias. "
-"Son muy lentos y no tienen un ataque fuerte, y protegen los flancos del "
-"ejército, absorbiendo un montón de daño, mientras utilizan sus pesadas "
-"lanzas para defenderse."
+"Son muy lentos y no tienen un ataque fuerte pero protegen los flancos del ejército, absorbiendo un montón de daño, mientras utilizan sus pesadas "
+"lanzas para defenderse.\n"
+"\n"
+"Notas especiales:"
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -6075,7 +5950,6 @@ msgid "Dwarvish Sentinel"
 msgstr "Centinela enano"
 
 #: data/units/Dwarvish_Sentinel.cfg:20
-#, fuzzy
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks.\n"
@@ -6083,14 +5957,15 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "El centinela, armado con su escudo corporal y su gran coraje, no flaquea "
-"jamás, ni incluso ante el más poderoso de los ataques."
+"jamás, ni incluso ante el más poderoso de los ataques.\n"
+"\n"
+"Notas especiales:"
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
 msgstr "Fornido enano"
 
 #: data/units/Dwarvish_Stalwart.cfg:19
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -6100,7 +5975,9 @@ msgid ""
 msgstr ""
 "Los «fornidos», tras años de batalla, han ido haciéndose nuevos escudos y "
 "armaduras muy resistentes a partir de los restos de sus enemigos. Aunque son "
-"lentos, también son temidos por su resistencia y fuerza."
+"lentos, también son temidos por su resistencia y fuerza.\n"
+"\n"
+"Notas especiales:"
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -6175,7 +6052,6 @@ msgid "Dwarvish Ulfserker"
 msgstr "Enano ulfserker"
 
 #: data/units/Dwarvish_Ulfserker.cfg:19
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these in battle: they persist until either their enemy is dead "
@@ -6185,9 +6061,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Los enanos son una antigua raza de poderosos guerreros. De ellos, los "
-"ulfserkers son los más feroces en la batalla: atacan luchando sin tregua "
-"hasta la muerte de su enemigo o la suya propia, sin importar cuántas heridas "
-"reciban."
+"ulfserkers son los más feroces en la batalla: atacan luchando sin tregua hasta la muerte de su enemigo o la suya propia, sin importar cuántas heridas reciban.\n"
+"\n"
+"Notas especiales:"
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
@@ -6218,7 +6094,6 @@ msgid "Elvish Avenger"
 msgstr "Vengador elfo"
 
 #: data/units/Elvish_Avenger.cfg:24
-#, fuzzy
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -6239,14 +6114,9 @@ msgstr ""
 "cortando las líneas de abastecimiento y rodeando al enemigo de un solo "
 "golpe.\n"
 "\n"
-"Estas tácticas se han interpretado, a veces, como una forma de venganza por "
-"sus sus hermanos caídos en la batalla. Aunque el motivo no es tan simple de "
-"explicar, no es del todo erróneo.\n"
+"Esta tácticas se han interpretado, a veces, como una forma de venganza por sus hermanos caídos en la batalla. Aunque el motivo no es tan simple de explicar, no es del todo erróneo.\n"
 "\n"
-"Notas especiales: la habilidad de los vengadores para convertirse en "
-"auténticos «hombres de los bosques» los convierte en invisibles para un "
-"enemigo, a menos que estén justo a su lado, o hayan revelado su posición "
-"habiendo atacado."
+"Notas especiales:"
 
 #: data/units/Elvish_Avenger.cfg:222
 msgid "female^Elvish Avenger"
