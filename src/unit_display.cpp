@@ -352,8 +352,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		if(defender.get_animation()->animation_finished()) {
 		   defender.set_standing(disp,b,false);
 		}
-		if(leader_loc.valid() && !leader->second.get_animation()->animation_finished() ) {
-		   defender.set_standing(disp,b,false);
+		if(leader_loc.valid() && leader->second.get_animation()->animation_finished() ) {
+		   leader->second.set_standing(disp,leader_loc,true);
 		}
 		disp.non_turbo_delay();
 		animation_time = defender.get_animation()->get_animation_time();
@@ -375,11 +375,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 
 	if(dead) {
-		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
-		att->second.set_standing(disp,a);
 		unit_display::unit_die(disp,def->first,def->second,&attack);
-	} else {
-		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
 	}
 	disp.update_display();
 	events::pump();
@@ -502,8 +498,8 @@ bool unit_attack(display& disp, unit_map& units,
 		if(defender.get_animation()->animation_finished()) {
 		   defender.set_standing(disp,b,false);
 		}
-		if(leader_loc.valid() && !leader->second.get_animation()->animation_finished() ) {
-		   defender.set_standing(disp,b,false);
+		if(leader_loc.valid() && leader->second.get_animation()->animation_finished() ) {
+		   leader->second.set_standing(disp,leader_loc,true);
 		}
 		disp.non_turbo_delay();
 		animation_time = attacker.get_animation()->get_animation_time();
@@ -511,11 +507,7 @@ bool unit_attack(display& disp, unit_map& units,
 
 
 	if(dead) {
-		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
-		att->second.set_standing(disp,a);
 		unit_display::unit_die(disp,def->first,def->second,&attack);
-	} else {
-		if(leader_loc.valid()) leader->second.set_standing(disp,leader_loc);
 	}
 	disp.update_display();
 	events::pump();
