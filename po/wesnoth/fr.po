@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-21 12:51+0200\n"
-"PO-Revision-Date: 2006-06-17 17:27+0200\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT   gmx D OT  net>\n"
+"PO-Revision-Date: 2006-06-22 20:55+0100\n"
+"Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: Language fr <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,10 +20,9 @@ msgstr ""
 
 #: data/abilities.cfg:8
 msgid "heals +4"
-msgstr "guérison +4"
+msgstr "soins +4"
 
 #: data/abilities.cfg:13
-#, fuzzy
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of each "
@@ -34,8 +33,8 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Guérison :\n"
-"Permet à cette unité de guérir les unités adjacentes au début de chaque "
+"Soins +4 :\n"
+"Permet à cette unité de soigner les unités adjacentes au début de chaque "
 "tour.\n"
 "\n"
 "Une unité ainsi soignée pourra retrouver jusqu'à 4 points de vie par tour, "
@@ -45,7 +44,7 @@ msgstr ""
 
 #: data/abilities.cfg:27
 msgid "heals +8"
-msgstr "guérison +8"
+msgstr "soins +8"
 
 #: data/abilities.cfg:32
 msgid ""
@@ -58,7 +57,7 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Soin :\n"
+"Soins +8 :\n"
 "Cette unité combine des remèdes à base de plantes avec des incantations "
 "magiques pour soigner plus rapidement que la normale sur le champ de "
 "bataille.\n"
@@ -70,7 +69,7 @@ msgstr ""
 
 #: data/abilities.cfg:42
 msgid "cures"
-msgstr "soin"
+msgstr "guérison"
 
 # FIXME : un poil approximatif
 #: data/abilities.cfg:44
@@ -80,8 +79,8 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 "Guérison : \n"
-"Un guérisseur peut guérir une unité empoisonnée. L'unité soigné ne reçoit "
-"pas de soin additionnels lorsqu'elle est guérie du poison."
+"Un guérisseur peut guérir une unité empoisonnée. L'unité guérie ne reçoit "
+"pas de soins additionnels lorsqu'elle est guérie du poison."
 
 #: data/abilities.cfg:57
 msgid "regenerates"
@@ -94,8 +93,8 @@ msgid ""
 "the poison instead of healing."
 msgstr ""
 "Régénération :\n"
-"L'unité se guérit de 8 PV par tour. Si elle est empoisonnée, elle élimine le "
-"poison au lieu de guérir."
+"L'unité se soigne de 8 PV par tour. Si elle est empoisonnée, elle élimine le "
+"poison au lieu de se soigner."
 
 #: data/abilities.cfg:74
 msgid "steadfast"
@@ -617,7 +616,7 @@ msgstr "Bonus de PV max +"
 
 #: data/amla.cfg:30
 msgid "Full Heal"
-msgstr "Soin complet"
+msgstr "Soins complets"
 
 #: data/campaigns/Eastern_Invasion.cfg:22
 #: data/campaigns/Heir_To_The_Throne.cfg:25
@@ -1473,6 +1472,17 @@ msgid ""
 "ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
 "often take underlings whom they lead to victory."
 msgstr ""
+"Séculaire et terrifiant, le dragon de feu est une créature n'existant "
+"normalement que dans les rumeurs et les histoires fantastiques. Il est "
+"normal que des siècles s'écoulent sans qu'un dragon n'aie été apperçu à "
+"Wesnoth, et lorsqu'il est vu ce n'est que sous forme de vague silhouette "
+"volant au loin. Les légendes sont très précises sur les ravages des dragons "
+"de feu : d'une vitesse effrayante, avec des ailes d'une trentaine de mètres "
+"d'envergure, ils attaquent leur proies en piqué avec leur souffle infernal. "
+"Ce qui échapperait à son souffle ardent doit faire attention à sa morsure "
+"puissante et à sa queue dévastatrice. Les dragons de feu sont adroits et "
+"cruels, et n'hésitent pas à faire appel à des sous-fifres qu'ils mènent vers "
+"la victoire."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:30
 msgid "bite"
@@ -1925,6 +1935,23 @@ msgid ""
 "a high chance of hitting an opponent. The staff of a necromancer is marked "
 "with the plague, and any foe struck down by it will rise again in unlife."
 msgstr ""
+"Une des plus grandes disciplines de ce que qui est considéré comme de la "
+"'magie noire' est l'art de la nécromancie, la terrible capacité de réveiller "
+"les morts avec une vie artificielle. Cet art seul a causé la condamnation "
+"par l'humanité de ce qui est appelé 'Magie Noire' et a donné à la peur un "
+"sens nouveau.\n"
+"\n"
+"Cette capacité, dans tous ses aspects, est le premier pas vers la défaite de "
+"la mort et de son ultime récompense. C'est le niveau de puissance le plus "
+"élevé qu'un mage noir peut atteindre sans lacher prise avec l'humanité, mais "
+"c'est bien peu de chose à coté du pouvoir mortel des liches. Leur corps de "
+"mortels sont aussi rendus plus résistants par leur magie, par opposition à "
+"ceux décomposés et fragiles des liches.\n"
+"\n"
+"Remarques : les attaques à distance du nécromancien sont magiques et ont "
+"toujours une grande chance de frapper l'adversaire. Le bâton d'un "
+"nécromancien est marqué par la peste, et toute créature tuée par celui-ci "
+"sera rendue mort-vivante."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:56
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:87
@@ -2995,7 +3022,7 @@ msgid ""
 msgstr ""
 "\n"
 "<ref>dst=ability_regenerates text=Régénération</ref> : Certaines unités "
-"(telles les trolls) guériront automatiquement de 8 PV à chaque tour."
+"(telles les trolls) se soigneront automatiquement de 8 PV à chaque tour."
 
 #: data/help.cfg:225
 msgid ""
@@ -3006,11 +3033,10 @@ msgid ""
 msgstr ""
 "\n"
 "Unités soignantes : les unités avec la capacité de <ref>dst=ability_heals "
-"text=Soin</ref> soigneront les unités alliées adjacentes, habituellement de "
+"text=Soins</ref> soigneront les unités alliées adjacentes, habituellement de "
 "4 ou 8 PV par tour, ou empêcheront le poison de leur faire des dégâts."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -3737,9 +3763,8 @@ msgstr ""
 "de 60% de défense dans les cavernes accidentées."
 
 #: data/help.cfg:477
-#, fuzzy
 msgid "Illuminated Cave"
-msgstr "illumination"
+msgstr "Caverne éclairée"
 
 #: data/help.cfg:482
 msgid ""
@@ -3750,6 +3775,14 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"Une caverne éclairée est une zone de terrain où la lumière de la surface "
+"vient illuminer les tenèbres souterraines. Celle-ci procure un bonus de "
+"dégat aux unités loyales et enlève celui des unités chaotiques. Pour tous "
+"les autres aspects, ce terrain est fonctionnellement identiques aux cavernes "
+"normales.\n"
+"\n"
+"La plupart des unités reçoivent 20 à 40 % de défense dans les cavernes, les "
+"nains en obtiennent 50 %."
 
 #: data/help.cfg:487 data/terrain.cfg:374
 msgid "Mushroom Grove"
@@ -3817,7 +3850,7 @@ msgstr ""
 "Les villages sont constitués de groupes de bâtiments, humains ou autres. "
 "Presque toutes les unités, même les cavaleries, circulent facilement dans "
 "les villages, et la plupart des unités y obtiennent un bonus défensif. Les "
-"villages apportent aux unités des moyens de se laver et de guérir leurs "
+"villages apportent aux unités des moyens de se laver et de soigner leurs "
 "blessures, ce qui permet à toute unité présente dans un village de se "
 "soigner de 8 points de vie à chaque tour, ou d'être guérie du poison.\n"
 "\n"
@@ -3845,7 +3878,6 @@ msgid "Lava"
 msgstr "Lave"
 
 #: data/help.cfg:525
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -3855,7 +3887,10 @@ msgid ""
 msgstr ""
 "Les dangers inhérents aux tentatives de marche sur la lave sont assez "
 "évidents. Ce terrain ne peut être traversé que par les unités capables de "
-"voler à une distance considérable au-dessus."
+"voler à une distance considérable au-dessus. La lave en fusion produit "
+"également une lumière rougeatre éclairant la zone au dessus. Celle-ci "
+"procure donc un bonus de dégat aux unités loyales et enlève celui des unités "
+"chaotiques."
 
 # Piou2fois : un gué est forcément sur une rivière, donc pas besoin de préciser
 #: data/help.cfg:530 data/terrain.cfg:52
@@ -3922,7 +3957,6 @@ msgstr ""
 "pour empêcher le passage du voyageur même le plus déterminé."
 
 #: data/help.cfg:553
-#, fuzzy
 msgid "General commands"
 msgstr "Commandes générales"
 
@@ -3973,6 +4007,8 @@ msgid ""
 "\n"
 "Bring up theme selection menu."
 msgstr ""
+"\n"
+"Affiche le menu de sélection des thèmes."
 
 #: data/help.cfg:575
 msgid "Multiplayer commands"
@@ -4004,6 +4040,9 @@ msgid ""
 "Mute a specific observer. If no username is supplied the muted usernames are "
 "displayed."
 msgstr ""
+"\n"
+"Ignore l'observateur spécifié. Si aucun nom n'est fourni, affiche la liste "
+"des utilisateurs ignorés."
 
 #: data/help.cfg:586
 msgid ""
@@ -4089,7 +4128,7 @@ msgstr "Ne pas faire de vœux."
 
 #: data/items.cfg:336
 msgid "Potion of Healing"
-msgstr "Potion de soins"
+msgstr "Potion de soin"
 
 #: data/items.cfg:339
 msgid "A feeling of well-being overwhelms the drinker."
@@ -4511,8 +4550,8 @@ msgstr ""
 "Dans le Wesbowl, un joueur doit amener sa balle de l'autre côté du terrain, "
 "dans la « zone morte » de l'autre joueur. Toutefois, l'autre joueur peut "
 "attaquer vos unités. Le Wesbowl se joue avec des armes émoussées, et des "
-"guérisseurs sont présents, ce qui fait que lorsque des unités sont "
-"« tuées », elles reviennent dans la zone morte du joueur, blessées."
+"soigneurs sont présents, ce qui fait que lorsque des unités sont « tuées », "
+"elles reviennent dans la zone morte du joueur, blessées."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:10
 msgid ""
@@ -4771,7 +4810,7 @@ msgstr "Dans un paysage varié, quatre armées combattent pour la suprématie."
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:3
 msgid "6p - Amohsad Caldera"
-msgstr ""
+msgstr "6p - La Caldera d'Amohsad"
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
 msgid ""
@@ -4919,33 +4958,39 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:6
 msgid "Wesnoth Benchmark: AI"
-msgstr ""
+msgstr "Benchmark de Wesnoth : IA"
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:7
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 msgstr ""
+"Un benchmark de Wesnoth, utilise les options --nogui --no-delay --"
+"multiplayer --scenario=wesbench_ai --exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:6
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr ""
+msgstr "Benchmark de Wesnoth : défilement"
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 msgstr ""
+"Un benchmark de Wesnoth, utilise les options --no-delay --multiplayer --"
+"scenario=wesbench_scroll --exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:6
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr ""
+msgstr "Benchmark de Wesnoth : marche à travers du voile"
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 msgstr ""
+"Un benchmark de Wesnoth, utilise les options --no-delay --multiplayer --"
+"scenario=wesbench_shroud_walk --exit-at-end."
 
 #: data/schedules.cfg:81 data/schedules.cfg:89
 msgid "Underground"
@@ -5358,7 +5403,8 @@ msgstr ""
 "Les unités empoisonnées perdent 8 points de vie par tour, mais elles ne "
 "mourront pas de l'effet du poison : le poison ne réduit jamais les points de "
 "vie en dessous de 1. Les unités empoisonnées peuvent être guéries en les "
-"plaçant dans un village ou à côté d'une unité ayant la compétence « soin »."
+"plaçant dans un village ou à côté d'une unité ayant la compétence "
+"« guérison »."
 
 #: data/tips.cfg:6
 msgid ""
@@ -5524,7 +5570,7 @@ msgid ""
 msgstr ""
 "Généralement, évitez de vous déplacer à coté d'un village inoccupé. Une "
 "unité ennemie pourrait se déplacer dans ce village et vous attaquer, en "
-"profitant de la défense et des capacités de guérison du village."
+"profitant de la défense et des capacités de soin du village."
 
 #: data/tips.cfg:23
 msgid ""
@@ -5566,8 +5612,8 @@ msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
-"Utilisez des guérisseurs pour soutenir vos attaques, ils gagneront la "
-"bataille sans avoir à frapper par eux-mêmes."
+"Utilisez des soigneurs pour soutenir vos attaques, ils gagneront la bataille "
+"sans avoir à frapper par eux-mêmes."
 
 #: data/tips.cfg:29
 msgid ""
@@ -6801,11 +6847,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Abandonnant l'étude de la guérison en faveur d'une utilisation plus "
-"agressive de la magie, les sorcières elfes sont devenues très efficaces au "
-"combat à distance. Leur attaque enchevêtrante est largement plus efficace "
-"que celle des Shaman elfes, et elles peuvent invoquer des rafales glacées de "
-"vent éthéré afin de frapper ceux qui s'opposent à elles.\n"
+"Abandonnant l'étude des soins en faveur d'une utilisation plus agressive de "
+"la magie, les sorcières elfes sont devenues très efficaces au combat à "
+"distance. Leur attaque enchevêtrante est largement plus efficace que celle "
+"des Shaman elfes, et elles peuvent invoquer des rafales glacées de vent "
+"éthéré afin de frapper ceux qui s'opposent à elles.\n"
 "\n"
 "Remarque : "
 
@@ -9106,9 +9152,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "En dépit de leur nature léthargique due à leur sang froid et de leur "
-"relative fragilité, les augures sauriens sont des guérisseurs hautement "
+"relative fragilité, les augures sauriens sont des soigneurs hautement "
 "estimés car ils peuvent fournir de l'aide à leurs alliés, quel que soit le "
-"terrain ou la situation. En plus de pouvoir soigner leurs alliés, ils "
+"terrain ou la situation. En plus de pouvoir guérir leurs alliés, ils "
 "possèdent la maîtrise de la magie du froid.\n"
 "\n"
 "Remarque :"
@@ -9149,10 +9195,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Les oracles sauriens ont abandonné tout entraînement dans les arts de la "
-"guérison afin de perfectionner leurs maîtrise des arts sombres. Bien que "
-"fragiles, ils peuvent invoquer la magie du nord glacé et conservent leur "
-"capacité basique de guérison.\n"
+"Les oracles sauriens ont abandonné tout entraînement dans les arts des soins "
+"afin de perfectionner leurs maîtrise des arts sombres. Bien que fragiles, "
+"ils peuvent invoquer la magie du nord glacé et conservent leur capacité "
+"basique de soin.\n"
 "\n"
 "Remarque : "
 
@@ -9190,10 +9236,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Les prédicateurs sauriens sont des guérisseurs hautement estimés, car ils "
+"Les prédicateurs sauriens sont des soigneurs hautement estimés, car ils "
 "peuvent fournir de l'aide à leurs alliés, quel que soit le terrain ou la "
-"situation. En plus de pouvoir soigner leurs alliés, ils possèdent la "
-"maîtrise de la magie du froid.\n"
+"situation. En plus de pouvoir guérir leurs alliés, ils possèdent la maîtrise "
+"de la magie du froid.\n"
 "\n"
 "Remarque : "
 
@@ -9549,6 +9595,19 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"La crainte inspirée par la magie noire vient principalement de l'ignorance "
+"qu'en a l'homme courant. Les sorciers des ténèbres ont commencé à découvrir "
+"les secrets de la vie et de la mort, et sont devenu rapidement des maîtres "
+"pour infliger l'angoisse et la douleur.\n"
+"\n"
+"La récompense ultime des arts sombres est la domination complète sur la vie "
+"et sur la mort. À terme, les sorciers des ténèbres pourront apprendre "
+"comment manipuler la vie et la mort en rénimant des cadavres, des squelettes "
+"et des esprits. Les plus corrompus et avides de pouvoir essayeront de "
+"vaincre la mort par leur transformation en liche et l'accomplissement d'une "
+"effroyable immortalité..\n"
+"\n"
+"Remarques : "
 
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
@@ -9595,6 +9654,20 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Une des plus grandes disciplines de ce que qui est considéré comme de la "
+"'magie noire' est l'art de la nécromancie, la terrible capacité de réveiller "
+"les morts avec une vie artificielle. Cet art seul a causé la condamnation "
+"par l'humanité de ce qui est appelé 'Magie Noire' et a donné à la peur un "
+"sens nouveau.\n"
+"\n"
+"Cette capacité, dans tous ses aspects, est le premier pas vers la défaite de "
+"la mort et de son ultime récompense. C'est le niveau de puissance le plus "
+"élevé qu'un mage noir peut atteindre sans lacher prise avec l'humanité, mais "
+"c'est bien peu de chose à coté du pouvoir mortel des liches. Leur corps de "
+"mortels sont aussi rendus plus résistants par leur magie, par opposition à "
+"ceux décomposés et fragiles des liches.\n"
+"\n"
+"Remarques : "
 
 #: data/units/Undead_Necromancer.cfg:32
 msgid "plague staff"
@@ -10390,7 +10463,6 @@ msgid "Publish add-on: "
 msgstr "Diffuser l'extension : "
 
 #: src/game.cpp:967
-#, fuzzy
 msgid "Delete add-on: "
 msgstr "Effacer l'extension : "
 
@@ -11579,10 +11651,10 @@ msgid "Downloading next level..."
 msgstr "Téléchargement du prochain niveau..."
 
 #: src/playcampaign.cpp:413
-#, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
 msgstr ""
-"Voulez-vous sauvegarder votre jeu ? (Efface les sauvegardes automatiques)"
+"Voulez-vous sauvegarder votre jeu ? (Supprime dans le même temps les "
+"sauvegardes automatiques)"
 
 #: src/playcampaign.cpp:440
 msgid "Unknown scenario: '"
@@ -11714,7 +11786,7 @@ msgid ""
 msgstr ""
 "Cette unité est empoisonnée. Elle perdra 8 points de vie chaque tour jusqu'à "
 "ce qu'elle reçoive des soins en se rendant dans un village ou en se faisant "
-"soigner par une unité possédant la capacité « soin ».\n"
+"soigner par une unité possédant la capacité « guérison ».\n"
 "\n"
 "Une unité ne peut pas être tuée simplement par du poison. Celui-ci ne fera "
 "pas baisser ses points de vie en dessous de 1."
@@ -11850,9 +11922,10 @@ msgstr "Multi-joueurs"
 msgid "TitleScreen button^Load"
 msgstr "Charger"
 
+# Note : "Télécharger des Extensions" c'est un peu trop long dans les menus
 #: src/titlescreen.cpp:258
 msgid "TitleScreen button^Get Add-ons"
-msgstr "Télécharger des extensions"
+msgstr "Extensions"
 
 #: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
