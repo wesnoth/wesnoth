@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-21 12:51+0200\n"
-"PO-Revision-Date: 2006-06-18 13:41+0100\n"
+"PO-Revision-Date: 2006-06-22 01:59-0500\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -2401,16 +2401,16 @@ msgid ""
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
 "Am Anfang einer Schlacht, manchmal auch während des Kampfes, müsst Ihr "
-"Truppen für Eure Armee ausbilden. Dafür muss Euer Anführer (beispielsweise "
-"Konrad in der Kampagne »Der Thronerbe«) auf dem Bergfried-Feld in einer "
-"<ref>dst=terrain_castle text=Burg</ref> stehen. Ihr könnt dann entweder "
-"»Ausbilden« im Menü auswählen oder nach einem Rechtsklick auf ein Hexfeld "
-"<italic>text=Ausbilden</italic> auswählen. Danach erscheint das "
-"Ausbildungsmenü, in dem alle Einheitentypen, die ausgebildet werden können, "
-"aufgelistet werden. Neben den Einheiten ist angegeben, wie viel die "
-"Ausbildung kostet. Wenn Ihr eine Einheit wählt, erscheinen ihre "
-"Eigenschaften auf der linken Seite. Ihr könnt dann den »Ausbilden«-Knopf "
-"drücken, um die Einheit auszubilden."
+"<ref>dst=units text=Truppen</ref> für Eure Armee ausbilden. Dafür muss Euer "
+"Anführer (beispielsweise Konrad in der Kampagne »Der Thronerbe«) auf dem "
+"Bergfried-Feld in einer <ref>dst=terrain_castle text=Burg</ref> stehen. Ihr "
+"könnt dann entweder »Ausbilden« im Menü auswählen oder nach einem "
+"Rechtsklick auf ein Hexfeld <italic>text=Ausbilden</italic> auswählen. "
+"Danach erscheint das Ausbildungsmenü, in dem alle Einheitentypen, die "
+"ausgebildet werden können, aufgelistet werden. Neben den Einheiten ist "
+"angegeben, wie viel die Ausbildung kostet. Wenn Ihr eine Einheit wählt, "
+"erscheinen ihre Eigenschaften auf der linken Seite. Ihr könnt dann den "
+"»Ausbilden«-Knopf drücken, um die Einheit auszubilden."
 
 #: data/help.cfg:103
 msgid ""
@@ -3437,7 +3437,7 @@ msgstr ""
 "\n"
 "Untote Einheiten haben für gewöhnlich »Untot« als einzige Charakteristika. "
 "Da untote Einheiten die Körper von Toten sind, die wiedererweckt wurden, um "
-"ein weiteres mal zu kämpfen, sind sie immun gegen Gift. Dies macht sie sehr "
+"ein weiteres Mal zu kämpfen, sind sie immun gegen Gift. Dies macht sie sehr "
 "wertvoll im Kampf gegen Feinde, die mit vergifteten Waffen angreifen."
 
 #: data/help.cfg:322
@@ -4886,6 +4886,7 @@ msgid "4p - King of the Hill"
 msgstr "4S - König des Hügels"
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:7
+#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2v2 as well. There are 36 villages. Recommended "
@@ -5033,6 +5034,7 @@ msgid "6p - Waterloo Sunset"
 msgstr "6S - Waterloo"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
+#, fuzzy
 msgid ""
 "A 40X30 3v3.  Flexible coordination of your alliance is required to avoid "
 "being outnumbered.  Teams set for players 145vs236 (north vs south), but "
@@ -5051,6 +5053,7 @@ msgid "8p - Morituri"
 msgstr "8S - Die Totgeweihten"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
+#, fuzzy
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish. Recommended setting of 2 gold per village."
@@ -5083,6 +5086,7 @@ msgid "Random map"
 msgstr "Zufallskarte"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:4
+#, fuzzy
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
@@ -5886,8 +5890,8 @@ msgid ""
 "the Help Wesnoth button.  This information is vital so we can adjust "
 "campaign difficulty."
 msgstr ""
-"Ihr könnt dem Wesnoth Projekt anonyme Statistken Eures Fortschritts zukommen "
-"lassen, indem Ihr den »Wesnoth helfen« Knopf benutzt. Diese Informationen "
+"Ihr könnt dem Wesnoth-Projekt anonyme Statistken Eures Fortschritts zukommen "
+"lassen, indem Ihr den »Wesnoth helfen«-Knopf benutzt. Diese Informationen "
 "werden dazu verwendet werden, um den Schwierigkeitsgrad der Kampagnen "
 "anzupassen."
 
@@ -8436,7 +8440,7 @@ msgstr ""
 "Geheimnis über ihre wertvollen Habseligkeiten ausgespuckt haben. Da sie "
 "diesen zwielichtigen Tätigkeiten für gewöhnlich nur Nachts nachkommen, "
 "drücken sie sich vor jedem Kampf tagsüber. Schließlich könnte ein ehemaliges "
-"Opfer sie wiedererkennen und an die Rechtsprechung melden..."
+"Opfer sie wiedererkennen und an die Rechtsprechung melden ..."
 
 #: data/units/Human_Outlaw_Footpad.cfg:3
 msgid "Footpad"
@@ -8607,7 +8611,7 @@ msgstr "Mistforke"
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
-msgstr "Meerjungfrau Wahrsagerin"
+msgstr "Meerjungfrau-Wahrsagerin"
 
 #: data/units/Mermaid_Diviner.cfg:27
 msgid ""
@@ -8631,7 +8635,7 @@ msgstr ""
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
-msgstr "Meerjungfrau Mystikerin"
+msgstr "Meerjungfrau-Mystikerin"
 
 #: data/units/Mermaid_Enchantress.cfg:20
 msgid ""
@@ -8688,7 +8692,7 @@ msgstr ""
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
-msgstr "Meerjungfrau Priesterin"
+msgstr "Meerjungfrau-Priesterin"
 
 #: data/units/Mermaid_Priestess.cfg:25
 msgid ""
@@ -9185,7 +9189,7 @@ msgid ""
 "underestimated."
 msgstr ""
 "Oger sind dumme Riesen, die normalerweise alleine in der Wildnis leben. "
-"Obwohl man sie sehr leicht austricksen oder ihnen davon laufen kann, sollte "
+"Obwohl man sie sehr leicht austricksen oder ihnen davonlaufen kann, sollte "
 "man ihre Stärke nicht unterschätzen."
 
 #: data/units/Ogre.cfg:21 data/units/Ogre_Young.cfg:21
@@ -10263,7 +10267,7 @@ msgstr ""
 "Nachtalben so grauenhaft aussähe, dass selbst andere Untote bei ihrem "
 "Anblick vergehen würden. Diese schrecklichen Kreaturen werden selten von "
 "einem Sterblichen gesehen und jene, die welche gesehen haben wollen, sind so "
-"schnell wie noch nie davon gelaufen.\n"
+"schnell wie noch nie davongelaufen.\n"
 "\n"
 "Anmerkung:"
 
@@ -11520,7 +11524,7 @@ msgstr "Keine verwendbare Waffe"
 
 #: src/mouse_events.cpp:348
 msgid "Chance of being unscathed"
-msgstr "Chance, ungeschoren davon zu kommen"
+msgstr "Chance, ungeschoren davonzukommen"
 
 #: src/mouse_events.cpp:649 src/mouse_events.cpp:1232
 msgid "Damage Calculations"
@@ -11690,6 +11694,7 @@ msgstr "Dies ist kein Mehrspieler-Spielstand"
 msgid "Cannot find era $era"
 msgstr "Kann die Ära $era nicht finden"
 
+# XXX - : in original missing!
 #: src/multiplayer_connect.cpp:1187
 msgid ""
 "Victory\n"
