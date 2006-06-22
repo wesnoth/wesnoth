@@ -124,7 +124,7 @@ unit::unit(const unit& o):
 
 		role_(o.role_),
 		attacks_(o.attacks_),
-		attacks_b_(o.attacks_),
+		attacks_b_(o.attacks_b_),
 		facing_(o.facing_),
 
 		traits_description_(o.traits_description_),
