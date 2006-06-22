@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-21 12:51+0200\n"
+"POT-Creation-Date: 2006-06-22 23:27+0200\n"
 "PO-Revision-Date: 2006-04-10 20:22+0100\n"
 "Last-Translator: Rastislav Šarišský <rsarissky@post.sk>\n"
 "Language-Team: \n"
@@ -1145,7 +1145,7 @@ msgstr "lanco"
 #: data/units/Human_Outlaw_Poacher.cfg:83
 #: data/units/Human_Outlaw_Trapper.cfg:83 data/units/Human_Peasant.cfg:31
 #: data/units/Human_Peasant.cfg:87 data/units/Merman_Entangler.cfg:25
-#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:43
+#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:36
 #: data/units/Merman_Hunter.cfg:30 data/units/Merman_Hunter.cfg:237
 #: data/units/Merman_Javelineer.cfg:30 data/units/Merman_Javelineer.cfg:157
 #: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:29
@@ -8364,7 +8364,7 @@ msgstr ""
 "Mara viro estas forta mara konkeranto, malgraŭ, ke li estas amfibio, sur "
 "tero havas problemojn."
 
-#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:42
+#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:35
 #: data/units/Merman_Triton.cfg:29 data/units/Merman_Triton.cfg:94
 #: data/units/Merman_Warrior.cfg:28
 msgid "trident"
@@ -9930,7 +9930,7 @@ msgstr ""
 msgid "+  "
 msgstr ""
 
-#: src/about.cpp:217 src/help.cpp:2772
+#: src/about.cpp:217 src/help.cpp:2774
 msgid "Close"
 msgstr "Fermu"
 
@@ -10120,7 +10120,7 @@ msgstr ""
 msgid "Date"
 msgstr "Dato"
 
-#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1175
+#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1177
 #: src/menu_events.cpp:233 src/menu_events.cpp:686
 #: src/multiplayer_lobby.cpp:32
 msgid "Name"
@@ -10142,11 +10142,11 @@ msgstr "Elektu ludon, kiun vi povas legi"
 msgid "Profile"
 msgstr "Profilo"
 
-#: src/dialogs.cpp:721 src/help.cpp:1092
+#: src/dialogs.cpp:721 src/help.cpp:1094
 msgid "level"
 msgstr "Nivelo"
 
-#: src/dialogs.cpp:743 src/help.cpp:1150
+#: src/dialogs.cpp:743 src/help.cpp:1152
 msgid "HP: "
 msgstr "Sano:"
 
@@ -10154,7 +10154,7 @@ msgstr "Sano:"
 msgid "XP: "
 msgstr "Spertoj:"
 
-#: src/dialogs.cpp:760 src/help.cpp:1151
+#: src/dialogs.cpp:760 src/help.cpp:1153
 msgid "Moves: "
 msgstr "Movoj:"
 
@@ -10441,100 +10441,100 @@ msgstr "Malvenko, se:"
 msgid "Could not write to file"
 msgstr "Mi ne povas registri en dosieron."
 
-#: src/help.cpp:1112
+#: src/help.cpp:1114
 msgid "Advances to: "
 msgstr "Avancu al: "
 
-#: src/help.cpp:1133
+#: src/help.cpp:1135
 msgid "Abilities: "
 msgstr "Kapabloj:"
 
-#: src/help.cpp:1152
+#: src/help.cpp:1154
 #, fuzzy
 msgid "Cost: "
 msgstr "Movoj:"
 
-#: src/help.cpp:1153
+#: src/help.cpp:1155
 msgid "Alignment: "
 msgstr "Aparteneco:"
 
-#: src/help.cpp:1159
+#: src/help.cpp:1161
 msgid "Required XP: "
 msgstr "Bezonataj spertoj:"
 
-#: src/help.cpp:1168 src/reports.cpp:250
+#: src/help.cpp:1170 src/reports.cpp:250
 msgid "attacks"
 msgstr "atakoj"
 
-#: src/help.cpp:1176 src/menu_events.cpp:232 src/menu_events.cpp:685
+#: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:685
 msgid "Type"
 msgstr "Tipo"
 
-#: src/help.cpp:1177
+#: src/help.cpp:1179
 msgid "Strikes"
 msgstr "Batoj"
 
-#: src/help.cpp:1178
+#: src/help.cpp:1180
 msgid "Range"
 msgstr "Efikdistanco"
 
-#: src/help.cpp:1179
+#: src/help.cpp:1181
 msgid "Special"
 msgstr "Speciale"
 
-#: src/help.cpp:1229
+#: src/help.cpp:1231
 msgid "Resistances"
 msgstr "Rezistoj"
 
-#: src/help.cpp:1233
+#: src/help.cpp:1235
 msgid "Attack Type"
 msgstr "Ataktipo"
 
-#: src/help.cpp:1234
+#: src/help.cpp:1236
 msgid "Resistance"
 msgstr "Rezisto"
 
-#: src/help.cpp:1259
+#: src/help.cpp:1261
 msgid "Terrain Modifiers"
 msgstr "Influo de tereno"
 
-#: src/help.cpp:1263
+#: src/help.cpp:1265
 msgid "Terrain"
 msgstr "Tereno"
 
-#: src/help.cpp:1264
+#: src/help.cpp:1266
 msgid "Defense"
 msgstr "Defendo"
 
-#: src/help.cpp:1265
+#: src/help.cpp:1267
 #, fuzzy
 msgid "Movement Cost"
 msgstr "Movoj"
 
-#: src/help.cpp:1386 src/help.cpp:1410
+#: src/help.cpp:1388 src/help.cpp:1412
 msgid "or"
 msgstr "aŭ"
 
-#: src/help.cpp:1393
+#: src/help.cpp:1395
 #, fuzzy
 msgid "This terrain acts as $terrains for movement purposes."
 msgstr "Tiu ĉi tereno el vidpunkto de movo kaj defendo efikas kiel $terrains."
 
-#: src/help.cpp:1395 src/help.cpp:1419
+#: src/help.cpp:1397 src/help.cpp:1421
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Aŭtomate estos elektita tereno kun la plej bonaj indikoj."
 
-#: src/help.cpp:1397 src/help.cpp:1421
+#: src/help.cpp:1399 src/help.cpp:1423
 #, fuzzy
 msgid "The terrain with the worst modifier is chosen automatically."
 msgstr "Aŭtomate estos elektita tereno kun la plej bonaj indikoj."
 
-#: src/help.cpp:1417
+#: src/help.cpp:1419
 #, fuzzy
 msgid "This terrain acts as $terrains for defense purposes."
 msgstr "Tiu ĉi tereno el vidpunkto de movo kaj defendo efikas kiel $terrains."
 
-#: src/help.cpp:1425
+#: src/help.cpp:1427
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
@@ -10542,35 +10542,35 @@ msgstr ""
 "Tiu ĉi tereno konsideratas kiel fortikaĵo, do, se estas sur ĉi tiu tereno "
 "komandanto, vi povas varbi milit-unuojn."
 
-#: src/help.cpp:1427
+#: src/help.cpp:1429
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
 "Tiu ĉi tereno kondutas kiel kastelo, do vi povas tien varbi milit-unuojn."
 
-#: src/help.cpp:1429
+#: src/help.cpp:1431
 msgid "This terrain gives healing."
 msgstr "Ĉi tiu tereno sanigas."
 
-#: src/help.cpp:2287
+#: src/help.cpp:2289
 #, fuzzy
 msgid " < Back"
 msgstr "< Reen"
 
-#: src/help.cpp:2288
+#: src/help.cpp:2290
 msgid "Forward >"
 msgstr "Plu>"
 
-#: src/help.cpp:2400
+#: src/help.cpp:2402
 msgid "Reference to unknown topic: "
 msgstr "Referenco al nekonata temo:"
 
-#: src/help.cpp:2775
+#: src/help.cpp:2777
 msgid "The Battle for Wesnoth Help"
 msgstr "Instrukcioj al Batalo por Vesnot"
 
-#: src/help.cpp:2823
+#: src/help.cpp:2825
 msgid "Parse error when parsing help text: "
 msgstr "Eraro ĉe analizado de helpteksto:"
 
@@ -11123,8 +11123,9 @@ msgid "Cannot find era $era"
 msgstr "Mi ne kapablas trovi eraon $era"
 
 #: src/multiplayer_connect.cpp:1187
+#, fuzzy
 msgid ""
-"Victory\n"
+"Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 "Vi venkos, se:\n"

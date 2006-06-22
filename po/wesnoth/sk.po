@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-21 12:51+0200\n"
+"POT-Creation-Date: 2006-06-22 23:27+0200\n"
 "PO-Revision-Date: 2006-05-25 21:06+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -1091,7 +1091,7 @@ msgstr "kopija"
 #: data/units/Human_Outlaw_Poacher.cfg:83
 #: data/units/Human_Outlaw_Trapper.cfg:83 data/units/Human_Peasant.cfg:31
 #: data/units/Human_Peasant.cfg:87 data/units/Merman_Entangler.cfg:25
-#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:43
+#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:36
 #: data/units/Merman_Hunter.cfg:30 data/units/Merman_Hunter.cfg:237
 #: data/units/Merman_Javelineer.cfg:30 data/units/Merman_Javelineer.cfg:157
 #: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:29
@@ -8011,7 +8011,7 @@ msgstr ""
 "Morský muž je mocným obyvateľom morí, je síce obojživelník, ale na zemi má "
 "ťažkosti."
 
-#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:42
+#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:35
 #: data/units/Merman_Triton.cfg:29 data/units/Merman_Triton.cfg:94
 #: data/units/Merman_Warrior.cfg:28
 msgid "trident"
@@ -9536,7 +9536,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:217 src/help.cpp:2772
+#: src/about.cpp:217 src/help.cpp:2774
 msgid "Close"
 msgstr "Zavri"
 
@@ -9725,7 +9725,7 @@ msgstr ""
 msgid "Date"
 msgstr "Dátum"
 
-#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1175
+#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1177
 #: src/menu_events.cpp:233 src/menu_events.cpp:686
 #: src/multiplayer_lobby.cpp:32
 msgid "Name"
@@ -9747,11 +9747,11 @@ msgstr "Vyber si, ktorú hru načítať"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:721 src/help.cpp:1092
+#: src/dialogs.cpp:721 src/help.cpp:1094
 msgid "level"
 msgstr "Úroveň"
 
-#: src/dialogs.cpp:743 src/help.cpp:1150
+#: src/dialogs.cpp:743 src/help.cpp:1152
 msgid "HP: "
 msgstr "Zdravie:"
 
@@ -9759,7 +9759,7 @@ msgstr "Zdravie:"
 msgid "XP: "
 msgstr "Skúsenosti:"
 
-#: src/dialogs.cpp:760 src/help.cpp:1151
+#: src/dialogs.cpp:760 src/help.cpp:1153
 msgid "Moves: "
 msgstr "Kroky:"
 
@@ -10045,96 +10045,96 @@ msgstr "Prehráš, ak:"
 msgid "Could not write to file"
 msgstr "Neviem zapísať do súboru"
 
-#: src/help.cpp:1112
+#: src/help.cpp:1114
 msgid "Advances to: "
 msgstr "Povýši sa na:"
 
-#: src/help.cpp:1133
+#: src/help.cpp:1135
 msgid "Abilities: "
 msgstr "Schopnosti:"
 
-#: src/help.cpp:1152
+#: src/help.cpp:1154
 msgid "Cost: "
 msgstr "Cena: "
 
-#: src/help.cpp:1153
+#: src/help.cpp:1155
 msgid "Alignment: "
 msgstr "Príslušnosť:"
 
-#: src/help.cpp:1159
+#: src/help.cpp:1161
 msgid "Required XP: "
 msgstr "Potrebné skúsenosti:"
 
-#: src/help.cpp:1168 src/reports.cpp:250
+#: src/help.cpp:1170 src/reports.cpp:250
 msgid "attacks"
 msgstr "útoky"
 
-#: src/help.cpp:1176 src/menu_events.cpp:232 src/menu_events.cpp:685
+#: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:685
 msgid "Type"
 msgstr "Typ"
 
-#: src/help.cpp:1177
+#: src/help.cpp:1179
 msgid "Strikes"
 msgstr "Údery"
 
-#: src/help.cpp:1178
+#: src/help.cpp:1180
 msgid "Range"
 msgstr "Z diaľky"
 
-#: src/help.cpp:1179
+#: src/help.cpp:1181
 msgid "Special"
 msgstr "Špeciálne"
 
-#: src/help.cpp:1229
+#: src/help.cpp:1231
 msgid "Resistances"
 msgstr "Odolnosti"
 
-#: src/help.cpp:1233
+#: src/help.cpp:1235
 msgid "Attack Type"
 msgstr "Typ útoku"
 
-#: src/help.cpp:1234
+#: src/help.cpp:1236
 msgid "Resistance"
 msgstr "Odolnosť"
 
-#: src/help.cpp:1259
+#: src/help.cpp:1261
 msgid "Terrain Modifiers"
 msgstr "Vplyv terénu"
 
-#: src/help.cpp:1263
+#: src/help.cpp:1265
 msgid "Terrain"
 msgstr "Terén"
 
-#: src/help.cpp:1264
+#: src/help.cpp:1266
 msgid "Defense"
 msgstr "Obrana"
 
-#: src/help.cpp:1265
+#: src/help.cpp:1267
 #, fuzzy
 msgid "Movement Cost"
 msgstr "Pohyb"
 
-#: src/help.cpp:1386 src/help.cpp:1410
+#: src/help.cpp:1388 src/help.cpp:1412
 msgid "or"
 msgstr "alebo"
 
-#: src/help.cpp:1393
+#: src/help.cpp:1395
 msgid "This terrain acts as $terrains for movement purposes."
 msgstr "Tento terén sa z hľadiska pohybu ráta ako $terrains."
 
-#: src/help.cpp:1395 src/help.cpp:1419
+#: src/help.cpp:1397 src/help.cpp:1421
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Automaticky sa vyberie terén s najlepšími hodnotami."
 
-#: src/help.cpp:1397 src/help.cpp:1421
+#: src/help.cpp:1399 src/help.cpp:1423
 msgid "The terrain with the worst modifier is chosen automatically."
 msgstr "Automaticky sa vyberie terén s najhoršími hodnotami."
 
-#: src/help.cpp:1417
+#: src/help.cpp:1419
 msgid "This terrain acts as $terrains for defense purposes."
 msgstr "Tento terén sa z hľadiska obrany ráta ako $terrains."
 
-#: src/help.cpp:1425
+#: src/help.cpp:1427
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
@@ -10142,33 +10142,33 @@ msgstr ""
 "Tento terén sa počíta ako pevnosť, teda ak je na takomto teréne veliteľ, "
 "môžeš verbovať jednotky."
 
-#: src/help.cpp:1427
+#: src/help.cpp:1429
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr "Tento terén sa počíta ako hrad, teda môžeš naň verbovať jednotky."
 
-#: src/help.cpp:1429
+#: src/help.cpp:1431
 msgid "This terrain gives healing."
 msgstr "Tento terén lieči."
 
-#: src/help.cpp:2287
+#: src/help.cpp:2289
 msgid " < Back"
 msgstr " < Naspäť"
 
-#: src/help.cpp:2288
+#: src/help.cpp:2290
 msgid "Forward >"
 msgstr "Ďalej >"
 
-#: src/help.cpp:2400
+#: src/help.cpp:2402
 msgid "Reference to unknown topic: "
 msgstr "Odkaz na neexistujúcu záložku: "
 
-#: src/help.cpp:2775
+#: src/help.cpp:2777
 msgid "The Battle for Wesnoth Help"
 msgstr "Návod k Bitke o Wesnoth"
 
-#: src/help.cpp:2823
+#: src/help.cpp:2825
 msgid "Parse error when parsing help text: "
 msgstr "Chyba pri analyzovaní pomocného textu: "
 
@@ -10712,8 +10712,9 @@ msgid "Cannot find era $era"
 msgstr "Neviem nájsť éru $era"
 
 #: src/multiplayer_connect.cpp:1187
+#, fuzzy
 msgid ""
-"Victory\n"
+"Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 "Vyhráš, ak:\n"

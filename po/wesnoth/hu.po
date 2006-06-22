@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-21 12:51+0200\n"
+"POT-Creation-Date: 2006-06-22 23:27+0200\n"
 "PO-Revision-Date: 2006-06-03 18:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -1097,7 +1097,7 @@ msgstr "dárda"
 #: data/units/Human_Outlaw_Poacher.cfg:83
 #: data/units/Human_Outlaw_Trapper.cfg:83 data/units/Human_Peasant.cfg:31
 #: data/units/Human_Peasant.cfg:87 data/units/Merman_Entangler.cfg:25
-#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:43
+#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:36
 #: data/units/Merman_Hunter.cfg:30 data/units/Merman_Hunter.cfg:237
 #: data/units/Merman_Javelineer.cfg:30 data/units/Merman_Javelineer.cfg:157
 #: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:29
@@ -7933,7 +7933,7 @@ msgstr ""
 "A tengerek ügyes teremtményei, a sellők gyorsak és erősek partraszálláskor, "
 "de ha beljebb merészkednek a szárazföldre, már kevés hasznukat venni."
 
-#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:42
+#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:35
 #: data/units/Merman_Triton.cfg:29 data/units/Merman_Triton.cfg:94
 #: data/units/Merman_Warrior.cfg:28
 msgid "trident"
@@ -9446,7 +9446,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:217 src/help.cpp:2772
+#: src/about.cpp:217 src/help.cpp:2774
 msgid "Close"
 msgstr "Bezár"
 
@@ -9634,7 +9634,7 @@ msgstr ""
 msgid "Date"
 msgstr "Dátum"
 
-#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1175
+#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1177
 #: src/menu_events.cpp:233 src/menu_events.cpp:686
 #: src/multiplayer_lobby.cpp:32
 msgid "Name"
@@ -9656,11 +9656,11 @@ msgstr "Válaszd ki a betöltendő játékot"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:721 src/help.cpp:1092
+#: src/dialogs.cpp:721 src/help.cpp:1094
 msgid "level"
 msgstr "szint"
 
-#: src/dialogs.cpp:743 src/help.cpp:1150
+#: src/dialogs.cpp:743 src/help.cpp:1152
 msgid "HP: "
 msgstr "ÉP: "
 
@@ -9668,7 +9668,7 @@ msgstr "ÉP: "
 msgid "XP: "
 msgstr "TP: "
 
-#: src/dialogs.cpp:760 src/help.cpp:1151
+#: src/dialogs.cpp:760 src/help.cpp:1153
 msgid "Moves: "
 msgstr "Lépés: "
 
@@ -9958,95 +9958,95 @@ msgstr "Veszítesz, ha:"
 msgid "Could not write to file"
 msgstr "Nem sikerült a fájlba írni"
 
-#: src/help.cpp:1112
+#: src/help.cpp:1114
 msgid "Advances to: "
 msgstr "Szintlépés után: "
 
-#: src/help.cpp:1133
+#: src/help.cpp:1135
 msgid "Abilities: "
 msgstr "Képességek: "
 
-#: src/help.cpp:1152
+#: src/help.cpp:1154
 msgid "Cost: "
 msgstr "Ár: "
 
-#: src/help.cpp:1153
+#: src/help.cpp:1155
 msgid "Alignment: "
 msgstr "Beállítottság: "
 
-#: src/help.cpp:1159
+#: src/help.cpp:1161
 msgid "Required XP: "
 msgstr "TP követelmény: "
 
-#: src/help.cpp:1168 src/reports.cpp:250
+#: src/help.cpp:1170 src/reports.cpp:250
 msgid "attacks"
 msgstr "támadás"
 
-#: src/help.cpp:1176 src/menu_events.cpp:232 src/menu_events.cpp:685
+#: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:685
 msgid "Type"
 msgstr "Típus"
 
-#: src/help.cpp:1177
+#: src/help.cpp:1179
 msgid "Strikes"
 msgstr "Ütések"
 
-#: src/help.cpp:1178
+#: src/help.cpp:1180
 msgid "Range"
 msgstr "Hatótávolság"
 
-#: src/help.cpp:1179
+#: src/help.cpp:1181
 msgid "Special"
 msgstr "Különleges"
 
-#: src/help.cpp:1229
+#: src/help.cpp:1231
 msgid "Resistances"
 msgstr "Ellenállások"
 
-#: src/help.cpp:1233
+#: src/help.cpp:1235
 msgid "Attack Type"
 msgstr "Támadás típusa"
 
-#: src/help.cpp:1234
+#: src/help.cpp:1236
 msgid "Resistance"
 msgstr "Ellenállás"
 
-#: src/help.cpp:1259
+#: src/help.cpp:1261
 msgid "Terrain Modifiers"
 msgstr "Terep-alakítók"
 
-#: src/help.cpp:1263
+#: src/help.cpp:1265
 msgid "Terrain"
 msgstr "Terep"
 
-#: src/help.cpp:1264
+#: src/help.cpp:1266
 msgid "Defense"
 msgstr "Védekezés"
 
-#: src/help.cpp:1265
+#: src/help.cpp:1267
 msgid "Movement Cost"
 msgstr "Lépéspont költség"
 
-#: src/help.cpp:1386 src/help.cpp:1410
+#: src/help.cpp:1388 src/help.cpp:1412
 msgid "or"
 msgstr "vagy"
 
-#: src/help.cpp:1393
+#: src/help.cpp:1395
 msgid "This terrain acts as $terrains for movement purposes."
 msgstr "Ez a terep, mint $terrains viselkedik lépés tekintetében."
 
-#: src/help.cpp:1395 src/help.cpp:1419
+#: src/help.cpp:1397 src/help.cpp:1421
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "A legjobb módosító tulajdonságú terep lesz önműködően kiválasztva."
 
-#: src/help.cpp:1397 src/help.cpp:1421
+#: src/help.cpp:1399 src/help.cpp:1423
 msgid "The terrain with the worst modifier is chosen automatically."
 msgstr "A legrosszabb módosító tulajdonságú terep lesz önműködően kiválasztva."
 
-#: src/help.cpp:1417
+#: src/help.cpp:1419
 msgid "This terrain acts as $terrains for defense purposes."
 msgstr "Ez a terep, mint $terrains viselkedik védekezés tekintetében."
 
-#: src/help.cpp:1425
+#: src/help.cpp:1427
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
@@ -10054,7 +10054,7 @@ msgstr ""
 "Ez az terep vártoronyként viselkedik, például toborozhatsz egységeket, ha a "
 "vezetőd egy ilyen helyen áll."
 
-#: src/help.cpp:1427
+#: src/help.cpp:1429
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -10062,27 +10062,27 @@ msgstr ""
 "Ez a terep várként viselkedik, például toborozhatsz az ilyen helyekre "
 "egységeket."
 
-#: src/help.cpp:1429
+#: src/help.cpp:1431
 msgid "This terrain gives healing."
 msgstr "Ez a terep gyógyít."
 
-#: src/help.cpp:2287
+#: src/help.cpp:2289
 msgid " < Back"
 msgstr " < Vissza"
 
-#: src/help.cpp:2288
+#: src/help.cpp:2290
 msgid "Forward >"
 msgstr "Előre >"
 
-#: src/help.cpp:2400
+#: src/help.cpp:2402
 msgid "Reference to unknown topic: "
 msgstr "Ismeretlen tárgyra történt hivatkozás: "
 
-#: src/help.cpp:2775
+#: src/help.cpp:2777
 msgid "The Battle for Wesnoth Help"
 msgstr "Harc Wesnoth-ért Súgó"
 
-#: src/help.cpp:2823
+#: src/help.cpp:2825
 msgid "Parse error when parsing help text: "
 msgstr "Elemzési hiba a súgó szövegének elemzésekor: "
 
@@ -10639,8 +10639,9 @@ msgid "Cannot find era $era"
 msgstr "Nem találtam a $era korszakot"
 
 #: src/multiplayer_connect.cpp:1187
+#, fuzzy
 msgid ""
-"Victory\n"
+"Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 "Győzöl, ha\n"

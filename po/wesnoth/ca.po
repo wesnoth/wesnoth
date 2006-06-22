@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-21 12:51+0200\n"
+"POT-Creation-Date: 2006-06-22 23:27+0200\n"
 "PO-Revision-Date: 2006-03-12 10:57+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
@@ -1099,7 +1099,7 @@ msgstr "llança"
 #: data/units/Human_Outlaw_Poacher.cfg:83
 #: data/units/Human_Outlaw_Trapper.cfg:83 data/units/Human_Peasant.cfg:31
 #: data/units/Human_Peasant.cfg:87 data/units/Merman_Entangler.cfg:25
-#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:43
+#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:36
 #: data/units/Merman_Hunter.cfg:30 data/units/Merman_Hunter.cfg:237
 #: data/units/Merman_Javelineer.cfg:30 data/units/Merman_Javelineer.cfg:157
 #: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:29
@@ -8325,7 +8325,7 @@ msgstr ""
 "El sirènid és una criatura dels mars, ràpida i forta dins el seu hàbitat, el "
 "líquid element, però no fora, en terra ferma."
 
-#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:42
+#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:35
 #: data/units/Merman_Triton.cfg:29 data/units/Merman_Triton.cfg:94
 #: data/units/Merman_Warrior.cfg:28
 msgid "trident"
@@ -9953,7 +9953,7 @@ msgstr ""
 msgid "+  "
 msgstr ""
 
-#: src/about.cpp:217 src/help.cpp:2772
+#: src/about.cpp:217 src/help.cpp:2774
 msgid "Close"
 msgstr "Tanca"
 
@@ -10142,7 +10142,7 @@ msgstr ""
 msgid "Date"
 msgstr "Data"
 
-#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1175
+#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1177
 #: src/menu_events.cpp:233 src/menu_events.cpp:686
 #: src/multiplayer_lobby.cpp:32
 msgid "Name"
@@ -10164,11 +10164,11 @@ msgstr "Tria la partida a carregar"
 msgid "Profile"
 msgstr "Perfil"
 
-#: src/dialogs.cpp:721 src/help.cpp:1092
+#: src/dialogs.cpp:721 src/help.cpp:1094
 msgid "level"
 msgstr "nivell"
 
-#: src/dialogs.cpp:743 src/help.cpp:1150
+#: src/dialogs.cpp:743 src/help.cpp:1152
 msgid "HP: "
 msgstr "HP: "
 
@@ -10176,7 +10176,7 @@ msgstr "HP: "
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:760 src/help.cpp:1151
+#: src/dialogs.cpp:760 src/help.cpp:1153
 msgid "Moves: "
 msgstr "Moviments: "
 
@@ -10467,102 +10467,102 @@ msgstr "Derrota:"
 msgid "Could not write to file"
 msgstr "No ha estat possible escriure al fitxer."
 
-#: src/help.cpp:1112
+#: src/help.cpp:1114
 msgid "Advances to: "
 msgstr "Avança a: "
 
-#: src/help.cpp:1133
+#: src/help.cpp:1135
 msgid "Abilities: "
 msgstr "Habilitats: "
 
-#: src/help.cpp:1152
+#: src/help.cpp:1154
 #, fuzzy
 msgid "Cost: "
 msgstr "Moviments: "
 
-#: src/help.cpp:1153
+#: src/help.cpp:1155
 msgid "Alignment: "
 msgstr "Alineació: "
 
-#: src/help.cpp:1159
+#: src/help.cpp:1161
 msgid "Required XP: "
 msgstr "Experiència requerida: "
 
-#: src/help.cpp:1168 src/reports.cpp:250
+#: src/help.cpp:1170 src/reports.cpp:250
 msgid "attacks"
 msgstr "atacs"
 
-#: src/help.cpp:1176 src/menu_events.cpp:232 src/menu_events.cpp:685
+#: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:685
 msgid "Type"
 msgstr "Tipus"
 
-#: src/help.cpp:1177
+#: src/help.cpp:1179
 msgid "Strikes"
 msgstr "Cops"
 
-#: src/help.cpp:1178
+#: src/help.cpp:1180
 msgid "Range"
 msgstr "Abast"
 
-#: src/help.cpp:1179
+#: src/help.cpp:1181
 msgid "Special"
 msgstr "Especial"
 
-#: src/help.cpp:1229
+#: src/help.cpp:1231
 msgid "Resistances"
 msgstr "Resistències"
 
-#: src/help.cpp:1233
+#: src/help.cpp:1235
 msgid "Attack Type"
 msgstr "Tipus d'atac"
 
-#: src/help.cpp:1234
+#: src/help.cpp:1236
 msgid "Resistance"
 msgstr "Resistència"
 
-#: src/help.cpp:1259
+#: src/help.cpp:1261
 msgid "Terrain Modifiers"
 msgstr "Modificadors de terreny"
 
-#: src/help.cpp:1263
+#: src/help.cpp:1265
 msgid "Terrain"
 msgstr "Terreny"
 
-#: src/help.cpp:1264
+#: src/help.cpp:1266
 msgid "Defense"
 msgstr "Defensa"
 
-#: src/help.cpp:1265
+#: src/help.cpp:1267
 #, fuzzy
 msgid "Movement Cost"
 msgstr "Moviment"
 
-#: src/help.cpp:1386 src/help.cpp:1410
+#: src/help.cpp:1388 src/help.cpp:1412
 msgid "or"
 msgstr "o"
 
-#: src/help.cpp:1393
+#: src/help.cpp:1395
 #, fuzzy
 msgid "This terrain acts as $terrains for movement purposes."
 msgstr ""
 "Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
 
-#: src/help.cpp:1395 src/help.cpp:1419
+#: src/help.cpp:1397 src/help.cpp:1421
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "El terreny amb la millor bonificació es triat automàticament."
 
-#: src/help.cpp:1397 src/help.cpp:1421
+#: src/help.cpp:1399 src/help.cpp:1423
 #, fuzzy
 msgid "The terrain with the worst modifier is chosen automatically."
 msgstr "El terreny amb la millor bonificació es triat automàticament."
 
-#: src/help.cpp:1417
+#: src/help.cpp:1419
 #, fuzzy
 msgid "This terrain acts as $terrains for defense purposes."
 msgstr ""
 "Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
 
-#: src/help.cpp:1425
+#: src/help.cpp:1427
 #, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
@@ -10571,35 +10571,35 @@ msgstr ""
 "Aquest terreny actua com a torre, és a dir, podeu reclutar unitats a la zona "
 "de castell del voltant quan un líder s'hi troba a sobre."
 
-#: src/help.cpp:1427
+#: src/help.cpp:1429
 #, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr "Aquest terreny actua com castell, és a dir, podeu reclutar-hi unitats."
 
-#: src/help.cpp:1429
+#: src/help.cpp:1431
 msgid "This terrain gives healing."
 msgstr "Aquest terreny proporciona curació."
 
-#: src/help.cpp:2287
+#: src/help.cpp:2289
 #, fuzzy
 msgid " < Back"
 msgstr "< Enrera"
 
-#: src/help.cpp:2288
+#: src/help.cpp:2290
 msgid "Forward >"
 msgstr "Endavant >"
 
-#: src/help.cpp:2400
+#: src/help.cpp:2402
 msgid "Reference to unknown topic: "
 msgstr "Referència a un tema desconegut: "
 
-#: src/help.cpp:2775
+#: src/help.cpp:2777
 msgid "The Battle for Wesnoth Help"
 msgstr "Ajuda de Batalla per Wesnoth"
 
-#: src/help.cpp:2823
+#: src/help.cpp:2825
 msgid "Parse error when parsing help text: "
 msgstr "S'ha produït un error en analitzar el text d'ajuda: "
 
@@ -11160,8 +11160,9 @@ msgid "Cannot find era $era"
 msgstr "No ha estat possible trobar $era."
 
 #: src/multiplayer_connect.cpp:1187
+#, fuzzy
 msgid ""
-"Victory\n"
+"Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 "Victòria\n"

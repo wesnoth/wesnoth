@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-21 12:51+0200\n"
+"POT-Creation-Date: 2006-06-22 23:27+0200\n"
 "PO-Revision-Date: 2005-08-17 17:58+0200\n"
 "Last-Translator: Anders K. Madsen <madsen@lillesvin.linux.dk>\n"
 "Language-Team: Danish <wesnoth-da@lillesvin.net>\n"
@@ -1053,7 +1053,7 @@ msgstr "spyd"
 #: data/units/Human_Outlaw_Poacher.cfg:83
 #: data/units/Human_Outlaw_Trapper.cfg:83 data/units/Human_Peasant.cfg:31
 #: data/units/Human_Peasant.cfg:87 data/units/Merman_Entangler.cfg:25
-#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:43
+#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:36
 #: data/units/Merman_Hunter.cfg:30 data/units/Merman_Hunter.cfg:237
 #: data/units/Merman_Javelineer.cfg:30 data/units/Merman_Javelineer.cfg:157
 #: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:29
@@ -6816,7 +6816,7 @@ msgid ""
 "environment, but struggle greatly to move on land."
 msgstr ""
 
-#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:42
+#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:35
 #: data/units/Merman_Triton.cfg:29 data/units/Merman_Triton.cfg:94
 #: data/units/Merman_Warrior.cfg:28
 msgid "trident"
@@ -7995,7 +7995,7 @@ msgstr ""
 msgid "+  "
 msgstr ""
 
-#: src/about.cpp:217 src/help.cpp:2772
+#: src/about.cpp:217 src/help.cpp:2774
 msgid "Close"
 msgstr "Luk"
 
@@ -8185,7 +8185,7 @@ msgstr ""
 msgid "Date"
 msgstr "Dato"
 
-#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1175
+#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1177
 #: src/menu_events.cpp:233 src/menu_events.cpp:686
 #: src/multiplayer_lobby.cpp:32
 msgid "Name"
@@ -8207,11 +8207,11 @@ msgstr "Vælg spil der skal indlæses"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:721 src/help.cpp:1092
+#: src/dialogs.cpp:721 src/help.cpp:1094
 msgid "level"
 msgstr "level"
 
-#: src/dialogs.cpp:743 src/help.cpp:1150
+#: src/dialogs.cpp:743 src/help.cpp:1152
 msgid "HP: "
 msgstr "HP: "
 
@@ -8219,7 +8219,7 @@ msgstr "HP: "
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:760 src/help.cpp:1151
+#: src/dialogs.cpp:760 src/help.cpp:1153
 msgid "Moves: "
 msgstr ""
 
@@ -8507,101 +8507,101 @@ msgstr "Nederlag:"
 msgid "Could not write to file"
 msgstr "Kunne ikke skrive til filen"
 
-#: src/help.cpp:1112
+#: src/help.cpp:1114
 msgid "Advances to: "
 msgstr "Forfremmes til: "
 
-#: src/help.cpp:1133
+#: src/help.cpp:1135
 msgid "Abilities: "
 msgstr "Evner: "
 
-#: src/help.cpp:1152
+#: src/help.cpp:1154
 #, fuzzy
 msgid "Cost: "
 msgstr "Bonus: "
 
-#: src/help.cpp:1153
+#: src/help.cpp:1155
 msgid "Alignment: "
 msgstr ""
 
-#: src/help.cpp:1159
+#: src/help.cpp:1161
 msgid "Required XP: "
 msgstr "Nødvendig XP: "
 
-#: src/help.cpp:1168 src/reports.cpp:250
+#: src/help.cpp:1170 src/reports.cpp:250
 msgid "attacks"
 msgstr "angreb"
 
-#: src/help.cpp:1176 src/menu_events.cpp:232 src/menu_events.cpp:685
+#: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:685
 msgid "Type"
 msgstr "Type"
 
-#: src/help.cpp:1177
+#: src/help.cpp:1179
 msgid "Strikes"
 msgstr ""
 
-#: src/help.cpp:1178
+#: src/help.cpp:1180
 msgid "Range"
 msgstr ""
 
-#: src/help.cpp:1179
+#: src/help.cpp:1181
 msgid "Special"
 msgstr ""
 
-#: src/help.cpp:1229
+#: src/help.cpp:1231
 msgid "Resistances"
 msgstr ""
 
-#: src/help.cpp:1233
+#: src/help.cpp:1235
 msgid "Attack Type"
 msgstr "Angrebstype"
 
-#: src/help.cpp:1234
+#: src/help.cpp:1236
 msgid "Resistance"
 msgstr ""
 
-#: src/help.cpp:1259
+#: src/help.cpp:1261
 msgid "Terrain Modifiers"
 msgstr ""
 
-#: src/help.cpp:1263
+#: src/help.cpp:1265
 msgid "Terrain"
 msgstr "Terræn"
 
-#: src/help.cpp:1264
+#: src/help.cpp:1266
 msgid "Defense"
 msgstr "Forsvar"
 
-#: src/help.cpp:1265
+#: src/help.cpp:1267
 #, fuzzy
 msgid "Movement Cost"
 msgstr "Bevægelse"
 
-#: src/help.cpp:1386 src/help.cpp:1410
+#: src/help.cpp:1388 src/help.cpp:1412
 msgid "or"
 msgstr "eller"
 
-#: src/help.cpp:1393
+#: src/help.cpp:1395
 #, fuzzy
 msgid "This terrain acts as $terrains for movement purposes."
 msgstr ""
 "Dette terræn opfører sig ligesom $terrains hvad angår bevægelse og forsvar."
 
-#: src/help.cpp:1395 src/help.cpp:1419
+#: src/help.cpp:1397 src/help.cpp:1421
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr ""
 
-#: src/help.cpp:1397 src/help.cpp:1421
+#: src/help.cpp:1399 src/help.cpp:1423
 msgid "The terrain with the worst modifier is chosen automatically."
 msgstr ""
 
-#: src/help.cpp:1417
+#: src/help.cpp:1419
 #, fuzzy
 msgid "This terrain acts as $terrains for defense purposes."
 msgstr ""
 "Dette terræn opfører sig ligesom $terrains hvad angår bevægelse og forsvar."
 
-#: src/help.cpp:1425
+#: src/help.cpp:1427
 #, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
@@ -8610,7 +8610,7 @@ msgstr ""
 "Dette terræn fungerer som et tårn, altså kan du rekrutere enheder når en "
 "leder er placeret på dette terræn."
 
-#: src/help.cpp:1427
+#: src/help.cpp:1429
 #, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
@@ -8619,28 +8619,28 @@ msgstr ""
 "Dette terræn fungerer ligesom borge, altså kan du rekrutere enheder på dette "
 "terræn."
 
-#: src/help.cpp:1429
+#: src/help.cpp:1431
 msgid "This terrain gives healing."
 msgstr "Dette terræn helbreder."
 
-#: src/help.cpp:2287
+#: src/help.cpp:2289
 #, fuzzy
 msgid " < Back"
 msgstr "< Tilbage"
 
-#: src/help.cpp:2288
+#: src/help.cpp:2290
 msgid "Forward >"
 msgstr "Fremad >"
 
-#: src/help.cpp:2400
+#: src/help.cpp:2402
 msgid "Reference to unknown topic: "
 msgstr ""
 
-#: src/help.cpp:2775
+#: src/help.cpp:2777
 msgid "The Battle for Wesnoth Help"
 msgstr "Kampen om Wesnoth Hjælp"
 
-#: src/help.cpp:2823
+#: src/help.cpp:2825
 msgid "Parse error when parsing help text: "
 msgstr ""
 
@@ -9196,8 +9196,9 @@ msgid "Cannot find era $era"
 msgstr "Kan ikke finde era: $era"
 
 #: src/multiplayer_connect.cpp:1187
+#, fuzzy
 msgid ""
-"Victory\n"
+"Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 "Sejr\n"

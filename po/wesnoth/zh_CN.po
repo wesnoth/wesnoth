@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-21 12:51+0200\n"
+"POT-Creation-Date: 2006-06-22 23:27+0200\n"
 "PO-Revision-Date: 2005-12-09 17:19+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -1110,7 +1110,7 @@ msgstr "矛"
 #: data/units/Human_Outlaw_Poacher.cfg:83
 #: data/units/Human_Outlaw_Trapper.cfg:83 data/units/Human_Peasant.cfg:31
 #: data/units/Human_Peasant.cfg:87 data/units/Merman_Entangler.cfg:25
-#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:43
+#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:36
 #: data/units/Merman_Hunter.cfg:30 data/units/Merman_Hunter.cfg:237
 #: data/units/Merman_Javelineer.cfg:30 data/units/Merman_Javelineer.cfg:157
 #: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:29
@@ -7580,7 +7580,7 @@ msgid ""
 "environment, but struggle greatly to move on land."
 msgstr "海中富有技能的生物。鱼人在任何水中都是快速和强力的，但在陆地上则相反。"
 
-#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:42
+#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:35
 #: data/units/Merman_Triton.cfg:29 data/units/Merman_Triton.cfg:94
 #: data/units/Merman_Warrior.cfg:28
 msgid "trident"
@@ -9000,7 +9000,7 @@ msgstr ""
 msgid "+  "
 msgstr ""
 
-#: src/about.cpp:217 src/help.cpp:2772
+#: src/about.cpp:217 src/help.cpp:2774
 msgid "Close"
 msgstr "关闭"
 
@@ -9185,7 +9185,7 @@ msgstr ""
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1175
+#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1177
 #: src/menu_events.cpp:233 src/menu_events.cpp:686
 #: src/multiplayer_lobby.cpp:32
 msgid "Name"
@@ -9207,11 +9207,11 @@ msgstr "选择游戏载入"
 msgid "Profile"
 msgstr "设定"
 
-#: src/dialogs.cpp:721 src/help.cpp:1092
+#: src/dialogs.cpp:721 src/help.cpp:1094
 msgid "level"
 msgstr "等级"
 
-#: src/dialogs.cpp:743 src/help.cpp:1150
+#: src/dialogs.cpp:743 src/help.cpp:1152
 msgid "HP: "
 msgstr "HP: "
 
@@ -9219,7 +9219,7 @@ msgstr "HP: "
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:760 src/help.cpp:1151
+#: src/dialogs.cpp:760 src/help.cpp:1153
 msgid "Moves: "
 msgstr "移动： "
 
@@ -9502,135 +9502,135 @@ msgstr "失败："
 msgid "Could not write to file"
 msgstr "不能写入文件"
 
-#: src/help.cpp:1112
+#: src/help.cpp:1114
 msgid "Advances to: "
 msgstr "升级： "
 
-#: src/help.cpp:1133
+#: src/help.cpp:1135
 msgid "Abilities: "
 msgstr "技能： "
 
-#: src/help.cpp:1152
+#: src/help.cpp:1154
 #, fuzzy
 msgid "Cost: "
 msgstr "移动： "
 
-#: src/help.cpp:1153
+#: src/help.cpp:1155
 msgid "Alignment: "
 msgstr "联盟： "
 
-#: src/help.cpp:1159
+#: src/help.cpp:1161
 msgid "Required XP: "
 msgstr "需要 XP： "
 
-#: src/help.cpp:1168 src/reports.cpp:250
+#: src/help.cpp:1170 src/reports.cpp:250
 msgid "attacks"
 msgstr "攻击次数"
 
-#: src/help.cpp:1176 src/menu_events.cpp:232 src/menu_events.cpp:685
+#: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:685
 msgid "Type"
 msgstr "类型"
 
-#: src/help.cpp:1177
+#: src/help.cpp:1179
 msgid "Strikes"
 msgstr "击打"
 
-#: src/help.cpp:1178
+#: src/help.cpp:1180
 msgid "Range"
 msgstr "远程"
 
-#: src/help.cpp:1179
+#: src/help.cpp:1181
 msgid "Special"
 msgstr "特别"
 
-#: src/help.cpp:1229
+#: src/help.cpp:1231
 msgid "Resistances"
 msgstr "抗性"
 
-#: src/help.cpp:1233
+#: src/help.cpp:1235
 msgid "Attack Type"
 msgstr "攻击类型"
 
-#: src/help.cpp:1234
+#: src/help.cpp:1236
 msgid "Resistance"
 msgstr "抗性"
 
-#: src/help.cpp:1259
+#: src/help.cpp:1261
 msgid "Terrain Modifiers"
 msgstr "地形修正"
 
-#: src/help.cpp:1263
+#: src/help.cpp:1265
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help.cpp:1264
+#: src/help.cpp:1266
 msgid "Defense"
 msgstr "防御"
 
-#: src/help.cpp:1265
+#: src/help.cpp:1267
 #, fuzzy
 msgid "Movement Cost"
 msgstr "移动单位"
 
-#: src/help.cpp:1386 src/help.cpp:1410
+#: src/help.cpp:1388 src/help.cpp:1412
 msgid "or"
 msgstr "或"
 
-#: src/help.cpp:1393
+#: src/help.cpp:1395
 #, fuzzy
 msgid "This terrain acts as $terrains for movement purposes."
 msgstr "本地形作为移动和防御目的的$terrains。"
 
-#: src/help.cpp:1395 src/help.cpp:1419
+#: src/help.cpp:1397 src/help.cpp:1421
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "本地形自动修改为最佳地形。"
 
-#: src/help.cpp:1397 src/help.cpp:1421
+#: src/help.cpp:1399 src/help.cpp:1423
 #, fuzzy
 msgid "The terrain with the worst modifier is chosen automatically."
 msgstr "本地形自动修改为最佳地形。"
 
-#: src/help.cpp:1417
+#: src/help.cpp:1419
 #, fuzzy
 msgid "This terrain acts as $terrains for defense purposes."
 msgstr "本地形作为移动和防御目的的$terrains。"
 
-#: src/help.cpp:1425
+#: src/help.cpp:1427
 #, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
 msgstr "本地形作为要塞，例如，当有领袖在本地形时能征募单位。"
 
-#: src/help.cpp:1427
+#: src/help.cpp:1429
 #, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr "本地形作为城堡，例如，在地形上你能征募单位。"
 
-#: src/help.cpp:1429
+#: src/help.cpp:1431
 msgid "This terrain gives healing."
 msgstr "本地形有治疗能力。"
 
-#: src/help.cpp:2287
+#: src/help.cpp:2289
 #, fuzzy
 msgid " < Back"
 msgstr "< 回退"
 
-#: src/help.cpp:2288
+#: src/help.cpp:2290
 msgid "Forward >"
 msgstr "前进 >"
 
-#: src/help.cpp:2400
+#: src/help.cpp:2402
 msgid "Reference to unknown topic: "
 msgstr "引用未知主题： "
 
-#: src/help.cpp:2775
+#: src/help.cpp:2777
 msgid "The Battle for Wesnoth Help"
 msgstr "韦诺之战帮助"
 
-#: src/help.cpp:2823
+#: src/help.cpp:2825
 msgid "Parse error when parsing help text: "
 msgstr "分析帮助文本时语法错误： "
 
@@ -10179,8 +10179,9 @@ msgid "Cannot find era $era"
 msgstr "不能找到时期 $era"
 
 #: src/multiplayer_connect.cpp:1187
+#, fuzzy
 msgid ""
-"Victory\n"
+"Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 "胜利\n"

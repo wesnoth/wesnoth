@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-21 12:51+0200\n"
+"POT-Creation-Date: 2006-06-22 23:27+0200\n"
 "PO-Revision-Date: 2006-06-22 22:55+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -1132,7 +1132,7 @@ msgstr "Speer"
 #: data/units/Human_Outlaw_Poacher.cfg:83
 #: data/units/Human_Outlaw_Trapper.cfg:83 data/units/Human_Peasant.cfg:31
 #: data/units/Human_Peasant.cfg:87 data/units/Merman_Entangler.cfg:25
-#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:43
+#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:36
 #: data/units/Merman_Hunter.cfg:30 data/units/Merman_Hunter.cfg:237
 #: data/units/Merman_Javelineer.cfg:30 data/units/Merman_Javelineer.cfg:157
 #: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:29
@@ -8785,7 +8785,7 @@ msgstr ""
 "Wassermänner kommen aus den Tiefen des Meeres, sie sind stark und schnell in "
 "Meeren, Seen und Flüssen - aber sehr schlecht an Land."
 
-#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:42
+#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:35
 #: data/units/Merman_Triton.cfg:29 data/units/Merman_Triton.cfg:94
 #: data/units/Merman_Warrior.cfg:28
 msgid "trident"
@@ -10486,7 +10486,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:217 src/help.cpp:2772
+#: src/about.cpp:217 src/help.cpp:2774
 msgid "Close"
 msgstr "Schließen"
 
@@ -10676,7 +10676,7 @@ msgstr ""
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1175
+#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1177
 #: src/menu_events.cpp:233 src/menu_events.cpp:686
 #: src/multiplayer_lobby.cpp:32
 msgid "Name"
@@ -10698,11 +10698,11 @@ msgstr "Wählt den zu ladenden Spielstand"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:721 src/help.cpp:1092
+#: src/dialogs.cpp:721 src/help.cpp:1094
 msgid "level"
 msgstr "Stufe"
 
-#: src/dialogs.cpp:743 src/help.cpp:1150
+#: src/dialogs.cpp:743 src/help.cpp:1152
 msgid "HP: "
 msgstr "LP: "
 
@@ -10710,7 +10710,7 @@ msgstr "LP: "
 msgid "XP: "
 msgstr "EP: "
 
-#: src/dialogs.cpp:760 src/help.cpp:1151
+#: src/dialogs.cpp:760 src/help.cpp:1153
 msgid "Moves: "
 msgstr "BP: "
 
@@ -10992,96 +10992,96 @@ msgstr "Niederlage:"
 msgid "Could not write to file"
 msgstr "In die Datei konnte nicht geschrieben werden"
 
-#: src/help.cpp:1112
+#: src/help.cpp:1114
 msgid "Advances to: "
 msgstr "Nächste Stufe: "
 
-#: src/help.cpp:1133
+#: src/help.cpp:1135
 msgid "Abilities: "
 msgstr "Fertigkeiten: "
 
-#: src/help.cpp:1152
+#: src/help.cpp:1154
 msgid "Cost: "
 msgstr "Kosten:"
 
-#: src/help.cpp:1153
+#: src/help.cpp:1155
 msgid "Alignment: "
 msgstr "Tag-/Nachteinfluss: "
 
-#: src/help.cpp:1159
+#: src/help.cpp:1161
 msgid "Required XP: "
 msgstr "Benötigte EP: "
 
-#: src/help.cpp:1168 src/reports.cpp:250
+#: src/help.cpp:1170 src/reports.cpp:250
 msgid "attacks"
 msgstr "Attacken"
 
-#: src/help.cpp:1176 src/menu_events.cpp:232 src/menu_events.cpp:685
+#: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:685
 msgid "Type"
 msgstr "Typ"
 
-#: src/help.cpp:1177
+#: src/help.cpp:1179
 msgid "Strikes"
 msgstr "Attacken"
 
-#: src/help.cpp:1178
+#: src/help.cpp:1180
 msgid "Range"
 msgstr "Reichweite"
 
-#: src/help.cpp:1179
+#: src/help.cpp:1181
 msgid "Special"
 msgstr "Spezialität"
 
-#: src/help.cpp:1229
+#: src/help.cpp:1231
 msgid "Resistances"
 msgstr "Resistenztabelle"
 
-#: src/help.cpp:1233
+#: src/help.cpp:1235
 msgid "Attack Type"
 msgstr "Angriffsart"
 
-#: src/help.cpp:1234
+#: src/help.cpp:1236
 msgid "Resistance"
 msgstr "Resistenz"
 
-#: src/help.cpp:1259
+#: src/help.cpp:1261
 msgid "Terrain Modifiers"
 msgstr "Geländemodifikatoren"
 
-#: src/help.cpp:1263
+#: src/help.cpp:1265
 msgid "Terrain"
 msgstr "Gelände"
 
-#: src/help.cpp:1264
+#: src/help.cpp:1266
 msgid "Defense"
 msgstr "Verteidigung"
 
-#: src/help.cpp:1265
+#: src/help.cpp:1267
 msgid "Movement Cost"
 msgstr "Bewegungskosten"
 
-#: src/help.cpp:1386 src/help.cpp:1410
+#: src/help.cpp:1388 src/help.cpp:1412
 msgid "or"
 msgstr "oder"
 
-#: src/help.cpp:1393
+#: src/help.cpp:1395
 msgid "This terrain acts as $terrains for movement purposes."
 msgstr "Dieses Gelände verhält sich wie $terrains was Bewegungskosten angeht."
 
-#: src/help.cpp:1395 src/help.cpp:1419
+#: src/help.cpp:1397 src/help.cpp:1421
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Das Gelände mit den besten Modifikatoren wird automatisch ausgewählt."
 
-#: src/help.cpp:1397 src/help.cpp:1421
+#: src/help.cpp:1399 src/help.cpp:1423
 msgid "The terrain with the worst modifier is chosen automatically."
 msgstr ""
 "Das Gelände mit den schlechtesten Modifikatoren wird automatisch ausgewählt."
 
-#: src/help.cpp:1417
+#: src/help.cpp:1419
 msgid "This terrain acts as $terrains for defense purposes."
 msgstr "Dieses Gelände verhält sich wie $terrains was Verteidigung angeht."
 
-#: src/help.cpp:1425
+#: src/help.cpp:1427
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
@@ -11090,7 +11090,7 @@ msgstr ""
 "Heerführer auf einem Feld mit diesem Geländetyp befindet, können auf "
 "benachbarten Burgfeldern Einheiten ausgebildet werden."
 
-#: src/help.cpp:1427
+#: src/help.cpp:1429
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -11098,29 +11098,29 @@ msgstr ""
 "Dieses Gelände verhält sich wie das Gelände »Burg«. Auf einem Feld mit "
 "diesem Geländetyp können Einheiten ausgebildet werden."
 
-#: src/help.cpp:1429
+#: src/help.cpp:1431
 msgid "This terrain gives healing."
 msgstr ""
 "Dieses Gelände stellt die Gesundheit von Einheiten, die sich auf diesem Feld "
 "aufhalten, wieder her."
 
-#: src/help.cpp:2287
+#: src/help.cpp:2289
 msgid " < Back"
 msgstr "< Zurück"
 
-#: src/help.cpp:2288
+#: src/help.cpp:2290
 msgid "Forward >"
 msgstr "Vorwärts >"
 
-#: src/help.cpp:2400
+#: src/help.cpp:2402
 msgid "Reference to unknown topic: "
 msgstr "Verweis auf unbekanntes Thema: "
 
-#: src/help.cpp:2775
+#: src/help.cpp:2777
 msgid "The Battle for Wesnoth Help"
 msgstr "Hilfe zu Battle for Wesnoth"
 
-#: src/help.cpp:2823
+#: src/help.cpp:2825
 msgid "Parse error when parsing help text: "
 msgstr "Fehler beim Analysieren des Hilfetextes: "
 
@@ -11692,8 +11692,9 @@ msgstr "Kann die Ära $era nicht finden"
 
 # XXX - : in original missing!
 #: src/multiplayer_connect.cpp:1187
+#, fuzzy
 msgid ""
-"Victory\n"
+"Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 "Sieg:\n"

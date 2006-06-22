@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-06-21 12:51+0200\n"
+"POT-Creation-Date: 2006-06-22 23:27+0200\n"
 "PO-Revision-Date: 2006-02-13 01:20+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -1094,7 +1094,7 @@ msgstr "חנית"
 #: data/units/Human_Outlaw_Poacher.cfg:83
 #: data/units/Human_Outlaw_Trapper.cfg:83 data/units/Human_Peasant.cfg:31
 #: data/units/Human_Peasant.cfg:87 data/units/Merman_Entangler.cfg:25
-#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:43
+#: data/units/Merman_Fighter.cfg:30 data/units/Merman_Hoplite.cfg:36
 #: data/units/Merman_Hunter.cfg:30 data/units/Merman_Hunter.cfg:237
 #: data/units/Merman_Javelineer.cfg:30 data/units/Merman_Javelineer.cfg:157
 #: data/units/Merman_Netcaster.cfg:24 data/units/Merman_Spearman.cfg:29
@@ -7181,7 +7181,7 @@ msgid ""
 "environment, but struggle greatly to move on land."
 msgstr ""
 
-#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:42
+#: data/units/Merman_Fighter.cfg:29 data/units/Merman_Hoplite.cfg:35
 #: data/units/Merman_Triton.cfg:29 data/units/Merman_Triton.cfg:94
 #: data/units/Merman_Warrior.cfg:28
 msgid "trident"
@@ -8375,7 +8375,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:217 src/help.cpp:2772
+#: src/about.cpp:217 src/help.cpp:2774
 msgid "Close"
 msgstr "סגור"
 
@@ -8561,7 +8561,7 @@ msgstr ""
 msgid "Date"
 msgstr "תאריך"
 
-#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1175
+#: src/dialogs.cpp:559 src/game.cpp:901 src/help.cpp:1177
 #: src/menu_events.cpp:233 src/menu_events.cpp:686
 #: src/multiplayer_lobby.cpp:32
 msgid "Name"
@@ -8583,11 +8583,11 @@ msgstr "בחר משחק לטעינה"
 msgid "Profile"
 msgstr "פרופיל"
 
-#: src/dialogs.cpp:721 src/help.cpp:1092
+#: src/dialogs.cpp:721 src/help.cpp:1094
 msgid "level"
 msgstr "רמה"
 
-#: src/dialogs.cpp:743 src/help.cpp:1150
+#: src/dialogs.cpp:743 src/help.cpp:1152
 msgid "HP: "
 msgstr "נק\"פ: "
 
@@ -8595,7 +8595,7 @@ msgstr "נק\"פ: "
 msgid "XP: "
 msgstr "נק\"נ: "
 
-#: src/dialogs.cpp:760 src/help.cpp:1151
+#: src/dialogs.cpp:760 src/help.cpp:1153
 msgid "Moves: "
 msgstr "מהלכים: "
 
@@ -8878,97 +8878,97 @@ msgstr "תבוסה:"
 msgid "Could not write to file"
 msgstr "כתיבה לקובץ נכשלה"
 
-#: src/help.cpp:1112
+#: src/help.cpp:1114
 msgid "Advances to: "
 msgstr "מתקדמת אל: "
 
-#: src/help.cpp:1133
+#: src/help.cpp:1135
 msgid "Abilities: "
 msgstr "יכולות: "
 
-#: src/help.cpp:1152
+#: src/help.cpp:1154
 #, fuzzy
 msgid "Cost: "
 msgstr "מהלכים: "
 
-#: src/help.cpp:1153
+#: src/help.cpp:1155
 msgid "Alignment: "
 msgstr "נטיה: "
 
-#: src/help.cpp:1159
+#: src/help.cpp:1161
 msgid "Required XP: "
 msgstr "נק\"פ נדרש: "
 
-#: src/help.cpp:1168 src/reports.cpp:250
+#: src/help.cpp:1170 src/reports.cpp:250
 msgid "attacks"
 msgstr "התקפות"
 
-#: src/help.cpp:1176 src/menu_events.cpp:232 src/menu_events.cpp:685
+#: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:685
 msgid "Type"
 msgstr "סוג"
 
-#: src/help.cpp:1177
+#: src/help.cpp:1179
 msgid "Strikes"
 msgstr "נסיונות פגיעה"
 
-#: src/help.cpp:1178
+#: src/help.cpp:1180
 msgid "Range"
 msgstr "טווח"
 
-#: src/help.cpp:1179
+#: src/help.cpp:1181
 msgid "Special"
 msgstr "מיוחד"
 
-#: src/help.cpp:1229
+#: src/help.cpp:1231
 msgid "Resistances"
 msgstr "עמידויות"
 
-#: src/help.cpp:1233
+#: src/help.cpp:1235
 msgid "Attack Type"
 msgstr "סוג תקיפה"
 
-#: src/help.cpp:1234
+#: src/help.cpp:1236
 msgid "Resistance"
 msgstr "עמידות"
 
-#: src/help.cpp:1259
+#: src/help.cpp:1261
 msgid "Terrain Modifiers"
 msgstr "התאמות שטח"
 
-#: src/help.cpp:1263
+#: src/help.cpp:1265
 msgid "Terrain"
 msgstr "סוג שטח"
 
-#: src/help.cpp:1264
+#: src/help.cpp:1266
 msgid "Defense"
 msgstr "הגנה"
 
-#: src/help.cpp:1265
+#: src/help.cpp:1267
 #, fuzzy
 msgid "Movement Cost"
 msgstr "תנועה"
 
-#: src/help.cpp:1386 src/help.cpp:1410
+#: src/help.cpp:1388 src/help.cpp:1412
 msgid "or"
 msgstr "או"
 
-#: src/help.cpp:1393
+#: src/help.cpp:1395
 msgid "This terrain acts as $terrains for movement purposes."
 msgstr "סוג שטח זה מתנהג כמו $terrains למטרות תנועה."
 
-#: src/help.cpp:1395 src/help.cpp:1419
+#: src/help.cpp:1397 src/help.cpp:1421
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "סוג השטח עם ההתאמה הטובה ביותר נבחר אוטומטית."
 
-#: src/help.cpp:1397 src/help.cpp:1421
+#: src/help.cpp:1399 src/help.cpp:1423
 msgid "The terrain with the worst modifier is chosen automatically."
 msgstr "סוג השטח עם ההתאמה הגרועה ביותר נבחר אוטומטית."
 
-#: src/help.cpp:1417
+#: src/help.cpp:1419
 msgid "This terrain acts as $terrains for defense purposes."
 msgstr "סוג שטח זה מתנהג כמו $terrains למטרות הגנה."
 
-#: src/help.cpp:1425
+#: src/help.cpp:1427
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
@@ -8976,7 +8976,7 @@ msgstr ""
 "סוג שטח זה מתנהג כמו מצודה. כלומר, אתה יכול לגייס יחידות כאשר המנהיג שלך "
 "במיקום עם סוג שטח זה."
 
-#: src/help.cpp:1427
+#: src/help.cpp:1429
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -8984,27 +8984,27 @@ msgstr ""
 "סוג שטח זה מתנהג כמו טירה. כלומר, אתה יכול לגייס יחידות אל מיקום עם סוג שטח "
 "זה."
 
-#: src/help.cpp:1429
+#: src/help.cpp:1431
 msgid "This terrain gives healing."
 msgstr "סוג שטח זה מרפא."
 
-#: src/help.cpp:2287
+#: src/help.cpp:2289
 msgid " < Back"
 msgstr "< חזרה "
 
-#: src/help.cpp:2288
+#: src/help.cpp:2290
 msgid "Forward >"
 msgstr "קדימה >"
 
-#: src/help.cpp:2400
+#: src/help.cpp:2402
 msgid "Reference to unknown topic: "
 msgstr "הפנייה לנושא לא ידוע: "
 
-#: src/help.cpp:2775
+#: src/help.cpp:2777
 msgid "The Battle for Wesnoth Help"
 msgstr "העזרה של הקרב של ווסנות'"
 
-#: src/help.cpp:2823
+#: src/help.cpp:2825
 msgid "Parse error when parsing help text: "
 msgstr "טעות ניתוח בניתוח טקסט העזרה: "
 
@@ -9556,8 +9556,9 @@ msgid "Cannot find era $era"
 msgstr "לא יכול למצוא תקופה $era"
 
 #: src/multiplayer_connect.cpp:1187
+#, fuzzy
 msgid ""
-"Victory\n"
+"Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 "נצחון\n"
