@@ -161,7 +161,7 @@ void ai::do_attack_analysis(
 			}
 
 			//if the unit can't move to this location
-			if(its.first == its.second) {
+			if(its.first == its.second || units_.find(tiles[j]) != units_.end()) {
 				continue;
 			}
 
@@ -219,7 +219,7 @@ void ai::do_attack_analysis(
 
 		if(cur_position != -1) {
 			units.erase(units.begin() + i);
-
+			
 			cur_analysis.movements.push_back(std::pair<location,location>(current_unit,tiles[cur_position]));
 
 			cur_analysis.vulnerability += best_vulnerability;
