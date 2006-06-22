@@ -1184,7 +1184,7 @@ void connect::load_game()
 	level_["observer"] = params_.allow_observers ? "yes" : "no";
 
 	if(level_["objectives"].empty()) {
-		level_["objectives"] = t_string(N_("Victory\n\
+		level_["objectives"] = t_string(N_("Victory:\n\
 @Defeat enemy leader(s)"), "wesnoth");
 	}
 }
