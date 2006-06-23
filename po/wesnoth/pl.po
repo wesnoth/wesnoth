@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-23 07:56+0200\n"
-"PO-Revision-Date: 2006-06-16 01:27+0100\n"
+"PO-Revision-Date: 2006-06-23 18:45+0100\n"
 "Last-Translator: Karol 'grzywacz' Nowak <grzywacz@sul.uni.lodz.pl>\n"
 "Language-Team:  <grzywacz@sul.uni.lodz.pl>\n"
 "MIME-Version: 1.0\n"
@@ -286,7 +286,7 @@ msgstr ""
 
 #: data/abilities.cfg:443
 msgid "slows"
-msgstr "spowolnia"
+msgstr "spowalnia"
 
 #: data/abilities.cfg:445
 msgid ""
@@ -2954,7 +2954,6 @@ msgstr ""
 "4 lub 8 PŻ na turę, lub powodują, że trucizna nie zadaje obrażeń."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -4235,6 +4234,14 @@ msgid ""
 "- - Seven Stones - and the Elven\n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"Skromnej budowy, sprawne ręce\n"
+"- - Siedem kamieni i jedenaście\n"
+"Nie dał swym wrogom za dużo szans\n"
+"- - Siedem kamieni i jedenaście\n"
+"Strzelec znany jako Smoków Zguba\n"
+"pośród statuł martwych poległ tu\n"
+"- - Siedem kamieni - i jedenaście\n"
+"(zapisane przez Gauteamusa)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:110
 msgid ""
@@ -4352,6 +4359,17 @@ msgid ""
 "enough, in possession of all of his teeth.\n"
 "(inscribed by Paterson)"
 msgstr ""
+"Ten odważny wojownik, znany pośród nag jako Rilhon, usłyszał kiedyś opowieść "
+"o wspaniałym skarbie, który zaginął w tych zalanych wodą jaskiniach - "
+"włóczni, której głownia została zrobiona z zęba Chak'kso Ney'yksa, "
+"pradawnego bazyliszka, zabitego dawno temu przez elfickiego bohatera, "
+"Eloralduila. Zgodnie z legendą, broń miała spoczywać gdzieś na dnie tego "
+"właśnie jeziora (Jeziora Ruaskkolina, nazwanego tak za dobrze znanym wężem "
+"morskim, który uczynił sobie z niego dom). Przygotowawszy się do walki z "
+"Wężem, Rilhon spotkał się z dwoma dużymi niespodziankami. Pierwszą z nich "
+"była skamieniała postać węża Ruaskkolina. Drugą był całkiem jeszcze żywy "
+"Chak'kso Ney'yks, który o dziwo posiadał wszystkie swoje zęby.\n"
+"(zapisane przez Patersona)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:170
 msgid ""
@@ -5585,7 +5603,6 @@ msgstr ""
 "uderzeniem."
 
 #: data/tips.cfg:33
-#, fuzzy
 msgid ""
 "Units can gain After Maximum Level Advancements (AMLAs), which usually "
 "increase the unit's maximum hitpoints by 3. Gaining an AMLA becomes "
@@ -11130,7 +11147,6 @@ msgid "Cannot find era $era"
 msgstr "Era $era nie znaleziona"
 
 #: src/multiplayer_connect.cpp:1187
-#, fuzzy
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
