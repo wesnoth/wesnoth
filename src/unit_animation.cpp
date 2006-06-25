@@ -32,45 +32,58 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 	config expanded_animations;
 	config::const_child_itors all_anims = cfg.child_range(animation_tag);
 	config::const_child_iterator current_anim;
+	std::vector<config> unexpanded_anims;
+	// store all the anims we have to analyze
 	for(current_anim = all_anims.first; current_anim != all_anims.second ; current_anim++) {
-		std::vector<config> new_animation;
-		new_animation.push_back(**current_anim);
-		while(!new_animation.empty()) {
-			const config analyzed_anim = new_animation.back();
-			new_animation.pop_back();
-			config::all_children_iterator child = analyzed_anim.ordered_begin();
-			config expanded_anim;
-			config stored_anim;
-			expanded_anim.values =  analyzed_anim.values;
-			stored_anim.values =  analyzed_anim.values;
-			while(child != analyzed_anim.ordered_end()) {
-				if(*(*child).first == "if") {
-					// add the content of if
-					expanded_anim.append(*(*child).second);
-					config to_add = analyzed_anim;
-					child++;
-					if(*(*child).first == "else") {
-						while(*(*child).first == "else") {
-							// add the content of else to the stored one
-							stored_anim.append(*(*child).second);
-							// store the partially expanded string for later analyzis
-							new_animation.push_back(stored_anim);
-							child++;
-						}
-					} else {
-						// add an animw with the if part removed
-						new_animation.push_back(stored_anim);
+		unexpanded_anims.push_back(**current_anim);
+	}
+	while(!unexpanded_anims.empty()) {
+		// take one anim out of the unexpanded list
+		const config analyzed_anim = unexpanded_anims.back();
+		unexpanded_anims.pop_back();
+		config::all_children_iterator child = analyzed_anim.ordered_begin();
+		config expanded_anim;
+		expanded_anim.values =  analyzed_anim.values;
+		while(child != analyzed_anim.ordered_end()) {
+			if(*(*child).first == "if") {
+				std::vector<config> to_add;
+				config expanded_chunk = expanded_anim;
+				// add the content of if
+				expanded_chunk.append(*(*child).second);
+				to_add.push_back(expanded_chunk);
+				child++;
+				if(*(*child).first == "else") {
+					while(*(*child).first == "else") {
+						expanded_chunk = expanded_anim;
+						// add the content of else to the stored one
+						expanded_chunk.append(*(*child).second);
+						to_add.push_back(expanded_chunk);
+						// store the partially expanded string for later analyzis
+						child++;
 					}
 
 				} else {
-					// add the current node
-					expanded_anim.add_child(*(*child).first,*(*child).second);
-					stored_anim.add_child(*(*child).first,*(*child).second);
+					// add an animw with the if part removed
+					to_add.push_back(expanded_anim);
+				}
+				// copy the end of the anim "as is" other if will be treated later
+				while(child != analyzed_anim.ordered_end()) {
+					for(std::vector<config>::iterator itor= to_add.begin(); itor != to_add.end();itor++) {
+							itor->add_child(*(*child).first,*(*child).second);
+							
+					}
 					child++;
 				}
+				unexpanded_anims.insert(unexpanded_anims.end(),to_add.begin(),to_add.end());
+				// stop this one which had an if we have resolved, parse the next one
+				continue;
+			} else {
+				// add the current node
+				expanded_anim.add_child(*(*child).first,*(*child).second);
+				child++;
 			}
-			expanded_animations.add_child(animation_tag,expanded_anim);
 		}
+		expanded_animations.add_child(animation_tag,expanded_anim);
 	}
 	return expanded_animations;
 }
