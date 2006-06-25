@@ -458,8 +458,14 @@ bool unit_attack(display& disp, unit_map& units,
 
 	int animation_time = start_time;
 	while(animation_time < 0 && !hide) {
-		const double pos = animation_time < attacker.get_animation()->get_first_frame_time()?0.0:
-			(1.0 - double(animation_time)/double(attacker.get_animation()->get_first_frame_time()));
+		double pos = 0.0;
+	        if(animation_time < attacker.get_animation()->get_first_frame_time()) {
+			pos = 0.0;
+		} else if( animation_time > 0) {
+			pos = 1.0;
+		} else {
+			pos = 1.0 - double(animation_time)/double(attacker.get_animation()->get_first_frame_time());
+		}
 		attacker.set_offset(pos*0.6);
 		disp.invalidate(b);
 		disp.invalidate(a);
@@ -484,10 +490,8 @@ bool unit_attack(display& disp, unit_map& units,
 	     ){
 
 		const double pos = (1.0-double(animation_time)/double(end_time));
-		if(attacker.state() != unit::STATE_STANDING) {
+		if(attacker.state() != unit::STATE_STANDING && pos > 0.0) {
 			attacker.set_offset(pos*0.6);
-		} else {
-			attacker.set_offset(0.0);
 		}
 		disp.invalidate(b);
 		disp.invalidate(a);
@@ -496,6 +500,7 @@ bool unit_attack(display& disp, unit_map& units,
 		events::pump();
 		if(attacker.get_animation()->animation_finished()) {
 		   attacker.set_standing(disp,a,false);
+		   attacker.set_offset(0.0);
 		}
 		if(defender.get_animation()->animation_finished()) {
 		   defender.set_standing(disp,b,false);
