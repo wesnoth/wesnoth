@@ -35,6 +35,7 @@ class unit_animation:public animated<unit_frame>
 		explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
 		explicit unit_animation(const std::string image, int begin_at, int end_at,
 				const std::string image_diagonal = "",const std::string halo="",int halo_x=0,int halo_y=0);
+		explicit unit_animation(const std::string image,const std::string halo,int halo_x=0,int halo_y=0);
 		explicit unit_animation(const std::string image);
 		int matches(const std::string &terrain,const gamemap::location::DIRECTION dir) const;
 
@@ -107,6 +108,16 @@ class leading_animation:public unit_animation
 		explicit leading_animation(const config& cfg):unit_animation(cfg){};
 		explicit leading_animation(const std::string& image):
 			unit_animation(image,0,150){};
+
+	private:
+};
+
+class healing_animation:public unit_animation
+{
+	public:
+		explicit healing_animation(const config& cfg):unit_animation(cfg){};
+		explicit healing_animation(const std::string& image, const std::string& halo ="",int halo_x=0,int halo_y=0):
+			unit_animation(image,halo,halo_x,halo_y){};
 
 	private:
 };

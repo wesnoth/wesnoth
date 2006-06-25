@@ -147,6 +147,8 @@ unit::unit(const unit& o):
 		standing_animations_(o.standing_animations_),
 
 		leading_animations_(o.leading_animations_),
+
+		healing_animations_(o.healing_animations_),
 		anim_(o.anim_),
 		frame_begin_time(o.frame_begin_time),
 		offset_(o.offset_),
@@ -404,6 +406,7 @@ void unit::advance_to(const unit_type* t)
 	movement_animations_ = t->movement_animations_;
 	standing_animations_ = t->standing_animations_;
 	leading_animations_ = t->leading_animations_;
+	healing_animations_ = t->healing_animations_;
 	flag_rgb_ = t->flag_rgb();
 
 	backup_state();
@@ -1219,6 +1222,14 @@ void unit::read(const config& cfg)
 			leading_animations_.push_back(leading_animation(absolute_image()));
 			// always have a leading animation
 		}
+		const config::child_list& healing_anims = cfg_.get_children("healing_anim");
+		for(config::child_list::const_iterator healing_anim = healing_anims.begin(); healing_anim != healing_anims.end(); ++healing_anim) {
+			healing_animations_.push_back(healing_animation(**healing_anim));
+		}
+		if(healing_animations_.empty()) {
+			healing_animations_.push_back(healing_animation(image_healing(),image_halo_healing()));
+			// always have a leading animation
+		}
 	}
 }
 void unit::write(config& cfg) const
@@ -1619,7 +1630,7 @@ void unit::set_dying(const display &disp,const gamemap::location& loc,const atta
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
 }
-void unit::set_healing(const display &disp,const gamemap::location& /*loc*/)
+void unit::set_healing(const display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_HEALING;
 	draw_bars_ = true;
@@ -1627,14 +1638,7 @@ void unit::set_healing(const display &disp,const gamemap::location& /*loc*/)
 		delete anim_;
 		anim_ = NULL;
 	}
-	int duration =0;
-	const std::vector<std::pair<std::string,int> > halos = unit_frame::prepare_halo(image_halo_healing(),0,0);
-	std::vector<std::pair<std::string,int> >::const_iterator cur_halo;
-	for(cur_halo = halos.begin() ; cur_halo != halos.end() ; cur_halo++) {
-		duration += cur_halo->second;
-	}
-	duration = maximum<int>(200,duration);
-	anim_ = new unit_animation(image_healing(),0,duration,"",image_halo_healing(),0);
+	anim_ = new healing_animation(heal_animation(disp.get_map().underlying_union_terrain(loc),facing_));
 	anim_->start_animation(anim_->get_first_frame_time(),1,disp.turbo()?5:1);
 	frame_begin_time = anim_->get_first_frame_time() -1;
 	anim_->update_current_frame();
@@ -2713,6 +2717,27 @@ const leading_animation& unit::lead_animation(const std::string terrain,gamemap:
 	std::vector<const leading_animation*> options;
 	int max_val = -1;
 	for(std::vector<leading_animation>::const_iterator i = leading_animations_.begin(); i != leading_animations_.end(); ++i) {
+		int matching = i->matches(terrain,dir);
+		if(matching == max_val) {
+			options.push_back(&*i);
+		} else if(matching > max_val) {
+			max_val = matching;
+			options.erase(options.begin(),options.end());
+			options.push_back(&*i);
+		}
+	}
+
+	wassert(!options.empty());
+	return *options[rand()%options.size()];
+}
+
+
+const healing_animation& unit::heal_animation(const std::string terrain,gamemap::location::DIRECTION dir) const
+{
+	//select one of the matching animations at random
+	std::vector<const healing_animation*> options;
+	int max_val = -1;
+	for(std::vector<healing_animation>::const_iterator i = healing_animations_.begin(); i != healing_animations_.end(); ++i) {
 		int matching = i->matches(terrain,dir);
 		if(matching == max_val) {
 			options.push_back(&*i);

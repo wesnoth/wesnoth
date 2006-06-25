@@ -148,6 +148,21 @@ unit_animation::unit_animation(const std::string image, int begin_at, int end_at
 	}
 }
 
+unit_animation::unit_animation(const std::string image, const std::string halo,int halo_x,int halo_y)
+{
+	int duration =0;
+	const std::vector<std::pair<std::string,int> > halos = unit_frame::prepare_halo(halo,0,0);
+	std::vector<std::pair<std::string,int> >::const_iterator cur_halo;
+	for(cur_halo = halos.begin() ; cur_halo != halos.end() ; cur_halo++) {
+		duration += cur_halo->second;
+	}
+	duration = maximum<int>(200,duration);
+	add_frame(0, unit_frame(image,"",0,duration,0,0.0,ftofxp(1),halo,halo_x,halo_y));
+	if (duration != 0) {
+		add_frame(duration);
+	}
+}
+
 int unit_animation::matches(const std::string &terrain,const gamemap::location::DIRECTION dir) const
 {
 	int result = 0;

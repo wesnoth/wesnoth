@@ -286,6 +286,8 @@ private:
 	std::vector<standing_animation> standing_animations_;
 
 	std::vector<leading_animation> leading_animations_;
+
+	std::vector<healing_animation> healing_animations_;
     std::vector<Uint32> flag_rgb_;
 };
 

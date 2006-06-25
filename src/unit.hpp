@@ -246,6 +246,7 @@ class unit
 		const movement_animation& move_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		const standing_animation& stand_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 		const leading_animation& lead_animation(const std::string terrain,gamemap::location::DIRECTION) const;
+		const healing_animation& heal_animation(const std::string terrain,gamemap::location::DIRECTION) const;
 
 		bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
 		unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;
@@ -351,6 +352,8 @@ class unit
 		std::vector<standing_animation> standing_animations_;
 
 		std::vector<leading_animation> leading_animations_;
+
+		std::vector<healing_animation> healing_animations_;
 		unit_animation *anim_;
 		int frame_begin_time;
 		double offset_;

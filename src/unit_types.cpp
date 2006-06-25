@@ -618,6 +618,7 @@ unit_type::unit_type(const unit_type& o)
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
       death_animations_(o.death_animations_), movement_animations_(o.movement_animations_),
       standing_animations_(o.standing_animations_),leading_animations_(o.leading_animations_),
+      healing_animations_(o.healing_animations_),
       flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
@@ -853,6 +854,15 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		// always have a leading animation
 	}
 
+	expanded_cfg = unit_animation::prepare_animation(cfg,"healing_anim");
+	const config::child_list& healing_anims = expanded_cfg.get_children("healing_anim");
+	for(config::child_list::const_iterator healing_anim = healing_anims.begin(); healing_anim != healing_anims.end(); ++healing_anim) {
+		healing_animations_.push_back(healing_animation(**healing_anim));
+	}
+	if(healing_animations_.empty()) {
+		healing_animations_.push_back(healing_animation(cfg["image_healing"],cfg["image_halo_healing"]));
+		// always have a healing animation
+	}
 	flag_rgb_ = string2rgb(cfg["flag_rgb"]);
 	// deprecation messages, only seen when unit is parsed for the first time
 }
