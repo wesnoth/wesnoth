@@ -1,14 +1,14 @@
 # Dutch translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-#
-#
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-12 22:22+0200\n"
-"PO-Revision-Date: 2005-12-15 20:14+0100\n"
+"PO-Revision-Date: 2006-05-11 23:29+0200\n"
 "Last-Translator: Maarten Albrecht <maartenalbrecht@gmail.com>\n"
 "Language-Team: Dutch <onne@grammex.com>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr "Bestand"
 
 #: data/themes/editor.cfg:470
 msgid "Edit"
-msgstr "Bewerk"
+msgstr "Bewerken"
 
 #: data/themes/editor.cfg:477
 msgid "Settings"
@@ -29,11 +29,11 @@ msgstr "Instellingen"
 
 #: src/editor/editor.cpp:162
 msgid "Draw tiles"
-msgstr "Vakjes tekenen"
+msgstr "Vakjes plaatsen"
 
 #: src/editor/editor.cpp:164
 msgid "Fill"
-msgstr "Vullen"
+msgstr "Opvullen"
 
 #: src/editor/editor.cpp:166
 msgid "Set player's starting position"
@@ -53,7 +53,7 @@ msgstr "Ongedaan maken"
 
 #: src/editor/editor.cpp:174
 msgid "Redo"
-msgstr "Opnieuw doen"
+msgstr "Opnieuw"
 
 #: src/editor/editor.cpp:176
 msgid "Zoom to default view"
@@ -61,11 +61,11 @@ msgstr "Standaardzoom"
 
 #: src/editor/editor.cpp:178
 msgid "Toggle grid"
-msgstr "Grid aan/uit"
+msgstr "Raster aan/uit"
 
 #: src/editor/editor.cpp:180
 msgid "Resize the map"
-msgstr "Afmetingen Wijzigen"
+msgstr "Afmetingen wijzigen"
 
 #: src/editor/editor.cpp:182
 msgid "Flip map"
@@ -81,15 +81,15 @@ msgstr "Taal instellen:"
 
 #: src/editor/editor.cpp:395 src/editor/editor_main.cpp:252
 msgid "Battle for Wesnoth Map Editor"
-msgstr "Battle for Wesnoth Kaartontwerper"
+msgstr "Battle for Wesnoth Kaartbewerking"
 
 #: src/editor/editor.cpp:419
 msgid "Save the Map As"
-msgstr "Map opslaan als"
+msgstr "Kaart opslaan als"
 
 #: src/editor/editor.cpp:430
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "De kaart bestaat al. Wil je ze overschrijven?"
+msgstr "Wil je de bestaande kaart overschrijven?"
 
 #: src/editor/editor.cpp:453 src/editor/editor.cpp:1247
 msgid "Player"
@@ -101,23 +101,22 @@ msgstr "Welke Speler?"
 
 #: src/editor/editor.cpp:457
 msgid "Which player should start here?"
-msgstr "Welke speler moet hier starten?"
+msgstr "Welke speler begint hier?"
 
 #: src/editor/editor.cpp:508
 msgid "Choose a Map to Load"
-msgstr "Kies een map om te laden"
+msgstr "Kies een kaart om in te lezen"
 
 #: src/editor/editor.cpp:512
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
 msgstr ""
-"Waarschuwing: Ongeldige tekens gevonden in de kaartnaam. Kies een andere "
-"naam."
+"Waarschuwing: Ongeldige tekens gevonden in de naam. Kies een andere naam."
 
 #: src/editor/editor.cpp:530 src/editor/editor.cpp:609
 msgid "The file does not contain a valid map."
-msgstr "Het bestand bevat geen geldige map."
+msgstr "Het bestand is geen geldige Wesnoth-kaart."
 
 #: src/editor/editor.cpp:671
 msgid "'$filename' does not exist or can not be read as a file."
@@ -125,7 +124,7 @@ msgstr "'$filename'  bestaat niet of kan niet worden gelezen."
 
 #: src/editor/editor.cpp:683
 msgid "Load failed: "
-msgstr "Laden mislukt:"
+msgstr "Inlezen mislukt: "
 
 #: src/editor/editor.cpp:883
 msgid "You must have a hex selected on the board."
@@ -133,19 +132,19 @@ msgstr "Je moet een vakje geselecteerd hebben op het bord."
 
 #: src/editor/editor.cpp:1132
 msgid "Quit Editor"
-msgstr "Verlaat Editor"
+msgstr "Editor verlaten"
 
 #: src/editor/editor.cpp:1137
 msgid "Do you want to save the map before quitting?"
-msgstr "Wil je de kaart opslaan voor het afsluiten?"
+msgstr "Wil je de kaart opslaan?"
 
 #: src/editor/editor.cpp:1169
 msgid "Map saved."
-msgstr "Map opgeslagen."
+msgstr "Kaart opgeslagen."
 
 #: src/editor/editor.cpp:1176
 msgid "Could not save the map: $msg"
-msgstr "Kon de kaart niet opslaan: $msg"
+msgstr "Kaart opslaan mislukt: $msg"
 
 #: src/editor/editor.cpp:1191
 msgid "Error: Illegal character in filename."
@@ -161,120 +160,3 @@ msgstr "BG"
 
 #~ msgid "Player "
 #~ msgstr "Speler "
-
-#~ msgid "Your modifications to the map will be lost. Continue?"
-#~ msgstr "Je veranderingen aan de kaart zullen verloren gaan. Verdergaan?"
-
-#~ msgid "Create New Map"
-#~ msgstr "Nieuwe Kaart Maken"
-
-#~ msgid "Width:"
-#~ msgstr "Breedte:"
-
-#~ msgid "Height:"
-#~ msgstr "Hoogte:"
-
-#~ msgid "Generate New Map"
-#~ msgstr "Nieuwe Kaart Genereren"
-
-#~ msgid "Generate Random Map"
-#~ msgstr "Genereer Willekeurige Map"
-
-#~ msgid "Random Generator Settings"
-#~ msgstr "Mapgenerator Instellingen"
-
-#~ msgid "Cancel"
-#~ msgstr "Annuleer"
-
-#~ msgid "Map creation failed."
-#~ msgstr "Make van map is mislukt."
-
-#~ msgid "Close Window"
-#~ msgstr "Sluit Venster"
-
-#~ msgid "Preferences"
-#~ msgstr "Instellingen"
-
-#~ msgid "Scroll Speed:"
-#~ msgstr "Scrolsnelheid"
-
-#~ msgid "Toggle Full Screen"
-#~ msgstr "Volledig Scherm Aan/Uit"
-
-#~ msgid "Show Grid"
-#~ msgstr "Toon Raster"
-
-#~ msgid "Video Mode"
-#~ msgstr "Video Mode"
-
-#~ msgid "Hotkeys"
-#~ msgstr "Sneltoetsen"
-
-#~ msgid "Resize Map"
-#~ msgstr "Wijzig Afmetingen"
-
-#~ msgid "OK"
-#~ msgstr "Ok"
-
-#~ msgid "X-Axis"
-#~ msgstr "X-As"
-
-#~ msgid "Y-Axis"
-#~ msgstr "Y-As"
-
-#~ msgid "Flip around (this may change the dimensions of the map):"
-#~ msgstr "Kantel (dit kan de resolutie van de kaart veranderen)"
-
-#~ msgid "Map Generator"
-#~ msgstr "Kaartgenerator"
-
-#~ msgid "Players:"
-#~ msgstr "Spelers:"
-
-#~ msgid "Number of Hills:"
-#~ msgstr "Aantal Heuvels"
-
-#~ msgid "Max Hill Size:"
-#~ msgstr "Max. Heuvelgrootte"
-
-#~ msgid "Villages:"
-#~ msgstr "Dorpjes:"
-
-#~ msgid "Landform:"
-#~ msgstr "Landvorm:"
-
-#~ msgid "Roads Between Castles"
-#~ msgstr "Wegen Tussen Kastelen"
-
-#~ msgid "/1000 tiles"
-#~ msgstr "/1000 vakjes"
-
-#~ msgid "Coastal"
-#~ msgstr "Kust"
-
-#~ msgid "Inland"
-#~ msgstr "Vaste Land"
-
-#~ msgid "Island"
-#~ msgstr "Eiland"
-
-#~ msgid "Delete File"
-#~ msgstr "Verwijder Bestand"
-
-#~ msgid "Deletion of the file failed."
-#~ msgstr "Kon bestand niet verwijderen"
-
-#~ msgid "Draw"
-#~ msgstr "Teken"
-
-#~ msgid "Flood"
-#~ msgstr "Vul op"
-
-#~ msgid "Start P"
-#~ msgstr "Start P"
-
-#~ msgid "Paste"
-#~ msgstr "Plak"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
