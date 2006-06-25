@@ -3,13 +3,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-23 07:57+0200\n"
-"PO-Revision-Date: 2005-10-15 01:54+0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2006-05-28 15:54+0100\n"
+"Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"X-Poedit-Language: slo\n"
+"X-Poedit-Country: slo\n"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:38
 msgid ""
@@ -20,24 +22,23 @@ msgstr ""
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:39
 msgid "Wesnoth Tutorial"
-msgstr ""
+msgstr "Výcvik hry Wesnoth"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:70
 #: data/tutorial/scenarios/1_Tutorial.cfg:149
 #: data/tutorial/scenarios/1_Tutorial.cfg:152
 #: data/tutorial/scenarios/2_Tutorial.cfg:257
 msgid "Konrad"
-msgstr ""
+msgstr "Konrád"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:80
 #: data/tutorial/scenarios/1_Tutorial.cfg:354
 msgid "Quintain"
-msgstr ""
+msgstr "Panák"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:101
-#, fuzzy
 msgid "Delfador"
-msgstr "Poraz Delfadora"
+msgstr "Delfador"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:125
 msgid ""
@@ -47,24 +48,29 @@ msgid ""
 " healing\n"
 " recruiting"
 msgstr ""
+"Naučíš sa základy:\n"
+" pohybu\n"
+" útoku\n"
+" liečenia\n"
+" verbovania"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:127
 msgid "Destroy a fierce enemy"
-msgstr ""
+msgstr "Zničíš nebezpečného nepriateľa"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:131
 msgid "Get yourself killed"
-msgstr ""
+msgstr "Sám prídeš o život"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:147
 msgid "Who would you like to play?"
-msgstr ""
+msgstr "Za koho chceš hrať?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:156
 #: data/tutorial/scenarios/1_Tutorial.cfg:159
 #: data/tutorial/scenarios/1_Tutorial.cfg:168
 msgid "Li'sar"
-msgstr ""
+msgstr "Li'sar"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:183
 #: data/tutorial/scenarios/1_Tutorial.cfg:191
@@ -79,10 +85,15 @@ msgstr ""
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:186
 #: data/tutorial/scenarios/1_Tutorial.cfg:194
+#, fuzzy
 msgid ""
 "You are standing in the keep, and your mentor Delfador is on the East side "
 "of the river."
 msgstr ""
+"*Vitaj vo Wesnothe!\n"
+"V tomto výcviku hráš ako $student. Stojíš v pevnosti, a tvoj radca Delfador "
+"je na východnej strane rieky.\n"
+"*Klikni ľavým tlačidlom myši, alebo stlač nejakú klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:188
 #: data/tutorial/scenarios/1_Tutorial.cfg:196
@@ -108,42 +119,58 @@ msgstr ""
 #: data/tutorial/scenarios/1_Tutorial.cfg:488
 #, fuzzy
 msgid "Left click on Konrad"
-msgstr "Zomrie Konrád"
+msgstr "Klikni ľavým tlačidlom na figúrku $student"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:200
 #: data/tutorial/scenarios/1_Tutorial.cfg:394
 #: data/tutorial/scenarios/1_Tutorial.cfg:489
 #, fuzzy
 msgid "Left click on Li'sar"
-msgstr "Ako ďaleko môže ísť môj elf vojak?"
+msgstr "Klikni ľavým tlačidlom na figúrku $student"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:216
+#, fuzzy
 msgid ""
 "*You have selected Konrad.\n"
 "The places he could move to are highlighted."
 msgstr ""
+"*Označil si: $student.\n"
+"Zvýraznené sú miesta, na ktoré sa môže pohnúť.\n"
+"*Klikni ľavým tlačidlom myši, alebo stlač nejakú klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:222
+#, fuzzy
 msgid ""
 "*You have selected Li'sar.\n"
 "The places she could move to are highlighted."
 msgstr ""
+"*Označil si: $student.\n"
+"Zvýraznené sú miesta, na ktoré sa môže pohnúť.\n"
+"*Klikni ľavým tlačidlom myši, alebo stlač nejakú klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:227
 msgid "HERE"
-msgstr ""
+msgstr "TU"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:232
+#, fuzzy
 msgid "Move Konrad next to Delfador, by clicking on the place marked 'HERE'."
 msgstr ""
+"Pohni figúrku $student vedľa Delfadora tak, že klikneš na miesto označené "
+"'TU'.\n"
+"*Klikni ľavým tlačidlom myši, alebo stlač nejakú klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:237
+#, fuzzy
 msgid "Move Li'sar next to Delfador, by clicking on the place marked 'HERE'."
 msgstr ""
+"Pohni figúrku $student vedľa Delfadora tak, že klikneš na miesto označené "
+"'TU'.\n"
+"*Klikni ľavým tlačidlom myši, alebo stlač nejakú klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:243
 msgid "Left click on tile labelled HERE"
-msgstr ""
+msgstr "Klikni ľavým tlačidlom na políčko označené TU"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:281
 msgid ""
@@ -152,69 +179,81 @@ msgid ""
 "Undo, then try again.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"*Ejha!\n"
+"Pohol si sa na nesprávne miesto! Po tejto správe stlač tlačidlo 'u' na "
+"vrátenie ťahu, a skús znova.\n"
+"*Klikni ľavým tlačidlom myši, alebo stlač nejakú klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:304
 msgid "Good morning Delfador!  Is it time to attack things?"
-msgstr ""
+msgstr "Dobré ráno, Delador! Môžem už na niečo zaútočiť?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:309
 msgid "Um, well..."
-msgstr ""
+msgstr "Hm, nuž..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:314
 msgid "Have you found an orc for me to fight, huh?  A troll?"
-msgstr ""
+msgstr "Našiel si mi orka, s ktorým môžem bojovať, hej? Alebo trolla?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:319
 msgid "Quiet!  I will summon an enemy for you..."
-msgstr ""
+msgstr "Ticho! Vyčarujem ti primeraného súpera..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:359
 msgid "... this quintain!"
-msgstr ""
+msgstr "...tohoto panáka!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:364
 msgid "A quintain?  You want me to pretend to fight a dummy??"
-msgstr ""
+msgstr "Panák? To mám akože bojovať s panákom??"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:369
 msgid ""
 "Child, you have 32 hitpoints and a sword.    I'm fairly sure you'll win."
-msgstr ""
+msgstr "Dieťa, máš 32 bodov zdravia a meč. Som si pomerne istý, že vyhráš."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:374
+#, fuzzy
 msgid ""
 "To attack the quintain, you will first select the attacker (Konrad) and then "
 "the target (the quintain).  You will see a description of the details of the "
 "attack.  When you click OK, Konrad will attack."
 msgstr ""
+"Na panáka zaútočíš tak, že najskôr označíš útočníka ($student) a potom terč "
+"(panák). Uvidíš popis detailov útoku. Keď klikneš OK, $student zaútočí.\n"
+"*Klikni ľavým tlačidlom myši, alebo stlač nejakú klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:379
+#, fuzzy
 msgid ""
 "To attack the quintain, you will first select the attacker (Li'sar) and then "
 "the target (the quintain).  You will see a description of the details of the "
 "attack.  When you click OK, Li'sar will attack."
 msgstr ""
+"Na panáka zaútočíš tak, že najskôr označíš útočníka ($student) a potom terč "
+"(panák). Uvidíš popis detailov útoku. Keď klikneš OK, $student zaútočí.\n"
+"*Klikni ľavým tlačidlom myši, alebo stlač nejakú klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:390
 msgid "Click on the quintain to attack it"
-msgstr ""
+msgstr "Klikni na panáka a zaútočíš naňho"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:423
 msgid "Hey! This quintain fights back!"
-msgstr ""
+msgstr "Hej! Ten panák sa bráni!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:428
 msgid "Hmm, maybe we should have started with a doll."
-msgstr ""
+msgstr "Hm, možno sme mali začať s bábikou."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:433
 msgid "Should I retreat?"
-msgstr ""
+msgstr "Mám ustúpiť?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:438
 msgid "Good idea!"
-msgstr ""
+msgstr "Dobrý nápad!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:443
 msgid ""
@@ -234,11 +273,11 @@ msgstr ""
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain.  The "
 "quintain will now get a turn."
-msgstr ""
+msgstr "Žiaľ, napadnutím panáka sa tvoj ťah vyčerpal. Teraz bude ťahať panák."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:459
 msgid "The DUMMY gets a turn?"
-msgstr ""
+msgstr "PANÁK bude ťahať?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:464
 msgid ""
@@ -246,19 +285,22 @@ msgid ""
 "Now, this quintain gets five chances to hit you, and if it hits every time, "
 "you'll drop from $student_hp to $future_hp hit points.  Brace yourself!"
 msgstr ""
+"Jasné, je to kúzelný panák.\n"
+"Takže panák má teraz päť príležitostí ťa zasiahnuť; a ak zakaždým trafí, "
+"tvoje zdravie klesne z $student_hp na $future_hp. Priprav sa!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:466
 msgid "Click on the End Turn button on the bottom right"
-msgstr ""
+msgstr "Klikni na tlačidlo \"Koniec kola\" vpravo dole."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:478
 msgid "Ouch!  I need to heal!  Only $student_hp hp left!"
-msgstr ""
+msgstr "Au! Musím sa vyliečiť! Mám iba $student_hp bodov zdravia!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:481
 #: data/tutorial/scenarios/2_Tutorial.cfg:404
 msgid "Village"
-msgstr ""
+msgstr "Dedina"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:485
 msgid ""
@@ -266,14 +308,19 @@ msgid ""
 "good idea, and ending your turn in one will heal you: you should retreat to "
 "there."
 msgstr ""
+"Na druhej strane rieky je dedina. Navštíviť dedinu je správny nápad, a ak "
+"svoje kolo ukončíš v jednej z nich, vyliečiš sa. To je správne miesto na "
+"ústup."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:497
+#, fuzzy
 msgid "Click on the village to move Konrad"
-msgstr ""
+msgstr "Klikni na dedinu a $student sa tam presunie"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:498
+#, fuzzy
 msgid "Click on the village to move Li'sar"
-msgstr ""
+msgstr "Klikni na dedinu a $student sa tam presunie"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:515
 msgid ""
@@ -282,6 +329,10 @@ msgid ""
 "gold: every turn you gain two gold, plus one for every village you own.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"Táto dedina je teraz 'tvoja'. Vidíš, že je na nej tvoja vlajka; a čoskoro sa "
+"navrchu obrazovky pri ikone domčeka objaví číslo '1'. Dediny dávajú zlato. "
+"Každé kolo dostaneš dve zlatky, plus jednu za každú dedinu, ktorú vlastníš.\n"
+"*Klikni ľavým tlačidlom myši, alebo stlač nejakú klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:517
 #: data/tutorial/scenarios/1_Tutorial.cfg:615
@@ -289,36 +340,42 @@ msgstr ""
 #: data/tutorial/scenarios/1_Tutorial.cfg:722
 #: data/tutorial/scenarios/1_Tutorial.cfg:771
 msgid "Click on the End Turn button"
-msgstr ""
+msgstr "Klikni na tlačidlo \"Koniec kola\""
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:551
 msgid ""
 "You're about to be healed by 8 hitpoints.   But I think you're going to need "
 "some help against that quintain."
 msgstr ""
+"Dedina ti vyliečila 8 bodov zdravia. Ale myslím, že budeš proti tomu "
+"panákovi potrebovať nejakú pomoc."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:556
 msgid "I'll recruit some elves!"
-msgstr ""
+msgstr "Naverbujem si pár elfov!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:559
 #: data/tutorial/scenarios/2_Tutorial.cfg:929
 msgid "Keep"
-msgstr ""
+msgstr "Pevnosť"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:563
 msgid ""
 "A splendid idea.  If you return to your keep, you can recruit two units.  "
 "You have plenty of gold for that."
 msgstr ""
+"Skvelá myšlienka. Ak sa vrátiš do pevnosti, môžeš si naverbovať dve "
+"jednotky. Máš na to dostatok zlata."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:567
+#, fuzzy
 msgid "Move Konrad to the keep"
-msgstr ""
+msgstr "Presuň $student na pevnosť"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:568
+#, fuzzy
 msgid "Move Li'sar to the keep"
-msgstr ""
+msgstr "Presuň $student na pevnosť"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:587
 msgid ""
@@ -327,10 +384,14 @@ msgid ""
 "one type of unit to choose: select it.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"Keď si v pevnosti, môžeš verbovať na hradné políčka okolo nej, tak že na ne "
+"klikneš pravým tlačidlom myši a vyberieš 'Verbuj'. Tentokrát dostaneš na "
+"výber iba jeden druh jednotky: vyber si ju.\n"
+"*Klikni ľavým tlačidlom myši, alebo stlač nejakú klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:590
 msgid "Right click on one castle tile and select Recruit"
-msgstr ""
+msgstr "Klikni pravým tlačidlom na políčko hradu a vyber 'Verbuj'"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:611
 #: data/tutorial/scenarios/1_Tutorial.cfg:641
@@ -341,17 +402,25 @@ msgid ""
 "description on the right of the screen.\n"
 "*Left click or any key to continue..."
 msgstr ""
+"Tieto novo naverbované jednotky v tomto kole nič nemôžu robiť; budeš ich "
+"ovládať až v nasledujúcom kole.\n"
+"Poznámka: po odklepnutí tohoto dialógu môžeš prejsť myšou ponad jednotku a "
+"vidieť jej popis v pravej časti obrazovky.\n"
+"*Klikni ľavým tlačidlom myši, alebo stlač nejakú klávesu..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:618
 #: data/tutorial/scenarios/1_Tutorial.cfg:648
 msgid "Right click on the other castle tile and Recruit another unit"
 msgstr ""
+"Klikni pravým tlačidlom myši na iné políčko hradu a naverbuj ďalšiu jednotku"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:661
 msgid ""
 "Hey, the quintain just healed by two hitpoints!  I'd better attack it at "
 "once!"
 msgstr ""
+"Hej, panák sa práve uzdravil za dva body zdravia! Radšej naňho rýchlo "
+"zaútočím!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:666
 msgid ""
@@ -359,30 +428,31 @@ msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
+"Áno, ak jednotka celé kolo nič nerobí, pomaly sa uzdravuje.\n"
+"Ale skôr ako pošleš svojich vojakov proti panákovi, vedz, že existujú dva "
+"druhy útoku..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:670
 msgid "I'll tell them to use the one which does most damage!"
-msgstr ""
+msgstr "Poviem im, aby používali ten, ktorý spôsobí väčšie zranenie!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:674
 msgid ""
 "And which would that be?  The sword (5-4) or the bow (3-3)?  I guess you'll "
 "find out..."
-msgstr ""
+msgstr "A ktorý to bude? Meč (5-4) alebo luk (3-3)? Myslím, že na to prídeš..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:676
-#, fuzzy
 msgid "Left click on an Elvish Fighter"
-msgstr "Ako ďaleko môže ísť môj elf vojak?"
+msgstr "Klikni ľavým tlačidlom myši na elfa vojaka"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:677
-#, fuzzy
 msgid "End your turn, then attack again."
-msgstr "Ukonči kolo a počkaj, kým Merle zaútočí na teba."
+msgstr "Ukonči kolo, potom útoč ďalej."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:684
 msgid "Left click on the Quintain to attack it."
-msgstr ""
+msgstr "Klikni ľavým tlačidlom myši na panáka a napadni ho."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:713
 msgid ""
@@ -390,6 +460,9 @@ msgid ""
 "attack, so the quintain defended with its melee attack (3-5).  The ranged "
 "attack was safer."
 msgstr ""
+"Tvoj elf použil meč (5-4, čiže zranenie 5, 4 útoky), čo je útok nablízko, "
+"takže panák sa bránil svojím útokom nablízko (3-5). Útok na diaľku by bol "
+"bezpečnejší."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:720
 msgid ""
@@ -398,6 +471,10 @@ msgid ""
 "attack was safer.\n"
 "End your turn, then attack again."
 msgstr ""
+"Tvoj elf použil meč (5-4, čiže zranenie 5, 4 útoky), čo je útok nablízko, "
+"takže panák sa bránil svojím útokom nablízko (3-5). Útok na diaľku by bol "
+"bezpečnejší.\n"
+"Ukonči kolo, potom útoč znova."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:730
 msgid ""
@@ -405,11 +482,14 @@ msgid ""
 "attack, so the quintain defended with its melee attack (3-5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
+"Tvoj elf použil meč (5-4, čiže zranenie 5, 4 útoky), čo je útok nablízko, "
+"takže panák sa bránil svojím útokom nablízko (3-5).\n"
+"Druhému elfovi radšej povedz, nech použije luk."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:732
 #: data/tutorial/scenarios/1_Tutorial.cfg:780
 msgid "Attack with the other Elf"
-msgstr ""
+msgstr "Zaútoč nasledujúcim elfom"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:762
 #: data/tutorial/scenarios/1_Tutorial.cfg:778
@@ -418,6 +498,8 @@ msgid ""
 "attacks).  The quintain has no ranged attack, only a melee attack, so it "
 "could not defend itself."
 msgstr ""
+"Tvoj elf použil luk, čo je útok na diaľku (3-3, čiže zranenie 3, 3 útoky). "
+"Panák nemá žiaden útok na diaľku, iba nablízko, takže sa nemohol brániť."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:769
 msgid ""
@@ -426,20 +508,26 @@ msgid ""
 "could not defend itself.\n"
 "End your turn, then attack again."
 msgstr ""
+"Tvoj elf použil luk, čo je útok na diaľku (3-3, čiže zranenie 3, 3 útoky). "
+"Panák nemá žiaden útok na diaľku, iba nablízko, takže sa nemohol brániť.\n"
+"Ukonči kolo, potom útoč ďalej."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:795
 msgid "Keep attacking, with both elves, until the quintain is finished!"
-msgstr ""
+msgstr "Útoč ďalej, oboma elfami, kým panáka neporazíš!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:803
 msgid "Maybe you should recruit another elf?"
-msgstr ""
+msgstr "Nechceš si naverbovať ďalšieho elfa?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:808
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
 msgstr ""
+"Poznámka:\n"
+"Môžeš kliknúť pravým tlačidlom myši na jednu a pozrieť si podrobný popis "
+"jednotky."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:823
 msgid ""
@@ -447,6 +535,10 @@ msgid ""
 "Remember to pull back wounded units into villages, and recruit more if you "
 "need.  Take special care of units with the highest experience points (XP)."
 msgstr ""
+"Poznámka:\n"
+"Pamätaj, že zranené jednotky máš stiahnuť späť do dedín, a ak treba, "
+"naverbovať ich viac. Zvlášť dávaj pozor na jednotky s najvyšším počtom bodov "
+"skúsenosti."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:840
 msgid ""
@@ -454,6 +546,9 @@ msgid ""
 "These dummies only attack if you are a single tile away.  With care, you "
 "should be able to kill them one at a time."
 msgstr ""
+"Poznámka:\n"
+"Tieto bábky ťa napadnú len ak stojíš na susednom políčku. Dostatočne opatrne "
+"ich zvládneš zlikvidovať jednu po druhej."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:851
 msgid ""
@@ -461,6 +556,9 @@ msgid ""
 "Each village you own can support a single unit for free.  After that, each "
 "unit costs you one gold per turn."
 msgstr ""
+"Poznámka:\n"
+"Každá dedina dokáže uživit jednu jednotku zadarmo. Každá ďalšia jednotka už "
+"potom bude stáť jednu zlatku za kolo."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:860
 msgid ""
@@ -469,6 +567,10 @@ msgid ""
 "the right), it will go up a level.  Elvish Fighters have two options, and "
 "you will get to choose which one you want."
 msgstr ""
+"Poznámka:\n"
+"Keď jednotka získa dosť skúsenosti (meradlo skúsenosti je to menšie meradlo "
+"vpravo), postúpi na vyššiu úroveň. Elfí vojaci majú dve možnosti, z nich si "
+"vyberieš, ktorú chceš."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:869
 msgid ""
@@ -478,17 +580,27 @@ msgid ""
 "villages, bad inside rivers.  The dummies' attacks are magical, however, so "
 "they have a 70% chance of hitting you wherever you stand."
 msgstr ""
+"Poznámka:\n"
+"Keď máš označenú jednotku, na rôznych miestach vidíš hodnoty v percentách; "
+"čím viac, tým lepšia obrana. Napríklad obrana je dobrá v hradoch a dedinách, "
+"zlá je v riekach. Útoky bábok sú však magické, takže tie majú vždy šancu 70% "
+"zasiahnuť bez ohľadu na políčko."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:891
 msgid "The quintain is dead, sirs, and I have gained more experience!"
-msgstr ""
+msgstr "Panák je mŕtvy, páni, a ja mám viac skúseností!"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:895
 #: data/tutorial/scenarios/1_Tutorial.cfg:899
+#, fuzzy
 msgid ""
 "Yes, you gain more experience through battle, especially killing an "
 "opponent: gain enough experience and you become more powerful."
 msgstr ""
+"Áno, skúsenosti získavaš počas boja, najmä ak zabiješ súpera. Získaj "
+"dostatok skúseností a zvýšia sa tým tvoje schopnosti.\n"
+"Teraz, $student, nechám ti tu ďalších pár bábok na cvičenie! A potom sa "
+"pustíme do skutočnej práce..."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:896
 msgid ""
@@ -504,27 +616,30 @@ msgstr ""
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:947
 msgid "Do you want to keep practicing?"
-msgstr ""
+msgstr "Chceš ešte trénovať?"
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:949
 msgid "Yes, I'm still figuring it out."
-msgstr ""
+msgstr "Áno, ešte si potrebujem niečo vyskúšať."
 
 #: data/tutorial/scenarios/1_Tutorial.cfg:952
 msgid "No, I think I've got it."
-msgstr ""
+msgstr "Nie, už je mi to myslím jasné."
 
 #: data/tutorial/scenarios/2_Speaking.cfg:26
 msgid ""
 "*Remember:\n"
 "You can press 'u' to undo most things: useful to correct mistakes."
 msgstr ""
+"*Pamätaj:\n"
+"V mnohých prípadoch môžeš stlačiť 'u' a vrátiť sa; je to užitočné na "
+"naprávanie chýb."
 
 #: data/tutorial/scenarios/2_Speaking.cfg:38
 #: data/tutorial/scenarios/2_Speaking.cfg:48
 #: data/tutorial/scenarios/2_Speaking.cfg:61
 msgid "*Galdrad"
-msgstr ""
+msgstr "*Galdrad"
 
 #: data/tutorial/scenarios/2_Speaking.cfg:73
 msgid ""
@@ -532,27 +647,34 @@ msgid ""
 "unit does more damage, and intelligent means it requires less experience to "
 "advance a level."
 msgstr ""
+", tvoja nová naverbovaná jednotka má dve vlastnosti: silný a inteligentný. "
+"Silný znamená, že jednotka spôsobuje väčšie zranenie, a inteligentný, že "
+"potrebuje menej skúsenosti na získanie ďalšej úrovne."
 
 #: data/tutorial/scenarios/2_Speaking.cfg:86
 msgid ""
 " has two traits: quick and resilient.  Quick means a unit can move one tile "
 "further each turn, and resilient means it has more hitpoints."
 msgstr ""
+" má dve vlastnosti: rýchly a odolný. Rýchly znamená, že sa jednotka môže "
+"pohnúť o jedno políčko ďalej každý ťah, odolný znamená, že má viac bodov "
+"zdravia."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:25
-#, fuzzy
 msgid "Patch of forest"
-msgstr "Zomrie Delfador"
+msgstr "Kus lesa"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:26
 msgid ""
 "Now put an unwounded unit, preferably a fighter, in that patch of forest on "
 "the south-east of the island: a nice, defensible spot."
 msgstr ""
+"Teraz postav nejakú nezranenú jednotku, najlepšie vojaka, do toho kusu lesa "
+"na juhovýchode ostrova. Je to pekné miesto na obranu."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:27
 msgid "Can one unit survive against all those enemies?"
-msgstr ""
+msgstr "Môže jedna jednotka prežiť proti toľkým nepriateľom?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:28
 msgid ""
@@ -560,49 +682,51 @@ msgid ""
 "unit, it will heal it by 4 hitpoints per turn.  Just be careful not to "
 "expose the Shaman to attack: is fairly weak itself."
 msgstr ""
+"S trochou pomoci, áno. Ak postavíš svojho šamana vedľa brániacej sa "
+"jednotky, vylieči jej 4 body zdravia každé kolo. Len pozor, aby sa aj sám "
+"šaman nevystavil útokom; je dosť slabý."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:36
 msgid ""
 "Advance other units onto the island or to capture villages, then End Turn"
-msgstr ""
+msgstr "Pošli ďalšie jednotky na ostrov, alebo do dedín, potom ukonči kolo."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:183
 msgid "I hope I get to retreat after this!"
-msgstr ""
+msgstr "Dúfam, že po tomto budem môcť ustúpiť!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:194
 msgid "One lucky attack by an Orcish Grunt and I'm done for!"
-msgstr ""
+msgstr "Jeden vydarený útok orka pešiaka a je po mne!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:205
 msgid "Ouch!  I could use some healing in a village."
-msgstr ""
+msgstr "Au! Nejaké liečenie v dedine by sa mi hodilo."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:231
 msgid "I have $gold gold: enough to recruit!"
-msgstr ""
+msgstr "Mám $gold zlata: dosť na verbovanie!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:232
 msgid "Yes, keep recruiting more units: I think you might need them!"
-msgstr ""
+msgstr "Áno, naverbuj si ďalšie jednotky. Myslím, že sa ti budú hodiť!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:243
 msgid "Wesnoth Tutorial Part II"
-msgstr ""
+msgstr "Výcvik hry Wesnoth, časť 2"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:268
 msgid "Thrag"
-msgstr ""
+msgstr "Thrag"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:285
 msgid "Galdrad"
-msgstr ""
+msgstr "Galdrad"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:296
 #: data/tutorial/scenarios/2_Tutorial.cfg:330
-#, fuzzy
 msgid "Defeat the Orc Leader"
-msgstr "Poraz Delfadora"
+msgstr "Porazíš veliteľa orkov"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:300
 msgid "Death of Konrad"
@@ -614,15 +738,16 @@ msgid "Turns run out"
 msgstr "Vyprší čas"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:334
-#, fuzzy
 msgid "Death of Li'sar"
-msgstr "Zomrie Delfador"
+msgstr "Zomrie Li'sar"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:373
 msgid ""
 "Ho Galdrad!  Has Delfador conjured something else to beat me with?  A flock "
 "of scarecrows, perhaps?"
 msgstr ""
+"Hej, Galdrad! Vyčaroval Delfador ešte niečo, s čím sa mám pobiť? Stádo "
+"strašiakov do maku, napríklad?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:374
 msgid "This is no game, Konrad! "
@@ -630,32 +755,40 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:375
 #: data/tutorial/scenarios/2_Tutorial.cfg:376
+#, fuzzy
 msgid ""
 "Orcs have encamped across the river.  This is elven country: we Elves are "
 "fast and hard to hit in forests.  They are fools to enter here.  You must "
 "defeat their leader, so they never bother us again.  I will advise you."
 msgstr ""
+"Toto nie je hra, $student. Orkovia sa utáborili na druhej strane rieky. Toto "
+"je krajina elfov; my elfovia sme v lesoch rýchli a ťažko zraniteľní. Sú "
+"blázni, že sem prišli. Musíme poraziť ich veliteľa, aby nás už viac "
+"neobťažovali. Budem ti radiť."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:375
 msgid "This is no game, Li'sar! "
 msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:377
-#, fuzzy
 msgid "What should I do?"
-msgstr "Čo mám robiť ďalej?"
+msgstr "Čo mám urobiť?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:382
 msgid ""
 "First, we will have to deal with the Orcish Grunt stationed in the middle of "
 "the river.  He should be little trouble."
 msgstr ""
+"Ako prvé si musíme poradiť s orkským pešiakom umiestneným v strede rieky. To "
+"by nemal byť problém."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:383
 msgid ""
 "By then, their leader will have recruited units to send against us, and the "
 "real fight will begin."
 msgstr ""
+"Potom ich veliteľ naverbuje jednotky, aby ich na nás poslal, a tým začne "
+"skutočný boj."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:384
 #: data/tutorial/scenarios/2_Tutorial.cfg:385
@@ -663,14 +796,14 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:387
 #: data/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "SHALLOW"
-msgstr ""
+msgstr "PLYTKÁ"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:389
 #: data/tutorial/scenarios/2_Tutorial.cfg:390
 #: data/tutorial/scenarios/2_Tutorial.cfg:391
 #: data/tutorial/scenarios/2_Tutorial.cfg:392
 msgid "DEEP"
-msgstr ""
+msgstr "HLBOKÁ"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:394
 msgid ""
@@ -679,6 +812,10 @@ msgid ""
 "the east, but we would stand on the shore and force them to fight us from "
 "the water, where they are exposed and we are protected by the forest."
 msgstr ""
+"Pozri na túto tmavomodrú vodu. Tá je príliš hlboká, ani jedna strana sa cez "
+"ňu nedostane. Mohli by sa pomaly prebrodiť tamtým pásom plytkej bledomodrej "
+"vody na východe. Lenže my by sme stáli na pobreží a donútili by sme ich "
+"bojovať z vody; oni by tak boli zraniteľní a nás by chránil les."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:405
 msgid ""
@@ -686,6 +823,8 @@ msgid ""
 "the key: it has a village, for healing injured units, and forest in which we "
 "fight so well."
 msgstr ""
+"Takže pravdepodobnejší útok je cez most. Kľúčovým je prostredný ostrov; má "
+"dedinu na liečenie zranených jednotiek, a les, v ktorom sa nám dobre bojuje."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:410
 msgid ""
@@ -694,6 +833,10 @@ msgid ""
 "Two Elvish Archers\n"
 "One Elvish Shaman"
 msgstr ""
+"Za začiatok budeme potrebovať pár jednotiek:\n"
+"Dvoch elfov bojovníkov\n"
+"Dvoch elfov lukostrelcov\n"
+"Jedného elfa šamana"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:477
 msgid ""
@@ -701,6 +844,9 @@ msgid ""
 "and $recall_name2 gained $recall_xp2.  You should recall them now so they "
 "can gain more experience, rather than recruiting new ones."
 msgstr ""
+"Počas tvojho výcviku $recall_name1 získal $recall_xp1 bodov skúsenosti a "
+"$recall_name2 získal $recall_xp2. Môžeš ich teraz privolať, aby získali ešte "
+"viac skúsenosti, namiesto verbovania nových."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:481
 msgid ""
@@ -708,14 +854,18 @@ msgid ""
 "You should recall that unit now, and recruit a second one (which is cheaper "
 "than recalling, anyway)."
 msgstr ""
+"Počas tvojho výcviku $recall_name1 získal $recall_xp1 bodov skúsenosti. "
+"Môžeš ho teraz privolať, a potom si druhú jednotku naverbuj (je to totiž "
+"lacnejšie ako privolávanie)."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:484
 msgid "RECALL $recall_name1"
-msgstr ""
+msgstr "PRIVOLAJ $recall_name1"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:485
 msgid "Right click on the tile south of you and recall $recall_name1"
 msgstr ""
+"Klikni pravým tlačidlom na políčko južne od teba a privolaj $recall_name1"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:494
 msgid ""
@@ -723,28 +873,32 @@ msgid ""
 "them: as they don't, it's cheaper to recruit new ones.  So recruit an Elvish "
 "Fighter."
 msgstr ""
+"Keby nejakí elfi vojaci z predchádzajúce bitky mali skúsenosti, privolali by "
+"sme ich; ale keďže nemajú, je lacnejšie naverbovať nových. Takže naverbuj "
+"elfa vojaka."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:497
 msgid ""
 "If you had any experienced units alive from your last battle we would recall "
 "them, instead we must recruit a new Elvish Fighter."
 msgstr ""
+"Keby z predchádzajúce bitky prežili nejaké skúsené jednotky, mohli by sme "
+"ich privolať, ale takto si musíme naverbovať nových elfov bojovníkov."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:500
 #: data/tutorial/scenarios/2_Tutorial.cfg:777
 #: data/tutorial/scenarios/2_Tutorial.cfg:820
-#, fuzzy
 msgid "Elvish Fighter"
-msgstr "Ako ďaleko môže ísť môj elf vojak?"
+msgstr "Elf vojak"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:501
-#, fuzzy
 msgid "Right click on the tile south of you and recruit an Elvish Fighter"
-msgstr "Výborne! Naverboval si elfa vojaka."
+msgstr ""
+"Klikni pravým tlačidlom na políčko južne od teba a naverbuj elfa vojaka"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:535
 msgid "No!  I said recruit an Elvish SHAMAN!  Now try again..."
-msgstr ""
+msgstr "Nie! Povedal som, naverbuj Elfa ŠAMANA! Skús znova..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:541
 msgid ""
@@ -752,11 +906,13 @@ msgid ""
 "it.  It also has a special attack which slows enemies, halving the damage "
 "they do!"
 msgstr ""
+"Šaman je pomerne slabá jednotka, ale má schopnosť liečiť jednotky okolo "
+"seba. Okrem toho má špeciálny útok, ktorý spomalí nepriateľa, takže dáva iba "
+"polovičné zranenie!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:542
-#, fuzzy
 msgid "So, should I end my turn now?"
-msgstr "Ako ukončím kolo?"
+msgstr "A teraz mám ukončiť kolo?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:544
 msgid ""
@@ -764,100 +920,110 @@ msgid ""
 "five units cost you 5 gold, leaving you 3 gold pieces poorer per turn.  You "
 "need more income."
 msgstr ""
+"Je pravda, že sa žiadna z novo naverbovaných jednotiek nemôže hýbať; ale ty "
+"môžeš. Tvoje jednotky stoja 5 zlatiek, čo znamená, že po každom kole budeš "
+"mať o 3 zlatky menej. Potrebuješ väčšie príjmy."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:545
 #, fuzzy
 msgid "Move Konrad to capture a village"
-msgstr "Pohni svojho bojovníka do dediny."
+msgstr "Pohni $student, nech obsadí dedinu"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:546
 #, fuzzy
 msgid "Move Li'sar to capture a village"
-msgstr "Pohni svojho bojovníka do dediny."
+msgstr "Pohni $student, nech obsadí dedinu"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:565
 #: data/tutorial/scenarios/2_Tutorial.cfg:610
 msgid "No!  I said recruit an Elvish ARCHER!  Now try again..."
-msgstr ""
+msgstr "Nie! Povedal som, naverbuj Elfa LUKOSTRELCA! Skús znova..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:574
 #: data/tutorial/scenarios/2_Tutorial.cfg:586
 msgid "Eowynial"
-msgstr ""
+msgstr "Eowynial"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:590
 msgid "Shaman"
-msgstr ""
+msgstr "Šaman"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:591
 msgid "Recruit an Elvish Shaman to your north"
-msgstr ""
+msgstr "Naverbuj elfa šamana na severné políčko"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:619
 #: data/tutorial/scenarios/2_Tutorial.cfg:630
 msgid "Elriend"
-msgstr ""
+msgstr "Elriend"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:657
 msgid "No!  I said RECALL $recall_name2|!  Now try again..."
-msgstr ""
+msgstr "Nie! Povedal som, PRIVOLAJ $recall_name2|! Skús znova..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:662
 #: data/tutorial/scenarios/2_Tutorial.cfg:704
 msgid "Archer #1"
-msgstr ""
+msgstr "Lukostrelec č. 1"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:663
 #: data/tutorial/scenarios/2_Tutorial.cfg:705
 msgid "Archer #2"
-msgstr ""
+msgstr "Lukostrelec č. 2"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:664
 #: data/tutorial/scenarios/2_Tutorial.cfg:706
 msgid "Recruit two Elvish Archers in tiles to your west"
-msgstr ""
+msgstr "Naverbuj dvoch elfov lukostrelcov na políčka na západe"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:680
 msgid "No!  I said recruit an Elvish FIGHTER!  Now try again..."
-msgstr ""
+msgstr "Nie! Povedal som, naverbuj Elfa VOJAKA! Skús znova..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:690
 #: data/tutorial/scenarios/2_Tutorial.cfg:701
 msgid "Golir"
-msgstr ""
+msgstr "Golir"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:752
 msgid "No!  I said recall $recall_name1, not $recall_name2|!  Now try again..."
 msgstr ""
+"Nie! Povedal som, privolaj $recall_name1, nie $recall_name2|! Skús znova..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:756
 msgid ""
 "No!  I said RECALL $recall_name1 from the last battle, not recruit a new "
 "$recruit.type|!  Now try again..."
 msgstr ""
+"Nie! Povedal som, PRIVOLAJ $recall_name1 z predchádzajúcej bitky, nie "
+"naverbuj nového $recruit.type|! Skús znova..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:773
 msgid "Right click on the tile south-east of you and recall $recall_name2"
 msgstr ""
+"Klikni pravým tlačidlom myši na políčko juhovýchodne od teba a privolaj "
+"$recall_name2"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:774
 msgid "RECALL $recall_name2"
-msgstr ""
+msgstr "PRIVOLAJ $recall_name2"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:778
 #: data/tutorial/scenarios/2_Tutorial.cfg:821
-#, fuzzy
 msgid "Right click on the tile south-east of you and recruit an Elvish Fighter"
-msgstr "Výborne! Naverboval si elfa vojaka."
+msgstr ""
+"Klikni pravým tlačidlom na políčko juhovýchodne od teba a naverbuj elfa "
+"vojaka"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:794
 msgid "$recruit.type|?  I said RECRUIT a new ELVISH FIGHTER.  Now try again..."
 msgstr ""
+"$recruit.type|? Povedal som, NAVERBUJ nového ELFA VOJAKA. Skús znova..."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:808
 #: data/tutorial/scenarios/2_Tutorial.cfg:819
 msgid "Elindel"
-msgstr ""
+msgstr "Elindel"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:847
 msgid "You've learned well, Konrad! "
@@ -865,10 +1031,13 @@ msgstr ""
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:848
 #: data/tutorial/scenarios/2_Tutorial.cfg:850
+#, fuzzy
 msgid ""
 "The village supports one unit, and pays one gold per turn: you're only "
 "losing 1 gold per turn now."
 msgstr ""
+"Učíš sa dobre, $student|! Dedina podporuje jednu jednotku, a platí jednu "
+"zlatku za kolo. Teraz už strácaš iba 1 zlatku za kolo."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:849
 msgid "You've learned well, Li'sar! "
@@ -884,34 +1053,47 @@ msgid ""
 "You've captured all the villages around the keep, but stay near so you can "
 "recruit more units."
 msgstr ""
+"Teraz ti už patria všetky dediny okolo pevnosti; zostaň nablízko, nech môžeš "
+"verbovať ďalšie jednotky."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:872
+#, fuzzy
 msgid ""
 "You should leave the villages near your keep for Konrad to capture, as he "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
+"Dediny blízko pevnosti môže obsadiť aj $student; aj tak musí zostať nablízko "
+"kvôli verbovaniu nových jednotiek."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:873
+#, fuzzy
 msgid ""
 "You should leave the villages near your keep for Li'sar to capture, as she "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
+"Dediny blízko pevnosti môže obsadiť aj $student; aj tak musí zostať nablízko "
+"kvôli verbovaniu nových jednotiek."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:879
 msgid "Orcs have no ranged attack, so use your archers against it."
 msgstr ""
+"Orkovia nemajú útok na diaľku, takže proti nemu použi svojich lukostrelcov."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:881
 msgid ""
 "Attack the Orc with an Archer (move mouse over units to see description on "
 "right)"
 msgstr ""
+"Zaútoč na orka lukostrelcom (prejdi myšou ponad jednotku a napravo uvidíš "
+"jej popis)"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:889
 msgid ""
 "Excellent.  Elves are well protected in the forest: there's only a 30% "
 "chance of hitting an Elven Archer when it's in forest."
 msgstr ""
+"Vynikajúco. Elfovia sú veľmi dobre chránení v lese; šanca zasiahnuť elfa "
+"lukostrelca v lese je iba 30%."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:898
 msgid ""
@@ -919,75 +1101,87 @@ msgid ""
 "unit would have an 80% chance of being hit when the Orc counter-attacks!  "
 "Cancel!"
 msgstr ""
+"Je veľmi nebezpečné stáť vo vode, keď sú nepriatelia nablízko! Tvoja "
+"jednotka bude mať šancu byť zranená 80%, keď ork zaútočí naspäť! Zruš to!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:904
 msgid "Attack the Orc with the other Archer"
-msgstr ""
+msgstr "Zaútoč na orka druhým lukostrelcom"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:916
 msgid "Fighter to Here"
-msgstr ""
+msgstr "Vojak sem"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:917
 msgid ""
 "Your other units cannot reach that Orc this turn.  Send a Fighter to that "
 "village to the far east: that will take two turns."
 msgstr ""
+"Tvoje zvyšné jednotky v tomto kole na orka nedočiahnu. Pošli vojaka do tej "
+"dediny ďaleko na východe; to potrvá dve kolá."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:918
 msgid ""
 "You can make a unit keep moving for multiple turns: select the unit, then "
 "click on the target.  You will see (2) if it will take two turns to reach it."
 msgstr ""
+"Jednotke môžeš zadať pohyb na viac kôl; označ jednotku a potom klikni na "
+"cieľ. Uvidíš (2), čo znamená, že bude trvať dve kolá prísť tam."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:919
 msgid "Tell a Fighter to move to the far east village"
-msgstr ""
+msgstr "Povedz vojakovi, aby sa pohol k dedine daleko na východe"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:930
 msgid ""
 "Send the other Fighter and the Shaman south so they can attack next turn, "
 "then return to the keep to recruit more units!"
 msgstr ""
+"Pošli ďalšieho vojaka a šamana na juh, aby mohli v ďalšom kole zaútočiť, a "
+"potom sa vráť do pevnosti naverbovať ďalšie jednotky!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:931
+#, fuzzy
 msgid "Move Fighter and Shaman south, then return Konrad to the Keep"
-msgstr ""
+msgstr "Pohni vojaka a šamana na juh, potom nech sa $student vráti do pevnosti"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:932
+#, fuzzy
 msgid "Move Fighter and Shaman south, then return Li'sar to the Keep"
-msgstr ""
+msgstr "Pohni vojaka a šamana na juh, potom nech sa $student vráti do pevnosti"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:942
 msgid "Recruit another Archer and a Fighter"
-msgstr ""
+msgstr "Naverbuj ďalšieho lukostrelca a vojaka"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:957
 msgid "I have no more money to recruit!"
-msgstr ""
+msgstr "Nemám už peniaze na ďalšie verbovanie!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:958
 msgid "This is often a problem, which is why owning villages is important."
-msgstr ""
+msgstr "To je častý problém, a práve preto je dôležité vlastniť dediny."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:959
 #, fuzzy
 msgid "Move Konrad to another (unowned) village"
-msgstr "Pohni svojho bojovníka do dediny."
+msgstr "Nech $student ide do ďalšej (neprivlastnenej) dediny"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:960
+#, fuzzy
 msgid "Move Li'sar to another (unowned) village"
-msgstr ""
+msgstr "Nech $student ide do ďalšej (neprivlastnenej) dediny"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:985
 msgid ""
 "The Orc is blocking the bridge!  We must occupy that island before the wolf "
 "riders reach it."
 msgstr ""
+"Ork blokuje most! Musíme obsadiť ostrov skôr ako naň dôjdu vlčí jazdci."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:986
 msgid "Can't our units just move around him?"
-msgstr ""
+msgstr "Nemôžu naše jednotky len tak prejsť okolo neho?"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:989
 #: data/tutorial/scenarios/2_Tutorial.cfg:990
@@ -996,7 +1190,7 @@ msgstr ""
 #: data/tutorial/scenarios/2_Tutorial.cfg:993
 #: data/tutorial/scenarios/2_Tutorial.cfg:994
 msgid "ZoC"
-msgstr ""
+msgstr "Zóna kontroly"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:997
 msgid ""
@@ -1005,15 +1199,19 @@ msgid ""
 "To move your troops onto that island without wading slowly through the "
 "water, you'll have to kill him."
 msgstr ""
+"Nie. Ak sa pohneš jednotkou vedľa súperovej, si v jej 'zóne kontroly' a v "
+"tom kole už nemôžeš ísť ďalej.\n"
+"Ak chceš poslať svoje jednotky na ostrov bez toho, aby sa pomaly brodili "
+"vodou, musíš ho zabiť."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:998
 msgid "Attack the Orc with an Archer"
-msgstr ""
+msgstr "Napadni orka lukostrelcom"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1020
 #: data/tutorial/scenarios/2_Tutorial.cfg:1032
 msgid "Advance other units and capture villages, then End Turn"
-msgstr ""
+msgstr "Posuň ďalšie jednotky a obsaď dediny, potom ukonči kolo"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1024
 msgid ""
@@ -1021,22 +1219,27 @@ msgid ""
 "attack!  I'd better grab more villages, and move everyone closer for next "
 "turn."
 msgstr ""
+"Ďalšie jednotky už na toho orka nedosiahnu. Dúfam, že môj lukostrelec "
+"prežije jeho protiútok! Radšej obsadím ďalšie dediny a pohnem ostatných "
+"bližšie pre ďalšie kolo."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1025
 msgid ""
 "Yes.  If your Shaman stands just behind that unit on the bridge, it will "
 "heal it at the beginning of next turn, too."
 msgstr ""
+"Áno. Ak bude tvoj šaman stáť za touto jednotkou na moste, bude ju liečiť aj "
+"na začiatku nasledujúceho kola."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1026
 msgid "Move Shaman onto bridge to stand behind unit"
-msgstr ""
+msgstr "Pohni šamana na most, aby stál za jednotkou"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1072
 msgid ""
 "Be careful: if you stand on the bridge you are exposed to attack from "
 "multiple directions!"
-msgstr ""
+msgstr "Opatrne: ak stojíš na moste, vystavuješ sa útoku z viacerých smerov!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1085
 msgid ""
@@ -1044,18 +1247,25 @@ msgid ""
 "unit would have an 80% chance of being hit!  Cancel, and wait for them to "
 "attack you!"
 msgstr ""
+"Je veľmi nebezpečné stáť vo vode, keď sú nepriatelia nablízko! Tvoja "
+"jednotka bude mať šancu byť zranená 80%! Zruš to, a počkaj nech ťa oni "
+"napadnú!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1095
 msgid ""
 "Don't forget about your fighter in the east: you can move him south to that "
 "last village near the channel."
 msgstr ""
+"Nezabudni na svojho vojaka na východe. Môžeš ho poslať na juh do poslednej "
+"dediny pri kanáli."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1102
 msgid ""
 "We need to take that village, otherwise they will take it next turn!  Move "
 "your wounded unit to take it so it can heal, then kill that Orc!"
 msgstr ""
+"Musíme obsadiť tú dedinu, inak ju v ďalšom ťahu obsadia oni! Pohni do nej "
+"svoju zranenú jednotku, aby sa v nej mohla uzdraviť, a potom zabi toho orka!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1115
 msgid ""
@@ -1063,29 +1273,38 @@ msgid ""
 "stronger at night, 25% weaker in the day.  You are lawful: stronger by day.  "
 "Elves are neutral: we are unaffected by night and day."
 msgstr ""
+"Opatrne! Teraz je noc. Orkovia sú chaotickí; ich útoky sú o 25% silnejšie v "
+"noci, a o 25% slabšie cez deň. Ty si na strane poriadku: silnejší cez deň. "
+"Elfovia sú neutrálni; deň a noc na nich nemajú vplyv."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1116
 msgid ""
 "After this dialog, hold the mouse over the image below the map on the right, "
 "to see a description of the time of day."
 msgstr ""
+"Po odklepnutí tohoto dialógu prejdi myšou ponad obraz vpravo nad mapou, a "
+"uvidíš popis dennej doby."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1123
 msgid ""
 "Remember to retreat your wounded units to villages.  Healers can only heal 4 "
 "hitpoints at a time, villages can heal 8 (the maximum for any unit)."
 msgstr ""
+"Pamätaj, že so zranenými jednotkami treba ustúpiť do dedín. Uzdravovatelia "
+"môžu uzdraviť iba 4 body zdravia za ťah, dediny uzdravia 8 (maximum pe "
+"hocijakú jednotku)."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1130
-#, fuzzy
 msgid "Defend here"
-msgstr "Poraz Merla"
+msgstr "Bráň sa tu"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1131
 msgid ""
 "Beware those Orcs crossing the river!  If they get into the forest they'll "
 "be hard to dislodge!"
 msgstr ""
+"Pozor, orkovia prekračujú rieku! Ak sa dostanú do lesa, bude ťažké ich "
+"odtiaľ dostať!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1138
 msgid ""
@@ -1093,40 +1312,53 @@ msgid ""
 "the next unit, SPACE to indicate it's finished.\n"
 "When 'n' no longer selects a new unit, you can end your turn."
 msgstr ""
+"Môžeš si overiť, že sa v tomto kole už pohli všetky tvoje jednotky. Stlač "
+"'n' pre nasledujúcu jednotku; MEDZEROU označíš, že svoj ťah už ukončila.\n"
+"Keď 'n' už neoznačí žiadnu ďalšiu jednotku, môžeš ukončiť ťah."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1143
 msgid "You only need to defeat the leader to win: see Main Menu->Objectives."
-msgstr ""
+msgstr "Na výhru stačí poraziť iba veliteľa. Pozri si \"Hlavné menu / Ciele\"."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1148
 msgid ""
 "Remember to recruit more troops as you need them: Archers are particularly "
 "effective against Grunts, Wolf Riders and their leader."
 msgstr ""
+"Pamätaj, že postupne potrebuješ verbovať ďalšie jednotky. Lukostrelci sú "
+"zvlášť účinní proti pešiakom, vlčím jazcom, a ich veliteľovi."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1166
 msgid ""
 "Stay near the keep: you need to be on a keep to recruit more units, and I "
 "doubt the Orc leader will let you use his!"
 msgstr ""
+"Zostaň blízko pevnosti. Budeš potrebovať pevnosť na verbovanie ďalších "
+"jednotiek, a pochybujem, že ti ork veliteľ dovolí použiť svoju."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1180
 msgid ""
 "Their leader has moved into that village!  He's not as stupid as I thought: "
 "it heals him each turn and provides good defense."
 msgstr ""
+"Ich veliteľ sa presunul do tej dediny! Nie je až taký hlúpy, ako som si "
+"myslel; bude sa tam každé kolo liečiť a má tam dobrú obranu."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1191
 msgid ""
 "That unit has captured our village!  You'd better get him out: it heals him "
 "each turn and provides good defense."
 msgstr ""
+"Táto jednotka dobyla našu dedinu! Radšej ju stade vyžeň; lieči sa tam každé "
+"kolo a má tam dobrú obranu."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1203
 msgid ""
 "Using me to attack is risky!  I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
 msgstr ""
+"Používať ma na útok je riskantné! Môžem síce svojím útokom na diaľku "
+"spomaliť súpera, ale dúfam, že máš dobrý plán pre prípad, že netrafím!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1239
 #: data/tutorial/scenarios/2_Tutorial.cfg:1255
@@ -1135,23 +1367,30 @@ msgid ""
 "gain 16 experience points, because he is level 2.  Choose your unit "
 "carefully!"
 msgstr ""
+"Máš šancu zabiť ich veliteľa! Jednotka, ktorá ho zabije, dostane 16 bodov "
+"skúsenosti, keďže on je na úrovni 2. Vyber si tú jednotku starostlivo!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1296
 msgid ""
 "We will miss $deadguy.user_description|, and he had $deadguy.experience "
 "experience points, meaning he would have advanced to level 2 soon."
 msgstr ""
+"Bude nám chýbať $deadguy.user_description|. Mal $deadguy.experience "
+"skúseností, čo znamená, že by bol čoskoro dosiahol úroveň 2."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1305
 msgid ""
 "We will miss $deadguy.user_description|, but better than one of our "
 "experienced troops dying!"
 msgstr ""
+"Bude nám chýbať $deadguy.user_description|; ale lepšie že padol on, a nie "
+"niektorá z našich skúsenejších jednotiek!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1318
 msgid ""
 "Losing a healer hurts all the troops!  Keep them out of the enemy's reach!"
 msgstr ""
+"Stratiť liečiteľa je smutné pre všetky jednotky! Chráň si ho pred súperom!"
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1319
 msgid ""
@@ -1159,18 +1398,26 @@ msgid ""
 "can see all the possible enemy moves at once with 'Show Enemy Moves' from "
 "the 'Actions' menu."
 msgstr ""
+"Ak prejdeš myšou ponad súperovu jednotku, vidíš, pokiaľ môže dôjsť. Všetky "
+"možné súperove ťahy uvidíš naraz, keď si z menu 'Akcie' vyberieš 'Ukáž "
+"súperove ťahy'."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1323
+#, fuzzy
 msgid ""
 "Level 2 units are powerful, but not invulnerable!  Goodbye, $deadguy."
 "user_description|."
 msgstr ""
+"Jednotky na úrovni 2 sú mocné, ale nie nezraniteľné, $student! Zbohom, "
+"$deadguy.user_description|."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1338
 msgid ""
 "Beware the leader: he can do 36 hitpoints damage at night!  Attack with many "
 "units at once, during the day."
 msgstr ""
+"Pozor na veliteľa. V noci dokáže spôsobiť zranenie za 36 bodov! Napadni ho "
+"viacerými jednotkami naraz, počas dňa."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1351
 msgid ""
@@ -1178,6 +1425,10 @@ msgid ""
 "I always have a 60% chance of hitting with my bow, and 9 hitpoints damage on "
 "each of the four attacks.  Use me to dislodge hard-to-hit units."
 msgstr ""
+"Povýšenie na vyššiu úroveň na celkom vyliečilo!\n"
+"Mám vždy šancu aspoň 60% trafiť svojím lukom, a každým zo svojich štyroch "
+"útokov môžem dať 9 zranení. Použi ma na likvidáciu tých jednotiek, ktoré je "
+"ťažké zasiahnuť."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1363
 msgid ""
@@ -1186,6 +1437,9 @@ msgid ""
 "can hide in forests, and enemies can only see me if they are right next to "
 "me."
 msgstr ""
+"Povýšenie na vyššiu úroveň na celkom vyliečilo!\n"
+"Som dobrý s lukom i mečom, ale mám osobitnú schopnosť: prepad. Môžem sa "
+"ukryť v lese, a nepriateľ ma vidí len keď je tesne vedľa mňa."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1375
 msgid ""
@@ -1194,16 +1448,31 @@ msgid ""
 "leadership.  Level 1 units around me do 25% more damage, so position me "
 "carefully."
 msgstr ""
+"Povýšenie na vyššiu úroveň na celkom vyliečilo!\n"
+"Som dobrý s lukom i mečom, ale mám osobitnú schopnosť: velenie. Jednotky "
+"úrovne 1 vedľa mňa spôsobujú o 25% vyššie zranenie, takže si premysli, kam "
+"ma postavíš."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1388
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am particularly good with the sword: four attacks doing 8 damage each."
 msgstr ""
+"Povýšenie na vyššiu úroveň na celkom vyliečilo!\n"
+"Som mimoriadne dobrý s mečom; štyri úroky po 8 zranení."
 
 #: data/tutorial/scenarios/2_Tutorial.cfg:1555
 msgid "You took too long, we'll never be rid of these Orcs!"
-msgstr ""
+msgstr "Trvá ti to príliš dlho, tých orkov sa nikdy nezbavíme!"
+
+#~ msgid "he"
+#~ msgstr "on"
+
+#~ msgid "she"
+#~ msgstr "ona"
+
+#~ msgid "Click on $student"
+#~ msgstr "Klikni na $student"
 
 #~ msgid "Basic Training"
 #~ msgstr "Základný výcvik"
@@ -1307,6 +1576,9 @@ msgstr ""
 #~ "Tvoj bojovník prežil Merlin útok. Keď jednotka prežije boj, získa z neho "
 #~ "skúsenosti. Keď má jednotka dostatok skúseností, je povýšená na ďalšiu "
 #~ "úroveň, a stane sa silnejšou."
+
+#~ msgid "Move your fighter onto a village."
+#~ msgstr "Pohni svojho bojovníka do dediny."
 
 #~ msgid "Villages heal the units on them."
 #~ msgstr "Dediny liečia jednotky, ktoré sú v nich."

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-23 07:56+0200\n"
-"PO-Revision-Date: 2006-05-25 21:06+0100\n"
+"PO-Revision-Date: 2006-06-24 19:04+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -292,7 +292,6 @@ msgid "slows"
 msgstr "spomaľuje"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -300,8 +299,9 @@ msgid ""
 "up)."
 msgstr ""
 "Spomalenie:\n"
-"Tento útok spomalí terč. Spomalená jednotka spôsobuje pri útoku polovičné "
-"zranenie a pohybuje sa len polovicou bežnej rýchlosti (zaokrúhlené nahor)."
+"Tento útok spomalí obeť do konca kola. Spomalená jednotka spôsobuje pri "
+"útoku polovičné zranenie a pohybuje sa len polovicou bežnej rýchlosti "
+"(zaokrúhlené nahor)."
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -856,7 +856,6 @@ msgid "Mounted Fighter"
 msgstr "Vojak jazdy"
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:30
-#, fuzzy
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -885,9 +884,8 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:34
 #: data/units/Orcish_Ruler.cfg:33 data/units/Orcish_Sovereign.cfg:34
 #: data/units/Orcish_Warlord.cfg:29 data/units/Orcish_Warrior.cfg:28
-#, fuzzy
 msgid "greatsword"
-msgstr "krátky meč"
+msgstr "široký meč"
 
 #: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
@@ -1437,6 +1435,14 @@ msgid ""
 "ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
 "often take underlings whom they lead to victory."
 msgstr ""
+"Ohnivý drak je starobylý a hrôzostrašný tvor, ktorý zvyčajne žije len v "
+"povestiach a fantastických príbehoch. Vo Wesnothe často nevidno draka celé "
+"stáročia, a zvyčajne je to iba tieň lietajúci v diaľke. Legendy presne "
+"popisujú útoky ohnivých drakov: zákerne vrtký let, kožovité krídla široké "
+"vyše sto stôp, rýchly útok na obeť pomocou pekelných plameňov. Kto sa "
+"zachráni pred drakovým ohnivým dychom, musí si dať pozor na jeho zúrivý hryz "
+"a švihajúci chvost. Ohniví draci sú prefíkaní a krutí, a svoje víťazstvá "
+"často dosahujú pomocou služobníkov."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:30
 msgid "bite"
@@ -1599,12 +1605,10 @@ msgid "mace"
 msgstr "palcát"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:3
-#, fuzzy
 msgid "Wose Sapling"
-msgstr "Liečenie"
+msgstr "Lesný výrastok"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:31
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -1665,9 +1669,8 @@ msgstr "dotyk"
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:43
 #: data/units/Undead_Necro_Ancient_Lich.cfg:102
 #: data/units/Undead_Necro_Lich.cfg:84
-#, fuzzy
 msgid "chill tempest"
-msgstr "vlna mrazu"
+msgstr "studený víchor"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:167
@@ -1788,7 +1791,6 @@ msgid "female^Silver Mage"
 msgstr "Strieborná mágyňa"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:39
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -1865,6 +1867,20 @@ msgid ""
 "a high chance of hitting an opponent. The staff of a necromancer is marked "
 "with the plague, and any foe struck down by it will rise again in unlife."
 msgstr ""
+"Jedným z najväčších kruhov tradičnej 'čiernej mágie' je černokňažníctvo, "
+"hrozná schopnosť prebudiť mŕtvych a dať im falošný život. Bol to objav, "
+"ktorý vyvolal veľké znepokojenie a viedol k všeobecnému odsúdeniu čiernej "
+"mágie, pretože otvoril novú dimenziu hrôzy.\n"
+"\n"
+"Táto schopnosť je ako taká prvým krokom ku konečnému cieľu porazenia smrti. "
+"Je to najvyšší stupeň moci, ktorý môže dosiahnuť temný mág bez toho, aby "
+"statil vlastnú ľudskosť, hoci je to nič proti moci, ktorou vládnu kosteji.  "
+"Telá smrteľníkov sa vďaka mágii stávajú pevnejšími, na rozdiel od krehkých "
+"rozpadávajúcich sa telesných schránok kostejov.\n"
+"\n"
+"Poznámka: černokňažníkov útok na diaľku je magický a má vždy veľkú šancu "
+"zasiahnuť súpera. Černokňažníkova palica prináša mor, kto padne pod jej "
+"úderom, vstane opäť v nepravom živote."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:56
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:87
@@ -2046,9 +2062,8 @@ msgid "Show Combat"
 msgstr "Zobrazuj súboj"
 
 #: data/game.cfg:49
-#, fuzzy
 msgid "Mouse Scrolling"
-msgstr "Liečenie"
+msgstr "Rolovanie myši"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -2469,7 +2484,6 @@ msgid "Shroud and Fog of War"
 msgstr "Odkrývanie mapy a hmla"
 
 #: data/help.cfg:149
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -2799,7 +2813,6 @@ msgstr ""
 "doliečia. V niektorých prípadoch dostanete na výber viac možností povýšenia."
 
 #: data/help.cfg:214
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2826,9 +2839,12 @@ msgstr ""
 "\"vylepšovanie po najvyššej úrovni\". Pri \"vylepšovaní po najvyššej úrovni"
 "\" sa jednotka, ktorá dosiahla stanovený počet skúseností upraví, ale "
 "zostane na rovnakej úrovni. Zvyčajne sa zvýši jej maximálny počet zdravia o "
-"3 za každých 100 skúseností navyše. Iba niektoré jednotky, ako napríklad "
-"nekrofág, sa pri tom naplno doliečia. Väčšina jednotiek iba získa vyššie "
-"možné maximálne zdravie."
+"3 za dosiahnutých 100 skúseností (80 pre inteligentné jednotky). Neskôr však "
+"na rovnaký efekt treba stále viac skúseností, takže sa zvyčajne oplatí "
+"povyšovať jednotky na nižších úrovniach.\n"
+"\n"
+"Iba niektoré jednotky, ako napríklad nekrofág, sa pri tom naplno doliečia. "
+"Väčšina jednotiek si iba zvýši maximálne zdravie."
 
 #: data/help.cfg:219
 msgid "Healing"
@@ -2879,7 +2895,6 @@ msgstr ""
 "(napríklad trollovia) sa v každom kole automaticky uzdravia o 8 bodov."
 
 #: data/help.cfg:225
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -2887,15 +2902,12 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Liečenie jednotiek: Jednotky so schopnosťou <ref>dst=ability_heals "
-"text='uzdravovať'</ref> vyliečia až do 8 bodov zdravia každé kolo, a "
-"zabránia zraneniu spôsobenému jedom. Uzdravovanie pôsobí iba na tie "
-"jednotky, ktoré sa nachádzajú na vedľajšom políčku jednotky so schopnosťou "
-"uzdravovať, a patria rovnakému hráčovi. Jedna jednotka môže byť za jedno "
-"kolo uzdravená nanajvýš o 4 body zdravia."
+"Uzdravujúce jednotky: Jednotky so schopnosťou <ref>dst=ability_heals "
+"text='uzdravovať'</ref> vyliečia spojenecké jednotky na vedľajších poliach, "
+"zvyčajne o 4 alebo 8 bodov zdravia za ťah; alebo zabránia jedu spôsobiť "
+"jednotke v danom ťahu zranenie."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -2904,12 +2916,11 @@ msgid ""
 msgstr ""
 "\n"
 "Liečiace jednotky: Jednotky so schopnosťou <ref>dst=ability_cures "
-"text='liečiť'</ref> uzdravia v každom ťahu spojenecké jednotky o 18 bodov "
-"zdravia dokopy a vyliečia jed. Liečiť možno iba jednotky rovnakého hráča na "
-"vedľajších políčkach, a to nanajvýš o 8 bodov na jednu jednotku."
+"text='liečiť'</ref> vyliečia jedn všetkým spojeneckým jednotkám na "
+"vedľajších políčkach (ak majú aj uzdravovanie, tieto jednotky už v danom "
+"ťahu neuzdravujú)."
 
 #: data/help.cfg:228
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2920,10 +2931,8 @@ msgstr ""
 "\n"
 "\n"
 "Odpočinok možno kombinovať s ostatnými formami uzdravovania, ale dediny, "
-"regenerácia a uzdravovanie/liečenie sa navzájom kombinovať nemôžu. "
-"Uzdravovanie či liečenie jednotky, ktorá sa naraz venuje mnohým zraneným "
-"jednotkám bude menej účinné ako keď sa venuje iba jednej. Ďalej; medzi "
-"jednotlivými scénami sa jednotky naplno uzdravia."
+"regenerácia a uzdravovanie/liečenie sa navzájom kombinovať nemôžu. Napokon, "
+"medzi jednotlivými scénami sa jednotky naplno uzdravia."
 
 #: data/help.cfg:233
 msgid "Income and Upkeep"
@@ -3009,7 +3018,6 @@ msgid "Wrap Up"
 msgstr "Zhrnutie"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -3020,7 +3028,7 @@ msgstr ""
 "Toto sú základy Wesnothu. Môžeš si prečítať viac v Základnej stratégii alebo "
 "sa zoznámiť s jednotlivými <ref>dst=traits text='vlastnosťami'</ref> a "
 "<ref>dst=abilities text='schopnosťami'</ref>, ale teraz už vieš všetko, čo "
-"potrebuješ na hranie výpravy \"Dedič trónu\". Príjemnú zábavu a veľa šťastia!"
+"potrebuješ na hranie príbehu \"Dedič trónu\". Príjemnú zábavu a veľa šťastia!"
 
 #: data/help.cfg:258
 msgid "License"
@@ -3055,7 +3063,6 @@ msgstr ""
 "text='silné'</ref>."
 
 #: data/help.cfg:269
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3065,9 +3072,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ďalšie možné vlastnosti jednotiek sú: <ref>dst=traits_loyal text='verný'</"
-"ref>, <ref>dst=traits_undead text='nemŕtvy'</ref> a <ref>dst=traits_dextrous "
-"text='zručný'</ref>."
+"Ďalšie možné vlastnosti jednotiek sú: <ref>dst=traits_dextrous "
+"text='zručný'</ref>, <ref>dst=traits_loyal text='verný'</ref> a "
+"<ref>dst=traits_undead text='nemŕtvy'</ref>."
 
 #: data/help.cfg:274
 msgid "Intelligent"
@@ -3130,9 +3137,8 @@ msgid "Resilient"
 msgstr "Odolný"
 
 #: data/help.cfg:291
-#, fuzzy
 msgid "Resilient units have 10% +3 more HP than usual."
-msgstr "Odolné jednotky majú o 7 zdravia viac ako obyčajné."
+msgstr "Odolné jednotky majú o 10%+3 viac zdravia ako obyčajné."
 
 #: data/help.cfg:293
 msgid ""
@@ -3156,13 +3162,12 @@ msgid "Strong"
 msgstr "Silný"
 
 #: data/help.cfg:299
-#, fuzzy
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
 "Silné jednotky spôsobujú pri boji nablízko o 1 väčšie zranenie pri každom "
-"úspešnom zásahu, a majú o 2 väčšie zdravie."
+"úspešnom zásahu, a majú o 1 väčšie zdravie."
 
 #: data/help.cfg:301
 msgid ""
@@ -3242,11 +3247,10 @@ msgid "Dextrous"
 msgstr "Obratný"
 
 #: data/help.cfg:323
-#, fuzzy
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
-"Obratná jednotka spôsobuje pri každom zásahu lukom o 1 väčšie zranenie."
+"Obratné jednotky spôsobujú pri každom zásahu na diaľku o 1 väčšie zranenie."
 
 #: data/help.cfg:325
 msgid ""
@@ -3559,7 +3563,7 @@ msgstr ""
 
 #: data/help.cfg:467 data/terrain.cfg:343
 msgid "Rockbound Cave"
-msgstr ""
+msgstr "Skalnatá jaskyňa"
 
 #: data/help.cfg:472
 msgid ""
@@ -3573,11 +3577,19 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
+"Terén skalnatej jaskyne je vytvarovaný pôsobením vody a vetra, "
+"zvetrávajúcich skalnatý podklad. Je to hrboľatý podklad, ktorý zmenšuje "
+"efektivitu väčšiny jednotiek, ale zlepšuje ich obranu. Trpaslíci a "
+"trollovia, hlavní obyvatelia jaskýň, sa v tomto teréne orientujú pomerne "
+"ľahko. Trpaslíci majú vďaka svojej malej výške v takomto teréne veľké "
+"výhody.\n"
+"\n"
+"Väčšina jednotiek má v skalnatej jaskyni obranu okolo 50%, jazda len 40%. "
+"Trpaslíci majú v skalnatej jaskyni obranu 60%."
 
 #: data/help.cfg:477
-#, fuzzy
 msgid "Illuminated Cave"
-msgstr "osvetľuje"
+msgstr "Osvetlená jaskyňa"
 
 #: data/help.cfg:482
 msgid ""
@@ -3588,10 +3600,16 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"Osvetlená jaskyňa je malé územie, na ktorom z povrchu do temnoty preniká "
+"svetlo. To dáva bonus pri útoku jednotkám poriadku a berie bonus jednotkám "
+"chaosu. V ostatných ohľadoch je tento terén rovnaký ako bežný jaskynný "
+"terén.\n"
+"\n"
+"Väčšina jednotiek má v jaskyni obranu 20% až 40%, kým trpaslíci majú 50%."
 
 #: data/help.cfg:487 data/terrain.cfg:374
 msgid "Mushroom Grove"
-msgstr ""
+msgstr "Hubový porast"
 
 #: data/help.cfg:492
 msgid ""
@@ -3605,6 +3623,14 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"Hubový porast je rozsiahly podzemný list obrovských húb, ktorým sa darí vo "
+"vlhkom a tmavom prostredí. Väčšina jednotiek má problém predierať sa "
+"podlahou pokrytou menšími hubami, ale má možnosť sa kryť za väčšími kusmi. "
+"Jazdecké jednotky sú však v tomto prostredí veľmi obmedzené a nemajú možnosť "
+"manévrovať. Nemŕtvym jednotkám sa v prostredí hniloby darí dobre a sú v "
+"hubových lesoch pomerne silné.\n"
+"\n"
+"Väčšina jednotiek má v hubovom poraste obranu 50% až 60%, jazda má iba 20%."
 
 #: data/help.cfg:497 data/terrain.cfg:138
 msgid "Savanna"
@@ -3651,28 +3677,25 @@ msgstr ""
 "Väčšina jednotiek má v dedine obranu 50 až 60%, kavaléria má iba 40%."
 
 #: data/help.cfg:516 data/terrain.cfg:429
-#, fuzzy
 msgid "Chasm"
-msgstr "uzdravuje"
+msgstr "Trhlina"
 
 #: data/help.cfg:518
-#, fuzzy
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
 "is concerned, only units capable of flying over chasms can cross this "
 "terrain."
 msgstr ""
-"Kaňon je trhlina v zemi s obrovskou hĺbkou. Kaňony majú strmé steny, ktorých "
-"zliezanie by trvalo celé dni. Z hľadiska hry sa môžu cez kaňon pohybovať iba "
-"lietajúce jednotky."
+"Trhlina je otvor v zemi vedúci do ohromnej hĺbky. Trhliny mávajú strmé "
+"steny, ktorých zliezanie by trvalo celé dni. Z hľadiska hry sa môžu cez "
+"trhlinu pohybovať iba lietajúce jednotky."
 
 #: data/help.cfg:523 data/terrain.cfg:436
 msgid "Lava"
 msgstr "Láva"
 
 #: data/help.cfg:525
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -3682,7 +3705,9 @@ msgid ""
 msgstr ""
 "Nebezpečenstvo vyplývajúce z pokusu prejsť cez horúcu lávu je jasné každému. "
 "Cez tento terén môžu prejsť iba jednotky, ktoré dokážu dostatočne vysoko "
-"lietať."
+"lietať. Tečúca magma vydáva výrazné svetlo, ktoré osvetľuje plochu priamo "
+"nad ňou. To poskytuje bonus pri útoku jednotkám poriadku, a uberá bonus "
+"jednotkám chaosu."
 
 #: data/help.cfg:530 data/terrain.cfg:52
 msgid "River Ford"
@@ -3808,12 +3833,17 @@ msgid ""
 "controls that side needs to issue this command. If you don't provide side, "
 "'1' is assumed."
 msgstr ""
+"\n"
+"Prepne hráča danej strany z človeka na počítač. Tento príkaz môže zadať "
+"hráč, ktorý hrá za danú stranu. Ak neurčíš stranu, predpokladá sa '1'."
 
 #: data/help.cfg:580
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
+"\n"
+"Zapne alebo vypne cenzúru správ všetkých pozorovateľov."
 
 #: data/help.cfg:583
 msgid ""
@@ -3821,6 +3851,9 @@ msgid ""
 "Mute a specific observer. If no username is supplied the muted usernames are "
 "displayed."
 msgstr ""
+"\n"
+"Cenzuruje konkrétneho pozorovateľa. Ak nie je zadané meno, vypíše sa zoznam "
+"mien cenzurovaných pozorovateľov."
 
 #: data/help.cfg:586
 msgid ""
@@ -3829,12 +3862,19 @@ msgid ""
 "a friendly way to remove someone who is having connection or other "
 "difficulties."
 msgstr ""
+"\n"
+"Vyhodí hráča zo sieťovej hry. Hráč sa môže opäť pripojiť. Tento príkaz sa "
+"všeobecne používa na priateľské vypnutie niekoho, kto má napríklad problémy "
+"so spojením."
 
 #: data/help.cfg:589
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that username."
 msgstr ""
+"\n"
+"Vyhodí a zakáže prístup hráčovi do sieťovej hry, na základe IP adresy, ktorú "
+"hráč s daným menom používa."
 
 #: data/help.cfg:592
 msgid ""
@@ -3842,12 +3882,17 @@ msgid ""
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nick of the player or observer)."
 msgstr ""
+"\n"
+"Priradí ovládanie danej strany (zadaj číslo bojovej strany) danému hráčovi "
+"(zadaj meno hráča alebo pozorovateľa)."
 
 #: data/help.cfg:595
 msgid ""
 "\n"
 "Clear chat messages."
 msgstr ""
+"\n"
+"Vymaže všetky správy."
 
 #: data/items.cfg:264
 msgid ""
@@ -4010,11 +4055,14 @@ msgstr "Vek hrdinov"
 msgid "Great War"
 msgstr "Veľká vojna"
 
+# Názvy dedín
 #: data/names.cfg:51
 msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
 msgstr ""
+"Kameň,Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,"
+"Fox,Bal,Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Oul"
 
 #: data/scenario-test.cfg:37
 msgid ""
@@ -4028,14 +4076,13 @@ msgstr "(2) - Blesk"
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
-#, fuzzy
 msgid ""
 "A duel map for super fast play. Recommended setting of 2 gold per village."
-msgstr "Superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
+msgstr "Mapa na superrýchly súboj. Odporúča sa nastaviť 2 zlatky za dedinu."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:31
 msgid "2p - Caves of the Basilisk"
-msgstr ""
+msgstr "(2) - Baziliškove jaskyne"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:33
 msgid ""
@@ -4044,6 +4091,10 @@ msgid ""
 "victory is punctuated by the petrified forms of some of Wesnoth's greatest "
 "heroes."
 msgstr ""
+"Hráči musia navigovať svoje jednotky rozmanitým terénom tohoto obávaného "
+"regiónu, niekdajšieho domova legendárneho Starého Baziliška. Cesta k "
+"víťazstvu je vyznačená skamenelými sochami niekdajších najväčších hrdinov "
+"Wesnothu."
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:84
 msgid ""
@@ -4068,6 +4119,26 @@ msgid ""
 "His home to steal the Basilisk's gold.\n"
 "(inscribed by Flametrooper)"
 msgstr ""
+"Z oblohy temnej vietor vial.\n"
+"Vysoko na nej mesiac stál.\n"
+"Odvážny jašter z domu šiel,\n"
+"by zlato Baziliška vzal.\n"
+"\n"
+"Ten odvážny, no prchký tvor\n"
+"na opatrnosť zabudol.\n"
+"V Baziliškovu noru šiel\n"
+"a plameň do nej vydýchol.\n"
+"\n"
+"Ten plameň viac už nesvieti.\n"
+"Ak Bazilišok pozrie ti\n"
+"do očí, stuhneš na kameň.\n"
+"A zostaneš tak naveky.\n"
+"\n"
+"Z oblohy temnej vietor vial.\n"
+"Pred rokmi dávno stíchol žiaľ\n"
+"za jašterom, čo z domu šiel,\n"
+"by zlato Baziliška vzal.\n"
+"(zapísal Flametrooper)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:99
 msgid ""
@@ -4080,6 +4151,14 @@ msgid ""
 "- - Seven Stones - and the Elven\n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"Pružné telo, rýchlosť rúk\n"
+"- - Sedem skál a jedenásť\n"
+"Súper nemal šancu ujsť\n"
+"- - Sedem skál a jedenásť\n"
+"Ostrostrelec Drakobij\n"
+"život svoj tu položil\n"
+"- - Sedem skál a jeden elf\n"
+"(zapísal Gauteamus)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:110
 msgid ""
@@ -4109,6 +4188,12 @@ msgid ""
 "arrived.\n"
 "(inscribed by Turin)"
 msgstr ""
+"Žil tu jeden vek za druhým, v hlbinách vôd, živil sa rôznymi rybami a žabami "
+"a morskými ľuďmi, ktorí vstúpili do jeho ríše. Bolo to jeho jazero a nikoho "
+"iného, a hoci nebolo veľké, bol jeho vládcom. Potom prišiel Bazilišok a "
+"pozrel Hadovi do očí. A Had nezomrel, no ani viac nežil. Tak prišiel nový "
+"pán jazera.\n"
+"(zapísal Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:128
 msgid ""
@@ -4173,6 +4258,21 @@ msgid ""
 "\n"
 "(inscribed by MJQ)"
 msgstr ""
+"Cez vlnky a pomedzi skalky\n"
+"modré a biele\n"
+"zvolávala príliv a odliv\n"
+"a učila ryby hovoriť s hviezdami\n"
+"zelené striebro\n"
+"mágie\n"
+"prúdilo z jej duše do ulít slimákov\n"
+"a pohybmi rúk a chvosta\n"
+"vysielala svoje piesne na piesok\n"
+"a teraz\n"
+"podivne všetko zastalo\n"
+"celé stáročia\n"
+"ani nežmurkla\n"
+"\n"
+"(zapísal MJQ)"
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
 msgid "2p - Charge"
@@ -4180,7 +4280,7 @@ msgstr "(2) - Výpad"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:7
 msgid "2p - Cynsaun Battlefield"
-msgstr ""
+msgstr "(2) - Bojisko Cynsaun"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
 msgid ""
@@ -4188,27 +4288,27 @@ msgid ""
 "favor epic, large-scale duel matches. Recommended settings of 150 gold and 1 "
 "gold per village."
 msgstr ""
+"Rozľahlé bojisko pre hráčov, ktorí majú radi veľkoplošné súboje. Odporúčané "
+"nastavenie 150 zlata a 1 zlatka za dedinu."
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
 msgstr "(2) - Onisov brloh"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
-#, fuzzy
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet. Recommended setting of 2 gold per village."
 msgstr ""
-"Nebezpečenstvo číha na každom rohu tohoto bojového poľa, na ktorom sa "
-"odohráva súboj sily a prefíkanosti. Odporúčané nastavenie: 2 zlatky za "
-"dedinu."
+"Nebezpečenstvo číha na každom rohu tohoto podzemného bojového poľa, na "
+"ktorom sa odohráva súboj sily a prefíkanosti. Odporúčané nastavenie: 2 "
+"zlatky za dedinu."
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
 msgstr "(2) - Osady"
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:4
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Recommended setting of 2 gold per village."
@@ -4221,7 +4321,6 @@ msgid "2p - Hornshark Island"
 msgstr "(2) - Ostrov Hornshark"
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
-#, fuzzy
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island. Recommended setting of 2 gold per village."
@@ -4234,7 +4333,6 @@ msgid "2p - Meteor Lake"
 msgstr "(2) - Meteoritické jazero"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
-#, fuzzy
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region. Recommended setting of 2 gold per village."
@@ -4247,20 +4345,18 @@ msgid "2p - Sablestone Delta"
 msgstr "(2) - Delta Sablestone"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
-#, fuzzy
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers. Recommended setting of 2 gold per village."
 msgstr ""
 "Dve armáy sa zrazili na rozdelenom pobreží plnom skrytých jaskýň a "
-"roztrieštených riek. Odporúča sa nastaviť 2 zlatky za dedinu."
+"rozvetvených riek. Odporúča sa nastaviť 2 zlatky za dedinu."
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
 msgstr "(2) - Križovatka Silverhead"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
-#, fuzzy
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map. Recommended setting of 2 gold per village."
@@ -4273,7 +4369,6 @@ msgid "2p - Sullas Ruins"
 msgstr "(2) - Ruiny Sullas"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:4
-#, fuzzy
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire. Recommended "
@@ -4286,14 +4381,13 @@ msgstr ""
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:36
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:37
 msgid "Sulla's statue"
-msgstr ""
+msgstr "Sullova socha"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:3
 msgid "2p - Wesbowl"
 msgstr "(2) - Wesbowl"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:5
-#, fuzzy
 msgid ""
 "In Wesbowl, a player has to get any of the balls to the other player's end "
 "zone as often as possible. However, the other player can attack your units. "
@@ -4305,7 +4399,6 @@ msgstr ""
 "dozorom liečiteľov, takže porazené jednotky sa vracajú zranené na štart."
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:10
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -4359,25 +4452,22 @@ msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "Remíza! Konečné skóre: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:5
-#, fuzzy
 msgid "3p - Island of the Horatii"
-msgstr "(4) - Kráľ kopca"
+msgstr "(3) - Horatiov ostrov"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
-#, fuzzy
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map. Recommended setting of 2 gold per village."
 msgstr ""
-"Hráči musia prejsť všemožnými terénmi, aby zvíťazili na tejto rozmanitej "
-"duelovej mape. Odporúča sa nastaviť 2 zlatky za dedinu."
+"Ovládnuť stredný ostrov je často kľúčom k víťazstvu na tejto mape 21x21 polí "
+"pre 3 hráčov každý proti každému. Odporúča sa nastaviť 2 zlatky za dedinu."
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
 msgstr "(3) - Morituri"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
-#, fuzzy
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map. Recommended setting of 2 gold per village."
@@ -4390,7 +4480,6 @@ msgid "3p - Triple Blitz"
 msgstr "(3) - Trojitý bleskový útok"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
-#, fuzzy
 msgid ""
 "Three players come head to head on this water-cut battlefield. Recommended "
 "setting of 2 gold per village."
@@ -4403,7 +4492,6 @@ msgid "4p - Blue Water Province"
 msgstr "(4) - Provincia Bluewater"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
-#, fuzzy
 msgid ""
 "It has been said that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
@@ -4420,14 +4508,12 @@ msgid "4p - Castle Hopping Isle"
 msgstr "(4) - Ostrov blízkych hradov"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:11
-#, fuzzy
 msgid ""
 "Many closely placed and strategically located castles. Which one will you "
 "hop to? Small map for fast play. Recommended setting of 2 gold per village."
 msgstr ""
-"Veľa blízkych a strategicky umiestnených hradov. Malá mapa na rýchlu hru. "
-"Odporúča sa nastaviť 2 zlatky za dedinu, a pri hre dvaja na dvoch, hráčov 1 "
-"a 3 proti 2 a 4."
+"Veľa blízkych a strategicky umiestnených hradov. Do ktorého z nich sa "
+"rozbehneš? Malá mapa na rýchlu hru. Odporúča sa nastaviť 2 zlatky za dedinu."
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
@@ -4439,7 +4525,7 @@ msgstr "Malá mapa pre 2 proti 2. Odporúča sa nastaviť 2 zlatky za dedinu."
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
-msgstr ""
+msgstr "(4) - Isarov kríž"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:7
 msgid ""
@@ -4447,6 +4533,9 @@ msgid ""
 "of units and planning of moves is important.  Teams set for players 1&4 v "
 "2&3 (northeast vs. southwest).  Designed for 75gp, 20 villages."
 msgstr ""
+"Maličká mapa 2v2. Blízkosť hráčov znamená, že je dôležité striedať jednotky "
+"a plánovať ťahy. Tímy sú nastavené 1+4 proti 2+3 (severovýchoch proti "
+"juhozápadu). Odporúča sa 75 zlata, 20 dedín."
 
 #: data/scenarios/multiplayer/4p_King_of_the_Hill.cfg:5
 msgid "4p - King of the Hill"
@@ -4458,6 +4547,9 @@ msgid ""
 "4 player FFA map. Works fine 2v2 as well. There are 36 villages. Recommended "
 "setting of 2gpv."
 msgstr ""
+"V tejto mape pre 4 hráčov veľkosti 36x36 je veľmi výhodné ovládať oblasť "
+"okolo strednej pevnosti. Každý proti každému alebo 2v2. Na mape je 36 dedín. "
+"Odporúčané nastavenie 2 zlatky za dedinu."
 
 #: data/scenarios/multiplayer/4p_Lagoon.cfg:3
 msgid "4p - Lagoon"
@@ -4480,23 +4572,25 @@ msgid ""
 "A 25x25 2v2 map centered around a river with keeps in opposite corners. "
 "Designed for 1&4 vs 2&3. There are 28 villages. Recommended setting of 2gpv."
 msgstr ""
+"Mapa pre 2v2 veľkosti 25x25 má v strede rieku, a pevnosti sú v protiľahlých "
+"rohoch. Tímy 1+4 proti 2+3. 28 dedín. Odporúčané nastavenie 2 zlatky za "
+"dedinu."
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:3
 msgid "4p - Morituri"
 msgstr "(4) - Morituri"
 
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Who will emerge from the confines of this perilous battlefield? Recommended "
 "setting of 2 gold per village."
 msgstr ""
-"Traja hráči sa čelne zrazia na tomto vodnom bojisku. Odporúča sa nastaviť 2 "
+"Kto vyjde živý z trosiek tohoto nebezpečného bojiska? Odporúča sa nastaviť 2 "
 "zlatky za dedinu."
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:5
 msgid "4p - Paths of Daggers"
-msgstr ""
+msgstr "(4) Cesta dýk"
 
 #: data/scenarios/multiplayer/4p_Paths_of_Daggers.cfg:7
 msgid ""
@@ -4504,6 +4598,9 @@ msgid ""
 "east vs west (1&4 vs 2&3), but works well with any teams or FFA.  2gpv. "
 "28villages."
 msgstr ""
+"Mapa pre 2v2 veľkosti 35x27 spojená 5 rozličnými cestami. Odporúčajú sa tímy "
+"východ proti západu (1+4 proti 2+3), ale možno hrať aj iné tímy, alebo každý "
+"proti každému. 2 zlatky za dedinu, 28 dedín."
 
 #: data/scenarios/multiplayer/4p_Siege_Castles.cfg:5
 msgid "4p - Siege Castles"
@@ -4515,13 +4612,15 @@ msgid ""
 "rivers. Works well 2v2 or FFA. There are approximately 45 villages. "
 "Recommended setting of 2gpv."
 msgstr ""
+"Mapa pre 4 hráčov veľkosti 40x30. 4 mocné hrady stoja proti sebe pri sútoku "
+"dvoch riek. Možno hrať 2v2 alebo každý proti každému. Približne 45 dedín. "
+"Odporúčané nastavenie 2 zlatky za dedinu."
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:3
 msgid "4p - The Wilderlands"
 msgstr "(4) - Divočina"
 
 #: data/scenarios/multiplayer/4p_The_Wilderlands.cfg:4
-#, fuzzy
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses. Recommended setting of 1 "
@@ -4540,10 +4639,9 @@ msgstr "Na tomto zmiešanom teréne bojuje päť frakcií o nadvládu."
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:3
 msgid "6p - Amohsad Caldera"
-msgstr ""
+msgstr "(6) - Amohsad Caldera"
 
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
-#, fuzzy
 msgid ""
 "Only a true tactician will survive in this deadly and confining battlefield, "
 "where six boxed-in armies come to a head. Recommended setting of 2 gold per "
@@ -4554,7 +4652,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:3
 msgid "6p - Crusaders' Field"
-msgstr ""
+msgstr "(6) - Križiacke pole"
 
 #: data/scenarios/multiplayer/6p_Crusaders_Field.cfg:5
 msgid ""
@@ -4563,6 +4661,9 @@ msgid ""
 "through the mountains, trees and rivers. Recommended setting of 1 gold per "
 "village."
 msgstr ""
+"Na tomto území zničenom vojnou možno opäť raz počuť bojový krik, keď "
+"duchovia stoviek udatných bojovníkov neviditeľne poletujú nad horami, lesmi "
+"a riekami. Odporúčané nastavenie: 1 zlatka za dedinu."
 
 #: data/scenarios/multiplayer/6p_Hexcake.cfg:3
 msgid "6p - Hexcake"
@@ -4574,7 +4675,7 @@ msgstr "(2 + 2) alebo (3 + 3) tímová hra."
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
-msgstr ""
+msgstr "(6) - Súmrak nad Waterloo"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:7
 msgid ""
@@ -4583,23 +4684,25 @@ msgid ""
 "having players 146 or 136 as a side also is interesting.  Designed for "
 "150gp, has 44 villages."
 msgstr ""
+"3v3, 40x30. Spojenci sa musia vhodne koordinovať, aby ich presila "
+"nepremohla. Tímy 1+4+5 proti 2+3+6 (sever proti juhu), ale zaujímavé je aj 1"
+"+4+6 alebo 1+3+6. Odporúčané 150 zlata, 44 dedín."
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:3
 msgid "8p - Morituri"
 msgstr "(8) - Morituri"
 
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid ""
 "Teamwork and tactics are key to victory in this unusual battlefield, where "
 "eight armies fight to the finish. Recommended setting of 2 gold per village."
 msgstr ""
-"Iba pravý stratég dokáže prežiť v tomto smrtiacom a stiesnenom údolí, kde sa "
-"6 armád čelne zrazilo. Odporúča sa nastaviť 2 zlatky za dedinu."
+"Tímová práca a taktika sú kľúčom k víťazstvu na tomto nezvyčajnom bojisku, "
+"kde proti sebe bojuje osem armád. Odporúča sa nastaviť 2 zlatky za dedinu."
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:5
 msgid "9p - Merkwuerdigliebe"
-msgstr ""
+msgstr "(9) - Merkwuerdigliebe"
 
 #: data/scenarios/multiplayer/9p_Merkwuerdigliebe.cfg:7
 msgid ""
@@ -4608,6 +4711,10 @@ msgid ""
 "southwest).  There are very few vilages per player, so 3gpv is also "
 "recommended."
 msgstr ""
+"Maličká mapa 3v3v3. Kvôli veľkému počtu hráčov sa odporúča nastaviť časový "
+"limit 60 sekúnd. Tímy sú hráči 1+5+9 proti 2+6+7 proti 3+4+8 (sever proti "
+"juhovýchodu proti juhozápadu). Na každého hráča pripadá len pár dedín, takže "
+"sa odporúča 3 zlatky za dedinu."
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:8
@@ -4668,194 +4775,233 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:6
 msgid "Wesnoth Benchmark: AI"
-msgstr ""
+msgstr "Test výkonu Wesnothu: umelá inteligencia"
 
 #: data/scenarios/multiplayer/Wesbench_AI.cfg:7
 msgid ""
 "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
 "scenario=wesbench_ai --exit-at-end."
 msgstr ""
+"Testovanie výkonu, použi --nogui --no-delay --multiplayer --"
+"scenario=wesbench_ai --exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:6
 msgid "Wesnoth Benchmark: Scrolling"
-msgstr ""
+msgstr "Test výkonu Wesnothu: rolovanie obrazovky"
 
 #: data/scenarios/multiplayer/Wesbench_Scroll.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
 "--exit-at-end."
 msgstr ""
+"Testovanie výkonu, použi --no-delay --multiplayer --scenario=wesbench_scroll "
+"--exit-at-end."
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:6
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr ""
+msgstr "Test výkonu Wesnothu: odkrývanie mapy"
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:7
 msgid ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 msgstr ""
+"Testovanie výkonu, použi --no-delay --multiplayer --"
+"scenario=wesbench_shroud_walk --exit-at-end."
 
 #: data/schedules.cfg:81 data/schedules.cfg:89
 msgid "Underground"
 msgstr "Podzemie"
 
 #: data/schedules.cfg:98 data/schedules.cfg:109
-#, fuzzy
 msgid "Deep Underground"
-msgstr "Podzemie"
+msgstr "Hlboké podzemie"
 
 #: data/special-notes.cfg:2
 msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
+" Duchovia sú nezvyčajne odolní voči zraneniu, a pohybujú sa veľmi pomaly nad "
+"vodnou hladinou."
 
 #: data/special-notes.cfg:5
 msgid ""
 " This unit's holy attack deals tremendous damage to the undead, and even "
 "some to living creatures."
 msgstr ""
+" Svätý útok tejto jednotky spôsobuje obrovské zranenia nemŕtym, a nejaké aj "
+"živým bytostiam."
 
 #: data/special-notes.cfg:8
 msgid ""
 " This unit is capable of basic healing, though it can only delay the effects "
 "of poison, not cure them entirely."
 msgstr ""
+" Táto jednotka dokáže základné uzdravovanie; účinky jedu vie však iba "
+"oddialiť, nie celkom vyliečiť."
 
 #: data/special-notes.cfg:11
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
+" Táto jednotka dokáže liečiť ostatné jednotky okolo nej, a zbaviť ich jedu."
 
 #: data/special-notes.cfg:14
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
-msgstr ""
+msgstr " Táto jednotka regeneruje, takže sa lieči akoby bola stále v dedine."
 
 #: data/special-notes.cfg:17
 msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
+" Neoblomnosť tejto jednotky znižuje zranenie z niektorých útokov; no iba pri "
+"obrane."
 
 #: data/special-notes.cfg:20
-#, fuzzy
 msgid ""
 " The leadership of this unit enables friendly units next to it to deal more "
 "damage in combat, though this only applies to units of lower level."
 msgstr ""
-"Poručíci bojujú mečom i kušou, vedú skupinky ľudských vojakov a koordinujú "
-"ich útoky.\n"
-"\n"
-"Poznámka: Poručík dokáže zvýšiť zranenie, ktoré jednotky na vedľajších "
-"políčkach spôsobujú v boji; platí to len na jednotky na nižšej úrovni."
+" Velenie umožňuje tejto jednotke zvýšiť zranenie, ktoré jednotky na "
+"vedľajších políčkach spôsobujú v boji; platí to len na jednotky na nižšej "
+"úrovni."
 
 #: data/special-notes.cfg:23
 msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
+" Táto jednotka vie vrtko manévrovať, dokáže sa prešmyknúť cez súperovu "
+"oblasť kontroly a bez spomalenia prejsť okolo neho."
 
 #: data/special-notes.cfg:26
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr ""
+msgstr " Osvetľovanie zvyšuje úroveň svetla v blízkych oblastiach."
 
 #: data/special-notes.cfg:29
 msgid ""
 " This unit can teleport between any two villages instantly, though the "
 "player must control both, and the destination village must be unoccupied."
 msgstr ""
+" Táto jednotka sa môže okamžite premiestňovať medzi hociktorými dvoma "
+"dedinami; musia však obe patriť danému hráčovi, a cieľová dedina musí byť "
+"voľná."
 
 #: data/special-notes.cfg:32
 msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
+" Schopnosť skrývať sa robí túto jednotku v lese neviditeľnou pre nepriateľa, "
+"dokiaľ nestojí na susednom poli, alebo dokiaľ sa táto jednotka neprezradí "
+"tým, že sama zaútočí."
 
 #: data/special-notes.cfg:35
 msgid " This unit is able to hide at night, leaving no trace of its presence."
-msgstr ""
+msgstr " Táto jednotka sa dokáže v noci ukryť a nezanechá žiadnu stopu."
 
 #: data/special-notes.cfg:38
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
+" Táto jednotka sa dokáže nepozorovane pohybovať v hlbokej vode, pretože sa "
+"nemusí vynárať kvôli vzduchu."
 
 #: data/special-notes.cfg:41
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
+" Ak táto jednotka použije svoj zurvalý útok, bude boj pokračovať dovtedy, "
+"kým jeden z bojujúcich nepadne mŕtvy."
 
 #: data/special-notes.cfg:44
 msgid ""
 "  If someone with the same allegiance distracts an enemy, this unit may "
 "backstab, inflicting double damage, by creeping around behind that enemy."
 msgstr ""
+" Ak spojenec tejto jednotky odpúta pozornosť nepriateľa, môže ho táto "
+"jednotka obísť a bodnúť do chrbta, čim mu spôsobí dvojnásobné zranenie."
 
 #: data/special-notes.cfg:47
 msgid " Foes who lose their life to the plague will rise again in unlife."
 msgstr ""
+" Nepriateľ, ktorý stratí život morovým útokom, opäť povstane ako nemŕtvy."
 
 #: data/special-notes.cfg:50
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
+" Táto jednotka dokáže spomaliť svojich nepriateľov, zmenší ich rýchlosť "
+"pohybu a spôsobené zranenie na polovicu, až kým neukončia ťah."
 
 #: data/special-notes.cfg:53
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
+" Táto jednotka je mimoriadne nebezpečná, lebo dokáže premeniť živého tvora "
+"na kameň."
 
 #: data/special-notes.cfg:56
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
+" Ostrostrelecké schopnosti tejto jednotky jej dávajú vysokú šancu zasiahnuť "
+"súpera, ale iba keď sama útočí."
 
 #: data/special-notes.cfg:59
 msgid ""
 " The ranged attacks of this unit are magical, and always have a high chance "
 "of hitting an opponent."
 msgstr ""
+" Útoky tejto jednotky na diaľku sú magické, a majú vždy veľkú šancu "
+"zasiahnuť súpera."
 
 #: data/special-notes.cfg:62
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr ""
+" Tento roj útočí spolu, takže spôsobené zranenia sú menej vážne, ak sú "
+"členovia roja zranení."
 
 #: data/special-notes.cfg:65
-#, fuzzy
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"\n"
-"\n"
-"Poznámka: Ak rytier použije ako útok výpad, zdvojnásobí sa tým spôsobené i "
-"utŕžené zranenie. Toto neplatí počas útoku z obrany."
+"Použitie výpadu pri útoku zdvojnásobí sa spôsobené i utŕžené zranenie. Toto "
+"neplatí počas obranného protiúderu."
 
 #: data/special-notes.cfg:68
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
+" Počas bitky dokáže táto jednotka uberať zdravie svojej obeti a sama sa tak "
+"liečiť."
 
 #: data/special-notes.cfg:71
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
+" Dĺžka zbrane umožňuje tejto jednotke v boji na blízko uštedriť prvý úder, "
+"aj keď je napadnutá."
 
 #: data/special-notes.cfg:74
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
+" Obete zásahu jedom budú postupne strácať zdravie, dokiaľ sa nevyliečia v "
+"dedine, alebo u jednotky, ktorá vie liečiť."
 
 #: data/team_colors.cfg:4
 msgid "Red"
@@ -4890,9 +5036,8 @@ msgid "Brown"
 msgstr "Hnedý"
 
 #: data/team_colors.cfg:52
-#, fuzzy
 msgid "Teal"
-msgstr "Tím"
+msgstr "Tyrkysová"
 
 #: data/terrain.cfg:11 src/multiplayer_create.cpp:67
 #: src/multiplayer_lobby.cpp:361 src/multiplayer_lobby.cpp:367
@@ -4928,9 +5073,8 @@ msgid "Snow Forest"
 msgstr "Zasnežený les"
 
 #: data/terrain.cfg:405
-#, fuzzy
 msgid "Cave Lit"
-msgstr "Jaskyňa"
+msgstr "Osvetlená jaskyňa"
 
 #: data/terrain.cfg:414
 msgid "Impassable Mountains"
@@ -5062,7 +5206,6 @@ msgstr ""
 "označenom teréne sa zobrazuje v pravom hornom rohu obrazovky."
 
 #: data/tips.cfg:5
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -5097,7 +5240,6 @@ msgstr ""
 "cez kontrolu prešmyknúť."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -5106,8 +5248,8 @@ msgid ""
 msgstr ""
 "Pravdepodobnosť zásahu jednotky zvyčajne závisí na tom, ako dobre sa vie "
 "táto jednotka brániť na teréne, kde práve stojí. Magické útoky však majú "
-"pravdepodobnosť zásahu vždy 70%, a útok ostrostrelca má pravdepodobnosť "
-"zásahu aspoň 60%."
+"pravdepodobnosť zásahu vždy 70%, pri útoku aj pri obrane. Útok ostrostrelca "
+"má pravdepodobnosť zásahu aspoň 60% pri útoku."
 
 #: data/tips.cfg:9
 msgid ""
@@ -5115,13 +5257,12 @@ msgid ""
 msgstr "Jednotky umiestnené v dedine sa na začiatku kola vyliečia o 8 životov."
 
 #: data/tips.cfg:10
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
 msgstr ""
-"Jednotky, ktoré sa počas kola nepohli ani neútočili, oddychujú a na začiatku "
-"nasledujúceho kola si doplnia 2 životy."
+"Jednotky, ktoré sa počas kola nepohli ani neútočili, oddychujú. Na začiatku "
+"nasledujúceho kola získajú 2 body zdravia."
 
 #: data/tips.cfg:11
 msgid ""
@@ -5177,14 +5318,12 @@ msgstr ""
 "menej potrebné jednotky, aby spomalili nepriateľov postup."
 
 #: data/tips.cfg:17
-#, fuzzy
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
-"Neboj sa cúvnuť a zostaviť novú formáciu, často je to kľúčom k víťazstvu."
+"Neboj sa cúvnuť a zostaviť novú formáciu; často je to kľúčom k víťazstvu."
 
 #: data/tips.cfg:18
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -5208,7 +5347,6 @@ msgstr ""
 "vlastnom hrade."
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
@@ -5276,14 +5414,12 @@ msgstr ""
 "keď sami nebudú útočiť."
 
 #: data/tips.cfg:29
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
 "Spomaľujúci útok spôsobí, že sa nepriateľská jednotka bude pomalšie "
-"pohybovať a bude mať o jeden útok menej ako zvyčajne. Oplatí sa to najmä "
-"proti jednotkám, ktoré majú málo silných útokov."
+"pohybovať a bude spôsobovať polovičné zranenie."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -5312,6 +5448,11 @@ msgid ""
 "progressively harder for each AMLA the unit receives, however. Thus, it is "
 "often more useful to try to advance your lower level units."
 msgstr ""
+"Jednotky môžu získať 'povýšenie po dosiahnutí najvyššej úrovne', ktoré "
+"zvyčajne zvýši maximálny počet životov jednotky o 3. Čím viackrát však "
+"jednotka takéto povýšenie dosiahla, tým ťažšie sa dosahuje ďalšie takéto "
+"povýšenie. Preto je zväčša užitočnejšie nechať povyšovať jednotky na nižších "
+"úrovniach."
 
 #: data/tips.cfg:34
 msgid ""
@@ -5319,12 +5460,17 @@ msgid ""
 "limited by its maximum movement. Remember this when deciding what unit is "
 "best to scout specific types of terrain."
 msgstr ""
+"Na mapách, kde je zapnuté odkrývanie mapy alebo hmla, je dohľad jednotky "
+"ohraničený jej maximálnym pohybom. Pamätaj na to, keď budeš vyberať vhodnú "
+"jednotku na preskúmanie určitého terénu."
 
 #: data/tips.cfg:35
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
+"Takmer každý obrázok a slovo na hernej obrazovke Wesnothu majú nápovedu. "
+"Umiestni kurzor myši nad obrázok alebo slovo a zobrazí sa vysvetlenie."
 
 #: data/tips.cfg:37
 msgid ""
@@ -5332,6 +5478,9 @@ msgid ""
 "the Help Wesnoth button.  This information is vital so we can adjust "
 "campaign difficulty."
 msgstr ""
+"Pomocou tlačidla 'Pomôž Wesnothu' môžeš odoslať anonymnú štatistiku o tom, "
+"ako sa ti darilo počas hry. Táto informácia je pre nás veľmi dôležitá, aby "
+"sme vedeli prispôsobiť zložitosť jednotlivých častí hry."
 
 #: data/traits.cfg:6
 msgid "loyal"
@@ -5374,20 +5523,20 @@ msgid "female^Fighter"
 msgstr "Vojačka"
 
 #: data/tutorial/units/Quintain.cfg:3
-#, fuzzy
 msgid "Quintain"
-msgstr "Hory"
+msgstr "Panák"
 
 #: data/tutorial/units/Quintain.cfg:13
 msgid ""
 "Quintains are used to practice swordplay and jousting on.  It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
+"Panáci sa používajú na výcvik sekania mečom a bodania kopijou. Bolo by veľmi "
+"nezvyčajné, keby niektorý sám útočil."
 
 #: data/tutorial/units/Quintain.cfg:20
-#, fuzzy
 msgid "flail"
-msgstr "chvost"
+msgstr "cep"
 
 #: data/units/Boat_Galleon.cfg:4
 msgid "Galleon"
@@ -5548,7 +5697,6 @@ msgid "Drake Flameheart"
 msgstr "Plamenný jašter"
 
 #: data/units/Drake_Flameheart.cfg:27
-#, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves, have veins which course with fire rather than blood. "
@@ -5562,16 +5710,13 @@ msgstr ""
 "túto predstavu podporujú; zatiaľ nikto nenašiel odvahu ich rozrezať, aby to "
 "preskúmal dôkladnejšie.\n"
 "\n"
-"Poznámka: Veliteľské schopnosti plamenného jaštera pomáhajú spriateleným "
-"jednotkám na susedných poliach spôsobovať v boji väčšie zranenie; týka sa to "
-"však len jednotiek na nižšej úrovni."
+"Poznámka:"
 
 #: data/units/Drake_Flare.cfg:3
 msgid "Drake Flare"
 msgstr "Žiarivý jašter"
 
 #: data/units/Drake_Flare.cfg:26
-#, fuzzy
 msgid ""
 "Drakes are an old race, wise enough to hearken to their own natural leaders. "
 "Those who are called 'flares' by their enemies are the drakes who aspire to "
@@ -5579,12 +5724,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Jašteri sú stará rasa, a má svojich prirodzených vodcov. Títo sú nazývaní "
-"žiariví jašteri.\n"
+"Jašteri sú stará rasa, a má svojich prirodzených vodcov. Tí, ktorí majú "
+"ambície viesť svoj národ vo vojne i mieri, sú nazývaní žiariví jašteri.\n"
 "\n"
-"Poznámka: Veliteľské schopnosti žiarivého jaštera pomáhajú spriateleným "
-"jednotkám na susedných poliach spôsobovať v boji väčšie zranenie; týka sa to "
-"však len jednotiek na nižšej úrovni."
+"Poznámka:"
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
@@ -5610,7 +5753,6 @@ msgid "Drake Glider"
 msgstr "Plachtiaci jašter"
 
 #: data/units/Drake_Glider.cfg:21
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little armor as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
@@ -5627,7 +5769,11 @@ msgstr ""
 "jaskýň rýchlo uniknúť nepriateľom. Títo jašteri sú šikovní bojovníci, a "
 "podobne ako mnohí z ich druhu, majú vnútorný oheň. Plachtiaci jašteri dokážu "
 "uštvať nepriateľa svojou rýchlosťou. Najlepší plachtiaci jašteri sa môžu "
-"tešiť na prijatie do radov lietajúcich jašterov."
+"tešiť na prijatie do radov lietajúcich jašterov. Vďaka pohľadu z výšky "
+"dokážu títo jašteri prekuknúť za obranné línie. Ich letecké schopnosti im "
+"umožňujú presne zamieriť aj na ukrytých nepriateľov.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Drake_Glider.cfg:83 data/units/Drake_Hurricane.cfg:98
 #: data/units/Drake_Sky.cfg:97
@@ -5639,7 +5785,6 @@ msgid "Hurricane Drake"
 msgstr "Búrkový jašter"
 
 #: data/units/Drake_Hurricane.cfg:30
-#, fuzzy
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite amongst "
 "those drakes which are gifted with flight. Soaring high in the air, they can "
@@ -5649,7 +5794,9 @@ msgid ""
 msgstr ""
 "Búrkoví jašteri sú pánmi vzdušného živlu, sú to jašteri s najväčším nadaním "
 "na lietanie. Vznášajú sa vysoko vo vzduchu, lietajú ponad obranné línie, a "
-"beztrestne na svojich súperov pľujú oheň."
+"beztrestne na svojich súperov pľujú oheň.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
@@ -5673,7 +5820,6 @@ msgid "Sky Drake"
 msgstr "Lietajúci jašter"
 
 #: data/units/Drake_Sky.cfg:29
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
@@ -5686,14 +5832,17 @@ msgid ""
 msgstr ""
 "Lietajúci jašteri sú kráľmi oblohy. Ich pohyblivosť a útok ohnivým dychom sa "
 "mnohým stali osudnými. Dokážu rýchlo obkolesiť svoje obete, a než sa ich "
-"niekto pokúsi zastaviť, sú zvyčajne už dávno preč."
+"niekto pokúsi zastaviť, sú zvyčajne už dávno preč. Pri útoku zhora dokážu "
+"pľuť oheň s veľkou presnosťou aj na miesta, ktoré by inak ich súperom "
+"poskytovali veľkú výhodu pri obrane.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Drake_Slasher.cfg:3
 msgid "Drake Slasher"
 msgstr "Jašter sekač"
 
 #: data/units/Drake_Slasher.cfg:20
-#, fuzzy
 msgid ""
 "Slashers are clashers who have chosen to master the use of a Halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
@@ -5706,7 +5855,9 @@ msgstr ""
 "Sekáči sú úderníci, ktorí sa rozhodli ovládnuť boj halapartňou namiesto meča "
 "a kopije. Ich veľkosť im umožňuje narábať zručne touto zbraňou, dokážu ňou "
 "skoliť koňa rovnako ako by človek skolil jeleňa. Tréning zvýšil ich výdrž a "
-"obranyschopnosť, čo je ich veľká výhoda oproti gladiátorom."
+"obranyschopnosť, čo je ich veľká výhoda oproti gladiátorom.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Drake_Slasher.cfg:76 data/units/Drake_Slasher.cfg:152
 #: data/units/Drake_Warden.cfg:82 data/units/Drake_Warden.cfg:138
@@ -5720,7 +5871,6 @@ msgid "Drake Warden"
 msgstr "Jašter strážca"
 
 #: data/units/Drake_Warden.cfg:21
-#, fuzzy
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
 "the most able Slashers. They have forged their might such that few warriors "
@@ -5731,7 +5881,9 @@ msgid ""
 msgstr ""
 "Strážčovia sú vrcholom úderníckej kasty, vybraní spomedzi najlepších "
 "sekáčov. Ich moc je taká, že len máloktorý bojovník na tejto zemi sa im "
-"odváži čeliť. Zbraňou strážcov je halapartňa, a majstrovsky ju používajú."
+"odváži čeliť. Zbraňou strážcov je halapartňa, a majstrovsky ju používajú.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Drake_Warrior.cfg:3
 msgid "Drake Warrior"
@@ -5752,7 +5904,6 @@ msgid "Dwarvish Berserker"
 msgstr "Trpaslík berserker"
 
 #: data/units/Dwarvish_Berserker.cfg:19
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
 "all defense in exchange for massive damage against their enemies.\n"
@@ -5760,9 +5911,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Trpaslíci sú starobylá rasa mocných bojovníkov. Ich berserker zabúda na "
-"obranu a uštedruje svojim nepriateľom masívne zranenia. Keď začne bojovať, "
-"trpaslík berserker zúrivo útočí a bojuje bez prestávky, kým jeden zo súperov "
-"neleží mŕtvy."
+"obranu a uštedruje svojim nepriateľom masívne zranenia.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Dwarvish_Berserker.cfg:37 data/units/Dwarvish_Ulfserker.cfg:37
 msgid "berserker frenzy"
@@ -5837,7 +5988,6 @@ msgid "Dwarvish Guardsman"
 msgstr "Trpaslík strážca"
 
 #: data/units/Dwarvish_Guardsman.cfg:20
-#, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
@@ -5847,7 +5997,9 @@ msgid ""
 msgstr ""
 "Najodolnejší trpaslíci sa často prihlásia do trpaslíčej armády ako "
 "strážcovia. Hoci sú pomalí a neútočia dobre, strážia krídla armády, odrážajú "
-"mnohé útoky a hádžu na nepriateľa ťažké kopije."
+"mnohé útoky a hádžu na nepriateľa ťažké kopije.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -5901,7 +6053,6 @@ msgid "Dwarvish Sentinel"
 msgstr "Trpaslík ochranca"
 
 #: data/units/Dwarvish_Sentinel.cfg:20
-#, fuzzy
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks.\n"
@@ -5909,14 +6060,15 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Ochranca s veľkým štítom a ešte väčšou odvahou neustúpi ani najsilnejším "
-"nepriateľským útokom."
+"nepriateľským útokom.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
 msgstr "Trpaslík obranca"
 
 #: data/units/Dwarvish_Stalwart.cfg:19
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -5926,7 +6078,9 @@ msgid ""
 msgstr ""
 "Obrancovia si počas rokov boja vytvorili vylepšené štíty a silné brnenia zo "
 "surovín, ktoré našli v nepriateľských ruinách. Hoci sú pomalí, sú obávaní "
-"pre svoju odolnosť a silu."
+"pre svoju odolnosť a silu.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -5998,7 +6152,6 @@ msgid "Dwarvish Ulfserker"
 msgstr "Trpaslík zurvalec"
 
 #: data/units/Dwarvish_Ulfserker.cfg:19
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these in battle: they persist until either their enemy is dead "
@@ -6009,7 +6162,9 @@ msgid ""
 msgstr ""
 "Trpaslíci sú prastará rasa mocných bojovníkov. Zurvalci sú v boji "
 "najzúrivejšími: bez ohľadu na zranenia útočia na nepriateľa bez prestávky, "
-"dokiaľ jeden z nich nepadne mŕtvy."
+"dokiaľ jeden z nich nepadne mŕtvy.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
@@ -6039,7 +6194,6 @@ msgid "Elvish Avenger"
 msgstr "Elf pomstiteľ"
 
 #: data/units/Elvish_Avenger.cfg:24
-#, fuzzy
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -6062,9 +6216,7 @@ msgstr ""
 "spolubojovníkov. Nie je to síce celkom presné označenie, ale zároveň má čosi "
 "do seba.\n"
 "\n"
-"Poznámka: Lesné zručnosti pomstiteľov im umožňujú stať sa pre nepriateľa "
-"neviditeľnými, dokiaľ nepriateľ nestojí priamo na susednom poli, alebo sa "
-"pomstiteľ sám neodhalil útokom."
+"Poznámka:"
 
 #: data/units/Elvish_Avenger.cfg:222
 msgid "female^Elvish Avenger"
@@ -6075,7 +6227,6 @@ msgid "Elvish Captain"
 msgstr "Elf kapitán"
 
 #: data/units/Elvish_Captain.cfg:27
-#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. This is quite at odds with "
@@ -6092,8 +6243,7 @@ msgstr ""
 "Schopnosť oceniť múdrosť svojich veliteľov a výber správnych veliteľov, je "
 "jednou z veľkých predností elfov.\n"
 "\n"
-"Poznámka: Veliteľské schopnosti kapitána umožňujú jednotkám na susednom poli "
-"spôsobiť v boji väčšie zranenie; týka sa to len jednotiek na nižšej úrovni."
+"Poznámka:"
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
@@ -6119,7 +6269,6 @@ msgid "female^Elvish Druid"
 msgstr "Elfka druidka"
 
 #: data/units/Elvish_Druid.cfg:22
-#, fuzzy
 msgid ""
 "The magic of the wood elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they live can be quickened by a word of "
@@ -6136,9 +6285,7 @@ msgstr ""
 "Ich hlavnou zručnosťou je však liečenie, a vďaka tejto schopnosti sú druidi "
 "medzi elfmi veľmi vážení.\n"
 "\n"
-"Poznámka: Druidov útok spomalí súpera a zníži počet úderov, ktoré môže "
-"zasadiť v boji. Druidi dokážu uzdravovať jednotky okolo seba, a liečiť ich "
-"otravu."
+"Poznámka:"
 
 #: data/units/Elvish_Druid.cfg:55 data/units/Elvish_Shyde.cfg:58
 msgid "ensnare"
@@ -6153,7 +6300,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Elfka zaklínačka"
 
 #: data/units/Elvish_Enchantress.cfg:18
-#, fuzzy
 msgid ""
 "The Elven Enchantresses are masters of offensive magic, striking at their "
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
@@ -6163,7 +6309,9 @@ msgid ""
 msgstr ""
 "Elfky zaklínačky sú majstrami útočnej mágie. Na svojich nepriateľov útočia "
 "poryvmi ľadového vetra z astrálnych rovín a magicky rozhýbanými koreňmi, "
-"ktoré nepriateľa na mieste znehybnia."
+"ktoré nepriateľa na mieste znehybnia.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Elvish_Enchantress.cfg:92 data/units/Elvish_Shaman.cfg:57
 #: data/units/Elvish_Sorceress.cfg:92
@@ -6204,7 +6352,6 @@ msgid "Elvish Marksman"
 msgstr "Elf ostrostrelec"
 
 #: data/units/Elvish_Marksman.cfg:23
-#, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -6223,8 +6370,7 @@ msgstr ""
 "\n"
 "Táto úžasná schopnosť má svoju cenu, a to je nedostatok tréningu s mečom.\n"
 "\n"
-"Poznámka: Ostrostrelectvo spôsobuje vysokú pravdepodobnosť zásahu "
-"nepriateľa, ale iba pri útoku."
+"Poznámka:"
 
 #: data/units/Elvish_Marksman.cfg:115 data/units/Elvish_Sharpshooter.cfg:114
 msgid "longbow"
@@ -6239,7 +6385,6 @@ msgid "Elvish Marshal"
 msgstr "Elf maršal"
 
 #: data/units/Elvish_Marshal.cfg:28
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -6256,12 +6401,11 @@ msgstr ""
 "nahradiť výcvik. Ak sa elf niekedy rozhodne ísť do vojny, zvyčajne je "
 "majstrovským stratégom.\n"
 "\n"
-"Poznámka: Maršalova schopnosť velenia umožňuje jednotke na vedľajšom políčku "
-"spôsobiť v boji väčšie zranenie, ale to platí len na jednotky nižšej úrovne."
+"Poznámka:"
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
-msgstr "Elf rýchly jazdec"
+msgstr "Elf prieskumník"
 
 #: data/units/Elvish_Outrider.cfg:20
 msgid ""
@@ -6275,7 +6419,7 @@ msgid ""
 "choose when fighting on their home ground, a fact that has saved many of "
 "their number from death."
 msgstr ""
-"Rýchli elfí jazdci sú cvičení ako kráľovskí poštári medzi elfími "
+"Elfí prieskumníci sú cvičení ako kráľovskí poštári medzi elfími "
 "kráľovstvami. Napriek mierumilovnej povahe tohoto ľudu, z nich skúsenosti "
 "robia nebezpečných bojovníkov. Žiaden človek ešte nedosiahol takúto "
 "schopnosť streľby z konského chrbta - presnejšie, mal by problém sa jej "
@@ -6289,7 +6433,6 @@ msgid "Elvish Ranger"
 msgstr "Elf hraničiar"
 
 #: data/units/Elvish_Ranger.cfg:21
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a place he is not truly a part of. With elves, "
@@ -6305,9 +6448,7 @@ msgstr ""
 "pridáme zručnosť v streľbe a boji s mečom, výsledkom je mocný vojnový "
 "nástroj.\n"
 "\n"
-"Poznámka: Schopnosťou hraničiarov je stať sa pre nepriateľov neviditeľnými; "
-"dokiaľ nepriateľ nepríde na susediace políčko, alebo kým sa hraničiar sám "
-"neprezradí útokom."
+"Poznámka:"
 
 #: data/units/Elvish_Ranger.cfg:219
 msgid "female^Elvish Ranger"
@@ -6336,7 +6477,7 @@ msgstr ""
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
-msgstr "Elf prieskumník"
+msgstr "Elf zved"
 
 #: data/units/Elvish_Scout.cfg:21
 msgid ""
@@ -6356,7 +6497,6 @@ msgid "female^Elvish Shaman"
 msgstr "Elfka šamanka"
 
 #: data/units/Elvish_Shaman.cfg:24
-#, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -6376,16 +6516,13 @@ msgstr ""
 "\n"
 "Dôležité sú aj liečivé schopnosti, ktoré sa v boji výrazne využijú.\n"
 "\n"
-"Poznámka: Šamanov zväzujúci útok spomalí súpera a obmedzí jeho počet úderov "
-"v boji o jeden. Šamani dokážu trochu uzdravovať, ale účinky jedu vedia len "
-"spomaliť, nie odstrániť."
+"Poznámka:"
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
 msgstr "Elf ostreľovač"
 
 #: data/units/Elvish_Sharpshooter.cfg:22
-#, fuzzy
 msgid ""
 "A story once wandered about, of an elf who stopped an arrow by shooting it "
 "out of the air with one of his own. It is a testament to the skill of the "
@@ -6398,8 +6535,7 @@ msgstr ""
 "zasiahnuť ďalším šípom. Je dôkazom schopností elfov, že sa takéto príbehy "
 "berú vážne. Elfí ostreľovači sú jednoducho majstrami lukostreľby.\n"
 "\n"
-"Poznámka: Ostrostreľba dáva týmto elfom veľkú šancu na zásah nepriateľa, ale "
-"iba pri útoku."
+"Poznámka:"
 
 #: data/units/Elvish_Sharpshooter.cfg:231
 msgid "female^Elvish Sharpshooter"
@@ -6410,7 +6546,6 @@ msgid "female^Elvish Shyde"
 msgstr "Elfka víla"
 
 #: data/units/Elvish_Shyde.cfg:22
-#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -6423,9 +6558,7 @@ msgstr ""
 "premení. Tieto záhadné a prekrásne stvorenia sú symbolom krásy a tajomnosti "
 "elfieho ľudu.\n"
 "\n"
-"Poznámka: Zväzujúci útok víly dokáže spomaliť nepriateľa a zmenšiť počet "
-"jeho útokov o jeden. Víly dokážu liečiť jednotky okolo nich, a uzdravovať "
-"ich od otravy."
+"Poznámka:"
 
 #: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:26
 msgid "faerie touch"
@@ -6436,7 +6569,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Elfka čarodejnica"
 
 #: data/units/Elvish_Sorceress.cfg:18
-#, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
@@ -6449,14 +6581,15 @@ msgstr ""
 "Elfky čarodejnice prešli zo štúdia uzdravujúcej mágie k jej agresívnejším "
 "formám a získali zručnosť v útoku na diaľku. Ich zamotávajúci útok je "
 "výrazne účinnejší a dokážu privolať závany mrazivého astrálneho vetra, ktorý "
-"zmetie tých, čo im odporujú."
+"zmetie tých, čo im odporujú.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
 msgstr "Elfka sylfa"
 
 #: data/units/Elvish_Sylph.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
 "developed their faerie side, they transform into creatures of both worlds, "
@@ -6464,9 +6597,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Elfky sylfy sú najkrajšie bytosti vo svete smrteľníkov. Naplno rozvinuli "
+"Elfky sylfy sú stelesnením krásy vo svete smrteľníkov. Naplno rozvinuli "
 "svoju astrálnu stránku a stali sa bytosťami oboch svetov. Proti nepriateľom "
-"používajú mocnú mágiu."
+"používajú mocnú mágiu.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Elvish_Sylph.cfg:55
 msgid "gossamer"
@@ -6477,7 +6612,6 @@ msgid "Direwolf Rider"
 msgstr "Vlčí pán"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:22
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the garden variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -6501,8 +6635,7 @@ msgstr ""
 "týchto veľkých beštií sú hrubšie a dlhšie ako klince. Jazdci ich často "
 "natierajú jedom, čím zvyšujú šancu, že zásah takýmto pazúrom bude smrteľný.\n"
 "\n"
-"Poznámka: Obeť otravy po zásahu pazúrmi jazdeckého vlka bude postupne "
-"strácať zdravie, dokiaľ sa nevylieči v dedine, alebo pod dohľadom liečiteľa."
+"Poznámka:"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:40 data/units/Goblin_Knight.cfg:40
 #: data/units/Goblin_Wolf_Rider.cfg:41 data/units/Monster_Cave_Spider.cfg:41
@@ -6516,7 +6649,6 @@ msgid "Goblin Impaler"
 msgstr "Goblin napichovač"
 
 #: data/units/Goblin_Impaler.cfg:19
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as fodder for their enemy's front line. Those "
 "who have somehow managed to survive invariably equip themselves to continue "
@@ -6529,8 +6661,7 @@ msgstr ""
 "prežijú, sa najbližšie primerane vyzbroja. Malú výšku dokáže kompenzovať "
 "dlhá kopija, a pri krehkom tele pomôže lepšie brnenie.\n"
 "\n"
-"Poznámka: Dĺžka napichovačovej zbrane spôsobuje, že vždy zasadí prvý úder, "
-"aj pri obrane."
+"Poznámka:"
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -6560,7 +6691,6 @@ msgid "Goblin Pillager"
 msgstr "Goblin rabovač"
 
 #: data/units/Goblin_Pillager.cfg:20
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -6574,8 +6704,7 @@ msgstr ""
 "rozhadzovaním sietí vyvolávajú chaos medzi tými, čo sa snažia zorganizovať "
 "obranu.\n"
 "\n"
-"Poznámka: Zamotanie v sieti spomaľuje nepriateľa a znižuje počet jeho útokov "
-"v boji o jeden."
+"Poznámka:"
 
 #: data/units/Goblin_Pillager.cfg:41
 msgid "torch"
@@ -6587,9 +6716,8 @@ msgid "net"
 msgstr "sieť"
 
 #: data/units/Goblin_Rouser.cfg:3
-#, fuzzy
 msgid "Goblin Rouser"
-msgstr "Goblin napichovač"
+msgstr "Goblin provokatér"
 
 #: data/units/Goblin_Rouser.cfg:26
 msgid ""
@@ -6601,6 +6729,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Vlajkonosiči sú medzi goblinmi vzácnosťou. Len zriedkavo prežije goblin "
+"toľko bitiek, aby sa mohol považovať za veterána, a ešte zriedkavejšie si "
+"tým získa úctu u ostatných goblinov. Jeho bojová udatnosť však povbudzuje "
+"mladších bojovníkov, aby pred smrťou bojovali tvrdšie a dlhšie.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Goblin_Spearman.cfg:3
 msgid "Goblin Spearman"
@@ -6770,7 +6904,6 @@ msgid "Paladin"
 msgstr "Palatín"
 
 #: data/units/Human_Horse_Paladin.cfg:21
-#, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to monastic "
 "orders, pledging their might to the cause of righteousness. Though not as "
@@ -6784,7 +6917,9 @@ msgstr ""
 "Najcnostnejší rytieri, palatíni, sa zasvätili mníšskym rádom, a svoju moc "
 "dali do služieb spravodlivosti. Hoci nie sú na bojisku takí impozantní ako "
 "starší rytieri, palatíni majú v boji iné dary. Palatín je kladivom na všetko "
-"nesväté, a dokáže ošetriť zranenia svojim spolubojovníkom."
+"nesväté, a dokáže ošetriť zranenia svojim spolubojovníkom.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:148
 #: data/units/Human_Mage_of_Light.cfg:108 data/units/Mermaid_Diviner.cfg:92
@@ -6904,7 +7039,6 @@ msgid "Duelist"
 msgstr "Duelista"
 
 #: data/units/Human_Loyalist_Duelist.cfg:20
-#, fuzzy
 msgid ""
 "It is a peculiar fashion of Wesnoth's nobility, in that they typically "
 "enroll their sons into one of two orders of armigers, training them either "
@@ -6931,15 +7065,13 @@ msgstr ""
 "dlho, aby sa mohli nazvať veteránmi, zvyčajne dávajú dôraz na užitočnosť a "
 "schopnosť prežiť.\n"
 "\n"
-"Poznámka: Priebojonosť umožňuje šermiarom prejsť okolo oponenta bez ohľadu "
-"na jeho oblasť kontroly."
+"Poznámka:"
 
 #: data/units/Human_Loyalist_Fencer.cfg:3
 msgid "Fencer"
 msgstr "Šermiar"
 
 #: data/units/Human_Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -6964,15 +7096,13 @@ msgstr ""
 "okolo obrnených jednotiek, aby sa im vysmievali za cenu, ktorú platia za "
 "svoju ochranu.\n"
 "\n"
-"Poznámka: Šermiarove zručnosti mu umožňujú ľubovoľne prekračovať súperovu "
-"zónu kontroly."
+"Poznámka:"
 
 #: data/units/Human_Loyalist_General.cfg:3
 msgid "General"
 msgstr "Generál"
 
 #: data/units/Human_Loyalist_General.cfg:30
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms they swore fealty to. Their "
@@ -6984,15 +7114,13 @@ msgstr ""
 "obranu rozsiahlych a dôležitých území v ľudských kráľovstvách. Na túto úlohu "
 "majú zostatočný výcvik a skúsenosti.\n"
 "\n"
-"Poznámka: Generál dokáže zvýšiť zranenie, ktoré jednotky na vedľajších "
-"políčkach spôsobujú v boji; platí to len na jednotky na nižšej úrovni."
+"Poznámka:"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:3
 msgid "Grand Marshal"
 msgstr "Vrchný veliteľ"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:26
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have surpassed many trials by fire, "
@@ -7005,15 +7133,13 @@ msgstr ""
 "Nositelia tejto hodnosti prekonali mnohé skúšky ohňom a preukázali "
 "pozoruhodné schopnosti v bitke i taktizovaní.\n"
 "\n"
-"Poznámka: Vrchný maršal dokáže zvýšiť zranenie, ktoré jednotky na vedľajších "
-"políčkach spôsobujú v boji; platí to len na jednotky na nižšej úrovni."
+"Poznámka:"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:3
 msgid "Halberdier"
 msgstr "Halapartník"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:22
-#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -7041,8 +7167,7 @@ msgstr ""
 "tieto zbrane zvyčajne dávajú len skúseným kopijníkom, ktorí dokázali, že "
 "majú potrebné bojové schopnosti.\n"
 "\n"
-"Poznámka: Dĺžka zbrane umožňuje halapartníkovi zasadiť prvý úder, aj keď sa "
-"bráni."
+"Poznámka:"
 
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
@@ -7097,7 +7222,6 @@ msgid "Javelineer"
 msgstr "Oštepár"
 
 #: data/units/Human_Loyalist_Javelineer.cfg:20
-#, fuzzy
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
 "not kill, enemies at range. Some, however, take to them rather well, finding "
@@ -7116,15 +7240,13 @@ msgstr ""
 "radov hádžu oštepy z diaľky, často beztrestne, a pritom udržiavajú pozíciu "
 "pri súboji zblízka.\n"
 "\n"
-"Poznámka: Dĺžka zbrane umožňuje oštepárovi zasadiť prvý úder, dokonca aj keď "
-"sa bráni."
+"Poznámka:"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:3
 msgid "Lieutenant"
 msgstr "Poručík"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:25
-#, fuzzy
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks.\n"
@@ -7134,8 +7256,7 @@ msgstr ""
 "Poručíci bojujú mečom i kušou, vedú skupinky ľudských vojakov a koordinujú "
 "ich útoky.\n"
 "\n"
-"Poznámka: Poručík dokáže zvýšiť zranenie, ktoré jednotky na vedľajších "
-"políčkach spôsobujú v boji; platí to len na jednotky na nižšej úrovni."
+"Poznámka:"
 
 #: data/units/Human_Loyalist_Longbowman.cfg:3
 msgid "Longbowman"
@@ -7182,7 +7303,6 @@ msgid "Master at Arms"
 msgstr "Majster zbraní"
 
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:21
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -7207,15 +7327,13 @@ msgstr ""
 "kapitánmi hradných stráží, majstrami vojenských akadémií, čo sú miesta, na "
 "ktorý je ich výbušná povaha prijateľná, ba možno aj užitočná.\n"
 "\n"
-"Poznámka: Zručnosť v šerme umožňuje majstrom šermiarom prešmyknúť sa okolo "
-"súpera, bez ohľadu na jeho oblasť kontroly."
+"Poznámka:"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:3
 msgid "Pikeman"
 msgstr "Kopijník"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:19
-#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -7231,7 +7349,7 @@ msgstr ""
 "si odlišnú bojovú taktiku. Hradba kopijníkov je postrachom jazdy, a pri "
 "vhodnej disciplíne dokážu kopijníci odraziť aj väčšinu pešiakov.\n"
 "\n"
-"Poznámka: Dĺžka zbrane umožňuje kopijníkom prvý úder, aj pri obrane."
+"Poznámka:"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:60
 msgid "pike"
@@ -7298,7 +7416,6 @@ msgid "Spearman"
 msgstr "Oštepník"
 
 #: data/units/Human_Loyalist_Spearman.cfg:20
-#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a head, "
@@ -7314,7 +7431,7 @@ msgstr ""
 "mnohých armád. V boji ich často iba so základným výcvikom vrhnú do prvej "
 "línie.\n"
 "\n"
-"Poznámka: Dĺžka zbrane dáva oštepníkovi výhodu prvého útoku, aj pri obrane."
+"Poznámka:"
 
 #: data/units/Human_Loyalist_Swordsman.cfg:3
 msgid "Swordsman"
@@ -7339,7 +7456,6 @@ msgid "Mage"
 msgstr "Mág"
 
 #: data/units/Human_Mage.cfg:23
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -7378,8 +7494,7 @@ msgstr ""
 "Mágovia sú fyzicky slabí a neskúsení v boji; niektoré ich schopnosti sú však "
 "v boji užitočné.\n"
 "\n"
-"Poznámka: Diaľkový útok mága je magický, čiže má vždy veľkú šancu zasiahnuť "
-"súpera."
+"Poznámka:"
 
 #: data/units/Human_Mage.cfg:166
 msgid "female^Mage"
@@ -7390,7 +7505,6 @@ msgid "Arch Mage"
 msgstr "Archmág"
 
 #: data/units/Human_Mage_Arch.cfg:20
-#, fuzzy
 msgid ""
 "The title of Arch Mage is conferred only after a lifetime of study and "
 "achievement to match. Arch Magi are often employed in positions of "
@@ -7418,15 +7532,13 @@ msgstr ""
 "Archmág nie je trénovaný v boji, ale keď treba, dokáže prejaviť plnú silu "
 "svojho umenia, čo nie je žiadna sranda.\n"
 "\n"
-"Poznámka: Archmágove ohnivé strely sú magické, a majú vždy vysokú "
-"pravdepodobnosť, že zasiahnu súpera."
+"Poznámka:"
 
 #: data/units/Human_Mage_Great.cfg:3
 msgid "Great Mage"
 msgstr "Veľký mág"
 
 #: data/units/Human_Mage_Great.cfg:21
-#, fuzzy
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
 "nearly a legend in their own time, and town criers have forcibly learnt "
@@ -7446,18 +7558,18 @@ msgstr ""
 "svojej doby. O tomto titule rozhoduje rada najvyšších mágov, a prideľuje sa "
 "väčšinovým hlasovaním. Samotná nominácia na titul veľkého mága znamená, že "
 "sa jedná o majstra magického umenia, ktorý prekonal väčšinu svojich "
-"rovesníkov.\\nHoci to nie je bojovník, dokáže svoje umenie využiť v boji "
-"tak, že väčšina vojakov nablízko zostane s úžasom pozerať.\n"
+"rovesníkov.\n"
 "\n"
-"Poznámka: Ohnivé strely veľkého mága sú magické a majú vždy veľkú šancu "
-"zasiahnuť súpera."
+"Hoci to nie je bojovník, dokáže svoje umenie využiť v boji tak, že väčšina "
+"vojakov nablízko zostane s úžasom pozerať.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
 msgstr "Červený mág"
 
 #: data/units/Human_Mage_Red.cfg:20
-#, fuzzy
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the blue robes of an apprentice, and given the red robes of a master. The "
@@ -7484,15 +7596,13 @@ msgstr ""
 "Hoci sú fyzicky slabí a neskúsení v boji, 'červení mágovia' majú pár trikov "
 "v rukáve, vrátane ohnivých striel, ktoré im dali meno.\n"
 "\n"
-"Poznámka: Mágove ohnivé strely sú magické a majú veľkú šancu zasiahnuť "
-"súpera."
+"Poznámka:"
 
 #: data/units/Human_Mage_Silver.cfg:3
 msgid "Silver Mage"
 msgstr "Strieborný mág"
 
 #: data/units/Human_Mage_Silver.cfg:23
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -7534,17 +7644,13 @@ msgstr ""
 "Strieborní mágovia sú telesne zdatnejší ako väčšina mágov a ich schopnosti "
 "sú v boji neoceniteľné, ak ich prejavia.\n"
 "\n"
-"Poznámka: Mágov útok na diaľku je magický, a má veľkú šancu zasiahnuť "
-"súpera. Strieborní mágovia sú vysoko odolní voči mnohým magickým útokom. "
-"Dokážu sa v okamihu premiestniť z jednej dediny do druhej, pokiaľ obe dediny "
-"patria jednému hráčovi, a cieľová dedina je voľná."
+"Poznámka: Strieborní mágovia sú vysoko odolní voči mnohým magickým útokom."
 
 #: data/units/Human_Mage_White.cfg:3
 msgid "White Mage"
 msgstr "Biely mág"
 
 #: data/units/Human_Mage_White.cfg:22
-#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -7568,9 +7674,7 @@ msgstr ""
 "Hoci nie sú cvičení v boji, proti jednému druhu nepriateľa sú pripravení. Ak "
 "treba, dokážu privolať sily svetla na zahnanie netvorov z tohoto sveta.\n"
 "\n"
-"Poznámka: Svetlo bieleho mága je magické a má veľkú šancu zasiahnuť "
-"nepriateľa. Svetlo spôsobuje ohromné zranenia nemŕtvym. Bieli mágovia dokážu "
-"liečiť jednotky okolo seba, a liečiť otravu."
+"Poznámka:"
 
 #: data/units/Human_Mage_White.cfg:147 data/units/Human_Mage_of_Light.cfg:107
 #: data/units/Mermaid_Diviner.cfg:91 data/units/Mermaid_Priestess.cfg:55
@@ -7586,7 +7690,6 @@ msgid "Mage of Light"
 msgstr "Mág svetla"
 
 #: data/units/Human_Mage_of_Light.cfg:24
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi are bestowed with "
 "vast spiritual powers. By strict devotion to the path of the light, they can "
@@ -7604,10 +7707,7 @@ msgstr ""
 "Títo muži a ženy pracujú neúnavne v súlade s prísnym kódexom pokory a cti, "
 "aby priniesli život a poriadok do sveta, v ktorom žijú.\n"
 "\n"
-"Poznámka: Mágovia svetla útočia magickým svetlom, ktoré má vždy veľkú šancu "
-"zasiahnuť súpera. Svetlo spôsobuje nemŕtvym obrovské zranenia. Mágovia "
-"svetla dokážu uzdravovať okolité jednotky, a liečiť ich z otravy. Majú moc "
-"osvietenia, ktorá osvetľuje políčka okolo mága."
+"Poznámka:"
 
 #: data/units/Human_Mage_of_Light.cfg:169
 msgid "female^Mage of Light"
@@ -7642,7 +7742,6 @@ msgid "Assassin"
 msgstr "Zabijak"
 
 #: data/units/Human_Outlaw_Assassin.cfg:20
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -7659,10 +7758,7 @@ msgstr ""
 "sú zabijaci smrteľne nebezpeční, cez deň sa vo svetle slnka cítia pri boji "
 "nepríjemne.\n"
 "\n"
-"Poznámka: Ak sa jednotke patriacej k rovnakej armáde ako zabijak podarí "
-"odpútať pozornosť nepriateľa, zabijak môže nepozorovane zaútočiť od chrbta, "
-"čím spôsobí dvojnásobné zranenie. Pri vrhaní používa otrávené nože, ktoré "
-"postupne uberajú silu nepriateľa."
+"Poznámka:"
 
 #: data/units/Human_Outlaw_Assassin.cfg:153
 #: data/units/Human_Outlaw_Rogue.cfg:81
@@ -7735,7 +7831,6 @@ msgid "Rogue"
 msgstr "Lupič"
 
 #: data/units/Human_Outlaw_Rogue.cfg:18
-#, fuzzy
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
 "rogues have spent many an unpleasant moment darting through crowds and "
@@ -7752,8 +7847,7 @@ msgstr ""
 "majstri práce s nožom ich dokážu pomerne spoľahlivo hádzať, a sú zvyknutí "
 "pracovať v noci.\n"
 "\n"
-"Poznámka: Ak spojenecká jednotka odpúta pozornosť nepriateľa, lupič môže "
-"zaútočiť od chrbta, čím spôsobí dvojnásobné zranenie."
+"Poznámka:"
 
 #: data/units/Human_Outlaw_Rogue.cfg:129
 msgid "female^Rogue"
@@ -7764,7 +7858,6 @@ msgid "Thief"
 msgstr "Zlodej"
 
 #: data/units/Human_Outlaw_Thief.cfg:19
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -7782,8 +7875,7 @@ msgstr ""
 "rýchly beh a boj s nožom. Sú ochotní pristúpiť na menej čestné taktiky, "
 "pretože cieľ je dôležitejší ako 'čestný boj'.\n"
 "\n"
-"Poznámka: Ak spojenecká jednotka upúta pozornosť nepriateľa, zlodej môže "
-"zaútočiť od chrbta, čím spôsobí dvojnásobné zranenie."
+"Poznámka:"
 
 #: data/units/Human_Outlaw_Thief.cfg:134
 msgid "female^Thief"
@@ -7843,7 +7935,6 @@ msgid "female^Mermaid Diviner"
 msgstr "Morská veštkyňa"
 
 #: data/units/Mermaid_Diviner.cfg:27
-#, fuzzy
 msgid ""
 "Mermaid Priestesses meet their calling with a fervor that leaves their human "
 "counterparts somewhat taken aback. This may have its roots in a legend they "
@@ -7858,17 +7949,13 @@ msgstr ""
 "kedysi sužovali ich ľud. Veľa sa o nich nevie, ale je jasné, že boli "
 "porazené silou svetla, ktorá ich oslobodila.\n"
 "\n"
-"Poznámka: Svetlo je magické a má vysokú šancu zasiahnuť súperov. Svetlo "
-"spôsobuje obrovské škody nemŕtvym. Veštkyne dokážu uzdravovať jednotky okolo "
-"seba, a liečiť ich z otravy. Majú aj silu osvietenia, ktorá zvyšuje svetlo "
-"na susedných políčkach."
+"Poznámka:"
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
 msgstr "Morská zaklínačka"
 
 #: data/units/Mermaid_Enchantress.cfg:20
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different. Those who master this ability are held in "
@@ -7885,7 +7972,7 @@ msgstr ""
 "majú zakázané využívať ich proti vlastnému druhu - táto moc je časťou toho, "
 "čo ich národ bráni pred príšerami z hlbín.\n"
 "\n"
-"Poznámka: Vodné útoky sú magické a majú vysokú šancu zraniť súpera."
+"Poznámka:"
 
 #: data/units/Mermaid_Enchantress.cfg:77 data/units/Mermaid_Initiate.cfg:80
 #: data/units/Mermaid_Siren.cfg:80
@@ -7897,7 +7984,6 @@ msgid "female^Mermaid Initiate"
 msgstr "Morská novicka"
 
 #: data/units/Mermaid_Initiate.cfg:23
-#, fuzzy
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -7914,14 +8000,13 @@ msgstr ""
 "Napriek svojej krehkosti sú pomerne dobré v boji, pretože si dokážu privolať "
 "vodu na pomoc proti nepriateľom.\n"
 "\n"
-"Poznámka: Vodné útoky sú magické a majú vysokú šancu zraniť súpera."
+"Poznámka:"
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
 msgstr "Morská kňažka"
 
 #: data/units/Mermaid_Priestess.cfg:25
-#, fuzzy
 msgid ""
 "Mermen share the creed that much of humanity follows, though for cultural "
 "reasons, the upholding of this is left to the mermaids, who are more "
@@ -7939,15 +8024,11 @@ msgstr ""
 "zranenia, ktoré ich trápia rovnako ako ľudí. Ich usilovnosť a pokora im "
 "dávajú duchovné schopnosti, ktoré im umožňujú brániť svoj ľud.\n"
 "\n"
-"Svetlo je magické a má vysokú šancu zasiahnuť súperov. Svetlo spôsobuje "
-"obrovské škody nemŕtvym. Kňažky dokážu uzdravovať jednotky okolo seba, a "
-"liečiť ich z otravy. Majú aj silu osvietenia, ktorá zvyšuje svetlo na "
-"susedných políčkach."
+"Poznámka:"
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Mermaid Siren"
-msgstr "Morský oštepník"
+msgstr "Siréna"
 
 #: data/units/Mermaid_Siren.cfg:23
 msgid ""
@@ -7981,7 +8062,6 @@ msgid "Merman Entangler"
 msgstr "Morský zamotávač"
 
 #: data/units/Merman_Entangler.cfg:20
-#, fuzzy
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
 "well; those who master it are valued and revered by their comrades. This "
@@ -7996,8 +8076,7 @@ msgstr ""
 "morských mužov vo svojom živle, a je nebezpečná pre všetkých nepriateľov, "
 "ktorí sa k vode čo len priblížia.\n"
 "\n"
-"Poznámka: Zásah sieťou spomaľuje súpera a zmenšuje jeho počet úderov pri "
-"boji o jeden."
+"Poznámka:"
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
@@ -8022,7 +8101,6 @@ msgid "Merman Hoplite"
 msgstr "Morský ťažký pešiak"
 
 #: data/units/Merman_Hoplite.cfg:21
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -8034,7 +8112,9 @@ msgstr ""
 "Morskí ťažkí pešiaci s vysokými štítmi sú elitnými strážcami vodnej ríše. "
 "Ich mocné brnenie a tuhá disciplína im umožňuje udržať líniu proti náporu "
 "boja. V najvyššej núdzi to dokážu aj na suchej zemi, aj keď sa nemôžu rovnať "
-"bytostiam s nohami."
+"bytostiam s nohami.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
@@ -8072,7 +8152,6 @@ msgid "Merman Netcaster"
 msgstr "Morský vrhač sietí"
 
 #: data/units/Merman_Netcaster.cfg:19
-#, fuzzy
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets. These are not very damaging in themselves, but they "
@@ -8092,8 +8171,7 @@ msgstr ""
 "vo vojne. Morskí muži takto dokážu znehybniť súperove jednotky vo vode, a "
 "dokonca vyrovnať svoje nevýhody na súši.\n"
 "\n"
-"Poznámka: Kto sa zachytí v sieti, je spomalený a má pri útoku o jeden úder "
-"menej."
+"Poznámka:"
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
@@ -8144,7 +8222,6 @@ msgid "Giant Spider"
 msgstr "Veľký pavúk"
 
 #: data/units/Monster_Cave_Spider.cfg:18
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They can bite at close range, thereby poisoning their enemies, and also can "
@@ -8154,7 +8231,9 @@ msgid ""
 msgstr ""
 "V hlbinách Knalgy sa údajne potulujú veľké pavúky a požierajú svoje obete. "
 "Zblízka dokážu svoju obeť uhryznúť a otráviť, z diaľky útočia pavučinou a "
-"spomaľujú tak svojich súperov."
+"spomaľujú tak svojich súperov.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Monster_Cave_Spider.cfg:110
 msgid "web"
@@ -8165,7 +8244,6 @@ msgid "Cuttle Fish"
 msgstr "Sépia"
 
 #: data/units/Monster_Cuttle_Fish.cfg:18
-#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
@@ -8176,7 +8254,9 @@ msgid ""
 msgstr ""
 "Sépia je obrovský morský netvor. Svojich súperov dokáže omotať mocnými "
 "chápadlami alebo na nich z diaľky pľuť jedovatý čierny atrament. Ak chcete "
-"prežiť stretnutie s takýmto netvorom, najlepšie je zostať na brehu."
+"prežiť stretnutie s takýmto netvorom, najlepšie je zostať na brehu.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Monster_Cuttle_Fish.cfg:41 data/units/Monster_Tentacle.cfg:65
 msgid "tentacle"
@@ -8215,7 +8295,6 @@ msgid "Giant Scorpion"
 msgstr "Veľký škorpión"
 
 #: data/units/Monster_Giant_Scorpion.cfg:20
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
 "explanation.\n"
@@ -8223,7 +8302,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Obyčajný škorpión je dosť nebezpečný - o škorpiónovi veľkosti človeka "
-"netreba veľa vysvetľovať."
+"netreba veľa vysvetľovať.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Monster_Giant_Scorpion.cfg:31
 msgid "sting"
@@ -8259,13 +8340,15 @@ msgid "Tentacle of the Deep"
 msgstr "Chápadlo z hlbín"
 
 #: data/units/Monster_Tentacle.cfg:19
-#, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
 "below the waves.\n"
 "\n"
 "Special Notes:"
-msgstr "Chápadlá sú končatinami akejsi veľkej príšery, ktorá žije v hlbinách."
+msgstr ""
+"Chápadlá sú končatinami akejsi veľkej príšery, ktorá žije v hlbinách vody.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Monster_Yeti.cfg:3
 msgid "Yeti"
@@ -8414,7 +8497,6 @@ msgid "Orcish Assassin"
 msgstr "Ork vrah"
 
 #: data/units/Orcish_Assassin.cfg:19
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -8429,8 +8511,7 @@ msgstr ""
 "na vrhacie nože. Ich zásah zvyčajne nie je smrteľný, ale takáto taktika "
 "výrazne pomáha pri boji ich väčším a brutálnejším súkmeňovcom.\n"
 "\n"
-"Poznámka: Obeť zásahu otráveným nožom stráca zdravie, dokiaľ ju neuzdraví "
-"liečiteľ alebo dedina."
+"Poznámka:"
 
 #: data/units/Orcish_Assassin.cfg:76 data/units/Orcish_Slayer.cfg:96
 msgid "throwing knives"
@@ -8473,7 +8554,6 @@ msgid "Orcish Leader"
 msgstr "Ork veliteľ"
 
 #: data/units/Orcish_Leader.cfg:20
-#, fuzzy
 msgid ""
 "Orcish Leaders are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8486,14 +8566,15 @@ msgstr ""
 "Orčí velitelia sú vodcami svojho kmeňa. Robia dôležité rozhodnutia a vedú "
 "svoj národ do bitiek. Z nevyhnutnosti nosia aj luk, ale sú omnoho zručnejší "
 "s mečom; sú to skutočne mocní bojovníci. Ich prirodzené vodcovské schopnosti "
-"ich robia v boji nenahraditeľnými: ak padne veliteľ, bitka je stratená."
+"ich robia v boji nenahraditeľnými: ak padne veliteľ, bitka je stratená.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
 msgstr "Ork vládca"
 
 #: data/units/Orcish_Ruler.cfg:19
-#, fuzzy
 msgid ""
 "Orcish Rulers are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8506,14 +8587,15 @@ msgstr ""
 "Orčí vládcovia sú vodcami svojho kmeňa. Robia dôležité rozhodnutia a vedú "
 "svoj národ do bitiek. Z nevyhnutnosti nosia aj luk, ale sú omnoho zručnejší "
 "s mečom; sú to skutočne mocní bojovníci. Ich prirodzené vodcovské schopnosti "
-"ich robia v boji nenahraditeľnými: ak padne vládca, bitka je stratená."
+"ich robia v boji nenahraditeľnými: ak padne vládca, bitka je stratená.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
 msgstr "Ork zabijak"
 
 #: data/units/Orcish_Slayer.cfg:19
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -8528,8 +8610,7 @@ msgstr ""
 "tomu, že nemajú brnenie. Ich obľúbenou zbraňou je jed, a jeho hojné "
 "používanie na bojisku je často skutočným dôvodom prevahy orkov.\n"
 "\n"
-"Poznámka: Obeť zásahu otráveným nožom stráca zdravie, dokiaľ ju neuzdraví "
-"liečiteľ alebo dedina."
+"Poznámka:"
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
@@ -8553,7 +8634,6 @@ msgid "Orcish Sovereign"
 msgstr "Ork náčelník"
 
 #: data/units/Orcish_Sovereign.cfg:20
-#, fuzzy
 msgid ""
 "Orcish Sovereigns are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8567,7 +8647,9 @@ msgstr ""
 "svoj ľud do bojov. Pre prípad potreby nosí luk, ale v boji mečom je "
 "zručnejší; tak či onak, je to mocný bojovník. Prirodzené veliteľské "
 "schopnosti ho robia v boji nenahraditeľným; ak padne náčelník, boj je "
-"stratený."
+"stratený.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
@@ -8600,7 +8682,6 @@ msgid "Saurian Ambusher"
 msgstr "Saur zákerák"
 
 #: data/units/Saurian_Ambusher.cfg:20
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8614,15 +8695,15 @@ msgstr ""
 "pôvodu a pomerne krehkému telu sú cennými prieskumníkmi a dokážu sa "
 "prešmyknúť cez náročný terén a pomedzi súperov. Sauri zákeráci sú "
 "najsilnejší zo saurov a dokážu tieto svoje výhody naplno využiť. Z "
-"najšikovnejších zákerákov sa stanú sauri prepadávači."
+"najšikovnejších zákerákov sa stanú sauri prepadávači.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Saurian_Augur.cfg:3
-#, fuzzy
 msgid "Saurian Augur"
-msgstr "Saur zákerák"
+msgstr "Saur šaman"
 
 #: data/units/Saurian_Augur.cfg:28
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Augurs are valued as healers because they can provide aid to their "
@@ -8633,14 +8714,14 @@ msgid ""
 msgstr ""
 "Napriek svojmu studenokrvnému pôvodu a pomerne krehkému telu sú saurí šamani "
 "cennými vojakmi, pretože dokážu kdekoľvek a kedykoľvek poskytnúť pomoc "
-"svojim spojencom. Okrem liečenia ovládajú aj mágiu chladu."
+"svojim spojencom. Okrem liečenia ovládajú aj mágiu chladu.\n"
+"Poznámka:"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
 msgstr "Saur prepadávač"
 
 #: data/units/Saurian_Flanker.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8653,15 +8734,15 @@ msgstr ""
 "Sauri prepadávači zručne používajú kopije. Napriek svojmu studenokrvnému "
 "pôvodu a pomerne krehkému telu sú cennými prieskumníkmi a dokážu sa "
 "prešmyknúť cez náročný terén a pomedzi súperov. Sauri prepadávači sú "
-"najsilnejší zo saurov a dokážu tieto svoje výhody naplno využiť."
+"najsilnejší zo saurov a dokážu tieto svoje výhody naplno využiť.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Saurian_Oracle.cfg:3
-#, fuzzy
 msgid "Saurian Oracle"
-msgstr "Saur šaman"
+msgstr "Saur veštec"
 
 #: data/units/Saurian_Oracle.cfg:27
-#, fuzzy
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
@@ -8670,16 +8751,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Saur ľadový mág zanechal výcvik v liečení a začal sa cvičiť v temných "
-"umeniach. Hoci je sám krehký, dokáže privolať mágiu studeného severu, a "
-"zároveň mu zostali základné liečiteľské schopnosti."
+"Saur veštec zanechal výcvik v liečení a začal sa cvičiť v temných umeniach. "
+"Hoci je sám krehký, dokáže privolať mágiu studeného severu, a zároveň mu "
+"zostali základné liečiteľské schopnosti.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
 msgstr "Saur prieskumník"
 
 #: data/units/Saurian_Skirmisher.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8691,14 +8773,15 @@ msgstr ""
 "Sauri prieskumníci zručne používajú kopije. Napriek svojmu studenokrvnému "
 "pôvodu a pomerne krehkému telu sú cennými prieskumníkmi a dokážu sa "
 "prešmyknúť cez náročný terén a pomedzi súperov. Z najlepších prieskumníkov "
-"sa stanú sauri zákeráci."
+"sa stanú sauri zákeráci.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
 msgstr "Saur liečiteľ"
 
 #: data/units/Saurian_Soothsayer.cfg:28
-#, fuzzy
 msgid ""
 "Saurian Soothsayers are highly valued as healers because they can provide "
 "aid to their friends regardless of terrain or opposition. In addition to "
@@ -8708,14 +8791,15 @@ msgid ""
 msgstr ""
 "Saur liečiteľ je vysoko ceneným lekárom, pretože dokáže kdekoľvek a "
 "kedykoľvek poskytnúť pomoc svojim priateľom. Okrem liečivých schopností "
-"ovláda aj mágiu chladu."
+"ovláda aj mágiu chladu.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
 msgstr "Troll"
 
 #: data/units/Troll.cfg:18
-#, fuzzy
 msgid ""
 "Trolls have been a mote to trouble the thoughts of humanity and dwarf-kind, "
 "who remain baffled at the origins of these creatures, and perhaps more "
@@ -8732,15 +8816,13 @@ msgstr ""
 "týči nad človekom, a aj neozbrojený je veľkou hrozbou. Ich obľúbené kyjaky "
 "sú akoby predĺžením ich rúk.\n"
 "\n"
-"Poznámka: Trollovia majú schopnosť regenerácie, ktorá ich vždy lieči akoby "
-"boli v dedine."
+"Poznámka:"
 
 #: data/units/Troll_Great.cfg:3
 msgid "Great Troll"
 msgstr "Veľký troll"
 
 #: data/units/Troll_Great.cfg:19
-#, fuzzy
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
 "and wisdom, it becomes something extraordinary, a beast remembered for "
@@ -8755,15 +8837,13 @@ msgstr ""
 "prefíkanosť sú zdrojom rozprávok o trolloch, a vidieť tieto rozprávkové "
 "tvory naživo im na zázračnosti nič neuberá.\n"
 "\n"
-"Poznámka: Trollovia majú schopnosť regenerovať, ktorá ich lieči podobne "
-"akoby boli stále v dedine."
+"Poznámka:"
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
 msgstr "Troll hrdina"
 
 #: data/units/Troll_Hero.cfg:18
-#, fuzzy
 msgid ""
 "Some trolls are born with an undue share of the strength and vitality that "
 "characterizes their race. In a society where might makes right, those of "
@@ -8775,15 +8855,13 @@ msgstr ""
 "pre ich druh. V spoločnosti, kde platí len právo silnejšieho, ich ostatní "
 "uctievajú ako hrdinov.\n"
 "\n"
-"Poznámka: Trollovia majú schopnosť regenerácie, ktorá ich vždy lieči akoby "
-"boli v dedine."
+"Poznámka:"
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
 msgstr "Troll vrhač"
 
 #: data/units/Troll_Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
@@ -8800,15 +8878,13 @@ msgstr ""
 "na improvizovaný prak.\n"
 "\n"
 "Poznámka: Hodený kameň je síce neohrabaný, ale ak zasiahne, je omnoho "
-"nebezpečnejší. Trollovia majú schopnosť regenerácie, ktorá ich vždy lieči "
-"akoby boli v dedine."
+"nebezpečnejší."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
 msgstr "Troll bojovník"
 
 #: data/units/Troll_Warrior.cfg:20
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -8829,15 +8905,13 @@ msgstr ""
 "nebezpečný je v boji troll, predstava trolla v brnení je dosť "
 "znepokojujúca.\n"
 "\n"
-"Poznámka: Trollovia majú schopnosť regenerácie, ktorá ich vždy lieči akoby "
-"boli v dedine."
+"Poznámka:"
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
 msgstr "Troll mláďa"
 
 #: data/units/Troll_Whelp.cfg:19
-#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -8852,15 +8926,13 @@ msgstr ""
 "po štyroch, ale napriek týmto nevýhodám má stále veľkú silu typickú pre jeho "
 "druh.\n"
 "\n"
-"Poznámka: Trollovia majú schopnosť regenerácie, ktorá ich vždy lieči akoby "
-"boli v dedine."
+"Poznámka:"
 
 #: data/units/Undead_Bat_Blood.cfg:3
 msgid "Blood Bat"
 msgstr "Krvavý netopier"
 
 #: data/units/Undead_Bat_Blood.cfg:19
-#, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
@@ -8871,14 +8943,15 @@ msgid ""
 msgstr ""
 "Krvavý netopier je rýchly a môže sa liečiť krvou, ktorú vycicia obetiam. "
 "Takto sa môže po útoku stať ešte silnejším ako bol na začiatku. Toto nemŕtve "
-"lietajúce zviera má srsť červenú od krvi svojich obetí."
+"lietajúce zviera má srsť červenú od krvi svojich obetí.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Bat_Vampire.cfg:3
 msgid "Vampire Bat"
 msgstr "Netopier upír"
 
 #: data/units/Undead_Bat_Vampire.cfg:18
-#, fuzzy
 msgid ""
 "Vampire Bats are undead flying beasts that attack by biting their victims. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -8887,14 +8960,15 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Nemŕtve lietajúce zviera útočí tak, že uhryzne svoju obeť. Hoci tesáky "
-"netopiera upíra nie sú silné, vyciciava nimi krv a zdravie obete pre seba."
+"netopiera upíra nie sú silné, vyciciava nimi krv a zdravie obete pre seba.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:3
 msgid "Ghoul"
 msgstr "Ghúl"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:21
-#, fuzzy
 msgid ""
 "Only those who have delved into the circles of necromancy know what must be "
 "done to turn a person into a ghoul, and it is a secret they are not telling. "
@@ -8916,15 +8990,13 @@ msgstr ""
 "\n"
 "Práve takéto veci spôsobujú takmer inštinktívny odpor voči černokňažníctvu.\n"
 "\n"
-"Poznámka: Ghúlove pazúry sú jedovaté; obeť útoku bude postupne strácať "
-"zdravie, dokiaľ sa nevylieči v dedine alebo u liečiteľa."
+"Poznámka:"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:3
 msgid "Necrophage"
-msgstr "Nekrofág"
+msgstr "Mrchožrút"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -8933,33 +9005,33 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Nekrofágovia sú divoko poháňaní svojím pekelným hladom po mŕtvom mäse; "
-"útočia ako divé zvery. Keď sa konečne nasýtia mäsom svojich obetí, zacelia "
-"sa všetky ich rany, akoby boli práve vytvorení, a ich hľadanie mäsa začína "
+"Mrchožrúti sú divoko poháňaní svojím pekelným hladom po mŕtvom mäse; útočia "
+"ako divé zvery. Keď sa konečne nasýtia mäsom svojich obetí, zacelia sa "
+"všetky ich rany, akoby boli práve vytvorení, a ich hľadanie mäsa začína "
 "odznova.\n"
 "\n"
-"Poznámka: Pazúry nekrofága sú jedovaté, obeť zásahu bude postupne strácať "
-"zdravie, kým ju neuzdraví liečiteľ alebo dedina."
+"Poznámka:"
 
 #: data/units/Undead_Corpse_Soulless.cfg:4
 msgid "Soulless"
 msgstr "Bezduchý"
 
 #: data/units/Undead_Corpse_Soulless.cfg:20
-#, fuzzy
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living.\n"
 "\n"
 "Special Notes:"
-msgstr "Tieto pohyblivé chodiace mŕtvoly zosilneli po dlhých bojoch so živými."
+msgstr ""
+"Tieto pohyblivé chodiace mŕtvoly zosilneli po dlhých bojoch so živými.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Corpse_Walking.cfg:4
 msgid "Walking Corpse"
 msgstr "Chodiaca mŕtvola"
 
 #: data/units/Undead_Corpse_Walking.cfg:19
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Although weak in combat, these zombies can spread their curse to those they "
@@ -8969,14 +9041,15 @@ msgid ""
 msgstr ""
 "Chodiace mŕtvoly sú telá mŕtvych oživené temnou mágiou. Hoci sú slabé v "
 "boji, šíria svoje prekliatie aj na tých, ktorých zabili, čím rozširujú "
-"armádu nemŕtvych."
+"armádu nemŕtvych.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:3
 msgid "Ancient Lich"
 msgstr "Prastarý kostej"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:21
-#, fuzzy
 msgid ""
 "A being of this order is a herald of the age long past. Anyone who "
 "encounters an Ancient Lich likely has far worse things to worry about than "
@@ -8988,16 +9061,13 @@ msgstr ""
 "prastarého kosteja, očakávajú omnoho väčšie nebezpečenstvá než samotná "
 "smrť.\n"
 "\n"
-"Poznámka: Kostejove útoky na diaľku sú magické a majú vždy veľkú šancu "
-"zasiahnuť súpera. Kostejov dotyk uberá zdravie obete a obnovuje tým "
-"kostejovo zdravie."
+"Poznámka:"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "Temný učeň"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:22
-#, fuzzy
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -9022,13 +9092,11 @@ msgstr ""
 "V takýchto podmienkach je ich jedinou zbraňou samotné umenie, ktoré "
 "študujú.\n"
 "\n"
-"Poznámka: Útoky temného učňa sú magické, a preto majú vždy veľkú šancu "
-"zasiahnuť súpera."
+"Poznámka:"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:33
-#, fuzzy
 msgid "shadow wave"
-msgstr "šťuch"
+msgstr "ťieňová vlna"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:177
 msgid "female^Dark Adept"
@@ -9052,13 +9120,23 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Hrôza vyvolávaná čiernou mágiou je daná hlavne tým, ako málo o nej vie bežný "
+"človek. Temní čarodejníci začali odkrývať tajomstvá života a smrti, rýchlo "
+"sa stali majstrami v spôsobovaní bolesti a strachu.\n"
+"\n"
+"Konečným cieľom temných umení je úplná moc nad smrťou a životom. Temní "
+"čarodejníci sa môžu naučiť manipulovať životom a smrťou pomocou oživovania "
+"mŕtvol, kostier a duchov. Tí najskazenejší a najviac hladní po moci, sa "
+"napokon pokúsia premôcť smrť pomocou premeny na kosteja a získania hroznej "
+"nesmrteľnosti.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
 msgstr "Kostej"
 
 #: data/units/Undead_Necro_Lich.cfg:20
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -9080,8 +9158,7 @@ msgstr ""
 "Nikto, okrem najväčších zasvätencov čierneho umenia, nevie, či je takýto "
 "život večný alebo iba výrazne predĺžený. Tak či onak je to veľkým úspechom.\n"
 "\n"
-"Poznámka: Diaľkové útoky kosteja sú magické, a majú veľkú šancu zasiahnuť "
-"súpera. Kostejov dotyk vysáva zdravie obete a pridáva ho kostejovi."
+"Poznámka:"
 
 #: data/units/Undead_Necromancer.cfg:21
 msgid ""
@@ -9098,6 +9175,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Jedným z najväčších kruhov tradičnej 'čiernej mágie' je černokňažníctvo, "
+"hrozná schopnosť prebudiť mŕtvych a dať im falošný život. Bol to objav, "
+"ktorý vyvolal veľké znepokojenie a viedol k všeobecnému odsúdeniu čiernej "
+"mágie, pretože otvoril novú dimenziu hrôzy.\n"
+"\n"
+"Táto schopnosť je ako taká prvým krokom ku konečnému cieľu porazenia smrti. "
+"Je to najvyšší stupeň moci, ktorý môže dosiahnuť temný mág bez toho, aby "
+"statil vlastnú ľudskosť, hoci je to nič proti moci, ktorou vládnu kosteji.  "
+"Telá smrteľníkov sa vďaka mágii stávajú pevnejšími, na rozdiel od krehkých "
+"rozpadávajúcich sa telesných schránok kostejov.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Necromancer.cfg:32
 msgid "plague staff"
@@ -9108,7 +9197,6 @@ msgid "Bone Shooter"
 msgstr "Kostlivec ostreľovač"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:17
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -9123,14 +9211,15 @@ msgstr ""
 "s lepším potenciálom dostanú primeranú výzbroj; lukostrelci obzvlášť ohavnú. "
 "Ich tulce sú naplnené šípmi vyrobenými nie z dreva, ale z kostí ich obetí. "
 "Ich nepriatelia ich nazývajú jednoducho 'kostliví ostreľovači'. Vzbudzujú "
-"hrôzu u všetkého živého."
+"hrôzu u všetkého živého.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:3
 msgid "Death Knight"
 msgstr "Rytier smrti"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:26
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and a sense of betrayal, came back to this world as Death Knights. Wielding "
@@ -9141,14 +9230,15 @@ msgid ""
 msgstr ""
 "Niekedy sa vraj najmocnejší vojaci a generáli premožení nenávosťou a pocitom "
 "zrady vracajú na tento svet ako rytieri smrti. Bojujú rovnakými zbraňami ako "
-"zaživa, a vedú nemŕtvych na ceste za odplatou."
+"zaživa, a vedú nemŕtvych na ceste za odplatou.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Skele_Deathblade.cfg:3
 msgid "Deathblade"
 msgstr "Kostlivý šermiar"
 
 #: data/units/Undead_Skele_Deathblade.cfg:19
-#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters will often "
@@ -9161,14 +9251,15 @@ msgstr ""
 "Príšery zvané 'smrtky' boli za svojho života majstrami boja, zruční a "
 "nebezpeční vojaci. Ich noví páni si to všimli a pokúsili sa využiť ich "
 "niekdajšie zručnosti. Tieto netvory sú krehké, ale omnoho rýchlejšie ako iné "
-"im podobné, čo sa týka pohybu i sekania."
+"im podobné, čo sa týka pohybu i sekania.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Skele_Draug.cfg:3
 msgid "Draug"
 msgstr "Kostlivý hrdina"
 
 #: data/units/Undead_Skele_Draug.cfg:19
-#, fuzzy
 msgid ""
 "Towering remains of what once were legendary warriors, the Draug strike fear "
 "in the hearts of all who oppose them. They are driven not by malice, but are "
@@ -9183,14 +9274,16 @@ msgstr ""
 "srdciach tých, ktorí sa proti nim postavia. Nepoháňa ich zloba, ale sú "
 "naveky ponorení v sne smrti, blúdia v najväčších bitkách svojej pamäte a "
 "zúfalo bojujú za slobodu, za pokoj, ktorý im prinesie len sila zbraní. "
-"Spomienky na ich nepriateľov a na príčinu boja už dávno upadli do zabudnutia."
+"Spomienky na ich nepriateľov a na príčinu boja už dávno upadli do "
+"zabudnutia.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Skele_Revenant.cfg:3
 msgid "Revenant"
 msgstr "Umrlec"
 
 #: data/units/Undead_Skele_Revenant.cfg:17
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -9205,14 +9298,15 @@ msgstr ""
 "spomienky na tie časy dávno preč. Ani čarodejníci, ktorí ich vyvolali, o tom "
 "často nič presnejšie nevedia. Bez ohľadu na to je umrlec mocnou zbraňou v "
 "boji: bojovník bez strachu, ktorý necíti bolesť, a bude bojovať naplno až do "
-"úplného konca."
+"úplného konca.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:3
 msgid "Soul Shooter"
 msgstr "Kostlivý majster strelec"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:19
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -9226,14 +9320,15 @@ msgstr ""
 "sami v minulom živote lukostrelcami. Potulujú sa po bojiskách, riadia sa "
 "matnými spomienkami na niekdajšie schopnosti, a ani nevedia, ani sa "
 "nestarajú o to, čo je ich alebo súperovým cieľom. Poháňa ich iba nenávisť "
-"zrodená zo zúfalstva ich prázdnej a nezmyselnej existencie."
+"zrodená zo zúfalstva ich prázdnej a nezmyselnej existencie.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Skeleton.cfg:3
 msgid "Skeleton"
 msgstr "Kostlivec"
 
 #: data/units/Undead_Skeleton.cfg:19
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
@@ -9245,14 +9340,15 @@ msgstr ""
 "Kostlivec je bojovník, ktorý padol v boji a oživili ho temní mágovia. Je "
 "takmer bez myšlienok, ide priamo za svojím cieľom, nebojí sa bolesti ani "
 "smrti, a samotná jedno prítomnosť vydesí každého, kto by sa chcel vzpierať "
-"jeho pánovi."
+"jeho pánovi.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
 msgstr "Kostlivec lukostrelec"
 
 #: data/units/Undead_Skeleton_Archer.cfg:18
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -9265,14 +9361,15 @@ msgstr ""
 "Kostlivý lukostrelec je rovnaký kostlivec ako ostatní - hriech proti "
 "prírode, mŕtvy bojovník opäť oživený a postavený do boja. V rukách svojho "
 "pána urobí takýto bojovník všetko, aby splnil stanovenú úlohu, pretože pre "
-"toho, kto už raz zomrel, neexistuje žiaden strach."
+"toho, kto už raz zomrel, neexistuje žiaden strach.\n"
+"\n"
+"Poznámka:"
 
 #: data/units/Undead_Spirit_Ghost.cfg:3
 msgid "Ghost"
 msgstr "Duch"
 
 #: data/units/Undead_Spirit_Ghost.cfg:20
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -9286,14 +9383,13 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Je jedným zo zázrakov stvorenia že ľudská duša je nezmeniteľná a "
-"nezničiteľná. Napriem tomu s ňou černokňažníci dokážu narobiť desivé veci.\n"
+"nezničiteľná. Černokňažníci s ňou však dokážu narobiť desivé veci.\n"
 "\n"
 "Duch môže byť uväznený v temnom kúzle, podobne ako vietor v plachtách lode. "
 "Výsledkom takéhoto väznenia je oddaný služobník, ktorého môže jeho pán "
 "poveriť ľubovoľnou úlohou.\n"
 "\n"
-"Poznámka: Duchovia majú nezvyčajnú odolnosť voči zraneniam, a na vodnej "
-"hladine sa dokážu len pomaly pohybovať."
+"Poznámka:"
 
 #: data/units/Undead_Spirit_Ghost.cfg:100
 #: data/units/Undead_Spirit_Spectre.cfg:94
@@ -9306,7 +9402,6 @@ msgid "Nightgaunt"
 msgstr "Nočný des"
 
 #: data/units/Undead_Spirit_Nightgaunt.cfg:18
-#, fuzzy
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
 "countenance that they obscure. These terrible forms are rarely seen by the "
@@ -9319,17 +9414,13 @@ msgstr ""
 "nachádza pod nimi. Málokto živý videl tieto tvary, a tí, čo prežili, nemali "
 "čas ich podrobne skúmať.\n"
 "\n"
-"Poznámka: Ak jednotka patriaca k nočnému desu upúta pozornosť nepriateľa, "
-"nočný des môže na nepriateľa zaútočiť od chrbta a spôsobiť mu dvojnásobné "
-"zranenie. Nočný des je veľmi odolný voči zraneniam, a môže sa pomaly "
-"pohybovať vez vodu. Nočný des sa vie v noci ukryť bez stopy."
+"Poznámka:"
 
 #: data/units/Undead_Spirit_Shadow.cfg:3
 msgid "Shadow"
 msgstr "Tieň"
 
 #: data/units/Undead_Spirit_Shadow.cfg:19
-#, fuzzy
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
 "to retreat into darkness. Since that day, the shadows of the world have held "
@@ -9345,17 +9436,13 @@ msgstr ""
 "\n"
 "Na túto otázku dokáže jednoducho odpovedať každý černokňažník.\n"
 "\n"
-"Poznámka: Ak spojenecká jednotka odpúta pozornosť nepriateľa, môže tieň "
-"zaútočiť od chrbta a spôsobiť dvojnásobné zranenie. Tiene sú veľmi odolné "
-"voči zraneniu, a nad vodou sa pohybujú pomaly. Tieň sa dokáže v noci ukryť "
-"bez stopy."
+"Poznámka:"
 
 #: data/units/Undead_Spirit_Spectre.cfg:3
 msgid "Spectre"
 msgstr "Prízrak"
 
 #: data/units/Undead_Spirit_Spectre.cfg:20
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "master's power. These abominations are a rightful terror to the living, and "
@@ -9371,9 +9458,7 @@ msgstr ""
 "zvrátenosti sú postrachom pre všetko živé, a bez spánkus strážia územia "
 "svojho pána.\n"
 "\n"
-"Poznámka: zásah čepeľou prízraku odoberie zdravie obete a pridá ho prízraku. "
-"Prízraky sú veľmi odolné voči rôznym zraneniam, a iba pomaly sa pohybujú po "
-"vode."
+"Poznámka:"
 
 #: data/units/Undead_Spirit_Spectre.cfg:46
 #: data/units/Undead_Spirit_Wraith.cfg:23
@@ -9385,7 +9470,6 @@ msgid "Wraith"
 msgstr "Mátoha"
 
 #: data/units/Undead_Spirit_Wraith.cfg:19
-#, fuzzy
 msgid ""
 "These tortured forms of what were once warriors are among the most "
 "terrifying things a necromancer can create, for a sword will cleave right "
@@ -9407,15 +9491,13 @@ msgstr ""
 "Kúzla ovládajúce tieto tvory majú prostriedky, pomocou ktorých sa dokážu "
 "uzdravovať energiou svojich súperov.\n"
 "\n"
-"Poznámka: Zásah čepeľou odoberie zdravie obete a pridá ho mátohe. Mátohy sú "
-"veľmi odolné voči zraneniu, a dokážu sa pomaly pohybovať nad vodou."
+"Poznámka:"
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
 msgstr "Lesný muž"
 
 #: data/units/Wose.cfg:20
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -9439,15 +9521,13 @@ msgstr ""
 "Lesní muži sú mierumilovní, ale majú ohromnú silu. Nie sú však príliš "
 "rýchli.\n"
 "\n"
-"Poznámka: Lesní muži regenerujú pomocou prírodných zdrojov, nepotrebujú sa "
-"ísť zotaviť do dediny."
+"Poznámka:"
 
 #: data/units/Wose_Ancient.cfg:3
 msgid "Ancient Wose"
 msgstr "Prastarý lesný muž"
 
 #: data/units/Wose_Ancient.cfg:20
-#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -9470,15 +9550,13 @@ msgstr ""
 "Podobné príbehy sú všetko, čo sa vie o pravdepobnom pôvode najstarších "
 "lesných mužov.\n"
 "\n"
-"Poznámka: Lesní muži sa regenerujú čerpaním síl prírody okolo nich, takže sa "
-"nemusia kvôli liečeniu unúvať do dediny."
+"Poznámka:"
 
 #: data/units/Wose_Elder.cfg:3
 msgid "Elder Wose"
 msgstr "Starý lesný muž"
 
 #: data/units/Wose_Elder.cfg:19
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -9504,8 +9582,7 @@ msgstr ""
 "vhodná aj na násilie, pokiaľ by sa ich niekomu podarilo dostatočne "
 "vyprovokovať.\n"
 "\n"
-"Poznámka: Lesní muži sa regenerujú pomocou prírodných zdrojov, nepotrebujú "
-"na to pomoc dedinčanov ani liečiteľa."
+"Poznámka:"
 
 #: src/about.cpp:32
 msgid "+Core Developers"
@@ -9819,9 +9896,8 @@ msgid "Connect to Server"
 msgstr "Pripoj sa na server"
 
 #: src/game.cpp:857
-#, fuzzy
 msgid "You will now connect to a server to download add-ons."
-msgstr "Teraz sa pripojíš na server výprav, aby si si stiahol výpravy."
+msgstr "Teraz sa pripojíš na server, aby si si stiahol doplnky."
 
 #: src/game.cpp:858
 msgid "Server: "
@@ -9833,7 +9909,7 @@ msgstr "Neviem sa pripojiť na server."
 
 #: src/game.cpp:879
 msgid "Asking for list of add-ons"
-msgstr ""
+msgstr "Pýtam si zoznam doplnkov"
 
 #: src/game.cpp:892
 msgid "Error communicating with the server."
@@ -9856,47 +9932,40 @@ msgid "Size"
 msgstr "Veľkosť"
 
 #: src/game.cpp:963
-#, fuzzy
 msgid "Publish add-on: "
-msgstr "Publikuj výpravu:"
+msgstr "Zverejni doplnok: "
 
 #: src/game.cpp:967
-#, fuzzy
 msgid "Delete add-on: "
-msgstr "Vymaž výpravu:"
+msgstr "Vymaž doplnok: "
 
 #: src/game.cpp:971
-#, fuzzy
 msgid "There are no add-ons available for download from this server."
-msgstr "Na tomto serveri nie sú k dispozícii žiadne výpravy."
+msgstr "Na tomto serveri nie sú k dispozícii žiadne doplnky."
 
 #: src/game.cpp:978
-#, fuzzy
 msgid "Choose the add-on to download."
-msgstr "Vyber si výpravu, ktorú chceš stiahnuť."
+msgstr "Vyber si doplnok, ktorý chceš stiahnuť."
 
 #: src/game.cpp:978
 msgid "Get Add-ons"
-msgstr ""
+msgstr "Stiahni doplnky"
 
 #: src/game.cpp:998
-#, fuzzy
 msgid "Downloading add-on..."
-msgstr "Sťahujem výpravu..."
+msgstr "Sťahujem doplnok..."
 
 #: src/game.cpp:1022
 msgid "Cannot rescan the filesystem"
 msgstr "Neviem prečítať súborový systém."
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "Add-on Installed"
-msgstr "Výprava nainštalovaná"
+msgstr "Doplnok nainštalovaný"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "The add-on has been installed."
-msgstr "Výprava je nainštalovaná."
+msgstr "Doplnok je nainštalovaný."
 
 #: src/game.cpp:1039
 msgid "Network communication error."
@@ -9925,9 +9994,8 @@ msgid "Terms"
 msgstr "Podmienky"
 
 #: src/game.cpp:1092
-#, fuzzy
 msgid "Sending add-on"
-msgstr "Posielam výpravu"
+msgstr "Posielam doplnok"
 
 #: src/game.cpp:1099 src/game.cpp:1124 src/multiplayer_wait.cpp:317
 msgid "Response"
@@ -10110,9 +10178,8 @@ msgid "Defense"
 msgstr "Obrana"
 
 #: src/help.cpp:1267
-#, fuzzy
 msgid "Movement Cost"
-msgstr "Pohyb"
+msgstr "Cena pohybu"
 
 #: src/help.cpp:1388 src/help.cpp:1412
 msgid "or"
@@ -10432,28 +10499,35 @@ msgstr "Hľadaj"
 #: src/menu_events.cpp:1340
 msgid "Commands: whisper ignore emote. Type /help [command] for more help."
 msgstr ""
+"Príkazy: whisper, ignore, emote. Napíš /help [príkaz] ak chceš viac "
+"informácií."
 
 #: src/menu_events.cpp:1391
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
+"Posiela súkromné správy. Nemôžeš posielať správy hráčom, ktorí v tejto hre "
+"hrajú za niektorú stranu. Príkaz: /whisper [meno] [správa]"
 
 #: src/menu_events.cpp:1395
 msgid "Add player to your ignore list. Usage: /ignore add [argument]"
 msgstr ""
+"Pridaj hráča do svojho zoznamu ignorovaných. Príkaz: /ignore add [parameter]"
 
 #: src/menu_events.cpp:1397
 msgid "Remove player from your ignore list. Usage: /ignore remove [argument]"
 msgstr ""
+"Vyrať hráča zo svojho zoznamu ignorovaných. Príkaz: /ignore remove "
+"[parameter]"
 
 #: src/menu_events.cpp:1399
 msgid "Clear your ignore list. Usage: /ignore clear"
-msgstr ""
+msgstr "Vymaž svoj zoznam ignorovaných. Príkaz: /ignore clear"
 
 #: src/menu_events.cpp:1401
 msgid "Show your ignore list. Usage: /ignore list"
-msgstr ""
+msgstr "Zobraz svoj zoznam ignorovaných. Príkaz: /ignore list"
 
 #: src/menu_events.cpp:1403
 msgid "Unknown subcommand"
@@ -10465,10 +10539,13 @@ msgid ""
 "[argument](optional) Subcommands: add remove list clear. Type /help ignore "
 "[subcommand] for more info."
 msgstr ""
+"Ignoruj správy od hráčov na tomto zozname. Príkaz: /ignore [podpríkaz] "
+"[parameter](ako kedy) Podpríkazy: add, remove, list, clear. Zadaj /help "
+"ignore [podpríkaz] ak chceš vedieť viac."
 
 #: src/menu_events.cpp:1409
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
-msgstr ""
+msgstr "Pošle v diskusii emóciu alebo osobnú akciu. Príkaz: /emote [správa]"
 
 #: src/menu_events.cpp:1411
 msgid "Unknown command"
@@ -10476,7 +10553,7 @@ msgstr "Neznámy príkaz"
 
 #: src/menu_events.cpp:1428
 msgid "Added to ignore list: "
-msgstr ""
+msgstr "Pridaný do zoznamu ignorovaných: "
 
 #: src/menu_events.cpp:1430 src/menu_events.cpp:1440
 msgid "Invalid username: "
@@ -10484,7 +10561,7 @@ msgstr "Neplatné používateľské meno: "
 
 #: src/menu_events.cpp:1438 src/menu_events.cpp:1464
 msgid "Removed from ignore list: "
-msgstr ""
+msgstr "Vyradený zo zoznamu ignorovaných: "
 
 #: src/menu_events.cpp:1469
 msgid "Unknown command: "
@@ -10508,7 +10585,7 @@ msgstr "Obranca"
 
 #: src/mouse_events.cpp:209
 msgid "Expected Battle Result (hp)"
-msgstr ""
+msgstr "Predpokladaný výsledok bitky (živ)"
 
 #: src/mouse_events.cpp:301
 msgid " resistance vs "
@@ -10540,7 +10617,7 @@ msgstr "Žiadna vhodná zbraň"
 
 #: src/mouse_events.cpp:348
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Šanca vyviaznuť bez zranenia"
 
 #: src/mouse_events.cpp:649 src/mouse_events.cpp:1232
 msgid "Damage Calculations"
@@ -10571,9 +10648,8 @@ msgid "Connecting to Server..."
 msgstr "Pripájam sa na server..."
 
 #: src/multiplayer.cpp:135
-#, fuzzy
 msgid "Reading from Server..."
-msgstr "Pripájam sa na server..."
+msgstr "Čítam zo servera..."
 
 #: src/multiplayer.cpp:144
 msgid ""
@@ -10608,7 +10684,7 @@ msgstr "Sieťová hra nemá určené strany"
 #: src/multiplayer_connect.cpp:64 src/multiplayer_connect.cpp:273
 #: src/multiplayer_connect.cpp:365
 msgid "Normal"
-msgstr ""
+msgstr "Normálny"
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
 #: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2492
@@ -10621,9 +10697,8 @@ msgid ")"
 msgstr ")"
 
 #: src/multiplayer_connect.cpp:339
-#, fuzzy
 msgid "Default AI"
-msgstr "Štandardná"
+msgstr "Štandardná UI"
 
 #: src/multiplayer_connect.cpp:390
 msgid "(Vacant slot)"
@@ -10712,7 +10787,6 @@ msgid "Cannot find era $era"
 msgstr "Neviem nájsť éru $era"
 
 #: src/multiplayer_connect.cpp:1187
-#, fuzzy
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -10775,23 +10849,23 @@ msgstr "Maximálny počet ťahov trvania hry"
 
 #: src/multiplayer_create.cpp:109
 msgid "Enables user time limit"
-msgstr ""
+msgstr "Povoľ časový limit pre hráča"
 
 #: src/multiplayer_create.cpp:115
 msgid "Longest time allowed for first turn (seconds)"
-msgstr ""
+msgstr "Najdlhší povolený čas na prvý ťah (sekundy)"
 
 #: src/multiplayer_create.cpp:121
 msgid "Longest time possible for any turn (seconds)"
-msgstr ""
+msgstr "Najdlhší povolený čas na hociktorý ťah (sekundy)"
 
 #: src/multiplayer_create.cpp:127
 msgid "Time for general tasks each turn (seconds)"
-msgstr ""
+msgstr "Čas na všeobecné úkony v každom ťahu (sekundy)"
 
 #: src/multiplayer_create.cpp:133
 msgid "Time for each attack, recruit, and capture"
-msgstr ""
+msgstr "Čas na útok, verbovanie, dobýjanie"
 
 #: src/multiplayer_create.cpp:138
 msgid "The amount of income each village yields per turn"
@@ -10858,24 +10932,20 @@ msgid "Unlimited Turns"
 msgstr "Neobmedzené ťahy"
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Init. Limit: "
-msgstr "Zoznam jednotiek"
+msgstr "Štart. limit: "
 
 #: src/multiplayer_create.cpp:318
-#, fuzzy
 msgid "Turn Bonus: "
-msgstr "Bonus:"
+msgstr "Bonus za ťahy: "
 
 #: src/multiplayer_create.cpp:322
-#, fuzzy
 msgid "Reservoir: "
-msgstr "Server:"
+msgstr "Zásoba: "
 
 #: src/multiplayer_create.cpp:327
-#, fuzzy
 msgid "Action Bonus: "
-msgstr "Bonus:"
+msgstr "Bonus za akcie: "
 
 #: src/multiplayer_create.cpp:334
 msgid "Village Gold: "
@@ -10915,7 +10985,7 @@ msgstr "Neznáma scéna"
 
 #: src/multiplayer_lobby.cpp:334
 msgid "Remote scenario"
-msgstr ""
+msgstr "Scéna z iného počítača"
 
 #: src/multiplayer_lobby.cpp:347
 msgid "Vacant Slot:"
@@ -10947,7 +11017,7 @@ msgstr "Koniec"
 
 #: src/multiplayer_lobby.cpp:473
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
+msgstr "Pri pozorovaní rýchlo preskoč na aktuálny ťah"
 
 #: src/multiplayer_ui.cpp:79
 msgid "Invalid Color"
@@ -10996,11 +11066,11 @@ msgstr "Súbor, ktorý si chcel načítať, je poškodený"
 
 #: src/play_controller.cpp:645
 msgid "Back to start"
-msgstr ""
+msgstr "Späť na začiatok"
 
 #: src/play_controller.cpp:647
 msgid "Back to turn "
-msgstr ""
+msgstr "Späť na ťah"
 
 #: src/playcampaign.cpp:269
 msgid "Defeat"
@@ -11023,9 +11093,8 @@ msgid "Downloading next level..."
 msgstr "Sťahujem ďalšiu úroveň..."
 
 #: src/playcampaign.cpp:413
-#, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
-msgstr "Chceš uložiť hru?"
+msgstr "Chceš uložiť hru? (Pritom vymaže všetky automaticky uložené súbory)"
 
 #: src/playcampaign.cpp:440
 msgid "Unknown scenario: '"
@@ -11174,7 +11243,7 @@ msgstr "zranenia"
 
 #: src/reports.cpp:265
 msgid "weapon range: "
-msgstr ""
+msgstr "dosah zbrane: "
 
 #: src/reports.cpp:266
 msgid "damage type: "
@@ -11285,9 +11354,8 @@ msgid "TitleScreen button^Load"
 msgstr "Načítaj hru"
 
 #: src/titlescreen.cpp:258
-#, fuzzy
 msgid "TitleScreen button^Get Add-ons"
-msgstr "Načítaj hru"
+msgstr "Doplnky"
 
 #: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
@@ -11327,7 +11395,7 @@ msgstr "Pokračuj v uloženej hre pre jedného hráča"
 
 #: src/titlescreen.cpp:267
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "Stiahni si príbehy, éry a balíky máp vytvorené hráčmi"
 
 #: src/titlescreen.cpp:268
 msgid "Change the language"
@@ -11387,7 +11455,7 @@ msgstr "neutrál"
 
 #: src/upload_log.cpp:278
 msgid "Enable summary uploads"
-msgstr ""
+msgstr "Umožni posielanie štatistík"
 
 #: src/upload_log.cpp:283
 msgid ""

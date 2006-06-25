@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-12 22:22+0200\n"
-"PO-Revision-Date: 2006-04-17 14:16+0100\n"
+"PO-Revision-Date: 2006-06-24 18:44+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -20,35 +20,33 @@ msgstr ""
 
 #: src/editor/editor_dialogs.cpp:48
 msgid "Your modifications to the map will be lost. Continue?"
-msgstr ""
+msgstr "Tvoje úpravy mapy sa stratia. Pokračovať?"
 
 #: src/editor/editor_dialogs.cpp:75 src/editor/editor_dialogs.cpp:196
-#, fuzzy
 msgid "Create New Map"
-msgstr "Nová mapa"
+msgstr "Vytvor novú mapu"
 
 #: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
 #: src/mapgen_dialog.cpp:106
 msgid "Width:"
-msgstr ""
+msgstr "Šírka:"
 
 #: src/editor/editor_dialogs.cpp:78 src/editor/editor_dialogs.cpp:392
 #: src/mapgen_dialog.cpp:107
 msgid "Height:"
-msgstr ""
+msgstr "Výška:"
 
 #: src/editor/editor_dialogs.cpp:94
-#, fuzzy
 msgid "Generate New Map"
-msgstr "Nová mapa"
+msgstr "Generuj novú mapu"
 
 #: src/editor/editor_dialogs.cpp:95
 msgid "Generate Random Map"
-msgstr ""
+msgstr "Generuj náhodnú mapu"
 
 #: src/editor/editor_dialogs.cpp:96
 msgid "Random Generator Settings"
-msgstr ""
+msgstr "Nastavenia náhodného generátora"
 
 #: src/editor/editor_dialogs.cpp:97 src/editor/editor_dialogs.cpp:408
 #: src/filechooser.cpp:54 src/show_dialog.cpp:432 src/show_dialog.cpp:438
@@ -58,7 +56,7 @@ msgstr "Storno"
 
 #: src/editor/editor_dialogs.cpp:182
 msgid "Map creation failed."
-msgstr ""
+msgstr "Nepodarilo sa vytvoriť mapu."
 
 #: src/editor/editor_dialogs.cpp:248 src/mapgen_dialog.cpp:97
 #: src/preferences_display.cpp:747
@@ -103,23 +101,21 @@ msgstr "OK"
 
 #: src/editor/editor_dialogs.cpp:492
 msgid "X-Axis"
-msgstr ""
+msgstr "Os X"
 
 #: src/editor/editor_dialogs.cpp:493
 msgid "Y-Axis"
-msgstr ""
+msgstr "Os Y"
 
 #: src/editor/editor_dialogs.cpp:494
 msgid "Flip around (this may change the dimensions of the map):"
-msgstr ""
+msgstr "Prevráť (toto môže zmeniť rozmery mapy):"
 
 #: src/hotkeys.cpp:49
-#, fuzzy
 msgid "Next Unit"
-msgstr "Ďalšia jednotka"
+msgstr "Nasledujúca jednotka"
 
 #: src/hotkeys.cpp:50
-#, fuzzy
 msgid "Previous Unit"
 msgstr "Predchádzajúca jednotka"
 
@@ -244,9 +240,8 @@ msgid "Set Label"
 msgstr "Nastav značku"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Clear Labels"
-msgstr "Nastav značku"
+msgstr "Vymaž značky"
 
 #: src/hotkeys.cpp:84
 msgid "Show Enemy Moves"
@@ -257,39 +252,36 @@ msgid "Best Possible Enemy Moves"
 msgstr "Možný súperov pohyb"
 
 #: src/hotkeys.cpp:86
-#, fuzzy
 msgid "Play"
-msgstr "hráč"
+msgstr "Hraj"
 
 #: src/hotkeys.cpp:87
 msgid "Reset"
-msgstr ""
+msgstr "Reštartuj"
 
 #: src/hotkeys.cpp:88
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #: src/hotkeys.cpp:89
-#, fuzzy
 msgid "Next Turn"
-msgstr "Ďalšia jednotka"
+msgstr "Ďalší ťah"
 
 #: src/hotkeys.cpp:90
-#, fuzzy
 msgid "Next Side"
-msgstr "Ďalšia jednotka"
+msgstr "Ďalšia strana"
 
 #: src/hotkeys.cpp:91
 msgid "Shroud"
-msgstr ""
+msgstr "Odkrývanie"
 
 #: src/hotkeys.cpp:92
 msgid "Fog"
-msgstr ""
+msgstr "Hmla"
 
 #: src/hotkeys.cpp:93
 msgid "Skip animation"
-msgstr ""
+msgstr "Preskoč animáciu"
 
 #: src/hotkeys.cpp:95
 msgid "Set Terrain"
@@ -409,48 +401,47 @@ msgstr "Vypni"
 
 #: src/mapgen_dialog.cpp:100
 msgid "Map Generator"
-msgstr ""
+msgstr "Generátor mapy"
 
 #: src/mapgen_dialog.cpp:105
-#, fuzzy
 msgid "Players:"
-msgstr "hráč"
+msgstr "Hráči:"
 
 #: src/mapgen_dialog.cpp:108
 msgid "Number of Hills:"
-msgstr ""
+msgstr "Počet kopcov:"
 
 #: src/mapgen_dialog.cpp:109
 msgid "Max Hill Size:"
-msgstr ""
+msgstr "Max. veľkosť kopca:"
 
 #: src/mapgen_dialog.cpp:110
 msgid "Villages:"
-msgstr ""
+msgstr "Dedín:"
 
 #: src/mapgen_dialog.cpp:111
 msgid "Landform:"
-msgstr ""
+msgstr "Tvar zeme:"
 
 #: src/mapgen_dialog.cpp:217
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "Cesty medzi hradmi"
 
 #: src/mapgen_dialog.cpp:274
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 polí"
 
 #: src/mapgen_dialog.cpp:279
 msgid "Coastal"
-msgstr ""
+msgstr "Pobrežie"
 
 #: src/mapgen_dialog.cpp:279
 msgid "Inland"
-msgstr ""
+msgstr "Vnútrozemie"
 
 #: src/mapgen_dialog.cpp:279
 msgid "Island"
-msgstr ""
+msgstr "Ostrov"
 
 #: src/preferences.cpp:291
 msgid "player"
@@ -476,7 +467,7 @@ msgstr "Neukazuj ťahy počítača"
 
 #: src/preferences_display.cpp:221
 msgid "Show Lobby Joins"
-msgstr ""
+msgstr "Ukáž príchody do čakárne"
 
 #: src/preferences_display.cpp:222
 msgid "Show Floating Labels"
@@ -504,7 +495,7 @@ msgstr "Žiarivé efekty"
 
 #: src/preferences_display.cpp:229
 msgid "Theme"
-msgstr ""
+msgstr "Téma"
 
 #: src/preferences_display.cpp:231
 msgid "Adjust Gamma"
@@ -524,7 +515,7 @@ msgstr "Hudba"
 
 #: src/preferences_display.cpp:236
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "Čas pri rozhovore"
 
 #: src/preferences_display.cpp:237
 msgid "Music Volume:"
@@ -560,11 +551,11 @@ msgstr "Nastav rýchlosť rolovania mapy"
 
 #: src/preferences_display.cpp:273 src/preferences_display.cpp:275
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "Nastav počet zobrazených riadkov rozhovoru"
 
 #: src/preferences_display.cpp:278
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Pridávaj k rozhovoru aj časový údaj"
 
 #: src/preferences_display.cpp:281 src/preferences_display.cpp:286
 msgid "Change the brightness of the display"
@@ -588,7 +579,7 @@ msgstr "Zobrazuj na mape šesťuholníkovú mriežku"
 
 #: src/preferences_display.cpp:301
 msgid "Show messages about players joining the multiplayer lobby"
-msgstr ""
+msgstr "Zobrazuj správy o hráčoch, ktorí prišli do čakárne na zápas"
 
 #: src/preferences_display.cpp:304
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -599,9 +590,8 @@ msgid "Change the resolution the game runs at"
 msgstr "Zmeň rozlíšenie, v ktorom beží hra"
 
 #: src/preferences_display.cpp:307
-#, fuzzy
 msgid "Change the theme the game runs with"
-msgstr "Zmeň rozlíšenie, v ktorom beží hra"
+msgstr "Zmeň grafickú tému, v ktorej beží hra"
 
 #: src/preferences_display.cpp:310
 msgid "Display a dialog at the beginning of your turn"
@@ -637,7 +627,7 @@ msgstr "Zobraz a nastav klávesové skratky"
 
 #: src/preferences_display.cpp:517
 msgid "Chat Lines: "
-msgstr ""
+msgstr "Riadky rozhovoru: "
 
 #: src/preferences_display.cpp:569
 msgid "yes"
@@ -660,9 +650,8 @@ msgid "Prefs section^Sound"
 msgstr "Zvuk"
 
 #: src/preferences_display.cpp:640
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "Obrazovka"
+msgstr "Zápas"
 
 #: src/preferences_display.cpp:641
 msgid "Advanced section^Advanced"
@@ -706,15 +695,15 @@ msgstr "Táto klávesa sa už používa."
 
 #: src/preferences_display.cpp:869
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Uložená zvolená téma: "
 
 #: src/preferences_display.cpp:875
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "Nová téma sa prejaví až pri najbližšom spustení alebo načítaní hry."
 
 #: src/preferences_display.cpp:879
 msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
+msgstr "Nepoznám žiadnu tému. Skús ju nastaviť vnútri existujúcej hry."
 
 #: src/show_dialog.cpp:313
 msgid "Error"
@@ -738,11 +727,11 @@ msgstr "KB"
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
-msgstr ""
+msgstr "Vymaž súbor"
 
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
-msgstr ""
+msgstr "Nepodarilo sa vymazať súbor."
 
 #~ msgid "Receiving data..."
 #~ msgstr "Prijímam údaje..."
