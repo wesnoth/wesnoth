@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-12 22:22+0200\n"
-"PO-Revision-Date: 2006-06-10 08:50+0100\n"
-"Last-Translator: Americo Iacovizzi <darkamex@gmail.com>\n"
+"PO-Revision-Date: 2006-06-12 14:49+0100\n"
+"Last-Translator: badBob <quagliatie@interfree.it>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,12 +68,12 @@ msgstr "Preferenze"
 
 #: src/editor/editor_dialogs.cpp:256 src/preferences_display.cpp:238
 msgid "Scroll Speed:"
-msgstr "Velocità di Scorrimento:"
+msgstr "Velocità di scorrimento:"
 
 #: src/editor/editor_dialogs.cpp:283 src/hotkeys.cpp:59
 #: src/preferences_display.cpp:217
 msgid "Toggle Full Screen"
-msgstr "Schermo Intero"
+msgstr "Schermo intero"
 
 #: src/editor/editor_dialogs.cpp:290 src/preferences_display.cpp:220
 msgid "Show Grid"
@@ -119,7 +119,7 @@ msgstr "Unità precedente"
 
 #: src/hotkeys.cpp:51
 msgid "Hold Position"
-msgstr "Blocca la Posizione"
+msgstr "Blocca la posizione"
 
 #: src/hotkeys.cpp:52
 msgid "End Unit Turn"
@@ -139,15 +139,15 @@ msgstr "Ripeti"
 
 #: src/hotkeys.cpp:56
 msgid "Zoom In"
-msgstr "Aumenta zoom"
+msgstr "Ingrandisci"
 
 #: src/hotkeys.cpp:57
 msgid "Zoom Out"
-msgstr "Diminuisci zoom"
+msgstr "Rimpicciolisci"
 
 #: src/hotkeys.cpp:58
 msgid "Default Zoom"
-msgstr "Zoom normale"
+msgstr "Vista normale"
 
 #: src/hotkeys.cpp:60
 msgid "Screenshot"
@@ -195,7 +195,7 @@ msgstr "Mostra la griglia"
 
 #: src/hotkeys.cpp:71
 msgid "Mouse Scrolling"
-msgstr "Rotellina del mouse"
+msgstr "Tasto Scorrimento del mouse"
 
 #: src/hotkeys.cpp:72
 msgid "Status Table"
@@ -219,7 +219,7 @@ msgstr "Cambia fronte dell'unità (Debug!)"
 
 #: src/hotkeys.cpp:78
 msgid "Scenario Objectives"
-msgstr "Obbiettivi dello scenario"
+msgstr "Obiettivi dello scenario"
 
 #: src/hotkeys.cpp:79
 msgid "Unit List"
@@ -303,7 +303,7 @@ msgstr "Salva una mappa"
 
 #: src/hotkeys.cpp:100
 msgid "Save As"
-msgstr "Salva come"
+msgstr "Salva come..."
 
 #: src/hotkeys.cpp:101
 msgid "Set Player's keep"
@@ -363,7 +363,7 @@ msgstr "Continua"
 
 #: src/hotkeys.cpp:117
 msgid "Find Label or Unit"
-msgstr "Trova un'unità od etichetta"
+msgstr "Trova un'unità o etichetta"
 
 #: src/hotkeys.cpp:118
 msgid "Speak to Ally"
@@ -423,7 +423,7 @@ msgstr "Tipo di terreno:"
 
 #: src/mapgen_dialog.cpp:217
 msgid "Roads Between Castles"
-msgstr "Strade di collegamento tra castelli"
+msgstr "Strade tra castelli"
 
 #: src/mapgen_dialog.cpp:274
 msgid "/1000 tiles"
@@ -465,7 +465,6 @@ msgid "Skip AI Moves"
 msgstr "Salta mosse AI"
 
 #: src/preferences_display.cpp:221
-#, fuzzy
 msgid "Show Lobby Joins"
 msgstr "Mostra i collegamenti alla lobby"
 
@@ -577,7 +576,7 @@ msgstr "Non animare i movimenti delle unità dell'AI"
 
 #: src/preferences_display.cpp:298
 msgid "Overlay a grid onto the map"
-msgstr "Disegna una griglia sulla mappa"
+msgstr "Mostra la griglia sulla mappa"
 
 #: src/preferences_display.cpp:301
 msgid "Show messages about players joining the multiplayer lobby"
@@ -592,7 +591,7 @@ msgstr ""
 
 #: src/preferences_display.cpp:306
 msgid "Change the resolution the game runs at"
-msgstr "Cambia la risoluzione grafica del gioco"
+msgstr "Cambia la risoluzione grafica"
 
 #: src/preferences_display.cpp:307
 msgid "Change the theme the game runs with"
@@ -611,7 +610,7 @@ msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
-"Mostra un cerchio colorato alla base delle unità per vedere a quale fronte "
+"Mostra un cerchio colorato alla base delle unità per vedere a quale parte "
 "appartengono"
 
 #: src/preferences_display.cpp:319
@@ -669,15 +668,15 @@ msgstr "Nessuna modalità video alternativa disponibile"
 
 #: src/preferences_display.cpp:719
 msgid "Choose Resolution"
-msgstr "Scegli la Risoluzione"
+msgstr "Scegli la risoluzione"
 
 #: src/preferences_display.cpp:752
 msgid "Hotkey Settings"
-msgstr "Impostazioni delle Scorciatoie"
+msgstr "Impostazioni dei tasti-scorciatoia"
 
 #: src/preferences_display.cpp:756 src/preferences_display.cpp:809
 msgid "Press desired Hotkey"
-msgstr "Premi il tasto di Scorciatoia desiderato"
+msgstr "Premi il tasto-scorciatoia desiderato"
 
 #: src/preferences_display.cpp:774
 msgid "Action"
@@ -689,15 +688,15 @@ msgstr "Legame"
 
 #: src/preferences_display.cpp:786
 msgid "Change Hotkey"
-msgstr "Cambia la scorciatoia"
+msgstr "Cambia il tasto-scorciatoia"
 
 #: src/preferences_display.cpp:789
 msgid "Save Hotkeys"
-msgstr "Salva le scorciatoie"
+msgstr "Salva i tasti-scorciatoia"
 
 #: src/preferences_display.cpp:836
 msgid "This Hotkey is already in use."
-msgstr "Questa tasto di scorciatoia è già in uso."
+msgstr "Questo tasto-scorciatoia è già in uso."
 
 #: src/preferences_display.cpp:869
 msgid "Saved Theme Preference: "
@@ -717,7 +716,7 @@ msgstr "Errore"
 
 #: src/show_dialog.cpp:424
 msgid "Yes"
-msgstr "Si"
+msgstr "Sì"
 
 #: src/show_dialog.cpp:425
 msgid "No"
@@ -733,11 +732,11 @@ msgstr "KB"
 
 #: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
-msgstr "Elimina il File"
+msgstr "Elimina file"
 
 #: src/widgets/file_chooser.cpp:169
 msgid "Deletion of the file failed."
-msgstr "Eliminazione del file fallita."
+msgstr "Eliminazione file fallita."
 
 #~ msgid "Receiving data..."
 #~ msgstr "Ricezione dati in corso..."
@@ -752,4 +751,4 @@ msgstr "Eliminazione del file fallita."
 #~ msgstr "Scaricamento in corso"
 
 #~ msgid "Set Player Start Position"
-#~ msgstr "Imposta posizione iniziale giocatore"
+#~ msgstr "Posizione iniziale giocatore"
