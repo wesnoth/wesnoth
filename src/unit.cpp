@@ -1149,6 +1149,8 @@ void unit::read(const config& cfg)
 			attacks_left_ = 0;
 			movement_ = 0;
 		}
+	} else {
+		movement_ = max_movement_;
 	}
 	experience_ = lexical_cast_default<int>(cfg["experience"]);
 	resting_ = utils::string_bool(cfg["resting"]);
