@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-23 07:56+0200\n"
-"PO-Revision-Date: 2006-06-15 00:02+0200\n"
+"PO-Revision-Date: 2006-06-28 23:25+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -479,7 +479,7 @@ msgstr "Hollanninkielinen käännös"
 
 #: data/about.cfg:227
 msgid "English (GB) Translation"
-msgstr "Britannianenglanninkielinen käännös"
+msgstr "Brittienglanninkielinen käännös"
 
 #: data/about.cfg:234
 msgid "Esperanto Translation"
@@ -547,7 +547,7 @@ msgstr "Puolankielinen käännös"
 
 #: data/about.cfg:418
 msgid "Portuguese Translation"
-msgstr "Rortugalinkielinen käännös"
+msgstr "Portugalinkielinen käännös"
 
 #: data/about.cfg:425
 msgid "Portuguese (Brazil) Translation"
@@ -1192,7 +1192,7 @@ msgstr "jousi"
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:97
 msgid "female^Dark Queen"
-msgstr "Pimeä Kuningatar"
+msgstr "Pimeyden kuningatar"
 
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:18
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:112
@@ -1372,7 +1372,7 @@ msgstr "Prinsessa"
 
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
-msgstr "Meriörkki"
+msgstr "Vesihiisi"
 
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:16
 msgid ""
@@ -1382,11 +1382,12 @@ msgid ""
 "their lack of a ranged attack and poor defence on land do represent "
 "strategic weaknesses."
 msgstr ""
-"Huolimatta siitä, että heitä pidetään usein maalla asuvia serkkujaan "
-"alempina, meriörkit ovat suuri askel hiisiroduille, sillä he ovat "
+"Vesihiidet ovat oikeastaan örkkejä eivätkä hiisiä, mutta heidän maalla "
+"asuvat serkkunsa ovat alkaneet käyttää heistä tuota alentavaa nimitystä. "
+"Tästä huolimatta vesihiidet ovat suuri edistysaskel, sillä he ovat "
 "sopeutuneet meren ympäristöön. He ovat taitavia käyttämään käyriä "
 "miekkojaan, vaikka heidän huono puolustuksensa maalla ja "
-"kaukotaisteluhyökkäyksen puute onkin strateginen heikkous."
+"kaukotaisteluhyökkäyksen puutteensa onkin strateginen heikkous."
 
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
@@ -1856,7 +1857,7 @@ msgstr "tulipallo"
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:4
 #: data/units/Undead_Necromancer.cfg:3
 msgid "Necromancer"
-msgstr "Pimeän herra"
+msgstr "Pimeyden herra"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:28
 msgid ""
@@ -1883,11 +1884,10 @@ msgstr ""
 "Tämä kyky on ensimmäinen askel kohti kuolemattomuutta. Se on mahtavinta "
 "mustaa taikuutta, minkä pimeät velhot voivat saavuttaa ilman, että "
 "menettävät ihmisyytensä, muuta kalpenee Kuolonherrojen mahdin rinnalla. "
-"Pimeän herrojen ruumiit ovat heidän taikuutensa ansiosta vahvempia, "
-"verrattuna kuihtuneeseen Kuolonherran ulkomuotoon./n/nHuomio: Pimeän herran "
-"kaukotaisteluhyökkäys on taikuutta, joten se osuu aina helposti. Pimeän "
-"herran sauva levittää ruttoa, joten kuka tahansa siihen kaatunut nousee "
-"epäelämään Pimeän herran riveissä."
+"Pimeyden herrojen ruumiit ovat heidän taikuutensa ansiosta vahvempia, "
+"verrattuna kuihtuneeseen Kuolonherran ulkomuotoon.\n"
+"\n"
+"Huomioita:"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:56
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:87
@@ -2018,11 +2018,11 @@ msgstr "kaukotaistelu"
 
 #: data/factions/alliance_of_darkness.cfg:3
 msgid "Alliance of Darkness"
-msgstr "Pimeän liitto"
+msgstr "Pimeyden liittokunta"
 
 #: data/factions/alliance_of_light.cfg:3
 msgid "Alliance of Light"
-msgstr "Valon liitto"
+msgstr "Valon liittokunta"
 
 #: data/factions/drakes-aoh.cfg:3 data/factions/drakes-default.cfg:3
 msgid "Drakes"
@@ -2034,7 +2034,7 @@ msgstr "Knalgan liittouma"
 
 #: data/factions/loyalists-aoh.cfg:3 data/factions/loyalists-default.cfg:3
 msgid "Loyalists"
-msgstr "Lojalistit"
+msgstr "Uskolliset"
 
 #: data/factions/northerners-aoh.cfg:3 data/factions/northerners-default.cfg:3
 msgid "Northerners"
@@ -2923,7 +2923,6 @@ msgstr ""
 "4 tai 8 EP per vuoro, tai estää myrkyn vaikutuksen."
 
 #: data/help.cfg:226
-#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -2932,8 +2931,8 @@ msgid ""
 msgstr ""
 "\n"
 "Parantavat yksiköt: Yksiköt jotka osaavat <ref>dst=ability_cures "
-"text=Parantaa</ref>, parantavat jokaisen vieressään olevan ystävällisen "
-"yksiköin myrkytystilan (hoivaamisen sijaan, jos yksiköllä on myös kyseinen "
+"text=Parantaa</ref>, parantavat jokaisen vieressään olevan oman puolen "
+"yksikön myrkytystilan (hoivaamisen sijaan, jos yksiköllä on myös kyseinen "
 "erikoistaito)."
 
 #: data/help.cfg:228
@@ -4155,6 +4154,26 @@ msgid ""
 "His home to steal the Basilisk's gold.\n"
 "(inscribed by Flametrooper)"
 msgstr ""
+"Tumman taivaan tuulet kylminä puhalsi,\n"
+"Aamuyön kuu korkealta kuumotti,\n"
+"Urhea oli se draakki, joka lähteä uskalsi,\n"
+"basiliskin kultaa havitteli.\n"
+"\n"
+"Tumman taivaan tuulet kylminä puhalsi,\n"
+"Draakki oppimastaan vähät välitti,\n"
+"Uhkarohkeasti hän luolaan lennähti,\n"
+"ja sisällänsä tuli leimusi.\n"
+"\n"
+"Vaan oi, kun tuo tuli niin pian sammahti,\n"
+"kun basiliski tuo suuri kerran karjaisi,\n"
+"patsaaksi draakkiraukan näin kivetti,\n"
+"siinä hän nyt seisoo ja pysyy iäti.\n"
+"\n"
+"Tumman taivaan tuulet kylminä puhaltaa,\n"
+"Kuluvat pois vuodet päivä kerrallaan,\n"
+"Niin käy sille, joka kultaa halajaa,\n"
+"Iäksi jää hän patsaana seisomaan.\n"
+"(kaiversi Flametrooper)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:99
 msgid ""
@@ -4167,6 +4186,12 @@ msgid ""
 "- - Seven Stones - and the Elven\n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"Hoikka ja notkea varreltaan\n"
+"- - Seitsemän kivistä, ja yksiVihollisensa ain' sai kaatumaan,\n"
+"- - Seitsemän kivistä, ja yksiTarkk' ampuja, joka Lohikäärmeentappajana "
+"tunnettiin,\n"
+"Täällä patsaiden joukossa tapettiin- - Seitsemän kivistä, ja yksi haltia"
+"(kaivertanut Gauteamus)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:110
 msgid ""
@@ -4185,6 +4210,20 @@ msgid ""
 "words: Good Gog, dog, are yer legs made of stone?!?\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Blum Duk oli hiisiklaanissaan saavuttanut mainetta kesytettyään yhden "
+"vuorten hukista, ja hänen urheutensa oli hänen maineensa veroinen. Vain "
+"hänen taitonsa ja johtamiskykynsä ansiosta hänen heimonsa selviytyi ihmisten "
+"ja haltiain paineessa. Huhu kertoi, että hänen sutensa yksin oli tappanut "
+"viisikymmentä ihmistä ja sata haltiaa.\n"
+"Kun hän kuuli, että lähettyville oli asettunut valtava hirviö, oli vain "
+"luonnollista, että hän ratsasti yksin sitä vastaan. Kaikki muut hiidet "
+"valmistautuivat jo juhla-ateriaan, jonka he saisivat nauttia, kun Blum Duk "
+"palaisi hirviön raadon kanssa.\n"
+"Basiliski oli kuitenkin liian kova pala hänellekin. Heti sen nähdessään hän "
+"säikähti ja yritti kääntää hukkasa toiseen suuntaan, mutta tämä ei "
+"liikahtanutkaan. Kun olio laahusti hitaasti häntä kohti, hän karjui "
+"viimeiset sanansa: Vauhtia, koira, vai ovatko jalkasi kivestä tehdyt?\n"
+"(kaivertanut Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:119
 msgid ""
@@ -4196,6 +4235,12 @@ msgid ""
 "arrived.\n"
 "(inscribed by Turin)"
 msgstr ""
+"Hän oli elänyt siellä ikiajat, veden syvyyksissä, saalistaen kaloja, "
+"sammakoita ja vetehisiä, jotka sattuivat uimaan lähettyvillä. Se oli hänen "
+"järvensä, ja vaikka se ei ollut suuri, niin hän hallitsi sitä. Sitten "
+"basiliski tuli ja katsoi vesikäärmeen silmiin. Vesikäärme ei kuollut siihen, "
+"muttei enää elänytkään. Ja niin järvi sai uuden hallitsijan.\n"
+"(kaivertanut Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:128
 msgid ""
@@ -4233,6 +4278,20 @@ msgid ""
 "granted.\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
+"Bramwythl-puu oli hidasliikkeinen, jopa puupaimenten mittakavassa. Enemmän "
+"kuin kukaan toinen puupaimen hän nautti yksinkertaisesti istumisesta "
+"auringossa kädet koholla, ihaillen pilvettömän taivaan kauneutta. Kerran hän "
+"jopa paljasti ystävälleen, että hänen suurin toiveensa oli muuttua puuksi "
+"jälleen, ja lämmitellä iäti auringon loisteessa.\n"
+"Pian tämän jälkeen seudun puupaimenet kuulivat hirviön saapumisesta. Hirviö "
+"oli kuulemma niin vahva, että se pystyi helposti tuhoamaan alueen kaikki "
+"puupaimenet. He lähtivät alueelta nopeasti (ainakin puiden mittakaavassa), "
+"mutta Bramwythl jäi jälkeen, koska kaikessa kiireessä kukaan ei ollut "
+"muistanut kertoa hänelle vaarasta.\n"
+"Hän ei edes huomannut basiliskia ennen, kuin oli jo kiveä. Hänen kivettynyt "
+"runkonsa on siellä yhä, auringonsäteiden hyväiltävänä avoimen taivaan alla. "
+"Hänen suurin toiveensa oli käynyt toteen.\n"
+"(kaivertanut Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:148
 msgid ""
@@ -4248,6 +4307,16 @@ msgid ""
 "enough, in possession of all of his teeth.\n"
 "(inscribed by Paterson)"
 msgstr ""
+"Tämä urhea nagasoturi, joka tunnettiin nimellä Rilhon, kuuli kerrottavan "
+"upeasta aarteesta, joka oli kadonnut näihin vesiluoliin - keihäästä, jonka "
+"kärjen sanottiin olleen tehty Chak'kso Ney'yksin hampaasta, tuon suuren "
+"basiliskin, jonka tappoi kauan sitten Eloralduil, haltiasankari. Tarinan "
+"mukaan ase oli jossain tämän järven pohjassa (Ruaskkolin-järven pohjassa, "
+"joka oli nimetty siellä asuneen vesikäärmeen mukaan.) Valmistauduttuaan "
+"taisteluun vesikäärmeen kanssa, Rilhon koki kaksi suurta yllätystä, "
+"Ensimmäinen oli Ruaskkolin-käärmeen kivettynyt hahmo. Toinen oli Chak'kso "
+"Ney'yks, jolla oli edelleen kaikki hampaat tallella.\n"
+"(kaivertanut Paterson)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:170
 msgid ""
@@ -4267,6 +4336,21 @@ msgid ""
 "\n"
 "(inscribed by MJQ)"
 msgstr ""
+"Läpi aaltojen ja kivisten kanavain\n"
+"sinisten ja valkoisten\n"
+"hän veti ja työnsi aaltoja\n"
+"opetti kaloja puhumaan planeettojen kanssa\n"
+"hopeanvihreiden\n"
+"taikuudella\n"
+"hänen hengestään pulppusi levälauttoja ja etanankuoria\n"
+"taivuttaen häntäänsä ja käsiään\n"
+"hän lähetti laulunsa juoksemaan hiekkaa myöten kapein jaloin\n"
+"ja nyt\n"
+"ja nyt oudoin katkos\n"
+"koska vuosisatoihin\n"
+"hän ei ole liikuttanut silmiään\n"
+"\n"
+"(kaivertanut MJQ)"
 
 #: data/scenarios/multiplayer/2p_Charge.cfg:7
 msgid "2p - Charge"
@@ -4425,8 +4509,7 @@ msgstr "Sininen tekee maalin!  Tilanne: $redscore-$bluescore"
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:332
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:609
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr ""
-"Pitäisikö minun antaa pallo eteenpäin yksikölle: $passto.type ($xloc,$yloc)"
+msgstr "Pitäisikö minun syöttää pallo yksikölle: $passto.type ($xloc,$yloc)"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:334
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:611
@@ -5460,7 +5543,6 @@ msgstr ""
 "yhdellä iskulla."
 
 #: data/tips.cfg:33
-#, fuzzy
 msgid ""
 "Units can gain After Maximum Level Advancements (AMLAs), which usually "
 "increase the unit's maximum hitpoints by 3. Gaining an AMLA becomes "
@@ -5469,8 +5551,8 @@ msgid ""
 msgstr ""
 "Yksiköt voivat yletä enimmäistasonsa jälkeenkin, jolloin useimmiten yksikön "
 "enimmäis-EP nousee kolmella. Enimmäistason jälkeinen yleneminen eli EYJ "
-"(yleisesti AMLA) on kuitenkin joka ylenemisen jälkeen vaikeampaa. Niinpä "
-"kannattaakin usein yrittää saada alempitasoisia yksiköitä ylenemään."
+"(yleisesti AMLA) on kuitenkin joka ylenemisen jälkeen vaikeampaa. Niinpä on "
+"usein järkevämpää yrittää saada alempitasoisia yksiköitä ylenemään."
 
 #: data/tips.cfg:34
 msgid ""
@@ -5610,7 +5692,7 @@ msgstr ""
 
 #: data/units/Drake_Blademaster.cfg:3
 msgid "Drake Blademaster"
-msgstr "Draakkien miekkamestari"
+msgstr "Draakkimestari"
 
 #: data/units/Drake_Blademaster.cfg:18
 msgid ""
@@ -5638,7 +5720,7 @@ msgstr ""
 
 #: data/units/Drake_Clasher.cfg:3
 msgid "Drake Clasher"
-msgstr "Iskudraakki"
+msgstr "Draakkien iskusoturi"
 
 #: data/units/Drake_Clasher.cfg:21
 msgid ""
@@ -5674,7 +5756,7 @@ msgstr ""
 
 #: data/units/Drake_Enforcer.cfg:3
 msgid "Drake Enforcer"
-msgstr "Draakkikäskijä"
+msgstr "Draakkien mahtisoturi"
 
 #: data/units/Drake_Enforcer.cfg:20
 msgid ""
@@ -5682,8 +5764,8 @@ msgid ""
 "hours at the forge have provided them with a bristling array of weaponry, "
 "and have clad them head to toe in shining armor."
 msgstr ""
-"Suuret draakkikäskijät ovat rotunsa raa'an voiman ruumillistuma. Käytettyään "
-"pitkiä aikoja ahjossa he ovat luoneet itselleen suuren asevarustuksen ja "
+"Mahtisoturit ovat rotunsa raa'an voiman ruumillistuma. Käytettyään pitkiä "
+"aikoja ahjossa he ovat luoneet itselleen suuren asevarustuksen ja "
 "pukeutuneet päästä varpaisiin kiiltävään panssariin."
 
 #: data/units/Drake_Fighter.cfg:3
@@ -5720,7 +5802,7 @@ msgstr ""
 
 #: data/units/Drake_Flameheart.cfg:3
 msgid "Drake Flameheart"
-msgstr "Draakki Liekkisydän"
+msgstr "Liekkisydän"
 
 #: data/units/Drake_Flameheart.cfg:27
 msgid ""
@@ -5758,7 +5840,7 @@ msgstr ""
 
 #: data/units/Drake_Gladiator.cfg:3
 msgid "Drake Gladiator"
-msgstr "Gladiaattoridraakki"
+msgstr "Draakkien valiosoturi"
 
 #: data/units/Drake_Gladiator.cfg:18
 msgid ""
@@ -5769,11 +5851,11 @@ msgid ""
 "maces which complement their already impressive array. Their intense focus "
 "on their weapons comes at the slight expense of their defensive abilities."
 msgstr ""
-"Gladiaattorit kulkevat täysin eri polkua kuin viiltodraakit. Harjoittelun "
-"sijaan he keskittyvät aseiden valmistukseen, ollen draakkiyhteiskunnan "
-"seppiä. He saavat parhaat aseet, terävimmät miekat ja keihäät, sekä nuijat, "
-"jotka tukevat heidän valmiiksi vaikuttavaa varustustaan. Heidän erinomaisen "
-"aseistuksensa kääntöpuoli on lievästi huonompi puolustus."
+"Valiosoturit kulkevat täysin eri polkua kuin draakkivartijat. Harjoittelun "
+"sijaan he ovat draakkiyhteiskunnan seppiä ja keskittyvät aseiden "
+"valmistukseen. He saavat parhaat aseet, terävimmät miekat ja keihäät, sekä "
+"nuijat, jotka tukevat heidän valmiiksi vaikuttavaa varustustaan. Heidän "
+"erinomaisen aseistuksensa kääntöpuoli on lievästi huonompi puolustus."
 
 #: data/units/Drake_Glider.cfg:3
 msgid "Drake Glider"
@@ -5848,7 +5930,6 @@ msgid "Sky Drake"
 msgstr "Taivasdraakki"
 
 #: data/units/Drake_Sky.cfg:29
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
@@ -5862,14 +5943,15 @@ msgstr ""
 "Taivasdraakit ovat taivaan kuninkaita. Käyttäen liikettään ja "
 "tulihenkäystään aseina, nämä draakit ovat monen kauhu. He voivat nopeasti "
 "laskeutua vihollisen niskaan ja ovat yleensä kauan sitten häipyneet kun apu "
-"saapuu paikalle."
+"saapuu paikalle.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Drake_Slasher.cfg:3
 msgid "Drake Slasher"
-msgstr "Viiltodraakki"
+msgstr "Draakkivartija"
 
 #: data/units/Drake_Slasher.cfg:20
-#, fuzzy
 msgid ""
 "Slashers are clashers who have chosen to master the use of a Halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
@@ -5879,12 +5961,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Viiltodraakit ovat iskudraakkeja, jotka ovat päättäneet erikoistua hilparin "
-"käyttöön miekan ja keihään sijasta. Heidän suuri kokonsa sallii heidän "
-"käyttää valtavia aseita, tarpeeksi suuria lävistääkseen hevosen kuten mies "
-"lävistäisi villisian. Heidän koulutuksensa on myös parantanut heidän "
-"kestoaan ja puolustustaitojaan, mikä on heidän suuri etunsa läheisiin "
-"sukulaisiinsa, gladiaattoreihin, verrattuna."
+"Draakkivartijat ovat draakkien iskusotureita, jotka ovat päättäneet "
+"erikoistua hilparin käyttöön miekan ja keihään sijasta. Heidän suuri kokonsa "
+"sallii heidän käyttää valtavia aseita, tarpeeksi suuria lävistääkseen "
+"hevosen kuten mies lävistäisi villisian. Heidän koulutuksensa on myös "
+"parantanut heidän kestoaan ja puolustustaitojaan, mikä on heidän suuri "
+"etunsa läheisiin sukulaisiinsa, valiosotureihin, verrattuna.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Drake_Slasher.cfg:76 data/units/Drake_Slasher.cfg:152
 #: data/units/Drake_Warden.cfg:82 data/units/Drake_Warden.cfg:138
@@ -5895,10 +5979,9 @@ msgstr "hilpari"
 
 #: data/units/Drake_Warden.cfg:3
 msgid "Drake Warden"
-msgstr "Draakkivartija"
+msgstr "Draakkikaartilainen"
 
 #: data/units/Drake_Warden.cfg:21
-#, fuzzy
 msgid ""
 "The Warden represents the pinnacle of the clasher caste, being picked from "
 "the most able Slashers. They have forged their might such that few warriors "
@@ -5907,10 +5990,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Vartija on iskijäkastin huipulla. Heidät valitaan taidokkaimmista "
-"viiltäjistä. He ovat kasvattaneet mahtinsa tasolle, jota vastaan vain harva "
-"soturi maan päällä uskaltaa käydä. Vartijan lempiase on hilpari, jota hän "
-"käyttää erittäin tehokkaasti."
+"Draakkikaartilaiset ovat iskijäkastin huipulla. Heidät valitaan "
+"taidokkaimmista vartijoista. He ovat kasvattaneet mahtinsa tasolle, jota "
+"vastaan vain harva soturi maan päällä uskaltaa käydä. Kaartilaisen lempiase "
+"on hilpari, jota hän käyttää erittäin tehokkaasti.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Drake_Warrior.cfg:3
 msgid "Drake Warrior"
@@ -5931,7 +6016,6 @@ msgid "Dwarvish Berserker"
 msgstr "Hurmoskääpiö"
 
 #: data/units/Dwarvish_Berserker.cfg:19
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
 "all defense in exchange for massive damage against their enemies.\n"
@@ -5941,7 +6025,9 @@ msgstr ""
 "Kääpiöt ovat muinainen rotu voimakkaita taistelijoita. Heidän "
 "hurmoskääpiönsä unohtavat kaiken puolustuksensa mahdollisimman suuren "
 "vahingon tavoittelussaan. Kun hurmoskääpiö päätyy taisteluun, hän taistelee, "
-"kunnes hän kuolee tai voittaa vihollisensa."
+"kunnes kuolee tai voittaa vihollisensa.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Dwarvish_Berserker.cfg:37 data/units/Dwarvish_Ulfserker.cfg:37
 msgid "berserker frenzy"
@@ -6018,7 +6104,6 @@ msgid "Dwarvish Guardsman"
 msgstr "Kääpiövartija"
 
 #: data/units/Dwarvish_Guardsman.cfg:20
-#, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
@@ -6028,7 +6113,9 @@ msgid ""
 msgstr ""
 "Kääpiöstä kestävimmät liittyvät kääpiöiden armeijoihin vartijoiksi. "
 "Hyökkäyksessä hitaina ja heikkoina he vahtivat armeijan sivustoja, kestävät "
-"paljon vahinkoa ja heittävät raskaita keihäitä vihollisen niskaan."
+"paljon vahinkoa ja heittävät raskaita keihäitä vihollisen niskaan.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -6084,7 +6171,6 @@ msgid "Dwarvish Sentinel"
 msgstr "Järkkymätön kääpiö"
 
 #: data/units/Dwarvish_Sentinel.cfg:20
-#, fuzzy
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks.\n"
@@ -6092,14 +6178,15 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Tornikilvestään ja loppumattomasta rohkeudestaan tunnettu järkkymätön kääpiö "
-"ei peräänny edes vahvimpien vihollishyökkäysten edessä."
+"ei peräänny edes vahvimpien vihollishyökkäysten edessä.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
 msgstr "Kaartin kääpiö"
 
 #: data/units/Dwarvish_Stalwart.cfg:19
-#, fuzzy
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are feared for their "
@@ -6108,7 +6195,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Vuosia taisteltuaan kaartin kääpiöt ovat kehittäneet uusia kilpiä ja vahvan "
-"panssarin. He ovat hitaita, mutta kestonsa ja voimansa vuoksi pelättyjä."
+"panssarin. He ovat hitaita, mutta kestonsa ja voimansa vuoksi pelättyjä.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -6179,7 +6268,6 @@ msgid "Dwarvish Ulfserker"
 msgstr "Kiihkokääpiö"
 
 #: data/units/Dwarvish_Ulfserker.cfg:19
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these in battle: they persist until either their enemy is dead "
@@ -6190,7 +6278,9 @@ msgid ""
 msgstr ""
 "Kääpiöt ovat muinainen rotu voimakkaita taistelijoita. Kiihkokääpiöt ovat "
 "heistä hurjimpia taistelussa: kun he hyökkäävät, he taistelevat kuolemaan "
-"saakka - joko itsensä tai vihollisensa."
+"saakka - joko itsensä tai vihollisensa.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
@@ -6221,7 +6311,6 @@ msgid "Elvish Avenger"
 msgstr "Haltiain kostaja"
 
 #: data/units/Elvish_Avenger.cfg:24
-#, fuzzy
 msgid ""
 "The curious name of the elvish 'Avengers' comes from a tactic often employed "
 "by these master rangers. The enemy is allowed to break through a feint "
@@ -6245,9 +6334,7 @@ msgstr ""
 "veljiensä puolesta. Vaikkei kyse ole välttämättä tästä, ei tämä arvio aina "
 "ole väärä. \n"
 "\n"
-"Huomio: Kostajien taito metsässä liikkumisessa tekee heidät näkymättömäksi, "
-"paitsi jos vihollinen on aivan vieressä, tai kostaja paljastaa sijaintinsa "
-"hyökkäämällä."
+"Huomioita:"
 
 #: data/units/Elvish_Avenger.cfg:222
 msgid "female^Elvish Avenger"
@@ -6258,7 +6345,6 @@ msgid "Elvish Captain"
 msgstr "Haltiakapteeni"
 
 #: data/units/Elvish_Captain.cfg:27
-#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. This is quite at odds with "
@@ -6275,8 +6361,7 @@ msgstr ""
 "Yhdistelmä halua hyväksyä johtajien viisaus ja taipumus valita lahjakkaita "
 "johtajia on yksi haltioiden hiljaisista vahvuuksista. \n"
 "\n"
-"Huomio: Kapteenin johtamistaito sallii alempitasoisten viereisten yksiköiden "
-"tehdä lisää vahinkoa taistelussa."
+"Huomioita:"
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
@@ -6303,7 +6388,6 @@ msgid "female^Elvish Druid"
 msgstr "Haltiadruidi"
 
 #: data/units/Elvish_Druid.cfg:22
-#, fuzzy
 msgid ""
 "The magic of the wood elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they live can be quickened by a word of "
@@ -6321,9 +6405,7 @@ msgstr ""
 "Heidän tärkein kykynsä on parantaminen, ja tämän taidon takia haltiadruidit "
 "ovat kansansa rakastamia.\n"
 "\n"
-"Huomio: Druidien vangitsevat hyökkäykset puolittavat vihollisen liikkumisen "
-"ja tämän tekemän vahingon. Druidit kykenevät parantamaan myrkytystilat ja "
-"yksiköitä ympärillään."
+"Huomioita:"
 
 #: data/units/Elvish_Druid.cfg:55 data/units/Elvish_Shyde.cfg:58
 msgid "ensnare"
@@ -6419,14 +6501,13 @@ msgstr "pitkäjousi"
 
 #: data/units/Elvish_Marksman.cfg:222
 msgid "female^Elvish Marksman"
-msgstr "Haltiatarkk'ampujatar"
+msgstr "Haltiatarkk'ampuja"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
 msgstr "Haltiain marsalkka"
 
 #: data/units/Elvish_Marshal.cfg:28
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves makes for a vicious aptitude "
 "for military matters, enough even to counter their general distaste for such "
@@ -6444,8 +6525,7 @@ msgstr ""
 "harvoin, kun haltia omistautuu sodalle, noudatettu strategia on mestarin "
 "työtä. \n"
 "\n"
-"Huomio: Marsalkan johtamistaito sallii viereisten, matalammalla tasolla "
-"olevien yksiköiden tehdä enemmän vahinkoa taistelussa."
+"Huomioita:"
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
@@ -6477,7 +6557,6 @@ msgid "Elvish Ranger"
 msgstr "Haltiasamooja"
 
 #: data/units/Elvish_Ranger.cfg:21
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a place he is not truly a part of. With elves, "
@@ -6493,13 +6572,11 @@ msgstr ""
 "yhdistetään huomattava taito jousiammunnassa ja miekkailussa, voidaan "
 "samoojia pitää mahtavina sotureina.\n"
 "\n"
-"Huomio: Samoojien taito metsässä liikkumisessa tekee heidät näkymättömäksi, "
-"paitsi jos vihollinen on aivan vieressä, tai samooja paljastaa sijaintinsa "
-"hyökkäämällä."
+"Huomioita:"
 
 #: data/units/Elvish_Ranger.cfg:219
 msgid "female^Elvish Ranger"
-msgstr "Haltiasamoojatar"
+msgstr "Haltiasamooja"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
@@ -6546,7 +6623,6 @@ msgid "female^Elvish Shaman"
 msgstr "Haltiashamaani"
 
 #: data/units/Elvish_Shaman.cfg:24
-#, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -6568,16 +6644,13 @@ msgstr ""
 "Haltioiden parannustaidot ovat myös huomattavia, ja erittäin hyödyllisiä "
 "taistelussa. \n"
 "\n"
-"Huomio: Haltiashamaanin vangitsevat hyökkäykset puolittavat vihollisen "
-"liikkumisen ja tämän tekemän vahingon. Haltiashamaanit osaavat hoivata, "
-"mutta he eivät osaa parantaa myrkytystä, vain hidastaa myrkyn vaikutusta."
+"Huomioita:"
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
-msgstr "Haltian mestariampuja"
+msgstr "Haltiain mestariampuja"
 
 #: data/units/Elvish_Sharpshooter.cfg:22
-#, fuzzy
 msgid ""
 "A story once wandered about, of an elf who stopped an arrow by shooting it "
 "out of the air with one of his own. It is a testament to the skill of the "
@@ -6591,19 +6664,17 @@ msgstr ""
 "haltioiden taidosta jousiammunnassa. Haltioiden mestariampujat ovat, nimensä "
 "mukaisesti, jousiammunnan mestareita.\n"
 "\n"
-"Huomio: Tarkk'ammuntakyky sallii heidän osua helposti vihollisiinsa "
-"hyökätessä."
+"Huomioita:"
 
 #: data/units/Elvish_Sharpshooter.cfg:231
 msgid "female^Elvish Sharpshooter"
-msgstr "Haltian mestariampujatar"
+msgstr "Haltiain mestariampuja"
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
 msgstr "Keijuparantaja"
 
 #: data/units/Elvish_Shyde.cfg:22
-#, fuzzy
 msgid ""
 "Devotion to her faerie side will eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a nature which is little understood, "
@@ -6616,9 +6687,7 @@ msgstr ""
 "maailmojen olennoksi. Heidän tekojaan ymmärretään vähän, mutta nämä metsän "
 "kauniit vartijat todistavat kansansa mysteerin ja kauneuden. \n"
 "\n"
-"Huomio: Keijun vangitsevat hyökkäykset puolittavat vihollisen liikkumisen ja "
-"tämän tekemän vahingon. Keijut kykenevät parantamaan yksiköitä ympärillään "
-"ja poistamaan myrkytyksen."
+"Huomioita:"
 
 #: data/units/Elvish_Shyde.cfg:29 data/units/Elvish_Sylph.cfg:26
 msgid "faerie touch"
@@ -6629,7 +6698,6 @@ msgid "female^Elvish Sorceress"
 msgstr "Haltiavelhotar"
 
 #: data/units/Elvish_Sorceress.cfg:18
-#, fuzzy
 msgid ""
 "Eschewing the study of healing in favor of more aggressive uses of magic, "
 "Elvish Sorceresses have become quite proficient at ranged combat. Their "
@@ -6639,17 +6707,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Hyläten parannuksen tutkimisen aggressiivisen taikuuden hyväksi, "
-"haltiavelhottarista on nopeasti tullut taitavia kaukotaistelijoita. Heidän "
-"vangitseva hyökkäyksensä on huomattavasti tehokkaampi kuin shamaanien, ja he "
-"voivat kutsua avukseen jäätävää tuulta taistelussa."
+"Haltiavelhotar on valinnut hyökkäysloitsut ja tullut nopeasti taitavaksi "
+"kaukotaistelijaksi, mutta samalla hän on menettänyt kyvyn parantaa. Hänen "
+"vangitseva hyökkäyksensä on huomattavasti tehokkaampi kuin shamaanin, ja hän "
+"voi kutsua taistelussa avukseen jäätävää tuulta.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
 msgstr "Keijulumoojatar"
 
 #: data/units/Elvish_Sylph.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Sylphs are scions of beauty in the mortal plane. Having fully "
 "developed their faerie side, they transform into creatures of both worlds, "
@@ -6659,7 +6728,9 @@ msgid ""
 msgstr ""
 "Keijulumoojattaret ovat kauneuden vesoja maan päällä. He ovat kasvaneet "
 "täysin keijukaispuoleensa, muuttuen molempien maailmojen olennoiksi ja "
-"käyttäen vahvaa taikuutta vihollisiaan vastaan."
+"käyttäen vahvaa taikuutta vihollisiaan vastaan.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Elvish_Sylph.cfg:55
 msgid "gossamer"
@@ -6670,7 +6741,6 @@ msgid "Direwolf Rider"
 msgstr "Hukkaratsastaja"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:22
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the garden variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -6693,12 +6763,10 @@ msgstr ""
 "\n"
 "Suden kynsiä ei usein pidetä niiden vaarallisimpina aseina, mutta tämän "
 "kokoisella pedolla ne ovat pidempiä ja paksumpia kuin rautanaulat. Kuten "
-"örkkisalamurhaavat vaitsiinsä, tuhrivat hukkaratsastajat petojen kynsiin "
+"örkkisalamurhaajat veitsiinsä, hukkaratsastajat tuhrivat petojensa kynsiin "
 "myrkkyä, tehden hukkien tassun iskusta mitä kuolettavimman.\n"
 "\n"
-"Huomio: Kuka tahansa hukan kynsistä haavoittunut myrkyttyy menettää "
-"elämäpisteitä jatkuvasti kunnes hänet viedään kylään tai parantava yksikkö "
-"parantaa myrkytystilan."
+"Huomioita:"
 
 #: data/units/Goblin_Direwolf_Rider.cfg:40 data/units/Goblin_Knight.cfg:40
 #: data/units/Goblin_Wolf_Rider.cfg:41 data/units/Monster_Cave_Spider.cfg:41
@@ -6709,7 +6777,7 @@ msgstr "torahampaat"
 
 #: data/units/Goblin_Impaler.cfg:3
 msgid "Goblin Impaler"
-msgstr "Hiisiseivästäjä"
+msgstr "Hiisisoturi"
 
 #: data/units/Goblin_Impaler.cfg:19
 msgid ""
@@ -6781,7 +6849,7 @@ msgstr "verkko"
 
 #: data/units/Goblin_Rouser.cfg:3
 msgid "Goblin Rouser"
-msgstr "Hiisinostattaja"
+msgstr "Hiisipäällikkö"
 
 #: data/units/Goblin_Rouser.cfg:26
 msgid ""
@@ -6803,7 +6871,7 @@ msgstr ""
 
 #: data/units/Goblin_Spearman.cfg:3
 msgid "Goblin Spearman"
-msgstr "Keihäshiisi"
+msgstr "Hiisi"
 
 #: data/units/Goblin_Spearman.cfg:18
 msgid ""
@@ -6976,7 +7044,6 @@ msgid "Paladin"
 msgstr "Pyhä ritari"
 
 #: data/units/Human_Horse_Paladin.cfg:21
-#, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to monastic "
 "orders, pledging their might to the cause of righteousness. Though not as "
@@ -6992,7 +7059,9 @@ msgstr ""
 "Vaikka he eivät ole taistelukentällä yhtä pelottavia kuin mahtiritarit, "
 "pyhät ritarit ovat vaarallisia taistelussa, ja heidän hurskautensa antaa "
 "heille muita lahjoja. Pyhä ritari on tuonpuoleisen joukkojen kauhu ja hän "
-"osaa hoitaa tovereidensa haavoja."
+"osaa hoitaa tovereidensa haavoja.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Human_Horse_Paladin.cfg:33 data/units/Human_Mage_White.cfg:148
 #: data/units/Human_Mage_of_Light.cfg:108 data/units/Mermaid_Diviner.cfg:92
@@ -7223,7 +7292,6 @@ msgid "Halberdier"
 msgstr "Hilparimies"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:22
-#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -7253,8 +7321,7 @@ msgstr ""
 "vain kokeneille seiväsmiehille, jotka ovat todistaneet, että heillä on "
 "taitoa käyttää tätä asetta oikein taistelukentällä.\n"
 "\n"
-"Huomio: Aseen pituus salllii hilparimiehen lyödä ensin lähitaistelussa, jopa "
-"puolustaessa."
+"Huomioita:"
 
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
@@ -7312,7 +7379,6 @@ msgid "Javelineer"
 msgstr "Keihäänheittäjä"
 
 #: data/units/Human_Loyalist_Javelineer.cfg:20
-#, fuzzy
 msgid ""
 "Spearmen almost always equip themselves with a few javelins, to harry, if "
 "not kill, enemies at range. Some, however, take to them rather well, finding "
@@ -7332,8 +7398,7 @@ msgstr ""
 "He voivat heittää keihäitä vihollisen riveihin kaukaa, usein ilman "
 "vastahyökkäystä, ja ovat silti voimakkaita lähitaistelussa.\n"
 "\n"
-"Huomio: Keihäänheittäjän aseen pituus sallii heidän lyödä ensin "
-"lähitaistelussa, jopa puolustaessa."
+"Huomioita:"
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:3
 msgid "Lieutenant"
@@ -7398,7 +7463,6 @@ msgid "Master at Arms"
 msgstr "Aselajien mestari"
 
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:21
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though theirs is a reckless and "
 "dangerous way of life, they have reached the time wherein they reap its "
@@ -7425,15 +7489,13 @@ msgstr ""
 "sotilaskoulujen mestareina, asemasta, jossa heidän hurjapäinen luontonsa "
 "paitsi hyväksytään, se saattaa olla myös hyödyllinen.\n"
 "\n"
-"Huomio: Heidän taitonsa kahakoitsijoina sallii aselajien mestarien jättää "
-"vihollisen hallitsemat alueet huomiotta."
+"Huomioita:"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:3
 msgid "Pikeman"
 msgstr "Seiväsmies"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:19
-#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -7451,7 +7513,7 @@ msgstr ""
 "rynnäkön kauhu, ja oikealla koulutuksella ja taktiikalla keihäsmiehet voivat "
 "pitää myös enintä osaa jalkaväestä kaukana. \n"
 "\n"
-"Huomio: Hänen aseensa pituus sallii seiväsmiehen lyödä lähitaistelussa ensin."
+"Huomioita:"
 
 #: data/units/Human_Loyalist_Pikeman.cfg:60
 msgid "pike"
@@ -7524,7 +7586,6 @@ msgid "Spearman"
 msgstr "Keihäsmies"
 
 #: data/units/Human_Loyalist_Spearman.cfg:20
-#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a head, "
@@ -7541,8 +7602,7 @@ msgstr ""
 "useimpien armeijoiden selkäranka. He joutuvat usein etulinjaan hyvin "
 "vähäisellä koulutuksella.\n"
 "\n"
-"Huomio: Heidän aseidensa pituus sallii keihäsmiesten lyödä lähitaistelussa "
-"aina ensin."
+"Huomioita:"
 
 #: data/units/Human_Loyalist_Swordsman.cfg:3
 msgid "Swordsman"
@@ -7569,7 +7629,6 @@ msgid "Mage"
 msgstr "Velho"
 
 #: data/units/Human_Mage.cfg:23
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -7608,8 +7667,7 @@ msgstr ""
 "Fyysisesti heikkoina ja taidottomina lähitaistelussa velhoilla on kuitenkin "
 "tiettyjä kykyjä, joista on hyötyä taistelussa. \n"
 "\n"
-"Huomio: Velhon pitkänmatkan hyökkäykset ovat maagisia ja osuvat aina "
-"helposti."
+"Huomioita:"
 
 #: data/units/Human_Mage.cfg:166
 msgid "female^Mage"
@@ -7620,7 +7678,6 @@ msgid "Arch Mage"
 msgstr "Arkkivelho"
 
 #: data/units/Human_Mage_Arch.cfg:20
-#, fuzzy
 msgid ""
 "The title of Arch Mage is conferred only after a lifetime of study and "
 "achievement to match. Arch Magi are often employed in positions of "
@@ -7649,15 +7706,13 @@ msgstr ""
 "Vaikka heitä ei ole taisteluun koulutettu, tarvittaessa arkkivelho voi "
 "vapauttaa taitonsa täyden voiman, mitä ei pidä ottaa kevyesti.\n"
 "\n"
-"Huomio: Arkkivelhon tulipallot ovat taikuutta, joten niillä on aina hyvä "
-"mahdollisuus osua."
+"Huomioita:"
 
 #: data/units/Human_Mage_Great.cfg:3
 msgid "Great Mage"
 msgstr "Suurvelho"
 
 #: data/units/Human_Mage_Great.cfg:21
-#, fuzzy
 msgid ""
 "Any person who is even considered for the title of Great Mage is quite "
 "nearly a legend in their own time, and town criers have forcibly learnt "
@@ -7683,15 +7738,13 @@ msgstr ""
 "Vaikka he eivät ole sotureita, heidän taitonsa käyttäminen taistelussa on "
 "jotain, mitä muut sotilaat katsovat kauhuissaan.\n"
 " \n"
-"Huomio: Suurvelhon tulipallot ovat maagisia ja niillä on aina suuri "
-"mahdollisuus osua."
+"Huomioita:"
 
 #: data/units/Human_Mage_Red.cfg:3
 msgid "Red Mage"
 msgstr "Punainen velho"
 
 #: data/units/Human_Mage_Red.cfg:20
-#, fuzzy
 msgid ""
 "Upon the successful termination of their apprenticeship, a mage is stripped "
 "of the blue robes of an apprentice, and given the red robes of a master. The "
@@ -7709,8 +7762,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Kun velhon kisälliaika päättyy, heidän siniset kaapunsa otetaan pois ja "
-"korvataan mestarin punaisilla kaavuilla. Tämän eron tärkeys menee "
-"talonpojissa hukkaan, ja he kutsuvat mestarivelhoja 'punaisiksi velhoiksi'. "
+"korvataan mestarin punaisilla kaavuilla. Tämän eron tärkeyttä eivät "
+"talonpojat tajua, ja he kutsuvat mestarivelhoja 'punaisiksi velhoiksi'. "
 "Samalla tavalla muutoksen merkitys liitetään usein väärin velhon kykyyn "
 "luoda tulta pelkästä ilmasta, joka on kieltämättä hyödyllistä, mutta on vain "
 "alkeellinen sovellus tiedoista, joita he ovat vaivalla hankkineet.\n"
@@ -7719,15 +7772,13 @@ msgstr ""
 "punaiset velhot pitävät monia ässiä hihassaan, mukaan lukien tulipallot, "
 "joilla he ovat sinetöineet väärän nimensä.\n"
 "\n"
-"Huomio: Punaisen velhon tulipallot ovat maagisia ja niillä on aina suuri "
-"mahdollisuus osua."
+"Huomioita:"
 
 #: data/units/Human_Mage_Silver.cfg:3
 msgid "Silver Mage"
 msgstr "Hopeavelho"
 
 #: data/units/Human_Mage_Silver.cfg:23
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -7772,17 +7823,13 @@ msgstr ""
 "taitonsa ovat varsin hyödyllisiä taistelukentällä, jos onnistuu jotenkin "
 "vakuuttamaan velhon käyttämään niitä.\n"
 "\n"
-"Huomio: Hopeavelhon pitkänmatkan hyökkäys on maaginen, ja osuu aina "
-"helposti. Hopeavelhot vastustavat hyvin maagista vahinkoa. He voivat myös "
-"kaukosiirtyä kahden kylän välillä viiveettä, joskin pelaajan tulee hallita "
-"molempia ja kohdekylän tulee olla miehittämätön."
+"Huomioita:"
 
 #: data/units/Human_Mage_White.cfg:3
 msgid "White Mage"
 msgstr "Valkea velho"
 
 #: data/units/Human_Mage_White.cfg:22
-#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -7807,10 +7854,7 @@ msgstr ""
 "vastaan he ovat mahtava liittolainen. Jos tarve tulee, he voivat kutsua "
 "valon voiman apuun karkottaakseen tuonpuoleisen kuolevaiselta tasolta.\n"
 "\n"
-"Huomio: Valkoisten velhojen valo on taikuutta, joten sillä on aina suuri "
-"mahdollisuus osua kohteeseensa. Valo tekee suurta vahinkoa epäkuolleisiin ja "
-"joihinkin eläviin olentoihin. Valkoiset velhot voivat parantaa yksiköitä "
-"ympärillään ja poistaa heistä myrkytyksen."
+"Huomioita:"
 
 #: data/units/Human_Mage_White.cfg:147 data/units/Human_Mage_of_Light.cfg:107
 #: data/units/Mermaid_Diviner.cfg:91 data/units/Mermaid_Priestess.cfg:55
@@ -7826,7 +7870,6 @@ msgid "Mage of Light"
 msgstr "Valon velho"
 
 #: data/units/Human_Mage_of_Light.cfg:24
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi are bestowed with "
 "vast spiritual powers. By strict devotion to the path of the light, they can "
@@ -7846,11 +7889,7 @@ msgstr ""
 "väsymättä tuodakseen elämää ja järjestystä siihen kaoottiseen maailmaan, "
 "jossa asuvat.\n"
 "\n"
-"Huomio: Valon velhon lähettämä valo on maagista luonteeltaan ja osuu aina "
-"helposti. Tämä valo vahingoittaa epäkuolleita ja jopa joitakin eläviä "
-"olentoja suuresti. Valon velhot kykenevät parantamaan yksiköitä ympäriltään "
-"ja poistamaan myrkkyä. Heillä on myös valaisun taito, joka nostaa valon "
-"määrää velhon ympärillä."
+"Huomioita:"
 
 #: data/units/Human_Mage_of_Light.cfg:169
 msgid "female^Mage of Light"
@@ -7886,7 +7925,6 @@ msgid "Assassin"
 msgstr "Salamurhaaja"
 
 #: data/units/Human_Outlaw_Assassin.cfg:20
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -7904,9 +7942,7 @@ msgstr ""
 "myrkkyveitset kaukaa tai selkään pistetyt tikarit. Salamurhaajat eivät pidä "
 "taistelemisesta päivällä.\n"
 "\n"
-"Huomio: Kun salamurhaajan liittolainen häiritsee vihollista, kiertämällä "
-"vihollisen taakse salamurhaaja voi kaksinkertaistaa tekemänsä vahingon. Sen "
-"lisäksi heidän heittoveitsensä ovat myrkyllisiä."
+"Huomioita:"
 
 #: data/units/Human_Outlaw_Assassin.cfg:153
 #: data/units/Human_Outlaw_Rogue.cfg:81
@@ -7915,11 +7951,11 @@ msgstr "veitsi"
 
 #: data/units/Human_Outlaw_Assassin.cfg:214
 msgid "female^Assassin"
-msgstr "Salamurhaajatar"
+msgstr "Salamurhaaja"
 
 #: data/units/Human_Outlaw_Bandit.cfg:3
 msgid "Bandit"
-msgstr "Tappelija"
+msgstr "Maantierosvo"
 
 #: data/units/Human_Outlaw_Bandit.cfg:17
 msgid ""
@@ -7937,7 +7973,7 @@ msgstr ""
 
 #: data/units/Human_Outlaw_Footpad.cfg:3
 msgid "Footpad"
-msgstr "Pikkurosvo"
+msgstr "Rosvo"
 
 #: data/units/Human_Outlaw_Footpad.cfg:18
 msgid ""
@@ -7948,10 +7984,10 @@ msgid ""
 "despite their pitiable weaponry, they are quite good at harrying their "
 "enemies, especially under cover of darkness."
 msgstr ""
-"Nämä pikkurikolliset, tai pikkurosvot, kuten ylemmät heitä alentavasti "
-"kutsuvat, saavat usein kaikki työt, joihin liittyy paljon juoksentelua "
-"ympäriinsä, kuten kuriiri- tai tiedustelutehtäviä. Tästä syntyvyy heidän "
-"jalkojensa kestävyys ja kyvyt, joista on usein hyötyä taistelussa. Huonosta "
+"Nämä pikkurikolliset, tai rosvot, kuten ylemmät heitä alentavasti kutsuvat, "
+"saavat usein kaikki työt, joihin liittyy paljon juoksentelua ympäriinsä, "
+"kuten kuriiri- tai tiedustelutehtäviä. Tästä syntyvyy heidän jalkojensa "
+"kestävyys ja kyvyt, joista on usein hyötyä taistelussa. Huonosta "
 "aseistuksestaan huolimatta he ovat varsin hyviä vihollisen häiritsemisessä, "
 "varsinkin pimeän suojassa."
 
@@ -7981,7 +8017,6 @@ msgid "Rogue"
 msgstr "Ryöväri"
 
 #: data/units/Human_Outlaw_Rogue.cfg:18
-#, fuzzy
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
 "rogues have spent many an unpleasant moment darting through crowds and "
@@ -7998,8 +8033,7 @@ msgstr ""
 "taistelussa. Veitsen mestareina he osaavat myös heittää niitä tarkasti ja "
 "monien öisten retkien kokemusten jälkeen he taistelevat mieluiten yöllä.\n"
 "\n"
-"Huomio: Kun ryövärin liittolainen häiritsee vihollista, kiertämällä "
-"vihollisen taakse ryöväri voi kaksinkertaistaa tekemänsä vahingon."
+"Huomioita:"
 
 #: data/units/Human_Outlaw_Rogue.cfg:129
 msgid "female^Rogue"
@@ -8010,7 +8044,6 @@ msgid "Thief"
 msgstr "Varas"
 
 #: data/units/Human_Outlaw_Thief.cfg:19
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -8027,11 +8060,9 @@ msgstr ""
 "usein heidän ammattinsa liittyy vähemmän laillisiin puuhiin. Varkailla on "
 "monia taitoja ja he ovat pakosta sekä ketteriä jaloistaan että taitavia "
 "veitsen käyttäjiä. He käyttävät iloisesti vähemmänkin kunniallisia "
-"taktiikoita taistelussa ymmärtämättä 'reilun taiston' ideaa.\n"
+"taktiikoita taistelussa ymmärtämättä 'reilun pelin' henkeä.\n"
 "\n"
-"Huomio: Kun varkaan liittolainen häiritsee vihollista, varas voi hiipimällä "
-"vihollisen taakse puukottaa tätä selkään ja kaksinkertaistaa näin tekemänsä "
-"vahingon."
+"Huomioita:"
 
 #: data/units/Human_Outlaw_Thief.cfg:134
 msgid "female^Thief"
@@ -8115,7 +8146,6 @@ msgid "female^Mermaid Enchantress"
 msgstr "Merenneitolumoojatar"
 
 #: data/units/Mermaid_Enchantress.cfg:20
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different. Those who master this ability are held in "
@@ -8133,7 +8163,7 @@ msgstr ""
 "kielletty heidän omaa kansaansa vastaan - tämä voima on suuri osa siitä, "
 "joka suojelee heidän kansaansa syvyyksien hirviöiltä. \n"
 "\n"
-"Huomio: Merenneiton vesi-iskut ovat taikuutta, joten ne osuvat aina helposti."
+"Huomioita:"
 
 #: data/units/Mermaid_Enchantress.cfg:77 data/units/Mermaid_Initiate.cfg:80
 #: data/units/Mermaid_Siren.cfg:80
@@ -8145,7 +8175,6 @@ msgid "female^Mermaid Initiate"
 msgstr "Merenneitonoviisi"
 
 #: data/units/Mermaid_Initiate.cfg:23
-#, fuzzy
 msgid ""
 "Young Mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -8163,15 +8192,13 @@ msgstr ""
 "Hentoudestaan huolimatta he ovat tämän ansiosta varsin vahvoja taistelussa, "
 "kun he voivat kutsua veden ympärillään lyömään vihollisiaan.\n"
 "\n"
-"Huomio: Vesi-iskut, joita merenneidot käyttävät, ovat taikuutta, joten "
-"niillä on aina hyvä mahdollisuus osua."
+"Huomioita:"
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
 msgstr "Merenneitopapitar"
 
 #: data/units/Mermaid_Priestess.cfg:25
-#, fuzzy
 msgid ""
 "Mermen share the creed that much of humanity follows, though for cultural "
 "reasons, the upholding of this is left to the mermaids, who are more "
@@ -8190,9 +8217,7 @@ msgstr ""
 "uskonsa suo heille myös joitain henkisiä voimia, mikä sallii heidän suojella "
 "kansaansa tuonpuoleiselta.\n"
 "\n"
-"Huomio: Papittaren valo on maagista, joten se osuu aina helposti. Valo tekee "
-"huomattavaa vahinkoa epäkuolleisiin ja joihinkin eläviin. Papittaret "
-"kykenevät parantamaan yksiköitä ympärillään ja poistamaan myrkkyä."
+"Huomioita:"
 
 #: data/units/Mermaid_Siren.cfg:3
 msgid "Mermaid Siren"
@@ -8235,7 +8260,6 @@ msgid "Merman Entangler"
 msgstr "Merenmiesvangitsija"
 
 #: data/units/Merman_Entangler.cfg:20
-#, fuzzy
 msgid ""
 "The weighted nets used by mermen in warfare are a difficult weapon to use "
 "well; those who master it are valued and revered by their comrades. This "
@@ -8251,8 +8275,7 @@ msgstr ""
 "tekee heidän rodustaan uhkan jopa niillä vihollisille, jotka vain lähestyvät "
 "vettä.\n"
 "\n"
-"Huomio: Verkkoon jääminen puolittaa vihollisia liikkumisen ja tehdyn "
-"vahingon."
+"Huomioita:"
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
@@ -8277,7 +8300,6 @@ msgid "Merman Hoplite"
 msgstr "Hopliitti"
 
 #: data/units/Merman_Hoplite.cfg:21
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -8289,7 +8311,9 @@ msgstr ""
 "Tornikilvillä varustetut hopliitit ovat vetisen valtakunnan eliittikaarti. "
 "Heidän voimakas panssarinsa ja tiukka kurinsa auttaa heitä pitämään "
 "järkkymättömän linjan taistelun tuoksinassa. Epätoivoisina aikoina he voivat "
-"tehdä niin jopa maalla, mutta eivät yhtä hyvin kuin jalalliset olennot."
+"tehdä niin jopa maalla, mutta eivät yhtä hyvin kuin jalalliset olennot.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
@@ -8327,7 +8351,6 @@ msgid "Merman Netcaster"
 msgstr "Merenmiesverkonheittäjä"
 
 #: data/units/Merman_Netcaster.cfg:19
-#, fuzzy
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets. These are not very damaging in themselves, but they "
@@ -8349,8 +8372,7 @@ msgstr ""
 "vedessä, että tasoittaakseen tilannetta maalla, jossa vihollisilla olisi "
 "muuten suuri etu.\n"
 "\n"
-"Huomio: Verkkoon jääminen puolittaa vihollisia liikkumisen ja tehdyn "
-"vahingon."
+"Huomioita:"
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
@@ -8403,7 +8425,6 @@ msgid "Giant Spider"
 msgstr "Jättiläishämähäkki"
 
 #: data/units/Monster_Cave_Spider.cfg:18
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They can bite at close range, thereby poisoning their enemies, and also can "
@@ -8413,7 +8434,9 @@ msgid ""
 msgstr ""
 "Jättiläishämähäkkien sanotaan vaeltavan Knalgan syvyyksissä. Ne purevat "
 "läheltä, myrkyttäen vihollisensa, mutta osaavat myös hyökätä kaukaa "
-"verkoilla, hidastaen vihollisensa."
+"verkoilla, hidastaen vihollisensa.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Monster_Cave_Spider.cfg:110
 msgid "web"
@@ -8424,7 +8447,6 @@ msgid "Cuttle Fish"
 msgstr "Mustekala"
 
 #: data/units/Monster_Cuttle_Fish.cfg:18
-#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
@@ -8435,7 +8457,9 @@ msgid ""
 msgstr ""
 "Mustekalat ovat jättimäisiä mereneläviä. Ne tarraavat vihollisiinsa "
 "lonkeroilla tai sylkevät myrkyllistä mustettu kauempaa. Paras tapa selvitä "
-"hengissä näiltä otuksilta on pysyä rannalla."
+"hengissä näiltä otuksilta on pysyä rannalla.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Monster_Cuttle_Fish.cfg:41 data/units/Monster_Tentacle.cfg:65
 msgid "tentacle"
@@ -8475,7 +8499,6 @@ msgid "Giant Scorpion"
 msgstr "Jättiskorpioni"
 
 #: data/units/Monster_Giant_Scorpion.cfg:20
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - one the size of a man needs little "
 "explanation.\n"
@@ -8483,7 +8506,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Tavallinen skorpioni on kyllin vaarallinen - miehen kokoista tarvitsee "
-"tuskin selittää."
+"tuskin selittää.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Monster_Giant_Scorpion.cfg:31
 msgid "sting"
@@ -8521,7 +8546,6 @@ msgid "Tentacle of the Deep"
 msgstr "Syvyyden lonkero"
 
 #: data/units/Monster_Tentacle.cfg:19
-#, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
 "below the waves.\n"
@@ -8529,7 +8553,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Syvyyden lonkerot ovat jonkin aaltojen alla piileskelevän isomman hirviön "
-"ruumiinosia."
+"ruumiinosia.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Monster_Yeti.cfg:3
 msgid "Yeti"
@@ -8565,7 +8591,7 @@ msgstr ""
 
 #: data/units/Naga_Fighter.cfg:76
 msgid "Nagini Fighter"
-msgstr "Nagataistelijatar"
+msgstr "Nagataistelija"
 
 #: data/units/Naga_Myrmidon.cfg:3
 msgid "Naga Myrmidon"
@@ -8681,7 +8707,6 @@ msgid "Orcish Assassin"
 msgstr "Örkkisalamurhaaja"
 
 #: data/units/Orcish_Assassin.cfg:19
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -8698,9 +8723,7 @@ msgstr ""
 "taktiikkansa auttavat huomattavasti heidän vahvempia, suoraviivaisempia "
 "sukulaisiaan.\n"
 "\n"
-"Huomio: Örkkisalamurhaajat käyttävät myrkkyä heittoveitsissään, ja tämän "
-"myrkyn uhrit vahingoittuvat jatkuvasti, ellei niitä paranneta kylässä tai "
-"parantajalla."
+"Huomioita:"
 
 #: data/units/Orcish_Assassin.cfg:76 data/units/Orcish_Slayer.cfg:96
 msgid "throwing knives"
@@ -8745,7 +8768,6 @@ msgid "Orcish Leader"
 msgstr "Örkkipäällikkö"
 
 #: data/units/Orcish_Leader.cfg:20
-#, fuzzy
 msgid ""
 "Orcish Leaders are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8759,14 +8781,15 @@ msgstr ""
 "johtavat kansansa taisteluun. He kantavat jousta, koska sillä on käyttöä, "
 "mutta ovat paljon parempia miekan kanssa. Kaiken kaikkiaan he ovat "
 "voimakkaita taistelijoita. Heidän luontainen johtamiskykynsä tekee heistä "
-"arvokkaita taistelussa: jos päällikkö menetetään, taistelu on hävitty."
+"arvokkaita taistelussa: jos päällikkö menetetään, taistelu on hävitty.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
 msgstr "Örkkihallitsija"
 
 #: data/units/Orcish_Ruler.cfg:19
-#, fuzzy
 msgid ""
 "Orcish Rulers are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8780,14 +8803,15 @@ msgstr ""
 "johtavat kansansa taisteluun. He kantavat jousta, koska sillä on käyttöä, "
 "mutta ovat paljon parempia miekan kanssa. Kaiken kaikkiaan he ovat "
 "voimakkaita taistelijoita. Heidän luontainen johtamiskykynsä tekee heistä "
-"arvokkaita taistelussa: jos hallitsija menetetään, taistelu on hävitty."
+"arvokkaita taistelussa: jos hallitsija menetetään, taistelu on hävitty.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
 msgstr "Örkkisurmaaja"
 
 #: data/units/Orcish_Slayer.cfg:19
-#, fuzzy
 msgid ""
 "The larger, and often more skilled orcish assassins are called 'Slayers' by "
 "their enemies, though this distinction is somewhat unclear. Slayers are fast "
@@ -8804,9 +8828,7 @@ msgstr ""
 "tehokas ase ja sen yleisyys taistelukentällä on usein örkkien vahvuuden "
 "todellinen syy.\n"
 "\n"
-"Huomio: Örkkisurmaajat käyttävät myrkytettyjä heittoveitsiä ja  myrkyttyneet "
-"uhrit vahingoittuvat jatkuvasti, ellei niitä paranneta kylässä tai "
-"parantajalla."
+"Huomioita:"
 
 #: data/units/Orcish_Slurbow.cfg:3
 msgid "Orcish Slurbow"
@@ -8831,7 +8853,6 @@ msgid "Orcish Sovereign"
 msgstr "Örkkivaltias"
 
 #: data/units/Orcish_Sovereign.cfg:20
-#, fuzzy
 msgid ""
 "Orcish Sovereigns are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle. They carry a bow out of "
@@ -8845,7 +8866,8 @@ msgstr ""
 "johtavat kansansa taisteluun. He kantavat jousta, koska sillä on käyttöä, "
 "mutta ovat paljon parempia miekan kanssa. Kaiken kaikkiaan he ovat "
 "voimakkaita taistelijoita. Heidän luontainen johtamiskykynsä tekee heistä "
-"arvokkaita taistelussa: jos valtias menetetään, taistelu on hävitty."
+"arvokkaita taistelussa: jos valtias menetetään, taistelu on hävitty.\n"
+"Huomioita:"
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
@@ -8877,10 +8899,9 @@ msgstr ""
 
 #: data/units/Saurian_Ambusher.cfg:3
 msgid "Saurian Ambusher"
-msgstr "Väijylisko"
+msgstr "Liskosoturi"
 
 #: data/units/Saurian_Ambusher.cfg:20
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8893,15 +8914,16 @@ msgstr ""
 "Liskot ovat taitavia keihään käyttäjiä. Kylmäverisyydestään ja "
 "suhteellisesta hauraudestaan huolimatta he ovat arvostettuja "
 "tiedustelijoita, jotka osaavat liikkua vaikeassa maastossa vihollisen "
-"ympäri. Väijyliskot ovat tarpeeksi voimakkaita hyödyntääkseen tätä. "
-"Parhaista väijyliskoista tulee kiertoliskoja."
+"ympäri. Liskosoturit ovat tarpeeksi voimakkaita hyödyntääkseen tätä. "
+"Parhaista liskosotureista tulee liskosissejä.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Saurian_Augur.cfg:3
 msgid "Saurian Augur"
-msgstr "Ennustajalisko"
+msgstr "Liskoennustaja"
 
 #: data/units/Saurian_Augur.cfg:28
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Augurs are valued as healers because they can provide aid to their "
@@ -8911,16 +8933,17 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Kylmäverisyydestään ja suhteellisesta herkkyydestään huolimatta "
-"ennustajaliskot ovat arvostettuja parantajia, koska he voivat tarjota apua "
+"liskoennustajat ovat arvostettuja parantajia, koska he voivat tarjota apua "
 "maastosta riippumatta. Parannustaitojensa lisäksi he hallitsevat kylmää "
-"taikuutta."
+"taikuutta.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Saurian_Flanker.cfg:3
 msgid "Saurian Flanker"
-msgstr "Kiertolisko"
+msgstr "Liskosissi"
 
 #: data/units/Saurian_Flanker.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8932,15 +8955,16 @@ msgid ""
 msgstr ""
 "Liskot ovat taitavia keihään käyttäjiä. Kylmäverisyydestään ja "
 "suhteellisesta hauraudestaan huolimatta he ovat arvostettuja tiedustelijoita "
-"jotka osaavat liikkua vaikeassa maastossa vihollisen ympäri.  Kiertoliskot "
-"ovat tarpeeksi voimakkaita hyödyntääkseen tätä erityisen tehokkaasti."
+"jotka osaavat liikkua vaikeassa maastossa vihollisen ympäri. Liskosissit "
+"ovat tarpeeksi voimakkaita hyödyntääkseen tätä erityisen tehokkaasti.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Saurian_Oracle.cfg:3
 msgid "Saurian Oracle"
-msgstr "lisko-oraakkeli"
+msgstr "Lisko-oraakkeli"
 
 #: data/units/Saurian_Oracle.cfg:27
-#, fuzzy
 msgid ""
 "Saurian Oracles have eschewed any further training in healing and curing in "
 "order to refine their skills with the dark arts. While frail, they can call "
@@ -8951,14 +8975,16 @@ msgid ""
 msgstr ""
 "Lisko-oraakkelit ovat hylänneet parannustaitojen harjoituksen keskittyäkseen "
 "sen sijaan pimeyden voimiin. Heikkoudestaan huolimatta he osaavat käyttää "
-"pohjoisen kylmää taikuttaa ja pitävät perusparannuskykynsä."
+"pohjoisen kylmää taikutta. Lisäksi he ovat säilyttäneet aiemman kykynsä "
+"parantaa.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Saurian_Skirmisher.cfg:3
 msgid "Saurian Skirmisher"
-msgstr "Kahakkalisko"
+msgstr "Liskotaistelija"
 
 #: data/units/Saurian_Skirmisher.cfg:21
-#, fuzzy
 msgid ""
 "Saurian Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -8967,17 +8993,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Liskot ovat taitavia keihään käyttäjiä. Kylmäverisyydestään ja "
+"Liskotaistelijat ovat taitavia keihään käyttäjiä. Kylmäverisyydestään ja "
 "suhteellisesta hauraudestaan huolimatta he ovat arvostettuja "
 "tiedustelijoita, jotka osaavat liikkua vaikeassa maastossa vihollisen "
-"ympäri. Parhaista kahakoitsijoista tulee väijyliskoja."
+"ympäri. Parhaista taistelijoista tulee sotureita.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Saurian_Soothsayer.cfg:3
 msgid "Saurian Soothsayer"
-msgstr "Tietäjälisko"
+msgstr "Liskotietäjä"
 
 #: data/units/Saurian_Soothsayer.cfg:28
-#, fuzzy
 msgid ""
 "Saurian Soothsayers are highly valued as healers because they can provide "
 "aid to their friends regardless of terrain or opposition. In addition to "
@@ -8985,16 +9012,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Tietäjäliskot ovat arvostettuja parantajia, koska he voivat tarjota apua "
-"maastosta riippumatta. Parannustaitojensa lisäksi he hallitsevat kylmää "
-"taikuutta."
+"Liskotietäjät ovat arvostettuja parantajia, koska he voivat tarjota apua "
+"maastosta riippumatta. Parannustaitojensa lisäksi he hallitsevat kylmyyden "
+"voimia.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
 msgstr "Peikko"
 
 #: data/units/Troll.cfg:18
-#, fuzzy
 msgid ""
 "Trolls have been a mote to trouble the thoughts of humanity and dwarf-kind, "
 "who remain baffled at the origins of these creatures, and perhaps more "
@@ -9009,18 +9037,17 @@ msgstr ""
 "Peikot ovat aina olleet rasite ihmisten ja kääpiöiden niskassa, jotka eivät "
 "ymmärrä, mistä nämä olennot tulivat, ja vielä vähemmän sitä, mikä aiheuttaa "
 "niiden luonnottoman keston ja voiman. Täysikasvuinen peikko on miestä "
-"pitempi ja jopa aseettomana olisi uhka taistelussa. Isot nuijat, joita ne "
+"pitempi ja jopa aseettomana olisi uhka taistelussa. Isot nuijat, joita he "
 "yleensä kantavat, toimivat heidän käsiensä jatkeina, ja peikot käyttävät "
 "niitä varsin samanlaisella tavalla.\n"
 "\n"
-"Huomio: Peikot uusiutuvat, eli ne paranevat aina, kuin olisivat kylässä."
+"Huomioita:"
 
 #: data/units/Troll_Great.cfg:3
 msgid "Great Troll"
 msgstr "Suurpeikko"
 
 #: data/units/Troll_Great.cfg:19
-#, fuzzy
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
 "and wisdom, it becomes something extraordinary, a beast remembered for "
@@ -9036,14 +9063,13 @@ msgstr ""
 "tarinoiden lähde, ja se että näkee nämä tarinat totena ei todellakaan "
 "vähennä niiden suuruutta.\n"
 "\n"
-"Huomio: Peikot uusiutuvat, eli ne paranevat aina, kuin olisivat kylässä."
+"Huomioita:"
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
 msgstr "Peikkosankari"
 
 #: data/units/Troll_Hero.cfg:18
-#, fuzzy
 msgid ""
 "Some trolls are born with an undue share of the strength and vitality that "
 "characterizes their race. In a society where might makes right, those of "
@@ -9051,18 +9077,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Jotkut peikot saavat syntymässä vahvempina ja kestävämpinä kuin useimmat "
-"kaltaisensa. Yhteiskunnassa, jossa voima on valtaa, niitä heikommat palvovat "
-"heitä sankareina.\n"
+"Jotkut peikot syntyvät vahvempina ja kestävämpinä kuin useimmat kaltaisensa. "
+"Yhteiskunnassa, jossa voima on valtaa, niitä heikommat palvovat heitä "
+"sankareina.\n"
 "\n"
-"Huomio: Peikot uusiutuvat, eli ne paranevat aina, kuin olisivat kylässä."
+"Huomioita:"
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
 msgstr "Kivenheittäjäpeikko"
 
 #: data/units/Troll_Rocklobber.cfg:20
-#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
@@ -9076,18 +9101,15 @@ msgstr ""
 "Ajatus kiven heittämisestä on varmasti ollut monen peikon päässä, ja jotkut "
 "ovat valinneet ne suosikkiaseekseen. Koska moisia kiviä ei ole aina helppo "
 "löytää, kivenheittäjät kantavat niitä säkissä olkansa yllä. Sama nahka, "
-"josta säkki on tehty, toimii myös karuna linkona.\n"
+"josta säkki on tehty, toimii myös alkeellisena linkona.\n"
 "\n"
-"Huomio: Tälläisen hirviön heittämä kivi on osuessaan tappavampi kuin "
-"yksikään nuoli. Peikot uusiutuvat, eli ne paranevat aina, kuin olisivat "
-"kylässä."
+"Huomioita:"
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
 msgstr "Peikkosoturi"
 
 #: data/units/Troll_Warrior.cfg:20
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -9107,14 +9129,13 @@ msgstr ""
 "käytöstä saati sitten metallin takomisesta. Kun katsoo, miten vaarallinen "
 "peikko on taistelussa, ajastus peikosta panssarissa on huolestuttava.\n"
 "\n"
-"Huomio: Peikot uusiutuvat, eli ne paranevat aina, kuin olisivat kylässä."
+"Huomioita:"
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
 msgstr "Peikonpentu"
 
 #: data/units/Troll_Whelp.cfg:19
-#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -9125,18 +9146,17 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Peikon kutsuminen pennuksi on varsin erikoista, sillä heidän ruumiinsa ovat "
-"valmiiksi kovempia kuin täyskasvuisen mihen. Ne ovat kömpelöitä eivätkä osaa "
+"valmiiksi kovempia kuin täyskasvuisen mihen. He ovat kömpelöitä eivätkä osaa "
 "kävellä vaan vaeltavat neljällä raajalla, mutta kaikki haitta, mikä tästä "
 "syntyy korvataan heidän rotunsa raa'alla voimalla.\n"
 "\n"
-"Huomio: Peikot uusiutuvat, eli ne paranevat aina, kuin olisivat kylässä."
+"Huomioita:"
 
 #: data/units/Undead_Bat_Blood.cfg:3
 msgid "Blood Bat"
 msgstr "Verilepakko"
 
 #: data/units/Undead_Bat_Blood.cfg:19
-#, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "gaining some of the health lost by their victims. Such is their fury that "
@@ -9145,16 +9165,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Verilepakot ovat nopeita ja imevät uhriensa verta, saaden uhrinsa "
-"menettämästä elämästä osan itselleen.Verilepakoiden turkki on punainen "
-"uhrien verestä."
+"Verilepakot ovat nopeita ja imevät uhriensa verta, saaden osan uhrinsa "
+"menettämästä elinvoimasta itselleen. Verilepakoiden turkki on punainen "
+"uhrien verestä.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Undead_Bat_Vampire.cfg:3
 msgid "Vampire Bat"
 msgstr "Vampyyrilepakko"
 
 #: data/units/Undead_Bat_Vampire.cfg:18
-#, fuzzy
 msgid ""
 "Vampire Bats are undead flying beasts that attack by biting their victims. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -9164,14 +9185,15 @@ msgid ""
 msgstr ""
 "Vampyyrilepakot ovat lentäviä epäkuolleita, jotka hyökkäävät puremalla "
 "uhrejaan. Niiden hampaat eivät ole kovin vaarallisia, mutta veren mukana "
-"lepakot imevät uhrien elinvoimaa, joka siirtyy lepakoille."
+"lepakot imevät uhrien elinvoimaa, joka siirtyy lepakoille.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:3
 msgid "Ghoul"
 msgstr "Kalmo"
 
 #: data/units/Undead_Corpse_Ghoul.cfg:21
-#, fuzzy
 msgid ""
 "Only those who have delved into the circles of necromancy know what must be "
 "done to turn a person into a ghoul, and it is a secret they are not telling. "
@@ -9193,16 +9215,13 @@ msgstr ""
 "\n"
 "Tälläisten asioiden takia manaajat ovat ehkä kaikkein vihatuimpia olentoja.\n"
 "\n"
-"Huomio: Kalmon kynnet ovat myrkylliset ja niiden uhrit menettävät "
-"elämäpisteitään jatkuvasti, kunnes heidät parannetaan kylässä tai "
-"parantajalla."
+"Huomioita:"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:3
 msgid "Necrophage"
 msgstr "Kuolonsyöjä"
 
 #: data/units/Undead_Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
 "hoped-for food with beast-like ferocity. When they are sated with the flesh "
@@ -9217,9 +9236,7 @@ msgstr ""
 "aivan kuin ne olisivat jälleen juuri-manattuja, ja alkavat etsiä lisää "
 "lihaa.\n"
 "\n"
-"Huomio: Kuolonsyöjän kynnet ovat myrkyn peittämät. Myrkyn uhri menettää joka "
-"vuoro elämäpisteitä, kunnes parantava yksikkö parantaa hänet tai hän menee "
-"kylään parannettavaksi."
+"Huomioita:"
 
 #: data/units/Undead_Corpse_Soulless.cfg:4
 msgid "Soulless"
@@ -9260,7 +9277,6 @@ msgid "Ancient Lich"
 msgstr "Muinainen kuolonherra"
 
 #: data/units/Undead_Necro_Ancient_Lich.cfg:21
-#, fuzzy
 msgid ""
 "A being of this order is a herald of the age long past. Anyone who "
 "encounters an Ancient Lich likely has far worse things to worry about than "
@@ -9272,15 +9288,13 @@ msgstr ""
 "kohtaa muinasen kuolonherran, kohtaa mitä luultavimmin kuolemaakin pahemman "
 "kohtalon.\n"
 "\n"
-"Huomio: Kuolonherran kaukotaistelu on taikuutta, joten se osuu aina "
-"helposti. Kuolleiden valtiaan kosketus imee vihollisen elämää itseensä."
+"Huomioita:"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
-msgstr "Pimeän tuntija"
+msgstr "Pimeyden tuntija"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:22
-#, fuzzy
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -9306,8 +9320,7 @@ msgstr ""
 "Sellaisessa kunnossa heidän ainoa aseensa on taito, jonka oppimiseen he ovat "
 "omistautuneet. \n"
 "\n"
-"Huomio: Pimeän tuntijan hyökkäykset ovat maagisia ja niillä on aina korkea "
-"mahdollisuus osua."
+"Huomioita:"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:33
 msgid "shadow wave"
@@ -9315,14 +9328,13 @@ msgstr "pimeyden hyöky"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:177
 msgid "female^Dark Adept"
-msgstr "Pimeän tuntija"
+msgstr "Pimeyden tuntija"
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
-msgstr "Pimeä noita"
+msgstr "Pimeyden noita"
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:20
-#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorcerers have begun to unlock the secrets "
@@ -9339,19 +9351,21 @@ msgstr ""
 "Mustan magian aiheuttama kammo johtuu pääasiassa siitä, miten vähän "
 "tavalliset ihmiset siitä tietävät. Pimeät noidat ovat alkaneet ratkaista "
 "elämän ja kuoleman sisälleen kätkemiään arvoituksia. He ovat nopeasti "
-"oppineet kivun ja tuskan mestareiksi./n/nPimeiden taitojen suoma mahtava "
-"palkinto on täydellinen elämän ja kuoleman hallinta. Pimeät noidat saattavat "
-"myöhemmin oppia, kuinka muunnella elämää ja kuolemaa manaamalla ruumiita, "
-"luurankoja ja henkiä. Kaikkein vallanhimoisimmat ja korruptoituneimmat "
-"yrittävät voittaa kuoleman täysin, Kuolemanherraksi muuntumisen kautta, ja "
-"saavuttaa täysi kuolemattomuus."
+"oppineet kivun ja tuskan mestareiksi.\n"
+"\n"
+"Pimeiden taitojen suoma mahtava palkinto on täydellinen elämän ja kuoleman "
+"hallinta. Pimeät noidat saattavat myöhemmin oppia, kuinka muunnella elämää "
+"ja kuolemaa manaamalla ruumiita, luurankoja ja henkiä. Kaikkein "
+"vallanhimoisimmat ja korruptoituneimmat yrittävät voittaa kuoleman täysin, "
+"Kuolemanherraksi muuntumisen kautta, ja saavuttaa täysi kuolemattomuus.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Undead_Necro_Lich.cfg:3
 msgid "Lich"
 msgstr "Kuolonherra"
 
 #: data/units/Undead_Necro_Lich.cfg:20
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -9370,15 +9384,13 @@ msgstr ""
 "asiaa joka sitä todella pelottaa. Mieli ja henki säästyvät, vaikka ruumis "
 "saattaa kuihtua pois. \n"
 "\n"
-"Ehkä vain pimeän taitajien sisäpiiri tietää, piteneekö elämä loputtomiin vai "
-"rajallisesti, mutta jo se, että moisia mietitään, todistaa heidän "
+"Ehkä vain pimeyden taitajien sisäpiiri tietää, piteneekö elämä loputtomiin "
+"vai rajallisesti, mutta jo se, että moisia mietitään, todistaa heidän "
 "saavutuksensa suuruuden. \n"
 "\n"
-"Huomio: Kuolonherran pitkänmatkan hyökkäys on maaginen ja osuu aina "
-"helposti. Kuolleiden herran kosketus imee uhrin elämää kuolon herraan."
+"Huomioita:"
 
 #: data/units/Undead_Necromancer.cfg:21
-#, fuzzy
 msgid ""
 "One of the greatest circles of what is considered 'black magic' is the art "
 "of necromancy, the terrible ability to awaken the dead with false life. It "
@@ -9399,13 +9411,12 @@ msgstr ""
 "on antanut pelolle uuden mahtavan aseen.\n"
 "\n"
 "Tämä kyky on ensimmäinen askel kohti kuolemattomuutta. Se on mahtavinta "
-"mustaa taikuutta, minkä pimeät velhot voivat saavuttaa ilman, että "
+"mustaa taikuutta, minkä pimeyden velhot voivat saavuttaa ilman, että "
 "menettävät ihmisyytensä, muuta kalpenee Kuolonherrojen mahdin rinnalla. "
-"Pimeän herrojen ruumiit ovat heidän taikuutensa ansiosta vahvempia, "
-"verrattuna kuihtuneeseen Kuolonherran ulkomuotoon./n/nHuomio: Pimeän herran "
-"kaukotaisteluhyökkäys on taikuutta, joten se osuu aina helposti. Pimeän "
-"herran sauva levittää ruttoa, joten kuka tahansa siihen kaatunut nousee "
-"epäelämään Pimeän herran riveissä."
+"Pimeyden herrojen ruumiit ovat heidän taikuutensa ansiosta vahvempia "
+"verrattuna kuihtuneeseen Kuolonherran ulkomuotoon.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Undead_Necromancer.cfg:32
 msgid "plague staff"
@@ -9416,7 +9427,6 @@ msgid "Bone Shooter"
 msgstr "Luun ampuja"
 
 #: data/units/Undead_Skele_Bone_Shooter.cfg:17
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. Potency of life is given equipment to match; archers, in "
@@ -9431,14 +9441,15 @@ msgstr ""
 "varustuksella. Näiden olentojen nuoliviinejä ei ole täytetty puusta vaan "
 "uhrien luusta tehdyillä nuolilla. Epäonniset viholliset kutsuvat näitä "
 "olentoja yksinkertaisesti 'luun ampujiksi'. Nämä hylkiöt ovat kauhu kaikelle "
-"elävälle."
+"elävälle.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:3
 msgid "Death Knight"
 msgstr "Kuolonritari"
 
 #: data/units/Undead_Skele_Death_Knight.cfg:26
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and a sense of betrayal, came back to this world as Death Knights. Wielding "
@@ -9449,14 +9460,15 @@ msgid ""
 msgstr ""
 "Joskus sotureista mahtavimmat tulevat vihan ja kostonhimon täyttäminä "
 "takaisin maan päälle. Käyttäen samoja aseita kuin elävinä he komentavat "
-"epäkuolleiden armeijoita."
+"epäkuolleiden armeijoita.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Undead_Skele_Deathblade.cfg:3
 msgid "Deathblade"
 msgstr "Kuolonterä"
 
 #: data/units/Undead_Skele_Deathblade.cfg:19
-#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters will often "
@@ -9468,17 +9480,18 @@ msgid ""
 msgstr ""
 "Eläessään nämä kuolonterinä tunnetut hirvitykset olivat taistelun "
 "mestareita, sotilaita, jotka olivat sekä nopeita että kuolettavia. Heidän "
-"uudet mestarinsa usein huomaavat tämän ja yrittävät käyttää sitä hyväkseen "
+"uudet mestarinsa huomaavat tämän usein ja yrittävät käyttää sitä hyväkseen "
 "aseistamalla heidän vastaamaan niitä taitoja joita heillä joskus oli. Vaikka "
 "nämä hirviöt ovat hentoja, ne ovat paljon muita kaltaisiaan nopeampia sekä "
-"jaloistaan että terillään."
+"jaloistaan että miekoistaan.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Undead_Skele_Draug.cfg:3
 msgid "Draug"
 msgstr "Kova luu"
 
 #: data/units/Undead_Skele_Draug.cfg:19
-#, fuzzy
 msgid ""
 "Towering remains of what once were legendary warriors, the Draug strike fear "
 "in the hearts of all who oppose them. They are driven not by malice, but are "
@@ -9494,14 +9507,15 @@ msgstr ""
 "ikuisesti sidottu epäelämän painajaiseen, jossa he vaeltavat elämänsä "
 "suurimpia taisteluita ja yrittävät saavuttaa vapautuksen taistelutaidon "
 "kautta. Muisto vihollisesta ja taistelun tarkoituksesta on kauan sitten "
-"vaipunut unholaan."
+"vaipunut unholaan.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Undead_Skele_Revenant.cfg:3
 msgid "Revenant"
 msgstr "Palannut"
 
 #: data/units/Undead_Skele_Revenant.cfg:17
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -9517,7 +9531,9 @@ msgstr ""
 "mennyt. Jopa ne loitsijat, jotka heidät nostavat voivat vain arvailla heidän "
 "taustaansa. Joka tapauksessa palanneet ovat voimakas työkalu taistelussa. Ne "
 "ovat pelottomia sotureita, jotka eivät tunne kipua ja jotka taistelevat "
-"katkeraan loppuun saakka."
+"katkeraan loppuun saakka.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Undead_Skele_Soul_Shooter.cfg:3
 msgid "Soul Shooter"
@@ -9545,7 +9561,6 @@ msgid "Skeleton"
 msgstr "Luusoturi"
 
 #: data/units/Undead_Skeleton.cfg:19
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Nearly mindless, and unwavering in their purpose, they fear "
@@ -9555,15 +9570,17 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Luurangot ovat sotilaita, jotka kuolivat taistelussa mutta tuotiin takaisin "
-"pimeällä noituudella. Kuten kaikki epäkuolleet, ne ovat erityisen heikkoja "
-"tulta ja pyhää vastaan, mutta kestävät teräaseita hyvin."
+"pimeällä noituudella. Koska ne ovat aivottomia ja järkkymättömiä, ne eivät "
+"pelkää kipua eivätkä kuolemaa, ja pelkästään niiden läsnäolo pelottaa usein "
+"pois kaikki ne, jotka aikoisivat uhata niiden herroja.\n"
+"\n"
+"Huomioita:"
 
 #: data/units/Undead_Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
 msgstr "Luujousimies"
 
 #: data/units/Undead_Skeleton_Archer.cfg:18
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -9576,15 +9593,13 @@ msgstr ""
 "Luurankojen jousimiehet ovat samankaltaisia kuin muutkin 'luurangot'. Ne "
 "ovat synti luontoa vastaan, sotureita, jotka on nostettu kuolleista "
 "taistellakseen uudestaan. Mestariensa käsissä nämä soturit yrittävät mitä "
-"vain heidän mestarinsa käskevät, sillä kuolemassa ei ole pelkoa niille, "
-"jotka ovat jo kuolleita."
+"nämä vain käskevät, sillä jo kerran kuolleet eivät pelkää kuolemaa."
 
 #: data/units/Undead_Spirit_Ghost.cfg:3
 msgid "Ghost"
 msgstr "Kummitus"
 
 #: data/units/Undead_Spirit_Ghost.cfg:20
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -9598,15 +9613,14 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "On yksi luomisen suurista armoista, että ihmisen sielu on muuttumaton ja "
-"tuhoutumaton. Kuitenkin pimeät noidat voivat tehdä sille monia "
+"tuhoutumaton. Kuitenkin pimeyden noidat voivat tehdä sille monia "
 "kauhistuttavia asioita.\n"
 "\n"
 "Vangittuina inhojen kirousten verkkoon, henget ovat kuin tuulia laivan "
 "purjeissa. Tämä vankila sitoo sielun vakituiseen palvelukseen, ja se voidaan "
 "määrätä mihin tahansa tehtävään, johon hänen mestarinsa haluaa.\n"
 "\n"
-"Huomio: Kummituksilla on varsin erikoiset vastustukset, ja ne liikkuvat "
-"hitaasti avoimen veden yli."
+"Huomioita:"
 
 #: data/units/Undead_Spirit_Ghost.cfg:100
 #: data/units/Undead_Spirit_Spectre.cfg:94
@@ -9619,7 +9633,6 @@ msgid "Nightgaunt"
 msgstr "Yön kauhu"
 
 #: data/units/Undead_Spirit_Nightgaunt.cfg:18
-#, fuzzy
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
 "countenance that they obscure. These terrible forms are rarely seen by the "
@@ -9632,17 +9645,13 @@ msgstr ""
 "alla on. Näitä kauheita olentoja elävät näkevät harvoin, ja ne, jotka "
 "selviävät kertomaan siitä eivät kyenneet tutkimaan vihollisiaan.\n"
 "\n"
-"Huomio: Yön kauhut osaavat puukottaa selkään kiertämällä vihollisen taakse, "
-"kun sen liittolainen häiritsee vihollista. Yön kauhujen vastustukset ovat "
-"varsin erikoiset ja ne liikkuvat hitaasti avoimen veden yli. Yön kauhut "
-"osaavat piileksiä yössä jättämättä jälkeäkään läsnäolostaan."
+"Huomioita:"
 
 #: data/units/Undead_Spirit_Shadow.cfg:3
 msgid "Shadow"
 msgstr "Varjo"
 
 #: data/units/Undead_Spirit_Shadow.cfg:19
-#, fuzzy
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
 "to retreat into darkness. Since that day, the shadows of the world have held "
@@ -9658,10 +9667,7 @@ msgstr ""
 "\n"
 "Tähän kysymykseen pimeä noita vastaa helposti.\n"
 "\n"
-"Huomio: Kun varjon liittolainen hämää vihollista, varjo voi iskeä sitä "
-"selkään, kaksinkertaistaen tekemänsä vahingon. Varjoilla on hyvin erikoiset "
-"vastustukset ja ne liikkuvat varsin hitaasti avoimen veden yli. Varjot "
-"osaavat piileksiä yössä jättämättä jälkeäkään läsnäolostaan."
+"Huomioita:"
 
 #: data/units/Undead_Spirit_Spectre.cfg:3
 msgid "Spectre"
@@ -9856,8 +9862,7 @@ msgstr "Sinulla ei ole johtajaa, joka voisi värvätä."
 #: src/actions.cpp:118
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
-"Sinulla täytyy olla johtaja linnakkeessa, jos haluat värvätä tai kutsua "
-"yksiköitä."
+"Johtajasi täytyy olla linnakkeessa, jos haluat värvätä tai kutsua yksiköitä."
 
 #: src/actions.cpp:137
 msgid "There are no vacant castle tiles in which to recruit a unit."
@@ -10738,28 +10743,36 @@ msgstr "Etsi"
 #: src/menu_events.cpp:1340
 msgid "Commands: whisper ignore emote. Type /help [command] for more help."
 msgstr ""
+"Komennot: whisper (kuiskaa) ignore (hiljennä) emote (tunneilmaisu). "
+"Kirjoita /help [komennon nimi] saadaksesi lisää tietoa."
 
 #: src/menu_events.cpp:1391
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
+"Lähettää yksityisviestin. Pelin osanottajat eivät voi vastaanottaa viestejä. "
+"Käyttö: /whisper [pelaajanimi] [viesti]"
 
 #: src/menu_events.cpp:1395
 msgid "Add player to your ignore list. Usage: /ignore add [argument]"
 msgstr ""
+"Kone ei enää näytä sinulle lainkaan tämän pelaajan viestejä. Käyttö: /ignore "
+"add [pelaajanimi]"
 
 #: src/menu_events.cpp:1397
 msgid "Remove player from your ignore list. Usage: /ignore remove [argument]"
 msgstr ""
+"Kone näyttää sinulle jälleen tämän pelaajan viestit. Käyttö: /ignore remove "
+"[pelaajanimi]"
 
 #: src/menu_events.cpp:1399
 msgid "Clear your ignore list. Usage: /ignore clear"
-msgstr ""
+msgstr "Kuuntelet taas kaikkien pelaajien viestejä. Käyttö: /ignore clear"
 
 #: src/menu_events.cpp:1401
 msgid "Show your ignore list. Usage: /ignore list"
-msgstr ""
+msgstr "Näytä, keiden pelaajien viestejä et vastaanota. Käyttö: /ignore list"
 
 #: src/menu_events.cpp:1403
 msgid "Unknown subcommand"
@@ -10771,10 +10784,14 @@ msgid ""
 "[argument](optional) Subcommands: add remove list clear. Type /help ignore "
 "[subcommand] for more info."
 msgstr ""
+"Kone ei enää näytä sinulle tällä listalla olevien pelaajien viestejä. "
+"Käyttö: /ignore [alikomento] [pelaajanimi](ei pakollinen). Alikomennot: add "
+"(lisää) remove (poista) list (näytä) clear (tyhjennä). Kirjoita /help ignore "
+"[alikomento] saadaksesi lisää tietoja."
 
 #: src/menu_events.cpp:1409
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
-msgstr ""
+msgstr "Lähetä tunneilmaisu keskustelutilassa. Käyttö: /emote [viesti]"
 
 #: src/menu_events.cpp:1411
 msgid "Unknown command"
@@ -10818,11 +10835,11 @@ msgstr "Todennäköinen taistelun tulos (EP)"
 
 #: src/mouse_events.cpp:301
 msgid " resistance vs "
-msgstr "vastustuskyky vastaan"
+msgstr " kestää hyvin : "
 
 #: src/mouse_events.cpp:302
 msgid " vulnerability vs "
-msgstr "haavoittuvuus vastaan"
+msgstr " haavoittuvainen : "
 
 #: src/mouse_events.cpp:312
 msgid "Slowed"
@@ -11016,12 +11033,11 @@ msgid "Cannot find era $era"
 msgstr "Aikakautta $era ei löydy"
 
 #: src/multiplayer_connect.cpp:1187
-#, fuzzy
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
-"Voitto\n"
+"Voitto:\n"
 "@Kukista vihollisjohtaja(t)"
 
 #: src/multiplayer_connect.cpp:1223
@@ -11310,7 +11326,7 @@ msgstr "Tappio"
 
 #: src/playcampaign.cpp:270
 msgid "You have been defeated!"
-msgstr "Sinä hävisit!"
+msgstr "Sinut on kukistettu!"
 
 #: src/playcampaign.cpp:283
 msgid " replay"
