@@ -300,7 +300,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		halo::remove(missile_frame_halo);
 		missile_halo = 0;
 		missile_frame_halo = 0;
-		if(pos > 0.0 && pos < 1.0 && (!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
+		if(animation_time < missile_animation.get_last_frame_time() && pos < 1.0 && (!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
+
 			missile_animation.update_current_frame();
 			const unit_frame& missile_frame = missile_animation.get_current_frame();
 			std::string missile_image= missile_frame.image;
