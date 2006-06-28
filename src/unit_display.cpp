@@ -357,7 +357,8 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		   leader->second.set_standing(disp,leader_loc,true);
 		}
 		disp.non_turbo_delay();
-		animation_time = defender.get_animation()->get_animation_time();
+		// we use missile animation because it's the only one not reseted in the middle to go to standing
+		animation_time = missile_animation.get_animation_time();
 		missile_animation.update_current_frame();
 	}
 	// make sure get hit sound is always played and labels always displayed
