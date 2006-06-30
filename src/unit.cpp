@@ -370,6 +370,7 @@ void unit::advance_to(const unit_type* t)
 	cfg_.clear_children("movement_anim");
 	cfg_.clear_children("attack");
 	cfg_.clear_children("abilities");
+	cfg_.clear_children("event");
 	// clear cache of movement costs
 	movement_costs_.clear();
 
