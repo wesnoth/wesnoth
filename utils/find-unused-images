@@ -15,6 +15,6 @@ find images -name '*.png' -print | sort -u | sed -e 's/^images\///' > $TM
 
 fgrep -r .png data | sed -e 's/.* \([^ ]*\.png\)/\1/' -e 's/.*=\([^ ]*\.png\)/\1/' -e 's/(\([^)]*\))/\1/' -e 's/\"\(.*\)\"/\1/' -e 's/\.png .*/.png/' -e 's/\.png\".*/.png/' -e 's/\"//' -e 's/[ 	]*//g' -e 's/:[0-9]*//g' -e 's/,$//' -e 's/,/ /g' | perl -p -e 's/ /\n/g' | sort -u > $TMU
 
-diff -u0 $TMU $TM | grep -v '^@@'
+diff -u -U 0 $TMU $TM | grep -v '^@@'
 
 rm -f $TM $TMU
