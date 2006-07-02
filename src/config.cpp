@@ -528,45 +528,34 @@ void config::apply_diff(const config& diff)
 	}
 }
 
+// Create a new config tree as a copy of 'this' overridden by 'c'.
+// Nodes are matched up by name and with name by order. Nodes in 'c',
+// but not in 'this' are added at the end in the order they appeared in 'c'.
 config config::merge_with(const config& c) const
 {
-	config n(*this);
-	for(string_map::const_iterator j = c.values.begin(); j != c.values.end(); ++j) {
+	config n;
+	for(string_map::const_iterator j = this->values.begin();
+	    j != this->values.end(); ++j) {
 		n.values[j->first] = j->second;
 	}
-	const child_map& child_changes = c.all_children();
-	child_map::const_iterator i;
-	for(i = child_changes.begin(); i != child_changes.end(); ++i) {
-
-		child_map::iterator itor = n.children.find(i->first);
-		bool has_base = itor != n.children.end();
-		size_t index = 0;
-		size_t last_index = has_base ? itor->second.size() : 0;
-		last_index = maximum<int>(last_index,i->second.size());
-		for(const_child_iterator j = i->second.begin(); j != i->second.end();) {
-			const config* item = *j;
-
-			if(i->first.empty()) {
-				++j;
-				continue;
-			}
-
-			if(itor != n.children.end() && index < itor->second.size()) {
-				*(itor->second[index]) = itor->second[index]->merge_with(*item);
-			} else {
-				if(j + 1 == i->second.end() && index > last_index) {
-					break;
-				}
-				n.add_child(i->first,*item);
-				itor = n.children.find(i->first);
-			}
-
-			index++;
-			if(j + 1 != i->second.end()) {
-				++j;
-			}
+	config m(c);   // This ends up copying values twice, but is simpler
+	for(string_map::const_iterator j = m.values.begin();
+	    j != m.values.end(); ++j) {
+		n.values[j->first] = j->second;
+	}
+	for(all_children_iterator i = this->ordered_begin();
+	    i != this->ordered_end(); ++i) {
+		const std::pair<const std::string*,const config*>& value = *i;
+		config *mc = m.child(*value.first);
+		if (mc == NULL) {
+			n.add_child(*value.first, *value.second);
+		}
+		else {
+			n.add_child(*value.first, value.second->merge_with(*mc));
+			m.remove_child(*value.first, 0);
 		}
 	}
+	n.append(m);
 	return n;
 }
 
