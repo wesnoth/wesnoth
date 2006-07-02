@@ -686,7 +686,7 @@ void server::process_whisper(const network::connection sock, const config& whisp
 		for(player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
 			if(i->second.name() == whisper["receiver"]) {
 				for(g = games_.begin(); g != games_.end(); ++g) {
-					if(g->is_member(i->first)) {
+					if(g->is_player(i->first)) {
 						do_send = false;
 						break;
 					}
