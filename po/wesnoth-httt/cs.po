@@ -1,4 +1,4 @@
-# translation of cs.po to Czech
+# translation of httt-cs.vs-edit.po to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
 # Copyright (C) 2004 Wesnoth development team
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-07-01 14:03+0200\n"
-"PO-Revision-Date: 2006-06-09 15:36+0200\n"
+"PO-Revision-Date: 2006-06-30 23:47+0200\n"
 "Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -3900,6 +3900,9 @@ msgid ""
 "faint glow provided a small reprieve from the thick blackness. Volcanic "
 "fumes drifted up from cracks in the floor."
 msgstr ""
+"Za průrvou vzduch téměř sršel magickou energií. Bylo tu čím dál tepleji. "
+"Podlaha tu byla hladká, místy skelná, a slabá záře poskytovala malý oddech "
+"od neprostupné temnoty. Z puklin v podlaze stoupaly vulkanické výpary."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:19
 msgid ""
@@ -3907,14 +3910,16 @@ msgid ""
 "The very earth had come alive, heaving, and ready to be relieved of its "
 "century-old burden..."
 msgstr ""
+"Vzdálená hřmění a otřesy země ztěžovaly stálou chůzi. Sama země ožila, "
+"obtížena, a připravena být zbavena svého staletí starého břemene..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:58
 msgid "Capture the Scepter of Fire with Konrad or Li'sar"
-msgstr ""
+msgstr "Seber Ohnivé žezlo s Konrádem nebo Lisar"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:125
 msgid "The Scepter must be getting close now! Where shall we go?"
-msgstr ""
+msgstr "Žezlo už nebude daleko! Kam máme jít?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:129
 msgid ""
@@ -3922,24 +3927,29 @@ msgid ""
 "the denizens of these caves. We must ask our dwarven allies to help search "
 "the caves with us."
 msgstr ""
+"Nemůžeme prozkoumat takové rozlehlé prostory sami, obzvášť pokud se na nás "
+"vrhnou obyvatelé těch jeskyní. Musíme požádat naše trpasličí spojence, aby "
+"nám v tom pomohli."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:133
 msgid "Yes, I feel it is near here! We must search for it carefully."
-msgstr ""
+msgstr "Ano, cítím, že je nedaleko! Musíme jej pozorně hledat."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:139
 msgid "An earthquake! We'll be trapped!"
-msgstr ""
+msgstr "Zemětřesení! Uvízneme tu!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:143
 msgid ""
 "No, not an earthquake princess. I feel it too. Something is... aware... of "
 "us."
 msgstr ""
+"Ne, to není zemětřesení, princezno. Také jsem to cítil. Něco... si "
+"uvědomuje... naši přítomnost."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:147
 msgid "Aware? Who? Delfador, what does he mean?"
-msgstr ""
+msgstr "Uvědomuje? Co? Delfadore, o čem to mluví?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:151
 msgid ""
@@ -3948,22 +3958,25 @@ msgid ""
 "mind. It was forged here, not far north of where we now stand. The sheer "
 "power of it!"
 msgstr ""
+"Žezlo... země... tekoucí láva... oheň... vzduch kolem nás... všechno. Volá "
+"po dědici - stěží to dokáži ve své mysli zadržet. Bylo ukováno zde, nepříliš "
+"daleko severně odtud. Taková ryzí síla!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:156
 msgid "Where? Where is it?"
-msgstr ""
+msgstr "Kde? Kde je?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:160
 msgid "North. More than that, I cannot tell."
-msgstr ""
+msgstr "Na severu. Víc než to nedokáži poznat."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:164
 msgid "Konrad, as promised, here is my purse, full of gold."
-msgstr ""
+msgstr "Jak jsem slíbila, Konráde, tu je můj měšec se zlaťáky."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_Scepter_of_Fire.cfg:172
 msgid "You receive 300 pieces of gold!"
-msgstr ""
+msgstr "Dostal jsi 300 zlatých!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19_A_Choice_Must_Be_Made.cfg:4
 msgid "A Choice Must Be Made"
@@ -5702,10 +5715,10 @@ msgstr ""
 "Konráde a Lisar na vrchol hory Elnar, ať zříme Weldyn. Je potřeba vypracovat "
 "plány bitvy a promluvit si."
 
+# formát: číslo, mezera, hláška
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:436
-#, fuzzy
 msgid "Clan Members Defeated"
-msgstr "Poraženo |$units_slain| klanových bojovníků"
+msgstr "klanových bojovníků poraženo"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_Test_of_the_Clans.cfg:455
 msgid ""
@@ -6102,9 +6115,8 @@ msgid "No! This is the end! We have been defeated!"
 msgstr "Né! Tohle je konec! Byli jsme poraženi!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:33
-#, fuzzy
 msgid "Do you want this unit to pick up the sword?"
-msgstr "Chceš, aby si tato jednotka vzala pancíř?"
+msgstr "Chceš, aby si tato jednotka vzala meč?"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:35
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:107
@@ -6113,7 +6125,7 @@ msgstr "Ano"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:39
 msgid "Flaming Sword"
-msgstr ""
+msgstr "Ohnivý meč"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:42
 msgid ""
@@ -6122,10 +6134,14 @@ msgid ""
 "fire. Tongues of flame dance on the surface, giving the bluish steel a "
 "flawless mirrored finish."
 msgstr ""
+"Tato masivní čepel byla vytořena před staletími dnes již dávno zapomenutými "
+"elfími mistry kovářského řemesla, kteří dokázali naplnit ocel vnitřním "
+"magickým ohněm. Po povrchu tančí jazyky plamenů a dodávají modravé oceli "
+"bezchybný zrcadlící povrch."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:43
 msgid "Only the leader of an army can wield this sword!"
-msgstr ""
+msgstr "Tento meč si může vzít jen vůdce armády!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:55
 msgid ""
@@ -6133,10 +6149,13 @@ msgid ""
 "to life! Strangely, you feel no heat once you pick it up, yet the grass at "
 "your feet bursts into flame as you test the heft of this mighty weapon."
 msgstr ""
+"Jak pokládáš ruku na lesklý kožený jílec meče, probouzí se k životu! "
+"Kupodivu necítíš žádné horko, jakmile jej jednou držíš, ačkoliv tráva okolo "
+"tvých nohou vzplane, když potěžkáváš tu mocnou zbraň."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:61
 msgid "flaming sword"
-msgstr ""
+msgstr "Ohnivý meč"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:77
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:157
@@ -6174,7 +6193,6 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:183
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:348
-#, fuzzy
 msgid "Scepter of Fire"
 msgstr "Ohnivé žezlo"
 
@@ -6184,6 +6202,8 @@ msgid ""
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
 "bearer!"
 msgstr ""
+"Toto starobylé žezlo vyrobili trpaslíci. Žezlo, symbol vládcovství ve "
+"Wesnothu, má moc vrhat na nepřátele jeho držitele ohnivé koule!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:187
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:352
@@ -6191,6 +6211,8 @@ msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr ""
+"Toto je Ohnivé žezlo. Jen skutečný následník trůnu se snad může odvážit jej "
+"vzít!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:351
 msgid ""
@@ -6198,43 +6220,51 @@ msgid ""
 "A symbol of the kingship of Wesnoth, the Scepter has the power to shoot "
 "fireballs at enemies of the bearer!"
 msgstr ""
+"Toto starodávné žezlo bylo ukuto trpaslíky z Hlubokých hor. Žezlo, symbol "
+"vládcovství ve Wesnothu, má moc vrhat na nepřátele jeho držitele ohnivé "
+"koule!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:377
 msgid "Here it is at last, I have the Scepter!"
-msgstr ""
+msgstr "Konečně, tu je, mám Žezlo!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:381
 msgid "So it is in our hands! Now let us leave this stinking pit."
-msgstr ""
+msgstr "Takže je v našich rukou! Opusťme tuhle smradlavou jámu."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:385
 msgid ""
 "I think that if we travel just a little north, we might be able to get out."
 msgstr ""
+"Myslím, že když půjdeme ještě trochu severněji, mohli bychom se dostat ven."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:406
 msgid "At last! I have the Scepter!"
-msgstr ""
+msgstr "Konečně! Mám Žezlo!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:410
 msgid "Indeed. You managed to reach it Li'sar. I hope you shall use it wisely."
-msgstr ""
+msgstr "Tak, nakonec jsi jej dostala, Lisar. Doufám, že jej použiješ moudře."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:414
 msgid ""
 "Well my first use for it is going to be to help us get out of this hole! I "
 "hope you consider that wise."
 msgstr ""
+"No, nejdřív jej použiji k tomu, abych nás dostala z téhle díry! Snad to "
+"považuješ za moudré."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:418
 msgid ""
 "The Scepter makes its wielder powerful, but hardly immortal, child. Use it "
 "prudently. Now come, I believe there is an exit to the north!"
 msgstr ""
+"Žezlo učiní svého nositele mocným, ale stěží nesmrtelným, dítě. Užívej jej "
+"opatrně. A teď pojďte, myslím, že na severu je východ!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:422
 msgid "I think I know what I'm doing. Come, let us go!"
-msgstr ""
+msgstr "Myslím, že vím, co dělám. Pojďme!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:5
 msgid ""
