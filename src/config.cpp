@@ -27,6 +27,8 @@
 
 #define ERR_CF LOG_STREAM(err, config)
 
+// Note this isn't a real copy. The children are still in both config trees
+// and updating them will affect both trees.
 config::config(const config& cfg)
 {
 	append(cfg);
@@ -37,6 +39,8 @@ config::~config()
 	clear();
 }
 
+// Note this isn't a real copy. The children are still in both config trees
+// and updating them will affect both trees.
 config& config::operator=(const config& cfg)
 {
 	if(this == &cfg) {
@@ -50,6 +54,8 @@ config& config::operator=(const config& cfg)
 	return *this;
 }
 
+// Note this isn't a real copy. The children are still in both config trees
+// and updating them will affect both trees.
 void config::append(const config& cfg)
 {
 	for(all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
@@ -531,6 +537,9 @@ void config::apply_diff(const config& diff)
 // Create a new config tree as a copy of 'this' overridden by 'c'.
 // Nodes are matched up by name and with name by order. Nodes in 'c',
 // but not in 'this' are added at the end in the order they appeared in 'c'.
+// Note that some nodes in the copied tree are still in both 'this' and 'c'.
+// It worked like this before. This is more efficent, but can have surprising
+// effects if a node is changed in one of these config trees.
 config config::merge_with(const config& c) const
 {
 	config n;
