@@ -21,6 +21,7 @@
 #include "wml_separators.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
+#include "playmp_controller.hpp"
 #include "show_dialog.hpp"
 #include "sound.hpp"
 
@@ -466,8 +467,7 @@ lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
 	game_preferences_(disp.video(), _("Preferences")),
 	quit_game_(disp.video(), _("Quit")),
 	sorter_(gamelist),
-	games_menu_(disp.video(),cfg.child("multiplayer_hashes")),
-	current_game_(0)
+	games_menu_(disp.video(),cfg.child("multiplayer_hashes"))
 {
 	skip_replay_.set_check(preferences::skip_mp_replay());
 	skip_replay_.set_help_string(_("Skip quickly to the active turn when observing"));
@@ -552,6 +552,12 @@ void lobby::process_event()
 			network::send_data(response);
 
 			if(observe) {
+				const std::string& str_current_turn = game_cfg["turn"];
+				int index = str_current_turn.find_first_of('/');
+				if (index > -1){
+					const std::string strTest = str_current_turn.substr(0, index);
+					playmp_controller::set_replay_last_turn(lexical_cast<unsigned int>(strTest));
+				}
 				set_result(OBSERVE);
 			} else {
 				set_result(JOIN);

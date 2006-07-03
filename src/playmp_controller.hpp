@@ -27,6 +27,9 @@ public:
 	playmp_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 		const int ticks, const int num_turns, const config& game_config, CVideo& video, bool skip_replay);
 
+	static unsigned int replay_last_turn() { return replay_last_turn_; }
+	static void set_replay_last_turn(unsigned int turn);
+
 protected:
 	virtual void handle_generic_event(const std::string& name);
 
@@ -46,6 +49,7 @@ protected:
 	int beep_warning_time_;
 private:
 	void process_oos(const std::string& err_msg);
+	static unsigned int replay_last_turn_;
 };
 
 

@@ -123,7 +123,6 @@ private:
 
 	lobby_sorter sorter_;
 	gamebrowser games_menu_;
-	int current_game_;
 
 	std::map<std::string,std::string> minimaps_;
 };

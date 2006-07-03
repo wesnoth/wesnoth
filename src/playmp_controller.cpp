@@ -20,6 +20,8 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
+unsigned int playmp_controller::replay_last_turn_ = 0;
+
 LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_config,
 		config const* level, CVideo& video, game_state& state_of_game,
 		const config::child_list& story, upload_log& log, bool skip_replay)
@@ -37,6 +39,10 @@ playmp_controller::playmp_controller(const config& level, const game_data& gamei
 {
 	beep_warning_time_ = 10000; //Starts beeping each second when time is less than this (millisec)
 	turn_data_ = NULL;
+}
+
+void playmp_controller::set_replay_last_turn(unsigned int turn){
+	 replay_last_turn_ = turn;
 }
 
 void playmp_controller::clear_labels(){
@@ -212,6 +218,9 @@ bool playmp_controller::play_network_turn(){
 				if(result == turn_info::PROCESS_RESTART_TURN) {
 					return true;
 				} else if(result == turn_info::PROCESS_END_TURN) {
+					if (skip_replay_ && replay_last_turn_ <= status_.turn()){
+						skip_replay_ = false;
+					}
 					break;
 				}
 			}
@@ -220,9 +229,6 @@ bool playmp_controller::play_network_turn(){
 				throw e;
 			}
 
-		}
-		else{
-			skip_replay_ = false;
 		}
 
 		play_slice();
