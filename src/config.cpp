@@ -538,11 +538,9 @@ config config::merge_with(const config& c) const
 	    j != this->values.end(); ++j) {
 		n.values[j->first] = j->second;
 	}
-	config m(c);   // This ends up copying values twice, but is simpler
-	for(string_map::const_iterator j = m.values.begin();
-	    j != m.values.end(); ++j) {
-		n.values[j->first] = j->second;
-	}
+	// This ends up copying values twice (in config initialization and
+	// append), but is simpler than dealing with the guts of m.
+	config m(c);
 	for(all_children_iterator i = this->ordered_begin();
 	    i != this->ordered_end(); ++i) {
 		const std::pair<const std::string*,const config*>& value = *i;
