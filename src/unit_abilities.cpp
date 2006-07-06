@@ -389,9 +389,12 @@ bool unit_ability_list::empty() const
 
 std::pair<int,gamemap::location> unit_ability_list::highest(const std::string& key, int def) const
 {
+	if(cfgs.empty()) {
+		return std::make_pair(def,gamemap::location::null_location);
+	}
 	gamemap::location best_loc = gamemap::location::null_location;
-	int abs_max = def;
-	int flat = def;
+	int abs_max = -10000;
+	int flat = -10000;
 	int stack = 0;
 	for(std::vector<std::pair<config*,gamemap::location> >::const_iterator i = cfgs.begin(); i != cfgs.end(); ++i) {
 		if(utils::string_bool((*i->first)["cumulative"])) {
@@ -412,9 +415,12 @@ std::pair<int,gamemap::location> unit_ability_list::highest(const std::string& k
 }
 std::pair<int,gamemap::location> unit_ability_list::lowest(const std::string& key, int def) const
 {
-	gamemap::location best_loc;
-	int abs_max = def;
-	int flat = def;
+	if(cfgs.empty()) {
+		return std::make_pair(def,gamemap::location::null_location);
+	}
+	gamemap::location best_loc = gamemap::location::null_location;
+	int abs_max = 10000;
+	int flat = 10000;
 	int stack = 0;
 	for(std::vector<std::pair<config*,gamemap::location> >::const_iterator i = cfgs.begin(); i != cfgs.end(); ++i) {
 		if(utils::string_bool((*i->first)["cumulative"])) {
