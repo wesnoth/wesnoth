@@ -547,7 +547,7 @@ void set_countdown_reservoir_time(int value)
 
 int countdown_turn_bonus()
 {
-	static const int default_value = 35;
+	static const int default_value = 40;
 	int value = 0;
 	const std::string& timer_bonus = prefs["mp_countdown_turn_bonus"];
 	value = lexical_cast_default<int>(timer_bonus,default_value);
