@@ -63,6 +63,12 @@ manager::manager()
 	set_sound_volume(sound_volume());
 
 	set_show_haloes(prefs["show_haloes"] != "no");
+	if(prefs["remember_timer_settings"] != "yes") {
+		prefs.values.erase("mp_countdown_init_time");
+		prefs.values.erase("mp_countdown_reservoir_time");
+		prefs.values.erase("mp_countdown_turn_bonus");
+		prefs.values.erase("mp_countdown_action_bonus");
+	}
 
 	std::vector<std::string> v;
 	v = utils::split(prefs["encountered_units"]);
