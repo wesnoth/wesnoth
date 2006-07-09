@@ -284,7 +284,7 @@ void play_controller::init_gui(){
 	}
 }
 
-void play_controller::init_side(const unsigned int team_index){
+void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	log_scope("player turn");
 	team& current_team = teams_[team_index];
 
@@ -298,7 +298,7 @@ void play_controller::init_side(const unsigned int team_index){
 
 	if(first_turn_) {
 		if(gui_->viewing_team() == team_index && !team_manager_.is_observer()) {
-			if (recorder.at_end()){
+			if (!is_replay){
 				recorder.add_event("turn 1");
 				recorder.add_event("new turn");
 				recorder.add_event("side turn");
@@ -317,7 +317,7 @@ void play_controller::init_side(const unsigned int team_index){
 	if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
 		if(gui_->viewing_team() == team_index && !team_manager_.is_observer()
 			|| current_team.is_ai()){
-			if (recorder.at_end()){
+			if (!is_replay){
 				recorder.add_event("side turn");
 			}
 			game_events::fire("side turn");
