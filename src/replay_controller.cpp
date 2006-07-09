@@ -241,7 +241,7 @@ void replay_controller::play_side(const unsigned int team_index){
 		return;
 	}
 
-	play_controller::init_side(team_index);
+	play_controller::init_side(team_index, true);
 
 	//if a side is dead, don't do their turn
 	if(!current_team().is_empty() && team_units(units_,player_number_) > 0) {
