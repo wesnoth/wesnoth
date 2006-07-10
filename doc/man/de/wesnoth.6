@@ -30,9 +30,9 @@ Battle for
 .B Wesnoth
 ist ein rundenbasiertes Strategiespiel in einem Fantasy-Szenario.
 .
-SchlÃ¼pfen Sie in die Rolle eines HerrfÃ¼hrers und fÃ¼hren Sie Ihre Armee zum Sieg.
-WÃ¤hlen Sie dabei aus verschiedenen Rassen, mit unterschiedlichen Fertigkeiten, Waffen
-und SprÃ¼chen aus und zerschmettern Sie Ihre Gegner.
+Schlüpfen Sie in die Rolle eines Herrführers und führen Sie Ihre Armee zum Sieg.
+Wählen Sie dabei aus verschiedenen Rassen, mit unterschiedlichen Fertigkeiten, Waffen
+und Sprüchen aus und zerschmettern Sie Ihre Gegner.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
@@ -41,15 +41,15 @@ und SprÃ¼chen aus und zerschmettern Sie Ihre Gegner.
 Bestimmt die Farbtiefe, in der das Spiel gestartet wird. Beispiel: --bpp 32
 .TP
 .BI --compress " entpackte_datei komprimierte_datei"
-Wandelt eine normale WML-Textdatei (entpackte_datei) in einen als WML-BinÃ¤rdatei
+Wandelt eine normale WML-Textdatei (entpackte_datei) in einen als WML-Binärdatei
 komprimierten Spielstand (komprimierte_datei) um.
 .TP
 .BR -d ", " --debug
-Zeigt Entwicklerinformationen im Spiel an und erlaubt zusÃ¤tzliche Kommandos 
+Zeigt Entwicklerinformationen im Spiel an und erlaubt zusätzliche Kommandos 
 in der spieleigenen Befehlszeile (siehe dazu die Wiki-Seite: http://www.wesnoth.org/).
 .TP
 .BI --decompress " komprimierte_datei entpackte_datei"
-Wandelt einen als WML-BinÃ¤rdatei komprimierten Spielstand (komprimierte_datei)
+Wandelt einen als WML-Binärdatei komprimierten Spielstand (komprimierte_datei)
 in eine normale WML-Textdatei (entpackte_datei) um.
 .TP
 .BR -f ", " --fullscreen
@@ -59,13 +59,13 @@ Startet das Programm im Vollbildmodus.
 Aktiviert die Anzeige der Bilder pro Sekunde im Spiel.
 .TP
 .BR -h ", " --help
-Gibt die mÃ¶glichen Kommandozeilenoptionen aus.
+Gibt die möglichen Kommandozeilenoptionen aus.
 .TP
 .BI --load \ savegame
-LÃ¤dt die Datei `savegame' aus dem Standardverzeichnis fÃ¼r gespeicherte Spiele.
+Lädt die Datei `savegame' aus dem Standardverzeichnis für gespeicherte Spiele.
 .TP
 .BR --log-error="domain1,domain2,..." ", " --log-warning="..." ", " --log-info="..."
-Setzt die Stufe der Debugausgabe. Verwenden Sie "all", um sÃ¤mtliche Meldungen auszugeben.
+Setzt die Stufe der Debugausgabe. Verwenden Sie "all", um sämtliche Meldungen auszugeben.
 .B --log-info
 zeigt alle Meldungen,
 .B --log-warning
@@ -74,9 +74,9 @@ zeigt nur Warnungen und Fehler und
 nur Fehler.
 .TP
 .B --multiplayer
-Startet das Spiel im Mehrspieler-Modus. Es gibt noch zusÃ¤tzliche Optionen die zusammen mit
+Startet das Spiel im Mehrspieler-Modus. Es gibt noch zusätzliche Optionen die zusammen mit
 .B --multiplayer
- verwendet werden kÃ¶nnen. Diese werden weiter unten nÃ¤her erklÃ¤rt.
+ verwendet werden können. Diese werden weiter unten näher erklärt.
 .TP
 .B --nocache
 Veranlasst das Programm, keine Daten zwischenzuspeichern.
@@ -88,7 +88,7 @@ Deaktiviert jegliche Soundeffekte im Spiel.
 Zeigt an, wo sich das Verzeichnis mit den Spieldateien befindet.
 .TP
 .BR -r ", " --resolution \ \fIXxY\fR
-ErmÃ¶glicht es, die AuflÃ¶sung zu bestimmen, in der das Spiel gestartet wird. 
+Ermöglicht es, die Auflösung zu bestimmen, in der das Spiel gestartet wird. 
 Beispiel: -r 800x600
 .TP
 .BR -t ", " --test
@@ -99,35 +99,41 @@ Zeigt die Versionsnummer an und beendet das Programm.
 .TP
 .BR -w ", " --windowed
 Startet das Programm im Fenstermodus.
+.TP
+.BR --no-delay
+Das Spiel wird ohne Verzögerungen ausgeführt. Wird zum ausführen grafischer Leistungsvergleiche verwendet. Diese Option ist standardmässig aktiviert, wenn die Option --nogui gesetzt ist.
+.TP
+.BR --exit-at-end
+Beendet das Spiel am Ende eines Szenarios ohne die Sieg/Niederlage Übersicht anzuzeigen, da der Benutzer hier »Ok« auswählen müsste, damit das Spiel fortgesetzt wird. Dies wird ebenfalls bei geskripteten Leistungsvergleichen verwendet.
 .
-.SH ZusÃ¤tzliche Optionen fÃ¼r --multiplayer
+.SH Zusätzliche Optionen für --multiplayer
 .
 Die seitenspezifischen Einstellungen sind mit <NUMMER> markiert. <NUMMER> muss
 dabei durch die Nummer der jeweiligen Seite ersetzt werden. Meistens ist diese
-Nummer 1 oder 2, doch hÃ¤ngt es letztendlich von der Anzahl der mÃ¶glichen
-Spieler in dem gewÃ¤hlten Scenario ab.
+Nummer 1 oder 2, doch hängt es letztendlich von der Anzahl der möglichen
+Spieler in dem gewählten Scenario ab.
 .TP
 .B --algorithm<NUMMER>=<WERT>
-Legt einen anderen als den Standardalgorithmus fÃ¼r die KI der gewÃ¤hlten Seite
-fest. MÃ¶gliche Werte sind "idle_ai" oder "sample_ai".
+Legt einen anderen als den Standardalgorithmus für die KI der gewählten Seite
+fest. Mögliche Werte sind "idle_ai" oder "sample_ai".
 .TP
 .B --controller<NUMMER>=<WERT>
-Bestimmt, wer die gewÃ¤hlte Seite kontrolliert. MÃ¶gliche Werte sind "human" fÃ¼r
-einen Menschen oder "ai" fÃ¼r einen KI-Spieler.
+Bestimmt, wer die gewählte Seite kontrolliert. Mögliche Werte sind "human" für
+einen Menschen oder "ai" für einen KI-Spieler.
 .TP
 .B --era=<WERT>
-Bestimmt, welche Ã„ra fÃ¼r diese Partie genutzt werden soll. Die Ã„ra wird per
+Bestimmt, welche Ära für diese Partie genutzt werden soll. Die Ära wird per
 "id" bestimmt. Eine genaue Beschreibung der Rassen und Epochen ist in der Datei
 data/multiplayer.cfg zu finden.
 .TP
 .B --nogui
-Das Spiel startet ohne grafische OberflÃ¤che. Muss vor
+Das Spiel startet ohne grafische Oberfläche. Muss vor
 .B --multiplayer
 in der Befehlszeile angegeben werden.
 .TP
 .B --parm<NUMMER>=<NAME>:<WERT>
-Gibt zusÃ¤tzliche Parameter fÃ¼r diese Seite an. Die mÃ¶glichen Parameter hÃ¤ngen
-davon ab, welche Optionen fÃ¼r
+Gibt zusätzliche Parameter für diese Seite an. Die möglichen Parameter hängen
+davon ab, welche Optionen für
 .B --controller
 und
 .B --algorithm
@@ -138,8 +144,8 @@ entwickeln wollen.
 Bestimmt das Szenario, das geladen werden soll. Standard ist "multiplayer_Charge".
 .TP
 .B --side<NUMMER>=<WERT>
-Bestimmt die Rasse fÃ¼r die festgelegte Seite in AbhÃ¤ngigkeit von der gewÃ¤hlten
-Ã„ra. Die Rasse wird per "id" bestimmt. Eine genaue Beschreibung der Rassen und
+Bestimmt die Rasse für die festgelegte Seite in Abhängigkeit von der gewählten
+Ära. Die Rasse wird per "id" bestimmt. Eine genaue Beschreibung der Rassen und
 Epochen ist in der Datei data/multiplayer.cfg zu finden.
 .TP
 .B --turns=value
@@ -152,7 +158,7 @@ wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --parm2=pyt
 .
 Geschrieben von David White <davidnwhite@verizon.net>.
 Bearbeitet von Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> und Soliton <soliton@sonnenkinder.org>.
-Ãœbersetzt von Jan-Heiner Laberenz <Jan-Heiner@arcor.de> und Nils Kneuper <crazy-ivanovic@gmx.net>.
+Übersetzt von Jan-Heiner Laberenz <Jan-Heiner@arcor.de> und Nils Kneuper <crazy-ivanovic@gmx.net>.
 Diese Beschreibung stammt im Original von Cyril Bouthors <cyril@bouthors.org>.
 .br
 Besuchen Sie auch die offizielle Internetseite: http://www.wesnoth.org/.
@@ -161,9 +167,9 @@ Besuchen Sie auch die offizielle Internetseite: http://www.wesnoth.org/.
 .
 Copyright \(co 2003-2006 David White <davidnwhite@verizon.net>
 .br
-Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 2 der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
+Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 2 der Lizenz oder (nach Ihrer Option) jeder späteren Version.
 .br
-Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
+Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
 .br
 Sie sollten eine Kopie der GNU General Public License zusammen mit diesem Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 .
