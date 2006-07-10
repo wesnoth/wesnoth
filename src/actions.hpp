@@ -90,6 +90,7 @@ public:
 				   const unit_map& units,
 				   const std::vector<team>& teams,
 				   const gamestatus& status, const gamemap& map, const game_data& gamedata);
+		~unit_stats();
 
 		// This method dumps the statistics of a unit on stdout. Remove it eventually.
 		void dump() const;

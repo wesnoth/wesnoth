@@ -492,7 +492,7 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 	// Get the current state of the unit.
 	attack_num = u_attack_num;
 	if (attack_num >= 0) {
-		weapon = &u.attacks()[attack_num];
+		weapon = new attack_type(u.attacks()[attack_num]);
 	} else {
 		weapon = NULL;
 	}
@@ -591,6 +591,13 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 		num_blows = 0;
 		swarm_min = 0;
 		swarm_max = 0;
+	}
+}
+
+battle_context::unit_stats::~unit_stats()
+{
+	if(weapon) {
+		delete weapon;
 	}
 }
 
