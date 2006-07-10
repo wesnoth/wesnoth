@@ -831,6 +831,22 @@ int unit::emits_zoc() const
 	}
 	return emit_zoc_;
 }
+
+bool unit::has_ability_by_id(const std::string& ability) const
+{
+	const config* abil = cfg_.child("abilities");
+	if(abil) {
+		for(config::child_map::const_iterator i = abil->all_children().begin(); i != abil->all_children().end(); ++i) {
+			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
+				if((**j)["id"] == ability) {
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
 bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool use_flat_tod) const
 {
 	const std::string& description = cfg["description"];
@@ -886,8 +902,22 @@ bool unit::matches_filter(const config& cfg,const gamemap::location& loc,bool us
 		}
 	}
 
-	if(ability.empty() == false && get_ability_bool(ability,loc) == false) {
-		return false;
+	if(ability.empty() == false && has_ability_by_id(ability) == false) {
+		if(std::find(ability.begin(),ability.end(),',') != ability.end()) {
+			const std::vector<std::string>& vals = utils::split(ability);
+			bool has_ability = false;
+			for(std::vector<std::string>::const_iterator this_ability = vals.begin(); this_ability != vals.end(); ++this_ability) {
+				if(has_ability_by_id(*this_ability)) {
+					has_ability = true;
+					break;
+				}
+			}
+			if(!has_ability) {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 
 	if(race.empty() == false && race_->name() != race) {
