@@ -17,7 +17,9 @@
 .
 .SH NAME
 .
-wesnothd \- Battle for Wesnoth-Mehrspielernetzwerkdaemon
+wesnothd \- Battle for
+.B Wesnoth
+-Mehrspielernetzwerkdaemon
 .
 .SH SYNTAX
 .
@@ -25,8 +27,6 @@ wesnothd \- Battle for Wesnoth-Mehrspielernetzwerkdaemon
 .RB [\| \-dvV \|]
 .RB [\| \-c
 .IR Pfad \|]
-.RB [\| \-m
-.IR GrÃ¶ÃŸe \|]
 .RB [\| \-p
 .IR Port \|]
 .RB [\| \-t
@@ -34,8 +34,8 @@ wesnothd \- Battle for Wesnoth-Mehrspielernetzwerkdaemon
 .
 .SH BESCHREIBUNG
 .
-Battle for
-.BR Wesnoth -Mehrspielernetzwerkdaemon.
+Verwaltet Battle for Wesnoth Mehrspielerpartien. Unter http://www.wesnoth.org/wiki/ServerAdministration
+können Sie weitere Hinweise finden, wie Sie den Server mittels des Wesnoth Clients oder des Sockets steuern.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
@@ -49,16 +49,16 @@ weiter unten beschrieben.
 Startet das Programm als Daemon.
 .TP
 .B -h,\ --help
-Gibt die mÃ¶glichen Kommandozeilenoptionen aus.
+Gibt die möglichen Kommandozeilenoptionen aus.
 .TP
 .BR -p,\ --port
 Weist dem Server einen bestimmten Port zu. Wenn kein Port angegeben wird, wird Port 15000 verwendet.
 .TP
 .BI -t , \ --threads\ <WERT>
-Legt die Anzahl an Threads fÃ¼r Netzwerk-I/O fest. (Standard: 5)
+Legt die Anzahl an Threads für Netzwerk-I/O fest. (Standard: 5)
 .TP
 .B -v,\ --verbose
-Aktiviert die Anzeige von ausfÃ¼hrlicheren Meldungen des Servers.
+Aktiviert die Anzeige von ausführlicheren Meldungen des Servers.
 .TP
 .B -V,\ --version
 Zeigt die Versionsnummer an und beendet das Programm.
@@ -70,13 +70,13 @@ Zeigt die Versionsnummer an und beendet das Programm.
 .P
 [\fIElement\fR]
 .IP
-SchlÃ¼ssel="\fIWert\fR"
+Schlüssel="\fIWert\fR"
 .IP
-SchlÃ¼ssel="\fIWert\fR,\fIWert\fR,..."
+Schlüssel="\fIWert\fR,\fIWert\fR,..."
 .P
 [/\fIElement\fR]
 .
-.SS "Globale SchlÃ¼ssel:"
+.SS "Globale Schlüssel:"
 .
 .TP
 .B connections_allowed
@@ -85,8 +85,8 @@ Die Anzahl der erlaubten Verbindungen von der selben IP.
 .B disallow_names
 Namen/Nicks, die nicht vom Server zugelassen werden. `*' und `?' sind erlaubt. Siehe 
 .BR glob (7) 
-fÃ¼r weitere Informationen zu Wildcards.
-Standardwerte (werden benutzt, wenn dieser SchlÃ¼ssel nicht gesetzt wurde) sind: `server,ai,player,network,human,admin,computer'.
+für weitere Informationen zu Wildcards.
+Standardwerte (werden benutzt, wenn dieser Schlüssel nicht gesetzt wurde) sind: `server,ai,player,network,human,admin,computer'.
 .TP
 .B max_messages
 Die Anzahl der erlaubten Nachrichten in \fBmessages_time_period\fR.
@@ -101,7 +101,9 @@ Die "Nachricht des Tages".
 Das Passwort um auf dem Server Administratorrechte zu erhalten. Es beginnt per Konvention mit "admin ".
 .TP
 .B versions_accepted
-Eine durch Komma getrennte Liste der Programmversionen, die der Server zulÃ¤sst. `*' und `?' sind erlaubt.
+Eine durch Komma getrennte Liste der Programmversionen, die der Server zulässt. `*' und `?' sind erlaubt.
+.br
+Beispiel: versions_accepted="*" akzeptiert alle Versionen.
 .
 .SS "Globale Elemente:"
 .
@@ -117,20 +119,20 @@ Die Adresse des Rechners, zu dem umgeleitet wird.
 Der dabei zu verwendende Port.
 .TP
 .B version
-Eine durch Komma getrennte Liste der Versionen, die umgeleitet werden sollen. VerhÃ¤lt sich genauso wie
+Eine durch Komma getrennte Liste der Versionen, die umgeleitet werden sollen. Verhält sich genauso wie
 .B versions_accepted
 in Bezug auf Wildcards.
 .RE
 .P
 .B [proxy]
 Ein Element, das benutzt wird um dem Server mitzuteilen, wie ein Proxy zu agieren und somit alle Anfragen des mit ihm verbundenen Rechners an den angegebenen Server weiterzuleiten.
-Es werden die gleichen SchlÃ¼ssel wie bei [redirect] akzeptiert.
+Es werden die gleichen Schlüssel wie bei [redirect] akzeptiert.
 .
 .SH AUTOR
 .
 Geschrieben von David White <davidnwhite@verizon.net>.
 Bearbeitet von Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> und Soliton <soliton@sonnenkinder.org>.
-Ãœbersetzt von Jan-Heiner Laberenz <Jan-Heiner@arcor.de>, Nils Kneuper <crazy-ivanovic@gmx.net> und Soliton <soliton@sonnenkinder.org>.
+Übersetzt von Jan-Heiner Laberenz <Jan-Heiner@arcor.de> und Nils Kneuper <crazy-ivanovic@gmx.net>, Soliton <soliton@sonnenkinder.org>.
 Diese Beschreibung stammt im Original von Cyril Bouthors <cyril@bouthors.org>.
 .br
 Besuchen Sie auch die offizielle Webseite: http://www.wesnoth.org/
@@ -139,9 +141,9 @@ Besuchen Sie auch die offizielle Webseite: http://www.wesnoth.org/
 .
 Copyright \(co 2003-2006 David White <davidnwhite@verizon.net>
 .br
-Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation verÃ¶ffentlicht, weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 2 der Lizenz oder (nach Ihrer Option) jeder spÃ¤teren Version.
+Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 2 der Lizenz oder (nach Ihrer Option) jeder späteren Version.
 .br
-Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
+Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
 .br
 Sie sollten eine Kopie der GNU General Public License zusammen mit diesem Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 .
