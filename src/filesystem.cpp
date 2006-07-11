@@ -456,7 +456,8 @@ std::string get_user_data_dir()
 	const std::string dir_path = home + std::string("/") + PREFERENCES_DIR;
 #else
 	const std::string dir_path = home + PREFERENCES_DIR;
-#endif	DIR* dir = opendir(dir_path.c_str());
+#endif
+	DIR* dir = opendir(dir_path.c_str());
 	if(dir == NULL) {
 		const int res = mkdir(dir_path.c_str(),AccessMode);
 
