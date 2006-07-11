@@ -436,9 +436,13 @@ std::string get_user_data_dir()
 	return be_path.Path();
 #else
 
+#ifndef __AMIGAOS4__
 	static const char* const current_dir = ".";
-
 	const char* home_str = getenv("HOME");
+#else
+	static const char* const current_dir = " ";
+	const char* home_str = "PROGDIR:";
+#endif
 	if(home_str == NULL)
 		home_str = current_dir;
 
@@ -448,8 +452,11 @@ std::string get_user_data_dir()
 #define PREFERENCES_DIR ".wesnoth"
 #endif
 
+#ifndef __AMIGAOS4__
 	const std::string dir_path = home + std::string("/") + PREFERENCES_DIR;
-	DIR* dir = opendir(dir_path.c_str());
+#else
+	const std::string dir_path = home + PREFERENCES_DIR;
+#endif	DIR* dir = opendir(dir_path.c_str());
 	if(dir == NULL) {
 		const int res = mkdir(dir_path.c_str(),AccessMode);
 
