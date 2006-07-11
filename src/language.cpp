@@ -126,7 +126,9 @@ static void wesnoth_setlocale(int category, std::string const &slocale)
 	// FIXME: add configure check for unsetenv
 #ifndef _WIN32
 #ifndef SOLARIS
+#ifndef __AMIGAOS4__
 	unsetenv ("LANGUAGE"); // void so no return value to check
+#endif
 #endif
 #endif
 

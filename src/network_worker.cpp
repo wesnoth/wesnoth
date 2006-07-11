@@ -28,6 +28,11 @@
 #include <map>
 #include <vector>
 
+#ifdef __AMIGAOS4__
+#include <unistd.h>
+//#include <sys/clib2_net.h>
+#endif
+
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
 #  undef INADDR_ANY
 #  undef INADDR_BROADCAST

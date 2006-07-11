@@ -192,7 +192,7 @@ manager::manager(size_t nthreads) : free_(true)
 	}
 
 	//on Unix-based systems, set sigpipe to be ignored
-#if !(defined(_WIN32) || defined(__APPLE__))
+#if !(defined(_WIN32) || defined(__APPLE__) || defined(__AMIGAOS4__))
 	WRN_NW << "ignoring SIGPIPE\n";
 	signal(SIGPIPE,SIG_IGN);
 #endif

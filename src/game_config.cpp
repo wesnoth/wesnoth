@@ -81,10 +81,14 @@ namespace game_config
 
 
 
+#ifdef __AMIGAOS4__
+	std::string path = "PROGDIR:";
+#else
 #ifdef WESNOTH_PATH
 	std::string path = WESNOTH_PATH;
 #else
 	std::string path = "";
+#endif
 #endif
 
 	void load_config(const config* cfg)
