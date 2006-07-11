@@ -2052,7 +2052,7 @@ msgstr ""
 
 #: data/help.cfg:100
 msgid "Recruiting and Recalling"
-msgstr "Novačenje in priklic enot"
+msgstr "Vpoklic in priklic enot"
 
 #: data/help.cfg:101
 msgid ""
@@ -2067,14 +2067,14 @@ msgid ""
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
 "Vsaka stran začne z enim voditeljem v svoji trdnjavi. Na začetku in "
-"dostikrat med bojem, boste morali novačiti <ref>dst=units text=enote</ref> v "
-"svojo vojsko. Za začetek mora biti vodja (Konrad v kampanji "
+"dostikrat med bojem, boste morali vpoklicaiti <ref>dst=units text=enote</"
+"ref> v svojo vojsko. Za začetek mora biti vodja (Konrad v kampanji "
 "Prestolonaslednik) v trdnjavi <ref>dst=terrain_castle text=gradu</ref>. "
-"Potem lahko novačite, tako da izberete Novači iz menija ali pa z desnim "
-"klikom na željeno ploščo in izbiro <italic>text=Novači</italic>. Prikazal se "
-"bo zaslon s seznamom enot na voljo za novačenje, skupaj z njihovo ceno v "
-"zlatu. S klikom na enoto se bodo na levi prikazale njene statistike, s "
-"pritiskom na gumb Novači pa jo boste pojedli."
+"Potem lahko vpoklicujete, tako da izberete Vpokliči iz menija ali pa z "
+"desnim klikom na željeno ploščo in izbiro <italic>text=Vpokliči</italic>. "
+"Prikazal se bo zaslon s seznamom enot na voljo za vpoklic, skupaj z njihovo "
+"ceno v zlatu. S klikom na enoto se bodo na levi prikazale njene statistike, "
+"s pritiskom na gumb Vpokliči pa jo boste pojedli."
 
 #: data/help.cfg:103
 msgid ""
@@ -2087,11 +2087,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Če ste enoto novačili preko pojavnega menija, se bo ta pojavila na tisti "
+"Če ste enoto vpoklicali preko pojavnega menija, se bo ta pojavila na tisti "
 "plošči, kjer ste desno-kliknili. Drugače se bo pojavila v poljubnem prosti "
-"plošči zraven trdnjave. Novačite lahko samo toliko enot, kolikor je prostih "
-"plošč v gradu (okoli trdnjave) in porabite lahko samo toliko zlata, kolikor "
-"ga imate."
+"plošči zraven trdnjave. Vpokličete lahko samo toliko enot, kolikor je "
+"prostih plošč v gradu (okoli trdnjave) in porabite lahko samo toliko zlata, "
+"kolikor ga imate."
 
 #: data/help.cfg:105
 msgid ""
@@ -2129,8 +2129,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ne pozabite da enote ne stanejo le toliko zlata kolikor ga je potrebno za "
-"njihovo novačenje ali priklic, ampak potrebujejo tudi plače. Poglejte si "
+"Ne pozabite, da enote ne stanejo le toliko zlata kolikor ga je potrebno za "
+"njihov vpoklic ali priklic, ampak potrebujejo tudi plače. Poglejte si "
 "<ref>dst=income_and_upkeep text='Prihodki in Plače'</ref>."
 
 #: data/help.cfg:114
@@ -4947,9 +4947,10 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"Vaš voditelj lahko novači in priklicuje enote iz poljubne trdnjave, ne samo "
-"iz tiste kjer začne igro. Lahko zavzamete sovražno trdnjavo in novačite od "
-"tam. Poleg tega vam bo mogoče kak zaveznik (začasno) odstopil svojo."
+"Vaš voditelj lahko vpoklicuje in priklicuje enote iz poljubne trdnjave, ne "
+"samo iz tiste kjer začne igro. Zavzamete lahko sovražno trdnjavo in "
+"vpoklicujete od tam. Poleg tega vam bo mogoče kak zaveznik (začasno) "
+"odstopil svojo."
 
 #: data/tips.cfg:20
 msgid ""
@@ -8167,16 +8168,16 @@ msgstr "Zapri"
 
 #: src/actions.cpp:111
 msgid "You don't have a leader to recruit with."
-msgstr "Nimate voditelja, s katerim bi lahko novačili."
+msgstr "Nimate voditelja, s katerim bi lahko vpoklicovali."
 
 #: src/actions.cpp:118
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
-"Če hočete novačiti ali priklicati enote, mora biti vaš voditelj v trdnjavi."
+"Če hočete vpoklicati ali priklicati enote, mora biti vaš voditelj v trdnjavi."
 
 #: src/actions.cpp:137
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr "Na voljo ni nič prostih gradov, kjer bi lahko novačili."
+msgstr "Na voljo ni prostih gradov, kjer bi lahko vpoklicovali."
 
 #: src/actions.cpp:927 src/actions.cpp:1161
 msgid "poisoned"
@@ -8849,7 +8850,7 @@ msgstr "njega"
 
 #: src/menu_events.cpp:122 src/menu_events.cpp:184
 msgid "Recruits"
-msgstr "Novaki"
+msgstr "Vpoklicane enote"
 
 #: src/menu_events.cpp:128 src/menu_events.cpp:188
 msgid "Recalls"
@@ -8977,11 +8978,11 @@ msgstr "Zlata"
 
 #: src/menu_events.cpp:571
 msgid "You have no units available to recruit."
-msgstr "Nikogar ne morete novačiti."
+msgstr "Nikogar ne morete vpoklicati."
 
 #: src/menu_events.cpp:582
 msgid "Recruit"
-msgstr "Novači"
+msgstr "Vpokliči"
 
 #: src/menu_events.cpp:583 src/menu_events.cpp:726
 msgid "Select unit:"
@@ -8989,7 +8990,7 @@ msgstr "Izberite enoto:"
 
 #: src/menu_events.cpp:623
 msgid "You don't have enough gold to recruit that unit"
-msgstr "Za novačenje te enote nimate dovolj zlata"
+msgstr "Za vpoklic te enote nimate dovolj zlata"
 
 #: src/menu_events.cpp:678
 msgid "You are separated from your soldiers and may not recall them"
@@ -9133,11 +9134,11 @@ msgstr "Pričakovan izid (hp)"
 
 #: src/mouse_events.cpp:301
 msgid " resistance vs "
-msgstr " odpornost na "
+msgstr " je odporen za "
 
 #: src/mouse_events.cpp:302
 msgid " vulnerability vs "
-msgstr " šibkost na "
+msgstr " je ranljiv za "
 
 #: src/mouse_events.cpp:312
 msgid "Slowed"
@@ -9572,9 +9573,10 @@ msgstr "Neveljavna barva"
 msgid "Leader: "
 msgstr "Vodja: "
 
+# preveri
 #: src/multiplayer_wait.cpp:118
 msgid "Recruits: "
-msgstr "Novaki: "
+msgstr "Vpoklicane enote: "
 
 #: src/multiplayer_wait.cpp:157
 msgid "Waiting for game to start..."
