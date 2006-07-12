@@ -136,7 +136,7 @@ namespace gui{
 				}
 				const unit_map::const_iterator leader = team_leader(n+1,units);
 				if(leader != units.end()) {
-					const std::string& name = leader->second.description();
+					const std::string& name = teams[n].name(); //leader->second.description();
 					if( name.size() >= semiword.size() &&
 							std::equal(semiword.begin(),semiword.end(),name.begin(),chars_equal_insensitive)) {
 						if(matches.empty()) {
