@@ -211,18 +211,21 @@ void game::update_side_data()
 
 	const config::child_itors level_sides = level_.child_range("side");
 
+	const user_vector users = all_game_users();
+	user_vector new_players;
+
+	bool side_found;
 	//for each player:
 	// * Find the player name
 	// * Find the side this player name corresponds to
-	for(std::vector<network::connection>::const_iterator player = players_.begin();
-			player != players_.end(); ++player) {
-
+	for(user_vector::const_iterator player = users.begin(); player != users.end(); ++player) {
 		player_map::const_iterator info = player_info_->find(*player);
 		if (info == player_info_->end()) {
 			std::cerr << "Error: unable to find player info for connection " << *player << "\n";
 			continue;
 		}
 
+		side_found = false;
 		size_t side_num;
 		size_t side_index;
 		config::child_iterator sd;
@@ -243,6 +246,7 @@ void game::update_side_data()
 					if((**sd)["user_description"] == info->second.name()) {
 						sides_.insert(std::pair<network::connection, size_t>(*player, side_index));
 						sides_taken_[side_index] = true;
+						side_found = true;
 					}
 					else {
 						sides_taken_[side_index] = false;
@@ -251,15 +255,56 @@ void game::update_side_data()
 				else if((**sd)["controller"] == "ai") {
 					side_controllers_[side_index] = "ai";
 					sides_taken_[side_index] = true;
+					side_found = true;
 				}
 				else if((**sd)["controller"] == "human") {
 					sides_.insert(std::pair<network::connection,size_t>(players_.front(),side_index));
 					sides_taken_[side_index] = true;
+					side_found = true;
 					side_controllers_[side_index] = "human";
 				}
 			}
 		}
+
+		if (side_found){
+			new_players.push_back(*player);
+		}
 	}
+
+	//check if current players are still left in observers_ and if so remove them there
+	//this may happen in the game lobby if an observer is put into a slot by the host
+	{
+		for(user_vector::const_iterator player = new_players.begin(); player != new_players.end(); ++player) {
+			user_vector::iterator u = find_connection(*player, observers_);
+			if (u != observers_.end()){
+				observers_.erase(u);
+				//if the player is not in players_ add him now
+				if (find_connection(*player, players_) == players_.end()){
+					players_.push_back(*player);
+				}
+			}
+		}
+	}
+
+	//check if all players have a side and if not put them in observers_
+	//this may happen in the game lobby if an observer is put into an occupied slot by the host
+	{
+		//make a copy of players_ so that the iterator does not get corrupted
+		user_vector players_copy;
+		players_copy.insert(players_copy.end(), players_.begin(), players_.end());
+		for (user_vector::iterator player = players_copy.begin(); player != players_copy.end(); player++){
+			if (sides_.find(*player) == sides_.end()) {
+				//if the player doesn't have a side and is not in observers_ yet put him there
+				if (find_connection(*player, observers_) == observers_.end()){
+					observers_.push_back(*player);
+				}
+				user_vector::iterator p = find_connection(*player, players_);
+				players_.erase(p);
+			}
+		}
+	}
+
+	std::cerr << debug_player_info();
 }
 
 const std::string& game::transfer_side_control(const config& cfg)
@@ -282,8 +327,8 @@ const std::string& game::transfer_side_control(const config& cfg)
 		return notfound;
 	}
 
-	user_vector::iterator i = find_in_observers(sock_entering);
-	user_vector::iterator j = find_in_players(sock_entering);
+	user_vector::iterator i = find_connection(sock_entering, observers_);
+	user_vector::iterator j = find_connection(sock_entering, players_);
 
 	if (i == observers_.end() && j == players_.end()){
 		static const std::string notfound = "Player/Observer not found";
@@ -333,7 +378,7 @@ const std::string& game::transfer_side_control(const config& cfg)
 		}
 
 		//check, if this socket belongs to a player
-		user_vector::iterator p = find_in_players(sock);
+		user_vector::iterator p = find_connection(sock, players_);
 		if (p == players_.end()){
 			static const std::string no_player = "The player for this side could not be found";
 			return no_player;
@@ -363,8 +408,8 @@ const std::string& game::transfer_side_control(const config& cfg)
 			}
 
 			//reiterate because iterators became invalid
-			i = find_in_observers(sock_entering);
-			j = find_in_players(sock_entering);
+			i = find_connection(sock_entering, observers_);
+			j = find_connection(sock_entering, players_);
 		}
 
 		//clear the sides_ entry
@@ -844,24 +889,14 @@ const player* game::transfer_game_control(){
 	return result;
 }
 
-user_vector::iterator game::find_in_players(network::connection sock){
+user_vector::iterator game::find_connection(network::connection sock, user_vector& users){
 	user_vector::iterator p;
-	for (p = players_.begin(); p != players_.end(); p++){
+	for (p = users.begin(); p != users.end(); p++){
 		if ((*p) == sock){
 			return p;
 		}
 	}
-	return players_.end();
-}
-
-user_vector::iterator game::find_in_observers(network::connection sock){
-	user_vector::iterator o;
-	for (o = observers_.begin(); o != observers_.end(); o++){
-		if ((*o) == sock){
-			return o;
-		}
-	}
-	return observers_.end();
+	return users.end();
 }
 
 config game::construct_server_message(const std::string& message)

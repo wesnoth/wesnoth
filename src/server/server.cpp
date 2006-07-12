@@ -1002,7 +1002,10 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	//if this is data describing changes to a game.
 	else if(g->is_owner(sock) && data.child("scenario_diff")) {
 		g->level().apply_diff(*data.child("scenario_diff"));
-		g->update_side_data();
+		config* cfg_change = data.child("scenario_diff")->child("change_child");
+		if ((cfg_change != NULL) && (cfg_change->child("side") != NULL)){
+			g->update_side_data();
+		}
 
 		const bool lobby_changes = g->describe_slots();
 		if(lobby_changes) {
