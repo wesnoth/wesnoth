@@ -485,9 +485,9 @@ void preferences_dialog::process_event()
 		set_show_haloes(show_haloing_button_.checked());
 	if (gamma_button_.pressed()) {
 		set_adjust_gamma(gamma_button_.checked());
-		bool hide_gamma = !adjust_gamma();
-		gamma_slider_.hide(hide_gamma);
-		gamma_label_.hide(hide_gamma);
+		bool enable_gamma = adjust_gamma();
+		gamma_slider_.enable(enable_gamma);
+		gamma_label_.enable(enable_gamma);
 	}
 
 	if (sound_button_.pressed()) {
@@ -595,9 +595,11 @@ void preferences_dialog::set_selection(int index)
 	show_team_colours_button_.hide(hide_general);
 	show_grid_button_.hide(hide_general);
 
-	const bool hide_display = tab_ != DISPLAY_TAB, hide_gamma = hide_display || !adjust_gamma();
-	gamma_label_.hide(hide_gamma);
-	gamma_slider_.hide(hide_gamma);
+	const bool hide_display = tab_ != DISPLAY_TAB;
+	gamma_label_.hide(hide_display);
+	gamma_slider_.hide(hide_display);
+	gamma_label_.enable(adjust_gamma());
+	gamma_slider_.enable(adjust_gamma());
 	gamma_button_.hide(hide_display);
 	show_floating_labels_button_.hide(hide_display);
 	show_colour_cursors_button_.hide(hide_display);

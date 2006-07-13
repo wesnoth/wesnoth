@@ -37,11 +37,12 @@ public:
 	int max_value() const;
 	int min_value() const;
 
-	virtual void set_location(SDL_Rect const &rect);
+	virtual void enable(bool new_val=true);
 
 	//VC++ doesn't like a 'using scrollarea::set_location' directive here, so we declare
 	//an inline forwarding function instead
 	void set_location(int x, int y) { widget::set_location(x,y); }
+	virtual void set_location(SDL_Rect const &rect);
 
 protected:
 	virtual void handle_event(const SDL_Event& event);

@@ -48,6 +48,8 @@ public:
 
 	virtual void hide(bool value = true);
 	bool hidden() const;
+	virtual void enable(bool new_val = true);
+	bool enabled() const;
 
 	void set_clip_rect(const SDL_Rect& rect);
 
@@ -102,6 +104,7 @@ private:
 	mutable bool needs_restore_; // Have we drawn ourselves, so that if moved, we need to restore the background?
 
 	enum { UNINIT, HIDDEN, DIRTY, DRAWN } state_;
+	bool enabled_;
 	bool clip_;
 	SDL_Rect clip_rect_;
 

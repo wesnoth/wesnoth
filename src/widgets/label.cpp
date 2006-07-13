@@ -57,17 +57,17 @@ const SDL_Color& label::set_colour(const SDL_Color& colour)
 {
 	colour_ = colour;
 	set_dirty();
-	return colour_;
+	return get_colour();
 }
 
 const SDL_Color& label::get_colour() const
 {
-	return colour_;
+	return (enabled()) ? colour_ : font::DISABLED_COLOUR;
 }
 
 void label::draw_contents()
 {
-	font::draw_text(&video(), location(), size_, colour_, text_, location().x, location().y);
+	font::draw_text(&video(), location(), size_, get_colour(), text_, location().x, location().y);
 }
 
 void label::update_label_size()

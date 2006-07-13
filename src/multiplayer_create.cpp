@@ -285,15 +285,15 @@ void create::process_event()
 	}
 	turns_label_.set_text(buf.str());
 
-	countdown_init_time_label_.hide(!countdown_game_.checked());
-	countdown_init_time_slider_.hide(!countdown_game_.checked());
-	countdown_turn_bonus_label_.hide(!countdown_game_.checked());
-	countdown_turn_bonus_slider_.hide(!countdown_game_.checked());
+	countdown_init_time_label_.enable(countdown_game_.checked());
+	countdown_init_time_slider_.enable(countdown_game_.checked());
+	countdown_turn_bonus_label_.enable(countdown_game_.checked());
+	countdown_turn_bonus_slider_.enable(countdown_game_.checked());
 
-	countdown_reservoir_time_label_.hide(!countdown_game_.checked());
-	countdown_reservoir_time_slider_.hide(!countdown_game_.checked());
-	countdown_action_bonus_label_.hide(!countdown_game_.checked());
-	countdown_action_bonus_slider_.hide(!countdown_game_.checked());
+	countdown_reservoir_time_label_.enable(countdown_game_.checked());
+	countdown_reservoir_time_slider_.enable(countdown_game_.checked());
+	countdown_action_bonus_label_.enable(countdown_game_.checked());
+	countdown_action_bonus_slider_.enable(countdown_game_.checked());
 
 	if(mp_countdown_init_time_ != countdown_init_time_slider_.value()
 		&& countdown_init_time_slider_.value() > countdown_reservoir_time_slider_.value())

@@ -34,7 +34,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
                std::string button_image_name, SPACE_CONSUMPTION spacing)
 	: widget(video), label_(label),
 	  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
-	  button_(true), state_(NORMAL), type_(type), enabled_(true), pressed_(false),
+	  button_(true), state_(NORMAL), type_(type), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0)
 {
 	if(button_image_name.empty() && type == TYPE_PRESS) {
@@ -154,17 +154,12 @@ bool button::checked() const
 
 void button::enable(bool new_val)
 {
-	if (enabled_ != new_val) {
-		enabled_ = new_val;
-		state_ = NORMAL;
+	if(new_val != enabled())
+	{
 		pressed_ = false;
-		set_dirty();
+		state_ = NORMAL;
+		widget::enable(new_val);
 	}
-}
-
-bool button::enabled() const
-{
-	return enabled_;
 }
 
 void button::draw_contents()
@@ -203,7 +198,7 @@ void button::draw_contents()
 
 	SDL_Color button_colour = font::BUTTON_COLOUR;
 
-	if (!enabled_) {
+	if (!enabled()) {
 		image = greyscale_image(image);
 		button_colour = font::STONED_COLOUR;
 	}
@@ -304,7 +299,7 @@ void button::mouse_up(SDL_MouseButtonEvent const &event)
 
 void button::handle_event(const SDL_Event& event)
 {
-	if (hidden() || !enabled_)
+	if (hidden() || !enabled())
 		return;
 
 	STATE start_state = state_;
