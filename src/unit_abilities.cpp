@@ -404,7 +404,8 @@ std::pair<int,gamemap::location> unit_ability_list::highest(const std::string& k
 				best_loc = i->second;
 			}
 		} else {
-			flat = maximum<int>(flat,lexical_cast_default<int>((*i->first)[key]));
+			int val = (*i->first)[key] != "" ? lexical_cast_default<int>((*i->first)[key]) : def;
+			flat = maximum<int>(flat,val);
 			if(lexical_cast_default<int>((*i->first)[key]) > abs_max) {
 				abs_max = lexical_cast_default<int>((*i->first)[key]);
 				best_loc = i->second;
@@ -430,7 +431,8 @@ std::pair<int,gamemap::location> unit_ability_list::lowest(const std::string& ke
 				best_loc = i->second;
 			}
 		} else {
-			flat = minimum<int>(flat,lexical_cast_default<int>((*i->first)[key]));
+			int val = (*i->first)[key] != "" ? lexical_cast_default<int>((*i->first)[key]) : def;
+			flat = minimum<int>(flat,val);
 			if(lexical_cast_default<int>((*i->first)[key]) < abs_max) {
 				abs_max = lexical_cast_default<int>((*i->first)[key]);
 				best_loc = i->second;
