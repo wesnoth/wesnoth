@@ -1138,7 +1138,9 @@ void unit::read(const config& cfg)
 		cfg_["unit_description"] = custom_unit_desc;
 	}
 	
-	cfg_["profile"] = cfg["profile"];
+	if(cfg["profile"] != "") {
+		cfg_["profile"] = cfg["profile"];
+	}
 	
 	if(!type_set) {
 		for(config::const_child_itors range = cfg.child_range("attack");
