@@ -1011,6 +1011,7 @@ void unit::read(const config& cfg)
 	}
 
 	validate_side(side_);
+	bool id_set = cfg["id"] != "";
 
 	/* prevent un-initialized variables */
 	max_hit_points_=1;
@@ -1138,7 +1139,7 @@ void unit::read(const config& cfg)
 		cfg_["unit_description"] = custom_unit_desc;
 	}
 	
-	if(cfg["profile"] != "") {
+	if(cfg["profile"] != "" && !id_set) {
 		cfg_["profile"] = cfg["profile"];
 	}
 	
