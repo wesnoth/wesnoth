@@ -258,7 +258,6 @@ void gamebrowser::handle_event(const SDL_Event& event)
 
 				if(point_in_rect(x, y, item_rect)) {
 					set_focus(true);
-					set_dirty();
 					selected_ = i;
 					break;
 				}

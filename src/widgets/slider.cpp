@@ -20,6 +20,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 
 namespace {
 	const std::string slider_image = "buttons/slider.png";
@@ -173,6 +174,7 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 		return;
 
 	state_ = CLICKED;
+	set_focus(true);
 	set_slider_position(event.x);
 }
 
@@ -180,9 +182,9 @@ void slider::handle_event(const SDL_Event& event)
 {
 	if (hidden() || !enabled())
 		return;
-
+	
 	STATE start_state = state_;
-
+	
 	switch(event.type) {
 	case SDL_MOUSEBUTTONUP:
 		state_ = NORMAL;
@@ -193,12 +195,21 @@ void slider::handle_event(const SDL_Event& event)
 	case SDL_MOUSEMOTION:
 		mouse_motion(event.motion);
 		break;
+	case SDL_KEYDOWN:
+		if(focus()) {
+			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
+			const int c = key.sym;
+			if(c == SDLK_LEFT) {
+				set_value(value_ - increment_);
+			} else if(c == SDLK_RIGHT) {
+				set_value(value_ + increment_);
+			}
+		}
+		break;
 	default:
 		return;
 	}
-
 	if (start_state != state_)
 		set_dirty(true);
 }
-
-}
+} //end namespace gui
