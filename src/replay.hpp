@@ -20,7 +20,6 @@
 #include "unit.hpp"
 
 class display;
-class config_writer;
 
 struct verification_manager
 {

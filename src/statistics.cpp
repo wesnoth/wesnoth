@@ -16,7 +16,6 @@
 #include "statistics.hpp"
 #include "util.hpp"
 #include "log.hpp"
-#include "serialization/binary_or_text.hpp"
 
 #define ERR_NG lg::err(lg::engine)
 
@@ -38,7 +37,6 @@ struct scenario_stats
 	explicit scenario_stats(const config& cfg);
 
 	config write() const;
-	void write(config_writer &out) const;
 
 	std::vector<stats> team_stats;
 	std::string scenario_name;
@@ -62,16 +60,6 @@ config scenario_stats::write() const
 	}
 
 	return res;
-}
-
-void scenario_stats::write(config_writer &out) const
-{
-	out.write_key_val("scenario", scenario_name);
-	for(std::vector<stats>::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i) {
-		out.open_child("team");
-		i->write(out);
-		out.close_child("team");
-	}
 }
 
 std::vector<scenario_stats> master_stats;
@@ -103,15 +91,6 @@ config write_str_int_map(const stats::str_int_map& m)
 	return res;
 }
 
-void write_str_int_map(config_writer &out, const stats::str_int_map& m)
-{
-	for(stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		char buf[50];
-		snprintf(buf,sizeof(buf),"%d",i->second);
-		out.write_key_val(i->first, buf);
-	}
-}
-
 stats::str_int_map read_str_int_map(const config& cfg)
 {
 	stats::str_int_map m;
@@ -135,19 +114,6 @@ config write_battle_result_map(const stats::battle_result_map& m)
 	}
 
 	return res;
-}
-
-void write_battle_result_map(config_writer &out, const stats::battle_result_map& m)
-{
-	for(stats::battle_result_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		out.open_child("sequence");
-		write_str_int_map(out, i->second);
-
-		char buf[50];
-		snprintf(buf,sizeof(buf),"%d",i->first);
-		out.write_key_val("_num", buf);
-		out.close_child("sequence");
-	}
 }
 
 stats::battle_result_map read_battle_result_map(const config& cfg)
@@ -241,50 +207,6 @@ config stats::write() const
 	res["expected_damage_taken"] = buf;
 
 	return res;
-}
-
-void stats::write(config_writer &out) const
-{
-	out.open_child("recruits");
-	write_str_int_map(out, recruits);
-	out.close_child("recruits");
-	out.open_child("recalls");
-	write_str_int_map(out, recalls);
-	out.close_child("recalls");
-	out.open_child("advances");
-	write_str_int_map(out, advanced_to);
-	out.close_child("advances");
-	out.open_child("deaths");
-	write_str_int_map(out, deaths);
-	out.close_child("deaths");
-	out.open_child("killed");
-	write_str_int_map(out, killed);
-	out.close_child("killed");
-	out.open_child("attacks");
-	write_battle_result_map(out, attacks);
-	out.close_child("attacks");
-	out.open_child("defends");
-	write_battle_result_map(out, defends);
-	out.close_child("defends");
-
-	char buf[50];
-	snprintf(buf,sizeof(buf),"%d",recruit_cost);
-	out.write_key_val("recruit_cost", buf);
-
-	snprintf(buf,sizeof(buf),"%d",recall_cost);
-	out.write_key_val("recall_cost", buf);
-
-	snprintf(buf,sizeof(buf),"%d",damage_inflicted);
-	out.write_key_val("damage_inflicted", buf);
-
-	snprintf(buf,sizeof(buf),"%d",damage_taken);
-	out.write_key_val("damage_taken", buf);
-
-	snprintf(buf,sizeof(buf),"%d",expected_damage_inflicted);
-	out.write_key_val("expected_damage_inflicted", buf);
-
-	snprintf(buf,sizeof(buf),"%d",expected_damage_taken);
-	out.write_key_val("expected_damage_taken", buf);
 }
 
 void stats::read(const config& cfg)
@@ -506,17 +428,6 @@ config write_stats()
 	}
 
 	return res;
-}
-
-void write_stats(config_writer &out)
-{
-	out.write_key_val("mid_scenario", mid_scenario ? "true" : "false");
-
-	for(std::vector<scenario_stats>::const_iterator i = master_stats.begin(); i != master_stats.end(); ++i) {
-		out.open_child("scenario");
-		i->write(out);
-		out.close_child("scenario");
-	}
 }
 
 void read_stats(const config& cfg)

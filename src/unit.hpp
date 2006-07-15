@@ -24,7 +24,6 @@
 class unit;
 class display;
 class gamestatus;
-class config_writer;
 
 #include <set>
 #include <string>
@@ -146,7 +145,6 @@ class unit
 		*/
 		void read(const config& cfg);
 		void write(config& cfg) const;
-		void write(config_writer& out) const;
 
 		void assign_role(const std::string& role);
 		const std::vector<attack_type>& attacks() const;

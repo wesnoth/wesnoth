@@ -13,7 +13,6 @@
 #ifndef GAME_STATUS_HPP_INCLUDED
 #define GAME_STATUS_HPP_INCLUDED
 
-#include "filesystem.hpp"
 #include "unit.hpp"
 
 #include <time.h>
@@ -164,14 +163,9 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 
 game_state read_game(const game_data& data, const config* cfg);
 void write_game(const game_state& game, config& cfg/*, WRITE_GAME_MODE mode=WRITE_FULL_GAME*/);
-void write_game(config_writer &out, const game_state& game);
 
 // function returns true iff there is already savegame with that name
 bool save_game_exists(const std::string & name);
-
-//throws game::save_game_failed
-scoped_ostream open_save_game(const std::string &label);
-void finish_save_game(config_writer &out, const game_state& state, const std::string &label);
 
 //functions to load/save games.
 void load_game(const game_data& data, const std::string& name, game_state& state, std::string* error_log);

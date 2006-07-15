@@ -27,23 +27,4 @@ bool detect_format_and_read(config &cfg, std::istream &in, std::string* error_lo
 //function which writes a file, compressed or not depending on a flag
 void write_possibly_compressed(std::ostream &out, config &cfg, bool compress);
 
-// Class for writing a config out to a file in pieces.
-class config_writer
-{
-public:
-	config_writer(std::ostream &out, bool compress, const std::string &textdomain);
-
-	void write(const config &cfg);
-	void write_child(const std::string &key, const config &cfg);
-	void write_key_val(const std::string &key, const std::string &value);
-	void open_child(const std::string &key);
-	void close_child(const std::string &key);
-	bool good() const;
-
-private:
-	std::ostream &out_;
-	bool compress_;
-	unsigned int level_;
-	std::string textdomain_;
-};
 #endif
