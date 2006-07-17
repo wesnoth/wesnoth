@@ -322,7 +322,7 @@ int show_dialog(display& disp, surface image,
 				std::string* text_widget_text,
 				int text_widget_max_chars,
 				dialog_action* action, std::vector<check_item>* options, int xloc, int yloc,
-				const std::string* dialog_style, std::vector<dialog_button>* action_buttons,
+				const std::string* dialog_style, std::vector<dialog_button_info>* action_buttons,
 				const std::string& help_topic, const menu::sorter* sorter, menu::style* menu_style)
 {
 	if(disp.update_locked())
@@ -477,7 +477,7 @@ int show_dialog(display& disp, surface image,
 	}
 
 	if(action_buttons != NULL) {
-		for(std::vector<dialog_button>::const_iterator i = action_buttons->begin(); i != action_buttons->end(); ++i) {
+		for(std::vector<dialog_button_info>::const_iterator i = action_buttons->begin(); i != action_buttons->end(); ++i) {
 			button new_button(screen,i->label);
 			check_button_height += new_button.height() + button_height_padding;
 			check_button_width = maximum<int>(new_button.width(),check_button_width);
@@ -812,13 +812,13 @@ int show_dialog(display& disp, surface image,
 				wassert(action_buttons != NULL && action_buttons->size() > n - options_size);
 
 				const dialog_button_action::RESULT res = (*action_buttons)[n - options_size].handler->button_pressed(menu_.selection());
-				if(res == dialog_button_action::DELETE_ITEM) {
+				if(res == DELETE_ITEM) {
 					first_time = true;
 					menu_.erase_item(menu_.selection());
 					if(menu_.nitems() == 0) {
 						return -1;
 					}
-				} else if(res == dialog_button_action::CLOSE_DIALOG) {
+				} else if(res == CLOSE_DIALOG) {
 					return -1;
 				}
 
@@ -837,7 +837,7 @@ int show_dialog(display& disp, surface image,
 
 		if(action != NULL) {
 			const int act = action->do_action();
-			if(act != dialog_action::CONTINUE_DIALOG) {
+			if(act != CONTINUE_DIALOG) {
 				return act;
 			}
 		}
@@ -860,7 +860,7 @@ int show_dialog2(display &screen, surface image,
 				dialog_action* action,
 				std::vector<check_item>* options, int xloc, int yloc,
 				const std::string* dialog_style,
-				std::vector<dialog_button>* buttons,
+				std::vector<dialog_button_info>* buttons,
 				const std::string& help_topic,
 				const menu::sorter* sorter
 			 )

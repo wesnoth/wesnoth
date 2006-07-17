@@ -68,15 +68,15 @@ namespace events{
 
 				const int res = gui::show_dialog(disp_,NULL,"",message,gui::YES_NO);
 				if(res != 0) {
-					return gui::dialog_button_action::NO_EFFECT;
+					return gui::CONTINUE_DIALOG;
 				}
 			}
 
 			units_.erase(units_.begin() + index);
 			recorder.add_disband(index);
-			return gui::dialog_button_action::DELETE_ITEM;
+			return gui::DELETE_ITEM;
 		} else {
-			return gui::dialog_button_action::NO_EFFECT;
+			return gui::CONTINUE_DIALOG;
 		}
 	}
 
@@ -714,8 +714,8 @@ namespace events{
 			}
 
 			delete_recall_unit recall_deleter(*gui_,recall_list);
-			gui::dialog_button delete_button(&recall_deleter,_("Dismiss Unit"));
-			std::vector<gui::dialog_button> buttons;
+			gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
+			std::vector<gui::dialog_button_info> buttons;
 			buttons.push_back(delete_button);
 
 			int res = 0;

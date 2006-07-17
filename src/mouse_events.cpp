@@ -649,7 +649,7 @@ namespace{
 				gui::show_dialog(disp_, NULL, _("Damage Calculations"), "", gui::OK_ONLY, NULL, &preview_panes);
 			}
 
-		return NO_EFFECT;
+			return gui::CONTINUE_DIALOG;
 		}
 
 	private:
@@ -1228,8 +1228,8 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 	gui_->draw(true,true);
 
 	attack_prediction_displayer ap_displayer(*gui_, bc_vector, map_, teams_, units_, status_, gameinfo_, attacker_loc, defender_loc);
-	std::vector<gui::dialog_button> buttons;
-	buttons.push_back(gui::dialog_button(&ap_displayer, _("Damage Calculations")));
+	std::vector<gui::dialog_button_info> buttons;
+	buttons.push_back(gui::dialog_button_info(&ap_displayer, _("Damage Calculations")));
 
 	int res = 0;
 

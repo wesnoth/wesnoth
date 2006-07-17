@@ -36,6 +36,7 @@ namespace gui
 
 extern const int ButtonHPadding;
 extern const int ButtonVPadding;
+enum DIALOG_RESULT { DELETE_ITEM=-4, ESCAPE_DIALOG=-3, CONTINUE_DIALOG=-2, CLOSE_DIALOG=-1};
 
 bool in_dialog();
 
@@ -74,8 +75,6 @@ public:
 	virtual ~dialog_action() {}
 
 	virtual int do_action() = 0;
-
-	enum { CONTINUE_DIALOG=-2 };
 };
 
 class dialog_button_action
@@ -83,21 +82,19 @@ class dialog_button_action
 public:
 	virtual ~dialog_button_action() {}
 
-	enum RESULT { DELETE_ITEM, NO_EFFECT, CLOSE_DIALOG };
+	typedef DIALOG_RESULT RESULT;
 
 	virtual RESULT button_pressed(int menu_selection) = 0;
 };
 
-struct dialog_button
+struct dialog_button_info
 {
-	dialog_button(dialog_button_action* handler, const std::string& label) : handler(handler), label(label)
+	dialog_button_info(dialog_button_action* handler, const std::string& label) : handler(handler), label(label)
 	{}
 
 	dialog_button_action* handler;
 	std::string label;
 };
-
-enum { ESCAPE_DIALOG=-3 };
 
 enum DIALOG_TYPE { MESSAGE, OK_ONLY, YES_NO, OK_CANCEL, CANCEL_ONLY, CLOSE_ONLY, NULL_DIALOG };
 
@@ -134,7 +131,7 @@ int show_dialog(display &screen, surface image,
 				dialog_action* action=NULL,
 				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1,
 				const std::string* dialog_style=NULL,
-				std::vector<dialog_button>* buttons=NULL,
+				std::vector<dialog_button_info>* buttons=NULL,
 				const std::string& help_topic="",
 				const menu::sorter* sorter=NULL,
 				menu::style* menu_style=NULL
@@ -154,7 +151,7 @@ int show_dialog2(display &screen, surface image,
 				dialog_action* action=NULL,
 				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1,
 				const std::string* dialog_style=NULL,
-				std::vector<dialog_button>* buttons=NULL,
+				std::vector<dialog_button_info>* buttons=NULL,
 				const std::string& help_topic="",
 				const menu::sorter* sorter=NULL
 			 );

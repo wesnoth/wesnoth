@@ -235,7 +235,7 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 			}
 
 			if(res != 0) {
-				return gui::dialog_button_action::NO_EFFECT;
+				return gui::CONTINUE_DIALOG;
 			}
 		}
 
@@ -249,9 +249,9 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 			summaries_.erase(summaries_.begin() + index);
 		}
 
-		return gui::dialog_button_action::DELETE_ITEM;
+		return gui::DELETE_ITEM;
 	} else {
-		return gui::dialog_button_action::NO_EFFECT;
+		return gui::CONTINUE_DIALOG;
 	}
 }
 
@@ -486,8 +486,8 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	}
 
 	delete_save save_deleter(disp,games,summaries);
-	gui::dialog_button delete_button(&save_deleter,_("Delete Save"));
-	std::vector<gui::dialog_button> buttons;
+	gui::dialog_button_info delete_button(&save_deleter,_("Delete Save"));
+	std::vector<gui::dialog_button_info> buttons;
 	buttons.push_back(delete_button);
 
 	bool generate_summaries = !no_summary.empty();
