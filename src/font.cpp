@@ -330,6 +330,7 @@ const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},
                 BUTTON_COLOUR = {0xBC,0xB0,0x88,0},
                 STONED_COLOUR = {0xA0,0xA0,0xA0,0},
                 TITLE_COLOUR  = {0xBC,0xB0,0x88,0};
+const SDL_Color DISABLED_COLOUR = inverse(STONED_COLOUR);
 
 namespace {
 

@@ -45,9 +45,7 @@ public:
 
 	bool pressed();
 	bool hit(int x, int y) const;
-
-	void enable(bool new_val);
-	bool enabled() const;
+	virtual void enable(bool new_val=true);
 
 protected:
 	virtual void handle_event(const SDL_Event& event);
@@ -70,8 +68,6 @@ private:
 	STATE state_;
 
 	TYPE type_;
-
-	bool enabled_;
 
 	bool pressed_;
 

@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "widgets/slider.hpp"
+#include "font.hpp"
 #include "image.hpp"
 #include "video.hpp"
 
@@ -33,6 +34,15 @@ slider::slider(CVideo &video)
 	  min_(-100000), max_(100000), value_(0),
 	  increment_(1), state_(NORMAL)
 {
+}
+
+void slider::enable(bool new_val)
+{
+	if(new_val != enabled())
+	{
+		state_ = NORMAL;
+		widget::enable(new_val);
+	}
 }
 
 void slider::set_location(SDL_Rect const &rect)
@@ -111,9 +121,14 @@ SDL_Rect slider::slider_area() const
 
 void slider::draw_contents()
 {
-	const surface image(state_ != NORMAL ? highlightedImage_ : image_);
+	surface image(state_ != NORMAL ? highlightedImage_ : image_);
 	if (image == NULL)
 		return;
+	SDL_Color line_colour = font::NORMAL_COLOUR;
+	if (!enabled()) {
+		image = greyscale_image(image);
+		line_colour = font::DISABLED_COLOUR;
+	}
 
 	SDL_Rect const &loc = location();
 	if (image->w >= loc.w)
@@ -122,7 +137,8 @@ void slider::draw_contents()
 	surface const screen = video().getSurface();
 
 	SDL_Rect line_rect = { loc.x + image->w / 2, loc.y + loc.h / 2, loc.w - image->w, 1 };
-	SDL_FillRect(screen, &line_rect, SDL_MapRGB(screen->format, 221, 221, 221));
+	SDL_FillRect(screen, &line_rect, SDL_MapRGB(screen->format,
+		line_colour.r, line_colour.g, line_colour.b));
 
 	SDL_Rect const &slider = slider_area();
 	video().blit_surface(slider.x, slider.y, image);
@@ -162,7 +178,7 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 
 void slider::handle_event(const SDL_Event& event)
 {
-	if (hidden())
+	if (hidden() || !enabled())
 		return;
 
 	STATE start_state = state_;
