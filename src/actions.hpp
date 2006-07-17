@@ -149,7 +149,9 @@ private:
 };
 
 //attack: executes an attack.
-void attack(display& gui, const gamemap& map,
+class attack {
+	public:
+		attack(display& gui, const gamemap& map,
             std::vector<team>& teams,
             gamemap::location attacker,
             gamemap::location defender,
@@ -159,6 +161,35 @@ void attack(display& gui, const gamemap& map,
             const gamestatus& state,
             const game_data& info,
 			bool update_display = true);
+		~attack();
+	private:
+		class attack_end_exception {};
+		void fire_event(const std::string& n);
+		void refresh_bc();
+		display& gui_;
+		const gamemap& map_;
+		std::vector<team>& teams_;
+		gamemap::location attacker_;
+		gamemap::location defender_;
+		int attack_with_;
+		int defend_with_;
+		unit_map& units_;
+		const gamestatus& state_;
+		const game_data& info_;
+		bool update_display_;
+		unit_map::iterator a_,d_; // attacker and defender
+		std::stringstream errbuf_;
+		bool OOS_error_;
+		battle_context* bc_;
+		const battle_context::unit_stats* a_stats_;
+		const battle_context::unit_stats* d_stats_;
+		
+		int orig_attacks_,orig_defends_;
+		int n_attacks_,n_defends_;
+		int attacker_cth_,defender_cth_;
+		int attacker_damage_,defender_damage_;
+		int attackerxp_,defenderxp_;
+};
 
 //given the location of a village, will return the 0-based index of the team
 //that currently owns it, and -1 if it is unowned.
