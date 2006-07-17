@@ -1011,7 +1011,6 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 		recorder.add_attack(u,target,weapon,def_weapon);
 
 		attack(info_.disp, info_.map, info_.teams, u, target, weapon, def_weapon, info_.units, info_.state, info_.gameinfo);
-		check_victory(info_.units,info_.teams);
 		dialogs::advance_unit(info_.gameinfo,info_.map,info_.units,u,info_.disp,true);
 
 		const unit_map::const_iterator defender = info_.units.find(target);
@@ -1022,6 +1021,7 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 			}
 		}
 
+		check_victory(info_.units,info_.teams);
 		raise_enemy_attacked();
 	}
 }
