@@ -2,7 +2,7 @@
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
-# Nobuhito Okada <okyada@gmail.com>, 2005.
+# Nobuhito Okada <okyada@gmail.com>, 2005-2006.
 # MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005.
 #
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-12 22:22+0200\n"
-"PO-Revision-Date: 2005-09-03 04:49+0900\n"
+"PO-Revision-Date: 2006-07-12 04:43+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -113,12 +113,10 @@ msgid "Flip around (this may change the dimensions of the map):"
 msgstr "反転する方向（マップの全体サイズが変わるかもしれません）"
 
 #: src/hotkeys.cpp:49
-#, fuzzy
 msgid "Next Unit"
 msgstr "次のユニット"
 
 #: src/hotkeys.cpp:50
-#, fuzzy
 msgid "Previous Unit"
 msgstr "前のユニット"
 
@@ -200,7 +198,7 @@ msgstr "グリッド表示切り替え"
 
 #: src/hotkeys.cpp:71
 msgid "Mouse Scrolling"
-msgstr ""
+msgstr "マウススクロール"
 
 #: src/hotkeys.cpp:72
 msgid "Status Table"
@@ -243,9 +241,8 @@ msgid "Set Label"
 msgstr "ラベルを付ける"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Clear Labels"
-msgstr "ラベルを付ける"
+msgstr "ラベルをクリアする"
 
 #: src/hotkeys.cpp:84
 msgid "Show Enemy Moves"
@@ -256,39 +253,36 @@ msgid "Best Possible Enemy Moves"
 msgstr "最も可能性のある敵の動き"
 
 #: src/hotkeys.cpp:86
-#, fuzzy
 msgid "Play"
-msgstr "プレイヤー数:"
+msgstr "プレイ"
 
 #: src/hotkeys.cpp:87
 msgid "Reset"
-msgstr ""
+msgstr "リセット"
 
 #: src/hotkeys.cpp:88
 msgid "Stop"
-msgstr ""
+msgstr "ストップ"
 
 #: src/hotkeys.cpp:89
-#, fuzzy
 msgid "Next Turn"
-msgstr "次のユニット"
+msgstr "次のターン"
 
 #: src/hotkeys.cpp:90
-#, fuzzy
 msgid "Next Side"
-msgstr "次のユニット"
+msgstr "次の陣営"
 
 #: src/hotkeys.cpp:91
 msgid "Shroud"
-msgstr ""
+msgstr "重なり"
 
 #: src/hotkeys.cpp:92
 msgid "Fog"
-msgstr ""
+msgstr "霧"
 
 #: src/hotkeys.cpp:93
 msgid "Skip animation"
-msgstr ""
+msgstr "アニメーションをスキップ"
 
 #: src/hotkeys.cpp:95
 msgid "Set Terrain"
@@ -474,7 +468,7 @@ msgstr "AI移動スキップ"
 
 #: src/preferences_display.cpp:221
 msgid "Show Lobby Joins"
-msgstr ""
+msgstr "ロビー参加表示"
 
 #: src/preferences_display.cpp:222
 msgid "Show Floating Labels"
@@ -502,7 +496,7 @@ msgstr "特殊効果表示"
 
 #: src/preferences_display.cpp:229
 msgid "Theme"
-msgstr ""
+msgstr "テーマ"
 
 #: src/preferences_display.cpp:231
 msgid "Adjust Gamma"
@@ -522,7 +516,7 @@ msgstr "音楽"
 
 #: src/preferences_display.cpp:236
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "チャットの時刻表示"
 
 #: src/preferences_display.cpp:237
 msgid "Music Volume:"
@@ -558,11 +552,11 @@ msgstr "画面端のスクロールの速度を変更します"
 
 #: src/preferences_display.cpp:273 src/preferences_display.cpp:275
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "チャットの表示行数を設定する"
 
 #: src/preferences_display.cpp:278
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "チャットのメッセージに時刻をつける"
 
 #: src/preferences_display.cpp:281 src/preferences_display.cpp:286
 msgid "Change the brightness of the display"
@@ -586,7 +580,7 @@ msgstr "マップのグリッドを表示します"
 
 #: src/preferences_display.cpp:301
 msgid "Show messages about players joining the multiplayer lobby"
-msgstr ""
+msgstr "マルチプレイヤーロビーに参加しているプレイヤーについてのメッセージを表示します"
 
 #: src/preferences_display.cpp:304
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -597,9 +591,8 @@ msgid "Change the resolution the game runs at"
 msgstr "解像度を変更します"
 
 #: src/preferences_display.cpp:307
-#, fuzzy
 msgid "Change the theme the game runs with"
-msgstr "解像度を変更します"
+msgstr "ゲーム動作時のテーマを変更します"
 
 #: src/preferences_display.cpp:310
 msgid "Display a dialog at the beginning of your turn"
@@ -633,7 +626,7 @@ msgstr "キーボードショートカットの一覧表示と設定変更を行
 
 #: src/preferences_display.cpp:517
 msgid "Chat Lines: "
-msgstr ""
+msgstr "チャット行数: "
 
 #: src/preferences_display.cpp:569
 msgid "yes"
@@ -656,9 +649,8 @@ msgid "Prefs section^Sound"
 msgstr "音楽"
 
 #: src/preferences_display.cpp:640
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "表示"
+msgstr "マルチプレイヤー"
 
 #: src/preferences_display.cpp:641
 msgid "Advanced section^Advanced"
@@ -677,9 +669,8 @@ msgid "Hotkey Settings"
 msgstr "ホットキーの設定"
 
 #: src/preferences_display.cpp:756 src/preferences_display.cpp:809
-#, fuzzy
 msgid "Press desired Hotkey"
-msgstr "ホットキーに設定したいキーを押して下さい"
+msgstr "希望のホットキーを押して下さい"
 
 #: src/preferences_display.cpp:774
 msgid "Action"
@@ -698,21 +689,20 @@ msgid "Save Hotkeys"
 msgstr "ホットキーを保存"
 
 #: src/preferences_display.cpp:836
-#, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "このホットキーは既に使用されています。"
 
 #: src/preferences_display.cpp:869
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "テーマ設定を保存しました: "
 
 #: src/preferences_display.cpp:875
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "新しいテーマは次回の新規またはロードされるゲームから有効になります。"
 
 #: src/preferences_display.cpp:879
 msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
+msgstr "テーマがありません。既存のゲーム内から変更してみて下さい。"
 
 #: src/show_dialog.cpp:313
 msgid "Error"
