@@ -524,6 +524,9 @@ void menu::key_press(SDLKey key)
 void menu::handle_event(const SDL_Event& event)
 {
 	scrollarea::handle_event(event);
+	if (hidden())
+		return;
+
 	if(event.type == SDL_KEYDOWN) {
 		// Only pass key events if we have the focus
 		if (focus())

@@ -45,6 +45,7 @@ public:
 	virtual void set_location(SDL_Rect const &rect);
 
 protected:
+	bool requires_event_focus() const { return enabled(); }
 	virtual void handle_event(const SDL_Event& event);
 	virtual void draw_contents();
 
