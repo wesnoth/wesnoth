@@ -37,7 +37,7 @@ namespace gui {
 	//static initializations
 menu::imgsel_style menu::slateborder_style("misc/selection", false,
 										   0x000000, 0x4a4440, 0x999999,
-										   0.9, 0.2, 0.2);
+										   0.0, 0.2, 0.2);
 menu::imgsel_style menu::bluebg_style("misc/selection2", true,
 										   0x000000, 0x000000, 0x333333,
 										   0.35, 0.0, 0.3);
