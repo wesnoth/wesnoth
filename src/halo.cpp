@@ -80,7 +80,6 @@ effect::effect(int xpos, int ypos, const std::string& img, ORIENTATION orientati
 
 	if(!images_.animation_finished()) {
 		images_.update_current_frame();
-		disp->delay(20);
 	}
 
 	current_image_ = "";
