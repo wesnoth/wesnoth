@@ -465,6 +465,9 @@ namespace events{
 
 	void menu_handler::autosave(const std::string &label, unsigned turn, const config &starting_pos) const
 	{
+		if(game_config::disable_autosave)
+			return;
+
 		Uint32 start, end;
 		start = SDL_GetTicks();
 		config snapshot;
@@ -1659,6 +1662,8 @@ namespace events{
 			throw end_level_exception(QUIT);
 		} else if(cmd == "ignore_replay_errors") {
 			game_config::ignore_replay_errors = (data != "off") ? true : false;
+		} else if(cmd == "nosaves") {
+			game_config::disable_autosave = (data != "off") ? true : false;
 		} else if(cmd == "n" && game_config::debug) {
 			throw end_level_exception(VICTORY);
 		} else if(cmd == "debug" && network::nconnections() == 0) {
