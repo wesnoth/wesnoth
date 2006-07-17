@@ -1474,7 +1474,7 @@ void calculate_healing(display& disp, const gamemap& map,
 				i->second.set_poisoned(disp,i->first, -healing);
 				start_time = minimum<int>(start_time, i->second.get_animation()->get_first_frame_time());
 				// FIXME
-				sound::play_sound("groan.wav");
+				sound::play_sound("poison.ogg");
 				disp.float_label(i->first, lexical_cast<std::string>(-healing), 255,0,0);
 			} else {
 				i->second.set_healed(disp,i->first, healing);
