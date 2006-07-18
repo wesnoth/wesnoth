@@ -152,7 +152,8 @@ private:
 class title_less
 {
 public:
-	bool operator()(const topic &t1, const topic &t2) { return t1.title < t2.title; }
+	bool operator()(const topic &t1, const topic &t2) {
+            return strcoll(t1.title.c_str(), t2.title.c_str()) < 0; }
 };
 
 struct delete_section
@@ -1317,7 +1318,7 @@ struct unit_topic_less {
 	    std::pair<const unit_type*,topic> b) {
 		if (a.first->race() == b.first->race())
 			return a.second.title < b.second.title;
-		return a.first->race() < b.first->race();
+		return strcoll(a.first->race().c_str(), b.first->race().c_str()) < 0;
 	}
 };
 
