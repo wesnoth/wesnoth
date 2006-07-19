@@ -23,6 +23,8 @@
 #include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
 
+#define ERR_DP LOG_STREAM(err, display)
+
 namespace gui {
 
 const int font_size = font::SIZE_SMALL;
@@ -31,8 +33,8 @@ const int checkbox_horizontal_padding = font::SIZE_SMALL / 2;
 const int vertical_padding = font::SIZE_SMALL / 2;
 
 button::button(CVideo& video, const std::string& label, button::TYPE type,
-               std::string button_image_name, SPACE_CONSUMPTION spacing)
-	: widget(video), label_(label),
+               std::string button_image_name, SPACE_CONSUMPTION spacing, const bool auto_join)
+	: widget(video, auto_join), label_(label),
 	  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
 	  button_(true), state_(NORMAL), type_(type), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0)
@@ -62,8 +64,10 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 			pressed_active_image.assign(pressed_image);
 	}
 
-	if (button_image.null())
+	if (button_image.null()) {
+		ERR_DP << "error initializing button!\n";
 		throw error();
+	}
 
 	base_height_ = button_image->h;
 	base_width_ = button_image->w;

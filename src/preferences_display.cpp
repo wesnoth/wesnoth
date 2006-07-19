@@ -181,10 +181,9 @@ public:
 		TYPE type;
 	};
 
-	void join();
-
 private:
 
+	handler_vector handler_members();
 	void process_event();
 	bool left_side() const { return false; }
 	void set_selection(int index);
@@ -329,43 +328,41 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	set_advanced_menu();
 }
 
-void preferences_dialog::join()
+handler_vector preferences_dialog::handler_members()
 {
-	//join the current event_context
-	widget::join();
-
-	//instruct all member widgets to join the current event_context
-	music_slider_.join();
-	sound_slider_.join();
-	scroll_slider_.join();
-	gamma_slider_.join();
-	chat_lines_slider_.join();
-	fullscreen_button_.join();
-	turbo_button_.join();
-	show_ai_moves_button_.join();
-	show_grid_button_.join();
-	show_lobby_joins_button_.join();
-	show_floating_labels_button_.join();
-	turn_dialog_button_.join();
-	turn_bell_button_.join();
-	show_team_colours_button_.join();
-	show_colour_cursors_button_.join();
-	show_haloing_button_.join();
-	video_mode_button_.join();
-	theme_button_.join();
-	hotkeys_button_.join();
-	gamma_button_.join();
-	flip_time_button_.join();
-	advanced_button_.join();
-	sound_button_.join();
-	music_button_.join();
-	chat_timestamp_button_.join();
-	music_label_.join();
-	sound_label_.join();
-	scroll_label_.join();
-	gamma_label_.join();
-	chat_lines_label_.join();
-	advanced_.join();
+	handler_vector h;
+	h.push_back(&music_slider_);
+	h.push_back(&sound_slider_);
+	h.push_back(&scroll_slider_);
+	h.push_back(&gamma_slider_);
+	h.push_back(&chat_lines_slider_);
+	h.push_back(&fullscreen_button_);
+	h.push_back(&turbo_button_);
+	h.push_back(&show_ai_moves_button_);
+	h.push_back(&show_grid_button_);
+	h.push_back(&show_lobby_joins_button_);
+	h.push_back(&show_floating_labels_button_);
+	h.push_back(&turn_dialog_button_);
+	h.push_back(&turn_bell_button_);
+	h.push_back(&show_team_colours_button_);
+	h.push_back(&show_colour_cursors_button_);
+	h.push_back(&show_haloing_button_);
+	h.push_back(&video_mode_button_);
+	h.push_back(&theme_button_);
+	h.push_back(&hotkeys_button_);
+	h.push_back(&gamma_button_);
+	h.push_back(&flip_time_button_);
+	h.push_back(&advanced_button_);
+	h.push_back(&sound_button_);
+	h.push_back(&music_button_);
+	h.push_back(&chat_timestamp_button_);
+	h.push_back(&music_label_);
+	h.push_back(&sound_label_);
+	h.push_back(&scroll_label_);
+	h.push_back(&gamma_label_);
+	h.push_back(&chat_lines_label_);
+	h.push_back(&advanced_);
+	return h;
 }
 
 void preferences_dialog::update_location(SDL_Rect const &rect)

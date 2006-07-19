@@ -27,7 +27,7 @@ public:
 	/// Create a zone with automatic handling of scrollbar.
 	/// \param d the display object
 	/// \param pane the widget where wheel events take place
-	scrollarea(CVideo &video);
+	scrollarea(CVideo &video, bool auto_join=true);
 
 	virtual void hide(bool value = true);
 

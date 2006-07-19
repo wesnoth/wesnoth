@@ -648,10 +648,11 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, std::vec
 	set_measurements(font::relative_size(200), font::relative_size(370));
 }
 
-void unit_preview_pane::join()
+handler_vector unit_preview_pane::handler_members()
 {
-	widget::join();
-	details_button_.join();
+	handler_vector h;
+	h.push_back(&details_button_);
+	return h;
 }
 
 bool unit_preview_pane::show_above() const

@@ -30,7 +30,7 @@ widget::widget(const widget &o)
 {
 }
 
-widget::widget(CVideo& video, bool auto_join)
+widget::widget(CVideo& video, const bool auto_join)
 	: handler(auto_join), video_(&video), rect_(EmptyRect), focus_(true), needs_restore_(false),
 	  state_(UNINIT), enabled_(true), clip_(false), volatile_(false), help_string_(0),
 	  align_(RIGHT_ALIGN)

@@ -57,8 +57,8 @@ private:
 		void set_selection(int index);
 		std::string get_selected_leader();
 
-		void join();
 	private:
+		handler_vector handler_members();
 		virtual void draw_contents();
 		virtual void process_event();
 

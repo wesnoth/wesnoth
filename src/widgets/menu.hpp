@@ -29,6 +29,9 @@
 
 namespace gui {
 
+class menu;
+extern menu *empty_menu;
+
 class menu : public scrollarea
 {
 public:
@@ -90,7 +93,7 @@ public:
 	friend class style;
 	friend class imgsel_style;
 	static style &default_style;
-	//static style bluebox_style;
+	static style simple_style;
 	static imgsel_style slateborder_style;
 	static imgsel_style bluebg_style;
 

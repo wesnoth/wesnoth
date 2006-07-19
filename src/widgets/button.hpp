@@ -35,7 +35,8 @@ public:
 	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
 
 	button(CVideo& video, const std::string& label, TYPE type=TYPE_PRESS,
-	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE);
+	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
+		   const bool auto_join=true);
 
 	virtual ~button() {}
 	void set_check(bool check);
@@ -54,6 +55,8 @@ protected:
 	virtual void mouse_up(const SDL_MouseButtonEvent& event);
 	virtual void draw_contents();
 
+	TYPE type_;
+
 private:
 
 	void calculate_size();
@@ -66,8 +69,6 @@ private:
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, PRESSED, PRESSED_ACTIVE };
 	STATE state_;
-
-	TYPE type_;
 
 	bool pressed_;
 

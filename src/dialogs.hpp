@@ -19,6 +19,7 @@ class display;
 #include "map.hpp"
 #include "show_dialog.hpp"
 #include "unit.hpp"
+#include "events.hpp"
 
 #include "widgets/button.hpp"
 
@@ -71,10 +72,10 @@ public:
 	bool show_above() const;
 	bool left_side() const;
 	void set_selection(int index);
-	void join();
 private:
 	display& disp_;
 
+	handler_vector handler_members();
 	void draw_contents();
 	void process_event();
 

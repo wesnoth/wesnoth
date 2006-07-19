@@ -144,11 +144,12 @@ std::string wait::leader_preview_pane::get_selected_leader()
 	return leaders_.get_leader();
 }
 
-void wait::leader_preview_pane::join()
-{
-	widget::join();
-	leader_combo_.join();
+handler_vector wait::leader_preview_pane::handler_members() {
+	handler_vector h;
+	h.push_back(&leader_combo_);
+	return h;
 }
+
 
 wait::wait(display& disp, const config& cfg, const game_data& data, mp::chat& c, config& gamelist) :
 	ui(disp, _("Game Lobby"), cfg, c, gamelist),

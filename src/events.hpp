@@ -15,6 +15,7 @@
 #define EVENTS_HPP_INCLUDED
 
 #include "SDL.h"
+#include <vector>
 
 //our user-defined double-click event type
 #define DOUBLE_CLICK_EVENT SDL_USEREVENT
@@ -50,15 +51,15 @@ public:
 
 	virtual void process_help_string(int /*mousex*/, int /*mousey*/) {}
 
-	virtual void join(); /*joins the current event context*/
-
-protected:
-	handler(bool auto_join=true);
-	virtual ~handler();
-
-private:
+	void join(); /*joins the current event context*/
 	void leave(); /*leave the event context*/
 
+protected:
+	handler(const bool auto_join=true);
+	virtual ~handler();
+	virtual std::vector<handler*> handler_members() {std::vector<handler*> h; return h;}
+
+private:
 	int unicode_;
 	bool has_joined_;
 };
@@ -92,5 +93,7 @@ void raise_volatile_draw_event();
 void raise_volatile_undraw_event();
 void raise_help_string_event(int mousex, int mousey);
 }
+
+typedef std::vector<events::handler*> handler_vector;
 
 #endif

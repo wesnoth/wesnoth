@@ -72,7 +72,7 @@ public:
 
 protected:
 	widget(widget const &o);
-	widget(CVideo& video, bool auto_join=true);
+	widget(CVideo& video, const bool auto_join=true);
 	virtual ~widget();
 
 	// During each relocation, this function should be called to register
