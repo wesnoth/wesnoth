@@ -47,7 +47,8 @@ namespace image {
 		// Called by each constructor after actual construction to
 		// initialize the index_ field
 		void init_index();
-		void get_tc_info();
+		void get_tc_info(const std::string& field);
+		void parse_arguments();
 	public:
 		enum type { NONE, FILE, SUB_FILE };
 

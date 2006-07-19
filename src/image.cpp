@@ -119,19 +119,8 @@ void locator::init_index()
 		index_ = i->second;
 	}
 }
-void locator::get_tc_info()
+void locator::get_tc_info(const std::string& field)
 {
-	std::string& fn(val_.filename_);
-	if(fn.empty()) {
-		return;
-	}
-	size_t open_field = fn.find('(');
-	size_t close_field = fn.find(')');
-	if(open_field == std::string::npos || close_field == std::string::npos) {
-		return;
-	}
-	std::string field = fn.substr(open_field+1,close_field-open_field-1);
-	fn = fn.substr(0,open_field);
 	// field should be of the format "team,team_color_id"
 	size_t comma = field.find(',');
 	if(comma == std::string::npos) {
@@ -141,6 +130,28 @@ void locator::get_tc_info()
 	std::string color_id = field.substr(comma+1);
 	val_.new_color = team::get_side_color_range(team_n);
 	val_.swap_colors = game_config::tc_info(color_id);
+}
+void locator::parse_arguments()
+{
+	std::string& fn(val_.filename_);
+	if(fn.empty()) {
+		return;
+	}
+	size_t markup_field = fn.find('~');
+	while(markup_field != std::string::npos) {
+		size_t open_field = fn.find('(',markup_field);
+		size_t close_field = fn.find(')',markup_field);
+		if(open_field == std::string::npos || close_field == std::string::npos) {
+			return;
+		}
+		std::string field = fn.substr(open_field+1,close_field-open_field-1);
+		std::string function = fn.substr(markup_field+1,open_field-markup_field-1);
+		fn = fn.substr(0,markup_field) + fn.substr(close_field+1);
+		if(function == "TC") {
+			get_tc_info(field);
+		}
+		markup_field = fn.find('~');
+	}
 }
 
 locator::locator() :
@@ -156,15 +167,15 @@ locator::locator(const locator &a):
 locator::locator(const char *filename) :
 	val_(filename)
 {
+	parse_arguments();
 	init_index();
-	get_tc_info();
 }
 
 locator::locator(const std::string &filename) :
 	val_(filename)
 {
+	parse_arguments();
 	init_index();
-	get_tc_info();
 }
 
 locator::locator(const char *filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb) :
