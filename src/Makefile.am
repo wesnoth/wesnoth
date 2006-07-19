@@ -50,6 +50,7 @@ wesnoth_SOURCES = \
 	clipboard.cpp \
 	color_range.cpp \
 	config_adapter.cpp \
+	construct_dialog.cpp \
 	cursor.cpp \
 	dialogs.cpp \
 	display.cpp \
@@ -156,6 +157,7 @@ wesnoth_editor_SOURCES = \
 	checksum.cpp \
 	clipboard.cpp \
 	color_range.cpp \
+	construct_dialog.cpp \
 	cursor.cpp \
 	dialogs.cpp \
 	display.cpp \
@@ -375,6 +377,7 @@ noinst_HEADERS = \
 	replay.hpp \
 	wml_separators.hpp \
 	show_dialog.hpp \
+	construct_dialog.hpp \
 	map_create.hpp \
 	actions.hpp \
 	sdl_utils.hpp \
