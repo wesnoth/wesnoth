@@ -98,6 +98,7 @@ class unit
         Uint32 team_rgb() const;
         std::vector<Uint32> team_rgb_range() const;
         const std::vector<Uint32>& flag_rgb() const;
+        const std::string& team_color() const;
 		unit_race::GENDER gender() const;
 		void set_side(unsigned int new_side);
 		fixed_t alpha() const;
@@ -299,7 +300,7 @@ class unit
 		int max_experience_, max_experience_b_;
 		int level_;
 		unit_type::ALIGNMENT alignment_;
-		std::vector<Uint32> flag_rgb_;
+		std::string flag_rgb_;
 
 		bool unrenamable_;
 		unsigned int side_;

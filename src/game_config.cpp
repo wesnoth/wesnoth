@@ -71,7 +71,9 @@ namespace game_config
 
         std::map<int, color_range > team_rgb_range;
         std::map<int, std::string > team_rgb_name;
-
+	
+	std::map<std::string, std::vector<Uint32> > team_rgb_colors;
+	
 	namespace sounds {
 		const std::string turn_bell = "bell.wav",
 		                  receive_message = "receive.wav",
@@ -170,5 +172,22 @@ namespace game_config
 		    team_rgb_name[side] = (**teamC)["name"];
 		  }
 		}
+		
+		const config* rgbv = v.child("team_colors");
+		if(rgbv) {
+			for(string_map::const_iterator rgb_it = rgbv->values.begin(); rgb_it != rgbv->values.end(); ++rgb_it) {
+				team_rgb_colors.insert(std::make_pair(rgb_it->first,string2rgb(rgb_it->second)));
+			}
+		}
+	}
+	const std::vector<Uint32>& tc_info(const std::string& name)
+	{
+		std::map<std::string, std::vector<Uint32> >::const_iterator i = team_rgb_colors.find(name);
+		if(i == team_rgb_colors.end()) {
+			static std::vector<Uint32> stv;
+			//throw config::error("Unknown team color: " + name);
+			return stv;
+		}
+		return i->second;
 	}
 }

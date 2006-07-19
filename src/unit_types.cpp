@@ -863,7 +863,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		healing_animations_.push_back(healing_animation(cfg["image_healing"],cfg["image_halo_healing"]));
 		// always have a healing animation
 	}
-	flag_rgb_ = string2rgb(cfg["flag_rgb"]);
+	flag_rgb_ = cfg["flag_rgb"];
 	// deprecation messages, only seen when unit is parsed for the first time
 }
 
@@ -1192,7 +1192,7 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 	}
 }
 
-const std::vector<Uint32>& unit_type::flag_rgb() const
+const std::string& unit_type::flag_rgb() const
 {
         return flag_rgb_;
 }

@@ -47,6 +47,7 @@ namespace image {
 		// Called by each constructor after actual construction to
 		// initialize the index_ field
 		void init_index();
+		void get_tc_info();
 	public:
 		enum type { NONE, FILE, SUB_FILE };
 
@@ -54,10 +55,10 @@ namespace image {
 			value();
 			value(const value &a);
 			value(const char *filename);
-			value(const char *filename, color_range new_rgb, std::vector<Uint32> swap_rgb);
+			value(const char *filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb);
 			value(const std::string& filename);
-		        value(const std::string& filename, color_range new_rgb, std::vector<Uint32> swap_rgb);
-			value(const std::string& filename, const gamemap::location& loc, color_range new_rgb, std::vector<Uint32> swap_rgb);
+		        value(const std::string& filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb);
+			value(const std::string& filename, const gamemap::location& loc, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb);
 
 			bool operator==(const value& a) const;
 			bool operator<(const value& a) const;
@@ -76,10 +77,10 @@ namespace image {
 	        locator();
 		locator(const locator &a);
 		locator(const char *filename);
-		locator(const char *filename, color_range new_rgb, std::vector<Uint32> swap_rgb);
+		locator(const char *filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb);
 		locator(const std::string& filename);
-		locator(const std::string& filename, color_range new_rgb, std::vector<Uint32> swap_rgb);
-		locator(const std::string& filename, const gamemap::location& loc, color_range new_rgb = std::vector<Uint32>(), std::vector<Uint32> swap_rgb = std::vector<Uint32>());
+		locator(const std::string& filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb);
+		locator(const std::string& filename, const gamemap::location& loc, const color_range& new_rgb = std::vector<Uint32>(), const std::vector<Uint32>& swap_rgb = std::vector<Uint32>());
 
 		locator& operator=(const locator &a);
 		bool operator==(const locator &a) const { return index_ == a.index_; }
