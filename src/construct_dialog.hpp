@@ -25,7 +25,6 @@
 
 namespace {
 static std::vector<std::string> empty_string_vector;
-typedef surface sdlutil_surface;
 }
 
 namespace gui {
@@ -56,7 +55,7 @@ public:
 	}
 	~dialog_image() { delete caption_; }
 
-	sdlutil_surface surface() const { return surf_; }
+	//surface surface() const { return surf_; }
 	label *caption() const { return caption_; }
 	void draw_contents();
 
@@ -67,28 +66,28 @@ private:
 		return h;
 	}
 
-	sdlutil_surface surf_;
+	surface surf_;
 	label *caption_;
 };
 
 class dialog_textbox : public textbox {
 public:
-	dialog_textbox(label *const label, CVideo &video, int width, const std::string& text="", bool editable=true, size_t max_size = 256, double alpha = 0.4, double alpha_focus = 0.2)
+	dialog_textbox(label *const caption, CVideo &video, int width, const std::string& text="", bool editable=true, size_t max_size = 256, double alpha = 0.4, double alpha_focus = 0.2)
 		: textbox(video, width, text, editable, max_size, alpha, alpha_focus, false),
-		label_(label)
+		caption_(caption)
 	{}
-	~dialog_textbox() { delete label_; }
+	~dialog_textbox() { delete caption_; }
 
-	gui::label *label() const { return label_; }
+	label *caption() const { return caption_; }
 
 private:
 	handler_vector handler_members() {
 		handler_vector h;
-		h.push_back(label_);
+		h.push_back(caption_);
 		return h;
 	}
 
-	gui::label *label_;
+	label *caption_;
 };
 
 class dialog_button : public button {
@@ -151,7 +150,7 @@ public:
 	dialog(display &disp, const std::string& title="", const std::string& message="",
 				const DIALOG_TYPE type=MESSAGE, const std::string& dialog_style=default_style,
 				const std::string& help_topic=no_help);
-	~dialog();
+	virtual ~dialog();
 
 	//Adding components - the dialog will manage the memory of these widgets,
 	//therefore do not attempt to reference its widgets after destroying it
@@ -175,7 +174,7 @@ public:
 
 	//Results
 	int result() const { return result_; }
-	menu *menu();
+	menu *get_menu();
 	bool done() const { return (result_ != CONTINUE_DIALOG); }
 	const std::string textbox_text() const { return text_widget_->text();}
 	const bool option_checked(unsigned int option_index=0);

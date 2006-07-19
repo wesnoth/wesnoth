@@ -109,36 +109,26 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 {
 	switch(type)
 	{
-		case MESSAGE:
-		default:
-			break;
-
-		case OK_ONLY: {
-			add_button(new standard_dialog_button(disp.video(),_("OK"),0,true), BUTTON_STANDARD);
-			break;
-		}
-
-		case YES_NO: {
-			add_button(new standard_dialog_button(disp.video(),_("Yes"),0,false), BUTTON_STANDARD);
-			add_button(new standard_dialog_button(disp.video(),_("No"),1,true), BUTTON_STANDARD);
-			break;
-		}
-
-		case OK_CANCEL: {
-			add_button(new standard_dialog_button(disp.video(),_("OK"),0,false), BUTTON_STANDARD);
-			add_button(new standard_dialog_button(disp.video(),_("Cancel"),1,true), BUTTON_STANDARD);
-			break;
-		}
-
-		case CANCEL_ONLY: {
-			add_button(new standard_dialog_button(disp.video(),_("Cancel"),0,true), BUTTON_STANDARD);
-			break;
-		}
-
-		case CLOSE_ONLY: {
-			add_button(new standard_dialog_button(disp.video(),_("Close"),0,true), BUTTON_STANDARD);
-			break;
-		}
+	case MESSAGE:
+	default:
+		break;
+	case OK_ONLY:
+		add_button(new standard_dialog_button(disp.video(),_("OK"),0,true), BUTTON_STANDARD);
+		break;
+	case YES_NO:
+		add_button(new standard_dialog_button(disp.video(),_("Yes"),0,false), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(disp.video(),_("No"),1,true), BUTTON_STANDARD);
+		break;
+	case OK_CANCEL:
+		add_button(new standard_dialog_button(disp.video(),_("OK"),0,false), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(disp.video(),_("Cancel"),1,true), BUTTON_STANDARD);
+		break;
+	case CANCEL_ONLY:
+		add_button(new standard_dialog_button(disp.video(),_("Cancel"),0,true), BUTTON_STANDARD);
+		break;
+	case CLOSE_ONLY:
+		add_button(new standard_dialog_button(disp.video(),_("Close"),0,true), BUTTON_STANDARD);
+		break;
 	}
 	//dialog creator should catch(button::error&) ?
 
@@ -162,7 +152,7 @@ dialog::~dialog()
 		delete b->first;
 	}
 	for (p = preview_panes_.begin(); p != preview_panes_.end(); ++p) {
-		delete p;
+		delete (*p);
 	}
 }
 
@@ -196,7 +186,7 @@ void dialog::set_textbox(const std::string& text_widget_label,
 	text_widget_->set_wrap(!editable_textbox);
 }
 
-menu *dialog::menu()
+menu *dialog::get_menu()
 {
 	if(menu_ == NULL)
 	{
@@ -244,7 +234,6 @@ int dialog::show()
 
 	//process
 	dialog_process_info dp_info;
-	disp_.invalidate_all();
 	do
 	{
 		events::pump();
@@ -308,6 +297,7 @@ void dialog::draw(surface_restorer &restorer)
 	                y_+top_padding+caption_height);
 
 	disp_.flip();
+	disp_.invalidate_all();
 }
 
 void dialog::refresh()
@@ -334,14 +324,14 @@ void dialog::layout(int &xloc, int &yloc)
 		text_widget_->set_width(minimum<size_t>(screen.getx()/2,maximum<size_t>(area.w,text_widget_->width())));
 		text_widget_->set_height(minimum<size_t>(screen.gety()/2,maximum<size_t>(area.h,text_widget_->height())));
 		text_widget_width = text_widget_->width();
-		text_widget_width += (text_widget_->label() == NULL) ? 0 : text_widget_->label()->width();
+		text_widget_width += (text_widget_->caption() == NULL) ? 0 : text_widget_->caption()->width();
 		text_widget_height = text_widget_->height() + message_font_size;
 	}
 
 //	const std::vector<std::string> &menu_items =
 //		(menu_items_ptr == NULL) ? std::vector<std::string>() : *menu_items_ptr;
 //	menu menu_(screen,menu_items,type == MESSAGE,-1,max_menu_width,sorter,menu_style);
-	const bool use_menu = (menu()->height() > 0);
+	const bool use_menu = (get_menu()->height() > 0);
 	if(use_menu)
 	{
 		menu_->join();
@@ -358,8 +348,8 @@ void dialog::layout(int &xloc, int &yloc)
 		message_rect_ = font::draw_text(NULL, clipRect, message_font_size,
 		                            font::NORMAL_COLOUR, message_, 0, 0);
 	}
-	int caption_width = 0;
-	int caption_height = 0;
+	unsigned int caption_width = 0;
+	unsigned int caption_height = 0;
 	if (image_ != NULL && image_->caption() != NULL) {
 		caption_width = image_->caption()->width();
 		caption_height = image_->caption()->height();
@@ -539,8 +529,8 @@ void dialog::layout(int &xloc, int &yloc)
 		text_widget_->set_location(xloc + left_padding +
 		                         text_widget_width - text_widget_->location().w,
 		                         text_widget_y_unpadded);
-		if(text_widget_->label() != NULL) {
-			text_widget_->label()->set_location(xloc+left_padding, text_widget_y_unpadded);
+		if(text_widget_->caption() != NULL) {
+			text_widget_->caption()->set_location(xloc+left_padding, text_widget_y_unpadded);
 		}
 	}
 
@@ -562,6 +552,7 @@ void dialog::layout(int &xloc, int &yloc)
 		if(image_->caption() != NULL) {
 			image_->caption()->set_location(xloc+image_width+left_padding+image_h_padding, yloc+top_padding);
 		}
+		image_->join();
 	}
 
 	//set the position of any tick boxes. by default, they go right below the menu,
@@ -591,6 +582,7 @@ void dialog::layout(int &xloc, int &yloc)
 /*			if(options != NULL && i < options->size()) {
 				check_buttons[i].set_check((*options)[i].checked);
 			*/
+	help_button_.join();
 }
 
 int dialog::process(dialog_process_info &info)
@@ -603,8 +595,7 @@ int dialog::process(dialog_process_info &info)
 	const bool new_left_button = (mouse_flags&SDL_BUTTON_LMASK) != 0;
 	const bool new_key_down = info.key[SDLK_SPACE] || info.key[SDLK_RETURN] ||
 							  info.key[SDLK_ESCAPE];
-	const bool use_menu = (menu()->height() > 0);
-	const bool use_textbox = (text_widget_ != NULL);
+	const bool use_menu = (get_menu()->height() > 0);
 
 	if((!info.key_down && info.key[SDLK_RETURN] || menu_->double_clicked()) &&
 	   (type_ == YES_NO || type_ == OK_CANCEL || type_ == OK_ONLY || type_ == CLOSE_ONLY)) {
@@ -621,7 +612,7 @@ int dialog::process(dialog_process_info &info)
 	//escape quits from the dialog -- unless it's an "ok" dialog with a menu,
 	//since such dialogs require a selection of some kind.
 	if(!info.key_down && info.key[SDLK_ESCAPE] && (type_ != OK_ONLY || !use_menu)) {
-		return ((use_menu) ? CLOSE_DIALOG : 1);
+		return ((use_menu) ? 1 : CLOSE_DIALOG);
 	}
 
 	if((menu_->selection() != info.selection) || info.first_time) {
@@ -693,7 +684,7 @@ int dialog::process(dialog_process_info &info)
 
 int dialog_button::action(dialog_process_info &info) {
 	if(handler_ != NULL) {
-		menu &menu = *(parent_->menu());
+		menu &menu = *(parent_->get_menu());
 		dialog_button_action::RESULT res = handler_->button_pressed(menu.selection());
 
 		if(res == DELETE_ITEM) {
@@ -716,15 +707,15 @@ int dialog_button::action(dialog_process_info &info) {
 	return simple_result_;
 }
 
-int standard_dialog_button::action(dialog_process_info &info) {
+int standard_dialog_button::action(dialog_process_info &/*info*/) {
 	//if the menu is not used, then return the index of the
 	//button pressed, otherwise return the index of the menu
 	//item selected if the last button is not pressed, and
 	//cancel (-1) otherwise
-	if(dialog()->menu()->height() <= 0) {
+	if(dialog()->get_menu()->height() <= 0) {
 		return simple_result_;
 	} else if((simple_result_ == 0 && is_last_) || !is_last_) {
-		return (dialog()->menu()->selection());
+		return (dialog()->get_menu()->selection());
 	}
 	return CLOSE_DIALOG;
 }
