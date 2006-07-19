@@ -408,6 +408,11 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 			int xp_for_advance = up->second.max_experience() - up->second.experience();
 			int kill_xp, fight_xp;
 
+			// See bug #6272... in some cases unit has already got enough xp to advance,
+			// but hasn't (bug elsewhere?).  Can cause divide by zero.
+			if (xp_for_advance <= 0)
+				xp_for_advance = 1;
+
 			fight_xp = defend_it->second.level();
 			kill_xp = fight_xp * game_config::kill_experience;
 
