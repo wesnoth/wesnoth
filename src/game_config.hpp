@@ -54,11 +54,14 @@ namespace game_config
 
         extern std::map<int, color_range> team_rgb_range;
         extern std::map<int, std::string > team_rgb_name;
+	
+	extern std::map<std::string, std::vector<Uint32> > team_rgb_colors;
 	namespace sounds {
 		extern const std::string turn_bell, receive_message, user_arrive, user_leave;
 	}
-
+	
         void load_config(const config* cfg);
+	const std::vector<Uint32>& tc_info(const std::string& name);
 }
 
 #endif

@@ -190,7 +190,7 @@ public:
 	const std::string& image_profile() const;
 	const t_string& unit_description() const;
 
-    const std::vector<Uint32>& flag_rgb() const;
+    const std::string& flag_rgb() const;
 
 	int hitpoints() const;
 	std::vector<attack_type> attacks() const;
@@ -288,7 +288,7 @@ private:
 	std::vector<leading_animation> leading_animations_;
 
 	std::vector<healing_animation> healing_animations_;
-    std::vector<Uint32> flag_rgb_;
+    std::string flag_rgb_;
 };
 
 struct game_data

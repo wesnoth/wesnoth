@@ -621,7 +621,7 @@ Uint32 unit::team_rgb() const
 }
 const std::vector<Uint32>& unit::flag_rgb() const
 {
-	return flag_rgb_;
+	return game_config::tc_info(flag_rgb_);
 }
 std::vector<Uint32> unit::team_rgb_range() const
 {
@@ -630,6 +630,10 @@ std::vector<Uint32> unit::team_rgb_range() const
   temp.push_back(team::get_side_rgb_max(side()));
   temp.push_back(team::get_side_rgb_min(side()));
   return(temp);
+}
+const std::string& unit::team_color() const
+{
+	return flag_rgb_;	
 }
 unit_race::GENDER unit::gender() const
 {
@@ -1061,7 +1065,7 @@ void unit::read(const config& cfg)
 	language_name_ = cfg["language_name"];
 	undead_variation_ = cfg["undead_variation"];
 
-	flag_rgb_ = string2rgb(cfg["flag_rgb"]);
+	flag_rgb_ = cfg["flag_rgb"];
 	alpha_ = lexical_cast_default<fixed_t>(cfg["alpha"]);
 
 	level_ = lexical_cast_default<int>(cfg["level"]);
@@ -1363,18 +1367,7 @@ void unit::write(config& cfg) const
 		default:
 			cfg["alignment"] = "neutral";
 	}
-	std::stringstream flg_rgb;
-	for(std::vector<Uint32>::const_iterator j = flag_rgb_.begin(); j != flag_rgb_.end(); ++j) {
-		flg_rgb << (((*j)&0xFF0000)>>16);
-		flg_rgb << ",";
-		flg_rgb << (((*j)&0xFF00)>>8);
-		flg_rgb << ",";
-		flg_rgb << (((*j)&0xFF));
-		if(j+1 != flag_rgb_.end()) {
-			flg_rgb << ",";
-		}
-	}
-	cfg["flag_rgb"] = flg_rgb.str();
+	cfg["flag_rgb"] = flag_rgb_;
 	cfg["unrenamable"] = unrenamable_ ? "yes" : "no";
 	cfg["alpha"] = lexical_cast_default<std::string>(alpha_);
 

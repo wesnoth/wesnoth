@@ -563,7 +563,7 @@ namespace events{
 
 			std::stringstream description;
 
-			description << font::IMAGE << type.image() << COLUMN_SEPARATOR << font::LARGE_TEXT
+			description << font::IMAGE << type.image() << "(" << team_num << "," << type.flag_rgb() << ")" << COLUMN_SEPARATOR << font::LARGE_TEXT
 						<< prefix << type.language_name() << "\n"
 						<< prefix << type.cost() << " " << sgettext("unit^Gold");
 			items.push_back(description.str());

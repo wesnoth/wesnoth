@@ -19,6 +19,7 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
+#include "team.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
 #include "wesconfig.h"
@@ -118,6 +119,29 @@ void locator::init_index()
 		index_ = i->second;
 	}
 }
+void locator::get_tc_info()
+{
+	std::string& fn(val_.filename_);
+	if(fn.empty()) {
+		return;
+	}
+	size_t open_field = fn.find('(');
+	size_t close_field = fn.find(')');
+	if(open_field == std::string::npos || close_field == std::string::npos) {
+		return;
+	}
+	std::string field = fn.substr(open_field+1,close_field-open_field-1);
+	fn = fn.substr(0,open_field);
+	// field should be of the format "team,team_color_id"
+	size_t comma = field.find(',');
+	if(comma == std::string::npos) {
+		return;
+	}
+	int team_n = lexical_cast_default<int>(field.substr(0,comma));
+	std::string color_id = field.substr(comma+1);
+	val_.new_color = team::get_side_color_range(team_n);
+	val_.swap_colors = game_config::tc_info(color_id);
+}
 
 locator::locator() :
 	index_(-1)
@@ -133,27 +157,29 @@ locator::locator(const char *filename) :
 	val_(filename)
 {
 	init_index();
+	get_tc_info();
 }
 
 locator::locator(const std::string &filename) :
 	val_(filename)
 {
 	init_index();
+	get_tc_info();
 }
 
-locator::locator(const char *filename, color_range new_rgb, std::vector<Uint32> swap_rgb) :
+locator::locator(const char *filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb) :
 	val_(filename, new_rgb, swap_rgb)
 {
 	init_index();
 }
 
-locator::locator(const std::string &filename, color_range new_rgb, std::vector<Uint32> swap_rgb) :
+locator::locator(const std::string &filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb) :
 	val_(filename, new_rgb, swap_rgb)
 {
 	init_index();
 }
 
-locator::locator(const std::string &filename, const gamemap::location &loc, color_range new_rgb, std::vector<Uint32> swap_rgb) :
+locator::locator(const std::string &filename, const gamemap::location &loc, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb) :
 	val_(filename, loc, new_rgb, swap_rgb)
 {
 	init_index();
@@ -183,7 +209,7 @@ locator::value::value(const char *filename) :
 }
 
 
-locator::value::value(const char *filename, color_range new_rgb, std::vector<Uint32> swap_rgb) :
+locator::value::value(const char *filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb) :
   type_(SUB_FILE), filename_(filename), new_color(new_rgb), swap_colors(swap_rgb)
 {
 }
@@ -193,12 +219,12 @@ locator::value::value(const std::string& filename) :
 {
 }
 
-locator::value::value(const std::string& filename, color_range new_rgb, std::vector<Uint32> swap_rgb) :
+locator::value::value(const std::string& filename, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb) :
   type_(SUB_FILE), filename_(filename), new_color(new_rgb), swap_colors(swap_rgb)
 {
 }
 
-locator::value::value(const std::string& filename, const gamemap::location& loc, color_range new_rgb, std::vector<Uint32> swap_rgb) :
+locator::value::value(const std::string& filename, const gamemap::location& loc, const color_range& new_rgb, const std::vector<Uint32>& swap_rgb) :
   type_(SUB_FILE), filename_(filename), loc_(loc), new_color(new_rgb), swap_colors(swap_rgb)
 {
 }
@@ -264,6 +290,10 @@ surface locator::load_image_file() const
 
 	if (res.null()) {
 		ERR_DP << "could not open image '" << val_.filename_ << "'\n";
+	} else {
+		if(val_.swap_colors.size()){
+		res=recolor_image(res,get_new_color(),get_swap_colors());
+		}
 	}
 
 	return res;
