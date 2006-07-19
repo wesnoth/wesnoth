@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-07-01 14:03+0200\n"
-"PO-Revision-Date: 2006-06-28 23:25+0200\n"
+"PO-Revision-Date: 2006-07-19 20:19+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1105,7 +1105,7 @@ msgstr "keihäs"
 #: data/units/Undead_Skele_Soul_Shooter.cfg:80
 #: data/units/Undead_Skeleton_Archer.cfg:86
 msgid "pierce"
-msgstr "pisto"
+msgstr "lävistys"
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:3
 msgid "Cockatrice"
@@ -2197,8 +2197,8 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
-"Pelaaminen tapahtuu taistelujen sarjana. Näitä taisteluja kutsutaan "
-"skenaarioiksi. Joka skenaariossa joukkosi saavat vastaansa yhden tai "
+"Pelaaminen tapahtuu taistelujen sarjana. Näitä taisteluja kutsutaan joskus "
+"myös skenaarioiksi. Joka taistelussa joukkosi saavat vastaansa yhden tai "
 "useamman vastustajan joukot. Voit pelata joko tietokonetta vastaan, tai "
 "ystäviesi kanssa vuorotellen samalla tietokoneella (hotseat -peli). Jos "
 "koneesi on kytketty tietoverkkoon tai internetiin, voit pelata muiden samaan "
@@ -2216,12 +2216,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Jokaisessa skenaariossa on tietyt tavoitteet, jotka näytetään skenaarion "
-"alussa. Nämä tavoitteet listaavat, mitä sinun on tehtävä voittaaksesi, ja "
-"mitä ei saa tapahtua, jotta et häviäisi. Usein tavoitteena on kukistaa "
-"kaikki viholliset, mutta toisinaan sinun täytyy saavuttaa jokin tietty "
-"kohde, pelastaa joku, ratkaista arvoitus tai vain selvitä hengissä tietty "
-"aika."
+"Jokaisessa taistelussa on tietyt tavoitteet, jotka näytetään sen alussa. "
+"Nämä tavoitteet listaavat, mitä sinun on tehtävä voittaaksesi, ja mitä ei "
+"saa tapahtua, jotta et häviäisi. Usein tavoitteena on kukistaa kaikki "
+"viholliset, mutta toisinaan sinun täytyy saavuttaa jokin tietty kohde, "
+"pelastaa joku, ratkaista arvoitus tai vain selvitä hengissä tietty aika."
 
 #: data/help.cfg:95
 msgid ""
@@ -2234,10 +2233,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kampanjat koostuvat useista toisiaan seuraavista skenaarioista, jotka "
-"kertovat tarinan. Kampanjassa sinun usein täytyy pelata huolellisemmin ja "
-"pitää parhaat yksikkösi hengissä, jotta voit käyttää niitä myös myöhemmissä "
-"skenaarioissa."
+"Kampanjat koostuvat useista toisiaan seuraavista taistelusta, jotka kertovat "
+"tarinan. Kampanjassa sinun usein täytyy pelata huolellisemmin ja pitää "
+"parhaat yksikkösi hengissä, jotta voit käyttää niitä myös myöhemmissä "
+"taisteluissa."
 
 #: data/help.cfg:100
 msgid "Recruiting and Recalling"
@@ -2304,10 +2303,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Myöhemmissä skenaarioissa voit myös kutsua palvelukseesi veteraaneja "
+"Myöhemmissä taisteluissa voit myös kutsua palvelukseesi veteraaneja "
 "edellisistä taisteluista. Kutsuminen toimii kuten värväys, paitsi, että se "
 "maksaa aina 20 kultapalaa ja saat nähtäväksesi listan edellisten "
-"skenaarioiden selviytyjistä."
+"taisteluiden selviytyjistä."
 
 #: data/help.cfg:109
 msgid ""
@@ -2491,7 +2490,7 @@ msgstr ""
 
 #: data/help.cfg:148
 msgid "Shroud and Fog of War"
-msgstr "Huntu ja Sumu"
+msgstr "Huntu ja sumu"
 
 #: data/help.cfg:149
 msgid ""
@@ -2505,8 +2504,8 @@ msgid ""
 "locations adjacent to those within one turn's move (ignoring zones of "
 "control and enemy units)."
 msgstr ""
-"Joissain skenaarioissa osaa kartasta ei näy. Tähän on kaksi mahdollista "
-"syytä: Huntu peittää sekä maaston, että yksiköt. Kun Huntu on poistettu, voi "
+"Joissain taisteluissa osaa kartasta ei näy. Tähän on kaksi mahdollista "
+"syytä: huntu peittää sekä maaston, että yksiköt. Kun huntu on poistettu, voi "
 "kuitenkin kerran paljastetun alueen nähdä aina. Sumu näyttää maaston, mutta "
 "piilottaa yksiköt ja (vihollisten) kylien omistajat. Sumu hälvenee yksikön "
 "lähistöllä, mutta palaa yksikön poistuessa. Sekä Huntu, että Sumu poistuu "
@@ -2951,7 +2950,7 @@ msgstr ""
 "Lepääminen voidaan yhdistää muihin paranemisen muotoihin, mutta kyliä, "
 "uusiutumista, hoivaamista ja parantamista ei voi yhdistää toistensa kanssa "
 "vaan käytetään parasta vaihtoehtoa. Lisäksi yksiköt paranevat täysin "
-"skenaarioiden välillä."
+"taisteluiden välillä."
 
 #: data/help.cfg:233
 msgid "Income and Upkeep"
@@ -2966,8 +2965,8 @@ msgid ""
 msgstr ""
 "Wesnothissa ei riitä pelkästään yksiköiden värväys ja taisteleminen. Sinun "
 "pitää tarkkailla myös rahatilannettasi (varsinkin kampanjoissa, joissa voit "
-"viedä ylimääräisen kullan skenaariosta toiseen). Tässä on kaksi asiaa: Tulot "
-"ja ylläpito."
+"viedä ylimääräisen kullan taistelusta toiseen). Olennaisia asioita on kaksi: "
+"tulot ja ylläpito."
 
 #: data/help.cfg:236
 msgid ""
@@ -3030,9 +3029,9 @@ msgstr ""
 "\n"
 "Ylläpitoon on yksi tärkeä poikkeus: yksiköt, joilla on 'uskollinen' -"
 "ominaisuus, eivät milloinkaan tarvitse ylläpitoa. Yksiköt, jotka sinulla on "
-"skenaarion alussa (kuten Konrad ja Delfador), tai yksiköt, jotka liittyvät "
-"skenaarion aikana (kuten Haldiel-hevosmies Valtaistuimen perillisen toisessa "
-"skenaariossa), ovat pääsääntöisesti uskollisia."
+"taistelun alussa (kuten Konrad ja Delfador), tai yksiköt, jotka liittyvät "
+"taistelun aikana (kuten Haldiel-hevosmies Valtaistuimen perillisen toisessa "
+"taistelussa), ovat pääsääntöisesti uskollisia."
 
 #: data/help.cfg:246
 msgid "Wrap Up"
@@ -5277,7 +5276,7 @@ msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
 msgstr ""
-"Kampanjassa voit kutsua takaisin palvelukseen edellisten skenaarioiden "
+"Kampanjassa voit kutsua takaisin palvelukseen edellisten taisteluiden "
 "veteraaneja."
 
 #: data/tips.cfg:3
@@ -5324,7 +5323,7 @@ msgid ""
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
-"Voit käyttää yksiköitä aikaisemmista skenaariosta valitsemalla 'kutsu "
+"Voit käyttää yksiköitä aikaisemmista taisteluista valitsemalla 'kutsu "
 "veteraaniyksikkö' pelivalikosta. Kutsumalla samat yksiköt yhä uudelleen, "
 "voit luoda tehokkaan ja kokeneen armeijan."
 
@@ -6232,8 +6231,8 @@ msgstr ""
 "ihmetystä ukkoskääpiöiden voima, sille nämä sylkivät tulta kaukaa erikoisten "
 "'sauvojensa' avulla. Kun Ka'lianin rauha tuli voimaan, Haldricin kansa, joka "
 "ei näitä aseita ymmärtänyt, eikä niitä kyennyt luomaan, ymmärsi että he "
-"olivat onnekkaita, kun eivät taistelleen enää kääpiöiden kanssa, ja "
-"vannoivat etteivät tekisi niin enää."
+"olivat onnekkaita, kun eivät taistelleet enää kääpiöiden kanssa, ja "
+"vannoivat, etteivät tekisi niin enää."
 
 #: data/units/Dwarvish_Thunderer.cfg:111
 #: data/units/Dwarvish_Thunderguard.cfg:95
@@ -6311,7 +6310,7 @@ msgstr "Jousihaltia"
 
 #: data/units/Elvish_Avenger.cfg:3
 msgid "Elvish Avenger"
-msgstr "Haltiain kostaja"
+msgstr "Haltiasissi"
 
 #: data/units/Elvish_Avenger.cfg:24
 msgid ""
@@ -6327,21 +6326,21 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Kostajien erikoinen nimi tulee taktiikasta, jota nämä samoojain mestarit "
-"usein käyttävät: vihollisen sallitaan läpäistä heikko puolustuslinja ja kun "
+"Sissit ovat samoojien mestareita ja käyttävät usein samaa menestyksellistä "
+"taktiikkaa: vihollisen sallitaan läpäistä heikko puolustuslinja ja kun "
 "etulinjan takaiset haavoittuvaiset joukot seuraavat, nämä jousimiehet "
-"poistuvat suojasta ja hyökkääjät, murtaen huoltolinjat ja saartaen "
+"poistuvat suojista ja hyökkäävät, murtaen huoltolinjat ja saartaen "
 "vihollisen yhdessä liikkeessä. \n"
 "\n"
 "Tätä on silloin tällöin tulkittu kostoksi heidän taistelussa kaatuneiden "
-"veljiensä puolesta. Vaikkei kyse ole välttämättä tästä, ei tämä arvio aina "
-"ole väärä. \n"
+"veljiensä puolesta, ja siksi sissejä nimitetäänkin joskus myös 'kostajiksi'. "
+"Vaikkei kyse ole välttämättä tästä, ei tämä arvio aina ole väärä. \n"
 "\n"
 "Huomioita:"
 
 #: data/units/Elvish_Avenger.cfg:222
 msgid "female^Elvish Avenger"
-msgstr "Haltiain kostajatar"
+msgstr "Haltiasissi"
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
@@ -6368,7 +6367,7 @@ msgstr ""
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
-msgstr "Haltiain mestari"
+msgstr "Haltiain esitaistelija"
 
 #: data/units/Elvish_Champion.cfg:18
 msgid ""
@@ -6532,7 +6531,7 @@ msgstr ""
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
-msgstr "Haltiain esiratsastaja"
+msgstr "Haltiaritari"
 
 #: data/units/Elvish_Outrider.cfg:20
 msgid ""
@@ -6546,8 +6545,8 @@ msgid ""
 "choose when fighting on their home ground, a fact that has saved many of "
 "their number from death."
 msgstr ""
-"Haltian esiratsastajat koulutetaan haltioiden kuningaskuntien "
-"kuninkaallisiksi kuriireiksi. Kansansa rauhanomaisuudesta huolimatta heidän "
+"Haltiaritarit koulutetaan haltiakuningaskuntien kuninkaallisiksi "
+"kirjeenkantajiksi. Kansansa rauhanomaisuudesta huolimatta heidän "
 "kokemuksensa tekee heistä varsin tappavia taistelussa. Yksikään ihminen ei "
 "ole ikinä päässyt heidän taitoonsa jousen käytössä ratsain, oikeastaan "
 "useimpien olisi vaikea haastaa sitä jalan. \n"
@@ -6651,7 +6650,7 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
-msgstr "Haltiain mestariampuja"
+msgstr "Haltiain jousimestari"
 
 #: data/units/Elvish_Sharpshooter.cfg:22
 msgid ""
@@ -6664,14 +6663,14 @@ msgid ""
 msgstr ""
 "Oli kerran tarina haltiasta, joka pysäytti nuolen ilmassa ampulla sitä "
 "omalla nuolellaan. Se että tälläinen tarina otetaan vakavasti on todistus "
-"haltioiden taidosta jousiammunnassa. Haltioiden mestariampujat ovat, nimensä "
-"mukaisesti, jousiammunnan mestareita.\n"
+"haltioiden taidosta jousiammunnassa. Jousimestarit ovat, nimensä mukaisesti, "
+"jousiammunnan mestareita.\n"
 "\n"
 "Huomioita:"
 
 #: data/units/Elvish_Sharpshooter.cfg:231
 msgid "female^Elvish Sharpshooter"
-msgstr "Haltiain mestariampuja"
+msgstr "Haltiain jousimestari"
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
@@ -7958,7 +7957,7 @@ msgstr "Salamurhaaja"
 
 #: data/units/Human_Outlaw_Bandit.cfg:3
 msgid "Bandit"
-msgstr "Maantierosvo"
+msgstr "Lurjus"
 
 #: data/units/Human_Outlaw_Bandit.cfg:17
 msgid ""
@@ -7968,11 +7967,11 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they're not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
-"Tappelijat ovat sekava joukko miehiä, useimmat hämäriä taustaltaan. He ovat "
+"Lurjukset ovat sekava joukko miehiä, useimmat hämäriä taustaltaan. He ovat "
 "minkä tahansa järjestäytyneen rikosllisjoukon vahva osa, ja vaikka heiltä "
 "saattaa puuttua hienostuneisuutta tai älyä, he ovat erinomaisia suosimassaan "
-"tehtävässä: uhrien hakkaamisessa alistumiseen. Kuten kaikki lainsuojattomat, "
-"he taistelevat mieluiten yöllä."
+"tehtävässä: uhrien hakkaamisessa siihen asti, kunnes nämä alistuvat. Kuten "
+"kaikki lainsuojattomat, he taistelevat mieluiten yöllä."
 
 #: data/units/Human_Outlaw_Footpad.cfg:3
 msgid "Footpad"
@@ -8001,7 +8000,7 @@ msgstr "puunuija"
 
 #: data/units/Human_Outlaw_Footpad.cfg:141
 msgid "female^Footpad"
-msgstr "Pikkurosvo"
+msgstr "Rosvo"
 
 #: data/units/Human_Outlaw_Poacher.cfg:3
 msgid "Poacher"
@@ -8017,7 +8016,7 @@ msgstr ""
 
 #: data/units/Human_Outlaw_Rogue.cfg:3
 msgid "Rogue"
-msgstr "Ryöväri"
+msgstr "Hiippari"
 
 #: data/units/Human_Outlaw_Rogue.cfg:18
 msgid ""
@@ -8030,7 +8029,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Varasjoukkojen johtajat ansaitsevat asemansa taidolla. Nämä ryövärit ovat "
+"Varasjoukkojen johtajat ansaitsevat asemansa taidolla. Nämä hiipparit ovat "
 "viettäneet monia huonoja hetkiä juosten väkijoukkojen läpi ja väistellen "
 "niitä, jotka tahtovat heille pahaa, molemmat kykyjä joista on hyötyä "
 "taistelussa. Veitsen mestareina he osaavat myös heittää niitä tarkasti ja "
@@ -8040,7 +8039,7 @@ msgstr ""
 
 #: data/units/Human_Outlaw_Rogue.cfg:129
 msgid "female^Rogue"
-msgstr "Ryöväritär"
+msgstr "Hiippari"
 
 #: data/units/Human_Outlaw_Thief.cfg:3
 msgid "Thief"
@@ -9973,7 +9972,7 @@ msgstr "vuoro"
 
 #: src/dialogs.cpp:404
 msgid "Scenario Start"
-msgstr "Skenaarion alku"
+msgstr "Taistelun alku"
 
 #: src/dialogs.cpp:407
 msgid "Difficulty: "
@@ -10009,7 +10008,7 @@ msgid ""
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 "Yhtäkään tallennettua peliä ei löytynyt.\n"
-"(Peli tallennetaan automaattisesti, kun olet suorittanut skenaarion loppuun.)"
+"(Peli tallennetaan automaattisesti, kun olet suorittanut taistelun loppuun.)"
 
 #: src/dialogs.cpp:489
 msgid "Delete Save"
@@ -11009,7 +11008,7 @@ msgstr "Peruuta"
 
 #: src/multiplayer_connect.cpp:670
 msgid "The scenario is invalid because it has no sides."
-msgstr "Skenaario on virheellinen, koska siinä ei ole puolia."
+msgstr "Taistelu on virheellinen, koska siinä ei ole puolia."
 
 #: src/multiplayer_connect.cpp:1016
 msgid "Network Player"
@@ -11337,7 +11336,7 @@ msgstr " - uusinta"
 
 #: src/playcampaign.cpp:291
 msgid "Do you want to save a replay of this scenario?"
-msgstr "Haluatko tallentaa uusinnan tästä skenaariosta?"
+msgstr "Haluatko tallentaa uusinnan tästä taistelusta?"
 
 #: src/playcampaign.cpp:340
 msgid "Downloading next level..."
@@ -11395,7 +11394,7 @@ msgstr "Kultapalaa: "
 #: src/playsingle_controller.cpp:314
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr "80% kullasta säilyy seuraavaan skenaarioon."
+msgstr "80% kullasta säilyy seuraavaan taisteluun."
 
 #: src/playsingle_controller.cpp:315
 msgid "Retained Gold: "
@@ -11411,7 +11410,7 @@ msgstr "Olet voittaja!"
 
 #: src/playsingle_controller.cpp:325
 msgid "Scenario Report"
-msgstr "Skenaarioraportti:"
+msgstr "Taisteluraportti:"
 
 #: src/playsingle_controller.cpp:342
 msgid ""
@@ -11611,7 +11610,7 @@ msgstr "Lataa"
 
 #: src/titlescreen.cpp:258
 msgid "TitleScreen button^Get Add-ons"
-msgstr "Lataa"
+msgstr "Lataa lisäosia"
 
 #: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
@@ -11642,8 +11641,8 @@ msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
-"Pelaa moninpeli (hotseat, LAN, tai Internet) tai yksi skenaario tietokonetta "
-"vastaan."
+"Pelaa moninpeli (hotseat, LAN, tai Internet) tai yksittäinen taistelu "
+"tietokonetta vastaan."
 
 #: src/titlescreen.cpp:266
 msgid "Load a single player saved game"
