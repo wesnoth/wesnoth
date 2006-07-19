@@ -621,6 +621,7 @@ void play_controller::play_slice()
 		gui_->scroll(preferences::scroll_speed(),0);
 
 	gui_->draw();
+	gui_->delay(5);
 
 	if(!browse_ && current_team().objectives_changed()) {
 		dialogs::show_objectives(*gui_, level_, current_team().objectives());
