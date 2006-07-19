@@ -87,8 +87,8 @@ void leader_list_manager::update_leader_list(int side_index)
 		if (utypes.find(*itor) != utypes.end()) {
 			const std::string name =  utypes.find(*itor)->second.language_name();
 			const std::string image = utypes.find(*itor)->second.image();
-
-			leader_strings.push_back(IMAGE_PREFIX + image + COLUMN_SEPARATOR + name);
+			
+			leader_strings.push_back(IMAGE_PREFIX + image + std::string("~TC(1," + utypes.find(*itor)->second.flag_rgb() + ")") + COLUMN_SEPARATOR + name);
 		} else {
 			leader_strings.push_back("?");
 		}

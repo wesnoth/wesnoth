@@ -89,7 +89,7 @@ void wait::leader_preview_pane::draw_contents()
 
 		if (utypes.find(leader) != utypes.end()) {
 			leader_name = utypes.find(leader)->second.language_name();
-			image = utypes.find(leader)->second.image();
+			image = utypes.find(leader)->second.image() + "~TC(1," + utypes.find(leader)->second.flag_rgb() + ")";
 		}
 		for(std::vector<std::string>::const_iterator itor = recruit_list.begin();
 				itor != recruit_list.end(); ++itor) {
@@ -393,7 +393,7 @@ void wait::generate_menu()
 				std::string::size_type p =
 					side_name.str().find_first_of(COLUMN_SEPARATOR);
 				if(p != std::string::npos && p < side_name.size()) {
-					side_name = IMAGE_PREFIX + leader_image + COLUMN_SEPARATOR + side_name.str().substr(p+1);
+					side_name = IMAGE_PREFIX + leader_image + std::string("~TC(" + sd["side"] + ",") + std::string(utypes.find(leader_type)->second.flag_rgb() + ")") + COLUMN_SEPARATOR + side_name.str().substr(p+1);
 				}
 			}
 		}
