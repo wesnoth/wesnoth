@@ -133,7 +133,7 @@ void locator::get_tc_info(const std::string& field)
 }
 void locator::parse_arguments()
 {
-	std::string& fn(val_.filename_);
+	std::string& fn = val_.filename_;
 	if(fn.empty()) {
 		return;
 	}
