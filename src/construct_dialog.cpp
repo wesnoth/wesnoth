@@ -591,6 +591,7 @@ void dialog::layout(int &xloc, int &yloc)
 			}
 		}
 	}
+	help_button_.set_parent(this);
 	help_button_.join();
 }
 
