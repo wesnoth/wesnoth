@@ -91,7 +91,8 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	//standard maps
 	const config::child_list& levels = cfg.get_children("multiplayer");
 	for(config::child_list::const_iterator j = levels.begin(); j != levels.end(); ++j){
-		map_options_.push_back((**j)["name"]);
+		if (utils::string_bool((**j)["new_game"],true))
+			map_options_.push_back((**j)["name"]);
 	}
 
 	//create the scenarios menu
