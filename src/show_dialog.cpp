@@ -332,6 +332,9 @@ int show_dialog(display& screen, surface image,
 	gui::dialog d(screen, title, message, type, style, help_topic);
 
 	//add the components
+	if(!image.null()) {
+		d.set_image(image, caption);
+	}
 	if(menu_items) {
 		d.set_menu( new gui::menu(disp,*menu_items,type == MESSAGE,-1,dialog::max_menu_width,sorter,menu_style,false));;
 	}

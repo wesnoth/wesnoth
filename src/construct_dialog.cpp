@@ -741,6 +741,14 @@ int dialog::help_button::action(dialog_process_info &info) {
 	}
 	return CONTINUE_DIALOG;
 }
+void dialog::set_image(surface surf, const std::string &caption)
+{
+	label *label_ptr = NULL;
+	if(!caption.empty()) {
+		label_ptr = new label(disp_.video(), caption, caption_font_size, font::NORMAL_COLOUR, false);
+	}
+	set_image( new dialog_image(label_ptr, disp_.video(), surf ));
+}
 
 void dialog_image::draw_contents()
 {

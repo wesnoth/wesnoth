@@ -61,7 +61,7 @@ public:
 
 	handler_vector handler_members() {
 		handler_vector h;
-		h.push_back(caption_);
+		if(caption_) h.push_back(caption_);
 		return h;
 	}
 private:
@@ -82,7 +82,7 @@ public:
 
 	handler_vector handler_members() {
 		handler_vector h;
-		h.push_back(caption_);
+		if(caption_) h.push_back(caption_);
 		return h;
 	}
 private:
@@ -155,7 +155,9 @@ public:
 	//Adding components - the dialog will manage the memory of these widgets,
 	//therefore do not attempt to reference its widgets after destroying it
 	void set_image(dialog_image *const img) { delete image_; image_ = img; }
+	void set_image(surface surf, const std::string &caption="");
 	void set_menu(menu *const m) { if(menu_ != empty_menu) delete menu_; menu_ = m; }
+	//add_pane - preview panes are not currently memory managed (for backwards compat)
 	void add_pane(preview_pane *const pp) { preview_panes_.push_back(pp); }
 	void set_textbox(dialog_textbox *const box) {
 		delete text_widget_;
