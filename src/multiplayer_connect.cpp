@@ -184,6 +184,7 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 	pane.add_widget(&combo_team_, 250, 5 + pos);
 	pane.add_widget(&combo_colour_, 365, 5 + pos);
 	pane.add_widget(&slider_gold_, 475, 5 + pos);
+	//pane.add_widget(&label_gold_, 490 + slider_gold_.width(), 8 + pos);
 	pane.add_widget(&label_gold_, 475, 35 + pos);
 	pane.add_widget(&slider_income_, 475 + slider_gold_.width(), 5 + pos);
 	pane.add_widget(&label_income_, 475 + slider_gold_.width(), 35 + pos);
@@ -198,13 +199,17 @@ void connect::side::process_event()
 			// If the current side corresponds to an existing user,
 			// we must kick it!
 
-			// Update controller first, or else kick will reset it.
-			controller_ = mp::controller(combo_controller_.selected());
-			if(!id_.empty() && id_ != preferences::login()) {
-				parent_->kick_player(id_);
+			if(id_ == preferences::login()) {
+				update_controller_ui(); // Cannot kick game creator
+			} else {
+				// Update controller first, or else kick will reset it.
+				controller_ = mp::controller(combo_controller_.selected());
+				if(!id_.empty()) {
+					parent_->kick_player(id_);
+				}
+				id_ = "";
+				changed_ = true;
 			}
-			id_ = "";
-			changed_ = true;
 		} else {
 			size_t user = combo_controller_.selected() - CNTR_LAST - 1;
 
