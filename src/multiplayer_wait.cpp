@@ -383,7 +383,7 @@ void wait::generate_menu()
 		const game_data::unit_type_map& utypes = game_data_.unit_types;
 		if (utypes.find(leader_type) != utypes.end()) {
 			leader_name = utypes.find(leader_type)->second.language_name();
-			leader_image = utypes.find(leader_type)->second.image();
+			leader_image = utypes.find(leader_type)->second.image() + std::string("~TC(" + sd["side"] + ",") + std::string(utypes.find(leader_type)->second.flag_rgb() + ")");
 		} else {
 			leader_image = leader_list_manager::random_enemy_picture;
 		}
@@ -394,7 +394,7 @@ void wait::generate_menu()
 				std::string::size_type p =
 					side_name.str().find_first_of(COLUMN_SEPARATOR);
 				if(p != std::string::npos && p < side_name.size()) {
-					side_name = IMAGE_PREFIX + leader_image + std::string("~TC(" + sd["side"] + ",") + std::string(utypes.find(leader_type)->second.flag_rgb() + ")") + COLUMN_SEPARATOR + side_name.str().substr(p+1);
+					side_name = IMAGE_PREFIX + leader_image + COLUMN_SEPARATOR + side_name.str().substr(p+1);
 				}
 			}
 		}
