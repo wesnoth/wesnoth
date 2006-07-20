@@ -306,7 +306,7 @@ void save_preview_pane::draw_contents()
 
 	const game_data::unit_type_map::const_iterator leader = data_->unit_types.find(summary["leader"]);
 	if(leader != data_->unit_types.end()) {
-		const surface image(image::get_image(leader->second.image(),image::UNSCALED));
+		const surface image(image::get_image(leader->second.image() + "~TC(1," + leader->second.flag_rgb() + ")",image::UNSCALED));
 		if(image != NULL) {
 			SDL_Rect image_rect = {area.x,area.y,image->w,image->h};
 			ypos += image_rect.h + save_preview_border;
