@@ -92,6 +92,7 @@ protected:
 	virtual void update_location(SDL_Rect const &rect);
 
 	const SDL_Rect* clip_rect() const;
+	virtual handler_vector member_handlers() { return handler::handler_members(); }
 
 private:
 	void volatile_draw();
@@ -115,6 +116,7 @@ private:
 	ALIGN align_; //limited support, use position
 
 	friend class scrollpane;
+	friend class dialog;
 };
 
 }

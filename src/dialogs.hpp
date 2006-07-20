@@ -72,10 +72,11 @@ public:
 	bool show_above() const;
 	bool left_side() const;
 	void set_selection(int index);
+
+	handler_vector handler_members();
 private:
 	display& disp_;
 
-	handler_vector handler_members();
 	void draw_contents();
 	void process_event();
 

@@ -147,8 +147,8 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 
 menu::menu(CVideo& video, const std::vector<std::string>& items,
            bool click_selects, int max_height, int max_width,
-		   const sorter* sorter_obj, style *menu_style)
-        : scrollarea(video),
+		   const sorter* sorter_obj, style *menu_style, const bool auto_join)
+        : scrollarea(video, auto_join),
           max_height_(max_height), max_width_(max_width), max_items_(-1), item_height_(-1),
 		  heading_height_(-1),
 	  cur_help_(-1,-1), help_string_(-1),

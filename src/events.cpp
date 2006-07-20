@@ -176,6 +176,9 @@ void handler::join()
 	if(has_joined_) {
 		leave(); // should not be in multiple event contexts
 	}
+	//join self
+	event_contexts.back().add_handler(this);
+	has_joined_ = true;
 
 	//instruct members to join
 	handler_vector members = handler_members();
@@ -184,10 +187,6 @@ void handler::join()
 			(*i)->join();
 		}
 	}
-
-	//join self
-	event_contexts.back().add_handler(this);
-	has_joined_ = true;
 }
 
 void handler::leave()

@@ -26,7 +26,7 @@
 #include "key.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "show_dialog.hpp"
+#include "construct_dialog.hpp"
 #include "thread.hpp"
 #include "language.hpp"
 #include "sdl_utils.hpp"
@@ -313,10 +313,10 @@ void show_error_message(display &disp, std::string const &message)
 	show_dialog(disp, NULL, _("Error"), message, OK_ONLY);
 }
 
-int show_dialog(display& disp, surface image,
-				const std::string& caption, const std::string& msg,
+int show_dialog(display& screen, surface image,
+				const std::string& caption, const std::string& message,
 				DIALOG_TYPE type,
-				const std::vector<std::string>* menu_items_ptr,
+				const std::vector<std::string>* menu_items,
 				const std::vector<preview_pane*>* preview_panes,
 				const std::string& text_widget_label,
 				std::string* text_widget_text,
@@ -325,563 +325,61 @@ int show_dialog(display& disp, surface image,
 				const std::string* dialog_style, std::vector<dialog_button_info>* action_buttons,
 				const std::string& help_topic, const menu::sorter* sorter, menu::style* menu_style)
 {
-	if(disp.update_locked())
-		return -1;
+	const std::string& title = (image.null())? caption : "";
+	const std::string& style = (dialog_style)? *dialog_style : dialog::default_style;
+	CVideo &disp = screen.video();
 
-	LOG_DP << "showing dialog '" << caption << "' '" << msg << "'\n";
+	gui::dialog d(screen, title, message, type, style, help_topic);
 
-	//create the event context, remember to instruct any passed-in widgets to join it
-	//FIXME outer_context is needed to prevent delayed event_context instantiation(?)
-	const events::event_context outer_context;
-	const events::event_context dialog_events_context;
-	const dialog_manager manager;
-
-	const events::resize_lock prevent_resizing;
-
-	help_handler helper(disp,help_topic);
-	hotkey::basic_handler help_dispatcher(&disp,&helper);
-
-	const std::vector<std::string>& menu_items =
-		(menu_items_ptr == NULL) ? std::vector<std::string>() : *menu_items_ptr;
-
-	static const int message_font_size = font::SIZE_PLUS;
-	static const int caption_font_size = font::SIZE_LARGE;
-
-	CVideo& screen = disp.video();
-	surface const scr = screen.getSurface();
-
-	SDL_Rect clipRect = disp.screen_area();
-
-	const bool use_textbox = text_widget_text != NULL;
-	const bool editable_textbox = use_textbox && std::find(text_widget_text->begin(),text_widget_text->end(),'\n') == text_widget_text->end();
-	static const std::string default_text_string = "";
-	const unsigned int text_box_width = font::relative_size(350);
-	textbox text_widget(screen,text_box_width,
-	                    use_textbox ? *text_widget_text : default_text_string, editable_textbox, text_widget_max_chars);
-
-	int text_widget_width = 0;
-	int text_widget_height = 0;
-	if(use_textbox) {
-
-		text_widget.set_wrap(!editable_textbox);
-
-		const SDL_Rect& area = font::text_area(*text_widget_text,message_font_size);
-
-		text_widget.set_width(minimum<size_t>(screen.getx()/2,maximum<size_t>(area.w,text_widget.location().w)));
-		text_widget.set_height(minimum<size_t>(screen.gety()/2,maximum<size_t>(area.h,text_widget.location().h)));
-		text_widget_width = font::text_area(text_widget_label,message_font_size).w + text_widget.location().w;;
-		text_widget_height = text_widget.location().h + message_font_size;
+	//add the components
+	if(menu_items) {
+		d.set_menu( new gui::menu(disp,*menu_items,type == MESSAGE,-1,dialog::max_menu_width,sorter,menu_style,false));;
 	}
-
-#ifdef USE_TINY_GUI
-	const int max_menu_width = 150;
-#else
-	const int max_menu_width = -1;
-#endif
-	menu menu_(screen,menu_items,type == MESSAGE,-1,max_menu_width,sorter,menu_style);
-
-	menu_.set_numeric_keypress_selection(use_textbox == false);
-
-	const size_t left_padding = font::relative_size(10);
-	const size_t right_padding = font::relative_size(10);
-	const size_t image_h_padding = font::relative_size(image != NULL ? 10 : 0);
-	const size_t top_padding = font::relative_size(10);
-	const size_t bottom_padding = font::relative_size(10);
-
-	std::string message = "";
-	try {
-		message = font::word_wrap_text(msg, message_font_size, screen.getx() / 2, screen.gety() / 2);
-	} catch(utils::invalid_utf8_exception&) {
-		ERR_DP << "Problem handling utf8 in message '" << msg << "'\n";
-	}
-
-	SDL_Rect text_size = { 0, 0, 0, 0 };
-	if(!message.empty()) {
-		text_size = font::draw_text(NULL, clipRect, message_font_size,
-		                            font::NORMAL_COLOUR, message, 0, 0);
-	}
-
-	SDL_Rect caption_size = { 0, 0, 0, 0 };
-	if (!caption.empty() && image != NULL) {
-		caption_size = font::draw_text(NULL, clipRect, caption_font_size,
-		                               font::NORMAL_COLOUR, caption, 0, 0);
-	}
-
-	const char** button_list = NULL;
-	std::vector<button> buttons;
-	switch(type) {
-		case MESSAGE:
-		default:
-			break;
-
-		case OK_ONLY: {
-			static const char* thebuttons[] = { N_("OK"), "" };
-			button_list = thebuttons;
-			break;
-		}
-
-		case YES_NO: {
-			static const char* thebuttons[] = { N_("Yes"),
-							    N_("No"), ""};
-			button_list = thebuttons;
-			break;
-		}
-
-		case OK_CANCEL: {
-			static const char* thebuttons[] = { N_("OK"),
-							    N_("Cancel"),""};
-			button_list = thebuttons;
-			break;
-		}
-
-		case CANCEL_ONLY: {
-			static const char* thebuttons[] = { N_("Cancel"), "" };
-			button_list = thebuttons;
-			break;
-		}
-
-		case CLOSE_ONLY: {
-			static const char* thebuttons[] = { N_("Close"), "" };
-			button_list = thebuttons;
-			break;
+	if(preview_panes) {
+		for(int i=0; i < preview_panes->size(); ++i) {
+			d.add_pane((*preview_panes)[i]);
 		}
 	}
-
-	if(button_list != NULL) {
-		try {
-			while((*button_list)[0] != '\0') {
-				buttons.push_back(button(screen,gettext(*button_list)));
-
-				++button_list;
-			}
-
-		} catch(button::error&) {
-			ERR_DP << "error initializing button!\n";
+	if(text_widget_text) {
+		d.set_textbox(text_widget_label,*text_widget_text, text_widget_max_chars);
+	}
+	if(action) {
+		d.set_action(action);
+	}
+	if(options) {
+		for(int i=0; i < options->size(); ++i) {
+			gui::dialog_button *btn = new gui::dialog_button(disp,(*options)[i].label,gui::button::TYPE_CHECK);
+			gui::dialog::BUTTON_LOCATION loc = ((*options)[i].align == LEFT_ALIGN)? gui::dialog::BUTTON_CHECKBOX_LEFT : gui::dialog::BUTTON_CHECKBOX;
+			btn->set_check((*options)[i].checked);
+			d.add_button(btn, loc);
 		}
 	}
-
-	int check_button_height = 0;
-	int check_button_width = 0;
-	const int button_height_padding = 5;
-
-	std::vector<button> check_buttons;
-	if(options != NULL) {
-		for(std::vector<check_item>::const_iterator i = options->begin(); i != options->end(); ++i) {
-			button check_button(screen,i->label,button::TYPE_CHECK);
-			check_button.set_align(i->align);
-			check_button_height += check_button.height() + button_height_padding;
-			check_button_width = maximum<int>(check_button.width(),check_button_width);
-
-			check_buttons.push_back(check_button);
+	if(action_buttons) {
+		for(int i=0; i < action_buttons->size(); ++i) {
+			d.add_button((*action_buttons)[i]);
 		}
 	}
+	//enter the dialog loop
+	d.show(xloc, yloc);
 
-	if(action_buttons != NULL) {
-		for(std::vector<dialog_button_info>::const_iterator i = action_buttons->begin(); i != action_buttons->end(); ++i) {
-			button new_button(screen,i->label);
-			check_button_height += new_button.height() + button_height_padding;
-			check_button_width = maximum<int>(new_button.width(),check_button_width);
-
-			check_buttons.push_back(new_button);
+	//send back results
+	if(options) {
+		for(int i=0; i < options->size(); i++)
+		{
+			(*options)[i].checked = d.option_checked(i);
 		}
 	}
-
-	size_t above_preview_pane_height = 0, above_left_preview_pane_width = 0, above_right_preview_pane_width = 0;
-	size_t preview_pane_height = 0, left_preview_pane_width = 0, right_preview_pane_width = 0;
-	if(preview_panes != NULL) {
-		for(std::vector<preview_pane*>::const_iterator i = preview_panes->begin(); i != preview_panes->end(); ++i) {
-			(**i).join(); //join the event context now, since it was created outside this scope
-			const SDL_Rect& rect = (**i).location();
-
-			if((**i).show_above() == false) {
-				preview_pane_height = maximum<size_t>(rect.h,preview_pane_height);
-				if((**i).left_side()) {
-					left_preview_pane_width += rect.w;
-				} else {
-					right_preview_pane_width += rect.w;
-				}
-			} else {
-				above_preview_pane_height = maximum<size_t>(rect.h,above_preview_pane_height);
-				if((**i).left_side()) {
-					above_left_preview_pane_width += rect.w;
-				} else {
-					above_right_preview_pane_width += rect.w;
-				}
-			}
-		}
+	if(text_widget_text) {
+		*text_widget_text = d.textbox_text();
 	}
-
-	const int menu_hpadding = font::relative_size(text_size.h > 0 && menu_.height() > 0 ? 10 : 0);
-	const size_t padding_width = left_padding + right_padding + image_h_padding;
-	const size_t padding_height = top_padding + bottom_padding + menu_hpadding;
-	const size_t caption_width = caption_size.w;
-	const size_t image_width = image != NULL ? image->w : 0;
-	const size_t image_height = image != NULL ? image->h : 0;
-	const size_t total_text_height = text_size.h + caption_size.h;
-
-	size_t text_width = text_size.w;
-	if(caption_width > text_width)
-		text_width = caption_width;
-	// Prevent the menu to be larger than the screen
-	if(menu_.width() + image_width + padding_width > size_t(scr->w))
-		menu_.set_width(scr->w - image_width - padding_width);
-	if(menu_.width() > text_width)
-		text_width = menu_.width();
-
-	size_t total_width = image_width + text_width + padding_width;
-
-	if(text_widget_width+left_padding+right_padding > total_width)
-		total_width = text_widget_width+left_padding+right_padding;
-	//Prevent the menu from being too skinny
-	if(menu_.width() > 0 && preview_panes == NULL &&
-		total_width > menu_.width() + image_width + padding_width) {
-		menu_.set_width(total_width - image_width - padding_width);
-	}
-
-	const size_t text_and_image_height = image_height > total_text_height ? image_height : total_text_height;
-
-	const int total_height = text_and_image_height +
-	                         padding_height + menu_.height() +
-							 text_widget_height + check_button_height;
-
-
-	int frame_width = maximum<int>(total_width,above_left_preview_pane_width + above_right_preview_pane_width);
-	int frame_height = maximum<int>(total_height,int(preview_pane_height));
-	int xframe = maximum<int>(0,xloc >= 0 ? xloc : scr->w/2 - (frame_width + left_preview_pane_width + right_preview_pane_width)/2);
-	int yframe = maximum<int>(0,yloc >= 0 ? yloc : scr->h/2 - (frame_height + above_preview_pane_height)/2);
-
-	LOG_DP << "above_preview_pane_height: " << above_preview_pane_height << "; "
-		<< "yframe: " << scr->h/2 << " - " << (frame_height + above_preview_pane_height)/2 << " = "
-		<< yframe << "; " << "frame_height: " << frame_height << "\n";
-
-	if(xloc <= -1 || yloc <= -1) {
-		xloc = xframe + left_preview_pane_width;
-		yloc = yframe + above_preview_pane_height;
-	}
-
-	if(xloc + frame_width > scr->w) {
-		xloc = scr->w - frame_width;
-		if(xloc < xframe) {
-			xframe = xloc;
-		}
-	}
-
-	if(yloc + frame_height > scr->h) {
-		yloc = scr->h - frame_height;
-		if(yloc < yframe) {
-			yframe = yloc;
-		}
-	}
-
-	std::vector<button*> buttons_ptr;
-	for(std::vector<button>::iterator bt = buttons.begin(); bt != buttons.end(); ++bt) {
-		buttons_ptr.push_back(&*bt);
-	}
-
-	frame_width += left_preview_pane_width + right_preview_pane_width;
-	frame_height += above_preview_pane_height;
-
-	surface_restorer restorer;
-
-	button help_button(screen,_("Help"));
-
-	const std::string& title = image == NULL ? caption : "";
-	draw_dialog(xframe,yframe,frame_width,frame_height,screen,title,dialog_style,&buttons_ptr,&restorer,help_topic.empty() ? NULL : &help_button);
-
-	//calculate the positions of the preview panes to the sides of the dialog
-	if(preview_panes != NULL) {
-
-		int left_preview_pane = xframe;
-		int right_preview_pane = xframe + total_width + left_preview_pane_width;
-		int above_left_preview_pane = xframe + frame_width/2;
-		int above_right_preview_pane = above_left_preview_pane;
-
-		for(std::vector<preview_pane*>::const_iterator i = preview_panes->begin(); i != preview_panes->end(); ++i) {
-			SDL_Rect area = (**i).location();
-
-			if((**i).show_above() == false) {
-				area.y = yloc;
-				if((**i).left_side()) {
-					area.x = left_preview_pane;
-					left_preview_pane += area.w;
-				} else {
-					area.x = right_preview_pane;
-					right_preview_pane += area.w;
-				}
-			} else {
-				area.y = yframe;
-				if((**i).left_side()) {
-					area.x = above_left_preview_pane - area.w;
-					above_left_preview_pane -= area.w;
-				} else {
-					area.x = above_right_preview_pane;
-					above_right_preview_pane += area.w;
-				}
-			}
-
-			(**i).set_location(area);
-		}
-	}
-
-	const int text_widget_y = yloc+top_padding+text_and_image_height-6+menu_hpadding;
-
-	if(use_textbox) {
-		const int text_widget_y_unpadded = text_widget_y + (text_widget_height - text_widget.location().h)/2;
-		text_widget.set_location(xloc + left_padding +
-		                         text_widget_width - text_widget.location().w,
-		                         text_widget_y_unpadded);
-		events::raise_draw_event();
-		font::draw_text(&screen, clipRect, message_font_size,
-		                font::NORMAL_COLOUR, text_widget_label,
-						xloc + left_padding,text_widget_y_unpadded);
-	}
-
-	const int menu_xpos = xloc+image_width+left_padding+image_h_padding;
-	const int menu_ypos = yloc+top_padding+text_and_image_height+menu_hpadding+ (use_textbox ? text_widget.location().h + top_padding : 0);
-	if(menu_.height() > 0) {
-		menu_.set_location(menu_xpos,menu_ypos);
-	}
-
-	text_size.x = xloc + left_padding;
-	text_size.y = yloc + top_padding + caption_size.h;
-	if(image != NULL) {
-		const int x = xloc + left_padding;
-		const int y = yloc + top_padding;
-		text_size.x += image_width + image_h_padding;
-
-		screen.blit_surface(x,y,image);
-
-		font::draw_text(&screen, clipRect, caption_font_size,
-		                font::NORMAL_COLOUR, caption,
-		                xloc+image_width+left_padding+image_h_padding,
-		                yloc+top_padding);
-	}
-
-	font::draw_text(&screen, text_size, message_font_size,
-	                font::NORMAL_COLOUR, message,
-	                xloc+image_width+left_padding+image_h_padding,
-	                yloc+top_padding+caption_size.h);
-
-	//set the position of any tick boxes. by default, they go right below the menu,
-	//slammed against the right side of the dialog
-	if(check_buttons.empty() == false) {
-		int options_y = text_widget_y + text_widget_height + menu_.height() + button_height_padding + menu_hpadding;
-		for(size_t i = 0; i != check_buttons.size(); ++i) {
-			if(check_buttons[i].align() == LEFT_ALIGN) {
-				check_buttons[i].set_location(xloc + ButtonHPadding,options_y);
-			} else {
-				check_buttons[i].set_location(xloc + total_width - check_buttons[i].width() - ButtonHPadding,options_y);
-			}
-
-			options_y += check_buttons[i].height() + button_height_padding;
-
-			if(options != NULL && i < options->size()) {
-				check_buttons[i].set_check((*options)[i].checked);
-			}
-		}
-	}
-
-	disp.flip();
-
-	CKey key;
-
-	bool left_button = true, right_button = true, key_down = true;
-
-	disp.invalidate_all();
-
-	int cur_selection = -1;
-
-	SDL_Rect unit_details_rect;
-	unit_details_rect.w = 0;
-
-	bool first_time = true;
-
-	for(;;) {
-		events::pump();
-
-		int mousex, mousey;
-		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-
-		const bool new_right_button = (mouse_flags&SDL_BUTTON_RMASK) != 0;
-		const bool new_left_button = (mouse_flags&SDL_BUTTON_LMASK) != 0;
-		const bool new_key_down = key[SDLK_SPACE] || key[SDLK_RETURN] ||
-		                          key[SDLK_ESCAPE];
-
-		if((!key_down && key[SDLK_RETURN] || menu_.double_clicked()) &&
-		   (type == YES_NO || type == OK_CANCEL || type == OK_ONLY || type == CLOSE_ONLY)) {
-
-			if(text_widget_text != NULL && use_textbox)
-				*text_widget_text = text_widget.text();
-
-			if(menu_.height() == 0) {
-				return 0;
-			} else {
-				return menu_.selection();
-			}
-		}
-
-		if(!key_down && key[SDLK_ESCAPE] && type == MESSAGE) {
-			return ESCAPE_DIALOG;
-		}
-
-		//escape quits from the dialog -- unless it's an "ok" dialog with a menu,
-		//since such dialogs require a selection of some kind.
-		if(!key_down && key[SDLK_ESCAPE] && (type != OK_ONLY || menu_.height() == 0)) {
-
-			if(menu_.height() == 0) {
-				return 1;
-			} else {
-				return -1;
-			}
-		}
-
-		if(menu_.selection() != cur_selection || first_time) {
-			cur_selection = menu_.selection();
-
-			int selection = cur_selection;
-			if(selection < 0) {
-				selection = 0;
-			}
-
-			if(preview_panes != NULL) {
-				for(std::vector<preview_pane*>::const_iterator i = preview_panes->begin(); i != preview_panes->end(); ++i) {
-					(**i).set_selection(selection);
-					if(first_time) {
-						(**i).set_dirty();
-					}
-				}
-			}
-		}
-
-		first_time = false;
-
-		if(menu_.height() > 0) {
-			const int res = menu_.process();
-			if(res != -1)
-			{
-				return res;
-			}
-		}
-
-		events::raise_process_event();
-		events::raise_draw_event();
-
-		const SDL_Rect menu_rect = {menu_xpos,menu_ypos,menu_.width(),menu_.height()};
-		if(buttons.empty() && (new_left_button && !left_button && !point_in_rect(mousex,mousey,menu_rect) ||
-		                       new_right_button && !right_button) ||
-		   buttons.size() < 2 && new_key_down && !key_down &&
-		   menu_.height() == 0)
-			break;
-
-		left_button = new_left_button;
-		right_button = new_right_button;
-		key_down = new_key_down;
-
-		for(std::vector<button>::iterator button_it = buttons.begin();
-		    button_it != buttons.end(); ++button_it) {
-			if(button_it->pressed()) {
-				if(text_widget_text != NULL && use_textbox)
-					*text_widget_text = text_widget.text();
-
-				//if the menu is not used, then return the index of the
-				//button pressed, otherwise return the index of the menu
-				//item selected if the last button is not pressed, and
-				//cancel (-1) otherwise
-				if(menu_.height() == 0) {
-					return button_it - buttons.begin();
-				} else if(buttons.size() <= 1 ||
-				       size_t(button_it-buttons.begin()) != buttons.size()-1) {
-					return menu_.selection();
-				} else {
-					return -1;
-				}
-			}
-		}
-
-		if(help_topic.empty() == false && help_button.pressed()) {
-			help::show_help(disp,help_topic);
-		}
-
-		for(unsigned int n = 0; n != check_buttons.size(); ++n) {
-			const bool pressed = check_buttons[n].pressed();
-
-			if(options != NULL && n < options->size()) {
-				(*options)[n].checked = check_buttons[n].checked();
-			} else if(pressed) {
-				const size_t options_size = options == NULL ? 0 : options->size();
-				wassert(action_buttons != NULL && action_buttons->size() > n - options_size);
-
-				const dialog_button_action::RESULT res = (*action_buttons)[n - options_size].handler->button_pressed(menu_.selection());
-				if(res == DELETE_ITEM) {
-					first_time = true;
-					menu_.erase_item(menu_.selection());
-					if(menu_.nitems() == 0) {
-						return -1;
-					}
-				} else if(res == CLOSE_DIALOG) {
-					return -1;
-				}
-
-				//reset button-tracking flags so that if the action displays a dialog, a button-press
-				//at the end of the dialog won't be mistaken for a button-press in this dialog.
-				//(We should eventually use a proper event-handling system instead of tracking
-				//flags to avoid problems like this altogether).
-				left_button = true;
-				right_button = true;
-				key_down = true;
-			}
-		}
-
-		disp.flip();
-		disp.delay(10);
-
-		if(action != NULL) {
-			const int act = action->do_action();
-			if(act != CONTINUE_DIALOG) {
-				return act;
-			}
-		}
-	}
-
-	return -1;
-}
-
-/*	show_dialog2: same as show_dialog, but uses the image-select style
-	provided as a convenience to use default parameters */
-//inline
-int show_dialog2(display &screen, surface image,
-				const std::string& caption, const std::string& message,
-				DIALOG_TYPE type,
-				const std::vector<std::string>* menu_items,
-				const std::vector<preview_pane*>* preview_panes,
-				const std::string& text_widget_label,
-				std::string* text_widget_text,
-				const int text_widget_max_chars,
-				dialog_action* action,
-				std::vector<check_item>* options, int xloc, int yloc,
-				const std::string* dialog_style,
-				std::vector<dialog_button_info>* buttons,
-				const std::string& help_topic,
-				const menu::sorter* sorter
-			 )
-{
-	return show_dialog(screen, image,
-				caption, message,
-				type, menu_items,
-				preview_panes,
-				text_widget_label,
-				text_widget_text,
-				text_widget_max_chars,
-				action, options, xloc, yloc,
-				dialog_style, buttons,
-				help_topic, sorter, &menu::bluebg_style);
+	return d.result();
 }
 
 }
 
 namespace gui {
 
-	network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))
+network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))
 {
 	const size_t width = 300;
 	const size_t height = 80;

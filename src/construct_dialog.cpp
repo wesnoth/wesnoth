@@ -105,7 +105,7 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 				title_(title), message_(message), type_(type), image_(NULL),
 				style_(dialog_style), help_button_(disp, help_topic), menu_(NULL),
 				text_widget_(NULL), result_(CONTINUE_DIALOG), action_(NULL),
-				x_(-1), y_(-1)
+				x_(-1), y_(-1), bg_restore_(NULL)
 {
 	switch(type)
 	{
@@ -147,13 +147,14 @@ dialog::~dialog()
 	//delete action_;
 
 	button_pool_iterator b;
-	pp_iterator p;
 	for (b = button_pool_.begin(); b != button_pool_.end(); ++b) {
 		delete b->first;
 	}
-	for (p = preview_panes_.begin(); p != preview_panes_.end(); ++p) {
-		delete (*p);
-	}
+//	pp_iterator p;
+//	for (p = preview_panes_.begin(); p != preview_panes_.end(); ++p) {
+//		delete (*p);
+//	}
+	delete bg_restore_;
 }
 
 const bool dialog::option_checked(unsigned int option_index)
@@ -175,6 +176,13 @@ void dialog::add_button(dialog_button *const btn, BUTTON_LOCATION loc)
 	std::pair<dialog_button *, BUTTON_LOCATION> new_pair(btn,loc);
 	button_pool_.push_back(new_pair);
 }
+
+void dialog::add_button(dialog_button_info btn_info, BUTTON_LOCATION loc)
+{
+	dialog_button *btn = new dialog_button(disp_.video(), btn_info.label, button::TYPE_PRESS, CONTINUE_DIALOG, btn_info.handler);
+	add_button(btn, loc);
+}
+
 
 void dialog::set_textbox(const std::string& text_widget_label,
 				const std::string& text_widget_text,
@@ -229,8 +237,7 @@ int dialog::show()
 	layout(x_, y_);
 
 	//draw
-	surface_restorer restorer;
-	draw(restorer);
+	draw();
 
 	//process
 	dialog_process_info dp_info;
@@ -247,11 +254,9 @@ int dialog::show()
 	return result();
 }
 
-void dialog::draw(surface_restorer &restorer)
+void dialog::draw()
 {
 	CVideo& screen = disp_.video();
-	surface const scr = screen.getSurface();
-
 	unsigned int image_h_padding = 0;
 	unsigned int image_width = 0;
 	unsigned int caption_height = 0;
@@ -260,17 +265,6 @@ void dialog::draw(surface_restorer &restorer)
 		image_width = image_->width();
 		caption_height = (image_->caption() == NULL)? 0 : image_->caption()->height();
 	}
-/*	const std::string& title = image_ == NULL ? caption_ : "";
-*/
-	std::vector<button*> frame_buttons;
-	for(button_iterator b = standard_buttons_.begin(); b != standard_buttons_.end(); ++b)
-	{
-		frame_buttons.push_back(*b);
-	}
-	draw_dialog(frame_rect_.x, frame_rect_.y, frame_rect_.w, frame_rect_.h,
-		screen, title_, &style_, &frame_buttons, &restorer,
-		help_button_.topic().empty() ? NULL : &help_button_);
-
 
 	//draw textbox, textbox label, image, and image caption
 	events::raise_draw_event();
@@ -298,6 +292,21 @@ void dialog::draw(surface_restorer &restorer)
 
 	disp_.flip();
 	disp_.invalidate_all();
+
+}
+
+void dialog::draw_frame()
+{
+	CVideo& screen = disp_.video();
+	std::vector<button*> frame_buttons;
+	for(button_iterator b = standard_buttons_.begin(); b != standard_buttons_.end(); ++b)
+	{
+		frame_buttons.push_back(*b);
+	}
+	bg_restore_ = new surface_restorer;
+	draw_dialog(frame_rect_.x, frame_rect_.y, frame_rect_.w, frame_rect_.h,
+		screen, title_, &style_, &frame_buttons, bg_restore_,
+		help_button_.topic().empty() ? NULL : &help_button_);
 }
 
 void dialog::refresh()
@@ -328,9 +337,6 @@ void dialog::layout(int &xloc, int &yloc)
 		text_widget_height = text_widget_->height() + message_font_size;
 	}
 
-//	const std::vector<std::string> &menu_items =
-//		(menu_items_ptr == NULL) ? std::vector<std::string>() : *menu_items_ptr;
-//	menu menu_(screen,menu_items,type == MESSAGE,-1,max_menu_width,sorter,menu_style);
 	const bool use_menu = (get_menu()->height() > 0);
 	if(use_menu)
 	{
@@ -487,6 +493,8 @@ void dialog::layout(int &xloc, int &yloc)
 	frame_rect_.w = frame_width;
 	frame_rect_.h = frame_height;
 
+	draw_frame();
+
 	//calculate the positions of the preview panes to the sides of the dialog
 	if(!preview_panes_.empty()) {
 
@@ -517,9 +525,14 @@ void dialog::layout(int &xloc, int &yloc)
 					above_right_preview_pane += area.w;
 				}
 			}
-
 			(**i).set_location(area);
+			if(!(**i).handler_members().empty())
+			{
+				(**i).draw();
+				(**i).needs_restore_ = false; //keep it from drawing over its members
+			}
 		}
+
 	}
 
 	const int text_widget_y = yloc+top_padding+text_and_image_height-6+menu_hpadding;
@@ -578,10 +591,6 @@ void dialog::layout(int &xloc, int &yloc)
 			}
 		}
 	}
-
-/*			if(options != NULL && i < options->size()) {
-				check_buttons[i].set_check((*options)[i].checked);
-			*/
 	help_button_.join();
 }
 

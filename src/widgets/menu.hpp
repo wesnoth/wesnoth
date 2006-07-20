@@ -142,7 +142,7 @@ public:
 
 	menu(CVideo& video, const std::vector<std::string>& items,
 	     bool click_selects=false, int max_height=-1, int max_width=-1,
-		 const sorter* sorter_obj=NULL, style *menu_style=NULL);
+		 const sorter* sorter_obj=NULL, style *menu_style=NULL, const bool auto_join=true);
 
 	int selection() const;
 

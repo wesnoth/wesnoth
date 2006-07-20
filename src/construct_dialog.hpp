@@ -59,12 +59,12 @@ public:
 	label *caption() const { return caption_; }
 	void draw_contents();
 
-private:
 	handler_vector handler_members() {
 		handler_vector h;
 		h.push_back(caption_);
 		return h;
 	}
+private:
 
 	surface surf_;
 	label *caption_;
@@ -80,12 +80,12 @@ public:
 
 	label *caption() const { return caption_; }
 
-private:
 	handler_vector handler_members() {
 		handler_vector h;
 		h.push_back(caption_);
 		return h;
 	}
+private:
 
 	label *caption_;
 };
@@ -166,6 +166,7 @@ public:
 				const int text_widget_max_chars = 256,
 				const unsigned int text_box_width = font::relative_size(350));
 	void add_button(dialog_button *const btn, BUTTON_LOCATION loc);
+	void add_button(dialog_button_info btn_info, BUTTON_LOCATION loc=BUTTON_EXTRA);
 
 	//Launching the dialog
 	//show - the return value of this method should be the same as result()
@@ -196,9 +197,11 @@ protected:
 	void refresh();
 
 private:
-	//layout - prepare components for display, return the dialog frame
+	//layout - prepare components for display and draw the frame
 	void layout(int &xloc, int &yloc);
-	void draw(surface_restorer &restorer);
+	void draw_frame();
+
+	void draw();
 
 	//process - execute a single dialog processing loop and return the result
 	int process(dialog_process_info &info);
@@ -227,6 +230,7 @@ private:
 	help_button help_button_;
 	dialog_textbox *text_widget_;
 	dialog_action *action_;
+	surface_restorer *bg_restore_;
 	int result_;
 	SDL_Rect message_rect_;
 	SDL_Rect frame_rect_;

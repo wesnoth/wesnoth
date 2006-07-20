@@ -181,9 +181,9 @@ public:
 		TYPE type;
 	};
 
+	virtual handler_vector handler_members();
 private:
 
-	handler_vector handler_members();
 	void process_event();
 	bool left_side() const { return false; }
 	void set_selection(int index);
