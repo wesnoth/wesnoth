@@ -54,6 +54,14 @@ scrollbar::scrollbar(CVideo &video)
 	}
 }
 
+handler_vector scrollbar::handler_members()
+{
+	handler_vector h;
+	h.push_back(&uparrow_);
+	h.push_back(&downarrow_);
+	return h;
+}
+
 void scrollbar::update_location(SDL_Rect const &rect)
 {
 	int uh = uparrow_.height(), dh = downarrow_.height();

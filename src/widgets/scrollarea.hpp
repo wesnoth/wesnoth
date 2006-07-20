@@ -32,6 +32,7 @@ public:
 	virtual void hide(bool value = true);
 
 protected:
+	virtual handler_vector handler_members();
 	virtual void update_location(SDL_Rect const &rect);
 	virtual void handle_event(const SDL_Event& event);
 	virtual void process_event();
