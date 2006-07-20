@@ -71,7 +71,7 @@ void advance_unit(const game_data& info,
 	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
 		sample_units.push_back(::get_advanced_unit(info,units,loc,*op));
 		const unit& type = sample_units.back();
-		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + type.language_name());
+		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + "~TC(" + lexical_cast_default<std::string>(u->second.side()) + "," + type.team_color() + ")" + COLUMN_SEPARATOR + type.language_name());
 		preferences::encountered_units().insert(*op);
 	}
 
@@ -84,7 +84,7 @@ void advance_unit(const game_data& info,
 		if((**mod)["image"].str().size()){
 		  lang_options.push_back(IMAGE_PREFIX + (**mod)["image"].str() + COLUMN_SEPARATOR + (**mod)["description"].str());
 		}else{
-		  lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + (**mod)["description"].str());
+		  lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + "~TC(" + lexical_cast_default<std::string>(u->second.side()) + "," + type.team_color() + ")" + COLUMN_SEPARATOR + (**mod)["description"].str());
 		}
 	}
 
