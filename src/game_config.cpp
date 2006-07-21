@@ -136,14 +136,6 @@ namespace game_config
 		enemy_ball_image = v["enemy_ball_image"];
 		ally_ball_image = v["ally_ball_image"];
 		flag_image = v["flag_image"];
-		flag_rgb = tc_info(v["flag_rgb"]);
-		if( !flag_rgb.size()){
-		  //set green as old_flag_color
-		  for(int i=255;i>0;i--){
-		    flag_rgb.push_back((Uint32)(i<<8));
-		  }
-		}
-
 		cross_image = v["cross_image"];
 		dot_image = v["dot_image"];
 
@@ -178,10 +170,17 @@ namespace game_config
 			for(string_map::const_iterator rgb_it = rgbv->values.begin(); rgb_it != rgbv->values.end(); ++rgb_it) {
 				try {
 					team_rgb_colors.insert(std::make_pair(rgb_it->first,string2rgb(rgb_it->second)));
-				} catch(bad_lexical_cast) {
+				} catch(bad_lexical_cast&) {
 					//throw config::error("Invalid team color: " + rgb_it->second);
 				}
 			}
+		}
+		flag_rgb = tc_info(v["flag_rgb"]);
+		if( !flag_rgb.size()){
+		  //set green as old_flag_color
+		  for(int i=255;i>0;i--){
+		    flag_rgb.push_back((Uint32)(i<<8));
+		  }
 		}
 	}
 	const std::vector<Uint32>& tc_info(const std::string& name)
@@ -191,7 +190,7 @@ namespace game_config
 			try {
 				team_rgb_colors.insert(std::make_pair(name,string2rgb(name)));
 				return tc_info(name);
-			} catch(bad_lexical_cast) {
+			} catch(bad_lexical_cast&) {
 				static std::vector<Uint32> stv;
 				//throw config::error("Invalid team color: " + name);
 				return stv;
