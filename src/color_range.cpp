@@ -31,11 +31,11 @@ std::vector<Uint32> string2rgb(std::string s){
   int r,g,b;
 
   while(c!=rgb_vec.end()){
-    r = (lexical_cast_default<int>(*c));
+    r = (lexical_cast<int>(*c));
     c++;
-    g = (lexical_cast_default<int>(*c));
+    g = (lexical_cast<int>(*c));
     c++;
-    b=(lexical_cast_default<int>(*c));
+    b=(lexical_cast<int>(*c));
     c++;
     out.push_back((Uint32) ((r<<16 & 0x00FF0000) + (g<<8 & 0x0000FF00) + (b & 0x000000FF)));
    }
