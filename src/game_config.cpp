@@ -136,10 +136,10 @@ namespace game_config
 		enemy_ball_image = v["enemy_ball_image"];
 		ally_ball_image = v["ally_ball_image"];
 		flag_image = v["flag_image"];
-		flag_rgb = string2rgb(v["flag_rgb"]);
+		flag_rgb = tc_info(v["flag_rgb"]);
 		if( !flag_rgb.size()){
 		  //set green as old_flag_color
-		  for(int i=255;i!=0;i--){
+		  for(int i=255;i>0;i--){
 		    flag_rgb.push_back((Uint32)(i<<8));
 		  }
 		}
