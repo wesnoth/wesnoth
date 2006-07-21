@@ -130,6 +130,7 @@ void locator::get_tc_info(const std::string& field)
 	std::string color_id = field.substr(comma+1);
 	val_.new_color = team::get_side_color_range(team_n);
 	val_.swap_colors = game_config::tc_info(color_id);
+	val_.type_ = SUB_FILE;
 }
 void locator::parse_arguments()
 {
@@ -301,10 +302,6 @@ surface locator::load_image_file() const
 
 	if (res.null()) {
 		ERR_DP << "could not open image '" << val_.filename_ << "'\n";
-	} else {
-		if(val_.swap_colors.size()){
-		res=recolor_image(res,get_new_color(),get_swap_colors());
-		}
 	}
 
 	return res;
