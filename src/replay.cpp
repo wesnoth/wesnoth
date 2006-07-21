@@ -526,17 +526,8 @@ config* replay::get_next_action()
 
 void replay::pre_replay()
 {
-	while(pos_ < commands().size()) {
-		if (commands()[pos_]->child("start") != NULL){
-			if(get_next_action() == NULL)
-				return;
-		}
-		else{
-			//This should not happen under normal circumstances and makes sure the
-			//rng is initialized even if there is no start-tag
-			set_random(commands()[pos_]);
-			break;
-		}
+	if ((rng::random() == NULL) && (commands().size() > 0)){
+		set_random(commands()[pos_]);
 	}
 }
 
