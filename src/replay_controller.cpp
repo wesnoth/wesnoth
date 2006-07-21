@@ -154,6 +154,8 @@ void replay_controller::reset_replay(){
 		events_manager_ = new game_events::manager(level_,*gui_,map_,units_,teams_,
 											gamestate_,status_,gameinfo_);
 	}
+	fire_prestart(true);
+	fire_start(!loading_game_);
 	(*gui_).invalidate_all();
 	(*gui_).draw();
 }
