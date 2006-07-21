@@ -176,7 +176,11 @@ namespace game_config
 		const config* rgbv = v.child("team_colors");
 		if(rgbv) {
 			for(string_map::const_iterator rgb_it = rgbv->values.begin(); rgb_it != rgbv->values.end(); ++rgb_it) {
-				team_rgb_colors.insert(std::make_pair(rgb_it->first,string2rgb(rgb_it->second)));
+				try {
+					team_rgb_colors.insert(std::make_pair(rgb_it->first,string2rgb(rgb_it->second)));
+				} catch(bad_lexical_cast) {
+					//throw config::error("Invalid team color: " + rgb_it->second);
+				}
 			}
 		}
 	}
@@ -184,9 +188,14 @@ namespace game_config
 	{
 		std::map<std::string, std::vector<Uint32> >::const_iterator i = team_rgb_colors.find(name);
 		if(i == team_rgb_colors.end()) {
-			static std::vector<Uint32> stv;
-			//throw config::error("Unknown team color: " + name);
-			return stv;
+			try {
+				team_rgb_colors.insert(std::make_pair(name,string2rgb(name)));
+				return tc_info(name);
+			} catch(bad_lexical_cast) {
+				static std::vector<Uint32> stv;
+				//throw config::error("Invalid team color: " + name);
+				return stv;
+			}
 		}
 		return i->second;
 	}
