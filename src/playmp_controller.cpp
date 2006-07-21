@@ -74,8 +74,6 @@ void playmp_controller::before_human_turn(){
 	turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
 		*gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);
 	turn_data_->replay_error().attach_handler(this);
-
-	menu_handler_.autosave("", status_.turn(), gamestate_.starting_pos);
 }
 
 void playmp_controller::play_human_turn(){
