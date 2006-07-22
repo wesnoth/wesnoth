@@ -25,6 +25,8 @@
 
 namespace {
 static std::vector<std::string> empty_string_vector;
+SDL_Rect empty_rect = { 0, 0, 0, 0 };
+
 }
 
 namespace gui {
@@ -129,8 +131,11 @@ public:
 
 private:
 	typedef std::vector<preview_pane *>::iterator pp_iterator;
+	typedef std::vector<preview_pane *>::const_iterator pp_const_iterator;
 	typedef std::vector<dialog_button *>::iterator button_iterator;
+	typedef std::vector<dialog_button *>::const_iterator button_const_iterator;
 	typedef std::vector< std::pair<dialog_button *, BUTTON_LOCATION> >::iterator button_pool_iterator;
+	typedef std::vector< std::pair<dialog_button *, BUTTON_LOCATION> >::const_iterator button_pool_const_iterator;
 
 public:
 
@@ -147,6 +152,8 @@ public:
 	static const size_t bottom_padding;
 
 	//Constructor & destructor
+	//dialog - throws button::error() if standard buttons fail to initialize
+	//         throws utils::invalid_utf8_exception() if message is invalid
 	dialog(display &disp, const std::string& title="", const std::string& message="",
 				const DIALOG_TYPE type=MESSAGE, const std::string& dialog_style=default_style,
 				const std::string& help_topic=no_help);
@@ -172,12 +179,11 @@ public:
 
 	//Launching the dialog
 	//show - the return value of this method should be the same as result()
-	int show(int &xloc, int &yloc);
-	int show();
+	int show(int xloc=-1, int yloc=-1);
 
 	//Results
 	int result() const { return result_; }
-	menu *get_menu();
+	menu *get_menu(); //creates an empty menu if one doesn't exist
 	bool done() const { return (result_ != CONTINUE_DIALOG); }
 	const std::string textbox_text() const { return text_widget_->text();}
 	const bool option_checked(unsigned int option_index=0);
@@ -199,11 +205,25 @@ protected:
 	void refresh();
 
 private:
-	//layout - prepare components for display and draw the frame
-	void layout(int &xloc, int &yloc);
-	void draw_frame();
+	struct dimension_measurements {
+		dimension_measurements() : x(-1), y(-1),
+			frame(empty_rect), message(empty_rect), textbox(empty_rect)
+		{}
+		int x, y;
+		SDL_Rect frame, message, textbox;
+		unsigned int menu_width;
+		std::map<preview_pane *const, SDL_Rect > panes;
+		int label_x, label_y;
+		int menu_x, menu_y;
+		int image_x, image_y, caption_x, caption_y;
+		std::map<dialog_button *const, std::pair<int,int> > buttons;
+	};
 
-	void draw();
+	//layout - prepare components for display and draw the frame
+	dimension_measurements layout(int xloc, int yloc) const;
+	void draw_frame(const dimension_measurements &dim);
+	void update_widget_positions(const dimension_measurements &dim);
+	void draw_contents(const dimension_measurements &dim);
 
 	//process - execute a single dialog processing loop and return the result
 	int process(dialog_process_info &info);
@@ -234,9 +254,6 @@ private:
 	dialog_action *action_;
 	surface_restorer *bg_restore_;
 	int result_;
-	SDL_Rect message_rect_;
-	SDL_Rect frame_rect_;
-	int x_, y_;
 };
 
 } //end namespace gui

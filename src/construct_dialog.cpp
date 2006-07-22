@@ -71,8 +71,6 @@ const size_t dialog::bottom_padding = font::relative_size(10);
 
 namespace {
 
-SDL_Rect empty_rect = { 0, 0, 0, 0 };
-
 struct help_handler : public hotkey::command_executor
 {
 	help_handler(display& disp, const std::string& topic) : disp_(disp), topic_(topic)
@@ -105,35 +103,42 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 				title_(title), message_(message), type_(type), image_(NULL),
 				style_(dialog_style), help_button_(disp, help_topic), menu_(NULL),
 				text_widget_(NULL), result_(CONTINUE_DIALOG), action_(NULL),
-				x_(-1), y_(-1), bg_restore_(NULL)
+				bg_restore_(NULL)
 {
+	CVideo& screen = disp_.video();
+
+	help_button_.set_parent(this);
 	switch(type)
 	{
 	case MESSAGE:
 	default:
 		break;
 	case OK_ONLY:
-		add_button(new standard_dialog_button(disp.video(),_("OK"),0,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(screen,_("OK"),0,true), BUTTON_STANDARD);
 		break;
 	case YES_NO:
-		add_button(new standard_dialog_button(disp.video(),_("Yes"),0,false), BUTTON_STANDARD);
-		add_button(new standard_dialog_button(disp.video(),_("No"),1,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(screen,_("Yes"),0,false), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(screen,_("No"),1,true), BUTTON_STANDARD);
 		break;
 	case OK_CANCEL:
-		add_button(new standard_dialog_button(disp.video(),_("OK"),0,false), BUTTON_STANDARD);
-		add_button(new standard_dialog_button(disp.video(),_("Cancel"),1,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(screen,_("OK"),0,false), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(screen,_("Cancel"),1,true), BUTTON_STANDARD);
 		break;
 	case CANCEL_ONLY:
-		add_button(new standard_dialog_button(disp.video(),_("Cancel"),0,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(screen,_("Cancel"),0,true), BUTTON_STANDARD);
 		break;
 	case CLOSE_ONLY:
-		add_button(new standard_dialog_button(disp.video(),_("Close"),0,true), BUTTON_STANDARD);
+		add_button(new standard_dialog_button(screen,_("Close"),0,true), BUTTON_STANDARD);
 		break;
 	}
 	//dialog creator should catch(button::error&) ?
 
-	message_rect_ = empty_rect;
-	frame_rect_ = empty_rect;
+	try {
+		message_ = font::word_wrap_text(message_, message_font_size, screen.getx() / 2, screen.gety() / 2);
+	} catch(utils::invalid_utf8_exception&) {
+		ERR_DP << "Problem handling utf8 in message '" << message_ << "'\n";
+		throw;
+	}
 }
 
 dialog::~dialog()
@@ -144,7 +149,7 @@ dialog::~dialog()
 	}
 	delete text_widget_;
 	delete image_;
-	//delete action_;
+//	delete action_;
 
 	button_pool_iterator b;
 	for (b = button_pool_.begin(); b != button_pool_.end(); ++b) {
@@ -175,6 +180,20 @@ void dialog::add_button(dialog_button *const btn, BUTTON_LOCATION loc)
 {
 	std::pair<dialog_button *, BUTTON_LOCATION> new_pair(btn,loc);
 	button_pool_.push_back(new_pair);
+	switch(loc)
+	{
+	case BUTTON_EXTRA:
+	case BUTTON_CHECKBOX:
+	case BUTTON_CHECKBOX_LEFT:
+		extra_buttons_.push_back(btn);
+		btn->set_parent(this);
+		break;
+	case BUTTON_STANDARD:
+		standard_buttons_.push_back(btn);
+	default:
+		btn->set_parent(this);
+		break;
+	}
 }
 
 void dialog::add_button(dialog_button_info btn_info, BUTTON_LOCATION loc)
@@ -207,17 +226,7 @@ menu *dialog::get_menu()
 	return menu_;
 }
 
-int dialog::show(int &xloc, int &yloc)
-{
-	x_ = xloc;
-	y_ = yloc;
-	show();
-	xloc = x_;
-	yloc = y_;
-	return result();
-}
-
-int dialog::show()
+int dialog::show(int xloc, int yloc)
 {
 	if(disp_.update_locked())
 		return CLOSE_DIALOG;
@@ -225,7 +234,7 @@ int dialog::show()
 	LOG_DP << "showing dialog '" << title_ << "' '" << message_ << "'\n";
 
 	//create the event context, remember to instruct any passed-in widgets to join it
-	const events::event_context outer_context;
+	const events::event_context outer_context;  //outer shouldn't be needed, but it is
 	const events::event_context dialog_events_context;
 	const dialog_manager manager;
 	const events::resize_lock prevent_resizing;
@@ -233,11 +242,16 @@ int dialog::show()
 	help_handler helper(disp_,help_button_.topic());
 	hotkey::basic_handler help_dispatcher(&disp_,&helper);
 
+	//create an empty menu, if none exists
+	get_menu();
+
 	//layout
-	layout(x_, y_);
+	dimension_measurements dim = layout(xloc, yloc);
 
 	//draw
-	draw();
+	draw_frame(dim);
+	update_widget_positions(dim);
+	draw_contents(dim);
 
 	//process
 	dialog_process_info dp_info;
@@ -254,48 +268,29 @@ int dialog::show()
 	return result();
 }
 
-void dialog::draw()
+void dialog::draw_contents(const dimension_measurements &dim)
 {
-	CVideo& screen = disp_.video();
-	unsigned int image_h_padding = 0;
-	unsigned int image_width = 0;
-	unsigned int caption_height = 0;
-	if(image_ != NULL) {
-		image_h_padding = image_h_pad;
-		image_width = image_->width();
-		caption_height = (image_->caption() == NULL)? 0 : image_->caption()->height();
+	if(!preview_panes_.empty()) {
+		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
+			preview_pane *pane = *i;
+			if(!pane->handler_members().empty())
+			{
+				pane->draw();
+				pane->needs_restore_ = false; //prevent panes from drawing over members
+			}
+		}
 	}
+	events::raise_draw_event(); //draw widgets
 
-	//draw textbox, textbox label, image, and image caption
-	events::raise_draw_event();
-/*
-	if(text_widget_ != NULL) {
-		events::raise_draw_event();
-		font::draw_text(&screen, clipRect, message_font_size,
-		                font::NORMAL_COLOUR, text_widget_label_,
-						xloc + left_padding,text_widget_y_unpadded);
-	}
-	if(image_ != NULL) {
-		screen.blit_surface(x,y,image_);
-
-		font::draw_text(&screen, clipRect, caption_font_size,
-		                font::NORMAL_COLOUR, caption_,
-		                xloc+image_width+left_padding+image_h_padding,
-		                yloc+top_padding);
-	}
-*/
-
-	font::draw_text(&screen, message_rect_, message_font_size,
+	font::draw_text(&disp_.video(), dim.message, message_font_size,
 	                font::NORMAL_COLOUR, message_,
-	                x_+image_width+left_padding+image_h_padding,
-	                y_+top_padding+caption_height);
+	                dim.message.x, dim.message.y); //draw message
 
 	disp_.flip();
 	disp_.invalidate_all();
-
 }
 
-void dialog::draw_frame()
+void dialog::draw_frame(const dimension_measurements &dim)
 {
 	CVideo& screen = disp_.video();
 	std::vector<button*> frame_buttons;
@@ -304,9 +299,52 @@ void dialog::draw_frame()
 		frame_buttons.push_back(*b);
 	}
 	bg_restore_ = new surface_restorer;
-	draw_dialog(frame_rect_.x, frame_rect_.y, frame_rect_.w, frame_rect_.h,
+	draw_dialog(dim.frame.x, dim.frame.y, dim.frame.w, dim.frame.h,
 		screen, title_, &style_, &frame_buttons, bg_restore_,
 		help_button_.topic().empty() ? NULL : &help_button_);
+}
+
+void dialog::update_widget_positions(const dimension_measurements &dim)
+{
+	if(!preview_panes_.empty()) {
+		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
+			preview_pane *pane = *i;
+			pane->join();
+			pane->set_location(dim.panes.find(pane)->second);
+		}
+	}
+	if(text_widget_) {
+		text_widget_->join();
+		text_widget_->set_location(dim.textbox);
+		if(text_widget_->caption()) {
+			text_widget_->caption()->set_location(dim.caption_x, dim.caption_y);
+		}
+	}
+	if(get_menu()->height() > 0) {
+		menu_->join();
+		menu_->set_numeric_keypress_selection(text_widget_ == NULL);
+		menu_->set_width( dim.menu_width );
+		menu_->set_location( dim.menu_x, dim.menu_y );
+	}
+	if(image_) {
+		image_->join();
+		image_->set_location(dim.image_x, dim.image_y);
+		if(image_->caption()) {
+			image_->caption()->set_location(dim.label_x, dim.label_y);
+		}
+	}
+	button_iterator b;
+	for(b = extra_buttons_.begin(); b != extra_buttons_.end(); ++b) {
+		dialog_button *btn = *b;
+		btn->join();
+		std::pair<int,int> coords = dim.buttons.find(btn)->second;
+		btn->set_location(coords.first, coords.second);
+	}
+	for(b = standard_buttons_.begin(); b != standard_buttons_.end(); ++b) {
+		dialog_button *btn = *b;
+		btn->join();
+	}
+	help_button_.join();
 }
 
 void dialog::refresh()
@@ -315,43 +353,31 @@ void dialog::refresh()
 	disp_.delay(10);
 }
 
-void dialog::layout(int &xloc, int &yloc)
+dialog::dimension_measurements dialog::layout(int xloc, int yloc) const
 {
-	if(frame_rect_ != empty_rect) //already finished layout
-		return;
-
 	CVideo& screen = disp_.video();
 	surface const scr = screen.getSurface();
 	SDL_Rect clipRect = disp_.screen_area();
+
+	dimension_measurements dim;
+	dim.x = xloc;
+	dim.y = yloc;
 
 	const bool use_textbox = (text_widget_ != NULL);
 	int text_widget_width = 0;
 	int text_widget_height = 0;
 	if(use_textbox) {
-		text_widget_->join();
 		const SDL_Rect& area = font::text_area(text_widget_->text(),message_font_size);
-		text_widget_->set_width(minimum<size_t>(screen.getx()/2,maximum<size_t>(area.w,text_widget_->width())));
-		text_widget_->set_height(minimum<size_t>(screen.gety()/2,maximum<size_t>(area.h,text_widget_->height())));
-		text_widget_width = text_widget_->width();
+		dim.textbox.w = minimum<size_t>(screen.getx()/2,maximum<size_t>(area.w,text_widget_->width()));
+		dim.textbox.h = minimum<size_t>(screen.gety()/2,maximum<size_t>(area.h,text_widget_->height()));
+		text_widget_width = dim.textbox.w;
 		text_widget_width += (text_widget_->caption() == NULL) ? 0 : text_widget_->caption()->width();
-		text_widget_height = text_widget_->height() + message_font_size;
+		text_widget_height = dim.textbox.h + message_font_size;
 	}
 
-	const bool use_menu = (get_menu()->height() > 0);
-	if(use_menu)
-	{
-		menu_->join();
-		menu_->set_numeric_keypress_selection(use_textbox == false);
-	}
-
-	try {
-		message_ = font::word_wrap_text(message_, message_font_size, screen.getx() / 2, screen.gety() / 2);
-	} catch(utils::invalid_utf8_exception&) {
-		ERR_DP << "Problem handling utf8 in message '" << message_ << "'\n";
-	}
-
+	const bool use_menu = (menu_->height() > 0);
 	if(!message_.empty()) {
-		message_rect_ = font::draw_text(NULL, clipRect, message_font_size,
+		dim.message = font::draw_text(NULL, clipRect, message_font_size,
 		                            font::NORMAL_COLOUR, message_, 0, 0);
 	}
 	unsigned int caption_width = 0;
@@ -362,34 +388,22 @@ void dialog::layout(int &xloc, int &yloc)
 	}
 
 	int check_button_height = 0;
-//	int check_button_width = 0;
 	int left_check_button_height = 0;
-//	int left_check_button_width = 0;
 	const int button_height_padding = 5;
 
-	for(button_pool_iterator b = button_pool_.begin(); b != button_pool_.end(); ++b) {
+	for(button_pool_const_iterator b = button_pool_.begin(); b != button_pool_.end(); ++b) {
+		dialog_button const *const btn = b->first;
 		switch(b->second)
 		{
 		case BUTTON_EXTRA:
 		case BUTTON_CHECKBOX:
-			check_button_height += b->first->height() + button_height_padding;
-//			check_button_width = maximum<int>(b->first->width(),check_button_width);
-			extra_buttons_.push_back(b->first);
-			b->first->set_parent(this);
-			b->first->join();
+			check_button_height += btn->height() + button_height_padding;
 			break;
 		case BUTTON_CHECKBOX_LEFT:
-			left_check_button_height += b->first->height() + button_height_padding;
-//			left_check_button_width = maximum<int>(b->first->width(),left_check_button_width);
-			extra_buttons_.push_back(b->first);
-			b->first->set_parent(this);
-			b->first->join();
+			left_check_button_height += btn->height() + button_height_padding;
 			break;
 		case BUTTON_STANDARD:
-			standard_buttons_.push_back(b->first);
 		default:
-			b->first->set_parent(this);
-			b->first->join();
 			break;
 		}
 	}
@@ -398,20 +412,19 @@ void dialog::layout(int &xloc, int &yloc)
 	size_t above_preview_pane_height = 0, above_left_preview_pane_width = 0, above_right_preview_pane_width = 0;
 	size_t preview_pane_height = 0, left_preview_pane_width = 0, right_preview_pane_width = 0;
 	if(!preview_panes_.empty()) {
-		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
-			(**i).join(); //join the event context now, since it was created outside this scope
-			const SDL_Rect& rect = (**i).location();
-
-			if((**i).show_above() == false) {
+		for(pp_const_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
+			preview_pane const *const pane = *i;
+			const SDL_Rect& rect = pane->location();
+			if(pane->show_above() == false) {
 				preview_pane_height = maximum<size_t>(rect.h,preview_pane_height);
-				if((**i).left_side()) {
+				if(pane->left_side()) {
 					left_preview_pane_width += rect.w;
 				} else {
 					right_preview_pane_width += rect.w;
 				}
 			} else {
 				above_preview_pane_height = maximum<size_t>(rect.h,above_preview_pane_height);
-				if((**i).left_side()) {
+				if(pane->left_side()) {
 					above_left_preview_pane_width += rect.w;
 				} else {
 					above_right_preview_pane_width += rect.w;
@@ -420,23 +433,24 @@ void dialog::layout(int &xloc, int &yloc)
 		}
 	}
 
-	const int menu_hpadding = font::relative_size((message_rect_.h > 0 && use_menu) ? 10 : 0);
+	const int menu_hpadding = font::relative_size((dim.message.h > 0 && use_menu) ? 10 : 0);
 	const size_t image_h_padding = (image_ == NULL)? 0 : image_h_pad;
 	const size_t padding_width = left_padding + right_padding + image_h_padding;
 	const size_t padding_height = top_padding + bottom_padding + menu_hpadding;
 	const size_t image_width = (image_ == NULL) ? 0 : image_->width();
 	const size_t image_height = (image_ == NULL) ? 0 : image_->height();
-	const size_t total_text_height = message_rect_.h + caption_height;
+	const size_t total_text_height = dim.message.h + caption_height;
 
-	size_t text_width = message_rect_.w;
+	size_t text_width = dim.message.w;
 	if(caption_width > text_width)
 		text_width = caption_width;
 
 	// Prevent the menu to be larger than the screen
-	if(menu_->width() + image_width + padding_width > size_t(scr->w))
-		menu_->set_width(scr->w - image_width - padding_width);
-	if(menu_->width() > text_width)
-		text_width = menu_->width();
+	dim.menu_width = menu_->width();
+	if(dim.menu_width + image_width + padding_width > size_t(scr->w))
+		dim.menu_width = scr->w - image_width - padding_width;
+	if(dim.menu_width > text_width)
+		text_width = dim.menu_width;
 
 
 	size_t total_width = image_width + text_width + padding_width;
@@ -446,8 +460,8 @@ void dialog::layout(int &xloc, int &yloc)
 
 	//Prevent the menu from being too skinny
 	if(use_menu && preview_panes_.empty() &&
-		total_width > menu_->width() + image_width + padding_width) {
-		menu_->set_width(total_width - image_width - padding_width);
+		total_width > dim.menu_width + image_width + padding_width) {
+		dim.menu_width = total_width - image_width - padding_width;
 	}
 
 	const size_t text_and_image_height = image_height > total_text_height ? image_height : total_text_height;
@@ -456,59 +470,55 @@ void dialog::layout(int &xloc, int &yloc)
 	                         padding_height + menu_->height() +
 							 text_widget_height + check_button_height;
 
-
-	int frame_width = maximum<int>(total_width,above_left_preview_pane_width + above_right_preview_pane_width);
-	int frame_height = maximum<int>(total_height,int(preview_pane_height));
-	int xframe = maximum<int>(0,xloc >= 0 ? xloc : scr->w/2 - (frame_width + left_preview_pane_width + right_preview_pane_width)/2);
-	int yframe = maximum<int>(0,yloc >= 0 ? yloc : scr->h/2 - (frame_height + above_preview_pane_height)/2);
+	dim.frame.w = maximum<int>(total_width,above_left_preview_pane_width + above_right_preview_pane_width);
+	dim.frame.h = maximum<int>(total_height,int(preview_pane_height));
+	dim.frame.x = maximum<int>(0,dim.x >= 0 ? dim.x : scr->w/2 - (dim.frame.w + left_preview_pane_width + right_preview_pane_width)/2);
+	dim.frame.y = maximum<int>(0,dim.y >= 0 ? dim.y : scr->h/2 - (dim.frame.h + above_preview_pane_height)/2);
 
 	LOG_DP << "above_preview_pane_height: " << above_preview_pane_height << "; "
-		<< "yframe: " << scr->h/2 << " - " << (frame_height + above_preview_pane_height)/2 << " = "
-		<< yframe << "; " << "frame_height: " << frame_height << "\n";
+		<< "dim.frame.y: " << scr->h/2 << " - " << (dim.frame.h + above_preview_pane_height)/2 << " = "
+		<< dim.frame.y << "; " << "dim.frame.h: " << dim.frame.h << "\n";
 
-	if(xloc <= -1 || yloc <= -1) {
-		xloc = xframe + left_preview_pane_width;
-		yloc = yframe + above_preview_pane_height;
+	if(dim.x <= -1 || dim.y <= -1) {
+		dim.x = dim.frame.x + left_preview_pane_width;
+		dim.y = dim.frame.y + above_preview_pane_height;
 	}
 
-	if(xloc + frame_width > scr->w) {
-		xloc = scr->w - frame_width;
-		if(xloc < xframe) {
-			xframe = xloc;
+	if(dim.x + dim.frame.w > scr->w) {
+		dim.x = scr->w - dim.frame.w;
+		if(dim.x < dim.frame.x) {
+			dim.frame.x = dim.x;
 		}
 	}
 
-	if(yloc + frame_height > scr->h) {
-		yloc = scr->h - frame_height;
-		if(yloc < yframe) {
-			yframe = yloc;
+	if(dim.y + dim.frame.h > scr->h) {
+		dim.y = scr->h - dim.frame.h;
+		if(dim.y < dim.frame.y) {
+			dim.frame.y = dim.y;
 		}
 	}
 
-	frame_width += left_preview_pane_width + right_preview_pane_width;
-	frame_height += above_preview_pane_height;
+	dim.frame.w += left_preview_pane_width + right_preview_pane_width;
+	dim.frame.h += above_preview_pane_height;
 
-	frame_rect_.x = xframe;
-	frame_rect_.y = yframe;
-	frame_rect_.w = frame_width;
-	frame_rect_.h = frame_height;
-
-	draw_frame();
+	dim.message.x = dim.x + image_width + left_padding + image_h_padding;
+	dim.message.y = dim.y + top_padding + caption_height;
 
 	//calculate the positions of the preview panes to the sides of the dialog
 	if(!preview_panes_.empty()) {
 
-		int left_preview_pane = xframe;
-		int right_preview_pane = xframe + total_width + left_preview_pane_width;
-		int above_left_preview_pane = xframe + frame_width/2;
+		int left_preview_pane = dim.frame.x;
+		int right_preview_pane = dim.frame.x + total_width + left_preview_pane_width;
+		int above_left_preview_pane = dim.frame.x + dim.frame.w/2;
 		int above_right_preview_pane = above_left_preview_pane;
 
-		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
-			SDL_Rect area = (**i).location();
+		for(pp_const_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
+		preview_pane const *const pane = *i;
+			SDL_Rect area = pane->location();
 
-			if((**i).show_above() == false) {
-				area.y = yloc;
-				if((**i).left_side()) {
+			if(pane->show_above() == false) {
+				area.y = dim.y;
+				if(pane->left_side()) {
 					area.x = left_preview_pane;
 					left_preview_pane += area.w;
 				} else {
@@ -516,8 +526,8 @@ void dialog::layout(int &xloc, int &yloc)
 					right_preview_pane += area.w;
 				}
 			} else {
-				area.y = yframe;
-				if((**i).left_side()) {
+				area.y = dim.frame.y;
+				if(pane->left_side()) {
 					area.x = above_left_preview_pane - area.w;
 					above_left_preview_pane -= area.w;
 				} else {
@@ -525,47 +535,34 @@ void dialog::layout(int &xloc, int &yloc)
 					above_right_preview_pane += area.w;
 				}
 			}
-			(**i).set_location(area);
-			if(!(**i).handler_members().empty())
-			{
-				(**i).draw();
-				(**i).needs_restore_ = false; //keep it from drawing over its members
-			}
+			dim.panes[*i] = area;
 		}
-
 	}
 
-	const int text_widget_y = yloc+top_padding+text_and_image_height-6+menu_hpadding;
+	const int text_widget_y = dim.y+top_padding+text_and_image_height-6+menu_hpadding;
 
 	if(use_textbox) {
 		const int text_widget_y_unpadded = text_widget_y + (text_widget_height - text_widget_->location().h)/2;
-		text_widget_->set_location(xloc + left_padding +
-		                         text_widget_width - text_widget_->location().w,
-		                         text_widget_y_unpadded);
-		if(text_widget_->caption() != NULL) {
-			text_widget_->caption()->set_location(xloc+left_padding, text_widget_y_unpadded);
-		}
+		dim.textbox.x = dim.x + left_padding + text_widget_width - text_widget_->location().w;
+		dim.textbox.y = text_widget_y_unpadded;
+		dim.caption_x = dim.x+left_padding;
+		dim.caption_y = text_widget_y_unpadded;
 	}
 
-	const int menu_xpos = xloc+image_width+left_padding+image_h_padding;
-	const int menu_ypos = yloc+top_padding+text_and_image_height+menu_hpadding+ (use_textbox ? text_widget_->location().h + top_padding : 0);
-	if(use_menu) {
-		menu_->set_location(menu_xpos,menu_ypos);
-	}
+	dim.menu_x = dim.x+image_width+left_padding+image_h_padding;
+	dim.menu_y = dim.y+top_padding+text_and_image_height+menu_hpadding+ (use_textbox ? text_widget_->location().h + top_padding : 0);
 
-	message_rect_.x = xloc + left_padding;
-	message_rect_.y = yloc + top_padding + caption_height;
+	dim.message.x = dim.x + left_padding;
+	dim.message.y = dim.y + top_padding + caption_height;
+
 	if(image_ != NULL) {
-		const int x = xloc + left_padding;
-		const int y = yloc + top_padding;
-		message_rect_.x += image_width + image_h_padding;
-
-		image_->set_location(x,y);
-
-		if(image_->caption() != NULL) {
-			image_->caption()->set_location(xloc+image_width+left_padding+image_h_padding, yloc+top_padding);
-		}
-		image_->join();
+		const int x = dim.x + left_padding;
+		const int y = dim.y + top_padding;
+		dim.message.x += image_width + image_h_padding;
+		dim.image_x = x;
+		dim.image_y = y;
+		dim.caption_x = dim.x + image_width + left_padding + image_h_padding;
+		dim.caption_y = dim.y + top_padding;
 	}
 
 	//set the position of any tick boxes. by default, they go right below the menu,
@@ -573,17 +570,23 @@ void dialog::layout(int &xloc, int &yloc)
 	if(extra_buttons_.empty() == false) {
 		int options_y = text_widget_y + text_widget_height + menu_->height() + button_height_padding + menu_hpadding;
 		int options_left_y = options_y;
-		for(button_pool_iterator b = button_pool_.begin(); b != button_pool_.end(); ++b) {
+		for(button_pool_const_iterator b = button_pool_.begin(); b != button_pool_.end(); ++b) {
+		dialog_button const *const btn = b->first;
+		std::pair<int,int> coords;
 			switch(b->second)
 			{
 			case BUTTON_EXTRA:
 			case BUTTON_CHECKBOX:
-				b->first->set_location(xloc + total_width - b->first->width() - ButtonHPadding, options_y);
-				options_y += b->first->height() + button_height_padding;
+				coords.first = dim.x + total_width - btn->width() - ButtonHPadding;
+				coords.second = options_y;
+				dim.buttons[b->first] = coords;
+				options_y += btn->height() + button_height_padding;
 				break;
 			case BUTTON_CHECKBOX_LEFT:
-				b->first->set_location(xloc + ButtonHPadding, options_left_y);
-				options_left_y += b->first->height() + button_height_padding;
+				coords.first = dim.x + ButtonHPadding;
+				coords.second = options_left_y;
+				dim.buttons[b->first] = coords;
+				options_left_y += btn->height() + button_height_padding;
 				break;
 			case BUTTON_STANDARD:
 			default:
@@ -591,8 +594,7 @@ void dialog::layout(int &xloc, int &yloc)
 			}
 		}
 	}
-	help_button_.set_parent(this);
-	help_button_.join();
+	return dim;
 }
 
 int dialog::process(dialog_process_info &info)
@@ -610,8 +612,6 @@ int dialog::process(dialog_process_info &info)
 	if((!info.key_down && info.key[SDLK_RETURN] || menu_->double_clicked()) &&
 	   (type_ == YES_NO || type_ == OK_CANCEL || type_ == OK_ONLY || type_ == CLOSE_ONLY)) {
 
-/*		if(text_widget_out_ != NULL && use_textbox)
-			*text_widget_out_ = text_widget_->text();*/
 		return (use_menu ? menu_->selection() : 0);
 	}
 
@@ -622,17 +622,15 @@ int dialog::process(dialog_process_info &info)
 	//escape quits from the dialog -- unless it's an "ok" dialog with a menu,
 	//since such dialogs require a selection of some kind.
 	if(!info.key_down && info.key[SDLK_ESCAPE] && (type_ != OK_ONLY || !use_menu)) {
-		return ((use_menu) ? 1 : CLOSE_DIALOG);
+		return ((type_ == OK_ONLY && use_menu) ? 1 : CLOSE_DIALOG);
 	}
 
 	if((menu_->selection() != info.selection) || info.first_time) {
 		info.selection = menu_->selection();
-
 		int selection = info.selection;
 		if(selection < 0) {
 			selection = 0;
 		}
-
 		if(!preview_panes_.empty()) {
 			for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
 				(**i).set_selection(selection);
@@ -656,7 +654,6 @@ int dialog::process(dialog_process_info &info)
 	events::raise_process_event();
 	events::raise_draw_event();
 
-//	const SDL_Rect menu_rect = {menu_xpos,menu_ypos,menu_->width(),menu_->height()};
 	const SDL_Rect menu_rect = menu_->location();
 	if(
 		(
