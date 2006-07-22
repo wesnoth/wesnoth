@@ -308,6 +308,12 @@ static PyObject* attacktype_get_range(wesnoth_attacktype* type, void* /*closure*
 	return Py_BuildValue("s",type->attack_type_->range().c_str());
 }
 
+static void wesnoth_attacktype_dealloc(wesnoth_attacktype* self)
+{
+    delete self->attack_type_;
+    self->ob_type->tp_free((PyObject*)self);
+}
+
 static PyGetSetDef attacktype_getseters[] = {
 	{ "name",			(getter)attacktype_get_name,			NULL,
         "Name of the attack.",	NULL },
@@ -352,7 +358,7 @@ static PyTypeObject wesnoth_attacktype_type = {
 	"wesnoth.attacktype",        /* tp_name*/
 	sizeof(wesnoth_attacktype),  /* tp_basicsize*/
 	0,                         /* tp_itemsize*/
-	0,                         /* tp_dealloc*/
+	(destructor)wesnoth_attacktype_dealloc, /* tp_dealloc*/
 	0,                         /* tp_print*/
 	0,                         /* tp_getattr*/
 	0,                         /* tp_setattr*/
@@ -400,7 +406,8 @@ static PyObject* wrap_attacktype(const attack_type& type)
 {
 	wesnoth_attacktype* attack;
 	attack = (wesnoth_attacktype*)PyObject_NEW(wesnoth_attacktype, &wesnoth_attacktype_type);
-	attack->attack_type_ = &type;
+
+	attack->attack_type_ = new attack_type(type);
 	return (PyObject*)attack;
 }
 
