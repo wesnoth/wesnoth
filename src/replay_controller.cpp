@@ -145,8 +145,8 @@ void replay_controller::reset_replay(){
 	player_number_ = 1;
 	current_turn_ = 1;
 	recorder.start_replay();
-	units_ = *(new unit_map(units_start_));
-	status_ = *(new gamestatus(status_start_));
+	units_ = units_start_;
+	status_ = status_start_;
 	gamestate_ = gamestate_start_;
 	teams_ = team_manager_.clone(teams_start_);
 	if (events_manager_ != NULL){
