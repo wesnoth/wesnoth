@@ -499,7 +499,7 @@ endif
 if SERVER
 install-exec-hook:
 	mkdir -p -m 0700 $(DESTDIR)$(fifodir)
-	chown $(serveruid):$(servergid) $(DESTDIR)$(fifodir)
+	-chown $(serveruid):$(servergid) $(DESTDIR)$(fifodir)
 
 uninstall-hook:
 	rm -rf $(DESTDIR)$(fifodir)
