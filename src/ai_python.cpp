@@ -595,13 +595,13 @@ static PyMethodDef unit_methods[] = {
         "the given attack type. (0 means no damage at all, 100 means full "
         "damage, 200 means double damage.)"},
 	{ "find_path",			(PyCFunction)python_ai::wrapper_unit_find_path,		METH_VARARGS,
-        "Parameters: location from, location to, float stop_at = 100\n"
+        "Parameters: location from, location to, float max_cost = unit.movement_left\n"
         "Returns: location[] path\n"
-        "Finds a path from 'from' to 'to', and returns it as a list of locations. "
-        "path[0] will be 'from', path[-1] will be 'to' or the nearest location "
-        "costing less than 'stop_at' movement points to reach. "
+        "Finds a path from 'from' to 'to' costing less than 'max_cost' "
+        "movement points to reach and returns it as a list of locations. "
+        "path[0] will be 'from', path[-1] will be 'to'. "
         "If no path can be found (for example, if the target is occupied by "
-        "another unit), an empty list is returned."},
+        "another unit, or it would cost more than max_cost), an empty list is returned."},
     { "attack_statistics", (PyCFunction)python_ai::wrapper_unit_attack_statistics, METH_VARARGS,
         "Parameters: location from, location to, int attack = -1\n"
         "Returns: own_hp, enemy_hp\n"
@@ -1448,22 +1448,26 @@ PyObject* python_ai::wrapper_get_gamestatus(PyObject* /*self*/, PyObject* args)
 	return (PyObject*)status;
 }
 
-PyObject* python_ai::wrapper_unit_find_path( wesnoth_unit* unit, PyObject* args )
+PyObject* python_ai::wrapper_unit_find_path(wesnoth_unit* self, PyObject* args)
 {
 	wesnoth_location* from;
 	wesnoth_location* to;
-	double percent = 100.0;
-	if ( !PyArg_ParseTuple( args, "O!O!|d", &wesnoth_location_type, &from, &wesnoth_location_type, &to, &percent ) )
-		return NULL;
-	if (!running_instance->is_unit_valid(unit->unit_))
-		return NULL;
+	double max_cost = self->unit_->movement_left();
+    if ( !PyArg_ParseTuple( args, "O!O!|d", &wesnoth_location_type, &from,
+        &wesnoth_location_type, &to, &max_cost ) )
+        return NULL;
+    if (!running_instance->is_unit_valid(self->unit_))
+        return NULL;
 
-	const shortest_path_calculator calc(*unit->unit_,
+    info& inf = running_instance->get_info();
+
+    max_cost += 1; // should be at least 1
+
+	const shortest_path_calculator calc(*self->unit_,
 		running_instance->current_team(),
-		running_instance->get_info().units,
-		running_instance->get_info().teams,
-		running_instance->get_info().map);
-	const paths::route& route = a_star_search(*from->location_, *to->location_, percent, &calc, running_instance->get_info().map.x(), running_instance->get_info().map.y());
+		inf.units, inf.teams, inf.map);
+	const paths::route& route = a_star_search(*from->location_, *to->location_,
+        max_cost, &calc, inf.map.x(), inf.map.y());
 
 	PyObject* steps = PyList_New(route.steps.size());
 	for (size_t step = 0; step < route.steps.size(); step++)
