@@ -1367,6 +1367,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			if(image.empty()) {
 				image = speaker->second.profile();
+				if(image == speaker->second.absolute_image()) {
+					std::stringstream ss;
+					ss	<< image << "~TC(" 
+						<< speaker->second.side() << ","
+						<< speaker->second.team_color() << ")";
+					image = ss.str();
+				}
 			}
 
 			if(caption.empty()) {
