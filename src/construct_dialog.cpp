@@ -234,7 +234,6 @@ int dialog::show(int xloc, int yloc)
 	LOG_DP << "showing dialog '" << title_ << "' '" << message_ << "'\n";
 
 	//create the event context, remember to instruct any passed-in widgets to join it
-	const events::event_context outer_context;  //outer shouldn't be needed, but it is
 	const events::event_context dialog_events_context;
 	const dialog_manager manager;
 	const events::resize_lock prevent_resizing;
