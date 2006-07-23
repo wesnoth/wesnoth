@@ -290,14 +290,14 @@ LEVEL_RESULT play_game(display& disp, game_state& state, const config& game_conf
 					const int should_save = dialogs::get_save_name(disp,
 							_("Do you want to save a replay of this scenario?"),
 							_("Name:"),
-							&label);
+							&label, gui::OK_CANCEL, _("Save Replay"));
 					if(should_save == 0) {
 						try {
 							config snapshot;
 
 							recorder.save_game(label, snapshot, state.starting_pos);
 						} catch(game::save_game_failed&) {
-							gui::show_error_message(disp, _("The game could not be saved"));
+							gui::show_error_message(disp, _("The replay could not be saved"));
 							retry = true;
 						};
 					}
