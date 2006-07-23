@@ -2694,22 +2694,16 @@ std::string escape(const std::string &s)
 
 std::string get_first_word(const std::string &s)
 {
-	if (s == "") {
+	size_t first_word_start = s.find_first_not_of(' ');
+	if (first_word_start == std::string::npos) {
 		return s;
 	}
-	size_t first_word_start = s.find_first_not_of(" ");
-	if (first_word_start == std::string::npos) {
-		first_word_start = 0;
+ 	size_t first_word_end = s.find_first_of(" \n", first_word_start);
+	if( first_word_end == first_word_start ) {
+		// This word is '\n'.
+		first_word_end = first_word_start+1;
 	}
-	size_t first_word_end = s.find_first_of(" \n", first_word_start);
-	if (first_word_end == std::string::npos || first_word_end == first_word_start) {
-		// Either this word contains no spaces/newlines, or it consists
-		// of only spaces and newlines. In either case, use the whole
-		// chunk as a word.
-		first_word_end = s.size();
-	}
-	const std::string first_word = s.substr(0, first_word_end);
-	return first_word;
+	return s.substr(0, first_word_end);
 }
 
 void show_help(display &disp, std::string show_topic, int xloc, int yloc)
