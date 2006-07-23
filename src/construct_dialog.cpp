@@ -261,7 +261,7 @@ int dialog::show(int xloc, int yloc)
 		if(!done()) {
 			refresh();
 		}
-		action();
+		action(dp_info);
 	} while(!done());
 
 	return result();
@@ -693,14 +693,8 @@ int dialog_button::action(dialog_process_info &info) {
 		menu &menu = *(parent_->get_menu());
 		dialog_button_action::RESULT res = handler_->button_pressed(menu.selection());
 
-		if(res == DELETE_ITEM) {
-			info.first_time = true;
-			menu.erase_item(menu.selection());
-			if(menu.nitems() == 0) {
-				return CLOSE_DIALOG;
-			}
-		} else if(res == CLOSE_DIALOG) {
-			return CLOSE_DIALOG;
+		if(res == DELETE_ITEM || res == CLOSE_DIALOG) {
+			return res;
 		}
 
 		//reset button-tracking flags so that if the action displays a dialog, a button-press
@@ -711,6 +705,26 @@ int dialog_button::action(dialog_process_info &info) {
 		return CONTINUE_DIALOG;
 	}
 	return simple_result_;
+}
+
+void dialog::action(dialog_process_info& info)
+{
+	//default way of handling a "delete item" request
+	if(result() == DELETE_ITEM) {
+		menu &m = *(get_menu());
+		m.erase_item(m.selection());
+		if(m.nitems() == 0) {
+			set_result(CLOSE_DIALOG);
+		} else {
+			set_result(CONTINUE_DIALOG);
+			info.first_time = true;
+		}
+	}
+
+	//support for old-style dialog actions
+	if(!done() && action_ != NULL) {
+		set_result(action_->do_action());
+	}
 }
 
 int standard_dialog_button::action(dialog_process_info &/*info*/) {

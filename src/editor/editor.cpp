@@ -1347,10 +1347,10 @@ void map_editor::main_loop() {
 	while (abort_ == DONT_ABORT) {
 		int mousex, mousey;
 		const int scroll_speed = preferences::scroll_speed();
-		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-		const bool l_button_down = mouse_flags & SDL_BUTTON_LMASK;
-		const bool r_button_down = mouse_flags & SDL_BUTTON_RMASK;
-		const bool m_button_down = mouse_flags & SDL_BUTTON_MMASK;
+		Uint8 mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+		const bool l_button_down = (0 == (mouse_flags & SDL_BUTTON_LMASK));
+		const bool r_button_down = (0 == (mouse_flags & SDL_BUTTON_RMASK));
+		const bool m_button_down = (0 == (mouse_flags & SDL_BUTTON_MMASK));
 
 		const gamemap::location cur_hex = gui_.hex_clicked_on(mousex,mousey);
 		if (cur_hex != selected_hex_) {

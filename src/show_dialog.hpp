@@ -36,7 +36,14 @@ namespace gui
 
 extern const int ButtonHPadding;
 extern const int ButtonVPadding;
-enum DIALOG_RESULT { DELETE_ITEM=-4, ESCAPE_DIALOG=-3, CONTINUE_DIALOG=-2, CLOSE_DIALOG=-1};
+enum DIALOG_RESULT {
+	CREATE_ITEM =-5,
+	DELETE_ITEM=-4,
+	ESCAPE_DIALOG=-3,
+	CONTINUE_DIALOG=-2,
+	CLOSE_DIALOG=-1
+	/* results (0..N) reserved for standard button indeces */
+};
 
 bool in_dialog();
 

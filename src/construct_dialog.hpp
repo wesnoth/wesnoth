@@ -187,6 +187,7 @@ public:
 	bool done() const { return (result_ != CONTINUE_DIALOG); }
 	const std::string textbox_text() const { return text_widget_->text();}
 	const bool option_checked(unsigned int option_index=0);
+	display& get_display() { return disp_; }
 
 	//Backwards compatibility
 	//set_action - deprecated, subclass dialog instead and override action()
@@ -196,11 +197,8 @@ protected:
 	void set_result(const int result) { result_ = result; }
 
 	//action - invoked at the end of the dialog-processing loop
-	virtual void action() {
-		if(!done() && action_ != NULL) {
-			set_result(action_->do_action());
-		}
-	}
+	virtual void action(dialog_process_info &dp_info);
+
 	//refresh - forces the display to refresh
 	void refresh();
 
