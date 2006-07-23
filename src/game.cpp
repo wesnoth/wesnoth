@@ -17,6 +17,7 @@
 
 #include "about.hpp"
 #include "config.hpp"
+#include "construct_dialog.hpp"
 #include "cursor.hpp"
 #include "dialogs.hpp"
 #include "display.hpp"
@@ -1161,14 +1162,13 @@ bool game_controller::play_multiplayer()
 	std::string login = preferences::login();
 
 	int res;
-	do {
-		res = gui::show_dialog2(disp(), NULL, _("Multiplayer"), "",
-					   gui::OK_CANCEL, &host_or_join, NULL,
-					   _("Login: "), &login);
-		if(login.size() > 18) {
-			gui::show_error_message(disp(), _("The login name you chose is too long, please use a login with less than 18 characters"));
-		}
-	}while(login.size() > 18) ;
+	{
+		gui::dialog d(disp(), _("Multiplayer"), "", gui::OK_CANCEL);
+		d.set_menu(host_or_join);
+		d.set_textbox(_("Login: "), login, 18, font::relative_size(250));
+		res = d.show();
+		login = d.textbox_text();
+	}
 	if (res < 0)
 		return false;
 

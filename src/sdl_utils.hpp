@@ -35,6 +35,10 @@
 #define SDL_BUTTON_WHEELDOWN 5
 #endif
 
+namespace {
+const SDL_Rect empty_rect = { 0, 0, 0, 0 };
+}
+
 SDLKey sdl_keysym_from_name(std::string const &keyname);
 
 bool point_in_rect(int x, int y, const SDL_Rect& rect);

@@ -71,6 +71,8 @@ const size_t dialog::bottom_padding = font::relative_size(10);
 
 namespace {
 
+std::vector<std::string> empty_string_vector;
+
 struct help_handler : public hotkey::command_executor
 {
 	help_handler(display& disp, const std::string& topic) : disp_(disp), topic_(topic)
@@ -213,7 +215,13 @@ void dialog::set_textbox(const std::string& text_widget_label,
 	text_widget_->set_wrap(!editable_textbox);
 }
 
-menu *dialog::get_menu()
+void dialog::set_menu(const std::vector<std::string> &menu_items)
+{
+	set_menu(new gui::menu(disp_.video(), menu_items, (type_==MESSAGE), -1,
+		dialog::max_menu_width, NULL, &menu::default_style, false));
+}
+
+menu& dialog::get_menu() const
 {
 	if(menu_ == NULL)
 	{
@@ -221,12 +229,18 @@ menu *dialog::get_menu()
 			empty_menu = new gui::menu(disp_.video(),empty_string_vector,false,-1,-1,NULL,&menu::simple_style);
 			empty_menu->leave();
 		}
-		menu_ = empty_menu;
+		menu_ = empty_menu; //no menu, so fake it
 	}
-	return menu_;
+	return *menu_;
 }
 
 int dialog::show(int xloc, int yloc)
+{
+	dimension_measurements dim = layout(xloc, yloc);
+	return show(dim);
+}
+
+int dialog::show(const dimension_measurements &dim)
 {
 	if(disp_.update_locked())
 		return CLOSE_DIALOG;
@@ -240,12 +254,6 @@ int dialog::show(int xloc, int yloc)
 
 	help_handler helper(disp_,help_button_.topic());
 	hotkey::basic_handler help_dispatcher(&disp_,&helper);
-
-	//create an empty menu, if none exists
-	get_menu();
-
-	//layout
-	dimension_measurements dim = layout(xloc, yloc);
 
 	//draw
 	draw_frame(dim);
@@ -319,7 +327,7 @@ void dialog::update_widget_positions(const dimension_measurements &dim)
 			text_widget_->caption()->set_location(dim.caption_x, dim.caption_y);
 		}
 	}
-	if(get_menu()->height() > 0) {
+	if(get_menu().height() > 0) {
 		menu_->join();
 		menu_->set_numeric_keypress_selection(text_widget_ == NULL);
 		menu_->set_width( dim.menu_width );
@@ -374,7 +382,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc) const
 		text_widget_height = dim.textbox.h + message_font_size;
 	}
 
-	const bool use_menu = (menu_->height() > 0);
+	const bool use_menu = (get_menu().height() > 0);
 	if(!message_.empty()) {
 		dim.message = font::draw_text(NULL, clipRect, message_font_size,
 		                            font::NORMAL_COLOUR, message_, 0, 0);
@@ -606,7 +614,7 @@ int dialog::process(dialog_process_info &info)
 	const bool new_left_button = (mouse_flags&SDL_BUTTON_LMASK) != 0;
 	const bool new_key_down = info.key[SDLK_SPACE] || info.key[SDLK_RETURN] ||
 							  info.key[SDLK_ESCAPE];
-	const bool use_menu = (get_menu()->height() > 0);
+	const bool use_menu = (get_menu().height() > 0);
 
 	if((!info.key_down && info.key[SDLK_RETURN] || menu_->double_clicked()) &&
 	   (type_ == YES_NO || type_ == OK_CANCEL || type_ == OK_ONLY || type_ == CLOSE_ONLY)) {
@@ -690,8 +698,8 @@ int dialog::process(dialog_process_info &info)
 
 int dialog_button::action(dialog_process_info &info) {
 	if(handler_ != NULL) {
-		menu &menu = *(parent_->get_menu());
-		dialog_button_action::RESULT res = handler_->button_pressed(menu.selection());
+		menu &menu_ref = parent_->get_menu();
+		dialog_button_action::RESULT res = handler_->button_pressed(menu_ref.selection());
 
 		if(res == DELETE_ITEM || res == CLOSE_DIALOG) {
 			return res;
@@ -711,9 +719,9 @@ void dialog::action(dialog_process_info& info)
 {
 	//default way of handling a "delete item" request
 	if(result() == DELETE_ITEM) {
-		menu &m = *(get_menu());
-		m.erase_item(m.selection());
-		if(m.nitems() == 0) {
+		menu &menu_ref = get_menu();
+		menu_ref.erase_item(menu_ref.selection());
+		if(menu_ref.nitems() == 0) {
 			set_result(CLOSE_DIALOG);
 		} else {
 			set_result(CONTINUE_DIALOG);
@@ -732,10 +740,10 @@ int standard_dialog_button::action(dialog_process_info &/*info*/) {
 	//button pressed, otherwise return the index of the menu
 	//item selected if the last button is not pressed, and
 	//cancel (-1) otherwise
-	if(dialog()->get_menu()->height() <= 0) {
+	if(dialog()->get_menu().height() <= 0) {
 		return simple_result_;
 	} else if((simple_result_ == 0 && is_last_) || !is_last_) {
-		return (dialog()->get_menu()->selection());
+		return (dialog()->get_menu().selection());
 	}
 	return CLOSE_DIALOG;
 }

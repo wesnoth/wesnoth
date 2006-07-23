@@ -336,7 +336,7 @@ int show_dialog(display& screen, surface image,
 		d.set_image(image, caption);
 	}
 	if(menu_items) {
-		d.set_menu( new gui::menu(disp,*menu_items,type == MESSAGE,-1,dialog::max_menu_width,sorter,menu_style,false));;
+		d.set_menu( new gui::menu(disp,*menu_items,type == MESSAGE,-1,dialog::max_menu_width,sorter,menu_style,false));
 	}
 	if(preview_panes) {
 		for(int i=0; i < preview_panes->size(); ++i) {

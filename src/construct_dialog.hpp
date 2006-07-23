@@ -23,12 +23,6 @@
 #include "key.hpp"
 #include "sdl_utils.hpp"
 
-namespace {
-static std::vector<std::string> empty_string_vector;
-SDL_Rect empty_rect = { 0, 0, 0, 0 };
-
-}
-
 namespace gui {
 
 struct dialog_process_info
@@ -128,7 +122,19 @@ private:
 class dialog {
 public:
 	enum BUTTON_LOCATION { BUTTON_STANDARD, BUTTON_EXTRA, BUTTON_CHECKBOX, BUTTON_CHECKBOX_LEFT };
-
+	struct dimension_measurements {
+		dimension_measurements() : x(-1), y(-1),
+			frame(empty_rect), message(empty_rect), textbox(empty_rect)
+		{}
+		int x, y;
+		SDL_Rect frame, message, textbox;
+		unsigned int menu_width;
+		std::map<preview_pane *const, SDL_Rect > panes;
+		int label_x, label_y;
+		int menu_x, menu_y;
+		int image_x, image_y, caption_x, caption_y;
+		std::map<dialog_button *const, std::pair<int,int> > buttons;
+	};
 private:
 	typedef std::vector<preview_pane *>::iterator pp_iterator;
 	typedef std::vector<preview_pane *>::const_iterator pp_const_iterator;
@@ -164,7 +170,9 @@ public:
 	void set_image(dialog_image *const img) { delete image_; image_ = img; }
 	void set_image(surface surf, const std::string &caption="");
 	void set_menu(menu *const m) { if(menu_ != empty_menu) delete menu_; menu_ = m; }
+	void set_menu(const std::vector<std::string> & menu_items);
 	//add_pane - preview panes are not currently memory managed (for backwards compat)
+
 	void add_pane(preview_pane *const pp) { preview_panes_.push_back(pp); }
 	void set_textbox(dialog_textbox *const box) {
 		delete text_widget_;
@@ -177,13 +185,18 @@ public:
 	void add_button(dialog_button *const btn, BUTTON_LOCATION loc);
 	void add_button(dialog_button_info btn_info, BUTTON_LOCATION loc=BUTTON_EXTRA);
 
+	//Specific preparations
+	//layout - determines dialog measurements based on all components
+	dimension_measurements layout(int xloc=-1, int yloc=-1) const;
+
 	//Launching the dialog
 	//show - the return value of this method should be the same as result()
 	int show(int xloc=-1, int yloc=-1);
+	int show(const dimension_measurements &dim);
 
 	//Results
 	int result() const { return result_; }
-	menu *get_menu(); //creates an empty menu if one doesn't exist
+	menu &get_menu() const;
 	bool done() const { return (result_ != CONTINUE_DIALOG); }
 	const std::string textbox_text() const { return text_widget_->text();}
 	const bool option_checked(unsigned int option_index=0);
@@ -203,22 +216,8 @@ protected:
 	void refresh();
 
 private:
-	struct dimension_measurements {
-		dimension_measurements() : x(-1), y(-1),
-			frame(empty_rect), message(empty_rect), textbox(empty_rect)
-		{}
-		int x, y;
-		SDL_Rect frame, message, textbox;
-		unsigned int menu_width;
-		std::map<preview_pane *const, SDL_Rect > panes;
-		int label_x, label_y;
-		int menu_x, menu_y;
-		int image_x, image_y, caption_x, caption_y;
-		std::map<dialog_button *const, std::pair<int,int> > buttons;
-	};
-
-	//layout - prepare components for display and draw the frame
-	dimension_measurements layout(int xloc, int yloc) const;
+//	enum INIT_STATE { STATE_UNINIT, STATE_CONTEXT_STARTED, STATE_FRAME_DRAWN, STATE_WIDGETS_JOINED, STATE_READY };
+//	void start_context();
 	void draw_frame(const dimension_measurements &dim);
 	void update_widget_positions(const dimension_measurements &dim);
 	void draw_contents(const dimension_measurements &dim);
@@ -242,7 +241,7 @@ private:
 	const std::string title_, style_;
 	std::string message_;
 	const DIALOG_TYPE type_;
-	gui::menu *menu_;
+	mutable gui::menu *menu_;
 	std::vector<preview_pane*> preview_panes_;
 	std::vector< std::pair<dialog_button*,BUTTON_LOCATION> > button_pool_;
 	std::vector<dialog_button*> standard_buttons_;
@@ -252,6 +251,7 @@ private:
 	dialog_action *action_;
 	surface_restorer *bg_restore_;
 	int result_;
+//	INIT_STATE state_;
 };
 
 } //end namespace gui

@@ -71,8 +71,6 @@ namespace {
 
 	const size_t SideBarGameStatus_x = 16;
 	const size_t SideBarGameStatus_y = 220;
-
-	const SDL_Rect empty_rect = {0,0,0,0};
 }
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,

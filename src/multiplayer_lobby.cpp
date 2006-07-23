@@ -26,6 +26,7 @@
 #include "sound.hpp"
 
 namespace {
+std::vector<std::string> empty_string_vector;
 
 std::string games_menu_heading()
 {

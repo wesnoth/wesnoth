@@ -29,7 +29,6 @@
 #define LOG_DP LOG_STREAM(info, display)
 
 namespace {
-	const SDL_Rect empty_rect = {0,0,0,0};
 	const int XDim = 1024;
 	const int YDim = 768;
 

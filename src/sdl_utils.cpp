@@ -1122,10 +1122,6 @@ void pixel_data::read(const config& cfg) {
 		b = atoi(blue.c_str());
 }
 
-namespace {
-	const SDL_Rect empty_rect = {0,0,0,0};
-}
-
 surface_restorer::surface_restorer() : target_(NULL), rect_(empty_rect), surface_(NULL)
 {
 }
