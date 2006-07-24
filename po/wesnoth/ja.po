@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-07-01 14:03+0200\n"
-"PO-Revision-Date: 2006-07-12 05:17+0900\n"
+"PO-Revision-Date: 2006-07-24 09:22+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -73,12 +73,13 @@ msgid "cures"
 msgstr "治癒"
 
 #: data/abilities.cfg:44
-#, fuzzy
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
-msgstr "治療:\n"
+msgstr ""
+"治癒:\n"
+"治癒者は、毒を受けたユニットを治癒することができる。ただし、毒から治療されたそのターン内には、さらなる回復は受けられない。"
 
 #: data/abilities.cfg:57
 msgid "regenerates"
@@ -99,14 +100,13 @@ msgid "steadfast"
 msgstr "装甲"
 
 #: data/abilities.cfg:76
-#, fuzzy
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
 "不動:\n"
-"防御時、このユニットの抵抗力は最大で50%まで倍になります。"
+"防御時、このユニットの抵抗力は最大で50%まで倍増します。弱点には影響がありません。"
 
 #: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
 #: data/abilities.cfg:183 data/abilities.cfg:239
@@ -138,15 +138,13 @@ msgid "skirmisher"
 msgstr "散兵"
 
 #: data/abilities.cfg:306
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
 "散兵:\n"
-"このユニットは敵のそばを素早く移動することができ、 すべての敵の支配ゾーンを無"
-"視できます。"
+"このユニットは敵のそばを素早く移動するという能力を持ち、すべての敵の支配ゾーンを無視できます。"
 
 #: data/abilities.cfg:317
 msgid "illuminates"
@@ -220,12 +218,10 @@ msgstr ""
 "て、 夜には敵ユニットはこのユニットが見えないし攻撃できません。"
 
 #: data/abilities.cfg:378 data/abilities.cfg:383
-#, fuzzy
 msgid "submerge"
-msgstr "突き刺し"
+msgstr "潜水"
 
 #: data/abilities.cfg:382 data/abilities.cfg:387
-#, fuzzy
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -234,12 +230,10 @@ msgid ""
 "for any turn immediately after this unit has attacked, or if there are enemy "
 "units next to this unit."
 msgstr ""
-"伏兵:\n"
-"このユニットは森に隠れることができ、 敵に見つからなくなります。\n"
+"潜水:\n"
+"このユニットは水中深くに隠れることができ、 敵に見つからなくなります。\n"
 "\n"
-"このユニットが森にいるときは、 このユニットが攻撃した直後のターンか、 敵がこ"
-"のユニットの隣にいる場合を除いて、 敵ユニットはこのユニットが見えないし攻撃で"
-"きません。"
+"このユニットが深い水中にいるときは、このユニットが攻撃した直後のターンか、敵がこのユニットの隣にいる場合を除いて、敵のユニットはこのユニットを見たり攻撃したりできません。"
 
 #: data/abilities.cfg:405
 msgid "berserk"
@@ -584,9 +578,8 @@ msgid "Contributors"
 msgstr "貢献者"
 
 #: data/about.cfg:530
-#, fuzzy
 msgid "Bots"
-msgstr "+ボット"
+msgstr "ボット"
 
 #: data/amla.cfg:9
 msgid ", MAX XP +25%"
@@ -881,9 +874,8 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:34
 #: data/units/Orcish_Ruler.cfg:33 data/units/Orcish_Sovereign.cfg:34
 #: data/units/Orcish_Warlord.cfg:29 data/units/Orcish_Warrior.cfg:28
-#, fuzzy
 msgid "greatsword"
-msgstr "剣"
+msgstr "大剣"
 
 #: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
@@ -923,9 +915,8 @@ msgstr "かぎ爪"
 #: data/campaigns/The_Rise_Of_Wesnoth.cfg:25
 #: data/campaigns/The_South_Guard.cfg:29 data/campaigns/Two_Brothers.cfg:27
 #: data/campaigns/Under_the_Burning_Suns.cfg:32
-#, fuzzy
 msgid "Current Maintainer"
-msgstr "現在の目標:"
+msgstr "現在の管理者"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:129
@@ -952,9 +943,8 @@ msgstr ""
 #: data/units/Human_Loyalist_Duelist.cfg:76
 #: data/units/Human_Loyalist_Fencer.cfg:81
 #: data/units/Human_Loyalist_Master_at_Arms.cfg:28
-#, fuzzy
 msgid "sabre"
-msgstr "突き刺し"
+msgstr "サーベル"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:235
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:282
@@ -1593,9 +1583,8 @@ msgid "mace"
 msgstr "メイス"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:3
-#, fuzzy
 msgid "Wose Sapling"
-msgstr "回復"
+msgstr "ウーズの若木"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:31
 #, fuzzy
@@ -1659,9 +1648,8 @@ msgstr "接触"
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:43
 #: data/units/Undead_Necro_Ancient_Lich.cfg:86
 #: data/units/Undead_Necro_Lich.cfg:85
-#, fuzzy
 msgid "chill tempest"
-msgstr "冷気の嵐"
+msgstr "冷気の大嵐"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:167
@@ -1882,14 +1870,13 @@ msgid "Hard"
 msgstr "難しい"
 
 #: data/english.cfg:9
-#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
-"秩序ユニットは 戦いにおいて、 日中強く、 夜間に弱くなる。\n"
+"秩序ユニットは戦いにおいて、日中強く、夜間に弱くなる。\n"
 "\n"
 "日中： +25% ダメージ\n"
 "夜間： -25% ダメージ"
@@ -1902,14 +1889,13 @@ msgstr ""
 "中立ユニットは、 昼夜の影響を受けず、 どちらの条件下でも 同じ強さで戦う。"
 
 #: data/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
 "Day: -25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
-"混沌ユニットは 戦いにおいて、 夜間強く、 日中に弱くなる。\n"
+"混沌ユニットは 戦いにおいて、夜間強く、日中に弱くなる。\n"
 "\n"
 "日中： -25% ダメージ\n"
 "夜間： +25% ダメージ"
@@ -2676,16 +2662,15 @@ msgid "Time of Day"
 msgstr "時刻"
 
 #: data/help.cfg:192
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
 " Chaotic units get +25% damage at night, and -25% in daytime.\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
-"時刻は、次のように特定のユニットのダメージに影響します。\n"
-" 秩序ユニットは昼間はダメージ+25%、夜間はダメージ-25%。\n"
-" 混沌ユニットは夜間はダメージ+25%、昼間はダメージ-25%。\n"
+"時刻は、次のように特定のユニットのダメージに影響します：\n"
+" 秩序ユニットは昼間は+25%のダメージ、夜間は-25%のダメージを得る。\n"
+" 混沌ユニットは夜間は+25%のダメージ、昼間は-25%のダメージを得る。\n"
 " 中立ユニットは時間の影響を受けない。"
 
 #: data/help.cfg:195
@@ -3091,9 +3076,8 @@ msgid "Resilient"
 msgstr "頑強"
 
 #: data/help.cfg:291
-#, fuzzy
 msgid "Resilient units have 10% +3 more HP than usual."
-msgstr "頑強なユニットは通常よりHPが7多い。"
+msgstr "頑強なユニットは通常より 10% + 3 だけHPが多い。"
 
 #: data/help.cfg:293
 msgid ""
@@ -3117,13 +3101,10 @@ msgid "Strong"
 msgstr "強力"
 
 #: data/help.cfg:299
-#, fuzzy
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
-msgstr ""
-"強力なユニットは、格闘時に1ポイント余分にダメージを与え、通常より2多いHPを持"
-"つ。"
+msgstr "強力なユニットは、格闘時に各命中毎に 1多いダメージを与え、 1 多いHPを持つ。"
 
 #: data/help.cfg:301
 msgid ""
@@ -3175,7 +3156,6 @@ msgstr ""
 "は、とても知恵がないといえる。"
 
 #: data/help.cfg:314
-#, fuzzy
 msgid "trait^Undead"
 msgstr "アンデッド"
 
@@ -3204,10 +3184,9 @@ msgid "Dextrous"
 msgstr "器用"
 
 #: data/help.cfg:323
-#, fuzzy
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
-msgstr "器用なユニットは弓を用いた攻撃で命中する度に +1のダメージを与える。"
+msgstr "器用なユニットは投射戦での各命中毎に 1多いダメージを与える。"
 
 #: data/help.cfg:325
 msgid ""
@@ -3518,7 +3497,7 @@ msgstr ""
 
 #: data/help.cfg:467 data/terrain.cfg:343
 msgid "Rockbound Cave"
-msgstr ""
+msgstr "岩に囲まれた洞窟"
 
 #: data/help.cfg:472
 msgid ""
@@ -3534,9 +3513,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:477
-#, fuzzy
 msgid "Illuminated Cave"
-msgstr "照明"
+msgstr "照らされた洞窟"
 
 #: data/help.cfg:482
 msgid ""
@@ -3609,19 +3587,15 @@ msgstr ""
 
 #: data/help.cfg:516 data/terrain.cfg:429
 msgid "Chasm"
-msgstr ""
+msgstr "深い割目"
 
 #: data/help.cfg:518
-#, fuzzy
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
 "is concerned, only units capable of flying over chasms can cross this "
 "terrain."
-msgstr ""
-"渓谷は未知の深さへ導く地面の割れ目です。通過するのに何日もかかる垂直に切り"
-"立った壁になっています。ゲームプレイに関して言えば、渓谷を飛び越えられる能力"
-"を持ったユニットのみがこの地形を通過できます。"
+msgstr "深い割目は未知の深さへ導く地面の割れ目です。通過するのに何日もかかる垂直に切り立った壁になっています。ゲームプレイに関して言えば、深い割目を飛び越えられる能力を持ったユニットのみがこの地形を通過できます。"
 
 #: data/help.cfg:523 data/terrain.cfg:436
 msgid "Lava"
@@ -3699,9 +3673,8 @@ msgstr ""
 "す。"
 
 #: data/help.cfg:553
-#, fuzzy
 msgid "General commands"
-msgstr "将軍"
+msgstr "一般的なコマンド"
 
 #: data/help.cfg:555
 msgid ""
@@ -4310,9 +4283,8 @@ msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "引き分け！ 最終スコアは $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:5
-#, fuzzy
 msgid "3p - Island of the Horatii"
-msgstr "4P - 丘の王"
+msgstr "3P - Horatiiの島"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
 #, fuzzy
@@ -4653,9 +4625,8 @@ msgid "Underground"
 msgstr "地下"
 
 #: data/schedules.cfg:98 data/schedules.cfg:109
-#, fuzzy
 msgid "Deep Underground"
-msgstr "地下"
+msgstr "深い地下"
 
 #: data/special-notes.cfg:2
 msgid ""
@@ -4843,9 +4814,8 @@ msgid "Brown"
 msgstr "茶"
 
 #: data/team_colors.cfg:52
-#, fuzzy
 msgid "Teal"
-msgstr "チーム"
+msgstr "青緑"
 
 #: data/terrain.cfg:11 src/multiplayer_create.cpp:67
 #: src/multiplayer_lobby.cpp:361 src/multiplayer_lobby.cpp:367
@@ -4885,9 +4855,8 @@ msgid "Cave Lit"
 msgstr "照らされた洞窟"
 
 #: data/terrain.cfg:414
-#, fuzzy
 msgid "Impassable Mountains"
-msgstr "砂の山"
+msgstr "通れない山"
 
 #: data/terrain.cfg:445
 msgid "Great Tree"
@@ -5016,28 +4985,19 @@ msgstr ""
 "る。"
 
 #: data/tips.cfg:5
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
 "be cured by moving them to a village, or placing them next to a unit with "
 "the 'cures' ability."
-msgstr ""
-"毒を受けているユニットは 毎ターン８ヒットポイント失うが、 毒で死ぬことはな"
-"い。 つまり毒で１ヒットポイント未満に 下がることはない。 毒を受けたユニット"
-"は、 村の上か、 「治癒」能力をもつ ユニットの隣に置くことで、 治癒することが"
-"できる。"
+msgstr "毒を受けているユニットは 毎ターン 8ヒットポイント失うが、毒で死ぬことはない。つまり、毒で 1ヒットポイント未満に下がることはない。毒を受けたユニットは、村か、「治癒」能力をもつユニットの隣に置くことで、治癒することができる。"
 
 #: data/tips.cfg:6
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
-msgstr ""
-"ゲームメニューの「召還」を 選択することで、 前のシナリオからのユニットを 使う"
-"ことができる。 同じユニットを何度も何度も召還することで、 強力で経験を積んだ"
-"軍隊を 築き上げることが可能となる。"
+msgstr "ゲームメニューの「召還」を選択することで、前のシナリオからのユニットを使うことができる。同じユニットを何度も何度も召還することで、強力で経験を積んだ軍隊を築き上げることが可能となる。"
 
 #: data/tips.cfg:7
 msgid ""
@@ -5070,13 +5030,10 @@ msgstr ""
 "村に駐留したユニットは、 そのターンの開始時に、 8ヒットポイント回復する。"
 
 #: data/tips.cfg:10
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
-msgstr ""
-"ターン内に移動や攻撃をしない ユニットは、 自分の次のターンの開始時に 2ヒット"
-"ポイント回復する。"
+msgstr "自分のターンの間に移動や攻撃をしないと、ユニットは休むことになる。そのユニットは、次のターンの開始時に 2ヒットポイント回復する。"
 
 #: data/tips.cfg:11
 msgid ""
@@ -5130,10 +5087,9 @@ msgstr ""
 "覚悟のユニットを送るのも 良い考えかもしれない。"
 
 #: data/tips.cfg:17
-#, fuzzy
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
-msgstr "退却や再編成を怖れてはいけない。 それは、 しばしば勝利への鍵となる。"
+msgstr "退却や再編成することを怖れてはいけない。それは、しばしば勝利への鍵となる。"
 
 #: data/tips.cfg:18
 #, fuzzy
@@ -5160,13 +5116,10 @@ msgstr ""
 "そこから雇うことができるように してくれるかもしれない。"
 
 #: data/tips.cfg:20
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
-msgstr ""
-"スケルトンは、突き刺しや刃物での攻撃に耐性があるが、衝突、炎、神聖な攻撃には"
-"弱い。"
+msgstr "スケルトンは、突き刺しや刃物での攻撃に耐性があるが、衝突、炎、神聖な攻撃には弱い。"
 
 #: data/tips.cfg:21
 msgid ""
@@ -5637,10 +5590,7 @@ msgid ""
 "foes.\n"
 "\n"
 "Special Notes:"
-msgstr ""
-"飛行ドレークは真の大空の王です。武器としてその推進力と火炎のブレスを使用し"
-"て、多くの者に死をもたらしました。彼らは軽快に急降下して敵を襲うことができ、"
-"誰にも止められないうちに遠くに離れることができます。"
+msgstr "飛行ドレークは真の大空の王です。武器としてその推進力と火炎のブレスを使用して、多くの者に死をもたらしました。彼らは軽快に急降下して敵を襲うことができ、誰にも止められないうちに遠くに離れることができます。"
 
 #: data/units/Drake_Slasher.cfg:3
 msgid "Drake Slasher"
@@ -5707,16 +5657,15 @@ msgid "Dwarvish Berserker"
 msgstr "ドワーフの熟練狂戦士"
 
 #: data/units/Dwarvish_Berserker.cfg:19
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
 "all defense in exchange for massive damage against their enemies.\n"
 "\n"
 "Special Notes:"
 msgstr ""
-"ドワーフは古代の種族であり、強力な戦士です。熟練狂戦士は完全に防御を忘れるこ"
-"とで、強大なダメージを敵に与えることができます。一度戦闘が開始したら、熟練狂"
-"戦士は貪欲に攻撃し、敵か自分のどちらかが斃れて死ぬまで攻撃を続けます。"
+"ドワーフは、強力な戦士である古代の種族です。彼等の狂戦士は、敵に対して強大なダメージを与えることと引き換えに、全ての防御を忘れてしまいます。\n"
+"\n"
+"特記事項:"
 
 #: data/units/Dwarvish_Berserker.cfg:37 data/units/Dwarvish_Ulfserker.cfg:37
 msgid "berserker frenzy"
@@ -9813,9 +9762,8 @@ msgid "Connect to Server"
 msgstr "サーバへの接続"
 
 #: src/game.cpp:857
-#, fuzzy
 msgid "You will now connect to a server to download add-ons."
-msgstr "キャンペーンをダウンロードするために キャンペーンサーバに接続します。"
+msgstr "アドオンをダウンロードするために、サーバに接続します。"
 
 #: src/game.cpp:858
 msgid "Server: "
@@ -9827,7 +9775,7 @@ msgstr "ホストに接続できませんでした。"
 
 #: src/game.cpp:879
 msgid "Asking for list of add-ons"
-msgstr ""
+msgstr "アドオンの一覧を要求中"
 
 #: src/game.cpp:892
 msgid "Error communicating with the server."
@@ -9969,7 +9917,7 @@ msgstr "ログイン: "
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
-msgstr ""
+msgstr "あなたが選んだログイン名は長すぎます。 18文字未満のログイン名を使用して下さい。"
 
 #: src/game.cpp:1203 src/playcampaign.cpp:107 src/playcampaign.cpp:321
 msgid "The game could not be loaded: "
@@ -10104,41 +10052,32 @@ msgid "or"
 msgstr "あるいは"
 
 #: src/help.cpp:1395
-#, fuzzy
 msgid "This terrain acts as $terrains for movement purposes."
-msgstr "この地形は、移動や防御において $terrains として作用します。"
+msgstr "この地形は、移動目的では $terrains として作用します。"
 
 #: src/help.cpp:1397 src/help.cpp:1421
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "最良の修正をもつ地形が、 自動的に選択されます。"
 
 #: src/help.cpp:1399 src/help.cpp:1423
-#, fuzzy
 msgid "The terrain with the worst modifier is chosen automatically."
-msgstr "最良の修正をもつ地形が、 自動的に選択されます。"
+msgstr "最悪の修正をもつ地形が、自動的に選択されます。"
 
 #: src/help.cpp:1419
-#, fuzzy
 msgid "This terrain acts as $terrains for defense purposes."
-msgstr "この地形は、移動や防御において $terrains として作用します。"
+msgstr "この地形は、防御目的では $terrains として作用します。"
 
 #: src/help.cpp:1427
-#, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
-msgstr ""
-"この地形は主塔のように作用します。 すなわち、リーダーがこの地形をもつ地点にい"
-"れば、 ユニットを雇うことができます。"
+msgstr "この地形は主塔の役割をもつ。すなわち、リーダーがこの地形をもつ地点にいると、ユニットを雇うことができます。"
 
 #: src/help.cpp:1429
-#, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
-msgstr ""
-"このは城の役割をもつ。 すなわち この地形の場所において ユニットを雇うことがで"
-"きる。"
+msgstr "この地形は城の役割をもつ。すなわち、この地形をもつ地点でユニットを雇うことができます。"
 
 #: src/help.cpp:1431
 msgid "This terrain gives healing."
@@ -10373,13 +10312,12 @@ msgid "You are separated from your soldiers and may not recall them"
 msgstr "あなたは 戦士達から離れてしまい、 彼等を召還することはできない。"
 
 #: src/menu_events.cpp:680
-#, fuzzy
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "召還可能な部隊がありません\n"
-"(経験の積んだ生存者が前のシナリオにいなければなりません)"
+"(以前のシナリオからの労連な生存者がいなければなりません)"
 
 #: src/menu_events.cpp:687
 msgid "Level"
@@ -10507,14 +10445,12 @@ msgid "Expected Battle Result (hp)"
 msgstr ""
 
 #: src/mouse_events.cpp:301
-#, fuzzy
 msgid " resistance vs "
-msgstr "抵抗力"
+msgstr "抵抗力:"
 
 #: src/mouse_events.cpp:302
-#, fuzzy
 msgid " vulnerability vs "
-msgstr "攻撃側の以下の攻撃に対する受けやすさ："
+msgstr "弱点:"
 
 #: src/mouse_events.cpp:312
 msgid "Slowed"
@@ -10606,7 +10542,7 @@ msgstr "マルチプレイヤー側は見つからない"
 #: src/multiplayer_connect.cpp:64 src/multiplayer_connect.cpp:273
 #: src/multiplayer_connect.cpp:365
 msgid "Normal"
-msgstr ""
+msgstr "ノーマル"
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
 #: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2499
@@ -10709,7 +10645,6 @@ msgid "Cannot find era $era"
 msgstr "$era の時代が見つかりません"
 
 #: src/multiplayer_connect.cpp:1187
-#, fuzzy
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -10727,7 +10662,7 @@ msgstr "ゲームの作成"
 
 #: src/multiplayer_create.cpp:48
 msgid "Time limit"
-msgstr ""
+msgstr "制限時間"
 
 #: src/multiplayer_create.cpp:61
 msgid "Name of game:"
@@ -10767,9 +10702,8 @@ msgid "Settings..."
 msgstr "設定..."
 
 #: src/multiplayer_create.cpp:106
-#, fuzzy
 msgid "The maximum number of turns the game can last"
-msgstr "ゲームが進むことのできる最大ターン数"
+msgstr "ゲームが続けられる最大ターン数"
 
 #: src/multiplayer_create.cpp:109
 msgid "Enables user time limit"
@@ -10870,9 +10804,8 @@ msgid "Reservoir: "
 msgstr "サーバ: "
 
 #: src/multiplayer_create.cpp:327
-#, fuzzy
 msgid "Action Bonus: "
-msgstr "行動"
+msgstr "行動ボーナス: "
 
 #: src/multiplayer_create.cpp:334
 msgid "Village Gold: "
@@ -11131,11 +11064,10 @@ msgid "invisible: "
 msgstr "姿が見えない: "
 
 #: src/reports.cpp:135
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
-msgstr "このユニットは石になってしまいました。移動や攻撃はできません。"
+msgstr "このユニットは遅くなってしまいました。攻撃時に通常の半分のダメージしか与えられません。"
 
 #: src/reports.cpp:135
 msgid "slowed: "
