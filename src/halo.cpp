@@ -65,7 +65,6 @@ int halo_id = 1;
 
 bool hide_halo = false;
 
-static const SDL_Rect empty_rect = {0,0,0,0};
 
 effect::effect(int xpos, int ypos, const std::string& img, ORIENTATION orientation, int lifetime)
 : images_(img), orientation_(orientation), origx_(xpos), origy_(ypos), x_(xpos), y_(ypos),

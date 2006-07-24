@@ -1091,7 +1091,6 @@ const std::string& get_floating_label_text(int handle)
 
 SDL_Rect get_floating_label_rect(int handle)
 {
-	static const SDL_Rect empty_rect = {0,0,0,0};
 	const label_map::iterator i = labels.find(handle);
 	if(i != labels.end()) {
 		const surface surf = i->second.create_surface();

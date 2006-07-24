@@ -45,7 +45,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 		selected_bg_terrain_ = terrains_[0];
 	}
 	update_report();
-	adjust_size();
+	//adjust_size();
 }
 
 void terrain_palette::adjust_size() {

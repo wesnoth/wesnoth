@@ -952,7 +952,6 @@ SDL_Rect menu::get_item_rect(int item) const
 
 SDL_Rect menu::get_item_rect_internal(size_t item) const
 {
-	const SDL_Rect empty_rect = {0,0,0,0};
 	unsigned int first_item_on_screen = get_position();
 	if (item < first_item_on_screen ||
 	    size_t(item) >= first_item_on_screen + max_items_onscreen()) {
