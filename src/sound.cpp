@@ -426,6 +426,7 @@ void write_music_play_list(config& snapshot)
 
 void play_sound(const std::string& files)
 {
+	if(files.empty()) return;
 	if(preferences::sound_on() && mix_ok) {
 		std::string file = pick_one(files);
 		// the insertion will fail if there is already an element in the cache
