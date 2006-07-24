@@ -339,7 +339,7 @@ int show_dialog(display& screen, surface image,
 		d.set_menu( new gui::menu(disp,*menu_items,type == MESSAGE,-1,dialog::max_menu_width,sorter,menu_style,false));
 	}
 	if(preview_panes) {
-		for(int i=0; i < preview_panes->size(); ++i) {
+		for(unsigned int i=0; i < preview_panes->size(); ++i) {
 			d.add_pane((*preview_panes)[i]);
 		}
 	}
@@ -350,7 +350,7 @@ int show_dialog(display& screen, surface image,
 		d.set_action(action);
 	}
 	if(options) {
-		for(int i=0; i < options->size(); ++i) {
+		for(unsigned int i=0; i < options->size(); ++i) {
 			gui::dialog_button *btn = new gui::dialog_button(disp,(*options)[i].label,gui::button::TYPE_CHECK);
 			gui::dialog::BUTTON_LOCATION loc = ((*options)[i].align == LEFT_ALIGN)? gui::dialog::BUTTON_CHECKBOX_LEFT : gui::dialog::BUTTON_CHECKBOX;
 			btn->set_check((*options)[i].checked);
@@ -358,7 +358,7 @@ int show_dialog(display& screen, surface image,
 		}
 	}
 	if(action_buttons) {
-		for(int i=0; i < action_buttons->size(); ++i) {
+		for(unsigned int i=0; i < action_buttons->size(); ++i) {
 			d.add_button((*action_buttons)[i]);
 		}
 	}
@@ -367,7 +367,7 @@ int show_dialog(display& screen, surface image,
 
 	//send back results
 	if(options) {
-		for(int i=0; i < options->size(); i++)
+		for(unsigned int i=0; i < options->size(); ++i)
 		{
 			(*options)[i].checked = d.option_checked(i);
 		}
