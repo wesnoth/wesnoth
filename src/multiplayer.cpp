@@ -22,6 +22,7 @@
 #include "multiplayer_wait.hpp"
 #include "multiplayer_lobby.hpp"
 #include "multiplayer_create.hpp"
+#include "playmp_controller.hpp"
 #include "network.hpp"
 #include "playcampaign.hpp"
 #include "preferences.hpp"
@@ -425,7 +426,7 @@ void start_server(display& disp, const config& game_config, game_data& data,
 	const set_random_generator generator_setter(&recorder);
 	mp::chat chat;
 	config gamelist;
-
+	playmp_controller::set_replay_last_turn(0);
 	enter_create_mode(disp, game_config, data, chat, gamelist, default_controller, is_server);
 }
 
@@ -444,6 +445,7 @@ void start_client(display& disp, const config& game_config, game_data& data,
 		enter_lobby_mode(disp, game_config, data, chat, gamelist);
 		break;
 	case SIMPLE_SERVER:
+		playmp_controller::set_replay_last_turn(0);
 		enter_wait_mode(disp, game_config, data, chat, gamelist, false);
 		break;
 	case ABORT_SERVER:
