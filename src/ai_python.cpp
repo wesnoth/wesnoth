@@ -1358,7 +1358,17 @@ PyObject* python_ai::wrapper_move_unit(PyObject* /*self*/, PyObject* args)
 		return NULL;
 	}
 
-	PyObject* loc = wrap_location(running_instance->move_unit_partial(*from->location_,*to->location_,running_instance->possible_moves_));
+    location location;
+    try {
+        location = running_instance->move_unit_partial(
+            *from->location_, *to->location_, running_instance->possible_moves_);
+    }
+    catch(end_level_exception& e) {
+        running_instance->exception = e;
+        PyErr_SetString(PyExc_RuntimeError, "Game aborted!");
+        return NULL;
+    }
+    PyObject* loc = wrap_location(location);
 	running_instance->src_dst_.clear();
 	running_instance->dst_src_.clear();
 	running_instance->possible_moves_.clear();
@@ -1403,7 +1413,8 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
             bc.get_attacker_stats().attack_num,
             bc.get_defender_stats().attack_num);
     }
-    catch(end_level_exception&) {
+    catch(end_level_exception& e) {
+        running_instance->exception = e;
         PyErr_SetString(PyExc_RuntimeError, "Game is won!");
         return NULL;
     }
@@ -1641,7 +1652,7 @@ static PyMethodDef wesnoth_python_methods[] = {
 	PyObject* pyob = reinterpret_cast<PyObject *>(type); \
 	PyModule_AddObject(module, const_cast<char *>(n), pyob); }
 
-python_ai::python_ai(ai_interface::info& info) : ai_interface(info)
+python_ai::python_ai(ai_interface::info& info) : ai_interface(info), exception(QUIT)
 {
 	running_instance = this;
 	if ( !init_ )
@@ -1680,6 +1691,8 @@ void python_ai::play_turn()
 	std::string script = get_binary_file_location("data", "ais/" + script_name);
 	PyObject* file = PyFile_FromString((char*)script.c_str(),"rt");
 
+    PyErr_Clear();
+
     PyObject* dict = PyDict_New();
     PyDict_SetItemString(dict, "__builtins__", PyEval_GetBuiltins());
 
@@ -1692,20 +1705,26 @@ void python_ai::play_turn()
 		import_modules += "'" + *i + "ais', ";
 	}
 	import_modules += "])\n";
+    std::cout << import_modules << std::endl;
 	PyObject* pre = PyRun_String(import_modules.c_str(), Py_file_input, dict, dict);
 
     // Now execute the actual python AI.
     PyObject* ret = PyRun_File(PyFile_AsFile(file), script.c_str(), Py_file_input, dict, dict);
 
+    Py_XDECREF(pre);
+    Py_XDECREF(ret);
+    Py_DECREF(dict);
+    Py_DECREF(file);
+
     if (PyErr_Occurred()) {
         // RuntimeError is the game-won exception, no need to print it
         if (!PyErr_ExceptionMatches(PyExc_RuntimeError))
             PyErr_Print();
+        // Otherwise, re-throw the exception here, so it will get handled
+        // properly further up.
+        else
+            throw exception;
     }
-    Py_XDECREF(pre);
-    Py_XDECREF(ret);
-    Py_DECREF(dict);
-	Py_DECREF(file);
 }
 
 // Finds all python AI scripts available in the current binary path.
