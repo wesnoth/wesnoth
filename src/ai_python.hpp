@@ -2,6 +2,7 @@
 #define AI_PYTHON_HPP_INCLUDED
 
 #include "ai_interface.hpp"
+#include "menu_events.hpp"
 #include <Python.h>
 
 typedef struct {
@@ -62,6 +63,7 @@ public:
 protected:
 	static bool init_;
 	static PyObject* python_error_;
+    end_level_exception exception;
 	ai_interface::move_map src_dst_;
 	ai_interface::move_map dst_src_;
 	std::map<location,paths> possible_moves_;
