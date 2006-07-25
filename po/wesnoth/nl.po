@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-07-01 14:03+0200\n"
-"PO-Revision-Date: 2006-06-24 13:43+0200\n"
+"PO-Revision-Date: 2006-06-27 21:40+0200\n"
 "Last-Translator: Maarten Albrecht <maartenalbrecht@gmail.com>\n"
 "Language-Team: Dutch translation <maartenalbrecht@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -2917,6 +2917,7 @@ msgstr ""
 "of wordt behoed voor de effecten van een vergiftiging."
 
 #: data/help.cfg:226
+#, fuzzy
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -5536,6 +5537,7 @@ msgstr ""
 "vijanden die met één flinke klap uitgeschakeld zijn."
 
 #: data/tips.cfg:33
+#, fuzzy
 msgid ""
 "Units can gain After Maximum Level Advancements (AMLAs), which usually "
 "increase the unit's maximum hitpoints by 3. Gaining an AMLA becomes "
@@ -5543,7 +5545,7 @@ msgid ""
 "often more useful to try to advance your lower level units."
 msgstr ""
 "Eenheden die de hoogste rang hebben bereikt kunnen AMLA's (After Maximum "
-"Level Advancement) verkrijgen, waarmee in principe hun maximale aantal "
+"Level Advancement) verkrijgen, waardoor in principe hun maximale aantal "
 "hitpoints met 3 verhoogd wordt. Het behalen van de volgende AMLA wordt "
 "steeds moeilijker, waardoor het vaak verstandiger is eenheden van lagere "
 "rang te laten promoveren."
@@ -7244,7 +7246,7 @@ msgstr ""
 
 #: data/units/Human_Loyalist_Javelineer.cfg:3
 msgid "Javelineer"
-msgstr "Speerman"
+msgstr "Speerwerper"
 
 #: data/units/Human_Loyalist_Javelineer.cfg:20
 msgid ""
@@ -7258,11 +7260,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"De speerman vormt evenals de zwaardvechter de basis van het mensenleger. "
-"Deze jonge soldaten krijgen een basistraining en doen het meeste van het "
-"vechten aan het front. Omwille van de lengte van hun speer krijgen de "
-"speermannen altijd het eerste woord in een gevecht, zelfs wanneer ze "
-"verdedigen.\""
+"Speervechters dragen altijd wel een paar werpsperen bij zich om vijanden van "
+"een afstand te bestoken en zelfs te doden. Een enkeling heeft een "
+"natuurlijke aanleg voor het wapen. Speerwerpers zijn een waardevolle "
+"aanwinst voor een leger door goede vaardigheden in gevechten op zowel korte "
+"als lange afstand."
 
 #: data/units/Human_Loyalist_Lieutenant.cfg:3
 msgid "Lieutenant"
@@ -8525,7 +8527,7 @@ msgid ""
 "more hits before falling."
 msgstr ""
 "De orkse Grunt vormt de basis van de orkse strijdkrachten. Ze zijn dan wel "
-"tragen dan elfen of mensen maar ze kunnen zware slagen toebrengen en meer "
+"trager dan elfen of mensen maar ze kunnen zware slagen toebrengen en meer "
 "slagen verteren."
 
 #: data/units/Orcish_Leader.cfg:3
@@ -10699,11 +10701,12 @@ msgid "Cannot find era $era"
 msgstr "Kan tijdperk $era niet vinden"
 
 #: src/multiplayer_connect.cpp:1187
+#, fuzzy
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
 msgstr ""
-"Overwinning:\n"
+"Overwinning\n"
 "@Dood de vijandelijke leider(s)"
 
 #: src/multiplayer_connect.cpp:1223
