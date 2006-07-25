@@ -68,22 +68,22 @@ private:
 
 class dialog_textbox : public textbox {
 public:
-	dialog_textbox(label *const caption, CVideo &video, int width, const std::string& text="", bool editable=true, size_t max_size = 256, double alpha = 0.4, double alpha_focus = 0.2)
+	dialog_textbox(label *const label_widget, CVideo &video, int width, const std::string& text="", bool editable=true, size_t max_size = 256, double alpha = 0.4, double alpha_focus = 0.2)
 		: textbox(video, width, text, editable, max_size, alpha, alpha_focus, false),
-		caption_(caption)
+		label_(label_widget)
 	{}
-	~dialog_textbox() { delete caption_; }
+	~dialog_textbox() { delete label_; }
 
-	label *caption() const { return caption_; }
+	label *get_label() const { return label_; }
 
 	handler_vector handler_members() {
 		handler_vector h;
-		if(caption_) h.push_back(caption_);
+		if(label_) h.push_back(label_);
 		return h;
 	}
 private:
 
-	label *caption_;
+	label *label_;
 };
 
 class dialog_button : public button {

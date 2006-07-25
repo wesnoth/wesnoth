@@ -323,8 +323,8 @@ void dialog::update_widget_positions(const dimension_measurements &dim)
 	if(text_widget_) {
 		text_widget_->join();
 		text_widget_->set_location(dim.textbox);
-		if(text_widget_->caption()) {
-			text_widget_->caption()->set_location(dim.caption_x, dim.caption_y);
+		if(text_widget_->get_label()) {
+			text_widget_->get_label()->set_location(dim.label_x, dim.label_y);
 		}
 	}
 	if(get_menu().height() > 0) {
@@ -337,7 +337,7 @@ void dialog::update_widget_positions(const dimension_measurements &dim)
 		image_->join();
 		image_->set_location(dim.image_x, dim.image_y);
 		if(image_->caption()) {
-			image_->caption()->set_location(dim.label_x, dim.label_y);
+			image_->caption()->set_location(dim.caption_x, dim.caption_y);
 		}
 	}
 	button_iterator b;
@@ -378,7 +378,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc) const
 		dim.textbox.w = minimum<size_t>(screen.getx()/2,maximum<size_t>(area.w,text_widget_->width()));
 		dim.textbox.h = minimum<size_t>(screen.gety()/2,maximum<size_t>(area.h,text_widget_->height()));
 		text_widget_width = dim.textbox.w;
-		text_widget_width += (text_widget_->caption() == NULL) ? 0 : text_widget_->caption()->width();
+		text_widget_width += (text_widget_->get_label() == NULL) ? 0 : text_widget_->get_label()->width();
 		text_widget_height = dim.textbox.h + message_font_size;
 	}
 
