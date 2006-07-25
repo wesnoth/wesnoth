@@ -175,6 +175,7 @@ void finish_save_game(config_writer &out, const game_state& state, const std::st
 
 //functions to load/save games.
 void load_game(const game_data& data, const std::string& name, game_state& state, std::string* error_log);
+void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log);
 //throws gamestatus::save_game_failed
 void save_game(const game_state& state);
 
@@ -188,5 +189,6 @@ void delete_save_summary(const std::string& save);
 void write_save_index();
 
 void extract_summary_data_from_save(const game_state& state, config& out);
+void extract_summary_from_config(config& cfg_save, config& cfg_summary);
 
 #endif

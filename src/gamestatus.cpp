@@ -532,6 +532,15 @@ void load_game(const game_data& data, const std::string& name, game_state& state
 	state = read_game(data,&cfg);
 }
 
+void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log){
+	log_scope("load_game_summary");
+
+	config cfg;
+	read_save_file(name,cfg,error_log);
+
+	extract_summary_from_config(cfg, cfg_summary);
+}
+
 //throws game::save_game_failed
 scoped_ostream open_save_game(const std::string &label)
 {
@@ -641,6 +650,7 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 	out["replay"] = has_replay ? "yes" : "no";
 	out["snapshot"] = has_snapshot ? "yes" : "no";
 
+	out["label"] = state.label;
 	out["campaign_type"] = state.campaign_type;
 	out["scenario"] = state.scenario;
 	out["difficulty"] = state.difficulty;
@@ -705,6 +715,88 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 		} else if(has_replay) {
 			if(state.starting_pos.find_child("side","shroud","yes") == NULL) {
 				out["map_data"] = state.starting_pos["map_data"];
+			}
+		}
+	}
+}
+
+void extract_summary_from_config(config& cfg_save, config& cfg_summary)
+{
+	const config* cfg_snapshot = cfg_save.child("snapshot");
+	const config* cfg_replay_start = cfg_save.child("replay_start");
+
+	const bool has_replay = cfg_save.child("replay") != NULL;
+	const bool has_snapshot = (cfg_snapshot != NULL) && (cfg_snapshot->child("side") != NULL);
+
+	cfg_summary["replay"] = has_replay ? "yes" : "no";
+	cfg_summary["snapshot"] = has_snapshot ? "yes" : "no";
+
+	cfg_summary["label"] = cfg_save["label"];
+	cfg_summary["campaign_type"] = cfg_save["campaign_type"];
+	cfg_summary["scenario"] = cfg_save["scenario"];
+	cfg_summary["difficulty"] = cfg_save["difficulty"];
+	cfg_summary["version"] = cfg_save["version"];
+	cfg_summary["corrupt"] = "";
+
+	if(has_snapshot) {
+		cfg_summary["turn"] = (*cfg_snapshot)["turn_at"];
+		if((*cfg_snapshot)["turns"] != "-1") {
+			cfg_summary["turn"] = cfg_summary["turn"].str() + "/" + (*cfg_snapshot)["turns"].str();
+		}
+	}
+
+	//find the first human leader so we can display their icon in the load menu
+
+	//ideally we should grab all leaders if there's more than 1
+	//human player?
+	std::string leader;
+
+	const config::child_list& players = cfg_save.get_children("player");
+
+	for(config::child_list::const_iterator i = cfg_save.get_children("player").begin(); i != cfg_save.get_children("player").end(); ++i) {
+		if ((**i)["canrecruit"] == "1"){
+			leader = (**i)["save_id"];
+		}
+	}
+
+	bool shrouded = false;
+
+	if(leader == "") {
+		const config* snapshot = has_snapshot ? cfg_snapshot : cfg_replay_start;
+		if (snapshot != NULL){
+			const config::child_list& sides = snapshot->get_children("side");
+			for(config::child_list::const_iterator s = sides.begin(); s != sides.end() && leader.empty(); ++s) {
+
+				if((**s)["controller"] != "human") {
+					continue;
+				}
+
+				if((**s)["shroud"] == "yes") {
+					shrouded = true;
+				}
+
+				const config::child_list& units = (**s).get_children("unit");
+				for(config::child_list::const_iterator u = units.begin(); u != units.end(); ++u) {
+					if((**u)["canrecruit"] == "1") {
+						leader = (**u)["id"];
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	cfg_summary["leader"] = leader;
+	cfg_summary["map_data"] = "";
+
+	if(!shrouded) {
+		if(has_snapshot) {
+			if(cfg_snapshot->find_child("side","shroud","yes") == NULL) {
+				cfg_summary["map_data"] = (*cfg_snapshot)["map_data"];
+			}
+		} else if(has_replay) {
+			if(cfg_replay_start->find_child("side","shroud","yes") == NULL) {
+				cfg_summary["map_data"] = (*cfg_replay_start)["map_data"];
 			}
 		}
 	}
