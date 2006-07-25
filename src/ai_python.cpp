@@ -1705,7 +1705,6 @@ void python_ai::play_turn()
 		import_modules += "'" + *i + "ais', ";
 	}
 	import_modules += "])\n";
-    std::cout << import_modules << std::endl;
 	PyObject* pre = PyRun_String(import_modules.c_str(), Py_file_input, dict, dict);
 
     // Now execute the actual python AI.
