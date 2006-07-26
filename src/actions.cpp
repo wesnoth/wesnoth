@@ -1,0 +1,2196 @@
+/* $Id$ */
+/*
+   Copyright (C) 2003 by David White <davidnwhite@verizon.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
+#include "actions.hpp"
+#include "attack_prediction.hpp"
+#include "checksum.hpp"
+#include "game_config.hpp"
+#include "game_errors.hpp"
+#include "game_events.hpp"
+#include "gettext.hpp"
+#include "halo.hpp"
+#include "hotkeys.hpp"
+#include "menu_events.hpp"
+#include "mouse_events.hpp"
+#include "pathfind.hpp"
+#include "preferences.hpp"
+#include "random.hpp"
+#include "replay.hpp"
+#include "sound.hpp"
+#include "statistics.hpp"
+#include "unit_abilities.hpp"
+#include "unit_display.hpp"
+#include "wassert.hpp"
+#include "wml_separators.hpp"
+#include "serialization/binary_wml.hpp"
+#include "serialization/parser.hpp"
+
+#define LOG_NG LOG_STREAM(info, engine)
+#define ERR_NW LOG_STREAM(err, network)
+
+struct castle_cost_calculator : cost_calculator
+{
+	castle_cost_calculator(const gamemap& map) : map_(map)
+	{}
+
+	virtual double cost(const gamemap::location&, const gamemap::location& loc, const double, const bool) const
+	{
+		if(!map_.is_castle(loc))
+			return 10000;
+
+		return 1;
+	}
+
+private:
+	const gamemap& map_;
+};
+
+// Conditions placed on victory must be accessible from the global function
+// check_victory, but shouldn't be passed to that function as parameters,
+// since it is called from a variety of places.
+namespace victory_conditions
+{
+	bool when_enemies_defeated = true;
+
+	void set_victory_when_enemies_defeated(bool on)
+	{
+		when_enemies_defeated = on;
+	}
+
+	bool victory_when_enemies_defeated()
+	{
+		return when_enemies_defeated;
+	}
+}
+
+bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const gamemap::location loc)
+{
+	if(!map.on_board(loc))
+		return false;
+
+	if(!map.is_castle(loc))
+		return false;
+
+	castle_cost_calculator calc(map);
+	const paths::route& rt = a_star_search(leader, loc, 100.0, &calc, map.x(), map.y());
+
+	if(rt.steps.empty())
+		return false;
+
+	return true;
+}
+
+std::string recruit_unit(const gamemap& map, int side,
+       unit_map& units, unit new_unit,
+       gamemap::location& recruit_location, display* disp, bool need_castle, bool full_movement)
+{
+	const events::command_disabler disable_commands;
+
+	LOG_NG << "recruiting unit for side " << side << "\n";
+
+	//find the unit that can recruit
+	unit_map::const_iterator u = units.begin();
+
+	for(; u != units.end(); ++u) {
+		if(u->second.can_recruit() && (int)u->second.side() == side) {
+			break;
+		}
+	}
+
+	if(u == units.end() && (need_castle || !map.on_board(recruit_location))) {
+		return _("You don't have a leader to recruit with.");
+	}
+
+	wassert(u != units.end() || !need_castle);
+
+	if(need_castle && map.is_keep(u->first) == false) {
+		LOG_NG << "Leader not on start: leader is on " << u->first << '\n';
+		return _("You must have your leader on a keep to recruit or recall units.");
+	}
+
+	if(need_castle) {
+		if (units.find(recruit_location) != units.end() ||
+			!can_recruit_on(map, u->first, recruit_location)) {
+
+			recruit_location = gamemap::location();
+		}
+	}
+
+	if(!map.on_board(recruit_location)) {
+		recruit_location = find_vacant_tile(map,units,u->first,
+		                                    need_castle ? VACANT_CASTLE : VACANT_ANY);
+	} else if(units.count(recruit_location) == 1) {
+		recruit_location = find_vacant_tile(map,units,recruit_location,VACANT_ANY);
+	}
+
+	if(!map.on_board(recruit_location)) {
+		return _("There are no vacant castle tiles in which to recruit a unit.");
+	}
+
+	if(full_movement) {
+		new_unit.set_movement(new_unit.total_movement());
+	} else {
+		new_unit.set_movement(0);
+		new_unit.set_attacks(0);
+	}
+	new_unit.heal_all();
+
+	const bool show = disp != NULL && !disp->turbo() &&
+	                  !disp->fogged(recruit_location.x,recruit_location.y);
+	if(show) {
+		disp->draw(true,true);
+	}
+
+	units.add(new std::pair<gamemap::location,unit>(recruit_location,new_unit));
+
+	if(show) {
+	    unit_map::iterator un = disp->get_units().find(recruit_location);
+	    if( un !=disp->get_units().end()) {
+			un->second.set_hidden(true);
+			disp->scroll_to_tile(recruit_location.x,recruit_location.y,display::ONSCREEN);
+			un->second.set_hidden(false);
+			un->second.set_recruited(*disp,recruit_location);
+			while(!un->second.get_animation()->animation_finished()) {
+				disp->invalidate(recruit_location);
+				disp->draw();
+				events::pump();
+				disp->non_turbo_delay();
+			}
+			un->second.set_standing(*disp,recruit_location);
+		}
+	}
+	LOG_NG << "firing recruit event\n";
+	game_events::fire("recruit",recruit_location);
+
+	checksumstream cs;
+	config cfg_unit;
+	new_unit.write(cfg_unit);
+	::write_compressed(cs,cfg_unit);
+
+	const config* ran_results = get_random_results();
+	if(ran_results != NULL) {
+		unsigned long rc = lexical_cast_default<unsigned long>
+			((*ran_results)["checksum"], 0);
+		if((*ran_results)["checksum"].empty() || rc != cs.checksum()) {
+			ERR_NW << "SYNC: In recruit " << new_unit.id() <<
+				": has checksum " << cs.checksum() <<
+				" while datasource has checksum " <<
+				rc << "\n";
+
+			::write(std::cerr, cfg_unit);
+			// FIXME: this was not playtested, so I will disable it
+			// for release.
+			//if (!game_config::ignore_replay_errors) throw replay::error();
+		}
+
+	} else {
+		config cfg;
+		cfg["checksum"] = lexical_cast<std::string>(cs.checksum());
+		set_random_results(cfg);
+	}
+
+	return std::string();
+}
+
+void validate_recruit_unit()
+{
+
+}
+
+gamemap::location under_leadership(const unit_map& units,
+                                   const gamemap::location& loc, int* bonus)
+{
+
+	const unit_map::const_iterator un = units.find(loc);
+	if(un == units.end()) {
+		return gamemap::location::null_location;
+	}
+	unit_ability_list abil = un->second.get_abilities("leadership",loc);
+	int best_bonus = abil.highest("value").first;
+	if(bonus) {
+		*bonus = best_bonus;
+	}
+	return abil.highest("value").second;
+}
+
+battle_context::battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
+							   const gamestatus& status, const game_data& gamedata,
+							   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
+							   int attacker_weapon, int defender_weapon, double harm_weight, const combatant *prev_def)
+	: attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
+{
+	const unit& attacker = units.find(attacker_loc)->second;
+	const unit& defender = units.find(defender_loc)->second;
+
+	if (attacker_weapon == -1 && attacker.attacks().size() == 1)
+		attacker_weapon = 0;
+
+	if (attacker_weapon == -1) {
+		wassert(defender_weapon == -1);
+		attacker_weapon = choose_attacker_weapon(attacker, defender, map, teams, units,
+												 status, gamedata, attacker_loc, defender_loc,
+												 harm_weight, &defender_weapon, prev_def);
+	} else if (defender_weapon == -1) {
+		defender_weapon = choose_defender_weapon(attacker, defender, attacker_weapon, map, teams,
+												 units, status, gamedata, attacker_loc, defender_loc, prev_def);
+	}
+
+	// If those didn't have to generate statistics, do so now.
+	if (!attacker_stats_) {
+		const attack_type *def = NULL;
+		if (defender_weapon >= 0) {
+			wassert(defender_weapon < (int)defender.attacks().size());
+			def = &defender.attacks()[defender_weapon];
+		}
+		wassert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
+		attacker_stats_ = new unit_stats(attacker, attacker_loc, attacker_weapon,
+										 true, defender, defender_loc, def,
+										units, teams, status, map, gamedata);
+		defender_stats_ = new unit_stats(defender, defender_loc, defender_weapon, false,
+										 attacker, attacker_loc, &attacker.attacks()[attacker_weapon],
+										 units, teams, status, map, gamedata);
+	}
+}
+
+battle_context::battle_context(const battle_context &other)
+	: attacker_stats_(NULL), defender_stats_(NULL), attacker_combatant_(NULL), defender_combatant_(NULL)
+{
+	*this = other;
+}
+
+battle_context::battle_context(const unit_stats &att, const unit_stats &def)
+{
+	attacker_stats_ = new unit_stats(att);
+	defender_stats_ = new unit_stats(def);
+	attacker_combatant_ = NULL;
+	defender_combatant_ = NULL;
+}
+
+battle_context& battle_context::operator=(const battle_context &other)
+{
+	if (&other != this) {
+		delete attacker_stats_;
+		delete defender_stats_;
+		delete attacker_combatant_;
+		delete defender_combatant_;
+		attacker_stats_ = new unit_stats(*other.attacker_stats_);
+		defender_stats_ = new unit_stats(*other.defender_stats_);
+		attacker_combatant_ = other.attacker_combatant_ ? new combatant(*other.attacker_combatant_, *attacker_stats_) : NULL;
+		defender_combatant_ = other.defender_combatant_ ? new combatant(*other.defender_combatant_, *defender_stats_) : NULL;
+	}
+	return *this;
+}
+
+// FIXME: Hand previous defender unit in here...
+int battle_context::choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
+										   const gamemap& map, const std::vector<team>& teams, const unit_map& units,
+										   const gamestatus& status, const game_data& gamedata,
+										   const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
+										   const combatant *prev_def)
+{
+	const attack_type &att = attacker.attacks()[attacker_weapon];
+	std::vector<unsigned int> choices;
+
+	// What options does defender have?
+	unsigned int i;
+	for (i = 0; i < defender.attacks().size(); i++) {
+		const attack_type &def = defender.attacks()[i];
+		if (def.range() == att.range() && def.defense_weight() > 0) {
+			choices.push_back(i);
+		}
+	}
+	if (choices.size() == 0)
+		return -1;
+	if (choices.size() == 1)
+		return choices[0];
+
+	// Multiple options: simulate them, save best.
+	for (i = 0; i < choices.size(); i++) {
+		const attack_type &def = defender.attacks()[choices[i]];
+		unit_stats *att_stats = new unit_stats(attacker, attacker_loc, attacker_weapon,
+											   true, defender, defender_loc, &def,
+											   units, teams, status, map, gamedata);
+		unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
+											   attacker, attacker_loc, &att,
+											   units, teams, status, map, gamedata);
+
+		combatant *att_comb = new combatant(*att_stats);
+		combatant *def_comb = new combatant(*def_stats, prev_def);
+		att_comb->fight(*def_comb);
+
+		if (!attacker_combatant_ || better_combat(*def_comb, *att_comb, *defender_combatant_, *attacker_combatant_, 1.0)) {
+			delete attacker_combatant_;
+			delete defender_combatant_;
+			delete attacker_stats_;
+			delete defender_stats_;
+			attacker_combatant_ = att_comb;
+			defender_combatant_ = def_comb;
+			attacker_stats_ = att_stats;
+			defender_stats_ = def_stats;
+		} else {
+			delete att_comb;
+			delete def_comb;
+			delete att_stats;
+			delete def_stats;
+		}
+	}
+
+	return defender_stats_->attack_num;
+}
+
+unsigned battle_context::choose_attacker_weapon(const unit &attacker, const unit &defender,
+												const gamemap& map, const std::vector<team>& teams, const unit_map& units,
+												const gamestatus& status, const game_data& gamedata,
+												const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
+												double harm_weight, int *defender_weapon, const combatant *prev_def)
+{
+	std::vector<unsigned int> choices;
+
+	// What options does attacker have?
+	unsigned int i;
+	for (i = 0; i < attacker.attacks().size(); i++) {
+		const attack_type &att = attacker.attacks()[i];
+		if (att.defense_weight() > 0) {
+			choices.push_back(i);
+		}
+	}
+	wassert(choices.size() > 0);
+	if (choices.size() == 1) {
+		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], map, teams, units,
+												  status, gamedata, attacker_loc, defender_loc, prev_def);
+		return choices[0];
+	}
+
+	// Multiple options: simulate them, save best.
+	unit_stats *best_att_stats = NULL, *best_def_stats = NULL;
+	combatant *best_att_comb = NULL, *best_def_comb = NULL;
+
+	for (i = 0; i < choices.size(); i++) {
+		const attack_type &att = attacker.attacks()[choices[i]];
+		int def_weapon = choose_defender_weapon(attacker, defender, choices[i], map, teams, units,
+												status, gamedata, attacker_loc, defender_loc, prev_def);
+		// If that didn't simulate, do so now.
+		if (!attacker_combatant_) {
+			const attack_type *def = NULL;
+			if (def_weapon >= 0) {
+				def = &defender.attacks()[def_weapon];
+			}
+			attacker_stats_ = new unit_stats(attacker, attacker_loc, choices[i],
+											 true, defender, defender_loc, def,
+											 units, teams, status, map, gamedata);
+			defender_stats_ = new unit_stats(defender, defender_loc, def_weapon, false,
+											 attacker, attacker_loc, &att,
+											 units, teams, status, map, gamedata);
+			attacker_combatant_ = new combatant(*attacker_stats_);
+			defender_combatant_ = new combatant(*defender_stats_, prev_def);
+			attacker_combatant_->fight(*defender_combatant_);
+		}
+		if (!best_att_comb || better_combat(*attacker_combatant_, *defender_combatant_,
+											*best_att_comb, *best_def_comb, harm_weight)) {
+			delete best_att_comb;
+			delete best_def_comb;
+			delete best_att_stats;
+			delete best_def_stats;
+			best_att_comb = attacker_combatant_;
+			best_def_comb = defender_combatant_;
+			best_att_stats = attacker_stats_;
+			best_def_stats = defender_stats_;
+		} else {
+			delete attacker_combatant_;
+			delete defender_combatant_;
+			delete attacker_stats_;
+			delete defender_stats_;
+		}
+		attacker_combatant_ = NULL;
+		defender_combatant_ = NULL;
+		attacker_stats_ = NULL;
+		defender_stats_ = NULL;
+	}
+
+	attacker_combatant_ = best_att_comb;
+	defender_combatant_ = best_def_comb;
+	attacker_stats_ = best_att_stats;
+	defender_stats_ = best_def_stats;
+
+	*defender_weapon = defender_stats_->attack_num;
+	return attacker_stats_->attack_num;
+}
+
+// Does combat A give us a better result than combat B?
+bool battle_context::better_combat(const combatant &us_a, const combatant &them_a,
+								   const combatant &us_b, const combatant &them_b,
+								   double harm_weight)
+{
+	double a, b;
+
+	// Compare: P(we kill them) - P(they kill us).
+	a = them_a.hp_dist[0] - us_a.hp_dist[0] * harm_weight;
+	b = them_b.hp_dist[0] - us_b.hp_dist[0] * harm_weight;
+	if (a - b < -0.01)
+		return false;
+	if (a - b > 0.01)
+		return true;
+
+	// Compare: damage to them - damage to us (average_hp replaces -damage)
+	a = us_a.average_hp() - them_a.average_hp();
+	b = us_b.average_hp() - them_b.average_hp();
+	if (a - b < -0.01)
+		return false;
+	if (a - b > 0.01)
+		return true;
+
+	// All else equal: go for most damage.
+	return them_a.average_hp() < them_b.average_hp();
+}
+
+// Get the simulation results.
+// FIXME: better to initialize combatant initially (move into unit_stats?), just do fight() when required.
+const combatant &battle_context::get_attacker_combatant(const combatant *prev_def)
+{
+	// We calculate this lazily, since AI doesn't always need it.
+	if (!attacker_combatant_) {
+		wassert(!defender_combatant_);
+		attacker_combatant_ = new combatant(*attacker_stats_);
+		defender_combatant_ = new combatant(*defender_stats_, prev_def);
+		attacker_combatant_->fight(*defender_combatant_);
+	}
+	return *attacker_combatant_;
+}
+
+const combatant &battle_context::get_defender_combatant(const combatant *prev_def)
+{
+	// We calculate this lazily, since AI doesn't always need it.
+	if (!defender_combatant_) {
+		wassert(!attacker_combatant_);
+		attacker_combatant_ = new combatant(*attacker_stats_);
+		defender_combatant_ = new combatant(*defender_stats_, prev_def);
+		attacker_combatant_->fight(*defender_combatant_);
+	}
+	return *defender_combatant_;
+}
+
+battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u_loc,
+									   int u_attack_num, bool attacking,
+									   const unit &opp, const gamemap::location& opp_loc,
+									   const attack_type *opp_weapon,
+									   const unit_map& units,
+									   const std::vector<team>& teams,
+									   const gamestatus& status,
+									   const gamemap& map,
+									   const game_data& gamedata)
+{
+	// Get the current state of the unit.
+	attack_num = u_attack_num;
+	if (attack_num >= 0) {
+		weapon = &u.attacks()[attack_num];
+	} else {
+		weapon = NULL;
+	}
+	is_attacker = attacking;
+	is_poisoned = utils::string_bool(u.get_state("poisoned"));
+	is_slowed = utils::string_bool(u.get_state("slowed"));
+	hp = u.hitpoints();
+	max_hp = u.max_hitpoints();
+
+	// Get the weapon characteristics, if any.
+	if (weapon) {
+		weapon->set_specials_context(u_loc, opp_loc, &gamedata, &units, &map, &status, &teams, attacking, opp_weapon);
+		if (opp_weapon)
+			opp_weapon->set_specials_context(u_loc, opp_loc, &gamedata, &units, &map, &status, &teams, !attacking, weapon);
+		slows = weapon->get_special_bool("slow");
+		drains = weapon->get_special_bool("drains") && !utils::string_bool(opp.get_state("not_living"));
+		stones = weapon->get_special_bool("stones");
+		poisons = weapon->get_special_bool("poison") && opp.get_state("not_living") != "yes" && opp.get_state("poisoned") != "yes";
+		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, teams);
+		rounds = weapon->get_specials("berserk").highest("value", 1).first;
+		firststrike = weapon->get_special_bool("firststrike");
+
+		// Handle plague.
+		unit_ability_list plague_specials = weapon->get_specials("plague");
+		plagues = !plague_specials.empty() && opp.get_state("not_living") != "yes" &&
+				  strcmp(opp.undead_variation().c_str(), "null") && !map.is_village(opp_loc);
+
+		if (!plague_specials.empty()) {
+			if((*plague_specials.cfgs.front().first)["type"] == "")
+				plague_type = u.id();
+			else
+				plague_type = (*plague_specials.cfgs.front().first)["type"];
+		}
+
+		// Compute chance to hit.
+		chance_to_hit = opp.defense_modifier(map.get_terrain(opp_loc));
+		unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
+		unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
+		chance_to_hit = cth_effects.get_composite_value();
+
+		// Compute base damage done with the weapon.
+		int base_damage = weapon->damage();
+		unit_ability_list dmg_specials = weapon->get_specials("damage");
+		unit_abilities::effect dmg_effect(dmg_specials, base_damage, backstab_pos);
+		base_damage = dmg_effect.get_composite_value();
+
+		// Get the damage multiplier applied to the base damage of the weapon.
+		int damage_multiplier = 100;
+
+		// Time of day bonus.
+		damage_multiplier += combat_modifier(status, units, u_loc, u.alignment(), map);
+
+		// Leadership bonus.
+		int leader_bonus = 0;
+		if (under_leadership(units, u_loc, &leader_bonus).valid())
+			damage_multiplier += leader_bonus;
+
+		// Resistance modifier.
+		damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc);
+
+		// Compute both the normal and slowed damage. For the record,
+		// drain = normal damage / 2 and slow_drain = slow_damage / 2.
+		damage = round_damage(base_damage, damage_multiplier, 10000);
+		slow_damage = round_damage(base_damage, damage_multiplier, 20000);
+		if (is_slowed)
+			damage = slow_damage;
+
+		// Compute the number of blows and handle swarm.
+		unit_ability_list swarm_specials = weapon->get_specials("attacks");
+
+		if (!swarm_specials.empty()) {
+			swarm = true;
+			swarm_min = swarm_specials.highest("attacks_min").first;
+			swarm_max = swarm_specials.highest("attacks_max", weapon->num_attacks()).first;
+			num_blows = swarm_min + (swarm_max - swarm_min) * hp / max_hp;
+		} else {
+			swarm = false;
+			num_blows = weapon->num_attacks();
+			swarm_min = num_blows;
+			swarm_max = num_blows;
+		}
+	} else {
+		slows = false;
+		drains = false;
+		stones = false;
+		plagues = false;
+		poisons = false;
+		backstab_pos = false;
+		swarm = false;
+		rounds = 1;
+		firststrike = false;
+
+		chance_to_hit = 0;
+		damage = 0;
+		slow_damage = 0;
+		num_blows = 0;
+		swarm_min = 0;
+		swarm_max = 0;
+	}
+}
+
+battle_context::unit_stats::~unit_stats()
+{
+}
+
+void battle_context::unit_stats::dump() const
+{
+	printf("==================================\n");
+	printf("is_attacker:	%d\n", (int) is_attacker);
+	printf("is_poisoned:	%d\n", (int) is_poisoned);
+	printf("is_slowed:	%d\n", (int) is_slowed);
+	printf("slows:		%d\n", (int) slows);
+	printf("drains:		%d\n", (int) drains);
+	printf("stones:		%d\n", (int) stones);
+	printf("poisons:	%d\n", (int) poisons);
+	printf("backstab_pos:	%d\n", (int) backstab_pos);
+	printf("swarm:		%d\n", (int) swarm);
+	printf("rounds:	%d\n", (int) rounds);
+	printf("firststrike:	%d\n", (int) firststrike);
+	printf("\n");
+	printf("hp:		%d\n", hp);
+	printf("max_hp:		%d\n", max_hp);
+	printf("chance_to_hit:	%d\n", chance_to_hit);
+	printf("damage:		%d\n", damage);
+	printf("slow_damage:	%d\n", slow_damage);
+	printf("num_blows:	%d\n", num_blows);
+	printf("swarm_min:	%d\n", swarm_min);
+	printf("swarm_max:	%d\n", swarm_max);
+	printf("\n");
+}
+
+// Given this harm_weight, are we better than this other context?
+bool battle_context::better_attack(class battle_context &that, double harm_weight)
+{
+	return better_combat(get_attacker_combatant(), get_defender_combatant(),
+						 that.get_attacker_combatant(), that.get_defender_combatant(), harm_weight);
+}
+
+static std::string unit_dump(std::pair< gamemap::location, unit > const &u)
+{
+	std::stringstream s;
+	s << u.second.id() << " (" << u.first.x + 1 << ',' << u.first.y + 1 << ')';
+	return s.str();
+}
+
+void attack(display& gui, const gamemap& map,
+            std::vector<team>& teams,
+            gamemap::location attacker,
+            gamemap::location defender,
+            int attack_with,
+			int defend_with,
+            unit_map& units,
+            const gamestatus& state,
+            const game_data& info,
+			bool update_display)
+{
+	//stop the user from issuing any commands while the units are fighting
+	const events::command_disabler disable_commands;
+
+	unit_map::iterator a = units.find(attacker);
+	unit_map::iterator d = units.find(defender);
+
+	if(a == units.end() || d == units.end()) {
+		return;
+	}
+	bool OOS_error = false;
+	std::stringstream errbuf;
+
+	int attackerxp = d->second.level();
+	int defenderxp = a->second.level();
+
+	a->second.set_attacks(a->second.attacks_left()-1);
+	a->second.set_movement(a->second.movement_left()-a->second.attacks()[attack_with].movement_used());
+	a->second.set_state("not_moved","");
+	d->second.set_resting(false);
+
+	//if the attacker was invisible, she isn't anymore!
+	static const std::string hides("hides");
+	a->second.set_state(hides,"");
+
+	config dat;
+	{
+		battle_context bc(map, teams, units, state, info, attacker, defender, attack_with, defend_with);
+		const battle_context::unit_stats& a_stats = bc.get_attacker_stats();
+		const battle_context::unit_stats& d_stats = bc.get_defender_stats();
+		LOG_NG << "firing attack event\n";
+		dat.add_child("first");
+		dat.add_child("second");
+		(*(dat.child("first")))["weapon"]=a_stats.weapon->name();
+		(*(dat.child("second")))["weapon"]=d_stats.weapon != NULL ? d_stats.weapon->name() : "none";
+		game_events::fire("attack",attacker,defender,dat);
+		//the event could have killed either the attacker or
+		//defender, so we have to make sure they still exist
+		a = units.find(attacker);
+		d = units.find(defender);
+		if(a == units.end() || d == units.end()) {
+			return;
+		}
+	}
+	battle_context bc(map, teams, units, state, info, attacker, defender, attack_with, defend_with);
+	const battle_context::unit_stats* a_stats = &bc.get_attacker_stats();
+	const battle_context::unit_stats* d_stats = &bc.get_defender_stats();
+
+	dat.clear();
+	dat.add_child("first");
+	dat.add_child("second");
+	(*(dat.child("first")))["weapon"]=a_stats->weapon->name();
+	(*(dat.child("second")))["weapon"]=d_stats->weapon != NULL ? d_stats->weapon->name() : "none";
+
+	LOG_NG << "getting attack statistics\n";
+
+	statistics::attack_context attack_stats(a->second, d->second, a_stats->chance_to_hit, d_stats->chance_to_hit);
+
+	int orig_attacks = a_stats->num_blows;
+	int orig_defends = d_stats->num_blows;
+	int n_attacks = orig_attacks;
+	int n_defends = orig_defends;
+	int attacker_cth = a_stats->chance_to_hit;
+	int defender_cth = d_stats->chance_to_hit;
+	int attacker_damage = a_stats->damage;
+	int defender_damage = d_stats->damage;
+	bool defender_strikes_first = (d_stats->firststrike && ! a_stats->firststrike);
+	unsigned int rounds = maximum<unsigned int>(a_stats->rounds, d_stats->rounds) - 1;
+
+	static const std::string poison_string("poison");
+
+	LOG_NG << "Fight: (" << attacker << ") vs (" << defender << ") ATT: " << a_stats->weapon->name() << " " << a_stats->damage << "-" << a_stats->num_blows << "(" << a_stats->chance_to_hit << "%) vs DEF: " << (d_stats->weapon ? d_stats->weapon->name() : "none") << " " << d_stats->damage << "-" << d_stats->num_blows << "(" << d_stats->chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
+
+	while(n_attacks > 0 || n_defends > 0) {
+		LOG_NG << "start of attack loop...\n";
+
+		if(n_attacks > 0 && defender_strikes_first == false) {
+			const int ran_num = get_random();
+			bool hits = (ran_num%100) < attacker_cth;
+
+			int damage_defender_takes;
+			if(hits) {
+				damage_defender_takes = attacker_damage;
+			} else {
+				damage_defender_takes = 0;
+			}
+			//make sure that if we're serializing a game here,
+			//we got the same results as the game did originally
+			const config* ran_results = get_random_results();
+			if(ran_results != NULL) {
+				const int results_chance = atoi((*ran_results)["chance"].c_str());
+				const bool results_hits = (*ran_results)["hits"] == "yes";
+				const int results_damage = atoi((*ran_results)["damage"].c_str());
+
+				if(results_chance != attacker_cth) {
+					errbuf << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": chance to hit defender is inconsistent. Data source: "
+						<< results_chance << "; Calculation: " << attacker_cth
+						<< " (over-riding game calculations with data source results)\n";
+					attacker_cth = results_chance;
+					OOS_error = true;
+				}
+				if(hits != results_hits) {
+					errbuf << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": the data source says the hit was "
+						<< (results_hits ? "successful" : "unsuccessful")
+						<< ", while in-game calculations say the hit was "
+						<< (hits ? "successful" : "unsuccessful")
+						<< " random number: " << ran_num << " = "
+						<< (ran_num%100) << "/" << results_chance
+						<< " (over-riding game calculations with data source results)\n";
+					hits = results_hits;
+					OOS_error = true;
+				}
+				if(results_damage != damage_defender_takes) {
+					errbuf << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": the data source says the hit did " << results_damage
+						<< " damage, while in-game calculations show the hit doing "
+						<< damage_defender_takes
+						<< " damage (over-riding game calculations with data source results)\n";
+					damage_defender_takes = results_damage;
+					OOS_error = true;
+				}
+			}
+
+			bool dies = unit_display::unit_attack(gui,units,attacker,defender,
+				            damage_defender_takes,
+							*a_stats->weapon,
+							update_display);
+			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
+			if(hits) {
+				const int defender_side = d->second.side();
+				const int attacker_side = a->second.side();
+				LOG_NG << "firing attacker_hits event\n";
+				game_events::fire("attacker_hits",attacker,defender,dat);
+				a = units.find(attacker);
+				d = units.find(defender);
+				if(a == units.end() || d == units.end()) {
+					if (update_display){
+						recalculate_fog(map,state,info,units,teams,attacker_side-1);
+						recalculate_fog(map,state,info,units,teams,defender_side-1);
+						gui.recalculate_minimap();
+						gui.update_display();
+					}
+					LOG_NG << "firing attack_end event\n";
+					game_events::fire("attack_end",attacker,defender,dat);
+					a = units.find(attacker);
+					d = units.find(defender);
+					break;
+				}
+				bc = battle_context(map, teams, units, state, info, attacker, defender, attack_with, defend_with);
+				a_stats = &bc.get_attacker_stats();
+				d_stats = &bc.get_defender_stats();
+			} else {
+				const int defender_side = d->second.side();
+				const int attacker_side = a->second.side();
+				LOG_NG << "firing attacker_misses event\n";
+				game_events::fire("attacker_misses",attacker,defender,dat);
+				a = units.find(attacker);
+				d = units.find(defender);
+				if(a == units.end() || d == units.end()) {
+					if (update_display){
+						recalculate_fog(map,state,info,units,teams,attacker_side-1);
+						recalculate_fog(map,state,info,units,teams,defender_side-1);
+						gui.recalculate_minimap();
+						gui.update_display();
+					}
+					LOG_NG << "firing attack_end event\n";
+					game_events::fire("attack_end",attacker,defender,dat);
+					a = units.find(attacker);
+					d = units.find(defender);
+					break;
+				}
+				bc = battle_context(map, teams, units, state, info, attacker, defender, attack_with, defend_with);
+				a_stats = &bc.get_attacker_stats();
+				d_stats = &bc.get_defender_stats();
+			}
+
+			LOG_NG << "done attacking\n";
+
+			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
+			                           : statistics::attack_context::MISSES, attacker_damage);
+
+			if(ran_results == NULL) {
+				log_scope2(engine, "setting random results");
+				config cfg;
+				cfg["hits"] = (hits ? "yes" : "no");
+				cfg["dies"] = (dies ? "yes" : "no");
+
+				cfg["damage"] = lexical_cast<std::string>(damage_defender_takes);
+				cfg["chance"] = lexical_cast<std::string>(attacker_cth);
+
+				set_random_results(cfg);
+			} else {
+				const bool results_dies = (*ran_results)["dies"] == "yes";
+				if(results_dies != dies) {
+					errbuf << "SYNC: In attack " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": the data source the unit "
+						<< (results_dies ? "perished" : "survived")
+						<< " while in-game calculations show the unit "
+						<< (dies ? "perished" : "survived")
+						<< " (over-riding game calculations with data source results)\n";
+					dies = results_dies;
+					OOS_error = true;
+				}
+			}
+
+			if(dies || hits) {
+				int amount_drained = a_stats->drains ? attacker_damage / 2 : 0;
+
+				if(amount_drained > 0) {
+					char buf[50];
+					snprintf(buf,sizeof(buf),"%d",amount_drained);
+					if (update_display){
+						gui.float_label(a->first,buf,0,255,0);
+					}
+					a->second.heal(amount_drained);
+				}
+			}
+
+			if(dies) {//attacker kills defender
+				attackerxp = game_config::kill_experience*d->second.level();
+				if(d->second.level() == 0)
+					attackerxp = game_config::kill_experience/2;
+
+				a->second.get_experience(attackerxp);
+				gui.invalidate(a->first);
+				attackerxp = 0;
+				defenderxp = 0;
+
+				gamemap::location loc = d->first;
+				gamemap::location attacker_loc = a->first;
+				std::string undead_variation = d->second.undead_variation();
+				const int defender_side = d->second.side();
+				LOG_NG << "firing attack_end event\n";
+				game_events::fire("attack_end",attacker,defender,dat);
+				LOG_NG << "firing die event\n";
+				game_events::fire("die",loc,a->first);
+				d = units.find(loc);
+				a = units.end();
+
+				if(d != units.end() && d->second.hitpoints() <= 0) {
+					units.erase(d);
+					d = units.end();
+				}
+
+				//plague units make new units on the target hex
+				if(a_stats->plagues) {
+				        a = units.find(attacker_loc);
+				        game_data::unit_type_map::const_iterator reanimitor;
+				        LOG_NG<<"trying to reanimate "<<a_stats->plague_type<<std::endl;
+				        reanimitor = info.unit_types.find(a_stats->plague_type);
+				        LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
+
+					if(reanimitor != info.unit_types.end()) {
+					       unit newunit=unit(&info,&units,&map,&state,&teams,&reanimitor->second,a->second.side(),true,true);
+					       newunit.set_attacks(0);
+
+					       //apply variation
+					       if(strcmp(undead_variation.c_str(),"null")){
+						 config mod;
+						 config& variation=mod.add_child("effect");
+						 variation["apply_to"]="variation";
+						 variation["name"]=undead_variation;
+						 newunit.add_modification("variation",mod);
+						 newunit.heal_all();
+					       }
+
+					       units.add(new std::pair<gamemap::location,unit>(loc,newunit));
+						   if (update_display){
+						       gui.invalidate(loc);
+						   }
+					}else{
+					       LOG_NG<<"unit not reanimated"<<std::endl;
+					}
+				}
+				if (update_display){
+					recalculate_fog(map,state,info,units,teams,defender_side-1);
+					gui.recalculate_minimap();
+					gui.draw();
+				}
+				break;
+			} else if(hits) {
+				if (a_stats->poisons &&
+				   !utils::string_bool(d->second.get_state("poisoned"))) {
+					if (update_display){
+						gui.float_label(d->first,_("poisoned"),255,0,0);
+					}
+					d->second.set_state("poisoned","yes");
+					LOG_NG << "defender poisoned\n";
+				}
+
+				if(a_stats->slows && !utils::string_bool(d->second.get_state("slowed"))) {
+					if (update_display){
+						gui.float_label(d->first,_("slowed"),255,0,0);
+					}
+					d->second.set_state("slowed","yes");
+					defender_damage = d_stats->slow_damage;
+					LOG_NG << "defender slowed\n";
+				}
+
+				//if the defender is turned to stone, the fight stops immediately
+				static const std::string stone_string("stone");
+				if (a_stats->stones) {
+					if (update_display){
+						gui.float_label(d->first,_("stone"),255,0,0);
+					}
+					d->second.set_state("stoned","yes");
+					n_defends = 0;
+					n_attacks = 0;
+					game_events::fire(stone_string,d->first,a->first);
+				}
+			}
+
+			--n_attacks;
+		}
+
+		//if the defender got to strike first, they use it up here.
+		defender_strikes_first = false;
+
+		if(n_defends > 0) {
+			LOG_NG << "doing defender attack...\n";
+
+			const int ran_num = get_random();
+			bool hits = (ran_num%100) < defender_cth;
+
+			int damage_attacker_takes;
+			if(hits) {
+				damage_attacker_takes = defender_damage;
+			} else {
+				damage_attacker_takes = 0;
+			}
+			//make sure that if we're serializing a game here,
+			//we got the same results as the game did originally
+			const config* ran_results = get_random_results();
+			if(ran_results != NULL) {
+				const int results_chance = atoi((*ran_results)["chance"].c_str());
+				const bool results_hits = (*ran_results)["hits"] == "yes";
+				const int results_damage = atoi((*ran_results)["damage"].c_str());
+
+				if(results_chance != defender_cth) {
+					errbuf << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": chance to hit attacker is inconsistent. Data source: "
+						<< results_chance << "; Calculation: " << defender_cth
+						<< " (over-riding game calculations with data source results)\n";
+					defender_cth = results_chance;
+					OOS_error = true;
+				}
+				if(hits != results_hits) {
+					errbuf << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": the data source says the hit was "
+						<< (results_hits ? "successful" : "unsuccessful")
+						<< ", while in-game calculations say the hit was "
+						<< (hits ? "successful" : "unsuccessful")
+						<< " random number: " << ran_num << " = " << (ran_num%100) << "/"
+						<< results_chance
+						<< " (over-riding game calculations with data source results)\n";
+					hits = results_hits;
+					OOS_error = true;
+				}
+				if(results_damage != damage_attacker_takes) {
+					errbuf << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": the data source says the hit did " << results_damage
+						<< " damage, while in-game calculations show the hit doing "
+						<< damage_attacker_takes
+						<< " damage (over-riding game calculations with data source results)\n";
+					damage_attacker_takes = results_damage;
+					OOS_error = true;
+				}
+			}
+
+			bool dies = unit_display::unit_attack(gui,units,defender,attacker,
+			               damage_attacker_takes,
+						   *d_stats->weapon,
+						   update_display);
+			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
+			if(hits) {
+				const int defender_side = d->second.side();
+				const int attacker_side = a->second.side();
+				LOG_NG << "firing defender_hits event\n";
+				game_events::fire("defender_hits",attacker,defender,dat);
+				a = units.find(attacker);
+				d = units.find(defender);
+
+				// FIXME: If the event removes this attack, we should stop attacking.
+				// The previous code checked if 'attack_with' and 'defend_with' were still within the bounds of
+				// the attack arrays, or -1, but it was incorrect. The attack used could be removed and '*_with'
+				// variables could still be in bounds but point to a different attack.
+				if(a == units.end() || d == units.end()) {
+					if (update_display){
+						recalculate_fog(map,state,info,units,teams,attacker_side-1);
+						recalculate_fog(map,state,info,units,teams,defender_side-1);
+						gui.recalculate_minimap();
+						gui.update_display();
+					}
+					LOG_NG << "firing attack_end event\n";
+					game_events::fire("attack_end",attacker,defender,dat);
+					break;
+				}
+				bc = battle_context(map, teams, units, state, info, attacker, defender, attack_with, defend_with);
+				a_stats = &bc.get_attacker_stats();
+				d_stats = &bc.get_defender_stats();
+			} else {
+				const int defender_side = d->second.side();
+				const int attacker_side = a->second.side();
+				LOG_NG << "firing defender_misses event\n";
+				game_events::fire("defender_misses",attacker,defender,dat);
+				a = units.find(attacker);
+				d = units.find(defender);
+				if(a == units.end() || d == units.end()) {
+					if (update_display){
+						recalculate_fog(map,state,info,units,teams,attacker_side-1);
+						recalculate_fog(map,state,info,units,teams,defender_side-1);
+						gui.recalculate_minimap();
+						gui.update_display();
+					}
+					LOG_NG << "firing attack_end event\n";
+					game_events::fire("attack_end",attacker,defender,dat);
+					break;
+				}
+				bc = battle_context(map, teams, units, state, info, attacker, defender, attack_with, defend_with);
+				a_stats = &bc.get_attacker_stats();
+				d_stats = &bc.get_defender_stats();
+			}
+
+			attack_stats.defend_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
+			                           : statistics::attack_context::MISSES, defender_damage);
+
+			if(ran_results == NULL) {
+				config cfg;
+				cfg["hits"] = (hits ? "yes" : "no");
+				cfg["dies"] = (dies ? "yes" : "no");
+				cfg["damage"] = lexical_cast<std::string>(damage_attacker_takes);
+				cfg["chance"] = lexical_cast<std::string>(defender_cth);
+
+				set_random_results(cfg);
+			} else {
+				const bool results_dies = (*ran_results)["dies"] == "yes";
+				if(results_dies != dies) {
+					errbuf << "SYNC: In defend " << unit_dump(*a) << " vs " << unit_dump(*d)
+						<< ": the data source the unit "
+						<< (results_dies ? "perished" : "survived")
+						<< " while in-game calculations show the unit "
+						<< (dies ? "perished" : "survived")
+						<< " (over-riding game calculations with data source results)\n";
+					dies = results_dies;
+					OOS_error = true;
+				}
+			}
+
+			if(hits || dies){
+				int amount_drained = d_stats->drains ? defender_damage / 2 : 0;
+
+				if(amount_drained > 0) {
+					char buf[50];
+					snprintf(buf,sizeof(buf),"%d",amount_drained);
+					if (update_display){
+						gui.float_label(d->first,buf,0,255,0);
+					}
+					d->second.heal(amount_drained);
+				}
+			}
+
+			if(dies) {//defender kills attacker
+				defenderxp = game_config::kill_experience*a->second.level();
+				if(a->second.level() == 0)
+					defenderxp = game_config::kill_experience/2;
+
+				d->second.get_experience(defenderxp);
+				gui.invalidate(d->first);
+				defenderxp = 0;
+				attackerxp = 0;
+
+				std::string undead_variation = a->second.undead_variation();
+				gamemap::location loc = a->first;
+				gamemap::location defender_loc = d->first;
+				const int attacker_side = a->second.side();
+				LOG_NG << "firing attack_end event\n";
+				game_events::fire("attack_end",attacker,defender,dat);
+				LOG_NG << "firing die event\n";
+				game_events::fire("die",loc,d->first);
+				a = units.find(loc);
+				d = units.end();
+
+				if(a != units.end() && a->second.hitpoints() <= 0) {
+					units.erase(a);
+					a = units.end();
+				}
+
+				//plague units make new units on the target hex.
+				if(d_stats->plagues) {
+				        d = units.find(defender_loc);
+				        game_data::unit_type_map::const_iterator reanimitor;
+				        LOG_NG<<"trying to reanimate "<<d_stats->plague_type<<std::endl;
+				        reanimitor = info.unit_types.find(d_stats->plague_type);
+				        LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
+
+					if(reanimitor != info.unit_types.end()) {
+					       unit newunit=unit(&info,&units,&map,&state,&teams,&reanimitor->second,d->second.side(),true,true);
+					       //apply variation
+					       if(strcmp(undead_variation.c_str(),"null")){
+						 config mod;
+						 config& variation=mod.add_child("effect");
+						 variation["apply_to"]="variation";
+						 variation["name"]=undead_variation;
+						 newunit.add_modification("variation",mod);
+					       }
+
+					       units.add(new std::pair<gamemap::location,unit>(loc,newunit));
+						   if (update_display){
+						       gui.invalidate(loc);
+						   }
+					}else{
+					       LOG_NG<<"unit not reanimated"<<std::endl;
+					}
+				}
+				if (update_display){
+					gui.recalculate_minimap();
+					gui.draw();
+					recalculate_fog(map,state,info,units,teams,attacker_side-1);
+				}
+				break;
+			} else if(hits) {
+				if (d_stats->poisons &&
+				   !utils::string_bool(a->second.get_state("poisoned"))) {
+					if (update_display){
+						gui.float_label(a->first,_("poisoned"),255,0,0);
+					}
+					a->second.set_state("poisoned","yes");
+					LOG_NG << "attacker poisoned\n";
+				}
+
+				if(d_stats->slows && !utils::string_bool(a->second.get_state("slowed"))) {
+					if (update_display){
+						gui.float_label(a->first,_("slowed"),255,0,0);
+					}
+					a->second.set_state("slowed","yes");
+					attacker_damage = a_stats->slow_damage;
+					LOG_NG << "attacker slowed\n";
+				}
+
+
+				//if the attacker is turned to stone, the fight stops immediately
+				static const std::string stone_string("stone");
+				if (d_stats->stones) {
+					if (update_display){
+						gui.float_label(a->first,_("stone"),255,0,0);
+					}
+					a->second.set_state("stoned","yes");
+					n_defends = 0;
+					n_attacks = 0;
+					game_events::fire(stone_string,a->first,d->first);
+				}
+			}
+
+			--n_defends;
+		}
+
+		// continue the fight to death; if one of the units got stoned,
+		// either n_attacks or n_defends is -1
+		if(rounds > 0 && n_defends == 0 && n_attacks == 0) {
+			n_attacks = orig_attacks;
+			n_defends = orig_defends;
+			--rounds;
+			defender_strikes_first = (d_stats->firststrike && ! a_stats->firststrike);
+		}
+		if(n_attacks <= 0 && n_defends <= 0) {
+			LOG_NG << "firing attack_end event\n";
+			game_events::fire("attack_end",attacker,defender,dat);
+			a = units.find(attacker);
+			d = units.find(defender);
+		}
+	}
+
+	if(a != units.end()) {
+		a->second.set_standing(gui,a->first);
+		if(attackerxp)
+			a->second.get_experience(attackerxp);
+	}
+
+	if(d != units.end()) {
+		d->second.set_standing(gui,d->first);
+		if(defenderxp)
+			d->second.get_experience(defenderxp);
+	}
+
+	if (update_display){
+		gui.invalidate_unit();
+		gui.invalidate(attacker);
+		gui.invalidate(defender);
+		gui.draw(true,true);
+	}
+
+	if(OOS_error) {
+		replay::throw_error(errbuf.str());
+	}
+
+}
+
+int village_owner(const gamemap::location& loc, const std::vector<team>& teams)
+{
+	for(size_t i = 0; i != teams.size(); ++i) {
+		if(teams[i].owns_village(loc))
+			return i;
+	}
+
+	return -1;
+}
+
+bool get_village(const gamemap::location& loc, std::vector<team>& teams,
+                 size_t team_num, const unit_map& units)
+{
+	return get_village(loc,teams,team_num,units,NULL);
+}
+
+bool get_village(const gamemap::location& loc, std::vector<team>& teams,
+                 size_t team_num, const unit_map& units, int *action_timebonus)
+{
+	if(team_num < teams.size() && teams[team_num].owns_village(loc)) {
+		return false;
+	}
+
+	const bool has_leader = find_leader(units,int(team_num+1)) != units.end();
+	bool grants_timebonus = false;
+
+	//we strip the village off all other sides, unless it is held by an ally
+	//and we don't have a leader (and thus can't occupy it)
+	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
+		const unsigned int side = i - teams.begin() + 1;
+		if(team_num >= teams.size() || has_leader || teams[team_num].is_enemy(side)) {
+			i->lose_village(loc);
+			if(team_num + 1 != side && action_timebonus) {
+				grants_timebonus = true;
+			}
+		}
+	}
+
+	if(grants_timebonus) {
+		teams[team_num].set_action_bonus_count(1 + teams[team_num].action_bonus_count());
+		*action_timebonus = 1;
+	}
+
+	if(team_num >= teams.size()) {
+		return false;
+	}
+
+	if(has_leader) {
+		return teams[team_num].get_village(loc);
+	}
+
+	return false;
+}
+
+unit_map::iterator find_leader(unit_map& units, int side)
+{
+	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
+		if((int)i->second.side() == side && i->second.can_recruit())
+			return i;
+	}
+
+	return units.end();
+}
+
+unit_map::const_iterator find_leader(const unit_map& units, int side)
+{
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if((int)i->second.side() == side && i->second.can_recruit())
+			return i;
+	}
+
+	return units.end();
+}
+
+// Simple algorithm: no maximum number of patients per healer.
+void reset_resting(unit_map& units, unsigned int side)
+{
+	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
+		if (i->second.side() == side)
+			i->second.set_resting(true);
+	}
+}
+
+void calculate_healing(display& disp, const gamemap& map,
+                       unit_map& units, unsigned int side,
+					   const std::vector<team>& teams, bool update_display)
+{
+	// We look for all allied units, then we see if our healer is near them.
+	for (unit_map::iterator i = units.begin(); i != units.end(); ++i) {
+
+		if (!utils::string_bool(i->second.get_state("healable"),true))
+			continue;
+
+		unit_map::iterator curer = units.end();
+		std::vector<unit_map::iterator> healers;
+
+		int healing = 0;
+		std::string curing;
+
+		unit_ability_list heal = i->second.get_abilities("heals",i->first);
+		// Only consider healers on side which is starting now
+		// remove all healers not on this side
+		for(std::vector<std::pair<config*,gamemap::location> >::iterator h_it = heal.cfgs.begin(); h_it != heal.cfgs.end();) {
+			unit_map::iterator potential_healer = units.find(h_it->second);
+			wassert(potential_healer != units.end());
+			if(potential_healer->second.side()!=side) {
+				heal.cfgs.erase(h_it);
+			} else {
+				++h_it;
+			}
+		}
+
+		unit_abilities::effect heal_effect(heal,0,false);
+		healing = heal_effect.get_composite_value();
+
+		for(std::vector<std::pair<config*,gamemap::location> >::const_iterator heal_it = heal.cfgs.begin(); heal_it != heal.cfgs.end(); ++heal_it) {
+			if((*heal_it->first)["poison"] == "cured") {
+				curer = units.find(heal_it->second);
+				curing = "cured";
+			} else if(curing != "cured" && (*heal_it->first)["poison"] == "slowed") {
+				curer = units.find(heal_it->second);
+				curing = "slowed";
+			}
+		}
+
+		for(std::vector<unit_abilities::individual_effect>::const_iterator heal_loc = heal_effect.begin(); heal_loc != heal_effect.end(); ++heal_loc) {
+			healers.push_back(units.find(heal_loc->loc));
+		}
+
+		if(i->second.side() == side) {
+			unit_ability_list regen = i->second.get_abilities("regenerate",i->first);
+			unit_abilities::effect regen_effect(regen,0,false);
+			if(regen_effect.get_composite_value() > healing) {
+				healing = regen_effect.get_composite_value();
+				healers.clear();
+			}
+			if(regen.cfgs.size()) {
+				for(std::vector<std::pair<config*,gamemap::location> >::const_iterator regen_it = regen.cfgs.begin(); regen_it != regen.cfgs.end(); ++regen_it) {
+					if((*regen_it->first)["poison"] == "cured") {
+						curer = units.end();
+						curing = "cured";
+					} else if(curing != "cured" && (*regen_it->first)["poison"] == "slowed") {
+						curer = units.end();
+						curing = "slowed";
+					}
+				}
+			}
+			if (map.gives_healing(i->first)) {
+				if(map.gives_healing(i->first) > healing) {
+					healing = map.gives_healing(i->first);
+					healers.clear();
+				}
+				// FIXME
+				curing = "cured";
+				curer = units.end();
+			}
+			if(i->second.resting()) {
+				healing += game_config::rest_heal_amount;
+			}
+		}
+		if(utils::string_bool(i->second.get_state("poisoned"))) {
+			if(curing == "cured") {
+				i->second.set_state("poisoned","");
+				healing = 0;
+				healers.clear();
+				healers.push_back(curer);
+			} else if(curing == "slowed") {
+				healing = 0;
+				healers.clear();
+				healers.push_back(curer);
+			} else {
+				healers.clear();
+				healing = 0;
+				if(i->second.side() == side) {
+					healing = -game_config::poison_amount;
+				}
+			}
+		}
+
+		if (curing == "" && healing==0) {
+			continue;
+		}
+
+		int pos_max = i->second.max_hitpoints() - i->second.hitpoints();
+		int neg_max = -(i->second.hitpoints() - 1);
+		if(healing > pos_max) {
+			healing = pos_max;
+		} else if(healing < neg_max) {
+			healing = neg_max;
+		}
+		if(healing == 0) {
+			continue;
+		}
+
+		if (disp.turbo() || recorder.is_skipping()
+			|| disp.fogged(i->first.x, i->first.y)
+			|| !update_display
+			|| (i->second.invisible(i->first,units,teams) &&
+				teams[disp.viewing_team()].is_enemy(side))) {
+			// Simple path.
+			if (healing > 0)
+				i->second.heal(healing);
+			else if (healing < 0)
+				i->second.take_hit(-healing);
+			continue;
+		}
+
+		if (update_display){
+			// This is all the pretty stuff.
+			bool start_time_set = false;
+			int start_time = 0;
+			disp.scroll_to_tile(i->first.x, i->first.y, display::ONSCREEN);
+			disp.select_hex(i->first);
+
+			for(std::vector<unit_map::iterator>::iterator heal_anim_it = healers.begin(); heal_anim_it != healers.end(); ++heal_anim_it) {
+				(*heal_anim_it)->second.set_facing((*heal_anim_it)->first.get_relative_dir(i->first));
+				(*heal_anim_it)->second.set_healing(disp,(*heal_anim_it)->first);
+				if(start_time_set) {
+					start_time = minimum<int>(start_time,(*heal_anim_it)->second.get_animation()->get_first_frame_time());
+				} else {
+					start_time = (*heal_anim_it)->second.get_animation()->get_first_frame_time();
+				}
+			}
+			if (healing < 0) {
+				i->second.set_poisoned(disp,i->first, -healing);
+				start_time = minimum<int>(start_time, i->second.get_animation()->get_first_frame_time());
+				// FIXME
+				sound::play_sound("poison.ogg");
+				disp.float_label(i->first, lexical_cast<std::string>(-healing), 255,0,0);
+			} else {
+				i->second.set_healed(disp,i->first, healing);
+				start_time = minimum<int>(start_time, i->second.get_animation()->get_first_frame_time());
+				sound::play_sound("heal.wav");
+				disp.float_label(i->first, lexical_cast<std::string>(healing), 0,255,0);
+			}
+			// restart all anims in a synchronized way
+			i->second.restart_animation(disp, start_time);
+			for(std::vector<unit_map::iterator>::iterator heal_reanim_it = healers.begin(); heal_reanim_it != healers.end(); ++heal_reanim_it) {
+				(*heal_reanim_it)->second.restart_animation(disp, start_time);
+			}
+
+			bool finished;
+			do {
+				finished = (i->second.get_animation()->animation_finished());
+				disp.invalidate(i->first);
+				for(std::vector<unit_map::iterator>::iterator heal_fanim_it = healers.begin(); heal_fanim_it != healers.end(); ++heal_fanim_it) {
+					finished &= (*heal_fanim_it)->second.get_animation()->animation_finished();
+					disp.invalidate((*heal_fanim_it)->first);
+				}
+				if (healing > 0) {
+					i->second.heal(1);
+					--healing;
+				} else if (healing < 0) {
+					i->second.take_hit(1);
+					++healing;
+				}
+				finished &= (!healing);
+				disp.draw();
+				events::pump();
+				disp.delay(10);
+			} while (!finished);
+
+			i->second.set_standing(disp,i->first);
+			for(std::vector<unit_map::iterator>::iterator heal_sanim_it = healers.begin(); heal_sanim_it != healers.end(); ++heal_sanim_it) {
+				(*heal_sanim_it)->second.set_standing(disp,(*heal_sanim_it)->first);
+			}
+			disp.update_display();
+			events::pump();
+		}
+	}
+}
+
+
+unit get_advanced_unit(const game_data& info,
+                  unit_map& units,
+                  const gamemap::location& loc, const std::string& advance_to)
+{
+	const std::map<std::string,unit_type>::const_iterator new_type = info.unit_types.find(advance_to);
+	const unit_map::iterator un = units.find(loc);
+	if(new_type != info.unit_types.end() && un != units.end()) {
+		unit new_unit(un->second);
+		new_unit.get_experience(-new_unit.max_experience());
+		new_unit.advance_to(&(new_type->second));
+		return new_unit;
+	} else {
+		throw game::game_error("Could not find the unit being advanced"
+		                             " to: " + advance_to);
+	}
+}
+
+void advance_unit(const game_data& info,
+                  unit_map& units,
+                  gamemap::location loc, const std::string& advance_to)
+{
+	if(units.count(loc) == 0) {
+		return;
+	}
+	const unit& new_unit = get_advanced_unit(info,units,loc,advance_to);
+	LOG_NG << "firing advance event\n";
+	game_events::fire("advance",loc);
+	statistics::advance_unit(new_unit);
+
+	preferences::encountered_units().insert(new_unit.id());
+	LOG_STREAM(info, config) << "Added '" << new_unit.id() << "' to encountered units\n";
+
+	units.replace(new std::pair<gamemap::location,unit>(loc,new_unit));
+	LOG_NG << "firing post_advance event\n";
+	game_events::fire("post_advance",loc);
+}
+
+void check_victory(unit_map& units,
+                   std::vector<team>& teams)
+{
+	std::vector<int> seen_leaders;
+	for(unit_map::const_iterator i = units.begin();
+	    i != units.end(); ++i) {
+		if(i->second.can_recruit()) {
+			LOG_NG << "seen leader for side " << i->second.side() << "\n";
+			seen_leaders.push_back(i->second.side());
+		}
+	}
+
+	//clear villages for teams that have no leader
+	for(std::vector<team>::iterator tm = teams.begin(); tm != teams.end(); ++tm) {
+		if(std::find(seen_leaders.begin(),seen_leaders.end(),tm-teams.begin() + 1) == seen_leaders.end()) {
+			tm->clear_villages();
+		}
+	}
+
+	bool found_enemies = false;
+	bool found_player = false;
+
+	for(size_t n = 0; n != seen_leaders.size(); ++n) {
+		const size_t side = seen_leaders[n]-1;
+
+		wassert(side < teams.size());
+
+		for(size_t m = n+1; m != seen_leaders.size(); ++m) {
+			if(side < teams.size() && teams[side].is_enemy(seen_leaders[m])) {
+				found_enemies = true;
+			}
+		}
+
+		if (teams[side].is_human() || teams[side].is_persistent()) {
+			found_player = true;
+		}
+	}
+
+	if(found_enemies == false) {
+		if (found_player) {
+			game_events::fire("enemies defeated");
+		}
+
+		if (victory_conditions::victory_when_enemies_defeated() == false
+			&& (found_player || is_observer())){
+			// this level has asked not to be ended by this condition
+			return;
+		}
+
+		if(non_interactive()) {
+			std::cout << "winner: ";
+			for(std::vector<int>::const_iterator i = seen_leaders.begin(); i != seen_leaders.end(); ++i) {
+				std::cout << *i << " ";
+			}
+
+			std::cout << "\n";
+		}
+
+		LOG_NG << "throwing end level exception...\n";
+		throw end_level_exception(found_player ? VICTORY : DEFEAT);
+	}
+}
+
+time_of_day timeofday_at(const gamestatus& status,const unit_map& units,const gamemap::location& loc, const gamemap& map)
+{
+	int lighten = maximum<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
+	int darken = minimum<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
+
+	time_of_day tod = status.get_time_of_day(lighten + darken,loc);
+
+	if(loc.valid()) {
+		gamemap::location locs[7];
+		locs[0] = loc;
+		get_adjacent_tiles(loc,locs+1);
+
+		for(int i = 0; i != 7; ++i) {
+			const unit_map::const_iterator itor = units.find(locs[i]);
+			if(itor != units.end() &&
+			   itor->second.get_ability_bool("illuminates",itor->first) && !itor->second.incapacitated()) {
+				unit_ability_list illum = itor->second.get_abilities("illuminates",itor->first);
+				unit_abilities::effect illum_effect(illum,lighten,false);
+				int mod = illum_effect.get_composite_value();
+				if(mod + tod.lawful_bonus > illum.highest("max_value").first) {
+					mod = illum.highest("max_value").first - tod.lawful_bonus;
+				}
+				lighten = maximum<int>(mod, lighten);
+				darken = minimum<int>(mod, darken);
+			}
+		}
+	}
+	tod = status.get_time_of_day(lighten + darken,loc);
+
+	return tod;
+}
+
+int combat_modifier(const gamestatus& status,
+			const unit_map& units,
+			const gamemap::location& loc,
+			 unit_type::ALIGNMENT alignment,
+			const gamemap& map)
+{
+	const time_of_day& tod = timeofday_at(status,units,loc,map);
+
+	int bonus = tod.lawful_bonus;
+
+	if(alignment == unit_type::NEUTRAL)
+		bonus = 0;
+	else if(alignment == unit_type::CHAOTIC)
+		bonus = -bonus;
+
+	return bonus;
+}
+
+namespace {
+
+bool clear_shroud_loc(const gamemap& map, team& tm,
+                      const gamemap::location& loc,
+                      std::vector<gamemap::location>* cleared)
+{
+	bool result = false;
+	gamemap::location adj[7];
+	get_adjacent_tiles(loc,adj);
+	adj[6] = loc;
+	for(int i = 0; i != 7; ++i) {
+
+		//we clear one past the edge of the board, so that the half-hexes
+		//at the edge can also be cleared of fog/shroud
+		if(map.on_board(adj[i]) || map.on_board(loc)) {
+			const bool res = tm.clear_shroud(adj[i].x,adj[i].y) ||
+								tm.clear_fog(adj[i].x,adj[i].y);
+
+			if(res && cleared != NULL) {
+				cleared->push_back(adj[i]);
+			}
+
+			result |= res;
+		}
+	}
+
+	return result;
+}
+
+//returns true iff some shroud is cleared
+//seen_units will return new units that have been seen by this unit
+//if known_units is NULL, seen_units can be NULL and will not be changed
+bool clear_shroud_unit(const gamemap& map,
+		const gamestatus& status,
+		const game_data& gamedata,
+		const unit_map& units, const gamemap::location& loc,
+		std::vector<team>& teams, int team,
+		const std::set<gamemap::location>* known_units,
+		std::set<gamemap::location>* seen_units)
+{
+	std::vector<gamemap::location> cleared_locations;
+
+	const unit_map::const_iterator u = units.find(loc);
+	if(u == units.end()) {
+		return false;
+	}
+
+	unit_map temp_units(u->first, u->second);
+
+	paths p(map,status,gamedata,temp_units,loc,teams,true,false,teams[team]);
+	for(paths::routes_map::const_iterator i = p.routes.begin();
+	    i != p.routes.end(); ++i) {
+		clear_shroud_loc(map,teams[team],i->first,&cleared_locations);
+	}
+
+	//clear the location the unit is at
+	clear_shroud_loc(map,teams[team],loc,&cleared_locations);
+
+	for(std::vector<gamemap::location>::const_iterator it =
+	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
+
+		const unit_map::const_iterator sighted = units.find(*it);
+		if(sighted != units.end() &&
+		  (sighted->second.invisible(*it,units,teams) == false
+		  || teams[team].is_enemy(sighted->second.side()) == false)) {
+			if(seen_units == NULL || known_units == NULL) {
+				static const std::string sighted("sighted");
+				game_events::raise(sighted,*it,loc);
+			} else if(known_units->count(*it) == 0 && !utils::string_bool(sighted->second.get_state("stoned"))) {
+				seen_units->insert(*it);
+			}
+		}
+	}
+
+	return cleared_locations.empty() == false;
+}
+
+}
+
+void recalculate_fog(const gamemap& map, const gamestatus& status,
+		const game_data& gamedata, unit_map& units,
+		std::vector<team>& teams, int team) {
+
+	teams[team].refog();
+
+	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
+		if((int)i->second.side() == team+1) {
+			const unit_movement_resetter move_resetter(i->second);
+
+			clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
+		}
+	}
+	game_events::pump();
+}
+
+bool clear_shroud(display& disp, const gamestatus& status,
+		const gamemap& map, const game_data& gamedata,
+                  unit_map& units, std::vector<team>& teams, int team)
+{
+	if(teams[team].uses_shroud() == false && teams[team].uses_fog() == false)
+		return false;
+
+	bool result = false;
+
+	unit_map::iterator i;
+	for(i = units.begin(); i != units.end(); ++i) {
+		if((int)i->second.side() == team+1) {
+			const unit_movement_resetter move_resetter(i->second);
+
+			result |= clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
+		}
+	}
+	game_events::pump();
+
+	recalculate_fog(map,status,gamedata,units,teams,team);
+
+	disp.labels().recalculate_shroud();
+
+	return result;
+}
+
+size_t move_unit(display* disp, const game_data& gamedata,
+                 const gamestatus& status, const gamemap& map,
+                 unit_map& units, std::vector<team>& teams,
+                 std::vector<gamemap::location> route,
+                 replay* move_recorder, undo_list* undo_stack,
+                 gamemap::location *next_unit, bool continue_move, bool should_clear_shroud)
+{
+	wassert(route.empty() == false);
+
+	//stop the user from issuing any commands while the unit is moving
+	const events::command_disabler disable_commands;
+
+	unit_map::iterator ui = units.find(route.front());
+
+	wassert(ui != units.end());
+
+	ui->second.set_goto(gamemap::location());
+
+	const size_t team_num = ui->second.side()-1;
+
+	const bool skirmisher = ui->second.get_ability_bool("skirmisher",ui->first);
+
+	team& team = teams[team_num];
+	const bool check_shroud = should_clear_shroud && team.auto_shroud_updates() &&
+		(team.uses_shroud() || team.uses_fog());
+
+	//if we use shroud/fog of war, count out the units we can currently see
+	std::set<gamemap::location> known_units;
+	if(check_shroud) {
+		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
+			if(team.fogged(u->first.x,u->first.y) == false) {
+				known_units.insert(u->first);
+				team.see(u->second.side()-1);
+			}
+		}
+	}
+
+	//see how far along the given path we can move
+	const int starting_moves = ui->second.movement_left();
+	int moves_left = starting_moves;
+	std::set<gamemap::location> seen_units;
+	bool discovered_unit = false;
+	bool should_clear_stack = false;
+	std::vector<gamemap::location>::const_iterator step;
+	for(step = route.begin()+1; step != route.end(); ++step) {
+		const gamemap::TERRAIN terrain = map[step->x][step->y];
+
+		const unit_map::const_iterator enemy_unit = units.find(*step);
+
+		const int mv = ui->second.movement_cost(terrain);
+		if(discovered_unit || continue_move == false && seen_units.empty() == false ||
+		   mv > moves_left || enemy_unit != units.end() && team.is_enemy(enemy_unit->second.side())) {
+			break;
+		} else {
+			moves_left -= mv;
+		}
+
+		if(!skirmisher && enemy_zoc(map,units,teams,*step,team,ui->second.side())) {
+			moves_left = 0;
+		}
+
+		//if we use fog or shroud, see if we have sighted an enemy unit, in
+		//which case we should stop immediately.
+		if(check_shroud) {
+			if(units.count(*step) == 0 && !map.is_village(*step)) {
+				LOG_NG << "checking for units from " << (step->x+1) << "," << (step->y+1) << "\n";
+
+				//temporarily reset the unit's moves to full
+				const unit_movement_resetter move_resetter(ui->second);
+
+				//we have to swap out any unit that is already in the hex, so we can put our
+				//unit there, then we'll swap back at the end.
+				const temporary_unit_placer unit_placer(units,*step,ui->second);
+
+				should_clear_stack |= clear_shroud_unit(map,status,gamedata,units,*step,teams,
+				                                        ui->second.side()-1,&known_units,&seen_units);
+
+				if(should_clear_stack) {
+					disp->invalidate_all();
+				}
+			}
+		}
+
+		//check if we have discovered an invisible enemy unit
+		gamemap::location adjacent[6];
+		get_adjacent_tiles(*step,adjacent);
+
+		for(int i = 0; i != 6; ++i) {
+			//check if we are checking ourselves
+			if(adjacent[i] == ui->first)
+				continue;
+
+			const unit_map::const_iterator it = units.find(adjacent[i]);
+			if(it != units.end() && teams[ui->second.side()-1].is_enemy(it->second.side()) &&
+			   it->second.invisible(it->first,units,teams)) {
+				discovered_unit = true;
+				should_clear_stack = true;
+				moves_left = 0;
+				break;
+			}
+		}
+	}
+
+	//make sure we don't tread on another unit
+	std::vector<gamemap::location>::const_iterator begin = route.begin();
+
+	std::vector<gamemap::location> steps(begin,step);
+	while (!steps.empty()) {
+		gamemap::location const &loc = steps.back();
+		if (units.count(loc) == 0)
+			break;
+		moves_left += ui->second.movement_cost(map[loc.x][loc.y]);
+		steps.pop_back();
+	}
+
+	wassert(steps.size() <= route.size());
+
+	//if we can't get all the way there and have to set a go-to.
+	if(steps.size() != route.size() && discovered_unit == false) {
+		if(seen_units.empty() == false) {
+			ui->second.set_interrupted_move(route.back());
+		} else {
+			ui->second.set_goto(route.back());
+		}
+	} else {
+		ui->second.set_interrupted_move(gamemap::location());
+	}
+
+	if(steps.size() < 2) {
+		return 0;
+	}
+
+	if (next_unit != NULL)
+		*next_unit = steps.back();
+
+	//move the unit on the screen. Hide the unit in its current location, but don't actually
+	//remove it until the move is done, so that while the unit is moving status etc will
+	//still display the correct number of units.
+	if(disp != NULL) {
+		ui->second.set_hidden(true);
+		disp->invalidate(ui->first);
+		unit_display::move_unit(*disp,map,steps,ui->second,units,teams);
+		ui->second.set_hidden(false);
+	}
+
+	ui->second.set_movement(moves_left);
+
+	std::pair<gamemap::location,unit> *p = units.extract(ui->first);
+	p->first = steps.back();
+	units.add(p);
+	ui = units.find(p->first);
+	if(disp != NULL) {
+		disp->invalidate_unit();
+		disp->invalidate(steps.back());
+		disp->draw();
+	}
+
+	if(move_recorder != NULL) {
+		move_recorder->add_movement(steps.front(),steps.back());
+	}
+
+	bool event_mutated = false;
+
+	int orig_village_owner = -1;
+	int action_time_bonus = 0;
+
+	if(map.is_village(steps.back())) {
+		orig_village_owner = village_owner(steps.back(),teams);
+
+		if(size_t(orig_village_owner) != team_num) {
+			ui->second.set_movement(0);
+			event_mutated = get_village(steps.back(),teams,team_num,units,&action_time_bonus);
+		}
+	}
+
+	if(disp != NULL) {
+		// clear display helpers before firing events
+		disp->unhighlight_reach();
+		disp->set_route(NULL);
+		disp->draw();
+	}
+	if(game_events::fire("moveto",steps.back())) {
+		event_mutated = true;
+	}
+
+	ui = units.find(steps.back());
+	if(undo_stack != NULL) {
+		if(event_mutated || should_clear_stack || ui == units.end()) {
+			apply_shroud_changes(*undo_stack,disp,status,map,gamedata,units,teams,team_num);
+			undo_stack->clear();
+		} else {
+			//MP_COUNTDOWN: added param
+			undo_stack->push_back(undo_action(ui->second,steps,starting_moves,action_time_bonus,orig_village_owner));
+		}
+	}
+
+	if(disp != NULL) {
+
+		//show messages on the screen here
+		if(discovered_unit) {
+			//we've been ambushed, so display an appropriate message
+			font::add_floating_label(_("Ambushed!"),font::SIZE_XLARGE,font::BAD_COLOUR,
+			                         disp->map_area().w/2,disp->map_area().h/3,
+									 0.0,0.0,100,disp->map_area(),font::CENTER_ALIGN);
+		}
+
+		if(continue_move == false && seen_units.empty() == false) {
+			//the message depends on how many units have been sighted, and whether
+			//they are allies or enemies, so calculate that out here
+			int nfriends = 0, nenemies = 0;
+			for(std::set<gamemap::location>::const_iterator i = seen_units.begin(); i != seen_units.end(); ++i) {
+				LOG_NG << "processing unit at " << (i->x+1) << "," << (i->y+1) << "\n";
+				const unit_map::const_iterator u = units.find(*i);
+
+				//unit may have been removed by an event.
+				if(u == units.end()) {
+					LOG_NG << "was removed\n";
+					continue;
+				}
+
+				if(team.is_enemy(u->second.side())) {
+					++nenemies;
+				} else {
+					++nfriends;
+				}
+
+				LOG_NG << "processed...\n";
+				teams[team_num].see(u->second.side()-1);
+			}
+
+			const char* msg_id;
+
+			//the message we display is different depending on whether units sighted
+			//were enemies or friends, and whether there is one or more
+			if(seen_units.size() == 1) {
+				if(nfriends == 1) {
+					msg_id = N_("Friendly unit sighted");
+				} else {
+					msg_id = N_("Enemy unit sighted!");
+				}
+			}
+			else if(nfriends == 0 || nenemies == 0) {
+				if(nfriends > 0) {
+					msg_id = N_("$friends Friendly units sighted");
+				} else {
+					msg_id = N_("$enemies Enemy units sighted!");
+				}
+			}
+			else {
+				msg_id = N_("Units sighted! ($friends friendly, $enemies enemy)");
+			}
+
+			utils::string_map symbols;
+			symbols["friends"] = lexical_cast<std::string>(nfriends);
+			symbols["enemies"] = lexical_cast<std::string>(nenemies);
+
+			std::stringstream msg;
+			msg << gettext(msg_id);
+
+			if(steps.size() < route.size()) {
+				//see if the "Continue Move" action has an associated hotkey
+				const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
+				if(!hk.null()) {
+					symbols["hotkey"] = hk.get_name();
+					msg << '\n' << _("(press $hotkey to continue)");
+				}
+			}
+			const std::string message = utils::interpolate_variables_into_string(msg.str(), &symbols);
+
+			font::add_floating_label(message,font::SIZE_XLARGE,font::BAD_COLOUR,
+			                         disp->map_area().w/2,disp->map_area().h/3,
+									 0.0,0.0,100,disp->map_area(),font::CENTER_ALIGN);
+		}
+
+		disp->draw();
+		disp->recalculate_minimap();
+	}
+
+	wassert(steps.size() <= route.size());
+
+	return steps.size();
+}
+
+bool unit_can_move(const gamemap::location& loc, const unit_map& units,
+                   const gamemap& map, const std::vector<team>& teams)
+{
+	const unit_map::const_iterator u_it = units.find(loc);
+	wassert(u_it != units.end());
+
+	const unit& u = u_it->second;
+	const team& current_team = teams[u.side()-1];
+
+	if(!u.attacks_left() && u.movement_left()==0)
+		return false;
+
+	//units with goto commands that have already done their gotos this turn
+	//(i.e. don't have full movement left) should be red
+	if(u.has_moved() && u.has_goto()) {
+		return false;
+	}
+
+	gamemap::location locs[6];
+	get_adjacent_tiles(loc,locs);
+	for(int n = 0; n != 6; ++n) {
+		if(map.on_board(locs[n])) {
+			const unit_map::const_iterator i = units.find(locs[n]);
+			if(i != units.end()) {
+				if(!i->second.incapacitated() && current_team.is_enemy(i->second.side())) {
+					return true;
+				}
+			}
+
+			if(u.movement_cost(map[locs[n].x][locs[n].y]) <= u.movement_left()) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& status, const gamemap& map,
+	const game_data& gamedata, unit_map& units, std::vector<team>& teams, int team)
+{
+	// No need to do this if the team isn't using fog or shroud.
+	if(!teams[team].uses_shroud() && !teams[team].uses_fog())
+		return;
+
+	/*
+		This function works thusly:
+		1. run through the list of undo_actions
+		2. for each one, play back the unit's move
+		3. for each location along the route, clear any "shrouded" squares that the unit can see
+		4. clear the undo_list
+		5. call clear_shroud to update the fog of war for each unit.
+		6. fix up associated display stuff (done in a similar way to turn_info::undo())
+	*/
+	for(undo_list::iterator un = undos.begin(); un != undos.end(); ++un) {
+		std::cout << "Turning an undo...\n";
+		if(un->is_recall() || un->is_recruit()) continue;
+		//we're not really going to mutate the unit, just temporarily
+		//set its moves to maximum, but then switch them back
+		const unit_movement_resetter move_resetter(un->affected_unit);
+
+		std::vector<gamemap::location>::const_iterator step;
+		for(step = un->route.begin(); step != un->route.end(); ++step) {
+			//we have to swap out any unit that is already in the hex, so we can put our
+			//unit there, then we'll swap back at the end.
+			const temporary_unit_placer unit_placer(units,*step,un->affected_unit);
+			clear_shroud_unit(map,status,gamedata,units,*step,teams,team,NULL,NULL);
+
+			//FIXME
+			//there is potential for a bug, here. If the "sighted"
+			//events, raised by the clear_shroud_unit function,
+			//loops on all units, changing them all, the unit which
+			//was swapped by the temporary unit placer will not be
+			//affected. However, if we place the pump() out of the
+			//temporary_unit_placer scope, the "sighted" event will
+			//be raised with an invalid source unit, which is even
+			//worse.
+			game_events::pump();
+		}
+	}
+	if(disp != NULL) {
+		disp->invalidate_unit();
+		disp->invalidate_game_status();
+		clear_shroud(*disp,status,map,gamedata,units,teams,team);
+		disp->recalculate_minimap();
+		disp->unhighlight_reach();
+		disp->set_route(NULL);
+	} else {
+		recalculate_fog(map,status,gamedata,units,teams,team);
+	}
+}
+
+bool backstab_check(const gamemap::location& attacker_loc,
+	const gamemap::location& defender_loc,
+	const unit_map& units, const std::vector<team>& teams)
+{
+	const unit_map::const_iterator defender =
+		units.find(defender_loc);
+	if(defender == units.end()) return false; // No defender
+
+	gamemap::location adj[6];
+	get_adjacent_tiles(defender_loc, adj);
+	int i;
+	for(i = 0; i != 6; ++i) {
+		if(adj[i] == attacker_loc)
+			break;
+	}
+	if(i >= 6) return false;  // Attack not from adjacent location
+
+	const unit_map::const_iterator opp =
+		units.find(adj[(i+3)%6]);
+	if(opp == units.end()) return false; // No opposite unit
+	if(opp->second.incapacitated()) return false;
+	if(size_t(defender->second.side()-1) >= teams.size() ||
+		size_t(opp->second.side()-1) >= teams.size())
+		return true; // If sides aren't valid teams, then they are enemies
+        if(teams[defender->second.side()-1].is_enemy(opp->second.side()))
+                return true; // Defender and opposite are enemies
+	return false; // Defender and opposite are friends
+}

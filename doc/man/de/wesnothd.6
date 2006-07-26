@@ -1,0 +1,152 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.TH WESNOTHD 6 "2005" "wesnothd" "Battle for Wesnoth-Mehrspielernetzwerkdaemon"
+.
+.SH NAME
+.
+wesnothd \- Battle for
+.B Wesnoth
+-Mehrspielernetzwerkdaemon
+.
+.SH SYNTAX
+.
+.B wesnothd
+.RB [\| \-dvV \|]
+.RB [\| \-c
+.IR Pfad \|]
+.RB [\| \-p
+.IR Port \|]
+.RB [\| \-t
+.IR Zahl \|]
+.
+.SH BESCHREIBUNG
+.
+Verwaltet Battle for Wesnoth Mehrspielerpartien. Unter http://www.wesnoth.org/wiki/ServerAdministration
+können Sie weitere Hinweise finden, wie Sie den Server mittels des Wesnoth Clients oder des Sockets steuern.
+.
+.SH KOMMANDOZEILENOPTIONEN
+.
+.TP
+.BI -c,\ --config \ Pfad
+Legt die zu verwendende Konfigurationsdatei fest. Die Syntax ist im Abschnitt
+.B SERVERKONFIGURATION
+weiter unten beschrieben.
+.TP
+.B -d,\ --daemon
+Startet das Programm als Daemon.
+.TP
+.B -h,\ --help
+Gibt die möglichen Kommandozeilenoptionen aus.
+.TP
+.BR -p,\ --port
+Weist dem Server einen bestimmten Port zu. Wenn kein Port angegeben wird, wird Port 15000 verwendet.
+.TP
+.BI -t , \ --threads\ <WERT>
+Legt die Anzahl an Threads für Netzwerk-I/O fest. (Standard: 5)
+.TP
+.B -v,\ --verbose
+Aktiviert die Anzeige von ausführlicheren Meldungen des Servers.
+.TP
+.B -V,\ --version
+Zeigt die Versionsnummer an und beendet das Programm.
+.
+.SH SERVERKONFIGURATION
+.
+.SS Der allgemeine Aufbau:
+.
+.P
+[\fIElement\fR]
+.IP
+Schlüssel="\fIWert\fR"
+.IP
+Schlüssel="\fIWert\fR,\fIWert\fR,..."
+.P
+[/\fIElement\fR]
+.
+.SS "Globale Schlüssel:"
+.
+.TP
+.B connections_allowed
+Die Anzahl der erlaubten Verbindungen von der selben IP.
+.TP
+.B disallow_names
+Namen/Nicks, die nicht vom Server zugelassen werden. `*' und `?' sind erlaubt. Siehe 
+.BR glob (7) 
+für weitere Informationen zu Wildcards.
+Standardwerte (werden benutzt, wenn dieser Schlüssel nicht gesetzt wurde) sind: `server,ai,player,network,human,admin,computer'.
+.TP
+.B max_messages
+Die Anzahl der erlaubten Nachrichten in \fBmessages_time_period\fR.
+.TP
+.B messages_time_period
+Der Zeitraum (in Sekunden) in dem "message flooding" erkannt wird.
+.TP
+.B motd
+Die "Nachricht des Tages".
+.TP
+.B passwd
+Das Passwort um auf dem Server Administratorrechte zu erhalten. Es beginnt per Konvention mit "admin ".
+.TP
+.B versions_accepted
+Eine durch Komma getrennte Liste der Programmversionen, die der Server zulässt. `*' und `?' sind erlaubt.
+.br
+Beispiel: versions_accepted="*" akzeptiert alle Versionen.
+.
+.SS "Globale Elemente:"
+.
+.P
+.B [redirect]
+Ein Element um bestimmte Programmversionen anzugeben, die auf einen anderen Server umgeleitet werden sollen.
+.RS
+.TP
+.B host
+Die Adresse des Rechners, zu dem umgeleitet wird.
+.TP
+.B port
+Der dabei zu verwendende Port.
+.TP
+.B version
+Eine durch Komma getrennte Liste der Versionen, die umgeleitet werden sollen. Verhält sich genauso wie
+.B versions_accepted
+in Bezug auf Wildcards.
+.RE
+.P
+.B [proxy]
+Ein Element, das benutzt wird um dem Server mitzuteilen, wie ein Proxy zu agieren und somit alle Anfragen des mit ihm verbundenen Rechners an den angegebenen Server weiterzuleiten.
+Es werden die gleichen Schlüssel wie bei [redirect] akzeptiert.
+.
+.SH AUTOR
+.
+Geschrieben von David White <davidnwhite@verizon.net>.
+Bearbeitet von Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> und Soliton <soliton@sonnenkinder.org>.
+Übersetzt von Jan-Heiner Laberenz <Jan-Heiner@arcor.de> und Nils Kneuper <crazy-ivanovic@gmx.net>, Soliton <soliton@sonnenkinder.org>.
+Diese Beschreibung stammt im Original von Cyril Bouthors <cyril@bouthors.org>.
+.br
+Besuchen Sie auch die offizielle Webseite: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003-2006 David White <davidnwhite@verizon.net>
+.br
+Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU General Public License, wie von der Free Software Foundation veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß Version 2 der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+.br
+Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
+.br
+Sie sollten eine Kopie der GNU General Public License zusammen mit diesem Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+.
+.SH SIEHE AUCH
+.
+wesnoth(6), wesnoth_editor(6)

@@ -1,0 +1,116 @@
+#!/usr/bin/perl
+
+#   Copyright (C) 2003 by Yann Dirson <ydirson@altern.org>
+#   Part of the Battle for Wesnoth Project http://wesnoth.org/
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License.
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY.
+#
+#   See the COPYING file for more details.
+
+# This script updates the language-selection dialog in
+# src/language.cpp to add static tags about the translation status for
+# each language.
+#
+# It uses the "postats" tool from the "potool" package.
+
+use strict;
+use warnings;
+
+use File::Copy qw(move);
+
+my @coredomains = ('wesnoth', 'wesnoth-lib', 'wesnoth-httt');
+
+open LANG, "<src/language.cpp"
+  or die "cannot open src/language.cpp";
+
+open NEW, ">src/language.cpp.new"
+  or die "cannot open src/language.cpp.new";
+
+my (@complete, @partial, @incomplete);
+
+my $started=0;
+while (<LANG>) {
+  # wait to be sure we are in the right array
+  if (m/^language_def known_languages/) {
+    $started = 1;
+    print NEW ;
+    next;
+  }
+  print NEW and next unless $started;
+
+  # quit at end of array
+  last if m/^$/;
+
+  if (m/^(.*language_def)\("(\w\w+)", "([^\(]*(?: \([^\(\d]*\))?)(?: \(.+\))?"\)(.*)$/) {
+    # print " /*$1\"$2\", \"$3\"$4 */\n";
+    my ($prefix, $locale, $langname, $suffix) = ($1, $2, $3, $4);
+    my $langcode = $locale;
+    unless (-r "po/wesnoth/${langcode}.po") {
+      ($langcode, undef) = split /_/, $locale;
+    }
+
+    my @scorestrings;
+
+    # official score
+    my $stat = `postats po/wesnoth*/${langcode}.po | grep ^x`;
+    $stat =~ m/x.*x.*\((\d+)%\)/;
+    my $score = $1;
+    if ($score < 100) {
+      unshift @scorestrings, "$score\%";
+    }
+
+    # core score
+    my $files = join ' ', map { "po/$_/${langcode}.po" } @coredomains;
+    $stat = `postats $files | grep ^x`;
+    $stat =~ m/x.*x.*\((\d+)%\)/;
+    my $corescore = $1;
+    if ($corescore < 100 or $score < 98) {
+      unshift @scorestrings, "$corescore\%";
+    }
+
+    my $scorestring = join ' / ', @scorestrings;
+    if ($corescore < 98) {
+      push @incomplete, [ $prefix, "\"$locale\"", $langname, " (incomplete: $scorestring)", $suffix ] ;
+    } elsif ($score < 98) {
+      push @partial, [ $prefix, "\"$locale\"", $langname, " (partial: $scorestring)", $suffix ] ;
+    } elsif ($scorestring ne '') {
+      push @complete, [ $prefix, "\"$locale\"", $langname, " ($scorestring)", $suffix ] ;
+    } else {
+      push @complete, [ $prefix, "\"$locale\"", $langname, '', $suffix ] ;
+    }
+
+  } else {
+    print NEW;
+  }
+}
+
+sub compare {
+  my $a1 = $a->[2];
+  my $b1 = $b->[2];
+  if ($a1 =~ m/.* \((.*)\)/) {
+    $a1 = $1;
+  }
+  if ($b1 =~ m/.* \((.*)\)/) {
+    $b1 = $1;
+  }
+  $a1 cmp $b1;
+}
+
+# do print them in order
+foreach my $def ((sort compare @complete), (sort compare @partial), (sort compare @incomplete)) {
+  printf NEW "%s(%-7s, \"%s%s\")%s\n", @$def;
+}
+
+print NEW $_; # end of array marker
+while (<LANG>) { print NEW };
+
+close NEW;
+close LANG;
+
+move ("src/language.cpp","src/language.cpp.bak") or
+  die "cannot rename src/language.cpp to src/language.cpp.bak";
+move ("src/language.cpp.new","src/language.cpp") or
+  die "cannot rename src/language.cpp.new to src/language.cpp";

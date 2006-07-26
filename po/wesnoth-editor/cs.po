@@ -1,0 +1,282 @@
+# Czech translations for Battle for Wesnoth package.
+# Copyright (C) 2004 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Automatically generated, 2004.
+# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Battle of Wesnoth\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2006-06-12 22:22+0200\n"
+"PO-Revision-Date: 2005-12-13 09:42+0100\n"
+"Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
+"Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: KBabel 1.10\n"
+
+#: data/themes/editor.cfg:461
+msgid "File"
+msgstr "Soubor"
+
+#: data/themes/editor.cfg:470
+msgid "Edit"
+msgstr "Úpravy"
+
+#: data/themes/editor.cfg:477
+msgid "Settings"
+msgstr "Nastavení"
+
+#: src/editor/editor.cpp:162
+msgid "Draw tiles"
+msgstr "Kresli políčka"
+
+#: src/editor/editor.cpp:164
+msgid "Fill"
+msgstr "Vyplň"
+
+#: src/editor/editor.cpp:166
+msgid "Set player's starting position"
+msgstr "Urči hráčovu startovní pozici"
+
+#: src/editor/editor.cpp:168
+msgid "Zoom in"
+msgstr "Přibliž pohled"
+
+#: src/editor/editor.cpp:170
+msgid "Zoom out"
+msgstr "Oddal pohled"
+
+#: src/editor/editor.cpp:172
+msgid "Undo"
+msgstr "Zpátky"
+
+#: src/editor/editor.cpp:174
+msgid "Redo"
+msgstr "Vrať"
+
+#: src/editor/editor.cpp:176
+msgid "Zoom to default view"
+msgstr "Přibliž/oddal na implicitní pohled"
+
+#: src/editor/editor.cpp:178
+msgid "Toggle grid"
+msgstr "Přepni mřížku"
+
+#: src/editor/editor.cpp:180
+msgid "Resize the map"
+msgstr "Změň velikost mapy"
+
+#: src/editor/editor.cpp:182
+msgid "Flip map"
+msgstr "Obrať mapu"
+
+#: src/editor/editor.cpp:380
+msgid "Language"
+msgstr "Jazyk"
+
+#: src/editor/editor.cpp:381
+msgid "Choose your preferred language:"
+msgstr "Vyber si preferovaný jazyk:"
+
+#: src/editor/editor.cpp:395 src/editor/editor_main.cpp:252
+msgid "Battle for Wesnoth Map Editor"
+msgstr "Editor hry Bitva o Wesnoth"
+
+#: src/editor/editor.cpp:419
+msgid "Save the Map As"
+msgstr "Ulož mapu jako"
+
+#: src/editor/editor.cpp:430
+msgid "The map already exists. Do you want to overwrite it?"
+msgstr "Mapa už existuje. Chceš ji přepsat?"
+
+#: src/editor/editor.cpp:453 src/editor/editor.cpp:1247
+msgid "Player"
+msgstr "Hráč"
+
+#: src/editor/editor.cpp:456
+msgid "Which Player?"
+msgstr "Který hráč?"
+
+#: src/editor/editor.cpp:457
+msgid "Which player should start here?"
+msgstr "Který hráč by zde měl začínat?"
+
+#: src/editor/editor.cpp:508
+msgid "Choose a Map to Load"
+msgstr "Vyber si uloženou pozici"
+
+#: src/editor/editor.cpp:512
+msgid ""
+"Warning: Illegal characters found in the map name. Please save under a "
+"different name."
+msgstr "Upozornění: Nedovolený znak v názvu mapy. Ulož pod jiným názvem."
+
+#: src/editor/editor.cpp:530 src/editor/editor.cpp:609
+msgid "The file does not contain a valid map."
+msgstr "Soubor neobsahuje platnou mapu."
+
+#: src/editor/editor.cpp:671
+msgid "'$filename' does not exist or can not be read as a file."
+msgstr "„$filename“ neexistuje nebo ho nelze přečíst jako soubor."
+
+#: src/editor/editor.cpp:683
+msgid "Load failed: "
+msgstr "Načtení se nezdařilo: "
+
+#: src/editor/editor.cpp:883
+msgid "You must have a hex selected on the board."
+msgstr "Musíš vybrat nějaký šestiúhelník na hrací ploše."
+
+#: src/editor/editor.cpp:1132
+msgid "Quit Editor"
+msgstr "Ukončení editoru"
+
+#: src/editor/editor.cpp:1137
+msgid "Do you want to save the map before quitting?"
+msgstr "Chceš mapu před ukončením uložit?"
+
+#: src/editor/editor.cpp:1169
+msgid "Map saved."
+msgstr "Mapa byla uložena."
+
+#: src/editor/editor.cpp:1176
+msgid "Could not save the map: $msg"
+msgstr "Nepodařilo se uložit mapu: $msg"
+
+#: src/editor/editor.cpp:1191
+msgid "Error: Illegal character in filename."
+msgstr "Chyba: nedovolený znak v názvu souboru"
+
+#: src/editor/editor_palettes.cpp:319
+msgid "FG"
+msgstr "Popředí"
+
+#: src/editor/editor_palettes.cpp:321
+msgid "BG"
+msgstr "Pozadí"
+
+#~ msgid "Player "
+#~ msgstr "Hráč"
+
+#~ msgid "Delete File"
+#~ msgstr "Smaž soubor"
+
+#~ msgid "Deletion of the file failed."
+#~ msgstr "Smazání souboru se nezdařilo."
+
+#~ msgid "Your modifications to the map will be lost. Continue?"
+#~ msgstr "Přijdeš o změny, které jsi v mapě udělal. Pokračovat?"
+
+#~ msgid "Create New Map"
+#~ msgstr "Vytvoř novou mapu"
+
+#~ msgid "Width:"
+#~ msgstr "Šířka:"
+
+#~ msgid "Height:"
+#~ msgstr "Výška:"
+
+#~ msgid "Generate New Map"
+#~ msgstr "Vygeneruj novou mapu"
+
+#~ msgid "Generate Random Map"
+#~ msgstr "Vygeneruj náhodnou mapu"
+
+#~ msgid "Random Generator Settings"
+#~ msgstr "Nastavení generátoru"
+
+#~ msgid "Cancel"
+#~ msgstr "Zrušit"
+
+#~ msgid "Map creation failed."
+#~ msgstr "Mapu se nepodařilo vygenerovat."
+
+#~ msgid "Close Window"
+#~ msgstr "Zavři okno"
+
+#~ msgid "Preferences"
+#~ msgstr "Nastavení"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Rychlost posouvání:"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Okno/Celá obrazovka"
+
+#~ msgid "Show Grid"
+#~ msgstr "Zobrazuj mřížku"
+
+#~ msgid "Video Mode"
+#~ msgstr "Grafický mód"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Klávesové zkratky"
+
+#~ msgid "Resize Map"
+#~ msgstr "Změň velikost"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "X-Axis"
+#~ msgstr "X-ová osa"
+
+#~ msgid "Y-Axis"
+#~ msgstr "Y-ová osa"
+
+#~ msgid "Flip around (this may change the dimensions of the map):"
+#~ msgstr "Převrať dokola (může změnit rozměry mapy):"
+
+#~ msgid "Map Generator"
+#~ msgstr "Generátor map"
+
+#~ msgid "Players:"
+#~ msgstr "Počet hráčů:"
+
+#~ msgid "Number of Hills:"
+#~ msgstr "Počet kopců:"
+
+#~ msgid "Max Hill Size:"
+#~ msgstr "Maximální velikost kopce:"
+
+#~ msgid "Villages:"
+#~ msgstr "Vesnic:"
+
+#~ msgid "Landform:"
+#~ msgstr "Typ krajiny:"
+
+#~ msgid "Roads Between Castles"
+#~ msgstr "Cesty mezi hrady"
+
+#~ msgid "/1000 tiles"
+#~ msgstr "/1000 polí"
+
+#~ msgid "Coastal"
+#~ msgstr "Pobřeží"
+
+#~ msgid "Inland"
+#~ msgstr "Vnitrozemí"
+
+#~ msgid "Island"
+#~ msgstr "Ostrov"
+
+#~ msgid "Draw"
+#~ msgstr "Kreslení"
+
+#~ msgid "Flood"
+#~ msgstr "Vyplň"
+
+#~ msgid "Start P"
+#~ msgstr "Poč. pos."
+
+#~ msgid "Paste"
+#~ msgstr "Vlož"
+
+#~ msgid "Ok"
+#~ msgstr "OK"

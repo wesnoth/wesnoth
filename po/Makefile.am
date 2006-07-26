@@ -1,0 +1,13 @@
+SUBDIRS = wesnoth wesnoth-editor wesnoth-lib wesnoth-tutorial wesnoth-httt wesnoth-ei wesnoth-trow wesnoth-tb wesnoth-tsg wesnoth-utbs
+
+EXTRA_DIST = Makefile.in.in
+
+update-po:
+	@for dir in $(SUBDIRS); do \
+		( cd $$dir && make $@ || exit $? ); \
+	done
+
+distclean-local:
+	@for dir in $(SUBDIRS); do \
+		rm -f $$dir/Makefile.in.in ; \
+	done

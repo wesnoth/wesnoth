@@ -1,0 +1,56 @@
+#!/usr/bin/perl
+
+#   Copyright (C) 2005 by ott
+#   Part of the Battle for Wesnoth Project http://wesnoth.org/
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License.
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY.
+#
+#   See the COPYING file for more details.
+
+=head1 NAME
+
+tagfind - find and print attributes associated with WML tags in source files
+
+=head1 SYNOPSIS
+
+    find /usr/share/wesnoth -name '*.cfg' -print | xargs tagfind
+
+=head1 DESCRIPTION
+
+This script helps to keep track of actual usage of WML, as opposed to
+its implemented syntax.  Given a list of input WML files, it lists the
+attributes that are associated with each WML tag.  Each attribute is
+listed once.  Tags without attributes are not listed.
+
+Basic syntax checking is done.  Bad tag nesting is flagged and the
+script will terminate at that point.
+
+Using a simple stack to keep track of the current tag is Ayin's idea.
+
+=cut
+
+# $Revision$
+
+while ( <> ) {
+    s/\s+//g;
+    next if /^#/;
+    chomp;
+    unshift @tags,$1 if /\[\+?(\w*)\]/;
+    if ( /\[\/(\w*)\]/ ) {
+	die "bad WML in $ARGV, [/$1] found inside [@tags[0]], quitting"
+	    if $1 ne @tags[0];
+	shift @tags;
+    }
+    $DEBUG and print "In $ARGV:\n$_\n\n" if /\W=/;
+    push @output, "[$tags[0]] $1\n" if /(\w+)=/;
+}
+
+foreach ( sort @output ) {
+    next if $last eq $_;
+    print;
+    $last = $_;
+}
+
