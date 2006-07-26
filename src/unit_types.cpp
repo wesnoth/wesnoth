@@ -277,9 +277,9 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 			sp["description"] = t_string("Plague:\nWhen a unit is killed by a Plague attack, that unit is replaced with a unit identical to and on the same side as the unit with the Plague attack. (This doesn't work on Undead or units in villages.)","wesnoth");
 		} else if(set_special.substr(0,7) == "plague(") {
 			config& sp = new_specials.add_child("plague");
-			sp["name"] = t_string("plague","wesnoth") + set_special.substr(6,set_special.size());
+			sp["name"] = t_string("plague","wesnoth") + set_special.substr(6);
 			sp["description"] = t_string("Plague:\nWhen a unit is killed by a Plague attack, that unit is replaced with a unit of the specified type on the same side as the unit with the Plague attack. (This doesn't work on Undead or units in villages.)","wesnoth");
-			sp["type"] = set_special.substr(7,set_special.size()-1);
+			sp["type"] = set_special.substr(7,set_special.size()-8);
 		} else if(set_special == "swarm") {
 			config& sp = new_specials.add_child("attacks");
 			sp["name"] = t_string("swarm","wesnoth");
