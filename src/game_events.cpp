@@ -485,12 +485,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "scroll_to") {
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
+		std::string check_fogged = cfg["check_fogged"];
 		wassert(state_of_game != NULL);
 		x = utils::interpolate_variables_into_string(x, *state_of_game);
 		y = utils::interpolate_variables_into_string(y, *state_of_game);
+		check_fogged = utils::interpolate_variables_into_string(check_fogged, *state_of_game);
 		const int xpos = atoi(x.c_str());
 		const int ypos = atoi(y.c_str());
-		screen->scroll_to_tile(xpos,ypos);
+		screen->scroll_to_tile(xpos,ypos,display::SCROLL,utils::string_bool(check_fogged,true));
 	}
 
 	else if(cmd == "scroll_to_unit") {
