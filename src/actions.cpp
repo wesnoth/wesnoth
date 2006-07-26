@@ -884,33 +884,32 @@ attack::attack(display& gui, const gamemap& map,
 				if(d_ != units_.end() && d_->second.hitpoints() <= 0) {
 					units_.erase(d_);
 					d_ = units_.end();
-				} else {
-					//plague units make new units on the target hex
-					if(a_ != units_.end() && a_stats_->plagues) {
-				        game_data::unit_type_map::const_iterator reanimitor;
-				        LOG_NG<<"trying to reanimate "<<a_stats_->plague_type<<std::endl;
-				        reanimitor = info_.unit_types.find(a_stats_->plague_type);
-				        LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
-						if(reanimitor != info_.unit_types.end()) {
-							unit newunit=unit(&info_,&units_,&map_,&state_,&teams_,&reanimitor->second,a_->second.side(),true,true);
-							newunit.set_attacks(0);
-							//apply variation
-							if(strcmp(undead_variation.c_str(),"null")) {
-								config mod;
-								config& variation=mod.add_child("effect");
-								variation["apply_to"]="variation";
-								variation["name"]=undead_variation;
-								newunit.add_modification("variation",mod);
-								newunit.heal_all();
-							}
-							units_.add(new std::pair<gamemap::location,unit>(loc,newunit));
-							if (update_display_){
-								gui_.invalidate(loc);
-							}
+				}
+				//plague units make new units on the target hex
+				if(a_ != units_.end() && a_stats_->plagues) {
+					game_data::unit_type_map::const_iterator reanimitor;
+					LOG_NG<<"trying to reanimate "<<a_stats_->plague_type<<std::endl;
+					reanimitor = info_.unit_types.find(a_stats_->plague_type);
+					LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
+					if(reanimitor != info_.unit_types.end()) {
+						unit newunit=unit(&info_,&units_,&map_,&state_,&teams_,&reanimitor->second,a_->second.side(),true,true);
+						newunit.set_attacks(0);
+						//apply variation
+						if(strcmp(undead_variation.c_str(),"null")) {
+							config mod;
+							config& variation=mod.add_child("effect");
+							variation["apply_to"]="variation";
+							variation["name"]=undead_variation;
+							newunit.add_modification("variation",mod);
+							newunit.heal_all();
 						}
-					} else {
-					       LOG_NG<<"unit not reanimated"<<std::endl;
+						units_.add(new std::pair<gamemap::location,unit>(loc,newunit));
+						if (update_display_){
+							gui_.invalidate(loc);
+						}
 					}
+				} else {
+					   LOG_NG<<"unit not reanimated"<<std::endl;
 				}
 				if (update_display_){
 					recalculate_fog(map_,state_,info_,units_,teams_,defender_side-1);
@@ -1082,31 +1081,30 @@ attack::attack(display& gui, const gamemap& map,
 				if(a_ != units_.end() && a_->second.hitpoints() <= 0) {
 					units_.erase(a_);
 					a_ = units_.end();
-				} else {
-					//plague units make new units on the target hex.
-					if(d_ != units_.end() && d_stats_->plagues) {
-						game_data::unit_type_map::const_iterator reanimitor;
-						LOG_NG<<"trying to reanimate "<<d_stats_->plague_type<<std::endl;
-						reanimitor = info_.unit_types.find(d_stats_->plague_type);
-						LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
-						if(reanimitor != info_.unit_types.end()) {
-							unit newunit=unit(&info_,&units_,&map_,&state_,&teams_,&reanimitor->second,d_->second.side(),true,true);
-							//apply variation
-							if(strcmp(undead_variation.c_str(),"null")){
-								config mod;
-								config& variation=mod.add_child("effect");
-								variation["apply_to"]="variation";
-								variation["name"]=undead_variation;
-								newunit.add_modification("variation",mod);
-							}
-							units_.add(new std::pair<gamemap::location,unit>(loc,newunit));
-							if (update_display_){
-								gui_.invalidate(loc);
-							}
+				}
+				//plague units make new units on the target hex.
+				if(d_ != units_.end() && d_stats_->plagues) {
+					game_data::unit_type_map::const_iterator reanimitor;
+					LOG_NG<<"trying to reanimate "<<d_stats_->plague_type<<std::endl;
+					reanimitor = info_.unit_types.find(d_stats_->plague_type);
+					LOG_NG<<"found unit type:"<<reanimitor->second.id()<<std::endl;
+					if(reanimitor != info_.unit_types.end()) {
+						unit newunit=unit(&info_,&units_,&map_,&state_,&teams_,&reanimitor->second,d_->second.side(),true,true);
+						//apply variation
+						if(strcmp(undead_variation.c_str(),"null")){
+							config mod;
+							config& variation=mod.add_child("effect");
+							variation["apply_to"]="variation";
+							variation["name"]=undead_variation;
+							newunit.add_modification("variation",mod);
 						}
-					} else {
-						LOG_NG<<"unit not reanimated"<<std::endl;
+						units_.add(new std::pair<gamemap::location,unit>(loc,newunit));
+						if (update_display_){
+							gui_.invalidate(loc);
+						}
 					}
+				} else {
+					LOG_NG<<"unit not reanimated"<<std::endl;
 				}
 				if (update_display_){
 					gui_.recalculate_minimap();
