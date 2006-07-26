@@ -769,7 +769,10 @@ bool game_controller::new_campaign()
 	std::vector<gui::preview_pane*> preview_panes;
 	preview_panes.push_back(&campaign_preview);
 
-	wassert(campaign_names.size() > 0);
+	if(campaign_names.size() <= 0) {
+		return false;
+	}
+
 	res = gui::show_dialog2(disp(),NULL,_("Campaign"),
 			_("Choose the campaign you want to play:"),
 			gui::OK_CANCEL,&campaign_names,&preview_panes);
