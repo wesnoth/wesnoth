@@ -16,6 +16,8 @@ class AI:
         saved, use set_variable and get_variable."""
 
         self.team = wesnoth.get_current_team()
+        self.village_radius = 25
+        self.scout_villages = 3
 
         self.recruit()
 
@@ -46,6 +48,67 @@ class AI:
                 if not units: break
                 if not villages: break
 
+    def cumulate_damage(self, cumulated, hitpoints, new_damage):
+        cumulated2 = {}
+        for already, ap in cumulated.iteritems():
+            for hp, probability in new_damage.iteritems():
+                damage = int(already + hitpoints - hp)
+                cumulated2[damage] = cumulated2.get(damage, 0) + ap * probability
+        return cumulated2
+
+    def danger_estimate(self, unit, where, enemy):
+        """Get some crude indication about how unsafe it is for unit to get
+        attacked by enemy at where."""
+
+        scores = []
+        u = wesnoth.get_units()[unit]
+        e = wesnoth.get_units()[enemy]
+        u_defense = u.defense_modifier(wesnoth.get_map(), where)
+        e_defense = e.defense_modifier(wesnoth.get_map(), enemy)
+
+        u_bonus = 100 - (u.type().alignment - 1) * wesnoth.get_gamestatus().lawful_bonus
+        e_bonus = 100 - (e.type().alignment - 1) * wesnoth.get_gamestatus().lawful_bonus
+
+        for attack in e.attacks():
+            score = attack.damage * attack.num_attacks * e_bonus / 100
+            score *= u_defense
+            score *= u.damage_against(attack) / 100
+
+            back = []
+            for retaliation in u.attacks():
+                if attack.range == retaliation.range:
+                    x = retaliation.damage * retaliation.num_attacks * u_bonus / 100
+                    x *= e_defense
+                    x *= e.damage_against(retaliation) / 100
+                    back.append(x)
+
+            if back:
+                r = max(back)
+                score -= r
+            heapq.heappush(scores, score)
+
+        return scores[0]
+
+    def danger(self, unit, location):
+        """Try to estimate danger of moving unit to location."""
+        attackers = []
+        for enemy, destinations in wesnoth.get_enemy_destinations_by_unit():
+            for tile in wesnoth.get_adjacent_tiles(unit):
+                if tile in destinations:
+                    heuristic = danger_estimate(unitm, location, enemy)
+                    if heuristic > 0:
+                        heapq.heappush(attackers, (-heuristic, enemy, tile))
+        result = 0
+        already = {}
+        while attackers:
+            danger, enemy, tile = heapq.heappop(attackers)
+            if not already[enemy] and not already[tile]:
+                danger = -danger
+                result += danger
+                already[enemy] = 1
+                already[tile] = 1
+        return result
+
     def fight(self):
         """Attack enemies."""
         enemies =  wesnoth.get_enemy_destinations_by_unit().keys()
@@ -62,12 +125,7 @@ class AI:
                 for tile in wesnoth.get_adjacent_tiles(enemy):
                     if tile in destinations:
                         own_hp, enemy_hp = u.attack_statistics(tile, enemy)
-                        kn = {}
-                        for already, ap in k.iteritems():
-                            for hp, probability in enemy_hp.iteritems():
-                                damage = int(already + e.hitpoints - hp)
-                                kn[damage] = kn.get(damage, 0) + ap * probability
-                        k = kn
+                        k = self.cumulate_damage(k, e.hitpoints, enemy_hp)
             ctk = 0
             for damage, p in k.iteritems():
                 if damage >= e.hitpoints:
@@ -118,48 +176,84 @@ class AI:
 
     def recruit(self):
         """Recruit units."""
+
+        # Check if there is any gold left first.
+        cheapest = min([x.cost for x in self.team.recruits()])
+        if self.team.gold < cheapest: return
+
+        # Find all keeps in the map.
         keeps = self.find_keeps()
 
-        def score(u1, u2):
+        # Find our leader.
+        leader = None
+        for location, unit in wesnoth.get_units().iteritems():
+            if unit.side == self.team.side and unit.can_recruit:
+                leader = location
+                break
+
+        # Get number of villages to capture near to the leader.
+        villages = len([x for x in self.find_villages()
+            if leader.distance_to(x) < self.village_radius])
+
+        units_recruited = int(wesnoth.get_variable("units_recruited") or 0)
+
+        def attack_score(u1, u2):
             """Some crude score of u1 attacking u2."""
             maxdeal = 0
             for attack in u1.attacks():
                 deal = attack.damage * attack.num_attacks
-                deal *= u2.damage_from(attack)
+                deal *= u2.damage_from(attack) / 100.0
                 for defense in u2.attacks():
                     if attack.range == defense.range:
                         receive = defense.damage * defense.num_attacks
-                        receive *= u1.damage_from(defense)
+                        receive *= u1.damage_from(defense) / 100.0
                         deal -= receive
                 if deal > maxdeal: maxdeal = deal
             return maxdeal
 
+        def recruit_score(recruit, speed, defense, aggression, resistance):
+            """Score for recruiting the given unit type."""
+            need_for_speed = 3 * (villages / self.scout_villages -
+                units_recruited)
+            if need_for_speed < 0: need_for_speed = 0
+            v = speed * need_for_speed + defense * 0.1 + aggression + resistance
+            v += 1
+            if v < 1: v = 1
+            return v
+
         # Try to figure out which units are good in this map.
         map = wesnoth.get_map()
-        properties = {}
-        for recruit in self.team.recruits():
-            slowness = 0
-            defense = 0
+        recruits = self.team.recruits()
+        recruits_list = []
+        for recruit in recruits:
+            speed = 0.0
+            defense = 0.0
+            n = map.x * map.y
             for y in range(map.y):
                 for x in range(map.x):
                     location = wesnoth.get_location(x, y)
-                    slowness += recruit.movement_cost(location)
-                    defense += recruit.defense_modifier(location)
-            slowness /= recruit.movement
+                    speed += recruit.movement_cost(location)
+                    defense += 100 - recruit.defense_modifier(location)
+            speed = recruit.movement * n / speed
+            defense /= n
 
-            aggression = 0
-            resistance = 0
-            for location in wesnoth.get_enemy_destinations_by_unit().keys():
+            aggression = 0.0
+            resistance = 0.0
+            enemies = wesnoth.get_enemy_destinations_by_unit().keys()
+            n = len(enemies)
+            for location in enemies:
                 enemy = wesnoth.get_units()[location]
-                aggression += score(recruit, enemy)
-                resistance -= score(enemy, recruit)
-            sys.stdout.write("%s: " % recruit.name)
-            sys.stdout.write("slowness: %d, " % slowness)
-            sys.stdout.write("defense: %d, " % defense)
-            sys.stdout.write("aggression: %d, " % aggression)
-            sys.stdout.write("resistance: %d" % resistance)
-            sys.stdout.write("\n")
+                aggression += attack_score(recruit, enemy)
+                resistance -= attack_score(enemy, recruit)
+            aggression /= n
+            resistance /= n
 
+            print "%s: speed: %f, defense: %f, aggression: %f, resistance: %f" % (
+                recruit.name, speed, defense, aggression, resistance)
+
+            recruits_list.append((recruit, speed, defense, aggression, resistance))
+
+        # Now recruit.
         for location, unit in wesnoth.get_units().iteritems():
             if unit.side == self.team.side and unit.can_recruit:
 
@@ -171,7 +265,20 @@ class AI:
 
                 self.go_to(location, keep)
                 for i in range(6): # up to 6 units (TODO: can be more)
-                    recruit = random.choice(self.team.recruits())
+                    # Get a random, weighted unit type from the available.
+                    heap = []
+                    total_v = 0
+                    for r in recruits_list:
+                        v = recruit_score(*r)
+                        v *= v * v
+                        total_v += v
+                        heapq.heappush(heap, (-v, r[0]))
+                    r = random.uniform(0, total_v)
+                    while 1:
+                        v, recruit = heapq.heappop(heap)
+                        print r, v
+                        r += v
+                        if r <= 0: break
 
                     # Try to recruit it on the adjacent tiles
                     # TODO: actually, it should just use the nearest possible
@@ -182,6 +289,8 @@ class AI:
                     else:
                         # was not possible -> we're done
                         break
+                    units_recruited += 1
+                    wesnoth.set_variable("units_recruited", str(units_recruited))
 
     def find_villages(self):
         """Find all villages which are unowned or owned by enemies."""
