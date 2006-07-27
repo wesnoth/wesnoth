@@ -68,6 +68,7 @@ public:
 
 	int movement_used() const;
 
+	config& get_cfg();
 	const config& get_cfg() const;
 	mutable gamemap::location aloc_,dloc_;
 	mutable bool attacker_;
