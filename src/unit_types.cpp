@@ -88,6 +88,10 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 	}
 }
 
+config& attack_type::get_cfg()
+{
+	return cfg_;
+}
 const config& attack_type::get_cfg() const
 {
 	return cfg_;

@@ -368,6 +368,9 @@ void unit::advance_to(const unit_type* t)
 	cfg_.clear_children("extra_anim");
 	cfg_.clear_children("death");
 	cfg_.clear_children("movement_anim");
+	cfg_.clear_children("leading_anim");
+	cfg_.clear_children("healing_anim");
+	cfg_.clear_children("standing_anim");
 	cfg_.clear_children("attack");
 	cfg_.clear_children("abilities");
 	cfg_.clear_children("event");
@@ -1087,8 +1090,8 @@ void unit::read(const config& cfg)
 
 	bool type_set = false;
 	id_ = "";
+	wassert(gamedata_ != NULL);
 	if(cfg["type"] != "" && cfg["type"] != cfg["id"] || cfg["gender"] != cfg["gender_id"]) {
-		wassert(gamedata_ != NULL);
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		if(i != gamedata_->unit_types.end()) {
 			advance_to(&i->second.get_gender_unit_type(gender_));
@@ -1147,12 +1150,48 @@ void unit::read(const config& cfg)
 		cfg_["profile"] = cfg["profile"];
 	}
 	
+	std::map<std::string,unit_type>::const_iterator uti = gamedata_->unit_types.find(cfg["type"]);
 	if(!type_set) {
-		for(config::const_child_itors range = cfg.child_range("attack");
-		    range.first != range.second; ++range.first) {
-			attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
+		if(uti != gamedata_->unit_types.end()) {
+			const unit_type* ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
+			config t_atks;
+			config u_atks;
+			for(config::const_child_itors range = ut->cfg_.child_range("attack");
+			    range.first != range.second; ++range.first) {
+				t_atks.add_child("attack",**range.first);
+			}
+			for(config::const_child_itors range = cfg.child_range("attack");
+			    range.first != range.second; ++range.first) {
+				u_atks.add_child("attack",**range.first);
+			}
+			u_atks = t_atks.merge_with(u_atks);
+			for(config::const_child_itors range = u_atks.child_range("attack");
+			    range.first != range.second; ++range.first) {
+				attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
+			}
+			std::vector<attack_type>::iterator at;
+			for(at = attacks_.begin(); at != attacks_.end(); ++at) {
+				at->get_cfg().clear_children("animation");
+			}
+			for(at = attacks_b_.begin(); at != attacks_b_.end(); ++at) {
+				at->get_cfg().clear_children("animation");
+			}
+		} else {
+			for(config::const_child_itors range = cfg.child_range("attack");
+			    range.first != range.second; ++range.first) {
+				attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
+			}
+		}
+	} else {
+		std::vector<attack_type>::iterator at;
+		for(at = attacks_.begin(); at != attacks_.end(); ++at) {
+			at->get_cfg().clear_children("animation");
+		}
+		for(at = attacks_b_.begin(); at != attacks_b_.end(); ++at) {
+			at->get_cfg().clear_children("animation");
 		}
 	}
+	cfg_.clear_children("attack");
 	const config* status_flags = cfg.child("status");
 	if(status_flags) {
 		for(string_map::const_iterator st = status_flags->values.begin(); st != status_flags->values.end(); ++st) {
@@ -1209,70 +1248,99 @@ void unit::read(const config& cfg)
 		custom_unit_description_ = generate_description();
 		cfg_["generate_description"] = "";
 	}
-
+	
 	if(!type_set) {
-		const config::child_list& defends = cfg_.get_children("defend");
-		for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
-			defensive_animations_.push_back(defensive_animation(**d));
-		}
-		if(defensive_animations_.empty()) {
-			defensive_animations_.push_back(defensive_animation(absolute_image()));
-			// always have a defensive animation
-		}
-		const config::child_list& teleports = cfg_.get_children("teleport_anim");
-		for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
-			teleport_animations_.push_back(unit_animation(**t));
-		}
-		if(teleport_animations_.empty()) {
-			teleport_animations_.push_back(unit_animation(absolute_image(),-20,20));
-			// always have a teleport animation
-		}
-		const config::child_list& extra_anims = cfg_.get_children("extra_anim");
-		{
+		if(uti != gamedata_->unit_types.end()) {
+			const unit_type* ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
+			defensive_animations_ = ut->defensive_animations_;
+			teleport_animations_ = ut->teleport_animations_;
+			extra_animations_ = ut->extra_animations_;
+			death_animations_ = ut->death_animations_;
+			movement_animations_ = ut->movement_animations_;
+			standing_animations_ = ut->standing_animations_;
+			leading_animations_ = ut->leading_animations_;
+			healing_animations_ = ut->healing_animations_;
+			// remove animations from private cfg, since they're not needed there now
+			cfg_.clear_children("defend");
+			cfg_.clear_children("teleport_anim");
+			cfg_.clear_children("extra_anim");
+			cfg_.clear_children("death");
+			cfg_.clear_children("movement_anim");
+			cfg_.clear_children("healing_anim");
+			cfg_.clear_children("leading_anim");
+			cfg_.clear_children("standing_anim");
+		} else {
+			const config::child_list& defends = cfg_.get_children("defend");
+			const config::child_list& teleports = cfg_.get_children("teleport_anim");
+			const config::child_list& extra_anims = cfg_.get_children("extra_anim");
+			const config::child_list& deaths = cfg_.get_children("death");
+			const config::child_list& movement_anims = cfg_.get_children("movement_anim");
+			const config::child_list& standing_anims = cfg_.get_children("standing_anim");
+			const config::child_list& leading_anims = cfg_.get_children("leading_anim");
+			const config::child_list& healing_anims = cfg_.get_children("healing_anim");
+			for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
+				defensive_animations_.push_back(defensive_animation(**d));
+			}
+			for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
+				teleport_animations_.push_back(unit_animation(**t));
+			}
 			for(config::child_list::const_iterator t = extra_anims.begin(); t != extra_anims.end(); ++t) {
 				extra_animations_.insert(std::pair<std::string,unit_animation>((**t)["flag"],unit_animation(**t)));
 			}
+			for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
+				death_animations_.push_back(death_animation(**death));
+			}
+			for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
+				movement_animations_.push_back(movement_animation(**movement_anim));
+			}
+			for(config::child_list::const_iterator standing_anim = standing_anims.begin(); standing_anim != standing_anims.end(); ++standing_anim) {
+				standing_animations_.push_back(standing_animation(**standing_anim));
+			}
+			for(config::child_list::const_iterator leading_anim = leading_anims.begin(); leading_anim != leading_anims.end(); ++leading_anim) {
+				leading_animations_.push_back(leading_animation(**leading_anim));
+			}
+			for(config::child_list::const_iterator healing_anim = healing_anims.begin(); healing_anim != healing_anims.end(); ++healing_anim) {
+				healing_animations_.push_back(healing_animation(**healing_anim));
+			}
+			if(defensive_animations_.empty()) {
+				defensive_animations_.push_back(defensive_animation(absolute_image()));
+				// always have a defensive animation
+			}
+			if(teleport_animations_.empty()) {
+				teleport_animations_.push_back(unit_animation(absolute_image(),-20,20));
+				// always have a teleport animation
+			}
+			if(death_animations_.empty()) {
+				death_animations_.push_back(death_animation(absolute_image()));
+				// always have a death animation
+			}
+			if(movement_animations_.empty()) {
+				movement_animations_.push_back(movement_animation(absolute_image()));
+				// always have a movement animation
+			}
+			if(standing_animations_.empty()) {
+				standing_animations_.push_back(standing_animation(absolute_image()));
+				// always have a standing animation
+			}
+			if(leading_animations_.empty()) {
+				leading_animations_.push_back(leading_animation(absolute_image()));
+				// always have a leading animation
+			}
+			if(healing_animations_.empty()) {
+				healing_animations_.push_back(healing_animation(image_healing(),image_halo_healing()));
+				// always have a healing animation
+			}
 		}
-		const config::child_list& deaths = cfg_.get_children("death");
-		for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
-			death_animations_.push_back(death_animation(**death));
-		}
-		if(death_animations_.empty()) {
-			death_animations_.push_back(death_animation(absolute_image()));
-			// always have a death animation
-		}
-		const config::child_list& movement_anims = cfg_.get_children("movement_anim");
-		for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
-			movement_animations_.push_back(movement_animation(**movement_anim));
-		}
-		if(movement_animations_.empty()) {
-			movement_animations_.push_back(movement_animation(absolute_image()));
-			// always have a movement animation
-		}
-		const config::child_list& standing_anims = cfg_.get_children("standing_anim");
-		for(config::child_list::const_iterator standing_anim = standing_anims.begin(); standing_anim != standing_anims.end(); ++standing_anim) {
-			standing_animations_.push_back(standing_animation(**standing_anim));
-		}
-		if(standing_animations_.empty()) {
-			standing_animations_.push_back(standing_animation(absolute_image()));
-			// always have a standing animation
-		}
-		const config::child_list& leading_anims = cfg_.get_children("leading_anim");
-		for(config::child_list::const_iterator leading_anim = leading_anims.begin(); leading_anim != leading_anims.end(); ++leading_anim) {
-			leading_animations_.push_back(leading_animation(**leading_anim));
-		}
-		if(leading_animations_.empty()) {
-			leading_animations_.push_back(leading_animation(absolute_image()));
-			// always have a leading animation
-		}
-		const config::child_list& healing_anims = cfg_.get_children("healing_anim");
-		for(config::child_list::const_iterator healing_anim = healing_anims.begin(); healing_anim != healing_anims.end(); ++healing_anim) {
-			healing_animations_.push_back(healing_animation(**healing_anim));
-		}
-		if(healing_animations_.empty()) {
-			healing_animations_.push_back(healing_animation(image_healing(),image_halo_healing()));
-			// always have a leading animation
-		}
+	} else {
+		// remove animations from private cfg, since they're not needed there now
+		cfg_.clear_children("defend");
+		cfg_.clear_children("teleport_anim");
+		cfg_.clear_children("extra_anim");
+		cfg_.clear_children("death");
+		cfg_.clear_children("movement_anim");
+		cfg_.clear_children("healing_anim");
+		cfg_.clear_children("leading_anim");
+		cfg_.clear_children("standing_anim");
 	}
 }
 void unit::write(config& cfg) const
