@@ -453,12 +453,13 @@ size_t game::available_slots() const
 	for(config::child_list::const_iterator i = sides.begin(); i != sides.end(); ++i) {
 		//std::cerr << "side controller: '" << (**i)["controller"] << "'\n";
 		//std::cerr << "description: '" << (**i)["description"] << "'\n";
-		if((**i)["controller"] == "network" && (**i)["description"].empty()) {
+		if((**i)["controller"] == "network" || (**i)["controller"] == "human") {
 			++available_slots;
 		}
+
 	}
 
-	return available_slots;
+	return available_slots - players_.size();
 }
 
 bool game::describe_slots()
