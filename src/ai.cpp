@@ -148,13 +148,15 @@ protected:
 
 	void do_recruitment() {
 		const std::set<std::string>& options = current_team().recruits();
-        const int choice = (rand()%options.size());
-        std::set<std::string>::const_iterator i = options.begin();
-        std::advance(i,choice);
+        	if (!options.empty()) {
+			const int choice = (rand()%options.size());
+		        std::set<std::string>::const_iterator i = options.begin();
+		        std::advance(i,choice);
 
-		const bool res = recruit(*i);
-		if(res) {
-			do_recruitment();
+			const bool res = recruit(*i);
+			if(res) {
+				do_recruitment();
+			}
 		}
 	}
 };
