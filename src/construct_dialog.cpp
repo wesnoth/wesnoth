@@ -549,11 +549,10 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc) const
 	const int text_widget_y = dim.y+top_padding+text_and_image_height-6+menu_hpadding;
 
 	if(use_textbox) {
-		const int text_widget_y_unpadded = text_widget_y + (text_widget_height - text_widget_->location().h)/2;
 		dim.textbox.x = dim.x + left_padding + text_widget_width - text_widget_->location().w;
-		dim.textbox.y = text_widget_y_unpadded;
-		dim.caption_x = dim.x+left_padding;
-		dim.caption_y = text_widget_y_unpadded;
+		dim.textbox.y = text_widget_y + (text_widget_height - text_widget_->location().h)/2;
+		dim.label_x = dim.x+left_padding;
+		dim.label_y = dim.textbox.y;
 	}
 
 	dim.menu_x = dim.x+image_width+left_padding+image_h_padding;

@@ -1156,16 +1156,17 @@ void unit::read(const config& cfg)
 			const unit_type* ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
 			config t_atks;
 			config u_atks;
-			for(config::const_child_itors range = ut->cfg_.child_range("attack");
+			config::const_child_itors range;
+			for(range = ut->cfg_.child_range("attack");
 			    range.first != range.second; ++range.first) {
 				t_atks.add_child("attack",**range.first);
 			}
-			for(config::const_child_itors range = cfg.child_range("attack");
+			for(range = cfg.child_range("attack");
 			    range.first != range.second; ++range.first) {
 				u_atks.add_child("attack",**range.first);
 			}
 			u_atks = t_atks.merge_with(u_atks);
-			for(config::const_child_itors range = u_atks.child_range("attack");
+			for(range = u_atks.child_range("attack");
 			    range.first != range.second; ++range.first) {
 				attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
 			}
@@ -1284,8 +1285,8 @@ void unit::read(const config& cfg)
 			for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
 				teleport_animations_.push_back(unit_animation(**t));
 			}
-			for(config::child_list::const_iterator t = extra_anims.begin(); t != extra_anims.end(); ++t) {
-				extra_animations_.insert(std::pair<std::string,unit_animation>((**t)["flag"],unit_animation(**t)));
+			for(config::child_list::const_iterator extra_anim = extra_anims.begin(); extra_anim != extra_anims.end(); ++extra_anim) {
+				extra_animations_.insert(std::pair<std::string,unit_animation>((**extra_anim)["flag"],unit_animation(**extra_anim)));
 			}
 			for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
 				death_animations_.push_back(death_animation(**death));
