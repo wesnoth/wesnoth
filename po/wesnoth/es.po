@@ -1,29 +1,28 @@
-# translation of es.po to
+# translation of es.po to Spanish.
 # Spanish translations for Battle for Wesnoth package.
-# Copyright (C) 2004,2005 Wesnoth development team
+# Copyright (C) 2004,2006 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Automatically generated, 2005.
-# David Martínez Moreno <ender@debian.org>, 2004-2005.
+# Automatically generated, 2006.
+# David Martínez Moreno <ender@debian.org>, 2004-2006.
 # Pío Sierra <pio@piosierra.com>, 2005.
 # Terpor <terpor@gmail.com>, 2005.
 # Héctor García Álvarez <hector@debian.org>, 2005.
 # Iván Herrero Bartolomé <navitux@gmail.com>, 2005.
-# Isaac Clerencia <isaac@unizar.es>, 2006.
 # Isaac Clerencia <isaac@warp.es>, 2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-07-01 14:03+0200\n"
-"PO-Revision-Date: 2006-06-28 16:43+0200\n"
-"Last-Translator: Isaac Clerencia <isaac@warp.es>\n"
+"PO-Revision-Date: 2006-07-28 11:07+0200\n"
+"Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team:  <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.2\n"
+"X-Generator: KWrite 3.5.3\n"
 
 #: data/abilities.cfg:8
 msgid "heals +4"
@@ -10546,7 +10545,6 @@ msgid "This terrain acts as $terrains for defense purposes."
 msgstr "Este terreno actúa como $terrains a efectos de movimiento y defensa."
 
 #: src/help.cpp:1427
-#, fuzzy
 msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
@@ -10555,7 +10553,6 @@ msgstr ""
 "se sitúa un líder en él."
 
 #: src/help.cpp:1429
-#, fuzzy
 msgid ""
 "This terrain acts as a castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -10568,9 +10565,8 @@ msgid "This terrain gives healing."
 msgstr "Este terreno proporciona sanación."
 
 #: src/help.cpp:2289
-#, fuzzy
 msgid " < Back"
-msgstr "< Atrás"
+msgstr " < Atrás"
 
 #: src/help.cpp:2290
 msgid "Forward >"
@@ -10610,19 +10606,19 @@ msgstr "?"
 
 #: src/loadscreen.cpp:153
 msgid "Verifying cache."
-msgstr ""
+msgstr "Verificando caché."
 
 #: src/loadscreen.cpp:172
 msgid "Reading cache."
-msgstr ""
+msgstr "Leyendo caché."
 
 #: src/loadscreen.cpp:191
 msgid "Reading unit files."
-msgstr ""
+msgstr "Leyendo ficheros de unidades."
 
 #: src/loadscreen.cpp:210
 msgid "Reading files and creating cache."
-msgstr ""
+msgstr "Leyendo ficheros y creando la caché."
 
 #: src/menu_events.cpp:59
 msgid ""
@@ -10880,9 +10876,8 @@ msgid "Show your ignore list. Usage: /ignore list"
 msgstr ""
 
 #: src/menu_events.cpp:1403
-#, fuzzy
 msgid "Unknown subcommand"
-msgstr "Escenario desconocido: '"
+msgstr "Suborden desconocida"
 
 #: src/menu_events.cpp:1406
 msgid ""
@@ -10896,27 +10891,24 @@ msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
 #: src/menu_events.cpp:1411
-#, fuzzy
 msgid "Unknown command"
-msgstr "Escenario desconocido: '"
+msgstr "Orden desconocida"
 
 #: src/menu_events.cpp:1428
 msgid "Added to ignore list: "
-msgstr ""
+msgstr "Añadido a lista de usuarios a ignorar"
 
 #: src/menu_events.cpp:1430 src/menu_events.cpp:1440
-#, fuzzy
 msgid "Invalid username: "
-msgstr "Nombre de etiqueta inválido"
+msgstr "Nombre de usuario inválido"
 
 #: src/menu_events.cpp:1438 src/menu_events.cpp:1464
 msgid "Removed from ignore list: "
-msgstr ""
+msgstr "Eliminado de lista de usuarios a ignorar"
 
 #: src/menu_events.cpp:1469
-#, fuzzy
 msgid "Unknown command: "
-msgstr "Escenario desconocido: '"
+msgstr "Orden desconocida: "
 
 #: src/menu_events.cpp:1570
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -10936,46 +10928,39 @@ msgstr "Defensor"
 
 #: src/mouse_events.cpp:209
 msgid "Expected Battle Result (hp)"
-msgstr ""
+msgstr "Previsión del resultado del combate (pv)"
 
 #: src/mouse_events.cpp:301
-#, fuzzy
 msgid " resistance vs "
-msgstr "Resistencias"
+msgstr "resistencia a "
 
 #: src/mouse_events.cpp:302
-#, fuzzy
 msgid " vulnerability vs "
 msgstr "debilidad del atacante contra"
 
 #: src/mouse_events.cpp:312
-#, fuzzy
 msgid "Slowed"
-msgstr "ralentizado"
+msgstr "Ralentizado"
 
 #: src/mouse_events.cpp:319
-#, fuzzy
 msgid "Time of day"
-msgstr "Hora del día"
+msgstr "Momento del día"
 
 #: src/mouse_events.cpp:329
-#, fuzzy
 msgid "Leadership"
-msgstr "liderazgo"
+msgstr "Liderazgo"
 
 #: src/mouse_events.cpp:336
-#, fuzzy
 msgid "Total damage"
-msgstr "daño neto"
+msgstr "Daño neto"
 
 #: src/mouse_events.cpp:343
-#, fuzzy
 msgid "No usable weapon"
-msgstr "Escoger arma:"
+msgstr "Sin arma utilizable"
 
 #: src/mouse_events.cpp:348
 msgid "Chance of being unscathed"
-msgstr ""
+msgstr "Posibilidad de salir ileso"
 
 #: src/mouse_events.cpp:649 src/mouse_events.cpp:1232
 msgid "Damage Calculations"
@@ -11044,7 +11029,7 @@ msgstr "No se han encontrado bandos multijugador"
 #: src/multiplayer_connect.cpp:64 src/multiplayer_connect.cpp:273
 #: src/multiplayer_connect.cpp:365
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:361
 #: src/multiplayer_wait.cpp:406 src/multiplayer_wait.cpp:411 src/unit.cpp:2499
@@ -11148,7 +11133,6 @@ msgid "Cannot find era $era"
 msgstr "No se encuentra la era $era"
 
 #: src/multiplayer_connect.cpp:1187
-#, fuzzy
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -11302,9 +11286,8 @@ msgid "Init. Limit: "
 msgstr "Iniciado"
 
 #: src/multiplayer_create.cpp:318
-#, fuzzy
 msgid "Turn Bonus: "
-msgstr "Turnos: "
+msgstr "Turnos bonificados: "
 
 #: src/multiplayer_create.cpp:322
 #, fuzzy
@@ -11312,9 +11295,8 @@ msgid "Reservoir: "
 msgstr "Servidor: "
 
 #: src/multiplayer_create.cpp:327
-#, fuzzy
 msgid "Action Bonus: "
-msgstr "Acciones"
+msgstr "Acciones bonificadas: "
 
 #: src/multiplayer_create.cpp:334
 msgid "Village Gold: "
@@ -11341,7 +11323,6 @@ msgid "Status"
 msgstr "Estado"
 
 #: src/multiplayer_lobby.cpp:103
-#, fuzzy
 msgid "--no games open--"
 msgstr "<no hay juegos abiertos>"
 
@@ -11351,24 +11332,20 @@ msgid "Unknown era"
 msgstr "Escenario desconocido: '"
 
 #: src/multiplayer_lobby.cpp:322 src/multiplayer_lobby.cpp:338
-#, fuzzy
 msgid "Unknown scenario"
-msgstr "Escenario desconocido: '"
+msgstr "Escenario desconocido"
 
 #: src/multiplayer_lobby.cpp:334
-#, fuzzy
 msgid "Remote scenario"
-msgstr "Escenario desconocido: '"
+msgstr "Escenario remoto"
 
 #: src/multiplayer_lobby.cpp:347
-#, fuzzy
 msgid "Vacant Slot:"
-msgstr "Plaza libre"
+msgstr "Plaza libre:"
 
 #: src/multiplayer_lobby.cpp:347
-#, fuzzy
 msgid "Vacant Slots:"
-msgstr "Plazas libres"
+msgstr "Plazas libres:"
 
 #: src/multiplayer_lobby.cpp:371
 msgid "none"
@@ -11379,14 +11356,12 @@ msgid "Observe Game"
 msgstr "Observar juego"
 
 #: src/multiplayer_lobby.cpp:465
-#, fuzzy
 msgid "Quick Replays"
-msgstr " repetición"
+msgstr "Repetición rápida"
 
 #: src/multiplayer_lobby.cpp:466
-#, fuzzy
 msgid "Preferences"
-msgstr "Princesa"
+msgstr "Opciones"
 
 #: src/multiplayer_lobby.cpp:467
 msgid "Quit"
@@ -11394,10 +11369,9 @@ msgstr "Salir"
 
 #: src/multiplayer_lobby.cpp:473
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
+msgstr "Saltar rápidamente al turno activo (cuando se observa)"
 
 #: src/multiplayer_ui.cpp:79
-#, fuzzy
 msgid "Invalid Color"
 msgstr "Color inválido"
 
@@ -11444,11 +11418,11 @@ msgstr "El fichero que ha intentado cargar está corrompido."
 
 #: src/play_controller.cpp:645
 msgid "Back to start"
-msgstr ""
+msgstr "Volver a empezar"
 
 #: src/play_controller.cpp:647
 msgid "Back to turn "
-msgstr ""
+msgstr "Volver al turno "
 
 #: src/playcampaign.cpp:269
 msgid "Defeat"
@@ -11471,9 +11445,8 @@ msgid "Downloading next level..."
 msgstr "Descargando próximo nivel..."
 
 #: src/playcampaign.cpp:413
-#, fuzzy
 msgid "Do you want to save your game? (Also erases Auto-Save files)"
-msgstr "¿Quiere guardar el juego?"
+msgstr "¿Quiere guardar el juego? (Esto también borrará los ficheros de autoguardado)"
 
 #: src/playcampaign.cpp:440
 msgid "Unknown scenario: '"
@@ -11534,19 +11507,18 @@ msgstr "Victoria"
 
 #: src/playsingle_controller.cpp:321
 msgid "You have emerged victorious!"
-msgstr "¡Has vencido!"
+msgstr "¡Ha vencido!"
 
 #: src/playsingle_controller.cpp:325
 msgid "Scenario Report"
 msgstr "Informe del escenario"
 
 #: src/playsingle_controller.cpp:342
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Se ha producido una desconexión en la red y el juego no puede continuar. "
+"Se ha producido una desconexión de red y el juego no puede continuar. "
 "¿Quiere guardar la partida?"
 
 #: src/playsingle_controller.cpp:440
@@ -11584,11 +11556,11 @@ msgid "invisible: "
 msgstr "invisible: "
 
 #: src/reports.cpp:135
-#, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
-msgstr "Esta unidad ha sido petrificada. No se puede mover ni atacar."
+msgstr "Esta unidad ha sido ralentizada. Sólo podrá infligir la mitad del daño "
+"normal en sus ataques."
 
 #: src/reports.cpp:135
 msgid "slowed: "
@@ -11627,12 +11599,11 @@ msgstr "daño"
 
 #: src/reports.cpp:265
 msgid "weapon range: "
-msgstr ""
+msgstr "alcance del arma: "
 
 #: src/reports.cpp:266
-#, fuzzy
 msgid "damage type: "
-msgstr "daño"
+msgstr "tipo de daño: "
 
 #: src/reports.cpp:324
 msgid "Lawful units: "
@@ -11765,7 +11736,7 @@ msgstr "Salir"
 
 #: src/titlescreen.cpp:263
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "Jugar un tutorial para familiarizarse con el juego"
+msgstr "Juega un tutorial para familiarizarse con el juego"
 
 #: src/titlescreen.cpp:264
 msgid "Start a new single player campaign"
@@ -11785,7 +11756,7 @@ msgstr "Carga una partida grabada"
 
 #: src/titlescreen.cpp:267
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "Descarga campañas, eras, o paquetes de mapas creados por otros usuarios"
 
 #: src/titlescreen.cpp:268
 msgid "Change the language"
@@ -11797,7 +11768,7 @@ msgstr "Configura los parámetros del juego"
 
 #: src/titlescreen.cpp:270
 msgid "View the credits"
-msgstr "Muestra a los colaboradores"
+msgstr "Muestra los colaboradores"
 
 #: src/titlescreen.cpp:271
 msgid "Quit the game"
@@ -11809,11 +11780,11 @@ msgstr "Más"
 
 #: src/titlescreen.cpp:304
 msgid "Help"
-msgstr ""
+msgstr "Ayuda"
 
 #: src/titlescreen.cpp:307
 msgid "Help Wesnoth by sending us information"
-msgstr ""
+msgstr "Ayude a Wesnoth enviándonos información"
 
 #: src/unit.cpp:2349 src/unit.cpp:2504
 msgid "; "
@@ -11845,7 +11816,7 @@ msgstr "neutral"
 
 #: src/upload_log.cpp:278
 msgid "Enable summary uploads"
-msgstr ""
+msgstr "Permitir envíos de resúmenes"
 
 #: src/upload_log.cpp:283
 msgid ""
@@ -11853,16 +11824,20 @@ msgid ""
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
-msgstr ""
+msgstr "Wesnoth descansa en voluntarios como usted para obtener sugerencias, "
+"especialmente de principiantes y nuevos jugadores. ¿Sabía que Wesnoth mantiene "
+"resúmenes de sus juegos? Puede ayudarnos a mejorar su experiencia de juego "
+"dando permiso para enviarnos esos resúmenes (de forma anónima, por supuesto) a "
+"wesnoth.org.\n"
 
 #: src/upload_log.cpp:284
 msgid "Summaries are stored here:"
-msgstr ""
+msgstr "Los resúmenes están almacenados aquí:"
 
 #: src/upload_log.cpp:286
 msgid "You can view the results at:"
-msgstr ""
+msgstr "Puede ver los resultados en:"
 
 #: src/upload_log.cpp:291
 msgid "Help us make Wesnoth better for you!"
-msgstr ""
+msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
