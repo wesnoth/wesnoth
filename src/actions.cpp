@@ -885,7 +885,7 @@ void attack(display& gui, const gamemap& map,
 				LOG_NG << "firing attack_end event\n";
 				game_events::fire("attack_end",attacker,defender,dat);
 				LOG_NG << "firing die event\n";
-				game_events::fire("die",loc,a->first);
+				game_events::fire("die",loc,attacker_loc);
 				d = units.find(loc);
 				a = units.end();
 
@@ -1128,7 +1128,7 @@ void attack(display& gui, const gamemap& map,
 				LOG_NG << "firing attack_end event\n";
 				game_events::fire("attack_end",attacker,defender,dat);
 				LOG_NG << "firing die event\n";
-				game_events::fire("die",loc,d->first);
+				game_events::fire("die",loc,defender_loc);
 				a = units.find(loc);
 				d = units.end();
 
