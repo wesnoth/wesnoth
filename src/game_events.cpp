@@ -1745,6 +1745,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "redraw") {
+		std::string side = cfg["side"];
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		if(side != "") {
+			const int side_num = lexical_cast_default<int>(side);
+			recalculate_fog(*game_map,*status_ptr,*game_data_ptr,*units,*teams,side_num-1);
+			screen->recalculate_minimap();
+		}
 		screen->invalidate_all();
 		screen->draw(true,true);
 	}
