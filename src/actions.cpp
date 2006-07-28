@@ -641,6 +641,17 @@ static std::string unit_dump(std::pair< gamemap::location, unit > const &u)
 void attack::fire_event(const std::string& n)
 {
 	LOG_NG << "firing " << n << " event\n";
+	if(n == "attack_end") {
+		config dat;
+		dat.add_child("first");
+		dat.add_child("second");
+		(*(dat.child("first")))["weapon"]=a_stats_->weapon->name();
+		(*(dat.child("second")))["weapon"]=d_stats_->weapon != NULL ? d_stats_->weapon->name() : "none";
+		game_events::fire(n,attacker_,defender_,dat);
+		a_ = units_.find(attacker_);
+		d_ = units_.find(defender_);
+		return;
+	}
 	const int defender_side = d_->second.side();
 	const int attacker_side = a_->second.side();
 	config dat;
@@ -657,7 +668,7 @@ void attack::fire_event(const std::string& n)
 	// The previous code checked if 'attack_with' and 'defend_with' were still within the bounds of
 	// the attack arrays, or -1, but it was incorrect. The attack used could be removed and '*_with'
 	// variables could still be in bounds but point to a different attack.
-	if(n != "attack_end" && (a_ == units_.end() || d_ == units_.end())) {
+	if(a_ == units_.end() || d_ == units_.end()) {
 		if (update_display_){
 			recalculate_fog(map_,state_,info_,units_,teams_,attacker_side-1);
 			recalculate_fog(map_,state_,info_,units_,teams_,defender_side-1);
