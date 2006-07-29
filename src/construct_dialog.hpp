@@ -214,6 +214,7 @@ protected:
 
 	//refresh - forces the display to refresh
 	void refresh();
+	label& get_message() { return *message_; }
 
 private:
 //	enum INIT_STATE { STATE_UNINIT, STATE_CONTEXT_STARTED, STATE_FRAME_DRAWN, STATE_WIDGETS_JOINED, STATE_READY };
@@ -239,7 +240,7 @@ private:
 	display &disp_;
 	dialog_image *image_;
 	const std::string title_, style_;
-	std::string message_;
+	label* message_;
 	const DIALOG_TYPE type_;
 	mutable gui::menu *menu_;
 	std::vector<preview_pane*> preview_panes_;

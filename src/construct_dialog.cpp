@@ -101,11 +101,11 @@ namespace gui {
 
 dialog::dialog(display &disp, const std::string& title, const std::string& message,
 				const DIALOG_TYPE type, const std::string& dialog_style,
-				const std::string& help_topic) : disp_(disp),
-				title_(title), message_(message), type_(type), image_(NULL),
-				style_(dialog_style), help_button_(disp, help_topic), menu_(NULL),
-				text_widget_(NULL), result_(CONTINUE_DIALOG), action_(NULL),
-				bg_restore_(NULL)
+				const std::string& help_topic) : disp_(disp), title_(title),
+				message_(NULL),
+				type_(type), image_(NULL), style_(dialog_style),
+				help_button_(disp, help_topic), menu_(NULL), text_widget_(NULL),
+				result_(CONTINUE_DIALOG), action_(NULL), bg_restore_(NULL)
 {
 	CVideo& screen = disp_.video();
 
@@ -136,9 +136,10 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 	//dialog creator should catch(button::error&) ?
 
 	try {
-		message_ = font::word_wrap_text(message_, message_font_size, screen.getx() / 2, screen.gety() / 2);
+		std::string msg = font::word_wrap_text(message, message_font_size, screen.getx() / 2, screen.gety() / 2);
+		message_ = new label(screen, msg, message_font_size, font::NORMAL_COLOUR, false);
 	} catch(utils::invalid_utf8_exception&) {
-		ERR_DP << "Problem handling utf8 in message '" << message_ << "'\n";
+		ERR_DP << "Problem handling utf8 in message '" << message << "'\n";
 		throw;
 	}
 }
@@ -162,6 +163,7 @@ dialog::~dialog()
 //		delete (*p);
 //	}
 	delete bg_restore_;
+	delete message_;
 }
 
 const bool dialog::option_checked(unsigned int option_index)
@@ -245,7 +247,7 @@ int dialog::show(const dimension_measurements &dim)
 	if(disp_.update_locked())
 		return CLOSE_DIALOG;
 
-	LOG_DP << "showing dialog '" << title_ << "' '" << message_ << "'\n";
+	LOG_DP << "showing dialog '" << title_ << "' '" << message_->get_text() << "'\n";
 
 	//create the event context, remember to instruct any passed-in widgets to join it
 	const events::event_context dialog_events_context;
@@ -288,10 +290,6 @@ void dialog::draw_contents(const dimension_measurements &dim)
 		}
 	}
 	events::raise_draw_event(); //draw widgets
-
-	font::draw_text(&disp_.video(), dim.message, message_font_size,
-	                font::NORMAL_COLOUR, message_,
-	                dim.message.x, dim.message.y); //draw message
 
 	disp_.flip();
 	disp_.invalidate_all();
@@ -352,6 +350,9 @@ void dialog::update_widget_positions(const dimension_measurements &dim)
 		btn->join();
 	}
 	help_button_.join();
+
+	message_->set_location(dim.message);
+	message_->join();
 }
 
 void dialog::refresh()
@@ -364,7 +365,6 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc) const
 {
 	CVideo& screen = disp_.video();
 	surface const scr = screen.getSurface();
-	SDL_Rect clipRect = disp_.screen_area();
 
 	dimension_measurements dim;
 	dim.x = xloc;
@@ -383,9 +383,9 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc) const
 	}
 
 	const bool use_menu = (get_menu().height() > 0);
-	if(!message_.empty()) {
-		dim.message = font::draw_text(NULL, clipRect, message_font_size,
-		                            font::NORMAL_COLOUR, message_, 0, 0);
+	if(!message_->get_text().empty()) {
+		dim.message.w = message_->width();
+		dim.message.h = message_->height();
 	}
 	unsigned int caption_width = 0;
 	unsigned int caption_height = 0;
@@ -613,7 +613,8 @@ int dialog::process(dialog_process_info &info)
 	const bool new_left_button = (mouse_flags&SDL_BUTTON_LMASK) != 0;
 	const bool new_key_down = info.key[SDLK_SPACE] || info.key[SDLK_RETURN] ||
 							  info.key[SDLK_ESCAPE];
-	const bool use_menu = (get_menu().height() > 0);
+	get_menu();
+	const bool use_menu = (menu_ != empty_menu);
 
 	if((!info.key_down && info.key[SDLK_RETURN] || menu_->double_clicked()) &&
 	   (type_ == YES_NO || type_ == OK_CANCEL || type_ == OK_ONLY || type_ == CLOSE_ONLY)) {
