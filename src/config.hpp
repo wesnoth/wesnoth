@@ -42,6 +42,7 @@ public:
 	~config();
 
 	config& operator=(const config& cfg);
+	void* operator new(size_t) throw(std::bad_alloc);
 
 	typedef std::vector<config*> child_list;
 	typedef std::map<std::string,child_list> child_map;

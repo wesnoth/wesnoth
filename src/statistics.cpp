@@ -451,8 +451,8 @@ void un_recruit_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.recruits[u.type().id()]--;
-	s.recruit_cost -= u.type().cost();
+	s.recruits[u.id()]--;
+	s.recruit_cost -= u.cost();
 }
 
 

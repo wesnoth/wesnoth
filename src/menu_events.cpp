@@ -640,7 +640,8 @@ namespace events{
 				current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 				redo_stack_.clear();
-				if(new_unit.type().genders().size() > 1 || new_unit.type().has_random_traits()) {
+				wassert(new_unit.type());
+				if(new_unit.type()->genders().size() > 1 || new_unit.type()->has_random_traits()) {
 					clear_undo_stack(team_num);
 				} else {
 					undo_stack_.push_back(undo_action(new_unit,loc,RECRUIT_POS));
@@ -806,7 +807,8 @@ namespace events{
 
 			const unit& un = units_.find(action.recall_loc)->second;
 			statistics::un_recruit_unit(un);
-			current_team.spend_gold(-un.type().cost());
+			wassert(un.type());
+			current_team.spend_gold(-un.type()->cost());
 
 			//MP_COUNTDOWN take away recruit bonus
 			if(action.countdown_time_bonus)
@@ -936,7 +938,7 @@ namespace events{
 			//unit new_unit(action.affected_unit.type(),team_num_,true);
 			const std::string& msg = recruit_unit(map_,team_num,units_,new_unit,loc,gui_);
 			if(msg.empty()) {
-				current_team.spend_gold(new_unit.type().cost());
+				current_team.spend_gold(new_unit.type()->cost());
 				statistics::recruit_unit(new_unit);
 
 				//MP_COUNTDOWN: restore recruitment bonus
