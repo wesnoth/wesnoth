@@ -1850,7 +1850,7 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	}else{
 		loc = image::locator(image_name);
 	}
-	surface image(image::get_image(loc,utils::string_bool(get_state("stoned"))?image::GREYED : image::SCALED));
+	surface image(image::get_image(loc,utils::string_bool(get_state("stoned"))?image::GREYED : image::UNSCALED));
 	if(image ==NULL) {
 		image = still_image();
 	}
