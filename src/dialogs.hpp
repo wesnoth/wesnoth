@@ -17,14 +17,42 @@ class config;
 class display;
 
 #include "map.hpp"
-#include "show_dialog.hpp"
+#include "construct_dialog.hpp"
 #include "unit.hpp"
 #include "events.hpp"
 
 #include "widgets/button.hpp"
 
+namespace gui
+{
+	class file_menu;
+}
+
 namespace dialogs
 {
+
+class file_dialog : public gui::dialog {
+public:
+	file_dialog(display &disp, const std::string& file_path, const std::string& title);
+	
+	virtual gui::dialog::dimension_measurements layout(int xloc=-1, int yloc=-1) const;
+
+	/// Return the chosen file.
+	std::string get_choice() const { return chosen_file_; }
+
+protected:
+	void action(gui::dialog_process_info &dp_info);
+	const std::string unformat_filename(const std::string& filename) const;
+	const std::string format_filename(const std::string& filename) const;
+	const std::string format_dirname(const std::string& dirname) const;
+
+private:
+	gui::file_menu *files_list_;
+	int last_selection_;
+	std::string last_textbox_text_;
+	std::string chosen_file_;
+};
+
 //function to handle an advancing unit. If there is only one choice to advance
 //to, the unit will be automatically advanced. If there is a choice, and 'random_choice'
 //is true, then a unit will be selected at random. Otherwise, a dialog will be displayed

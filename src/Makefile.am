@@ -211,7 +211,7 @@ wesnoth_editor_SOURCES = \
 	serialization/binary_or_text.cpp \
 	serialization/parser.cpp \
 	widgets/button.cpp \
-	widgets/file_chooser.cpp \
+	widgets/file_menu.cpp \
 	widgets/label.cpp \
 	widgets/menu.cpp \
 	widgets/menu_style.cpp \
@@ -305,7 +305,7 @@ noinst_HEADERS = \
 	widgets/progressbar.hpp \
 	widgets/textbox.hpp \
 	widgets/combo.hpp \
-	widgets/file_chooser.hpp \
+	widgets/file_menu.hpp \
 	widgets/scrollpane.hpp \
 	widgets/menu.hpp \
 	widgets/button.hpp \

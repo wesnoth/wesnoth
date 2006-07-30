@@ -185,7 +185,7 @@ public:
 
 protected:
 	bool item_ends_with_image(const std::string& item) const;
-	void handle_event(const SDL_Event& event);
+	virtual void handle_event(const SDL_Event& event);
 	void set_inner_location(const SDL_Rect& rect);
 
 	bool requires_event_focus() const { return true; };

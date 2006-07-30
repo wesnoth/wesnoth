@@ -188,7 +188,7 @@ public:
 
 	//Specific preparations
 	//layout - determines dialog measurements based on all components
-	dimension_measurements layout(int xloc=-1, int yloc=-1) const;
+	virtual dimension_measurements layout(int xloc=-1, int yloc=-1) const;
 
 	//Launching the dialog
 	//show - the return value of this method should be the same as result()
@@ -215,8 +215,8 @@ protected:
 
 	//refresh - forces the display to refresh
 	void refresh();
-	label& get_message() { return *message_; }
-	textbox& get_textbox() { return *text_widget_; }
+	label& get_message() const { return *message_; }
+	dialog_textbox& get_textbox() const { return *text_widget_; }
 
 private:
 //	enum INIT_STATE { STATE_UNINIT, STATE_CONTEXT_STARTED, STATE_FRAME_DRAWN, STATE_WIDGETS_JOINED, STATE_READY };
