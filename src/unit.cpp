@@ -30,6 +30,7 @@
 #include "display.hpp"
 #include "gamestatus.hpp"
 #include "actions.hpp"
+#include "game_events.hpp"
 #include "sound.hpp"
 
 #include <ctime>
@@ -373,7 +374,6 @@ void unit::advance_to(const unit_type* t)
 	cfg_.clear_children("standing_anim");
 	cfg_.clear_children("attack");
 	cfg_.clear_children("abilities");
-	cfg_.clear_children("event");
 	// clear cache of movement costs
 	movement_costs_.clear();
 
@@ -422,6 +422,8 @@ void unit::advance_to(const unit_type* t)
 		cfg_["id"] = id_;
 		cfg_["gender_id"] = cfg_["gender"];
 	}
+	game_events::add_events(cfg_.get_children("event"),id_);
+	cfg_.clear_children("event");
 
 	set_state("poisoned","");
 	set_state("slowed","");
@@ -493,12 +495,6 @@ const std::string& unit::profile() const
 const std::string& unit::unit_description() const
 {
 	return cfg_["unit_description"];
-}
-
-
-const config::child_list unit::wml_events() const
-{
-	return cfg_.get_children("event");
 }
 
 
@@ -1342,6 +1338,8 @@ void unit::read(const config& cfg)
 		cfg_.clear_children("leading_anim");
 		cfg_.clear_children("standing_anim");
 	}
+	game_events::add_events(cfg_.get_children("event"),id_);
+	cfg_.clear_children("event");
 }
 void unit::write(config& cfg) const
 {
@@ -1451,7 +1449,7 @@ void unit::write(config& cfg) const
 	cfg["cost"] = lexical_cast_default<std::string>(unit_value_);
 	cfg.clear_children("modifications");
 	cfg.add_child("modifications",modifications_);
-
+	
 }
 
 void unit::assign_role(const std::string& role)

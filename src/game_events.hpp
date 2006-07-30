@@ -55,6 +55,7 @@ struct manager {
 };
 
 void write_events(config& cfg);
+void add_events(const config::child_list& cfgs,const std::string& id);
 
 bool matches_special_filter(const config* cfg, const vconfig filter);
 bool unit_matches_filter(const unit& u, const vconfig filter,const gamemap::location& loc);
