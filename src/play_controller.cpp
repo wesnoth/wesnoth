@@ -297,7 +297,8 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	gamestate_.set_variable("side_number",player_number_str.str());
 
 	if(first_turn_) {
-		if(gui_->viewing_team() == team_index && !team_manager_.is_observer()) {
+		int this_team = (gui_->viewing_team() + 1) % teams_.size();
+		if(this_team == team_index && !team_manager_.is_observer()) {
 			if (!is_replay){
 				recorder.add_event("turn 1");
 				recorder.add_event("new turn");
@@ -315,7 +316,8 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	} else
 	//fire side turn event only if real side change occurs not counting changes from void to a side
 	if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
-		if(gui_->viewing_team() == team_index && !team_manager_.is_observer()
+		int this_team = (gui_->viewing_team() + 1) % teams_.size();
+		if(this_team == team_index && !team_manager_.is_observer()
 			|| current_team.is_ai()){
 			if (!is_replay){
 				recorder.add_event("side turn");
