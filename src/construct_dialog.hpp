@@ -28,7 +28,8 @@ namespace gui {
 struct dialog_process_info
 {
 public:
-	dialog_process_info() : left_button(true), right_button(true), key_down(true), first_time(true), selection(-1)
+	dialog_process_info() : left_button(true), right_button(true), key_down(true),
+		first_time(true), double_clicked(false), selection(-1)
 	{}
 	void clear_buttons() {
 		left_button = true;
@@ -36,7 +37,7 @@ public:
 		key_down = true;
 	}
 	CKey key;
-	bool left_button, right_button, key_down, first_time;
+	bool left_button, right_button, key_down, first_time, double_clicked;
 	int selection;
 };
 
@@ -77,7 +78,7 @@ public:
 	label *get_label() const { return label_; }
 
 	handler_vector handler_members() {
-		handler_vector h;
+		handler_vector h = textbox::handler_members();
 		if(label_) h.push_back(label_);
 		return h;
 	}
@@ -215,6 +216,7 @@ protected:
 	//refresh - forces the display to refresh
 	void refresh();
 	label& get_message() { return *message_; }
+	textbox& get_textbox() { return *text_widget_; }
 
 private:
 //	enum INIT_STATE { STATE_UNINIT, STATE_CONTEXT_STARTED, STATE_FRAME_DRAWN, STATE_WIDGETS_JOINED, STATE_READY };

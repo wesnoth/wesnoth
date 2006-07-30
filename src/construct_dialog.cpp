@@ -549,8 +549,8 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc) const
 	const int text_widget_y = dim.y+top_padding+text_and_image_height-6+menu_hpadding;
 
 	if(use_textbox) {
-		dim.textbox.x = dim.x + left_padding + text_widget_width - text_widget_->location().w;
-		dim.textbox.y = text_widget_y + (text_widget_height - text_widget_->location().h)/2;
+		dim.textbox.x = dim.x + left_padding + text_widget_width - dim.textbox.w;
+		dim.textbox.y = text_widget_y + (text_widget_height - dim.textbox.h)/2;
 		dim.label_x = dim.x+left_padding;
 		dim.label_y = dim.textbox.y;
 	}
@@ -613,10 +613,11 @@ int dialog::process(dialog_process_info &info)
 	const bool new_left_button = (mouse_flags&SDL_BUTTON_LMASK) != 0;
 	const bool new_key_down = info.key[SDLK_SPACE] || info.key[SDLK_RETURN] ||
 							  info.key[SDLK_ESCAPE];
+	info.double_clicked = menu_->double_clicked();
 	get_menu();
 	const bool use_menu = (menu_ != empty_menu);
 
-	if((!info.key_down && info.key[SDLK_RETURN] || menu_->double_clicked()) &&
+	if((!info.key_down && info.key[SDLK_RETURN] || info.double_clicked) &&
 	   (type_ == YES_NO || type_ == OK_CANCEL || type_ == OK_ONLY || type_ == CLOSE_ONLY)) {
 
 		return (use_menu ? menu_->selection() : 0);
