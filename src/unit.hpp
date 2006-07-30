@@ -83,8 +83,6 @@ class unit
 		//information about the unit -- a detailed description of it
 		const std::string& unit_description() const;
 
-		const config::child_list wml_events() const;
-
 		int hitpoints() const;
 		int max_hitpoints() const;
 		int experience() const;
