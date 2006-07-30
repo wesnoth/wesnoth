@@ -344,6 +344,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 			sound_played = true;
 			sound::play_sound(def->second.get_hit_sound());
 			disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
+			disp.invalidate_unit();
 		}
 		disp.draw();
 		events::pump();
@@ -366,6 +367,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		sound_played = true;
 		sound::play_sound(def->second.get_hit_sound());
 		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
+		disp.invalidate_unit();
 	}
 	halo::remove(missile_halo);
 	missile_halo = 0;
@@ -481,6 +483,7 @@ bool unit_attack(display& disp, unit_map& units,
 	if(damage > 0 && !hide) {
 		sound::play_sound(def->second.get_hit_sound());
 		disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
+		disp.invalidate_unit();
 	}
 	if(def->second.take_hit(damage)) {
 		dead = true;
