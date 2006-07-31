@@ -329,6 +329,7 @@ void dialog::update_widget_positions(const dimension_measurements &dim)
 		menu_->join();
 		menu_->set_numeric_keypress_selection(text_widget_ == NULL);
 		menu_->set_width( dim.menu_width );
+		menu_->set_max_width( dim.menu_width ); //lock the menu width
 		menu_->set_location( dim.menu_x, dim.menu_y );
 	}
 	if(image_) {

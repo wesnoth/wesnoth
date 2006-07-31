@@ -27,6 +27,10 @@
 #include <sstream>
 #include <cstdio>
 
+namespace {
+	std::vector<std::string> empty_string_vector;
+}
+
 namespace gui {
 
 const std::string file_menu::dir_picture("misc/folder-icon.png");
@@ -34,7 +38,7 @@ const std::string file_menu::path_up("..");
 const char file_menu::path_delim('/');
 
 file_menu::file_menu(CVideo &disp, std::string start_file)
-	: menu(disp, files_in_current_dir_, false),
+	: menu(disp, empty_string_vector, false),
 	  current_dir_(get_path(start_file)),
 	  chosen_file_(start_file), last_selection_(-1)
 {
@@ -92,6 +96,19 @@ int file_menu::delete_chosen_file() {
 	}
 	return ret;
 }
+
+/*void file_menu::make_directory() {
+	::make_directory(chosen_file_);
+	if (ret == -1) {
+//		show_dialog(disp_, NULL, "", _("Deletion of the file failed."), OK_ONLY);
+	}
+	else {
+		last_selection_ = -1;
+		update_file_lists();
+		chosen_file_ = current_dir_;
+	}
+	return ret;
+}*/
 
 void file_menu::handle_event(const SDL_Event& event) {
 	menu::handle_event(event);
