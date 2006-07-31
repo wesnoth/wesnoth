@@ -49,6 +49,7 @@ public:
 	bool is_directory(const std::string& fname) const;
 
 	void change_directory(const std::string path);
+	bool make_directory(const std::string& subdir_name);
 
 protected:
 	void handle_event(const SDL_Event& event);

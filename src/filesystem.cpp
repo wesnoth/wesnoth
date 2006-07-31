@@ -337,13 +337,15 @@ std::string get_dir(const std::string& dir_path)
 	return dir_path;
 }
 
-void make_directory(const std::string& path)
+bool make_directory(const std::string& path)
 {
+	bool ret = true;
 #ifdef _WIN32
-	_mkdir(path.c_str());
+	ret = (_mkdir(path.c_str()) == 0);
 #else
-	mkdir(path.c_str(),AccessMode);
+	ret = (mkdir(path.c_str(),AccessMode) == 0);
 #endif
+	return ret;
 }
 
 //this deletes a directory with no hidden files and subdirectories

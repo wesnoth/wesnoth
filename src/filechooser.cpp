@@ -51,8 +51,8 @@ file_dialog::file_dialog(display &disp, const std::string& file_path, const std:
 	set_textbox(_("File: "), format_filename(file_path), 100);
 	add_button( new gui::dialog_button(disp.video(), _("Delete File"),
 		gui::button::TYPE_PRESS, gui::DELETE_ITEM), dialog::BUTTON_EXTRA);
-//	add_button( new gui::dialog_button(disp.video(), _("New Folder"),
-//		gui::button::TYPE_PRESS, gui::CREATE_ITEM), dialog::BUTTON_CHECKBOX_LEFT);
+	add_button( new gui::dialog_button(disp.video(), _("New Folder"),
+		gui::button::TYPE_PRESS, gui::CREATE_ITEM), dialog::BUTTON_CHECKBOX_LEFT);
 }
 
 gui::dialog::dimension_measurements file_dialog::layout(int xloc, int yloc) const
@@ -153,10 +153,29 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 			if(files_list_->delete_chosen_file() == -1) {
 				gui::dialog d(get_display(), "", _("Deletion of the file failed."), gui::OK_ONLY);
 				d.show();
+				dp_info.clear_buttons();
 			} else {
 				dp_info.first_time = true;
 			}
 		}
+		set_result(gui::CONTINUE_DIALOG);
+	}
+	//handle "create item" requests
+	else if(result() == gui::CREATE_ITEM)
+	{
+		gui::dialog d(get_display(), _("New Folder"), "", gui::OK_CANCEL);
+		d.set_textbox(_("Name: "));
+		d.show();
+		if(d.result() != gui::CLOSE_DIALOG && !d.textbox_text().empty())
+		{
+			if( !files_list_->make_directory(d.textbox_text()) ) {
+				gui::dialog d2(get_display(), "", _("Creation of the directory failed."), gui::OK_ONLY);
+				d2.show();
+			} else {
+				dp_info.first_time = true;
+			}
+		}
+		dp_info.clear_buttons();
 		set_result(gui::CONTINUE_DIALOG);
 	}
 
