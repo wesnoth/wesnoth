@@ -28,7 +28,7 @@
 #include "minimap.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
-#include "show_dialog.hpp"
+#include "construct_dialog.hpp"
 #include "util.hpp"
 #include "video.hpp"
 #include "wassert.hpp"
@@ -185,18 +185,28 @@ void show_objectives(display& disp, const config& level, const std::string& obje
 	                 gui::OK_ONLY);
 }
 
-int get_save_name(display & disp,const std::string& caption, const std::string& message,
-				  std::string* name, gui::DIALOG_TYPE dialog_type, const std::string& title)
+int get_save_name(display & disp,const std::string& message, const std::string& txt_label,
+				  std::string* fname, gui::DIALOG_TYPE dialog_type, const std::string& title,
+				  const bool has_exit_button)
 {
-	const std::string& title2 = (title.empty()) ? _("Save Game") : title;
+	const std::string& tmp_title = (title.empty()) ? _("Save Game") : title;
     int overwrite=0;
     int res=0;
     do {
-        res = gui::show_dialog(disp,NULL,title2,caption,dialog_type,NULL,NULL,message,name);
-            if (res == 0 && save_game_exists(*name))
-                overwrite = gui::show_dialog(disp,NULL,_("Overwrite?"),
-                    _("Save already exists. Do you want to overwrite it ?"),gui::YES_NO);
-        else overwrite = 0;
+		gui::dialog d(disp, tmp_title, message, dialog_type);
+		d.set_textbox(txt_label, *fname);
+		if(has_exit_button) {
+			d.add_button( new gui::dialog_button(disp.video(), _("Quit Game"),
+				gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_STANDARD);
+		}
+		res = d.show();
+		*fname = d.textbox_text();
+		if (res == 0 && save_game_exists(*fname)) {
+			overwrite = gui::show_dialog(disp,NULL,_("Overwrite?"),
+				_("Save already exists. Do you want to overwrite it ?"),gui::YES_NO);
+		} else {
+			overwrite = 0;
+		}
     } while ((res==0)&&(overwrite!=0));
 	return res;
 }

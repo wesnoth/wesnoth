@@ -366,7 +366,8 @@ namespace events{
 						 NULL,"",NULL,0,NULL,NULL,-1,-1,NULL,NULL,"",&sorter);
 	}
 
-	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type)
+	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,
+		const bool has_exit_button)
 	{
 		std::stringstream stream;
 
@@ -381,7 +382,7 @@ namespace events{
 
 		label.erase(std::remove_if(label.begin(),label.end(),is_illegal_file_char),label.end());
 
-		const int res = dialog_type == gui::NULL_DIALOG ? 0 : dialogs::get_save_name(*gui_,message,_("Name:"),&label,dialog_type);
+		const int res = dialog_type == gui::NULL_DIALOG ? 0 : dialogs::get_save_name(*gui_,message,_("Name:"),&label,dialog_type, "", has_exit_button);
 
 		if(res == 0) {
 
@@ -402,6 +403,8 @@ namespace events{
 				gui::show_dialog(*gui_,NULL,_("Error"),_("The game could not be saved"),gui::MESSAGE);
 				//do not bother retrying, since the user can just try to save the game again
 			};
+		} else if(res == 2) {
+			throw end_level_exception(QUIT);
 		}
 	}
 

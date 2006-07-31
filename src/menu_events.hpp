@@ -71,7 +71,7 @@ public:
 	void show_statistics();
 	void unit_list();
 	void status_table();
-	void save_game(const std::string& message, gui::DIALOG_TYPE dialog_type);
+	void save_game(const std::string& message, gui::DIALOG_TYPE dialog_type, const bool has_exit_button=false);
 	void load_game();
 	void preferences();
 	void show_chat_log();

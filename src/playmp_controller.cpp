@@ -251,7 +251,7 @@ void playmp_controller::process_oos(const std::string& err_msg){
 		}
 		temp_buf << " \n";
 	}
-	menu_handler_.save_game(temp_buf.str(),gui::YES_NO);
+	menu_handler_.save_game(temp_buf.str(),gui::YES_NO, true);
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){
