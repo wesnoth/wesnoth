@@ -93,6 +93,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	  theme_(theme), game_config_(game_config), map_dirty_(false), l_button_palette_dirty_(true),
 	  everything_dirty_(false), palette_(gui, size_specs_, map), brush_(gui, size_specs_),
 	  l_button_held_func_(NONE), tooltip_manager_(gui_.video()), floating_label_manager_(),
+	  mouse_moved_(false),
 	  highlighted_locs_cleared_(false), prefs_disp_manager_(&gui_), all_hexes_selected_(false) {
 
 	// Set size specs.
