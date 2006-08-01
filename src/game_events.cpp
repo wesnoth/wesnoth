@@ -109,48 +109,48 @@ bool conditional_passed(const unit_map* units,
 	for(vconfig::child_list::const_iterator var = variables.begin(); var != variables.end(); ++var) {
 		const vconfig& values = *var;
 
-		const std::string name = values["name"];
+		const std::string& name = values["name"];
 		wassert(state_of_game != NULL);
-		const std::string value = state_of_game->get_variable(name);
+		const std::string& value = state_of_game->get_variable(name);
 
 		const double num_value = atof(value.c_str());
 
-		const std::string equals = values["equals"];
+		const std::string& equals = values["equals"];
 		if(values.get_attribute("equals") != "" && value != equals) {
 			return false;
 		}
 
-		const std::string numerical_equals = values["numerical_equals"];
+		const std::string& numerical_equals = values["numerical_equals"];
 		if(values.get_attribute("numerical_equals") != "" && atof(numerical_equals.c_str()) != num_value){
 			return false;
 		}
 
-		const std::string not_equals = values["not_equals"];
+		const std::string& not_equals = values["not_equals"];
 		if(values.get_attribute("not_equals") != "" && not_equals == value) {
 			return false;
 		}
 
-		const std::string numerical_not_equals = values["numerical_not_equals"];
+		const std::string& numerical_not_equals = values["numerical_not_equals"];
 		if(values.get_attribute("numerical_not_equals") != "" && atof(numerical_not_equals.c_str()) == num_value){
 			return false;
 		}
 
-		const std::string greater_than = values["greater_than"];
+		const std::string& greater_than = values["greater_than"];
 		if(values.get_attribute("greater_than") != "" && atof(greater_than.c_str()) >= num_value){
 			return false;
 		}
 
-		const std::string less_than = values["less_than"];
+		const std::string& less_than = values["less_than"];
 		if(values.get_attribute("less_than") != "" && atof(less_than.c_str()) <= num_value){
 			return false;
 		}
 
-		const std::string greater_than_equal_to = values["greater_than_equal_to"];
+		const std::string& greater_than_equal_to = values["greater_than_equal_to"];
 		if(values.get_attribute("greater_than_equal_to") != "" && atof(greater_than_equal_to.c_str()) > num_value){
 			return false;
 		}
 
-		const std::string less_than_equal_to = values["less_than_equal_to"];
+		const std::string& less_than_equal_to = values["less_than_equal_to"];
 		if(values.get_attribute("less_than_equal_to") != "" && atof(less_than_equal_to.c_str()) < num_value) {
 			return false;
 		}
@@ -371,7 +371,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(index >= teams->size())
 			return rval;
 
-		const std::string type = utils::interpolate_variables_into_string(
+		const std::string& type = utils::interpolate_variables_into_string(
 			cfg.get_attribute("type"), *state_of_game);
 
 		const std::vector<std::string>& types = utils::split(type);
@@ -397,7 +397,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(index >= teams->size())
 			return rval;
 
-		const std::string type = utils::interpolate_variables_into_string(
+		const std::string& type = utils::interpolate_variables_into_string(
 			cfg.get_attribute("type"), *state_of_game);
 		const std::vector<std::string>& types = utils::split(type);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
@@ -715,9 +715,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string lose_str = "#";
 
 		wassert(state_of_game != NULL);
-		const t_string summary = utils::interpolate_variables_into_string(
+		const t_string& summary = utils::interpolate_variables_into_string(
 			cfg.get_attribute("summary"), *state_of_game);
-		const t_string note = utils::interpolate_variables_into_string(
+		const t_string& note = utils::interpolate_variables_into_string(
 			cfg.get_attribute("note"), *state_of_game);
 		std::string side = cfg["side"];
 		bool silent = utils::string_bool(cfg["silent"]);
@@ -793,28 +793,28 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "set_variable") {
 		wassert(state_of_game != NULL);
 
-		const std::string name = utils::interpolate_variables_into_string(
+		const std::string& name = utils::interpolate_variables_into_string(
 			cfg.get_attribute("name"), *state_of_game);
 		t_string& var = state_of_game->get_variable(name);
 
-		const t_string value = cfg["value"];
+		const t_string& value = cfg["value"];
 		if(value.empty() == false) {
 			var = value;
 		}
 
-		const std::string format = utils::interpolate_variables_into_string(
+		const std::string& format = utils::interpolate_variables_into_string(
 			cfg.get_attribute("format"), *state_of_game);
 		if(format.empty() == false) {
 			var = format;
 		}
 
-		const std::string to_variable = utils::interpolate_variables_into_string(
+		const std::string& to_variable = utils::interpolate_variables_into_string(
 			cfg.get_attribute("to_variable"), *state_of_game);
 		if(to_variable.empty() == false) {
 			var = state_of_game->get_variable(to_variable);
 		}
 
-		const std::string add = cfg["add"];
+		const std::string& add = cfg["add"];
 		if(add.empty() == false) {
 			int value = int(atof(var.c_str()));
 			value += atoi(add.c_str());
@@ -823,7 +823,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			var = buf;
 		}
 
-		const std::string multiply = cfg["multiply"];
+		const std::string& multiply = cfg["multiply"];
 		if(multiply.empty() == false) {
 			int value = int(atof(var.c_str()));
 			value = int(double(value) * atof(multiply.c_str()));
@@ -837,7 +837,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		// Each element in the list will be considered a separate choice,
 		// unless it contains "..". In this case, it must be a numerical
 		// range. (i.e. -1..-10, 0..100, -10..10, etc)
-		const std::string random = cfg["random"];
+		const std::string& random = cfg["random"];
 		if(random.empty() == false) {
 			std::string random_value, word;
 			std::vector<std::string> words;
@@ -1513,8 +1513,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(filter.null())
 			filter = &empty_filter;
 
-		const std::string variable = cfg["variable"];
-		const std::string mode = cfg["mode"];
+		const std::string& variable = cfg["variable"];
+		const std::string& mode = cfg["mode"];
 		bool cleared = false;
 
 		config& vars = state_of_game->variables;
@@ -1717,19 +1717,19 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	//command to remove a variable
 	else if(cmd == "clear_variable") {
-		const std::string name = utils::interpolate_variables_into_string(
+		const std::string& name = utils::interpolate_variables_into_string(
 			cfg.get_attribute("name"), *state_of_game);
 		state_of_game->clear_variable(name);
 	}
 
 	else if(cmd == "endlevel") {
-		const std::string next_scenario = utils::interpolate_variables_into_string(
+		const std::string& next_scenario = utils::interpolate_variables_into_string(
 			cfg.get_attribute("next_scenario"), *state_of_game);
 		if(next_scenario.empty() == false) {
 			state_of_game->scenario = next_scenario;
 		}
 
-		const std::string result = utils::interpolate_variables_into_string(
+		const std::string& result = utils::interpolate_variables_into_string(
 			cfg.get_attribute("result"), *state_of_game);
 		if(result.empty() || result == "victory") {
 			const bool bonus = utils::string_bool(cfg["bonus"],true);
@@ -1745,6 +1745,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "redraw") {
+		std::string side = cfg["side"];
+		wassert(state_of_game != NULL);
+		side = utils::interpolate_variables_into_string(side, *state_of_game);
+		if(side != "") {
+			const int side_num = lexical_cast_default<int>(side);
+			recalculate_fog(*game_map,*status_ptr,*game_data_ptr,*units,*teams,side_num-1);
+			screen->recalculate_minimap();
+		}
 		screen->invalidate_all();
 		screen->draw(true,true);
 	}
@@ -1781,7 +1789,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	} else if(cmd == "label") {
 		const gamemap::location loc(cfg);
-		const std::string text = utils::interpolate_variables_into_string(
+		const std::string& text = utils::interpolate_variables_into_string(
 			cfg.get_attribute("text"), *state_of_game);
 		screen->labels().set_label(loc,text);
 	}
@@ -1888,8 +1896,8 @@ bool filter_loc_impl(const gamemap::location& loc, const std::string& xloc,
 
 bool filter_loc(const gamemap::location& loc, const vconfig cfg)
 {
-	const std::string xloc = cfg["x"];
-	const std::string yloc = cfg["y"];
+	const std::string& xloc = cfg["x"];
+	const std::string& yloc = cfg["y"];
 
 	return filter_loc_impl(loc,xloc,yloc);
 }
@@ -2048,7 +2056,7 @@ manager::manager(const config& cfg, display& gui_, gamemap& map_,
 
 	used_items.clear();
 
-	const std::string used = cfg["used_items"];
+	const std::string& used = cfg["used_items"];
 	if(!used.empty()) {
 		const std::vector<std::string>& v = utils::split(used);
 		for(std::vector<std::string>::const_iterator i = v.begin(); i != v.end(); ++i) {
@@ -2143,7 +2151,7 @@ bool pump()
 		return false;
 
 	bool result = false;
-
+	
 	while(events_queue.empty() == false) {
 		queued_event ev = events_queue.front();
 		events_queue.pop_front(); //pop now for exception safety
