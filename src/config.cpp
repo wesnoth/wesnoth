@@ -54,6 +54,7 @@ config& config::operator=(const config& cfg)
 	return *this;
 }
 
+#ifndef _MSC_VER
 namespace {
 	config* pre_allocated_configs[200000];
 	int n_pre_allocated = 0;
@@ -71,6 +72,7 @@ void* config::operator new(size_t) throw(std::bad_alloc)
 	config* res = pre_allocated_configs[--n_pre_allocated];
 	return res;
 }
+#endif
 
 // Note this isn't a real copy. The children are still in both config trees
 // and updating them will affect both trees.

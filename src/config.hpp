@@ -42,7 +42,10 @@ public:
 	~config();
 
 	config& operator=(const config& cfg);
+
+#ifndef _MSC_VER
 	void* operator new(size_t) throw(std::bad_alloc);
+#endif
 
 	typedef std::vector<config*> child_list;
 	typedef std::map<std::string,child_list> child_map;
