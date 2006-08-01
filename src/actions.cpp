@@ -645,8 +645,12 @@ void attack::fire_event(const std::string& n)
 		config dat;
 		dat.add_child("first");
 		dat.add_child("second");
-		(*(dat.child("first")))["weapon"]=a_stats_->weapon->name();
-		(*(dat.child("second")))["weapon"]=d_stats_->weapon != NULL ? d_stats_->weapon->name() : "none";
+		if(a_ != units_.end()) {
+			(*(dat.child("first")))["weapon"]=a_stats_->weapon->name();
+		}
+		if(d_ != units_.end()) {
+			(*(dat.child("second")))["weapon"]=d_stats_->weapon != NULL ? d_stats_->weapon->name() : "none";
+		}
 		game_events::fire(n,attacker_,defender_,dat);
 		a_ = units_.find(attacker_);
 		d_ = units_.find(defender_);
