@@ -407,7 +407,10 @@ void enter_lobby_mode(display& disp, const config& game_config, game_data& data,
 			{
 				const preferences::display_manager disp_manager(&disp);
 				preferences::show_preferences_dialog(disp,game_config);
-				disp.redraw_everything();
+				//update lobby content
+				config request;
+				request.add_child("refresh_lobby");
+				network::send_data(request);
 			}
 			break;
 		default:
