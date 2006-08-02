@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-06-12 22:22+0200\n"
-"PO-Revision-Date: 2005-06-05 14:49-0600\n"
-"Last-Translator: Srecko Toroman <sreckotoroman@gmail.com>\n"
+"PO-Revision-Date: 2006-03-09 23:52+0100\n"
+"Last-Translator: Srecko Toroman <freecraft@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -109,17 +109,16 @@ msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Окрени около (ово може да промени димензије мапе):"
 
 #: src/hotkeys.cpp:49
-#, fuzzy
 msgid "Next Unit"
-msgstr "Слиједећа Јединица"
+msgstr "Следећа Јединица"
 
 #: src/hotkeys.cpp:50
 msgid "Previous Unit"
-msgstr ""
+msgstr "Претходна Јединица"
 
 #: src/hotkeys.cpp:51
 msgid "Hold Position"
-msgstr ""
+msgstr "Задржи Позицију"
 
 #: src/hotkeys.cpp:52
 msgid "End Unit Turn"
@@ -238,9 +237,8 @@ msgid "Set Label"
 msgstr "Постави Натпис"
 
 #: src/hotkeys.cpp:83
-#, fuzzy
 msgid "Clear Labels"
-msgstr "Постави Натпис"
+msgstr "Уклони Натписе"
 
 #: src/hotkeys.cpp:84
 msgid "Show Enemy Moves"
@@ -251,39 +249,36 @@ msgid "Best Possible Enemy Moves"
 msgstr "Најбољи Противнички Потези"
 
 #: src/hotkeys.cpp:86
-#, fuzzy
 msgid "Play"
-msgstr "Играчи:"
+msgstr "Играј"
 
 #: src/hotkeys.cpp:87
 msgid "Reset"
-msgstr ""
+msgstr "Рестартуј"
 
 #: src/hotkeys.cpp:88
 msgid "Stop"
-msgstr ""
+msgstr "Стани"
 
 #: src/hotkeys.cpp:89
-#, fuzzy
 msgid "Next Turn"
-msgstr "Слиједећа Јединица"
+msgstr "Следећи потез"
 
 #: src/hotkeys.cpp:90
-#, fuzzy
 msgid "Next Side"
-msgstr "Слиједећа Јединица"
+msgstr "Следећа Страна"
 
 #: src/hotkeys.cpp:91
 msgid "Shroud"
-msgstr ""
+msgstr "Неоткривено"
 
 #: src/hotkeys.cpp:92
 msgid "Fog"
-msgstr ""
+msgstr "Магла"
 
 #: src/hotkeys.cpp:93
 msgid "Skip animation"
-msgstr ""
+msgstr "Прескочи анимацију"
 
 #: src/hotkeys.cpp:95
 msgid "Set Terrain"
@@ -311,7 +306,7 @@ msgstr "Сачувај Као ..."
 
 #: src/hotkeys.cpp:101
 msgid "Set Player's keep"
-msgstr ""
+msgstr "Постави Играчев ??keep??"
 
 #: src/hotkeys.cpp:102
 msgid "Flood Fill"
@@ -468,8 +463,9 @@ msgid "Skip AI Moves"
 msgstr "Прескочи Потезе А.И.-а"
 
 #: src/preferences_display.cpp:221
+#, fuzzy
 msgid "Show Lobby Joins"
-msgstr ""
+msgstr "Прикажи уласке у лоби"
 
 #: src/preferences_display.cpp:222
 msgid "Show Floating Labels"
@@ -497,7 +493,7 @@ msgstr "Прикажи Хало Ефекте"
 
 #: src/preferences_display.cpp:229
 msgid "Theme"
-msgstr ""
+msgstr "Тема"
 
 #: src/preferences_display.cpp:231
 msgid "Adjust Gamma"
@@ -508,17 +504,16 @@ msgid "Reverse Time Graphics"
 msgstr "Обрнут смјер Сунца"
 
 #: src/preferences_display.cpp:234
-#, fuzzy
 msgid "Sound effects"
-msgstr "Прикажи Хало Ефекте"
+msgstr "Звучни ефекти"
 
 #: src/preferences_display.cpp:235
 msgid "Music"
-msgstr ""
+msgstr "Музика"
 
 #: src/preferences_display.cpp:236
 msgid "Chat Timestamping"
-msgstr ""
+msgstr "Чет Време"
 
 #: src/preferences_display.cpp:237
 msgid "Music Volume:"
@@ -534,7 +529,7 @@ msgstr "Гама"
 
 #: src/preferences_display.cpp:251
 msgid "Sound effects on/off"
-msgstr ""
+msgstr "Звучни ефекти укључено/искључено"
 
 #: src/preferences_display.cpp:255
 msgid "Change the sound effects volume"
@@ -542,7 +537,7 @@ msgstr "Промијени јачину звучних ефеката"
 
 #: src/preferences_display.cpp:258
 msgid "Music on/off"
-msgstr ""
+msgstr "Музика укључена/искључена"
 
 #: src/preferences_display.cpp:262
 msgid "Change the music volume"
@@ -554,11 +549,11 @@ msgstr "Промијени брзину клизача мапе"
 
 #: src/preferences_display.cpp:273 src/preferences_display.cpp:275
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "Постави број линија у чет оквиру"
 
 #: src/preferences_display.cpp:278
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Додај време у чет порукама"
 
 #: src/preferences_display.cpp:281 src/preferences_display.cpp:286
 msgid "Change the brightness of the display"
@@ -582,7 +577,7 @@ msgstr "Сложи мрежу на мапу"
 
 #: src/preferences_display.cpp:301
 msgid "Show messages about players joining the multiplayer lobby"
-msgstr ""
+msgstr "Прикажи поруке и играчима који улазе у мултиплејер лоби"
 
 #: src/preferences_display.cpp:304
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -593,9 +588,8 @@ msgid "Change the resolution the game runs at"
 msgstr "Промијени резолуцију у којо игра ради"
 
 #: src/preferences_display.cpp:307
-#, fuzzy
 msgid "Change the theme the game runs with"
-msgstr "Промијени резолуцију у којо игра ради"
+msgstr "Промени тему са којојм игра ради"
 
 #: src/preferences_display.cpp:310
 msgid "Display a dialog at the beginning of your turn"
@@ -633,7 +627,7 @@ msgstr "Види и подеси скраћенице"
 
 #: src/preferences_display.cpp:517
 msgid "Chat Lines: "
-msgstr ""
+msgstr "Чет линије:"
 
 #: src/preferences_display.cpp:569
 msgid "yes"
@@ -656,9 +650,8 @@ msgid "Prefs section^Sound"
 msgstr "Звук"
 
 #: src/preferences_display.cpp:640
-#, fuzzy
 msgid "Prefs section^Multiplayer"
-msgstr "Приказ"
+msgstr "Мултиплејер"
 
 #: src/preferences_display.cpp:641
 msgid "Advanced section^Advanced"
@@ -674,20 +667,19 @@ msgstr "Изабери резолуцију"
 
 #: src/preferences_display.cpp:752
 msgid "Hotkey Settings"
-msgstr "Поставке Скраћеница"
+msgstr "Подешавање Скраћеница"
 
 #: src/preferences_display.cpp:756 src/preferences_display.cpp:809
-#, fuzzy
 msgid "Press desired Hotkey"
 msgstr "Притисни жељену Скраћеницу"
 
 #: src/preferences_display.cpp:774
 msgid "Action"
-msgstr ""
+msgstr "Акције"
 
 #: src/preferences_display.cpp:774
 msgid "Binding"
-msgstr ""
+msgstr "Повезивања"
 
 #: src/preferences_display.cpp:786
 msgid "Change Hotkey"
@@ -695,24 +687,23 @@ msgstr "Промијени Скраћеницу"
 
 #: src/preferences_display.cpp:789
 msgid "Save Hotkeys"
-msgstr "Сачувај Скраћеницу"
+msgstr "Сачувај Скраћеницe"
 
 #: src/preferences_display.cpp:836
-#, fuzzy
 msgid "This Hotkey is already in use."
 msgstr "Ова Скраћеница је већ у употреби"
 
 #: src/preferences_display.cpp:869
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Сачувана Подешавања Тема:"
 
 #: src/preferences_display.cpp:875
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "Нова тема ће узети ефекта тек након покретања нове или учитавања игре."
 
 #: src/preferences_display.cpp:879
 msgid "No known themes.  Try changing from within an existing game."
-msgstr ""
+msgstr "Нема познатих тема. Покушајте промјенити из већ постојеће игре."
 
 #: src/show_dialog.cpp:313
 msgid "Error"
