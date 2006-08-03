@@ -241,6 +241,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	const t_string& set_name = cfg["set_name"];
 	const std::string& set_type = cfg["set_type"];
+	const config* set_specials = cfg.child("set_specials");
 	const std::string& set_special = cfg["set_special"];
 	const std::string& increase_damage = cfg["increase_damage"];
 	const std::string& increase_attacks = cfg["increase_attacks"];
@@ -258,7 +259,24 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		type_ = set_type;
 	}
 
+	if (set_specials) {
+		const std::string& mode = set_specials->get_attribute("mode");
+		if ( mode != "append") {
+			cfg_.clear_children("specials");
+		}
+		config* new_specials = cfg_.child("specials");
+		if (new_specials == NULL) {
+			cfg_.add_child("specials");
+			new_specials = cfg_.child("specials");
+		}
+		for(config::all_children_iterator s = set_specials->ordered_begin(); s != set_specials->ordered_end(); ++s) {
+			const std::pair<const std::string*,const config*>& value = *s;
+			new_specials->add_child(*value.first,*value.second); // new_specials==NULL :/
+		}
+	}
+	
 	if(set_special.empty() == false) {
+		LOG_STREAM(err, config) << "[effect] uses set_special=" << set_special <<", which is now deprecated. Use [set_specials] instead.\n";
 		cfg_.clear_children("specials");
 		config new_specials;
 		if(set_special == "berserk") {
