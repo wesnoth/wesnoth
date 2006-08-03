@@ -1210,11 +1210,11 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 		}
 		atts << IMAGE_PREFIX << attw.icon() << COLUMN_SEPARATOR
 			 << font::BOLD_TEXT << attw.name() << "\n" << att.damage << "-"
-			 << att.num_blows << " " << gettext(attw.range().c_str()) << " (" << att.chance_to_hit << "%)\n"
+			 << att.num_blows << " " << (attw.range().empty() ? "" : gettext(attw.range().c_str())) << " (" << att.chance_to_hit << "%)\n"
 			 << attw.weapon_specials() << special_pad
 			 << COLUMN_SEPARATOR << _("vs") << COLUMN_SEPARATOR
 			 << font::BOLD_TEXT << defw.name() << "\n" << def.damage << "-"
-			 << def.num_blows << " " << gettext(defw.range().c_str()) << " (" << def.chance_to_hit << "%)\n"
+			 << def.num_blows << " " << (defw.range().empty() ? "" : gettext(defw.range().c_str())) << " (" << def.chance_to_hit << "%)\n"
 			 << defw.weapon_specials() << special_pad << COLUMN_SEPARATOR
 			 << IMAGE_PREFIX << defw.icon();
 
