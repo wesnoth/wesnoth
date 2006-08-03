@@ -261,6 +261,9 @@ private:
 	bool ignore_next_doubleclick_;
 	bool last_was_doubleclick_;
 
+	//ellipsis calculation is slightly off, so default to false
+	bool use_ellipsis_;
+
 	const sorter* sorter_;
 	int sortby_;
 	bool sortreversed_;

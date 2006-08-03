@@ -157,7 +157,7 @@ menu::menu(CVideo& video, const std::vector<std::string>& items,
 	  double_clicked_(false),
 	  num_selects_(true),
 	  ignore_next_doubleclick_(false),
-	  last_was_doubleclick_(false),
+	  last_was_doubleclick_(false), use_ellipsis_(false),
 	  sorter_(sorter_obj), sortby_(-1), sortreversed_(false), highlight_heading_(-1)
 {
 	style_ = (menu_style) ? menu_style : &default_style;
@@ -299,13 +299,16 @@ void menu::update_size()
 	if (max_height_ > 0 && h > (unsigned)max_height_)
 		h = max_height_;
 
+	use_ellipsis_ = false;
 	std::vector<int> const &widths = column_widths();
 	unsigned w = std::accumulate(widths.begin(), widths.end(), 0);
 	if (items_.size() > max_items_onscreen())
 		w += scrollbar_width();
 	w = maximum(w, width());
-	if (max_width_ > 0 && w > (unsigned)max_width_)
+	if (max_width_ > 0 && w > (unsigned)max_width_) {
+		use_ellipsis_ = true;
 		w = max_width_;
+	}
 
 	update_scrollbar_grip_height();
 	set_measurements(w, h);
@@ -798,10 +801,10 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 			if (!str.empty() && str[0] == IMAGE_PREFIX) {
 				const std::string image_name(str.begin()+1,str.end());
 				const surface img = image::get_image(image_name,image::UNSCALED);
-				const int max_width = max_width_ < 0 ? area.w :
-					minimum<int>(max_width_, area.w - xpos);
-				if(img != NULL && (xpos - rect.x) + img->w < max_width
-				   && rect.y + img->h < area.h) {
+				const int remaining_width = max_width_ < 0 ? area.w :
+				minimum<int>(max_width_, ((lang_rtl)? xpos - rect.x : rect.x + rect.w - xpos));
+				if(img != NULL && img->w <= remaining_width
+				&& rect.y + img->h < area.h) {
 					const size_t y = rect.y + (rect.h - img->h)/2;
 					const size_t w = img->w + 5;
 					const size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
@@ -812,7 +815,7 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 				}
 			} else {
 				column.x = xpos;
-				const std::string to_show = max_width_ > -1 ?
+				const std::string to_show = (use_ellipsis_) ?
 					font::make_text_ellipsis(str, style_->get_font_size(), loc.w - (xpos - rect.x)) : str;
 				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
