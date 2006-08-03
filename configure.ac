@@ -132,7 +132,7 @@ AC_SUBST([HAS_RELATIVE_LOCALEDIR])
 
 # icondir and desktopdir may differ from datadir (suggested by Gentoo)
 AC_ARG_WITH([icondir],
-            AS_HELP_STRING([--with-icondir@<:@=DIR@:>@], [change icon directory under gnome]),
+            AS_HELP_STRING([--with-icondir@<:@=DIR@:>@], [change icon directory under gnome or kde, needs --with-gnome or --with-kde option]),
 		  [case "${withval}" in
 		   yes)
 				ICONDIR="${datadir}/icons"
@@ -145,8 +145,16 @@ AC_ARG_WITH([icondir],
 		   esac])
 AC_SUBST([ICONDIR])
 
+if test "x$icondir" = "xnone"; then
+        icondirset=no
+else
+        icondirset=yes
+fi
+
+AM_CONDITIONAL([HAS_ICONDIR], [test "x$icondirset" = "xyes"])
+
 AC_ARG_WITH([desktopdir],
-            AS_HELP_STRING([--with-desktopdir@<:@=DIR@:>@], [change desktop directory under gnome 2]),
+            AS_HELP_STRING([--with-desktopdir@<:@=DIR@:>@], [change desktop directory under gnome or kde, needs --with-gnome or --with-kde option]),
 		  [case "${withval}" in
 		   yes)	
 				DESKTOPDIR="${datadir}/applications"
@@ -159,6 +167,13 @@ AC_ARG_WITH([desktopdir],
 		   esac])
 AC_SUBST([DESKTOPDIR])
 
+if test "x$desktopdir" = "xnone"; then
+        desktopdirset=no
+else
+        desktopdirset=yes
+fi
+
+AM_CONDITIONAL([HAS_DESKTOPDIR], [test "x$desktopdirset" = "xyes"])
 
 AC_ARG_ENABLE([game],
               AS_HELP_STRING([--disable-game], [disable compilation of game]),
