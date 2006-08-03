@@ -239,8 +239,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg)
 {
 	// FIXME: this box should be vertically centered on the screen, but is not
-#if USE_TINY_GUI
-	set_measurements(260, 220);		  // FIXME: should compute this, but using what data ?
+#ifdef USE_TINY_GUI
+	set_measurements(180, 180);		  // FIXME: should compute this, but using what data ?
 #else
 	set_measurements(400, 400);
 #endif
@@ -369,11 +369,13 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 {
 	bg_register(rect);
 
-	const int top_border = 28;
+
 	const int right_border = font::relative_size(10);
 #if USE_TINY_GUI
+	const int top_border = 14;
 	const int item_interline = 20;
 #else
+	const int top_border = 28;
 	const int item_interline = 50;
 #endif
 
