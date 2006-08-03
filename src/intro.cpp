@@ -141,6 +141,9 @@ bool show_intro_part(display &disp, const config& part,
 #ifdef USE_TINY_GUI
 	textx = 10;
 	int xbuttons = video.getx() - 50;
+
+	// use the whole screen for text
+	texty = 0;
 #else
 	int xbuttons;
 
@@ -151,16 +154,22 @@ bool show_intro_part(display &disp, const config& part,
 		textx = 200;
 		xbuttons = video.getx() - 200 - 40;
 	}
-#endif
+	
 	texty = dstrect.y + dstrect.h - 200;
+#endif
 
 	//darken the area for the text and buttons to be drawn on
 	if(show_title == false) {
 		draw_solid_tinted_rectangle(0,texty,video.getx(),video.gety()-texty,0,0,0,0.5,video.getSurface());
 	}
 
+#ifdef USE_TINY_GUI
+	next_button.set_location(xbuttons,dstrect.y+dstrect.h-40);
+	skip_button.set_location(xbuttons,dstrect.y+dstrect.h-20);
+#else
 	next_button.set_location(xbuttons,dstrect.y+dstrect.h-70);
 	skip_button.set_location(xbuttons,dstrect.y+dstrect.h-40);
+#endif
 
 	//draw title if needed
 	if(show_title) {
@@ -257,7 +266,12 @@ bool show_intro_part(display &disp, const config& part,
 
 	if(lang_rtl)
 		textx += max_width;
+
+#ifdef USE_TINY_GUI
+	int xpos = textx, ypos = texty + 10;
+#else
 	int xpos = textx, ypos = texty + 20;
+#endif
 
 	//the maximum position that text can reach before wrapping
 	size_t height = 0;
