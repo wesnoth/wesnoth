@@ -89,7 +89,20 @@ if test "x$tinygui" = "xyes"
 then
 	CPPFLAGS="$CPPFLAGS -DUSE_TINY_GUI"
 fi
+
 AM_CONDITIONAL([TINYGUI], [test "x$tinygui" = "xyes"])
+
+AC_ARG_ENABLE([lowmem],
+              AS_HELP_STRING([--enable-lowmem], [reduce memory usage by removing extra functionality]),
+	      [lowmem=$enableval],
+	      [lowmem=no])
+
+if test "x$lowmem" = "xyes"
+then
+	CPPFLAGS="$CPPFLAGS -DLOW_MEM"
+fi
+
+AM_CONDITIONAL([LOWMEM], [test "x$lowmem" = "xyes"])
 
 DATADIR=$PACKAGE
 AC_ARG_WITH([datadir-name],
