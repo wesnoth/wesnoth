@@ -464,7 +464,9 @@ lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
 	join_game_(disp.video(), _("Join Game")),
 	create_game_(disp.video(), _("Create Game")),
 	skip_replay_(disp.video(), _("Quick Replays"), gui::button::TYPE_CHECK),
+#ifndef USE_TINY_GUI
 	game_preferences_(disp.video(), _("Preferences")),
+#endif
 	quit_game_(disp.video(), _("Quit")),
 	sorter_(gamelist),
 	games_menu_(disp.video(),cfg.child("multiplayer_hashes"))
@@ -485,7 +487,9 @@ void lobby::hide_children(bool hide)
 	join_game_.hide(hide);
 	create_game_.hide(hide);
 	skip_replay_.hide(hide);
+#ifndef USE_TINY_GUI
 	game_preferences_.hide(hide);
+#endif
 	quit_game_.hide(hide);
 }
 
@@ -493,12 +497,26 @@ void lobby::layout_children(const SDL_Rect& rect)
 {
 	ui::layout_children(rect);
 
-	join_game_.set_location(xscale(12),yscale(7));
-	observe_game_.set_location(join_game_.location().x + join_game_.location().w + 5,yscale(7));
-	create_game_.set_location(observe_game_.location().x + observe_game_.location().w + 5,yscale(7));
-	skip_replay_.set_location(create_game_.location().x + 2*(create_game_.location().w),yscale(7));
-	game_preferences_.set_location(skip_replay_.location().x + skip_replay_.location().w + 5,yscale(7));
-	quit_game_.set_location(game_preferences_.location().x + game_preferences_.location().w + 5,yscale(7));
+#ifdef USE_TINY_GUI
+	unsigned int yvalue = 0;
+	unsigned int border = 3;
+#else
+	unsigned int yvalue = 7;
+	unsigned int border = 5;
+#endif
+
+	join_game_.set_location(xscale(0),yscale(yvalue));
+	observe_game_.set_location(join_game_.location().x + join_game_.location().w + border,yscale(yvalue));
+	create_game_.set_location(observe_game_.location().x + observe_game_.location().w + border,yscale(yvalue));
+
+#ifndef USE_TINY_GUI
+	skip_replay_.set_location(create_game_.location().x + 2*(create_game_.location().w),yscale(yvalue));
+	game_preferences_.set_location(skip_replay_.location().x + skip_replay_.location().w + border,yscale(yvalue));
+	quit_game_.set_location(game_preferences_.location().x + game_preferences_.location().w + border,yscale(yvalue));
+#else
+	skip_replay_.set_location(create_game_.location().x + create_game_.location().w,yscale(yvalue));
+	quit_game_.set_location(skip_replay_.location().x + skip_replay_.location().w + border,yscale(yvalue));
+#endif
 
 	games_menu_.set_location(client_area().x, client_area().y + title().height());
 	games_menu_.set_measurements(client_area().w, client_area().h
@@ -572,10 +590,12 @@ void lobby::process_event()
 		return;
 	}
 
+#ifndef USE_TINY_GUI
 	if(game_preferences_.pressed()) {
 		set_result(PREFERENCES);
 		return;
 	}
+#endif
 
 	if(quit_game_.pressed()) {
 		recorder.set_skip(false);

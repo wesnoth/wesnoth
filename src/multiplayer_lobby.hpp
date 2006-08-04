@@ -118,7 +118,9 @@ private:
 	gui::button join_game_;
 	gui::button create_game_;
 	gui::button skip_replay_;
+#ifndef USE_TINY_GUI
 	gui::button game_preferences_;
+#endif
 	gui::button quit_game_;
 
 	lobby_sorter sorter_;
