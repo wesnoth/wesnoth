@@ -18,6 +18,16 @@
 #include "show_dialog.hpp"
 #include "video.hpp"
 
+namespace {
+
+#ifdef USE_TINY_GUI
+	const std::string empty_combo_label = "           ";
+#else
+	const std::string empty_combo_label = "";
+#endif
+
+}
+
 namespace gui {
 
 const int font_size = font::SIZE_SMALL;
@@ -25,7 +35,7 @@ const int horizontal_padding = 10;
 const int vertical_padding = 10;
 
 combo::combo(display& disp, const std::vector<std::string>& items)
-	: button(disp.video(), items.empty() ? "" : items[0]),
+	: button(disp.video(), items.empty() ? empty_combo_label : items[0]),
 	  items_(items), selected_(0), oldSelected_(0), disp_(&disp)
 {
 }
