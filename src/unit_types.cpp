@@ -242,6 +242,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	const t_string& set_name = cfg["set_name"];
 	const std::string& set_type = cfg["set_type"];
 	const config* set_specials = cfg.child("set_specials");
+	const std::string& del_specials = cfg["remove_specials"];
 	const std::string& set_special = cfg["set_special"];
 	const std::string& increase_damage = cfg["increase_damage"];
 	const std::string& increase_attacks = cfg["increase_attacks"];
@@ -271,10 +272,28 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		}
 		for(config::all_children_iterator s = set_specials->ordered_begin(); s != set_specials->ordered_end(); ++s) {
 			const std::pair<const std::string*,const config*>& value = *s;
-			new_specials->add_child(*value.first,*value.second); // new_specials==NULL :/
+			new_specials->add_child(*value.first,*value.second);
 		}
 	}
 	
+	if(del_specials.empty() == false) {
+		const std::vector<std::string>& dsl = utils::split(del_specials);
+		config* specials = cfg_.child("specials");
+		if (specials != NULL) {
+			config new_specials;
+			for(config::all_children_iterator s = specials->ordered_begin(); s != specials->ordered_end(); ++s) {
+				const std::pair<const std::string*,const config*>& vp = *s;
+				std::vector<std::string>::const_iterator found_id =
+					std::find(dsl.begin(),dsl.end(),vp.second->get_attribute("id"));
+				if (found_id == dsl.end()) {
+					new_specials.add_child(*vp.first,*vp.second);
+				}
+			}
+			cfg_.clear_children("specials");
+			cfg_.add_child("specials",new_specials);
+		}
+	}
+
 	if(set_special.empty() == false) {
 		LOG_STREAM(err, config) << "[effect] uses set_special=" << set_special <<", which is now deprecated. Use [set_specials] instead.\n";
 		cfg_.clear_children("specials");
