@@ -309,7 +309,6 @@ void create::process_event()
 	mp_countdown_init_time_ = countdown_init_time_slider_.value();
 	mp_countdown_reservoir_time_ = countdown_reservoir_time_slider_.value();
 
-
 	buf.str("");
 	buf <<  _("Init. Limit: ") << mp_countdown_init_time_; // << _(" sec.");
 	countdown_init_time_label_.set_text(buf.str());
@@ -338,7 +337,13 @@ void create::process_event()
 	//experience modifier
 	const int xpmod = xp_modifier_slider_.value();
 	buf.str("");
+
+#ifdef USE_TINY_GUI
+	buf << N_("Exp. Mod.: ") << xpmod << "%";
+#else
 	buf << _("Experience Modifier: ") << xpmod << "%";
+#endif
+
 	xp_modifier_label_.set_text(buf.str());
 
 	bool map_changed = map_selection_ != maps_menu_.selection();
@@ -378,9 +383,11 @@ void create::process_event()
 					generator_.assign(create_map_generator(parameters_.scenario_data["map_generation"],parameters_.scenario_data.child("generator")));
 				}
 
+#ifndef USE_TINY_GUI
 				if(!parameters_.scenario_data["description"].empty()) {
 					tooltips::add_tooltip(minimap_rect_,parameters_.scenario_data["description"]);
 				}
+#endif
 			}
 		} else {
 			parameters_.scenario_data.clear();
@@ -419,8 +426,11 @@ void create::process_event()
 			map = std::auto_ptr<gamemap>(new gamemap(game_config(), map_data));
 		} catch(gamemap::incorrect_format_exception& e) {
 			LOG_STREAM(err,general) << "map could not be loaded: " << e.msg_ << "\n";
+
+#ifndef USE_TINY_GUI
 			tooltips::clear_tooltips(minimap_rect_);
 			tooltips::add_tooltip(minimap_rect_,e.msg_);
+#endif
 		}
 
 		launch_game_.enable(map.get() != NULL);
@@ -438,7 +448,7 @@ void create::process_event()
 			side["controller"] = "human";
 		}
 
-
+#ifndef USE_TINY_GUI
 		if(map.get() != NULL) {
 			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,*map,0));
 			if(mini != NULL) {
@@ -447,6 +457,7 @@ void create::process_event()
 				update_rect(rect);
 			}
 		}
+#endif
 
 		int nsides = parameters_.scenario_data.get_children("side").size();
 		const config::child_list& player_sides = parameters_.scenario_data.get_children("side");
@@ -524,12 +535,15 @@ void create::hide_children(bool hide)
 
 		try {
 			gamemap map(game_config(), map_data);
+
+#ifndef USE_TINY_GUI
 			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,map,0));
 			if(mini != NULL) {
 				SDL_Rect rect = minimap_rect_;
 				SDL_BlitSurface(mini, NULL, video().getSurface(), &rect);
 				update_rect(rect);
 			}
+#endif
 		} catch(gamemap::incorrect_format_exception& e) {
 			LOG_STREAM(err,general) << "map could not be loaded: " << e.msg_ << "\n";
 		}
@@ -537,6 +551,7 @@ void create::hide_children(bool hide)
 	}
 }
 
+#ifndef USE_TINY_GUI
 void create::layout_children(const SDL_Rect& rect)
 {
 	ui::layout_children(rect);
@@ -544,6 +559,7 @@ void create::layout_children(const SDL_Rect& rect)
 
 	const int border_size = 6;
 	const int column_border_size = 10;
+	
 	int xpos = ca.x;
 	int ypos = ca.y;
 
@@ -561,6 +577,7 @@ void create::layout_children(const SDL_Rect& rect)
 
 	// First column: minimap & random map options
 	const int minimap_width = 200;
+
 	SDL_Rect mmrect = { xpos, ypos, minimap_width, minimap_width };
 	minimap_rect_ = mmrect;
 	ypos += minimap_width + border_size;
@@ -587,6 +604,7 @@ void create::layout_children(const SDL_Rect& rect)
 	xpos += minimap_width + column_border_size;
 	map_label_.set_location(xpos, ypos);
 	ypos += map_label_.height() + border_size;
+
 	maps_menu_.set_max_width(200);
 	maps_menu_.set_max_height(ca.h + ca.x - ypos - border_size);
 	maps_menu_.set_location(xpos, ypos);
@@ -597,6 +615,7 @@ void create::layout_children(const SDL_Rect& rect)
 
 	// Third column: big buch of options
 	ypos = ypos_columntop;
+
 	xpos += 200 + column_border_size;
 
 	turns_label_.set_location(xpos, ypos);
@@ -604,7 +623,6 @@ void create::layout_children(const SDL_Rect& rect)
 	turns_slider_.set_width(ca.w - xpos);
 	turns_slider_.set_location(xpos, ypos);
 	ypos += turns_slider_.height() + border_size;
-
 
 	village_gold_label_.set_location(xpos, ypos);
 	ypos += village_gold_label_.height() + border_size;
@@ -665,5 +683,151 @@ void create::layout_children(const SDL_Rect& rect)
 	left_button->set_location(right_button->location().x - left_button->width() -
 	                          gui::ButtonHPadding, ca.y + ca.h - left_button->height());
 }
+
+#else
+
+void create::layout_children(const SDL_Rect& rect)
+{
+	ui::layout_children(rect);
+	SDL_Rect ca = client_area();
+
+	const int border_size = 2;
+	const int column_border_size = 5;
+	
+	int xpos = ca.x;
+	int ypos = ca.y;
+
+	// OK / Cancel buttons
+	gui::button* left_button = &launch_game_;
+	gui::button* right_button = &cancel_game_;
+
+#ifdef OK_BUTTON_ON_RIGHT
+	std::swap(left_button,right_button);
+#endif
+
+	// Dialog title
+	ypos += title().height() + border_size;
+
+	// Name Entry
+	name_entry_label_.set_location(xpos, ypos);
+	name_entry_.set_location(xpos + name_entry_label_.width() + border_size, ypos);
+	name_entry_.set_width(ca.w - name_entry_label_.width() - border_size);
+	ypos += maximum<int>(name_entry_.height(), name_entry_label_.height()) + border_size;
+
+	// Save ypos here (column top)
+	int ypos_columntop = ypos;
+
+	// First column: map list, era, generator
+	num_players_label_.set_location(xpos, ypos);
+	ypos += num_players_label_.height() + border_size;
+	
+	map_label_.set_location(xpos, ypos);
+	ypos += map_label_.height() + border_size;
+
+	maps_menu_.set_max_width(100);
+	maps_menu_.set_max_height(50);
+	
+	maps_menu_.set_location(xpos, ypos);
+	// Menu dimensions are only updated when items are set. So do this now.
+	int mapsel_save = maps_menu_.selection();
+	maps_menu_.set_items(map_options_);
+	maps_menu_.move_selection(mapsel_save);
+
+	ypos += 50 + border_size;
+
+	era_label_.set_location(xpos, ypos);
+	era_combo_.set_location(xpos + era_label_.width() + border_size, ypos);
+	ypos += era_combo_.height() + border_size;
+
+	regenerate_map_.set_location(xpos, ypos);
+	regenerate_map_.hide(true);
+	ypos += regenerate_map_.height() + border_size;
+	generator_settings_.set_location(xpos, ypos);
+	ypos += generator_settings_.height() + border_size;
+	
+	use_map_settings_.set_location(xpos, ypos);
+	ypos += use_map_settings_.height() + border_size;
+
+#ifdef MP_VISION_OPTIONAL
+	vision_combo_.set_location(xpos, ypos);
+	ypos += vision_combo_.height() + border_size;
+#endif
+
+	// Second column: map menu
+	ypos = ypos_columntop;
+	xpos += column_border_size;
+	// Third column: big buch of options
+	ypos = ypos_columntop;
+
+	xpos += 93 + column_border_size;
+
+	turns_label_.set_location(xpos, ypos);
+	ypos += turns_label_.height() + border_size;
+	turns_slider_.set_width(32);
+	turns_slider_.set_location(xpos, ypos);
+	ypos += turns_slider_.height() + border_size;
+
+	village_gold_label_.set_location(xpos, ypos);
+	ypos += village_gold_label_.height() + border_size;
+	village_gold_slider_.set_width(32);
+	village_gold_slider_.set_location(xpos, ypos);
+	ypos += village_gold_slider_.height() + border_size;
+
+	xp_modifier_label_.set_location(xpos, ypos);
+	ypos += xp_modifier_label_.height() + border_size;
+	xp_modifier_slider_.set_width(32);
+	xp_modifier_slider_.set_location(xpos, ypos);
+	ypos += xp_modifier_slider_.height() + border_size;
+
+	countdown_init_time_label_.set_location(xpos, ypos);
+	ypos += countdown_init_time_label_.height() + border_size;
+
+	countdown_init_time_slider_.set_width(32);
+	countdown_init_time_slider_.set_location(xpos, ypos);
+	ypos += countdown_init_time_slider_.height() + border_size;
+
+	countdown_reservoir_time_label_.set_location(xpos, ypos);
+	ypos += countdown_reservoir_time_label_.height() + border_size;
+
+	countdown_reservoir_time_slider_.set_width(32);
+	countdown_reservoir_time_slider_.set_location(xpos, ypos);
+	ypos += countdown_reservoir_time_slider_.height() + border_size;
+	
+	ypos = ypos_columntop;
+	xpos += 75;
+
+	countdown_game_.set_location(xpos, ypos);
+	ypos += countdown_game_.height() + border_size;
+
+	fog_game_.set_location(xpos, ypos);
+	ypos += fog_game_.height() + border_size;
+
+	shroud_game_.set_location(xpos, ypos);
+	ypos += shroud_game_.height() + border_size;
+
+	observers_game_.set_location(xpos, ypos);
+	ypos += observers_game_.height() + border_size;
+	
+	countdown_turn_bonus_label_.set_location(xpos, ypos);
+	ypos += countdown_turn_bonus_label_.height() + border_size;
+
+	countdown_turn_bonus_slider_.set_width(32);
+	countdown_turn_bonus_slider_.set_location(xpos, ypos);
+	ypos += countdown_turn_bonus_slider_.height() + border_size;
+
+	countdown_action_bonus_label_.set_location(xpos, ypos);
+	ypos += countdown_action_bonus_label_.height() + border_size;
+
+	countdown_action_bonus_slider_.set_width(32);
+	countdown_action_bonus_slider_.set_location(xpos, ypos);
+	ypos += countdown_action_bonus_slider_.height() + 2 * border_size;
+
+	left_button->set_location(xpos, ypos);
+	right_button->set_location(xpos + left_button->width() + 2 * border_size, ypos);
+
+}
+
+
+#endif
 
 }

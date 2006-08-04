@@ -65,10 +65,10 @@ inline int relative_size(int size)
 	const int
 	SIZE_TINY	= 8,
 	SIZE_SMALL	= 8,
-	SIZE_15		= 10,
-	SIZE_PLUS	= 11,
-	SIZE_LARGE	= 12,
-	SIZE_XLARGE	= 13
+	SIZE_15		= 9,
+	SIZE_PLUS	= 9,
+	SIZE_LARGE	= 10,
+	SIZE_XLARGE	= 10
   ;
 #else
 const int

@@ -146,9 +146,13 @@ ui::ui(display& disp, const std::string& title, const config& cfg, chat& c, conf
 	chat_(c),
 	gamelist_(gamelist),
 
+#ifdef USE_TINY_GUI
+	title_(disp.video(), title, font::SIZE_SMALL, font::TITLE_COLOUR),
+#else
 	title_(disp.video(), title, font::SIZE_LARGE, font::TITLE_COLOUR),
-	chat_textbox_(disp.video(), 100, "", false),
 	entry_textbox_(disp.video(), 100),
+#endif
+	chat_textbox_(disp.video(), 100, "", false),
 	users_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::slateborder_style),
 
 	result_(CONTINUE)
@@ -223,7 +227,11 @@ void ui::draw_contents()
 {
 	hide_children();
 
+#ifdef USE_TINY_GUI
+	surface background(image::get_image("misc/lobby_tiny.png",image::UNSCALED));
+#else
 	surface background(image::get_image("misc/lobby.png",image::UNSCALED));
+#endif
 	background = scale_surface(background, video().getx(), video().gety());
 	if(background == NULL)
 		return;
@@ -284,6 +292,7 @@ void ui::send_chat_message(const std::string& message, bool /*allies_only*/)
 
 void ui::handle_key_event(const SDL_KeyboardEvent& event)
 {
+#ifndef USE_TINY_GUI
 	//On enter, adds the current chat message to the chat textbox.
 	if(event.keysym.sym == SDLK_RETURN && !entry_textbox_.text().empty()) {
 
@@ -348,6 +357,7 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 		}
 
 	}
+#endif
 }
 
 void ui::process_network_data(const config& data, const network::connection /*sock*/)
@@ -417,7 +427,9 @@ void ui::hide_children(bool hide)
 {
 	title_.hide(hide);
 	chat_textbox_.hide(hide);
+#ifndef USE_TINY_GUI
 	entry_textbox_.hide(hide);
+#endif
 	users_menu_.hide(hide);
 }
 
@@ -429,10 +441,16 @@ void ui::layout_children(const SDL_Rect& /*rect*/)
 	users_menu_.set_location(xscale(856), yscale(42));
 	users_menu_.set_height(yscale(715));
 	users_menu_.set_max_height(yscale(715));
+#ifdef USE_TINY_GUI
+	chat_textbox_.set_location(xscale(11) + 4, yscale(625) + 4);
+	chat_textbox_.set_measurements(xscale(833) - 8, yscale(143) - 8);
+
+#else
 	chat_textbox_.set_location(xscale(11) + 4, yscale(573) + 4);
 	chat_textbox_.set_measurements(xscale(833) - 8, yscale(143) - 8);
 	entry_textbox_.set_location(xscale(11) + 4, yscale(732));
 	entry_textbox_.set_width(xscale(833) - 8);
+#endif
 }
 
 void ui::gamelist_updated(bool silent)

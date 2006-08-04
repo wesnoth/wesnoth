@@ -31,7 +31,11 @@
 
 namespace gui {
 
+#ifdef USE_TINY_GUI
+const int font_size = font::SIZE_TINY;
+#else
 const int font_size = font::SIZE_PLUS;
+#endif
 
 textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, size_t max_size, double alpha, double alpha_focus, const bool auto_join)
 	   : scrollarea(video, auto_join), max_size_(max_size), text_(utils::string_to_wstring(text)),
