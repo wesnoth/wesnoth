@@ -71,6 +71,7 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 			std::cerr << "loadscreen: Logo image is too big." << std::endl;
 		}
 		logo_drawn_ = true;
+		SDL_UpdateRect(gdis, area.x, area.y, area.w, area.h);
 	}
 	int pbx = (scrx - pbw)/2; /* Horizontal location. */
 	int pby = (scry - pbh)/2 + pby_offset_; /* Vertical location. */
@@ -100,18 +101,24 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 	area.w = ((MAX_PERCENTAGE - prcnt_) * pbw) / (MAX_PERCENTAGE - MIN_PERCENTAGE); area.h = pbh;
 	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,lcr,lcg,lcb));
 	/* Clear the last text and draw new if text is provided. */
-	if(text.length()>0)
+	if(text.length() > 0 && commit)
 	{
+		SDL_Rect oldarea = textarea_;
 		SDL_FillRect(gdis,&textarea_,SDL_MapRGB(gdis->format,0,0,0));
 		textarea_ = font::line_size(text, font::SIZE_NORMAL);
 		textarea_.x = scrx/2 + bw + bispw - textarea_.w / 2;
 		textarea_.y = pby + pbh + 4*(bw + bispw);
 		textarea_ = font::draw_text(&screen_,textarea_,font::SIZE_NORMAL,font::NORMAL_COLOUR,text,textarea_.x,textarea_.y);
+		oldarea.x = minimum<int>(textarea_.x, oldarea.x);
+		oldarea.y = minimum<int>(textarea_.y, oldarea.y);
+		oldarea.w = maximum<int>(textarea_.w, oldarea.w);
+		oldarea.h = maximum<int>(textarea_.h, oldarea.h);
+		SDL_UpdateRect(gdis, oldarea.x, oldarea.y, oldarea.w, oldarea.h);
 	}
-	/* Flip the double buffering so the change becomes visible */
+	/* Update the rectangle if needed */
 	if(commit)
 	{
-		SDL_Flip(gdis);
+		SDL_UpdateRect(gdis, pbx, pby, pbw + 2*(bw + bispw), pbh + 2*(bw + bispw));
 	}
 }
 
