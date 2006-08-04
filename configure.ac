@@ -130,51 +130,6 @@ AC_SUBST([FULLLOCALEDIR])
 AC_SUBST([HAS_RELATIVE_LOCALEDIR])
 
 
-# icondir and desktopdir may differ from datadir (suggested by Gentoo)
-AC_ARG_WITH([icondir],
-            AS_HELP_STRING([--with-icondir@<:@=DIR@:>@], [change icon directory under gnome or kde, needs --with-gnome or --with-kde option]),
-		  [case "${withval}" in
-		   yes)
-				ICONDIR="${datadir}/icons"
-				;;
-		   no)
-				;;
-		   *)
-				ICONDIR="${withval}"
-				;;
-		   esac])
-AC_SUBST([ICONDIR])
-
-if test "x$icondir" = "xnone"; then
-        icondirset=no
-else
-        icondirset=yes
-fi
-
-AM_CONDITIONAL([HAS_ICONDIR], [test "x$icondirset" = "xyes"])
-
-AC_ARG_WITH([desktopdir],
-            AS_HELP_STRING([--with-desktopdir@<:@=DIR@:>@], [change desktop directory under gnome or kde, needs --with-gnome or --with-kde option]),
-		  [case "${withval}" in
-		   yes)	
-				DESKTOPDIR="${datadir}/applications"
-				;;
-		   no)
-				;;
-		   *)
-				DESKTOPDIR="${withval}"
-				;;
-		   esac])
-AC_SUBST([DESKTOPDIR])
-
-if test "x$desktopdir" = "xnone"; then
-        desktopdirset=no
-else
-        desktopdirset=yes
-fi
-
-AM_CONDITIONAL([HAS_DESKTOPDIR], [test "x$desktopdirset" = "xyes"])
-
 AC_ARG_ENABLE([game],
               AS_HELP_STRING([--disable-game], [disable compilation of game]),
 	      [game=$enableval],
@@ -530,8 +485,8 @@ else
 	gnome1found=yes
 fi
 
-AC_SUBST([GNOME1_DESKTOP])
-
+GNOME2_DESKTOP=${datadir}/applications
+GNOME_ICON=${datadir}/icons
 
 # KDE_CONFIG
 
@@ -544,6 +499,23 @@ else
 	KDE_ICON=`$KDE_CONFIG --install icon`
 	kdefound=yes
 fi
+
+# icondir and desktopdir may differ from datadir (suggested by Gentoo), and
+# override above.
+AC_ARG_WITH([icondir],
+            AS_HELP_STRING([--with-icondir@<:@=DIR@:>@], [change icon directory under gnome or kde, needs --with-gnome or --with-kde option]),
+		  [GNOME_ICON="${with_icondir}"
+		   KDE_ICON="${with_icondir}"])
+
+AC_ARG_WITH([desktopdir],
+            AS_HELP_STRING([--with-desktopdir@<:@=DIR@:>@], [change desktop directory under gnome or kde, needs --with-gnome or --with-kde option]),
+		  [GNOME1_DESKTOP="${with_desktopdir}"
+		   GNOME2_DESKTOP="${with_desktopdir}"
+		   KDE_DESKTOP="${with_desktopdir}"])
+
+AC_SUBST([GNOME1_DESKTOP])
+AC_SUBST([GNOME2_DESKTOP])
+AC_SUBST([GNOME_ICON])
 
 AC_SUBST([KDE_DESKTOP])
 AC_SUBST([KDE_ICON])
