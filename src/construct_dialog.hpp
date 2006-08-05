@@ -91,8 +91,8 @@ class dialog_button : public button {
 public:
 	dialog_button(CVideo& video, const std::string& label, TYPE type=TYPE_PRESS, 
 		int simple_result=CONTINUE_DIALOG, dialog_button_action *handler=NULL)
-		: button(video,label,type,"",DEFAULT_SPACE,false), parent_(NULL),
-		  handler_(handler), simple_result_(simple_result)
+		: button(video,label,type,"",DEFAULT_SPACE,false), simple_result_(simple_result),
+		parent_(NULL), handler_(handler)
 	{}
 	void set_parent(class dialog *parent) {
 		parent_ = parent;

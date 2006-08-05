@@ -101,11 +101,11 @@ namespace gui {
 
 dialog::dialog(display &disp, const std::string& title, const std::string& message,
 				const DIALOG_TYPE type, const std::string& dialog_style,
-				const std::string& help_topic) : disp_(disp), title_(title),
-				message_(NULL),
-				type_(type), image_(NULL), style_(dialog_style),
-				help_button_(disp, help_topic), menu_(NULL), text_widget_(NULL),
-				result_(CONTINUE_DIALOG), action_(NULL), bg_restore_(NULL)
+				const std::string& help_topic) : disp_(disp), image_(NULL),
+				title_(title), style_(dialog_style), message_(NULL),
+				type_(type), menu_(NULL), 
+				help_button_(disp, help_topic),  text_widget_(NULL),
+				action_(NULL), bg_restore_(NULL), result_(CONTINUE_DIALOG)
 {
 	CVideo& screen = disp_.video();
 
