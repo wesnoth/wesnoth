@@ -74,12 +74,12 @@ animated<T,T_void_value>::animated(const std::string &cfg, const string_initiali
 
 
 template<typename T,  typename T_void_value>
-void animated<T,T_void_value>::add_frame(int start)
+void animated<T,T_void_value>::add_frame()
 {
-	frames_.push_back(frame(start));
-	starting_frame_time_ = minimum<int>(starting_frame_time_, start);
-	ending_frame_time_ = maximum<int>(ending_frame_time_, start);
+	ending_frame_time_++;
+	frames_.push_back(frame(ending_frame_time_));
 }
+
 
 template<typename T,  typename T_void_value>
 void animated<T,T_void_value>::add_frame(int start, const T& value)

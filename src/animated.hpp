@@ -45,8 +45,9 @@ public:
 
 	animated(const std::string &cfg, const string_initializer& init=string_initializer());
 
+	// Adds a void frame at the end
+	void add_frame();
 	// Adds a void frame
-	void add_frame(int start);
 
 	// Adds a frame
 	void add_frame(int start, const T& value);

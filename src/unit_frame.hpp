@@ -23,34 +23,40 @@
 #include <vector>
 
 //a class to describe a unit's animation sequence
-struct unit_frame {
-		unit_frame() : xoffset(0), image(), image_diagonal(),halo(), sound(),
-			       halo_x(0), halo_y(0), begin_time(0), end_time(0),
-			       blend_with(0),blend_ratio(0),
-			       highlight_ratio(ftofxp(1)){}
+class unit_frame {
+	public:
+	// constructors
+		unit_frame();
 		explicit unit_frame(const std::string& str, const std::string & diag ="",
 				int begin=0,int end = 0,
 				Uint32 blend_color = 0, double blend_rate = 0.0,
 				fixed_t highlight = ftofxp(1),
-				std::string in_halo = "",int halox = 0,int haloy = 0) :
-			xoffset(0), image(str),image_diagonal(diag),
-			halo_x(halox), halo_y(haloy),
-			begin_time(begin), end_time(end),
-			blend_with(blend_color), blend_ratio(blend_rate),
-			highlight_ratio(highlight)  {halo = prepare_halo(in_halo,begin,end);};
+				std::string in_halo = "",int halox = 0,int haloy = 0);
 		explicit unit_frame(const config& cfg);
 
-		int xoffset;
-		std::string image;
-		std::string image_diagonal;
-		std::vector<std::pair<std::string,int> > halo;
-		std::string sound;
-		int halo_x, halo_y;
-		int begin_time, end_time;
-		Uint32 blend_with;
-		double blend_ratio;
-		fixed_t highlight_ratio;
-		static std::vector<std::pair<std::string,int> > prepare_halo(const std::string & halo,int begin, int end);
+		int xoffset() const { return xoffset_ ; }
+		std::string image() const { return image_ ;}
+		std::string image_diagonal() const { return image_diagonal_ ; }
+		std::vector<std::pair<std::string,int> > halo() const { return halo_ ; }
+		std::string sound() const { return sound_ ; };
+		int halo_x() const { return halo_x_; }
+		int halo_y() const { return halo_y_; }
+		int begin_time() const { return begin_time_; }
+		int end_time() const { return end_time_ ; }
+		Uint32 blend_with() const { return blend_with_; }
+		double blend_ratio() const { return blend_ratio_; }
+		fixed_t highlight_ratio() const { return highlight_ratio_ ; }
+	private:
+		int xoffset_;
+		std::string image_;
+		std::string image_diagonal_;
+		std::vector<std::pair<std::string,int> > halo_;
+		std::string sound_;
+		int halo_x_, halo_y_;
+		int begin_time_, end_time_;
+		Uint32 blend_with_;
+		double blend_ratio_;
+		fixed_t highlight_ratio_;
 };
 
 #endif

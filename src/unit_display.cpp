@@ -304,33 +304,33 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 			missile_animation.update_current_frame();
 			const unit_frame& missile_frame = missile_animation.get_current_frame();
-			std::string missile_image= missile_frame.image;
+			std::string missile_image= missile_frame.image();
 			const int d = disp.hex_size() / 2;
 			if(dir == unit_animation::VERTICAL) {
-				missile_image = missile_frame.image;
+				missile_image = missile_frame.image();
 			} else {
-				missile_image = missile_frame.image_diagonal;
+				missile_image = missile_frame.image_diagonal();
 			}
-			if(!missile_frame.halo.empty()) {
-				int time = missile_frame.begin_time;
+			if(!missile_frame.halo().empty()) {
+				int time = missile_frame.begin_time();
 				unsigned int sub_halo = 0;
-				while(time < animation_time && sub_halo < missile_frame.halo.size()) {
-					time += missile_frame.halo[sub_halo].second;
+				while(time < animation_time && sub_halo < missile_frame.halo().size()) {
+					time += missile_frame.halo()[sub_halo].second;
 					sub_halo++;
 
 				}
 				sub_halo--; //correct frame is the previous one
 
-				if(sub_halo >= missile_frame.halo.size()) sub_halo = missile_frame.halo.size() -1;
+				if(sub_halo >= missile_frame.halo().size()) sub_halo = missile_frame.halo().size() -1;
 				if(attack_ori != gamemap::location::SOUTH_WEST && attack_ori != gamemap::location::NORTH_WEST) {
-					missile_halo = halo::add(posx+d+missile_frame.halo_x,
-							posy+d+missile_frame.halo_y,
-							missile_frame.halo[sub_halo].first,
+					missile_halo = halo::add(posx+d+missile_frame.halo_x(),
+							posy+d+missile_frame.halo_y(),
+							missile_frame.halo()[sub_halo].first,
 							orientation);
 				} else {
-					missile_halo = halo::add(posx+d-missile_frame.halo_x,
-							posy+d+missile_frame.halo_y,
-							missile_frame.halo[sub_halo].first,
+					missile_halo = halo::add(posx+d-missile_frame.halo_x(),
+							posy+d+missile_frame.halo_y(),
+							missile_frame.halo()[sub_halo].first,
 							orientation);
 				}
 			}

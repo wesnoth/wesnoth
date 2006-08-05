@@ -139,7 +139,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 		  temp_anim.add_frame(current_time, flag_image);
 		  current_time += time;
 		}
-		temp_anim.add_frame(current_time);
+		temp_anim.add_frame();
 		flags_.push_back(temp_anim);
 
 		flags_.back().start_animation(rand()%flags_.back().get_frames_count(), animated<image::locator>::INFINITE_CYCLES);

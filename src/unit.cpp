@@ -1518,7 +1518,7 @@ void unit::set_defending(const display &disp,const gamemap::location& loc, int d
 
 	// add a blink on damage effect
 	int anim_time = anim_->get_last_frame_time();
-	const std::string my_image = anim_->get_last_frame().image;
+	const std::string my_image = anim_->get_last_frame().image();
 	if(damage) {
 		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,0,0),0.5));
 		anim_time += 50;
@@ -1657,7 +1657,7 @@ void unit::set_healed(const display &disp,const gamemap::location& /*loc*/, int 
 	// add a blink on heal effect
 	int anim_time = anim_->get_last_frame_time();
 	int heal_left = healing;
-	const std::string my_image = anim_->get_last_frame().image;
+	const std::string my_image = anim_->get_last_frame().image();
 	while(anim_time < 1000 && heal_left > 0 ) {
 		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(255,255,255),0.5));
 		anim_time += 30;
@@ -1682,7 +1682,7 @@ void unit::set_poisoned(const display &disp,const gamemap::location& /*loc*/, in
 	// add a blink on damage effect
 	int anim_time = anim_->get_last_frame_time();
 	int damage_left = damage;
-	const std::string my_image = anim_->get_last_frame().image;
+	const std::string my_image = anim_->get_last_frame().image();
 	while(anim_time < 1000 && damage_left > 0 ) {
 		anim_->add_frame(anim_time,unit_frame(my_image,"",anim_time,anim_time+30,display::rgb(0,255,0),0.5));
 		anim_time += 30;
@@ -1720,7 +1720,7 @@ void unit::set_dying(const display &disp,const gamemap::location& loc,const atta
 	}
 	anim_ =  new death_animation(die_animation(disp.get_map().underlying_union_terrain(loc),fighting_animation::KILL,attack));
 	double blend_ratio = 1.0;
-	std::string tmp_image = anim_->get_last_frame().image;
+	std::string tmp_image = anim_->get_last_frame().image();
 	int anim_time =anim_->get_last_frame_time();
 	while(blend_ratio > 0.0) {
 		anim_->add_frame(anim_time,unit_frame(tmp_image,"",anim_time,anim_time+10,0,0,ftofxp(blend_ratio)));
@@ -1808,37 +1808,37 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	else if(anim_->get_first_frame_time() > anim_->get_animation_time()) current_frame = anim_->get_first_frame();
 	else current_frame = anim_->get_current_frame();
 
-	image_name = current_frame.image;
-	if(frame_begin_time != current_frame.begin_time) {
-		frame_begin_time = current_frame.begin_time;
-		if(!current_frame.sound.empty()) {
-			sound::play_sound(current_frame.sound);
+	image_name = current_frame.image();
+	if(frame_begin_time != current_frame.begin_time()) {
+		frame_begin_time = current_frame.begin_time();
+		if(!current_frame.sound().empty()) {
+			sound::play_sound(current_frame.sound());
 		}
 
 	}
 	if(unit_anim_halo_) halo::remove(unit_anim_halo_);
 	unit_anim_halo_ = 0;
-	if(!current_frame.halo.empty()) {
-		int time = current_frame.begin_time;
+	if(!current_frame.halo().empty()) {
+		int time = current_frame.begin_time();
 		unsigned int sub_halo = 0;
-		while(time < anim_->get_animation_time()&& sub_halo < current_frame.halo.size()) {
-			time += current_frame.halo[sub_halo].second;
+		while(time < anim_->get_animation_time()&& sub_halo < current_frame.halo().size()) {
+			time += current_frame.halo()[sub_halo].second;
 			sub_halo++;
 
 		}
-		if(sub_halo >= current_frame.halo.size()) sub_halo = current_frame.halo.size() -1;
+		if(sub_halo >= current_frame.halo().size()) sub_halo = current_frame.halo().size() -1;
 
 
 		if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
 			const int d = disp.hex_size() / 2;
-			unit_anim_halo_ = halo::add(x+d-static_cast<int>(current_frame.halo_x*disp.zoom()),
-					y+d+static_cast<int>(current_frame.halo_y*disp.zoom()),
-					current_frame.halo[sub_halo].first);
+			unit_anim_halo_ = halo::add(x+d-static_cast<int>(current_frame.halo_x()*disp.zoom()),
+					y+d+static_cast<int>(current_frame.halo_y()*disp.zoom()),
+					current_frame.halo()[sub_halo].first);
 		} else {
 			const int d = disp.hex_size() / 2;
-			unit_anim_halo_ = halo::add(x+d+static_cast<int>(current_frame.halo_x*disp.zoom()),
-					y+d+static_cast<int>(current_frame.halo_y*disp.zoom()),
-					current_frame.halo[sub_halo].first,
+			unit_anim_halo_ = halo::add(x+d+static_cast<int>(current_frame.halo_x()*disp.zoom()),
+					y+d+static_cast<int>(current_frame.halo_y()*disp.zoom()),
+					current_frame.halo()[sub_halo].first,
 					halo::HREVERSE);
 		}
 	}
@@ -1859,10 +1859,10 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		image.assign(image::reverse_image(image));
 	}
 
-	Uint32 blend_with = current_frame.blend_with;
-	double blend_ratio = current_frame.blend_ratio;
+	Uint32 blend_with = current_frame.blend_with();
+	double blend_ratio = current_frame.blend_ratio();
 	if(blend_ratio == 0) { blend_with = disp.rgb(0,0,0); }
-	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),current_frame.highlight_ratio);
+	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),current_frame.highlight_ratio());
 	if(invisible(hex,disp.get_units(),disp.get_teams()) &&
 			highlight_ratio > ftofxp(0.5)) {
 		highlight_ratio = ftofxp(0.5);

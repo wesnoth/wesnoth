@@ -1,4 +1,4 @@
-/* $Id: unit_types.cpp 9735 2006-01-18 18:31:24Z boucman $ */
+/* $Id: unit_animation.cpp 9735 2006-01-18 18:31:24Z boucman $ */
 /*
    Copyright (C) 2006 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -87,43 +87,6 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 	}
 	return expanded_animations;
 }
-unit_frame::unit_frame(const config& cfg)
-{
-	xoffset = atoi(cfg["xoffset"].c_str());
-	image = cfg["image"];
-	image_diagonal = cfg["image_diagonal"];
-	halo_x = atoi(cfg["halo_x"].c_str());
-	halo_y = atoi(cfg["halo_y"].c_str());
-	sound = cfg["sound"];
-	begin_time = atoi(cfg["begin"].c_str());
-	end_time = atoi(cfg["end"].c_str());
-	highlight_ratio = ftofxp(1);
-	halo = prepare_halo(cfg["halo"],begin_time,end_time);
-	blend_with= 0;
-	blend_ratio = 0;
-
-}
-
-std::vector<std::pair<std::string,int> > unit_frame::prepare_halo(const std::string & halo,int begin, int end)
-{
-		const int duration = end - begin;
-		const std::vector<std::string> first_pass = utils::split(halo);
-		const int time_chunk = maximum<int>(duration / (first_pass.size()?first_pass.size():1),1);
-
-		std::vector<std::string>::const_iterator tmp;
-		std::vector<std::pair<std::string,int> > result;
-		for(tmp=first_pass.begin();tmp != first_pass.end() ; tmp++) {
-			std::vector<std::string> second_pass = utils::split(*tmp,':');
-			if(second_pass.size() > 1) {
-				result.push_back(std::pair<std::string,int>(second_pass[0],atoi(second_pass[1].c_str())));
-			} else {
-				result.push_back(std::pair<std::string,int>(second_pass[0],time_chunk));
-			}
-		}
-		return result;
-}
-
-
 
 unit_animation::unit_animation(const std::string image )
 {
@@ -133,12 +96,10 @@ unit_animation::unit_animation(const std::string image )
 unit_animation::unit_animation(const config& cfg,const std::string frame_string ):terrain_types(utils::split(cfg["terrain"])){
 	config::const_child_itors range = cfg.child_range(frame_string);
 
-	int last_end = INT_MIN;
 	for(; range.first != range.second; ++range.first) {
 		add_frame(atoi((**range.first)["begin"].c_str()), unit_frame(**range.first));
-		last_end = maximum<int>(atoi((**range.first)["end"].c_str()), last_end);
 	}
-	add_frame(last_end);
+	add_frame();
 
 	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
 	for(std::vector<std::string>::const_iterator i = my_directions.begin(); i != my_directions.end(); ++i) {
@@ -157,22 +118,15 @@ unit_animation::unit_animation(const std::string image, int begin_at, int end_at
 {
 	add_frame(begin_at, unit_frame(image,image_diagonal,begin_at,end_at,0,0.0,ftofxp(1),halo,halo_x,halo_y));
 	if (end_at != begin_at) {
-		add_frame(end_at);
+		add_frame();
 	}
 }
 
 unit_animation::unit_animation(const std::string image, const std::string halo,int halo_x,int halo_y)
 {
-	int duration =0;
-	const std::vector<std::pair<std::string,int> > halos = unit_frame::prepare_halo(halo,0,0);
-	std::vector<std::pair<std::string,int> >::const_iterator cur_halo;
-	for(cur_halo = halos.begin() ; cur_halo != halos.end() ; cur_halo++) {
-		duration += cur_halo->second;
-	}
-	duration = maximum<int>(200,duration);
-	add_frame(0, unit_frame(image,"",0,duration,0,0.0,ftofxp(1),halo,halo_x,halo_y));
-	if (duration != 0) {
-		add_frame(duration);
+	add_frame(0, unit_frame(image,"",0,0,0,0.0,ftofxp(1),halo,halo_x,halo_y));
+	if (!halo.empty()) {
+		add_frame();
 	}
 }
 
