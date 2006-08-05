@@ -172,7 +172,7 @@ void replay_controller::replay_next_turn(){
 
 void replay_controller::replay_next_side(){
 	is_playing_ = true;
-	play_side(player_number_ - 1);
+	play_side(player_number_ - 1, false);
 
 	if ((size_t)player_number_ > teams_.size()) {
 		player_number_ = 1;
@@ -231,14 +231,14 @@ void replay_controller::play_turn(){
 	LOG_NG << "turn: " << current_turn_ << "\n";
 
 	while ( ((size_t)player_number_ <= teams_.size()) && (!recorder.at_end()) ){
-		play_side(player_number_ - 1);
+		play_side(player_number_ - 1, false);
 	}
 
 	player_number_ = 1;
 	current_turn_++;
 }
 
-void replay_controller::play_side(const unsigned int team_index){
+void replay_controller::play_side(const unsigned int team_index, bool){
 	if (recorder.at_end()){
 		return;
 	}

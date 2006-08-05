@@ -53,14 +53,14 @@ void playmp_controller::speak(){
 	menu_handler_.speak();
 }
 
-void playmp_controller::play_side(const unsigned int team_index){
+void playmp_controller::play_side(const unsigned int team_index, bool save){
 //goto this label if the type of a team (human/ai/networked) has changed mid-turn
 redo_turn:
 	bool player_type_changed_ = false;
 	end_turn_ = false;
 
 	if(current_team().is_human() || current_team().is_ai()) {
-		playsingle_controller::play_side(team_index);
+		playsingle_controller::play_side(team_index, save);
 	} else if(current_team().is_network()) {
 		player_type_changed_ = play_network_turn();
 	}
@@ -68,8 +68,8 @@ redo_turn:
 	if (player_type_changed_) { goto redo_turn; }
 }
 
-void playmp_controller::before_human_turn(){
-	playsingle_controller::before_human_turn();
+void playmp_controller::before_human_turn(bool save){
+	playsingle_controller::before_human_turn(save);
 
 	turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
 		*gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);

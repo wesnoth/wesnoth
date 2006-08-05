@@ -37,8 +37,8 @@ protected:
 	virtual void clear_labels();
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 
-	virtual void play_side(const unsigned int team_index);
-	virtual void before_human_turn();
+	virtual void play_side(const unsigned int team_index, bool save);
+	virtual void before_human_turn(bool save);
 	virtual void play_human_turn();
 	virtual void after_human_turn();
 	virtual void finish_side_turn();
