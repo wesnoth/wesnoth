@@ -160,10 +160,10 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 		min_row[NEITHER_SLOWED] = 0;
 		min_row[A_SLOWED] = 0;
 		min_col[A_SLOWED] = b_hp - 1;
-		for (unsigned int row = 0; row < rows; row++)
+		for (unsigned int row = 0; row < a_summary[0].size(); row++)
 			val(NEITHER_SLOWED, row, b_hp) = a_summary[0][row];
 		if (!a_summary[1].empty()) {
-			for (unsigned int row = 0; row < rows; row++)
+			for (unsigned int row = 0; row < a_summary[1].size(); row++)
 				val(A_SLOWED, row, b_hp) = a_summary[1][row];
 		}
 		debug(("A has fought before\n"));
@@ -172,10 +172,10 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 		min_col[NEITHER_SLOWED] = 0;
 		min_col[B_SLOWED] = 0;
 		min_row[B_SLOWED] = a_hp - 1;
-		for (unsigned int col = 0; col < cols; col++)
+		for (unsigned int col = 0; col < b_summary[0].size(); col++)
 			val(NEITHER_SLOWED, a_hp, col) = b_summary[0][col];
 		if (!b_summary[1].empty()) {
-			for (unsigned int col = 0; col < cols; col++)
+			for (unsigned int col = 0; col < b_summary[1].size(); col++)
 				val(B_SLOWED, a_hp, col) = b_summary[1][col];
 		}
 		debug(("B has fought before\n"));
