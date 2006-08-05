@@ -291,6 +291,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	if(team_manager_.is_observer()) {
 		gui_->set_team(size_t(team_index));
 	}
+		gui_->set_playing_team(size_t(team_index));
 
 	std::stringstream player_number_str;
 	player_number_str << player_number_;
@@ -347,8 +348,6 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	}
 
 	current_team.set_time_of_day(int(status_.turn()),status_.get_time_of_day());
-
-	gui_->set_playing_team(size_t(team_index));
 
 	if (!recorder.is_skipping()){
 		::clear_shroud(*gui_,status_,map_,gameinfo_,units_,teams_,team_index);

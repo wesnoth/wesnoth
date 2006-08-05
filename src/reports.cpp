@@ -342,32 +342,32 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		str << "\n";
 		break;
+	// For these following status reports, show them in gray text when it is not the active player's turn.
 	case GOLD:
-		str << (current_team.gold() < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << current_team.gold();
+		str << (current_side != playing_side ? font::GRAY_TEXT : (current_team.gold() < 0 ? font::BAD_TEXT : font::NULL_MARKUP)) << current_team.gold();
 		break;
 	case VILLAGES: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
-		str << data.villages;
-
+		str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP) << data.villages;
 		break;
 	}
 	case NUM_UNITS: {
-		str << team_units(units,current_side);
+		str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP) << team_units(units,current_side);
 		break;
 	}
 	case UPKEEP: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
-		str << data.expenses << " (" << data.upkeep << ")";
+		str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP) << data.expenses << " (" << data.upkeep << ")";
 		break;
 	}
 	case EXPENSES: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
-		str << data.expenses;
+		str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP) << data.expenses;
 		break;
 	}
 	case INCOME: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
-		str << (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << data.net_income;
+		str << (current_side != playing_side ? font::GRAY_TEXT : (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP)) << data.net_income;
 		break;
 	}
 	case TERRAIN: {
@@ -494,6 +494,8 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		if (current_team.countdown_time() > 0){
 			sec = current_team.countdown_time() / 1000;
 
+			str << (current_side != playing_side ? font::GRAY_TEXT : font::NULL_MARKUP);
+			
 			if(sec < 60)
 				str << "<200,0,0>";
 			else if(sec < 120)

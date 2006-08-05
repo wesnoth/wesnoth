@@ -22,7 +22,7 @@ namespace font {
 
 const char LARGE_TEXT='*', SMALL_TEXT='`', GOOD_TEXT='@', BAD_TEXT='#',
            NORMAL_TEXT='{', BLACK_TEXT='}', BOLD_TEXT='~', IMAGE='&',
-           COLOR_TEXT='<', NULL_MARKUP='^';
+           COLOR_TEXT='<', NULL_MARKUP='^', GRAY_TEXT='|';
 
 namespace {
 
@@ -52,6 +52,9 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 			break;
 		case BLACK_TEXT:
 			*colour = BLACK_COLOUR;
+			break;
+		case GRAY_TEXT:
+			*colour = GRAY_COLOUR;
 			break;
 		case LARGE_TEXT:
 			*font_size += 2;

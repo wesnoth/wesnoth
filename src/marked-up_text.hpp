@@ -21,7 +21,7 @@ class CVideo;
 namespace font {
 
 //standard markups
-extern const char LARGE_TEXT, SMALL_TEXT, GOOD_TEXT, BAD_TEXT, NORMAL_TEXT, BLACK_TEXT, BOLD_TEXT, IMAGE, NULL_MARKUP;
+extern const char LARGE_TEXT, SMALL_TEXT, GOOD_TEXT, BAD_TEXT, NORMAL_TEXT, GRAY_TEXT, BLACK_TEXT, BOLD_TEXT, IMAGE, NULL_MARKUP;
 
 
 //function to draw text on the screen. The text will be clipped to area.
