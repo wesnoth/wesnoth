@@ -196,7 +196,7 @@ namespace {
 
 bool unit_attack_ranged(display& disp, unit_map& units,
                         const gamemap::location& a, const gamemap::location& b,
-			int damage, const attack_type& attack, bool update_display)
+			int damage, const attack_type& attack, bool update_display, int swing)
 
 {
 	const bool hide = disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)
@@ -212,7 +212,6 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	wassert(def != units.end());
 	unit& defender = def->second;
 
-	const bool hits = damage > 0;
 	const int acceleration = disp.turbo() ? 5 : 1;
 
 
@@ -230,7 +229,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 
 	// start leader and attacker animation, wait for attacker animation to end
-	unit_animation missile_animation = attacker.set_attacking(disp,a,hits,attack);
+	unit_animation missile_animation = attacker.set_attacking(disp,a,damage,attack,swing);
 	const gamemap::location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
 	if(leader_loc.valid()){
@@ -268,7 +267,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	}
 	const unit_animation::FRAME_DIRECTION dir = (a.x == b.x) ? unit_animation::VERTICAL:unit_animation::DIAGONAL;
 
-	defender.set_defending(disp,b,damage,&attack);
+	defender.set_defending(disp,b,damage,&attack,swing);
 	// min of attacker, defender, missile and -200
 	const int start_time = minimum<int>(
 			minimum<int>(
@@ -394,7 +393,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 
 bool unit_attack(display& disp, unit_map& units,
                  const gamemap::location& a, const gamemap::location& b, int damage,
-                 const attack_type& attack, bool update_display)
+                 const attack_type& attack, bool update_display, int swing)
 {
 	const bool hide = disp.update_locked() || disp.fogged(a.x,a.y) && disp.fogged(b.x,b.y)
 	                  || preferences::show_combat() == false || (!update_display);
@@ -419,19 +418,18 @@ bool unit_attack(display& disp, unit_map& units,
 	att->second.set_facing(a.get_relative_dir(b));
 	def->second.set_facing(b.get_relative_dir(a));
 	if(attack.range_type() == attack_type::LONG_RANGE) {
-		return unit_attack_ranged(disp, units, a, b, damage, attack, update_display);
+		return unit_attack_ranged(disp, units, a, b, damage, attack, update_display, swing);
 	}
 
-	const bool hits = damage > 0;
 	int start_time = 500;
 	int end_time = 0;
 
 
-	attacker.set_attacking(disp,a,hits,attack);
+	attacker.set_attacking(disp,a,damage,attack,swing);
 	start_time=minimum<int>(start_time,attacker.get_animation()->get_first_frame_time());
 	end_time=attacker.get_animation()->get_last_frame_time();
 
-	defender.set_defending(disp,b,damage,&attack);
+	defender.set_defending(disp,b,damage,&attack, swing);
 	start_time=minimum<int>(start_time,defender.get_animation()->get_first_frame_time());
 
 

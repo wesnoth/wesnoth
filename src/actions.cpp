@@ -762,6 +762,8 @@ attack::attack(display& gui, const gamemap& map,
 	
 	bool defender_strikes_first = (d_stats_->firststrike && ! a_stats_->firststrike);
 	unsigned int rounds = maximum<unsigned int>(a_stats_->rounds, d_stats_->rounds) - 1;
+	int abs_n_attack_ = 0;
+	int abs_n_defend_ = 0;
 
 	static const std::string poison_string("poison");
 
@@ -769,6 +771,7 @@ attack::attack(display& gui, const gamemap& map,
 	
 	while(n_attacks_ > 0 || n_defends_ > 0) {
 		LOG_NG << "start of attack loop...\n";
+		abs_n_attack_++;
 
 		if(n_attacks_ > 0 && defender_strikes_first == false) {
 			const int ran_num = get_random();
@@ -822,7 +825,7 @@ attack::attack(display& gui, const gamemap& map,
 			bool dies = unit_display::unit_attack(gui_,units_,attacker_,defender_,
 				            damage_defender_takes,
 							*a_stats_->weapon,
-							update_display_);
+							update_display_,abs_n_attack_);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
 			                           : statistics::attack_context::MISSES, attacker_damage_);
@@ -969,6 +972,7 @@ attack::attack(display& gui, const gamemap& map,
 
 		//if the defender got to strike first, they use it up here.
 		defender_strikes_first = false;
+		abs_n_defend_++;
 
 		if(n_defends_ > 0) {
 			LOG_NG << "doing defender attack...\n";
@@ -1024,7 +1028,7 @@ attack::attack(display& gui, const gamemap& map,
 			bool dies = unit_display::unit_attack(gui_,units_,defender_,attacker_,
 			               damage_attacker_takes,
 						   *d_stats_->weapon,
-						   update_display_);
+						   update_display_,abs_n_defend_);
 			LOG_NG << "attacker took " << damage_attacker_takes << (dies ? " and died" : "") << "\n";
 			if(ran_results == NULL) {
 				config cfg;
