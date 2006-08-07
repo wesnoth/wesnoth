@@ -96,10 +96,12 @@ unit_animation::unit_animation(const std::string image )
 unit_animation::unit_animation(const config& cfg,const std::string frame_string ):terrain_types(utils::split(cfg["terrain"])){
 	config::const_child_itors range = cfg.child_range(frame_string);
 
+	int last_end = INT_MIN;
 	for(; range.first != range.second; ++range.first) {
 		add_frame(atoi((**range.first)["begin"].c_str()), unit_frame(**range.first));
+		last_end = maximum<int>(atoi((**range.first)["end"].c_str()), last_end);
 	}
-	add_frame();
+	add_frame(last_end);
 
 	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
 	for(std::vector<std::string>::const_iterator i = my_directions.begin(); i != my_directions.end(); ++i) {
@@ -118,7 +120,7 @@ unit_animation::unit_animation(const std::string image, int begin_at, int end_at
 {
 	add_frame(begin_at, unit_frame(image,image_diagonal,begin_at,end_at,0,0.0,ftofxp(1),halo,halo_x,halo_y));
 	if (end_at != begin_at) {
-		add_frame();
+		add_frame(end_at);
 	}
 }
 
