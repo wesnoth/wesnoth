@@ -452,6 +452,46 @@ void server::run()
 							i->send_data(construct_server_message(pl_name + " has disconnected",*i));
 						}
 						i->remove_player(e.socket);
+						if(i->nplayers() == 0) {
+
+							//tell all other players the game is over,
+							//because the last player has left
+							config cfg;
+							cfg.add_child("leave_game");
+							i->send_data(cfg);
+
+							//delete the game's description
+							config* const gamelist = initial_response_.child("gamelist");
+							wassert(gamelist != NULL);
+							const config::child_itors vg = gamelist->child_range("game");
+
+							const config::child_iterator desc = std::find(vg.first,vg.second,i->description());
+							if(desc != vg.second) {
+								gamelist->remove_child("game",desc - vg.first);
+							}
+
+							//update the state of the lobby to players in it.
+							//We have to sync the state of the lobby so we can
+							//send it to the players leaving the game
+							lobby_players_.send_data(sync_initial_response());
+
+							//set the availability status for all quitting players
+							for(player_map::iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+								if(i->is_member(pl->first)) {
+									pl->second.mark_available(true,"");
+								}
+							}
+
+							//put the players back in the lobby and send
+							//them the game list and user list again
+							i->send_data(initial_response_);
+							metrics_.game_terminated(i->termination_reason());
+							lobby_players_.add_players(*i);
+							games_.erase(i);
+
+							//now sync players in the lobby again, to remove the game
+							lobby_players_.send_data(sync_initial_response());
+						}
 					}
 				}
 
