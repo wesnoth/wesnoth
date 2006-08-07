@@ -580,7 +580,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(add != "") {
 			status_ptr->modify_turns(add);
 		} else {
-			status_ptr->add_turns(lexical_cast_default<int>(value,0));
+			status_ptr->add_turns(-status_ptr->number_of_turns());
+			status_ptr->add_turns(lexical_cast_default<int>(value,50));
 		}
 
 	}
