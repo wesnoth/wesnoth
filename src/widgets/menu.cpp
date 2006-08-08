@@ -427,7 +427,12 @@ size_t menu::max_items_onscreen() const
 		return size_t(max_items_);
 	}
 
+#ifdef USE_TINY_GUI
+	const size_t max_height = (max_height_ == -1 ? (video().gety()*55)/100 : max_height_) - heading_height();
+#else
 	const size_t max_height = (max_height_ == -1 ? (video().gety()*66)/100 : max_height_) - heading_height();
+#endif
+
 	std::vector<int> heights;
 	size_t n;
 	for(n = 0; n != items_.size(); ++n) {
