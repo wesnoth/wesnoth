@@ -448,17 +448,15 @@ const std::string& game::transfer_side_control(const config& cfg)
 
 size_t game::available_slots() const
 {
+	size_t n_sides = level_.get_children("side").size();
 	size_t available_slots = 0;
-	const config::child_list& sides = level_.get_children("side");
-	for(config::child_list::const_iterator i = sides.begin(); i != sides.end(); ++i) {
-		//std::cerr << "side controller: '" << (**i)["controller"] << "'\n";
-		//std::cerr << "description: '" << (**i)["description"] << "'\n";
-		if((**i)["controller"] == "network" || (**i)["controller"] == "human") {
-			++available_slots;
+	for(int s = 0; s < n_sides; ++s) {
+		if(! sides_taken_[s]) {
+			available_slots++;
 		}
 	}
 
-	return available_slots - players_.size();
+	return available_slots;
 }
 
 bool game::describe_slots()
