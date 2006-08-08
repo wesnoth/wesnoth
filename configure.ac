@@ -537,6 +537,18 @@ AM_CONDITIONAL([KDE], [test x$kde = xyes && test x$kdefound = xyes])
 AM_CONDITIONAL([GNOME1], [test x$gnome = xyes && test x$gnome1found = xyes && test x$gnome1 = xyes])
 AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome2 = xyes])
 
+# po4a
+
+AC_PATH_PROGS([PO4A], [po4a], [none])
+
+if test "x$PO4A" = "xnone"; then
+    po4afound=no
+else
+    po4afound=yes
+fi
+
+AM_CONDITIONAL([PO4AUPDATE], [test "x$po4afound" = "xyes"])
+
 #######################################################################
 # Checks for libraries.                                               #
 #######################################################################

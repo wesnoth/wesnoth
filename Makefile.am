@@ -135,6 +135,11 @@ EXTRA_DIST = config/config.rpath
 update-po:
 	@cd po && make $@ || exit $?
 
+if PO4AUPDATE
+update-po4a:
+	@cd po && make update-po4a || exit $?
+endif
+
 # latest graph-includes.pl can be found currently at http://ydirson.free.fr/soft/wesnoth/graphs/
 wesnoth-deps.dot:
 	PERL5LIB=$(top_srcdir) graph-includes -verbose --class wesnoth --group 1-1 \
