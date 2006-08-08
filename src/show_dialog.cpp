@@ -208,7 +208,7 @@ void draw_dialog_background(int x, int y, int w, int h, CVideo &video, const std
 
 SDL_Rect draw_dialog_title(int x, int y, CVideo* video, const std::string& text)
 {
-	SDL_Rect rect = {0,0,10000,10000};
+	SDL_Rect rect = {0, 0, 10000, 10000};
 	rect = screen_area();
 
 	return font::draw_text(video, rect, font::SIZE_LARGE, font::TITLE_COLOUR,
@@ -221,6 +221,7 @@ void draw_dialog(int x, int y, int w, int h, CVideo &video, const std::string& t
 {
 	int border_size = 10;
 	SDL_Rect title_area = {0,0,0,0};
+
 	if (!title.empty()) {
 		title_area = draw_dialog_title(0,0,NULL,title);
 		title_area.w += border_size;
@@ -384,9 +385,15 @@ namespace gui {
 
 network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num, network::statistics (*get_stats)(network::connection handle))
 {
+#ifdef USE_TINY_GUI
+	const size_t width = 200;
+	const size_t height = 40;
+	const size_t border = 10;
+#else
 	const size_t width = 300;
 	const size_t height = 80;
 	const size_t border = 20;
+#endif
 	const int left = disp.x()/2 - width/2;
 	const int top = disp.y()/2 - height/2;
 
@@ -475,8 +482,13 @@ connect_waiter::ACTION connect_waiter::process()
 
 network::connection network_connect_dialog(display& disp, const std::string& msg, const std::string& hostname, int port)
 {
+#ifdef USE_TINY_GUI
+	const size_t width = 200;
+	const size_t height = 20;
+#else
 	const size_t width = 250;
 	const size_t height = 20;
+#endif
 	const int left = disp.x()/2 - width/2;
 	const int top = disp.y()/2 - height/2;
 
