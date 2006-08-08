@@ -1130,30 +1130,27 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 	const string_map::const_iterator side = data.values.find("side");
 	if(side != data.values.end()) {
-		if (g->is_observer(sock)){
+		const bool res = g->take_side(sock,data);
+		config response;
+		if(res) {
+			std::cerr << "player joined side\n";
+			response["side_secured"] = side->second;
+
+			//update the number of available slots
+			const bool res = g->describe_slots();
+			if(res) {
+				lobby_players_.send_data(sync_initial_response());
+			}
+		} else if (g->is_observer(sock)) {
 			const config& p_msg = construct_server_message("Sorry " + g->find_player(sock)->name() + ", someone else entered before you.",*g);
 			network::send_data(p_msg, sock);
 			return;
+		} else {
+			response["failed"] = "yes";
 		}
-		else{
-			const bool res = g->take_side(sock,data);
-			config response;
-			if(res) {
-				std::cerr << "player joined side\n";
-				response["side_secured"] = side->second;
 
-				//update the number of available slots
-				const bool res = g->describe_slots();
-				if(res) {
-					lobby_players_.send_data(sync_initial_response());
-				}
-			} else {
-				response["failed"] = "yes";
-			}
-
-			network::send_data(response,sock);
-			return;
-		}
+		network::send_data(response,sock);
+		return;
 	}
 
 	if(data.child("start_game")) {
