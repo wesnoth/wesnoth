@@ -60,9 +60,9 @@ AC_ARG_ENABLE([debug],
 
 if test "x$debug" = "xyes"
 then
-	CXXFLAGS="$CXXFLAGS -DDEBUG -O0 -ggdb3 -W -Wall -ansi " 
+	CXXFLAGS="$CXXFLAGS -O0 -DDEBUG -ggdb3 -W -Wall -ansi"
 else
-	CXXFLAGS="$CXXFLAGS  -W -Wall -ansi " 
+	CXXFLAGS="-O2 -W -Wall -ansi $CXXFLAGS" 
 fi
 
 AC_ARG_ENABLE([static],
