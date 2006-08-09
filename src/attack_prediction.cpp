@@ -470,8 +470,22 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 
 };
 
+unsigned combatant::hp_dist_size(const battle_context::unit_stats &u, const combatant *prev)
+{
+	// Our summary must be as big as previous one.
+	if (prev) {
+		return prev->hp_dist.size();
+	}
+
+	// If this unit drains, HP can increase, so alloc full array.
+	if (u.drains) {
+		return u.max_hp + 1;
+	}
+	return u.hp+1;
+}
+
 combatant::combatant(const battle_context::unit_stats &u, const combatant *prev)
-	: hp_dist(u.drains ? u.max_hp+1: u.hp+1),
+	: hp_dist(hp_dist_size(u, prev)),
 	  u_(u),
 	  hit_chances_(u.num_blows, u.chance_to_hit / 100.0)
 {
