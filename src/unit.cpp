@@ -1149,9 +1149,15 @@ void unit::read(const config& cfg)
 	}
 	
 	std::map<std::string,unit_type>::const_iterator uti = gamedata_->unit_types.find(cfg["type"]);
+	const unit_type* ut = NULL;
+	if(uti != gamedata_->unit_types.end()) {
+		ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
+	}
 	if(!type_set) {
-		if(uti != gamedata_->unit_types.end()) {
-			const unit_type* ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
+		if(ut) {
+			if(cfg_["unit_description"] == "") {
+				cfg_["unit_description"] = ut->unit_description();
+			}
 			config t_atks;
 			config u_atks;
 			config::const_child_itors range;
@@ -1249,8 +1255,7 @@ void unit::read(const config& cfg)
 	}
 	
 	if(!type_set) {
-		if(uti != gamedata_->unit_types.end()) {
-			const unit_type* ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
+		if(ut) {
 			defensive_animations_ = ut->defensive_animations_;
 			teleport_animations_ = ut->teleport_animations_;
 			extra_animations_ = ut->extra_animations_;
@@ -1360,6 +1365,14 @@ void unit::write(config& cfg) const
 	cfg["y"] = y;
 	cfg["id"] = id();
 	cfg["type"] = id();
+	std::map<std::string,unit_type>::const_iterator uti = gamedata_->unit_types.find(id());
+	const unit_type* ut = NULL;
+	if(uti != gamedata_->unit_types.end()) {
+		ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
+	}
+	if(ut && cfg["unit_description"] == ut->unit_description()) {
+		cfg["unit_description"] = "";
+	}
 
 	std::stringstream hp;
 	hp << hit_points_;
