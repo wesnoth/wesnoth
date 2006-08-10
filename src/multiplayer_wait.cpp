@@ -89,7 +89,13 @@ void wait::leader_preview_pane::draw_contents()
 
 		if (utypes.find(leader) != utypes.end()) {
 			leader_name = utypes.find(leader)->second.language_name();
+
+#ifdef LOW_MEM
+			image = utypes.find(leader)->second.image();
+#else
 			image = utypes.find(leader)->second.image() + "~TC(1," + utypes.find(leader)->second.flag_rgb() + ")";
+#endif
+
 		}
 		for(std::vector<std::string>::const_iterator itor = recruit_list.begin();
 				itor != recruit_list.end(); ++itor) {
@@ -383,8 +389,15 @@ void wait::generate_menu()
 		const game_data::unit_type_map& utypes = game_data_.unit_types;
 		if (utypes.find(leader_type) != utypes.end()) {
 			leader_name = utypes.find(leader_type)->second.language_name();
+
+#ifdef LOW_MEM
+			leader_image = utypes.find(leader_type)->second.image();
+#else	
 			leader_image = utypes.find(leader_type)->second.image() + std::string("~TC(" + sd["side"] + ",") + std::string(utypes.find(leader_type)->second.flag_rgb() + ")");
+#endif
+
 		} else {
+
 			leader_image = leader_list_manager::random_enemy_picture;
 		}
 		if (!leader_image.empty()) {
