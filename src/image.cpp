@@ -328,9 +328,11 @@ surface locator::load_image_sub_file() const
 	  surface tmp(cut_surface(mother_surface, srcrect));
 	  surf=mask_surface(tmp, mask);
 	}
+
 	if(val_.swap_colors.size()){
 	  surf=recolor_image(surf,get_new_color(),get_swap_colors());
 	}
+
 	return surf;
 }
 

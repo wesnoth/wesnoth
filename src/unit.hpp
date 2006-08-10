@@ -94,10 +94,10 @@ class unit
 		SDL_Colour xp_color() const;
 		bool unrenamable() const; /** < Set to true for some scenario-specific units which should not be renamed */
 		unsigned int side() const;
-        Uint32 team_rgb() const;
-        std::vector<Uint32> team_rgb_range() const;
-        const std::vector<Uint32>& flag_rgb() const;
-        const std::string& team_color() const;
+		Uint32 team_rgb() const;
+		std::vector<Uint32> team_rgb_range() const;
+		const std::vector<Uint32>& flag_rgb() const;
+		const std::string& team_color() const;
 		unit_race::GENDER gender() const;
 		void set_side(unsigned int new_side);
 		fixed_t alpha() const;

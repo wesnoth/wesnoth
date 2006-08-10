@@ -68,7 +68,7 @@ namespace image {
 			std::string filename_;
 			gamemap::location loc_;
 		        color_range new_color;
-		std::vector<Uint32> swap_colors;
+			std::vector<Uint32> swap_colors;
 		};
 
 		// Constructing locators is somewhat slow, accessing image
