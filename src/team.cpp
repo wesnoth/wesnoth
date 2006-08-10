@@ -986,3 +986,18 @@ void team::log_recruitable(){
 	}
 	LOG_NG << "Added all recruitable units\n";
 }
+
+namespace player_teams {
+int village_owner(const gamemap::location& loc)
+{
+	if(! teams) {
+		return -1;
+	}
+	for(size_t i = 0; i != teams->size(); ++i) {
+		if((*teams)[i].owns_village(loc))
+			return i;
+	}
+	return -1;
+}
+}
+
