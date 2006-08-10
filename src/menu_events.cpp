@@ -218,8 +218,12 @@ namespace events{
 			}
 
 			std::stringstream str;
-			str << IMAGE_PREFIX << type->second.image() << "~TC(" << team << "," << type->second.flag_rgb() << ")" << COLUMN_SEPARATOR
-				<< type->second.language_name() << COLUMN_SEPARATOR << i->second << "\n";
+	
+			str << IMAGE_PREFIX << type->second.image();
+#ifndef LOW_MEM
+			str << "~TC(" << team << "," << type->second.flag_rgb() << ")" 
+#endif
+			str << COLUMN_SEPARATOR	<< type->second.language_name() << COLUMN_SEPARATOR << i->second << "\n";
 			table.push_back(str.str());
 		}
 
@@ -337,8 +341,14 @@ namespace events{
 			//output the number of the side first, and this will
 			//cause it to be displayed in the correct colour
 			if(leader != units_.end()) {
-				str << IMAGE_PREFIX << leader->second.absolute_image() << "~TC(" << (n+1) << "," << leader->second.team_color() << ")" << COLUMN_SEPARATOR
-					<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm' << leader->second.description() << COLUMN_SEPARATOR;
+
+			str << IMAGE_PREFIX << leader->second.absolute_image();
+#ifndef LOW_MEM
+			str << "~TC(" << (n+1) << "," << leader->second.team_color() << ")";
+#endif
+			str << COLUMN_SEPARATOR	<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm' 
+				<< leader->second.description() << COLUMN_SEPARATOR;
+
 			} else {
 				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;
 			}
@@ -566,9 +576,13 @@ namespace events{
 
 			std::stringstream description;
 
-			description << font::IMAGE << type.image() << "~TC(" << team_num << "," << type.flag_rgb() << ")" << COLUMN_SEPARATOR << font::LARGE_TEXT
-						<< prefix << type.language_name() << "\n"
-						<< prefix << type.cost() << " " << sgettext("unit^Gold");
+			description << font::IMAGE << type.image();
+#ifndef LOW_MEM
+			description << "~TC(" << team_num << "," << type.flag_rgb() << ")";
+#endif
+			description << COLUMN_SEPARATOR << font::LARGE_TEXT << prefix << type.language_name() << "\n"
+					<< prefix << type.cost() << " " << sgettext("unit^Gold");
+
 			items.push_back(description.str());
 			sample_units.push_back(unit(&gameinfo_,&units_,&map_,&status_,&teams_,&type,team_num));
 		}
@@ -702,11 +716,16 @@ namespace events{
 			for(std::vector<unit>::const_iterator u = recall_list.begin(); u != recall_list.end(); ++u) {
 				std::stringstream option;
 				const std::string& description = u->description().empty() ? "-" : u->description();
-				option << IMAGE_PREFIX << u->absolute_image() << "~TC(" << team_num << "," << u->team_color() << ")" << COLUMN_SEPARATOR
-						<< u->language_name() << COLUMN_SEPARATOR
-						<< description << COLUMN_SEPARATOR
-						<< u->level() << COLUMN_SEPARATOR
-						<< u->experience() << "/";
+
+				option << IMAGE_PREFIX << u->absolute_image();
+#ifndef LOW_MEM
+				option << "~TC(" << team_num << "," << u->team_color() << ")";
+#endif
+				option << COLUMN_SEPARATOR
+					<< u->language_name() << COLUMN_SEPARATOR
+					<< description << COLUMN_SEPARATOR
+					<< u->level() << COLUMN_SEPARATOR
+					<< u->experience() << "/";
 
 				if(u->can_advance() == false) {
 					option << "-";
