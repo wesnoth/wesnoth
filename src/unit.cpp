@@ -1489,14 +1489,21 @@ int unit::damage_from(const attack_type& attack,bool attacker,const gamemap::loc
 const surface unit::still_image() const
 {
 	image::locator  loc;
+
+#ifdef LOW_MEM
+	loc = image::locator(absolute_image());
+#else
 	if(flag_rgb().size()){
 		loc = image::locator(absolute_image(),team_rgb_range(),flag_rgb());
-	}else{
+	} else {
 		loc = image::locator(absolute_image());
 	}
+#endif
+
 	surface unit_image(image::get_image(loc,image::UNSCALED));
 	return unit_image;
 }
+
 void unit::set_standing(const display &disp,const gamemap::location& loc, bool with_bars)
 {
 	state_ = STATE_STANDING;
@@ -1866,11 +1873,17 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 		image_name = absolute_image();
 	}
 	image::locator  loc;
+
+#ifdef LOW_MEM
+	loc = image::locator(image_name);
+#else
 	if(flag_rgb().size()){
 		loc = image::locator(image_name,team_rgb_range(),flag_rgb());
 	}else{
 		loc = image::locator(image_name);
 	}
+#endif
+
 	surface image(image::get_image(loc,utils::string_bool(get_state("stoned"))?image::GREYED : image::UNSCALED));
 	if(image ==NULL) {
 		image = still_image();

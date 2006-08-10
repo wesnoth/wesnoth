@@ -71,7 +71,12 @@ void advance_unit(const game_data& info,
 	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
 		sample_units.push_back(::get_advanced_unit(info,units,loc,*op));
 		const unit& type = sample_units.back();
+
+#ifdef LOW_MEM
+		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + type.language_name());
+#else
 		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + "~TC(" + lexical_cast_default<std::string>(u->second.side()) + "," + type.team_color() + ")" + COLUMN_SEPARATOR + type.language_name());
+#endif
 		preferences::encountered_units().insert(*op);
 	}
 
@@ -84,7 +89,11 @@ void advance_unit(const game_data& info,
 		if((**mod)["image"].str().size()){
 		  lang_options.push_back(IMAGE_PREFIX + (**mod)["image"].str() + COLUMN_SEPARATOR + (**mod)["description"].str());
 		}else{
+#ifdef LOW_MEM
+		  lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + (**mod)["description"].str());
+#else
 		  lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + "~TC(" + lexical_cast_default<std::string>(u->second.side()) + "," + type.team_color() + ")" + COLUMN_SEPARATOR + (**mod)["description"].str());
+#endif
 		}
 	}
 
@@ -322,7 +331,13 @@ void save_preview_pane::draw_contents()
 
 	const game_data::unit_type_map::const_iterator leader = data_->unit_types.find(summary["leader"]);
 	if(leader != data_->unit_types.end()) {
+
+#ifdef LOW_MEM
+		const surface image(image::get_image(leader->second.image(),image::UNSCALED));
+#else
 		const surface image(image::get_image(leader->second.image() + "~TC(1," + leader->second.flag_rgb() + ")",image::UNSCALED));
+#endif
+
 		if(image != NULL) {
 			SDL_Rect image_rect = {area.x,area.y,image->w,image->h};
 			ypos += image_rect.h + save_preview_border;

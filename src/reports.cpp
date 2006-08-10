@@ -312,6 +312,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	{
 		const std::vector<Uint32>& old_rgb = u->second.team_rgb_range();
 		color_range new_rgb = team::get_side_color_range(u->second.side());
+		
 	    return report("",image::locator(u->second.absolute_image(), new_rgb, old_rgb),"");
 	}
 	case UNIT_PROFILE:

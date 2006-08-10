@@ -1087,10 +1087,19 @@ public:
 		const unit_type& male_type = type_.get_gender_unit_type(unit_race::MALE);
 
 		// Show the unit's image and its level.
+#ifdef LOW_MEM
+		ss << "<img>src='" << male_type.image() << "'</img> ";
+#else
 		ss << "<img>src='" << male_type.image() << "~TC(1," << male_type.flag_rgb() << ")" << "'</img> ";
+#endif
 
 		if (&female_type != &male_type)
+#ifdef LOW_MEM
+			ss << "<img>src='" << female_type.image() << "'</img> ";
+#else
 			ss << "<img>src='" << female_type.image() << "~TC(1," << female_type.flag_rgb() << ")" << "'</img> ";
+#endif
+
 
 		ss << "<format>font_size=" << font::relative_size(11) << " text=' " << escape(_("level"))
 		   << " " << type_.level() << "'</format>";
