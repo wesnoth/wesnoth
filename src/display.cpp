@@ -2060,7 +2060,7 @@ void display::invalidate_animations()
 	for(int x = topleft.x; x <= bottomright.x; ++x) {
 		for(int y = topleft.y; y <= bottomright.y; ++y) {
 			gamemap::location loc(x,y);
-			if(builder_.update_animation(loc) || (map_.is_village(loc) && animate_flags)) {
+			if(builder_.update_animation(loc) || (map_.is_village(loc) && animate_flags && player_teams::village_owner(loc) != -1)) {
 				invalidate(loc);
 			}
 		}

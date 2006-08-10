@@ -276,6 +276,10 @@ struct teams_manager {
 	bool is_observer();
 };
 
+namespace player_teams {
+	int village_owner(const gamemap::location& loc);
+}
+
 bool is_observer();
 
 //function which will validate a side. Trows game::game_error
