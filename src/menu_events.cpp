@@ -221,7 +221,7 @@ namespace events{
 	
 			str << IMAGE_PREFIX << type->second.image();
 #ifndef LOW_MEM
-			str << "~TC(" << team << "," << type->second.flag_rgb() << ")" 
+			str << "~TC(" << team << "," << type->second.flag_rgb() << ")";
 #endif
 			str << COLUMN_SEPARATOR	<< type->second.language_name() << COLUMN_SEPARATOR << i->second << "\n";
 			table.push_back(str.str());
