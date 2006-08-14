@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-07-01 14:03+0200\n"
-"PO-Revision-Date: 2006-08-07 12:48+0900\n"
+"PO-Revision-Date: 2006-08-14 00:14+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -597,7 +597,7 @@ msgstr "、最大 XP +25%"
 
 #: data/amla.cfg:9
 msgid "Max HP bonus +"
-msgstr "最大HPボーナス+"
+msgstr "最大HPボーナス +"
 
 #: data/amla.cfg:30
 msgid "Full Heal"
@@ -2322,7 +2322,7 @@ msgstr "このターンにまだ動いていないなら緑色、"
 
 #: data/help.cfg:117
 msgid "yellow if it has moved, but could still move further or attack, or"
-msgstr "移動したがまだ動いたり攻撃したりできるなら黄色,"
+msgstr "移動したがまだ動いたり攻撃したりできるなら黄色、"
 
 #: data/help.cfg:118
 msgid "red if it has used all its movement this turn."
@@ -2538,9 +2538,9 @@ msgstr ""
 "攻撃側が先制攻撃を行い、次に防御側が反撃します。各攻撃は、命中してある量のダ"
 "メージを与えるか、外して全くダメージが与えられないかのどちらかとなります。こ"
 "れはどちらかのユニットが攻撃回数分を使い切るまで交互に行われます。 攻撃回数は"
-"ユニットによって異なり、例えば 5-4の剣での攻撃をもつエルフ戦士は 5ダメージを"
-"与える攻撃を4回行いますが、一方で 9-2をもつオーク歩兵は2回しか攻撃できません"
-"(ひとふり9ダメージですが)。"
+"ユニットによって異なり、例えば 5-4の剣での攻撃をもつエルフの戦士は 5ダメージ"
+"を与える攻撃を4回行いますが、一方で 9-2をもつオークの兵卒は2回しか攻撃できま"
+"せん(ひとふり9ダメージですが)。"
 
 #: data/help.cfg:161
 msgid ""
@@ -2614,7 +2614,7 @@ msgstr ""
 "\n"
 "\n"
 "各攻撃が命中することによる基本のダメージ量は、攻撃型に依存します。例えば、5-4"
-"の剣を持つエルフ戦士は基本ダメージ5で攻撃します。通常、この値は2つの事柄、"
+"の剣を持つエルフの戦士は基本ダメージ5で攻撃します。通常、この値は2つの事柄、"
 "<ref>dst=damage_types_and_resistance text=抵抗値</ref>と "
 "<ref>dst=time_of_day text=時刻</ref>によって修正されます。基本ダメージがこれ"
 "らの これらの状況によってどう修正されるかを見るには、攻撃選択メニューの"
@@ -2647,7 +2647,10 @@ msgid ""
 "further types of damage usually associated with magical attacks: Fire, Cold "
 "and Holy attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
-msgstr "Wesnothには物理的攻撃に関連する 斬撃、貫通、打撃の3つのダメージ型があります。 追加として魔法的攻撃に関連する 火炎、冷気、神聖の3つのダメージ型があります。 ユニットごとにダメージ型によって、 異なる抵抗力を持ちます。"
+msgstr ""
+"Wesnothには物理的攻撃に関連する 斬撃、貫通、打撃の3つのダメージ型がありま"
+"す。 追加として魔法的攻撃に関連する 火炎、冷気、神聖の3つのダメージ型がありま"
+"す。 ユニットごとにダメージ型によって、 異なる抵抗力を持ちます。"
 
 #: data/help.cfg:179
 msgid ""
@@ -2673,7 +2676,11 @@ msgid ""
 "For example, Skeletons are highly resistant to Blade and Pierce damage, but "
 "are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
 "damage."
-msgstr "\n\n例えば、スケルトンは斬撃と貫通に対しては高い抵抗力を持ちます。 しかし、打撃と火炎には弱く、さらに神聖に対しては非常に脆弱です。"
+msgstr ""
+"\n"
+"\n"
+"例えば、スケルトンは斬撃と貫通に対しては高い抵抗力を持ちます。 しかし、打撃と"
+"火炎には弱く、さらに神聖に対しては非常に脆弱です。"
 
 #: data/help.cfg:183
 msgid ""
@@ -3143,10 +3150,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"全ての接近戦ユニットに便利な一方で、[強力]は,エルフ戦士のような高い攻撃回数を"
-"もつユニットにとって、最も効果があります。わずかな追加ダメージによって、傷つ"
-"けるだけの攻撃をとどめの一撃へと変えるような場合、強力なユニットは大変便利で"
-"す。"
+"全ての接近戦ユニットに便利な一方で、[強力]は、エルフの戦士のような高い攻撃回"
+"数をもつユニットにとって、最も効果があります。わずかな追加ダメージによって、"
+"傷つけるだけの攻撃をとどめの一撃へと変えるような場合、強力なユニットは大変便"
+"利です。"
 
 #: data/help.cfg:306
 msgid "Loyal"
@@ -4327,7 +4334,7 @@ msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island. Recommended setting of 2 gold per village."
 msgstr ""
-"プレイヤはこの小さいが地形的に密集した島の分散した地形を進まなければならな"
+"プレイヤーはこの小さいが地形的に密集した島の分散した地形を進まなければならな"
 "い。 村あたり2ゴールドの設定を推奨。"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
@@ -4363,8 +4370,8 @@ msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map. Recommended setting of 2 gold per village."
 msgstr ""
-"プレイヤは、この多面の戦闘マップにおける勝利を求めて、 全ての種類の地形を通過"
-"していかなければならない。 村あたり2ゴールドの設定を推奨。"
+"プレイヤーは、この多面の戦闘マップにおける勝利を求めて、 全ての種類の地形を通"
+"過していかなければならない。 村あたり2ゴールドの設定を推奨。"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:3
 msgid "2p - Sullas Ruins"
@@ -4432,7 +4439,7 @@ msgstr "青の得点！ 現在のスコアは $redscore-$bluescore"
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:332
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:609
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr "そのボールを $passto.タイプ ($xloc,$yloc)にパスしてよいですか？"
+msgstr "そのボールを $passto.type ($xloc,$yloc) にパスしてよいですか？"
 
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:334
 #: data/scenarios/multiplayer/2p_Wesbowl.cfg:611
@@ -4489,8 +4496,8 @@ msgid ""
 "Three players come head to head on this water-cut battlefield. Recommended "
 "setting of 2 gold per village."
 msgstr ""
-"この水で分けられた戦場で3人のプレイヤが顔を突き合わせる。 村あたり 2ゴールド"
-"の設定を推奨。"
+"この水で分けられた戦場で3人のプレイヤーが顔を突き合わせる。 村あたり 2ゴール"
+"ドの設定を推奨。"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:3
 msgid "4p - Blue Water Province"
@@ -4834,7 +4841,9 @@ msgstr ""
 msgid ""
 " This unit's holy attack deals tremendous damage to the undead, and even "
 "some to living creatures."
-msgstr " このユニットの神聖な攻撃はアンデッドに著しいダメージを与えます。 生きている生物にさえもかなりのダメージを与えます。"
+msgstr ""
+" このユニットの神聖な攻撃はアンデッドに著しいダメージを与えます。 生きている"
+"生物にさえもかなりのダメージを与えます。"
 
 #: data/special-notes.cfg:8
 msgid ""
@@ -5189,7 +5198,12 @@ msgid ""
 "click on a unit, and then select 'Unit Description', and then click "
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
-msgstr "戦闘には６種類、貫通、斬撃、打撃、火炎、冷気、そして神聖の攻撃がある。それぞれのユニットは攻撃の種類によってて異なる弱点を持っている。ユニットの上で右クリックして、「ユニットの解説」を選択し、「耐性」をクリックすると、ユニットがそれぞれの攻撃の種類に対してどのくらい抵抗力を持っているかを見ることができる。"
+msgstr ""
+"戦闘には６種類、貫通、斬撃、打撃、火炎、冷気、そして神聖の攻撃がある。それぞ"
+"れのユニットは攻撃の種類によってて異なる弱点を持っている。ユニットの上で右ク"
+"リックして、「ユニットの解説」を選択し、「耐性」をクリックすると、ユニットが"
+"それぞれの攻撃の種類に対してどのくらい抵抗力を持っているかを見ることができ"
+"る。"
 
 #: data/tips.cfg:4
 msgid ""
@@ -5274,7 +5288,9 @@ msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
-msgstr "馬に乗ったユニットは全般的に、 斬撃や打撃の攻撃には耐えられるが、 弓や槍などの 貫通する武器での攻撃には弱い。"
+msgstr ""
+"馬に乗ったユニットは全般的に、 斬撃や打撃の攻撃には耐えられるが、 弓や槍など"
+"の 貫通する武器での攻撃には弱い。"
 
 #: data/tips.cfg:13
 msgid ""
@@ -5342,7 +5358,9 @@ msgstr ""
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
-msgstr "スケルトンは、貫通や斬撃での攻撃に耐性があるが、打撃、火炎、神聖の攻撃には弱い。"
+msgstr ""
+"スケルトンは、貫通や斬撃での攻撃に耐性があるが、打撃、火炎、神聖の攻撃には弱"
+"い。"
 
 #: data/tips.cfg:21
 msgid ""
@@ -5801,7 +5819,11 @@ msgid ""
 "to use it. This natural ability renders them nearly immune to fire. Their "
 "shining, flame-colored armor is a mark of their proud and powerful caste, "
 "the ideal to which their brethren aspire."
-msgstr "インフェルノドレークとして知られる飛行体は彼等の吐く炎の達人で、それを 使う能力では彼等の先祖ドラゴンに匹敵します。この生来の能力で火炎に対する 免疫に近いものをもたらします。彼等の光輝く炎色の鎧は、彼等の誇り深く強力な 階級の印で、彼等の仲間が熱望する理想です。"
+msgstr ""
+"インフェルノドレークとして知られる飛行体は彼等の吐く炎の達人で、それを 使う能"
+"力では彼等の先祖ドラゴンに匹敵します。この生来の能力で火炎に対する 免疫に近い"
+"ものをもたらします。彼等の光輝く炎色の鎧は、彼等の誇り深く強力な 階級の印で、"
+"彼等の仲間が熱望する理想です。"
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
@@ -9683,7 +9705,7 @@ msgstr "$enemies の敵ユニットを発見！"
 
 #: src/actions.cpp:2025
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
-msgstr "ユニットを発見！ (仲間$friends,敵$enemies )"
+msgstr "ユニットを発見！ (仲間$friends、敵$enemies )"
 
 #: src/actions.cpp:2040
 msgid "(press $hotkey to continue)"
@@ -10788,11 +10810,11 @@ msgstr "チームがないため、 シナリオは無効です。"
 
 #: src/multiplayer_connect.cpp:1016
 msgid "Network Player"
-msgstr "ネットプレイヤ"
+msgstr "ネットプレイヤー"
 
 #: src/multiplayer_connect.cpp:1017
 msgid "Local Player"
-msgstr "ローカルプレイヤ"
+msgstr "ローカルプレイヤー"
 
 #: src/multiplayer_connect.cpp:1018
 msgid "Computer Player"
