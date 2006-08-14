@@ -2355,12 +2355,18 @@ void unit::backup_state()
 	attacks_b_ = attacks_;
 	if(cfg_.child("movement_costs")) {
 		movement_b_ = *cfg_.child("movement_costs");
+	} else {
+		movement_b_ = config();
 	}
 	if(cfg_.child("defense")) {
 		defense_b_ = *cfg_.child("defense");
+	} else {
+		defense_b_ = config();
 	}
 	if(cfg_.child("resistance")) {
 		resistance_b_ = *cfg_.child("resistance");
+	} else {
+		resistance_b_ = config();
 	}
 }
 
