@@ -1158,16 +1158,17 @@ void unit::read(const config& cfg)
 			}
 			config t_atks;
 			config u_atks;
-			for(config::const_child_itors range = ut->cfg_.child_range("attack");
+			config::const_child_itors range;
+			for(range = ut->cfg_.child_range("attack");
 			    range.first != range.second; ++range.first) {
 				t_atks.add_child("attack",**range.first);
 			}
-			for(config::const_child_itors range = cfg.child_range("attack");
+			for(range = cfg.child_range("attack");
 			    range.first != range.second; ++range.first) {
 				u_atks.add_child("attack",**range.first);
 			}
 			u_atks = t_atks.merge_with(u_atks);
-			for(config::const_child_itors range = u_atks.child_range("attack");
+			for(range = u_atks.child_range("attack");
 			    range.first != range.second; ++range.first) {
 				attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
 			}
@@ -1282,10 +1283,11 @@ void unit::read(const config& cfg)
 			for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
 				defensive_animations_.push_back(defensive_animation(**d));
 			}
-			for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
+			config::child_list::const_iterator t;
+			for(t = teleports.begin(); t != teleports.end(); ++t) {
 				teleport_animations_.push_back(unit_animation(**t));
 			}
-			for(config::child_list::const_iterator t = extra_anims.begin(); t != extra_anims.end(); ++t) {
+			for(t = extra_anims.begin(); t != extra_anims.end(); ++t) {
 				extra_animations_.insert(std::pair<std::string,unit_animation>((**t)["flag"],unit_animation(**t)));
 			}
 			for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
