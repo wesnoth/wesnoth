@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include <global.hpp>
 #include <unit_frame.hpp>
 // forward declaration of utility function
 std::vector<std::pair<std::string,int> > prepare_halo(const std::string & halo,int begin, int end);
