@@ -74,7 +74,7 @@ void config::merge_children(const std::string& key)
 		merged_children.append(**i);
 	}
 
-	clear_children(key);
+	detach_children(key);
 	add_child(key,merged_children);
 }
 
@@ -191,10 +191,23 @@ private:
 
 }
 
-void config::clear_children(const std::string& key)
+void config::detach_children(const std::string& key)
 {
 	ordered_children.erase(std::remove_if(ordered_children.begin(),ordered_children.end(),remove_ordered(key)),ordered_children.end());
 	children.erase(key);
+}
+
+void config::clear_children(const std::string& key)
+{
+	ordered_children.erase(std::remove_if(ordered_children.begin(),ordered_children.end(),remove_ordered(key)),ordered_children.end());
+
+	child_map::iterator i = children.find(key);
+	if (i != children.end()) {
+		for (child_iterator c = i->second.begin(); c != i->second.end(); c++) {
+			delete *c;
+		}
+		children.erase(i);
+	}
 }
 
 void config::remove_child(const std::string& key, size_t index)
