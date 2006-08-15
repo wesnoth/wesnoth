@@ -57,11 +57,10 @@ class fighting_animation:public unit_animation
 		explicit fighting_animation(const config& cfg);
 		explicit fighting_animation(const std::string &image, const std::string &range="",int begin_at = -150, int end_at = 150):
 			unit_animation(image,begin_at,end_at),range(utils::split(range)) {};
-		int matches(const std::string &terrain,gamemap::location::DIRECTION dir,hit_type hit,const attack_type* attack,int swing_num) const;
+		int matches(const std::string &terrain,gamemap::location::DIRECTION dir,hit_type hit,const attack_type* attack) const;
 
 	private:
 		std::vector<hit_type> hits;
-		std::vector<int> swing_num;
 		std::vector<std::string> range;
 		std::vector<std::string> damage_type, special;
 };
@@ -82,16 +81,6 @@ class death_animation:public fighting_animation
 	private:
 };
 
-class attack_animation: public fighting_animation
-{
-	public:
-		explicit attack_animation(const config& cfg):fighting_animation(cfg),missile_anim(cfg,"missile_frame"){};
-		explicit attack_animation(const std::string &image):fighting_animation(image,"",-200,100) {};
-		const unit_animation &get_missile_anim() {return missile_anim;}
-	private:
-		unit_animation missile_anim;
-
-};
 
 class movement_animation:public unit_animation
 {

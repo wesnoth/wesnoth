@@ -153,13 +153,13 @@ int attack_type::movement_used() const
 	return cfg_["movement_used"] == "" ? 100000 : lexical_cast_default<int>(cfg_["movement_used"]);
 }
 
-const attack_animation& attack_type::animation(const std::string &terrain,const fighting_animation::hit_type hit,const gamemap::location::DIRECTION dir,int swing_num) const
+const attack_type::attack_animation& attack_type::animation(bool hit,const gamemap::location::DIRECTION dir) const
 {
 	//select one of the matching animations at random
 	std::vector<const attack_animation*>  options;
 	int max_val = -1;
 	for(std::vector<attack_animation>::const_iterator i = animation_.begin(); i != animation_.end(); ++i) {
-		int matching = i->matches(terrain,dir,hit,this,swing_num);
+		int matching = i->matches(hit,dir);
 		if(matching == max_val) {
 			options.push_back(&*i);
 		} else if(matching > max_val) {
@@ -173,6 +173,45 @@ const attack_animation& attack_type::animation(const std::string &terrain,const 
 	return *options[rand()%options.size()];
 }
 
+attack_type::attack_animation::attack_animation(const config& cfg):animation(cfg),missile_animation(cfg,"missile_frame"),hits(HIT_OR_MISS)
+{
+	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
+	for(std::vector<std::string>::const_iterator i = my_directions.begin(); i != my_directions.end(); ++i) {
+		const gamemap::location::DIRECTION d = gamemap::location::parse_direction(*i);
+		directions.push_back(d);
+	}
+	if(missile_animation.get_first_frame_time() == 0 && missile_animation.get_last_frame_time() == 0) {
+		// create animation ourself
+		missile_animation = unit_animation(game_config::missile_n_image,0,0,game_config::missile_ne_image);
+	}
+	const std::string& hits_str = cfg["hits"];
+	if(hits_str.empty() == false) {
+		hits = (hits_str == "yes") ? HIT : MISS;
+	}
+}
+int attack_type::attack_animation::matches(bool hit,gamemap::location::DIRECTION dir) const
+{
+	int result = 0;
+
+	if(directions.empty()== false) {
+		if (std::find(directions.begin(),directions.end(),dir)== directions.end()) {
+			return -1;
+		} else {
+			result ++;
+		}
+	}
+	if(hits != HIT_OR_MISS ) {
+		if(hit && (hits == HIT)) {
+			result++;
+		} else if(!hit && (hits == MISS)) {
+			result++;
+		} else {
+			return -1;
+		}
+	}
+
+	return result;
+}
 bool attack_type::matches_filter(const config& cfg,bool self) const
 {
 	const std::string& filter_range = cfg["range"];

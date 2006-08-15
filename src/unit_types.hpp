@@ -85,8 +85,22 @@ public:
 	bool special_affects_opponent(const config& cfg) const;
 	bool special_affects_self(const config& cfg) const;
 
+	struct attack_animation
+	{
+		typedef enum { HIT, MISS, HIT_OR_MISS } hit_type;
+
+		explicit attack_animation(const config& cfg);
+		explicit attack_animation(const std::string &image,const hit_type for_hit= HIT_OR_MISS):animation(image,-200,100),hits(for_hit) {};
+		int matches(bool hit,gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
+
+		std::vector<gamemap::location::DIRECTION> directions;
+		unit_animation animation;
+		unit_animation missile_animation;
+		hit_type hits;
+
+	};
 	config cfg_;
-	const attack_animation& animation(const std::string &terrain,const fighting_animation::hit_type hit,const gamemap::location::DIRECTION dir,int swing_num) const;
+	const attack_animation& animation(bool hit,gamemap::location::DIRECTION dir=gamemap::location::NDIRECTIONS) const;
 private:
 	std::vector<attack_animation> animation_;
 	t_string description_;
