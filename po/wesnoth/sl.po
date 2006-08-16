@@ -1,22 +1,25 @@
+# translation of sl.po to Slovenian
+# Automatically generated, 2004.
+# Jaka Kranjc <wesnoth@prinas.si> 2004, 2005, 2006
+# Matej Repinc <mrepinc@gmail.com>, 2006.
 # #-#-#-#-#  wesnoth.cpp.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Slovenian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2004.
 msgid ""
 msgstr ""
-"Project-Id-Version: smart-sl\n"
+"Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-07-01 14:03+0200\n"
-"PO-Revision-Date: 2005-08-07 22:54+0200\n"
-"Last-Translator: lynx\n"
-"Language-Team:  <sl@li.org>\n"
+"PO-Revision-Date: 2006-08-14 19:33+0200\n"
+"Last-Translator: Matej Repinc <mrepinc@gmail.com>\n"
+"Language-Team: Slovenian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
-"X-Generator: KBabel 1.9\n"
+"X-Generator: KBabel 1.11.2\n"
 
 #: data/abilities.cfg:8
 msgid "heals +4"
@@ -60,8 +63,8 @@ msgstr ""
 "Ta enota s pomočjo zelišč in čarovnij zdravi druge hitreje, kot je ponavadi "
 "možno na bojišču.\n"
 "\n"
-"Enota, ki jo oskrbuje zdravnik se lahko pozdravi za do 8 HP na potezo ali "
-"pa ne utrpi škode zaradi zastrupljenosti.\n"
+"Enota, ki jo oskrbuje zdravnik se lahko pozdravi za do 8 HP na potezo ali pa "
+"ne utrpi škode zaradi zastrupljenosti.\n"
 "Zastrupljenih enot ne more ozdraviti strupa, te morajo poiskati pomoč v vasi "
 "ali pri razstrupljevalecu."
 
@@ -76,8 +79,8 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 "Razstrupljevalec:\n"
-"Razstrupljevalec lahko ozdravi enoto strupa, toda tisto potezo ta ne "
-"more prejeti drugega zdravljenja."
+"Razstrupljevalec lahko ozdravi enoto strupa, toda tisto potezo ta ne more "
+"prejeti drugega zdravljenja."
 
 #: data/abilities.cfg:57
 msgid "regenerates"
@@ -104,8 +107,8 @@ msgid ""
 "Vulnerabilities are not affected."
 msgstr ""
 "Neomajnost:\n"
-"Ta enota ima v obrambi podvojene odpornosti, do največ 50%. Šibkosti ostanejo " 
-"iste."
+"Ta enota ima v obrambi podvojene odpornosti, do največ 50%. Šibkosti "
+"ostanejo iste."
 
 #: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
 #: data/abilities.cfg:183 data/abilities.cfg:239
@@ -232,8 +235,8 @@ msgstr ""
 "Potop:\n"
 "Ta enota se lahko skrije v globoki vodi in postane nevidna.\n"
 "\n"
-"Sovražne enote te enote, ko je v globoki vodi, ne morejo niti videti niti napasti, "
-"razen takoj po njenem napadu ali če so poleg nje."
+"Sovražne enote te enote, ko je v globoki vodi, ne morejo niti videti niti "
+"napasti, razen takoj po njenem napadu ali če so poleg nje."
 
 #: data/abilities.cfg:405
 msgid "berserk"
@@ -261,8 +264,8 @@ msgid ""
 "to stone)."
 msgstr ""
 "Vbod v hrbet:\n"
-"Ta napad naredi dvojno škodo, če je na tarčini nasprotni strani njej sovražna "
-"enota, ki ni onesposobljena (npr. okamenela)."
+"Ta napad naredi dvojno škodo, če je na tarčini nasprotni strani njej "
+"sovražna enota, ki ni onesposobljena (npr. okamenela)."
 
 #: data/abilities.cfg:426 data/abilities.cfg:434
 msgid "plague"
@@ -292,8 +295,9 @@ msgid ""
 "up)."
 msgstr ""
 "Upočasni:\n"
-"Ta napad upočasni tarčo do konca njene poteze. Upočasnjene enote se premikajo "
-"pri polovični hitrosti (zaokroženo navzgor) in povzročajo polovično škodo."
+"Ta napad upočasni tarčo do konca njene poteze. Upočasnjene enote se "
+"premikajo pri polovični hitrosti (zaokroženo navzgor) in povzročajo "
+"polovično škodo."
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -347,8 +351,8 @@ msgid ""
 msgstr ""
 "Mrgolenje:\n"
 "Število napadov se zmanjša, ko je enota ranjena. Sorazmerno je razmerju med "
-"trenutnim in maximalnim HP. Na primer enota na 3/4 zdravja bo imela "
-"3/4 maximalnega števila napadov."
+"trenutnim in maximalnim HP. Na primer enota na 3/4 zdravja bo imela 3/4 "
+"maximalnega števila napadov."
 
 #: data/abilities.cfg:491
 msgid "charge"
@@ -616,6 +620,9 @@ msgid ""
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
 "enemies, and their morning star crushes those who are left."
 msgstr ""
+"Največji ljudje nižin, Konjeniški mogočniki so glave družine ter so "
+"spoštovani od vseh, prijateljev in sovražnikov. Njihov meč lahko ubije "
+"večino navadnih sovražnikov in njihov verižni buzdovan zdrobi ostale."
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
 #: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:34
@@ -852,6 +859,9 @@ msgid ""
 "commanding their comrades, and they are the ones that become captains of the "
 "armies of the Clans."
 msgstr ""
+"Plemiči med ljudmi višav se urijo z ostalimi konjeniki, da postanejo veliki "
+"bojevniki. Prav tako so izurjeni v poveljevanju svojih soborcev, in oni so "
+"tisti, ki postanejo stotniki Klanskih armad."
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:3
 msgid "Mounted Warrior"
@@ -864,6 +874,9 @@ msgid ""
 "battlefield with great speed, and can provide much needed assistance to "
 "different fronts."
 msgstr ""
+"Voditelji ravnic, Konjeniški vojščaki so izurjeni v uporabi mečev ter "
+"verižnih buzdovanov. Jahajoč konje so se sposobni gibati po bojnem polju z "
+"veliko hitrostjo in tako lahko podpirajo več front."
 
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:34
 #: data/units/Orcish_Ruler.cfg:33 data/units/Orcish_Sovereign.cfg:34
@@ -883,6 +896,11 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"Dolgo tega so od enega najmogočnejših živečih bitij, strašnega Zmaja, ostale "
+"samo kosti in temne kite. Dolgo po smrti je bil skozi temne sile črne magije "
+"oživljen in tem služi še danes. Nemrtvi Zmaj res izgleda le kot kup kosti, "
+"vendar je le peščica tako mislečih živela dovolj časa, da si je lahko "
+"premislila."
 
 #: data/campaigns/Eastern_Invasion/units/Skeletal_Dragon.cfg:29
 msgid "jaw"
@@ -920,6 +938,10 @@ msgid ""
 "great combatant and leader. Now battle-hardened and strong of will, she can "
 "now aid those around her in the art of combat."
 msgstr ""
+"Plemenita ob rojstvu, Princesa se je naučila ples mečev z največjimi "
+"generali ter bojne strategije z največjimi strategi, kar jo naredi dobro "
+"bojevnico, kakor tudi dobro voditeljico. Polna bojnega duha in volje lahko "
+"pomaga drugim okrog sebe v umetnosti boja."
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:39
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:159
@@ -986,6 +1008,9 @@ msgid ""
 "civilization, the skeletal Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
+"Jahajoč kosti nojem podobnih ptic, ki so bili nekoč uporabljeni kot jezdne "
+"živali izgubljene civilizacije, se kostni Čokoboni lahko premikajo hitreje "
+"od večine konjeniških enot."
 
 #: data/campaigns/Heir_To_The_Throne/units/Chocobone.cfg:23
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Chocobone.cfg:23
@@ -1094,6 +1119,8 @@ msgid ""
 "to turn the living to stone. Needless to say, this makes them extremely "
 "dangerous."
 msgstr ""
+"Ta mistična bitja, včasih poznana kot 'balisksi', so po govoricah zmožna "
+"spreobrniti žive v kamen. To jih naredi izjemno nevarne."
 
 #: data/campaigns/Heir_To_The_Throne/units/Cockatrice.cfg:20
 msgid "gaze"
@@ -1138,6 +1165,10 @@ msgid ""
 "although they also carry a bow to use when necessary. If the Commander is "
 "lost, so is the battle."
 msgstr ""
+"Čin Poveljnika imajo tisti, ki vodijo bojne čete v bitke. S poveljevanjem "
+"dajejo sosednjim bojevnikom nižjega nivoja dodatno moč. Komandirji so "
+"najbolj izvežbani v rokovanju z meči, vendar pa s sabo nosijo tudi lok. Če "
+"je izglubljen Komandir, je tudi bitka."
 
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:90
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:129
@@ -1175,6 +1206,9 @@ msgid ""
 "knowledge of magic makes her a worthy foe in combat, although her power is "
 "mostly derived from those she commands."
 msgstr ""
+"Zlobna kraljica, mati Asheviere, je ustrahovala Wesnoth veliko let. Njeno "
+"poznavanje magije jo naredi vredno sovražnico v boju, čeprav je njena moč "
+"predvsem v njenih podložnikih."
 
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:34
 msgid "scepter"
@@ -1192,6 +1226,9 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
+"Nekoč Sijajni, čarovniki starešine so v dolgih letih bojev izgubili nekaj "
+"svoje moči. Kakorkoli, na bojišču ostajajo spoštovani zaradi svojih mogočnih "
+"strel."
 
 #: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:31
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:52
@@ -1230,6 +1267,9 @@ msgid ""
 "times of peace, a High Lord in the full of his wrath is an awesome sight "
 "indeed."
 msgstr ""
+"Voditelji Vilinov z leti ne izgubijo moči. V bistvu šele takrat dosežejo "
+"svoj vrhunec. Tih in premišljen v mirnem času, Višji mogočnik je v svojem "
+"polnem srdu strašen na pogled."
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:77
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:66
@@ -1249,6 +1289,10 @@ msgid ""
 "unflagging fealty of their people, which is the greatest gift any ruler "
 "could ask for."
 msgstr ""
+"Vilini izbirajo svoje vodje na podlagi njihove moči ter modrosti; previdnost "
+"jih varuje v času negotovosti. Njihova pravična vladavina je nagrajena z "
+"brezkompromisno podporo ljudstva, kar je največje darilo, ki si ga lahko "
+"vladar želi."
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:22
 msgid "shove"
@@ -1264,6 +1308,9 @@ msgid ""
 "society. Elvish Lords are the wisest and strongest of their people, and are "
 "fearsome in their command of magic."
 msgstr ""
+"Plemeniči med vilini so obsedeni z odlikovanji, s katerimi ohranjajo svoj "
+"položaj v družbi. Vilinski mogočniki so najmodrejši ter najmočnejši med "
+"svojimi ljudmi in so znani po svoji strahoviti moči upravljanja s čarovnijo."
 
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:86
@@ -1280,6 +1327,8 @@ msgid ""
 "from enemies. However they have the potential to become great warriors one "
 "day."
 msgstr ""
+"Mladi ter postavljaški, Bojevniki se bojujejo z mečem ter so ranljivi s "
+"strani sovražnikov. Imajo pa potencial, da nekoč postanejo veliki bojevniki."
 
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:220
@@ -1297,6 +1346,10 @@ msgid ""
 "leadership skills, and improve the fighting ability of all adjacent lower-"
 "level units."
 msgstr ""
+"Plemeniti vodje mnogih čet, Mogočniki so posebno močni v bojevanju na blizu, "
+"a znajo rokovati tudi z loki. Tako kot Komandirji, imajo Mogočniki "
+"voditeljske sposobnosti ter zvišujejo bojno moč sosednjim enotam nižjega "
+"nivoja."
 
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:3
 msgid "female^Princess"
@@ -1311,6 +1364,11 @@ msgid ""
 "fight better due to her presence. The Princess is also nimble and dextrous, "
 "having skills like that of a thief."
 msgstr ""
+"Plemenita ob rojstvu, Princesa se je naučila igre mečev z največjimi "
+"bojevniki ter bojne strategije z največjimi strategi, kar jo naredi tako "
+"dobro bojevnico kot strateginjo. Enote nižjega nivoja se bodo v bližini "
+"Princese zaradi njene prisotnosti borile bolje. Princesa je bistra ter "
+"gibčna, zato ima spretnosti tatu."
 
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:100
 msgid "Princess"
@@ -1328,6 +1386,10 @@ msgid ""
 "their lack of a ranged attack and poor defence on land do represent "
 "strategic weaknesses."
 msgstr ""
+"Večkrat videni kot manjvredni ustrezniki kopenskih Orkov, Morski Orki "
+"predstavljajo velik skok za vse goblinoide, saj so se prilagodili vodnemu "
+"okolju. S svojimi ukrivljenimi meči so sposobni borci, a njihovo pomanjkanje "
+"napada na daleč ter slaba obramba na kopnem pomeni strateško pomankljivost."
 
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
@@ -1373,6 +1435,15 @@ msgid ""
 "ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
 "often take underlings whom they lead to victory."
 msgstr ""
+"Rdeči Zmaj je antično ter grozno bitje, ki navadno živi samo v tihih "
+"govoricah ter neverjetnih zgodbah. Običajno minejo stoletja brez videnja "
+"zmaja v Wesnothu in ponavadi se prikaže le kot leteča senca v daljavi. "
+"Legende so zelo natančne o opustošenjih Rdečih Zmajev: gnusno hitri v zraku, "
+"z usnjatimi krili, ki se razširjajo več kot 30 metrov v dolžino, Rdeči Zmaji "
+"priletijo ter z ognjenim dihom zažgejo svoj plen. Karkoli zbeži zmajevemu "
+"ognju, se mora paziti njihovega groznega ugriza ter drobečega repa. Rdeči "
+"zmaji so premeteni ter okrutni in imajo pogosto podrejene, katere vodijo v "
+"zmage."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:30
 msgid "bite"
@@ -1414,6 +1485,10 @@ msgid ""
 "with the sword, although they also carry a bow to use when necessary. If the "
 "Commander is lost, so is the battle."
 msgstr ""
+"Čin plemiškega poveljnika imajo tisti, ki vodijo bojne čete v bitke. S "
+"poveljevanjem dajejo sosednjim bojevnikom nižjega nivoja dodatno moč. "
+"Poveljniki so najbolj izvežbani v rokovanju z meči, vendar pa s sabo nosijo "
+"tudi lok. Če je izglubljen Poveljnik, je tudi bitka."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
@@ -1425,6 +1500,8 @@ msgid ""
 "attacks from enemies. However they have the potential to become great "
 "Commanders one day."
 msgstr ""
+"Mladi ter postavljaški, Bojevniki se bojujejo z mečem ter so ranljivi s "
+"strani sovražnikov. Imajo pa potencial, da nekoč postanejo veliki bojevniki."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
@@ -1439,6 +1516,8 @@ msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
 "become a Lord -- to join the elite of humanity."
 msgstr ""
+"Danes skoraj še fant, s svojo predanostjo kroni pa želi postati Mogočnik -- "
+"se pridružiti človeški eliti."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:3
 msgid "female^Outlaw Princess"
@@ -1451,6 +1530,10 @@ msgid ""
 "the life of an Outlaw. She dreams of founding her own Queendom with the "
 "plunder she finds on the road."
 msgstr ""
+"Ob rojstvu plemenita, Izobčena Princesa se je učila bojevanja z največjimi "
+"generali. Je produkt propadlega plemstva in se je odločila za življenje v "
+"izgonu. Sanja, da bi z na cesti naropanim plenom ustanovila svoje lastno "
+"Kraljičestvo."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:98
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Queen.cfg:101
@@ -1472,6 +1555,11 @@ msgid ""
 "Queendom with the plunder she finds on the road, and she is ever so close to "
 "that goal."
 msgstr ""
+"Ob rojstvu plemenita, Izobčena Kraljica se je učila bojevanja z največjimi "
+"generali ter bojne taktike z največjimi strategi, kar jo naredi tako dobro "
+"bojevnico kot vodjo. Je produkt propadlega plemstva in se je odločila za "
+"življenje v izgonu.  Sanja, da bi z na cesti naropanim plenom zgradila svoje "
+"lastno Kraljičestvo in temu cilju je vedno bližje."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:3
 msgid "female^Vampire Lady"
@@ -1504,6 +1592,9 @@ msgid ""
 "protecting their subjects. Kings can coordinate the attacks of level 1 and 2 "
 "units, thereby increasing their fighting efficiency."
 msgstr ""
+"Kot vodje človeških kraljestev, so Kralji odgovorni za vladanje in zaščito "
+"svojih podložnikov. Kralji lahko koordinirajo napade enot nižjih nivojev ter "
+"s tem povečajo njihovo učinkovitost."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Warrior_King.cfg:35
 #: data/units/Drake_Enforcer.cfg:105 data/units/Drake_Gladiator.cfg:186
@@ -1534,6 +1625,17 @@ msgid ""
 "Special Notes: Woses regenerate by using natural resources around them, "
 "without needing to huddle in villages to obtain sustenance and aid."
 msgstr ""
+"Redko videni, celo s strani Vilinov, Enti so rod o katerem vemo zelo malo. "
+"Vilini so največji vir tega znanja ter vedo, da ta bitja niso potomci "
+"dreves, kljub podobnem zunanjem videzu. Enti so bližnji sorodniki vešč, še "
+"bolj kot Vilini sami, čeprav na drugačen način. Motivi ter delovanje Entov "
+"so neznani, čeprav je večina mnenja, da so Enti čuvaji narave. \n"
+"\n"
+"Enti so popolnoma miroljubni, vendar posredujejo veliko moč. Toda niso "
+"navajeni premikanja in so pri tem zelo počasni. \n"
+"\n"
+"Posebna opomba: Enti se lahko zdravijo s pomočjo naravnih virov, brez da bi "
+"jim bilo treba iskati pomoč v vaseh."
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wose_Sapling.cfg:36
 #: data/units/Wose.cfg:36 data/units/Wose_Ancient.cfg:29
@@ -1552,6 +1654,10 @@ msgid ""
 "bodies, becoming undead themselves. With time, they may become fully undead, "
 "and feared by all alike."
 msgstr ""
+"Zaradi preveč šušmarjenja s prepovedano magijo, so ti čarodeji začeli "
+"plačevati veliko ceno za svoja dejanja. Demiliči so začeli izgubljati svoja "
+"telesa, začeli so postajati nemrtvi. Sčasoma bodo postali popolnoma nemrtvi "
+"in vsi sej jih bodo bali."
 
 #: data/campaigns/The_South_Guard/units/Demilich.cfg:24
 #: data/units/Undead_Corpse_Soulless.cfg:50
@@ -1645,6 +1751,19 @@ msgid ""
 "Special Notes: the red mage's fireballs are magical, and always have a high "
 "chance of hitting an opponent."
 msgstr ""
+"Po uspešno opravljeni vajeniški dobi je čarovnik slečen iz modre oprave "
+"vajenca ter dobi rdečo opravo mojstra. Pomembnost te menjave navadni ljudje "
+"pogosto spregledajo in pomotoma kličejo čarovnike mojstre 'Rdeče čarovnike'. "
+"Pravtako je simboličnost zamenjave barv oprave včasih zamenjana s "
+"čarovnikovo zmožnostjo priklica ognja iz ničesar, kar je sicer uporabno, a "
+"je gledano na kot neumna aplikacija znanja, ki so ga stežka pridobili. \n"
+"\n"
+"Četudi so fizično šibki ter neizurjeni kot bojevniki, 'Rdeči Čarovniki' "
+"poznajo kar nekaj trikov, vključno z ognjenimi kroglami, ki so najbrž "
+"utrdile njihovo pogovorno ime.\n"
+"\n"
+"Posebna opomba: Ognjene krogle Rdečega Čarovnika so čarobne ter imajo veliko "
+"verjetnost, da zadanejo nasprotnika. "
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:4
 #: data/units/Human_Mage_Silver.cfg:188
@@ -1652,6 +1771,7 @@ msgid "female^Silver Mage"
 msgstr "Srebrna čarovnica"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:39
+#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Silver magi have devoted themselves to a study of the forces that bind "
@@ -1679,6 +1799,14 @@ msgid ""
 "also teleport between any two villages instantly, though the player must "
 "control both, and the destination village must be unoccupied."
 msgstr ""
+"Mnogo poti, po katerih se lahko čarodej uči, vodijo v čisto različne konce. "
+"Srebrni čarovniki so se predali raziskavi sil, ki držijo realnost skupaj, in "
+"so zmogli razkriti skrivnosti sveta veliko bolj prostranega, kot bi si ga "
+"lahko predstavljali. Mnogokrat gledani kot sagi ali tavajoči mistiki, "
+"srebrni čarovniki delujejo po dnevnem redu, ki je neznan celo njihovim "
+"kolegom. Čeprav pomagajo v magisterijih, ki jih pogosto zaposlijo v polju, "
+"ostajajo nekoliko vzvišeni.\n"
+"\n"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:123
 #: data/units/Human_Mage.cfg:122 data/units/Human_Mage_Silver.cfg:151
@@ -1941,12 +2069,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Battle for Wesnoth je fantazijska potezna strategija, ki je drugačna "
-"od drugih modernih strateških iger. Medtem ko si te prizadevajo za "
-"zapletenost, si Battle for Wesnoth prizadeva za enostavnost pravil in "
-"igranja. To pa je ne naredi enostavne - njena preprosta pravila omogočajo "
-"cel kup strategij, zaradi česar se je igre lahko priučiti, a jo težko "
-"zaobvladati."
+"Battle for Wesnoth je fantazijska potezna strategija, ki je drugačna od "
+"drugih modernih strateških iger. Medtem ko si te prizadevajo za zapletenost, "
+"si Battle for Wesnoth prizadeva za enostavnost pravil in igranja. To pa je "
+"ne naredi enostavne - njena preprosta pravila omogočajo cel kup strategij, "
+"zaradi česar se je igre lahko priučiti, a jo težko zaobvladati."
 
 #: data/help.cfg:79
 msgid "Fundamentals of Gameplay"
@@ -1993,10 +2120,10 @@ msgid ""
 "will be shown explaining each item. This is especially useful when you "
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
-"Zapomnite si, da lahko med igranjem izveste več o mnogih postavkah, na primer v "
-"statusni vrstici, če čeznje zapeljete z miško. Pokazal se bo oblaček "
-"s kratko razlago. To je še posebej koristno, ko se prvič srečate z novimi "
-"<ref>dst=abilities text=sposobnostmi</ref>."
+"Zapomnite si, da lahko med igranjem izveste več o mnogih postavkah, na "
+"primer v statusni vrstici, če čeznje zapeljete z miško. Pokazal se bo "
+"oblaček s kratko razlago. To je še posebej koristno, ko se prvič srečate z "
+"novimi <ref>dst=abilities text=sposobnostmi</ref>."
 
 #: data/help.cfg:90
 msgid "About the Game"
@@ -2052,7 +2179,7 @@ msgstr ""
 
 #: data/help.cfg:100
 msgid "Recruiting and Recalling"
-msgstr "Vpoklic in priklic enot"
+msgstr "Novačenje in priklic enot"
 
 #: data/help.cfg:101
 msgid ""
@@ -2067,14 +2194,14 @@ msgid ""
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
 "Vsaka stran začne z enim voditeljem v svoji trdnjavi. Na začetku in "
-"dostikrat med bojem, boste morali vpoklicaiti <ref>dst=units text=enote</ref> v "
+"dostikrat med bojem, boste morali novačiti <ref>dst=units text=enote</ref> v "
 "svojo vojsko. Za začetek mora biti vodja (Konrad v kampanji "
 "Prestolonaslednik) v trdnjavi <ref>dst=terrain_castle text=gradu</ref>. "
-"Potem lahko vpoklicujete, tako da izberete Vpokliči iz menija ali pa z desnim "
-"klikom na željeno ploščo in izbiro <italic>text=Vpokliči</italic>. Prikazal se "
-"bo zaslon s seznamom enot na voljo za vpoklic, skupaj z njihovo ceno v "
+"Potem lahko novačite, tako da izberete Novači iz menija ali pa z desnim "
+"klikom na željeno ploščo in izbiro <italic>text=Novači</italic>. Prikazal se "
+"bo zaslon s seznamom enot na voljo za novačenje, skupaj z njihovo ceno v "
 "zlatu. S klikom na enoto se bodo na levi prikazale njene statistike, s "
-"pritiskom na gumb Vpokliči pa jo boste pojedli."
+"pritiskom na gumb Novači pa jo boste pojedli."
 
 #: data/help.cfg:103
 msgid ""
@@ -2087,9 +2214,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Če ste enoto vpoklicali preko pojavnega menija, se bo ta pojavila na tisti "
+"Če ste enoto novačili preko pojavnega menija, se bo ta pojavila na tisti "
 "plošči, kjer ste desno-kliknili. Drugače se bo pojavila v poljubnem prosti "
-"plošči zraven trdnjave. Vpokličete lahko samo toliko enot, kolikor je prostih "
+"plošči zraven trdnjave. Novačite lahko samo toliko enot, kolikor je prostih "
 "plošč v gradu (okoli trdnjave) in porabite lahko samo toliko zlata, kolikor "
 "ga imate."
 
@@ -2129,8 +2256,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ne pozabite, da enote ne stanejo le toliko zlata kolikor ga je potrebno za "
-"njihov vpoklic ali priklic, ampak potrebujejo tudi plače. Poglejte si "
+"Ne pozabite da enote ne stanejo le toliko zlata kolikor ga je potrebno za "
+"njihovo novačenje ali priklic, ampak potrebujejo tudi plače. Poglejte si "
 "<ref>dst=income_and_upkeep text='Prihodki in Plače'</ref>."
 
 #: data/help.cfg:114
@@ -2221,14 +2348,16 @@ msgid ""
 "movement, but will still allow it to attack."
 msgstr ""
 "Premikanje v Battle for Wesnoth je preprosto: kliknite na enoto, ki jo "
-"želite premakniti, da jo označite in potem še na ploščo kamor hočete da gre. Ko je enota "
-"izbrana, bodo vse plošče, kamor lahko to potezo gre, osvetljene, ostale pa motne. "
-"Če miško premaknete na osvetljeno ploščo, se bo prikazala obramba, ki bi jo "
-"enota tam imela. Če pa miško premaknete na motno ploščo, se bo prikazalo še "
-"število potrebnih potez, da jo enota doseže. Ob kliku se bo enota začela "
-"premikati proti njej po najhitrejši poti in tako tudi nadaljevala v naslednji"
-"(h) potezah."
-"Če ob prvem premiku ne porabite vseh gibalnih točk, lahko enoto premaknete še enkrat. To je uporabno, ko hočete, da dve enoti zamenjata mesti. Napad bo porabil vse gibalne točke. Zavzetje vasi tudi, a enota bo še vedno lahko napadla."
+"želite premakniti, da jo označite in potem še na ploščo kamor hočete da gre. "
+"Ko je enota izbrana, bodo vse plošče, kamor lahko to potezo gre, osvetljene, "
+"ostale pa motne. Če miško premaknete na osvetljeno ploščo, se bo prikazala "
+"obramba, ki bi jo enota tam imela. Če pa miško premaknete na motno ploščo, "
+"se bo prikazalo še število potrebnih potez, da jo enota doseže. Ob kliku se "
+"bo enota začela premikati proti njej po najhitrejši poti in tako tudi "
+"nadaljevala v naslednji(h) potezah.Če ob prvem premiku ne porabite vseh "
+"gibalnih točk, lahko enoto premaknete še enkrat. To je uporabno, ko hočete, "
+"da dve enoti zamenjata mesti. Napad bo porabil vse gibalne točke. Zavzetje "
+"vasi tudi, a enota bo še vedno lahko napadla."
 
 #: data/help.cfg:139
 msgid ""
@@ -2304,12 +2433,12 @@ msgid ""
 "locations adjacent to those within one turn's move (ignoring zones of "
 "control and enemy units)."
 msgstr ""
-"V nekaterih scenarijih bodo deli karte skriti. Obstajata dva mehanizma, ki sta "
-"lahko hkrati v uporabi. Koprena skriva teren in enote na določenem mestu. A ko "
-"je to enkrat raziskano, ga boste lahko vedno videli. Megla skrije samo enote in "
-"lastništvo vasi (razen vaših ali zavezniških). Ob prisotnosti enot se začasno "
-"razblini, a se takoj povrne, ko te odidejo. Vsaka enota razišče vsa mesta v "
-"dosegu ene poteze in njihove prve sosede."
+"V nekaterih scenarijih bodo deli karte skriti. Obstajata dva mehanizma, ki "
+"sta lahko hkrati v uporabi. Koprena skriva teren in enote na določenem "
+"mestu. A ko je to enkrat raziskano, ga boste lahko vedno videli. Megla "
+"skrije samo enote in lastništvo vasi (razen vaših ali zavezniških). Ob "
+"prisotnosti enot se začasno razblini, a se takoj povrne, ko te odidejo. "
+"Vsaka enota razišče vsa mesta v dosegu ene poteze in njihove prve sosede."
 
 #: data/help.cfg:154
 msgid "Combat"
@@ -2643,12 +2772,11 @@ msgstr ""
 "Večina enot ima tri izkustvene nivoje. Nekatere enote (na primer "
 "<ref>dst=unit_Mage text=čarovniki</ref>) jih imajo lahko več. Ko enota "
 "enkrat doseže svojo končno stopnjo, ima lahko na voljo še napredovanja po "
-"najvišjem nivoju (AMLA)."
-"AMLA bo nadgradila enoto vsakič ko doseže potrebno število izkušenj, a enota "
-"bo ostala na istem izkustvenem nivoju. Tipičen učinek AMLA je, da enota dobi "
-"tri dodatne HP. Prvo AMLA je ponavadi doseženo po 100 XP (80 XP za pametne "
-"enote), naslednja pa je vedno težje dobiti, zato se pogosto bolj splača "
-"nadgraditi enote na nižjih izkustvenih nivojih.\n"
+"najvišjem nivoju (AMLA).AMLA bo nadgradila enoto vsakič ko doseže potrebno "
+"število izkušenj, a enota bo ostala na istem izkustvenem nivoju. Tipičen "
+"učinek AMLA je, da enota dobi tri dodatne HP. Prvo AMLA je ponavadi doseženo "
+"po 100 XP (80 XP za pametne enote), naslednja pa je vedno težje dobiti, zato "
+"se pogosto bolj splača nadgraditi enote na nižjih izkustvenih nivojih.\n"
 "\n"
 "Vedite pa, da se bo večini enot le povišal maximum zdravja, le redke se bodo "
 "tudi pozdravile, kot na primer nekrofag."
@@ -2709,9 +2837,9 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Ranocelniki: Enote s sposobnostjo <ref>dst=ability_heals text='Ranocelnik +4'</"
-"ref>  bodo vsako potezo pozdravile vse prijateljske enote v svoji neposredni "
-"bližini za 4HP (8HP) ali pa preprečila, da jim škodi strup."
+"Ranocelniki: Enote s sposobnostjo <ref>dst=ability_heals text='Ranocelnik "
+"+4'</ref>  bodo vsako potezo pozdravile vse prijateljske enote v svoji "
+"neposredni bližini za 4HP (8HP) ali pa preprečila, da jim škodi strup."
 
 #: data/help.cfg:226
 msgid ""
@@ -2722,9 +2850,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Zdravniki: Enote s sposobnostjo <ref>dst=ability_cures text=Ranocelnik +8</ref> "
-"bodo vsako potezo ozdravile strupov vse prijateljske enote v svoji neposredni "
-"bližini (raje kot pozdravile, če so sposobne obojega)."
+"Zdravniki: Enote s sposobnostjo <ref>dst=ability_cures text=Ranocelnik +8</"
+"ref> bodo vsako potezo ozdravile strupov vse prijateljske enote v svoji "
+"neposredni bližini (raje kot pozdravile, če so sposobne obojega)."
 
 #: data/help.cfg:228
 msgid ""
@@ -2737,8 +2865,8 @@ msgstr ""
 "\n"
 "\n"
 "Počivanje se lahko kombinira z ostalimi oblikami zdravljenja, a vplivi vasi, "
-"regeneracije in zdravljenja se ne seštevajo: uporabljena bo najboljša možnost. "
-"Poleg tega se vse enote med scenariji popolnoma pozdravijo."
+"regeneracije in zdravljenja se ne seštevajo: uporabljena bo najboljša "
+"možnost. Poleg tega se vse enote med scenariji popolnoma pozdravijo."
 
 #: data/help.cfg:233
 msgid "Income and Upkeep"
@@ -3378,9 +3506,9 @@ msgid ""
 msgstr ""
 "Skalovite jame nastanejo zaradi vpliva vode in vetrov, ki erodirata skale. "
 "Nastal teren je razgiban, kar omejuje večino enot, a izboljšuje obrambo. "
-"Škratje in Troli, ki tu živijo, pa nimajo večjih težav s premikanjem po takih "
-"jamah, sploh Škratje, ki se lahko zaradi svoje velikosti stisnejo mimo mnogih "
-"za druge neprehodnih ovir.\n"
+"Škratje in Troli, ki tu živijo, pa nimajo večjih težav s premikanjem po "
+"takih jamah, sploh Škratje, ki se lahko zaradi svoje velikosti stisnejo mimo "
+"mnogih za druge neprehodnih ovir.\n"
 "\n"
 "Večina enot ima 50% obrambo v jamah, konjenica 40%, Škratje pa 60%."
 
@@ -3419,10 +3547,11 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
-"Glivni gaji so obširni podzemni gozdovi velikanskih gob, ki uspevajo v vlažnih, "
-"temnih razmerah. Večina enot ima težave pri premikanju po manjših gobah, imajo "
-"pa dosti kritja za večjimi. Konjeniki so tu nemočni in se stežka premikajo. "
-"Nemrtvi imajo naravno afiniteto do gnitja in se znajdejo v glivnih gajih.\n"
+"Glivni gaji so obširni podzemni gozdovi velikanskih gob, ki uspevajo v "
+"vlažnih, temnih razmerah. Večina enot ima težave pri premikanju po manjših "
+"gobah, imajo pa dosti kritja za večjimi. Konjeniki so tu nemočni in se "
+"stežka premikajo. Nemrtvi imajo naravno afiniteto do gnitja in se znajdejo v "
+"glivnih gajih.\n"
 "\n"
 "Večina enot ima 50% do 60% obrambo v glivnih gajih, konjenica pa samo 20%."
 
@@ -3496,8 +3625,8 @@ msgid ""
 "for lawful units and removes the attack bonus from chaotic units."
 msgstr ""
 "Nevarnosti pri prečkanju lave so očitne. Preko gredo lahko samo enote, ki so "
-"sposobne leteti dovolj visoko nad ognjenim tokom. Ta osvetljuje področja "
-"nad sabo in da bonus k napadu zakonitim enotam ter ga odstrani kaotičnim."
+"sposobne leteti dovolj visoko nad ognjenim tokom. Ta osvetljuje področja nad "
+"sabo in da bonus k napadu zakonitim enotam ter ga odstrani kaotičnim."
 
 #: data/help.cfg:530 data/terrain.cfg:52
 msgid "River Ford"
@@ -3643,7 +3772,8 @@ msgid ""
 "displayed."
 msgstr ""
 "\n"
-"Utišaj določenega opazovalca. Če ime ni podano, se prikaže seznam utišanih imen."
+"Utišaj določenega opazovalca. Če ime ni podano, se prikaže seznam utišanih "
+"imen."
 
 #: data/help.cfg:586
 msgid ""
@@ -4816,7 +4946,8 @@ msgid ""
 "the 'cures' ability."
 msgstr ""
 "Zastrupljene enote vsako potezo izgubijo 8 HP, a od tega nikoli ne bodo "
-"umrle (do 1 HP). Strupa se lahko ozdravijo v vaseh ali pa pri razstruplevalcih."
+"umrle (do 1 HP). Strupa se lahko ozdravijo v vaseh ali pa pri "
+"razstruplevalcih."
 
 #: data/tips.cfg:6
 msgid ""
@@ -4943,8 +5074,8 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"Vaš voditelj lahko vpoklicuje in priklicuje enote iz poljubne trdnjave, ne samo "
-"iz tiste kjer začne igro. Zavzamete lahko sovražno trdnjavo in vpoklicujete od "
+"Vaš voditelj lahko novači in priklicuje enote iz poljubne trdnjave, ne samo "
+"iz tiste kjer začne igro. Lahko zavzamete sovražno trdnjavo in novačite od "
 "tam. Poleg tega vam bo mogoče kak zaveznik (začasno) odstopil svojo."
 
 #: data/tips.cfg:20
@@ -5018,8 +5149,8 @@ msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
-"Napad, ki 'upočasni' sovražnika, mu tudi razpolovi moč napada. To "
-"traja do konca njihove poteze."
+"Napad, ki 'upočasni' sovražnika, mu tudi razpolovi moč napada. To traja do "
+"konca njihove poteze."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -7233,8 +7364,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Lovke iz Globine so udi neke večje pošasti, ki se skriva globoko pod gladino."
-"\n\n"
+"Lovke iz Globine so udi neke večje pošasti, ki se skriva globoko pod "
+"gladino.\n"
+"\n"
 "Posebnosti:"
 
 #: data/units/Monster_Yeti.cfg:3
@@ -8162,16 +8294,16 @@ msgstr "Zapri"
 
 #: src/actions.cpp:111
 msgid "You don't have a leader to recruit with."
-msgstr "Nimate voditelja, s katerim bi lahko vpoklicovali."
+msgstr "Nimate voditelja, s katerim bi lahko novačili."
 
 #: src/actions.cpp:118
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
-"Če hočete vpoklicati ali priklicati enote, mora biti vaš voditelj v trdnjavi."
+"Če hočete novačiti ali priklicati enote, mora biti vaš voditelj v trdnjavi."
 
 #: src/actions.cpp:137
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr "Na voljo ni prostih gradov, kjer bi lahko vpoklicovali."
+msgstr "Na voljo ni nič prostih gradov, kjer bi lahko novačili."
 
 #: src/actions.cpp:927 src/actions.cpp:1161
 msgid "poisoned"
@@ -8595,7 +8727,6 @@ msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
 msgstr ""
-""
 
 #: src/game.cpp:1203 src/playcampaign.cpp:107 src/playcampaign.cpp:321
 msgid "The game could not be loaded: "
@@ -8750,8 +8881,8 @@ msgid ""
 "This terrain acts as a keep, i.e., you can recruit units when a leader is in "
 "a location with this terrain."
 msgstr ""
-"Ta teren deluje kot trdnjava, torej če je na njem voditelj, lahko vpoklicujete "
-"enote."
+"Ta teren deluje kot trdnjava, torej če je na njem voditelj, lahko "
+"vpoklicujete enote."
 
 #: src/help.cpp:1429
 msgid ""
@@ -8845,7 +8976,7 @@ msgstr "njega"
 
 #: src/menu_events.cpp:122 src/menu_events.cpp:184
 msgid "Recruits"
-msgstr "Vpoklicane enote"
+msgstr "Novaki"
 
 #: src/menu_events.cpp:128 src/menu_events.cpp:188
 msgid "Recalls"
@@ -8973,11 +9104,11 @@ msgstr "Zlata"
 
 #: src/menu_events.cpp:571
 msgid "You have no units available to recruit."
-msgstr "Nikogar ne morete vpoklicati."
+msgstr "Nikogar ne morete novačiti."
 
 #: src/menu_events.cpp:582
 msgid "Recruit"
-msgstr "Vpokliči"
+msgstr "Novači"
 
 #: src/menu_events.cpp:583 src/menu_events.cpp:726
 msgid "Select unit:"
@@ -8985,7 +9116,7 @@ msgstr "Izberite enoto:"
 
 #: src/menu_events.cpp:623
 msgid "You don't have enough gold to recruit that unit"
-msgstr "Za vpoklic te enote nimate dovolj zlata"
+msgstr "Za novačenje te enote nimate dovolj zlata"
 
 #: src/menu_events.cpp:678
 msgid "You are separated from your soldiers and may not recall them"
@@ -9058,7 +9189,8 @@ msgstr "Dodaj igralca na seznam ignoriranih. Uporaba: /ignore add [argument]"
 
 #: src/menu_events.cpp:1397
 msgid "Remove player from your ignore list. Usage: /ignore remove [argument]"
-msgstr "Izbriši igralca s seznama ignoriranih. Uporaba: /ignore remove [argument]"
+msgstr ""
+"Izbriši igralca s seznama ignoriranih. Uporaba: /ignore remove [argument]"
 
 #: src/menu_events.cpp:1399
 msgid "Clear your ignore list. Usage: /ignore clear"
@@ -9128,11 +9260,11 @@ msgstr "Pričakovan izid (hp)"
 
 #: src/mouse_events.cpp:301
 msgid " resistance vs "
-msgstr " je odporen za "
+msgstr " odpornost na "
 
 #: src/mouse_events.cpp:302
 msgid " vulnerability vs "
-msgstr " je ranljiv za "
+msgstr " šibkost na "
 
 #: src/mouse_events.cpp:312
 msgid "Slowed"
@@ -9567,10 +9699,9 @@ msgstr "Neveljavna barva"
 msgid "Leader: "
 msgstr "Vodja: "
 
-# preveri
 #: src/multiplayer_wait.cpp:118
 msgid "Recruits: "
-msgstr "Vpoklicane enote: "
+msgstr "Novaki: "
 
 #: src/multiplayer_wait.cpp:157
 msgid "Waiting for game to start..."
@@ -10011,9 +10142,9 @@ msgid ""
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
 "Wesnoth se za povratne informacije zanaša na prostovoljce, predvsem na "
-"začetnike in nove igralce. Wesnoth shranjuje povzetke vaših iger. Če dovolite "
-"anonimno pošiljanje teh povzetkov na wesnoth.org, bomo lahko izboljšali "
-"(uravnotežili) igro.\n"
+"začetnike in nove igralce. Wesnoth shranjuje povzetke vaših iger. Če "
+"dovolite anonimno pošiljanje teh povzetkov na wesnoth.org, bomo lahko "
+"izboljšali (uravnotežili) igro.\n"
 
 #: src/upload_log.cpp:284
 msgid "Summaries are stored here:"
