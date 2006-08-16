@@ -29,14 +29,9 @@ namespace about
 
 std::vector<std::string> get_text(std::string campaign) {
 	static const char *credits[] = {
-		"_" N_("+Core Developers"),
-		"_" N_("+  Main Developer"),
-		"-  David White (Sirp)",
-		"- ",
-		"_" N_("+  Artwork and graphics designer"),
-		"-   Francisco Muñoz (fmunoz)",
-		"- ",
 		"_" N_("+Developers"),
+		"-   David White (Sirp)",
+		"-   *",
 		"-   Alfredo Beaumont (ziberpunk)",
 		"-   András Salamon (ott)",
 		"-   Benoît Timbert (Noyga)",
