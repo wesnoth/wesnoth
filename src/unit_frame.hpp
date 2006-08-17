@@ -37,7 +37,7 @@ class unit_frame {
 		int xoffset() const { return xoffset_ ; }
 		std::string image() const { return image_ ;}
 		std::string image_diagonal() const { return image_diagonal_ ; }
-		std::vector<std::pair<std::string,int> > halo() const { return halo_ ; }
+		const std::string halo(int current_time) const ;
 		std::string sound() const { return sound_ ; };
 		int halo_x() const { return halo_x_; }
 		int halo_y() const { return halo_y_; }

@@ -1838,27 +1838,18 @@ void unit::redraw_unit(display& disp,gamemap::location hex)
 	}
 	if(unit_anim_halo_) halo::remove(unit_anim_halo_);
 	unit_anim_halo_ = 0;
-	if(!current_frame.halo().empty()) {
-		int time = current_frame.begin_time();
-		unsigned int sub_halo = 0;
-		while(time < anim_->get_animation_time()&& sub_halo < current_frame.halo().size()) {
-			time += current_frame.halo()[sub_halo].second;
-			sub_halo++;
-
-		}
-		if(sub_halo >= current_frame.halo().size()) sub_halo = current_frame.halo().size() -1;
-
+	if(!current_frame.halo(anim_->get_animation_time()).empty()) {
 
 		if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
 			const int d = disp.hex_size() / 2;
 			unit_anim_halo_ = halo::add(x+d-static_cast<int>(current_frame.halo_x()*disp.zoom()),
 					y+d+static_cast<int>(current_frame.halo_y()*disp.zoom()),
-					current_frame.halo()[sub_halo].first);
+					current_frame.halo(anim_->get_animation_time()));
 		} else {
 			const int d = disp.hex_size() / 2;
 			unit_anim_halo_ = halo::add(x+d+static_cast<int>(current_frame.halo_x()*disp.zoom()),
 					y+d+static_cast<int>(current_frame.halo_y()*disp.zoom()),
-					current_frame.halo()[sub_halo].first,
+					current_frame.halo(anim_->get_animation_time()),
 					halo::HREVERSE);
 		}
 	}
