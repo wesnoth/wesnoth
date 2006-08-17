@@ -192,7 +192,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 }
 
 unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
-			hold_position_(false), resting_(false),
+			hold_position_(false), resting_(false), state_(STATE_STANDING),
 			facing_(gamemap::location::NORTH_EAST),
 			flying_(false),anim_(NULL),unit_halo_(0),unit_anim_halo_(0),draw_bars_(false),gamedata_(&gamedata),
 			units_(NULL),map_(NULL), gamestatus_(NULL)

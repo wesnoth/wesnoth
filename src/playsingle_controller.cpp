@@ -185,8 +185,10 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			}
 		}
 
+		bool save = false;
 		for(; ; first_player_ = 1) {
-			play_turn();
+			play_turn(save);
+			save = true;
 		} //end for loop
 
 	} catch(game::load_game_exception&) {
@@ -354,7 +356,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 	return QUIT;
 }
 
-void playsingle_controller::play_turn(){
+void playsingle_controller::play_turn(bool save)
+{
 	gui_->new_turn();
 	gui_->invalidate_game_status();
 	events::raise_draw_event();
@@ -380,7 +383,7 @@ void playsingle_controller::play_turn(){
 				LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 			}
 			else{
-				play_side(player_number_);
+				play_side(player_number_, save);
 			}
 
 			finish_side_turn();
@@ -394,7 +397,8 @@ void playsingle_controller::play_turn(){
 	finish_turn();
 }
 
-void playsingle_controller::play_side(const unsigned int team_index){
+void playsingle_controller::play_side(const unsigned int team_index, bool save)
+{
 //goto this label if the type of a team (human/ai/networked) has changed mid-turn
 redo_turn:
 	//although this flag is used only in this method it has to be a class member
@@ -405,7 +409,7 @@ redo_turn:
 	if(current_team().is_human()) {
 		LOG_NG << "is human...\n";
 		try{
-			before_human_turn();
+			before_human_turn(save);
 			play_human_turn();
 			after_human_turn();
 		} catch(end_turn_exception& end_turn) {
@@ -424,7 +428,8 @@ redo_turn:
 	if (player_type_changed_) { goto redo_turn; }
 }
 
-void playsingle_controller::before_human_turn(){
+void playsingle_controller::before_human_turn(bool save)
+{
 	log_scope("player turn");
 	browse_ = false;
 
@@ -434,7 +439,9 @@ void playsingle_controller::before_human_turn(){
 	gui_->draw();
 	gui_->update_display();
 
-	menu_handler_.autosave(gamestate_.label, status_.turn(), gamestate_.starting_pos);
+	if (save) {
+		menu_handler_.autosave(gamestate_.label, status_.turn(), gamestate_.starting_pos);
+	}
 
 	if(preferences::turn_bell()) {
 		sound::play_sound(game_config::sounds::turn_bell);
