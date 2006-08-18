@@ -315,8 +315,12 @@ void save_preview_pane::draw_contents()
 	std::string dummy;
 	config& summary = *(*summaries_)[index_];
 	if (summary["label"] == ""){
-		load_game_summary((*info_)[index_].name, summary, &dummy);
-		*(*summaries_)[index_] = summary;
+		try {
+			load_game_summary((*info_)[index_].name, summary, &dummy);
+			*(*summaries_)[index_] = summary;
+		} catch(game::load_game_failed&) {
+			summary["corrupt"] = "yes";
+		}
 	}
 
 	surface const screen = video().getSurface();
