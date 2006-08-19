@@ -9,6 +9,7 @@
 # Terpor <terpor@gmail.com>, 2005.
 # Héctor García Álvarez <hector@debian.org>, 2005.
 # Iván Herrero Bartolomé <navitux@gmail.com>, 2005.
+# Isaac Clerencia <isaac@unizar.es>, 2006.
 # Isaac Clerencia <isaac@warp.es>, 2006.
 msgid ""
 msgstr ""
@@ -82,6 +83,10 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Cura:\n"
+"Una unidad con esta habilidad puede curar a otra que esté envenenada, aunque "
+"en tal caso el herido no recibirá curación adicional en el turno en que se "
+"elimine el veneno."
 
 #: data/abilities.cfg:57
 msgid "regenerates"
@@ -94,8 +99,8 @@ msgid ""
 "the poison instead of healing."
 msgstr ""
 "Regenera:\n"
-"La unidad se recuperará cada turno 8 pv. Si está envenenada, eliminará el "
-"veneno en vez de curarse."
+"La unidad recuperará cada turno 8 pv. Si está envenenada, eliminará el "
+"veneno en lugar de curarse."
 
 #: data/abilities.cfg:74
 msgid "steadfast"
@@ -305,6 +310,10 @@ msgid ""
 "caused by attacks and slowed units move at half the normal speed (rounded "
 "up)."
 msgstr ""
+"Ralentiza:\n"
+"Este ataque ralentiza al objetivo hasta que acabe el turno. Una unidad afectada "
+"inflige la mitad del daño normal con sus ataques y se mueve a la mitad de "
+"velocidad (redondeando hacia arriba)."
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -595,7 +604,7 @@ msgstr "Robots"
 
 #: data/amla.cfg:9
 msgid ", MAX XP +25%"
-msgstr ""
+msgstr ", PX máx. +25%"
 
 #: data/amla.cfg:9
 msgid "Max HP bonus +"
@@ -2106,7 +2115,7 @@ msgstr "Terreno"
 
 #: data/help.cfg:59
 msgid "Commands"
-msgstr "Comandos"
+msgstr "Órdenes"
 
 #: data/help.cfg:65 data/help.cfg:71 data/help.cfg:264
 msgid "Overview"
@@ -3837,31 +3846,39 @@ msgstr ""
 
 #: data/help.cfg:553
 msgid "General commands"
-msgstr "Comandos generales"
+msgstr "Órdenes generales"
 
 #: data/help.cfg:555
 msgid ""
 "\n"
 "Quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Salir del escenario (sin preguntar)."
 
 #: data/help.cfg:558
 msgid ""
 "\n"
 "Save the game (without prompting)."
 msgstr ""
+"\n"
+"Grabar la partida (sin preguntar)."
 
 #: data/help.cfg:561
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"Grabar la partida y salir del escenario (sin preguntar)."
 
 #: data/help.cfg:564
 msgid ""
 "\n"
 "Redraw the screen."
 msgstr ""
+"\n"
+"Redibujar la pantalla."
 
 #: data/help.cfg:567
 msgid ""
@@ -3869,16 +3886,21 @@ msgid ""
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
 "off by quitting the game."
 msgstr ""
+"\n"
+"Activar el modo de depuración (no funciona en modo de multijugador). El modo "
+"de depuración se desconecta al salir del juego."
 
 #: data/help.cfg:570
 msgid ""
 "\n"
 "Bring up theme selection menu."
 msgstr ""
+"\n"
+"Sacar el menú de selección de temas."
 
 #: data/help.cfg:575
 msgid "Multiplayer commands"
-msgstr "Comandos de multijugador"
+msgstr "Órdenes de multijugador"
 
 #: data/help.cfg:577
 msgid ""
@@ -6250,7 +6272,7 @@ msgid ""
 "a secondary pursuit, is executed with a skill that most of humanity can only "
 "stare at with wonder."
 msgstr ""
-"Aquéllos elfos que se especializan en el arte de la guerra se convierten en "
+"Aquellos elfos que se especializan en el arte de la guerra se convierten en "
 "seres que dejan en entredicho la reputación pacífica de su raza. Cuando la "
 "dedicación y la habilidad innata se juntan, el resultado es una maestría con "
 "la espada con la que muy pocos pueden competir. Además de la destreza con la "
@@ -6275,7 +6297,7 @@ msgstr ""
 "La magia de los elfos de los bosques no es muy indicada para situaciones de "
 "combate cuerpo a cuerpo, pero puede resultar efectiva de todos modos. Los "
 "bosques en los que viven pueden ser animados mediante palabras mágicas, y se "
-"cerrarán sobre aquéllos que osen perturbar su paz.\n"
+"cerrarán sobre aquellos que osen perturbar su paz.\n"
 "\n"
 "Los druidas elfos tienen la capacidad de curar, por lo que son venerados por "
 "su gente.\n"
@@ -6673,7 +6695,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Los orcos usan a los goblins para reducir la primera línea de ataque de sus "
-"enemigos. Aquéllos que de algún modo sobreviven a la contienda, se equipan "
+"enemigos. Aquellos que de algún modo sobreviven a la contienda, se equipan "
 "mejor para el siguiente combate. Una lanza mucho más larga ayuda a compensar "
 "su corto alcance y una armadura mejorada les sirve para proteger sus "
 "diminutos cuerpos.\n"
@@ -6980,7 +7002,7 @@ msgstr ""
 "estricto código de honor. La carga de un jinete es un ataque potente y "
 "temerario al mismo tiempo, pero su utilidad ha quedado ampliamente probada "
 "en el campo de batalla. Los jinetes destacan en ataques contra infantería, "
-"especialmente contra aquéllos que han quedado fuera de sus líneas de "
+"especialmente contra aquellos que han quedado fuera de sus líneas de "
 "formación, pero deben ser muy cuidadosos con los arqueros y los lanceros, "
 "para los que suponen objetivos fáciles debido a su gran tamaño e inercia, "
 "respectivamente."
@@ -7082,7 +7104,6 @@ msgid "Duelist"
 msgstr "Duelista"
 
 #: data/units/Human_Loyalist_Duelist.cfg:20
-#, fuzzy
 msgid ""
 "It is a peculiar fashion of Wesnoth's nobility, in that they typically "
 "enroll their sons into one of two orders of armigers, training them either "
@@ -7103,7 +7124,7 @@ msgstr ""
 "en una de las dos órdenes de escuderos, para entrenarlos en el arte de la "
 "monta o la esgrima. Los duelistas reciben este nombre debido a una práctica "
 "por desgracia muy común entre los jóvenes aristócratas, que en el calor de "
-"una riña a menudo pretenden hacer una demostración de su nobleza.\n"
+"una riña a menudo pretenden hacer una demostración de sus derechos de nacimiento.\n"
 "\n"
 "Los duelistas experimentados, que normalmente parecen nobles, aunque casi "
 "siempre lo sean, llevan con ellos una pequeña ballesta fácilmente "
@@ -7112,15 +7133,13 @@ msgstr ""
 "lo suficiente como para ser veteranos normalmente se hacen estas concesiones "
 "para garantizar su propia supervivencia.\n"
 "\n"
-"Notas especiales: su habilidad como hostigador permite a un duelista "
-"deslizarse detrás de un oponente, ignorando las zonas de control."
+"Notas especiales:"
 
 #: data/units/Human_Loyalist_Fencer.cfg:3
 msgid "Fencer"
 msgstr "Esgrimidor"
 
 #: data/units/Human_Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -7136,27 +7155,25 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Los esgrimidores pertenecen a una escuela de pensamiento que considera a la "
-"armadura que muchos soldados llevan en combate como su pero enemigo. "
+"armadura que muchos soldados llevan en combate como su peor enemigo. "
 "Mientras lo único que puede hacer la armadura es suavizar los golpes, "
 "esquivarlos evitaría cualquier daño. La capacidad de esquivar con garantía "
-"cualquier movimiento ofensivo es un lujo sólo al alcance de aquéllos que han "
+"cualquier movimiento ofensivo es un lujo sólo al alcance de aquellos que han "
 "seguido un riguroso entrenamiento.\n"
 "\n"
 "Armados con sólo una daga y un estoque, los esgrimidores son ligeros y "
 "rápidos y muy útiles cuando los contrincantes están limitados por sus "
-"pesadas armaduras. La estrategia es sencilla: se mueven en círculos "
-"alrededor de las tropas de infantería pesada a gran velocidad, de forma que "
+"pesadas armaduras. Su estrategia es sencilla: se mueven en círculos "
+"alrededor de las tropas lentas, como la infantería pesada, a gran velocidad, de forma que "
 "las víctimas no alcanzan a ver de dónde llegan los ataques.\n"
 "\n"
-"Notas especiales:su habilidad como hostigadores permite a los esgrimidores "
-"atravesar las zonas de control de sus adversarios sin detenerse."
+"Notas especiales:"
 
 #: data/units/Human_Loyalist_General.cfg:3
 msgid "General"
 msgstr "General"
 
 #: data/units/Human_Loyalist_General.cfg:30
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms they swore fealty to. Their "
@@ -7165,20 +7182,17 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Como los grandes líderes de las tropas humanas, los generales son "
-"responsables de la protección de zonas grandes e importantes en los reinos. "
-"Los generales pueden coordinar los ataques de unidades de nivel 1 y 2, "
-"incrementando su eficacia en combate.\n"
+"responsables de la protección de zonas grandes e importantes en los reinos a los "
+"que han jurado lealtad. Su entrenamiento y experiencia bastan para cumplir "
+"todas las órdenes que se les den.\n"
 "\n"
-"Notas especiales: el liderazgo de un General permite que las unidades amigas "
-"próximas a él hagan más daño en combate, aunque esto sólo se aplica a "
-"unidades de menor nivel."
+"Notas especiales:"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:3
 msgid "Grand Marshal"
 msgstr "Gran Mariscal"
 
 #: data/units/Human_Loyalist_Grand_Marshal.cfg:26
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have surpassed many trials by fire, "
@@ -7188,21 +7202,17 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "El rango de Gran Mariscal es uno de los más respetados entre los ejércitos "
-"de los humanos, y aquéllos que portan este título han superado muchas "
+"de los humanos, y aquellos que portan este título han superado muchas "
 "pruebas de fuego, probando su considerable valía tanto en el combate "
-"individual como a nivel táctico. Su presencia en el campo de batalla es de "
-"gran ayuda para aquellos que sirven bajo sus órdenes.\n"
+"individual como a nivel táctico.\n"
 "\n"
-"Notas especiales: el liderazgo de un Gran Mariscal permite que las unidades "
-"amigas próximas a él hagan más daño en combate, aunque esto sólo se aplica a "
-"unidades de menor nivel."
+"Notas especiales:"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:3
 msgid "Halberdier"
 msgstr "Alabardero"
 
 #: data/units/Human_Loyalist_Halberdier.cfg:22
-#, fuzzy
 msgid ""
 "A halberd is a difficult and very heavy weapon to use, but powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -7224,7 +7234,7 @@ msgstr ""
 "de las cuales descienden. Como cualquier alabardero puede confirmar, este "
 "arma consta de 4 sorprendentes tipos de ataque, 2 más que una lanza o una "
 "pica: la punta, la cuchilla, el pincho de la base de la barra y la parte "
-"interna de la cuchilla, que puede ser usada en movimiento de alante atrás "
+"interna de la cuchilla, que puede ser usada en movimiento de adelante hacia atrás "
 "hacia el alabardero. Todo esto la convierte en un arma increíblemente "
 "versátil en lucha cuerpo a cuerpo, especialmente empleada contra "
 "caballería.\n"
@@ -7234,8 +7244,7 @@ msgstr ""
 "de Wesnoth, sólo los piqueros veteranos que han probado con creces sus "
 "habilidades en el campo de batalla pueden disponer de una alabarda.\n"
 "\n"
-"Notas especiales:la longitud de su arma permite a los alabarderos golpear "
-"los primeros en situaciones de lucha cuerpo a cuerpo, incluso al defenderse."
+"Notas especiales:"
 
 #: data/units/Human_Loyalist_Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
@@ -7593,7 +7602,7 @@ msgstr ""
 "extenso conocimiento que los sitúa a parte del resto de humanos. En un mundo "
 "en el que sólo unos pocos pueden leer y escribir, estos hombres y mujeres "
 "han confiado su vida a la búsqueda del conocimiento. Sus filas están llenas "
-"de hijos de familias nobles, o de aquéllos que buscaban escapar del vacío "
+"de hijos de familias nobles, o de aquellos que buscaban escapar del vacío "
 "intelectual de una vida dedicada a labores físicas.\n"
 "\n"
 "Resulta irónico que, a pesar de todo el conocimiento que ostentan y el "
@@ -8008,7 +8017,7 @@ msgid ""
 msgstr ""
 "Los jefes de cualquier banda de ladrones obtienen sus posiciones debido a "
 "sus habilidades. Estos pícaros han pasado por malos momentos, atravesando "
-"muchedumbres y huyendo de aquéllos que deseaban su muerte, habilidades que "
+"muchedumbres y huyendo de aquellos que deseaban su muerte, habilidades que "
 "pueden resultar de gran valía en el campo de batalla. Son maestros en el uso "
 "de los cuchillos, llegando a lanzarlos con una puntería certera, y sus "
 "largas horas rondando por la noche hacen que se sientan cómodos luchando en "
@@ -8285,7 +8294,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Las redes con plomos usadas por los sirénidos en batalla son un arma difícil "
-"de usar, y aquéllos que consiguen dominarlas son valorados y reverenciados "
+"de usar, y aquellos que consiguen dominarlas son valorados y reverenciados "
 "por sus camaradas. Este arma ayuda a establecer la absoluta superioridad de "
 "los sirénidos en su propio medio, y convierte a su raza en una amenaza "
 "incluso para los enemigos que símplemente se aproximan al agua.\n"
@@ -8343,7 +8352,7 @@ msgid ""
 "their military."
 msgstr ""
 "Las habilidades empleadas por los sirénidos para pescar con lanza son "
-"fácilmente trasladables a términos bélicos, especialmente contra aquéllos "
+"fácilmente trasladables a términos bélicos, especialmente contra aquellos "
 "que no se sienten en su casa dentro del agua. En tiempos de necesidad, "
 "muchos sirénidos se presentarían como voluntarios para engrosar las líneas "
 "de sus ejércitos."
@@ -9267,7 +9276,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Sólo aquéllos que se adentran en los más profundos círculos de la magia "
+"Sólo aquellos que se adentran en los más profundos círculos de la magia "
 "negra conocen el secreto de cómo convertir una persona en necrófago o "
 "zombie. La bestia que surge de ese ritual secreto no recuerda nada de sus "
 "días como humano, y deambula desnuda, alimentándose de carne humana.\n"
@@ -9685,7 +9694,6 @@ msgid "Nightgaunt"
 msgstr "Pesadilla"
 
 #: data/units/Undead_Spirit_Nightgaunt.cfg:18
-#, fuzzy
 msgid ""
 "The purpose of the masks that these creatures wear is unknown, as is the "
 "countenance that they obscure. These terrible forms are rarely seen by the "
@@ -9696,21 +9704,16 @@ msgid ""
 msgstr ""
 "El propósito de las máscaras que llevan estas criaturas es totalmente "
 "desconocido, así como lo es el semblante que ocultan tras ellas. Estas "
-"terribles formas son rara vez vistas por los vivos, y aquéllos que viven "
+"terribles formas son rara vez vistas por los vivos, y aquellos que viven "
 "para contarlo no tienen tiempo para estudiar a su enemigo.\n"
 "\n"
-"Notas especiales: mientras un ser de la misma alineación que estos entes "
-"distrae al enemigo, estos pueden golpearle por la espalda, infligiendo el "
-"doble de daño. Estas criaturas presentan una resistencia inusual al daño, y "
-"se desplazan bastante despacio sobre el agua. Tienen la habilidad de "
-"esconderse por la noche, no dejando ninguna pista sobre su presencia."
+"Notas especiales:"
 
 #: data/units/Undead_Spirit_Shadow.cfg:3
 msgid "Shadow"
 msgstr "Sombra"
 
 #: data/units/Undead_Spirit_Shadow.cfg:19
-#, fuzzy
 msgid ""
 "When light came into the world and gave form to the unknown, fear was forced "
 "to retreat into darkness. Since that day, the shadows of the world have held "
@@ -9722,16 +9725,11 @@ msgid ""
 msgstr ""
 "Cuando la luz llegó al mundo y dio forma a lo desconocido, el miedo se vio "
 "obligado a ocultarse en las tinieblas. Desde ese día, las sombras del mundo "
-"han causado terror a la humanidad, aunque no se sabe bien porqué.\n"
+"han causado terror a la humanidad, aunque no se sabe bien por qué.\n"
 "\n"
-"La respuesta a esta cuestión puede encontrarse fácilmente al observar de "
-"cerca a un nigromante.\n"
+"Cualquier nigromante conoce la respuesta a ese misterio.\n"
 "\n"
-"Notas especiales: mientras una unidad del mismo bando que las sombras "
-"distrae al enemigo, éstas pueden golpearle por la espalda, causándole el "
-"doble de daño. Las sombras poseen resistencias inusuales al daño, y se "
-"desplazan con lentitud sobre el agua. Otra habilidad de las sombras es la de "
-"esconderse por la noche, sin dejar ninguna pista sobre su presencia."
+"Notas especiales:"
 
 #: data/units/Undead_Spirit_Spectre.cfg:3
 msgid "Spectre"
@@ -9772,7 +9770,6 @@ msgid "Wraith"
 msgstr "Aparición"
 
 #: data/units/Undead_Spirit_Wraith.cfg:19
-#, fuzzy
 msgid ""
 "These tortured forms of what were once warriors are among the most "
 "terrifying things a necromancer can create, for a sword will cleave right "
@@ -9786,25 +9783,22 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Estas formas torturadas de lo que una vez fueron guerreros se cuentan entre "
+"Estas formas torturadas de los que una vez fueron guerreros se cuentan entre "
 "las cosas más aterradoras que un nigromante puede crear, y a las que una "
 "espada atravesará, como si fuesen aire. Lo que inspira tal terror es la "
 "creencia de que estos seres son invencibles, aunque esto esté lejos de ser "
 "cierto.\n"
 "\n"
 "El motivo es que los propios encantamientos que permiten seguir «viva» a la "
-"criatura pueden curarla, gracias a aquellos que se enfrenten a ella.\n"
+"criatura pueden curarla, gracias a aquellos que se enfrentan a ella.\n"
 "\n"
-"Notas: un golpe de su espada producirá un drenaje de vida de la víctima, "
-"para sanar a la aparición. Las apariciones tienen una resistencia especial "
-"al daño, y se mueven muy despacio sobre aguas abiertas."
+"Notas especiales:"
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
 msgstr "Wose"
 
 #: data/units/Wose.cfg:20
-#, fuzzy
 msgid ""
 "Rarely seen, even by elves, a Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -9820,25 +9814,22 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Un wose es una criatura sobre la que se sabe muy poco, y muy difícil de ver, "
-"incluso para los elfos. Ellos son los que más saben sobre los woses: que no "
+"incluso para los elfos. Éstos son los que más saben sobre los woses: que no "
 "descienden de los árboles, a pesar del parecido en la forma, y que están más "
 "atados al mundo faérico e imaginario que los propios elfos, aunque de una "
 "manera diferente. Los motivos y objetivos de esta raza se desconocen, aunque "
-"muchos suponen que obviamente los woses son guardianes del mundo natural.\n"
+"muchos suponen que los woses son obviamente guardianes del mundo natural.\n"
 "\n"
 "Los woses son absolutamente pacíficos, pero poseen una gran fuerza. Sin "
 "embargo, no están acostumbrados a moverse, ni lo hacen rápido.\n"
 "\n"
-"Notas especiales: los woses se regeneran usando los recursos naturales que "
-"hay a su alrededor, sin que necesiten entrar en aldeas para obtener sustento "
-"y ayuda."
+"Notas especiales:"
 
 #: data/units/Wose_Ancient.cfg:3
 msgid "Ancient Wose"
 msgstr "Wose anciano"
 
 #: data/units/Wose_Ancient.cfg:20
-#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -9855,24 +9846,21 @@ msgstr ""
 "Hay una curiosa historia sobre un granjero que tenía un gran roble en su "
 "prado, un árbol que ya estaba cuando su padre horadó por primera vez la "
 "tierra en aquel paraje, y bajo el que habían sucedido muchas cosas a él y su "
-"familia. Por ello, fue un gran choque para él aquella mañana en la que se "
-"levantó para descubrir que se había de alguna manera desvanecido, sin dejar "
+"familia. Por ello, fue un gran golpe para él descubrir una mañana al levantarse "
+"que el árbol se había, de alguna manera, desvanecido, sin dejar "
 "nada salvo un enorme agujero en la tierra donde pasó tantos años. El pobre "
 "granjero nunca volvió a ser el mismo después de aquello.\n"
 "\n"
 "Tales encuentros es todo lo que se conoce de los que presumiblemente son los "
 "más ancianos de entre los woses.\n"
 "\n"
-"Notas especiales: los woses se regeneran usando los recursos naturales que "
-"hay a su alrededor, sin que necesiten entrar en aldeas para obtener sustento "
-"y ayuda."
+"Notas especiales:"
 
 #: data/units/Wose_Elder.cfg:3
 msgid "Elder Wose"
 msgstr "Wose adulto"
 
 #: data/units/Wose_Elder.cfg:19
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -9894,29 +9882,25 @@ msgstr ""
 "criaturas que andan bajo de ellos. Esta es la principal razón por la que son "
 "vistos muy de cuando en cuando; permaneciendo adormecido como normalmente "
 "hacen, un wose de esa estatura no parece más que un árbol con una extraña "
-"forma. Incluso un elfo puede llegar a confundirse, si no es cuidadoso.\n"
+"forma. Incluso un elfo puede llegar a confundirse, si no presta mucha atención.\n"
 "\n"
 "Los woses no son guerreros en ningún caso, aunque la fuerza que poseen es "
 "obviamente capaz de la mayor de las violencias, si alguien llegase a "
 "provocar la ira de estas criaturas.\n"
 "\n"
-"Notas especiales: los woses se regeneran usando los recursos naturales que "
-"hay a su alrededor, sin que necesiten entrar en aldeas para obtener sustento "
-"y ayuda."
+"Notas especiales:"
 
 #: src/about.cpp:32
 msgid "+Core Developers"
 msgstr "+Cuerpo principal de desarrolladores"
 
 #: src/about.cpp:33
-#, fuzzy
 msgid "+  Main Developer"
-msgstr "-   Desarrollador principal"
+msgstr "+  Desarrollador principal"
 
 #: src/about.cpp:36
-#, fuzzy
 msgid "+  Artwork and graphics designer"
-msgstr "-   Diseñador gráfico y artístico"
+msgstr "+  Diseñador gráfico y artístico"
 
 #: src/about.cpp:39
 msgid "+Developers"
@@ -9929,11 +9913,11 @@ msgstr "+Administradores de ámbito general"
 #: src/about.cpp:82 src/about.cpp:112 src/multiplayer_connect.cpp:271
 #: src/multiplayer_connect.cpp:363 src/multiplayer_wait.cpp:413
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: src/about.cpp:89 src/about.cpp:119
 msgid "+  "
-msgstr ""
+msgstr "+"
 
 #: src/about.cpp:217 src/help.cpp:2774
 msgid "Close"
@@ -9994,7 +9978,7 @@ msgstr "(pulse $hotkey para continuar)"
 
 #: src/dialogs.cpp:105
 msgid "Advance Unit"
-msgstr "Avanzar Unidad"
+msgstr "Promocionar unidad"
 
 #: src/dialogs.cpp:106
 msgid "What should our victorious unit become?"
@@ -10050,7 +10034,7 @@ msgstr "repetición"
 
 #: src/dialogs.cpp:402 src/menu_events.cpp:375 src/multiplayer_lobby.cpp:345
 msgid "Turn"
-msgstr ", turno"
+msgstr "Turno"
 
 #: src/dialogs.cpp:404
 msgid "Scenario Start"
@@ -10222,11 +10206,10 @@ msgid "Connect to Server"
 msgstr "Conectar al servidor"
 
 #: src/game.cpp:857
-#, fuzzy
 msgid "You will now connect to a server to download add-ons."
 msgstr ""
-"Ahora se realizará una conexión a un servidor de campañas para descargar "
-"escenarios."
+"Ahora se realizará una conexión a un servidor para descargar "
+"expansiones."
 
 #: src/game.cpp:858
 msgid "Server: "
@@ -10238,7 +10221,7 @@ msgstr "No ha sido posible conectar al servidor."
 
 #: src/game.cpp:879
 msgid "Asking for list of add-ons"
-msgstr ""
+msgstr "Pidiendo lista de expansiones"
 
 #: src/game.cpp:892
 msgid "Error communicating with the server."
@@ -10261,47 +10244,40 @@ msgid "Size"
 msgstr "Tamaño"
 
 #: src/game.cpp:963
-#, fuzzy
 msgid "Publish add-on: "
-msgstr "Publicar campaña: "
+msgstr "Publicar expansión: "
 
 #: src/game.cpp:967
-#, fuzzy
 msgid "Delete add-on: "
-msgstr "Borrar campaña"
+msgstr "Borrar expansión: "
 
 #: src/game.cpp:971
-#, fuzzy
 msgid "There are no add-ons available for download from this server."
-msgstr "No hay campañas disponibles para descargar de este servidor."
+msgstr "No hay expansiones disponibles para descargar de este servidor."
 
 #: src/game.cpp:978
-#, fuzzy
 msgid "Choose the add-on to download."
-msgstr "Escoja la campaña a descargar."
+msgstr "Escoja la expansión que desea descargar."
 
 #: src/game.cpp:978
 msgid "Get Add-ons"
-msgstr ""
+msgstr "Obtener expansiones"
 
 #: src/game.cpp:998
-#, fuzzy
 msgid "Downloading add-on..."
-msgstr "Descargando campaña..."
+msgstr "Descargando expansión..."
 
 #: src/game.cpp:1022
 msgid "Cannot rescan the filesystem"
 msgstr "No se pudo revisar de nuevo el sistema de ficheros"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "Add-on Installed"
-msgstr "Campaña instalada"
+msgstr "Expansión instalada"
 
 #: src/game.cpp:1037
-#, fuzzy
 msgid "The add-on has been installed."
-msgstr "La campaña ha sido instalada.."
+msgstr "La expansión ha sido instalada."
 
 #: src/game.cpp:1039
 msgid "Network communication error."
@@ -10331,9 +10307,8 @@ msgid "Terms"
 msgstr "Términos"
 
 #: src/game.cpp:1092
-#, fuzzy
 msgid "Sending add-on"
-msgstr "Descargando campaña..."
+msgstr "Enviando expansión..."
 
 #: src/game.cpp:1099 src/game.cpp:1124 src/multiplayer_wait.cpp:317
 msgid "Response"
@@ -10381,13 +10356,14 @@ msgstr "Jugar una partida contra oponentes con IA"
 
 #: src/game.cpp:1167 src/multiplayer.cpp:189
 msgid "Login: "
-msgstr "Entrar: "
+msgstr "Usuario: "
 
 #: src/game.cpp:1169 src/multiplayer.cpp:194
 msgid ""
 "The login name you chose is too long, please use a login with less than 18 "
 "characters"
-msgstr ""
+msgstr "El nombre de usuario que ha escogido es muy largo. Por favor, escoja "
+"un nombre de menos de 18 caracteres"
 
 #: src/game.cpp:1203 src/playcampaign.cpp:107 src/playcampaign.cpp:321
 msgid "The game could not be loaded: "
@@ -10437,7 +10413,7 @@ msgstr "La Batalla por Wesnoth"
 
 #: src/game.cpp:1734
 msgid "Loading title screen."
-msgstr ""
+msgstr "Cargando pantalla inicial."
 
 #: src/game_events.cpp:733
 msgid "Victory:"
@@ -10460,9 +10436,8 @@ msgid "Abilities: "
 msgstr "Habilidades: "
 
 #: src/help.cpp:1154
-#, fuzzy
 msgid "Cost: "
-msgstr "Movimiento: "
+msgstr "Coste: "
 
 #: src/help.cpp:1155
 msgid "Alignment: "
@@ -10517,32 +10492,28 @@ msgid "Defense"
 msgstr "Defensa"
 
 #: src/help.cpp:1267
-#, fuzzy
 msgid "Movement Cost"
-msgstr "Movimiento"
+msgstr "Coste de movimiento"
 
 #: src/help.cpp:1388 src/help.cpp:1412
 msgid "or"
 msgstr "o"
 
 #: src/help.cpp:1395
-#, fuzzy
 msgid "This terrain acts as $terrains for movement purposes."
-msgstr "Este terreno actúa como $terrains a efectos de movimiento y defensa."
+msgstr "Este terreno actúa como $terrains a efectos de movimiento."
 
 #: src/help.cpp:1397 src/help.cpp:1421
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Se escoge automáticamente el terreno con el mejor modificador."
 
 #: src/help.cpp:1399 src/help.cpp:1423
-#, fuzzy
 msgid "The terrain with the worst modifier is chosen automatically."
-msgstr "Se escoge automáticamente el terreno con el mejor modificador."
+msgstr "Se escoge automáticamente el terreno con el peor modificador."
 
 #: src/help.cpp:1419
-#, fuzzy
 msgid "This terrain acts as $terrains for defense purposes."
-msgstr "Este terreno actúa como $terrains a efectos de movimiento y defensa."
+msgstr "Este terreno actúa como $terrains a efectos de defensa."
 
 #: src/help.cpp:1427
 msgid ""
