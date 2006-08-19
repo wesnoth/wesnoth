@@ -101,6 +101,7 @@ private:
 	bool enemies_visible_;
 	bool undo_;
 	bool show_menu_;
+	bool over_route_;
 };
 
 extern int commands_disabled;

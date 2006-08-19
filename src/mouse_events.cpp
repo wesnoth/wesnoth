@@ -677,6 +677,7 @@ undo_stack_(undo_stack), redo_stack_(redo_stack)
 	path_turns_ = 0;
 	undo_ = false;
 	show_menu_ = false;
+	over_route_ = false;
 }
 
 void mouse_handler::mouse_motion(const SDL_MouseMotionEvent& event, const int player_number, const bool browse)
@@ -748,6 +749,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			enemy_paths_ = false;
 			current_paths_ = paths();
 			gui_->unhighlight_reach();
+		} else if(over_route_) {
+			over_route_ = false;
+			current_route_.steps.clear();
+			(*gui_).set_route(NULL);
 		}
 
 		const gamemap::location& dest = attack_from.valid() ? attack_from : new_hex;
@@ -786,16 +791,42 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 
 		unit_map::iterator un = find_unit(new_hex);
 
-		if(un != units_.end() && un->second.side() != team_num_ &&
-			current_paths_.routes.empty() && !(*gui_).fogged(un->first.x,un->first.y)) {
-			unit_movement_resetter move_reset(un->second);
+		if(un != units_.end() && current_paths_.routes.empty() && !(*gui_).fogged(un->first.x,un->first.y)) {
+			if (un->second.side() != team_num_) {
+				//unit under cursor is not on our team, highlight reach
+				unit_movement_resetter move_reset(un->second);
+	
+				const bool ignore_zocs = un->second.get_ability_bool("skirmisher",un->first);
+				const bool teleport = un->second.get_ability_bool("teleport",un->first);
+				current_paths_ = paths(map_,status_,gameinfo_,units_,new_hex,teams_,
+									ignore_zocs,teleport,viewing_team(),path_turns_);
+				gui_->highlight_reach(current_paths_);
+				enemy_paths_ = true;
+			} else {
+				//unit is on our team, show path if the unit has one
+				unit u = un->second;
+				const gamemap::location go_to = u.get_goto();
+				if(map_.on_board(go_to)) {
+					const shortest_path_calculator calc(u,current_team(),
+									visible_units(),teams_,map_);
 
-			const bool ignore_zocs = un->second.get_ability_bool("skirmisher",un->first);
-			const bool teleport = un->second.get_ability_bool("teleport",un->first);
-			current_paths_ = paths(map_,status_,gameinfo_,units_,new_hex,teams_,
-								   ignore_zocs,teleport,viewing_team(),path_turns_);
-			gui_->highlight_reach(current_paths_);
-			enemy_paths_ = true;
+					const std::set<gamemap::location>* teleports = NULL;
+	
+					std::set<gamemap::location> allowed_teleports;
+					if(u.get_ability_bool("teleport",un->first)) {
+						allowed_teleports = vacant_villages(current_team().villages(),units_);
+						teleports = &allowed_teleports;
+						if(current_team().villages().count(un->first))
+							allowed_teleports.insert(un->first);
+	
+					}
+	
+					paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.x(), map_.y(), teleports);
+					route.move_left = route_turns_to_complete(un->second,map_,route);
+					gui_->set_route(&route);
+				}
+				over_route_ = true;
+			}
 		}
 	}
 
