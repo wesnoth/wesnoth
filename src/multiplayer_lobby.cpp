@@ -534,14 +534,14 @@ void lobby::gamelist_updated(bool silent)
 		return;
 	}
 	games_menu_.set_game_items(*list, game_config());
-	join_game_.hide(!games_menu_.selection_is_joinable());
-	observe_game_.hide(!games_menu_.selection_is_observable());
+	join_game_.enable(games_menu_.selection_is_joinable());
+	observe_game_.enable(games_menu_.selection_is_observable());
 }
 
 void lobby::process_event()
 {
-	join_game_.hide(!games_menu_.selection_is_joinable());
-	observe_game_.hide(!games_menu_.selection_is_observable());
+	join_game_.enable(games_menu_.selection_is_joinable());
+	observe_game_.enable(games_menu_.selection_is_observable());
 
 	const bool observe = (observe_game_.pressed() || (games_menu_.selected() && !games_menu_.selection_is_joinable())) && games_menu_.selection_is_observable();
 	const bool join = (join_game_.pressed() || games_menu_.selected()) && games_menu_.selection_is_joinable();
