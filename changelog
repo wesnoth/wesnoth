@@ -1,25 +1,25 @@
 Version 1.1.8+SVN:
+ * campaigns
+   * Heir to the Throne
+     * fixed gold typo in Dwarven Doors (#6481)
+     * Isle of the Damned: removed merman recall on HARD
+ * multiplayer maps:
+   * revised multiplayer maps: Sablestone Delta
  * language and i18n:
    * updated translations: Dutch, Finnish, French, German, Italian, Japanese,
      Norwegian, Polish, Russian, Serbian, Slovak, Slovenian, Spanish
    * new manual: Japanese
    * updated manual: Portuguese (Brazil)
- * campaigns
-   * Heir to the Throne
-     * fixed gold typo in Dwarven Doors (#6481)
-     * Isle of the Damned: removed merman recall on HARD
- * misc
-    * fixed --with-desktopdir and --with-icondir, it still needs --with-kde or
-         --with-gnome (#6499)
- * correct handling of UTF8 filenames under windows
- * multiplayer game management
-   * client now tells the server if it ended in vectory or defeat
  * units:
    * balancing changes:
      * removed Necrophage from random_leader
    * added profile key to female thief to prevent use of male image
- * multiplayer maps:
-   * revised multiplayer maps: Sablestone Delta
+ * misc
+   * fixed --with-desktopdir and --with-icondir, it still needs --with-kde or
+     --with-gnome (#6499)
+   * correct handling of UTF8 filenames under windows
+   * multiplayer game management: client now tells the server if it ended in
+     vectory or defeat
 
 Version 1.1.8:
  * campaigns
