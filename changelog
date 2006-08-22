@@ -15,18 +15,20 @@ Version 1.3-svn:
  * user interface
    * disable inactive sliders instead of hiding them
    * sliders can be adjusted with keyboard left and right
-   * sidebar reports related to gold, units, villages, and time grey out during other team's turns
+   * sidebar reports related to gold, units, villages and time get greyed out
+     during other team's turns
    * improve the tiny gui support (resolution of 320x240 pixels)
  * WML engine
    * allow_new_game key (default=yes) to prevent [multiplayer] scenarios to
      show up in the multiplayer game creation interface (FR #6397)
    * new [set_specials] tag to allow custom special in effect tags
-   * new remove_specials=<id_list> key to allow to remove specials in effect tags
+   * new remove_specials=<id_list> key to allow to remove specials in effect 
+     tags
    * obsolete set_special= in [effect] tags
    * correct handling of UTF8 filenames under windows
    * fighting animations can now be filtered on swing number
  * multiplayer game management
-   * client now tells the server if it ended in vectory or defeat 
+   * client now tells the server if a game ended in victory or defeat 
 
 Version 1.1.7:
  * campaigns
