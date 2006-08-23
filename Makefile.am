@@ -138,6 +138,9 @@ update-po:
 if PO4AUPDATE
 update-po4a:
 	@cd po && make update-po4a || exit $?
+	@echo -n "Removing empty directories... "
+	@find doc/man/ -maxdepth 1 -type d -empty -exec rmdir {} \; && \
+		echo "done." || exit $?
 endif
 
 # latest graph-includes.pl can be found currently at http://ydirson.free.fr/soft/wesnoth/graphs/
