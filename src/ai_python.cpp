@@ -546,8 +546,8 @@ static PyObject* wrapper_unit_type( wesnoth_unit* unit, PyObject* args )
 		return NULL;
 	if (!running_instance->is_unit_valid(unit->unit_))
 		return NULL;
-		wassert(unit->unit_->type());
-	return wrap_unittype(*unit->unit_->type());
+		wassert(&unit->unit_->type() != NULL);
+	return wrap_unittype(unit->unit_->type());
 }
 
 static PyObject* wrapper_unit_attacks( wesnoth_unit* unit, PyObject* args )
