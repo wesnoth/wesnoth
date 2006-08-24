@@ -513,7 +513,7 @@ static PyObject* unit_query_valid(wesnoth_unit* unit, void* /*closure*/)
 
 static PyGetSetDef unit_getseters[] = {
 	{ "name",			(getter)unit_get_name,		NULL,
-        "Name of the unit.",	NULL },
+        "Name of the unit (''description'' from WML).",	NULL },
 	{ "is_enemy",		(getter)unit_is_enemy,		NULL,
         "True if this is an enemy unit, False if it is allied.",	NULL },
 	{ "can_recruit",	(getter)unit_can_recruit,	NULL,
@@ -1691,6 +1691,11 @@ void python_ai::play_turn()
 	std::string script_name = current_team().ai_parameters()["python_script"];
 	std::string script = get_binary_file_location("data", "ais/" + script_name);
 	PyObject* file = PyFile_FromString((char*)script.c_str(),"rt");
+	if (!file) { // exception occured during file opening
+	    std::cerr << "Error opening " << script_name << std::endl;
+	    PyErr_Print();
+	    return;
+	}
 
     PyErr_Clear();
 
