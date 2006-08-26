@@ -108,7 +108,7 @@ public:
 	battle_context(const unit_stats &att, const unit_stats &def);
 
 	battle_context(const battle_context &other);
-	~battle_context() { delete attacker_stats_; delete defender_stats_; }
+	~battle_context();
 
 	battle_context& operator=(const battle_context &other);
 
