@@ -725,7 +725,8 @@ void theme::modify(const config* cfg){
 }
 
 theme::object& theme::find_element(std::string id){
-	theme::object* res = new theme::object();
+	static theme::object empty_object;
+	theme::object* res = &empty_object;
 	for (std::vector<theme::panel>::iterator p = panels_.begin(); p != panels_.end(); ++p){
 		if (p->get_id() == id) { res = &(*p); }
 	}
