@@ -276,6 +276,14 @@ battle_context::battle_context(const unit_stats &att, const unit_stats &def)
 	defender_combatant_ = NULL;
 }
 
+battle_context::~battle_context()
+{
+	delete attacker_stats_;
+	delete defender_stats_; 
+	delete attacker_combatant_;
+	delete defender_combatant_; 
+}
+
 battle_context& battle_context::operator=(const battle_context &other)
 {
 	if (&other != this) {
