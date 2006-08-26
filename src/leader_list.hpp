@@ -35,6 +35,8 @@ public:
 	bool is_leader_ok(std::string leader);
 
 private:
+	void populate_combo(int selected_index);
+
 	std::vector<std::string> leaders_;
 	config::child_list side_list_;
 	const game_data* data_;

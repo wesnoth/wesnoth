@@ -30,10 +30,15 @@ leader_list_manager::leader_list_manager(const config::child_list& side_list,
 
 void leader_list_manager::set_combo(gui::combo* combo)
 {
+	int selected = combo_ != NULL ? combo_->selected() : 0;
 	combo_ = combo;
 
-	if (combo_ != NULL) {
-		update_leader_list(0);
+	if(combo_ != NULL) {
+		if(leaders_.empty()) {
+			update_leader_list(0);
+		} else {
+			populate_combo(selected);
+		}
 	}
 }
 
@@ -77,8 +82,13 @@ void leader_list_manager::update_leader_list(int side_index)
 		leaders_.push_back(default_leader);
 	}
 
-	std::vector<std::string> leader_strings;
+	leaders_.push_back("random");
+	populate_combo(default_index);
+}
 
+void leader_list_manager::populate_combo(int selected_index) {
+	std::vector<std::string>::const_iterator itor;
+	std::vector<std::string> leader_strings;
 	for(itor = leaders_.begin(); itor != leaders_.end(); ++itor) {
 
 		const game_data::unit_type_map& utypes = data_->unit_types;
@@ -94,17 +104,17 @@ void leader_list_manager::update_leader_list(int side_index)
 			leader_strings.push_back(IMAGE_PREFIX + image + std::string("~TC(1," + utypes.find(*itor)->second.flag_rgb() + ")") + COLUMN_SEPARATOR + name);
 #endif
 		} else {
-			leader_strings.push_back("?");
+			if(*itor == "random") {
+				leader_strings.push_back(IMAGE_PREFIX + random_enemy_picture + COLUMN_SEPARATOR + _("Random"));
+			} else {
+				leader_strings.push_back("?");
+			}
 		}
 	}
 
-	leaders_.push_back("random");
-	leader_strings.push_back(IMAGE_PREFIX + random_enemy_picture +
-	                         COLUMN_SEPARATOR + _("Random"));
-
 	if(combo_ != NULL) {
 		combo_->set_items(leader_strings);
-		combo_->set_selected(default_index);
+		combo_->set_selected(selected_index);
 	}
 }
 
@@ -116,8 +126,10 @@ void leader_list_manager::set_leader(const std::string& leader)
 	int leader_index = 0;
 	for(std::vector<std::string>::const_iterator itor = leaders_.begin();
 			itor != leaders_.end(); ++itor) {
-		if (leader == *itor)
+		if(leader == *itor) {
 			combo_->set_selected(leader_index);
+			return;
+		}
 		++leader_index;
 	}
 }

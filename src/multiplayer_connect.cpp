@@ -149,6 +149,78 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		}
 		combo_leader_.set_items(leader_name_pseudolist);
 		combo_leader_.set_selected(0);
+	} else if(parent_->params_.use_map_settings) {
+		//lock gold and income sliders if those are set by the scenario
+		if(!cfg_["gold"].empty())
+			slider_gold_.enable(false);
+		if(!cfg_["income"].empty())
+			slider_income_.enable(false);
+		if(!cfg_["team_name"].empty())
+			combo_team_.enable(false);
+		if(!cfg_["colour"].empty())
+			combo_colour_.enable(false);
+
+		//set the leader
+		leader_ = cfg_["type"];
+		if(!leader_.empty()) {
+			combo_leader_.enable(false);
+			llm_.set_combo(NULL);
+			std::vector<std::string> leader_name_pseudolist;
+			game_data::unit_type_map::const_iterator leader_name = parent_->game_data_.unit_types.find(leader_);
+			if(leader_name == parent_->game_data_.unit_types.end()) {
+				leader_name_pseudolist.push_back("?");
+			} else {
+				leader_name_pseudolist.push_back(leader_name->second.language_name());
+			}
+			combo_leader_.set_items(leader_name_pseudolist);
+			combo_leader_.set_selected(0);
+		}
+
+		//try to pick a faction for the sake of appearance and for filling in the blanks
+		if(faction_ == 0) {
+			std::vector<std::string> find;
+			std::string search_field;
+			if(!cfg_["faction"].empty()) {
+				//choose based on faction
+				find.push_back(cfg_["faction"]);
+				search_field = "id";
+			} else if(!cfg_["recruit"].empty()) {
+				//choose based on recruit
+				find = utils::split(cfg_["recruit"]);
+				search_field = "recruit";
+			} else if(!leader_.empty()) {
+				//choose based on leader
+				find.push_back(leader_);
+				search_field = "leader";
+			}
+
+			std::vector<std::string>::const_iterator search = find.begin();
+			while(search != find.end()) {
+				int faction_index = 0;
+				std::vector<config*>::const_iterator faction = parent.era_sides_.begin();
+				while(faction_ == 0 && faction != parent.era_sides_.end()) {
+					const config& side = (**faction);
+					std::vector<std::string> recruit;
+					recruit = utils::split(side[search_field]);
+					for(itor = recruit.begin(); itor != recruit.end(); ++itor) {
+						if(*itor == *search) {
+							faction_ = faction_index;
+							llm_.update_leader_list(faction_);
+							combo_faction_.enable(false);
+						}
+					}
+					++faction;
+					faction_index++;
+				}
+				//exit outmost loop if we've found a faction
+				if(!combo_faction_.enabled()) {
+					break;
+				}
+				++search;
+			}
+		} else {
+			combo_faction_.enable(false);
+		}
 	}
 
 	update_ui();
@@ -170,7 +242,7 @@ connect::side::side(const side& a) :
 	label_gold_(a.label_gold_), label_income_(a.label_income_),
 	enabled_(a.enabled_), changed_(a.changed_), llm_(a.llm_)
 {
-	llm_.set_combo(enabled_ ? &combo_leader_ : NULL);
+	llm_.set_combo((enabled_ && leader_.empty()) ? &combo_leader_ : NULL);
 }
 
 void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
@@ -364,7 +436,7 @@ void connect::side::update_ui()
 
 config connect::side::get_config() const
 {
-	config res = cfg_;
+	config res(cfg_);
 
 	// If the user is allowed to change type, faction, leader etc, then
 	// import their new values in the config.
@@ -476,6 +548,17 @@ config connect::side::get_config() const
 		res["allow_changes"] = "no";
 	}
 
+	if(parent_->params_.use_map_settings && enabled_) {
+		config trimmed = cfg_;
+		trimmed["controller"] = "";
+		trimmed["side"] = "";
+		if(controller_ != CNTR_COMPUTER) {
+			//only override names for computer controlled players
+			trimmed["user_description"] = "";
+		}
+		trimmed.prune();
+		return res.merge_with(trimmed);
+	}
 	return res;
 }
 
@@ -540,12 +623,16 @@ void connect::side::import_network_user(const config& data)
 	id_ = data["name"];
 	controller_ = CNTR_NETWORK;
 
-	if (enabled_ && !parent_->era_sides_.empty()) {
-		faction_ = lexical_cast_default<int>(data["faction"], 0);
-		if (faction_ > int(parent_->era_sides_.size()))
-			faction_ = 0;
-		llm_.update_leader_list(faction_);
-		llm_.set_leader(data["leader"]);
+	if(enabled_ && !parent_->era_sides_.empty()) {
+		if(combo_faction_.enabled()) {
+			faction_ = lexical_cast_default<int>(data["faction"], 0);
+			if(faction_ > int(parent_->era_sides_.size()))
+				faction_ = 0;
+			llm_.update_leader_list(faction_);
+		}
+		if(combo_leader_.enabled()) {
+			llm_.set_leader(data["leader"]);
+		}
 	}
 
 	update_ui();
@@ -557,8 +644,10 @@ void connect::side::reset(mp::controller controller)
 	controller_ = controller;
 
 	if(enabled_ && !parent_->era_sides_.empty()) {
-		faction_ = 0;
-		llm_.update_leader_list(0);
+		if(combo_faction_.enabled())
+			faction_ = 0;
+		if(combo_leader_.enabled())
+			llm_.update_leader_list(0);
 	}
 
 	update_ui();
@@ -1295,5 +1384,3 @@ void connect::kick_player(const std::string& name)
 }
 
 }
-
-
