@@ -681,10 +681,9 @@ void theme::remove_object(std::string id){
 }
 
 void theme::set_object_location(theme::object& element, std::string rect_str, std::string ref_id){
-	theme::object& ref_element = *(new object());
+	theme::object& ref_element = element;
 	if (ref_id.empty()) {
 		ref_id = element.get_id();
-		ref_element = element;
 	}
 	else {
 		ref_element = find_element(ref_id);
@@ -725,7 +724,8 @@ void theme::modify(const config* cfg){
 }
 
 theme::object& theme::find_element(std::string id){
-	theme::object* res = new theme::object();
+	static theme::object empty_object;
+	theme::object* res = &empty_object;
 	for (std::vector<theme::panel>::iterator p = panels_.begin(); p != panels_.end(); ++p){
 		if (p->get_id() == id) { res = &(*p); }
 	}
