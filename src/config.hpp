@@ -125,6 +125,9 @@ public:
 
 	config merge_with(const config& c) const;
 
+	//removes keys with empty values
+	void prune();
+
 	//append data from another config object to this one. attributes in the
 	//latter config object will clobber attributes in this one.
 	void append(const config& cfg);

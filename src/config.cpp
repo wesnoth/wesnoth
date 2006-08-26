@@ -570,6 +570,23 @@ config config::merge_with(const config& c) const
 	return n;
 }
 
+void config::prune() {
+	string_map::iterator val = values.begin();
+	while(val != values.end()) {
+		if(val->second.empty()) {
+			values.erase(val++);
+		} else {
+			++val;
+		}
+	}
+
+	for(child_map::const_iterator list = children.begin(); list != children.end(); ++list) {
+		for(child_list::const_iterator child = list->second.begin(); child != list->second.end(); ++child) {
+			(*child)->prune();
+		}
+	}
+}
+
 void config::reset_translation() const
 {
 	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
