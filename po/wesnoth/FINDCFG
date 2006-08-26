@@ -3,4 +3,4 @@ find data/scenarios/multiplayer -name '*.cfg' -print
 find data/campaigns/*/units -name '*.cfg' -print
 find data/campaigns/*.cfg -name '*.cfg' -print
 find data/tutorial/units -name '*.cfg' -print
-echo data/themes/default.cfg
+find data/themes/ -name '*.cfg' -print
