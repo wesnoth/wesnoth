@@ -17,6 +17,7 @@
 #ifdef HAVE_PYTHON
 #include "ai_python.hpp"
 #endif
+#include "actions.hpp"
 #include "dialogs.hpp"
 #include "game_config.hpp"
 #include "game_events.hpp"
