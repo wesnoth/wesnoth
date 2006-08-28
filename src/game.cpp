@@ -864,6 +864,10 @@ void game_controller::download_campaigns()
 	}
 
 	const std::vector<std::string> items = utils::split(host, ':');
+	if(items.empty()) {
+		return;
+	}
+
 	host = items.front();
 	preferences::set_campaign_server(host);
 
@@ -1167,7 +1171,7 @@ bool game_controller::play_multiplayer()
 	do {
 		res = gui::show_dialog2(disp(), NULL, _("Multiplayer"), "",
 					   gui::OK_CANCEL, &host_or_join, NULL,
-					   _("Login: "), &login);
+					   _("Login: "), &login, 18);
 		if(login.size() > 18) {
 			gui::show_error_message(disp(), _("The login name you chose is too long, please use a login with less than 18 characters"));
 		}
