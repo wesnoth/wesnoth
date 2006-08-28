@@ -603,16 +603,16 @@ void play_controller::play_slice()
 
 	const int scroll_threshold = (preferences::mouse_scroll_enabled()) ? 5 : 0;
 
-	if(key[SDLK_UP] || mousey < scroll_threshold)
+	if((key[SDLK_UP] && !menu_handler_.get_textbox().active()) || mousey < scroll_threshold)
 		gui_->scroll(0,-preferences::scroll_speed());
 
-	if(key[SDLK_DOWN] || mousey > gui_->y()-scroll_threshold)
+	if((key[SDLK_DOWN] && !menu_handler_.get_textbox().active()) || mousey > gui_->y()-scroll_threshold)
 		gui_->scroll(0,preferences::scroll_speed());
 
-	if(key[SDLK_LEFT] || mousex < scroll_threshold)
+	if((key[SDLK_LEFT] && !menu_handler_.get_textbox().active()) || mousex < scroll_threshold)
 		gui_->scroll(-preferences::scroll_speed(),0);
 
-	if(key[SDLK_RIGHT] || mousex > gui_->x()-scroll_threshold)
+	if((key[SDLK_RIGHT] && !menu_handler_.get_textbox().active()) || mousex > gui_->x()-scroll_threshold)
 		gui_->scroll(preferences::scroll_speed(),0);
 
 	gui_->draw();
