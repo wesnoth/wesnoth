@@ -865,6 +865,10 @@ void game_controller::download_campaigns()
 	}
 
 	const std::vector<std::string> items = utils::split(host, ':');
+	if(items.empty()) {
+		return;
+	}
+
 	host = items.front();
 	preferences::set_campaign_server(host);
 
