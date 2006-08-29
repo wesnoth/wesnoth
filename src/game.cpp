@@ -1716,13 +1716,13 @@ int play_game(int argc, char** argv)
 		return 0;
 	}
 
-	loadscreen::global_loadscreen->increment_progress(5, "Loading game configuration.");
+	loadscreen::global_loadscreen->increment_progress(5, _ ("Loading game configuration."));
 	res = game.init_config();
 	if(res == false) {
 		std::cerr << "could not initialize game config\n";
 		return 0;
 	}
-	loadscreen::global_loadscreen->increment_progress(10, "Re-initialize fonts for the current language.");
+	loadscreen::global_loadscreen->increment_progress(10, _ ("Re-initialize fonts for the current language."));
 
 	res = font::load_font_config();
 	if(res == false) {
