@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-08-29 01:26+0200\n"
+"POT-Creation-Date: 2006-08-29 12:59+0200\n"
 "PO-Revision-Date: 2006-06-22 22:55+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -11146,6 +11146,15 @@ msgstr "' (Das Spiel wird nun beendet)"
 #: src/game.cpp:1599
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
+
+#: src/game.cpp:1719
+#, fuzzy
+msgid "Loading game configuration."
+msgstr "Fehler beim Laden der Konfigurationsdateien: '"
+
+#: src/game.cpp:1725
+msgid "Re-initialize fonts for the current language."
+msgstr ""
 
 #: src/game.cpp:1741
 msgid "Loading title screen."
