@@ -36,7 +36,9 @@
 class idle_ai : public ai_interface {
 public:
 	idle_ai(info& i) : ai_interface(i) {}
-	void play_turn() {}
+	void play_turn() {
+		game_events::fire("ai turn");
+	}
 };
 
 class sample_ai : public ai_interface {
@@ -44,6 +46,7 @@ public:
 	sample_ai(info& i) : ai_interface(i) {}
 
 	void play_turn() {
+		game_events::fire("ai turn");
 		do_attacks();
 		get_villages();
 		do_moves();

@@ -1688,6 +1688,8 @@ python_ai::~python_ai()
 
 void python_ai::play_turn()
 {
+	game_events::fire("ai turn");
+	
 	std::string script_name = current_team().ai_parameters()["python_script"];
 	std::string script = get_binary_file_location("data", "ais/" + script_name);
 	PyObject* file = PyFile_FromString((char*)script.c_str(),"rt");
