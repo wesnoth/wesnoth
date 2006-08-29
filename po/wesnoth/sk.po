@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-08-29 01:26+0200\n"
+"POT-Creation-Date: 2006-08-29 12:59+0200\n"
 "PO-Revision-Date: 2006-07-05 17:37+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -10305,6 +10305,15 @@ msgstr "' (Hra teraz skončí)"
 #: src/game.cpp:1599
 msgid "Battle for Wesnoth"
 msgstr "Bitka o Wesnoth"
+
+#: src/game.cpp:1719
+#, fuzzy
+msgid "Loading game configuration."
+msgstr "Chyba pri načítavaní konfiguračných súborov hry: '"
+
+#: src/game.cpp:1725
+msgid "Re-initialize fonts for the current language."
+msgstr ""
 
 #: src/game.cpp:1741
 msgid "Loading title screen."

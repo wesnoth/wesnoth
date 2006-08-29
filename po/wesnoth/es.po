@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.2.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2006-08-29 01:26+0200\n"
+"POT-Creation-Date: 2006-08-29 12:59+0200\n"
 "PO-Revision-Date: 2006-08-21 00:25+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -10583,6 +10583,15 @@ msgstr "' (el juego finalizará en este momento)"
 #: src/game.cpp:1599
 msgid "Battle for Wesnoth"
 msgstr "La Batalla por Wesnoth"
+
+#: src/game.cpp:1719
+#, fuzzy
+msgid "Loading game configuration."
+msgstr "Error cargando ficheros de configuración del juego: '"
+
+#: src/game.cpp:1725
+msgid "Re-initialize fonts for the current language."
+msgstr ""
 
 #: src/game.cpp:1741
 msgid "Loading title screen."
