@@ -22,6 +22,7 @@
 #include "gamestatus.hpp"
 #include "filesystem.hpp"
 #include "menu_events.hpp"
+#include "game_events.hpp"
 
 #include <fstream>
 
