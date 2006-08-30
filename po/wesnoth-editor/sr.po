@@ -1,23 +1,30 @@
+# translation of editor-sr.po to sr_CS
 # #-#-#-#-#  wesnoth-editor.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Serbian translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
+# Branko Kokanovic, 2006.
+# Branko Kokanovic, 2006.
+# Branko Kokanovic, 2006.
+# Branko Kokanovic, 2006.
+# Branko Kokanovic, 2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.9.0+cvs\n"
+"Project-Id-Version: editor-sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2006-08-29 01:32+0200\n"
-"PO-Revision-Date: 2005-06-05 14:49-0600\n"
-"Last-Translator: Srecko Toroman <sreckotoroman@gmail.com>\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2006-08-13 08:43+0000\n"
+"Last-Translator: Branko Kokanovic\n"
+"Language-Team: sr_CS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Serbo-Croatian\n"
 "X-Poedit-Country: BOSNIA AND HERZEGOVINA\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: KBabel 1.10.2\n"
 
 #: data/themes/editor.cfg:461
 msgid "File"
@@ -25,57 +32,55 @@ msgstr "Фајл"
 
 #: data/themes/editor.cfg:470
 msgid "Edit"
-msgstr "Уреди"
+msgstr "Уређивање"
 
 #: data/themes/editor.cfg:477
 msgid "Settings"
-msgstr ""
+msgstr "Подешавања"
 
 #: src/editor/editor.cpp:163
 msgid "Draw tiles"
-msgstr ""
+msgstr "Цртај плочице"
 
 #: src/editor/editor.cpp:165
-#, fuzzy
 msgid "Fill"
-msgstr "Фајл"
+msgstr "Попуни"
 
 #: src/editor/editor.cpp:167
 msgid "Set player's starting position"
-msgstr ""
+msgstr "Подеси почетну позицију играча"
 
 #: src/editor/editor.cpp:169
 msgid "Zoom in"
-msgstr ""
+msgstr "Увеличај"
 
 #: src/editor/editor.cpp:171
 msgid "Zoom out"
-msgstr ""
+msgstr "Умањи"
 
 #: src/editor/editor.cpp:173
 msgid "Undo"
-msgstr ""
+msgstr "Опозови"
 
 #: src/editor/editor.cpp:175
 msgid "Redo"
-msgstr ""
+msgstr "Понови"
 
 #: src/editor/editor.cpp:177
 msgid "Zoom to default view"
-msgstr ""
+msgstr "Увеличај на подразумевану вредност"
 
 #: src/editor/editor.cpp:179
 msgid "Toggle grid"
-msgstr ""
+msgstr "Укључи/искључи мрежу"
 
 #: src/editor/editor.cpp:181
-#, fuzzy
 msgid "Resize the map"
-msgstr "Промени Величину Мапе"
+msgstr "Промени величину мапе"
 
 #: src/editor/editor.cpp:183
 msgid "Flip map"
-msgstr ""
+msgstr "Обрни мапу"
 
 #: src/editor/editor.cpp:381
 msgid "Language"
@@ -83,11 +88,11 @@ msgstr "Језик"
 
 #: src/editor/editor.cpp:382
 msgid "Choose your preferred language:"
-msgstr "Изабери жељени језик:"
+msgstr "Изаберите жељени језик:"
 
 #: src/editor/editor.cpp:396 src/editor/editor_main.cpp:252
 msgid "Battle for Wesnoth Map Editor"
-msgstr ""
+msgstr "Борба за Веснот - едитор мапа"
 
 #: src/editor/editor.cpp:420
 msgid "Save the Map As"
@@ -107,7 +112,7 @@ msgstr "Који Играч?"
 
 #: src/editor/editor.cpp:458
 msgid "Which player should start here?"
-msgstr "Који играч би требало да буде овде?"
+msgstr "Који играч би требало да почиње овде?"
 
 #: src/editor/editor.cpp:509
 msgid "Choose a Map to Load"
@@ -118,6 +123,8 @@ msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
 "different name."
 msgstr ""
+"Упозорење: Нелегалан карактер нађен у имену мапе. Молимо Вас, сачувајте мапу "
+"под другим именом."
 
 #: src/editor/editor.cpp:531 src/editor/editor.cpp:610
 msgid "The file does not contain a valid map."
@@ -129,11 +136,11 @@ msgstr "'$filename' не постоји или немате дозволу за 
 
 #: src/editor/editor.cpp:684
 msgid "Load failed: "
-msgstr "Учитавање је омануло:"
+msgstr "Учитавање није успело:"
 
 #: src/editor/editor.cpp:884
 msgid "You must have a hex selected on the board."
-msgstr "Морате изабрати хексагон на табли."
+msgstr "Морате прво изабрати хексагон на табли."
 
 #: src/editor/editor.cpp:1133
 msgid "Quit Editor"
@@ -153,7 +160,7 @@ msgstr "Не могу да снимим мапу: $msg"
 
 #: src/editor/editor.cpp:1192
 msgid "Error: Illegal character in filename."
-msgstr ""
+msgstr "Грешка: Нелегалан карактер у имену фајла."
 
 #: src/editor/editor_palettes.cpp:319
 msgid "FG"
@@ -162,92 +169,3 @@ msgstr "Лице"
 #: src/editor/editor_palettes.cpp:321
 msgid "BG"
 msgstr "Позадина"
-
-#, fuzzy
-#~ msgid "Player "
-#~ msgstr "Играч"
-
-#~ msgid "Delete File"
-#~ msgstr "Избриши Фајл"
-
-#~ msgid "Deletion of the file failed."
-#~ msgstr "Брисање фајла није успело."
-
-#~ msgid "Your modifications to the map will be lost. Continue?"
-#~ msgstr "Ваше промене на мапи ће бити изгубљене. Наставити?"
-
-#~ msgid "Create New Map"
-#~ msgstr "Направи Нову Мапу"
-
-#~ msgid "Width:"
-#~ msgstr "Ширина:"
-
-#~ msgid "Height:"
-#~ msgstr "Висина:"
-
-#~ msgid "Generate New Map"
-#~ msgstr "Генериши Нову Мапу"
-
-#~ msgid "Generate Random Map"
-#~ msgstr "Генериши Случајну Мапу"
-
-#~ msgid "Random Generator Settings"
-#~ msgstr "Поставке Генератора Случајних Мапа"
-
-#~ msgid "Cancel"
-#~ msgstr "Обустави"
-
-#~ msgid "Map creation failed."
-#~ msgstr "Прављење мапе није успело."
-
-#~ msgid "Close Window"
-#~ msgstr "Затвори Прозор"
-
-#~ msgid "Preferences"
-#~ msgstr "Поставке"
-
-#~ msgid "Scroll Speed:"
-#~ msgstr "Брзина Превлачења:"
-
-#~ msgid "Toggle Full Screen"
-#~ msgstr "Приказ преко целог Екрана"
-
-#~ msgid "Show Grid"
-#~ msgstr "Прикажи Мрежу"
-
-#~ msgid "Video Mode"
-#~ msgstr "Видео Мод"
-
-#~ msgid "Hotkeys"
-#~ msgstr "Пречице"
-
-#~ msgid "Resize Map"
-#~ msgstr "Промени Величину Мапе"
-
-#~ msgid "OK"
-#~ msgstr "Уреду"
-
-#~ msgid "X-Axis"
-#~ msgstr "X-Оса"
-
-#~ msgid "Y-Axis"
-#~ msgstr "Y-Оса"
-
-#~ msgid "Flip around (this may change the dimensions of the map):"
-#~ msgstr "Окрени около (ово може да промени димензије мапе):"
-
-#, fuzzy
-#~ msgid "Players:"
-#~ msgstr "Играч"
-
-#~ msgid "Draw"
-#~ msgstr "Цртај"
-
-#~ msgid "Flood"
-#~ msgstr "Поплави"
-
-#~ msgid "Start P"
-#~ msgstr "Почетна П."
-
-#~ msgid "Paste"
-#~ msgstr "Залепи"
