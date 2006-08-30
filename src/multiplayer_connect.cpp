@@ -551,6 +551,7 @@ config connect::side::get_config() const
 	if(parent_->params_.use_map_settings && enabled_) {
 		config trimmed = cfg_;
 		trimmed["controller"] = "";
+		trimmed["description"] = "";
 		trimmed["side"] = "";
 		if(controller_ != CNTR_COMPUTER) {
 			//only override names for computer controlled players
